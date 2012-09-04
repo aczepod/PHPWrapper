@@ -454,6 +454,41 @@ class CMongoContainer extends CContainer
 
 /*=======================================================================================
  *																						*
+ *								PUBLIC CONVERSION INTERFACE								*
+ *																						*
+ *======================================================================================*/
+
+
+	 
+	/*===================================================================================
+	 *	ConvertBinary																	*
+	 *==================================================================================*/
+
+	/**
+	 * <h4>Convert a binary string</h4>
+	 *
+	 * This method will take care of converting binary data to and from Mongo data stores,
+	 * we use here the {@link MongoBinData} class.
+	 *
+	 * @param mixed					$theValue			Binary value.
+	 * @param boolean				$theSense			<tt>TRUE</tt> encode for database.
+	 *
+	 * @static
+	 * @return mixed				The encoded or decoded binary string.
+	 */
+	static function ConvertBinary( $theValue, $theSense = TRUE )
+	{
+		if( $theSense )
+			return new \MongoBinData( $theValue );									// ==>
+		
+		return $theValue->bin;														// ==>
+	
+	} // ConvertBinary.
+
+		
+
+/*=======================================================================================
+ *																						*
  *								PROTECTED MEMBER INTERFACE								*
  *																						*
  *======================================================================================*/

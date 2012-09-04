@@ -316,6 +316,47 @@ abstract class CContainer extends CStatusDocument
 
 /*=======================================================================================
  *																						*
+ *								PUBLIC CONVERSION INTERFACE								*
+ *																						*
+ *======================================================================================*/
+
+
+	 
+	/*===================================================================================
+	 *	ConvertBinary																	*
+	 *==================================================================================*/
+
+	/**
+	 * <h4>Convert a binary string</h4>
+	 *
+	 * This method should be used to convert a binary string to a format compatible with the
+	 * current container.
+	 *
+	 * The first parameter represents the value to be encoded or decoded, the second boolean
+	 * parameter represents the conversion direction: <tt>TRUE</tt> means convert for
+	 * database, <tt>FALSE</tt> convert back to PHP.
+	 *
+	 * By default we convert the string to hexadecimal.
+	 *
+	 * @param mixed					$theValue			Binary value.
+	 * @param boolean				$theSense			<tt>TRUE</tt> encode for database.
+	 *
+	 * @static
+	 * @return mixed				The encoded or decoded binary string.
+	 */
+	static function ConvertBinary( $theValue, $theSense = TRUE )
+	{
+		if( $theSense )
+			return bin2hex( $theValue );											// ==>
+		
+		return hex2bin( $theValue );												// ==>
+	
+	} // ConvertBinary.
+
+		
+
+/*=======================================================================================
+ *																						*
  *								PROTECTED MEMBER INTERFACE								*
  *																						*
  *======================================================================================*/

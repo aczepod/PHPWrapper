@@ -64,11 +64,6 @@ class MyClass extends CPersistentDocument
 	public function committed()	{	return ( $this->_IsCommitted() ) ? 'Y' : 'N';	}
 	public function encoded()	{	return ( $this->_IsEncoded() ) ? 'Y' : 'N';		}
 }
- 
-//
-// Other test class definition.
-//
-class MyOtherClass extends MyClass{}
 
 
 /*=======================================================================================
@@ -261,26 +256,11 @@ try
 	echo( '<hr />' );
 	
 	//
-	// Create generic document.
+	// Create a document.
 	//
 	echo( '<h4>$test = CPersistentDocument::Create( $container, $id );</h4>' );
 	$test = CPersistentDocument::Create( $container, $id );
 //	echo( 'Inited['.$test->inited().'] Dirty['.$test->dirty().'] Saved['.$test->committed().'] Encoded['.$test->encoded().']<br />' );
-	echo( '<pre>' ); print_r( $test ); echo( '</pre>' );
-	echo( '<hr />' );
-	
-	//
-	// Create specific document.
-	//
-	echo( '<h4>$test = new MyClass( $test ); // to set the inited flag...</h4>' );
-	$test = new MyClass( $test );
-	echo( '<h4>$test[ kTAG_CLASS ] = "MyOtherClass";</h4>' );
-	$test[ kTAG_CLASS ] = "MyOtherClass";
-	echo( '<h4>$test->Update( $container );</h4>' );
-	$test->Update( $container );
-	echo( '<h4>$test = CPersistentDocument::Create( $container, $id );</h4>' );
-	$test = CPersistentDocument::Create( $container, $id );
-	echo( 'Inited['.$test->inited().'] Dirty['.$test->dirty().'] Saved['.$test->committed().'] Encoded['.$test->encoded().']<br />' );
 	echo( '<pre>' ); print_r( $test ); echo( '</pre>' );
 	echo( '<hr />' );
 	echo( '<hr />' );
