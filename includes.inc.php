@@ -41,7 +41,7 @@ define( "kPATH_MYWRAPPER_NAMESPACE_ROOT",	"MyWrapper" );
  * This value defines the <b><i>absolute</i></b> path to the MyWrapper class library root
  * directory.
  */
-define( "kPATH_MYWRAPPER_LIBRARY_ROOT",		"/Library/WebServer/Library/MyWrapper" );
+define( "kPATH_MYWRAPPER_LIBRARY_ROOT",		"/Library/WebServer/Library/PHPWrapper" );
 
 /**
  * MyWrapper class library definitions.
@@ -49,7 +49,7 @@ define( "kPATH_MYWRAPPER_LIBRARY_ROOT",		"/Library/WebServer/Library/MyWrapper" 
  * This value defines the <b><i>absolute</i></b> path to the MyWrapper class library
  * definitions directory.
  */
-define( "kPATH_MYWRAPPER_LIBRARY_DEFINE",	"/Library/WebServer/Library/MyWrapper/defines" );
+define( "kPATH_MYWRAPPER_LIBRARY_DEFINE",	"/Library/WebServer/Library/PHPWrapper/defines" );
 
 /**
  * MyWrapper class library sources.
@@ -57,7 +57,7 @@ define( "kPATH_MYWRAPPER_LIBRARY_DEFINE",	"/Library/WebServer/Library/MyWrapper/
  * This value defines the <b><i>absolute</i></b> path to the MyWrapper class library sources
  * directory.
  */
-define( "kPATH_MYWRAPPER_LIBRARY_CLASS",	"/Library/WebServer/Library/MyWrapper/classes" );
+define( "kPATH_MYWRAPPER_LIBRARY_CLASS",	"/Library/WebServer/Library/PHPWrapper/classes" );
 
 /**
  * MyWrapper function library sources.
@@ -65,7 +65,7 @@ define( "kPATH_MYWRAPPER_LIBRARY_CLASS",	"/Library/WebServer/Library/MyWrapper/c
  * This value defines the <b><i>absolute</i></b> path to the MyWrapper function library
  * sources directory.
  */
-define( "kPATH_MYWRAPPER_LIBRARY_FUNCTION",	"/Library/WebServer/Library/MyWrapper/functions" );
+define( "kPATH_MYWRAPPER_LIBRARY_FUNCTION",	"/Library/WebServer/Library/PHPWrapper/functions" );
 
 /*=======================================================================================
  *	CLASS AUTOLOADER																	*

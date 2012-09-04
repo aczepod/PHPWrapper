@@ -302,13 +302,13 @@
 </span><a href="#213" id="213" class="l">213: </a><span class="php-comment">     * This method expects three parameters:
 </span><a href="#214" id="214" class="l">214: </a><span class="php-comment">     *
 </span><a href="#215" id="215" class="l">215: </a><span class="php-comment">     * &lt;ul&gt;
-</span><a href="#216" id="216" class="l">216: </a><span class="php-comment">     *  &lt;li&gt;&lt;tt&gt;$theObject&lt;/tt&gt;: The object to be committed or the data to be modified.
-</span><a href="#217" id="217" class="l">217: </a><span class="php-comment">     *  &lt;li&gt;&lt;tt&gt;$theIdentifier&lt;/tt&gt;: The identifier of the object to be committed or the
-</span><a href="#218" id="218" class="l">218: </a><span class="php-comment">     *      query of the objects to be modified. If the value is &lt;i&gt;NULL&lt;/i&gt;, it means that
-</span><a href="#219" id="219" class="l">219: </a><span class="php-comment">     *      it is the duty of the current container to set the value, this will generally be
-</span><a href="#220" id="220" class="l">220: </a><span class="php-comment">     *      the case when inserting objects; in all other cases the parameter is required.
-</span><a href="#221" id="221" class="l">221: </a><span class="php-comment">     *  &lt;li&gt;&lt;tt&gt;$theModifiers&lt;/tt&gt;: This parameter represents the commit operation options,
-</span><a href="#222" id="222" class="l">222: </a><span class="php-comment">     *      it is a bitfield where the following values apply:
+</span><a href="#216" id="216" class="l">216: </a><span class="php-comment">     *  &lt;li&gt;&lt;tt&gt;$theObject&lt;/tt&gt;: The object or the data to be modified.
+</span><a href="#217" id="217" class="l">217: </a><span class="php-comment">     *  &lt;li&gt;&lt;tt&gt;$theIdentifier&lt;/tt&gt;: The local unique identifier ({@link kTAG_LID}) of the
+</span><a href="#218" id="218" class="l">218: </a><span class="php-comment">     *      object. If the value is &lt;i&gt;NULL&lt;/i&gt;, it means that it is the duty of the current
+</span><a href="#219" id="219" class="l">219: </a><span class="php-comment">     *      container to set the value, this will generally be the case when inserting
+</span><a href="#220" id="220" class="l">220: </a><span class="php-comment">     *      objects; in all other cases the parameter is required.
+</span><a href="#221" id="221" class="l">221: </a><span class="php-comment">     *  &lt;li&gt;&lt;tt&gt;$theModifiers&lt;/tt&gt;: This parameter represents the operation options, it is a
+</span><a href="#222" id="222" class="l">222: </a><span class="php-comment">     *      bitfield where the following values apply:
 </span><a href="#223" id="223" class="l">223: </a><span class="php-comment">     *   &lt;ul&gt;
 </span><a href="#224" id="224" class="l">224: </a><span class="php-comment">     *      &lt;li&gt;{@link kFLAG_PERSIST_INSERT}: The provided object will be inserted in the
 </span><a href="#225" id="225" class="l">225: </a><span class="php-comment">     *          container. It is assumed that no other element in the container shares
@@ -346,92 +346,94 @@
 </span><a href="#257" id="257" class="l">257: </a><span class="php-comment">     *          &lt;i&gt;criteria&lt;/i&gt; and &lt;tt&gt;$theIdentifier&lt;/tt&gt; should contain the object's
 </span><a href="#258" id="258" class="l">258: </a><span class="php-comment">     *          unique identifier, if the object cannot be located in the container, the
 </span><a href="#259" id="259" class="l">259: </a><span class="php-comment">     *          method should not fail.
-</span><a href="#260" id="260" class="l">260: </a><span class="php-comment">     *          In this case the method should return the modified object if the object was
-</span><a href="#261" id="261" class="l">261: </a><span class="php-comment">     *          found and &lt;tt&gt;NULL&lt;/tt&gt; if the object was not found.
-</span><a href="#262" id="262" class="l">262: </a><span class="php-comment">     *      &lt;li&gt;{@link kFLAG_PERSIST_DELETE}: This option assumes you want to remove the
-</span><a href="#263" id="263" class="l">263: </a><span class="php-comment">     *          object from the container.
-</span><a href="#264" id="264" class="l">264: </a><span class="php-comment">     *          In this case the &lt;tt&gt;$theObject&lt;/tt&gt; represents the full object and
-</span><a href="#265" id="265" class="l">265: </a><span class="php-comment">     *          &lt;tt&gt;$theIdentifier&lt;/tt&gt; represents the object unique identifier, what
-</span><a href="#266" id="266" class="l">266: </a><span class="php-comment">     *          counts is that the object's unique identifier ({@link kTAG_LID}) is
-</span><a href="#267" id="267" class="l">267: </a><span class="php-comment">     *          provided. If the object is not found in the container, the method should
-</span><a href="#268" id="268" class="l">268: </a><span class="php-comment">     *          not fail.
-</span><a href="#269" id="269" class="l">269: </a><span class="php-comment">     *          In this case the method should return &lt;tt&gt;TRUE&lt;/tt&gt; if the object was
-</span><a href="#270" id="270" class="l">270: </a><span class="php-comment">     *          deleted and &lt;tt&gt;FALSE&lt;/tt&gt; if the object was not found.
-</span><a href="#271" id="271" class="l">271: </a><span class="php-comment">     *   &lt;/ul&gt;
-</span><a href="#272" id="272" class="l">272: </a><span class="php-comment">     *      If none of the above flags are set, it means that the caller wants to retrieve
-</span><a href="#273" id="273" class="l">273: </a><span class="php-comment">     *      the object identified by the {@link kTAG_LID} offset in either the provided
-</span><a href="#274" id="274" class="l">274: </a><span class="php-comment">     *      object or in the provided identifier. If found, the provided object will be
-</span><a href="#275" id="275" class="l">275: </a><span class="php-comment">     *      replaced by the retrieved element and the method wull return &lt;tt&gt;TRUE&lt;/tt&gt;; if
-</span><a href="#276" id="276" class="l">276: </a><span class="php-comment">     *      not found, the method will simply return &lt;tt&gt;FALSE&lt;/tt&gt;.
-</span><a href="#277" id="277" class="l">277: </a><span class="php-comment">     * &lt;/ul&gt;
-</span><a href="#278" id="278" class="l">278: </a><span class="php-comment">     *
-</span><a href="#279" id="279" class="l">279: </a><span class="php-comment">     * The method should raise an exception if the operation was not successful and update
-</span><a href="#280" id="280" class="l">280: </a><span class="php-comment">     * the provided object with whatever data the operation will generate.
-</span><a href="#281" id="281" class="l">281: </a><span class="php-comment">     *
-</span><a href="#282" id="282" class="l">282: </a><span class="php-comment">     * The method will also raise an exception if the object is not yet initialised
-</span><a href="#283" id="283" class="l">283: </a><span class="php-comment">     * ({@link _IsInited()}), this happens when the object received the native container.
-</span><a href="#284" id="284" class="l">284: </a><span class="php-comment">     *
-</span><a href="#285" id="285" class="l">285: </a><span class="php-comment">     * This class is abstract, which means that derived classes must implement the specific
-</span><a href="#286" id="286" class="l">286: </a><span class="php-comment">     * functionality of specialised data stores, for this reason this method will only check
-</span><a href="#287" id="287" class="l">287: </a><span class="php-comment">     * if the current object is inited.
-</span><a href="#288" id="288" class="l">288: </a><span class="php-comment">     *
-</span><a href="#289" id="289" class="l">289: </a><span class="php-comment">     * @param reference            &amp;$theObject          Object.
-</span><a href="#290" id="290" class="l">290: </a><span class="php-comment">     * @param mixed                 $theIdentifier      Identifier.
-</span><a href="#291" id="291" class="l">291: </a><span class="php-comment">     * @param bitfield              $theModifiers       Options.
-</span><a href="#292" id="292" class="l">292: </a><span class="php-comment">     *
-</span><a href="#293" id="293" class="l">293: </a><span class="php-comment">     * @access public
-</span><a href="#294" id="294" class="l">294: </a><span class="php-comment">     * @return mixed                The native operation status.
-</span><a href="#295" id="295" class="l">295: </a><span class="php-comment">     *
-</span><a href="#296" id="296" class="l">296: </a><span class="php-comment">     * @see kFLAG_PERSIST_INSERT kFLAG_PERSIST_UPDATE kFLAG_PERSIST_MODIFY
-</span><a href="#297" id="297" class="l">297: </a><span class="php-comment">     * @see kFLAG_PERSIST_REPLACE kFLAG_PERSIST_MODIFY kFLAG_PERSIST_DELETE
-</span><a href="#298" id="298" class="l">298: </a><span class="php-comment">     */</span>
-<a href="#299" id="299" class="l">299: </a>    <span class="php-keyword1">public</span> <span class="php-keyword1">function</span> ManageObject( &amp;<span class="php-var">$theObject</span>,
-<a href="#300" id="300" class="l">300: </a>                                   <span class="php-var">$theIdentifier</span> = <span class="php-keyword1">NULL</span>,
-<a href="#301" id="301" class="l">301: </a>                                   <span class="php-var">$theModifiers</span> = kFLAG_PERSIST_REPLACE )
-<a href="#302" id="302" class="l">302: </a>    {
-<a href="#303" id="303" class="l">303: </a>        <span class="php-comment">//</span>
-<a href="#304" id="304" class="l">304: </a>        <span class="php-comment">// Check if inited.</span>
+</span><a href="#260" id="260" class="l">260: </a><span class="php-comment">     *          In this case the method should set the modified object in the referenced
+</span><a href="#261" id="261" class="l">261: </a><span class="php-comment">     *          parameter and return &lt;tt&gt;TRUE&lt;/tt&gt; if the object was found and return
+</span><a href="#262" id="262" class="l">262: </a><span class="php-comment">     *          &lt;tt&gt;FALSE&lt;/tt&gt; if the object was not found.
+</span><a href="#263" id="263" class="l">263: </a><span class="php-comment">     *      &lt;li&gt;{@link kFLAG_PERSIST_DELETE}: This option assumes you want to remove the
+</span><a href="#264" id="264" class="l">264: </a><span class="php-comment">     *          object from the container.
+</span><a href="#265" id="265" class="l">265: </a><span class="php-comment">     *          In this case the &lt;tt&gt;$theObject&lt;/tt&gt; represents the full object and
+</span><a href="#266" id="266" class="l">266: </a><span class="php-comment">     *          &lt;tt&gt;$theIdentifier&lt;/tt&gt; represents the object unique identifier, what
+</span><a href="#267" id="267" class="l">267: </a><span class="php-comment">     *          counts is that the object's unique identifier ({@link kTAG_LID}) is
+</span><a href="#268" id="268" class="l">268: </a><span class="php-comment">     *          provided. If the object is not found in the container, the method should
+</span><a href="#269" id="269" class="l">269: </a><span class="php-comment">     *          not fail.
+</span><a href="#270" id="270" class="l">270: </a><span class="php-comment">     *          In this case the method should return &lt;tt&gt;TRUE&lt;/tt&gt; if the object was
+</span><a href="#271" id="271" class="l">271: </a><span class="php-comment">     *          deleted and &lt;tt&gt;FALSE&lt;/tt&gt; if the object was not found.
+</span><a href="#272" id="272" class="l">272: </a><span class="php-comment">     *   &lt;/ul&gt;
+</span><a href="#273" id="273" class="l">273: </a><span class="php-comment">     *      If none of the above flags are set, it means that the caller wants to retrieve
+</span><a href="#274" id="274" class="l">274: </a><span class="php-comment">     *      the object identified by the {@link kTAG_LID} offset from the provided object
+</span><a href="#275" id="275" class="l">275: </a><span class="php-comment">     *      object or from the provided identifier. If found, the provided object will
+</span><a href="#276" id="276" class="l">276: </a><span class="php-comment">     *      receive the located object and the method will return &lt;tt&gt;TRUE&lt;/tt&gt;; if not
+</span><a href="#277" id="277" class="l">277: </a><span class="php-comment">     *      found, the method will set the provided object to &lt;tt&gt;NULL&lt;/tt&gt; and return
+</span><a href="#278" id="278" class="l">278: </a><span class="php-comment">     *      &lt;tt&gt;FALSE&lt;/tt&gt;.
+</span><a href="#279" id="279" class="l">279: </a><span class="php-comment">     * &lt;/ul&gt;
+</span><a href="#280" id="280" class="l">280: </a><span class="php-comment">     *
+</span><a href="#281" id="281" class="l">281: </a><span class="php-comment">     * The method should raise an exception if the operation was not successful and update
+</span><a href="#282" id="282" class="l">282: </a><span class="php-comment">     * the provided object with whatever data the operation will generate.
+</span><a href="#283" id="283" class="l">283: </a><span class="php-comment">     *
+</span><a href="#284" id="284" class="l">284: </a><span class="php-comment">     * The method will also raise an exception if the object is not yet initialised
+</span><a href="#285" id="285" class="l">285: </a><span class="php-comment">     * ({@link _IsInited()}), this happens when the object received the native container.
+</span><a href="#286" id="286" class="l">286: </a><span class="php-comment">     *
+</span><a href="#287" id="287" class="l">287: </a><span class="php-comment">     * This class is abstract, which means that derived classes must implement the specific
+</span><a href="#288" id="288" class="l">288: </a><span class="php-comment">     * functionality of specialised data stores, for this reason this method will only check
+</span><a href="#289" id="289" class="l">289: </a><span class="php-comment">     * if the current object is inited.
+</span><a href="#290" id="290" class="l">290: </a><span class="php-comment">     *
+</span><a href="#291" id="291" class="l">291: </a><span class="php-comment">     * @param reference            &amp;$theObject          Object.
+</span><a href="#292" id="292" class="l">292: </a><span class="php-comment">     * @param mixed                 $theIdentifier      Identifier.
+</span><a href="#293" id="293" class="l">293: </a><span class="php-comment">     * @param bitfield              $theModifiers       Options.
+</span><a href="#294" id="294" class="l">294: </a><span class="php-comment">     *
+</span><a href="#295" id="295" class="l">295: </a><span class="php-comment">     * @access public
+</span><a href="#296" id="296" class="l">296: </a><span class="php-comment">     * @return mixed                The native operation status.
+</span><a href="#297" id="297" class="l">297: </a><span class="php-comment">     *
+</span><a href="#298" id="298" class="l">298: </a><span class="php-comment">     * @see kFLAG_PERSIST_INSERT kFLAG_PERSIST_UPDATE kFLAG_PERSIST_MODIFY
+</span><a href="#299" id="299" class="l">299: </a><span class="php-comment">     * @see kFLAG_PERSIST_REPLACE kFLAG_PERSIST_MODIFY kFLAG_PERSIST_DELETE
+</span><a href="#300" id="300" class="l">300: </a><span class="php-comment">     */</span>
+<a href="#301" id="301" class="l">301: </a>    <span class="php-keyword1">public</span> <span class="php-keyword1">function</span> ManageObject( &amp;<span class="php-var">$theObject</span>,
+<a href="#302" id="302" class="l">302: </a>                                   <span class="php-var">$theIdentifier</span> = <span class="php-keyword1">NULL</span>,
+<a href="#303" id="303" class="l">303: </a>                                   <span class="php-var">$theModifiers</span> = kFLAG_DEFAULT )
+<a href="#304" id="304" class="l">304: </a>    {
 <a href="#305" id="305" class="l">305: </a>        <span class="php-comment">//</span>
-<a href="#306" id="306" class="l">306: </a>        <span class="php-keyword1">if</span>( ! <span class="php-var">$this</span>-&gt;_IsInited() )
-<a href="#307" id="307" class="l">307: </a>            <span class="php-keyword1">throw</span> <span class="php-keyword1">new</span> \Exception
-<a href="#308" id="308" class="l">308: </a>                ( <span class="php-quote">&quot;The object is not initialised&quot;</span>,
-<a href="#309" id="309" class="l">309: </a>                  kERROR_STATE );                                               <span class="php-comment">// !@! ==&gt;</span>
-<a href="#310" id="310" class="l">310: </a>    
-<a href="#311" id="311" class="l">311: </a>    } <span class="php-comment">// ManageObject.</span>
-<a href="#312" id="312" class="l">312: </a>
-<a href="#313" id="313" class="l">313: </a>        
+<a href="#306" id="306" class="l">306: </a>        <span class="php-comment">// Check if inited.</span>
+<a href="#307" id="307" class="l">307: </a>        <span class="php-comment">//</span>
+<a href="#308" id="308" class="l">308: </a>        <span class="php-keyword1">if</span>( ! <span class="php-var">$this</span>-&gt;_IsInited() )
+<a href="#309" id="309" class="l">309: </a>            <span class="php-keyword1">throw</span> <span class="php-keyword1">new</span> \Exception
+<a href="#310" id="310" class="l">310: </a>                ( <span class="php-quote">&quot;The object is not initialised&quot;</span>,
+<a href="#311" id="311" class="l">311: </a>                  kERROR_STATE );                                               <span class="php-comment">// !@! ==&gt;</span>
+<a href="#312" id="312" class="l">312: </a>    
+<a href="#313" id="313" class="l">313: </a>    } <span class="php-comment">// ManageObject.</span>
 <a href="#314" id="314" class="l">314: </a>
-<a href="#315" id="315" class="l">315: </a><span class="php-comment">/*=======================================================================================
-</span><a href="#316" id="316" class="l">316: </a><span class="php-comment"> *                                                                                      *
-</span><a href="#317" id="317" class="l">317: </a><span class="php-comment"> *                              PROTECTED MEMBER INTERFACE                              *
+<a href="#315" id="315" class="l">315: </a>        
+<a href="#316" id="316" class="l">316: </a>
+<a href="#317" id="317" class="l">317: </a><span class="php-comment">/*=======================================================================================
 </span><a href="#318" id="318" class="l">318: </a><span class="php-comment"> *                                                                                      *
-</span><a href="#319" id="319" class="l">319: </a><span class="php-comment"> *======================================================================================*/</span>
-<a href="#320" id="320" class="l">320: </a>
-<a href="#321" id="321" class="l">321: </a>
-<a href="#322" id="322" class="l">322: </a>     
-<a href="#323" id="323" class="l">323: </a>    <span class="php-comment">/*===================================================================================
-</span><a href="#324" id="324" class="l">324: </a><span class="php-comment">     *  &amp;_Container                                                                     *
-</span><a href="#325" id="325" class="l">325: </a><span class="php-comment">     *==================================================================================*/</span>
-<a href="#326" id="326" class="l">326: </a>
-<a href="#327" id="327" class="l">327: </a>    <span class="php-comment">/**
-</span><a href="#328" id="328" class="l">328: </a><span class="php-comment">     * &lt;h4&gt;Get container reference&lt;/h4&gt;
-</span><a href="#329" id="329" class="l">329: </a><span class="php-comment">     *
-</span><a href="#330" id="330" class="l">330: </a><span class="php-comment">     * This method can be used to retrieve a reference to the native container member, this
-</span><a href="#331" id="331" class="l">331: </a><span class="php-comment">     * can be useful when the native {@link Container()} is not an object passed by
-</span><a href="#332" id="332" class="l">332: </a><span class="php-comment">     * reference.
-</span><a href="#333" id="333" class="l">333: </a><span class="php-comment">     *
-</span><a href="#334" id="334" class="l">334: </a><span class="php-comment">     * @access protected
-</span><a href="#335" id="335" class="l">335: </a><span class="php-comment">     * @return mixed
-</span><a href="#336" id="336" class="l">336: </a><span class="php-comment">     */</span>
-<a href="#337" id="337" class="l">337: </a>    <span class="php-keyword1">protected</span> <span class="php-keyword1">function</span> &amp;_Container()                        {   <span class="php-keyword1">return</span> <span class="php-var">$this</span>-&gt;mContainer;   }
-<a href="#338" id="338" class="l">338: </a>
-<a href="#339" id="339" class="l">339: </a>     
+</span><a href="#319" id="319" class="l">319: </a><span class="php-comment"> *                              PROTECTED MEMBER INTERFACE                              *
+</span><a href="#320" id="320" class="l">320: </a><span class="php-comment"> *                                                                                      *
+</span><a href="#321" id="321" class="l">321: </a><span class="php-comment"> *======================================================================================*/</span>
+<a href="#322" id="322" class="l">322: </a>
+<a href="#323" id="323" class="l">323: </a>
+<a href="#324" id="324" class="l">324: </a>     
+<a href="#325" id="325" class="l">325: </a>    <span class="php-comment">/*===================================================================================
+</span><a href="#326" id="326" class="l">326: </a><span class="php-comment">     *  &amp;_Container                                                                     *
+</span><a href="#327" id="327" class="l">327: </a><span class="php-comment">     *==================================================================================*/</span>
+<a href="#328" id="328" class="l">328: </a>
+<a href="#329" id="329" class="l">329: </a>    <span class="php-comment">/**
+</span><a href="#330" id="330" class="l">330: </a><span class="php-comment">     * &lt;h4&gt;Get container reference&lt;/h4&gt;
+</span><a href="#331" id="331" class="l">331: </a><span class="php-comment">     *
+</span><a href="#332" id="332" class="l">332: </a><span class="php-comment">     * This method can be used to retrieve a reference to the native container member, this
+</span><a href="#333" id="333" class="l">333: </a><span class="php-comment">     * can be useful when the native {@link Container()} is not an object passed by
+</span><a href="#334" id="334" class="l">334: </a><span class="php-comment">     * reference.
+</span><a href="#335" id="335" class="l">335: </a><span class="php-comment">     *
+</span><a href="#336" id="336" class="l">336: </a><span class="php-comment">     * @access protected
+</span><a href="#337" id="337" class="l">337: </a><span class="php-comment">     * @return mixed
+</span><a href="#338" id="338" class="l">338: </a><span class="php-comment">     */</span>
+<a href="#339" id="339" class="l">339: </a>    <span class="php-keyword1">protected</span> <span class="php-keyword1">function</span> &amp;_Container()                        {   <span class="php-keyword1">return</span> <span class="php-var">$this</span>-&gt;mContainer;   }
 <a href="#340" id="340" class="l">340: </a>
-<a href="#341" id="341" class="l">341: </a>} <span class="php-comment">// class CContainer.</span>
+<a href="#341" id="341" class="l">341: </a>     
 <a href="#342" id="342" class="l">342: </a>
-<a href="#343" id="343" class="l">343: </a>
-<a href="#344" id="344" class="l">344: </a><span class="xlang">?&gt;</span>
-<a href="#345" id="345" class="l">345: </a></code></pre>
+<a href="#343" id="343" class="l">343: </a>} <span class="php-comment">// class CContainer.</span>
+<a href="#344" id="344" class="l">344: </a>
+<a href="#345" id="345" class="l">345: </a>
+<a href="#346" id="346" class="l">346: </a><span class="xlang">?&gt;</span>
+<a href="#347" id="347" class="l">347: </a></code></pre>
 
 	<div id="footer">
 		MyWrapper Reference Documentation API documentation generated by <a href="http://apigen.org">ApiGen 2.7.0</a>

@@ -98,8 +98,8 @@ concrete instances of the <code><a href="class-MyWrapper.Framework.CContainer.ht
 <p>This class implements a series of persistence methods:</p>
 
 <ul>
-	<li><code><a href="class-MyWrapper.Persistence.CPersistentDocument.html#_">MyWrapper\Persistence\CPersistentDocument::Retrieve()</a></code>: This static method can be used to instantiate an object
-	by retrieving it from a container.</li>
+	<li><code><a href="class-MyWrapper.Persistence.CPersistentDocument.html#_">MyWrapper\Persistence\CPersistentDocument::Create()</a></code>: This static method can be used to instantiate an object by
+	retrieving it from a container.</li>
 
 	<li><code><a href="class-MyWrapper.Persistence.CPersistentDocument.html#_">MyWrapper\Persistence\CPersistentDocument::Insert()</a></code>: This method will insert the object into a container, if
 	the object already exists, the method will raise an exception.</li>
@@ -179,7 +179,7 @@ object is not in the <code><a href="class-MyWrapper.Framework.CStatusDocument.ht
 
 	<table class="summary" id="methods">
 	<caption>Methods summary</caption>
-	<tr data-order="Retrieve" id="_Retrieve">
+	<tr data-order="Create" id="_Create">
 
 		<td class="attributes"><code>
 			 public static
@@ -189,26 +189,24 @@ object is not in the <code><a href="class-MyWrapper.Framework.CStatusDocument.ht
 		</td>
 
 		<td class="name"><div>
-		<a class="anchor" href="#_Retrieve">#</a>
-		<code><a href="source-class-MyWrapper.Persistence.CPersistentDocument.html#81" title="Go to source code">Retrieve</a>( <span><code><a href="class-MyWrapper.Framework.CContainer.html">MyWrapper\Framework\CContainer</a></code> <var>$theContainer</var></span> )</code>
+		<a class="anchor" href="#_Create">#</a>
+		<code><a href="source-class-MyWrapper.Persistence.CPersistentDocument.html#81" title="Go to source code">Create</a>( <span><code><a href="class-MyWrapper.Framework.CContainer.html">MyWrapper\Framework\CContainer</a></code> <var>$theContainer</var></span>, <span>mixed <var>$theIdentifier</var></span> )</code>
 
 		<div class="description short">
 			
-<h4>Retrieve an object from a container</h4>
+<h4>Create an object from a container</h4>
 
 		</div>
 
 		<div class="description detailed hidden">
 			
-<h4>Retrieve an object from a container</h4>
+<h4>Create an object from a container</h4>
 
 <p>This method will retrieve an object the provided container, if the object
 contains the kTAG_CLASS offset, the method will attempt to instantiate
-that specific class, if not, the method will return an instance of this
-class.</p>
-
-<p>Note that the class stored in the kTAG_CLASS offset <b>must</b> be
-derived from this class.</p>
+that specific class, if not, the method will return an instance of this class.
+Note that the class provided in the kTAG_CLASS offset must derive from
+this class.</p>
 
 <p>The method expects two parameters:</p>
 
@@ -220,24 +218,7 @@ derived from this class.</p>
 	the kTAG_LID offset.</li>
 </ul>
 
-<p>The method expects a single parameter, <tt>$theContainer</tt>, which
-represents the container in which the object should be stored. This container
-must be a concrete instance of the <code><a href="class-MyWrapper.Framework.CContainer.html">MyWrapper\Framework\CContainer</a></code> class.</p>
-
-<p>The operation will only be performed if the object is not yet committed or if
-the object has its <code><a href="class-MyWrapper.Framework.CStatusDocument.html#_">MyWrapper\Framework\CStatusDocument::_IsDirty()</a></code> dirty status set, if not, the method will
-do nothing.</p>
-
-<p>Once the object has been stored, it will have its <code><a href="class-MyWrapper.Framework.CStatusDocument.html#_">MyWrapper\Framework\CStatusDocument::_IsCommitted()</a></code>
-status set and its <code><a href="class-MyWrapper.Framework.CStatusDocument.html#_">MyWrapper\Framework\CStatusDocument::_IsDirty()</a></code> status reset.</p>
-
-<p>The method will raise an exception if the object has not the <code><a href="class-MyWrapper.Framework.CStatusDocument.html#_">MyWrapper\Framework\CStatusDocument::_IsInited()</a></code> status set.</p>
-
-<p>The method may set the local unique identifier attribute (kTAG_LID)
-if not provided.</p>
-
-<p>The method will return the object's local unique identifier attribute (kTAG_LID), <tt>NULL</tt> if the operation is not necessary or raise an
-exception if an error occurs.</p>
+<p>If the object could not be located, the method will return <tt>NULL</tt>.</p>
 
 
 
@@ -245,20 +226,16 @@ exception if an error occurs.</p>
 				<div class="list"><dl>
 					<dt><var>$theContainer</var></dt>
 					<dd><code><code><a href="class-MyWrapper.Framework.CContainer.html">MyWrapper\Framework\CContainer</a></code></code><br> Container.</dd>
+					<dt><var>$theIdentifier</var></dt>
+					<dd><code>mixed</code><br> Identifier.</dd>
 				</dl></div>
 
 				<h4>Returns</h4>
 				<div class="list">
-					<code>mixed</code><br>The object's local identifier.<br />
+					<code>mixed</code><br>The retrieved object.<br />
 				</div>
 
 
-				<h4>Uses</h4>
-				<div class="list">
-						<code><code><a href="class-MyWrapper.Framework.CStatusDocument.html#_">MyWrapper\Framework\CStatusDocument::_IsDirty()</a></code></code> <br />
-						<code><code><a href="class-MyWrapper.Framework.CStatusDocument.html#_">MyWrapper\Framework\CStatusDocument::_IsInited()</a></code></code> <br />
-						<code><code><a href="class-MyWrapper.Framework.CStatusDocument.html#_">MyWrapper\Framework\CStatusDocument::_IsCommitted()</a></code></code> <br />
-				</div>
 
 
 		</div>
@@ -275,17 +252,17 @@ exception if an error occurs.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#_Insert">#</a>
-		<code><a href="source-class-MyWrapper.Persistence.CPersistentDocument.html#185" title="Go to source code">Insert</a>( <span><code><a href="class-MyWrapper.Framework.CContainer.html">MyWrapper\Framework\CContainer</a></code> <var>$theContainer</var></span> )</code>
+		<code><a href="source-class-MyWrapper.Persistence.CPersistentDocument.html#168" title="Go to source code">Insert</a>( <span><code><a href="class-MyWrapper.Framework.CContainer.html">MyWrapper\Framework\CContainer</a></code> <var>$theContainer</var></span> )</code>
 
 		<div class="description short">
 			
-<h4>Insert an object into a container</h4>
+<h4>Insert the object into a container</h4>
 
 		</div>
 
 		<div class="description detailed hidden">
 			
-<h4>Insert an object into a container</h4>
+<h4>Insert the object into a container</h4>
 
 <p>This method will insert the current object into the provided container, if a
 duplicate object already exists in the container, the method will raise an
@@ -346,17 +323,17 @@ exception if an error occurs.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#_Update">#</a>
-		<code><a href="source-class-MyWrapper.Persistence.CPersistentDocument.html#268" title="Go to source code">Update</a>( <span><code><a href="class-MyWrapper.Framework.CContainer.html">MyWrapper\Framework\CContainer</a></code> <var>$theContainer</var></span> )</code>
+		<code><a href="source-class-MyWrapper.Persistence.CPersistentDocument.html#251" title="Go to source code">Update</a>( <span><code><a href="class-MyWrapper.Framework.CContainer.html">MyWrapper\Framework\CContainer</a></code> <var>$theContainer</var></span> )</code>
 
 		<div class="description short">
 			
-<h4>Update an object from a container</h4>
+<h4>Update the object from a container</h4>
 
 		</div>
 
 		<div class="description detailed hidden">
 			
-<h4>Update an object from a container</h4>
+<h4>Update the object from a container</h4>
 
 <p>This method will update the current object into the provided container, if
 the object cannot be found in the container, the method will raise an
@@ -407,17 +384,17 @@ status set and its <code><a href="class-MyWrapper.Framework.CStatusDocument.html
 
 		<td class="name"><div>
 		<a class="anchor" href="#_Replace">#</a>
-		<code><a href="source-class-MyWrapper.Persistence.CPersistentDocument.html#339" title="Go to source code">Replace</a>( <span><code><a href="class-MyWrapper.Framework.CContainer.html">MyWrapper\Framework\CContainer</a></code> <var>$theContainer</var></span> )</code>
+		<code><a href="source-class-MyWrapper.Persistence.CPersistentDocument.html#322" title="Go to source code">Replace</a>( <span><code><a href="class-MyWrapper.Framework.CContainer.html">MyWrapper\Framework\CContainer</a></code> <var>$theContainer</var></span> )</code>
 
 		<div class="description short">
 			
-<h4>Replace an object into a container</h4>
+<h4>Replace the object into a container</h4>
 
 		</div>
 
 		<div class="description detailed hidden">
 			
-<h4>Replace an object into a container</h4>
+<h4>Replace the object into a container</h4>
 
 <p>This method will insert the current object into the provided container, if
 not found, or update the object if already there.</p>
@@ -476,17 +453,17 @@ if not provided.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#_Delete">#</a>
-		<code><a href="source-class-MyWrapper.Persistence.CPersistentDocument.html#421" title="Go to source code">Delete</a>( <span><code><a href="class-MyWrapper.Framework.CContainer.html">MyWrapper\Framework\CContainer</a></code> <var>$theContainer</var></span> )</code>
+		<code><a href="source-class-MyWrapper.Persistence.CPersistentDocument.html#404" title="Go to source code">Delete</a>( <span><code><a href="class-MyWrapper.Framework.CContainer.html">MyWrapper\Framework\CContainer</a></code> <var>$theContainer</var></span> )</code>
 
 		<div class="description short">
 			
-<h4>Delete an object from a container</h4>
+<h4>Delete the object from a container</h4>
 
 		</div>
 
 		<div class="description detailed hidden">
 			
-<h4>Delete an object from a container</h4>
+<h4>Delete the object from a container</h4>
 
 <p>This method will remove the current object from the provided container.</p>
 

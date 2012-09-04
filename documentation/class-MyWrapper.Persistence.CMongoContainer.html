@@ -254,8 +254,7 @@
 				<h4>Used by</h4>
 				<div class="list">
 						<code><code><a href="class-MyWrapper.Persistence.CMongoContainer.html#_">MyWrapper\Persistence\CMongoContainer::__toString()</a></code></code> <br />
-						<code><code><a href="class-MyWrapper.Persistence.CMongoContainer.html#_">MyWrapper\Persistence\CMongoContainer::SetObject()</a></code></code> <br />
-						<code><code><a href="class-MyWrapper.Persistence.CMongoContainer.html#_">MyWrapper\Persistence\CMongoContainer::GetObject()</a></code></code> <br />
+						<code><code><a href="class-MyWrapper.Persistence.CMongoContainer.html#_">MyWrapper\Persistence\CMongoContainer::ManageObject()</a></code></code> <br />
 				</div>
 
 				<h4>Overrides</h4>
@@ -264,7 +263,7 @@
 		</div>
 		</div></td>
 	</tr>
-	<tr data-order="SetObject" id="_SetObject">
+	<tr data-order="ManageObject" id="_ManageObject">
 
 		<td class="attributes"><code>
 			 public 
@@ -274,22 +273,22 @@
 		</td>
 
 		<td class="name"><div>
-		<a class="anchor" href="#_SetObject">#</a>
-		<code><a href="source-class-MyWrapper.Persistence.CMongoContainer.html#141" title="Go to source code">SetObject</a>( <span>reference <var>&amp; $theObject</var></span>, <span>mixed <var>$theIdentifier</var> = <span class="php-keyword1">NULL</span></span>, <span>bitfield <var>$theModifiers</var> = kFLAG_PERSIST_REPLACE </span> )</code>
+		<a class="anchor" href="#_ManageObject">#</a>
+		<code><a href="source-class-MyWrapper.Persistence.CMongoContainer.html#141" title="Go to source code">ManageObject</a>( <span>reference <var>&amp; $theObject</var></span>, <span>mixed <var>$theIdentifier</var> = <span class="php-keyword1">NULL</span></span>, <span>bitfield <var>$theModifiers</var> = kFLAG_DEFAULT </span> )</code>
 
 		<div class="description short">
 			
-<h4>Commit an object to the container</h4>
+<h4>Manage an object from the container</h4>
 
 		</div>
 
 		<div class="description detailed hidden">
 			
-<h4>Commit an object to the container</h4>
+<h4>Manage an object from the container</h4>
 
 <p>We implement this method to handle MongoCollection object stores.</p>
 
-<p>For more information see MyWrapper\Framework\CContainer::Commit().</p>
+<p>For more information see <code><a href="class-MyWrapper.Framework.CContainer.html#_">MyWrapper\Framework\CContainer::ManageObject()</a></code>.</p>
 
 <p><i>Note: the commit operations are performed by default with the
 <tt>safe</tt> option.</i></p>
@@ -299,11 +298,11 @@
 				<h4>Parameters</h4>
 				<div class="list"><dl>
 					<dt><var>$theObject</var></dt>
-					<dd><code>reference</code><br>&amp;$theObject Object to commit.</dd>
+					<dd><code>reference</code><br>&amp;$theObject Object.</dd>
 					<dt><var>$theIdentifier</var></dt>
-					<dd><code>mixed</code><br> Object identifier.</dd>
+					<dd><code>mixed</code><br> Identifier.</dd>
 					<dt><var>$theModifiers</var></dt>
-					<dd><code>bitfield</code><br> Operation options.</dd>
+					<dd><code>bitfield</code><br> Options.</dd>
 				</dl></div>
 
 				<h4>Returns</h4>
@@ -317,58 +316,8 @@
 						<code><code><a href="class-MyWrapper.Persistence.CMongoContainer.html#_">MyWrapper\Persistence\CMongoContainer::Container()</a></code></code> <br />
 				</div>
 
-
-		</div>
-		</div></td>
-	</tr>
-	<tr data-order="GetObject" id="_GetObject">
-
-		<td class="attributes"><code>
-			 public 
-			mixed
-			
-			</code>
-		</td>
-
-		<td class="name"><div>
-		<a class="anchor" href="#_GetObject">#</a>
-		<code><a href="source-class-MyWrapper.Persistence.CMongoContainer.html#415" title="Go to source code">GetObject</a>( <span>mixed <var>$theIdentifier</var></span>, <span>bitfield <var>$theModifiers</var> = kFLAG_DEFAULT </span> )</code>
-
-		<div class="description short">
-			
-<h4>Load an object from the container</h4>
-
-		</div>
-
-		<div class="description detailed hidden">
-			
-<h4>Load an object from the container</h4>
-
-<p>We implement this method to handle MongoCollection object stores.</p>
-
-<p>For more information see MyWrapper\Framework\CContainer::Load().</p>
-
-
-
-				<h4>Parameters</h4>
-				<div class="list"><dl>
-					<dt><var>$theIdentifier</var></dt>
-					<dd><code>mixed</code><br> Object unique identifier.</dd>
-					<dt><var>$theModifiers</var></dt>
-					<dd><code>bitfield</code><br> Load modifiers.</dd>
-				</dl></div>
-
-				<h4>Returns</h4>
-				<div class="list">
-					<code>mixed</code><br>The loaded object or <tt>NULL</tt>.<br />
-				</div>
-
-
-				<h4>Uses</h4>
-				<div class="list">
-						<code><code><a href="class-MyWrapper.Persistence.CMongoContainer.html#_">MyWrapper\Persistence\CMongoContainer::Container()</a></code></code> <br />
-				</div>
-
+				<h4>Overrides</h4>
+				<div class="list"><code><a href="class-MyWrapper.Framework.CContainer.html#_">MyWrapper\Framework\CContainer::ManageObject</a></code></div>
 
 		</div>
 		</div></td>
@@ -384,7 +333,7 @@
 
 		<td class="name"><div>
 		<a class="anchor" href="#__Container">#</a>
-		<code><a href="source-class-MyWrapper.Persistence.CMongoContainer.html#478" title="Go to source code">_Container</a>( )</code>
+		<code><a href="source-class-MyWrapper.Persistence.CMongoContainer.html#467" title="Go to source code">_Container</a>( )</code>
 
 		<div class="description short">
 			
@@ -422,7 +371,6 @@ passed by reference.</p>
 	<caption>Methods inherited from <a href="class-MyWrapper.Framework.CContainer.html#methods">MyWrapper\Framework\CContainer</a></caption>
 	<tr>
 		<td><code>
-			<a href="class-MyWrapper.Framework.CContainer.html#_">ManageObject()</a>, 
 			<a href="class-MyWrapper.Framework.CContainer.html#_">__construct()</a>
 		</code></td>
 	</tr>

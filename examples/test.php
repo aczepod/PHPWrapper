@@ -4,7 +4,7 @@
 	//
 	// Test namespaces.
 	//
-	require_once( '/Library/WebServer/Library/MyWrapper/includes.inc.php' );
+	require_once( '/Library/WebServer/Library/PHPWrapper/includes.inc.php' );
 	
 	//
 	// Revive namespace.

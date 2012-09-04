@@ -358,7 +358,7 @@ has been set.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#_ManageObject">#</a>
-		<code><a href="source-class-MyWrapper.Framework.CContainer.html#205" title="Go to source code">ManageObject</a>( <span>reference <var>&amp; $theObject</var></span>, <span>mixed <var>$theIdentifier</var> = <span class="php-keyword1">NULL</span></span>, <span>bitfield <var>$theModifiers</var> = kFLAG_PERSIST_REPLACE </span> )</code>
+		<code><a href="source-class-MyWrapper.Framework.CContainer.html#205" title="Go to source code">ManageObject</a>( <span>reference <var>&amp; $theObject</var></span>, <span>mixed <var>$theIdentifier</var> = <span class="php-keyword1">NULL</span></span>, <span>bitfield <var>$theModifiers</var> = kFLAG_DEFAULT </span> )</code>
 
 		<div class="description short">
 			
@@ -378,17 +378,15 @@ and/or its local unique identifier (kTAG_LID).</p>
 <p>This method expects three parameters:</p>
 
 <ul>
-	<li><tt>$theObject</tt>: The object to be committed or the data to be
-	modified.</li>
+	<li><tt>$theObject</tt>: The object or the data to be modified.</li>
 
-	<li><tt>$theIdentifier</tt>: The identifier of the object to be committed or the
-	query of the objects to be modified. If the value is <i>NULL</i>, it means that
-	it is the duty of the current container to set the value, this will generally be
-	the case when inserting objects; in all other cases the parameter is
-	required.</li>
+	<li><tt>$theIdentifier</tt>: The local unique identifier (kTAG_LID) of
+	the object. If the value is <i>NULL</i>, it means that it is the duty of the
+	current container to set the value, this will generally be the case when
+	inserting objects; in all other cases the parameter is required.</li>
 
-	<li><tt>$theModifiers</tt>: This parameter represents the commit operation
-	options, it is a bitfield where the following values apply:
+	<li><tt>$theModifiers</tt>: This parameter represents the operation options, it
+	is a bitfield where the following values apply:
 		<ul>
 			<li>kFLAG_PERSIST_INSERT: The provided object will be inserted in the
 			container. It is assumed that no other element in the container shares the same
@@ -422,9 +420,9 @@ and/or its local unique identifier (kTAG_LID).</p>
 			to a subset of the object. In this case, <tt>$theObject</tt> should contain the
 			modification <i>criteria</i> and <tt>$theIdentifier</tt> should contain the
 			object's unique identifier, if the object cannot be located in the container,
-			the method should not fail. In this case the method should return the modified
-			object if the object was found and <tt>NULL</tt> if the object was not
-			found.</li>
+			the method should not fail. In this case the method should set the modified
+			object in the referenced parameter and return <tt>TRUE</tt> if the object was
+			found and return <tt>FALSE</tt> if the object was not found.</li>
 
 			<li>kFLAG_PERSIST_DELETE: This option assumes you want to remove the
 			object from the container. In this case the <tt>$theObject</tt> represents the
@@ -435,10 +433,11 @@ and/or its local unique identifier (kTAG_LID).</p>
 			deleted and <tt>FALSE</tt> if the object was not found.</li>
 		</ul>
 		 If none of the above flags are set, it means that the caller wants to retrieve
-		the object identified by the kTAG_LID offset in either the provided
-		object or in the provided identifier. If found, the provided object will be
-		replaced by the retrieved element and the method wull return <tt>TRUE</tt>; if
-		not found, the method will simply return <tt>FALSE</tt>.</li>
+		the object identified by the kTAG_LID offset from the provided object
+		object or from the provided identifier. If found, the provided object will
+		receive the located object and the method will return <tt>TRUE</tt>; if not
+		found, the method will set the provided object to <tt>NULL</tt> and return
+		<tt>FALSE</tt>.</li>
 </ul>
 
 <p>The method should raise an exception if the operation was not successful and
@@ -491,7 +490,7 @@ will only check if the current object is inited.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#__Container">#</a>
-		<code><a href="source-class-MyWrapper.Framework.CContainer.html#327" title="Go to source code">_Container</a>( )</code>
+		<code><a href="source-class-MyWrapper.Framework.CContainer.html#329" title="Go to source code">_Container</a>( )</code>
 
 		<div class="description short">
 			
