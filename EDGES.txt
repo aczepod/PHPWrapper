@@ -1,0 +1,129 @@
+EDGES
+
+_subject:	2
+_predicate:	:ATTRIBUTE-OF
+_object:	1
+
+_subject:	3
+_predicate:	:ATTRIBUTE-OF
+_object:	1
+
+_subject:	4
+_predicate:	:ATTRIBUTE-OF
+_object:	1
+
+_subject:	5
+_predicate:	:ATTRIBUTE-OF
+_object:	1
+
+_subject:	6
+_predicate:	:ATTRIBUTE-OF
+_object:	1
+
+_subject:	7
+_predicate:	:ENUM-OF
+_object:	6
+
+_subject:	8
+_predicate:	:ENUM-OF
+_object:	6
+
+_subject:	9
+_predicate:	:ENUM-OF
+_object:	6
+
+_subject:	10
+_predicate:	:ENUM-OF
+_object:	6
+
+_subject:	11
+_predicate:	:ENUM-OF
+_object:	6
+
+_subject:	12
+_predicate:	:ATTRIBUTE-OF
+_object:	1
+
+_subject:	13
+_predicate:	:ENUM-OF
+_object:	12
+
+_subject:	14
+_predicate:	:ENUM-OF
+_object:	12
+
+_subject:	15
+_predicate:	:ENUM-OF
+_object:	12
+
+_subject:	16
+_predicate:	:ENUM-OF
+_object:	12
+
+_subject:	17
+_predicate:	:ENUM-OF
+_object:	12
+
+_subject:	18
+_predicate:	:ATTRIBUTE-OF
+_object:	1
+
+_subject:	19
+_predicate:	:ENUM-OF
+_object:	18
+
+_subject:	20
+_predicate:	:ENUM-OF
+_object:	18
+
+_subject:	21
+_predicate:	:ENUM-OF
+_object:	18
+
+_subject:	22
+_predicate:	:ENUM-OF
+_object:	18
+
+_subject:	23
+_predicate:	:ENUM-OF
+_object:	18
+
+_subject:	24
+_predicate:	:ENUM-OF
+_object:	18
+
+_subject:	25
+_predicate:	:ENUM-OF
+_object:	18
+
+_subject:	26
+_predicate:	:ATTRIBUTE-OF
+_object:	1
+
+_subject:	27
+_predicate:	:ENUM-OF
+_object:	26
+
+_subject:	28
+_predicate:	:ENUM-OF
+_object:	26
+
+_subject:	29
+_predicate:	:ENUM-OF
+_object:	26
+
+_subject:	30
+_predicate:	:ENUM-OF
+_object:	26
+
+_subject:	31
+_predicate:	:ENUM-OF
+_object:	26
+
+_subject:	32
+_predicate:	:ENUM-OF
+_object:	26
+
+_subject:	33
+_predicate:	:ENUM-OF
+_object:	26

@@ -1,0 +1,91 @@
+Methods:
+
+System methods:
+	Ping
+		Stamp			int
+	Help
+		Method			string
+
+Dictionary methods:
+	TagsOf
+		Class			string
+		Query			array
+
+Database methods:
+	Get
+		Database		string
+		Container		string
+		Query			array
+		Field			array
+		Start			int
+		Limit			int
+	Set
+		Insert
+			Database	string
+			Container	string
+			Object		array
+			Options		array
+		Replace
+			Database	string
+			Container	string
+			Object		array
+			Options		array
+		Update
+			Database	string
+			Container	string
+			Object		array
+			Options		array
+	Mod
+		Database		string
+		Container		string
+		Query			array
+		Field			array
+		Options			array
+	Del
+		Database		string
+		Container		string
+		Query			array
+		Options			array
+
+User methods:
+
+Experiment methods:
+	NewExperiment
+		Object			array
+	GetExperiment
+		Query			array
+		Field			array
+		Start			int
+		Limit			int
+	DelExperiment
+		Query			array
+
+Dataset methods:
+	NewDataset
+		Object			array
+	GetDataset
+		Query			array
+		Field			array
+		Start			int
+		Limit			int
+	DelDataset
+		Query			array
+
+DatasetFile methods:
+	NewDatasetFile
+		Object			array
+	GetDatasetFile
+		Query			array
+		Field			array
+		Start			int
+		Limit			int
+	DelDatasetFile
+		Query			array
+
+Ontology methods:
+
+Term methods:
+
+Tag methods:
+
+Node methods:

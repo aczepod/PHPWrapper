@@ -1,0 +1,489 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<meta name="generator" content="ApiGen 2.7.0" />
+
+	<title>Class MyWrapper\Framework\CDocument | MyWrapper Reference Documentation</title>
+
+	<script type="text/javascript" src="resources/combined.js?496895167"></script>
+	<script type="text/javascript" src="elementlist.js?3375725984"></script>
+	<link rel="stylesheet" type="text/css" media="all" href="resources/style.css?1567499433" />
+
+</head>
+
+<body>
+<div id="left">
+	<div id="menu">
+		<a href="index.html" title="Overview"><span>Overview</span></a>
+
+
+		<div id="groups">
+			<h3>Namespaces</h3>
+			<ul>
+				<li class="active main"><a href="namespace-MyWrapper.html">MyWrapper<span></span></a>
+						<ul>
+				<li class="active main"><a href="namespace-MyWrapper.Framework.html">Framework</a>
+						</li>
+				<li class="main"><a href="namespace-MyWrapper.Persistence.html">Persistence</a>
+						</li>
+							</ul></li>
+				<li><a href="namespace-None.html">None</a>
+						</li>
+				<li><a href="namespace-PHP.html">PHP</a>
+						</li>
+			</ul>
+		</div>
+
+		<hr />
+
+
+		<div id="elements">
+			<h3>Classes</h3>
+			<ul>
+				<li><a href="class-MyWrapper.Framework.CContainer.html">CContainer</a></li>
+				<li class="active"><a href="class-MyWrapper.Framework.CDocument.html">CDocument</a></li>
+				<li><a href="class-MyWrapper.Framework.CStatusDocument.html">CStatusDocument</a></li>
+			</ul>
+
+
+
+
+
+		</div>
+	</div>
+</div>
+
+<div id="splitter"></div>
+
+<div id="right">
+<div id="rightInner">
+	<form id="search">
+		<input type="hidden" name="cx" value="" />
+		<input type="hidden" name="ie" value="UTF-8" />
+		<input type="text" name="q" class="text" />
+		<input type="submit" value="Search" />
+	</form>
+
+	<div id="navigation">
+		<ul>
+			<li>
+				<a href="index.html" title="Overview"><span>Overview</span></a>
+			</li>
+			<li>
+				<a href="namespace-MyWrapper.Framework.html" title="Summary of MyWrapper\Framework"><span>Namespace</span></a>
+			</li>
+			<li class="active">
+<span>Class</span>			</li>
+		</ul>
+		<ul>
+			<li>
+				<a href="tree.html" title="Tree view of classes, interfaces, traits and exceptions"><span>Tree</span></a>
+			</li>
+		</ul>
+		<ul>
+		</ul>
+	</div>
+
+<div id="content" class="class">
+	<h1>Class CDocument</h1>
+
+
+	<div class="description">
+	
+<h3>Document object</h3>
+
+<p>This class is the ancestor common to most classes in this library, it extends
+<code><a href="class-ArrayObject.html">ArrayObject</a></code> to implement an object which represents a collection of
+key/value attributes.</p>
+
+<p>The object implements the <code><a href="class-ArrayAccess.html">ArrayAccess</a></code> interface in which the
+following rules are enforced:</p>
+
+<ul>
+	<li>No offset may have the <tt>NULL</tt> value, setting an offset to that value
+	is equivalent to removing the offset.</li>
+
+	<li>It is legal to retrieve a non-existant offset, a <tt>NULL</tt> value will be
+	returned and no notice issued.</li>
+
+	<li>It is legal to delete a non-existant offset, no notice or warning will be
+	issued.</li>
+</ul>
+
+<p>The class implements an interface for member accessor methods that works in
+this way:</p>
+
+<ul>
+	<li>Accessor methods accept two parameters:
+		<ul>
+			<li>The value or operation:
+				<ul>
+					<li><tt>NULL</tt>: This value indicates that you want to <i>retrieve</i> the
+					current value.</li>
+
+					<li><tt>FALSE</tt>: This value indicates that you want to <i>delete</i> the
+					current value, note that this effectively prevents you from using that value as
+					an attribute, use <tt>0</tt> or <tt>1</tt> instead.</li>
+
+					<li>other: Any other type is interpreted as the new value to be set.</li>
+				</ul>
+			</li>
+
+			<li><tt>$getOld</tt>: This boolean parameter is relevant when the attribute was
+			modified or deleted: if set, the method will return the value <i>before</i> it
+			was modified, if not, the method will return the value <i>after</i> it has been
+			modified.</li>
+		</ul>
+	</li>
+</ul>
+
+	</div>
+
+	<dl class="tree">
+		<dd style="padding-left:0px">
+			<a href="class-ArrayObject.html"><span>ArrayObject</span></a>
+			
+			 implements 
+				<a href="class-IteratorAggregate.html"><span>IteratorAggregate</span></a>, 
+			
+				<a href="class-Traversable.html"><span>Traversable</span></a>, 
+			
+				<a href="class-ArrayAccess.html"><span>ArrayAccess</span></a>, 
+			
+				<a href="class-Serializable.html"><span>Serializable</span></a>, 
+			
+				<a href="class-Countable.html"><span>Countable</span></a>
+			
+			
+		</dd>
+		<dd style="padding-left:30px">
+			<img src="resources/inherit.png" alt="Extended by" />
+<b><span>MyWrapper\Framework\CDocument</span></b>			
+			
+			
+		</dd>
+	</dl>
+
+
+	<div>
+		<h4>Direct known subclasses</h4>
+			<a href="class-MyWrapper.Framework.CStatusDocument.html">MyWrapper\Framework\CStatusDocument</a>
+	</div>
+
+	<div>
+		<h4>Indirect known subclasses</h4>
+			<a href="class-MyWrapper.Framework.CContainer.html">MyWrapper\Framework\CContainer</a>, 
+			<a href="class-MyWrapper.Persistence.CMongoContainer.html">MyWrapper\Persistence\CMongoContainer</a>, 
+			<a href="class-MyWrapper.Persistence.CPersistentDocument.html">MyWrapper\Persistence\CPersistentDocument</a>
+	</div>
+
+
+
+
+
+	<div class="info">
+		
+		
+		<b>Namespace:</b> <a href="namespace-MyWrapper.html">MyWrapper</a>\<a href="namespace-MyWrapper.Framework.html">Framework</a><br />
+		<b>Package:</b> MyWrapper\Framework<br />
+
+		<b>Located at</b> <a href="source-class-MyWrapper.Framework.CDocument.html#29" title="Go to source code">Framework/CDocument.php</a><br />
+	</div>
+
+
+	<table class="summary" id="methods">
+	<caption>Methods summary</caption>
+	<tr data-order="offsetGet" id="_offsetGet">
+
+		<td class="attributes"><code>
+			 public 
+			mixed
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_offsetGet">#</a>
+		<code><a href="source-class-MyWrapper.Framework.CDocument.html#87" title="Go to source code">offsetGet</a>( <span>string <var>$theOffset</var></span> )</code>
+
+		<div class="description short">
+			
+<h4>Return a value at a given offset</h4>
+
+		</div>
+
+		<div class="description detailed hidden">
+			
+<h4>Return a value at a given offset</h4>
+
+<p>This method should return the value corresponding to the provided offset.</p>
+
+<p>This method is overloaded to prevent notices from being triggered when
+seeking non-existing offsets.</p>
+
+<p>In this class no offset may have a <tt>NULL</tt> value, if this method
+returns a <tt>NULL</tt> value, it means that the offset doesn't exist.</p>
+
+
+
+				<h4>Parameters</h4>
+				<div class="list"><dl>
+					<dt><var>$theOffset</var></dt>
+					<dd><code>string</code><br> Offset.</dd>
+				</dl></div>
+
+				<h4>Returns</h4>
+				<div class="list">
+					<code>mixed</code><br>Offset value.<br />
+				</div>
+
+
+
+				<h4>Overrides</h4>
+				<div class="list"><code><a href="class-ArrayObject.html#_">ArrayObject::offsetGet</a></code></div>
+
+				<h4>Implementation of</h4>
+				<div class="list"><code><a href="class-ArrayAccess.html#_">ArrayAccess::offsetGet</a></code></div>
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="offsetSet" id="_offsetSet">
+
+		<td class="attributes"><code>
+			 public 
+			
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_offsetSet">#</a>
+		<code><a href="source-class-MyWrapper.Framework.CDocument.html#110" title="Go to source code">offsetSet</a>( <span>string <var>$theOffset</var></span>, <span>mixed <var>$theValue</var></span> )</code>
+
+		<div class="description short">
+			
+<h4>Set a value at a given offset</h4>
+
+		</div>
+
+		<div class="description detailed hidden">
+			
+<h4>Set a value at a given offset</h4>
+
+<p>This method should set the provided value corresponding to the provided
+offset.</p>
+
+<p>This method is overloaded to prevent setting <tt>NULL</tt> values: if this is
+the case, the method will unset the offset.</p>
+
+
+
+				<h4>Parameters</h4>
+				<div class="list"><dl>
+					<dt><var>$theOffset</var></dt>
+					<dd><code>string</code><br> Offset.</dd>
+					<dt><var>$theValue</var></dt>
+					<dd><code>mixed</code><br> Value to set at offset.</dd>
+				</dl></div>
+
+
+
+				<h4>Uses</h4>
+				<div class="list">
+						<code><code><a href="class-MyWrapper.Framework.CDocument.html#_">MyWrapper\Framework\CDocument::offsetUnset()</a></code></code> <br />
+				</div>
+
+				<h4>Overrides</h4>
+				<div class="list"><code><a href="class-ArrayObject.html#_">ArrayObject::offsetSet</a></code></div>
+
+				<h4>Implementation of</h4>
+				<div class="list"><code><a href="class-ArrayAccess.html#_">ArrayAccess::offsetSet</a></code></div>
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="offsetUnset" id="_offsetUnset">
+
+		<td class="attributes"><code>
+			 public 
+			
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_offsetUnset">#</a>
+		<code><a href="source-class-MyWrapper.Framework.CDocument.html#146" title="Go to source code">offsetUnset</a>( <span>string <var>$theOffset</var></span> )</code>
+
+		<div class="description short">
+			
+<h4>Reset a value at a given offset</h4>
+
+		</div>
+
+		<div class="description detailed hidden">
+			
+<h4>Reset a value at a given offset</h4>
+
+<p>This method should reset the value corresponding to the provided offset.</p>
+
+<p>We overload this method to prevent notices on non-existing offsets.</p>
+
+
+
+				<h4>Parameters</h4>
+				<div class="list"><dl>
+					<dt><var>$theOffset</var></dt>
+					<dd><code>string</code><br> Offset.</dd>
+				</dl></div>
+
+
+
+				<h4>Used by</h4>
+				<div class="list">
+						<code><code><a href="class-MyWrapper.Framework.CDocument.html#_">MyWrapper\Framework\CDocument::offsetSet()</a></code></code> <br />
+				</div>
+
+				<h4>Overrides</h4>
+				<div class="list"><code><a href="class-ArrayObject.html#_">ArrayObject::offsetUnset</a></code></div>
+
+				<h4>Implementation of</h4>
+				<div class="list"><code><a href="class-ArrayAccess.html#_">ArrayAccess::offsetUnset</a></code></div>
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="array_keys" id="_array_keys">
+
+		<td class="attributes"><code>
+			 public 
+			array
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_array_keys">#</a>
+		<code><a href="source-class-MyWrapper.Framework.CDocument.html#173" title="Go to source code">array_keys</a>( )</code>
+
+		<div class="description short">
+			
+<h4>Return object's offsets</h4>
+
+		</div>
+
+		<div class="description detailed hidden">
+			
+<h4>Return object's offsets</h4>
+
+<p>This method has the same function as the PHP function <tt>array_keys(), it
+will return an array comprised of all object's offsets.</tt></p>
+
+
+
+
+				<h4>Returns</h4>
+				<div class="list">
+					<code>array</code><br>List of object offsets.<br />
+				</div>
+
+
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="array_values" id="_array_values">
+
+		<td class="attributes"><code>
+			 public 
+			array
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_array_values">#</a>
+		<code><a href="source-class-MyWrapper.Framework.CDocument.html#189" title="Go to source code">array_values</a>( )</code>
+
+		<div class="description short">
+			
+<h4>Return object's offset values</h4>
+
+		</div>
+
+		<div class="description detailed hidden">
+			
+<h4>Return object's offset values</h4>
+
+<p>This method has the same function as the PHP function <tt>array_values(), it
+will return an array comprised of all object's offset values.</tt></p>
+
+
+
+
+				<h4>Returns</h4>
+				<div class="list">
+					<code>array</code><br>List of object offset values.<br />
+				</div>
+
+
+
+
+		</div>
+		</div></td>
+	</tr>
+	</table>
+
+	<table class="summary inherited">
+	<caption>Methods inherited from <a href="class-ArrayObject.html#methods">ArrayObject</a></caption>
+	<tr>
+		<td><code>
+			<a href="class-ArrayObject.html#_">__construct()</a>, 
+			<a href="class-ArrayObject.html#_">append()</a>, 
+			<a href="class-ArrayObject.html#_">asort()</a>, 
+			<a href="class-ArrayObject.html#_">count()</a>, 
+			<a href="class-ArrayObject.html#_">exchangeArray()</a>, 
+			<a href="class-ArrayObject.html#_">getArrayCopy()</a>, 
+			<a href="class-ArrayObject.html#_">getFlags()</a>, 
+			<a href="class-ArrayObject.html#_">getIterator()</a>, 
+			<a href="class-ArrayObject.html#_">getIteratorClass()</a>, 
+			<a href="class-ArrayObject.html#_">ksort()</a>, 
+			<a href="class-ArrayObject.html#_">natcasesort()</a>, 
+			<a href="class-ArrayObject.html#_">natsort()</a>, 
+			<a href="class-ArrayObject.html#_">offsetExists()</a>, 
+			<a href="class-ArrayObject.html#_">serialize()</a>, 
+			<a href="class-ArrayObject.html#_">setFlags()</a>, 
+			<a href="class-ArrayObject.html#_">setIteratorClass()</a>, 
+			<a href="class-ArrayObject.html#_">uasort()</a>, 
+			<a href="class-ArrayObject.html#_">uksort()</a>, 
+			<a href="class-ArrayObject.html#_">unserialize()</a>
+		</code></td>
+	</tr>
+	</table>
+
+
+
+
+	<table class="summary inherited">
+	<caption>Constants inherited from <a href="class-ArrayObject.html#constants">ArrayObject</a></caption>
+	<tr>
+		<td><code>
+			<a href="class-ArrayObject.html#ARRAY_AS_PROPS"><b>ARRAY_AS_PROPS</b></a>, 
+			<a href="class-ArrayObject.html#STD_PROP_LIST"><b>STD_PROP_LIST</b></a>
+		</code></td>
+	</tr>
+	</table>
+
+
+
+
+
+</div>
+
+	<div id="footer">
+		MyWrapper Reference Documentation API documentation generated by <a href="http://apigen.org">ApiGen 2.7.0</a>
+	</div>
+</div>
+</div>
+</body>
+</html>

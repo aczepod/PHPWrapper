@@ -1,0 +1,201 @@
+(_idx: index, _ns: namespace ==> reference to term)
+
+TERMS:
+
+_idx:			
+_ns:			NULL
+_code:			
+@1:				Default namespace
+@2:				Namespace of all elements comprising the application.
+
+_idx:			:LABEL
+_ns:			
+_code:			LABEL
+@1:				Label
+@2:				Short description or name.
+
+_idx:			:DESCRIPTION
+_ns:			
+_code:			DESCRIPTION
+@1:				Description
+@2:				Long description or definition.
+
+_idx:			:CODE
+_ns:			
+_code:			CODE
+@1:				Code
+@2:				Abbreviation or acronym used to identify an object.
+
+_idx:			:PASSWORD
+_ns:			
+_code:			PASSWORD
+@1:				Password
+@2:				Code used to validate an object.
+
+_idx:			:NAME
+_ns:			
+_code:			NAME
+@1:				Name
+@2:				Label used to identify an object.
+
+_idx:			:EMAIL
+_ns:			
+_code:			EMAIL
+@1:				E-mail
+@2:				E-mail address.
+
+_idx:			:ROLE
+_ns:			
+_code:			ROLE
+@1:				Role
+@2:				Role or responsibility.
+
+_idx:			:PERMISSIONS-USER
+_ns:			
+_code:			PERMISSIONS-USER
+@1:				User permissions
+@2:				List of permissions or capabilities related to users.
+
+_idx:			:PERMISSIONS-PASSPORT
+_ns:			
+_code:			PERMISSIONS-PASSPORT
+@1:				Passport dataset permissions
+@2:				List of permissions or capabilities related to passport datasets.
+
+_idx:			:PERMISSIONS-DATASET
+_ns:			
+_code:			PERMISSIONS-DATASET
+@1:				Dataset permissions
+@2:				List of permissions or capabilities related to datasets.
+
+_idx:			:STRING
+_ns:			
+_code:			STRING
+@1:				String
+@2:				String data type.
+
+_idx:			:ENUM
+_ns:			
+_code:			ENUM
+@1:				Enumeration
+@2:				Enumerated value.
+
+_idx:			:SET
+_ns:			
+_code:			SET
+@1:				Enumerated set
+@2:				List of non-repeating enumerated values.
+
+_idx:			:USER
+_ns:			
+_code:			USER
+@1:				User
+@2:				User entity.
+
+_idx:			:ROOT
+_ns:			
+_code:			ROOT
+@1:				Root
+@2:				Graph root node or entry point.
+
+_idx:			:TRAIT
+_ns:			
+_code:			TRAIT
+@1:				Trait
+@2:				Trait or measurable characteristic.
+
+_idx:			:METHOD
+_ns:			
+_code:			METHOD
+@1:				Method
+@2:				Method or measurement workflow.
+
+_idx:			:SCALE
+_ns:			
+_code:			SCALE
+@1:				Scale
+@2:				Scale or measurement unit.
+
+_idx:			:ATTRIBUTE-OF
+_ns:			
+_code:			ATTRIBUTE-OF
+@1:				Attribute-of
+@2:				Predicate indicating an attribute-of relationship.
+
+_idx:			:ENUM-OF
+_ns:			
+_code:			ENUM-OF
+@1:				Enumeration-of
+@2:				Predicate indicating an enumeration-of relationship.
+
+_idx:			:ADMIN
+_ns:			
+_code:			ADMIN
+@1:				Administrator
+@2:				The user that is responsible of the administration.
+
+_idx:			:CATALOGUE-USER
+_ns:			
+_code:			CATALOGUE-USER
+@1:				Catalogue user
+@2:				The user that is responsible of the catalogue.
+
+_idx:			:INVENTORY-USER
+_ns:			
+_code:			INVENTORY-USER
+@1:				Inventory user
+@2:				The user that is responsible of the inventory.
+
+_idx:			:COLLECTION-USER
+_ns:			
+_code:			COLLECTION-USER
+@1:				Collection user
+@2:				The user that is responsible of the collection.
+
+_idx:			:GENERIC-USER
+_ns:			
+_code:			GENERIC-USER
+@1:				Generic user
+@2:				A generic user.
+
+_idx:			:CREATE
+_ns:			
+_code:			CREATE
+@1:				Create
+@2:				Can create.
+
+_idx:			:LIST
+_ns:			
+_code:			LIST
+@1:				List
+@2:				Can list.
+
+_idx:			:READ
+_ns:			
+_code:			READ
+@1:				Read
+@2:				Can read.
+
+_idx:			:MODIFY
+_ns:			
+_code:			MODIFY
+@1:				Modify
+@2:				Can modify.
+
+_idx:			:DELETE
+_ns:			
+_code:			DELETE
+@1:				Delete
+@2:				Can delete.
+
+_idx:			:PUBLISH
+_ns:			
+_code:			PUBLISH
+@1:				Publish
+@2:				Can publish.
+
+_idx:			:UNPUBLISH
+_ns:			
+_code:			UNPUBLISH
+@1:				Unpublish
+@2:				Can unpublish.

@@ -1,0 +1,616 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<meta name="generator" content="ApiGen 2.7.0" />
+
+	<title>Class MyWrapper\Persistence\CPersistentDocument | MyWrapper Reference Documentation</title>
+
+	<script type="text/javascript" src="resources/combined.js?496895167"></script>
+	<script type="text/javascript" src="elementlist.js?3375725984"></script>
+	<link rel="stylesheet" type="text/css" media="all" href="resources/style.css?1567499433" />
+
+</head>
+
+<body>
+<div id="left">
+	<div id="menu">
+		<a href="index.html" title="Overview"><span>Overview</span></a>
+
+
+		<div id="groups">
+			<h3>Namespaces</h3>
+			<ul>
+				<li class="active main"><a href="namespace-MyWrapper.html">MyWrapper<span></span></a>
+						<ul>
+				<li class="main"><a href="namespace-MyWrapper.Framework.html">Framework</a>
+						</li>
+				<li class="active main"><a href="namespace-MyWrapper.Persistence.html">Persistence</a>
+						</li>
+							</ul></li>
+				<li><a href="namespace-None.html">None</a>
+						</li>
+				<li><a href="namespace-PHP.html">PHP</a>
+						</li>
+			</ul>
+		</div>
+
+		<hr />
+
+
+		<div id="elements">
+			<h3>Classes</h3>
+			<ul>
+				<li><a href="class-MyWrapper.Persistence.CMongoContainer.html">CMongoContainer</a></li>
+				<li class="active"><a href="class-MyWrapper.Persistence.CPersistentDocument.html">CPersistentDocument</a></li>
+			</ul>
+
+
+
+
+
+		</div>
+	</div>
+</div>
+
+<div id="splitter"></div>
+
+<div id="right">
+<div id="rightInner">
+	<form id="search">
+		<input type="hidden" name="cx" value="" />
+		<input type="hidden" name="ie" value="UTF-8" />
+		<input type="text" name="q" class="text" />
+		<input type="submit" value="Search" />
+	</form>
+
+	<div id="navigation">
+		<ul>
+			<li>
+				<a href="index.html" title="Overview"><span>Overview</span></a>
+			</li>
+			<li>
+				<a href="namespace-MyWrapper.Persistence.html" title="Summary of MyWrapper\Persistence"><span>Namespace</span></a>
+			</li>
+			<li class="active">
+<span>Class</span>			</li>
+		</ul>
+		<ul>
+			<li>
+				<a href="tree.html" title="Tree view of classes, interfaces, traits and exceptions"><span>Tree</span></a>
+			</li>
+		</ul>
+		<ul>
+		</ul>
+	</div>
+
+<div id="content" class="class">
+	<h1>Class CPersistentDocument</h1>
+
+
+	<div class="description">
+	
+<h3>Persistent document ancestor</h3>
+
+<p>This class implements a document object that knows how to persist in derived
+concrete instances of the <code><a href="class-MyWrapper.Framework.CContainer.html">MyWrapper\Framework\CContainer</a></code> class.</p>
+
+<p>This class implements a series of persistence methods:</p>
+
+<ul>
+	<li><code><a href="class-MyWrapper.Persistence.CPersistentDocument.html#_">MyWrapper\Persistence\CPersistentDocument::Retrieve()</a></code>: This static method can be used to instantiate an object
+	by retrieving it from a container.</li>
+
+	<li><code><a href="class-MyWrapper.Persistence.CPersistentDocument.html#_">MyWrapper\Persistence\CPersistentDocument::Insert()</a></code>: This method will insert the object into a container, if
+	the object already exists, the method will raise an exception.</li>
+
+	<li><code><a href="class-MyWrapper.Persistence.CPersistentDocument.html#_">MyWrapper\Persistence\CPersistentDocument::Update()</a></code>: This method will update the object into a container, if
+	the object does not exists in the container, the method will raise an
+	exception.</li>
+
+	<li><code><a href="class-MyWrapper.Persistence.CPersistentDocument.html#_">MyWrapper\Persistence\CPersistentDocument::Replace()</a></code>: This method will either insert, if the object is not
+	there yet, or update, if it already exists, the object into a container.</li>
+
+	<li><code><a href="class-MyWrapper.Persistence.CPersistentDocument.html#_">MyWrapper\Persistence\CPersistentDocument::Delete()</a></code>: This method will delete the object from a container.</li>
+</ul>
+
+<p>This class makes use of the status interface inherited from <code><a href="class-MyWrapper.Framework.CStatusDocument.html">MyWrapper\Framework\CStatusDocument</a></code>: the <code><a href="class-MyWrapper.Framework.CStatusDocument.html#_">MyWrapper\Framework\CStatusDocument::_IsCommitted()</a></code> status is set when the object is
+loaded or committed to the container, and the <code><a href="class-MyWrapper.Framework.CStatusDocument.html#_">MyWrapper\Framework\CStatusDocument::_IsDirty()</a></code> status is used
+to determine whether the object needs to be committed to a container; if the
+object is not in the <code><a href="class-MyWrapper.Framework.CStatusDocument.html#_">MyWrapper\Framework\CStatusDocument::_IsInited()</a></code> state, it cannot be committed.</p>
+
+	</div>
+
+	<dl class="tree">
+		<dd style="padding-left:0px">
+			<a href="class-ArrayObject.html"><span>ArrayObject</span></a>
+			
+			 implements 
+				<a href="class-IteratorAggregate.html"><span>IteratorAggregate</span></a>, 
+			
+				<a href="class-Traversable.html"><span>Traversable</span></a>, 
+			
+				<a href="class-ArrayAccess.html"><span>ArrayAccess</span></a>, 
+			
+				<a href="class-Serializable.html"><span>Serializable</span></a>, 
+			
+				<a href="class-Countable.html"><span>Countable</span></a>
+			
+			
+		</dd>
+		<dd style="padding-left:30px">
+			<img src="resources/inherit.png" alt="Extended by" />
+			<a href="class-MyWrapper.Framework.CDocument.html"><span>MyWrapper\Framework\CDocument</span></a>
+			
+			
+			
+		</dd>
+		<dd style="padding-left:60px">
+			<img src="resources/inherit.png" alt="Extended by" />
+			<a href="class-MyWrapper.Framework.CStatusDocument.html"><span>MyWrapper\Framework\CStatusDocument</span></a>
+			
+			
+			
+		</dd>
+		<dd style="padding-left:90px">
+			<img src="resources/inherit.png" alt="Extended by" />
+<b><span>MyWrapper\Persistence\CPersistentDocument</span></b>			
+			
+			
+		</dd>
+	</dl>
+
+
+
+
+
+
+
+
+	<div class="info">
+		
+		
+		<b>Namespace:</b> <a href="namespace-MyWrapper.html">MyWrapper</a>\<a href="namespace-MyWrapper.Persistence.html">Persistence</a><br />
+		<b>Package:</b> MyWrapper\Persistence<br />
+
+		<b>Located at</b> <a href="source-class-MyWrapper.Persistence.CPersistentDocument.html#36" title="Go to source code">Persistence/CPersistentDocument.php</a><br />
+	</div>
+
+
+	<table class="summary" id="methods">
+	<caption>Methods summary</caption>
+	<tr data-order="Retrieve" id="_Retrieve">
+
+		<td class="attributes"><code>
+			 public static
+			mixed
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_Retrieve">#</a>
+		<code><a href="source-class-MyWrapper.Persistence.CPersistentDocument.html#81" title="Go to source code">Retrieve</a>( <span><code><a href="class-MyWrapper.Framework.CContainer.html">MyWrapper\Framework\CContainer</a></code> <var>$theContainer</var></span> )</code>
+
+		<div class="description short">
+			
+<h4>Retrieve an object from a container</h4>
+
+		</div>
+
+		<div class="description detailed hidden">
+			
+<h4>Retrieve an object from a container</h4>
+
+<p>This method will retrieve an object the provided container, if the object
+contains the kTAG_CLASS offset, the method will attempt to instantiate
+that specific class, if not, the method will return an instance of this
+class.</p>
+
+<p>Note that the class stored in the kTAG_CLASS offset <b>must</b> be
+derived from this class.</p>
+
+<p>The method expects two parameters:</p>
+
+<ul>
+	<li><tt>$theContainer</tt>: A concrete instance of the <code><a href="class-MyWrapper.Framework.CContainer.html">MyWrapper\Framework\CContainer</a></code>
+	class.</li>
+
+	<li><tt>$theIdentifier</tt>: The key of the object in the container, by default
+	the kTAG_LID offset.</li>
+</ul>
+
+<p>The method expects a single parameter, <tt>$theContainer</tt>, which
+represents the container in which the object should be stored. This container
+must be a concrete instance of the <code><a href="class-MyWrapper.Framework.CContainer.html">MyWrapper\Framework\CContainer</a></code> class.</p>
+
+<p>The operation will only be performed if the object is not yet committed or if
+the object has its <code><a href="class-MyWrapper.Framework.CStatusDocument.html#_">MyWrapper\Framework\CStatusDocument::_IsDirty()</a></code> dirty status set, if not, the method will
+do nothing.</p>
+
+<p>Once the object has been stored, it will have its <code><a href="class-MyWrapper.Framework.CStatusDocument.html#_">MyWrapper\Framework\CStatusDocument::_IsCommitted()</a></code>
+status set and its <code><a href="class-MyWrapper.Framework.CStatusDocument.html#_">MyWrapper\Framework\CStatusDocument::_IsDirty()</a></code> status reset.</p>
+
+<p>The method will raise an exception if the object has not the <code><a href="class-MyWrapper.Framework.CStatusDocument.html#_">MyWrapper\Framework\CStatusDocument::_IsInited()</a></code> status set.</p>
+
+<p>The method may set the local unique identifier attribute (kTAG_LID)
+if not provided.</p>
+
+<p>The method will return the object's local unique identifier attribute (kTAG_LID), <tt>NULL</tt> if the operation is not necessary or raise an
+exception if an error occurs.</p>
+
+
+
+				<h4>Parameters</h4>
+				<div class="list"><dl>
+					<dt><var>$theContainer</var></dt>
+					<dd><code><code><a href="class-MyWrapper.Framework.CContainer.html">MyWrapper\Framework\CContainer</a></code></code><br> Container.</dd>
+				</dl></div>
+
+				<h4>Returns</h4>
+				<div class="list">
+					<code>mixed</code><br>The object's local identifier.<br />
+				</div>
+
+
+				<h4>Uses</h4>
+				<div class="list">
+						<code><code><a href="class-MyWrapper.Framework.CStatusDocument.html#_">MyWrapper\Framework\CStatusDocument::_IsDirty()</a></code></code> <br />
+						<code><code><a href="class-MyWrapper.Framework.CStatusDocument.html#_">MyWrapper\Framework\CStatusDocument::_IsInited()</a></code></code> <br />
+						<code><code><a href="class-MyWrapper.Framework.CStatusDocument.html#_">MyWrapper\Framework\CStatusDocument::_IsCommitted()</a></code></code> <br />
+				</div>
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="Insert" id="_Insert">
+
+		<td class="attributes"><code>
+			 public 
+			mixed
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_Insert">#</a>
+		<code><a href="source-class-MyWrapper.Persistence.CPersistentDocument.html#185" title="Go to source code">Insert</a>( <span><code><a href="class-MyWrapper.Framework.CContainer.html">MyWrapper\Framework\CContainer</a></code> <var>$theContainer</var></span> )</code>
+
+		<div class="description short">
+			
+<h4>Insert an object into a container</h4>
+
+		</div>
+
+		<div class="description detailed hidden">
+			
+<h4>Insert an object into a container</h4>
+
+<p>This method will insert the current object into the provided container, if a
+duplicate object already exists in the container, the method will raise an
+exception.</p>
+
+<p>The method expects a single parameter, <tt>$theContainer</tt>, which
+represents the container in which the object should be stored. This container
+must be a concrete instance of the <code><a href="class-MyWrapper.Framework.CContainer.html">MyWrapper\Framework\CContainer</a></code> class.</p>
+
+<p>The operation will only be performed if the object is not yet committed or if
+the object has its <code><a href="class-MyWrapper.Framework.CStatusDocument.html#_">MyWrapper\Framework\CStatusDocument::_IsDirty()</a></code> dirty status set, if not, the method will
+do nothing.</p>
+
+<p>Once the object has been stored, it will have its <code><a href="class-MyWrapper.Framework.CStatusDocument.html#_">MyWrapper\Framework\CStatusDocument::_IsCommitted()</a></code>
+status set and its <code><a href="class-MyWrapper.Framework.CStatusDocument.html#_">MyWrapper\Framework\CStatusDocument::_IsDirty()</a></code> status reset.</p>
+
+<p>The method will raise an exception if the object has not the <code><a href="class-MyWrapper.Framework.CStatusDocument.html#_">MyWrapper\Framework\CStatusDocument::_IsInited()</a></code> status set.</p>
+
+<p>The method may set the local unique identifier attribute (kTAG_LID)
+if not provided.</p>
+
+<p>The method will return the object's local unique identifier attribute (kTAG_LID), <tt>NULL</tt> if the operation is not necessary or raise an
+exception if an error occurs.</p>
+
+
+
+				<h4>Parameters</h4>
+				<div class="list"><dl>
+					<dt><var>$theContainer</var></dt>
+					<dd><code><code><a href="class-MyWrapper.Framework.CContainer.html">MyWrapper\Framework\CContainer</a></code></code><br> Container.</dd>
+				</dl></div>
+
+				<h4>Returns</h4>
+				<div class="list">
+					<code>mixed</code><br>The object's local identifier.<br />
+				</div>
+
+
+				<h4>Uses</h4>
+				<div class="list">
+						<code><code><a href="class-MyWrapper.Framework.CStatusDocument.html#_">MyWrapper\Framework\CStatusDocument::_IsDirty()</a></code></code> <br />
+						<code><code><a href="class-MyWrapper.Framework.CStatusDocument.html#_">MyWrapper\Framework\CStatusDocument::_IsInited()</a></code></code> <br />
+						<code><code><a href="class-MyWrapper.Framework.CStatusDocument.html#_">MyWrapper\Framework\CStatusDocument::_IsCommitted()</a></code></code> <br />
+				</div>
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="Update" id="_Update">
+
+		<td class="attributes"><code>
+			 public 
+			
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_Update">#</a>
+		<code><a href="source-class-MyWrapper.Persistence.CPersistentDocument.html#268" title="Go to source code">Update</a>( <span><code><a href="class-MyWrapper.Framework.CContainer.html">MyWrapper\Framework\CContainer</a></code> <var>$theContainer</var></span> )</code>
+
+		<div class="description short">
+			
+<h4>Update an object from a container</h4>
+
+		</div>
+
+		<div class="description detailed hidden">
+			
+<h4>Update an object from a container</h4>
+
+<p>This method will update the current object into the provided container, if
+the object cannot be found in the container, the method will raise an
+exception.</p>
+
+<p>The method expects a single parameter, <tt>$theContainer</tt>, which
+represents the container in which the object should be stored. This container
+must be a concrete instance of the <code><a href="class-MyWrapper.Framework.CContainer.html">MyWrapper\Framework\CContainer</a></code> class.</p>
+
+<p>The operation will only be performed if the object is not yet committed or if
+the object has its <code><a href="class-MyWrapper.Framework.CStatusDocument.html#_">MyWrapper\Framework\CStatusDocument::_IsDirty()</a></code> dirty status set, if not, the method will
+do nothing.</p>
+
+<p>Once the object has been stored, it will have its <code><a href="class-MyWrapper.Framework.CStatusDocument.html#_">MyWrapper\Framework\CStatusDocument::_IsCommitted()</a></code>
+status set and its <code><a href="class-MyWrapper.Framework.CStatusDocument.html#_">MyWrapper\Framework\CStatusDocument::_IsDirty()</a></code> status reset.</p>
+
+<p>The method will raise an exception if the object has not the <code><a href="class-MyWrapper.Framework.CStatusDocument.html#_">MyWrapper\Framework\CStatusDocument::_IsInited()</a></code> status set.</p>
+
+
+
+				<h4>Parameters</h4>
+				<div class="list"><dl>
+					<dt><var>$theContainer</var></dt>
+					<dd><code><code><a href="class-MyWrapper.Framework.CContainer.html">MyWrapper\Framework\CContainer</a></code></code><br> Container.</dd>
+				</dl></div>
+
+
+
+				<h4>Uses</h4>
+				<div class="list">
+						<code><code><a href="class-MyWrapper.Framework.CStatusDocument.html#_">MyWrapper\Framework\CStatusDocument::_IsDirty()</a></code></code> <br />
+						<code><code><a href="class-MyWrapper.Framework.CStatusDocument.html#_">MyWrapper\Framework\CStatusDocument::_IsInited()</a></code></code> <br />
+						<code><code><a href="class-MyWrapper.Framework.CStatusDocument.html#_">MyWrapper\Framework\CStatusDocument::_IsCommitted()</a></code></code> <br />
+				</div>
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="Replace" id="_Replace">
+
+		<td class="attributes"><code>
+			 public 
+			mixed
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_Replace">#</a>
+		<code><a href="source-class-MyWrapper.Persistence.CPersistentDocument.html#339" title="Go to source code">Replace</a>( <span><code><a href="class-MyWrapper.Framework.CContainer.html">MyWrapper\Framework\CContainer</a></code> <var>$theContainer</var></span> )</code>
+
+		<div class="description short">
+			
+<h4>Replace an object into a container</h4>
+
+		</div>
+
+		<div class="description detailed hidden">
+			
+<h4>Replace an object into a container</h4>
+
+<p>This method will insert the current object into the provided container, if
+not found, or update the object if already there.</p>
+
+<p>The method expects a single parameter, <tt>$theContainer</tt>, which
+represents the container in which the object should be stored. This container
+must be a concrete instance of the <code><a href="class-MyWrapper.Framework.CContainer.html">MyWrapper\Framework\CContainer</a></code> class.</p>
+
+<p>The operation will only be performed if the object is not yet committed or if
+the object has its <code><a href="class-MyWrapper.Framework.CStatusDocument.html#_">MyWrapper\Framework\CStatusDocument::_IsDirty()</a></code> dirty status set, if not, the method will
+do nothing.</p>
+
+<p>Once the object has been stored, it will have its <code><a href="class-MyWrapper.Framework.CStatusDocument.html#_">MyWrapper\Framework\CStatusDocument::_IsCommitted()</a></code>
+status set and its <code><a href="class-MyWrapper.Framework.CStatusDocument.html#_">MyWrapper\Framework\CStatusDocument::_IsDirty()</a></code> status reset.</p>
+
+<p>The method will raise an exception if the object has not the <code><a href="class-MyWrapper.Framework.CStatusDocument.html#_">MyWrapper\Framework\CStatusDocument::_IsInited()</a></code> status set.</p>
+
+<p>The method may set the local unique identifier attribute (kTAG_LID)
+if not provided.</p>
+
+<p>The method will return the object's local unique identifier attribute (kTAG_LID) or <tt>NULL</tt> if the operation is not necessary.</p>
+
+
+
+				<h4>Parameters</h4>
+				<div class="list"><dl>
+					<dt><var>$theContainer</var></dt>
+					<dd><code><code><a href="class-MyWrapper.Framework.CContainer.html">MyWrapper\Framework\CContainer</a></code></code><br> Container.</dd>
+				</dl></div>
+
+				<h4>Returns</h4>
+				<div class="list">
+					<code>mixed</code><br>The object's local identifier.<br />
+				</div>
+
+
+				<h4>Uses</h4>
+				<div class="list">
+						<code><code><a href="class-MyWrapper.Framework.CStatusDocument.html#_">MyWrapper\Framework\CStatusDocument::_IsDirty()</a></code></code> <br />
+						<code><code><a href="class-MyWrapper.Framework.CStatusDocument.html#_">MyWrapper\Framework\CStatusDocument::_IsInited()</a></code></code> <br />
+						<code><code><a href="class-MyWrapper.Framework.CStatusDocument.html#_">MyWrapper\Framework\CStatusDocument::_IsCommitted()</a></code></code> <br />
+				</div>
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="Delete" id="_Delete">
+
+		<td class="attributes"><code>
+			 public 
+			boolean
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_Delete">#</a>
+		<code><a href="source-class-MyWrapper.Persistence.CPersistentDocument.html#421" title="Go to source code">Delete</a>( <span><code><a href="class-MyWrapper.Framework.CContainer.html">MyWrapper\Framework\CContainer</a></code> <var>$theContainer</var></span> )</code>
+
+		<div class="description short">
+			
+<h4>Delete an object from a container</h4>
+
+		</div>
+
+		<div class="description detailed hidden">
+			
+<h4>Delete an object from a container</h4>
+
+<p>This method will remove the current object from the provided container.</p>
+
+<p>The method expects a single parameter, <tt>$theContainer</tt>, which
+represents the container in which the object should be stored. This container
+must be a concrete instance of the <code><a href="class-MyWrapper.Framework.CContainer.html">MyWrapper\Framework\CContainer</a></code> class.</p>
+
+<p>The method will raise an exception if the object has not the <code><a href="class-MyWrapper.Framework.CStatusDocument.html#_">MyWrapper\Framework\CStatusDocument::_IsInited()</a></code> status set.</p>
+
+<p>Once the object has been deleted, it will have its <code><a href="class-MyWrapper.Framework.CStatusDocument.html#_">MyWrapper\Framework\CStatusDocument::_IsCommitted()</a></code>
+status and its <code><a href="class-MyWrapper.Framework.CStatusDocument.html#_">MyWrapper\Framework\CStatusDocument::_IsDirty()</a></code> status reset.</p>
+
+<p>The method will return <tt>TRUE</tt> if the object was deleted or
+<tt>FALSE</tt> if the object was not found in the container.</p>
+
+
+
+				<h4>Parameters</h4>
+				<div class="list"><dl>
+					<dt><var>$theContainer</var></dt>
+					<dd><code><code><a href="class-MyWrapper.Framework.CContainer.html">MyWrapper\Framework\CContainer</a></code></code><br> Container.</dd>
+				</dl></div>
+
+				<h4>Returns</h4>
+				<div class="list">
+					<code>boolean</code><br><tt>TRUE</tt> deleted, <tt>FALSE</tt> not found.<br />
+				</div>
+
+
+				<h4>Uses</h4>
+				<div class="list">
+						<code><code><a href="class-MyWrapper.Framework.CStatusDocument.html#_">MyWrapper\Framework\CStatusDocument::_IsDirty()</a></code></code> <br />
+						<code><code><a href="class-MyWrapper.Framework.CStatusDocument.html#_">MyWrapper\Framework\CStatusDocument::_IsInited()</a></code></code> <br />
+						<code><code><a href="class-MyWrapper.Framework.CStatusDocument.html#_">MyWrapper\Framework\CStatusDocument::_IsCommitted()</a></code></code> <br />
+				</div>
+
+
+		</div>
+		</div></td>
+	</tr>
+	</table>
+
+	<table class="summary inherited">
+	<caption>Methods inherited from <a href="class-MyWrapper.Framework.CStatusDocument.html#methods">MyWrapper\Framework\CStatusDocument</a></caption>
+	<tr>
+		<td><code>
+			<a href="class-MyWrapper.Framework.CStatusDocument.html#_">ManageBitField()</a>, 
+			<a href="class-MyWrapper.Framework.CStatusDocument.html#_">_IsCommitted()</a>, 
+			<a href="class-MyWrapper.Framework.CStatusDocument.html#_">_IsDirty()</a>, 
+			<a href="class-MyWrapper.Framework.CStatusDocument.html#_">_IsEncoded()</a>, 
+			<a href="class-MyWrapper.Framework.CStatusDocument.html#_">_IsInited()</a>, 
+			<a href="class-MyWrapper.Framework.CStatusDocument.html#_">offsetSet()</a>, 
+			<a href="class-MyWrapper.Framework.CStatusDocument.html#_">offsetUnset()</a>
+		</code></td>
+	</tr>
+	</table>
+	<table class="summary inherited">
+	<caption>Methods inherited from <a href="class-MyWrapper.Framework.CDocument.html#methods">MyWrapper\Framework\CDocument</a></caption>
+	<tr>
+		<td><code>
+			<a href="class-MyWrapper.Framework.CDocument.html#_">array_keys()</a>, 
+			<a href="class-MyWrapper.Framework.CDocument.html#_">array_values()</a>, 
+			<a href="class-MyWrapper.Framework.CDocument.html#_">offsetGet()</a>
+		</code></td>
+	</tr>
+	</table>
+	<table class="summary inherited">
+	<caption>Methods inherited from <a href="class-ArrayObject.html#methods">ArrayObject</a></caption>
+	<tr>
+		<td><code>
+			<a href="class-ArrayObject.html#_">__construct()</a>, 
+			<a href="class-ArrayObject.html#_">append()</a>, 
+			<a href="class-ArrayObject.html#_">asort()</a>, 
+			<a href="class-ArrayObject.html#_">count()</a>, 
+			<a href="class-ArrayObject.html#_">exchangeArray()</a>, 
+			<a href="class-ArrayObject.html#_">getArrayCopy()</a>, 
+			<a href="class-ArrayObject.html#_">getFlags()</a>, 
+			<a href="class-ArrayObject.html#_">getIterator()</a>, 
+			<a href="class-ArrayObject.html#_">getIteratorClass()</a>, 
+			<a href="class-ArrayObject.html#_">ksort()</a>, 
+			<a href="class-ArrayObject.html#_">natcasesort()</a>, 
+			<a href="class-ArrayObject.html#_">natsort()</a>, 
+			<a href="class-ArrayObject.html#_">offsetExists()</a>, 
+			<a href="class-ArrayObject.html#_">serialize()</a>, 
+			<a href="class-ArrayObject.html#_">setFlags()</a>, 
+			<a href="class-ArrayObject.html#_">setIteratorClass()</a>, 
+			<a href="class-ArrayObject.html#_">uasort()</a>, 
+			<a href="class-ArrayObject.html#_">uksort()</a>, 
+			<a href="class-ArrayObject.html#_">unserialize()</a>
+		</code></td>
+	</tr>
+	</table>
+
+
+
+
+	<table class="summary inherited">
+	<caption>Constants inherited from <a href="class-ArrayObject.html#constants">ArrayObject</a></caption>
+	<tr>
+		<td><code>
+			<a href="class-ArrayObject.html#ARRAY_AS_PROPS"><b>ARRAY_AS_PROPS</b></a>, 
+			<a href="class-ArrayObject.html#STD_PROP_LIST"><b>STD_PROP_LIST</b></a>
+		</code></td>
+	</tr>
+	</table>
+
+
+
+	<table class="summary inherited">
+	<caption>Properties inherited from <a href="class-MyWrapper.Framework.CStatusDocument.html#properties">MyWrapper\Framework\CStatusDocument</a></caption>
+	<tr>
+		<td><code>
+			<a href="class-MyWrapper.Framework.CStatusDocument.html#$mStatus"><var>$mStatus</var></a>
+		</code></td>
+	</tr>
+	</table>
+
+
+</div>
+
+	<div id="footer">
+		MyWrapper Reference Documentation API documentation generated by <a href="http://apigen.org">ApiGen 2.7.0</a>
+	</div>
+</div>
+</div>
+</body>
+</html>

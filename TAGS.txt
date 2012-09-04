@@ -1,0 +1,44 @@
+TAGS:
+
+_id:			0
+_count:			3
+
+_id:			1
+_path:			:LABEL
+_type:			:STRING
+
+_id:			2
+_path:			:DESCRIPTION
+_type:			:STRING
+
+_id:			3
+_path:			:CODE/:ATTRIBUTE-OF/:USER
+_type:			:STRING
+
+_id:			4
+_path:			:PASSWORD/:ATTRIBUTE-OF/:USER
+_type:			:STRING
+
+_id:			5
+_path:			:NAME/:ATTRIBUTE-OF/:USER
+_type:			:STRING
+
+_id:			6
+_path:			:EMAIL/:ATTRIBUTE-OF/:USER
+_type:			:STRING
+
+_id:			7
+_path:			:ROLE/:ATTRIBUTE-OF/:USER
+_type:			:ENUM
+
+_id:			8
+_path:			:PERMISSIONS-USER/:ATTRIBUTE-OF/:USER
+_type:			:SET
+
+_id:			9
+_path:			:PERMISSIONS-PASSPORT/:ATTRIBUTE-OF/:USER
+_type:			:SET
+
+_id:			10
+_path:			:PERMISSIONS-DATASET/:ATTRIBUTE-OF/:USER
+_type:			:SET

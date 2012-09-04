@@ -1,0 +1,1 @@
+apigen --source '/Library/WebServer/Library/MyWrapper/classes' --source '/Library/WebServer/Library/MyWrapper/functions' --source '/Library/WebServer/Library/MyWrapper/defines' --destination '/Library/WebServer/Library/MyWrapper/documentation' --main 'MyWrapper' --title 'MyWrapper Reference Documentation' --allowed-html b,i,a,ul,ol,li,p,br,var,samp,kbd,tt,h3,h4

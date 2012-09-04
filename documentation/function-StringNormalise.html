@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<meta name="generator" content="ApiGen 2.7.0" />
+
+	<title>Function StringNormalise | MyWrapper Reference Documentation</title>
+
+	<script type="text/javascript" src="resources/combined.js?496895167"></script>
+	<script type="text/javascript" src="elementlist.js?3375725984"></script>
+	<link rel="stylesheet" type="text/css" media="all" href="resources/style.css?1567499433" />
+
+</head>
+
+<body>
+<div id="left">
+	<div id="menu">
+		<a href="index.html" title="Overview"><span>Overview</span></a>
+
+
+		<div id="groups">
+			<h3>Namespaces</h3>
+			<ul>
+				<li class="main"><a href="namespace-MyWrapper.html">MyWrapper<span></span></a>
+						<ul>
+				<li class="main"><a href="namespace-MyWrapper.Framework.html">Framework</a>
+						</li>
+				<li class="main"><a href="namespace-MyWrapper.Persistence.html">Persistence</a>
+						</li>
+							</ul></li>
+				<li class="active"><a href="namespace-None.html">None</a>
+						</li>
+				<li><a href="namespace-PHP.html">PHP</a>
+						</li>
+			</ul>
+		</div>
+
+		<hr />
+
+
+		<div id="elements">
+
+
+
+
+
+			<h3>Functions</h3>
+			<ul>
+				<li><a href="function-DurationString.html">DurationString</a></li>
+				<li><a href="function-JsonDecode.html">JsonDecode</a></li>
+				<li><a href="function-JsonEncode.html">JsonEncode</a></li>
+				<li><a href="function-JsonError.html">JsonError</a></li>
+				<li><a href="function-ManageProperty.html">ManageProperty</a></li>
+				<li class="active"><a href="function-StringNormalise.html">StringNormalise</a></li>
+			</ul>
+		</div>
+	</div>
+</div>
+
+<div id="splitter"></div>
+
+<div id="right">
+<div id="rightInner">
+	<form id="search">
+		<input type="hidden" name="cx" value="" />
+		<input type="hidden" name="ie" value="UTF-8" />
+		<input type="text" name="q" class="text" />
+		<input type="submit" value="Search" />
+	</form>
+
+	<div id="navigation">
+		<ul>
+			<li>
+				<a href="index.html" title="Overview"><span>Overview</span></a>
+			</li>
+			<li>
+				<a href="namespace-None.html" title="Summary of None"><span>Namespace</span></a>
+			</li>
+			<li class="active">
+<span>Function</span>			</li>
+		</ul>
+		<ul>
+			<li>
+				<a href="tree.html" title="Tree view of classes, interfaces, traits and exceptions"><span>Tree</span></a>
+			</li>
+		</ul>
+		<ul>
+		</ul>
+	</div>
+
+<div id="content" class="function">
+	<h1>Function StringNormalise</h1>
+
+
+	<div class="description">
+	
+<h4>Normalise string</h4>
+
+<p>This function can be used to format a string, the provided modifiers bitfield
+determines what manipulations are applied:</p>
+
+<ul>
+	<li><tt>kFLAG_MODIFIER_UTF8</tt>: Convert the string to the
+	<tt>UTF8</tt> character set.</li>
+
+	<li><tt>kFLAG_MODIFIER_LTRIM</tt>: Apply left trimming to the
+	string.</li>
+
+	<li><tt>kFLAG_MODIFIER_RTRIM</tt>: Apply right trimming to the
+	string.</li>
+
+	<li><tt>kFLAG_MODIFIER_TRIM</tt>: Apply both left and right trimming to
+	the string.</li>
+
+	<li><tt>kFLAG_MODIFIER_NULL</tt>: If the resulting string is empty, the
+	method will return <tt>NULL</tt>.
+		<ul>
+			<li><tt>kFLAG_MODIFIER_NULLSTR kFLAG_MODIFIER_NULLSTR</tt>: If this flag
+			is set and the resulting string is empty, the method will return the
+			'<tt>NULL</tt>' string.</li>
+		</ul>
+	</li>
+
+	<li><tt>kFLAG_MODIFIER_NOCASE</tt>: Set the string to lowercase, this is
+	the default way to generate a case insensitive string.</li>
+
+	<li><tt>kFLAG_MODIFIER_URL</tt>: URL-encode the string; note that this
+	option and kFLAG_MODIFIER_HTML kFLAG_MODIFIER_HTML are mutually
+	exclusive.</li>
+
+	<li><tt>kFLAG_MODIFIER_HTML</tt>: HTML-encode the string; note that this
+	option and kFLAG_MODIFIER_URL are mutually exclusive.</li>
+
+	<li><tt>kFLAG_MODIFIER_HEX</tt>: Convert the string to hexadecimal; note
+	that this option and kFLAG_MODIFIER_MASK_HASH are mutually exclusive.
+		<ul>
+			<li><tt>kFLAG_MODIFIER_HEXEXP</tt>: Convert the string to a hexadecimal
+			expression; note that this option and kFLAG_MODIFIER_MASK_HASH are
+			mutually exclusive.</li>
+		</ul>
+	</li>
+
+	<li><tt>kFLAG_MODIFIER_HASH</tt>: If this bit is set, the resulting
+	string will be hashed using the <tt>md5</tt> algorithm resulting in a 32
+	character hexadecimal string; this option is mutually exclusive with the kFLAG_MODIFIER_MASK_HEX option.
+		<ul>
+			<li><tt>kFLAG_MODIFIER_HASH_BIN</tt>: If this bit is set, the resulting
+			value should be a 16 character binary string; if the bit is <tt>OFF</tt>, the
+			resulting value should be a 32 character hexadecimal string.</li>
+		</ul>
+	</li>
+</ul>
+
+<p>The order in which these modifications are applied are as stated.</p>
+
+	</div>
+
+	<div class="info">
+		
+		<b>Package:</b> MyWrapper\Functions<br />
+				<b>Author:</b>
+				Milko A. Škofič &lt;<a
+href="mailto:m.skofic&#64;cgiar.org">m.skofic&#64;<!---->cgiar.org</a>&gt;<br />
+				<b>See:</b>
+				kFLAG_DEFAULT, kFLAG_MODIFIER_MASK<br />
+				<b>See:</b>
+				kFLAG_MODIFIER_UTF8<br />
+				<b>See:</b>
+				kFLAG_MODIFIER_LTRIM, kFLAG_MODIFIER_RTRIM, kFLAG_MODIFIER_TRIM<br />
+				<b>See:</b>
+				kFLAG_MODIFIER_NULL, kFLAG_MODIFIER_NULLSTR<br />
+				<b>See:</b>
+				kFLAG_MODIFIER_NOCASE, kFLAG_MODIFIER_URL, kFLAG_MODIFIER_HTML<br />
+				<b>See:</b>
+				kFLAG_MODIFIER_HEX, kFLAG_MODIFIER_HEXEXP<br />
+				<b>See:</b>
+				kFLAG_MODIFIER_HASH, kFLAG_MODIFIER_HASH_BIN<br />
+		<b>Located at</b> <a href="source-function-StringNormalise.html#49" title="Go to source code">string.php</a><br />
+	</div>
+
+
+	<table class="summary" id="parameters">
+	<caption>Parameters summary</caption>
+	<tr data-order="theString" id="$theString">
+		<td class="name"><code>
+			string
+		</code></td>
+		<td class="value"><code><var>$theString</var></code></td>
+		<td>
+			 String to normalise.
+		</td>
+	</tr>
+	<tr data-order="theModifiers" id="$theModifiers">
+		<td class="name"><code>
+			bitfield
+		</code></td>
+		<td class="value"><code><var>$theModifiers</var> = kFLAG_DEFAULT</code></td>
+		<td>
+			 Modifiers bitfield.
+		</td>
+	</tr>
+	</table>
+
+	<table class="summary" id="returns">
+	<caption>Return value summary</caption>
+	<tr>
+		<td class="name"><code>
+			mixed
+		</code></td>
+		<td>
+			Normalised string.
+		</td>
+	</tr>
+	</table>
+
+
+</div>
+
+	<div id="footer">
+		MyWrapper Reference Documentation API documentation generated by <a href="http://apigen.org">ApiGen 2.7.0</a>
+	</div>
+</div>
+</div>
+</body>
+</html>

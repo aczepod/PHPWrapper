@@ -1,0 +1,168 @@
+(_id: node ID, _term: term reference, _kind: node type, _type: data type)
+
+NODES:
+
+_id:		1
+_term:		:USER
+_kind:		:ROOT;:TRAIT
+_type:
+
+_id:		2
+_term:		:CODE
+_kind:		:METHOD;:SCALE
+_type:		:STRING
+
+_id:		3
+_term:		:PASSWORD
+_kind:		:METHOD;:SCALE
+_type:		:STRING
+
+_id:		4
+_term:		:NAME
+_kind:		:METHOD;:SCALE
+_type:		:STRING
+
+_id:		5
+_term:		:EMAIL
+_kind:		:METHOD;:SCALE
+_type:		:STRING
+
+_id:		6
+_term:		:ROLE
+_kind:		:METHOD;:SCALE
+_type:		:ENUM
+
+_id:		7
+_term:		:ADMIN
+_kind:		:ENUM
+_type:		:ENUM
+
+_id:		8
+_term:		:CATALOGUE-USER
+_kind:		:ENUM
+_type:		:ENUM
+
+_id:		9
+_term:		:INVENTORY-USER
+_kind:		:ENUM
+_type:		:ENUM
+
+_id:		10
+_term:		:COLLECTION-USER
+_kind:		:ENUM
+_type:		:ENUM
+
+_id:		11
+_term:		:GENERIC-USER
+_kind:		:ENUM
+_type:		:ENUM
+
+_id:		12
+_term:		:PERMISSIONS-USER
+_kind:		:METHOD;:SCALE
+_type:		:SET
+
+_id:		13
+_term:		:CREATE
+_kind:		:ENUM
+_type:		:ENUM
+
+_id:		14
+_term:		:LIST
+_kind:		:ENUM
+_type:		:ENUM
+
+_id:		15
+_term:		:READ
+_kind:		:ENUM
+_type:		:ENUM
+
+_id:		16
+_term:		:MODIFY
+_kind:		:ENUM
+_type:		:ENUM
+
+_id:		17
+_term:		:DELETE
+_kind:		:ENUM
+_type:		:ENUM
+
+_id:		18
+_term:		:PERMISSIONS-PASSPORT
+_kind:		:METHOD;:SCALE
+_type:		:SET
+
+_id:		19
+_term:		:CREATE
+_kind:		:ENUM
+_type:		:ENUM
+
+_id:		20
+_term:		:LIST
+_kind:		:ENUM
+_type:		:ENUM
+
+_id:		21
+_term:		:READ
+_kind:		:ENUM
+_type:		:ENUM
+
+_id:		22
+_term:		:MODIFY
+_kind:		:ENUM
+_type:		:ENUM
+
+_id:		23
+_term:		:DELETE
+_kind:		:ENUM
+_type:		:ENUM
+
+_id:		24
+_term:		:PUBLISH
+_kind:		:ENUM
+_type:		:ENUM
+
+_id:		25
+_term:		:UNPUBLISH
+_kind:		:ENUM
+_type:		:ENUM
+
+_id:		26
+_term:		:PERMISSIONS-DATASET
+_kind:		:METHOD;:SCALE
+_type:		:SET
+
+_id:		27
+_term:		:CREATE
+_kind:		:ENUM
+_type:		:ENUM
+
+_id:		28
+_term:		:LIST
+_kind:		:ENUM
+_type:		:ENUM
+
+_id:		29
+_term:		:READ
+_kind:		:ENUM
+_type:		:ENUM
+
+_id:		30
+_term:		:MODIFY
+_kind:		:ENUM
+_type:		:ENUM
+
+_id:		31
+_term:		:DELETE
+_kind:		:ENUM
+_type:		:ENUM
+
+_id:		32
+_term:		:PUBLISH
+_kind:		:ENUM
+_type:		:ENUM
+
+_id:		33
+_term:		:UNPUBLISH
+_kind:		:ENUM
+_type:		:ENUM
