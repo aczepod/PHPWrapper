@@ -62,15 +62,14 @@ require_once( kPATH_MYWRAPPER_LIBRARY_DEFINE."/Flags.inc.php" );
 	 *	<li><tt>{@link kFLAG_MODIFIER_NULL}</tt>: If the resulting string is empty, the
 	 *		method will return <tt>NULL</tt>.
 	 *	 <ul>
-	 *		<li><tt>{@link kFLAG_MODIFIER_NULLSTR kFLAG_MODIFIER_NULLSTR}</tt>: If this flag
-	 *			is set and the resulting string is empty, the method will return the
-	 *			'<tt>NULL</tt>' string.
+	 *		<li><tt>{@link kFLAG_MODIFIER_NULLSTR}</tt>: If this flag is set and the
+	 *			resulting string is empty, the method will return the '<tt>NULL</tt>'
+	 *			string.
 	 *	 </ul>
 	 *	<li><tt>{@link kFLAG_MODIFIER_NOCASE}</tt>: Set the string to lowercase, this is the
 	 *		default way to generate a case insensitive string.
 	 *	<li><tt>{@link kFLAG_MODIFIER_URL}</tt>: URL-encode the string; note that this
-	 *		option and {@link kFLAG_MODIFIER_HTML kFLAG_MODIFIER_HTML} are mutually
-	 *		exclusive.
+	 *		option and {@link kFLAG_MODIFIER_HTML} are mutually exclusive.
 	 *	<li><tt>{@link kFLAG_MODIFIER_HTML}</tt>: HTML-encode the string; note that this
 	 *		option and {@link kFLAG_MODIFIER_URL} are mutually exclusive.
 	 *	<li><tt>{@link kFLAG_MODIFIER_HEX}</tt>: Convert the string to hexadecimal; note
