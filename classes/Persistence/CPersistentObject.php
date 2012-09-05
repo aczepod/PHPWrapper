@@ -24,24 +24,40 @@
  *
  * This includes the ancestor class definitions.
  */
-use MyWrapper\Framework\CPersistentDocument;
+use MyWrapper\Persistence\CPersistentDocument;
+
+/**
+ * Containers.
+ *
+ * This includes the containers ancestor class definitions.
+ * Included to declare the CContainer class.
+ */
+use MyWrapper\Framework\CContainer;
 
 /**
  * <h3>Persistent object ancestor</h3>
  *
- * This class extends its {@link CPersistentDocument} ancestor to manage a series of
- * predefined object attributes.
+ * This <i>abstract</i> class extends its {@link CPersistentDocument} ancestor to handle
+ * predefined offsets and a specific identification workflow.
  *
- * Concrete instances derived from this class are uniquely identified by a string which is
- * extracted from a combination of the object attributes. This string is returned by a
- * protected method, {@link _index()}, and set as an attribute of the object with the
- * {@link kTAG_GID} offset. The object's local unique identifier, {@link kTAG_LID}, and
- * native key is set by a protected method, {@link _id()}, this method must either use the
- * string returned by {@link _insed()} as-is, or hash the value to make it shorter.
+ * This class implements an identification interface that governs how objects derived from
+ * this class are identified within their container.
  *
- * Instances derived from this class set by default another offset, {@link kTAG_CLASS},
- * which records the class name: this will be used by the static {@link Create()} method to
- * instantiate the correct class when retrieving objects from a container.
+ * The object is uniquely identified by a string, the <i>global unique identifier</i>, this
+ * string is generally a combination of the object's attributes and once set, it should not
+ * change. The string is determined by a protected method, {@link _index()}, and optionally
+ * set into a predefined offset, {@link kTAG_GID}.
+ *
+ * This value is used by a static method, {@link _id()}, which processes or uses that value
+ * as-is to set the object's <i>local unique identifier</i> in the {@link kTAG_LID} offset.
+ * This static method can also be used to obtain the primary key of an object, given the
+ * global identifier string. The method expects the container to which the object is going
+ * to be committed as a parameter, to use its custom data conversion methods.
+ *
+ * Objects derived from this class store their class name in the {@link kTAG_CLASS} offset,
+ * this will be used by the static {@link NewObject()} method to instantiate the right object.
+ *
+ * The class implements the above workflow by overloading the {@link _Precommit()} method.
  *
  *	@package	MyWrapper
  *	@subpackage	Persistence
@@ -59,15 +75,24 @@ class CPersistentObject extends CPersistentDocument
 
 	 
 	/*===================================================================================
-	 *	Create																			*
+	 *	NewObject																		*
 	 *==================================================================================*/
 
 	/**
-	 * <h4>Create an object from a container</h4>
+	 * <h4>Instantiate an object from a container</h4>
 	 *
 	 * We override this method to handle the {@link kTAG_CLASS} offset: if found in the
 	 * retrieved object, it will be used to instantiate the correct class. If the offset is
-	 * missing, the instantiated object will be of this class.
+	 * missing, the method will instantiate this class.
+	 *
+	 * The method expects two parameters:
+	 *
+	 * <ul>
+	 *	<li><tt>$theContainer</tt>: A concrete instance of the
+	 *		{@link  MyWrapper\Framework\CContainer} class.
+	 *	<li><tt>$theIdentifier</tt>: The key of the object in the container, by default the
+	 *		{@link kTAG_LID} offset.
+	 * </ul>
 	 *
 	 * If the object could not be located, the method will return <tt>NULL</tt>.
 	 *
@@ -77,12 +102,18 @@ class CPersistentObject extends CPersistentDocument
 	 * @static
 	 * @return mixed				The retrieved object.
 	 */
-	static function Create( CContainer $theContainer, $theIdentifier )
+	static function NewObject( CContainer $theContainer,
+										  $theIdentifier )
 	{
+		//
+		// Init local storage.
+		//
+		$object = array( kTAG_LID => $theIdentifier );
+		
 		//
 		// Retrieve object.
 		//
-		if( $theContainer->ManageObject( $object, $theIdentifier ) )
+		if( $theContainer->ManageObject( $object ) )
 		{
 			//
 			// Handle custom class.
@@ -108,9 +139,10 @@ class CPersistentObject extends CPersistentDocument
 				$object = new self( $object );
 			
 			//
-			// Set committed status.
+			// Post-commit.
 			//
-			$object->_IsCommitted( TRUE );
+			if( $object instanceof CPersistentDocument )
+				$object->_Postcommit( $theContainer );
 			
 			return $object;															// ==>
 		
@@ -118,293 +150,7 @@ class CPersistentObject extends CPersistentDocument
 		
 		return NULL;																// ==>
 	
-	} // Create.
-		
-
-
-/*=======================================================================================
- *																						*
- *								PUBLIC PERSISTENCE INTERFACE							*
- *																						*
- *======================================================================================*/
-
-
-	 
-	/*===================================================================================
-	 *	Insert																			*
-	 *==================================================================================*/
-
-	/**
-	 * <h4>Insert the object into a container</h4>
-	 *
-	 * We overload this method to prepare the object before it gets committed, or this we
-	 * call the {@link _PrepareInsert()} protected interface before calling the parent
-	 * method.
-	 *
-	 * @param CContainer			$theContainer		Container.
-	 *
-	 * @access public
-	 * @return mixed				The object's local identifier.
-	 *
-	 * @uses _PrepareInsert()
-	 */
-	public function Insert( CContainer $theContainer )
-	{
-		//
-		// Check if necessary.
-		//
-		if( $this->_IsDirty()
-		 || (! $this->_IsCommitted()) )
-		{
-			//
-			// Only if inited.
-			//
-			if( $this->_IsInited() )
-			{
-				//
-				// Commit object.
-				//
-				$status = $theContainer->ManageObject( $this, NULL, kFLAG_PERSIST_INSERT );
-				
-				//
-				// Set commit status.
-				//
-				$this->_IsCommitted( TRUE );
-				
-				//
-				// Reset dirty status.
-				//
-				$this->_IsDirty( FALSE );
-				
-				return $status;														// ==>
-			
-			} // Object is ready.
-			
-			throw new \Exception
-				( "The object is not initialised",
-				  kERROR_STATE );												// !@! ==>
-		
-		} // Dirty or not yet committed.
-		
-		return NULL;																// ==>
-	
-	} // Insert.
-
-	 
-	/*===================================================================================
-	 *	Update																			*
-	 *==================================================================================*/
-
-	/**
-	 * <h4>Update the object from a container</h4>
-	 *
-	 * This method will update the current object into the provided container, if the object
-	 * cannot be found in the container, the method will raise an exception.
-	 *
-	 * The method expects a single parameter, <tt>$theContainer</tt>, which represents the
-	 * container in which the object should be stored. This container must be a concrete
-	 * instance of the {@link CContainer} class.
-	 *
-	 * The operation will only be performed if the object is not yet committed or if the
-	 * object has its {@link _IsDirty()} dirty status set, if not, the method will do
-	 * nothing.
-	 *
-	 * Once the object has been stored, it will have its {@link _IsCommitted()} status set
-	 * and its {@link _IsDirty()} status reset.
-	 *
-	 * The method will raise an exception if the object has not the {@link _IsInited()}
-	 * status set.
-	 *
-	 * @param CContainer			$theContainer		Container.
-	 *
-	 * @access public
-	 *
-	 * @uses _IsDirty()
-	 * @uses _IsInited()
-	 * @uses _IsCommitted()
-	 */
-	public function Update( CContainer $theContainer )
-	{
-		//
-		// Check if necessary.
-		//
-		if( $this->_IsDirty()
-		 || (! $this->_IsCommitted()) )
-		{
-			//
-			// Only if inited.
-			//
-			if( ! $this->_IsInited() )
-				throw new \Exception
-					( "The object is not initialised",
-					  kERROR_STATE );											// !@! ==>
-			
-			//
-			// Commit object.
-			//
-			if( ! $theContainer->ManageObject( $this, NULL, kFLAG_PERSIST_UPDATE ) )
-				throw new \Exception
-					( "Object not found",
-					  kERROR_NOT_FOUND );										// !@! ==>
-		
-			//
-			// Set commit status.
-			//
-			$this->_IsCommitted( TRUE );
-			
-			//
-			// Reset dirty status.
-			//
-			$this->_IsDirty( FALSE );
-		
-		} // Dirty or not yet committed.
-	
-	} // Update.
-
-	 
-	/*===================================================================================
-	 *	Replace																			*
-	 *==================================================================================*/
-
-	/**
-	 * <h4>Replace the object into a container</h4>
-	 *
-	 * This method will insert the current object into the provided container, if not found,
-	 * or update the object if already there.
-	 *
-	 * The method expects a single parameter, <tt>$theContainer</tt>, which represents the
-	 * container in which the object should be stored. This container must be a concrete
-	 * instance of the {@link CContainer} class.
-	 *
-	 * The operation will only be performed if the object is not yet committed or if the
-	 * object has its {@link _IsDirty()} dirty status set, if not, the method will do
-	 * nothing.
-	 *
-	 * Once the object has been stored, it will have its {@link _IsCommitted()} status set
-	 * and its {@link _IsDirty()} status reset.
-	 *
-	 * The method will raise an exception if the object has not the {@link _IsInited()}
-	 * status set.
-	 *
-	 * The method may set the local unique identifier attribute ({@link kTAG_LID}) if not
-	 * provided.
-	 *
-	 * The method will return the object's local unique identifier attribute
-	 * ({@link kTAG_LID}) or <tt>NULL</tt> if the operation is not necessary.
-	 *
-	 * @param CContainer			$theContainer		Container.
-	 *
-	 * @access public
-	 * @return mixed				The object's local identifier.
-	 *
-	 * @uses _IsDirty()
-	 * @uses _IsInited()
-	 * @uses _IsCommitted()
-	 */
-	public function Replace( CContainer $theContainer )
-	{
-		//
-		// Check if necessary.
-		//
-		if( $this->_IsDirty()
-		 || (! $this->_IsCommitted()) )
-		{
-			//
-			// Only if inited.
-			//
-			if( $this->_IsInited() )
-			{
-				//
-				// Commit object.
-				//
-				$status = $theContainer->ManageObject( $this, NULL, kFLAG_PERSIST_REPLACE );
-				
-				//
-				// Set commit status.
-				//
-				$this->_IsCommitted( TRUE );
-				
-				//
-				// Reset dirty status.
-				//
-				$this->_IsDirty( FALSE );
-				
-				return $status;														// ==>
-			
-			} // Object is ready.
-			
-			throw new \Exception
-				( "The object is not initialised",
-				  kERROR_STATE );												// !@! ==>
-		
-		} // Dirty or not yet committed.
-		
-		return NULL;																// ==>
-	
-	} // Replace.
-
-	 
-	/*===================================================================================
-	 *	Delete																			*
-	 *==================================================================================*/
-
-	/**
-	 * <h4>Delete the object from a container</h4>
-	 *
-	 * This method will remove the current object from the provided container.
-	 *
-	 * The method expects a single parameter, <tt>$theContainer</tt>, which represents the
-	 * container in which the object should be stored. This container must be a concrete
-	 * instance of the {@link CContainer} class.
-	 *
-	 * The method will raise an exception if the object has not the {@link _IsInited()}
-	 * status set.
-	 *
-	 * Once the object has been deleted, it will have its {@link _IsCommitted()} status and
-	 * its {@link _IsDirty()} status reset.
-	 *
-	 * The method will return <tt>TRUE</tt> if the object was deleted or <tt>FALSE</tt> if
-	 * the object was not found in the container.
-	 *
-	 * @param CContainer			$theContainer		Container.
-	 *
-	 * @access public
-	 * @return boolean				<tt>TRUE</tt> deleted, <tt>FALSE</tt> not found.
-	 *
-	 * @uses _IsDirty()
-	 * @uses _IsInited()
-	 * @uses _IsCommitted()
-	 */
-	public function Delete( CContainer $theContainer )
-	{
-		//
-		// Only if inited.
-		//
-		if( ! $this->_IsInited() )
-			throw new \Exception
-				( "The object is not initialised",
-				  kERROR_STATE );												// !@! ==>
-		
-		//
-		// Delete object.
-		//
-		if( $theContainer->ManageObject( $this, NULL, kFLAG_PERSIST_DELETE ) )
-		{
-			//
-			// Reset commit status.
-			//
-			$this->_IsCommitted( FALSE );
-			
-			//
-			// Reset dirty status.
-			//
-			$this->_IsDirty( FALSE );
-		
-		} // Deleted.
-		
-		return FALSE;																// ==>
-	
-	} // Delete.
+	} // NewObject.
 		
 
 
@@ -417,26 +163,40 @@ class CPersistentObject extends CPersistentDocument
 
 	 
 	/*===================================================================================
-	 *	HashIndex																		*
+	 *	_id																				*
 	 *==================================================================================*/
 
 	/**
-	 * <h4>Hash index</h4>
+	 * <h4>Generate the object's local unique identifier</h4>
 	 *
-	 * This method is used to obtain a value that can be used as a local unique identifier
-	 * to store or locate an object. It expects a string in input as the one that would be
-	 * returned by the {@link _index()} method and should return the value that would be
-	 * used as the object's local unique identifier, {@link kTAG_LID}.
+	 * This method is used to generate the object's <i>local unique identifier</i> from the
+	 * string representing the object's <i>global unique identifier</i>.
 	 *
-	 * By default the result of the {@link _index()} method is used as-is, derived classes
-	 * should implement this method if they need a hashed value.
+	 * The method expects a string as input and should either return it as-is, or hash it.
+	 * This method will be used to set the {@link kTAG_LID} offset which represents the
+	 * primary key of the object and can be used to generate a primary key given the global
+	 * unique identifier of the object. The second parameter to this method is the container
+	 * that will receive the object, this can be useful if it provides custom data
+	 * conversion methods.
 	 *
-	 * @param string				$theValue			Value to hash.
+	 * Note that if the provided value is <tt>NULL</tt>, this means that it is the duty of
+	 * the container to set the object's primary key, in this case this method cannot be
+	 * used to generate a local identifier, since the object does not have a global
+	 * identifier.
+	 *
+	 * In this class we use the global identifier as-is.
+	 *
+	 * @param string				$theIdentifier		Global unique identifier.
+	 * @param CContainer			$theContainer		Container.
 	 *
 	 * @static
-	 * @return string
+	 * @return mixed				The object's local unique identifier.
 	 */
-	static function HashIndex( $theValue )							{	return $theValue;	}
+	static function _id( $theIdentifier = NULL, CContainer $theContainer = NULL )
+	{
+		return $theIdentifier;
+	
+	} // _id.
 		
 
 
@@ -449,37 +209,6 @@ class CPersistentObject extends CPersistentDocument
 
 	 
 	/*===================================================================================
-	 *	_id																				*
-	 *==================================================================================*/
-
-	/**
-	 * <h4>Return the object's local unique identifier</h4>
-	 *
-	 * This method should return the object's local unique identifier, this value will be
-	 * stored in the {@link kTAG_LID} offset and represent the object's unique key or native
-	 * primary key of the container.
-	 *
-	 * By default, this value must correspond in some way to the global unique identifier
-	 * which is generated by the {@link _index()} protected method and optionally stored in
-	 * the {@link kTAG_GID} offset. In general this method will return the value of
-	 * {@link _index()} as-is, or hashed.
-	 *
-	 * This method will be called before committing the object to a container and only if
-	 * the {@link kTAG_LID} offset does not yet exist.
-	 *
-	 * By default this method uses the static {@link HashIndex()} method to format the
-	 * identifier, derived classes should overload the static method if they want to hash
-	 * the id.
-	 *
-	 * @access protected
-	 * @return mixed				The object's local unique identifier.
-	 *
-	 * @uses _index()
-	 */
-	protected function _id()			{	return self::HashIndex( $this->_index() );		}
-
-	 
-	/*===================================================================================
 	 *	_index																			*
 	 *==================================================================================*/
 
@@ -488,25 +217,24 @@ class CPersistentObject extends CPersistentDocument
 	 *
 	 * This method should return the object's global unique identifier, this value is
 	 * represented by a string which is generally extracted from selected attributes of the
-	 * object and must represent the unique key of the object.
+	 * object and represents the unique key of the object.
 	 *
-	 * This string is optionally stored in the {@link kTAG_GID} offset of the object and is
-	 * used unchanged or hashed to generate the object's local unique identifier returned by
-	 * the {@link _id()} method.
+	 * This string is optionally stored in the {@link kTAG_GID} offset of the object and it
+	 * is processed by the static {@link _id()} method resulting in the object's local
+	 * unique identifier, which is the native object's primary key stored in the
+	 * {@link kTAG_LID} offset.
+	 *
+	 * This method can return a meaningful value only if the object has all required
+	 * properties, so, if the class features a global identifier, this method should first
+	 * check is the object is {@link _IsInited()}, if that is not the case it should raise
+	 * an exception.
 	 *
 	 * If this method returns <tt>NULL</tt>, it means that the local unique identifier is
 	 * generated by the container that will store the object, in that case the
-	 * {@link kTAG_GID} will most likely not be used.
+	 * {@link kTAG_GID} will not be used.
 	 *
-	 * This method should only be called when generating the object identifier for the first
-	 * time and the object must be in an {@link _IsInited()} state, or this method will
-	 * raise an exception.
-	 *
-	 * This method will be called before committing the object to a container and only if
-	 * the {@link kTAG_GID} offset does not yet exist.
-	 *
-	 * This class has no predefined attributes, so by default it will let the container
-	 * generate the identifier.
+	 * This class has no predefined attributes, so we let the container provide the
+	 * identifier by returning <tt>NULL</tt>.
 	 *
 	 * @access protected
 	 * @return string|NULL			The object's global unique identifier.
@@ -526,52 +254,91 @@ class CPersistentObject extends CPersistentDocument
 
 	 
 	/*===================================================================================
-	 *	_PrepareInsert																	*
+	 *	_Precommit																		*
 	 *==================================================================================*/
 
 	/**
-	 * <h4>Prepare the object before inserting</h4>
+	 * <h4>Prepare the object before committing</h4>
 	 *
-	 * This method will be called before the object gets inserted, its main duty is to:
+	 * In this class we overload this method to set the following properties:
 	 *
 	 * <ul>
-	 *	<li><i>Fill identifiers</i>: The {@link kTAG_LID} and {@link kTAG_GID} offsets will
-	 *		be set if not yet filled.
-	 *	<li><i>Fill class name</i>: The {@link kTAG_CLASS} will be updated with the current
-	 *		class name.
+	 *	<li>{@link _IsInited()}: We check whether the object was initialised, if that is
+	 *		not the case, the method will raise an exception.
+	 *	<li>{@link kTAG_LID}: If missing and if the result of the {@link _index()} method is
+	 *		not <tt>NULL</tt>, we set the local unique identifier by feeding the string
+	 *		returned by {@link _index()} into the {@link _id()} method.
+	 *	<li>{@link kTAG_GID}: If missing and if the result of the {@link _index()} method is
+	 *		not <tt>NULL</tt>, we set the global unique identifier with the result of
+	 *		{@link _index()}.
+	 *	<li>{@link kTAG_CLASS}: If missing, we set this offset to the current class name.
+	 *		Note that we do not set the class automatically, as a superclass may instantiate
+	 *		safely a subclass.
 	 * </ul>
 	 *
-	 * This operation should only be performed the first time the object is committed, by
-	 * default this information should not change once generated.
+	 * @param CContainer			$theContainer		Container.
+	 * @param bitfield				$theModifiers		Commit options.
 	 *
 	 * @access protected
-	 * @return mixed				The object's local unique identifier.
 	 *
+	 * @throws \Exception
+	 *
+	 * @uses _id()
 	 * @uses _index()
+	 * @uses _IsInited()
+	 *
+	 * @see kTAG_LID kTAG_GID kTAG_CLASS
 	 */
-	protected function _PrepareInsert()
+	protected function _Precommit( CContainer $theContainer,
+											  $theModifiers = kFLAG_DEFAULT )
 	{
 		//
-		// Check object status.
+		// Handle commits.
 		//
-		if( ! $this->_IsInited() )
-			throw new \Exception
-				( "The object is not initialised",
-				  kERROR_STATE );												// !@! ==>
-	
-		//
-		// Set local identifier.
-		//
-		if( ! $this->offsetExists( kTAG_LID ) )
-			$this->offsetSet( kTAG_LID, $this->_id() );
-	
-		//
-		// Set global identifier.
-		//
-		if( ! $this->offsetExists( kTAG_GID ) )
-			$this->offsetSet( kTAG_GID, $this->_index() );
-	
-	} // _PrepareInsert.
+		if( $theModifiers & kFLAG_PERSIST_WRITE_MASK )
+		{
+			//
+			// Check if object is inited.
+			//
+			if( ! $this->_IsInited() )
+				throw new \Exception
+					( "The object is not initialised",
+					  kERROR_STATE );											// !@! ==>
+			
+			//
+			// Handle identifier.
+			//
+			if( ! $this->offsetExists( kTAG_LID ) )
+			{
+				//
+				// Get global identifier.
+				//
+				$gid = $this->_index();
+				if( $gid !== NULL )
+				{
+					//
+					// Set global identifier.
+					//
+					$this->offsetSet( kTAG_GID, $gid );
+				
+					//
+					// Set local identifier.
+					//
+					$this->offsetSet( kTAG_LID, $this->_id( $gid, $theContainer ) );
+					
+				} // Has global identifier.
+			
+			} // Missing local identifier.
+			
+			//
+			// Handle class.
+			//
+			if( ! $this->offsetExists( kTAG_CLASS ) )
+				$this->offsetSet( kTAG_CLASS, get_class( $this ) );
+		
+		} // Insert, update, replace and modify (not used).
+		
+	} // _PreCommit.
 
 	 
 

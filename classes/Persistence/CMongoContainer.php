@@ -155,7 +155,12 @@ class CMongoContainer extends CContainer
 	 * @access public
 	 * @return mixed				The native operation status.
 	 *
+	 * @throws Exception
+	 *
 	 * @uses Container()
+	 *
+	 * @see kFLAG_PERSIST_MASK kFLAG_PERSIST_INSERT kFLAG_PERSIST_UPDATE
+	 * @see kFLAG_PERSIST_REPLACE kFLAG_PERSIST_MODIFY kFLAG_PERSIST_DELETE
 	 */
 	public function ManageObject( &$theObject,
 								   $theIdentifier = NULL,
@@ -469,6 +474,9 @@ class CMongoContainer extends CContainer
 	 *
 	 * This method will take care of converting binary data to and from Mongo data stores,
 	 * we use here the {@link MongoBinData} class.
+	 *
+	 * This method can be used by the {@link CPersistentObject::_id()} method when
+	 * generating a hashed identifier.
 	 *
 	 * @param mixed					$theValue			Binary value.
 	 * @param boolean				$theSense			<tt>TRUE</tt> encode for database.

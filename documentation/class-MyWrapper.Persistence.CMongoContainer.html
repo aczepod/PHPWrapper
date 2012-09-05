@@ -7,7 +7,7 @@
 	<title>Class MyWrapper\Persistence\CMongoContainer | MyWrapper Reference Documentation</title>
 
 	<script type="text/javascript" src="resources/combined.js?496895167"></script>
-	<script type="text/javascript" src="elementlist.js?3375725984"></script>
+	<script type="text/javascript" src="elementlist.js?3036642770"></script>
 	<link rel="stylesheet" type="text/css" media="all" href="resources/style.css?1567499433" />
 
 </head>
@@ -43,6 +43,7 @@
 			<ul>
 				<li class="active"><a href="class-MyWrapper.Persistence.CMongoContainer.html">CMongoContainer</a></li>
 				<li><a href="class-MyWrapper.Persistence.CPersistentDocument.html">CPersistentDocument</a></li>
+				<li><a href="class-MyWrapper.Persistence.CPersistentObject.html">CPersistentObject</a></li>
 			</ul>
 
 
@@ -310,7 +311,16 @@
 					<code>mixed</code><br>The native operation status.<br />
 				</div>
 
+				<h4>Throws</h4>
+				<div class="list">
+					<code><code><a href="class-Exception.html">Exception</a></code></code><br />
+				</div>
 
+				<h4>See</h4>
+				<div class="list">
+						kFLAG_PERSIST_MASK kFLAG_PERSIST_INSERT kFLAG_PERSIST_UPDATE<br />
+						kFLAG_PERSIST_REPLACE kFLAG_PERSIST_MODIFY kFLAG_PERSIST_DELETE<br />
+				</div>
 				<h4>Uses</h4>
 				<div class="list">
 						<code><code><a href="class-MyWrapper.Persistence.CMongoContainer.html#_">MyWrapper\Persistence\CMongoContainer::Container()</a></code></code> <br />
@@ -318,6 +328,58 @@
 
 				<h4>Overrides</h4>
 				<div class="list"><code><a href="class-MyWrapper.Framework.CContainer.html#_">MyWrapper\Framework\CContainer::ManageObject</a></code></div>
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="ConvertBinary" id="_ConvertBinary">
+
+		<td class="attributes"><code>
+			 public static
+			mixed
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_ConvertBinary">#</a>
+		<code><a href="source-class-MyWrapper.Persistence.CMongoContainer.html#472" title="Go to source code">ConvertBinary</a>( <span>mixed <var>$theValue</var></span>, <span>boolean <var>$theSense</var> = <span class="php-keyword1">TRUE</span> </span> )</code>
+
+		<div class="description short">
+			
+<h4>Convert a binary string</h4>
+
+		</div>
+
+		<div class="description detailed hidden">
+			
+<h4>Convert a binary string</h4>
+
+<p>This method will take care of converting binary data to and from Mongo data
+stores, we use here the MongoBinData class.</p>
+
+<p>This method can be used by the <code><a href="class-MyWrapper.Persistence.CPersistentObject.html#_">MyWrapper\Persistence\CPersistentObject::_id()</a></code> method when
+generating a hashed identifier.</p>
+
+
+
+				<h4>Parameters</h4>
+				<div class="list"><dl>
+					<dt><var>$theValue</var></dt>
+					<dd><code>mixed</code><br> Binary value.</dd>
+					<dt><var>$theSense</var></dt>
+					<dd><code>boolean</code><br> <tt>TRUE</tt> encode for database.</dd>
+				</dl></div>
+
+				<h4>Returns</h4>
+				<div class="list">
+					<code>mixed</code><br>The encoded or decoded binary string.<br />
+				</div>
+
+
+
+				<h4>Overrides</h4>
+				<div class="list"><code><a href="class-MyWrapper.Framework.CContainer.html#_">MyWrapper\Framework\CContainer::ConvertBinary</a></code></div>
 
 		</div>
 		</div></td>
@@ -333,7 +395,7 @@
 
 		<td class="name"><div>
 		<a class="anchor" href="#__Container">#</a>
-		<code><a href="source-class-MyWrapper.Persistence.CMongoContainer.html#467" title="Go to source code">_Container</a>( )</code>
+		<code><a href="source-class-MyWrapper.Persistence.CMongoContainer.html#510" title="Go to source code">_Container</a>( )</code>
 
 		<div class="description short">
 			

@@ -150,7 +150,7 @@ abstract class CContainer extends CStatusDocument
 	 * <ul>
 	 *	<li><tt>NULL</tt>: Return the current value.
 	 *	<li><tt>FALSE</tt>: Delete the current value.
-	 *	<li><tt>other</tt>: Set the value with the provided parameter.
+	 *	<li><i>other</i>: Set the value with the provided parameter.
 	 * </ul>
 	 *
 	 * The second parameter is a boolean which if <tt>TRUE</tt> will return the <i>old</i>
@@ -169,6 +169,7 @@ abstract class CContainer extends CStatusDocument
 	 * @access public
 	 * @return mixed				<i>New</i> or <i>old</i> native container.
 	 *
+	 * @uses _IsInited()
 	 * @uses ManageProperty()
 	 */
 	public function Container( $theValue = NULL, $getOld = FALSE )
@@ -294,6 +295,8 @@ abstract class CContainer extends CStatusDocument
 	 *
 	 * @access public
 	 * @return mixed				The native operation status.
+	 *
+	 * @uses _IsInited()
 	 *
 	 * @see kFLAG_PERSIST_INSERT kFLAG_PERSIST_UPDATE kFLAG_PERSIST_MODIFY
 	 * @see kFLAG_PERSIST_REPLACE kFLAG_PERSIST_MODIFY kFLAG_PERSIST_DELETE

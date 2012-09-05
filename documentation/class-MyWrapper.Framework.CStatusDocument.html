@@ -7,7 +7,7 @@
 	<title>Class MyWrapper\Framework\CStatusDocument | MyWrapper Reference Documentation</title>
 
 	<script type="text/javascript" src="resources/combined.js?496895167"></script>
-	<script type="text/javascript" src="elementlist.js?3375725984"></script>
+	<script type="text/javascript" src="elementlist.js?3036642770"></script>
 	<link rel="stylesheet" type="text/css" media="all" href="resources/style.css?1567499433" />
 
 </head>
@@ -146,7 +146,8 @@ bitfield into a 32 bit integer which uses the last bit as the sign.</i></p>
 
 	<div>
 		<h4>Indirect known subclasses</h4>
-			<a href="class-MyWrapper.Persistence.CMongoContainer.html">MyWrapper\Persistence\CMongoContainer</a>
+			<a href="class-MyWrapper.Persistence.CMongoContainer.html">MyWrapper\Persistence\CMongoContainer</a>, 
+			<a href="class-MyWrapper.Persistence.CPersistentObject.html">MyWrapper\Persistence\CPersistentObject</a>
 	</div>
 
 
@@ -189,7 +190,7 @@ bitfield into a 32 bit integer which uses the last bit as the sign.</i></p>
 <h4>Set a value for a given offset</h4>
 
 <p>We override this method to handle the dirty flag: when the value changes, we
-turn the kFLAG_STATE_DIRTY status flag on.</p>
+turn the <code><a href="class-MyWrapper.Framework.CStatusDocument.html#_">MyWrapper\Framework\CStatusDocument::_IsDirty()</a></code> status flag on.</p>
 
 
 
@@ -203,10 +204,6 @@ turn the kFLAG_STATE_DIRTY status flag on.</p>
 
 
 
-				<h4>See</h4>
-				<div class="list">
-						kFLAG_STATE_DIRTY<br />
-				</div>
 				<h4>Uses</h4>
 				<div class="list">
 						<code><code><a href="class-MyWrapper.Framework.CStatusDocument.html#_">MyWrapper\Framework\CStatusDocument::_IsDirty()</a></code></code> <br />
@@ -231,7 +228,7 @@ turn the kFLAG_STATE_DIRTY status flag on.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#_offsetUnset">#</a>
-		<code><a href="source-class-MyWrapper.Framework.CStatusDocument.html#111" title="Go to source code">offsetUnset</a>( <span>string <var>$theOffset</var></span> )</code>
+		<code><a href="source-class-MyWrapper.Framework.CStatusDocument.html#109" title="Go to source code">offsetUnset</a>( <span>string <var>$theOffset</var></span> )</code>
 
 		<div class="description short">
 			
@@ -244,7 +241,7 @@ turn the kFLAG_STATE_DIRTY status flag on.</p>
 <h4>Reset a value for a given offset</h4>
 
 <p>We override this method to handle the dirty flag: when the value changes, we
-turn the kFLAG_STATE_DIRTY status flag on.</p>
+turn the <code><a href="class-MyWrapper.Framework.CStatusDocument.html#_">MyWrapper\Framework\CStatusDocument::_IsDirty()</a></code> status flag on.</p>
 
 
 
@@ -256,10 +253,6 @@ turn the kFLAG_STATE_DIRTY status flag on.</p>
 
 
 
-				<h4>See</h4>
-				<div class="list">
-						kFLAG_STATE_DIRTY<br />
-				</div>
 				<h4>Uses</h4>
 				<div class="list">
 						<code><code><a href="class-MyWrapper.Framework.CStatusDocument.html#_">MyWrapper\Framework\CStatusDocument::_IsDirty()</a></code></code> <br />
@@ -284,7 +277,7 @@ turn the kFLAG_STATE_DIRTY status flag on.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#_ManageBitField">#</a>
-		<code><a href="source-class-MyWrapper.Framework.CStatusDocument.html#154" title="Go to source code">ManageBitField</a>( <span>reference <var>&amp; $theField</var></span>, <span>bitfield <var>$theMask</var></span>, <span>mixed <var>$theState</var> = <span class="php-keyword1">NULL</span> </span> )</code>
+		<code><a href="source-class-MyWrapper.Framework.CStatusDocument.html#150" title="Go to source code">ManageBitField</a>( <span>reference <var>&amp; $theField</var></span>, <span>bitfield <var>$theMask</var></span>, <span>mixed <var>$theState</var> = <span class="php-keyword1">NULL</span> </span> )</code>
 
 		<div class="description short">
 			
@@ -363,7 +356,7 @@ modified.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#__IsInited">#</a>
-		<code><a href="source-class-MyWrapper.Framework.CStatusDocument.html#225" title="Go to source code">_IsInited</a>( <span>mixed <var>$theState</var> = <span class="php-keyword1">NULL</span> </span> )</code>
+		<code><a href="source-class-MyWrapper.Framework.CStatusDocument.html#221" title="Go to source code">_IsInited</a>( <span>mixed <var>$theState</var> = <span class="php-keyword1">NULL</span> </span> )</code>
 
 		<div class="description short">
 			
@@ -438,7 +431,7 @@ modified.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#__IsDirty">#</a>
-		<code><a href="source-class-MyWrapper.Framework.CStatusDocument.html#273" title="Go to source code">_IsDirty</a>( <span>mixed <var>$theState</var> = <span class="php-keyword1">NULL</span> </span> )</code>
+		<code><a href="source-class-MyWrapper.Framework.CStatusDocument.html#269" title="Go to source code">_IsDirty</a>( <span>mixed <var>$theState</var> = <span class="php-keyword1">NULL</span> </span> )</code>
 
 		<div class="description short">
 			
@@ -515,7 +508,7 @@ modified.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#__IsCommitted">#</a>
-		<code><a href="source-class-MyWrapper.Framework.CStatusDocument.html#318" title="Go to source code">_IsCommitted</a>( <span>mixed <var>$theState</var> = <span class="php-keyword1">NULL</span> </span> )</code>
+		<code><a href="source-class-MyWrapper.Framework.CStatusDocument.html#314" title="Go to source code">_IsCommitted</a>( <span>mixed <var>$theState</var> = <span class="php-keyword1">NULL</span> </span> )</code>
 
 		<div class="description short">
 			
@@ -584,7 +577,7 @@ modified.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#__IsEncoded">#</a>
-		<code><a href="source-class-MyWrapper.Framework.CStatusDocument.html#361" title="Go to source code">_IsEncoded</a>( <span>mixed <var>$theState</var> = <span class="php-keyword1">NULL</span> </span> )</code>
+		<code><a href="source-class-MyWrapper.Framework.CStatusDocument.html#357" title="Go to source code">_IsEncoded</a>( <span>mixed <var>$theState</var> = <span class="php-keyword1">NULL</span> </span> )</code>
 
 		<div class="description short">
 			

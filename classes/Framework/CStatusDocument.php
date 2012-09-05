@@ -77,7 +77,7 @@ class CStatusDocument extends CDocument
 	 * <h4>Set a value for a given offset</h4>
 	 *
 	 * We override this method to handle the dirty flag: when the value changes, we turn the
-	 * {@link kFLAG_STATE_DIRTY} status flag on.
+	 * {@link _IsDirty()} status flag on.
 	 *
 	 * @param string				$theOffset			Offset.
 	 * @param mixed					$theValue			Value to set at offset.
@@ -85,8 +85,6 @@ class CStatusDocument extends CDocument
 	 * @access public
 	 *
 	 * @uses _IsDirty()
-	 *
-	 * @see kFLAG_STATE_DIRTY
 	 */
 	public function offsetSet( $theOffset, $theValue )
 	{
@@ -112,15 +110,13 @@ class CStatusDocument extends CDocument
 	 * <h4>Reset a value for a given offset</h4>
 	 *
 	 * We override this method to handle the dirty flag: when the value changes, we turn the
-	 * {@link kFLAG_STATE_DIRTY} status flag on.
+	 * {@link _IsDirty()} status flag on.
 	 *
 	 * @param string				$theOffset			Offset.
 	 *
 	 * @access public
 	 *
 	 * @uses _IsDirty()
-	 *
-	 * @see kFLAG_STATE_DIRTY
 	 */
 	public function offsetUnset( $theOffset )
 	{

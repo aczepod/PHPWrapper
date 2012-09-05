@@ -7,7 +7,7 @@
 	<title>Class MyWrapper\Framework\CContainer | MyWrapper Reference Documentation</title>
 
 	<script type="text/javascript" src="resources/combined.js?496895167"></script>
-	<script type="text/javascript" src="elementlist.js?3375725984"></script>
+	<script type="text/javascript" src="elementlist.js?3036642770"></script>
 	<link rel="stylesheet" type="text/css" media="all" href="resources/style.css?1567499433" />
 
 </head>
@@ -305,7 +305,7 @@ operation, depending on its value:</p>
 
 	<li><tt>FALSE</tt>: Delete the current value.</li>
 
-	<li><tt>other</tt>: Set the value with the provided parameter.</li>
+	<li><i>other</i>: Set the value with the provided parameter.</li>
 </ul>
 
 <p>The second parameter is a boolean which if <tt>TRUE</tt> will return the
@@ -336,6 +336,7 @@ has been set.</p>
 
 				<h4>Uses</h4>
 				<div class="list">
+						<code><code><a href="class-MyWrapper.Framework.CStatusDocument.html#_">MyWrapper\Framework\CStatusDocument::_IsInited()</a></code></code> <br />
 						<code><code><a href="function-ManageProperty.html">ManageProperty()</a></code></code> <br />
 				</div>
 				<h4>Used by</h4>
@@ -358,7 +359,7 @@ has been set.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#_ManageObject">#</a>
-		<code><a href="source-class-MyWrapper.Framework.CContainer.html#205" title="Go to source code">ManageObject</a>( <span>reference <var>&amp; $theObject</var></span>, <span>mixed <var>$theIdentifier</var> = <span class="php-keyword1">NULL</span></span>, <span>bitfield <var>$theModifiers</var> = kFLAG_DEFAULT </span> )</code>
+		<code><a href="source-class-MyWrapper.Framework.CContainer.html#206" title="Go to source code">ManageObject</a>( <span>reference <var>&amp; $theObject</var></span>, <span>mixed <var>$theIdentifier</var> = <span class="php-keyword1">NULL</span></span>, <span>bitfield <var>$theModifiers</var> = kFLAG_DEFAULT </span> )</code>
 
 		<div class="description short">
 			
@@ -474,6 +475,63 @@ will only check if the current object is inited.</p>
 						kFLAG_PERSIST_INSERT kFLAG_PERSIST_UPDATE kFLAG_PERSIST_MODIFY<br />
 						kFLAG_PERSIST_REPLACE kFLAG_PERSIST_MODIFY kFLAG_PERSIST_DELETE<br />
 				</div>
+				<h4>Uses</h4>
+				<div class="list">
+						<code><code><a href="class-MyWrapper.Framework.CStatusDocument.html#_">MyWrapper\Framework\CStatusDocument::_IsInited()</a></code></code> <br />
+				</div>
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="ConvertBinary" id="_ConvertBinary">
+
+		<td class="attributes"><code>
+			 public static
+			mixed
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_ConvertBinary">#</a>
+		<code><a href="source-class-MyWrapper.Framework.CContainer.html#332" title="Go to source code">ConvertBinary</a>( <span>mixed <var>$theValue</var></span>, <span>boolean <var>$theSense</var> = <span class="php-keyword1">TRUE</span> </span> )</code>
+
+		<div class="description short">
+			
+<h4>Convert a binary string</h4>
+
+		</div>
+
+		<div class="description detailed hidden">
+			
+<h4>Convert a binary string</h4>
+
+<p>This method should be used to convert a binary string to a format compatible
+with the current container.</p>
+
+<p>The first parameter represents the value to be encoded or decoded, the second
+boolean parameter represents the conversion direction: <tt>TRUE</tt> means
+convert for database, <tt>FALSE</tt> convert back to PHP.</p>
+
+<p>By default we convert the string to hexadecimal.</p>
+
+
+
+				<h4>Parameters</h4>
+				<div class="list"><dl>
+					<dt><var>$theValue</var></dt>
+					<dd><code>mixed</code><br> Binary value.</dd>
+					<dt><var>$theSense</var></dt>
+					<dd><code>boolean</code><br> <tt>TRUE</tt> encode for database.</dd>
+				</dl></div>
+
+				<h4>Returns</h4>
+				<div class="list">
+					<code>mixed</code><br>The encoded or decoded binary string.<br />
+				</div>
+
+
 
 
 		</div>
@@ -490,7 +548,7 @@ will only check if the current object is inited.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#__Container">#</a>
-		<code><a href="source-class-MyWrapper.Framework.CContainer.html#329" title="Go to source code">_Container</a>( )</code>
+		<code><a href="source-class-MyWrapper.Framework.CContainer.html#373" title="Go to source code">_Container</a>( )</code>
 
 		<div class="description short">
 			
