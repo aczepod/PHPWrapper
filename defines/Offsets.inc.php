@@ -39,7 +39,7 @@ define( "kOFFSET_NID",							'_id' );
  * This value will constitute the object's native key ({@link kOFFSET_NID}) in full or
  * hashed format.
  */
-define( "kOFFSET_GID",							'_ix' );
+define( "kOFFSET_GID",							'_gid' );
 
 /**
  * Local unique identifier.
@@ -49,7 +49,7 @@ define( "kOFFSET_GID",							'_ix' );
  * domain or namespace. It is by default a string constituting a portion of the global
  * unique identifier, {@link kOFFSET_GID}.
  */
-define( "kOFFSET_LID",							'_ic' );
+define( "kOFFSET_LID",							'_lid' );
 
 /**
  * Namespace.
@@ -58,7 +58,7 @@ define( "kOFFSET_LID",							'_ic' );
  * native unique identifier, {@link kOFFSET_NID}, of the namespace object; if you want to
  * refer to the namespace code, this is not the offset to use.
  */
-define( "kOFFSET_NAMESPACE",					'_ns' );
+define( "kOFFSET_NAMESPACE",					'_nsp' );
 
 /**
  * Class name.
@@ -66,6 +66,30 @@ define( "kOFFSET_NAMESPACE",					'_ns' );
  * This tag identifies the class name of the object, it can be used to instantiate a class
  * rather than return an array when querying containers.
  */
-define( "kOFFSET_CLASS",						'_cl' );
+define( "kOFFSET_CLASS",						'_cls' );
+
+/**
+ * Namespace references.
+ *
+ * This tag identifies namespace references, the attribute contains the count of how many
+ * times the term was referenced as a namespace.
+ */
+define( "kOFFSET_REFS_NAMESPACE",				'_nsr' );
+
+/**
+ * Node references.
+ *
+ * This tag identifies node references, the attribute contains the list of identifiers of
+ * nodes that reference the current object.
+ */
+define( "kOFFSET_REFS_NODE",						'_nor' );
+
+/**
+ * Edge references.
+ *
+ * This tag identifies edge predicate references, the attribute contains the list of
+ * identifiers of edges in which the current term was referenced as a predicate.
+ */
+define( "kOFFSET_REFS_EDGE",						'_edr' );
 
 ?>

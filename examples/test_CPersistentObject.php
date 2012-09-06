@@ -325,9 +325,11 @@ try
 		echo( '<hr />' );
 		
 		//
-		// Reset non-existing document.
+		// Restore non-existing document.
 		//
 		echo( '<h4>Reset non-existing document</h4>' );
+		echo( '<h5>$test = new MyClass( $test->getArrayCopy() );</h5>' );
+		$test = new MyClass( $test->getArrayCopy() );
 		echo( '<h5>$test[ "B" ] = NULL;</h5>' );
 		$test[ "B" ] = NULL;
 		echo( '<h5>$test[ "C" ] = NULL;</h5>' );
@@ -343,7 +345,7 @@ try
 		echo( '<hr />' );
 		
 		//
-		// Reset existing document.
+		// Restore existing document.
 		//
 		echo( '<h4>Reset existing document</h4>' );
 		echo( '<h5>$test[ kOFFSET_NID ] = 99;</h5>' );
@@ -468,6 +470,7 @@ try
 //
 catch( \Exception $error )
 {
+	echo( '<h3><font color="red">Unexpected exception</font></h3>' );
 	echo( '<pre>'.(string) $error.'</pre>' );
 	echo( '<hr>' );
 }

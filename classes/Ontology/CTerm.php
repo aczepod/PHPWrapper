@@ -54,22 +54,30 @@ use \MyWrapper\Persistence\CContainer;
  * an abstract concept if considered by itself, but takes a precise meaning if related to
  * other terms, as a sequence of words that constitute a statement.
  *
- * This class implements the core features that all terms share:
- *
- * <ul>
- *	<li>{@link kOFFSET_NAMESPACE}: This attribute contains the native unique identifier,
- *		{@link kOFFSET_NID}, of the term that represents the namespace of the current term.
- *	<li>{@link kOFFSET_LID}: This attribute contains the code that uniquely identifies the
- *		term within its namespace.
- * </ul>
+ * Terms feature a namespace, {@link kOFFSET_NAMESPACE}, which contains the native unique
+ * identifier, {@link kOFFSET_NID}, of the object that represents the namespace of the
+ * current term. This namespace may be provided as a {@link kOFFSET_NID} or as a full
+ * object in case it should be committed.
  *
  * The global unique identifier, {@link kOFFSET_GID}, is the code by which the term is known
  * outside of this system, it is constituted by the concatenation of the {@link kOFFSET_GID}
- * of the namespace term, referred to by the {@link kOFFSET_NAMESPACE} offset, and the
- * local unique identifier, {@link kOFFSET_LID}, of the current term, both separated by the
+ * of the namespace referred to in the {@link kOFFSET_NAMESPACE} offset, and the local
+ * unique identifier, {@link kOFFSET_LID}, of the current term, both separated by the
  * {@link kTOKEN_NAMESPACE_SEPARATOR} token.
  *
  * If the term has no namespace, its {@link kOFFSET_GID} will be its {@link kOFFSET_LID}.
+ *
+ * Terms must keep track of references, the {@link kOFFSET_REFS_NAMESPACE} offset contains
+ * an integer counting the number of times the term was used as a namespace. The
+ * {@link kOFFSET_REFS_NODE} offset is an array containing the list of nodes that reference
+ * the current term. Finally, the {@link kOFFSET_REFS_EDGE} offset is an array that collects
+ * the list of edge identifiers in which the predicate references the term. These counters
+ * and reference collections are automatically managed by the container, rather than by the
+ * object, so their modification by this class is not allowed.
+ *
+ * When {@link _IsCommitted()}, besides the the identifier offsets, also the
+ * {@link kOFFSET_NAMESPACE} offset will be locked, since it is used to generate the
+ * {@link kOFFSET_GID}.
  *
  * The native unique identifier, {@link kOFFSET_NID}, is the binary md5 hash of the global
  * unique identifier, {@link kOFFSET_GID}, this to allow long codes.
@@ -216,7 +224,7 @@ class CTerm extends \MyWrapper\Persistence\CPersistentObject
 	public function offsetSet( $theOffset, $theValue )
 	{
 		//
-		// Check object lock.
+		// Lock counters.
 		//
 		if( $this->_IsCommitted() )
 		{
@@ -389,6 +397,159 @@ class CTerm extends \MyWrapper\Persistence\CPersistentObject
 		return $this->offsetGet( kOFFSET_LID );										// ==>
 	
 	} // _index.
+		
+
+
+/*=======================================================================================
+ *																						*
+ *								PROTECTED OFFSET INTERFACE								*
+ *																						*
+ *======================================================================================*/
+
+
+	 
+	/*===================================================================================
+	 *	_Preset																			*
+	 *==================================================================================*/
+
+	/**
+	 * <h4>Handle offset before setting it</h4>
+	 *
+	 * In this class we prevent the modification of the {@link kOFFSET_NAMESPACE} offset if
+	 * the object has its {@link _IsCommitted()} status set.
+	 *
+	 * @param reference			   &$theOffset			Offset.
+	 * @param reference			   &$theValue			Value to set at offset.
+	 *
+	 * @access protected
+	 *
+	 * @throws \Exception
+	 *
+	 * @see kOFFSET_NID kOFFSET_GID kOFFSET_LID
+	 */
+	protected function _Preset( &$theOffset, &$theValue )
+	{
+		//
+		// Intercept identifiers.
+		//
+		if( $this->_IsCommitted()
+		 && in_array( $theOffset, $offsets ) )
+		{
+			$offsets = array( kOFFSET_NID, kOFFSET_GID, kOFFSET_LID,
+							  kOFFSET_REFS_NAMESPACE, kOFFSET_REFS_NODE,
+							  kOFFSET_REFS_EDGE );
+			throw new \Exception
+				( "The object is committed, you cannot modify the [$theOffset] offset",
+				  kERROR_LOCKED );												// !@! ==>
+		}
+		
+		//
+		// Call parent method.
+		//
+		parent::_Preset( $theOffset, $theValue );
+	
+	} // _Preset.
+
+	 
+	/*===================================================================================
+	 *	_Postset																			*
+	 *==================================================================================*/
+
+	/**
+	 * <h4>Handle offset before setting it</h4>
+	 *
+	 * In this class we update the {@link _IsInited()} status.
+	 *
+	 * @param reference			   &$theOffset			Offset.
+	 * @param reference			   &$theValue			Value to set at offset.
+	 *
+	 * @access protected
+	 *
+	 * @uses _Ready()
+	 * @uses _IsInited()
+	 */
+	protected function _Postset( &$theOffset, &$theValue )
+	{
+		//
+		// Call parent method.
+		//
+		parent::_Postset( $theOffset, $theValue );
+	
+	} // _Postset.
+
+	 
+	/*===================================================================================
+	 *	_Preunset																		*
+	 *==================================================================================*/
+
+	/**
+	 * <h4>Handle offset before unsetting it</h4>
+	 *
+	 * In this class we prevent the modification of offsets that concur in the generation of
+	 * the object's identifier if the object has its {@link _IsCommitted()} status set. This
+	 * is because referenced objects must not change identifier.
+	 *
+	 * @param reference			   &$theOffset			Offset.
+	 *
+	 * @access protected
+	 *
+	 * @uses _IsDirty()
+	 */
+	protected function _Preunset( &$theOffset )
+	{
+		//
+		// Intercept identifiers.
+		//
+		if( $this->_IsCommitted()
+		 && in_array( $theOffset, $offsets ) )
+		{
+			$offsets = array( kOFFSET_NID, kOFFSET_GID, kOFFSET_LID,
+							  kOFFSET_REFS_NAMESPACE, kOFFSET_REFS_NODE,
+							  kOFFSET_REFS_EDGE );
+			throw new \Exception
+				( "The object is committed, you cannot modify the [$theOffset] offset",
+				  kERROR_LOCKED );												// !@! ==>
+		}
+		
+		//
+		// Call parent method.
+		//
+		parent::_Preunset( $theOffset );
+	
+	} // _Preunset.
+
+	 
+	/*===================================================================================
+	 *	_Postunset																		*
+	 *==================================================================================*/
+
+	/**
+	 * <h4>Handle offset before unsetting it</h4>
+	 *
+	 * This method will be called before the offset is unset from the object only if the
+	 * provided offset exists in the object, it gives the chance to perform custom actions
+	 * and change the provided offset.
+	 *
+	 * The method accepts the same parameter as {@link offsetUnset()} method, except that it
+	 * is passed by reference.
+	 *
+	 * In this class we set the {@link _IsDirty()} status.
+	 *
+	 * @param reference			   &$theOffset			Offset.
+	 *
+	 * @access protected
+	 *
+	 * @uses _Ready()
+	 * @uses _IsInited()
+	 */
+	protected function _Postunset( &$theOffset )
+	{
+		//
+		// Call parent method.
+		//
+		parent::_Postunset( $theOffset );
+	
+	} // _Postunset.
 		
 
 

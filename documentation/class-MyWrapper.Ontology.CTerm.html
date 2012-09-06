@@ -98,24 +98,30 @@ component that is an abstract concept if considered by itself, but takes a
 precise meaning if related to other terms, as a sequence of words that
 constitute a statement.</p>
 
-<p>This class implements the core features that all terms share:</p>
-
-<ul>
-	<li>kOFFSET_NAMESPACE: This attribute contains the native unique
-	identifier, kOFFSET_NID, of the term that represents the namespace of
-	the current term.</li>
-
-	<li>kOFFSET_LID: This attribute contains the code that uniquely
-	identifies the term within its namespace.</li>
-</ul>
+<p>Terms feature a namespace, kOFFSET_NAMESPACE, which contains the
+native unique identifier, kOFFSET_NID, of the object that represents the
+namespace of the current term. This namespace may be provided as a kOFFSET_NID or as a full object in case it should be committed.</p>
 
 <p>The global unique identifier, kOFFSET_GID, is the code by which the
 term is known outside of this system, it is constituted by the concatenation of
-the kOFFSET_GID of the namespace term, referred to by the kOFFSET_NAMESPACE offset, and the local unique identifier, kOFFSET_LID,
+the kOFFSET_GID of the namespace referred to in the kOFFSET_NAMESPACE offset, and the local unique identifier, kOFFSET_LID,
 of the current term, both separated by the kTOKEN_NAMESPACE_SEPARATOR
 token.</p>
 
 <p>If the term has no namespace, its kOFFSET_GID will be its kOFFSET_LID.</p>
+
+<p>Terms must keep track of references, the kOFFSET_REFS_NAMESPACE
+offset contains an integer counting the number of times the term was used as a
+namespace. The kOFFSET_REFS_NODE offset is an array containing the list
+of nodes that reference the current term. Finally, the kOFFSET_REFS_EDGE
+offset is an array that collects the list of edge identifiers in which the
+predicate references the term. These counters and reference collections are
+automatically managed by the container, rather than by the object, so their
+modification by this class is not allowed.</p>
+
+<p>When <code><a href="class-MyWrapper.Framework.CStatusDocument.html#_">MyWrapper\Framework\CStatusDocument::_IsCommitted()</a></code>, besides the the identifier offsets, also the
+kOFFSET_NAMESPACE offset will be locked, since it is used to generate
+the kOFFSET_GID.</p>
 
 <p>The native unique identifier, kOFFSET_NID, is the binary md5 hash of
 the global unique identifier, kOFFSET_GID, this to allow long codes.</p>
@@ -209,7 +215,7 @@ attributes.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#_NamespaceTerm">#</a>
-		<code><a href="source-class-MyWrapper.Ontology.CTerm.html#108" title="Go to source code">NamespaceTerm</a>( <span>mixed <var>$theValue</var> = <span class="php-keyword1">NULL</span></span>, <span>boolean <var>$getOld</var> = <span class="php-keyword1">FALSE</span> </span> )</code>
+		<code><a href="source-class-MyWrapper.Ontology.CTerm.html#116" title="Go to source code">NamespaceTerm</a>( <span>mixed <var>$theValue</var> = <span class="php-keyword1">NULL</span></span>, <span>boolean <var>$getOld</var> = <span class="php-keyword1">FALSE</span> </span> )</code>
 
 		<div class="description short">
 			
@@ -284,7 +290,7 @@ the global unique identifier.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#_offsetSet">#</a>
-		<code><a href="source-class-MyWrapper.Ontology.CTerm.html#203" title="Go to source code">offsetSet</a>( <span>string <var>$theOffset</var></span>, <span>mixed <var>$theValue</var></span> )</code>
+		<code><a href="source-class-MyWrapper.Ontology.CTerm.html#211" title="Go to source code">offsetSet</a>( <span>string <var>$theOffset</var></span>, <span>mixed <var>$theValue</var></span> )</code>
 
 		<div class="description short">
 			
@@ -318,7 +324,7 @@ state.</p>
 				</div>
 
 				<h4>Overrides</h4>
-				<div class="list"><code><a href="class-MyWrapper.Persistence.CPersistentObject.html#_">MyWrapper\Persistence\CPersistentObject::offsetSet</a></code></div>
+				<div class="list"><code><a href="class-MyWrapper.Persistence.CPersistentDocument.html#_">MyWrapper\Persistence\CPersistentDocument::offsetSet</a></code></div>
 
 				<h4>Implementation of</h4>
 				<div class="list"><code><a href="class-ArrayAccess.html#_">ArrayAccess::offsetSet</a></code></div>
@@ -336,7 +342,7 @@ state.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#_offsetUnset">#</a>
-		<code><a href="source-class-MyWrapper.Ontology.CTerm.html#253" title="Go to source code">offsetUnset</a>( <span>string <var>$theOffset</var></span> )</code>
+		<code><a href="source-class-MyWrapper.Ontology.CTerm.html#261" title="Go to source code">offsetUnset</a>( <span>string <var>$theOffset</var></span> )</code>
 
 		<div class="description short">
 			
@@ -367,7 +373,7 @@ turn the <code><a href="class-MyWrapper.Framework.CStatusDocument.html#_">MyWrap
 				</div>
 
 				<h4>Overrides</h4>
-				<div class="list"><code><a href="class-MyWrapper.Persistence.CPersistentObject.html#_">MyWrapper\Persistence\CPersistentObject::offsetUnset</a></code></div>
+				<div class="list"><code><a href="class-MyWrapper.Persistence.CPersistentDocument.html#_">MyWrapper\Persistence\CPersistentDocument::offsetUnset</a></code></div>
 
 				<h4>Implementation of</h4>
 				<div class="list"><code><a href="class-ArrayAccess.html#_">ArrayAccess::offsetUnset</a></code></div>
@@ -385,7 +391,7 @@ turn the <code><a href="class-MyWrapper.Framework.CStatusDocument.html#_">MyWrap
 
 		<td class="name"><div>
 		<a class="anchor" href="#__id">#</a>
-		<code><a href="source-class-MyWrapper.Ontology.CTerm.html#311" title="Go to source code">_id</a>( <span>string <var>$theIdentifier</var> = <span class="php-keyword1">NULL</span></span>, <span><code><a href="class-MyWrapper.Persistence.CContainer.html">MyWrapper\Persistence\CContainer</a></code> <var>$theContainer</var> = <span class="php-keyword1">NULL</span> </span> )</code>
+		<code><a href="source-class-MyWrapper.Ontology.CTerm.html#319" title="Go to source code">_id</a>( <span>string <var>$theIdentifier</var> = <span class="php-keyword1">NULL</span></span>, <span><code><a href="class-MyWrapper.Persistence.CContainer.html">MyWrapper\Persistence\CContainer</a></code> <var>$theContainer</var> = <span class="php-keyword1">NULL</span> </span> )</code>
 
 		<div class="description short">
 			
@@ -439,7 +445,7 @@ this object primary key depends on the content of its attributes.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#__index">#</a>
-		<code><a href="source-class-MyWrapper.Ontology.CTerm.html#364" title="Go to source code">_index</a>( )</code>
+		<code><a href="source-class-MyWrapper.Ontology.CTerm.html#372" title="Go to source code">_index</a>( )</code>
 
 		<div class="description short">
 			
@@ -482,6 +488,210 @@ identifier.</p>
 		</div>
 		</div></td>
 	</tr>
+	<tr data-order="_Preset" id="__Preset">
+
+		<td class="attributes"><code>
+			 protected 
+			
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#__Preset">#</a>
+		<code><a href="source-class-MyWrapper.Ontology.CTerm.html#415" title="Go to source code">_Preset</a>( <span>reference <var>&amp; $theOffset</var></span>, <span>reference <var>&amp; $theValue</var></span> )</code>
+
+		<div class="description short">
+			
+<h4>Handle offset before setting it</h4>
+
+		</div>
+
+		<div class="description detailed hidden">
+			
+<h4>Handle offset before setting it</h4>
+
+<p>In this class we prevent the modification of the kOFFSET_NAMESPACE
+offset if the object has its <code><a href="class-MyWrapper.Framework.CStatusDocument.html#_">MyWrapper\Framework\CStatusDocument::_IsCommitted()</a></code> status set.</p>
+
+
+
+				<h4>Parameters</h4>
+				<div class="list"><dl>
+					<dt><var>$theOffset</var></dt>
+					<dd><code>reference</code><br>&amp;$theOffset Offset.</dd>
+					<dt><var>$theValue</var></dt>
+					<dd><code>reference</code><br>&amp;$theValue Value to set at offset.</dd>
+				</dl></div>
+
+
+				<h4>Throws</h4>
+				<div class="list">
+					<code><code><a href="class-Exception.html">Exception</a></code></code><br />
+				</div>
+
+				<h4>See</h4>
+				<div class="list">
+						kOFFSET_NID kOFFSET_GID kOFFSET_LID<br />
+				</div>
+
+				<h4>Overrides</h4>
+				<div class="list"><code><a href="class-MyWrapper.Persistence.CPersistentObject.html#_">MyWrapper\Persistence\CPersistentObject::_Preset</a></code></div>
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="_Postset" id="__Postset">
+
+		<td class="attributes"><code>
+			 protected 
+			
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#__Postset">#</a>
+		<code><a href="source-class-MyWrapper.Ontology.CTerm.html#458" title="Go to source code">_Postset</a>( <span>reference <var>&amp; $theOffset</var></span>, <span>reference <var>&amp; $theValue</var></span> )</code>
+
+		<div class="description short">
+			
+<h4>Handle offset before setting it</h4>
+
+		</div>
+
+		<div class="description detailed hidden">
+			
+<h4>Handle offset before setting it</h4>
+
+<p>In this class we update the <code><a href="class-MyWrapper.Framework.CStatusDocument.html#_">MyWrapper\Framework\CStatusDocument::_IsInited()</a></code> status.</p>
+
+
+
+				<h4>Parameters</h4>
+				<div class="list"><dl>
+					<dt><var>$theOffset</var></dt>
+					<dd><code>reference</code><br>&amp;$theOffset Offset.</dd>
+					<dt><var>$theValue</var></dt>
+					<dd><code>reference</code><br>&amp;$theValue Value to set at offset.</dd>
+				</dl></div>
+
+
+
+				<h4>Uses</h4>
+				<div class="list">
+						<code><code><a href="class-MyWrapper.Ontology.CTerm.html#_">MyWrapper\Ontology\CTerm::_Ready()</a></code></code> <br />
+						<code><code><a href="class-MyWrapper.Framework.CStatusDocument.html#_">MyWrapper\Framework\CStatusDocument::_IsInited()</a></code></code> <br />
+				</div>
+
+				<h4>Overrides</h4>
+				<div class="list"><code><a href="class-MyWrapper.Persistence.CPersistentObject.html#_">MyWrapper\Persistence\CPersistentObject::_Postset</a></code></div>
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="_Preunset" id="__Preunset">
+
+		<td class="attributes"><code>
+			 protected 
+			
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#__Preunset">#</a>
+		<code><a href="source-class-MyWrapper.Ontology.CTerm.html#485" title="Go to source code">_Preunset</a>( <span>reference <var>&amp; $theOffset</var></span> )</code>
+
+		<div class="description short">
+			
+<h4>Handle offset before unsetting it</h4>
+
+		</div>
+
+		<div class="description detailed hidden">
+			
+<h4>Handle offset before unsetting it</h4>
+
+<p>In this class we prevent the modification of offsets that concur in the
+generation of the object's identifier if the object has its <code><a href="class-MyWrapper.Framework.CStatusDocument.html#_">MyWrapper\Framework\CStatusDocument::_IsCommitted()</a></code> status set. This is because referenced objects must not change
+identifier.</p>
+
+
+
+				<h4>Parameters</h4>
+				<div class="list"><dl>
+					<dt><var>$theOffset</var></dt>
+					<dd><code>reference</code><br>&amp;$theOffset Offset.</dd>
+				</dl></div>
+
+
+
+				<h4>Uses</h4>
+				<div class="list">
+						<code><code><a href="class-MyWrapper.Framework.CStatusDocument.html#_">MyWrapper\Framework\CStatusDocument::_IsDirty()</a></code></code> <br />
+				</div>
+
+				<h4>Overrides</h4>
+				<div class="list"><code><a href="class-MyWrapper.Persistence.CPersistentObject.html#_">MyWrapper\Persistence\CPersistentObject::_Preunset</a></code></div>
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="_Postunset" id="__Postunset">
+
+		<td class="attributes"><code>
+			 protected 
+			
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#__Postunset">#</a>
+		<code><a href="source-class-MyWrapper.Ontology.CTerm.html#526" title="Go to source code">_Postunset</a>( <span>reference <var>&amp; $theOffset</var></span> )</code>
+
+		<div class="description short">
+			
+<h4>Handle offset before unsetting it</h4>
+
+		</div>
+
+		<div class="description detailed hidden">
+			
+<h4>Handle offset before unsetting it</h4>
+
+<p>This method will be called before the offset is unset from the object only if
+the provided offset exists in the object, it gives the chance to perform custom
+actions and change the provided offset.</p>
+
+<p>The method accepts the same parameter as <code><a href="class-MyWrapper.Ontology.CTerm.html#_">MyWrapper\Ontology\CTerm::offsetUnset()</a></code> method, except
+that it is passed by reference.</p>
+
+<p>In this class we set the <code><a href="class-MyWrapper.Framework.CStatusDocument.html#_">MyWrapper\Framework\CStatusDocument::_IsDirty()</a></code> status.</p>
+
+
+
+				<h4>Parameters</h4>
+				<div class="list"><dl>
+					<dt><var>$theOffset</var></dt>
+					<dd><code>reference</code><br>&amp;$theOffset Offset.</dd>
+				</dl></div>
+
+
+
+				<h4>Uses</h4>
+				<div class="list">
+						<code><code><a href="class-MyWrapper.Ontology.CTerm.html#_">MyWrapper\Ontology\CTerm::_Ready()</a></code></code> <br />
+						<code><code><a href="class-MyWrapper.Framework.CStatusDocument.html#_">MyWrapper\Framework\CStatusDocument::_IsInited()</a></code></code> <br />
+				</div>
+
+				<h4>Overrides</h4>
+				<div class="list"><code><a href="class-MyWrapper.Persistence.CPersistentObject.html#_">MyWrapper\Persistence\CPersistentObject::_Postunset</a></code></div>
+
+		</div>
+		</div></td>
+	</tr>
 	<tr data-order="_Ready" id="__Ready">
 
 		<td class="attributes"><code>
@@ -493,7 +703,7 @@ identifier.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#__Ready">#</a>
-		<code><a href="source-class-MyWrapper.Ontology.CTerm.html#407" title="Go to source code">_Ready</a>( )</code>
+		<code><a href="source-class-MyWrapper.Ontology.CTerm.html#568" title="Go to source code">_Ready</a>( )</code>
 
 		<div class="description short">
 			
@@ -520,6 +730,11 @@ by the caller into the <code><a href="class-MyWrapper.Framework.CStatusDocument.
 				</div>
 
 
+				<h4>Used by</h4>
+				<div class="list">
+						<code><code><a href="class-MyWrapper.Ontology.CTerm.html#_">MyWrapper\Ontology\CTerm::_Postset()</a></code></code> <br />
+						<code><code><a href="class-MyWrapper.Ontology.CTerm.html#_">MyWrapper\Ontology\CTerm::_Postunset()</a></code></code> <br />
+				</div>
 				<h4>Link</h4>
 				<div class="list">
 						_IsInited()} status is affected. In this class we assume the object is <code><a href="class-MyWrapper.Framework.CStatusDocument.html#_">MyWrapper\Framework\CStatusDocument::_IsInited()</a></code>, it is up to derived classes to prove the contrary.<br />
@@ -628,7 +843,7 @@ by the caller into the <code><a href="class-MyWrapper.Framework.CStatusDocument.
 		</code></td>
 
 		<td class="name">
-				<a href="source-class-MyWrapper.Ontology.CTerm.html#85" title="Go to source code"><var>$mNamespace</var></a>
+				<a href="source-class-MyWrapper.Ontology.CTerm.html#93" title="Go to source code"><var>$mNamespace</var></a>
 		</td>
 		<td class="value"><code><span class="php-keyword1">NULL</span></code></td>
 		<td class="description"><div>

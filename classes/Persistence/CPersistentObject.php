@@ -44,7 +44,11 @@ use \MyWrapper\Persistence\CPersistentDocument;
  * as-is to set the object's <i>native unique identifier</i> in the {@link kOFFSET_NID}
  * offset. This static method can also be used to obtain the primary key of an object, given
  * the global identifier string. The method expects the container to which the object is
- * going to be committed as a parameter, to use its custom data conversion methods.
+ * going to be committed as a parameter, to use its custom data conversion methods and
+ * resolve eventual references.
+ *
+ * These identifiers are locked by the {@link _Preset()} and {@link _Preunset()} methods
+ * to prevent invalidating references.
  *
  * Objects derived from this class store their class name in the {@link kOFFSET_CLASS}
  * offset, this will be used by the static {@link NewObject()} method to instantiate the
@@ -405,6 +409,46 @@ class CPersistentObject extends \MyWrapper\Persistence\CPersistentDocument
 
 	 
 	/*===================================================================================
+	 *	_Preset																			*
+	 *==================================================================================*/
+
+	/**
+	 * <h4>Handle offset before setting it</h4>
+	 *
+	 * In this class we prevent the modification of offsets that concur in the generation of
+	 * the object's identifier if the object has its {@link _IsCommitted()} status set. This
+	 * is because referenced objects must not change identifier.
+	 *
+	 * @param reference			   &$theOffset			Offset.
+	 * @param reference			   &$theValue			Value to set at offset.
+	 *
+	 * @access protected
+	 *
+	 * @throws \Exception
+	 *
+	 * @see kOFFSET_NID kOFFSET_GID kOFFSET_LID
+	 */
+	protected function _Preset( &$theOffset, &$theValue )
+	{
+		//
+		// Intercept identifiers.
+		//
+		$offsets = array( kOFFSET_NID, kOFFSET_GID, kOFFSET_LID );
+		if( $this->_IsCommitted()
+		 && in_array( $theOffset, $offsets ) )
+			throw new \Exception
+				( "The object is committed, you cannot modify the [$theOffset] offset",
+				  kERROR_LOCKED );												// !@! ==>
+		
+		//
+		// Call parent method.
+		//
+		parent::_Preset( $theOffset, $theValue );
+	
+	} // _Preset.
+
+	 
+	/*===================================================================================
 	 *	_Postset																			*
 	 *==================================================================================*/
 
@@ -437,6 +481,43 @@ class CPersistentObject extends \MyWrapper\Persistence\CPersistentDocument
 
 	 
 	/*===================================================================================
+	 *	_Preunset																		*
+	 *==================================================================================*/
+
+	/**
+	 * <h4>Handle offset before unsetting it</h4>
+	 *
+	 * In this class we prevent the modification of offsets that concur in the generation of
+	 * the object's identifier if the object has its {@link _IsCommitted()} status set. This
+	 * is because referenced objects must not change identifier.
+	 *
+	 * @param reference			   &$theOffset			Offset.
+	 *
+	 * @access protected
+	 *
+	 * @uses _IsDirty()
+	 */
+	protected function _Preunset( &$theOffset )
+	{
+		//
+		// Intercept identifiers.
+		//
+		$offsets = array( kOFFSET_NID, kOFFSET_GID, kOFFSET_LID );
+		if( $this->_IsCommitted()
+		 && in_array( $theOffset, $offsets ) )
+			throw new \Exception
+				( "The object is committed, you cannot modify the [$theOffset] offset",
+				  kERROR_LOCKED );												// !@! ==>
+		
+		//
+		// Call parent method.
+		//
+		parent::_Preunset( $theOffset );
+	
+	} // _Preunset.
+
+	 
+	/*===================================================================================
 	 *	_Postunset																		*
 	 *==================================================================================*/
 
@@ -447,8 +528,8 @@ class CPersistentObject extends \MyWrapper\Persistence\CPersistentDocument
 	 * provided offset exists in the object, it gives the chance to perform custom actions
 	 * and change the provided offset.
 	 *
-	 * The method accepts the same parameter as the {@link offsetUnset()} method, except that
-	 * it passed by reference.
+	 * The method accepts the same parameter as {@link offsetUnset()} method, except that it
+	 * is passed by reference.
 	 *
 	 * In this class we set the {@link _IsDirty()} status.
 	 *

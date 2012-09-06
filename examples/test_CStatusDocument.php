@@ -117,6 +117,7 @@ try
 //
 catch( Exception $error )
 {
+	echo( '<h3><font color="red">Unexpected exception</font></h3>' );
 	echo( '<pre>'.(string) $error.'</pre>' );
 	echo( '<hr>' );
 }

@@ -113,7 +113,10 @@ that value as-is to set the object's <i>native unique identifier</i> in the
 kOFFSET_NID offset. This static method can also be used to obtain the
 primary key of an object, given the global identifier string. The method expects
 the container to which the object is going to be committed as a parameter, to
-use its custom data conversion methods.</p>
+use its custom data conversion methods and resolve eventual references.</p>
+
+<p>These identifiers are locked by the <code><a href="class-MyWrapper.Persistence.CPersistentObject.html#_">MyWrapper\Persistence\CPersistentObject::_Preset()</a></code> and <code><a href="class-MyWrapper.Persistence.CPersistentObject.html#_">MyWrapper\Persistence\CPersistentObject::_Preunset()</a></code>
+methods to prevent invalidating references.</p>
 
 <p>Objects derived from this class store their class name in the kOFFSET_CLASS offset, this will be used by the static <code><a href="class-MyWrapper.Persistence.CPersistentObject.html#_">MyWrapper\Persistence\CPersistentObject::NewObject()</a></code>
 method to instantiate the right object.</p>
@@ -122,7 +125,8 @@ method to instantiate the right object.</p>
 
 <p>The class also implements an interface to handle the <code><a href="class-MyWrapper.Framework.CStatusDocument.html#_">MyWrapper\Framework\CStatusDocument::_IsInited()</a></code>
 status: a protected method, <code><a href="class-MyWrapper.Persistence.CPersistentObject.html#_">MyWrapper\Persistence\CPersistentObject::_Ready()</a></code>, can be used to return a boolean
-that indicates whether the object has all the required components.</p>
+that indicates whether the object has all the required components, this is
+performed in the <code><a href="class-MyWrapper.Persistence.CPersistentObject.html#_">MyWrapper\Persistence\CPersistentObject::_Postset()</a></code> and <code><a href="class-MyWrapper.Persistence.CPersistentObject.html#_">MyWrapper\Persistence\CPersistentObject::_Postunset()</a></code> methods.</p>
 
 	</div>
 
@@ -206,7 +210,7 @@ that indicates whether the object has all the required components.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#___construct">#</a>
-		<code><a href="source-class-MyWrapper.Persistence.CPersistentObject.html#78" title="Go to source code">__construct</a>( <span>mixed <var>$theInput</var> = <span class="php-keyword1">Array</span>()</span>, <span>integer <var>$theFlags</var> = <span class="php-num">0</span></span>, <span>string <var>$theIterator</var> = <span class="php-quote">'ArrayIterator'</span> </span> )</code>
+		<code><a href="source-class-MyWrapper.Persistence.CPersistentObject.html#83" title="Go to source code">__construct</a>( <span>mixed <var>$theInput</var> = <span class="php-keyword1">Array</span>()</span>, <span>integer <var>$theFlags</var> = <span class="php-num">0</span></span>, <span>string <var>$theIterator</var> = <span class="php-quote">'ArrayIterator'</span> </span> )</code>
 
 		<div class="description short">
 			
@@ -248,106 +252,6 @@ according to the data set in the object.</p>
 		</div>
 		</div></td>
 	</tr>
-	<tr data-order="offsetSet" id="_offsetSet">
-
-		<td class="attributes"><code>
-			 public 
-			
-			
-			</code>
-		</td>
-
-		<td class="name"><div>
-		<a class="anchor" href="#_offsetSet">#</a>
-		<code><a href="source-class-MyWrapper.Persistence.CPersistentObject.html#124" title="Go to source code">offsetSet</a>( <span>string <var>$theOffset</var></span>, <span>mixed <var>$theValue</var></span> )</code>
-
-		<div class="description short">
-			
-<h4>Set a value for a given offset</h4>
-
-		</div>
-
-		<div class="description detailed hidden">
-			
-<h4>Set a value for a given offset</h4>
-
-<p>We override this method to set the _IsInited() status according to
-the result of the <code><a href="class-MyWrapper.Persistence.CPersistentObject.html#_">MyWrapper\Persistence\CPersistentObject::_Ready()</a></code> method.</p>
-
-
-
-				<h4>Parameters</h4>
-				<div class="list"><dl>
-					<dt><var>$theOffset</var></dt>
-					<dd><code>string</code><br> Offset.</dd>
-					<dt><var>$theValue</var></dt>
-					<dd><code>mixed</code><br> Value to set at offset.</dd>
-				</dl></div>
-
-
-
-				<h4>Uses</h4>
-				<div class="list">
-						<code><code><a href="class-MyWrapper.Framework.CStatusDocument.html#_">MyWrapper\Framework\CStatusDocument::_IsDirty()</a></code></code> <br />
-				</div>
-
-				<h4>Overrides</h4>
-				<div class="list"><code><a href="class-MyWrapper.Persistence.CPersistentDocument.html#_">MyWrapper\Persistence\CPersistentDocument::offsetSet</a></code></div>
-
-				<h4>Implementation of</h4>
-				<div class="list"><code><a href="class-ArrayAccess.html#_">ArrayAccess::offsetSet</a></code></div>
-		</div>
-		</div></td>
-	</tr>
-	<tr data-order="offsetUnset" id="_offsetUnset">
-
-		<td class="attributes"><code>
-			 public 
-			
-			
-			</code>
-		</td>
-
-		<td class="name"><div>
-		<a class="anchor" href="#_offsetUnset">#</a>
-		<code><a href="source-class-MyWrapper.Persistence.CPersistentObject.html#156" title="Go to source code">offsetUnset</a>( <span>string <var>$theOffset</var></span> )</code>
-
-		<div class="description short">
-			
-<h4>Reset a value for a given offset</h4>
-
-		</div>
-
-		<div class="description detailed hidden">
-			
-<h4>Reset a value for a given offset</h4>
-
-<p>We override this method to set the _IsInited() status according to
-the result of the <code><a href="class-MyWrapper.Persistence.CPersistentObject.html#_">MyWrapper\Persistence\CPersistentObject::_Ready()</a></code> method.</p>
-
-
-
-				<h4>Parameters</h4>
-				<div class="list"><dl>
-					<dt><var>$theOffset</var></dt>
-					<dd><code>string</code><br> Offset.</dd>
-				</dl></div>
-
-
-
-				<h4>Uses</h4>
-				<div class="list">
-						<code><code><a href="class-MyWrapper.Framework.CStatusDocument.html#_">MyWrapper\Framework\CStatusDocument::_IsDirty()</a></code></code> <br />
-				</div>
-
-				<h4>Overrides</h4>
-				<div class="list"><code><a href="class-MyWrapper.Persistence.CPersistentDocument.html#_">MyWrapper\Persistence\CPersistentDocument::offsetUnset</a></code></div>
-
-				<h4>Implementation of</h4>
-				<div class="list"><code><a href="class-ArrayAccess.html#_">ArrayAccess::offsetUnset</a></code></div>
-		</div>
-		</div></td>
-	</tr>
 	<tr data-order="NewObject" id="_NewObject">
 
 		<td class="attributes"><code>
@@ -359,7 +263,7 @@ the result of the <code><a href="class-MyWrapper.Persistence.CPersistentObject.h
 
 		<td class="name"><div>
 		<a class="anchor" href="#_NewObject">#</a>
-		<code><a href="source-class-MyWrapper.Persistence.CPersistentObject.html#196" title="Go to source code">NewObject</a>( <span><code><a href="class-MyWrapper.Persistence.CContainer.html">MyWrapper\Persistence\CContainer</a></code> <var>$theContainer</var></span>, <span>mixed <var>$theIdentifier</var></span> )</code>
+		<code><a href="source-class-MyWrapper.Persistence.CPersistentObject.html#129" title="Go to source code">NewObject</a>( <span><code><a href="class-MyWrapper.Persistence.CContainer.html">MyWrapper\Persistence\CContainer</a></code> <var>$theContainer</var></span>, <span>mixed <var>$theIdentifier</var></span> )</code>
 
 		<div class="description short">
 			
@@ -420,7 +324,7 @@ the offset is missing, the method will instantiate this class.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#__id">#</a>
-		<code><a href="source-class-MyWrapper.Persistence.CPersistentObject.html#284" title="Go to source code">_id</a>( <span>string <var>$theIdentifier</var> = <span class="php-keyword1">NULL</span></span>, <span><code><a href="class-MyWrapper.Persistence.CContainer.html">MyWrapper\Persistence\CContainer</a></code> <var>$theContainer</var> = <span class="php-keyword1">NULL</span> </span> )</code>
+		<code><a href="source-class-MyWrapper.Persistence.CPersistentObject.html#217" title="Go to source code">_id</a>( <span>string <var>$theIdentifier</var> = <span class="php-keyword1">NULL</span></span>, <span><code><a href="class-MyWrapper.Persistence.CContainer.html">MyWrapper\Persistence\CContainer</a></code> <var>$theContainer</var> = <span class="php-keyword1">NULL</span> </span> )</code>
 
 		<div class="description short">
 			
@@ -485,7 +389,7 @@ global identifier.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#__index">#</a>
-		<code><a href="source-class-MyWrapper.Persistence.CPersistentObject.html#330" title="Go to source code">_index</a>( )</code>
+		<code><a href="source-class-MyWrapper.Persistence.CPersistentObject.html#263" title="Go to source code">_index</a>( <span><code><a href="class-MyWrapper.Persistence.CContainer.html">MyWrapper\Persistence\CContainer</a></code> <var>$theContainer</var></span>, <span>bitfield <var>$theModifiers</var></span> )</code>
 
 		<div class="description short">
 			
@@ -501,10 +405,9 @@ global identifier.</p>
 is represented by a string which is generally extracted from selected attributes
 of the object and represents the unique key of the object.</p>
 
-<p>This string is optionally stored in the kOFFSET_GID offset of the
-object and it is processed by the static <code><a href="class-MyWrapper.Persistence.CPersistentObject.html#_">MyWrapper\Persistence\CPersistentObject::_id()</a></code> method resulting in the
-object's native unique identifier, which is the native object's primary key
-stored in the kOFFSET_NID offset.</p>
+<p>This string is stored in the kOFFSET_GID offset of the object and it
+is processed by the static <code><a href="class-MyWrapper.Persistence.CPersistentObject.html#_">MyWrapper\Persistence\CPersistentObject::_id()</a></code> method resulting in the object's native
+unique identifier, which is the native object's primary key stored in the kOFFSET_NID offset.</p>
 
 <p>This method can return a meaningful value only if the object has all required
 properties, so, if the class features a global identifier, this method should
@@ -515,11 +418,22 @@ should raise an exception.</p>
 identifier is generated by the container that will store the object, in that
 case the kOFFSET_GID will not be used.</p>
 
+<p>This method is called at commit time, for this reason and to eventually
+resolve referenced objects, the method accepts the commit container and
+options.</p>
+
 <p>This class has no predefined attributes, so we let the container provide the
 identifier by returning <tt>NULL</tt>.</p>
 
 
 
+				<h4>Parameters</h4>
+				<div class="list"><dl>
+					<dt><var>$theContainer</var></dt>
+					<dd><code><code><a href="class-MyWrapper.Persistence.CContainer.html">MyWrapper\Persistence\CContainer</a></code></code><br> Container.</dd>
+					<dt><var>$theModifiers</var></dt>
+					<dd><code>bitfield</code><br> Commit options.</dd>
+				</dl></div>
 
 				<h4>Returns</h4>
 				<div class="list">
@@ -552,7 +466,7 @@ identifier by returning <tt>NULL</tt>.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#__Precommit">#</a>
-		<code><a href="source-class-MyWrapper.Persistence.CPersistentObject.html#375" title="Go to source code">_Precommit</a>( <span><code><a href="class-MyWrapper.Persistence.CContainer.html">MyWrapper\Persistence\CContainer</a></code> <var>$theContainer</var></span>, <span>bitfield <var>$theModifiers</var> = kFLAG_DEFAULT </span> )</code>
+		<code><a href="source-class-MyWrapper.Persistence.CPersistentObject.html#318" title="Go to source code">_Precommit</a>( <span><code><a href="class-MyWrapper.Persistence.CContainer.html">MyWrapper\Persistence\CContainer</a></code> <var>$theContainer</var></span>, <span>bitfield <var>$theModifiers</var> = kFLAG_DEFAULT </span> )</code>
 
 		<div class="description short">
 			
@@ -616,6 +530,211 @@ identifier by returning <tt>NULL</tt>.</p>
 		</div>
 		</div></td>
 	</tr>
+	<tr data-order="_Preset" id="__Preset">
+
+		<td class="attributes"><code>
+			 protected 
+			
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#__Preset">#</a>
+		<code><a href="source-class-MyWrapper.Persistence.CPersistentObject.html#415" title="Go to source code">_Preset</a>( <span>reference <var>&amp; $theOffset</var></span>, <span>reference <var>&amp; $theValue</var></span> )</code>
+
+		<div class="description short">
+			
+<h4>Handle offset before setting it</h4>
+
+		</div>
+
+		<div class="description detailed hidden">
+			
+<h4>Handle offset before setting it</h4>
+
+<p>In this class we prevent the modification of offsets that concur in the
+generation of the object's identifier if the object has its <code><a href="class-MyWrapper.Framework.CStatusDocument.html#_">MyWrapper\Framework\CStatusDocument::_IsCommitted()</a></code> status set. This is because referenced objects must not change
+identifier.</p>
+
+
+
+				<h4>Parameters</h4>
+				<div class="list"><dl>
+					<dt><var>$theOffset</var></dt>
+					<dd><code>reference</code><br>&amp;$theOffset Offset.</dd>
+					<dt><var>$theValue</var></dt>
+					<dd><code>reference</code><br>&amp;$theValue Value to set at offset.</dd>
+				</dl></div>
+
+
+				<h4>Throws</h4>
+				<div class="list">
+					<code><code><a href="class-Exception.html">Exception</a></code></code><br />
+				</div>
+
+				<h4>See</h4>
+				<div class="list">
+						kOFFSET_NID kOFFSET_GID kOFFSET_LID<br />
+				</div>
+
+				<h4>Overrides</h4>
+				<div class="list"><code><a href="class-MyWrapper.Persistence.CPersistentDocument.html#_">MyWrapper\Persistence\CPersistentDocument::_Preset</a></code></div>
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="_Postset" id="__Postset">
+
+		<td class="attributes"><code>
+			 protected 
+			
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#__Postset">#</a>
+		<code><a href="source-class-MyWrapper.Persistence.CPersistentObject.html#455" title="Go to source code">_Postset</a>( <span>reference <var>&amp; $theOffset</var></span>, <span>reference <var>&amp; $theValue</var></span> )</code>
+
+		<div class="description short">
+			
+<h4>Handle offset before setting it</h4>
+
+		</div>
+
+		<div class="description detailed hidden">
+			
+<h4>Handle offset before setting it</h4>
+
+<p>In this class we update the <code><a href="class-MyWrapper.Framework.CStatusDocument.html#_">MyWrapper\Framework\CStatusDocument::_IsInited()</a></code> status.</p>
+
+
+
+				<h4>Parameters</h4>
+				<div class="list"><dl>
+					<dt><var>$theOffset</var></dt>
+					<dd><code>reference</code><br>&amp;$theOffset Offset.</dd>
+					<dt><var>$theValue</var></dt>
+					<dd><code>reference</code><br>&amp;$theValue Value to set at offset.</dd>
+				</dl></div>
+
+
+
+				<h4>Uses</h4>
+				<div class="list">
+						<code><code><a href="class-MyWrapper.Persistence.CPersistentObject.html#_">MyWrapper\Persistence\CPersistentObject::_Ready()</a></code></code> <br />
+						<code><code><a href="class-MyWrapper.Framework.CStatusDocument.html#_">MyWrapper\Framework\CStatusDocument::_IsInited()</a></code></code> <br />
+				</div>
+
+				<h4>Overrides</h4>
+				<div class="list"><code><a href="class-MyWrapper.Persistence.CPersistentDocument.html#_">MyWrapper\Persistence\CPersistentDocument::_Postset</a></code></div>
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="_Preunset" id="__Preunset">
+
+		<td class="attributes"><code>
+			 protected 
+			
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#__Preunset">#</a>
+		<code><a href="source-class-MyWrapper.Persistence.CPersistentObject.html#487" title="Go to source code">_Preunset</a>( <span>reference <var>&amp; $theOffset</var></span> )</code>
+
+		<div class="description short">
+			
+<h4>Handle offset before unsetting it</h4>
+
+		</div>
+
+		<div class="description detailed hidden">
+			
+<h4>Handle offset before unsetting it</h4>
+
+<p>In this class we prevent the modification of offsets that concur in the
+generation of the object's identifier if the object has its <code><a href="class-MyWrapper.Framework.CStatusDocument.html#_">MyWrapper\Framework\CStatusDocument::_IsCommitted()</a></code> status set. This is because referenced objects must not change
+identifier.</p>
+
+
+
+				<h4>Parameters</h4>
+				<div class="list"><dl>
+					<dt><var>$theOffset</var></dt>
+					<dd><code>reference</code><br>&amp;$theOffset Offset.</dd>
+				</dl></div>
+
+
+
+				<h4>Uses</h4>
+				<div class="list">
+						<code><code><a href="class-MyWrapper.Framework.CStatusDocument.html#_">MyWrapper\Framework\CStatusDocument::_IsDirty()</a></code></code> <br />
+				</div>
+
+				<h4>Overrides</h4>
+				<div class="list"><code><a href="class-MyWrapper.Persistence.CPersistentDocument.html#_">MyWrapper\Persistence\CPersistentDocument::_Preunset</a></code></div>
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="_Postunset" id="__Postunset">
+
+		<td class="attributes"><code>
+			 protected 
+			
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#__Postunset">#</a>
+		<code><a href="source-class-MyWrapper.Persistence.CPersistentObject.html#524" title="Go to source code">_Postunset</a>( <span>reference <var>&amp; $theOffset</var></span> )</code>
+
+		<div class="description short">
+			
+<h4>Handle offset before unsetting it</h4>
+
+		</div>
+
+		<div class="description detailed hidden">
+			
+<h4>Handle offset before unsetting it</h4>
+
+<p>This method will be called before the offset is unset from the object only if
+the provided offset exists in the object, it gives the chance to perform custom
+actions and change the provided offset.</p>
+
+<p>The method accepts the same parameter as <code><a href="class-MyWrapper.Persistence.CPersistentDocument.html#_">MyWrapper\Persistence\CPersistentDocument::offsetUnset()</a></code> method, except
+that it is passed by reference.</p>
+
+<p>In this class we set the <code><a href="class-MyWrapper.Framework.CStatusDocument.html#_">MyWrapper\Framework\CStatusDocument::_IsDirty()</a></code> status.</p>
+
+
+
+				<h4>Parameters</h4>
+				<div class="list"><dl>
+					<dt><var>$theOffset</var></dt>
+					<dd><code>reference</code><br>&amp;$theOffset Offset.</dd>
+				</dl></div>
+
+
+
+				<h4>Uses</h4>
+				<div class="list">
+						<code><code><a href="class-MyWrapper.Persistence.CPersistentObject.html#_">MyWrapper\Persistence\CPersistentObject::_Ready()</a></code></code> <br />
+						<code><code><a href="class-MyWrapper.Framework.CStatusDocument.html#_">MyWrapper\Framework\CStatusDocument::_IsInited()</a></code></code> <br />
+				</div>
+
+				<h4>Overrides</h4>
+				<div class="list"><code><a href="class-MyWrapper.Persistence.CPersistentDocument.html#_">MyWrapper\Persistence\CPersistentDocument::_Postunset</a></code></div>
+
+		</div>
+		</div></td>
+	</tr>
 	<tr data-order="_Ready" id="__Ready">
 
 		<td class="attributes"><code>
@@ -627,7 +746,7 @@ identifier by returning <tt>NULL</tt>.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#__Ready">#</a>
-		<code><a href="source-class-MyWrapper.Persistence.CPersistentObject.html#472" title="Go to source code">_Ready</a>( )</code>
+		<code><a href="source-class-MyWrapper.Persistence.CPersistentObject.html#571" title="Go to source code">_Ready</a>( )</code>
 
 		<div class="description short">
 			
@@ -654,6 +773,11 @@ by the caller into the <code><a href="class-MyWrapper.Framework.CStatusDocument.
 				</div>
 
 
+				<h4>Used by</h4>
+				<div class="list">
+						<code><code><a href="class-MyWrapper.Persistence.CPersistentObject.html#_">MyWrapper\Persistence\CPersistentObject::_Postset()</a></code></code> <br />
+						<code><code><a href="class-MyWrapper.Persistence.CPersistentObject.html#_">MyWrapper\Persistence\CPersistentObject::_Postunset()</a></code></code> <br />
+				</div>
 				<h4>Link</h4>
 				<div class="list">
 						_IsInited()} status is affected. In this class we assume the object is <code><a href="class-MyWrapper.Framework.CStatusDocument.html#_">MyWrapper\Framework\CStatusDocument::_IsInited()</a></code>, it is up to derived classes to prove the contrary.<br />
@@ -674,7 +798,9 @@ by the caller into the <code><a href="class-MyWrapper.Framework.CStatusDocument.
 			<a href="class-MyWrapper.Persistence.CPersistentDocument.html#_">Replace()</a>, 
 			<a href="class-MyWrapper.Persistence.CPersistentDocument.html#_">Restore()</a>, 
 			<a href="class-MyWrapper.Persistence.CPersistentDocument.html#_">Update()</a>, 
-			<a href="class-MyWrapper.Persistence.CPersistentDocument.html#_">_Postcommit()</a>
+			<a href="class-MyWrapper.Persistence.CPersistentDocument.html#_">_Postcommit()</a>, 
+			<a href="class-MyWrapper.Persistence.CPersistentDocument.html#_">offsetSet()</a>, 
+			<a href="class-MyWrapper.Persistence.CPersistentDocument.html#_">offsetUnset()</a>
 		</code></td>
 	</tr>
 	</table>
