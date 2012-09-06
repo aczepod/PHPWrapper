@@ -231,7 +231,7 @@ class CTerm extends \MyWrapper\Persistence\CPersistentObject
 				//
 				if( $this->offsetGet( $theOffset ) !== $theValue )
 					throw new \Exception
-						( "Cannot modify [$theOffset] offset",
+						( "The object is committed: cannot modify [$theOffset] offset",
 						  kERROR_LOCKED );										// !@! ==>
 			
 			} // Offset matches.
@@ -280,7 +280,7 @@ class CTerm extends \MyWrapper\Persistence\CPersistentObject
 				//
 				if( $this->offsetExists( $theOffset ) )
 					throw new \Exception
-						( "Cannot modify [$theOffset] offset",
+						( "The object is committed: cannot modify [$theOffset] offset",
 						  kERROR_LOCKED );										// !@! ==>
 			
 			} // Offset matches.

@@ -54,7 +54,8 @@ use \MyWrapper\Persistence\CPersistentDocument;
  *
  * The class also implements an interface to handle the {@link _IsInited()} status: a
  * protected method, {@link _Ready()}, can be used to return a boolean that indicates
- * whether the object has all the required components.
+ * whether the object has all the required components, this is performed in the
+ * {@link _Postset()} and {@link _Postunset()} methods.
  *
  *	@package	MyWrapper
  *	@subpackage	Persistence
@@ -106,78 +107,6 @@ class CPersistentObject extends \MyWrapper\Persistence\CPersistentDocument
 		$this->_IsInited( $this->_Ready() );
 		
 	} // Constructor.
-
-		
-
-/*=======================================================================================
- *																						*
- *								PUBLIC ARRAY ACCESS INTERFACE							*
- *																						*
- *======================================================================================*/
-
-
-	 
-	/*===================================================================================
-	 *	offsetSet																		*
-	 *==================================================================================*/
-
-	/**
-	 * <h4>Set a value for a given offset</h4>
-	 *
-	 * We override this method to set the {@link _IsInited() status} according to the
-	 * result of the {@link _Ready()} method.
-	 *
-	 * @param string				$theOffset			Offset.
-	 * @param mixed					$theValue			Value to set at offset.
-	 *
-	 * @access public
-	 *
-	 * @uses _IsDirty()
-	 */
-	public function offsetSet( $theOffset, $theValue )
-	{
-		//
-		// Call parent method.
-		//
-		parent::offsetSet( $theOffset, $theValue );
-		
-		//
-		// Set inited status.
-		//
-		$this->_IsInited( $this->_Ready() );
-	
-	} // offsetSet.
-
-	 
-	/*===================================================================================
-	 *	offsetUnset																		*
-	 *==================================================================================*/
-
-	/**
-	 * <h4>Reset a value for a given offset</h4>
-	 *
-	 * We override this method to set the {@link _IsInited() status} according to the
-	 * result of the {@link _Ready()} method.
-	 *
-	 * @param string				$theOffset			Offset.
-	 *
-	 * @access public
-	 *
-	 * @uses _IsDirty()
-	 */
-	public function offsetUnset( $theOffset )
-	{
-		//
-		// Call parent method.
-		//
-		parent::offsetUnset( $theOffset );
-		
-		//
-		// Set inited status.
-		//
-		$this->_IsInited( $this->_Ready() );
-	
-	} // offsetUnset.
 
 		
 
@@ -454,6 +383,85 @@ class CPersistentObject extends \MyWrapper\Persistence\CPersistentDocument
 		} // Insert, update, replace and modify (not used).
 		
 	} // _PreCommit.
+		
+
+
+/*=======================================================================================
+ *																						*
+ *								PROTECTED OFFSET INTERFACE								*
+ *																						*
+ *======================================================================================*/
+
+
+	 
+	/*===================================================================================
+	 *	_Postset																			*
+	 *==================================================================================*/
+
+	/**
+	 * <h4>Handle offset before setting it</h4>
+	 *
+	 * In this class we update the {@link _IsInited()} status.
+	 *
+	 * @param reference			   &$theOffset			Offset.
+	 * @param reference			   &$theValue			Value to set at offset.
+	 *
+	 * @access protected
+	 *
+	 * @uses _Ready()
+	 * @uses _IsInited()
+	 */
+	protected function _Postset( &$theOffset, &$theValue )
+	{
+		//
+		// Call parent method.
+		//
+		parent::_Postset( $theOffset, $theValue );
+		
+		//
+		// Update inited status.
+		//
+		$this->_IsInited( $this->_Ready() );
+	
+	} // _Postset.
+
+	 
+	/*===================================================================================
+	 *	_Postunset																		*
+	 *==================================================================================*/
+
+	/**
+	 * <h4>Handle offset before unsetting it</h4>
+	 *
+	 * This method will be called before the offset is unset from the object only if the
+	 * provided offset exists in the object, it gives the chance to perform custom actions
+	 * and change the provided offset.
+	 *
+	 * The method accepts the same parameter as the {@link offsetUnset()} method, except that
+	 * it passed by reference.
+	 *
+	 * In this class we set the {@link _IsDirty()} status.
+	 *
+	 * @param reference			   &$theOffset			Offset.
+	 *
+	 * @access protected
+	 *
+	 * @uses _Ready()
+	 * @uses _IsInited()
+	 */
+	protected function _Postunset( &$theOffset )
+	{
+		//
+		// Call parent method.
+		//
+		parent::_Postunset( $theOffset );
+		
+		//
+		// Update inited status.
+		//
+		$this->_IsInited( $this->_Ready() );
+	
+	} // _Postunset.
 		
 
 
