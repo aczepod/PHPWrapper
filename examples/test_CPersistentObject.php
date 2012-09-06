@@ -68,7 +68,7 @@ class MyClass extends CPersistentObject
 	//
 	// The 36 first characters of the 'CODE' value is the global unique identifier.
 	//
-	protected function _index()
+	protected function _index( $theContainer, $theModifiers )
 	{
 		return substr( $this->offsetGet( 'CODE' ), 0, 36 );
 	}
