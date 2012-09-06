@@ -24,15 +24,7 @@
  *
  * This includes the ancestor class definitions.
  */
-use MyWrapper\Persistence\CPersistentDocument;
-
-/**
- * Containers.
- *
- * This includes the containers ancestor class definitions.
- * Included to declare the CContainer class.
- */
-use MyWrapper\Framework\CContainer;
+use \MyWrapper\Persistence\CPersistentDocument;
 
 /**
  * <h3>Persistent object ancestor</h3>
@@ -46,24 +38,147 @@ use MyWrapper\Framework\CContainer;
  * The object is uniquely identified by a string, the <i>global unique identifier</i>, this
  * string is generally a combination of the object's attributes and once set, it should not
  * change. The string is determined by a protected method, {@link _index()}, and optionally
- * set into a predefined offset, {@link kTAG_GID}.
+ * set into a predefined offset, {@link kOFFSET_GID}.
  *
  * This value is used by a static method, {@link _id()}, which processes or uses that value
- * as-is to set the object's <i>local unique identifier</i> in the {@link kTAG_LID} offset.
- * This static method can also be used to obtain the primary key of an object, given the
- * global identifier string. The method expects the container to which the object is going
- * to be committed as a parameter, to use its custom data conversion methods.
+ * as-is to set the object's <i>native unique identifier</i> in the {@link kOFFSET_NID}
+ * offset. This static method can also be used to obtain the primary key of an object, given
+ * the global identifier string. The method expects the container to which the object is
+ * going to be committed as a parameter, to use its custom data conversion methods.
  *
- * Objects derived from this class store their class name in the {@link kTAG_CLASS} offset,
- * this will be used by the static {@link NewObject()} method to instantiate the right object.
+ * Objects derived from this class store their class name in the {@link kOFFSET_CLASS}
+ * offset, this will be used by the static {@link NewObject()} method to instantiate the
+ * right object.
  *
  * The class implements the above workflow by overloading the {@link _Precommit()} method.
+ *
+ * The class also implements an interface to handle the {@link _IsInited()} status: a
+ * protected method, {@link _Ready()}, can be used to return a boolean that indicates
+ * whether the object has all the required components.
  *
  *	@package	MyWrapper
  *	@subpackage	Persistence
  */
-class CPersistentObject extends CPersistentDocument
+class CPersistentObject extends \MyWrapper\Persistence\CPersistentDocument
 {
+		
+
+/*=======================================================================================
+ *																						*
+ *											MAGIC										*
+ *																						*
+ *======================================================================================*/
+
+
+	 
+	/*===================================================================================
+	 *	__construct																		*
+	 *==================================================================================*/
+
+	/**
+	 * <h4>Instantiate class</h4>
+	 *
+	 * We overload the inherited constructor to set the {@link _IsInited()} status according
+	 * to the data set in the object.
+	 *
+	 * This constructor mirrors the {@link ArrayObject} constructor.
+	 *
+	 * @param mixed					$theInput			Input parameter.
+	 * @param integer				$theFlags			Control flags.
+	 * @param string				$theIterator		Control flags.
+	 *
+	 * @access public
+	 *
+	 * @uses Container()
+	 */
+	public function __construct( $theInput = Array(),
+								 $theFlags = 0,
+								 $theIterator = 'ArrayIterator' )
+	{
+		//
+		// Call parent constructor.
+		//
+		parent::__construct( $theInput, $theFlags, $theIterator );
+		
+		//
+		// Initialise the initialise status.
+		//
+		$this->_IsInited( $this->_Ready() );
+		
+	} // Constructor.
+
+		
+
+/*=======================================================================================
+ *																						*
+ *								PUBLIC ARRAY ACCESS INTERFACE							*
+ *																						*
+ *======================================================================================*/
+
+
+	 
+	/*===================================================================================
+	 *	offsetSet																		*
+	 *==================================================================================*/
+
+	/**
+	 * <h4>Set a value for a given offset</h4>
+	 *
+	 * We override this method to set the {@link _IsInited() status} according to the
+	 * result of the {@link _Ready()} method.
+	 *
+	 * @param string				$theOffset			Offset.
+	 * @param mixed					$theValue			Value to set at offset.
+	 *
+	 * @access public
+	 *
+	 * @uses _IsDirty()
+	 */
+	public function offsetSet( $theOffset, $theValue )
+	{
+		//
+		// Call parent method.
+		//
+		parent::offsetSet( $theOffset, $theValue );
+		
+		//
+		// Set inited status.
+		//
+		$this->_IsInited( $this->_Ready() );
+	
+	} // offsetSet.
+
+	 
+	/*===================================================================================
+	 *	offsetUnset																		*
+	 *==================================================================================*/
+
+	/**
+	 * <h4>Reset a value for a given offset</h4>
+	 *
+	 * We override this method to set the {@link _IsInited() status} according to the
+	 * result of the {@link _Ready()} method.
+	 *
+	 * @param string				$theOffset			Offset.
+	 *
+	 * @access public
+	 *
+	 * @uses _IsDirty()
+	 */
+	public function offsetUnset( $theOffset )
+	{
+		//
+		// Call parent method.
+		//
+		parent::offsetUnset( $theOffset );
+		
+		//
+		// Set inited status.
+		//
+		$this->_IsInited( $this->_Ready() );
+	
+	} // offsetUnset.
+
 		
 
 /*=======================================================================================
@@ -81,7 +196,7 @@ class CPersistentObject extends CPersistentDocument
 	/**
 	 * <h4>Instantiate an object from a container</h4>
 	 *
-	 * We override this method to handle the {@link kTAG_CLASS} offset: if found in the
+	 * We override this method to handle the {@link kOFFSET_CLASS} offset: if found in the
 	 * retrieved object, it will be used to instantiate the correct class. If the offset is
 	 * missing, the method will instantiate this class.
 	 *
@@ -91,7 +206,7 @@ class CPersistentObject extends CPersistentDocument
 	 *	<li><tt>$theContainer</tt>: A concrete instance of the
 	 *		{@link  MyWrapper\Framework\CContainer} class.
 	 *	<li><tt>$theIdentifier</tt>: The key of the object in the container, by default the
-	 *		{@link kTAG_LID} offset.
+	 *		{@link kOFFSET_NID} offset.
 	 * </ul>
 	 *
 	 * If the object could not be located, the method will return <tt>NULL</tt>.
@@ -108,7 +223,7 @@ class CPersistentObject extends CPersistentDocument
 		//
 		// Init local storage.
 		//
-		$object = array( kTAG_LID => $theIdentifier );
+		$object = array( kOFFSET_NID => $theIdentifier );
 		
 		//
 		// Retrieve object.
@@ -118,12 +233,12 @@ class CPersistentObject extends CPersistentDocument
 			//
 			// Handle custom class.
 			//
-			if( array_key_exists( kTAG_CLASS, $object ) )
+			if( array_key_exists( kOFFSET_CLASS, $object ) )
 			{
 				//
 				// Save class name.
 				//
-				$class = $object[ kTAG_CLASS ];
+				$class = $object[ kOFFSET_CLASS ];
 				
 				//
 				// Instantiate class.
@@ -167,13 +282,13 @@ class CPersistentObject extends CPersistentDocument
 	 *==================================================================================*/
 
 	/**
-	 * <h4>Generate the object's local unique identifier</h4>
+	 * <h4>Generate the object's native unique identifier</h4>
 	 *
-	 * This method is used to generate the object's <i>local unique identifier</i> from the
+	 * This method is used to generate the object's <i>native unique identifier</i> from the
 	 * string representing the object's <i>global unique identifier</i>.
 	 *
 	 * The method expects a string as input and should either return it as-is, or hash it.
-	 * This method will be used to set the {@link kTAG_LID} offset which represents the
+	 * This method will be used to set the {@link kOFFSET_NID} offset which represents the
 	 * primary key of the object and can be used to generate a primary key given the global
 	 * unique identifier of the object. The second parameter to this method is the container
 	 * that will receive the object, this can be useful if it provides custom data
@@ -181,7 +296,7 @@ class CPersistentObject extends CPersistentDocument
 	 *
 	 * Note that if the provided value is <tt>NULL</tt>, this means that it is the duty of
 	 * the container to set the object's primary key, in this case this method cannot be
-	 * used to generate a local identifier, since the object does not have a global
+	 * used to generate a native identifier, since the object does not have a global
 	 * identifier.
 	 *
 	 * In this class we use the global identifier as-is.
@@ -190,7 +305,7 @@ class CPersistentObject extends CPersistentDocument
 	 * @param CContainer			$theContainer		Container.
 	 *
 	 * @static
-	 * @return mixed				The object's local unique identifier.
+	 * @return mixed				The object's native unique identifier.
 	 */
 	static function _id( $theIdentifier = NULL, CContainer $theContainer = NULL )
 	{
@@ -219,19 +334,19 @@ class CPersistentObject extends CPersistentDocument
 	 * represented by a string which is generally extracted from selected attributes of the
 	 * object and represents the unique key of the object.
 	 *
-	 * This string is optionally stored in the {@link kTAG_GID} offset of the object and it
-	 * is processed by the static {@link _id()} method resulting in the object's local
+	 * This string is optionally stored in the {@link kOFFSET_GID} offset of the object and
+	 * it is processed by the static {@link _id()} method resulting in the object's native
 	 * unique identifier, which is the native object's primary key stored in the
-	 * {@link kTAG_LID} offset.
+	 * {@link kOFFSET_NID} offset.
 	 *
 	 * This method can return a meaningful value only if the object has all required
 	 * properties, so, if the class features a global identifier, this method should first
 	 * check is the object is {@link _IsInited()}, if that is not the case it should raise
 	 * an exception.
 	 *
-	 * If this method returns <tt>NULL</tt>, it means that the local unique identifier is
+	 * If this method returns <tt>NULL</tt>, it means that the native unique identifier is
 	 * generated by the container that will store the object, in that case the
-	 * {@link kTAG_GID} will not be used.
+	 * {@link kOFFSET_GID} will not be used.
 	 *
 	 * This class has no predefined attributes, so we let the container provide the
 	 * identifier by returning <tt>NULL</tt>.
@@ -265,13 +380,13 @@ class CPersistentObject extends CPersistentDocument
 	 * <ul>
 	 *	<li>{@link _IsInited()}: We check whether the object was initialised, if that is
 	 *		not the case, the method will raise an exception.
-	 *	<li>{@link kTAG_LID}: If missing and if the result of the {@link _index()} method is
-	 *		not <tt>NULL</tt>, we set the local unique identifier by feeding the string
+	 *	<li>{@link kOFFSET_NID}: If missing and if the result of the {@link _index()} method
+	 *		is not <tt>NULL</tt>, we set the native unique identifier by feeding the string
 	 *		returned by {@link _index()} into the {@link _id()} method.
-	 *	<li>{@link kTAG_GID}: If missing and if the result of the {@link _index()} method is
-	 *		not <tt>NULL</tt>, we set the global unique identifier with the result of
+	 *	<li>{@link kOFFSET_GID}: If missing and if the result of the {@link _index()} method
+	 *		is not <tt>NULL</tt>, we set the global unique identifier with the result of
 	 *		{@link _index()}.
-	 *	<li>{@link kTAG_CLASS}: If missing, we set this offset to the current class name.
+	 *	<li>{@link kOFFSET_CLASS}: If missing, we set this offset to the current class name.
 	 *		Note that we do not set the class automatically, as a superclass may instantiate
 	 *		safely a subclass.
 	 * </ul>
@@ -287,7 +402,7 @@ class CPersistentObject extends CPersistentDocument
 	 * @uses _index()
 	 * @uses _IsInited()
 	 *
-	 * @see kTAG_LID kTAG_GID kTAG_CLASS
+	 * @see kOFFSET_NID kOFFSET_GID kOFFSET_CLASS
 	 */
 	protected function _Precommit( CContainer $theContainer,
 											  $theModifiers = kFLAG_DEFAULT )
@@ -308,7 +423,7 @@ class CPersistentObject extends CPersistentDocument
 			//
 			// Handle identifier.
 			//
-			if( ! $this->offsetExists( kTAG_LID ) )
+			if( ! $this->offsetExists( kOFFSET_NID ) )
 			{
 				//
 				// Get global identifier.
@@ -319,26 +434,58 @@ class CPersistentObject extends CPersistentDocument
 					//
 					// Set global identifier.
 					//
-					$this->offsetSet( kTAG_GID, $gid );
+					$this->offsetSet( kOFFSET_GID, $gid );
 				
 					//
-					// Set local identifier.
+					// Set native identifier.
 					//
-					$this->offsetSet( kTAG_LID, $this->_id( $gid, $theContainer ) );
+					$this->offsetSet( kOFFSET_NID, $this->_id( $gid, $theContainer ) );
 					
 				} // Has global identifier.
 			
-			} // Missing local identifier.
+			} // Missing native identifier.
 			
 			//
 			// Handle class.
 			//
-			if( ! $this->offsetExists( kTAG_CLASS ) )
-				$this->offsetSet( kTAG_CLASS, get_class( $this ) );
+			if( ! $this->offsetExists( kOFFSET_CLASS ) )
+				$this->offsetSet( kOFFSET_CLASS, get_class( $this ) );
 		
 		} // Insert, update, replace and modify (not used).
 		
 	} // _PreCommit.
+		
+
+
+/*=======================================================================================
+ *																						*
+ *								PROTECTED STATUS INTERFACE								*
+ *																						*
+ *======================================================================================*/
+
+
+	 
+	/*===================================================================================
+	 *	_Ready																			*
+	 *==================================================================================*/
+
+	/**
+	 * <h4>Determine if the object is ready</h4>
+	 *
+	 * This method will return a boolean indicating whether all the required the elements
+	 * managed by the current class are present, this value should then be set by the caller
+	 * into the {@link _IsInited()} status.
+	 *
+	 * This method should be implemented in all inheritance levels in which the
+	 * @link _IsInited()} status is affected.
+	 *
+	 * In this class we assume the object is {@link _IsInited()}, it is up to derived
+	 * classes to prove the contrary.
+	 *
+	 * @access protected
+	 * @return boolean				<tt>TRUE</tt> means {@link _IsInited( <tt>TRUE</tt> ).
+	 */
+	protected function _Ready()											{	return TRUE;	}
 
 	 
 

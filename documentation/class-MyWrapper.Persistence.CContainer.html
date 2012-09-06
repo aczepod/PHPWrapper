@@ -4,10 +4,10 @@
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 	<meta name="generator" content="ApiGen 2.7.0" />
 
-	<title>Class MyWrapper\Framework\CContainer | MyWrapper Reference Documentation</title>
+	<title>Class MyWrapper\Persistence\CContainer | MyWrapper Reference Documentation</title>
 
-	<script type="text/javascript" src="resources/combined.js?496895167"></script>
-	<script type="text/javascript" src="elementlist.js?3036642770"></script>
+	<script type="text/javascript" src="resources/combined.js?417553483"></script>
+	<script type="text/javascript" src="elementlist.js?1357666139"></script>
 	<link rel="stylesheet" type="text/css" media="all" href="resources/style.css?1567499433" />
 
 </head>
@@ -23,9 +23,11 @@
 			<ul>
 				<li class="active main"><a href="namespace-MyWrapper.html">MyWrapper<span></span></a>
 						<ul>
-				<li class="active main"><a href="namespace-MyWrapper.Framework.html">Framework</a>
+				<li class="main"><a href="namespace-MyWrapper.Framework.html">Framework</a>
 						</li>
-				<li class="main"><a href="namespace-MyWrapper.Persistence.html">Persistence</a>
+				<li class="main"><a href="namespace-MyWrapper.Ontology.html">Ontology</a>
+						</li>
+				<li class="active main"><a href="namespace-MyWrapper.Persistence.html">Persistence</a>
 						</li>
 							</ul></li>
 				<li><a href="namespace-None.html">None</a>
@@ -41,9 +43,10 @@
 		<div id="elements">
 			<h3>Classes</h3>
 			<ul>
-				<li class="active"><a href="class-MyWrapper.Framework.CContainer.html">CContainer</a></li>
-				<li><a href="class-MyWrapper.Framework.CDocument.html">CDocument</a></li>
-				<li><a href="class-MyWrapper.Framework.CStatusDocument.html">CStatusDocument</a></li>
+				<li class="active"><a href="class-MyWrapper.Persistence.CContainer.html">CContainer</a></li>
+				<li><a href="class-MyWrapper.Persistence.CMongoContainer.html">CMongoContainer</a></li>
+				<li><a href="class-MyWrapper.Persistence.CPersistentDocument.html">CPersistentDocument</a></li>
+				<li><a href="class-MyWrapper.Persistence.CPersistentObject.html">CPersistentObject</a></li>
 			</ul>
 
 
@@ -71,7 +74,7 @@
 				<a href="index.html" title="Overview"><span>Overview</span></a>
 			</li>
 			<li>
-				<a href="namespace-MyWrapper.Framework.html" title="Summary of MyWrapper\Framework"><span>Namespace</span></a>
+				<a href="namespace-MyWrapper.Persistence.html" title="Summary of MyWrapper\Persistence"><span>Namespace</span></a>
 			</li>
 			<li class="active">
 <span>Class</span>			</li>
@@ -150,7 +153,7 @@ status and the one of the provided persistent objects.</p>
 		</dd>
 		<dd style="padding-left:90px">
 			<img src="resources/inherit.png" alt="Extended by" />
-<b><span>MyWrapper\Framework\CContainer</span></b>			
+<b><span>MyWrapper\Persistence\CContainer</span></b>			
 			
 			
 		</dd>
@@ -170,10 +173,10 @@ status and the one of the provided persistent objects.</p>
 	<div class="info">
 		<b>Abstract</b><br />
 		
-		<b>Namespace:</b> <a href="namespace-MyWrapper.html">MyWrapper</a>\<a href="namespace-MyWrapper.Framework.html">Framework</a><br />
-		<b>Package:</b> MyWrapper\Framework<br />
+		<b>Namespace:</b> <a href="namespace-MyWrapper.html">MyWrapper</a>\<a href="namespace-MyWrapper.Persistence.html">Persistence</a><br />
+		<b>Package:</b> MyWrapper\Persistence<br />
 
-		<b>Located at</b> <a href="source-class-MyWrapper.Framework.CContainer.html#36" title="Go to source code">Framework/CContainer.php</a><br />
+		<b>Located at</b> <a href="source-class-MyWrapper.Persistence.CContainer.html#43" title="Go to source code">Persistence/CContainer.php</a><br />
 	</div>
 
 
@@ -190,7 +193,7 @@ status and the one of the provided persistent objects.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#___construct">#</a>
-		<code><a href="source-class-MyWrapper.Framework.CContainer.html#86" title="Go to source code">__construct</a>( <span>mixed <var>$theContainer</var> = <span class="php-keyword1">NULL</span> </span> )</code>
+		<code><a href="source-class-MyWrapper.Persistence.CContainer.html#93" title="Go to source code">__construct</a>( <span>mixed <var>$theContainer</var> = <span class="php-keyword1">NULL</span> </span> )</code>
 
 		<div class="description short">
 			
@@ -222,7 +225,7 @@ accessor method.</p>
 
 				<h4>Uses</h4>
 				<div class="list">
-						<code><code><a href="class-MyWrapper.Framework.CContainer.html#_">MyWrapper\Framework\CContainer::Container()</a></code></code> <br />
+						<code><code><a href="class-MyWrapper.Persistence.CContainer.html#_">MyWrapper\Persistence\CContainer::Container()</a></code></code> <br />
 				</div>
 
 				<h4>Overrides</h4>
@@ -242,7 +245,7 @@ accessor method.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#___toString">#</a>
-		<code><a href="source-class-MyWrapper.Framework.CContainer.html#116" title="Go to source code">__toString</a>( )</code>
+		<code><a href="source-class-MyWrapper.Persistence.CContainer.html#123" title="Go to source code">__toString</a>( )</code>
 
 		<div class="description short">
 			
@@ -284,7 +287,7 @@ must be able to return a name.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#_Container">#</a>
-		<code><a href="source-class-MyWrapper.Framework.CContainer.html#143" title="Go to source code">Container</a>( <span>mixed <var>$theValue</var> = <span class="php-keyword1">NULL</span></span>, <span>boolean <var>$getOld</var> = <span class="php-keyword1">FALSE</span> </span> )</code>
+		<code><a href="source-class-MyWrapper.Persistence.CContainer.html#150" title="Go to source code">Container</a>( <span>mixed <var>$theValue</var> = <span class="php-keyword1">NULL</span></span>, <span>boolean <var>$getOld</var> = <span class="php-keyword1">FALSE</span> </span> )</code>
 
 		<div class="description short">
 			
@@ -341,7 +344,7 @@ has been set.</p>
 				</div>
 				<h4>Used by</h4>
 				<div class="list">
-						<code><code><a href="class-MyWrapper.Framework.CContainer.html#_">MyWrapper\Framework\CContainer::__construct()</a></code></code> <br />
+						<code><code><a href="class-MyWrapper.Persistence.CContainer.html#_">MyWrapper\Persistence\CContainer::__construct()</a></code></code> <br />
 				</div>
 
 
@@ -359,7 +362,7 @@ has been set.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#_ManageObject">#</a>
-		<code><a href="source-class-MyWrapper.Framework.CContainer.html#206" title="Go to source code">ManageObject</a>( <span>reference <var>&amp; $theObject</var></span>, <span>mixed <var>$theIdentifier</var> = <span class="php-keyword1">NULL</span></span>, <span>bitfield <var>$theModifiers</var> = kFLAG_DEFAULT </span> )</code>
+		<code><a href="source-class-MyWrapper.Persistence.CContainer.html#213" title="Go to source code">ManageObject</a>( <span>reference <var>&amp; $theObject</var></span>, <span>mixed <var>$theIdentifier</var> = <span class="php-keyword1">NULL</span></span>, <span>bitfield <var>$theModifiers</var> = kFLAG_DEFAULT </span> )</code>
 
 		<div class="description short">
 			
@@ -374,15 +377,15 @@ has been set.</p>
 <p>This method can be used to manage a single object in the container, it can
 <i>insert</i>, <i>update</i>, <i>replace</i>, <i>modify</i>, <i>retrieve</i> and
 <i>delete</i> an object from the current container by providing the object
-and/or its local unique identifier (kTAG_LID).</p>
+and/or its native unique identifier (kOFFSET_NID).</p>
 
 <p>This method expects three parameters:</p>
 
 <ul>
 	<li><tt>$theObject</tt>: The object or the data to be modified.</li>
 
-	<li><tt>$theIdentifier</tt>: The local unique identifier (kTAG_LID) of
-	the object. If the value is <i>NULL</i>, it means that it is the duty of the
+	<li><tt>$theIdentifier</tt>: The native unique identifier (kOFFSET_NID)
+	of the object. If the value is <i>NULL</i>, it means that it is the duty of the
 	current container to set the value, this will generally be the case when
 	inserting objects; in all other cases the parameter is required.</li>
 
@@ -397,7 +400,7 @@ and/or its local unique identifier (kTAG_LID).</p>
 			the container to create the identifier. If the identifier was created by the
 			container, it is the duty of this method to set it into the provided object. In
 			this case the method should return the inserted object's native identifier
-			(kTAG_LID).</li>
+			(kOFFSET_NID).</li>
 
 			<li>kFLAG_PERSIST_UPDATE: The provided object will replace an object
 			existing in the container. In this case the method expects the container to have
@@ -415,7 +418,7 @@ and/or its local unique identifier (kTAG_LID).</p>
 			unique identifier, or <tt>NULL</tt>, if it is the duty of the container to
 			create the identifier. If the identifier was created by the container, it is the
 			duty of this method to set it into the provided object. In this case the method
-			should return the inserted object's native identifier (kTAG_LID).</li>
+			should return the inserted object's native identifier (kOFFSET_NID).</li>
 
 			<li>kFLAG_PERSIST_MODIFY: This option can be used to apply modifications
 			to a subset of the object. In this case, <tt>$theObject</tt> should contain the
@@ -428,13 +431,13 @@ and/or its local unique identifier (kTAG_LID).</p>
 			<li>kFLAG_PERSIST_DELETE: This option assumes you want to remove the
 			object from the container. In this case the <tt>$theObject</tt> represents the
 			full object and <tt>$theIdentifier</tt> represents the object unique identifier,
-			what counts is that the object's unique identifier (kTAG_LID) is
+			what counts is that the object's unique identifier (kOFFSET_NID) is
 			provided. If the object is not found in the container, the method should not
 			fail. In this case the method should return <tt>TRUE</tt> if the object was
 			deleted and <tt>FALSE</tt> if the object was not found.</li>
 		</ul>
 		 If none of the above flags are set, it means that the caller wants to retrieve
-		the object identified by the kTAG_LID offset from the provided object
+		the object identified by the kOFFSET_NID offset from the provided object
 		object or from the provided identifier. If found, the provided object will
 		receive the located object and the method will return <tt>TRUE</tt>; if not
 		found, the method will set the provided object to <tt>NULL</tt> and return
@@ -495,7 +498,7 @@ will only check if the current object is inited.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#_ConvertBinary">#</a>
-		<code><a href="source-class-MyWrapper.Framework.CContainer.html#332" title="Go to source code">ConvertBinary</a>( <span>mixed <var>$theValue</var></span>, <span>boolean <var>$theSense</var> = <span class="php-keyword1">TRUE</span> </span> )</code>
+		<code><a href="source-class-MyWrapper.Persistence.CContainer.html#339" title="Go to source code">ConvertBinary</a>( <span>mixed <var>$theValue</var></span>, <span>boolean <var>$theSense</var> = <span class="php-keyword1">TRUE</span> </span> )</code>
 
 		<div class="description short">
 			
@@ -548,7 +551,7 @@ convert for database, <tt>FALSE</tt> convert back to PHP.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#__Container">#</a>
-		<code><a href="source-class-MyWrapper.Framework.CContainer.html#373" title="Go to source code">_Container</a>( )</code>
+		<code><a href="source-class-MyWrapper.Persistence.CContainer.html#380" title="Go to source code">_Container</a>( )</code>
 
 		<div class="description short">
 			
@@ -561,7 +564,7 @@ convert for database, <tt>FALSE</tt> convert back to PHP.</p>
 <h4>Get container reference</h4>
 
 <p>This method can be used to retrieve a reference to the native container
-member, this can be useful when the native <code><a href="class-MyWrapper.Framework.CContainer.html#_">MyWrapper\Framework\CContainer::Container()</a></code> is not an object
+member, this can be useful when the native <code><a href="class-MyWrapper.Persistence.CContainer.html#_">MyWrapper\Persistence\CContainer::Container()</a></code> is not an object
 passed by reference.</p>
 
 
@@ -654,7 +657,7 @@ passed by reference.</p>
 		</code></td>
 
 		<td class="name">
-				<a href="source-class-MyWrapper.Framework.CContainer.html#63" title="Go to source code"><var>$mContainer</var></a>
+				<a href="source-class-MyWrapper.Persistence.CContainer.html#70" title="Go to source code"><var>$mContainer</var></a>
 		</td>
 		<td class="value"><code><span class="php-keyword1">NULL</span></code></td>
 		<td class="description"><div>

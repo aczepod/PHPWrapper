@@ -1,201 +1,201 @@
-(_idx: index, _ns: namespace ==> reference to term)
+(_ix: index, _ns: namespace ==> reference to term)
 
 TERMS:
 
-_idx:			
+_ix:			
 _ns:			NULL
-_code:			
+_ic:			
 @1:				Default namespace
 @2:				Namespace of all elements comprising the application.
 
-_idx:			:LABEL
+_ix:			:LABEL
 _ns:			
-_code:			LABEL
+_ic:			LABEL
 @1:				Label
 @2:				Short description or name.
 
-_idx:			:DESCRIPTION
+_ix:			:DESCRIPTION
 _ns:			
-_code:			DESCRIPTION
+_ic:			DESCRIPTION
 @1:				Description
 @2:				Long description or definition.
 
-_idx:			:CODE
+_ix:			:CODE
 _ns:			
-_code:			CODE
+_ic:			CODE
 @1:				Code
 @2:				Abbreviation or acronym used to identify an object.
 
-_idx:			:PASSWORD
+_ix:			:PASSWORD
 _ns:			
-_code:			PASSWORD
+_ic:			PASSWORD
 @1:				Password
 @2:				Code used to validate an object.
 
-_idx:			:NAME
+_ix:			:NAME
 _ns:			
-_code:			NAME
+_ic:			NAME
 @1:				Name
 @2:				Label used to identify an object.
 
-_idx:			:EMAIL
+_ix:			:EMAIL
 _ns:			
-_code:			EMAIL
+_ic:			EMAIL
 @1:				E-mail
 @2:				E-mail address.
 
-_idx:			:ROLE
+_ix:			:ROLE
 _ns:			
-_code:			ROLE
+_ic:			ROLE
 @1:				Role
 @2:				Role or responsibility.
 
-_idx:			:PERMISSIONS-USER
+_ix:			:PERMISSIONS-USER
 _ns:			
-_code:			PERMISSIONS-USER
+_ic:			PERMISSIONS-USER
 @1:				User permissions
 @2:				List of permissions or capabilities related to users.
 
-_idx:			:PERMISSIONS-PASSPORT
+_ix:			:PERMISSIONS-PASSPORT
 _ns:			
-_code:			PERMISSIONS-PASSPORT
+_ic:			PERMISSIONS-PASSPORT
 @1:				Passport dataset permissions
 @2:				List of permissions or capabilities related to passport datasets.
 
-_idx:			:PERMISSIONS-DATASET
+_ix:			:PERMISSIONS-DATASET
 _ns:			
-_code:			PERMISSIONS-DATASET
+_ic:			PERMISSIONS-DATASET
 @1:				Dataset permissions
 @2:				List of permissions or capabilities related to datasets.
 
-_idx:			:STRING
+_ix:			:STRING
 _ns:			
-_code:			STRING
+_ic:			STRING
 @1:				String
 @2:				String data type.
 
-_idx:			:ENUM
+_ix:			:ENUM
 _ns:			
-_code:			ENUM
+_ic:			ENUM
 @1:				Enumeration
 @2:				Enumerated value.
 
-_idx:			:SET
+_ix:			:SET
 _ns:			
-_code:			SET
+_ic:			SET
 @1:				Enumerated set
 @2:				List of non-repeating enumerated values.
 
-_idx:			:USER
+_ix:			:USER
 _ns:			
-_code:			USER
+_ic:			USER
 @1:				User
 @2:				User entity.
 
-_idx:			:ROOT
+_ix:			:ROOT
 _ns:			
-_code:			ROOT
+_ic:			ROOT
 @1:				Root
 @2:				Graph root node or entry point.
 
-_idx:			:TRAIT
+_ix:			:TRAIT
 _ns:			
-_code:			TRAIT
+_ic:			TRAIT
 @1:				Trait
 @2:				Trait or measurable characteristic.
 
-_idx:			:METHOD
+_ix:			:METHOD
 _ns:			
-_code:			METHOD
+_ic:			METHOD
 @1:				Method
 @2:				Method or measurement workflow.
 
-_idx:			:SCALE
+_ix:			:SCALE
 _ns:			
-_code:			SCALE
+_ic:			SCALE
 @1:				Scale
 @2:				Scale or measurement unit.
 
-_idx:			:ATTRIBUTE-OF
+_ix:			:ATTRIBUTE-OF
 _ns:			
-_code:			ATTRIBUTE-OF
+_ic:			ATTRIBUTE-OF
 @1:				Attribute-of
 @2:				Predicate indicating an attribute-of relationship.
 
-_idx:			:ENUM-OF
+_ix:			:ENUM-OF
 _ns:			
-_code:			ENUM-OF
+_ic:			ENUM-OF
 @1:				Enumeration-of
 @2:				Predicate indicating an enumeration-of relationship.
 
-_idx:			:ADMIN
+_ix:			:ADMIN
 _ns:			
-_code:			ADMIN
+_ic:			ADMIN
 @1:				Administrator
 @2:				The user that is responsible of the administration.
 
-_idx:			:CATALOGUE-USER
+_ix:			:CATALOGUE-USER
 _ns:			
-_code:			CATALOGUE-USER
+_ic:			CATALOGUE-USER
 @1:				Catalogue user
 @2:				The user that is responsible of the catalogue.
 
-_idx:			:INVENTORY-USER
+_ix:			:INVENTORY-USER
 _ns:			
-_code:			INVENTORY-USER
+_ic:			INVENTORY-USER
 @1:				Inventory user
 @2:				The user that is responsible of the inventory.
 
-_idx:			:COLLECTION-USER
+_ix:			:COLLECTION-USER
 _ns:			
-_code:			COLLECTION-USER
+_ic:			COLLECTION-USER
 @1:				Collection user
 @2:				The user that is responsible of the collection.
 
-_idx:			:GENERIC-USER
+_ix:			:GENERIC-USER
 _ns:			
-_code:			GENERIC-USER
+_ic:			GENERIC-USER
 @1:				Generic user
 @2:				A generic user.
 
-_idx:			:CREATE
+_ix:			:CREATE
 _ns:			
-_code:			CREATE
+_ic:			CREATE
 @1:				Create
 @2:				Can create.
 
-_idx:			:LIST
+_ix:			:LIST
 _ns:			
-_code:			LIST
+_ic:			LIST
 @1:				List
 @2:				Can list.
 
-_idx:			:READ
+_ix:			:READ
 _ns:			
-_code:			READ
+_ic:			READ
 @1:				Read
 @2:				Can read.
 
-_idx:			:MODIFY
+_ix:			:MODIFY
 _ns:			
-_code:			MODIFY
+_ic:			MODIFY
 @1:				Modify
 @2:				Can modify.
 
-_idx:			:DELETE
+_ix:			:DELETE
 _ns:			
-_code:			DELETE
+_ic:			DELETE
 @1:				Delete
 @2:				Can delete.
 
-_idx:			:PUBLISH
+_ix:			:PUBLISH
 _ns:			
-_code:			PUBLISH
+_ic:			PUBLISH
 @1:				Publish
 @2:				Can publish.
 
-_idx:			:UNPUBLISH
+_ix:			:UNPUBLISH
 _ns:			
-_code:			UNPUBLISH
+_ic:			UNPUBLISH
 @1:				Unpublish
 @2:				Can unpublish.

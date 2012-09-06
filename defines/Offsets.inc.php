@@ -23,22 +23,42 @@
  *======================================================================================*/
 
 /**
- * Local unique identifier.
+ * Native unique identifier.
  *
- * This tag identifies the attribute that contains the local or native unique identifier.
+ * This tag identifies the attribute that contains the native unique identifier.
  * This value is a full or hashed representation of the object's global unique identifier
- * ({@link kTAG_GID}).
+ * ({@link kOFFSET_GID}) optimised specifically for the container in which the object will
+ * be stored.
  */
-define( "kTAG_LID",								'_id' );
+define( "kOFFSET_NID",							'_id' );
 
 /**
  * Global unique identifier.
  *
  * This tag identifies the attribute that contains the global or full unique identifier.
- * This value will constitute the object's local or native key ({@link kTAG_LID}) in full or
+ * This value will constitute the object's native key ({@link kOFFSET_NID}) in full or
  * hashed format.
  */
-define( "kTAG_GID",								'_ix' );
+define( "kOFFSET_GID",							'_ix' );
+
+/**
+ * Local unique identifier.
+ *
+ * This tag identifies the attribute that contains the local or full unique identifier.
+ * This value represents the identifier that uniquely identifies an object within a specific
+ * domain or namespace. It is by default a string constituting a portion of the global
+ * unique identifier, {@link kOFFSET_GID}.
+ */
+define( "kOFFSET_LID",							'_ic' );
+
+/**
+ * Namespace.
+ *
+ * This tag is used as the offset for a namespace. By default this attribute contains the
+ * native unique identifier, {@link kOFFSET_NID}, of the namespace object; if you want to
+ * refer to the namespace code, this is not the offset to use.
+ */
+define( "kOFFSET_NAMESPACE",					'_ns' );
 
 /**
  * Class name.
@@ -46,6 +66,6 @@ define( "kTAG_GID",								'_ix' );
  * This tag identifies the class name of the object, it can be used to instantiate a class
  * rather than return an array when querying containers.
  */
-define( "kTAG_CLASS",							'_class' );
+define( "kOFFSET_CLASS",						'_cl' );
 
 ?>

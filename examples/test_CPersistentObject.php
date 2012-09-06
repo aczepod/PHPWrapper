@@ -1,4 +1,4 @@
-<?php namespace MyWrapper\Persistence;
+<?php
 
 /**
  * {@link CPersistentObject.php Base} object test suite.
@@ -27,7 +27,7 @@ require_once( '/Library/WebServer/Library/PHPWrapper/includes.inc.php' );
 //
 // Containers.
 //
-use MyWrapper\Framework\CContainer;
+use MyWrapper\Persistence\CContainer;
 use MyWrapper\Persistence\CMongoContainer;
 
 //
@@ -43,7 +43,7 @@ use MyWrapper\Persistence\CPersistentObject;
 //
 // Debug switches.
 //
-define( 'kDEBUG_PARENT', FALSE );
+define( 'kDEBUG_PARENT', TRUE );
 
 
 /*=======================================================================================
@@ -56,26 +56,13 @@ define( 'kDEBUG_PARENT', FALSE );
 class MyClass extends CPersistentObject
 {
 	//
-	// We overload to set the inited status.
-	//
-	public function __construct( $input = Array(), $flags = 0, $iterator_class = "ArrayIterator" )
-	{
-		parent::__construct( $input, $flags, $iterator_class );
-		$this->_IsInited( $this->offsetExists( 'CODE' ) );
-	}
-	
-	//
 	// Object is inited if it has the 'CODE' offset.
 	//
-	public function offsetSet( $theOffset, $theValue )
+	protected function _Ready()
 	{
-		parent::offsetSet( $theOffset, $theValue );
-		$this->_IsInited( $this->offsetExists( 'CODE' ) );
-	}
-	public function offsetUnset( $theOffset )
-	{
-		parent::offsetUnset( $theOffset );
-		$this->_IsInited( $this->offsetExists( 'CODE' ) );
+		if( parent::_Ready() )
+			return $this->offsetExists( 'CODE' );
+		return FALSE;
 	}
 	
 	//
@@ -87,7 +74,7 @@ class MyClass extends CPersistentObject
 	}
 	
 	//
-	// The local unique identifier is hashed.
+	// The native unique identifier is hashed.
 	//
 	static function _id( $theIdentifier = NULL, CContainer $theContainer = NULL )
 	{
@@ -124,7 +111,7 @@ try
 	echo( '<ul>' );
 	echo( '<li>Object is inited if it has the <tt>CODE</tt> offset.' );
 	echo( '<li>The 36 first characters of the <tt>CODE</tt> value are the global unique identifier.' );
-	echo( '<li>The local unique identifier is hashed.' );
+	echo( '<li>The native unique identifier is hashed.' );
 	echo( '<li>We implemented a series of public methods to show the object status.' );
 	echo( '</ul><hr>' );
 	
@@ -244,7 +231,7 @@ try
 		echo( '<h4>Insert document</h4>' );
 		echo( '<h5>$status = $test->Insert( $container );</h5>' );
 		$status = $test->Insert( $container );
-		$id = $test[ kTAG_LID ];
+		$id = $test[ kOFFSET_NID ];
 		echo( 'Inited['.$test->inited().'] Dirty['.$test->dirty().'] Saved['.$test->committed().'] Encoded['.$test->encoded().']<br />' );
 		echo( 'Object<pre>' ); print_r( $test ); echo( '</pre>' );
 		echo( 'Status<pre>' ); print_r( $status ); echo( '</pre>' );
@@ -293,8 +280,8 @@ try
 		try
 		{
 			echo( '<h4>Update missing document</h4>' );
-			echo( '<h5>$test[ kTAG_LID ] = 99;</h5>' );
-			$test[ kTAG_LID ] = 99;
+			echo( '<h5>$test[ kOFFSET_NID ] = 99;</h5>' );
+			$test[ kOFFSET_NID ] = 99;
 			echo( '<h5>$test->Update( $container ); // Should raise an exception.</h5>' );
 			$test->Update( $container );
 			echo( 'Inited['.$test->inited().'] Dirty['.$test->dirty().'] Saved['.$test->committed().'] Encoded['.$test->encoded().']<br />' );
@@ -345,8 +332,8 @@ try
 		$test[ "B" ] = NULL;
 		echo( '<h5>$test[ "C" ] = NULL;</h5>' );
 		$test[ "C" ] = NULL;
-		echo( '<h5>$test[ kTAG_LID ] = "pippo";</h5>' );
-		$test[ kTAG_LID ] = "pippo";
+		echo( '<h5>$test[ kOFFSET_NID ] = "pippo";</h5>' );
+		$test[ kOFFSET_NID ] = "pippo";
 		echo( '<pre>' ); print_r( $test ); echo( '</pre>' );
 		echo( '<h5>$status = $test->Restore( $container );</h5>' );
 		$status = $test->Restore( $container );
@@ -359,8 +346,8 @@ try
 		// Reset existing document.
 		//
 		echo( '<h4>Reset existing document</h4>' );
-		echo( '<h5>$test[ kTAG_LID ] = 99;</h5>' );
-		$test[ kTAG_LID ] = 99;
+		echo( '<h5>$test[ kOFFSET_NID ] = 99;</h5>' );
+		$test[ kOFFSET_NID ] = 99;
 		echo( '<pre>' ); print_r( $test ); echo( '</pre>' );
 		echo( '<h5>$status = $test->Restore( $container );</h5>' );
 		$status = $test->Restore( $container );
@@ -448,11 +435,11 @@ try
 	echo( '<hr />' );
 	
 	//
-	// Create an existing document via local identifier.
+	// Create an existing document via native identifier.
 	//
-	echo( '<h4>Create an existing document via local identifier</h4>' );
-	echo( '<h5>$lid = $test[ kTAG_LID ];</h5>' );
-	$lid = $test[ kTAG_LID ];
+	echo( '<h4>Create an existing document via native identifier</h4>' );
+	echo( '<h5>$lid = $test[ kOFFSET_NID ];</h5>' );
+	$lid = $test[ kOFFSET_NID ];
 	echo( '<pre>' ); print_r( $lid ); echo( '</pre>' );
 	echo( '<h5>$other = CPersistentObject::NewObject( $container, $lid );</h5>' );
 	$other = MyClass::NewObject( $container, $lid );
@@ -463,8 +450,8 @@ try
 	// Create an existing document via global identifier.
 	//
 	echo( '<h4>Create an existing document via global identifier</h4>' );
-	echo( '<h5>$gid = $test[ kTAG_GID ];</h5>' );
-	$gid = $test[ kTAG_GID ];
+	echo( '<h5>$gid = $test[ kOFFSET_GID ];</h5>' );
+	$gid = $test[ kOFFSET_GID ];
 	echo( "$gid<br />" );
 	echo( '<h5>$lid = CPersistentObject::_id( $gid, $container );</h5>' );
 	$lid = MyClass::_id( $gid, $container );

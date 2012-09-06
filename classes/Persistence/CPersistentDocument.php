@@ -20,25 +20,25 @@
  *======================================================================================*/
 
 /**
- * Containers.
+ * Offsets.
  *
- * This includes the containers ancestor class definitions.
+ * This include file contains all default offset definitions.
  */
-use MyWrapper\Framework\CContainer;
+require_once( kPATH_MYWRAPPER_LIBRARY_DEFINE."/Offsets.inc.php" );
 
 /**
  * Ancestor.
  *
  * This includes the ancestor class definitions.
  */
-use MyWrapper\Framework\CStatusDocument;
+use \MyWrapper\Framework\CStatusDocument;
 
 /**
  * <h3>Persistent document ancestor</h3>
  *
  * A persistent document object is a document object that knows how to persist in derived
  * concrete instances of the {@link CContainer} class. This class adds a single default
- * offset, {@link kTAG_LID}, which represents the database native unique identifier. All
+ * offset, {@link kOFFSET_NID}, which represents the database native unique identifier. All
  * objects derived from this class are uniquely identified by this offset.
  *
  * This class implements a series of persistence methods:
@@ -53,8 +53,8 @@ use MyWrapper\Framework\CStatusDocument;
  *	<li>{@link Replace()}: This method will either insert, if the object is not found in the
  *		container, or update, if the object exists in the container.
  *	<li>{@link Restore()}: This method will load the object from the container and restore
- *		its data, the method expects the object to have its local unique identifier,
- *		{@link kTAG_LID}, set, or it will raise an exception.
+ *		its data, the method expects the object to have its native unique identifier,
+ *		{@link kOFFSET_NID}, set, or it will raise an exception.
  *	<li>{@link Delete()}: This method will delete the object from a container.
  * </ul>
  *
@@ -69,72 +69,81 @@ use MyWrapper\Framework\CStatusDocument;
  *	@package	MyWrapper
  *	@subpackage	Persistence
  */
-class CPersistentDocument extends CStatusDocument
+class CPersistentDocument extends \MyWrapper\Framework\CStatusDocument
 {
 		
 
 /*=======================================================================================
  *																						*
- *								STATIC PERSISTENCE INTERFACE							*
+ *								PUBLIC ARRAY ACCESS INTERFACE							*
  *																						*
  *======================================================================================*/
 
 
 	 
 	/*===================================================================================
-	 *	NewObject																		*
+	 *	offsetSet																		*
 	 *==================================================================================*/
 
 	/**
-	 * <h4>Instantiate an object from a container</h4>
+	 * <h4>Set a value for a given offset</h4>
 	 *
-	 * This method will retrieve a document from the provided container, instantiate this
-	 * class with it and return the object; if the document was not located in the
-	 * container, the method will return <tt>NULL</tt>.
+	 * We override this method to handle the dirty flag: when the value changes, we turn the
+	 * {@link _IsDirty()} status flag on.
 	 *
-	 * The method expects two parameters:
+	 * @param string				$theOffset			Offset.
+	 * @param mixed					$theValue			Value to set at offset.
 	 *
-	 * <ul>
-	 *	<li><tt>$theContainer</tt>: A concrete instance of the {@link CContainer} class.
-	 *	<li><tt>$theIdentifier</tt>: The key of the object in the container, by default the
-	 *		{@link kTAG_LID} offset.
-	 * </ul>
+	 * @access public
 	 *
-	 * @param CContainer			$theContainer		Container.
-	 * @param mixed					$theIdentifier		Identifier.
-	 *
-	 * @static
-	 * @return mixed				The retrieved object.
+	 * @uses _IsDirty()
 	 */
-	static function NewObject( CContainer $theContainer, $theIdentifier )
+	public function offsetSet( $theOffset, $theValue )
 	{
 		//
-		// Init local storage.
+		// Check for changes.
 		//
-		$object = array( kTAG_LID => $theIdentifier );
+		if( $this->offsetGet( $theOffset ) !== $theValue )
+			$this->_IsDirty( TRUE );
 		
 		//
-		// Retrieve object.
+		// Call parent method.
 		//
-		if( $theContainer->ManageObject( $object ) )
-		{
-			//
-			// Instantiate class.
-			//
-			$object = new self( $object );
-			
-			//
-			// Post-commit.
-			//
-			$object->_Postcommit( $theContainer );
-			
-			return $object;															// ==>
-		
-		} // Located.
-		
-		return NULL;																// ==>
+		parent::offsetSet( $theOffset, $theValue );
 	
-	} // NewObject.
+	} // offsetSet.
+
+	 
+	/*===================================================================================
+	 *	offsetUnset																		*
+	 *==================================================================================*/
+
+	/**
+	 * <h4>Reset a value for a given offset</h4>
+	 *
+	 * We override this method to handle the dirty flag: when the value changes, we turn the
+	 * {@link _IsDirty()} status flag on.
+	 *
+	 * @param string				$theOffset			Offset.
+	 *
+	 * @access public
+	 *
+	 * @uses _IsDirty()
+	 */
+	public function offsetUnset( $theOffset )
+	{
+		//
+		// Check for changes.
+		//
+		if( $this->offsetExists( $theOffset ) )
+			$this->_IsDirty( TRUE );
+		
+		//
+		// Call parent method.
+		//
+		parent::offsetUnset( $theOffset );
+	
+	} // offsetUnset.
 		
 
 
@@ -160,15 +169,15 @@ class CPersistentDocument extends CStatusDocument
 	 * container in which the object should be stored. This parameter must be a concrete
 	 * instance of the {@link CContainer} class.
 	 *
-	 * The method may set the local unique identifier attribute ({@link kTAG_LID}) if not
-	 * provided.
+	 * The method may set the native unique identifier attribute ({@link kOFFSET_NID}) if
+	 * not provided.
 	 *
 	 * The operation will only be performed if the object has the {@link _IsDirty()} status
 	 * set or if it does not have its {@link _IsCommitted()} status set, in this event the
 	 * method will return <tt>NULL</tt>.
 	 *
-	 * The method will return the object's local unique identifier attribute
-	 * ({@link kTAG_LID}), or raise an exception if an error occurs.
+	 * The method will return the object's native unique identifier attribute
+	 * ({@link kOFFSET_NID}), or raise an exception if an error occurs.
 	 *
 	 * Note that derived classes should overload the {@link _Precommit()} and
 	 * {@link _Postcommit()} methods, rather than overloading this one.
@@ -176,7 +185,7 @@ class CPersistentDocument extends CStatusDocument
 	 * @param CContainer			$theContainer		Container.
 	 *
 	 * @access public
-	 * @return mixed				The object's local identifier.
+	 * @return mixed				The object's native identifier.
 	 *
 	 * @uses _IsDirty()
 	 * @uses _IsCommitted()
@@ -315,11 +324,11 @@ class CPersistentDocument extends CStatusDocument
 	 * Once the object has been stored, it will have its {@link _IsCommitted()} status set
 	 * and its {@link _IsDirty()} status reset.
 	 *
-	 * The method may set the local unique identifier attribute ({@link kTAG_LID}) if not
-	 * provided.
+	 * The method may set the native unique identifier attribute ({@link kOFFSET_NID}) if
+	 * not provided.
 	 *
-	 * The method will return the object's local unique identifier attribute
-	 * ({@link kTAG_LID}) or <tt>NULL</tt> if the operation was not necessary.
+	 * The method will return the object's native unique identifier attribute
+	 * ({@link kOFFSET_NID}) or <tt>NULL</tt> if the operation was not necessary.
 	 *
 	 * Note that derived classes should overload the {@link _Precommit()} and
 	 * {@link _Postcommit()} methods, rather than overloading this one.
@@ -327,7 +336,7 @@ class CPersistentDocument extends CStatusDocument
 	 * @param CContainer			$theContainer		Container.
 	 *
 	 * @access public
-	 * @return mixed				The object's local identifier.
+	 * @return mixed				The object's native identifier.
 	 *
 	 * @uses _IsDirty()
 	 * @uses _IsCommitted()
@@ -385,8 +394,9 @@ class CPersistentDocument extends CStatusDocument
 	 * The method expects a single parameter, <tt>$theContainer</tt>, which represents the
 	 * container in which the object is stored.
 	 *
-	 * The current object must have its local unique identifier offset, {@link kTAG_LID},
-	 * set, or it must have all the necessary elements in order to generate this identifier.
+	 * The current object must have its native unique identifier offset,
+	 * {@link kOFFSET_NID}, set, or it must have all the necessary elements in order to
+	 * generate this identifier.
 	 *
 	 * The method will return <tt>TRUE</tt> if the operation was successful, <tt>NULL</tt>
 	 * if the object is not present in the container, or raise an exception if an error
@@ -408,14 +418,14 @@ class CPersistentDocument extends CStatusDocument
 	 *
 	 * @uses _Postcommit()
 	 *
-	 * @see kTAG_LID
+	 * @see kOFFSET_NID
 	 */
 	public function Restore( CContainer $theContainer )
 	{
 		//
-		// Use local identifier.
+		// Use native identifier.
 		//
-		if( $this->offsetExists( kTAG_LID ) )
+		if( $this->offsetExists( kOFFSET_NID ) )
 		{
 			//
 			// Clone.
@@ -500,6 +510,71 @@ class CPersistentDocument extends CStatusDocument
 		return FALSE;																// ==>
 	
 	} // Delete.
+
+		
+
+/*=======================================================================================
+ *																						*
+ *								STATIC PERSISTENCE INTERFACE							*
+ *																						*
+ *======================================================================================*/
+
+
+	 
+	/*===================================================================================
+	 *	NewObject																		*
+	 *==================================================================================*/
+
+	/**
+	 * <h4>Instantiate an object from a container</h4>
+	 *
+	 * This method will retrieve a document from the provided container, instantiate this
+	 * class with it and return the object; if the document was not located in the
+	 * container, the method will return <tt>NULL</tt>.
+	 *
+	 * The method expects two parameters:
+	 *
+	 * <ul>
+	 *	<li><tt>$theContainer</tt>: A concrete instance of the {@link CContainer} class.
+	 *	<li><tt>$theIdentifier</tt>: The key of the object in the container, by default the
+	 *		{@link kOFFSET_NID} offset.
+	 * </ul>
+	 *
+	 * @param CContainer			$theContainer		Container.
+	 * @param mixed					$theIdentifier		Identifier.
+	 *
+	 * @static
+	 * @return mixed				The retrieved object.
+	 */
+	static function NewObject( CContainer $theContainer, $theIdentifier )
+	{
+		//
+		// Init local storage.
+		//
+		$object = array( kOFFSET_NID => $theIdentifier );
+		
+		//
+		// Retrieve object.
+		//
+		if( $theContainer->ManageObject( $object ) )
+		{
+			//
+			// Instantiate class.
+			//
+			$object = new self( $object );
+			
+			//
+			// Post-commit.
+			//
+			$object->_Postcommit( $theContainer );
+			
+			return $object;															// ==>
+		
+		} // Located.
+		
+		return NULL;																// ==>
+	
+	} // NewObject.
 		
 
 

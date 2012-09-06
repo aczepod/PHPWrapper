@@ -6,8 +6,8 @@
 
 	<title>Class MyWrapper\Persistence\CPersistentDocument | MyWrapper Reference Documentation</title>
 
-	<script type="text/javascript" src="resources/combined.js?496895167"></script>
-	<script type="text/javascript" src="elementlist.js?3036642770"></script>
+	<script type="text/javascript" src="resources/combined.js?417553483"></script>
+	<script type="text/javascript" src="elementlist.js?1357666139"></script>
 	<link rel="stylesheet" type="text/css" media="all" href="resources/style.css?1567499433" />
 
 </head>
@@ -25,6 +25,8 @@
 						<ul>
 				<li class="main"><a href="namespace-MyWrapper.Framework.html">Framework</a>
 						</li>
+				<li class="main"><a href="namespace-MyWrapper.Ontology.html">Ontology</a>
+						</li>
 				<li class="active main"><a href="namespace-MyWrapper.Persistence.html">Persistence</a>
 						</li>
 							</ul></li>
@@ -41,6 +43,7 @@
 		<div id="elements">
 			<h3>Classes</h3>
 			<ul>
+				<li><a href="class-MyWrapper.Persistence.CContainer.html">CContainer</a></li>
 				<li><a href="class-MyWrapper.Persistence.CMongoContainer.html">CMongoContainer</a></li>
 				<li class="active"><a href="class-MyWrapper.Persistence.CPersistentDocument.html">CPersistentDocument</a></li>
 				<li><a href="class-MyWrapper.Persistence.CPersistentObject.html">CPersistentObject</a></li>
@@ -94,8 +97,8 @@
 <h3>Persistent document ancestor</h3>
 
 <p>A persistent document object is a document object that knows how to persist
-in derived concrete instances of the <code><a href="class-MyWrapper.Framework.CContainer.html">MyWrapper\Framework\CContainer</a></code> class. This class adds a
-single default offset, kTAG_LID, which represents the database native
+in derived concrete instances of the <code><a href="class-MyWrapper.Persistence.CContainer.html">MyWrapper\Persistence\CContainer</a></code> class. This class adds a
+single default offset, kOFFSET_NID, which represents the database native
 unique identifier. All objects derived from this class are uniquely identified
 by this offset.</p>
 
@@ -115,8 +118,8 @@ by this offset.</p>
 	found in the container, or update, if the object exists in the container.</li>
 
 	<li><code><a href="class-MyWrapper.Persistence.CPersistentDocument.html#_">MyWrapper\Persistence\CPersistentDocument::Restore()</a></code>: This method will load the object from the container and
-	restore its data, the method expects the object to have its local unique
-	identifier, kTAG_LID, set, or it will raise an exception.</li>
+	restore its data, the method expects the object to have its native unique
+	identifier, kOFFSET_NID, set, or it will raise an exception.</li>
 
 	<li><code><a href="class-MyWrapper.Persistence.CPersistentDocument.html#_">MyWrapper\Persistence\CPersistentDocument::Delete()</a></code>: This method will delete the object from a container.</li>
 </ul>
@@ -176,6 +179,10 @@ reset both when the object is deleted.</p>
 			<a href="class-MyWrapper.Persistence.CPersistentObject.html">MyWrapper\Persistence\CPersistentObject</a>
 	</div>
 
+	<div>
+		<h4>Indirect known subclasses</h4>
+			<a href="class-MyWrapper.Ontology.CTerm.html">MyWrapper\Ontology\CTerm</a>
+	</div>
 
 
 
@@ -193,61 +200,103 @@ reset both when the object is deleted.</p>
 
 	<table class="summary" id="methods">
 	<caption>Methods summary</caption>
-	<tr data-order="NewObject" id="_NewObject">
+	<tr data-order="offsetSet" id="_offsetSet">
 
 		<td class="attributes"><code>
-			 public static
-			mixed
+			 public 
+			
 			
 			</code>
 		</td>
 
 		<td class="name"><div>
-		<a class="anchor" href="#_NewObject">#</a>
-		<code><a href="source-class-MyWrapper.Persistence.CPersistentDocument.html#88" title="Go to source code">NewObject</a>( <span><code><a href="class-MyWrapper.Framework.CContainer.html">MyWrapper\Framework\CContainer</a></code> <var>$theContainer</var></span>, <span>mixed <var>$theIdentifier</var></span> )</code>
+		<a class="anchor" href="#_offsetSet">#</a>
+		<code><a href="source-class-MyWrapper.Persistence.CPersistentDocument.html#88" title="Go to source code">offsetSet</a>( <span>string <var>$theOffset</var></span>, <span>mixed <var>$theValue</var></span> )</code>
 
 		<div class="description short">
 			
-<h4>Instantiate an object from a container</h4>
+<h4>Set a value for a given offset</h4>
 
 		</div>
 
 		<div class="description detailed hidden">
 			
-<h4>Instantiate an object from a container</h4>
+<h4>Set a value for a given offset</h4>
 
-<p>This method will retrieve a document from the provided container, instantiate
-this class with it and return the object; if the document was not located in the
-container, the method will return <tt>NULL</tt>.</p>
-
-<p>The method expects two parameters:</p>
-
-<ul>
-	<li><tt>$theContainer</tt>: A concrete instance of the <code><a href="class-MyWrapper.Framework.CContainer.html">MyWrapper\Framework\CContainer</a></code>
-	class.</li>
-
-	<li><tt>$theIdentifier</tt>: The key of the object in the container, by default
-	the kTAG_LID offset.</li>
-</ul>
+<p>We override this method to handle the dirty flag: when the value changes, we
+turn the <code><a href="class-MyWrapper.Framework.CStatusDocument.html#_">MyWrapper\Framework\CStatusDocument::_IsDirty()</a></code> status flag on.</p>
 
 
 
 				<h4>Parameters</h4>
 				<div class="list"><dl>
-					<dt><var>$theContainer</var></dt>
-					<dd><code><code><a href="class-MyWrapper.Framework.CContainer.html">MyWrapper\Framework\CContainer</a></code></code><br> Container.</dd>
-					<dt><var>$theIdentifier</var></dt>
-					<dd><code>mixed</code><br> Identifier.</dd>
+					<dt><var>$theOffset</var></dt>
+					<dd><code>string</code><br> Offset.</dd>
+					<dt><var>$theValue</var></dt>
+					<dd><code>mixed</code><br> Value to set at offset.</dd>
 				</dl></div>
 
-				<h4>Returns</h4>
+
+
+				<h4>Uses</h4>
 				<div class="list">
-					<code>mixed</code><br>The retrieved object.<br />
+						<code><code><a href="class-MyWrapper.Framework.CStatusDocument.html#_">MyWrapper\Framework\CStatusDocument::_IsDirty()</a></code></code> <br />
 				</div>
 
+				<h4>Overrides</h4>
+				<div class="list"><code><a href="class-MyWrapper.Framework.CStatusDocument.html#_">MyWrapper\Framework\CStatusDocument::offsetSet</a></code></div>
+
+				<h4>Implementation of</h4>
+				<div class="list"><code><a href="class-ArrayAccess.html#_">ArrayAccess::offsetSet</a></code></div>
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="offsetUnset" id="_offsetUnset">
+
+		<td class="attributes"><code>
+			 public 
+			
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_offsetUnset">#</a>
+		<code><a href="source-class-MyWrapper.Persistence.CPersistentDocument.html#121" title="Go to source code">offsetUnset</a>( <span>string <var>$theOffset</var></span> )</code>
+
+		<div class="description short">
+			
+<h4>Reset a value for a given offset</h4>
+
+		</div>
+
+		<div class="description detailed hidden">
+			
+<h4>Reset a value for a given offset</h4>
+
+<p>We override this method to handle the dirty flag: when the value changes, we
+turn the <code><a href="class-MyWrapper.Framework.CStatusDocument.html#_">MyWrapper\Framework\CStatusDocument::_IsDirty()</a></code> status flag on.</p>
 
 
 
+				<h4>Parameters</h4>
+				<div class="list"><dl>
+					<dt><var>$theOffset</var></dt>
+					<dd><code>string</code><br> Offset.</dd>
+				</dl></div>
+
+
+
+				<h4>Uses</h4>
+				<div class="list">
+						<code><code><a href="class-MyWrapper.Framework.CStatusDocument.html#_">MyWrapper\Framework\CStatusDocument::_IsDirty()</a></code></code> <br />
+				</div>
+
+				<h4>Overrides</h4>
+				<div class="list"><code><a href="class-MyWrapper.Framework.CStatusDocument.html#_">MyWrapper\Framework\CStatusDocument::offsetUnset</a></code></div>
+
+				<h4>Implementation of</h4>
+				<div class="list"><code><a href="class-ArrayAccess.html#_">ArrayAccess::offsetUnset</a></code></div>
 		</div>
 		</div></td>
 	</tr>
@@ -262,7 +311,7 @@ container, the method will return <tt>NULL</tt>.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#_Insert">#</a>
-		<code><a href="source-class-MyWrapper.Persistence.CPersistentDocument.html#153" title="Go to source code">Insert</a>( <span><code><a href="class-MyWrapper.Framework.CContainer.html">MyWrapper\Framework\CContainer</a></code> <var>$theContainer</var></span> )</code>
+		<code><a href="source-class-MyWrapper.Persistence.CPersistentDocument.html#162" title="Go to source code">Insert</a>( <span><code><a href="class-MyWrapper.Persistence.CContainer.html">MyWrapper\Persistence\CContainer</a></code> <var>$theContainer</var></span> )</code>
 
 		<div class="description short">
 			
@@ -280,16 +329,16 @@ exception.</p>
 
 <p>The method expects a single parameter, <tt>$theContainer</tt>, which
 represents the container in which the object should be stored. This parameter
-must be a concrete instance of the <code><a href="class-MyWrapper.Framework.CContainer.html">MyWrapper\Framework\CContainer</a></code> class.</p>
+must be a concrete instance of the <code><a href="class-MyWrapper.Persistence.CContainer.html">MyWrapper\Persistence\CContainer</a></code> class.</p>
 
-<p>The method may set the local unique identifier attribute (kTAG_LID)
-if not provided.</p>
+<p>The method may set the native unique identifier attribute (kOFFSET_NID) if not provided.</p>
 
 <p>The operation will only be performed if the object has the <code><a href="class-MyWrapper.Framework.CStatusDocument.html#_">MyWrapper\Framework\CStatusDocument::_IsDirty()</a></code>
 status set or if it does not have its <code><a href="class-MyWrapper.Framework.CStatusDocument.html#_">MyWrapper\Framework\CStatusDocument::_IsCommitted()</a></code> status set, in this
 event the method will return <tt>NULL</tt>.</p>
 
-<p>The method will return the object's local unique identifier attribute (kTAG_LID), or raise an exception if an error occurs.</p>
+<p>The method will return the object's native unique identifier attribute
+(kOFFSET_NID), or raise an exception if an error occurs.</p>
 
 <p>Note that derived classes should overload the <code><a href="class-MyWrapper.Persistence.CPersistentDocument.html#_">MyWrapper\Persistence\CPersistentDocument::_Precommit()</a></code> and <code><a href="class-MyWrapper.Persistence.CPersistentDocument.html#_">MyWrapper\Persistence\CPersistentDocument::_Postcommit()</a></code> methods, rather than overloading this one.</p>
 
@@ -298,12 +347,12 @@ event the method will return <tt>NULL</tt>.</p>
 				<h4>Parameters</h4>
 				<div class="list"><dl>
 					<dt><var>$theContainer</var></dt>
-					<dd><code><code><a href="class-MyWrapper.Framework.CContainer.html">MyWrapper\Framework\CContainer</a></code></code><br> Container.</dd>
+					<dd><code><code><a href="class-MyWrapper.Persistence.CContainer.html">MyWrapper\Persistence\CContainer</a></code></code><br> Container.</dd>
 				</dl></div>
 
 				<h4>Returns</h4>
 				<div class="list">
-					<code>mixed</code><br>The object's local identifier.<br />
+					<code>mixed</code><br>The object's native identifier.<br />
 				</div>
 
 
@@ -334,7 +383,7 @@ event the method will return <tt>NULL</tt>.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#_Update">#</a>
-		<code><a href="source-class-MyWrapper.Persistence.CPersistentDocument.html#229" title="Go to source code">Update</a>( <span><code><a href="class-MyWrapper.Framework.CContainer.html">MyWrapper\Framework\CContainer</a></code> <var>$theContainer</var></span> )</code>
+		<code><a href="source-class-MyWrapper.Persistence.CPersistentDocument.html#238" title="Go to source code">Update</a>( <span><code><a href="class-MyWrapper.Persistence.CContainer.html">MyWrapper\Persistence\CContainer</a></code> <var>$theContainer</var></span> )</code>
 
 		<div class="description short">
 			
@@ -352,7 +401,7 @@ exception.</p>
 
 <p>The method expects a single parameter, <tt>$theContainer</tt>, which
 represents the container in which the object should be stored. This container
-must be a concrete instance of the <code><a href="class-MyWrapper.Framework.CContainer.html">MyWrapper\Framework\CContainer</a></code> class.</p>
+must be a concrete instance of the <code><a href="class-MyWrapper.Persistence.CContainer.html">MyWrapper\Persistence\CContainer</a></code> class.</p>
 
 <p>Once the object has been stored, it will have its <code><a href="class-MyWrapper.Framework.CStatusDocument.html#_">MyWrapper\Framework\CStatusDocument::_IsCommitted()</a></code>
 status set and its <code><a href="class-MyWrapper.Framework.CStatusDocument.html#_">MyWrapper\Framework\CStatusDocument::_IsDirty()</a></code> status reset.</p>
@@ -366,7 +415,7 @@ status set and its <code><a href="class-MyWrapper.Framework.CStatusDocument.html
 				<h4>Parameters</h4>
 				<div class="list"><dl>
 					<dt><var>$theContainer</var></dt>
-					<dd><code><code><a href="class-MyWrapper.Framework.CContainer.html">MyWrapper\Framework\CContainer</a></code></code><br> Container.</dd>
+					<dd><code><code><a href="class-MyWrapper.Persistence.CContainer.html">MyWrapper\Persistence\CContainer</a></code></code><br> Container.</dd>
 				</dl></div>
 
 
@@ -402,7 +451,7 @@ status set and its <code><a href="class-MyWrapper.Framework.CStatusDocument.html
 
 		<td class="name"><div>
 		<a class="anchor" href="#_Replace">#</a>
-		<code><a href="source-class-MyWrapper.Persistence.CPersistentDocument.html#301" title="Go to source code">Replace</a>( <span><code><a href="class-MyWrapper.Framework.CContainer.html">MyWrapper\Framework\CContainer</a></code> <var>$theContainer</var></span> )</code>
+		<code><a href="source-class-MyWrapper.Persistence.CPersistentDocument.html#310" title="Go to source code">Replace</a>( <span><code><a href="class-MyWrapper.Persistence.CContainer.html">MyWrapper\Persistence\CContainer</a></code> <var>$theContainer</var></span> )</code>
 
 		<div class="description short">
 			
@@ -419,7 +468,7 @@ not found, or update the object if already there.</p>
 
 <p>The method expects a single parameter, <tt>$theContainer</tt>, which
 represents the container in which the object should be stored. This container
-must be a concrete instance of the <code><a href="class-MyWrapper.Framework.CContainer.html">MyWrapper\Framework\CContainer</a></code> class.</p>
+must be a concrete instance of the <code><a href="class-MyWrapper.Persistence.CContainer.html">MyWrapper\Persistence\CContainer</a></code> class.</p>
 
 <p>The operation will only be performed if the object is not yet committed or if
 the object has its <code><a href="class-MyWrapper.Framework.CStatusDocument.html#_">MyWrapper\Framework\CStatusDocument::_IsDirty()</a></code> dirty status set, if not, the method will
@@ -428,10 +477,10 @@ do nothing.</p>
 <p>Once the object has been stored, it will have its <code><a href="class-MyWrapper.Framework.CStatusDocument.html#_">MyWrapper\Framework\CStatusDocument::_IsCommitted()</a></code>
 status set and its <code><a href="class-MyWrapper.Framework.CStatusDocument.html#_">MyWrapper\Framework\CStatusDocument::_IsDirty()</a></code> status reset.</p>
 
-<p>The method may set the local unique identifier attribute (kTAG_LID)
-if not provided.</p>
+<p>The method may set the native unique identifier attribute (kOFFSET_NID) if not provided.</p>
 
-<p>The method will return the object's local unique identifier attribute (kTAG_LID) or <tt>NULL</tt> if the operation was not necessary.</p>
+<p>The method will return the object's native unique identifier attribute
+(kOFFSET_NID) or <tt>NULL</tt> if the operation was not necessary.</p>
 
 <p>Note that derived classes should overload the <code><a href="class-MyWrapper.Persistence.CPersistentDocument.html#_">MyWrapper\Persistence\CPersistentDocument::_Precommit()</a></code> and <code><a href="class-MyWrapper.Persistence.CPersistentDocument.html#_">MyWrapper\Persistence\CPersistentDocument::_Postcommit()</a></code> methods, rather than overloading this one.</p>
 
@@ -440,12 +489,12 @@ if not provided.</p>
 				<h4>Parameters</h4>
 				<div class="list"><dl>
 					<dt><var>$theContainer</var></dt>
-					<dd><code><code><a href="class-MyWrapper.Framework.CContainer.html">MyWrapper\Framework\CContainer</a></code></code><br> Container.</dd>
+					<dd><code><code><a href="class-MyWrapper.Persistence.CContainer.html">MyWrapper\Persistence\CContainer</a></code></code><br> Container.</dd>
 				</dl></div>
 
 				<h4>Returns</h4>
 				<div class="list">
-					<code>mixed</code><br>The object's local identifier.<br />
+					<code>mixed</code><br>The object's native identifier.<br />
 				</div>
 
 
@@ -476,7 +525,7 @@ if not provided.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#_Restore">#</a>
-		<code><a href="source-class-MyWrapper.Persistence.CPersistentDocument.html#380" title="Go to source code">Restore</a>( <span><code><a href="class-MyWrapper.Framework.CContainer.html">MyWrapper\Framework\CContainer</a></code> <var>$theContainer</var></span> )</code>
+		<code><a href="source-class-MyWrapper.Persistence.CPersistentDocument.html#389" title="Go to source code">Restore</a>( <span><code><a href="class-MyWrapper.Persistence.CContainer.html">MyWrapper\Persistence\CContainer</a></code> <var>$theContainer</var></span> )</code>
 
 		<div class="description short">
 			
@@ -494,8 +543,8 @@ container.</p>
 <p>The method expects a single parameter, <tt>$theContainer</tt>, which
 represents the container in which the object is stored.</p>
 
-<p>The current object must have its local unique identifier offset, kTAG_LID, set, or it must have all the necessary elements in order to generate
-this identifier.</p>
+<p>The current object must have its native unique identifier offset, kOFFSET_NID, set, or it must have all the necessary elements in order to
+generate this identifier.</p>
 
 <p>The method will return <tt>TRUE</tt> if the operation was successful,
 <tt>NULL</tt> if the object is not present in the container, or raise an
@@ -513,7 +562,7 @@ is obviously not called here.</p>
 				<h4>Parameters</h4>
 				<div class="list"><dl>
 					<dt><var>$theContainer</var></dt>
-					<dd><code><code><a href="class-MyWrapper.Framework.CContainer.html">MyWrapper\Framework\CContainer</a></code></code><br> Container.</dd>
+					<dd><code><code><a href="class-MyWrapper.Persistence.CContainer.html">MyWrapper\Persistence\CContainer</a></code></code><br> Container.</dd>
 				</dl></div>
 
 				<h4>Returns</h4>
@@ -528,7 +577,7 @@ is obviously not called here.</p>
 
 				<h4>See</h4>
 				<div class="list">
-						kTAG_LID<br />
+						kOFFSET_NID<br />
 				</div>
 				<h4>Uses</h4>
 				<div class="list">
@@ -550,7 +599,7 @@ is obviously not called here.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#_Delete">#</a>
-		<code><a href="source-class-MyWrapper.Persistence.CPersistentDocument.html#459" title="Go to source code">Delete</a>( <span><code><a href="class-MyWrapper.Framework.CContainer.html">MyWrapper\Framework\CContainer</a></code> <var>$theContainer</var></span> )</code>
+		<code><a href="source-class-MyWrapper.Persistence.CPersistentDocument.html#469" title="Go to source code">Delete</a>( <span><code><a href="class-MyWrapper.Persistence.CContainer.html">MyWrapper\Persistence\CContainer</a></code> <var>$theContainer</var></span> )</code>
 
 		<div class="description short">
 			
@@ -566,7 +615,7 @@ is obviously not called here.</p>
 
 <p>The method expects a single parameter, <tt>$theContainer</tt>, which
 represents the container in which the object should be stored. This container
-must be a concrete instance of the <code><a href="class-MyWrapper.Framework.CContainer.html">MyWrapper\Framework\CContainer</a></code> class.</p>
+must be a concrete instance of the <code><a href="class-MyWrapper.Persistence.CContainer.html">MyWrapper\Persistence\CContainer</a></code> class.</p>
 
 <p>Once the object has been deleted, it will have its <code><a href="class-MyWrapper.Framework.CStatusDocument.html#_">MyWrapper\Framework\CStatusDocument::_IsCommitted()</a></code>
 status and its <code><a href="class-MyWrapper.Framework.CStatusDocument.html#_">MyWrapper\Framework\CStatusDocument::_IsDirty()</a></code> status reset.</p>
@@ -581,7 +630,7 @@ status and its <code><a href="class-MyWrapper.Framework.CStatusDocument.html#_">
 				<h4>Parameters</h4>
 				<div class="list"><dl>
 					<dt><var>$theContainer</var></dt>
-					<dd><code><code><a href="class-MyWrapper.Framework.CContainer.html">MyWrapper\Framework\CContainer</a></code></code><br> Container.</dd>
+					<dd><code><code><a href="class-MyWrapper.Persistence.CContainer.html">MyWrapper\Persistence\CContainer</a></code></code><br> Container.</dd>
 				</dl></div>
 
 				<h4>Returns</h4>
@@ -599,6 +648,64 @@ status and its <code><a href="class-MyWrapper.Framework.CStatusDocument.html#_">
 		</div>
 		</div></td>
 	</tr>
+	<tr data-order="NewObject" id="_NewObject">
+
+		<td class="attributes"><code>
+			 public static
+			mixed
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_NewObject">#</a>
+		<code><a href="source-class-MyWrapper.Persistence.CPersistentDocument.html#528" title="Go to source code">NewObject</a>( <span><code><a href="class-MyWrapper.Persistence.CContainer.html">MyWrapper\Persistence\CContainer</a></code> <var>$theContainer</var></span>, <span>mixed <var>$theIdentifier</var></span> )</code>
+
+		<div class="description short">
+			
+<h4>Instantiate an object from a container</h4>
+
+		</div>
+
+		<div class="description detailed hidden">
+			
+<h4>Instantiate an object from a container</h4>
+
+<p>This method will retrieve a document from the provided container, instantiate
+this class with it and return the object; if the document was not located in the
+container, the method will return <tt>NULL</tt>.</p>
+
+<p>The method expects two parameters:</p>
+
+<ul>
+	<li><tt>$theContainer</tt>: A concrete instance of the <code><a href="class-MyWrapper.Persistence.CContainer.html">MyWrapper\Persistence\CContainer</a></code>
+	class.</li>
+
+	<li><tt>$theIdentifier</tt>: The key of the object in the container, by default
+	the kOFFSET_NID offset.</li>
+</ul>
+
+
+
+				<h4>Parameters</h4>
+				<div class="list"><dl>
+					<dt><var>$theContainer</var></dt>
+					<dd><code><code><a href="class-MyWrapper.Persistence.CContainer.html">MyWrapper\Persistence\CContainer</a></code></code><br> Container.</dd>
+					<dt><var>$theIdentifier</var></dt>
+					<dd><code>mixed</code><br> Identifier.</dd>
+				</dl></div>
+
+				<h4>Returns</h4>
+				<div class="list">
+					<code>mixed</code><br>The retrieved object.<br />
+				</div>
+
+
+
+
+		</div>
+		</div></td>
+	</tr>
 	<tr data-order="_Precommit" id="__Precommit">
 
 		<td class="attributes"><code>
@@ -610,7 +717,7 @@ status and its <code><a href="class-MyWrapper.Framework.CStatusDocument.html#_">
 
 		<td class="name"><div>
 		<a class="anchor" href="#__Precommit">#</a>
-		<code><a href="source-class-MyWrapper.Persistence.CPersistentDocument.html#518" title="Go to source code">_Precommit</a>( <span><code><a href="class-MyWrapper.Framework.CContainer.html">MyWrapper\Framework\CContainer</a></code> <var>$theContainer</var></span>, <span>bitfield <var>$theModifiers</var> = kFLAG_DEFAULT </span> )</code>
+		<code><a href="source-class-MyWrapper.Persistence.CPersistentDocument.html#593" title="Go to source code">_Precommit</a>( <span><code><a href="class-MyWrapper.Persistence.CContainer.html">MyWrapper\Persistence\CContainer</a></code> <var>$theContainer</var></span>, <span>bitfield <var>$theModifiers</var> = kFLAG_DEFAULT </span> )</code>
 
 		<div class="description short">
 			
@@ -660,7 +767,7 @@ raise an exception.</p>
 				<h4>Parameters</h4>
 				<div class="list"><dl>
 					<dt><var>$theContainer</var></dt>
-					<dd><code><code><a href="class-MyWrapper.Framework.CContainer.html">MyWrapper\Framework\CContainer</a></code></code><br> Container.</dd>
+					<dd><code><code><a href="class-MyWrapper.Persistence.CContainer.html">MyWrapper\Persistence\CContainer</a></code></code><br> Container.</dd>
 					<dt><var>$theModifiers</var></dt>
 					<dd><code>bitfield</code><br> Commit options.</dd>
 				</dl></div>
@@ -689,7 +796,7 @@ raise an exception.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#__Postcommit">#</a>
-		<code><a href="source-class-MyWrapper.Persistence.CPersistentDocument.html#559" title="Go to source code">_Postcommit</a>( <span><code><a href="class-MyWrapper.Framework.CContainer.html">MyWrapper\Framework\CContainer</a></code> <var>$theContainer</var></span>, <span>bitfield <var>$theModifiers</var> = kFLAG_DEFAULT </span> )</code>
+		<code><a href="source-class-MyWrapper.Persistence.CPersistentDocument.html#634" title="Go to source code">_Postcommit</a>( <span><code><a href="class-MyWrapper.Persistence.CContainer.html">MyWrapper\Persistence\CContainer</a></code> <var>$theContainer</var></span>, <span>bitfield <var>$theModifiers</var> = kFLAG_DEFAULT </span> )</code>
 
 		<div class="description short">
 			
@@ -737,7 +844,7 @@ resetting it after deleting.</p>
 				<h4>Parameters</h4>
 				<div class="list"><dl>
 					<dt><var>$theContainer</var></dt>
-					<dd><code><code><a href="class-MyWrapper.Framework.CContainer.html">MyWrapper\Framework\CContainer</a></code></code><br> Container.</dd>
+					<dd><code><code><a href="class-MyWrapper.Persistence.CContainer.html">MyWrapper\Persistence\CContainer</a></code></code><br> Container.</dd>
 					<dt><var>$theModifiers</var></dt>
 					<dd><code>bitfield</code><br> Commit options.</dd>
 				</dl></div>
@@ -767,9 +874,7 @@ resetting it after deleting.</p>
 			<a href="class-MyWrapper.Framework.CStatusDocument.html#_">_IsCommitted()</a>, 
 			<a href="class-MyWrapper.Framework.CStatusDocument.html#_">_IsDirty()</a>, 
 			<a href="class-MyWrapper.Framework.CStatusDocument.html#_">_IsEncoded()</a>, 
-			<a href="class-MyWrapper.Framework.CStatusDocument.html#_">_IsInited()</a>, 
-			<a href="class-MyWrapper.Framework.CStatusDocument.html#_">offsetSet()</a>, 
-			<a href="class-MyWrapper.Framework.CStatusDocument.html#_">offsetUnset()</a>
+			<a href="class-MyWrapper.Framework.CStatusDocument.html#_">_IsInited()</a>
 		</code></td>
 	</tr>
 	</table>

@@ -24,7 +24,7 @@
  *
  * This include file contains the parent class definitions.
  */
-use MyWrapper\Framework\CContainer;
+use \MyWrapper\Persistence\CContainer;
 
 /**
  * <h3>Mongo persistent objects data store</h3>
@@ -35,7 +35,7 @@ use MyWrapper\Framework\CContainer;
  *	@package	MyWrapper
  *	@subpackage	Persistence
  */
-class CMongoContainer extends CContainer
+class CMongoContainer extends \MyWrapper\Persistence\CContainer
 {
 		
 
@@ -194,13 +194,13 @@ class CMongoContainer extends CContainer
 			// Determine criteria.
 			//
 			if( $theIdentifier !== NULL )
-				$criteria = array( kTAG_LID => $theIdentifier );
+				$criteria = array( kOFFSET_NID => $theIdentifier );
 			elseif( is_array( $theObject )
-				 && array_key_exists( kTAG_LID, $theObject ) )
-				$criteria = array( kTAG_LID => $theObject[ kTAG_LID ] );
+				 && array_key_exists( kOFFSET_NID, $theObject ) )
+				$criteria = array( kOFFSET_NID => $theObject[ kOFFSET_NID ] );
 			elseif( ($theObject instanceof ArrayObject)
-				 && $theObject->offsetExists( kTAG_LID ) )
-				$criteria = array( kTAG_LID => $theObject->offsetGet( kTAG_LID ) );
+				 && $theObject->offsetExists( kOFFSET_NID ) )
+				$criteria = array( kOFFSET_NID => $theObject->offsetGet( kOFFSET_NID ) );
 			else
 				throw new \Exception
 					( "Missing object identifier",
@@ -229,7 +229,7 @@ class CMongoContainer extends CContainer
 			// Set identifier.
 			//
 			if( $theIdentifier !== NULL )
-				$theObject[ kTAG_LID ] = $theIdentifier;
+				$theObject[ kOFFSET_NID ] = $theIdentifier;
 			
 			//
 			// Convert to object.
@@ -263,7 +263,7 @@ class CMongoContainer extends CContainer
 					( $status[ 'errmsg' ],
 					  kERROR_COMMIT );											// !@! ==>
 			
-			return $theObject[ kTAG_LID ];											// ==>
+			return $theObject[ kOFFSET_NID ];										// ==>
 		
 		} // Insert.
 		
@@ -282,9 +282,9 @@ class CMongoContainer extends CContainer
 			// Determine criteria.
 			//
 			if( $theIdentifier !== NULL )
-				$criteria = array( kTAG_LID => $theIdentifier );
-			elseif( array_key_exists( kTAG_LID, (array) $theObject ) )
-				$criteria = array( kTAG_LID => $theObject[ kTAG_LID ] );
+				$criteria = array( kOFFSET_NID => $theIdentifier );
+			elseif( array_key_exists( kOFFSET_NID, (array) $theObject ) )
+				$criteria = array( kOFFSET_NID => $theObject[ kOFFSET_NID ] );
 			else
 				throw new \Exception
 					( "Missing object identifier",
@@ -316,7 +316,7 @@ class CMongoContainer extends CContainer
 			// Set identifier.
 			//
 			if( $theIdentifier !== NULL )
-				$theObject[ kTAG_LID ] = $theIdentifier;
+				$theObject[ kOFFSET_NID ] = $theIdentifier;
 			
 			//
 			// Convert to object.
@@ -350,7 +350,7 @@ class CMongoContainer extends CContainer
 					( $status[ 'errmsg' ],
 					  kERROR_COMMIT );											// !@! ==>
 			
-			return $theObject[ kTAG_LID ];											// ==>
+			return $theObject[ kOFFSET_NID ];										// ==>
 		
 		} // Replace.
 		
@@ -370,7 +370,7 @@ class CMongoContainer extends CContainer
 			//
 			// Use provided identifier.
 			//
-			$criteria = array( kTAG_LID => $theIdentifier );
+			$criteria = array( kOFFSET_NID => $theIdentifier );
 			
 			//
 			// Use provided object as modification data.
@@ -423,9 +423,9 @@ class CMongoContainer extends CContainer
 			// Determine criteria.
 			//
 			if( $theIdentifier !== NULL )
-				$criteria = array( kTAG_LID => $theIdentifier );
-			elseif( array_key_exists( kTAG_LID, (array) $theObject ) )
-				$criteria = array( kTAG_LID => $theObject[ kTAG_LID ] );
+				$criteria = array( kOFFSET_NID => $theIdentifier );
+			elseif( array_key_exists( kOFFSET_NID, (array) $theObject ) )
+				$criteria = array( kOFFSET_NID => $theObject[ kOFFSET_NID ] );
 			else
 				throw new \Exception
 					( "Missing object identifier",

@@ -85,5 +85,12 @@ define( "kERROR_NOT_FOUND",					-7 );			// Not found.
  */
 define( "kERROR_MISSING",					-8 );			// Missing.
 
+/**
+ * Locked.
+ *
+ * This code indicates the attempt to modify a locked resource.
+ */
+define( "kERROR_LOCKED",					-9 );			// Locked.
+
 
 ?>

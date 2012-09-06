@@ -20,18 +20,18 @@
  *======================================================================================*/
 
 /**
- * Ancestor.
- *
- * This includes the ancestor class definitions.
- */
-use MyWrapper\Framework\CDocument;
-
-/**
  * Flags.
  *
  * This include file contains all status flag definitions.
  */
 require_once( kPATH_MYWRAPPER_LIBRARY_DEFINE."/Flags.inc.php" );
+
+/**
+ * Ancestor.
+ *
+ * This includes the ancestor class definitions.
+ */
+use \MyWrapper\Framework\CDocument;
 
 /**
  * <h3>Document with status object</h3>
@@ -48,7 +48,7 @@ require_once( kPATH_MYWRAPPER_LIBRARY_DEFINE."/Flags.inc.php" );
  *	@package	MyWrapper
  *	@subpackage	Framework
  */
-class CStatusDocument extends CDocument
+class CStatusDocument extends \MyWrapper\Framework\CDocument
 {
 	/**
 	 * <b>Object status</b>

@@ -1,4 +1,4 @@
-<?php namespace MyWrapper\Framework;
+<?php namespace MyWrapper\Persistence;
 
 /**
  * <i>CContainer</i> class definition.
@@ -7,7 +7,7 @@
  * ancestor of all container objects in this library.
  *
  *	@package	MyWrapper
- *	@subpackage	Framework
+ *	@subpackage	Persistence
  *
  *	@author		Milko A. Škofič <m.skofic@cgiar.org>
  *	@version	1.00 03/09/2012
@@ -34,6 +34,13 @@ require_once( kPATH_MYWRAPPER_LIBRARY_DEFINE."/Offsets.inc.php" );
 require_once( kPATH_MYWRAPPER_LIBRARY_FUNCTION."/accessors.php" );
 
 /**
+ * Ancestor.
+ *
+ * This includes the ancestor class definitions.
+ */
+use \MyWrapper\Framework\CStatusDocument;
+
+/**
  * <h3>Persistent objects data store ancestor</h3>
  *
  * This <i>abstract</i> class is the ancestor of all container classes in this library, it
@@ -56,9 +63,9 @@ require_once( kPATH_MYWRAPPER_LIBRARY_FUNCTION."/accessors.php" );
  * one of the provided persistent objects.
  *
  *	@package	MyWrapper
- *	@subpackage	Framework
+ *	@subpackage	Persistence
  */
-abstract class CContainer extends CStatusDocument
+abstract class CContainer extends \MyWrapper\Framework\CStatusDocument
 {
 	/**
 	 * Persistent data store.
@@ -209,16 +216,16 @@ abstract class CContainer extends CStatusDocument
 	 * This method can be used to manage a single object in the container, it can
 	 * <i>insert</i>, <i>update</i>, <i>replace</i>, <i>modify</i>, <i>retrieve</i> and
 	 * <i>delete</i> an object from the current container by providing the object and/or
-	 * its local unique identifier ({@link kTAG_LID}).
+	 * its native unique identifier ({@link kOFFSET_NID}).
 	 *
 	 * This method expects three parameters:
 	 *
 	 * <ul>
 	 *	<li><tt>$theObject</tt>: The object or the data to be modified.
-	 *	<li><tt>$theIdentifier</tt>: The local unique identifier ({@link kTAG_LID}) of the
-	 *		object. If the value is <i>NULL</i>, it means that it is the duty of the current
-	 *		container to set the value, this will generally be the case when inserting
-	 *		objects; in all other cases the parameter is required.
+	 *	<li><tt>$theIdentifier</tt>: The native unique identifier ({@link kOFFSET_NID}) of
+	 *		the object. If the value is <i>NULL</i>, it means that it is the duty of the
+	 *		current container to set the value, this will generally be the case when
+	 *		inserting objects; in all other cases the parameter is required.
 	 *	<li><tt>$theModifiers</tt>: This parameter represents the operation options, it is a
 	 *		bitfield where the following values apply:
 	 *	 <ul>
@@ -231,7 +238,7 @@ abstract class CContainer extends CStatusDocument
 	 *			If the identifier was created by the container, it is the duty of this
 	 *			method to set it into the provided object.
 	 *			In this case the method should return the inserted object's native
-	 *			identifier ({@link kTAG_LID}).
+	 *			identifier ({@link kOFFSET_NID}).
 	 *		<li>{@link kFLAG_PERSIST_UPDATE}: The provided object will replace an
 	 *			object existing in the container. In this case the method expects the
 	 *			container to have an entry with the same key as the provided identifier,
@@ -251,7 +258,7 @@ abstract class CContainer extends CStatusDocument
 	 *			If the identifier was created by the container, it is the duty of this
 	 *			method to set it into the provided object.
 	 *			In this case the method should return the inserted object's native
-	 *			identifier ({@link kTAG_LID}).
+	 *			identifier ({@link kOFFSET_NID}).
 	 *		<li>{@link kFLAG_PERSIST_MODIFY}: This option can be used to apply modifications
 	 *			to a subset of the object.
 	 *			In this case, <tt>$theObject</tt> should contain the modification
@@ -265,14 +272,14 @@ abstract class CContainer extends CStatusDocument
 	 *			object from the container.
 	 *			In this case the <tt>$theObject</tt> represents the full object and
 	 *			<tt>$theIdentifier</tt> represents the object unique identifier, what
-	 *			counts is that the object's unique identifier ({@link kTAG_LID}) is
+	 *			counts is that the object's unique identifier ({@link kOFFSET_NID}) is
 	 *			provided. If the object is not found in the container, the method should
 	 *			not fail.
 	 *			In this case the method should return <tt>TRUE</tt> if the object was
 	 *			deleted and <tt>FALSE</tt> if the object was not found.
 	 *	 </ul>
 	 *		If none of the above flags are set, it means that the caller wants to retrieve
-	 *		the object identified by the {@link kTAG_LID} offset from the provided object
+	 *		the object identified by the {@link kOFFSET_NID} offset from the provided object
 	 *		object or from the provided identifier. If found, the provided object will
 	 *		receive the located object and the method will return <tt>TRUE</tt>; if not
 	 *		found, the method will set the provided object to <tt>NULL</tt> and return

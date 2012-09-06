@@ -195,8 +195,8 @@ try
 	//
 	// Insert object with ID.
 	//
-	echo( '<h4>$object = new ArrayObject( array( kTAG_LID => 1, "DATA" => "dati" ) );</h4>' );
-	$object = new ArrayObject( array( kTAG_LID => 1, "DATA" => "dati" ) );
+	echo( '<h4>$object = new ArrayObject( array( kOFFSET_NID => 1, "DATA" => "dati" ) );</h4>' );
+	$object = new ArrayObject( array( kOFFSET_NID => 1, "DATA" => "dati" ) );
 	echo( '<pre>' ); print_r( $object ); echo( '</pre>' );
 	echo( '<h4>$status = $test->ManageObject( $object, NULL, kFLAG_PERSIST_INSERT );</h4>' );
 	$status = $test->ManageObject( $object, NULL, kFLAG_PERSIST_INSERT );
@@ -267,8 +267,8 @@ try
 	//
 	// Replace new object.
 	//
-	echo( '<h4>$object->offsetUnset( kTAG_LID );</h4>' );
-	$object->offsetUnset( kTAG_LID );
+	echo( '<h4>$object->offsetUnset( kOFFSET_NID );</h4>' );
+	$object->offsetUnset( kOFFSET_NID );
 	echo( 'Object<pre>' ); print_r( $object ); echo( '</pre>' );
 	echo( '<h4>$status = $test->ManageObject( $object, NULL, kFLAG_PERSIST_REPLACE );</h4>' );
 	$status = $test->ManageObject( $object, NULL, kFLAG_PERSIST_REPLACE );
@@ -288,8 +288,8 @@ try
 	//
 	// Modify existing object.
 	//
-	echo( '<h4>$ident = $object[ kTAG_LID ]; $mod = array( \'$set\' => array( "DATA" => "NEW" ) );</h4>' );
-	$ident = $object[ kTAG_LID ]; $mod = array( '$set' => array( "DATA" => "NEW" ) );
+	echo( '<h4>$ident = $object[ kOFFSET_NID ]; $mod = array( \'$set\' => array( "DATA" => "NEW" ) );</h4>' );
+	$ident = $object[ kOFFSET_NID ]; $mod = array( '$set' => array( "DATA" => "NEW" ) );
 	echo( '<h4>$status = $test->ManageObject( $mod, $ident, kFLAG_PERSIST_MODIFY );</h4>' );
 	$status = $test->ManageObject( $mod, $ident, kFLAG_PERSIST_MODIFY );
 	echo( 'Object<pre>' ); print_r( $mod ); echo( '</pre>' );
