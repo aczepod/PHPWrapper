@@ -167,11 +167,6 @@ class CMongoContainer extends \MyWrapper\Persistence\CContainer
 								   $theModifiers = kFLAG_DEFAULT )
 	{
 		//
-		// Call parent method.
-		//
-		parent::ManageObject( $theObject, $theIdentifier, $theModifiers );
-		
-		//
 		// Get container.
 		//
 		$container = $this->Container();
@@ -306,6 +301,229 @@ class CMongoContainer extends \MyWrapper\Persistence\CContainer
 			return $status[ 'updatedExisting' ];									// ==>
 		
 		} // Update.
+		
+		//
+		// Handle modify.
+		//
+		if( $modifiers == kFLAG_PERSIST_MODIFY )
+		{
+			//
+			// Set default commit options.
+			//
+			$options[ 'upsert' ] = FALSE;		// Don't create new objects.
+			$options[ 'multiple' ] = FALSE;		// Operate on first object.
+			
+			//
+			// Determine criteria.
+			//
+			if( $theIdentifier !== NULL )
+				$criteria = array( kOFFSET_NID => $theIdentifier );
+			else
+				throw new \Exception
+					( "Missing object identifier",
+					  kERROR_STATE );											// !@! ==>
+			
+			//
+			// Init modification matrix.
+			//
+			$modifications = Array();
+			
+			//
+			// Handle increment.
+			//
+			if( ($theModifiers & kFLAG_MODIFY_MASK) == kFLAG_MODIFY_INCREMENT )
+			{
+				//
+				// Iterate offsets.
+				//
+				foreach( $theObject as $offset => $value )
+				{
+					//
+					// Consider only integers.
+					//
+					$inc = (int) $value;
+					
+					//
+					// Build clause.
+					//
+					$modifications[ '$inc' ][ $offset ] = $inc;
+				}
+			
+			} // Increment.
+			
+			//
+			// Handle append.
+			//
+			elseif( ($theModifiers & kFLAG_MODIFY_MASK) == kFLAG_MODIFY_APPEND )
+			{
+				//
+				// Iterate offsets.
+				//
+				foreach( $theObject as $offset => $value )
+				{
+					//
+					// Convert array objects.
+					//
+					if( $value instanceof ArrayObject )
+						$value = $value->getArrayCopy();
+						
+					//
+					// Handle array value.
+					//
+					if( is_array( $value ) )
+						$modifications[ '$pushAll' ][ $offset ] = $value;
+					
+					//
+					// Handle scalar.
+					//
+					else
+						$modifications[ '$push' ][ $offset ] = $value;
+				}
+			
+			} // Append.
+			
+			//
+			// Handle add to set.
+			//
+			elseif( ($theModifiers & kFLAG_MODIFY_MASK) == kFLAG_MODIFY_ADDSET )
+			{
+				//
+				// Iterate offsets.
+				//
+				foreach( $theObject as $offset => $value )
+				{
+					//
+					// Convert array objects.
+					//
+					if( $value instanceof ArrayObject )
+						$value = $value->getArrayCopy();
+						
+					//
+					// Handle array value.
+					//
+					if( is_array( $value ) )
+						$modifications[ '$addToSet' ][ $offset ][ '$each' ] = $value;
+					
+					//
+					// Handle scalar.
+					//
+					else
+						$modifications[ '$addToSet' ][ $offset ] = $value;
+				}
+			
+			} // Add to set.
+			
+			//
+			// Handle pop.
+			//
+			elseif( ($theModifiers & kFLAG_MODIFY_MASK) == kFLAG_MODIFY_POP )
+			{
+				//
+				// Iterate offsets.
+				//
+				foreach( $theObject as $offset => $value )
+				{
+					//
+					// Consider only integers.
+					//
+					$inc = ( ((int) $value) > 0 ) ? 1 : -1;
+					
+					//
+					// Pop.
+					//
+					$modifications[ '$pop' ][ $offset ] = $inc;
+				}
+			
+			} // Pop.
+			
+			//
+			// Handle pull.
+			//
+			elseif( ($theModifiers & kFLAG_MODIFY_MASK) == kFLAG_MODIFY_PULL )
+			{
+				//
+				// Iterate offsets.
+				//
+				foreach( $theObject as $offset => $value )
+				{
+					//
+					// Convert array objects.
+					//
+					if( $value instanceof ArrayObject )
+						$value = $value->getArrayCopy();
+						
+					//
+					// Handle array value.
+					//
+					if( is_array( $value ) )
+						$modifications[ '$pullAll' ][ $offset ] = $value;
+					
+					//
+					// Handle scalar.
+					//
+					else
+						$modifications[ '$pull' ][ $offset ] = $value;
+				}
+			
+			} // Pull.
+			
+			//
+			// Handle set & unset.
+			//
+			else
+			{
+				//
+				// Iterate offsets.
+				//
+				foreach( $theObject as $offset => $value )
+				{
+					//
+					// Set offset.
+					//
+					if( $value !== NULL )
+					{
+						//
+						// Convert array objects.
+						//
+						if( $value instanceof ArrayObject )
+							$value = $value->getArrayCopy();
+						
+						//
+						// Set.
+						//
+						$modifications[ '$set' ][ $offset ] = $value;
+					}
+					
+					//
+					// Unset offset.
+					//
+					else
+						$modifications[ '$unset' ][ $offset ] = 1;
+				}
+			
+			} // Set & unset.
+			
+			//
+			// Update.
+			//
+			$status = $container->update( $criteria, $modifications, $options );
+			
+			//
+			// Check status.
+			//
+			if( ! $status[ 'ok' ] )
+				throw new \Exception
+					( $status[ 'errmsg' ],
+					  kERROR_COMMIT );											// !@! ==>
+			
+			//
+			// Load modified object.
+			//
+			$theObject = $container->findOne( $criteria );
+			
+			return $status[ 'updatedExisting' ];									// ==>
+		
+		} // Modify.
 		
 		//
 		// Handle replace.
@@ -492,32 +710,6 @@ class CMongoContainer extends \MyWrapper\Persistence\CContainer
 		return $theValue->bin;														// ==>
 	
 	} // ConvertBinary.
-
-		
-
-/*=======================================================================================
- *																						*
- *								PROTECTED MEMBER INTERFACE								*
- *																						*
- *======================================================================================*/
-
-
-	 
-	/*===================================================================================
-	 *	&_Container																		*
-	 *==================================================================================*/
-
-	/**
-	 * <h4>Get container reference</h4>
-	 *
-	 * This method can be used to retrieve a reference to the native container member, this
-	 * can be useful when the native {@link Container()} is not an object passed by
-	 * reference.
-	 *
-	 * @access protected
-	 * @return mixed
-	 */
-	protected function &_Container()						{	return $this->mContainer;	}
 
 	 
 

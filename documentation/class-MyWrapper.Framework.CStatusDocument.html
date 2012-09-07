@@ -6,7 +6,7 @@
 
 	<title>Class MyWrapper\Framework\CStatusDocument | MyWrapper Reference Documentation</title>
 
-	<script type="text/javascript" src="resources/combined.js?417553483"></script>
+	<script type="text/javascript" src="resources/combined.js?496895167"></script>
 	<script type="text/javascript" src="elementlist.js?1357666139"></script>
 	<link rel="stylesheet" type="text/css" media="all" href="resources/style.css?1567499433" />
 
@@ -101,6 +101,13 @@ object.</p>
 the object's array data store. The data member consists of a 4 byte bit field in
 which the first 31 elements are used to record on/off states.</p>
 
+<p>The class adds an interface to intercept calls to <code><a href="class-MyWrapper.Framework.CStatusDocument.html#_">MyWrapper\Framework\CStatusDocument::offsetSet()</a></code> and
+<code><a href="class-MyWrapper.Framework.CStatusDocument.html#_">MyWrapper\Framework\CStatusDocument::offsetUnset()</a></code> in the event that the value is going to change. The <code><a href="class-MyWrapper.Framework.CStatusDocument.html#_">MyWrapper\Framework\CStatusDocument::offsetSet()</a></code> method will call the <code><a href="class-MyWrapper.Framework.CStatusDocument.html#_">MyWrapper\Framework\CStatusDocument::_Preset()</a></code> method before performing the
+change and the <code><a href="class-MyWrapper.Framework.CStatusDocument.html#_">MyWrapper\Framework\CStatusDocument::_Postset()</a></code> method after the change, this only in case of
+modification. Similarly, the <code><a href="class-MyWrapper.Framework.CStatusDocument.html#_">MyWrapper\Framework\CStatusDocument::offsetUnset()</a></code> method will call the <code><a href="class-MyWrapper.Framework.CStatusDocument.html#_">MyWrapper\Framework\CStatusDocument::_Preunset()</a></code> method before and the <code><a href="class-MyWrapper.Framework.CStatusDocument.html#_">MyWrapper\Framework\CStatusDocument::_Postunset()</a></code> method after removing an
+offset only if that offset exists. In this class we set the <code><a href="class-MyWrapper.Framework.CStatusDocument.html#_">MyWrapper\Framework\CStatusDocument::_IsDirty()</a></code>
+status in the event of a value change.</p>
+
 <p><i>Note: you should use only the first 31 bits because PHP tends to cast a
 bitfield into a 32 bit integer which uses the last bit as the sign.</i></p>
 
@@ -141,14 +148,12 @@ bitfield into a 32 bit integer which uses the last bit as the sign.</i></p>
 
 	<div>
 		<h4>Direct known subclasses</h4>
-			<a href="class-MyWrapper.Persistence.CContainer.html">MyWrapper\Persistence\CContainer</a>, 
 			<a href="class-MyWrapper.Persistence.CPersistentDocument.html">MyWrapper\Persistence\CPersistentDocument</a>
 	</div>
 
 	<div>
 		<h4>Indirect known subclasses</h4>
 			<a href="class-MyWrapper.Ontology.CTerm.html">MyWrapper\Ontology\CTerm</a>, 
-			<a href="class-MyWrapper.Persistence.CMongoContainer.html">MyWrapper\Persistence\CMongoContainer</a>, 
 			<a href="class-MyWrapper.Persistence.CPersistentObject.html">MyWrapper\Persistence\CPersistentObject</a>
 	</div>
 
@@ -179,7 +184,7 @@ bitfield into a 32 bit integer which uses the last bit as the sign.</i></p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#_offsetSet">#</a>
-		<code><a href="source-class-MyWrapper.Framework.CStatusDocument.html#76" title="Go to source code">offsetSet</a>( <span>string <var>$theOffset</var></span>, <span>mixed <var>$theValue</var></span> )</code>
+		<code><a href="source-class-MyWrapper.Framework.CStatusDocument.html#85" title="Go to source code">offsetSet</a>( <span>string <var>$theOffset</var></span>, <span>mixed <var>$theValue</var></span> )</code>
 
 		<div class="description short">
 			
@@ -208,7 +213,8 @@ turn the <code><a href="class-MyWrapper.Framework.CStatusDocument.html#_">MyWrap
 
 				<h4>Uses</h4>
 				<div class="list">
-						<code><code><a href="class-MyWrapper.Framework.CStatusDocument.html#_">MyWrapper\Framework\CStatusDocument::_IsDirty()</a></code></code> <br />
+						<code><code><a href="class-MyWrapper.Framework.CStatusDocument.html#_">MyWrapper\Framework\CStatusDocument::_Preset()</a></code></code> <br />
+						<code><code><a href="class-MyWrapper.Framework.CStatusDocument.html#_">MyWrapper\Framework\CStatusDocument::_Postset()</a></code></code> <br />
 				</div>
 
 				<h4>Overrides</h4>
@@ -230,7 +236,7 @@ turn the <code><a href="class-MyWrapper.Framework.CStatusDocument.html#_">MyWrap
 
 		<td class="name"><div>
 		<a class="anchor" href="#_offsetUnset">#</a>
-		<code><a href="source-class-MyWrapper.Framework.CStatusDocument.html#109" title="Go to source code">offsetUnset</a>( <span>string <var>$theOffset</var></span> )</code>
+		<code><a href="source-class-MyWrapper.Framework.CStatusDocument.html#130" title="Go to source code">offsetUnset</a>( <span>string <var>$theOffset</var></span> )</code>
 
 		<div class="description short">
 			
@@ -257,7 +263,8 @@ turn the <code><a href="class-MyWrapper.Framework.CStatusDocument.html#_">MyWrap
 
 				<h4>Uses</h4>
 				<div class="list">
-						<code><code><a href="class-MyWrapper.Framework.CStatusDocument.html#_">MyWrapper\Framework\CStatusDocument::_IsDirty()</a></code></code> <br />
+						<code><code><a href="class-MyWrapper.Framework.CStatusDocument.html#_">MyWrapper\Framework\CStatusDocument::_Preunset()</a></code></code> <br />
+						<code><code><a href="class-MyWrapper.Framework.CStatusDocument.html#_">MyWrapper\Framework\CStatusDocument::_Postunset()</a></code></code> <br />
 				</div>
 
 				<h4>Overrides</h4>
@@ -279,7 +286,7 @@ turn the <code><a href="class-MyWrapper.Framework.CStatusDocument.html#_">MyWrap
 
 		<td class="name"><div>
 		<a class="anchor" href="#_ManageBitField">#</a>
-		<code><a href="source-class-MyWrapper.Framework.CStatusDocument.html#150" title="Go to source code">ManageBitField</a>( <span>reference <var>&amp; $theField</var></span>, <span>bitfield <var>$theMask</var></span>, <span>mixed <var>$theState</var> = <span class="php-keyword1">NULL</span> </span> )</code>
+		<code><a href="source-class-MyWrapper.Framework.CStatusDocument.html#183" title="Go to source code">ManageBitField</a>( <span>reference <var>&amp; $theField</var></span>, <span>bitfield <var>$theMask</var></span>, <span>mixed <var>$theState</var> = <span class="php-keyword1">NULL</span> </span> )</code>
 
 		<div class="description short">
 			
@@ -358,7 +365,7 @@ modified.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#__IsInited">#</a>
-		<code><a href="source-class-MyWrapper.Framework.CStatusDocument.html#221" title="Go to source code">_IsInited</a>( <span>mixed <var>$theState</var> = <span class="php-keyword1">NULL</span> </span> )</code>
+		<code><a href="source-class-MyWrapper.Framework.CStatusDocument.html#254" title="Go to source code">_IsInited</a>( <span>mixed <var>$theState</var> = <span class="php-keyword1">NULL</span> </span> )</code>
 
 		<div class="description short">
 			
@@ -433,7 +440,7 @@ modified.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#__IsDirty">#</a>
-		<code><a href="source-class-MyWrapper.Framework.CStatusDocument.html#269" title="Go to source code">_IsDirty</a>( <span>mixed <var>$theState</var> = <span class="php-keyword1">NULL</span> </span> )</code>
+		<code><a href="source-class-MyWrapper.Framework.CStatusDocument.html#302" title="Go to source code">_IsDirty</a>( <span>mixed <var>$theState</var> = <span class="php-keyword1">NULL</span> </span> )</code>
 
 		<div class="description short">
 			
@@ -491,8 +498,8 @@ modified.</p>
 				</div>
 				<h4>Used by</h4>
 				<div class="list">
-						<code><code><a href="class-MyWrapper.Framework.CStatusDocument.html#_">MyWrapper\Framework\CStatusDocument::offsetSet()</a></code></code> <br />
-						<code><code><a href="class-MyWrapper.Framework.CStatusDocument.html#_">MyWrapper\Framework\CStatusDocument::offsetUnset()</a></code></code> <br />
+						<code><code><a href="class-MyWrapper.Framework.CStatusDocument.html#_">MyWrapper\Framework\CStatusDocument::_Preset()</a></code></code> <br />
+						<code><code><a href="class-MyWrapper.Framework.CStatusDocument.html#_">MyWrapper\Framework\CStatusDocument::_Preunset()</a></code></code> <br />
 				</div>
 
 
@@ -510,7 +517,7 @@ modified.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#__IsCommitted">#</a>
-		<code><a href="source-class-MyWrapper.Framework.CStatusDocument.html#314" title="Go to source code">_IsCommitted</a>( <span>mixed <var>$theState</var> = <span class="php-keyword1">NULL</span> </span> )</code>
+		<code><a href="source-class-MyWrapper.Framework.CStatusDocument.html#347" title="Go to source code">_IsCommitted</a>( <span>mixed <var>$theState</var> = <span class="php-keyword1">NULL</span> </span> )</code>
 
 		<div class="description short">
 			
@@ -579,7 +586,7 @@ modified.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#__IsEncoded">#</a>
-		<code><a href="source-class-MyWrapper.Framework.CStatusDocument.html#357" title="Go to source code">_IsEncoded</a>( <span>mixed <var>$theState</var> = <span class="php-keyword1">NULL</span> </span> )</code>
+		<code><a href="source-class-MyWrapper.Framework.CStatusDocument.html#390" title="Go to source code">_IsEncoded</a>( <span>mixed <var>$theState</var> = <span class="php-keyword1">NULL</span> </span> )</code>
 
 		<div class="description short">
 			
@@ -630,6 +637,222 @@ modified.</p>
 				<h4>Uses</h4>
 				<div class="list">
 						<code><code><a href="class-MyWrapper.Framework.CStatusDocument.html#_">MyWrapper\Framework\CStatusDocument::ManageBitField()</a></code></code> <br />
+				</div>
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="_Preset" id="__Preset">
+
+		<td class="attributes"><code>
+			 protected 
+			
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#__Preset">#</a>
+		<code><a href="source-class-MyWrapper.Framework.CStatusDocument.html#442" title="Go to source code">_Preset</a>( <span>reference <var>&amp; $theOffset</var></span>, <span>reference <var>&amp; $theValue</var></span> )</code>
+
+		<div class="description short">
+			
+<h4>Handle offset before setting it</h4>
+
+		</div>
+
+		<div class="description detailed hidden">
+			
+<h4>Handle offset before setting it</h4>
+
+<p>This method will be called before the offset is set into the object only if
+the provided value is not equivalent to the stored value, it gives the chance to
+normalise the value and offset before it gets stored in the object.</p>
+
+<p>The method accepts the same parameters as the <code><a href="class-MyWrapper.Framework.CStatusDocument.html#_">MyWrapper\Framework\CStatusDocument::offsetSet()</a></code> method,
+except that they are passed by reference.</p>
+
+<p>In this class we set the <code><a href="class-MyWrapper.Framework.CStatusDocument.html#_">MyWrapper\Framework\CStatusDocument::_IsDirty()</a></code> status.</p>
+
+
+
+				<h4>Parameters</h4>
+				<div class="list"><dl>
+					<dt><var>$theOffset</var></dt>
+					<dd><code>reference</code><br>&amp;$theOffset Offset.</dd>
+					<dt><var>$theValue</var></dt>
+					<dd><code>reference</code><br>&amp;$theValue Value to set at offset.</dd>
+				</dl></div>
+
+
+
+				<h4>Uses</h4>
+				<div class="list">
+						<code><code><a href="class-MyWrapper.Framework.CStatusDocument.html#_">MyWrapper\Framework\CStatusDocument::_IsDirty()</a></code></code> <br />
+				</div>
+				<h4>Used by</h4>
+				<div class="list">
+						<code><code><a href="class-MyWrapper.Framework.CStatusDocument.html#_">MyWrapper\Framework\CStatusDocument::offsetSet()</a></code></code> <br />
+				</div>
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="_Postset" id="__Postset">
+
+		<td class="attributes"><code>
+			 protected 
+			
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#__Postset">#</a>
+		<code><a href="source-class-MyWrapper.Framework.CStatusDocument.html#475" title="Go to source code">_Postset</a>( <span>reference <var>&amp; $theOffset</var></span>, <span>reference <var>&amp; $theValue</var></span> )</code>
+
+		<div class="description short">
+			
+<h4>Handle offset after setting it</h4>
+
+		</div>
+
+		<div class="description detailed hidden">
+			
+<h4>Handle offset after setting it</h4>
+
+<p>This method will be called after the offset is set into the object only if
+the provided value is not equivalent to the stored value, it gives the chance to
+normalise the value after it gets stored in the object.</p>
+
+<p>The method accepts the same parameters as the <code><a href="class-MyWrapper.Framework.CStatusDocument.html#_">MyWrapper\Framework\CStatusDocument::offsetSet()</a></code> method,
+except that they are passed by reference.</p>
+
+<p>In this class we do nothing.</p>
+
+
+
+				<h4>Parameters</h4>
+				<div class="list"><dl>
+					<dt><var>$theOffset</var></dt>
+					<dd><code>reference</code><br>&amp;$theOffset Offset.</dd>
+					<dt><var>$theValue</var></dt>
+					<dd><code>reference</code><br>&amp;$theValue Value to set at offset.</dd>
+				</dl></div>
+
+
+
+				<h4>Used by</h4>
+				<div class="list">
+						<code><code><a href="class-MyWrapper.Framework.CStatusDocument.html#_">MyWrapper\Framework\CStatusDocument::offsetSet()</a></code></code> <br />
+				</div>
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="_Preunset" id="__Preunset">
+
+		<td class="attributes"><code>
+			 protected 
+			
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#__Preunset">#</a>
+		<code><a href="source-class-MyWrapper.Framework.CStatusDocument.html#499" title="Go to source code">_Preunset</a>( <span>reference <var>&amp; $theOffset</var></span> )</code>
+
+		<div class="description short">
+			
+<h4>Handle offset before unsetting it</h4>
+
+		</div>
+
+		<div class="description detailed hidden">
+			
+<h4>Handle offset before unsetting it</h4>
+
+<p>This method will be called before the offset is unset from the object only if
+the provided offset exists in the object, it gives the chance to perform custom
+actions and change the provided offset.</p>
+
+<p>The method accepts the same parameter as the <code><a href="class-MyWrapper.Framework.CStatusDocument.html#_">MyWrapper\Framework\CStatusDocument::offsetUnset()</a></code> method,
+except that it passed by reference.</p>
+
+<p>In this class we set the <code><a href="class-MyWrapper.Framework.CStatusDocument.html#_">MyWrapper\Framework\CStatusDocument::_IsDirty()</a></code> status.</p>
+
+
+
+				<h4>Parameters</h4>
+				<div class="list"><dl>
+					<dt><var>$theOffset</var></dt>
+					<dd><code>reference</code><br>&amp;$theOffset Offset.</dd>
+				</dl></div>
+
+
+
+				<h4>Uses</h4>
+				<div class="list">
+						<code><code><a href="class-MyWrapper.Framework.CStatusDocument.html#_">MyWrapper\Framework\CStatusDocument::_IsDirty()</a></code></code> <br />
+				</div>
+				<h4>Used by</h4>
+				<div class="list">
+						<code><code><a href="class-MyWrapper.Framework.CStatusDocument.html#_">MyWrapper\Framework\CStatusDocument::offsetUnset()</a></code></code> <br />
+				</div>
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="_Postunset" id="__Postunset">
+
+		<td class="attributes"><code>
+			 protected 
+			
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#__Postunset">#</a>
+		<code><a href="source-class-MyWrapper.Framework.CStatusDocument.html#531" title="Go to source code">_Postunset</a>( <span>reference <var>&amp; $theOffset</var></span> )</code>
+
+		<div class="description short">
+			
+<h4>Handle offset after unsetting it</h4>
+
+		</div>
+
+		<div class="description detailed hidden">
+			
+<h4>Handle offset after unsetting it</h4>
+
+<p>This method will be called after the offset is unset from the object only if
+the provided offset existed in the object, it gives the chance to perform custom
+actions after a removal.</p>
+
+<p>The method accepts the same parameter as the <code><a href="class-MyWrapper.Framework.CStatusDocument.html#_">MyWrapper\Framework\CStatusDocument::offsetUnset()</a></code> method,
+except that it passed by reference.</p>
+
+<p>In this class we do nothing.</p>
+
+
+
+				<h4>Parameters</h4>
+				<div class="list"><dl>
+					<dt><var>$theOffset</var></dt>
+					<dd><code>reference</code><br>&amp;$theOffset Offset.</dd>
+				</dl></div>
+
+
+
+				<h4>Used by</h4>
+				<div class="list">
+						<code><code><a href="class-MyWrapper.Framework.CStatusDocument.html#_">MyWrapper\Framework\CStatusDocument::offsetUnset()</a></code></code> <br />
 				</div>
 
 
@@ -699,7 +922,7 @@ modified.</p>
 		</code></td>
 
 		<td class="name">
-				<a href="source-class-MyWrapper.Framework.CStatusDocument.html#53" title="Go to source code"><var>$mStatus</var></a>
+				<a href="source-class-MyWrapper.Framework.CStatusDocument.html#62" title="Go to source code"><var>$mStatus</var></a>
 		</td>
 		<td class="value"><code>kFLAG_DEFAULT</code></td>
 		<td class="description"><div>

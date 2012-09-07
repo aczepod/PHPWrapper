@@ -42,6 +42,15 @@ use \MyWrapper\Framework\CDocument;
  * object's array data store. The data member consists of a 4 byte bit field in which the
  * first 31 elements are used to record on/off states.
  *
+ * The class adds an interface to intercept calls to {@link offsetSet()} and
+ * {@link offsetUnset()} in the event that the value is going to change. The
+ * {@link offsetSet()} method will call the {@link _Preset()} method before performing the
+ * change and the {@link _Postset()} method after the change, this only in case of
+ * modification. Similarly, the {@link offsetUnset()} method will call the
+ * {@link _Preunset()} method before and the {@link _Postunset()} method after removing an
+ * offset only if that offset exists. In this class we set the {@link _IsDirty()} status
+ * in the event of a value change.
+ *
  * <i>Note: you should use only the first 31 bits because PHP tends to cast a bitfield into
  * a 32 bit integer which uses the last bit as the sign.</i>
  *
@@ -84,20 +93,32 @@ class CStatusDocument extends \MyWrapper\Framework\CDocument
 	 *
 	 * @access public
 	 *
-	 * @uses _IsDirty()
+	 * @uses _Preset()
+	 * @uses _Postset()
 	 */
 	public function offsetSet( $theOffset, $theValue )
 	{
 		//
-		// Check for changes.
+		// Set change flag.
 		//
-		if( $this->offsetGet( $theOffset ) !== $theValue )
-			$this->_IsDirty( TRUE );
+		$change = ( $this->offsetGet( $theOffset ) !== $theValue );
+		
+		//
+		// Intercept call before.
+		//
+		if( $change )
+			$this->_Preset( $theOffset, $theValue );
 		
 		//
 		// Call parent method.
 		//
 		parent::offsetSet( $theOffset, $theValue );
+		
+		//
+		// Intercept call after.
+		//
+		if( $change )
+			$this->_Postset( $theOffset, $theValue );
 	
 	} // offsetSet.
 
@@ -116,20 +137,32 @@ class CStatusDocument extends \MyWrapper\Framework\CDocument
 	 *
 	 * @access public
 	 *
-	 * @uses _IsDirty()
+	 * @uses _Preunset()
+	 * @uses _Postunset()
 	 */
 	public function offsetUnset( $theOffset )
 	{
 		//
-		// Check for changes.
+		// Set change flag.
 		//
-		if( $this->offsetGet( $theOffset ) !== NULL )
-			$this->_IsDirty( TRUE );
+		$change = $this->offsetExists( $theOffset );
+		
+		//
+		// Intercept call before.
+		//
+		if( $change )
+			$this->_Preunset( $theOffset );
 		
 		//
 		// Call parent method.
 		//
 		parent::offsetUnset( $theOffset );
+		
+		//
+		// Intercept call after.
+		//
+		if( $change )
+			$this->_Postunset( $theOffset );
 	
 	} // offsetUnset.
 
@@ -391,6 +424,127 @@ class CStatusDocument extends \MyWrapper\Framework\CDocument
 									 $theState );									// ==>
 	
 	} // _IsEncoded.
+		
+
+
+/*=======================================================================================
+ *																						*
+ *								PROTECTED OFFSET INTERFACE								*
+ *																						*
+ *======================================================================================*/
+
+
+	 
+	/*===================================================================================
+	 *	_Preset																			*
+	 *==================================================================================*/
+
+	/**
+	 * <h4>Handle offset before setting it</h4>
+	 *
+	 * This method will be called before the offset is set into the object only if the
+	 * provided value is not equivalent to the stored value, it gives the chance to
+	 * normalise the value and offset before it gets stored in the object.
+	 *
+	 * The method accepts the same parameters as the {@link offsetSet()} method, except that
+	 * they are passed by reference.
+	 *
+	 * In this class we set the {@link _IsDirty()} status.
+	 *
+	 * @param reference			   &$theOffset			Offset.
+	 * @param reference			   &$theValue			Value to set at offset.
+	 *
+	 * @access protected
+	 *
+	 * @uses _IsDirty()
+	 */
+	protected function _Preset( &$theOffset, &$theValue )
+	{
+		//
+		// Set dirty status.
+		//
+		$this->_IsDirty( TRUE );
+	
+	} // _Preset.
+
+	 
+	/*===================================================================================
+	 *	_Postset																		*
+	 *==================================================================================*/
+
+	/**
+	 * <h4>Handle offset after setting it</h4>
+	 *
+	 * This method will be called after the offset is set into the object only if the
+	 * provided value is not equivalent to the stored value, it gives the chance to
+	 * normalise the value after it gets stored in the object.
+	 *
+	 * The method accepts the same parameters as the {@link offsetSet()} method, except that
+	 * they are passed by reference.
+	 *
+	 * In this class we do nothing.
+	 *
+	 * @param reference			   &$theOffset			Offset.
+	 * @param reference			   &$theValue			Value to set at offset.
+	 *
+	 * @access protected
+	 */
+	protected function _Postset( &$theOffset, &$theValue )								   {}
+
+	 
+	/*===================================================================================
+	 *	_Preunset																		*
+	 *==================================================================================*/
+
+	/**
+	 * <h4>Handle offset before unsetting it</h4>
+	 *
+	 * This method will be called before the offset is unset from the object only if the
+	 * provided offset exists in the object, it gives the chance to perform custom actions
+	 * and change the provided offset.
+	 *
+	 * The method accepts the same parameter as the {@link offsetUnset()} method, except that
+	 * it passed by reference.
+	 *
+	 * In this class we set the {@link _IsDirty()} status.
+	 *
+	 * @param reference			   &$theOffset			Offset.
+	 *
+	 * @access protected
+	 *
+	 * @uses _IsDirty()
+	 */
+	protected function _Preunset( &$theOffset )
+	{
+		//
+		// Set dirty status.
+		//
+		$this->_IsDirty( TRUE );
+	
+	} // _Preunset.
+
+	 
+	/*===================================================================================
+	 *	_Postunset																		*
+	 *==================================================================================*/
+
+	/**
+	 * <h4>Handle offset after unsetting it</h4>
+	 *
+	 * This method will be called after the offset is unset from the object only if the
+	 * provided offset existed in the object, it gives the chance to perform custom actions
+	 * after a removal.
+	 *
+	 * The method accepts the same parameter as the {@link offsetUnset()} method, except that
+	 * it passed by reference.
+	 *
+	 * In this class we do nothing.
+	 *
+	 * @param reference			   &$theOffset			Offset.
+	 *
+	 * @access protected
+	 */
+	protected function _Postunset( &$theOffset )										   {}
 
 	 
 

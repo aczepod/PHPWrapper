@@ -82,14 +82,14 @@ define( "kOFFSET_REFS_NAMESPACE",				'_nsr' );
  * This tag identifies node references, the attribute contains the list of identifiers of
  * nodes that reference the current object.
  */
-define( "kOFFSET_REFS_NODE",						'_nor' );
+define( "kOFFSET_REFS_NODE",					'_nor' );
 
 /**
- * Edge references.
+ * Tag references.
  *
- * This tag identifies edge predicate references, the attribute contains the list of
- * identifiers of edges in which the current term was referenced as a predicate.
+ * This tag identifies tag references, the attribute contains the list of identifiers of
+ * tags that reference the current term.
  */
-define( "kOFFSET_REFS_EDGE",						'_edr' );
+define( "kOFFSET_REFS_TAG",						'_tgr' );
 
 ?>

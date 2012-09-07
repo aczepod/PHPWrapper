@@ -70,10 +70,10 @@ use \MyWrapper\Persistence\CContainer;
  * Terms must keep track of references, the {@link kOFFSET_REFS_NAMESPACE} offset contains
  * an integer counting the number of times the term was used as a namespace. The
  * {@link kOFFSET_REFS_NODE} offset is an array containing the list of nodes that reference
- * the current term. Finally, the {@link kOFFSET_REFS_EDGE} offset is an array that collects
- * the list of edge identifiers in which the predicate references the term. These counters
- * and reference collections are automatically managed by the container, rather than by the
- * object, so their modification by this class is not allowed.
+ * the current term. Finally, the {@link kOFFSET_REFS_TAG} offset is an array that collects
+ * the list of tag identifiers that reference the term. These counters and reference
+ * collections are automatically managed by the container, rather than by the object, so
+ * their modification by this class is not allowed.
  *
  * When {@link _IsCommitted()}, besides the the identifier offsets, also the
  * {@link kOFFSET_NAMESPACE} offset will be locked, since it is used to generate the
@@ -90,219 +90,7 @@ use \MyWrapper\Persistence\CContainer;
  */
 class CTerm extends \MyWrapper\Persistence\CPersistentObject
 {
-	/**
-	 * <b>Namespace term</b>
-	 *
-	 * This data member holds the eventual namespace term object.
-	 *
-	 * @var CTerm
-	 */
-	 protected $mNamespace = NULL;
-
 		
-
-/*=======================================================================================
- *																						*
- *									PUBLIC MEMBER INTERFACE								*
- *																						*
- *======================================================================================*/
-
-
-	 
-	/*===================================================================================
-	 *	NamespaceTerm																	*
-	 *==================================================================================*/
-
-	/**
-	 * <h4>Manage the namespace property</h4>
-	 *
-	 * This method can be used to manage the namespace term object, it accepts a single
-	 * parameter which represents either the object or the requested operation, depending on
-	 * its value:
-	 *
-	 * <ul>
-	 *	<li><tt>NULL</tt>: Return the current value.
-	 *	<li><tt>FALSE</tt>: Delete the current value.
-	 *	<li><i>other</i>: Set the value with the provided parameter.
-	 * </ul>
-	 *
-	 * The second parameter is a boolean which if <tt>TRUE</tt> will return the <i>old</i>
-	 * value when replacings; if <tt>FALSE</tt>, it will return the currently set value.
-	 *
-	 * Whenever the namespace is modified using this method, the corresponding
-	 * {@link kOFFSET_NAMESPACE} offset will also be updated.
-	 *
-	 * If the object has its {@link _IsCommitted()} status set, it will not be possible to
-	 * modify the value, this is because the namespace is integral part of the global
-	 * unique identifier.
-	 *
-	 * @param mixed					$theValue			namespace object or operation.
-	 * @param boolean				$getOld				<tt>TRUE</tt> get old value.
-	 *
-	 * @access public
-	 * @return mixed				<i>New</i> or <i>old</i> namespace object.
-	 *
-	 * @throws \Exception
-	 *
-	 * @uses ManageProperty()
-	 */
-	public function NamespaceTerm( $theValue = NULL, $getOld = FALSE )
-	{
-		//
-		// Init local storage.
-		//
-		$modifying = ( ($theValue !== NULL) && ($theValue !== FALSE) );
-		
-		//
-		// Check parameter.
-		//
-		if( $modifying )
-		{
-			//
-			// Check if it is committed.
-			//
-			if( $this->_IsCommitted() )
-				throw new \Exception
-					( "Cannot modify term namespace",
-					  kERROR_LOCKED );											// !@! ==>
-			
-			//
-			// Check namespace type.
-			//
-			if( ! ($theValue instanceof self) )
-				throw new \Exception
-					( "Invalid namespace object type",
-					  kERROR_PARAMETER );										// !@! ==>
-		
-		} // Provided new value.
-		
-		//
-		// Handle data member.
-		//
-		$save = ManageProperty( $this->mNamespace, $theValue, $getOld );
-		
-		//
-		// Update offset.
-		//
-		if( $modifying )
-			$this->offsetSet( kOFFSET_NAMESPACE,
-							  ( ( $theValue !== FALSE )
-							  	? $theValue->offsetGet( kOFFSET_NID )
-							  	: NULL ) );
-		
-		return $save;																// ==>
-	
-	} // NamespaceTerm.
-		
-
-
-/*=======================================================================================
- *																						*
- *								PUBLIC ARRAY ACCESS INTERFACE							*
- *																						*
- *======================================================================================*/
-
-
-	 
-	/*===================================================================================
-	 *	offsetSet																		*
-	 *==================================================================================*/
-
-	/**
-	 * <h4>Set a value for a given offset</h4>
-	 *
-	 * We override this method to prevent changing the {@link kOFFSET_LID} and
-	 * {@link kOFFSET_NAMESPACE} offsets if the object is in a {@link _IsCommitted()} state.
-	 *
-	 * @param string				$theOffset			Offset.
-	 * @param mixed					$theValue			Value to set at offset.
-	 *
-	 * @access public
-	 *
-	 * @uses _IsDirty()
-	 */
-	public function offsetSet( $theOffset, $theValue )
-	{
-		//
-		// Lock counters.
-		//
-		if( $this->_IsCommitted() )
-		{
-			//
-			// Check offsets.
-			//
-			$offsets = array( kOFFSET_LID, kOFFSET_NAMESPACE );
-			if( in_array( $theOffset, $offsets ) )
-			{
-				//
-				// Check for changes.
-				//
-				if( $this->offsetGet( $theOffset ) !== $theValue )
-					throw new \Exception
-						( "The object is committed: cannot modify [$theOffset] offset",
-						  kERROR_LOCKED );										// !@! ==>
-			
-			} // Offset matches.
-		
-		} // Object is persistent.
-		
-		//
-		// Call parent method.
-		//
-		parent::offsetSet( $theOffset, $theValue );
-	
-	} // offsetSet.
-
-	 
-	/*===================================================================================
-	 *	offsetUnset																		*
-	 *==================================================================================*/
-
-	/**
-	 * <h4>Reset a value for a given offset</h4>
-	 *
-	 * We override this method to handle the dirty flag: when the value changes, we turn the
-	 * {@link _IsDirty()} status flag on.
-	 *
-	 * @param string				$theOffset			Offset.
-	 *
-	 * @access public
-	 *
-	 * @uses _IsDirty()
-	 */
-	public function offsetUnset( $theOffset )
-	{
-		//
-		// Check object lock.
-		//
-		if( $this->_IsCommitted() )
-		{
-			//
-			// Check offsets.
-			//
-			$offsets = array( kOFFSET_LID, kOFFSET_NAMESPACE );
-			if( in_array( $theOffset, $offsets ) )
-			{
-				//
-				// Check for changes.
-				//
-				if( $this->offsetExists( $theOffset ) )
-					throw new \Exception
-						( "The object is committed: cannot modify [$theOffset] offset",
-						  kERROR_LOCKED );										// !@! ==>
-			
-			} // Offset matches.
-		
-		} // Object is persistent.
-		
-		//
-		// Call parent method.
-		//
-		parent::offsetUnset( $theOffset );
-	
-	} // offsetUnset.
-
-
 
 /*=======================================================================================
  *																						*
@@ -332,6 +120,8 @@ class CTerm extends \MyWrapper\Persistence\CPersistentObject
 	 *
 	 * @static
 	 * @return mixed				The object's native unique identifier.
+	 *
+	 * @throws \Exception
 	 */
 	static function _id( $theIdentifier = NULL, CContainer $theContainer = NULL )
 	{
@@ -378,21 +168,102 @@ class CTerm extends \MyWrapper\Persistence\CPersistentObject
 	 *
 	 * If the term lacks a namespace, its global identifier will be its local identifier.
 	 *
+	 * This method will take care of getting the global identifier from the eventual
+	 * namespace term and generate the current term global identifier.
+	 *
+	 * If the namespace was set in the form of an object, it will be converted back to its
+	 * native identifier.
+	 *
+	 * This method does not assume the type of object that it may find in the namespace, it
+	 * will first check if derives from {@link CPersistentObject}, in that case it will use
+	 * its global identifier; any other type will be assumed to be the native identifier of
+	 * the namespace. In the latter case the method will instantiate the object and use its
+	 * global identifier.
+	 *
+	 * @param CContainer			$theContainer		Container.
+	 * @param bitfield				$theModifiers		Commit options.
+	 *
 	 * @access protected
 	 * @return string|NULL			The object's global unique identifier.
 	 *
+	 * @throws \Exception
+	 *
 	 * @uses _index()
 	 */
-	protected function _index()
+	protected function _index( $theContainer, $theModifiers )
 	{
 		//
 		// Handle namespace.
 		//
-		$namespace = $this->NamespaceTerm();
-		if( $namespace !== NULL )
-			return $namespace->offsetGet( kOFFSET_GID )
+		if( $this->offsetExists( kOFFSET_NAMESPACE ) )
+		{
+			//
+			// Get namespace.
+			//
+			$namespace = $this->offsetGet( kOFFSET_NAMESPACE );
+			
+			//
+			// Handle object.
+			//
+			if( $namespace instanceof CPersistentObject )
+			{
+				//
+				// Check global identifier.
+				//
+				if( ! $namespace->offsetExists( kOFFSET_GID ) )
+					throw new \Exception
+						( "Unable to generate term global identifier: "
+						 ."namespace has no global identifier",
+						  kERROR_STATE );										// !@! ==>
+				
+				//
+				// Init global identifier.
+				//
+				$identifier = $namespace->offsetGet( kOFFSET_GID );
+				
+				//
+				// Check namespace ID.
+				//
+				if( ! $namespace->offsetExists( kOFFSET_NID ) )
+					throw new \Exception
+						( "Unable to generate term global identifier: "
+						 ."namespace has no native identifier",
+						  kERROR_STATE );										// !@! ==>
+				
+				//
+				// Replace namespace offset.
+				//
+				$this->offsetSet( kOFFSET_NAMESPACE, $namespace->offsetGet( kOFFSET_NID ) );
+			
+			} // Namespace object.
+			
+			//
+			// Handle identifier.
+			//
+			else
+			{
+				//
+				// Get namespace object.
+				//
+				$ok = $theContainer->ManageObject( $object, $namespace );
+				if( ! $ok )
+					throw new \Exception
+						( "Unable to generate term global identifier: "
+						 ."unresolved namespace object",
+						  kERROR_STATE );										// !@! ==>
+				
+				//
+				// Init global identifier.
+				//
+				$identifier = $object[ kOFFSET_GID ];
+			
+			} // Namespace identifier.
+			
+			return $identifier
 				  .kTOKEN_NAMESPACE_SEPARATOR
 				  .$this->offsetGet( kOFFSET_LID );									// ==>
+		
+		} // Has namespace.
 		
 		return $this->offsetGet( kOFFSET_LID );										// ==>
 	
@@ -432,16 +303,13 @@ class CTerm extends \MyWrapper\Persistence\CPersistentObject
 		//
 		// Intercept identifiers.
 		//
+		$offsets = array( kOFFSET_NAMESPACE,
+						  kOFFSET_REFS_NAMESPACE, kOFFSET_REFS_NODE, kOFFSET_REFS_TAG );
 		if( $this->_IsCommitted()
 		 && in_array( $theOffset, $offsets ) )
-		{
-			$offsets = array( kOFFSET_NID, kOFFSET_GID, kOFFSET_LID,
-							  kOFFSET_REFS_NAMESPACE, kOFFSET_REFS_NODE,
-							  kOFFSET_REFS_EDGE );
 			throw new \Exception
 				( "The object is committed, you cannot modify the [$theOffset] offset",
 				  kERROR_LOCKED );												// !@! ==>
-		}
 		
 		//
 		// Call parent method.
@@ -449,33 +317,6 @@ class CTerm extends \MyWrapper\Persistence\CPersistentObject
 		parent::_Preset( $theOffset, $theValue );
 	
 	} // _Preset.
-
-	 
-	/*===================================================================================
-	 *	_Postset																			*
-	 *==================================================================================*/
-
-	/**
-	 * <h4>Handle offset before setting it</h4>
-	 *
-	 * In this class we update the {@link _IsInited()} status.
-	 *
-	 * @param reference			   &$theOffset			Offset.
-	 * @param reference			   &$theValue			Value to set at offset.
-	 *
-	 * @access protected
-	 *
-	 * @uses _Ready()
-	 * @uses _IsInited()
-	 */
-	protected function _Postset( &$theOffset, &$theValue )
-	{
-		//
-		// Call parent method.
-		//
-		parent::_Postset( $theOffset, $theValue );
-	
-	} // _Postset.
 
 	 
 	/*===================================================================================
@@ -500,16 +341,13 @@ class CTerm extends \MyWrapper\Persistence\CPersistentObject
 		//
 		// Intercept identifiers.
 		//
+		$offsets = array( kOFFSET_NAMESPACE,
+						  kOFFSET_REFS_NAMESPACE, kOFFSET_REFS_NODE, kOFFSET_REFS_TAG );
 		if( $this->_IsCommitted()
 		 && in_array( $theOffset, $offsets ) )
-		{
-			$offsets = array( kOFFSET_NID, kOFFSET_GID, kOFFSET_LID,
-							  kOFFSET_REFS_NAMESPACE, kOFFSET_REFS_NODE,
-							  kOFFSET_REFS_EDGE );
 			throw new \Exception
 				( "The object is committed, you cannot modify the [$theOffset] offset",
 				  kERROR_LOCKED );												// !@! ==>
-		}
 		
 		//
 		// Call parent method.
@@ -517,39 +355,102 @@ class CTerm extends \MyWrapper\Persistence\CPersistentObject
 		parent::_Preunset( $theOffset );
 	
 	} // _Preunset.
+		
+
+
+/*=======================================================================================
+ *																						*
+ *							PROTECTED PERSISTENCE INTERFACE								*
+ *																						*
+ *======================================================================================*/
+
 
 	 
 	/*===================================================================================
-	 *	_Postunset																		*
+	 *	_Precommit																		*
 	 *==================================================================================*/
 
 	/**
-	 * <h4>Handle offset before unsetting it</h4>
+	 * <h4>Prepare the object before committing</h4>
 	 *
-	 * This method will be called before the offset is unset from the object only if the
-	 * provided offset exists in the object, it gives the chance to perform custom actions
-	 * and change the provided offset.
+	 * In this class we check whether the eventual namespace was provided as an object, in
+	 * that case we commit it and leave it as an object: the {@link _index()} method will
+	 * take care of converting the offset to the namespace's identifier.
 	 *
-	 * The method accepts the same parameter as {@link offsetUnset()} method, except that it
-	 * is passed by reference.
-	 *
-	 * In this class we set the {@link _IsDirty()} status.
-	 *
-	 * @param reference			   &$theOffset			Offset.
+	 * @param CContainer			$theContainer		Container.
+	 * @param bitfield				$theModifiers		Commit options.
 	 *
 	 * @access protected
-	 *
-	 * @uses _Ready()
-	 * @uses _IsInited()
 	 */
-	protected function _Postunset( &$theOffset )
+	protected function _Precommit( CContainer $theContainer,
+											  $theModifiers = kFLAG_DEFAULT )
 	{
+		//
+		// Get namespace.
+		//
+		$namespace = $this->offsetGet( kOFFSET_NAMESPACE );
+		
+		//
+		// Handle new namespace.
+		//
+		if( ($namespace instanceof CPersistentObject)
+		 && (! $namespace->_IsCommitted()) )
+			$namespace->Replace( $theContainer );
+		
 		//
 		// Call parent method.
 		//
-		parent::_Postunset( $theOffset );
+		parent::_Precommit( $theContainer, $theModifiers );
+		
+	} // _PreCommit.
+
+	 
+	/*===================================================================================
+	 *	_Postcommit																		*
+	 *==================================================================================*/
+
+	/**
+	 * <h4>Prepare the object after committing</h4>
+	 *
+	 * In this class we increment the {@link kOFFSET_REFS_NAMESPACE} of the eventual
+	 * namespace.
+	 *
+	 * @param CContainer			$theContainer		Container.
+	 * @param bitfield				$theModifiers		Commit options.
+	 *
+	 * @access protected
+	 */
+	protected function _Postcommit( CContainer $theContainer,
+											   $theModifiers = kFLAG_DEFAULT )
+	{
+		//
+		// Check if not yet committed.
+		//
+		if( ! $this->_IsCommitted() )
+		{
+			//
+			// Increment namespace reference counter.
+			//
+			if( $this->offsetExists( kOFFSET_NAMESPACE ) )
+			{
+				$offsets = array( kOFFSET_REFS_NAMESPACE => 1 );
+				$theContainer->ManageObject
+					(
+						$offsets,
+						$this->offsetGet( kOFFSET_NAMESPACE ),
+						kFLAG_PERSIST_MODIFY + kFLAG_MODIFY_INCREMENT
+					);
+			
+			} // Has namespace.
+		
+		} // Not yet committed.
+		
+		//
+		// Call parent method.
+		//
+		parent::_Postcommit( $theContainer, $theModifiers );
 	
-	} // _Postunset.
+	} // _Postcommit.
 		
 
 

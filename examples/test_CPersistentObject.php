@@ -247,6 +247,7 @@ try
 			$test[ "B" ] = 3;
 			echo( '<h5>$status = $test->Insert( $container ); // Should raise an exception.</h5>' );
 			$status = $test->Insert( $container );
+			echo( '<h3><font color="red">Should have raised an exception</font></h3>' );
 			echo( 'Inited['.$test->inited().'] Dirty['.$test->dirty().'] Saved['.$test->committed().'] Encoded['.$test->encoded().']<br />' );
 			echo( 'Object<pre>' ); print_r( $test ); echo( '</pre>' );
 			echo( 'Status<pre>' ); print_r( $status ); echo( '</pre>' );
@@ -284,6 +285,7 @@ try
 			$test[ kOFFSET_NID ] = 99;
 			echo( '<h5>$test->Update( $container ); // Should raise an exception.</h5>' );
 			$test->Update( $container );
+			echo( '<h3><font color="red">Should have raised an exception</font></h3>' );
 			echo( 'Inited['.$test->inited().'] Dirty['.$test->dirty().'] Saved['.$test->committed().'] Encoded['.$test->encoded().']<br />' );
 			echo( '<pre>' ); print_r( $test ); echo( '</pre>' );
 			echo( '<hr />' );
@@ -409,9 +411,12 @@ try
 		echo( '<h4>Insert uninitialized object</h4>' );
 		echo( '<h5>$test = new MyClass();</h5>' );
 		$test = new MyClass();
+		echo( '<h5>$test[ "new" ] = "NEW"; // To set the object dirty</h5>' );
+		$test[ "new" ] = "NEW";
 		echo( 'Inited['.$test->inited().'] Dirty['.$test->dirty().'] Saved['.$test->committed().'] Encoded['.$test->encoded().']<br />' );
 		echo( '<h5>$status = $test->Insert( $container );</h5>' );
 		$status = $test->Insert( $container );
+		echo( '<h3><font color="red">Should have raised an exception</font></h3>' );
 		echo( '<pre>' ); print_r( $test ); echo( '</pre>' );
 		echo( '<hr />' );
 	}

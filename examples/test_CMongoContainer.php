@@ -37,7 +37,7 @@ use \MyWrapper\Persistence\CMongoContainer;
 //
 // Debug switches.
 //
-define( 'kDEBUG_PARENT', FALSE );
+define( 'kDEBUG_PARENT', TRUE );
 
 
 /*=======================================================================================
@@ -57,21 +57,23 @@ try
 		//
 		// Instantiate class.
 		//
-		echo( '<h4>$test = new CMongoContainer();</h4>' );
+		echo( '<h4>Instantiate class</h4>' );
+		echo( '<h5>$test = new CMongoContainer();</h5>' );
 		$test = new CMongoContainer();
 		echo( '<pre>' ); print_r( $test ); echo( '</pre>' );
 		echo( '<hr />' );
 		
 		//
-		// Set offset.
+		// Set offsets.
 		//
-		echo( '<h4>$test[ \'A\' ] = \'a\';</h4>' );
+		echo( '<h4>Set offsets</h4>' );
+		echo( '<h5>$test[ \'A\' ] = \'a\';</h5>' );
 		$test[ 'A' ] = 'a';
 		echo( '<pre>' ); print_r( $test ); echo( '</pre>' );
-		echo( '<h4>$test[ \'B\' ] = 2;</h4>' );
+		echo( '<h5>$test[ \'B\' ] = 2;</h5>' );
 		$test[ 'B' ] = 2;
 		echo( '<pre>' ); print_r( $test ); echo( '</pre>' );
-		echo( '<h4>$test[ \'C\' ] = array( 1, 2, 3 );</h4>' );
+		echo( '<h5>$test[ \'C\' ] = array( 1, 2, 3 );</h5>' );
 		$test[ 'C' ] = array( 1, 2, 3 );
 		echo( '<pre>' ); print_r( $test ); echo( '</pre>' );
 		echo( '<hr />' );
@@ -79,7 +81,8 @@ try
 		//
 		// Set NULL offset.
 		//
-		echo( '<h4>$test[ \'A\' ] = NULL;</h4>' );
+		echo( '<h4>Set NULL offset</h4>' );
+		echo( '<h5>$test[ \'A\' ] = NULL;</h5>' );
 		$test[ 'A' ] = NULL;
 		echo( '<pre>' ); print_r( $test ); echo( '</pre>' );
 		echo( '<hr />' );
@@ -87,7 +90,8 @@ try
 		//
 		// Get non-existing offset.
 		//
-		echo( '<h4>$x = $test[ \'missing\' ];</h4>' );
+		echo( '<h4>Get non-existing offset</h4>' );
+		echo( '<h5>$x = $test[ \'missing\' ];</h5>' );
 		$x = $test[ 'missing' ];
 		if( $x !== NULL )
 			print_r( $x );
@@ -98,36 +102,43 @@ try
 		//
 		// Test array_keys.
 		//
-		echo( '<h4>$test->array_keys();</h4>' );
+		echo( '<h4>Test array_keys</h4>' );
+		echo( '<h5>$test->array_keys();</h5>' );
 		echo( '<pre>' ); print_r( $test->array_keys() ); echo( '</pre>' );
 		echo( '<hr />' );
 		
 		//
 		// Test array_values.
 		//
-		echo( '<h4>$test->array_values();</h4>' );
+		echo( '<h4>Test array_values</h4>' );
+		echo( '<h5>$test->array_values();</h5>' );
 		echo( '<pre>' ); print_r( $test->array_values() ); echo( '</pre>' );
 		echo( '<hr />' );
 		
 		//
 		// Test array offsets.
 		//
-		echo( '<h4>$test[ \'C\' ][ 1 ];</h4>' );
-		echo( '<pre>' ); print_r( $test[ 'C' ][ 1 ] ); echo( '</pre>' );
+		echo( '<h4>Test array offsets</h4>' );
+		echo( '<h5>$test[ "C" ][ 1 ];</h5>' );
+		echo( '<pre>' ); print_r( $test[ "C" ][ 1 ] ); echo( '</pre>' );
+		echo( '<hr />' );
 		echo( '<hr />' );
 	}
 	
 	//
-	// Create collection.
+	// Create container.
 	//
-	echo( '<hr />' );
-	echo( '<h4>$mongo = New Mongo();</h4>' );
+	echo( '<h4>Create test container</h4>' );
+	echo( '$mongo = New Mongo();<br />' );
 	$mongo = New Mongo();
-	echo( '<h4>$db = $mongo->selectDB( "TEST" );</h4>' );
+	echo( '$db = $mongo->selectDB( "TEST" );<br />' );
 	$db = $mongo->selectDB( "TEST" );
 	$db->drop();
-	echo( '<h4>$collection = $db->selectCollection( "CMongoContainer" );</h4>' );
+	echo( '$collection = $db->selectCollection( "CMongoContainer" );<br />' );
 	$collection = $db->selectCollection( "CMongoContainer" );
+	echo( '$container = new CMongoContainer( $collection );<br />' );
+	$container = new CMongoContainer( $collection );
+	echo( '<hr />' );
 	echo( '<hr />' );
 	
 	//
@@ -135,14 +146,16 @@ try
 	//
 	try
 	{
-		echo( '<h4>$test = new CMongoContainer( \'should fail\' );</h4>' );
+		echo( '<h4>Instantiate with crap</h4>' );
+		echo( '<h5>$test = new CMongoContainer( \'should fail\' );</h5>' );
 		$test = new CMongoContainer( 'should fail' );
+		echo( '<h3><font color="red">Should have raised an exception</font></h3>' );
 		echo( '<pre>' ); print_r( $test ); echo( '</pre>' );
 		echo( '<hr />' );
 	}
 	catch( Exception $error )
 	{
-		echo( '<h4>Expected exception</h4>' );
+		echo( '<h5>Expected exception</h5>' );
 		echo( '<pre>'.(string) $error.'</pre>' );
 		echo( '<hr>' );
 	}
@@ -150,7 +163,8 @@ try
 	//
 	// Instantiate with collection.
 	//
-	echo( '<h4>$test = new CMongoContainer( $collection );</h4>' );
+	echo( '<h4>Instantiate with collection</h4>' );
+	echo( '<h5>$test = new CMongoContainer( $collection );</h5>' );
 	$test = new CMongoContainer( $collection );
 	echo( '<pre>' ); print_r( $test ); echo( '</pre>' );
 	echo( '<hr />' );
@@ -158,7 +172,8 @@ try
 	//
 	// Get container name.
 	//
-	echo( '<h4>$name = (string) $test; // is the collection name</h4>' );
+	echo( '<h4>Get container name</h4>' );
+	echo( '<h5>$name = (string) $test; // is the collection name</h5>' );
 	$name = (string) $test;
 	echo( $name );
 	echo( '<hr />' );
@@ -166,16 +181,18 @@ try
 	//
 	// Remove container.
 	//
-	echo( '<h4>$test->Container( FALSE );</h4>' );
+	echo( '<h4>Remove container</h4>' );
+	echo( '<h5>$test->Container( FALSE );</h5>' );
 	$test->Container( FALSE );
 	echo( '<pre>' ); print_r( $test ); echo( '</pre>' );
 	echo( '<hr />' );
+	echo( '<hr />' );
 	
 	//
-	// Restore collection.
+	// Restore container.
 	//
-	echo( '<hr />' );
-	echo( '<h4>$test = new CMongoContainer( $collection );</h4>' );
+	echo( '<h4>Restore collection</h4>' );
+	echo( '<h5>$test = new CMongoContainer( $collection );</h5>' );
 	$test = new CMongoContainer( $collection );
 	echo( '<hr />' );
 	echo( '<hr />' );
@@ -183,10 +200,11 @@ try
 	//
 	// Insert object without ID.
 	//
-	echo( '<h4>$object = array( "A" => 1, "B" => "due", "C" => array( 1, 2, 3 ) );</h4>' );
+	echo( '<h4>Insert object without ID</h4>' );
+	echo( '<h5>$object = array( "A" => 1, "B" => "due", "C" => array( 1, 2, 3 ) );</h5>' );
 	$object = array( "A" => 1, "B" => "due", "C" => array( 1, 2, 3 ) );
 	echo( '<pre>' ); print_r( $object ); echo( '</pre>' );
-	echo( '<h4>$status = $test->ManageObject( $object, NULL, kFLAG_PERSIST_INSERT );</h4>' );
+	echo( '<h5>$status = $test->ManageObject( $object, NULL, kFLAG_PERSIST_INSERT );</h5>' );
 	$status = $test->ManageObject( $object, NULL, kFLAG_PERSIST_INSERT );
 	echo( 'Object<pre>' ); print_r( $object ); echo( '</pre>' );
 	echo( 'Status<pre>' ); print_r( $status ); echo( '</pre>' );
@@ -195,10 +213,11 @@ try
 	//
 	// Insert object with ID.
 	//
-	echo( '<h4>$object = new ArrayObject( array( kOFFSET_NID => 1, "DATA" => "dati" ) );</h4>' );
+	echo( '<h4>Insert object with ID</h4>' );
+	echo( '<h5>$object = new ArrayObject( array( kOFFSET_NID => 1, "DATA" => "dati" ) );</h5>' );
 	$object = new ArrayObject( array( kOFFSET_NID => 1, "DATA" => "dati" ) );
 	echo( '<pre>' ); print_r( $object ); echo( '</pre>' );
-	echo( '<h4>$status = $test->ManageObject( $object, NULL, kFLAG_PERSIST_INSERT );</h4>' );
+	echo( '<h5>$status = $test->ManageObject( $object, NULL, kFLAG_PERSIST_INSERT );</h5>' );
 	$status = $test->ManageObject( $object, NULL, kFLAG_PERSIST_INSERT );
 	echo( 'Object<pre>' ); print_r( $object ); echo( '</pre>' );
 	echo( 'Status<pre>' ); print_r( $status ); echo( '</pre>' );
@@ -207,26 +226,29 @@ try
 	//
 	// Insert object with different ID.
 	//
-	echo( '<h4>$status = $test->ManageObject( $object, 2, kFLAG_PERSIST_INSERT );</h4>' );
+	echo( '<h4>Insert object with different ID</h4>' );
+	echo( '<h5>$status = $test->ManageObject( $object, 2, kFLAG_PERSIST_INSERT );</h5>' );
 	$status = $test->ManageObject( $object, 2, kFLAG_PERSIST_INSERT );
 	echo( 'Object<pre>' ); print_r( $object ); echo( '</pre>' );
 	echo( 'Status<pre>' ); print_r( $status ); echo( '</pre>' );
 	echo( '<hr />' );
 	
 	//
-	// Insert object with same ID.
+	// Insert duplicate object.
 	//
 	try
 	{
-		echo( '<h4>$status = $test->ManageObject( $object, 1, kFLAG_PERSIST_INSERT );</h4>' );
+		echo( '<h4>Insert duplicate object</h4>' );
+		echo( '<h5>$status = $test->ManageObject( $object, 1, kFLAG_PERSIST_INSERT );</h5>' );
 		$status = $test->ManageObject( $object, 1, kFLAG_PERSIST_INSERT );
+		echo( '<h3><font color="red">Should have raised an exception</font></h3>' );
 		echo( 'Object<pre>' ); print_r( $object ); echo( '</pre>' );
 		echo( 'Status<pre>' ); print_r( $status ); echo( '</pre>' );
 		echo( '<hr />' );
 	}
 	catch( Exception $error )
 	{
-		echo( '<h4>Expected exception</h4>' );
+		echo( '<h5>Expected exception</h5>' );
 		echo( '<pre>'.(string) $error.'</pre>' );
 		echo( '<hr>' );
 	}
@@ -235,10 +257,11 @@ try
 	//
 	// Update object.
 	//
-	echo( '<h4>$object[ "NEW" ] = "New field";</h4>' );
+	echo( '<h4>Update object</h4>' );
+	echo( '<h5>$object[ "NEW" ] = "New field";</h5>' );
 	$object[ "NEW" ] = "New field";
 	echo( 'Object<pre>' ); print_r( $object ); echo( '</pre>' );
-	echo( '<h4>$status = $test->ManageObject( $object, NULL, kFLAG_PERSIST_UPDATE );</h4>' );
+	echo( '<h5>$status = $test->ManageObject( $object, NULL, kFLAG_PERSIST_UPDATE );</h5>' );
 	$status = $test->ManageObject( $object, NULL, kFLAG_PERSIST_UPDATE );
 	echo( 'Object<pre>' ); print_r( $object ); echo( '</pre>' );
 	echo( 'Status<pre>' ); print_r( $status ); echo( '</pre>' );
@@ -247,30 +270,22 @@ try
 	//
 	// Update non-existing object.
 	//
-	try
-	{
-		echo( '<h4>$status = $test->ManageObject( $object, 9, kFLAG_PERSIST_UPDATE );</h4>' );
-		$status = $test->ManageObject( $object, 9, kFLAG_PERSIST_UPDATE );
-		echo( 'Object<pre>' ); print_r( $object ); echo( '</pre>' );
-		echo( 'Status<pre>' ); print_r( $status ); echo( '</pre>' );
-		echo( '<hr />' );
-		echo( '<hr />' );
-	}
-	catch( Exception $error )
-	{
-		echo( '<h4>Expected exception</h4>' );
-		echo( '<pre>'.(string) $error.'</pre>' );
-		echo( '<hr>' );
-	}
-	echo( '<hr>' );
+	echo( '<h4>Update non-existing object</h4>' );
+	echo( '<h5>$status = $test->ManageObject( $object, 9, kFLAG_PERSIST_UPDATE );</h5>' );
+	$status = $test->ManageObject( $object, 9, kFLAG_PERSIST_UPDATE );
+	echo( 'Object<pre>' ); print_r( $object ); echo( '</pre>' );
+	echo( 'Status<pre>' ); print_r( $status ); echo( '</pre>' );
+	echo( '<hr />' );
+	echo( '<hr />' );
 	
 	//
 	// Replace new object.
 	//
-	echo( '<h4>$object->offsetUnset( kOFFSET_NID );</h4>' );
+	echo( '<h4>Replace new object</h4>' );
+	echo( '<h5>$object->offsetUnset( kOFFSET_NID );</h5>' );
 	$object->offsetUnset( kOFFSET_NID );
 	echo( 'Object<pre>' ); print_r( $object ); echo( '</pre>' );
-	echo( '<h4>$status = $test->ManageObject( $object, NULL, kFLAG_PERSIST_REPLACE );</h4>' );
+	echo( '<h5>$status = $test->ManageObject( $object, NULL, kFLAG_PERSIST_REPLACE );</h5>' );
 	$status = $test->ManageObject( $object, NULL, kFLAG_PERSIST_REPLACE );
 	echo( 'Object<pre>' ); print_r( $object ); echo( '</pre>' );
 	echo( 'Status<pre>' ); print_r( $status ); echo( '</pre>' );
@@ -279,31 +294,137 @@ try
 	//
 	// Replace existing object.
 	//
-	echo( '<h4>$status = $test->ManageObject( $object, 2, kFLAG_PERSIST_REPLACE );</h4>' );
+	echo( '<h4>Replace existing object</h4>' );
+	echo( '<h5>$object[ "ARRAY1" ] = array( "A", "B", "C" );</h5>' );
+	$object[ "ARRAY1" ] = array( "A", "B", "C" );
+	echo( '<h5>$object[ "ARRAY2" ] = array( 1, 2, 3 );</h5>' );
+	$object[ "ARRAY2" ] = array( 1, 2, 3 );
+	echo( '<h5>$object[ "COUNTER" ] = 25;</h5>' );
+	$object[ "COUNTER" ] = 25;
+	echo( '<h5>$status = $test->ManageObject( $object, 2, kFLAG_PERSIST_REPLACE );</h5>' );
 	$status = $test->ManageObject( $object, 2, kFLAG_PERSIST_REPLACE );
+	echo( 'Object<pre>' ); print_r( $object ); echo( '</pre>' );
 	echo( 'Status<pre>' ); print_r( $status ); echo( '</pre>' );
 	echo( '<hr />' );
 	echo( '<hr />' );
 	
 	//
-	// Modify existing object.
+	// Add and remove fields.
 	//
-	echo( '<h4>$ident = $object[ kOFFSET_NID ]; $mod = array( \'$set\' => array( "DATA" => "NEW" ) );</h4>' );
-	$ident = $object[ kOFFSET_NID ]; $mod = array( '$set' => array( "DATA" => "NEW" ) );
-	echo( '<h4>$status = $test->ManageObject( $mod, $ident, kFLAG_PERSIST_MODIFY );</h4>' );
-	$status = $test->ManageObject( $mod, $ident, kFLAG_PERSIST_MODIFY );
-	echo( 'Object<pre>' ); print_r( $mod ); echo( '</pre>' );
+	echo( '<h4>Add and remove fields</h4>' );
+	echo( '<h5>$offsets = array( "ADDED" => "Added!", "NEW" => NULL );</h5>' );
+	$offsets = array( "ADDED" => "Added!", "NEW" => NULL );
+	echo( '<h5>$status = $test->ManageObject( $offsets, 2, kFLAG_PERSIST_MODIFY );</h5>' );
+	$status = $test->ManageObject( $offsets, 2, kFLAG_PERSIST_MODIFY );
+	echo( 'Object<pre>' ); print_r( $offsets ); echo( '</pre>' );
 	echo( 'Status<pre>' ); print_r( $status ); echo( '</pre>' );
 	echo( '<hr />' );
 	
 	//
-	// Modify non-existing object.
+	// Increment counter.
 	//
-	echo( '<h4>$ident = 99; $mod = array( \'$set\' => array( "DATA" => "OLD" ) );</h4>' );
-	$ident = 99; $mod = array( '$set' => array( "DATA" => "OLD" ) );
-	echo( '<h4>$status = $test->ManageObject( $mod, $ident, kFLAG_PERSIST_MODIFY );</h4>' );
-	$status = $test->ManageObject( $mod, $ident, kFLAG_PERSIST_MODIFY );
-	echo( 'Object<pre>' ); print_r( $mod ); echo( '</pre>' );
+	echo( '<h4>Increment counter</h4>' );
+	echo( '<h5>$offsets = array( "COUNTER" => 1 );</h5>' );
+	$offsets = array( "COUNTER" => 1 );
+	echo( '<h5>$status = $test->ManageObject( $offsets, 2, kFLAG_PERSIST_MODIFY + kFLAG_MODIFY_INCREMENT );</h5>' );
+	$status = $test->ManageObject( $offsets, 2, kFLAG_PERSIST_MODIFY + kFLAG_MODIFY_INCREMENT );
+	echo( 'Object<pre>' ); print_r( $offsets ); echo( '</pre>' );
+	echo( 'Status<pre>' ); print_r( $status ); echo( '</pre>' );
+	echo( '<hr />' );
+	
+	//
+	// Decrement counter.
+	//
+	echo( '<h4>Decrement counter</h4>' );
+	echo( '<h5>$offsets = array( "COUNTER" => -10 );</h5>' );
+	$offsets = array( "COUNTER" => -10 );
+	echo( '<h5>$status = $test->ManageObject( $offsets, 2, kFLAG_PERSIST_MODIFY + kFLAG_MODIFY_INCREMENT );</h5>' );
+	$status = $test->ManageObject( $offsets, 2, kFLAG_PERSIST_MODIFY + kFLAG_MODIFY_INCREMENT );
+	echo( 'Object<pre>' ); print_r( $offsets ); echo( '</pre>' );
+	echo( 'Status<pre>' ); print_r( $status ); echo( '</pre>' );
+	echo( '<hr />' );
+	
+	//
+	// Append.
+	//
+	echo( '<h4>Append</h4>' );
+	echo( '<h5>$offsets = array( "ARRAY1" => "D" );</h5>' );
+	$offsets = array( "ARRAY1" => "D" );
+	echo( '<h5>$status = $test->ManageObject( $offsets, 2, kFLAG_PERSIST_MODIFY + kFLAG_MODIFY_APPEND );</h5>' );
+	$status = $test->ManageObject( $offsets, 2, kFLAG_PERSIST_MODIFY + kFLAG_MODIFY_APPEND );
+	echo( 'Object<pre>' ); print_r( $offsets ); echo( '</pre>' );
+	echo( 'Status<pre>' ); print_r( $status ); echo( '</pre>' );
+	echo( '<hr />' );
+	
+	//
+	// Append again.
+	//
+	echo( '<h4>Append again</h4>' );
+	echo( '<h5>$offsets = array( "ARRAY1" => "D" );</h5>' );
+	$offsets = array( "ARRAY1" => "D" );
+	echo( '<h5>$status = $test->ManageObject( $offsets, 2, kFLAG_PERSIST_MODIFY + kFLAG_MODIFY_APPEND );</h5>' );
+	$status = $test->ManageObject( $offsets, 2, kFLAG_PERSIST_MODIFY + kFLAG_MODIFY_APPEND );
+	echo( 'Object<pre>' ); print_r( $offsets ); echo( '</pre>' );
+	echo( 'Status<pre>' ); print_r( $status ); echo( '</pre>' );
+	echo( '<hr />' );
+	
+	//
+	// Add to set.
+	//
+	echo( '<h4>Add to set</h4>' );
+	echo( '<h5>$offsets = array( "ARRAY2" => 4 );</h5>' );
+	$offsets = array( "ARRAY2" => 4 );
+	echo( '<h5>$status = $test->ManageObject( $offsets, 2, kFLAG_PERSIST_MODIFY + kFLAG_MODIFY_ADDSET );</h5>' );
+	$status = $test->ManageObject( $offsets, 2, kFLAG_PERSIST_MODIFY + kFLAG_MODIFY_ADDSET );
+	echo( 'Object<pre>' ); print_r( $offsets ); echo( '</pre>' );
+	echo( 'Status<pre>' ); print_r( $status ); echo( '</pre>' );
+	echo( '<hr />' );
+	
+	//
+	// Add duplicate to set.
+	//
+	echo( '<h4>Add duplicate to set</h4>' );
+	echo( '<h5>$offsets = array( "ARRAY2" => 1 );</h5>' );
+	$offsets = array( "ARRAY2" => 1 );
+	echo( '<h5>$status = $test->ManageObject( $offsets, 2, kFLAG_PERSIST_MODIFY + kFLAG_MODIFY_ADDSET );</h5>' );
+	$status = $test->ManageObject( $offsets, 2, kFLAG_PERSIST_MODIFY + kFLAG_MODIFY_ADDSET );
+	echo( 'Object<pre>' ); print_r( $offsets ); echo( '</pre>' );
+	echo( 'Status<pre>' ); print_r( $status ); echo( '</pre>' );
+	echo( '<hr />' );
+	
+	//
+	// Pop first.
+	//
+	echo( '<h4>Pop first</h4>' );
+	echo( '<h5>$offsets = array( "ARRAY2" => 100 );</h5>' );
+	$offsets = array( "ARRAY2" => 100 );
+	echo( '<h5>$status = $test->ManageObject( $offsets, 2, kFLAG_PERSIST_MODIFY + kFLAG_MODIFY_POP );</h5>' );
+	$status = $test->ManageObject( $offsets, 2, kFLAG_PERSIST_MODIFY + kFLAG_MODIFY_POP );
+	echo( 'Object<pre>' ); print_r( $offsets ); echo( '</pre>' );
+	echo( 'Status<pre>' ); print_r( $status ); echo( '</pre>' );
+	echo( '<hr />' );
+	
+	//
+	// Pop last.
+	//
+	echo( '<h4>Pop last</h4>' );
+	echo( '<h5>$offsets = array( "ARRAY2" => -1 );</h5>' );
+	$offsets = array( "ARRAY2" => -1 );
+	echo( '<h5>$status = $test->ManageObject( $offsets, 2, kFLAG_PERSIST_MODIFY + kFLAG_MODIFY_POP );</h5>' );
+	$status = $test->ManageObject( $offsets, 2, kFLAG_PERSIST_MODIFY + kFLAG_MODIFY_POP );
+	echo( 'Object<pre>' ); print_r( $offsets ); echo( '</pre>' );
+	echo( 'Status<pre>' ); print_r( $status ); echo( '</pre>' );
+	echo( '<hr />' );
+	
+	//
+	// Pull.
+	//
+	echo( '<h4>Pull</h4>' );
+	echo( '<h5>$offsets = array( "ARRAY1" => "D" );</h5>' );
+	$offsets = array( "ARRAY1" => "D" );
+	echo( '<h5>$status = $test->ManageObject( $offsets, 2, kFLAG_PERSIST_MODIFY + kFLAG_MODIFY_PULL );</h5>' );
+	$status = $test->ManageObject( $offsets, 2, kFLAG_PERSIST_MODIFY + kFLAG_MODIFY_PULL );
+	echo( 'Object<pre>' ); print_r( $offsets ); echo( '</pre>' );
 	echo( 'Status<pre>' ); print_r( $status ); echo( '</pre>' );
 	echo( '<hr />' );
 	echo( '<hr />' );
@@ -311,7 +432,8 @@ try
 	//
 	// Delete existing object.
 	//
-	echo( '<h4>$status = $test->ManageObject( $object, NULL, kFLAG_PERSIST_DELETE );</h4>' );
+	echo( '<h4>Delete existing object</h4>' );
+	echo( '<h5>$status = $test->ManageObject( $object, NULL, kFLAG_PERSIST_DELETE );</h5>' );
 	$status = $test->ManageObject( $object, NULL, kFLAG_PERSIST_DELETE );
 	echo( 'Status<pre>' ); print_r( $status ); echo( '</pre>' );
 	echo( '<hr />' );
@@ -319,9 +441,9 @@ try
 	//
 	// Delete non-existing object.
 	//
-	$scrap = 'scrap';
-	echo( '<h4>$status = $test->ManageObject( $scrap, 99, kFLAG_PERSIST_DELETE );</h4>' );
-	$status = $test->ManageObject( $scrap, 99, kFLAG_PERSIST_DELETE );
+	echo( '<h4>Delete non-existing object</h4>' );
+	echo( '<h5>$status = $test->ManageObject( $scrap, "CRAP", kFLAG_PERSIST_DELETE );</h5>' );
+	$status = $test->ManageObject( $scrap, "CRAP", kFLAG_PERSIST_DELETE );
 	echo( 'Status<pre>' ); print_r( $status ); echo( '</pre>' );
 	echo( '<hr />' );
 	echo( '<hr />' );
@@ -329,7 +451,8 @@ try
 	//
 	// Load existing object.
 	//
-	echo( '<h4>$status = $test->ManageObject( $object, 1 );</h4>' );
+	echo( '<h4>Load existing object</h4>' );
+	echo( '<h5>$status = $test->ManageObject( $object, 1 );</h5>' );
 	$status = $test->ManageObject( $object, 1 );
 	echo( 'Object<pre>' ); print_r( $object ); echo( '</pre>' );
 	echo( 'Status<pre>' ); print_r( $status ); echo( '</pre>' );
@@ -338,8 +461,8 @@ try
 	//
 	// Load non-existing object.
 	//
-	echo( '<h4>$status = $test->ManageObject( $object, 2 );</h4>' );
-	$status = $test->ManageObject( $object, 2 );
+	echo( '<h5>$status = $test->ManageObject( $object, "CRAP" );</h5>' );
+	$status = $test->ManageObject( $object, "CRAP" );
 	echo( 'Object<pre>' ); print_r( $object ); echo( '</pre>' );
 	echo( 'Status<pre>' ); print_r( $status ); echo( '</pre>' );
 	echo( '<hr>' );

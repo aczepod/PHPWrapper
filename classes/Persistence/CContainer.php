@@ -27,6 +27,13 @@
 require_once( kPATH_MYWRAPPER_LIBRARY_DEFINE."/Offsets.inc.php" );
 
 /**
+ * Flags.
+ *
+ * This include file contains all status flag definitions.
+ */
+require_once( kPATH_MYWRAPPER_LIBRARY_DEFINE."/Flags.inc.php" );
+
+/**
  * Accessors.
  *
  * This include file contains all accessor function definitions.
@@ -38,7 +45,7 @@ require_once( kPATH_MYWRAPPER_LIBRARY_FUNCTION."/accessors.php" );
  *
  * This includes the ancestor class definitions.
  */
-use \MyWrapper\Framework\CStatusDocument;
+use \MyWrapper\Framework\CDocument;
 
 /**
  * <h3>Persistent objects data store ancestor</h3>
@@ -49,23 +56,22 @@ use \MyWrapper\Framework\CStatusDocument;
  * The public interface declares the following main operations:
  *
  * <ul>
- *	<li>{@link SetObject()}: This method will <i>insert</i>, <i>update</i>, <i>modify</i> or
- *		<i>delete</i> objects from the current container. This method operates one object at
- *		the time and it is mainly used by persistent objects for persisting in containers.
- *	<li><i>{@link GetObject()}</i>: This method will <i>load</i> an object from the current
+ *	<li>{@link ManageObject()}: This method will <i>insert</i>, <i>update</i>,
+ *		<i>modify</i>, <i>delete</i> and <i>load</i> an object from the current container.
+ *		This method operates one object at the time and it is mainly used by persistent
+ *		objects for persisting in containers.
+ *	<li>{@link ConvertBinary()}: This method will convert a binary string to a format
+ *		compatible with the current data store.
  *		container.
  * </ul>
  *
  * The class does not implement a concrete data store, derived classes must implement
  * specific storage actions.
  *
- * The class inherits from {@link CStatusDocument} in order to manage its own status and the
- * one of the provided persistent objects.
- *
  *	@package	MyWrapper
  *	@subpackage	Persistence
  */
-abstract class CContainer extends \MyWrapper\Framework\CStatusDocument
+abstract class CContainer extends \MyWrapper\Framework\CDocument
 {
 	/**
 	 * Persistent data store.
@@ -176,23 +182,11 @@ abstract class CContainer extends \MyWrapper\Framework\CStatusDocument
 	 * @access public
 	 * @return mixed				<i>New</i> or <i>old</i> native container.
 	 *
-	 * @uses _IsInited()
 	 * @uses ManageProperty()
 	 */
 	public function Container( $theValue = NULL, $getOld = FALSE )
 	{
-		//
-		// Handle data member.
-		//
-		$save = ManageProperty( $this->mContainer, $theValue, $getOld );
-		
-		//
-		// Handle status.
-		//
-		if( $theValue !== NULL )
-			$this->_IsInited( $this->mContainer !== NULL );
-		
-		return $save;																// ==>
+		return ManageProperty( $this->mContainer, $theValue, $getOld );				// ==>
 
 	} // Container.
 
@@ -240,9 +234,7 @@ abstract class CContainer extends \MyWrapper\Framework\CStatusDocument
 	 *			In this case the method should return the inserted object's native
 	 *			identifier ({@link kOFFSET_NID}).
 	 *		<li>{@link kFLAG_PERSIST_UPDATE}: The provided object will replace an
-	 *			object existing in the container. In this case the method expects the
-	 *			container to have an entry with the same key as the provided identifier,
-	 *			if this is not the case the method should raise an exception.
+	 *			object existing in the container.
 	 *			In this case the <tt>$theObject</tt> represents the full object and
 	 *			<tt>$theIdentifier</tt> represents the object unique identifier.
 	 *			In this case the method should return <tt>TRUE</tt> if the object was
@@ -261,13 +253,77 @@ abstract class CContainer extends \MyWrapper\Framework\CStatusDocument
 	 *			identifier ({@link kOFFSET_NID}).
 	 *		<li>{@link kFLAG_PERSIST_MODIFY}: This option can be used to apply modifications
 	 *			to a subset of the object.
-	 *			In this case, <tt>$theObject</tt> should contain the modification
-	 *			<i>criteria</i> and <tt>$theIdentifier</tt> should contain the object's
-	 *			unique identifier, if the object cannot be located in the container, the
-	 *			method should not fail.
-	 *			In this case the method should set the modified object in the referenced
-	 *			parameter and return <tt>TRUE</tt> if the object was found and return
-	 *			<tt>FALSE</tt> if the object was not found.
+	 *			In this case the parameters of this method have the following functions:
+	 *		 <ul>
+	 *			<li><tt>$theObject</tt>: This parameter will be an array of elements whose
+	 *				<i>key</i> corresponds to the offset to be considered and the
+	 *				<i>value</i> to the value that the operation will use.
+	 *			<li><tt>$theIdentifier</tt>: This parameter keeps its original meaning, it
+	 *				should contain the native identifier of the object to be modified.
+	 *			<li><tt>$theModifiers</tt>: Another section of this bitfield will hold the
+	 *				flags that determine what specific modification should be performed:
+	 *			 <ul>
+	 *				<li>{@link kFLAG_MODIFY_INCREMENT}: This flag indicates an increment or
+	 *					decrement operation, the method will take the value corresponding
+	 *					to the offset in <tt>$theObject</tt> parameter and add it to the
+	 *					object identified by <tt>$theIdentifier</tt> in the container.
+	 *					For instance, to increment by one the '<tt>A</tt>' offset of object
+	 *					<tt>X</tt>, you would pass the <tt>array( 'A' => 1 )</tt> in
+	 *					<tt>$theObject</tt>, <tt>X</tt> in <tt>$theIdentifier</tt> and set
+	 *					the kFLAG_MODIFY_INCREMENT flag; to decrement by two you would
+	 *					pass <tt>array( 'A' => -2 )</tt> in <tt>$theObject</tt>, with all
+	 *					other parameters unchanged.
+	 *					If the offset does not exist, it will be initialised with the
+	 *					increment value.
+	 *				<li>{@link kFLAG_MODIFY_APPEND}: This flag indicates that we want to
+	 *					append a value to an existing array, the method will take the value
+	 *					corresponding to the offset in <tt>$theObject</tt> and append it to
+	 *					the offset in <tt>$theObject</tt> for the object identified by
+	 *					<tt>$theIdentifier</tt> in the container.
+	 *					For instance, to append the value '<tt>A</tt>' to the array in
+	 *					offset '<tt>FIELD</tt>' for object <tt>X</tt>, you would pass the
+	 *					<tt>array( 'FIELD' => 'A' )</tt> in <tt>$theObject</tt>,
+	 *					<tt>X</tt> in <tt>$theIdentifier</tt> and set the
+	 *					kFLAG_MODIFY_APPEND flag.
+	 *					If the field does not exist, it will be created with an array
+	 *					composed of the provided append value; if the field exists and its
+	 *					value is not an array, an exception should be raised.
+	 *				<li>{@link kFLAG_MODIFY_ADDSET}: This flag indicates that we want to
+	 *					add a value to a set, this operation is equivalent to
+	 *					{@link kFLAG_MODIFY_APPEND}, except that the value will be appended
+	 *					only if it doesn't exist already in the receiving array.
+	 *				<li>{@link kFLAG_MODIFY_POP}: This flag indicates that we want to remove
+	 *					the first or last element from an array. The method will take the
+	 *					value corresponding to the offset in <tt>$theObject</tt> and check
+	 *					its sign: if positive, the method will remove the first element; if
+	 *					negative it will remove the last.
+	 *					For instance, to remove the first element in the '<tt>FIELD</tt>'
+	 *					offset of object <tt>X</tt>, you would pass the
+	 *					<tt>array( 'FIELD' => 1 )</tt> in <tt>$theObject</tt>, <tt>X</tt> in
+	 *					<tt>$theIdentifier</tt> and set the kFLAG_MODIFY_POP flag in
+	 *					<tt>$theModifiers</tt>; to remove the last element you would pass
+	 *					<tt>array( 'FIELD' => -1 )</tt> in <tt>$theObject</tt>.
+	 *					If the offset does not exist, the method should not fail; if the
+	 *					offset is not an array, the method should raise an exception.
+	 *				<li>{@link kFLAG_MODIFY_PULL}: This flag indicates that we want to
+	 *					remove all occurrences of a value from an array.
+	 *					For instance, to remove all occurrances of '<tt>A</tt>' from the
+	 *					array contained in the '<tt>FIELD</tt>' offset of object <tt>X</tt>, 
+	 *					you would pass <tt>array( 'FIELD' => 'A' )</tt> in
+	 *					<tt>$theObject</tt>, <tt>X</tt> in <tt>$theIdentifier</tt> and set
+	 *					the kFLAG_MODIFY_PULL flag in <tt>$theModifiers</tt>.
+	 *					If the field exists and its value is not an array, an exception
+	 *					should be raised.
+	 *				<li>{@link kFLAG_MODIFY_MASK} <i>off</i>: If none of the above flags are
+	 *					set, it means that the key/value pairs set in <tt>$theObject</tt>
+	 *					represent offsets to be added or removed, depending on the value
+	 *					part of the pair: if the value is <tt>NULL</tt>, it means that you
+	 *					want to remove the offset; any other value will replace the existing
+	 *					offset or be added to the object.
+	 *			 </ul>
+	 *		 </ul>
+	 *			In this case the method will return the modified object in the
+	 *			<tt>$theObject</tt> parameter, or raise an exception if the operation fails.
 	 *		<li>{@link kFLAG_PERSIST_DELETE}: This option assumes you want to remove the
 	 *			object from the container.
 	 *			In this case the <tt>$theObject</tt> represents the full object and
@@ -293,8 +349,8 @@ abstract class CContainer extends \MyWrapper\Framework\CStatusDocument
 	 * ({@link _IsInited()}), this happens when the object received the native container.
 	 *
 	 * This class is abstract, which means that derived classes must implement the specific
-	 * functionality of specialised data stores, for this reason this method will only check
-	 * if the current object is inited.
+	 * functionality of specialised data stores, for this reason this method is declared
+	 * abstract.
 	 *
 	 * @param reference			   &$theObject			Object.
 	 * @param mixed					$theIdentifier		Identifier.
@@ -303,24 +359,14 @@ abstract class CContainer extends \MyWrapper\Framework\CStatusDocument
 	 * @access public
 	 * @return mixed				The native operation status.
 	 *
-	 * @uses _IsInited()
-	 *
 	 * @see kFLAG_PERSIST_INSERT kFLAG_PERSIST_UPDATE kFLAG_PERSIST_MODIFY
 	 * @see kFLAG_PERSIST_REPLACE kFLAG_PERSIST_MODIFY kFLAG_PERSIST_DELETE
+	 * @see kFLAG_MODIFY_INCREMENT kFLAG_MODIFY_APPEND kFLAG_MODIFY_ADDSET
+	 * @see kFLAG_MODIFY_POP kFLAG_MODIFY_PULL kFLAG_MODIFY_MASK
 	 */
-	public function ManageObject( &$theObject,
-								   $theIdentifier = NULL,
-								   $theModifiers = kFLAG_DEFAULT )
-	{
-		//
-		// Check if inited.
-		//
-		if( ! $this->_IsInited() )
-			throw new \Exception
-				( "The object is not initialised",
-				  kERROR_STATE );												// !@! ==>
-	
-	} // ManageObject.
+	abstract public function ManageObject( &$theObject,
+											$theIdentifier = NULL,
+											$theModifiers = kFLAG_DEFAULT );
 
 		
 

@@ -6,7 +6,7 @@
 
 	<title>Class MyWrapper\Persistence\CContainer | MyWrapper Reference Documentation</title>
 
-	<script type="text/javascript" src="resources/combined.js?417553483"></script>
+	<script type="text/javascript" src="resources/combined.js?496895167"></script>
 	<script type="text/javascript" src="elementlist.js?1357666139"></script>
 	<link rel="stylesheet" type="text/css" media="all" href="resources/style.css?1567499433" />
 
@@ -103,20 +103,17 @@ classes should implement.</p>
 <p>The public interface declares the following main operations:</p>
 
 <ul>
-	<li>SetObject(): This method will <i>insert</i>, <i>update</i>,
-	<i>modify</i> or <i>delete</i> objects from the current container. This method
-	operates one object at the time and it is mainly used by persistent objects for
-	persisting in containers.</li>
+	<li><code><a href="class-MyWrapper.Persistence.CContainer.html#_">MyWrapper\Persistence\CContainer::ManageObject()</a></code>: This method will <i>insert</i>, <i>update</i>,
+	<i>modify</i>, <i>delete</i> and <i>load</i> an object from the current
+	container. This method operates one object at the time and it is mainly used by
+	persistent objects for persisting in containers.</li>
 
-	<li><i>GetObject()</i>: This method will <i>load</i> an object from the
-	current container.</li>
+	<li><code><a href="class-MyWrapper.Persistence.CContainer.html#_">MyWrapper\Persistence\CContainer::ConvertBinary()</a></code>: This method will convert a binary string to a
+	format compatible with the current data store. container.</li>
 </ul>
 
 <p>The class does not implement a concrete data store, derived classes must
 implement specific storage actions.</p>
-
-<p>The class inherits from <code><a href="class-MyWrapper.Framework.CStatusDocument.html">MyWrapper\Framework\CStatusDocument</a></code> in order to manage its own
-status and the one of the provided persistent objects.</p>
 
 	</div>
 
@@ -146,13 +143,6 @@ status and the one of the provided persistent objects.</p>
 		</dd>
 		<dd style="padding-left:60px">
 			<img src="resources/inherit.png" alt="Extended by" />
-			<a href="class-MyWrapper.Framework.CStatusDocument.html"><span>MyWrapper\Framework\CStatusDocument</span></a>
-			
-			
-			
-		</dd>
-		<dd style="padding-left:90px">
-			<img src="resources/inherit.png" alt="Extended by" />
 <b><span>MyWrapper\Persistence\CContainer</span></b>			
 			
 			
@@ -176,7 +166,7 @@ status and the one of the provided persistent objects.</p>
 		<b>Namespace:</b> <a href="namespace-MyWrapper.html">MyWrapper</a>\<a href="namespace-MyWrapper.Persistence.html">Persistence</a><br />
 		<b>Package:</b> MyWrapper\Persistence<br />
 
-		<b>Located at</b> <a href="source-class-MyWrapper.Persistence.CContainer.html#43" title="Go to source code">Persistence/CContainer.php</a><br />
+		<b>Located at</b> <a href="source-class-MyWrapper.Persistence.CContainer.html#50" title="Go to source code">Persistence/CContainer.php</a><br />
 	</div>
 
 
@@ -193,7 +183,7 @@ status and the one of the provided persistent objects.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#___construct">#</a>
-		<code><a href="source-class-MyWrapper.Persistence.CContainer.html#93" title="Go to source code">__construct</a>( <span>mixed <var>$theContainer</var> = <span class="php-keyword1">NULL</span> </span> )</code>
+		<code><a href="source-class-MyWrapper.Persistence.CContainer.html#99" title="Go to source code">__construct</a>( <span>mixed <var>$theContainer</var> = <span class="php-keyword1">NULL</span> </span> )</code>
 
 		<div class="description short">
 			
@@ -245,7 +235,7 @@ accessor method.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#___toString">#</a>
-		<code><a href="source-class-MyWrapper.Persistence.CContainer.html#123" title="Go to source code">__toString</a>( )</code>
+		<code><a href="source-class-MyWrapper.Persistence.CContainer.html#129" title="Go to source code">__toString</a>( )</code>
 
 		<div class="description short">
 			
@@ -287,7 +277,7 @@ must be able to return a name.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#_Container">#</a>
-		<code><a href="source-class-MyWrapper.Persistence.CContainer.html#150" title="Go to source code">Container</a>( <span>mixed <var>$theValue</var> = <span class="php-keyword1">NULL</span></span>, <span>boolean <var>$getOld</var> = <span class="php-keyword1">FALSE</span> </span> )</code>
+		<code><a href="source-class-MyWrapper.Persistence.CContainer.html#156" title="Go to source code">Container</a>( <span>mixed <var>$theValue</var> = <span class="php-keyword1">NULL</span></span>, <span>boolean <var>$getOld</var> = <span class="php-keyword1">FALSE</span> </span> )</code>
 
 		<div class="description short">
 			
@@ -318,7 +308,7 @@ the currently set value.</p>
 <p>In derived classes you should overload this method to check if the provided
 container is of the correct type, in this class we accept anything.</p>
 
-<p>This class is considered initialised (<code><a href="class-MyWrapper.Framework.CStatusDocument.html#_">MyWrapper\Framework\CStatusDocument::_IsInited()</a></code>) when this member
+<p>This class is considered initialised (_IsInited()) when this member
 has been set.</p>
 
 
@@ -339,7 +329,6 @@ has been set.</p>
 
 				<h4>Uses</h4>
 				<div class="list">
-						<code><code><a href="class-MyWrapper.Framework.CStatusDocument.html#_">MyWrapper\Framework\CStatusDocument::_IsInited()</a></code></code> <br />
 						<code><code><a href="function-ManageProperty.html">ManageProperty()</a></code></code> <br />
 				</div>
 				<h4>Used by</h4>
@@ -354,7 +343,7 @@ has been set.</p>
 	<tr data-order="ManageObject" id="_ManageObject">
 
 		<td class="attributes"><code>
-			 public 
+			abstract public 
 			mixed
 			
 			</code>
@@ -362,7 +351,7 @@ has been set.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#_ManageObject">#</a>
-		<code><a href="source-class-MyWrapper.Persistence.CContainer.html#213" title="Go to source code">ManageObject</a>( <span>reference <var>&amp; $theObject</var></span>, <span>mixed <var>$theIdentifier</var> = <span class="php-keyword1">NULL</span></span>, <span>bitfield <var>$theModifiers</var> = kFLAG_DEFAULT </span> )</code>
+		<code><a href="source-class-MyWrapper.Persistence.CContainer.html#207" title="Go to source code">ManageObject</a>( <span>reference <var>&amp; $theObject</var></span>, <span>mixed <var>$theIdentifier</var> = <span class="php-keyword1">NULL</span></span>, <span>bitfield <var>$theModifiers</var> = kFLAG_DEFAULT </span> )</code>
 
 		<div class="description short">
 			
@@ -403,12 +392,10 @@ and/or its native unique identifier (kOFFSET_NID).</p>
 			(kOFFSET_NID).</li>
 
 			<li>kFLAG_PERSIST_UPDATE: The provided object will replace an object
-			existing in the container. In this case the method expects the container to have
-			an entry with the same key as the provided identifier, if this is not the case
-			the method should raise an exception. In this case the <tt>$theObject</tt>
-			represents the full object and <tt>$theIdentifier</tt> represents the object
-			unique identifier. In this case the method should return <tt>TRUE</tt> if the
-			object was updated and <tt>FALSE</tt> if the object was not found.</li>
+			existing in the container. In this case the <tt>$theObject</tt> represents the
+			full object and <tt>$theIdentifier</tt> represents the object unique identifier.
+			In this case the method should return <tt>TRUE</tt> if the object was updated
+			and <tt>FALSE</tt> if the object was not found.</li>
 
 			<li>kFLAG_PERSIST_REPLACE: The provided object will be inserted if the
 			identifier is missing or it doesn't match any entry in the container, or it will
@@ -421,12 +408,77 @@ and/or its native unique identifier (kOFFSET_NID).</p>
 			should return the inserted object's native identifier (kOFFSET_NID).</li>
 
 			<li>kFLAG_PERSIST_MODIFY: This option can be used to apply modifications
-			to a subset of the object. In this case, <tt>$theObject</tt> should contain the
-			modification <i>criteria</i> and <tt>$theIdentifier</tt> should contain the
-			object's unique identifier, if the object cannot be located in the container,
-			the method should not fail. In this case the method should set the modified
-			object in the referenced parameter and return <tt>TRUE</tt> if the object was
-			found and return <tt>FALSE</tt> if the object was not found.</li>
+			to a subset of the object. In this case the parameters of this method have the
+			following functions:
+				<ul>
+					<li><tt>$theObject</tt>: This parameter will be an array of elements whose
+					<i>key</i> corresponds to the offset to be considered and the <i>value</i> to
+					the value that the operation will use.</li>
+
+					<li><tt>$theIdentifier</tt>: This parameter keeps its original meaning, it
+					should contain the native identifier of the object to be modified.</li>
+
+					<li><tt>$theModifiers</tt>: Another section of this bitfield will hold the flags
+					that determine what specific modification should be performed:
+						<ul>
+							<li>kFLAG_MODIFY_INCREMENT: This flag indicates an increment or
+							decrement operation, the method will take the value corresponding to the offset
+							in <tt>$theObject</tt> parameter and add it to the object identified by
+							<tt>$theIdentifier</tt> in the container. For instance, to increment by one the
+							'<tt>A</tt>' offset of object <tt>X</tt>, you would pass the <tt>array( 'A'
+							=&gt; 1 )</tt> in <tt>$theObject</tt>, <tt>X</tt> in <tt>$theIdentifier</tt> and
+							set the kFLAG_MODIFY_INCREMENT flag; to decrement by two you would pass
+							<tt>array( 'A' =&gt; -2 )</tt> in <tt>$theObject</tt>, with all other parameters
+							unchanged. If the offset does not exist, it will be initialised with the
+							increment value.</li>
+
+							<li>kFLAG_MODIFY_APPEND: This flag indicates that we want to append a
+							value to an existing array, the method will take the value corresponding to the
+							offset in <tt>$theObject</tt> and append it to the offset in <tt>$theObject</tt>
+							for the object identified by <tt>$theIdentifier</tt> in the container. For
+							instance, to append the value '<tt>A</tt>' to the array in offset
+							'<tt>FIELD</tt>' for object <tt>X</tt>, you would pass the <tt>array( 'FIELD'
+							=&gt; 'A' )</tt> in <tt>$theObject</tt>, <tt>X</tt> in <tt>$theIdentifier</tt>
+							and set the kFLAG_MODIFY_APPEND flag. If the field does not exist, it will be
+							created with an array composed of the provided append value; if the field exists
+							and its value is not an array, an exception should be raised.</li>
+
+							<li>kFLAG_MODIFY_ADDSET: This flag indicates that we want to add a value
+							to a set, this operation is equivalent to kFLAG_MODIFY_APPEND, except
+							that the value will be appended only if it doesn't exist already in the
+							receiving array.</li>
+
+							<li>kFLAG_MODIFY_POP: This flag indicates that we want to remove the
+							first or last element from an array. The method will take the value
+							corresponding to the offset in <tt>$theObject</tt> and check its sign: if
+							positive, the method will remove the first element; if negative it will remove
+							the last. For instance, to remove the first element in the '<tt>FIELD</tt>'
+							offset of object <tt>X</tt>, you would pass the <tt>array( 'FIELD' =&gt; 1
+							)</tt> in <tt>$theObject</tt>, <tt>X</tt> in <tt>$theIdentifier</tt> and set the
+							kFLAG_MODIFY_POP flag in <tt>$theModifiers</tt>; to remove the last element you
+							would pass <tt>array( 'FIELD' =&gt; -1 )</tt> in <tt>$theObject</tt>. If the
+							offset does not exist, the method should not fail; if the offset is not an
+							array, the method should raise an exception.</li>
+
+							<li>kFLAG_MODIFY_PULL: This flag indicates that we want to remove all
+							occurrences of a value from an array. For instance, to remove all occurrances of
+							'<tt>A</tt>' from the array contained in the '<tt>FIELD</tt>' offset of object
+							<tt>X</tt>, you would pass <tt>array( 'FIELD' =&gt; 'A' )</tt> in
+							<tt>$theObject</tt>, <tt>X</tt> in <tt>$theIdentifier</tt> and set the
+							kFLAG_MODIFY_PULL flag in <tt>$theModifiers</tt>. If the field exists and its
+							value is not an array, an exception should be raised.</li>
+
+							<li>kFLAG_MODIFY_MASK <i>off</i>: If none of the above flags are set, it
+							means that the key/value pairs set in <tt>$theObject</tt> represent offsets to
+							be added or removed, depending on the value part of the pair: if the value is
+							<tt>NULL</tt>, it means that you want to remove the offset; any other value will
+							replace the existing offset or be added to the object.</li>
+						</ul>
+					</li>
+				</ul>
+				 In this case the method will return the modified object in the
+				<tt>$theObject</tt> parameter, or raise an exception if the operation
+				fails.</li>
 
 			<li>kFLAG_PERSIST_DELETE: This option assumes you want to remove the
 			object from the container. In this case the <tt>$theObject</tt> represents the
@@ -448,12 +500,12 @@ and/or its native unique identifier (kOFFSET_NID).</p>
 update the provided object with whatever data the operation will generate.</p>
 
 <p>The method will also raise an exception if the object is not yet initialised
-(<code><a href="class-MyWrapper.Framework.CStatusDocument.html#_">MyWrapper\Framework\CStatusDocument::_IsInited()</a></code>), this happens when the object received the native
+(_IsInited()), this happens when the object received the native
 container.</p>
 
 <p>This class is abstract, which means that derived classes must implement the
 specific functionality of specialised data stores, for this reason this method
-will only check if the current object is inited.</p>
+is declared abstract.</p>
 
 
 
@@ -477,10 +529,8 @@ will only check if the current object is inited.</p>
 				<div class="list">
 						kFLAG_PERSIST_INSERT kFLAG_PERSIST_UPDATE kFLAG_PERSIST_MODIFY<br />
 						kFLAG_PERSIST_REPLACE kFLAG_PERSIST_MODIFY kFLAG_PERSIST_DELETE<br />
-				</div>
-				<h4>Uses</h4>
-				<div class="list">
-						<code><code><a href="class-MyWrapper.Framework.CStatusDocument.html#_">MyWrapper\Framework\CStatusDocument::_IsInited()</a></code></code> <br />
+						kFLAG_MODIFY_INCREMENT kFLAG_MODIFY_APPEND kFLAG_MODIFY_ADDSET<br />
+						kFLAG_MODIFY_POP kFLAG_MODIFY_PULL kFLAG_MODIFY_MASK<br />
 				</div>
 
 
@@ -498,7 +548,7 @@ will only check if the current object is inited.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#_ConvertBinary">#</a>
-		<code><a href="source-class-MyWrapper.Persistence.CContainer.html#339" title="Go to source code">ConvertBinary</a>( <span>mixed <var>$theValue</var></span>, <span>boolean <var>$theSense</var> = <span class="php-keyword1">TRUE</span> </span> )</code>
+		<code><a href="source-class-MyWrapper.Persistence.CContainer.html#385" title="Go to source code">ConvertBinary</a>( <span>mixed <var>$theValue</var></span>, <span>boolean <var>$theSense</var> = <span class="php-keyword1">TRUE</span> </span> )</code>
 
 		<div class="description short">
 			
@@ -551,7 +601,7 @@ convert for database, <tt>FALSE</tt> convert back to PHP.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#__Container">#</a>
-		<code><a href="source-class-MyWrapper.Persistence.CContainer.html#380" title="Go to source code">_Container</a>( )</code>
+		<code><a href="source-class-MyWrapper.Persistence.CContainer.html#426" title="Go to source code">_Container</a>( )</code>
 
 		<div class="description short">
 			
@@ -584,26 +634,14 @@ passed by reference.</p>
 	</table>
 
 	<table class="summary inherited">
-	<caption>Methods inherited from <a href="class-MyWrapper.Framework.CStatusDocument.html#methods">MyWrapper\Framework\CStatusDocument</a></caption>
-	<tr>
-		<td><code>
-			<a href="class-MyWrapper.Framework.CStatusDocument.html#_">ManageBitField()</a>, 
-			<a href="class-MyWrapper.Framework.CStatusDocument.html#_">_IsCommitted()</a>, 
-			<a href="class-MyWrapper.Framework.CStatusDocument.html#_">_IsDirty()</a>, 
-			<a href="class-MyWrapper.Framework.CStatusDocument.html#_">_IsEncoded()</a>, 
-			<a href="class-MyWrapper.Framework.CStatusDocument.html#_">_IsInited()</a>, 
-			<a href="class-MyWrapper.Framework.CStatusDocument.html#_">offsetSet()</a>, 
-			<a href="class-MyWrapper.Framework.CStatusDocument.html#_">offsetUnset()</a>
-		</code></td>
-	</tr>
-	</table>
-	<table class="summary inherited">
 	<caption>Methods inherited from <a href="class-MyWrapper.Framework.CDocument.html#methods">MyWrapper\Framework\CDocument</a></caption>
 	<tr>
 		<td><code>
 			<a href="class-MyWrapper.Framework.CDocument.html#_">array_keys()</a>, 
 			<a href="class-MyWrapper.Framework.CDocument.html#_">array_values()</a>, 
-			<a href="class-MyWrapper.Framework.CDocument.html#_">offsetGet()</a>
+			<a href="class-MyWrapper.Framework.CDocument.html#_">offsetGet()</a>, 
+			<a href="class-MyWrapper.Framework.CDocument.html#_">offsetSet()</a>, 
+			<a href="class-MyWrapper.Framework.CDocument.html#_">offsetUnset()</a>
 		</code></td>
 	</tr>
 	</table>
@@ -657,7 +695,7 @@ passed by reference.</p>
 		</code></td>
 
 		<td class="name">
-				<a href="source-class-MyWrapper.Persistence.CContainer.html#70" title="Go to source code"><var>$mContainer</var></a>
+				<a href="source-class-MyWrapper.Persistence.CContainer.html#76" title="Go to source code"><var>$mContainer</var></a>
 		</td>
 		<td class="value"><code><span class="php-keyword1">NULL</span></code></td>
 		<td class="description"><div>
@@ -681,14 +719,6 @@ passed by reference.</p>
 	</tr>
 	</table>
 
-	<table class="summary inherited">
-	<caption>Properties inherited from <a href="class-MyWrapper.Framework.CStatusDocument.html#properties">MyWrapper\Framework\CStatusDocument</a></caption>
-	<tr>
-		<td><code>
-			<a href="class-MyWrapper.Framework.CStatusDocument.html#$mStatus"><var>$mStatus</var></a>
-		</code></td>
-	</tr>
-	</table>
 
 
 </div>
