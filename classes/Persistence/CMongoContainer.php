@@ -20,11 +20,60 @@
  *======================================================================================*/
 
 /**
+ * Base offsets.
+ *
+ * This include file contains the base offset definitions.
+ */
+require_once( 'CPersistentDocument.inc.php' );
+
+/**
+ * Exceptions.
+ *
+ * This include file contains the native exceptions class definitions.
+ */
+use \Exception as Exception;
+
+/**
+ * Array object.
+ *
+ * This include file contains the array object class definitions.
+ */
+use \ArrayObject as ArrayObject;
+
+/**
+ * Mongo.
+ *
+ * This includes the Mongo class definitions.
+ */
+use \Mongo as Mongo;
+
+/**
+ * MongoDB.
+ *
+ * This includes the MongoDB class definitions.
+ */
+use \MongoDB as MongoDB;
+
+/**
+ * Native collection.
+ *
+ * This include file contains the native collection class definitions.
+ */
+use \MongoCollection as MongoCollection;
+
+/**
+ * Binary data.
+ *
+ * This include file contains the binary data class definitions.
+ */
+use \MongoBinData as MongoBinData;
+
+/**
  * Ancestor.
  *
  * This include file contains the parent class definitions.
  */
-use \MyWrapper\Framework\CContainer;
+use \MyWrapper\Framework\CContainer as CContainer;
 
 /**
  * <h3>Mongo persistent objects data store</h3>
@@ -35,7 +84,7 @@ use \MyWrapper\Framework\CContainer;
  *	@package	MyWrapper
  *	@subpackage	Persistence
  */
-class CMongoContainer extends \MyWrapper\Framework\CContainer
+class CMongoContainer extends CContainer
 {
 		
 
@@ -45,6 +94,93 @@ class CMongoContainer extends \MyWrapper\Framework\CContainer
  *																						*
  *======================================================================================*/
 
+
+	 
+	/*===================================================================================
+	 *	__construct																		*
+	 *==================================================================================*/
+
+	/**
+	 * <h4>Instantiate class</h4>
+	 *
+	 * The method accepts the same parameters as the {@link MongoCollection} constructor,
+	 * the first one represents the database object, the second represents the container
+	 * name, if the latter is missing, the method will raise an exception.
+	 *
+	 * The method will also accept a database object in the first parameter, in that case
+	 * the second parameter will be ignored.
+	 *
+	 * The method will first attempt to instantiate the {@link MongoCollection} object, it
+	 * will then store it in the connection data member.
+	 *
+	 * @param mixed					$theConnection		Server or database.
+	 * @param mixed					$theOptions			Database name.
+	 *
+	 * @access public
+	 *
+	 * @uses Connection()
+	 */
+	public function __construct( $theConnection = NULL, $theOptions = NULL )
+	{
+		//
+		// Check server.
+		//
+		if( $theConnection !== NULL )
+		{
+			//
+			// Handle container.
+			//
+			if( $theConnection instanceof self )
+				parent::__construct( $theConnection->Connection() );
+			
+			//
+			// Handle Mongo collection.
+			//
+			elseif( $theConnection instanceof MongoCollection )
+				parent::__construct( $theConnection );
+			
+			//
+			// Handle database.
+			//
+			else
+			{
+				//
+				// Check container name.
+				//
+				if( $theOptions === NULL )
+					throw new Exception
+						( "Missing container name",
+						  kERROR_MISSING );										// !@! ==>
+				
+				//
+				// Handle database class.
+				//
+				if( $theConnection instanceof CMongoDatabase )
+					$theConnection = $theConnection->Connection();
+				
+				//
+				// Check Mongo database class.
+				//
+				if( $theConnection instanceof MongoDB )
+					parent::__construct
+						( $theConnection->selectCollection( (string) $theOptions ) );
+				
+				else
+					throw new Exception
+						( "Invalid database connection type",
+						  kERROR_PARAMETER );									// !@! ==>
+			
+			} // Provided database.
+		
+		} // Provided parameter.
+		
+		//
+		// Call parent constructor, just in case.
+		//
+		else
+			parent::__construct();
+		
+	} // Constructor.
 
 	 
 	/*===================================================================================
@@ -61,14 +197,14 @@ class CMongoContainer extends \MyWrapper\Framework\CContainer
 	 * @access public
 	 * @return string				The container name.
 	 *
-	 * @uses Container()
+	 * @uses Connection()
 	 */
 	public function __toString()
 	{
 		//
 		// Get container.
 		//
-		if( ($container = $this->Container()) !== NULL )
+		if( ($container = $this->Connection()) !== NULL )
 			return $container->getName();											// ==>
 		
 		return '';																	// ==>
@@ -86,11 +222,11 @@ class CMongoContainer extends \MyWrapper\Framework\CContainer
 
 	 
 	/*===================================================================================
-	 *	Container																		*
+	 *	Connection																		*
 	 *==================================================================================*/
 
 	/**
-	 * <h4>Manage persistent container</h4>
+	 * <h4>Manage native connection</h4>
 	 *
 	 * We overload this method to ensure that the provided container is a
 	 * {@link MongoCollection} object.
@@ -103,26 +239,51 @@ class CMongoContainer extends \MyWrapper\Framework\CContainer
 	 *
 	 * @throws Exception
 	 */
-	public function Container( $theValue = NULL, $getOld = FALSE )
+	public function Connection( $theValue = NULL, $getOld = FALSE )
 	{
 		//
-		// Handle retrieve or delete.
+		// Check new value.
 		//
-		if( ($theValue === NULL)
-		 || ($theValue === FALSE) )
-			return parent::Container( $theValue, $getOld );							// ==>
+		if( ($theValue !== NULL)
+		 && ($theValue !== FALSE) )
+		{
+			//
+			// Check value type.
+			//
+			if( ! $theValue instanceof MongoCollection )
+				throw new Exception
+					( "Invalid container type",
+					  kERROR_PARAMETER );										// !@! ==>
+		
+		} // New value.
 		
 		//
-		// Check value.
+		// Set connection.
 		//
-		if( $theValue instanceof \MongoCollection )
-			return parent::Container( $theValue, $getOld );							// ==>
+		$save = parent::Connection( $theValue, $getOld );
 		
-		throw new \Exception
-			( "Invalid container type",
-			  kERROR_PARAMETER );												// !@! ==>
+		//
+		// Handle changes.
+		//
+		if( $theValue !== NULL )
+		{
+			//
+			// Handle new value.
+			//
+			if( $theValue !== FALSE )
+				$this->offsetSet( kOFFSET_NAME, $theValue->getName() );
+			
+			//
+			// Remove value.
+			//
+			else
+				$this->exchangeArray( Array() );
+		
+		} // Made changes.
+		
+		return $save;																// ==>
 
-	} // Container.
+	} // Connection.
 
 		
 
@@ -143,7 +304,7 @@ class CMongoContainer extends \MyWrapper\Framework\CContainer
 	 *
 	 * We implement this method to handle MongoCollection object stores.
 	 *
-	 * For more information see {@link MyWrapper\Framework\CContainer::ManageObject()}.
+	 * For more information see {@link CContainer::ManageObject()}.
 	 *
 	 * <i>Note: the commit operations are performed by default with the <tt>safe</tt>
 	 * option.</i>
@@ -157,7 +318,7 @@ class CMongoContainer extends \MyWrapper\Framework\CContainer
 	 *
 	 * @throws Exception
 	 *
-	 * @uses Container()
+	 * @uses Connection()
 	 *
 	 * @see kFLAG_PERSIST_MASK kFLAG_PERSIST_INSERT kFLAG_PERSIST_UPDATE
 	 * @see kFLAG_PERSIST_REPLACE kFLAG_PERSIST_MODIFY kFLAG_PERSIST_DELETE
@@ -169,9 +330,9 @@ class CMongoContainer extends \MyWrapper\Framework\CContainer
 		//
 		// Get container.
 		//
-		$container = $this->Container();
-		if( ! ($container instanceof \MongoCollection) )
-			throw new \Exception
+		$container = $this->Connection();
+		if( ! ($container instanceof MongoCollection) )
+			throw new Exception
 				( "Missing or invalid native container",
 				  kERROR_STATE );												// !@! ==>
 		
@@ -197,7 +358,7 @@ class CMongoContainer extends \MyWrapper\Framework\CContainer
 				 && $theObject->offsetExists( kOFFSET_NID ) )
 				$criteria = array( kOFFSET_NID => $theObject->offsetGet( kOFFSET_NID ) );
 			else
-				throw new \Exception
+				throw new Exception
 					( "Missing object identifier",
 					  kERROR_STATE );											// !@! ==>
 			
@@ -235,7 +396,7 @@ class CMongoContainer extends \MyWrapper\Framework\CContainer
 				//
 				// Convert.
 				//
-				$object = new \ArrayObject( $theObject );
+				$object = new ArrayObject( $theObject );
 				
 				//
 				// Insert.
@@ -254,7 +415,7 @@ class CMongoContainer extends \MyWrapper\Framework\CContainer
 			// Check status.
 			//
 			if( ! $status[ 'ok' ] )
-				throw new \Exception
+				throw new Exception
 					( $status[ 'errmsg' ],
 					  kERROR_COMMIT );											// !@! ==>
 			
@@ -281,7 +442,7 @@ class CMongoContainer extends \MyWrapper\Framework\CContainer
 			elseif( array_key_exists( kOFFSET_NID, (array) $theObject ) )
 				$criteria = array( kOFFSET_NID => $theObject[ kOFFSET_NID ] );
 			else
-				throw new \Exception
+				throw new Exception
 					( "Missing object identifier",
 					  kERROR_STATE );											// !@! ==>
 			
@@ -294,7 +455,7 @@ class CMongoContainer extends \MyWrapper\Framework\CContainer
 			// Check status.
 			//
 			if( ! $status[ 'ok' ] )
-				throw new \Exception
+				throw new Exception
 					( $status[ 'errmsg' ],
 					  kERROR_COMMIT );											// !@! ==>
 			
@@ -319,7 +480,7 @@ class CMongoContainer extends \MyWrapper\Framework\CContainer
 			if( $theIdentifier !== NULL )
 				$criteria = array( kOFFSET_NID => $theIdentifier );
 			else
-				throw new \Exception
+				throw new Exception
 					( "Missing object identifier",
 					  kERROR_STATE );											// !@! ==>
 			
@@ -512,7 +673,7 @@ class CMongoContainer extends \MyWrapper\Framework\CContainer
 			// Check status.
 			//
 			if( ! $status[ 'ok' ] )
-				throw new \Exception
+				throw new Exception
 					( $status[ 'errmsg' ],
 					  kERROR_COMMIT );											// !@! ==>
 			
@@ -545,7 +706,7 @@ class CMongoContainer extends \MyWrapper\Framework\CContainer
 				//
 				// Convert.
 				//
-				$object = new \ArrayObject( $theObject );
+				$object = new ArrayObject( $theObject );
 				
 				//
 				// Replace.
@@ -564,7 +725,7 @@ class CMongoContainer extends \MyWrapper\Framework\CContainer
 			// Check status.
 			//
 			if( ! $status[ 'ok' ] )
-				throw new \Exception
+				throw new Exception
 					( $status[ 'errmsg' ],
 					  kERROR_COMMIT );											// !@! ==>
 			
@@ -581,7 +742,7 @@ class CMongoContainer extends \MyWrapper\Framework\CContainer
 			// Check identifier.
 			//
 			if( $theIdentifier === NULL )
-				throw new \Exception
+				throw new Exception
 					( "Missing object identifier",
 					  kERROR_MISSING );											// !@! ==>
 			
@@ -610,7 +771,7 @@ class CMongoContainer extends \MyWrapper\Framework\CContainer
 			// Check status.
 			//
 			if( ! $status[ 'ok' ] )
-				throw new \Exception
+				throw new Exception
 					( $status[ 'errmsg' ],
 					  kERROR_COMMIT );											// !@! ==>
 			
@@ -645,7 +806,7 @@ class CMongoContainer extends \MyWrapper\Framework\CContainer
 			elseif( array_key_exists( kOFFSET_NID, (array) $theObject ) )
 				$criteria = array( kOFFSET_NID => $theObject[ kOFFSET_NID ] );
 			else
-				throw new \Exception
+				throw new Exception
 					( "Missing object identifier",
 					  kERROR_STATE );											// !@! ==>
 			
@@ -659,7 +820,7 @@ class CMongoContainer extends \MyWrapper\Framework\CContainer
 			//
 			$status = $container->remove( $criteria, $options );
 			if( ! $status[ 'ok' ] )
-				throw new \Exception
+				throw new Exception
 					( $status[ 'errmsg' ],
 					  kERROR_COMMIT );											// !@! ==>
 			
@@ -667,7 +828,7 @@ class CMongoContainer extends \MyWrapper\Framework\CContainer
 		
 		} // Delete.
 		
-		throw new \Exception
+		throw new Exception
 			( "Invalid operation options",
 			  kERROR_PARAMETER );												// !@! ==>
 		
@@ -705,7 +866,7 @@ class CMongoContainer extends \MyWrapper\Framework\CContainer
 	static function ConvertBinary( $theValue, $theSense = TRUE )
 	{
 		if( $theSense )
-			return new \MongoBinData( $theValue );									// ==>
+			return new MongoBinData( $theValue );									// ==>
 		
 		return $theValue->bin;														// ==>
 	

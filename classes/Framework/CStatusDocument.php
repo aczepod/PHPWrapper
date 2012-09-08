@@ -27,11 +27,18 @@
 require_once( kPATH_MYWRAPPER_LIBRARY_DEFINE."/Flags.inc.php" );
 
 /**
+ * Accessors.
+ *
+ * This include file contains all accessor function definitions.
+ */
+require_once( kPATH_MYWRAPPER_LIBRARY_FUNCTION."/accessors.php" );
+
+/**
  * Ancestor.
  *
  * This includes the ancestor class definitions.
  */
-use \MyWrapper\Framework\CDocument;
+use \MyWrapper\Framework\CDocument as CDocument;
 
 /**
  * <h3>Document with status object</h3>
@@ -57,7 +64,7 @@ use \MyWrapper\Framework\CDocument;
  *	@package	MyWrapper
  *	@subpackage	Framework
  */
-class CStatusDocument extends \MyWrapper\Framework\CDocument
+class CStatusDocument extends CDocument
 {
 	/**
 	 * <b>Object status</b>
@@ -170,77 +177,6 @@ class CStatusDocument extends \MyWrapper\Framework\CDocument
 
 /*=======================================================================================
  *																						*
- *							STATIC MEMBER ACCESSOR INTERFACE							*
- *																						*
- *======================================================================================*/
-
-
-	 
-	/*===================================================================================
-	 *	ManageBitField																	*
-	 *==================================================================================*/
-
-	/**
-	 * <h4>Manage bit-field property</h4>
-	 *
-	 * This method can be used to manage a bitfield property, it accepts the following
-	 * parameters:
-	 *
-	 * <ul>
-	 *	<li><tt>&$theField</tt>: Reference to the bit-field property.
-	 *	<li><tt>$theMask</tt>: Bit-field mask.
-	 *	<li><tt>$theState</tt>: State or operator:
-	 *	 <ul>
-	 *		<li><tt>NULL</tt>: Return the masked bitfield.
-	 *		<li><tt>FALSE</tt>: Turn <i>off</i> the masked bits.
-	 *		<li><i>other</i>: Turn <i>on</i> the masked bits.
-	 *	 </ul>
-	 * </ul>
-	 *
-	 * In all cases the method will return the status <i>after</i> it was eventually
-	 * modified.
-	 *
-	 * @param reference			   &$theField			Bit-field reference.
-	 * @param bitfield				$theMask			Bit-field mask.
-	 * @param mixed					$theState			Value or operator.
-	 *
-	 * @return bitfield				Current masked status.
-	 *
-	 * @see kFLAG_DEFAULT_MASK
-	 */
-	static function ManageBitField( &$theField, $theMask, $theState = NULL )
-	{
-		//
-		// Normalise mask (mask sign bit).
-		//
-		$theMask &= kFLAG_DEFAULT_MASK;
-		
-		//
-		// Modify status.
-		//
-		if( $theState !== NULL )
-		{
-			//
-			// Set mask.
-			//
-			if( (boolean) $theState )
-				$theField |= $theMask;
-			
-			//
-			// Reset mask.
-			//
-			else
-				$theField &= (~ $theMask);
-		}
-		
-		return $theField & $theMask;												// ==>
-	
-	} // ManageBitField
-
-		
-
-/*=======================================================================================
- *																						*
  *							PROTECTED STATUS MANAGEMENT INTERFACE						*
  *																						*
  *======================================================================================*/
@@ -288,9 +224,9 @@ class CStatusDocument extends \MyWrapper\Framework\CDocument
 	 */
 	protected function _IsInited( $theState = NULL )
 	{
-		return self::ManageBitField( $this->mStatus,
-									 kFLAG_STATE_INITED,
-									 $theState );									// ==>
+		return ManageBitField( $this->mStatus,
+							   kFLAG_STATE_INITED,
+							   $theState );											// ==>
 	
 	} // _IsInited.
 
@@ -333,9 +269,9 @@ class CStatusDocument extends \MyWrapper\Framework\CDocument
 	 */
 	protected function _IsDirty( $theState = NULL )
 	{
-		return self::ManageBitField( $this->mStatus,
-									 kFLAG_STATE_DIRTY,
-									 $theState );									// ==>
+		return ManageBitField( $this->mStatus,
+							   kFLAG_STATE_DIRTY,
+							   $theState );											// ==>
 	
 	} // _IsDirty.
 
@@ -376,9 +312,9 @@ class CStatusDocument extends \MyWrapper\Framework\CDocument
 	 */
 	protected function _IsCommitted( $theState = NULL )
 	{
-		return self::ManageBitField( $this->mStatus,
-									 kFLAG_STATE_COMMITTED,
-									 $theState );									// ==>
+		return ManageBitField( $this->mStatus,
+							   kFLAG_STATE_COMMITTED,
+							   $theState );											// ==>
 	
 	} // _IsCommitted.
 
@@ -419,9 +355,9 @@ class CStatusDocument extends \MyWrapper\Framework\CDocument
 	 */
 	protected function _IsEncoded( $theState = NULL )
 	{
-		return self::ManageBitField( $this->mStatus,
-									 kFLAG_STATE_ENCODED,
-									 $theState );									// ==>
+		return ManageBitField( $this->mStatus,
+							   kFLAG_STATE_ENCODED,
+							   $theState );											// ==>
 	
 	} // _IsEncoded.
 		

@@ -7,7 +7,7 @@
 	<title>Class MyWrapper\Persistence\CPersistentObject | MyWrapper Reference Documentation</title>
 
 	<script type="text/javascript" src="resources/combined.js?417553483"></script>
-	<script type="text/javascript" src="elementlist.js?1517813540"></script>
+	<script type="text/javascript" src="elementlist.js?1430247748"></script>
 	<link rel="stylesheet" type="text/css" media="all" href="resources/style.css?1567499433" />
 
 </head>
@@ -44,6 +44,8 @@
 			<h3>Classes</h3>
 			<ul>
 				<li><a href="class-MyWrapper.Persistence.CMongoContainer.html">CMongoContainer</a></li>
+				<li><a href="class-MyWrapper.Persistence.CMongoDatabase.html">CMongoDatabase</a></li>
+				<li><a href="class-MyWrapper.Persistence.CMongoServer.html">CMongoServer</a></li>
 				<li><a href="class-MyWrapper.Persistence.CPersistentDocument.html">CPersistentDocument</a></li>
 				<li class="active"><a href="class-MyWrapper.Persistence.CPersistentObject.html">CPersistentObject</a></li>
 			</ul>
@@ -202,7 +204,7 @@ offsets:</p>
 		<b>Namespace:</b> <a href="namespace-MyWrapper.html">MyWrapper</a>\<a href="namespace-MyWrapper.Persistence.html">Persistence</a><br />
 		<b>Package:</b> MyWrapper\Persistence<br />
 
-		<b>Located at</b> <a href="source-class-MyWrapper.Persistence.CPersistentObject.html#43" title="Go to source code">Persistence/CPersistentObject.php</a><br />
+		<b>Located at</b> <a href="source-class-MyWrapper.Persistence.CPersistentObject.html#50" title="Go to source code">Persistence/CPersistentObject.php</a><br />
 	</div>
 
 
@@ -219,7 +221,7 @@ offsets:</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#_NID">#</a>
-		<code><a href="source-class-MyWrapper.Persistence.CPersistentObject.html#103" title="Go to source code">NID</a>( <span>mixed <var>$theValue</var> = <span class="php-keyword1">NULL</span></span>, <span>boolean <var>$getOld</var> = <span class="php-keyword1">FALSE</span> </span> )</code>
+		<code><a href="source-class-MyWrapper.Persistence.CPersistentObject.html#110" title="Go to source code">NID</a>( <span>mixed <var>$theValue</var> = <span class="php-keyword1">NULL</span></span>, <span>boolean <var>$getOld</var> = <span class="php-keyword1">FALSE</span> </span> )</code>
 
 		<div class="description short">
 			
@@ -293,7 +295,7 @@ will be locked and an exception will be raised.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#_GID">#</a>
-		<code><a href="source-class-MyWrapper.Persistence.CPersistentObject.html#146" title="Go to source code">GID</a>( <span>mixed <var>$theValue</var> = <span class="php-keyword1">NULL</span></span>, <span>boolean <var>$getOld</var> = <span class="php-keyword1">FALSE</span> </span> )</code>
+		<code><a href="source-class-MyWrapper.Persistence.CPersistentObject.html#153" title="Go to source code">GID</a>( <span>mixed <var>$theValue</var> = <span class="php-keyword1">NULL</span></span>, <span>boolean <var>$getOld</var> = <span class="php-keyword1">FALSE</span> </span> )</code>
 
 		<div class="description short">
 			
@@ -369,7 +371,7 @@ will be locked and an exception will be raised.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#_CLassName">#</a>
-		<code><a href="source-class-MyWrapper.Persistence.CPersistentObject.html#191" title="Go to source code">CLassName</a>( <span>mixed <var>$theValue</var> = <span class="php-keyword1">NULL</span></span>, <span>boolean <var>$getOld</var> = <span class="php-keyword1">FALSE</span> </span> )</code>
+		<code><a href="source-class-MyWrapper.Persistence.CPersistentObject.html#198" title="Go to source code">CLassName</a>( <span>mixed <var>$theValue</var> = <span class="php-keyword1">NULL</span></span>, <span>boolean <var>$getOld</var> = <span class="php-keyword1">FALSE</span> </span> )</code>
 
 		<div class="description short">
 			
@@ -444,7 +446,7 @@ will be locked and in many other classes this offset may not be writable.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#_NewObject">#</a>
-		<code><a href="source-class-MyWrapper.Persistence.CPersistentObject.html#245" title="Go to source code">NewObject</a>( <span><code><a href="class-MyWrapper.Framework.CContainer.html">MyWrapper\Framework\CContainer</a></code> <var>$theContainer</var></span>, <span>mixed <var>$theIdentifier</var></span> )</code>
+		<code><a href="source-class-MyWrapper.Persistence.CPersistentObject.html#252" title="Go to source code">NewObject</a>( <span><code><a href="class-MyWrapper.Framework.CContainer.html">MyWrapper\Framework\CContainer</a></code> <var>$theContainer</var></span>, <span>mixed <var>$theIdentifier</var></span> )</code>
 
 		<div class="description short">
 			
@@ -463,7 +465,8 @@ the offset is missing, the method will instantiate this class.</p>
 <p>The method expects two parameters:</p>
 
 <ul>
-	<li><tt>$theContainer</tt>: A concrete instance of the <code><a href="class-MyWrapper.Framework.CContainer.html">MyWrapper\Framework\CContainer</a></code> class.</li>
+	<li><tt>$theContainer</tt>: A concrete instance of the <code><a href="class-MyWrapper.Framework.CContainer.html">MyWrapper\Framework\CContainer</a></code>
+	class.</li>
 
 	<li><tt>$theIdentifier</tt>: The key of the object in the container, by default
 	the kOFFSET_NID offset.</li>
@@ -505,7 +508,7 @@ the offset is missing, the method will instantiate this class.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#__id">#</a>
-		<code><a href="source-class-MyWrapper.Persistence.CPersistentObject.html#333" title="Go to source code">_id</a>( <span>string <var>$theIdentifier</var> = <span class="php-keyword1">NULL</span></span>, <span><code><a href="class-MyWrapper.Framework.CContainer.html">MyWrapper\Framework\CContainer</a></code> <var>$theContainer</var> = <span class="php-keyword1">NULL</span> </span> )</code>
+		<code><a href="source-class-MyWrapper.Persistence.CPersistentObject.html#339" title="Go to source code">_id</a>( <span>string <var>$theIdentifier</var> = <span class="php-keyword1">NULL</span></span>, <span><code><a href="class-MyWrapper.Framework.CContainer.html">MyWrapper\Framework\CContainer</a></code> <var>$theContainer</var> = <span class="php-keyword1">NULL</span> </span> )</code>
 
 		<div class="description short">
 			
@@ -570,7 +573,7 @@ global identifier.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#__index">#</a>
-		<code><a href="source-class-MyWrapper.Persistence.CPersistentObject.html#379" title="Go to source code">_index</a>( <span><code><a href="class-MyWrapper.Framework.CContainer.html">MyWrapper\Framework\CContainer</a></code> <var>$theContainer</var></span>, <span>bitfield <var>$theModifiers</var></span> )</code>
+		<code><a href="source-class-MyWrapper.Persistence.CPersistentObject.html#385" title="Go to source code">_index</a>( <span><code><a href="class-MyWrapper.Framework.CContainer.html">MyWrapper\Framework\CContainer</a></code> <var>$theContainer</var></span>, <span>bitfield <var>$theModifiers</var></span> )</code>
 
 		<div class="description short">
 			
@@ -647,7 +650,7 @@ identifier by returning <tt>NULL</tt>.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#__Preset">#</a>
-		<code><a href="source-class-MyWrapper.Persistence.CPersistentObject.html#434" title="Go to source code">_Preset</a>( <span>reference <var>&amp; $theOffset</var></span>, <span>reference <var>&amp; $theValue</var></span> )</code>
+		<code><a href="source-class-MyWrapper.Persistence.CPersistentObject.html#440" title="Go to source code">_Preset</a>( <span>reference <var>&amp; $theOffset</var></span>, <span>reference <var>&amp; $theValue</var></span> )</code>
 
 		<div class="description short">
 			
@@ -705,7 +708,7 @@ identifier.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#__Preunset">#</a>
-		<code><a href="source-class-MyWrapper.Persistence.CPersistentObject.html#476" title="Go to source code">_Preunset</a>( <span>reference <var>&amp; $theOffset</var></span> )</code>
+		<code><a href="source-class-MyWrapper.Persistence.CPersistentObject.html#482" title="Go to source code">_Preunset</a>( <span>reference <var>&amp; $theOffset</var></span> )</code>
 
 		<div class="description short">
 			
@@ -761,7 +764,7 @@ identifier.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#__Precommit">#</a>
-		<code><a href="source-class-MyWrapper.Persistence.CPersistentObject.html#526" title="Go to source code">_Precommit</a>( <span><code><a href="class-MyWrapper.Framework.CContainer.html">MyWrapper\Framework\CContainer</a></code> <var>$theContainer</var></span>, <span>bitfield <var>$theModifiers</var> = kFLAG_DEFAULT </span> )</code>
+		<code><a href="source-class-MyWrapper.Persistence.CPersistentObject.html#532" title="Go to source code">_Precommit</a>( <span><code><a href="class-MyWrapper.Framework.CContainer.html">MyWrapper\Framework\CContainer</a></code> <var>$theContainer</var></span>, <span>bitfield <var>$theModifiers</var> = kFLAG_DEFAULT </span> )</code>
 
 		<div class="description short">
 			
@@ -847,7 +850,6 @@ identifier.</p>
 	<caption>Methods inherited from <a href="class-MyWrapper.Framework.CStatusDocument.html#methods">MyWrapper\Framework\CStatusDocument</a></caption>
 	<tr>
 		<td><code>
-			<a href="class-MyWrapper.Framework.CStatusDocument.html#_">ManageBitField()</a>, 
 			<a href="class-MyWrapper.Framework.CStatusDocument.html#_">_IsCommitted()</a>, 
 			<a href="class-MyWrapper.Framework.CStatusDocument.html#_">_IsDirty()</a>, 
 			<a href="class-MyWrapper.Framework.CStatusDocument.html#_">_IsEncoded()</a>, 

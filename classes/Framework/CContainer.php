@@ -20,31 +20,21 @@
  *======================================================================================*/
 
 /**
- * Flags.
- *
- * This include file contains all status flag definitions.
- */
-require_once( kPATH_MYWRAPPER_LIBRARY_DEFINE."/Flags.inc.php" );
-
-/**
- * Accessors.
- *
- * This include file contains all accessor function definitions.
- */
-require_once( kPATH_MYWRAPPER_LIBRARY_FUNCTION."/accessors.php" );
-
-/**
  * Ancestor.
  *
  * This includes the ancestor class definitions.
  */
-use \MyWrapper\Framework\CDocument;
+use \MyWrapper\Framework\CConnection as CConnection;
 
 /**
  * <h3>Persistent objects data store ancestor</h3>
  *
  * This <i>abstract</i> class is the ancestor of all container classes in this library, it
  * implements the interface and workflow that all concrete derived classes should implement.
+ *
+ * A container object serves the purpose of storing and retrieving objects, in the same way
+ * as a database table. The object holds a data member that represents a native container
+ * from a database.
  *
  * The public interface declares the following main operations:
  *
@@ -62,132 +52,15 @@ use \MyWrapper\Framework\CDocument;
  * specific storage actions.
  *
  *	@package	MyWrapper
- *	@subpackage	Persistence
+ *	@subpackage	Framework
  */
-abstract class CContainer extends \MyWrapper\Framework\CDocument
+abstract class CContainer extends CConnection
 {
-	/**
-	 * Persistent data store.
-	 *
-	 * This data member holds the native persistent store.
-	 *
-	 * @var mixed
-	 */
-	 protected $mContainer = NULL;
-
 		
 
 /*=======================================================================================
  *																						*
- *											MAGIC										*
- *																						*
- *======================================================================================*/
-
-
-	 
-	/*===================================================================================
-	 *	__construct																		*
-	 *==================================================================================*/
-
-	/**
-	 * <h4>Instantiate class</h4>
-	 *
-	 * You instantiate the class with a native data store, the method expects a single
-	 * parameter that will be handled specifically by specialised derived classes.
-	 *
-	 * Derived classes should overload this method if a default value is possible; to check
-	 * for specific container types they should rather overload the member accessor method.
-	 *
-	 * @param mixed					$theContainer		Native object store.
-	 *
-	 * @access public
-	 *
-	 * @uses Container()
-	 */
-	public function __construct( $theContainer = NULL )
-	{
-		//
-		// Handle native container.
-		//
-		if( $theContainer !== NULL )
-			$this->Container( $theContainer );
-		
-	} // Constructor.
-
-	 
-	/*===================================================================================
-	 *	__toString																		*
-	 *==================================================================================*/
-
-	/**
-	 * <h4>Return container name</h4>
-	 *
-	 * This method should return the current container's name.
-	 *
-	 * All derived concrete classes should implement this method, all containers must be
-	 * able to return a name.
-	 *
-	 * @access public
-	 * @return string				The container name.
-	 */
-	abstract public function __toString();
-
-		
-
-/*=======================================================================================
- *																						*
- *								PUBLIC MEMBER INTERFACE									*
- *																						*
- *======================================================================================*/
-
-
-	 
-	/*===================================================================================
-	 *	Container																		*
-	 *==================================================================================*/
-
-	/**
-	 * <h4>Manage persistent container</h4>
-	 *
-	 * This method can be used to manage the persistent container, it accepts a single
-	 * parameter which represents either the container or the requested operation,
-	 * depending on its value:
-	 *
-	 * <ul>
-	 *	<li><tt>NULL</tt>: Return the current value.
-	 *	<li><tt>FALSE</tt>: Delete the current value.
-	 *	<li><i>other</i>: Set the value with the provided parameter.
-	 * </ul>
-	 *
-	 * The second parameter is a boolean which if <tt>TRUE</tt> will return the <i>old</i>
-	 * value when replacing containers; if <tt>FALSE</tt>, it will return the currently set
-	 * value.
-	 *
-	 * In derived classes you should overload this method to check if the provided container
-	 * is of the correct type, in this class we accept anything.
-	 *
-	 * This class is considered initialised ({@link _IsInited()}) when this member has been
-	 * set.
-	 *
-	 * @param mixed					$theValue			Persistent container or operation.
-	 * @param boolean				$getOld				<tt>TRUE</tt> get old value.
-	 *
-	 * @access public
-	 * @return mixed				<i>New</i> or <i>old</i> native container.
-	 *
-	 * @uses ManageProperty()
-	 */
-	public function Container( $theValue = NULL, $getOld = FALSE )
-	{
-		return ManageProperty( $this->mContainer, $theValue, $getOld );				// ==>
-
-	} // Container.
-
-		
-
-/*=======================================================================================
- *																						*
- *								PUBLIC PERSISTENCE INTERFACE							*
+ *								PUBLIC CONNECTION INTERFACE								*
  *																						*
  *======================================================================================*/
 
@@ -401,32 +274,6 @@ abstract class CContainer extends \MyWrapper\Framework\CDocument
 		return hex2bin( $theValue );												// ==>
 	
 	} // ConvertBinary.
-
-		
-
-/*=======================================================================================
- *																						*
- *								PROTECTED MEMBER INTERFACE								*
- *																						*
- *======================================================================================*/
-
-
-	 
-	/*===================================================================================
-	 *	&_Container																		*
-	 *==================================================================================*/
-
-	/**
-	 * <h4>Get container reference</h4>
-	 *
-	 * This method can be used to retrieve a reference to the native container member, this
-	 * can be useful when the native {@link Container()} is not an object passed by
-	 * reference.
-	 *
-	 * @access protected
-	 * @return mixed
-	 */
-	protected function &_Container()						{	return $this->mContainer;	}
 
 	 
 

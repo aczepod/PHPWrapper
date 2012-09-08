@@ -20,25 +20,32 @@
  *======================================================================================*/
 
 /**
+ * Local definitions.
+ *
+ * This includes the class local definitions.
+ */
+require_once( 'CPersistentObject.inc.php' );
+
+/**
+ * Exceptions.
+ *
+ * This include file contains the native exceptions class definitions.
+ */
+use \Exception as Exception;
+
+/**
  * Container.
  *
  * This includes the containers ancestor class definitions.
  */
-use \MyWrapper\Framework\CContainer;
+use \MyWrapper\Framework\CContainer as CContainer;
 
 /**
  * Ancestor.
  *
  * This includes the ancestor class definitions.
  */
-use \MyWrapper\Persistence\CPersistentDocument;
-
-/**
- * Local definitions.
- *
- * This includes the class local definitions.
- */
-require_once( 'CPersistentObject.inc.php' );
+use \MyWrapper\Persistence\CPersistentDocument as CPersistentDocument;
 
 /**
  * <h3>Persistent object ancestor</h3>
@@ -84,7 +91,7 @@ require_once( 'CPersistentObject.inc.php' );
  *	@package	MyWrapper
  *	@subpackage	Persistence
  */
-class CPersistentObject extends \MyWrapper\Persistence\CPersistentDocument
+class CPersistentObject extends CPersistentDocument
 {
 		
 
@@ -252,8 +259,7 @@ class CPersistentObject extends \MyWrapper\Persistence\CPersistentDocument
 	 * The method expects two parameters:
 	 *
 	 * <ul>
-	 *	<li><tt>$theContainer</tt>: A concrete instance of the
-	 *		{@link  MyWrapper\Framework\CContainer} class.
+	 *	<li><tt>$theContainer</tt>: A concrete instance of the {@link CContainer} class.
 	 *	<li><tt>$theIdentifier</tt>: The key of the object in the container, by default the
 	 *		{@link kOFFSET_NID} offset.
 	 * </ul>
@@ -443,7 +449,7 @@ class CPersistentObject extends \MyWrapper\Persistence\CPersistentDocument
 	 *
 	 * @access protected
 	 *
-	 * @throws \Exception
+	 * @throws Exception
 	 *
 	 * @uses _IsCommitted()
 	 *
@@ -457,7 +463,7 @@ class CPersistentObject extends \MyWrapper\Persistence\CPersistentDocument
 		$offsets = array( kOFFSET_NID, kOFFSET_GID );
 		if( $this->_IsCommitted()
 		 && in_array( $theOffset, $offsets ) )
-			throw new \Exception
+			throw new Exception
 				( "The object is committed, you cannot modify the [$theOffset] offset",
 				  kERROR_LOCKED );												// !@! ==>
 		
@@ -484,7 +490,7 @@ class CPersistentObject extends \MyWrapper\Persistence\CPersistentDocument
 	 *
 	 * @access protected
 	 *
-	 * @throws \Exception
+	 * @throws Exception
 	 *
 	 * @uses _IsCommitted()
 	 *
@@ -498,7 +504,7 @@ class CPersistentObject extends \MyWrapper\Persistence\CPersistentDocument
 		$offsets = array( kOFFSET_NID, kOFFSET_GID );
 		if( $this->_IsCommitted()
 		 && in_array( $theOffset, $offsets ) )
-			throw new \Exception
+			throw new Exception
 				( "The object is committed, you cannot modify the [$theOffset] offset",
 				  kERROR_LOCKED );												// !@! ==>
 		
@@ -546,8 +552,6 @@ class CPersistentObject extends \MyWrapper\Persistence\CPersistentDocument
 	 * @param bitfield				$theModifiers		Commit options.
 	 *
 	 * @access protected
-	 *
-	 * @throws \Exception
 	 *
 	 * @uses _id()
 	 * @uses _index()

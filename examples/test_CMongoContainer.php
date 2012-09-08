@@ -25,9 +25,15 @@
 require_once( '/Library/WebServer/Library/PHPWrapper/includes.inc.php' );
 
 //
+// Auxiliary includes.
+//
+use \MyWrapper\Persistence\CMongoServer as CMongoServer;
+use \MyWrapper\Persistence\CMongoDatabase as CMongoDatabase;
+
+//
 // Class includes.
 //
-use \MyWrapper\Persistence\CMongoContainer;
+use \MyWrapper\Persistence\CMongoContainer as CMongoContainer;
 
 
 /*=======================================================================================
@@ -129,15 +135,15 @@ try
 	// Create container.
 	//
 	echo( '<h4>Create test container</h4>' );
-	echo( '$mongo = New Mongo();<br />' );
-	$mongo = New Mongo();
-	echo( '$db = $mongo->selectDB( "TEST" );<br />' );
-	$db = $mongo->selectDB( "TEST" );
-	$db->drop();
-	echo( '$collection = $db->selectCollection( "CMongoContainer" );<br />' );
-	$collection = $db->selectCollection( "CMongoContainer" );
-	echo( '$container = new CMongoContainer( $collection );<br />' );
-	$container = new CMongoContainer( $collection );
+	echo( '$mongo = New CMongoServer();<br />' );
+	$mongo = New CMongoServer();
+	echo( '$db = $mongo->Database( "TEST" );<br />' );
+	$db = $mongo->Database( "TEST" );
+	$db->Connection()->drop();
+	echo( '$container = new CMongoContainer( $db, "CMongoContainer" );<br />' );
+	$container = new CMongoContainer( $db, "CMongoContainer" );
+	echo( '$collection = $container->Connection();<br />' );
+	$collection = $container->Connection();
 	echo( '<hr />' );
 	echo( '<hr />' );
 	
@@ -182,8 +188,8 @@ try
 	// Remove container.
 	//
 	echo( '<h4>Remove container</h4>' );
-	echo( '<h5>$test->Container( FALSE );</h5>' );
-	$test->Container( FALSE );
+	echo( '<h5>$test->Connection( FALSE );</h5>' );
+	$test->Connection( FALSE );
 	echo( '<pre>' ); print_r( $test ); echo( '</pre>' );
 	echo( '<hr />' );
 	echo( '<hr />' );

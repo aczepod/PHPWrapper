@@ -20,25 +20,32 @@
  *======================================================================================*/
 
 /**
- * Ancestor.
+ * Local definitions.
  *
- * This includes the ancestor class definitions.
+ * This includes the class local definitions.
  */
-use \MyWrapper\Framework\CTerm;
+require_once( 'COntologyTerm.inc.php' );
+
+/**
+ * Exceptions.
+ *
+ * This include file contains the native exceptions class definitions.
+ */
+use \Exception as Exception;
 
 /**
  * Containers.
  *
  * This includes the container class definitions.
  */
-use \MyWrapper\Framework\CContainer;
+use \MyWrapper\Framework\CContainer as CContainer;
 
 /**
- * Local definitions.
+ * Ancestor.
  *
- * This includes the class local definitions.
+ * This includes the ancestor class definitions.
  */
-require_once( 'COntologyTerm.inc.php' );
+use \MyWrapper\Framework\CTerm as CTerm;
 
 /**
  * <h3>Ontology term object ancestor</h3>
@@ -69,7 +76,7 @@ require_once( 'COntologyTerm.inc.php' );
  *	@package	MyWrapper
  *	@subpackage	Ontology
  */
-class COntologyTerm extends \MyWrapper\Framework\CTerm
+class COntologyTerm extends CTerm
 {
 		
 
@@ -197,7 +204,7 @@ class COntologyTerm extends \MyWrapper\Framework\CTerm
 	 *
 	 * @access protected
 	 *
-	 * @throws \Exception
+	 * @throws Exception
 	 *
 	 * @see kOFFSET_NID kOFFSET_GID kOFFSET_LID
 	 */
@@ -208,7 +215,7 @@ class COntologyTerm extends \MyWrapper\Framework\CTerm
 		//
 		$offsets = array( kOFFSET_REFS_NAMESPACE, kOFFSET_REFS_NODE, kOFFSET_REFS_TAG );
 		if( in_array( $theOffset, $offsets ) )
-			throw new \Exception
+			throw new Exception
 				( "The [$theOffset] offset cannot be modified",
 				  kERROR_LOCKED );												// !@! ==>
 		
@@ -235,6 +242,8 @@ class COntologyTerm extends \MyWrapper\Framework\CTerm
 	 *
 	 * @access protected
 	 *
+	 * @throws Exception
+	 *
 	 * @uses _IsDirty()
 	 */
 	protected function _Preunset( &$theOffset )
@@ -244,7 +253,7 @@ class COntologyTerm extends \MyWrapper\Framework\CTerm
 		//
 		$offsets = array( kOFFSET_REFS_NAMESPACE, kOFFSET_REFS_NODE, kOFFSET_REFS_TAG );
 		if( in_array( $theOffset, $offsets ) )
-			throw new \Exception
+			throw new Exception
 				( "The [$theOffset] offset cannot be modified",
 				  kERROR_LOCKED );												// !@! ==>
 		

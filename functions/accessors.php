@@ -99,6 +99,68 @@ require_once( kPATH_MYWRAPPER_LIBRARY_DEFINE."/Errors.inc.php" );
 	
 	} // ManageProperty.
 
+	 
+	/*===================================================================================
+	 *	ManageBitField																	*
+	 *==================================================================================*/
+
+	/**
+	 * <h4>Manage a bit-field property</h4>
+	 *
+	 * This method can be used to manage a bitfield property, it accepts the following
+	 * parameters:
+	 *
+	 * <ul>
+	 *	<li><tt>&$theField</tt>: Reference to the bit-field property.
+	 *	<li><tt>$theMask</tt>: Bit-field mask.
+	 *	<li><tt>$theState</tt>: State or operator:
+	 *	 <ul>
+	 *		<li><tt>NULL</tt>: Return the masked bitfield.
+	 *		<li><tt>FALSE</tt>: Turn <i>off</i> the masked bits.
+	 *		<li><i>other</i>: Turn <i>on</i> the masked bits.
+	 *	 </ul>
+	 * </ul>
+	 *
+	 * In all cases the method will return the status <i>after</i> it was eventually
+	 * modified.
+	 *
+	 * @param reference			   &$theField			Bit-field reference.
+	 * @param bitfield				$theMask			Bit-field mask.
+	 * @param mixed					$theState			Value or operator.
+	 *
+	 * @return bitfield				Current masked status.
+	 *
+	 * @see kFLAG_DEFAULT_MASK
+	 */
+	function ManageBitField( &$theField, $theMask, $theState = NULL )
+	{
+		//
+		// Normalise mask (mask sign bit).
+		//
+		$theMask &= kFLAG_DEFAULT_MASK;
+		
+		//
+		// Modify status.
+		//
+		if( $theState !== NULL )
+		{
+			//
+			// Set mask.
+			//
+			if( (boolean) $theState )
+				$theField |= $theMask;
+			
+			//
+			// Reset mask.
+			//
+			else
+				$theField &= (~ $theMask);
+		}
+		
+		return $theField & $theMask;												// ==>
+	
+	} // ManageBitField
+
 
 
 /*=======================================================================================

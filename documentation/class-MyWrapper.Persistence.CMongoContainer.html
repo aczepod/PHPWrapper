@@ -7,7 +7,7 @@
 	<title>Class MyWrapper\Persistence\CMongoContainer | MyWrapper Reference Documentation</title>
 
 	<script type="text/javascript" src="resources/combined.js?417553483"></script>
-	<script type="text/javascript" src="elementlist.js?1517813540"></script>
+	<script type="text/javascript" src="elementlist.js?1430247748"></script>
 	<link rel="stylesheet" type="text/css" media="all" href="resources/style.css?1567499433" />
 
 </head>
@@ -44,6 +44,8 @@
 			<h3>Classes</h3>
 			<ul>
 				<li class="active"><a href="class-MyWrapper.Persistence.CMongoContainer.html">CMongoContainer</a></li>
+				<li><a href="class-MyWrapper.Persistence.CMongoDatabase.html">CMongoDatabase</a></li>
+				<li><a href="class-MyWrapper.Persistence.CMongoServer.html">CMongoServer</a></li>
 				<li><a href="class-MyWrapper.Persistence.CPersistentDocument.html">CPersistentDocument</a></li>
 				<li><a href="class-MyWrapper.Persistence.CPersistentObject.html">CPersistentObject</a></li>
 			</ul>
@@ -125,12 +127,26 @@
 		</dd>
 		<dd style="padding-left:60px">
 			<img src="resources/inherit.png" alt="Extended by" />
-			<a href="class-MyWrapper.Framework.CContainer.html"><span>MyWrapper\Framework\CContainer</span></a>
+			<a href="class-MyWrapper.Framework.CStatusDocument.html"><span>MyWrapper\Framework\CStatusDocument</span></a>
 			
 			
 			
 		</dd>
 		<dd style="padding-left:90px">
+			<img src="resources/inherit.png" alt="Extended by" />
+			<a href="class-MyWrapper.Framework.CConnection.html"><span>MyWrapper\Framework\CConnection</span></a>
+			
+			
+			
+		</dd>
+		<dd style="padding-left:120px">
+			<img src="resources/inherit.png" alt="Extended by" />
+			<a href="class-MyWrapper.Framework.CContainer.html"><span>MyWrapper\Framework\CContainer</span></a>
+			
+			
+			
+		</dd>
+		<dd style="padding-left:150px">
 			<img src="resources/inherit.png" alt="Extended by" />
 <b><span>MyWrapper\Persistence\CMongoContainer</span></b>			
 			
@@ -151,12 +167,69 @@
 		<b>Namespace:</b> <a href="namespace-MyWrapper.html">MyWrapper</a>\<a href="namespace-MyWrapper.Persistence.html">Persistence</a><br />
 		<b>Package:</b> MyWrapper\Persistence<br />
 
-		<b>Located at</b> <a href="source-class-MyWrapper.Persistence.CMongoContainer.html#29" title="Go to source code">Persistence/CMongoContainer.php</a><br />
+		<b>Located at</b> <a href="source-class-MyWrapper.Persistence.CMongoContainer.html#78" title="Go to source code">Persistence/CMongoContainer.php</a><br />
 	</div>
 
 
 	<table class="summary" id="methods">
 	<caption>Methods summary</caption>
+	<tr data-order="__construct" id="___construct">
+
+		<td class="attributes"><code>
+			 public 
+			
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#___construct">#</a>
+		<code><a href="source-class-MyWrapper.Persistence.CMongoContainer.html#103" title="Go to source code">__construct</a>( <span>mixed <var>$theConnection</var> = <span class="php-keyword1">NULL</span></span>, <span>mixed <var>$theOptions</var> = <span class="php-keyword1">NULL</span> </span> )</code>
+
+		<div class="description short">
+			
+<h4>Instantiate class</h4>
+
+		</div>
+
+		<div class="description detailed hidden">
+			
+<h4>Instantiate class</h4>
+
+<p>The method accepts the same parameters as the MongoCollection
+constructor, the first one represents the database object, the second represents
+the container name, if the latter is missing, the method will raise an
+exception.</p>
+
+<p>The method will also accept a database object in the first parameter, in that
+case the second parameter will be ignored.</p>
+
+<p>The method will first attempt to instantiate the MongoCollection
+object, it will then store it in the connection data member.</p>
+
+
+
+				<h4>Parameters</h4>
+				<div class="list"><dl>
+					<dt><var>$theConnection</var></dt>
+					<dd><code>mixed</code><br> Server or database.</dd>
+					<dt><var>$theOptions</var></dt>
+					<dd><code>mixed</code><br> Database name.</dd>
+				</dl></div>
+
+
+
+				<h4>Uses</h4>
+				<div class="list">
+						<code><code><a href="class-MyWrapper.Persistence.CMongoContainer.html#_">MyWrapper\Persistence\CMongoContainer::Connection()</a></code></code> <br />
+				</div>
+
+				<h4>Overrides</h4>
+				<div class="list"><code><a href="class-MyWrapper.Framework.CConnection.html#_">MyWrapper\Framework\CConnection::__construct</a></code></div>
+
+		</div>
+		</div></td>
+	</tr>
 	<tr data-order="__toString" id="___toString">
 
 		<td class="attributes"><code>
@@ -168,7 +241,7 @@
 
 		<td class="name"><div>
 		<a class="anchor" href="#___toString">#</a>
-		<code><a href="source-class-MyWrapper.Persistence.CMongoContainer.html#54" title="Go to source code">__toString</a>( )</code>
+		<code><a href="source-class-MyWrapper.Persistence.CMongoContainer.html#190" title="Go to source code">__toString</a>( )</code>
 
 		<div class="description short">
 			
@@ -195,14 +268,14 @@
 
 				<h4>Uses</h4>
 				<div class="list">
-						<code><code><a href="class-MyWrapper.Persistence.CMongoContainer.html#_">MyWrapper\Persistence\CMongoContainer::Container()</a></code></code> <br />
+						<code><code><a href="class-MyWrapper.Persistence.CMongoContainer.html#_">MyWrapper\Persistence\CMongoContainer::Connection()</a></code></code> <br />
 				</div>
 
 
 		</div>
 		</div></td>
 	</tr>
-	<tr data-order="Container" id="_Container">
+	<tr data-order="Connection" id="_Connection">
 
 		<td class="attributes"><code>
 			 public 
@@ -212,18 +285,18 @@
 		</td>
 
 		<td class="name"><div>
-		<a class="anchor" href="#_Container">#</a>
-		<code><a href="source-class-MyWrapper.Persistence.CMongoContainer.html#92" title="Go to source code">Container</a>( <span>mixed <var>$theValue</var> = <span class="php-keyword1">NULL</span></span>, <span>boolean <var>$getOld</var> = <span class="php-keyword1">FALSE</span> </span> )</code>
+		<a class="anchor" href="#_Connection">#</a>
+		<code><a href="source-class-MyWrapper.Persistence.CMongoContainer.html#228" title="Go to source code">Connection</a>( <span>mixed <var>$theValue</var> = <span class="php-keyword1">NULL</span></span>, <span>boolean <var>$getOld</var> = <span class="php-keyword1">FALSE</span> </span> )</code>
 
 		<div class="description short">
 			
-<h4>Manage persistent container</h4>
+<h4>Manage native connection</h4>
 
 		</div>
 
 		<div class="description detailed hidden">
 			
-<h4>Manage persistent container</h4>
+<h4>Manage native connection</h4>
 
 <p>We overload this method to ensure that the provided container is a MongoCollection object.</p>
 
@@ -249,12 +322,13 @@
 
 				<h4>Used by</h4>
 				<div class="list">
+						<code><code><a href="class-MyWrapper.Persistence.CMongoContainer.html#_">MyWrapper\Persistence\CMongoContainer::__construct()</a></code></code> <br />
 						<code><code><a href="class-MyWrapper.Persistence.CMongoContainer.html#_">MyWrapper\Persistence\CMongoContainer::__toString()</a></code></code> <br />
 						<code><code><a href="class-MyWrapper.Persistence.CMongoContainer.html#_">MyWrapper\Persistence\CMongoContainer::ManageObject()</a></code></code> <br />
 				</div>
 
 				<h4>Overrides</h4>
-				<div class="list"><code><a href="class-MyWrapper.Framework.CContainer.html#_">MyWrapper\Framework\CContainer::Container</a></code></div>
+				<div class="list"><code><a href="class-MyWrapper.Framework.CConnection.html#_">MyWrapper\Framework\CConnection::Connection</a></code></div>
 
 		</div>
 		</div></td>
@@ -270,7 +344,7 @@
 
 		<td class="name"><div>
 		<a class="anchor" href="#_ManageObject">#</a>
-		<code><a href="source-class-MyWrapper.Persistence.CMongoContainer.html#141" title="Go to source code">ManageObject</a>( <span>reference <var>&amp; $theObject</var></span>, <span>mixed <var>$theIdentifier</var> = <span class="php-keyword1">NULL</span></span>, <span>bitfield <var>$theModifiers</var> = kFLAG_DEFAULT </span> )</code>
+		<code><a href="source-class-MyWrapper.Persistence.CMongoContainer.html#302" title="Go to source code">ManageObject</a>( <span>reference <var>&amp; $theObject</var></span>, <span>mixed <var>$theIdentifier</var> = <span class="php-keyword1">NULL</span></span>, <span>bitfield <var>$theModifiers</var> = kFLAG_DEFAULT </span> )</code>
 
 		<div class="description short">
 			
@@ -284,7 +358,7 @@
 
 <p>We implement this method to handle MongoCollection object stores.</p>
 
-<p>For more information see <code><a href="class-MyWrapper.Framework.CContainer.html#_">MyWrapper\Framework\CContainer::ManageObject()</a></code>.</p>
+<p>For more information see MyWrapper\Persistence\CContainer::ManageObject().</p>
 
 <p><i>Note: the commit operations are performed by default with the
 <tt>safe</tt> option.</i></p>
@@ -318,7 +392,7 @@
 				</div>
 				<h4>Uses</h4>
 				<div class="list">
-						<code><code><a href="class-MyWrapper.Persistence.CMongoContainer.html#_">MyWrapper\Persistence\CMongoContainer::Container()</a></code></code> <br />
+						<code><code><a href="class-MyWrapper.Persistence.CMongoContainer.html#_">MyWrapper\Persistence\CMongoContainer::Connection()</a></code></code> <br />
 				</div>
 
 
@@ -336,7 +410,7 @@
 
 		<td class="name"><div>
 		<a class="anchor" href="#_ConvertBinary">#</a>
-		<code><a href="source-class-MyWrapper.Persistence.CMongoContainer.html#690" title="Go to source code">ConvertBinary</a>( <span>mixed <var>$theValue</var></span>, <span>boolean <var>$theSense</var> = <span class="php-keyword1">TRUE</span> </span> )</code>
+		<code><a href="source-class-MyWrapper.Persistence.CMongoContainer.html#851" title="Go to source code">ConvertBinary</a>( <span>mixed <var>$theValue</var></span>, <span>boolean <var>$theSense</var> = <span class="php-keyword1">TRUE</span> </span> )</code>
 
 		<div class="description short">
 			
@@ -380,11 +454,27 @@ generating a hashed identifier.</p>
 	</table>
 
 	<table class="summary inherited">
-	<caption>Methods inherited from <a href="class-MyWrapper.Framework.CContainer.html#methods">MyWrapper\Framework\CContainer</a></caption>
+	<caption>Methods inherited from <a href="class-MyWrapper.Framework.CConnection.html#methods">MyWrapper\Framework\CConnection</a></caption>
 	<tr>
 		<td><code>
-			<a href="class-MyWrapper.Framework.CContainer.html#_">_Container()</a>, 
-			<a href="class-MyWrapper.Framework.CContainer.html#_">__construct()</a>
+			<a href="class-MyWrapper.Framework.CConnection.html#_">_Connection()</a>
+		</code></td>
+	</tr>
+	</table>
+	<table class="summary inherited">
+	<caption>Methods inherited from <a href="class-MyWrapper.Framework.CStatusDocument.html#methods">MyWrapper\Framework\CStatusDocument</a></caption>
+	<tr>
+		<td><code>
+			<a href="class-MyWrapper.Framework.CStatusDocument.html#_">_IsCommitted()</a>, 
+			<a href="class-MyWrapper.Framework.CStatusDocument.html#_">_IsDirty()</a>, 
+			<a href="class-MyWrapper.Framework.CStatusDocument.html#_">_IsEncoded()</a>, 
+			<a href="class-MyWrapper.Framework.CStatusDocument.html#_">_IsInited()</a>, 
+			<a href="class-MyWrapper.Framework.CStatusDocument.html#_">_Postset()</a>, 
+			<a href="class-MyWrapper.Framework.CStatusDocument.html#_">_Postunset()</a>, 
+			<a href="class-MyWrapper.Framework.CStatusDocument.html#_">_Preset()</a>, 
+			<a href="class-MyWrapper.Framework.CStatusDocument.html#_">_Preunset()</a>, 
+			<a href="class-MyWrapper.Framework.CStatusDocument.html#_">offsetSet()</a>, 
+			<a href="class-MyWrapper.Framework.CStatusDocument.html#_">offsetUnset()</a>
 		</code></td>
 	</tr>
 	</table>
@@ -394,9 +484,7 @@ generating a hashed identifier.</p>
 		<td><code>
 			<a href="class-MyWrapper.Framework.CDocument.html#_">array_keys()</a>, 
 			<a href="class-MyWrapper.Framework.CDocument.html#_">array_values()</a>, 
-			<a href="class-MyWrapper.Framework.CDocument.html#_">offsetGet()</a>, 
-			<a href="class-MyWrapper.Framework.CDocument.html#_">offsetSet()</a>, 
-			<a href="class-MyWrapper.Framework.CDocument.html#_">offsetUnset()</a>
+			<a href="class-MyWrapper.Framework.CDocument.html#_">offsetGet()</a>
 		</code></td>
 	</tr>
 	</table>
@@ -442,10 +530,18 @@ generating a hashed identifier.</p>
 
 
 	<table class="summary inherited">
-	<caption>Properties inherited from <a href="class-MyWrapper.Framework.CContainer.html#properties">MyWrapper\Framework\CContainer</a></caption>
+	<caption>Properties inherited from <a href="class-MyWrapper.Framework.CConnection.html#properties">MyWrapper\Framework\CConnection</a></caption>
 	<tr>
 		<td><code>
-			<a href="class-MyWrapper.Framework.CContainer.html#$mContainer"><var>$mContainer</var></a>
+			<a href="class-MyWrapper.Framework.CConnection.html#$mConnection"><var>$mConnection</var></a>
+		</code></td>
+	</tr>
+	</table>
+	<table class="summary inherited">
+	<caption>Properties inherited from <a href="class-MyWrapper.Framework.CStatusDocument.html#properties">MyWrapper\Framework\CStatusDocument</a></caption>
+	<tr>
+		<td><code>
+			<a href="class-MyWrapper.Framework.CStatusDocument.html#$mStatus"><var>$mStatus</var></a>
 		</code></td>
 	</tr>
 	</table>

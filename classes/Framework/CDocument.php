@@ -27,6 +27,13 @@
 require_once( kPATH_MYWRAPPER_LIBRARY_DEFINE."/Errors.inc.php" );
 
 /**
+ * Ancestor.
+ *
+ * This includes the ancestor class definitions.
+ */
+use \ArrayObject as ArrayObject;
+
+/**
  * <h3>Document object</h3>
  *
  * This class is the ancestor common to most classes in this library, it extends
@@ -68,7 +75,7 @@ require_once( kPATH_MYWRAPPER_LIBRARY_DEFINE."/Errors.inc.php" );
  *	@package	MyWrapper
  *	@subpackage	Framework
  */
-class CDocument extends \ArrayObject
+class CDocument extends ArrayObject
 {
 		
 

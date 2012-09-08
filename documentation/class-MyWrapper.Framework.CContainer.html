@@ -7,7 +7,7 @@
 	<title>Class MyWrapper\Framework\CContainer | MyWrapper Reference Documentation</title>
 
 	<script type="text/javascript" src="resources/combined.js?417553483"></script>
-	<script type="text/javascript" src="elementlist.js?1517813540"></script>
+	<script type="text/javascript" src="elementlist.js?1430247748"></script>
 	<link rel="stylesheet" type="text/css" media="all" href="resources/style.css?1567499433" />
 
 </head>
@@ -43,8 +43,11 @@
 		<div id="elements">
 			<h3>Classes</h3>
 			<ul>
+				<li><a href="class-MyWrapper.Framework.CConnection.html">CConnection</a></li>
 				<li class="active"><a href="class-MyWrapper.Framework.CContainer.html">CContainer</a></li>
+				<li><a href="class-MyWrapper.Framework.CDatabase.html">CDatabase</a></li>
 				<li><a href="class-MyWrapper.Framework.CDocument.html">CDocument</a></li>
+				<li><a href="class-MyWrapper.Framework.CServer.html">CServer</a></li>
 				<li><a href="class-MyWrapper.Framework.CStatusDocument.html">CStatusDocument</a></li>
 				<li><a href="class-MyWrapper.Framework.CTerm.html">CTerm</a></li>
 			</ul>
@@ -100,6 +103,10 @@
 library, it implements the interface and workflow that all concrete derived
 classes should implement.</p>
 
+<p>A container object serves the purpose of storing and retrieving objects, in
+the same way as a database table. The object holds a data member that represents
+a native container from a database.</p>
+
 <p>The public interface declares the following main operations:</p>
 
 <ul>
@@ -143,6 +150,20 @@ implement specific storage actions.</p>
 		</dd>
 		<dd style="padding-left:60px">
 			<img src="resources/inherit.png" alt="Extended by" />
+			<a href="class-MyWrapper.Framework.CStatusDocument.html"><span>MyWrapper\Framework\CStatusDocument</span></a>
+			
+			
+			
+		</dd>
+		<dd style="padding-left:90px">
+			<img src="resources/inherit.png" alt="Extended by" />
+			<a href="class-MyWrapper.Framework.CConnection.html"><span>MyWrapper\Framework\CConnection</span></a>
+			
+			
+			
+		</dd>
+		<dd style="padding-left:120px">
+			<img src="resources/inherit.png" alt="Extended by" />
 <b><span>MyWrapper\Framework\CContainer</span></b>			
 			
 			
@@ -164,182 +185,14 @@ implement specific storage actions.</p>
 		<b>Abstract</b><br />
 		
 		<b>Namespace:</b> <a href="namespace-MyWrapper.html">MyWrapper</a>\<a href="namespace-MyWrapper.Framework.html">Framework</a><br />
-		<b>Package:</b> MyWrapper\Persistence<br />
+		<b>Package:</b> MyWrapper\Framework<br />
 
-		<b>Located at</b> <a href="source-class-MyWrapper.Framework.CContainer.html#43" title="Go to source code">Framework/CContainer.php</a><br />
+		<b>Located at</b> <a href="source-class-MyWrapper.Framework.CContainer.html#29" title="Go to source code">Framework/CContainer.php</a><br />
 	</div>
 
 
 	<table class="summary" id="methods">
 	<caption>Methods summary</caption>
-	<tr data-order="__construct" id="___construct">
-
-		<td class="attributes"><code>
-			 public 
-			
-			
-			</code>
-		</td>
-
-		<td class="name"><div>
-		<a class="anchor" href="#___construct">#</a>
-		<code><a href="source-class-MyWrapper.Framework.CContainer.html#92" title="Go to source code">__construct</a>( <span>mixed <var>$theContainer</var> = <span class="php-keyword1">NULL</span> </span> )</code>
-
-		<div class="description short">
-			
-<h4>Instantiate class</h4>
-
-		</div>
-
-		<div class="description detailed hidden">
-			
-<h4>Instantiate class</h4>
-
-<p>You instantiate the class with a native data store, the method expects a
-single parameter that will be handled specifically by specialised derived
-classes.</p>
-
-<p>Derived classes should overload this method if a default value is possible;
-to check for specific container types they should rather overload the member
-accessor method.</p>
-
-
-
-				<h4>Parameters</h4>
-				<div class="list"><dl>
-					<dt><var>$theContainer</var></dt>
-					<dd><code>mixed</code><br> Native object store.</dd>
-				</dl></div>
-
-
-
-				<h4>Uses</h4>
-				<div class="list">
-						<code><code><a href="class-MyWrapper.Framework.CContainer.html#_">MyWrapper\Framework\CContainer::Container()</a></code></code> <br />
-				</div>
-
-				<h4>Overrides</h4>
-				<div class="list"><code><a href="class-ArrayObject.html#_">ArrayObject::__construct</a></code></div>
-
-		</div>
-		</div></td>
-	</tr>
-	<tr data-order="__toString" id="___toString">
-
-		<td class="attributes"><code>
-			abstract public 
-			string
-			
-			</code>
-		</td>
-
-		<td class="name"><div>
-		<a class="anchor" href="#___toString">#</a>
-		<code><a href="source-class-MyWrapper.Framework.CContainer.html#122" title="Go to source code">__toString</a>( )</code>
-
-		<div class="description short">
-			
-<h4>Return container name</h4>
-
-		</div>
-
-		<div class="description detailed hidden">
-			
-<h4>Return container name</h4>
-
-<p>This method should return the current container's name.</p>
-
-<p>All derived concrete classes should implement this method, all containers
-must be able to return a name.</p>
-
-
-
-
-				<h4>Returns</h4>
-				<div class="list">
-					<code>string</code><br>The container name.<br />
-				</div>
-
-
-
-
-		</div>
-		</div></td>
-	</tr>
-	<tr data-order="Container" id="_Container">
-
-		<td class="attributes"><code>
-			 public 
-			mixed
-			
-			</code>
-		</td>
-
-		<td class="name"><div>
-		<a class="anchor" href="#_Container">#</a>
-		<code><a href="source-class-MyWrapper.Framework.CContainer.html#149" title="Go to source code">Container</a>( <span>mixed <var>$theValue</var> = <span class="php-keyword1">NULL</span></span>, <span>boolean <var>$getOld</var> = <span class="php-keyword1">FALSE</span> </span> )</code>
-
-		<div class="description short">
-			
-<h4>Manage persistent container</h4>
-
-		</div>
-
-		<div class="description detailed hidden">
-			
-<h4>Manage persistent container</h4>
-
-<p>This method can be used to manage the persistent container, it accepts a
-single parameter which represents either the container or the requested
-operation, depending on its value:</p>
-
-<ul>
-	<li><tt>NULL</tt>: Return the current value.</li>
-
-	<li><tt>FALSE</tt>: Delete the current value.</li>
-
-	<li><i>other</i>: Set the value with the provided parameter.</li>
-</ul>
-
-<p>The second parameter is a boolean which if <tt>TRUE</tt> will return the
-<i>old</i> value when replacing containers; if <tt>FALSE</tt>, it will return
-the currently set value.</p>
-
-<p>In derived classes you should overload this method to check if the provided
-container is of the correct type, in this class we accept anything.</p>
-
-<p>This class is considered initialised (_IsInited()) when this member
-has been set.</p>
-
-
-
-				<h4>Parameters</h4>
-				<div class="list"><dl>
-					<dt><var>$theValue</var></dt>
-					<dd><code>mixed</code><br> Persistent container or operation.</dd>
-					<dt><var>$getOld</var></dt>
-					<dd><code>boolean</code><br> <tt>TRUE</tt> get old value.</dd>
-				</dl></div>
-
-				<h4>Returns</h4>
-				<div class="list">
-					<code>mixed</code><br><i>New</i> or <i>old</i> native container.<br />
-				</div>
-
-
-				<h4>Uses</h4>
-				<div class="list">
-						<code><code><a href="function-ManageProperty.html">ManageProperty()</a></code></code> <br />
-				</div>
-				<h4>Used by</h4>
-				<div class="list">
-						<code><code><a href="class-MyWrapper.Framework.CContainer.html#_">MyWrapper\Framework\CContainer::__construct()</a></code></code> <br />
-				</div>
-
-
-		</div>
-		</div></td>
-	</tr>
 	<tr data-order="ManageObject" id="_ManageObject">
 
 		<td class="attributes"><code>
@@ -351,7 +204,7 @@ has been set.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#_ManageObject">#</a>
-		<code><a href="source-class-MyWrapper.Framework.CContainer.html#200" title="Go to source code">ManageObject</a>( <span>reference <var>&amp; $theObject</var></span>, <span>mixed <var>$theIdentifier</var> = <span class="php-keyword1">NULL</span></span>, <span>bitfield <var>$theModifiers</var> = kFLAG_DEFAULT </span> )</code>
+		<code><a href="source-class-MyWrapper.Framework.CContainer.html#73" title="Go to source code">ManageObject</a>( <span>reference <var>&amp; $theObject</var></span>, <span>mixed <var>$theIdentifier</var> = <span class="php-keyword1">NULL</span></span>, <span>bitfield <var>$theModifiers</var> = kFLAG_DEFAULT </span> )</code>
 
 		<div class="description short">
 			
@@ -500,7 +353,7 @@ and/or its native unique identifier (kOFFSET_NID).</p>
 update the provided object with whatever data the operation will generate.</p>
 
 <p>The method will also raise an exception if the object is not yet initialised
-(_IsInited()), this happens when the object received the native
+(<code><a href="class-MyWrapper.Framework.CStatusDocument.html#_">MyWrapper\Framework\CStatusDocument::_IsInited()</a></code>), this happens when the object received the native
 container.</p>
 
 <p>This class is abstract, which means that derived classes must implement the
@@ -548,7 +401,7 @@ is declared abstract.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#_ConvertBinary">#</a>
-		<code><a href="source-class-MyWrapper.Framework.CContainer.html#378" title="Go to source code">ConvertBinary</a>( <span>mixed <var>$theValue</var></span>, <span>boolean <var>$theSense</var> = <span class="php-keyword1">TRUE</span> </span> )</code>
+		<code><a href="source-class-MyWrapper.Framework.CContainer.html#251" title="Go to source code">ConvertBinary</a>( <span>mixed <var>$theValue</var></span>, <span>boolean <var>$theSense</var> = <span class="php-keyword1">TRUE</span> </span> )</code>
 
 		<div class="description short">
 			
@@ -590,58 +443,43 @@ convert for database, <tt>FALSE</tt> convert back to PHP.</p>
 		</div>
 		</div></td>
 	</tr>
-	<tr data-order="_Container" id="__Container">
-
-		<td class="attributes"><code>
-			 protected 
-			mixed
-			&amp;
-			</code>
-		</td>
-
-		<td class="name"><div>
-		<a class="anchor" href="#__Container">#</a>
-		<code><a href="source-class-MyWrapper.Framework.CContainer.html#419" title="Go to source code">_Container</a>( )</code>
-
-		<div class="description short">
-			
-<h4>Get container reference</h4>
-
-		</div>
-
-		<div class="description detailed hidden">
-			
-<h4>Get container reference</h4>
-
-<p>This method can be used to retrieve a reference to the native container
-member, this can be useful when the native <code><a href="class-MyWrapper.Framework.CContainer.html#_">MyWrapper\Framework\CContainer::Container()</a></code> is not an object
-passed by reference.</p>
-
-
-
-
-				<h4>Returns</h4>
-				<div class="list">
-					<code>mixed</code><br />
-				</div>
-
-
-
-
-		</div>
-		</div></td>
-	</tr>
 	</table>
 
+	<table class="summary inherited">
+	<caption>Methods inherited from <a href="class-MyWrapper.Framework.CConnection.html#methods">MyWrapper\Framework\CConnection</a></caption>
+	<tr>
+		<td><code>
+			<a href="class-MyWrapper.Framework.CConnection.html#_">Connection()</a>, 
+			<a href="class-MyWrapper.Framework.CConnection.html#_">_Connection()</a>, 
+			<a href="class-MyWrapper.Framework.CConnection.html#_">__construct()</a>, 
+			<a href="class-MyWrapper.Framework.CConnection.html#_">__toString()</a>
+		</code></td>
+	</tr>
+	</table>
+	<table class="summary inherited">
+	<caption>Methods inherited from <a href="class-MyWrapper.Framework.CStatusDocument.html#methods">MyWrapper\Framework\CStatusDocument</a></caption>
+	<tr>
+		<td><code>
+			<a href="class-MyWrapper.Framework.CStatusDocument.html#_">_IsCommitted()</a>, 
+			<a href="class-MyWrapper.Framework.CStatusDocument.html#_">_IsDirty()</a>, 
+			<a href="class-MyWrapper.Framework.CStatusDocument.html#_">_IsEncoded()</a>, 
+			<a href="class-MyWrapper.Framework.CStatusDocument.html#_">_IsInited()</a>, 
+			<a href="class-MyWrapper.Framework.CStatusDocument.html#_">_Postset()</a>, 
+			<a href="class-MyWrapper.Framework.CStatusDocument.html#_">_Postunset()</a>, 
+			<a href="class-MyWrapper.Framework.CStatusDocument.html#_">_Preset()</a>, 
+			<a href="class-MyWrapper.Framework.CStatusDocument.html#_">_Preunset()</a>, 
+			<a href="class-MyWrapper.Framework.CStatusDocument.html#_">offsetSet()</a>, 
+			<a href="class-MyWrapper.Framework.CStatusDocument.html#_">offsetUnset()</a>
+		</code></td>
+	</tr>
+	</table>
 	<table class="summary inherited">
 	<caption>Methods inherited from <a href="class-MyWrapper.Framework.CDocument.html#methods">MyWrapper\Framework\CDocument</a></caption>
 	<tr>
 		<td><code>
 			<a href="class-MyWrapper.Framework.CDocument.html#_">array_keys()</a>, 
 			<a href="class-MyWrapper.Framework.CDocument.html#_">array_values()</a>, 
-			<a href="class-MyWrapper.Framework.CDocument.html#_">offsetGet()</a>, 
-			<a href="class-MyWrapper.Framework.CDocument.html#_">offsetSet()</a>, 
-			<a href="class-MyWrapper.Framework.CDocument.html#_">offsetUnset()</a>
+			<a href="class-MyWrapper.Framework.CDocument.html#_">offsetGet()</a>
 		</code></td>
 	</tr>
 	</table>
@@ -685,40 +523,23 @@ passed by reference.</p>
 	</table>
 
 
-	<table class="summary" id="properties">
-	<caption>Properties summary</caption>
-	<tr data-order="mContainer" id="$mContainer">
 
-		<td class="attributes"><code>
-			protected 
-			mixed
+	<table class="summary inherited">
+	<caption>Properties inherited from <a href="class-MyWrapper.Framework.CConnection.html#properties">MyWrapper\Framework\CConnection</a></caption>
+	<tr>
+		<td><code>
+			<a href="class-MyWrapper.Framework.CConnection.html#$mConnection"><var>$mConnection</var></a>
 		</code></td>
-
-		<td class="name">
-				<a href="source-class-MyWrapper.Framework.CContainer.html#69" title="Go to source code"><var>$mContainer</var></a>
-		</td>
-		<td class="value"><code><span class="php-keyword1">NULL</span></code></td>
-		<td class="description"><div>
-			<a href="#$mContainer" class="anchor">#</a>
-
-			<div class="description short">
-				
-<p>Persistent data store.</p>
-
-			</div>
-
-			<div class="description detailed hidden">
-				
-<p>Persistent data store.</p>
-
-<p>This data member holds the native persistent store.</p>
-
-
-			</div>
-		</div></td>
 	</tr>
 	</table>
-
+	<table class="summary inherited">
+	<caption>Properties inherited from <a href="class-MyWrapper.Framework.CStatusDocument.html#properties">MyWrapper\Framework\CStatusDocument</a></caption>
+	<tr>
+		<td><code>
+			<a href="class-MyWrapper.Framework.CStatusDocument.html#$mStatus"><var>$mStatus</var></a>
+		</code></td>
+	</tr>
+	</table>
 
 
 </div>

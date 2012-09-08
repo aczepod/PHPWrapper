@@ -20,25 +20,32 @@
  *======================================================================================*/
 
 /**
+ * Local definitions.
+ *
+ * This includes the class local definitions.
+ */
+require_once( 'CPersistentDocument.inc.php' );
+
+/**
+ * Exceptions.
+ *
+ * This include file contains the native exceptions class definitions.
+ */
+use \Exception as Exception;
+
+/**
  * Container.
  *
  * This includes the containers ancestor class definitions.
  */
-use \MyWrapper\Framework\CContainer;
+use \MyWrapper\Framework\CContainer as CContainer;
 
 /**
  * Ancestor.
  *
  * This includes the ancestor class definitions.
  */
-use \MyWrapper\Framework\CStatusDocument;
-
-/**
- * Local definitions.
- *
- * This includes the class local definitions.
- */
-require_once( 'CPersistentDocument.inc.php' );
+use \MyWrapper\Framework\CStatusDocument as CStatusDocument;
 
 /**
  * <h3>Persistent document ancestor</h3>
@@ -82,7 +89,7 @@ require_once( 'CPersistentDocument.inc.php' );
  *	@package	MyWrapper
  *	@subpackage	Persistence
  */
-class CPersistentDocument extends \MyWrapper\Framework\CStatusDocument
+class CPersistentDocument extends CStatusDocument
 {
 		
 
@@ -244,7 +251,7 @@ class CPersistentDocument extends \MyWrapper\Framework\CStatusDocument
 	 *
 	 * @access public
 	 *
-	 * @throws \Exception
+	 * @throws Exception
 	 *
 	 * @uses _IsDirty()
 	 * @uses _IsCommitted()
@@ -275,7 +282,7 @@ class CPersistentDocument extends \MyWrapper\Framework\CStatusDocument
 			// Commit object.
 			//
 			if( ! $theContainer->ManageObject( $this, NULL, $op ) )
-				throw new \Exception
+				throw new Exception
 					( "Object not found",
 					  kERROR_NOT_FOUND );										// !@! ==>
 			
@@ -400,7 +407,7 @@ class CPersistentDocument extends \MyWrapper\Framework\CStatusDocument
 	 * @access public
 	 * @return mixed				The operation status.
 	 *
-	 * @throws \Exception
+	 * @throws Exception
 	 *
 	 * @uses _Postcommit()
 	 *
@@ -441,7 +448,7 @@ class CPersistentDocument extends \MyWrapper\Framework\CStatusDocument
 		
 		} // Has identifier.
 		
-		throw new \Exception
+		throw new Exception
 			( "Missing object identifier",
 			  kERROR_STATE );													// !@! ==>
 	
@@ -695,7 +702,7 @@ class CPersistentDocument extends \MyWrapper\Framework\CStatusDocument
 	 *
 	 * @access protected
 	 *
-	 * @throws \Exception
+	 * @throws Exception
 	 *
 	 * @uses _IsInited()
 	 *
@@ -713,7 +720,7 @@ class CPersistentDocument extends \MyWrapper\Framework\CStatusDocument
 			// Check if object is inited.
 			//
 			if( ! $this->_IsInited() )
-				throw new \Exception
+				throw new Exception
 					( "The object is not initialised",
 					  kERROR_STATE );											// !@! ==>
 		
