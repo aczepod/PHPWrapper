@@ -1,4 +1,4 @@
-<?php namespace MyWrapper\Persistence;
+<?php namespace MyWrapper\Framework;
 
 /**
  * <i>CContainer</i> class definition.

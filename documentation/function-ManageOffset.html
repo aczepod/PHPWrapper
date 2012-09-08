@@ -4,7 +4,7 @@
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 	<meta name="generator" content="ApiGen 2.7.0" />
 
-	<title>Function ManageProperty | MyWrapper Reference Documentation</title>
+	<title>Function ManageOffset | MyWrapper Reference Documentation</title>
 
 	<script type="text/javascript" src="resources/combined.js?417553483"></script>
 	<script type="text/javascript" src="elementlist.js?2540228846"></script>
@@ -50,8 +50,8 @@
 				<li><a href="function-JsonDecode.html">JsonDecode</a></li>
 				<li><a href="function-JsonEncode.html">JsonEncode</a></li>
 				<li><a href="function-JsonError.html">JsonError</a></li>
-				<li><a href="function-ManageOffset.html">ManageOffset</a></li>
-				<li class="active"><a href="function-ManageProperty.html">ManageProperty</a></li>
+				<li class="active"><a href="function-ManageOffset.html">ManageOffset</a></li>
+				<li><a href="function-ManageProperty.html">ManageProperty</a></li>
 				<li><a href="function-StringNormalise.html">StringNormalise</a></li>
 			</ul>
 		</div>
@@ -90,35 +90,42 @@
 	</div>
 
 <div id="content" class="function">
-	<h1>Function ManageProperty</h1>
+	<h1>Function ManageOffset</h1>
 
 
 	<div class="description">
 	
-<h4>Manage a property</h4>
+<p>Manage a scalar offset.</p>
 
-<p>This library implements a standard interface for managing object properties
-using accessor methods, this method implements this interface:</p>
+<p>This method can be used to manage a scalar offset, its options involve
+setting, retrieving and deleting an offset of the provided array or
+ArrayObject.</p>
+
+<p>The method accepts the following parameters:</p>
 
 <ul>
-	<li><tt>&amp;$theMember</tt>: Reference to the property being managed.</li>
+	<li><tt>&amp;$theReference</tt>: Reference to the document, it may either refer
+	to an array or an ArrayObject, any other type will trigger an exception.</li>
 
-	<li><tt>$theValue</tt>: The property value or operation:
+	<li><tt>$theOffset</tt>: The offset to the attribute contained in the previous
+	parameter that is to be managed.</li>
+
+	<li><tt>$theValue</tt>: The value or operation:
 		<ul>
-			<li><tt>NULL</tt>: Return the current property value.</li>
+			<li><tt>NULL</tt>: Return the offset's current value.</li>
 
-			<li><tt>FALSE</tt>: Reset the property to <tt>NULL</tt>, the default value.</li>
+			<li><tt>FALSE</tt>: Delete the offset.</li>
 
-			<li><i>other</i>: Any other type represents the new value of the property.</li>
+			<li><i>other</i>: Any other type represents the offset's new value.</li>
 		</ul>
 	</li>
 
 	<li><tt>$getOld</tt>: Determines what the method will return:
 		<ul>
-			<li><tt>TRUE</tt>: Return the value of the property <i>before</i> it was
+			<li><tt>TRUE</tt>: Return the value of the offset <i>before</i> it was
 			eventually modified.</li>
 
-			<li><tt>FALSE</tt>: Return the value of the property <i>after</i> it was
+			<li><tt>FALSE</tt>: Return the value of the offset <i>after</i> it was
 			eventually modified.</li>
 		</ul>
 	</li>
@@ -133,20 +140,37 @@ using accessor methods, this method implements this interface:</p>
 				Milko A. Škofič &lt;<a
 href="mailto:m.skofic&#64;cgiar.org">m.skofic&#64;<!---->cgiar.org</a>&gt;<br />
 				<b>Used by:</b>
-				<code><code><a href="class-MyWrapper.Framework.CContainer.html#_">MyWrapper\Framework\CContainer::Container()</a></code></code> <br />
-		<b>Located at</b> <a href="source-function-ManageProperty.html#43" title="Go to source code">accessors.php</a><br />
+				<code><code><a href="class-MyWrapper.Framework.CTerm.html#_">MyWrapper\Framework\CTerm::NS()</a></code></code> <br />
+				<b>Used by:</b>
+				<code><code><a href="class-MyWrapper.Framework.CTerm.html#_">MyWrapper\Framework\CTerm::LID()</a></code></code> <br />
+				<b>Used by:</b>
+				<code><code><a href="class-MyWrapper.Persistence.CPersistentObject.html#_">MyWrapper\Persistence\CPersistentObject::NID()</a></code></code> <br />
+				<b>Used by:</b>
+				<code><code><a href="class-MyWrapper.Persistence.CPersistentObject.html#_">MyWrapper\Persistence\CPersistentObject::GID()</a></code></code> <br />
+				<b>Used by:</b>
+				<code><code><a href="class-MyWrapper.Persistence.CPersistentObject.html#_">MyWrapper\Persistence\CPersistentObject::CLassName()</a></code></code> <br />
+		<b>Located at</b> <a href="source-function-ManageOffset.html#116" title="Go to source code">accessors.php</a><br />
 	</div>
 
 
 	<table class="summary" id="parameters">
 	<caption>Parameters summary</caption>
-	<tr data-order="theMember" id="$theMember">
+	<tr data-order="theReference" id="$theReference">
+		<td class="name"><code>
+			reference
+		</code></td>
+		<td class="value"><code><var>&amp; $theReference</var></code></td>
+		<td>
+			&amp;$theReference Array or ArrayObject reference.
+		</td>
+	</tr>
+	<tr data-order="theOffset" id="$theOffset">
 		<td class="name"><code>
 			string
 		</code></td>
-		<td class="value"><code><var>&amp; $theMember</var></code></td>
+		<td class="value"><code><var>$theOffset</var></code></td>
 		<td>
-			&amp;$theMember Offset.
+			 Offset to be managed.
 		</td>
 	</tr>
 	<tr data-order="theValue" id="$theValue">
@@ -155,7 +179,7 @@ href="mailto:m.skofic&#64;cgiar.org">m.skofic&#64;<!---->cgiar.org</a>&gt;<br />
 		</code></td>
 		<td class="value"><code><var>$theValue</var> = <span class="php-keyword1">NULL</span></code></td>
 		<td>
-			 Value or operation.
+			 New value or operation.
 		</td>
 	</tr>
 	<tr data-order="getOld" id="$getOld">
@@ -164,7 +188,7 @@ href="mailto:m.skofic&#64;cgiar.org">m.skofic&#64;<!---->cgiar.org</a>&gt;<br />
 		</code></td>
 		<td class="value"><code><var>$getOld</var> = <span class="php-keyword1">FALSE</span></code></td>
 		<td>
-			 <tt>TRUE</tt> get old value.
+			 TRUE get old value.
 		</td>
 	</tr>
 	</table>
@@ -176,11 +200,22 @@ href="mailto:m.skofic&#64;cgiar.org">m.skofic&#64;<!---->cgiar.org</a>&gt;<br />
 			mixed
 		</code></td>
 		<td>
-			Old or new property value.
+			
 		</td>
 	</tr>
 	</table>
 
+	<table class="summary" id="throws">
+	<caption>Thrown exceptions summary</caption>
+	<tr>
+		<td class="name"><code>
+			{@link
+		</code></td>
+		<td>
+			CException CException}
+		</td>
+	</tr>
+	</table>
 
 </div>
 

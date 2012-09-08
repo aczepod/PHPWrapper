@@ -27,7 +27,7 @@ require_once( '/Library/WebServer/Library/PHPWrapper/includes.inc.php' );
 //
 // Containers.
 //
-use MyWrapper\Persistence\CContainer;
+use MyWrapper\Framework\CContainer;
 use MyWrapper\Persistence\CMongoContainer;
 
 //
@@ -445,8 +445,8 @@ try
 	// Create an existing document via native identifier.
 	//
 	echo( '<h4>Create an existing document via native identifier</h4>' );
-	echo( '<h5>$lid = $test[ kOFFSET_NID ];</h5>' );
-	$lid = $test[ kOFFSET_NID ];
+	echo( '<h5>$lid = $test->NID();</h5>' );
+	$lid = $test->NID();
 	echo( '<pre>' ); print_r( $lid ); echo( '</pre>' );
 	echo( '<h5>$other = CPersistentObject::NewObject( $container, $lid );</h5>' );
 	$other = MyClass::NewObject( $container, $lid );
@@ -457,8 +457,8 @@ try
 	// Create an existing document via global identifier.
 	//
 	echo( '<h4>Create an existing document via global identifier</h4>' );
-	echo( '<h5>$gid = $test[ kOFFSET_GID ];</h5>' );
-	$gid = $test[ kOFFSET_GID ];
+	echo( '<h5>$gid = $test->GID();</h5>' );
+	$gid = $test->GID();
 	echo( "$gid<br />" );
 	echo( '<h5>$lid = CPersistentObject::_id( $gid, $container );</h5>' );
 	$lid = MyClass::_id( $gid, $container );

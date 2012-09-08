@@ -24,7 +24,7 @@
  *
  * This include file contains the parent class definitions.
  */
-use \MyWrapper\Persistence\CContainer;
+use \MyWrapper\Framework\CContainer;
 
 /**
  * <h3>Mongo persistent objects data store</h3>
@@ -35,7 +35,7 @@ use \MyWrapper\Persistence\CContainer;
  *	@package	MyWrapper
  *	@subpackage	Persistence
  */
-class CMongoContainer extends \MyWrapper\Persistence\CContainer
+class CMongoContainer extends \MyWrapper\Framework\CContainer
 {
 		
 

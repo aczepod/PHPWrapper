@@ -4,10 +4,10 @@
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 	<meta name="generator" content="ApiGen 2.7.0" />
 
-	<title>Class MyWrapper\Ontology\CTerm | MyWrapper Reference Documentation</title>
+	<title>Class MyWrapper\Framework\CTerm | MyWrapper Reference Documentation</title>
 
-	<script type="text/javascript" src="resources/combined.js?496895167"></script>
-	<script type="text/javascript" src="elementlist.js?1357666139"></script>
+	<script type="text/javascript" src="resources/combined.js?417553483"></script>
+	<script type="text/javascript" src="elementlist.js?2540228846"></script>
 	<link rel="stylesheet" type="text/css" media="all" href="resources/style.css?1567499433" />
 
 </head>
@@ -23,9 +23,7 @@
 			<ul>
 				<li class="active main"><a href="namespace-MyWrapper.html">MyWrapper<span></span></a>
 						<ul>
-				<li class="main"><a href="namespace-MyWrapper.Framework.html">Framework</a>
-						</li>
-				<li class="active main"><a href="namespace-MyWrapper.Ontology.html">Ontology</a>
+				<li class="active main"><a href="namespace-MyWrapper.Framework.html">Framework</a>
 						</li>
 				<li class="main"><a href="namespace-MyWrapper.Persistence.html">Persistence</a>
 						</li>
@@ -43,7 +41,10 @@
 		<div id="elements">
 			<h3>Classes</h3>
 			<ul>
-				<li class="active"><a href="class-MyWrapper.Ontology.CTerm.html">CTerm</a></li>
+				<li><a href="class-MyWrapper.Framework.CContainer.html">CContainer</a></li>
+				<li><a href="class-MyWrapper.Framework.CDocument.html">CDocument</a></li>
+				<li><a href="class-MyWrapper.Framework.CStatusDocument.html">CStatusDocument</a></li>
+				<li class="active"><a href="class-MyWrapper.Framework.CTerm.html">CTerm</a></li>
 			</ul>
 
 
@@ -71,7 +72,7 @@
 				<a href="index.html" title="Overview"><span>Overview</span></a>
 			</li>
 			<li>
-				<a href="namespace-MyWrapper.Ontology.html" title="Summary of MyWrapper\Ontology"><span>Namespace</span></a>
+				<a href="namespace-MyWrapper.Framework.html" title="Summary of MyWrapper\Framework"><span>Namespace</span></a>
 			</li>
 			<li class="active">
 <span>Class</span>			</li>
@@ -110,14 +111,9 @@ token.</p>
 
 <p>If the term has no namespace, its kOFFSET_GID will be its kOFFSET_LID.</p>
 
-<p>Terms must keep track of references, the kOFFSET_REFS_NAMESPACE
-offset contains an integer counting the number of times the term was used as a
-namespace. The kOFFSET_REFS_NODE offset is an array containing the list
-of nodes that reference the current term. Finally, the kOFFSET_REFS_TAG
-offset is an array that collects the list of tag identifiers that reference the
-term. These counters and reference collections are automatically managed by the
-container, rather than by the object, so their modification by this class is not
-allowed.</p>
+<p>The class features an attribute, kOFFSET_REFS_NAMESPACE, which keeps
+track of the number of times that the term has been referenced as a namespace,
+this offset is automatically managed bi the class.</p>
 
 <p>When <code><a href="class-MyWrapper.Framework.CStatusDocument.html#_">MyWrapper\Framework\CStatusDocument::_IsCommitted()</a></code>, besides the the identifier offsets, also the
 kOFFSET_NAMESPACE offset will be locked, since it is used to generate
@@ -129,6 +125,18 @@ the global unique identifier, kOFFSET_GID, this to allow long codes.</p>
 <p>The object will have its <code><a href="class-MyWrapper.Framework.CStatusDocument.html#_">MyWrapper\Framework\CStatusDocument::_IsInited()</a></code> status set if the local unique
 identifier, kOFFSET_LID, is set, derived classes may add other required
 attributes.</p>
+
+<p>Finally, the class features member accessor methods for the default
+offsets:</p>
+
+<ul>
+	<li><code><a href="class-MyWrapper.Framework.CTerm.html#_">MyWrapper\Framework\CTerm::NS()</a></code>: This method manages the term's namespace, kOFFSET_NAMESPACE.</li>
+
+	<li><code><a href="class-MyWrapper.Framework.CTerm.html#_">MyWrapper\Framework\CTerm::LID()</a></code>: This method manages the local unique identifier, kOFFSET_LID.</li>
+
+	<li><code><a href="class-MyWrapper.Framework.CTerm.html#_">MyWrapper\Framework\CTerm::NamespaceRefs()</a></code>: This method returns the term's namespace
+	references, kOFFSET_REFS_NAMESPACE.</li>
+</ul>
 
 	</div>
 
@@ -179,7 +187,7 @@ attributes.</p>
 		</dd>
 		<dd style="padding-left:150px">
 			<img src="resources/inherit.png" alt="Extended by" />
-<b><span>MyWrapper\Ontology\CTerm</span></b>			
+<b><span>MyWrapper\Framework\CTerm</span></b>			
 			
 			
 		</dd>
@@ -195,15 +203,211 @@ attributes.</p>
 	<div class="info">
 		
 		
-		<b>Namespace:</b> <a href="namespace-MyWrapper.html">MyWrapper</a>\<a href="namespace-MyWrapper.Ontology.html">Ontology</a><br />
-		<b>Package:</b> MyWrapper\Persistence<br />
+		<b>Namespace:</b> <a href="namespace-MyWrapper.html">MyWrapper</a>\<a href="namespace-MyWrapper.Framework.html">Framework</a><br />
+		<b>Package:</b> MyWrapper\Framework<br />
 
-		<b>Located at</b> <a href="source-class-MyWrapper.Ontology.CTerm.html#50" title="Go to source code">Ontology/CTerm.php</a><br />
+		<b>Located at</b> <a href="source-class-MyWrapper.Framework.CTerm.html#57" title="Go to source code">Framework/CTerm.php</a><br />
 	</div>
 
 
 	<table class="summary" id="methods">
 	<caption>Methods summary</caption>
+	<tr data-order="NS" id="_NS">
+
+		<td class="attributes"><code>
+			 public 
+			mixed
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_NS">#</a>
+		<code><a href="source-class-MyWrapper.Framework.CTerm.html#120" title="Go to source code">NS</a>( <span>mixed <var>$theValue</var> = <span class="php-keyword1">NULL</span></span>, <span>boolean <var>$getOld</var> = <span class="php-keyword1">FALSE</span> </span> )</code>
+
+		<div class="description short">
+			
+<h4>Manage namespace native identifier</h4>
+
+		</div>
+
+		<div class="description detailed hidden">
+			
+<h4>Manage namespace native identifier</h4>
+
+<p>The <i>namespace native identifier</i>, kOFFSET_NAMESPACE, holds the
+native identifier of the object that represents the term's namespace.</p>
+
+<p>The method accepts a parameter which represents either the namespace or the
+requested operation, depending on its value:</p>
+
+<ul>
+	<li><tt>NULL</tt>: Return the current value.</li>
+
+	<li><tt>FALSE</tt>: Delete the current value.</li>
+
+	<li><i>other</i>: Set the value with the provided parameter.</li>
+</ul>
+
+<p>The second parameter is a boolean which if <tt>TRUE</tt> will return the
+<i>old</i> value when replacing containers; if <tt>FALSE</tt>, it will return
+the currently set value.</p>
+
+<p>Note that when the object has the <code><a href="class-MyWrapper.Framework.CStatusDocument.html#_">MyWrapper\Framework\CStatusDocument::_IsCommitted()</a></code> status this offset
+will be locked and an exception will be raised.</p>
+
+
+
+				<h4>Parameters</h4>
+				<div class="list"><dl>
+					<dt><var>$theValue</var></dt>
+					<dd><code>mixed</code><br> Native identifier or operation.</dd>
+					<dt><var>$getOld</var></dt>
+					<dd><code>boolean</code><br> <tt>TRUE</tt> get old value.</dd>
+				</dl></div>
+
+				<h4>Returns</h4>
+				<div class="list">
+					<code>mixed</code><br><i>New</i> or <i>old</i> native container.<br />
+				</div>
+
+
+				<h4>See</h4>
+				<div class="list">
+						kOFFSET_NAMESPACE<br />
+				</div>
+				<h4>Uses</h4>
+				<div class="list">
+						<code><code><a href="function-ManageOffset.html">ManageOffset()</a></code></code> <br />
+				</div>
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="LID" id="_LID">
+
+		<td class="attributes"><code>
+			 public 
+			mixed
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_LID">#</a>
+		<code><a href="source-class-MyWrapper.Framework.CTerm.html#163" title="Go to source code">LID</a>( <span>mixed <var>$theValue</var> = <span class="php-keyword1">NULL</span></span>, <span>boolean <var>$getOld</var> = <span class="php-keyword1">FALSE</span> </span> )</code>
+
+		<div class="description short">
+			
+<h4>Manage local unique identifier</h4>
+
+		</div>
+
+		<div class="description detailed hidden">
+			
+<h4>Manage local unique identifier</h4>
+
+<p>The <i>local unique identifier</i>, kOFFSET_LID, holds a string which
+represents the object's unique identifier within its namespace, this value is
+concatenated to the eventual's namespace's global identifier to form the term's
+global identifier.</p>
+
+<p>The method accepts a parameter which represents either the identifier or the
+requested operation, depending on its value:</p>
+
+<ul>
+	<li><tt>NULL</tt>: Return the current value.</li>
+
+	<li><tt>FALSE</tt>: Delete the current value.</li>
+
+	<li><i>other</i>: Set the value with the provided parameter.</li>
+</ul>
+
+<p>The second parameter is a boolean which if <tt>TRUE</tt> will return the
+<i>old</i> value when replacing containers; if <tt>FALSE</tt>, it will return
+the currently set value.</p>
+
+<p>Note that when the object has the <code><a href="class-MyWrapper.Framework.CStatusDocument.html#_">MyWrapper\Framework\CStatusDocument::_IsCommitted()</a></code> status this offset
+will be locked and an exception will be raised.</p>
+
+
+
+				<h4>Parameters</h4>
+				<div class="list"><dl>
+					<dt><var>$theValue</var></dt>
+					<dd><code>mixed</code><br> Native identifier or operation.</dd>
+					<dt><var>$getOld</var></dt>
+					<dd><code>boolean</code><br> <tt>TRUE</tt> get old value.</dd>
+				</dl></div>
+
+				<h4>Returns</h4>
+				<div class="list">
+					<code>mixed</code><br><i>New</i> or <i>old</i> native container.<br />
+				</div>
+
+
+				<h4>See</h4>
+				<div class="list">
+						kOFFSET_LID<br />
+				</div>
+				<h4>Uses</h4>
+				<div class="list">
+						<code><code><a href="function-ManageOffset.html">ManageOffset()</a></code></code> <br />
+				</div>
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="NamespaceRefs" id="_NamespaceRefs">
+
+		<td class="attributes"><code>
+			 public 
+			integer
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_NamespaceRefs">#</a>
+		<code><a href="source-class-MyWrapper.Framework.CTerm.html#208" title="Go to source code">NamespaceRefs</a>( )</code>
+
+		<div class="description short">
+			
+<h4>Manage namespace references</h4>
+
+		</div>
+
+		<div class="description detailed hidden">
+			
+<h4>Manage namespace references</h4>
+
+<p>The <i>namespace references</i>, kOFFSET_REFS_NAMESPACE, holds an
+integer which represents the number of times the current term has been
+referenced as a namespace, that is, stored in the kOFFSET_NAMESPACE
+offset of another term.</p>
+
+<p>The method is read-only, because this value must be managed internally.</p>
+
+
+
+
+				<h4>Returns</h4>
+				<div class="list">
+					<code>integer</code><br>Namespace reference count.<br />
+				</div>
+
+
+				<h4>See</h4>
+				<div class="list">
+						kOFFSET_REFS_NAMESPACE<br />
+				</div>
+
+
+		</div>
+		</div></td>
+	</tr>
 	<tr data-order="_id" id="__id">
 
 		<td class="attributes"><code>
@@ -215,7 +419,7 @@ attributes.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#__id">#</a>
-		<code><a href="source-class-MyWrapper.Ontology.CTerm.html#107" title="Go to source code">_id</a>( <span>string <var>$theIdentifier</var> = <span class="php-keyword1">NULL</span></span>, <span><code><a href="class-MyWrapper.Persistence.CContainer.html">MyWrapper\Persistence\CContainer</a></code> <var>$theContainer</var> = <span class="php-keyword1">NULL</span> </span> )</code>
+		<code><a href="source-class-MyWrapper.Framework.CTerm.html#248" title="Go to source code">_id</a>( <span>string <var>$theIdentifier</var> = <span class="php-keyword1">NULL</span></span>, <span><code><a href="class-MyWrapper.Framework.CContainer.html">MyWrapper\Framework\CContainer</a></code> <var>$theContainer</var> = <span class="php-keyword1">NULL</span> </span> )</code>
 
 		<div class="description short">
 			
@@ -242,7 +446,7 @@ this object primary key depends on the content of its attributes.</p>
 					<dt><var>$theIdentifier</var></dt>
 					<dd><code>string</code><br> Global unique identifier.</dd>
 					<dt><var>$theContainer</var></dt>
-					<dd><code><code><a href="class-MyWrapper.Persistence.CContainer.html">MyWrapper\Persistence\CContainer</a></code></code><br> Container.</dd>
+					<dd><code><code><a href="class-MyWrapper.Framework.CContainer.html">MyWrapper\Framework\CContainer</a></code></code><br> Container.</dd>
 				</dl></div>
 
 				<h4>Returns</h4>
@@ -273,7 +477,7 @@ this object primary key depends on the content of its attributes.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#__index">#</a>
-		<code><a href="source-class-MyWrapper.Ontology.CTerm.html#162" title="Go to source code">_index</a>( <span><code><a href="class-MyWrapper.Persistence.CContainer.html">MyWrapper\Persistence\CContainer</a></code> <var>$theContainer</var></span>, <span>bitfield <var>$theModifiers</var></span> )</code>
+		<code><a href="source-class-MyWrapper.Framework.CTerm.html#303" title="Go to source code">_index</a>( <span><code><a href="class-MyWrapper.Framework.CContainer.html">MyWrapper\Framework\CContainer</a></code> <var>$theContainer</var></span>, <span>bitfield <var>$theModifiers</var></span> )</code>
 
 		<div class="description short">
 			
@@ -309,7 +513,7 @@ instantiate the object and use its global identifier.</p>
 				<h4>Parameters</h4>
 				<div class="list"><dl>
 					<dt><var>$theContainer</var></dt>
-					<dd><code><code><a href="class-MyWrapper.Persistence.CContainer.html">MyWrapper\Persistence\CContainer</a></code></code><br> Container.</dd>
+					<dd><code><code><a href="class-MyWrapper.Framework.CContainer.html">MyWrapper\Framework\CContainer</a></code></code><br> Container.</dd>
 					<dt><var>$theModifiers</var></dt>
 					<dd><code>bitfield</code><br> Commit options.</dd>
 				</dl></div>
@@ -326,11 +530,11 @@ instantiate the object and use its global identifier.</p>
 
 				<h4>Uses</h4>
 				<div class="list">
-						<code><code><a href="class-MyWrapper.Ontology.CTerm.html#_">MyWrapper\Ontology\CTerm::_index()</a></code></code> <br />
+						<code><code><a href="class-MyWrapper.Framework.CTerm.html#_">MyWrapper\Framework\CTerm::_index()</a></code></code> <br />
 				</div>
 				<h4>Used by</h4>
 				<div class="list">
-						<code><code><a href="class-MyWrapper.Ontology.CTerm.html#_">MyWrapper\Ontology\CTerm::_index()</a></code></code> <br />
+						<code><code><a href="class-MyWrapper.Framework.CTerm.html#_">MyWrapper\Framework\CTerm::_index()</a></code></code> <br />
 				</div>
 
 				<h4>Overrides</h4>
@@ -350,7 +554,7 @@ instantiate the object and use its global identifier.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#__Preset">#</a>
-		<code><a href="source-class-MyWrapper.Ontology.CTerm.html#286" title="Go to source code">_Preset</a>( <span>reference <var>&amp; $theOffset</var></span>, <span>reference <var>&amp; $theValue</var></span> )</code>
+		<code><a href="source-class-MyWrapper.Framework.CTerm.html#427" title="Go to source code">_Preset</a>( <span>reference <var>&amp; $theOffset</var></span>, <span>reference <var>&amp; $theValue</var></span> )</code>
 
 		<div class="description short">
 			
@@ -403,7 +607,7 @@ offset if the object has its <code><a href="class-MyWrapper.Framework.CStatusDoc
 
 		<td class="name"><div>
 		<a class="anchor" href="#__Preunset">#</a>
-		<code><a href="source-class-MyWrapper.Ontology.CTerm.html#326" title="Go to source code">_Preunset</a>( <span>reference <var>&amp; $theOffset</var></span> )</code>
+		<code><a href="source-class-MyWrapper.Framework.CTerm.html#467" title="Go to source code">_Preunset</a>( <span>reference <var>&amp; $theOffset</var></span> )</code>
 
 		<div class="description short">
 			
@@ -455,7 +659,7 @@ identifier.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#__Precommit">#</a>
-		<code><a href="source-class-MyWrapper.Ontology.CTerm.html#373" title="Go to source code">_Precommit</a>( <span><code><a href="class-MyWrapper.Persistence.CContainer.html">MyWrapper\Persistence\CContainer</a></code> <var>$theContainer</var></span>, <span>bitfield <var>$theModifiers</var> = kFLAG_DEFAULT </span> )</code>
+		<code><a href="source-class-MyWrapper.Framework.CTerm.html#514" title="Go to source code">_Precommit</a>( <span><code><a href="class-MyWrapper.Framework.CContainer.html">MyWrapper\Framework\CContainer</a></code> <var>$theContainer</var></span>, <span>bitfield <var>$theModifiers</var> = kFLAG_DEFAULT </span> )</code>
 
 		<div class="description short">
 			
@@ -468,7 +672,7 @@ identifier.</p>
 <h4>Prepare the object before committing</h4>
 
 <p>In this class we check whether the eventual namespace was provided as an
-object, in that case we commit it and leave it as an object: the <code><a href="class-MyWrapper.Ontology.CTerm.html#_">MyWrapper\Ontology\CTerm::_index()</a></code> method will take care of converting the offset to the namespace's
+object, in that case we commit it and leave it as an object: the <code><a href="class-MyWrapper.Framework.CTerm.html#_">MyWrapper\Framework\CTerm::_index()</a></code> method will take care of converting the offset to the namespace's
 identifier.</p>
 
 
@@ -476,7 +680,7 @@ identifier.</p>
 				<h4>Parameters</h4>
 				<div class="list"><dl>
 					<dt><var>$theContainer</var></dt>
-					<dd><code><code><a href="class-MyWrapper.Persistence.CContainer.html">MyWrapper\Persistence\CContainer</a></code></code><br> Container.</dd>
+					<dd><code><code><a href="class-MyWrapper.Framework.CContainer.html">MyWrapper\Framework\CContainer</a></code></code><br> Container.</dd>
 					<dt><var>$theModifiers</var></dt>
 					<dd><code>bitfield</code><br> Commit options.</dd>
 				</dl></div>
@@ -505,7 +709,7 @@ identifier.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#__Postcommit">#</a>
-		<code><a href="source-class-MyWrapper.Ontology.CTerm.html#412" title="Go to source code">_Postcommit</a>( <span><code><a href="class-MyWrapper.Persistence.CContainer.html">MyWrapper\Persistence\CContainer</a></code> <var>$theContainer</var></span>, <span>bitfield <var>$theModifiers</var> = kFLAG_DEFAULT </span> )</code>
+		<code><a href="source-class-MyWrapper.Framework.CTerm.html#553" title="Go to source code">_Postcommit</a>( <span><code><a href="class-MyWrapper.Framework.CContainer.html">MyWrapper\Framework\CContainer</a></code> <var>$theContainer</var></span>, <span>bitfield <var>$theModifiers</var> = kFLAG_DEFAULT </span> )</code>
 
 		<div class="description short">
 			
@@ -525,7 +729,7 @@ namespace.</p>
 				<h4>Parameters</h4>
 				<div class="list"><dl>
 					<dt><var>$theContainer</var></dt>
-					<dd><code><code><a href="class-MyWrapper.Persistence.CContainer.html">MyWrapper\Persistence\CContainer</a></code></code><br> Container.</dd>
+					<dd><code><code><a href="class-MyWrapper.Framework.CContainer.html">MyWrapper\Framework\CContainer</a></code></code><br> Container.</dd>
 					<dt><var>$theModifiers</var></dt>
 					<dd><code>bitfield</code><br> Commit options.</dd>
 				</dl></div>
@@ -550,7 +754,7 @@ namespace.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#__Ready">#</a>
-		<code><a href="source-class-MyWrapper.Ontology.CTerm.html#451" title="Go to source code">_Ready</a>( )</code>
+		<code><a href="source-class-MyWrapper.Framework.CTerm.html#610" title="Go to source code">_Ready</a>( )</code>
 
 		<div class="description short">
 			
@@ -594,6 +798,9 @@ by the caller into the <code><a href="class-MyWrapper.Framework.CStatusDocument.
 	<caption>Methods inherited from <a href="class-MyWrapper.Persistence.CPersistentObject.html#methods">MyWrapper\Persistence\CPersistentObject</a></caption>
 	<tr>
 		<td><code>
+			<a href="class-MyWrapper.Persistence.CPersistentObject.html#_">CLassName()</a>, 
+			<a href="class-MyWrapper.Persistence.CPersistentObject.html#_">GID()</a>, 
+			<a href="class-MyWrapper.Persistence.CPersistentObject.html#_">NID()</a>, 
 			<a href="class-MyWrapper.Persistence.CPersistentObject.html#_">NewObject()</a>
 		</code></td>
 	</tr>

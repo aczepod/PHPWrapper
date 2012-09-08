@@ -20,11 +20,25 @@
  *======================================================================================*/
 
 /**
+ * Container.
+ *
+ * This includes the containers ancestor class definitions.
+ */
+use \MyWrapper\Framework\CContainer;
+
+/**
  * Ancestor.
  *
  * This includes the ancestor class definitions.
  */
 use \MyWrapper\Persistence\CPersistentDocument;
+
+/**
+ * Local definitions.
+ *
+ * This includes the class local definitions.
+ */
+require_once( 'CPersistentObject.inc.php' );
 
 /**
  * <h3>Persistent object ancestor</h3>
@@ -56,11 +70,164 @@ use \MyWrapper\Persistence\CPersistentDocument;
  *
  * The class implements the above workflow by overloading the {@link _Precommit()} method.
  *
+ * Finally, the class features member accessor methods for the default offsets:
+ *
+ * <ul>
+ *	<li>{@link NID()}: This method manages the native unique identifier,
+ *		{@link kOFFSET_NID}.
+ *	<li>{@link GID()}: This method manages the global unique identifier,
+ *		{@link kOFFSET_GID}.
+ *	<li>{@link ClassName()}: This method manages the object's class name,
+ *		{@link kOFFSET_CLASS}.
+ * </ul>
+ *
  *	@package	MyWrapper
  *	@subpackage	Persistence
  */
 class CPersistentObject extends \MyWrapper\Persistence\CPersistentDocument
 {
+		
+
+/*=======================================================================================
+ *																						*
+ *								PUBLIC MEMBER INTERFACE									*
+ *																						*
+ *======================================================================================*/
+
+
+	 
+	/*===================================================================================
+	 *	NID																				*
+	 *==================================================================================*/
+
+	/**
+	 * <h4>Manage native unique identifier</h4>
+	 *
+	 * The <i>native unique identifier</i>, {@link kOFFSET_NID}, represents the primary key
+	 * of the object in the native format of the container in which the object is stored.
+	 *
+	 * The method accepts a parameter which represents either the identifier or the
+	 * requested operation, depending on its value:
+	 *
+	 * <ul>
+	 *	<li><tt>NULL</tt>: Return the current value.
+	 *	<li><tt>FALSE</tt>: Delete the current value.
+	 *	<li><i>other</i>: Set the value with the provided parameter.
+	 * </ul>
+	 *
+	 * The second parameter is a boolean which if <tt>TRUE</tt> will return the <i>old</i>
+	 * value when replacing containers; if <tt>FALSE</tt>, it will return the currently set
+	 * value.
+	 *
+	 * Note that when the object has the {@link _IsCommitted()} status this offset will be
+	 * locked and an exception will be raised.
+	 *
+	 * @param mixed					$theValue			Native identifier or operation.
+	 * @param boolean				$getOld				<tt>TRUE</tt> get old value.
+	 *
+	 * @access public
+	 * @return mixed				<i>New</i> or <i>old</i> native container.
+	 *
+	 * @uses ManageOffset()
+	 *
+	 * @see kOFFSET_NID
+	 */
+	public function NID( $theValue = NULL, $getOld = FALSE )
+	{
+		return ManageOffset( $this, kOFFSET_NID, $theValue, $getOld );				// ==>
+
+	} // NID.
+
+	 
+	/*===================================================================================
+	 *	GID																				*
+	 *==================================================================================*/
+
+	/**
+	 * <h4>Manage global unique identifier</h4>
+	 *
+	 * The <i>global unique identifier</i>, {@link kOFFSET_GID}, holds a string which
+	 * represents the object's unique identifier, this value is hashed or used as-is to
+	 * serve as the native unique identifier, {@link kOFFSET_NID}. The global identifier
+	 * is usually a computed value extracted from a series of offsets of the object.
+	 *
+	 * The method accepts a parameter which represents either the identifier or the
+	 * requested operation, depending on its value:
+	 *
+	 * <ul>
+	 *	<li><tt>NULL</tt>: Return the current value.
+	 *	<li><tt>FALSE</tt>: Delete the current value.
+	 *	<li><i>other</i>: Set the value with the provided parameter.
+	 * </ul>
+	 *
+	 * The second parameter is a boolean which if <tt>TRUE</tt> will return the <i>old</i>
+	 * value when replacing containers; if <tt>FALSE</tt>, it will return the currently set
+	 * value.
+	 *
+	 * Note that when the object has the {@link _IsCommitted()} status this offset will be
+	 * locked and an exception will be raised.
+	 *
+	 * @param mixed					$theValue			Native identifier or operation.
+	 * @param boolean				$getOld				<tt>TRUE</tt> get old value.
+	 *
+	 * @access public
+	 * @return mixed				<i>New</i> or <i>old</i> native container.
+	 *
+	 * @uses ManageOffset()
+	 *
+	 * @see kOFFSET_GID
+	 */
+	public function GID( $theValue = NULL, $getOld = FALSE )
+	{
+		return ManageOffset( $this, kOFFSET_GID, $theValue, $getOld );				// ==>
+
+	} // GID.
+
+	 
+	/*===================================================================================
+	 *	CLassName																		*
+	 *==================================================================================*/
+
+	/**
+	 * <h4>Manage global unique identifier</h4>
+	 *
+	 * The <i>class name</i>, {@link kOFFSET_CLASS}, holds a string which is the class
+	 * name of the object that first stored the object in the container. This value will
+	 * be used by the static {@link NewObject()} method to restore the object from the
+	 * container.
+	 *
+	 * The method accepts a parameter which represents either the name or the requested
+	 * operation, depending on its value:
+	 *
+	 * <ul>
+	 *	<li><tt>NULL</tt>: Return the current value.
+	 *	<li><tt>FALSE</tt>: Delete the current value.
+	 *	<li><i>other</i>: Set the value with the provided parameter.
+	 * </ul>
+	 *
+	 * The second parameter is a boolean which if <tt>TRUE</tt> will return the <i>old</i>
+	 * value when replacing containers; if <tt>FALSE</tt>, it will return the currently set
+	 * value.
+	 *
+	 * Note that when the object has the {@link _IsCommitted()} status this offset will be
+	 * locked and in many other classes this offset may not be writable.
+	 *
+	 * @param mixed					$theValue			Persistent container or operation.
+	 * @param boolean				$getOld				<tt>TRUE</tt> get old value.
+	 *
+	 * @access public
+	 * @return mixed				<i>New</i> or <i>old</i> native container.
+	 *
+	 * @uses ManageOffset()
+	 *
+	 * @see kOFFSET_CLASS
+	 */
+	public function CLassName( $theValue = NULL, $getOld = FALSE )
+	{
+		return ManageOffset( $this, kOFFSET_CLASS, $theValue, $getOld );			// ==>
+
+	} // CLassName.
+
 		
 
 /*=======================================================================================

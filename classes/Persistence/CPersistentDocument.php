@@ -27,6 +27,13 @@
 require_once( kPATH_MYWRAPPER_LIBRARY_DEFINE."/Offsets.inc.php" );
 
 /**
+ * Container.
+ *
+ * This includes the containers ancestor class definitions.
+ */
+use \MyWrapper\Framework\CContainer;
+
+/**
  * Ancestor.
  *
  * This includes the ancestor class definitions.

@@ -1,4 +1,4 @@
-<?php namespace MyWrapper\Ontology;
+<?php namespace MyWrapper\Framework;
 
 /**
  * <i>CTerm</i> class definition.
@@ -7,7 +7,7 @@
  * all persistent ontology term classes.
  *
  *	@package	MyWrapper
- *	@subpackage	Ontology
+ *	@subpackage	Framework
  *
  *	@author		Milko A. Škofič <m.skofic@cgiar.org>
  *	@version	1.00 05/09/2012
@@ -45,7 +45,14 @@ use \MyWrapper\Persistence\CPersistentObject;
  *
  * This includes the container class definitions.
  */
-use \MyWrapper\Persistence\CContainer;
+use \MyWrapper\Framework\CContainer;
+
+/**
+ * Local definitions.
+ *
+ * This includes the class local definitions.
+ */
+require_once( 'CTerm.inc.php' );
 
 /**
  * <h3>Term object ancestor</h3>
@@ -67,13 +74,9 @@ use \MyWrapper\Persistence\CContainer;
  *
  * If the term has no namespace, its {@link kOFFSET_GID} will be its {@link kOFFSET_LID}.
  *
- * Terms must keep track of references, the {@link kOFFSET_REFS_NAMESPACE} offset contains
- * an integer counting the number of times the term was used as a namespace. The
- * {@link kOFFSET_REFS_NODE} offset is an array containing the list of nodes that reference
- * the current term. Finally, the {@link kOFFSET_REFS_TAG} offset is an array that collects
- * the list of tag identifiers that reference the term. These counters and reference
- * collections are automatically managed by the container, rather than by the object, so
- * their modification by this class is not allowed.
+ * The class features an attribute, {@link kOFFSET_REFS_NAMESPACE}, which keeps track of the
+ * number of times that the term has been referenced as a namespace, this offset is
+ * automatically managed bi the class.
  *
  * When {@link _IsCommitted()}, besides the the identifier offsets, also the
  * {@link kOFFSET_NAMESPACE} offset will be locked, since it is used to generate the
@@ -85,11 +88,149 @@ use \MyWrapper\Persistence\CContainer;
  * The object will have its {@link _IsInited()} status set if the local unique identifier,
  * {@link kOFFSET_LID}, is set, derived classes may add other required attributes.
  *
+ * Finally, the class features member accessor methods for the default offsets:
+ *
+ * <ul>
+ *	<li>{@link NS()}: This method manages the term's namespace, {@link kOFFSET_NAMESPACE}.
+ *	<li>{@link LID()}: This method manages the local unique identifier,
+ *		{@link kOFFSET_LID}.
+ *	<li>{@link NamespaceRefs()}: This method returns the term's namespace references,
+ *		{@link kOFFSET_REFS_NAMESPACE}.
+ * </ul>
+ *
  *	@package	MyWrapper
- *	@subpackage	Persistence
+ *	@subpackage	Framework
  */
 class CTerm extends \MyWrapper\Persistence\CPersistentObject
 {
+		
+
+/*=======================================================================================
+ *																						*
+ *								PUBLIC MEMBER INTERFACE									*
+ *																						*
+ *======================================================================================*/
+
+
+	 
+	/*===================================================================================
+	 *	NS																				*
+	 *==================================================================================*/
+
+	/**
+	 * <h4>Manage namespace native identifier</h4>
+	 *
+	 * The <i>namespace native identifier</i>, {@link kOFFSET_NAMESPACE}, holds the native
+	 * identifier of the object that represents the term's namespace.
+	 *
+	 * The method accepts a parameter which represents either the namespace or the
+	 * requested operation, depending on its value:
+	 *
+	 * <ul>
+	 *	<li><tt>NULL</tt>: Return the current value.
+	 *	<li><tt>FALSE</tt>: Delete the current value.
+	 *	<li><i>other</i>: Set the value with the provided parameter.
+	 * </ul>
+	 *
+	 * The second parameter is a boolean which if <tt>TRUE</tt> will return the <i>old</i>
+	 * value when replacing containers; if <tt>FALSE</tt>, it will return the currently set
+	 * value.
+	 *
+	 * Note that when the object has the {@link _IsCommitted()} status this offset will be
+	 * locked and an exception will be raised.
+	 *
+	 * @param mixed					$theValue			Native identifier or operation.
+	 * @param boolean				$getOld				<tt>TRUE</tt> get old value.
+	 *
+	 * @access public
+	 * @return mixed				<i>New</i> or <i>old</i> native container.
+	 *
+	 * @uses ManageOffset()
+	 *
+	 * @see kOFFSET_NAMESPACE
+	 */
+	public function NS( $theValue = NULL, $getOld = FALSE )
+	{
+		return ManageOffset( $this, kOFFSET_NAMESPACE, $theValue, $getOld );				// ==>
+
+	} // NS.
+
+	 
+	/*===================================================================================
+	 *	LID																				*
+	 *==================================================================================*/
+
+	/**
+	 * <h4>Manage local unique identifier</h4>
+	 *
+	 * The <i>local unique identifier</i>, {@link kOFFSET_LID}, holds a string which
+	 * represents the object's unique identifier within its namespace, this value is
+	 * concatenated to the eventual's namespace's global identifier to form the term's
+	 * global identifier. 
+	 *
+	 * The method accepts a parameter which represents either the identifier or the
+	 * requested operation, depending on its value:
+	 *
+	 * <ul>
+	 *	<li><tt>NULL</tt>: Return the current value.
+	 *	<li><tt>FALSE</tt>: Delete the current value.
+	 *	<li><i>other</i>: Set the value with the provided parameter.
+	 * </ul>
+	 *
+	 * The second parameter is a boolean which if <tt>TRUE</tt> will return the <i>old</i>
+	 * value when replacing containers; if <tt>FALSE</tt>, it will return the currently set
+	 * value.
+	 *
+	 * Note that when the object has the {@link _IsCommitted()} status this offset will be
+	 * locked and an exception will be raised.
+	 *
+	 * @param mixed					$theValue			Native identifier or operation.
+	 * @param boolean				$getOld				<tt>TRUE</tt> get old value.
+	 *
+	 * @access public
+	 * @return mixed				<i>New</i> or <i>old</i> native container.
+	 *
+	 * @uses ManageOffset()
+	 *
+	 * @see kOFFSET_LID
+	 */
+	public function LID( $theValue = NULL, $getOld = FALSE )
+	{
+		return ManageOffset( $this, kOFFSET_LID, $theValue, $getOld );				// ==>
+
+	} // LID.
+
+	 
+	/*===================================================================================
+	 *	NamespaceRefs																	*
+	 *==================================================================================*/
+
+	/**
+	 * <h4>Manage namespace references</h4>
+	 *
+	 * The <i>namespace references</i>, {@link kOFFSET_REFS_NAMESPACE}, holds an integer
+	 * which represents the number of times the current term has been referenced as a
+	 * namespace, that is, stored in the {@link kOFFSET_NAMESPACE} offset of another term.
+	 *
+	 * The method is read-only, because this value must be managed internally.
+	 *
+	 * @access public
+	 * @return integer				Namespace reference count.
+	 *
+	 * @see kOFFSET_REFS_NAMESPACE
+	 */
+	public function NamespaceRefs()
+	{
+		//
+		// Handle reference count.
+		//
+		if( $this->offsetExists( kOFFSET_REFS_NAMESPACE ) )
+			return $this->offsetGet( kOFFSET_REFS_NAMESPACE );						// ==>
+		
+		return 0;																	// ==>
+
+	} // NamespaceRefs.
+
 		
 
 /*=======================================================================================
