@@ -23,16 +23,6 @@
  *======================================================================================*/
 
 /**
- * Native unique identifier.
- *
- * This tag identifies the attribute that contains the native unique identifier.
- * This value is a full or hashed representation of the object's global unique identifier
- * ({@link kOFFSET_GID}) optimised specifically for the container in which the object will
- * be stored.
- */
-define( "kOFFSET_NID",							'_id' );
-
-/**
  * Global unique identifier.
  *
  * This tag identifies the attribute that contains the global or full unique identifier.

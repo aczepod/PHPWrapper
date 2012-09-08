@@ -2,25 +2,33 @@
 
 /*=======================================================================================
  *																						*
- *										Offsets.inc.php									*
+ *								COntologyTerm.inc.php									*
  *																						*
  *======================================================================================*/
  
 /**
- *	Default offsets.
+ *	{@link COntologyTerm} definitions.
  *
- *	This file contains the common error codes used by all classes in this library.
+ *	This file contains common definitions used by the {@link COntologyTerm} class.
  *
  *	@package	MyWrapper
- *	@subpackage	Definitions
+ *	@subpackage	Ontology
  *
  *	@author		Milko A. Škofič <m.skofic@cgiar.org>
- *	@version	1.00 04/09/2012
+ *	@version	1.00 08/09/2012
  */
 
 /*=======================================================================================
  *	DEFAULT OFFSETS																		*
  *======================================================================================*/
+
+/**
+ * Namespace references.
+ *
+ * This tag identifies namespace references, the attribute contains the count of how many
+ * times the term was referenced as a namespace.
+ */
+define( "kOFFSET_REFS_NAMESPACE",				'_nsr' );
 
 /**
  * Node references.

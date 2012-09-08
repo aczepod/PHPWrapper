@@ -8,7 +8,7 @@
 	<title>File Persistence/CPersistentObject.php | MyWrapper Reference Documentation</title>
 
 	<script type="text/javascript" src="resources/combined.js?417553483"></script>
-	<script type="text/javascript" src="elementlist.js?2540228846"></script>
+	<script type="text/javascript" src="elementlist.js?1517813540"></script>
 	<link rel="stylesheet" type="text/css" media="all" href="resources/style.css?1567499433" />
 
 </head>
@@ -25,6 +25,8 @@
 				<li class="active main"><a href="namespace-MyWrapper.html">MyWrapper<span></span></a>
 						<ul>
 				<li class="main"><a href="namespace-MyWrapper.Framework.html">Framework</a>
+						</li>
+				<li class="main"><a href="namespace-MyWrapper.Ontology.html">Ontology</a>
 						</li>
 				<li class="active main"><a href="namespace-MyWrapper.Persistence.html">Persistence</a>
 						</li>
@@ -536,14 +538,14 @@
 </span><a href="#447" id="447" class="l">447: </a><span class="php-comment">     *
 </span><a href="#448" id="448" class="l">448: </a><span class="php-comment">     * @uses _IsCommitted()
 </span><a href="#449" id="449" class="l">449: </a><span class="php-comment">     *
-</span><a href="#450" id="450" class="l">450: </a><span class="php-comment">     * @see kOFFSET_NID kOFFSET_GID kOFFSET_LID
+</span><a href="#450" id="450" class="l">450: </a><span class="php-comment">     * @see kOFFSET_NID kOFFSET_GID
 </span><a href="#451" id="451" class="l">451: </a><span class="php-comment">     */</span>
 <a href="#452" id="452" class="l">452: </a>    <span class="php-keyword1">protected</span> <span class="php-keyword1">function</span> _Preset( &amp;<span class="php-var">$theOffset</span>, &amp;<span class="php-var">$theValue</span> )
 <a href="#453" id="453" class="l">453: </a>    {
 <a href="#454" id="454" class="l">454: </a>        <span class="php-comment">//</span>
 <a href="#455" id="455" class="l">455: </a>        <span class="php-comment">// Intercept identifiers.</span>
 <a href="#456" id="456" class="l">456: </a>        <span class="php-comment">//</span>
-<a href="#457" id="457" class="l">457: </a>        <span class="php-var">$offsets</span> = <span class="php-keyword1">array</span>( kOFFSET_NID, kOFFSET_GID, kOFFSET_LID );
+<a href="#457" id="457" class="l">457: </a>        <span class="php-var">$offsets</span> = <span class="php-keyword1">array</span>( kOFFSET_NID, kOFFSET_GID );
 <a href="#458" id="458" class="l">458: </a>        <span class="php-keyword1">if</span>( <span class="php-var">$this</span>-&gt;_IsCommitted()
 <a href="#459" id="459" class="l">459: </a>         &amp;&amp; <span class="php-keyword2">in_array</span>( <span class="php-var">$theOffset</span>, <span class="php-var">$offsets</span> ) )
 <a href="#460" id="460" class="l">460: </a>            <span class="php-keyword1">throw</span> <span class="php-keyword1">new</span> \Exception
@@ -577,14 +579,14 @@
 </span><a href="#488" id="488" class="l">488: </a><span class="php-comment">     *
 </span><a href="#489" id="489" class="l">489: </a><span class="php-comment">     * @uses _IsCommitted()
 </span><a href="#490" id="490" class="l">490: </a><span class="php-comment">     *
-</span><a href="#491" id="491" class="l">491: </a><span class="php-comment">     * @see kOFFSET_NID kOFFSET_GID kOFFSET_LID
+</span><a href="#491" id="491" class="l">491: </a><span class="php-comment">     * @see kOFFSET_NID kOFFSET_GID
 </span><a href="#492" id="492" class="l">492: </a><span class="php-comment">     */</span>
 <a href="#493" id="493" class="l">493: </a>    <span class="php-keyword1">protected</span> <span class="php-keyword1">function</span> _Preunset( &amp;<span class="php-var">$theOffset</span> )
 <a href="#494" id="494" class="l">494: </a>    {
 <a href="#495" id="495" class="l">495: </a>        <span class="php-comment">//</span>
 <a href="#496" id="496" class="l">496: </a>        <span class="php-comment">// Intercept identifiers.</span>
 <a href="#497" id="497" class="l">497: </a>        <span class="php-comment">//</span>
-<a href="#498" id="498" class="l">498: </a>        <span class="php-var">$offsets</span> = <span class="php-keyword1">array</span>( kOFFSET_NID, kOFFSET_GID, kOFFSET_LID );
+<a href="#498" id="498" class="l">498: </a>        <span class="php-var">$offsets</span> = <span class="php-keyword1">array</span>( kOFFSET_NID, kOFFSET_GID );
 <a href="#499" id="499" class="l">499: </a>        <span class="php-keyword1">if</span>( <span class="php-var">$this</span>-&gt;_IsCommitted()
 <a href="#500" id="500" class="l">500: </a>         &amp;&amp; <span class="php-keyword2">in_array</span>( <span class="php-var">$theOffset</span>, <span class="php-var">$offsets</span> ) )
 <a href="#501" id="501" class="l">501: </a>            <span class="php-keyword1">throw</span> <span class="php-keyword1">new</span> \Exception

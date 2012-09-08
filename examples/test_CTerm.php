@@ -232,8 +232,6 @@ try
 				   .'] Saved['.$termA->committed()
 				   .'] Encoded['.$termA->encoded().']<br />' );
 	echo( '<pre>' ); print_r( $termA ); echo( '</pre>' );
-	echo( '<h5>$namespace = CTerm::NewObject( $container, $namespace[ kOFFSET_NID ] ); // Notice the namespace reference count</h5>' );
-	$namespace = CTerm::NewObject( $container, $namespace[ kOFFSET_NID ] );
 	echo( '<pre>' ); print_r( $namespace ); echo( '</pre>' );
 	echo( '<hr />' );
 
@@ -326,8 +324,6 @@ try
 				   .'] Saved['.$last_term->committed()
 				   .'] Encoded['.$last_term->encoded().']<br />' );
 	echo( '<pre>' ); print_r( $last_term ); echo( '</pre>' );
-	echo( '<h5>$namespace = CTerm::NewObject( $container, $namespace[ kOFFSET_NID ] ); // Notice the namespace reference count</h5>' );
-	$namespace = CTerm::NewObject( $container, $namespace[ kOFFSET_NID ] );
 	echo( '<pre>' ); print_r( $namespace ); echo( '</pre>' );
 	echo( '<hr />' );
 	

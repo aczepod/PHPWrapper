@@ -27,13 +27,13 @@ require_once( '/Library/WebServer/Library/PHPWrapper/includes.inc.php' );
 //
 // Containers.
 //
-use MyWrapper\Framework\CContainer;
-use MyWrapper\Persistence\CMongoContainer;
+use \MyWrapper\Framework\CContainer;
+use \MyWrapper\Persistence\CMongoContainer;
 
 //
 // Class includes.
 //
-use MyWrapper\Persistence\CPersistentObject;
+use \MyWrapper\Persistence\CPersistentObject;
 
 
 /*=======================================================================================
@@ -53,7 +53,7 @@ define( 'kDEBUG_PARENT', TRUE );
 //
 // Test class definition.
 //
-class MyClass extends CPersistentObject
+class MyClass extends \MyWrapper\Persistence\CPersistentObject
 {
 	//
 	// Object is inited if it has the 'CODE' offset.

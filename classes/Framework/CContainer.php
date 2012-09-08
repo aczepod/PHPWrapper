@@ -20,13 +20,6 @@
  *======================================================================================*/
 
 /**
- * Offsets.
- *
- * This include file contains all default offset definitions.
- */
-require_once( kPATH_MYWRAPPER_LIBRARY_DEFINE."/Offsets.inc.php" );
-
-/**
  * Flags.
  *
  * This include file contains all status flag definitions.

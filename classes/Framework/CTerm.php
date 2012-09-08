@@ -4,7 +4,7 @@
  * <i>CTerm</i> class definition.
  *
  * This file contains the class definition of <b>CTerm</b> which represents the ancestor of
- * all persistent ontology term classes.
+ * all term classes.
  *
  *	@package	MyWrapper
  *	@subpackage	Framework
@@ -74,10 +74,6 @@ require_once( 'CTerm.inc.php' );
  *
  * If the term has no namespace, its {@link kOFFSET_GID} will be its {@link kOFFSET_LID}.
  *
- * The class features an attribute, {@link kOFFSET_REFS_NAMESPACE}, which keeps track of the
- * number of times that the term has been referenced as a namespace, this offset is
- * automatically managed bi the class.
- *
  * When {@link _IsCommitted()}, besides the the identifier offsets, also the
  * {@link kOFFSET_NAMESPACE} offset will be locked, since it is used to generate the
  * {@link kOFFSET_GID}.
@@ -94,8 +90,6 @@ require_once( 'CTerm.inc.php' );
  *	<li>{@link NS()}: This method manages the term's namespace, {@link kOFFSET_NAMESPACE}.
  *	<li>{@link LID()}: This method manages the local unique identifier,
  *		{@link kOFFSET_LID}.
- *	<li>{@link NamespaceRefs()}: This method returns the term's namespace references,
- *		{@link kOFFSET_REFS_NAMESPACE}.
  * </ul>
  *
  *	@package	MyWrapper
@@ -199,37 +193,6 @@ class CTerm extends \MyWrapper\Persistence\CPersistentObject
 		return ManageOffset( $this, kOFFSET_LID, $theValue, $getOld );				// ==>
 
 	} // LID.
-
-	 
-	/*===================================================================================
-	 *	NamespaceRefs																	*
-	 *==================================================================================*/
-
-	/**
-	 * <h4>Manage namespace references</h4>
-	 *
-	 * The <i>namespace references</i>, {@link kOFFSET_REFS_NAMESPACE}, holds an integer
-	 * which represents the number of times the current term has been referenced as a
-	 * namespace, that is, stored in the {@link kOFFSET_NAMESPACE} offset of another term.
-	 *
-	 * The method is read-only, because this value must be managed internally.
-	 *
-	 * @access public
-	 * @return integer				Namespace reference count.
-	 *
-	 * @see kOFFSET_REFS_NAMESPACE
-	 */
-	public function NamespaceRefs()
-	{
-		//
-		// Handle reference count.
-		//
-		if( $this->offsetExists( kOFFSET_REFS_NAMESPACE ) )
-			return $this->offsetGet( kOFFSET_REFS_NAMESPACE );						// ==>
-		
-		return 0;																	// ==>
-
-	} // NamespaceRefs.
 
 		
 
@@ -444,8 +407,7 @@ class CTerm extends \MyWrapper\Persistence\CPersistentObject
 		//
 		// Intercept identifiers.
 		//
-		$offsets = array( kOFFSET_NAMESPACE,
-						  kOFFSET_REFS_NAMESPACE, kOFFSET_REFS_NODE, kOFFSET_REFS_TAG );
+		$offsets = array( kOFFSET_NAMESPACE, kOFFSET_LID );
 		if( $this->_IsCommitted()
 		 && in_array( $theOffset, $offsets ) )
 			throw new \Exception
@@ -482,8 +444,7 @@ class CTerm extends \MyWrapper\Persistence\CPersistentObject
 		//
 		// Intercept identifiers.
 		//
-		$offsets = array( kOFFSET_NAMESPACE,
-						  kOFFSET_REFS_NAMESPACE, kOFFSET_REFS_NODE, kOFFSET_REFS_TAG );
+		$offsets = array( kOFFSET_NAMESPACE, kOFFSET_LID );
 		if( $this->_IsCommitted()
 		 && in_array( $theOffset, $offsets ) )
 			throw new \Exception
@@ -544,54 +505,6 @@ class CTerm extends \MyWrapper\Persistence\CPersistentObject
 		parent::_Precommit( $theContainer, $theModifiers );
 		
 	} // _PreCommit.
-
-	 
-	/*===================================================================================
-	 *	_Postcommit																		*
-	 *==================================================================================*/
-
-	/**
-	 * <h4>Prepare the object after committing</h4>
-	 *
-	 * In this class we increment the {@link kOFFSET_REFS_NAMESPACE} of the eventual
-	 * namespace.
-	 *
-	 * @param CContainer			$theContainer		Container.
-	 * @param bitfield				$theModifiers		Commit options.
-	 *
-	 * @access protected
-	 */
-	protected function _Postcommit( CContainer $theContainer,
-											   $theModifiers = kFLAG_DEFAULT )
-	{
-		//
-		// Check if not yet committed.
-		//
-		if( ! $this->_IsCommitted() )
-		{
-			//
-			// Increment namespace reference counter.
-			//
-			if( $this->offsetExists( kOFFSET_NAMESPACE ) )
-			{
-				$offsets = array( kOFFSET_REFS_NAMESPACE => 1 );
-				$theContainer->ManageObject
-					(
-						$offsets,
-						$this->offsetGet( kOFFSET_NAMESPACE ),
-						kFLAG_PERSIST_MODIFY + kFLAG_MODIFY_INCREMENT
-					);
-			
-			} // Has namespace.
-		
-		} // Not yet committed.
-		
-		//
-		// Call parent method.
-		//
-		parent::_Postcommit( $theContainer, $theModifiers );
-	
-	} // _Postcommit.
 		
 
 

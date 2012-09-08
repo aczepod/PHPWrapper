@@ -20,13 +20,6 @@
  *======================================================================================*/
 
 /**
- * Offsets.
- *
- * This include file contains all default offset definitions.
- */
-require_once( kPATH_MYWRAPPER_LIBRARY_DEFINE."/Offsets.inc.php" );
-
-/**
  * Container.
  *
  * This includes the containers ancestor class definitions.
@@ -39,6 +32,13 @@ use \MyWrapper\Framework\CContainer;
  * This includes the ancestor class definitions.
  */
 use \MyWrapper\Framework\CStatusDocument;
+
+/**
+ * Local definitions.
+ *
+ * This includes the class local definitions.
+ */
+require_once( 'CPersistentDocument.inc.php' );
 
 /**
  * <h3>Persistent document ancestor</h3>

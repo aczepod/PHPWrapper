@@ -41,12 +41,4 @@ define( "kOFFSET_LID",							'_lid' );
  */
 define( "kOFFSET_NAMESPACE",					'_nsp' );
 
-/**
- * Namespace references.
- *
- * This tag identifies namespace references, the attribute contains the count of how many
- * times the term was referenced as a namespace.
- */
-define( "kOFFSET_REFS_NAMESPACE",				'_nsr' );
-
 ?>
