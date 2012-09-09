@@ -4,7 +4,7 @@
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 	<meta name="generator" content="ApiGen 2.7.0" />
 
-	<title>Class MyWrapper\Framework\CDatabase | MyWrapper Reference Documentation</title>
+	<title>Class MyWrapper\Persistence\CMongoSequence | MyWrapper Reference Documentation</title>
 
 	<script type="text/javascript" src="resources/combined.js?417553483"></script>
 	<script type="text/javascript" src="elementlist.js?1502153213"></script>
@@ -23,11 +23,11 @@
 			<ul>
 				<li class="active main"><a href="namespace-MyWrapper.html">MyWrapper<span></span></a>
 						<ul>
-				<li class="active main"><a href="namespace-MyWrapper.Framework.html">Framework</a>
+				<li class="main"><a href="namespace-MyWrapper.Framework.html">Framework</a>
 						</li>
 				<li class="main"><a href="namespace-MyWrapper.Ontology.html">Ontology</a>
 						</li>
-				<li class="main"><a href="namespace-MyWrapper.Persistence.html">Persistence</a>
+				<li class="active main"><a href="namespace-MyWrapper.Persistence.html">Persistence</a>
 						</li>
 							</ul></li>
 				<li><a href="namespace-None.html">None</a>
@@ -43,13 +43,12 @@
 		<div id="elements">
 			<h3>Classes</h3>
 			<ul>
-				<li><a href="class-MyWrapper.Framework.CConnection.html">CConnection</a></li>
-				<li><a href="class-MyWrapper.Framework.CContainer.html">CContainer</a></li>
-				<li class="active"><a href="class-MyWrapper.Framework.CDatabase.html">CDatabase</a></li>
-				<li><a href="class-MyWrapper.Framework.CDocument.html">CDocument</a></li>
-				<li><a href="class-MyWrapper.Framework.CServer.html">CServer</a></li>
-				<li><a href="class-MyWrapper.Framework.CStatusDocument.html">CStatusDocument</a></li>
-				<li><a href="class-MyWrapper.Framework.CTerm.html">CTerm</a></li>
+				<li><a href="class-MyWrapper.Persistence.CMongoContainer.html">CMongoContainer</a></li>
+				<li><a href="class-MyWrapper.Persistence.CMongoDatabase.html">CMongoDatabase</a></li>
+				<li class="active"><a href="class-MyWrapper.Persistence.CMongoSequence.html">CMongoSequence</a></li>
+				<li><a href="class-MyWrapper.Persistence.CMongoServer.html">CMongoServer</a></li>
+				<li><a href="class-MyWrapper.Persistence.CPersistentDocument.html">CPersistentDocument</a></li>
+				<li><a href="class-MyWrapper.Persistence.CPersistentObject.html">CPersistentObject</a></li>
 			</ul>
 
 
@@ -77,7 +76,7 @@
 				<a href="index.html" title="Overview"><span>Overview</span></a>
 			</li>
 			<li>
-				<a href="namespace-MyWrapper.Framework.html" title="Summary of MyWrapper\Framework"><span>Namespace</span></a>
+				<a href="namespace-MyWrapper.Persistence.html" title="Summary of MyWrapper\Persistence"><span>Namespace</span></a>
 			</li>
 			<li class="active">
 <span>Class</span>			</li>
@@ -92,28 +91,18 @@
 	</div>
 
 <div id="content" class="class">
-	<h1>Class CDatabase</h1>
+	<h1>Class CMongoSequence</h1>
 
 
 	<div class="description">
 	
-<h3>Database object ancestor</h3>
+<h3>Mongo based sequence number generator</h3>
 
-<p>This <i>abstract</i> class is the ancestor of all database classes in this
-library, it implements the interface and workflow that all concrete derived
-classes should implement.</p>
+<p>The purpose of objects of this kind is to provide an automatic sequential
+number generator.</p>
 
-<p>A database object holds a data member that represents a native connection to
-a database server, database objects have the ability to generate other
-connection derived objects that have specific functionality, such as
-containers.</p>
-
-<p>The object is instantiated by providing the native database connection which
-is stored in a data member of the object, the array part of the object can be
-used to store specific attributes of the native database connection.</p>
-
-<p>The abstract class must be overloaded by concrete classes that implement a
-native database object.</p>
+<p>The class feature a single public method whose purpose is to return a
+sequence number given a key.</p>
 
 	</div>
 
@@ -157,17 +146,27 @@ native database object.</p>
 		</dd>
 		<dd style="padding-left:120px">
 			<img src="resources/inherit.png" alt="Extended by" />
-<b><span>MyWrapper\Framework\CDatabase</span></b>			
+			<a href="class-MyWrapper.Framework.CContainer.html"><span>MyWrapper\Framework\CContainer</span></a>
+			
+			
+			
+		</dd>
+		<dd style="padding-left:150px">
+			<img src="resources/inherit.png" alt="Extended by" />
+			<a href="class-MyWrapper.Persistence.CMongoContainer.html"><span>MyWrapper\Persistence\CMongoContainer</span></a>
+			
+			
+			
+		</dd>
+		<dd style="padding-left:180px">
+			<img src="resources/inherit.png" alt="Extended by" />
+<b><span>MyWrapper\Persistence\CMongoSequence</span></b>			
 			
 			
 		</dd>
 	</dl>
 
 
-	<div>
-		<h4>Direct known subclasses</h4>
-			<a href="class-MyWrapper.Persistence.CMongoDatabase.html">MyWrapper\Persistence\CMongoDatabase</a>
-	</div>
 
 
 
@@ -175,58 +174,58 @@ native database object.</p>
 
 
 	<div class="info">
-		<b>Abstract</b><br />
 		
-		<b>Namespace:</b> <a href="namespace-MyWrapper.html">MyWrapper</a>\<a href="namespace-MyWrapper.Framework.html">Framework</a><br />
-		<b>Package:</b> MyWrapper\Framework<br />
+		
+		<b>Namespace:</b> <a href="namespace-MyWrapper.html">MyWrapper</a>\<a href="namespace-MyWrapper.Persistence.html">Persistence</a><br />
+		<b>Package:</b> MyWrapper\Persistence<br />
 
-		<b>Located at</b> <a href="source-class-MyWrapper.Framework.CDatabase.html#29" title="Go to source code">Framework/CDatabase.php</a><br />
+		<b>Located at</b> <a href="source-class-MyWrapper.Persistence.CMongoSequence.html#36" title="Go to source code">Persistence/CMongoSequence.php</a><br />
 	</div>
 
 
 	<table class="summary" id="methods">
 	<caption>Methods summary</caption>
-	<tr data-order="Container" id="_Container">
+	<tr data-order="Next" id="_Next">
 
 		<td class="attributes"><code>
-			abstract public 
-			mixed
+			 public 
+			integer
 			
 			</code>
 		</td>
 
 		<td class="name"><div>
-		<a class="anchor" href="#_Container">#</a>
-		<code><a href="source-class-MyWrapper.Framework.CDatabase.html#65" title="Go to source code">Container</a>( <span>mixed <var>$theContainer</var> = <span class="php-keyword1">NULL</span> </span> )</code>
+		<a class="anchor" href="#_Next">#</a>
+		<code><a href="source-class-MyWrapper.Persistence.CMongoSequence.html#64" title="Go to source code">Next</a>( <span>string <var>$theKey</var></span> )</code>
 
 		<div class="description short">
 			
-<h4>Generate a container object</h4>
+<h4>Return a sequence number</h4>
 
 		</div>
 
 		<div class="description detailed hidden">
 			
-<h4>Generate a container object</h4>
+<h4>Return a sequence number</h4>
 
-<p>This method can be used to return a container object belonging to the current
-database.</p>
+<p>This method should return a sequence number connected to the provided key.
+Each time this method is called, the sequence number is incremented, which means
+that you should only call it when you intend to use this number.</p>
 
-<p>The parameter will be used by concrete instances to select which container to
-return, the goal of this class is only to declare the public interface, which
-must be implemented by specialised derived classes.</p>
+<p>If the object is not _Is Inited(), the method will raise an
+exception.</p>
 
 
 
 				<h4>Parameters</h4>
 				<div class="list"><dl>
-					<dt><var>$theContainer</var></dt>
-					<dd><code>mixed</code><br> Container selector.</dd>
+					<dt><var>$theKey</var></dt>
+					<dd><code>string</code><br> Sequence key.</dd>
 				</dl></div>
 
 				<h4>Returns</h4>
 				<div class="list">
-					<code>mixed</code><br>The container object.<br />
+					<code>integer</code><br>The sequence number.<br />
 				</div>
 
 
@@ -238,13 +237,22 @@ must be implemented by specialised derived classes.</p>
 	</table>
 
 	<table class="summary inherited">
+	<caption>Methods inherited from <a href="class-MyWrapper.Persistence.CMongoContainer.html#methods">MyWrapper\Persistence\CMongoContainer</a></caption>
+	<tr>
+		<td><code>
+			<a href="class-MyWrapper.Persistence.CMongoContainer.html#_">Connection()</a>, 
+			<a href="class-MyWrapper.Persistence.CMongoContainer.html#_">ConvertBinary()</a>, 
+			<a href="class-MyWrapper.Persistence.CMongoContainer.html#_">ManageObject()</a>, 
+			<a href="class-MyWrapper.Persistence.CMongoContainer.html#_">__construct()</a>, 
+			<a href="class-MyWrapper.Persistence.CMongoContainer.html#_">__toString()</a>
+		</code></td>
+	</tr>
+	</table>
+	<table class="summary inherited">
 	<caption>Methods inherited from <a href="class-MyWrapper.Framework.CConnection.html#methods">MyWrapper\Framework\CConnection</a></caption>
 	<tr>
 		<td><code>
-			<a href="class-MyWrapper.Framework.CConnection.html#_">Connection()</a>, 
-			<a href="class-MyWrapper.Framework.CConnection.html#_">_Connection()</a>, 
-			<a href="class-MyWrapper.Framework.CConnection.html#_">__construct()</a>, 
-			<a href="class-MyWrapper.Framework.CConnection.html#_">__toString()</a>
+			<a href="class-MyWrapper.Framework.CConnection.html#_">_Connection()</a>
 		</code></td>
 	</tr>
 	</table>
