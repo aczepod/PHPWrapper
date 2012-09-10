@@ -27,12 +27,12 @@ require_once( '/Library/WebServer/Library/PHPWrapper/includes.inc.php' );
 //
 // Containers.
 //
-use MyWrapper\Persistence\CMongoContainer;
+use \MyWrapper\Persistence\CMongoContainer as CMongoContainer;
 
 //
 // Class includes.
 //
-use MyWrapper\Framework\CTerm;
+use \MyWrapper\Framework\CTerm as CTerm;
 
 
 /*=======================================================================================

@@ -1,10 +1,10 @@
 <?php
 
 /**
- * {@link CNode.php Base} object test suite.
+ * {@link COntologyNode.php Base} object test suite.
  *
  * This file contains routines to test and demonstrate the behaviour of the
- * base object {@link CNode class}.
+ * base object {@link COntologyNode class}.
  *
  *	@package	Test
  *	@subpackage	Framework
@@ -15,7 +15,7 @@
 
 /*=======================================================================================
  *																						*
- *									test_CNode.php										*
+ *								test_COntologyNode.php									*
  *																						*
  *======================================================================================*/
 
@@ -28,19 +28,19 @@ require_once( '/Library/WebServer/Library/PHPWrapper/includes.inc.php' );
 // Containers.
 //
 require_once( kPATH_MYWRAPPER_LIBRARY_CLASS."/Persistence/CMongoContainer.php" );
-use MyWrapper\Persistence\CMongoContainer;
+use \MyWrapper\Persistence\CMongoContainer as CMongoContainer;
 
 //
 // Terms.
 //
-require_once( kPATH_MYWRAPPER_LIBRARY_CLASS."/Framework/CTerm.php" );
-use MyWrapper\Framework\CTerm;
+require_once( kPATH_MYWRAPPER_LIBRARY_CLASS."/Ontology/COntologyTerm.php" );
+use \MyWrapper\Ontology\COntologyTerm as COntologyTerm;
 
 //
 // Class includes.
 //
-require_once( kPATH_MYWRAPPER_LIBRARY_CLASS."/Framework/CNode.php" );
-use MyWrapper\Framework\CNode;
+require_once( kPATH_MYWRAPPER_LIBRARY_CLASS."/Ontology/COntologyNode.php" );
+use \MyWrapper\Ontology\COntologyNode as COntologyNode;
 
 
 /*=======================================================================================
@@ -50,7 +50,7 @@ use MyWrapper\Framework\CNode;
 //
 // Test class definition.
 //
-class MyClass extends CNode
+class MyClass extends COntologyNode
 {
 	//
 	// Utilities to show protected data.
@@ -99,8 +99,8 @@ try
 	echo( '$db = $mongo->selectDB( "TEST" );<br />' );
 	$db = $mongo->selectDB( "TEST" );
 	$db->drop();
-	echo( '$collection = $db->selectCollection( "CNode" );<br />' );
-	$collection = $db->selectCollection( "CNode" );
+	echo( '$collection = $db->selectCollection( "COntologyNode" );<br />' );
+	$collection = $db->selectCollection( "COntologyNode" );
 	echo( '$container = new CMongoContainer( $collection );<br />' );
 	$container = new CMongoContainer( $collection );
 	echo( '<hr />' );
@@ -185,7 +185,7 @@ try
 	// Insert namespace term.
 	//
 	echo( '<h4>Insert namespace term</h4>' );
-	$namespace = new CTerm();
+	$namespace = new COntologyTerm();
 	$namespace[ kOFFSET_LID ] = "NAMESPACE";
 	$status = $namespace->Insert( $container );
 	echo( '<pre>' ); print_r( $namespace ); echo( '</pre>' );
@@ -194,7 +194,7 @@ try
 	// Insert term A.
 	//
 	echo( '<h4>Insert term A</h4>' );
-	$termA = new CTerm();
+	$termA = new COntologyTerm();
 	$termA[ kOFFSET_NAMESPACE ] = $namespace;
 	$termA[ kOFFSET_LID ] = "A";
 	$status = $termA->Insert( $container );
@@ -204,7 +204,7 @@ try
 	// Insert term B.
 	//
 	echo( '<h4>Insert term B</h4>' );
-	$termB = new CTerm();
+	$termB = new COntologyTerm();
 	$termB[ kOFFSET_NAMESPACE ] = $namespace;
 	$termB[ kOFFSET_LID ] = "B";
 	$status = $termB->Insert( $container );
@@ -214,7 +214,7 @@ try
 	// Insert term C.
 	//
 	echo( '<h4>Insert term C</h4>' );
-	$termC = new CTerm();
+	$termC = new COntologyTerm();
 	$termC[ kOFFSET_NAMESPACE ] = $namespace;
 	$termC[ kOFFSET_LID ] = "C";
 	$status = $termC->Insert( $container );

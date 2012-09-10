@@ -272,6 +272,8 @@ class CNode extends CPersistentObject
 	 * In this class we prevent the modification of the {@link kOFFSET_TERM} offset if
 	 * the object has its {@link _IsCommitted()} status set.
 	 *
+	 * We also ensure that the {@link kOFFSET_KIND} offset is an array.
+	 *
 	 * @param reference			   &$theOffset			Offset.
 	 * @param reference			   &$theValue			Value to set at offset.
 	 *
@@ -288,12 +290,21 @@ class CNode extends CPersistentObject
 		//
 		// Intercept identifiers.
 		//
-		$offsets = array( kOFFSET_TERM );
 		if( $this->_IsCommitted()
-		 && in_array( $theOffset, $offsets ) )
+		 && ($theOffset == kOFFSET_TERM) )
 			throw new \Exception
 				( "The object is committed, you cannot modify the [$theOffset] offset",
 				  kERROR_LOCKED );												// !@! ==>
+		
+		//
+		// Ensure kind is array.
+		//
+		if( ($theOffset == kOFFSET_KIND)
+		 && ($theValue !== NULL)
+		 && (! is_array( $theValue )) )
+			throw new \Exception
+				( "The node kind must be an array",
+				  kERROR_PARAMETER );											// !@! ==>
 		
 		//
 		// Call parent method.
@@ -328,9 +339,8 @@ class CNode extends CPersistentObject
 		//
 		// Intercept identifiers.
 		//
-		$offsets = array( kOFFSET_TERM );
 		if( $this->_IsCommitted()
-		 && in_array( $theOffset, $offsets ) )
+		 && ($theOffset == kOFFSET_TERM) )
 			throw new \Exception
 				( "The object is committed, you cannot modify the [$theOffset] offset",
 				  kERROR_LOCKED );												// !@! ==>

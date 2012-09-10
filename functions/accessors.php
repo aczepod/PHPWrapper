@@ -456,7 +456,7 @@ require_once( kPATH_MYWRAPPER_LIBRARY_DEFINE."/Errors.inc.php" );
 				//
 				// Hash match value.
 				//
-				$match = md5( $theValue );
+				$match = md5( serialize( $theValue ) );
 				
 				//
 				// Match element.
@@ -466,7 +466,7 @@ require_once( kPATH_MYWRAPPER_LIBRARY_DEFINE."/Errors.inc.php" );
 					//
 					// Match.
 					//
-					if( $match == md5( $value ) )
+					if( $match == md5( serialize( $value ) ) )
 					{
 						//
 						// Save index.
