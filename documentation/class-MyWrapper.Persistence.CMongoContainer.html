@@ -7,7 +7,7 @@
 	<title>Class MyWrapper\Persistence\CMongoContainer | MyWrapper Reference Documentation</title>
 
 	<script type="text/javascript" src="resources/combined.js?496895167"></script>
-	<script type="text/javascript" src="elementlist.js?1502153213"></script>
+	<script type="text/javascript" src="elementlist.js?1852740671"></script>
 	<link rel="stylesheet" type="text/css" media="all" href="resources/style.css?1567499433" />
 
 </head>
@@ -98,7 +98,7 @@
 	
 <h3>Mongo persistent objects data store</h3>
 
-<p>This <i>concrete</i> class implements a container that uses a MongoCollection to store objects.</p>
+<p>This <i>concrete</i> class implements a container that uses a \MongoCollection to store objects.</p>
 
 	</div>
 
@@ -172,7 +172,7 @@
 		<b>Namespace:</b> <a href="namespace-MyWrapper.html">MyWrapper</a>\<a href="namespace-MyWrapper.Persistence.html">Persistence</a><br />
 		<b>Package:</b> MyWrapper\Persistence<br />
 
-		<b>Located at</b> <a href="source-class-MyWrapper.Persistence.CMongoContainer.html#71" title="Go to source code">Persistence/CMongoContainer.php</a><br />
+		<b>Located at</b> <a href="source-class-MyWrapper.Persistence.CMongoContainer.html#30" title="Go to source code">Persistence/CMongoContainer.php</a><br />
 	</div>
 
 
@@ -189,7 +189,7 @@
 
 		<td class="name"><div>
 		<a class="anchor" href="#___construct">#</a>
-		<code><a href="source-class-MyWrapper.Persistence.CMongoContainer.html#96" title="Go to source code">__construct</a>( <span>mixed <var>$theConnection</var> = <span class="php-keyword1">NULL</span></span>, <span>mixed <var>$theOptions</var> = <span class="php-keyword1">NULL</span> </span> )</code>
+		<code><a href="source-class-MyWrapper.Persistence.CMongoContainer.html#55" title="Go to source code">__construct</a>( <span>mixed <var>$theConnection</var> = <span class="php-keyword1">NULL</span></span>, <span>mixed <var>$theOptions</var> = <span class="php-keyword1">NULL</span> </span> )</code>
 
 		<div class="description short">
 			
@@ -201,7 +201,7 @@
 			
 <h4>Instantiate class</h4>
 
-<p>The method accepts the same parameters as the MongoCollection
+<p>The method accepts the same parameters as the \MongoCollection
 constructor, the first one represents the database object, the second represents
 the container name, if the latter is missing, the method will raise an
 exception.</p>
@@ -209,7 +209,7 @@ exception.</p>
 <p>The method will also accept a database object in the first parameter, in that
 case the second parameter will be ignored.</p>
 
-<p>The method will first attempt to instantiate the MongoCollection
+<p>The method will first attempt to instantiate the \MongoCollection
 object, it will then store it in the connection data member.</p>
 
 
@@ -246,7 +246,7 @@ object, it will then store it in the connection data member.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#___toString">#</a>
-		<code><a href="source-class-MyWrapper.Persistence.CMongoContainer.html#183" title="Go to source code">__toString</a>( )</code>
+		<code><a href="source-class-MyWrapper.Persistence.CMongoContainer.html#142" title="Go to source code">__toString</a>( )</code>
 
 		<div class="description short">
 			
@@ -291,7 +291,7 @@ object, it will then store it in the connection data member.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#_Connection">#</a>
-		<code><a href="source-class-MyWrapper.Persistence.CMongoContainer.html#221" title="Go to source code">Connection</a>( <span>mixed <var>$theValue</var> = <span class="php-keyword1">NULL</span></span>, <span>boolean <var>$getOld</var> = <span class="php-keyword1">FALSE</span> </span> )</code>
+		<code><a href="source-class-MyWrapper.Persistence.CMongoContainer.html#180" title="Go to source code">Connection</a>( <span>mixed <var>$theValue</var> = <span class="php-keyword1">NULL</span></span>, <span>boolean <var>$getOld</var> = <span class="php-keyword1">FALSE</span> </span> )</code>
 
 		<div class="description short">
 			
@@ -303,7 +303,7 @@ object, it will then store it in the connection data member.</p>
 			
 <h4>Manage native connection</h4>
 
-<p>We overload this method to ensure that the provided container is a MongoCollection object.</p>
+<p>We overload this method to ensure that the provided container is a \MongoCollection object.</p>
 
 
 
@@ -349,7 +349,7 @@ object, it will then store it in the connection data member.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#_ManageObject">#</a>
-		<code><a href="source-class-MyWrapper.Persistence.CMongoContainer.html#295" title="Go to source code">ManageObject</a>( <span>reference <var>&amp; $theObject</var></span>, <span>mixed <var>$theIdentifier</var> = <span class="php-keyword1">NULL</span></span>, <span>bitfield <var>$theModifiers</var> = kFLAG_DEFAULT </span> )</code>
+		<code><a href="source-class-MyWrapper.Persistence.CMongoContainer.html#254" title="Go to source code">ManageObject</a>( <span>reference <var>&amp; $theObject</var></span>, <span>mixed <var>$theIdentifier</var> = <span class="php-keyword1">NULL</span></span>, <span>bitfield <var>$theModifiers</var> = kFLAG_DEFAULT </span> )</code>
 
 		<div class="description short">
 			
@@ -361,7 +361,7 @@ object, it will then store it in the connection data member.</p>
 			
 <h4>Manage an object from the container</h4>
 
-<p>We implement this method to handle MongoCollection object stores.</p>
+<p>We implement this method to handle \MongoCollection object stores.</p>
 
 <p>For more information see MyWrapper\Persistence\CContainer::ManageObject().</p>
 
@@ -415,7 +415,7 @@ object, it will then store it in the connection data member.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#_ConvertBinary">#</a>
-		<code><a href="source-class-MyWrapper.Persistence.CMongoContainer.html#844" title="Go to source code">ConvertBinary</a>( <span>mixed <var>$theValue</var></span>, <span>boolean <var>$theSense</var> = <span class="php-keyword1">TRUE</span> </span> )</code>
+		<code><a href="source-class-MyWrapper.Persistence.CMongoContainer.html#803" title="Go to source code">ConvertBinary</a>( <span>mixed <var>$theValue</var></span>, <span>boolean <var>$theSense</var> = <span class="php-keyword1">TRUE</span> </span> )</code>
 
 		<div class="description short">
 			
@@ -428,7 +428,7 @@ object, it will then store it in the connection data member.</p>
 <h4>Convert a binary string</h4>
 
 <p>This method will take care of converting binary data to and from Mongo data
-stores, we use here the MongoBinData class.</p>
+stores, we use here the \MongoBinData class.</p>
 
 <p>This method can be used by the <code><a href="class-MyWrapper.Persistence.CPersistentObject.html#_">MyWrapper\Persistence\CPersistentObject::_id()</a></code> method when
 generating a hashed identifier.</p>

@@ -27,7 +27,7 @@ require_once( '/Library/WebServer/Library/PHPWrapper/includes.inc.php' );
 //
 // Class includes.
 //
-use \MyWrapper\Framework\CStatusDocument;
+use \MyWrapper\Framework\CStatusDocument as CStatusDocument;
 
 
 /*=======================================================================================

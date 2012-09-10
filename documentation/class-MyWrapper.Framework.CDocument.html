@@ -7,7 +7,7 @@
 	<title>Class MyWrapper\Framework\CDocument | MyWrapper Reference Documentation</title>
 
 	<script type="text/javascript" src="resources/combined.js?496895167"></script>
-	<script type="text/javascript" src="elementlist.js?1502153213"></script>
+	<script type="text/javascript" src="elementlist.js?1852740671"></script>
 	<link rel="stylesheet" type="text/css" media="all" href="resources/style.css?1567499433" />
 
 </head>
@@ -47,6 +47,7 @@
 				<li><a href="class-MyWrapper.Framework.CContainer.html">CContainer</a></li>
 				<li><a href="class-MyWrapper.Framework.CDatabase.html">CDatabase</a></li>
 				<li class="active"><a href="class-MyWrapper.Framework.CDocument.html">CDocument</a></li>
+				<li><a href="class-MyWrapper.Framework.CNode.html">CNode</a></li>
 				<li><a href="class-MyWrapper.Framework.CServer.html">CServer</a></li>
 				<li><a href="class-MyWrapper.Framework.CStatusDocument.html">CStatusDocument</a></li>
 				<li><a href="class-MyWrapper.Framework.CTerm.html">CTerm</a></li>
@@ -100,7 +101,7 @@
 <h3>Document object</h3>
 
 <p>This class is the ancestor common to most classes in this library, it extends
-<code><a href="class-ArrayObject.html">ArrayObject</a></code> to implement an object which represents a collection of
+\ArrayObject to implement an object which represents a collection of
 key/value attributes.</p>
 
 <p>The object implements the <code><a href="class-ArrayAccess.html">ArrayAccess</a></code> interface in which the
@@ -181,16 +182,17 @@ this way:</p>
 		<h4>Indirect known subclasses</h4>
 			<a href="class-MyWrapper.Framework.CConnection.html">MyWrapper\Framework\CConnection</a>, 
 			<a href="class-MyWrapper.Framework.CContainer.html">MyWrapper\Framework\CContainer</a>, 
+			<a href="class-MyWrapper.Persistence.CMongoServer.html">MyWrapper\Persistence\CMongoServer</a>, 
 			<a href="class-MyWrapper.Persistence.CPersistentDocument.html">MyWrapper\Persistence\CPersistentDocument</a>, 
 			<a href="class-MyWrapper.Persistence.CPersistentObject.html">MyWrapper\Persistence\CPersistentObject</a>, 
 			<a href="class-MyWrapper.Framework.CDatabase.html">MyWrapper\Framework\CDatabase</a>, 
+			<a href="class-MyWrapper.Framework.CNode.html">MyWrapper\Framework\CNode</a>, 
 			<a href="class-MyWrapper.Framework.CServer.html">MyWrapper\Framework\CServer</a>, 
 			<a href="class-MyWrapper.Framework.CTerm.html">MyWrapper\Framework\CTerm</a>, 
 			<a href="class-MyWrapper.Ontology.COntologyTerm.html">MyWrapper\Ontology\COntologyTerm</a>, 
 			<a href="class-MyWrapper.Persistence.CMongoContainer.html">MyWrapper\Persistence\CMongoContainer</a>, 
 			<a href="class-MyWrapper.Persistence.CMongoDatabase.html">MyWrapper\Persistence\CMongoDatabase</a>, 
-			<a href="class-MyWrapper.Persistence.CMongoSequence.html">MyWrapper\Persistence\CMongoSequence</a>, 
-			<a href="class-MyWrapper.Persistence.CMongoServer.html">MyWrapper\Persistence\CMongoServer</a>
+			<a href="class-MyWrapper.Persistence.CMongoSequence.html">MyWrapper\Persistence\CMongoSequence</a>
 	</div>
 
 
@@ -203,7 +205,7 @@ this way:</p>
 		<b>Namespace:</b> <a href="namespace-MyWrapper.html">MyWrapper</a>\<a href="namespace-MyWrapper.Framework.html">Framework</a><br />
 		<b>Package:</b> MyWrapper\Framework<br />
 
-		<b>Located at</b> <a href="source-class-MyWrapper.Framework.CDocument.html#36" title="Go to source code">Framework/CDocument.php</a><br />
+		<b>Located at</b> <a href="source-class-MyWrapper.Framework.CDocument.html#29" title="Go to source code">Framework/CDocument.php</a><br />
 	</div>
 
 
@@ -220,7 +222,7 @@ this way:</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#_offsetGet">#</a>
-		<code><a href="source-class-MyWrapper.Framework.CDocument.html#94" title="Go to source code">offsetGet</a>( <span>string <var>$theOffset</var></span> )</code>
+		<code><a href="source-class-MyWrapper.Framework.CDocument.html#87" title="Go to source code">offsetGet</a>( <span>string <var>$theOffset</var></span> )</code>
 
 		<div class="description short">
 			
@@ -274,7 +276,7 @@ returns a <tt>NULL</tt> value, it means that the offset doesn't exist.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#_offsetSet">#</a>
-		<code><a href="source-class-MyWrapper.Framework.CDocument.html#117" title="Go to source code">offsetSet</a>( <span>string <var>$theOffset</var></span>, <span>mixed <var>$theValue</var></span> )</code>
+		<code><a href="source-class-MyWrapper.Framework.CDocument.html#110" title="Go to source code">offsetSet</a>( <span>string <var>$theOffset</var></span>, <span>mixed <var>$theValue</var></span> )</code>
 
 		<div class="description short">
 			
@@ -328,7 +330,7 @@ the case, the method will unset the offset.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#_offsetUnset">#</a>
-		<code><a href="source-class-MyWrapper.Framework.CDocument.html#153" title="Go to source code">offsetUnset</a>( <span>string <var>$theOffset</var></span> )</code>
+		<code><a href="source-class-MyWrapper.Framework.CDocument.html#146" title="Go to source code">offsetUnset</a>( <span>string <var>$theOffset</var></span> )</code>
 
 		<div class="description short">
 			
@@ -378,7 +380,7 @@ the case, the method will unset the offset.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#_array_keys">#</a>
-		<code><a href="source-class-MyWrapper.Framework.CDocument.html#180" title="Go to source code">array_keys</a>( )</code>
+		<code><a href="source-class-MyWrapper.Framework.CDocument.html#173" title="Go to source code">array_keys</a>( )</code>
 
 		<div class="description short">
 			
@@ -418,7 +420,7 @@ will return an array comprised of all object's offsets.</tt></p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#_array_values">#</a>
-		<code><a href="source-class-MyWrapper.Framework.CDocument.html#196" title="Go to source code">array_values</a>( )</code>
+		<code><a href="source-class-MyWrapper.Framework.CDocument.html#189" title="Go to source code">array_values</a>( )</code>
 
 		<div class="description short">
 			

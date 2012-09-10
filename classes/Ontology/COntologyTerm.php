@@ -20,17 +20,18 @@
  *======================================================================================*/
 
 /**
- * Exceptions.
+ * Local definitions.
  *
- * This include file contains the native exceptions class definitions.
+ * This include file contains common offset definitions.
  */
-use \Exception as Exception;
+require_once( "COntologyTerm.inc.php" );
 
 /**
  * Containers.
  *
  * This includes the container class definitions.
  */
+require_once( kPATH_MYWRAPPER_LIBRARY_CLASS."/Framework/CContainer.php" );
 use \MyWrapper\Framework\CContainer as CContainer;
 
 /**
@@ -38,6 +39,7 @@ use \MyWrapper\Framework\CContainer as CContainer;
  *
  * This includes the ancestor class definitions.
  */
+require_once( kPATH_MYWRAPPER_LIBRARY_CLASS."/Framework/CTerm.php" );
 use \MyWrapper\Framework\CTerm as CTerm;
 
 /**
@@ -197,7 +199,7 @@ class COntologyTerm extends CTerm
 	 *
 	 * @access protected
 	 *
-	 * @throws Exception
+	 * @throws \Exception
 	 *
 	 * @see kOFFSET_NID kOFFSET_GID kOFFSET_LID
 	 */
@@ -208,7 +210,7 @@ class COntologyTerm extends CTerm
 		//
 		$offsets = array( kOFFSET_REFS_NAMESPACE, kOFFSET_REFS_NODE, kOFFSET_REFS_TAG );
 		if( in_array( $theOffset, $offsets ) )
-			throw new Exception
+			throw new \Exception
 				( "The [$theOffset] offset cannot be modified",
 				  kERROR_LOCKED );												// !@! ==>
 		
@@ -235,7 +237,7 @@ class COntologyTerm extends CTerm
 	 *
 	 * @access protected
 	 *
-	 * @throws Exception
+	 * @throws \Exception
 	 *
 	 * @uses _IsDirty()
 	 */
@@ -246,7 +248,7 @@ class COntologyTerm extends CTerm
 		//
 		$offsets = array( kOFFSET_REFS_NAMESPACE, kOFFSET_REFS_NODE, kOFFSET_REFS_TAG );
 		if( in_array( $theOffset, $offsets ) )
-			throw new Exception
+			throw new \Exception
 				( "The [$theOffset] offset cannot be modified",
 				  kERROR_LOCKED );												// !@! ==>
 		

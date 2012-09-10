@@ -7,7 +7,7 @@
 	<title>Class MyWrapper\Persistence\CPersistentDocument | MyWrapper Reference Documentation</title>
 
 	<script type="text/javascript" src="resources/combined.js?496895167"></script>
-	<script type="text/javascript" src="elementlist.js?1502153213"></script>
+	<script type="text/javascript" src="elementlist.js?1852740671"></script>
 	<link rel="stylesheet" type="text/css" media="all" href="resources/style.css?1567499433" />
 
 </head>
@@ -140,6 +140,9 @@ performed in the <code><a href="class-MyWrapper.Persistence.CPersistentDocument.
 reason we also overload the constructor to initialise the <code><a href="class-MyWrapper.Framework.CStatusDocument.html#_">MyWrapper\Framework\CStatusDocument::_IsInited()</a></code>
 status, by default the object is initialised.</p>
 
+<p>The method implements an accessor method for the native unique identifier,
+<code><a href="class-MyWrapper.Persistence.CPersistentDocument.html#_">MyWrapper\Persistence\CPersistentDocument::NID()</a></code>.</p>
+
 	</div>
 
 	<dl class="tree">
@@ -189,6 +192,7 @@ status, by default the object is initialised.</p>
 
 	<div>
 		<h4>Indirect known subclasses</h4>
+			<a href="class-MyWrapper.Framework.CNode.html">MyWrapper\Framework\CNode</a>, 
 			<a href="class-MyWrapper.Framework.CTerm.html">MyWrapper\Framework\CTerm</a>, 
 			<a href="class-MyWrapper.Ontology.COntologyTerm.html">MyWrapper\Ontology\COntologyTerm</a>
 	</div>
@@ -203,7 +207,7 @@ status, by default the object is initialised.</p>
 		<b>Namespace:</b> <a href="namespace-MyWrapper.html">MyWrapper</a>\<a href="namespace-MyWrapper.Persistence.html">Persistence</a><br />
 		<b>Package:</b> MyWrapper\Persistence<br />
 
-		<b>Located at</b> <a href="source-class-MyWrapper.Persistence.CPersistentDocument.html#50" title="Go to source code">Persistence/CPersistentDocument.php</a><br />
+		<b>Located at</b> <a href="source-class-MyWrapper.Persistence.CPersistentDocument.html#45" title="Go to source code">Persistence/CPersistentDocument.php</a><br />
 	</div>
 
 
@@ -220,7 +224,7 @@ status, by default the object is initialised.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#___construct">#</a>
-		<code><a href="source-class-MyWrapper.Persistence.CPersistentDocument.html#108" title="Go to source code">__construct</a>( <span>mixed <var>$theInput</var> = <span class="php-keyword1">Array</span>()</span>, <span>integer <var>$theFlags</var> = <span class="php-num">0</span></span>, <span>string <var>$theIterator</var> = <span class="php-quote">'ArrayIterator'</span> </span> )</code>
+		<code><a href="source-class-MyWrapper.Persistence.CPersistentDocument.html#105" title="Go to source code">__construct</a>( <span>mixed <var>$theInput</var> = <span class="php-keyword1">Array</span>()</span>, <span>integer <var>$theFlags</var> = <span class="php-num">0</span></span>, <span>string <var>$theIterator</var> = <span class="php-quote">'ArrayIterator'</span> </span> )</code>
 
 		<div class="description short">
 			
@@ -263,6 +267,80 @@ according to the data set in the object.</p>
 		</div>
 		</div></td>
 	</tr>
+	<tr data-order="NID" id="_NID">
+
+		<td class="attributes"><code>
+			 public 
+			mixed
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_NID">#</a>
+		<code><a href="source-class-MyWrapper.Persistence.CPersistentDocument.html#152" title="Go to source code">NID</a>( <span>mixed <var>$theValue</var> = <span class="php-keyword1">NULL</span></span>, <span>boolean <var>$getOld</var> = <span class="php-keyword1">FALSE</span> </span> )</code>
+
+		<div class="description short">
+			
+<h4>Manage native unique identifier</h4>
+
+		</div>
+
+		<div class="description detailed hidden">
+			
+<h4>Manage native unique identifier</h4>
+
+<p>The <i>native unique identifier</i>, kOFFSET_NID, represents the
+primary key of the object in the native format of the container in which the
+object is stored.</p>
+
+<p>The method accepts a parameter which represents either the identifier or the
+requested operation, depending on its value:</p>
+
+<ul>
+	<li><tt>NULL</tt>: Return the current value.</li>
+
+	<li><tt>FALSE</tt>: Delete the current value.</li>
+
+	<li><i>other</i>: Set the value with the provided parameter.</li>
+</ul>
+
+<p>The second parameter is a boolean which if <tt>TRUE</tt> will return the
+<i>old</i> value when replacing containers; if <tt>FALSE</tt>, it will return
+the currently set value.</p>
+
+<p>Note that when the object has the <code><a href="class-MyWrapper.Framework.CStatusDocument.html#_">MyWrapper\Framework\CStatusDocument::_IsCommitted()</a></code> status this offset
+will be locked and an exception will be raised.</p>
+
+
+
+				<h4>Parameters</h4>
+				<div class="list"><dl>
+					<dt><var>$theValue</var></dt>
+					<dd><code>mixed</code><br> Native identifier or operation.</dd>
+					<dt><var>$getOld</var></dt>
+					<dd><code>boolean</code><br> <tt>TRUE</tt> get old value.</dd>
+				</dl></div>
+
+				<h4>Returns</h4>
+				<div class="list">
+					<code>mixed</code><br><i>New</i> or <i>old</i> native container.<br />
+				</div>
+
+
+				<h4>See</h4>
+				<div class="list">
+						kOFFSET_NID<br />
+				</div>
+				<h4>Uses</h4>
+				<div class="list">
+						<code><code><a href="function-ManageOffset.html">ManageOffset()</a></code></code> <br />
+				</div>
+
+
+		</div>
+		</div></td>
+	</tr>
 	<tr data-order="Insert" id="_Insert">
 
 		<td class="attributes"><code>
@@ -274,7 +352,7 @@ according to the data set in the object.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#_Insert">#</a>
-		<code><a href="source-class-MyWrapper.Persistence.CPersistentDocument.html#155" title="Go to source code">Insert</a>( <span><code><a href="class-MyWrapper.Framework.CContainer.html">MyWrapper\Framework\CContainer</a></code> <var>$theContainer</var></span> )</code>
+		<code><a href="source-class-MyWrapper.Persistence.CPersistentDocument.html#204" title="Go to source code">Insert</a>( <span><code><a href="class-MyWrapper.Framework.CContainer.html">MyWrapper\Framework\CContainer</a></code> <var>$theContainer</var></span> )</code>
 
 		<div class="description short">
 			
@@ -346,7 +424,7 @@ event the method will return <tt>NULL</tt>.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#_Update">#</a>
-		<code><a href="source-class-MyWrapper.Persistence.CPersistentDocument.html#231" title="Go to source code">Update</a>( <span><code><a href="class-MyWrapper.Framework.CContainer.html">MyWrapper\Framework\CContainer</a></code> <var>$theContainer</var></span> )</code>
+		<code><a href="source-class-MyWrapper.Persistence.CPersistentDocument.html#280" title="Go to source code">Update</a>( <span><code><a href="class-MyWrapper.Framework.CContainer.html">MyWrapper\Framework\CContainer</a></code> <var>$theContainer</var></span> )</code>
 
 		<div class="description short">
 			
@@ -414,7 +492,7 @@ status set and its <code><a href="class-MyWrapper.Framework.CStatusDocument.html
 
 		<td class="name"><div>
 		<a class="anchor" href="#_Replace">#</a>
-		<code><a href="source-class-MyWrapper.Persistence.CPersistentDocument.html#303" title="Go to source code">Replace</a>( <span><code><a href="class-MyWrapper.Framework.CContainer.html">MyWrapper\Framework\CContainer</a></code> <var>$theContainer</var></span> )</code>
+		<code><a href="source-class-MyWrapper.Persistence.CPersistentDocument.html#352" title="Go to source code">Replace</a>( <span><code><a href="class-MyWrapper.Framework.CContainer.html">MyWrapper\Framework\CContainer</a></code> <var>$theContainer</var></span> )</code>
 
 		<div class="description short">
 			
@@ -488,7 +566,7 @@ status set and its <code><a href="class-MyWrapper.Framework.CStatusDocument.html
 
 		<td class="name"><div>
 		<a class="anchor" href="#_Restore">#</a>
-		<code><a href="source-class-MyWrapper.Persistence.CPersistentDocument.html#382" title="Go to source code">Restore</a>( <span><code><a href="class-MyWrapper.Framework.CContainer.html">MyWrapper\Framework\CContainer</a></code> <var>$theContainer</var></span> )</code>
+		<code><a href="source-class-MyWrapper.Persistence.CPersistentDocument.html#431" title="Go to source code">Restore</a>( <span><code><a href="class-MyWrapper.Framework.CContainer.html">MyWrapper\Framework\CContainer</a></code> <var>$theContainer</var></span> )</code>
 
 		<div class="description short">
 			
@@ -562,7 +640,7 @@ is obviously not called here.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#_Delete">#</a>
-		<code><a href="source-class-MyWrapper.Persistence.CPersistentDocument.html#462" title="Go to source code">Delete</a>( <span><code><a href="class-MyWrapper.Framework.CContainer.html">MyWrapper\Framework\CContainer</a></code> <var>$theContainer</var></span> )</code>
+		<code><a href="source-class-MyWrapper.Persistence.CPersistentDocument.html#511" title="Go to source code">Delete</a>( <span><code><a href="class-MyWrapper.Framework.CContainer.html">MyWrapper\Framework\CContainer</a></code> <var>$theContainer</var></span> )</code>
 
 		<div class="description short">
 			
@@ -622,7 +700,7 @@ status and its <code><a href="class-MyWrapper.Framework.CStatusDocument.html#_">
 
 		<td class="name"><div>
 		<a class="anchor" href="#_NewObject">#</a>
-		<code><a href="source-class-MyWrapper.Persistence.CPersistentDocument.html#521" title="Go to source code">NewObject</a>( <span><code><a href="class-MyWrapper.Framework.CContainer.html">MyWrapper\Framework\CContainer</a></code> <var>$theContainer</var></span>, <span>mixed <var>$theIdentifier</var></span> )</code>
+		<code><a href="source-class-MyWrapper.Persistence.CPersistentDocument.html#570" title="Go to source code">NewObject</a>( <span><code><a href="class-MyWrapper.Framework.CContainer.html">MyWrapper\Framework\CContainer</a></code> <var>$theContainer</var></span>, <span>mixed <var>$theIdentifier</var></span> )</code>
 
 		<div class="description short">
 			
@@ -680,7 +758,7 @@ container, the method will return <tt>NULL</tt>.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#__Postset">#</a>
-		<code><a href="source-class-MyWrapper.Persistence.CPersistentDocument.html#586" title="Go to source code">_Postset</a>( <span>reference <var>&amp; $theOffset</var></span>, <span>reference <var>&amp; $theValue</var></span> )</code>
+		<code><a href="source-class-MyWrapper.Persistence.CPersistentDocument.html#635" title="Go to source code">_Postset</a>( <span>reference <var>&amp; $theOffset</var></span>, <span>reference <var>&amp; $theValue</var></span> )</code>
 
 		<div class="description short">
 			
@@ -736,7 +814,7 @@ except that they are passed by reference.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#__Postunset">#</a>
-		<code><a href="source-class-MyWrapper.Persistence.CPersistentDocument.html#625" title="Go to source code">_Postunset</a>( <span>reference <var>&amp; $theOffset</var></span> )</code>
+		<code><a href="source-class-MyWrapper.Persistence.CPersistentDocument.html#674" title="Go to source code">_Postunset</a>( <span>reference <var>&amp; $theOffset</var></span> )</code>
 
 		<div class="description short">
 			
@@ -790,7 +868,7 @@ except that it passed by reference.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#__Precommit">#</a>
-		<code><a href="source-class-MyWrapper.Persistence.CPersistentDocument.html#672" title="Go to source code">_Precommit</a>( <span><code><a href="class-MyWrapper.Framework.CContainer.html">MyWrapper\Framework\CContainer</a></code> <var>$theContainer</var></span>, <span>bitfield <var>$theModifiers</var> = kFLAG_DEFAULT </span> )</code>
+		<code><a href="source-class-MyWrapper.Persistence.CPersistentDocument.html#721" title="Go to source code">_Precommit</a>( <span><code><a href="class-MyWrapper.Framework.CContainer.html">MyWrapper\Framework\CContainer</a></code> <var>$theContainer</var></span>, <span>bitfield <var>$theModifiers</var> = kFLAG_DEFAULT </span> )</code>
 
 		<div class="description short">
 			
@@ -881,7 +959,7 @@ raise an exception.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#__Postcommit">#</a>
-		<code><a href="source-class-MyWrapper.Persistence.CPersistentDocument.html#736" title="Go to source code">_Postcommit</a>( <span><code><a href="class-MyWrapper.Framework.CContainer.html">MyWrapper\Framework\CContainer</a></code> <var>$theContainer</var></span>, <span>bitfield <var>$theModifiers</var> = kFLAG_DEFAULT </span> )</code>
+		<code><a href="source-class-MyWrapper.Persistence.CPersistentDocument.html#785" title="Go to source code">_Postcommit</a>( <span><code><a href="class-MyWrapper.Framework.CContainer.html">MyWrapper\Framework\CContainer</a></code> <var>$theContainer</var></span>, <span>bitfield <var>$theModifiers</var> = kFLAG_DEFAULT </span> )</code>
 
 		<div class="description short">
 			
@@ -969,7 +1047,7 @@ resetting it after deleting.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#__Ready">#</a>
-		<code><a href="source-class-MyWrapper.Persistence.CPersistentDocument.html#816" title="Go to source code">_Ready</a>( )</code>
+		<code><a href="source-class-MyWrapper.Persistence.CPersistentDocument.html#865" title="Go to source code">_Ready</a>( )</code>
 
 		<div class="description short">
 			

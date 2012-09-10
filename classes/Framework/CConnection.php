@@ -20,10 +20,18 @@
  *======================================================================================*/
 
 /**
+ * Local definitions.
+ *
+ * This include file contains common offset definitions.
+ */
+require_once( "CConnection.inc.php" );
+
+/**
  * Ancestor.
  *
  * This includes the ancestor class definitions.
  */
+require_once( kPATH_MYWRAPPER_LIBRARY_CLASS."/Framework/CStatusDocument.php" );
 use \MyWrapper\Framework\CStatusDocument as CStatusDocument;
 
 /**

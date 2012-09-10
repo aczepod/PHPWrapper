@@ -20,6 +20,13 @@
  *======================================================================================*/
 
 /**
+ * Local definitions.
+ *
+ * This include file contains common offset definitions.
+ */
+require_once( "CTerm.inc.php" );
+
+/**
  * Tokens.
  *
  * This include file contains all default token definitions.
@@ -27,24 +34,11 @@
 require_once( kPATH_MYWRAPPER_LIBRARY_DEFINE."/Tokens.inc.php" );
 
 /**
- * Accessors.
- *
- * This include file contains all accessor function definitions.
- */
-require_once( kPATH_MYWRAPPER_LIBRARY_FUNCTION."/accessors.php" );
-
-/**
- * Exceptions.
- *
- * This include file contains the native exceptions class definitions.
- */
-use \Exception as Exception;
-
-/**
  * Containers.
  *
  * This includes the container class definitions.
  */
+require_once( kPATH_MYWRAPPER_LIBRARY_CLASS."/Framework/CContainer.php" );
 use \MyWrapper\Framework\CContainer as CContainer;
 
 /**
@@ -52,6 +46,7 @@ use \MyWrapper\Framework\CContainer as CContainer;
  *
  * This includes the ancestor class definitions.
  */
+require_once( kPATH_MYWRAPPER_LIBRARY_CLASS."/Persistence/CPersistentObject.php" );
 use \MyWrapper\Persistence\CPersistentObject as CPersistentObject;
 
 /**
@@ -145,7 +140,7 @@ class CTerm extends CPersistentObject
 	 */
 	public function NS( $theValue = NULL, $getOld = FALSE )
 	{
-		return ManageOffset( $this, kOFFSET_NAMESPACE, $theValue, $getOld );				// ==>
+		return ManageOffset( $this, kOFFSET_NAMESPACE, $theValue, $getOld );		// ==>
 
 	} // NS.
 
@@ -225,7 +220,7 @@ class CTerm extends CPersistentObject
 	 * @static
 	 * @return mixed				The object's native unique identifier.
 	 *
-	 * @throws Exception
+	 * @throws \Exception
 	 */
 	static function _id( $theIdentifier = NULL, CContainer $theContainer = NULL )
 	{
@@ -233,7 +228,7 @@ class CTerm extends CPersistentObject
 		// Handle identifier.
 		//
 		if( $theIdentifier === NULL )
-			throw new Exception
+			throw new \Exception
 				( "Global unique identifier not provided",
 				  kERROR_MISSING );												// !@! ==>
 	
@@ -241,7 +236,7 @@ class CTerm extends CPersistentObject
 		// Check container.
 		//
 		if( $theContainer === NULL )
-			throw new Exception
+			throw new \Exception
 				( "Terms hash their key: missing container for decoding",
 				  kERROR_MISSING );												// !@! ==>
 		
@@ -290,7 +285,7 @@ class CTerm extends CPersistentObject
 	 * @access protected
 	 * @return string|NULL			The object's global unique identifier.
 	 *
-	 * @throws Exception
+	 * @throws \Exception
 	 *
 	 * @uses _index()
 	 */
@@ -315,7 +310,7 @@ class CTerm extends CPersistentObject
 				// Check global identifier.
 				//
 				if( ! $namespace->offsetExists( kOFFSET_GID ) )
-					throw new Exception
+					throw new \Exception
 						( "Unable to generate term global identifier: "
 						 ."namespace has no global identifier",
 						  kERROR_STATE );										// !@! ==>
@@ -329,7 +324,7 @@ class CTerm extends CPersistentObject
 				// Check namespace ID.
 				//
 				if( ! $namespace->offsetExists( kOFFSET_NID ) )
-					throw new Exception
+					throw new \Exception
 						( "Unable to generate term global identifier: "
 						 ."namespace has no native identifier",
 						  kERROR_STATE );										// !@! ==>
@@ -351,7 +346,7 @@ class CTerm extends CPersistentObject
 				//
 				$ok = $theContainer->ManageObject( $object, $namespace );
 				if( ! $ok )
-					throw new Exception
+					throw new \Exception
 						( "Unable to generate term global identifier: "
 						 ."unresolved namespace object",
 						  kERROR_STATE );										// !@! ==>
@@ -390,15 +385,21 @@ class CTerm extends CPersistentObject
 	/**
 	 * <h4>Handle offset before setting it</h4>
 	 *
-	 * In this class we prevent the modification of the {@link kOFFSET_NAMESPACE} offset if
-	 * the object has its {@link _IsCommitted()} status set.
+	 * In this class we prevent the modification of offsets that concur in the generation of
+	 * the object's identifier if the object has its {@link _IsCommitted()} status set. This
+	 * is because referenced objects must not change identifier.
+	 *
+	 * The {@link kOFFSET_NAMESPACE} and {@link kOFFSET_LID} are locked if the object was
+	 * committed, {@link _IsCommitted()}.
 	 *
 	 * @param reference			   &$theOffset			Offset.
 	 * @param reference			   &$theValue			Value to set at offset.
 	 *
 	 * @access protected
 	 *
-	 * @throws Exception
+	 * @throws \Exception
+	 *
+	 * @uses _IsCommitted()
 	 *
 	 * @see kOFFSET_NID kOFFSET_GID kOFFSET_LID
 	 */
@@ -410,7 +411,7 @@ class CTerm extends CPersistentObject
 		$offsets = array( kOFFSET_NAMESPACE, kOFFSET_LID );
 		if( $this->_IsCommitted()
 		 && in_array( $theOffset, $offsets ) )
-			throw new Exception
+			throw new \Exception
 				( "The object is committed, you cannot modify the [$theOffset] offset",
 				  kERROR_LOCKED );												// !@! ==>
 		
@@ -433,13 +434,16 @@ class CTerm extends CPersistentObject
 	 * the object's identifier if the object has its {@link _IsCommitted()} status set. This
 	 * is because referenced objects must not change identifier.
 	 *
+	 * The {@link kOFFSET_NAMESPACE} and {@link kOFFSET_LID} are locked if the object was
+	 * committed, {@link _IsCommitted()}.
+	 *
 	 * @param reference			   &$theOffset			Offset.
 	 *
 	 * @access protected
 	 *
-	 * @throws Exception
+	 * @throws \Exception
 	 *
-	 * @uses _IsDirty()
+	 * @uses _IsCommitted()
 	 */
 	protected function _Preunset( &$theOffset )
 	{
@@ -449,7 +453,7 @@ class CTerm extends CPersistentObject
 		$offsets = array( kOFFSET_NAMESPACE, kOFFSET_LID );
 		if( $this->_IsCommitted()
 		 && in_array( $theOffset, $offsets ) )
-			throw new Exception
+			throw new \Exception
 				( "The object is committed, you cannot modify the [$theOffset] offset",
 				  kERROR_LOCKED );												// !@! ==>
 		
@@ -525,18 +529,13 @@ class CTerm extends CPersistentObject
 	/**
 	 * <h4>Determine if the object is ready</h4>
 	 *
-	 * This method will return a boolean indicating whether all the required the elements
-	 * managed by the current class are present, this value should then be set by the caller
-	 * into the {@link _IsInited()} status.
-	 *
-	 * This method should be implemented in all inheritance levels in which the
-	 * @link _IsInited()} status is affected.
-	 *
-	 * In this class we assume the object is {@link _IsInited()}, it is up to derived
-	 * classes to prove the contrary.
+	 * In this class we tie the {@link _IsInited()} status to the presence or absence of the
+	 * {@link kOFFSET_LID} offset.
 	 *
 	 * @access protected
 	 * @return boolean				<tt>TRUE</tt> means {@link _IsInited( <tt>TRUE</tt> ).
+	 *
+	 * @see kOFFSET_LID
 	 */
 	protected function _Ready()
 	{

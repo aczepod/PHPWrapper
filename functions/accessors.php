@@ -275,5 +275,318 @@ require_once( kPATH_MYWRAPPER_LIBRARY_DEFINE."/Errors.inc.php" );
 	
 	} // ManageOffset.
 
+	 
+	/*===================================================================================
+	 *	ManageObjectSetOffset															*
+	 *==================================================================================*/
+
+	/**
+	 * Manage an object set offset.
+	 *
+	 * An object set is a list of unique objects, this method manages such an offset by
+	 * handling add, retrieve and delete of its elements, rather than of the offset itself
+	 * as in {@link ManageOffset}.
+	 *
+	 * The elements of the list are expected to be object references in the form of their
+	 * native unique identifier, @link kOFFSET_NID}.
+	 *
+	 * When adding new elements, the method will check if the object already exists in the
+	 * set by comparing the hashed identifiers, thus using the {@link kOFFSET_NID} of
+	 * eventual full objects.
+	 *
+	 * When deleting elements, if the list becomes empty, the whole offset will be deleted.
+	 *
+	 * The method accepts the following parameters:
+	 *
+	 * <ul>
+	 *	<li><b>&$theReference</b>: Reference to the set container, it may either refer to
+	 *		an array or an {@link ArrayObject}, any other type will trigger an exception.
+	 *	<li><b>$theOffset</b>: The offset to the set within the previous parameter, this
+	 *		referenced element is expected to be an array, if this is not the case, the
+	 *		method will raise an exception. Note that it must not be an ArrayObject.
+	 *	<li><b>$theValue</b>: Depending on the next parameter, this may either refer to the
+	 *		value to be set or to the index of the element to be retrieved or deleted:
+	 *	 <ul>
+	 *		<li><i>NULL</i>: This value indicates that we want to operate on all elements,
+	 *			which means, in practical terms, that we either want to retrieve or delete
+	 *			the full list. If the operation parameter resolves to <i>TRUE</i>, the
+	 *			method will default to retrieving the current list and no new element will
+	 *			be added.
+	 *		<li><i>array</i>: An array indicates that we want to operate on a list of
+	 *			values and that other parameters may also be provided as lists. Note that
+	 *			ArrayObject instances are not considered here as arrays.
+	 *		<li><i>other</i>: Any other type represents either the new value to be added or
+	 *			the index to the value to be returned or deleted.
+	 *	 </ul>
+	 *	<li><b>$theOperation</b>: This parameter represents the operation to be performed
+	 *		whose scope depends on the value of the previous parameter:
+	 *	 <ul>
+	 *		<li><i>NULL</i>: Return the element or full list.
+	 *		<li><i>FALSE</i>: Delete the element or full list.
+	 *		<li><i>array</i>: This type is only considered if the <i>$theValue</i> parameter
+	 *			is provided as an array: the method will be called for each element of the
+	 *			<i>$theValue</i> parameter matched with the corresponding element of this
+	 *			parameter, which also means that both both parameters must share the same
+	 *			count.
+	 *		<li><i>other</i>: Add the <i>$theValue</i> value to the list. If you provided
+	 *			<i>NULL</i> in the previous parameter, the operation will be reset to
+	 *			<i>NULL</i>.
+	 *	 </ul>
+	 *	<li><b>$getOld</b>: Determines what the method will return:
+	 *	 <ul>
+	 *		<li><i>TRUE</i>: Return the value <i>before</i> it was eventually modified.
+	 *		<li><i>FALSE</i>: Return the value <i>after</i> it was eventually modified.
+	 *	 </ul>
+	 * </ul>
+	 *
+	 * @param reference			   &$theReference		Object reference.
+	 * @param string				$theOffset			Offset.
+	 * @param mixed					$theValue			Value to manage.
+	 * @param mixed					$theOperation		Operation to perform.
+	 * @param boolean				$getOld				TRUE get old value.
+	 *
+	 * @return mixed
+	 *
+	 * @throws {@link CException CException}
+	 *
+	 * @uses HashClosure()
+	 * @uses ManageOffset()
+	 */
+	function ManageObjectSetOffset( &$theReference, $theOffset, $theValue = NULL,
+																$theOperation = NULL,
+																$getOld = FALSE )
+	{
+		//
+		// Check reference.
+		//
+		if( is_array( $theReference )
+		 || ($theReference instanceof ArrayObject) )
+		{
+			//
+			// Normalise offset.
+			//
+			$theOffset = (string) $theOffset;
+			
+			//
+			// Handle multiple parameters:
+			//
+			if( is_array( $theValue ) )
+			{
+				//
+				// Init local storage.
+				//
+				$result = Array();
+				$count = count( $theValue );
+				
+				//
+				// Check operation.
+				//
+				if( is_array( $theOperation )
+				 && (count( $theOperation ) != $count) )
+					throw new CException
+							( "Values and operations counts do not match",
+							  kERROR_PARAMETER );								// !@! ==>
+				
+				//
+				// Iterate values.
+				//
+				foreach( $theValue as $index => $value )
+				{
+					//
+					// Set operation.
+					//
+					$operation = ( is_array( $theOperation ) )
+							   ? $theOperation[ $index ]
+							   : $theOperation;
+					
+					//
+					// Get result.
+					//
+					$result[]
+						= ManageObjectSetOffset
+							( $theReference, $theOffset,
+							  $value, $operation,
+							  $getOld );
+				
+				} // Iterating list of values.
+				
+				return $result;														// ==>
+			
+			} // Multiple parameters.
+			
+			//
+			// Manage full list.
+			//
+			if( $theValue === NULL )
+			{
+				//
+				// Prevent adding.
+				// This is because we would be adding the operation...
+				//
+				if( $theOperation )
+					$theOperation = NULL;
+				
+				//
+				// Retrieve or delete.
+				//
+				return ManageOffset( $theReference,
+									 $theOffset, $theOperation,
+									 $getOld );										// ==>
+			
+			} // Manage full list.
+			
+			//
+			// Save current list.
+			//
+			$list = ( isset( $theReference[ $theOffset ] ) )
+				  ? $theReference[ $theOffset ]
+				  : NULL;
+			
+			//
+			// Init match.
+			//
+			$idx = $save = NULL;
+			
+			//
+			// Match element.
+			//
+			if( is_array( $list )
+			 || ($list instanceof ArrayObject) )
+			{
+				//
+				// Hash match value.
+				//
+				$match = md5( $theValue );
+				
+				//
+				// Match element.
+				//
+				foreach( $list as $key => $value )
+				{
+					//
+					// Match.
+					//
+					if( $match == md5( $value ) )
+					{
+						//
+						// Save index.
+						//
+						$idx = $key;
+						
+						//
+						// Save value.
+						//
+						$save = $value;
+						
+						break;												// =>
+					
+					} // Matched.
+				
+				} // Matching element.
+			
+			} // Attribute is a list.
+			
+			//
+			// Invalid attribute type.
+			//
+			elseif( $list !== NULL )
+				throw new CException
+						( "Unsupported list attribute type",
+						  kERROR_UNSUPPORTED );									// !@! ==>
+			
+			//
+			// Return current value.
+			//
+			if( $theOperation === NULL )
+				return $save;														// ==>
+			
+			//
+			// Delete data.
+			//
+			if( $theOperation === FALSE )
+			{
+				//
+				// Delete element.
+				//
+				if( $idx !== NULL )
+				{
+					//
+					// Remove element.
+					//
+					unset( $list[ $idx ] );
+					
+					//
+					// Update list.
+					//
+					if( count( $list ) )
+						$theReference[ $theOffset ] = array_values( $list );
+					
+					//
+					// Delete offset.
+					//
+					else
+					{
+						//
+						// Delete offset.
+						//
+						if( is_array( $theReference ) )
+							unset( $theReference[ $theOffset ] );
+						else
+							$theReference->offsetUnset( $theOffset );
+					
+					} // Deleted all elements.
+				
+				} // Element exists.
+				
+				if( $getOld )
+					return $save;													// ==>
+				
+				return NULL;														// ==>
+			
+			} // Delete data.
+			
+			//
+			// Add or replace element.
+			//
+			if( $list !== NULL )
+			{
+				//
+				// Replace element.
+				//
+				if( $idx !== NULL )
+					$list[ $idx ] = $theValue;
+				
+				//
+				// Append new element.
+				//
+				else
+					$list[] = $theValue;
+			
+			} // Had values.
+			
+			//
+			// Create list.
+			//
+			else
+				$list = array( $theValue );
+			
+			//
+			// Update offset.
+			//
+			$theReference[ $theOffset ] = $list;
+			
+			if( $getOld )
+				return $save;														// ==>
+			
+			return $theValue;														// ==>
+		
+		} // Supported reference.
+
+		throw new CException
+				( "Unsupported object reference",
+				  kERROR_UNSUPPORTED );											// !@! ==>
+	
+	} // ManageObjectSetOffset.
+
 
 ?>

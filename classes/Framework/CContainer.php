@@ -20,10 +20,19 @@
  *======================================================================================*/
 
 /**
+ * Persistent document.
+ *
+ * This includes the ancestor class definitions.
+ */
+require_once( kPATH_MYWRAPPER_LIBRARY_CLASS."/Persistence/CPersistentDocument.php" );
+use \MyWrapper\Persistence\CPersistentDocument as CPersistentDocument;
+
+/**
  * Ancestor.
  *
  * This includes the ancestor class definitions.
  */
+require_once( kPATH_MYWRAPPER_LIBRARY_CLASS."/Framework/CConnection.php" );
 use \MyWrapper\Framework\CConnection as CConnection;
 
 /**

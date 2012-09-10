@@ -20,24 +20,18 @@
  *======================================================================================*/
 
 /**
- * Offsets.
+ * Local definitions.
  *
  * This include file contains common offset definitions.
  */
-require_once( kPATH_MYWRAPPER_LIBRARY_DEFINE."/Offsets.inc.php" );
-
-/**
- * Exceptions.
- *
- * This include file contains the native exceptions class definitions.
- */
-use \Exception as Exception;
+require_once( "CPersistentDocument.inc.php" );
 
 /**
  * Container.
  *
  * This includes the containers ancestor class definitions.
  */
+require_once( kPATH_MYWRAPPER_LIBRARY_CLASS."/Framework/CContainer.php" );
 use \MyWrapper\Framework\CContainer as CContainer;
 
 /**
@@ -45,6 +39,7 @@ use \MyWrapper\Framework\CContainer as CContainer;
  *
  * This includes the ancestor class definitions.
  */
+require_once( kPATH_MYWRAPPER_LIBRARY_CLASS."/Framework/CStatusDocument.php" );
 use \MyWrapper\Framework\CStatusDocument as CStatusDocument;
 
 /**
@@ -85,6 +80,8 @@ use \MyWrapper\Framework\CStatusDocument as CStatusDocument;
  * {@link _Postset()} and {@link _Postunset()} methods. For this reason we also overload the
  * constructor to initialise the {@link _IsInited()} status, by default the object is
  * initialised.
+ *
+ * The method implements an accessor method for the native unique identifier, {@link NID()}.
  *
  *	@package	MyWrapper
  *	@subpackage	Persistence
@@ -139,6 +136,58 @@ class CPersistentDocument extends CStatusDocument
 	} // Constructor.
 		
 
+
+/*=======================================================================================
+ *																						*
+ *								PUBLIC MEMBER INTERFACE									*
+ *																						*
+ *======================================================================================*/
+
+
+	 
+	/*===================================================================================
+	 *	NID																				*
+	 *==================================================================================*/
+
+	/**
+	 * <h4>Manage native unique identifier</h4>
+	 *
+	 * The <i>native unique identifier</i>, {@link kOFFSET_NID}, represents the primary key
+	 * of the object in the native format of the container in which the object is stored.
+	 *
+	 * The method accepts a parameter which represents either the identifier or the
+	 * requested operation, depending on its value:
+	 *
+	 * <ul>
+	 *	<li><tt>NULL</tt>: Return the current value.
+	 *	<li><tt>FALSE</tt>: Delete the current value.
+	 *	<li><i>other</i>: Set the value with the provided parameter.
+	 * </ul>
+	 *
+	 * The second parameter is a boolean which if <tt>TRUE</tt> will return the <i>old</i>
+	 * value when replacing containers; if <tt>FALSE</tt>, it will return the currently set
+	 * value.
+	 *
+	 * Note that when the object has the {@link _IsCommitted()} status this offset will be
+	 * locked and an exception will be raised.
+	 *
+	 * @param mixed					$theValue			Native identifier or operation.
+	 * @param boolean				$getOld				<tt>TRUE</tt> get old value.
+	 *
+	 * @access public
+	 * @return mixed				<i>New</i> or <i>old</i> native container.
+	 *
+	 * @uses ManageOffset()
+	 *
+	 * @see kOFFSET_NID
+	 */
+	public function NID( $theValue = NULL, $getOld = FALSE )
+	{
+		return ManageOffset( $this, kOFFSET_NID, $theValue, $getOld );				// ==>
+
+	} // NID.
+
+		
 
 /*=======================================================================================
  *																						*
@@ -251,7 +300,7 @@ class CPersistentDocument extends CStatusDocument
 	 *
 	 * @access public
 	 *
-	 * @throws Exception
+	 * @throws \Exception
 	 *
 	 * @uses _IsDirty()
 	 * @uses _IsCommitted()
@@ -282,7 +331,7 @@ class CPersistentDocument extends CStatusDocument
 			// Commit object.
 			//
 			if( ! $theContainer->ManageObject( $this, NULL, $op ) )
-				throw new Exception
+				throw new \Exception
 					( "Object not found",
 					  kERROR_NOT_FOUND );										// !@! ==>
 			
@@ -407,7 +456,7 @@ class CPersistentDocument extends CStatusDocument
 	 * @access public
 	 * @return mixed				The operation status.
 	 *
-	 * @throws Exception
+	 * @throws \Exception
 	 *
 	 * @uses _Postcommit()
 	 *
@@ -448,7 +497,7 @@ class CPersistentDocument extends CStatusDocument
 		
 		} // Has identifier.
 		
-		throw new Exception
+		throw new \Exception
 			( "Missing object identifier",
 			  kERROR_STATE );													// !@! ==>
 	
@@ -702,7 +751,7 @@ class CPersistentDocument extends CStatusDocument
 	 *
 	 * @access protected
 	 *
-	 * @throws Exception
+	 * @throws \Exception
 	 *
 	 * @uses _IsInited()
 	 *
@@ -720,7 +769,7 @@ class CPersistentDocument extends CStatusDocument
 			// Check if object is inited.
 			//
 			if( ! $this->_IsInited() )
-				throw new Exception
+				throw new \Exception
 					( "The object is not initialised",
 					  kERROR_STATE );											// !@! ==>
 		

@@ -7,7 +7,7 @@
 	<title>Class MyWrapper\Persistence\CMongoServer | MyWrapper Reference Documentation</title>
 
 	<script type="text/javascript" src="resources/combined.js?496895167"></script>
-	<script type="text/javascript" src="elementlist.js?1502153213"></script>
+	<script type="text/javascript" src="elementlist.js?1852740671"></script>
 	<link rel="stylesheet" type="text/css" media="all" href="resources/style.css?1567499433" />
 
 </head>
@@ -98,7 +98,7 @@
 	
 <h3>Server object ancestor</h3>
 
-<p>This class implements a server object that represents a Mongo
+<p>This class implements a server object that represents a \Mongo
 instance. This object can be used to generate Mongo database objects.</p>
 
 	</div>
@@ -169,7 +169,7 @@ instance. This object can be used to generate Mongo database objects.</p>
 		<b>Namespace:</b> <a href="namespace-MyWrapper.html">MyWrapper</a>\<a href="namespace-MyWrapper.Persistence.html">Persistence</a><br />
 		<b>Package:</b> MyWrapper\Persistence<br />
 
-		<b>Located at</b> <a href="source-class-MyWrapper.Persistence.CMongoServer.html#50" title="Go to source code">Persistence/CMongoServer.php</a><br />
+		<b>Located at</b> <a href="source-class-MyWrapper.Persistence.CMongoServer.html#30" title="Go to source code">Persistence/CMongoServer.php</a><br />
 	</div>
 
 
@@ -186,7 +186,7 @@ instance. This object can be used to generate Mongo database objects.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#___construct">#</a>
-		<code><a href="source-class-MyWrapper.Persistence.CMongoServer.html#75" title="Go to source code">__construct</a>( <span>mixed <var>$theConnection</var> = <span class="php-keyword1">NULL</span></span>, <span>mixed <var>$theOptions</var> = <span class="php-keyword1">NULL</span> </span> )</code>
+		<code><a href="source-class-MyWrapper.Persistence.CMongoServer.html#55" title="Go to source code">__construct</a>( <span>mixed <var>$theConnection</var> = <span class="php-keyword1">NULL</span></span>, <span>mixed <var>$theOptions</var> = <span class="php-keyword1">NULL</span> </span> )</code>
 
 		<div class="description short">
 			
@@ -198,11 +198,11 @@ instance. This object can be used to generate Mongo database objects.</p>
 			
 <h4>Instantiate class</h4>
 
-<p>The method accepts the same parameters as the Mongo constructor, the
+<p>The method accepts the same parameters as the \Mongo constructor, the
 first one represents the server URL, the second represents the connection
 options.</p>
 
-<p>The method will first attempt to instantiate the Mongo object, it
+<p>The method will first attempt to instantiate the \Mongo object, it
 will then store it in the connection data member.</p>
 
 <p>If no parameter is provided, the method will assume the Mongo to connect to
@@ -242,7 +242,7 @@ localhost on port 27017 and to initiate the connection.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#___toString">#</a>
-		<code><a href="source-class-MyWrapper.Persistence.CMongoServer.html#147" title="Go to source code">__toString</a>( )</code>
+		<code><a href="source-class-MyWrapper.Persistence.CMongoServer.html#127" title="Go to source code">__toString</a>( )</code>
 
 		<div class="description short">
 			
@@ -282,7 +282,7 @@ corresponds to the kOFFSET_NAME offset.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#_Connection">#</a>
-		<code><a href="source-class-MyWrapper.Persistence.CMongoServer.html#182" title="Go to source code">Connection</a>( <span>mixed <var>$theValue</var> = <span class="php-keyword1">NULL</span></span>, <span>boolean <var>$getOld</var> = <span class="php-keyword1">FALSE</span> </span> )</code>
+		<code><a href="source-class-MyWrapper.Persistence.CMongoServer.html#162" title="Go to source code">Connection</a>( <span>mixed <var>$theValue</var> = <span class="php-keyword1">NULL</span></span>, <span>boolean <var>$getOld</var> = <span class="php-keyword1">FALSE</span> </span> )</code>
 
 		<div class="description short">
 			
@@ -294,7 +294,7 @@ corresponds to the kOFFSET_NAME offset.</p>
 			
 <h4>Manage native connection</h4>
 
-<p>We overload this method to ensure the provided value is an instance of Mongo, if this is not the case, the method will raise an exception.</p>
+<p>We overload this method to ensure the provided value is an instance of \Mongo, if this is not the case, the method will raise an exception.</p>
 
 <p>The method will attempt to parse the provided server URL and store the
 results in the array part of the object. For more information on the parsed
@@ -342,7 +342,7 @@ elements consult the PHP parse_url() function.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#_Database">#</a>
-		<code><a href="source-class-MyWrapper.Persistence.CMongoServer.html#273" title="Go to source code">Database</a>( <span>string <var>$theDatabase</var> = <span class="php-keyword1">NULL</span> </span> )</code>
+		<code><a href="source-class-MyWrapper.Persistence.CMongoServer.html#253" title="Go to source code">Database</a>( <span>string <var>$theDatabase</var> = <span class="php-keyword1">NULL</span> </span> )</code>
 
 		<div class="description short">
 			

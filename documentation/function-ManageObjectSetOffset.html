@@ -4,7 +4,7 @@
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 	<meta name="generator" content="ApiGen 2.7.0" />
 
-	<title>Function ManageOffset | MyWrapper Reference Documentation</title>
+	<title>Function ManageObjectSetOffset | MyWrapper Reference Documentation</title>
 
 	<script type="text/javascript" src="resources/combined.js?496895167"></script>
 	<script type="text/javascript" src="elementlist.js?1852740671"></script>
@@ -53,8 +53,8 @@
 				<li><a href="function-JsonEncode.html">JsonEncode</a></li>
 				<li><a href="function-JsonError.html">JsonError</a></li>
 				<li><a href="function-ManageBitField.html">ManageBitField</a></li>
-				<li><a href="function-ManageObjectSetOffset.html">ManageObjectSetOffset</a></li>
-				<li class="active"><a href="function-ManageOffset.html">ManageOffset</a></li>
+				<li class="active"><a href="function-ManageObjectSetOffset.html">ManageObjectSetOffset</a></li>
+				<li><a href="function-ManageOffset.html">ManageOffset</a></li>
 				<li><a href="function-ManageProperty.html">ManageProperty</a></li>
 				<li><a href="function-StringNormalise.html">StringNormalise</a></li>
 			</ul>
@@ -94,43 +94,78 @@
 	</div>
 
 <div id="content" class="function">
-	<h1>Function ManageOffset</h1>
+	<h1>Function ManageObjectSetOffset</h1>
 
 
 	<div class="description">
 	
-<p>Manage a scalar offset.</p>
+<p>Manage an object set offset.</p>
 
-<p>This method can be used to manage a scalar offset, its options involve
-setting, retrieving and deleting an offset of the provided array or
-ArrayObject.</p>
+<p>An object set is a list of unique objects, this method manages such an offset
+by handling add, retrieve and delete of its elements, rather than of the offset
+itself as in <code><a href="function-ManageOffset.html">ManageOffset()</a></code>.</p>
+
+<p>The elements of the list are expected to be object references in the form of
+their native unique identifier, @link kOFFSET_NID}.</p>
+
+<p>When adding new elements, the method will check if the object already exists
+in the set by comparing the hashed identifiers, thus using the kOFFSET_NID of eventual full objects.</p>
+
+<p>When deleting elements, if the list becomes empty, the whole offset will be
+deleted.</p>
 
 <p>The method accepts the following parameters:</p>
 
 <ul>
-	<li><tt>&amp;$theReference</tt>: Reference to the document, it may either refer
-	to an array or an ArrayObject, any other type will trigger an exception.</li>
+	<li><b>&amp;$theReference</b>: Reference to the set container, it may either
+	refer to an array or an <code><a href="class-ArrayObject.html">ArrayObject</a></code>, any other type will trigger an
+	exception.</li>
 
-	<li><tt>$theOffset</tt>: The offset to the attribute contained in the previous
-	parameter that is to be managed.</li>
+	<li><b>$theOffset</b>: The offset to the set within the previous parameter, this
+	referenced element is expected to be an array, if this is not the case, the
+	method will raise an exception. Note that it must not be an ArrayObject.</li>
 
-	<li><tt>$theValue</tt>: The value or operation:
+	<li><b>$theValue</b>: Depending on the next parameter, this may either refer to
+	the value to be set or to the index of the element to be retrieved or deleted:
 		<ul>
-			<li><tt>NULL</tt>: Return the offset's current value.</li>
+			<li><i>NULL</i>: This value indicates that we want to operate on all elements,
+			which means, in practical terms, that we either want to retrieve or delete the
+			full list. If the operation parameter resolves to <i>TRUE</i>, the method will
+			default to retrieving the current list and no new element will be added.</li>
 
-			<li><tt>FALSE</tt>: Delete the offset.</li>
+			<li><i>array</i>: An array indicates that we want to operate on a list of values
+			and that other parameters may also be provided as lists. Note that ArrayObject
+			instances are not considered here as arrays.</li>
 
-			<li><i>other</i>: Any other type represents the offset's new value.</li>
+			<li><i>other</i>: Any other type represents either the new value to be added or
+			the index to the value to be returned or deleted.</li>
 		</ul>
 	</li>
 
-	<li><tt>$getOld</tt>: Determines what the method will return:
+	<li><b>$theOperation</b>: This parameter represents the operation to be
+	performed whose scope depends on the value of the previous parameter:
 		<ul>
-			<li><tt>TRUE</tt>: Return the value of the offset <i>before</i> it was
-			eventually modified.</li>
+			<li><i>NULL</i>: Return the element or full list.</li>
 
-			<li><tt>FALSE</tt>: Return the value of the offset <i>after</i> it was
-			eventually modified.</li>
+			<li><i>FALSE</i>: Delete the element or full list.</li>
+
+			<li><i>array</i>: This type is only considered if the <i>$theValue</i> parameter
+			is provided as an array: the method will be called for each element of the
+			<i>$theValue</i> parameter matched with the corresponding element of this
+			parameter, which also means that both both parameters must share the same
+			count.</li>
+
+			<li><i>other</i>: Add the <i>$theValue</i> value to the list. If you provided
+			<i>NULL</i> in the previous parameter, the operation will be reset to
+			<i>NULL</i>.</li>
+		</ul>
+	</li>
+
+	<li><b>$getOld</b>: Determines what the method will return:
+		<ul>
+			<li><i>TRUE</i>: Return the value <i>before</i> it was eventually modified.</li>
+
+			<li><i>FALSE</i>: Return the value <i>after</i> it was eventually modified.</li>
 		</ul>
 	</li>
 </ul>
@@ -143,23 +178,13 @@ ArrayObject.</p>
 				<b>Author:</b>
 				Milko A. Škofič &lt;<a
 href="mailto:m.skofic&#64;cgiar.org">m.skofic&#64;<!---->cgiar.org</a>&gt;<br />
+				<b>Uses:</b>
+				HashClosure()<br />
+				<b>Uses:</b>
+				<code><code><a href="function-ManageOffset.html">ManageOffset()</a></code></code> <br />
 				<b>Used by:</b>
-				<code><code><a href="class-MyWrapper.Framework.CNode.html#_">MyWrapper\Framework\CNode::Term()</a></code></code> <br />
-				<b>Used by:</b>
-				<code><code><a href="class-MyWrapper.Framework.CNode.html#_">MyWrapper\Framework\CNode::Type()</a></code></code> <br />
-				<b>Used by:</b>
-				<code><code><a href="class-MyWrapper.Framework.CTerm.html#_">MyWrapper\Framework\CTerm::NS()</a></code></code> <br />
-				<b>Used by:</b>
-				<code><code><a href="class-MyWrapper.Framework.CTerm.html#_">MyWrapper\Framework\CTerm::LID()</a></code></code> <br />
-				<b>Used by:</b>
-				<code><code><a href="class-MyWrapper.Persistence.CPersistentDocument.html#_">MyWrapper\Persistence\CPersistentDocument::NID()</a></code></code> <br />
-				<b>Used by:</b>
-				<code><code><a href="class-MyWrapper.Persistence.CPersistentObject.html#_">MyWrapper\Persistence\CPersistentObject::GID()</a></code></code> <br />
-				<b>Used by:</b>
-				<code><code><a href="class-MyWrapper.Persistence.CPersistentObject.html#_">MyWrapper\Persistence\CPersistentObject::CLassName()</a></code></code> <br />
-				<b>Used by:</b>
-				<code><code><a href="function-ManageObjectSetOffset.html">ManageObjectSetOffset()</a></code></code> <br />
-		<b>Located at</b> <a href="source-function-ManageOffset.html#178" title="Go to source code">accessors.php</a><br />
+				<code><code><a href="class-MyWrapper.Framework.CNode.html#_">MyWrapper\Framework\CNode::Kind()</a></code></code> <br />
+		<b>Located at</b> <a href="source-function-ManageObjectSetOffset.html#283" title="Go to source code">accessors.php</a><br />
 	</div>
 
 
@@ -171,7 +196,7 @@ href="mailto:m.skofic&#64;cgiar.org">m.skofic&#64;<!---->cgiar.org</a>&gt;<br />
 		</code></td>
 		<td class="value"><code><var>&amp; $theReference</var></code></td>
 		<td>
-			&amp;$theReference Array or ArrayObject reference.
+			&amp;$theReference Object reference.
 		</td>
 	</tr>
 	<tr data-order="theOffset" id="$theOffset">
@@ -180,7 +205,7 @@ href="mailto:m.skofic&#64;cgiar.org">m.skofic&#64;<!---->cgiar.org</a>&gt;<br />
 		</code></td>
 		<td class="value"><code><var>$theOffset</var></code></td>
 		<td>
-			 Offset to be managed.
+			 Offset.
 		</td>
 	</tr>
 	<tr data-order="theValue" id="$theValue">
@@ -189,7 +214,16 @@ href="mailto:m.skofic&#64;cgiar.org">m.skofic&#64;<!---->cgiar.org</a>&gt;<br />
 		</code></td>
 		<td class="value"><code><var>$theValue</var> = <span class="php-keyword1">NULL</span></code></td>
 		<td>
-			 New value or operation.
+			 Value to manage.
+		</td>
+	</tr>
+	<tr data-order="theOperation" id="$theOperation">
+		<td class="name"><code>
+			mixed
+		</code></td>
+		<td class="value"><code><var>$theOperation</var> = <span class="php-keyword1">NULL</span></code></td>
+		<td>
+			 Operation to perform.
 		</td>
 	</tr>
 	<tr data-order="getOld" id="$getOld">

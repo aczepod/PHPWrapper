@@ -20,17 +20,18 @@
  *======================================================================================*/
 
 /**
- * Exceptions.
+ * Local definitions.
  *
- * This include file contains the native exceptions class definitions.
+ * This include file contains common offset definitions.
  */
-use \Exception as Exception;
+require_once( "CPersistentObject.inc.php" );
 
 /**
  * Container.
  *
  * This includes the containers ancestor class definitions.
  */
+require_once( kPATH_MYWRAPPER_LIBRARY_CLASS."/Framework/CContainer.php" );
 use \MyWrapper\Framework\CContainer as CContainer;
 
 /**
@@ -38,6 +39,7 @@ use \MyWrapper\Framework\CContainer as CContainer;
  *
  * This includes the ancestor class definitions.
  */
+require_once( kPATH_MYWRAPPER_LIBRARY_CLASS."/Persistence/CPersistentDocument.php" );
 use \MyWrapper\Persistence\CPersistentDocument as CPersistentDocument;
 
 /**
@@ -94,49 +96,6 @@ class CPersistentObject extends CPersistentDocument
  *																						*
  *======================================================================================*/
 
-
-	 
-	/*===================================================================================
-	 *	NID																				*
-	 *==================================================================================*/
-
-	/**
-	 * <h4>Manage native unique identifier</h4>
-	 *
-	 * The <i>native unique identifier</i>, {@link kOFFSET_NID}, represents the primary key
-	 * of the object in the native format of the container in which the object is stored.
-	 *
-	 * The method accepts a parameter which represents either the identifier or the
-	 * requested operation, depending on its value:
-	 *
-	 * <ul>
-	 *	<li><tt>NULL</tt>: Return the current value.
-	 *	<li><tt>FALSE</tt>: Delete the current value.
-	 *	<li><i>other</i>: Set the value with the provided parameter.
-	 * </ul>
-	 *
-	 * The second parameter is a boolean which if <tt>TRUE</tt> will return the <i>old</i>
-	 * value when replacing containers; if <tt>FALSE</tt>, it will return the currently set
-	 * value.
-	 *
-	 * Note that when the object has the {@link _IsCommitted()} status this offset will be
-	 * locked and an exception will be raised.
-	 *
-	 * @param mixed					$theValue			Native identifier or operation.
-	 * @param boolean				$getOld				<tt>TRUE</tt> get old value.
-	 *
-	 * @access public
-	 * @return mixed				<i>New</i> or <i>old</i> native container.
-	 *
-	 * @uses ManageOffset()
-	 *
-	 * @see kOFFSET_NID
-	 */
-	public function NID( $theValue = NULL, $getOld = FALSE )
-	{
-		return ManageOffset( $this, kOFFSET_NID, $theValue, $getOld );				// ==>
-
-	} // NID.
 
 	 
 	/*===================================================================================
@@ -442,7 +401,7 @@ class CPersistentObject extends CPersistentDocument
 	 *
 	 * @access protected
 	 *
-	 * @throws Exception
+	 * @throws \Exception
 	 *
 	 * @uses _IsCommitted()
 	 *
@@ -456,7 +415,7 @@ class CPersistentObject extends CPersistentDocument
 		$offsets = array( kOFFSET_NID, kOFFSET_GID );
 		if( $this->_IsCommitted()
 		 && in_array( $theOffset, $offsets ) )
-			throw new Exception
+			throw new \Exception
 				( "The object is committed, you cannot modify the [$theOffset] offset",
 				  kERROR_LOCKED );												// !@! ==>
 		
@@ -483,7 +442,7 @@ class CPersistentObject extends CPersistentDocument
 	 *
 	 * @access protected
 	 *
-	 * @throws Exception
+	 * @throws \Exception
 	 *
 	 * @uses _IsCommitted()
 	 *
@@ -497,7 +456,7 @@ class CPersistentObject extends CPersistentDocument
 		$offsets = array( kOFFSET_NID, kOFFSET_GID );
 		if( $this->_IsCommitted()
 		 && in_array( $theOffset, $offsets ) )
-			throw new Exception
+			throw new \Exception
 				( "The object is committed, you cannot modify the [$theOffset] offset",
 				  kERROR_LOCKED );												// !@! ==>
 		

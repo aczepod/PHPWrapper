@@ -20,17 +20,11 @@
  *======================================================================================*/
 
 /**
- * Exceptions.
- *
- * This include file contains the native exceptions class definitions.
- */
-use \Exception as Exception;
-
-/**
  * Ancestor.
  *
  * This include file contains the parent class definitions.
  */
+require_once( kPATH_MYWRAPPER_LIBRARY_CLASS."/Persistence/CMongoContainer.php" );
 use \MyWrapper\Persistence\CMongoContainer as CMongoContainer;
 
 /**
@@ -74,6 +68,8 @@ class CMongoSequence extends CMongoContainer
 	 *
 	 * @access public
 	 * @return integer				The sequence number.
+	 *
+	 * @throws \Exception
 	 */
 	public function Next( $theKey )
 	{
@@ -106,7 +102,7 @@ class CMongoSequence extends CMongoContainer
 				if( $ok[ 'ok' ] )
 					return 1;														// ==>
 				
-				throw new Exception
+				throw new \Exception
 					( $ok[ 'errmsg' ],
 					  kERROR_COMMIT );											// !@! ==>
 			
@@ -127,7 +123,7 @@ class CMongoSequence extends CMongoContainer
 				//
 				$ok = $container->save( $seq, $options );
 				if( ! $ok[ 'ok' ] )
-					throw new Exception
+					throw new \Exception
 						( $ok[ 'errmsg' ],
 						  kERROR_COMMIT );										// !@! ==>
 				
@@ -137,7 +133,7 @@ class CMongoSequence extends CMongoContainer
 		
 		} // Object is inited.
 		
-		throw new Exception
+		throw new \Exception
 			( "Object is not ready",
 			  kERROR_STATE );													// !@! ==>
 	

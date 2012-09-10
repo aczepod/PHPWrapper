@@ -4,7 +4,7 @@
  * <i>CMongoDatabase</i> class definition.
  *
  * This file contains the class definition of <b>CMongoDatabase</b> which represents a
- * concrete instance of a {@link CDatabase} implementing a {@link MongoDB}.
+ * concrete instance of a {@link CDatabase} implementing a {@link \MongoDB}.
  *
  *	@package	MyWrapper
  *	@subpackage	Persistence
@@ -20,44 +20,17 @@
  *======================================================================================*/
 
 /**
- * Offsets.
- *
- * This include file contains common offset definitions.
- */
-require_once( kPATH_MYWRAPPER_LIBRARY_DEFINE."/Offsets.inc.php" );
-
-/**
- * Exceptions.
- *
- * This include file contains the native exceptions class definitions.
- */
-use \Exception as Exception;
-
-/**
- * Mongo.
- *
- * This includes the Mongo class definitions.
- */
-use \Mongo as Mongo;
-
-/**
- * MongoDB.
- *
- * This includes the MongoDB class definitions.
- */
-use \MongoDB as MongoDB;
-
-/**
  * Ancestor.
  *
  * This includes the ancestor class definitions.
  */
+require_once( kPATH_MYWRAPPER_LIBRARY_CLASS."/Framework/CDatabase.php" );
 use \MyWrapper\Framework\CDatabase as CDatabase;
 
 /**
  * <h3>Database object ancestor</h3>
  *
- * This class implements a database object that represents a {@link MongoDB} instance. This
+ * This class implements a database object that represents a {@link \MongoDB} instance. This
  * object can be used to generate Mongo container objects.
  *
  *	@package	MyWrapper
@@ -82,15 +55,15 @@ class CMongoDatabase extends CDatabase
 	/**
 	 * <h4>Instantiate class</h4>
 	 *
-	 * The method accepts the same parameters as the {@link MongoDB} constructor, the first
+	 * The method accepts the same parameters as the {@link \MongoDB} constructor, the first
 	 * one represents the server object, the second represents the database name, if the
 	 * latter is missing, the method will raise an exception.
 	 *
 	 * The method will also accept a server object in the first parameter, in that case
 	 * the second parameter will be ignored.
 	 *
-	 * The method will first attempt to instantiate the {@link MongoDB} object, it will then
-	 * store it in the connection data member.
+	 * The method will first attempt to instantiate the {@link \MongoDB} object, it will
+	 * then store it in the connection data member.
 	 *
 	 * @param mixed					$theConnection		Server or database.
 	 * @param mixed					$theOptions			Database name.
@@ -115,7 +88,7 @@ class CMongoDatabase extends CDatabase
 			//
 			// Handle Mongo database.
 			//
-			elseif( $theConnection instanceof MongoDB )
+			elseif( $theConnection instanceof \MongoDB )
 				parent::__construct( $theConnection );
 			
 			//
@@ -127,7 +100,7 @@ class CMongoDatabase extends CDatabase
 				// Check database name.
 				//
 				if( $theOptions === NULL )
-					throw new Exception
+					throw new \Exception
 						( "Missing database name",
 						  kERROR_MISSING );										// !@! ==>
 				
@@ -140,12 +113,12 @@ class CMongoDatabase extends CDatabase
 				//
 				// Check Mongo server class.
 				//
-				if( $theConnection instanceof Mongo )
+				if( $theConnection instanceof \Mongo )
 					parent::__construct
 						( $theConnection->selectDB( (string) $theOptions ) );
 				
 				else
-					throw new Exception
+					throw new \Exception
 						( "Invalid server connection type",
 						  kERROR_PARAMETER );									// !@! ==>
 			
@@ -204,8 +177,8 @@ class CMongoDatabase extends CDatabase
 	/**
 	 * <h4>Manage native connection</h4>
 	 *
-	 * We overload this method to ensure the provided value is an instance of {@link Mongo},
-	 * if this is not the case, the method will raise an exception.
+	 * We overload this method to ensure the provided value is an instance of
+	 * {@link \Mongo}, if this is not the case, the method will raise an exception.
 	 *
 	 * The method will attempt to parse the provided server URL and store the results in the
 	 * array part of the object. For more information on the parsed elements consult the PHP
@@ -220,7 +193,7 @@ class CMongoDatabase extends CDatabase
 	 * @access public
 	 * @return mixed				<i>New</i> or <i>old</i> native connection.
 	 *
-	 * @throws Exception
+	 * @throws \Exception
 	 */
 	public function Connection( $theValue = NULL, $getOld = FALSE )
 	{
@@ -233,8 +206,8 @@ class CMongoDatabase extends CDatabase
 			//
 			// Check value type.
 			//
-			if( ! $theValue instanceof MongoDB )
-				throw new Exception
+			if( ! $theValue instanceof \MongoDB )
+				throw new \Exception
 					( "Invalid connection type",
 					  kERROR_PARAMETER );										// !@! ==>
 		
@@ -299,7 +272,7 @@ class CMongoDatabase extends CDatabase
 	 * @access public
 	 * @return mixed				The container object.
 	 *
-	 * @throws Exception
+	 * @throws \Exception
 	 *
 	 * @uses _IsInited()
 	 */
@@ -309,7 +282,7 @@ class CMongoDatabase extends CDatabase
 		// Check container name.
 		//
 		if( $theContainer === NULL )
-			throw new Exception
+			throw new \Exception
 				( "Missing container name",
 				  kERROR_MISSING );												// !@! ==>
 			
@@ -319,7 +292,7 @@ class CMongoDatabase extends CDatabase
 		if( $this->_IsInited() )
 			return new CMongoContainer( $this, $theContainer );						// ==>
 
-		throw new Exception
+		throw new \Exception
 			( "Object is not ready",
 			  kERROR_STATE );													// !@! ==>
 	

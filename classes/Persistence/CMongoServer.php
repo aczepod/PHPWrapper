@@ -4,7 +4,7 @@
  * <i>CMongoServer</i> class definition.
  *
  * This file contains the class definition of <b>CMongoServer</b> which represents a
- * concrete instance of a {@link CServer} implementing a {@link Mongo}.
+ * concrete instance of a {@link CServer} implementing a {@link \Mongo}.
  *
  *	@package	MyWrapper
  *	@subpackage	Persistence
@@ -20,38 +20,18 @@
  *======================================================================================*/
 
 /**
- * Offsets.
- *
- * This include file contains common offset definitions.
- */
-require_once( kPATH_MYWRAPPER_LIBRARY_DEFINE."/Offsets.inc.php" );
-
-/**
- * Exceptions.
- *
- * This include file contains the native exceptions class definitions.
- */
-use \Exception as Exception;
-
-/**
- * Mongo.
- *
- * This includes the Mongo class definitions.
- */
-use \Mongo as Mongo;
-
-/**
  * Ancestor.
  *
  * This includes the ancestor class definitions.
  */
+require_once( kPATH_MYWRAPPER_LIBRARY_CLASS."/Framework/CServer.php" );
 use \MyWrapper\Framework\CServer as CServer;
 
 /**
  * <h3>Server object ancestor</h3>
  *
- * This class implements a server object that represents a {@link Mongo} instance. This object
- * can be used to generate Mongo database objects.
+ * This class implements a server object that represents a {@link \Mongo} instance. This
+ * object can be used to generate Mongo database objects.
  *
  *	@package	MyWrapper
  *	@subpackage	Persistence
@@ -75,10 +55,10 @@ class CMongoServer extends CServer
 	/**
 	 * <h4>Instantiate class</h4>
 	 *
-	 * The method accepts the same parameters as the {@link Mongo} constructor, the first
+	 * The method accepts the same parameters as the {@link \Mongo} constructor, the first
 	 * one represents the server URL, the second represents the connection options.
 	 *
-	 * The method will first attempt to instantiate the {@link Mongo} object, it will then
+	 * The method will first attempt to instantiate the {@link \Mongo} object, it will then
 	 * store it in the connection data member.
 	 *
 	 * If no parameter is provided, the method will assume the Mongo to connect to localhost
@@ -108,7 +88,7 @@ class CMongoServer extends CServer
 		//
 		// Instantiate connection.
 		//
-		$connection = new Mongo( $theConnection, $theOptions );
+		$connection = new \Mongo( $theConnection, $theOptions );
 
 		//
 		// Parse and store URL components.
@@ -182,8 +162,8 @@ class CMongoServer extends CServer
 	/**
 	 * <h4>Manage native connection</h4>
 	 *
-	 * We overload this method to ensure the provided value is an instance of {@link Mongo},
-	 * if this is not the case, the method will raise an exception.
+	 * We overload this method to ensure the provided value is an instance of
+	 * {@link \Mongo}, if this is not the case, the method will raise an exception.
 	 *
 	 * The method will attempt to parse the provided server URL and store the results in the
 	 * array part of the object. For more information on the parsed elements consult the PHP
@@ -195,7 +175,7 @@ class CMongoServer extends CServer
 	 * @access public
 	 * @return mixed				<i>New</i> or <i>old</i> native connection.
 	 *
-	 * @throws Exception
+	 * @throws \Exception
 	 */
 	public function Connection( $theValue = NULL, $getOld = FALSE )
 	{
@@ -208,8 +188,8 @@ class CMongoServer extends CServer
 			//
 			// Check value type.
 			//
-			if( ! $theValue instanceof Mongo )
-				throw new Exception
+			if( ! $theValue instanceof \Mongo )
+				throw new \Exception
 					( "Invalid connection type",
 					  kERROR_PARAMETER );										// !@! ==>
 		
@@ -287,7 +267,7 @@ class CMongoServer extends CServer
 	 * @access public
 	 * @return mixed				The database object.
 	 *
-	 * @throws Exception
+	 * @throws \Exception
 	 *
 	 * @uses _IsInited()
 	 */
@@ -297,7 +277,7 @@ class CMongoServer extends CServer
 		// Check database name.
 		//
 		if( $theDatabase === NULL )
-			throw new Exception
+			throw new \Exception
 				( "Missing database name",
 				  kERROR_MISSING );												// !@! ==>
 			
@@ -307,7 +287,7 @@ class CMongoServer extends CServer
 		if( $this->_IsInited() )
 			return new CMongoDatabase( $this, $theDatabase );						// ==>
 
-		throw new Exception
+		throw new \Exception
 			( "Object is not ready",
 			  kERROR_STATE );													// !@! ==>
 	
