@@ -20,13 +20,6 @@
  *======================================================================================*/
 
 /**
- * Base offsets.
- *
- * This include file contains the base offset definitions.
- */
-require_once( 'CPersistentDocument.inc.php' );
-
-/**
  * Exceptions.
  *
  * This include file contains the native exceptions class definitions.

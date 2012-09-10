@@ -20,11 +20,11 @@
  *======================================================================================*/
 
 /**
- * Local definitions.
+ * Offsets.
  *
- * This includes the class local definitions.
+ * This include file contains common offset definitions.
  */
-require_once( 'CPersistentDocument.inc.php' );
+require_once( kPATH_MYWRAPPER_LIBRARY_DEFINE."/Offsets.inc.php" );
 
 /**
  * Exceptions.

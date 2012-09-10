@@ -34,13 +34,6 @@ require_once( kPATH_MYWRAPPER_LIBRARY_DEFINE."/Tokens.inc.php" );
 require_once( kPATH_MYWRAPPER_LIBRARY_FUNCTION."/accessors.php" );
 
 /**
- * Local definitions.
- *
- * This includes the class local definitions.
- */
-require_once( 'CTerm.inc.php' );
-
-/**
  * Exceptions.
  *
  * This include file contains the native exceptions class definitions.

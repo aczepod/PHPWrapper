@@ -27,7 +27,6 @@ require_once( '/Library/WebServer/Library/PHPWrapper/includes.inc.php' );
 //
 // Containers.
 //
-use MyWrapper\Framework\CContainer;
 use MyWrapper\Persistence\CMongoContainer;
 
 //

@@ -20,13 +20,6 @@
  *======================================================================================*/
 
 /**
- * Local definitions.
- *
- * This includes the class local definitions.
- */
-require_once( 'CPersistentObject.inc.php' );
-
-/**
  * Exceptions.
  *
  * This include file contains the native exceptions class definitions.
