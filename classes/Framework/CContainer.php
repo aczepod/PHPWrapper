@@ -20,6 +20,13 @@
  *======================================================================================*/
 
 /**
+ * Local definitions.
+ *
+ * This include file contains common offset definitions.
+ */
+require_once( "CContainer.inc.php" );
+
+/**
  * Persistent document.
  *
  * This includes the ancestor class definitions.
@@ -243,11 +250,78 @@ abstract class CContainer extends CConnection
 											$theIdentifier = NULL,
 											$theModifiers = kFLAG_DEFAULT );
 
+	 
+	/*===================================================================================
+	 *	CheckObject																		*
+	 *==================================================================================*/
+
+	/**
+	 * <h4>Check if object exists in container</h4>
+	 *
+	 * This method can be used to check if an object exists in the current container, the
+	 * method expects the identifier and will return <tt>TRUE</tt> if found and
+	 * <tt>FALSE</tt> if not.
+	 *
+	 * @param mixed					$theIdentifier		Identifier.
+	 *
+	 * @access public
+	 * @return boolean				<tt>TRUE</tt> exists.
+	 */
+	abstract public function CheckObject( $theIdentifier );
+
 		
 
 /*=======================================================================================
  *																						*
- *								PUBLIC CONVERSION INTERFACE								*
+ *								PUBLIC SEQUENCE INTERFACE								*
+ *																						*
+ *======================================================================================*/
+
+
+	 
+	/*===================================================================================
+	 *	NextSequence																	*
+	 *==================================================================================*/
+
+	/**
+	 * <h4>Return a sequence number</h4>
+	 *
+	 * This method should return a sequence number connected to the provided key. Each time
+	 * this method is called, the sequence number is incremented, which means that you
+	 * should only call it when you intend to use this number.
+	 *
+	 * The first parameter, <tt>$theKey</tt>, represents the key to the sequence, it will
+	 * be the {@link kOFFSET_NID} of the record holding the sequence and the field holding
+	 * the current number has the {@link kOFFSET_SEQUENCE} offset.
+	 *
+	 * The second parameter represents the container in which the sequence is stored: if you
+	 * provide a string, the method should use a corresponding native container; if you
+	 * provide <tt>TRUE</tt>, the method will use the string stored in
+	 * {@link kCONTAINER_SEQUENCE_NAME}; if you provide <tt>NULL</tt>, the method will use
+	 * the current container.
+	 *
+	 * If the object is not {@link _Is Inited()}, the method should raise an exception.
+	 *
+	 * If the current object does not support sequences, this method should return
+	 * <tt>NULL</tt>.
+	 *
+	 * This class is abstract and by default sequences are not supported.
+	 *
+	 * @param string				$theKey				Sequence key.
+	 * @param string				$theContainer		Sequence container.
+	 *
+	 * @access public
+	 * @return mixed				The sequence number or <tt>NULL</tt>.
+	 *
+	 * @throws \Exception
+	 */
+	public function NextSequence( $theKey, $theContainer = NULL )		{	return NULL;	}
+
+		
+
+/*=======================================================================================
+ *																						*
+ *								STATIC CONVERSION INTERFACE								*
  *																						*
  *======================================================================================*/
 

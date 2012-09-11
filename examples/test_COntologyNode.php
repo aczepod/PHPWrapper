@@ -229,7 +229,7 @@ try
 	try
 	{
 		echo( '<h4>Insert uninitialized object</h4>' );
-		echo( '<h5>$namespace = new MyClass();</h5>' );
+		echo( '<h5>$node = new MyClass();</h5>' );
 		$node = new MyClass();
 		echo( '<h5>$status = $namespace->Insert( $container );</h5>' );
 		$status = $node->Insert( $container );
@@ -423,6 +423,28 @@ try
 				   .'] Dirty['.$node->dirty()
 				   .'] Saved['.$node->committed()
 				   .'] Encoded['.$node->encoded().']<br />' );
+	echo( 'Node<pre>' ); print_r( $node ); echo( '</pre>' );
+	echo( 'Status<pre>' ); print_r( $status ); echo( '</pre>' );
+	echo( '<h5>$term = COntologyTerm::NewObject( $container, $node[ kOFFSET_TERM ] ); // Notice node reference.</h5>' );
+	$term = COntologyTerm::NewObject( $container, $node[ kOFFSET_TERM ] );
+	echo( 'Term<pre>' ); print_r( $term ); echo( '</pre>' );
+	echo( '<hr />' );
+	echo( '<hr>' );
+	
+	//
+	// Insert new node.
+	//
+	echo( '<h4>Insert new node</h4>' );
+	echo( '<h5>$node = new MyClass();</h5>' );
+	$node = new MyClass();
+	echo( '<h5>$node[ kOFFSET_TERM ] = $termA;</h5>' );
+	$node[ kOFFSET_TERM ] = $termA;
+	echo( 'Inited['.$node->inited()
+				   .'] Dirty['.$node->dirty()
+				   .'] Saved['.$node->committed()
+				   .'] Encoded['.$node->encoded().']<br />' );
+	echo( '<h5>$status = $node->Insert( $container );</h5>' );
+	$status = $node->Insert( $container );
 	echo( 'Node<pre>' ); print_r( $node ); echo( '</pre>' );
 	echo( '<h5>$term = COntologyTerm::NewObject( $container, $node[ kOFFSET_TERM ] ); // Notice node reference.</h5>' );
 	$term = COntologyTerm::NewObject( $container, $node[ kOFFSET_TERM ] );

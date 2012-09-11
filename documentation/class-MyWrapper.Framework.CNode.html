@@ -7,7 +7,7 @@
 	<title>Class MyWrapper\Framework\CNode | MyWrapper Reference Documentation</title>
 
 	<script type="text/javascript" src="resources/combined.js?496895167"></script>
-	<script type="text/javascript" src="elementlist.js?2871702978"></script>
+	<script type="text/javascript" src="elementlist.js?3191507714"></script>
 	<link rel="stylesheet" type="text/css" media="all" href="resources/style.css?1567499433" />
 
 </head>
@@ -47,6 +47,7 @@
 				<li><a href="class-MyWrapper.Framework.CContainer.html">CContainer</a></li>
 				<li><a href="class-MyWrapper.Framework.CDatabase.html">CDatabase</a></li>
 				<li><a href="class-MyWrapper.Framework.CDocument.html">CDocument</a></li>
+				<li><a href="class-MyWrapper.Framework.CEdge.html">CEdge</a></li>
 				<li class="active"><a href="class-MyWrapper.Framework.CNode.html">CNode</a></li>
 				<li><a href="class-MyWrapper.Framework.CServer.html">CServer</a></li>
 				<li><a href="class-MyWrapper.Framework.CStatusDocument.html">CStatusDocument</a></li>
@@ -106,8 +107,9 @@ triplet. This class concentrates in the core features of the node, without
 taking into consideration the connections to other nodes.</p>
 
 <p>The node's main property is the term, kOFFSET_TERM, which is a
-reference to a <code><a href="class-MyWrapper.Framework.CTerm.html">MyWrapper\Framework\CTerm</a></code> object, which defines the abstract concept that the
-node represents.</p>
+reference to an object which defines the abstract concept that the node
+represents. The offset holds the kOFFSET_NID of the referenced
+object.</p>
 
 <p>The node also features a kOFFSET_KIND property which is a list of
 references to objects which represent the specific kind of node, this attribute
@@ -118,7 +120,11 @@ reference to an object that defines the data type of the node.</p>
 
 <p>The class does not handle global identifiers and objects cannot be uniquely
 identified by its properties or attributes, it is the duty of the hosting
-container to provide the kOFFSET_NID identifier.</p>
+container to provide the kOFFSET_NID identifier, By default we use
+sequences, <code><a href="class-MyWrapper.Framework.CContainer.html#_">MyWrapper\Framework\CContainer::NextSequence()</a></code>, from a default container named
+after the default kCONTAINER_SEQUENCE_NAME tag in the same database,
+this is to make referencing nodes easier and to be compatible with most graph
+databases.</p>
 
 <p>The object will have its <code><a href="class-MyWrapper.Framework.CStatusDocument.html#_">MyWrapper\Framework\CStatusDocument::_IsInited()</a></code> status set if the kOFFSET_TERM property has been set, derived classes may add other required
 attributes.</p>
@@ -208,7 +214,7 @@ has not been committed, <code><a href="class-MyWrapper.Framework.CStatusDocument
 		<b>Namespace:</b> <a href="namespace-MyWrapper.html">MyWrapper</a>\<a href="namespace-MyWrapper.Framework.html">Framework</a><br />
 		<b>Package:</b> MyWrapper\Framework<br />
 
-		<b>Located at</b> <a href="source-class-MyWrapper.Framework.CNode.html#52" title="Go to source code">Framework/CNode.php</a><br />
+		<b>Located at</b> <a href="source-class-MyWrapper.Framework.CNode.html#46" title="Go to source code">Framework/CNode.php</a><br />
 	</div>
 
 
@@ -225,7 +231,7 @@ has not been committed, <code><a href="class-MyWrapper.Framework.CStatusDocument
 
 		<td class="name"><div>
 		<a class="anchor" href="#_Term">#</a>
-		<code><a href="source-class-MyWrapper.Framework.CNode.html#107" title="Go to source code">Term</a>( <span>mixed <var>$theValue</var> = <span class="php-keyword1">NULL</span></span>, <span>boolean <var>$getOld</var> = <span class="php-keyword1">FALSE</span> </span> )</code>
+		<code><a href="source-class-MyWrapper.Framework.CNode.html#105" title="Go to source code">Term</a>( <span>mixed <var>$theValue</var> = <span class="php-keyword1">NULL</span></span>, <span>boolean <var>$getOld</var> = <span class="php-keyword1">FALSE</span> </span> )</code>
 
 		<div class="description short">
 			
@@ -237,8 +243,8 @@ has not been committed, <code><a href="class-MyWrapper.Framework.CStatusDocument
 			
 <h4>Manage node term</h4>
 
-<p>This method can be used to manage the node's term, which is a reference to
-term that defines the current node.</p>
+<p>This method can be used to manage the node's term, kOFFSET_TERM,
+which is a reference to an object that defines the current node.</p>
 
 <p>The method accepts a parameter which represents either the term reference, or
 the requested operation, depending on its value:</p>
@@ -263,7 +269,7 @@ will be locked and an exception will be raised.</p>
 				<h4>Parameters</h4>
 				<div class="list"><dl>
 					<dt><var>$theValue</var></dt>
-					<dd><code>mixed</code><br> Native identifier or operation.</dd>
+					<dd><code>mixed</code><br> Term or operation.</dd>
 					<dt><var>$getOld</var></dt>
 					<dd><code>boolean</code><br> <tt>TRUE</tt> get old value.</dd>
 				</dl></div>
@@ -298,7 +304,7 @@ will be locked and an exception will be raised.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#_Kind">#</a>
-		<code><a href="source-class-MyWrapper.Framework.CNode.html#150" title="Go to source code">Kind</a>( <span>mixed <var>$theValue</var> = <span class="php-keyword1">NULL</span></span>, <span>mixed <var>$theOperation</var> = <span class="php-keyword1">NULL</span></span>, <span>boolean <var>$getOld</var> = <span class="php-keyword1">FALSE</span> </span> )</code>
+		<code><a href="source-class-MyWrapper.Framework.CNode.html#148" title="Go to source code">Kind</a>( <span>mixed <var>$theValue</var> = <span class="php-keyword1">NULL</span></span>, <span>mixed <var>$theOperation</var> = <span class="php-keyword1">NULL</span></span>, <span>boolean <var>$getOld</var> = <span class="php-keyword1">FALSE</span> </span> )</code>
 
 		<div class="description short">
 			
@@ -409,7 +415,7 @@ that can be managed with the following parameters:</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#_Type">#</a>
-		<code><a href="source-class-MyWrapper.Framework.CNode.html#220" title="Go to source code">Type</a>( <span>mixed <var>$theValue</var> = <span class="php-keyword1">NULL</span></span>, <span>boolean <var>$getOld</var> = <span class="php-keyword1">FALSE</span> </span> )</code>
+		<code><a href="source-class-MyWrapper.Framework.CNode.html#218" title="Go to source code">Type</a>( <span>mixed <var>$theValue</var> = <span class="php-keyword1">NULL</span></span>, <span>boolean <var>$getOld</var> = <span class="php-keyword1">FALSE</span> </span> )</code>
 
 		<div class="description short">
 			
@@ -424,8 +430,8 @@ that can be managed with the following parameters:</p>
 <p>This method can be used to manage the node's type, kOFFSET_TYPE,
 which is an enumerated value that represents the data type of the node.</p>
 
-<p>The method accepts a parameter which represents either the type reference, or
-the requested operation, depending on its value:</p>
+<p>The method accepts a parameter which represents either the type, or the
+requested operation, depending on its value:</p>
 
 <ul>
 	<li><tt>NULL</tt>: Return the current value.</li>
@@ -444,7 +450,7 @@ the currently set value.</p>
 				<h4>Parameters</h4>
 				<div class="list"><dl>
 					<dt><var>$theValue</var></dt>
-					<dd><code>mixed</code><br> Native identifier or operation.</dd>
+					<dd><code>mixed</code><br> Type or operation.</dd>
 					<dt><var>$getOld</var></dt>
 					<dd><code>boolean</code><br> <tt>TRUE</tt> get old value.</dd>
 				</dl></div>
@@ -468,6 +474,55 @@ the currently set value.</p>
 		</div>
 		</div></td>
 	</tr>
+	<tr data-order="Container" id="_Container">
+
+		<td class="attributes"><code>
+			 public static
+			<code><a href="class-MyWrapper.Framework.CContainer.html">MyWrapper\Framework\CContainer</a></code>
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_Container">#</a>
+		<code><a href="source-class-MyWrapper.Framework.CNode.html#267" title="Go to source code">Container</a>( <span><code><a href="class-MyWrapper.Framework.CDatabase.html">MyWrapper\Framework\CDatabase</a></code> <var>$theDatabase</var></span> )</code>
+
+		<div class="description short">
+			
+<h4>Return the nodes container</h4>
+
+		</div>
+
+		<div class="description detailed hidden">
+			
+<h4>Return the nodes container</h4>
+
+<p>This static method should be used to get the nodes container, it expects a
+<code><a href="class-MyWrapper.Framework.CDatabase.html">MyWrapper\Framework\CDatabase</a></code> derived object and will return a <code><a href="class-MyWrapper.Framework.CContainer.html">MyWrapper\Framework\CContainer</a></code> derived
+object.</p>
+
+<p>The container will be created or fetched from the provided database using the
+kCONTAINER_NODE_NAME name.</p>
+
+
+
+				<h4>Parameters</h4>
+				<div class="list"><dl>
+					<dt><var>$theDatabase</var></dt>
+					<dd><code><code><a href="class-MyWrapper.Framework.CDatabase.html">MyWrapper\Framework\CDatabase</a></code></code><br> Database object.</dd>
+				</dl></div>
+
+				<h4>Returns</h4>
+				<div class="list">
+					<code><code><a href="class-MyWrapper.Framework.CContainer.html">MyWrapper\Framework\CContainer</a></code></code><br>The nodes container.<br />
+				</div>
+
+
+
+
+		</div>
+		</div></td>
+	</tr>
 	<tr data-order="_Preset" id="__Preset">
 
 		<td class="attributes"><code>
@@ -479,7 +534,7 @@ the currently set value.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#__Preset">#</a>
-		<code><a href="source-class-MyWrapper.Framework.CNode.html#269" title="Go to source code">_Preset</a>( <span>reference <var>&amp; $theOffset</var></span>, <span>reference <var>&amp; $theValue</var></span> )</code>
+		<code><a href="source-class-MyWrapper.Framework.CNode.html#302" title="Go to source code">_Preset</a>( <span>reference <var>&amp; $theOffset</var></span>, <span>reference <var>&amp; $theValue</var></span> )</code>
 
 		<div class="description short">
 			
@@ -492,7 +547,8 @@ the currently set value.</p>
 <h4>Handle offset before setting it</h4>
 
 <p>In this class we prevent the modification of the kOFFSET_TERM offset
-if the object has its <code><a href="class-MyWrapper.Framework.CStatusDocument.html#_">MyWrapper\Framework\CStatusDocument::_IsCommitted()</a></code> status set.</p>
+if the object has its <code><a href="class-MyWrapper.Framework.CStatusDocument.html#_">MyWrapper\Framework\CStatusDocument::_IsCommitted()</a></code> status set and we use the eventual
+object's kOFFSET_NID if the term was provided as an object.</p>
 
 <p>We also ensure that the kOFFSET_KIND offset is an array.</p>
 
@@ -538,7 +594,7 @@ if the object has its <code><a href="class-MyWrapper.Framework.CStatusDocument.h
 
 		<td class="name"><div>
 		<a class="anchor" href="#__Preunset">#</a>
-		<code><a href="source-class-MyWrapper.Framework.CNode.html#321" title="Go to source code">_Preunset</a>( <span>reference <var>&amp; $theOffset</var></span> )</code>
+		<code><a href="source-class-MyWrapper.Framework.CNode.html#368" title="Go to source code">_Preunset</a>( <span>reference <var>&amp; $theOffset</var></span> )</code>
 
 		<div class="description short">
 			
@@ -582,6 +638,61 @@ if the object has its <code><a href="class-MyWrapper.Framework.CStatusDocument.h
 		</div>
 		</div></td>
 	</tr>
+	<tr data-order="_Precommit" id="__Precommit">
+
+		<td class="attributes"><code>
+			 protected 
+			
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#__Precommit">#</a>
+		<code><a href="source-class-MyWrapper.Framework.CNode.html#416" title="Go to source code">_Precommit</a>( <span><code><a href="class-MyWrapper.Framework.CContainer.html">MyWrapper\Framework\CContainer</a></code> <var>$theContainer</var></span>, <span>bitfield <var>$theModifiers</var> = kFLAG_DEFAULT </span> )</code>
+
+		<div class="description short">
+			
+<h4>Prepare the object before committing</h4>
+
+		</div>
+
+		<div class="description detailed hidden">
+			
+<h4>Prepare the object before committing</h4>
+
+<p>In this class we set the object's native identifier to a sequence number, we
+do this just before inserting the object: that is, if the object does not have
+the native identifier.</p>
+
+<p>The default sequence key for nodes is kSEQUENCE_KEY_NODE.</p>
+
+<p>Note that we set the sequence as the last operation to allow eventual
+exceptions before issuing the sequence.</p>
+
+
+
+				<h4>Parameters</h4>
+				<div class="list"><dl>
+					<dt><var>$theContainer</var></dt>
+					<dd><code><code><a href="class-MyWrapper.Framework.CContainer.html">MyWrapper\Framework\CContainer</a></code></code><br> Container.</dd>
+					<dt><var>$theModifiers</var></dt>
+					<dd><code>bitfield</code><br> Commit options.</dd>
+				</dl></div>
+
+
+				<h4>Throws</h4>
+				<div class="list">
+					<code><code><a href="class-Exception.html">Exception</a></code></code><br />
+				</div>
+
+
+				<h4>Overrides</h4>
+				<div class="list"><code><a href="class-MyWrapper.Persistence.CPersistentObject.html#_">MyWrapper\Persistence\CPersistentObject::_Precommit</a></code></div>
+
+		</div>
+		</div></td>
+	</tr>
 	<tr data-order="_Ready" id="__Ready">
 
 		<td class="attributes"><code>
@@ -593,7 +704,7 @@ if the object has its <code><a href="class-MyWrapper.Framework.CStatusDocument.h
 
 		<td class="name"><div>
 		<a class="anchor" href="#__Ready">#</a>
-		<code><a href="source-class-MyWrapper.Framework.CNode.html#369" title="Go to source code">_Ready</a>( )</code>
+		<code><a href="source-class-MyWrapper.Framework.CNode.html#478" title="Go to source code">_Ready</a>( )</code>
 
 		<div class="description short">
 			
@@ -638,7 +749,6 @@ absence of the kOFFSET_TERM offset.</p>
 			<a href="class-MyWrapper.Persistence.CPersistentObject.html#_">GID()</a>, 
 			<a href="class-MyWrapper.Persistence.CPersistentObject.html#_">NewObject()</a>, 
 			<a href="class-MyWrapper.Persistence.CPersistentObject.html#_">_AssertObjectIdentifier()</a>, 
-			<a href="class-MyWrapper.Persistence.CPersistentObject.html#_">_Precommit()</a>, 
 			<a href="class-MyWrapper.Persistence.CPersistentObject.html#_">_id()</a>, 
 			<a href="class-MyWrapper.Persistence.CPersistentObject.html#_">_index()</a>
 		</code></td>

@@ -786,6 +786,155 @@ class CMongoContainer extends CContainer
 		
 	} // ManageObject.
 
+	 
+	/*===================================================================================
+	 *	CheckObject																		*
+	 *==================================================================================*/
+
+	/**
+	 * <h4>Check if object exists in container</h4>
+	 *
+	 * In this class we return the number of found objects.
+	 *
+	 * @param mixed					$theIdentifier		Identifier.
+	 *
+	 * @access public
+	 * @return boolean				<tt>TRUE</tt> exists.
+	 *
+	 * @throws \Exception
+	 *
+	 * @uses Connection()
+	 */
+	public function CheckObject( $theIdentifier )
+	{
+		//
+		// Get container.
+		//
+		$container = $this->Connection();
+		if( ! ($container instanceof \MongoCollection) )
+			throw new \Exception
+				( "Missing or invalid native container",
+				  kERROR_STATE );												// !@! ==>
+		
+		//
+		// Set criteria.
+		//
+		$fields = array( '_id' => TRUE );
+		$criteria = array( '_id' => $theIdentifier );
+		
+		//
+		// Make query.
+		//
+		$cursor = $container->find( $criteria, $fields );
+		
+		return $cursor->count();													// ==>
+	
+	} // CheckObject.
+
+		
+
+/*=======================================================================================
+ *																						*
+ *								PUBLIC SEQUENCE INTERFACE								*
+ *																						*
+ *======================================================================================*/
+
+
+	 
+	/*===================================================================================
+	 *	NextSequence																	*
+	 *==================================================================================*/
+
+	/**
+	 * <h4>Return a sequence number</h4>
+	 *
+	 * We overload this method here to implement sequence numbers in mongo containers,
+	 * please refer to the {@link CContainer::NextSequence()} documentation for more
+	 * information.
+	 *
+	 * @param string				$theKey				Sequence key.
+	 * @param string				$theContainer		Sequence container.
+	 *
+	 * @access public
+	 * @return mixed				The sequence number or <tt>NULL</tt>.
+	 *
+	 * @throws \Exception
+	 */
+	public function NextSequence( $theKey, $theContainer = NULL )
+	{
+		//
+		// Check inited status.
+		//
+		if( $this->_IsInited() )
+		{
+			//
+			// Init local storage.
+			//
+			$options = array( 'safe' => TRUE );
+			$criteria = array( '_id' => $theKey );
+			$container = ( $theContainer !== NULL )
+					   ? ( ( $theContainer === TRUE )
+					   	 ? $this->Connection()->db->selectCollection
+					   	 	( kCONTAINER_SEQUENCE_NAME )
+					   	 : $this->Connection()->db->selectCollection( $theContainer ) )
+					   : $this->Connection();
+			
+			//
+			// Read sequence number.
+			//
+			$seq = $container->findOne( $criteria );
+			
+			//
+			// Handle first.
+			//
+			if( $seq === NULL )
+			{
+				//
+				// Save next.
+				//
+				$ok = $container->save( array( '_id' => $theKey,
+											   kOFFSET_SEQUENCE => 2 ),
+										$options );
+				if( $ok[ 'ok' ] )
+					return 1;														// ==>
+				
+				throw new \Exception
+					( $ok[ 'errmsg' ],
+					  kERROR_COMMIT );											// !@! ==>
+			
+			} // First sequence.
+			
+			//
+			// Handle existing sequence.
+			//
+			else
+			{
+				//
+				// Save sequence.
+				//
+				$number = $seq[ kOFFSET_SEQUENCE ]++;
+				
+				//
+				// Increment sequence.
+				//
+				$ok = $container->save( $seq, $options );
+				if( ! $ok[ 'ok' ] )
+					throw new \Exception
+						( $ok[ 'errmsg' ],
+						  kERROR_COMMIT );										// !@! ==>
+				
+				return $number;														// ==>
+			
+			} // Sequence exists.
+		
+		} // Object is inited.
+		
+		throw new \Exception
+			( "Object is not ready",
+			  kERROR_STATE );													// !@! ==>
+	
+	} // NextSequence.
+
 		
 
 /*=======================================================================================

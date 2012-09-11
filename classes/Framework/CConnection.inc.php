@@ -31,4 +31,12 @@
  */
 define( "kOFFSET_NAME",							'_nam' );
 
+/**
+ * Parent.
+ *
+ * This tag identifies the parent reference, the eventual object that created the current
+ * one.
+ */
+define( "kOFFSET_PARENT",						'_par' );
+
 ?>

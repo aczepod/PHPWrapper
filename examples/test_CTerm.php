@@ -27,7 +27,13 @@ require_once( '/Library/WebServer/Library/PHPWrapper/includes.inc.php' );
 //
 // Containers.
 //
+require_once( kPATH_MYWRAPPER_LIBRARY_CLASS."/Persistence/CMongoContainer.php" );
 use \MyWrapper\Persistence\CMongoContainer as CMongoContainer;
+
+//
+// Auxiliary includes.
+//
+use \MyWrapper\Persistence\CMongoServer as CMongoServer;
 
 //
 // Class includes.
@@ -86,15 +92,14 @@ try
 	//
 	echo( '<hr />' );
 	echo( '<h4>Create test container</h4>' );
-	echo( '$mongo = New Mongo();<br />' );
-	$mongo = New \Mongo();
-	echo( '$db = $mongo->selectDB( "TEST" );<br />' );
-	$db = $mongo->selectDB( "TEST" );
-	$db->drop();
-	echo( '$collection = $db->selectCollection( "CTerm" );<br />' );
-	$collection = $db->selectCollection( "CTerm" );
-	echo( '$container = new CMongoContainer( $collection );<br />' );
-	$container = new CMongoContainer( $collection );
+	echo( '$server = new CMongoServer();<br />' );
+	$server = New CMongoServer();
+	echo( '$database = $server->Database( "TEST" );<br />' );
+	$database = $server->Database( "TEST" );
+	echo( '$database->Drop();<br />' );
+	$database->Drop();
+	echo( '$container = CTerm::Container( $database );<br />' );
+	$container = CTerm::Container( $database );
 	echo( '<hr />' );
 	echo( '<hr />' );
 	

@@ -7,7 +7,7 @@
 	<title>Class MyWrapper\Framework\CContainer | MyWrapper Reference Documentation</title>
 
 	<script type="text/javascript" src="resources/combined.js?496895167"></script>
-	<script type="text/javascript" src="elementlist.js?2871702978"></script>
+	<script type="text/javascript" src="elementlist.js?3191507714"></script>
 	<link rel="stylesheet" type="text/css" media="all" href="resources/style.css?1567499433" />
 
 </head>
@@ -47,6 +47,7 @@
 				<li class="active"><a href="class-MyWrapper.Framework.CContainer.html">CContainer</a></li>
 				<li><a href="class-MyWrapper.Framework.CDatabase.html">CDatabase</a></li>
 				<li><a href="class-MyWrapper.Framework.CDocument.html">CDocument</a></li>
+				<li><a href="class-MyWrapper.Framework.CEdge.html">CEdge</a></li>
 				<li><a href="class-MyWrapper.Framework.CNode.html">CNode</a></li>
 				<li><a href="class-MyWrapper.Framework.CServer.html">CServer</a></li>
 				<li><a href="class-MyWrapper.Framework.CStatusDocument.html">CStatusDocument</a></li>
@@ -177,10 +178,6 @@ implement specific storage actions.</p>
 			<a href="class-MyWrapper.Persistence.CMongoContainer.html">MyWrapper\Persistence\CMongoContainer</a>
 	</div>
 
-	<div>
-		<h4>Indirect known subclasses</h4>
-			<a href="class-MyWrapper.Persistence.CMongoSequence.html">MyWrapper\Persistence\CMongoSequence</a>
-	</div>
 
 
 
@@ -192,7 +189,7 @@ implement specific storage actions.</p>
 		<b>Namespace:</b> <a href="namespace-MyWrapper.html">MyWrapper</a>\<a href="namespace-MyWrapper.Framework.html">Framework</a><br />
 		<b>Package:</b> MyWrapper\Framework<br />
 
-		<b>Located at</b> <a href="source-class-MyWrapper.Framework.CContainer.html#38" title="Go to source code">Framework/CContainer.php</a><br />
+		<b>Located at</b> <a href="source-class-MyWrapper.Framework.CContainer.html#45" title="Go to source code">Framework/CContainer.php</a><br />
 	</div>
 
 
@@ -209,7 +206,7 @@ implement specific storage actions.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#_ManageObject">#</a>
-		<code><a href="source-class-MyWrapper.Framework.CContainer.html#82" title="Go to source code">ManageObject</a>( <span>reference <var>&amp; $theObject</var></span>, <span>mixed <var>$theIdentifier</var> = <span class="php-keyword1">NULL</span></span>, <span>bitfield <var>$theModifiers</var> = kFLAG_DEFAULT </span> )</code>
+		<code><a href="source-class-MyWrapper.Framework.CContainer.html#89" title="Go to source code">ManageObject</a>( <span>reference <var>&amp; $theObject</var></span>, <span>mixed <var>$theIdentifier</var> = <span class="php-keyword1">NULL</span></span>, <span>bitfield <var>$theModifiers</var> = kFLAG_DEFAULT </span> )</code>
 
 		<div class="description short">
 			
@@ -395,6 +392,122 @@ is declared abstract.</p>
 		</div>
 		</div></td>
 	</tr>
+	<tr data-order="CheckObject" id="_CheckObject">
+
+		<td class="attributes"><code>
+			abstract public 
+			boolean
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_CheckObject">#</a>
+		<code><a href="source-class-MyWrapper.Framework.CContainer.html#258" title="Go to source code">CheckObject</a>( <span>mixed <var>$theIdentifier</var></span> )</code>
+
+		<div class="description short">
+			
+<h4>Check if object exists in container</h4>
+
+		</div>
+
+		<div class="description detailed hidden">
+			
+<h4>Check if object exists in container</h4>
+
+<p>This method can be used to check if an object exists in the current
+container, the method expects the identifier and will return <tt>TRUE</tt> if
+found and <tt>FALSE</tt> if not.</p>
+
+
+
+				<h4>Parameters</h4>
+				<div class="list"><dl>
+					<dt><var>$theIdentifier</var></dt>
+					<dd><code>mixed</code><br> Identifier.</dd>
+				</dl></div>
+
+				<h4>Returns</h4>
+				<div class="list">
+					<code>boolean</code><br><tt>TRUE</tt> exists.<br />
+				</div>
+
+
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="NextSequence" id="_NextSequence">
+
+		<td class="attributes"><code>
+			 public 
+			mixed
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_NextSequence">#</a>
+		<code><a href="source-class-MyWrapper.Framework.CContainer.html#286" title="Go to source code">NextSequence</a>( <span>string <var>$theKey</var></span>, <span>string <var>$theContainer</var> = <span class="php-keyword1">NULL</span> </span> )</code>
+
+		<div class="description short">
+			
+<h4>Return a sequence number</h4>
+
+		</div>
+
+		<div class="description detailed hidden">
+			
+<h4>Return a sequence number</h4>
+
+<p>This method should return a sequence number connected to the provided key.
+Each time this method is called, the sequence number is incremented, which means
+that you should only call it when you intend to use this number.</p>
+
+<p>The first parameter, <tt>$theKey</tt>, represents the key to the sequence, it
+will be the kOFFSET_NID of the record holding the sequence and the field
+holding the current number has the kOFFSET_SEQUENCE offset.</p>
+
+<p>The second parameter represents the container in which the sequence is
+stored: if you provide a string, the method should use a corresponding native
+container; if you provide <tt>TRUE</tt>, the method will use the string stored
+in kCONTAINER_SEQUENCE_NAME; if you provide <tt>NULL</tt>, the method
+will use the current container.</p>
+
+<p>If the object is not _Is Inited(), the method should raise an
+exception.</p>
+
+<p>If the current object does not support sequences, this method should return
+<tt>NULL</tt>.</p>
+
+<p>This class is abstract and by default sequences are not supported.</p>
+
+
+
+				<h4>Parameters</h4>
+				<div class="list"><dl>
+					<dt><var>$theKey</var></dt>
+					<dd><code>string</code><br> Sequence key.</dd>
+					<dt><var>$theContainer</var></dt>
+					<dd><code>string</code><br> Sequence container.</dd>
+				</dl></div>
+
+				<h4>Returns</h4>
+				<div class="list">
+					<code>mixed</code><br>The sequence number or <tt>NULL</tt>.<br />
+				</div>
+
+				<h4>Throws</h4>
+				<div class="list">
+					<code><code><a href="class-Exception.html">Exception</a></code></code><br />
+				</div>
+
+
+
+		</div>
+		</div></td>
+	</tr>
 	<tr data-order="ConvertBinary" id="_ConvertBinary">
 
 		<td class="attributes"><code>
@@ -406,7 +519,7 @@ is declared abstract.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#_ConvertBinary">#</a>
-		<code><a href="source-class-MyWrapper.Framework.CContainer.html#260" title="Go to source code">ConvertBinary</a>( <span>mixed <var>$theValue</var></span>, <span>boolean <var>$theSense</var> = <span class="php-keyword1">TRUE</span> </span> )</code>
+		<code><a href="source-class-MyWrapper.Framework.CContainer.html#334" title="Go to source code">ConvertBinary</a>( <span>mixed <var>$theValue</var></span>, <span>boolean <var>$theSense</var> = <span class="php-keyword1">TRUE</span> </span> )</code>
 
 		<div class="description short">
 			

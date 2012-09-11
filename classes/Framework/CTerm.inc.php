@@ -41,4 +41,15 @@ define( "kOFFSET_LID",							'_lid' );
  */
 define( "kOFFSET_NAMESPACE",					'_nsp' );
 
+/*=======================================================================================
+ *	DEFAULT CONTAINER NAMES																*
+ *======================================================================================*/
+
+/**
+ * Terms container name.
+ *
+ * This tag identifies the default name for the container that will host term objects.
+ */
+define( "kCONTAINER_TERM_NAME",					'_terms' );
+
 ?>

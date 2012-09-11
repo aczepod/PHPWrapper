@@ -7,7 +7,7 @@
 	<title>Class MyWrapper\Ontology\COntologyNode | MyWrapper Reference Documentation</title>
 
 	<script type="text/javascript" src="resources/combined.js?496895167"></script>
-	<script type="text/javascript" src="elementlist.js?2871702978"></script>
+	<script type="text/javascript" src="elementlist.js?3191507714"></script>
 	<link rel="stylesheet" type="text/css" media="all" href="resources/style.css?1567499433" />
 
 </head>
@@ -95,7 +95,7 @@
 <h3>Ontology node object ancestor</h3>
 
 <p>This class extends its ancestor, <code><a href="class-MyWrapper.Framework.CNode.html">MyWrapper\Framework\CNode</a></code>, by ensuring that the node's
-term reference, kOFFSET_TERM, is the identifier of a <code><a href="class-MyWrapper.Ontology.COntologyTerm.html">MyWrapper\Ontology\COntologyTerm</a></code> object.</p>
+term reference, kOFFSET_TERM, is the identifier of a <code><a href="class-MyWrapper.Framework.CStatusDocument.html#_">MyWrapper\Framework\CStatusDocument::_IsCommitted()</a></code> <code><a href="class-MyWrapper.Ontology.COntologyTerm.html">MyWrapper\Ontology\COntologyTerm</a></code> object.</p>
 
 <p>When inserting a new node, the class will also make sure that the referenced
 term gets a reference to the current node in its kOFFSET_REFS_NODE
@@ -193,7 +193,7 @@ offset.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#__Preset">#</a>
-		<code><a href="source-class-MyWrapper.Ontology.COntologyNode.html#80" title="Go to source code">_Preset</a>( <span>reference <var>&amp; $theOffset</var></span>, <span>reference <var>&amp; $theValue</var></span> )</code>
+		<code><a href="source-class-MyWrapper.Ontology.COntologyNode.html#81" title="Go to source code">_Preset</a>( <span>reference <var>&amp; $theOffset</var></span>, <span>reference <var>&amp; $theValue</var></span> )</code>
 
 		<div class="description short">
 			
@@ -238,6 +238,55 @@ their ID.</p>
 		</div>
 		</div></td>
 	</tr>
+	<tr data-order="_Precommit" id="__Precommit">
+
+		<td class="attributes"><code>
+			 protected 
+			
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#__Precommit">#</a>
+		<code><a href="source-class-MyWrapper.Ontology.COntologyNode.html#129" title="Go to source code">_Precommit</a>( <span><code><a href="class-MyWrapper.Framework.CContainer.html">MyWrapper\Framework\CContainer</a></code> <var>$theContainer</var></span>, <span>bitfield <var>$theModifiers</var> = kFLAG_DEFAULT </span> )</code>
+
+		<div class="description short">
+			
+<h4>Prepare the object before committing</h4>
+
+		</div>
+
+		<div class="description detailed hidden">
+			
+<h4>Prepare the object before committing</h4>
+
+<p>In this class we check whether the node term is an ontology term and can be
+found.</p>
+
+
+
+				<h4>Parameters</h4>
+				<div class="list"><dl>
+					<dt><var>$theContainer</var></dt>
+					<dd><code><code><a href="class-MyWrapper.Framework.CContainer.html">MyWrapper\Framework\CContainer</a></code></code><br> Container.</dd>
+					<dt><var>$theModifiers</var></dt>
+					<dd><code>bitfield</code><br> Commit options.</dd>
+				</dl></div>
+
+
+				<h4>Throws</h4>
+				<div class="list">
+					<code><code><a href="class-Exception.html">Exception</a></code></code><br />
+				</div>
+
+
+				<h4>Overrides</h4>
+				<div class="list"><code><a href="class-MyWrapper.Framework.CNode.html#_">MyWrapper\Framework\CNode::_Precommit</a></code></div>
+
+		</div>
+		</div></td>
+	</tr>
 	<tr data-order="_Postcommit" id="__Postcommit">
 
 		<td class="attributes"><code>
@@ -249,7 +298,7 @@ their ID.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#__Postcommit">#</a>
-		<code><a href="source-class-MyWrapper.Ontology.COntologyNode.html#135" title="Go to source code">_Postcommit</a>( <span><code><a href="class-MyWrapper.Framework.CContainer.html">MyWrapper\Framework\CContainer</a></code> <var>$theContainer</var></span>, <span>bitfield <var>$theModifiers</var> = kFLAG_DEFAULT </span> )</code>
+		<code><a href="source-class-MyWrapper.Ontology.COntologyNode.html#176" title="Go to source code">_Postcommit</a>( <span><code><a href="class-MyWrapper.Framework.CContainer.html">MyWrapper\Framework\CContainer</a></code> <var>$theContainer</var></span>, <span>bitfield <var>$theModifiers</var> = kFLAG_DEFAULT </span> )</code>
 
 		<div class="description short">
 			
@@ -288,6 +337,7 @@ their ID.</p>
 	<caption>Methods inherited from <a href="class-MyWrapper.Framework.CNode.html#methods">MyWrapper\Framework\CNode</a></caption>
 	<tr>
 		<td><code>
+			<a href="class-MyWrapper.Framework.CNode.html#_">Container()</a>, 
 			<a href="class-MyWrapper.Framework.CNode.html#_">Kind()</a>, 
 			<a href="class-MyWrapper.Framework.CNode.html#_">Term()</a>, 
 			<a href="class-MyWrapper.Framework.CNode.html#_">Type()</a>, 
@@ -304,7 +354,6 @@ their ID.</p>
 			<a href="class-MyWrapper.Persistence.CPersistentObject.html#_">GID()</a>, 
 			<a href="class-MyWrapper.Persistence.CPersistentObject.html#_">NewObject()</a>, 
 			<a href="class-MyWrapper.Persistence.CPersistentObject.html#_">_AssertObjectIdentifier()</a>, 
-			<a href="class-MyWrapper.Persistence.CPersistentObject.html#_">_Precommit()</a>, 
 			<a href="class-MyWrapper.Persistence.CPersistentObject.html#_">_id()</a>, 
 			<a href="class-MyWrapper.Persistence.CPersistentObject.html#_">_index()</a>
 		</code></td>

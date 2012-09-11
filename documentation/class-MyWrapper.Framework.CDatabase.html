@@ -7,7 +7,7 @@
 	<title>Class MyWrapper\Framework\CDatabase | MyWrapper Reference Documentation</title>
 
 	<script type="text/javascript" src="resources/combined.js?496895167"></script>
-	<script type="text/javascript" src="elementlist.js?2871702978"></script>
+	<script type="text/javascript" src="elementlist.js?3191507714"></script>
 	<link rel="stylesheet" type="text/css" media="all" href="resources/style.css?1567499433" />
 
 </head>
@@ -47,6 +47,7 @@
 				<li><a href="class-MyWrapper.Framework.CContainer.html">CContainer</a></li>
 				<li class="active"><a href="class-MyWrapper.Framework.CDatabase.html">CDatabase</a></li>
 				<li><a href="class-MyWrapper.Framework.CDocument.html">CDocument</a></li>
+				<li><a href="class-MyWrapper.Framework.CEdge.html">CEdge</a></li>
 				<li><a href="class-MyWrapper.Framework.CNode.html">CNode</a></li>
 				<li><a href="class-MyWrapper.Framework.CServer.html">CServer</a></li>
 				<li><a href="class-MyWrapper.Framework.CStatusDocument.html">CStatusDocument</a></li>
@@ -112,6 +113,10 @@ containers.</p>
 <p>The object is instantiated by providing the native database connection which
 is stored in a data member of the object, the array part of the object can be
 used to store specific attributes of the native database connection.</p>
+
+<p>The class also features an offset, kOFFSET_PARENT, that can be used
+to store the parent object, in this case the server object. This member gets set
+when the object is instantiated by a server object.</p>
 
 <p>The abstract class must be overloaded by concrete classes that implement a
 native database object.</p>
@@ -187,6 +192,44 @@ native database object.</p>
 
 	<table class="summary" id="methods">
 	<caption>Methods summary</caption>
+	<tr data-order="Drop" id="_Drop">
+
+		<td class="attributes"><code>
+			abstract public 
+			
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_Drop">#</a>
+		<code><a href="source-class-MyWrapper.Framework.CDatabase.html#70" title="Go to source code">Drop</a>( )</code>
+
+		<div class="description short">
+			
+<h4>Delete a database</h4>
+
+		</div>
+
+		<div class="description detailed hidden">
+			
+<h4>Delete a database</h4>
+
+<p>This method can be used to delete or erase a database, it is up to derived
+concrete instances to implement it.</p>
+
+<p>The method takes no parameters.</p>
+
+
+
+
+
+
+
+
+		</div>
+		</div></td>
+	</tr>
 	<tr data-order="Container" id="_Container">
 
 		<td class="attributes"><code>
@@ -198,7 +241,7 @@ native database object.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#_Container">#</a>
-		<code><a href="source-class-MyWrapper.Framework.CDatabase.html#66" title="Go to source code">Container</a>( <span>mixed <var>$theContainer</var> = <span class="php-keyword1">NULL</span> </span> )</code>
+		<code><a href="source-class-MyWrapper.Framework.CDatabase.html#87" title="Go to source code">Container</a>( <span>mixed <var>$theContainer</var> = <span class="php-keyword1">NULL</span> </span> )</code>
 
 		<div class="description short">
 			

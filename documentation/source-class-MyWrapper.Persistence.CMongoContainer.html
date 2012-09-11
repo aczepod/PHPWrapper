@@ -8,7 +8,7 @@
 	<title>File Persistence/CMongoContainer.php | MyWrapper Reference Documentation</title>
 
 	<script type="text/javascript" src="resources/combined.js?496895167"></script>
-	<script type="text/javascript" src="elementlist.js?2871702978"></script>
+	<script type="text/javascript" src="elementlist.js?3191507714"></script>
 	<link rel="stylesheet" type="text/css" media="all" href="resources/style.css?1567499433" />
 
 </head>
@@ -46,7 +46,6 @@
 			<ul>
 				<li class="active"><a href="class-MyWrapper.Persistence.CMongoContainer.html">CMongoContainer</a></li>
 				<li><a href="class-MyWrapper.Persistence.CMongoDatabase.html">CMongoDatabase</a></li>
-				<li><a href="class-MyWrapper.Persistence.CMongoSequence.html">CMongoSequence</a></li>
 				<li><a href="class-MyWrapper.Persistence.CMongoServer.html">CMongoServer</a></li>
 				<li><a href="class-MyWrapper.Persistence.CPersistentDocument.html">CPersistentDocument</a></li>
 				<li><a href="class-MyWrapper.Persistence.CPersistentObject.html">CPersistentObject</a></li>
@@ -880,51 +879,200 @@
 <a href="#786" id="786" class="l">786: </a>        
 <a href="#787" id="787" class="l">787: </a>    } <span class="php-comment">// ManageObject.</span>
 <a href="#788" id="788" class="l">788: </a>
-<a href="#789" id="789" class="l">789: </a>        
-<a href="#790" id="790" class="l">790: </a>
-<a href="#791" id="791" class="l">791: </a><span class="php-comment">/*=======================================================================================
-</span><a href="#792" id="792" class="l">792: </a><span class="php-comment"> *                                                                                      *
-</span><a href="#793" id="793" class="l">793: </a><span class="php-comment"> *                              PUBLIC CONVERSION INTERFACE                             *
-</span><a href="#794" id="794" class="l">794: </a><span class="php-comment"> *                                                                                      *
-</span><a href="#795" id="795" class="l">795: </a><span class="php-comment"> *======================================================================================*/</span>
-<a href="#796" id="796" class="l">796: </a>
-<a href="#797" id="797" class="l">797: </a>
-<a href="#798" id="798" class="l">798: </a>     
-<a href="#799" id="799" class="l">799: </a>    <span class="php-comment">/*===================================================================================
-</span><a href="#800" id="800" class="l">800: </a><span class="php-comment">     *  ConvertBinary                                                                   *
-</span><a href="#801" id="801" class="l">801: </a><span class="php-comment">     *==================================================================================*/</span>
-<a href="#802" id="802" class="l">802: </a>
-<a href="#803" id="803" class="l">803: </a>    <span class="php-comment">/**
-</span><a href="#804" id="804" class="l">804: </a><span class="php-comment">     * &lt;h4&gt;Convert a binary string&lt;/h4&gt;
+<a href="#789" id="789" class="l">789: </a>     
+<a href="#790" id="790" class="l">790: </a>    <span class="php-comment">/*===================================================================================
+</span><a href="#791" id="791" class="l">791: </a><span class="php-comment">     *  CheckObject                                                                     *
+</span><a href="#792" id="792" class="l">792: </a><span class="php-comment">     *==================================================================================*/</span>
+<a href="#793" id="793" class="l">793: </a>
+<a href="#794" id="794" class="l">794: </a>    <span class="php-comment">/**
+</span><a href="#795" id="795" class="l">795: </a><span class="php-comment">     * &lt;h4&gt;Check if object exists in container&lt;/h4&gt;
+</span><a href="#796" id="796" class="l">796: </a><span class="php-comment">     *
+</span><a href="#797" id="797" class="l">797: </a><span class="php-comment">     * In this class we return the number of found objects.
+</span><a href="#798" id="798" class="l">798: </a><span class="php-comment">     *
+</span><a href="#799" id="799" class="l">799: </a><span class="php-comment">     * @param mixed                 $theIdentifier      Identifier.
+</span><a href="#800" id="800" class="l">800: </a><span class="php-comment">     *
+</span><a href="#801" id="801" class="l">801: </a><span class="php-comment">     * @access public
+</span><a href="#802" id="802" class="l">802: </a><span class="php-comment">     * @return boolean              &lt;tt&gt;TRUE&lt;/tt&gt; exists.
+</span><a href="#803" id="803" class="l">803: </a><span class="php-comment">     *
+</span><a href="#804" id="804" class="l">804: </a><span class="php-comment">     * @throws \Exception
 </span><a href="#805" id="805" class="l">805: </a><span class="php-comment">     *
-</span><a href="#806" id="806" class="l">806: </a><span class="php-comment">     * This method will take care of converting binary data to and from Mongo data stores,
-</span><a href="#807" id="807" class="l">807: </a><span class="php-comment">     * we use here the {@link \MongoBinData} class.
-</span><a href="#808" id="808" class="l">808: </a><span class="php-comment">     *
-</span><a href="#809" id="809" class="l">809: </a><span class="php-comment">     * This method can be used by the {@link CPersistentObject::_id()} method when
-</span><a href="#810" id="810" class="l">810: </a><span class="php-comment">     * generating a hashed identifier.
-</span><a href="#811" id="811" class="l">811: </a><span class="php-comment">     *
-</span><a href="#812" id="812" class="l">812: </a><span class="php-comment">     * @param mixed                 $theValue           Binary value.
-</span><a href="#813" id="813" class="l">813: </a><span class="php-comment">     * @param boolean               $theSense           &lt;tt&gt;TRUE&lt;/tt&gt; encode for database.
-</span><a href="#814" id="814" class="l">814: </a><span class="php-comment">     *
-</span><a href="#815" id="815" class="l">815: </a><span class="php-comment">     * @static
-</span><a href="#816" id="816" class="l">816: </a><span class="php-comment">     * @return mixed                The encoded or decoded binary string.
-</span><a href="#817" id="817" class="l">817: </a><span class="php-comment">     */</span>
-<a href="#818" id="818" class="l">818: </a>    <span class="php-keyword1">static</span> <span class="php-keyword1">function</span> ConvertBinary( <span class="php-var">$theValue</span>, <span class="php-var">$theSense</span> = <span class="php-keyword1">TRUE</span> )
-<a href="#819" id="819" class="l">819: </a>    {
-<a href="#820" id="820" class="l">820: </a>        <span class="php-keyword1">if</span>( <span class="php-var">$theSense</span> )
-<a href="#821" id="821" class="l">821: </a>            <span class="php-keyword1">return</span> <span class="php-keyword1">new</span> \MongoBinData( <span class="php-var">$theValue</span> );                                  <span class="php-comment">// ==&gt;</span>
-<a href="#822" id="822" class="l">822: </a>        
-<a href="#823" id="823" class="l">823: </a>        <span class="php-keyword1">return</span> <span class="php-var">$theValue</span>-&gt;bin;                                                      <span class="php-comment">// ==&gt;</span>
-<a href="#824" id="824" class="l">824: </a>    
-<a href="#825" id="825" class="l">825: </a>    } <span class="php-comment">// ConvertBinary.</span>
-<a href="#826" id="826" class="l">826: </a>
-<a href="#827" id="827" class="l">827: </a>     
-<a href="#828" id="828" class="l">828: </a>
-<a href="#829" id="829" class="l">829: </a>} <span class="php-comment">// class CMongoContainer.</span>
-<a href="#830" id="830" class="l">830: </a>
-<a href="#831" id="831" class="l">831: </a>
-<a href="#832" id="832" class="l">832: </a><span class="xlang">?&gt;</span>
-<a href="#833" id="833" class="l">833: </a></code></pre>
+</span><a href="#806" id="806" class="l">806: </a><span class="php-comment">     * @uses Connection()
+</span><a href="#807" id="807" class="l">807: </a><span class="php-comment">     */</span>
+<a href="#808" id="808" class="l">808: </a>    <span class="php-keyword1">public</span> <span class="php-keyword1">function</span> CheckObject( <span class="php-var">$theIdentifier</span> )
+<a href="#809" id="809" class="l">809: </a>    {
+<a href="#810" id="810" class="l">810: </a>        <span class="php-comment">//</span>
+<a href="#811" id="811" class="l">811: </a>        <span class="php-comment">// Get container.</span>
+<a href="#812" id="812" class="l">812: </a>        <span class="php-comment">//</span>
+<a href="#813" id="813" class="l">813: </a>        <span class="php-var">$container</span> = <span class="php-var">$this</span>-&gt;Connection();
+<a href="#814" id="814" class="l">814: </a>        <span class="php-keyword1">if</span>( ! (<span class="php-var">$container</span> <span class="php-keyword1">instanceof</span> \MongoCollection) )
+<a href="#815" id="815" class="l">815: </a>            <span class="php-keyword1">throw</span> <span class="php-keyword1">new</span> \Exception
+<a href="#816" id="816" class="l">816: </a>                ( <span class="php-quote">&quot;Missing or invalid native container&quot;</span>,
+<a href="#817" id="817" class="l">817: </a>                  kERROR_STATE );                                               <span class="php-comment">// !@! ==&gt;</span>
+<a href="#818" id="818" class="l">818: </a>        
+<a href="#819" id="819" class="l">819: </a>        <span class="php-comment">//</span>
+<a href="#820" id="820" class="l">820: </a>        <span class="php-comment">// Set criteria.</span>
+<a href="#821" id="821" class="l">821: </a>        <span class="php-comment">//</span>
+<a href="#822" id="822" class="l">822: </a>        <span class="php-var">$fields</span> = <span class="php-keyword1">array</span>( <span class="php-quote">'_id'</span> =&gt; <span class="php-keyword1">TRUE</span> );
+<a href="#823" id="823" class="l">823: </a>        <span class="php-var">$criteria</span> = <span class="php-keyword1">array</span>( <span class="php-quote">'_id'</span> =&gt; <span class="php-var">$theIdentifier</span> );
+<a href="#824" id="824" class="l">824: </a>        
+<a href="#825" id="825" class="l">825: </a>        <span class="php-comment">//</span>
+<a href="#826" id="826" class="l">826: </a>        <span class="php-comment">// Make query.</span>
+<a href="#827" id="827" class="l">827: </a>        <span class="php-comment">//</span>
+<a href="#828" id="828" class="l">828: </a>        <span class="php-var">$cursor</span> = <span class="php-var">$container</span>-&gt;find( <span class="php-var">$criteria</span>, <span class="php-var">$fields</span> );
+<a href="#829" id="829" class="l">829: </a>        
+<a href="#830" id="830" class="l">830: </a>        <span class="php-keyword1">return</span> <span class="php-var">$cursor</span>-&gt;<span class="php-keyword2">count</span>();                                                    <span class="php-comment">// ==&gt;</span>
+<a href="#831" id="831" class="l">831: </a>    
+<a href="#832" id="832" class="l">832: </a>    } <span class="php-comment">// CheckObject.</span>
+<a href="#833" id="833" class="l">833: </a>
+<a href="#834" id="834" class="l">834: </a>        
+<a href="#835" id="835" class="l">835: </a>
+<a href="#836" id="836" class="l">836: </a><span class="php-comment">/*=======================================================================================
+</span><a href="#837" id="837" class="l">837: </a><span class="php-comment"> *                                                                                      *
+</span><a href="#838" id="838" class="l">838: </a><span class="php-comment"> *                              PUBLIC SEQUENCE INTERFACE                               *
+</span><a href="#839" id="839" class="l">839: </a><span class="php-comment"> *                                                                                      *
+</span><a href="#840" id="840" class="l">840: </a><span class="php-comment"> *======================================================================================*/</span>
+<a href="#841" id="841" class="l">841: </a>
+<a href="#842" id="842" class="l">842: </a>
+<a href="#843" id="843" class="l">843: </a>     
+<a href="#844" id="844" class="l">844: </a>    <span class="php-comment">/*===================================================================================
+</span><a href="#845" id="845" class="l">845: </a><span class="php-comment">     *  NextSequence                                                                    *
+</span><a href="#846" id="846" class="l">846: </a><span class="php-comment">     *==================================================================================*/</span>
+<a href="#847" id="847" class="l">847: </a>
+<a href="#848" id="848" class="l">848: </a>    <span class="php-comment">/**
+</span><a href="#849" id="849" class="l">849: </a><span class="php-comment">     * &lt;h4&gt;Return a sequence number&lt;/h4&gt;
+</span><a href="#850" id="850" class="l">850: </a><span class="php-comment">     *
+</span><a href="#851" id="851" class="l">851: </a><span class="php-comment">     * We overload this method here to implement sequence numbers in mongo containers,
+</span><a href="#852" id="852" class="l">852: </a><span class="php-comment">     * please refer to the {@link CContainer::NextSequence()} documentation for more
+</span><a href="#853" id="853" class="l">853: </a><span class="php-comment">     * information.
+</span><a href="#854" id="854" class="l">854: </a><span class="php-comment">     *
+</span><a href="#855" id="855" class="l">855: </a><span class="php-comment">     * @param string                $theKey             Sequence key.
+</span><a href="#856" id="856" class="l">856: </a><span class="php-comment">     * @param string                $theContainer       Sequence container.
+</span><a href="#857" id="857" class="l">857: </a><span class="php-comment">     *
+</span><a href="#858" id="858" class="l">858: </a><span class="php-comment">     * @access public
+</span><a href="#859" id="859" class="l">859: </a><span class="php-comment">     * @return mixed                The sequence number or &lt;tt&gt;NULL&lt;/tt&gt;.
+</span><a href="#860" id="860" class="l">860: </a><span class="php-comment">     *
+</span><a href="#861" id="861" class="l">861: </a><span class="php-comment">     * @throws \Exception
+</span><a href="#862" id="862" class="l">862: </a><span class="php-comment">     */</span>
+<a href="#863" id="863" class="l">863: </a>    <span class="php-keyword1">public</span> <span class="php-keyword1">function</span> NextSequence( <span class="php-var">$theKey</span>, <span class="php-var">$theContainer</span> = <span class="php-keyword1">NULL</span> )
+<a href="#864" id="864" class="l">864: </a>    {
+<a href="#865" id="865" class="l">865: </a>        <span class="php-comment">//</span>
+<a href="#866" id="866" class="l">866: </a>        <span class="php-comment">// Check inited status.</span>
+<a href="#867" id="867" class="l">867: </a>        <span class="php-comment">//</span>
+<a href="#868" id="868" class="l">868: </a>        <span class="php-keyword1">if</span>( <span class="php-var">$this</span>-&gt;_IsInited() )
+<a href="#869" id="869" class="l">869: </a>        {
+<a href="#870" id="870" class="l">870: </a>            <span class="php-comment">//</span>
+<a href="#871" id="871" class="l">871: </a>            <span class="php-comment">// Init local storage.</span>
+<a href="#872" id="872" class="l">872: </a>            <span class="php-comment">//</span>
+<a href="#873" id="873" class="l">873: </a>            <span class="php-var">$options</span> = <span class="php-keyword1">array</span>( <span class="php-quote">'safe'</span> =&gt; <span class="php-keyword1">TRUE</span> );
+<a href="#874" id="874" class="l">874: </a>            <span class="php-var">$criteria</span> = <span class="php-keyword1">array</span>( <span class="php-quote">'_id'</span> =&gt; <span class="php-var">$theKey</span> );
+<a href="#875" id="875" class="l">875: </a>            <span class="php-var">$container</span> = ( <span class="php-var">$theContainer</span> !== <span class="php-keyword1">NULL</span> )
+<a href="#876" id="876" class="l">876: </a>                       ? ( ( <span class="php-var">$theContainer</span> === <span class="php-keyword1">TRUE</span> )
+<a href="#877" id="877" class="l">877: </a>                         ? <span class="php-var">$this</span>-&gt;Connection()-&gt;db-&gt;selectCollection
+<a href="#878" id="878" class="l">878: </a>                            ( kCONTAINER_SEQUENCE_NAME )
+<a href="#879" id="879" class="l">879: </a>                         : <span class="php-var">$this</span>-&gt;Connection()-&gt;db-&gt;selectCollection( <span class="php-var">$theContainer</span> ) )
+<a href="#880" id="880" class="l">880: </a>                       : <span class="php-var">$this</span>-&gt;Connection();
+<a href="#881" id="881" class="l">881: </a>            
+<a href="#882" id="882" class="l">882: </a>            <span class="php-comment">//</span>
+<a href="#883" id="883" class="l">883: </a>            <span class="php-comment">// Read sequence number.</span>
+<a href="#884" id="884" class="l">884: </a>            <span class="php-comment">//</span>
+<a href="#885" id="885" class="l">885: </a>            <span class="php-var">$seq</span> = <span class="php-var">$container</span>-&gt;findOne( <span class="php-var">$criteria</span> );
+<a href="#886" id="886" class="l">886: </a>            
+<a href="#887" id="887" class="l">887: </a>            <span class="php-comment">//</span>
+<a href="#888" id="888" class="l">888: </a>            <span class="php-comment">// Handle first.</span>
+<a href="#889" id="889" class="l">889: </a>            <span class="php-comment">//</span>
+<a href="#890" id="890" class="l">890: </a>            <span class="php-keyword1">if</span>( <span class="php-var">$seq</span> === <span class="php-keyword1">NULL</span> )
+<a href="#891" id="891" class="l">891: </a>            {
+<a href="#892" id="892" class="l">892: </a>                <span class="php-comment">//</span>
+<a href="#893" id="893" class="l">893: </a>                <span class="php-comment">// Save next.</span>
+<a href="#894" id="894" class="l">894: </a>                <span class="php-comment">//</span>
+<a href="#895" id="895" class="l">895: </a>                <span class="php-var">$ok</span> = <span class="php-var">$container</span>-&gt;save( <span class="php-keyword1">array</span>( <span class="php-quote">'_id'</span> =&gt; <span class="php-var">$theKey</span>,
+<a href="#896" id="896" class="l">896: </a>                                               kOFFSET_SEQUENCE =&gt; <span class="php-num">2</span> ),
+<a href="#897" id="897" class="l">897: </a>                                        <span class="php-var">$options</span> );
+<a href="#898" id="898" class="l">898: </a>                <span class="php-keyword1">if</span>( <span class="php-var">$ok</span>[ <span class="php-quote">'ok'</span> ] )
+<a href="#899" id="899" class="l">899: </a>                    <span class="php-keyword1">return</span> <span class="php-num">1</span>;                                                       <span class="php-comment">// ==&gt;</span>
+<a href="#900" id="900" class="l">900: </a>                
+<a href="#901" id="901" class="l">901: </a>                <span class="php-keyword1">throw</span> <span class="php-keyword1">new</span> \Exception
+<a href="#902" id="902" class="l">902: </a>                    ( <span class="php-var">$ok</span>[ <span class="php-quote">'errmsg'</span> ],
+<a href="#903" id="903" class="l">903: </a>                      kERROR_COMMIT );                                          <span class="php-comment">// !@! ==&gt;</span>
+<a href="#904" id="904" class="l">904: </a>            
+<a href="#905" id="905" class="l">905: </a>            } <span class="php-comment">// First sequence.</span>
+<a href="#906" id="906" class="l">906: </a>            
+<a href="#907" id="907" class="l">907: </a>            <span class="php-comment">//</span>
+<a href="#908" id="908" class="l">908: </a>            <span class="php-comment">// Handle existing sequence.</span>
+<a href="#909" id="909" class="l">909: </a>            <span class="php-comment">//</span>
+<a href="#910" id="910" class="l">910: </a>            <span class="php-keyword1">else</span>
+<a href="#911" id="911" class="l">911: </a>            {
+<a href="#912" id="912" class="l">912: </a>                <span class="php-comment">//</span>
+<a href="#913" id="913" class="l">913: </a>                <span class="php-comment">// Save sequence.</span>
+<a href="#914" id="914" class="l">914: </a>                <span class="php-comment">//</span>
+<a href="#915" id="915" class="l">915: </a>                <span class="php-var">$number</span> = <span class="php-var">$seq</span>[ kOFFSET_SEQUENCE ]++;
+<a href="#916" id="916" class="l">916: </a>                
+<a href="#917" id="917" class="l">917: </a>                <span class="php-comment">//</span>
+<a href="#918" id="918" class="l">918: </a>                <span class="php-comment">// Increment sequence.</span>
+<a href="#919" id="919" class="l">919: </a>                <span class="php-comment">//</span>
+<a href="#920" id="920" class="l">920: </a>                <span class="php-var">$ok</span> = <span class="php-var">$container</span>-&gt;save( <span class="php-var">$seq</span>, <span class="php-var">$options</span> );
+<a href="#921" id="921" class="l">921: </a>                <span class="php-keyword1">if</span>( ! <span class="php-var">$ok</span>[ <span class="php-quote">'ok'</span> ] )
+<a href="#922" id="922" class="l">922: </a>                    <span class="php-keyword1">throw</span> <span class="php-keyword1">new</span> \Exception
+<a href="#923" id="923" class="l">923: </a>                        ( <span class="php-var">$ok</span>[ <span class="php-quote">'errmsg'</span> ],
+<a href="#924" id="924" class="l">924: </a>                          kERROR_COMMIT );                                      <span class="php-comment">// !@! ==&gt;</span>
+<a href="#925" id="925" class="l">925: </a>                
+<a href="#926" id="926" class="l">926: </a>                <span class="php-keyword1">return</span> <span class="php-var">$number</span>;                                                     <span class="php-comment">// ==&gt;</span>
+<a href="#927" id="927" class="l">927: </a>            
+<a href="#928" id="928" class="l">928: </a>            } <span class="php-comment">// Sequence exists.</span>
+<a href="#929" id="929" class="l">929: </a>        
+<a href="#930" id="930" class="l">930: </a>        } <span class="php-comment">// Object is inited.</span>
+<a href="#931" id="931" class="l">931: </a>        
+<a href="#932" id="932" class="l">932: </a>        <span class="php-keyword1">throw</span> <span class="php-keyword1">new</span> \Exception
+<a href="#933" id="933" class="l">933: </a>            ( <span class="php-quote">&quot;Object is not ready&quot;</span>,
+<a href="#934" id="934" class="l">934: </a>              kERROR_STATE );                                                   <span class="php-comment">// !@! ==&gt;</span>
+<a href="#935" id="935" class="l">935: </a>    
+<a href="#936" id="936" class="l">936: </a>    } <span class="php-comment">// NextSequence.</span>
+<a href="#937" id="937" class="l">937: </a>
+<a href="#938" id="938" class="l">938: </a>        
+<a href="#939" id="939" class="l">939: </a>
+<a href="#940" id="940" class="l">940: </a><span class="php-comment">/*=======================================================================================
+</span><a href="#941" id="941" class="l">941: </a><span class="php-comment"> *                                                                                      *
+</span><a href="#942" id="942" class="l">942: </a><span class="php-comment"> *                              PUBLIC CONVERSION INTERFACE                             *
+</span><a href="#943" id="943" class="l">943: </a><span class="php-comment"> *                                                                                      *
+</span><a href="#944" id="944" class="l">944: </a><span class="php-comment"> *======================================================================================*/</span>
+<a href="#945" id="945" class="l">945: </a>
+<a href="#946" id="946" class="l">946: </a>
+<a href="#947" id="947" class="l">947: </a>     
+<a href="#948" id="948" class="l">948: </a>    <span class="php-comment">/*===================================================================================
+</span><a href="#949" id="949" class="l">949: </a><span class="php-comment">     *  ConvertBinary                                                                   *
+</span><a href="#950" id="950" class="l">950: </a><span class="php-comment">     *==================================================================================*/</span>
+<a href="#951" id="951" class="l">951: </a>
+<a href="#952" id="952" class="l">952: </a>    <span class="php-comment">/**
+</span><a href="#953" id="953" class="l">953: </a><span class="php-comment">     * &lt;h4&gt;Convert a binary string&lt;/h4&gt;
+</span><a href="#954" id="954" class="l">954: </a><span class="php-comment">     *
+</span><a href="#955" id="955" class="l">955: </a><span class="php-comment">     * This method will take care of converting binary data to and from Mongo data stores,
+</span><a href="#956" id="956" class="l">956: </a><span class="php-comment">     * we use here the {@link \MongoBinData} class.
+</span><a href="#957" id="957" class="l">957: </a><span class="php-comment">     *
+</span><a href="#958" id="958" class="l">958: </a><span class="php-comment">     * This method can be used by the {@link CPersistentObject::_id()} method when
+</span><a href="#959" id="959" class="l">959: </a><span class="php-comment">     * generating a hashed identifier.
+</span><a href="#960" id="960" class="l">960: </a><span class="php-comment">     *
+</span><a href="#961" id="961" class="l">961: </a><span class="php-comment">     * @param mixed                 $theValue           Binary value.
+</span><a href="#962" id="962" class="l">962: </a><span class="php-comment">     * @param boolean               $theSense           &lt;tt&gt;TRUE&lt;/tt&gt; encode for database.
+</span><a href="#963" id="963" class="l">963: </a><span class="php-comment">     *
+</span><a href="#964" id="964" class="l">964: </a><span class="php-comment">     * @static
+</span><a href="#965" id="965" class="l">965: </a><span class="php-comment">     * @return mixed                The encoded or decoded binary string.
+</span><a href="#966" id="966" class="l">966: </a><span class="php-comment">     */</span>
+<a href="#967" id="967" class="l">967: </a>    <span class="php-keyword1">static</span> <span class="php-keyword1">function</span> ConvertBinary( <span class="php-var">$theValue</span>, <span class="php-var">$theSense</span> = <span class="php-keyword1">TRUE</span> )
+<a href="#968" id="968" class="l">968: </a>    {
+<a href="#969" id="969" class="l">969: </a>        <span class="php-keyword1">if</span>( <span class="php-var">$theSense</span> )
+<a href="#970" id="970" class="l">970: </a>            <span class="php-keyword1">return</span> <span class="php-keyword1">new</span> \MongoBinData( <span class="php-var">$theValue</span> );                                  <span class="php-comment">// ==&gt;</span>
+<a href="#971" id="971" class="l">971: </a>        
+<a href="#972" id="972" class="l">972: </a>        <span class="php-keyword1">return</span> <span class="php-var">$theValue</span>-&gt;bin;                                                      <span class="php-comment">// ==&gt;</span>
+<a href="#973" id="973" class="l">973: </a>    
+<a href="#974" id="974" class="l">974: </a>    } <span class="php-comment">// ConvertBinary.</span>
+<a href="#975" id="975" class="l">975: </a>
+<a href="#976" id="976" class="l">976: </a>     
+<a href="#977" id="977" class="l">977: </a>
+<a href="#978" id="978" class="l">978: </a>} <span class="php-comment">// class CMongoContainer.</span>
+<a href="#979" id="979" class="l">979: </a>
+<a href="#980" id="980" class="l">980: </a>
+<a href="#981" id="981" class="l">981: </a><span class="xlang">?&gt;</span>
+<a href="#982" id="982" class="l">982: </a></code></pre>
 
 	<div id="footer">
 		MyWrapper Reference Documentation API documentation generated by <a href="http://apigen.org">ApiGen 2.7.0</a>

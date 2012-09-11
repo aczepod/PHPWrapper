@@ -53,7 +53,8 @@ use \MyWrapper\Framework\CNode as CNode;
  * <h3>Ontology node object ancestor</h3>
  *
  * This class extends its ancestor, {@link CNode}, by ensuring that the node's term
- * reference, {@link kOFFSET_TERM}, is the identifier of a {@link COntologyTerm} object.
+ * reference, {@link kOFFSET_TERM}, is the identifier of a {@link _IsCommitted()}
+ * {@link COntologyTerm} object.
  *
  * When inserting a new node, the class will also make sure that the referenced term gets a
  * reference to the current node in its {@link kOFFSET_REFS_NODE} offset.
@@ -97,19 +98,12 @@ class COntologyNode extends CNode
 	protected function _Preset( &$theOffset, &$theValue )
 	{
 		//
-		// Skip removals.
+		// Handle terms.
 		//
-		if( $theValue !== NULL )
-		{
-			//
-			// Handle term reference.
-			//
-			if( $theOffset == kOFFSET_TERM )
-				$this->_AssertObjectIdentifier( $theValue,
-												'\MyWrapper\Ontology\COntologyTerm',
-												TRUE );
-		
-		} // Setting a value.
+		if( $theOffset == kOFFSET_TERM )
+			$this->_AssertObjectIdentifier( $theValue,
+											'\MyWrapper\Ontology\COntologyTerm',
+											TRUE );
 		
 		//
 		// Call parent method.
@@ -128,6 +122,53 @@ class COntologyNode extends CNode
 
 
 	 
+	/*===================================================================================
+	 *	_Precommit																		*
+	 *==================================================================================*/
+
+	/**
+	 * <h4>Prepare the object before committing</h4>
+	 *
+	 * In this class we check whether the node term is an ontology term and can be found.
+	 *
+	 * @param CContainer			$theContainer		Container.
+	 * @param bitfield				$theModifiers		Commit options.
+	 *
+	 * @access protected
+	 */
+	protected function _Precommit( CContainer $theContainer,
+											  $theModifiers = kFLAG_DEFAULT )
+	{
+		//
+		// Get container's database.
+		//
+		$database = $theContainer[ kOFFSET_PARENT ];
+		if( $database !== NULL )
+		{
+			//
+			// Get terms container.
+			//
+			$container = CTerm::Container( $database );
+			if( ! $container->CheckObject( $this->getOffset( kOFFSET_TERM ) ) )
+				throw new \Exception
+					( "The node term cannot be found",
+					  kERROR_PARAMETER );											// !@! ==>
+		
+		} // Container is related to database.
+		
+		else
+			throw new \Exception
+				( "The provided container is missing its database reference",
+				  kERROR_PARAMETER );											// !@! ==>
+		
+		//
+		// Call parent method.
+		//
+		parent::_Precommit( $theContainer, $theModifiers );
+		
+	} // _PreCommit.
+		
+
 	/*===================================================================================
 	 *	_Postcommit																		*
 	 *==================================================================================*/
@@ -177,7 +218,7 @@ class COntologyNode extends CNode
 				(
 					$mod,								// Because it will be overwritten.
 					$this->offsetGet( kOFFSET_TERM ),		// Term identifier.
-					kFLAG_PERSIST_MODIFY + kFLAG_MODIFY_PULL	// Remove to occurrances.
+					kFLAG_PERSIST_MODIFY + kFLAG_MODIFY_PULL	// Remove to occurrences.
 				);
 		
 		} // Deleting.

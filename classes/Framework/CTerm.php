@@ -40,6 +40,7 @@ require_once( kPATH_MYWRAPPER_LIBRARY_DEFINE."/Tokens.inc.php" );
  */
 require_once( kPATH_MYWRAPPER_LIBRARY_CLASS."/Framework/CContainer.php" );
 use \MyWrapper\Framework\CContainer as CContainer;
+use \MyWrapper\Framework\CDatabase as CDatabase;
 
 /**
  * Ancestor.
@@ -78,6 +79,11 @@ use \MyWrapper\Persistence\CPersistentObject as CPersistentObject;
  *
  * The object will have its {@link _IsInited()} status set if the local unique identifier,
  * {@link kOFFSET_LID}, is set, derived classes may add other required attributes.
+ *
+ * The class features a static method, {@link Container}, that can be used to instantiate
+ * the terms container, it will use the {@link kCONTAINER_TERM_NAME} constant to retrieve
+ * the container given a {@link CDatabase}: you should use this method to get the terms
+ * container.
  *
  * Finally, the class features member accessor methods for the default offsets:
  *
@@ -193,6 +199,41 @@ class CTerm extends CPersistentObject
 
 /*=======================================================================================
  *																						*
+ *								STATIC CONTAINER INTERFACE								*
+ *																						*
+ *======================================================================================*/
+
+
+	 
+	/*===================================================================================
+	 *	Container																		*
+	 *==================================================================================*/
+
+	/**
+	 * <h4>Return the terms container</h4>
+	 *
+	 * This static method should be used to get the terms container, it expects a
+	 * {@link CDatabase} derived object and will return a {@link CContainer} derived
+	 * object.
+	 *
+	 * The container will be created or fetched from the provided database using the
+	 * {@link kCONTAINER_TERM_NAME} name.
+	 *
+	 * @param CDatabase				$theDatabase		Database object.
+	 *
+	 * @static
+	 * @return CContainer			The terms container.
+	 */
+	static function Container( CDatabase $theDatabase )
+	{
+		return $theDatabase->Container( kCONTAINER_TERM_NAME );						// ==>
+	
+	} // Container.
+
+		
+
+/*=======================================================================================
+ *																						*
  *								STATIC PERSISTENCE INTERFACE							*
  *																						*
  *======================================================================================*/
@@ -265,7 +306,8 @@ class CTerm extends CPersistentObject
 	 * of the namespace term and the local unique identifier of the current term separated
 	 * by a {@link kTOKEN_NAMESPACE_SEPARATOR} token.
 	 *
-	 * If the term lacks a namespace, its global identifier will be its local identifier.
+	 * If the term lacks a namespace, its local identifier will become its global
+	 * identifier.
 	 *
 	 * This method will take care of getting the global identifier from the eventual
 	 * namespace term and generate the current term global identifier.

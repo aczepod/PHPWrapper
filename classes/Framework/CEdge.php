@@ -1,10 +1,10 @@
 <?php namespace MyWrapper\Framework;
 
 /**
- * <i>CNode</i> class definition.
+ * <i>CEdge</i> class definition.
  *
- * This file contains the class definition of <b>CNode</b> which represents the ancestor of
- * all node classes.
+ * This file contains the class definition of <b>CEdge</b> which represents the ancestor of
+ * all edge classes.
  *
  *	@package	MyWrapper
  *	@subpackage	Framework
@@ -15,7 +15,7 @@
 
 /*=======================================================================================
  *																						*
- *										CNode.php										*
+ *										CEdge.php										*
  *																						*
  *======================================================================================*/
 
@@ -24,7 +24,7 @@
  *
  * This include file contains common offset definitions.
  */
-require_once( "CNode.inc.php" );
+require_once( "CEdge.inc.php" );
 
 /**
  * Containers.
@@ -32,7 +32,6 @@ require_once( "CNode.inc.php" );
  * This includes the container class definitions.
  */
 require_once( kPATH_MYWRAPPER_LIBRARY_CLASS."/Framework/CContainer.php" );
-use \MyWrapper\Framework\CDatabase as CDatabase;
 use \MyWrapper\Framework\CContainer as CContainer;
 
 /**
@@ -44,49 +43,46 @@ require_once( kPATH_MYWRAPPER_LIBRARY_CLASS."/Persistence/CPersistentObject.php"
 use \MyWrapper\Persistence\CPersistentObject as CPersistentObject;
 
 /**
- * <h3>Node object ancestor</h3>
+ * <h3>Edge object ancestor</h3>
  *
- * A node is an element of a tree or graph which is connected to other nodes through
- * edges, a node is the subject and object of the subject/predicate/object triplet. This
- * class concentrates in the core features of the node, without taking into consideration
- * the connections to other nodes.
+ * An edge is an element of a tree or graph that connects two vertices through a predicate,
+ * it represents a subject/predicate/object triplet in which the direction of the relation
+ * is from the subject to the object.
  *
- * The node's main property is the term, {@link kOFFSET_TERM}, which is a reference to
- * an object which defines the abstract concept that the node represents. The offset holds
- * the {@link kOFFSET_NID} of the referenced object.
+ * Objects of this class feature three main properties:
  *
- * The node also features a {@link kOFFSET_KIND} property which is a list of references
- * to objects which represent the specific kind of node, this attribute acts a an enumerated
- * set.
+ * <ul>
+ *	<li>{@link kOFFSET_VERTEX_SUBJECT}: The subject vertex, or the origin of the
+ *		relationship.
+ *	<li>{@link kOFFSET_PREDICATE}: The predicate reference, or the type of relationship.
+ *	<li>{@link kOFFSET_VERTEX_OBJECT}: The object vertex, or the destination of the
+ *		relationship.
+ * </ul>
  *
- * Finally, the class features the {@link kOFFSET_TYPE} property which is a reference to an
- * object that defines the data type of the node.
+ * Objects of this class are {@link _Isinited()} if all three properties are set, the
+ * nature of these elements is defined in derived classes.
  *
- * The class does not handle global identifiers and objects cannot be uniquely identified
- * by its properties or attributes, it is the duty of the hosting container to provide the
- * {@link kOFFSET_NID} identifier, By default we use sequences,
- * {@link CContainer::NextSequence()}, from a default container named after the default
- * {@link kCONTAINER_SEQUENCE_NAME} tag in the same database, this is to make referencing
- * nodes easier and to be compatible with most graph databases.
- *
- * The object will have its {@link _IsInited()} status set if the {@link kOFFSET_TERM}
- * property has been set, derived classes may add other required attributes.
- *
- * The {@link kOFFSET_TERM} offset can only be modified as long as the object has not been
- * committed, {@link _IsCommitted()}.
+ * The unique identifier of instances of this class is the combination of the above three
+ * elements, no two edges can connect the same vertices in the same direction and with the
+ * same predicate. This value is computed and stored in the global identifier,
+ * {@link kOFFSET_GID}, and its hash is stored in the unique identifier,
+ * {@link kOFFSET_UID}.
  *
  * The class features member accessor methods for the default offsets:
  *
  * <ul>
- *	<li>{@link Term()}: This method manages the node's term, {@link kOFFSET_TERM}.
- *	<li>{@link Kind()}: This method manages the node's kind, {@link kOFFSET_KIND}.
- *	<li>{@link Type()}: This method manages the node's type, {@link kOFFSET_TYPE}.
+ *	<li>{@link Subject()}: This method manages the subject vertex,
+ *		{@link kOFFSET_VERTEX_SUBJECT}.
+ *	<li>{@link Predicate()}: This method manages the edge's predicate,
+ *		{@link kOFFSET_PREDICATE}.
+ *	<li>{@link Object()}: This method manages the object vertex,
+ *		{@link kOFFSET_VERTEX_OBJECT}.
  * </ul>
  *
  *	@package	MyWrapper
  *	@subpackage	Framework
  */
-class CNode extends CPersistentObject
+class CEdge extends CPersistentObject
 {
 		
 
@@ -99,17 +95,18 @@ class CNode extends CPersistentObject
 
 	 
 	/*===================================================================================
-	 *	Term																			*
+	 *	Subject																			*
 	 *==================================================================================*/
 
 	/**
-	 * <h4>Manage node term</h4>
+	 * <h4>Manage edge subject</h4>
 	 *
-	 * This method can be used to manage the node's term, {@link kOFFSET_TERM}, which is a
-	 * reference to an object that defines the current node.
+	 * This method can be used to manage the edge's subject vertex,
+	 * {@link kOFFSET_VERTEX_SUBJECT}, which is a reference to an object that represents the
+	 * origin of the relationship this edge represents.
 	 *
-	 * The method accepts a parameter which represents either the term reference, or the
-	 * requested operation, depending on its value:
+	 * The method accepts a parameter which represents the vertex, or the requested
+	 * operation, depending on its value:
 	 *
 	 * <ul>
 	 *	<li><tt>NULL</tt>: Return the current value.
@@ -124,7 +121,7 @@ class CNode extends CPersistentObject
 	 * Note that when the object has the {@link _IsCommitted()} status this offset will be
 	 * locked and an exception will be raised.
 	 *
-	 * @param mixed					$theValue			Term or operation.
+	 * @param mixed					$theValue			Vertex or operation.
 	 * @param boolean				$getOld				<tt>TRUE</tt> get old value.
 	 *
 	 * @access public
@@ -132,96 +129,27 @@ class CNode extends CPersistentObject
 	 *
 	 * @uses ManageOffset()
 	 *
-	 * @see kOFFSET_TERM
+	 * @see kOFFSET_VERTEX_SUBJECT
 	 */
-	public function Term( $theValue = NULL, $getOld = FALSE )
+	public function Subject( $theValue = NULL, $getOld = FALSE )
 	{
-		return ManageOffset( $this, kOFFSET_TERM, $theValue, $getOld );				// ==>
+		return ManageOffset( $this, kOFFSET_VERTEX_SUBJECT, $theValue, $getOld );	// ==>
 
-	} // Term.
-
-		
-	/*===================================================================================
-	 *	Kind																			*
-	 *==================================================================================*/
-
-	/**
-	 * <h4>Manage node kind set</h4>
-	 *
-	 * The node kind set, {@link kOFFSET_KIND}, holds a list of unique values that represent
-	 * the different kinds or types associated with the current node. The type of an object
-	 * is a general qualification that applies to any class of object, such as a data type;
-	 * the kind, instead, refers to a qualification specific to the current class of object.
-	 *
-	 * This offset collects the list of these qualifications in an enumerated set that can
-	 * be managed with the following parameters:
-	 *
-	 * <ul>
-	 *	<li><tt>$theValue</tt>: Depending on the next parameter, this may either refer to
-	 *		the value to be set or to the index of the element to be retrieved or deleted:
-	 *	 <ul>
-	 *		<li><tt>NULL</tt>: This value indicates that we want to operate on all elements,
-	 *			which means, in practical terms, that we either want to retrieve or delete
-	 *			the full list. If the operation parameter resolves to <tt>TRUE</tt>, the
-	 *			method will default to retrieving the current list and no new element will
-	 *			be added.
-	 *		<li><tt>array</tt>: An array indicates that we want to operate on a list of
-	 *			values and that other parameters may also be provided as lists. Note that
-	 *			{@link \ArrayObject} instances are not considered here as arrays.
-	 *		<li><i>other</i>: Any other type represents either the new value to be added or
-	 *			the index to the value to be returned or deleted.
-	 *	 </ul>
-	 *	<li><tt>$theOperation</tt>: This parameter represents the operation to be performed
-	 *		whose scope depends on the value of the previous parameter:
-	 *	 <ul>
-	 *		<li><tt>NULL</tt>: Return the element or full list.
-	 *		<li><tt>FALSE</tt>: Delete the element or full list.
-	 *		<li><tt>array</tt>: This type is only considered if the <tt>$theValue</tt>
-	 *			parameter is provided as an array: the method will be called for each
-	 *			element of the <tt>$theValue</tt> parameter matched with the corresponding
-	 *			element of this parameter, which also means that both both parameters must
-	 *			share the same count.
-	 *		<li><i>other</i>: Add the <tt>$theValue</tt> value to the list. If you provided
-	 *			<tt>NULL</tt> in the previous parameter, the operation will be reset to
-	 *			<tt>NULL</tt>.
-	 *	 </ul>
-	 *	<li><tt>$getOld</tt>: Determines what the method will return:
-	 *	 <ul>
-	 *		<li><tt>TRUE</tt>: Return the value <i>before</i> it was eventually modified.
-	 *		<li><tt>FALSE</tt>: Return the value <i>after</i> it was eventually modified.
-	 *	 </ul>
-	 * </ul>
-	 *
-	 * @param mixed					$theValue			Value or index.
-	 * @param mixed					$theOperation		Operation.
-	 * @param boolean				$getOld				TRUE get old value.
-	 *
-	 * @access public
-	 * @return mixed				<i>New</i> or <i>old</i> native container.
-	 *
-	 * @uses ManageObjectSetOffset()
-	 *
-	 * @see kOFFSET_KIND
-	 */
-	public function Kind( $theValue = NULL, $theOperation = NULL, $getOld = FALSE )
-	{
-		return ManageObjectSetOffset
-			( $this, kOFFSET_KIND, $theValue, $theOperation, $getOld );				// ==>
-
-	} // Kind.
+	} // Subject.
 
 	 
 	/*===================================================================================
-	 *	Type																			*
+	 *	Predicate																			*
 	 *==================================================================================*/
 
 	/**
-	 * <h4>Manage node type</h4>
+	 * <h4>Manage edge predicate</h4>
 	 *
-	 * This method can be used to manage the node's type, {@link kOFFSET_TYPE}, which is an
-	 * enumerated value that represents the data type of the node.
+	 * This method can be used to manage the edge's predicate, {@link kOFFSET_PREDICATE},
+	 * which is a reference to an object that represents the origin of the relationship this
+	 * edge represents.
 	 *
-	 * The method accepts a parameter which represents either the type, or the requested
+	 * The method accepts a parameter which represents the predicate, or the requested
 	 * operation, depending on its value:
 	 *
 	 * <ul>
@@ -234,7 +162,10 @@ class CNode extends CPersistentObject
 	 * value when replacing containers; if <tt>FALSE</tt>, it will return the currently set
 	 * value.
 	 *
-	 * @param mixed					$theValue			Type or operation.
+	 * Note that when the object has the {@link _IsCommitted()} status this offset will be
+	 * locked and an exception will be raised.
+	 *
+	 * @param mixed					$theValue			Predicate or operation.
 	 * @param boolean				$getOld				<tt>TRUE</tt> get old value.
 	 *
 	 * @access public
@@ -242,15 +173,59 @@ class CNode extends CPersistentObject
 	 *
 	 * @uses ManageOffset()
 	 *
-	 * @see kOFFSET_TYPE
+	 * @see kOFFSET_PREDICATE
 	 */
-	public function Type( $theValue = NULL, $getOld = FALSE )
+	public function Predicate( $theValue = NULL, $getOld = FALSE )
 	{
-		return ManageOffset( $this, kOFFSET_TYPE, $theValue, $getOld );				// ==>
+		return ManageOffset( $this, kOFFSET_PREDICATE, $theValue, $getOld );		// ==>
 
-	} // Type.
+	} // Predicate.
+
+	 
+	/*===================================================================================
+	 *	Object																			*
+	 *==================================================================================*/
+
+	/**
+	 * <h4>Manage edge object</h4>
+	 *
+	 * This method can be used to manage the edge's object vertex,
+	 * {@link kOFFSET_VERTEX_OBJECT}, which is a reference to an object that represents the
+	 * destination of the relationship this edge represents.
+	 *
+	 * The method accepts a parameter which represents the vertex, or the requested
+	 * operation, depending on its value:
+	 *
+	 * <ul>
+	 *	<li><tt>NULL</tt>: Return the current value.
+	 *	<li><tt>FALSE</tt>: Delete the current value.
+	 *	<li><i>other</i>: Set the value with the provided parameter.
+	 * </ul>
+	 *
+	 * The second parameter is a boolean which if <tt>TRUE</tt> will return the <i>old</i>
+	 * value when replacing containers; if <tt>FALSE</tt>, it will return the currently set
+	 * value.
+	 *
+	 * Note that when the object has the {@link _IsCommitted()} status this offset will be
+	 * locked and an exception will be raised.
+	 *
+	 * @param mixed					$theValue			Vertex or operation.
+	 * @param boolean				$getOld				<tt>TRUE</tt> get old value.
+	 *
+	 * @access public
+	 * @return mixed				<i>New</i> or <i>old</i> native container.
+	 *
+	 * @uses ManageOffset()
+	 *
+	 * @see kOFFSET_VERTEX_OBJECT
+	 */
+	public function Object( $theValue = NULL, $getOld = FALSE )
+	{
+		return ManageOffset( $this, kOFFSET_VERTEX_OBJECT, $theValue, $getOld );	// ==>
+
+	} // Object.
+
 		
-
 
 /*=======================================================================================
  *																						*
@@ -265,14 +240,14 @@ class CNode extends CPersistentObject
 	 *==================================================================================*/
 
 	/**
-	 * <h4>Return the nodes container</h4>
+	 * <h4>Return the edges container</h4>
 	 *
-	 * This static method should be used to get the nodes container, it expects a
+	 * This static method should be used to get the edges container, it expects a
 	 * {@link CDatabase} derived object and will return a {@link CContainer} derived
 	 * object.
 	 *
 	 * The container will be created or fetched from the provided database using the
-	 * {@link kCONTAINER_NODE_NAME} name.
+	 * {@link kCONTAINER_EDGE_NAME} name.
 	 *
 	 * @param CDatabase				$theDatabase		Database object.
 	 *
@@ -281,7 +256,7 @@ class CNode extends CPersistentObject
 	 */
 	static function Container( CDatabase $theDatabase )
 	{
-		return $theDatabase->Container( kCONTAINER_NODE_NAME );						// ==>
+		return $theDatabase->Container( kCONTAINER_EDGE_NAME );						// ==>
 	
 	} // Container.
 
@@ -302,11 +277,9 @@ class CNode extends CPersistentObject
 	/**
 	 * <h4>Handle offset before setting it</h4>
 	 *
-	 * In this class we prevent the modification of the {@link kOFFSET_TERM} offset if
-	 * the object has its {@link _IsCommitted()} status set and we use the eventual object's
-	 * {@link kOFFSET_NID} if the term was provided as an object.
-	 *
-	 * We also ensure that the {@link kOFFSET_KIND} offset is an array.
+	 * In this class we prevent the modification of the {@link kOFFSET_VERTEX_SUBJECT},
+	 * {@link kOFFSET_PREDICATE} and {@link kOFFSET_VERTEX_OBJECT} offsets if the object is
+	 * committed.
 	 *
 	 * @param reference			   &$theOffset			Offset.
 	 * @param reference			   &$theValue			Value to set at offset.
@@ -317,41 +290,21 @@ class CNode extends CPersistentObject
 	 *
 	 * @uses _IsCommitted()
 	 *
-	 * @see kOFFSET_TERM
+	 * @see kOFFSET_VERTEX_SUBJECT kOFFSET_PREDICATE kOFFSET_VERTEX_OBJECT
 	 */
 	protected function _Preset( &$theOffset, &$theValue )
 	{
 		//
-		// Handle terms.
+		// Intercept identifiers.
 		//
-		if( $theOffset == kOFFSET_TERM )
-		{
-			//
-			// Prevent if committed.
-			//
-			if( $this->_IsCommitted() )
-				throw new \Exception
-					( "The object is committed, you cannot modify the [$theOffset] offset",
-					  kERROR_LOCKED );											// !@! ==>
-			
-			//
-			// Handle term object.
-			//
-			$this->_AssertObjectIdentifier( $theValue,
-											'\MyWrapper\Persistence\CPersistentObject',
-											TRUE );
-		
-		} // Setting the term.
-		
-		//
-		// Ensure kind is array.
-		//
-		if( ($theOffset == kOFFSET_KIND)
-		 && ($theValue !== NULL)
-		 && (! is_array( $theValue )) )
+		$offsets = array( kOFFSET_VERTEX_SUBJECT,
+						  kOFFSET_PREDICATE,
+						  kOFFSET_VERTEX_OBJECT );
+		if( $this->_IsCommitted()
+		 && in_array( $theOffset, $offsets ) )
 			throw new \Exception
-				( "The node kind must be an array",
-				  kERROR_PARAMETER );											// !@! ==>
+				( "The object is committed, you cannot modify the [$theOffset] offset",
+				  kERROR_LOCKED );												// !@! ==>
 		
 		//
 		// Call parent method.
@@ -368,8 +321,9 @@ class CNode extends CPersistentObject
 	/**
 	 * <h4>Handle offset before unsetting it</h4>
 	 *
-	 * In this class we prevent the modification of the {@link kOFFSET_TERM} offset if
-	 * the object has its {@link _IsCommitted()} status set.
+	 * In this class we prevent the modification of the {@link kOFFSET_VERTEX_SUBJECT},
+	 * {@link kOFFSET_PREDICATE} and {@link kOFFSET_VERTEX_OBJECT} offsets if the object is
+	 * committed.
 	 *
 	 * @param reference			   &$theOffset			Offset.
 	 *
@@ -379,15 +333,18 @@ class CNode extends CPersistentObject
 	 *
 	 * @uses _IsCommitted()
 	 *
-	 * @see kOFFSET_TERM
+	 * @see kOFFSET_VERTEX_SUBJECT kOFFSET_PREDICATE kOFFSET_VERTEX_OBJECT
 	 */
 	protected function _Preunset( &$theOffset )
 	{
 		//
 		// Intercept identifiers.
 		//
+		$offsets = array( kOFFSET_VERTEX_SUBJECT,
+						  kOFFSET_PREDICATE,
+						  kOFFSET_VERTEX_OBJECT );
 		if( $this->_IsCommitted()
-		 && ($theOffset == kOFFSET_TERM) )
+		 && in_array( $theOffset, $offsets ) )
 			throw new \Exception
 				( "The object is committed, you cannot modify the [$theOffset] offset",
 				  kERROR_LOCKED );												// !@! ==>
@@ -418,9 +375,13 @@ class CNode extends CPersistentObject
 	 *
 	 * In this class we set the object's native identifier to a sequence number, we do this
 	 * just before inserting the object: that is, if the object does not have the native
-	 * identifier.
+	 * identifier. The default sequence key for edges is {@link kSEQUENCE_KEY_EDGE}.
 	 *
-	 * The default sequence key for nodes is {@link kSEQUENCE_KEY_NODE}.
+	 * We also generate the object's global identifier, {@link kOFFSET_GID}, by
+	 * concatenating the global identifiers of the subject ({@link kOFFSET_VERTEX_SUBJECT}),
+	 * predicate ({@link kOFFSET_PREDICATE}) and object ({@link kOFFSET_VERTEX_OBJECT})
+	 * offsets, all separated by the {@link kTOKEN_INDEX_SEPARATOR} token. The resulting
+	 * string will be hashed in {@link kOFFSET_UID} and used to identify duplicates.
 	 *
 	 * Note that we set the sequence as the last operation to allow eventual exceptions
 	 * before issuing the sequence.
@@ -448,14 +409,60 @@ class CNode extends CPersistentObject
 			//
 			$this->offsetSet(
 				kOFFSET_NID, $theContainer->NextSequence(
-					kSEQUENCE_KEY_NODE, TRUE ) );
+					kSEQUENCE_KEY_EDGE, TRUE ) );
 			
 			//
-			// Copy to global identifier.
+			// Init global identifier.
 			//
-			$this->offsetSet(
-				kOFFSET_GID, (string) $this->offsetGet(
-					kOFFSET_NID ) );
+			$identifier = Array();
+			
+			//
+			// Get subject.
+			//
+			$object = $this->NewObject( $theContainer,
+										$this->offsetGet( kOFFSET_VERTEX_SUBJECT ) );
+			if( $object !== NULL )
+				$identifier[] = $object[ kOFFSET_GID ];
+			else
+				throw new \Exception
+					( "Cannot commit edge: subject vertex not found",
+					  kERROR_STATE );											// !@! ==>
+			
+			//
+			// Get predicate.
+			//
+			$object = $this->NewObject( $theContainer,
+										$this->offsetGet( kOFFSET_PREDICATE ) );
+			if( $object !== NULL )
+				$identifier[] = $object[ kOFFSET_GID ];
+			else
+				throw new \Exception
+					( "Cannot commit edge: predicate not found",
+					  kERROR_STATE );											// !@! ==>
+			
+			//
+			// Get object.
+			//
+			$object = $this->NewObject( $theContainer,
+										$this->offsetGet( kOFFSET_VERTEX_OBJECT ) );
+			if( $object !== NULL )
+				$identifier[] = $object[ kOFFSET_GID ];
+			else
+				throw new \Exception
+					( "Cannot commit edge: object vertex not found",
+					  kERROR_STATE );											// !@! ==>
+			
+			//
+			// Set global identifier.
+			//
+			$id = implode( kTOKEN_INDEX_SEPARATOR, $identifier );
+			$this->offsetSet( kOFFSET_GID, $id );
+			
+			//
+			// Set unique identifier.
+			//
+			$this->offsetSet( kOFFSET_UID,
+							  $theContainer->ConvertBinary( md5( $id, TRUE ) ) );
 		
 		} // Not yet committed.
 		
@@ -479,12 +486,13 @@ class CNode extends CPersistentObject
 	 * <h4>Determine if the object is ready</h4>
 	 *
 	 * In this class we tie the {@link _IsInited()} status to the presence or absence of the
-	 * {@link kOFFSET_TERM} offset.
+	 * {@link kOFFSET_VERTEX_SUBJECT}, {@link kOFFSET_PREDICATE} and
+	 * {@link kOFFSET_VERTEX_OBJECT} offsets.
 	 *
 	 * @access protected
 	 * @return boolean				<tt>TRUE</tt> means {@link _IsInited( <tt>TRUE</tt> ).
 	 *
-	 * @see kOFFSET_TERM
+	 * @see kOFFSET_VERTEX_SUBJECT kOFFSET_PREDICATE kOFFSET_VERTEX_OBJECT
 	 */
 	protected function _Ready()
 	{
@@ -492,7 +500,9 @@ class CNode extends CPersistentObject
 		// Check parent.
 		//
 		if( parent::_Ready() )
-			return $this->offsetExists( kOFFSET_TERM );								// ==>
+			return ( $this->offsetExists( kOFFSET_VERTEX_SUBJECT )
+				  && $this->offsetExists( kOFFSET_PREDICATE )
+				  && $this->offsetExists( kOFFSET_VERTEX_OBJECT ) );				// ==>
 		
 		return FALSE;																// ==>
 	
@@ -500,7 +510,7 @@ class CNode extends CPersistentObject
 
 	 
 
-} // class CNode.
+} // class CEdge.
 
 
 ?>

@@ -4,7 +4,7 @@
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 	<meta name="generator" content="ApiGen 2.7.0" />
 
-	<title>Class MyWrapper\Framework\CTerm | MyWrapper Reference Documentation</title>
+	<title>Class MyWrapper\Framework\CEdge | MyWrapper Reference Documentation</title>
 
 	<script type="text/javascript" src="resources/combined.js?496895167"></script>
 	<script type="text/javascript" src="elementlist.js?3191507714"></script>
@@ -47,11 +47,11 @@
 				<li><a href="class-MyWrapper.Framework.CContainer.html">CContainer</a></li>
 				<li><a href="class-MyWrapper.Framework.CDatabase.html">CDatabase</a></li>
 				<li><a href="class-MyWrapper.Framework.CDocument.html">CDocument</a></li>
-				<li><a href="class-MyWrapper.Framework.CEdge.html">CEdge</a></li>
+				<li class="active"><a href="class-MyWrapper.Framework.CEdge.html">CEdge</a></li>
 				<li><a href="class-MyWrapper.Framework.CNode.html">CNode</a></li>
 				<li><a href="class-MyWrapper.Framework.CServer.html">CServer</a></li>
 				<li><a href="class-MyWrapper.Framework.CStatusDocument.html">CStatusDocument</a></li>
-				<li class="active"><a href="class-MyWrapper.Framework.CTerm.html">CTerm</a></li>
+				<li><a href="class-MyWrapper.Framework.CTerm.html">CTerm</a></li>
 			</ul>
 
 
@@ -94,53 +94,47 @@
 	</div>
 
 <div id="content" class="class">
-	<h1>Class CTerm</h1>
+	<h1>Class CEdge</h1>
 
 
 	<div class="description">
 	
-<h3>Term object ancestor</h3>
+<h3>Edge object ancestor</h3>
 
-<p>A term can be compared to a word of a vocabulary, it is an elementary
-component that is an abstract concept if considered by itself, but takes a
-precise meaning if related to other terms, as a sequence of words that
-constitute a statement.</p>
+<p>An edge is an element of a tree or graph that connects two vertices through a
+predicate, it represents a subject/predicate/object triplet in which the
+direction of the relation is from the subject to the object.</p>
 
-<p>Terms feature a namespace, kOFFSET_NAMESPACE, which contains the
-native unique identifier, kOFFSET_NID, of the object that represents the
-namespace of the current term. This namespace may be provided as a kOFFSET_NID or as a full object in case it should be committed.</p>
-
-<p>The global unique identifier, kOFFSET_GID, is the code by which the
-term is known outside of this system, it is constituted by the concatenation of
-the kOFFSET_GID of the namespace referred to in the kOFFSET_NAMESPACE offset, and the local unique identifier, kOFFSET_LID,
-of the current term, both separated by the kTOKEN_NAMESPACE_SEPARATOR
-token.</p>
-
-<p>If the term has no namespace, its kOFFSET_GID will be its kOFFSET_LID.</p>
-
-<p>When <code><a href="class-MyWrapper.Framework.CStatusDocument.html#_">MyWrapper\Framework\CStatusDocument::_IsCommitted()</a></code>, besides the the identifier offsets, also the
-kOFFSET_NAMESPACE offset will be locked, since it is used to generate
-the kOFFSET_GID.</p>
-
-<p>The native unique identifier, kOFFSET_NID, is the binary md5 hash of
-the global unique identifier, kOFFSET_GID, this to allow long codes.</p>
-
-<p>The object will have its <code><a href="class-MyWrapper.Framework.CStatusDocument.html#_">MyWrapper\Framework\CStatusDocument::_IsInited()</a></code> status set if the local unique
-identifier, kOFFSET_LID, is set, derived classes may add other required
-attributes.</p>
-
-<p>The class features a static method, <code><a href="class-MyWrapper.Framework.CTerm.html#_">MyWrapper\Framework\CTerm::Container()</a></code>, that can be used to
-instantiate the terms container, it will use the kCONTAINER_TERM_NAME
-constant to retrieve the container given a <code><a href="class-MyWrapper.Framework.CDatabase.html">MyWrapper\Framework\CDatabase</a></code>: you should use
-this method to get the terms container.</p>
-
-<p>Finally, the class features member accessor methods for the default
-offsets:</p>
+<p>Objects of this class feature three main properties:</p>
 
 <ul>
-	<li><code><a href="class-MyWrapper.Framework.CTerm.html#_">MyWrapper\Framework\CTerm::NS()</a></code>: This method manages the term's namespace, kOFFSET_NAMESPACE.</li>
+	<li>kOFFSET_VERTEX_SUBJECT: The subject vertex, or the origin of the
+	relationship.</li>
 
-	<li><code><a href="class-MyWrapper.Framework.CTerm.html#_">MyWrapper\Framework\CTerm::LID()</a></code>: This method manages the local unique identifier, kOFFSET_LID.</li>
+	<li>kOFFSET_PREDICATE: The predicate reference, or the type of
+	relationship.</li>
+
+	<li>kOFFSET_VERTEX_OBJECT: The object vertex, or the destination of the
+	relationship.</li>
+</ul>
+
+<p>Objects of this class are _Isinited() if all three properties are
+set, the nature of these elements is defined in derived classes.</p>
+
+<p>The unique identifier of instances of this class is the combination of the
+above three elements, no two edges can connect the same vertices in the same
+direction and with the same predicate. This value is computed and stored in the
+global identifier, kOFFSET_GID, and its hash is stored in the unique
+identifier, kOFFSET_UID.</p>
+
+<p>The class features member accessor methods for the default offsets:</p>
+
+<ul>
+	<li><code><a href="class-MyWrapper.Framework.CEdge.html#_">MyWrapper\Framework\CEdge::Subject()</a></code>: This method manages the subject vertex, kOFFSET_VERTEX_SUBJECT.</li>
+
+	<li><code><a href="class-MyWrapper.Framework.CEdge.html#_">MyWrapper\Framework\CEdge::Predicate()</a></code>: This method manages the edge's predicate, kOFFSET_PREDICATE.</li>
+
+	<li><code><a href="class-MyWrapper.Framework.CEdge.html#_">MyWrapper\Framework\CEdge::Object()</a></code>: This method manages the object vertex, kOFFSET_VERTEX_OBJECT.</li>
 </ul>
 
 	</div>
@@ -192,17 +186,13 @@ offsets:</p>
 		</dd>
 		<dd style="padding-left:150px">
 			<img src="resources/inherit.png" alt="Extended by" />
-<b><span>MyWrapper\Framework\CTerm</span></b>			
+<b><span>MyWrapper\Framework\CEdge</span></b>			
 			
 			
 		</dd>
 	</dl>
 
 
-	<div>
-		<h4>Direct known subclasses</h4>
-			<a href="class-MyWrapper.Ontology.COntologyTerm.html">MyWrapper\Ontology\COntologyTerm</a>
-	</div>
 
 
 
@@ -215,13 +205,13 @@ offsets:</p>
 		<b>Namespace:</b> <a href="namespace-MyWrapper.html">MyWrapper</a>\<a href="namespace-MyWrapper.Framework.html">Framework</a><br />
 		<b>Package:</b> MyWrapper\Framework<br />
 
-		<b>Located at</b> <a href="source-class-MyWrapper.Framework.CTerm.html#53" title="Go to source code">Framework/CTerm.php</a><br />
+		<b>Located at</b> <a href="source-class-MyWrapper.Framework.CEdge.html#45" title="Go to source code">Framework/CEdge.php</a><br />
 	</div>
 
 
 	<table class="summary" id="methods">
 	<caption>Methods summary</caption>
-	<tr data-order="NS" id="_NS">
+	<tr data-order="Subject" id="_Subject">
 
 		<td class="attributes"><code>
 			 public 
@@ -231,24 +221,24 @@ offsets:</p>
 		</td>
 
 		<td class="name"><div>
-		<a class="anchor" href="#_NS">#</a>
-		<code><a href="source-class-MyWrapper.Framework.CTerm.html#115" title="Go to source code">NS</a>( <span>mixed <var>$theValue</var> = <span class="php-keyword1">NULL</span></span>, <span>boolean <var>$getOld</var> = <span class="php-keyword1">FALSE</span> </span> )</code>
+		<a class="anchor" href="#_Subject">#</a>
+		<code><a href="source-class-MyWrapper.Framework.CEdge.html#101" title="Go to source code">Subject</a>( <span>mixed <var>$theValue</var> = <span class="php-keyword1">NULL</span></span>, <span>boolean <var>$getOld</var> = <span class="php-keyword1">FALSE</span> </span> )</code>
 
 		<div class="description short">
 			
-<h4>Manage namespace native identifier</h4>
+<h4>Manage edge subject</h4>
 
 		</div>
 
 		<div class="description detailed hidden">
 			
-<h4>Manage namespace native identifier</h4>
+<h4>Manage edge subject</h4>
 
-<p>The <i>namespace native identifier</i>, kOFFSET_NAMESPACE, holds the
-native identifier of the object that represents the term's namespace.</p>
+<p>This method can be used to manage the edge's subject vertex, kOFFSET_VERTEX_SUBJECT, which is a reference to an object that represents the
+origin of the relationship this edge represents.</p>
 
-<p>The method accepts a parameter which represents either the namespace or the
-requested operation, depending on its value:</p>
+<p>The method accepts a parameter which represents the vertex, or the requested
+operation, depending on its value:</p>
 
 <ul>
 	<li><tt>NULL</tt>: Return the current value.</li>
@@ -270,7 +260,7 @@ will be locked and an exception will be raised.</p>
 				<h4>Parameters</h4>
 				<div class="list"><dl>
 					<dt><var>$theValue</var></dt>
-					<dd><code>mixed</code><br> Native identifier or operation.</dd>
+					<dd><code>mixed</code><br> Vertex or operation.</dd>
 					<dt><var>$getOld</var></dt>
 					<dd><code>boolean</code><br> <tt>TRUE</tt> get old value.</dd>
 				</dl></div>
@@ -283,7 +273,7 @@ will be locked and an exception will be raised.</p>
 
 				<h4>See</h4>
 				<div class="list">
-						kOFFSET_NAMESPACE<br />
+						kOFFSET_VERTEX_SUBJECT<br />
 				</div>
 				<h4>Uses</h4>
 				<div class="list">
@@ -294,7 +284,7 @@ will be locked and an exception will be raised.</p>
 		</div>
 		</div></td>
 	</tr>
-	<tr data-order="LID" id="_LID">
+	<tr data-order="Predicate" id="_Predicate">
 
 		<td class="attributes"><code>
 			 public 
@@ -304,25 +294,23 @@ will be locked and an exception will be raised.</p>
 		</td>
 
 		<td class="name"><div>
-		<a class="anchor" href="#_LID">#</a>
-		<code><a href="source-class-MyWrapper.Framework.CTerm.html#158" title="Go to source code">LID</a>( <span>mixed <var>$theValue</var> = <span class="php-keyword1">NULL</span></span>, <span>boolean <var>$getOld</var> = <span class="php-keyword1">FALSE</span> </span> )</code>
+		<a class="anchor" href="#_Predicate">#</a>
+		<code><a href="source-class-MyWrapper.Framework.CEdge.html#145" title="Go to source code">Predicate</a>( <span>mixed <var>$theValue</var> = <span class="php-keyword1">NULL</span></span>, <span>boolean <var>$getOld</var> = <span class="php-keyword1">FALSE</span> </span> )</code>
 
 		<div class="description short">
 			
-<h4>Manage local unique identifier</h4>
+<h4>Manage edge predicate</h4>
 
 		</div>
 
 		<div class="description detailed hidden">
 			
-<h4>Manage local unique identifier</h4>
+<h4>Manage edge predicate</h4>
 
-<p>The <i>local unique identifier</i>, kOFFSET_LID, holds a string which
-represents the object's unique identifier within its namespace, this value is
-concatenated to the eventual's namespace's global identifier to form the term's
-global identifier.</p>
+<p>This method can be used to manage the edge's predicate, kOFFSET_PREDICATE, which is a reference to an object that represents the origin
+of the relationship this edge represents.</p>
 
-<p>The method accepts a parameter which represents either the identifier or the
+<p>The method accepts a parameter which represents the predicate, or the
 requested operation, depending on its value:</p>
 
 <ul>
@@ -345,7 +333,7 @@ will be locked and an exception will be raised.</p>
 				<h4>Parameters</h4>
 				<div class="list"><dl>
 					<dt><var>$theValue</var></dt>
-					<dd><code>mixed</code><br> Native identifier or operation.</dd>
+					<dd><code>mixed</code><br> Predicate or operation.</dd>
 					<dt><var>$getOld</var></dt>
 					<dd><code>boolean</code><br> <tt>TRUE</tt> get old value.</dd>
 				</dl></div>
@@ -358,7 +346,80 @@ will be locked and an exception will be raised.</p>
 
 				<h4>See</h4>
 				<div class="list">
-						kOFFSET_LID<br />
+						kOFFSET_PREDICATE<br />
+				</div>
+				<h4>Uses</h4>
+				<div class="list">
+						<code><code><a href="function-ManageOffset.html">ManageOffset()</a></code></code> <br />
+				</div>
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="Object" id="_Object">
+
+		<td class="attributes"><code>
+			 public 
+			mixed
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_Object">#</a>
+		<code><a href="source-class-MyWrapper.Framework.CEdge.html#189" title="Go to source code">Object</a>( <span>mixed <var>$theValue</var> = <span class="php-keyword1">NULL</span></span>, <span>boolean <var>$getOld</var> = <span class="php-keyword1">FALSE</span> </span> )</code>
+
+		<div class="description short">
+			
+<h4>Manage edge object</h4>
+
+		</div>
+
+		<div class="description detailed hidden">
+			
+<h4>Manage edge object</h4>
+
+<p>This method can be used to manage the edge's object vertex, kOFFSET_VERTEX_OBJECT, which is a reference to an object that represents the
+destination of the relationship this edge represents.</p>
+
+<p>The method accepts a parameter which represents the vertex, or the requested
+operation, depending on its value:</p>
+
+<ul>
+	<li><tt>NULL</tt>: Return the current value.</li>
+
+	<li><tt>FALSE</tt>: Delete the current value.</li>
+
+	<li><i>other</i>: Set the value with the provided parameter.</li>
+</ul>
+
+<p>The second parameter is a boolean which if <tt>TRUE</tt> will return the
+<i>old</i> value when replacing containers; if <tt>FALSE</tt>, it will return
+the currently set value.</p>
+
+<p>Note that when the object has the <code><a href="class-MyWrapper.Framework.CStatusDocument.html#_">MyWrapper\Framework\CStatusDocument::_IsCommitted()</a></code> status this offset
+will be locked and an exception will be raised.</p>
+
+
+
+				<h4>Parameters</h4>
+				<div class="list"><dl>
+					<dt><var>$theValue</var></dt>
+					<dd><code>mixed</code><br> Vertex or operation.</dd>
+					<dt><var>$getOld</var></dt>
+					<dd><code>boolean</code><br> <tt>TRUE</tt> get old value.</dd>
+				</dl></div>
+
+				<h4>Returns</h4>
+				<div class="list">
+					<code>mixed</code><br><i>New</i> or <i>old</i> native container.<br />
+				</div>
+
+
+				<h4>See</h4>
+				<div class="list">
+						kOFFSET_VERTEX_OBJECT<br />
 				</div>
 				<h4>Uses</h4>
 				<div class="list">
@@ -380,24 +441,24 @@ will be locked and an exception will be raised.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#_Container">#</a>
-		<code><a href="source-class-MyWrapper.Framework.CTerm.html#212" title="Go to source code">Container</a>( <span><code><a href="class-MyWrapper.Framework.CDatabase.html">MyWrapper\Framework\CDatabase</a></code> <var>$theDatabase</var></span> )</code>
+		<code><a href="source-class-MyWrapper.Framework.CEdge.html#242" title="Go to source code">Container</a>( <span><code><a href="class-MyWrapper.Framework.CDatabase.html">MyWrapper\Framework\CDatabase</a></code> <var>$theDatabase</var></span> )</code>
 
 		<div class="description short">
 			
-<h4>Return the terms container</h4>
+<h4>Return the edges container</h4>
 
 		</div>
 
 		<div class="description detailed hidden">
 			
-<h4>Return the terms container</h4>
+<h4>Return the edges container</h4>
 
-<p>This static method should be used to get the terms container, it expects a
+<p>This static method should be used to get the edges container, it expects a
 <code><a href="class-MyWrapper.Framework.CDatabase.html">MyWrapper\Framework\CDatabase</a></code> derived object and will return a <code><a href="class-MyWrapper.Framework.CContainer.html">MyWrapper\Framework\CContainer</a></code> derived
 object.</p>
 
 <p>The container will be created or fetched from the provided database using the
-kCONTAINER_TERM_NAME name.</p>
+kCONTAINER_EDGE_NAME name.</p>
 
 
 
@@ -409,146 +470,11 @@ kCONTAINER_TERM_NAME name.</p>
 
 				<h4>Returns</h4>
 				<div class="list">
-					<code><code><a href="class-MyWrapper.Framework.CContainer.html">MyWrapper\Framework\CContainer</a></code></code><br>The terms container.<br />
+					<code><code><a href="class-MyWrapper.Framework.CContainer.html">MyWrapper\Framework\CContainer</a></code></code><br>The nodes container.<br />
 				</div>
 
 
 
-
-		</div>
-		</div></td>
-	</tr>
-	<tr data-order="_id" id="__id">
-
-		<td class="attributes"><code>
-			 public static
-			mixed
-			
-			</code>
-		</td>
-
-		<td class="name"><div>
-		<a class="anchor" href="#__id">#</a>
-		<code><a href="source-class-MyWrapper.Framework.CTerm.html#247" title="Go to source code">_id</a>( <span>string <var>$theIdentifier</var> = <span class="php-keyword1">NULL</span></span>, <span><code><a href="class-MyWrapper.Framework.CContainer.html">MyWrapper\Framework\CContainer</a></code> <var>$theContainer</var> = <span class="php-keyword1">NULL</span> </span> )</code>
-
-		<div class="description short">
-			
-<h4>Generate the object's native unique identifier</h4>
-
-		</div>
-
-		<div class="description detailed hidden">
-			
-<h4>Generate the object's native unique identifier</h4>
-
-<p>We overload this method to hash the provided string.</p>
-
-<p>Since binary data is handled differently by each storage engine, we require
-the container parameter and raise an exception if not provided.</p>
-
-<p>We also raise an exception if the string is not provided, this is because
-this object primary key depends on the content of its attributes.</p>
-
-
-
-				<h4>Parameters</h4>
-				<div class="list"><dl>
-					<dt><var>$theIdentifier</var></dt>
-					<dd><code>string</code><br> Global unique identifier.</dd>
-					<dt><var>$theContainer</var></dt>
-					<dd><code><code><a href="class-MyWrapper.Framework.CContainer.html">MyWrapper\Framework\CContainer</a></code></code><br> Container.</dd>
-				</dl></div>
-
-				<h4>Returns</h4>
-				<div class="list">
-					<code>mixed</code><br>The object's native unique identifier.<br />
-				</div>
-
-				<h4>Throws</h4>
-				<div class="list">
-					<code><code><a href="class-Exception.html">Exception</a></code></code><br />
-				</div>
-
-
-				<h4>Overrides</h4>
-				<div class="list"><code><a href="class-MyWrapper.Persistence.CPersistentObject.html#_">MyWrapper\Persistence\CPersistentObject::_id</a></code></div>
-
-		</div>
-		</div></td>
-	</tr>
-	<tr data-order="_index" id="__index">
-
-		<td class="attributes"><code>
-			 protected 
-			string|null
-			
-			</code>
-		</td>
-
-		<td class="name"><div>
-		<a class="anchor" href="#__index">#</a>
-		<code><a href="source-class-MyWrapper.Framework.CTerm.html#302" title="Go to source code">_index</a>( <span><code><a href="class-MyWrapper.Framework.CContainer.html">MyWrapper\Framework\CContainer</a></code> <var>$theContainer</var></span>, <span>bitfield <var>$theModifiers</var></span> )</code>
-
-		<div class="description short">
-			
-<h4>Return the object's global unique identifier</h4>
-
-		</div>
-
-		<div class="description detailed hidden">
-			
-<h4>Return the object's global unique identifier</h4>
-
-<p>Term identifiers are constituted by the concatenation of the global unique
-identifier of the namespace term and the local unique identifier of the current
-term separated by a kTOKEN_NAMESPACE_SEPARATOR token.</p>
-
-<p>If the term lacks a namespace, its local identifier will become its global
-identifier.</p>
-
-<p>This method will take care of getting the global identifier from the eventual
-namespace term and generate the current term global identifier.</p>
-
-<p>If the namespace was set in the form of an object, it will be converted back
-to its native identifier.</p>
-
-<p>This method does not assume the type of object that it may find in the
-namespace, it will first check if derives from <code><a href="class-MyWrapper.Persistence.CPersistentObject.html">MyWrapper\Persistence\CPersistentObject</a></code>, in
-that case it will use its global identifier; any other type will be assumed to
-be the native identifier of the namespace. In the latter case the method will
-instantiate the object and use its global identifier.</p>
-
-
-
-				<h4>Parameters</h4>
-				<div class="list"><dl>
-					<dt><var>$theContainer</var></dt>
-					<dd><code><code><a href="class-MyWrapper.Framework.CContainer.html">MyWrapper\Framework\CContainer</a></code></code><br> Container.</dd>
-					<dt><var>$theModifiers</var></dt>
-					<dd><code>bitfield</code><br> Commit options.</dd>
-				</dl></div>
-
-				<h4>Returns</h4>
-				<div class="list">
-					<code>string|null</code><br>The object's global unique identifier.<br />
-				</div>
-
-				<h4>Throws</h4>
-				<div class="list">
-					<code><code><a href="class-Exception.html">Exception</a></code></code><br />
-				</div>
-
-				<h4>Uses</h4>
-				<div class="list">
-						<code><code><a href="class-MyWrapper.Framework.CTerm.html#_">MyWrapper\Framework\CTerm::_index()</a></code></code> <br />
-				</div>
-				<h4>Used by</h4>
-				<div class="list">
-						<code><code><a href="class-MyWrapper.Framework.CTerm.html#_">MyWrapper\Framework\CTerm::_index()</a></code></code> <br />
-				</div>
-
-				<h4>Overrides</h4>
-				<div class="list"><code><a href="class-MyWrapper.Persistence.CPersistentObject.html#_">MyWrapper\Persistence\CPersistentObject::_index</a></code></div>
 
 		</div>
 		</div></td>
@@ -564,7 +490,7 @@ instantiate the object and use its global identifier.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#__Preset">#</a>
-		<code><a href="source-class-MyWrapper.Framework.CTerm.html#427" title="Go to source code">_Preset</a>( <span>reference <var>&amp; $theOffset</var></span>, <span>reference <var>&amp; $theValue</var></span> )</code>
+		<code><a href="source-class-MyWrapper.Framework.CEdge.html#277" title="Go to source code">_Preset</a>( <span>reference <var>&amp; $theOffset</var></span>, <span>reference <var>&amp; $theValue</var></span> )</code>
 
 		<div class="description short">
 			
@@ -576,12 +502,7 @@ instantiate the object and use its global identifier.</p>
 			
 <h4>Handle offset before setting it</h4>
 
-<p>In this class we prevent the modification of offsets that concur in the
-generation of the object's identifier if the object has its <code><a href="class-MyWrapper.Framework.CStatusDocument.html#_">MyWrapper\Framework\CStatusDocument::_IsCommitted()</a></code> status set. This is because referenced objects must not change
-identifier.</p>
-
-<p>The kOFFSET_NAMESPACE and kOFFSET_LID are locked if the
-object was committed, <code><a href="class-MyWrapper.Framework.CStatusDocument.html#_">MyWrapper\Framework\CStatusDocument::_IsCommitted()</a></code>.</p>
+<p>In this class we prevent the modification of the kOFFSET_VERTEX_SUBJECT, kOFFSET_PREDICATE and kOFFSET_VERTEX_OBJECT offsets if the object is committed.</p>
 
 
 
@@ -601,7 +522,7 @@ object was committed, <code><a href="class-MyWrapper.Framework.CStatusDocument.h
 
 				<h4>See</h4>
 				<div class="list">
-						kOFFSET_NID kOFFSET_GID kOFFSET_LID<br />
+						kOFFSET_VERTEX_SUBJECT kOFFSET_PREDICATE kOFFSET_VERTEX_OBJECT<br />
 				</div>
 				<h4>Uses</h4>
 				<div class="list">
@@ -625,7 +546,7 @@ object was committed, <code><a href="class-MyWrapper.Framework.CStatusDocument.h
 
 		<td class="name"><div>
 		<a class="anchor" href="#__Preunset">#</a>
-		<code><a href="source-class-MyWrapper.Framework.CTerm.html#472" title="Go to source code">_Preunset</a>( <span>reference <var>&amp; $theOffset</var></span> )</code>
+		<code><a href="source-class-MyWrapper.Framework.CEdge.html#321" title="Go to source code">_Preunset</a>( <span>reference <var>&amp; $theOffset</var></span> )</code>
 
 		<div class="description short">
 			
@@ -637,12 +558,7 @@ object was committed, <code><a href="class-MyWrapper.Framework.CStatusDocument.h
 			
 <h4>Handle offset before unsetting it</h4>
 
-<p>In this class we prevent the modification of offsets that concur in the
-generation of the object's identifier if the object has its <code><a href="class-MyWrapper.Framework.CStatusDocument.html#_">MyWrapper\Framework\CStatusDocument::_IsCommitted()</a></code> status set. This is because referenced objects must not change
-identifier.</p>
-
-<p>The kOFFSET_NAMESPACE and kOFFSET_LID are locked if the
-object was committed, <code><a href="class-MyWrapper.Framework.CStatusDocument.html#_">MyWrapper\Framework\CStatusDocument::_IsCommitted()</a></code>.</p>
+<p>In this class we prevent the modification of the kOFFSET_VERTEX_SUBJECT, kOFFSET_PREDICATE and kOFFSET_VERTEX_OBJECT offsets if the object is committed.</p>
 
 
 
@@ -658,6 +574,10 @@ object was committed, <code><a href="class-MyWrapper.Framework.CStatusDocument.h
 					<code><code><a href="class-Exception.html">Exception</a></code></code><br />
 				</div>
 
+				<h4>See</h4>
+				<div class="list">
+						kOFFSET_VERTEX_SUBJECT kOFFSET_PREDICATE kOFFSET_VERTEX_OBJECT<br />
+				</div>
 				<h4>Uses</h4>
 				<div class="list">
 						<code><code><a href="class-MyWrapper.Framework.CStatusDocument.html#_">MyWrapper\Framework\CStatusDocument::_IsCommitted()</a></code></code> <br />
@@ -680,7 +600,7 @@ object was committed, <code><a href="class-MyWrapper.Framework.CStatusDocument.h
 
 		<td class="name"><div>
 		<a class="anchor" href="#__Precommit">#</a>
-		<code><a href="source-class-MyWrapper.Framework.CTerm.html#523" title="Go to source code">_Precommit</a>( <span><code><a href="class-MyWrapper.Framework.CContainer.html">MyWrapper\Framework\CContainer</a></code> <var>$theContainer</var></span>, <span>bitfield <var>$theModifiers</var> = kFLAG_DEFAULT </span> )</code>
+		<code><a href="source-class-MyWrapper.Framework.CEdge.html#373" title="Go to source code">_Precommit</a>( <span><code><a href="class-MyWrapper.Framework.CContainer.html">MyWrapper\Framework\CContainer</a></code> <var>$theContainer</var></span>, <span>bitfield <var>$theModifiers</var> = kFLAG_DEFAULT </span> )</code>
 
 		<div class="description short">
 			
@@ -692,9 +612,16 @@ object was committed, <code><a href="class-MyWrapper.Framework.CStatusDocument.h
 			
 <h4>Prepare the object before committing</h4>
 
-<p>In this class we check whether the eventual namespace was provided as an
-object, in that case we commit it and leave it as an object: the <code><a href="class-MyWrapper.Framework.CTerm.html#_">MyWrapper\Framework\CTerm::_index()</a></code> method will take care of converting the offset to the namespace's
-identifier.</p>
+<p>In this class we set the object's native identifier to a sequence number, we
+do this just before inserting the object: that is, if the object does not have
+the native identifier. The default sequence key for edges is kSEQUENCE_KEY_EDGE.</p>
+
+<p>We also generate the object's global identifier, kOFFSET_GID, by
+concatenating the global identifiers of the subject (kOFFSET_VERTEX_SUBJECT), predicate (kOFFSET_PREDICATE) and object
+(kOFFSET_VERTEX_OBJECT) offsets, all separated by the kTOKEN_INDEX_SEPARATOR token. The resulting string will be hashed in kOFFSET_UID and used to identify duplicates.</p>
+
+<p>Note that we set the sequence as the last operation to allow eventual
+exceptions before issuing the sequence.</p>
 
 
 
@@ -730,7 +657,7 @@ identifier.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#__Ready">#</a>
-		<code><a href="source-class-MyWrapper.Framework.CTerm.html#571" title="Go to source code">_Ready</a>( )</code>
+		<code><a href="source-class-MyWrapper.Framework.CEdge.html#485" title="Go to source code">_Ready</a>( )</code>
 
 		<div class="description short">
 			
@@ -743,7 +670,8 @@ identifier.</p>
 <h4>Determine if the object is ready</h4>
 
 <p>In this class we tie the <code><a href="class-MyWrapper.Framework.CStatusDocument.html#_">MyWrapper\Framework\CStatusDocument::_IsInited()</a></code> status to the presence or
-absence of the kOFFSET_LID offset.</p>
+absence of the kOFFSET_VERTEX_SUBJECT, kOFFSET_PREDICATE and
+kOFFSET_VERTEX_OBJECT offsets.</p>
 
 
 
@@ -756,7 +684,7 @@ absence of the kOFFSET_LID offset.</p>
 
 				<h4>See</h4>
 				<div class="list">
-						kOFFSET_LID<br />
+						kOFFSET_VERTEX_SUBJECT kOFFSET_PREDICATE kOFFSET_VERTEX_OBJECT<br />
 				</div>
 
 				<h4>Overrides</h4>
@@ -774,7 +702,9 @@ absence of the kOFFSET_LID offset.</p>
 			<a href="class-MyWrapper.Persistence.CPersistentObject.html#_">CLassName()</a>, 
 			<a href="class-MyWrapper.Persistence.CPersistentObject.html#_">GID()</a>, 
 			<a href="class-MyWrapper.Persistence.CPersistentObject.html#_">NewObject()</a>, 
-			<a href="class-MyWrapper.Persistence.CPersistentObject.html#_">_AssertObjectIdentifier()</a>
+			<a href="class-MyWrapper.Persistence.CPersistentObject.html#_">_AssertObjectIdentifier()</a>, 
+			<a href="class-MyWrapper.Persistence.CPersistentObject.html#_">_id()</a>, 
+			<a href="class-MyWrapper.Persistence.CPersistentObject.html#_">_index()</a>
 		</code></td>
 	</tr>
 	</table>

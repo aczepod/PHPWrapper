@@ -252,6 +252,28 @@ class CMongoDatabase extends CDatabase
 
 	 
 	/*===================================================================================
+	 *	Drop																			*
+	 *==================================================================================*/
+
+	/**
+	 * <h4>Delete a database</h4>
+	 *
+	 * In this class we drop the database.
+	 *
+	 * @access public
+	 */
+	public function Drop()
+	{
+		//
+		// Check if inited.
+		//
+		if( ($db = $this->Connection()) !== NULL )
+			$db->Drop();
+	
+	} // Drop.
+
+	 
+	/*===================================================================================
 	 *	Container																		*
 	 *==================================================================================*/
 
@@ -290,7 +312,20 @@ class CMongoDatabase extends CDatabase
 		// Check inited status.
 		//
 		if( $this->_IsInited() )
-			return new CMongoContainer( $this, $theContainer );						// ==>
+		{
+			//
+			// Instantiate database.
+			//
+			$cn = new CMongoContainer( $this, $theContainer );
+			
+			//
+			// Set parent reference.
+			//
+			$cn[ kOFFSET_PARENT ] = $this;
+			
+			return $cn;																// ==>
+		
+		} // Object not initialised.
 
 		throw new \Exception
 			( "Object is not ready",

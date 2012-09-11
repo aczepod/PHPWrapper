@@ -285,7 +285,20 @@ class CMongoServer extends CServer
 		// Check inited status.
 		//
 		if( $this->_IsInited() )
-			return new CMongoDatabase( $this, $theDatabase );						// ==>
+		{
+			//
+			// Instantiate database.
+			//
+			$db = new CMongoDatabase( $this, $theDatabase );
+			
+			//
+			// Set parent reference.
+			//
+			$db[ kOFFSET_PARENT ] = $this;
+			
+			return $db;																// ==>
+		
+		} // Object not initialised.
 
 		throw new \Exception
 			( "Object is not ready",

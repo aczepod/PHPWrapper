@@ -72,6 +72,9 @@ abstract class CServer extends CConnection
 	 * the goal of this class is only to declare the public interface, which must be
 	 * implemented by specialised derived classes.
 	 *
+	 * The second parameter of the method should be set with the caller, this will represent
+	 * the server relationship for the database.
+	 *
 	 * @param mixed					$theDatabase		Database selector.
 	 *
 	 * @access public

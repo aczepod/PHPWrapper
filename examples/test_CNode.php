@@ -28,19 +28,24 @@ require_once( '/Library/WebServer/Library/PHPWrapper/includes.inc.php' );
 // Containers.
 //
 require_once( kPATH_MYWRAPPER_LIBRARY_CLASS."/Persistence/CMongoContainer.php" );
-use MyWrapper\Persistence\CMongoContainer;
+use \MyWrapper\Persistence\CMongoContainer;
 
 //
 // Terms.
 //
 require_once( kPATH_MYWRAPPER_LIBRARY_CLASS."/Framework/CTerm.php" );
-use MyWrapper\Framework\CTerm;
+use \MyWrapper\Framework\CTerm;
+
+//
+// Auxiliary includes.
+//
+use \MyWrapper\Persistence\CMongoServer as CMongoServer;
 
 //
 // Class includes.
 //
 require_once( kPATH_MYWRAPPER_LIBRARY_CLASS."/Framework/CNode.php" );
-use MyWrapper\Framework\CNode;
+use \MyWrapper\Framework\CNode;
 
 
 /*=======================================================================================
@@ -82,27 +87,20 @@ define( 'kDEBUG_PARENT', TRUE );
 try
 {
 	//
-	// Notes.
-	//
-	echo( '<h4>Object behaviour:</h4>' );
-	echo( '<ul>' );
-	echo( '<li>Base term object.' );
-	echo( '</ul><hr>' );
-	
-	//
 	// Create container.
 	//
 	echo( '<hr />' );
 	echo( '<h4>Create test container</h4>' );
-	echo( '$mongo = New Mongo();<br />' );
-	$mongo = New \Mongo();
-	echo( '$db = $mongo->selectDB( "TEST" );<br />' );
-	$db = $mongo->selectDB( "TEST" );
-	$db->drop();
-	echo( '$collection = $db->selectCollection( "CNode" );<br />' );
-	$collection = $db->selectCollection( "CNode" );
-	echo( '$container = new CMongoContainer( $collection );<br />' );
-	$container = new CMongoContainer( $collection );
+	echo( '$server = new CMongoServer();<br />' );
+	$server = New CMongoServer();
+	echo( '$database = $server->Database( "TEST" );<br />' );
+	$database = $server->Database( "TEST" );
+	echo( '$database->Drop();<br />' );
+	$database->Drop();
+	echo( '$term_container = CTerm::Container( $database );<br />' );
+	$term_container = CTerm::Container( $database );
+	echo( '$node_container = CNode::Container( $database );<br />' );
+	$node_container = CNode::Container( $database );
 	echo( '<hr />' );
 	echo( '<hr />' );
 	
@@ -182,42 +180,42 @@ try
 	}
 	
 	//
-	// Insert namespace term.
+	// Create namespace term.
 	//
-	echo( '<h4>Insert namespace term</h4>' );
+	echo( '<h4>Create namespace term</h4>' );
 	$namespace = new CTerm();
 	$namespace[ kOFFSET_LID ] = "NAMESPACE";
-	$status = $namespace->Insert( $container );
+	$status = $namespace->Insert( $term_container );
 	echo( '<pre>' ); print_r( $namespace ); echo( '</pre>' );
 	
 	//
-	// Insert term A.
+	// Create term A.
 	//
-	echo( '<h4>Insert term A</h4>' );
+	echo( '<h4>Create term A</h4>' );
 	$termA = new CTerm();
 	$termA[ kOFFSET_NAMESPACE ] = $namespace;
 	$termA[ kOFFSET_LID ] = "A";
-	$status = $termA->Insert( $container );
+	$status = $termA->Insert( $term_container );
 	echo( '<pre>' ); print_r( $termA ); echo( '</pre>' );
 	
 	//
-	// Insert term B.
+	// Create term B.
 	//
-	echo( '<h4>Insert term B</h4>' );
+	echo( '<h4>Create term B</h4>' );
 	$termB = new CTerm();
 	$termB[ kOFFSET_NAMESPACE ] = $namespace;
 	$termB[ kOFFSET_LID ] = "B";
-	$status = $termB->Insert( $container );
+	$status = $termB->Insert( $term_container );
 	echo( '<pre>' ); print_r( $termB ); echo( '</pre>' );
 	
 	//
-	// Insert term C.
+	// Create term C.
 	//
-	echo( '<h4>Insert term C</h4>' );
+	echo( '<h4>Create term C</h4>' );
 	$termC = new CTerm();
 	$termC[ kOFFSET_NAMESPACE ] = $namespace;
 	$termC[ kOFFSET_LID ] = "C";
-	$status = $termC->Insert( $container );
+	$status = $termC->Insert( $term_container );
 	echo( '<pre>' ); print_r( $termC ); echo( '</pre>' );
 	echo( '<hr />' );
 	echo( '<hr />' );
@@ -228,10 +226,10 @@ try
 	try
 	{
 		echo( '<h4>Insert uninitialized object</h4>' );
-		echo( '<h5>$namespace = new MyClass();</h5>' );
+		echo( '<h5>$node = new MyClass();</h5>' );
 		$node = new MyClass();
-		echo( '<h5>$status = $namespace->Insert( $container );</h5>' );
-		$status = $node->Insert( $container );
+		echo( '<h5>$status = $namespace->Insert( $node_container );</h5>' );
+		$status = $node->Insert( $node_container );
 		echo( '<h3><font color="red">Should have raised an exception</font></h3>' );
 		echo( '<pre>' ); print_r( $node ); echo( '</pre>' );
 		echo( '<hr />' );
@@ -254,8 +252,8 @@ try
 				   .'] Dirty['.$node->dirty()
 				   .'] Saved['.$node->committed()
 				   .'] Encoded['.$node->encoded().']<br />' );
-	echo( '<h5>$status = $node->Insert( $container );</h5>' );
-	$status = $node->Insert( $container );
+	echo( '<h5>$status = $node->Insert( $node_container );</h5>' );
+	$status = $node->Insert( $node_container );
 	echo( '<pre>' ); print_r( $node ); echo( '</pre>' );
 	echo( '<hr />' );
 	echo( '<hr>' );
@@ -270,8 +268,8 @@ try
 				   .'] Dirty['.$node->dirty()
 				   .'] Saved['.$node->committed()
 				   .'] Encoded['.$node->encoded().']<br />' );
-	echo( '<h5>$status = $node->Replace( $container );</h5>' );
-	$status = $node->Replace( $container );
+	echo( '<h5>$status = $node->Replace( $node_container );</h5>' );
+	$status = $node->Replace( $node_container );
 	echo( '<pre>' ); print_r( $node ); echo( '</pre>' );
 	echo( '<hr />' );
 	
@@ -285,8 +283,8 @@ try
 				   .'] Dirty['.$node->dirty()
 				   .'] Saved['.$node->committed()
 				   .'] Encoded['.$node->encoded().']<br />' );
-	echo( '<h5>$status = $node->Replace( $container );</h5>' );
-	$status = $node->Replace( $container );
+	echo( '<h5>$status = $node->Replace( $node_container );</h5>' );
+	$status = $node->Replace( $node_container );
 	echo( '<pre>' ); print_r( $node ); echo( '</pre>' );
 	echo( '<hr />' );
 	
@@ -300,8 +298,8 @@ try
 				   .'] Dirty['.$node->dirty()
 				   .'] Saved['.$node->committed()
 				   .'] Encoded['.$node->encoded().']<br />' );
-	echo( '<h5>$status = $node->Replace( $container );</h5>' );
-	$status = $node->Replace( $container );
+	echo( '<h5>$status = $node->Replace( $node_container );</h5>' );
+	$status = $node->Replace( $node_container );
 	echo( '<pre>' ); print_r( $node ); echo( '</pre>' );
 	echo( '<hr />' );
 	
@@ -315,8 +313,8 @@ try
 				   .'] Dirty['.$node->dirty()
 				   .'] Saved['.$node->committed()
 				   .'] Encoded['.$node->encoded().']<br />' );
-	echo( '<h5>$status = $node->Replace( $container );</h5>' );
-	$status = $node->Replace( $container );
+	echo( '<h5>$status = $node->Replace( $node_container );</h5>' );
+	$status = $node->Replace( $node_container );
 	echo( '<pre>' ); print_r( $node ); echo( '</pre>' );
 	echo( '<hr />' );
 	
@@ -330,8 +328,8 @@ try
 				   .'] Dirty['.$node->dirty()
 				   .'] Saved['.$node->committed()
 				   .'] Encoded['.$node->encoded().']<br />' );
-	echo( '<h5>$status = $node->Replace( $container );</h5>' );
-	$status = $node->Replace( $container );
+	echo( '<h5>$status = $node->Replace( $node_container );</h5>' );
+	$status = $node->Replace( $node_container );
 	echo( '<pre>' ); print_r( $node ); echo( '</pre>' );
 	echo( '<hr />' );
 	echo( '<hr />' );
@@ -346,8 +344,8 @@ try
 				   .'] Dirty['.$node->dirty()
 				   .'] Saved['.$node->committed()
 				   .'] Encoded['.$node->encoded().']<br />' );
-	echo( '<h5>$status = $node->Replace( $container );</h5>' );
-	$status = $node->Replace( $container );
+	echo( '<h5>$status = $node->Replace( $node_container );</h5>' );
+	$status = $node->Replace( $node_container );
 	echo( '<pre>' ); print_r( $node ); echo( '</pre>' );
 	echo( '<hr />' );
 	echo( '<hr>' );
@@ -370,6 +368,51 @@ try
 		echo( '<pre>'.(string) $error.'</pre>' );
 		echo( '<hr>' );
 	}
+	echo( '<hr>' );
+
+	//
+	// Insert duplicate node.
+	//
+	try
+	{
+		echo( '<h4>Insert duplicate node</h4>' );
+		echo( '<h5>$node->Kind( $termA, TRUE ); // To make object dirty</h5>' );
+		$node->Kind( $termA, TRUE );
+		echo( '<h5>$status = $node->Insert( $node_container );</h5>' );
+		$status = $node->Insert( $node_container );
+		echo( '<h3><font color="red">Should have raised an exception</font></h3>' );
+		echo( 'Inited['.$node->inited()
+					   .'] Dirty['.$node->dirty()
+					   .'] Saved['.$node->committed()
+					   .'] Encoded['.$node->encoded().']<br />' );
+		echo( 'Object<pre>' ); print_r( $node ); echo( '</pre>' );
+		echo( 'Status<pre>' ); print_r( $status ); echo( '</pre>' );
+		echo( '<hr />' );
+	}
+	catch( \Exception $error )
+	{
+		echo( '<h5>Expected exception</h5>' );
+		echo( '<pre>'.(string) $error.'</pre>' );
+		echo( '<hr>' );
+	}
+	echo( '<hr>' );
+	
+	//
+	// Add new node.
+	//
+	echo( '<h4>Add new node</h4>' );
+	echo( '<h5>$node = new MyClass();</h5>' );
+	$node = new MyClass();
+	echo( '<h5>$node[ kOFFSET_TERM ] = $termB;</h5>' );
+	$node[ kOFFSET_TERM ] = $termB;
+	echo( 'Inited['.$node->inited()
+				   .'] Dirty['.$node->dirty()
+				   .'] Saved['.$node->committed()
+				   .'] Encoded['.$node->encoded().']<br />' );
+	echo( '<h5>$status = $node->Replace( $node_container );</h5>' );
+	$status = $node->Replace( $node_container );
+	echo( '<pre>' ); print_r( $node ); echo( '</pre>' );
+	echo( '<hr />' );
 	echo( '<hr>' );
 }
 

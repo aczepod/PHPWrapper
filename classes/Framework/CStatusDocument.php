@@ -39,6 +39,7 @@ require_once( kPATH_MYWRAPPER_LIBRARY_FUNCTION."/accessors.php" );
  * This includes the ancestor class definitions.
  */
 require_once( kPATH_MYWRAPPER_LIBRARY_CLASS."/Framework/CDocument.php" );
+use \MyWrapper\Framework\CDocument as CDocument;
 
 /**
  * <h3>Document with status object</h3>

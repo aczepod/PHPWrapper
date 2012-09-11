@@ -7,7 +7,7 @@
 	<title>Class MyWrapper\Persistence\CMongoContainer | MyWrapper Reference Documentation</title>
 
 	<script type="text/javascript" src="resources/combined.js?496895167"></script>
-	<script type="text/javascript" src="elementlist.js?2871702978"></script>
+	<script type="text/javascript" src="elementlist.js?3191507714"></script>
 	<link rel="stylesheet" type="text/css" media="all" href="resources/style.css?1567499433" />
 
 </head>
@@ -45,7 +45,6 @@
 			<ul>
 				<li class="active"><a href="class-MyWrapper.Persistence.CMongoContainer.html">CMongoContainer</a></li>
 				<li><a href="class-MyWrapper.Persistence.CMongoDatabase.html">CMongoDatabase</a></li>
-				<li><a href="class-MyWrapper.Persistence.CMongoSequence.html">CMongoSequence</a></li>
 				<li><a href="class-MyWrapper.Persistence.CMongoServer.html">CMongoServer</a></li>
 				<li><a href="class-MyWrapper.Persistence.CPersistentDocument.html">CPersistentDocument</a></li>
 				<li><a href="class-MyWrapper.Persistence.CPersistentObject.html">CPersistentObject</a></li>
@@ -156,10 +155,6 @@
 	</dl>
 
 
-	<div>
-		<h4>Direct known subclasses</h4>
-			<a href="class-MyWrapper.Persistence.CMongoSequence.html">MyWrapper\Persistence\CMongoSequence</a>
-	</div>
 
 
 
@@ -330,6 +325,7 @@ object, it will then store it in the connection data member.</p>
 						<code><code><a href="class-MyWrapper.Persistence.CMongoContainer.html#_">MyWrapper\Persistence\CMongoContainer::__construct()</a></code></code> <br />
 						<code><code><a href="class-MyWrapper.Persistence.CMongoContainer.html#_">MyWrapper\Persistence\CMongoContainer::__toString()</a></code></code> <br />
 						<code><code><a href="class-MyWrapper.Persistence.CMongoContainer.html#_">MyWrapper\Persistence\CMongoContainer::ManageObject()</a></code></code> <br />
+						<code><code><a href="class-MyWrapper.Persistence.CMongoContainer.html#_">MyWrapper\Persistence\CMongoContainer::CheckObject()</a></code></code> <br />
 				</div>
 
 				<h4>Overrides</h4>
@@ -404,6 +400,112 @@ object, it will then store it in the connection data member.</p>
 		</div>
 		</div></td>
 	</tr>
+	<tr data-order="CheckObject" id="_CheckObject">
+
+		<td class="attributes"><code>
+			 public 
+			boolean
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_CheckObject">#</a>
+		<code><a href="source-class-MyWrapper.Persistence.CMongoContainer.html#794" title="Go to source code">CheckObject</a>( <span>mixed <var>$theIdentifier</var></span> )</code>
+
+		<div class="description short">
+			
+<h4>Check if object exists in container</h4>
+
+		</div>
+
+		<div class="description detailed hidden">
+			
+<h4>Check if object exists in container</h4>
+
+<p>In this class we return the number of found objects.</p>
+
+
+
+				<h4>Parameters</h4>
+				<div class="list"><dl>
+					<dt><var>$theIdentifier</var></dt>
+					<dd><code>mixed</code><br> Identifier.</dd>
+				</dl></div>
+
+				<h4>Returns</h4>
+				<div class="list">
+					<code>boolean</code><br><tt>TRUE</tt> exists.<br />
+				</div>
+
+				<h4>Throws</h4>
+				<div class="list">
+					<code><code><a href="class-Exception.html">Exception</a></code></code><br />
+				</div>
+
+				<h4>Uses</h4>
+				<div class="list">
+						<code><code><a href="class-MyWrapper.Persistence.CMongoContainer.html#_">MyWrapper\Persistence\CMongoContainer::Connection()</a></code></code> <br />
+				</div>
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="NextSequence" id="_NextSequence">
+
+		<td class="attributes"><code>
+			 public 
+			mixed
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_NextSequence">#</a>
+		<code><a href="source-class-MyWrapper.Persistence.CMongoContainer.html#848" title="Go to source code">NextSequence</a>( <span>string <var>$theKey</var></span>, <span>string <var>$theContainer</var> = <span class="php-keyword1">NULL</span> </span> )</code>
+
+		<div class="description short">
+			
+<h4>Return a sequence number</h4>
+
+		</div>
+
+		<div class="description detailed hidden">
+			
+<h4>Return a sequence number</h4>
+
+<p>We overload this method here to implement sequence numbers in mongo
+containers, please refer to the MyWrapper\Persistence\CContainer::NextSequence() documentation
+for more information.</p>
+
+
+
+				<h4>Parameters</h4>
+				<div class="list"><dl>
+					<dt><var>$theKey</var></dt>
+					<dd><code>string</code><br> Sequence key.</dd>
+					<dt><var>$theContainer</var></dt>
+					<dd><code>string</code><br> Sequence container.</dd>
+				</dl></div>
+
+				<h4>Returns</h4>
+				<div class="list">
+					<code>mixed</code><br>The sequence number or <tt>NULL</tt>.<br />
+				</div>
+
+				<h4>Throws</h4>
+				<div class="list">
+					<code><code><a href="class-Exception.html">Exception</a></code></code><br />
+				</div>
+
+
+				<h4>Overrides</h4>
+				<div class="list"><code><a href="class-MyWrapper.Framework.CContainer.html#_">MyWrapper\Framework\CContainer::NextSequence</a></code></div>
+
+		</div>
+		</div></td>
+	</tr>
 	<tr data-order="ConvertBinary" id="_ConvertBinary">
 
 		<td class="attributes"><code>
@@ -415,7 +517,7 @@ object, it will then store it in the connection data member.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#_ConvertBinary">#</a>
-		<code><a href="source-class-MyWrapper.Persistence.CMongoContainer.html#803" title="Go to source code">ConvertBinary</a>( <span>mixed <var>$theValue</var></span>, <span>boolean <var>$theSense</var> = <span class="php-keyword1">TRUE</span> </span> )</code>
+		<code><a href="source-class-MyWrapper.Persistence.CMongoContainer.html#952" title="Go to source code">ConvertBinary</a>( <span>mixed <var>$theValue</var></span>, <span>boolean <var>$theSense</var> = <span class="php-keyword1">TRUE</span> </span> )</code>
 
 		<div class="description short">
 			

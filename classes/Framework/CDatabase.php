@@ -41,6 +41,10 @@ use \MyWrapper\Framework\CConnection as CConnection;
  * a data member of the object, the array part of the object can be used to store specific
  * attributes of the native database connection.
  *
+ * The class also features an offset, {@link kOFFSET_PARENT}, that can be used to store the
+ * parent object, in this case the server object. This member gets set when the object is
+ * instantiated by a server object.
+ *
  * The abstract class must be overloaded by concrete classes that implement a native
  * database object.
  *
@@ -57,6 +61,23 @@ abstract class CDatabase extends CConnection
  *																						*
  *======================================================================================*/
 
+
+	 
+	/*===================================================================================
+	 *	Drop																			*
+	 *==================================================================================*/
+
+	/**
+	 * <h4>Delete a database</h4>
+	 *
+	 * This method can be used to delete or erase a database, it is up to derived concrete
+	 * instances to implement it.
+	 *
+	 * The method takes no parameters.
+	 *
+	 * @access public
+	 */
+	abstract public function Drop();
 
 	 
 	/*===================================================================================

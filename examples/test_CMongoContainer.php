@@ -473,6 +473,52 @@ try
 	echo( 'Status<pre>' ); print_r( $status ); echo( '</pre>' );
 	echo( '<hr>' );
 	echo( '<hr />' );
+	
+	//
+	// Call sequence 1.
+	//
+	echo( '<h4>Call sequence 1</h4>' );
+	echo( '<h5>$i = $test->NextSequence( "sequence 1", TRUE );</h5>' );
+	$i = $test->NextSequence( "sequence 1", TRUE );
+	echo( '<pre>' ); print_r( $i ); echo( '</pre>' );
+	echo( '<hr />' );
+	
+	//
+	// Call sequence 1 again.
+	//
+	echo( '<h4>Call sequence 1 again</h4>' );
+	echo( '<h5>$i = $test->NextSequence( "sequence 1", TRUE );</h5>' );
+	$i = $test->NextSequence( "sequence 1", TRUE );
+	echo( '<pre>' ); print_r( $i ); echo( '</pre>' );
+	echo( '<hr />' );
+	
+	//
+	// And again...
+	//
+	echo( '<h4>And again...</h4>' );
+	echo( '<h5>$i = $test->NextSequence( "sequence 1", TRUE );</h5>' );
+	$i = $test->NextSequence( "sequence 1", TRUE );
+	echo( '<pre>' ); print_r( $i ); echo( '</pre>' );
+	echo( '<hr />' );
+	
+	//
+	// Call sequence 2.
+	//
+	echo( '<h4>Call sequence 2</h4>' );
+	echo( '<h5>$i = $test->NextSequence( "sequence 2", TRUE );</h5>' );
+	$i = $test->NextSequence( "sequence 2", TRUE );
+	echo( '<pre>' ); print_r( $i ); echo( '</pre>' );
+	echo( '<hr />' );
+	
+	//
+	// Call sequence 2 on another container.
+	//
+	echo( '<h4>Call sequence 2 on another container</h4>' );
+	echo( '<h5>$i = $test->NextSequence( "sequence 2", "OTHER-SEQUENCE" );</h5>' );
+	$i = $test->NextSequence( "sequence 2", "OTHER-SEQUENCE" );
+	echo( '<pre>' ); print_r( $i ); echo( '</pre>' );
+	echo( '<hr />' );
+	echo( '<hr />' );
 }
 
 //

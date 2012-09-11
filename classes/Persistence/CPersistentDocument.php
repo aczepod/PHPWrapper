@@ -536,14 +536,19 @@ class CPersistentDocument extends CStatusDocument
 	public function Delete( CContainer $theContainer )
 	{
 		//
+		// Set operation.
+		//
+		$op = kFLAG_PERSIST_DELETE;
+		
+		//
 		// Delete object.
 		//
-		if( $theContainer->ManageObject( $this, NULL, kFLAG_PERSIST_DELETE ) )
+		if( $theContainer->ManageObject( $this, NULL, $op ) )
 		{
 			//
 			// Post-load.
 			//
-			$this->_Postcommit( $theContainer );
+			$this->_Postcommit( $theContainer, $op );
 			
 			return TRUE;															// ==>
 		

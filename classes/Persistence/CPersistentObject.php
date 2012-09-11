@@ -405,14 +405,14 @@ class CPersistentObject extends CPersistentDocument
 	 *
 	 * @uses _IsCommitted()
 	 *
-	 * @see kOFFSET_NID kOFFSET_GID
+	 * @see kOFFSET_NID kOFFSET_GID kOFFSET_UID
 	 */
 	protected function _Preset( &$theOffset, &$theValue )
 	{
 		//
 		// Intercept identifiers.
 		//
-		$offsets = array( kOFFSET_NID, kOFFSET_GID );
+		$offsets = array( kOFFSET_NID, kOFFSET_GID, kOFFSET_UID );
 		if( $this->_IsCommitted()
 		 && in_array( $theOffset, $offsets ) )
 			throw new \Exception
@@ -446,14 +446,14 @@ class CPersistentObject extends CPersistentDocument
 	 *
 	 * @uses _IsCommitted()
 	 *
-	 * @see kOFFSET_NID kOFFSET_GID
+	 * @see kOFFSET_NID kOFFSET_GID kOFFSET_UID
 	 */
 	protected function _Preunset( &$theOffset )
 	{
 		//
 		// Intercept identifiers.
 		//
-		$offsets = array( kOFFSET_NID, kOFFSET_GID );
+		$offsets = array( kOFFSET_NID, kOFFSET_GID, kOFFSET_UID );
 		if( $this->_IsCommitted()
 		 && in_array( $theOffset, $offsets ) )
 			throw new \Exception
