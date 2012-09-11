@@ -7,7 +7,7 @@
 	<title>Class MyWrapper\Framework\CNode | MyWrapper Reference Documentation</title>
 
 	<script type="text/javascript" src="resources/combined.js?496895167"></script>
-	<script type="text/javascript" src="elementlist.js?1852740671"></script>
+	<script type="text/javascript" src="elementlist.js?2871702978"></script>
 	<link rel="stylesheet" type="text/css" media="all" href="resources/style.css?1567499433" />
 
 </head>
@@ -192,6 +192,10 @@ has not been committed, <code><a href="class-MyWrapper.Framework.CStatusDocument
 	</dl>
 
 
+	<div>
+		<h4>Direct known subclasses</h4>
+			<a href="class-MyWrapper.Ontology.COntologyNode.html">MyWrapper\Ontology\COntologyNode</a>
+	</div>
 
 
 
@@ -234,7 +238,7 @@ has not been committed, <code><a href="class-MyWrapper.Framework.CStatusDocument
 <h4>Manage node term</h4>
 
 <p>This method can be used to manage the node's term, which is a reference to
-the term that defines the current node.</p>
+term that defines the current node.</p>
 
 <p>The method accepts a parameter which represents either the term reference, or
 the requested operation, depending on its value:</p>
@@ -490,6 +494,8 @@ the currently set value.</p>
 <p>In this class we prevent the modification of the kOFFSET_TERM offset
 if the object has its <code><a href="class-MyWrapper.Framework.CStatusDocument.html#_">MyWrapper\Framework\CStatusDocument::_IsCommitted()</a></code> status set.</p>
 
+<p>We also ensure that the kOFFSET_KIND offset is an array.</p>
+
 
 
 				<h4>Parameters</h4>
@@ -532,7 +538,7 @@ if the object has its <code><a href="class-MyWrapper.Framework.CStatusDocument.h
 
 		<td class="name"><div>
 		<a class="anchor" href="#__Preunset">#</a>
-		<code><a href="source-class-MyWrapper.Framework.CNode.html#310" title="Go to source code">_Preunset</a>( <span>reference <var>&amp; $theOffset</var></span> )</code>
+		<code><a href="source-class-MyWrapper.Framework.CNode.html#321" title="Go to source code">_Preunset</a>( <span>reference <var>&amp; $theOffset</var></span> )</code>
 
 		<div class="description short">
 			
@@ -587,7 +593,7 @@ if the object has its <code><a href="class-MyWrapper.Framework.CStatusDocument.h
 
 		<td class="name"><div>
 		<a class="anchor" href="#__Ready">#</a>
-		<code><a href="source-class-MyWrapper.Framework.CNode.html#359" title="Go to source code">_Ready</a>( )</code>
+		<code><a href="source-class-MyWrapper.Framework.CNode.html#369" title="Go to source code">_Ready</a>( )</code>
 
 		<div class="description short">
 			
@@ -631,6 +637,7 @@ absence of the kOFFSET_TERM offset.</p>
 			<a href="class-MyWrapper.Persistence.CPersistentObject.html#_">CLassName()</a>, 
 			<a href="class-MyWrapper.Persistence.CPersistentObject.html#_">GID()</a>, 
 			<a href="class-MyWrapper.Persistence.CPersistentObject.html#_">NewObject()</a>, 
+			<a href="class-MyWrapper.Persistence.CPersistentObject.html#_">_AssertObjectIdentifier()</a>, 
 			<a href="class-MyWrapper.Persistence.CPersistentObject.html#_">_Precommit()</a>, 
 			<a href="class-MyWrapper.Persistence.CPersistentObject.html#_">_id()</a>, 
 			<a href="class-MyWrapper.Persistence.CPersistentObject.html#_">_index()</a>

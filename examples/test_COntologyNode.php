@@ -179,21 +179,22 @@ try
 		echo( '<h5>$test[ \'C\' ][ 1 ];</h5>' );
 		echo( '<pre>' ); print_r( $test[ 'C' ][ 1 ] ); echo( '</pre>' );
 		echo( '<hr />' );
+		echo( '<hr />' );
 	}
 	
 	//
-	// Insert namespace term.
+	// Create namespace term.
 	//
-	echo( '<h4>Insert namespace term</h4>' );
+	echo( '<h4>Create namespace term</h4>' );
 	$namespace = new COntologyTerm();
 	$namespace[ kOFFSET_LID ] = "NAMESPACE";
 	$status = $namespace->Insert( $container );
 	echo( '<pre>' ); print_r( $namespace ); echo( '</pre>' );
 	
 	//
-	// Insert term A.
+	// Create term A.
 	//
-	echo( '<h4>Insert term A</h4>' );
+	echo( '<h4>Create term A</h4>' );
 	$termA = new COntologyTerm();
 	$termA[ kOFFSET_NAMESPACE ] = $namespace;
 	$termA[ kOFFSET_LID ] = "A";
@@ -201,9 +202,9 @@ try
 	echo( '<pre>' ); print_r( $termA ); echo( '</pre>' );
 	
 	//
-	// Insert term B.
+	// Create term B.
 	//
-	echo( '<h4>Insert term B</h4>' );
+	echo( '<h4>Create term B</h4>' );
 	$termB = new COntologyTerm();
 	$termB[ kOFFSET_NAMESPACE ] = $namespace;
 	$termB[ kOFFSET_LID ] = "B";
@@ -211,9 +212,9 @@ try
 	echo( '<pre>' ); print_r( $termB ); echo( '</pre>' );
 	
 	//
-	// Insert term C.
+	// Create term C.
 	//
-	echo( '<h4>Insert term C</h4>' );
+	echo( '<h4>Create term C</h4>' );
 	$termC = new COntologyTerm();
 	$termC[ kOFFSET_NAMESPACE ] = $namespace;
 	$termC[ kOFFSET_LID ] = "C";
@@ -256,7 +257,10 @@ try
 				   .'] Encoded['.$node->encoded().']<br />' );
 	echo( '<h5>$status = $node->Insert( $container );</h5>' );
 	$status = $node->Insert( $container );
-	echo( '<pre>' ); print_r( $node ); echo( '</pre>' );
+	echo( 'Node<pre>' ); print_r( $node ); echo( '</pre>' );
+	echo( '<h5>$term = COntologyTerm::NewObject( $container, $node[ kOFFSET_TERM ] ); // Notice node reference.</h5>' );
+	$term = COntologyTerm::NewObject( $container, $node[ kOFFSET_TERM ] );
+	echo( 'Term<pre>' ); print_r( $term ); echo( '</pre>' );
 	echo( '<hr />' );
 	echo( '<hr>' );
 	
@@ -353,6 +357,44 @@ try
 	echo( '<hr>' );
 
 	//
+	// Insert wrong term.
+	//
+	try
+	{
+		echo( '<h4>Insert wrong term</h4>' );
+		echo( '<h5>$node[ kOFFSET_TERM ] = "pippo";</h5>' );
+		$node[ kOFFSET_TERM ] = "pippo";
+		echo( '<h3><font color="red">Should have raised an exception</font></h3>' );
+		echo( '<pre>' ); print_r( $node ); echo( '</pre>' );
+		echo( '<hr />' );
+	}
+	catch( \Exception $error )
+	{
+		echo( '<h5>Expected exception</h5>' );
+		echo( '<pre>'.(string) $error.'</pre>' );
+		echo( '<hr>' );
+	}
+
+	//
+	// Insert wrong term type.
+	//
+	try
+	{
+		echo( '<h4>Insert wrong term type</h4>' );
+		echo( '<h5>$node[ kOFFSET_TERM ] = $node;</h5>' );
+		$node[ kOFFSET_TERM ] = $node;
+		echo( '<h3><font color="red">Should have raised an exception</font></h3>' );
+		echo( '<pre>' ); print_r( $node ); echo( '</pre>' );
+		echo( '<hr />' );
+	}
+	catch( \Exception $error )
+	{
+		echo( '<h5>Expected exception</h5>' );
+		echo( '<pre>'.(string) $error.'</pre>' );
+		echo( '<hr>' );
+	}
+
+	//
 	// Insert wrong kind.
 	//
 	try
@@ -370,6 +412,22 @@ try
 		echo( '<pre>'.(string) $error.'</pre>' );
 		echo( '<hr>' );
 	}
+	
+	//
+	// Delete node.
+	//
+	echo( '<h4>Delete node</h4>' );
+	echo( '<h5>$status = $node->Delete( $container );</h5>' );
+	$status = $node->Delete( $container );
+	echo( 'Inited['.$node->inited()
+				   .'] Dirty['.$node->dirty()
+				   .'] Saved['.$node->committed()
+				   .'] Encoded['.$node->encoded().']<br />' );
+	echo( 'Node<pre>' ); print_r( $node ); echo( '</pre>' );
+	echo( '<h5>$term = COntologyTerm::NewObject( $container, $node[ kOFFSET_TERM ] ); // Notice node reference.</h5>' );
+	$term = COntologyTerm::NewObject( $container, $node[ kOFFSET_TERM ] );
+	echo( 'Term<pre>' ); print_r( $term ); echo( '</pre>' );
+	echo( '<hr />' );
 	echo( '<hr>' );
 }
 

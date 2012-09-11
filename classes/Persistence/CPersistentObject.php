@@ -561,6 +561,105 @@ class CPersistentObject extends CPersistentDocument
 		} // Insert, update, replace and modify (not used).
 		
 	} // _PreCommit.
+		
+
+
+/*=======================================================================================
+ *																						*
+ *								STATIC PROTECTED INTERFACE								*
+ *																						*
+ *======================================================================================*/
+
+
+	 
+	/*===================================================================================
+	 *	_AssertObjectIdentifier															*
+	 *==================================================================================*/
+
+	/**
+	 * <h4>Extract object identifier</h4>
+	 *
+	 * This method can be used to extract the native unique identifier, {@link kOFFSET_NID},
+	 * from a provided parameter and check that if the parameter is a derived instance of
+	 * this class, it corresponds to a specific class.
+	 *
+	 * The method features three parameters:
+	 *
+	 * <ul>
+	 *	<li><tt>&$theValue</tt>: This parameter holds the value to be checked and will
+	 *		return the eventual identifier.
+	 *	<li><tt>$theClass</tt>: This string parameter holds the specific class name to be
+	 *		checked, if <tt>NULL</tt>, we assume any class derived from this one.
+	 *	<li><tt>$doThrow</tt>: If <tt>TRUE</tt>, the method will raise an exception if the
+	 *		parameter is not of the correct class; if <tt>FALSE</tt>, the method will return
+	 *		<tt>FALSE</tt>.
+	 * </ul>
+	 *
+	 * This method is only able to check objects derived from this class, since identifiers
+	 * can take any value, so it will operate only if the provided value is a subclass of
+	 * this one.
+	 *
+	 * @param reference			   &$theValue			Object reference.
+	 * @param string				$theClass			The specific class name.
+	 * @param boolean				$doThrow			If <tt>TRUE</tt> throw exceptions.
+	 *
+	 * @access protected
+	 * @return boolean
+	 *
+	 * @throws \Exception
+	 */
+	static protected function _AssertObjectIdentifier( &$theValue, $theClass, $doThrow )
+	{
+		//
+		// Consider only persistent objects.
+		//
+		if( $theValue instanceof self )
+		{
+			//
+			// Assert specific class.
+			//
+			if( ($theClass !== NULL)
+			 && (! ($theValue instanceof $theClass)) )
+			{
+				//
+				// Return status.
+				//
+				if( ! $doThrow )
+					return FALSE;													// ==>
+				
+				throw new \Exception
+					( "The provided object is not of the correct class",
+					  kERROR_PARAMETER );										// !@! ==>
+			
+			} // Wrong class.
+			
+			//
+			// Assert identifier.
+			//
+			if( ! $theValue->offsetExists( kOFFSET_NID ) )
+			{
+				//
+				// Return status.
+				//
+				if( ! $doThrow )
+					return FALSE;													// ==>
+				
+				throw new \Exception
+					( "The provided object is missing its identifier",
+					  kERROR_PARAMETER );										// !@! ==>
+			
+			} // Missing identifier.
+			
+			//
+			// Extract identifier.
+			//
+			$theValue = $theValue->offsetGet( kOFFSET_NID );
+		
+		} // Provided object.
+		
+		return TRUE;																// ==>
+		
+	} // _AssertObjectIdentifier.
 
 	 
 

@@ -8,7 +8,7 @@
 	<title>File Persistence/CPersistentObject.php | MyWrapper Reference Documentation</title>
 
 	<script type="text/javascript" src="resources/combined.js?496895167"></script>
-	<script type="text/javascript" src="elementlist.js?1852740671"></script>
+	<script type="text/javascript" src="elementlist.js?2871702978"></script>
 	<link rel="stylesheet" type="text/css" media="all" href="resources/style.css?1567499433" />
 
 </head>
@@ -655,14 +655,113 @@
 <a href="#561" id="561" class="l">561: </a>        } <span class="php-comment">// Insert, update, replace and modify (not used).</span>
 <a href="#562" id="562" class="l">562: </a>        
 <a href="#563" id="563" class="l">563: </a>    } <span class="php-comment">// _PreCommit.</span>
-<a href="#564" id="564" class="l">564: </a>
-<a href="#565" id="565" class="l">565: </a>     
+<a href="#564" id="564" class="l">564: </a>        
+<a href="#565" id="565" class="l">565: </a>
 <a href="#566" id="566" class="l">566: </a>
-<a href="#567" id="567" class="l">567: </a>} <span class="php-comment">// class CPersistentObject.</span>
-<a href="#568" id="568" class="l">568: </a>
-<a href="#569" id="569" class="l">569: </a>
-<a href="#570" id="570" class="l">570: </a><span class="xlang">?&gt;</span>
-<a href="#571" id="571" class="l">571: </a></code></pre>
+<a href="#567" id="567" class="l">567: </a><span class="php-comment">/*=======================================================================================
+</span><a href="#568" id="568" class="l">568: </a><span class="php-comment"> *                                                                                      *
+</span><a href="#569" id="569" class="l">569: </a><span class="php-comment"> *                              STATIC PROTECTED INTERFACE                              *
+</span><a href="#570" id="570" class="l">570: </a><span class="php-comment"> *                                                                                      *
+</span><a href="#571" id="571" class="l">571: </a><span class="php-comment"> *======================================================================================*/</span>
+<a href="#572" id="572" class="l">572: </a>
+<a href="#573" id="573" class="l">573: </a>
+<a href="#574" id="574" class="l">574: </a>     
+<a href="#575" id="575" class="l">575: </a>    <span class="php-comment">/*===================================================================================
+</span><a href="#576" id="576" class="l">576: </a><span class="php-comment">     *  _AssertObjectIdentifier                                                         *
+</span><a href="#577" id="577" class="l">577: </a><span class="php-comment">     *==================================================================================*/</span>
+<a href="#578" id="578" class="l">578: </a>
+<a href="#579" id="579" class="l">579: </a>    <span class="php-comment">/**
+</span><a href="#580" id="580" class="l">580: </a><span class="php-comment">     * &lt;h4&gt;Extract object identifier&lt;/h4&gt;
+</span><a href="#581" id="581" class="l">581: </a><span class="php-comment">     *
+</span><a href="#582" id="582" class="l">582: </a><span class="php-comment">     * This method can be used to extract the native unique identifier, {@link kOFFSET_NID},
+</span><a href="#583" id="583" class="l">583: </a><span class="php-comment">     * from a provided parameter and check that if the parameter is a derived instance of
+</span><a href="#584" id="584" class="l">584: </a><span class="php-comment">     * this class, it corresponds to a specific class.
+</span><a href="#585" id="585" class="l">585: </a><span class="php-comment">     *
+</span><a href="#586" id="586" class="l">586: </a><span class="php-comment">     * The method features three parameters:
+</span><a href="#587" id="587" class="l">587: </a><span class="php-comment">     *
+</span><a href="#588" id="588" class="l">588: </a><span class="php-comment">     * &lt;ul&gt;
+</span><a href="#589" id="589" class="l">589: </a><span class="php-comment">     *  &lt;li&gt;&lt;tt&gt;&amp;$theValue&lt;/tt&gt;: This parameter holds the value to be checked and will
+</span><a href="#590" id="590" class="l">590: </a><span class="php-comment">     *      return the eventual identifier.
+</span><a href="#591" id="591" class="l">591: </a><span class="php-comment">     *  &lt;li&gt;&lt;tt&gt;$theClass&lt;/tt&gt;: This string parameter holds the specific class name to be
+</span><a href="#592" id="592" class="l">592: </a><span class="php-comment">     *      checked, if &lt;tt&gt;NULL&lt;/tt&gt;, we assume any class derived from this one.
+</span><a href="#593" id="593" class="l">593: </a><span class="php-comment">     *  &lt;li&gt;&lt;tt&gt;$doThrow&lt;/tt&gt;: If &lt;tt&gt;TRUE&lt;/tt&gt;, the method will raise an exception if the
+</span><a href="#594" id="594" class="l">594: </a><span class="php-comment">     *      parameter is not of the correct class; if &lt;tt&gt;FALSE&lt;/tt&gt;, the method will return
+</span><a href="#595" id="595" class="l">595: </a><span class="php-comment">     *      &lt;tt&gt;FALSE&lt;/tt&gt;.
+</span><a href="#596" id="596" class="l">596: </a><span class="php-comment">     * &lt;/ul&gt;
+</span><a href="#597" id="597" class="l">597: </a><span class="php-comment">     *
+</span><a href="#598" id="598" class="l">598: </a><span class="php-comment">     * This method is only able to check objects derived from this class, since identifiers
+</span><a href="#599" id="599" class="l">599: </a><span class="php-comment">     * can take any value, so it will operate only if the provided value is a subclass of
+</span><a href="#600" id="600" class="l">600: </a><span class="php-comment">     * this one.
+</span><a href="#601" id="601" class="l">601: </a><span class="php-comment">     *
+</span><a href="#602" id="602" class="l">602: </a><span class="php-comment">     * @param reference            &amp;$theValue           Object reference.
+</span><a href="#603" id="603" class="l">603: </a><span class="php-comment">     * @param string                $theClass           The specific class name.
+</span><a href="#604" id="604" class="l">604: </a><span class="php-comment">     * @param boolean               $doThrow            If &lt;tt&gt;TRUE&lt;/tt&gt; throw exceptions.
+</span><a href="#605" id="605" class="l">605: </a><span class="php-comment">     *
+</span><a href="#606" id="606" class="l">606: </a><span class="php-comment">     * @access protected
+</span><a href="#607" id="607" class="l">607: </a><span class="php-comment">     * @return boolean
+</span><a href="#608" id="608" class="l">608: </a><span class="php-comment">     *
+</span><a href="#609" id="609" class="l">609: </a><span class="php-comment">     * @throws \Exception
+</span><a href="#610" id="610" class="l">610: </a><span class="php-comment">     */</span>
+<a href="#611" id="611" class="l">611: </a>    <span class="php-keyword1">static</span> <span class="php-keyword1">protected</span> <span class="php-keyword1">function</span> _AssertObjectIdentifier( &amp;<span class="php-var">$theValue</span>, <span class="php-var">$theClass</span>, <span class="php-var">$doThrow</span> )
+<a href="#612" id="612" class="l">612: </a>    {
+<a href="#613" id="613" class="l">613: </a>        <span class="php-comment">//</span>
+<a href="#614" id="614" class="l">614: </a>        <span class="php-comment">// Consider only persistent objects.</span>
+<a href="#615" id="615" class="l">615: </a>        <span class="php-comment">//</span>
+<a href="#616" id="616" class="l">616: </a>        <span class="php-keyword1">if</span>( <span class="php-var">$theValue</span> <span class="php-keyword1">instanceof</span> self )
+<a href="#617" id="617" class="l">617: </a>        {
+<a href="#618" id="618" class="l">618: </a>            <span class="php-comment">//</span>
+<a href="#619" id="619" class="l">619: </a>            <span class="php-comment">// Assert specific class.</span>
+<a href="#620" id="620" class="l">620: </a>            <span class="php-comment">//</span>
+<a href="#621" id="621" class="l">621: </a>            <span class="php-keyword1">if</span>( (<span class="php-var">$theClass</span> !== <span class="php-keyword1">NULL</span>)
+<a href="#622" id="622" class="l">622: </a>             &amp;&amp; (! (<span class="php-var">$theValue</span> <span class="php-keyword1">instanceof</span> <span class="php-var">$theClass</span>)) )
+<a href="#623" id="623" class="l">623: </a>            {
+<a href="#624" id="624" class="l">624: </a>                <span class="php-comment">//</span>
+<a href="#625" id="625" class="l">625: </a>                <span class="php-comment">// Return status.</span>
+<a href="#626" id="626" class="l">626: </a>                <span class="php-comment">//</span>
+<a href="#627" id="627" class="l">627: </a>                <span class="php-keyword1">if</span>( ! <span class="php-var">$doThrow</span> )
+<a href="#628" id="628" class="l">628: </a>                    <span class="php-keyword1">return</span> <span class="php-keyword1">FALSE</span>;                                                   <span class="php-comment">// ==&gt;</span>
+<a href="#629" id="629" class="l">629: </a>                
+<a href="#630" id="630" class="l">630: </a>                <span class="php-keyword1">throw</span> <span class="php-keyword1">new</span> \Exception
+<a href="#631" id="631" class="l">631: </a>                    ( <span class="php-quote">&quot;The provided object is not of the correct class&quot;</span>,
+<a href="#632" id="632" class="l">632: </a>                      kERROR_PARAMETER );                                       <span class="php-comment">// !@! ==&gt;</span>
+<a href="#633" id="633" class="l">633: </a>            
+<a href="#634" id="634" class="l">634: </a>            } <span class="php-comment">// Wrong class.</span>
+<a href="#635" id="635" class="l">635: </a>            
+<a href="#636" id="636" class="l">636: </a>            <span class="php-comment">//</span>
+<a href="#637" id="637" class="l">637: </a>            <span class="php-comment">// Assert identifier.</span>
+<a href="#638" id="638" class="l">638: </a>            <span class="php-comment">//</span>
+<a href="#639" id="639" class="l">639: </a>            <span class="php-keyword1">if</span>( ! <span class="php-var">$theValue</span>-&gt;offsetExists( kOFFSET_NID ) )
+<a href="#640" id="640" class="l">640: </a>            {
+<a href="#641" id="641" class="l">641: </a>                <span class="php-comment">//</span>
+<a href="#642" id="642" class="l">642: </a>                <span class="php-comment">// Return status.</span>
+<a href="#643" id="643" class="l">643: </a>                <span class="php-comment">//</span>
+<a href="#644" id="644" class="l">644: </a>                <span class="php-keyword1">if</span>( ! <span class="php-var">$doThrow</span> )
+<a href="#645" id="645" class="l">645: </a>                    <span class="php-keyword1">return</span> <span class="php-keyword1">FALSE</span>;                                                   <span class="php-comment">// ==&gt;</span>
+<a href="#646" id="646" class="l">646: </a>                
+<a href="#647" id="647" class="l">647: </a>                <span class="php-keyword1">throw</span> <span class="php-keyword1">new</span> \Exception
+<a href="#648" id="648" class="l">648: </a>                    ( <span class="php-quote">&quot;The provided object is missing its identifier&quot;</span>,
+<a href="#649" id="649" class="l">649: </a>                      kERROR_PARAMETER );                                       <span class="php-comment">// !@! ==&gt;</span>
+<a href="#650" id="650" class="l">650: </a>            
+<a href="#651" id="651" class="l">651: </a>            } <span class="php-comment">// Missing identifier.</span>
+<a href="#652" id="652" class="l">652: </a>            
+<a href="#653" id="653" class="l">653: </a>            <span class="php-comment">//</span>
+<a href="#654" id="654" class="l">654: </a>            <span class="php-comment">// Extract identifier.</span>
+<a href="#655" id="655" class="l">655: </a>            <span class="php-comment">//</span>
+<a href="#656" id="656" class="l">656: </a>            <span class="php-var">$theValue</span> = <span class="php-var">$theValue</span>-&gt;offsetGet( kOFFSET_NID );
+<a href="#657" id="657" class="l">657: </a>        
+<a href="#658" id="658" class="l">658: </a>        } <span class="php-comment">// Provided object.</span>
+<a href="#659" id="659" class="l">659: </a>        
+<a href="#660" id="660" class="l">660: </a>        <span class="php-keyword1">return</span> <span class="php-keyword1">TRUE</span>;                                                                <span class="php-comment">// ==&gt;</span>
+<a href="#661" id="661" class="l">661: </a>        
+<a href="#662" id="662" class="l">662: </a>    } <span class="php-comment">// _AssertObjectIdentifier.</span>
+<a href="#663" id="663" class="l">663: </a>
+<a href="#664" id="664" class="l">664: </a>     
+<a href="#665" id="665" class="l">665: </a>
+<a href="#666" id="666" class="l">666: </a>} <span class="php-comment">// class CPersistentObject.</span>
+<a href="#667" id="667" class="l">667: </a>
+<a href="#668" id="668" class="l">668: </a>
+<a href="#669" id="669" class="l">669: </a><span class="xlang">?&gt;</span>
+<a href="#670" id="670" class="l">670: </a></code></pre>
 
 	<div id="footer">
 		MyWrapper Reference Documentation API documentation generated by <a href="http://apigen.org">ApiGen 2.7.0</a>

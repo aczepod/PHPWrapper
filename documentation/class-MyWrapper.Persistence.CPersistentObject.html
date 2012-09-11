@@ -7,7 +7,7 @@
 	<title>Class MyWrapper\Persistence\CPersistentObject | MyWrapper Reference Documentation</title>
 
 	<script type="text/javascript" src="resources/combined.js?496895167"></script>
-	<script type="text/javascript" src="elementlist.js?1852740671"></script>
+	<script type="text/javascript" src="elementlist.js?2871702978"></script>
 	<link rel="stylesheet" type="text/css" media="all" href="resources/style.css?1567499433" />
 
 </head>
@@ -193,6 +193,7 @@ offsets:</p>
 
 	<div>
 		<h4>Indirect known subclasses</h4>
+			<a href="class-MyWrapper.Ontology.COntologyNode.html">MyWrapper\Ontology\COntologyNode</a>, 
 			<a href="class-MyWrapper.Ontology.COntologyTerm.html">MyWrapper\Ontology\COntologyTerm</a>
 	</div>
 
@@ -751,6 +752,77 @@ identifier.</p>
 
 				<h4>Overrides</h4>
 				<div class="list"><code><a href="class-MyWrapper.Persistence.CPersistentDocument.html#_">MyWrapper\Persistence\CPersistentDocument::_Precommit</a></code></div>
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="_AssertObjectIdentifier" id="__AssertObjectIdentifier">
+
+		<td class="attributes"><code>
+			 protected static
+			boolean
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#__AssertObjectIdentifier">#</a>
+		<code><a href="source-class-MyWrapper.Persistence.CPersistentObject.html#579" title="Go to source code">_AssertObjectIdentifier</a>( <span>reference <var>&amp; $theValue</var></span>, <span>string <var>$theClass</var></span>, <span>boolean <var>$doThrow</var></span> )</code>
+
+		<div class="description short">
+			
+<h4>Extract object identifier</h4>
+
+		</div>
+
+		<div class="description detailed hidden">
+			
+<h4>Extract object identifier</h4>
+
+<p>This method can be used to extract the native unique identifier, kOFFSET_NID, from a provided parameter and check that if the parameter is a
+derived instance of this class, it corresponds to a specific class.</p>
+
+<p>The method features three parameters:</p>
+
+<ul>
+	<li><tt>&amp;$theValue</tt>: This parameter holds the value to be checked and
+	will return the eventual identifier.</li>
+
+	<li><tt>$theClass</tt>: This string parameter holds the specific class name to
+	be checked, if <tt>NULL</tt>, we assume any class derived from this one.</li>
+
+	<li><tt>$doThrow</tt>: If <tt>TRUE</tt>, the method will raise an exception if
+	the parameter is not of the correct class; if <tt>FALSE</tt>, the method will
+	return <tt>FALSE</tt>.</li>
+</ul>
+
+<p>This method is only able to check objects derived from this class, since
+identifiers can take any value, so it will operate only if the provided value is
+a subclass of this one.</p>
+
+
+
+				<h4>Parameters</h4>
+				<div class="list"><dl>
+					<dt><var>$theValue</var></dt>
+					<dd><code>reference</code><br>&amp;$theValue Object reference.</dd>
+					<dt><var>$theClass</var></dt>
+					<dd><code>string</code><br> The specific class name.</dd>
+					<dt><var>$doThrow</var></dt>
+					<dd><code>boolean</code><br> If <tt>TRUE</tt> throw exceptions.</dd>
+				</dl></div>
+
+				<h4>Returns</h4>
+				<div class="list">
+					<code>boolean</code><br />
+				</div>
+
+				<h4>Throws</h4>
+				<div class="list">
+					<code><code><a href="class-Exception.html">Exception</a></code></code><br />
+				</div>
+
+
 
 		</div>
 		</div></td>

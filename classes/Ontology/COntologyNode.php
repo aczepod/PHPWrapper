@@ -27,6 +27,13 @@
 use \MyWrapper\Framework\CContainer as CContainer;
 
 /**
+ * Persistent object.
+ *
+ * This includes the container class definitions.
+ */
+use \MyWrapper\Persistence\CPersistentObject as CPersistentObject;
+
+/**
  * Terms.
  *
  * This includes the term class definitions.
@@ -45,12 +52,11 @@ use \MyWrapper\Framework\CNode as CNode;
 /**
  * <h3>Ontology node object ancestor</h3>
  *
- * This class extends its ancestor, {@link CNode}, by adding validation for term references:
- * all referenced terms must be in the form of {@link COntologyTerm} {@link kOFFSET_NID}
- * values.
+ * This class extends its ancestor, {@link CNode}, by ensuring that the node's term
+ * reference, {@link kOFFSET_TERM}, is the identifier of a {@link COntologyTerm} object.
  *
- * We also implement the reference count workflow for terms by incrementing and decrementing
- * the {@link kOFFSET_REFS_NODE} when inserting or deleting nodes.
+ * When inserting a new node, the class will also make sure that the referenced term gets a
+ * reference to the current node in its {@link kOFFSET_REFS_NODE} offset.
  *
  *	@package	MyWrapper
  *	@subpackage	Ontology
@@ -58,47 +64,6 @@ use \MyWrapper\Framework\CNode as CNode;
 class COntologyNode extends CNode
 {
 		
-
-/*=======================================================================================
- *																						*
- *								PUBLIC MEMBER INTERFACE									*
- *																						*
- *======================================================================================*/
-
-
-	 
-	/*===================================================================================
-	 *	Kind																			*
-	 *==================================================================================*/
-
-	/**
-	 * <h4>Manage node kind set</h4>
-	 *
-	 * We overload this method to check if the provided elements are {@link kOFFSET_NID} of
-	 * {@link COntologyTerm}.
-	 *
-	 * @param mixed					$theValue			Value or index.
-	 * @param mixed					$theOperation		Operation.
-	 * @param boolean				$getOld				TRUE get old value.
-	 *
-	 * @access public
-	 * @return mixed				<i>New</i> or <i>old</i> native container.
-	 */
-	public function Kind( $theValue = NULL, $theOperation = NULL, $getOld = FALSE )
-	{
-		//
-		// Intercept provided elements.
-		//
-		if( $theOperation
-		 && ($theValue !== NULL) )
-			$this->_CheckTermId( $theValue, TRUE );
-		
-		return ManageObjectSetOffset
-			( $this, kOFFSET_KIND, $theValue, $theOperation, $getOld );				// ==>
-
-	} // Kind.
-		
-
 
 /*=======================================================================================
  *																						*
@@ -132,11 +97,19 @@ class COntologyNode extends CNode
 	protected function _Preset( &$theOffset, &$theValue )
 	{
 		//
-		// Intercept identifiers.
+		// Skip removals.
 		//
-		$offsets = array( kOFFSET_TERM, kOFFSET_TYPE );
-		if( in_array( $theOffset, $offsets ) )
-			$this->_CheckTermId( $theValue, TRUE );
+		if( $theValue !== NULL )
+		{
+			//
+			// Handle term reference.
+			//
+			if( $theOffset == kOFFSET_TERM )
+				$this->_AssertObjectIdentifier( $theValue,
+												'\MyWrapper\Ontology\COntologyTerm',
+												TRUE );
+		
+		} // Setting a value.
 		
 		//
 		// Call parent method.
@@ -162,7 +135,7 @@ class COntologyNode extends CNode
 	/**
 	 * <h4>Prepare the object after committing</h4>
 	 *
-	 * In this class we increment the {@link kOFFSET_REFS_NAMESPACE} of the eventual
+	 * In this class we add the reference of the current node 
 	 * namespace.
 	 *
 	 * @param CContainer			$theContainer		Container.
@@ -181,19 +154,33 @@ class COntologyNode extends CNode
 			//
 			// Add current node reference to term.
 			//
-			if( $this->offsetExists( kOFFSET_NAMESPACE ) )
-			{
-				$offsets = array( kOFFSET_REFS_NAMESPACE => 1 );
-				$theContainer->ManageObject
-					(
-						$offsets,
-						$this->offsetGet( kOFFSET_NAMESPACE ),
-						kFLAG_PERSIST_MODIFY + kFLAG_MODIFY_INCREMENT
-					);
+			$mod = array( kOFFSET_REFS_NODE => $this->offsetGet( kOFFSET_NID ) );
+			$theContainer->ManageObject
+				(
+					$mod,								// Because it will be overwritten.
+					$this->offsetGet( kOFFSET_TERM ),		// Term identifier.
+					kFLAG_PERSIST_MODIFY + kFLAG_MODIFY_ADDSET	// Add to set.
+				);
 			
-			} // Has namespace.
-		
 		} // Not yet committed.
+		
+		//
+		// Check if deleting.
+		//
+		elseif( $theModifiers & kFLAG_PERSIST_DELETE )
+		{
+			//
+			// Remove current node reference from term.
+			//
+			$mod = array( kOFFSET_REFS_NODE => $this->offsetGet( kOFFSET_NID ) );
+			$theContainer->ManageObject
+				(
+					$mod,								// Because it will be overwritten.
+					$this->offsetGet( kOFFSET_TERM ),		// Term identifier.
+					kFLAG_PERSIST_MODIFY + kFLAG_MODIFY_PULL	// Remove to occurrances.
+				);
+		
+		} // Deleting.
 		
 		//
 		// Call parent method.
@@ -201,96 +188,6 @@ class COntologyNode extends CNode
 		parent::_Postcommit( $theContainer, $theModifiers );
 	
 	} // _Postcommit.
-		
-
-
-/*=======================================================================================
- *																						*
- *									PROTECTED UTILITIES									*
- *																						*
- *======================================================================================*/
-
-
-	 
-	/*===================================================================================
-	 *	_CheckTermId																	*
-	 *==================================================================================*/
-
-	/**
-	 * <h4>Ensure the provided parameter is a term identifier</h4>
-	 *
-	 * This method will check whether the provided value is suitable to be used as a term
-	 * reference.
-	 *
-	 * A term reference should be the native identifier of a {@link COntologyTerm} instance,
-	 * this can be ensured only if the provided value is an object of that class, in that
-	 * case the identifier will replace the provided value; any other data type can only be
-	 * assumed to be the identifier.
-	 *
-	 * The method will either raise an exception, if the second paraneter is <tt>TRUE</tt>,
-	 * or return <tt>TRUE<tt> if the value passed the test and <tt>FALSE</tt> if not.
-	 *
-	 * @param reference			   &$theValue			Term reference.
-	 * @param boolean				$doThrow			If <tt>TRUE</tt> throw exceptions.
-	 *
-	 * @access protected
-	 * @return boolean
-	 *
-	 * @throws \Exception
-	 */
-	protected function _CheckTermId( &$theValue, $doThrow )
-	{
-		//
-		// If object.
-		//
-		if( $theValue instanceof CPersistentObject )
-		{
-			//
-			// Ensure it is a term.
-			//
-			if( $theValue instanceof COntologyTerm )
-			{
-				//
-				// Check identifier.
-				//
-				if( $theValue->offsetExists( kOFFSET_NID ) )
-					$theValue = $theValue->offsetGet( kOFFSET_NID );
-				
-				else
-				{
-					//
-					// No exceptions.
-					//
-					if( ! $doThrow )
-						return FALSE;												// ==>
-					
-					throw new \Exception
-						( "The provided term is missing its identifier",
-						  kERROR_PARAMETER );									// !@! ==>
-				
-				} // Not a term.
-			
-			} // Provided term.
-			
-			else
-			{
-				//
-				// No exceptions.
-				//
-				if( ! $doThrow )
-					return FALSE;													// ==>
-				
-				throw new \Exception
-					( "The provided object must be a term",
-					  kERROR_PARAMETER );										// !@! ==>
-			
-			} // Not a term.
-		
-		} // Provided object.
-		
-		return TRUE;																// ==>
-	
-	} // _CheckTermId.
 
 	 
 

@@ -4,7 +4,7 @@
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 	<meta name="generator" content="ApiGen 2.7.0" />
 
-	<title>Class MyWrapper\Ontology\COntologyTerm | MyWrapper Reference Documentation</title>
+	<title>Class MyWrapper\Ontology\COntologyNode | MyWrapper Reference Documentation</title>
 
 	<script type="text/javascript" src="resources/combined.js?496895167"></script>
 	<script type="text/javascript" src="elementlist.js?2871702978"></script>
@@ -43,8 +43,8 @@
 		<div id="elements">
 			<h3>Classes</h3>
 			<ul>
-				<li><a href="class-MyWrapper.Ontology.COntologyNode.html">COntologyNode</a></li>
-				<li class="active"><a href="class-MyWrapper.Ontology.COntologyTerm.html">COntologyTerm</a></li>
+				<li class="active"><a href="class-MyWrapper.Ontology.COntologyNode.html">COntologyNode</a></li>
+				<li><a href="class-MyWrapper.Ontology.COntologyTerm.html">COntologyTerm</a></li>
 			</ul>
 
 
@@ -87,36 +87,19 @@
 	</div>
 
 <div id="content" class="class">
-	<h1>Class COntologyTerm</h1>
+	<h1>Class COntologyNode</h1>
 
 
 	<div class="description">
 	
-<h3>Ontology term object ancestor</h3>
+<h3>Ontology node object ancestor</h3>
 
-<p>This class extends its ancestor, <code><a href="class-MyWrapper.Framework.CTerm.html">MyWrapper\Framework\CTerm</a></code>, by adding namespace reference
-counting and namespace type control.</p>
+<p>This class extends its ancestor, <code><a href="class-MyWrapper.Framework.CNode.html">MyWrapper\Framework\CNode</a></code>, by ensuring that the node's
+term reference, kOFFSET_TERM, is the identifier of a <code><a href="class-MyWrapper.Ontology.COntologyTerm.html">MyWrapper\Ontology\COntologyTerm</a></code> object.</p>
 
-<p>The class features an offset, kOFFSET_REFS_NAMESPACE, that keeps a
-reference count of how many times it has been referenced as namespace.</p>
-
-<p>The class features also two other offsets, kOFFSET_REFS_NODE and
-kOFFSET_REFS_TAG, which collect respectively the list of node
-identifiers who reference this term, and the list of tags that reference the
-term. The namespace reference is managed by this class, the other two are
-managed by the node and tag classes.</p>
-
-<p>The class features member accessor methods for the default offsets:</p>
-
-<ul>
-	<li><code><a href="class-MyWrapper.Ontology.COntologyTerm.html#_">MyWrapper\Ontology\COntologyTerm::NamespaceRefs()</a></code>: This method returns the term's namespace
-	references, kOFFSET_REFS_NAMESPACE.</li>
-
-	<li><code><a href="class-MyWrapper.Ontology.COntologyTerm.html#_">MyWrapper\Ontology\COntologyTerm::NodeRefs()</a></code>: This method returns the term's node references, kOFFSET_REFS_NODE.</li>
-
-	<li><code><a href="class-MyWrapper.Ontology.COntologyTerm.html#_">MyWrapper\Ontology\COntologyTerm::TagRefs()</a></code>: This method returns the term's namespace references,
-	kOFFSET_REFS_TAG.</li>
-</ul>
+<p>When inserting a new node, the class will also make sure that the referenced
+term gets a reference to the current node in its kOFFSET_REFS_NODE
+offset.</p>
 
 	</div>
 
@@ -167,14 +150,14 @@ managed by the node and tag classes.</p>
 		</dd>
 		<dd style="padding-left:150px">
 			<img src="resources/inherit.png" alt="Extended by" />
-			<a href="class-MyWrapper.Framework.CTerm.html"><span>MyWrapper\Framework\CTerm</span></a>
+			<a href="class-MyWrapper.Framework.CNode.html"><span>MyWrapper\Framework\CNode</span></a>
 			
 			
 			
 		</dd>
 		<dd style="padding-left:180px">
 			<img src="resources/inherit.png" alt="Extended by" />
-<b><span>MyWrapper\Ontology\COntologyTerm</span></b>			
+<b><span>MyWrapper\Ontology\COntologyNode</span></b>			
 			
 			
 		</dd>
@@ -193,152 +176,12 @@ managed by the node and tag classes.</p>
 		<b>Namespace:</b> <a href="namespace-MyWrapper.html">MyWrapper</a>\<a href="namespace-MyWrapper.Ontology.html">Ontology</a><br />
 		<b>Package:</b> MyWrapper\Ontology<br />
 
-		<b>Located at</b> <a href="source-class-MyWrapper.Ontology.COntologyTerm.html#45" title="Go to source code">Ontology/COntologyTerm.php</a><br />
+		<b>Located at</b> <a href="source-class-MyWrapper.Ontology.COntologyNode.html#52" title="Go to source code">Ontology/COntologyNode.php</a><br />
 	</div>
 
 
 	<table class="summary" id="methods">
 	<caption>Methods summary</caption>
-	<tr data-order="NamespaceRefs" id="_NamespaceRefs">
-
-		<td class="attributes"><code>
-			 public 
-			integer
-			
-			</code>
-		</td>
-
-		<td class="name"><div>
-		<a class="anchor" href="#_NamespaceRefs">#</a>
-		<code><a href="source-class-MyWrapper.Ontology.COntologyTerm.html#90" title="Go to source code">NamespaceRefs</a>( )</code>
-
-		<div class="description short">
-			
-<h4>Manage namespace references</h4>
-
-		</div>
-
-		<div class="description detailed hidden">
-			
-<h4>Manage namespace references</h4>
-
-<p>The <i>namespace references</i>, kOFFSET_REFS_NAMESPACE, holds an
-integer which represents the number of times the current term has been
-referenced as a namespace, that is, stored in the kOFFSET_NAMESPACE
-offset of another term.</p>
-
-<p>The method is read-only, because this value must be managed internally.</p>
-
-
-
-
-				<h4>Returns</h4>
-				<div class="list">
-					<code>integer</code><br>Namespace reference count.<br />
-				</div>
-
-
-				<h4>See</h4>
-				<div class="list">
-						kOFFSET_REFS_NAMESPACE<br />
-				</div>
-
-
-		</div>
-		</div></td>
-	</tr>
-	<tr data-order="NodeRefs" id="_NodeRefs">
-
-		<td class="attributes"><code>
-			 public 
-			array
-			
-			</code>
-		</td>
-
-		<td class="name"><div>
-		<a class="anchor" href="#_NodeRefs">#</a>
-		<code><a href="source-class-MyWrapper.Ontology.COntologyTerm.html#121" title="Go to source code">NodeRefs</a>( )</code>
-
-		<div class="description short">
-			
-<h4>Manage node references</h4>
-
-		</div>
-
-		<div class="description detailed hidden">
-			
-<h4>Manage node references</h4>
-
-<p>The <i>node references</i>, kOFFSET_REFS_NODE, holds a list of
-identifiers of nodes that reference the term.</p>
-
-<p>The method is read-only, because this value must be managed internally.</p>
-
-
-
-
-				<h4>Returns</h4>
-				<div class="list">
-					<code>array</code><br>Nodes reference list.<br />
-				</div>
-
-
-				<h4>See</h4>
-				<div class="list">
-						kOFFSET_REFS_NODE<br />
-				</div>
-
-
-		</div>
-		</div></td>
-	</tr>
-	<tr data-order="TagRefs" id="_TagRefs">
-
-		<td class="attributes"><code>
-			 public 
-			array
-			
-			</code>
-		</td>
-
-		<td class="name"><div>
-		<a class="anchor" href="#_TagRefs">#</a>
-		<code><a href="source-class-MyWrapper.Ontology.COntologyTerm.html#151" title="Go to source code">TagRefs</a>( )</code>
-
-		<div class="description short">
-			
-<h4>Manage tag references</h4>
-
-		</div>
-
-		<div class="description detailed hidden">
-			
-<h4>Manage tag references</h4>
-
-<p>The <i>tag references</i>, kOFFSET_REFS_TAG, holds a list of
-identifiers of tags that reference the term.</p>
-
-<p>The method is read-only, because this value must be managed internally.</p>
-
-
-
-
-				<h4>Returns</h4>
-				<div class="list">
-					<code>array</code><br>Nodes reference list.<br />
-				</div>
-
-
-				<h4>See</h4>
-				<div class="list">
-						kOFFSET_REFS_TAG<br />
-				</div>
-
-
-		</div>
-		</div></td>
-	</tr>
 	<tr data-order="_Preset" id="__Preset">
 
 		<td class="attributes"><code>
@@ -350,7 +193,7 @@ identifiers of tags that reference the term.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#__Preset">#</a>
-		<code><a href="source-class-MyWrapper.Ontology.COntologyTerm.html#190" title="Go to source code">_Preset</a>( <span>reference <var>&amp; $theOffset</var></span>, <span>reference <var>&amp; $theValue</var></span> )</code>
+		<code><a href="source-class-MyWrapper.Ontology.COntologyNode.html#80" title="Go to source code">_Preset</a>( <span>reference <var>&amp; $theOffset</var></span>, <span>reference <var>&amp; $theValue</var></span> )</code>
 
 		<div class="description short">
 			
@@ -362,8 +205,11 @@ identifiers of tags that reference the term.</p>
 			
 <h4>Handle offset before setting it</h4>
 
-<p>In this class we prevent the modification of the three kOFFSET_REFS_NAMESPACE, kOFFSET_REFS_NODE and kOFFSET_REFS_TAG
-offsets, since they must be programmatically set.</p>
+<p>In this class we ensure that values arriving to the kOFFSET_TERM and
+kOFFSET_TYPE are the kOFFSET_NID of committed <code><a href="class-MyWrapper.Ontology.COntologyTerm.html">MyWrapper\Ontology\COntologyTerm</a></code>.</p>
+
+<p>Note that this only means that we can intercept term objects and extract
+their ID.</p>
 
 
 
@@ -387,58 +233,7 @@ offsets, since they must be programmatically set.</p>
 				</div>
 
 				<h4>Overrides</h4>
-				<div class="list"><code><a href="class-MyWrapper.Framework.CTerm.html#_">MyWrapper\Framework\CTerm::_Preset</a></code></div>
-
-		</div>
-		</div></td>
-	</tr>
-	<tr data-order="_Preunset" id="__Preunset">
-
-		<td class="attributes"><code>
-			 protected 
-			
-			
-			</code>
-		</td>
-
-		<td class="name"><div>
-		<a class="anchor" href="#__Preunset">#</a>
-		<code><a href="source-class-MyWrapper.Ontology.COntologyTerm.html#229" title="Go to source code">_Preunset</a>( <span>reference <var>&amp; $theOffset</var></span> )</code>
-
-		<div class="description short">
-			
-<h4>Handle offset before unsetting it</h4>
-
-		</div>
-
-		<div class="description detailed hidden">
-			
-<h4>Handle offset before unsetting it</h4>
-
-<p>In this class we prevent the modification of the three kOFFSET_REFS_NAMESPACE, kOFFSET_REFS_NODE and kOFFSET_REFS_TAG
-offsets, since they must be programmatically set.</p>
-
-
-
-				<h4>Parameters</h4>
-				<div class="list"><dl>
-					<dt><var>$theOffset</var></dt>
-					<dd><code>reference</code><br>&amp;$theOffset Offset.</dd>
-				</dl></div>
-
-
-				<h4>Throws</h4>
-				<div class="list">
-					<code><code><a href="class-Exception.html">Exception</a></code></code><br />
-				</div>
-
-				<h4>Uses</h4>
-				<div class="list">
-						<code><code><a href="class-MyWrapper.Framework.CStatusDocument.html#_">MyWrapper\Framework\CStatusDocument::_IsDirty()</a></code></code> <br />
-				</div>
-
-				<h4>Overrides</h4>
-				<div class="list"><code><a href="class-MyWrapper.Framework.CTerm.html#_">MyWrapper\Framework\CTerm::_Preunset</a></code></div>
+				<div class="list"><code><a href="class-MyWrapper.Framework.CNode.html#_">MyWrapper\Framework\CNode::_Preset</a></code></div>
 
 		</div>
 		</div></td>
@@ -454,7 +249,7 @@ offsets, since they must be programmatically set.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#__Postcommit">#</a>
-		<code><a href="source-class-MyWrapper.Ontology.COntologyTerm.html#276" title="Go to source code">_Postcommit</a>( <span><code><a href="class-MyWrapper.Framework.CContainer.html">MyWrapper\Framework\CContainer</a></code> <var>$theContainer</var></span>, <span>bitfield <var>$theModifiers</var> = kFLAG_DEFAULT </span> )</code>
+		<code><a href="source-class-MyWrapper.Ontology.COntologyNode.html#135" title="Go to source code">_Postcommit</a>( <span><code><a href="class-MyWrapper.Framework.CContainer.html">MyWrapper\Framework\CContainer</a></code> <var>$theContainer</var></span>, <span>bitfield <var>$theModifiers</var> = kFLAG_DEFAULT </span> )</code>
 
 		<div class="description short">
 			
@@ -466,8 +261,7 @@ offsets, since they must be programmatically set.</p>
 			
 <h4>Prepare the object after committing</h4>
 
-<p>In this class we increment the kOFFSET_REFS_NAMESPACE of the eventual
-namespace.</p>
+<p>In this class we add the reference of the current node namespace.</p>
 
 
 
@@ -491,15 +285,14 @@ namespace.</p>
 	</table>
 
 	<table class="summary inherited">
-	<caption>Methods inherited from <a href="class-MyWrapper.Framework.CTerm.html#methods">MyWrapper\Framework\CTerm</a></caption>
+	<caption>Methods inherited from <a href="class-MyWrapper.Framework.CNode.html#methods">MyWrapper\Framework\CNode</a></caption>
 	<tr>
 		<td><code>
-			<a href="class-MyWrapper.Framework.CTerm.html#_">LID()</a>, 
-			<a href="class-MyWrapper.Framework.CTerm.html#_">NS()</a>, 
-			<a href="class-MyWrapper.Framework.CTerm.html#_">_Precommit()</a>, 
-			<a href="class-MyWrapper.Framework.CTerm.html#_">_Ready()</a>, 
-			<a href="class-MyWrapper.Framework.CTerm.html#_">_id()</a>, 
-			<a href="class-MyWrapper.Framework.CTerm.html#_">_index()</a>
+			<a href="class-MyWrapper.Framework.CNode.html#_">Kind()</a>, 
+			<a href="class-MyWrapper.Framework.CNode.html#_">Term()</a>, 
+			<a href="class-MyWrapper.Framework.CNode.html#_">Type()</a>, 
+			<a href="class-MyWrapper.Framework.CNode.html#_">_Preunset()</a>, 
+			<a href="class-MyWrapper.Framework.CNode.html#_">_Ready()</a>
 		</code></td>
 	</tr>
 	</table>
@@ -510,7 +303,10 @@ namespace.</p>
 			<a href="class-MyWrapper.Persistence.CPersistentObject.html#_">CLassName()</a>, 
 			<a href="class-MyWrapper.Persistence.CPersistentObject.html#_">GID()</a>, 
 			<a href="class-MyWrapper.Persistence.CPersistentObject.html#_">NewObject()</a>, 
-			<a href="class-MyWrapper.Persistence.CPersistentObject.html#_">_AssertObjectIdentifier()</a>
+			<a href="class-MyWrapper.Persistence.CPersistentObject.html#_">_AssertObjectIdentifier()</a>, 
+			<a href="class-MyWrapper.Persistence.CPersistentObject.html#_">_Precommit()</a>, 
+			<a href="class-MyWrapper.Persistence.CPersistentObject.html#_">_id()</a>, 
+			<a href="class-MyWrapper.Persistence.CPersistentObject.html#_">_index()</a>
 		</code></td>
 	</tr>
 	</table>

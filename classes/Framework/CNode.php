@@ -107,8 +107,8 @@ class CNode extends CPersistentObject
 	/**
 	 * <h4>Manage node term</h4>
 	 *
-	 * This method can be used to manage the node's term, which is a reference to the term
-	 * that defines the current node.
+	 * This method can be used to manage the node's term, which is a reference to term that
+	 * defines the current node.
 	 *
 	 * The method accepts a parameter which represents either the term reference, or the
 	 * requested operation, depending on its value:
