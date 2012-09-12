@@ -1,0 +1,774 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<meta name="generator" content="ApiGen 2.7.0" />
+
+	<title>Class CTerm | MyWrapper Reference Documentation</title>
+
+	<script type="text/javascript" src="resources/combined.js?496895167"></script>
+	<script type="text/javascript" src="elementlist.js?3105881984"></script>
+	<link rel="stylesheet" type="text/css" media="all" href="resources/style.css?1567499433" />
+
+</head>
+
+<body>
+<div id="left">
+	<div id="menu">
+		<a href="index.html" title="Overview"><span>Overview</span></a>
+
+
+		<div id="groups">
+			<h3>Packages</h3>
+			<ul>
+				<li class="active main"><a href="package-MyWrapper.html">MyWrapper<span></span></a>
+						<ul>
+				<li class="active main"><a href="package-MyWrapper.Framework.html">Framework</a>
+						</li>
+				<li class="main"><a href="package-MyWrapper.Functions.html">Functions</a>
+						</li>
+				<li class="main"><a href="package-MyWrapper.Ontology.html">Ontology</a>
+						</li>
+				<li class="main"><a href="package-MyWrapper.Persistence.html">Persistence</a>
+						</li>
+							</ul></li>
+				<li><a href="package-None.html">None</a>
+						</li>
+				<li><a href="package-PHP.html">PHP</a>
+						</li>
+			</ul>
+		</div>
+
+		<hr />
+
+
+		<div id="elements">
+			<h3>Classes</h3>
+			<ul>
+				<li><a href="class-CConnection.html">CConnection</a></li>
+				<li><a href="class-CContainer.html">CContainer</a></li>
+				<li><a href="class-CDatabase.html">CDatabase</a></li>
+				<li><a href="class-CDocument.html">CDocument</a></li>
+				<li><a href="class-CEdge.html">CEdge</a></li>
+				<li><a href="class-CServer.html">CServer</a></li>
+				<li><a href="class-CStatusDocument.html">CStatusDocument</a></li>
+				<li class="active"><a href="class-CTerm.html">CTerm</a></li>
+			</ul>
+
+
+
+
+
+		</div>
+	</div>
+</div>
+
+<div id="splitter"></div>
+
+<div id="right">
+<div id="rightInner">
+	<form id="search">
+		<input type="hidden" name="cx" value="" />
+		<input type="hidden" name="ie" value="UTF-8" />
+		<input type="text" name="q" class="text" />
+		<input type="submit" value="Search" />
+	</form>
+
+	<div id="navigation">
+		<ul>
+			<li>
+				<a href="index.html" title="Overview"><span>Overview</span></a>
+			</li>
+			<li>
+				<a href="package-MyWrapper.Framework.html" title="Summary of MyWrapper\Framework"><span>Package</span></a>
+			</li>
+			<li class="active">
+<span>Class</span>			</li>
+		</ul>
+		<ul>
+			<li>
+				<a href="tree.html" title="Tree view of classes, interfaces, traits and exceptions"><span>Tree</span></a>
+			</li>
+		</ul>
+		<ul>
+		</ul>
+	</div>
+
+<div id="content" class="class">
+	<h1>Class CTerm</h1>
+
+
+	<div class="description">
+	
+<h3>Term object ancestor</h3>
+
+<p>A term can be compared to a word of a vocabulary, it is an elementary
+component that is an abstract concept if considered by itself, but takes a
+precise meaning if related to other terms, as a sequence of words that
+constitute a statement.</p>
+
+<p>Terms are identified by a string code which is the concatenation of two
+elements of the object: the namespace, kOFFSET_NAMESPACE, which
+represents the group to which the term belongs and the local identifier, kOFFSET_LID, which represents the unique identifier of the term within its
+namespace. This code is set in the global identifier, kOFFSET_GID, and
+formed by prefixing the namespace to the local identifier, separated by the
+kTOKEN_NAMESPACE_SEPARATOR token. This means that both the namespace and
+the local identifiers must be convertable to a string. If the object has no
+namespace, the local identifier will become the object's global identifier.</p>
+
+<p>When the object is committed, <code><a href="class-CStatusDocument.html#_">CStatusDocument::_IsCommitted()</a></code>, besides the the
+identifier offsets, also the kOFFSET_NAMESPACE offset will be locked,
+since it is used to generate the global identifier, kOFFSET_GID.</p>
+
+<p>The native unique identifier, kOFFSET_NID, is the binary md5 hash of
+the global unique identifier, kOFFSET_GID, this to allow long codes.</p>
+
+<p>The object will have its <code><a href="class-CStatusDocument.html#_">CStatusDocument::_IsInited()</a></code> status set if the local unique
+identifier, kOFFSET_LID, is set, derived classes may add other required
+attributes.</p>
+
+<p>Finally, the class features member accessor methods for the default
+offsets:</p>
+
+<ul>
+	<li><code><a href="class-CTerm.html#_">CTerm::NS()</a></code>: This method manages the term's namespace, kOFFSET_NAMESPACE.</li>
+
+	<li><code><a href="class-CTerm.html#_">CTerm::LID()</a></code>: This method manages the local unique identifier, kOFFSET_LID.</li>
+</ul>
+
+	</div>
+
+	<dl class="tree">
+		<dd style="padding-left:0px">
+			<a href="class-ArrayObject.html"><span>ArrayObject</span></a>
+			
+			 implements 
+				<a href="class-IteratorAggregate.html"><span>IteratorAggregate</span></a>, 
+			
+				<a href="class-Traversable.html"><span>Traversable</span></a>, 
+			
+				<a href="class-ArrayAccess.html"><span>ArrayAccess</span></a>, 
+			
+				<a href="class-Serializable.html"><span>Serializable</span></a>, 
+			
+				<a href="class-Countable.html"><span>Countable</span></a>
+			
+			
+		</dd>
+		<dd style="padding-left:30px">
+			<img src="resources/inherit.png" alt="Extended by" />
+			<a href="class-CDocument.html"><span>CDocument</span></a>
+			
+			
+			
+		</dd>
+		<dd style="padding-left:60px">
+			<img src="resources/inherit.png" alt="Extended by" />
+			<a href="class-CStatusDocument.html"><span>CStatusDocument</span></a>
+			
+			
+			
+		</dd>
+		<dd style="padding-left:90px">
+			<img src="resources/inherit.png" alt="Extended by" />
+			<a href="class-CPersistentDocument.html"><span>CPersistentDocument</span></a>
+			
+			
+			
+		</dd>
+		<dd style="padding-left:120px">
+			<img src="resources/inherit.png" alt="Extended by" />
+			<a href="class-CPersistentObject.html"><span>CPersistentObject</span></a>
+			
+			
+			
+		</dd>
+		<dd style="padding-left:150px">
+			<img src="resources/inherit.png" alt="Extended by" />
+<b><span>CTerm</span></b>			
+			
+			
+		</dd>
+	</dl>
+
+
+	<div>
+		<h4>Direct known subclasses</h4>
+			<a href="class-COntologyTerm.html">COntologyTerm</a>
+	</div>
+
+
+
+
+
+
+	<div class="info">
+		
+		
+		
+		<b>Package:</b> <a href="package-MyWrapper.html">MyWrapper</a>\<a href="package-MyWrapper.Framework.html">Framework</a><br />
+
+				<b>Author:</b>
+				Milko A. Škofič &lt;<a
+href="mailto:m.skofic&#64;cgiar.org">m.skofic&#64;<!---->cgiar.org</a>&gt;<br />
+		<b>Located at</b> <a href="source-class-CTerm.html#43" title="Go to source code">CTerm.php</a><br />
+	</div>
+
+
+	<table class="summary" id="methods">
+	<caption>Methods summary</caption>
+	<tr data-order="NS" id="_NS">
+
+		<td class="attributes"><code>
+			 public 
+			mixed
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_NS">#</a>
+		<code><a href="source-class-CTerm.html#96" title="Go to source code">NS</a>( <span>mixed <var>$theValue</var> = <span class="php-keyword1">NULL</span></span>, <span>boolean <var>$getOld</var> = <span class="php-keyword1">FALSE</span> </span> )</code>
+
+		<div class="description short">
+			
+<h4>Manage namespace native identifier</h4>
+
+		</div>
+
+		<div class="description detailed hidden">
+			
+<h4>Manage namespace native identifier</h4>
+
+<p>The <i>namespace native identifier</i>, kOFFSET_NAMESPACE, holds the
+native identifier of the object that represents the term's namespace.</p>
+
+<p>The method accepts a parameter which represents either the namespace or the
+requested operation, depending on its value:</p>
+
+<ul>
+	<li><tt>NULL</tt>: Return the current value.</li>
+
+	<li><tt>FALSE</tt>: Delete the current value.</li>
+
+	<li><i>other</i>: Set the value with the provided parameter.</li>
+</ul>
+
+<p>The second parameter is a boolean which if <tt>TRUE</tt> will return the
+<i>old</i> value when replacing containers; if <tt>FALSE</tt>, it will return
+the currently set value.</p>
+
+<p>Note that when the object has the <code><a href="class-CStatusDocument.html#_">CStatusDocument::_IsCommitted()</a></code> status this offset
+will be locked and an exception will be raised.</p>
+
+
+
+				<h4>Parameters</h4>
+				<div class="list"><dl>
+					<dt><var>$theValue</var></dt>
+					<dd><code>mixed</code><br> Native identifier or operation.</dd>
+					<dt><var>$getOld</var></dt>
+					<dd><code>boolean</code><br> <tt>TRUE</tt> get old value.</dd>
+				</dl></div>
+
+				<h4>Returns</h4>
+				<div class="list">
+					<code>mixed</code><br><i>New</i> or <i>old</i> native container.<br />
+				</div>
+
+
+				<h4>See</h4>
+				<div class="list">
+						kOFFSET_NAMESPACE<br />
+				</div>
+				<h4>Uses</h4>
+				<div class="list">
+						<code><code><a href="function-ManageOffset.html">ManageOffset()</a></code></code> <br />
+				</div>
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="LID" id="_LID">
+
+		<td class="attributes"><code>
+			 public 
+			mixed
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_LID">#</a>
+		<code><a href="source-class-CTerm.html#139" title="Go to source code">LID</a>( <span>mixed <var>$theValue</var> = <span class="php-keyword1">NULL</span></span>, <span>boolean <var>$getOld</var> = <span class="php-keyword1">FALSE</span> </span> )</code>
+
+		<div class="description short">
+			
+<h4>Manage local unique identifier</h4>
+
+		</div>
+
+		<div class="description detailed hidden">
+			
+<h4>Manage local unique identifier</h4>
+
+<p>The <i>local unique identifier</i>, kOFFSET_LID, holds a string which
+represents the object's unique identifier within its namespace, this value is
+concatenated to the eventual's namespace's global identifier to form the term's
+global identifier.</p>
+
+<p>The method accepts a parameter which represents either the identifier or the
+requested operation, depending on its value:</p>
+
+<ul>
+	<li><tt>NULL</tt>: Return the current value.</li>
+
+	<li><tt>FALSE</tt>: Delete the current value.</li>
+
+	<li><i>other</i>: Set the value with the provided parameter.</li>
+</ul>
+
+<p>The second parameter is a boolean which if <tt>TRUE</tt> will return the
+<i>old</i> value when replacing containers; if <tt>FALSE</tt>, it will return
+the currently set value.</p>
+
+<p>Note that when the object has the <code><a href="class-CStatusDocument.html#_">CStatusDocument::_IsCommitted()</a></code> status this offset
+will be locked and an exception will be raised.</p>
+
+
+
+				<h4>Parameters</h4>
+				<div class="list"><dl>
+					<dt><var>$theValue</var></dt>
+					<dd><code>mixed</code><br> Native identifier or operation.</dd>
+					<dt><var>$getOld</var></dt>
+					<dd><code>boolean</code><br> <tt>TRUE</tt> get old value.</dd>
+				</dl></div>
+
+				<h4>Returns</h4>
+				<div class="list">
+					<code>mixed</code><br><i>New</i> or <i>old</i> native container.<br />
+				</div>
+
+
+				<h4>See</h4>
+				<div class="list">
+						kOFFSET_LID<br />
+				</div>
+				<h4>Uses</h4>
+				<div class="list">
+						<code><code><a href="function-ManageOffset.html">ManageOffset()</a></code></code> <br />
+				</div>
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="_id" id="__id">
+
+		<td class="attributes"><code>
+			 public static
+			mixed
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#__id">#</a>
+		<code><a href="source-class-CTerm.html#193" title="Go to source code">_id</a>( <span>string <var>$theIdentifier</var> = <span class="php-keyword1">NULL</span></span>, <span><code><a href="class-CContainer.html">CContainer</a></code> <var>$theContainer</var> = <span class="php-keyword1">NULL</span> </span> )</code>
+
+		<div class="description short">
+			
+<h4>Generate the object's native unique identifier</h4>
+
+		</div>
+
+		<div class="description detailed hidden">
+			
+<h4>Generate the object's native unique identifier</h4>
+
+<p>We overload this method to hash the provided string.</p>
+
+<p>Since binary data is handled differently by each storage engine, we require
+the container parameter and raise an exception if not provided.</p>
+
+<p>We also raise an exception if the string is not provided, this is because
+this object primary key depends on the content of its attributes.</p>
+
+
+
+				<h4>Parameters</h4>
+				<div class="list"><dl>
+					<dt><var>$theIdentifier</var></dt>
+					<dd><code>string</code><br> Global unique identifier.</dd>
+					<dt><var>$theContainer</var></dt>
+					<dd><code><code><a href="class-CContainer.html">CContainer</a></code></code><br> Container.</dd>
+				</dl></div>
+
+				<h4>Returns</h4>
+				<div class="list">
+					<code>mixed</code><br>The object's native unique identifier.<br />
+				</div>
+
+				<h4>Throws</h4>
+				<div class="list">
+					<code><code><a href="class-Exception.html">Exception</a></code></code><br />
+				</div>
+
+
+				<h4>Overrides</h4>
+				<div class="list"><code><a href="class-CPersistentObject.html#_">CPersistentObject::_id</a></code></div>
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="_index" id="__index">
+
+		<td class="attributes"><code>
+			 protected 
+			string|null
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#__index">#</a>
+		<code><a href="source-class-CTerm.html#248" title="Go to source code">_index</a>( <span><code><a href="class-CContainer.html">CContainer</a></code> <var>$theContainer</var></span>, <span>bitfield <var>$theModifiers</var></span> )</code>
+
+		<div class="description short">
+			
+<h4>Return the object's global unique identifier</h4>
+
+		</div>
+
+		<div class="description detailed hidden">
+			
+<h4>Return the object's global unique identifier</h4>
+
+<p>Term identifiers are constituted by the concatenation of the namespace and
+the local unique identifier of the current term separated by a kTOKEN_NAMESPACE_SEPARATOR token.</p>
+
+<p>If the term lacks a namespace, its local identifier will become its global
+identifier.</p>
+
+<p>Both the namespace and the local identifier will be converted to strings to
+compute the global identifier.</p>
+
+<p>Note that if the local identifier is missing we call the parent's method,
+although this is not possible since it is asserted elsewhere in the
+workflow.</p>
+
+
+
+				<h4>Parameters</h4>
+				<div class="list"><dl>
+					<dt><var>$theContainer</var></dt>
+					<dd><code><code><a href="class-CContainer.html">CContainer</a></code></code><br> Container.</dd>
+					<dt><var>$theModifiers</var></dt>
+					<dd><code>bitfield</code><br> Commit options.</dd>
+				</dl></div>
+
+				<h4>Returns</h4>
+				<div class="list">
+					<code>string|null</code><br>The object's global unique identifier.<br />
+				</div>
+
+				<h4>Throws</h4>
+				<div class="list">
+					<code><code><a href="class-Exception.html">Exception</a></code></code><br />
+				</div>
+
+				<h4>Uses</h4>
+				<div class="list">
+						<code><code><a href="class-CTerm.html#_">CTerm::_index()</a></code></code> <br />
+				</div>
+				<h4>Used by</h4>
+				<div class="list">
+						<code><code><a href="class-CTerm.html#_">CTerm::_index()</a></code></code> <br />
+				</div>
+
+				<h4>Overrides</h4>
+				<div class="list"><code><a href="class-CPersistentObject.html#_">CPersistentObject::_index</a></code></div>
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="_Preset" id="__Preset">
+
+		<td class="attributes"><code>
+			 protected 
+			
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#__Preset">#</a>
+		<code><a href="source-class-CTerm.html#316" title="Go to source code">_Preset</a>( <span>reference <var>&amp; $theOffset</var></span>, <span>reference <var>&amp; $theValue</var></span> )</code>
+
+		<div class="description short">
+			
+<h4>Handle offset before setting it</h4>
+
+		</div>
+
+		<div class="description detailed hidden">
+			
+<h4>Handle offset before setting it</h4>
+
+<p>In this class we prevent the modification of offsets that concur in the
+generation of the object's identifier if the object has its <code><a href="class-CStatusDocument.html#_">CStatusDocument::_IsCommitted()</a></code> status set. This is because referenced objects must not change
+identifier.</p>
+
+<p>The kOFFSET_NAMESPACE and kOFFSET_LID are locked if the
+object was committed, <code><a href="class-CStatusDocument.html#_">CStatusDocument::_IsCommitted()</a></code>.</p>
+
+
+
+				<h4>Parameters</h4>
+				<div class="list"><dl>
+					<dt><var>$theOffset</var></dt>
+					<dd><code>reference</code><br>&amp;$theOffset Offset.</dd>
+					<dt><var>$theValue</var></dt>
+					<dd><code>reference</code><br>&amp;$theValue Value to set at offset.</dd>
+				</dl></div>
+
+
+				<h4>Throws</h4>
+				<div class="list">
+					<code><code><a href="class-Exception.html">Exception</a></code></code><br />
+				</div>
+
+				<h4>See</h4>
+				<div class="list">
+						kOFFSET_NID kOFFSET_GID kOFFSET_LID<br />
+				</div>
+				<h4>Uses</h4>
+				<div class="list">
+						<code><code><a href="class-CStatusDocument.html#_">CStatusDocument::_IsCommitted()</a></code></code> <br />
+				</div>
+
+				<h4>Overrides</h4>
+				<div class="list"><code><a href="class-CPersistentObject.html#_">CPersistentObject::_Preset</a></code></div>
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="_Preunset" id="__Preunset">
+
+		<td class="attributes"><code>
+			 protected 
+			
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#__Preunset">#</a>
+		<code><a href="source-class-CTerm.html#362" title="Go to source code">_Preunset</a>( <span>reference <var>&amp; $theOffset</var></span> )</code>
+
+		<div class="description short">
+			
+<h4>Handle offset before unsetting it</h4>
+
+		</div>
+
+		<div class="description detailed hidden">
+			
+<h4>Handle offset before unsetting it</h4>
+
+<p>In this class we prevent the modification of offsets that concur in the
+generation of the object's identifier if the object has its <code><a href="class-CStatusDocument.html#_">CStatusDocument::_IsCommitted()</a></code> status set. This is because referenced objects must not change
+identifier.</p>
+
+<p>The kOFFSET_NAMESPACE and kOFFSET_LID are locked if the
+object was committed, <code><a href="class-CStatusDocument.html#_">CStatusDocument::_IsCommitted()</a></code>.</p>
+
+
+
+				<h4>Parameters</h4>
+				<div class="list"><dl>
+					<dt><var>$theOffset</var></dt>
+					<dd><code>reference</code><br>&amp;$theOffset Offset.</dd>
+				</dl></div>
+
+
+				<h4>Throws</h4>
+				<div class="list">
+					<code><code><a href="class-Exception.html">Exception</a></code></code><br />
+				</div>
+
+				<h4>Uses</h4>
+				<div class="list">
+						<code><code><a href="class-CStatusDocument.html#_">CStatusDocument::_IsCommitted()</a></code></code> <br />
+				</div>
+
+				<h4>Overrides</h4>
+				<div class="list"><code><a href="class-CPersistentObject.html#_">CPersistentObject::_Preunset</a></code></div>
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="_Ready" id="__Ready">
+
+		<td class="attributes"><code>
+			 protected 
+			boolean
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#__Ready">#</a>
+		<code><a href="source-class-CTerm.html#414" title="Go to source code">_Ready</a>( )</code>
+
+		<div class="description short">
+			
+<h4>Determine if the object is ready</h4>
+
+		</div>
+
+		<div class="description detailed hidden">
+			
+<h4>Determine if the object is ready</h4>
+
+<p>In this class we tie the <code><a href="class-CStatusDocument.html#_">CStatusDocument::_IsInited()</a></code> status to the presence or
+absence of the kOFFSET_LID offset.</p>
+
+
+
+
+				<h4>Returns</h4>
+				<div class="list">
+					<code>boolean</code><br><tt>TRUE</tt> means {@link _IsInited( <tt>TRUE</tt> ).<br />
+				</div>
+
+
+				<h4>See</h4>
+				<div class="list">
+						kOFFSET_LID<br />
+				</div>
+
+				<h4>Overrides</h4>
+				<div class="list"><code><a href="class-CPersistentDocument.html#_">CPersistentDocument::_Ready</a></code></div>
+
+		</div>
+		</div></td>
+	</tr>
+	</table>
+
+	<table class="summary inherited">
+	<caption>Methods inherited from <a href="class-CPersistentObject.html#methods">CPersistentObject</a></caption>
+	<tr>
+		<td><code>
+			<a href="class-CPersistentObject.html#_">CLassName()</a>, 
+			<a href="class-CPersistentObject.html#_">GID()</a>, 
+			<a href="class-CPersistentObject.html#_">NewObject()</a>, 
+			<a href="class-CPersistentObject.html#_">_Precommit()</a>, 
+			<a href="class-CPersistentObject.html#_">__toString()</a>
+		</code></td>
+	</tr>
+	</table>
+	<table class="summary inherited">
+	<caption>Methods inherited from <a href="class-CPersistentDocument.html#methods">CPersistentDocument</a></caption>
+	<tr>
+		<td><code>
+			<a href="class-CPersistentDocument.html#_">DefaultContainer()</a>, 
+			<a href="class-CPersistentDocument.html#_">DefaultDatabase()</a>, 
+			<a href="class-CPersistentDocument.html#_">Delete()</a>, 
+			<a href="class-CPersistentDocument.html#_">Insert()</a>, 
+			<a href="class-CPersistentDocument.html#_">NID()</a>, 
+			<a href="class-CPersistentDocument.html#_">Replace()</a>, 
+			<a href="class-CPersistentDocument.html#_">Restore()</a>, 
+			<a href="class-CPersistentDocument.html#_">Update()</a>, 
+			<a href="class-CPersistentDocument.html#_">_Postcommit()</a>, 
+			<a href="class-CPersistentDocument.html#_">_Postset()</a>, 
+			<a href="class-CPersistentDocument.html#_">_Postunset()</a>, 
+			<a href="class-CPersistentDocument.html#_">__construct()</a>
+		</code></td>
+	</tr>
+	</table>
+	<table class="summary inherited">
+	<caption>Methods inherited from <a href="class-CStatusDocument.html#methods">CStatusDocument</a></caption>
+	<tr>
+		<td><code>
+			<a href="class-CStatusDocument.html#_">_IsCommitted()</a>, 
+			<a href="class-CStatusDocument.html#_">_IsDirty()</a>, 
+			<a href="class-CStatusDocument.html#_">_IsEncoded()</a>, 
+			<a href="class-CStatusDocument.html#_">_IsInited()</a>, 
+			<a href="class-CStatusDocument.html#_">offsetSet()</a>, 
+			<a href="class-CStatusDocument.html#_">offsetUnset()</a>
+		</code></td>
+	</tr>
+	</table>
+	<table class="summary inherited">
+	<caption>Methods inherited from <a href="class-CDocument.html#methods">CDocument</a></caption>
+	<tr>
+		<td><code>
+			<a href="class-CDocument.html#_">array_keys()</a>, 
+			<a href="class-CDocument.html#_">array_values()</a>, 
+			<a href="class-CDocument.html#_">offsetGet()</a>
+		</code></td>
+	</tr>
+	</table>
+	<table class="summary inherited">
+	<caption>Methods inherited from <a href="class-ArrayObject.html#methods">ArrayObject</a></caption>
+	<tr>
+		<td><code>
+			<a href="class-ArrayObject.html#_">append()</a>, 
+			<a href="class-ArrayObject.html#_">asort()</a>, 
+			<a href="class-ArrayObject.html#_">count()</a>, 
+			<a href="class-ArrayObject.html#_">exchangeArray()</a>, 
+			<a href="class-ArrayObject.html#_">getArrayCopy()</a>, 
+			<a href="class-ArrayObject.html#_">getFlags()</a>, 
+			<a href="class-ArrayObject.html#_">getIterator()</a>, 
+			<a href="class-ArrayObject.html#_">getIteratorClass()</a>, 
+			<a href="class-ArrayObject.html#_">ksort()</a>, 
+			<a href="class-ArrayObject.html#_">natcasesort()</a>, 
+			<a href="class-ArrayObject.html#_">natsort()</a>, 
+			<a href="class-ArrayObject.html#_">offsetExists()</a>, 
+			<a href="class-ArrayObject.html#_">serialize()</a>, 
+			<a href="class-ArrayObject.html#_">setFlags()</a>, 
+			<a href="class-ArrayObject.html#_">setIteratorClass()</a>, 
+			<a href="class-ArrayObject.html#_">uasort()</a>, 
+			<a href="class-ArrayObject.html#_">uksort()</a>, 
+			<a href="class-ArrayObject.html#_">unserialize()</a>
+		</code></td>
+	</tr>
+	</table>
+
+
+
+
+	<table class="summary inherited">
+	<caption>Constants inherited from <a href="class-ArrayObject.html#constants">ArrayObject</a></caption>
+	<tr>
+		<td><code>
+			<a href="class-ArrayObject.html#ARRAY_AS_PROPS"><b>ARRAY_AS_PROPS</b></a>, 
+			<a href="class-ArrayObject.html#STD_PROP_LIST"><b>STD_PROP_LIST</b></a>
+		</code></td>
+	</tr>
+	</table>
+
+
+
+	<table class="summary inherited">
+	<caption>Properties inherited from <a href="class-CStatusDocument.html#properties">CStatusDocument</a></caption>
+	<tr>
+		<td><code>
+			<a href="class-CStatusDocument.html#$mStatus"><var>$mStatus</var></a>
+		</code></td>
+	</tr>
+	</table>
+
+
+</div>
+
+	<div id="footer">
+		MyWrapper Reference Documentation API documentation generated by <a href="http://apigen.org">ApiGen 2.7.0</a>
+	</div>
+</div>
+</div>
+</body>
+</html>

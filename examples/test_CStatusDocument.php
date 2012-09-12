@@ -27,7 +27,7 @@ require_once( '/Library/WebServer/Library/PHPWrapper/includes.inc.php' );
 //
 // Class includes.
 //
-use \MyWrapper\Framework\CStatusDocument as CStatusDocument;
+require_once( kPATH_MYWRAPPER_LIBRARY_CLASS."/CStatusDocument.php" );
 
 
 /*=======================================================================================
@@ -60,13 +60,13 @@ try
 	//
 	// Set offset.
 	//
-	echo( '<h4>$test[ \'A\' ] = \'a\';</h4>' );
+	echo( '<h4>$test[ "A" ] = "a";</h4>' );
 	$test[ 'A' ] = 'a';
 	echo( '<pre>' ); print_r( $test ); echo( '</pre>' );
-	echo( '<h4>$test[ \'B\' ] = 2;</h4>' );
+	echo( '<h4>$test[ "B" ] = 2;</h4>' );
 	$test[ 'B' ] = 2;
 	echo( '<pre>' ); print_r( $test ); echo( '</pre>' );
-	echo( '<h4>$test[ \'C\' ] = array( 1, 2, 3 );</h4>' );
+	echo( '<h4>$test[ "C" ] = array( 1, 2, 3 );</h4>' );
 	$test[ 'C' ] = array( 1, 2, 3 );
 	echo( '<pre>' ); print_r( $test ); echo( '</pre>' );
 	echo( '<hr />' );
@@ -74,7 +74,7 @@ try
 	//
 	// Set NULL offset.
 	//
-	echo( '<h4>$test[ \'A\' ] = NULL;</h4>' );
+	echo( '<h4>$test[ "A" ] = NULL;</h4>' );
 	$test[ 'A' ] = NULL;
 	echo( '<pre>' ); print_r( $test ); echo( '</pre>' );
 	echo( '<hr />' );
@@ -82,7 +82,7 @@ try
 	//
 	// Get non-existing offset.
 	//
-	echo( '<h4>$x = $test[ \'missing\' ];</h4>' );
+	echo( '<h4>$x = $test[ "missing" ];</h4>' );
 	$x = $test[ 'missing' ];
 	if( $x !== NULL )
 		print_r( $x );
@@ -107,7 +107,7 @@ try
 	//
 	// Test array offsets.
 	//
-	echo( '<h4>$test[ \'C\' ][ 1 ];</h4>' );
+	echo( '<h4>$test[ "C" ][ 1 ];</h4>' );
 	echo( '<pre>' ); print_r( $test[ 'C' ][ 1 ] ); echo( '</pre>' );
 	echo( '<hr />' );
 }

@@ -1,0 +1,679 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<meta name="generator" content="ApiGen 2.7.0" />
+
+	<title>Class CContainer | MyWrapper Reference Documentation</title>
+
+	<script type="text/javascript" src="resources/combined.js?496895167"></script>
+	<script type="text/javascript" src="elementlist.js?3105881984"></script>
+	<link rel="stylesheet" type="text/css" media="all" href="resources/style.css?1567499433" />
+
+</head>
+
+<body>
+<div id="left">
+	<div id="menu">
+		<a href="index.html" title="Overview"><span>Overview</span></a>
+
+
+		<div id="groups">
+			<h3>Packages</h3>
+			<ul>
+				<li class="active main"><a href="package-MyWrapper.html">MyWrapper<span></span></a>
+						<ul>
+				<li class="active main"><a href="package-MyWrapper.Framework.html">Framework</a>
+						</li>
+				<li class="main"><a href="package-MyWrapper.Functions.html">Functions</a>
+						</li>
+				<li class="main"><a href="package-MyWrapper.Ontology.html">Ontology</a>
+						</li>
+				<li class="main"><a href="package-MyWrapper.Persistence.html">Persistence</a>
+						</li>
+							</ul></li>
+				<li><a href="package-None.html">None</a>
+						</li>
+				<li><a href="package-PHP.html">PHP</a>
+						</li>
+			</ul>
+		</div>
+
+		<hr />
+
+
+		<div id="elements">
+			<h3>Classes</h3>
+			<ul>
+				<li><a href="class-CConnection.html">CConnection</a></li>
+				<li class="active"><a href="class-CContainer.html">CContainer</a></li>
+				<li><a href="class-CDatabase.html">CDatabase</a></li>
+				<li><a href="class-CDocument.html">CDocument</a></li>
+				<li><a href="class-CEdge.html">CEdge</a></li>
+				<li><a href="class-CServer.html">CServer</a></li>
+				<li><a href="class-CStatusDocument.html">CStatusDocument</a></li>
+				<li><a href="class-CTerm.html">CTerm</a></li>
+			</ul>
+
+
+
+
+
+		</div>
+	</div>
+</div>
+
+<div id="splitter"></div>
+
+<div id="right">
+<div id="rightInner">
+	<form id="search">
+		<input type="hidden" name="cx" value="" />
+		<input type="hidden" name="ie" value="UTF-8" />
+		<input type="text" name="q" class="text" />
+		<input type="submit" value="Search" />
+	</form>
+
+	<div id="navigation">
+		<ul>
+			<li>
+				<a href="index.html" title="Overview"><span>Overview</span></a>
+			</li>
+			<li>
+				<a href="package-MyWrapper.Framework.html" title="Summary of MyWrapper\Framework"><span>Package</span></a>
+			</li>
+			<li class="active">
+<span>Class</span>			</li>
+		</ul>
+		<ul>
+			<li>
+				<a href="tree.html" title="Tree view of classes, interfaces, traits and exceptions"><span>Tree</span></a>
+			</li>
+		</ul>
+		<ul>
+		</ul>
+	</div>
+
+<div id="content" class="class">
+	<h1>Class CContainer</h1>
+
+
+	<div class="description">
+	
+<h3>Persistent objects data store ancestor</h3>
+
+<p>This <i>abstract</i> class is the ancestor of all container classes in this
+library, it implements the interface and workflow that all concrete derived
+classes should implement.</p>
+
+<p>A container object serves the purpose of storing and retrieving objects, in
+the same way as a database table. The object holds a data member that represents
+a native container from a database.</p>
+
+<p>The public interface declares the following main operations:</p>
+
+<ul>
+	<li><code><a href="class-CContainer.html#_">CContainer::ManageObject()</a></code>: This method will <i>insert</i>, <i>update</i>,
+	<i>modify</i>, <i>delete</i> and <i>load</i> an object from the current
+	container. This method operates one object at the time and it is mainly used by
+	persistent objects for persisting in containers.</li>
+
+	<li><code><a href="class-CContainer.html#_">CContainer::ConvertBinary()</a></code>: This method will convert a binary string to a
+	format compatible with the current data store. container.</li>
+</ul>
+
+<p>The class does not implement a concrete data store, derived classes must
+implement specific storage actions.</p>
+
+	</div>
+
+	<dl class="tree">
+		<dd style="padding-left:0px">
+			<a href="class-ArrayObject.html"><span>ArrayObject</span></a>
+			
+			 implements 
+				<a href="class-IteratorAggregate.html"><span>IteratorAggregate</span></a>, 
+			
+				<a href="class-Traversable.html"><span>Traversable</span></a>, 
+			
+				<a href="class-ArrayAccess.html"><span>ArrayAccess</span></a>, 
+			
+				<a href="class-Serializable.html"><span>Serializable</span></a>, 
+			
+				<a href="class-Countable.html"><span>Countable</span></a>
+			
+			
+		</dd>
+		<dd style="padding-left:30px">
+			<img src="resources/inherit.png" alt="Extended by" />
+			<a href="class-CDocument.html"><span>CDocument</span></a>
+			
+			
+			
+		</dd>
+		<dd style="padding-left:60px">
+			<img src="resources/inherit.png" alt="Extended by" />
+			<a href="class-CStatusDocument.html"><span>CStatusDocument</span></a>
+			
+			
+			
+		</dd>
+		<dd style="padding-left:90px">
+			<img src="resources/inherit.png" alt="Extended by" />
+			<a href="class-CConnection.html"><span>CConnection</span></a>
+			
+			
+			
+		</dd>
+		<dd style="padding-left:120px">
+			<img src="resources/inherit.png" alt="Extended by" />
+<b><span>CContainer</span></b>			
+			
+			
+		</dd>
+	</dl>
+
+
+	<div>
+		<h4>Direct known subclasses</h4>
+			<a href="class-CMongoContainer.html">CMongoContainer</a>
+	</div>
+
+
+
+
+
+
+	<div class="info">
+		<b>Abstract</b><br />
+		
+		
+		<b>Package:</b> <a href="package-MyWrapper.html">MyWrapper</a>\<a href="package-MyWrapper.Framework.html">Framework</a><br />
+
+				<b>Author:</b>
+				Milko A. Škofič &lt;<a
+href="mailto:m.skofic&#64;cgiar.org">m.skofic&#64;<!---->cgiar.org</a>&gt;<br />
+		<b>Located at</b> <a href="source-class-CContainer.html#43" title="Go to source code">CContainer.php</a><br />
+	</div>
+
+
+	<table class="summary" id="methods">
+	<caption>Methods summary</caption>
+	<tr data-order="ManageObject" id="_ManageObject">
+
+		<td class="attributes"><code>
+			abstract public 
+			mixed
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_ManageObject">#</a>
+		<code><a href="source-class-CContainer.html#87" title="Go to source code">ManageObject</a>( <span>reference <var>&amp; $theObject</var></span>, <span>mixed <var>$theIdentifier</var> = <span class="php-keyword1">NULL</span></span>, <span>mixed <var>$theModifiers</var> = kFLAG_DEFAULT </span> )</code>
+
+		<div class="description short">
+			
+<h4>Manage an object from the container</h4>
+
+		</div>
+
+		<div class="description detailed hidden">
+			
+<h4>Manage an object from the container</h4>
+
+<p>This method can be used to manage a single object in the container, it can
+<i>insert</i>, <i>update</i>, <i>replace</i>, <i>modify</i>, <i>retrieve</i> and
+<i>delete</i> an object from the current container by providing the object
+and/or its native unique identifier (kOFFSET_NID).</p>
+
+<p>This method expects three parameters:</p>
+
+<ul>
+	<li><tt>$theObject</tt>: The object or the data to be modified.</li>
+
+	<li><tt>$theIdentifier</tt>: The native unique identifier (kOFFSET_NID)
+	of the object. If the value is <i>NULL</i>, it means that it is the duty of the
+	current container to set the value, this will generally be the case when
+	inserting objects; in all other cases the parameter is required.</li>
+
+	<li><tt>$theModifiers</tt>: This parameter represents the operation options, or
+	the list of offsets to be returned. If the parameter is not an array, it will be
+	interpreted as a bitfield where the following values apply:
+		<ul>
+			<li>kFLAG_PERSIST_INSERT: The provided object will be inserted in the
+			container. It is assumed that no other element in the container shares the same
+			identifier, if not, the method should raise an exception. In this case the
+			<tt>$theObject</tt> represents the full object and <tt>$theIdentifier</tt>
+			represents the object unique identifier, or <tt>NULL</tt>, if it is the duty of
+			the container to create the identifier. If the identifier was created by the
+			container, it is the duty of this method to set it into the provided object. In
+			this case the method should return the inserted object's native identifier
+			(kOFFSET_NID).</li>
+
+			<li>kFLAG_PERSIST_UPDATE: The provided object will replace an object
+			existing in the container. In this case the <tt>$theObject</tt> represents the
+			full object and <tt>$theIdentifier</tt> represents the object unique identifier.
+			In this case the method should return <tt>TRUE</tt> if the object was updated
+			and <tt>FALSE</tt> if the object was not found.</li>
+
+			<li>kFLAG_PERSIST_REPLACE: The provided object will be inserted if the
+			identifier is missing or it doesn't match any entry in the container, or it will
+			update the object corresponding to the provided identifier. This option
+			represents the combination of the kFLAG_PERSIST_INSERT and kFLAG_PERSIST_UPDATE operations. In this case the <tt>$theObject</tt>
+			represents the full object and <tt>$theIdentifier</tt> represents the object
+			unique identifier, or <tt>NULL</tt>, if it is the duty of the container to
+			create the identifier. If the identifier was created by the container, it is the
+			duty of this method to set it into the provided object. In this case the method
+			should return the inserted object's native identifier (kOFFSET_NID).</li>
+
+			<li>kFLAG_PERSIST_MODIFY: This option can be used to apply modifications
+			to a subset of the object. In this case the parameters of this method have the
+			following functions:
+				<ul>
+					<li><tt>$theObject</tt>: This parameter will be an array of elements whose
+					<i>key</i> corresponds to the offset to be considered and the <i>value</i> to
+					the value that the operation will use.</li>
+
+					<li><tt>$theIdentifier</tt>: This parameter keeps its original meaning, it
+					should contain the native identifier of the object to be modified.</li>
+
+					<li><tt>$theModifiers</tt>: Another section of this bitfield will hold the flags
+					that determine what specific modification should be performed:
+						<ul>
+							<li>kFLAG_MODIFY_INCREMENT: This flag indicates an increment or
+							decrement operation, the method will take the value corresponding to the offset
+							in <tt>$theObject</tt> parameter and add it to the object identified by
+							<tt>$theIdentifier</tt> in the container. For instance, to increment by one the
+							'<tt>A</tt>' offset of object <tt>X</tt>, you would pass the <tt>array( 'A'
+							=&gt; 1 )</tt> in <tt>$theObject</tt>, <tt>X</tt> in <tt>$theIdentifier</tt> and
+							set the kFLAG_MODIFY_INCREMENT flag; to decrement by two you would pass
+							<tt>array( 'A' =&gt; -2 )</tt> in <tt>$theObject</tt>, with all other parameters
+							unchanged. If the offset does not exist, it will be initialised with the
+							increment value.</li>
+
+							<li>kFLAG_MODIFY_APPEND: This flag indicates that we want to append a
+							value to an existing array, the method will take the value corresponding to the
+							offset in <tt>$theObject</tt> and append it to the offset in <tt>$theObject</tt>
+							for the object identified by <tt>$theIdentifier</tt> in the container. For
+							instance, to append the value '<tt>A</tt>' to the array in offset
+							'<tt>FIELD</tt>' for object <tt>X</tt>, you would pass the <tt>array( 'FIELD'
+							=&gt; 'A' )</tt> in <tt>$theObject</tt>, <tt>X</tt> in <tt>$theIdentifier</tt>
+							and set the kFLAG_MODIFY_APPEND flag. If the field does not exist, it will be
+							created with an array composed of the provided append value; if the field exists
+							and its value is not an array, an exception should be raised.</li>
+
+							<li>kFLAG_MODIFY_ADDSET: This flag indicates that we want to add a value
+							to a set, this operation is equivalent to kFLAG_MODIFY_APPEND, except
+							that the value will be appended only if it doesn't exist already in the
+							receiving array.</li>
+
+							<li>kFLAG_MODIFY_POP: This flag indicates that we want to remove the
+							first or last element from an array. The method will take the value
+							corresponding to the offset in <tt>$theObject</tt> and check its sign: if
+							positive, the method will remove the first element; if negative it will remove
+							the last. For instance, to remove the first element in the '<tt>FIELD</tt>'
+							offset of object <tt>X</tt>, you would pass the <tt>array( 'FIELD' =&gt; 1
+							)</tt> in <tt>$theObject</tt>, <tt>X</tt> in <tt>$theIdentifier</tt> and set the
+							kFLAG_MODIFY_POP flag in <tt>$theModifiers</tt>; to remove the last element you
+							would pass <tt>array( 'FIELD' =&gt; -1 )</tt> in <tt>$theObject</tt>. If the
+							offset does not exist, the method should not fail; if the offset is not an
+							array, the method should raise an exception.</li>
+
+							<li>kFLAG_MODIFY_PULL: This flag indicates that we want to remove all
+							occurrences of a value from an array. For instance, to remove all occurrances of
+							'<tt>A</tt>' from the array contained in the '<tt>FIELD</tt>' offset of object
+							<tt>X</tt>, you would pass <tt>array( 'FIELD' =&gt; 'A' )</tt> in
+							<tt>$theObject</tt>, <tt>X</tt> in <tt>$theIdentifier</tt> and set the
+							kFLAG_MODIFY_PULL flag in <tt>$theModifiers</tt>. If the field exists and its
+							value is not an array, an exception should be raised.</li>
+
+							<li>kFLAG_MODIFY_MASK <i>off</i>: If none of the above flags are set, it
+							means that the key/value pairs set in <tt>$theObject</tt> represent offsets to
+							be added or removed, depending on the value part of the pair: if the value is
+							<tt>NULL</tt>, it means that you want to remove the offset; any other value will
+							replace the existing offset or be added to the object.</li>
+						</ul>
+					</li>
+				</ul>
+				 In this case the method will return the modified object in the
+				<tt>$theObject</tt> parameter, or raise an exception if the operation
+				fails.</li>
+
+			<li>kFLAG_PERSIST_DELETE: This option assumes you want to remove the
+			object from the container. In this case the <tt>$theObject</tt> represents the
+			full object and <tt>$theIdentifier</tt> represents the object unique identifier,
+			what counts is that the object's unique identifier (kOFFSET_NID) is
+			provided. If the object is not found in the container, the method should not
+			fail. In this case the method should return <tt>TRUE</tt> if the object was
+			deleted and <tt>FALSE</tt> if the object was not found.</li>
+		</ul>
+		 If none of the above flags are set, it means that the caller wants to retrieve
+		the object identified by the kOFFSET_NID offset from the provided object
+		object or from the provided identifier. If found, the provided object will
+		receive the located object and the method will return <tt>TRUE</tt>; if not
+		found, the method will set the provided object to <tt>NULL</tt> and return
+		<tt>FALSE</tt>. If the parameter is an array, it implies that the requested
+		operation is to retrieve the object, the array will be interpreted as the list
+		of object offsets to be returned, the kOFFSET_NID offset is returned by
+		default.</li>
+</ul>
+
+<p>The method should raise an exception if the operation was not successful and
+update the provided object with whatever data the operation will generate.</p>
+
+<p>The method will also raise an exception if the object is not yet initialised
+(<code><a href="class-CStatusDocument.html#_">CStatusDocument::_IsInited()</a></code>), this happens when the object received the native
+container.</p>
+
+<p>This class is abstract, which means that derived classes must implement the
+specific functionality of specialised data stores, for this reason this method
+is declared abstract.</p>
+
+
+
+				<h4>Parameters</h4>
+				<div class="list"><dl>
+					<dt><var>$theObject</var></dt>
+					<dd><code>reference</code><br>&amp;$theObject Object.</dd>
+					<dt><var>$theIdentifier</var></dt>
+					<dd><code>mixed</code><br> Identifier.</dd>
+					<dt><var>$theModifiers</var></dt>
+					<dd><code>mixed</code><br> Options or offsets list.</dd>
+				</dl></div>
+
+				<h4>Returns</h4>
+				<div class="list">
+					<code>mixed</code><br>The native operation status.<br />
+				</div>
+
+
+				<h4>See</h4>
+				<div class="list">
+						kFLAG_PERSIST_INSERT kFLAG_PERSIST_UPDATE kFLAG_PERSIST_MODIFY<br />
+						kFLAG_PERSIST_REPLACE kFLAG_PERSIST_MODIFY kFLAG_PERSIST_DELETE<br />
+						kFLAG_MODIFY_INCREMENT kFLAG_MODIFY_APPEND kFLAG_MODIFY_ADDSET<br />
+						kFLAG_MODIFY_POP kFLAG_MODIFY_PULL kFLAG_MODIFY_MASK<br />
+				</div>
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="CheckObject" id="_CheckObject">
+
+		<td class="attributes"><code>
+			abstract public 
+			boolean
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_CheckObject">#</a>
+		<code><a href="source-class-CContainer.html#260" title="Go to source code">CheckObject</a>( <span>mixed <var>$theIdentifier</var></span> )</code>
+
+		<div class="description short">
+			
+<h4>Check if object exists in container</h4>
+
+		</div>
+
+		<div class="description detailed hidden">
+			
+<h4>Check if object exists in container</h4>
+
+<p>This method can be used to check if an object exists in the current
+container, the method expects the identifier and will return <tt>TRUE</tt> if
+found and <tt>FALSE</tt> if not.</p>
+
+
+
+				<h4>Parameters</h4>
+				<div class="list"><dl>
+					<dt><var>$theIdentifier</var></dt>
+					<dd><code>mixed</code><br> Identifier.</dd>
+				</dl></div>
+
+				<h4>Returns</h4>
+				<div class="list">
+					<code>boolean</code><br><tt>TRUE</tt> exists.<br />
+				</div>
+
+
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="NextSequence" id="_NextSequence">
+
+		<td class="attributes"><code>
+			 public 
+			mixed
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_NextSequence">#</a>
+		<code><a href="source-class-CContainer.html#288" title="Go to source code">NextSequence</a>( <span>string <var>$theKey</var></span>, <span>string <var>$theContainer</var> = <span class="php-keyword1">NULL</span> </span> )</code>
+
+		<div class="description short">
+			
+<h4>Return a sequence number</h4>
+
+		</div>
+
+		<div class="description detailed hidden">
+			
+<h4>Return a sequence number</h4>
+
+<p>This method should return a sequence number connected to the provided key.
+Each time this method is called, the sequence number is incremented, which means
+that you should only call it when you intend to use this number.</p>
+
+<p>The first parameter, <tt>$theKey</tt>, represents the key to the sequence, it
+will be the kOFFSET_NID of the record holding the sequence and the field
+holding the current number has the kOFFSET_SEQUENCE offset.</p>
+
+<p>The second parameter represents the container in which the sequence is
+stored: if you provide a string, the method should use a corresponding native
+container; if you provide <tt>TRUE</tt>, the method will use the string stored
+in kCONTAINER_SEQUENCE_NAME; if you provide <tt>NULL</tt>, the method
+will use the current container.</p>
+
+<p>If the object is not _Is Inited(), the method should raise an
+exception.</p>
+
+<p>If the current object does not support sequences, this method should return
+<tt>NULL</tt>.</p>
+
+<p>This class is abstract and by default sequences are not supported.</p>
+
+
+
+				<h4>Parameters</h4>
+				<div class="list"><dl>
+					<dt><var>$theKey</var></dt>
+					<dd><code>string</code><br> Sequence key.</dd>
+					<dt><var>$theContainer</var></dt>
+					<dd><code>string</code><br> Sequence container.</dd>
+				</dl></div>
+
+				<h4>Returns</h4>
+				<div class="list">
+					<code>mixed</code><br>The sequence number or <tt>NULL</tt>.<br />
+				</div>
+
+				<h4>Throws</h4>
+				<div class="list">
+					<code><code><a href="class-Exception.html">Exception</a></code></code><br />
+				</div>
+
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="ConvertBinary" id="_ConvertBinary">
+
+		<td class="attributes"><code>
+			 public static
+			mixed
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_ConvertBinary">#</a>
+		<code><a href="source-class-CContainer.html#336" title="Go to source code">ConvertBinary</a>( <span>mixed <var>$theValue</var></span>, <span>boolean <var>$theSense</var> = <span class="php-keyword1">TRUE</span> </span> )</code>
+
+		<div class="description short">
+			
+<h4>Convert a binary string</h4>
+
+		</div>
+
+		<div class="description detailed hidden">
+			
+<h4>Convert a binary string</h4>
+
+<p>This method should be used to convert a binary string to a format compatible
+with the current container.</p>
+
+<p>The first parameter represents the value to be encoded or decoded, the second
+boolean parameter represents the conversion direction: <tt>TRUE</tt> means
+convert for database, <tt>FALSE</tt> convert back to PHP.</p>
+
+<p>By default we convert the string to hexadecimal.</p>
+
+
+
+				<h4>Parameters</h4>
+				<div class="list"><dl>
+					<dt><var>$theValue</var></dt>
+					<dd><code>mixed</code><br> Binary value.</dd>
+					<dt><var>$theSense</var></dt>
+					<dd><code>boolean</code><br> <tt>TRUE</tt> encode for database.</dd>
+				</dl></div>
+
+				<h4>Returns</h4>
+				<div class="list">
+					<code>mixed</code><br>The encoded or decoded binary string.<br />
+				</div>
+
+
+
+
+		</div>
+		</div></td>
+	</tr>
+	</table>
+
+	<table class="summary inherited">
+	<caption>Methods inherited from <a href="class-CConnection.html#methods">CConnection</a></caption>
+	<tr>
+		<td><code>
+			<a href="class-CConnection.html#_">Connection()</a>, 
+			<a href="class-CConnection.html#_">_Connection()</a>, 
+			<a href="class-CConnection.html#_">__construct()</a>, 
+			<a href="class-CConnection.html#_">__toString()</a>
+		</code></td>
+	</tr>
+	</table>
+	<table class="summary inherited">
+	<caption>Methods inherited from <a href="class-CStatusDocument.html#methods">CStatusDocument</a></caption>
+	<tr>
+		<td><code>
+			<a href="class-CStatusDocument.html#_">_IsCommitted()</a>, 
+			<a href="class-CStatusDocument.html#_">_IsDirty()</a>, 
+			<a href="class-CStatusDocument.html#_">_IsEncoded()</a>, 
+			<a href="class-CStatusDocument.html#_">_IsInited()</a>, 
+			<a href="class-CStatusDocument.html#_">_Postset()</a>, 
+			<a href="class-CStatusDocument.html#_">_Postunset()</a>, 
+			<a href="class-CStatusDocument.html#_">_Preset()</a>, 
+			<a href="class-CStatusDocument.html#_">_Preunset()</a>, 
+			<a href="class-CStatusDocument.html#_">offsetSet()</a>, 
+			<a href="class-CStatusDocument.html#_">offsetUnset()</a>
+		</code></td>
+	</tr>
+	</table>
+	<table class="summary inherited">
+	<caption>Methods inherited from <a href="class-CDocument.html#methods">CDocument</a></caption>
+	<tr>
+		<td><code>
+			<a href="class-CDocument.html#_">array_keys()</a>, 
+			<a href="class-CDocument.html#_">array_values()</a>, 
+			<a href="class-CDocument.html#_">offsetGet()</a>
+		</code></td>
+	</tr>
+	</table>
+	<table class="summary inherited">
+	<caption>Methods inherited from <a href="class-ArrayObject.html#methods">ArrayObject</a></caption>
+	<tr>
+		<td><code>
+			<a href="class-ArrayObject.html#_">append()</a>, 
+			<a href="class-ArrayObject.html#_">asort()</a>, 
+			<a href="class-ArrayObject.html#_">count()</a>, 
+			<a href="class-ArrayObject.html#_">exchangeArray()</a>, 
+			<a href="class-ArrayObject.html#_">getArrayCopy()</a>, 
+			<a href="class-ArrayObject.html#_">getFlags()</a>, 
+			<a href="class-ArrayObject.html#_">getIterator()</a>, 
+			<a href="class-ArrayObject.html#_">getIteratorClass()</a>, 
+			<a href="class-ArrayObject.html#_">ksort()</a>, 
+			<a href="class-ArrayObject.html#_">natcasesort()</a>, 
+			<a href="class-ArrayObject.html#_">natsort()</a>, 
+			<a href="class-ArrayObject.html#_">offsetExists()</a>, 
+			<a href="class-ArrayObject.html#_">serialize()</a>, 
+			<a href="class-ArrayObject.html#_">setFlags()</a>, 
+			<a href="class-ArrayObject.html#_">setIteratorClass()</a>, 
+			<a href="class-ArrayObject.html#_">uasort()</a>, 
+			<a href="class-ArrayObject.html#_">uksort()</a>, 
+			<a href="class-ArrayObject.html#_">unserialize()</a>
+		</code></td>
+	</tr>
+	</table>
+
+
+
+
+	<table class="summary inherited">
+	<caption>Constants inherited from <a href="class-ArrayObject.html#constants">ArrayObject</a></caption>
+	<tr>
+		<td><code>
+			<a href="class-ArrayObject.html#ARRAY_AS_PROPS"><b>ARRAY_AS_PROPS</b></a>, 
+			<a href="class-ArrayObject.html#STD_PROP_LIST"><b>STD_PROP_LIST</b></a>
+		</code></td>
+	</tr>
+	</table>
+
+
+
+	<table class="summary inherited">
+	<caption>Properties inherited from <a href="class-CConnection.html#properties">CConnection</a></caption>
+	<tr>
+		<td><code>
+			<a href="class-CConnection.html#$mConnection"><var>$mConnection</var></a>
+		</code></td>
+	</tr>
+	</table>
+	<table class="summary inherited">
+	<caption>Properties inherited from <a href="class-CStatusDocument.html#properties">CStatusDocument</a></caption>
+	<tr>
+		<td><code>
+			<a href="class-CStatusDocument.html#$mStatus"><var>$mStatus</var></a>
+		</code></td>
+	</tr>
+	</table>
+
+
+</div>
+
+	<div id="footer">
+		MyWrapper Reference Documentation API documentation generated by <a href="http://apigen.org">ApiGen 2.7.0</a>
+	</div>
+</div>
+</div>
+</body>
+</html>

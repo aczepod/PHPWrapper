@@ -25,22 +25,9 @@
 require_once( '/Library/WebServer/Library/PHPWrapper/includes.inc.php' );
 
 //
-// Containers.
-//
-require_once( kPATH_MYWRAPPER_LIBRARY_CLASS."/Persistence/CMongoContainer.php" );
-use \MyWrapper\Persistence\CMongoContainer as CMongoContainer;
-
-//
-// Terms.
-//
-require_once( kPATH_MYWRAPPER_LIBRARY_CLASS."/Ontology/COntologyTerm.php" );
-use \MyWrapper\Ontology\COntologyTerm as COntologyTerm;
-
-//
 // Class includes.
 //
-require_once( kPATH_MYWRAPPER_LIBRARY_CLASS."/Ontology/COntologyNode.php" );
-use \MyWrapper\Ontology\COntologyNode as COntologyNode;
+require_once( kPATH_MYWRAPPER_LIBRARY_CLASS."/COntologyNode.php" );
 
 
 /*=======================================================================================

@@ -25,16 +25,9 @@
 require_once( '/Library/WebServer/Library/PHPWrapper/includes.inc.php' );
 
 //
-// Containers.
-//
-use \MyWrapper\Framework\CContainer as CContainer;
-use \MyWrapper\Persistence\CMongoContainer as CMongoContainer;
-
-//
 // Class includes.
 //
-require_once( kPATH_MYWRAPPER_LIBRARY_CLASS."/Persistence/CPersistentObject.php" );
-use \MyWrapper\Persistence\CPersistentObject as CPersistentObject;
+require_once( kPATH_MYWRAPPER_LIBRARY_CLASS."/CPersistentObject.php" );
 
 
 /*=======================================================================================
@@ -469,6 +462,16 @@ try
 	echo( '<pre>' ); print_r( $other ); echo( '</pre>' );
 	echo( '<hr />' );
 	echo( '<hr />' );
+	
+	//
+	// Test string conversion.
+	//
+	echo( '<h4>Test string conversion</h4>' );
+	echo( '<h5>$text = (string) $other;</h5>' );
+	$text = (string) $other;
+	echo( '<pre>' ); print_r( $text ); echo( '</pre>' );
+	echo( '<hr />' );
+	echo( '<hr>' );
 }
 
 //

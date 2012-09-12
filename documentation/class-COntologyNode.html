@@ -1,0 +1,357 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<meta name="generator" content="ApiGen 2.7.0" />
+
+	<title>Class COntologyNode | MyWrapper Reference Documentation</title>
+
+	<script type="text/javascript" src="resources/combined.js?496895167"></script>
+	<script type="text/javascript" src="elementlist.js?3105881984"></script>
+	<link rel="stylesheet" type="text/css" media="all" href="resources/style.css?1567499433" />
+
+</head>
+
+<body>
+<div id="left">
+	<div id="menu">
+		<a href="index.html" title="Overview"><span>Overview</span></a>
+
+
+		<div id="groups">
+			<h3>Packages</h3>
+			<ul>
+				<li class="active main"><a href="package-MyWrapper.html">MyWrapper<span></span></a>
+						<ul>
+				<li class="main"><a href="package-MyWrapper.Framework.html">Framework</a>
+						</li>
+				<li class="main"><a href="package-MyWrapper.Functions.html">Functions</a>
+						</li>
+				<li class="active main"><a href="package-MyWrapper.Ontology.html">Ontology</a>
+						</li>
+				<li class="main"><a href="package-MyWrapper.Persistence.html">Persistence</a>
+						</li>
+							</ul></li>
+				<li><a href="package-None.html">None</a>
+						</li>
+				<li><a href="package-PHP.html">PHP</a>
+						</li>
+			</ul>
+		</div>
+
+		<hr />
+
+
+		<div id="elements">
+			<h3>Classes</h3>
+			<ul>
+				<li class="active"><a href="class-COntologyNode.html">COntologyNode</a></li>
+				<li><a href="class-COntologyTerm.html">COntologyTerm</a></li>
+			</ul>
+
+
+
+
+
+		</div>
+	</div>
+</div>
+
+<div id="splitter"></div>
+
+<div id="right">
+<div id="rightInner">
+	<form id="search">
+		<input type="hidden" name="cx" value="" />
+		<input type="hidden" name="ie" value="UTF-8" />
+		<input type="text" name="q" class="text" />
+		<input type="submit" value="Search" />
+	</form>
+
+	<div id="navigation">
+		<ul>
+			<li>
+				<a href="index.html" title="Overview"><span>Overview</span></a>
+			</li>
+			<li>
+				<a href="package-MyWrapper.Ontology.html" title="Summary of MyWrapper\Ontology"><span>Package</span></a>
+			</li>
+			<li class="active">
+<span>Class</span>			</li>
+		</ul>
+		<ul>
+			<li>
+				<a href="tree.html" title="Tree view of classes, interfaces, traits and exceptions"><span>Tree</span></a>
+			</li>
+		</ul>
+		<ul>
+		</ul>
+	</div>
+
+<div id="content" class="class">
+	<h1>Class COntologyNode</h1>
+
+
+	<div class="description">
+	
+<h3>Ontology node object ancestor</h3>
+
+<p>This class extends its ancestor, <code><a href="class-CNode.html" class="invalid">CNode</a></code>, by asserting the Term() to be an instance of <code><a href="class-COntologyTerm.html">COntologyTerm</a></code> and by managing the kOFFSET_REFS_NODE offset of the related Term().</p>
+
+<p>In this class, the term, kOFFSET_TERM, is a reference to an instance
+of <code><a href="class-COntologyTerm.html">COntologyTerm</a></code>, this means that the offset will contain the native
+identifier of the term. The value may be provided as an uncommitted object, in
+that case the term will be committed in the <code><a href="class-COntologyNode.html#_">COntologyNode::_Precommit()</a></code> method.</p>
+
+<p>When inserting a new node, the class will also make sure that the referenced
+term gets a reference to the current node in its kOFFSET_REFS_NODE
+offset.</p>
+
+<p>The class features a static method, <code><a href="class-COntologyNode.html#_">COntologyNode::DefaultContainer()</a></code>, that can be
+used to instantiate the default container for nodes, given a database. The
+method will use the kCONTAINER_NODE_NAME constant as the container name.
+You are encouraged to use this method rather than instantiating the container
+yourself, since other classes rely on this method.</p>
+
+	</div>
+
+	<dl class="tree">
+		<dd style="padding-left:0px">
+			<a href="class-CNode.html"><span class="invalid">CNode</span></a>
+			
+			
+			
+		</dd>
+		<dd style="padding-left:30px">
+			<img src="resources/inherit.png" alt="Extended by" />
+<b><span>COntologyNode</span></b>			
+			
+			
+		</dd>
+	</dl>
+
+
+
+
+
+
+
+
+	<div class="info">
+		
+		
+		
+		<b>Package:</b> <a href="package-MyWrapper.html">MyWrapper</a>\<a href="package-MyWrapper.Ontology.html">Ontology</a><br />
+
+				<b>Author:</b>
+				Milko A. Škofič &lt;<a
+href="mailto:m.skofic&#64;cgiar.org">m.skofic&#64;<!---->cgiar.org</a>&gt;<br />
+		<b>Located at</b> <a href="source-class-COntologyNode.html#43" title="Go to source code">COntologyNode.php</a><br />
+	</div>
+
+
+	<table class="summary" id="methods">
+	<caption>Methods summary</caption>
+	<tr data-order="DefaultContainer" id="_DefaultContainer">
+
+		<td class="attributes"><code>
+			 public static
+			<code><a href="class-CContainer.html">CContainer</a></code>
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_DefaultContainer">#</a>
+		<code><a href="source-class-COntologyNode.html#83" title="Go to source code">DefaultContainer</a>( <span><code><a href="class-CDatabase.html">CDatabase</a></code> <var>$theDatabase</var></span> )</code>
+
+		<div class="description short">
+			
+<h4>Return the terms container</h4>
+
+		</div>
+
+		<div class="description detailed hidden">
+			
+<h4>Return the terms container</h4>
+
+<p>The container will be created or fetched from the provided database using the
+kCONTAINER_NODE_NAME name.</p>
+
+
+
+				<h4>Parameters</h4>
+				<div class="list"><dl>
+					<dt><var>$theDatabase</var></dt>
+					<dd><code><code><a href="class-CDatabase.html">CDatabase</a></code></code><br> Database object.</dd>
+				</dl></div>
+
+				<h4>Returns</h4>
+				<div class="list">
+					<code><code><a href="class-CContainer.html">CContainer</a></code></code><br>The nodes container.<br />
+				</div>
+
+
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="_Preset" id="__Preset">
+
+		<td class="attributes"><code>
+			 protected 
+			
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#__Preset">#</a>
+		<code><a href="source-class-COntologyNode.html#114" title="Go to source code">_Preset</a>( <span>reference <var>&amp; $theOffset</var></span>, <span>reference <var>&amp; $theValue</var></span> )</code>
+
+		<div class="description short">
+			
+<h4>Handle offset before setting it</h4>
+
+		</div>
+
+		<div class="description detailed hidden">
+			
+<h4>Handle offset before setting it</h4>
+
+<p>In this class we handle the term offset, if provided as an object we leave it
+unchanged only if not yet committed, if not, we convert it to its native
+identifier. We also ensure the provided term object to be an instance of <code><a href="class-COntologyTerm.html">COntologyTerm</a></code> by asserting <code><a href="class-CDocument.html">CDocument</a></code> descendants to be of that
+class.</p>
+
+
+
+				<h4>Parameters</h4>
+				<div class="list"><dl>
+					<dt><var>$theOffset</var></dt>
+					<dd><code>reference</code><br>&amp;$theOffset Offset.</dd>
+					<dt><var>$theValue</var></dt>
+					<dd><code>reference</code><br>&amp;$theValue Value to set at offset.</dd>
+				</dl></div>
+
+
+				<h4>Throws</h4>
+				<div class="list">
+					<code><code><a href="class-Exception.html">Exception</a></code></code><br />
+				</div>
+
+				<h4>See</h4>
+				<div class="list">
+						kOFFSET_TERM<br />
+				</div>
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="_Precommit" id="__Precommit">
+
+		<td class="attributes"><code>
+			 protected 
+			
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#__Precommit">#</a>
+		<code><a href="source-class-COntologyNode.html#197" title="Go to source code">_Precommit</a>( <span><code><a href="class-CContainer.html">CContainer</a></code> <var>$theContainer</var></span>, <span>bitfield <var>$theModifiers</var> = kFLAG_DEFAULT </span> )</code>
+
+		<div class="description short">
+			
+<h4>Prepare the object before committing</h4>
+
+		</div>
+
+		<div class="description detailed hidden">
+			
+<h4>Prepare the object before committing</h4>
+
+<p>In this class we check whether the node term is an ontology term and can be
+found.</p>
+
+
+
+				<h4>Parameters</h4>
+				<div class="list"><dl>
+					<dt><var>$theContainer</var></dt>
+					<dd><code><code><a href="class-CContainer.html">CContainer</a></code></code><br> Container.</dd>
+					<dt><var>$theModifiers</var></dt>
+					<dd><code>bitfield</code><br> Commit options.</dd>
+				</dl></div>
+
+
+
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="_Postcommit" id="__Postcommit">
+
+		<td class="attributes"><code>
+			 protected 
+			
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#__Postcommit">#</a>
+		<code><a href="source-class-COntologyNode.html#281" title="Go to source code">_Postcommit</a>( <span><code><a href="class-CContainer.html">CContainer</a></code> <var>$theContainer</var></span>, <span>bitfield <var>$theModifiers</var> = kFLAG_DEFAULT </span> )</code>
+
+		<div class="description short">
+			
+<h4>Prepare the object after committing</h4>
+
+		</div>
+
+		<div class="description detailed hidden">
+			
+<h4>Prepare the object after committing</h4>
+
+<p>In this class we add the reference of the current node namespace.</p>
+
+
+
+				<h4>Parameters</h4>
+				<div class="list"><dl>
+					<dt><var>$theContainer</var></dt>
+					<dd><code><code><a href="class-CContainer.html">CContainer</a></code></code><br> Container.</dd>
+					<dt><var>$theModifiers</var></dt>
+					<dd><code>bitfield</code><br> Commit options.</dd>
+				</dl></div>
+
+
+
+
+
+		</div>
+		</div></td>
+	</tr>
+	</table>
+
+
+
+
+
+
+
+
+
+
+</div>
+
+	<div id="footer">
+		MyWrapper Reference Documentation API documentation generated by <a href="http://apigen.org">ApiGen 2.7.0</a>
+	</div>
+</div>
+</div>
+</body>
+</html>

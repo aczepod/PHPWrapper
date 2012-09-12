@@ -27,7 +27,7 @@ require_once( '/Library/WebServer/Library/PHPWrapper/includes.inc.php' );
 //
 // Class includes.
 //
-use \MyWrapper\Persistence\CMongoServer;
+require_once( kPATH_MYWRAPPER_LIBRARY_CLASS."/CMongoServer.php" );
 
 
 /*=======================================================================================

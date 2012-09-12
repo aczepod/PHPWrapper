@@ -110,6 +110,12 @@ function MyAutoload( $theClassName )
 			require_once( $theClassName );
 	
 	} // This librarie's namespace.
+	
+	//
+	// Handle without namespaces.
+	//
+	else
+		require_once( kPATH_MYWRAPPER_LIBRARY_CLASS."/$theClassName.php" );
 
 } spl_autoload_register( 'MyAutoload' );
 

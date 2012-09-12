@@ -25,14 +25,9 @@
 require_once( '/Library/WebServer/Library/PHPWrapper/includes.inc.php' );
 
 //
-// Auxiliary includes.
-//
-use \MyWrapper\Persistence\CMongoServer;
-
-//
 // Class includes.
 //
-use \MyWrapper\Persistence\CMongoDatabase;
+require_once( kPATH_MYWRAPPER_LIBRARY_CLASS."/CMongoDatabase.php" );
 
 
 /*=======================================================================================

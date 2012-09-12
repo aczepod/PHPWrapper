@@ -25,20 +25,9 @@
 require_once( '/Library/WebServer/Library/PHPWrapper/includes.inc.php' );
 
 //
-// Containers.
-//
-require_once( kPATH_MYWRAPPER_LIBRARY_CLASS."/Persistence/CMongoContainer.php" );
-use \MyWrapper\Persistence\CMongoContainer as CMongoContainer;
-
-//
-// Auxiliary includes.
-//
-use \MyWrapper\Persistence\CMongoServer as CMongoServer;
-
-//
 // Class includes.
 //
-use \MyWrapper\Framework\CTerm as CTerm;
+require_once( kPATH_MYWRAPPER_LIBRARY_CLASS."/CTerm.php" );
 
 
 /*=======================================================================================
@@ -98,8 +87,8 @@ try
 	$database = $server->Database( "TEST" );
 	echo( '$database->Drop();<br />' );
 	$database->Drop();
-	echo( '$container = CTerm::Container( $database );<br />' );
-	$container = CTerm::Container( $database );
+	echo( '$container = $database->Container( "CTerm" );<br />' );
+	$container = $database->Container( "CTerm" );
 	echo( '<hr />' );
 	echo( '<hr />' );
 	
@@ -208,6 +197,8 @@ try
 	// Insert namespace term.
 	//
 	echo( '<h4>Insert initialized object</h4>' );
+	echo( '<h5>$namespace = new MyClass();</h5>' );
+	$namespace = new MyClass();
 	echo( '<h5>$namespace[ kOFFSET_LID ] = "NAMESPACE";</h5>' );
 	$namespace[ kOFFSET_LID ] = "NAMESPACE";
 	echo( 'Inited['.$namespace->inited()
@@ -225,8 +216,8 @@ try
 	echo( '<h4>Insert term A</h4>' );
 	echo( '<h5>$termA = new MyClass();</h5>' );
 	$termA = new MyClass();
-	echo( '<h5>$termA[ kOFFSET_NAMESPACE ] = $namespace;</h5>' );
-	$termA[ kOFFSET_NAMESPACE ] = $namespace;
+	echo( '<h5>$termA->NS( $namespace );</h5>' );
+	$termA->NS( $namespace );
 	echo( '<h5>$termA[ kOFFSET_LID ] = "A";</h5>' );
 	$termA[ kOFFSET_LID ] = "A";
 	echo( '<h5>$status = $termA->Insert( $container );</h5>' );
@@ -277,81 +268,6 @@ try
 					   .'] Saved['.$namespace->committed()
 					   .'] Encoded['.$namespace->encoded().']<br />' );
 		echo( '<pre>' ); print_r( $namespace ); echo( '</pre>' );
-		echo( '<hr />' );
-	}
-	catch( \Exception $error )
-	{
-		echo( '<h5>Expected exception</h5>' );
-		echo( '<pre>'.(string) $error.'</pre>' );
-		echo( '<hr>' );
-	}
-	echo( '<hr>' );
-	
-	//
-	// Insert term and namespace.
-	//
-	echo( '<h4>Insert term and namespace</h4>' );
-	echo( '<h5>$other_namespace = new MyClass();</h5>' );
-	$other_namespace = new MyClass();
-	echo( '<h5>$other_namespace[ kOFFSET_LID ] = "other namespace";</h5>' );
-	$other_namespace[ kOFFSET_LID ] = "other namespace";
-	echo( '<h5>$other_term = new MyClass();</h5>' );
-	$other_term = new MyClass();
-	echo( '<h5>$other_term[ kOFFSET_LID ] = "other_code";</h5>' );
-	$other_term[ kOFFSET_LID ] = "other_code";
-	echo( '<h5>$other_term[ kOFFSET_NAMESPACE ] = $other_namespace;</h5>' );
-	$other_term[ kOFFSET_NAMESPACE ] = $other_namespace;
-	echo( '<h5>$status = $other_term->Insert( $container );</h5>' );
-	$status = $other_term->Insert( $container );
-	echo( 'Inited['.$other_term->inited()
-				   .'] Dirty['.$other_term->dirty()
-				   .'] Saved['.$other_term->committed()
-				   .'] Encoded['.$other_term->encoded().']<br />' );
-	echo( 'Term<pre>' ); print_r( $other_term ); echo( '</pre>' );
-	echo( 'namespace<pre>' ); print_r( $other_namespace ); echo( '</pre>' );
-	echo( '<hr />' );
-	
-	//
-	// Create term with namespace ID.
-	//
-	echo( '<h4>Create term with namespace ID</h4>' );
-	echo( '<h5>$last_term = new MyClass();</h5>' );
-	$last_term = new MyClass();
-	echo( '<h5>$last_term[ kOFFSET_LID ] = "last_code";</h5>' );
-	$last_term[ kOFFSET_LID ] = "last_code";
-	echo( '<h5>$last_term[ kOFFSET_NAMESPACE ] = $namespace[ kOFFSET_NID ];</h5>' );
-	$last_term[ kOFFSET_NAMESPACE ] = $namespace[ kOFFSET_NID ];
-	echo( '<h5>$status = $last_term->Insert( $container );</h5>' );
-	$status = $last_term->Insert( $container );
-	echo( 'Inited['.$last_term->inited()
-				   .'] Dirty['.$last_term->dirty()
-				   .'] Saved['.$last_term->committed()
-				   .'] Encoded['.$last_term->encoded().']<br />' );
-	echo( '<pre>' ); print_r( $last_term ); echo( '</pre>' );
-	echo( '<pre>' ); print_r( $namespace ); echo( '</pre>' );
-	echo( '<hr />' );
-	
-	//
-	// Create term with crap namespace.
-	//
-	try
-	{
-		echo( '<h4>Create term with crap namespace</h4>' );
-		echo( '<h5>$crap_term = new MyClass();</h5>' );
-		$crap_term = new MyClass();
-		echo( '<h5>$crap_term[ kOFFSET_LID ] = "crap_code";</h5>' );
-		$crap_term[ kOFFSET_LID ] = "crap_code";
-		echo( '<h5>$crap_term[ kOFFSET_NAMESPACE ] = "should not find me";</h5>' );
-		$crap_term[ kOFFSET_NAMESPACE ] = "should not find me";
-		echo( '<h5>$status = $crap_term->Insert( $container );</h5>' );
-		$status = $crap_term->Insert( $container );
-		echo( '<h3><font color="red">Should have raised an exception</font></h3>' );
-		echo( 'Inited['.$crap_term->inited()
-					   .'] Dirty['.$crap_term->dirty()
-					   .'] Saved['.$crap_term->committed()
-					   .'] Encoded['.$crap_term->encoded().']<br />' );
-		echo( '<pre>' ); print_r( $crap_term ); echo( '</pre>' );
-		echo( '<hr />' );
 		echo( '<hr />' );
 	}
 	catch( \Exception $error )

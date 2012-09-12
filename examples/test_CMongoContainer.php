@@ -25,15 +25,9 @@
 require_once( '/Library/WebServer/Library/PHPWrapper/includes.inc.php' );
 
 //
-// Auxiliary includes.
-//
-use \MyWrapper\Persistence\CMongoServer as CMongoServer;
-use \MyWrapper\Persistence\CMongoDatabase as CMongoDatabase;
-
-//
 // Class includes.
 //
-use \MyWrapper\Persistence\CMongoContainer as CMongoContainer;
+require_once( kPATH_MYWRAPPER_LIBRARY_CLASS."/CMongoContainer.php" );
 
 
 /*=======================================================================================
@@ -460,6 +454,16 @@ try
 	echo( '<h4>Load existing object</h4>' );
 	echo( '<h5>$status = $test->ManageObject( $object, 1 );</h5>' );
 	$status = $test->ManageObject( $object, 1 );
+	echo( 'Object<pre>' ); print_r( $object ); echo( '</pre>' );
+	echo( 'Status<pre>' ); print_r( $status ); echo( '</pre>' );
+	echo( '<hr />' );
+	
+	//
+	// Load one offset.
+	//
+	echo( '<h4>Load one offset</h4>' );
+	echo( '<h5>$status = $test->ManageObject( $object, 1, array( "DATA" ) );</h5>' );
+	$status = $test->ManageObject( $object, 1, array( "DATA" ) );
 	echo( 'Object<pre>' ); print_r( $object ); echo( '</pre>' );
 	echo( 'Status<pre>' ); print_r( $status ); echo( '</pre>' );
 	echo( '<hr />' );

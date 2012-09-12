@@ -25,27 +25,9 @@
 require_once( '/Library/WebServer/Library/PHPWrapper/includes.inc.php' );
 
 //
-// Containers.
-//
-require_once( kPATH_MYWRAPPER_LIBRARY_CLASS."/Persistence/CMongoContainer.php" );
-use \MyWrapper\Persistence\CMongoContainer;
-
-//
-// Terms.
-//
-require_once( kPATH_MYWRAPPER_LIBRARY_CLASS."/Framework/CTerm.php" );
-use \MyWrapper\Framework\CTerm;
-
-//
-// Auxiliary includes.
-//
-use \MyWrapper\Persistence\CMongoServer as CMongoServer;
-
-//
 // Class includes.
 //
-require_once( kPATH_MYWRAPPER_LIBRARY_CLASS."/Framework/CNode.php" );
-use \MyWrapper\Framework\CNode;
+require_once( kPATH_MYWRAPPER_LIBRARY_CLASS."/CNode.php" );
 
 
 /*=======================================================================================
@@ -97,10 +79,10 @@ try
 	$database = $server->Database( "TEST" );
 	echo( '$database->Drop();<br />' );
 	$database->Drop();
-	echo( '$term_container = CTerm::Container( $database );<br />' );
-	$term_container = CTerm::Container( $database );
-	echo( '$node_container = CNode::Container( $database );<br />' );
-	$node_container = CNode::Container( $database );
+	echo( '$term_container = $database->Container( "CTerm" );<br />' );
+	$term_container = $database->Container( "CTerm" );
+	echo( '$node_container = $database->Container( "CNode" );<br />' );
+	$node_container = $database->Container( "CNode" );
 	echo( '<hr />' );
 	echo( '<hr />' );
 	
@@ -348,6 +330,30 @@ try
 	$status = $node->Replace( $node_container );
 	echo( '<pre>' ); print_r( $node ); echo( '</pre>' );
 	echo( '<hr />' );
+	echo( '<hr>' );
+
+	//
+	// Test term lock.
+	//
+	try
+	{
+		echo( '<h4>Test term lock</h4>' );
+		echo( '<h5>$node->Term( $termC );</h5>' );
+		$node->Term( $termC );
+		echo( '<h3><font color="red">Should have raised an exception</font></h3>' );
+		echo( 'Inited['.$namespace->inited()
+					   .'] Dirty['.$namespace->dirty()
+					   .'] Saved['.$namespace->committed()
+					   .'] Encoded['.$namespace->encoded().']<br />' );
+		echo( '<pre>' ); print_r( $namespace ); echo( '</pre>' );
+		echo( '<hr />' );
+	}
+	catch( \Exception $error )
+	{
+		echo( '<h5>Expected exception</h5>' );
+		echo( '<pre>'.(string) $error.'</pre>' );
+		echo( '<hr>' );
+	}
 	echo( '<hr>' );
 
 	//

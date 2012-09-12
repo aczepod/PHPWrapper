@@ -27,7 +27,7 @@ require_once( '/Library/WebServer/Library/PHPWrapper/includes.inc.php' );
 //
 // Class includes.
 //
-use \MyWrapper\Framework\CDocument;
+require_once( kPATH_MYWRAPPER_LIBRARY_CLASS."/CDocument.php" );
 
 
 /*=======================================================================================

@@ -25,21 +25,9 @@
 require_once( '/Library/WebServer/Library/PHPWrapper/includes.inc.php' );
 
 //
-// Containers.
-//
-use \MyWrapper\Persistence\CMongoContainer as CMongoContainer;
-use \MyWrapper\Persistence\CMongoServer as CMongoServer;
-
-//
-// Auxiliary includes.
-//
-use \MyWrapper\Framework\CTerm as CTerm;
-use \MyWrapper\Framework\CNode as CNode;
-
-//
 // Class includes.
 //
-use \MyWrapper\Framework\CEdge as CEdge;
+require_once( kPATH_MYWRAPPER_LIBRARY_CLASS."/CEdge.php" );
 
 
 /*=======================================================================================

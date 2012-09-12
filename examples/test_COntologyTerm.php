@@ -25,15 +25,9 @@
 require_once( '/Library/WebServer/Library/PHPWrapper/includes.inc.php' );
 
 //
-// Containers.
-//
-use MyWrapper\Framework\CContainer;
-use MyWrapper\Persistence\CMongoContainer;
-
-//
 // Class includes.
 //
-use \MyWrapper\Ontology\COntologyTerm;
+require_once( kPATH_MYWRAPPER_LIBRARY_CLASS."/COntologyTerm.php" );
 
 
 /*=======================================================================================
@@ -43,7 +37,7 @@ use \MyWrapper\Ontology\COntologyTerm;
 //
 // Test class definition.
 //
-class MyClass extends \MyWrapper\Ontology\COntologyTerm
+class MyClass extends COntologyTerm
 {
 	//
 	// Utilities to show protected data.
@@ -75,27 +69,18 @@ define( 'kDEBUG_PARENT', TRUE );
 try
 {
 	//
-	// Notes.
-	//
-	echo( '<h4>Object behaviour:</h4>' );
-	echo( '<ul>' );
-	echo( '<li>Base term object.' );
-	echo( '</ul><hr>' );
-	
-	//
 	// Create container.
 	//
 	echo( '<hr />' );
 	echo( '<h4>Create test container</h4>' );
-	echo( '$mongo = New Mongo();<br />' );
-	$mongo = New \Mongo();
-	echo( '$db = $mongo->selectDB( "TEST" );<br />' );
-	$db = $mongo->selectDB( "TEST" );
-	$db->drop();
-	echo( '$collection = $db->selectCollection( "COntologyTerm" );<br />' );
-	$collection = $db->selectCollection( "COntologyTerm" );
-	echo( '$container = new CMongoContainer( $collection );<br />' );
-	$container = new CMongoContainer( $collection );
+	echo( '$server = new CMongoServer();<br />' );
+	$server = New CMongoServer();
+	echo( '$database = $server->Database( "TEST" );<br />' );
+	$database = $server->Database( "TEST" );
+	echo( '$database->Drop();<br />' );
+	$database->Drop();
+	echo( '$container = COntologyTerm::DefaultContainer( $database );<br />' );
+	$container = COntologyTerm::DefaultContainer( $database );
 	echo( '<hr />' );
 	echo( '<hr />' );
 	
@@ -235,6 +220,32 @@ try
 		$namespace = COntologyTerm::NewObject( $container, $namespace[ kOFFSET_NID ] );
 		echo( '<pre>' ); print_r( $namespace ); echo( '</pre>' );
 		echo( '<hr />' );
+		
+		//
+		// Insert term B.
+		//
+		echo( '<h4>Insert term B</h4>' );
+		echo( '<h5>$namespace_bis = new MyClass();</h5>' );
+		$namespace_bis = new MyClass();
+		echo( '<h5>$namespace_bis->LID( "MY-NAMESPACE" );</h5>' );
+		$namespace_bis->LID( "MY-NAMESPACE" );
+		echo( '<h5>$termB = new MyClass();</h5>' );
+		$termB = new MyClass();
+		echo( '<h5>$termB->NS( $namespace_bis );</h5>' );
+		$termB->NS( $namespace_bis );
+		echo( '<h5>$termB->LID( "B" );</h5>' );
+		$termB->LID( "B" );
+		echo( '<h5>$status = $termB->Insert( $container );</h5>' );
+		$status = $termB->Insert( $container );
+		echo( 'Inited['.$termB->inited()
+					   .'] Dirty['.$termB->dirty()
+					   .'] Saved['.$termB->committed()
+					   .'] Encoded['.$termB->encoded().']<br />' );
+		echo( '<pre>' ); print_r( $termB ); echo( '</pre>' );
+		echo( '<h5>$namespace_bis = COntologyTerm::NewObject( $container, $termB->NS() ); // Notice the namespace reference count</h5>' );
+		$namespace_bis = COntologyTerm::NewObject( $container, $termB->NS() );
+		echo( '<pre>' ); print_r( $namespace ); echo( '</pre>' );
+		echo( '<hr />' );
 	
 		//
 		// Test namespace lock.
@@ -245,10 +256,10 @@ try
 			echo( '<h5>$termA[ kOFFSET_NAMESPACE ] = NULL;</h5>' );
 			$termA[ kOFFSET_NAMESPACE ] = NULL;
 			echo( '<h3><font color="red">Should have raised an exception</font></h3>' );
-			echo( 'Inited['.$namespace->inited()
-						   .'] Dirty['.$namespace->dirty()
-						   .'] Saved['.$namespace->committed()
-						   .'] Encoded['.$namespace->encoded().']<br />' );
+			echo( 'Inited['.$termA->inited()
+						   .'] Dirty['.$termA->dirty()
+						   .'] Saved['.$termA->committed()
+						   .'] Encoded['.$termA->encoded().']<br />' );
 			echo( '<pre>' ); print_r( $namespace ); echo( '</pre>' );
 			echo( '<hr />' );
 		}
@@ -269,11 +280,11 @@ try
 			echo( '<h5>$termA[ kOFFSET_LID ] = "B";</h5>' );
 			$termA[ kOFFSET_LID ] = "B";
 			echo( '<h3><font color="red">Should have raised an exception</font></h3>' );
-			echo( 'Inited['.$namespace->inited()
-						   .'] Dirty['.$namespace->dirty()
-						   .'] Saved['.$namespace->committed()
-						   .'] Encoded['.$namespace->encoded().']<br />' );
-			echo( '<pre>' ); print_r( $namespace ); echo( '</pre>' );
+			echo( 'Inited['.$termA->inited()
+						   .'] Dirty['.$termA->dirty()
+						   .'] Saved['.$termA->committed()
+						   .'] Encoded['.$termA->encoded().']<br />' );
+			echo( '<pre>' ); print_r( $termA ); echo( '</pre>' );
 			echo( '<hr />' );
 		}
 		catch( \Exception $error )
@@ -283,52 +294,36 @@ try
 			echo( '<hr>' );
 		}
 		echo( '<hr>' );
-		
+	
 		//
-		// Insert term and namespace.
+		// Test wrong namespace type.
 		//
-		echo( '<h4>Insert term and namespace</h4>' );
-		echo( '<h5>$other_namespace = new MyClass();</h5>' );
-		$other_namespace = new MyClass();
-		echo( '<h5>$other_namespace[ kOFFSET_LID ] = "other namespace";</h5>' );
-		$other_namespace[ kOFFSET_LID ] = "other namespace";
-		echo( '<h5>$other_term = new MyClass();</h5>' );
-		$other_term = new MyClass();
-		echo( '<h5>$other_term[ kOFFSET_LID ] = "other_code";</h5>' );
-		$other_term[ kOFFSET_LID ] = "other_code";
-		echo( '<h5>$other_term[ kOFFSET_NAMESPACE ] = $other_namespace;</h5>' );
-		$other_term[ kOFFSET_NAMESPACE ] = $other_namespace;
-		echo( '<h5>$status = $other_term->Insert( $container );</h5>' );
-		$status = $other_term->Insert( $container );
-		echo( 'Inited['.$other_term->inited()
-					   .'] Dirty['.$other_term->dirty()
-					   .'] Saved['.$other_term->committed()
-					   .'] Encoded['.$other_term->encoded().']<br />' );
-		echo( 'Term<pre>' ); print_r( $other_term ); echo( '</pre>' );
-		echo( 'namespace<pre>' ); print_r( $other_namespace ); echo( '</pre>' );
-		echo( '<hr />' );
-		
-		//
-		// Create term with namespace ID.
-		//
-		echo( '<h4>Create term with namespace ID</h4>' );
-		echo( '<h5>$last_term = new MyClass();</h5>' );
-		$last_term = new MyClass();
-		echo( '<h5>$last_term[ kOFFSET_LID ] = "last_code";</h5>' );
-		$last_term[ kOFFSET_LID ] = "last_code";
-		echo( '<h5>$last_term[ kOFFSET_NAMESPACE ] = $namespace[ kOFFSET_NID ];</h5>' );
-		$last_term[ kOFFSET_NAMESPACE ] = $namespace[ kOFFSET_NID ];
-		echo( '<h5>$status = $last_term->Insert( $container );</h5>' );
-		$status = $last_term->Insert( $container );
-		echo( 'Inited['.$last_term->inited()
-					   .'] Dirty['.$last_term->dirty()
-					   .'] Saved['.$last_term->committed()
-					   .'] Encoded['.$last_term->encoded().']<br />' );
-		echo( '<pre>' ); print_r( $last_term ); echo( '</pre>' );
-		echo( '<h5>$namespace = COntologyTerm::NewObject( $container, $namespace[ kOFFSET_NID ] ); // Notice the namespace reference count</h5>' );
-		$namespace = COntologyTerm::NewObject( $container, $namespace[ kOFFSET_NID ] );
-		echo( '<pre>' ); print_r( $namespace ); echo( '</pre>' );
-		echo( '<hr />' );
+		try
+		{
+			echo( '<h4>Test wrong namespace type</h4>' );
+			echo( '<h5>$namespace_tris = new CPersistentObject;</h5>' );
+			$namespace_tris = new CPersistentObject();
+			echo( '<h5>$namespace_tris[ kOFFSET_LID ] = "GAGA";</h5>' );
+			$namespace_tris[ kOFFSET_LID ] = "GAGA";
+			echo( '<h5>$termC = new MyClass();</h5>' );
+			$termC = new MyClass();
+			echo( '<h5>$termC->NS( $namespace_tris );</h5>' );
+			$termC->NS( $namespace_tris );
+			echo( '<h3><font color="red">Should have raised an exception</font></h3>' );
+			echo( 'Inited['.$termC->inited()
+						   .'] Dirty['.$termC->dirty()
+						   .'] Saved['.$termC->committed()
+						   .'] Encoded['.$termC->encoded().']<br />' );
+			echo( '<pre>' ); print_r( $termC ); echo( '</pre>' );
+			echo( '<hr />' );
+		}
+		catch( \Exception $error )
+		{
+			echo( '<h5>Expected exception</h5>' );
+			echo( '<pre>'.(string) $error.'</pre>' );
+			echo( '<hr>' );
+		}
+		echo( '<hr>' );
 		
 		//
 		// Create term with crap namespace.
@@ -361,6 +356,28 @@ try
 		}
 		echo( '<hr>' );
 	}
+	
+	//
+	// Create term with namespace ID from database.
+	//
+	echo( '<h4>Create term with namespace ID from database</h4>' );
+	echo( '<h5>$last_term = new MyClass();</h5>' );
+	$last_term = new MyClass();
+	echo( '<h5>$last_term[ kOFFSET_LID ] = "last_code";</h5>' );
+	$last_term[ kOFFSET_LID ] = "last_code";
+	echo( '<h5>$last_term[ kOFFSET_NAMESPACE ] = $namespace[ kOFFSET_NID ];</h5>' );
+	$last_term[ kOFFSET_NAMESPACE ] = $namespace[ kOFFSET_NID ];
+	echo( '<h5>$status = $last_term->Insert( $database );</h5>' );
+	$status = $last_term->Insert( $database );
+	echo( 'Inited['.$last_term->inited()
+				   .'] Dirty['.$last_term->dirty()
+				   .'] Saved['.$last_term->committed()
+				   .'] Encoded['.$last_term->encoded().']<br />' );
+	echo( '<pre>' ); print_r( $last_term ); echo( '</pre>' );
+	echo( '<h5>$namespace = COntologyTerm::NewObject( COntologyTerm::DefaultContainer( $database ), $namespace[ kOFFSET_NID ] ); // Notice the namespace reference count</h5>' );
+	$namespace = COntologyTerm::NewObject( COntologyTerm::DefaultContainer( $database ), $namespace[ kOFFSET_NID ] );
+	echo( '<pre>' ); print_r( $namespace ); echo( '</pre>' );
+	echo( '<hr />' );
 
 	//
 	// Test modifying namespace counter.
@@ -386,11 +403,11 @@ try
 	}
 
 	//
-	// Test modifying node counter.
+	// Test modifying node list.
 	//
 	try
 	{
-		echo( '<h4>Test modifying node counter</h4>' );
+		echo( '<h4>Test modifying node list</h4>' );
 		echo( '<h5>$last_term[ kOFFSET_REFS_NODE ] = 24;</h5>' );
 		$last_term[ kOFFSET_REFS_NODE ] = 24;
 		echo( '<h3><font color="red">Should have raised an exception</font></h3>' );
@@ -409,11 +426,11 @@ try
 	}
 
 	//
-	// Test modifying tag counter.
+	// Test modifying tag list.
 	//
 	try
 	{
-		echo( '<h4>Test modifying tag counter</h4>' );
+		echo( '<h4>Test modifying tag list</h4>' );
 		echo( '<h5>$last_term[ kOFFSET_REFS_TAG ] = 24;</h5>' );
 		$last_term[ kOFFSET_REFS_TAG ] = 24;
 		echo( '<h3><font color="red">Should have raised an exception</font></h3>' );

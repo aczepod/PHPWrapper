@@ -25,15 +25,9 @@
 require_once( '/Library/WebServer/Library/PHPWrapper/includes.inc.php' );
 
 //
-// Containers.
-//
-use \MyWrapper\Framework\CContainer;
-use \MyWrapper\Persistence\CMongoContainer;
-
-//
 // Class includes.
 //
-use \MyWrapper\Persistence\CPersistentDocument;
+require_once( kPATH_MYWRAPPER_LIBRARY_CLASS."/CPersistentDocument.php" );
 
 
 /*=======================================================================================
@@ -53,7 +47,7 @@ define( 'kDEBUG_PARENT', TRUE );
 //
 // Test class definition.
 //
-class MyClass extends \MyWrapper\Persistence\CPersistentDocument
+class MyClass extends CPersistentDocument
 {
 	//
 	// Utilities to show protected data.
