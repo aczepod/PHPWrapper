@@ -380,7 +380,7 @@ class COntologyTerm extends CTerm
 			
 			} // Provided as identifier.
 			
-			return $ns.kTOKEN_NAMESPACE_SEPARATOR.$lid;								// ==>
+			return $namespace_gid.kTOKEN_NAMESPACE_SEPARATOR.$lid;					// ==>
 		
 		} // Has namespace.
 		
@@ -635,7 +635,7 @@ class COntologyTerm extends CTerm
 			//
 			$this
 				->ResolveContainer( $theConnection, TRUE )
-				->$theContainer->ManageObject
+				->ManageObject
 					(
 						$fields,
 						$this->offsetGet( kOFFSET_NAMESPACE ),

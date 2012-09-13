@@ -222,9 +222,9 @@ try
 		echo( '<hr />' );
 		
 		//
-		// Insert term B.
+		// Insert term B with new namespace.
 		//
-		echo( '<h4>Insert term B</h4>' );
+		echo( '<h4>Insert term B with new namespace</h4>' );
 		echo( '<h5>$namespace_bis = new MyClass();</h5>' );
 		$namespace_bis = new MyClass();
 		echo( '<h5>$namespace_bis->LID( "MY-NAMESPACE" );</h5>' );
@@ -235,16 +235,17 @@ try
 		$termB->NS( $namespace_bis );
 		echo( '<h5>$termB->LID( "B" );</h5>' );
 		$termB->LID( "B" );
+		echo( 'Before commit<pre>' ); print_r( $termB ); echo( '</pre>' );
 		echo( '<h5>$status = $termB->Insert( $container );</h5>' );
 		$status = $termB->Insert( $container );
 		echo( 'Inited['.$termB->inited()
 					   .'] Dirty['.$termB->dirty()
 					   .'] Saved['.$termB->committed()
 					   .'] Encoded['.$termB->encoded().']<br />' );
-		echo( '<pre>' ); print_r( $termB ); echo( '</pre>' );
+		echo( 'After commit<pre>' ); print_r( $termB ); echo( '</pre>' );
 		echo( '<h5>$namespace_bis = COntologyTerm::NewObject( $container, $termB->NS() ); // Notice the namespace reference count</h5>' );
 		$namespace_bis = COntologyTerm::NewObject( $container, $termB->NS() );
-		echo( '<pre>' ); print_r( $namespace ); echo( '</pre>' );
+		echo( 'Namespace<pre>' ); print_r( $namespace ); echo( '</pre>' );
 		echo( '<hr />' );
 	
 		//
