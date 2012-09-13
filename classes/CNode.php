@@ -41,13 +41,23 @@ require_once( kPATH_MYWRAPPER_LIBRARY_CLASS."/CPersistentObject.php" );
  * features of the node, without taking into consideration the connections to other nodes.
  *
  * The node's main property is the term, {@link kOFFSET_TERM}, which defines the abstract
- * concept that the node represents. In this class the offset may hold any value.
+ * concept that the node represents: a term taken by itself is an abstract concept, when it
+ * is referenced from a node which is related to other nodes through predicates, this term
+ * takes a different meaning, it becomes a term in context. Terms are like vocabulary, taken
+ * out of context they have a generalised meaning; put in context, they take a different
+ * meaning depending in what position of a term chain they are positioned. In this class,
+ * terms may hold any value.
  *
- * The node also features a {@link kOFFSET_KIND} property which is a list of values which
- * represent the specific kind of node, this attribute acts a an enumerated set.
+ * The node also features a {@link kOFFSET_KIND} property which is an enumerated set
+ * describing the specific type, or the specific function of the node in its chain or
+ * path.
  *
  * Finally, the class features the {@link kOFFSET_TYPE} property which defines the data type
- * of the node.
+ * of the node or the unit it represents. Nodes that feature this property can be used to
+ * annotate data.
+ *
+ * This class does not feature attributes that can represent the unique identifier of the
+ * object, since its meaning depends on the sequence of terms to which it is connected.
  *
  * The class does not feature attributes that can be used to uniquely identify an object,
  * it is the duty of the hosting container to provide the {@link kOFFSET_NID} identifier.

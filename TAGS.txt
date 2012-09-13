@@ -1,5 +1,22 @@
 TAGS:
 
+(Just came to the conclusion (?) that tags are not needed: if a node exists which fills
+your requirement, you should use it; if you are working on a test graph, you may tag the
+edge as temporary or "test).
+
+(This means that there are two kinds of graphs: serie A which are authoritative and serie B
+which are tentative. How do I solve the problem of two ontologies describing the same thing?
+With tags?
+Preventing it? In this case we need good tools to transfer one branch to another tree.
+Tags are needed, because an annotation cannot be explained with a node reference, but With
+a sequence of nodes forming a path. Now, should the path be stored as a sequence of
+Node/predicate/node...Node? Or a sequence of Term/Predicate term/Term...Term?
+Or both?
+This means that once a node is created, it cannot be deleted. Not an issue for me...
+The bottom line is that we need tags.
+Period!
+Done!)
+
 _id:			0
 _count:			3
 
