@@ -47,24 +47,22 @@ require_once( kPATH_MYWRAPPER_LIBRARY_CLASS."/CPersistentObject.php" );
  * an abstract concept if considered by itself, but takes a precise meaning if related to
  * other terms, as a sequence of words that constitute a statement.
  *
- * Terms are identified by a string code which is the concatenation of two elements of the
- * object: the namespace, {@link kOFFSET_NAMESPACE}, which represents the group to which the
- * term belongs and the local identifier, {@link kOFFSET_LID}, which represents the unique
- * identifier of the term within its namespace. This code is set in the global identifier,
- * {@link kOFFSET_GID}, and formed by prefixing the namespace to the local identifier,
- * separated by the {@link kTOKEN_NAMESPACE_SEPARATOR} token. This means that both the
- * namespace and the local identifiers must be convertable to a string. If the object has no
- * namespace, the local identifier will become the object's global identifier.
+ * Terms are uniquely identified by their global identifier, {@link kOFFSET_GID}, which is a
+ * string code formed by the concatenation of two elements of the object: the namespace,
+ * {@link kOFFSET_NAMESPACE}, which represents the group to which the term belongs and the
+ * local identifier, {@link kOFFSET_LID}, which represents the unique identifier of the term
+ * within its namespace. These two elements are separated by the
+ * {@link kTOKEN_NAMESPACE_SEPARATOR} token and the resulting string is set into the
+ * object's {@link kOFFSET_GID}.
  *
- * When the object is committed, {@link _IsCommitted()}, besides the the identifier offsets,
- * also the {@link kOFFSET_NAMESPACE} offset will be locked, since it is used to generate
- * the global identifier, {@link kOFFSET_GID}.
+ * In this class we do not hash the native identifier, {@link kOFFSET_NID}.
  *
- * The native unique identifier, {@link kOFFSET_NID}, is the binary md5 hash of the global
- * unique identifier, {@link kOFFSET_GID}, this to allow long codes.
+ * When the object is committed, {@link _IsCommitted()}, besides the global and native
+ * identifiers, also the {@link kOFFSET_NAMESPACE} and {@link kOFFSET_LID} offsets will be
+ * locked, since they are used to generate the global identifier, {@link kOFFSET_GID}.
  *
  * The object will have its {@link _IsInited()} status set if the local unique identifier,
- * {@link kOFFSET_LID}, is set, derived classes may add other required attributes.
+ * {@link kOFFSET_LID}, is set.
  *
  * Finally, the class features member accessor methods for the default offsets:
  *
@@ -175,61 +173,6 @@ class CTerm extends CPersistentObject
 		return ManageOffset( $this, kOFFSET_LID, $theValue, $getOld );				// ==>
 
 	} // LID.
-
-		
-
-/*=======================================================================================
- *																						*
- *								STATIC PERSISTENCE INTERFACE							*
- *																						*
- *======================================================================================*/
-
-
-	 
-	/*===================================================================================
-	 *	_id																				*
-	 *==================================================================================*/
-
-	/**
-	 * <h4>Generate the object's native unique identifier</h4>
-	 *
-	 * We overload this method to hash the provided string.
-	 *
-	 * Since binary data is handled differently by each storage engine, we require the
-	 * container parameter and raise an exception if not provided.
-	 *
-	 * We also raise an exception if the string is not provided, this is because this object
-	 * primary key depends on the content of its attributes.
-	 *
-	 * @param string				$theIdentifier		Global unique identifier.
-	 * @param CContainer			$theContainer		Container.
-	 *
-	 * @static
-	 * @return mixed				The object's native unique identifier.
-	 *
-	 * @throws \Exception
-	 */
-	static function _id( $theIdentifier = NULL, CContainer $theContainer = NULL )
-	{
-		//
-		// Handle identifier.
-		//
-		if( $theIdentifier === NULL )
-			throw new \Exception
-				( "Global unique identifier not provided",
-				  kERROR_MISSING );												// !@! ==>
-	
-		//
-		// Check container.
-		//
-		if( $theContainer === NULL )
-			throw new \Exception
-				( "The container is needed for encoding binary strings",
-				  kERROR_MISSING );												// !@! ==>
-		
-		return $theContainer->ConvertBinary( md5( $theIdentifier, TRUE ) );			// ==>
-	
-	} // _id.
 		
 
 
@@ -258,20 +201,15 @@ class CTerm extends CPersistentObject
 	 * Both the namespace and the local identifier will be converted to strings to compute
 	 * the global identifier.
 	 *
-	 * Note that if the local identifier is missing we call the parent's method, although
-	 * this is not possible since it is asserted elsewhere in the workflow.
-	 *
-	 * @param CContainer			$theContainer		Container.
+	 * @param CConnection			$theConnection		Server, database or container.
 	 * @param bitfield				$theModifiers		Commit options.
 	 *
 	 * @access protected
 	 * @return string|NULL			The object's global unique identifier.
 	 *
-	 * @throws \Exception
-	 *
-	 * @uses _index()
+	 * @see kOFFSET_LID kOFFSET_NAMESPACE
 	 */
-	protected function _index( $theContainer, $theModifiers )
+	protected function _index( CConnection $theConnection, $theModifiers )
 	{
 		//
 		// Get term local identifier.
@@ -279,9 +217,9 @@ class CTerm extends CPersistentObject
 		if( $this->offsetExists( kOFFSET_LID ) )
 		{
 			//
-			// Get code.
+			// Get local identifier.
 			//
-			$code = (string) $this->offsetGet( kOFFSET_LID );
+			$lid = (string) $this->offsetGet( kOFFSET_LID );
 			
 			//
 			// Handle namespace.
@@ -289,9 +227,9 @@ class CTerm extends CPersistentObject
 			if( $this->offsetExists( kOFFSET_NAMESPACE ) )
 				return ((string) $this->offsetGet( kOFFSET_NAMESPACE ))
 					  .kTOKEN_NAMESPACE_SEPARATOR
-					  .$code;														// ==>
+					  .$lid;														// ==>
 			
-			return $code;															// ==>
+			return $lid;															// ==>
 		
 		} // Has local identifier.
 		
@@ -328,7 +266,7 @@ class CTerm extends CPersistentObject
 	 *
 	 * @access protected
 	 *
-	 * @throws \Exception
+	 * @throws Exception
 	 *
 	 * @uses _IsCommitted()
 	 *
@@ -342,7 +280,7 @@ class CTerm extends CPersistentObject
 		$offsets = array( kOFFSET_NAMESPACE, kOFFSET_LID );
 		if( $this->_IsCommitted()
 		 && in_array( $theOffset, $offsets ) )
-			throw new \Exception
+			throw new Exception
 				( "You cannot modify the [$theOffset] offset: "
 				 ."the object is committed",
 				  kERROR_LOCKED );												// !@! ==>
@@ -373,9 +311,11 @@ class CTerm extends CPersistentObject
 	 *
 	 * @access protected
 	 *
-	 * @throws \Exception
+	 * @throws Exception
 	 *
 	 * @uses _IsCommitted()
+	 *
+	 * @see kOFFSET_NID kOFFSET_GID kOFFSET_LID
 	 */
 	protected function _Preunset( &$theOffset )
 	{
@@ -385,7 +325,7 @@ class CTerm extends CPersistentObject
 		$offsets = array( kOFFSET_NAMESPACE, kOFFSET_LID );
 		if( $this->_IsCommitted()
 		 && in_array( $theOffset, $offsets ) )
-			throw new \Exception
+			throw new Exception
 				( "You cannot modify the [$theOffset] offset: "
 				 ."the object is committed",
 				  kERROR_LOCKED );												// !@! ==>

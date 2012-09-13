@@ -32,8 +32,6 @@
 				<li class="main"><a href="package-MyWrapper.Persistence.html">Persistence</a>
 						</li>
 							</ul></li>
-				<li><a href="package-None.html">None</a>
-						</li>
 				<li><a href="package-PHP.html">PHP</a>
 						</li>
 			</ul>
@@ -102,13 +100,12 @@ reference management.</p>
 <p>In this class, the namespace, kOFFSET_NAMESPACE, is a reference to
 another object derived from this class. This means that the offset will contain
 the native identifier of the namespace term and that this namespace offset must
-reside in the same container as the current term. Namespaces can be provided as
-objects, provided that they have their <code><a href="class-CStatusDocument.html#_">CStatusDocument::_IsCommitted()</a></code> status set.</p>
+reside in the same container as the current term.</p>
 
 <p>The class features an offset, kOFFSET_REFS_NAMESPACE, that keeps a
 reference count of how many times the current term has been referenced as
 namespace, that is, the number of times this term was used as a namespace by
-other terms. This offset is updated by the <code><a href="class-COntologyTerm.html#_">COntologyTerm::_Postcommit()</a></code> method.</p>
+other terms. This offset is updated in the <code><a href="class-COntologyTerm.html#_">COntologyTerm::_Postcommit()</a></code> method.</p>
 
 <p>The class features also two other offsets, kOFFSET_REFS_NODE and
 kOFFSET_REFS_TAG, which collect respectively the list of node
@@ -116,9 +113,7 @@ identifiers who reference this term, and the list of tags that reference the
 term. These offsets are managed by the referenced objects.</p>
 
 <p>The class implements the static method, <code><a href="class-COntologyTerm.html#_">COntologyTerm::DefaultContainer()</a></code>, it will
-use the kCONTAINER_TERM_NAME constant. You are encouraged to use this
-method rather than instantiating the container by itself, since other classes
-rely on this method to access terms.</p>
+use the kCONTAINER_TERM_NAME constant.</p>
 
 <p>The class features member accessor methods for the default offsets:</p>
 
@@ -227,7 +222,7 @@ href="mailto:m.skofic&#64;cgiar.org">m.skofic&#64;<!---->cgiar.org</a>&gt;<br />
 
 		<td class="name"><div>
 		<a class="anchor" href="#_NamespaceRefs">#</a>
-		<code><a href="source-class-COntologyTerm.html#93" title="Go to source code">NamespaceRefs</a>( )</code>
+		<code><a href="source-class-COntologyTerm.html#90" title="Go to source code">NamespaceRefs</a>( )</code>
 
 		<div class="description short">
 			
@@ -275,7 +270,7 @@ offset of another term.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#_NodeRefs">#</a>
-		<code><a href="source-class-COntologyTerm.html#124" title="Go to source code">NodeRefs</a>( )</code>
+		<code><a href="source-class-COntologyTerm.html#121" title="Go to source code">NodeRefs</a>( )</code>
 
 		<div class="description short">
 			
@@ -321,7 +316,7 @@ identifiers of nodes that reference the term.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#_TagRefs">#</a>
-		<code><a href="source-class-COntologyTerm.html#154" title="Go to source code">TagRefs</a>( )</code>
+		<code><a href="source-class-COntologyTerm.html#151" title="Go to source code">TagRefs</a>( )</code>
 
 		<div class="description short">
 			
@@ -367,7 +362,7 @@ identifiers of tags that reference the term.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#_DefaultContainer">#</a>
-		<code><a href="source-class-COntologyTerm.html#193" title="Go to source code">DefaultContainer</a>( <span><code><a href="class-CDatabase.html">CDatabase</a></code> <var>$theDatabase</var></span> )</code>
+		<code><a href="source-class-COntologyTerm.html#190" title="Go to source code">DefaultContainer</a>( <span><code><a href="class-CDatabase.html">CDatabase</a></code> <var>$theDatabase</var></span> )</code>
 
 		<div class="description short">
 			
@@ -403,6 +398,64 @@ kCONTAINER_TERM_NAME name.</p>
 		</div>
 		</div></td>
 	</tr>
+	<tr data-order="_id" id="__id">
+
+		<td class="attributes"><code>
+			 public static
+			mixed
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#__id">#</a>
+		<code><a href="source-class-COntologyTerm.html#221" title="Go to source code">_id</a>( <span>string <var>$theIdentifier</var> = <span class="php-keyword1">NULL</span></span>, <span><code><a href="class-CConnection.html">CConnection</a></code> <var>$theConnection</var> = <span class="php-keyword1">NULL</span> </span> )</code>
+
+		<div class="description short">
+			
+<h4>Generate the object's native unique identifier</h4>
+
+		</div>
+
+		<div class="description detailed hidden">
+			
+<h4>Generate the object's native unique identifier</h4>
+
+<p>We override this method to hash the native identifier.</p>
+
+<p>Since binary data is handled differently by each storage engine, we require
+the container parameter and raise an exception if not provided.</p>
+
+<p>We also raise an exception if the string is not provided, this is because
+this object primary key depends on the content of its attributes.</p>
+
+
+
+				<h4>Parameters</h4>
+				<div class="list"><dl>
+					<dt><var>$theIdentifier</var></dt>
+					<dd><code>string</code><br> Global unique identifier.</dd>
+					<dt><var>$theConnection</var></dt>
+					<dd><code><code><a href="class-CConnection.html">CConnection</a></code></code><br> Server, database or container.</dd>
+				</dl></div>
+
+				<h4>Returns</h4>
+				<div class="list">
+					<code>mixed</code><br>The object's native unique identifier.<br />
+				</div>
+
+				<h4>Throws</h4>
+				<div class="list">
+					<code><code><a href="class-Exception.html">Exception</a></code></code><br />
+				</div>
+
+
+				<h4>Overrides</h4>
+				<div class="list"><code><a href="class-CPersistentObject.html#_">CPersistentObject::_id</a></code></div>
+
+		</div>
+		</div></td>
+	</tr>
 	<tr data-order="_index" id="__index">
 
 		<td class="attributes"><code>
@@ -414,7 +467,7 @@ kCONTAINER_TERM_NAME name.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#__index">#</a>
-		<code><a href="source-class-COntologyTerm.html#224" title="Go to source code">_index</a>( <span><code><a href="class-CContainer.html">CContainer</a></code> <var>$theContainer</var></span>, <span>bitfield <var>$theModifiers</var></span> )</code>
+		<code><a href="source-class-COntologyTerm.html#277" title="Go to source code">_index</a>( <span><code><a href="class-CConnection.html">CConnection</a></code> <var>$theConnection</var></span>, <span>bitfield <var>$theModifiers</var></span> )</code>
 
 		<div class="description short">
 			
@@ -433,16 +486,15 @@ generate the current term's identifier and then convert the namespace to its
 native identifier, in the second case we need to load the namespace in order to
 use its global identifier.</p>
 
-<p>Note that if the local identifier is missing we call the parent's method,
-although this is not possible since it is asserted elsewhere in the
-workflow.</p>
+<p>Note that this method will be called <i>after</i> the eventual uncommitted
+namespace has been committed.</p>
 
 
 
 				<h4>Parameters</h4>
 				<div class="list"><dl>
-					<dt><var>$theContainer</var></dt>
-					<dd><code><code><a href="class-CContainer.html">CContainer</a></code></code><br> Container.</dd>
+					<dt><var>$theConnection</var></dt>
+					<dd><code><code><a href="class-CConnection.html">CConnection</a></code></code><br> Server, database or container.</dd>
 					<dt><var>$theModifiers</var></dt>
 					<dd><code>bitfield</code><br> Commit options.</dd>
 				</dl></div>
@@ -459,11 +511,7 @@ workflow.</p>
 
 				<h4>Uses</h4>
 				<div class="list">
-						<code><code><a href="class-COntologyTerm.html#_">COntologyTerm::_index()</a></code></code> <br />
-				</div>
-				<h4>Used by</h4>
-				<div class="list">
-						<code><code><a href="class-COntologyTerm.html#_">COntologyTerm::_index()</a></code></code> <br />
+						<code><code><a href="class-CPersistentDocument.html#_">CPersistentDocument::ResolveContainer()</a></code></code> <br />
 				</div>
 
 				<h4>Overrides</h4>
@@ -483,7 +531,7 @@ workflow.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#__Preset">#</a>
-		<code><a href="source-class-COntologyTerm.html#345" title="Go to source code">_Preset</a>( <span>reference <var>&amp; $theOffset</var></span>, <span>reference <var>&amp; $theValue</var></span> )</code>
+		<code><a href="source-class-COntologyTerm.html#405" title="Go to source code">_Preset</a>( <span>reference <var>&amp; $theOffset</var></span>, <span>reference <var>&amp; $theValue</var></span> )</code>
 
 		<div class="description short">
 			
@@ -496,12 +544,14 @@ workflow.</p>
 <h4>Handle offset before setting it</h4>
 
 <p>In this class we prevent the modification of the three kOFFSET_REFS_NAMESPACE, kOFFSET_REFS_NODE and kOFFSET_REFS_TAG
-offsets, since they must be programmatically set.</p>
+offsets in all cases, since they must be programmatically managed directly by
+the container and not through the object.</p>
 
 <p>We also handle the namespace offset, if provided as an object we leave it
 unchanged only if not yet committed, if not, we convert it to its native
 identifier. We also ensure the provided namespace object to be an instance of
-this class by asserting <code><a href="class-CDocument.html">CDocument</a></code> descendants to be of this class.</p>
+this class by asserting <code><a href="class-CDocument.html">CDocument</a></code> descendants to be of this class; any
+other type is assumed to be the namespace identifier.</p>
 
 
 
@@ -521,6 +571,7 @@ this class by asserting <code><a href="class-CDocument.html">CDocument</a></code
 
 				<h4>See</h4>
 				<div class="list">
+						kOFFSET_NAMESPACE kOFFSET_NID<br />
 						kOFFSET_REFS_NAMESPACE kOFFSET_REFS_NODE kOFFSET_REFS_TAG<br />
 				</div>
 
@@ -541,7 +592,7 @@ this class by asserting <code><a href="class-CDocument.html">CDocument</a></code
 
 		<td class="name"><div>
 		<a class="anchor" href="#__Preunset">#</a>
-		<code><a href="source-class-COntologyTerm.html#432" title="Go to source code">_Preunset</a>( <span>reference <var>&amp; $theOffset</var></span> )</code>
+		<code><a href="source-class-COntologyTerm.html#499" title="Go to source code">_Preunset</a>( <span>reference <var>&amp; $theOffset</var></span> )</code>
 
 		<div class="description short">
 			
@@ -554,7 +605,11 @@ this class by asserting <code><a href="class-CDocument.html">CDocument</a></code
 <h4>Handle offset before unsetting it</h4>
 
 <p>In this class we prevent the modification of the three kOFFSET_REFS_NAMESPACE, kOFFSET_REFS_NODE and kOFFSET_REFS_TAG
-offsets, since they must be programmatically set.</p>
+offsets in all cases, since they must be programmatically managed directly by
+the container and not through the object.</p>
+
+<p>The parent class will take care of locking namespace and local identifier if
+the object is committed.</p>
 
 
 
@@ -592,7 +647,7 @@ offsets, since they must be programmatically set.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#__Precommit">#</a>
-		<code><a href="source-class-COntologyTerm.html#479" title="Go to source code">_Precommit</a>( <span><code><a href="class-CContainer.html">CContainer</a></code> <var>$theContainer</var></span>, <span>bitfield <var>$theModifiers</var> = kFLAG_DEFAULT </span> )</code>
+		<code><a href="source-class-COntologyTerm.html#551" title="Go to source code">_Precommit</a>( <span><code><a href="class-CConnection.html">CConnection</a></code> <var>$theConnection</var></span>, <span>bitfield <var>$theModifiers</var> = kFLAG_DEFAULT </span> )</code>
 
 		<div class="description short">
 			
@@ -608,6 +663,10 @@ offsets, since they must be programmatically set.</p>
 let the <code><a href="class-COntologyTerm.html#_">COntologyTerm::_index()</a></code> method replace the offset with the namespace's native
 identifier.</p>
 
+<p>Note that we use the insert operation when committing the eventual namespace
+object, this to automatically raise an exception if the object is not really
+new.</p>
+
 <p>Note that if the provided namespace offset is not committed we ensure it is
 new by using the insert operation.</p>
 
@@ -615,8 +674,8 @@ new by using the insert operation.</p>
 
 				<h4>Parameters</h4>
 				<div class="list"><dl>
-					<dt><var>$theContainer</var></dt>
-					<dd><code><code><a href="class-CContainer.html">CContainer</a></code></code><br> Container.</dd>
+					<dt><var>$theConnection</var></dt>
+					<dd><code><code><a href="class-CConnection.html">CConnection</a></code></code><br> Container.</dd>
 					<dt><var>$theModifiers</var></dt>
 					<dd><code>bitfield</code><br> Commit options.</dd>
 				</dl></div>
@@ -645,7 +704,7 @@ new by using the insert operation.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#__Postcommit">#</a>
-		<code><a href="source-class-COntologyTerm.html#530" title="Go to source code">_Postcommit</a>( <span><code><a href="class-CContainer.html">CContainer</a></code> <var>$theContainer</var></span>, <span>bitfield <var>$theModifiers</var> = kFLAG_DEFAULT </span> )</code>
+		<code><a href="source-class-COntologyTerm.html#606" title="Go to source code">_Postcommit</a>( <span><code><a href="class-CConnection.html">CConnection</a></code> <var>$theConnection</var></span>, <span>bitfield <var>$theModifiers</var> = kFLAG_DEFAULT </span> )</code>
 
 		<div class="description short">
 			
@@ -657,15 +716,14 @@ new by using the insert operation.</p>
 			
 <h4>Prepare the object after committing</h4>
 
-<p>In this class we increment the kOFFSET_REFS_NAMESPACE of the eventual
-namespace.</p>
+<p>In this class we let the container increment the kOFFSET_REFS_NAMESPACE of the eventual namespace.</p>
 
 
 
 				<h4>Parameters</h4>
 				<div class="list"><dl>
-					<dt><var>$theContainer</var></dt>
-					<dd><code><code><a href="class-CContainer.html">CContainer</a></code></code><br> Container.</dd>
+					<dt><var>$theConnection</var></dt>
+					<dd><code><code><a href="class-CConnection.html">CConnection</a></code></code><br> Container.</dd>
 					<dt><var>$theModifiers</var></dt>
 					<dd><code>bitfield</code><br> Commit options.</dd>
 				</dl></div>
@@ -687,8 +745,7 @@ namespace.</p>
 		<td><code>
 			<a href="class-CTerm.html#_">LID()</a>, 
 			<a href="class-CTerm.html#_">NS()</a>, 
-			<a href="class-CTerm.html#_">_Ready()</a>, 
-			<a href="class-CTerm.html#_">_id()</a>
+			<a href="class-CTerm.html#_">_Ready()</a>
 		</code></td>
 	</tr>
 	</table>
@@ -712,6 +769,7 @@ namespace.</p>
 			<a href="class-CPersistentDocument.html#_">Insert()</a>, 
 			<a href="class-CPersistentDocument.html#_">NID()</a>, 
 			<a href="class-CPersistentDocument.html#_">Replace()</a>, 
+			<a href="class-CPersistentDocument.html#_">ResolveContainer()</a>, 
 			<a href="class-CPersistentDocument.html#_">Restore()</a>, 
 			<a href="class-CPersistentDocument.html#_">Update()</a>, 
 			<a href="class-CPersistentDocument.html#_">_Postset()</a>, 

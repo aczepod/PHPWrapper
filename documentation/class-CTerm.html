@@ -32,8 +32,6 @@
 				<li class="main"><a href="package-MyWrapper.Persistence.html">Persistence</a>
 						</li>
 							</ul></li>
-				<li><a href="package-None.html">None</a>
-						</li>
 				<li><a href="package-PHP.html">PHP</a>
 						</li>
 			</ul>
@@ -50,6 +48,7 @@
 				<li><a href="class-CDatabase.html">CDatabase</a></li>
 				<li><a href="class-CDocument.html">CDocument</a></li>
 				<li><a href="class-CEdge.html">CEdge</a></li>
+				<li><a href="class-CNode.html">CNode</a></li>
 				<li><a href="class-CServer.html">CServer</a></li>
 				<li><a href="class-CStatusDocument.html">CStatusDocument</a></li>
 				<li class="active"><a href="class-CTerm.html">CTerm</a></li>
@@ -107,25 +106,22 @@ component that is an abstract concept if considered by itself, but takes a
 precise meaning if related to other terms, as a sequence of words that
 constitute a statement.</p>
 
-<p>Terms are identified by a string code which is the concatenation of two
-elements of the object: the namespace, kOFFSET_NAMESPACE, which
-represents the group to which the term belongs and the local identifier, kOFFSET_LID, which represents the unique identifier of the term within its
-namespace. This code is set in the global identifier, kOFFSET_GID, and
-formed by prefixing the namespace to the local identifier, separated by the
-kTOKEN_NAMESPACE_SEPARATOR token. This means that both the namespace and
-the local identifiers must be convertable to a string. If the object has no
-namespace, the local identifier will become the object's global identifier.</p>
+<p>Terms are uniquely identified by their global identifier, kOFFSET_GID, which is a string code formed by the concatenation of two elements
+of the object: the namespace, kOFFSET_NAMESPACE, which represents the
+group to which the term belongs and the local identifier, kOFFSET_LID,
+which represents the unique identifier of the term within its namespace. These
+two elements are separated by the kTOKEN_NAMESPACE_SEPARATOR token and
+the resulting string is set into the object's kOFFSET_GID.</p>
 
-<p>When the object is committed, <code><a href="class-CStatusDocument.html#_">CStatusDocument::_IsCommitted()</a></code>, besides the the
-identifier offsets, also the kOFFSET_NAMESPACE offset will be locked,
-since it is used to generate the global identifier, kOFFSET_GID.</p>
+<p>In this class we do not hash the native identifier, kOFFSET_NID.</p>
 
-<p>The native unique identifier, kOFFSET_NID, is the binary md5 hash of
-the global unique identifier, kOFFSET_GID, this to allow long codes.</p>
+<p>When the object is committed, <code><a href="class-CStatusDocument.html#_">CStatusDocument::_IsCommitted()</a></code>, besides the global and
+native identifiers, also the kOFFSET_NAMESPACE and kOFFSET_LID
+offsets will be locked, since they are used to generate the global identifier,
+kOFFSET_GID.</p>
 
 <p>The object will have its <code><a href="class-CStatusDocument.html#_">CStatusDocument::_IsInited()</a></code> status set if the local unique
-identifier, kOFFSET_LID, is set, derived classes may add other required
-attributes.</p>
+identifier, kOFFSET_LID, is set.</p>
 
 <p>Finally, the class features member accessor methods for the default
 offsets:</p>
@@ -228,7 +224,7 @@ href="mailto:m.skofic&#64;cgiar.org">m.skofic&#64;<!---->cgiar.org</a>&gt;<br />
 
 		<td class="name"><div>
 		<a class="anchor" href="#_NS">#</a>
-		<code><a href="source-class-CTerm.html#96" title="Go to source code">NS</a>( <span>mixed <var>$theValue</var> = <span class="php-keyword1">NULL</span></span>, <span>boolean <var>$getOld</var> = <span class="php-keyword1">FALSE</span> </span> )</code>
+		<code><a href="source-class-CTerm.html#94" title="Go to source code">NS</a>( <span>mixed <var>$theValue</var> = <span class="php-keyword1">NULL</span></span>, <span>boolean <var>$getOld</var> = <span class="php-keyword1">FALSE</span> </span> )</code>
 
 		<div class="description short">
 			
@@ -301,7 +297,7 @@ will be locked and an exception will be raised.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#_LID">#</a>
-		<code><a href="source-class-CTerm.html#139" title="Go to source code">LID</a>( <span>mixed <var>$theValue</var> = <span class="php-keyword1">NULL</span></span>, <span>boolean <var>$getOld</var> = <span class="php-keyword1">FALSE</span> </span> )</code>
+		<code><a href="source-class-CTerm.html#137" title="Go to source code">LID</a>( <span>mixed <var>$theValue</var> = <span class="php-keyword1">NULL</span></span>, <span>boolean <var>$getOld</var> = <span class="php-keyword1">FALSE</span> </span> )</code>
 
 		<div class="description short">
 			
@@ -365,64 +361,6 @@ will be locked and an exception will be raised.</p>
 		</div>
 		</div></td>
 	</tr>
-	<tr data-order="_id" id="__id">
-
-		<td class="attributes"><code>
-			 public static
-			mixed
-			
-			</code>
-		</td>
-
-		<td class="name"><div>
-		<a class="anchor" href="#__id">#</a>
-		<code><a href="source-class-CTerm.html#193" title="Go to source code">_id</a>( <span>string <var>$theIdentifier</var> = <span class="php-keyword1">NULL</span></span>, <span><code><a href="class-CContainer.html">CContainer</a></code> <var>$theContainer</var> = <span class="php-keyword1">NULL</span> </span> )</code>
-
-		<div class="description short">
-			
-<h4>Generate the object's native unique identifier</h4>
-
-		</div>
-
-		<div class="description detailed hidden">
-			
-<h4>Generate the object's native unique identifier</h4>
-
-<p>We overload this method to hash the provided string.</p>
-
-<p>Since binary data is handled differently by each storage engine, we require
-the container parameter and raise an exception if not provided.</p>
-
-<p>We also raise an exception if the string is not provided, this is because
-this object primary key depends on the content of its attributes.</p>
-
-
-
-				<h4>Parameters</h4>
-				<div class="list"><dl>
-					<dt><var>$theIdentifier</var></dt>
-					<dd><code>string</code><br> Global unique identifier.</dd>
-					<dt><var>$theContainer</var></dt>
-					<dd><code><code><a href="class-CContainer.html">CContainer</a></code></code><br> Container.</dd>
-				</dl></div>
-
-				<h4>Returns</h4>
-				<div class="list">
-					<code>mixed</code><br>The object's native unique identifier.<br />
-				</div>
-
-				<h4>Throws</h4>
-				<div class="list">
-					<code><code><a href="class-Exception.html">Exception</a></code></code><br />
-				</div>
-
-
-				<h4>Overrides</h4>
-				<div class="list"><code><a href="class-CPersistentObject.html#_">CPersistentObject::_id</a></code></div>
-
-		</div>
-		</div></td>
-	</tr>
 	<tr data-order="_index" id="__index">
 
 		<td class="attributes"><code>
@@ -434,7 +372,7 @@ this object primary key depends on the content of its attributes.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#__index">#</a>
-		<code><a href="source-class-CTerm.html#248" title="Go to source code">_index</a>( <span><code><a href="class-CContainer.html">CContainer</a></code> <var>$theContainer</var></span>, <span>bitfield <var>$theModifiers</var></span> )</code>
+		<code><a href="source-class-CTerm.html#191" title="Go to source code">_index</a>( <span><code><a href="class-CConnection.html">CConnection</a></code> <var>$theConnection</var></span>, <span>bitfield <var>$theModifiers</var></span> )</code>
 
 		<div class="description short">
 			
@@ -455,16 +393,12 @@ identifier.</p>
 <p>Both the namespace and the local identifier will be converted to strings to
 compute the global identifier.</p>
 
-<p>Note that if the local identifier is missing we call the parent's method,
-although this is not possible since it is asserted elsewhere in the
-workflow.</p>
-
 
 
 				<h4>Parameters</h4>
 				<div class="list"><dl>
-					<dt><var>$theContainer</var></dt>
-					<dd><code><code><a href="class-CContainer.html">CContainer</a></code></code><br> Container.</dd>
+					<dt><var>$theConnection</var></dt>
+					<dd><code><code><a href="class-CConnection.html">CConnection</a></code></code><br> Server, database or container.</dd>
 					<dt><var>$theModifiers</var></dt>
 					<dd><code>bitfield</code><br> Commit options.</dd>
 				</dl></div>
@@ -474,18 +408,10 @@ workflow.</p>
 					<code>string|null</code><br>The object's global unique identifier.<br />
 				</div>
 
-				<h4>Throws</h4>
-				<div class="list">
-					<code><code><a href="class-Exception.html">Exception</a></code></code><br />
-				</div>
 
-				<h4>Uses</h4>
+				<h4>See</h4>
 				<div class="list">
-						<code><code><a href="class-CTerm.html#_">CTerm::_index()</a></code></code> <br />
-				</div>
-				<h4>Used by</h4>
-				<div class="list">
-						<code><code><a href="class-CTerm.html#_">CTerm::_index()</a></code></code> <br />
+						kOFFSET_LID kOFFSET_NAMESPACE<br />
 				</div>
 
 				<h4>Overrides</h4>
@@ -505,7 +431,7 @@ workflow.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#__Preset">#</a>
-		<code><a href="source-class-CTerm.html#316" title="Go to source code">_Preset</a>( <span>reference <var>&amp; $theOffset</var></span>, <span>reference <var>&amp; $theValue</var></span> )</code>
+		<code><a href="source-class-CTerm.html#254" title="Go to source code">_Preset</a>( <span>reference <var>&amp; $theOffset</var></span>, <span>reference <var>&amp; $theValue</var></span> )</code>
 
 		<div class="description short">
 			
@@ -566,7 +492,7 @@ object was committed, <code><a href="class-CStatusDocument.html#_">CStatusDocume
 
 		<td class="name"><div>
 		<a class="anchor" href="#__Preunset">#</a>
-		<code><a href="source-class-CTerm.html#362" title="Go to source code">_Preunset</a>( <span>reference <var>&amp; $theOffset</var></span> )</code>
+		<code><a href="source-class-CTerm.html#300" title="Go to source code">_Preunset</a>( <span>reference <var>&amp; $theOffset</var></span> )</code>
 
 		<div class="description short">
 			
@@ -599,6 +525,10 @@ object was committed, <code><a href="class-CStatusDocument.html#_">CStatusDocume
 					<code><code><a href="class-Exception.html">Exception</a></code></code><br />
 				</div>
 
+				<h4>See</h4>
+				<div class="list">
+						kOFFSET_NID kOFFSET_GID kOFFSET_LID<br />
+				</div>
 				<h4>Uses</h4>
 				<div class="list">
 						<code><code><a href="class-CStatusDocument.html#_">CStatusDocument::_IsCommitted()</a></code></code> <br />
@@ -621,7 +551,7 @@ object was committed, <code><a href="class-CStatusDocument.html#_">CStatusDocume
 
 		<td class="name"><div>
 		<a class="anchor" href="#__Ready">#</a>
-		<code><a href="source-class-CTerm.html#414" title="Go to source code">_Ready</a>( )</code>
+		<code><a href="source-class-CTerm.html#354" title="Go to source code">_Ready</a>( )</code>
 
 		<div class="description short">
 			
@@ -666,7 +596,8 @@ absence of the kOFFSET_LID offset.</p>
 			<a href="class-CPersistentObject.html#_">GID()</a>, 
 			<a href="class-CPersistentObject.html#_">NewObject()</a>, 
 			<a href="class-CPersistentObject.html#_">_Precommit()</a>, 
-			<a href="class-CPersistentObject.html#_">__toString()</a>
+			<a href="class-CPersistentObject.html#_">__toString()</a>, 
+			<a href="class-CPersistentObject.html#_">_id()</a>
 		</code></td>
 	</tr>
 	</table>
@@ -680,6 +611,7 @@ absence of the kOFFSET_LID offset.</p>
 			<a href="class-CPersistentDocument.html#_">Insert()</a>, 
 			<a href="class-CPersistentDocument.html#_">NID()</a>, 
 			<a href="class-CPersistentDocument.html#_">Replace()</a>, 
+			<a href="class-CPersistentDocument.html#_">ResolveContainer()</a>, 
 			<a href="class-CPersistentDocument.html#_">Restore()</a>, 
 			<a href="class-CPersistentDocument.html#_">Update()</a>, 
 			<a href="class-CPersistentDocument.html#_">_Postcommit()</a>, 

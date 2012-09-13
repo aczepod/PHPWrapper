@@ -273,7 +273,7 @@ class CNode extends CPersistentObject
 		//
 		if( $this->_IsCommitted()
 		 && ($theOffset == kOFFSET_TERM) )
-			throw new \Exception
+			throw new Exception
 				( "You cannot modify the [$theOffset] offset: "
 				 ."the object is committed",
 				  kERROR_LOCKED );												// !@! ==>
@@ -323,7 +323,7 @@ class CNode extends CPersistentObject
 		//
 		if( $this->_IsCommitted()
 		 && ($theOffset == kOFFSET_TERM) )
-			throw new \Exception
+			throw new Exception
 				( "You cannot modify the [$theOffset] offset: "
 				 ."the object is committed",
 				  kERROR_LOCKED );												// !@! ==>

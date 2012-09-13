@@ -62,7 +62,7 @@ class MyClass extends CPersistentObject
 	//
 	// The 36 first characters of the 'CODE' value is the global unique identifier.
 	//
-	protected function _index( $theContainer, $theModifiers )
+	protected function _index( CConnection $theConnection, $theModifiers )
 	{
 		return substr( $this->offsetGet( 'CODE' ), 0, 36 );
 	}
@@ -70,13 +70,14 @@ class MyClass extends CPersistentObject
 	//
 	// The native unique identifier is hashed.
 	//
-	static function _id( $theIdentifier = NULL, CContainer $theContainer = NULL )
+	static function _id( $theIdentifier = NULL, CConnection $theConnection = NULL )
 	{
-		if( ($theContainer !==  NULL)
+		if( ($theConnection !==  NULL)
 		 && ($theIdentifier !==  NULL) )
-			return $theContainer->ConvertBinary( md5( $theIdentifier, TRUE ) );
+			return self::ResolveContainer( $theConnection, TRUE )
+					   ->ConvertBinary( md5( $theIdentifier, TRUE ) );
 		
-		return parent::_id( $theIdentifier, $theContainer );
+		return parent::_id( $theIdentifier, $theConnection );
 	}
 
 	//
@@ -86,6 +87,14 @@ class MyClass extends CPersistentObject
 	public function dirty()		{	return ( $this->_IsDirty() ) ? 'Y' : 'N';		}
 	public function committed()	{	return ( $this->_IsCommitted() ) ? 'Y' : 'N';	}
 	public function encoded()	{	return ( $this->_IsEncoded() ) ? 'Y' : 'N';		}
+
+	//
+	// Resolve default container.
+	//
+	static function DefaultDatabase( CServer $theServer )
+		{	return $theServer->Database( "TEST" );	}
+	static function DefaultContainer( CDatabase $theDatabase )
+		{	return $theDatabase->Container( "CPersistentObject" );	}
 }
 
 
@@ -114,15 +123,13 @@ try
 	//
 	echo( '<hr />' );
 	echo( '<h4>Create test container</h4>' );
-	echo( '$mongo = New Mongo();<br />' );
-	$mongo = New \Mongo();
+	echo( '$server = new CMongoServer();<br />' );
+	$server = New CMongoServer();
 	echo( '$db = $mongo->selectDB( "TEST" );<br />' );
-	$db = $mongo->selectDB( "TEST" );
-	$db->drop();
-	echo( '$collection = $db->selectCollection( "CPersistentObject" );<br />' );
-	$collection = $db->selectCollection( "CPersistentObject" );
-	echo( '$container = new CMongoContainer( $collection );<br />' );
-	$container = new CMongoContainer( $collection );
+	echo( '$database = $server->Database( "TEST" );<br />' );
+	$database = $server->Database( "TEST" );
+	echo( '$database->Drop();<br />' );
+	$database->Drop();
 	echo( '<hr />' );
 	echo( '<hr />' );
 	
@@ -223,8 +230,8 @@ try
 		// Insert document.
 		//
 		echo( '<h4>Insert document</h4>' );
-		echo( '<h5>$status = $test->Insert( $container );</h5>' );
-		$status = $test->Insert( $container );
+		echo( '<h5>$status = $test->Insert( $server );</h5>' );
+		$status = $test->Insert( $server );
 		$id = $test[ kOFFSET_NID ];
 		echo( 'Inited['.$test->inited().'] Dirty['.$test->dirty().'] Saved['.$test->committed().'] Encoded['.$test->encoded().']<br />' );
 		echo( 'Object<pre>' ); print_r( $test ); echo( '</pre>' );
@@ -239,8 +246,8 @@ try
 			echo( '<h4>Insert duplicate document</h4>' );
 			echo( '<h5>$test[ "B" ] = 3; // To turn on the dirty flag...</h5>' );
 			$test[ "B" ] = 3;
-			echo( '<h5>$status = $test->Insert( $container ); // Should raise an exception.</h5>' );
-			$status = $test->Insert( $container );
+			echo( '<h5>$status = $test->Insert( $server ); // Should raise an exception.</h5>' );
+			$status = $test->Insert( $server );
 			echo( '<h3><font color="red">Should have raised an exception</font></h3>' );
 			echo( 'Inited['.$test->inited().'] Dirty['.$test->dirty().'] Saved['.$test->committed().'] Encoded['.$test->encoded().']<br />' );
 			echo( 'Object<pre>' ); print_r( $test ); echo( '</pre>' );
@@ -263,8 +270,8 @@ try
 		echo( '<h5>$test[ "B" ] = "bee";</h5>' );
 		$test[ "B" ] = "bee";
 		echo( 'Inited['.$test->inited().'] Dirty['.$test->dirty().'] Saved['.$test->committed().'] Encoded['.$test->encoded().']<br />' );
-		echo( '<h5>$test->Update( $container );</h5>' );
-		$test->Update( $container );
+		echo( '<h5>$test->Update( $server );</h5>' );
+		$test->Update( $server );
 		echo( 'Inited['.$test->inited().'] Dirty['.$test->dirty().'] Saved['.$test->committed().'] Encoded['.$test->encoded().']<br />' );
 		echo( '<pre>' ); print_r( $test ); echo( '</pre>' );
 		echo( '<hr />' );
@@ -277,8 +284,8 @@ try
 			echo( '<h4>Update missing document</h4>' );
 			echo( '<h5>$test[ kOFFSET_NID ] = 99;</h5>' );
 			$test[ kOFFSET_NID ] = 99;
-			echo( '<h5>$test->Update( $container ); // Should raise an exception.</h5>' );
-			$test->Update( $container );
+			echo( '<h5>$test->Update( $server ); // Should raise an exception.</h5>' );
+			$test->Update( $server );
 			echo( '<h3><font color="red">Should have raised an exception</font></h3>' );
 			echo( 'Inited['.$test->inited().'] Dirty['.$test->dirty().'] Saved['.$test->committed().'] Encoded['.$test->encoded().']<br />' );
 			echo( '<pre>' ); print_r( $test ); echo( '</pre>' );
@@ -299,8 +306,8 @@ try
 		echo( '<h4>Replace new document</h4>' );
 		echo( '<h5>$test[ "B" ] = 3; // To turn on the dirty flag...</h5>' );
 		$test[ "B" ] = 3;
-		echo( '<h5>$status = $test->Replace( $container ); // We have set a missing ID before...</h5>' );
-		$status = $test->Replace( $container );
+		echo( '<h5>$status = $test->Replace( $server ); // We have set a missing ID before...</h5>' );
+		$status = $test->Replace( $server );
 		echo( 'Inited['.$test->inited().'] Dirty['.$test->dirty().'] Saved['.$test->committed().'] Encoded['.$test->encoded().']<br />' );
 		echo( 'Object<pre>' ); print_r( $test ); echo( '</pre>' );
 		echo( 'Status<pre>' ); print_r( $status ); echo( '</pre>' );
@@ -312,8 +319,8 @@ try
 		echo( '<h4>Replace existing document</h4>' );
 		echo( '<h5>$test[ "X" ] = 10; // To turn on the dirty flag...</h5>' );
 		$test[ "X" ] = 10;
-		echo( '<h5>$status = $test->Replace( $container );</h5>' );
-		$status = $test->Replace( $container );
+		echo( '<h5>$status = $test->Replace( $server );</h5>' );
+		$status = $test->Replace( $server );
 		echo( 'Inited['.$test->inited().'] Dirty['.$test->dirty().'] Saved['.$test->committed().'] Encoded['.$test->encoded().']<br />' );
 		echo( 'Object<pre>' ); print_r( $test ); echo( '</pre>' );
 		echo( 'Status<pre>' ); print_r( $status ); echo( '</pre>' );
@@ -333,8 +340,8 @@ try
 		echo( '<h5>$test[ kOFFSET_NID ] = "pippo";</h5>' );
 		$test[ kOFFSET_NID ] = "pippo";
 		echo( '<pre>' ); print_r( $test ); echo( '</pre>' );
-		echo( '<h5>$status = $test->Restore( $container );</h5>' );
-		$status = $test->Restore( $container );
+		echo( '<h5>$status = $test->Restore( $server );</h5>' );
+		$status = $test->Restore( $server );
 		echo( 'Inited['.$test->inited().'] Dirty['.$test->dirty().'] Saved['.$test->committed().'] Encoded['.$test->encoded().']<br />' );
 		echo( 'Object<pre>' ); print_r( $test ); echo( '</pre>' );
 		echo( 'Status<pre>' ); print_r( $status ); echo( '</pre>' );
@@ -347,8 +354,8 @@ try
 		echo( '<h5>$test[ kOFFSET_NID ] = 99;</h5>' );
 		$test[ kOFFSET_NID ] = 99;
 		echo( '<pre>' ); print_r( $test ); echo( '</pre>' );
-		echo( '<h5>$status = $test->Restore( $container );</h5>' );
-		$status = $test->Restore( $container );
+		echo( '<h5>$status = $test->Restore( $server );</h5>' );
+		$status = $test->Restore( $server );
 		echo( 'Inited['.$test->inited().'] Dirty['.$test->dirty().'] Saved['.$test->committed().'] Encoded['.$test->encoded().']<br />' );
 		echo( 'Object<pre>' ); print_r( $test ); echo( '</pre>' );
 		echo( 'Status<pre>' ); print_r( $status ); echo( '</pre>' );
@@ -359,8 +366,8 @@ try
 		// Delete existing document.
 		//
 		echo( '<h4>Delete existing document</h4>' );
-		echo( '<h5>$status = $test->Delete( $container );</h5>' );
-		$status = $test->Delete( $container );
+		echo( '<h5>$status = $test->Delete( $server );</h5>' );
+		$status = $test->Delete( $server );
 		echo( 'Inited['.$test->inited().'] Dirty['.$test->dirty().'] Saved['.$test->committed().'] Encoded['.$test->encoded().']<br />' );
 		echo( 'Status<pre>' ); print_r( $status ); echo( '</pre>' );
 		echo( '<hr />' );
@@ -370,8 +377,8 @@ try
 		// Delete missing document.
 		//
 		echo( '<h4>Delete missing document</h4>' );
-		echo( '<h5>$status = $test->Delete( $container );</h5>' );
-		$status = $test->Delete( $container );
+		echo( '<h5>$status = $test->Delete( $server );</h5>' );
+		$status = $test->Delete( $server );
 		echo( 'Inited['.$test->inited().'] Dirty['.$test->dirty().'] Saved['.$test->committed().'] Encoded['.$test->encoded().']<br />' );
 		echo( 'Status<pre>' ); print_r( $status ); echo( '</pre>' );
 		echo( '<hr />' );
@@ -381,8 +388,10 @@ try
 		// Create an existing document.
 		//
 		echo( '<h4>Create an existing document</h4>' );
-		echo( '<h5>$test = CPersistentObject::NewObject( $container, $id );</h5>' );
-		$test = CPersistentObject::NewObject( $container, $id );
+		echo( '<h5>$container = MyClass::ResolveContainer( $server, TRUE );</h5>' );
+		$container = MyClass::ResolveContainer( $server, TRUE );
+		echo( '<h5>$test = MyClass::NewObject( $container, $id );</h5>' );
+		$test = MyClass::NewObject( $container, $id );
 		echo( '<pre>' ); print_r( $test ); echo( '</pre>' );
 		echo( '<hr />' );
 		
@@ -390,8 +399,10 @@ try
 		// Create a missing document.
 		//
 		echo( '<h4>Create a missing document</h4>' );
-		echo( '<h5>$test = CPersistentObject::NewObject( $container, 99 );</h5>' );
-		$test = CPersistentObject::NewObject( $container, 99 );
+		echo( '<h5>$container = MyClass::ResolveContainer( $server, TRUE );</h5>' );
+		$container = MyClass::ResolveContainer( $server, TRUE );
+		echo( '<h5>$test = MyClass::NewObject( $container, 99 );</h5>' );
+		$test = MyClass::NewObject( $container, 99 );
 		echo( '<pre>' ); print_r( $test ); echo( '</pre>' );
 		echo( '<hr />' );
 		echo( '<hr />' );
@@ -408,8 +419,8 @@ try
 		echo( '<h5>$test[ "new" ] = "NEW"; // To set the object dirty</h5>' );
 		$test[ "new" ] = "NEW";
 		echo( 'Inited['.$test->inited().'] Dirty['.$test->dirty().'] Saved['.$test->committed().'] Encoded['.$test->encoded().']<br />' );
-		echo( '<h5>$status = $test->Insert( $container );</h5>' );
-		$status = $test->Insert( $container );
+		echo( '<h5>$status = $test->Insert( $server );</h5>' );
+		$status = $test->Insert( $server );
 		echo( '<h3><font color="red">Should have raised an exception</font></h3>' );
 		echo( '<pre>' ); print_r( $test ); echo( '</pre>' );
 		echo( '<hr />' );
@@ -429,8 +440,8 @@ try
 	echo( '<h5>$test[ "CODE" ] = "This is another global identifier id of the object";</h5>' );
 	$test[ "CODE" ] = "This is another global identifier id of the object";
 	echo( 'Inited['.$test->inited().'] Dirty['.$test->dirty().'] Saved['.$test->committed().'] Encoded['.$test->encoded().']<br />' );
-	echo( '<h5>$status = $test->Insert( $container );</h5>' );
-	$status = $test->Insert( $container );
+	echo( '<h5>$status = $test->Insert( $server );</h5>' );
+	$status = $test->Insert( $server );
 	echo( '<pre>' ); print_r( $test ); echo( '</pre>' );
 	echo( '<hr />' );
 	echo( '<hr />' );
@@ -442,8 +453,8 @@ try
 	echo( '<h5>$lid = $test->NID();</h5>' );
 	$lid = $test->NID();
 	echo( '<pre>' ); print_r( $lid ); echo( '</pre>' );
-	echo( '<h5>$other = CPersistentObject::NewObject( $container, $lid );</h5>' );
-	$other = MyClass::NewObject( $container, $lid );
+	echo( '<h5>$other = CPersistentObject::NewObject( $server, $lid );</h5>' );
+	$other = MyClass::NewObject( $server, $lid );
 	echo( '<pre>' ); print_r( $other ); echo( '</pre>' );
 	echo( '<hr />' );
 	
@@ -454,11 +465,11 @@ try
 	echo( '<h5>$gid = $test->GID();</h5>' );
 	$gid = $test->GID();
 	echo( "$gid<br />" );
-	echo( '<h5>$lid = CPersistentObject::_id( $gid, $container );</h5>' );
-	$lid = MyClass::_id( $gid, $container );
+	echo( '<h5>$lid = CPersistentObject::_id( $gid, $server );</h5>' );
+	$lid = MyClass::_id( $gid, $server );
 	echo( '<pre>' ); print_r( $lid ); echo( '</pre>' );
-	echo( '<h5>$other = CPersistentObject::NewObject( $container, $lid );</h5>' );
-	$other = MyClass::NewObject( $container, $lid );
+	echo( '<h5>$other = CPersistentObject::NewObject( $server, $lid );</h5>' );
+	$other = MyClass::NewObject( $server, $lid );
 	echo( '<pre>' ); print_r( $other ); echo( '</pre>' );
 	echo( '<hr />' );
 	echo( '<hr />' );

@@ -153,7 +153,6 @@
 	echo( '<pre>' ); print_r( ($ok) ? 'Y' : 'N' ); echo( '</pre>' );
 	echo( '<hr />' );
 	echo( '<hr />' );
-*/
 	
 	require_once( kPATH_MYWRAPPER_LIBRARY_FUNCTION."/accessors.php" );
 	
@@ -222,5 +221,50 @@
 	echo( 'Object<pre>' ); print_r( $object ); echo( '</pre>' );
 	echo( 'Status<pre>' ); print_r( $ok ); echo( '</pre>' );
 	echo( '<hr />' );
+*/
+	
+	//
+	// Test late static binding.
+	//
+	
+	//
+	// Define classes.
+	//
+	class A
+	{
+		static function Def()	{	echo( 'A' );	}
+		public function CallSelf()	{	self::Def();	}
+		public function CallStatic()	{	static::Def();	}
+	}
+	class B extends A
+	{
+		static function Def()	{	echo( 'B' );	}
+	}
+	class C extends B
+	{
+		public function CallSelf()	{	self::Def();	}
+		public function CallStatic()	{	static::Def();	}
+	}
+	
+	//
+	// Test.
+	//
+	$x = new A();
+	$x->CallSelf();
+	echo( '<hr />' );
+	$x->CallStatic();
+	echo( '<hr /><hr />' );
+	
+	$x = new B();
+	$x->CallSelf();
+	echo( '<hr />' );
+	$x->CallStatic();
+	echo( '<hr /><hr />' );
+	
+	$x = new C();
+	$x->CallSelf();
+	echo( '<hr />' );
+	$x->CallStatic();
+	echo( '<hr /><hr />' );
 	
 ?>

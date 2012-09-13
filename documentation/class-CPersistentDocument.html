@@ -32,8 +32,6 @@
 				<li class="active main"><a href="package-MyWrapper.Persistence.html">Persistence</a>
 						</li>
 							</ul></li>
-				<li><a href="package-None.html">None</a>
-						</li>
 				<li><a href="package-PHP.html">PHP</a>
 						</li>
 			</ul>
@@ -100,10 +98,10 @@
 <h3>Persistent document ancestor</h3>
 
 <p>A persistent document object is a document object that knows how to persist
-in derived concrete instances of the <code><a href="class-CContainer.html">CContainer</a></code> class. This class adds a
-single default offset, kOFFSET_NID, which represents the database native
-unique identifier. All objects derived from this class are uniquely identified
-by this offset.</p>
+in derived concrete instances of the <code><a href="class-CContainer.html">CContainer</a></code> class. This class
+features a default offset, kOFFSET_NID, which represents the database
+native unique identifier, or primary key. All objects derived from this class
+are uniquely identified by this offset.</p>
 
 <p>This class implements a series of persistence methods:</p>
 
@@ -124,7 +122,8 @@ by this offset.</p>
 	<li><code><a href="class-CPersistentDocument.html#_">CPersistentDocument::Delete()</a></code>: This method will delete the object from a container.</li>
 
 	<li><code><a href="class-CPersistentDocument.html#_">CPersistentDocument::NewObject()</a></code>: This static method can be used to instantiate an object
-	by retrieving it from a container.</li>
+	by retrieving it from a container. The class of the object will be set according
+	to the class used in the static call.</li>
 </ul>
 
 <p>These methods take advantage of a protected interface which can be used to
@@ -194,6 +193,8 @@ status, by default the object is initialised.</p>
 	<div>
 		<h4>Indirect known subclasses</h4>
 			<a href="class-CEdge.html">CEdge</a>, 
+			<a href="class-CNode.html">CNode</a>, 
+			<a href="class-COntologyNode.html">COntologyNode</a>, 
 			<a href="class-COntologyTerm.html">COntologyTerm</a>, 
 			<a href="class-CTerm.html">CTerm</a>
 	</div>
@@ -228,7 +229,7 @@ href="mailto:m.skofic&#64;cgiar.org">m.skofic&#64;<!---->cgiar.org</a>&gt;<br />
 
 		<td class="name"><div>
 		<a class="anchor" href="#___construct">#</a>
-		<code><a href="source-class-CPersistentDocument.html#103" title="Go to source code">__construct</a>( <span>mixed <var>$theInput</var> = <span class="php-keyword1">Array</span>()</span>, <span>integer <var>$theFlags</var> = <span class="php-num">0</span></span>, <span>string <var>$theIterator</var> = <span class="php-quote">'ArrayIterator'</span> </span> )</code>
+		<code><a href="source-class-CPersistentDocument.html#104" title="Go to source code">__construct</a>( <span>mixed <var>$theInput</var> = <span class="php-keyword1">Array</span>()</span>, <span>integer <var>$theFlags</var> = <span class="php-num">0</span></span>, <span>string <var>$theIterator</var> = <span class="php-quote">'ArrayIterator'</span> </span> )</code>
 
 		<div class="description short">
 			
@@ -282,7 +283,7 @@ according to the data set in the object.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#_NID">#</a>
-		<code><a href="source-class-CPersistentDocument.html#150" title="Go to source code">NID</a>( <span>mixed <var>$theValue</var> = <span class="php-keyword1">NULL</span></span>, <span>boolean <var>$getOld</var> = <span class="php-keyword1">FALSE</span> </span> )</code>
+		<code><a href="source-class-CPersistentDocument.html#151" title="Go to source code">NID</a>( <span>mixed <var>$theValue</var> = <span class="php-keyword1">NULL</span></span>, <span>boolean <var>$getOld</var> = <span class="php-keyword1">FALSE</span> </span> )</code>
 
 		<div class="description short">
 			
@@ -356,7 +357,7 @@ will be locked and an exception will be raised.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#_Insert">#</a>
-		<code><a href="source-class-CPersistentDocument.html#202" title="Go to source code">Insert</a>( <span><code><a href="class-CConnection.html">CConnection</a></code> <var>$theContainer</var></span> )</code>
+		<code><a href="source-class-CPersistentDocument.html#203" title="Go to source code">Insert</a>( <span><code><a href="class-CConnection.html">CConnection</a></code> <var>$theConnection</var></span> )</code>
 
 		<div class="description short">
 			
@@ -372,13 +373,11 @@ will be locked and an exception will be raised.</p>
 duplicate object already exists in the container, the method will raise an
 exception.</p>
 
-<p>The method expects a single parameter, <tt>$theContainer</tt>, which
+<p>The method expects a single parameter, <tt>$theConnection</tt>, which
 represents the container in which the object should be stored. This parameter
-must be a concrete instance of the <code><a href="class-CConnection.html">CConnection</a></code> class that should be
-resolved into a concrete instance of <code><a href="class-CContainer.html">CContainer</a></code> that will be used for
-the operation. The method will take advantage of the <code><a href="class-CPersistentDocument.html#_">CPersistentDocument::DefaultDatabase()</a></code>
-and <code><a href="class-CPersistentDocument.html#_">CPersistentDocument::DefaultContainer()</a></code> methods to resolve the provided <code><a href="class-CConnection.html">CConnection</a></code> object into a <code><a href="class-CContainer.html">CContainer</a></code> instance, if the latter cannot be
-assumed, the method will raise an exception.</p>
+should be a concrete instance of of <code><a href="class-CContainer.html">CContainer</a></code>, or a concrete instance
+of <code><a href="class-CServer.html">CServer</a></code> or <code><a href="class-CDatabase.html">CDatabase</a></code>, if the current class has implemented
+the container resolve interface with <code><a href="class-CPersistentDocument.html#_">CPersistentDocument::DefaultDatabase()</a></code> and <code><a href="class-CPersistentDocument.html#_">CPersistentDocument::DefaultContainer()</a></code>.</p>
 
 <p>The method may set the native unique identifier attribute (kOFFSET_NID) if not provided.</p>
 
@@ -395,7 +394,7 @@ event the method will return <tt>NULL</tt>.</p>
 
 				<h4>Parameters</h4>
 				<div class="list"><dl>
-					<dt><var>$theContainer</var></dt>
+					<dt><var>$theConnection</var></dt>
 					<dd><code><code><a href="class-CConnection.html">CConnection</a></code></code><br> Server, database or container.</dd>
 				</dl></div>
 
@@ -438,7 +437,7 @@ event the method will return <tt>NULL</tt>.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#_Update">#</a>
-		<code><a href="source-class-CPersistentDocument.html#306" title="Go to source code">Update</a>( <span><code><a href="class-CConnection.html">CConnection</a></code> <var>$theContainer</var></span> )</code>
+		<code><a href="source-class-CPersistentDocument.html#287" title="Go to source code">Update</a>( <span><code><a href="class-CConnection.html">CConnection</a></code> <var>$theConnection</var></span> )</code>
 
 		<div class="description short">
 			
@@ -454,13 +453,11 @@ event the method will return <tt>NULL</tt>.</p>
 the object cannot be found in the container, the method will raise an
 exception.</p>
 
-<p>The method expects a single parameter, <tt>$theContainer</tt>, which
+<p>The method expects a single parameter, <tt>$theConnection</tt>, which
 represents the container in which the object should be stored. This parameter
-must be a concrete instance of the <code><a href="class-CConnection.html">CConnection</a></code> class that should be
-resolved into a concrete instance of <code><a href="class-CContainer.html">CContainer</a></code> that will be used for
-the operation. The method will take advantage of the <code><a href="class-CPersistentDocument.html#_">CPersistentDocument::DefaultDatabase()</a></code>
-and <code><a href="class-CPersistentDocument.html#_">CPersistentDocument::DefaultContainer()</a></code> methods to resolve the provided <code><a href="class-CConnection.html">CConnection</a></code> object into a <code><a href="class-CContainer.html">CContainer</a></code> instance, if the latter cannot be
-assumed, the method will raise an exception.</p>
+should be a concrete instance of of <code><a href="class-CContainer.html">CContainer</a></code>, or a concrete instance
+of <code><a href="class-CServer.html">CServer</a></code> or <code><a href="class-CDatabase.html">CDatabase</a></code>, if the current class has implemented
+the container resolve interface with <code><a href="class-CPersistentDocument.html#_">CPersistentDocument::DefaultDatabase()</a></code> and <code><a href="class-CPersistentDocument.html#_">CPersistentDocument::DefaultContainer()</a></code>.</p>
 
 <p>Once the object has been stored, it will have its <code><a href="class-CStatusDocument.html#_">CStatusDocument::_IsCommitted()</a></code>
 status set and its <code><a href="class-CStatusDocument.html#_">CStatusDocument::_IsDirty()</a></code> status reset.</p>
@@ -473,7 +470,7 @@ status set and its <code><a href="class-CStatusDocument.html#_">CStatusDocument:
 
 				<h4>Parameters</h4>
 				<div class="list"><dl>
-					<dt><var>$theContainer</var></dt>
+					<dt><var>$theConnection</var></dt>
 					<dd><code><code><a href="class-CConnection.html">CConnection</a></code></code><br> Server, database or container.</dd>
 				</dl></div>
 
@@ -512,7 +509,7 @@ status set and its <code><a href="class-CStatusDocument.html#_">CStatusDocument:
 
 		<td class="name"><div>
 		<a class="anchor" href="#_Replace">#</a>
-		<code><a href="source-class-CPersistentDocument.html#404" title="Go to source code">Replace</a>( <span><code><a href="class-CConnection.html">CConnection</a></code> <var>$theContainer</var></span> )</code>
+		<code><a href="source-class-CPersistentDocument.html#365" title="Go to source code">Replace</a>( <span><code><a href="class-CConnection.html">CConnection</a></code> <var>$theConnection</var></span> )</code>
 
 		<div class="description short">
 			
@@ -527,13 +524,11 @@ status set and its <code><a href="class-CStatusDocument.html#_">CStatusDocument:
 <p>This method will insert the current object into the provided container, if
 not found, or update the object if already there.</p>
 
-<p>The method expects a single parameter, <tt>$theContainer</tt>, which
+<p>The method expects a single parameter, <tt>$theConnection</tt>, which
 represents the container in which the object should be stored. This parameter
-must be a concrete instance of the <code><a href="class-CConnection.html">CConnection</a></code> class that should be
-resolved into a concrete instance of <code><a href="class-CContainer.html">CContainer</a></code> that will be used for
-the operation. The method will take advantage of the <code><a href="class-CPersistentDocument.html#_">CPersistentDocument::DefaultDatabase()</a></code>
-and <code><a href="class-CPersistentDocument.html#_">CPersistentDocument::DefaultContainer()</a></code> methods to resolve the provided <code><a href="class-CConnection.html">CConnection</a></code> object into a <code><a href="class-CContainer.html">CContainer</a></code> instance, if the latter cannot be
-assumed, the method will raise an exception.</p>
+should be a concrete instance of of <code><a href="class-CContainer.html">CContainer</a></code>, or a concrete instance
+of <code><a href="class-CServer.html">CServer</a></code> or <code><a href="class-CDatabase.html">CDatabase</a></code>, if the current class has implemented
+the container resolve interface with <code><a href="class-CPersistentDocument.html#_">CPersistentDocument::DefaultDatabase()</a></code> and <code><a href="class-CPersistentDocument.html#_">CPersistentDocument::DefaultContainer()</a></code>.</p>
 
 <p>The operation will only be performed if the object is not yet committed or if
 the object has its <code><a href="class-CStatusDocument.html#_">CStatusDocument::_IsDirty()</a></code> dirty status set, if not, the method will
@@ -553,7 +548,7 @@ status set and its <code><a href="class-CStatusDocument.html#_">CStatusDocument:
 
 				<h4>Parameters</h4>
 				<div class="list"><dl>
-					<dt><var>$theContainer</var></dt>
+					<dt><var>$theConnection</var></dt>
 					<dd><code><code><a href="class-CConnection.html">CConnection</a></code></code><br> Server, database or container.</dd>
 				</dl></div>
 
@@ -592,7 +587,7 @@ status set and its <code><a href="class-CStatusDocument.html#_">CStatusDocument:
 
 		<td class="name"><div>
 		<a class="anchor" href="#_Restore">#</a>
-		<code><a href="source-class-CPersistentDocument.html#509" title="Go to source code">Restore</a>( <span><code><a href="class-CConnection.html">CConnection</a></code> <var>$theContainer</var></span> )</code>
+		<code><a href="source-class-CPersistentDocument.html#450" title="Go to source code">Restore</a>( <span><code><a href="class-CConnection.html">CConnection</a></code> <var>$theConnection</var></span> )</code>
 
 		<div class="description short">
 			
@@ -607,13 +602,11 @@ status set and its <code><a href="class-CStatusDocument.html#_">CStatusDocument:
 <p>This method will load the current object with data from a document in a
 container.</p>
 
-<p>The method expects a single parameter, <tt>$theContainer</tt>, which
+<p>The method expects a single parameter, <tt>$theConnection</tt>, which
 represents the container in which the object should be stored. This parameter
-must be a concrete instance of the <code><a href="class-CConnection.html">CConnection</a></code> class that should be
-resolved into a concrete instance of <code><a href="class-CContainer.html">CContainer</a></code> that will be used for
-the operation. The method will take advantage of the <code><a href="class-CPersistentDocument.html#_">CPersistentDocument::DefaultDatabase()</a></code>
-and <code><a href="class-CPersistentDocument.html#_">CPersistentDocument::DefaultContainer()</a></code> methods to resolve the provided <code><a href="class-CConnection.html">CConnection</a></code> object into a <code><a href="class-CContainer.html">CContainer</a></code> instance, if the latter cannot be
-assumed, the method will raise an exception.</p>
+should be a concrete instance of of <code><a href="class-CContainer.html">CContainer</a></code>, or a concrete instance
+of <code><a href="class-CServer.html">CServer</a></code> or <code><a href="class-CDatabase.html">CDatabase</a></code>, if the current class has implemented
+the container resolve interface with <code><a href="class-CPersistentDocument.html#_">CPersistentDocument::DefaultDatabase()</a></code> and <code><a href="class-CPersistentDocument.html#_">CPersistentDocument::DefaultContainer()</a></code>.</p>
 
 <p>The current object must have its native unique identifier offset, kOFFSET_NID, set, or it must have all the necessary elements in order to
 generate this identifier.</p>
@@ -633,7 +626,7 @@ is obviously not called here.</p>
 
 				<h4>Parameters</h4>
 				<div class="list"><dl>
-					<dt><var>$theContainer</var></dt>
+					<dt><var>$theConnection</var></dt>
 					<dd><code><code><a href="class-CConnection.html">CConnection</a></code></code><br> Server, database or container.</dd>
 				</dl></div>
 
@@ -673,7 +666,7 @@ is obviously not called here.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#_Delete">#</a>
-		<code><a href="source-class-CPersistentDocument.html#616" title="Go to source code">Delete</a>( <span><code><a href="class-CConnection.html">CConnection</a></code> <var>$theContainer</var></span> )</code>
+		<code><a href="source-class-CPersistentDocument.html#537" title="Go to source code">Delete</a>( <span><code><a href="class-CConnection.html">CConnection</a></code> <var>$theConnection</var></span> )</code>
 
 		<div class="description short">
 			
@@ -687,13 +680,11 @@ is obviously not called here.</p>
 
 <p>This method will remove the current object from the provided container.</p>
 
-<p>The method expects a single parameter, <tt>$theContainer</tt>, which
+<p>The method expects a single parameter, <tt>$theConnection</tt>, which
 represents the container in which the object should be stored. This parameter
-must be a concrete instance of the <code><a href="class-CConnection.html">CConnection</a></code> class that should be
-resolved into a concrete instance of <code><a href="class-CContainer.html">CContainer</a></code> that will be used for
-the operation. The method will take advantage of the <code><a href="class-CPersistentDocument.html#_">CPersistentDocument::DefaultDatabase()</a></code>
-and <code><a href="class-CPersistentDocument.html#_">CPersistentDocument::DefaultContainer()</a></code> methods to resolve the provided <code><a href="class-CConnection.html">CConnection</a></code> object into a <code><a href="class-CContainer.html">CContainer</a></code> instance, if the latter cannot be
-assumed, the method will raise an exception.</p>
+should be a concrete instance of of <code><a href="class-CContainer.html">CContainer</a></code>, or a concrete instance
+of <code><a href="class-CServer.html">CServer</a></code> or <code><a href="class-CDatabase.html">CDatabase</a></code>, if the current class has implemented
+the container resolve interface with <code><a href="class-CPersistentDocument.html#_">CPersistentDocument::DefaultDatabase()</a></code> and <code><a href="class-CPersistentDocument.html#_">CPersistentDocument::DefaultContainer()</a></code>.</p>
 
 <p>Once the object has been deleted, it will have its <code><a href="class-CStatusDocument.html#_">CStatusDocument::_IsCommitted()</a></code>
 status and its <code><a href="class-CStatusDocument.html#_">CStatusDocument::_IsDirty()</a></code> status reset.</p>
@@ -707,7 +698,7 @@ status and its <code><a href="class-CStatusDocument.html#_">CStatusDocument::_Is
 
 				<h4>Parameters</h4>
 				<div class="list"><dl>
-					<dt><var>$theContainer</var></dt>
+					<dt><var>$theConnection</var></dt>
 					<dd><code><code><a href="class-CConnection.html">CConnection</a></code></code><br> Server, database or container.</dd>
 				</dl></div>
 
@@ -739,7 +730,7 @@ status and its <code><a href="class-CStatusDocument.html#_">CStatusDocument::_Is
 
 		<td class="name"><div>
 		<a class="anchor" href="#_NewObject">#</a>
-		<code><a href="source-class-CPersistentDocument.html#706" title="Go to source code">NewObject</a>( <span><code><a href="class-CContainer.html">CContainer</a></code> <var>$theContainer</var></span>, <span>mixed <var>$theIdentifier</var></span> )</code>
+		<code><a href="source-class-CPersistentDocument.html#607" title="Go to source code">NewObject</a>( <span><code><a href="class-CConnection.html">CConnection</a></code> <var>$theConnection</var></span>, <span>mixed <var>$theIdentifier</var></span> )</code>
 
 		<div class="description short">
 			
@@ -755,22 +746,36 @@ status and its <code><a href="class-CStatusDocument.html#_">CStatusDocument::_Is
 this class with it and return the object; if the document was not located in the
 container, the method will return <tt>NULL</tt>.</p>
 
+<p>The method expects a single parameter, <tt>$theConnection</tt>, which
+represents the container in which the object should be stored. This parameter
+should be a concrete instance of of <code><a href="class-CContainer.html">CContainer</a></code>, or a concrete instance
+of <code><a href="class-CServer.html">CServer</a></code> or <code><a href="class-CDatabase.html">CDatabase</a></code>, if the current class has implemented
+the container resolve interface with <code><a href="class-CPersistentDocument.html#_">CPersistentDocument::DefaultDatabase()</a></code> and <code><a href="class-CPersistentDocument.html#_">CPersistentDocument::DefaultContainer()</a></code>.</p>
+
 <p>The method expects two parameters:</p>
 
 <ul>
-	<li><tt>$theContainer</tt>: A concrete instance of the <code><a href="class-CConnection.html">CConnection</a></code>
-	class.</li>
+	<li><tt>$theConnection</tt>: The container in which the object should be stored.
+	This parameter should be a concrete instance of of <code><a href="class-CContainer.html">CContainer</a></code>, or a
+	concrete instance of <code><a href="class-CServer.html">CServer</a></code> or <code><a href="class-CDatabase.html">CDatabase</a></code>, if the current class
+	has implemented the container resolve interface with <code><a href="class-CPersistentDocument.html#_">CPersistentDocument::DefaultDatabase()</a></code> and
+	<code><a href="class-CPersistentDocument.html#_">CPersistentDocument::DefaultContainer()</a></code>.</li>
 
 	<li><tt>$theIdentifier</tt>: The key of the object in the container, by default
 	the kOFFSET_NID offset.</li>
 </ul>
 
+<p>If the object could not be located, the method will return <tt>NULL</tt>.</p>
+
+<p>Note that the resulting object will be of the class with which this static
+method was called.</p>
+
 
 
 				<h4>Parameters</h4>
 				<div class="list"><dl>
-					<dt><var>$theContainer</var></dt>
-					<dd><code><code><a href="class-CContainer.html">CContainer</a></code></code><br> Container.</dd>
+					<dt><var>$theConnection</var></dt>
+					<dd><code><code><a href="class-CConnection.html">CConnection</a></code></code><br> Server, database or container.</dd>
 					<dt><var>$theIdentifier</var></dt>
 					<dd><code>mixed</code><br> Identifier.</dd>
 				</dl></div>
@@ -797,7 +802,7 @@ container, the method will return <tt>NULL</tt>.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#_DefaultDatabase">#</a>
-		<code><a href="source-class-CPersistentDocument.html#771" title="Go to source code">DefaultDatabase</a>( <span><code><a href="class-CServer.html">CServer</a></code> <var>$theServer</var></span> )</code>
+		<code><a href="source-class-CPersistentDocument.html#690" title="Go to source code">DefaultDatabase</a>( <span><code><a href="class-CServer.html">CServer</a></code> <var>$theServer</var></span> )</code>
 
 		<div class="description short">
 			
@@ -855,7 +860,7 @@ a server. It expects a <code><a href="class-CServer.html">CServer</a></code> der
 
 		<td class="name"><div>
 		<a class="anchor" href="#_DefaultContainer">#</a>
-		<code><a href="source-class-CPersistentDocument.html#795" title="Go to source code">DefaultContainer</a>( <span><code><a href="class-CDatabase.html">CDatabase</a></code> <var>$theDatabase</var></span> )</code>
+		<code><a href="source-class-CPersistentDocument.html#714" title="Go to source code">DefaultContainer</a>( <span><code><a href="class-CDatabase.html">CDatabase</a></code> <var>$theDatabase</var></span> )</code>
 
 		<div class="description short">
 			
@@ -903,6 +908,65 @@ return a <code><a href="class-CContainer.html">CContainer</a></code> derived obj
 		</div>
 		</div></td>
 	</tr>
+	<tr data-order="ResolveContainer" id="_ResolveContainer">
+
+		<td class="attributes"><code>
+			 public static
+			mixed
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_ResolveContainer">#</a>
+		<code><a href="source-class-CPersistentDocument.html#738" title="Go to source code">ResolveContainer</a>( <span><code><a href="class-CConnection.html">CConnection</a></code> <var>$theConnection</var></span>, <span>boolean <var>$doException</var></span> )</code>
+
+		<div class="description short">
+			
+<h4>Resolve the container</h4>
+
+		</div>
+
+		<div class="description detailed hidden">
+			
+<h4>Resolve the container</h4>
+
+<p>This method can be used to get a <code><a href="class-CContainer.html">CContainer</a></code> given an instance of
+<code><a href="class-CServer.html">CServer</a></code> or <code><a href="class-CDatabase.html">CDatabase</a></code>. It will take advantage of the <code><a href="class-CPersistentDocument.html#_">CPersistentDocument::DefaultDatabase()</a></code> and <code><a href="class-CPersistentDocument.html#_">CPersistentDocument::DefaultContainer()</a></code> methods to obtain the
+value.</p>
+
+<p>The first argument of this method is the connection object, the second is a
+boolean which determines whether the method should raise an exception if the
+container cannot be resolved.</p>
+
+<p>The method will return an exception regardless of the value of the second
+parameter if the first parameter is neither a <code><a href="class-CServer.html">CServer</a></code> or <code><a href="class-CDatabase.html">CDatabase</a></code> derived instance.</p>
+
+
+
+				<h4>Parameters</h4>
+				<div class="list"><dl>
+					<dt><var>$theConnection</var></dt>
+					<dd><code><code><a href="class-CConnection.html">CConnection</a></code></code><br> Connection object.</dd>
+					<dt><var>$doException</var></dt>
+					<dd><code>boolean</code><br> <tt>TRUE</tt> raise exception.</dd>
+				</dl></div>
+
+				<h4>Returns</h4>
+				<div class="list">
+					<code>mixed</code><br><code><a href="class-CContainer.html">CContainer</a></code> or <tt>NULL</tt> if not found.<br />
+				</div>
+
+				<h4>Throws</h4>
+				<div class="list">
+					<code><code><a href="class-Exception.html">Exception</a></code></code><br />
+				</div>
+
+
+
+		</div>
+		</div></td>
+	</tr>
 	<tr data-order="_Postset" id="__Postset">
 
 		<td class="attributes"><code>
@@ -914,7 +978,7 @@ return a <code><a href="class-CContainer.html">CContainer</a></code> derived obj
 
 		<td class="name"><div>
 		<a class="anchor" href="#__Postset">#</a>
-		<code><a href="source-class-CPersistentDocument.html#828" title="Go to source code">_Postset</a>( <span>reference <var>&amp; $theOffset</var></span>, <span>reference <var>&amp; $theValue</var></span> )</code>
+		<code><a href="source-class-CPersistentDocument.html#848" title="Go to source code">_Postset</a>( <span>reference <var>&amp; $theOffset</var></span>, <span>reference <var>&amp; $theValue</var></span> )</code>
 
 		<div class="description short">
 			
@@ -970,7 +1034,7 @@ except that they are passed by reference.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#__Postunset">#</a>
-		<code><a href="source-class-CPersistentDocument.html#867" title="Go to source code">_Postunset</a>( <span>reference <var>&amp; $theOffset</var></span> )</code>
+		<code><a href="source-class-CPersistentDocument.html#887" title="Go to source code">_Postunset</a>( <span>reference <var>&amp; $theOffset</var></span> )</code>
 
 		<div class="description short">
 			
@@ -1024,7 +1088,7 @@ except that it passed by reference.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#__Precommit">#</a>
-		<code><a href="source-class-CPersistentDocument.html#914" title="Go to source code">_Precommit</a>( <span><code><a href="class-CContainer.html">CContainer</a></code> <var>$theContainer</var></span>, <span>bitfield <var>$theModifiers</var> = kFLAG_DEFAULT </span> )</code>
+		<code><a href="source-class-CPersistentDocument.html#934" title="Go to source code">_Precommit</a>( <span><code><a href="class-CConnection.html">CConnection</a></code> <var>$theConnection</var></span>, <span>bitfield <var>$theModifiers</var> = kFLAG_DEFAULT </span> )</code>
 
 		<div class="description short">
 			
@@ -1043,8 +1107,8 @@ data.</p>
 <p>The method accepts two parameters:</p>
 
 <ul>
-	<li><tt>$theContainer</tt>: The container in which the object is to be
-	committed.</li>
+	<li><tt>$theConnection</tt>: The container in which the object is to be
+	committed, a server or a database if the <code><a href="class-CPersistentDocument.html#_">CPersistentDocument::DefaultDatabase()</a></code> and <code><a href="class-CPersistentDocument.html#_">CPersistentDocument::DefaultContainer()</a></code> are able to resolve it into a container.</li>
 
 	<li><tt>$theModifiers</tt>: The commit options provided as a bitfield in which
 	the following values are considered:
@@ -1055,7 +1119,9 @@ data.</p>
 
 			<li><tt>kFLAG_PERSIST_REPLACE</tt>: Replace operation.</li>
 
-			<li><tt>kFLAG_PERSIST_MODIFY</tt>: Modification operation.</li>
+			<li><tt>kFLAG_PERSIST_MODIFY</tt>: Modification operation: this option
+			is legal, but not valid: it is a legal option, but this method should ignore
+			it.</li>
 
 			<li><tt>kFLAG_PERSIST_DELETE</tt>: Delete operation.</li>
 		</ul>
@@ -1073,8 +1139,8 @@ raise an exception.</p>
 
 				<h4>Parameters</h4>
 				<div class="list"><dl>
-					<dt><var>$theContainer</var></dt>
-					<dd><code><code><a href="class-CContainer.html">CContainer</a></code></code><br> Container.</dd>
+					<dt><var>$theConnection</var></dt>
+					<dd><code><code><a href="class-CConnection.html">CConnection</a></code></code><br> Container.</dd>
 					<dt><var>$theModifiers</var></dt>
 					<dd><code>bitfield</code><br> Commit options.</dd>
 				</dl></div>
@@ -1115,7 +1181,7 @@ raise an exception.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#__Postcommit">#</a>
-		<code><a href="source-class-CPersistentDocument.html#978" title="Go to source code">_Postcommit</a>( <span><code><a href="class-CContainer.html">CContainer</a></code> <var>$theContainer</var></span>, <span>bitfield <var>$theModifiers</var> = kFLAG_DEFAULT </span> )</code>
+		<code><a href="source-class-CPersistentDocument.html#1002" title="Go to source code">_Postcommit</a>( <span><code><a href="class-CConnection.html">CConnection</a></code> <var>$theConnection</var></span>, <span>bitfield <var>$theModifiers</var> = kFLAG_DEFAULT </span> )</code>
 
 		<div class="description short">
 			
@@ -1133,8 +1199,8 @@ to update the object status and normalise eventual elements.</p>
 <p>The method accepts two parameters:</p>
 
 <ul>
-	<li><tt>$theContainer</tt>: The container in which the object was
-	committed.</li>
+	<li><tt>$theConnection</tt>: The container in which the object is to be
+	committed, a server or a database if the <code><a href="class-CPersistentDocument.html#_">CPersistentDocument::DefaultDatabase()</a></code> and <code><a href="class-CPersistentDocument.html#_">CPersistentDocument::DefaultContainer()</a></code> are able to resolve it into a container.</li>
 
 	<li><tt>$theModifiers</tt>: The commit options provided as a bitfield in which
 	the following values are considered:
@@ -1145,7 +1211,9 @@ to update the object status and normalise eventual elements.</p>
 
 			<li><tt>kFLAG_PERSIST_REPLACE</tt>: Replace operation.</li>
 
-			<li><tt>kFLAG_PERSIST_MODIFY</tt>: Modification operation.</li>
+			<li><tt>kFLAG_PERSIST_MODIFY</tt>: Modification operation: this option
+			is legal, but not valid: it is a legal option, but this method should ignore
+			it.</li>
 
 			<li><tt>kFLAG_PERSIST_DELETE</tt>: Delete operation.</li>
 		</ul>
@@ -1162,8 +1230,8 @@ resetting it after deleting.</p>
 
 				<h4>Parameters</h4>
 				<div class="list"><dl>
-					<dt><var>$theContainer</var></dt>
-					<dd><code><code><a href="class-CContainer.html">CContainer</a></code></code><br> Container.</dd>
+					<dt><var>$theConnection</var></dt>
+					<dd><code><code><a href="class-CConnection.html">CConnection</a></code></code><br> Container.</dd>
 					<dt><var>$theModifiers</var></dt>
 					<dd><code>bitfield</code><br> Commit options.</dd>
 				</dl></div>
@@ -1203,7 +1271,7 @@ resetting it after deleting.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#__Ready">#</a>
-		<code><a href="source-class-CPersistentDocument.html#1058" title="Go to source code">_Ready</a>( )</code>
+		<code><a href="source-class-CPersistentDocument.html#1086" title="Go to source code">_Ready</a>( )</code>
 
 		<div class="description short">
 			

@@ -137,12 +137,19 @@ define( "kFLAG_PERSIST_DELETE",			0x00000080 );		// Delete.
  *======================================================================================*/
 
 /**
+ * Commit mask.
+ *
+ * This value masks the access flags that imply writing, with the exception of modification
+ * and delete.
+ */
+define( "kFLAG_PERSIST_COMMIT_MASK",	0x00000030 );		// Commit mask.
+
+/**
  * Write mask.
  *
- * This value masks the access flags that imply writing to the collection, with the
- * exception of the delete ({@link kFLAG_PERSIST_DELETE}) option.
+ * This value masks the access flags that imply writing, with the exception of modification.
  */
-define( "kFLAG_PERSIST_WRITE_MASK",		0x00000070 );		// Write mask.
+define( "kFLAG_PERSIST_WRITE_MASK",		0x000000B0 );		// Write mask.
 
 /**
  * Persist mask.

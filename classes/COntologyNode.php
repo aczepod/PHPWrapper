@@ -197,7 +197,12 @@ class COntologyNode extends CNode
 	/**
 	 * <h4>Prepare the object before committing</h4>
 	 *
-	 * In this class we check whether the node term is an ontology term and can be found.
+	 * In this class we commit the eventual term provided as an uncommitted object and
+	 * replace the offset with the term's native identifier.
+	 *
+	 * Note that we need to get the terms container in order to commit the term, for this
+	 * reason you should always instantiate containsers from a database, in that way it will
+	 * be possible to get the container's database, {@link kOFFSET_PARENT}.
 	 *
 	 * @param CContainer			$theContainer		Container.
 	 * @param bitfield				$theModifiers		Commit options.

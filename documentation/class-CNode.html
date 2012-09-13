@@ -21,9 +21,9 @@
 		<div id="groups">
 			<h3>Packages</h3>
 			<ul>
-				<li class="main"><a href="package-MyWrapper.html">MyWrapper<span></span></a>
+				<li class="active main"><a href="package-MyWrapper.html">MyWrapper<span></span></a>
 						<ul>
-				<li class="main"><a href="package-MyWrapper.Framework.html">Framework</a>
+				<li class="active main"><a href="package-MyWrapper.Framework.html">Framework</a>
 						</li>
 				<li class="main"><a href="package-MyWrapper.Functions.html">Functions</a>
 						</li>
@@ -32,8 +32,6 @@
 				<li class="main"><a href="package-MyWrapper.Persistence.html">Persistence</a>
 						</li>
 							</ul></li>
-				<li class="active"><a href="package-None.html">None</a>
-						</li>
 				<li><a href="package-PHP.html">PHP</a>
 						</li>
 			</ul>
@@ -45,7 +43,15 @@
 		<div id="elements">
 			<h3>Classes</h3>
 			<ul>
-				<li class="active"><a href="class-CNode.html" class="invalid">CNode</a></li>
+				<li><a href="class-CConnection.html">CConnection</a></li>
+				<li><a href="class-CContainer.html">CContainer</a></li>
+				<li><a href="class-CDatabase.html">CDatabase</a></li>
+				<li><a href="class-CDocument.html">CDocument</a></li>
+				<li><a href="class-CEdge.html">CEdge</a></li>
+				<li class="active"><a href="class-CNode.html">CNode</a></li>
+				<li><a href="class-CServer.html">CServer</a></li>
+				<li><a href="class-CStatusDocument.html">CStatusDocument</a></li>
+				<li><a href="class-CTerm.html">CTerm</a></li>
 			</ul>
 
 
@@ -73,7 +79,7 @@
 				<a href="index.html" title="Overview"><span>Overview</span></a>
 			</li>
 			<li>
-				<a href="package-None.html" title="Summary of None"><span>Package</span></a>
+				<a href="package-MyWrapper.Framework.html" title="Summary of MyWrapper\Framework"><span>Package</span></a>
 			</li>
 			<li class="active">
 <span>Class</span>			</li>
@@ -90,17 +96,651 @@
 <div id="content" class="class">
 	<h1>Class CNode</h1>
 
-		<div class="invalid">
-			<p>
-				Documentation of this class could not be generated.
-			</p>
-			<p>
-				Class was originally declared in CNode.old.php and is invalid because of:
-			</p>
-			<ul>
-				<li>Class was redeclared in CNode.php.</li>
-			</ul>
+
+	<div class="description">
+	
+<h3>Node object ancestor</h3>
+
+<p>A node is an element of a tree or graph which is connected to other nodes
+through edges, a node is a vertex of a relationship. This class concentrates in
+the core features of the node, without taking into consideration the connections
+to other nodes.</p>
+
+<p>The node's main property is the term, kOFFSET_TERM, which defines the
+abstract concept that the node represents. In this class the offset may hold any
+value.</p>
+
+<p>The node also features a kOFFSET_KIND property which is a list of
+values which represent the specific kind of node, this attribute acts a an
+enumerated set.</p>
+
+<p>Finally, the class features the kOFFSET_TYPE property which defines
+the data type of the node.</p>
+
+<p>The class does not feature attributes that can be used to uniquely identify
+an object, it is the duty of the hosting container to provide the kOFFSET_NID identifier.</p>
+
+<p>The object will have its <code><a href="class-CStatusDocument.html#_">CStatusDocument::_IsInited()</a></code> status set if the kOFFSET_TERM property has been set, derived classes may add other required
+attributes.</p>
+
+<p>The kOFFSET_TERM offset can only be modified as long as the object
+has not been committed, <code><a href="class-CStatusDocument.html#_">CStatusDocument::_IsCommitted()</a></code>.</p>
+
+<p>The class features member accessor methods for the default offsets:</p>
+
+<ul>
+	<li><code><a href="class-CNode.html#_">CNode::Term()</a></code>: This method manages the node's term, kOFFSET_TERM.</li>
+
+	<li><code><a href="class-CNode.html#_">CNode::Kind()</a></code>: This method manages the node's kind, kOFFSET_KIND.</li>
+
+	<li><code><a href="class-CNode.html#_">CNode::Type()</a></code>: This method manages the node's type, kOFFSET_TYPE.</li>
+</ul>
+
+	</div>
+
+	<dl class="tree">
+		<dd style="padding-left:0px">
+			<a href="class-ArrayObject.html"><span>ArrayObject</span></a>
+			
+			 implements 
+				<a href="class-IteratorAggregate.html"><span>IteratorAggregate</span></a>, 
+			
+				<a href="class-Traversable.html"><span>Traversable</span></a>, 
+			
+				<a href="class-ArrayAccess.html"><span>ArrayAccess</span></a>, 
+			
+				<a href="class-Serializable.html"><span>Serializable</span></a>, 
+			
+				<a href="class-Countable.html"><span>Countable</span></a>
+			
+			
+		</dd>
+		<dd style="padding-left:30px">
+			<img src="resources/inherit.png" alt="Extended by" />
+			<a href="class-CDocument.html"><span>CDocument</span></a>
+			
+			
+			
+		</dd>
+		<dd style="padding-left:60px">
+			<img src="resources/inherit.png" alt="Extended by" />
+			<a href="class-CStatusDocument.html"><span>CStatusDocument</span></a>
+			
+			
+			
+		</dd>
+		<dd style="padding-left:90px">
+			<img src="resources/inherit.png" alt="Extended by" />
+			<a href="class-CPersistentDocument.html"><span>CPersistentDocument</span></a>
+			
+			
+			
+		</dd>
+		<dd style="padding-left:120px">
+			<img src="resources/inherit.png" alt="Extended by" />
+			<a href="class-CPersistentObject.html"><span>CPersistentObject</span></a>
+			
+			
+			
+		</dd>
+		<dd style="padding-left:150px">
+			<img src="resources/inherit.png" alt="Extended by" />
+<b><span>CNode</span></b>			
+			
+			
+		</dd>
+	</dl>
+
+
+	<div>
+		<h4>Direct known subclasses</h4>
+			<a href="class-COntologyNode.html">COntologyNode</a>
+	</div>
+
+
+
+
+
+
+	<div class="info">
+		
+		
+		
+		<b>Package:</b> <a href="package-MyWrapper.html">MyWrapper</a>\<a href="package-MyWrapper.Framework.html">Framework</a><br />
+
+				<b>Author:</b>
+				Milko A. Škofič &lt;<a
+href="mailto:m.skofic&#64;cgiar.org">m.skofic&#64;<!---->cgiar.org</a>&gt;<br />
+		<b>Located at</b> <a href="source-class-CNode.html#36" title="Go to source code">CNode.php</a><br />
+	</div>
+
+
+	<table class="summary" id="methods">
+	<caption>Methods summary</caption>
+	<tr data-order="Term" id="_Term">
+
+		<td class="attributes"><code>
+			 public 
+			mixed
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_Term">#</a>
+		<code><a href="source-class-CNode.html#88" title="Go to source code">Term</a>( <span>mixed <var>$theValue</var> = <span class="php-keyword1">NULL</span></span>, <span>boolean <var>$getOld</var> = <span class="php-keyword1">FALSE</span> </span> )</code>
+
+		<div class="description short">
+			
+<h4>Manage node term</h4>
+
 		</div>
+
+		<div class="description detailed hidden">
+			
+<h4>Manage node term</h4>
+
+<p>This method can be used to manage the node's term, kOFFSET_TERM,
+which represents the node abstract term.</p>
+
+<p>The method accepts a parameter which represents either the term, or the
+requested operation, depending on its value:</p>
+
+<ul>
+	<li><tt>NULL</tt>: Return the current value.</li>
+
+	<li><tt>FALSE</tt>: Delete the current value.</li>
+
+	<li><i>other</i>: Set the value with the provided parameter.</li>
+</ul>
+
+<p>The second parameter is a boolean which if <tt>TRUE</tt> will return the
+<i>old</i> value when replacing containers; if <tt>FALSE</tt>, it will return
+the currently set value.</p>
+
+<p>Note that when the object has the <code><a href="class-CStatusDocument.html#_">CStatusDocument::_IsCommitted()</a></code> status this offset
+will be locked and an exception will be raised.</p>
+
+
+
+				<h4>Parameters</h4>
+				<div class="list"><dl>
+					<dt><var>$theValue</var></dt>
+					<dd><code>mixed</code><br> Term or operation.</dd>
+					<dt><var>$getOld</var></dt>
+					<dd><code>boolean</code><br> <tt>TRUE</tt> get old value.</dd>
+				</dl></div>
+
+				<h4>Returns</h4>
+				<div class="list">
+					<code>mixed</code><br><i>New</i> or <i>old</i> native container.<br />
+				</div>
+
+
+				<h4>See</h4>
+				<div class="list">
+						kOFFSET_TERM<br />
+				</div>
+				<h4>Uses</h4>
+				<div class="list">
+						<code><code><a href="function-ManageOffset.html">ManageOffset()</a></code></code> <br />
+				</div>
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="Kind" id="_Kind">
+
+		<td class="attributes"><code>
+			 public 
+			mixed
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_Kind">#</a>
+		<code><a href="source-class-CNode.html#131" title="Go to source code">Kind</a>( <span>mixed <var>$theValue</var> = <span class="php-keyword1">NULL</span></span>, <span>mixed <var>$theOperation</var> = <span class="php-keyword1">NULL</span></span>, <span>boolean <var>$getOld</var> = <span class="php-keyword1">FALSE</span> </span> )</code>
+
+		<div class="description short">
+			
+<h4>Manage node kind set</h4>
+
+		</div>
+
+		<div class="description detailed hidden">
+			
+<h4>Manage node kind set</h4>
+
+<p>The node kind set, kOFFSET_KIND, holds a list of unique values that
+represent the different kinds or types associated with the current node. The
+type of an object is a general qualification that applies to any class of
+object, such as a data type; the kind, instead, refers to a qualification
+specific to the current class of object.</p>
+
+<p>This offset collects the list of these qualifications in an enumerated set
+that can be managed with the following parameters:</p>
+
+<ul>
+	<li><tt>$theValue</tt>: Depending on the next parameter, this may either refer
+	to the value to be set or to the index of the element to be retrieved or
+	deleted:
+		<ul>
+			<li><tt>NULL</tt>: This value indicates that we want to operate on all elements,
+			which means, in practical terms, that we either want to retrieve or delete the
+			full list. If the operation parameter resolves to <tt>TRUE</tt>, the method will
+			default to retrieving the current list and no new element will be added.</li>
+
+			<li><tt>array</tt>: An array indicates that we want to operate on a list of
+			values and that other parameters may also be provided as lists. Note that <code><a href="class-ArrayObject.html">ArrayObject</a></code> instances are not considered here as arrays.</li>
+
+			<li><i>other</i>: Any other type represents either the new value to be added or
+			the index to the value to be returned or deleted.</li>
+		</ul>
+	</li>
+
+	<li><tt>$theOperation</tt>: This parameter represents the operation to be
+	performed whose scope depends on the value of the previous parameter:
+		<ul>
+			<li><tt>NULL</tt>: Return the element or full list.</li>
+
+			<li><tt>FALSE</tt>: Delete the element or full list.</li>
+
+			<li><tt>array</tt>: This type is only considered if the <tt>$theValue</tt>
+			parameter is provided as an array: the method will be called for each element of
+			the <tt>$theValue</tt> parameter matched with the corresponding element of this
+			parameter, which also means that both both parameters must share the same
+			count.</li>
+
+			<li><i>other</i>: Add the <tt>$theValue</tt> value to the list. If you provided
+			<tt>NULL</tt> in the previous parameter, the operation will be reset to
+			<tt>NULL</tt>.</li>
+		</ul>
+	</li>
+
+	<li><tt>$getOld</tt>: Determines what the method will return:
+		<ul>
+			<li><tt>TRUE</tt>: Return the value <i>before</i> it was eventually
+			modified.</li>
+
+			<li><tt>FALSE</tt>: Return the value <i>after</i> it was eventually
+			modified.</li>
+		</ul>
+	</li>
+</ul>
+
+
+
+				<h4>Parameters</h4>
+				<div class="list"><dl>
+					<dt><var>$theValue</var></dt>
+					<dd><code>mixed</code><br> Value or index.</dd>
+					<dt><var>$theOperation</var></dt>
+					<dd><code>mixed</code><br> Operation.</dd>
+					<dt><var>$getOld</var></dt>
+					<dd><code>boolean</code><br> TRUE get old value.</dd>
+				</dl></div>
+
+				<h4>Returns</h4>
+				<div class="list">
+					<code>mixed</code><br><i>New</i> or <i>old</i> native container.<br />
+				</div>
+
+
+				<h4>See</h4>
+				<div class="list">
+						kOFFSET_KIND<br />
+				</div>
+				<h4>Uses</h4>
+				<div class="list">
+						<code><code><a href="function-ManageObjectSetOffset.html">ManageObjectSetOffset()</a></code></code> <br />
+				</div>
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="Type" id="_Type">
+
+		<td class="attributes"><code>
+			 public 
+			mixed
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_Type">#</a>
+		<code><a href="source-class-CNode.html#201" title="Go to source code">Type</a>( <span>mixed <var>$theValue</var> = <span class="php-keyword1">NULL</span></span>, <span>boolean <var>$getOld</var> = <span class="php-keyword1">FALSE</span> </span> )</code>
+
+		<div class="description short">
+			
+<h4>Manage node type</h4>
+
+		</div>
+
+		<div class="description detailed hidden">
+			
+<h4>Manage node type</h4>
+
+<p>This method can be used to manage the node's type, kOFFSET_TYPE,
+which is an enumerated value that represents the data type of the node.</p>
+
+<p>The method accepts a parameter which represents either the type, or the
+requested operation, depending on its value:</p>
+
+<ul>
+	<li><tt>NULL</tt>: Return the current value.</li>
+
+	<li><tt>FALSE</tt>: Delete the current value.</li>
+
+	<li><i>other</i>: Set the value with the provided parameter.</li>
+</ul>
+
+<p>The second parameter is a boolean which if <tt>TRUE</tt> will return the
+<i>old</i> value when replacing containers; if <tt>FALSE</tt>, it will return
+the currently set value.</p>
+
+
+
+				<h4>Parameters</h4>
+				<div class="list"><dl>
+					<dt><var>$theValue</var></dt>
+					<dd><code>mixed</code><br> Type or operation.</dd>
+					<dt><var>$getOld</var></dt>
+					<dd><code>boolean</code><br> <tt>TRUE</tt> get old value.</dd>
+				</dl></div>
+
+				<h4>Returns</h4>
+				<div class="list">
+					<code>mixed</code><br><i>New</i> or <i>old</i> native container.<br />
+				</div>
+
+
+				<h4>See</h4>
+				<div class="list">
+						kOFFSET_TYPE<br />
+				</div>
+				<h4>Uses</h4>
+				<div class="list">
+						<code><code><a href="function-ManageOffset.html">ManageOffset()</a></code></code> <br />
+				</div>
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="_Preset" id="__Preset">
+
+		<td class="attributes"><code>
+			 protected 
+			
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#__Preset">#</a>
+		<code><a href="source-class-CNode.html#250" title="Go to source code">_Preset</a>( <span>reference <var>&amp; $theOffset</var></span>, <span>reference <var>&amp; $theValue</var></span> )</code>
+
+		<div class="description short">
+			
+<h4>Handle offset before setting it</h4>
+
+		</div>
+
+		<div class="description detailed hidden">
+			
+<h4>Handle offset before setting it</h4>
+
+<p>In this class we prevent the modification of the kOFFSET_TERM offset
+if the object has its <code><a href="class-CStatusDocument.html#_">CStatusDocument::_IsCommitted()</a></code> status.</p>
+
+<p>We also ensure that the kOFFSET_KIND offset is an array.</p>
+
+
+
+				<h4>Parameters</h4>
+				<div class="list"><dl>
+					<dt><var>$theOffset</var></dt>
+					<dd><code>reference</code><br>&amp;$theOffset Offset.</dd>
+					<dt><var>$theValue</var></dt>
+					<dd><code>reference</code><br>&amp;$theValue Value to set at offset.</dd>
+				</dl></div>
+
+
+				<h4>Throws</h4>
+				<div class="list">
+					<code><code><a href="class-Exception.html">Exception</a></code></code><br />
+				</div>
+
+				<h4>See</h4>
+				<div class="list">
+						kOFFSET_TERM<br />
+				</div>
+				<h4>Uses</h4>
+				<div class="list">
+						<code><code><a href="class-CStatusDocument.html#_">CStatusDocument::_IsCommitted()</a></code></code> <br />
+				</div>
+
+				<h4>Overrides</h4>
+				<div class="list"><code><a href="class-CPersistentObject.html#_">CPersistentObject::_Preset</a></code></div>
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="_Preunset" id="__Preunset">
+
+		<td class="attributes"><code>
+			 protected 
+			
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#__Preunset">#</a>
+		<code><a href="source-class-CNode.html#303" title="Go to source code">_Preunset</a>( <span>reference <var>&amp; $theOffset</var></span> )</code>
+
+		<div class="description short">
+			
+<h4>Handle offset before unsetting it</h4>
+
+		</div>
+
+		<div class="description detailed hidden">
+			
+<h4>Handle offset before unsetting it</h4>
+
+<p>In this class we prevent the modification of the kOFFSET_TERM offset
+if the object has its <code><a href="class-CStatusDocument.html#_">CStatusDocument::_IsCommitted()</a></code> status set.</p>
+
+
+
+				<h4>Parameters</h4>
+				<div class="list"><dl>
+					<dt><var>$theOffset</var></dt>
+					<dd><code>reference</code><br>&amp;$theOffset Offset.</dd>
+				</dl></div>
+
+
+				<h4>Throws</h4>
+				<div class="list">
+					<code><code><a href="class-Exception.html">Exception</a></code></code><br />
+				</div>
+
+				<h4>See</h4>
+				<div class="list">
+						kOFFSET_TERM<br />
+				</div>
+				<h4>Uses</h4>
+				<div class="list">
+						<code><code><a href="class-CStatusDocument.html#_">CStatusDocument::_IsCommitted()</a></code></code> <br />
+				</div>
+
+				<h4>Overrides</h4>
+				<div class="list"><code><a href="class-CPersistentObject.html#_">CPersistentObject::_Preunset</a></code></div>
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="_Ready" id="__Ready">
+
+		<td class="attributes"><code>
+			 protected 
+			boolean
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#__Ready">#</a>
+		<code><a href="source-class-CNode.html#352" title="Go to source code">_Ready</a>( )</code>
+
+		<div class="description short">
+			
+<h4>Determine if the object is ready</h4>
+
+		</div>
+
+		<div class="description detailed hidden">
+			
+<h4>Determine if the object is ready</h4>
+
+<p>In this class we tie the <code><a href="class-CStatusDocument.html#_">CStatusDocument::_IsInited()</a></code> status to the presence or
+absence of the kOFFSET_TERM offset.</p>
+
+
+
+
+				<h4>Returns</h4>
+				<div class="list">
+					<code>boolean</code><br><tt>TRUE</tt> means {@link _IsInited( <tt>TRUE</tt> ).<br />
+				</div>
+
+
+				<h4>See</h4>
+				<div class="list">
+						kOFFSET_TERM<br />
+				</div>
+
+				<h4>Overrides</h4>
+				<div class="list"><code><a href="class-CPersistentDocument.html#_">CPersistentDocument::_Ready</a></code></div>
+
+		</div>
+		</div></td>
+	</tr>
+	</table>
+
+	<table class="summary inherited">
+	<caption>Methods inherited from <a href="class-CPersistentObject.html#methods">CPersistentObject</a></caption>
+	<tr>
+		<td><code>
+			<a href="class-CPersistentObject.html#_">CLassName()</a>, 
+			<a href="class-CPersistentObject.html#_">GID()</a>, 
+			<a href="class-CPersistentObject.html#_">NewObject()</a>, 
+			<a href="class-CPersistentObject.html#_">_Precommit()</a>, 
+			<a href="class-CPersistentObject.html#_">__toString()</a>, 
+			<a href="class-CPersistentObject.html#_">_id()</a>, 
+			<a href="class-CPersistentObject.html#_">_index()</a>
+		</code></td>
+	</tr>
+	</table>
+	<table class="summary inherited">
+	<caption>Methods inherited from <a href="class-CPersistentDocument.html#methods">CPersistentDocument</a></caption>
+	<tr>
+		<td><code>
+			<a href="class-CPersistentDocument.html#_">DefaultContainer()</a>, 
+			<a href="class-CPersistentDocument.html#_">DefaultDatabase()</a>, 
+			<a href="class-CPersistentDocument.html#_">Delete()</a>, 
+			<a href="class-CPersistentDocument.html#_">Insert()</a>, 
+			<a href="class-CPersistentDocument.html#_">NID()</a>, 
+			<a href="class-CPersistentDocument.html#_">Replace()</a>, 
+			<a href="class-CPersistentDocument.html#_">ResolveContainer()</a>, 
+			<a href="class-CPersistentDocument.html#_">Restore()</a>, 
+			<a href="class-CPersistentDocument.html#_">Update()</a>, 
+			<a href="class-CPersistentDocument.html#_">_Postcommit()</a>, 
+			<a href="class-CPersistentDocument.html#_">_Postset()</a>, 
+			<a href="class-CPersistentDocument.html#_">_Postunset()</a>, 
+			<a href="class-CPersistentDocument.html#_">__construct()</a>
+		</code></td>
+	</tr>
+	</table>
+	<table class="summary inherited">
+	<caption>Methods inherited from <a href="class-CStatusDocument.html#methods">CStatusDocument</a></caption>
+	<tr>
+		<td><code>
+			<a href="class-CStatusDocument.html#_">_IsCommitted()</a>, 
+			<a href="class-CStatusDocument.html#_">_IsDirty()</a>, 
+			<a href="class-CStatusDocument.html#_">_IsEncoded()</a>, 
+			<a href="class-CStatusDocument.html#_">_IsInited()</a>, 
+			<a href="class-CStatusDocument.html#_">offsetSet()</a>, 
+			<a href="class-CStatusDocument.html#_">offsetUnset()</a>
+		</code></td>
+	</tr>
+	</table>
+	<table class="summary inherited">
+	<caption>Methods inherited from <a href="class-CDocument.html#methods">CDocument</a></caption>
+	<tr>
+		<td><code>
+			<a href="class-CDocument.html#_">array_keys()</a>, 
+			<a href="class-CDocument.html#_">array_values()</a>, 
+			<a href="class-CDocument.html#_">offsetGet()</a>
+		</code></td>
+	</tr>
+	</table>
+	<table class="summary inherited">
+	<caption>Methods inherited from <a href="class-ArrayObject.html#methods">ArrayObject</a></caption>
+	<tr>
+		<td><code>
+			<a href="class-ArrayObject.html#_">append()</a>, 
+			<a href="class-ArrayObject.html#_">asort()</a>, 
+			<a href="class-ArrayObject.html#_">count()</a>, 
+			<a href="class-ArrayObject.html#_">exchangeArray()</a>, 
+			<a href="class-ArrayObject.html#_">getArrayCopy()</a>, 
+			<a href="class-ArrayObject.html#_">getFlags()</a>, 
+			<a href="class-ArrayObject.html#_">getIterator()</a>, 
+			<a href="class-ArrayObject.html#_">getIteratorClass()</a>, 
+			<a href="class-ArrayObject.html#_">ksort()</a>, 
+			<a href="class-ArrayObject.html#_">natcasesort()</a>, 
+			<a href="class-ArrayObject.html#_">natsort()</a>, 
+			<a href="class-ArrayObject.html#_">offsetExists()</a>, 
+			<a href="class-ArrayObject.html#_">serialize()</a>, 
+			<a href="class-ArrayObject.html#_">setFlags()</a>, 
+			<a href="class-ArrayObject.html#_">setIteratorClass()</a>, 
+			<a href="class-ArrayObject.html#_">uasort()</a>, 
+			<a href="class-ArrayObject.html#_">uksort()</a>, 
+			<a href="class-ArrayObject.html#_">unserialize()</a>
+		</code></td>
+	</tr>
+	</table>
+
+
+
+
+	<table class="summary inherited">
+	<caption>Constants inherited from <a href="class-ArrayObject.html#constants">ArrayObject</a></caption>
+	<tr>
+		<td><code>
+			<a href="class-ArrayObject.html#ARRAY_AS_PROPS"><b>ARRAY_AS_PROPS</b></a>, 
+			<a href="class-ArrayObject.html#STD_PROP_LIST"><b>STD_PROP_LIST</b></a>
+		</code></td>
+	</tr>
+	</table>
+
+
+
+	<table class="summary inherited">
+	<caption>Properties inherited from <a href="class-CStatusDocument.html#properties">CStatusDocument</a></caption>
+	<tr>
+		<td><code>
+			<a href="class-CStatusDocument.html#$mStatus"><var>$mStatus</var></a>
+		</code></td>
+	</tr>
+	</table>
+
+
 </div>
 
 	<div id="footer">

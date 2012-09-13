@@ -46,6 +46,13 @@ class MyClass extends CTerm
 	public function dirty()		{	return ( $this->_IsDirty() ) ? 'Y' : 'N';		}
 	public function committed()	{	return ( $this->_IsCommitted() ) ? 'Y' : 'N';	}
 	public function encoded()	{	return ( $this->_IsEncoded() ) ? 'Y' : 'N';		}
+	//
+	// Resolve default container.
+	//
+	static function DefaultDatabase( CServer $theServer )
+		{	return $theServer->Database( "TEST" );	}
+	static function DefaultContainer( CDatabase $theDatabase )
+		{	return $theDatabase->Container( "CTerm" );	}
 }
 
 
@@ -83,6 +90,7 @@ try
 	echo( '<h4>Create test container</h4>' );
 	echo( '$server = new CMongoServer();<br />' );
 	$server = New CMongoServer();
+	echo( '$db = $mongo->selectDB( "TEST" );<br />' );
 	echo( '$database = $server->Database( "TEST" );<br />' );
 	$database = $server->Database( "TEST" );
 	echo( '$database->Drop();<br />' );
@@ -165,6 +173,7 @@ try
 		echo( '<h5>$test[ \'C\' ][ 1 ];</h5>' );
 		echo( '<pre>' ); print_r( $test[ 'C' ][ 1 ] ); echo( '</pre>' );
 		echo( '<hr />' );
+		echo( '<hr />' );
 	}
 
 	//
@@ -196,11 +205,11 @@ try
 	//
 	// Insert namespace term.
 	//
-	echo( '<h4>Insert initialized object</h4>' );
+	echo( '<h4>Insert namespace term</h4>' );
 	echo( '<h5>$namespace = new MyClass();</h5>' );
 	$namespace = new MyClass();
-	echo( '<h5>$namespace[ kOFFSET_LID ] = "NAMESPACE";</h5>' );
-	$namespace[ kOFFSET_LID ] = "NAMESPACE";
+	echo( '<h5>$namespace->LID( "NAMESPACE" );</h5>' );
+	$namespace->LID( "NAMESPACE" );
 	echo( 'Inited['.$namespace->inited()
 				   .'] Dirty['.$namespace->dirty()
 				   .'] Saved['.$namespace->committed()
@@ -227,7 +236,6 @@ try
 				   .'] Saved['.$termA->committed()
 				   .'] Encoded['.$termA->encoded().']<br />' );
 	echo( '<pre>' ); print_r( $termA ); echo( '</pre>' );
-	echo( '<pre>' ); print_r( $namespace ); echo( '</pre>' );
 	echo( '<hr />' );
 
 	//
@@ -277,6 +285,35 @@ try
 		echo( '<hr>' );
 	}
 	echo( '<hr>' );
+
+	//
+	// Insert term B.
+	//
+	echo( '<h4>Insert term B</h4>' );
+	echo( '<h5>$termB = new MyClass();</h5>' );
+	$termB = new MyClass();
+	echo( '<h5>$termB->NS( (string) $namespace );</h5>' );
+	$termB->NS( (string) $namespace );
+	echo( '<h5>$termB[ kOFFSET_LID ] = "B";</h5>' );
+	$termB[ kOFFSET_LID ] = "B";
+	echo( '<h5>$status = $termB->Insert( $container );</h5>' );
+	$status = $termB->Insert( $container );
+	echo( 'Inited['.$termB->inited()
+				   .'] Dirty['.$termB->dirty()
+				   .'] Saved['.$termB->committed()
+				   .'] Encoded['.$termB->encoded().']<br />' );
+	echo( '<pre>' ); print_r( $termB ); echo( '</pre>' );
+	echo( '<hr />' );
+
+	//
+	// Convert to string.
+	//
+	echo( '<h4>Convert to string</h4>' );
+	echo( '<h5>$string = (string) $termB;</h5>' );
+	$string = (string) $termB;
+	echo( '<pre>' ); print_r( $string ); echo( '</pre>' );
+	echo( '<hr />' );
+	echo( '<hr />' );
 }
 
 //

@@ -44,9 +44,9 @@ require_once( kPATH_MYWRAPPER_LIBRARY_CLASS."/CStatusDocument.php" );
  * <h3>Persistent document ancestor</h3>
  *
  * A persistent document object is a document object that knows how to persist in derived
- * concrete instances of the {@link CContainer} class. This class adds a single default
- * offset, {@link kOFFSET_NID}, which represents the database native unique identifier. All
- * objects derived from this class are uniquely identified by this offset.
+ * concrete instances of the {@link CContainer} class. This class features a default offset,
+ * {@link kOFFSET_NID}, which represents the database native unique identifier, or primary
+ * key. All objects derived from this class are uniquely identified by this offset.
  *
  * This class implements a series of persistence methods:
  *
@@ -62,7 +62,8 @@ require_once( kPATH_MYWRAPPER_LIBRARY_CLASS."/CStatusDocument.php" );
  *		{@link kOFFSET_NID}, set, or it will raise an exception.
  *	<li>{@link Delete()}: This method will delete the object from a container.
  *	<li>{@link NewObject()}: This static method can be used to instantiate an object by
- *		retrieving it from a container.
+ *		retrieving it from a container. The class of the object will be set according to
+ *		the class used in the static call.
  * </ul>
  *
  * These methods take advantage of a protected interface which can be used to process the
@@ -205,13 +206,11 @@ class CPersistentDocument extends CStatusDocument
 	 * This method will insert the current object into the provided container, if a
 	 * duplicate object already exists in the container, the method will raise an exception.
 	 *
-	 * The method expects a single parameter, <tt>$theContainer</tt>, which represents the
-	 * container in which the object should be stored. This parameter must be a concrete
-	 * instance of the {@link CConnection} class that should be resolved into a concrete
-	 * instance of {@link CContainer} that will be used for the operation. The method will
-	 * take advantage of the {@link DefaultDatabase()} and {@link DefaultContainer()}
-	 * methods to resolve the provided {@link CConnection} object into a {@link CContainer}
-	 * instance, if the latter cannot be assumed, the method will raise an exception.
+	 * The method expects a single parameter, <tt>$theConnection</tt>, which represents the
+	 * container in which the object should be stored. This parameter should be a concrete
+	 * instance of of {@link CContainer}, or a concrete instance of {@link CServer} or
+	 * {@link CDatabase}, if the current class has implemented the container resolve
+	 * interface with {@link DefaultDatabase} and {@link DefaultContainer()}.
 	 *
 	 * The method may set the native unique identifier attribute ({@link kOFFSET_NID}) if
 	 * not provided.
@@ -226,7 +225,7 @@ class CPersistentDocument extends CStatusDocument
 	 * Note that derived classes should overload the {@link _Precommit()} and
 	 * {@link _Postcommit()} methods, rather than overloading this one.
 	 *
-	 * @param CConnection			$theContainer		Server, database or container.
+	 * @param CConnection			$theConnection		Server, database or container.
 	 *
 	 * @access public
 	 * @return mixed				The object's native identifier.
@@ -242,7 +241,7 @@ class CPersistentDocument extends CStatusDocument
 	 *
 	 * @see kFLAG_PERSIST_INSERT
 	 */
-	public function Insert( CConnection $theContainer )
+	public function Insert( CConnection $theConnection )
 	{
 		//
 		// Check if necessary.
@@ -251,26 +250,6 @@ class CPersistentDocument extends CStatusDocument
 		 || (! $this->_IsCommitted()) )
 		{
 			//
-			// Resolve server.
-			//
-			if( $theContainer instanceof CServer )
-				$theContainer = $this->DefaultDatabase( $theContainer );
-			
-			//
-			// Resolve database.
-			//
-			if( $theContainer instanceof CDatabase )
-				$theContainer = $this->DefaultContainer( $theContainer );
-			
-			//
-			// Check container.
-			//
-			if( ! ($theContainer instanceof CContainer) )
-				throw new Exception
-					( "Invalid container type",
-					  kERROR_PARAMETER );										// !@! ==>
-			
-			//
 			// Set operation.
 			//
 			$op = kFLAG_PERSIST_INSERT;
@@ -278,17 +257,19 @@ class CPersistentDocument extends CStatusDocument
 			//
 			// Pre-commit.
 			//
-			$this->_Precommit( $theContainer, $op );
+			$this->_Precommit( $theConnection, $op );
 			
 			//
 			// Commit object.
 			//
-			$status = $theContainer->ManageObject( $this, NULL, $op );
+			$status = $this
+						->ResolveContainer( $theConnection, TRUE )
+						->ManageObject( $this, NULL, $op );
 			
 			//
 			// Post-commit.
 			//
-			$this->_Postcommit( $theContainer, $op );
+			$this->_Postcommit( $theConnection, $op );
 			
 			return $status;															// ==>
 		
@@ -309,13 +290,11 @@ class CPersistentDocument extends CStatusDocument
 	 * This method will update the current object into the provided container, if the object
 	 * cannot be found in the container, the method will raise an exception.
 	 *
-	 * The method expects a single parameter, <tt>$theContainer</tt>, which represents the
-	 * container in which the object should be stored. This parameter must be a concrete
-	 * instance of the {@link CConnection} class that should be resolved into a concrete
-	 * instance of {@link CContainer} that will be used for the operation. The method will
-	 * take advantage of the {@link DefaultDatabase()} and {@link DefaultContainer()}
-	 * methods to resolve the provided {@link CConnection} object into a {@link CContainer}
-	 * instance, if the latter cannot be assumed, the method will raise an exception.
+	 * The method expects a single parameter, <tt>$theConnection</tt>, which represents the
+	 * container in which the object should be stored. This parameter should be a concrete
+	 * instance of of {@link CContainer}, or a concrete instance of {@link CServer} or
+	 * {@link CDatabase}, if the current class has implemented the container resolve
+	 * interface with {@link DefaultDatabase} and {@link DefaultContainer()}.
 	 *
 	 * Once the object has been stored, it will have its {@link _IsCommitted()} status set
 	 * and its {@link _IsDirty()} status reset.
@@ -326,7 +305,7 @@ class CPersistentDocument extends CStatusDocument
 	 * Note that derived classes should overload the {@link _Precommit()} and
 	 * {@link _Postcommit()} methods, rather than overloading this one.
 	 *
-	 * @param CConnection			$theContainer		Server, database or container.
+	 * @param CConnection			$theConnection		Server, database or container.
 	 *
 	 * @access public
 	 *
@@ -341,7 +320,7 @@ class CPersistentDocument extends CStatusDocument
 	 *
 	 * @see kFLAG_PERSIST_UPDATE
 	 */
-	public function Update( CConnection $theContainer )
+	public function Update( CConnection $theConnection )
 	{
 		//
 		// Check if necessary.
@@ -350,26 +329,6 @@ class CPersistentDocument extends CStatusDocument
 		 || (! $this->_IsCommitted()) )
 		{
 			//
-			// Resolve server.
-			//
-			if( $theContainer instanceof CServer )
-				$theContainer = $this->DefaultDatabase( $theContainer );
-			
-			//
-			// Resolve database.
-			//
-			if( $theContainer instanceof CDatabase )
-				$theContainer = $this->DefaultContainer( $theContainer );
-			
-			//
-			// Check container.
-			//
-			if( ! ($theContainer instanceof CContainer) )
-				throw new Exception
-					( "Invalid container type",
-					  kERROR_PARAMETER );										// !@! ==>
-			
-			//
 			// Set operation.
 			//
 			$op = kFLAG_PERSIST_UPDATE;
@@ -377,12 +336,14 @@ class CPersistentDocument extends CStatusDocument
 			//
 			// Pre-commit.
 			//
-			$this->_Precommit( $theContainer, $op );
+			$this->_Precommit( $theConnection, $op );
 			
 			//
 			// Commit object.
 			//
-			if( ! $theContainer->ManageObject( $this, NULL, $op ) )
+			if( ! $this
+					->ResolveContainer( $theConnection, TRUE )
+					->ManageObject( $this, NULL, $op ) )
 				throw new Exception
 					( "Object not found",
 					  kERROR_NOT_FOUND );										// !@! ==>
@@ -390,7 +351,7 @@ class CPersistentDocument extends CStatusDocument
 			//
 			// Post-commit.
 			//
-			$this->_Postcommit( $theContainer, $op );
+			$this->_Postcommit( $theConnection, $op );
 		
 		} // Dirty or not yet committed.
 	
@@ -407,13 +368,11 @@ class CPersistentDocument extends CStatusDocument
 	 * This method will insert the current object into the provided container, if not found,
 	 * or update the object if already there.
 	 *
-	 * The method expects a single parameter, <tt>$theContainer</tt>, which represents the
-	 * container in which the object should be stored. This parameter must be a concrete
-	 * instance of the {@link CConnection} class that should be resolved into a concrete
-	 * instance of {@link CContainer} that will be used for the operation. The method will
-	 * take advantage of the {@link DefaultDatabase()} and {@link DefaultContainer()}
-	 * methods to resolve the provided {@link CConnection} object into a {@link CContainer}
-	 * instance, if the latter cannot be assumed, the method will raise an exception.
+	 * The method expects a single parameter, <tt>$theConnection</tt>, which represents the
+	 * container in which the object should be stored. This parameter should be a concrete
+	 * instance of of {@link CContainer}, or a concrete instance of {@link CServer} or
+	 * {@link CDatabase}, if the current class has implemented the container resolve
+	 * interface with {@link DefaultDatabase} and {@link DefaultContainer()}.
 	 *
 	 * The operation will only be performed if the object is not yet committed or if the
 	 * object has its {@link _IsDirty()} dirty status set, if not, the method will do
@@ -431,7 +390,7 @@ class CPersistentDocument extends CStatusDocument
 	 * Note that derived classes should overload the {@link _Precommit()} and
 	 * {@link _Postcommit()} methods, rather than overloading this one.
 	 *
-	 * @param CConnection			$theContainer		Server, database or container.
+	 * @param CConnection			$theConnection		Server, database or container.
 	 *
 	 * @access public
 	 * @return mixed				The object's native identifier.
@@ -445,7 +404,7 @@ class CPersistentDocument extends CStatusDocument
 	 *
 	 * @see kFLAG_PERSIST_REPLACE
 	 */
-	public function Replace( CConnection $theContainer )
+	public function Replace( CConnection $theConnection )
 	{
 		//
 		// Check if necessary.
@@ -454,26 +413,6 @@ class CPersistentDocument extends CStatusDocument
 		 || (! $this->_IsCommitted()) )
 		{
 			//
-			// Resolve server.
-			//
-			if( $theContainer instanceof CServer )
-				$theContainer = $this->DefaultDatabase( $theContainer );
-			
-			//
-			// Resolve database.
-			//
-			if( $theContainer instanceof CDatabase )
-				$theContainer = $this->DefaultContainer( $theContainer );
-			
-			//
-			// Check container.
-			//
-			if( ! ($theContainer instanceof CContainer) )
-				throw new Exception
-					( "Invalid container type",
-					  kERROR_PARAMETER );										// !@! ==>
-			
-			//
 			// Set operation.
 			//
 			$op = kFLAG_PERSIST_REPLACE;
@@ -481,17 +420,19 @@ class CPersistentDocument extends CStatusDocument
 			//
 			// Pre-commit.
 			//
-			$this->_Precommit( $theContainer, $op );
+			$this->_Precommit( $theConnection, $op );
 			
 			//
 			// Commit object.
 			//
-			$status = $theContainer->ManageObject( $this, NULL, $op );
+			$status = $this
+						->ResolveContainer( $theConnection, TRUE )
+						->ManageObject( $this, NULL, $op );
 			
 			//
 			// Post-commit.
 			//
-			$this->_Postcommit( $theContainer, $op );
+			$this->_Postcommit( $theConnection, $op );
 			
 			return $status;															// ==>
 		
@@ -511,13 +452,11 @@ class CPersistentDocument extends CStatusDocument
 	 *
 	 * This method will load the current object with data from a document in a container.
 	 *
-	 * The method expects a single parameter, <tt>$theContainer</tt>, which represents the
-	 * container in which the object should be stored. This parameter must be a concrete
-	 * instance of the {@link CConnection} class that should be resolved into a concrete
-	 * instance of {@link CContainer} that will be used for the operation. The method will
-	 * take advantage of the {@link DefaultDatabase()} and {@link DefaultContainer()}
-	 * methods to resolve the provided {@link CConnection} object into a {@link CContainer}
-	 * instance, if the latter cannot be assumed, the method will raise an exception.
+	 * The method expects a single parameter, <tt>$theConnection</tt>, which represents the
+	 * container in which the object should be stored. This parameter should be a concrete
+	 * instance of of {@link CContainer}, or a concrete instance of {@link CServer} or
+	 * {@link CDatabase}, if the current class has implemented the container resolve
+	 * interface with {@link DefaultDatabase} and {@link DefaultContainer()}.
 	 *
 	 * The current object must have its native unique identifier offset,
 	 * {@link kOFFSET_NID}, set, or it must have all the necessary elements in order to
@@ -534,7 +473,7 @@ class CPersistentDocument extends CStatusDocument
 	 * than overloading this one, also note that the {@link _Precommit()} method is
 	 * obviously not called here.
 	 *
-	 * @param CConnection			$theContainer		Server, database or container.
+	 * @param CConnection			$theConnection		Server, database or container.
 	 *
 	 * @access public
 	 * @return mixed				The operation status.
@@ -547,33 +486,13 @@ class CPersistentDocument extends CStatusDocument
 	 *
 	 * @see kOFFSET_NID
 	 */
-	public function Restore( CConnection $theContainer )
+	public function Restore( CConnection $theConnection )
 	{
 		//
 		// Use native identifier.
 		//
 		if( $this->offsetExists( kOFFSET_NID ) )
 		{
-			//
-			// Resolve server.
-			//
-			if( $theContainer instanceof CServer )
-				$theContainer = $this->DefaultDatabase( $theContainer );
-			
-			//
-			// Resolve database.
-			//
-			if( $theContainer instanceof CDatabase )
-				$theContainer = $this->DefaultContainer( $theContainer );
-			
-			//
-			// Check container.
-			//
-			if( ! ($theContainer instanceof CContainer) )
-				throw new Exception
-					( "Invalid container type",
-					  kERROR_PARAMETER );										// !@! ==>
-			
 			//
 			// Clone.
 			//
@@ -582,7 +501,9 @@ class CPersistentDocument extends CStatusDocument
 			//
 			// Load.
 			//
-			if( $theContainer->ManageObject( $clone ) )
+			if( $this
+				->ResolveContainer( $theConnection, TRUE )
+				->ManageObject( $clone ) )
 			{
 				//
 				// Load data.
@@ -592,7 +513,7 @@ class CPersistentDocument extends CStatusDocument
 				//
 				// Post-load.
 				//
-				$this->_Postcommit( $theContainer );
+				$this->_Postcommit( $theConnection );
 				
 				return TRUE;														// ==>
 			
@@ -618,13 +539,11 @@ class CPersistentDocument extends CStatusDocument
 	 *
 	 * This method will remove the current object from the provided container.
 	 *
-	 * The method expects a single parameter, <tt>$theContainer</tt>, which represents the
-	 * container in which the object should be stored. This parameter must be a concrete
-	 * instance of the {@link CConnection} class that should be resolved into a concrete
-	 * instance of {@link CContainer} that will be used for the operation. The method will
-	 * take advantage of the {@link DefaultDatabase()} and {@link DefaultContainer()}
-	 * methods to resolve the provided {@link CConnection} object into a {@link CContainer}
-	 * instance, if the latter cannot be assumed, the method will raise an exception.
+	 * The method expects a single parameter, <tt>$theConnection</tt>, which represents the
+	 * container in which the object should be stored. This parameter should be a concrete
+	 * instance of of {@link CContainer}, or a concrete instance of {@link CServer} or
+	 * {@link CDatabase}, if the current class has implemented the container resolve
+	 * interface with {@link DefaultDatabase} and {@link DefaultContainer()}.
 	 *
 	 * Once the object has been deleted, it will have its {@link _IsCommitted()} status and
 	 * its {@link _IsDirty()} status reset.
@@ -635,7 +554,7 @@ class CPersistentDocument extends CStatusDocument
 	 * Note that derived classes should overload the {@link _Precommit()} and
 	 * {@link _Postcommit()} methods, rather than overloading this one.
 	 *
-	 * @param CConnection			$theContainer		Server, database or container.
+	 * @param CConnection			$theConnection		Server, database or container.
 	 *
 	 * @access public
 	 * @return boolean				<tt>TRUE</tt> deleted, <tt>FALSE</tt> not found.
@@ -644,28 +563,8 @@ class CPersistentDocument extends CStatusDocument
 	 * @uses DefaultContainer()
 	 * @uses _Postcommit()
 	 */
-	public function Delete( CConnection $theContainer )
+	public function Delete( CConnection $theConnection )
 	{
-		//
-		// Resolve server.
-		//
-		if( $theContainer instanceof CServer )
-			$theContainer = $this->DefaultDatabase( $theContainer );
-		
-		//
-		// Resolve database.
-		//
-		if( $theContainer instanceof CDatabase )
-			$theContainer = $this->DefaultContainer( $theContainer );
-		
-		//
-		// Check container.
-		//
-		if( ! ($theContainer instanceof CContainer) )
-			throw new Exception
-				( "Invalid container type",
-				  kERROR_PARAMETER );											// !@! ==>
-		
 		//
 		// Set operation.
 		//
@@ -674,12 +573,14 @@ class CPersistentDocument extends CStatusDocument
 		//
 		// Delete object.
 		//
-		if( $theContainer->ManageObject( $this, NULL, $op ) )
+		if( $this
+			->ResolveContainer( $theConnection, TRUE )
+			->ManageObject( $this, NULL, $op ) )
 		{
 			//
 			// Post-load.
 			//
-			$this->_Postcommit( $theContainer, $op );
+			$this->_Postcommit( $theConnection, $op );
 			
 			return TRUE;															// ==>
 		
@@ -710,21 +611,36 @@ class CPersistentDocument extends CStatusDocument
 	 * class with it and return the object; if the document was not located in the
 	 * container, the method will return <tt>NULL</tt>.
 	 *
+	 * The method expects a single parameter, <tt>$theConnection</tt>, which represents the
+	 * container in which the object should be stored. This parameter should be a concrete
+	 * instance of of {@link CContainer}, or a concrete instance of {@link CServer} or
+	 * {@link CDatabase}, if the current class has implemented the container resolve
+	 * interface with {@link DefaultDatabase} and {@link DefaultContainer()}.
+	 *
 	 * The method expects two parameters:
 	 *
 	 * <ul>
-	 *	<li><tt>$theContainer</tt>: A concrete instance of the {@link CConnection} class.
+	 *	<li><tt>$theConnection</tt>: The container in which the object should be stored.
+	 *		This parameter should be a concrete instance of of {@link CContainer}, or a
+	 *		concrete instance of {@link CServer} or {@link CDatabase}, if the current class
+	 *		has implemented the container resolve interface with {@link DefaultDatabase} and
+	 *		{@link DefaultContainer()}.
 	 *	<li><tt>$theIdentifier</tt>: The key of the object in the container, by default the
 	 *		{@link kOFFSET_NID} offset.
 	 * </ul>
 	 *
-	 * @param CContainer			$theContainer		Container.
+	 * If the object could not be located, the method will return <tt>NULL</tt>.
+	 *
+	 * Note that the resulting object will be of the class with which this static method was
+	 * called.
+	 *
+	 * @param CConnection			$theConnection		Server, database or container.
 	 * @param mixed					$theIdentifier		Identifier.
 	 *
 	 * @static
 	 * @return mixed				The retrieved object.
 	 */
-	static function NewObject( CContainer $theContainer, $theIdentifier )
+	static function NewObject( CConnection $theConnection, $theIdentifier )
 	{
 		//
 		// Init local storage.
@@ -734,17 +650,20 @@ class CPersistentDocument extends CStatusDocument
 		//
 		// Retrieve object.
 		//
-		if( $theContainer->ManageObject( $object ) )
+		if( static::ResolveContainer( $theConnection, TRUE )->ManageObject( $object ) )
 		{
 			//
 			// Instantiate class.
+			// Note the static keyword?
+			// If we used self, this would be the class generated;
+			// with static, it will be the caller's class.
 			//
-			$object = new self( $object );
+			$object = new static( $object );
 			
 			//
 			// Post-commit.
 			//
-			$object->_Postcommit( $theContainer );
+			$object->_Postcommit( $theConnection );
 			
 			return $object;															// ==>
 		
@@ -810,6 +729,107 @@ class CPersistentDocument extends CStatusDocument
 	 * @return CContainer			The default container.
 	 */
 	static function DefaultContainer( CDatabase $theDatabase )			{	return NULL;	}
+
+	 
+	/*===================================================================================
+	 *	ResolveContainer																*
+	 *==================================================================================*/
+
+	/**
+	 * <h4>Resolve the container</h4>
+	 *
+	 * This method can be used to get a {@link CContainer} given an instance of
+	 * {@link CServer} or {@link CDatabase}. It will take advantage of the
+	 * {@link DefaultDatabase()} and {@link DefaultContainer()} methods to obtain the value.
+	 *
+	 * The first argument of this method is the connection object, the second is a boolean
+	 * which determines whether the method should raise an exception if the container cannot
+	 * be resolved.
+	 *
+	 * The method will return an exception regardless of the value of the second parameter
+	 * if the first parameter is neither a {@link CServer} or {@link CDatabase} derived
+	 * instance.
+	 *
+	 * @param CConnection			$theConnection		Connection object.
+	 * @param boolean				$doException		<tt>TRUE</tt> raise exception.
+	 *
+	 * @static
+	 * @return mixed				{@link CContainer} or <tt>NULL</tt> if not found.
+	 *
+	 * @throws Exception
+	 */
+	static function ResolveContainer( CConnection $theConnection, $doException )
+	{
+		//
+		// Resolve database.
+		//
+		if( $theConnection instanceof CServer )
+		{
+			//
+			// Check database.
+			// Note the static keyword:
+			// we want the caller's DefaultDatabase().
+			//
+			$theConnection = static::DefaultDatabase( $theConnection );
+			
+			//
+			// Handle missing default database.
+			//
+			if( $theConnection === NULL )
+			{
+				//
+				// Raise exception.
+				//
+				if( $doException )
+					throw new Exception
+						( "Cannot determine default database",
+						  kERROR_PARAMETER );									// !@! ==>
+				
+				return NULL;														// ==>
+			
+			} // No default database.
+		
+		} // Provided server.
+		
+		//
+		// Resolve container.
+		// Note the static keyword:
+		// we want the caller's DefaultContainer().
+		//
+		if( $theConnection instanceof CDatabase )
+			$theConnection = static::DefaultContainer( $theConnection );
+		
+		//
+		// Check container.
+		//
+		if( $theConnection instanceof CContainer )
+			return $theConnection;													// ==>
+		
+		//
+		// Handle missing default container.
+		//
+		if( $theConnection === NULL )
+		{
+			//
+			// Raise exception.
+			//
+			if( $doException )
+				throw new Exception
+					( "Cannot determine default container",
+					  kERROR_PARAMETER );										// !@! ==>
+			
+			return NULL;															// ==>
+		
+		} // No default container.
+		
+		//
+		// Raise exception.
+		//
+		throw new Exception
+			( "Invalid connection: expecting server or database",
+			  kERROR_PARAMETER );												// !@! ==>
+	
+	} // ResolveContainer.
 		
 
 
@@ -920,14 +940,18 @@ class CPersistentDocument extends CStatusDocument
 	 * The method accepts two parameters:
 	 *
 	 * <ul>
-	 *	<li><tt>$theContainer</tt>: The container in which the object is to be committed.
+	 *	<li><tt>$theConnection</tt>: The container in which the object is to be committed,
+	 *		a server or a database if the {@link DefaultDatabase} and
+	 *		{@link DefaultContainer()} are able to resolve it into a container.
 	 *	<li><tt>$theModifiers</tt>: The commit options provided as a bitfield in which the
 	 *		following values are considered:
 	 *	 <ul>
 	 *		<li><tt>{@link kFLAG_PERSIST_INSERT}</tt>: Insert operation.
 	 *		<li><tt>{@link kFLAG_PERSIST_UPDATE}</tt>: Update operation.
 	 *		<li><tt>{@link kFLAG_PERSIST_REPLACE}</tt>: Replace operation.
-	 *		<li><tt>{@link kFLAG_PERSIST_MODIFY}</tt>: Modification operation.
+	 *		<li><tt>{@link kFLAG_PERSIST_MODIFY}</tt>: Modification operation: this option
+	 *			is legal, but not valid: it is a legal option, but this method should ignore
+	 *			it.
 	 *		<li><tt>{@link kFLAG_PERSIST_DELETE}</tt>: Delete operation.
 	 *	 </ul>
 	 * </ul>
@@ -939,7 +963,7 @@ class CPersistentDocument extends CStatusDocument
 	 *
 	 * In this class we do nothing.
 	 *
-	 * @param CContainer			$theContainer		Container.
+	 * @param CConnection			$theConnection		Container.
 	 * @param bitfield				$theModifiers		Commit options.
 	 *
 	 * @access protected
@@ -950,11 +974,11 @@ class CPersistentDocument extends CStatusDocument
 	 *
 	 * @see kFLAG_PERSIST_WRITE_MASK
 	 */
-	protected function _Precommit( CContainer $theContainer,
-											  $theModifiers = kFLAG_DEFAULT )
+	protected function _Precommit( CConnection $theConnection,
+											   $theModifiers = kFLAG_DEFAULT )
 	{
 		//
-		// Handle commits.
+		// Handle commits, including deletes and excluding modifications.
 		//
 		if( $theModifiers & kFLAG_PERSIST_WRITE_MASK )
 		{
@@ -966,7 +990,7 @@ class CPersistentDocument extends CStatusDocument
 					( "The object is not initialised",
 					  kERROR_STATE );											// !@! ==>
 		
-		} // Insert, update, replace and modify (not used).
+		} // Insert, update, replace and [modify (not used)].
 		
 	} // _PreCommit.
 
@@ -984,14 +1008,18 @@ class CPersistentDocument extends CStatusDocument
 	 * The method accepts two parameters:
 	 *
 	 * <ul>
-	 *	<li><tt>$theContainer</tt>: The container in which the object was committed.
+	 *	<li><tt>$theConnection</tt>: The container in which the object is to be committed,
+	 *		a server or a database if the {@link DefaultDatabase} and
+	 *		{@link DefaultContainer()} are able to resolve it into a container.
 	 *	<li><tt>$theModifiers</tt>: The commit options provided as a bitfield in which the
 	 *		following values are considered:
 	 *	 <ul>
 	 *		<li><tt>{@link kFLAG_PERSIST_INSERT}</tt>: Insert operation.
 	 *		<li><tt>{@link kFLAG_PERSIST_UPDATE}</tt>: Update operation.
 	 *		<li><tt>{@link kFLAG_PERSIST_REPLACE}</tt>: Replace operation.
-	 *		<li><tt>{@link kFLAG_PERSIST_MODIFY}</tt>: Modification operation.
+	 *		<li><tt>{@link kFLAG_PERSIST_MODIFY}</tt>: Modification operation: this option
+	 *			is legal, but not valid: it is a legal option, but this method should ignore
+	 *			it.
 	 *		<li><tt>{@link kFLAG_PERSIST_DELETE}</tt>: Delete operation.
 	 *	 </ul>
 	 * </ul>
@@ -1002,7 +1030,7 @@ class CPersistentDocument extends CStatusDocument
 	 * object, set the {@link _IsCommitted()} status after committing and resetting it after
 	 * deleting.
 	 *
-	 * @param CContainer			$theContainer		Container.
+	 * @param CConnection			$theConnection		Container.
 	 * @param bitfield				$theModifiers		Commit options.
 	 *
 	 * @access protected
@@ -1012,13 +1040,13 @@ class CPersistentDocument extends CStatusDocument
 	 *
 	 * @see kFLAG_PERSIST_WRITE_MASK kFLAG_PERSIST_DELETE kFLAG_PERSIST_MASK
 	 */
-	protected function _Postcommit( CContainer $theContainer,
-											   $theModifiers = kFLAG_DEFAULT )
+	protected function _Postcommit( CConnection $theConnection,
+											    $theModifiers = kFLAG_DEFAULT )
 	{
 		//
-		// Handle commit and load.
+		// Handle insert, update and replace, or load.
 		//
-		if( ($theModifiers & kFLAG_PERSIST_WRITE_MASK)	// Commit,
+		if( ($theModifiers & kFLAG_PERSIST_COMMIT_MASK)	// Commit,
 		 || (! ($theModifiers & kFLAG_PERSIST_MASK)) )	// load.
 		{
 			//

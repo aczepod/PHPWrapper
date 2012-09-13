@@ -36,45 +36,37 @@ require_once( kPATH_MYWRAPPER_LIBRARY_CLASS."/CPersistentDocument.php" );
 /**
  * <h3>Persistent object ancestor</h3>
  *
- * This <i>abstract</i> class extends its {@link CPersistentDocument} ancestor to handle
- * predefined offsets and a specific identification workflow.
- *
- * This class implements an identification interface that governs how objects derived from
- * this class are identified within their container.
+ * This <i>abstract</i> class extends its {@link CPersistentDocument} ancestor to implement
+ * an identification interface that governs how objects derived from this class are
+ * identified within their container.
  *
  * The object is uniquely identified by a string, the <i>global unique identifier</i>, this
  * string is generally a combination of the object's attributes and once set, it should not
- * change. The string is determined by a protected method, {@link _index()}, and set into a
+ * change. The string is composed by a protected method, {@link _index()}, and set into a
  * predefined offset, {@link kOFFSET_GID}.
  *
- * This value is used by a static method, {@link _id()}, which processes or uses that value
- * as-is to set the object's <i>native unique identifier</i> in the {@link kOFFSET_NID}
- * offset. This static method can also be used to obtain the primary key of an object, given
- * the global identifier string. The method expects the container to which the object is
- * going to be committed as a parameter, to use its custom data conversion methods and
- * resolve eventual references.
+ * This value will be used to generate the <i>native unique identifier</i>,
+ * {@link kOFFSET_NID}, which represents the object's primary key within the container in
+ * which it is stored. The value is obtained by feeding the {@link kOFFSET_GID} to a static
+ * method, {@link _id()}, whose function is to transform the provided value into one
+ * optimised as a primary key. The method is static so that any global identifier can be
+ * converted into a native one.
  *
- * These identifiers are locked by the {@link _Preset()} and {@link _Preunset()} methods
- * to prevent invalidating references.
+ * Once the object has been committed, these identifiers are locked by the {@link _Preset()}
+ * and {@link _Preunset()} methods to prevent invalidating object references.
  *
- * Objects derived from this class store their class name in the {@link kOFFSET_CLASS}
- * offset, this will be used by the static {@link NewObject()} method to instantiate the
- * right object.
+ * The class features a predefined offset, {@link kOFFSET_CLASS}, that receives the class
+ * name of the object: this value will be used by the static {@link NewObject()} method to
+ * instantiate the correct object.
  *
- * The class implements the above workflow by overloading the {@link _Precommit()} method.
- *
- * By default, objects derived from this class can be cast to a string and this string is
- * by default the global identifier, {@link kOFFSET_GID}; derived classes may change this
- * behaviour, provided the object can be converted to a string and this string be the
- * object's unique identifier. Since the global identifier is computed at commit time, it is
- * not safe to rely on the string representation of an object before it is committed, in
- * that case the converted value will be an empty string.
+ * All objects derived from this class should implement the {@link __toString()} method, by
+ * default this class returns the global identifier, {@link kOFFSET_GID}. Derived classes
+ * may change this behaviour, in particular when the class does not feature the global
+ * identifier: the important thing is to be able to cast an object to a string.
  *
  * Finally, the class features member accessor methods for the default offsets:
  *
  * <ul>
- *	<li>{@link NID()}: This method manages the native unique identifier,
- *		{@link kOFFSET_NID}.
  *	<li>{@link GID()}: This method manages the global unique identifier,
  *		{@link kOFFSET_GID}.
  *	<li>{@link ClassName()}: This method manages the object's class name,
@@ -107,7 +99,9 @@ class CPersistentObject extends CPersistentDocument
 	 * identifier of the object.
 	 *
 	 * By default we return the value of the {@link kOFFSET_GID} offset, if this offset is
-	 * missing, the method will return an empty string.
+	 * missing, the method will return <tt>NULL</tt>, which will result in a fatal error.
+	 * This behaviour is intentional, since in this case the returned value is not correct
+	 * and because this method cannot throw exceptions.
 	 *
 	 * @access public
 	 * @return string				The connection name.
@@ -117,10 +111,13 @@ class CPersistentObject extends CPersistentDocument
 		//
 		// Check global identifier.
 		//
-		if($this->offsetExists( kOFFSET_GID ) )
+		if( $this->offsetExists( kOFFSET_GID ) )
 			return $this->offsetGet( kOFFSET_GID );									// ==>
 		
-		return '';																	// ==>
+		//
+		// Yes, I know...
+		//
+		return NULL;																// ==>
 	
 	} // __toString.
 
@@ -242,26 +239,29 @@ class CPersistentObject extends CPersistentDocument
 	 *
 	 * We override this method to handle the {@link kOFFSET_CLASS} offset: if found in the
 	 * retrieved object, it will be used to instantiate the correct class. If the offset is
-	 * missing, the method will instantiate this class.
+	 * missing, the method will instantiate the calling class.
 	 *
 	 * The method expects two parameters:
 	 *
 	 * <ul>
-	 *	<li><tt>$theContainer</tt>: A concrete instance of the {@link CContainer} class.
+	 *	<li><tt>$theConnection</tt>: The container in which the object should be stored.
+	 *		This parameter should be a concrete instance of of {@link CContainer}, or a
+	 *		concrete instance of {@link CServer} or {@link CDatabase}, if the current class
+	 *		has implemented the container resolve interface with {@link DefaultDatabase} and
+	 *		{@link DefaultContainer()}.
 	 *	<li><tt>$theIdentifier</tt>: The key of the object in the container, by default the
 	 *		{@link kOFFSET_NID} offset.
 	 * </ul>
 	 *
 	 * If the object could not be located, the method will return <tt>NULL</tt>.
 	 *
-	 * @param CContainer			$theContainer		Container.
+	 * @param CConnection			$theConnection		Server, database or container.
 	 * @param mixed					$theIdentifier		Identifier.
 	 *
 	 * @static
 	 * @return mixed				The retrieved object.
 	 */
-	static function NewObject( CContainer $theContainer,
-										  $theIdentifier )
+	static function NewObject( CConnection $theConnection, $theIdentifier )
 	{
 		//
 		// Init local storage.
@@ -271,7 +271,7 @@ class CPersistentObject extends CPersistentDocument
 		//
 		// Retrieve object.
 		//
-		if( $theContainer->ManageObject( $object ) )
+		if( static::ResolveContainer( $theConnection, TRUE )->ManageObject( $object ) )
 		{
 			//
 			// Handle custom class.
@@ -294,13 +294,14 @@ class CPersistentObject extends CPersistentDocument
 			// Handle default class.
 			//
 			else
-				$object = new self( $object );
+				$object = new static( $object );
 			
 			//
 			// Post-commit.
+			// Note that default modifiers mean read.
 			//
 			if( $object instanceof CPersistentDocument )
-				$object->_Postcommit( $theContainer );
+				$object->_Postcommit( $theConnection );
 			
 			return $object;															// ==>
 		
@@ -327,32 +328,33 @@ class CPersistentObject extends CPersistentDocument
 	/**
 	 * <h4>Generate the object's native unique identifier</h4>
 	 *
-	 * This method is used to generate the object's <i>native unique identifier</i> from the
-	 * string representing the object's <i>global unique identifier</i>.
+	 * This method is used to generate the object's <i>native unique identifier</i>,
+	 * {@link kOFFSET_NID}, from the string representing the object's <i>global unique
+	 * identifier</i>, {@link kOFFSET_GID}.
 	 *
-	 * The method expects a string as input and should either return it as-is, or hash it.
-	 * This method will be used to set the {@link kOFFSET_NID} offset which represents the
-	 * primary key of the object and can be used to generate a primary key given the global
-	 * unique identifier of the object. The second parameter to this method is the container
-	 * that will receive the object, this can be useful if it provides custom data
-	 * conversion methods.
+	 * The first parameter of the method is a string, the second parameter can be a server
+	 * or database which can be resolved into a container, or the container itself. This
+	 * parameter can be used to process the first one: since the resulting value must be
+	 * stored in a container, it should be the duty of the container itself to convert, for
+	 * instance binary strings, to a suitable value.
 	 *
-	 * Note that if the provided value is <tt>NULL</tt>, this means that it is the duty of
-	 * the container to set the object's primary key, in this case this method cannot be
-	 * used to generate a native identifier, since the object does not have a global
-	 * identifier.
+	 * If the method receives <tt>NULL</tt> in the first parameter, this means that the
+	 * object does not use the global identifier and it is the duty of the container to
+	 * set the object's primary key, such as with autonumbers in SQL or missing <tt>_id</tt>
+	 * in Mongo. In that case this method should not be called, see the {@link _Precommit()}
+	 * method to see where it is used.
 	 *
-	 * In this class we use the global identifier as-is.
+	 * In this class we do not process the identifier, so we simply return it.
 	 *
 	 * @param string				$theIdentifier		Global unique identifier.
-	 * @param CContainer			$theContainer		Container.
+	 * @param CConnection			$theConnection		Server, database or container.
 	 *
 	 * @static
 	 * @return mixed				The object's native unique identifier.
 	 */
-	static function _id( $theIdentifier = NULL, CContainer $theContainer = NULL )
+	static function _id( $theIdentifier = NULL, CConnection $theConnection = NULL )
 	{
-		return $theIdentifier;
+		return $theIdentifier;														// ==>
 	
 	} // _id.
 		
@@ -375,29 +377,36 @@ class CPersistentObject extends CPersistentDocument
 	 *
 	 * This method should return the object's global unique identifier, this value is
 	 * represented by a string which is generally extracted from selected attributes of the
-	 * object and represents the unique key of the object.
+	 * object and constitutes the unique key of the object.
 	 *
 	 * This string is stored in the {@link kOFFSET_GID} offset of the object and it is
-	 * processed by the static {@link _id()} method resulting in the object's native unique
+	 * processed by the static {@link _id()} method to generate the object's native unique
 	 * identifier, which is the native object's primary key stored in the
 	 * {@link kOFFSET_NID} offset.
 	 *
-	 * This method can return a meaningful value only if the object has all required
-	 * properties, so, if the class features a global identifier, this method should first
-	 * check is the object is {@link _IsInited()}, if that is not the case it should raise
-	 * an exception.
+	 * This method is called by the {@link _Precommit()} method, to fill the
+	 * {@link kOFFSET_GID} offset and the resulting value is fed to the {@link _id()} method
+	 * to obtain the value that will be stored in the {@link kOFFSET_NID} offset. The
+	 * inherited {@link Precommit()} method asserts whether the object {@link _IsInited()},
+	 * before calling the local {@link _Precommit()} method, this to ensure that this method
+	 * can safely use the object's attributes to generate the identifier. If you intend to
+	 * use this method in other places, you should check if the object is initialised.
 	 *
-	 * If this method returns <tt>NULL</tt>, it means that the native unique identifier is
-	 * generated by the container that will store the object, in that case the
-	 * {@link kOFFSET_GID} will not be used.
+	 * If the object does not feature or use the global identifier, this method should
+	 * return <tt>NULL</tt>, this will be an indication that the native identifier is filled
+	 * in another place, or that the identifier is filled by the container.
 	 *
-	 * This method is called at commit time, for this reason and to eventually resolve
-	 * referenced objects, the method accepts the commit container and options.
+	 * The method accepts the same parameters as the {@link Precommit()} method which passes
+	 * them to this one. The first one should resolve into the container in which the object
+	 * will be saved, this parameter can be useful when committing embedded objects which
+	 * reside in different containers. The second parameter represents the operation options
+	 * which can be useful to determine whether the object is being inserted, replaced or
+	 * updated.
 	 *
-	 * This class has no predefined attributes, so we let the container provide the
-	 * identifier by returning <tt>NULL</tt>.
+	 * In this class we do not have attributes that can be used to generate an identifier,
+	 * so we let the container set the identifier, and return <tt>NULL</tt>.
 	 *
-	 * @param CContainer			$theContainer		Container.
+	 * @param CConnection			$theConnection		Server, database or container.
 	 * @param bitfield				$theModifiers		Commit options.
 	 *
 	 * @access protected
@@ -405,7 +414,11 @@ class CPersistentObject extends CPersistentDocument
 	 *
 	 * @uses _index()
 	 */
-	protected function _index( $theContainer, $theModifiers )			{	return NULL;	}
+	protected function _index( CConnection $theConnection, $theModifiers )
+	{
+		return NULL;																// ==>
+	
+	} // _index.
 		
 
 
@@ -437,18 +450,19 @@ class CPersistentObject extends CPersistentDocument
 	 *
 	 * @uses _IsCommitted()
 	 *
-	 * @see kOFFSET_NID kOFFSET_GID kOFFSET_UID
+	 * @see kOFFSET_NID kOFFSET_GID
 	 */
 	protected function _Preset( &$theOffset, &$theValue )
 	{
 		//
 		// Intercept identifiers.
 		//
-		$offsets = array( kOFFSET_NID, kOFFSET_GID, kOFFSET_UID );
+		$offsets = array( kOFFSET_NID, kOFFSET_GID );
 		if( $this->_IsCommitted()
 		 && in_array( $theOffset, $offsets ) )
 			throw new Exception
-				( "The object is committed, you cannot modify the [$theOffset] offset",
+				( "You cannot modify the [$theOffset] offset: "
+				 ."the object is committed",
 				  kERROR_LOCKED );												// !@! ==>
 		
 		//
@@ -478,18 +492,19 @@ class CPersistentObject extends CPersistentDocument
 	 *
 	 * @uses _IsCommitted()
 	 *
-	 * @see kOFFSET_NID kOFFSET_GID kOFFSET_UID
+	 * @see kOFFSET_NID kOFFSET_GID
 	 */
 	protected function _Preunset( &$theOffset )
 	{
 		//
 		// Intercept identifiers.
 		//
-		$offsets = array( kOFFSET_NID, kOFFSET_GID, kOFFSET_UID );
+		$offsets = array( kOFFSET_NID, kOFFSET_GID );
 		if( $this->_IsCommitted()
 		 && in_array( $theOffset, $offsets ) )
 			throw new Exception
-				( "The object is committed, you cannot modify the [$theOffset] offset",
+				( "You cannot modify the [$theOffset] offset: "
+				 ."the object is committed",
 				  kERROR_LOCKED );												// !@! ==>
 		
 		//
@@ -516,81 +531,114 @@ class CPersistentObject extends CPersistentDocument
 	/**
 	 * <h4>Prepare the object before committing</h4>
 	 *
-	 * In this class we overload this method to set the following properties:
+	 * In this class we overload this method to set the identification properties. We first
+	 * call the parent method which will assert whether the object has the
+	 * {@link _IsInited()} state set, then we perform the following operations:
 	 *
 	 * <ul>
-	 *	<li>{@link _IsInited()}: We check whether the object was initialised, if that is
-	 *		not the case, the method will raise an exception.
-	 *	<li>{@link kOFFSET_NID}: If missing and if the result of the {@link _index()} method
-	 *		is not <tt>NULL</tt>, we set the native unique identifier by feeding the string
-	 *		returned by {@link _index()} into the {@link _id()} method.
-	 *	<li>{@link kOFFSET_GID}: If missing and if the result of the {@link _index()} method
-	 *		is not <tt>NULL</tt>, we set the global unique identifier with the result of
-	 *		{@link _index()}.
-	 *	<li>{@link kOFFSET_CLASS}: If missing, we set this offset to the current class name.
-	 *		Note that we do not set the class automatically, as a superclass may instantiate
-	 *		safely a subclass.
+	 *	<li><i>Insert</i> or <i>replace</i>:
+	 *	 <ul>
+	 *		<li><tt>{@link kOFFSET_GID}</tt>: We check whether this offset is present, if
+	 *			not, we call the {@link _index()} method and if the result of that method is
+	 *			not <tt>NULL</tt>, we set the offset with that value.
+	 *		<li><tt>{@link kOFFSET_NID}</tt>: We check whether this offset is present, if
+	 *			not, we check if the {@link kOFFSET_GID} offset is there: in that case we
+	 *			feed the latter's value to the {@link _id()} method and set the result into
+	 *			the {@link kOFFSET_NID} offset.
+	 *	 </ul>
+	 *	<li><i>Insert</i>, <i>replace</i> or <i>update</i>:
+	 *	 <ul>
+	 *		<li><tt>{@link kOFFSET_CLASS}</tt>: We set this offset with the current class
+	 *			name.
+	 *	 </ul>
 	 * </ul>
 	 *
-	 * @param CContainer			$theContainer		Container.
+	 * @param CConnection			$theConnection		Container.
 	 * @param bitfield				$theModifiers		Commit options.
 	 *
 	 * @access protected
 	 *
 	 * @uses _id()
 	 * @uses _index()
+	 * @uses _ResolveContainer()
 	 *
 	 * @see kOFFSET_NID kOFFSET_GID kOFFSET_CLASS
 	 */
-	protected function _Precommit( CContainer $theContainer,
-											  $theModifiers = kFLAG_DEFAULT )
+	protected function _Precommit( CConnection $theConnection,
+											   $theModifiers = kFLAG_DEFAULT )
 	{
 		//
 		// Call parent method.
+		// Raises exception if not inited.
 		//
-		parent::_Precommit( $theContainer, $theModifiers );
+		parent::_Precommit( $theConnection, $theModifiers );
 		
 		//
-		// Handle commits.
+		// Filter options.
 		//
-		if( $theModifiers & kFLAG_PERSIST_WRITE_MASK )
+		$options = $theModifiers & kFLAG_PERSIST_MASK;
+		
+		//
+		// Handle insert or replace.
+		//
+		if( ($options == kFLAG_PERSIST_INSERT)
+		 || ($options == kFLAG_PERSIST_REPLACE) )
 		{
 			//
-			// Handle native identifier.
+			// Set global identifier.
 			//
-			if( ! $this->offsetExists( kOFFSET_NID ) )
+			if( ! $this->offsetExists( kOFFSET_GID ) )
 			{
 				//
 				// Generate global identifier.
 				//
-				$index = $this->_index( $theContainer, $theModifiers );
-				
-				//
-				// Handle global identifier.
-				//
+				$index = $this->_index( $theConnection, $theModifiers );
 				if( $index !== NULL )
-				{
-					//
-					// Set global identifier.
-					//
 					$this->offsetSet( kOFFSET_GID, $index );
-				
-					//
-					// Set native identifier.
-					//
-					$this->offsetSet( kOFFSET_NID, $this->_id( $index, $theContainer ) );
-				
-				} // Identifier is handled by object.
 			
-			} // Native identifier not set.
-			
-			//
-			// Handle class.
-			//
-			if( ! $this->offsetExists( kOFFSET_CLASS ) )
-				$this->offsetSet( kOFFSET_CLASS, get_class( $this ) );
+			} // Missing global identifier.
 		
-		} // Insert, update, replace and modify (not used).
+			//
+			// Set native identifier.
+			//
+			if( ! $this->offsetExists( kOFFSET_NID ) )
+			{
+				//
+				// Use global identifier.
+				//
+				if( $this->offsetExists( kOFFSET_GID ) )
+					$this->offsetSet( kOFFSET_NID,
+									  $this->_id( $this->offsetGet( kOFFSET_GID ),
+												  $this->ResolveContainer( $theConnection,
+																		   TRUE ) ) );
+			
+			} // Missing native identifier.
+		
+		} // Insert.
+		
+		//
+		// Handle update.
+		//
+		if( $options == kFLAG_PERSIST_UPDATE )
+		{
+			//
+			// Check native identifier.
+			//
+			if( ! $this->offsetExists( kOFFSET_NID ) )
+				throw new Exception
+					( "Unable to update object: "
+					 ."the native identifier is missing",
+					  kERROR_STATE );											// !@! ==>
+		
+		} // Update.
+		
+		//
+		// Handle insert, replace or update.
+		//
+		if( ($options == kFLAG_PERSIST_INSERT)
+		 || ($options == kFLAG_PERSIST_REPLACE)
+		 || ($options == kFLAG_PERSIST_UPDATE) )
+			$this->offsetSet( kOFFSET_CLASS, get_class( $this ) );
 		
 	} // _PreCommit.
 

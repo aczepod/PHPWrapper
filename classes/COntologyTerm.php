@@ -42,13 +42,12 @@ require_once( kPATH_MYWRAPPER_LIBRARY_CLASS."/CTerm.php" );
  * In this class, the namespace, {@link kOFFSET_NAMESPACE}, is a reference to another object
  * derived from this class. This means that the offset will contain the native identifier of
  * the namespace term and that this namespace offset must reside in the same container as
- * the current term. Namespaces can be provided as objects, provided that they have their
- * {@link _IsCommitted()} status set.
+ * the current term.
  *
  * The class features an offset, {@link kOFFSET_REFS_NAMESPACE}, that keeps a reference
  * count of how many times the current term has been referenced as namespace, that is, the
  * number of times this term was used as a namespace by other terms. This offset is updated
- * by the {@link _Postcommit()} method.
+ * in the {@link _Postcommit()} method.
  *
  * The class features also two other offsets, {@link kOFFSET_REFS_NODE} and
  * {@link kOFFSET_REFS_TAG}, which collect respectively the list of node identifiers who
@@ -56,9 +55,7 @@ require_once( kPATH_MYWRAPPER_LIBRARY_CLASS."/CTerm.php" );
  * managed by the referenced objects.
  *
  * The class implements the static method, {@link DefaultContainer()}, it will use the
- * {@link kCONTAINER_TERM_NAME} constant. You are encouraged to use this method rather than
- * instantiating the container by itself, since other classes rely on this method to access
- * terms.
+ * {@link kCONTAINER_TERM_NAME} constant.
  *
  * The class features member accessor methods for the default offsets:
  *
@@ -211,6 +208,62 @@ class COntologyTerm extends CTerm
 
 /*=======================================================================================
  *																						*
+ *								STATIC PERSISTENCE INTERFACE							*
+ *																						*
+ *======================================================================================*/
+
+
+	 
+	/*===================================================================================
+	 *	_id																				*
+	 *==================================================================================*/
+
+	/**
+	 * <h4>Generate the object's native unique identifier</h4>
+	 *
+	 * We override this method to hash the native identifier.
+	 *
+	 * Since binary data is handled differently by each storage engine, we require the
+	 * container parameter and raise an exception if not provided.
+	 *
+	 * We also raise an exception if the string is not provided, this is because this object
+	 * primary key depends on the content of its attributes.
+	 *
+	 * @param string				$theIdentifier		Global unique identifier.
+	 * @param CConnection			$theConnection		Server, database or container.
+	 *
+	 * @static
+	 * @return mixed				The object's native unique identifier.
+	 *
+	 * @throws Exception
+	 */
+	static function _id( $theIdentifier = NULL, CConnection $theConnection = NULL )
+	{
+		//
+		// Handle identifier.
+		//
+		if( $theIdentifier === NULL )
+			throw new Exception
+				( "Global unique identifier not provided",
+				  kERROR_MISSING );												// !@! ==>
+	
+		//
+		// Check container.
+		//
+		if( $theConnection === NULL )
+			throw new Exception
+				( "The container is needed for encoding binary strings",
+				  kERROR_MISSING );												// !@! ==>
+		
+		return static::ResolveContainer( $theConnection, TRUE )
+					 ->ConvertBinary( md5( $theIdentifier, TRUE ) );				// ==>
+	
+	} // _id.
+		
+
+
+/*=======================================================================================
+ *																						*
  *							PROTECTED IDENTIFICATION INTERFACE							*
  *																						*
  *======================================================================================*/
@@ -230,10 +283,10 @@ class COntologyTerm extends CTerm
 	 * current term's identifier and then convert the namespace to its native identifier, in
 	 * the second case we need to load the namespace in order to use its global identifier.
 	 *
-	 * Note that if the local identifier is missing we call the parent's method, although
-	 * this is not possible since it is asserted elsewhere in the workflow.
+	 * Note that this method will be called <i>after</i> the eventual uncommitted namespace
+	 * has been committed.
 	 *
-	 * @param CContainer			$theContainer		Container.
+	 * @param CConnection			$theConnection		Server, database or container.
 	 * @param bitfield				$theModifiers		Commit options.
 	 *
 	 * @access protected
@@ -241,90 +294,97 @@ class COntologyTerm extends CTerm
 	 *
 	 * @throws Exception
 	 *
-	 * @uses _index()
+	 * @uses ResolveContainer()
 	 */
-	protected function _index( $theContainer, $theModifiers )
+	protected function _index( CConnection $theConnection, $theModifiers )
 	{
 		//
-		// Get term local identifier.
+		// Get code.
+		// The offset must exist, or the object would not be inited.
 		//
-		if( $this->offsetExists( kOFFSET_LID ) )
+		$lid = (string) $this->offsetGet( kOFFSET_LID );
+		
+		//
+		// Handle namespace.
+		//
+		if( $this->offsetExists( kOFFSET_NAMESPACE ) )
 		{
 			//
-			// Get code.
+			// Get namespace.
 			//
-			$code = (string) $this->offsetGet( kOFFSET_LID );
+			$namespace = $this->offsetGet( kOFFSET_NAMESPACE );
 			
 			//
-			// Handle namespace.
+			// Handle object.
+			// We checked in _Preset() that it is from this class.
 			//
-			if( $this->offsetExists( kOFFSET_NAMESPACE ) )
+			if( $namespace instanceof CPersistentObject )
 			{
 				//
-				// Get namespace.
+				// Check namespace native identifier.
 				//
-				$namespace = $this->offsetGet( kOFFSET_NAMESPACE );
-				
-				//
-				// Handle identifier.
-				//
-				if( ! ($namespace instanceof CPersistentObject) )
+				if( $namespace->offsetExists( kOFFSET_NID ) )
 				{
 					//
-					// Get namespace.
+					// Get namespace GID.
 					//
-					if( ! $theContainer->ManageObject
-							( $ns, $namespace, array( kOFFSET_GID ) ) )
-						throw new Exception
-							( "Cannot commit object: "
-							 ."the namespace cannot be found",
-							  kERROR_STATE );									// !@! ==>
+					$namespace_gid = (string) $namespace;
 					
 					//
-					// Check global identifier.
+					// Replace namespace with its NID.
 					//
-					if( ! array_key_exists( kOFFSET_GID, $ns ) )
+					$this->offsetSet( kOFFSET_NAMESPACE,
+									  $namespace->offsetGet( kOFFSET_NID ) );
+				
+				} // Namespace has native identifier.
+				
+				else
+					throw new Exception
+						( "Cannot commit object: "
+						 ."the namespace is missing its native identifier",
+						  kERROR_STATE );										// !@! ==>
+			
+			} // Provided as object.
+			
+			//
+			// Handle identifier.
+			//
+			else
+			{
+				//
+				// Get namespace object.
+				//
+				if( $this
+					->ResolveContainer( $theConnection, TRUE )
+					->ManageObject( $object, $namespace, array( kOFFSET_GID ) ) )
+				{
+					//
+					// Get global identifier.
+					//
+					if( array_key_exists( kOFFSET_GID, $object ) )
+						$namespace_gid = $object[ kOFFSET_GID ];
+	
+					else
 						throw new Exception
 							( "Cannot commit object: "
 							 ."the namespace is missing its global identifier",
-							  kERROR_STATE );									// !@! ==>
-					
-					//
-					// Set global identifier.
-					//
-					$ns = $ns[ kOFFSET_GID ];
+							  kERROR_STATE );										// !@! ==>
 				
-				} // As identifier.
+				} // Found namespace.
 				
-				//
-				// Handle object.
-				//
 				else
-				{
-					//
-					// Save namespace global identifier.
-					//
-					$ns = (string) $namespace.
-					
-					//
-					// Set offset to native identifier.
-					//
-					$this->offsetSet(
-						kOFFSET_NAMESPACE,
-						$namespace->offsetGet(
-							kOFFSET_NID ) );
-				
-				} // As object.
-				
-				return $ns.kTOKEN_NAMESPACE_SEPARATOR.$code;						// ==>
+					throw new Exception
+						( "Cannot commit object: "
+						 ."the namespace cannot be found",
+						  kERROR_STATE );										// !@! ==>
 			
-			} // Has namespace.
+			} // Provided as identifier.
 			
-			return $code;															// ==>
+			return $ns.kTOKEN_NAMESPACE_SEPARATOR.$lid;								// ==>
 		
-		} // Has local identifier.
+		} // Has namespace.
 		
-		return parent::_index( $theContainer, $theModifiers );						// ==>
+		return $lid;																// ==>
 	
 	} // _index.
 		
@@ -347,12 +407,14 @@ class COntologyTerm extends CTerm
 	 *
 	 * In this class we prevent the modification of the three
 	 * {@link kOFFSET_REFS_NAMESPACE}, {@link kOFFSET_REFS_NODE} and
-	 * {@link kOFFSET_REFS_TAG} offsets, since they must be programmatically set.
+	 * {@link kOFFSET_REFS_TAG} offsets in all cases, since they must be programmatically
+	 * managed directly by the container and not through the object.
 	 *
 	 * We also handle the namespace offset, if provided as an object we leave it unchanged
 	 * only if not yet committed, if not, we convert it to its native identifier. We also
 	 * ensure the provided namespace object to be an instance of this class by asserting
-	 * {@link CDocument} descendants to be of this class.
+	 * {@link CDocument} descendants to be of this class; any other type is assumed to be
+	 * the namespace identifier.
 	 *
 	 * @param reference			   &$theOffset			Offset.
 	 * @param reference			   &$theValue			Value to set at offset.
@@ -361,6 +423,7 @@ class COntologyTerm extends CTerm
 	 *
 	 * @throws Exception
 	 *
+	 * @see kOFFSET_NAMESPACE kOFFSET_NID
 	 * @see kOFFSET_REFS_NAMESPACE kOFFSET_REFS_NODE kOFFSET_REFS_TAG
 	 */
 	protected function _Preset( &$theOffset, &$theValue )
@@ -382,10 +445,12 @@ class COntologyTerm extends CTerm
 			//
 			// Handle object.
 			//
-			if( $theValue instanceof CPersistentDocument )
+			if( $theValue instanceof CDocument )
 			{
 				//
 				// Assert it to be a term.
+				// Note the self keyword:
+				// we want it to be any COntologyTerm.
 				//
 				if( $theValue instanceof self )
 				{
@@ -401,16 +466,18 @@ class COntologyTerm extends CTerm
 							$theValue = $theValue->offsetGet( kOFFSET_NID );
 						else
 							throw new Exception
-								( "The namespace is missing its native identifier",
+								( "Cannot set namespace: "
+								 ."the namespace is missing its native identifier",
 								  kERROR_PARAMETER );							// !@! ==>
 					
 					} // Namespace is committed.
 				
-				} // Provided as a term.
+				} // Provided as an object.
 				
 				else
 					throw new Exception
-						( "The namespace must be a term reference or object",
+						( "Cannot set namespace: "
+						 ."the namespace must be a term reference or object",
 						  kERROR_PARAMETER );									// !@! ==>
 			
 			} // Provided as object.
@@ -434,7 +501,11 @@ class COntologyTerm extends CTerm
 	 *
 	 * In this class we prevent the modification of the three
 	 * {@link kOFFSET_REFS_NAMESPACE}, {@link kOFFSET_REFS_NODE} and
-	 * {@link kOFFSET_REFS_TAG} offsets, since they must be programmatically set.
+	 * {@link kOFFSET_REFS_TAG} offsets in all cases, since they must be programmatically
+	 * managed directly by the container and not through the object.
+	 *
+	 * The parent class will take care of locking namespace and local identifier if the
+	 * object is committed.
 	 *
 	 * @param reference			   &$theOffset			Offset.
 	 *
@@ -457,6 +528,7 @@ class COntologyTerm extends CTerm
 		
 		//
 		// Call parent method.
+		// Will take care of kOFFSET_NAMESPACE and kOFFSET_NID.
 		//
 		parent::_Preunset( $theOffset );
 	
@@ -483,16 +555,19 @@ class COntologyTerm extends CTerm
 	 * the {@link _index()} method replace the offset with the namespace's native
 	 * identifier.
 	 *
+	 * Note that we use the insert operation when committing the eventual namespace object,
+	 * this to automatically raise an exception if the object is not really new.
+	 *
 	 * Note that if the provided namespace offset is not committed we ensure it is new by
 	 * using the insert operation.
 	 *
-	 * @param CContainer			$theContainer		Container.
+	 * @param CConnection			$theConnection		Container.
 	 * @param bitfield				$theModifiers		Commit options.
 	 *
 	 * @access protected
 	 */
-	protected function _Precommit( CContainer $theContainer,
-											  $theModifiers = kFLAG_DEFAULT )
+	protected function _Precommit( CConnection $theConnection,
+											   $theModifiers = kFLAG_DEFAULT )
 	{
 		//
 		// Handle namespace.
@@ -511,14 +586,15 @@ class COntologyTerm extends CTerm
 			//
 			if( ($namespace instanceof CPersistentObject)
 			 && (! $namespace->_IsCommitted()) )
-				$namespace->Insert( $theContainer );
+				$namespace->Insert( $theConnection );
 		
 		} // Has namespace.
 		
 		//
 		// Call parent method.
+		// Here is where the _index() method is called.
 		//
-		parent::_Precommit( $theContainer, $theModifiers );
+		parent::_Precommit( $theConnection, $theModifiers );
 		
 	} // _PreCommit.
 		
@@ -530,44 +606,48 @@ class COntologyTerm extends CTerm
 	/**
 	 * <h4>Prepare the object after committing</h4>
 	 *
-	 * In this class we increment the {@link kOFFSET_REFS_NAMESPACE} of the eventual
-	 * namespace.
+	 * In this class we let the container increment the {@link kOFFSET_REFS_NAMESPACE} of
+	 * the eventual namespace.
 	 *
-	 * @param CContainer			$theContainer		Container.
+	 * @param CConnection			$theConnection		Container.
 	 * @param bitfield				$theModifiers		Commit options.
 	 *
 	 * @access protected
 	 */
-	protected function _Postcommit( CContainer $theContainer,
-											   $theModifiers = kFLAG_DEFAULT )
+	protected function _Postcommit( CConnection $theConnection,
+											    $theModifiers = kFLAG_DEFAULT )
 	{
 		//
 		// Check if not yet committed.
 		// This actually means it was inserted...
-		// This also is why we call this before the
+		// This also is why we call this before the parent one.
 		//
-		if( ! $this->_IsCommitted() )
+		if( $this->offsetExists( kOFFSET_NAMESPACE )	// Has namespace
+		 && (! $this->_IsCommitted()) )					// and namespace not committed.
 		{
 			//
-			// Increment namespace reference counter.
+			// Set fields array (will receive updated object).
 			//
-			if( $this->offsetExists( kOFFSET_NAMESPACE ) )
-			{
-				$fields = array( kOFFSET_REFS_NAMESPACE => 1 );
-				$theContainer->ManageObject
+			$fields = array( kOFFSET_REFS_NAMESPACE => 1 );
+			
+			//
+			// Let container do the modification.
+			//
+			$this
+				->ResolveContainer( $theConnection, TRUE )
+				->$theContainer->ManageObject
 					(
 						$fields,
 						$this->offsetGet( kOFFSET_NAMESPACE ),
 						kFLAG_PERSIST_MODIFY + kFLAG_MODIFY_INCREMENT
 					);
-			}
 		
-		} // Not yet committed.
+		} // Has not yet committed namespace.
 		
 		//
 		// Call parent method.
 		//
-		parent::_Postcommit( $theContainer, $theModifiers );
+		parent::_Postcommit( $theConnection, $theModifiers );
 	
 	} // _Postcommit.
 
