@@ -64,7 +64,7 @@ require_once( kPATH_MYWRAPPER_LIBRARY_CLASS."/CTerm.php" );
  *		{@link kOFFSET_REFS_NAMESPACE}.
  *	<li>{@link NodeRefs()}: This method returns the term's node references,
  *		{@link kOFFSET_REFS_NODE}.
- *	<li>{@link TagRefs()}: This method returns the term's namespace references,
+ *	<li>{@link TagRefs()}: This method returns the term's tag references,
  *		{@link kOFFSET_REFS_TAG}.
  * </ul>
  *
@@ -94,7 +94,7 @@ class COntologyTerm extends CTerm
 	 * which represents the number of times the current term has been referenced as a
 	 * namespace, that is, stored in the {@link kOFFSET_NAMESPACE} offset of another term.
 	 *
-	 * The method is read-only, because this value must be managed internally.
+	 * The method is read-only, because this value must be managed externally.
 	 *
 	 * @access public
 	 * @return integer				Namespace reference count.
@@ -124,7 +124,7 @@ class COntologyTerm extends CTerm
 	 * The <i>node references</i>, {@link kOFFSET_REFS_NODE}, holds a list of identifiers of
 	 * nodes that reference the term.
 	 *
-	 * The method is read-only, because this value must be managed internally.
+	 * The method is read-only, because this value must be managed externally.
 	 *
 	 * @access public
 	 * @return array				Nodes reference list.
@@ -154,10 +154,10 @@ class COntologyTerm extends CTerm
 	 * The <i>tag references</i>, {@link kOFFSET_REFS_TAG}, holds a list of identifiers of
 	 * tags that reference the term.
 	 *
-	 * The method is read-only, because this value must be managed internally.
+	 * The method is read-only, because this value must be managed externally.
 	 *
 	 * @access public
-	 * @return array				Nodes reference list.
+	 * @return array				Tags reference list.
 	 *
 	 * @see kOFFSET_REFS_TAG
 	 */
@@ -423,6 +423,8 @@ class COntologyTerm extends CTerm
 	 *
 	 * @throws Exception
 	 *
+	 * @uses _AssertClass()
+	 *
 	 * @see kOFFSET_NAMESPACE kOFFSET_NID
 	 * @see kOFFSET_REFS_NAMESPACE kOFFSET_REFS_NODE kOFFSET_REFS_TAG
 	 */
@@ -443,44 +445,43 @@ class COntologyTerm extends CTerm
 		if( $theOffset == kOFFSET_NAMESPACE )
 		{
 			//
-			// Handle object.
+			// Check value type.
 			//
-			if( $theValue instanceof CDocument )
+			$ok = $this->_AssertClass( $theValue, 'CDocument', __CLASS__ );
+			
+			//
+			// Handle wrong object.
+			//
+			if( $ok === FALSE )
+				throw new Exception
+					( "Cannot set namespace: "
+					 ."the object must be a term reference or object",
+					  kERROR_PARAMETER );										// !@! ==>
+			
+			//
+			// Handle right object.
+			//
+			if( $ok )
 			{
 				//
-				// Assert it to be a term.
-				// Note the self keyword:
-				// we want it to be any COntologyTerm.
+				// Use native identifier.
 				//
-				if( $theValue instanceof self )
+				if( $theValue->_IsCommitted() )
 				{
 					//
-					// Use native identifier.
+					// Check native identifier.
 					//
-					if( $theValue->_IsCommitted() )
-					{
-						//
-						// Check native identifier.
-						//
-						if( $theValue->offsetExists( kOFFSET_NID ) )
-							$theValue = $theValue->offsetGet( kOFFSET_NID );
-						else
-							throw new Exception
-								( "Cannot set namespace: "
-								 ."the namespace is missing its native identifier",
-								  kERROR_PARAMETER );							// !@! ==>
-					
-					} // Namespace is committed.
+					if( $theValue->offsetExists( kOFFSET_NID ) )
+						$theValue = $theValue->offsetGet( kOFFSET_NID );
+					else
+						throw new Exception
+							( "Cannot set namespace: "
+							 ."the object is missing its native identifier",
+							  kERROR_PARAMETER );								// !@! ==>
 				
-				} // Provided as an object.
-				
-				else
-					throw new Exception
-						( "Cannot set namespace: "
-						 ."the namespace must be a term reference or object",
-						  kERROR_PARAMETER );									// !@! ==>
+				} // Namespace is committed.
 			
-			} // Provided as object.
+			} // Correct object class.
 		
 		} // Provided namespace.
 		

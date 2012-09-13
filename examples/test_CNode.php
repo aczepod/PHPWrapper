@@ -333,30 +333,6 @@ try
 	echo( '<hr>' );
 
 	//
-	// Test term lock.
-	//
-	try
-	{
-		echo( '<h4>Test term lock</h4>' );
-		echo( '<h5>$node->Term( $termC );</h5>' );
-		$node->Term( $termC );
-		echo( '<h3><font color="red">Should have raised an exception</font></h3>' );
-		echo( 'Inited['.$namespace->inited()
-					   .'] Dirty['.$namespace->dirty()
-					   .'] Saved['.$namespace->committed()
-					   .'] Encoded['.$namespace->encoded().']<br />' );
-		echo( '<pre>' ); print_r( $namespace ); echo( '</pre>' );
-		echo( '<hr />' );
-	}
-	catch( \Exception $error )
-	{
-		echo( '<h5>Expected exception</h5>' );
-		echo( '<pre>'.(string) $error.'</pre>' );
-		echo( '<hr>' );
-	}
-	echo( '<hr>' );
-
-	//
 	// Insert wrong kind.
 	//
 	try

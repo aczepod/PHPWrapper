@@ -53,20 +53,16 @@ require_once( kPATH_MYWRAPPER_LIBRARY_CLASS."/CPersistentObject.php" );
  * path.
  *
  * Finally, the class features the {@link kOFFSET_TYPE} property which defines the data type
- * of the node or the unit it represents. Nodes that feature this property can be used to
- * annotate data.
+ * of the node or the data unit it represents.
  *
  * This class does not feature attributes that can represent the unique identifier of the
- * object, since its meaning depends on the sequence of terms to which it is connected.
+ * object, this means that the container is responsible of providing the primary key of the
+ * object.
  *
- * The class does not feature attributes that can be used to uniquely identify an object,
- * it is the duty of the hosting container to provide the {@link kOFFSET_NID} identifier.
- *
- * The object will have its {@link _IsInited()} status set if the {@link kOFFSET_TERM}
- * property has been set, derived classes may add other required attributes.
- *
- * The {@link kOFFSET_TERM} offset can only be modified as long as the object has not been
- * committed, {@link _IsCommitted()}.
+ * Nodes can be considered {@link _IsInited()} when they have the  {@link kOFFSET_TERM}
+ * offset set. This and the other properties can be changed at any time, none are locked
+ * once the object has been committed: it is the responsibility of the caller or of derived
+ * classes to implement a locking rule.
  *
  * The class features member accessor methods for the default offsets:
  *
@@ -114,9 +110,6 @@ class CNode extends CPersistentObject
 	 * value when replacing containers; if <tt>FALSE</tt>, it will return the currently set
 	 * value.
 	 *
-	 * Note that when the object has the {@link _IsCommitted()} status this offset will be
-	 * locked and an exception will be raised.
-	 *
 	 * @param mixed					$theValue			Term or operation.
 	 * @param boolean				$getOld				<tt>TRUE</tt> get old value.
 	 *
@@ -142,9 +135,10 @@ class CNode extends CPersistentObject
 	 * <h4>Manage node kind set</h4>
 	 *
 	 * The node kind set, {@link kOFFSET_KIND}, holds a list of unique values that represent
-	 * the different kinds or types associated with the current node. The type of an object
-	 * is a general qualification that applies to any class of object, such as a data type;
-	 * the kind, instead, refers to a qualification specific to the current class of object.
+	 * the different kinds or types associated with the current node. The type,
+	 * {@link Type()}, of a node is a general qualification that applies to any class of
+	 * object, such as a data type; the kind, instead, refers to a qualification specific to
+	 * the current class of object.
 	 *
 	 * This offset collects the list of these qualifications in an enumerated set that can
 	 * be managed with the following parameters:
@@ -212,7 +206,7 @@ class CNode extends CPersistentObject
 	 * <h4>Manage node type</h4>
 	 *
 	 * This method can be used to manage the node's type, {@link kOFFSET_TYPE}, which is an
-	 * enumerated value that represents the data type of the node.
+	 * enumerated value that represents the data type or unit of the node.
 	 *
 	 * The method accepts a parameter which represents either the type, or the requested
 	 * operation, depending on its value:
@@ -260,10 +254,8 @@ class CNode extends CPersistentObject
 	/**
 	 * <h4>Handle offset before setting it</h4>
 	 *
-	 * In this class we prevent the modification of the {@link kOFFSET_TERM} offset if
-	 * the object has its {@link _IsCommitted()} status.
-	 *
-	 * We also ensure that the {@link kOFFSET_KIND} offset is an array.
+	 * In this class we ensure that the {@link kOFFSET_KIND} offset is an array, ArrayObject
+	 * instances are not counted as an array.
 	 *
 	 * @param reference			   &$theOffset			Offset.
 	 * @param reference			   &$theValue			Value to set at offset.
@@ -279,23 +271,14 @@ class CNode extends CPersistentObject
 	protected function _Preset( &$theOffset, &$theValue )
 	{
 		//
-		// Intercept term changes.
-		//
-		if( $this->_IsCommitted()
-		 && ($theOffset == kOFFSET_TERM) )
-			throw new Exception
-				( "You cannot modify the [$theOffset] offset: "
-				 ."the object is committed",
-				  kERROR_LOCKED );												// !@! ==>
-		
-		//
 		// Ensure kind is array.
 		//
 		if( ($theOffset == kOFFSET_KIND)
 		 && ($theValue !== NULL)
 		 && (! is_array( $theValue )) )
 			throw new Exception
-				( "The node kind must be an array",
+				( "Invalid type for the [$theOffset] offset: "
+				 ."it must be an array",
 				  kERROR_PARAMETER );											// !@! ==>
 		
 		//
@@ -304,46 +287,6 @@ class CNode extends CPersistentObject
 		parent::_Preset( $theOffset, $theValue );
 	
 	} // _Preset.
-
-	 
-	/*===================================================================================
-	 *	_Preunset																		*
-	 *==================================================================================*/
-
-	/**
-	 * <h4>Handle offset before unsetting it</h4>
-	 *
-	 * In this class we prevent the modification of the {@link kOFFSET_TERM} offset if
-	 * the object has its {@link _IsCommitted()} status set.
-	 *
-	 * @param reference			   &$theOffset			Offset.
-	 *
-	 * @access protected
-	 *
-	 * @throws Exception
-	 *
-	 * @uses _IsCommitted()
-	 *
-	 * @see kOFFSET_TERM
-	 */
-	protected function _Preunset( &$theOffset )
-	{
-		//
-		// Intercept identifiers.
-		//
-		if( $this->_IsCommitted()
-		 && ($theOffset == kOFFSET_TERM) )
-			throw new Exception
-				( "You cannot modify the [$theOffset] offset: "
-				 ."the object is committed",
-				  kERROR_LOCKED );												// !@! ==>
-		
-		//
-		// Call parent method.
-		//
-		parent::_Preunset( $theOffset );
-	
-	} // _Preunset.
 		
 
 

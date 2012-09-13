@@ -48,24 +48,79 @@ require_once( kPATH_MYWRAPPER_LIBRARY_CLASS."/CNode.php" );
  * of the related {@link Term()}.
  *
  * In this class, the term, {@link kOFFSET_TERM}, is a reference to an instance of
- * {@link COntologyTerm}, this means that the offset will contain the native identifier of
- * the term. The value may be provided as an uncommitted object, in that case the term will
- * be committed in the {@link _Precommit()} method.
+ * {@link COntologyTerm}, meaning that the offset will contain the native identifier of the
+ * term. The value may be provided as an uncommitted term object, in that case the term will
+ * be committed before the current node is committed.
+ *
+ * Once the node has been committed, it will not be possible to modify the term,
+ * {@link kOFFSET_TERM}. 
  *
  * When inserting a new node, the class will also make sure that the referenced term gets a
- * reference to the current node in its {@link kOFFSET_REFS_NODE} offset.
+ * reference to the current node in its {@link kOFFSET_REFS_NODE} offset, this means that
+ * once a node is committed, one cannot change its term reference.
  *
- * The class features a static method, {@link DefaultContainer()}, that can be used to
- * instantiate the default container for nodes, given a database. The method will use the
- * {@link kCONTAINER_NODE_NAME} constant as the container name. You are encouraged to use
- * this method rather than instantiating the container yourself, since other classes rely on
- * this method.
+ * The class features an offset, {@link kOFFSET_REFS_TAG}, which represents the list of tags
+ * that reference the current node. This offset is a set of tag identifiers implemented as
+ * an array. The offset definition is borrowed from the {@link COntologyTerm} class, which
+ * is required by this class because of its {@link kOFFSET_TERM} offset. This offset is
+ * managed by the tag class, this class locks the offset.
+ *
+ * The class implements the static method, {@link DefaultContainer()}, it will use the
+ * {@link kCONTAINER_NODE_NAME} constant. Note that when passing {@link CConnection} based
+ * objects to the persisting methods of this class, you should provide preferably Database
+ * instances, since this class may have to commit terms.
+ *
+ * The class features member accessor methods for the default offsets:
+ *
+ * <ul>
+ *	<li>{@link TagRefs()}: This method returns the node's tag references,
+ *		{@link kOFFSET_REFS_TAG}.
+ * </ul>
  *
  *	@package	MyWrapper
  *	@subpackage	Ontology
  */
 class COntologyNode extends CNode
 {
+		
+
+/*=======================================================================================
+ *																						*
+ *								PUBLIC MEMBER INTERFACE									*
+ *																						*
+ *======================================================================================*/
+
+
+	 
+	/*===================================================================================
+	 *	TagRefs																			*
+	 *==================================================================================*/
+
+	/**
+	 * <h4>Manage tag references</h4>
+	 *
+	 * The <i>tag references</i>, {@link kOFFSET_REFS_TAG}, holds a list of identifiers of
+	 * tags that reference the node.
+	 *
+	 * The method is read-only, because this value must be managed externally.
+	 *
+	 * @access public
+	 * @return array				Tags reference list.
+	 *
+	 * @see kOFFSET_REFS_TAG
+	 */
+	public function TagRefs()
+	{
+		//
+		// Handle reference count.
+		//
+		if( $this->offsetExists( kOFFSET_REFS_TAG ) )
+			return $this->offsetGet( kOFFSET_REFS_TAG );							// ==>
+		
+		return Array();																// ==>
+
+	} // TagRefs.
+
 		
 
 /*=======================================================================================
@@ -119,6 +174,8 @@ class COntologyNode extends CNode
 	 * We also ensure the provided term object to be an instance of {@link COntologyTerm} by
 	 * asserting {@link CDocument} descendants to be of that class.
 	 *
+	 * This method will lock the {@link kOFFSET_REFS_TAG} offset from any modification.
+	 *
 	 * @param reference			   &$theOffset			Offset.
 	 * @param reference			   &$theValue			Value to set at offset.
 	 *
@@ -126,50 +183,73 @@ class COntologyNode extends CNode
 	 *
 	 * @throws Exception
 	 *
-	 * @see kOFFSET_TERM
+	 * @uses _IsCommitted()
+	 * @uses _AssertClass()
+	 *
+	 * @see kOFFSET_TERM kOFFSET_REFS_TAG
 	 */
 	protected function _Preset( &$theOffset, &$theValue )
 	{
+		//
+		// Intercept reference offsets.
+		//
+		if( $theOffset == kOFFSET_REFS_TAG )
+			throw new Exception
+				( "The [$theOffset] offset cannot be modified",
+				  kERROR_LOCKED );												// !@! ==>
+		
 		//
 		// Handle term.
 		//
 		if( $theOffset == kOFFSET_TERM )
 		{
 			//
-			// Handle object.
+			// Lock offset if committed.
 			//
-			if( $theValue instanceof CPersistentDocument )
+			if( $this->_IsCommitted() )
+				throw new Exception
+					( "You cannot modify the [$theOffset] offset: "
+					 ."the object is committed",
+					  kERROR_LOCKED );											// !@! ==>
+			
+			//
+			// Check value type.
+			//
+			$ok = $this->_AssertClass( $theValue, 'CDocument', 'COntologyTerm' );
+			
+			//
+			// Handle wrong object.
+			//
+			if( $ok === FALSE )
+				throw new Exception
+					( "Cannot set term: "
+					 ."the object must be a term reference or object",
+					  kERROR_PARAMETER );										// !@! ==>
+			
+			//
+			// Handle right object.
+			//
+			if( $ok )
 			{
 				//
-				// Assert it to be a term.
+				// Use native identifier.
 				//
-				if( $theValue instanceof COntologyTerm )
+				if( $theValue->_IsCommitted() )
 				{
 					//
-					// Use native identifier.
+					// Check native identifier.
 					//
-					if( $theValue->_IsCommitted() )
-					{
-						//
-						// Check native identifier.
-						//
-						if( $theValue->offsetExists( kOFFSET_NID ) )
-							$theValue = $theValue->offsetGet( kOFFSET_NID );
-						else
-							throw new Exception
-								( "The term is missing its native identifier",
-								  kERROR_PARAMETER );							// !@! ==>
-					
-					} // Namespace is committed.
+					if( $theValue->offsetExists( kOFFSET_NID ) )
+						$theValue = $theValue->offsetGet( kOFFSET_NID );
+					else
+						throw new Exception
+							( "Cannot set term: "
+							 ."the object is missing its native identifier",
+							  kERROR_PARAMETER );								// !@! ==>
 				
-				} // Provided as a term.
-				
-				else
-					throw new Exception
-						( "The term must be an ontology term reference or object",
-						  kERROR_PARAMETER );									// !@! ==>
+				} // term is committed.
 			
-			} // Provided as object.
+			} // Correct object class.
 		
 		} // Provided term.
 		
@@ -179,6 +259,54 @@ class COntologyNode extends CNode
 		parent::_Preset( $theOffset, $theValue );
 	
 	} // _Preset.
+
+	 
+	/*===================================================================================
+	 *	_Preunset																		*
+	 *==================================================================================*/
+
+	/**
+	 * <h4>Handle offset before unsetting it</h4>
+	 *
+	 * In this class we prevent the modification of the {@link kOFFSET_TERM} offset if the
+	 * object is committed and of the {@link kOFFSET_REFS_TAG} offset in all cases.
+	 *
+	 * @param reference			   &$theOffset			Offset.
+	 *
+	 * @access protected
+	 *
+	 * @throws Exception
+	 *
+	 * @uses _IsCommitted()
+	 *
+	 * @see kOFFSET_TERM
+	 */
+	protected function _Preunset( &$theOffset )
+	{
+		//
+		// Intercept reference offsets.
+		//
+		if( $theOffset == kOFFSET_REFS_TAG )
+			throw new Exception
+				( "The [$theOffset] offset cannot be modified",
+				  kERROR_LOCKED );												// !@! ==>
+		
+		//
+		// Intercept namespace and local identifier.
+		//
+		if( ($theOffset == kOFFSET_TERM)
+		 && $this->_IsCommitted() )
+			throw new Exception
+				( "You cannot modify the [$theOffset] offset: "
+				 ."the object is committed",
+				  kERROR_LOCKED );												// !@! ==>
+		
+		//
+		// Call parent method.
+		//
+		parent::_Preunset( $theOffset );
+	
+	} // _Preunset.
 		
 
 

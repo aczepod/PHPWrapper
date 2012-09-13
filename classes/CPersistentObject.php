@@ -641,6 +641,91 @@ class CPersistentObject extends CPersistentDocument
 			$this->offsetSet( kOFFSET_CLASS, get_class( $this ) );
 		
 	} // _PreCommit.
+		
+
+
+/*=======================================================================================
+ *																						*
+ *							PROTECTED VALIDATION INTERFACE								*
+ *																						*
+ *======================================================================================*/
+
+
+	 
+	/*===================================================================================
+	 *	_AssertClass																	*
+	 *==================================================================================*/
+
+	/**
+	 * <h4>Ensure the provided object is of the correct class</h4>
+	 *
+	 * This method can be used to check whether the provided value is of the correct class.
+	 * the method will first check if the value corresponds to a base class,
+	 * <tt>$theBaseClass</tt>, it will then check if the object is an instance of a
+	 * derived class, <tt>$theDerivedClass</tt>.
+	 *
+	 * If the value is not an object of the base class, the method will return
+	 * <tt>NULL</tt>, if the object is an instance of both the base and derived classes, the
+	 * method will return <tt>TRUE</tt>; if the object is not an instance of the derived
+	 * class: if the second parameter, <tt>$doThrow</tt>, is <tt>TRUE</tt>, the method will
+	 * raise an exception, if not, it will return <tt>FALSE</tt>.
+	 *
+	 * If you omit the derived class, the test will return <tt>TRUE</tt>, if the value is an
+	 * instance of the base class.
+	 *
+	 * @param reference				$theValue			Value to assert.
+	 * @param string				$theBaseClass		Base class to test.
+	 * @param string				$theDerivedClass	Derived class to test.
+	 * @param boolean				$doThrow			If <tt>TRUE</tt> raise exception.
+	 *
+	 * @access protected
+	 * @return mixed				<tt>TRUE</tt> correct object,; <tt>NULL</tt> bot an
+	 *								object; <tt>FALSE</tt> not an object.
+	 *
+	 * @uses _id()
+	 * @uses _index()
+	 * @uses _ResolveContainer()
+	 *
+	 * @see kOFFSET_NID kOFFSET_GID kOFFSET_CLASS
+	 */
+	protected function _AssertClass( &$theValue, $theBaseClass, $theDerivedClass = NULL,
+																$doThrow = FALSE )
+	{
+		//
+		// Handle object.
+		//
+		if( $theValue instanceof $theBaseClass )
+		{
+			//
+			// Handle derived class.
+			//
+			if( $theDerivedClass !== NULL )
+			{
+				//
+				// Check derived class.
+				//
+				if( $theValue instanceof $theDerivedClass )
+					return TRUE;													// ==>
+				
+				//
+				// Raise exception.
+				//
+				if( $doThrow )
+					throw new Exception
+						( "The object value is not of the correct class",
+						  kERROR_PARAMETER );									// !@! ==>
+				
+				return FALSE;														// ==>
+			
+			} // Provided derived class.
+			
+			return TRUE;															// ==>
+			
+		} // Object of base class.
+		
+		return NULL;																// ==>
+		
+	} // _AssertClass.
 
 	 
 
