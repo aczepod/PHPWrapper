@@ -48,15 +48,4 @@ define( "kOFFSET_KIND",							'_knd' );
  */
 define( "kOFFSET_TYPE",							'_typ' );
 
-/*=======================================================================================
- *	DEFAULT SEQUENCE KEY																*
- *======================================================================================*/
-
-/**
- * Node sequence.
- *
- * This tag identifies the default sequence key associated with nodes.
- */
-define( "kSEQUENCE_KEY_NODE",					'@node' );
-
 ?>

@@ -50,8 +50,7 @@ require_once( kPATH_MYWRAPPER_LIBRARY_CLASS."/CPersistentObject.php" );
  *		relationship.
  * </ul>
  *
- * Objects of this class are {@link _IsInited()} if all three properties are set, the
- * nature of these elements is defined in derived classes.
+ * Objects of this class are {@link _IsInited()} if all three properties are set.
  *
  * The unique identifier of instances of this class is the combination of the above three
  * elements, no two edges can connect the same vertices in the same direction and with the
@@ -242,10 +241,13 @@ class CEdge extends CPersistentObject
 	 * @param CConnection			$theConnection		Server, database or container.
 	 * @param bitfield				$theModifiers		Commit options.
 	 *
+	 * @throws Exception
+	 *
 	 * @access protected
 	 * @return string|NULL			The object's global unique identifier.
 	 *
-	 * @see kOFFSET_LID kOFFSET_NAMESPACE kTOKEN_NAMESPACE_SEPARATOR
+	 * @see kOFFSET_VERTEX_SUBJECT kOFFSET_PREDICATE kOFFSET_VERTEX_OBJECT
+	 * @see kTOKEN_INDEX_SEPARATOR
 	 */
 	protected function _index( CConnection $theConnection, $theModifiers )
 	{

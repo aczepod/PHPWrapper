@@ -383,19 +383,39 @@ try
 	// Add new node.
 	//
 	echo( '<h4>Add new node</h4>' );
-	echo( '<h5>$node = new MyClass();</h5>' );
-	$node = new MyClass();
-	echo( '<h5>$node[ kOFFSET_TERM ] = $termB;</h5>' );
-	$node[ kOFFSET_TERM ] = $termB;
-	echo( 'Inited['.$node->inited()
-				   .'] Dirty['.$node->dirty()
-				   .'] Saved['.$node->committed()
-				   .'] Encoded['.$node->encoded().']<br />' );
-	echo( '<h5>$status = $node->Replace( $node_container );</h5>' );
-	$status = $node->Replace( $node_container );
-	echo( '<pre>' ); print_r( $node ); echo( '</pre>' );
+	echo( '<h5>$node0 = new MyClass();</h5>' );
+	$node0 = new MyClass();
+	echo( '<h5>$node0[ kOFFSET_TERM ] = $termB;</h5>' );
+	$node0[ kOFFSET_TERM ] = $termB;
+	echo( 'Inited['.$node0->inited()
+				   .'] Dirty['.$node0->dirty()
+				   .'] Saved['.$node0->committed()
+				   .'] Encoded['.$node0->encoded().']<br />' );
+	echo( '<h5>$status = $node0->Replace( $node_container );</h5>' );
+	$status = $node0->Replace( $node_container );
+	echo( '<pre>' ); print_r( $node0 ); echo( '</pre>' );
 	echo( '<hr />' );
 	echo( '<hr>' );
+	
+	//
+	// Create edge.
+	//
+	echo( '<h4>Create edge</h4>' );
+	echo( '<h5>$edge = $node0->RelateTo( $node, $termA );</h5>' );
+	$edge = $node0->RelateTo( $node, $termA );
+	echo( '<pre>' ); print_r( $edge ); echo( '</pre>' );
+	echo( '<hr />' );
+	echo( '<hr>' );
+
+	//
+	// Convert to string.
+	//
+	echo( '<h4>Convert to string</h4>' );
+	echo( '<h5>$string = (string) $node;</h5>' );
+	$string = (string) $node;
+	echo( '<pre>' ); print_r( $string ); echo( '</pre>' );
+	echo( '<hr />' );
+	echo( '<hr />' );
 }
 
 //

@@ -423,6 +423,16 @@ try
 	echo( 'Term<pre>' ); print_r( $term ); echo( '</pre>' );
 	echo( '<hr />' );
 	echo( '<hr>' );
+
+	//
+	// Convert to string.
+	//
+	echo( '<h4>Convert to string</h4>' );
+	echo( '<h5>$string = (string) $node;</h5>' );
+	$string = (string) $node;
+	echo( '<pre>' ); print_r( $string ); echo( '</pre>' );
+	echo( '<hr />' );
+	echo( '<hr />' );
 }
 
 //

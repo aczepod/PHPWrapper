@@ -1,21 +1,21 @@
 <?php
 
 /**
- * <i>COntologyNode</i> class definition.
+ * <i>COntologyEdge</i> class definition.
  *
- * This file contains the class definition of <b>COntologyNode</b> which represents the
- * ancestor of ontology node classes.
+ * This file contains the class definition of <b>COntologyEdge</b> which represents the
+ * ancestor of ontology edge classes.
  *
  *	@package	MyWrapper
  *	@subpackage	Ontology
  *
  *	@author		Milko A. Škofič <m.skofic@cgiar.org>
- *	@version	1.00 10/09/2012
+ *	@version	1.00 14/09/2012
  */
 
 /*=======================================================================================
  *																						*
- *									COntologyNode.php									*
+ *									COntologyEdge.php									*
  *																						*
  *======================================================================================*/
 
@@ -24,28 +24,29 @@
  *
  * This include file contains common offset definitions.
  */
-require_once( "COntologyNode.inc.php" );
+require_once( "COntologyEdge.inc.php" );
 
 /**
- * Terms.
+ * Nodes.
  *
- * This includes the term class definitions.
+ * This includes the node class definitions.
  */
-require_once( kPATH_MYWRAPPER_LIBRARY_CLASS."/COntologyTerm.php" );
+require_once( kPATH_MYWRAPPER_LIBRARY_CLASS."/COntologyNode.php" );
 
 /**
  * Ancestor.
  *
  * This includes the ancestor class definitions.
  */
-require_once( kPATH_MYWRAPPER_LIBRARY_CLASS."/CNode.php" );
+require_once( kPATH_MYWRAPPER_LIBRARY_CLASS."/Edge.php" );
 
 /**
- * <h3>Ontology node object ancestor</h3>
+ * <h3>Ontology edge object ancestor</h3>
  *
- * This class extends its ancestor, {@link CNode}, by asserting the {@link Term()} to be an
- * instance of {@link COntologyTerm} and by managing the {@link kOFFSET_REFS_NODE} offset
- * of the related {@link Term()}.
+ * This class extends its ancestor, {@link CEdge}, by asserting the {@link Subject()} and
+ * {@link Object()} to be instances of {@link COntologyNode}, end the {@link Predicate} to
+ * be an instance of {@link COntologyTerm}.
+
  *
  * The class does not handle global identifiers and objects cannot be uniquely identified
  * by its properties or attributes, it is the duty of the hosting container to provide the
@@ -88,7 +89,7 @@ require_once( kPATH_MYWRAPPER_LIBRARY_CLASS."/CNode.php" );
  *	@package	MyWrapper
  *	@subpackage	Ontology
  */
-class COntologyNode extends CNode
+class COntologyEdge extends CNode
 {
 	/**
 	 * <b>Term object</b>
@@ -180,36 +181,6 @@ class COntologyNode extends CNode
 		return Array();																// ==>
 
 	} // TagRefs.
-
-		
-	/*===================================================================================
-	 *	EdgeRefs																		*
-	 *==================================================================================*/
-
-	/**
-	 * <h4>Manage edge references</h4>
-	 *
-	 * The <i>edge references</i>, {@link kOFFSET_REFS_EDGE}, holds a list of identifiers of
-	 * edges that reference the node.
-	 *
-	 * The method is read-only, because this value must be managed externally.
-	 *
-	 * @access public
-	 * @return array				Edge reference list.
-	 *
-	 * @see kOFFSET_REFS_TAG
-	 */
-	public function EdgeRefs()
-	{
-		//
-		// Handle reference count.
-		//
-		if( $this->offsetExists( kOFFSET_REFS_EDGE ) )
-			return $this->offsetGet( kOFFSET_REFS_EDGE );							// ==>
-		
-		return Array();																// ==>
-
-	} // EdgeRefs.
 
 		
 
@@ -815,7 +786,7 @@ class COntologyNode extends CNode
 
 	 
 
-} // class COntologyNode.
+} // class COntologyEdge.
 
 
 ?>

@@ -79,12 +79,12 @@ try
 	$database = $server->Database( "TEST" );
 	echo( '$database->Drop();<br />' );
 	$database->Drop();
-	echo( '$term_container = CTerm::Container( $database );<br />' );
-	$term_container = CTerm::Container( $database );
-	echo( '$node_container = CNode::Container( $database );<br />' );
-	$node_container = CNode::Container( $database );
-	echo( '$edge_container = CEdge::Container( $database );<br />' );
-	$edge_container = CEdge::Container( $database );
+	echo( '$term_container = $database->Container( "CTerm" );<br />' );
+	$term_container = $database->Container( "CTerm" );
+	echo( '$node_container = $database->Container( "CNode" );<br />' );
+	$node_container = $database->Container( "CNode" );
+	echo( '$edge_container = $database->Container( "CEdge" );<br />' );
+	$edge_container = $database->Container( "CEdge" );
 	echo( '<hr />' );
 	echo( '<hr />' );
 	
@@ -252,15 +252,15 @@ try
 	echo( '<hr>' );
 	
 	//
-	// Insert edge.
+	// Insert edge with objects.
 	//
-	echo( '<h4>Insert edge</h4>' );
-	echo( '<h5>$edge->Subject( $nodeS[ kOFFSET_NID ] );</h5>' );
-	$edge->Subject( $nodeS[ kOFFSET_NID ] );
-	echo( '<h5>$edge->Predicate( $termC[ kOFFSET_NID ] );</h5>' );
-	$edge->Predicate( $termC[ kOFFSET_NID ] );
-	echo( '<h5>$edge->Object( $nodeO[ kOFFSET_NID ] );</h5>' );
-	$edge->Object( $nodeO[ kOFFSET_NID ] );
+	echo( '<h4>Insert edge with objects</h4>' );
+	echo( '<h5>$edge->Subject( $nodeS );</h5>' );
+	$edge->Subject( $nodeS );
+	echo( '<h5>$edge->Predicate( $termC );</h5>' );
+	$edge->Predicate( $termC );
+	echo( '<h5>$edge->Object( $nodeO );</h5>' );
+	$edge->Object( $nodeO );
 	echo( 'Inited['.$edge->inited()
 				   .'] Dirty['.$edge->dirty()
 				   .'] Saved['.$edge->committed()
@@ -268,6 +268,42 @@ try
 	echo( '<h5>$status = $edge->Insert( $edge_container );</h5>' );
 	$status = $edge->Insert( $edge_container );
 	echo( '<pre>' ); print_r( $edge ); echo( '</pre>' );
+	echo( '<hr />' );
+	
+	//
+	// Insert edge with identifiers.
+	//
+	try
+	{
+		echo( '<h4>Insert edge with identifiers</h4>' );
+		echo( '<h4>Insert edge with identifiers</h4>' );
+		echo( '<h5>$edge->Subject( $nodeS[ kOFFSET_NID ] );</h5>' );
+		$edge->Subject( $nodeS[ kOFFSET_NID ] );
+		echo( '<h5>$edge->Predicate( $termC[ kOFFSET_NID ] );</h5>' );
+		$edge->Predicate( $termC[ kOFFSET_NID ] );
+		echo( '<h5>$edge->Object( $nodeO[ kOFFSET_NID ] );</h5>' );
+		$edge->Object( $nodeO[ kOFFSET_NID ] );
+		echo( '<h5>$status = $edge->Insert( $edge_container );</h5>' );
+		$status = $edge->Insert( $edge_container );
+		echo( '<h3><font color="red">Should have raised an exception</font></h3>' );
+		echo( '<pre>' ); print_r( $edge ); echo( '</pre>' );
+		echo( '<hr />' );
+	}
+	catch( \Exception $error )
+	{
+		echo( '<h5>Expected exception</h5>' );
+		echo( '<pre>'.(string) $error.'</pre>' );
+		echo( '<hr>' );
+	}
+	echo( '<hr>' );
+
+	//
+	// Convert to string.
+	//
+	echo( '<h4>Convert to string</h4>' );
+	echo( '<h5>$string = (string) $edge;</h5>' );
+	$string = (string) $edge;
+	echo( '<pre>' ); print_r( $string ); echo( '</pre>' );
 	echo( '<hr />' );
 	echo( '<hr />' );
 }

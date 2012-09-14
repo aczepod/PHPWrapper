@@ -448,6 +448,16 @@ try
 		echo( '<pre>'.(string) $error.'</pre>' );
 		echo( '<hr>' );
 	}
+
+	//
+	// Convert to string.
+	//
+	echo( '<h4>Convert to string</h4>' );
+	echo( '<h5>$string = (string) $last_term;</h5>' );
+	$string = (string) $last_term;
+	echo( '<pre>' ); print_r( $string ); echo( '</pre>' );
+	echo( '<hr />' );
+	echo( '<hr />' );
 }
 
 //

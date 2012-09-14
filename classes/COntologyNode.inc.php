@@ -19,6 +19,18 @@
  */
 
 /*=======================================================================================
+ *	DEFAULT OFFSETS																		*
+ *======================================================================================*/
+
+/**
+ * Edge references.
+ *
+ * This tag identifies edge references, the attribute contains the list of identifiers of
+ * edges that reference the current node.
+ */
+define( "kOFFSET_REFS_EDGE",					'_edr' );
+
+/*=======================================================================================
  *	DEFAULT CONTAINER NAMES																*
  *======================================================================================*/
 
@@ -28,5 +40,16 @@
  * This tag identifies the default name for the container that will host node objects.
  */
 define( "kCONTAINER_NODE_NAME",					'_nodes' );
+
+/*=======================================================================================
+ *	DEFAULT SEQUENCE KEY																*
+ *======================================================================================*/
+
+/**
+ * Node sequence.
+ *
+ * This tag identifies the default sequence key associated with nodes.
+ */
+define( "kSEQUENCE_KEY_NODE",					'@node' );
 
 ?>

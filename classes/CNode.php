@@ -27,6 +27,13 @@
 require_once( "CNode.inc.php" );
 
 /**
+ * Edges.
+ *
+ * This includes the edge class definitions.
+ */
+require_once( kPATH_MYWRAPPER_LIBRARY_CLASS."/CEdge.php" );
+
+/**
  * Ancestor.
  *
  * This includes the ancestor class definitions.
@@ -77,6 +84,46 @@ require_once( kPATH_MYWRAPPER_LIBRARY_CLASS."/CPersistentObject.php" );
  */
 class CNode extends CPersistentObject
 {
+		
+
+/*=======================================================================================
+ *																						*
+ *											MAGIC										*
+ *																						*
+ *======================================================================================*/
+
+
+	 
+	/*===================================================================================
+	 *	__toString																		*
+	 *==================================================================================*/
+
+	/**
+	 * <h4>Return object name</h4>
+	 *
+	 * This method should return the current object's name which should represent the unique
+	 * identifier of the object.
+	 *
+	 * By default we return the string representation of the term, {@link kOFFSET_TERM}.
+	 *
+	 * @access public
+	 * @return string				The connection name.
+	 */
+	public function __toString()
+	{
+		//
+		// Check term.
+		//
+		if( $this->offsetExists( kOFFSET_TERM ) )
+			return (string) $this->offsetGet( kOFFSET_TERM );						// ==>
+		
+		//
+		// Yes, I know...
+		//
+		return NULL;																// ==>
+	
+	} // __toString.
+
 		
 
 /*=======================================================================================
@@ -236,6 +283,74 @@ class CNode extends CPersistentObject
 		return ManageOffset( $this, kOFFSET_TYPE, $theValue, $getOld );				// ==>
 
 	} // Type.
+
+		
+
+/*=======================================================================================
+ *																						*
+ *								PUBLIC OPERATIONS INTERFACE									*
+ *																						*
+ *======================================================================================*/
+
+
+	 
+	/*===================================================================================
+	 *	RelateTo																		*
+	 *==================================================================================*/
+
+	/**
+	 * <h4>Create an outgoing edge</h4>
+	 *
+	 * This method can be used to instantiate an outgoing edge by providing the object
+	 * vertex node and edge predicate. The subject vertex is represented by the current
+	 * node.
+	 *
+	 * Both the predicate and the object vertex node can be any type, the method expects
+	 * the following parameters:
+	 *
+	 * <ul>
+	 *	<li><tt>$theObject</tt>: The edge's object vertex.
+	 *	<li><tt>$thePredicate</tt>: The edge's predicate.
+	 * </ul>
+	 *
+	 * The method will return an instance of the {@link CEdge} class, if any error occurs,
+	 * the method will raise an exception.
+	 *
+	 * @param mixed					$theObject			Object vertex.
+	 * @param mixed					$thePredicate		Relationship predicate.
+	 *
+	 * @access public
+	 * @return CEdge				Relationship edge object.
+	 *
+	 * @uses ManageOffset()
+	 *
+	 * @see kOFFSET_TERM
+	 */
+	public function RelateTo( $theObject, $thePredicate )
+	{
+		//
+		// Instantiate the edge
+		//
+		$edge = new CEdge();
+		
+		//
+		// Set subject.
+		//
+		$edge->Subject( $this );
+		
+		//
+		// Set predicate.
+		//
+		$edge->Predicate( $thePredicate );
+		
+		//
+		// Set object.
+		//
+		$edge->Object( $theObject );
+		
+		return $edge;																// ==>
+
+	} // RelateTo.
 		
 
 

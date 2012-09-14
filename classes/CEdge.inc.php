@@ -46,26 +46,4 @@ define( "kOFFSET_PREDICATE",					'_prd' );
  */
 define( "kOFFSET_VERTEX_OBJECT",				'_vob' );
 
-/*=======================================================================================
- *	DEFAULT CONTAINER NAMES																*
- *======================================================================================*/
-
-/**
- * Edges container name.
- *
- * This tag identifies the default name for the container that will host edge objects.
- */
-define( "kCONTAINER_EDGE_NAME",					'_edges' );
-
-/*=======================================================================================
- *	DEFAULT SEQUENCE KEY																*
- *======================================================================================*/
-
-/**
- * Edge sequence.
- *
- * This tag identifies the default sequence key associated with edges.
- */
-define( "kSEQUENCE_KEY_EDGE",					'@edge' );
-
 ?>
