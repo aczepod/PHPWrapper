@@ -1101,10 +1101,31 @@ except that it passed by reference.</p>
 <h4>Prepare the object before committing</h4>
 
 <p>This method will be called before the object gets committed, its main duty is
-to check whether the object has all the required elements and to set all default
-data.</p>
+to check whether the object has all the required elements, to set all default
+data amd to commit eventual embedded objects.</p>
 
-<p>The method accepts two parameters:</p>
+<p>This method calls three other methods which perform the following
+functions:</p>
+
+<ul>
+	<li><code><a href="class-CPersistentDocument.html#_">CPersistentDocument::_PrecommitValidate()</a></code>: This method's duty is to check if the object
+	is fot for being committed.</li>
+
+	<li><code><a href="class-CPersistentDocument.html#_">CPersistentDocument::_PrecommitRelated()</a></code>: This method's duty is to check and commit
+	eventual embedded or related objects.</li>
+
+	<li><code><a href="class-CPersistentDocument.html#_">CPersistentDocument::_PrecommitIdentify()</a></code>: This method's duty is to fill the object's
+	identifiers.</li>
+</ul>
+
+<p>These three methods are called in the above order, they take the same
+arguments as the current method and do not return a value: errors must raise
+exceptions.</p>
+
+<p>When deriving from this class you should overload the above methods and not
+this one.</p>
+
+<p>This method accepts two parameters:</p>
 
 <ul>
 	<li><tt>$theConnection</tt>: The container in which the object is to be
@@ -1119,21 +1140,13 @@ data.</p>
 
 			<li><tt>kFLAG_PERSIST_REPLACE</tt>: Replace operation.</li>
 
-			<li><tt>kFLAG_PERSIST_MODIFY</tt>: Modification operation: this option
-			is legal, but not valid: it is a legal option, but this method should ignore
-			it.</li>
-
 			<li><tt>kFLAG_PERSIST_DELETE</tt>: Delete operation.</li>
 		</ul>
 	</li>
 </ul>
 
-<p>If the conditions for committing the object are not met, the method should
-raise an exception.</p>
-
-<p>Derived classes can overload this method to implement custom behaviour.</p>
-
-<p>In this class we do nothing.</p>
+<p>If the conditions for committing the object are not met, an exception should
+be raised.</p>
 
 
 
@@ -1146,18 +1159,12 @@ raise an exception.</p>
 				</dl></div>
 
 
-				<h4>Throws</h4>
-				<div class="list">
-					<code><code><a href="class-Exception.html">Exception</a></code></code><br />
-				</div>
 
-				<h4>See</h4>
-				<div class="list">
-						kFLAG_PERSIST_WRITE_MASK<br />
-				</div>
 				<h4>Uses</h4>
 				<div class="list">
-						<code><code><a href="class-CStatusDocument.html#_">CStatusDocument::_IsInited()</a></code></code> <br />
+						<code><code><a href="class-CPersistentDocument.html#_">CPersistentDocument::_PrecommitValidate()</a></code></code> <br />
+						<code><code><a href="class-CPersistentDocument.html#_">CPersistentDocument::_PrecommitRelated()</a></code></code> <br />
+						<code><code><a href="class-CPersistentDocument.html#_">CPersistentDocument::_PrecommitIdentify()</a></code></code> <br />
 				</div>
 				<h4>Used by</h4>
 				<div class="list">
@@ -1181,7 +1188,7 @@ raise an exception.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#__Postcommit">#</a>
-		<code><a href="source-class-CPersistentDocument.html#1002" title="Go to source code">_Postcommit</a>( <span><code><a href="class-CConnection.html">CConnection</a></code> <var>$theConnection</var></span>, <span>bitfield <var>$theModifiers</var> = kFLAG_DEFAULT </span> )</code>
+		<code><a href="source-class-CPersistentDocument.html#1010" title="Go to source code">_Postcommit</a>( <span><code><a href="class-CConnection.html">CConnection</a></code> <var>$theConnection</var></span>, <span>bitfield <var>$theModifiers</var> = kFLAG_DEFAULT </span> )</code>
 
 		<div class="description short">
 			
@@ -1194,9 +1201,30 @@ raise an exception.</p>
 <h4>Prepare the object after committing</h4>
 
 <p>This method will be called after the object gets committed, its main duty is
-to update the object status and normalise eventual elements.</p>
+to update the object after it has been committed.</p>
 
-<p>The method accepts two parameters:</p>
+<p>This method calls three other methods which perform the following
+functions:</p>
+
+<ul>
+	<li><code><a href="class-CPersistentDocument.html#_">CPersistentDocument::_PostcommitRelated()</a></code>: This method's duty is to update related
+	objects.</li>
+
+	<li><code><a href="class-CPersistentDocument.html#_">CPersistentDocument::_PostcommitStatus()</a></code>: This method's duty is to set the object's
+	status after the persist operation.</li>
+
+	<li><code><a href="class-CPersistentDocument.html#_">CPersistentDocument::_PostcommitCleanup()</a></code>: This method's duty is to cleanup the object
+	after the operation.</li>
+</ul>
+
+<p>These three methods are called in the above order, they take the same
+arguments as the current method and do not return a value: errors must raise
+exceptions.</p>
+
+<p>When deriving from this class you should overload the above methods and not
+this one.</p>
+
+<p>This method accepts two parameters:</p>
 
 <ul>
 	<li><tt>$theConnection</tt>: The container in which the object is to be
@@ -1211,20 +1239,10 @@ to update the object status and normalise eventual elements.</p>
 
 			<li><tt>kFLAG_PERSIST_REPLACE</tt>: Replace operation.</li>
 
-			<li><tt>kFLAG_PERSIST_MODIFY</tt>: Modification operation: this option
-			is legal, but not valid: it is a legal option, but this method should ignore
-			it.</li>
-
 			<li><tt>kFLAG_PERSIST_DELETE</tt>: Delete operation.</li>
 		</ul>
 	</li>
 </ul>
-
-<p>Derived classes can overload this method to implement custom behaviour.</p>
-
-<p>In this class we reset the <code><a href="class-CStatusDocument.html#_">CStatusDocument::_IsDirty()</a></code> status after committing or
-loading the object, set the <code><a href="class-CStatusDocument.html#_">CStatusDocument::_IsCommitted()</a></code> status after committing and
-resetting it after deleting.</p>
 
 
 
@@ -1238,14 +1256,11 @@ resetting it after deleting.</p>
 
 
 
-				<h4>See</h4>
-				<div class="list">
-						kFLAG_PERSIST_WRITE_MASK kFLAG_PERSIST_DELETE kFLAG_PERSIST_MASK<br />
-				</div>
 				<h4>Uses</h4>
 				<div class="list">
-						<code><code><a href="class-CStatusDocument.html#_">CStatusDocument::_IsDirty()</a></code></code> <br />
-						<code><code><a href="class-CStatusDocument.html#_">CStatusDocument::_IsCommitted()</a></code></code> <br />
+						<code><code><a href="class-CPersistentDocument.html#_">CPersistentDocument::_PostcommitRelated()</a></code></code> <br />
+						<code><code><a href="class-CPersistentDocument.html#_">CPersistentDocument::_PostcommitStatus()</a></code></code> <br />
+						<code><code><a href="class-CPersistentDocument.html#_">CPersistentDocument::_PostcommitCleanup()</a></code></code> <br />
 				</div>
 				<h4>Used by</h4>
 				<div class="list">
@@ -1254,6 +1269,500 @@ resetting it after deleting.</p>
 						<code><code><a href="class-CPersistentDocument.html#_">CPersistentDocument::Replace()</a></code></code> <br />
 						<code><code><a href="class-CPersistentDocument.html#_">CPersistentDocument::Restore()</a></code></code> <br />
 						<code><code><a href="class-CPersistentDocument.html#_">CPersistentDocument::Delete()</a></code></code> <br />
+				</div>
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="_PrecommitValidate" id="__PrecommitValidate">
+
+		<td class="attributes"><code>
+			 protected 
+			
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#__PrecommitValidate">#</a>
+		<code><a href="source-class-CPersistentDocument.html#1090" title="Go to source code">_PrecommitValidate</a>( <span>reference <var>&amp; $theConnection</var></span>, <span>reference <var>&amp; $theModifiers</var></span> )</code>
+
+		<div class="description short">
+			
+<h4>Validate the object before committing</h4>
+
+		</div>
+
+		<div class="description detailed hidden">
+			
+<h4>Validate the object before committing</h4>
+
+<p>This method should check if the object is in the condition for being
+inserted, updated, replaced or deleted.</p>
+
+<p>This method is the first one called by <code><a href="class-CPersistentDocument.html#_">CPersistentDocument::_Precommit()</a></code>, it should
+validate the object elements specific to the current class and let the inherited
+method handle the inherited ones.</p>
+
+<p>If the object does not meet the requirements for the desired operation, this
+method should raise an exception.</p>
+
+<p>The method accepts two parameters:</p>
+
+<ul>
+	<li><tt>$theConnection</tt>: The container in which the object is to be
+	committed, a server or a database if the <code><a href="class-CPersistentDocument.html#_">CPersistentDocument::DefaultDatabase()</a></code> and <code><a href="class-CPersistentDocument.html#_">CPersistentDocument::DefaultContainer()</a></code> are able to resolve it into a container. This parameter is
+	provided as a reference allowing this method to change it.</li>
+
+	<li><tt>$theModifiers</tt>: The commit options provided as a bitfield in which
+	the following values are considered:
+		<ul>
+			<li><tt>kFLAG_PERSIST_INSERT</tt>: Insert operation.</li>
+
+			<li><tt>kFLAG_PERSIST_UPDATE</tt>: Update operation.</li>
+
+			<li><tt>kFLAG_PERSIST_REPLACE</tt>: Replace operation.</li>
+
+			<li><tt>kFLAG_PERSIST_DELETE</tt>: Delete operation.</li>
+		</ul>
+		 This parameter is provided as a reference allowing this method to change
+		it.</li>
+</ul>
+
+<p>In this class we check if the object has the <code><a href="class-CStatusDocument.html#_">CStatusDocument::_IsInited()</a></code> status.</p>
+
+
+
+				<h4>Parameters</h4>
+				<div class="list"><dl>
+					<dt><var>$theConnection</var></dt>
+					<dd><code>reference</code><br>&amp;$theConnection Server, database or container.</dd>
+					<dt><var>$theModifiers</var></dt>
+					<dd><code>reference</code><br>&amp;$theModifiers Commit options.</dd>
+				</dl></div>
+
+
+				<h4>Throws</h4>
+				<div class="list">
+					<code><code><a href="class-Exception.html">Exception</a></code></code><br />
+				</div>
+
+				<h4>See</h4>
+				<div class="list">
+						kFLAG_PERSIST_WRITE_MASK<br />
+				</div>
+				<h4>Uses</h4>
+				<div class="list">
+						<code><code><a href="class-CStatusDocument.html#_">CStatusDocument::_IsInited()</a></code></code> <br />
+				</div>
+				<h4>Used by</h4>
+				<div class="list">
+						<code><code><a href="class-CPersistentDocument.html#_">CPersistentDocument::_Precommit()</a></code></code> <br />
+				</div>
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="_PrecommitRelated" id="__PrecommitRelated">
+
+		<td class="attributes"><code>
+			 protected 
+			
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#__PrecommitRelated">#</a>
+		<code><a href="source-class-CPersistentDocument.html#1159" title="Go to source code">_PrecommitRelated</a>( <span>reference <var>&amp; $theConnection</var></span>, <span>reference <var>&amp; $theModifiers</var></span> )</code>
+
+		<div class="description short">
+			
+<h4>Handle embedded or related objects before committing</h4>
+
+		</div>
+
+		<div class="description detailed hidden">
+			
+<h4>Handle embedded or related objects before committing</h4>
+
+<p>This method should handle embedded or related objects before the current
+object gets committed. In general it is here where you would commit embedded
+objects and convert them to references.</p>
+
+<p>This method is the second one called by <code><a href="class-CPersistentDocument.html#_">CPersistentDocument::_Precommit()</a></code>, it should
+handle the object elements specific to the current class and let the inherited
+method handle the inherited ones.</p>
+
+<p>If any error occurs during the process, this method should raise an
+exception.</p>
+
+<p>The method accepts two parameters:</p>
+
+<ul>
+	<li><tt>$theConnection</tt>: The container in which the object is to be
+	committed, a server or a database if the <code><a href="class-CPersistentDocument.html#_">CPersistentDocument::DefaultDatabase()</a></code> and <code><a href="class-CPersistentDocument.html#_">CPersistentDocument::DefaultContainer()</a></code> are able to resolve it into a container. This parameter is
+	provided as a reference allowing this method to change it.</li>
+
+	<li><tt>$theModifiers</tt>: The commit options provided as a bitfield in which
+	the following values are considered:
+		<ul>
+			<li><tt>kFLAG_PERSIST_INSERT</tt>: Insert operation.</li>
+
+			<li><tt>kFLAG_PERSIST_UPDATE</tt>: Update operation.</li>
+
+			<li><tt>kFLAG_PERSIST_REPLACE</tt>: Replace operation.</li>
+
+			<li><tt>kFLAG_PERSIST_DELETE</tt>: Delete operation.</li>
+		</ul>
+		 This parameter is provided as a reference allowing this method to change
+		it.</li>
+</ul>
+
+<p>In this class we do nothing.</p>
+
+
+
+				<h4>Parameters</h4>
+				<div class="list"><dl>
+					<dt><var>$theConnection</var></dt>
+					<dd><code>reference</code><br>&amp;$theConnection Server, database or container.</dd>
+					<dt><var>$theModifiers</var></dt>
+					<dd><code>reference</code><br>&amp;$theModifiers Commit options.</dd>
+				</dl></div>
+
+
+
+				<h4>Used by</h4>
+				<div class="list">
+						<code><code><a href="class-CPersistentDocument.html#_">CPersistentDocument::_Precommit()</a></code></code> <br />
+				</div>
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="_PrecommitIdentify" id="__PrecommitIdentify">
+
+		<td class="attributes"><code>
+			 protected 
+			
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#__PrecommitIdentify">#</a>
+		<code><a href="source-class-CPersistentDocument.html#1204" title="Go to source code">_PrecommitIdentify</a>( <span>reference <var>&amp; $theConnection</var></span>, <span>reference <var>&amp; $theModifiers</var></span> )</code>
+
+		<div class="description short">
+			
+<h4>Determine the identifiers before committing</h4>
+
+		</div>
+
+		<div class="description detailed hidden">
+			
+<h4>Determine the identifiers before committing</h4>
+
+<p>This method should set the object identifiers before the current object gets
+committed. In general it is here where you set sequence numbers or generate
+unique identifiers.</p>
+
+<p>This method is the last one called by <code><a href="class-CPersistentDocument.html#_">CPersistentDocument::_Precommit()</a></code>, in general, it
+should not fail if the first method called by <code><a href="class-CPersistentDocument.html#_">CPersistentDocument::_Precommit()</a></code> has made the
+necessary validations. The reason this method is the last in the chain is
+because often the object identifier may depend on related or embedded objects
+which have been committed in the previous method.</p>
+
+<p>If any error occurs during the process, this method should still raise an
+exception.</p>
+
+<p>The method accepts two parameters:</p>
+
+<ul>
+	<li><tt>$theConnection</tt>: The container in which the object is to be
+	committed, a server or a database if the <code><a href="class-CPersistentDocument.html#_">CPersistentDocument::DefaultDatabase()</a></code> and <code><a href="class-CPersistentDocument.html#_">CPersistentDocument::DefaultContainer()</a></code> are able to resolve it into a container. This parameter is
+	provided as a reference allowing this method to change it.</li>
+
+	<li><tt>$theModifiers</tt>: The commit options provided as a bitfield in which
+	the following values are considered:
+		<ul>
+			<li><tt>kFLAG_PERSIST_INSERT</tt>: Insert operation.</li>
+
+			<li><tt>kFLAG_PERSIST_UPDATE</tt>: Update operation.</li>
+
+			<li><tt>kFLAG_PERSIST_REPLACE</tt>: Replace operation.</li>
+
+			<li><tt>kFLAG_PERSIST_DELETE</tt>: Delete operation.</li>
+		</ul>
+		 This parameter is provided as a reference allowing this method to change
+		it.</li>
+</ul>
+
+<p>In this class we do nothing.</p>
+
+
+
+				<h4>Parameters</h4>
+				<div class="list"><dl>
+					<dt><var>$theConnection</var></dt>
+					<dd><code>reference</code><br>&amp;$theConnection Server, database or container.</dd>
+					<dt><var>$theModifiers</var></dt>
+					<dd><code>reference</code><br>&amp;$theModifiers Commit options.</dd>
+				</dl></div>
+
+
+
+				<h4>Used by</h4>
+				<div class="list">
+						<code><code><a href="class-CPersistentDocument.html#_">CPersistentDocument::_Precommit()</a></code></code> <br />
+				</div>
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="_PostcommitRelated" id="__PostcommitRelated">
+
+		<td class="attributes"><code>
+			 protected 
+			
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#__PostcommitRelated">#</a>
+		<code><a href="source-class-CPersistentDocument.html#1260" title="Go to source code">_PostcommitRelated</a>( <span>reference <var>&amp; $theConnection</var></span>, <span>reference <var>&amp; $theModifiers</var></span> )</code>
+
+		<div class="description short">
+			
+<h4>Update related objects after committing</h4>
+
+		</div>
+
+		<div class="description detailed hidden">
+			
+<h4>Update related objects after committing</h4>
+
+<p>This method should update eventual related objects after the current object
+has been committed. This method is the first one called by <code><a href="class-CPersistentDocument.html#_">CPersistentDocument::_Postcommit()</a></code>
+after the persist operation and the object has not yet updated its status
+according to the operation, so this is a good place to make changes before the
+status gets reset.</p>
+
+<p>The method accepts two parameters:</p>
+
+<ul>
+	<li><tt>$theConnection</tt>: The container in which the object is to be
+	committed, a server or a database if the <code><a href="class-CPersistentDocument.html#_">CPersistentDocument::DefaultDatabase()</a></code> and <code><a href="class-CPersistentDocument.html#_">CPersistentDocument::DefaultContainer()</a></code> are able to resolve it into a container. This parameter is
+	provided as a reference allowing this method to change it.</li>
+
+	<li><tt>$theModifiers</tt>: The commit options provided as a bitfield in which
+	the following values are considered:
+		<ul>
+			<li><tt>kFLAG_PERSIST_INSERT</tt>: Insert operation.</li>
+
+			<li><tt>kFLAG_PERSIST_UPDATE</tt>: Update operation.</li>
+
+			<li><tt>kFLAG_PERSIST_REPLACE</tt>: Replace operation.</li>
+
+			<li><tt>kFLAG_PERSIST_DELETE</tt>: Delete operation.</li>
+		</ul>
+		 This parameter is provided as a reference allowing this method to change
+		it.</li>
+</ul>
+
+<p>In this class we do nothing.</p>
+
+
+
+				<h4>Parameters</h4>
+				<div class="list"><dl>
+					<dt><var>$theConnection</var></dt>
+					<dd><code>reference</code><br>&amp;$theConnection Server, database or container.</dd>
+					<dt><var>$theModifiers</var></dt>
+					<dd><code>reference</code><br>&amp;$theModifiers Commit options.</dd>
+				</dl></div>
+
+
+				<h4>Throws</h4>
+				<div class="list">
+					<code><code><a href="class-Exception.html">Exception</a></code></code><br />
+				</div>
+
+				<h4>See</h4>
+				<div class="list">
+						kFLAG_PERSIST_WRITE_MASK<br />
+				</div>
+				<h4>Uses</h4>
+				<div class="list">
+						<code><code><a href="class-CStatusDocument.html#_">CStatusDocument::_IsInited()</a></code></code> <br />
+				</div>
+				<h4>Used by</h4>
+				<div class="list">
+						<code><code><a href="class-CPersistentDocument.html#_">CPersistentDocument::_Postcommit()</a></code></code> <br />
+				</div>
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="_PostcommitStatus" id="__PostcommitStatus">
+
+		<td class="attributes"><code>
+			 protected 
+			
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#__PostcommitStatus">#</a>
+		<code><a href="source-class-CPersistentDocument.html#1306" title="Go to source code">_PostcommitStatus</a>( <span>reference <var>&amp; $theConnection</var></span>, <span>reference <var>&amp; $theModifiers</var></span> )</code>
+
+		<div class="description short">
+			
+<h4>Update the object's status after committing</h4>
+
+		</div>
+
+		<div class="description detailed hidden">
+			
+<h4>Update the object's status after committing</h4>
+
+<p>This method should set the object status according to the operation
+performed, it is the second method called by <code><a href="class-CPersistentDocument.html#_">CPersistentDocument::_Postcommit()</a></code> after the
+persist operation and is called before the <code><a href="class-CPersistentDocument.html#_">CPersistentDocument::_PostcommitCleanup()</a></code> method
+that should cleanup after the operation.</p>
+
+<p>In general this method should set or reset the status reflecting the
+persistent state of the object.</p>
+
+<p>The method accepts two parameters:</p>
+
+<ul>
+	<li><tt>$theConnection</tt>: The container in which the object is to be
+	committed, a server or a database if the <code><a href="class-CPersistentDocument.html#_">CPersistentDocument::DefaultDatabase()</a></code> and <code><a href="class-CPersistentDocument.html#_">CPersistentDocument::DefaultContainer()</a></code> are able to resolve it into a container. This parameter is
+	provided as a reference allowing this method to change it.</li>
+
+	<li><tt>$theModifiers</tt>: The commit options provided as a bitfield in which
+	the following values are considered:
+		<ul>
+			<li><tt>kFLAG_PERSIST_INSERT</tt>: Insert operation.</li>
+
+			<li><tt>kFLAG_PERSIST_UPDATE</tt>: Update operation.</li>
+
+			<li><tt>kFLAG_PERSIST_REPLACE</tt>: Replace operation.</li>
+
+			<li><tt>kFLAG_PERSIST_DELETE</tt>: Delete operation.</li>
+		</ul>
+		 This parameter is provided as a reference allowing this method to change
+		it.</li>
+</ul>
+
+<p>In this class we reset the <code><a href="class-CStatusDocument.html#_">CStatusDocument::_IsDirty()</a></code> status after committing or
+loading the object, set the <code><a href="class-CStatusDocument.html#_">CStatusDocument::_IsCommitted()</a></code> status after committing and
+resetting it after deleting.</p>
+
+
+
+				<h4>Parameters</h4>
+				<div class="list"><dl>
+					<dt><var>$theConnection</var></dt>
+					<dd><code>reference</code><br>&amp;$theConnection Server, database or container.</dd>
+					<dt><var>$theModifiers</var></dt>
+					<dd><code>reference</code><br>&amp;$theModifiers Commit options.</dd>
+				</dl></div>
+
+
+
+				<h4>Used by</h4>
+				<div class="list">
+						<code><code><a href="class-CPersistentDocument.html#_">CPersistentDocument::_Postcommit()</a></code></code> <br />
+				</div>
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="_PostcommitCleanup" id="__PostcommitCleanup">
+
+		<td class="attributes"><code>
+			 protected 
+			
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#__PostcommitCleanup">#</a>
+		<code><a href="source-class-CPersistentDocument.html#1377" title="Go to source code">_PostcommitCleanup</a>( <span>reference <var>&amp; $theConnection</var></span>, <span>reference <var>&amp; $theModifiers</var></span> )</code>
+
+		<div class="description short">
+			
+<h4>Cleanup the object after committing</h4>
+
+		</div>
+
+		<div class="description detailed hidden">
+			
+<h4>Cleanup the object after committing</h4>
+
+<p>This method should clean and normalise the object after the operation, it is
+the last method called by <code><a href="class-CPersistentDocument.html#_">CPersistentDocument::_Postcommit()</a></code> and the last chance to have a
+hook into the persist workflow.</p>
+
+<p>Be aware that <code><a href="class-CPersistentDocument.html#_">CPersistentDocument::_PostcommitStatus()</a></code> has been called before, so if you
+intend to perform operations that may change the object's status, this is not
+the place.</p>
+
+<p>The method accepts two parameters:</p>
+
+<ul>
+	<li><tt>$theConnection</tt>: The container in which the object is to be
+	committed, a server or a database if the <code><a href="class-CPersistentDocument.html#_">CPersistentDocument::DefaultDatabase()</a></code> and <code><a href="class-CPersistentDocument.html#_">CPersistentDocument::DefaultContainer()</a></code> are able to resolve it into a container. This parameter is
+	provided as a reference allowing this method to change it.</li>
+
+	<li><tt>$theModifiers</tt>: The commit options provided as a bitfield in which
+	the following values are considered:
+		<ul>
+			<li><tt>kFLAG_PERSIST_INSERT</tt>: Insert operation.</li>
+
+			<li><tt>kFLAG_PERSIST_UPDATE</tt>: Update operation.</li>
+
+			<li><tt>kFLAG_PERSIST_REPLACE</tt>: Replace operation.</li>
+
+			<li><tt>kFLAG_PERSIST_DELETE</tt>: Delete operation.</li>
+		</ul>
+		 This parameter is provided as a reference allowing this method to change
+		it.</li>
+</ul>
+
+<p>In this class we reset the <code><a href="class-CStatusDocument.html#_">CStatusDocument::_IsDirty()</a></code> status after committing or
+loading the object, set the <code><a href="class-CStatusDocument.html#_">CStatusDocument::_IsCommitted()</a></code> status after committing and
+resetting it after deleting.</p>
+
+<p>In this class we do nothing.</p>
+
+
+
+				<h4>Parameters</h4>
+				<div class="list"><dl>
+					<dt><var>$theConnection</var></dt>
+					<dd><code>reference</code><br>&amp;$theConnection Server, database or container.</dd>
+					<dt><var>$theModifiers</var></dt>
+					<dd><code>reference</code><br>&amp;$theModifiers Commit options.</dd>
+				</dl></div>
+
+
+
+				<h4>Used by</h4>
+				<div class="list">
+						<code><code><a href="class-CPersistentDocument.html#_">CPersistentDocument::_Postcommit()</a></code></code> <br />
 				</div>
 
 
@@ -1271,7 +1780,7 @@ resetting it after deleting.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#__Ready">#</a>
-		<code><a href="source-class-CPersistentDocument.html#1086" title="Go to source code">_Ready</a>( )</code>
+		<code><a href="source-class-CPersistentDocument.html#1432" title="Go to source code">_Ready</a>( )</code>
 
 		<div class="description short">
 			

@@ -47,6 +47,13 @@ require_once( kPATH_MYWRAPPER_LIBRARY_CLASS."/CNode.php" );
  * instance of {@link COntologyTerm} and by managing the {@link kOFFSET_REFS_NODE} offset
  * of the related {@link Term()}.
  *
+ * The class does not handle global identifiers and objects cannot be uniquely identified
+ * by its properties or attributes, it is the duty of the hosting container to provide the
+ * {@link kOFFSET_NID} identifier, In this class we use sequences,
+ * {@link CContainer::NextSequence()}, from a default container named after the default
+ * {@link kCONTAINER_SEQUENCE_NAME} tag in the same database, this is to make referencing
+ * nodes easier and to be compatible with most graph databases.
+ *
  * In this class, the term, {@link kOFFSET_TERM}, is a reference to an instance of
  * {@link COntologyTerm}, meaning that the offset will contain the native identifier of the
  * term. The value may be provided as an uncommitted term object, in that case the term will
@@ -75,6 +82,7 @@ require_once( kPATH_MYWRAPPER_LIBRARY_CLASS."/CNode.php" );
  * <ul>
  *	<li>{@link TagRefs()}: This method returns the node's tag references,
  *		{@link kOFFSET_REFS_TAG}.
+ *	<li>{@link LoadTerm()}: This method will return the referenced term object.
  * </ul>
  *
  *	@package	MyWrapper
@@ -82,6 +90,15 @@ require_once( kPATH_MYWRAPPER_LIBRARY_CLASS."/CNode.php" );
  */
 class COntologyNode extends CNode
 {
+	/**
+	 * <b>Term object</b>
+	 *
+	 * This data member holds the eventual term object when requested.
+	 *
+	 * @var COntologyTerm
+	 */
+	 protected $mTerm = NULL;
+
 		
 
 /*=======================================================================================
@@ -125,6 +142,86 @@ class COntologyNode extends CNode
 
 /*=======================================================================================
  *																						*
+ *							PUBLIC RELATED MEMBER INTERFACE								*
+ *																						*
+ *======================================================================================*/
+
+
+	 
+	/*===================================================================================
+	 *	LoadTerm																		*
+	 *==================================================================================*/
+
+	/**
+	 * <h4>Load term object</h4>
+	 *
+	 * This method will return the current term object: if the term is not set, the method
+	 * will return <tt>NULL</tt>; if the term cannot be found, the method will raise an
+	 * exception.
+	 *
+	 * The object will also be loaded in a data member that can function as a cache.
+	 *
+	 * The method features two parameters: the first refers to the container in which the
+	 * term is stored, the second is a boolean flag that determines whether the object
+	 * is to be read, or if the cached copy can be used.
+	 *
+	 * @param CConnection			$theConnection		Server, database or container.
+	 * @param boolean				$doReload			Reload if <tt>TRUE</tt>.
+	 *
+	 * @access public
+	 * @return COntologyTerm		Term object or <tt>NULL</tt>.
+	 *
+	 * @see kOFFSET_TERM
+	 */
+	public function LoadTerm( CConnection $theConnection, $doReload = FALSE )
+	{
+		//
+		// Check offset.
+		//
+		if( $this->offsetExists( kOFFSET_TERM ) )
+		{
+			//
+			// Refresh cache.
+			// Uncommitted terms are cached by default.
+			//
+			if( $doReload						// Reload,
+			 || ($this->mTerm === NULL) )	// or not cached.
+			{
+				//
+				// Handle term object.
+				//
+				$term = $this->offsetGet( kOFFSET_TERM );
+				if( $term instanceof COntologyTerm )
+					return $term;													// ==>
+				
+				//
+				// Load term object.
+				//
+				$this->mTerm
+					= $this->NewObject
+						( $this->ResolveTermContainer( $theConnection, TRUE ),
+						  $term );
+			
+			} // Reload or empty cache.
+			
+			//
+			// Handle not found.
+			//
+			if( $this->mTerm === NULL )
+				throw new Exception
+					( "Term not found",
+					  kERROR_STATE );											// !@! ==>
+		
+		} // Has term.
+		
+		return $this->mTerm;													// ==>
+
+	} // LoadTerm.
+
+		
+
+/*=======================================================================================
+ *																						*
  *								STATIC CONTAINER INTERFACE								*
  *																						*
  *======================================================================================*/
@@ -136,7 +233,7 @@ class COntologyNode extends CNode
 	 *==================================================================================*/
 
 	/**
-	 * <h4>Return the terms container</h4>
+	 * <h4>Return the nodes container</h4>
 	 *
 	 * The container will be created or fetched from the provided database using the
 	 * {@link kCONTAINER_NODE_NAME} name.
@@ -151,6 +248,65 @@ class COntologyNode extends CNode
 		return $theDatabase->Container( kCONTAINER_NODE_NAME );						// ==>
 	
 	} // DefaultContainer.
+
+	 
+	/*===================================================================================
+	 *	ResolveTermContainer															*
+	 *==================================================================================*/
+
+	/**
+	 * <h4>Resolve term container</h4>
+	 *
+	 * This method should return the container used by terms, given a container used for
+	 * nodes. For servers and databases, it will resolve the container using the term class
+	 * static {@link ResolveContainer()} method, for containers, it will attempt to retrieve
+	 * the database that instantiated the node container and feed it to the term's class
+	 * {@link ResolveContainer()} method.
+	 *
+	 * If the method is unable to resolve the container it will raise an exception, if the
+	 * second parameter is <tt>TRUE</tt>, or return <tt>NULL</tt>.
+	 *
+	 * The method will return an exception regardless of the value of the second parameter
+	 * if the first parameter is neither a {@link CServer} or {@link CDatabase} derived
+	 * instance.
+	 *
+	 * @param CConnection			$theConnection		Connection object.
+	 * @param boolean				$doException		<tt>TRUE</tt> raise exception.
+	 *
+	 * @static
+	 * @return mixed				{@link CContainer} or <tt>NULL</tt> if not found.
+	 *
+	 * @throws Exception
+	 */
+	static function ResolveTermContainer( CConnection $theConnection, $doException )
+	{
+		//
+		// Handle containers.
+		//
+		if( $theConnection instanceof CContainer )
+		{
+			//
+			// Get container's creator.
+			//
+			$database = $theConnection[ kOFFSET_PARENT ];
+			if( $database !== NULL )
+				return COntologyTerm::ResolveContainer( $database, $doException );	// ==>
+			
+			//
+			// Raise exception.
+			//
+			if( $doException )
+				throw new Exception
+					( "The container is missing its database reference",
+					  kERROR_PARAMETER );										// !@! ==>
+			
+			return NULL;															// ==>
+		
+		} // Provided container.
+		
+		return COntologyTerm::ResolveContainer( $theConnection, $doException );		// ==>
+	
+	} // ResolveTermContainer.
 
 		
 
@@ -204,7 +360,7 @@ class COntologyNode extends CNode
 		if( $theOffset == kOFFSET_TERM )
 		{
 			//
-			// Lock offset if committed.
+			// Lock term if object is committed.
 			//
 			if( $this->_IsCommitted() )
 				throw new Exception
@@ -247,7 +403,13 @@ class COntologyNode extends CNode
 							 ."the object is missing its native identifier",
 							  kERROR_PARAMETER );								// !@! ==>
 				
-				} // term is committed.
+				} // Term is committed.
+				
+				//
+				// Copy to data member.
+				//
+				else
+					$this->mTerm = $theValue;
 			
 			} // Correct object class.
 		
@@ -292,7 +454,7 @@ class COntologyNode extends CNode
 				  kERROR_LOCKED );												// !@! ==>
 		
 		//
-		// Intercept namespace and local identifier.
+		// Lock term if object is committed.
 		//
 		if( ($theOffset == kOFFSET_TERM)
 		 && $this->_IsCommitted() )
@@ -312,136 +474,196 @@ class COntologyNode extends CNode
 
 /*=======================================================================================
  *																						*
- *							PROTECTED PERSISTENCE INTERFACE								*
+ *							PROTECTED PRE-COMMIT INTERFACE								*
  *																						*
  *======================================================================================*/
 
 
 	 
 	/*===================================================================================
-	 *	_Precommit																		*
+	 *	_PrecommitRelated																*
 	 *==================================================================================*/
 
 	/**
-	 * <h4>Prepare the object before committing</h4>
+	 * <h4>Handle embedded or related objects before committing</h4>
 	 *
 	 * In this class we commit the eventual term provided as an uncommitted object and
-	 * replace the offset with the term's native identifier.
+	 * replace the offset with the term's native identifier, or load the term if provided
+	 * as an identifier.
 	 *
-	 * Note that we need to get the terms container in order to commit the term, for this
-	 * reason you should always instantiate containsers from a database, in that way it will
-	 * be possible to get the container's database, {@link kOFFSET_PARENT}.
-	 *
-	 * @param CContainer			$theContainer		Container.
-	 * @param bitfield				$theModifiers		Commit options.
+	 * @param reference			   &$theConnection		Server, database or container.
+	 * @param reference			   &$theModifiers		Commit options.
 	 *
 	 * @access protected
 	 */
-	protected function _Precommit( CContainer $theContainer,
-											  $theModifiers = kFLAG_DEFAULT )
+	protected function _PrecommitRelated( &$theConnection, &$theModifiers )
 	{
 		//
-		// Handle term.
+		// Call parent method.
 		//
-		if( $this->offsetExists( kOFFSET_TERM ) )
+		parent::_PrecommitRelated( $theConnection, $theModifiers );
+		
+		//
+		// Not deleting.
+		//
+		if( ! ($theModifiers & kFLAG_PERSIST_DELETE) )
 		{
 			//
-			// Get term.
+			// Handle term object.
+			// Note that we let _Preset() method take care of the specific class.
+			// Note that we do not check for the term: it is required to be inited.
 			//
 			$term = $this->offsetGet( kOFFSET_TERM );
-		
-			//
-			// Get term's container.
-			//
-			$database = $theContainer[ kOFFSET_PARENT ];
-			if( $database !== NULL )
-				$container = $class::DefaultContainer( $database );
-			else
-				throw new Exception
-					( "The provided container is missing its database reference",
-					  kERROR_PARAMETER );										// !@! ==>
-			
-			//
-			// Handle term object.
-			//
-			if( $term instanceof CPersistentObject )
+			if( $term instanceof COntologyTerm )
 			{
 				//
-				// Commit term.
+				// Commit.
+				// Note that we insert, to ensure the object is new.
 				//
-				if( ! $term->_IsCommitted() )
-					$term->Insert( $container );
+				$term->Insert( $this->ResolveTermContainer( $theConnection, TRUE ) );
 				
 				//
-				// Set offset to native identifier.
+				// Cache it.
 				//
-				$this->offsetSet(
-					kOFFSET_TERM,
-					$term->offsetGet(
-						kOFFSET_NID ) );
-			
+				$this->mTerm = $term;
+				
+				//
+				// Set identifier in term offset.
+				//
+				$this->offsetSet( kOFFSET_TERM,
+								  $term->offsetGet( kOFFSET_NID ) );
+				
 			} // Term is object.
 			
 			//
 			// Handle term identifier.
 			//
 			else
-			{
-				//
-				// Check if term exists.
-				//
-				if( ! $container->CheckObject( $this->getOffset( kOFFSET_TERM ) ) )
-					throw new Exception
-						( "The node term cannot be found",
-						  kERROR_PARAMETER );									// !@! ==>
-			
-			} // Term is identifier.
+				$this->LoadTerm( $theConnection, TRUE );
 		
-		} // Has term.
-		
-		//
-		// Call parent method.
-		//
-		parent::_Precommit( $theContainer, $theModifiers );
-		
-	} // _PreCommit.
-		
+		} // Not deleting.
+	
+	} // _PrecommitRelated.
 
+	 
 	/*===================================================================================
-	 *	_Postcommit																		*
+	 *	_PrecommitIdentify																*
 	 *==================================================================================*/
 
 	/**
-	 * <h4>Prepare the object after committing</h4>
+	 * <h4>Determine the identifiers before committing</h4>
 	 *
-	 * In this class we add the reference of the current node 
-	 * namespace.
+	 * Objects of this class are identified by a sequence number tagged
+	 * {@link kSEQUENCE_KEY_NODE}, this method will set the native identifier,
+	 * {@link kOFFSET_NID}, with this value.
 	 *
-	 * @param CContainer			$theContainer		Container.
-	 * @param bitfield				$theModifiers		Commit options.
+	 * The parent method will then be called, which will ignore the global identifier,
+	 * {@link kOFFSET_GID}, since the {@link _index()} method returns <tt>NULL</tt> and
+	 * also ignore the native identifier, {@link kOFFSET_NID}, since it will have been set
+	 * here.
+	 *
+	 * @param reference			   &$theConnection		Server, database or container.
+	 * @param reference			   &$theModifiers		Commit options.
 	 *
 	 * @access protected
 	 */
-	protected function _Postcommit( CContainer $theContainer,
-											   $theModifiers = kFLAG_DEFAULT )
+	protected function _PrecommitIdentify( &$theConnection, &$theModifiers )
 	{
 		//
-		// Check if not yet committed.
+		// Handle insert or replace.
 		//
-		if( ! $this->_IsCommitted() )
+		if( (($theModifiers & kFLAG_PERSIST_MASK) == kFLAG_PERSIST_INSERT)
+		 || (($theModifiers & kFLAG_PERSIST_MASK) == kFLAG_PERSIST_REPLACE) )
 		{
 			//
-			// Add current node reference to term.
+			// Set native identifier.
 			//
-			$mod = array( kOFFSET_REFS_NODE => $this->offsetGet( kOFFSET_NID ) );
-			$theContainer->ManageObject
-				(
-					$mod,								// Because it will be overwritten.
-					$this->offsetGet( kOFFSET_TERM ),		// Term identifier.
-					kFLAG_PERSIST_MODIFY + kFLAG_MODIFY_ADDSET	// Add to set.
-				);
-			
-		} // Not yet committed.
+			if( ! $this->offsetExists( kOFFSET_NID ) )
+				$this->offsetSet(
+					kOFFSET_NID,
+					$this->ResolveTermContainer(
+						$theConnection, TRUE )
+							->NextSequence( kSEQUENCE_KEY_NODE, TRUE ) );
+		
+		} // Insert or replace.
+	
+		//
+		// Call parent method.
+		//
+		parent::_PrecommitIdentify( $theConnection, $theModifiers );
+		
+	} // _PrecommitIdentify.
+		
+
+
+/*=======================================================================================
+ *																						*
+ *							PROTECTED POST-COMMIT INTERFACE								*
+ *																						*
+ *======================================================================================*/
+
+
+	 
+	/*===================================================================================
+	 *	_PostcommitRelated																*
+	 *==================================================================================*/
+
+	/**
+	 * <h4>Update related objects after committing</h4>
+	 *
+	 * In this class we add the current node's identifier to the list of node references,
+	 * {@link kOFFSET_REFS_NODE}, in the related term when inserting; we remove the element
+	 * when deleting.
+	 *
+	 * @param reference			   &$theConnection		Server, database or container.
+	 * @param reference			   &$theModifiers		Commit options.
+	 *
+	 * @access protected
+	 *
+	 * @throws Exception
+	 *
+	 * @uses _IsInited()
+	 *
+	 * @see kFLAG_PERSIST_WRITE_MASK
+	 */
+	protected function _PostcommitRelated( &$theConnection, &$theModifiers )
+	{
+		//
+		// Call parent method.
+		//
+		parent::_PostcommitRelated( $theConnection, $theModifiers );
+	
+		//
+		// Handle insert or replace.
+		//
+		if( (($theModifiers & kFLAG_PERSIST_MASK) == kFLAG_PERSIST_INSERT)
+		 || (($theModifiers & kFLAG_PERSIST_MASK) == kFLAG_PERSIST_REPLACE) )
+		{
+			//
+			// Check if not yet committed.
+			//
+			if( ! $this->_IsCommitted() )
+			{
+				//
+				// Set fields array (will receive updated object).
+				//
+				$fields = array( kOFFSET_REFS_NODE => $this->offsetGet( kOFFSET_NID ) );
+				
+				//
+				// Add current node reference to term.
+				//
+				$this
+					->ResolveTermContainer( $theConnection, TRUE )
+					->ManageObject
+					(
+						$fields,						// Because it will be overwritten.
+						$this->offsetGet( kOFFSET_TERM ),		// Term identifier.
+						kFLAG_PERSIST_MODIFY + kFLAG_MODIFY_ADDSET		// Add to set.
+					);
+				
+			} // Not yet committed.
+		
+		} // Insert or replace.
 		
 		//
 		// Check if deleting.
@@ -449,24 +671,56 @@ class COntologyNode extends CNode
 		elseif( $theModifiers & kFLAG_PERSIST_DELETE )
 		{
 			//
+			// Set fields array (will receive updated object).
+			//
+			$fields = array( kOFFSET_REFS_NODE => $this->offsetGet( kOFFSET_NID ) );
+			
+			//
 			// Remove current node reference from term.
 			//
-			$mod = array( kOFFSET_REFS_NODE => $this->offsetGet( kOFFSET_NID ) );
-			$theContainer->ManageObject
+			$this
+				->ResolveTermContainer( $theConnection, TRUE )
+				->ManageObject
 				(
-					$mod,								// Because it will be overwritten.
+					$fields,						// Because it will be overwritten.
 					$this->offsetGet( kOFFSET_TERM ),		// Term identifier.
-					kFLAG_PERSIST_MODIFY + kFLAG_MODIFY_PULL	// Remove to occurrences.
+					kFLAG_PERSIST_MODIFY + kFLAG_MODIFY_PULL		// Remove occurrences.
 				);
 		
 		} // Deleting.
 		
+	} // _PostcommitRelated.
+
+	 
+	/*===================================================================================
+	 *	_PostcommitCleanup																*
+	 *==================================================================================*/
+
+	/**
+	 * <h4>Cleanup the object after committing</h4>
+	 *
+	 * In this class we reset the term object cache, we set the data member to <tt>NULL</tt>
+	 * so that next time one wants to retrieve the term object, it will have to be refreshed
+	 * and its references actualised.
+	 *
+	 * @param reference			   &$theConnection		Server, database or container.
+	 * @param reference			   &$theModifiers		Commit options.
+	 *
+	 * @access protected
+	 */
+	protected function _PostcommitCleanup( &$theConnection, &$theModifiers )
+	{
 		//
 		// Call parent method.
 		//
-		parent::_Postcommit( $theContainer, $theModifiers );
+		parent::_PostcommitCleanup( $theConnection, $theModifiers );
+		
+		//
+		// Reset term cache.
+		//
+		$this->mTerm = NULL;
 	
-	} // _Postcommit.
+	} // _PostcommitCleanup.
 
 	 
 

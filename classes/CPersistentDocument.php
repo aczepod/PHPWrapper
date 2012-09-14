@@ -935,9 +935,26 @@ class CPersistentDocument extends CStatusDocument
 	 * <h4>Prepare the object before committing</h4>
 	 *
 	 * This method will be called before the object gets committed, its main duty is to
-	 * check whether the object has all the required elements and to set all default data.
+	 * check whether the object has all the required elements, to set all default data amd
+	 * to commit eventual embedded objects.
+	 *
+	 * This method calls three other methods which perform the following functions:
+	 *
+	 * <ul>
+	 *	<li>{@link _PrecommitValidate()}: This method's duty is to check if the object is
+	 *		fot for being committed.
+	 *	<li>{@link _PrecommitRelated()}: This method's duty is to check and commit eventual
+	 *		embedded or related objects.
+	 *	<li>{@link _PrecommitIdentify()}: This method's duty is to fill the object's
+	 *		identifiers.
+	 * </ul>
+	 *
+	 * These three methods are called in the above order, they take the same arguments as
+	 * the current method and do not return a value: errors must raise exceptions.
+	 *
+	 * When deriving from this class you should overload the above methods and not this one.
 	 * 
-	 * The method accepts two parameters:
+	 * This method accepts two parameters:
 	 *
 	 * <ul>
 	 *	<li><tt>$theConnection</tt>: The container in which the object is to be committed,
@@ -949,50 +966,41 @@ class CPersistentDocument extends CStatusDocument
 	 *		<li><tt>{@link kFLAG_PERSIST_INSERT}</tt>: Insert operation.
 	 *		<li><tt>{@link kFLAG_PERSIST_UPDATE}</tt>: Update operation.
 	 *		<li><tt>{@link kFLAG_PERSIST_REPLACE}</tt>: Replace operation.
-	 *		<li><tt>{@link kFLAG_PERSIST_MODIFY}</tt>: Modification operation: this option
-	 *			is legal, but not valid: it is a legal option, but this method should ignore
-	 *			it.
 	 *		<li><tt>{@link kFLAG_PERSIST_DELETE}</tt>: Delete operation.
 	 *	 </ul>
 	 * </ul>
 	 *
-	 * If the conditions for committing the object are not met, the method should raise an
-	 * exception.
-	 *
-	 * Derived classes can overload this method to implement custom behaviour.
-	 *
-	 * In this class we do nothing.
+	 * If the conditions for committing the object are not met, an exception should be
+	 * raised.
 	 *
 	 * @param CConnection			$theConnection		Container.
 	 * @param bitfield				$theModifiers		Commit options.
 	 *
 	 * @access protected
 	 *
-	 * @throws Exception
-	 *
-	 * @uses _IsInited()
-	 *
-	 * @see kFLAG_PERSIST_WRITE_MASK
+	 * @uses _PrecommitValidate()
+	 * @uses _PrecommitRelated()
+	 * @uses _PrecommitIdentify()
 	 */
 	protected function _Precommit( CConnection $theConnection,
 											   $theModifiers = kFLAG_DEFAULT )
 	{
 		//
-		// Handle commits, including deletes and excluding modifications.
+		// Validate object.
 		//
-		if( $theModifiers & kFLAG_PERSIST_WRITE_MASK )
-		{
-			//
-			// Check if object is inited.
-			//
-			if( ! $this->_IsInited() )
-				throw new Exception
-					( "The object is not initialised",
-					  kERROR_STATE );											// !@! ==>
+		$this->_PrecommitValidate( $theConnection, $theModifiers );
 		
-		} // Insert, update, replace and [modify (not used)].
+		//
+		// Handle embedded.
+		//
+		$this->_PrecommitRelated( $theConnection, $theModifiers );
 		
-	} // _PreCommit.
+		//
+		// Identify object.
+		//
+		$this->_PrecommitIdentify( $theConnection, $theModifiers );
+		
+	} // _Precommit.
 
 	 
 	/*===================================================================================
@@ -1003,9 +1011,24 @@ class CPersistentDocument extends CStatusDocument
 	 * <h4>Prepare the object after committing</h4>
 	 *
 	 * This method will be called after the object gets committed, its main duty is to
-	 * update the object status and normalise eventual elements.
+	 * update the object after it has been committed.
+	 *
+	 * This method calls three other methods which perform the following functions:
+	 *
+	 * <ul>
+	 *	<li>{@link _PostcommitRelated()}: This method's duty is to update related objects.
+	 *	<li>{@link _PostcommitStatus()}: This method's duty is to set the object's status
+	 *		after the persist operation.
+	 *	<li>{@link _PostcommitCleanup()}: This method's duty is to cleanup the object after
+	 *		the operation.
+	 * </ul>
+	 *
+	 * These three methods are called in the above order, they take the same arguments as
+	 * the current method and do not return a value: errors must raise exceptions.
+	 *
+	 * When deriving from this class you should overload the above methods and not this one.
 	 * 
-	 * The method accepts two parameters:
+	 * This method accepts two parameters:
 	 *
 	 * <ul>
 	 *	<li><tt>$theConnection</tt>: The container in which the object is to be committed,
@@ -1017,31 +1040,308 @@ class CPersistentDocument extends CStatusDocument
 	 *		<li><tt>{@link kFLAG_PERSIST_INSERT}</tt>: Insert operation.
 	 *		<li><tt>{@link kFLAG_PERSIST_UPDATE}</tt>: Update operation.
 	 *		<li><tt>{@link kFLAG_PERSIST_REPLACE}</tt>: Replace operation.
-	 *		<li><tt>{@link kFLAG_PERSIST_MODIFY}</tt>: Modification operation: this option
-	 *			is legal, but not valid: it is a legal option, but this method should ignore
-	 *			it.
 	 *		<li><tt>{@link kFLAG_PERSIST_DELETE}</tt>: Delete operation.
 	 *	 </ul>
 	 * </ul>
-	 *
-	 * Derived classes can overload this method to implement custom behaviour.
-	 *
-	 * In this class we reset the {@link _IsDirty()} status after committing or loading the
-	 * object, set the {@link _IsCommitted()} status after committing and resetting it after
-	 * deleting.
 	 *
 	 * @param CConnection			$theConnection		Container.
 	 * @param bitfield				$theModifiers		Commit options.
 	 *
 	 * @access protected
 	 *
-	 * @uses _IsDirty()
-	 * @uses _IsCommitted()
-	 *
-	 * @see kFLAG_PERSIST_WRITE_MASK kFLAG_PERSIST_DELETE kFLAG_PERSIST_MASK
+	 * @uses _PostcommitRelated()
+	 * @uses _PostcommitStatus()
+	 * @uses _PostcommitCleanup()
 	 */
 	protected function _Postcommit( CConnection $theConnection,
-											    $theModifiers = kFLAG_DEFAULT )
+												$theModifiers = kFLAG_DEFAULT )
+	{
+		//
+		// Update related objects.
+		//
+		$this->_PostcommitRelated( $theConnection, $theModifiers );
+		
+		//
+		// Update object's status.
+		//
+		$this->_PostcommitStatus( $theConnection, $theModifiers );
+		
+		//
+		// Cleanup after operation.
+		//
+		$this->_PostcommitCleanup( $theConnection, $theModifiers );
+		
+	} // _Postcommit.
+		
+
+
+/*=======================================================================================
+ *																						*
+ *							PROTECTED PRE-COMMIT INTERFACE								*
+ *																						*
+ *======================================================================================*/
+
+
+	 
+	/*===================================================================================
+	 *	_PrecommitValidate																*
+	 *==================================================================================*/
+
+	/**
+	 * <h4>Validate the object before committing</h4>
+	 *
+	 * This method should check if the object is in the condition for being inserted,
+	 * updated, replaced or deleted.
+	 *
+	 * This method is the first one called by {@link _Precommit()}, it should validate the
+	 * object elements specific to the current class and let the inherited method handle the
+	 * inherited ones.
+	 *
+	 * If the object does not meet the requirements for the desired operation, this method
+	 * should raise an exception.
+	 * 
+	 * The method accepts two parameters:
+	 *
+	 * <ul>
+	 *	<li><tt>$theConnection</tt>: The container in which the object is to be committed,
+	 *		a server or a database if the {@link DefaultDatabase} and
+	 *		{@link DefaultContainer()} are able to resolve it into a container. This
+	 *		parameter is provided as a reference allowing this method to change it.
+	 *	<li><tt>$theModifiers</tt>: The commit options provided as a bitfield in which the
+	 *		following values are considered:
+	 *	 <ul>
+	 *		<li><tt>{@link kFLAG_PERSIST_INSERT}</tt>: Insert operation.
+	 *		<li><tt>{@link kFLAG_PERSIST_UPDATE}</tt>: Update operation.
+	 *		<li><tt>{@link kFLAG_PERSIST_REPLACE}</tt>: Replace operation.
+	 *		<li><tt>{@link kFLAG_PERSIST_DELETE}</tt>: Delete operation.
+	 *	 </ul>
+	 *		This parameter is provided as a reference allowing this method to change it.
+	 * </ul>
+	 *
+	 * In this class we check if the object has the {@link _IsInited()} status.
+	 *
+	 * @param reference			   &$theConnection		Server, database or container.
+	 * @param reference			   &$theModifiers		Commit options.
+	 *
+	 * @access protected
+	 *
+	 * @throws Exception
+	 *
+	 * @uses _IsInited()
+	 *
+	 * @see kFLAG_PERSIST_WRITE_MASK
+	 */
+	protected function _PrecommitValidate( &$theConnection, &$theModifiers )
+	{
+		//
+		// Handle commits: insert, update, replace or delete.
+		//
+		if( $theModifiers & kFLAG_PERSIST_WRITE_MASK )
+		{
+			//
+			// Check if object is inited.
+			//
+			if( ! $this->_IsInited() )
+				throw new Exception
+					( "The object cannot be committed: "
+					 ."the object is not initialised",
+					  kERROR_STATE );											// !@! ==>
+		
+		} // Insert, update, replace or delete.
+		
+	} // _PrecommitValidate.
+
+	 
+	/*===================================================================================
+	 *	_PrecommitRelated																*
+	 *==================================================================================*/
+
+	/**
+	 * <h4>Handle embedded or related objects before committing</h4>
+	 *
+	 * This method should handle embedded or related objects before the current object gets
+	 * committed. In general it is here where you would commit embedded objects and convert
+	 * them to references.
+	 *
+	 * This method is the second one called by {@link _Precommit()}, it should handle the
+	 * object elements specific to the current class and let the inherited method handle the
+	 * inherited ones.
+	 *
+	 * If any error occurs during the process, this method should raise an exception.
+	 * 
+	 * The method accepts two parameters:
+	 *
+	 * <ul>
+	 *	<li><tt>$theConnection</tt>: The container in which the object is to be committed,
+	 *		a server or a database if the {@link DefaultDatabase} and
+	 *		{@link DefaultContainer()} are able to resolve it into a container. This
+	 *		parameter is provided as a reference allowing this method to change it.
+	 *	<li><tt>$theModifiers</tt>: The commit options provided as a bitfield in which the
+	 *		following values are considered:
+	 *	 <ul>
+	 *		<li><tt>{@link kFLAG_PERSIST_INSERT}</tt>: Insert operation.
+	 *		<li><tt>{@link kFLAG_PERSIST_UPDATE}</tt>: Update operation.
+	 *		<li><tt>{@link kFLAG_PERSIST_REPLACE}</tt>: Replace operation.
+	 *		<li><tt>{@link kFLAG_PERSIST_DELETE}</tt>: Delete operation.
+	 *	 </ul>
+	 *		This parameter is provided as a reference allowing this method to change it.
+	 * </ul>
+	 *
+	 * In this class we do nothing.
+	 *
+	 * @param reference			   &$theConnection		Server, database or container.
+	 * @param reference			   &$theModifiers		Commit options.
+	 *
+	 * @access protected
+	 */
+	protected function _PrecommitRelated( &$theConnection, &$theModifiers )				   {}
+
+	 
+	/*===================================================================================
+	 *	_PrecommitIdentify																*
+	 *==================================================================================*/
+
+	/**
+	 * <h4>Determine the identifiers before committing</h4>
+	 *
+	 * This method should set the object identifiers before the current object gets
+	 * committed. In general it is here where you set sequence numbers or generate unique
+	 * identifiers.
+	 *
+	 * This method is the last one called by {@link _Precommit()}, in general, it should not
+	 * fail if the first method called by {@link _Precommit()} has made the necessary
+	 * validations. The reason this method is the last in the chain is because often the
+	 * object identifier may depend on related or embedded objects which have been committed
+	 * in the previous method.
+	 *
+	 * If any error occurs during the process, this method should still raise an exception.
+	 * 
+	 * The method accepts two parameters:
+	 *
+	 * <ul>
+	 *	<li><tt>$theConnection</tt>: The container in which the object is to be committed,
+	 *		a server or a database if the {@link DefaultDatabase} and
+	 *		{@link DefaultContainer()} are able to resolve it into a container. This
+	 *		parameter is provided as a reference allowing this method to change it.
+	 *	<li><tt>$theModifiers</tt>: The commit options provided as a bitfield in which the
+	 *		following values are considered:
+	 *	 <ul>
+	 *		<li><tt>{@link kFLAG_PERSIST_INSERT}</tt>: Insert operation.
+	 *		<li><tt>{@link kFLAG_PERSIST_UPDATE}</tt>: Update operation.
+	 *		<li><tt>{@link kFLAG_PERSIST_REPLACE}</tt>: Replace operation.
+	 *		<li><tt>{@link kFLAG_PERSIST_DELETE}</tt>: Delete operation.
+	 *	 </ul>
+	 *		This parameter is provided as a reference allowing this method to change it.
+	 * </ul>
+	 *
+	 * In this class we do nothing.
+	 *
+	 * @param reference			   &$theConnection		Server, database or container.
+	 * @param reference			   &$theModifiers		Commit options.
+	 *
+	 * @access protected
+	 */
+	protected function _PrecommitIdentify( &$theConnection, &$theModifiers )			   {}
+		
+
+
+/*=======================================================================================
+ *																						*
+ *							PROTECTED POST-COMMIT INTERFACE								*
+ *																						*
+ *======================================================================================*/
+
+
+	 
+	/*===================================================================================
+	 *	_PostcommitRelated																*
+	 *==================================================================================*/
+
+	/**
+	 * <h4>Update related objects after committing</h4>
+	 *
+	 * This method should update eventual related objects after the current object has been
+	 * committed. This method is the first one called by {@link _Postcommit()} after the
+	 * persist operation and the object has not yet updated its status according to the
+	 * operation, so this is a good place to make changes before the status gets reset.
+	 * 
+	 * The method accepts two parameters:
+	 *
+	 * <ul>
+	 *	<li><tt>$theConnection</tt>: The container in which the object is to be committed,
+	 *		a server or a database if the {@link DefaultDatabase} and
+	 *		{@link DefaultContainer()} are able to resolve it into a container. This
+	 *		parameter is provided as a reference allowing this method to change it.
+	 *	<li><tt>$theModifiers</tt>: The commit options provided as a bitfield in which the
+	 *		following values are considered:
+	 *	 <ul>
+	 *		<li><tt>{@link kFLAG_PERSIST_INSERT}</tt>: Insert operation.
+	 *		<li><tt>{@link kFLAG_PERSIST_UPDATE}</tt>: Update operation.
+	 *		<li><tt>{@link kFLAG_PERSIST_REPLACE}</tt>: Replace operation.
+	 *		<li><tt>{@link kFLAG_PERSIST_DELETE}</tt>: Delete operation.
+	 *	 </ul>
+	 *		This parameter is provided as a reference allowing this method to change it.
+	 * </ul>
+	 *
+	 * In this class we do nothing.
+	 *
+	 * @param reference			   &$theConnection		Server, database or container.
+	 * @param reference			   &$theModifiers		Commit options.
+	 *
+	 * @access protected
+	 *
+	 * @throws Exception
+	 *
+	 * @uses _IsInited()
+	 *
+	 * @see kFLAG_PERSIST_WRITE_MASK
+	 */
+	protected function _PostcommitRelated( &$theConnection, &$theModifiers )			   {}
+
+	 
+	/*===================================================================================
+	 *	_PostcommitStatus																*
+	 *==================================================================================*/
+
+	/**
+	 * <h4>Update the object's status after committing</h4>
+	 *
+	 * This method should set the object status according to the operation performed, it is
+	 * the second method called by {@link _Postcommit()} after the persist operation and is
+	 * called before the {@link _PostcommitCleanup()} method that should cleanup after the
+	 * operation.
+	 *
+	 * In general this method should set or reset the status reflecting the persistent state
+	 * of the object.
+	 * 
+	 * The method accepts two parameters:
+	 *
+	 * <ul>
+	 *	<li><tt>$theConnection</tt>: The container in which the object is to be committed,
+	 *		a server or a database if the {@link DefaultDatabase} and
+	 *		{@link DefaultContainer()} are able to resolve it into a container. This
+	 *		parameter is provided as a reference allowing this method to change it.
+	 *	<li><tt>$theModifiers</tt>: The commit options provided as a bitfield in which the
+	 *		following values are considered:
+	 *	 <ul>
+	 *		<li><tt>{@link kFLAG_PERSIST_INSERT}</tt>: Insert operation.
+	 *		<li><tt>{@link kFLAG_PERSIST_UPDATE}</tt>: Update operation.
+	 *		<li><tt>{@link kFLAG_PERSIST_REPLACE}</tt>: Replace operation.
+	 *		<li><tt>{@link kFLAG_PERSIST_DELETE}</tt>: Delete operation.
+	 *	 </ul>
+	 *		This parameter is provided as a reference allowing this method to change it.
+	 * </ul>
+	 *
+	 * In this class we reset the {@link _IsDirty()} status after committing or loading the
+	 * object, set the {@link _IsCommitted()} status after committing and resetting it after
+	 * deleting.
+	 *
+	 * @param reference			   &$theConnection		Server, database or container.
+	 * @param reference			   &$theModifiers		Commit options.
+	 *
+	 * @access protected
+	 */
+	protected function _PostcommitStatus( &$theConnection, &$theModifiers )
 	{
 		//
 		// Handle insert, update and replace, or load.
@@ -1066,8 +1366,54 @@ class CPersistentDocument extends CStatusDocument
 		//
 		elseif( ($theModifiers & kFLAG_PERSIST_MASK) == kFLAG_PERSIST_DELETE )
 			$this->_IsCommitted( FALSE );
-	
-	} // _Postcommit.
+		
+	} // _PostcommitStatus.
+
+	 
+	/*===================================================================================
+	 *	_PostcommitCleanup																*
+	 *==================================================================================*/
+
+	/**
+	 * <h4>Cleanup the object after committing</h4>
+	 *
+	 * This method should clean and normalise the object after the operation, it is the last
+	 * method called by {@link _Postcommit()} and the last chance to have a hook into the
+	 * persist workflow.
+	 *
+	 * Be aware that {@link _PostcommitStatus()} has been called before, so if you intend to
+	 * perform operations that may change the object's status, this is not the place.
+	 * 
+	 * The method accepts two parameters:
+	 *
+	 * <ul>
+	 *	<li><tt>$theConnection</tt>: The container in which the object is to be committed,
+	 *		a server or a database if the {@link DefaultDatabase} and
+	 *		{@link DefaultContainer()} are able to resolve it into a container. This
+	 *		parameter is provided as a reference allowing this method to change it.
+	 *	<li><tt>$theModifiers</tt>: The commit options provided as a bitfield in which the
+	 *		following values are considered:
+	 *	 <ul>
+	 *		<li><tt>{@link kFLAG_PERSIST_INSERT}</tt>: Insert operation.
+	 *		<li><tt>{@link kFLAG_PERSIST_UPDATE}</tt>: Update operation.
+	 *		<li><tt>{@link kFLAG_PERSIST_REPLACE}</tt>: Replace operation.
+	 *		<li><tt>{@link kFLAG_PERSIST_DELETE}</tt>: Delete operation.
+	 *	 </ul>
+	 *		This parameter is provided as a reference allowing this method to change it.
+	 * </ul>
+	 *
+	 * In this class we reset the {@link _IsDirty()} status after committing or loading the
+	 * object, set the {@link _IsCommitted()} status after committing and resetting it after
+	 * deleting.
+	 *
+	 * In this class we do nothing.
+	 *
+	 * @param reference			   &$theConnection		Server, database or container.
+	 * @param reference			   &$theModifiers		Commit options.
+	 *
+	 * @access protected
+	 */
+	protected function _PostcommitCleanup( &$theConnection, &$theModifiers )			   {}
 		
 
 

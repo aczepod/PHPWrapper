@@ -61,6 +61,13 @@ require_once( kPATH_MYWRAPPER_LIBRARY_CLASS."/CStatusDocument.php" );
  * The class acts as an ancestor of other specialised abstract classes which declare the
  * common interfaces of specific connection types.
  *
+ * The class declares two constants: {@link kOFFSET_NAME} and {@link kOFFSET_PARENT}. The
+ * first one corresponds to the internal name of the object, which could also be the public
+ * one. The second offset corresponds to the parent connection object: if the current
+ * object was instantiated by a parent class instance, such as a database by a server, or a
+ * container by a database, this offset will contain the creator object. This can be useful
+ * if we need, for instance, the database, given the container.
+ *
  *	@package	MyWrapper
  *	@subpackage	Framework
  */

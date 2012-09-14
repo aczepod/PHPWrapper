@@ -69,27 +69,18 @@ define( 'kDEBUG_PARENT', TRUE );
 try
 {
 	//
-	// Notes.
-	//
-	echo( '<h4>Object behaviour:</h4>' );
-	echo( '<ul>' );
-	echo( '<li>Base term object.' );
-	echo( '</ul><hr>' );
-	
-	//
 	// Create container.
 	//
 	echo( '<hr />' );
 	echo( '<h4>Create test container</h4>' );
-	echo( '$mongo = New Mongo();<br />' );
-	$mongo = New \Mongo();
-	echo( '$db = $mongo->selectDB( "TEST" );<br />' );
-	$db = $mongo->selectDB( "TEST" );
-	$db->drop();
-	echo( '$collection = $db->selectCollection( "COntologyNode" );<br />' );
-	$collection = $db->selectCollection( "COntologyNode" );
-	echo( '$container = new CMongoContainer( $collection );<br />' );
-	$container = new CMongoContainer( $collection );
+	echo( '$server = new CMongoServer();<br />' );
+	$server = New CMongoServer();
+	echo( '$database = $server->Database( "TEST" );<br />' );
+	$database = $server->Database( "TEST" );
+	echo( '$database->Drop();<br />' );
+	$database->Drop();
+	echo( '$container = COntologyNode::DefaultContainer( $database );<br />' );
+	$container = COntologyNode::DefaultContainer( $database );
 	echo( '<hr />' );
 	echo( '<hr />' );
 	
@@ -170,32 +161,32 @@ try
 	}
 	
 	//
-	// Create namespace term.
+	// Instantiate namespace term.
 	//
-	echo( '<h4>Create namespace term</h4>' );
+	echo( '<h4>Instantiate namespace term</h4>' );
 	$namespace = new COntologyTerm();
 	$namespace[ kOFFSET_LID ] = "NAMESPACE";
-	$status = $namespace->Insert( $container );
+//	$status = $namespace->Insert( $database );
 	echo( '<pre>' ); print_r( $namespace ); echo( '</pre>' );
 	
 	//
-	// Create term A.
+	// Instantiate term A.
 	//
-	echo( '<h4>Create term A</h4>' );
+	echo( '<h4>Instantiate term A</h4>' );
 	$termA = new COntologyTerm();
 	$termA[ kOFFSET_NAMESPACE ] = $namespace;
 	$termA[ kOFFSET_LID ] = "A";
-	$status = $termA->Insert( $container );
+//	$status = $termA->Insert( $database );
 	echo( '<pre>' ); print_r( $termA ); echo( '</pre>' );
 	
 	//
-	// Create term B.
+	// Instantiate term B.
 	//
-	echo( '<h4>Create term B</h4>' );
+	echo( '<h4>Instantiate term B</h4>' );
 	$termB = new COntologyTerm();
 	$termB[ kOFFSET_NAMESPACE ] = $namespace;
 	$termB[ kOFFSET_LID ] = "B";
-	$status = $termB->Insert( $container );
+//	$status = $termB->Insert( $database );
 	echo( '<pre>' ); print_r( $termB ); echo( '</pre>' );
 	
 	//
@@ -205,7 +196,7 @@ try
 	$termC = new COntologyTerm();
 	$termC[ kOFFSET_NAMESPACE ] = $namespace;
 	$termC[ kOFFSET_LID ] = "C";
-	$status = $termC->Insert( $container );
+	$status = $termC->Insert( $database );
 	echo( '<pre>' ); print_r( $termC ); echo( '</pre>' );
 	echo( '<hr />' );
 	echo( '<hr />' );
@@ -218,7 +209,7 @@ try
 		echo( '<h4>Insert uninitialized object</h4>' );
 		echo( '<h5>$node = new MyClass();</h5>' );
 		$node = new MyClass();
-		echo( '<h5>$status = $namespace->Insert( $container );</h5>' );
+		echo( '<h5>$status = $node->Insert( $container );</h5>' );
 		$status = $node->Insert( $container );
 		echo( '<h3><font color="red">Should have raised an exception</font></h3>' );
 		echo( '<pre>' ); print_r( $node ); echo( '</pre>' );
@@ -242,12 +233,16 @@ try
 				   .'] Dirty['.$node->dirty()
 				   .'] Saved['.$node->committed()
 				   .'] Encoded['.$node->encoded().']<br />' );
-	echo( '<h5>$status = $node->Insert( $container );</h5>' );
-	$status = $node->Insert( $container );
-	echo( 'Node<pre>' ); print_r( $node ); echo( '</pre>' );
-	echo( '<h5>$term = COntologyTerm::NewObject( $container, $node[ kOFFSET_TERM ] ); // Notice node reference.</h5>' );
-	$term = COntologyTerm::NewObject( $container, $node[ kOFFSET_TERM ] );
+	echo( 'Before insert<pre>' ); print_r( $node ); echo( '</pre>' );
+	echo( '<h5>$status = $node->Insert( $database );</h5>' );
+	$status = $node->Insert( $database );
+	echo( 'After insert<pre>' ); print_r( $node ); echo( '</pre>' );
+	echo( '<h5>$term = $node->LoadTerm( $database, TRUE ); // Notice node reference.</h5>' );
+	$term = $node->LoadTerm( $database, TRUE );
 	echo( 'Term<pre>' ); print_r( $term ); echo( '</pre>' );
+	echo( '<h5>$namespace = $term->LoadNamespace( $database, TRUE ); // Notice namespace reference.</h5>' );
+	$namespace = $term->LoadNamespace( $database, TRUE );
+	echo( 'Namespace<pre>' ); print_r( $namespace ); echo( '</pre>' );
 	echo( '<hr />' );
 	echo( '<hr>' );
 	
@@ -257,12 +252,6 @@ try
 	echo( '<h4>Add kind 1</h4>' );
 	echo( '<h5>$node->Kind( $termA, TRUE );</h5>' );
 	$node->Kind( $termA, TRUE );
-	echo( 'Inited['.$node->inited()
-				   .'] Dirty['.$node->dirty()
-				   .'] Saved['.$node->committed()
-				   .'] Encoded['.$node->encoded().']<br />' );
-	echo( '<h5>$status = $node->Replace( $container );</h5>' );
-	$status = $node->Replace( $container );
 	echo( '<pre>' ); print_r( $node ); echo( '</pre>' );
 	echo( '<hr />' );
 	
@@ -272,12 +261,6 @@ try
 	echo( '<h4>Add kind 2</h4>' );
 	echo( '<h5>$node->Kind( $termB, TRUE );</h5>' );
 	$node->Kind( $termB, TRUE );
-	echo( 'Inited['.$node->inited()
-				   .'] Dirty['.$node->dirty()
-				   .'] Saved['.$node->committed()
-				   .'] Encoded['.$node->encoded().']<br />' );
-	echo( '<h5>$status = $node->Replace( $container );</h5>' );
-	$status = $node->Replace( $container );
 	echo( '<pre>' ); print_r( $node ); echo( '</pre>' );
 	echo( '<hr />' );
 	
@@ -287,12 +270,6 @@ try
 	echo( '<h4>Add kind 1</h4>' );
 	echo( '<h5>$node->Kind( $termA, TRUE );</h5>' );
 	$node->Kind( $termA, TRUE );
-	echo( 'Inited['.$node->inited()
-				   .'] Dirty['.$node->dirty()
-				   .'] Saved['.$node->committed()
-				   .'] Encoded['.$node->encoded().']<br />' );
-	echo( '<h5>$status = $node->Replace( $container );</h5>' );
-	$status = $node->Replace( $container );
 	echo( '<pre>' ); print_r( $node ); echo( '</pre>' );
 	echo( '<hr />' );
 	
@@ -302,12 +279,6 @@ try
 	echo( '<h4>Remove kind 2</h4>' );
 	echo( '<h5>$node->Kind( $termB, FALSE );</h5>' );
 	$node->Kind( $termB, FALSE );
-	echo( 'Inited['.$node->inited()
-				   .'] Dirty['.$node->dirty()
-				   .'] Saved['.$node->committed()
-				   .'] Encoded['.$node->encoded().']<br />' );
-	echo( '<h5>$status = $node->Replace( $container );</h5>' );
-	$status = $node->Replace( $container );
 	echo( '<pre>' ); print_r( $node ); echo( '</pre>' );
 	echo( '<hr />' );
 	
@@ -317,12 +288,6 @@ try
 	echo( '<h4>Remove kind 1</h4>' );
 	echo( '<h5>$node->Kind( $termA, FALSE );</h5>' );
 	$node->Kind( $termA, FALSE );
-	echo( 'Inited['.$node->inited()
-				   .'] Dirty['.$node->dirty()
-				   .'] Saved['.$node->committed()
-				   .'] Encoded['.$node->encoded().']<br />' );
-	echo( '<h5>$status = $node->Replace( $container );</h5>' );
-	$status = $node->Replace( $container );
 	echo( '<pre>' ); print_r( $node ); echo( '</pre>' );
 	echo( '<hr />' );
 	echo( '<hr />' );
@@ -404,16 +369,16 @@ try
 	// Delete node.
 	//
 	echo( '<h4>Delete node</h4>' );
-	echo( '<h5>$status = $node->Delete( $container );</h5>' );
-	$status = $node->Delete( $container );
+	echo( '<h5>$status = $node->Delete( $database );</h5>' );
+	$status = $node->Delete( $database );
 	echo( 'Inited['.$node->inited()
 				   .'] Dirty['.$node->dirty()
 				   .'] Saved['.$node->committed()
 				   .'] Encoded['.$node->encoded().']<br />' );
-	echo( 'Node<pre>' ); print_r( $node ); echo( '</pre>' );
 	echo( 'Status<pre>' ); print_r( $status ); echo( '</pre>' );
-	echo( '<h5>$term = COntologyTerm::NewObject( $container, $node[ kOFFSET_TERM ] ); // Notice node reference.</h5>' );
-	$term = COntologyTerm::NewObject( $container, $node[ kOFFSET_TERM ] );
+	echo( 'Node<pre>' ); print_r( $node ); echo( '</pre>' );
+	echo( '<h5>$term = $node->LoadTerm( $database, TRUE ); // Notice node reference.</h5>' );
+	$term = $node->LoadTerm( $database, TRUE );
 	echo( 'Term<pre>' ); print_r( $term ); echo( '</pre>' );
 	echo( '<hr />' );
 	echo( '<hr>' );
@@ -433,8 +398,28 @@ try
 	echo( '<h5>$status = $node->Insert( $container );</h5>' );
 	$status = $node->Insert( $container );
 	echo( 'Node<pre>' ); print_r( $node ); echo( '</pre>' );
-	echo( '<h5>$term = COntologyTerm::NewObject( $container, $node[ kOFFSET_TERM ] ); // Notice node reference.</h5>' );
-	$term = COntologyTerm::NewObject( $container, $node[ kOFFSET_TERM ] );
+	echo( '<h5>$term = $node->LoadTerm( $database, TRUE ); // Notice node reference.</h5>' );
+	$term = $node->LoadTerm( $database, TRUE );
+	echo( 'Term<pre>' ); print_r( $term ); echo( '</pre>' );
+	echo( '<hr />' );
+	
+	//
+	// Insert another node with same term.
+	//
+	echo( '<h4>Insert another node with same term</h4>' );
+	echo( '<h5>$node = new MyClass();</h5>' );
+	$node = new MyClass();
+	echo( '<h5>$node[ kOFFSET_TERM ] = $termA;</h5>' );
+	$node[ kOFFSET_TERM ] = $termA;
+	echo( 'Inited['.$node->inited()
+				   .'] Dirty['.$node->dirty()
+				   .'] Saved['.$node->committed()
+				   .'] Encoded['.$node->encoded().']<br />' );
+	echo( '<h5>$status = $node->Insert( $container );</h5>' );
+	$status = $node->Insert( $container );
+	echo( 'Node<pre>' ); print_r( $node ); echo( '</pre>' );
+	echo( '<h5>$term = $node->LoadTerm( $database, TRUE ); // Notice node reference.</h5>' );
+	$term = $node->LoadTerm( $database, TRUE );
 	echo( 'Term<pre>' ); print_r( $term ); echo( '</pre>' );
 	echo( '<hr />' );
 	echo( '<hr>' );

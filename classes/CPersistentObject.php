@@ -518,71 +518,134 @@ class CPersistentObject extends CPersistentDocument
 
 /*=======================================================================================
  *																						*
- *							PROTECTED PERSISTENCE INTERFACE								*
+ *							PROTECTED PRE-COMMIT INTERFACE								*
  *																						*
  *======================================================================================*/
 
 
 	 
 	/*===================================================================================
-	 *	_Precommit																		*
+	 *	_PrecommitValidate																*
 	 *==================================================================================*/
 
 	/**
-	 * <h4>Prepare the object before committing</h4>
+	 * <h4>Validate the object before committing</h4>
 	 *
-	 * In this class we overload this method to set the identification properties. We first
-	 * call the parent method which will assert whether the object has the
-	 * {@link _IsInited()} state set, then we perform the following operations:
+	 * In this class we check if the current object has its native identifier,
+	 * {@link kOFFSET_NID}, if the operation involves updating.
 	 *
-	 * <ul>
-	 *	<li><i>Insert</i> or <i>replace</i>:
-	 *	 <ul>
-	 *		<li><tt>{@link kOFFSET_GID}</tt>: We check whether this offset is present, if
-	 *			not, we call the {@link _index()} method and if the result of that method is
-	 *			not <tt>NULL</tt>, we set the offset with that value.
-	 *		<li><tt>{@link kOFFSET_NID}</tt>: We check whether this offset is present, if
-	 *			not, we check if the {@link kOFFSET_GID} offset is there: in that case we
-	 *			feed the latter's value to the {@link _id()} method and set the result into
-	 *			the {@link kOFFSET_NID} offset.
-	 *	 </ul>
-	 *	<li><i>Insert</i>, <i>replace</i> or <i>update</i>:
-	 *	 <ul>
-	 *		<li><tt>{@link kOFFSET_CLASS}</tt>: We set this offset with the current class
-	 *			name.
-	 *	 </ul>
-	 * </ul>
-	 *
-	 * @param CConnection			$theConnection		Container.
-	 * @param bitfield				$theModifiers		Commit options.
+	 * @param reference			   &$theConnection		Server, database or container.
+	 * @param reference			   &$theModifiers		Commit options.
 	 *
 	 * @access protected
 	 *
-	 * @uses _id()
-	 * @uses _index()
-	 * @uses _ResolveContainer()
+	 * @throws Exception
 	 *
-	 * @see kOFFSET_NID kOFFSET_GID kOFFSET_CLASS
+	 * @see kFLAG_PERSIST_UPDATE kOFFSET_NID
 	 */
-	protected function _Precommit( CConnection $theConnection,
-											   $theModifiers = kFLAG_DEFAULT )
+	protected function _PrecommitValidate( &$theConnection, &$theModifiers )
 	{
 		//
 		// Call parent method.
-		// Raises exception if not inited.
 		//
-		parent::_Precommit( $theConnection, $theModifiers );
+		parent::_PrecommitValidate( $theConnection, $theModifiers );
 		
 		//
-		// Filter options.
+		// Handle update.
 		//
-		$options = $theModifiers & kFLAG_PERSIST_MASK;
+		if( ($theModifiers & kFLAG_PERSIST_MASK) == kFLAG_PERSIST_UPDATE )
+		{
+			//
+			// Check native identifier.
+			//
+			if( ! $this->offsetExists( kOFFSET_NID ) )
+				throw new Exception
+					( "Unable to update object: "
+					 ."the native identifier is missing",
+					  kERROR_STATE );											// !@! ==>
+		
+		} // Update.
+		
+	} // _PrecommitValidate.
+
+	 
+	/*===================================================================================
+	 *	_PrecommitRelated																*
+	 *==================================================================================*/
+
+	/**
+	 * <h4>Handle embedded or related objects before committing</h4>
+	 *
+	 * In this class we have no related objects, but we use this method to set default
+	 * values, such as the class name in {@link kOFFSET_CLASS} when inserting, replacing or
+	 * updating.
+	 *
+	 * @param reference			   &$theConnection		Server, database or container.
+	 * @param reference			   &$theModifiers		Commit options.
+	 *
+	 * @access protected
+	 */
+	protected function _PrecommitRelated( &$theConnection, &$theModifiers )
+	{
+		//
+		// Call parent method.
+		//
+		parent::_PrecommitRelated( $theConnection, $theModifiers );
+		
+		//
+		// Set class name.
+		//
+		if( (($theModifiers & kFLAG_PERSIST_MASK) == kFLAG_PERSIST_INSERT)
+		 || (($theModifiers & kFLAG_PERSIST_MASK) == kFLAG_PERSIST_REPLACE)
+		 || (($theModifiers & kFLAG_PERSIST_MASK) == kFLAG_PERSIST_UPDATE) )
+			$this->offsetSet( kOFFSET_CLASS, get_class( $this ) );
+	
+	} // _PrecommitRelated.
+
+	 
+	/*===================================================================================
+	 *	_PrecommitIdentify																*
+	 *==================================================================================*/
+
+	/**
+	 * <h4>Determine the identifiers before committing</h4>
+	 *
+	 * In this class this method is called only if the operation involves inserting or
+	 * replacing.
+	 *
+	 * If the {@link kOFFSET_GID} offset is missing, we call the {@link _index()} method: if
+	 * the result of that method is not <tt>NULL</tt>, we use it to set the
+	 * {@link kOFFSET_GID} offset value, this only if the operation involves inserting or
+	 * replacing.
+	 *
+	 * If the {@link kOFFSET_NID} offset is missing, we check if the {@link kOFFSET_GID}
+	 * offset was set: in that case we use its value to feed the {@link _id()} method and
+	 * the result is set in the {@link kOFFSET_NID} offset.
+	 *
+	 * This workflow implies that only if the {@link _index()} method returns a non
+	 * <tt>NULL</tt> value, the {@link kOFFSET_GID} offset will be set in this method, and
+	 * that if the {@link kOFFSET_GID} offset is missing the native identifier will not be
+	 * touched.
+	 *
+	 * Note that this is the only place in which the {@link _index()} method is called.
+	 *
+	 * @param reference			   &$theConnection		Server, database or container.
+	 * @param reference			   &$theModifiers		Commit options.
+	 *
+	 * @access protected
+	 */
+	protected function _PrecommitIdentify( &$theConnection, &$theModifiers )
+	{
+		//
+		// Call parent method.
+		//
+		parent::_PrecommitValidate( $theConnection, $theModifiers );
 		
 		//
 		// Handle insert or replace.
 		//
-		if( ($options == kFLAG_PERSIST_INSERT)
-		 || ($options == kFLAG_PERSIST_REPLACE) )
+		if( (($theModifiers & kFLAG_PERSIST_MASK) == kFLAG_PERSIST_INSERT)
+		 || (($theModifiers & kFLAG_PERSIST_MASK) == kFLAG_PERSIST_REPLACE) )
 		{
 			//
 			// Set global identifier.
@@ -614,33 +677,9 @@ class CPersistentObject extends CPersistentDocument
 			
 			} // Missing native identifier.
 		
-		} // Insert.
-		
-		//
-		// Handle update.
-		//
-		if( $options == kFLAG_PERSIST_UPDATE )
-		{
-			//
-			// Check native identifier.
-			//
-			if( ! $this->offsetExists( kOFFSET_NID ) )
-				throw new Exception
-					( "Unable to update object: "
-					 ."the native identifier is missing",
-					  kERROR_STATE );											// !@! ==>
-		
-		} // Update.
-		
-		//
-		// Handle insert, replace or update.
-		//
-		if( ($options == kFLAG_PERSIST_INSERT)
-		 || ($options == kFLAG_PERSIST_REPLACE)
-		 || ($options == kFLAG_PERSIST_UPDATE) )
-			$this->offsetSet( kOFFSET_CLASS, get_class( $this ) );
-		
-	} // _PreCommit.
+		} // Insert or replace.
+	
+	} // _PrecommitIdentify.
 		
 
 

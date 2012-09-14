@@ -216,8 +216,8 @@ try
 					   .'] Saved['.$termA->committed()
 					   .'] Encoded['.$termA->encoded().']<br />' );
 		echo( '<pre>' ); print_r( $termA ); echo( '</pre>' );
-		echo( '<h5>$namespace = COntologyTerm::NewObject( $container, $namespace[ kOFFSET_NID ] ); // Notice the namespace reference count</h5>' );
-		$namespace = COntologyTerm::NewObject( $container, $namespace[ kOFFSET_NID ] );
+		echo( '<h5>$namespace = $termA->LoadNamespace( $container, TRUE ); // Notice the namespace reference count</h5>' );
+		$namespace = $termA->LoadNamespace( $container, TRUE );
 		echo( '<pre>' ); print_r( $namespace ); echo( '</pre>' );
 		echo( '<hr />' );
 		
@@ -243,9 +243,9 @@ try
 					   .'] Saved['.$termB->committed()
 					   .'] Encoded['.$termB->encoded().']<br />' );
 		echo( 'After commit<pre>' ); print_r( $termB ); echo( '</pre>' );
-		echo( '<h5>$namespace_bis = COntologyTerm::NewObject( $container, $termB->NS() ); // Notice the namespace reference count</h5>' );
-		$namespace_bis = COntologyTerm::NewObject( $container, $termB->NS() );
-		echo( 'Namespace<pre>' ); print_r( $namespace ); echo( '</pre>' );
+		echo( '<h5>$namespace_bis = $termB->LoadNamespace( $container, TRUE ); // Notice the namespace reference count</h5>' );
+		$namespace_bis = $termB->LoadNamespace( $container, TRUE );
+		echo( 'Namespace<pre>' ); print_r( $namespace_bis ); echo( '</pre>' );
 		echo( '<hr />' );
 	
 		//

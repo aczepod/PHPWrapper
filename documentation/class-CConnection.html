@@ -127,6 +127,13 @@ has been set in the object.</p>
 <p>The class acts as an ancestor of other specialised abstract classes which
 declare the common interfaces of specific connection types.</p>
 
+<p>The class declares two constants: kOFFSET_NAME and kOFFSET_PARENT. The first one corresponds to the internal name of the object,
+which could also be the public one. The second offset corresponds to the parent
+connection object: if the current object was instantiated by a parent class
+instance, such as a database by a server, or a container by a database, this
+offset will contain the creator object. This can be useful if we need, for
+instance, the database, given the container.</p>
+
 	</div>
 
 	<dl class="tree">
@@ -213,7 +220,7 @@ href="mailto:m.skofic&#64;cgiar.org">m.skofic&#64;<!---->cgiar.org</a>&gt;<br />
 
 		<td class="name"><div>
 		<a class="anchor" href="#___construct">#</a>
-		<code><a href="source-class-CConnection.html#92" title="Go to source code">__construct</a>( <span>mixed <var>$theConnection</var> = <span class="php-keyword1">NULL</span></span>, <span>mixed <var>$theOptions</var> = <span class="php-keyword1">NULL</span> </span> )</code>
+		<code><a href="source-class-CConnection.html#99" title="Go to source code">__construct</a>( <span>mixed <var>$theConnection</var> = <span class="php-keyword1">NULL</span></span>, <span>mixed <var>$theOptions</var> = <span class="php-keyword1">NULL</span> </span> )</code>
 
 		<div class="description short">
 			
@@ -267,7 +274,7 @@ accessor method.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#___toString">#</a>
-		<code><a href="source-class-CConnection.html#124" title="Go to source code">__toString</a>( )</code>
+		<code><a href="source-class-CConnection.html#131" title="Go to source code">__toString</a>( )</code>
 
 		<div class="description short">
 			
@@ -309,7 +316,7 @@ must be able to return a name.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#_Connection">#</a>
-		<code><a href="source-class-CConnection.html#151" title="Go to source code">Connection</a>( <span>mixed <var>$theValue</var> = <span class="php-keyword1">NULL</span></span>, <span>boolean <var>$getOld</var> = <span class="php-keyword1">FALSE</span> </span> )</code>
+		<code><a href="source-class-CConnection.html#158" title="Go to source code">Connection</a>( <span>mixed <var>$theValue</var> = <span class="php-keyword1">NULL</span></span>, <span>boolean <var>$getOld</var> = <span class="php-keyword1">FALSE</span> </span> )</code>
 
 		<div class="description short">
 			
@@ -384,7 +391,7 @@ has been set.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#__Connection">#</a>
-		<code><a href="source-class-CConnection.html#213" title="Go to source code">_Connection</a>( )</code>
+		<code><a href="source-class-CConnection.html#220" title="Go to source code">_Connection</a>( )</code>
 
 		<div class="description short">
 			
@@ -493,7 +500,7 @@ passed by reference.</p>
 		</code></td>
 
 		<td class="name">
-				<a href="source-class-CConnection.html#69" title="Go to source code"><var>$mConnection</var></a>
+				<a href="source-class-CConnection.html#76" title="Go to source code"><var>$mConnection</var></a>
 		</td>
 		<td class="value"><code><span class="php-keyword1">NULL</span></code></td>
 		<td class="description"><div>

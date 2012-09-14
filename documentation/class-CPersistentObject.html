@@ -512,7 +512,7 @@ itself to convert, for instance binary strings, to a suitable value.</p>
 the object does not use the global identifier and it is the duty of the
 container to set the object's primary key, such as with autonumbers in SQL or
 missing <tt>_id</tt> in Mongo. In that case this method should not be called,
-see the <code><a href="class-CPersistentObject.html#_">CPersistentObject::_Precommit()</a></code> method to see where it is used.</p>
+see the <code><a href="class-CPersistentDocument.html#_">CPersistentDocument::_Precommit()</a></code> method to see where it is used.</p>
 
 <p>In this class we do not process the identifier, so we simply return it.</p>
 
@@ -534,7 +534,7 @@ see the <code><a href="class-CPersistentObject.html#_">CPersistentObject::_Preco
 
 				<h4>Used by</h4>
 				<div class="list">
-						<code><code><a href="class-CPersistentObject.html#_">CPersistentObject::_Precommit()</a></code></code> <br />
+						<code><code><a href="class-CPersistentObject.html#_">CPersistentObject::_AssertClass()</a></code></code> <br />
 				</div>
 
 
@@ -572,9 +572,9 @@ of the object and constitutes the unique key of the object.</p>
 is processed by the static <code><a href="class-CPersistentObject.html#_">CPersistentObject::_id()</a></code> method to generate the object's native
 unique identifier, which is the native object's primary key stored in the kOFFSET_NID offset.</p>
 
-<p>This method is called by the <code><a href="class-CPersistentObject.html#_">CPersistentObject::_Precommit()</a></code> method, to fill the kOFFSET_GID offset and the resulting value is fed to the <code><a href="class-CPersistentObject.html#_">CPersistentObject::_id()</a></code> method
+<p>This method is called by the <code><a href="class-CPersistentDocument.html#_">CPersistentDocument::_Precommit()</a></code> method, to fill the kOFFSET_GID offset and the resulting value is fed to the <code><a href="class-CPersistentObject.html#_">CPersistentObject::_id()</a></code> method
 to obtain the value that will be stored in the kOFFSET_NID offset. The
-inherited Precommit() method asserts whether the object <code><a href="class-CStatusDocument.html#_">CStatusDocument::_IsInited()</a></code>, before calling the local <code><a href="class-CPersistentObject.html#_">CPersistentObject::_Precommit()</a></code> method, this to
+inherited Precommit() method asserts whether the object <code><a href="class-CStatusDocument.html#_">CStatusDocument::_IsInited()</a></code>, before calling the local <code><a href="class-CPersistentDocument.html#_">CPersistentDocument::_Precommit()</a></code> method, this to
 ensure that this method can safely use the object's attributes to generate the
 identifier. If you intend to use this method in other places, you should check
 if the object is initialised.</p>
@@ -618,7 +618,7 @@ identifier, so we let the container set the identifier, and return
 				<h4>Used by</h4>
 				<div class="list">
 						<code><code><a href="class-CPersistentObject.html#_">CPersistentObject::_index()</a></code></code> <br />
-						<code><code><a href="class-CPersistentObject.html#_">CPersistentObject::_Precommit()</a></code></code> <br />
+						<code><code><a href="class-CPersistentObject.html#_">CPersistentObject::_AssertClass()</a></code></code> <br />
 				</div>
 
 
@@ -739,7 +739,7 @@ identifier.</p>
 		</div>
 		</div></td>
 	</tr>
-	<tr data-order="_Precommit" id="__Precommit">
+	<tr data-order="_PrecommitValidate" id="__PrecommitValidate">
 
 		<td class="attributes"><code>
 			 protected 
@@ -749,53 +749,30 @@ identifier.</p>
 		</td>
 
 		<td class="name"><div>
-		<a class="anchor" href="#__Precommit">#</a>
-		<code><a href="source-class-CPersistentObject.html#531" title="Go to source code">_Precommit</a>( <span><code><a href="class-CConnection.html">CConnection</a></code> <var>$theConnection</var></span>, <span>bitfield <var>$theModifiers</var> = kFLAG_DEFAULT </span> )</code>
+		<a class="anchor" href="#__PrecommitValidate">#</a>
+		<code><a href="source-class-CPersistentObject.html#531" title="Go to source code">_PrecommitValidate</a>( <span>reference <var>&amp; $theConnection</var></span>, <span>reference <var>&amp; $theModifiers</var></span> )</code>
 
 		<div class="description short">
 			
-<h4>Prepare the object before committing</h4>
+<h4>Validate the object before committing</h4>
 
 		</div>
 
 		<div class="description detailed hidden">
 			
-<h4>Prepare the object before committing</h4>
+<h4>Validate the object before committing</h4>
 
-<p>In this class we overload this method to set the identification properties.
-We first call the parent method which will assert whether the object has the
-<code><a href="class-CStatusDocument.html#_">CStatusDocument::_IsInited()</a></code> state set, then we perform the following operations:</p>
-
-<ul>
-	<li><i>Insert</i> or <i>replace</i>:
-		<ul>
-			<li><tt>kOFFSET_GID</tt>: We check whether this offset is present, if
-			not, we call the <code><a href="class-CPersistentObject.html#_">CPersistentObject::_index()</a></code> method and if the result of that method is not
-			<tt>NULL</tt>, we set the offset with that value.</li>
-
-			<li><tt>kOFFSET_NID</tt>: We check whether this offset is present, if
-			not, we check if the kOFFSET_GID offset is there: in that case we feed
-			the latter's value to the <code><a href="class-CPersistentObject.html#_">CPersistentObject::_id()</a></code> method and set the result into the
-			kOFFSET_NID offset.</li>
-		</ul>
-	</li>
-
-	<li><i>Insert</i>, <i>replace</i> or <i>update</i>:
-		<ul>
-			<li><tt>kOFFSET_CLASS</tt>: We set this offset with the current class
-			name.</li>
-		</ul>
-	</li>
-</ul>
+<p>In this class we check if the current object has its native identifier,
+kOFFSET_NID, if the operation involves updating.</p>
 
 
 
 				<h4>Parameters</h4>
 				<div class="list"><dl>
 					<dt><var>$theConnection</var></dt>
-					<dd><code><code><a href="class-CConnection.html">CConnection</a></code></code><br> Container.</dd>
+					<dd><code>reference</code><br>&amp;$theConnection Server, database or container.</dd>
 					<dt><var>$theModifiers</var></dt>
-					<dd><code>bitfield</code><br> Commit options.</dd>
+					<dd><code>reference</code><br>&amp;$theModifiers Commit options.</dd>
 				</dl></div>
 
 
@@ -803,6 +780,182 @@ We first call the parent method which will assert whether the object has the
 				<div class="list">
 					<code><code><a href="class-Exception.html">Exception</a></code></code><br />
 				</div>
+
+				<h4>See</h4>
+				<div class="list">
+						kFLAG_PERSIST_UPDATE kOFFSET_NID<br />
+				</div>
+
+				<h4>Overrides</h4>
+				<div class="list"><code><a href="class-CPersistentDocument.html#_">CPersistentDocument::_PrecommitValidate</a></code></div>
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="_PrecommitRelated" id="__PrecommitRelated">
+
+		<td class="attributes"><code>
+			 protected 
+			
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#__PrecommitRelated">#</a>
+		<code><a href="source-class-CPersistentObject.html#576" title="Go to source code">_PrecommitRelated</a>( <span>reference <var>&amp; $theConnection</var></span>, <span>reference <var>&amp; $theModifiers</var></span> )</code>
+
+		<div class="description short">
+			
+<h4>Handle embedded or related objects before committing</h4>
+
+		</div>
+
+		<div class="description detailed hidden">
+			
+<h4>Handle embedded or related objects before committing</h4>
+
+<p>In this class we have no related objects, but we use this method to set
+default values, such as the class name in kOFFSET_CLASS when inserting,
+replacing or updating.</p>
+
+
+
+				<h4>Parameters</h4>
+				<div class="list"><dl>
+					<dt><var>$theConnection</var></dt>
+					<dd><code>reference</code><br>&amp;$theConnection Server, database or container.</dd>
+					<dt><var>$theModifiers</var></dt>
+					<dd><code>reference</code><br>&amp;$theModifiers Commit options.</dd>
+				</dl></div>
+
+
+
+
+				<h4>Overrides</h4>
+				<div class="list"><code><a href="class-CPersistentDocument.html#_">CPersistentDocument::_PrecommitRelated</a></code></div>
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="_PrecommitIdentify" id="__PrecommitIdentify">
+
+		<td class="attributes"><code>
+			 protected 
+			
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#__PrecommitIdentify">#</a>
+		<code><a href="source-class-CPersistentObject.html#610" title="Go to source code">_PrecommitIdentify</a>( <span>reference <var>&amp; $theConnection</var></span>, <span>reference <var>&amp; $theModifiers</var></span> )</code>
+
+		<div class="description short">
+			
+<h4>Determine the identifiers before committing</h4>
+
+		</div>
+
+		<div class="description detailed hidden">
+			
+<h4>Determine the identifiers before committing</h4>
+
+<p>In this class this method is called only if the operation involves inserting
+or replacing.</p>
+
+<p>If the kOFFSET_GID offset is missing, we call the <code><a href="class-CPersistentObject.html#_">CPersistentObject::_index()</a></code>
+method: if the result of that method is not <tt>NULL</tt>, we use it to set the
+kOFFSET_GID offset value, this only if the operation involves inserting
+or replacing.</p>
+
+<p>If the kOFFSET_NID offset is missing, we check if the kOFFSET_GID offset was set: in that case we use its value to feed the <code><a href="class-CPersistentObject.html#_">CPersistentObject::_id()</a></code> method and the result is set in the kOFFSET_NID offset.</p>
+
+<p>This workflow implies that only if the <code><a href="class-CPersistentObject.html#_">CPersistentObject::_index()</a></code> method returns a non
+<tt>NULL</tt> value, the kOFFSET_GID offset will be set in this method,
+and that if the kOFFSET_GID offset is missing the native identifier will
+not be touched.</p>
+
+<p>Note that this is the only place in which the <code><a href="class-CPersistentObject.html#_">CPersistentObject::_index()</a></code> method is
+called.</p>
+
+
+
+				<h4>Parameters</h4>
+				<div class="list"><dl>
+					<dt><var>$theConnection</var></dt>
+					<dd><code>reference</code><br>&amp;$theConnection Server, database or container.</dd>
+					<dt><var>$theModifiers</var></dt>
+					<dd><code>reference</code><br>&amp;$theModifiers Commit options.</dd>
+				</dl></div>
+
+
+
+
+				<h4>Overrides</h4>
+				<div class="list"><code><a href="class-CPersistentDocument.html#_">CPersistentDocument::_PrecommitIdentify</a></code></div>
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="_AssertClass" id="__AssertClass">
+
+		<td class="attributes"><code>
+			 protected 
+			mixed
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#__AssertClass">#</a>
+		<code><a href="source-class-CPersistentObject.html#698" title="Go to source code">_AssertClass</a>( <span>reference <var>&amp; $theValue</var></span>, <span>string <var>$theBaseClass</var></span>, <span>string <var>$theDerivedClass</var> = <span class="php-keyword1">NULL</span></span>, <span>boolean <var>$doThrow</var> = <span class="php-keyword1">FALSE</span> </span> )</code>
+
+		<div class="description short">
+			
+<h4>Ensure the provided object is of the correct class</h4>
+
+		</div>
+
+		<div class="description detailed hidden">
+			
+<h4>Ensure the provided object is of the correct class</h4>
+
+<p>This method can be used to check whether the provided value is of the correct
+class. the method will first check if the value corresponds to a base class,
+<tt>$theBaseClass</tt>, it will then check if the object is an instance of a
+derived class, <tt>$theDerivedClass</tt>.</p>
+
+<p>If the value is not an object of the base class, the method will return
+<tt>NULL</tt>, if the object is an instance of both the base and derived
+classes, the method will return <tt>TRUE</tt>; if the object is not an instance
+of the derived class: if the second parameter, <tt>$doThrow</tt>, is
+<tt>TRUE</tt>, the method will raise an exception, if not, it will return
+<tt>FALSE</tt>.</p>
+
+<p>If you omit the derived class, the test will return <tt>TRUE</tt>, if the
+value is an instance of the base class.</p>
+
+
+
+				<h4>Parameters</h4>
+				<div class="list"><dl>
+					<dt><var>$theValue</var></dt>
+					<dd><code>reference</code><br> Value to assert.</dd>
+					<dt><var>$theBaseClass</var></dt>
+					<dd><code>string</code><br> Base class to test.</dd>
+					<dt><var>$theDerivedClass</var></dt>
+					<dd><code>string</code><br> Derived class to test.</dd>
+					<dt><var>$doThrow</var></dt>
+					<dd><code>boolean</code><br> If <tt>TRUE</tt> raise exception.</dd>
+				</dl></div>
+
+				<h4>Returns</h4>
+				<div class="list">
+					<code>mixed</code><br><tt>TRUE</tt> correct object,; <tt>NULL</tt> bot an object; <tt>FALSE</tt> not
+an object.<br />
+				</div>
+
 
 				<h4>See</h4>
 				<div class="list">
@@ -815,8 +968,6 @@ We first call the parent method which will assert whether the object has the
 						_ResolveContainer()<br />
 				</div>
 
-				<h4>Overrides</h4>
-				<div class="list"><code><a href="class-CPersistentDocument.html#_">CPersistentDocument::_Precommit</a></code></div>
 
 		</div>
 		</div></td>
@@ -837,8 +988,12 @@ We first call the parent method which will assert whether the object has the
 			<a href="class-CPersistentDocument.html#_">Restore()</a>, 
 			<a href="class-CPersistentDocument.html#_">Update()</a>, 
 			<a href="class-CPersistentDocument.html#_">_Postcommit()</a>, 
+			<a href="class-CPersistentDocument.html#_">_PostcommitCleanup()</a>, 
+			<a href="class-CPersistentDocument.html#_">_PostcommitRelated()</a>, 
+			<a href="class-CPersistentDocument.html#_">_PostcommitStatus()</a>, 
 			<a href="class-CPersistentDocument.html#_">_Postset()</a>, 
 			<a href="class-CPersistentDocument.html#_">_Postunset()</a>, 
+			<a href="class-CPersistentDocument.html#_">_Precommit()</a>, 
 			<a href="class-CPersistentDocument.html#_">_Ready()</a>, 
 			<a href="class-CPersistentDocument.html#_">__construct()</a>
 		</code></td>

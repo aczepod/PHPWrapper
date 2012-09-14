@@ -96,20 +96,47 @@
 
 <p>This class extends its ancestor, <code><a href="class-CNode.html">CNode</a></code>, by asserting the <code><a href="class-CNode.html#_">CNode::Term()</a></code> to be an instance of <code><a href="class-COntologyTerm.html">COntologyTerm</a></code> and by managing the kOFFSET_REFS_NODE offset of the related <code><a href="class-CNode.html#_">CNode::Term()</a></code>.</p>
 
+<p>The class does not handle global identifiers and objects cannot be uniquely
+identified by its properties or attributes, it is the duty of the hosting
+container to provide the kOFFSET_NID identifier, In this class we use
+sequences, <code><a href="class-CContainer.html#_">CContainer::NextSequence()</a></code>, from a default container named
+after the default kCONTAINER_SEQUENCE_NAME tag in the same database,
+this is to make referencing nodes easier and to be compatible with most graph
+databases.</p>
+
 <p>In this class, the term, kOFFSET_TERM, is a reference to an instance
-of <code><a href="class-COntologyTerm.html">COntologyTerm</a></code>, this means that the offset will contain the native
-identifier of the term. The value may be provided as an uncommitted object, in
-that case the term will be committed in the <code><a href="class-COntologyNode.html#_">COntologyNode::_Precommit()</a></code> method.</p>
+of <code><a href="class-COntologyTerm.html">COntologyTerm</a></code>, meaning that the offset will contain the native
+identifier of the term. The value may be provided as an uncommitted term object,
+in that case the term will be committed before the current node is
+committed.</p>
+
+<p>Once the node has been committed, it will not be possible to modify the term,
+kOFFSET_TERM.</p>
 
 <p>When inserting a new node, the class will also make sure that the referenced
 term gets a reference to the current node in its kOFFSET_REFS_NODE
-offset.</p>
+offset, this means that once a node is committed, one cannot change its term
+reference.</p>
 
-<p>The class features a static method, <code><a href="class-COntologyNode.html#_">COntologyNode::DefaultContainer()</a></code>, that can be
-used to instantiate the default container for nodes, given a database. The
-method will use the kCONTAINER_NODE_NAME constant as the container name.
-You are encouraged to use this method rather than instantiating the container
-yourself, since other classes rely on this method.</p>
+<p>The class features an offset, kOFFSET_REFS_TAG, which represents the
+list of tags that reference the current node. This offset is a set of tag
+identifiers implemented as an array. The offset definition is borrowed from the
+<code><a href="class-COntologyTerm.html">COntologyTerm</a></code> class, which is required by this class because of its
+kOFFSET_TERM offset. This offset is managed by the tag class, this class
+locks the offset.</p>
+
+<p>The class implements the static method, <code><a href="class-COntologyNode.html#_">COntologyNode::DefaultContainer()</a></code>, it will
+use the kCONTAINER_NODE_NAME constant. Note that when passing <code><a href="class-CConnection.html">CConnection</a></code> based objects to the persisting methods of this class, you should
+provide preferably Database instances, since this class may have to commit
+terms.</p>
+
+<p>The class features member accessor methods for the default offsets:</p>
+
+<ul>
+	<li><code><a href="class-COntologyNode.html#_">COntologyNode::TagRefs()</a></code>: This method returns the node's tag references, kOFFSET_REFS_TAG.</li>
+
+	<li><code><a href="class-COntologyNode.html#_">COntologyNode::LoadTerm()</a></code>: This method will return the referenced term object.</li>
+</ul>
 
 	</div>
 
@@ -195,6 +222,111 @@ href="mailto:m.skofic&#64;cgiar.org">m.skofic&#64;<!---->cgiar.org</a>&gt;<br />
 
 	<table class="summary" id="methods">
 	<caption>Methods summary</caption>
+	<tr data-order="TagRefs" id="_TagRefs">
+
+		<td class="attributes"><code>
+			 public 
+			array
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_TagRefs">#</a>
+		<code><a href="source-class-COntologyNode.html#116" title="Go to source code">TagRefs</a>( )</code>
+
+		<div class="description short">
+			
+<h4>Manage tag references</h4>
+
+		</div>
+
+		<div class="description detailed hidden">
+			
+<h4>Manage tag references</h4>
+
+<p>The <i>tag references</i>, kOFFSET_REFS_TAG, holds a list of
+identifiers of tags that reference the node.</p>
+
+<p>The method is read-only, because this value must be managed externally.</p>
+
+
+
+
+				<h4>Returns</h4>
+				<div class="list">
+					<code>array</code><br>Tags reference list.<br />
+				</div>
+
+
+				<h4>See</h4>
+				<div class="list">
+						kOFFSET_REFS_TAG<br />
+				</div>
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="LoadTerm" id="_LoadTerm">
+
+		<td class="attributes"><code>
+			 public 
+			<code><a href="class-COntologyTerm.html">COntologyTerm</a></code>
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_LoadTerm">#</a>
+		<code><a href="source-class-COntologyNode.html#155" title="Go to source code">LoadTerm</a>( <span><code><a href="class-CConnection.html">CConnection</a></code> <var>$theConnection</var></span>, <span>boolean <var>$doReload</var> = <span class="php-keyword1">FALSE</span> </span> )</code>
+
+		<div class="description short">
+			
+<h4>Load term object</h4>
+
+		</div>
+
+		<div class="description detailed hidden">
+			
+<h4>Load term object</h4>
+
+<p>This method will return the current term object: if the term is not set, the
+method will return <tt>NULL</tt>; if the term cannot be found, the method will
+raise an exception.</p>
+
+<p>The object will also be loaded in a data member that can function as a
+cache.</p>
+
+<p>The method features two parameters: the first refers to the container in
+which the term is stored, the second is a boolean flag that determines whether
+the object is to be read, or if the cached copy can be used.</p>
+
+
+
+				<h4>Parameters</h4>
+				<div class="list"><dl>
+					<dt><var>$theConnection</var></dt>
+					<dd><code><code><a href="class-CConnection.html">CConnection</a></code></code><br> Server, database or container.</dd>
+					<dt><var>$doReload</var></dt>
+					<dd><code>boolean</code><br> Reload if <tt>TRUE</tt>.</dd>
+				</dl></div>
+
+				<h4>Returns</h4>
+				<div class="list">
+					<code><code><a href="class-COntologyTerm.html">COntologyTerm</a></code></code><br>Term object or <tt>NULL</tt>.<br />
+				</div>
+
+
+				<h4>See</h4>
+				<div class="list">
+						kOFFSET_TERM<br />
+				</div>
+
+
+		</div>
+		</div></td>
+	</tr>
 	<tr data-order="DefaultContainer" id="_DefaultContainer">
 
 		<td class="attributes"><code>
@@ -206,17 +338,17 @@ href="mailto:m.skofic&#64;cgiar.org">m.skofic&#64;<!---->cgiar.org</a>&gt;<br />
 
 		<td class="name"><div>
 		<a class="anchor" href="#_DefaultContainer">#</a>
-		<code><a href="source-class-COntologyNode.html#83" title="Go to source code">DefaultContainer</a>( <span><code><a href="class-CDatabase.html">CDatabase</a></code> <var>$theDatabase</var></span> )</code>
+		<code><a href="source-class-COntologyNode.html#235" title="Go to source code">DefaultContainer</a>( <span><code><a href="class-CDatabase.html">CDatabase</a></code> <var>$theDatabase</var></span> )</code>
 
 		<div class="description short">
 			
-<h4>Return the terms container</h4>
+<h4>Return the nodes container</h4>
 
 		</div>
 
 		<div class="description detailed hidden">
 			
-<h4>Return the terms container</h4>
+<h4>Return the nodes container</h4>
 
 <p>The container will be created or fetched from the provided database using the
 kCONTAINER_NODE_NAME name.</p>
@@ -242,6 +374,66 @@ kCONTAINER_NODE_NAME name.</p>
 		</div>
 		</div></td>
 	</tr>
+	<tr data-order="ResolveTermContainer" id="_ResolveTermContainer">
+
+		<td class="attributes"><code>
+			 public static
+			mixed
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_ResolveTermContainer">#</a>
+		<code><a href="source-class-COntologyNode.html#257" title="Go to source code">ResolveTermContainer</a>( <span><code><a href="class-CConnection.html">CConnection</a></code> <var>$theConnection</var></span>, <span>boolean <var>$doException</var></span> )</code>
+
+		<div class="description short">
+			
+<h4>Resolve term container</h4>
+
+		</div>
+
+		<div class="description detailed hidden">
+			
+<h4>Resolve term container</h4>
+
+<p>This method should return the container used by terms, given a container used
+for nodes. For servers and databases, it will resolve the container using the
+term class static <code><a href="class-CPersistentDocument.html#_">CPersistentDocument::ResolveContainer()</a></code> method, for containers, it will
+attempt to retrieve the database that instantiated the node container and feed
+it to the term's class <code><a href="class-CPersistentDocument.html#_">CPersistentDocument::ResolveContainer()</a></code> method.</p>
+
+<p>If the method is unable to resolve the container it will raise an exception,
+if the second parameter is <tt>TRUE</tt>, or return <tt>NULL</tt>.</p>
+
+<p>The method will return an exception regardless of the value of the second
+parameter if the first parameter is neither a <code><a href="class-CServer.html">CServer</a></code> or <code><a href="class-CDatabase.html">CDatabase</a></code> derived instance.</p>
+
+
+
+				<h4>Parameters</h4>
+				<div class="list"><dl>
+					<dt><var>$theConnection</var></dt>
+					<dd><code><code><a href="class-CConnection.html">CConnection</a></code></code><br> Connection object.</dd>
+					<dt><var>$doException</var></dt>
+					<dd><code>boolean</code><br> <tt>TRUE</tt> raise exception.</dd>
+				</dl></div>
+
+				<h4>Returns</h4>
+				<div class="list">
+					<code>mixed</code><br><code><a href="class-CContainer.html">CContainer</a></code> or <tt>NULL</tt> if not found.<br />
+				</div>
+
+				<h4>Throws</h4>
+				<div class="list">
+					<code><code><a href="class-Exception.html">Exception</a></code></code><br />
+				</div>
+
+
+
+		</div>
+		</div></td>
+	</tr>
 	<tr data-order="_Preset" id="__Preset">
 
 		<td class="attributes"><code>
@@ -253,7 +445,7 @@ kCONTAINER_NODE_NAME name.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#__Preset">#</a>
-		<code><a href="source-class-COntologyNode.html#114" title="Go to source code">_Preset</a>( <span>reference <var>&amp; $theOffset</var></span>, <span>reference <var>&amp; $theValue</var></span> )</code>
+		<code><a href="source-class-COntologyNode.html#325" title="Go to source code">_Preset</a>( <span>reference <var>&amp; $theOffset</var></span>, <span>reference <var>&amp; $theValue</var></span> )</code>
 
 		<div class="description short">
 			
@@ -269,6 +461,9 @@ kCONTAINER_NODE_NAME name.</p>
 unchanged only if not yet committed, if not, we convert it to its native
 identifier. We also ensure the provided term object to be an instance of <code><a href="class-COntologyTerm.html">COntologyTerm</a></code> by asserting <code><a href="class-CDocument.html">CDocument</a></code> descendants to be of that
 class.</p>
+
+<p>This method will lock the kOFFSET_REFS_TAG offset from any
+modification.</p>
 
 
 
@@ -288,7 +483,12 @@ class.</p>
 
 				<h4>See</h4>
 				<div class="list">
-						kOFFSET_TERM<br />
+						kOFFSET_TERM kOFFSET_REFS_TAG<br />
+				</div>
+				<h4>Uses</h4>
+				<div class="list">
+						<code><code><a href="class-CStatusDocument.html#_">CStatusDocument::_IsCommitted()</a></code></code> <br />
+						<code><code><a href="class-CPersistentObject.html#_">CPersistentObject::_AssertClass()</a></code></code> <br />
 				</div>
 
 				<h4>Overrides</h4>
@@ -297,7 +497,7 @@ class.</p>
 		</div>
 		</div></td>
 	</tr>
-	<tr data-order="_Precommit" id="__Precommit">
+	<tr data-order="_Preunset" id="__Preunset">
 
 		<td class="attributes"><code>
 			 protected 
@@ -307,34 +507,29 @@ class.</p>
 		</td>
 
 		<td class="name"><div>
-		<a class="anchor" href="#__Precommit">#</a>
-		<code><a href="source-class-COntologyNode.html#197" title="Go to source code">_Precommit</a>( <span><code><a href="class-CContainer.html">CContainer</a></code> <var>$theContainer</var></span>, <span>bitfield <var>$theModifiers</var> = kFLAG_DEFAULT </span> )</code>
+		<a class="anchor" href="#__Preunset">#</a>
+		<code><a href="source-class-COntologyNode.html#430" title="Go to source code">_Preunset</a>( <span>reference <var>&amp; $theOffset</var></span> )</code>
 
 		<div class="description short">
 			
-<h4>Prepare the object before committing</h4>
+<h4>Handle offset before unsetting it</h4>
 
 		</div>
 
 		<div class="description detailed hidden">
 			
-<h4>Prepare the object before committing</h4>
+<h4>Handle offset before unsetting it</h4>
 
-<p>In this class we commit the eventual term provided as an uncommitted object
-and replace the offset with the term's native identifier.</p>
-
-<p>Note that we need to get the terms container in order to commit the term, for
-this reason you should always instantiate containsers from a database, in that
-way it will be possible to get the container's database, kOFFSET_PARENT.</p>
+<p>In this class we prevent the modification of the kOFFSET_TERM offset
+if the object is committed and of the kOFFSET_REFS_TAG offset in all
+cases.</p>
 
 
 
 				<h4>Parameters</h4>
 				<div class="list"><dl>
-					<dt><var>$theContainer</var></dt>
-					<dd><code><code><a href="class-CContainer.html">CContainer</a></code></code><br> Container.</dd>
-					<dt><var>$theModifiers</var></dt>
-					<dd><code>bitfield</code><br> Commit options.</dd>
+					<dt><var>$theOffset</var></dt>
+					<dd><code>reference</code><br>&amp;$theOffset Offset.</dd>
 				</dl></div>
 
 
@@ -343,14 +538,22 @@ way it will be possible to get the container's database, kOFFSET_PARENT.</p>
 					<code><code><a href="class-Exception.html">Exception</a></code></code><br />
 				</div>
 
+				<h4>See</h4>
+				<div class="list">
+						kOFFSET_TERM<br />
+				</div>
+				<h4>Uses</h4>
+				<div class="list">
+						<code><code><a href="class-CStatusDocument.html#_">CStatusDocument::_IsCommitted()</a></code></code> <br />
+				</div>
 
 				<h4>Overrides</h4>
-				<div class="list"><code><a href="class-CPersistentObject.html#_">CPersistentObject::_Precommit</a></code></div>
+				<div class="list"><code><a href="class-CPersistentObject.html#_">CPersistentObject::_Preunset</a></code></div>
 
 		</div>
 		</div></td>
 	</tr>
-	<tr data-order="_Postcommit" id="__Postcommit">
+	<tr data-order="_PrecommitRelated" id="__PrecommitRelated">
 
 		<td class="attributes"><code>
 			 protected 
@@ -360,36 +563,191 @@ way it will be possible to get the container's database, kOFFSET_PARENT.</p>
 		</td>
 
 		<td class="name"><div>
-		<a class="anchor" href="#__Postcommit">#</a>
-		<code><a href="source-class-COntologyNode.html#286" title="Go to source code">_Postcommit</a>( <span><code><a href="class-CContainer.html">CContainer</a></code> <var>$theContainer</var></span>, <span>bitfield <var>$theModifiers</var> = kFLAG_DEFAULT </span> )</code>
+		<a class="anchor" href="#__PrecommitRelated">#</a>
+		<code><a href="source-class-COntologyNode.html#487" title="Go to source code">_PrecommitRelated</a>( <span>reference <var>&amp; $theConnection</var></span>, <span>reference <var>&amp; $theModifiers</var></span> )</code>
 
 		<div class="description short">
 			
-<h4>Prepare the object after committing</h4>
+<h4>Handle embedded or related objects before committing</h4>
 
 		</div>
 
 		<div class="description detailed hidden">
 			
-<h4>Prepare the object after committing</h4>
+<h4>Handle embedded or related objects before committing</h4>
 
-<p>In this class we add the reference of the current node namespace.</p>
+<p>In this class we commit the eventual term provided as an uncommitted object
+and replace the offset with the term's native identifier, or load the term if
+provided as an identifier.</p>
 
 
 
 				<h4>Parameters</h4>
 				<div class="list"><dl>
-					<dt><var>$theContainer</var></dt>
-					<dd><code><code><a href="class-CContainer.html">CContainer</a></code></code><br> Container.</dd>
+					<dt><var>$theConnection</var></dt>
+					<dd><code>reference</code><br>&amp;$theConnection Server, database or container.</dd>
 					<dt><var>$theModifiers</var></dt>
-					<dd><code>bitfield</code><br> Commit options.</dd>
+					<dd><code>reference</code><br>&amp;$theModifiers Commit options.</dd>
 				</dl></div>
 
 
 
 
 				<h4>Overrides</h4>
-				<div class="list"><code><a href="class-CPersistentDocument.html#_">CPersistentDocument::_Postcommit</a></code></div>
+				<div class="list"><code><a href="class-CPersistentObject.html#_">CPersistentObject::_PrecommitRelated</a></code></div>
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="_PrecommitIdentify" id="__PrecommitIdentify">
+
+		<td class="attributes"><code>
+			 protected 
+			
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#__PrecommitIdentify">#</a>
+		<code><a href="source-class-COntologyNode.html#553" title="Go to source code">_PrecommitIdentify</a>( <span>reference <var>&amp; $theConnection</var></span>, <span>reference <var>&amp; $theModifiers</var></span> )</code>
+
+		<div class="description short">
+			
+<h4>Determine the identifiers before committing</h4>
+
+		</div>
+
+		<div class="description detailed hidden">
+			
+<h4>Determine the identifiers before committing</h4>
+
+<p>Objects of this class are identified by a sequence number tagged kSEQUENCE_KEY_NODE, this method will set the native identifier, kOFFSET_NID, with this value.</p>
+
+<p>The parent method will then be called, which will ignore the global
+identifier, kOFFSET_GID, since the <code><a href="class-CPersistentObject.html#_">CPersistentObject::_index()</a></code> method returns
+<tt>NULL</tt> and also ignore the native identifier, kOFFSET_NID, since
+it will have been set here.</p>
+
+
+
+				<h4>Parameters</h4>
+				<div class="list"><dl>
+					<dt><var>$theConnection</var></dt>
+					<dd><code>reference</code><br>&amp;$theConnection Server, database or container.</dd>
+					<dt><var>$theModifiers</var></dt>
+					<dd><code>reference</code><br>&amp;$theModifiers Commit options.</dd>
+				</dl></div>
+
+
+
+
+				<h4>Overrides</h4>
+				<div class="list"><code><a href="class-CPersistentObject.html#_">CPersistentObject::_PrecommitIdentify</a></code></div>
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="_PostcommitRelated" id="__PostcommitRelated">
+
+		<td class="attributes"><code>
+			 protected 
+			
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#__PostcommitRelated">#</a>
+		<code><a href="source-class-COntologyNode.html#611" title="Go to source code">_PostcommitRelated</a>( <span>reference <var>&amp; $theConnection</var></span>, <span>reference <var>&amp; $theModifiers</var></span> )</code>
+
+		<div class="description short">
+			
+<h4>Update related objects after committing</h4>
+
+		</div>
+
+		<div class="description detailed hidden">
+			
+<h4>Update related objects after committing</h4>
+
+<p>In this class we add the current node's identifier to the list of node
+references, kOFFSET_REFS_NODE, in the related term when inserting; we
+remove the element when deleting.</p>
+
+
+
+				<h4>Parameters</h4>
+				<div class="list"><dl>
+					<dt><var>$theConnection</var></dt>
+					<dd><code>reference</code><br>&amp;$theConnection Server, database or container.</dd>
+					<dt><var>$theModifiers</var></dt>
+					<dd><code>reference</code><br>&amp;$theModifiers Commit options.</dd>
+				</dl></div>
+
+
+				<h4>Throws</h4>
+				<div class="list">
+					<code><code><a href="class-Exception.html">Exception</a></code></code><br />
+				</div>
+
+				<h4>See</h4>
+				<div class="list">
+						kFLAG_PERSIST_WRITE_MASK<br />
+				</div>
+				<h4>Uses</h4>
+				<div class="list">
+						<code><code><a href="class-CStatusDocument.html#_">CStatusDocument::_IsInited()</a></code></code> <br />
+				</div>
+
+				<h4>Overrides</h4>
+				<div class="list"><code><a href="class-CPersistentDocument.html#_">CPersistentDocument::_PostcommitRelated</a></code></div>
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="_PostcommitCleanup" id="__PostcommitCleanup">
+
+		<td class="attributes"><code>
+			 protected 
+			
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#__PostcommitCleanup">#</a>
+		<code><a href="source-class-COntologyNode.html#699" title="Go to source code">_PostcommitCleanup</a>( <span>reference <var>&amp; $theConnection</var></span>, <span>reference <var>&amp; $theModifiers</var></span> )</code>
+
+		<div class="description short">
+			
+<h4>Cleanup the object after committing</h4>
+
+		</div>
+
+		<div class="description detailed hidden">
+			
+<h4>Cleanup the object after committing</h4>
+
+<p>In this class we reset the term object cache, we set the data member to
+<tt>NULL</tt> so that next time one wants to retrieve the term object, it will
+have to be refreshed and its references actualised.</p>
+
+
+
+				<h4>Parameters</h4>
+				<div class="list"><dl>
+					<dt><var>$theConnection</var></dt>
+					<dd><code>reference</code><br>&amp;$theConnection Server, database or container.</dd>
+					<dt><var>$theModifiers</var></dt>
+					<dd><code>reference</code><br>&amp;$theModifiers Commit options.</dd>
+				</dl></div>
+
+
+
+
+				<h4>Overrides</h4>
+				<div class="list"><code><a href="class-CPersistentDocument.html#_">CPersistentDocument::_PostcommitCleanup</a></code></div>
 
 		</div>
 		</div></td>
@@ -403,7 +761,6 @@ way it will be possible to get the container's database, kOFFSET_PARENT.</p>
 			<a href="class-CNode.html#_">Kind()</a>, 
 			<a href="class-CNode.html#_">Term()</a>, 
 			<a href="class-CNode.html#_">Type()</a>, 
-			<a href="class-CNode.html#_">_Preunset()</a>, 
 			<a href="class-CNode.html#_">_Ready()</a>
 		</code></td>
 	</tr>
@@ -415,6 +772,8 @@ way it will be possible to get the container's database, kOFFSET_PARENT.</p>
 			<a href="class-CPersistentObject.html#_">CLassName()</a>, 
 			<a href="class-CPersistentObject.html#_">GID()</a>, 
 			<a href="class-CPersistentObject.html#_">NewObject()</a>, 
+			<a href="class-CPersistentObject.html#_">_AssertClass()</a>, 
+			<a href="class-CPersistentObject.html#_">_PrecommitValidate()</a>, 
 			<a href="class-CPersistentObject.html#_">__toString()</a>, 
 			<a href="class-CPersistentObject.html#_">_id()</a>, 
 			<a href="class-CPersistentObject.html#_">_index()</a>
@@ -433,8 +792,11 @@ way it will be possible to get the container's database, kOFFSET_PARENT.</p>
 			<a href="class-CPersistentDocument.html#_">ResolveContainer()</a>, 
 			<a href="class-CPersistentDocument.html#_">Restore()</a>, 
 			<a href="class-CPersistentDocument.html#_">Update()</a>, 
+			<a href="class-CPersistentDocument.html#_">_Postcommit()</a>, 
+			<a href="class-CPersistentDocument.html#_">_PostcommitStatus()</a>, 
 			<a href="class-CPersistentDocument.html#_">_Postset()</a>, 
 			<a href="class-CPersistentDocument.html#_">_Postunset()</a>, 
+			<a href="class-CPersistentDocument.html#_">_Precommit()</a>, 
 			<a href="class-CPersistentDocument.html#_">__construct()</a>
 		</code></td>
 	</tr>
@@ -502,6 +864,39 @@ way it will be possible to get the container's database, kOFFSET_PARENT.</p>
 	</table>
 
 
+	<table class="summary" id="properties">
+	<caption>Properties summary</caption>
+	<tr data-order="mTerm" id="$mTerm">
+
+		<td class="attributes"><code>
+			protected 
+			<code><a href="class-COntologyTerm.html">COntologyTerm</a></code>
+		</code></td>
+
+		<td class="name">
+				<a href="source-class-COntologyNode.html#93" title="Go to source code"><var>$mTerm</var></a>
+		</td>
+		<td class="value"><code><span class="php-keyword1">NULL</span></code></td>
+		<td class="description"><div>
+			<a href="#$mTerm" class="anchor">#</a>
+
+			<div class="description short">
+				
+<p><b>Term object</b></p>
+
+			</div>
+
+			<div class="description detailed hidden">
+				
+<p><b>Term object</b></p>
+
+<p>This data member holds the eventual term object when requested.</p>
+
+
+			</div>
+		</div></td>
+	</tr>
+	</table>
 
 	<table class="summary inherited">
 	<caption>Properties inherited from <a href="class-CStatusDocument.html#properties">CStatusDocument</a></caption>
