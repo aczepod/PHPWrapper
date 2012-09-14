@@ -317,10 +317,23 @@ the object is to be read, or if the cached copy can be used.</p>
 					<code><code><a href="class-COntologyTerm.html">COntologyTerm</a></code></code><br>Term object or <tt>NULL</tt>.<br />
 				</div>
 
+				<h4>Throws</h4>
+				<div class="list">
+					<code><code><a href="class-Exception.html">Exception</a></code></code><br />
+				</div>
 
 				<h4>See</h4>
 				<div class="list">
 						kOFFSET_TERM<br />
+				</div>
+				<h4>Uses</h4>
+				<div class="list">
+						<code><code><a href="class-CPersistentObject.html#_">CPersistentObject::NewObject()</a></code></code> <br />
+						<code><code><a href="class-COntologyNode.html#_">COntologyNode::ResolveTermContainer()</a></code></code> <br />
+				</div>
+				<h4>Used by</h4>
+				<div class="list">
+						<code><code><a href="class-COntologyNode.html#_">COntologyNode::_PrecommitRelated()</a></code></code> <br />
 				</div>
 
 
@@ -338,7 +351,7 @@ the object is to be read, or if the cached copy can be used.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#_DefaultContainer">#</a>
-		<code><a href="source-class-COntologyNode.html#235" title="Go to source code">DefaultContainer</a>( <span><code><a href="class-CDatabase.html">CDatabase</a></code> <var>$theDatabase</var></span> )</code>
+		<code><a href="source-class-COntologyNode.html#240" title="Go to source code">DefaultContainer</a>( <span><code><a href="class-CDatabase.html">CDatabase</a></code> <var>$theDatabase</var></span> )</code>
 
 		<div class="description short">
 			
@@ -367,6 +380,10 @@ kCONTAINER_NODE_NAME name.</p>
 				</div>
 
 
+				<h4>See</h4>
+				<div class="list">
+						kCONTAINER_NODE_NAME<br />
+				</div>
 
 				<h4>Overrides</h4>
 				<div class="list"><code><a href="class-CPersistentDocument.html#_">CPersistentDocument::DefaultContainer</a></code></div>
@@ -385,7 +402,7 @@ kCONTAINER_NODE_NAME name.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#_ResolveTermContainer">#</a>
-		<code><a href="source-class-COntologyNode.html#257" title="Go to source code">ResolveTermContainer</a>( <span><code><a href="class-CConnection.html">CConnection</a></code> <var>$theConnection</var></span>, <span>boolean <var>$doException</var></span> )</code>
+		<code><a href="source-class-COntologyNode.html#264" title="Go to source code">ResolveTermContainer</a>( <span><code><a href="class-CConnection.html">CConnection</a></code> <var>$theConnection</var></span>, <span>boolean <var>$doException</var></span> )</code>
 
 		<div class="description short">
 			
@@ -429,6 +446,13 @@ parameter if the first parameter is neither a <code><a href="class-CServer.html"
 					<code><code><a href="class-Exception.html">Exception</a></code></code><br />
 				</div>
 
+				<h4>Used by</h4>
+				<div class="list">
+						<code><code><a href="class-COntologyNode.html#_">COntologyNode::LoadTerm()</a></code></code> <br />
+						<code><code><a href="class-COntologyNode.html#_">COntologyNode::_PrecommitRelated()</a></code></code> <br />
+						<code><code><a href="class-COntologyNode.html#_">COntologyNode::_PrecommitIdentify()</a></code></code> <br />
+						<code><code><a href="class-COntologyNode.html#_">COntologyNode::_PostcommitRelated()</a></code></code> <br />
+				</div>
 
 
 		</div>
@@ -445,7 +469,7 @@ parameter if the first parameter is neither a <code><a href="class-CServer.html"
 
 		<td class="name"><div>
 		<a class="anchor" href="#__Preset">#</a>
-		<code><a href="source-class-COntologyNode.html#325" title="Go to source code">_Preset</a>( <span>reference <var>&amp; $theOffset</var></span>, <span>reference <var>&amp; $theValue</var></span> )</code>
+		<code><a href="source-class-COntologyNode.html#332" title="Go to source code">_Preset</a>( <span>reference <var>&amp; $theOffset</var></span>, <span>reference <var>&amp; $theValue</var></span> )</code>
 
 		<div class="description short">
 			
@@ -508,7 +532,7 @@ modification.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#__Preunset">#</a>
-		<code><a href="source-class-COntologyNode.html#430" title="Go to source code">_Preunset</a>( <span>reference <var>&amp; $theOffset</var></span> )</code>
+		<code><a href="source-class-COntologyNode.html#437" title="Go to source code">_Preunset</a>( <span>reference <var>&amp; $theOffset</var></span> )</code>
 
 		<div class="description short">
 			
@@ -540,7 +564,7 @@ cases.</p>
 
 				<h4>See</h4>
 				<div class="list">
-						kOFFSET_TERM<br />
+						kOFFSET_REFS_TAG kOFFSET_TERM<br />
 				</div>
 				<h4>Uses</h4>
 				<div class="list">
@@ -564,7 +588,7 @@ cases.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#__PrecommitRelated">#</a>
-		<code><a href="source-class-COntologyNode.html#487" title="Go to source code">_PrecommitRelated</a>( <span>reference <var>&amp; $theConnection</var></span>, <span>reference <var>&amp; $theModifiers</var></span> )</code>
+		<code><a href="source-class-COntologyNode.html#494" title="Go to source code">_PrecommitRelated</a>( <span>reference <var>&amp; $theConnection</var></span>, <span>reference <var>&amp; $theModifiers</var></span> )</code>
 
 		<div class="description short">
 			
@@ -592,6 +616,15 @@ provided as an identifier.</p>
 
 
 
+				<h4>See</h4>
+				<div class="list">
+						kOFFSET_TERM<br />
+				</div>
+				<h4>Uses</h4>
+				<div class="list">
+						<code><code><a href="class-COntologyNode.html#_">COntologyNode::LoadTerm()</a></code></code> <br />
+						<code><code><a href="class-COntologyNode.html#_">COntologyNode::ResolveTermContainer()</a></code></code> <br />
+				</div>
 
 				<h4>Overrides</h4>
 				<div class="list"><code><a href="class-CPersistentObject.html#_">CPersistentObject::_PrecommitRelated</a></code></div>
@@ -610,7 +643,7 @@ provided as an identifier.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#__PrecommitIdentify">#</a>
-		<code><a href="source-class-COntologyNode.html#553" title="Go to source code">_PrecommitIdentify</a>( <span>reference <var>&amp; $theConnection</var></span>, <span>reference <var>&amp; $theModifiers</var></span> )</code>
+		<code><a href="source-class-COntologyNode.html#565" title="Go to source code">_PrecommitIdentify</a>( <span>reference <var>&amp; $theConnection</var></span>, <span>reference <var>&amp; $theModifiers</var></span> )</code>
 
 		<div class="description short">
 			
@@ -641,6 +674,15 @@ it will have been set here.</p>
 
 
 
+				<h4>See</h4>
+				<div class="list">
+						kOFFSET_NID kSEQUENCE_KEY_NODE<br />
+						kFLAG_PERSIST_INSERT kFLAG_PERSIST_REPLACE<br />
+				</div>
+				<h4>Uses</h4>
+				<div class="list">
+						<code><code><a href="class-COntologyNode.html#_">COntologyNode::ResolveTermContainer()</a></code></code> <br />
+				</div>
 
 				<h4>Overrides</h4>
 				<div class="list"><code><a href="class-CPersistentObject.html#_">CPersistentObject::_PrecommitIdentify</a></code></div>
@@ -659,7 +701,7 @@ it will have been set here.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#__PostcommitRelated">#</a>
-		<code><a href="source-class-COntologyNode.html#611" title="Go to source code">_PostcommitRelated</a>( <span>reference <var>&amp; $theConnection</var></span>, <span>reference <var>&amp; $theModifiers</var></span> )</code>
+		<code><a href="source-class-COntologyNode.html#628" title="Go to source code">_PostcommitRelated</a>( <span>reference <var>&amp; $theConnection</var></span>, <span>reference <var>&amp; $theModifiers</var></span> )</code>
 
 		<div class="description short">
 			
@@ -686,18 +728,17 @@ remove the element when deleting.</p>
 				</dl></div>
 
 
-				<h4>Throws</h4>
-				<div class="list">
-					<code><code><a href="class-Exception.html">Exception</a></code></code><br />
-				</div>
 
 				<h4>See</h4>
 				<div class="list">
-						kFLAG_PERSIST_WRITE_MASK<br />
+						kOFFSET_REFS_NODE kOFFSET_TERM<br />
+						kFLAG_PERSIST_INSERT kFLAG_PERSIST_REPLACE kFLAG_PERSIST_DELETE<br />
+						kFLAG_PERSIST_MODIFY kFLAG_MODIFY_ADDSET kFLAG_MODIFY_PULL<br />
 				</div>
 				<h4>Uses</h4>
 				<div class="list">
-						<code><code><a href="class-CStatusDocument.html#_">CStatusDocument::_IsInited()</a></code></code> <br />
+						<code><code><a href="class-CStatusDocument.html#_">CStatusDocument::_IsCommitted()</a></code></code> <br />
+						<code><code><a href="class-COntologyNode.html#_">COntologyNode::ResolveTermContainer()</a></code></code> <br />
 				</div>
 
 				<h4>Overrides</h4>
@@ -717,7 +758,7 @@ remove the element when deleting.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#__PostcommitCleanup">#</a>
-		<code><a href="source-class-COntologyNode.html#699" title="Go to source code">_PostcommitCleanup</a>( <span>reference <var>&amp; $theConnection</var></span>, <span>reference <var>&amp; $theModifiers</var></span> )</code>
+		<code><a href="source-class-COntologyNode.html#717" title="Go to source code">_PostcommitCleanup</a>( <span>reference <var>&amp; $theConnection</var></span>, <span>reference <var>&amp; $theModifiers</var></span> )</code>
 
 		<div class="description short">
 			

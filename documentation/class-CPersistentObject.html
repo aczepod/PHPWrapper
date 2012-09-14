@@ -534,7 +534,7 @@ see the <code><a href="class-CPersistentDocument.html#_">CPersistentDocument::_P
 
 				<h4>Used by</h4>
 				<div class="list">
-						<code><code><a href="class-CPersistentObject.html#_">CPersistentObject::_AssertClass()</a></code></code> <br />
+						<code><code><a href="class-CPersistentObject.html#_">CPersistentObject::_PrecommitIdentify()</a></code></code> <br />
 				</div>
 
 
@@ -611,14 +611,9 @@ identifier, so we let the container set the identifier, and return
 				</div>
 
 
-				<h4>Uses</h4>
-				<div class="list">
-						<code><code><a href="class-CPersistentObject.html#_">CPersistentObject::_index()</a></code></code> <br />
-				</div>
 				<h4>Used by</h4>
 				<div class="list">
-						<code><code><a href="class-CPersistentObject.html#_">CPersistentObject::_index()</a></code></code> <br />
-						<code><code><a href="class-CPersistentObject.html#_">CPersistentObject::_AssertClass()</a></code></code> <br />
+						<code><code><a href="class-CPersistentObject.html#_">CPersistentObject::_PrecommitIdentify()</a></code></code> <br />
 				</div>
 
 
@@ -636,7 +631,7 @@ identifier, so we let the container set the identifier, and return
 
 		<td class="name"><div>
 		<a class="anchor" href="#__Preset">#</a>
-		<code><a href="source-class-CPersistentObject.html#437" title="Go to source code">_Preset</a>( <span>reference <var>&amp; $theOffset</var></span>, <span>reference <var>&amp; $theValue</var></span> )</code>
+		<code><a href="source-class-CPersistentObject.html#435" title="Go to source code">_Preset</a>( <span>reference <var>&amp; $theOffset</var></span>, <span>reference <var>&amp; $theValue</var></span> )</code>
 
 		<div class="description short">
 			
@@ -694,7 +689,7 @@ identifier.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#__Preunset">#</a>
-		<code><a href="source-class-CPersistentObject.html#480" title="Go to source code">_Preunset</a>( <span>reference <var>&amp; $theOffset</var></span> )</code>
+		<code><a href="source-class-CPersistentObject.html#478" title="Go to source code">_Preunset</a>( <span>reference <var>&amp; $theOffset</var></span> )</code>
 
 		<div class="description short">
 			
@@ -750,7 +745,7 @@ identifier.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#__PrecommitValidate">#</a>
-		<code><a href="source-class-CPersistentObject.html#531" title="Go to source code">_PrecommitValidate</a>( <span>reference <var>&amp; $theConnection</var></span>, <span>reference <var>&amp; $theModifiers</var></span> )</code>
+		<code><a href="source-class-CPersistentObject.html#529" title="Go to source code">_PrecommitValidate</a>( <span>reference <var>&amp; $theConnection</var></span>, <span>reference <var>&amp; $theModifiers</var></span> )</code>
 
 		<div class="description short">
 			
@@ -783,7 +778,7 @@ kOFFSET_NID, if the operation involves updating.</p>
 
 				<h4>See</h4>
 				<div class="list">
-						kFLAG_PERSIST_UPDATE kOFFSET_NID<br />
+						kFLAG_PERSIST_MASK kFLAG_PERSIST_UPDATE kOFFSET_NID<br />
 				</div>
 
 				<h4>Overrides</h4>
@@ -803,7 +798,7 @@ kOFFSET_NID, if the operation involves updating.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#__PrecommitRelated">#</a>
-		<code><a href="source-class-CPersistentObject.html#576" title="Go to source code">_PrecommitRelated</a>( <span>reference <var>&amp; $theConnection</var></span>, <span>reference <var>&amp; $theModifiers</var></span> )</code>
+		<code><a href="source-class-CPersistentObject.html#574" title="Go to source code">_PrecommitRelated</a>( <span>reference <var>&amp; $theConnection</var></span>, <span>reference <var>&amp; $theModifiers</var></span> )</code>
 
 		<div class="description short">
 			
@@ -831,6 +826,11 @@ replacing or updating.</p>
 
 
 
+				<h4>See</h4>
+				<div class="list">
+						kOFFSET_CLASS<br />
+						kFLAG_PERSIST_INSERT kFLAG_PERSIST_REPLACE kFLAG_PERSIST_UPDATE<br />
+				</div>
 
 				<h4>Overrides</h4>
 				<div class="list"><code><a href="class-CPersistentDocument.html#_">CPersistentDocument::_PrecommitRelated</a></code></div>
@@ -849,7 +849,7 @@ replacing or updating.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#__PrecommitIdentify">#</a>
-		<code><a href="source-class-CPersistentObject.html#610" title="Go to source code">_PrecommitIdentify</a>( <span>reference <var>&amp; $theConnection</var></span>, <span>reference <var>&amp; $theModifiers</var></span> )</code>
+		<code><a href="source-class-CPersistentObject.html#611" title="Go to source code">_PrecommitIdentify</a>( <span>reference <var>&amp; $theConnection</var></span>, <span>reference <var>&amp; $theModifiers</var></span> )</code>
 
 		<div class="description short">
 			
@@ -891,6 +891,17 @@ called.</p>
 
 
 
+				<h4>See</h4>
+				<div class="list">
+						kOFFSET_GID kOFFSET_NID<br />
+						kFLAG_PERSIST_INSERT kFLAG_PERSIST_REPLACE<br />
+				</div>
+				<h4>Uses</h4>
+				<div class="list">
+						<code><code><a href="class-CPersistentObject.html#_">CPersistentObject::_id()</a></code></code> <br />
+						<code><code><a href="class-CPersistentObject.html#_">CPersistentObject::_index()</a></code></code> <br />
+						<code><code><a href="class-CPersistentDocument.html#_">CPersistentDocument::ResolveContainer()</a></code></code> <br />
+				</div>
 
 				<h4>Overrides</h4>
 				<div class="list"><code><a href="class-CPersistentDocument.html#_">CPersistentDocument::_PrecommitIdentify</a></code></div>
@@ -909,7 +920,7 @@ called.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#__AssertClass">#</a>
-		<code><a href="source-class-CPersistentObject.html#698" title="Go to source code">_AssertClass</a>( <span>reference <var>&amp; $theValue</var></span>, <span>string <var>$theBaseClass</var></span>, <span>string <var>$theDerivedClass</var> = <span class="php-keyword1">NULL</span></span>, <span>boolean <var>$doThrow</var> = <span class="php-keyword1">FALSE</span> </span> )</code>
+		<code><a href="source-class-CPersistentObject.html#706" title="Go to source code">_AssertClass</a>( <span>reference <var>&amp; $theValue</var></span>, <span>string <var>$theBaseClass</var></span>, <span>string <var>$theDerivedClass</var> = <span class="php-keyword1">NULL</span></span>, <span>boolean <var>$doThrow</var> = <span class="php-keyword1">FALSE</span> </span> )</code>
 
 		<div class="description short">
 			
@@ -956,17 +967,11 @@ value is an instance of the base class.</p>
 an object.<br />
 				</div>
 
+				<h4>Throws</h4>
+				<div class="list">
+					<code><code><a href="class-Exception.html">Exception</a></code></code><br />
+				</div>
 
-				<h4>See</h4>
-				<div class="list">
-						kOFFSET_NID kOFFSET_GID kOFFSET_CLASS<br />
-				</div>
-				<h4>Uses</h4>
-				<div class="list">
-						<code><code><a href="class-CPersistentObject.html#_">CPersistentObject::_id()</a></code></code> <br />
-						<code><code><a href="class-CPersistentObject.html#_">CPersistentObject::_index()</a></code></code> <br />
-						_ResolveContainer()<br />
-				</div>
 
 
 		</div>

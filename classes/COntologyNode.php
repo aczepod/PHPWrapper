@@ -171,6 +171,11 @@ class COntologyNode extends CNode
 	 * @access public
 	 * @return COntologyTerm		Term object or <tt>NULL</tt>.
 	 *
+	 * @throws Exception
+	 *
+	 * @uses NewObject()
+	 * @uses ResolveTermContainer()
+	 *
 	 * @see kOFFSET_TERM
 	 */
 	public function LoadTerm( CConnection $theConnection, $doReload = FALSE )
@@ -242,6 +247,8 @@ class COntologyNode extends CNode
 	 *
 	 * @static
 	 * @return CContainer			The nodes container.
+	 *
+	 * @see kCONTAINER_NODE_NAME
 	 */
 	static function DefaultContainer( CDatabase $theDatabase )
 	{
@@ -441,7 +448,7 @@ class COntologyNode extends CNode
 	 *
 	 * @uses _IsCommitted()
 	 *
-	 * @see kOFFSET_TERM
+	 * @see kOFFSET_REFS_TAG kOFFSET_TERM
 	 */
 	protected function _Preunset( &$theOffset )
 	{
@@ -495,6 +502,11 @@ class COntologyNode extends CNode
 	 * @param reference			   &$theModifiers		Commit options.
 	 *
 	 * @access protected
+	 *
+	 * @uses LoadTerm()
+	 * @uses ResolveTermContainer()
+	 *
+	 * @see kOFFSET_TERM
 	 */
 	protected function _PrecommitRelated( &$theConnection, &$theModifiers )
 	{
@@ -566,6 +578,11 @@ class COntologyNode extends CNode
 	 * @param reference			   &$theModifiers		Commit options.
 	 *
 	 * @access protected
+	 *
+	 * @uses ResolveTermContainer()
+	 *
+	 * @see kOFFSET_NID kSEQUENCE_KEY_NODE
+	 * @see kFLAG_PERSIST_INSERT kFLAG_PERSIST_REPLACE
 	 */
 	protected function _PrecommitIdentify( &$theConnection, &$theModifiers )
 	{
@@ -620,11 +637,12 @@ class COntologyNode extends CNode
 	 *
 	 * @access protected
 	 *
-	 * @throws Exception
+	 * @uses _IsCommitted()
+	 * @uses ResolveTermContainer()
 	 *
-	 * @uses _IsInited()
-	 *
-	 * @see kFLAG_PERSIST_WRITE_MASK
+	 * @see kOFFSET_REFS_NODE kOFFSET_TERM
+	 * @see kFLAG_PERSIST_INSERT kFLAG_PERSIST_REPLACE kFLAG_PERSIST_DELETE
+	 * @see kFLAG_PERSIST_MODIFY kFLAG_MODIFY_ADDSET kFLAG_MODIFY_PULL
 	 */
 	protected function _PostcommitRelated( &$theConnection, &$theModifiers )
 	{

@@ -38,7 +38,7 @@ require_once( kPATH_MYWRAPPER_LIBRARY_CLASS."/CPersistentObject.php" );
  *
  * An edge is an element of a tree or graph that connects two vertices through a predicate,
  * it represents a subject/predicate/object triplet in which the direction of the relation
- * is from the subject to the object.
+ * flows from the subject towards the object.
  *
  * Objects of this class feature three main properties:
  *
@@ -50,14 +50,15 @@ require_once( kPATH_MYWRAPPER_LIBRARY_CLASS."/CPersistentObject.php" );
  *		relationship.
  * </ul>
  *
- * Objects of this class are {@link _Isinited()} if all three properties are set, the
+ * Objects of this class are {@link _IsInited()} if all three properties are set, the
  * nature of these elements is defined in derived classes.
  *
  * The unique identifier of instances of this class is the combination of the above three
  * elements, no two edges can connect the same vertices in the same direction and with the
  * same predicate. This value is computed and stored in the global identifier,
  * {@link kOFFSET_GID}, and its hash is stored in the unique identifier,
- * {@link kOFFSET_UID}.
+ * {@link kOFFSET_UID}. Because of this workflow, these three values must be convertable to
+ * string.
  *
  * The class features member accessor methods for the default offsets:
  *
@@ -220,38 +221,77 @@ class CEdge extends CPersistentObject
 
 /*=======================================================================================
  *																						*
- *								STATIC CONTAINER INTERFACE								*
+ *							PROTECTED IDENTIFICATION INTERFACE							*
  *																						*
  *======================================================================================*/
 
 
 	 
 	/*===================================================================================
-	 *	Container																		*
+	 *	_index																			*
 	 *==================================================================================*/
 
 	/**
-	 * <h4>Return the edges container</h4>
+	 * <h4>Return the object's global unique identifier</h4>
 	 *
-	 * This static method should be used to get the edges container, it expects a
-	 * {@link CDatabase} derived object and will return a {@link CContainer} derived
-	 * object.
+	 * The edge class defines the global identifier, {@link kOFFSET_GID}, as the
+	 * concatenation of the subject, predicate and object offsets converted to string.
 	 *
-	 * The container will be created or fetched from the provided database using the
-	 * {@link kCONTAINER_EDGE_NAME} name.
+	 * In this method we check whether all three are present, or we raise an exception.
 	 *
-	 * @param CDatabase				$theDatabase		Database object.
+	 * @param CConnection			$theConnection		Server, database or container.
+	 * @param bitfield				$theModifiers		Commit options.
 	 *
-	 * @static
-	 * @return CContainer			The nodes container.
+	 * @access protected
+	 * @return string|NULL			The object's global unique identifier.
+	 *
+	 * @see kOFFSET_LID kOFFSET_NAMESPACE kTOKEN_NAMESPACE_SEPARATOR
 	 */
-	static function Container( CDatabase $theDatabase )
+	protected function _index( CConnection $theConnection, $theModifiers )
 	{
-		return $theDatabase->Container( kCONTAINER_EDGE_NAME );						// ==>
-	
-	} // Container.
-
+		//
+		// Init global identifier.
+		//
+		$identifier = Array();
 		
+		//
+		// Get subject.
+		//
+		$tmp = (string) $this->offsetGet( kOFFSET_VERTEX_SUBJECT );
+		if( $tmp !== NULL )
+			$identifier[] = $tmp;
+		else
+			throw new Exception
+				( "Missing subject vertex",
+				  kERROR_STATE );												// !@! ==>
+		
+		//
+		// Get predicate.
+		//
+		$tmp = (string) $this->offsetGet( kOFFSET_PREDICATE );
+		if( $tmp !== NULL )
+			$identifier[] = $tmp;
+		else
+			throw new Exception
+				( "Missing predicate",
+				  kERROR_STATE );												// !@! ==>
+		
+		//
+		// Get object.
+		//
+		$tmp = (string) $this->offsetGet( kOFFSET_VERTEX_OBJECT );
+		if( $tmp !== NULL )
+			$identifier[] = $tmp;
+		else
+			throw new Exception
+				( "Missing object vertex",
+				  kERROR_STATE );												// !@! ==>
+		
+		return implode( kTOKEN_INDEX_SEPARATOR, $identifier );						// ==>
+	
+	} // _index.
+		
+
 
 /*=======================================================================================
  *																						*
@@ -259,50 +299,6 @@ class CEdge extends CPersistentObject
  *																						*
  *======================================================================================*/
 
-
-	 
-	/*===================================================================================
-	 *	_Preset																			*
-	 *==================================================================================*/
-
-	/**
-	 * <h4>Handle offset before setting it</h4>
-	 *
-	 * In this class we prevent the modification of the {@link kOFFSET_VERTEX_SUBJECT},
-	 * {@link kOFFSET_PREDICATE} and {@link kOFFSET_VERTEX_OBJECT} offsets if the object is
-	 * committed.
-	 *
-	 * @param reference			   &$theOffset			Offset.
-	 * @param reference			   &$theValue			Value to set at offset.
-	 *
-	 * @access protected
-	 *
-	 * @throws Exception
-	 *
-	 * @uses _IsCommitted()
-	 *
-	 * @see kOFFSET_VERTEX_SUBJECT kOFFSET_PREDICATE kOFFSET_VERTEX_OBJECT
-	 */
-	protected function _Preset( &$theOffset, &$theValue )
-	{
-		//
-		// Intercept identifiers.
-		//
-		$offsets = array( kOFFSET_VERTEX_SUBJECT,
-						  kOFFSET_PREDICATE,
-						  kOFFSET_VERTEX_OBJECT );
-		if( $this->_IsCommitted()
-		 && in_array( $theOffset, $offsets ) )
-			throw new Exception
-				( "The object is committed, you cannot modify the [$theOffset] offset",
-				  kERROR_LOCKED );												// !@! ==>
-		
-		//
-		// Call parent method.
-		//
-		parent::_Preset( $theOffset, $theValue );
-	
-	} // _Preset.
 
 	 
 	/*===================================================================================
@@ -329,16 +325,27 @@ class CEdge extends CPersistentObject
 	protected function _Preunset( &$theOffset )
 	{
 		//
-		// Intercept identifiers.
+		// Handle committed state.
 		//
-		$offsets = array( kOFFSET_VERTEX_SUBJECT,
-						  kOFFSET_PREDICATE,
-						  kOFFSET_VERTEX_OBJECT );
-		if( $this->_IsCommitted()
-		 && in_array( $theOffset, $offsets ) )
-			throw new Exception
-				( "The object is committed, you cannot modify the [$theOffset] offset",
-				  kERROR_LOCKED );												// !@! ==>
+		if( $this->_IsCommitted() )
+		{
+			//
+			// Load locked offsets.
+			//
+			$offsets = array( kOFFSET_VERTEX_SUBJECT,
+							  kOFFSET_PREDICATE,
+							  kOFFSET_VERTEX_OBJECT );
+			
+			//
+			// Check offsets.
+			//
+			if( in_array( $theOffset, $offsets ) )
+				throw new Exception
+					( "You cannot delete the [$theOffset] offset: "
+					 ."the object is committed",
+					  kERROR_LOCKED );											// !@! ==>
+		
+		} // Object is committed.
 		
 		//
 		// Call parent method.
@@ -346,118 +353,6 @@ class CEdge extends CPersistentObject
 		parent::_Preunset( $theOffset );
 	
 	} // _Preunset.
-		
-
-
-/*=======================================================================================
- *																						*
- *							PROTECTED PERSISTENCE INTERFACE								*
- *																						*
- *======================================================================================*/
-
-
-	 
-	/*===================================================================================
-	 *	_Precommit																		*
-	 *==================================================================================*/
-
-	/**
-	 * <h4>Prepare the object before committing</h4>
-	 *
-	 * In this class we set the object's native identifier to a sequence number, we do this
-	 * just before inserting the object: that is, if the object does not have the native
-	 * identifier. The default sequence key for edges is {@link kSEQUENCE_KEY_EDGE}.
-	 *
-	 * We also generate the object's global identifier, {@link kOFFSET_GID}, by
-	 * concatenating the global identifiers of the subject ({@link kOFFSET_VERTEX_SUBJECT}),
-	 * predicate ({@link kOFFSET_PREDICATE}) and object ({@link kOFFSET_VERTEX_OBJECT})
-	 * offsets, all separated by the {@link kTOKEN_INDEX_SEPARATOR} token. The resulting
-	 * string will be hashed in {@link kOFFSET_UID} and used to identify duplicates.
-	 *
-	 * Note that we set the sequence as the last operation to allow eventual exceptions
-	 * before issuing the sequence.
-	 *
-	 * @param CContainer			$theContainer		Container.
-	 * @param bitfield				$theModifiers		Commit options.
-	 *
-	 * @access protected
-	 */
-	protected function _Precommit( CContainer $theContainer,
-											  $theModifiers = kFLAG_DEFAULT )
-	{
-		//
-		// Call parent method.
-		//
-		parent::_Precommit( $theContainer, $theModifiers );
-		
-		//
-		// Check identifier.
-		//
-		if( ! $this->offsetExists( kOFFSET_NID ) )
-		{
-			//
-			// Set native identifier.
-			//
-			$this->offsetSet(
-				kOFFSET_NID, $theContainer->NextSequence(
-					kSEQUENCE_KEY_EDGE, TRUE ) );
-			
-			//
-			// Init global identifier.
-			//
-			$identifier = Array();
-			
-			//
-			// Get subject.
-			//
-			$object = $this->NewObject( $theContainer,
-										$this->offsetGet( kOFFSET_VERTEX_SUBJECT ) );
-			if( $object !== NULL )
-				$identifier[] = $object[ kOFFSET_GID ];
-			else
-				throw new Exception
-					( "Cannot commit edge: subject vertex not found",
-					  kERROR_STATE );											// !@! ==>
-			
-			//
-			// Get predicate.
-			//
-			$object = $this->NewObject( $theContainer,
-										$this->offsetGet( kOFFSET_PREDICATE ) );
-			if( $object !== NULL )
-				$identifier[] = $object[ kOFFSET_GID ];
-			else
-				throw new Exception
-					( "Cannot commit edge: predicate not found",
-					  kERROR_STATE );											// !@! ==>
-			
-			//
-			// Get object.
-			//
-			$object = $this->NewObject( $theContainer,
-										$this->offsetGet( kOFFSET_VERTEX_OBJECT ) );
-			if( $object !== NULL )
-				$identifier[] = $object[ kOFFSET_GID ];
-			else
-				throw new Exception
-					( "Cannot commit edge: object vertex not found",
-					  kERROR_STATE );											// !@! ==>
-			
-			//
-			// Set global identifier.
-			//
-			$id = implode( kTOKEN_INDEX_SEPARATOR, $identifier );
-			$this->offsetSet( kOFFSET_GID, $id );
-			
-			//
-			// Set unique identifier.
-			//
-			$this->offsetSet( kOFFSET_UID,
-							  $theContainer->ConvertBinary( md5( $id, TRUE ) ) );
-		
-		} // Not yet committed.
-		
-	} // _PreCommit.
 		
 
 

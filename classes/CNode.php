@@ -264,9 +264,7 @@ class CNode extends CPersistentObject
 	 *
 	 * @throws Exception
 	 *
-	 * @uses _IsCommitted()
-	 *
-	 * @see kOFFSET_TERM
+	 * @see kOFFSET_KIND
 	 */
 	protected function _Preset( &$theOffset, &$theValue )
 	{

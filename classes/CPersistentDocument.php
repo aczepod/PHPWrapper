@@ -230,13 +230,10 @@ class CPersistentDocument extends CStatusDocument
 	 * @access public
 	 * @return mixed				The object's native identifier.
 	 *
-	 * @throws Exception
-	 *
 	 * @uses _IsDirty()
 	 * @uses _IsCommitted()
-	 * @uses DefaultDatabase()
-	 * @uses DefaultContainer()
 	 * @uses _Precommit()
+	 * @uses ResolveContainer()
 	 * @uses _Postcommit()
 	 *
 	 * @see kFLAG_PERSIST_INSERT
@@ -313,9 +310,8 @@ class CPersistentDocument extends CStatusDocument
 	 *
 	 * @uses _IsDirty()
 	 * @uses _IsCommitted()
-	 * @uses DefaultDatabase()
-	 * @uses DefaultContainer()
 	 * @uses _Precommit()
+	 * @uses ResolveContainer()
 	 * @uses _Postcommit()
 	 *
 	 * @see kFLAG_PERSIST_UPDATE
@@ -397,9 +393,8 @@ class CPersistentDocument extends CStatusDocument
 	 *
 	 * @uses _IsDirty()
 	 * @uses _IsCommitted()
-	 * @uses DefaultDatabase()
-	 * @uses DefaultContainer()
 	 * @uses _Precommit()
+	 * @uses ResolveContainer()
 	 * @uses _Postcommit()
 	 *
 	 * @see kFLAG_PERSIST_REPLACE
@@ -480,8 +475,7 @@ class CPersistentDocument extends CStatusDocument
 	 *
 	 * @throws Exception
 	 *
-	 * @uses DefaultDatabase()
-	 * @uses DefaultContainer()
+	 * @uses ResolveContainer()
 	 * @uses _Postcommit()
 	 *
 	 * @see kOFFSET_NID
@@ -559,8 +553,7 @@ class CPersistentDocument extends CStatusDocument
 	 * @access public
 	 * @return boolean				<tt>TRUE</tt> deleted, <tt>FALSE</tt> not found.
 	 *
-	 * @uses DefaultDatabase()
-	 * @uses DefaultContainer()
+	 * @uses ResolveContainer()
 	 * @uses _Postcommit()
 	 */
 	public function Delete( CConnection $theConnection )
@@ -1289,12 +1282,6 @@ class CPersistentDocument extends CStatusDocument
 	 * @param reference			   &$theModifiers		Commit options.
 	 *
 	 * @access protected
-	 *
-	 * @throws Exception
-	 *
-	 * @uses _IsInited()
-	 *
-	 * @see kFLAG_PERSIST_WRITE_MASK
 	 */
 	protected function _PostcommitRelated( &$theConnection, &$theModifiers )			   {}
 
@@ -1340,6 +1327,11 @@ class CPersistentDocument extends CStatusDocument
 	 * @param reference			   &$theModifiers		Commit options.
 	 *
 	 * @access protected
+	 *
+	 * @uses _IsDirty()
+	 * @uses _IsCommitted()
+	 *
+	 * @see kFLAG_PERSIST_MASK kFLAG_PERSIST_COMMIT_MASK kFLAG_PERSIST_DELETE
 	 */
 	protected function _PostcommitStatus( &$theConnection, &$theModifiers )
 	{

@@ -207,7 +207,7 @@ class CTerm extends CPersistentObject
 	 * @access protected
 	 * @return string|NULL			The object's global unique identifier.
 	 *
-	 * @see kOFFSET_LID kOFFSET_NAMESPACE
+	 * @see kOFFSET_LID kOFFSET_NAMESPACE kTOKEN_NAMESPACE_SEPARATOR
 	 */
 	protected function _index( CConnection $theConnection, $theModifiers )
 	{
@@ -270,7 +270,7 @@ class CTerm extends CPersistentObject
 	 *
 	 * @uses _IsCommitted()
 	 *
-	 * @see kOFFSET_NID kOFFSET_GID kOFFSET_LID
+	 * @see kOFFSET_NAMESPACE kOFFSET_LID
 	 */
 	protected function _Preset( &$theOffset, &$theValue )
 	{
@@ -315,7 +315,7 @@ class CTerm extends CPersistentObject
 	 *
 	 * @uses _IsCommitted()
 	 *
-	 * @see kOFFSET_NID kOFFSET_GID kOFFSET_LID
+	 * @see kOFFSET_NAMESPACE kOFFSET_LID
 	 */
 	protected function _Preunset( &$theOffset )
 	{

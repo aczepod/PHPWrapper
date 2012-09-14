@@ -411,8 +411,6 @@ class CPersistentObject extends CPersistentDocument
 	 *
 	 * @access protected
 	 * @return string|NULL			The object's global unique identifier.
-	 *
-	 * @uses _index()
 	 */
 	protected function _index( CConnection $theConnection, $theModifiers )
 	{
@@ -541,7 +539,7 @@ class CPersistentObject extends CPersistentDocument
 	 *
 	 * @throws Exception
 	 *
-	 * @see kFLAG_PERSIST_UPDATE kOFFSET_NID
+	 * @see kFLAG_PERSIST_MASK kFLAG_PERSIST_UPDATE kOFFSET_NID
 	 */
 	protected function _PrecommitValidate( &$theConnection, &$theModifiers )
 	{
@@ -584,6 +582,9 @@ class CPersistentObject extends CPersistentDocument
 	 * @param reference			   &$theModifiers		Commit options.
 	 *
 	 * @access protected
+	 *
+	 * @see kOFFSET_CLASS
+	 * @see kFLAG_PERSIST_INSERT kFLAG_PERSIST_REPLACE kFLAG_PERSIST_UPDATE
 	 */
 	protected function _PrecommitRelated( &$theConnection, &$theModifiers )
 	{
@@ -633,6 +634,13 @@ class CPersistentObject extends CPersistentDocument
 	 * @param reference			   &$theModifiers		Commit options.
 	 *
 	 * @access protected
+	 *
+	 * @uses _id()
+	 * @uses _index()
+	 * @uses ResolveContainer()
+	 *
+	 * @see kOFFSET_GID kOFFSET_NID
+	 * @see kFLAG_PERSIST_INSERT kFLAG_PERSIST_REPLACE
 	 */
 	protected function _PrecommitIdentify( &$theConnection, &$theModifiers )
 	{
@@ -721,11 +729,7 @@ class CPersistentObject extends CPersistentDocument
 	 * @return mixed				<tt>TRUE</tt> correct object,; <tt>NULL</tt> bot an
 	 *								object; <tt>FALSE</tt> not an object.
 	 *
-	 * @uses _id()
-	 * @uses _index()
-	 * @uses _ResolveContainer()
-	 *
-	 * @see kOFFSET_NID kOFFSET_GID kOFFSET_CLASS
+	 * @throws Exception
 	 */
 	protected function _AssertClass( &$theValue, $theBaseClass, $theDerivedClass = NULL,
 																$doThrow = FALSE )
