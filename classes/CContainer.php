@@ -261,15 +261,16 @@ abstract class CContainer extends CConnection
 	 * <h4>Check if object exists in container</h4>
 	 *
 	 * This method can be used to check if an object exists in the current container, the
-	 * method expects the identifier and will return <tt>TRUE</tt> if found and
-	 * <tt>FALSE</tt> if not.
+	 * method expects an identifier and an optional offset, it will return <tt>TRUE</tt> if
+	 * found and <tt>FALSE</tt> if not.
 	 *
 	 * @param mixed					$theIdentifier		Identifier.
+	 * @param string				$theOffset			Offset.
 	 *
 	 * @access public
 	 * @return boolean				<tt>TRUE</tt> exists.
 	 */
-	abstract public function CheckObject( $theIdentifier );
+	abstract public function CheckObject( $theIdentifier, $theOffset = NULL );
 
 		
 

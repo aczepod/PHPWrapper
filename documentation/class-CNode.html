@@ -7,7 +7,7 @@
 	<title>Class CNode | MyWrapper Reference Documentation</title>
 
 	<script type="text/javascript" src="resources/combined.js?496895167"></script>
-	<script type="text/javascript" src="elementlist.js?3105881984"></script>
+	<script type="text/javascript" src="elementlist.js?779912626"></script>
 	<link rel="stylesheet" type="text/css" media="all" href="resources/style.css?1567499433" />
 
 </head>
@@ -216,12 +216,56 @@ rule.</p>
 				<b>Author:</b>
 				Milko A. Škofič &lt;<a
 href="mailto:m.skofic&#64;cgiar.org">m.skofic&#64;<!---->cgiar.org</a>&gt;<br />
-		<b>Located at</b> <a href="source-class-CNode.html#36" title="Go to source code">CNode.php</a><br />
+		<b>Located at</b> <a href="source-class-CNode.html#43" title="Go to source code">CNode.php</a><br />
 	</div>
 
 
 	<table class="summary" id="methods">
 	<caption>Methods summary</caption>
+	<tr data-order="__toString" id="___toString">
+
+		<td class="attributes"><code>
+			 public 
+			string
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#___toString">#</a>
+		<code><a href="source-class-CNode.html#101" title="Go to source code">__toString</a>( )</code>
+
+		<div class="description short">
+			
+<h4>Return object name</h4>
+
+		</div>
+
+		<div class="description detailed hidden">
+			
+<h4>Return object name</h4>
+
+<p>This method should return the current object's name which should represent
+the unique identifier of the object.</p>
+
+<p>By default we return the string representation of the term, kOFFSET_TERM.</p>
+
+
+
+
+				<h4>Returns</h4>
+				<div class="list">
+					<code>string</code><br>The connection name.<br />
+				</div>
+
+
+
+				<h4>Overrides</h4>
+				<div class="list"><code><a href="class-CPersistentObject.html#_">CPersistentObject::__toString</a></code></div>
+
+		</div>
+		</div></td>
+	</tr>
 	<tr data-order="Term" id="_Term">
 
 		<td class="attributes"><code>
@@ -233,7 +277,7 @@ href="mailto:m.skofic&#64;cgiar.org">m.skofic&#64;<!---->cgiar.org</a>&gt;<br />
 
 		<td class="name"><div>
 		<a class="anchor" href="#_Term">#</a>
-		<code><a href="source-class-CNode.html#94" title="Go to source code">Term</a>( <span>mixed <var>$theValue</var> = <span class="php-keyword1">NULL</span></span>, <span>boolean <var>$getOld</var> = <span class="php-keyword1">FALSE</span> </span> )</code>
+		<code><a href="source-class-CNode.html#141" title="Go to source code">Term</a>( <span>mixed <var>$theValue</var> = <span class="php-keyword1">NULL</span></span>, <span>boolean <var>$getOld</var> = <span class="php-keyword1">FALSE</span> </span> )</code>
 
 		<div class="description short">
 			
@@ -303,7 +347,7 @@ the currently set value.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#_Kind">#</a>
-		<code><a href="source-class-CNode.html#134" title="Go to source code">Kind</a>( <span>mixed <var>$theValue</var> = <span class="php-keyword1">NULL</span></span>, <span>mixed <var>$theOperation</var> = <span class="php-keyword1">NULL</span></span>, <span>boolean <var>$getOld</var> = <span class="php-keyword1">FALSE</span> </span> )</code>
+		<code><a href="source-class-CNode.html#181" title="Go to source code">Kind</a>( <span>mixed <var>$theValue</var> = <span class="php-keyword1">NULL</span></span>, <span>mixed <var>$theOperation</var> = <span class="php-keyword1">NULL</span></span>, <span>boolean <var>$getOld</var> = <span class="php-keyword1">FALSE</span> </span> )</code>
 
 		<div class="description short">
 			
@@ -414,7 +458,7 @@ that can be managed with the following parameters:</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#_Type">#</a>
-		<code><a href="source-class-CNode.html#205" title="Go to source code">Type</a>( <span>mixed <var>$theValue</var> = <span class="php-keyword1">NULL</span></span>, <span>boolean <var>$getOld</var> = <span class="php-keyword1">FALSE</span> </span> )</code>
+		<code><a href="source-class-CNode.html#252" title="Go to source code">Type</a>( <span>mixed <var>$theValue</var> = <span class="php-keyword1">NULL</span></span>, <span>boolean <var>$getOld</var> = <span class="php-keyword1">FALSE</span> </span> )</code>
 
 		<div class="description short">
 			
@@ -474,6 +518,74 @@ the currently set value.</p>
 		</div>
 		</div></td>
 	</tr>
+	<tr data-order="RelateTo" id="_RelateTo">
+
+		<td class="attributes"><code>
+			 public 
+			<code><a href="class-CEdge.html">CEdge</a></code>
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_RelateTo">#</a>
+		<code><a href="source-class-CNode.html#301" title="Go to source code">RelateTo</a>( <span>mixed <var>$theObject</var></span>, <span>mixed <var>$thePredicate</var></span> )</code>
+
+		<div class="description short">
+			
+<h4>Create an outgoing edge</h4>
+
+		</div>
+
+		<div class="description detailed hidden">
+			
+<h4>Create an outgoing edge</h4>
+
+<p>This method can be used to instantiate an outgoing edge by providing the
+object vertex node and edge predicate. The subject vertex is represented by the
+current node.</p>
+
+<p>Both the predicate and the object vertex node can be any type, the method
+expects the following parameters:</p>
+
+<ul>
+	<li><tt>$theObject</tt>: The edge's object vertex.</li>
+
+	<li><tt>$thePredicate</tt>: The edge's predicate.</li>
+</ul>
+
+<p>The method will return an instance of the <code><a href="class-CEdge.html">CEdge</a></code> class, if any error
+occurs, the method will raise an exception.</p>
+
+
+
+				<h4>Parameters</h4>
+				<div class="list"><dl>
+					<dt><var>$theObject</var></dt>
+					<dd><code>mixed</code><br> Object vertex.</dd>
+					<dt><var>$thePredicate</var></dt>
+					<dd><code>mixed</code><br> Relationship predicate.</dd>
+				</dl></div>
+
+				<h4>Returns</h4>
+				<div class="list">
+					<code><code><a href="class-CEdge.html">CEdge</a></code></code><br>Relationship edge object.<br />
+				</div>
+
+
+				<h4>See</h4>
+				<div class="list">
+						kOFFSET_TERM<br />
+				</div>
+				<h4>Uses</h4>
+				<div class="list">
+						<code><code><a href="function-ManageOffset.html">ManageOffset()</a></code></code> <br />
+				</div>
+
+
+		</div>
+		</div></td>
+	</tr>
 	<tr data-order="_Preset" id="__Preset">
 
 		<td class="attributes"><code>
@@ -485,7 +597,7 @@ the currently set value.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#__Preset">#</a>
-		<code><a href="source-class-CNode.html#254" title="Go to source code">_Preset</a>( <span>reference <var>&amp; $theOffset</var></span>, <span>reference <var>&amp; $theValue</var></span> )</code>
+		<code><a href="source-class-CNode.html#369" title="Go to source code">_Preset</a>( <span>reference <var>&amp; $theOffset</var></span>, <span>reference <var>&amp; $theValue</var></span> )</code>
 
 		<div class="description short">
 			
@@ -538,7 +650,7 @@ ArrayObject instances are not counted as an array.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#__Ready">#</a>
-		<code><a href="source-class-CNode.html#303" title="Go to source code">_Ready</a>( )</code>
+		<code><a href="source-class-CNode.html#418" title="Go to source code">_Ready</a>( )</code>
 
 		<div class="description short">
 			
@@ -587,7 +699,6 @@ absence of the kOFFSET_TERM offset.</p>
 			<a href="class-CPersistentObject.html#_">_PrecommitRelated()</a>, 
 			<a href="class-CPersistentObject.html#_">_PrecommitValidate()</a>, 
 			<a href="class-CPersistentObject.html#_">_Preunset()</a>, 
-			<a href="class-CPersistentObject.html#_">__toString()</a>, 
 			<a href="class-CPersistentObject.html#_">_id()</a>, 
 			<a href="class-CPersistentObject.html#_">_index()</a>
 		</code></td>
@@ -603,6 +714,7 @@ absence of the kOFFSET_TERM offset.</p>
 			<a href="class-CPersistentDocument.html#_">Insert()</a>, 
 			<a href="class-CPersistentDocument.html#_">NID()</a>, 
 			<a href="class-CPersistentDocument.html#_">Replace()</a>, 
+			<a href="class-CPersistentDocument.html#_">ResolveClassContainer()</a>, 
 			<a href="class-CPersistentDocument.html#_">ResolveContainer()</a>, 
 			<a href="class-CPersistentDocument.html#_">Restore()</a>, 
 			<a href="class-CPersistentDocument.html#_">Update()</a>, 

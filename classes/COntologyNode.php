@@ -247,7 +247,6 @@ class COntologyNode extends CNode
 	 * @throws Exception
 	 *
 	 * @uses NewObject()
-	 * @uses ResolveTermContainer()
 	 *
 	 * @see kOFFSET_TERM
 	 */
@@ -277,7 +276,7 @@ class COntologyNode extends CNode
 				//
 				$this->mTerm
 					= $this->NewObject
-						( $this->ResolveTermContainer( $theConnection, TRUE ),
+						( COntologyTerm::ResolveClassContainer( $theConnection, TRUE ),
 						  $term );
 			
 			} // Reload or empty cache.
@@ -292,9 +291,74 @@ class COntologyNode extends CNode
 		
 		} // Has term.
 		
-		return $this->mTerm;													// ==>
+		return $this->mTerm;														// ==>
 
 	} // LoadTerm.
+
+		
+
+/*=======================================================================================
+ *																						*
+ *								PUBLIC OPERATIONS INTERFACE								*
+ *																						*
+ *======================================================================================*/
+
+
+	 
+	/*===================================================================================
+	 *	RelateTo																		*
+	 *==================================================================================*/
+
+	/**
+	 * <h4>Relate to node</h4>
+	 *
+	 * This method will relate the current node to another and return a
+	 * {@link COntologyEdge} object which represents a directed graph edge where the current
+	 * node represents the subject of the relationship.
+	 *
+	 * The predicate and object vertex can be provided both as objects or as object
+	 * identifiers.
+	 *
+	 * Note that the edge will not be committed, it is the responsibility of the caller to
+	 * do so.
+	 *
+	 * @param mixed					$thePredicate		Predicate term object or reference.
+	 * @param mixed					$theObject			object node object or reference.
+	 *
+	 * @access public
+	 * @return COntologyEdge		Edge object.
+	 *
+	 * @throws Exception
+	 *
+	 * @uses NewObject()
+	 *
+	 * @see kOFFSET_TERM
+	 */
+	public function RelateTo( $thePredicate, $theObject )
+	{
+		//
+		// Instantiate edge.
+		//
+		$edge = new COntologyEdge();
+		
+		//
+		// Set subject.
+		//
+		$edge->Subject( $this );
+		
+		//
+		// Set predicate.
+		//
+		$edge->Predicate( $thePredicate );
+		
+		//
+		// Set object.
+		//
+		$edge->Object( $theObject );
+		
+		return $edge;																// ==>
+
+	} // RelateTo.
 
 		
 
@@ -328,65 +392,6 @@ class COntologyNode extends CNode
 		return $theDatabase->Container( kCONTAINER_NODE_NAME );						// ==>
 	
 	} // DefaultContainer.
-
-	 
-	/*===================================================================================
-	 *	ResolveTermContainer															*
-	 *==================================================================================*/
-
-	/**
-	 * <h4>Resolve term container</h4>
-	 *
-	 * This method should return the container used by terms, given a container used for
-	 * nodes. For servers and databases, it will resolve the container using the term class
-	 * static {@link ResolveContainer()} method, for containers, it will attempt to retrieve
-	 * the database that instantiated the node container and feed it to the term's class
-	 * {@link ResolveContainer()} method.
-	 *
-	 * If the method is unable to resolve the container it will raise an exception, if the
-	 * second parameter is <tt>TRUE</tt>, or return <tt>NULL</tt>.
-	 *
-	 * The method will return an exception regardless of the value of the second parameter
-	 * if the first parameter is neither a {@link CServer} or {@link CDatabase} derived
-	 * instance.
-	 *
-	 * @param CConnection			$theConnection		Connection object.
-	 * @param boolean				$doException		<tt>TRUE</tt> raise exception.
-	 *
-	 * @static
-	 * @return mixed				{@link CContainer} or <tt>NULL</tt> if not found.
-	 *
-	 * @throws Exception
-	 */
-	static function ResolveTermContainer( CConnection $theConnection, $doException )
-	{
-		//
-		// Handle containers.
-		//
-		if( $theConnection instanceof CContainer )
-		{
-			//
-			// Get container's creator.
-			//
-			$database = $theConnection[ kOFFSET_PARENT ];
-			if( $database !== NULL )
-				return COntologyTerm::ResolveContainer( $database, $doException );	// ==>
-			
-			//
-			// Raise exception.
-			//
-			if( $doException )
-				throw new Exception
-					( "The container is missing its database reference",
-					  kERROR_PARAMETER );										// !@! ==>
-			
-			return NULL;															// ==>
-		
-		} // Provided container.
-		
-		return COntologyTerm::ResolveContainer( $theConnection, $doException );		// ==>
-	
-	} // ResolveTermContainer.
 
 		
 
@@ -577,7 +582,6 @@ class COntologyNode extends CNode
 	 * @access protected
 	 *
 	 * @uses LoadTerm()
-	 * @uses ResolveTermContainer()
 	 *
 	 * @see kOFFSET_TERM
 	 */
@@ -605,7 +609,8 @@ class COntologyNode extends CNode
 				// Commit.
 				// Note that we insert, to ensure the object is new.
 				//
-				$term->Insert( $this->ResolveTermContainer( $theConnection, TRUE ) );
+				$term->Insert(
+					COntologyTerm::ResolveClassContainer( $theConnection, TRUE ) );
 				
 				//
 				// Cache it.
@@ -652,8 +657,6 @@ class COntologyNode extends CNode
 	 *
 	 * @access protected
 	 *
-	 * @uses ResolveTermContainer()
-	 *
 	 * @see kOFFSET_NID kSEQUENCE_KEY_NODE
 	 * @see kFLAG_PERSIST_INSERT kFLAG_PERSIST_REPLACE
 	 */
@@ -671,7 +674,7 @@ class COntologyNode extends CNode
 			if( ! $this->offsetExists( kOFFSET_NID ) )
 				$this->offsetSet(
 					kOFFSET_NID,
-					$this->ResolveTermContainer(
+					COntologyTerm::ResolveClassContainer(
 						$theConnection, TRUE )
 							->NextSequence( kSEQUENCE_KEY_NODE, TRUE ) );
 		
@@ -711,7 +714,6 @@ class COntologyNode extends CNode
 	 * @access protected
 	 *
 	 * @uses _IsCommitted()
-	 * @uses ResolveTermContainer()
 	 *
 	 * @see kOFFSET_REFS_NODE kOFFSET_TERM
 	 * @see kFLAG_PERSIST_INSERT kFLAG_PERSIST_REPLACE kFLAG_PERSIST_DELETE
@@ -743,8 +745,7 @@ class COntologyNode extends CNode
 				//
 				// Add current node reference to term.
 				//
-				$this
-					->ResolveTermContainer( $theConnection, TRUE )
+				COntologyTerm::ResolveClassContainer( $theConnection, TRUE )
 					->ManageObject
 					(
 						$fields,						// Because it will be overwritten.
@@ -769,8 +770,7 @@ class COntologyNode extends CNode
 			//
 			// Remove current node reference from term.
 			//
-			$this
-				->ResolveTermContainer( $theConnection, TRUE )
+			COntologyTerm::ResolveClassContainer( $theConnection, TRUE )
 				->ManageObject
 				(
 					$fields,						// Because it will be overwritten.

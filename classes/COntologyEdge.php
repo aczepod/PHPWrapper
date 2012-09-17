@@ -38,43 +38,32 @@ require_once( kPATH_MYWRAPPER_LIBRARY_CLASS."/COntologyNode.php" );
  *
  * This includes the ancestor class definitions.
  */
-require_once( kPATH_MYWRAPPER_LIBRARY_CLASS."/Edge.php" );
+require_once( kPATH_MYWRAPPER_LIBRARY_CLASS."/CEdge.php" );
 
 /**
  * <h3>Ontology edge object ancestor</h3>
  *
  * This class extends its ancestor, {@link CEdge}, by asserting the {@link Subject()} and
- * {@link Object()} to be instances of {@link COntologyNode}, end the {@link Predicate} to
+ * {@link Object()} to be instances of {@link COntologyNode}, and the {@link Predicate} to
  * be an instance of {@link COntologyTerm}.
-
  *
- * The class does not handle global identifiers and objects cannot be uniquely identified
- * by its properties or attributes, it is the duty of the hosting container to provide the
- * {@link kOFFSET_NID} identifier, In this class we use sequences,
- * {@link CContainer::NextSequence()}, from a default container named after the default
- * {@link kCONTAINER_SEQUENCE_NAME} tag in the same database, this is to make referencing
- * nodes easier and to be compatible with most graph databases.
+ * This class overloads the native identification workflow by using a number sequence tagged
+ * by {@link kSEQUENCE_KEY_EDGE}. The class also features a unique identifier,
+ * {@link kOFFSET_UID}, which receives the hash of the global identifier, this will be
+ * useful to identify duplicates.
  *
- * In this class, the term, {@link kOFFSET_TERM}, is a reference to an instance of
- * {@link COntologyTerm}, meaning that the offset will contain the native identifier of the
- * term. The value may be provided as an uncommitted term object, in that case the term will
- * be committed before the current node is committed.
- *
- * Once the node has been committed, it will not be possible to modify the term,
- * {@link kOFFSET_TERM}. 
- *
- * When inserting a new node, the class will also make sure that the referenced term gets a
- * reference to the current node in its {@link kOFFSET_REFS_NODE} offset, this means that
- * once a node is committed, one cannot change its term reference.
+ * When adding vertices and predicates to the object, these can be provided as objects and
+ * if these objects are not {@link _IsCommitted}, they will be stored before the current
+ * edge object is committed.
  *
  * The class features an offset, {@link kOFFSET_REFS_TAG}, which represents the list of tags
  * that reference the current node. This offset is a set of tag identifiers implemented as
  * an array. The offset definition is borrowed from the {@link COntologyTerm} class, which
- * is required by this class because of its {@link kOFFSET_TERM} offset. This offset is
+ * is required by this class because of its {@link kOFFSET_PREDICATE} offset. This offset is
  * managed by the tag class, this class locks the offset.
  *
  * The class implements the static method, {@link DefaultContainer()}, it will use the
- * {@link kCONTAINER_NODE_NAME} constant. Note that when passing {@link CConnection} based
+ * {@link kCONTAINER_EDGE_NAME} constant. Note that when passing {@link CConnection} based
  * objects to the persisting methods of this class, you should provide preferably Database
  * instances, since this class may have to commit terms.
  *
@@ -83,62 +72,45 @@ require_once( kPATH_MYWRAPPER_LIBRARY_CLASS."/Edge.php" );
  * <ul>
  *	<li>{@link TagRefs()}: This method returns the node's tag references,
  *		{@link kOFFSET_REFS_TAG}.
- *	<li>{@link LoadTerm()}: This method will return the referenced term object.
+ *	<li>{@link LoadSubject()}: This method will return the referenced subject vertex
+ *		{@link COntologyNode} object.
+ *	<li>{@link LoadPredicate()}: This method will return the referenced predicate
+ *		{@link COntologyTerm} object.
+ *	<li>{@link LoadObject()}: This method will return the referenced object vertex
+ *		{@link COntologyNode} object.
  * </ul>
  *
  *	@package	MyWrapper
  *	@subpackage	Ontology
  */
-class COntologyEdge extends CNode
+class COntologyEdge extends CEdge
 {
 	/**
-	 * <b>Term object</b>
+	 * <b>Subject node object</b>
 	 *
-	 * This data member holds the eventual term object when requested.
+	 * This data member holds the subject node object when requested.
+	 *
+	 * @var COntologyNode
+	 */
+	 protected $mSubject = NULL;
+
+	/**
+	 * <b>Predicate term object</b>
+	 *
+	 * This data member holds the predicate term object when requested.
 	 *
 	 * @var COntologyTerm
 	 */
-	 protected $mTerm = NULL;
-
-		
-
-/*=======================================================================================
- *																						*
- *											MAGIC										*
- *																						*
- *======================================================================================*/
-
-
-	 
-	/*===================================================================================
-	 *	__toString																		*
-	 *==================================================================================*/
+	 protected $mPredicate = NULL;
 
 	/**
-	 * <h4>Return object name</h4>
+	 * <b>Object node object</b>
 	 *
-	 * This method should return the current object's name which should represent the unique
-	 * identifier of the object.
+	 * This data member holds the object node object when requested.
 	 *
-	 * By default we return the string representation of the term, {@link kOFFSET_TERM}.
-	 *
-	 * @access public
-	 * @return string				The connection name.
+	 * @var COntologyNode
 	 */
-	public function __toString()
-	{
-		//
-		// Check native identifier.
-		//
-		if( $this->offsetExists( kOFFSET_NID ) )
-			return (string) $this->offsetGet( kOFFSET_NID );						// ==>
-		
-		//
-		// Yes, I know...
-		//
-		return NULL;																// ==>
-	
-	} // __toString.
+	 protected $mObject = NULL;
 
 		
 
@@ -193,15 +165,90 @@ class COntologyEdge extends CNode
 
 	 
 	/*===================================================================================
-	 *	LoadTerm																		*
+	 *	LoadSubject																		*
 	 *==================================================================================*/
 
 	/**
-	 * <h4>Load term object</h4>
+	 * <h4>Load subject node object</h4>
 	 *
-	 * This method will return the current term object: if the term is not set, the method
-	 * will return <tt>NULL</tt>; if the term cannot be found, the method will raise an
-	 * exception.
+	 * This method will return the current subject node object: if the node is not set, the
+	 * method will return <tt>NULL</tt>; if the node cannot be found, the method will raise
+	 * an exception.
+	 *
+	 * The object will also be loaded in a data member that can function as a cache.
+	 *
+	 * The method features two parameters: the first refers to the container in which the
+	 * node is stored, the second is a boolean flag that determines whether the object
+	 * is to be read, or if the cached copy can be used.
+	 *
+	 * @param CConnection			$theConnection		Server, database or container.
+	 * @param boolean				$doReload			Reload if <tt>TRUE</tt>.
+	 *
+	 * @access public
+	 * @return COntologyNode		Node object or <tt>NULL</tt>.
+	 *
+	 * @throws Exception
+	 *
+	 * @uses NewObject()
+	 *
+	 * @see kOFFSET_VERTEX_SUBJECT
+	 */
+	public function LoadSubject( CConnection $theConnection, $doReload = FALSE )
+	{
+		//
+		// Check offset.
+		//
+		if( $this->offsetExists( kOFFSET_VERTEX_SUBJECT ) )
+		{
+			//
+			// Refresh cache.
+			// Uncommitted nodes are cached by default.
+			//
+			if( $doReload						// Reload,
+			 || ($this->mSubject === NULL) )	// or not cached.
+			{
+				//
+				// Handle node object.
+				//
+				$node = $this->offsetGet( kOFFSET_VERTEX_SUBJECT );
+				if( $node instanceof COntologyNode )
+					return $node;													// ==>
+				
+				//
+				// Load node object.
+				//
+				$this->mSubject
+					= $this->NewObject
+						( COntologyNode::ResolveClassContainer( $theConnection, TRUE ),
+						  $node );
+			
+			} // Reload or empty cache.
+			
+			//
+			// Handle not found.
+			//
+			if( $this->mSubject === NULL )
+				throw new Exception
+					( "Subject vertex node not found",
+					  kERROR_STATE );											// !@! ==>
+		
+		} // Has term.
+		
+		return $this->mSubject;														// ==>
+
+	} // LoadSubject.
+
+	 
+	/*===================================================================================
+	 *	LoadPredicate																	*
+	 *==================================================================================*/
+
+	/**
+	 * <h4>Load predicate term object</h4>
+	 *
+	 * This method will return the current predicate term object: if the term is not set,
+	 * the method will return <tt>NULL</tt>; if the term cannot be found, the method will
+	 * raise an exception.
 	 *
 	 * The object will also be loaded in a data member that can function as a cache.
 	 *
@@ -218,37 +265,36 @@ class COntologyEdge extends CNode
 	 * @throws Exception
 	 *
 	 * @uses NewObject()
-	 * @uses ResolveTermContainer()
 	 *
-	 * @see kOFFSET_TERM
+	 * @see kOFFSET_PREDICATE
 	 */
-	public function LoadTerm( CConnection $theConnection, $doReload = FALSE )
+	public function LoadPredicate( CConnection $theConnection, $doReload = FALSE )
 	{
 		//
 		// Check offset.
 		//
-		if( $this->offsetExists( kOFFSET_TERM ) )
+		if( $this->offsetExists( kOFFSET_PREDICATE ) )
 		{
 			//
 			// Refresh cache.
 			// Uncommitted terms are cached by default.
 			//
 			if( $doReload						// Reload,
-			 || ($this->mTerm === NULL) )	// or not cached.
+			 || ($this->mPredicate === NULL) )	// or not cached.
 			{
 				//
 				// Handle term object.
 				//
-				$term = $this->offsetGet( kOFFSET_TERM );
+				$term = $this->offsetGet( kOFFSET_PREDICATE );
 				if( $term instanceof COntologyTerm )
 					return $term;													// ==>
 				
 				//
 				// Load term object.
 				//
-				$this->mTerm
+				$this->mPredicate
 					= $this->NewObject
-						( $this->ResolveTermContainer( $theConnection, TRUE ),
+						( COntologyTerm::ResolveClassContainer( $theConnection, TRUE ),
 						  $term );
 			
 			} // Reload or empty cache.
@@ -256,16 +302,91 @@ class COntologyEdge extends CNode
 			//
 			// Handle not found.
 			//
-			if( $this->mTerm === NULL )
+			if( $this->mPredicate === NULL )
 				throw new Exception
-					( "Term not found",
+					( "Predicate term not found",
 					  kERROR_STATE );											// !@! ==>
 		
 		} // Has term.
 		
-		return $this->mTerm;													// ==>
+		return $this->mPredicate;													// ==>
 
-	} // LoadTerm.
+	} // LoadPredicate.
+
+	 
+	/*===================================================================================
+	 *	LoadObject																		*
+	 *==================================================================================*/
+
+	/**
+	 * <h4>Load object node object</h4>
+	 *
+	 * This method will return the current object node object: if the node is not set, the
+	 * method will return <tt>NULL</tt>; if the node cannot be found, the method will raise
+	 * an exception.
+	 *
+	 * The object will also be loaded in a data member that can function as a cache.
+	 *
+	 * The method features two parameters: the first refers to the container in which the
+	 * node is stored, the second is a boolean flag that determines whether the object
+	 * is to be read, or if the cached copy can be used.
+	 *
+	 * @param CConnection			$theConnection		Server, database or container.
+	 * @param boolean				$doReload			Reload if <tt>TRUE</tt>.
+	 *
+	 * @access public
+	 * @return COntologyNode		Node object or <tt>NULL</tt>.
+	 *
+	 * @throws Exception
+	 *
+	 * @uses NewObject()
+	 *
+	 * @see kOFFSET_VERTEX_OBJECT
+	 */
+	public function LoadObject( CConnection $theConnection, $doReload = FALSE )
+	{
+		//
+		// Check offset.
+		//
+		if( $this->offsetExists( kOFFSET_VERTEX_OBJECT ) )
+		{
+			//
+			// Refresh cache.
+			// Uncommitted nodes are cached by default.
+			//
+			if( $doReload						// Reload,
+			 || ($this->mObject === NULL) )	// or not cached.
+			{
+				//
+				// Handle node object.
+				//
+				$node = $this->offsetGet( kOFFSET_VERTEX_OBJECT );
+				if( $node instanceof COntologyNode )
+					return $node;													// ==>
+				
+				//
+				// Load node object.
+				//
+				$this->mObject
+					= $this->NewObject
+						( COntologyNode::ResolveClassContainer( $theConnection, TRUE ),
+						  $node );
+			
+			} // Reload or empty cache.
+			
+			//
+			// Handle not found.
+			//
+			if( $this->mObject === NULL )
+				throw new Exception
+					( "Object vertex node not found",
+					  kERROR_STATE );											// !@! ==>
+		
+		} // Has term.
+		
+		return $this->mObject;														// ==>
+
+	} // LoadObject.
 
 		
 
@@ -282,82 +403,105 @@ class COntologyEdge extends CNode
 	 *==================================================================================*/
 
 	/**
-	 * <h4>Return the nodes container</h4>
+	 * <h4>Return the edges container</h4>
 	 *
 	 * The container will be created or fetched from the provided database using the
-	 * {@link kCONTAINER_NODE_NAME} name.
+	 * {@link kCONTAINER_EDGE_NAME} name.
 	 *
 	 * @param CDatabase				$theDatabase		Database object.
 	 *
 	 * @static
-	 * @return CContainer			The nodes container.
+	 * @return CContainer			The edges container.
 	 *
-	 * @see kCONTAINER_NODE_NAME
+	 * @see kCONTAINER_EDGE_NAME
 	 */
 	static function DefaultContainer( CDatabase $theDatabase )
 	{
-		return $theDatabase->Container( kCONTAINER_NODE_NAME );						// ==>
+		return $theDatabase->Container( kCONTAINER_EDGE_NAME );						// ==>
 	
 	} // DefaultContainer.
 
+		
+
+/*=======================================================================================
+ *																						*
+ *							PROTECTED IDENTIFICATION INTERFACE							*
+ *																						*
+ *======================================================================================*/
+
+
 	 
 	/*===================================================================================
-	 *	ResolveTermContainer															*
+	 *	_index																			*
 	 *==================================================================================*/
 
 	/**
-	 * <h4>Resolve term container</h4>
+	 * <h4>Return the object's global unique identifier</h4>
 	 *
-	 * This method should return the container used by terms, given a container used for
-	 * nodes. For servers and databases, it will resolve the container using the term class
-	 * static {@link ResolveContainer()} method, for containers, it will attempt to retrieve
-	 * the database that instantiated the node container and feed it to the term's class
-	 * {@link ResolveContainer()} method.
+	 * We override the parent method to handle the referenced objects: in this class the
+	 * global identifier is the concatenation of the subject native identifier, the
+	 * predicate global identifier and the object native identifier all separated by the
+	 * {@link kTOKEN_INDEX_SEPARATOR} token.
 	 *
-	 * If the method is unable to resolve the container it will raise an exception, if the
-	 * second parameter is <tt>TRUE</tt>, or return <tt>NULL</tt>.
-	 *
-	 * The method will return an exception regardless of the value of the second parameter
-	 * if the first parameter is neither a {@link CServer} or {@link CDatabase} derived
-	 * instance.
-	 *
-	 * @param CConnection			$theConnection		Connection object.
-	 * @param boolean				$doException		<tt>TRUE</tt> raise exception.
-	 *
-	 * @static
-	 * @return mixed				{@link CContainer} or <tt>NULL</tt> if not found.
+	 * @param CConnection			$theConnection		Server, database or container.
+	 * @param bitfield				$theModifiers		Commit options.
 	 *
 	 * @throws Exception
+	 *
+	 * @access protected
+	 * @return string|NULL			The object's global unique identifier.
+	 *
+	 * @throws Exception
+	 *
+	 * @uses LoadSubject()
+	 * @uses LoadPredicate()
+	 * @uses LoadObject()
+	 *
+	 * @see kOFFSET_NID kOFFSET_GID kTOKEN_INDEX_SEPARATOR
 	 */
-	static function ResolveTermContainer( CConnection $theConnection, $doException )
+	protected function _index( CConnection $theConnection, $theModifiers )
 	{
 		//
-		// Handle containers.
+		// Init global identifier.
 		//
-		if( $theConnection instanceof CContainer )
-		{
-			//
-			// Get container's creator.
-			//
-			$database = $theConnection[ kOFFSET_PARENT ];
-			if( $database !== NULL )
-				return COntologyTerm::ResolveContainer( $database, $doException );	// ==>
-			
-			//
-			// Raise exception.
-			//
-			if( $doException )
-				throw new Exception
-					( "The container is missing its database reference",
-					  kERROR_PARAMETER );										// !@! ==>
-			
-			return NULL;															// ==>
+		$identifier = Array();
 		
-		} // Provided container.
+		//
+		// Get subject.
+		//
+		$tmp = $this->LoadSubject( $theConnection );
+		if( $tmp !== NULL )
+			$identifier[] = (string) $tmp[ kOFFSET_NID ];
+		else
+			throw new Exception
+				( "Missing subject vertex",
+				  kERROR_STATE );												// !@! ==>
 		
-		return COntologyTerm::ResolveContainer( $theConnection, $doException );		// ==>
+		//
+		// Get predicate.
+		//
+		$tmp = $this->LoadPredicate( $theConnection );
+		if( $tmp !== NULL )
+			$identifier[] = $tmp[ kOFFSET_GID ];
+		else
+			throw new Exception
+				( "Missing predicate",
+				  kERROR_STATE );												// !@! ==>
+		
+		//
+		// Get object.
+		//
+		$tmp = $this->LoadObject( $theConnection );
+		if( $tmp !== NULL )
+			$identifier[] = (string) $tmp[ kOFFSET_NID ];
+		else
+			throw new Exception
+				( "Missing object vertex",
+				  kERROR_STATE );												// !@! ==>
+		
+		return implode( kTOKEN_INDEX_SEPARATOR, $identifier );						// ==>
 	
-	} // ResolveTermContainer.
+	} // _index.
 
 		
 
@@ -376,10 +520,12 @@ class COntologyEdge extends CNode
 	/**
 	 * <h4>Handle offset before setting it</h4>
 	 *
-	 * In this class we handle the term offset, if provided as an object we leave it
-	 * unchanged only if not yet committed, if not, we convert it to its native identifier.
-	 * We also ensure the provided term object to be an instance of {@link COntologyTerm} by
-	 * asserting {@link CDocument} descendants to be of that class.
+	 * In this class we handle the subject, predicate and object offsets, if provided as
+	 * objects we leave them unchanged only if not yet committed, if not, we convert them to
+	 * their native identifiers.
+	 *
+	 * We also ensure that the provided objects are instances of the correct classes by
+	 * asserting {@link CDocument} descendants.
 	 *
 	 * This method will lock the {@link kOFFSET_REFS_TAG} offset from any modification.
 	 *
@@ -393,7 +539,8 @@ class COntologyEdge extends CNode
 	 * @uses _IsCommitted()
 	 * @uses _AssertClass()
 	 *
-	 * @see kOFFSET_TERM kOFFSET_REFS_TAG
+	 * @see kOFFSET_REFS_TAG
+	 * @see kOFFSET_PREDICATE kOFFSET_VERTEX_OBJECT kOFFSET_VERTEX_SUBJECT
 	 */
 	protected function _Preset( &$theOffset, &$theValue )
 	{
@@ -406,65 +553,149 @@ class COntologyEdge extends CNode
 				  kERROR_LOCKED );												// !@! ==>
 		
 		//
-		// Handle term.
+		// Parse by offset.
 		//
-		if( $theOffset == kOFFSET_TERM )
+		switch( $theOffset )
 		{
-			//
-			// Lock term if object is committed.
-			//
-			if( $this->_IsCommitted() )
-				throw new Exception
-					( "You cannot modify the [$theOffset] offset: "
-					 ."the object is committed",
-					  kERROR_LOCKED );											// !@! ==>
-			
-			//
-			// Check value type.
-			//
-			$ok = $this->_AssertClass( $theValue, 'CDocument', 'COntologyTerm' );
-			
-			//
-			// Handle wrong object.
-			//
-			if( $ok === FALSE )
-				throw new Exception
-					( "Cannot set term: "
-					 ."the object must be a term reference or object",
-					  kERROR_PARAMETER );										// !@! ==>
-			
-			//
-			// Handle right object.
-			//
-			if( $ok )
-			{
+			case kOFFSET_PREDICATE:
+	
 				//
-				// Use native identifier.
+				// Lock term if object is committed.
 				//
-				if( $theValue->_IsCommitted() )
+				if( $this->_IsCommitted() )
+					throw new Exception
+						( "You cannot modify the [$theOffset] offset: "
+						 ."the object is committed",
+						  kERROR_LOCKED );										// !@! ==>
+				
+				//
+				// Check value type.
+				//
+				$ok = $this->_AssertClass( $theValue, 'CDocument', 'COntologyTerm' );
+				
+				//
+				// Handle wrong object.
+				//
+				if( $ok === FALSE )
+					throw new Exception
+						( "Cannot set predicate: "
+						 ."the object must be a term reference or object",
+						  kERROR_PARAMETER );									// !@! ==>
+				
+				//
+				// Handle right object.
+				//
+				if( $ok )
 				{
 					//
-					// Check native identifier.
+					// Use native identifier.
 					//
-					if( $theValue->offsetExists( kOFFSET_NID ) )
-						$theValue = $theValue->offsetGet( kOFFSET_NID );
+					if( $theValue->_IsCommitted() )
+					{
+						//
+						// Check native identifier.
+						//
+						if( $theValue->offsetExists( kOFFSET_NID ) )
+							$theValue = $theValue->offsetGet( kOFFSET_NID );
+						else
+							throw new Exception
+								( "Cannot set predicate: "
+								 ."the object is missing its native identifier",
+								  kERROR_PARAMETER );							// !@! ==>
+					
+					} // Object is committed.
+					
+					//
+					// Copy to data member.
+					//
+					else
+						$this->mPredicate = $theValue;
+				
+				} // Correct object class.
+				
+				break;
+
+			case kOFFSET_VERTEX_OBJECT:
+			case kOFFSET_VERTEX_SUBJECT:
+			
+				//
+				// Lock node if object is committed.
+				//
+				if( $this->_IsCommitted() )
+					throw new Exception
+						( "You cannot modify the [$theOffset] offset: "
+						 ."the object is committed",
+						  kERROR_LOCKED );										// !@! ==>
+				
+				//
+				// Check value type.
+				//
+				$ok = $this->_AssertClass( $theValue, 'CDocument', 'COntologyNode' );
+				
+				//
+				// Handle wrong object.
+				//
+				if( $ok === FALSE )
+				{
+					if( $theOffset == kOFFSET_VERTEX_OBJECT )
+						throw new Exception
+							( "Cannot set object vertex: "
+							 ."the object must be a node reference or object",
+							  kERROR_PARAMETER );								// !@! ==>
 					else
 						throw new Exception
-							( "Cannot set term: "
-							 ."the object is missing its native identifier",
+							( "Cannot set subject vertex: "
+							 ."the object must be a node reference or object",
 							  kERROR_PARAMETER );								// !@! ==>
-				
-				} // Term is committed.
+				}
 				
 				//
-				// Copy to data member.
+				// Handle right object.
 				//
-				else
-					$this->mTerm = $theValue;
-			
-			} // Correct object class.
+				if( $ok )
+				{
+					//
+					// Use native identifier.
+					//
+					if( $theValue->_IsCommitted() )
+					{
+						//
+						// Check native identifier.
+						//
+						if( $theValue->offsetExists( kOFFSET_NID ) )
+							$theValue = $theValue->offsetGet( kOFFSET_NID );
+						else
+						{
+							if( $theOffset == kOFFSET_VERTEX_OBJECT )
+								throw new Exception
+									( "Cannot set object vertex: "
+									 ."the object is missing its native identifier",
+									  kERROR_PARAMETER );						// !@! ==>
+							else
+								throw new Exception
+									( "Cannot set subject vertex: "
+									 ."the object is missing its native identifier",
+									  kERROR_PARAMETER );						// !@! ==>
+						}
+					
+					} // Object is committed.
+					
+					//
+					// Copy to data member.
+					//
+					else
+					{
+						if( $theOffset == kOFFSET_VERTEX_OBJECT )
+							$this->mObject = $theValue;
+						else
+							$this->mSubject = $theValue;
+					}
+				
+				} // Correct object class.
+				
+				break;
 		
-		} // Provided term.
+		} // Parsed by offset.
 		
 		//
 		// Call parent method.
@@ -481,8 +712,9 @@ class COntologyEdge extends CNode
 	/**
 	 * <h4>Handle offset before unsetting it</h4>
 	 *
-	 * In this class we prevent the modification of the {@link kOFFSET_TERM} offset if the
-	 * object is committed and of the {@link kOFFSET_REFS_TAG} offset in all cases.
+	 * In this class we prevent the modification of the subject, predicate and object
+	 * offsets if the object is committed and of the {@link kOFFSET_REFS_TAG} offset in all
+	 * cases.
 	 *
 	 * @param reference			   &$theOffset			Offset.
 	 *
@@ -492,7 +724,8 @@ class COntologyEdge extends CNode
 	 *
 	 * @uses _IsCommitted()
 	 *
-	 * @see kOFFSET_REFS_TAG kOFFSET_TERM
+	 * @see kOFFSET_REFS_TAG
+	 * @see kOFFSET_PREDICATE kOFFSET_VERTEX_OBJECT kOFFSET_VERTEX_SUBJECT
 	 */
 	protected function _Preunset( &$theOffset )
 	{
@@ -505,9 +738,12 @@ class COntologyEdge extends CNode
 				  kERROR_LOCKED );												// !@! ==>
 		
 		//
-		// Lock term if object is committed.
+		// Lock subject, predicate and object vertices if object is committed.
 		//
-		if( ($theOffset == kOFFSET_TERM)
+		$offsets = array( kOFFSET_VERTEX_SUBJECT,
+						  kOFFSET_PREDICATE,
+						  kOFFSET_VERTEX_OBJECT );
+		if( in_array( $theOffset, $offsets )
 		 && $this->_IsCommitted() )
 			throw new Exception
 				( "You cannot modify the [$theOffset] offset: "
@@ -547,10 +783,11 @@ class COntologyEdge extends CNode
 	 *
 	 * @access protected
 	 *
-	 * @uses LoadTerm()
-	 * @uses ResolveTermContainer()
+	 * @uses LoadSubject()
+	 * @uses LoadPredicate()
+	 * @uses LoadObject()
 	 *
-	 * @see kOFFSET_TERM
+	 * @see kOFFSET_PREDICATE kOFFSET_VERTEX_OBJECT kOFFSET_VERTEX_SUBJECT
 	 */
 	protected function _PrecommitRelated( &$theConnection, &$theModifiers )
 	{
@@ -565,37 +802,109 @@ class COntologyEdge extends CNode
 		if( ! ($theModifiers & kFLAG_PERSIST_DELETE) )
 		{
 			//
-			// Handle term object.
+			// Handle subject vertice object.
 			// Note that we let _Preset() method take care of the specific class.
-			// Note that we do not check for the term: it is required to be inited.
+			// Note that we do not check the object: it is required to be inited.
 			//
-			$term = $this->offsetGet( kOFFSET_TERM );
-			if( $term instanceof COntologyTerm )
+			$object = $this->offsetGet( kOFFSET_VERTEX_SUBJECT );
+			if( $object instanceof COntologyNode )
 			{
 				//
 				// Commit.
 				// Note that we insert, to ensure the object is new.
 				//
-				$term->Insert( $this->ResolveTermContainer( $theConnection, TRUE ) );
+				$object->Insert(
+					COntologyNode::ResolveClassContainer(
+						$theConnection, TRUE ) );
 				
 				//
 				// Cache it.
 				//
-				$this->mTerm = $term;
+				$this->mSubject = $object;
 				
 				//
-				// Set identifier in term offset.
+				// Set identifier in subject offset.
 				//
-				$this->offsetSet( kOFFSET_TERM,
-								  $term->offsetGet( kOFFSET_NID ) );
+				$this->offsetSet( kOFFSET_VERTEX_SUBJECT,
+								  $this->mSubject->offsetGet( kOFFSET_NID ) );
 				
-			} // Term is object.
+			} // Subject is object.
 			
 			//
-			// Handle term identifier.
+			// Handle subject identifier.
 			//
 			else
-				$this->LoadTerm( $theConnection, TRUE );
+				$this->LoadSubject( $theConnection, TRUE );
+		
+			//
+			// Handle predicate object.
+			// Note that we let _Preset() method take care of the specific class.
+			// Note that we do not check the object: it is required to be inited.
+			//
+			$object = $this->offsetGet( kOFFSET_PREDICATE );
+			if( $object instanceof COntologyTerm )
+			{
+				//
+				// Commit.
+				// Note that we insert, to ensure the object is new.
+				//
+				$object->Insert(
+					COntologyTerm::ResolveClassContainer(
+						$theConnection, TRUE ) );
+				
+				//
+				// Cache it.
+				//
+				$this->mPredicate = $object;
+				
+				//
+				// Set identifier in predicate offset.
+				//
+				$this->offsetSet( kOFFSET_PREDICATE,
+								  $this->mPredicate->offsetGet( kOFFSET_NID ) );
+				
+			} // Predicate is object.
+			
+			//
+			// Handle predicate identifier.
+			//
+			else
+				$this->LoadPredicate( $theConnection, TRUE );
+		
+			//
+			// Handle object vertice object.
+			// Note that we let _Preset() method take care of the specific class.
+			// Note that we do not check the object: it is required to be inited.
+			//
+			$object = $this->offsetGet( kOFFSET_VERTEX_OBJECT );
+			if( $object instanceof COntologyNode )
+			{
+				//
+				// Commit.
+				// Note that we insert, to ensure the object is new.
+				//
+				$object->Insert(
+					COntologyNode::ResolveClassContainer(
+						$theConnection, TRUE ) );
+				
+				//
+				// Cache it.
+				//
+				$this->mObject = $object;
+				
+				//
+				// Set identifier in object offset.
+				//
+				$this->offsetSet( kOFFSET_VERTEX_OBJECT,
+								  $this->mObject->offsetGet( kOFFSET_NID ) );
+				
+			} // Object is object.
+			
+			//
+			// Handle object identifier.
+			//
+			else
+				$this->LoadObject( $theConnection, TRUE );
 		
 		} // Not deleting.
 	
@@ -609,23 +918,26 @@ class COntologyEdge extends CNode
 	/**
 	 * <h4>Determine the identifiers before committing</h4>
 	 *
+	 * This method will use the result of the {@link _index()} method to set the global
+	 * identifier, {@link kOFFSET_GID}; the same value will be hashed and constitute the
+	 * unique identifier, {@link kOFFSET_UID}.
+	 *
 	 * Objects of this class are identified by a sequence number tagged
-	 * {@link kSEQUENCE_KEY_NODE}, this method will set the native identifier,
+	 * {@link kSEQUENCE_KEY_EDGE}, this method will set the native identifier,
 	 * {@link kOFFSET_NID}, with this value.
 	 *
-	 * The parent method will then be called, which will ignore the global identifier,
-	 * {@link kOFFSET_GID}, since the {@link _index()} method returns <tt>NULL</tt> and
-	 * also ignore the native identifier, {@link kOFFSET_NID}, since it will have been set
-	 * here.
+	 * The parent method will then be called, which will ignore the global and native
+	 * identifiers, since they will have been set here.
 	 *
 	 * @param reference			   &$theConnection		Server, database or container.
 	 * @param reference			   &$theModifiers		Commit options.
 	 *
 	 * @access protected
 	 *
-	 * @uses ResolveTermContainer()
+	 * @throws Exception
 	 *
-	 * @see kOFFSET_NID kSEQUENCE_KEY_NODE
+	 * @see kSEQUENCE_KEY_EDGE
+	 * @see kOFFSET_NID kOFFSET_GID kOFFSET_UID
 	 * @see kFLAG_PERSIST_INSERT kFLAG_PERSIST_REPLACE
 	 */
 	protected function _PrecommitIdentify( &$theConnection, &$theModifiers )
@@ -637,14 +949,57 @@ class COntologyEdge extends CNode
 		 || (($theModifiers & kFLAG_PERSIST_MASK) == kFLAG_PERSIST_REPLACE) )
 		{
 			//
+			// Set global identifier.
+			//
+			if( ! $this->offsetExists( kOFFSET_GID ) )
+			{
+				//
+				// Generate global identifier.
+				//
+				$index = $this->_index( $theConnection, $theModifiers );
+				if( $index !== NULL )
+				{
+					//
+					// Set global identifier.
+					//
+					$this->offsetSet( kOFFSET_GID, $index );
+					
+					//
+					// Resolve container.
+					//
+					$container = self::ResolveContainer( $theConnection, TRUE );
+					
+					//
+					// Generate unique identifier.
+					//
+					$uid = $container->ConvertBinary( md5( $index, TRUE ) );
+					
+					//
+					// Check unique identifier.
+					//
+					if( $container->CheckObject( $uid, kOFFSET_UID ) )
+						throw new Exception
+							( "Duplicate object",
+							  kERROR_COMMIT );												// !@! ==>
+					
+					//
+					// Set unique identifier.
+					//
+					$this->offsetSet( kOFFSET_UID, $uid );
+				
+				} // Has global identifier.
+			
+			} // Missing global identifier.
+		
+			//
 			// Set native identifier.
 			//
 			if( ! $this->offsetExists( kOFFSET_NID ) )
 				$this->offsetSet(
 					kOFFSET_NID,
-					$this->ResolveTermContainer(
+					static::ResolveContainer(
 						$theConnection, TRUE )
-							->NextSequence( kSEQUENCE_KEY_NODE, TRUE ) );
+							->NextSequence( kSEQUENCE_KEY_EDGE, TRUE ) );
 		
 		} // Insert or replace.
 	
@@ -672,9 +1027,9 @@ class COntologyEdge extends CNode
 	/**
 	 * <h4>Update related objects after committing</h4>
 	 *
-	 * In this class we add the current node's identifier to the list of node references,
-	 * {@link kOFFSET_REFS_NODE}, in the related term when inserting; we remove the element
-	 * when deleting.
+	 * In this class we add the current edge's identifier to the list of edge references,
+	 * {@link kOFFSET_REFS_EDGE}, in the related subject and object vertives when inserting;
+	 * we remove the element when deleting.
 	 *
 	 * @param reference			   &$theConnection		Server, database or container.
 	 * @param reference			   &$theModifiers		Commit options.
@@ -682,9 +1037,8 @@ class COntologyEdge extends CNode
 	 * @access protected
 	 *
 	 * @uses _IsCommitted()
-	 * @uses ResolveTermContainer()
 	 *
-	 * @see kOFFSET_REFS_NODE kOFFSET_TERM
+	 * @see kOFFSET_REFS_EDGE kOFFSET_VERTEX_SUBJECT kOFFSET_VERTEX_OBJECT
 	 * @see kFLAG_PERSIST_INSERT kFLAG_PERSIST_REPLACE kFLAG_PERSIST_DELETE
 	 * @see kFLAG_PERSIST_MODIFY kFLAG_MODIFY_ADDSET kFLAG_MODIFY_PULL
 	 */
@@ -707,19 +1061,31 @@ class COntologyEdge extends CNode
 			if( ! $this->_IsCommitted() )
 			{
 				//
-				// Set fields array (will receive updated object).
+				// Set modification criteria.
 				//
-				$fields = array( kOFFSET_REFS_NODE => $this->offsetGet( kOFFSET_NID ) );
+				$mod = array( kOFFSET_REFS_EDGE => $this->offsetGet( kOFFSET_NID ) );
 				
 				//
-				// Add current node reference to term.
+				// Add current edge reference to subject vertex referenced.
 				//
-				$this
-					->ResolveTermContainer( $theConnection, TRUE )
+				$fields = $mod;
+				COntologyNode::ResolveClassContainer( $theConnection, TRUE )
 					->ManageObject
 					(
 						$fields,						// Because it will be overwritten.
-						$this->offsetGet( kOFFSET_TERM ),		// Term identifier.
+						$this->offsetGet( kOFFSET_VERTEX_SUBJECT ),	// Subject identifier.
+						kFLAG_PERSIST_MODIFY + kFLAG_MODIFY_ADDSET		// Add to set.
+					);
+				
+				//
+				// Add current edge reference to object vertex referenced.
+				//
+				$fields = $mod;
+				COntologyNode::ResolveClassContainer( $theConnection, TRUE )
+					->ManageObject
+					(
+						$fields,						// Because it will be overwritten.
+						$this->offsetGet( kOFFSET_VERTEX_OBJECT ),	// Object identifier.
 						kFLAG_PERSIST_MODIFY + kFLAG_MODIFY_ADDSET		// Add to set.
 					);
 				
@@ -735,17 +1101,29 @@ class COntologyEdge extends CNode
 			//
 			// Set fields array (will receive updated object).
 			//
-			$fields = array( kOFFSET_REFS_NODE => $this->offsetGet( kOFFSET_NID ) );
+			$mod = array( kOFFSET_REFS_EDGE => $this->offsetGet( kOFFSET_NID ) );
 			
 			//
-			// Remove current node reference from term.
+			// Remove current edge reference from subject vertex referenced.
 			//
-			$this
-				->ResolveTermContainer( $theConnection, TRUE )
+			$fields = $mod;
+			COntologyNode::ResolveClassContainer( $theConnection, TRUE )
 				->ManageObject
 				(
 					$fields,						// Because it will be overwritten.
-					$this->offsetGet( kOFFSET_TERM ),		// Term identifier.
+					$this->offsetGet( kOFFSET_VERTEX_SUBJECT ),	// Subject identifier.
+					kFLAG_PERSIST_MODIFY + kFLAG_MODIFY_PULL		// Remove occurrences.
+				);
+			
+			//
+			// Remove current edge reference from object vertex referenced.
+			//
+			$fields = $mod;
+			COntologyNode::ResolveClassContainer( $theConnection, TRUE )
+				->ManageObject
+				(
+					$fields,						// Because it will be overwritten.
+					$this->offsetGet( kOFFSET_VERTEX_OBJECT ),	// Object identifier.
 					kFLAG_PERSIST_MODIFY + kFLAG_MODIFY_PULL		// Remove occurrences.
 				);
 		
@@ -761,9 +1139,9 @@ class COntologyEdge extends CNode
 	/**
 	 * <h4>Cleanup the object after committing</h4>
 	 *
-	 * In this class we reset the term object cache, we set the data member to <tt>NULL</tt>
-	 * so that next time one wants to retrieve the term object, it will have to be refreshed
-	 * and its references actualised.
+	 * In this class we reset the term object cache, we set the data members to
+	 * <tt>NULL</tt> so that next time one wants to retrieve related objects, the cache will
+	 * have to be refreshed.
 	 *
 	 * @param reference			   &$theConnection		Server, database or container.
 	 * @param reference			   &$theModifiers		Commit options.
@@ -778,9 +1156,9 @@ class COntologyEdge extends CNode
 		parent::_PostcommitCleanup( $theConnection, $theModifiers );
 		
 		//
-		// Reset term cache.
+		// Reset objects cache.
 		//
-		$this->mTerm = NULL;
+		$this->mSubject = $this->mPredicate = $this->mObject = NULL;
 	
 	} // _PostcommitCleanup.
 

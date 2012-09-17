@@ -7,7 +7,7 @@
 	<title>Class CEdge | MyWrapper Reference Documentation</title>
 
 	<script type="text/javascript" src="resources/combined.js?496895167"></script>
-	<script type="text/javascript" src="elementlist.js?3105881984"></script>
+	<script type="text/javascript" src="elementlist.js?779912626"></script>
 	<link rel="stylesheet" type="text/css" media="all" href="resources/style.css?1567499433" />
 
 </head>
@@ -119,14 +119,13 @@ direction of the relation flows from the subject towards the object.</p>
 </ul>
 
 <p>Objects of this class are <code><a href="class-CStatusDocument.html#_">CStatusDocument::_IsInited()</a></code> if all three properties are
-set, the nature of these elements is defined in derived classes.</p>
+set.</p>
 
 <p>The unique identifier of instances of this class is the combination of the
 above three elements, no two edges can connect the same vertices in the same
 direction and with the same predicate. This value is computed and stored in the
-global identifier, kOFFSET_GID, and its hash is stored in the unique
-identifier, kOFFSET_UID. Because of this workflow, these three values
-must be convertable to string.</p>
+global identifier, kOFFSET_GID, because of this workflow, these three
+values must be convertable to string.</p>
 
 <p>The class features member accessor methods for the default offsets:</p>
 
@@ -194,6 +193,10 @@ must be convertable to string.</p>
 	</dl>
 
 
+	<div>
+		<h4>Direct known subclasses</h4>
+			<a href="class-COntologyEdge.html">COntologyEdge</a>
+	</div>
 
 
 
@@ -226,7 +229,7 @@ href="mailto:m.skofic&#64;cgiar.org">m.skofic&#64;<!---->cgiar.org</a>&gt;<br />
 
 		<td class="name"><div>
 		<a class="anchor" href="#_Subject">#</a>
-		<code><a href="source-class-CEdge.html#93" title="Go to source code">Subject</a>( <span>mixed <var>$theValue</var> = <span class="php-keyword1">NULL</span></span>, <span>boolean <var>$getOld</var> = <span class="php-keyword1">FALSE</span> </span> )</code>
+		<code><a href="source-class-CEdge.html#91" title="Go to source code">Subject</a>( <span>mixed <var>$theValue</var> = <span class="php-keyword1">NULL</span></span>, <span>boolean <var>$getOld</var> = <span class="php-keyword1">FALSE</span> </span> )</code>
 
 		<div class="description short">
 			
@@ -299,7 +302,7 @@ will be locked and an exception will be raised.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#_Predicate">#</a>
-		<code><a href="source-class-CEdge.html#137" title="Go to source code">Predicate</a>( <span>mixed <var>$theValue</var> = <span class="php-keyword1">NULL</span></span>, <span>boolean <var>$getOld</var> = <span class="php-keyword1">FALSE</span> </span> )</code>
+		<code><a href="source-class-CEdge.html#135" title="Go to source code">Predicate</a>( <span>mixed <var>$theValue</var> = <span class="php-keyword1">NULL</span></span>, <span>boolean <var>$getOld</var> = <span class="php-keyword1">FALSE</span> </span> )</code>
 
 		<div class="description short">
 			
@@ -372,7 +375,7 @@ will be locked and an exception will be raised.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#_Object">#</a>
-		<code><a href="source-class-CEdge.html#181" title="Go to source code">Object</a>( <span>mixed <var>$theValue</var> = <span class="php-keyword1">NULL</span></span>, <span>boolean <var>$getOld</var> = <span class="php-keyword1">FALSE</span> </span> )</code>
+		<code><a href="source-class-CEdge.html#179" title="Go to source code">Object</a>( <span>mixed <var>$theValue</var> = <span class="php-keyword1">NULL</span></span>, <span>boolean <var>$getOld</var> = <span class="php-keyword1">FALSE</span> </span> )</code>
 
 		<div class="description short">
 			
@@ -445,7 +448,7 @@ will be locked and an exception will be raised.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#__index">#</a>
-		<code><a href="source-class-CEdge.html#234" title="Go to source code">_index</a>( <span><code><a href="class-CConnection.html">CConnection</a></code> <var>$theConnection</var></span>, <span>bitfield <var>$theModifiers</var></span> )</code>
+		<code><a href="source-class-CEdge.html#232" title="Go to source code">_index</a>( <span><code><a href="class-CConnection.html">CConnection</a></code> <var>$theConnection</var></span>, <span>bitfield <var>$theModifiers</var></span> )</code>
 
 		<div class="description short">
 			
@@ -479,10 +482,15 @@ exception.</p>
 					<code>string|null</code><br>The object's global unique identifier.<br />
 				</div>
 
+				<h4>Throws</h4>
+				<div class="list">
+					<code><code><a href="class-Exception.html">Exception</a></code></code><br />
+				</div>
 
 				<h4>See</h4>
 				<div class="list">
-						kOFFSET_LID kOFFSET_NAMESPACE kTOKEN_NAMESPACE_SEPARATOR<br />
+						kOFFSET_VERTEX_SUBJECT kOFFSET_PREDICATE kOFFSET_VERTEX_OBJECT<br />
+						kTOKEN_INDEX_SEPARATOR<br />
 				</div>
 
 				<h4>Overrides</h4>
@@ -502,7 +510,7 @@ exception.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#__Preunset">#</a>
-		<code><a href="source-class-CEdge.html#308" title="Go to source code">_Preunset</a>( <span>reference <var>&amp; $theOffset</var></span> )</code>
+		<code><a href="source-class-CEdge.html#309" title="Go to source code">_Preunset</a>( <span>reference <var>&amp; $theOffset</var></span> )</code>
 
 		<div class="description short">
 			
@@ -556,7 +564,7 @@ exception.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#__Ready">#</a>
-		<code><a href="source-class-CEdge.html#371" title="Go to source code">_Ready</a>( )</code>
+		<code><a href="source-class-CEdge.html#372" title="Go to source code">_Ready</a>( )</code>
 
 		<div class="description short">
 			
@@ -621,6 +629,7 @@ kOFFSET_VERTEX_OBJECT offsets.</p>
 			<a href="class-CPersistentDocument.html#_">Insert()</a>, 
 			<a href="class-CPersistentDocument.html#_">NID()</a>, 
 			<a href="class-CPersistentDocument.html#_">Replace()</a>, 
+			<a href="class-CPersistentDocument.html#_">ResolveClassContainer()</a>, 
 			<a href="class-CPersistentDocument.html#_">ResolveContainer()</a>, 
 			<a href="class-CPersistentDocument.html#_">Restore()</a>, 
 			<a href="class-CPersistentDocument.html#_">Update()</a>, 

@@ -8,7 +8,7 @@
 	<title>File CMongoContainer.php | MyWrapper Reference Documentation</title>
 
 	<script type="text/javascript" src="resources/combined.js?496895167"></script>
-	<script type="text/javascript" src="elementlist.js?3105881984"></script>
+	<script type="text/javascript" src="elementlist.js?779912626"></script>
 	<link rel="stylesheet" type="text/css" media="all" href="resources/style.css?1567499433" />
 
 </head>
@@ -495,595 +495,550 @@
 <a href="#402" id="402" class="l">402: </a>            <span class="php-comment">//</span>
 <a href="#403" id="403" class="l">403: </a>            <span class="php-keyword1">if</span>( <span class="php-var">$theIdentifier</span> !== <span class="php-keyword1">NULL</span> )
 <a href="#404" id="404" class="l">404: </a>                <span class="php-var">$criteria</span> = <span class="php-keyword1">array</span>( kOFFSET_NID =&gt; <span class="php-var">$theIdentifier</span> );
-<a href="#405" id="405" class="l">405: </a>            <span class="php-keyword1">elseif</span>( <span class="php-keyword2">array_key_exists</span>( kOFFSET_NID, (<span class="php-keyword1">array</span>) <span class="php-var">$theObject</span> ) )
-<a href="#406" id="406" class="l">406: </a>                <span class="php-var">$criteria</span> = <span class="php-keyword1">array</span>( kOFFSET_NID =&gt; <span class="php-var">$theObject</span>[ kOFFSET_NID ] );
-<a href="#407" id="407" class="l">407: </a>            <span class="php-keyword1">else</span>
-<a href="#408" id="408" class="l">408: </a>                <span class="php-keyword1">throw</span> <span class="php-keyword1">new</span> Exception
-<a href="#409" id="409" class="l">409: </a>                    ( <span class="php-quote">&quot;Missing object identifier&quot;</span>,
-<a href="#410" id="410" class="l">410: </a>                      kERROR_STATE );                                           <span class="php-comment">// !@! ==&gt;</span>
-<a href="#411" id="411" class="l">411: </a>            
-<a href="#412" id="412" class="l">412: </a>            <span class="php-comment">//</span>
-<a href="#413" id="413" class="l">413: </a>            <span class="php-comment">// Update.</span>
-<a href="#414" id="414" class="l">414: </a>            <span class="php-comment">//</span>
-<a href="#415" id="415" class="l">415: </a>            <span class="php-var">$status</span> = <span class="php-var">$container</span>-&gt;update( <span class="php-var">$criteria</span>, <span class="php-var">$theObject</span>, <span class="php-var">$options</span> );
-<a href="#416" id="416" class="l">416: </a>            
-<a href="#417" id="417" class="l">417: </a>            <span class="php-comment">//</span>
-<a href="#418" id="418" class="l">418: </a>            <span class="php-comment">// Check status.</span>
-<a href="#419" id="419" class="l">419: </a>            <span class="php-comment">//</span>
-<a href="#420" id="420" class="l">420: </a>            <span class="php-keyword1">if</span>( ! <span class="php-var">$status</span>[ <span class="php-quote">'ok'</span> ] )
-<a href="#421" id="421" class="l">421: </a>                <span class="php-keyword1">throw</span> <span class="php-keyword1">new</span> Exception
-<a href="#422" id="422" class="l">422: </a>                    ( <span class="php-var">$status</span>[ <span class="php-quote">'errmsg'</span> ],
-<a href="#423" id="423" class="l">423: </a>                      kERROR_COMMIT );                                          <span class="php-comment">// !@! ==&gt;</span>
-<a href="#424" id="424" class="l">424: </a>            
-<a href="#425" id="425" class="l">425: </a>            <span class="php-keyword1">return</span> <span class="php-var">$status</span>[ <span class="php-quote">'updatedExisting'</span> ];                                    <span class="php-comment">// ==&gt;</span>
-<a href="#426" id="426" class="l">426: </a>        
-<a href="#427" id="427" class="l">427: </a>        } <span class="php-comment">// Update.</span>
-<a href="#428" id="428" class="l">428: </a>        
-<a href="#429" id="429" class="l">429: </a>        <span class="php-comment">//</span>
-<a href="#430" id="430" class="l">430: </a>        <span class="php-comment">// Handle modify.</span>
-<a href="#431" id="431" class="l">431: </a>        <span class="php-comment">//</span>
-<a href="#432" id="432" class="l">432: </a>        <span class="php-keyword1">if</span>( <span class="php-var">$modifiers</span> == kFLAG_PERSIST_MODIFY )
-<a href="#433" id="433" class="l">433: </a>        {
-<a href="#434" id="434" class="l">434: </a>            <span class="php-comment">//</span>
-<a href="#435" id="435" class="l">435: </a>            <span class="php-comment">// Set default commit options.</span>
-<a href="#436" id="436" class="l">436: </a>            <span class="php-comment">//</span>
-<a href="#437" id="437" class="l">437: </a>            <span class="php-var">$options</span>[ <span class="php-quote">'upsert'</span> ] = <span class="php-keyword1">FALSE</span>;       <span class="php-comment">// Don't create new objects.</span>
-<a href="#438" id="438" class="l">438: </a>            <span class="php-var">$options</span>[ <span class="php-quote">'multiple'</span> ] = <span class="php-keyword1">FALSE</span>;     <span class="php-comment">// Operate on first object.</span>
-<a href="#439" id="439" class="l">439: </a>            
+<a href="#405" id="405" class="l">405: </a>            <span class="php-keyword1">elseif</span>( <span class="php-keyword2">is_array</span>( <span class="php-var">$theObject</span> )
+<a href="#406" id="406" class="l">406: </a>                 &amp;&amp; <span class="php-keyword2">array_key_exists</span>( kOFFSET_NID, <span class="php-var">$theObject</span> ) )
+<a href="#407" id="407" class="l">407: </a>                <span class="php-var">$criteria</span> = <span class="php-keyword1">array</span>( kOFFSET_NID =&gt; <span class="php-var">$theObject</span>[ kOFFSET_NID ] );
+<a href="#408" id="408" class="l">408: </a>            <span class="php-keyword1">elseif</span>( (<span class="php-var">$theObject</span> <span class="php-keyword1">instanceof</span> ArrayObject)
+<a href="#409" id="409" class="l">409: </a>                 &amp;&amp; <span class="php-var">$theObject</span>-&gt;offsetExists( kOFFSET_NID ) )
+<a href="#410" id="410" class="l">410: </a>                <span class="php-var">$criteria</span> = <span class="php-keyword1">array</span>( kOFFSET_NID =&gt; <span class="php-var">$theObject</span>-&gt;offsetGet( kOFFSET_NID ) );
+<a href="#411" id="411" class="l">411: </a>            <span class="php-keyword1">else</span>
+<a href="#412" id="412" class="l">412: </a>                <span class="php-keyword1">throw</span> <span class="php-keyword1">new</span> Exception
+<a href="#413" id="413" class="l">413: </a>                    ( <span class="php-quote">&quot;Missing object identifier&quot;</span>,
+<a href="#414" id="414" class="l">414: </a>                      kERROR_STATE );                                           <span class="php-comment">// !@! ==&gt;</span>
+<a href="#415" id="415" class="l">415: </a>            
+<a href="#416" id="416" class="l">416: </a>            <span class="php-comment">//</span>
+<a href="#417" id="417" class="l">417: </a>            <span class="php-comment">// Update.</span>
+<a href="#418" id="418" class="l">418: </a>            <span class="php-comment">//</span>
+<a href="#419" id="419" class="l">419: </a>            <span class="php-var">$status</span> = <span class="php-var">$container</span>-&gt;update( <span class="php-var">$criteria</span>, <span class="php-var">$theObject</span>, <span class="php-var">$options</span> );
+<a href="#420" id="420" class="l">420: </a>            
+<a href="#421" id="421" class="l">421: </a>            <span class="php-comment">//</span>
+<a href="#422" id="422" class="l">422: </a>            <span class="php-comment">// Check status.</span>
+<a href="#423" id="423" class="l">423: </a>            <span class="php-comment">//</span>
+<a href="#424" id="424" class="l">424: </a>            <span class="php-keyword1">if</span>( ! <span class="php-var">$status</span>[ <span class="php-quote">'ok'</span> ] )
+<a href="#425" id="425" class="l">425: </a>                <span class="php-keyword1">throw</span> <span class="php-keyword1">new</span> Exception
+<a href="#426" id="426" class="l">426: </a>                    ( <span class="php-var">$status</span>[ <span class="php-quote">'errmsg'</span> ],
+<a href="#427" id="427" class="l">427: </a>                      kERROR_COMMIT );                                          <span class="php-comment">// !@! ==&gt;</span>
+<a href="#428" id="428" class="l">428: </a>            
+<a href="#429" id="429" class="l">429: </a>            <span class="php-keyword1">return</span> <span class="php-var">$status</span>[ <span class="php-quote">'updatedExisting'</span> ];                                    <span class="php-comment">// ==&gt;</span>
+<a href="#430" id="430" class="l">430: </a>        
+<a href="#431" id="431" class="l">431: </a>        } <span class="php-comment">// Update.</span>
+<a href="#432" id="432" class="l">432: </a>        
+<a href="#433" id="433" class="l">433: </a>        <span class="php-comment">//</span>
+<a href="#434" id="434" class="l">434: </a>        <span class="php-comment">// Handle modify.</span>
+<a href="#435" id="435" class="l">435: </a>        <span class="php-comment">//</span>
+<a href="#436" id="436" class="l">436: </a>        <span class="php-keyword1">if</span>( <span class="php-var">$modifiers</span> == kFLAG_PERSIST_MODIFY )
+<a href="#437" id="437" class="l">437: </a>        {
+<a href="#438" id="438" class="l">438: </a>            <span class="php-comment">//</span>
+<a href="#439" id="439" class="l">439: </a>            <span class="php-comment">// Set default commit options.</span>
 <a href="#440" id="440" class="l">440: </a>            <span class="php-comment">//</span>
-<a href="#441" id="441" class="l">441: </a>            <span class="php-comment">// Determine criteria.</span>
-<a href="#442" id="442" class="l">442: </a>            <span class="php-comment">//</span>
-<a href="#443" id="443" class="l">443: </a>            <span class="php-keyword1">if</span>( <span class="php-var">$theIdentifier</span> !== <span class="php-keyword1">NULL</span> )
-<a href="#444" id="444" class="l">444: </a>                <span class="php-var">$criteria</span> = <span class="php-keyword1">array</span>( kOFFSET_NID =&gt; <span class="php-var">$theIdentifier</span> );
-<a href="#445" id="445" class="l">445: </a>            <span class="php-keyword1">else</span>
-<a href="#446" id="446" class="l">446: </a>                <span class="php-keyword1">throw</span> <span class="php-keyword1">new</span> Exception
-<a href="#447" id="447" class="l">447: </a>                    ( <span class="php-quote">&quot;Missing object identifier&quot;</span>,
-<a href="#448" id="448" class="l">448: </a>                      kERROR_STATE );                                           <span class="php-comment">// !@! ==&gt;</span>
-<a href="#449" id="449" class="l">449: </a>            
-<a href="#450" id="450" class="l">450: </a>            <span class="php-comment">//</span>
-<a href="#451" id="451" class="l">451: </a>            <span class="php-comment">// Init modification matrix.</span>
-<a href="#452" id="452" class="l">452: </a>            <span class="php-comment">//</span>
-<a href="#453" id="453" class="l">453: </a>            <span class="php-var">$modifications</span> = <span class="php-keyword1">Array</span>();
-<a href="#454" id="454" class="l">454: </a>            
-<a href="#455" id="455" class="l">455: </a>            <span class="php-comment">//</span>
-<a href="#456" id="456" class="l">456: </a>            <span class="php-comment">// Handle increment.</span>
-<a href="#457" id="457" class="l">457: </a>            <span class="php-comment">//</span>
-<a href="#458" id="458" class="l">458: </a>            <span class="php-keyword1">if</span>( (<span class="php-var">$theModifiers</span> &amp; kFLAG_MODIFY_MASK) == kFLAG_MODIFY_INCREMENT )
-<a href="#459" id="459" class="l">459: </a>            {
-<a href="#460" id="460" class="l">460: </a>                <span class="php-comment">//</span>
-<a href="#461" id="461" class="l">461: </a>                <span class="php-comment">// Iterate offsets.</span>
-<a href="#462" id="462" class="l">462: </a>                <span class="php-comment">//</span>
-<a href="#463" id="463" class="l">463: </a>                <span class="php-keyword1">foreach</span>( <span class="php-var">$theObject</span> <span class="php-keyword1">as</span> <span class="php-var">$offset</span> =&gt; <span class="php-var">$value</span> )
-<a href="#464" id="464" class="l">464: </a>                {
-<a href="#465" id="465" class="l">465: </a>                    <span class="php-comment">//</span>
-<a href="#466" id="466" class="l">466: </a>                    <span class="php-comment">// Consider only integers.</span>
-<a href="#467" id="467" class="l">467: </a>                    <span class="php-comment">//</span>
-<a href="#468" id="468" class="l">468: </a>                    <span class="php-var">$inc</span> = (int) <span class="php-var">$value</span>;
-<a href="#469" id="469" class="l">469: </a>                    
-<a href="#470" id="470" class="l">470: </a>                    <span class="php-comment">//</span>
-<a href="#471" id="471" class="l">471: </a>                    <span class="php-comment">// Build clause.</span>
-<a href="#472" id="472" class="l">472: </a>                    <span class="php-comment">//</span>
-<a href="#473" id="473" class="l">473: </a>                    <span class="php-var">$modifications</span>[ <span class="php-quote">'$inc'</span> ][ <span class="php-var">$offset</span> ] = <span class="php-var">$inc</span>;
-<a href="#474" id="474" class="l">474: </a>                }
-<a href="#475" id="475" class="l">475: </a>            
-<a href="#476" id="476" class="l">476: </a>            } <span class="php-comment">// Increment.</span>
-<a href="#477" id="477" class="l">477: </a>            
-<a href="#478" id="478" class="l">478: </a>            <span class="php-comment">//</span>
-<a href="#479" id="479" class="l">479: </a>            <span class="php-comment">// Handle append.</span>
-<a href="#480" id="480" class="l">480: </a>            <span class="php-comment">//</span>
-<a href="#481" id="481" class="l">481: </a>            <span class="php-keyword1">elseif</span>( (<span class="php-var">$theModifiers</span> &amp; kFLAG_MODIFY_MASK) == kFLAG_MODIFY_APPEND )
-<a href="#482" id="482" class="l">482: </a>            {
-<a href="#483" id="483" class="l">483: </a>                <span class="php-comment">//</span>
-<a href="#484" id="484" class="l">484: </a>                <span class="php-comment">// Iterate offsets.</span>
-<a href="#485" id="485" class="l">485: </a>                <span class="php-comment">//</span>
-<a href="#486" id="486" class="l">486: </a>                <span class="php-keyword1">foreach</span>( <span class="php-var">$theObject</span> <span class="php-keyword1">as</span> <span class="php-var">$offset</span> =&gt; <span class="php-var">$value</span> )
-<a href="#487" id="487" class="l">487: </a>                {
-<a href="#488" id="488" class="l">488: </a>                    <span class="php-comment">//</span>
-<a href="#489" id="489" class="l">489: </a>                    <span class="php-comment">// Convert array objects.</span>
-<a href="#490" id="490" class="l">490: </a>                    <span class="php-comment">//</span>
-<a href="#491" id="491" class="l">491: </a>                    <span class="php-keyword1">if</span>( <span class="php-var">$value</span> <span class="php-keyword1">instanceof</span> ArrayObject )
-<a href="#492" id="492" class="l">492: </a>                        <span class="php-var">$value</span> = <span class="php-var">$value</span>-&gt;getArrayCopy();
-<a href="#493" id="493" class="l">493: </a>                        
+<a href="#441" id="441" class="l">441: </a>            <span class="php-var">$options</span>[ <span class="php-quote">'upsert'</span> ] = <span class="php-keyword1">FALSE</span>;       <span class="php-comment">// Don't create new objects.</span>
+<a href="#442" id="442" class="l">442: </a>            <span class="php-var">$options</span>[ <span class="php-quote">'multiple'</span> ] = <span class="php-keyword1">FALSE</span>;     <span class="php-comment">// Operate on first object.</span>
+<a href="#443" id="443" class="l">443: </a>            
+<a href="#444" id="444" class="l">444: </a>            <span class="php-comment">//</span>
+<a href="#445" id="445" class="l">445: </a>            <span class="php-comment">// Determine criteria.</span>
+<a href="#446" id="446" class="l">446: </a>            <span class="php-comment">//</span>
+<a href="#447" id="447" class="l">447: </a>            <span class="php-keyword1">if</span>( <span class="php-var">$theIdentifier</span> !== <span class="php-keyword1">NULL</span> )
+<a href="#448" id="448" class="l">448: </a>                <span class="php-var">$criteria</span> = <span class="php-keyword1">array</span>( kOFFSET_NID =&gt; <span class="php-var">$theIdentifier</span> );
+<a href="#449" id="449" class="l">449: </a>            <span class="php-keyword1">else</span>
+<a href="#450" id="450" class="l">450: </a>                <span class="php-keyword1">throw</span> <span class="php-keyword1">new</span> Exception
+<a href="#451" id="451" class="l">451: </a>                    ( <span class="php-quote">&quot;Missing object identifier&quot;</span>,
+<a href="#452" id="452" class="l">452: </a>                      kERROR_STATE );                                           <span class="php-comment">// !@! ==&gt;</span>
+<a href="#453" id="453" class="l">453: </a>            
+<a href="#454" id="454" class="l">454: </a>            <span class="php-comment">//</span>
+<a href="#455" id="455" class="l">455: </a>            <span class="php-comment">// Init modification matrix.</span>
+<a href="#456" id="456" class="l">456: </a>            <span class="php-comment">//</span>
+<a href="#457" id="457" class="l">457: </a>            <span class="php-var">$modifications</span> = <span class="php-keyword1">Array</span>();
+<a href="#458" id="458" class="l">458: </a>            
+<a href="#459" id="459" class="l">459: </a>            <span class="php-comment">//</span>
+<a href="#460" id="460" class="l">460: </a>            <span class="php-comment">// Handle increment.</span>
+<a href="#461" id="461" class="l">461: </a>            <span class="php-comment">//</span>
+<a href="#462" id="462" class="l">462: </a>            <span class="php-keyword1">if</span>( (<span class="php-var">$theModifiers</span> &amp; kFLAG_MODIFY_MASK) == kFLAG_MODIFY_INCREMENT )
+<a href="#463" id="463" class="l">463: </a>            {
+<a href="#464" id="464" class="l">464: </a>                <span class="php-comment">//</span>
+<a href="#465" id="465" class="l">465: </a>                <span class="php-comment">// Iterate offsets.</span>
+<a href="#466" id="466" class="l">466: </a>                <span class="php-comment">//</span>
+<a href="#467" id="467" class="l">467: </a>                <span class="php-keyword1">foreach</span>( <span class="php-var">$theObject</span> <span class="php-keyword1">as</span> <span class="php-var">$offset</span> =&gt; <span class="php-var">$value</span> )
+<a href="#468" id="468" class="l">468: </a>                {
+<a href="#469" id="469" class="l">469: </a>                    <span class="php-comment">//</span>
+<a href="#470" id="470" class="l">470: </a>                    <span class="php-comment">// Consider only integers.</span>
+<a href="#471" id="471" class="l">471: </a>                    <span class="php-comment">//</span>
+<a href="#472" id="472" class="l">472: </a>                    <span class="php-var">$inc</span> = (int) <span class="php-var">$value</span>;
+<a href="#473" id="473" class="l">473: </a>                    
+<a href="#474" id="474" class="l">474: </a>                    <span class="php-comment">//</span>
+<a href="#475" id="475" class="l">475: </a>                    <span class="php-comment">// Build clause.</span>
+<a href="#476" id="476" class="l">476: </a>                    <span class="php-comment">//</span>
+<a href="#477" id="477" class="l">477: </a>                    <span class="php-var">$modifications</span>[ <span class="php-quote">'$inc'</span> ][ <span class="php-var">$offset</span> ] = <span class="php-var">$inc</span>;
+<a href="#478" id="478" class="l">478: </a>                }
+<a href="#479" id="479" class="l">479: </a>            
+<a href="#480" id="480" class="l">480: </a>            } <span class="php-comment">// Increment.</span>
+<a href="#481" id="481" class="l">481: </a>            
+<a href="#482" id="482" class="l">482: </a>            <span class="php-comment">//</span>
+<a href="#483" id="483" class="l">483: </a>            <span class="php-comment">// Handle append.</span>
+<a href="#484" id="484" class="l">484: </a>            <span class="php-comment">//</span>
+<a href="#485" id="485" class="l">485: </a>            <span class="php-keyword1">elseif</span>( (<span class="php-var">$theModifiers</span> &amp; kFLAG_MODIFY_MASK) == kFLAG_MODIFY_APPEND )
+<a href="#486" id="486" class="l">486: </a>            {
+<a href="#487" id="487" class="l">487: </a>                <span class="php-comment">//</span>
+<a href="#488" id="488" class="l">488: </a>                <span class="php-comment">// Iterate offsets.</span>
+<a href="#489" id="489" class="l">489: </a>                <span class="php-comment">//</span>
+<a href="#490" id="490" class="l">490: </a>                <span class="php-keyword1">foreach</span>( <span class="php-var">$theObject</span> <span class="php-keyword1">as</span> <span class="php-var">$offset</span> =&gt; <span class="php-var">$value</span> )
+<a href="#491" id="491" class="l">491: </a>                {
+<a href="#492" id="492" class="l">492: </a>                    <span class="php-comment">//</span>
+<a href="#493" id="493" class="l">493: </a>                    <span class="php-comment">// Convert array objects.</span>
 <a href="#494" id="494" class="l">494: </a>                    <span class="php-comment">//</span>
-<a href="#495" id="495" class="l">495: </a>                    <span class="php-comment">// Handle array value.</span>
-<a href="#496" id="496" class="l">496: </a>                    <span class="php-comment">//</span>
-<a href="#497" id="497" class="l">497: </a>                    <span class="php-keyword1">if</span>( <span class="php-keyword2">is_array</span>( <span class="php-var">$value</span> ) )
-<a href="#498" id="498" class="l">498: </a>                        <span class="php-var">$modifications</span>[ <span class="php-quote">'$pushAll'</span> ][ <span class="php-var">$offset</span> ] = <span class="php-var">$value</span>;
-<a href="#499" id="499" class="l">499: </a>                    
+<a href="#495" id="495" class="l">495: </a>                    <span class="php-keyword1">if</span>( <span class="php-var">$value</span> <span class="php-keyword1">instanceof</span> ArrayObject )
+<a href="#496" id="496" class="l">496: </a>                        <span class="php-var">$value</span> = <span class="php-var">$value</span>-&gt;getArrayCopy();
+<a href="#497" id="497" class="l">497: </a>                        
+<a href="#498" id="498" class="l">498: </a>                    <span class="php-comment">//</span>
+<a href="#499" id="499" class="l">499: </a>                    <span class="php-comment">// Handle array value.</span>
 <a href="#500" id="500" class="l">500: </a>                    <span class="php-comment">//</span>
-<a href="#501" id="501" class="l">501: </a>                    <span class="php-comment">// Handle scalar.</span>
-<a href="#502" id="502" class="l">502: </a>                    <span class="php-comment">//</span>
-<a href="#503" id="503" class="l">503: </a>                    <span class="php-keyword1">else</span>
-<a href="#504" id="504" class="l">504: </a>                        <span class="php-var">$modifications</span>[ <span class="php-quote">'$push'</span> ][ <span class="php-var">$offset</span> ] = <span class="php-var">$value</span>;
-<a href="#505" id="505" class="l">505: </a>                }
-<a href="#506" id="506" class="l">506: </a>            
-<a href="#507" id="507" class="l">507: </a>            } <span class="php-comment">// Append.</span>
-<a href="#508" id="508" class="l">508: </a>            
-<a href="#509" id="509" class="l">509: </a>            <span class="php-comment">//</span>
-<a href="#510" id="510" class="l">510: </a>            <span class="php-comment">// Handle add to set.</span>
-<a href="#511" id="511" class="l">511: </a>            <span class="php-comment">//</span>
-<a href="#512" id="512" class="l">512: </a>            <span class="php-keyword1">elseif</span>( (<span class="php-var">$theModifiers</span> &amp; kFLAG_MODIFY_MASK) == kFLAG_MODIFY_ADDSET )
-<a href="#513" id="513" class="l">513: </a>            {
-<a href="#514" id="514" class="l">514: </a>                <span class="php-comment">//</span>
-<a href="#515" id="515" class="l">515: </a>                <span class="php-comment">// Iterate offsets.</span>
-<a href="#516" id="516" class="l">516: </a>                <span class="php-comment">//</span>
-<a href="#517" id="517" class="l">517: </a>                <span class="php-keyword1">foreach</span>( <span class="php-var">$theObject</span> <span class="php-keyword1">as</span> <span class="php-var">$offset</span> =&gt; <span class="php-var">$value</span> )
-<a href="#518" id="518" class="l">518: </a>                {
-<a href="#519" id="519" class="l">519: </a>                    <span class="php-comment">//</span>
-<a href="#520" id="520" class="l">520: </a>                    <span class="php-comment">// Convert array objects.</span>
-<a href="#521" id="521" class="l">521: </a>                    <span class="php-comment">//</span>
-<a href="#522" id="522" class="l">522: </a>                    <span class="php-keyword1">if</span>( <span class="php-var">$value</span> <span class="php-keyword1">instanceof</span> ArrayObject )
-<a href="#523" id="523" class="l">523: </a>                        <span class="php-var">$value</span> = <span class="php-var">$value</span>-&gt;getArrayCopy();
-<a href="#524" id="524" class="l">524: </a>                        
+<a href="#501" id="501" class="l">501: </a>                    <span class="php-keyword1">if</span>( <span class="php-keyword2">is_array</span>( <span class="php-var">$value</span> ) )
+<a href="#502" id="502" class="l">502: </a>                        <span class="php-var">$modifications</span>[ <span class="php-quote">'$pushAll'</span> ][ <span class="php-var">$offset</span> ] = <span class="php-var">$value</span>;
+<a href="#503" id="503" class="l">503: </a>                    
+<a href="#504" id="504" class="l">504: </a>                    <span class="php-comment">//</span>
+<a href="#505" id="505" class="l">505: </a>                    <span class="php-comment">// Handle scalar.</span>
+<a href="#506" id="506" class="l">506: </a>                    <span class="php-comment">//</span>
+<a href="#507" id="507" class="l">507: </a>                    <span class="php-keyword1">else</span>
+<a href="#508" id="508" class="l">508: </a>                        <span class="php-var">$modifications</span>[ <span class="php-quote">'$push'</span> ][ <span class="php-var">$offset</span> ] = <span class="php-var">$value</span>;
+<a href="#509" id="509" class="l">509: </a>                }
+<a href="#510" id="510" class="l">510: </a>            
+<a href="#511" id="511" class="l">511: </a>            } <span class="php-comment">// Append.</span>
+<a href="#512" id="512" class="l">512: </a>            
+<a href="#513" id="513" class="l">513: </a>            <span class="php-comment">//</span>
+<a href="#514" id="514" class="l">514: </a>            <span class="php-comment">// Handle add to set.</span>
+<a href="#515" id="515" class="l">515: </a>            <span class="php-comment">//</span>
+<a href="#516" id="516" class="l">516: </a>            <span class="php-keyword1">elseif</span>( (<span class="php-var">$theModifiers</span> &amp; kFLAG_MODIFY_MASK) == kFLAG_MODIFY_ADDSET )
+<a href="#517" id="517" class="l">517: </a>            {
+<a href="#518" id="518" class="l">518: </a>                <span class="php-comment">//</span>
+<a href="#519" id="519" class="l">519: </a>                <span class="php-comment">// Iterate offsets.</span>
+<a href="#520" id="520" class="l">520: </a>                <span class="php-comment">//</span>
+<a href="#521" id="521" class="l">521: </a>                <span class="php-keyword1">foreach</span>( <span class="php-var">$theObject</span> <span class="php-keyword1">as</span> <span class="php-var">$offset</span> =&gt; <span class="php-var">$value</span> )
+<a href="#522" id="522" class="l">522: </a>                {
+<a href="#523" id="523" class="l">523: </a>                    <span class="php-comment">//</span>
+<a href="#524" id="524" class="l">524: </a>                    <span class="php-comment">// Convert array objects.</span>
 <a href="#525" id="525" class="l">525: </a>                    <span class="php-comment">//</span>
-<a href="#526" id="526" class="l">526: </a>                    <span class="php-comment">// Handle array value.</span>
-<a href="#527" id="527" class="l">527: </a>                    <span class="php-comment">//</span>
-<a href="#528" id="528" class="l">528: </a>                    <span class="php-keyword1">if</span>( <span class="php-keyword2">is_array</span>( <span class="php-var">$value</span> ) )
-<a href="#529" id="529" class="l">529: </a>                        <span class="php-var">$modifications</span>[ <span class="php-quote">'$addToSet'</span> ][ <span class="php-var">$offset</span> ][ <span class="php-quote">'$each'</span> ] = <span class="php-var">$value</span>;
-<a href="#530" id="530" class="l">530: </a>                    
+<a href="#526" id="526" class="l">526: </a>                    <span class="php-keyword1">if</span>( <span class="php-var">$value</span> <span class="php-keyword1">instanceof</span> ArrayObject )
+<a href="#527" id="527" class="l">527: </a>                        <span class="php-var">$value</span> = <span class="php-var">$value</span>-&gt;getArrayCopy();
+<a href="#528" id="528" class="l">528: </a>                        
+<a href="#529" id="529" class="l">529: </a>                    <span class="php-comment">//</span>
+<a href="#530" id="530" class="l">530: </a>                    <span class="php-comment">// Handle array value.</span>
 <a href="#531" id="531" class="l">531: </a>                    <span class="php-comment">//</span>
-<a href="#532" id="532" class="l">532: </a>                    <span class="php-comment">// Handle scalar.</span>
-<a href="#533" id="533" class="l">533: </a>                    <span class="php-comment">//</span>
-<a href="#534" id="534" class="l">534: </a>                    <span class="php-keyword1">else</span>
-<a href="#535" id="535" class="l">535: </a>                        <span class="php-var">$modifications</span>[ <span class="php-quote">'$addToSet'</span> ][ <span class="php-var">$offset</span> ] = <span class="php-var">$value</span>;
-<a href="#536" id="536" class="l">536: </a>                }
-<a href="#537" id="537" class="l">537: </a>            
-<a href="#538" id="538" class="l">538: </a>            } <span class="php-comment">// Add to set.</span>
-<a href="#539" id="539" class="l">539: </a>            
-<a href="#540" id="540" class="l">540: </a>            <span class="php-comment">//</span>
-<a href="#541" id="541" class="l">541: </a>            <span class="php-comment">// Handle pop.</span>
-<a href="#542" id="542" class="l">542: </a>            <span class="php-comment">//</span>
-<a href="#543" id="543" class="l">543: </a>            <span class="php-keyword1">elseif</span>( (<span class="php-var">$theModifiers</span> &amp; kFLAG_MODIFY_MASK) == kFLAG_MODIFY_POP )
-<a href="#544" id="544" class="l">544: </a>            {
-<a href="#545" id="545" class="l">545: </a>                <span class="php-comment">//</span>
-<a href="#546" id="546" class="l">546: </a>                <span class="php-comment">// Iterate offsets.</span>
-<a href="#547" id="547" class="l">547: </a>                <span class="php-comment">//</span>
-<a href="#548" id="548" class="l">548: </a>                <span class="php-keyword1">foreach</span>( <span class="php-var">$theObject</span> <span class="php-keyword1">as</span> <span class="php-var">$offset</span> =&gt; <span class="php-var">$value</span> )
-<a href="#549" id="549" class="l">549: </a>                {
-<a href="#550" id="550" class="l">550: </a>                    <span class="php-comment">//</span>
-<a href="#551" id="551" class="l">551: </a>                    <span class="php-comment">// Consider only integers.</span>
-<a href="#552" id="552" class="l">552: </a>                    <span class="php-comment">//</span>
-<a href="#553" id="553" class="l">553: </a>                    <span class="php-var">$inc</span> = ( ((int) <span class="php-var">$value</span>) &gt; <span class="php-num">0</span> ) ? <span class="php-num">1</span> : -<span class="php-num">1</span>;
-<a href="#554" id="554" class="l">554: </a>                    
-<a href="#555" id="555" class="l">555: </a>                    <span class="php-comment">//</span>
-<a href="#556" id="556" class="l">556: </a>                    <span class="php-comment">// Pop.</span>
-<a href="#557" id="557" class="l">557: </a>                    <span class="php-comment">//</span>
-<a href="#558" id="558" class="l">558: </a>                    <span class="php-var">$modifications</span>[ <span class="php-quote">'$pop'</span> ][ <span class="php-var">$offset</span> ] = <span class="php-var">$inc</span>;
-<a href="#559" id="559" class="l">559: </a>                }
-<a href="#560" id="560" class="l">560: </a>            
-<a href="#561" id="561" class="l">561: </a>            } <span class="php-comment">// Pop.</span>
-<a href="#562" id="562" class="l">562: </a>            
-<a href="#563" id="563" class="l">563: </a>            <span class="php-comment">//</span>
-<a href="#564" id="564" class="l">564: </a>            <span class="php-comment">// Handle pull.</span>
-<a href="#565" id="565" class="l">565: </a>            <span class="php-comment">//</span>
-<a href="#566" id="566" class="l">566: </a>            <span class="php-keyword1">elseif</span>( (<span class="php-var">$theModifiers</span> &amp; kFLAG_MODIFY_MASK) == kFLAG_MODIFY_PULL )
-<a href="#567" id="567" class="l">567: </a>            {
-<a href="#568" id="568" class="l">568: </a>                <span class="php-comment">//</span>
-<a href="#569" id="569" class="l">569: </a>                <span class="php-comment">// Iterate offsets.</span>
-<a href="#570" id="570" class="l">570: </a>                <span class="php-comment">//</span>
-<a href="#571" id="571" class="l">571: </a>                <span class="php-keyword1">foreach</span>( <span class="php-var">$theObject</span> <span class="php-keyword1">as</span> <span class="php-var">$offset</span> =&gt; <span class="php-var">$value</span> )
-<a href="#572" id="572" class="l">572: </a>                {
-<a href="#573" id="573" class="l">573: </a>                    <span class="php-comment">//</span>
-<a href="#574" id="574" class="l">574: </a>                    <span class="php-comment">// Convert array objects.</span>
-<a href="#575" id="575" class="l">575: </a>                    <span class="php-comment">//</span>
-<a href="#576" id="576" class="l">576: </a>                    <span class="php-keyword1">if</span>( <span class="php-var">$value</span> <span class="php-keyword1">instanceof</span> ArrayObject )
-<a href="#577" id="577" class="l">577: </a>                        <span class="php-var">$value</span> = <span class="php-var">$value</span>-&gt;getArrayCopy();
-<a href="#578" id="578" class="l">578: </a>                        
+<a href="#532" id="532" class="l">532: </a>                    <span class="php-keyword1">if</span>( <span class="php-keyword2">is_array</span>( <span class="php-var">$value</span> ) )
+<a href="#533" id="533" class="l">533: </a>                        <span class="php-var">$modifications</span>[ <span class="php-quote">'$addToSet'</span> ][ <span class="php-var">$offset</span> ][ <span class="php-quote">'$each'</span> ] = <span class="php-var">$value</span>;
+<a href="#534" id="534" class="l">534: </a>                    
+<a href="#535" id="535" class="l">535: </a>                    <span class="php-comment">//</span>
+<a href="#536" id="536" class="l">536: </a>                    <span class="php-comment">// Handle scalar.</span>
+<a href="#537" id="537" class="l">537: </a>                    <span class="php-comment">//</span>
+<a href="#538" id="538" class="l">538: </a>                    <span class="php-keyword1">else</span>
+<a href="#539" id="539" class="l">539: </a>                        <span class="php-var">$modifications</span>[ <span class="php-quote">'$addToSet'</span> ][ <span class="php-var">$offset</span> ] = <span class="php-var">$value</span>;
+<a href="#540" id="540" class="l">540: </a>                }
+<a href="#541" id="541" class="l">541: </a>            
+<a href="#542" id="542" class="l">542: </a>            } <span class="php-comment">// Add to set.</span>
+<a href="#543" id="543" class="l">543: </a>            
+<a href="#544" id="544" class="l">544: </a>            <span class="php-comment">//</span>
+<a href="#545" id="545" class="l">545: </a>            <span class="php-comment">// Handle pop.</span>
+<a href="#546" id="546" class="l">546: </a>            <span class="php-comment">//</span>
+<a href="#547" id="547" class="l">547: </a>            <span class="php-keyword1">elseif</span>( (<span class="php-var">$theModifiers</span> &amp; kFLAG_MODIFY_MASK) == kFLAG_MODIFY_POP )
+<a href="#548" id="548" class="l">548: </a>            {
+<a href="#549" id="549" class="l">549: </a>                <span class="php-comment">//</span>
+<a href="#550" id="550" class="l">550: </a>                <span class="php-comment">// Iterate offsets.</span>
+<a href="#551" id="551" class="l">551: </a>                <span class="php-comment">//</span>
+<a href="#552" id="552" class="l">552: </a>                <span class="php-keyword1">foreach</span>( <span class="php-var">$theObject</span> <span class="php-keyword1">as</span> <span class="php-var">$offset</span> =&gt; <span class="php-var">$value</span> )
+<a href="#553" id="553" class="l">553: </a>                {
+<a href="#554" id="554" class="l">554: </a>                    <span class="php-comment">//</span>
+<a href="#555" id="555" class="l">555: </a>                    <span class="php-comment">// Consider only integers.</span>
+<a href="#556" id="556" class="l">556: </a>                    <span class="php-comment">//</span>
+<a href="#557" id="557" class="l">557: </a>                    <span class="php-var">$inc</span> = ( ((int) <span class="php-var">$value</span>) &gt; <span class="php-num">0</span> ) ? <span class="php-num">1</span> : -<span class="php-num">1</span>;
+<a href="#558" id="558" class="l">558: </a>                    
+<a href="#559" id="559" class="l">559: </a>                    <span class="php-comment">//</span>
+<a href="#560" id="560" class="l">560: </a>                    <span class="php-comment">// Pop.</span>
+<a href="#561" id="561" class="l">561: </a>                    <span class="php-comment">//</span>
+<a href="#562" id="562" class="l">562: </a>                    <span class="php-var">$modifications</span>[ <span class="php-quote">'$pop'</span> ][ <span class="php-var">$offset</span> ] = <span class="php-var">$inc</span>;
+<a href="#563" id="563" class="l">563: </a>                }
+<a href="#564" id="564" class="l">564: </a>            
+<a href="#565" id="565" class="l">565: </a>            } <span class="php-comment">// Pop.</span>
+<a href="#566" id="566" class="l">566: </a>            
+<a href="#567" id="567" class="l">567: </a>            <span class="php-comment">//</span>
+<a href="#568" id="568" class="l">568: </a>            <span class="php-comment">// Handle pull.</span>
+<a href="#569" id="569" class="l">569: </a>            <span class="php-comment">//</span>
+<a href="#570" id="570" class="l">570: </a>            <span class="php-keyword1">elseif</span>( (<span class="php-var">$theModifiers</span> &amp; kFLAG_MODIFY_MASK) == kFLAG_MODIFY_PULL )
+<a href="#571" id="571" class="l">571: </a>            {
+<a href="#572" id="572" class="l">572: </a>                <span class="php-comment">//</span>
+<a href="#573" id="573" class="l">573: </a>                <span class="php-comment">// Iterate offsets.</span>
+<a href="#574" id="574" class="l">574: </a>                <span class="php-comment">//</span>
+<a href="#575" id="575" class="l">575: </a>                <span class="php-keyword1">foreach</span>( <span class="php-var">$theObject</span> <span class="php-keyword1">as</span> <span class="php-var">$offset</span> =&gt; <span class="php-var">$value</span> )
+<a href="#576" id="576" class="l">576: </a>                {
+<a href="#577" id="577" class="l">577: </a>                    <span class="php-comment">//</span>
+<a href="#578" id="578" class="l">578: </a>                    <span class="php-comment">// Convert array objects.</span>
 <a href="#579" id="579" class="l">579: </a>                    <span class="php-comment">//</span>
-<a href="#580" id="580" class="l">580: </a>                    <span class="php-comment">// Handle array value.</span>
-<a href="#581" id="581" class="l">581: </a>                    <span class="php-comment">//</span>
-<a href="#582" id="582" class="l">582: </a>                    <span class="php-keyword1">if</span>( <span class="php-keyword2">is_array</span>( <span class="php-var">$value</span> ) )
-<a href="#583" id="583" class="l">583: </a>                        <span class="php-var">$modifications</span>[ <span class="php-quote">'$pullAll'</span> ][ <span class="php-var">$offset</span> ] = <span class="php-var">$value</span>;
-<a href="#584" id="584" class="l">584: </a>                    
+<a href="#580" id="580" class="l">580: </a>                    <span class="php-keyword1">if</span>( <span class="php-var">$value</span> <span class="php-keyword1">instanceof</span> ArrayObject )
+<a href="#581" id="581" class="l">581: </a>                        <span class="php-var">$value</span> = <span class="php-var">$value</span>-&gt;getArrayCopy();
+<a href="#582" id="582" class="l">582: </a>                        
+<a href="#583" id="583" class="l">583: </a>                    <span class="php-comment">//</span>
+<a href="#584" id="584" class="l">584: </a>                    <span class="php-comment">// Handle array value.</span>
 <a href="#585" id="585" class="l">585: </a>                    <span class="php-comment">//</span>
-<a href="#586" id="586" class="l">586: </a>                    <span class="php-comment">// Handle scalar.</span>
-<a href="#587" id="587" class="l">587: </a>                    <span class="php-comment">//</span>
-<a href="#588" id="588" class="l">588: </a>                    <span class="php-keyword1">else</span>
-<a href="#589" id="589" class="l">589: </a>                        <span class="php-var">$modifications</span>[ <span class="php-quote">'$pull'</span> ][ <span class="php-var">$offset</span> ] = <span class="php-var">$value</span>;
-<a href="#590" id="590" class="l">590: </a>                }
-<a href="#591" id="591" class="l">591: </a>            
-<a href="#592" id="592" class="l">592: </a>            } <span class="php-comment">// Pull.</span>
-<a href="#593" id="593" class="l">593: </a>            
-<a href="#594" id="594" class="l">594: </a>            <span class="php-comment">//</span>
-<a href="#595" id="595" class="l">595: </a>            <span class="php-comment">// Handle set &amp; unset.</span>
-<a href="#596" id="596" class="l">596: </a>            <span class="php-comment">//</span>
-<a href="#597" id="597" class="l">597: </a>            <span class="php-keyword1">else</span>
-<a href="#598" id="598" class="l">598: </a>            {
-<a href="#599" id="599" class="l">599: </a>                <span class="php-comment">//</span>
-<a href="#600" id="600" class="l">600: </a>                <span class="php-comment">// Iterate offsets.</span>
-<a href="#601" id="601" class="l">601: </a>                <span class="php-comment">//</span>
-<a href="#602" id="602" class="l">602: </a>                <span class="php-keyword1">foreach</span>( <span class="php-var">$theObject</span> <span class="php-keyword1">as</span> <span class="php-var">$offset</span> =&gt; <span class="php-var">$value</span> )
-<a href="#603" id="603" class="l">603: </a>                {
-<a href="#604" id="604" class="l">604: </a>                    <span class="php-comment">//</span>
-<a href="#605" id="605" class="l">605: </a>                    <span class="php-comment">// Set offset.</span>
-<a href="#606" id="606" class="l">606: </a>                    <span class="php-comment">//</span>
-<a href="#607" id="607" class="l">607: </a>                    <span class="php-keyword1">if</span>( <span class="php-var">$value</span> !== <span class="php-keyword1">NULL</span> )
-<a href="#608" id="608" class="l">608: </a>                    {
-<a href="#609" id="609" class="l">609: </a>                        <span class="php-comment">//</span>
-<a href="#610" id="610" class="l">610: </a>                        <span class="php-comment">// Convert array objects.</span>
-<a href="#611" id="611" class="l">611: </a>                        <span class="php-comment">//</span>
-<a href="#612" id="612" class="l">612: </a>                        <span class="php-keyword1">if</span>( <span class="php-var">$value</span> <span class="php-keyword1">instanceof</span> ArrayObject )
-<a href="#613" id="613" class="l">613: </a>                            <span class="php-var">$value</span> = <span class="php-var">$value</span>-&gt;getArrayCopy();
-<a href="#614" id="614" class="l">614: </a>                        
+<a href="#586" id="586" class="l">586: </a>                    <span class="php-keyword1">if</span>( <span class="php-keyword2">is_array</span>( <span class="php-var">$value</span> ) )
+<a href="#587" id="587" class="l">587: </a>                        <span class="php-var">$modifications</span>[ <span class="php-quote">'$pullAll'</span> ][ <span class="php-var">$offset</span> ] = <span class="php-var">$value</span>;
+<a href="#588" id="588" class="l">588: </a>                    
+<a href="#589" id="589" class="l">589: </a>                    <span class="php-comment">//</span>
+<a href="#590" id="590" class="l">590: </a>                    <span class="php-comment">// Handle scalar.</span>
+<a href="#591" id="591" class="l">591: </a>                    <span class="php-comment">//</span>
+<a href="#592" id="592" class="l">592: </a>                    <span class="php-keyword1">else</span>
+<a href="#593" id="593" class="l">593: </a>                        <span class="php-var">$modifications</span>[ <span class="php-quote">'$pull'</span> ][ <span class="php-var">$offset</span> ] = <span class="php-var">$value</span>;
+<a href="#594" id="594" class="l">594: </a>                }
+<a href="#595" id="595" class="l">595: </a>            
+<a href="#596" id="596" class="l">596: </a>            } <span class="php-comment">// Pull.</span>
+<a href="#597" id="597" class="l">597: </a>            
+<a href="#598" id="598" class="l">598: </a>            <span class="php-comment">//</span>
+<a href="#599" id="599" class="l">599: </a>            <span class="php-comment">// Handle set &amp; unset.</span>
+<a href="#600" id="600" class="l">600: </a>            <span class="php-comment">//</span>
+<a href="#601" id="601" class="l">601: </a>            <span class="php-keyword1">else</span>
+<a href="#602" id="602" class="l">602: </a>            {
+<a href="#603" id="603" class="l">603: </a>                <span class="php-comment">//</span>
+<a href="#604" id="604" class="l">604: </a>                <span class="php-comment">// Iterate offsets.</span>
+<a href="#605" id="605" class="l">605: </a>                <span class="php-comment">//</span>
+<a href="#606" id="606" class="l">606: </a>                <span class="php-keyword1">foreach</span>( <span class="php-var">$theObject</span> <span class="php-keyword1">as</span> <span class="php-var">$offset</span> =&gt; <span class="php-var">$value</span> )
+<a href="#607" id="607" class="l">607: </a>                {
+<a href="#608" id="608" class="l">608: </a>                    <span class="php-comment">//</span>
+<a href="#609" id="609" class="l">609: </a>                    <span class="php-comment">// Set offset.</span>
+<a href="#610" id="610" class="l">610: </a>                    <span class="php-comment">//</span>
+<a href="#611" id="611" class="l">611: </a>                    <span class="php-keyword1">if</span>( <span class="php-var">$value</span> !== <span class="php-keyword1">NULL</span> )
+<a href="#612" id="612" class="l">612: </a>                    {
+<a href="#613" id="613" class="l">613: </a>                        <span class="php-comment">//</span>
+<a href="#614" id="614" class="l">614: </a>                        <span class="php-comment">// Convert array objects.</span>
 <a href="#615" id="615" class="l">615: </a>                        <span class="php-comment">//</span>
-<a href="#616" id="616" class="l">616: </a>                        <span class="php-comment">// Set.</span>
-<a href="#617" id="617" class="l">617: </a>                        <span class="php-comment">//</span>
-<a href="#618" id="618" class="l">618: </a>                        <span class="php-var">$modifications</span>[ <span class="php-quote">'$set'</span> ][ <span class="php-var">$offset</span> ] = <span class="php-var">$value</span>;
-<a href="#619" id="619" class="l">619: </a>                    }
-<a href="#620" id="620" class="l">620: </a>                    
-<a href="#621" id="621" class="l">621: </a>                    <span class="php-comment">//</span>
-<a href="#622" id="622" class="l">622: </a>                    <span class="php-comment">// Unset offset.</span>
-<a href="#623" id="623" class="l">623: </a>                    <span class="php-comment">//</span>
-<a href="#624" id="624" class="l">624: </a>                    <span class="php-keyword1">else</span>
-<a href="#625" id="625" class="l">625: </a>                        <span class="php-var">$modifications</span>[ <span class="php-quote">'$unset'</span> ][ <span class="php-var">$offset</span> ] = <span class="php-num">1</span>;
-<a href="#626" id="626" class="l">626: </a>                }
-<a href="#627" id="627" class="l">627: </a>            
-<a href="#628" id="628" class="l">628: </a>            } <span class="php-comment">// Set &amp; unset.</span>
-<a href="#629" id="629" class="l">629: </a>            
-<a href="#630" id="630" class="l">630: </a>            <span class="php-comment">//</span>
-<a href="#631" id="631" class="l">631: </a>            <span class="php-comment">// Update.</span>
-<a href="#632" id="632" class="l">632: </a>            <span class="php-comment">//</span>
-<a href="#633" id="633" class="l">633: </a>            <span class="php-var">$status</span> = <span class="php-var">$container</span>-&gt;update( <span class="php-var">$criteria</span>, <span class="php-var">$modifications</span>, <span class="php-var">$options</span> );
-<a href="#634" id="634" class="l">634: </a>            
-<a href="#635" id="635" class="l">635: </a>            <span class="php-comment">//</span>
-<a href="#636" id="636" class="l">636: </a>            <span class="php-comment">// Check status.</span>
-<a href="#637" id="637" class="l">637: </a>            <span class="php-comment">//</span>
-<a href="#638" id="638" class="l">638: </a>            <span class="php-keyword1">if</span>( ! <span class="php-var">$status</span>[ <span class="php-quote">'ok'</span> ] )
-<a href="#639" id="639" class="l">639: </a>                <span class="php-keyword1">throw</span> <span class="php-keyword1">new</span> Exception
-<a href="#640" id="640" class="l">640: </a>                    ( <span class="php-var">$status</span>[ <span class="php-quote">'errmsg'</span> ],
-<a href="#641" id="641" class="l">641: </a>                      kERROR_COMMIT );                                          <span class="php-comment">// !@! ==&gt;</span>
-<a href="#642" id="642" class="l">642: </a>            
-<a href="#643" id="643" class="l">643: </a>            <span class="php-comment">//</span>
-<a href="#644" id="644" class="l">644: </a>            <span class="php-comment">// Load modified object.</span>
-<a href="#645" id="645" class="l">645: </a>            <span class="php-comment">//</span>
-<a href="#646" id="646" class="l">646: </a>            <span class="php-var">$theObject</span> = <span class="php-var">$container</span>-&gt;findOne( <span class="php-var">$criteria</span> );
-<a href="#647" id="647" class="l">647: </a>            
-<a href="#648" id="648" class="l">648: </a>            <span class="php-keyword1">return</span> <span class="php-var">$status</span>[ <span class="php-quote">'updatedExisting'</span> ];                                    <span class="php-comment">// ==&gt;</span>
-<a href="#649" id="649" class="l">649: </a>        
-<a href="#650" id="650" class="l">650: </a>        } <span class="php-comment">// Modify.</span>
-<a href="#651" id="651" class="l">651: </a>        
-<a href="#652" id="652" class="l">652: </a>        <span class="php-comment">//</span>
-<a href="#653" id="653" class="l">653: </a>        <span class="php-comment">// Handle replace.</span>
-<a href="#654" id="654" class="l">654: </a>        <span class="php-comment">//</span>
-<a href="#655" id="655" class="l">655: </a>        <span class="php-keyword1">if</span>( <span class="php-var">$modifiers</span> == kFLAG_PERSIST_REPLACE )
-<a href="#656" id="656" class="l">656: </a>        {
-<a href="#657" id="657" class="l">657: </a>            <span class="php-comment">//</span>
-<a href="#658" id="658" class="l">658: </a>            <span class="php-comment">// Set identifier.</span>
-<a href="#659" id="659" class="l">659: </a>            <span class="php-comment">//</span>
-<a href="#660" id="660" class="l">660: </a>            <span class="php-keyword1">if</span>( <span class="php-var">$theIdentifier</span> !== <span class="php-keyword1">NULL</span> )
-<a href="#661" id="661" class="l">661: </a>                <span class="php-var">$theObject</span>[ kOFFSET_NID ] = <span class="php-var">$theIdentifier</span>;
-<a href="#662" id="662" class="l">662: </a>            
+<a href="#616" id="616" class="l">616: </a>                        <span class="php-keyword1">if</span>( <span class="php-var">$value</span> <span class="php-keyword1">instanceof</span> ArrayObject )
+<a href="#617" id="617" class="l">617: </a>                            <span class="php-var">$value</span> = <span class="php-var">$value</span>-&gt;getArrayCopy();
+<a href="#618" id="618" class="l">618: </a>                        
+<a href="#619" id="619" class="l">619: </a>                        <span class="php-comment">//</span>
+<a href="#620" id="620" class="l">620: </a>                        <span class="php-comment">// Set.</span>
+<a href="#621" id="621" class="l">621: </a>                        <span class="php-comment">//</span>
+<a href="#622" id="622" class="l">622: </a>                        <span class="php-var">$modifications</span>[ <span class="php-quote">'$set'</span> ][ <span class="php-var">$offset</span> ] = <span class="php-var">$value</span>;
+<a href="#623" id="623" class="l">623: </a>                    }
+<a href="#624" id="624" class="l">624: </a>                    
+<a href="#625" id="625" class="l">625: </a>                    <span class="php-comment">//</span>
+<a href="#626" id="626" class="l">626: </a>                    <span class="php-comment">// Unset offset.</span>
+<a href="#627" id="627" class="l">627: </a>                    <span class="php-comment">//</span>
+<a href="#628" id="628" class="l">628: </a>                    <span class="php-keyword1">else</span>
+<a href="#629" id="629" class="l">629: </a>                        <span class="php-var">$modifications</span>[ <span class="php-quote">'$unset'</span> ][ <span class="php-var">$offset</span> ] = <span class="php-num">1</span>;
+<a href="#630" id="630" class="l">630: </a>                }
+<a href="#631" id="631" class="l">631: </a>            
+<a href="#632" id="632" class="l">632: </a>            } <span class="php-comment">// Set &amp; unset.</span>
+<a href="#633" id="633" class="l">633: </a>            
+<a href="#634" id="634" class="l">634: </a>            <span class="php-comment">//</span>
+<a href="#635" id="635" class="l">635: </a>            <span class="php-comment">// Update.</span>
+<a href="#636" id="636" class="l">636: </a>            <span class="php-comment">//</span>
+<a href="#637" id="637" class="l">637: </a>            <span class="php-var">$status</span> = <span class="php-var">$container</span>-&gt;update( <span class="php-var">$criteria</span>, <span class="php-var">$modifications</span>, <span class="php-var">$options</span> );
+<a href="#638" id="638" class="l">638: </a>            
+<a href="#639" id="639" class="l">639: </a>            <span class="php-comment">//</span>
+<a href="#640" id="640" class="l">640: </a>            <span class="php-comment">// Check status.</span>
+<a href="#641" id="641" class="l">641: </a>            <span class="php-comment">//</span>
+<a href="#642" id="642" class="l">642: </a>            <span class="php-keyword1">if</span>( ! <span class="php-var">$status</span>[ <span class="php-quote">'ok'</span> ] )
+<a href="#643" id="643" class="l">643: </a>                <span class="php-keyword1">throw</span> <span class="php-keyword1">new</span> Exception
+<a href="#644" id="644" class="l">644: </a>                    ( <span class="php-var">$status</span>[ <span class="php-quote">'errmsg'</span> ],
+<a href="#645" id="645" class="l">645: </a>                      kERROR_COMMIT );                                          <span class="php-comment">// !@! ==&gt;</span>
+<a href="#646" id="646" class="l">646: </a>            
+<a href="#647" id="647" class="l">647: </a>            <span class="php-comment">//</span>
+<a href="#648" id="648" class="l">648: </a>            <span class="php-comment">// Load modified object.</span>
+<a href="#649" id="649" class="l">649: </a>            <span class="php-comment">//</span>
+<a href="#650" id="650" class="l">650: </a>            <span class="php-var">$theObject</span> = <span class="php-var">$container</span>-&gt;findOne( <span class="php-var">$criteria</span> );
+<a href="#651" id="651" class="l">651: </a>            
+<a href="#652" id="652" class="l">652: </a>            <span class="php-keyword1">return</span> <span class="php-var">$status</span>[ <span class="php-quote">'updatedExisting'</span> ];                                    <span class="php-comment">// ==&gt;</span>
+<a href="#653" id="653" class="l">653: </a>        
+<a href="#654" id="654" class="l">654: </a>        } <span class="php-comment">// Modify.</span>
+<a href="#655" id="655" class="l">655: </a>        
+<a href="#656" id="656" class="l">656: </a>        <span class="php-comment">//</span>
+<a href="#657" id="657" class="l">657: </a>        <span class="php-comment">// Handle replace.</span>
+<a href="#658" id="658" class="l">658: </a>        <span class="php-comment">//</span>
+<a href="#659" id="659" class="l">659: </a>        <span class="php-keyword1">if</span>( <span class="php-var">$modifiers</span> == kFLAG_PERSIST_REPLACE )
+<a href="#660" id="660" class="l">660: </a>        {
+<a href="#661" id="661" class="l">661: </a>            <span class="php-comment">//</span>
+<a href="#662" id="662" class="l">662: </a>            <span class="php-comment">// Set identifier.</span>
 <a href="#663" id="663" class="l">663: </a>            <span class="php-comment">//</span>
-<a href="#664" id="664" class="l">664: </a>            <span class="php-comment">// Convert to object.</span>
-<a href="#665" id="665" class="l">665: </a>            <span class="php-comment">// If you provide an array, the missing identifier will not be set by Mongo.</span>
-<a href="#666" id="666" class="l">666: </a>            <span class="php-comment">//</span>
-<a href="#667" id="667" class="l">667: </a>            <span class="php-keyword1">if</span>( <span class="php-keyword2">is_array</span>( <span class="php-var">$theObject</span> ) )
-<a href="#668" id="668" class="l">668: </a>            {
-<a href="#669" id="669" class="l">669: </a>                <span class="php-comment">//</span>
-<a href="#670" id="670" class="l">670: </a>                <span class="php-comment">// Convert.</span>
-<a href="#671" id="671" class="l">671: </a>                <span class="php-comment">//</span>
-<a href="#672" id="672" class="l">672: </a>                <span class="php-var">$object</span> = <span class="php-keyword1">new</span> ArrayObject( <span class="php-var">$theObject</span> );
-<a href="#673" id="673" class="l">673: </a>                
-<a href="#674" id="674" class="l">674: </a>                <span class="php-comment">//</span>
-<a href="#675" id="675" class="l">675: </a>                <span class="php-comment">// Replace.</span>
-<a href="#676" id="676" class="l">676: </a>                <span class="php-comment">//</span>
-<a href="#677" id="677" class="l">677: </a>                <span class="php-var">$status</span> = <span class="php-var">$container</span>-&gt;save( <span class="php-var">$object</span>, <span class="php-var">$options</span> );
-<a href="#678" id="678" class="l">678: </a>                
-<a href="#679" id="679" class="l">679: </a>                <span class="php-comment">//</span>
-<a href="#680" id="680" class="l">680: </a>                <span class="php-comment">// Restore.</span>
-<a href="#681" id="681" class="l">681: </a>                <span class="php-comment">//</span>
-<a href="#682" id="682" class="l">682: </a>                <span class="php-var">$theObject</span> = <span class="php-var">$object</span>-&gt;getArrayCopy();
-<a href="#683" id="683" class="l">683: </a>            }
-<a href="#684" id="684" class="l">684: </a>            <span class="php-keyword1">else</span>
-<a href="#685" id="685" class="l">685: </a>                <span class="php-var">$status</span> = <span class="php-var">$container</span>-&gt;save( <span class="php-var">$theObject</span>, <span class="php-var">$options</span> );
-<a href="#686" id="686" class="l">686: </a>            
-<a href="#687" id="687" class="l">687: </a>            <span class="php-comment">//</span>
-<a href="#688" id="688" class="l">688: </a>            <span class="php-comment">// Check status.</span>
-<a href="#689" id="689" class="l">689: </a>            <span class="php-comment">//</span>
-<a href="#690" id="690" class="l">690: </a>            <span class="php-keyword1">if</span>( ! <span class="php-var">$status</span>[ <span class="php-quote">'ok'</span> ] )
-<a href="#691" id="691" class="l">691: </a>                <span class="php-keyword1">throw</span> <span class="php-keyword1">new</span> Exception
-<a href="#692" id="692" class="l">692: </a>                    ( <span class="php-var">$status</span>[ <span class="php-quote">'errmsg'</span> ],
-<a href="#693" id="693" class="l">693: </a>                      kERROR_COMMIT );                                          <span class="php-comment">// !@! ==&gt;</span>
-<a href="#694" id="694" class="l">694: </a>            
-<a href="#695" id="695" class="l">695: </a>            <span class="php-keyword1">return</span> <span class="php-var">$theObject</span>[ kOFFSET_NID ];                                       <span class="php-comment">// ==&gt;</span>
-<a href="#696" id="696" class="l">696: </a>        
-<a href="#697" id="697" class="l">697: </a>        } <span class="php-comment">// Replace.</span>
-<a href="#698" id="698" class="l">698: </a>        
-<a href="#699" id="699" class="l">699: </a>        <span class="php-comment">//</span>
-<a href="#700" id="700" class="l">700: </a>        <span class="php-comment">// Handle modify.</span>
-<a href="#701" id="701" class="l">701: </a>        <span class="php-comment">//</span>
-<a href="#702" id="702" class="l">702: </a>        <span class="php-keyword1">if</span>( <span class="php-var">$modifiers</span> == kFLAG_PERSIST_MODIFY )
-<a href="#703" id="703" class="l">703: </a>        {
-<a href="#704" id="704" class="l">704: </a>            <span class="php-comment">//</span>
-<a href="#705" id="705" class="l">705: </a>            <span class="php-comment">// Check identifier.</span>
-<a href="#706" id="706" class="l">706: </a>            <span class="php-comment">//</span>
-<a href="#707" id="707" class="l">707: </a>            <span class="php-keyword1">if</span>( <span class="php-var">$theIdentifier</span> === <span class="php-keyword1">NULL</span> )
-<a href="#708" id="708" class="l">708: </a>                <span class="php-keyword1">throw</span> <span class="php-keyword1">new</span> Exception
-<a href="#709" id="709" class="l">709: </a>                    ( <span class="php-quote">&quot;Missing object identifier&quot;</span>,
-<a href="#710" id="710" class="l">710: </a>                      kERROR_MISSING );                                         <span class="php-comment">// !@! ==&gt;</span>
-<a href="#711" id="711" class="l">711: </a>            
-<a href="#712" id="712" class="l">712: </a>            <span class="php-comment">//</span>
-<a href="#713" id="713" class="l">713: </a>            <span class="php-comment">// Use provided identifier.</span>
-<a href="#714" id="714" class="l">714: </a>            <span class="php-comment">//</span>
-<a href="#715" id="715" class="l">715: </a>            <span class="php-var">$criteria</span> = <span class="php-keyword1">array</span>( kOFFSET_NID =&gt; <span class="php-var">$theIdentifier</span> );
-<a href="#716" id="716" class="l">716: </a>            
-<a href="#717" id="717" class="l">717: </a>            <span class="php-comment">//</span>
-<a href="#718" id="718" class="l">718: </a>            <span class="php-comment">// Use provided object as modification data.</span>
-<a href="#719" id="719" class="l">719: </a>            <span class="php-comment">//</span>
-<a href="#720" id="720" class="l">720: </a>            <span class="php-var">$modify</span> = (<span class="php-keyword1">array</span>) <span class="php-var">$theObject</span>;
-<a href="#721" id="721" class="l">721: </a>            
-<a href="#722" id="722" class="l">722: </a>            <span class="php-comment">//</span>
-<a href="#723" id="723" class="l">723: </a>            <span class="php-comment">// Set default commit options.</span>
+<a href="#664" id="664" class="l">664: </a>            <span class="php-keyword1">if</span>( <span class="php-var">$theIdentifier</span> !== <span class="php-keyword1">NULL</span> )
+<a href="#665" id="665" class="l">665: </a>                <span class="php-var">$theObject</span>[ kOFFSET_NID ] = <span class="php-var">$theIdentifier</span>;
+<a href="#666" id="666" class="l">666: </a>            
+<a href="#667" id="667" class="l">667: </a>            <span class="php-comment">//</span>
+<a href="#668" id="668" class="l">668: </a>            <span class="php-comment">// Convert to object.</span>
+<a href="#669" id="669" class="l">669: </a>            <span class="php-comment">// If you provide an array, the missing identifier will not be set by Mongo.</span>
+<a href="#670" id="670" class="l">670: </a>            <span class="php-comment">//</span>
+<a href="#671" id="671" class="l">671: </a>            <span class="php-keyword1">if</span>( <span class="php-keyword2">is_array</span>( <span class="php-var">$theObject</span> ) )
+<a href="#672" id="672" class="l">672: </a>            {
+<a href="#673" id="673" class="l">673: </a>                <span class="php-comment">//</span>
+<a href="#674" id="674" class="l">674: </a>                <span class="php-comment">// Convert.</span>
+<a href="#675" id="675" class="l">675: </a>                <span class="php-comment">//</span>
+<a href="#676" id="676" class="l">676: </a>                <span class="php-var">$object</span> = <span class="php-keyword1">new</span> ArrayObject( <span class="php-var">$theObject</span> );
+<a href="#677" id="677" class="l">677: </a>                
+<a href="#678" id="678" class="l">678: </a>                <span class="php-comment">//</span>
+<a href="#679" id="679" class="l">679: </a>                <span class="php-comment">// Replace.</span>
+<a href="#680" id="680" class="l">680: </a>                <span class="php-comment">//</span>
+<a href="#681" id="681" class="l">681: </a>                <span class="php-var">$status</span> = <span class="php-var">$container</span>-&gt;save( <span class="php-var">$object</span>, <span class="php-var">$options</span> );
+<a href="#682" id="682" class="l">682: </a>                
+<a href="#683" id="683" class="l">683: </a>                <span class="php-comment">//</span>
+<a href="#684" id="684" class="l">684: </a>                <span class="php-comment">// Restore.</span>
+<a href="#685" id="685" class="l">685: </a>                <span class="php-comment">//</span>
+<a href="#686" id="686" class="l">686: </a>                <span class="php-var">$theObject</span> = <span class="php-var">$object</span>-&gt;getArrayCopy();
+<a href="#687" id="687" class="l">687: </a>            }
+<a href="#688" id="688" class="l">688: </a>            <span class="php-keyword1">else</span>
+<a href="#689" id="689" class="l">689: </a>                <span class="php-var">$status</span> = <span class="php-var">$container</span>-&gt;save( <span class="php-var">$theObject</span>, <span class="php-var">$options</span> );
+<a href="#690" id="690" class="l">690: </a>            
+<a href="#691" id="691" class="l">691: </a>            <span class="php-comment">//</span>
+<a href="#692" id="692" class="l">692: </a>            <span class="php-comment">// Check status.</span>
+<a href="#693" id="693" class="l">693: </a>            <span class="php-comment">//</span>
+<a href="#694" id="694" class="l">694: </a>            <span class="php-keyword1">if</span>( ! <span class="php-var">$status</span>[ <span class="php-quote">'ok'</span> ] )
+<a href="#695" id="695" class="l">695: </a>                <span class="php-keyword1">throw</span> <span class="php-keyword1">new</span> Exception
+<a href="#696" id="696" class="l">696: </a>                    ( <span class="php-var">$status</span>[ <span class="php-quote">'errmsg'</span> ],
+<a href="#697" id="697" class="l">697: </a>                      kERROR_COMMIT );                                          <span class="php-comment">// !@! ==&gt;</span>
+<a href="#698" id="698" class="l">698: </a>            
+<a href="#699" id="699" class="l">699: </a>            <span class="php-keyword1">return</span> <span class="php-var">$theObject</span>[ kOFFSET_NID ];                                       <span class="php-comment">// ==&gt;</span>
+<a href="#700" id="700" class="l">700: </a>        
+<a href="#701" id="701" class="l">701: </a>        } <span class="php-comment">// Replace.</span>
+<a href="#702" id="702" class="l">702: </a>        
+<a href="#703" id="703" class="l">703: </a>        <span class="php-comment">//</span>
+<a href="#704" id="704" class="l">704: </a>        <span class="php-comment">// Handle delete.</span>
+<a href="#705" id="705" class="l">705: </a>        <span class="php-comment">//</span>
+<a href="#706" id="706" class="l">706: </a>        <span class="php-keyword1">if</span>( <span class="php-var">$modifiers</span> == kFLAG_PERSIST_DELETE )
+<a href="#707" id="707" class="l">707: </a>        {
+<a href="#708" id="708" class="l">708: </a>            <span class="php-comment">//</span>
+<a href="#709" id="709" class="l">709: </a>            <span class="php-comment">// Determine criteria.</span>
+<a href="#710" id="710" class="l">710: </a>            <span class="php-comment">//</span>
+<a href="#711" id="711" class="l">711: </a>            <span class="php-keyword1">if</span>( <span class="php-var">$theIdentifier</span> !== <span class="php-keyword1">NULL</span> )
+<a href="#712" id="712" class="l">712: </a>                <span class="php-var">$criteria</span> = <span class="php-keyword1">array</span>( kOFFSET_NID =&gt; <span class="php-var">$theIdentifier</span> );
+<a href="#713" id="713" class="l">713: </a>            <span class="php-keyword1">elseif</span>( <span class="php-keyword2">is_array</span>( <span class="php-var">$theObject</span> )
+<a href="#714" id="714" class="l">714: </a>                 &amp;&amp; <span class="php-keyword2">array_key_exists</span>( kOFFSET_NID, <span class="php-var">$theObject</span> ) )
+<a href="#715" id="715" class="l">715: </a>                <span class="php-var">$criteria</span> = <span class="php-keyword1">array</span>( kOFFSET_NID =&gt; <span class="php-var">$theObject</span>[ kOFFSET_NID ] );
+<a href="#716" id="716" class="l">716: </a>            <span class="php-keyword1">elseif</span>( (<span class="php-var">$theObject</span> <span class="php-keyword1">instanceof</span> ArrayObject)
+<a href="#717" id="717" class="l">717: </a>                 &amp;&amp; <span class="php-var">$theObject</span>-&gt;offsetExists( kOFFSET_NID ) )
+<a href="#718" id="718" class="l">718: </a>                <span class="php-var">$criteria</span> = <span class="php-keyword1">array</span>( kOFFSET_NID =&gt; <span class="php-var">$theObject</span>-&gt;offsetGet( kOFFSET_NID ) );
+<a href="#719" id="719" class="l">719: </a>            <span class="php-keyword1">else</span>
+<a href="#720" id="720" class="l">720: </a>                <span class="php-keyword1">throw</span> <span class="php-keyword1">new</span> Exception
+<a href="#721" id="721" class="l">721: </a>                    ( <span class="php-quote">&quot;Missing object identifier&quot;</span>,
+<a href="#722" id="722" class="l">722: </a>                      kERROR_STATE );                                           <span class="php-comment">// !@! ==&gt;</span>
+<a href="#723" id="723" class="l">723: </a>            
 <a href="#724" id="724" class="l">724: </a>            <span class="php-comment">//</span>
-<a href="#725" id="725" class="l">725: </a>            <span class="php-var">$options</span>[ <span class="php-quote">'upsert'</span> ] = <span class="php-keyword1">FALSE</span>;       <span class="php-comment">// Don't create new objects.</span>
-<a href="#726" id="726" class="l">726: </a>            <span class="php-var">$options</span>[ <span class="php-quote">'multiple'</span> ] = <span class="php-keyword1">FALSE</span>;     <span class="php-comment">// Operate on first object.</span>
-<a href="#727" id="727" class="l">727: </a>            
-<a href="#728" id="728" class="l">728: </a>            <span class="php-comment">//</span>
-<a href="#729" id="729" class="l">729: </a>            <span class="php-comment">// Update.</span>
-<a href="#730" id="730" class="l">730: </a>            <span class="php-comment">//</span>
-<a href="#731" id="731" class="l">731: </a>            <span class="php-var">$status</span> = <span class="php-var">$container</span>-&gt;update( <span class="php-var">$criteria</span>, <span class="php-var">$modify</span>, <span class="php-var">$options</span> );
-<a href="#732" id="732" class="l">732: </a>            
-<a href="#733" id="733" class="l">733: </a>            <span class="php-comment">//</span>
-<a href="#734" id="734" class="l">734: </a>            <span class="php-comment">// Check status.</span>
-<a href="#735" id="735" class="l">735: </a>            <span class="php-comment">//</span>
-<a href="#736" id="736" class="l">736: </a>            <span class="php-keyword1">if</span>( ! <span class="php-var">$status</span>[ <span class="php-quote">'ok'</span> ] )
-<a href="#737" id="737" class="l">737: </a>                <span class="php-keyword1">throw</span> <span class="php-keyword1">new</span> Exception
-<a href="#738" id="738" class="l">738: </a>                    ( <span class="php-var">$status</span>[ <span class="php-quote">'errmsg'</span> ],
-<a href="#739" id="739" class="l">739: </a>                      kERROR_COMMIT );                                          <span class="php-comment">// !@! ==&gt;</span>
-<a href="#740" id="740" class="l">740: </a>            
-<a href="#741" id="741" class="l">741: </a>            <span class="php-comment">//</span>
-<a href="#742" id="742" class="l">742: </a>            <span class="php-comment">// Handle updated object.</span>
-<a href="#743" id="743" class="l">743: </a>            <span class="php-comment">//</span>
-<a href="#744" id="744" class="l">744: </a>            <span class="php-keyword1">if</span>( <span class="php-var">$status</span>[ <span class="php-quote">'updatedExisting'</span> ] )
-<a href="#745" id="745" class="l">745: </a>            {
-<a href="#746" id="746" class="l">746: </a>                <span class="php-comment">//</span>
-<a href="#747" id="747" class="l">747: </a>                <span class="php-comment">// Set object.</span>
-<a href="#748" id="748" class="l">748: </a>                <span class="php-comment">//</span>
-<a href="#749" id="749" class="l">749: </a>                <span class="php-var">$theObject</span> = <span class="php-var">$container</span>-&gt;findOne( <span class="php-var">$criteria</span> );
-<a href="#750" id="750" class="l">750: </a>                
-<a href="#751" id="751" class="l">751: </a>                <span class="php-keyword1">return</span> <span class="php-keyword1">TRUE</span>;                                                        <span class="php-comment">// ==&gt;</span>
-<a href="#752" id="752" class="l">752: </a>            
-<a href="#753" id="753" class="l">753: </a>            } <span class="php-comment">// Found object.</span>
-<a href="#754" id="754" class="l">754: </a>            
-<a href="#755" id="755" class="l">755: </a>            <span class="php-keyword1">return</span> <span class="php-keyword1">NULL</span>;                                                            <span class="php-comment">// ==&gt;</span>
-<a href="#756" id="756" class="l">756: </a>        
-<a href="#757" id="757" class="l">757: </a>        } <span class="php-comment">// Modify.</span>
-<a href="#758" id="758" class="l">758: </a>        
-<a href="#759" id="759" class="l">759: </a>        <span class="php-comment">//</span>
-<a href="#760" id="760" class="l">760: </a>        <span class="php-comment">// Handle delete.</span>
-<a href="#761" id="761" class="l">761: </a>        <span class="php-comment">//</span>
-<a href="#762" id="762" class="l">762: </a>        <span class="php-keyword1">if</span>( <span class="php-var">$modifiers</span> == kFLAG_PERSIST_DELETE )
-<a href="#763" id="763" class="l">763: </a>        {
-<a href="#764" id="764" class="l">764: </a>            <span class="php-comment">//</span>
-<a href="#765" id="765" class="l">765: </a>            <span class="php-comment">// Determine criteria.</span>
-<a href="#766" id="766" class="l">766: </a>            <span class="php-comment">//</span>
-<a href="#767" id="767" class="l">767: </a>            <span class="php-keyword1">if</span>( <span class="php-var">$theIdentifier</span> !== <span class="php-keyword1">NULL</span> )
-<a href="#768" id="768" class="l">768: </a>                <span class="php-var">$criteria</span> = <span class="php-keyword1">array</span>( kOFFSET_NID =&gt; <span class="php-var">$theIdentifier</span> );
-<a href="#769" id="769" class="l">769: </a>            <span class="php-keyword1">elseif</span>( <span class="php-keyword2">array_key_exists</span>( kOFFSET_NID, (<span class="php-keyword1">array</span>) <span class="php-var">$theObject</span> ) )
-<a href="#770" id="770" class="l">770: </a>                <span class="php-var">$criteria</span> = <span class="php-keyword1">array</span>( kOFFSET_NID =&gt; <span class="php-var">$theObject</span>[ kOFFSET_NID ] );
-<a href="#771" id="771" class="l">771: </a>            <span class="php-keyword1">else</span>
-<a href="#772" id="772" class="l">772: </a>                <span class="php-keyword1">throw</span> <span class="php-keyword1">new</span> Exception
-<a href="#773" id="773" class="l">773: </a>                    ( <span class="php-quote">&quot;Missing object identifier&quot;</span>,
-<a href="#774" id="774" class="l">774: </a>                      kERROR_STATE );                                           <span class="php-comment">// !@! ==&gt;</span>
-<a href="#775" id="775" class="l">775: </a>            
-<a href="#776" id="776" class="l">776: </a>            <span class="php-comment">//</span>
-<a href="#777" id="777" class="l">777: </a>            <span class="php-comment">// Set options.</span>
-<a href="#778" id="778" class="l">778: </a>            <span class="php-comment">//</span>
-<a href="#779" id="779" class="l">779: </a>            <span class="php-var">$options</span>[ <span class="php-quote">'justOne'</span> ] = <span class="php-keyword1">TRUE</span>;
-<a href="#780" id="780" class="l">780: </a>            
-<a href="#781" id="781" class="l">781: </a>            <span class="php-comment">//</span>
-<a href="#782" id="782" class="l">782: </a>            <span class="php-comment">// Delete.</span>
-<a href="#783" id="783" class="l">783: </a>            <span class="php-comment">//</span>
-<a href="#784" id="784" class="l">784: </a>            <span class="php-var">$status</span> = <span class="php-var">$container</span>-&gt;remove( <span class="php-var">$criteria</span>, <span class="php-var">$options</span> );
-<a href="#785" id="785" class="l">785: </a>            <span class="php-keyword1">if</span>( ! <span class="php-var">$status</span>[ <span class="php-quote">'ok'</span> ] )
-<a href="#786" id="786" class="l">786: </a>                <span class="php-keyword1">throw</span> <span class="php-keyword1">new</span> Exception
-<a href="#787" id="787" class="l">787: </a>                    ( <span class="php-var">$status</span>[ <span class="php-quote">'errmsg'</span> ],
-<a href="#788" id="788" class="l">788: </a>                      kERROR_COMMIT );                                          <span class="php-comment">// !@! ==&gt;</span>
-<a href="#789" id="789" class="l">789: </a>            
-<a href="#790" id="790" class="l">790: </a>            <span class="php-keyword1">return</span> <span class="php-var">$status</span>[ <span class="php-quote">'n'</span> ];                                                  <span class="php-comment">// ==&gt;</span>
-<a href="#791" id="791" class="l">791: </a>        
-<a href="#792" id="792" class="l">792: </a>        } <span class="php-comment">// Delete.</span>
-<a href="#793" id="793" class="l">793: </a>        
-<a href="#794" id="794" class="l">794: </a>        <span class="php-keyword1">throw</span> <span class="php-keyword1">new</span> Exception
-<a href="#795" id="795" class="l">795: </a>            ( <span class="php-quote">&quot;Invalid operation options&quot;</span>,
-<a href="#796" id="796" class="l">796: </a>              kERROR_PARAMETER );                                               <span class="php-comment">// !@! ==&gt;</span>
-<a href="#797" id="797" class="l">797: </a>        
-<a href="#798" id="798" class="l">798: </a>    } <span class="php-comment">// ManageObject.</span>
+<a href="#725" id="725" class="l">725: </a>            <span class="php-comment">// Set options.</span>
+<a href="#726" id="726" class="l">726: </a>            <span class="php-comment">//</span>
+<a href="#727" id="727" class="l">727: </a>            <span class="php-var">$options</span>[ <span class="php-quote">'justOne'</span> ] = <span class="php-keyword1">TRUE</span>;
+<a href="#728" id="728" class="l">728: </a>            
+<a href="#729" id="729" class="l">729: </a>            <span class="php-comment">//</span>
+<a href="#730" id="730" class="l">730: </a>            <span class="php-comment">// Delete.</span>
+<a href="#731" id="731" class="l">731: </a>            <span class="php-comment">//</span>
+<a href="#732" id="732" class="l">732: </a>            <span class="php-var">$status</span> = <span class="php-var">$container</span>-&gt;remove( <span class="php-var">$criteria</span>, <span class="php-var">$options</span> );
+<a href="#733" id="733" class="l">733: </a>            <span class="php-keyword1">if</span>( ! <span class="php-var">$status</span>[ <span class="php-quote">'ok'</span> ] )
+<a href="#734" id="734" class="l">734: </a>                <span class="php-keyword1">throw</span> <span class="php-keyword1">new</span> Exception
+<a href="#735" id="735" class="l">735: </a>                    ( <span class="php-var">$status</span>[ <span class="php-quote">'errmsg'</span> ],
+<a href="#736" id="736" class="l">736: </a>                      kERROR_COMMIT );                                          <span class="php-comment">// !@! ==&gt;</span>
+<a href="#737" id="737" class="l">737: </a>            
+<a href="#738" id="738" class="l">738: </a>            <span class="php-keyword1">return</span> <span class="php-var">$status</span>[ <span class="php-quote">'n'</span> ];                                                  <span class="php-comment">// ==&gt;</span>
+<a href="#739" id="739" class="l">739: </a>        
+<a href="#740" id="740" class="l">740: </a>        } <span class="php-comment">// Delete.</span>
+<a href="#741" id="741" class="l">741: </a>        
+<a href="#742" id="742" class="l">742: </a>        <span class="php-keyword1">throw</span> <span class="php-keyword1">new</span> Exception
+<a href="#743" id="743" class="l">743: </a>            ( <span class="php-quote">&quot;Invalid operation options&quot;</span>,
+<a href="#744" id="744" class="l">744: </a>              kERROR_PARAMETER );                                               <span class="php-comment">// !@! ==&gt;</span>
+<a href="#745" id="745" class="l">745: </a>        
+<a href="#746" id="746" class="l">746: </a>    } <span class="php-comment">// ManageObject.</span>
+<a href="#747" id="747" class="l">747: </a>
+<a href="#748" id="748" class="l">748: </a>     
+<a href="#749" id="749" class="l">749: </a>    <span class="php-comment">/*===================================================================================
+</span><a href="#750" id="750" class="l">750: </a><span class="php-comment">     *  CheckObject                                                                     *
+</span><a href="#751" id="751" class="l">751: </a><span class="php-comment">     *==================================================================================*/</span>
+<a href="#752" id="752" class="l">752: </a>
+<a href="#753" id="753" class="l">753: </a>    <span class="php-comment">/**
+</span><a href="#754" id="754" class="l">754: </a><span class="php-comment">     * &lt;h4&gt;Check if object exists in container&lt;/h4&gt;
+</span><a href="#755" id="755" class="l">755: </a><span class="php-comment">     *
+</span><a href="#756" id="756" class="l">756: </a><span class="php-comment">     * In this class we return the number of found objects.
+</span><a href="#757" id="757" class="l">757: </a><span class="php-comment">     *
+</span><a href="#758" id="758" class="l">758: </a><span class="php-comment">     * @param mixed                 $theIdentifier      Identifier.
+</span><a href="#759" id="759" class="l">759: </a><span class="php-comment">     * @param string                $theOffset          Offset.
+</span><a href="#760" id="760" class="l">760: </a><span class="php-comment">     *
+</span><a href="#761" id="761" class="l">761: </a><span class="php-comment">     * @access public
+</span><a href="#762" id="762" class="l">762: </a><span class="php-comment">     * @return boolean              &lt;tt&gt;TRUE&lt;/tt&gt; exists.
+</span><a href="#763" id="763" class="l">763: </a><span class="php-comment">     *
+</span><a href="#764" id="764" class="l">764: </a><span class="php-comment">     * @throws Exception
+</span><a href="#765" id="765" class="l">765: </a><span class="php-comment">     *
+</span><a href="#766" id="766" class="l">766: </a><span class="php-comment">     * @uses Connection()
+</span><a href="#767" id="767" class="l">767: </a><span class="php-comment">     */</span>
+<a href="#768" id="768" class="l">768: </a>    <span class="php-keyword1">public</span> <span class="php-keyword1">function</span> CheckObject( <span class="php-var">$theIdentifier</span>, <span class="php-var">$theOffset</span> = <span class="php-keyword1">NULL</span> )
+<a href="#769" id="769" class="l">769: </a>    {
+<a href="#770" id="770" class="l">770: </a>        <span class="php-comment">//</span>
+<a href="#771" id="771" class="l">771: </a>        <span class="php-comment">// Get container.</span>
+<a href="#772" id="772" class="l">772: </a>        <span class="php-comment">//</span>
+<a href="#773" id="773" class="l">773: </a>        <span class="php-var">$container</span> = <span class="php-var">$this</span>-&gt;Connection();
+<a href="#774" id="774" class="l">774: </a>        <span class="php-keyword1">if</span>( ! (<span class="php-var">$container</span> <span class="php-keyword1">instanceof</span> MongoCollection) )
+<a href="#775" id="775" class="l">775: </a>            <span class="php-keyword1">throw</span> <span class="php-keyword1">new</span> Exception
+<a href="#776" id="776" class="l">776: </a>                ( <span class="php-quote">&quot;Missing or invalid native container&quot;</span>,
+<a href="#777" id="777" class="l">777: </a>                  kERROR_STATE );                                               <span class="php-comment">// !@! ==&gt;</span>
+<a href="#778" id="778" class="l">778: </a>        
+<a href="#779" id="779" class="l">779: </a>        <span class="php-comment">//</span>
+<a href="#780" id="780" class="l">780: </a>        <span class="php-comment">// Set default offset.</span>
+<a href="#781" id="781" class="l">781: </a>        <span class="php-comment">//</span>
+<a href="#782" id="782" class="l">782: </a>        <span class="php-keyword1">if</span>( <span class="php-var">$theOffset</span> === <span class="php-keyword1">NULL</span> )
+<a href="#783" id="783" class="l">783: </a>            <span class="php-var">$theOffset</span> = <span class="php-quote">'_id'</span>;
+<a href="#784" id="784" class="l">784: </a>        
+<a href="#785" id="785" class="l">785: </a>        <span class="php-comment">//</span>
+<a href="#786" id="786" class="l">786: </a>        <span class="php-comment">// Set criteria.</span>
+<a href="#787" id="787" class="l">787: </a>        <span class="php-comment">//</span>
+<a href="#788" id="788" class="l">788: </a>        <span class="php-var">$fields</span> = <span class="php-keyword1">array</span>( <span class="php-quote">'_id'</span> =&gt; <span class="php-keyword1">TRUE</span> );
+<a href="#789" id="789" class="l">789: </a>        <span class="php-var">$criteria</span> = <span class="php-keyword1">array</span>( <span class="php-var">$theOffset</span> =&gt; <span class="php-var">$theIdentifier</span> );
+<a href="#790" id="790" class="l">790: </a>        
+<a href="#791" id="791" class="l">791: </a>        <span class="php-comment">//</span>
+<a href="#792" id="792" class="l">792: </a>        <span class="php-comment">// Make query.</span>
+<a href="#793" id="793" class="l">793: </a>        <span class="php-comment">//</span>
+<a href="#794" id="794" class="l">794: </a>        <span class="php-var">$cursor</span> = <span class="php-var">$container</span>-&gt;find( <span class="php-var">$criteria</span>, <span class="php-var">$fields</span> );
+<a href="#795" id="795" class="l">795: </a>        
+<a href="#796" id="796" class="l">796: </a>        <span class="php-keyword1">return</span> <span class="php-var">$cursor</span>-&gt;<span class="php-keyword2">count</span>();                                                    <span class="php-comment">// ==&gt;</span>
+<a href="#797" id="797" class="l">797: </a>    
+<a href="#798" id="798" class="l">798: </a>    } <span class="php-comment">// CheckObject.</span>
 <a href="#799" id="799" class="l">799: </a>
-<a href="#800" id="800" class="l">800: </a>     
-<a href="#801" id="801" class="l">801: </a>    <span class="php-comment">/*===================================================================================
-</span><a href="#802" id="802" class="l">802: </a><span class="php-comment">     *  CheckObject                                                                     *
-</span><a href="#803" id="803" class="l">803: </a><span class="php-comment">     *==================================================================================*/</span>
-<a href="#804" id="804" class="l">804: </a>
-<a href="#805" id="805" class="l">805: </a>    <span class="php-comment">/**
-</span><a href="#806" id="806" class="l">806: </a><span class="php-comment">     * &lt;h4&gt;Check if object exists in container&lt;/h4&gt;
-</span><a href="#807" id="807" class="l">807: </a><span class="php-comment">     *
-</span><a href="#808" id="808" class="l">808: </a><span class="php-comment">     * In this class we return the number of found objects.
-</span><a href="#809" id="809" class="l">809: </a><span class="php-comment">     *
-</span><a href="#810" id="810" class="l">810: </a><span class="php-comment">     * @param mixed                 $theIdentifier      Identifier.
-</span><a href="#811" id="811" class="l">811: </a><span class="php-comment">     *
-</span><a href="#812" id="812" class="l">812: </a><span class="php-comment">     * @access public
-</span><a href="#813" id="813" class="l">813: </a><span class="php-comment">     * @return boolean              &lt;tt&gt;TRUE&lt;/tt&gt; exists.
-</span><a href="#814" id="814" class="l">814: </a><span class="php-comment">     *
-</span><a href="#815" id="815" class="l">815: </a><span class="php-comment">     * @throws Exception
+<a href="#800" id="800" class="l">800: </a>        
+<a href="#801" id="801" class="l">801: </a>
+<a href="#802" id="802" class="l">802: </a><span class="php-comment">/*=======================================================================================
+</span><a href="#803" id="803" class="l">803: </a><span class="php-comment"> *                                                                                      *
+</span><a href="#804" id="804" class="l">804: </a><span class="php-comment"> *                              PUBLIC SEQUENCE INTERFACE                               *
+</span><a href="#805" id="805" class="l">805: </a><span class="php-comment"> *                                                                                      *
+</span><a href="#806" id="806" class="l">806: </a><span class="php-comment"> *======================================================================================*/</span>
+<a href="#807" id="807" class="l">807: </a>
+<a href="#808" id="808" class="l">808: </a>
+<a href="#809" id="809" class="l">809: </a>     
+<a href="#810" id="810" class="l">810: </a>    <span class="php-comment">/*===================================================================================
+</span><a href="#811" id="811" class="l">811: </a><span class="php-comment">     *  NextSequence                                                                    *
+</span><a href="#812" id="812" class="l">812: </a><span class="php-comment">     *==================================================================================*/</span>
+<a href="#813" id="813" class="l">813: </a>
+<a href="#814" id="814" class="l">814: </a>    <span class="php-comment">/**
+</span><a href="#815" id="815" class="l">815: </a><span class="php-comment">     * &lt;h4&gt;Return a sequence number&lt;/h4&gt;
 </span><a href="#816" id="816" class="l">816: </a><span class="php-comment">     *
-</span><a href="#817" id="817" class="l">817: </a><span class="php-comment">     * @uses Connection()
-</span><a href="#818" id="818" class="l">818: </a><span class="php-comment">     */</span>
-<a href="#819" id="819" class="l">819: </a>    <span class="php-keyword1">public</span> <span class="php-keyword1">function</span> CheckObject( <span class="php-var">$theIdentifier</span> )
-<a href="#820" id="820" class="l">820: </a>    {
-<a href="#821" id="821" class="l">821: </a>        <span class="php-comment">//</span>
-<a href="#822" id="822" class="l">822: </a>        <span class="php-comment">// Get container.</span>
-<a href="#823" id="823" class="l">823: </a>        <span class="php-comment">//</span>
-<a href="#824" id="824" class="l">824: </a>        <span class="php-var">$container</span> = <span class="php-var">$this</span>-&gt;Connection();
-<a href="#825" id="825" class="l">825: </a>        <span class="php-keyword1">if</span>( ! (<span class="php-var">$container</span> <span class="php-keyword1">instanceof</span> MongoCollection) )
-<a href="#826" id="826" class="l">826: </a>            <span class="php-keyword1">throw</span> <span class="php-keyword1">new</span> Exception
-<a href="#827" id="827" class="l">827: </a>                ( <span class="php-quote">&quot;Missing or invalid native container&quot;</span>,
-<a href="#828" id="828" class="l">828: </a>                  kERROR_STATE );                                               <span class="php-comment">// !@! ==&gt;</span>
-<a href="#829" id="829" class="l">829: </a>        
-<a href="#830" id="830" class="l">830: </a>        <span class="php-comment">//</span>
-<a href="#831" id="831" class="l">831: </a>        <span class="php-comment">// Set criteria.</span>
-<a href="#832" id="832" class="l">832: </a>        <span class="php-comment">//</span>
-<a href="#833" id="833" class="l">833: </a>        <span class="php-var">$fields</span> = <span class="php-keyword1">array</span>( <span class="php-quote">'_id'</span> =&gt; <span class="php-keyword1">TRUE</span> );
-<a href="#834" id="834" class="l">834: </a>        <span class="php-var">$criteria</span> = <span class="php-keyword1">array</span>( <span class="php-quote">'_id'</span> =&gt; <span class="php-var">$theIdentifier</span> );
-<a href="#835" id="835" class="l">835: </a>        
-<a href="#836" id="836" class="l">836: </a>        <span class="php-comment">//</span>
-<a href="#837" id="837" class="l">837: </a>        <span class="php-comment">// Make query.</span>
-<a href="#838" id="838" class="l">838: </a>        <span class="php-comment">//</span>
-<a href="#839" id="839" class="l">839: </a>        <span class="php-var">$cursor</span> = <span class="php-var">$container</span>-&gt;find( <span class="php-var">$criteria</span>, <span class="php-var">$fields</span> );
-<a href="#840" id="840" class="l">840: </a>        
-<a href="#841" id="841" class="l">841: </a>        <span class="php-keyword1">return</span> <span class="php-var">$cursor</span>-&gt;<span class="php-keyword2">count</span>();                                                    <span class="php-comment">// ==&gt;</span>
-<a href="#842" id="842" class="l">842: </a>    
-<a href="#843" id="843" class="l">843: </a>    } <span class="php-comment">// CheckObject.</span>
-<a href="#844" id="844" class="l">844: </a>
-<a href="#845" id="845" class="l">845: </a>        
-<a href="#846" id="846" class="l">846: </a>
-<a href="#847" id="847" class="l">847: </a><span class="php-comment">/*=======================================================================================
-</span><a href="#848" id="848" class="l">848: </a><span class="php-comment"> *                                                                                      *
-</span><a href="#849" id="849" class="l">849: </a><span class="php-comment"> *                              PUBLIC SEQUENCE INTERFACE                               *
-</span><a href="#850" id="850" class="l">850: </a><span class="php-comment"> *                                                                                      *
-</span><a href="#851" id="851" class="l">851: </a><span class="php-comment"> *======================================================================================*/</span>
-<a href="#852" id="852" class="l">852: </a>
-<a href="#853" id="853" class="l">853: </a>
-<a href="#854" id="854" class="l">854: </a>     
-<a href="#855" id="855" class="l">855: </a>    <span class="php-comment">/*===================================================================================
-</span><a href="#856" id="856" class="l">856: </a><span class="php-comment">     *  NextSequence                                                                    *
-</span><a href="#857" id="857" class="l">857: </a><span class="php-comment">     *==================================================================================*/</span>
-<a href="#858" id="858" class="l">858: </a>
-<a href="#859" id="859" class="l">859: </a>    <span class="php-comment">/**
-</span><a href="#860" id="860" class="l">860: </a><span class="php-comment">     * &lt;h4&gt;Return a sequence number&lt;/h4&gt;
-</span><a href="#861" id="861" class="l">861: </a><span class="php-comment">     *
-</span><a href="#862" id="862" class="l">862: </a><span class="php-comment">     * We overload this method here to implement sequence numbers in mongo containers,
-</span><a href="#863" id="863" class="l">863: </a><span class="php-comment">     * please refer to the {@link CContainer::NextSequence()} documentation for more
-</span><a href="#864" id="864" class="l">864: </a><span class="php-comment">     * information.
-</span><a href="#865" id="865" class="l">865: </a><span class="php-comment">     *
-</span><a href="#866" id="866" class="l">866: </a><span class="php-comment">     * @param string                $theKey             Sequence key.
-</span><a href="#867" id="867" class="l">867: </a><span class="php-comment">     * @param string                $theContainer       Sequence container.
-</span><a href="#868" id="868" class="l">868: </a><span class="php-comment">     *
-</span><a href="#869" id="869" class="l">869: </a><span class="php-comment">     * @access public
-</span><a href="#870" id="870" class="l">870: </a><span class="php-comment">     * @return mixed                The sequence number or &lt;tt&gt;NULL&lt;/tt&gt;.
-</span><a href="#871" id="871" class="l">871: </a><span class="php-comment">     *
-</span><a href="#872" id="872" class="l">872: </a><span class="php-comment">     * @throws Exception
-</span><a href="#873" id="873" class="l">873: </a><span class="php-comment">     */</span>
-<a href="#874" id="874" class="l">874: </a>    <span class="php-keyword1">public</span> <span class="php-keyword1">function</span> NextSequence( <span class="php-var">$theKey</span>, <span class="php-var">$theContainer</span> = <span class="php-keyword1">NULL</span> )
-<a href="#875" id="875" class="l">875: </a>    {
-<a href="#876" id="876" class="l">876: </a>        <span class="php-comment">//</span>
-<a href="#877" id="877" class="l">877: </a>        <span class="php-comment">// Check inited status.</span>
-<a href="#878" id="878" class="l">878: </a>        <span class="php-comment">//</span>
-<a href="#879" id="879" class="l">879: </a>        <span class="php-keyword1">if</span>( <span class="php-var">$this</span>-&gt;_IsInited() )
-<a href="#880" id="880" class="l">880: </a>        {
-<a href="#881" id="881" class="l">881: </a>            <span class="php-comment">//</span>
-<a href="#882" id="882" class="l">882: </a>            <span class="php-comment">// Init local storage.</span>
-<a href="#883" id="883" class="l">883: </a>            <span class="php-comment">//</span>
-<a href="#884" id="884" class="l">884: </a>            <span class="php-var">$options</span> = <span class="php-keyword1">array</span>( <span class="php-quote">'safe'</span> =&gt; <span class="php-keyword1">TRUE</span> );
-<a href="#885" id="885" class="l">885: </a>            <span class="php-var">$criteria</span> = <span class="php-keyword1">array</span>( <span class="php-quote">'_id'</span> =&gt; <span class="php-var">$theKey</span> );
-<a href="#886" id="886" class="l">886: </a>            <span class="php-var">$container</span> = ( <span class="php-var">$theContainer</span> !== <span class="php-keyword1">NULL</span> )
-<a href="#887" id="887" class="l">887: </a>                       ? ( ( <span class="php-var">$theContainer</span> === <span class="php-keyword1">TRUE</span> )
-<a href="#888" id="888" class="l">888: </a>                         ? <span class="php-var">$this</span>-&gt;Connection()-&gt;db-&gt;selectCollection
-<a href="#889" id="889" class="l">889: </a>                            ( kCONTAINER_SEQUENCE_NAME )
-<a href="#890" id="890" class="l">890: </a>                         : <span class="php-var">$this</span>-&gt;Connection()-&gt;db-&gt;selectCollection( <span class="php-var">$theContainer</span> ) )
-<a href="#891" id="891" class="l">891: </a>                       : <span class="php-var">$this</span>-&gt;Connection();
-<a href="#892" id="892" class="l">892: </a>            
-<a href="#893" id="893" class="l">893: </a>            <span class="php-comment">//</span>
-<a href="#894" id="894" class="l">894: </a>            <span class="php-comment">// Read sequence number.</span>
-<a href="#895" id="895" class="l">895: </a>            <span class="php-comment">//</span>
-<a href="#896" id="896" class="l">896: </a>            <span class="php-var">$seq</span> = <span class="php-var">$container</span>-&gt;findOne( <span class="php-var">$criteria</span> );
-<a href="#897" id="897" class="l">897: </a>            
-<a href="#898" id="898" class="l">898: </a>            <span class="php-comment">//</span>
-<a href="#899" id="899" class="l">899: </a>            <span class="php-comment">// Handle first.</span>
-<a href="#900" id="900" class="l">900: </a>            <span class="php-comment">//</span>
-<a href="#901" id="901" class="l">901: </a>            <span class="php-keyword1">if</span>( <span class="php-var">$seq</span> === <span class="php-keyword1">NULL</span> )
-<a href="#902" id="902" class="l">902: </a>            {
-<a href="#903" id="903" class="l">903: </a>                <span class="php-comment">//</span>
-<a href="#904" id="904" class="l">904: </a>                <span class="php-comment">// Save next.</span>
-<a href="#905" id="905" class="l">905: </a>                <span class="php-comment">//</span>
-<a href="#906" id="906" class="l">906: </a>                <span class="php-var">$ok</span> = <span class="php-var">$container</span>-&gt;save( <span class="php-keyword1">array</span>( <span class="php-quote">'_id'</span> =&gt; <span class="php-var">$theKey</span>,
-<a href="#907" id="907" class="l">907: </a>                                               kOFFSET_SEQUENCE =&gt; <span class="php-num">2</span> ),
-<a href="#908" id="908" class="l">908: </a>                                        <span class="php-var">$options</span> );
-<a href="#909" id="909" class="l">909: </a>                <span class="php-keyword1">if</span>( <span class="php-var">$ok</span>[ <span class="php-quote">'ok'</span> ] )
-<a href="#910" id="910" class="l">910: </a>                    <span class="php-keyword1">return</span> <span class="php-num">1</span>;                                                       <span class="php-comment">// ==&gt;</span>
-<a href="#911" id="911" class="l">911: </a>                
-<a href="#912" id="912" class="l">912: </a>                <span class="php-keyword1">throw</span> <span class="php-keyword1">new</span> Exception
-<a href="#913" id="913" class="l">913: </a>                    ( <span class="php-var">$ok</span>[ <span class="php-quote">'errmsg'</span> ],
-<a href="#914" id="914" class="l">914: </a>                      kERROR_COMMIT );                                          <span class="php-comment">// !@! ==&gt;</span>
-<a href="#915" id="915" class="l">915: </a>            
-<a href="#916" id="916" class="l">916: </a>            } <span class="php-comment">// First sequence.</span>
-<a href="#917" id="917" class="l">917: </a>            
-<a href="#918" id="918" class="l">918: </a>            <span class="php-comment">//</span>
-<a href="#919" id="919" class="l">919: </a>            <span class="php-comment">// Handle existing sequence.</span>
-<a href="#920" id="920" class="l">920: </a>            <span class="php-comment">//</span>
-<a href="#921" id="921" class="l">921: </a>            <span class="php-keyword1">else</span>
-<a href="#922" id="922" class="l">922: </a>            {
-<a href="#923" id="923" class="l">923: </a>                <span class="php-comment">//</span>
-<a href="#924" id="924" class="l">924: </a>                <span class="php-comment">// Save sequence.</span>
-<a href="#925" id="925" class="l">925: </a>                <span class="php-comment">//</span>
-<a href="#926" id="926" class="l">926: </a>                <span class="php-var">$number</span> = <span class="php-var">$seq</span>[ kOFFSET_SEQUENCE ]++;
-<a href="#927" id="927" class="l">927: </a>                
-<a href="#928" id="928" class="l">928: </a>                <span class="php-comment">//</span>
-<a href="#929" id="929" class="l">929: </a>                <span class="php-comment">// Increment sequence.</span>
-<a href="#930" id="930" class="l">930: </a>                <span class="php-comment">//</span>
-<a href="#931" id="931" class="l">931: </a>                <span class="php-var">$ok</span> = <span class="php-var">$container</span>-&gt;save( <span class="php-var">$seq</span>, <span class="php-var">$options</span> );
-<a href="#932" id="932" class="l">932: </a>                <span class="php-keyword1">if</span>( ! <span class="php-var">$ok</span>[ <span class="php-quote">'ok'</span> ] )
-<a href="#933" id="933" class="l">933: </a>                    <span class="php-keyword1">throw</span> <span class="php-keyword1">new</span> Exception
-<a href="#934" id="934" class="l">934: </a>                        ( <span class="php-var">$ok</span>[ <span class="php-quote">'errmsg'</span> ],
-<a href="#935" id="935" class="l">935: </a>                          kERROR_COMMIT );                                      <span class="php-comment">// !@! ==&gt;</span>
-<a href="#936" id="936" class="l">936: </a>                
-<a href="#937" id="937" class="l">937: </a>                <span class="php-keyword1">return</span> <span class="php-var">$number</span>;                                                     <span class="php-comment">// ==&gt;</span>
-<a href="#938" id="938" class="l">938: </a>            
-<a href="#939" id="939" class="l">939: </a>            } <span class="php-comment">// Sequence exists.</span>
-<a href="#940" id="940" class="l">940: </a>        
-<a href="#941" id="941" class="l">941: </a>        } <span class="php-comment">// Object is inited.</span>
-<a href="#942" id="942" class="l">942: </a>        
-<a href="#943" id="943" class="l">943: </a>        <span class="php-keyword1">throw</span> <span class="php-keyword1">new</span> Exception
-<a href="#944" id="944" class="l">944: </a>            ( <span class="php-quote">&quot;Object is not ready&quot;</span>,
-<a href="#945" id="945" class="l">945: </a>              kERROR_STATE );                                                   <span class="php-comment">// !@! ==&gt;</span>
-<a href="#946" id="946" class="l">946: </a>    
-<a href="#947" id="947" class="l">947: </a>    } <span class="php-comment">// NextSequence.</span>
-<a href="#948" id="948" class="l">948: </a>
-<a href="#949" id="949" class="l">949: </a>        
-<a href="#950" id="950" class="l">950: </a>
-<a href="#951" id="951" class="l">951: </a><span class="php-comment">/*=======================================================================================
-</span><a href="#952" id="952" class="l">952: </a><span class="php-comment"> *                                                                                      *
-</span><a href="#953" id="953" class="l">953: </a><span class="php-comment"> *                              PUBLIC CONVERSION INTERFACE                             *
-</span><a href="#954" id="954" class="l">954: </a><span class="php-comment"> *                                                                                      *
-</span><a href="#955" id="955" class="l">955: </a><span class="php-comment"> *======================================================================================*/</span>
-<a href="#956" id="956" class="l">956: </a>
-<a href="#957" id="957" class="l">957: </a>
-<a href="#958" id="958" class="l">958: </a>     
-<a href="#959" id="959" class="l">959: </a>    <span class="php-comment">/*===================================================================================
-</span><a href="#960" id="960" class="l">960: </a><span class="php-comment">     *  ConvertBinary                                                                   *
-</span><a href="#961" id="961" class="l">961: </a><span class="php-comment">     *==================================================================================*/</span>
-<a href="#962" id="962" class="l">962: </a>
-<a href="#963" id="963" class="l">963: </a>    <span class="php-comment">/**
-</span><a href="#964" id="964" class="l">964: </a><span class="php-comment">     * &lt;h4&gt;Convert a binary string&lt;/h4&gt;
-</span><a href="#965" id="965" class="l">965: </a><span class="php-comment">     *
-</span><a href="#966" id="966" class="l">966: </a><span class="php-comment">     * This method will take care of converting binary data to and from Mongo data stores,
-</span><a href="#967" id="967" class="l">967: </a><span class="php-comment">     * we use here the {@link MongoBinData} class.
-</span><a href="#968" id="968" class="l">968: </a><span class="php-comment">     *
-</span><a href="#969" id="969" class="l">969: </a><span class="php-comment">     * This method can be used by the {@link CPersistentObject::_id()} method when
-</span><a href="#970" id="970" class="l">970: </a><span class="php-comment">     * generating a hashed identifier.
-</span><a href="#971" id="971" class="l">971: </a><span class="php-comment">     *
-</span><a href="#972" id="972" class="l">972: </a><span class="php-comment">     * @param mixed                 $theValue           Binary value.
-</span><a href="#973" id="973" class="l">973: </a><span class="php-comment">     * @param boolean               $theSense           &lt;tt&gt;TRUE&lt;/tt&gt; encode for database.
-</span><a href="#974" id="974" class="l">974: </a><span class="php-comment">     *
-</span><a href="#975" id="975" class="l">975: </a><span class="php-comment">     * @static
-</span><a href="#976" id="976" class="l">976: </a><span class="php-comment">     * @return mixed                The encoded or decoded binary string.
-</span><a href="#977" id="977" class="l">977: </a><span class="php-comment">     */</span>
-<a href="#978" id="978" class="l">978: </a>    <span class="php-keyword1">static</span> <span class="php-keyword1">function</span> ConvertBinary( <span class="php-var">$theValue</span>, <span class="php-var">$theSense</span> = <span class="php-keyword1">TRUE</span> )
-<a href="#979" id="979" class="l">979: </a>    {
-<a href="#980" id="980" class="l">980: </a>        <span class="php-keyword1">if</span>( <span class="php-var">$theSense</span> )
-<a href="#981" id="981" class="l">981: </a>            <span class="php-keyword1">return</span> <span class="php-keyword1">new</span> MongoBinData( <span class="php-var">$theValue</span> );                                   <span class="php-comment">// ==&gt;</span>
-<a href="#982" id="982" class="l">982: </a>        
-<a href="#983" id="983" class="l">983: </a>        <span class="php-keyword1">return</span> <span class="php-var">$theValue</span>-&gt;bin;                                                      <span class="php-comment">// ==&gt;</span>
-<a href="#984" id="984" class="l">984: </a>    
-<a href="#985" id="985" class="l">985: </a>    } <span class="php-comment">// ConvertBinary.</span>
-<a href="#986" id="986" class="l">986: </a>
-<a href="#987" id="987" class="l">987: </a>     
-<a href="#988" id="988" class="l">988: </a>
-<a href="#989" id="989" class="l">989: </a>} <span class="php-comment">// class CMongoContainer.</span>
-<a href="#990" id="990" class="l">990: </a>
-<a href="#991" id="991" class="l">991: </a>
-<a href="#992" id="992" class="l">992: </a><span class="xlang">?&gt;</span>
-<a href="#993" id="993" class="l">993: </a></code></pre>
+</span><a href="#817" id="817" class="l">817: </a><span class="php-comment">     * We overload this method here to implement sequence numbers in mongo containers,
+</span><a href="#818" id="818" class="l">818: </a><span class="php-comment">     * please refer to the {@link CContainer::NextSequence()} documentation for more
+</span><a href="#819" id="819" class="l">819: </a><span class="php-comment">     * information.
+</span><a href="#820" id="820" class="l">820: </a><span class="php-comment">     *
+</span><a href="#821" id="821" class="l">821: </a><span class="php-comment">     * @param string                $theKey             Sequence key.
+</span><a href="#822" id="822" class="l">822: </a><span class="php-comment">     * @param string                $theContainer       Sequence container.
+</span><a href="#823" id="823" class="l">823: </a><span class="php-comment">     *
+</span><a href="#824" id="824" class="l">824: </a><span class="php-comment">     * @access public
+</span><a href="#825" id="825" class="l">825: </a><span class="php-comment">     * @return mixed                The sequence number or &lt;tt&gt;NULL&lt;/tt&gt;.
+</span><a href="#826" id="826" class="l">826: </a><span class="php-comment">     *
+</span><a href="#827" id="827" class="l">827: </a><span class="php-comment">     * @throws Exception
+</span><a href="#828" id="828" class="l">828: </a><span class="php-comment">     */</span>
+<a href="#829" id="829" class="l">829: </a>    <span class="php-keyword1">public</span> <span class="php-keyword1">function</span> NextSequence( <span class="php-var">$theKey</span>, <span class="php-var">$theContainer</span> = <span class="php-keyword1">NULL</span> )
+<a href="#830" id="830" class="l">830: </a>    {
+<a href="#831" id="831" class="l">831: </a>        <span class="php-comment">//</span>
+<a href="#832" id="832" class="l">832: </a>        <span class="php-comment">// Check inited status.</span>
+<a href="#833" id="833" class="l">833: </a>        <span class="php-comment">//</span>
+<a href="#834" id="834" class="l">834: </a>        <span class="php-keyword1">if</span>( <span class="php-var">$this</span>-&gt;_IsInited() )
+<a href="#835" id="835" class="l">835: </a>        {
+<a href="#836" id="836" class="l">836: </a>            <span class="php-comment">//</span>
+<a href="#837" id="837" class="l">837: </a>            <span class="php-comment">// Init local storage.</span>
+<a href="#838" id="838" class="l">838: </a>            <span class="php-comment">//</span>
+<a href="#839" id="839" class="l">839: </a>            <span class="php-var">$options</span> = <span class="php-keyword1">array</span>( <span class="php-quote">'safe'</span> =&gt; <span class="php-keyword1">TRUE</span> );
+<a href="#840" id="840" class="l">840: </a>            <span class="php-var">$criteria</span> = <span class="php-keyword1">array</span>( <span class="php-quote">'_id'</span> =&gt; <span class="php-var">$theKey</span> );
+<a href="#841" id="841" class="l">841: </a>            <span class="php-var">$container</span> = ( <span class="php-var">$theContainer</span> !== <span class="php-keyword1">NULL</span> )
+<a href="#842" id="842" class="l">842: </a>                       ? ( ( <span class="php-var">$theContainer</span> === <span class="php-keyword1">TRUE</span> )
+<a href="#843" id="843" class="l">843: </a>                         ? <span class="php-var">$this</span>-&gt;Connection()-&gt;db-&gt;selectCollection
+<a href="#844" id="844" class="l">844: </a>                            ( kCONTAINER_SEQUENCE_NAME )
+<a href="#845" id="845" class="l">845: </a>                         : <span class="php-var">$this</span>-&gt;Connection()-&gt;db-&gt;selectCollection( <span class="php-var">$theContainer</span> ) )
+<a href="#846" id="846" class="l">846: </a>                       : <span class="php-var">$this</span>-&gt;Connection();
+<a href="#847" id="847" class="l">847: </a>            
+<a href="#848" id="848" class="l">848: </a>            <span class="php-comment">//</span>
+<a href="#849" id="849" class="l">849: </a>            <span class="php-comment">// Read sequence number.</span>
+<a href="#850" id="850" class="l">850: </a>            <span class="php-comment">//</span>
+<a href="#851" id="851" class="l">851: </a>            <span class="php-var">$seq</span> = <span class="php-var">$container</span>-&gt;findOne( <span class="php-var">$criteria</span> );
+<a href="#852" id="852" class="l">852: </a>            
+<a href="#853" id="853" class="l">853: </a>            <span class="php-comment">//</span>
+<a href="#854" id="854" class="l">854: </a>            <span class="php-comment">// Handle first.</span>
+<a href="#855" id="855" class="l">855: </a>            <span class="php-comment">//</span>
+<a href="#856" id="856" class="l">856: </a>            <span class="php-keyword1">if</span>( <span class="php-var">$seq</span> === <span class="php-keyword1">NULL</span> )
+<a href="#857" id="857" class="l">857: </a>            {
+<a href="#858" id="858" class="l">858: </a>                <span class="php-comment">//</span>
+<a href="#859" id="859" class="l">859: </a>                <span class="php-comment">// Save next.</span>
+<a href="#860" id="860" class="l">860: </a>                <span class="php-comment">//</span>
+<a href="#861" id="861" class="l">861: </a>                <span class="php-var">$ok</span> = <span class="php-var">$container</span>-&gt;save( <span class="php-keyword1">array</span>( <span class="php-quote">'_id'</span> =&gt; <span class="php-var">$theKey</span>,
+<a href="#862" id="862" class="l">862: </a>                                               kOFFSET_SEQUENCE =&gt; <span class="php-num">2</span> ),
+<a href="#863" id="863" class="l">863: </a>                                        <span class="php-var">$options</span> );
+<a href="#864" id="864" class="l">864: </a>                <span class="php-keyword1">if</span>( <span class="php-var">$ok</span>[ <span class="php-quote">'ok'</span> ] )
+<a href="#865" id="865" class="l">865: </a>                    <span class="php-keyword1">return</span> <span class="php-num">1</span>;                                                       <span class="php-comment">// ==&gt;</span>
+<a href="#866" id="866" class="l">866: </a>                
+<a href="#867" id="867" class="l">867: </a>                <span class="php-keyword1">throw</span> <span class="php-keyword1">new</span> Exception
+<a href="#868" id="868" class="l">868: </a>                    ( <span class="php-var">$ok</span>[ <span class="php-quote">'errmsg'</span> ],
+<a href="#869" id="869" class="l">869: </a>                      kERROR_COMMIT );                                          <span class="php-comment">// !@! ==&gt;</span>
+<a href="#870" id="870" class="l">870: </a>            
+<a href="#871" id="871" class="l">871: </a>            } <span class="php-comment">// First sequence.</span>
+<a href="#872" id="872" class="l">872: </a>            
+<a href="#873" id="873" class="l">873: </a>            <span class="php-comment">//</span>
+<a href="#874" id="874" class="l">874: </a>            <span class="php-comment">// Handle existing sequence.</span>
+<a href="#875" id="875" class="l">875: </a>            <span class="php-comment">//</span>
+<a href="#876" id="876" class="l">876: </a>            <span class="php-keyword1">else</span>
+<a href="#877" id="877" class="l">877: </a>            {
+<a href="#878" id="878" class="l">878: </a>                <span class="php-comment">//</span>
+<a href="#879" id="879" class="l">879: </a>                <span class="php-comment">// Save sequence.</span>
+<a href="#880" id="880" class="l">880: </a>                <span class="php-comment">//</span>
+<a href="#881" id="881" class="l">881: </a>                <span class="php-var">$number</span> = <span class="php-var">$seq</span>[ kOFFSET_SEQUENCE ]++;
+<a href="#882" id="882" class="l">882: </a>                
+<a href="#883" id="883" class="l">883: </a>                <span class="php-comment">//</span>
+<a href="#884" id="884" class="l">884: </a>                <span class="php-comment">// Increment sequence.</span>
+<a href="#885" id="885" class="l">885: </a>                <span class="php-comment">//</span>
+<a href="#886" id="886" class="l">886: </a>                <span class="php-var">$ok</span> = <span class="php-var">$container</span>-&gt;save( <span class="php-var">$seq</span>, <span class="php-var">$options</span> );
+<a href="#887" id="887" class="l">887: </a>                <span class="php-keyword1">if</span>( ! <span class="php-var">$ok</span>[ <span class="php-quote">'ok'</span> ] )
+<a href="#888" id="888" class="l">888: </a>                    <span class="php-keyword1">throw</span> <span class="php-keyword1">new</span> Exception
+<a href="#889" id="889" class="l">889: </a>                        ( <span class="php-var">$ok</span>[ <span class="php-quote">'errmsg'</span> ],
+<a href="#890" id="890" class="l">890: </a>                          kERROR_COMMIT );                                      <span class="php-comment">// !@! ==&gt;</span>
+<a href="#891" id="891" class="l">891: </a>                
+<a href="#892" id="892" class="l">892: </a>                <span class="php-keyword1">return</span> <span class="php-var">$number</span>;                                                     <span class="php-comment">// ==&gt;</span>
+<a href="#893" id="893" class="l">893: </a>            
+<a href="#894" id="894" class="l">894: </a>            } <span class="php-comment">// Sequence exists.</span>
+<a href="#895" id="895" class="l">895: </a>        
+<a href="#896" id="896" class="l">896: </a>        } <span class="php-comment">// Object is inited.</span>
+<a href="#897" id="897" class="l">897: </a>        
+<a href="#898" id="898" class="l">898: </a>        <span class="php-keyword1">throw</span> <span class="php-keyword1">new</span> Exception
+<a href="#899" id="899" class="l">899: </a>            ( <span class="php-quote">&quot;Object is not ready&quot;</span>,
+<a href="#900" id="900" class="l">900: </a>              kERROR_STATE );                                                   <span class="php-comment">// !@! ==&gt;</span>
+<a href="#901" id="901" class="l">901: </a>    
+<a href="#902" id="902" class="l">902: </a>    } <span class="php-comment">// NextSequence.</span>
+<a href="#903" id="903" class="l">903: </a>
+<a href="#904" id="904" class="l">904: </a>        
+<a href="#905" id="905" class="l">905: </a>
+<a href="#906" id="906" class="l">906: </a><span class="php-comment">/*=======================================================================================
+</span><a href="#907" id="907" class="l">907: </a><span class="php-comment"> *                                                                                      *
+</span><a href="#908" id="908" class="l">908: </a><span class="php-comment"> *                              PUBLIC CONVERSION INTERFACE                             *
+</span><a href="#909" id="909" class="l">909: </a><span class="php-comment"> *                                                                                      *
+</span><a href="#910" id="910" class="l">910: </a><span class="php-comment"> *======================================================================================*/</span>
+<a href="#911" id="911" class="l">911: </a>
+<a href="#912" id="912" class="l">912: </a>
+<a href="#913" id="913" class="l">913: </a>     
+<a href="#914" id="914" class="l">914: </a>    <span class="php-comment">/*===================================================================================
+</span><a href="#915" id="915" class="l">915: </a><span class="php-comment">     *  ConvertBinary                                                                   *
+</span><a href="#916" id="916" class="l">916: </a><span class="php-comment">     *==================================================================================*/</span>
+<a href="#917" id="917" class="l">917: </a>
+<a href="#918" id="918" class="l">918: </a>    <span class="php-comment">/**
+</span><a href="#919" id="919" class="l">919: </a><span class="php-comment">     * &lt;h4&gt;Convert a binary string&lt;/h4&gt;
+</span><a href="#920" id="920" class="l">920: </a><span class="php-comment">     *
+</span><a href="#921" id="921" class="l">921: </a><span class="php-comment">     * This method will take care of converting binary data to and from Mongo data stores,
+</span><a href="#922" id="922" class="l">922: </a><span class="php-comment">     * we use here the {@link MongoBinData} class.
+</span><a href="#923" id="923" class="l">923: </a><span class="php-comment">     *
+</span><a href="#924" id="924" class="l">924: </a><span class="php-comment">     * This method can be used by the {@link CPersistentObject::_id()} method when
+</span><a href="#925" id="925" class="l">925: </a><span class="php-comment">     * generating a hashed identifier.
+</span><a href="#926" id="926" class="l">926: </a><span class="php-comment">     *
+</span><a href="#927" id="927" class="l">927: </a><span class="php-comment">     * @param mixed                 $theValue           Binary value.
+</span><a href="#928" id="928" class="l">928: </a><span class="php-comment">     * @param boolean               $theSense           &lt;tt&gt;TRUE&lt;/tt&gt; encode for database.
+</span><a href="#929" id="929" class="l">929: </a><span class="php-comment">     *
+</span><a href="#930" id="930" class="l">930: </a><span class="php-comment">     * @static
+</span><a href="#931" id="931" class="l">931: </a><span class="php-comment">     * @return mixed                The encoded or decoded binary string.
+</span><a href="#932" id="932" class="l">932: </a><span class="php-comment">     */</span>
+<a href="#933" id="933" class="l">933: </a>    <span class="php-keyword1">static</span> <span class="php-keyword1">function</span> ConvertBinary( <span class="php-var">$theValue</span>, <span class="php-var">$theSense</span> = <span class="php-keyword1">TRUE</span> )
+<a href="#934" id="934" class="l">934: </a>    {
+<a href="#935" id="935" class="l">935: </a>        <span class="php-keyword1">if</span>( <span class="php-var">$theSense</span> )
+<a href="#936" id="936" class="l">936: </a>            <span class="php-keyword1">return</span> <span class="php-keyword1">new</span> MongoBinData( <span class="php-var">$theValue</span> );                                   <span class="php-comment">// ==&gt;</span>
+<a href="#937" id="937" class="l">937: </a>        
+<a href="#938" id="938" class="l">938: </a>        <span class="php-keyword1">return</span> <span class="php-var">$theValue</span>-&gt;bin;                                                      <span class="php-comment">// ==&gt;</span>
+<a href="#939" id="939" class="l">939: </a>    
+<a href="#940" id="940" class="l">940: </a>    } <span class="php-comment">// ConvertBinary.</span>
+<a href="#941" id="941" class="l">941: </a>
+<a href="#942" id="942" class="l">942: </a>     
+<a href="#943" id="943" class="l">943: </a>
+<a href="#944" id="944" class="l">944: </a>} <span class="php-comment">// class CMongoContainer.</span>
+<a href="#945" id="945" class="l">945: </a>
+<a href="#946" id="946" class="l">946: </a>
+<a href="#947" id="947" class="l">947: </a><span class="xlang">?&gt;</span>
+<a href="#948" id="948" class="l">948: </a></code></pre>
 
 	<div id="footer">
 		MyWrapper Reference Documentation API documentation generated by <a href="http://apigen.org">ApiGen 2.7.0</a>

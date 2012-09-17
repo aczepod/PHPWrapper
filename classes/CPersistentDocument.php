@@ -823,6 +823,67 @@ class CPersistentDocument extends CStatusDocument
 			  kERROR_PARAMETER );												// !@! ==>
 	
 	} // ResolveContainer.
+
+	 
+	/*===================================================================================
+	 *	ResolveClassContainer															*
+	 *==================================================================================*/
+
+	/**
+	 * <h4>Resolve class container</h4>
+	 *
+	 * This method should return the container used by the calling class, regardless of the
+	 * provided container. The main difference between this method and
+	 * {@link ResolveContainer()} is that if given a {@link CContainer} derived instance,
+	 * this method will try to resolve its database and will feed it to the
+	 * {@link ResolveContainer()} method.
+	 *
+	 * If the method is unable to resolve the container it will raise an exception, if the
+	 * second parameter is <tt>TRUE</tt>, or return <tt>NULL</tt>.
+	 *
+	 * The method will return an exception regardless of the value of the second parameter
+	 * if the first parameter is neither a {@link CServer}, a {@link CDatabase} or a
+	 * {@link CContainer} derived instance.
+	 *
+	 * @param CConnection			$theConnection		Connection object.
+	 * @param boolean				$doException		<tt>TRUE</tt> raise exception.
+	 *
+	 * @static
+	 * @return mixed				{@link CContainer} or <tt>NULL</tt> if not found.
+	 *
+	 * @throws Exception
+	 *
+	 * @uses ResolveContainer()
+	 */
+	static function ResolveClassContainer( CConnection $theConnection, $doException )
+	{
+		//
+		// Handle containers.
+		//
+		if( $theConnection instanceof CContainer )
+		{
+			//
+			// Get container's creator.
+			//
+			$database = $theConnection[ kOFFSET_PARENT ];
+			if( $database !== NULL )
+				return static::ResolveContainer( $database, $doException );			// ==>
+			
+			//
+			// Raise exception.
+			//
+			if( $doException )
+				throw new Exception
+					( "The container is missing its database reference",
+					  kERROR_PARAMETER );										// !@! ==>
+			
+			return NULL;															// ==>
+		
+		} // Provided container.
+		
+		return static::ResolveContainer( $theConnection, $doException );			// ==>
+	
+	} // ResolveClassContainer.
 		
 
 

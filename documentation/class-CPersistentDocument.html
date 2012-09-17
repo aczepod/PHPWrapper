@@ -7,7 +7,7 @@
 	<title>Class CPersistentDocument | MyWrapper Reference Documentation</title>
 
 	<script type="text/javascript" src="resources/combined.js?496895167"></script>
-	<script type="text/javascript" src="elementlist.js?3105881984"></script>
+	<script type="text/javascript" src="elementlist.js?779912626"></script>
 	<link rel="stylesheet" type="text/css" media="all" href="resources/style.css?1567499433" />
 
 </head>
@@ -194,6 +194,7 @@ status, by default the object is initialised.</p>
 		<h4>Indirect known subclasses</h4>
 			<a href="class-CEdge.html">CEdge</a>, 
 			<a href="class-CNode.html">CNode</a>, 
+			<a href="class-COntologyEdge.html">COntologyEdge</a>, 
 			<a href="class-COntologyNode.html">COntologyNode</a>, 
 			<a href="class-COntologyTerm.html">COntologyTerm</a>, 
 			<a href="class-CTerm.html">CTerm</a>
@@ -944,6 +945,69 @@ parameter if the first parameter is neither a <code><a href="class-CServer.html"
 						<code><code><a href="class-CPersistentDocument.html#_">CPersistentDocument::Replace()</a></code></code> <br />
 						<code><code><a href="class-CPersistentDocument.html#_">CPersistentDocument::Restore()</a></code></code> <br />
 						<code><code><a href="class-CPersistentDocument.html#_">CPersistentDocument::Delete()</a></code></code> <br />
+						<code><code><a href="class-CPersistentDocument.html#_">CPersistentDocument::ResolveClassContainer()</a></code></code> <br />
+				</div>
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="ResolveClassContainer" id="_ResolveClassContainer">
+
+		<td class="attributes"><code>
+			 public static
+			mixed
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_ResolveClassContainer">#</a>
+		<code><a href="source-class-CPersistentDocument.html#832" title="Go to source code">ResolveClassContainer</a>( <span><code><a href="class-CConnection.html">CConnection</a></code> <var>$theConnection</var></span>, <span>boolean <var>$doException</var></span> )</code>
+
+		<div class="description short">
+			
+<h4>Resolve class container</h4>
+
+		</div>
+
+		<div class="description detailed hidden">
+			
+<h4>Resolve class container</h4>
+
+<p>This method should return the container used by the calling class, regardless
+of the provided container. The main difference between this method and <code><a href="class-CPersistentDocument.html#_">CPersistentDocument::ResolveContainer()</a></code> is that if given a <code><a href="class-CContainer.html">CContainer</a></code> derived instance, this
+method will try to resolve its database and will feed it to the <code><a href="class-CPersistentDocument.html#_">CPersistentDocument::ResolveContainer()</a></code> method.</p>
+
+<p>If the method is unable to resolve the container it will raise an exception,
+if the second parameter is <tt>TRUE</tt>, or return <tt>NULL</tt>.</p>
+
+<p>The method will return an exception regardless of the value of the second
+parameter if the first parameter is neither a <code><a href="class-CServer.html">CServer</a></code>, a <code><a href="class-CDatabase.html">CDatabase</a></code> or a <code><a href="class-CContainer.html">CContainer</a></code> derived instance.</p>
+
+
+
+				<h4>Parameters</h4>
+				<div class="list"><dl>
+					<dt><var>$theConnection</var></dt>
+					<dd><code><code><a href="class-CConnection.html">CConnection</a></code></code><br> Connection object.</dd>
+					<dt><var>$doException</var></dt>
+					<dd><code>boolean</code><br> <tt>TRUE</tt> raise exception.</dd>
+				</dl></div>
+
+				<h4>Returns</h4>
+				<div class="list">
+					<code>mixed</code><br><code><a href="class-CContainer.html">CContainer</a></code> or <tt>NULL</tt> if not found.<br />
+				</div>
+
+				<h4>Throws</h4>
+				<div class="list">
+					<code><code><a href="class-Exception.html">Exception</a></code></code><br />
+				</div>
+
+				<h4>Uses</h4>
+				<div class="list">
+						<code><code><a href="class-CPersistentDocument.html#_">CPersistentDocument::ResolveContainer()</a></code></code> <br />
 				</div>
 
 
@@ -961,7 +1025,7 @@ parameter if the first parameter is neither a <code><a href="class-CServer.html"
 
 		<td class="name"><div>
 		<a class="anchor" href="#__Postset">#</a>
-		<code><a href="source-class-CPersistentDocument.html#841" title="Go to source code">_Postset</a>( <span>reference <var>&amp; $theOffset</var></span>, <span>reference <var>&amp; $theValue</var></span> )</code>
+		<code><a href="source-class-CPersistentDocument.html#902" title="Go to source code">_Postset</a>( <span>reference <var>&amp; $theOffset</var></span>, <span>reference <var>&amp; $theValue</var></span> )</code>
 
 		<div class="description short">
 			
@@ -1017,7 +1081,7 @@ except that they are passed by reference.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#__Postunset">#</a>
-		<code><a href="source-class-CPersistentDocument.html#880" title="Go to source code">_Postunset</a>( <span>reference <var>&amp; $theOffset</var></span> )</code>
+		<code><a href="source-class-CPersistentDocument.html#941" title="Go to source code">_Postunset</a>( <span>reference <var>&amp; $theOffset</var></span> )</code>
 
 		<div class="description short">
 			
@@ -1071,7 +1135,7 @@ except that it passed by reference.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#__Precommit">#</a>
-		<code><a href="source-class-CPersistentDocument.html#927" title="Go to source code">_Precommit</a>( <span><code><a href="class-CConnection.html">CConnection</a></code> <var>$theConnection</var></span>, <span>bitfield <var>$theModifiers</var> = kFLAG_DEFAULT </span> )</code>
+		<code><a href="source-class-CPersistentDocument.html#988" title="Go to source code">_Precommit</a>( <span><code><a href="class-CConnection.html">CConnection</a></code> <var>$theConnection</var></span>, <span>bitfield <var>$theModifiers</var> = kFLAG_DEFAULT </span> )</code>
 
 		<div class="description short">
 			
@@ -1171,7 +1235,7 @@ be raised.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#__Postcommit">#</a>
-		<code><a href="source-class-CPersistentDocument.html#1003" title="Go to source code">_Postcommit</a>( <span><code><a href="class-CConnection.html">CConnection</a></code> <var>$theConnection</var></span>, <span>bitfield <var>$theModifiers</var> = kFLAG_DEFAULT </span> )</code>
+		<code><a href="source-class-CPersistentDocument.html#1064" title="Go to source code">_Postcommit</a>( <span><code><a href="class-CConnection.html">CConnection</a></code> <var>$theConnection</var></span>, <span>bitfield <var>$theModifiers</var> = kFLAG_DEFAULT </span> )</code>
 
 		<div class="description short">
 			
@@ -1269,7 +1333,7 @@ this one.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#__PrecommitValidate">#</a>
-		<code><a href="source-class-CPersistentDocument.html#1083" title="Go to source code">_PrecommitValidate</a>( <span>reference <var>&amp; $theConnection</var></span>, <span>reference <var>&amp; $theModifiers</var></span> )</code>
+		<code><a href="source-class-CPersistentDocument.html#1144" title="Go to source code">_PrecommitValidate</a>( <span>reference <var>&amp; $theConnection</var></span>, <span>reference <var>&amp; $theModifiers</var></span> )</code>
 
 		<div class="description short">
 			
@@ -1359,7 +1423,7 @@ method should raise an exception.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#__PrecommitRelated">#</a>
-		<code><a href="source-class-CPersistentDocument.html#1152" title="Go to source code">_PrecommitRelated</a>( <span>reference <var>&amp; $theConnection</var></span>, <span>reference <var>&amp; $theModifiers</var></span> )</code>
+		<code><a href="source-class-CPersistentDocument.html#1213" title="Go to source code">_PrecommitRelated</a>( <span>reference <var>&amp; $theConnection</var></span>, <span>reference <var>&amp; $theModifiers</var></span> )</code>
 
 		<div class="description short">
 			
@@ -1438,7 +1502,7 @@ exception.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#__PrecommitIdentify">#</a>
-		<code><a href="source-class-CPersistentDocument.html#1197" title="Go to source code">_PrecommitIdentify</a>( <span>reference <var>&amp; $theConnection</var></span>, <span>reference <var>&amp; $theModifiers</var></span> )</code>
+		<code><a href="source-class-CPersistentDocument.html#1258" title="Go to source code">_PrecommitIdentify</a>( <span>reference <var>&amp; $theConnection</var></span>, <span>reference <var>&amp; $theModifiers</var></span> )</code>
 
 		<div class="description short">
 			
@@ -1519,7 +1583,7 @@ exception.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#__PostcommitRelated">#</a>
-		<code><a href="source-class-CPersistentDocument.html#1253" title="Go to source code">_PostcommitRelated</a>( <span>reference <var>&amp; $theConnection</var></span>, <span>reference <var>&amp; $theModifiers</var></span> )</code>
+		<code><a href="source-class-CPersistentDocument.html#1314" title="Go to source code">_PostcommitRelated</a>( <span>reference <var>&amp; $theConnection</var></span>, <span>reference <var>&amp; $theModifiers</var></span> )</code>
 
 		<div class="description short">
 			
@@ -1593,7 +1657,7 @@ status gets reset.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#__PostcommitStatus">#</a>
-		<code><a href="source-class-CPersistentDocument.html#1293" title="Go to source code">_PostcommitStatus</a>( <span>reference <var>&amp; $theConnection</var></span>, <span>reference <var>&amp; $theModifiers</var></span> )</code>
+		<code><a href="source-class-CPersistentDocument.html#1354" title="Go to source code">_PostcommitStatus</a>( <span>reference <var>&amp; $theConnection</var></span>, <span>reference <var>&amp; $theModifiers</var></span> )</code>
 
 		<div class="description short">
 			
@@ -1680,7 +1744,7 @@ resetting it after deleting.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#__PostcommitCleanup">#</a>
-		<code><a href="source-class-CPersistentDocument.html#1369" title="Go to source code">_PostcommitCleanup</a>( <span>reference <var>&amp; $theConnection</var></span>, <span>reference <var>&amp; $theModifiers</var></span> )</code>
+		<code><a href="source-class-CPersistentDocument.html#1430" title="Go to source code">_PostcommitCleanup</a>( <span>reference <var>&amp; $theConnection</var></span>, <span>reference <var>&amp; $theModifiers</var></span> )</code>
 
 		<div class="description short">
 			
@@ -1760,7 +1824,7 @@ resetting it after deleting.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#__Ready">#</a>
-		<code><a href="source-class-CPersistentDocument.html#1424" title="Go to source code">_Ready</a>( )</code>
+		<code><a href="source-class-CPersistentDocument.html#1485" title="Go to source code">_Ready</a>( )</code>
 
 		<div class="description short">
 			

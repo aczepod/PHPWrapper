@@ -4,7 +4,7 @@
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 	<meta name="generator" content="ApiGen 2.7.0" />
 
-	<title>Class COntologyNode | MyWrapper Reference Documentation</title>
+	<title>Class COntologyEdge | MyWrapper Reference Documentation</title>
 
 	<script type="text/javascript" src="resources/combined.js?496895167"></script>
 	<script type="text/javascript" src="elementlist.js?779912626"></script>
@@ -43,8 +43,8 @@
 		<div id="elements">
 			<h3>Classes</h3>
 			<ul>
-				<li><a href="class-COntologyEdge.html">COntologyEdge</a></li>
-				<li class="active"><a href="class-COntologyNode.html">COntologyNode</a></li>
+				<li class="active"><a href="class-COntologyEdge.html">COntologyEdge</a></li>
+				<li><a href="class-COntologyNode.html">COntologyNode</a></li>
 				<li><a href="class-COntologyTerm.html">COntologyTerm</a></li>
 			</ul>
 
@@ -88,55 +88,50 @@
 	</div>
 
 <div id="content" class="class">
-	<h1>Class COntologyNode</h1>
+	<h1>Class COntologyEdge</h1>
 
 
 	<div class="description">
 	
-<h3>Ontology node object ancestor</h3>
+<h3>Ontology edge object ancestor</h3>
 
-<p>This class extends its ancestor, <code><a href="class-CNode.html">CNode</a></code>, by asserting the <code><a href="class-CNode.html#_">CNode::Term()</a></code> to be an instance of <code><a href="class-COntologyTerm.html">COntologyTerm</a></code> and by managing the kOFFSET_REFS_NODE offset of the related <code><a href="class-CNode.html#_">CNode::Term()</a></code>.</p>
+<p>This class extends its ancestor, <code><a href="class-CEdge.html">CEdge</a></code>, by asserting the <code><a href="class-CEdge.html#_">CEdge::Subject()</a></code> and <code><a href="class-CEdge.html#_">CEdge::Object()</a></code> to be instances of <code><a href="class-COntologyNode.html">COntologyNode</a></code>, and
+the <code><a href="class-CEdge.html#_">CEdge::Predicate()</a></code> to be an instance of <code><a href="class-COntologyTerm.html">COntologyTerm</a></code>.</p>
 
-<p>The class does not handle global identifiers and objects cannot be uniquely
-identified by its properties or attributes, it is the duty of the hosting
-container to provide the kOFFSET_NID identifier, In this class we use
-sequences, <code><a href="class-CContainer.html#_">CContainer::NextSequence()</a></code>, from a default container named
-after the default kCONTAINER_SEQUENCE_NAME tag in the same database,
-this is to make referencing nodes easier and to be compatible with most graph
-databases.</p>
+<p>This class overloads the native identification workflow by using a number
+sequence tagged by kSEQUENCE_KEY_EDGE. The class also features a unique
+identifier, kOFFSET_UID, which receives the hash of the global
+identifier, this will be useful to identify duplicates.</p>
 
-<p>In this class, the term, kOFFSET_TERM, is a reference to an instance
-of <code><a href="class-COntologyTerm.html">COntologyTerm</a></code>, meaning that the offset will contain the native
-identifier of the term. The value may be provided as an uncommitted term object,
-in that case the term will be committed before the current node is
-committed.</p>
-
-<p>Once the node has been committed, it will not be possible to modify the term,
-kOFFSET_TERM.</p>
-
-<p>When inserting a new node, the class will also make sure that the referenced
-term gets a reference to the current node in its kOFFSET_REFS_NODE
-offset, this means that once a node is committed, one cannot change its term
-reference.</p>
+<p>When adding vertices and predicates to the object, these can be provided as
+objects and if these objects are not <code><a href="class-CStatusDocument.html#_">CStatusDocument::_IsCommitted()</a></code>, they will be stored
+before the current edge object is committed.</p>
 
 <p>The class features an offset, kOFFSET_REFS_TAG, which represents the
 list of tags that reference the current node. This offset is a set of tag
 identifiers implemented as an array. The offset definition is borrowed from the
 <code><a href="class-COntologyTerm.html">COntologyTerm</a></code> class, which is required by this class because of its
-kOFFSET_TERM offset. This offset is managed by the tag class, this class
-locks the offset.</p>
+kOFFSET_PREDICATE offset. This offset is managed by the tag class, this
+class locks the offset.</p>
 
-<p>The class implements the static method, <code><a href="class-COntologyNode.html#_">COntologyNode::DefaultContainer()</a></code>, it will
-use the kCONTAINER_NODE_NAME constant. Note that when passing <code><a href="class-CConnection.html">CConnection</a></code> based objects to the persisting methods of this class, you should
+<p>The class implements the static method, <code><a href="class-COntologyEdge.html#_">COntologyEdge::DefaultContainer()</a></code>, it will
+use the kCONTAINER_EDGE_NAME constant. Note that when passing <code><a href="class-CConnection.html">CConnection</a></code> based objects to the persisting methods of this class, you should
 provide preferably Database instances, since this class may have to commit
 terms.</p>
 
 <p>The class features member accessor methods for the default offsets:</p>
 
 <ul>
-	<li><code><a href="class-COntologyNode.html#_">COntologyNode::TagRefs()</a></code>: This method returns the node's tag references, kOFFSET_REFS_TAG.</li>
+	<li><code><a href="class-COntologyEdge.html#_">COntologyEdge::TagRefs()</a></code>: This method returns the node's tag references, kOFFSET_REFS_TAG.</li>
 
-	<li><code><a href="class-COntologyNode.html#_">COntologyNode::LoadTerm()</a></code>: This method will return the referenced term object.</li>
+	<li><code><a href="class-COntologyEdge.html#_">COntologyEdge::LoadSubject()</a></code>: This method will return the referenced subject vertex
+	<code><a href="class-COntologyNode.html">COntologyNode</a></code> object.</li>
+
+	<li><code><a href="class-COntologyEdge.html#_">COntologyEdge::LoadPredicate()</a></code>: This method will return the referenced predicate
+	<code><a href="class-COntologyTerm.html">COntologyTerm</a></code> object.</li>
+
+	<li><code><a href="class-COntologyEdge.html#_">COntologyEdge::LoadObject()</a></code>: This method will return the referenced object vertex
+	<code><a href="class-COntologyNode.html">COntologyNode</a></code> object.</li>
 </ul>
 
 	</div>
@@ -188,14 +183,14 @@ terms.</p>
 		</dd>
 		<dd style="padding-left:150px">
 			<img src="resources/inherit.png" alt="Extended by" />
-			<a href="class-CNode.html"><span>CNode</span></a>
+			<a href="class-CEdge.html"><span>CEdge</span></a>
 			
 			
 			
 		</dd>
 		<dd style="padding-left:180px">
 			<img src="resources/inherit.png" alt="Extended by" />
-<b><span>COntologyNode</span></b>			
+<b><span>COntologyEdge</span></b>			
 			
 			
 		</dd>
@@ -217,56 +212,12 @@ terms.</p>
 				<b>Author:</b>
 				Milko A. Škofič &lt;<a
 href="mailto:m.skofic&#64;cgiar.org">m.skofic&#64;<!---->cgiar.org</a>&gt;<br />
-		<b>Located at</b> <a href="source-class-COntologyNode.html#43" title="Go to source code">COntologyNode.php</a><br />
+		<b>Located at</b> <a href="source-class-COntologyEdge.html#43" title="Go to source code">COntologyEdge.php</a><br />
 	</div>
 
 
 	<table class="summary" id="methods">
 	<caption>Methods summary</caption>
-	<tr data-order="__toString" id="___toString">
-
-		<td class="attributes"><code>
-			 public 
-			string
-			
-			</code>
-		</td>
-
-		<td class="name"><div>
-		<a class="anchor" href="#___toString">#</a>
-		<code><a href="source-class-COntologyNode.html#116" title="Go to source code">__toString</a>( )</code>
-
-		<div class="description short">
-			
-<h4>Return object name</h4>
-
-		</div>
-
-		<div class="description detailed hidden">
-			
-<h4>Return object name</h4>
-
-<p>This method should return the current object's name which should represent
-the unique identifier of the object.</p>
-
-<p>By default we return the string representation of the term, kOFFSET_TERM.</p>
-
-
-
-
-				<h4>Returns</h4>
-				<div class="list">
-					<code>string</code><br>The connection name.<br />
-				</div>
-
-
-
-				<h4>Overrides</h4>
-				<div class="list"><code><a href="class-CNode.html#_">CNode::__toString</a></code></div>
-
-		</div>
-		</div></td>
-	</tr>
 	<tr data-order="TagRefs" id="_TagRefs">
 
 		<td class="attributes"><code>
@@ -278,7 +229,7 @@ the unique identifier of the object.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#_TagRefs">#</a>
-		<code><a href="source-class-COntologyNode.html#156" title="Go to source code">TagRefs</a>( )</code>
+		<code><a href="source-class-COntologyEdge.html#129" title="Go to source code">TagRefs</a>( )</code>
 
 		<div class="description short">
 			
@@ -315,53 +266,79 @@ identifiers of tags that reference the node.</p>
 		</div>
 		</div></td>
 	</tr>
-	<tr data-order="EdgeRefs" id="_EdgeRefs">
+	<tr data-order="LoadSubject" id="_LoadSubject">
 
 		<td class="attributes"><code>
 			 public 
-			array
+			<code><a href="class-COntologyNode.html">COntologyNode</a></code>
 			
 			</code>
 		</td>
 
 		<td class="name"><div>
-		<a class="anchor" href="#_EdgeRefs">#</a>
-		<code><a href="source-class-COntologyNode.html#189" title="Go to source code">EdgeRefs</a>( )</code>
+		<a class="anchor" href="#_LoadSubject">#</a>
+		<code><a href="source-class-COntologyEdge.html#171" title="Go to source code">LoadSubject</a>( <span><code><a href="class-CConnection.html">CConnection</a></code> <var>$theConnection</var></span>, <span>boolean <var>$doReload</var> = <span class="php-keyword1">FALSE</span> </span> )</code>
 
 		<div class="description short">
 			
-<h4>Manage edge references</h4>
+<h4>Load subject node object</h4>
 
 		</div>
 
 		<div class="description detailed hidden">
 			
-<h4>Manage edge references</h4>
+<h4>Load subject node object</h4>
 
-<p>The <i>edge references</i>, kOFFSET_REFS_EDGE, holds a list of
-identifiers of edges that reference the node.</p>
+<p>This method will return the current subject node object: if the node is not
+set, the method will return <tt>NULL</tt>; if the node cannot be found, the
+method will raise an exception.</p>
 
-<p>The method is read-only, because this value must be managed externally.</p>
+<p>The object will also be loaded in a data member that can function as a
+cache.</p>
+
+<p>The method features two parameters: the first refers to the container in
+which the node is stored, the second is a boolean flag that determines whether
+the object is to be read, or if the cached copy can be used.</p>
 
 
 
+				<h4>Parameters</h4>
+				<div class="list"><dl>
+					<dt><var>$theConnection</var></dt>
+					<dd><code><code><a href="class-CConnection.html">CConnection</a></code></code><br> Server, database or container.</dd>
+					<dt><var>$doReload</var></dt>
+					<dd><code>boolean</code><br> Reload if <tt>TRUE</tt>.</dd>
+				</dl></div>
 
 				<h4>Returns</h4>
 				<div class="list">
-					<code>array</code><br>Edge reference list.<br />
+					<code><code><a href="class-COntologyNode.html">COntologyNode</a></code></code><br>Node object or <tt>NULL</tt>.<br />
 				</div>
 
+				<h4>Throws</h4>
+				<div class="list">
+					<code><code><a href="class-Exception.html">Exception</a></code></code><br />
+				</div>
 
 				<h4>See</h4>
 				<div class="list">
-						kOFFSET_REFS_TAG<br />
+						kOFFSET_VERTEX_SUBJECT<br />
+				</div>
+				<h4>Uses</h4>
+				<div class="list">
+						<code><code><a href="class-CPersistentObject.html#_">CPersistentObject::NewObject()</a></code></code> <br />
+				</div>
+				<h4>Used by</h4>
+				<div class="list">
+						<code><code><a href="class-COntologyEdge.html#_">COntologyEdge::_index()</a></code></code> <br />
+						<code><code><a href="class-COntologyEdge.html#_">COntologyEdge::_PrecommitRelated()</a></code></code> <br />
 				</div>
 
 
 		</div>
 		</div></td>
 	</tr>
-	<tr data-order="LoadTerm" id="_LoadTerm">
+	<tr data-order="LoadPredicate" id="_LoadPredicate">
 
 		<td class="attributes"><code>
 			 public 
@@ -371,22 +348,22 @@ identifiers of edges that reference the node.</p>
 		</td>
 
 		<td class="name"><div>
-		<a class="anchor" href="#_LoadTerm">#</a>
-		<code><a href="source-class-COntologyNode.html#228" title="Go to source code">LoadTerm</a>( <span><code><a href="class-CConnection.html">CConnection</a></code> <var>$theConnection</var></span>, <span>boolean <var>$doReload</var> = <span class="php-keyword1">FALSE</span> </span> )</code>
+		<a class="anchor" href="#_LoadPredicate">#</a>
+		<code><a href="source-class-COntologyEdge.html#246" title="Go to source code">LoadPredicate</a>( <span><code><a href="class-CConnection.html">CConnection</a></code> <var>$theConnection</var></span>, <span>boolean <var>$doReload</var> = <span class="php-keyword1">FALSE</span> </span> )</code>
 
 		<div class="description short">
 			
-<h4>Load term object</h4>
+<h4>Load predicate term object</h4>
 
 		</div>
 
 		<div class="description detailed hidden">
 			
-<h4>Load term object</h4>
+<h4>Load predicate term object</h4>
 
-<p>This method will return the current term object: if the term is not set, the
-method will return <tt>NULL</tt>; if the term cannot be found, the method will
-raise an exception.</p>
+<p>This method will return the current predicate term object: if the term is not
+set, the method will return <tt>NULL</tt>; if the term cannot be found, the
+method will raise an exception.</p>
 
 <p>The object will also be loaded in a data member that can function as a
 cache.</p>
@@ -417,7 +394,7 @@ the object is to be read, or if the cached copy can be used.</p>
 
 				<h4>See</h4>
 				<div class="list">
-						kOFFSET_TERM<br />
+						kOFFSET_PREDICATE<br />
 				</div>
 				<h4>Uses</h4>
 				<div class="list">
@@ -425,58 +402,61 @@ the object is to be read, or if the cached copy can be used.</p>
 				</div>
 				<h4>Used by</h4>
 				<div class="list">
-						<code><code><a href="class-COntologyNode.html#_">COntologyNode::_PrecommitRelated()</a></code></code> <br />
+						<code><code><a href="class-COntologyEdge.html#_">COntologyEdge::_index()</a></code></code> <br />
+						<code><code><a href="class-COntologyEdge.html#_">COntologyEdge::_PrecommitRelated()</a></code></code> <br />
 				</div>
 
 
 		</div>
 		</div></td>
 	</tr>
-	<tr data-order="RelateTo" id="_RelateTo">
+	<tr data-order="LoadObject" id="_LoadObject">
 
 		<td class="attributes"><code>
 			 public 
-			<code><a href="class-COntologyEdge.html">COntologyEdge</a></code>
+			<code><a href="class-COntologyNode.html">COntologyNode</a></code>
 			
 			</code>
 		</td>
 
 		<td class="name"><div>
-		<a class="anchor" href="#_RelateTo">#</a>
-		<code><a href="source-class-COntologyNode.html#312" title="Go to source code">RelateTo</a>( <span>mixed <var>$thePredicate</var></span>, <span>mixed <var>$theObject</var></span> )</code>
+		<a class="anchor" href="#_LoadObject">#</a>
+		<code><a href="source-class-COntologyEdge.html#321" title="Go to source code">LoadObject</a>( <span><code><a href="class-CConnection.html">CConnection</a></code> <var>$theConnection</var></span>, <span>boolean <var>$doReload</var> = <span class="php-keyword1">FALSE</span> </span> )</code>
 
 		<div class="description short">
 			
-<h4>Relate to node</h4>
+<h4>Load object node object</h4>
 
 		</div>
 
 		<div class="description detailed hidden">
 			
-<h4>Relate to node</h4>
+<h4>Load object node object</h4>
 
-<p>This method will relate the current node to another and return a <code><a href="class-COntologyEdge.html">COntologyEdge</a></code> object which represents a directed graph edge where the current
-node represents the subject of the relationship.</p>
+<p>This method will return the current object node object: if the node is not
+set, the method will return <tt>NULL</tt>; if the node cannot be found, the
+method will raise an exception.</p>
 
-<p>The predicate and object vertex can be provided both as objects or as object
-identifiers.</p>
+<p>The object will also be loaded in a data member that can function as a
+cache.</p>
 
-<p>Note that the edge will not be committed, it is the responsibility of the
-caller to do so.</p>
+<p>The method features two parameters: the first refers to the container in
+which the node is stored, the second is a boolean flag that determines whether
+the object is to be read, or if the cached copy can be used.</p>
 
 
 
 				<h4>Parameters</h4>
 				<div class="list"><dl>
-					<dt><var>$thePredicate</var></dt>
-					<dd><code>mixed</code><br> Predicate term object or reference.</dd>
-					<dt><var>$theObject</var></dt>
-					<dd><code>mixed</code><br> object node object or reference.</dd>
+					<dt><var>$theConnection</var></dt>
+					<dd><code><code><a href="class-CConnection.html">CConnection</a></code></code><br> Server, database or container.</dd>
+					<dt><var>$doReload</var></dt>
+					<dd><code>boolean</code><br> Reload if <tt>TRUE</tt>.</dd>
 				</dl></div>
 
 				<h4>Returns</h4>
 				<div class="list">
-					<code><code><a href="class-COntologyEdge.html">COntologyEdge</a></code></code><br>Edge object.<br />
+					<code><code><a href="class-COntologyNode.html">COntologyNode</a></code></code><br>Node object or <tt>NULL</tt>.<br />
 				</div>
 
 				<h4>Throws</h4>
@@ -486,15 +466,18 @@ caller to do so.</p>
 
 				<h4>See</h4>
 				<div class="list">
-						kOFFSET_TERM<br />
+						kOFFSET_VERTEX_OBJECT<br />
 				</div>
 				<h4>Uses</h4>
 				<div class="list">
 						<code><code><a href="class-CPersistentObject.html#_">CPersistentObject::NewObject()</a></code></code> <br />
 				</div>
+				<h4>Used by</h4>
+				<div class="list">
+						<code><code><a href="class-COntologyEdge.html#_">COntologyEdge::_index()</a></code></code> <br />
+						<code><code><a href="class-COntologyEdge.html#_">COntologyEdge::_PrecommitRelated()</a></code></code> <br />
+				</div>
 
-				<h4>Overrides</h4>
-				<div class="list"><code><a href="class-CNode.html#_">CNode::RelateTo</a></code></div>
 
 		</div>
 		</div></td>
@@ -510,20 +493,20 @@ caller to do so.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#_DefaultContainer">#</a>
-		<code><a href="source-class-COntologyNode.html#377" title="Go to source code">DefaultContainer</a>( <span><code><a href="class-CDatabase.html">CDatabase</a></code> <var>$theDatabase</var></span> )</code>
+		<code><a href="source-class-COntologyEdge.html#405" title="Go to source code">DefaultContainer</a>( <span><code><a href="class-CDatabase.html">CDatabase</a></code> <var>$theDatabase</var></span> )</code>
 
 		<div class="description short">
 			
-<h4>Return the nodes container</h4>
+<h4>Return the edges container</h4>
 
 		</div>
 
 		<div class="description detailed hidden">
 			
-<h4>Return the nodes container</h4>
+<h4>Return the edges container</h4>
 
 <p>The container will be created or fetched from the provided database using the
-kCONTAINER_NODE_NAME name.</p>
+kCONTAINER_EDGE_NAME name.</p>
 
 
 
@@ -535,17 +518,83 @@ kCONTAINER_NODE_NAME name.</p>
 
 				<h4>Returns</h4>
 				<div class="list">
-					<code><code><a href="class-CContainer.html">CContainer</a></code></code><br>The nodes container.<br />
+					<code><code><a href="class-CContainer.html">CContainer</a></code></code><br>The edges container.<br />
 				</div>
 
 
 				<h4>See</h4>
 				<div class="list">
-						kCONTAINER_NODE_NAME<br />
+						kCONTAINER_EDGE_NAME<br />
 				</div>
 
 				<h4>Overrides</h4>
 				<div class="list"><code><a href="class-CPersistentDocument.html#_">CPersistentDocument::DefaultContainer</a></code></div>
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="_index" id="__index">
+
+		<td class="attributes"><code>
+			 protected 
+			string|null
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#__index">#</a>
+		<code><a href="source-class-COntologyEdge.html#438" title="Go to source code">_index</a>( <span><code><a href="class-CConnection.html">CConnection</a></code> <var>$theConnection</var></span>, <span>bitfield <var>$theModifiers</var></span> )</code>
+
+		<div class="description short">
+			
+<h4>Return the object's global unique identifier</h4>
+
+		</div>
+
+		<div class="description detailed hidden">
+			
+<h4>Return the object's global unique identifier</h4>
+
+<p>We override the parent method to handle the referenced objects: in this class
+the global identifier is the concatenation of the subject native identifier, the
+predicate global identifier and the object native identifier all separated by
+the kTOKEN_INDEX_SEPARATOR token.</p>
+
+
+
+				<h4>Parameters</h4>
+				<div class="list"><dl>
+					<dt><var>$theConnection</var></dt>
+					<dd><code><code><a href="class-CConnection.html">CConnection</a></code></code><br> Server, database or container.</dd>
+					<dt><var>$theModifiers</var></dt>
+					<dd><code>bitfield</code><br> Commit options.</dd>
+				</dl></div>
+
+				<h4>Returns</h4>
+				<div class="list">
+					<code>string|null</code><br>The object's global unique identifier.<br />
+				</div>
+
+				<h4>Throws</h4>
+				<div class="list">
+					<code><code><a href="class-Exception.html">Exception</a></code></code><br />
+					<code><code><a href="class-Exception.html">Exception</a></code></code><br />
+				</div>
+
+				<h4>See</h4>
+				<div class="list">
+						kOFFSET_NID kOFFSET_GID kTOKEN_INDEX_SEPARATOR<br />
+				</div>
+				<h4>Uses</h4>
+				<div class="list">
+						<code><code><a href="class-COntologyEdge.html#_">COntologyEdge::LoadSubject()</a></code></code> <br />
+						<code><code><a href="class-COntologyEdge.html#_">COntologyEdge::LoadPredicate()</a></code></code> <br />
+						<code><code><a href="class-COntologyEdge.html#_">COntologyEdge::LoadObject()</a></code></code> <br />
+				</div>
+
+				<h4>Overrides</h4>
+				<div class="list"><code><a href="class-CEdge.html#_">CEdge::_index</a></code></div>
 
 		</div>
 		</div></td>
@@ -561,7 +610,7 @@ kCONTAINER_NODE_NAME name.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#__Preset">#</a>
-		<code><a href="source-class-COntologyNode.html#410" title="Go to source code">_Preset</a>( <span>reference <var>&amp; $theOffset</var></span>, <span>reference <var>&amp; $theValue</var></span> )</code>
+		<code><a href="source-class-COntologyEdge.html#520" title="Go to source code">_Preset</a>( <span>reference <var>&amp; $theOffset</var></span>, <span>reference <var>&amp; $theValue</var></span> )</code>
 
 		<div class="description short">
 			
@@ -573,10 +622,12 @@ kCONTAINER_NODE_NAME name.</p>
 			
 <h4>Handle offset before setting it</h4>
 
-<p>In this class we handle the term offset, if provided as an object we leave it
-unchanged only if not yet committed, if not, we convert it to its native
-identifier. We also ensure the provided term object to be an instance of <code><a href="class-COntologyTerm.html">COntologyTerm</a></code> by asserting <code><a href="class-CDocument.html">CDocument</a></code> descendants to be of that
-class.</p>
+<p>In this class we handle the subject, predicate and object offsets, if
+provided as objects we leave them unchanged only if not yet committed, if not,
+we convert them to their native identifiers.</p>
+
+<p>We also ensure that the provided objects are instances of the correct classes
+by asserting <code><a href="class-CDocument.html">CDocument</a></code> descendants.</p>
 
 <p>This method will lock the kOFFSET_REFS_TAG offset from any
 modification.</p>
@@ -599,7 +650,8 @@ modification.</p>
 
 				<h4>See</h4>
 				<div class="list">
-						kOFFSET_TERM kOFFSET_REFS_TAG<br />
+						kOFFSET_REFS_TAG<br />
+						kOFFSET_PREDICATE kOFFSET_VERTEX_OBJECT kOFFSET_VERTEX_SUBJECT<br />
 				</div>
 				<h4>Uses</h4>
 				<div class="list">
@@ -608,7 +660,7 @@ modification.</p>
 				</div>
 
 				<h4>Overrides</h4>
-				<div class="list"><code><a href="class-CNode.html#_">CNode::_Preset</a></code></div>
+				<div class="list"><code><a href="class-CPersistentObject.html#_">CPersistentObject::_Preset</a></code></div>
 
 		</div>
 		</div></td>
@@ -624,7 +676,7 @@ modification.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#__Preunset">#</a>
-		<code><a href="source-class-COntologyNode.html#515" title="Go to source code">_Preunset</a>( <span>reference <var>&amp; $theOffset</var></span> )</code>
+		<code><a href="source-class-COntologyEdge.html#712" title="Go to source code">_Preunset</a>( <span>reference <var>&amp; $theOffset</var></span> )</code>
 
 		<div class="description short">
 			
@@ -636,9 +688,9 @@ modification.</p>
 			
 <h4>Handle offset before unsetting it</h4>
 
-<p>In this class we prevent the modification of the kOFFSET_TERM offset
-if the object is committed and of the kOFFSET_REFS_TAG offset in all
-cases.</p>
+<p>In this class we prevent the modification of the subject, predicate and
+object offsets if the object is committed and of the kOFFSET_REFS_TAG
+offset in all cases.</p>
 
 
 
@@ -656,7 +708,8 @@ cases.</p>
 
 				<h4>See</h4>
 				<div class="list">
-						kOFFSET_REFS_TAG kOFFSET_TERM<br />
+						kOFFSET_REFS_TAG<br />
+						kOFFSET_PREDICATE kOFFSET_VERTEX_OBJECT kOFFSET_VERTEX_SUBJECT<br />
 				</div>
 				<h4>Uses</h4>
 				<div class="list">
@@ -664,7 +717,7 @@ cases.</p>
 				</div>
 
 				<h4>Overrides</h4>
-				<div class="list"><code><a href="class-CPersistentObject.html#_">CPersistentObject::_Preunset</a></code></div>
+				<div class="list"><code><a href="class-CEdge.html#_">CEdge::_Preunset</a></code></div>
 
 		</div>
 		</div></td>
@@ -680,7 +733,7 @@ cases.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#__PrecommitRelated">#</a>
-		<code><a href="source-class-COntologyNode.html#572" title="Go to source code">_PrecommitRelated</a>( <span>reference <var>&amp; $theConnection</var></span>, <span>reference <var>&amp; $theModifiers</var></span> )</code>
+		<code><a href="source-class-COntologyEdge.html#774" title="Go to source code">_PrecommitRelated</a>( <span>reference <var>&amp; $theConnection</var></span>, <span>reference <var>&amp; $theModifiers</var></span> )</code>
 
 		<div class="description short">
 			
@@ -710,11 +763,13 @@ provided as an identifier.</p>
 
 				<h4>See</h4>
 				<div class="list">
-						kOFFSET_TERM<br />
+						kOFFSET_PREDICATE kOFFSET_VERTEX_OBJECT kOFFSET_VERTEX_SUBJECT<br />
 				</div>
 				<h4>Uses</h4>
 				<div class="list">
-						<code><code><a href="class-COntologyNode.html#_">COntologyNode::LoadTerm()</a></code></code> <br />
+						<code><code><a href="class-COntologyEdge.html#_">COntologyEdge::LoadSubject()</a></code></code> <br />
+						<code><code><a href="class-COntologyEdge.html#_">COntologyEdge::LoadPredicate()</a></code></code> <br />
+						<code><code><a href="class-COntologyEdge.html#_">COntologyEdge::LoadObject()</a></code></code> <br />
 				</div>
 
 				<h4>Overrides</h4>
@@ -734,7 +789,7 @@ provided as an identifier.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#__PrecommitIdentify">#</a>
-		<code><a href="source-class-COntologyNode.html#643" title="Go to source code">_PrecommitIdentify</a>( <span>reference <var>&amp; $theConnection</var></span>, <span>reference <var>&amp; $theModifiers</var></span> )</code>
+		<code><a href="source-class-COntologyEdge.html#918" title="Go to source code">_PrecommitIdentify</a>( <span>reference <var>&amp; $theConnection</var></span>, <span>reference <var>&amp; $theModifiers</var></span> )</code>
 
 		<div class="description short">
 			
@@ -746,12 +801,14 @@ provided as an identifier.</p>
 			
 <h4>Determine the identifiers before committing</h4>
 
-<p>Objects of this class are identified by a sequence number tagged kSEQUENCE_KEY_NODE, this method will set the native identifier, kOFFSET_NID, with this value.</p>
+<p>This method will use the result of the <code><a href="class-COntologyEdge.html#_">COntologyEdge::_index()</a></code> method to set the
+global identifier, kOFFSET_GID; the same value will be hashed and
+constitute the unique identifier, kOFFSET_UID.</p>
 
-<p>The parent method will then be called, which will ignore the global
-identifier, kOFFSET_GID, since the <code><a href="class-CPersistentObject.html#_">CPersistentObject::_index()</a></code> method returns
-<tt>NULL</tt> and also ignore the native identifier, kOFFSET_NID, since
-it will have been set here.</p>
+<p>Objects of this class are identified by a sequence number tagged kSEQUENCE_KEY_EDGE, this method will set the native identifier, kOFFSET_NID, with this value.</p>
+
+<p>The parent method will then be called, which will ignore the global and
+native identifiers, since they will have been set here.</p>
 
 
 
@@ -764,10 +821,15 @@ it will have been set here.</p>
 				</dl></div>
 
 
+				<h4>Throws</h4>
+				<div class="list">
+					<code><code><a href="class-Exception.html">Exception</a></code></code><br />
+				</div>
 
 				<h4>See</h4>
 				<div class="list">
-						kOFFSET_NID kSEQUENCE_KEY_NODE<br />
+						kSEQUENCE_KEY_EDGE<br />
+						kOFFSET_NID kOFFSET_GID kOFFSET_UID<br />
 						kFLAG_PERSIST_INSERT kFLAG_PERSIST_REPLACE<br />
 				</div>
 
@@ -788,7 +850,7 @@ it will have been set here.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#__PostcommitRelated">#</a>
-		<code><a href="source-class-COntologyNode.html#704" title="Go to source code">_PostcommitRelated</a>( <span>reference <var>&amp; $theConnection</var></span>, <span>reference <var>&amp; $theModifiers</var></span> )</code>
+		<code><a href="source-class-COntologyEdge.html#1027" title="Go to source code">_PostcommitRelated</a>( <span>reference <var>&amp; $theConnection</var></span>, <span>reference <var>&amp; $theModifiers</var></span> )</code>
 
 		<div class="description short">
 			
@@ -800,9 +862,9 @@ it will have been set here.</p>
 			
 <h4>Update related objects after committing</h4>
 
-<p>In this class we add the current node's identifier to the list of node
-references, kOFFSET_REFS_NODE, in the related term when inserting; we
-remove the element when deleting.</p>
+<p>In this class we add the current edge's identifier to the list of edge
+references, kOFFSET_REFS_EDGE, in the related subject and object
+vertives when inserting; we remove the element when deleting.</p>
 
 
 
@@ -818,7 +880,7 @@ remove the element when deleting.</p>
 
 				<h4>See</h4>
 				<div class="list">
-						kOFFSET_REFS_NODE kOFFSET_TERM<br />
+						kOFFSET_REFS_EDGE kOFFSET_VERTEX_SUBJECT kOFFSET_VERTEX_OBJECT<br />
 						kFLAG_PERSIST_INSERT kFLAG_PERSIST_REPLACE kFLAG_PERSIST_DELETE<br />
 						kFLAG_PERSIST_MODIFY kFLAG_MODIFY_ADDSET kFLAG_MODIFY_PULL<br />
 				</div>
@@ -844,7 +906,7 @@ remove the element when deleting.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#__PostcommitCleanup">#</a>
-		<code><a href="source-class-COntologyNode.html#790" title="Go to source code">_PostcommitCleanup</a>( <span>reference <var>&amp; $theConnection</var></span>, <span>reference <var>&amp; $theModifiers</var></span> )</code>
+		<code><a href="source-class-COntologyEdge.html#1139" title="Go to source code">_PostcommitCleanup</a>( <span>reference <var>&amp; $theConnection</var></span>, <span>reference <var>&amp; $theModifiers</var></span> )</code>
 
 		<div class="description short">
 			
@@ -856,9 +918,9 @@ remove the element when deleting.</p>
 			
 <h4>Cleanup the object after committing</h4>
 
-<p>In this class we reset the term object cache, we set the data member to
-<tt>NULL</tt> so that next time one wants to retrieve the term object, it will
-have to be refreshed and its references actualised.</p>
+<p>In this class we reset the term object cache, we set the data members to
+<tt>NULL</tt> so that next time one wants to retrieve related objects, the cache
+will have to be refreshed.</p>
 
 
 
@@ -882,13 +944,13 @@ have to be refreshed and its references actualised.</p>
 	</table>
 
 	<table class="summary inherited">
-	<caption>Methods inherited from <a href="class-CNode.html#methods">CNode</a></caption>
+	<caption>Methods inherited from <a href="class-CEdge.html#methods">CEdge</a></caption>
 	<tr>
 		<td><code>
-			<a href="class-CNode.html#_">Kind()</a>, 
-			<a href="class-CNode.html#_">Term()</a>, 
-			<a href="class-CNode.html#_">Type()</a>, 
-			<a href="class-CNode.html#_">_Ready()</a>
+			<a href="class-CEdge.html#_">Object()</a>, 
+			<a href="class-CEdge.html#_">Predicate()</a>, 
+			<a href="class-CEdge.html#_">Subject()</a>, 
+			<a href="class-CEdge.html#_">_Ready()</a>
 		</code></td>
 	</tr>
 	</table>
@@ -901,8 +963,8 @@ have to be refreshed and its references actualised.</p>
 			<a href="class-CPersistentObject.html#_">NewObject()</a>, 
 			<a href="class-CPersistentObject.html#_">_AssertClass()</a>, 
 			<a href="class-CPersistentObject.html#_">_PrecommitValidate()</a>, 
-			<a href="class-CPersistentObject.html#_">_id()</a>, 
-			<a href="class-CPersistentObject.html#_">_index()</a>
+			<a href="class-CPersistentObject.html#_">__toString()</a>, 
+			<a href="class-CPersistentObject.html#_">_id()</a>
 		</code></td>
 	</tr>
 	</table>
@@ -993,7 +1055,37 @@ have to be refreshed and its references actualised.</p>
 
 	<table class="summary" id="properties">
 	<caption>Properties summary</caption>
-	<tr data-order="mTerm" id="$mTerm">
+	<tr data-order="mSubject" id="$mSubject">
+
+		<td class="attributes"><code>
+			protected 
+			<code><a href="class-COntologyNode.html">COntologyNode</a></code>
+		</code></td>
+
+		<td class="name">
+				<a href="source-class-COntologyEdge.html#88" title="Go to source code"><var>$mSubject</var></a>
+		</td>
+		<td class="value"><code><span class="php-keyword1">NULL</span></code></td>
+		<td class="description"><div>
+			<a href="#$mSubject" class="anchor">#</a>
+
+			<div class="description short">
+				
+<p><b>Subject node object</b></p>
+
+			</div>
+
+			<div class="description detailed hidden">
+				
+<p><b>Subject node object</b></p>
+
+<p>This data member holds the subject node object when requested.</p>
+
+
+			</div>
+		</div></td>
+	</tr>
+	<tr data-order="mPredicate" id="$mPredicate">
 
 		<td class="attributes"><code>
 			protected 
@@ -1001,23 +1093,53 @@ have to be refreshed and its references actualised.</p>
 		</code></td>
 
 		<td class="name">
-				<a href="source-class-COntologyNode.html#93" title="Go to source code"><var>$mTerm</var></a>
+				<a href="source-class-COntologyEdge.html#97" title="Go to source code"><var>$mPredicate</var></a>
 		</td>
 		<td class="value"><code><span class="php-keyword1">NULL</span></code></td>
 		<td class="description"><div>
-			<a href="#$mTerm" class="anchor">#</a>
+			<a href="#$mPredicate" class="anchor">#</a>
 
 			<div class="description short">
 				
-<p><b>Term object</b></p>
+<p><b>Predicate term object</b></p>
 
 			</div>
 
 			<div class="description detailed hidden">
 				
-<p><b>Term object</b></p>
+<p><b>Predicate term object</b></p>
 
-<p>This data member holds the eventual term object when requested.</p>
+<p>This data member holds the predicate term object when requested.</p>
+
+
+			</div>
+		</div></td>
+	</tr>
+	<tr data-order="mObject" id="$mObject">
+
+		<td class="attributes"><code>
+			protected 
+			<code><a href="class-COntologyNode.html">COntologyNode</a></code>
+		</code></td>
+
+		<td class="name">
+				<a href="source-class-COntologyEdge.html#106" title="Go to source code"><var>$mObject</var></a>
+		</td>
+		<td class="value"><code><span class="php-keyword1">NULL</span></code></td>
+		<td class="description"><div>
+			<a href="#$mObject" class="anchor">#</a>
+
+			<div class="description short">
+				
+<p><b>Object node object</b></p>
+
+			</div>
+
+			<div class="description detailed hidden">
+				
+<p><b>Object node object</b></p>
+
+<p>This data member holds the object node object when requested.</p>
 
 
 			</div>

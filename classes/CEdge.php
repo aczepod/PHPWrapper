@@ -55,8 +55,7 @@ require_once( kPATH_MYWRAPPER_LIBRARY_CLASS."/CPersistentObject.php" );
  * The unique identifier of instances of this class is the combination of the above three
  * elements, no two edges can connect the same vertices in the same direction and with the
  * same predicate. This value is computed and stored in the global identifier,
- * {@link kOFFSET_GID}, and its hash is stored in the unique identifier,
- * {@link kOFFSET_UID}. Because of this workflow, these three values must be convertable to
+ * {@link kOFFSET_GID}, because of this workflow, these three values must be convertable to
  * string.
  *
  * The class features member accessor methods for the default offsets:

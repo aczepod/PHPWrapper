@@ -402,8 +402,12 @@ class CMongoContainer extends CContainer
 			//
 			if( $theIdentifier !== NULL )
 				$criteria = array( kOFFSET_NID => $theIdentifier );
-			elseif( array_key_exists( kOFFSET_NID, (array) $theObject ) )
+			elseif( is_array( $theObject )
+				 && array_key_exists( kOFFSET_NID, $theObject ) )
 				$criteria = array( kOFFSET_NID => $theObject[ kOFFSET_NID ] );
+			elseif( ($theObject instanceof ArrayObject)
+				 && $theObject->offsetExists( kOFFSET_NID ) )
+				$criteria = array( kOFFSET_NID => $theObject->offsetGet( kOFFSET_NID ) );
 			else
 				throw new Exception
 					( "Missing object identifier",
@@ -697,66 +701,6 @@ class CMongoContainer extends CContainer
 		} // Replace.
 		
 		//
-		// Handle modify.
-		//
-		if( $modifiers == kFLAG_PERSIST_MODIFY )
-		{
-			//
-			// Check identifier.
-			//
-			if( $theIdentifier === NULL )
-				throw new Exception
-					( "Missing object identifier",
-					  kERROR_MISSING );											// !@! ==>
-			
-			//
-			// Use provided identifier.
-			//
-			$criteria = array( kOFFSET_NID => $theIdentifier );
-			
-			//
-			// Use provided object as modification data.
-			//
-			$modify = (array) $theObject;
-			
-			//
-			// Set default commit options.
-			//
-			$options[ 'upsert' ] = FALSE;		// Don't create new objects.
-			$options[ 'multiple' ] = FALSE;		// Operate on first object.
-			
-			//
-			// Update.
-			//
-			$status = $container->update( $criteria, $modify, $options );
-			
-			//
-			// Check status.
-			//
-			if( ! $status[ 'ok' ] )
-				throw new Exception
-					( $status[ 'errmsg' ],
-					  kERROR_COMMIT );											// !@! ==>
-			
-			//
-			// Handle updated object.
-			//
-			if( $status[ 'updatedExisting' ] )
-			{
-				//
-				// Set object.
-				//
-				$theObject = $container->findOne( $criteria );
-				
-				return TRUE;														// ==>
-			
-			} // Found object.
-			
-			return NULL;															// ==>
-		
-		} // Modify.
-		
-		//
 		// Handle delete.
 		//
 		if( $modifiers == kFLAG_PERSIST_DELETE )
@@ -766,8 +710,12 @@ class CMongoContainer extends CContainer
 			//
 			if( $theIdentifier !== NULL )
 				$criteria = array( kOFFSET_NID => $theIdentifier );
-			elseif( array_key_exists( kOFFSET_NID, (array) $theObject ) )
+			elseif( is_array( $theObject )
+				 && array_key_exists( kOFFSET_NID, $theObject ) )
 				$criteria = array( kOFFSET_NID => $theObject[ kOFFSET_NID ] );
+			elseif( ($theObject instanceof ArrayObject)
+				 && $theObject->offsetExists( kOFFSET_NID ) )
+				$criteria = array( kOFFSET_NID => $theObject->offsetGet( kOFFSET_NID ) );
 			else
 				throw new Exception
 					( "Missing object identifier",
@@ -808,6 +756,7 @@ class CMongoContainer extends CContainer
 	 * In this class we return the number of found objects.
 	 *
 	 * @param mixed					$theIdentifier		Identifier.
+	 * @param string				$theOffset			Offset.
 	 *
 	 * @access public
 	 * @return boolean				<tt>TRUE</tt> exists.
@@ -816,7 +765,7 @@ class CMongoContainer extends CContainer
 	 *
 	 * @uses Connection()
 	 */
-	public function CheckObject( $theIdentifier )
+	public function CheckObject( $theIdentifier, $theOffset = NULL )
 	{
 		//
 		// Get container.
@@ -828,10 +777,16 @@ class CMongoContainer extends CContainer
 				  kERROR_STATE );												// !@! ==>
 		
 		//
+		// Set default offset.
+		//
+		if( $theOffset === NULL )
+			$theOffset = '_id';
+		
+		//
 		// Set criteria.
 		//
 		$fields = array( '_id' => TRUE );
-		$criteria = array( '_id' => $theIdentifier );
+		$criteria = array( $theOffset => $theIdentifier );
 		
 		//
 		// Make query.
