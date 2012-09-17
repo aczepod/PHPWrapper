@@ -4,7 +4,7 @@
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 	<meta name="generator" content="ApiGen 2.7.0" />
 
-	<title>Class CEdge | MyWrapper Reference Documentation</title>
+	<title>Class CTag | MyWrapper Reference Documentation</title>
 
 	<script type="text/javascript" src="resources/combined.js?496895167"></script>
 	<script type="text/javascript" src="elementlist.js?2821670239"></script>
@@ -47,11 +47,11 @@
 				<li><a href="class-CContainer.html">CContainer</a></li>
 				<li><a href="class-CDatabase.html">CDatabase</a></li>
 				<li><a href="class-CDocument.html">CDocument</a></li>
-				<li class="active"><a href="class-CEdge.html">CEdge</a></li>
+				<li><a href="class-CEdge.html">CEdge</a></li>
 				<li><a href="class-CNode.html">CNode</a></li>
 				<li><a href="class-CServer.html">CServer</a></li>
 				<li><a href="class-CStatusDocument.html">CStatusDocument</a></li>
-				<li><a href="class-CTag.html">CTag</a></li>
+				<li class="active"><a href="class-CTag.html">CTag</a></li>
 				<li><a href="class-CTerm.html">CTerm</a></li>
 			</ul>
 
@@ -95,48 +95,40 @@
 	</div>
 
 <div id="content" class="class">
-	<h1>Class CEdge</h1>
+	<h1>Class CTag</h1>
 
 
 	<div class="description">
 	
-<h3>Edge object ancestor</h3>
+<h3>Tag object ancestor</h3>
 
-<p>An edge is an element of a tree or graph that connects two vertices through a
-predicate, it represents a subject/predicate/object triplet in which the
-direction of the relation flows from the subject towards the object.</p>
+<p>A tag object can be used to record the path starting from one node of a graph
+and ending on another node. This class will assign a unique identifier to this
+path which can be used externally to refer to the path.</p>
 
-<p>Objects of this class feature three main properties:</p>
+<p>The paths that tag objects record are a sequence of <i>subject</i>,
+<i>predicate</i> and <i>object</i>, these paths, therefore, should always have
+an odd number of elements in which odd items represent <i>vertex elements</i>
+and even items represent <i>predicates</i>.</p>
 
-<ul>
-	<li>kOFFSET_VERTEX_SUBJECT: The subject vertex, or the origin of the
-	relationship.</li>
-
-	<li>kOFFSET_PREDICATE: The predicate reference, or the type of
-	relationship.</li>
-
-	<li>kOFFSET_VERTEX_OBJECT: The object vertex, or the destination of the
-	relationship.</li>
-</ul>
-
-<p>Objects of this class are <code><a href="class-CStatusDocument.html#_">CStatusDocument::_IsInited()</a></code> if all three properties are
-set.</p>
-
-<p>The unique identifier of instances of this class is the combination of the
-above three elements, no two edges can connect the same vertices in the same
-direction and with the same predicate. This value is computed and stored in the
-global identifier, kOFFSET_GID, because of this workflow, these three
-values must be convertable to string.</p>
+<p>A tag can be considered <code><a href="class-CStatusDocument.html#_">CStatusDocument::_IsInited()</a></code> when it has at least one element
+in the path, which represents the minimum legal number of path items.</p>
 
 <p>The class features member accessor methods for the default offsets:</p>
 
 <ul>
-	<li><code><a href="class-CEdge.html#_">CEdge::Subject()</a></code>: This method manages the subject vertex, kOFFSET_VERTEX_SUBJECT.</li>
+	<li><code><a href="class-CTag.html#_">CTag::PushItem()</a></code>: This method can be used to add items to the tag path,
+	kOFFSET_PATH, it will append the provided item to the end of the
+	list.</li>
 
-	<li><code><a href="class-CEdge.html#_">CEdge::Predicate()</a></code>: This method manages the edge's predicate, kOFFSET_PREDICATE.</li>
-
-	<li><code><a href="class-CEdge.html#_">CEdge::Object()</a></code>: This method manages the object vertex, kOFFSET_VERTEX_OBJECT.</li>
+	<li><code><a href="class-CTag.html#_">CTag::PopItem()</a></code>: This method can be used to remove items from the tag
+	path, kOFFSET_PATH, it will remove the last item of the list.</li>
 </ul>
+
+<p>This class implements the logic to manage these paths without assuming the
+nature or type of their elements: this will be the responsibility of derived
+classes. In this class all items comprising the path must be convertable to
+strings</p>
 
 	</div>
 
@@ -187,17 +179,13 @@ values must be convertable to string.</p>
 		</dd>
 		<dd style="padding-left:150px">
 			<img src="resources/inherit.png" alt="Extended by" />
-<b><span>CEdge</span></b>			
+<b><span>CTag</span></b>			
 			
 			
 		</dd>
 	</dl>
 
 
-	<div>
-		<h4>Direct known subclasses</h4>
-			<a href="class-COntologyEdge.html">COntologyEdge</a>
-	</div>
 
 
 
@@ -213,86 +201,68 @@ values must be convertable to string.</p>
 				<b>Author:</b>
 				Milko A. Škofič &lt;<a
 href="mailto:m.skofic&#64;cgiar.org">m.skofic&#64;<!---->cgiar.org</a>&gt;<br />
-		<b>Located at</b> <a href="source-class-CEdge.html#36" title="Go to source code">CEdge.php</a><br />
+		<b>Located at</b> <a href="source-class-CTag.html#43" title="Go to source code">CTag.php</a><br />
 	</div>
 
 
 	<table class="summary" id="methods">
 	<caption>Methods summary</caption>
-	<tr data-order="Subject" id="_Subject">
+	<tr data-order="PushItem" id="_PushItem">
 
 		<td class="attributes"><code>
 			 public 
-			mixed
+			integer
 			
 			</code>
 		</td>
 
 		<td class="name"><div>
-		<a class="anchor" href="#_Subject">#</a>
-		<code><a href="source-class-CEdge.html#91" title="Go to source code">Subject</a>( <span>mixed <var>$theValue</var> = <span class="php-keyword1">NULL</span></span>, <span>boolean <var>$getOld</var> = <span class="php-keyword1">FALSE</span> </span> )</code>
+		<a class="anchor" href="#_PushItem">#</a>
+		<code><a href="source-class-CTag.html#90" title="Go to source code">PushItem</a>( <span>mixed <var>$theValue</var></span> )</code>
 
 		<div class="description short">
 			
-<h4>Manage edge subject</h4>
+<h4>Append to path</h4>
 
 		</div>
 
 		<div class="description detailed hidden">
 			
-<h4>Manage edge subject</h4>
+<h4>Append to path</h4>
 
-<p>This method can be used to manage the edge's subject vertex, kOFFSET_VERTEX_SUBJECT, which is a reference to an object that represents the
-origin of the relationship this edge represents.</p>
+<p>This method will add the provided item to the tag path, the element will be
+appended to the end of the list.</p>
 
-<p>The method accepts a parameter which represents the vertex, or the requested
-operation, depending on its value:</p>
+<p>The provided item is considered as-is, that means that arrays are considered
+as a scalar item. If you provide <tt>NULL</tt> as the value, this will be
+ignored and the method will return <tt>FALSE</tt>.</p>
 
-<ul>
-	<li><tt>NULL</tt>: Return the current value.</li>
-
-	<li><tt>FALSE</tt>: Delete the current value.</li>
-
-	<li><i>other</i>: Set the value with the provided parameter.</li>
-</ul>
-
-<p>The second parameter is a boolean which if <tt>TRUE</tt> will return the
-<i>old</i> value when replacing containers; if <tt>FALSE</tt>, it will return
-the currently set value.</p>
-
-<p>Note that when the object has the <code><a href="class-CStatusDocument.html#_">CStatusDocument::_IsCommitted()</a></code> status this offset
-will be locked and an exception will be raised.</p>
+<p>The method will return the current number of items in the list.</p>
 
 
 
 				<h4>Parameters</h4>
 				<div class="list"><dl>
 					<dt><var>$theValue</var></dt>
-					<dd><code>mixed</code><br> Vertex or operation.</dd>
-					<dt><var>$getOld</var></dt>
-					<dd><code>boolean</code><br> <tt>TRUE</tt> get old value.</dd>
+					<dd><code>mixed</code><br> Value to append.</dd>
 				</dl></div>
 
 				<h4>Returns</h4>
 				<div class="list">
-					<code>mixed</code><br><i>New</i> or <i>old</i> native container.<br />
+					<code>integer</code><br>Number of items in the list.<br />
 				</div>
 
 
 				<h4>See</h4>
 				<div class="list">
-						kOFFSET_VERTEX_SUBJECT<br />
-				</div>
-				<h4>Uses</h4>
-				<div class="list">
-						<code><code><a href="function-ManageOffset.html">ManageOffset()</a></code></code> <br />
+						kOFFSET_PATH<br />
 				</div>
 
 
 		</div>
 		</div></td>
 	</tr>
-	<tr data-order="Predicate" id="_Predicate">
+	<tr data-order="PopItem" id="_PopItem">
 
 		<td class="attributes"><code>
 			 public 
@@ -302,136 +272,37 @@ will be locked and an exception will be raised.</p>
 		</td>
 
 		<td class="name"><div>
-		<a class="anchor" href="#_Predicate">#</a>
-		<code><a href="source-class-CEdge.html#135" title="Go to source code">Predicate</a>( <span>mixed <var>$theValue</var> = <span class="php-keyword1">NULL</span></span>, <span>boolean <var>$getOld</var> = <span class="php-keyword1">FALSE</span> </span> )</code>
+		<a class="anchor" href="#_PopItem">#</a>
+		<code><a href="source-class-CTag.html#158" title="Go to source code">PopItem</a>( )</code>
 
 		<div class="description short">
 			
-<h4>Manage edge predicate</h4>
+<h4>Remove from path</h4>
 
 		</div>
 
 		<div class="description detailed hidden">
 			
-<h4>Manage edge predicate</h4>
+<h4>Remove from path</h4>
 
-<p>This method can be used to manage the edge's predicate, kOFFSET_PREDICATE, which is a reference to an object that represents the origin
-of the relationship this edge represents.</p>
+<p>This method will remove the last item from the tag path and return it to the
+caller.</p>
 
-<p>The method accepts a parameter which represents the predicate, or the
-requested operation, depending on its value:</p>
-
-<ul>
-	<li><tt>NULL</tt>: Return the current value.</li>
-
-	<li><tt>FALSE</tt>: Delete the current value.</li>
-
-	<li><i>other</i>: Set the value with the provided parameter.</li>
-</ul>
-
-<p>The second parameter is a boolean which if <tt>TRUE</tt> will return the
-<i>old</i> value when replacing containers; if <tt>FALSE</tt>, it will return
-the currently set value.</p>
-
-<p>Note that when the object has the <code><a href="class-CStatusDocument.html#_">CStatusDocument::_IsCommitted()</a></code> status this offset
-will be locked and an exception will be raised.</p>
+<p>If the removed item is the last one, the offset will be deleted, if the list
+is missing, the method will return <tt>NULL</tt>.</p>
 
 
 
-				<h4>Parameters</h4>
-				<div class="list"><dl>
-					<dt><var>$theValue</var></dt>
-					<dd><code>mixed</code><br> Predicate or operation.</dd>
-					<dt><var>$getOld</var></dt>
-					<dd><code>boolean</code><br> <tt>TRUE</tt> get old value.</dd>
-				</dl></div>
 
 				<h4>Returns</h4>
 				<div class="list">
-					<code>mixed</code><br><i>New</i> or <i>old</i> native container.<br />
+					<code>mixed</code><br>Last item of the list or <tt>NULL</tt>.<br />
 				</div>
 
 
 				<h4>See</h4>
 				<div class="list">
-						kOFFSET_PREDICATE<br />
-				</div>
-				<h4>Uses</h4>
-				<div class="list">
-						<code><code><a href="function-ManageOffset.html">ManageOffset()</a></code></code> <br />
-				</div>
-
-
-		</div>
-		</div></td>
-	</tr>
-	<tr data-order="Object" id="_Object">
-
-		<td class="attributes"><code>
-			 public 
-			mixed
-			
-			</code>
-		</td>
-
-		<td class="name"><div>
-		<a class="anchor" href="#_Object">#</a>
-		<code><a href="source-class-CEdge.html#179" title="Go to source code">Object</a>( <span>mixed <var>$theValue</var> = <span class="php-keyword1">NULL</span></span>, <span>boolean <var>$getOld</var> = <span class="php-keyword1">FALSE</span> </span> )</code>
-
-		<div class="description short">
-			
-<h4>Manage edge object</h4>
-
-		</div>
-
-		<div class="description detailed hidden">
-			
-<h4>Manage edge object</h4>
-
-<p>This method can be used to manage the edge's object vertex, kOFFSET_VERTEX_OBJECT, which is a reference to an object that represents the
-destination of the relationship this edge represents.</p>
-
-<p>The method accepts a parameter which represents the vertex, or the requested
-operation, depending on its value:</p>
-
-<ul>
-	<li><tt>NULL</tt>: Return the current value.</li>
-
-	<li><tt>FALSE</tt>: Delete the current value.</li>
-
-	<li><i>other</i>: Set the value with the provided parameter.</li>
-</ul>
-
-<p>The second parameter is a boolean which if <tt>TRUE</tt> will return the
-<i>old</i> value when replacing containers; if <tt>FALSE</tt>, it will return
-the currently set value.</p>
-
-<p>Note that when the object has the <code><a href="class-CStatusDocument.html#_">CStatusDocument::_IsCommitted()</a></code> status this offset
-will be locked and an exception will be raised.</p>
-
-
-
-				<h4>Parameters</h4>
-				<div class="list"><dl>
-					<dt><var>$theValue</var></dt>
-					<dd><code>mixed</code><br> Vertex or operation.</dd>
-					<dt><var>$getOld</var></dt>
-					<dd><code>boolean</code><br> <tt>TRUE</tt> get old value.</dd>
-				</dl></div>
-
-				<h4>Returns</h4>
-				<div class="list">
-					<code>mixed</code><br><i>New</i> or <i>old</i> native container.<br />
-				</div>
-
-
-				<h4>See</h4>
-				<div class="list">
-						kOFFSET_VERTEX_OBJECT<br />
-				</div>
-				<h4>Uses</h4>
-				<div class="list">
-						<code><code><a href="function-ManageOffset.html">ManageOffset()</a></code></code> <br />
+						kOFFSET_PATH<br />
 				</div>
 
 
@@ -449,7 +320,7 @@ will be locked and an exception will be raised.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#__index">#</a>
-		<code><a href="source-class-CEdge.html#232" title="Go to source code">_index</a>( <span><code><a href="class-CConnection.html">CConnection</a></code> <var>$theConnection</var></span>, <span>bitfield <var>$theModifiers</var></span> )</code>
+		<code><a href="source-class-CTag.html#222" title="Go to source code">_index</a>( <span><code><a href="class-CConnection.html">CConnection</a></code> <var>$theConnection</var></span>, <span>bitfield <var>$theModifiers</var></span> )</code>
 
 		<div class="description short">
 			
@@ -461,12 +332,11 @@ will be locked and an exception will be raised.</p>
 			
 <h4>Return the object's global unique identifier</h4>
 
-<p>The edge class defines the global identifier, kOFFSET_GID, as the
-concatenation of the subject, predicate and object offsets converted to
-string.</p>
+<p>The tag is identified by its path items, this method will return the list of
+items separated by the kTOKEN_INDEX_SEPARATOR token.</p>
 
-<p>In this method we check whether all three are present, or we raise an
-exception.</p>
+<p>This also means that all elements of the path must be convertable to
+string.</p>
 
 
 
@@ -483,15 +353,10 @@ exception.</p>
 					<code>string|null</code><br>The object's global unique identifier.<br />
 				</div>
 
-				<h4>Throws</h4>
-				<div class="list">
-					<code><code><a href="class-Exception.html">Exception</a></code></code><br />
-				</div>
 
 				<h4>See</h4>
 				<div class="list">
-						kOFFSET_VERTEX_SUBJECT kOFFSET_PREDICATE kOFFSET_VERTEX_OBJECT<br />
-						kTOKEN_INDEX_SEPARATOR<br />
+						kOFFSET_PATH kTOKEN_INDEX_SEPARATOR<br />
 				</div>
 
 				<h4>Overrides</h4>
@@ -500,7 +365,7 @@ exception.</p>
 		</div>
 		</div></td>
 	</tr>
-	<tr data-order="_Preunset" id="__Preunset">
+	<tr data-order="_Preset" id="__Preset">
 
 		<td class="attributes"><code>
 			 protected 
@@ -510,20 +375,21 @@ exception.</p>
 		</td>
 
 		<td class="name"><div>
-		<a class="anchor" href="#__Preunset">#</a>
-		<code><a href="source-class-CEdge.html#309" title="Go to source code">_Preunset</a>( <span>reference <var>&amp; $theOffset</var></span> )</code>
+		<a class="anchor" href="#__Preset">#</a>
+		<code><a href="source-class-CTag.html#258" title="Go to source code">_Preset</a>( <span>reference <var>&amp; $theOffset</var></span>, <span>reference <var>&amp; $theValue</var></span> )</code>
 
 		<div class="description short">
 			
-<h4>Handle offset before unsetting it</h4>
+<h4>Handle offset before setting it</h4>
 
 		</div>
 
 		<div class="description detailed hidden">
 			
-<h4>Handle offset before unsetting it</h4>
+<h4>Handle offset before setting it</h4>
 
-<p>In this class we prevent the modification of the kOFFSET_VERTEX_SUBJECT, kOFFSET_PREDICATE and kOFFSET_VERTEX_OBJECT offsets if the object is committed.</p>
+<p>In this class we ensure that the kOFFSET_PATH offset is an array,
+ArrayObject instances are not counted as an array.</p>
 
 
 
@@ -531,6 +397,8 @@ exception.</p>
 				<div class="list"><dl>
 					<dt><var>$theOffset</var></dt>
 					<dd><code>reference</code><br>&amp;$theOffset Offset.</dd>
+					<dt><var>$theValue</var></dt>
+					<dd><code>reference</code><br>&amp;$theValue Value to set at offset.</dd>
 				</dl></div>
 
 
@@ -541,15 +409,64 @@ exception.</p>
 
 				<h4>See</h4>
 				<div class="list">
-						kOFFSET_VERTEX_SUBJECT kOFFSET_PREDICATE kOFFSET_VERTEX_OBJECT<br />
-				</div>
-				<h4>Uses</h4>
-				<div class="list">
-						<code><code><a href="class-CStatusDocument.html#_">CStatusDocument::_IsCommitted()</a></code></code> <br />
+						kOFFSET_PATH<br />
 				</div>
 
 				<h4>Overrides</h4>
-				<div class="list"><code><a href="class-CPersistentObject.html#_">CPersistentObject::_Preunset</a></code></div>
+				<div class="list"><code><a href="class-CPersistentObject.html#_">CPersistentObject::_Preset</a></code></div>
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="_PrecommitValidate" id="__PrecommitValidate">
+
+		<td class="attributes"><code>
+			 protected 
+			
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#__PrecommitValidate">#</a>
+		<code><a href="source-class-CTag.html#307" title="Go to source code">_PrecommitValidate</a>( <span>reference <var>&amp; $theConnection</var></span>, <span>reference <var>&amp; $theModifiers</var></span> )</code>
+
+		<div class="description short">
+			
+<h4>Validate the object before committing</h4>
+
+		</div>
+
+		<div class="description detailed hidden">
+			
+<h4>Validate the object before committing</h4>
+
+<p>In this class we check if the current path has an odd number of items, if
+that is not the case, the method will raise an exception.</p>
+
+
+
+				<h4>Parameters</h4>
+				<div class="list"><dl>
+					<dt><var>$theConnection</var></dt>
+					<dd><code>reference</code><br>&amp;$theConnection Server, database or container.</dd>
+					<dt><var>$theModifiers</var></dt>
+					<dd><code>reference</code><br>&amp;$theModifiers Commit options.</dd>
+				</dl></div>
+
+
+				<h4>Throws</h4>
+				<div class="list">
+					<code><code><a href="class-Exception.html">Exception</a></code></code><br />
+				</div>
+
+				<h4>See</h4>
+				<div class="list">
+						kOFFSET_PATH<br />
+				</div>
+
+				<h4>Overrides</h4>
+				<div class="list"><code><a href="class-CPersistentObject.html#_">CPersistentObject::_PrecommitValidate</a></code></div>
 
 		</div>
 		</div></td>
@@ -565,7 +482,7 @@ exception.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#__Ready">#</a>
-		<code><a href="source-class-CEdge.html#372" title="Go to source code">_Ready</a>( )</code>
+		<code><a href="source-class-CTag.html#355" title="Go to source code">_Ready</a>( )</code>
 
 		<div class="description short">
 			
@@ -578,8 +495,7 @@ exception.</p>
 <h4>Determine if the object is ready</h4>
 
 <p>In this class we tie the <code><a href="class-CStatusDocument.html#_">CStatusDocument::_IsInited()</a></code> status to the presence or
-absence of the kOFFSET_VERTEX_SUBJECT, kOFFSET_PREDICATE and
-kOFFSET_VERTEX_OBJECT offsets.</p>
+absence of the kOFFSET_PATH offset.</p>
 
 
 
@@ -592,7 +508,7 @@ kOFFSET_VERTEX_OBJECT offsets.</p>
 
 				<h4>See</h4>
 				<div class="list">
-						kOFFSET_VERTEX_SUBJECT kOFFSET_PREDICATE kOFFSET_VERTEX_OBJECT<br />
+						kOFFSET_PATH<br />
 				</div>
 
 				<h4>Overrides</h4>
@@ -613,8 +529,7 @@ kOFFSET_VERTEX_OBJECT offsets.</p>
 			<a href="class-CPersistentObject.html#_">_AssertClass()</a>, 
 			<a href="class-CPersistentObject.html#_">_PrecommitIdentify()</a>, 
 			<a href="class-CPersistentObject.html#_">_PrecommitRelated()</a>, 
-			<a href="class-CPersistentObject.html#_">_PrecommitValidate()</a>, 
-			<a href="class-CPersistentObject.html#_">_Preset()</a>, 
+			<a href="class-CPersistentObject.html#_">_Preunset()</a>, 
 			<a href="class-CPersistentObject.html#_">__toString()</a>, 
 			<a href="class-CPersistentObject.html#_">_id()</a>
 		</code></td>

@@ -27,13 +27,6 @@
 require_once( "CNode.inc.php" );
 
 /**
- * Edges.
- *
- * This includes the edge class definitions.
- */
-require_once( kPATH_MYWRAPPER_LIBRARY_CLASS."/CEdge.php" );
-
-/**
  * Ancestor.
  *
  * This includes the ancestor class definitions.
