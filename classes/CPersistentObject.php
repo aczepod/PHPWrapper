@@ -766,6 +766,23 @@ class CPersistentObject extends CPersistentDocument
 			
 		} // Object of base class.
 		
+		//
+		// Handle missing derived class.
+		//
+		if( $theDerivedClass === NULL )
+		{
+			//
+			// Raise exception
+			//
+			if( $doThrow )
+				throw new Exception
+					( "The object value is not of the correct class",
+					  kERROR_PARAMETER );										// !@! ==>
+			
+			return FALSE;															// ==>
+		
+		} // Missing derived class.
+		
 		return NULL;																// ==>
 		
 	} // _AssertClass.
