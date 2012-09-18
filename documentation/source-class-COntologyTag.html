@@ -8,7 +8,7 @@
 	<title>File COntologyTag.php | MyWrapper Reference Documentation</title>
 
 	<script type="text/javascript" src="resources/combined.js?496895167"></script>
-	<script type="text/javascript" src="elementlist.js?3373123863"></script>
+	<script type="text/javascript" src="elementlist.js?1725982047"></script>
 	<link rel="stylesheet" type="text/css" media="all" href="resources/style.css?1567499433" />
 
 </head>
@@ -44,6 +44,7 @@
 		<div id="elements">
 			<h3>Classes</h3>
 			<ul>
+				<li><a href="class-COntology.html">COntology</a></li>
 				<li><a href="class-COntologyEdge.html">COntologyEdge</a></li>
 				<li><a href="class-COntologyNode.html">COntologyNode</a></li>
 				<li class="active"><a href="class-COntologyTag.html">COntologyTag</a></li>
@@ -119,9 +120,9 @@
 <a href="#27" id="27" class="l"> 27: </a><span class="php-keyword1">require_once</span>( <span class="php-quote">&quot;COntologyTag.inc.php&quot;</span> );
 <a href="#28" id="28" class="l"> 28: </a>
 <a href="#29" id="29" class="l"> 29: </a><span class="php-comment">/**
-</span><a href="#30" id="30" class="l"> 30: </a><span class="php-comment"> * Nodes.
+</span><a href="#30" id="30" class="l"> 30: </a><span class="php-comment"> * Edges.
 </span><a href="#31" id="31" class="l"> 31: </a><span class="php-comment"> *
-</span><a href="#32" id="32" class="l"> 32: </a><span class="php-comment"> * This includes the node class definitions.
+</span><a href="#32" id="32" class="l"> 32: </a><span class="php-comment"> * This includes the edge class definitions.
 </span><a href="#33" id="33" class="l"> 33: </a><span class="php-comment"> */</span>
 <a href="#34" id="34" class="l"> 34: </a><span class="php-keyword1">require_once</span>( kPATH_MYWRAPPER_LIBRARY_CLASS.<span class="php-quote">&quot;/COntologyEdge.php&quot;</span> );
 <a href="#35" id="35" class="l"> 35: </a>
@@ -776,89 +777,169 @@
 <a href="#684" id="684" class="l">684: </a>                <span class="php-keyword1">if</span>( ! (<span class="php-var">$i</span> % <span class="php-num">2</span>) )
 <a href="#685" id="685" class="l">685: </a>                {
 <a href="#686" id="686" class="l">686: </a>                    <span class="php-comment">//</span>
-<a href="#687" id="687" class="l">687: </a>                    <span class="php-comment">// Load node.</span>
+<a href="#687" id="687" class="l">687: </a>                    <span class="php-comment">// Set operation.</span>
 <a href="#688" id="688" class="l">688: </a>                    <span class="php-comment">//</span>
-<a href="#689" id="689" class="l">689: </a>                    <span class="php-var">$node</span> = COntologyNode::NewObject(
-<a href="#690" id="690" class="l">690: </a>                            COntologyNode::ResolveClassContainer(
-<a href="#691" id="691" class="l">691: </a>                                <span class="php-var">$theConnection</span>, <span class="php-keyword1">TRUE</span> ), <span class="php-var">$path</span>[ <span class="php-var">$i</span> ] );
-<a href="#692" id="692" class="l">692: </a>                    
+<a href="#689" id="689" class="l">689: </a>                    <span class="php-var">$operation</span> = ! (<span class="php-var">$theModifiers</span> &amp; kFLAG_PERSIST_DELETE);
+<a href="#690" id="690" class="l">690: </a>                    
+<a href="#691" id="691" class="l">691: </a>                    <span class="php-comment">//</span>
+<a href="#692" id="692" class="l">692: </a>                    <span class="php-comment">// Load node.</span>
 <a href="#693" id="693" class="l">693: </a>                    <span class="php-comment">//</span>
-<a href="#694" id="694" class="l">694: </a>                    <span class="php-comment">// Remove current tag reference from vertex term.</span>
-<a href="#695" id="695" class="l">695: </a>                    <span class="php-comment">//</span>
-<a href="#696" id="696" class="l">696: </a>                    <span class="php-keyword1">if</span>( <span class="php-var">$theModifiers</span> &amp; kFLAG_PERSIST_DELETE )
-<a href="#697" id="697" class="l">697: </a>                    {
-<a href="#698" id="698" class="l">698: </a>                        <span class="php-comment">//</span>
-<a href="#699" id="699" class="l">699: </a>                        <span class="php-comment">// Handle node.</span>
-<a href="#700" id="700" class="l">700: </a>                        <span class="php-comment">//</span>
-<a href="#701" id="701" class="l">701: </a>                        <span class="php-var">$fields</span> = <span class="php-var">$mod</span>;
-<a href="#702" id="702" class="l">702: </a>                        COntologyNode::ResolveClassContainer( <span class="php-var">$theConnection</span>, <span class="php-keyword1">TRUE</span> )
-<a href="#703" id="703" class="l">703: </a>                            -&gt;ManageObject
-<a href="#704" id="704" class="l">704: </a>                            (
-<a href="#705" id="705" class="l">705: </a>                                <span class="php-var">$fields</span>,                <span class="php-comment">// Because it will be overwritten.</span>
-<a href="#706" id="706" class="l">706: </a>                                <span class="php-var">$path</span>[ <span class="php-var">$i</span> ],                        <span class="php-comment">// Node identifier.</span>
-<a href="#707" id="707" class="l">707: </a>                                kFLAG_PERSIST_MODIFY + kFLAG_MODIFY_PULL    <span class="php-comment">// Remove.</span>
-<a href="#708" id="708" class="l">708: </a>                            );
-<a href="#709" id="709" class="l">709: </a>                    
-<a href="#710" id="710" class="l">710: </a>                        <span class="php-comment">//</span>
-<a href="#711" id="711" class="l">711: </a>                        <span class="php-comment">// Handle node term.</span>
-<a href="#712" id="712" class="l">712: </a>                        <span class="php-comment">//</span>
-<a href="#713" id="713" class="l">713: </a>                        <span class="php-var">$fields</span> = <span class="php-var">$mod</span>;
-<a href="#714" id="714" class="l">714: </a>                        COntologyTerm::ResolveClassContainer( <span class="php-var">$theConnection</span>, <span class="php-keyword1">TRUE</span> )
-<a href="#715" id="715" class="l">715: </a>                            -&gt;ManageObject
-<a href="#716" id="716" class="l">716: </a>                            (
-<a href="#717" id="717" class="l">717: </a>                                <span class="php-var">$fields</span>,                <span class="php-comment">// Because it will be overwritten.</span>
-<a href="#718" id="718" class="l">718: </a>                                <span class="php-var">$node</span>-&gt;Term(),                      <span class="php-comment">// Node term identifier.</span>
-<a href="#719" id="719" class="l">719: </a>                                kFLAG_PERSIST_MODIFY + kFLAG_MODIFY_PULL    <span class="php-comment">// Remove.</span>
-<a href="#720" id="720" class="l">720: </a>                            );
-<a href="#721" id="721" class="l">721: </a>                    
-<a href="#722" id="722" class="l">722: </a>                    } <span class="php-comment">// Deleting.</span>
-<a href="#723" id="723" class="l">723: </a>                    
-<a href="#724" id="724" class="l">724: </a>                    <span class="php-comment">//</span>
-<a href="#725" id="725" class="l">725: </a>                    <span class="php-comment">// Add current tag reference to vertex term.</span>
-<a href="#726" id="726" class="l">726: </a>                    <span class="php-comment">//</span>
-<a href="#727" id="727" class="l">727: </a>                    <span class="php-keyword1">else</span>
-<a href="#728" id="728" class="l">728: </a>                    {
-<a href="#729" id="729" class="l">729: </a>                        <span class="php-comment">//</span>
-<a href="#730" id="730" class="l">730: </a>                        <span class="php-comment">// Handle node.</span>
-<a href="#731" id="731" class="l">731: </a>                        <span class="php-comment">//</span>
-<a href="#732" id="732" class="l">732: </a>                        <span class="php-var">$fields</span> = <span class="php-var">$mod</span>;
-<a href="#733" id="733" class="l">733: </a>                        COntologyNode::ResolveClassContainer( <span class="php-var">$theConnection</span>, <span class="php-keyword1">TRUE</span> )
-<a href="#734" id="734" class="l">734: </a>                            -&gt;ManageObject
-<a href="#735" id="735" class="l">735: </a>                            (
-<a href="#736" id="736" class="l">736: </a>                                <span class="php-var">$fields</span>,                <span class="php-comment">// Because it will be overwritten.</span>
-<a href="#737" id="737" class="l">737: </a>                                <span class="php-var">$path</span>[ <span class="php-var">$i</span> ],                        <span class="php-comment">// Node identifier.</span>
-<a href="#738" id="738" class="l">738: </a>                                kFLAG_PERSIST_MODIFY + kFLAG_MODIFY_ADDSET  <span class="php-comment">// Add.</span>
-<a href="#739" id="739" class="l">739: </a>                            );
-<a href="#740" id="740" class="l">740: </a>                    
-<a href="#741" id="741" class="l">741: </a>                        <span class="php-comment">//</span>
-<a href="#742" id="742" class="l">742: </a>                        <span class="php-comment">// Handle node term.</span>
-<a href="#743" id="743" class="l">743: </a>                        <span class="php-comment">//</span>
-<a href="#744" id="744" class="l">744: </a>                        <span class="php-var">$fields</span> = <span class="php-var">$mod</span>;
-<a href="#745" id="745" class="l">745: </a>                        COntologyTerm::ResolveClassContainer( <span class="php-var">$theConnection</span>, <span class="php-keyword1">TRUE</span> )
-<a href="#746" id="746" class="l">746: </a>                            -&gt;ManageObject
-<a href="#747" id="747" class="l">747: </a>                            (
-<a href="#748" id="748" class="l">748: </a>                                <span class="php-var">$fields</span>,                <span class="php-comment">// Because it will be overwritten.</span>
-<a href="#749" id="749" class="l">749: </a>                                <span class="php-var">$node</span>-&gt;Term(),                      <span class="php-comment">// Node term identifier.</span>
-<a href="#750" id="750" class="l">750: </a>                                kFLAG_PERSIST_MODIFY + kFLAG_MODIFY_ADDSET  <span class="php-comment">// Add.</span>
-<a href="#751" id="751" class="l">751: </a>                            );
-<a href="#752" id="752" class="l">752: </a>                    
-<a href="#753" id="753" class="l">753: </a>                    } <span class="php-comment">// Inserting.</span>
-<a href="#754" id="754" class="l">754: </a>                
-<a href="#755" id="755" class="l">755: </a>                } <span class="php-comment">// Vertex.</span>
-<a href="#756" id="756" class="l">756: </a>            
-<a href="#757" id="757" class="l">757: </a>            } <span class="php-comment">// Iterating path elements.</span>
-<a href="#758" id="758" class="l">758: </a>        
-<a href="#759" id="759" class="l">759: </a>        } <span class="php-comment">// Insert or replace and not committed, or deleting.</span>
-<a href="#760" id="760" class="l">760: </a>        
-<a href="#761" id="761" class="l">761: </a>    } <span class="php-comment">// _PostcommitRelated.</span>
-<a href="#762" id="762" class="l">762: </a>
-<a href="#763" id="763" class="l">763: </a>     
-<a href="#764" id="764" class="l">764: </a>
-<a href="#765" id="765" class="l">765: </a>} <span class="php-comment">// class COntologyTag.</span>
-<a href="#766" id="766" class="l">766: </a>
-<a href="#767" id="767" class="l">767: </a>
-<a href="#768" id="768" class="l">768: </a><span class="xlang">?&gt;</span>
-<a href="#769" id="769" class="l">769: </a></code></pre>
+<a href="#694" id="694" class="l">694: </a>                    <span class="php-var">$node</span> = COntologyNode::NewObject(
+<a href="#695" id="695" class="l">695: </a>                            COntologyNode::ResolveClassContainer(
+<a href="#696" id="696" class="l">696: </a>                                <span class="php-var">$theConnection</span>, <span class="php-keyword1">TRUE</span> ), <span class="php-var">$path</span>[ <span class="php-var">$i</span> ] );
+<a href="#697" id="697" class="l">697: </a>                    
+<a href="#698" id="698" class="l">698: </a>                    <span class="php-comment">//</span>
+<a href="#699" id="699" class="l">699: </a>                    <span class="php-comment">// Reference in node.</span>
+<a href="#700" id="700" class="l">700: </a>                    <span class="php-comment">//</span>
+<a href="#701" id="701" class="l">701: </a>                    <span class="php-var">$this</span>-&gt;_ReferenceInNode( <span class="php-var">$theConnection</span>, <span class="php-var">$path</span>[ <span class="php-var">$i</span> ], <span class="php-var">$operation</span> );
+<a href="#702" id="702" class="l">702: </a>                    
+<a href="#703" id="703" class="l">703: </a>                    <span class="php-comment">//</span>
+<a href="#704" id="704" class="l">704: </a>                    <span class="php-comment">// Reference in term.</span>
+<a href="#705" id="705" class="l">705: </a>                    <span class="php-comment">//</span>
+<a href="#706" id="706" class="l">706: </a>                    <span class="php-var">$this</span>-&gt;_ReferenceInTerm( <span class="php-var">$theConnection</span>, <span class="php-var">$node</span>-&gt;Term(), <span class="php-var">$operation</span> );
+<a href="#707" id="707" class="l">707: </a>                
+<a href="#708" id="708" class="l">708: </a>                } <span class="php-comment">// Vertex.</span>
+<a href="#709" id="709" class="l">709: </a>            
+<a href="#710" id="710" class="l">710: </a>            } <span class="php-comment">// Iterating path elements.</span>
+<a href="#711" id="711" class="l">711: </a>        
+<a href="#712" id="712" class="l">712: </a>        } <span class="php-comment">// Insert or replace and not committed, or deleting.</span>
+<a href="#713" id="713" class="l">713: </a>        
+<a href="#714" id="714" class="l">714: </a>    } <span class="php-comment">// _PostcommitRelated.</span>
+<a href="#715" id="715" class="l">715: </a>
+<a href="#716" id="716" class="l">716: </a>        
+<a href="#717" id="717" class="l">717: </a>
+<a href="#718" id="718" class="l">718: </a><span class="php-comment">/*=======================================================================================
+</span><a href="#719" id="719" class="l">719: </a><span class="php-comment"> *                                                                                      *
+</span><a href="#720" id="720" class="l">720: </a><span class="php-comment"> *                              PROTECTED REFERENCE INTERFACE                           *
+</span><a href="#721" id="721" class="l">721: </a><span class="php-comment"> *                                                                                      *
+</span><a href="#722" id="722" class="l">722: </a><span class="php-comment"> *======================================================================================*/</span>
+<a href="#723" id="723" class="l">723: </a>
+<a href="#724" id="724" class="l">724: </a>
+<a href="#725" id="725" class="l">725: </a>     
+<a href="#726" id="726" class="l">726: </a>    <span class="php-comment">/*===================================================================================
+</span><a href="#727" id="727" class="l">727: </a><span class="php-comment">     *  _ReferenceInNode                                                                *
+</span><a href="#728" id="728" class="l">728: </a><span class="php-comment">     *==================================================================================*/</span>
+<a href="#729" id="729" class="l">729: </a>
+<a href="#730" id="730" class="l">730: </a>    <span class="php-comment">/**
+</span><a href="#731" id="731" class="l">731: </a><span class="php-comment">     * &lt;h4&gt;Add tag reference to node&lt;/h4&gt;
+</span><a href="#732" id="732" class="l">732: </a><span class="php-comment">     *
+</span><a href="#733" id="733" class="l">733: </a><span class="php-comment">     * This method can be used to add or remove the current tag's reference,
+</span><a href="#734" id="734" class="l">734: </a><span class="php-comment">     * {@link kOFFSET_REFS_TAG}, from the provided node. This method should be used whenever
+</span><a href="#735" id="735" class="l">735: </a><span class="php-comment">     * committing a new tag or when deleting one: it will add the current tag's native
+</span><a href="#736" id="736" class="l">736: </a><span class="php-comment">     * identifier to the set of tag references of the provided node when committing a new
+</span><a href="#737" id="737" class="l">737: </a><span class="php-comment">     * tag; it will remove it when deleting the tag.
+</span><a href="#738" id="738" class="l">738: </a><span class="php-comment">     *
+</span><a href="#739" id="739" class="l">739: </a><span class="php-comment">     * The last parameter is a boolean: if &lt;tt&gt;TRUE&lt;/tt&gt; the method will add to the set; if
+</span><a href="#740" id="740" class="l">740: </a><span class="php-comment">     * &lt;tt&gt;FALSE&lt;/tt&gt;, it will remove from the set.
+</span><a href="#741" id="741" class="l">741: </a><span class="php-comment">     *
+</span><a href="#742" id="742" class="l">742: </a><span class="php-comment">     * The method will return &lt;tt&gt;TRUE&lt;/tt&gt; if the operation affected at least one object,
+</span><a href="#743" id="743" class="l">743: </a><span class="php-comment">     * &lt;tt&gt;FALSE&lt;/tt&gt; if not and raise an exception if the operation failed.
+</span><a href="#744" id="744" class="l">744: </a><span class="php-comment">     *
+</span><a href="#745" id="745" class="l">745: </a><span class="php-comment">     * @param CConnection           $theConnection      Server, database or container.
+</span><a href="#746" id="746" class="l">746: </a><span class="php-comment">     * @param mixed                 $theNode            Node object or identifier.
+</span><a href="#747" id="747" class="l">747: </a><span class="php-comment">     * @param boolean               $doAdd              &lt;tt&gt;TRUE&lt;/tt&gt; add reference.
+</span><a href="#748" id="748" class="l">748: </a><span class="php-comment">     *
+</span><a href="#749" id="749" class="l">749: </a><span class="php-comment">     * @static
+</span><a href="#750" id="750" class="l">750: </a><span class="php-comment">     * @return boolean              &lt;tt&gt;TRUE&lt;/tt&gt; operation affected at least one object.
+</span><a href="#751" id="751" class="l">751: </a><span class="php-comment">     *
+</span><a href="#752" id="752" class="l">752: </a><span class="php-comment">     * @see kOFFSET_NID kOFFSET_REFS_TAG
+</span><a href="#753" id="753" class="l">753: </a><span class="php-comment">     * @see kFLAG_PERSIST_MODIFY kFLAG_MODIFY_ADDSET kFLAG_MODIFY_PULL
+</span><a href="#754" id="754" class="l">754: </a><span class="php-comment">     */</span>
+<a href="#755" id="755" class="l">755: </a>    <span class="php-keyword1">protected</span> <span class="php-keyword1">function</span> _ReferenceInNode( CConnection <span class="php-var">$theConnection</span>, <span class="php-var">$theNode</span>, <span class="php-var">$doAdd</span> )
+<a href="#756" id="756" class="l">756: </a>    {
+<a href="#757" id="757" class="l">757: </a>        <span class="php-comment">//</span>
+<a href="#758" id="758" class="l">758: </a>        <span class="php-comment">// Set modification criteria.</span>
+<a href="#759" id="759" class="l">759: </a>        <span class="php-comment">//</span>
+<a href="#760" id="760" class="l">760: </a>        <span class="php-var">$criteria</span> = <span class="php-keyword1">array</span>( kOFFSET_REFS_TAG =&gt; <span class="php-var">$this</span>-&gt;offsetGet( kOFFSET_NID ) );
+<a href="#761" id="761" class="l">761: </a>        
+<a href="#762" id="762" class="l">762: </a>        <span class="php-comment">//</span>
+<a href="#763" id="763" class="l">763: </a>        <span class="php-comment">// Handle add to set.</span>
+<a href="#764" id="764" class="l">764: </a>        <span class="php-comment">//</span>
+<a href="#765" id="765" class="l">765: </a>        <span class="php-keyword1">if</span>( <span class="php-var">$doAdd</span> )
+<a href="#766" id="766" class="l">766: </a>            <span class="php-keyword1">return</span> COntologyNode::ResolveClassContainer( <span class="php-var">$theConnection</span>, <span class="php-keyword1">TRUE</span> )
+<a href="#767" id="767" class="l">767: </a>                    -&gt;ManageObject
+<a href="#768" id="768" class="l">768: </a>                        (
+<a href="#769" id="769" class="l">769: </a>                            <span class="php-var">$criteria</span>,
+<a href="#770" id="770" class="l">770: </a>                            <span class="php-var">$theNode</span>,
+<a href="#771" id="771" class="l">771: </a>                            kFLAG_PERSIST_MODIFY + kFLAG_MODIFY_ADDSET
+<a href="#772" id="772" class="l">772: </a>                        );                                                      <span class="php-comment">// ==&gt;</span>
+<a href="#773" id="773" class="l">773: </a>        
+<a href="#774" id="774" class="l">774: </a>        <span class="php-keyword1">return</span> COntologyNode::ResolveClassContainer( <span class="php-var">$theConnection</span>, <span class="php-keyword1">TRUE</span> )
+<a href="#775" id="775" class="l">775: </a>                -&gt;ManageObject
+<a href="#776" id="776" class="l">776: </a>                    (
+<a href="#777" id="777" class="l">777: </a>                        <span class="php-var">$criteria</span>,
+<a href="#778" id="778" class="l">778: </a>                        <span class="php-var">$theNode</span>,
+<a href="#779" id="779" class="l">779: </a>                        kFLAG_PERSIST_MODIFY + kFLAG_MODIFY_PULL
+<a href="#780" id="780" class="l">780: </a>                    );                                                          <span class="php-comment">// ==&gt;</span>
+<a href="#781" id="781" class="l">781: </a>    
+<a href="#782" id="782" class="l">782: </a>    } <span class="php-comment">// _ReferenceInNode.</span>
+<a href="#783" id="783" class="l">783: </a>
+<a href="#784" id="784" class="l">784: </a>     
+<a href="#785" id="785" class="l">785: </a>    <span class="php-comment">/*===================================================================================
+</span><a href="#786" id="786" class="l">786: </a><span class="php-comment">     *  _ReferenceInTerm                                                                *
+</span><a href="#787" id="787" class="l">787: </a><span class="php-comment">     *==================================================================================*/</span>
+<a href="#788" id="788" class="l">788: </a>
+<a href="#789" id="789" class="l">789: </a>    <span class="php-comment">/**
+</span><a href="#790" id="790" class="l">790: </a><span class="php-comment">     * &lt;h4&gt;Add tag reference to term&lt;/h4&gt;
+</span><a href="#791" id="791" class="l">791: </a><span class="php-comment">     *
+</span><a href="#792" id="792" class="l">792: </a><span class="php-comment">     * This method can be used to add or remove the current tag's reference,
+</span><a href="#793" id="793" class="l">793: </a><span class="php-comment">     * {@link kOFFSET_REFS_TAG}, from the provided term. This method should be used whenever
+</span><a href="#794" id="794" class="l">794: </a><span class="php-comment">     * committing a new tag or when deleting one: it will add the current tag's native
+</span><a href="#795" id="795" class="l">795: </a><span class="php-comment">     * identifier to the set of tag references of the provided term when committing a new
+</span><a href="#796" id="796" class="l">796: </a><span class="php-comment">     * tag; it will remove it when deleting the tag.
+</span><a href="#797" id="797" class="l">797: </a><span class="php-comment">     *
+</span><a href="#798" id="798" class="l">798: </a><span class="php-comment">     * The last parameter is a boolean: if &lt;tt&gt;TRUE&lt;/tt&gt; the method will add to the set; if
+</span><a href="#799" id="799" class="l">799: </a><span class="php-comment">     * &lt;tt&gt;FALSE&lt;/tt&gt;, it will remove from the set.
+</span><a href="#800" id="800" class="l">800: </a><span class="php-comment">     *
+</span><a href="#801" id="801" class="l">801: </a><span class="php-comment">     * The method will return &lt;tt&gt;TRUE&lt;/tt&gt; if the operation affected at least one object,
+</span><a href="#802" id="802" class="l">802: </a><span class="php-comment">     * &lt;tt&gt;FALSE&lt;/tt&gt; if not and raise an exception if the operation failed.
+</span><a href="#803" id="803" class="l">803: </a><span class="php-comment">     *
+</span><a href="#804" id="804" class="l">804: </a><span class="php-comment">     * @param CConnection           $theConnection      Server, database or container.
+</span><a href="#805" id="805" class="l">805: </a><span class="php-comment">     * @param mixed                 $theTerm            Term object or identifier.
+</span><a href="#806" id="806" class="l">806: </a><span class="php-comment">     * @param boolean               $doAdd              &lt;tt&gt;TRUE&lt;/tt&gt; add reference.
+</span><a href="#807" id="807" class="l">807: </a><span class="php-comment">     *
+</span><a href="#808" id="808" class="l">808: </a><span class="php-comment">     * @static
+</span><a href="#809" id="809" class="l">809: </a><span class="php-comment">     * @return boolean              &lt;tt&gt;TRUE&lt;/tt&gt; operation affected at least one object.
+</span><a href="#810" id="810" class="l">810: </a><span class="php-comment">     *
+</span><a href="#811" id="811" class="l">811: </a><span class="php-comment">     * @see kOFFSET_NID kOFFSET_REFS_TAG
+</span><a href="#812" id="812" class="l">812: </a><span class="php-comment">     * @see kFLAG_PERSIST_MODIFY kFLAG_MODIFY_ADDSET kFLAG_MODIFY_PULL
+</span><a href="#813" id="813" class="l">813: </a><span class="php-comment">     */</span>
+<a href="#814" id="814" class="l">814: </a>    <span class="php-keyword1">protected</span> <span class="php-keyword1">function</span> _ReferenceInTerm( CConnection <span class="php-var">$theConnection</span>, <span class="php-var">$theTerm</span>, <span class="php-var">$doAdd</span> )
+<a href="#815" id="815" class="l">815: </a>    {
+<a href="#816" id="816" class="l">816: </a>        <span class="php-comment">//</span>
+<a href="#817" id="817" class="l">817: </a>        <span class="php-comment">// Set modification criteria.</span>
+<a href="#818" id="818" class="l">818: </a>        <span class="php-comment">//</span>
+<a href="#819" id="819" class="l">819: </a>        <span class="php-var">$criteria</span> = <span class="php-keyword1">array</span>( kOFFSET_REFS_TAG =&gt; <span class="php-var">$this</span>-&gt;offsetGet( kOFFSET_NID ) );
+<a href="#820" id="820" class="l">820: </a>        
+<a href="#821" id="821" class="l">821: </a>        <span class="php-comment">//</span>
+<a href="#822" id="822" class="l">822: </a>        <span class="php-comment">// Handle add to set.</span>
+<a href="#823" id="823" class="l">823: </a>        <span class="php-comment">//</span>
+<a href="#824" id="824" class="l">824: </a>        <span class="php-keyword1">if</span>( <span class="php-var">$doAdd</span> )
+<a href="#825" id="825" class="l">825: </a>            <span class="php-keyword1">return</span> COntologyTerm::ResolveClassContainer( <span class="php-var">$theConnection</span>, <span class="php-keyword1">TRUE</span> )
+<a href="#826" id="826" class="l">826: </a>                    -&gt;ManageObject
+<a href="#827" id="827" class="l">827: </a>                        (
+<a href="#828" id="828" class="l">828: </a>                            <span class="php-var">$criteria</span>,
+<a href="#829" id="829" class="l">829: </a>                            <span class="php-var">$theTerm</span>,
+<a href="#830" id="830" class="l">830: </a>                            kFLAG_PERSIST_MODIFY + kFLAG_MODIFY_ADDSET
+<a href="#831" id="831" class="l">831: </a>                        );                                                      <span class="php-comment">// ==&gt;</span>
+<a href="#832" id="832" class="l">832: </a>        
+<a href="#833" id="833" class="l">833: </a>        <span class="php-keyword1">return</span> COntologyTerm::ResolveClassContainer( <span class="php-var">$theConnection</span>, <span class="php-keyword1">TRUE</span> )
+<a href="#834" id="834" class="l">834: </a>                -&gt;ManageObject
+<a href="#835" id="835" class="l">835: </a>                    (
+<a href="#836" id="836" class="l">836: </a>                        <span class="php-var">$criteria</span>,
+<a href="#837" id="837" class="l">837: </a>                        <span class="php-var">$theTerm</span>,
+<a href="#838" id="838" class="l">838: </a>                        kFLAG_PERSIST_MODIFY + kFLAG_MODIFY_PULL
+<a href="#839" id="839" class="l">839: </a>                    );                                                          <span class="php-comment">// ==&gt;</span>
+<a href="#840" id="840" class="l">840: </a>    
+<a href="#841" id="841" class="l">841: </a>    } <span class="php-comment">// _ReferenceInTerm.</span>
+<a href="#842" id="842" class="l">842: </a>
+<a href="#843" id="843" class="l">843: </a>     
+<a href="#844" id="844" class="l">844: </a>
+<a href="#845" id="845" class="l">845: </a>} <span class="php-comment">// class COntologyTag.</span>
+<a href="#846" id="846" class="l">846: </a>
+<a href="#847" id="847" class="l">847: </a>
+<a href="#848" id="848" class="l">848: </a><span class="xlang">?&gt;</span>
+<a href="#849" id="849" class="l">849: </a></code></pre>
 
 	<div id="footer">
 		MyWrapper Reference Documentation API documentation generated by <a href="http://apigen.org">ApiGen 2.7.0</a>

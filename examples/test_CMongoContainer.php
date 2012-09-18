@@ -333,6 +333,18 @@ try
 	echo( '<hr />' );
 	
 	//
+	// Increment counter for non existing object.
+	//
+	echo( '<h4>Increment counter for non existing object</h4>' );
+	echo( '<h5>$offsets = array( "COUNTER" => 1 );</h5>' );
+	$offsets = array( "COUNTER" => 1 );
+	echo( '<h5>$status = $test->ManageObject( $offsets, -99, kFLAG_PERSIST_MODIFY + kFLAG_MODIFY_INCREMENT );</h5>' );
+	$status = $test->ManageObject( $offsets, -99, kFLAG_PERSIST_MODIFY + kFLAG_MODIFY_INCREMENT );
+	echo( 'Object<pre>' ); print_r( $offsets ); echo( '</pre>' );
+	echo( 'Status<pre>' ); print_r( $status ); echo( '</pre>' );
+	echo( '<hr />' );
+	
+	//
 	// Decrement counter.
 	//
 	echo( '<h4>Decrement counter</h4>' );
@@ -388,6 +400,18 @@ try
 	$offsets = array( "ARRAY2" => 1 );
 	echo( '<h5>$status = $test->ManageObject( $offsets, 2, kFLAG_PERSIST_MODIFY + kFLAG_MODIFY_ADDSET );</h5>' );
 	$status = $test->ManageObject( $offsets, 2, kFLAG_PERSIST_MODIFY + kFLAG_MODIFY_ADDSET );
+	echo( 'Object<pre>' ); print_r( $offsets ); echo( '</pre>' );
+	echo( 'Status<pre>' ); print_r( $status ); echo( '</pre>' );
+	echo( '<hr />' );
+	
+	//
+	// Add duplicate to non-existing set.
+	//
+	echo( '<h4>Add duplicate to non-existing set</h4>' );
+	echo( '<h5>$offsets = array( "ARRAY2" => 1 );</h5>' );
+	$offsets = array( "ARRAY2" => 1 );
+	echo( '<h5>$status = $test->ManageObject( $offsets, -99, kFLAG_PERSIST_MODIFY + kFLAG_MODIFY_ADDSET );</h5>' );
+	$status = $test->ManageObject( $offsets, -99, kFLAG_PERSIST_MODIFY + kFLAG_MODIFY_ADDSET );
 	echo( 'Object<pre>' ); print_r( $offsets ); echo( '</pre>' );
 	echo( 'Status<pre>' ); print_r( $status ); echo( '</pre>' );
 	echo( '<hr />' );

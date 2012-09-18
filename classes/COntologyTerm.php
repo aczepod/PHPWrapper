@@ -678,9 +678,11 @@ class COntologyTerm extends CTerm
 	 *
 	 * @throws Exception
 	 *
-	 * @uses _IsInited()
+	 * @uses _IsCommitted()
+	 * @uses _ReferenceNamespace()
 	 *
-	 * @see kFLAG_PERSIST_WRITE_MASK
+	 * @see kOFFSET_NAMESPACE
+	 * @see kFLAG_PERSIST_INSERT kFLAG_PERSIST_REPLACE kFLAG_PERSIST_DELETE
 	 */
 	protected function _PostcommitRelated( &$theConnection, &$theModifiers )
 	{
@@ -701,28 +703,11 @@ class COntologyTerm extends CTerm
 			 || (($theModifiers & kFLAG_PERSIST_MASK) == kFLAG_PERSIST_REPLACE) )
 			{
 				//
-				// Check if not yet committed.
+				// Handle uncommitted object.
+				// Note that this status is set later.
 				//
 				if( ! $this->_IsCommitted() )
-				{
-					//
-					// Set fields array (will receive updated object).
-					//
-					$fields = array( kOFFSET_REFS_NAMESPACE => 1 );
-					
-					//
-					// Let container do the modification.
-					//
-					$this
-						->ResolveContainer( $theConnection, TRUE )
-						->ManageObject
-							(
-								$fields,
-								$this->offsetGet( kOFFSET_NAMESPACE ),
-								kFLAG_PERSIST_MODIFY + kFLAG_MODIFY_INCREMENT
-							);
-					
-				} // Not yet committed.
+					$this->_ReferenceNamespace( $theConnection, 1 );
 			
 			} // Insert or replace.
 			
@@ -730,25 +715,7 @@ class COntologyTerm extends CTerm
 			// Check if deleting.
 			//
 			elseif( $theModifiers & kFLAG_PERSIST_DELETE )
-			{
-				//
-				// Set fields array (will receive updated object).
-				//
-				$fields = array( kOFFSET_REFS_NAMESPACE => -1 );
-				
-				//
-				// Let container do the modification.
-				//
-				$this
-					->ResolveContainer( $theConnection, TRUE )
-					->ManageObject
-						(
-							$fields,
-							$this->offsetGet( kOFFSET_NAMESPACE ),
-							kFLAG_PERSIST_MODIFY + kFLAG_MODIFY_INCREMENT
-						);
-			
-			} // Deleting.
+				$this->_ReferenceNamespace( $theConnection, -1 );
 		
 		} // Has namespace.
 		
@@ -784,6 +751,72 @@ class COntologyTerm extends CTerm
 		$this->mNamespace = NULL;
 	
 	} // _PostcommitCleanup.
+
+		
+
+/*=======================================================================================
+ *																						*
+ *								PROTECTED REFERENCE INTERFACE							*
+ *																						*
+ *======================================================================================*/
+
+
+	 
+	/*===================================================================================
+	 *	_ReferenceNamespace																*
+	 *==================================================================================*/
+
+	/**
+	 * <h4>Increment namespace term references</h4>
+	 *
+	 * This method can be used to increment the namespace reference count,
+	 * {@link kOFFSET_REFS_NAMESPACE}, by providing a connection object and an increment
+	 * delta.
+	 *
+	 * The method will return <tt>TRUE</tt> if the operation affected at least one object,
+	 * <tt>FALSE</tt> if not, <tt>NULL</tt> if the current object has no namespace and raise
+	 * an exception if the operation failed.
+	 *
+	 * @param CConnection			$theConnection		Server, database or container.
+	 * @param integer				$theCount			Increment amount.
+	 *
+	 * @access protected
+	 * @return mixed				<tt>TRUE</tt> operation affected at least one object.
+	 *
+	 * @uses ResolveContainer()
+	 *
+	 * @see kOFFSET_NAMESPACE kOFFSET_REFS_NAMESPACE
+	 * @see kFLAG_PERSIST_MODIFY kFLAG_MODIFY_INCREMENT
+	 */
+	protected function _ReferenceNamespace( CConnection $theConnection, $theCount )
+	{
+		//
+		// Check namespace.
+		//
+		if( $this->offsetExists( kOFFSET_NAMESPACE ) )
+		{
+			//
+			// Set modification criteria.
+			//
+			$criteria = array( kOFFSET_REFS_NAMESPACE => (int) $theCount );
+			
+			//
+			// Let container do the modification.
+			//
+			return $this
+					->ResolveContainer( $theConnection, TRUE )
+					->ManageObject
+						(
+							$criteria,
+							$this->offsetGet( kOFFSET_NAMESPACE ),
+							kFLAG_PERSIST_MODIFY + kFLAG_MODIFY_INCREMENT
+						);															// ==>
+		
+		} // Has namespace.
+		
+		return NULL;																// ==>
+	
+	} // _ReferenceNamespace.
 
 	 
 

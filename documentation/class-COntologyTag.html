@@ -7,7 +7,7 @@
 	<title>Class COntologyTag | MyWrapper Reference Documentation</title>
 
 	<script type="text/javascript" src="resources/combined.js?496895167"></script>
-	<script type="text/javascript" src="elementlist.js?3373123863"></script>
+	<script type="text/javascript" src="elementlist.js?1725982047"></script>
 	<link rel="stylesheet" type="text/css" media="all" href="resources/style.css?1567499433" />
 
 </head>
@@ -43,6 +43,7 @@
 		<div id="elements">
 			<h3>Classes</h3>
 			<ul>
+				<li><a href="class-COntology.html">COntology</a></li>
 				<li><a href="class-COntologyEdge.html">COntologyEdge</a></li>
 				<li><a href="class-COntologyNode.html">COntologyNode</a></li>
 				<li class="active"><a href="class-COntologyTag.html">COntologyTag</a></li>
@@ -681,6 +682,132 @@ remove it.</p>
 		</div>
 		</div></td>
 	</tr>
+	<tr data-order="_ReferenceInNode" id="__ReferenceInNode">
+
+		<td class="attributes"><code>
+			 protected 
+			boolean
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#__ReferenceInNode">#</a>
+		<code><a href="source-class-COntologyTag.html#730" title="Go to source code">_ReferenceInNode</a>( <span><code><a href="class-CConnection.html">CConnection</a></code> <var>$theConnection</var></span>, <span>mixed <var>$theNode</var></span>, <span>boolean <var>$doAdd</var></span> )</code>
+
+		<div class="description short">
+			
+<h4>Add tag reference to node</h4>
+
+		</div>
+
+		<div class="description detailed hidden">
+			
+<h4>Add tag reference to node</h4>
+
+<p>This method can be used to add or remove the current tag's reference, kOFFSET_REFS_TAG, from the provided node. This method should be used whenever
+committing a new tag or when deleting one: it will add the current tag's native
+identifier to the set of tag references of the provided node when committing a
+new tag; it will remove it when deleting the tag.</p>
+
+<p>The last parameter is a boolean: if <tt>TRUE</tt> the method will add to the
+set; if <tt>FALSE</tt>, it will remove from the set.</p>
+
+<p>The method will return <tt>TRUE</tt> if the operation affected at least one
+object, <tt>FALSE</tt> if not and raise an exception if the operation
+failed.</p>
+
+
+
+				<h4>Parameters</h4>
+				<div class="list"><dl>
+					<dt><var>$theConnection</var></dt>
+					<dd><code><code><a href="class-CConnection.html">CConnection</a></code></code><br> Server, database or container.</dd>
+					<dt><var>$theNode</var></dt>
+					<dd><code>mixed</code><br> Node object or identifier.</dd>
+					<dt><var>$doAdd</var></dt>
+					<dd><code>boolean</code><br> <tt>TRUE</tt> add reference.</dd>
+				</dl></div>
+
+				<h4>Returns</h4>
+				<div class="list">
+					<code>boolean</code><br><tt>TRUE</tt> operation affected at least one object.<br />
+				</div>
+
+
+				<h4>See</h4>
+				<div class="list">
+						kOFFSET_NID kOFFSET_REFS_TAG<br />
+						kFLAG_PERSIST_MODIFY kFLAG_MODIFY_ADDSET kFLAG_MODIFY_PULL<br />
+				</div>
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="_ReferenceInTerm" id="__ReferenceInTerm">
+
+		<td class="attributes"><code>
+			 protected 
+			boolean
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#__ReferenceInTerm">#</a>
+		<code><a href="source-class-COntologyTag.html#789" title="Go to source code">_ReferenceInTerm</a>( <span><code><a href="class-CConnection.html">CConnection</a></code> <var>$theConnection</var></span>, <span>mixed <var>$theTerm</var></span>, <span>boolean <var>$doAdd</var></span> )</code>
+
+		<div class="description short">
+			
+<h4>Add tag reference to term</h4>
+
+		</div>
+
+		<div class="description detailed hidden">
+			
+<h4>Add tag reference to term</h4>
+
+<p>This method can be used to add or remove the current tag's reference, kOFFSET_REFS_TAG, from the provided term. This method should be used whenever
+committing a new tag or when deleting one: it will add the current tag's native
+identifier to the set of tag references of the provided term when committing a
+new tag; it will remove it when deleting the tag.</p>
+
+<p>The last parameter is a boolean: if <tt>TRUE</tt> the method will add to the
+set; if <tt>FALSE</tt>, it will remove from the set.</p>
+
+<p>The method will return <tt>TRUE</tt> if the operation affected at least one
+object, <tt>FALSE</tt> if not and raise an exception if the operation
+failed.</p>
+
+
+
+				<h4>Parameters</h4>
+				<div class="list"><dl>
+					<dt><var>$theConnection</var></dt>
+					<dd><code><code><a href="class-CConnection.html">CConnection</a></code></code><br> Server, database or container.</dd>
+					<dt><var>$theTerm</var></dt>
+					<dd><code>mixed</code><br> Term object or identifier.</dd>
+					<dt><var>$doAdd</var></dt>
+					<dd><code>boolean</code><br> <tt>TRUE</tt> add reference.</dd>
+				</dl></div>
+
+				<h4>Returns</h4>
+				<div class="list">
+					<code>boolean</code><br><tt>TRUE</tt> operation affected at least one object.<br />
+				</div>
+
+
+				<h4>See</h4>
+				<div class="list">
+						kOFFSET_NID kOFFSET_REFS_TAG<br />
+						kFLAG_PERSIST_MODIFY kFLAG_MODIFY_ADDSET kFLAG_MODIFY_PULL<br />
+				</div>
+
+
+		</div>
+		</div></td>
+	</tr>
 	</table>
 
 	<table class="summary inherited">
@@ -722,10 +849,7 @@ remove it.</p>
 			<a href="class-CPersistentDocument.html#_">_Postcommit()</a>, 
 			<a href="class-CPersistentDocument.html#_">_PostcommitCleanup()</a>, 
 			<a href="class-CPersistentDocument.html#_">_PostcommitStatus()</a>, 
-			<a href="class-CPersistentDocument.html#_">_Postset()</a>, 
-			<a href="class-CPersistentDocument.html#_">_Postunset()</a>, 
-			<a href="class-CPersistentDocument.html#_">_Precommit()</a>, 
-			<a href="class-CPersistentDocument.html#_">__construct()</a>
+			<a href="class-CPersistentDocument.html#_">_Precommit()</a>
 		</code></td>
 	</tr>
 	</table>
@@ -737,6 +861,9 @@ remove it.</p>
 			<a href="class-CStatusDocument.html#_">_IsDirty()</a>, 
 			<a href="class-CStatusDocument.html#_">_IsEncoded()</a>, 
 			<a href="class-CStatusDocument.html#_">_IsInited()</a>, 
+			<a href="class-CStatusDocument.html#_">_Postset()</a>, 
+			<a href="class-CStatusDocument.html#_">_Postunset()</a>, 
+			<a href="class-CStatusDocument.html#_">__construct()</a>, 
 			<a href="class-CStatusDocument.html#_">offsetSet()</a>, 
 			<a href="class-CStatusDocument.html#_">offsetUnset()</a>
 		</code></td>

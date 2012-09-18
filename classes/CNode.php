@@ -417,6 +417,8 @@ class CNode extends CPersistentObject
 	 * @access protected
 	 * @return boolean				<tt>TRUE</tt> means {@link _IsInited( <tt>TRUE</tt> ).
 	 *
+	 * @uses _Ready()
+	 *
 	 * @see kOFFSET_TERM
 	 */
 	protected function _Ready()

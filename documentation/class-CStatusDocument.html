@@ -7,7 +7,7 @@
 	<title>Class CStatusDocument | MyWrapper Reference Documentation</title>
 
 	<script type="text/javascript" src="resources/combined.js?496895167"></script>
-	<script type="text/javascript" src="elementlist.js?3373123863"></script>
+	<script type="text/javascript" src="elementlist.js?1725982047"></script>
 	<link rel="stylesheet" type="text/css" media="all" href="resources/style.css?1567499433" />
 
 </head>
@@ -114,7 +114,13 @@ which the first 31 elements are used to record on/off states.</p>
 change and the <code><a href="class-CStatusDocument.html#_">CStatusDocument::_Postset()</a></code> method after the change, this only in case of
 modification. Similarly, the <code><a href="class-CStatusDocument.html#_">CStatusDocument::offsetUnset()</a></code> method will call the <code><a href="class-CStatusDocument.html#_">CStatusDocument::_Preunset()</a></code> method before and the <code><a href="class-CStatusDocument.html#_">CStatusDocument::_Postunset()</a></code> method after removing an
 offset only if that offset exists. In this class we set the <code><a href="class-CStatusDocument.html#_">CStatusDocument::_IsDirty()</a></code>
-status in the event of a value change.</p>
+status in the event of a value change and use the <code><a href="class-CStatusDocument.html#_">CStatusDocument::_Ready()</a></code> method to set
+the <code><a href="class-CStatusDocument.html#_">CStatusDocument::_IsInited()</a></code> status.</p>
+
+<p>The class also implements an interface to handle the <code><a href="class-CStatusDocument.html#_">CStatusDocument::_IsInited()</a></code>
+status: a protected method, <code><a href="class-CStatusDocument.html#_">CStatusDocument::_Ready()</a></code>, can be used to return a boolean
+that indicates whether the object has all the required components, this is
+performed in the constructor and in the <code><a href="class-CStatusDocument.html#_">CStatusDocument::_Postset()</a></code> and <code><a href="class-CStatusDocument.html#_">CStatusDocument::_Postunset()</a></code> methods. By default the object is considered initialised.</p>
 
 <p><i>Note: you should use only the first 31 bits because PHP tends to cast a
 bitfield into a 32 bit integer which uses the last bit as the sign.</i></p>
@@ -164,6 +170,7 @@ bitfield into a 32 bit integer which uses the last bit as the sign.</i></p>
 		<h4>Indirect known subclasses</h4>
 			<a href="class-CContainer.html">CContainer</a>, 
 			<a href="class-CDatabase.html">CDatabase</a>, 
+			<a href="class-COntologyTag.html">COntologyTag</a>, 
 			<a href="class-COntologyTerm.html">COntologyTerm</a>, 
 			<a href="class-CPersistentObject.html">CPersistentObject</a>, 
 			<a href="class-CServer.html">CServer</a>, 
@@ -174,9 +181,9 @@ bitfield into a 32 bit integer which uses the last bit as the sign.</i></p>
 			<a href="class-CMongoDatabase.html">CMongoDatabase</a>, 
 			<a href="class-CMongoServer.html">CMongoServer</a>, 
 			<a href="class-CNode.html">CNode</a>, 
+			<a href="class-COntology.html">COntology</a>, 
 			<a href="class-COntologyEdge.html">COntologyEdge</a>, 
-			<a href="class-COntologyNode.html">COntologyNode</a>, 
-			<a href="class-COntologyTag.html">COntologyTag</a>
+			<a href="class-COntologyNode.html">COntologyNode</a>
 	</div>
 
 
@@ -192,12 +199,66 @@ bitfield into a 32 bit integer which uses the last bit as the sign.</i></p>
 				<b>Author:</b>
 				Milko A. Škofič &lt;<a
 href="mailto:m.skofic&#64;cgiar.org">m.skofic&#64;<!---->cgiar.org</a>&gt;<br />
-		<b>Located at</b> <a href="source-class-CStatusDocument.html#43" title="Go to source code">CStatusDocument.php</a><br />
+		<b>Located at</b> <a href="source-class-CStatusDocument.html#50" title="Go to source code">CStatusDocument.php</a><br />
 	</div>
 
 
 	<table class="summary" id="methods">
 	<caption>Methods summary</caption>
+	<tr data-order="__construct" id="___construct">
+
+		<td class="attributes"><code>
+			 public 
+			
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#___construct">#</a>
+		<code><a href="source-class-CStatusDocument.html#106" title="Go to source code">__construct</a>( <span>mixed <var>$theInput</var> = <span class="php-keyword1">Array</span>()</span>, <span>integer <var>$theFlags</var> = <span class="php-num">0</span></span>, <span>string <var>$theIterator</var> = <span class="php-quote">'ArrayIterator'</span> </span> )</code>
+
+		<div class="description short">
+			
+<h4>Instantiate class</h4>
+
+		</div>
+
+		<div class="description detailed hidden">
+			
+<h4>Instantiate class</h4>
+
+<p>We overload the inherited constructor to set the <code><a href="class-CStatusDocument.html#_">CStatusDocument::_IsInited()</a></code>
+status.</p>
+
+<p>This constructor mirrors the <code><a href="class-ArrayObject.html">ArrayObject</a></code> constructor.</p>
+
+
+
+				<h4>Parameters</h4>
+				<div class="list"><dl>
+					<dt><var>$theInput</var></dt>
+					<dd><code>mixed</code><br> Input parameter.</dd>
+					<dt><var>$theFlags</var></dt>
+					<dd><code>integer</code><br> Control flags.</dd>
+					<dt><var>$theIterator</var></dt>
+					<dd><code>string</code><br> Control flags.</dd>
+				</dl></div>
+
+
+
+				<h4>Uses</h4>
+				<div class="list">
+						<code><code><a href="class-CStatusDocument.html#_">CStatusDocument::_Ready()</a></code></code> <br />
+						<code><code><a href="class-CStatusDocument.html#_">CStatusDocument::_IsInited()</a></code></code> <br />
+				</div>
+
+				<h4>Overrides</h4>
+				<div class="list"><code><a href="class-ArrayObject.html#_">ArrayObject::__construct</a></code></div>
+
+		</div>
+		</div></td>
+	</tr>
 	<tr data-order="offsetSet" id="_offsetSet">
 
 		<td class="attributes"><code>
@@ -209,7 +270,7 @@ href="mailto:m.skofic&#64;cgiar.org">m.skofic&#64;<!---->cgiar.org</a>&gt;<br />
 
 		<td class="name"><div>
 		<a class="anchor" href="#_offsetSet">#</a>
-		<code><a href="source-class-CStatusDocument.html#92" title="Go to source code">offsetSet</a>( <span>string <var>$theOffset</var></span>, <span>mixed <var>$theValue</var></span> )</code>
+		<code><a href="source-class-CStatusDocument.html#152" title="Go to source code">offsetSet</a>( <span>string <var>$theOffset</var></span>, <span>mixed <var>$theValue</var></span> )</code>
 
 		<div class="description short">
 			
@@ -261,7 +322,7 @@ turn the <code><a href="class-CStatusDocument.html#_">CStatusDocument::_IsDirty(
 
 		<td class="name"><div>
 		<a class="anchor" href="#_offsetUnset">#</a>
-		<code><a href="source-class-CStatusDocument.html#137" title="Go to source code">offsetUnset</a>( <span>string <var>$theOffset</var></span> )</code>
+		<code><a href="source-class-CStatusDocument.html#197" title="Go to source code">offsetUnset</a>( <span>string <var>$theOffset</var></span> )</code>
 
 		<div class="description short">
 			
@@ -311,7 +372,7 @@ turn the <code><a href="class-CStatusDocument.html#_">CStatusDocument::_IsDirty(
 
 		<td class="name"><div>
 		<a class="anchor" href="#__IsInited">#</a>
-		<code><a href="source-class-CStatusDocument.html#190" title="Go to source code">_IsInited</a>( <span>mixed <var>$theState</var> = <span class="php-keyword1">NULL</span> </span> )</code>
+		<code><a href="source-class-CStatusDocument.html#250" title="Go to source code">_IsInited</a>( <span>mixed <var>$theState</var> = <span class="php-keyword1">NULL</span> </span> )</code>
 
 		<div class="description short">
 			
@@ -370,6 +431,12 @@ modified.</p>
 				<div class="list">
 						<code><code><a href="function-ManageBitField.html">ManageBitField()</a></code></code> <br />
 				</div>
+				<h4>Used by</h4>
+				<div class="list">
+						<code><code><a href="class-CStatusDocument.html#_">CStatusDocument::__construct()</a></code></code> <br />
+						<code><code><a href="class-CStatusDocument.html#_">CStatusDocument::_Postset()</a></code></code> <br />
+						<code><code><a href="class-CStatusDocument.html#_">CStatusDocument::_Postunset()</a></code></code> <br />
+				</div>
 
 
 		</div>
@@ -386,7 +453,7 @@ modified.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#__IsDirty">#</a>
-		<code><a href="source-class-CStatusDocument.html#238" title="Go to source code">_IsDirty</a>( <span>mixed <var>$theState</var> = <span class="php-keyword1">NULL</span> </span> )</code>
+		<code><a href="source-class-CStatusDocument.html#298" title="Go to source code">_IsDirty</a>( <span>mixed <var>$theState</var> = <span class="php-keyword1">NULL</span> </span> )</code>
 
 		<div class="description short">
 			
@@ -463,7 +530,7 @@ modified.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#__IsCommitted">#</a>
-		<code><a href="source-class-CStatusDocument.html#283" title="Go to source code">_IsCommitted</a>( <span>mixed <var>$theState</var> = <span class="php-keyword1">NULL</span> </span> )</code>
+		<code><a href="source-class-CStatusDocument.html#343" title="Go to source code">_IsCommitted</a>( <span>mixed <var>$theState</var> = <span class="php-keyword1">NULL</span> </span> )</code>
 
 		<div class="description short">
 			
@@ -532,7 +599,7 @@ modified.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#__IsEncoded">#</a>
-		<code><a href="source-class-CStatusDocument.html#326" title="Go to source code">_IsEncoded</a>( <span>mixed <var>$theState</var> = <span class="php-keyword1">NULL</span> </span> )</code>
+		<code><a href="source-class-CStatusDocument.html#386" title="Go to source code">_IsEncoded</a>( <span>mixed <var>$theState</var> = <span class="php-keyword1">NULL</span> </span> )</code>
 
 		<div class="description short">
 			
@@ -589,6 +656,62 @@ modified.</p>
 		</div>
 		</div></td>
 	</tr>
+	<tr data-order="_Ready" id="__Ready">
+
+		<td class="attributes"><code>
+			 protected 
+			boolean
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#__Ready">#</a>
+		<code><a href="source-class-CStatusDocument.html#438" title="Go to source code">_Ready</a>( )</code>
+
+		<div class="description short">
+			
+<h4>Determine if the object is ready</h4>
+
+		</div>
+
+		<div class="description detailed hidden">
+			
+<h4>Determine if the object is ready</h4>
+
+<p>This method will return a boolean indicating whether all the required the
+elements managed by the current class are present, this value should then be set
+by the caller into the <code><a href="class-CStatusDocument.html#_">CStatusDocument::_IsInited()</a></code> status.</p>
+
+<p>This method should be implemented in all inheritance levels in which the</p>
+
+
+
+
+				<h4>Returns</h4>
+				<div class="list">
+					<code>boolean</code><br><tt>TRUE</tt> means {@link _IsInited( <tt>TRUE</tt> ).<br />
+				</div>
+
+
+				<h4>Used by</h4>
+				<div class="list">
+						<code><code><a href="class-CStatusDocument.html#_">CStatusDocument::__construct()</a></code></code> <br />
+						<code><code><a href="class-CStatusDocument.html#_">CStatusDocument::_Postset()</a></code></code> <br />
+						<code><code><a href="class-CStatusDocument.html#_">CStatusDocument::_Postunset()</a></code></code> <br />
+				</div>
+				<h4>Link</h4>
+				<div class="list">
+						_IsInited()} status is affected, it is the place where one may concentrate all
+the necessary tests to determine whether the object is usable. In this class we
+assume the object is <code><a href="class-CStatusDocument.html#_">CStatusDocument::_IsInited()</a></code>, it is up to derived classes to prove
+the contrary.<br />
+				</div>
+
+
+		</div>
+		</div></td>
+	</tr>
 	<tr data-order="_Preset" id="__Preset">
 
 		<td class="attributes"><code>
@@ -600,7 +723,7 @@ modified.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#__Preset">#</a>
-		<code><a href="source-class-CStatusDocument.html#378" title="Go to source code">_Preset</a>( <span>reference <var>&amp; $theOffset</var></span>, <span>reference <var>&amp; $theValue</var></span> )</code>
+		<code><a href="source-class-CStatusDocument.html#471" title="Go to source code">_Preset</a>( <span>reference <var>&amp; $theOffset</var></span>, <span>reference <var>&amp; $theValue</var></span> )</code>
 
 		<div class="description short">
 			
@@ -657,7 +780,7 @@ except that they are passed by reference.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#__Postset">#</a>
-		<code><a href="source-class-CStatusDocument.html#411" title="Go to source code">_Postset</a>( <span>reference <var>&amp; $theOffset</var></span>, <span>reference <var>&amp; $theValue</var></span> )</code>
+		<code><a href="source-class-CStatusDocument.html#504" title="Go to source code">_Postset</a>( <span>reference <var>&amp; $theOffset</var></span>, <span>reference <var>&amp; $theValue</var></span> )</code>
 
 		<div class="description short">
 			
@@ -676,7 +799,7 @@ normalise the value after it gets stored in the object.</p>
 <p>The method accepts the same parameters as the <code><a href="class-CStatusDocument.html#_">CStatusDocument::offsetSet()</a></code> method,
 except that they are passed by reference.</p>
 
-<p>In this class we do nothing.</p>
+<p>In this class we update the <code><a href="class-CStatusDocument.html#_">CStatusDocument::_IsInited()</a></code> status.</p>
 
 
 
@@ -690,6 +813,11 @@ except that they are passed by reference.</p>
 
 
 
+				<h4>Uses</h4>
+				<div class="list">
+						<code><code><a href="class-CStatusDocument.html#_">CStatusDocument::_IsInited()</a></code></code> <br />
+						<code><code><a href="class-CStatusDocument.html#_">CStatusDocument::_Ready()</a></code></code> <br />
+				</div>
 				<h4>Used by</h4>
 				<div class="list">
 						<code><code><a href="class-CStatusDocument.html#_">CStatusDocument::offsetSet()</a></code></code> <br />
@@ -710,7 +838,7 @@ except that they are passed by reference.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#__Preunset">#</a>
-		<code><a href="source-class-CStatusDocument.html#435" title="Go to source code">_Preunset</a>( <span>reference <var>&amp; $theOffset</var></span> )</code>
+		<code><a href="source-class-CStatusDocument.html#538" title="Go to source code">_Preunset</a>( <span>reference <var>&amp; $theOffset</var></span> )</code>
 
 		<div class="description short">
 			
@@ -765,7 +893,7 @@ except that it passed by reference.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#__Postunset">#</a>
-		<code><a href="source-class-CStatusDocument.html#467" title="Go to source code">_Postunset</a>( <span>reference <var>&amp; $theOffset</var></span> )</code>
+		<code><a href="source-class-CStatusDocument.html#570" title="Go to source code">_Postunset</a>( <span>reference <var>&amp; $theOffset</var></span> )</code>
 
 		<div class="description short">
 			
@@ -784,7 +912,7 @@ actions after a removal.</p>
 <p>The method accepts the same parameter as the <code><a href="class-CStatusDocument.html#_">CStatusDocument::offsetUnset()</a></code> method,
 except that it passed by reference.</p>
 
-<p>In this class we do nothing.</p>
+<p>In this class we update the <code><a href="class-CStatusDocument.html#_">CStatusDocument::_IsInited()</a></code> status.</p>
 
 
 
@@ -796,6 +924,11 @@ except that it passed by reference.</p>
 
 
 
+				<h4>Uses</h4>
+				<div class="list">
+						<code><code><a href="class-CStatusDocument.html#_">CStatusDocument::_IsInited()</a></code></code> <br />
+						<code><code><a href="class-CStatusDocument.html#_">CStatusDocument::_Ready()</a></code></code> <br />
+				</div>
 				<h4>Used by</h4>
 				<div class="list">
 						<code><code><a href="class-CStatusDocument.html#_">CStatusDocument::offsetUnset()</a></code></code> <br />
@@ -821,7 +954,6 @@ except that it passed by reference.</p>
 	<caption>Methods inherited from <a href="class-ArrayObject.html#methods">ArrayObject</a></caption>
 	<tr>
 		<td><code>
-			<a href="class-ArrayObject.html#_">__construct()</a>, 
 			<a href="class-ArrayObject.html#_">append()</a>, 
 			<a href="class-ArrayObject.html#_">asort()</a>, 
 			<a href="class-ArrayObject.html#_">count()</a>, 
@@ -868,7 +1000,7 @@ except that it passed by reference.</p>
 		</code></td>
 
 		<td class="name">
-				<a href="source-class-CStatusDocument.html#69" title="Go to source code"><var>$mStatus</var></a>
+				<a href="source-class-CStatusDocument.html#83" title="Go to source code"><var>$mStatus</var></a>
 		</td>
 		<td class="value"><code>kFLAG_DEFAULT</code></td>
 		<td class="description"><div>

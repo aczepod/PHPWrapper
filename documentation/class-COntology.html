@@ -4,7 +4,7 @@
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 	<meta name="generator" content="ApiGen 2.7.0" />
 
-	<title>Class CDatabase | MyWrapper Reference Documentation</title>
+	<title>Class COntology | MyWrapper Reference Documentation</title>
 
 	<script type="text/javascript" src="resources/combined.js?496895167"></script>
 	<script type="text/javascript" src="elementlist.js?1725982047"></script>
@@ -23,11 +23,11 @@
 			<ul>
 				<li class="active main"><a href="package-MyWrapper.html">MyWrapper<span></span></a>
 						<ul>
-				<li class="active main"><a href="package-MyWrapper.Framework.html">Framework</a>
+				<li class="main"><a href="package-MyWrapper.Framework.html">Framework</a>
 						</li>
 				<li class="main"><a href="package-MyWrapper.Functions.html">Functions</a>
 						</li>
-				<li class="main"><a href="package-MyWrapper.Ontology.html">Ontology</a>
+				<li class="active main"><a href="package-MyWrapper.Ontology.html">Ontology</a>
 						</li>
 				<li class="main"><a href="package-MyWrapper.Persistence.html">Persistence</a>
 						</li>
@@ -43,16 +43,11 @@
 		<div id="elements">
 			<h3>Classes</h3>
 			<ul>
-				<li><a href="class-CConnection.html">CConnection</a></li>
-				<li><a href="class-CContainer.html">CContainer</a></li>
-				<li class="active"><a href="class-CDatabase.html">CDatabase</a></li>
-				<li><a href="class-CDocument.html">CDocument</a></li>
-				<li><a href="class-CEdge.html">CEdge</a></li>
-				<li><a href="class-CNode.html">CNode</a></li>
-				<li><a href="class-CServer.html">CServer</a></li>
-				<li><a href="class-CStatusDocument.html">CStatusDocument</a></li>
-				<li><a href="class-CTag.html">CTag</a></li>
-				<li><a href="class-CTerm.html">CTerm</a></li>
+				<li class="active"><a href="class-COntology.html">COntology</a></li>
+				<li><a href="class-COntologyEdge.html">COntologyEdge</a></li>
+				<li><a href="class-COntologyNode.html">COntologyNode</a></li>
+				<li><a href="class-COntologyTag.html">COntologyTag</a></li>
+				<li><a href="class-COntologyTerm.html">COntologyTerm</a></li>
 			</ul>
 
 
@@ -80,7 +75,7 @@
 				<a href="index.html" title="Overview"><span>Overview</span></a>
 			</li>
 			<li>
-				<a href="package-MyWrapper.Framework.html" title="Summary of MyWrapper\Framework"><span>Package</span></a>
+				<a href="package-MyWrapper.Ontology.html" title="Summary of MyWrapper\Ontology"><span>Package</span></a>
 			</li>
 			<li class="active">
 <span>Class</span>			</li>
@@ -95,32 +90,15 @@
 	</div>
 
 <div id="content" class="class">
-	<h1>Class CDatabase</h1>
+	<h1>Class COntology</h1>
 
 
 	<div class="description">
 	
-<h3>Database object ancestor</h3>
+<h3>Ontology object</h3>
 
-<p>This <i>abstract</i> class is the ancestor of all database classes in this
-library, it implements the interface and workflow that all concrete derived
-classes should implement.</p>
-
-<p>A database object holds a data member that represents a native connection to
-a database server, database objects have the ability to generate other
-connection derived objects that have specific functionality, such as
-containers.</p>
-
-<p>The object is instantiated by providing the native database connection which
-is stored in a data member of the object, the array part of the object can be
-used to store specific attributes of the native database connection.</p>
-
-<p>The class also features an offset, kOFFSET_PARENT, that can be used
-to store the parent object, in this case the server object. This member gets set
-when the object is instantiated by a server object.</p>
-
-<p>The abstract class must be overloaded by concrete classes that implement a
-native database object.</p>
+<p>This class represents an object whose duty is to provide a high level
+interface for managing an ontology.</p>
 
 	</div>
 
@@ -164,17 +142,13 @@ native database object.</p>
 		</dd>
 		<dd style="padding-left:120px">
 			<img src="resources/inherit.png" alt="Extended by" />
-<b><span>CDatabase</span></b>			
+<b><span>COntology</span></b>			
 			
 			
 		</dd>
 	</dl>
 
 
-	<div>
-		<h4>Direct known subclasses</h4>
-			<a href="class-CMongoDatabase.html">CMongoDatabase</a>
-	</div>
 
 
 
@@ -182,51 +156,53 @@ native database object.</p>
 
 
 	<div class="info">
-		<b>Abstract</b><br />
 		
 		
-		<b>Package:</b> <a href="package-MyWrapper.html">MyWrapper</a>\<a href="package-MyWrapper.Framework.html">Framework</a><br />
+		
+		<b>Package:</b> <a href="package-MyWrapper.html">MyWrapper</a>\<a href="package-MyWrapper.Ontology.html">Ontology</a><br />
 
 				<b>Author:</b>
 				Milko A. Škofič &lt;<a
 href="mailto:m.skofic&#64;cgiar.org">m.skofic&#64;<!---->cgiar.org</a>&gt;<br />
-		<b>Located at</b> <a href="source-class-CDatabase.html#29" title="Go to source code">CDatabase.php</a><br />
+		<b>Located at</b> <a href="source-class-COntology.html#68" title="Go to source code">COntology.php</a><br />
 	</div>
 
 
 	<table class="summary" id="methods">
 	<caption>Methods summary</caption>
-	<tr data-order="Drop" id="_Drop">
+	<tr data-order="__toString" id="___toString">
 
 		<td class="attributes"><code>
-			abstract public 
-			
+			 public 
+			string
 			
 			</code>
 		</td>
 
 		<td class="name"><div>
-		<a class="anchor" href="#_Drop">#</a>
-		<code><a href="source-class-CDatabase.html#69" title="Go to source code">Drop</a>( )</code>
+		<a class="anchor" href="#___toString">#</a>
+		<code><a href="source-class-COntology.html#102" title="Go to source code">__toString</a>( )</code>
 
 		<div class="description short">
 			
-<h4>Delete a database</h4>
+<h4>Return connection name</h4>
 
 		</div>
 
 		<div class="description detailed hidden">
 			
-<h4>Delete a database</h4>
+<h4>Return connection name</h4>
 
-<p>This method can be used to delete or erase a database, it is up to derived
-concrete instances to implement it.</p>
-
-<p>The method takes no parameters.</p>
+<p>We implement this method by letting the connection object take care of
+returning its name.</p>
 
 
 
 
+				<h4>Returns</h4>
+				<div class="list">
+					<code>string</code><br>The connection name.<br />
+				</div>
 
 
 
@@ -234,51 +210,173 @@ concrete instances to implement it.</p>
 		</div>
 		</div></td>
 	</tr>
-	<tr data-order="Container" id="_Container">
+	<tr data-order="Connection" id="_Connection">
 
 		<td class="attributes"><code>
-			abstract public 
+			 public 
 			mixed
 			
 			</code>
 		</td>
 
 		<td class="name"><div>
-		<a class="anchor" href="#_Container">#</a>
-		<code><a href="source-class-CDatabase.html#86" title="Go to source code">Container</a>( <span>mixed <var>$theContainer</var> = <span class="php-keyword1">NULL</span> </span> )</code>
+		<a class="anchor" href="#_Connection">#</a>
+		<code><a href="source-class-COntology.html#127" title="Go to source code">Connection</a>( <span>mixed <var>$theValue</var> = <span class="php-keyword1">NULL</span></span>, <span>boolean <var>$getOld</var> = <span class="php-keyword1">FALSE</span> </span> )</code>
 
 		<div class="description short">
 			
-<h4>Generate a container object</h4>
+<h4>Manage native connection</h4>
 
 		</div>
 
 		<div class="description detailed hidden">
 			
-<h4>Generate a container object</h4>
+<h4>Manage native connection</h4>
 
-<p>This method can be used to return a container object belonging to the current
-database.</p>
-
-<p>The parameter will be used by concrete instances to select which container to
-return, the goal of this class is only to declare the public interface, which
-must be implemented by specialised derived classes.</p>
+<p>We overload this method to ensure the provided connection is a <code><a href="class-CDatabase.html">CDatabase</a></code> instance.</p>
 
 
 
 				<h4>Parameters</h4>
 				<div class="list"><dl>
-					<dt><var>$theContainer</var></dt>
-					<dd><code>mixed</code><br> Container selector.</dd>
+					<dt><var>$theValue</var></dt>
+					<dd><code>mixed</code><br> Native connection or operation.</dd>
+					<dt><var>$getOld</var></dt>
+					<dd><code>boolean</code><br> <tt>TRUE</tt> get old value.</dd>
 				</dl></div>
 
 				<h4>Returns</h4>
 				<div class="list">
-					<code>mixed</code><br>The container object.<br />
+					<code>mixed</code><br><i>New</i> or <i>old</i> native connection.<br />
 				</div>
 
 
+				<h4>Uses</h4>
+				<div class="list">
+						_isInited()<br />
+						<code><code><a href="function-ManageProperty.html">ManageProperty()</a></code></code> <br />
+				</div>
 
+				<h4>Overrides</h4>
+				<div class="list"><code><a href="class-CConnection.html#_">CConnection::Connection</a></code></div>
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="Root" id="_Root">
+
+		<td class="attributes"><code>
+			 public 
+			mixed
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_Root">#</a>
+		<code><a href="source-class-COntology.html#172" title="Go to source code">Root</a>( <span>mixed <var>$theValue</var> = <span class="php-keyword1">NULL</span></span>, <span>boolean <var>$getOld</var> = <span class="php-keyword1">FALSE</span> </span> )</code>
+
+		<div class="description short">
+			
+<h4>Manage ontology root node</h4>
+
+		</div>
+
+		<div class="description detailed hidden">
+			
+<h4>Manage ontology root node</h4>
+
+<p>This method can be used to manage the ontology root node, it accepts a
+parameter which represents either the root node or the requested operation,
+depending on its value:</p>
+
+<ul>
+	<li><tt>NULL</tt>: Return the current value.</li>
+
+	<li><tt>FALSE</tt>: Delete the current value.</li>
+
+	<li><i>other</i>: Set the value with the provided parameter.</li>
+</ul>
+
+<p>The second parameter is a boolean which if <tt>TRUE</tt> will return the
+<i>old</i> value when replacing nodes; if <tt>FALSE</tt>, it will return the
+currently set value.</p>
+
+<p>When providing a new node, this method will insert it if not <code><a href="class-CStatusDocument.html#_">CStatusDocument::_IsCommitted()</a></code>. The method will also add the kNODE_KIND_ROOT kind to
+the node and refresh it.</p>
+
+
+
+				<h4>Parameters</h4>
+				<div class="list"><dl>
+					<dt><var>$theValue</var></dt>
+					<dd><code>mixed</code><br> Root node or operation.</dd>
+					<dt><var>$getOld</var></dt>
+					<dd><code>boolean</code><br> <tt>TRUE</tt> get old value.</dd>
+				</dl></div>
+
+				<h4>Returns</h4>
+				<div class="list">
+					<code>mixed</code><br><i>New</i> or <i>old</i> native connection.<br />
+				</div>
+
+
+				<h4>Uses</h4>
+				<div class="list">
+						_isInited()<br />
+						<code><code><a href="function-ManageProperty.html">ManageProperty()</a></code></code> <br />
+				</div>
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="_Ready" id="__Ready">
+
+		<td class="attributes"><code>
+			 protected 
+			boolean
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#__Ready">#</a>
+		<code><a href="source-class-COntology.html#272" title="Go to source code">_Ready</a>( )</code>
+
+		<div class="description short">
+			
+<h4>Determine if the object is ready</h4>
+
+		</div>
+
+		<div class="description detailed hidden">
+			
+<h4>Determine if the object is ready</h4>
+
+<p>In this class we tie the <code><a href="class-CStatusDocument.html#_">CStatusDocument::_IsInited()</a></code> status to the presence or
+absence of the root or ontology node.</p>
+
+
+
+
+				<h4>Returns</h4>
+				<div class="list">
+					<code>boolean</code><br><tt>TRUE</tt> means {@link _IsInited( <tt>TRUE</tt> ).<br />
+				</div>
+
+
+				<h4>Uses</h4>
+				<div class="list">
+						<code><code><a href="class-COntology.html#_">COntology::_Ready()</a></code></code> <br />
+				</div>
+				<h4>Used by</h4>
+				<div class="list">
+						<code><code><a href="class-COntology.html#_">COntology::_Ready()</a></code></code> <br />
+				</div>
+
+				<h4>Overrides</h4>
+				<div class="list"><code><a href="class-CConnection.html#_">CConnection::_Ready</a></code></div>
 
 		</div>
 		</div></td>
@@ -289,11 +387,8 @@ must be implemented by specialised derived classes.</p>
 	<caption>Methods inherited from <a href="class-CConnection.html#methods">CConnection</a></caption>
 	<tr>
 		<td><code>
-			<a href="class-CConnection.html#_">Connection()</a>, 
 			<a href="class-CConnection.html#_">_Connection()</a>, 
-			<a href="class-CConnection.html#_">_Ready()</a>, 
-			<a href="class-CConnection.html#_">__construct()</a>, 
-			<a href="class-CConnection.html#_">__toString()</a>
+			<a href="class-CConnection.html#_">__construct()</a>
 		</code></td>
 	</tr>
 	</table>
@@ -364,6 +459,39 @@ must be implemented by specialised derived classes.</p>
 	</table>
 
 
+	<table class="summary" id="properties">
+	<caption>Properties summary</caption>
+	<tr data-order="mOntology" id="$mOntology">
+
+		<td class="attributes"><code>
+			protected 
+			<code><a href="class-COntologyNode.html">COntologyNode</a></code>
+		</code></td>
+
+		<td class="name">
+				<a href="source-class-COntology.html#79" title="Go to source code"><var>$mOntology</var></a>
+		</td>
+		<td class="value"><code><span class="php-keyword1">NULL</span></code></td>
+		<td class="description"><div>
+			<a href="#$mOntology" class="anchor">#</a>
+
+			<div class="description short">
+				
+<p>Ontology node.</p>
+
+			</div>
+
+			<div class="description detailed hidden">
+				
+<p>Ontology node.</p>
+
+<p>This data member holds the ontology root node, or ontology node.</p>
+
+
+			</div>
+		</div></td>
+	</tr>
+	</table>
 
 	<table class="summary inherited">
 	<caption>Properties inherited from <a href="class-CConnection.html#properties">CConnection</a></caption>

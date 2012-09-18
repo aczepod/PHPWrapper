@@ -20,13 +20,6 @@
  *======================================================================================*/
 
 /**
- * Errors.
- *
- * This include file contains all error code definitions.
- */
-require_once( kPATH_MYWRAPPER_LIBRARY_DEFINE."/Errors.inc.php" );
-
-/**
  * <h3>Document object</h3>
  *
  * This class is the ancestor common to most classes in this library, it extends

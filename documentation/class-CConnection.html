@@ -7,7 +7,7 @@
 	<title>Class CConnection | MyWrapper Reference Documentation</title>
 
 	<script type="text/javascript" src="resources/combined.js?496895167"></script>
-	<script type="text/javascript" src="elementlist.js?3373123863"></script>
+	<script type="text/javascript" src="elementlist.js?1725982047"></script>
 	<link rel="stylesheet" type="text/css" media="all" href="resources/style.css?1567499433" />
 
 </head>
@@ -181,6 +181,7 @@ instance, the database, given the container.</p>
 		<h4>Direct known subclasses</h4>
 			<a href="class-CContainer.html">CContainer</a>, 
 			<a href="class-CDatabase.html">CDatabase</a>, 
+			<a href="class-COntology.html">COntology</a>, 
 			<a href="class-CServer.html">CServer</a>
 	</div>
 
@@ -259,7 +260,7 @@ accessor method.</p>
 				</div>
 
 				<h4>Overrides</h4>
-				<div class="list"><code><a href="class-ArrayObject.html#_">ArrayObject::__construct</a></code></div>
+				<div class="list"><code><a href="class-CStatusDocument.html#_">CStatusDocument::__construct</a></code></div>
 
 		</div>
 		</div></td>
@@ -392,7 +393,7 @@ has been set.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#__Connection">#</a>
-		<code><a href="source-class-CConnection.html#220" title="Go to source code">_Connection</a>( )</code>
+		<code><a href="source-class-CConnection.html#219" title="Go to source code">_Connection</a>( )</code>
 
 		<div class="description short">
 			
@@ -418,6 +419,56 @@ passed by reference.</p>
 
 
 
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="_Ready" id="__Ready">
+
+		<td class="attributes"><code>
+			 protected 
+			boolean
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#__Ready">#</a>
+		<code><a href="source-class-CConnection.html#245" title="Go to source code">_Ready</a>( )</code>
+
+		<div class="description short">
+			
+<h4>Determine if the object is ready</h4>
+
+		</div>
+
+		<div class="description detailed hidden">
+			
+<h4>Determine if the object is ready</h4>
+
+<p>In this class we tie the <code><a href="class-CStatusDocument.html#_">CStatusDocument::_IsInited()</a></code> status to the presence or
+absence of the connection.</p>
+
+
+
+
+				<h4>Returns</h4>
+				<div class="list">
+					<code>boolean</code><br><tt>TRUE</tt> means {@link _IsInited( <tt>TRUE</tt> ).<br />
+				</div>
+
+
+				<h4>Uses</h4>
+				<div class="list">
+						<code><code><a href="class-CConnection.html#_">CConnection::_Ready()</a></code></code> <br />
+				</div>
+				<h4>Used by</h4>
+				<div class="list">
+						<code><code><a href="class-CConnection.html#_">CConnection::_Ready()</a></code></code> <br />
+				</div>
+
+				<h4>Overrides</h4>
+				<div class="list"><code><a href="class-CStatusDocument.html#_">CStatusDocument::_Ready</a></code></div>
 
 		</div>
 		</div></td>

@@ -27,9 +27,9 @@
 require_once( "COntologyTag.inc.php" );
 
 /**
- * Nodes.
+ * Edges.
  *
- * This includes the node class definitions.
+ * This includes the edge class definitions.
  */
 require_once( kPATH_MYWRAPPER_LIBRARY_CLASS."/COntologyEdge.php" );
 
@@ -684,6 +684,11 @@ class COntologyTag extends CTag
 				if( ! ($i % 2) )
 				{
 					//
+					// Set operation.
+					//
+					$operation = ! ($theModifiers & kFLAG_PERSIST_DELETE);
+					
+					//
 					// Load node.
 					//
 					$node = COntologyNode::NewObject(
@@ -691,66 +696,14 @@ class COntologyTag extends CTag
 								$theConnection, TRUE ), $path[ $i ] );
 					
 					//
-					// Remove current tag reference from vertex term.
+					// Reference in node.
 					//
-					if( $theModifiers & kFLAG_PERSIST_DELETE )
-					{
-						//
-						// Handle node.
-						//
-						$fields = $mod;
-						COntologyNode::ResolveClassContainer( $theConnection, TRUE )
-							->ManageObject
-							(
-								$fields,				// Because it will be overwritten.
-								$path[ $i ],						// Node identifier.
-								kFLAG_PERSIST_MODIFY + kFLAG_MODIFY_PULL	// Remove.
-							);
-					
-						//
-						// Handle node term.
-						//
-						$fields = $mod;
-						COntologyTerm::ResolveClassContainer( $theConnection, TRUE )
-							->ManageObject
-							(
-								$fields,				// Because it will be overwritten.
-								$node->Term(),						// Node term identifier.
-								kFLAG_PERSIST_MODIFY + kFLAG_MODIFY_PULL	// Remove.
-							);
-					
-					} // Deleting.
+					$this->_ReferenceInNode( $theConnection, $path[ $i ], $operation );
 					
 					//
-					// Add current tag reference to vertex term.
+					// Reference in term.
 					//
-					else
-					{
-						//
-						// Handle node.
-						//
-						$fields = $mod;
-						COntologyNode::ResolveClassContainer( $theConnection, TRUE )
-							->ManageObject
-							(
-								$fields,				// Because it will be overwritten.
-								$path[ $i ],						// Node identifier.
-								kFLAG_PERSIST_MODIFY + kFLAG_MODIFY_ADDSET	// Add.
-							);
-					
-						//
-						// Handle node term.
-						//
-						$fields = $mod;
-						COntologyTerm::ResolveClassContainer( $theConnection, TRUE )
-							->ManageObject
-							(
-								$fields,				// Because it will be overwritten.
-								$node->Term(),						// Node term identifier.
-								kFLAG_PERSIST_MODIFY + kFLAG_MODIFY_ADDSET	// Add.
-							);
-					
-					} // Inserting.
+					$this->_ReferenceInTerm( $theConnection, $node->Term(), $operation );
 				
 				} // Vertex.
 			
@@ -759,6 +712,133 @@ class COntologyTag extends CTag
 		} // Insert or replace and not committed, or deleting.
 		
 	} // _PostcommitRelated.
+
+		
+
+/*=======================================================================================
+ *																						*
+ *								PROTECTED REFERENCE INTERFACE							*
+ *																						*
+ *======================================================================================*/
+
+
+	 
+	/*===================================================================================
+	 *	_ReferenceInNode																*
+	 *==================================================================================*/
+
+	/**
+	 * <h4>Add tag reference to node</h4>
+	 *
+	 * This method can be used to add or remove the current tag's reference,
+	 * {@link kOFFSET_REFS_TAG}, from the provided node. This method should be used whenever
+	 * committing a new tag or when deleting one: it will add the current tag's native
+	 * identifier to the set of tag references of the provided node when committing a new
+	 * tag; it will remove it when deleting the tag.
+	 *
+	 * The last parameter is a boolean: if <tt>TRUE</tt> the method will add to the set; if
+	 * <tt>FALSE</tt>, it will remove from the set.
+	 *
+	 * The method will return <tt>TRUE</tt> if the operation affected at least one object,
+	 * <tt>FALSE</tt> if not and raise an exception if the operation failed.
+	 *
+	 * @param CConnection			$theConnection		Server, database or container.
+	 * @param mixed					$theNode			Node object or identifier.
+	 * @param boolean				$doAdd				<tt>TRUE</tt> add reference.
+	 *
+	 * @static
+	 * @return boolean				<tt>TRUE</tt> operation affected at least one object.
+	 *
+	 * @see kOFFSET_NID kOFFSET_REFS_TAG
+	 * @see kFLAG_PERSIST_MODIFY kFLAG_MODIFY_ADDSET kFLAG_MODIFY_PULL
+	 */
+	protected function _ReferenceInNode( CConnection $theConnection, $theNode, $doAdd )
+	{
+		//
+		// Set modification criteria.
+		//
+		$criteria = array( kOFFSET_REFS_TAG => $this->offsetGet( kOFFSET_NID ) );
+		
+		//
+		// Handle add to set.
+		//
+		if( $doAdd )
+			return COntologyNode::ResolveClassContainer( $theConnection, TRUE )
+					->ManageObject
+						(
+							$criteria,
+							$theNode,
+							kFLAG_PERSIST_MODIFY + kFLAG_MODIFY_ADDSET
+						);														// ==>
+		
+		return COntologyNode::ResolveClassContainer( $theConnection, TRUE )
+				->ManageObject
+					(
+						$criteria,
+						$theNode,
+						kFLAG_PERSIST_MODIFY + kFLAG_MODIFY_PULL
+					);															// ==>
+	
+	} // _ReferenceInNode.
+
+	 
+	/*===================================================================================
+	 *	_ReferenceInTerm																*
+	 *==================================================================================*/
+
+	/**
+	 * <h4>Add tag reference to term</h4>
+	 *
+	 * This method can be used to add or remove the current tag's reference,
+	 * {@link kOFFSET_REFS_TAG}, from the provided term. This method should be used whenever
+	 * committing a new tag or when deleting one: it will add the current tag's native
+	 * identifier to the set of tag references of the provided term when committing a new
+	 * tag; it will remove it when deleting the tag.
+	 *
+	 * The last parameter is a boolean: if <tt>TRUE</tt> the method will add to the set; if
+	 * <tt>FALSE</tt>, it will remove from the set.
+	 *
+	 * The method will return <tt>TRUE</tt> if the operation affected at least one object,
+	 * <tt>FALSE</tt> if not and raise an exception if the operation failed.
+	 *
+	 * @param CConnection			$theConnection		Server, database or container.
+	 * @param mixed					$theTerm			Term object or identifier.
+	 * @param boolean				$doAdd				<tt>TRUE</tt> add reference.
+	 *
+	 * @static
+	 * @return boolean				<tt>TRUE</tt> operation affected at least one object.
+	 *
+	 * @see kOFFSET_NID kOFFSET_REFS_TAG
+	 * @see kFLAG_PERSIST_MODIFY kFLAG_MODIFY_ADDSET kFLAG_MODIFY_PULL
+	 */
+	protected function _ReferenceInTerm( CConnection $theConnection, $theTerm, $doAdd )
+	{
+		//
+		// Set modification criteria.
+		//
+		$criteria = array( kOFFSET_REFS_TAG => $this->offsetGet( kOFFSET_NID ) );
+		
+		//
+		// Handle add to set.
+		//
+		if( $doAdd )
+			return COntologyTerm::ResolveClassContainer( $theConnection, TRUE )
+					->ManageObject
+						(
+							$criteria,
+							$theTerm,
+							kFLAG_PERSIST_MODIFY + kFLAG_MODIFY_ADDSET
+						);														// ==>
+		
+		return COntologyTerm::ResolveClassContainer( $theConnection, TRUE )
+				->ManageObject
+					(
+						$criteria,
+						$theTerm,
+						kFLAG_PERSIST_MODIFY + kFLAG_MODIFY_PULL
+					);															// ==>
+	
+	} // _ReferenceInTerm.
 
 	 
 

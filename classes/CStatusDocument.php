@@ -27,6 +27,13 @@
 require_once( kPATH_MYWRAPPER_LIBRARY_DEFINE."/Flags.inc.php" );
 
 /**
+ * Errors.
+ *
+ * This include file contains all error code definitions.
+ */
+require_once( kPATH_MYWRAPPER_LIBRARY_DEFINE."/Errors.inc.php" );
+
+/**
  * Accessors.
  *
  * This include file contains all accessor function definitions.
@@ -56,7 +63,14 @@ require_once( kPATH_MYWRAPPER_LIBRARY_CLASS."/CDocument.php" );
  * modification. Similarly, the {@link offsetUnset()} method will call the
  * {@link _Preunset()} method before and the {@link _Postunset()} method after removing an
  * offset only if that offset exists. In this class we set the {@link _IsDirty()} status
- * in the event of a value change.
+ * in the event of a value change and use the {@link _Ready()} method to set the
+ * {@link _IsInited()} status.
+ *
+ * The class also implements an interface to handle the {@link _IsInited()} status: a
+ * protected method, {@link _Ready()}, can be used to return a boolean that indicates
+ * whether the object has all the required components, this is performed in the constructor
+ * and in the {@link _Postset()} and {@link _Postunset()} methods. By default the object is
+ * considered initialised.
  *
  * <i>Note: you should use only the first 31 bits because PHP tends to cast a bitfield into
  * a 32 bit integer which uses the last bit as the sign.</i>
@@ -76,6 +90,52 @@ class CStatusDocument extends CDocument
 	 protected $mStatus = kFLAG_DEFAULT;
 
 		
+
+/*=======================================================================================
+ *																						*
+ *											MAGIC										*
+ *																						*
+ *======================================================================================*/
+
+
+	 
+	/*===================================================================================
+	 *	__construct																		*
+	 *==================================================================================*/
+
+	/**
+	 * <h4>Instantiate class</h4>
+	 *
+	 * We overload the inherited constructor to set the {@link _IsInited()} status.
+	 *
+	 * This constructor mirrors the {@link ArrayObject} constructor.
+	 *
+	 * @param mixed					$theInput			Input parameter.
+	 * @param integer				$theFlags			Control flags.
+	 * @param string				$theIterator		Control flags.
+	 *
+	 * @access public
+	 *
+	 * @uses _Ready()
+	 * @uses _IsInited()
+	 */
+	public function __construct( $theInput = Array(),
+								 $theFlags = 0,
+								 $theIterator = 'ArrayIterator' )
+	{
+		//
+		// Call parent constructor.
+		//
+		parent::__construct( $theInput, $theFlags, $theIterator );
+		
+		//
+		// Initialise the initialise status.
+		//
+		$this->_IsInited( $this->_Ready() );
+		
+	} // Constructor.
+		
+
 
 /*=======================================================================================
  *																						*
@@ -365,6 +425,39 @@ class CStatusDocument extends CDocument
 
 /*=======================================================================================
  *																						*
+ *								PROTECTED STATUS INTERFACE								*
+ *																						*
+ *======================================================================================*/
+
+
+	 
+	/*===================================================================================
+	 *	_Ready																			*
+	 *==================================================================================*/
+
+	/**
+	 * <h4>Determine if the object is ready</h4>
+	 *
+	 * This method will return a boolean indicating whether all the required the elements
+	 * managed by the current class are present, this value should then be set by the caller
+	 * into the {@link _IsInited()} status.
+	 *
+	 * This method should be implemented in all inheritance levels in which the
+	 * @link _IsInited()} status is affected, it is the place where one may concentrate all
+	 * the necessary tests to determine whether the object is usable.
+	 *
+	 * In this class we assume the object is {@link _IsInited()}, it is up to derived
+	 * classes to prove the contrary.
+	 *
+	 * @access protected
+	 * @return boolean				<tt>TRUE</tt> means {@link _IsInited( <tt>TRUE</tt> ).
+	 */
+	protected function _Ready()											{	return TRUE;	}
+		
+
+
+/*=======================================================================================
+ *																						*
  *								PROTECTED OFFSET INTERFACE								*
  *																						*
  *======================================================================================*/
@@ -418,14 +511,24 @@ class CStatusDocument extends CDocument
 	 * The method accepts the same parameters as the {@link offsetSet()} method, except that
 	 * they are passed by reference.
 	 *
-	 * In this class we do nothing.
+	 * In this class we update the {@link _IsInited()} status.
 	 *
 	 * @param reference			   &$theOffset			Offset.
 	 * @param reference			   &$theValue			Value to set at offset.
 	 *
 	 * @access protected
+	 *
+	 * @uses _IsInited()
+	 * @uses _Ready()
 	 */
-	protected function _Postset( &$theOffset, &$theValue )								   {}
+	protected function _Postset( &$theOffset, &$theValue )
+	{
+		//
+		// Update inited status.
+		//
+		$this->_IsInited( $this->_Ready() );
+	
+	} // _Postset.
 
 	 
 	/*===================================================================================
@@ -474,13 +577,23 @@ class CStatusDocument extends CDocument
 	 * The method accepts the same parameter as the {@link offsetUnset()} method, except that
 	 * it passed by reference.
 	 *
-	 * In this class we do nothing.
+	 * In this class we update the {@link _IsInited()} status.
 	 *
 	 * @param reference			   &$theOffset			Offset.
 	 *
 	 * @access protected
+	 *
+	 * @uses _IsInited()
+	 * @uses _Ready()
 	 */
-	protected function _Postunset( &$theOffset )										   {}
+	protected function _Postunset( &$theOffset )
+	{
+		//
+		// Update inited status.
+		//
+		$this->_IsInited( $this->_Ready() );
+	
+	} // _Postunset.
 
 	 
 

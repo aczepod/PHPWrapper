@@ -736,24 +736,7 @@ class COntologyNode extends CNode
 			// Check if not yet committed.
 			//
 			if( ! $this->_IsCommitted() )
-			{
-				//
-				// Set fields array (will receive updated object).
-				//
-				$fields = array( kOFFSET_REFS_NODE => $this->offsetGet( kOFFSET_NID ) );
-				
-				//
-				// Add current node reference to term.
-				//
-				COntologyTerm::ResolveClassContainer( $theConnection, TRUE )
-					->ManageObject
-					(
-						$fields,						// Because it will be overwritten.
-						$this->offsetGet( kOFFSET_TERM ),		// Term identifier.
-						kFLAG_PERSIST_MODIFY + kFLAG_MODIFY_ADDSET		// Add to set.
-					);
-				
-			} // Not yet committed.
+				$this->_ReferenceInTerm( $theConnection, TRUE );
 		
 		} // Insert or replace.
 		
@@ -761,24 +744,7 @@ class COntologyNode extends CNode
 		// Check if deleting.
 		//
 		elseif( $theModifiers & kFLAG_PERSIST_DELETE )
-		{
-			//
-			// Set fields array (will receive updated object).
-			//
-			$fields = array( kOFFSET_REFS_NODE => $this->offsetGet( kOFFSET_NID ) );
-			
-			//
-			// Remove current node reference from term.
-			//
-			COntologyTerm::ResolveClassContainer( $theConnection, TRUE )
-				->ManageObject
-				(
-					$fields,						// Because it will be overwritten.
-					$this->offsetGet( kOFFSET_TERM ),		// Term identifier.
-					kFLAG_PERSIST_MODIFY + kFLAG_MODIFY_PULL		// Remove occurrences.
-				);
-		
-		} // Deleting.
+			$this->_ReferenceInTerm( $theConnection, FALSE );
 		
 	} // _PostcommitRelated.
 
@@ -812,6 +778,83 @@ class COntologyNode extends CNode
 		$this->mTerm = NULL;
 	
 	} // _PostcommitCleanup.
+
+		
+
+/*=======================================================================================
+ *																						*
+ *								PROTECTED REFERENCE INTERFACE							*
+ *																						*
+ *======================================================================================*/
+
+
+	 
+	/*===================================================================================
+	 *	_ReferenceInTerm																*
+	 *==================================================================================*/
+
+	/**
+	 * <h4>Add node reference to term</h4>
+	 *
+	 * This method can be used to add or remove the current node's reference from the
+	 * referenced term, {@link kOFFSET_REFS_NODE}. This method should be used whenever
+	 * committing a new node or deleting one: it will add the current node's native
+	 * identifier to the set of node references of the node's term when committing a new
+	 * node; it will remove it when deleting the node.
+	 *
+	 * The last parameter is a boolean: if <tt>TRUE</tt> the method will add to the set; if
+	 * <tt>FALSE</tt>, it will remove from the set.
+	 *
+	 * The method will return <tt>TRUE</tt> if the operation affected at least one object,
+	 * <tt>FALSE</tt> if not, <tt>NULL</tt> if the term is not set and raise an exception if
+	 * the operation failed.
+	 *
+	 * @param CConnection			$theConnection		Server, database or container.
+	 * @param boolean				$doAdd				<tt>TRUE</tt> add reference.
+	 *
+	 * @access protected
+	 * @return boolean				<tt>TRUE</tt> operation affected at least one object.
+	 *
+	 * @see kOFFSET_TERM kOFFSET_REFS_NODE
+	 * @see kFLAG_PERSIST_MODIFY kFLAG_MODIFY_ADDSET kFLAG_MODIFY_PULL
+	 */
+	protected function _ReferenceInTerm( CConnection $theConnection, $doAdd )
+	{
+		//
+		// Check term.
+		//
+		if( $this->offsetExists( kOFFSET_TERM ) )
+		{
+			//
+			// Set modification criteria.
+			//
+			$criteria = array( kOFFSET_REFS_NODE => $this->offsetGet( kOFFSET_NID ) );
+			
+			//
+			// Handle add to set.
+			//
+			if( $doAdd )
+				return COntologyTerm::ResolveClassContainer( $theConnection, TRUE )
+						->ManageObject
+							(
+								$criteria,
+								$this->offsetGet( kOFFSET_TERM ),
+								kFLAG_PERSIST_MODIFY + kFLAG_MODIFY_ADDSET
+							);														// ==>
+			
+			return COntologyTerm::ResolveClassContainer( $theConnection, TRUE )
+					->ManageObject
+						(
+							$criteria,
+							$this->offsetGet( kOFFSET_TERM ),
+							kFLAG_PERSIST_MODIFY + kFLAG_MODIFY_PULL
+						);															// ==>
+		
+		} // Object has term.
+		
+		return NULL;																// ==>
+	
+	} // _ReferenceInTerm.
 
 	 
 

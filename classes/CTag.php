@@ -361,6 +361,8 @@ class CTag extends CPersistentObject
 	 * @access protected
 	 * @return boolean				<tt>TRUE</tt> means {@link _IsInited( <tt>TRUE</tt> ).
 	 *
+	 * @uses _Ready()
+	 *
 	 * @see kOFFSET_PATH
 	 */
 	protected function _Ready()

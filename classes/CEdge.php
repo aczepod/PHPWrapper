@@ -379,6 +379,8 @@ class CEdge extends CPersistentObject
 	 * @access protected
 	 * @return boolean				<tt>TRUE</tt> means {@link _IsInited( <tt>TRUE</tt> ).
 	 *
+	 * @uses _Ready()
+	 *
 	 * @see kOFFSET_VERTEX_SUBJECT kOFFSET_PREDICATE kOFFSET_VERTEX_OBJECT
 	 */
 	protected function _Ready()

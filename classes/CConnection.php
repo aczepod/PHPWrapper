@@ -196,8 +196,7 @@ abstract class CConnection extends CStatusDocument
 		//
 		// Update inited status.
 		//
-		if( $theValue !== NULL )
-			$this->_isInited( $theValue !== FALSE );
+		$this->_isInited( $this->_Ready() );
 		
 		return $save;																// ==>
 
@@ -228,6 +227,43 @@ abstract class CConnection extends CStatusDocument
 	 * @return mixed
 	 */
 	protected function &_Connection()						{	return $this->mConnection;	}
+		
+
+
+/*=======================================================================================
+ *																						*
+ *								PROTECTED STATUS INTERFACE								*
+ *																						*
+ *======================================================================================*/
+
+
+	 
+	/*===================================================================================
+	 *	_Ready																			*
+	 *==================================================================================*/
+
+	/**
+	 * <h4>Determine if the object is ready</h4>
+	 *
+	 * In this class we tie the {@link _IsInited()} status to the presence or absence of the
+	 * connection.
+	 *
+	 * @access protected
+	 * @return boolean				<tt>TRUE</tt> means {@link _IsInited( <tt>TRUE</tt> ).
+	 *
+	 * @uses _Ready()
+	 */
+	protected function _Ready()
+	{
+		//
+		// Check parent.
+		//
+		if( parent::_Ready() )
+			return ( $this->mConnection !== NULL );									// ==>
+		
+		return FALSE;																// ==>
+	
+	} // _Ready.
 
 	 
 

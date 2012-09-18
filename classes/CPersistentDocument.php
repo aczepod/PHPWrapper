@@ -66,19 +66,12 @@ require_once( kPATH_MYWRAPPER_LIBRARY_CLASS."/CStatusDocument.php" );
  *		the class used in the static call.
  * </ul>
  *
- * These methods take advantage of a protected interface which can be used to process the
- * object before, {@link _Precommit()}, and after, {@link Postcommit()} it is committed,
- * these are the methods that derived classes should overload to implement custom workflows.
- * In this class we use it to set the {@link _IsCommitted()} status and reset the
+ * These methods take advantage of the inherited protected interface which can be used to
+ * process the object before, {@link _Precommit()}, and after, {@link Postcommit()} it is
+ * committed, these are the methods that derived classes should overload to implement custom
+ * workflows. In this class we use it to set the {@link _IsCommitted()} status and reset the
  * {@link _IsDirty()} status whenever the object is stored or loaded from a container, and
  * reset both when the object is deleted.
- *
- * The class also implements an interface to handle the {@link _IsInited()} status: a
- * protected method, {@link _Ready()}, can be used to return a boolean that indicates
- * whether the object has all the required components, this is performed in the
- * {@link _Postset()} and {@link _Postunset()} methods. For this reason we also overload the
- * constructor to initialise the {@link _IsInited()} status, by default the object is
- * initialised.
  *
  * The method implements an accessor method for the native unique identifier, {@link NID()}.
  *
@@ -88,53 +81,6 @@ require_once( kPATH_MYWRAPPER_LIBRARY_CLASS."/CStatusDocument.php" );
 class CPersistentDocument extends CStatusDocument
 {
 		
-
-/*=======================================================================================
- *																						*
- *											MAGIC										*
- *																						*
- *======================================================================================*/
-
-
-	 
-	/*===================================================================================
-	 *	__construct																		*
-	 *==================================================================================*/
-
-	/**
-	 * <h4>Instantiate class</h4>
-	 *
-	 * We overload the inherited constructor to set the {@link _IsInited()} status according
-	 * to the data set in the object.
-	 *
-	 * This constructor mirrors the {@link ArrayObject} constructor.
-	 *
-	 * @param mixed					$theInput			Input parameter.
-	 * @param integer				$theFlags			Control flags.
-	 * @param string				$theIterator		Control flags.
-	 *
-	 * @access public
-	 *
-	 * @uses _Ready()
-	 * @uses _IsInited()
-	 */
-	public function __construct( $theInput = Array(),
-								 $theFlags = 0,
-								 $theIterator = 'ArrayIterator' )
-	{
-		//
-		// Call parent constructor.
-		//
-		parent::__construct( $theInput, $theFlags, $theIterator );
-		
-		//
-		// Initialise the initialise status.
-		//
-		$this->_IsInited( $this->_Ready() );
-		
-	} // Constructor.
-		
-
 
 /*=======================================================================================
  *																						*
@@ -889,92 +835,6 @@ class CPersistentDocument extends CStatusDocument
 
 /*=======================================================================================
  *																						*
- *								PROTECTED OFFSET INTERFACE								*
- *																						*
- *======================================================================================*/
-
-
-	 
-	/*===================================================================================
-	 *	_Postset																		*
-	 *==================================================================================*/
-
-	/**
-	 * <h4>Handle offset after setting it</h4>
-	 *
-	 * This method will be called after the offset is set into the object only if the
-	 * provided value is not equivalent to the stored value, it gives the chance to
-	 * normalise the value after it gets stored in the object.
-	 *
-	 * The method accepts the same parameters as the {@link offsetSet()} method, except that
-	 * they are passed by reference.
-	 *
-	 * In this class we update the {@link _IsInited()} status.
-	 *
-	 * @param reference			   &$theOffset			Offset.
-	 * @param reference			   &$theValue			Value to set at offset.
-	 *
-	 * @access protected
-	 *
-	 * @uses _Ready()
-	 * @uses _IsInited()
-	 */
-	protected function _Postset( &$theOffset, &$theValue )
-	{
-		//
-		// Call parent method.
-		//
-		parent::_Postset( $theOffset, $theValue );
-		
-		//
-		// Update inited status.
-		//
-		$this->_IsInited( $this->_Ready() );
-	
-	} // _Postset.
-
-	 
-	/*===================================================================================
-	 *	_Postunset																		*
-	 *==================================================================================*/
-
-	/**
-	 * <h4>Handle offset after unsetting it</h4>
-	 *
-	 * This method will be called after the offset is unset from the object only if the
-	 * provided offset existed in the object, it gives the chance to perform custom actions
-	 * after a removal.
-	 *
-	 * The method accepts the same parameter as the {@link offsetUnset()} method, except that
-	 * it passed by reference.
-	 *
-	 * In this class we set the {@link _IsDirty()} status.
-	 *
-	 * @param reference			   &$theOffset			Offset.
-	 *
-	 * @access protected
-	 *
-	 * @uses _Ready()
-	 * @uses _IsInited()
-	 */
-	protected function _Postunset( &$theOffset )
-	{
-		//
-		// Call parent method.
-		//
-		parent::_Postunset( $theOffset );
-		
-		//
-		// Update inited status.
-		//
-		$this->_IsInited( $this->_Ready() );
-	
-	} // _Postunset.
-		
-
-
-/*=======================================================================================
- *																						*
  *							PROTECTED PERSISTENCE INTERFACE								*
  *																						*
  *======================================================================================*/
@@ -1467,38 +1327,6 @@ class CPersistentDocument extends CStatusDocument
 	 * @access protected
 	 */
 	protected function _PostcommitCleanup( &$theConnection, &$theModifiers )			   {}
-		
-
-
-/*=======================================================================================
- *																						*
- *								PROTECTED STATUS INTERFACE								*
- *																						*
- *======================================================================================*/
-
-
-	 
-	/*===================================================================================
-	 *	_Ready																			*
-	 *==================================================================================*/
-
-	/**
-	 * <h4>Determine if the object is ready</h4>
-	 *
-	 * This method will return a boolean indicating whether all the required the elements
-	 * managed by the current class are present, this value should then be set by the caller
-	 * into the {@link _IsInited()} status.
-	 *
-	 * This method should be implemented in all inheritance levels in which the
-	 * @link _IsInited()} status is affected.
-	 *
-	 * In this class we assume the object is {@link _IsInited()}, it is up to derived
-	 * classes to prove the contrary.
-	 *
-	 * @access protected
-	 * @return boolean				<tt>TRUE</tt> means {@link _IsInited( <tt>TRUE</tt> ).
-	 */
-	protected function _Ready()											{	return TRUE;	}
 
 	 
 

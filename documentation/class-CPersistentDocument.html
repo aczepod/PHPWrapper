@@ -7,7 +7,7 @@
 	<title>Class CPersistentDocument | MyWrapper Reference Documentation</title>
 
 	<script type="text/javascript" src="resources/combined.js?496895167"></script>
-	<script type="text/javascript" src="elementlist.js?3373123863"></script>
+	<script type="text/javascript" src="elementlist.js?1725982047"></script>
 	<link rel="stylesheet" type="text/css" media="all" href="resources/style.css?1567499433" />
 
 </head>
@@ -126,19 +126,12 @@ are uniquely identified by this offset.</p>
 	to the class used in the static call.</li>
 </ul>
 
-<p>These methods take advantage of a protected interface which can be used to
-process the object before, <code><a href="class-CPersistentDocument.html#_">CPersistentDocument::_Precommit()</a></code>, and after, Postcommit()
-it is committed, these are the methods that derived classes should overload to
-implement custom workflows. In this class we use it to set the <code><a href="class-CStatusDocument.html#_">CStatusDocument::_IsCommitted()</a></code> status and reset the <code><a href="class-CStatusDocument.html#_">CStatusDocument::_IsDirty()</a></code> status whenever the
-object is stored or loaded from a container, and reset both when the object is
-deleted.</p>
-
-<p>The class also implements an interface to handle the <code><a href="class-CStatusDocument.html#_">CStatusDocument::_IsInited()</a></code>
-status: a protected method, <code><a href="class-CPersistentDocument.html#_">CPersistentDocument::_Ready()</a></code>, can be used to return a boolean
-that indicates whether the object has all the required components, this is
-performed in the <code><a href="class-CPersistentDocument.html#_">CPersistentDocument::_Postset()</a></code> and <code><a href="class-CPersistentDocument.html#_">CPersistentDocument::_Postunset()</a></code> methods. For this
-reason we also overload the constructor to initialise the <code><a href="class-CStatusDocument.html#_">CStatusDocument::_IsInited()</a></code>
-status, by default the object is initialised.</p>
+<p>These methods take advantage of the inherited protected interface which can
+be used to process the object before, <code><a href="class-CPersistentDocument.html#_">CPersistentDocument::_Precommit()</a></code>, and after, Postcommit() it is committed, these are the methods that derived classes should
+overload to implement custom workflows. In this class we use it to set the
+<code><a href="class-CStatusDocument.html#_">CStatusDocument::_IsCommitted()</a></code> status and reset the <code><a href="class-CStatusDocument.html#_">CStatusDocument::_IsDirty()</a></code> status whenever
+the object is stored or loaded from a container, and reset both when the object
+is deleted.</p>
 
 <p>The method implements an accessor method for the native unique identifier,
 <code><a href="class-CPersistentDocument.html#_">CPersistentDocument::NID()</a></code>.</p>
@@ -221,60 +214,6 @@ href="mailto:m.skofic&#64;cgiar.org">m.skofic&#64;<!---->cgiar.org</a>&gt;<br />
 
 	<table class="summary" id="methods">
 	<caption>Methods summary</caption>
-	<tr data-order="__construct" id="___construct">
-
-		<td class="attributes"><code>
-			 public 
-			
-			
-			</code>
-		</td>
-
-		<td class="name"><div>
-		<a class="anchor" href="#___construct">#</a>
-		<code><a href="source-class-CPersistentDocument.html#104" title="Go to source code">__construct</a>( <span>mixed <var>$theInput</var> = <span class="php-keyword1">Array</span>()</span>, <span>integer <var>$theFlags</var> = <span class="php-num">0</span></span>, <span>string <var>$theIterator</var> = <span class="php-quote">'ArrayIterator'</span> </span> )</code>
-
-		<div class="description short">
-			
-<h4>Instantiate class</h4>
-
-		</div>
-
-		<div class="description detailed hidden">
-			
-<h4>Instantiate class</h4>
-
-<p>We overload the inherited constructor to set the <code><a href="class-CStatusDocument.html#_">CStatusDocument::_IsInited()</a></code> status
-according to the data set in the object.</p>
-
-<p>This constructor mirrors the <code><a href="class-ArrayObject.html">ArrayObject</a></code> constructor.</p>
-
-
-
-				<h4>Parameters</h4>
-				<div class="list"><dl>
-					<dt><var>$theInput</var></dt>
-					<dd><code>mixed</code><br> Input parameter.</dd>
-					<dt><var>$theFlags</var></dt>
-					<dd><code>integer</code><br> Control flags.</dd>
-					<dt><var>$theIterator</var></dt>
-					<dd><code>string</code><br> Control flags.</dd>
-				</dl></div>
-
-
-
-				<h4>Uses</h4>
-				<div class="list">
-						<code><code><a href="class-CPersistentDocument.html#_">CPersistentDocument::_Ready()</a></code></code> <br />
-						<code><code><a href="class-CStatusDocument.html#_">CStatusDocument::_IsInited()</a></code></code> <br />
-				</div>
-
-				<h4>Overrides</h4>
-				<div class="list"><code><a href="class-ArrayObject.html#_">ArrayObject::__construct</a></code></div>
-
-		</div>
-		</div></td>
-	</tr>
 	<tr data-order="NID" id="_NID">
 
 		<td class="attributes"><code>
@@ -286,7 +225,7 @@ according to the data set in the object.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#_NID">#</a>
-		<code><a href="source-class-CPersistentDocument.html#151" title="Go to source code">NID</a>( <span>mixed <var>$theValue</var> = <span class="php-keyword1">NULL</span></span>, <span>boolean <var>$getOld</var> = <span class="php-keyword1">FALSE</span> </span> )</code>
+		<code><a href="source-class-CPersistentDocument.html#97" title="Go to source code">NID</a>( <span>mixed <var>$theValue</var> = <span class="php-keyword1">NULL</span></span>, <span>boolean <var>$getOld</var> = <span class="php-keyword1">FALSE</span> </span> )</code>
 
 		<div class="description short">
 			
@@ -360,7 +299,7 @@ will be locked and an exception will be raised.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#_Insert">#</a>
-		<code><a href="source-class-CPersistentDocument.html#203" title="Go to source code">Insert</a>( <span><code><a href="class-CConnection.html">CConnection</a></code> <var>$theConnection</var></span> )</code>
+		<code><a href="source-class-CPersistentDocument.html#149" title="Go to source code">Insert</a>( <span><code><a href="class-CConnection.html">CConnection</a></code> <var>$theConnection</var></span> )</code>
 
 		<div class="description short">
 			
@@ -435,7 +374,7 @@ event the method will return <tt>NULL</tt>.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#_Update">#</a>
-		<code><a href="source-class-CPersistentDocument.html#284" title="Go to source code">Update</a>( <span><code><a href="class-CConnection.html">CConnection</a></code> <var>$theConnection</var></span> )</code>
+		<code><a href="source-class-CPersistentDocument.html#230" title="Go to source code">Update</a>( <span><code><a href="class-CConnection.html">CConnection</a></code> <var>$theConnection</var></span> )</code>
 
 		<div class="description short">
 			
@@ -506,7 +445,7 @@ status set and its <code><a href="class-CStatusDocument.html#_">CStatusDocument:
 
 		<td class="name"><div>
 		<a class="anchor" href="#_Replace">#</a>
-		<code><a href="source-class-CPersistentDocument.html#361" title="Go to source code">Replace</a>( <span><code><a href="class-CConnection.html">CConnection</a></code> <var>$theConnection</var></span> )</code>
+		<code><a href="source-class-CPersistentDocument.html#307" title="Go to source code">Replace</a>( <span><code><a href="class-CConnection.html">CConnection</a></code> <var>$theConnection</var></span> )</code>
 
 		<div class="description short">
 			
@@ -583,7 +522,7 @@ status set and its <code><a href="class-CStatusDocument.html#_">CStatusDocument:
 
 		<td class="name"><div>
 		<a class="anchor" href="#_Restore">#</a>
-		<code><a href="source-class-CPersistentDocument.html#445" title="Go to source code">Restore</a>( <span><code><a href="class-CConnection.html">CConnection</a></code> <var>$theConnection</var></span> )</code>
+		<code><a href="source-class-CPersistentDocument.html#391" title="Go to source code">Restore</a>( <span><code><a href="class-CConnection.html">CConnection</a></code> <var>$theConnection</var></span> )</code>
 
 		<div class="description short">
 			
@@ -661,7 +600,7 @@ is obviously not called here.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#_Delete">#</a>
-		<code><a href="source-class-CPersistentDocument.html#531" title="Go to source code">Delete</a>( <span><code><a href="class-CConnection.html">CConnection</a></code> <var>$theConnection</var></span> )</code>
+		<code><a href="source-class-CPersistentDocument.html#477" title="Go to source code">Delete</a>( <span><code><a href="class-CConnection.html">CConnection</a></code> <var>$theConnection</var></span> )</code>
 
 		<div class="description short">
 			
@@ -724,7 +663,7 @@ status and its <code><a href="class-CStatusDocument.html#_">CStatusDocument::_Is
 
 		<td class="name"><div>
 		<a class="anchor" href="#_NewObject">#</a>
-		<code><a href="source-class-CPersistentDocument.html#600" title="Go to source code">NewObject</a>( <span><code><a href="class-CConnection.html">CConnection</a></code> <var>$theConnection</var></span>, <span>mixed <var>$theIdentifier</var></span> )</code>
+		<code><a href="source-class-CPersistentDocument.html#546" title="Go to source code">NewObject</a>( <span><code><a href="class-CConnection.html">CConnection</a></code> <var>$theConnection</var></span>, <span>mixed <var>$theIdentifier</var></span> )</code>
 
 		<div class="description short">
 			
@@ -796,7 +735,7 @@ method was called.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#_DefaultDatabase">#</a>
-		<code><a href="source-class-CPersistentDocument.html#683" title="Go to source code">DefaultDatabase</a>( <span><code><a href="class-CServer.html">CServer</a></code> <var>$theServer</var></span> )</code>
+		<code><a href="source-class-CPersistentDocument.html#629" title="Go to source code">DefaultDatabase</a>( <span><code><a href="class-CServer.html">CServer</a></code> <var>$theServer</var></span> )</code>
 
 		<div class="description short">
 			
@@ -846,7 +785,7 @@ a server. It expects a <code><a href="class-CServer.html">CServer</a></code> der
 
 		<td class="name"><div>
 		<a class="anchor" href="#_DefaultContainer">#</a>
-		<code><a href="source-class-CPersistentDocument.html#707" title="Go to source code">DefaultContainer</a>( <span><code><a href="class-CDatabase.html">CDatabase</a></code> <var>$theDatabase</var></span> )</code>
+		<code><a href="source-class-CPersistentDocument.html#653" title="Go to source code">DefaultContainer</a>( <span><code><a href="class-CDatabase.html">CDatabase</a></code> <var>$theDatabase</var></span> )</code>
 
 		<div class="description short">
 			
@@ -897,7 +836,7 @@ return a <code><a href="class-CContainer.html">CContainer</a></code> derived obj
 
 		<td class="name"><div>
 		<a class="anchor" href="#_ResolveContainer">#</a>
-		<code><a href="source-class-CPersistentDocument.html#731" title="Go to source code">ResolveContainer</a>( <span><code><a href="class-CConnection.html">CConnection</a></code> <var>$theConnection</var></span>, <span>boolean <var>$doException</var></span> )</code>
+		<code><a href="source-class-CPersistentDocument.html#677" title="Go to source code">ResolveContainer</a>( <span><code><a href="class-CConnection.html">CConnection</a></code> <var>$theConnection</var></span>, <span>boolean <var>$doException</var></span> )</code>
 
 		<div class="description short">
 			
@@ -965,7 +904,7 @@ parameter if the first parameter is neither a <code><a href="class-CServer.html"
 
 		<td class="name"><div>
 		<a class="anchor" href="#_ResolveClassContainer">#</a>
-		<code><a href="source-class-CPersistentDocument.html#832" title="Go to source code">ResolveClassContainer</a>( <span><code><a href="class-CConnection.html">CConnection</a></code> <var>$theConnection</var></span>, <span>boolean <var>$doException</var></span> )</code>
+		<code><a href="source-class-CPersistentDocument.html#778" title="Go to source code">ResolveClassContainer</a>( <span><code><a href="class-CConnection.html">CConnection</a></code> <var>$theConnection</var></span>, <span>boolean <var>$doException</var></span> )</code>
 
 		<div class="description short">
 			
@@ -1016,116 +955,6 @@ parameter if the first parameter is neither a <code><a href="class-CServer.html"
 		</div>
 		</div></td>
 	</tr>
-	<tr data-order="_Postset" id="__Postset">
-
-		<td class="attributes"><code>
-			 protected 
-			
-			
-			</code>
-		</td>
-
-		<td class="name"><div>
-		<a class="anchor" href="#__Postset">#</a>
-		<code><a href="source-class-CPersistentDocument.html#902" title="Go to source code">_Postset</a>( <span>reference <var>&amp; $theOffset</var></span>, <span>reference <var>&amp; $theValue</var></span> )</code>
-
-		<div class="description short">
-			
-<h4>Handle offset after setting it</h4>
-
-		</div>
-
-		<div class="description detailed hidden">
-			
-<h4>Handle offset after setting it</h4>
-
-<p>This method will be called after the offset is set into the object only if
-the provided value is not equivalent to the stored value, it gives the chance to
-normalise the value after it gets stored in the object.</p>
-
-<p>The method accepts the same parameters as the <code><a href="class-CStatusDocument.html#_">CStatusDocument::offsetSet()</a></code> method,
-except that they are passed by reference.</p>
-
-<p>In this class we update the <code><a href="class-CStatusDocument.html#_">CStatusDocument::_IsInited()</a></code> status.</p>
-
-
-
-				<h4>Parameters</h4>
-				<div class="list"><dl>
-					<dt><var>$theOffset</var></dt>
-					<dd><code>reference</code><br>&amp;$theOffset Offset.</dd>
-					<dt><var>$theValue</var></dt>
-					<dd><code>reference</code><br>&amp;$theValue Value to set at offset.</dd>
-				</dl></div>
-
-
-
-				<h4>Uses</h4>
-				<div class="list">
-						<code><code><a href="class-CPersistentDocument.html#_">CPersistentDocument::_Ready()</a></code></code> <br />
-						<code><code><a href="class-CStatusDocument.html#_">CStatusDocument::_IsInited()</a></code></code> <br />
-				</div>
-
-				<h4>Overrides</h4>
-				<div class="list"><code><a href="class-CStatusDocument.html#_">CStatusDocument::_Postset</a></code></div>
-
-		</div>
-		</div></td>
-	</tr>
-	<tr data-order="_Postunset" id="__Postunset">
-
-		<td class="attributes"><code>
-			 protected 
-			
-			
-			</code>
-		</td>
-
-		<td class="name"><div>
-		<a class="anchor" href="#__Postunset">#</a>
-		<code><a href="source-class-CPersistentDocument.html#941" title="Go to source code">_Postunset</a>( <span>reference <var>&amp; $theOffset</var></span> )</code>
-
-		<div class="description short">
-			
-<h4>Handle offset after unsetting it</h4>
-
-		</div>
-
-		<div class="description detailed hidden">
-			
-<h4>Handle offset after unsetting it</h4>
-
-<p>This method will be called after the offset is unset from the object only if
-the provided offset existed in the object, it gives the chance to perform custom
-actions after a removal.</p>
-
-<p>The method accepts the same parameter as the <code><a href="class-CStatusDocument.html#_">CStatusDocument::offsetUnset()</a></code> method,
-except that it passed by reference.</p>
-
-<p>In this class we set the <code><a href="class-CStatusDocument.html#_">CStatusDocument::_IsDirty()</a></code> status.</p>
-
-
-
-				<h4>Parameters</h4>
-				<div class="list"><dl>
-					<dt><var>$theOffset</var></dt>
-					<dd><code>reference</code><br>&amp;$theOffset Offset.</dd>
-				</dl></div>
-
-
-
-				<h4>Uses</h4>
-				<div class="list">
-						<code><code><a href="class-CPersistentDocument.html#_">CPersistentDocument::_Ready()</a></code></code> <br />
-						<code><code><a href="class-CStatusDocument.html#_">CStatusDocument::_IsInited()</a></code></code> <br />
-				</div>
-
-				<h4>Overrides</h4>
-				<div class="list"><code><a href="class-CStatusDocument.html#_">CStatusDocument::_Postunset</a></code></div>
-
-		</div>
-		</div></td>
-	</tr>
 	<tr data-order="_Precommit" id="__Precommit">
 
 		<td class="attributes"><code>
@@ -1137,7 +966,7 @@ except that it passed by reference.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#__Precommit">#</a>
-		<code><a href="source-class-CPersistentDocument.html#988" title="Go to source code">_Precommit</a>( <span><code><a href="class-CConnection.html">CConnection</a></code> <var>$theConnection</var></span>, <span>bitfield <var>$theModifiers</var> = kFLAG_DEFAULT </span> )</code>
+		<code><a href="source-class-CPersistentDocument.html#848" title="Go to source code">_Precommit</a>( <span><code><a href="class-CConnection.html">CConnection</a></code> <var>$theConnection</var></span>, <span>bitfield <var>$theModifiers</var> = kFLAG_DEFAULT </span> )</code>
 
 		<div class="description short">
 			
@@ -1237,7 +1066,7 @@ be raised.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#__Postcommit">#</a>
-		<code><a href="source-class-CPersistentDocument.html#1064" title="Go to source code">_Postcommit</a>( <span><code><a href="class-CConnection.html">CConnection</a></code> <var>$theConnection</var></span>, <span>bitfield <var>$theModifiers</var> = kFLAG_DEFAULT </span> )</code>
+		<code><a href="source-class-CPersistentDocument.html#924" title="Go to source code">_Postcommit</a>( <span><code><a href="class-CConnection.html">CConnection</a></code> <var>$theConnection</var></span>, <span>bitfield <var>$theModifiers</var> = kFLAG_DEFAULT </span> )</code>
 
 		<div class="description short">
 			
@@ -1335,7 +1164,7 @@ this one.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#__PrecommitValidate">#</a>
-		<code><a href="source-class-CPersistentDocument.html#1144" title="Go to source code">_PrecommitValidate</a>( <span>reference <var>&amp; $theConnection</var></span>, <span>reference <var>&amp; $theModifiers</var></span> )</code>
+		<code><a href="source-class-CPersistentDocument.html#1004" title="Go to source code">_PrecommitValidate</a>( <span>reference <var>&amp; $theConnection</var></span>, <span>reference <var>&amp; $theModifiers</var></span> )</code>
 
 		<div class="description short">
 			
@@ -1425,7 +1254,7 @@ method should raise an exception.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#__PrecommitRelated">#</a>
-		<code><a href="source-class-CPersistentDocument.html#1213" title="Go to source code">_PrecommitRelated</a>( <span>reference <var>&amp; $theConnection</var></span>, <span>reference <var>&amp; $theModifiers</var></span> )</code>
+		<code><a href="source-class-CPersistentDocument.html#1073" title="Go to source code">_PrecommitRelated</a>( <span>reference <var>&amp; $theConnection</var></span>, <span>reference <var>&amp; $theModifiers</var></span> )</code>
 
 		<div class="description short">
 			
@@ -1504,7 +1333,7 @@ exception.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#__PrecommitIdentify">#</a>
-		<code><a href="source-class-CPersistentDocument.html#1258" title="Go to source code">_PrecommitIdentify</a>( <span>reference <var>&amp; $theConnection</var></span>, <span>reference <var>&amp; $theModifiers</var></span> )</code>
+		<code><a href="source-class-CPersistentDocument.html#1118" title="Go to source code">_PrecommitIdentify</a>( <span>reference <var>&amp; $theConnection</var></span>, <span>reference <var>&amp; $theModifiers</var></span> )</code>
 
 		<div class="description short">
 			
@@ -1585,7 +1414,7 @@ exception.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#__PostcommitRelated">#</a>
-		<code><a href="source-class-CPersistentDocument.html#1314" title="Go to source code">_PostcommitRelated</a>( <span>reference <var>&amp; $theConnection</var></span>, <span>reference <var>&amp; $theModifiers</var></span> )</code>
+		<code><a href="source-class-CPersistentDocument.html#1174" title="Go to source code">_PostcommitRelated</a>( <span>reference <var>&amp; $theConnection</var></span>, <span>reference <var>&amp; $theModifiers</var></span> )</code>
 
 		<div class="description short">
 			
@@ -1659,7 +1488,7 @@ status gets reset.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#__PostcommitStatus">#</a>
-		<code><a href="source-class-CPersistentDocument.html#1354" title="Go to source code">_PostcommitStatus</a>( <span>reference <var>&amp; $theConnection</var></span>, <span>reference <var>&amp; $theModifiers</var></span> )</code>
+		<code><a href="source-class-CPersistentDocument.html#1214" title="Go to source code">_PostcommitStatus</a>( <span>reference <var>&amp; $theConnection</var></span>, <span>reference <var>&amp; $theModifiers</var></span> )</code>
 
 		<div class="description short">
 			
@@ -1746,7 +1575,7 @@ resetting it after deleting.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#__PostcommitCleanup">#</a>
-		<code><a href="source-class-CPersistentDocument.html#1430" title="Go to source code">_PostcommitCleanup</a>( <span>reference <var>&amp; $theConnection</var></span>, <span>reference <var>&amp; $theModifiers</var></span> )</code>
+		<code><a href="source-class-CPersistentDocument.html#1290" title="Go to source code">_PostcommitCleanup</a>( <span>reference <var>&amp; $theConnection</var></span>, <span>reference <var>&amp; $theModifiers</var></span> )</code>
 
 		<div class="description short">
 			
@@ -1815,59 +1644,6 @@ resetting it after deleting.</p>
 		</div>
 		</div></td>
 	</tr>
-	<tr data-order="_Ready" id="__Ready">
-
-		<td class="attributes"><code>
-			 protected 
-			boolean
-			
-			</code>
-		</td>
-
-		<td class="name"><div>
-		<a class="anchor" href="#__Ready">#</a>
-		<code><a href="source-class-CPersistentDocument.html#1485" title="Go to source code">_Ready</a>( )</code>
-
-		<div class="description short">
-			
-<h4>Determine if the object is ready</h4>
-
-		</div>
-
-		<div class="description detailed hidden">
-			
-<h4>Determine if the object is ready</h4>
-
-<p>This method will return a boolean indicating whether all the required the
-elements managed by the current class are present, this value should then be set
-by the caller into the <code><a href="class-CStatusDocument.html#_">CStatusDocument::_IsInited()</a></code> status.</p>
-
-<p>This method should be implemented in all inheritance levels in which the</p>
-
-
-
-
-				<h4>Returns</h4>
-				<div class="list">
-					<code>boolean</code><br><tt>TRUE</tt> means {@link _IsInited( <tt>TRUE</tt> ).<br />
-				</div>
-
-
-				<h4>Used by</h4>
-				<div class="list">
-						<code><code><a href="class-CPersistentDocument.html#_">CPersistentDocument::__construct()</a></code></code> <br />
-						<code><code><a href="class-CPersistentDocument.html#_">CPersistentDocument::_Postset()</a></code></code> <br />
-						<code><code><a href="class-CPersistentDocument.html#_">CPersistentDocument::_Postunset()</a></code></code> <br />
-				</div>
-				<h4>Link</h4>
-				<div class="list">
-						_IsInited()} status is affected. In this class we assume the object is <code><a href="class-CStatusDocument.html#_">CStatusDocument::_IsInited()</a></code>, it is up to derived classes to prove the contrary.<br />
-				</div>
-
-
-		</div>
-		</div></td>
-	</tr>
 	</table>
 
 	<table class="summary inherited">
@@ -1878,8 +1654,12 @@ by the caller into the <code><a href="class-CStatusDocument.html#_">CStatusDocum
 			<a href="class-CStatusDocument.html#_">_IsDirty()</a>, 
 			<a href="class-CStatusDocument.html#_">_IsEncoded()</a>, 
 			<a href="class-CStatusDocument.html#_">_IsInited()</a>, 
+			<a href="class-CStatusDocument.html#_">_Postset()</a>, 
+			<a href="class-CStatusDocument.html#_">_Postunset()</a>, 
 			<a href="class-CStatusDocument.html#_">_Preset()</a>, 
 			<a href="class-CStatusDocument.html#_">_Preunset()</a>, 
+			<a href="class-CStatusDocument.html#_">_Ready()</a>, 
+			<a href="class-CStatusDocument.html#_">__construct()</a>, 
 			<a href="class-CStatusDocument.html#_">offsetSet()</a>, 
 			<a href="class-CStatusDocument.html#_">offsetUnset()</a>
 		</code></td>

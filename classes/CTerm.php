@@ -360,6 +360,8 @@ class CTerm extends CPersistentObject
 	 * @access protected
 	 * @return boolean				<tt>TRUE</tt> means {@link _IsInited( <tt>TRUE</tt> ).
 	 *
+	 * @uses _Ready()
+	 *
 	 * @see kOFFSET_LID
 	 */
 	protected function _Ready()
