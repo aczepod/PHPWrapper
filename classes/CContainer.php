@@ -217,10 +217,9 @@ abstract class CContainer extends CConnection
 	 *	 </ul>
 	 *		If none of the above flags are set, it means that the caller wants to retrieve
 	 *		the object identified by the {@link kOFFSET_NID} offset from the provided object
-	 *		object or from the provided identifier. If found, the provided object will
-	 *		receive the located object and the method will return <tt>TRUE</tt>; if not
-	 *		found, the method will set the provided object to <tt>NULL</tt> and return
-	 *		<tt>FALSE</tt>.
+	 *		or from the provided identifier. If found, the provided object will receive the
+	 *		located object and the method will return <tt>TRUE</tt>; if not found, the
+	 *		method will set the provided object to <tt>NULL</tt> and return <tt>FALSE</tt>.
 	 *		If the parameter is an array, it implies that the requested operation is to
 	 *		retrieve the object, the array will be interpreted as the list of object offsets
 	 *		to be returned, the {@link kOFFSET_NID} offset is returned by default.

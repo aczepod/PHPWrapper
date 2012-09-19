@@ -28,7 +28,7 @@
  * This tag identifies namespace references, the attribute contains the count of how many
  * times the term was referenced as a namespace.
  */
-define( "kOFFSET_REFS_NAMESPACE",				'_nsr' );
+define( "kOFFSET_REFS_NAMESPACE",				'_namespaceReferences' );
 
 /**
  * Node references.
@@ -36,7 +36,7 @@ define( "kOFFSET_REFS_NAMESPACE",				'_nsr' );
  * This tag identifies node references, the attribute contains the list of identifiers of
  * nodes that reference the current object.
  */
-define( "kOFFSET_REFS_NODE",					'_nor' );
+define( "kOFFSET_REFS_NODE",					'_nodeReferences' );
 
 /**
  * Tag references.
@@ -44,7 +44,7 @@ define( "kOFFSET_REFS_NODE",					'_nor' );
  * This tag identifies tag references, the attribute contains the list of identifiers of
  * tags that reference the current term.
  */
-define( "kOFFSET_REFS_TAG",						'_tgr' );
+define( "kOFFSET_REFS_TAG",						'_tagReferences' );
 
 /*=======================================================================================
  *	DEFAULT CONTAINER NAMES																*

@@ -28,7 +28,7 @@
  * This tag identifies a reference to a term object, its value will be the native unique
  * identifier, {@link kOFFSET_NID}, of the referenced term.
  */
-define( "kOFFSET_TERM",							'_trm' );
+define( "kOFFSET_TERM",							'_term' );
 
 /**
  * Object kind.
@@ -37,7 +37,7 @@ define( "kOFFSET_TERM",							'_trm' );
  * define the kind or specific type of an object, these enumerations will be in the form of
  * native unique identifiers, {@link kOFFSET_NID}, of the terms that define the enumeration.
  */
-define( "kOFFSET_KIND",							'_knd' );
+define( "kOFFSET_KIND",							'_kind' );
 
 /**
  * Object data type.
@@ -46,6 +46,6 @@ define( "kOFFSET_KIND",							'_knd' );
  * the specific data type of an object, this value will be in the form of the native unique
  * identifier, {@link kOFFSET_NID}, of the term that defines the enumeration.
  */
-define( "kOFFSET_TYPE",							'_typ' );
+define( "kOFFSET_TYPE",							'_type' );
 
 ?>

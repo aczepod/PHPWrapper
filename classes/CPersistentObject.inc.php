@@ -29,7 +29,7 @@
  * This value will constitute the object's native key ({@link kOFFSET_NID}) in full or
  * hashed format.
  */
-define( "kOFFSET_GID",							'_gid' );
+define( "kOFFSET_GID",							'_globalIdentifier' );
 
 /**
  * Class name.
@@ -37,6 +37,6 @@ define( "kOFFSET_GID",							'_gid' );
  * This tag identifies the class name of the object, it can be used to instantiate a class
  * rather than return an array when querying containers.
  */
-define( "kOFFSET_CLASS",						'_cls' );
+define( "kOFFSET_CLASS",						'_className' );
 
 ?>

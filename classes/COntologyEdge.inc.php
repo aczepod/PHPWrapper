@@ -28,7 +28,7 @@
  * This tag identifies the hashed version of the subject/predicate/object triplet stored in
  * the {@link kOFFSET_GID} offset.
  */
-define( "kOFFSET_UID",							'_uid' );
+define( "kOFFSET_UID",							'_uniqueIdentifier' );
 
 /*=======================================================================================
  *	DEFAULT CONTAINER NAMES																*

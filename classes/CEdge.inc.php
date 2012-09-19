@@ -28,7 +28,7 @@
  * This tag identifies the reference to the subject vertex of a subject/predicate/object
  * triplet in a graph.
  */
-define( "kOFFSET_VERTEX_SUBJECT",				'_vsb' );
+define( "kOFFSET_VERTEX_SUBJECT",				'_subjectVertex' );
 
 /**
  * Predicate reference.
@@ -36,7 +36,7 @@ define( "kOFFSET_VERTEX_SUBJECT",				'_vsb' );
  * This tag identifies the reference to the predicate object of a subject/predicate/object
  * triplet in a graph.
  */
-define( "kOFFSET_PREDICATE",					'_prd' );
+define( "kOFFSET_PREDICATE",					'_predicate' );
 
 /**
  * Object reference.
@@ -44,6 +44,6 @@ define( "kOFFSET_PREDICATE",					'_prd' );
  * This tag identifies the reference to the object vertex of a subject/predicate/object
  * triplet in a graph.
  */
-define( "kOFFSET_VERTEX_OBJECT",				'_vob' );
+define( "kOFFSET_VERTEX_OBJECT",				'_objectVertex' );
 
 ?>

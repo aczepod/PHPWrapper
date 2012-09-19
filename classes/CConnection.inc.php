@@ -29,7 +29,7 @@
  * implementing it. This offset should be associated with an internal attribute of the
  * object rather than with a public one.
  */
-define( "kOFFSET_NAME",							'_nam' );
+define( "kOFFSET_NAME",							'_name' );
 
 /**
  * Parent.
@@ -37,6 +37,6 @@ define( "kOFFSET_NAME",							'_nam' );
  * This tag identifies the parent reference, the eventual object that created the current
  * one.
  */
-define( "kOFFSET_PARENT",						'_par' );
+define( "kOFFSET_PARENT",						'_parent' );
 
 ?>

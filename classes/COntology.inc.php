@@ -27,34 +27,34 @@
  *
  * This tag identifies a root or ontology node kind.
  */
-define( "kNODE_KIND_ROOT",						'R' );
+define( "kNODE_KIND_ROOT",						'ROOT' );
 
 /**
  * Trait node.
  *
  * This tag identifies a trait or measurable node kind.
  */
-define( "kNODE_KIND_TRAIT",						'T' );
+define( "kNODE_KIND_TRAIT",						'TRAIT' );
 
 /**
  * Method node.
  *
  * This tag identifies a method node kind.
  */
-define( "kNODE_KIND_METH",						'M' );
+define( "kNODE_KIND_METH",						'METHOD' );
 
 /**
  * Scale node.
  *
  * This tag identifies a scale or measure node kind.
  */
-define( "kNODE_KIND_SCALE",						'S' );
+define( "kNODE_KIND_SCALE",						'SCALE' );
 
 /**
  * Enumeration node.
  *
  * This tag identifies an enumerated value node kind.
  */
-define( "kNODE_KIND_ENUM",						'E' );
+define( "kNODE_KIND_ENUM",						'ENUM' );
 
 ?>

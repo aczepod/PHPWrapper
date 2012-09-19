@@ -28,7 +28,7 @@
  * This tag identifies edge references, the attribute contains the list of identifiers of
  * edges that reference the current node.
  */
-define( "kOFFSET_REFS_EDGE",					'_edr' );
+define( "kOFFSET_REFS_EDGE",					'_edgeReferences' );
 
 /*=======================================================================================
  *	DEFAULT CONTAINER NAMES																*

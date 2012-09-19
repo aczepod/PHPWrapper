@@ -585,7 +585,7 @@ class COntologyTag extends CTag
 					if( $container->CheckObject( $uid, kOFFSET_UID ) )
 						throw new Exception
 							( "Duplicate object",
-							  kERROR_COMMIT );												// !@! ==>
+							  kERROR_COMMIT );									// !@! ==>
 					
 					//
 					// Set unique identifier.

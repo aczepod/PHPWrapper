@@ -27,6 +27,6 @@
  *
  * This tag identifies the list of items constituting the tag's path.
  */
-define( "kOFFSET_PATH",							'_pth' );
+define( "kOFFSET_PATH",							'_path' );
 
 ?>

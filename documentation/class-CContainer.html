@@ -7,7 +7,7 @@
 	<title>Class CContainer | MyWrapper Reference Documentation</title>
 
 	<script type="text/javascript" src="resources/combined.js?496895167"></script>
-	<script type="text/javascript" src="elementlist.js?3064769946"></script>
+	<script type="text/javascript" src="elementlist.js?4159639342"></script>
 	<link rel="stylesheet" type="text/css" media="all" href="resources/style.css?1567499433" />
 
 </head>
@@ -49,6 +49,8 @@
 				<li><a href="class-CDocument.html">CDocument</a></li>
 				<li><a href="class-CEdge.html">CEdge</a></li>
 				<li><a href="class-CNode.html">CNode</a></li>
+				<li><a href="class-CQuery.html">CQuery</a></li>
+				<li><a href="class-CQueryStatement.html">CQueryStatement</a></li>
 				<li><a href="class-CServer.html">CServer</a></li>
 				<li><a href="class-CStatusDocument.html">CStatusDocument</a></li>
 				<li><a href="class-CTag.html">CTag</a></li>
@@ -350,13 +352,12 @@ and/or its native unique identifier (kOFFSET_NID).</p>
 		</ul>
 		 If none of the above flags are set, it means that the caller wants to retrieve
 		the object identified by the kOFFSET_NID offset from the provided object
-		object or from the provided identifier. If found, the provided object will
-		receive the located object and the method will return <tt>TRUE</tt>; if not
-		found, the method will set the provided object to <tt>NULL</tt> and return
-		<tt>FALSE</tt>. If the parameter is an array, it implies that the requested
-		operation is to retrieve the object, the array will be interpreted as the list
-		of object offsets to be returned, the kOFFSET_NID offset is returned by
-		default.</li>
+		or from the provided identifier. If found, the provided object will receive the
+		located object and the method will return <tt>TRUE</tt>; if not found, the
+		method will set the provided object to <tt>NULL</tt> and return <tt>FALSE</tt>.
+		If the parameter is an array, it implies that the requested operation is to
+		retrieve the object, the array will be interpreted as the list of object offsets
+		to be returned, the kOFFSET_NID offset is returned by default.</li>
 </ul>
 
 <p>The method should raise an exception if the operation was not successful and
@@ -411,7 +412,7 @@ is declared abstract.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#_CheckObject">#</a>
-		<code><a href="source-class-CContainer.html#260" title="Go to source code">CheckObject</a>( <span>mixed <var>$theIdentifier</var></span>, <span>string <var>$theOffset</var> = <span class="php-keyword1">NULL</span> </span> )</code>
+		<code><a href="source-class-CContainer.html#259" title="Go to source code">CheckObject</a>( <span>mixed <var>$theIdentifier</var></span>, <span>string <var>$theOffset</var> = <span class="php-keyword1">NULL</span> </span> )</code>
 
 		<div class="description short">
 			
@@ -459,7 +460,7 @@ return <tt>TRUE</tt> if found and <tt>FALSE</tt> if not.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#_NextSequence">#</a>
-		<code><a href="source-class-CContainer.html#289" title="Go to source code">NextSequence</a>( <span>string <var>$theKey</var></span>, <span>string <var>$theContainer</var> = <span class="php-keyword1">NULL</span> </span> )</code>
+		<code><a href="source-class-CContainer.html#288" title="Go to source code">NextSequence</a>( <span>string <var>$theKey</var></span>, <span>string <var>$theContainer</var> = <span class="php-keyword1">NULL</span> </span> )</code>
 
 		<div class="description short">
 			
@@ -529,7 +530,7 @@ exception.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#_ConvertBinary">#</a>
-		<code><a href="source-class-CContainer.html#337" title="Go to source code">ConvertBinary</a>( <span>mixed <var>$theValue</var></span>, <span>boolean <var>$theSense</var> = <span class="php-keyword1">TRUE</span> </span> )</code>
+		<code><a href="source-class-CContainer.html#336" title="Go to source code">ConvertBinary</a>( <span>mixed <var>$theValue</var></span>, <span>boolean <var>$theSense</var> = <span class="php-keyword1">TRUE</span> </span> )</code>
 
 		<div class="description short">
 			

@@ -29,7 +29,7 @@
  * the key to a number sequence generator. This offset is used by container objects that are
  * able to function as sequence number generators.
  */
-define( "kOFFSET_SEQUENCE",						'_seq' );
+define( "kOFFSET_SEQUENCE",						'_sequence' );
 
 /*=======================================================================================
  *	DEFAULT CONTAINER NAMES																*

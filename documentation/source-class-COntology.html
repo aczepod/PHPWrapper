@@ -8,7 +8,7 @@
 	<title>File COntology.php | MyWrapper Reference Documentation</title>
 
 	<script type="text/javascript" src="resources/combined.js?496895167"></script>
-	<script type="text/javascript" src="elementlist.js?3064769946"></script>
+	<script type="text/javascript" src="elementlist.js?4159639342"></script>
 	<link rel="stylesheet" type="text/css" media="all" href="resources/style.css?1567499433" />
 
 </head>
@@ -197,206 +197,376 @@
 </span><a href="#104" id="104" class="l">104: </a><span class="php-comment">     *
 </span><a href="#105" id="105" class="l">105: </a><span class="php-comment">     * @access public
 </span><a href="#106" id="106" class="l">106: </a><span class="php-comment">     * @return string               The connection name.
-</span><a href="#107" id="107" class="l">107: </a><span class="php-comment">     */</span>
-<a href="#108" id="108" class="l">108: </a>    <span class="php-keyword1">public</span> <span class="php-keyword1">function</span> __toString()                {   <span class="php-keyword1">return</span> (string) <span class="php-var">$this</span>-&gt;Connection();    }
-<a href="#109" id="109" class="l">109: </a>
-<a href="#110" id="110" class="l">110: </a>        
+</span><a href="#107" id="107" class="l">107: </a><span class="php-comment">     *
+</span><a href="#108" id="108" class="l">108: </a><span class="php-comment">     * @uses Connection()
+</span><a href="#109" id="109" class="l">109: </a><span class="php-comment">     */</span>
+<a href="#110" id="110" class="l">110: </a>    <span class="php-keyword1">public</span> <span class="php-keyword1">function</span> __toString()                {   <span class="php-keyword1">return</span> (string) <span class="php-var">$this</span>-&gt;Connection();    }
 <a href="#111" id="111" class="l">111: </a>
-<a href="#112" id="112" class="l">112: </a><span class="php-comment">/*=======================================================================================
-</span><a href="#113" id="113" class="l">113: </a><span class="php-comment"> *                                                                                      *
-</span><a href="#114" id="114" class="l">114: </a><span class="php-comment"> *                              PUBLIC MEMBER INTERFACE                                 *
+<a href="#112" id="112" class="l">112: </a>        
+<a href="#113" id="113" class="l">113: </a>
+<a href="#114" id="114" class="l">114: </a><span class="php-comment">/*=======================================================================================
 </span><a href="#115" id="115" class="l">115: </a><span class="php-comment"> *                                                                                      *
-</span><a href="#116" id="116" class="l">116: </a><span class="php-comment"> *======================================================================================*/</span>
-<a href="#117" id="117" class="l">117: </a>
-<a href="#118" id="118" class="l">118: </a>
-<a href="#119" id="119" class="l">119: </a>     
-<a href="#120" id="120" class="l">120: </a>    <span class="php-comment">/*===================================================================================
-</span><a href="#121" id="121" class="l">121: </a><span class="php-comment">     *  Connection                                                                      *
-</span><a href="#122" id="122" class="l">122: </a><span class="php-comment">     *==================================================================================*/</span>
-<a href="#123" id="123" class="l">123: </a>
-<a href="#124" id="124" class="l">124: </a>    <span class="php-comment">/**
-</span><a href="#125" id="125" class="l">125: </a><span class="php-comment">     * &lt;h4&gt;Manage native connection&lt;/h4&gt;
-</span><a href="#126" id="126" class="l">126: </a><span class="php-comment">     *
-</span><a href="#127" id="127" class="l">127: </a><span class="php-comment">     * We overload this method to ensure the provided connection is a {@link CDatabase}
-</span><a href="#128" id="128" class="l">128: </a><span class="php-comment">     * instance.
-</span><a href="#129" id="129" class="l">129: </a><span class="php-comment">     *
-</span><a href="#130" id="130" class="l">130: </a><span class="php-comment">     * @param mixed                 $theValue           Native connection or operation.
-</span><a href="#131" id="131" class="l">131: </a><span class="php-comment">     * @param boolean               $getOld             &lt;tt&gt;TRUE&lt;/tt&gt; get old value.
-</span><a href="#132" id="132" class="l">132: </a><span class="php-comment">     *
-</span><a href="#133" id="133" class="l">133: </a><span class="php-comment">     * @access public
-</span><a href="#134" id="134" class="l">134: </a><span class="php-comment">     * @return mixed                &lt;i&gt;New&lt;/i&gt; or &lt;i&gt;old&lt;/i&gt; native connection.
-</span><a href="#135" id="135" class="l">135: </a><span class="php-comment">     *
-</span><a href="#136" id="136" class="l">136: </a><span class="php-comment">     * @uses _isInited()
-</span><a href="#137" id="137" class="l">137: </a><span class="php-comment">     * @uses ManageProperty()
-</span><a href="#138" id="138" class="l">138: </a><span class="php-comment">     */</span>
-<a href="#139" id="139" class="l">139: </a>    <span class="php-keyword1">public</span> <span class="php-keyword1">function</span> Connection( <span class="php-var">$theValue</span> = <span class="php-keyword1">NULL</span>, <span class="php-var">$getOld</span> = <span class="php-keyword1">FALSE</span> )
-<a href="#140" id="140" class="l">140: </a>    {
-<a href="#141" id="141" class="l">141: </a>        <span class="php-comment">//</span>
-<a href="#142" id="142" class="l">142: </a>        <span class="php-comment">// Check connection type.</span>
-<a href="#143" id="143" class="l">143: </a>        <span class="php-comment">//</span>
-<a href="#144" id="144" class="l">144: </a>        <span class="php-keyword1">if</span>( (<span class="php-var">$theValue</span> !== <span class="php-keyword1">NULL</span>)
-<a href="#145" id="145" class="l">145: </a>         &amp;&amp; (<span class="php-var">$theValue</span> !== <span class="php-keyword1">FALSE</span>)
-<a href="#146" id="146" class="l">146: </a>         &amp;&amp; (! (<span class="php-var">$theValue</span> <span class="php-keyword1">instanceof</span> CDatabase)) )
-<a href="#147" id="147" class="l">147: </a>            <span class="php-keyword1">throw</span> <span class="php-keyword1">new</span> Exception
-<a href="#148" id="148" class="l">148: </a>                ( <span class="php-quote">&quot;Invalid connection type&quot;</span>,
-<a href="#149" id="149" class="l">149: </a>                  kERROR_PARAMETER );                                           <span class="php-comment">// !@! ==&gt;</span>
-<a href="#150" id="150" class="l">150: </a>        
-<a href="#151" id="151" class="l">151: </a>        <span class="php-keyword1">return</span> parent::Connection( <span class="php-var">$theValue</span>, <span class="php-var">$getOld</span> );                            <span class="php-comment">// ==&gt;</span>
-<a href="#152" id="152" class="l">152: </a>
-<a href="#153" id="153" class="l">153: </a>    } <span class="php-comment">// Connection.</span>
-<a href="#154" id="154" class="l">154: </a>
-<a href="#155" id="155" class="l">155: </a>        
-<a href="#156" id="156" class="l">156: </a>
-<a href="#157" id="157" class="l">157: </a><span class="php-comment">/*=======================================================================================
-</span><a href="#158" id="158" class="l">158: </a><span class="php-comment"> *                                                                                      *
-</span><a href="#159" id="159" class="l">159: </a><span class="php-comment"> *                              PUBLIC COMPONENTS INTERFACE                             *
-</span><a href="#160" id="160" class="l">160: </a><span class="php-comment"> *                                                                                      *
-</span><a href="#161" id="161" class="l">161: </a><span class="php-comment"> *======================================================================================*/</span>
-<a href="#162" id="162" class="l">162: </a>
+</span><a href="#116" id="116" class="l">116: </a><span class="php-comment"> *                              PUBLIC MEMBER INTERFACE                                 *
+</span><a href="#117" id="117" class="l">117: </a><span class="php-comment"> *                                                                                      *
+</span><a href="#118" id="118" class="l">118: </a><span class="php-comment"> *======================================================================================*/</span>
+<a href="#119" id="119" class="l">119: </a>
+<a href="#120" id="120" class="l">120: </a>
+<a href="#121" id="121" class="l">121: </a>     
+<a href="#122" id="122" class="l">122: </a>    <span class="php-comment">/*===================================================================================
+</span><a href="#123" id="123" class="l">123: </a><span class="php-comment">     *  Connection                                                                      *
+</span><a href="#124" id="124" class="l">124: </a><span class="php-comment">     *==================================================================================*/</span>
+<a href="#125" id="125" class="l">125: </a>
+<a href="#126" id="126" class="l">126: </a>    <span class="php-comment">/**
+</span><a href="#127" id="127" class="l">127: </a><span class="php-comment">     * &lt;h4&gt;Manage native connection&lt;/h4&gt;
+</span><a href="#128" id="128" class="l">128: </a><span class="php-comment">     *
+</span><a href="#129" id="129" class="l">129: </a><span class="php-comment">     * We overload this method to ensure the provided connection is a {@link CDatabase}
+</span><a href="#130" id="130" class="l">130: </a><span class="php-comment">     * instance.
+</span><a href="#131" id="131" class="l">131: </a><span class="php-comment">     *
+</span><a href="#132" id="132" class="l">132: </a><span class="php-comment">     * @param mixed                 $theValue           Native connection or operation.
+</span><a href="#133" id="133" class="l">133: </a><span class="php-comment">     * @param boolean               $getOld             &lt;tt&gt;TRUE&lt;/tt&gt; get old value.
+</span><a href="#134" id="134" class="l">134: </a><span class="php-comment">     *
+</span><a href="#135" id="135" class="l">135: </a><span class="php-comment">     * @access public
+</span><a href="#136" id="136" class="l">136: </a><span class="php-comment">     * @return mixed                &lt;i&gt;New&lt;/i&gt; or &lt;i&gt;old&lt;/i&gt; native connection.
+</span><a href="#137" id="137" class="l">137: </a><span class="php-comment">     *
+</span><a href="#138" id="138" class="l">138: </a><span class="php-comment">     * @throws Exception
+</span><a href="#139" id="139" class="l">139: </a><span class="php-comment">     */</span>
+<a href="#140" id="140" class="l">140: </a>    <span class="php-keyword1">public</span> <span class="php-keyword1">function</span> Connection( <span class="php-var">$theValue</span> = <span class="php-keyword1">NULL</span>, <span class="php-var">$getOld</span> = <span class="php-keyword1">FALSE</span> )
+<a href="#141" id="141" class="l">141: </a>    {
+<a href="#142" id="142" class="l">142: </a>        <span class="php-comment">//</span>
+<a href="#143" id="143" class="l">143: </a>        <span class="php-comment">// Check connection type.</span>
+<a href="#144" id="144" class="l">144: </a>        <span class="php-comment">//</span>
+<a href="#145" id="145" class="l">145: </a>        <span class="php-keyword1">if</span>( (<span class="php-var">$theValue</span> !== <span class="php-keyword1">NULL</span>)
+<a href="#146" id="146" class="l">146: </a>         &amp;&amp; (<span class="php-var">$theValue</span> !== <span class="php-keyword1">FALSE</span>)
+<a href="#147" id="147" class="l">147: </a>         &amp;&amp; (! (<span class="php-var">$theValue</span> <span class="php-keyword1">instanceof</span> CDatabase)) )
+<a href="#148" id="148" class="l">148: </a>            <span class="php-keyword1">throw</span> <span class="php-keyword1">new</span> Exception
+<a href="#149" id="149" class="l">149: </a>                ( <span class="php-quote">&quot;Invalid connection type&quot;</span>,
+<a href="#150" id="150" class="l">150: </a>                  kERROR_PARAMETER );                                           <span class="php-comment">// !@! ==&gt;</span>
+<a href="#151" id="151" class="l">151: </a>        
+<a href="#152" id="152" class="l">152: </a>        <span class="php-keyword1">return</span> parent::Connection( <span class="php-var">$theValue</span>, <span class="php-var">$getOld</span> );                            <span class="php-comment">// ==&gt;</span>
+<a href="#153" id="153" class="l">153: </a>
+<a href="#154" id="154" class="l">154: </a>    } <span class="php-comment">// Connection.</span>
+<a href="#155" id="155" class="l">155: </a>
+<a href="#156" id="156" class="l">156: </a>        
+<a href="#157" id="157" class="l">157: </a>
+<a href="#158" id="158" class="l">158: </a><span class="php-comment">/*=======================================================================================
+</span><a href="#159" id="159" class="l">159: </a><span class="php-comment"> *                                                                                      *
+</span><a href="#160" id="160" class="l">160: </a><span class="php-comment"> *                              PUBLIC COMPONENTS INTERFACE                             *
+</span><a href="#161" id="161" class="l">161: </a><span class="php-comment"> *                                                                                      *
+</span><a href="#162" id="162" class="l">162: </a><span class="php-comment"> *======================================================================================*/</span>
 <a href="#163" id="163" class="l">163: </a>
-<a href="#164" id="164" class="l">164: </a>     
-<a href="#165" id="165" class="l">165: </a>    <span class="php-comment">/*===================================================================================
-</span><a href="#166" id="166" class="l">166: </a><span class="php-comment">     *  NewTerm                                                                         *
-</span><a href="#167" id="167" class="l">167: </a><span class="php-comment">     *==================================================================================*/</span>
-<a href="#168" id="168" class="l">168: </a>
-<a href="#169" id="169" class="l">169: </a>    <span class="php-comment">/**
-</span><a href="#170" id="170" class="l">170: </a><span class="php-comment">     * &lt;h4&gt;Instantiate a term&lt;/h4&gt;
-</span><a href="#171" id="171" class="l">171: </a><span class="php-comment">     *
-</span><a href="#172" id="172" class="l">172: </a><span class="php-comment">     * This method can be used to instantiate a new {@link COntologyTerm} instance, it
-</span><a href="#173" id="173" class="l">173: </a><span class="php-comment">     * expects the following parameters:
-</span><a href="#174" id="174" class="l">174: </a><span class="php-comment">     *
-</span><a href="#175" id="175" class="l">175: </a><span class="php-comment">     * &lt;ul&gt;
-</span><a href="#176" id="176" class="l">176: </a><span class="php-comment">     *  &lt;li&gt;&lt;tt&gt;$theNamespace&lt;/tt&gt;: The term namespace, it can be provided in two forms:
-</span><a href="#177" id="177" class="l">177: </a><span class="php-comment">     *   &lt;ul&gt;
-</span><a href="#178" id="178" class="l">178: </a><span class="php-comment">     *      &lt;li&gt;&lt;tt&gt;string&lt;/tt&gt;: A string is interpreted as the namespace global identifier.
-</span><a href="#179" id="179" class="l">179: </a><span class="php-comment">     *      &lt;li&gt;&lt;tt&gt;COntologyTerm&lt;/tt&gt;: This type is expected to be the namespace term
-</span><a href="#180" id="180" class="l">180: </a><span class="php-comment">     *          object.
-</span><a href="#181" id="181" class="l">181: </a><span class="php-comment">     *      &lt;li&gt;&lt;i&gt;other&lt;/i&gt;: Any other type is interpreted as the term native identifier.
-</span><a href="#182" id="182" class="l">182: </a><span class="php-comment">     *   &lt;/ul&gt;
-</span><a href="#183" id="183" class="l">183: </a><span class="php-comment">     *  &lt;li&gt;&lt;tt&gt;$theCode&lt;/tt&gt;: The term code, it can be provided in two forms:
-</span><a href="#184" id="184" class="l">184: </a><span class="php-comment">     *   &lt;ul&gt;
-</span><a href="#185" id="185" class="l">185: </a><span class="php-comment">     *      &lt;li&gt;&lt;tt&gt;string&lt;/tt&gt;: A string is interpreted as the term local identifier.
-</span><a href="#186" id="186" class="l">186: </a><span class="php-comment">     *      &lt;li&gt;&lt;i&gt;other&lt;/i&gt;: Any other type is interpreted as the term native identifier.
-</span><a href="#187" id="187" class="l">187: </a><span class="php-comment">     *   &lt;/ul&gt;
-</span><a href="#188" id="188" class="l">188: </a><span class="php-comment">     * &lt;/ul&gt;
-</span><a href="#189" id="189" class="l">189: </a><span class="php-comment">     *
-</span><a href="#190" id="190" class="l">190: </a><span class="php-comment">     * The second parameter is a boolean which if &lt;tt&gt;TRUE&lt;/tt&gt; will return the &lt;i&gt;old&lt;/i&gt;
-</span><a href="#191" id="191" class="l">191: </a><span class="php-comment">     * value when replacing nodes; if &lt;tt&gt;FALSE&lt;/tt&gt;, it will return the currently set
-</span><a href="#192" id="192" class="l">192: </a><span class="php-comment">     * value.
-</span><a href="#193" id="193" class="l">193: </a><span class="php-comment">     *
-</span><a href="#194" id="194" class="l">194: </a><span class="php-comment">     * When providing a new node, this method will insert it if not {@link _IsCommitted()}.
-</span><a href="#195" id="195" class="l">195: </a><span class="php-comment">     * The method will also add the {@link kNODE_KIND_ROOT} kind to the node and refresh it.
-</span><a href="#196" id="196" class="l">196: </a><span class="php-comment">     *
-</span><a href="#197" id="197" class="l">197: </a><span class="php-comment">     * @param mixed                 $theValue           Root node or operation.
-</span><a href="#198" id="198" class="l">198: </a><span class="php-comment">     * @param boolean               $getOld             &lt;tt&gt;TRUE&lt;/tt&gt; get old value.
-</span><a href="#199" id="199" class="l">199: </a><span class="php-comment">     *
-</span><a href="#200" id="200" class="l">200: </a><span class="php-comment">     * @access public
-</span><a href="#201" id="201" class="l">201: </a><span class="php-comment">     * @return mixed                &lt;i&gt;New&lt;/i&gt; or &lt;i&gt;old&lt;/i&gt; native connection.
-</span><a href="#202" id="202" class="l">202: </a><span class="php-comment">     *
-</span><a href="#203" id="203" class="l">203: </a><span class="php-comment">     * @uses _isInited()
-</span><a href="#204" id="204" class="l">204: </a><span class="php-comment">     * @uses ManageProperty()
-</span><a href="#205" id="205" class="l">205: </a><span class="php-comment">     */</span>
-<a href="#206" id="206" class="l">206: </a>    <span class="php-keyword1">public</span> <span class="php-keyword1">function</span> Root( <span class="php-var">$theValue</span> = <span class="php-keyword1">NULL</span>, <span class="php-var">$getOld</span> = <span class="php-keyword1">FALSE</span> )
-<a href="#207" id="207" class="l">207: </a>    {
-<a href="#208" id="208" class="l">208: </a>        <span class="php-comment">//</span>
-<a href="#209" id="209" class="l">209: </a>        <span class="php-comment">// Handle new node.</span>
-<a href="#210" id="210" class="l">210: </a>        <span class="php-comment">//</span>
-<a href="#211" id="211" class="l">211: </a>        <span class="php-keyword1">if</span>( (<span class="php-var">$theValue</span> !== <span class="php-keyword1">NULL</span>)
-<a href="#212" id="212" class="l">212: </a>         &amp;&amp; (<span class="php-var">$theValue</span> !== <span class="php-keyword1">FALSE</span>) )
-<a href="#213" id="213" class="l">213: </a>        {
-<a href="#214" id="214" class="l">214: </a>            <span class="php-comment">//</span>
-<a href="#215" id="215" class="l">215: </a>            <span class="php-comment">// Check node type.</span>
-<a href="#216" id="216" class="l">216: </a>            <span class="php-comment">//</span>
-<a href="#217" id="217" class="l">217: </a>            <span class="php-keyword1">if</span>( ! (<span class="php-var">$theValue</span> <span class="php-keyword1">instanceof</span> COntologyNode) )
-<a href="#218" id="218" class="l">218: </a>                <span class="php-keyword1">throw</span> <span class="php-keyword1">new</span> Exception
-<a href="#219" id="219" class="l">219: </a>                    ( <span class="php-quote">&quot;Invalid root node&quot;</span>,
-<a href="#220" id="220" class="l">220: </a>                      kERROR_PARAMETER );                                       <span class="php-comment">// !@! ==&gt;</span>
-<a href="#221" id="221" class="l">221: </a>            
-<a href="#222" id="222" class="l">222: </a>            <span class="php-comment">//</span>
-<a href="#223" id="223" class="l">223: </a>            <span class="php-comment">// Check ontology connection.</span>
-<a href="#224" id="224" class="l">224: </a>            <span class="php-comment">//</span>
-<a href="#225" id="225" class="l">225: </a>            <span class="php-var">$connection</span> = <span class="php-var">$this</span>-&gt;Connection();
-<a href="#226" id="226" class="l">226: </a>            <span class="php-keyword1">if</span>( <span class="php-var">$connection</span> === <span class="php-keyword1">NULL</span> )
-<a href="#227" id="227" class="l">227: </a>                <span class="php-keyword1">throw</span> <span class="php-keyword1">new</span> Exception
-<a href="#228" id="228" class="l">228: </a>                    ( <span class="php-quote">&quot;Missing ontology container&quot;</span>,
-<a href="#229" id="229" class="l">229: </a>                      kERROR_STATE );                                           <span class="php-comment">// !@! ==&gt;</span>
-<a href="#230" id="230" class="l">230: </a>            
-<a href="#231" id="231" class="l">231: </a>            <span class="php-comment">//</span>
-<a href="#232" id="232" class="l">232: </a>            <span class="php-comment">// Set root kind.</span>
-<a href="#233" id="233" class="l">233: </a>            <span class="php-comment">//</span>
-<a href="#234" id="234" class="l">234: </a>            <span class="php-var">$theValue</span>-&gt;Kind( kNODE_KIND_ROOT, <span class="php-keyword1">TRUE</span> );
-<a href="#235" id="235" class="l">235: </a>            
-<a href="#236" id="236" class="l">236: </a>            <span class="php-comment">//</span>
-<a href="#237" id="237" class="l">237: </a>            <span class="php-comment">// Commit node.</span>
-<a href="#238" id="238" class="l">238: </a>            <span class="php-comment">//</span>
-<a href="#239" id="239" class="l">239: </a>            <span class="php-keyword1">if</span>( ! <span class="php-var">$theValue</span>-&gt;_IsCommitted() )
-<a href="#240" id="240" class="l">240: </a>                <span class="php-var">$theValue</span>-&gt;Insert( <span class="php-var">$connection</span> );
-<a href="#241" id="241" class="l">241: </a>            
-<a href="#242" id="242" class="l">242: </a>            <span class="php-comment">//</span>
-<a href="#243" id="243" class="l">243: </a>            <span class="php-comment">// Refresh node.</span>
-<a href="#244" id="244" class="l">244: </a>            <span class="php-comment">//</span>
-<a href="#245" id="245" class="l">245: </a>            <span class="php-var">$theValue</span>-&gt;Restore( <span class="php-var">$connection</span> );
-<a href="#246" id="246" class="l">246: </a>        
-<a href="#247" id="247" class="l">247: </a>        } <span class="php-comment">// Provided new node.</span>
-<a href="#248" id="248" class="l">248: </a>        
-<a href="#249" id="249" class="l">249: </a>        <span class="php-comment">//</span>
-<a href="#250" id="250" class="l">250: </a>        <span class="php-comment">// Manage property.</span>
-<a href="#251" id="251" class="l">251: </a>        <span class="php-comment">//</span>
-<a href="#252" id="252" class="l">252: </a>        <span class="php-var">$save</span> = ManageProperty( <span class="php-var">$this</span>-&gt;mOntology, <span class="php-var">$theValue</span>, <span class="php-var">$getOld</span> );
-<a href="#253" id="253" class="l">253: </a>        
-<a href="#254" id="254" class="l">254: </a>        <span class="php-comment">//</span>
-<a href="#255" id="255" class="l">255: </a>        <span class="php-comment">// Update inited status.</span>
-<a href="#256" id="256" class="l">256: </a>        <span class="php-comment">//</span>
-<a href="#257" id="257" class="l">257: </a>        <span class="php-var">$this</span>-&gt;_isInited( <span class="php-var">$this</span>-&gt;_Ready() );
-<a href="#258" id="258" class="l">258: </a>        
-<a href="#259" id="259" class="l">259: </a>        <span class="php-keyword1">return</span> <span class="php-var">$save</span>;                                                               <span class="php-comment">// ==&gt;</span>
-<a href="#260" id="260" class="l">260: </a>
-<a href="#261" id="261" class="l">261: </a>    } <span class="php-comment">// Root.</span>
-<a href="#262" id="262" class="l">262: </a>        
-<a href="#263" id="263" class="l">263: </a>
-<a href="#264" id="264" class="l">264: </a>
-<a href="#265" id="265" class="l">265: </a><span class="php-comment">/*=======================================================================================
-</span><a href="#266" id="266" class="l">266: </a><span class="php-comment"> *                                                                                      *
-</span><a href="#267" id="267" class="l">267: </a><span class="php-comment"> *                              PROTECTED STATUS INTERFACE                              *
-</span><a href="#268" id="268" class="l">268: </a><span class="php-comment"> *                                                                                      *
-</span><a href="#269" id="269" class="l">269: </a><span class="php-comment"> *======================================================================================*/</span>
-<a href="#270" id="270" class="l">270: </a>
-<a href="#271" id="271" class="l">271: </a>
-<a href="#272" id="272" class="l">272: </a>     
-<a href="#273" id="273" class="l">273: </a>    <span class="php-comment">/*===================================================================================
-</span><a href="#274" id="274" class="l">274: </a><span class="php-comment">     *  _Ready                                                                          *
-</span><a href="#275" id="275" class="l">275: </a><span class="php-comment">     *==================================================================================*/</span>
-<a href="#276" id="276" class="l">276: </a>
-<a href="#277" id="277" class="l">277: </a>    <span class="php-comment">/**
-</span><a href="#278" id="278" class="l">278: </a><span class="php-comment">     * &lt;h4&gt;Determine if the object is ready&lt;/h4&gt;
-</span><a href="#279" id="279" class="l">279: </a><span class="php-comment">     *
-</span><a href="#280" id="280" class="l">280: </a><span class="php-comment">     * In this class we tie the {@link _IsInited()} status to the presence or absence of the
-</span><a href="#281" id="281" class="l">281: </a><span class="php-comment">     * root or ontology node.
-</span><a href="#282" id="282" class="l">282: </a><span class="php-comment">     *
-</span><a href="#283" id="283" class="l">283: </a><span class="php-comment">     * @access protected
-</span><a href="#284" id="284" class="l">284: </a><span class="php-comment">     * @return boolean              &lt;tt&gt;TRUE&lt;/tt&gt; means {@link _IsInited( &lt;tt&gt;TRUE&lt;/tt&gt; ).
-</span><a href="#285" id="285" class="l">285: </a><span class="php-comment">     *
-</span><a href="#286" id="286" class="l">286: </a><span class="php-comment">     * @uses _Ready()
-</span><a href="#287" id="287" class="l">287: </a><span class="php-comment">     */</span>
-<a href="#288" id="288" class="l">288: </a>    <span class="php-keyword1">protected</span> <span class="php-keyword1">function</span> _Ready()
-<a href="#289" id="289" class="l">289: </a>    {
-<a href="#290" id="290" class="l">290: </a>        <span class="php-comment">//</span>
-<a href="#291" id="291" class="l">291: </a>        <span class="php-comment">// Check parent.</span>
-<a href="#292" id="292" class="l">292: </a>        <span class="php-comment">//</span>
-<a href="#293" id="293" class="l">293: </a>        <span class="php-keyword1">if</span>( parent::_Ready() )
-<a href="#294" id="294" class="l">294: </a>            <span class="php-keyword1">return</span> ( <span class="php-var">$this</span>-&gt;mOntology !== <span class="php-keyword1">NULL</span> );                                   <span class="php-comment">// ==&gt;</span>
-<a href="#295" id="295" class="l">295: </a>        
-<a href="#296" id="296" class="l">296: </a>        <span class="php-keyword1">return</span> <span class="php-keyword1">FALSE</span>;                                                               <span class="php-comment">// ==&gt;</span>
-<a href="#297" id="297" class="l">297: </a>    
-<a href="#298" id="298" class="l">298: </a>    } <span class="php-comment">// _Ready.</span>
-<a href="#299" id="299" class="l">299: </a>
-<a href="#300" id="300" class="l">300: </a>     
-<a href="#301" id="301" class="l">301: </a>
-<a href="#302" id="302" class="l">302: </a>} <span class="php-comment">// class COntology.</span>
-<a href="#303" id="303" class="l">303: </a>
+<a href="#164" id="164" class="l">164: </a>
+<a href="#165" id="165" class="l">165: </a>     
+<a href="#166" id="166" class="l">166: </a>    <span class="php-comment">/*===================================================================================
+</span><a href="#167" id="167" class="l">167: </a><span class="php-comment">     *  NewTerm                                                                         *
+</span><a href="#168" id="168" class="l">168: </a><span class="php-comment">     *==================================================================================*/</span>
+<a href="#169" id="169" class="l">169: </a>
+<a href="#170" id="170" class="l">170: </a>    <span class="php-comment">/**
+</span><a href="#171" id="171" class="l">171: </a><span class="php-comment">     * &lt;h4&gt;Instantiate a term&lt;/h4&gt;
+</span><a href="#172" id="172" class="l">172: </a><span class="php-comment">     *
+</span><a href="#173" id="173" class="l">173: </a><span class="php-comment">     * This method can be used to instantiate a new {@link COntologyTerm} instance, the
+</span><a href="#174" id="174" class="l">174: </a><span class="php-comment">     * method allows creating a term including the label and description. The method expects
+</span><a href="#175" id="175" class="l">175: </a><span class="php-comment">     * the following parameters:
+</span><a href="#176" id="176" class="l">176: </a><span class="php-comment">     *
+</span><a href="#177" id="177" class="l">177: </a><span class="php-comment">     * &lt;ul&gt;
+</span><a href="#178" id="178" class="l">178: </a><span class="php-comment">     *  &lt;li&gt;&lt;tt&gt;$theIdentifier&lt;/tt&gt;: The term local or global identifier, if you provide
+</span><a href="#179" id="179" class="l">179: </a><span class="php-comment">     *      &lt;tt&gt;NULL&lt;/tt&gt;, the method will raise an exception.
+</span><a href="#180" id="180" class="l">180: </a><span class="php-comment">     *  &lt;li&gt;&lt;tt&gt;$theNamespace&lt;/tt&gt;: The term namespace, it can be provided in the following
+</span><a href="#181" id="181" class="l">181: </a><span class="php-comment">     *      forms:
+</span><a href="#182" id="182" class="l">182: </a><span class="php-comment">     *   &lt;ul&gt;
+</span><a href="#183" id="183" class="l">183: </a><span class="php-comment">     *      &lt;li&gt;&lt;tt&gt;NULL&lt;/tt&gt;: This indicates that the term has no namespace.
+</span><a href="#184" id="184" class="l">184: </a><span class="php-comment">     *      &lt;li&gt;&lt;tt&gt;{@link COntologyTerm}&lt;/tt&gt;: This type is expected to be the namespace
+</span><a href="#185" id="185" class="l">185: </a><span class="php-comment">     *          term object.
+</span><a href="#186" id="186" class="l">186: </a><span class="php-comment">     *      &lt;li&gt;&lt;i&gt;other&lt;/i&gt;: Any other type is interpreted as the term native identifier;
+</span><a href="#187" id="187" class="l">187: </a><span class="php-comment">     *          if the namespace term cannot be found, the method will raise an exception.
+</span><a href="#188" id="188" class="l">188: </a><span class="php-comment">     *   &lt;/ul&gt;
+</span><a href="#189" id="189" class="l">189: </a><span class="php-comment">     *      Note that if you want to provide a global identifier you should do so using the
+</span><a href="#190" id="190" class="l">190: </a><span class="php-comment">     *      first parameter.
+</span><a href="#191" id="191" class="l">191: </a><span class="php-comment">     *  &lt;li&gt;&lt;tt&gt;$theLabel&lt;/tt&gt;: The term label string, this parameter is optional.
+</span><a href="#192" id="192" class="l">192: </a><span class="php-comment">     *  &lt;li&gt;&lt;tt&gt;$theDescription&lt;/tt&gt;: The term description string this parameter is optional.
+</span><a href="#193" id="193" class="l">193: </a><span class="php-comment">     *  &lt;li&gt;&lt;tt&gt;$theLanguage&lt;/tt&gt;: The language code of both the label and the description.
+</span><a href="#194" id="194" class="l">194: </a><span class="php-comment">     * &lt;/ul&gt;
+</span><a href="#195" id="195" class="l">195: </a><span class="php-comment">     *
+</span><a href="#196" id="196" class="l">196: </a><span class="php-comment">     * The method will first attempt to locate a term matching the global identifier
+</span><a href="#197" id="197" class="l">197: </a><span class="php-comment">     * stemming from the provided parameters, if it matches one, this will be returned as
+</span><a href="#198" id="198" class="l">198: </a><span class="php-comment">     * found, regardless of the provided parameters. If the term was not found, the method
+</span><a href="#199" id="199" class="l">199: </a><span class="php-comment">     * will return a new uncommitted object with the provided attributes.
+</span><a href="#200" id="200" class="l">200: </a><span class="php-comment">     *
+</span><a href="#201" id="201" class="l">201: </a><span class="php-comment">     * @param string                $theIdentifier      Term local identifier.
+</span><a href="#202" id="202" class="l">202: </a><span class="php-comment">     * @param mixed                 $theNamespace       Namespace term reference.
+</span><a href="#203" id="203" class="l">203: </a><span class="php-comment">     * @param string                $theLabel           Term label.
+</span><a href="#204" id="204" class="l">204: </a><span class="php-comment">     * @param string                $theDescription     Term description.
+</span><a href="#205" id="205" class="l">205: </a><span class="php-comment">     * @param string                $theLanguage        Label and description language code.
+</span><a href="#206" id="206" class="l">206: </a><span class="php-comment">     *
+</span><a href="#207" id="207" class="l">207: </a><span class="php-comment">     * @access public
+</span><a href="#208" id="208" class="l">208: </a><span class="php-comment">     * @return COntologyTerm        New or found term.
+</span><a href="#209" id="209" class="l">209: </a><span class="php-comment">     *
+</span><a href="#210" id="210" class="l">210: </a><span class="php-comment">     * @throws Exception
+</span><a href="#211" id="211" class="l">211: </a><span class="php-comment">     */</span>
+<a href="#212" id="212" class="l">212: </a>    <span class="php-keyword1">public</span> <span class="php-keyword1">function</span> NewTerm( <span class="php-var">$theIdentifier</span>, <span class="php-var">$theNamespace</span> = <span class="php-keyword1">NULL</span>,
+<a href="#213" id="213" class="l">213: </a>                                             <span class="php-var">$theLabel</span> = <span class="php-keyword1">NULL</span>, <span class="php-var">$theDescription</span> = <span class="php-keyword1">NULL</span>,
+<a href="#214" id="214" class="l">214: </a>                                             <span class="php-var">$theLanguage</span> = <span class="php-keyword1">NULL</span> )
+<a href="#215" id="215" class="l">215: </a>    {
+<a href="#216" id="216" class="l">216: </a>        <span class="php-comment">//</span>
+<a href="#217" id="217" class="l">217: </a>        <span class="php-comment">// Check if object is ready.</span>
+<a href="#218" id="218" class="l">218: </a>        <span class="php-comment">//</span>
+<a href="#219" id="219" class="l">219: </a>        <span class="php-keyword1">if</span>( <span class="php-var">$this</span>-&gt;_IsInited() )
+<a href="#220" id="220" class="l">220: </a>        {
+<a href="#221" id="221" class="l">221: </a>            <span class="php-comment">//</span>
+<a href="#222" id="222" class="l">222: </a>            <span class="php-comment">// Check identifier.</span>
+<a href="#223" id="223" class="l">223: </a>            <span class="php-comment">//</span>
+<a href="#224" id="224" class="l">224: </a>            <span class="php-keyword1">if</span>( <span class="php-var">$theIdentifier</span> !== <span class="php-keyword1">NULL</span> )
+<a href="#225" id="225" class="l">225: </a>            {
+<a href="#226" id="226" class="l">226: </a>                <span class="php-comment">//</span>
+<a href="#227" id="227" class="l">227: </a>                <span class="php-comment">// Normalise local identifier.</span>
+<a href="#228" id="228" class="l">228: </a>                <span class="php-comment">//</span>
+<a href="#229" id="229" class="l">229: </a>                <span class="php-var">$identifier</span> = (string) <span class="php-var">$theIdentifier</span>;
+<a href="#230" id="230" class="l">230: </a>                
+<a href="#231" id="231" class="l">231: </a>                <span class="php-comment">//</span>
+<a href="#232" id="232" class="l">232: </a>                <span class="php-comment">// Handle namespace.</span>
+<a href="#233" id="233" class="l">233: </a>                <span class="php-comment">//</span>
+<a href="#234" id="234" class="l">234: </a>                <span class="php-keyword1">if</span>( <span class="php-var">$theNamespace</span> !== <span class="php-keyword1">NULL</span> )
+<a href="#235" id="235" class="l">235: </a>                {
+<a href="#236" id="236" class="l">236: </a>                    <span class="php-comment">//</span>
+<a href="#237" id="237" class="l">237: </a>                    <span class="php-comment">// Provided namespace identifier.</span>
+<a href="#238" id="238" class="l">238: </a>                    <span class="php-comment">//</span>
+<a href="#239" id="239" class="l">239: </a>                    <span class="php-keyword1">if</span>( ! (<span class="php-var">$theNamespace</span> <span class="php-keyword1">instanceof</span> CPersistentObject) )
+<a href="#240" id="240" class="l">240: </a>                    {
+<a href="#241" id="241" class="l">241: </a>                        <span class="php-comment">//</span>
+<a href="#242" id="242" class="l">242: </a>                        <span class="php-comment">// Load namespace object.</span>
+<a href="#243" id="243" class="l">243: </a>                        <span class="php-comment">//</span>
+<a href="#244" id="244" class="l">244: </a>                        <span class="php-var">$theNamespace</span> = COntologyTerm::NewObject
+<a href="#245" id="245" class="l">245: </a>                                            ( <span class="php-var">$this</span>-&gt;Connection(), <span class="php-var">$theNamespace</span> );
+<a href="#246" id="246" class="l">246: </a>                        <span class="php-keyword1">if</span>( <span class="php-var">$theNamespace</span> === <span class="php-keyword1">NULL</span> )
+<a href="#247" id="247" class="l">247: </a>                            <span class="php-keyword1">throw</span> <span class="php-keyword1">new</span> Exception
+<a href="#248" id="248" class="l">248: </a>                                ( <span class="php-quote">&quot;Namespace not found&quot;</span>,
+<a href="#249" id="249" class="l">249: </a>                                  kERROR_NOT_FOUND );                           <span class="php-comment">// !@! ==&gt;</span>
+<a href="#250" id="250" class="l">250: </a>                    
+<a href="#251" id="251" class="l">251: </a>                    } <span class="php-comment">// Provided namespace identifier.</span>
+<a href="#252" id="252" class="l">252: </a>                    
+<a href="#253" id="253" class="l">253: </a>                    <span class="php-comment">//</span>
+<a href="#254" id="254" class="l">254: </a>                    <span class="php-comment">// Assume namespace has global identifier.</span>
+<a href="#255" id="255" class="l">255: </a>                    <span class="php-comment">//</span>
+<a href="#256" id="256" class="l">256: </a>                    
+<a href="#257" id="257" class="l">257: </a>                    <span class="php-comment">//</span>
+<a href="#258" id="258" class="l">258: </a>                    <span class="php-comment">// Build global identifier.</span>
+<a href="#259" id="259" class="l">259: </a>                    <span class="php-comment">//</span>
+<a href="#260" id="260" class="l">260: </a>                    <span class="php-var">$identifier</span> = <span class="php-var">$theNamespace</span>[ kOFFSET_GID ]
+<a href="#261" id="261" class="l">261: </a>                                 .kTOKEN_NAMESPACE_SEPARATOR
+<a href="#262" id="262" class="l">262: </a>                                 .<span class="php-var">$identifier</span>;
+<a href="#263" id="263" class="l">263: </a>                
+<a href="#264" id="264" class="l">264: </a>                } <span class="php-comment">// Provided namespace.</span>
+<a href="#265" id="265" class="l">265: </a>                
+<a href="#266" id="266" class="l">266: </a>                <span class="php-comment">//</span>
+<a href="#267" id="267" class="l">267: </a>                <span class="php-comment">// Build term native identifier.</span>
+<a href="#268" id="268" class="l">268: </a>                <span class="php-comment">//</span>
+<a href="#269" id="269" class="l">269: </a>                <span class="php-var">$id</span> = COntologyTerm::_id( <span class="php-var">$identifier</span>, <span class="php-var">$this</span>-&gt;Connection() );
+<a href="#270" id="270" class="l">270: </a>                
+<a href="#271" id="271" class="l">271: </a>                <span class="php-comment">//</span>
+<a href="#272" id="272" class="l">272: </a>                <span class="php-comment">// Match term.</span>
+<a href="#273" id="273" class="l">273: </a>                <span class="php-comment">//</span>
+<a href="#274" id="274" class="l">274: </a>                <span class="php-var">$term</span> = COntologyTerm::NewObject
+<a href="#275" id="275" class="l">275: </a>                            ( <span class="php-var">$this</span>-&gt;Connection(),
+<a href="#276" id="276" class="l">276: </a>                              COntologyTerm::_id( <span class="php-var">$identifier</span>, <span class="php-var">$this</span>-&gt;Connection() ) );
+<a href="#277" id="277" class="l">277: </a>                <span class="php-keyword1">if</span>( <span class="php-var">$term</span> !== <span class="php-keyword1">NULL</span> )
+<a href="#278" id="278" class="l">278: </a>                    <span class="php-keyword1">return</span> <span class="php-var">$term</span>;                                                   <span class="php-comment">// ==&gt;</span>
+<a href="#279" id="279" class="l">279: </a>                
+<a href="#280" id="280" class="l">280: </a>                <span class="php-comment">//</span>
+<a href="#281" id="281" class="l">281: </a>                <span class="php-comment">// Build new term.</span>
+<a href="#282" id="282" class="l">282: </a>                <span class="php-comment">//</span>
+<a href="#283" id="283" class="l">283: </a>                <span class="php-var">$term</span> = <span class="php-keyword1">new</span> COntologyTerm();
+<a href="#284" id="284" class="l">284: </a>                <span class="php-var">$term</span>-&gt;NS( <span class="php-var">$theNamespace</span> );
+<a href="#285" id="285" class="l">285: </a>                <span class="php-var">$term</span>-&gt;LID( <span class="php-var">$theIdentifier</span> );
+<a href="#286" id="286" class="l">286: </a>                <span class="php-keyword1">if</span>( <span class="php-var">$theLabel</span> !== <span class="php-keyword1">NULL</span> )
+<a href="#287" id="287" class="l">287: </a>                    <span class="php-var">$term</span>-&gt;Label( <span class="php-var">$theLanguage</span>, <span class="php-var">$theLabel</span> );
+<a href="#288" id="288" class="l">288: </a>                <span class="php-keyword1">if</span>( <span class="php-var">$theDescription</span> !== <span class="php-keyword1">NULL</span> )
+<a href="#289" id="289" class="l">289: </a>                    <span class="php-var">$term</span>-&gt;Description( <span class="php-var">$theLanguage</span>, <span class="php-var">$theDescription</span> );
+<a href="#290" id="290" class="l">290: </a>                
+<a href="#291" id="291" class="l">291: </a>                <span class="php-keyword1">return</span> <span class="php-var">$term</span>;                                                       <span class="php-comment">// ==&gt;</span>
+<a href="#292" id="292" class="l">292: </a>            
+<a href="#293" id="293" class="l">293: </a>            } <span class="php-comment">// Provided local or global identifier.</span>
+<a href="#294" id="294" class="l">294: </a>            
+<a href="#295" id="295" class="l">295: </a>            <span class="php-keyword1">throw</span> <span class="php-keyword1">new</span> Exception
+<a href="#296" id="296" class="l">296: </a>                ( <span class="php-quote">&quot;Missing term identifier&quot;</span>,
+<a href="#297" id="297" class="l">297: </a>                  kERROR_PARAMETER );                                           <span class="php-comment">// !@! ==&gt;</span>
+<a href="#298" id="298" class="l">298: </a>        
+<a href="#299" id="299" class="l">299: </a>        } <span class="php-comment">// Object is ready.</span>
+<a href="#300" id="300" class="l">300: </a>        
+<a href="#301" id="301" class="l">301: </a>        <span class="php-keyword1">throw</span> <span class="php-keyword1">new</span> Exception
+<a href="#302" id="302" class="l">302: </a>            ( <span class="php-quote">&quot;Object is not initialised&quot;</span>,
+<a href="#303" id="303" class="l">303: </a>              kERROR_STATE );                                                   <span class="php-comment">// !@! ==&gt;</span>
 <a href="#304" id="304" class="l">304: </a>
-<a href="#305" id="305" class="l">305: </a><span class="xlang">?&gt;</span>
-<a href="#306" id="306" class="l">306: </a></code></pre>
+<a href="#305" id="305" class="l">305: </a>    } <span class="php-comment">// NewTerm.</span>
+<a href="#306" id="306" class="l">306: </a>
+<a href="#307" id="307" class="l">307: </a>     
+<a href="#308" id="308" class="l">308: </a>    <span class="php-comment">/*===================================================================================
+</span><a href="#309" id="309" class="l">309: </a><span class="php-comment">     *  NewNode                                                                         *
+</span><a href="#310" id="310" class="l">310: </a><span class="php-comment">     *==================================================================================*/</span>
+<a href="#311" id="311" class="l">311: </a>
+<a href="#312" id="312" class="l">312: </a>    <span class="php-comment">/**
+</span><a href="#313" id="313" class="l">313: </a><span class="php-comment">     * &lt;h4&gt;Instantiate a node&lt;/h4&gt;
+</span><a href="#314" id="314" class="l">314: </a><span class="php-comment">     *
+</span><a href="#315" id="315" class="l">315: </a><span class="php-comment">     * This method can be used to instantiate a {@link COntologyNode} instance from a term
+</span><a href="#316" id="316" class="l">316: </a><span class="php-comment">     * or from a node identifier. The method accepts a single parameter that may take the
+</span><a href="#317" id="317" class="l">317: </a><span class="php-comment">     * following values:
+</span><a href="#318" id="318" class="l">318: </a><span class="php-comment">     *
+</span><a href="#319" id="319" class="l">319: </a><span class="php-comment">     * &lt;ul&gt;
+</span><a href="#320" id="320" class="l">320: </a><span class="php-comment">     *  &lt;li&gt;&lt;tt&gt;{@link COntologyTerm}&lt;/tt&gt;: In this case the method will assume you want to
+</span><a href="#321" id="321" class="l">321: </a><span class="php-comment">     *      retrieve the term or terms that refer to the provided term object. If any nodes
+</span><a href="#322" id="322" class="l">322: </a><span class="php-comment">     *      match, the method will return an array with the list of matching objects; if no
+</span><a href="#323" id="323" class="l">323: </a><span class="php-comment">     *      nodes match, the method will return a new node object pointing to the provided
+</span><a href="#324" id="324" class="l">324: </a><span class="php-comment">     *      term.
+</span><a href="#325" id="325" class="l">325: </a><span class="php-comment">     *  &lt;li&gt;&lt;tt&gt;integer&lt;/tt&gt;: In this case the method assumes that the parameter represents
+</span><a href="#326" id="326" class="l">326: </a><span class="php-comment">     *      a node identifier and will attempt to retrieve it: if found it will return it;
+</span><a href="#327" id="327" class="l">327: </a><span class="php-comment">     *      if not, it will return &lt;tt&gt;NULL&lt;/tt&gt;.
+</span><a href="#328" id="328" class="l">328: </a><span class="php-comment">     *  &lt;li&gt;&lt;tt&gt;string&lt;/tt&gt;: Any other type will be cast to a string and will be interpreted
+</span><a href="#329" id="329" class="l">329: </a><span class="php-comment">     *      as the term's global identifier: the method will then follow the same rules as
+</span><a href="#330" id="330" class="l">330: </a><span class="php-comment">     *      if a term object was provided.
+</span><a href="#331" id="331" class="l">331: </a><span class="php-comment">     * &lt;/ul&gt;
+</span><a href="#332" id="332" class="l">332: </a><span class="php-comment">     *
+</span><a href="#333" id="333" class="l">333: </a><span class="php-comment">     * The method will raise an exception if the object is not {@link _IsInited()} and if
+</span><a href="#334" id="334" class="l">334: </a><span class="php-comment">     * the provided parameter is &lt;tt&gt;NULL&lt;/tt&gt;.
+</span><a href="#335" id="335" class="l">335: </a><span class="php-comment">     *
+</span><a href="#336" id="336" class="l">336: </a><span class="php-comment">     * @param mixed                 $theIdentifier      Node identifier or term reference.
+</span><a href="#337" id="337" class="l">337: </a><span class="php-comment">     *
+</span><a href="#338" id="338" class="l">338: </a><span class="php-comment">     * @access public
+</span><a href="#339" id="339" class="l">339: </a><span class="php-comment">     * @return mixed                New, found node or nodes.
+</span><a href="#340" id="340" class="l">340: </a><span class="php-comment">     *
+</span><a href="#341" id="341" class="l">341: </a><span class="php-comment">     * @throws Exception
+</span><a href="#342" id="342" class="l">342: </a><span class="php-comment">     */</span>
+<a href="#343" id="343" class="l">343: </a>    <span class="php-keyword1">public</span> <span class="php-keyword1">function</span> NewNode( <span class="php-var">$theIdentifier</span> )
+<a href="#344" id="344" class="l">344: </a>    {
+<a href="#345" id="345" class="l">345: </a>        <span class="php-comment">//</span>
+<a href="#346" id="346" class="l">346: </a>        <span class="php-comment">// Check if object is ready.</span>
+<a href="#347" id="347" class="l">347: </a>        <span class="php-comment">//</span>
+<a href="#348" id="348" class="l">348: </a>        <span class="php-keyword1">if</span>( <span class="php-var">$this</span>-&gt;_IsInited() )
+<a href="#349" id="349" class="l">349: </a>        {
+<a href="#350" id="350" class="l">350: </a>            <span class="php-comment">//</span>
+<a href="#351" id="351" class="l">351: </a>            <span class="php-comment">// Check identifier.</span>
+<a href="#352" id="352" class="l">352: </a>            <span class="php-comment">//</span>
+<a href="#353" id="353" class="l">353: </a>            <span class="php-keyword1">if</span>( <span class="php-var">$theIdentifier</span> !== <span class="php-keyword1">NULL</span> )
+<a href="#354" id="354" class="l">354: </a>            {
+<a href="#355" id="355" class="l">355: </a>                <span class="php-comment">//</span>
+<a href="#356" id="356" class="l">356: </a>                <span class="php-comment">// Handle node identifier.</span>
+<a href="#357" id="357" class="l">357: </a>                <span class="php-comment">//</span>
+<a href="#358" id="358" class="l">358: </a>                <span class="php-keyword1">if</span>( <span class="php-keyword2">is_integer</span>( <span class="php-var">$theIdentifier</span> ) )
+<a href="#359" id="359" class="l">359: </a>                    <span class="php-keyword1">return</span> COntologyNode::NewObject
+<a href="#360" id="360" class="l">360: </a>                                ( <span class="php-var">$this</span>-&gt;Connection(), <span class="php-var">$theIdentifier</span> );            <span class="php-comment">// ==&gt;</span>
+<a href="#361" id="361" class="l">361: </a>                            
+<a href="#362" id="362" class="l">362: </a>                <span class="php-comment">//</span>
+<a href="#363" id="363" class="l">363: </a>                <span class="php-comment">// Handle term object.</span>
+<a href="#364" id="364" class="l">364: </a>                <span class="php-comment">//</span>
+<a href="#365" id="365" class="l">365: </a>                <span class="php-keyword1">if</span>( <span class="php-var">$theIdentifier</span> <span class="php-keyword1">instanceof</span> COntologyTerm )
+<a href="#366" id="366" class="l">366: </a>                {
+<a href="#367" id="367" class="l">367: </a>                    <span class="php-comment">//</span>
+<a href="#368" id="368" class="l">368: </a>                    <span class="php-comment">// Handle new term.</span>
+<a href="#369" id="369" class="l">369: </a>                    <span class="php-comment">//</span>
+<a href="#370" id="370" class="l">370: </a>                    <span class="php-keyword1">if</span>( ! <span class="php-var">$theIdentifier</span>-&gt;offsetExists( kOFFSET_NID ) )
+<a href="#371" id="371" class="l">371: </a>                    {
+<a href="#372" id="372" class="l">372: </a>                        <span class="php-var">$node</span> = <span class="php-keyword1">new</span> COntologyNode();
+<a href="#373" id="373" class="l">373: </a>                        <span class="php-var">$node</span>-&gt;Term( <span class="php-var">$theIdentifier</span> );
+<a href="#374" id="374" class="l">374: </a>                        
+<a href="#375" id="375" class="l">375: </a>                        <span class="php-keyword1">return</span> <span class="php-var">$node</span>;                                               <span class="php-comment">// ==&gt;</span>
+<a href="#376" id="376" class="l">376: </a>                    
+<a href="#377" id="377" class="l">377: </a>                    } <span class="php-comment">// New term ==&gt; new node.</span>
+<a href="#378" id="378" class="l">378: </a>                    
+<a href="#379" id="379" class="l">379: </a>                    <span class="php-comment">//</span>
+<a href="#380" id="380" class="l">380: </a>                    <span class="php-comment">// Get term identifier.</span>
+<a href="#381" id="381" class="l">381: </a>                    <span class="php-comment">//</span>
+<a href="#382" id="382" class="l">382: </a>                    <span class="php-var">$theIdentifier</span> = <span class="php-var">$theIdentifier</span>-&gt;offsetGet( kOFFSET_NID );
+<a href="#383" id="383" class="l">383: </a>                
+<a href="#384" id="384" class="l">384: </a>                } <span class="php-comment">// Provided term object.</span>
+<a href="#385" id="385" class="l">385: </a>                
+<a href="#386" id="386" class="l">386: </a>                <span class="php-comment">//</span>
+<a href="#387" id="387" class="l">387: </a>                <span class="php-comment">// Handle term global identifier.</span>
+<a href="#388" id="388" class="l">388: </a>                <span class="php-comment">//</span>
+<a href="#389" id="389" class="l">389: </a>                <span class="php-keyword1">else</span>
+<a href="#390" id="390" class="l">390: </a>                    <span class="php-var">$theIdentifier</span>
+<a href="#391" id="391" class="l">391: </a>                        = COntologyTerm::_id
+<a href="#392" id="392" class="l">392: </a>                            ( <span class="php-var">$theIdentifier</span>, <span class="php-var">$this</span>-&gt;Connection() );
+<a href="#393" id="393" class="l">393: </a>                
+<a href="#394" id="394" class="l">394: </a>            } <span class="php-comment">// Provided local or global identifier.</span>
+<a href="#395" id="395" class="l">395: </a>            
+<a href="#396" id="396" class="l">396: </a>            <span class="php-keyword1">throw</span> <span class="php-keyword1">new</span> Exception
+<a href="#397" id="397" class="l">397: </a>                ( <span class="php-quote">&quot;Missing node identifier or term&quot;</span>,
+<a href="#398" id="398" class="l">398: </a>                  kERROR_PARAMETER );                                           <span class="php-comment">// !@! ==&gt;</span>
+<a href="#399" id="399" class="l">399: </a>        
+<a href="#400" id="400" class="l">400: </a>        } <span class="php-comment">// Object is ready.</span>
+<a href="#401" id="401" class="l">401: </a>        
+<a href="#402" id="402" class="l">402: </a>        <span class="php-keyword1">throw</span> <span class="php-keyword1">new</span> Exception
+<a href="#403" id="403" class="l">403: </a>            ( <span class="php-quote">&quot;Object is not initialised&quot;</span>,
+<a href="#404" id="404" class="l">404: </a>              kERROR_STATE );                                                   <span class="php-comment">// !@! ==&gt;</span>
+<a href="#405" id="405" class="l">405: </a>
+<a href="#406" id="406" class="l">406: </a>    } <span class="php-comment">// NewNode.</span>
+<a href="#407" id="407" class="l">407: </a>
+<a href="#408" id="408" class="l">408: </a>        
+<a href="#409" id="409" class="l">409: </a>
+<a href="#410" id="410" class="l">410: </a><span class="php-comment">/*=======================================================================================
+</span><a href="#411" id="411" class="l">411: </a><span class="php-comment"> *                                                                                      *
+</span><a href="#412" id="412" class="l">412: </a><span class="php-comment"> *                              PUBLIC OPERATIONS INTERFACE                             *
+</span><a href="#413" id="413" class="l">413: </a><span class="php-comment"> *                                                                                      *
+</span><a href="#414" id="414" class="l">414: </a><span class="php-comment"> *======================================================================================*/</span>
+<a href="#415" id="415" class="l">415: </a>
+<a href="#416" id="416" class="l">416: </a>
+<a href="#417" id="417" class="l">417: </a>     
+<a href="#418" id="418" class="l">418: </a>    <span class="php-comment">/*===================================================================================
+</span><a href="#419" id="419" class="l">419: </a><span class="php-comment">     *  Insert                                                                          *
+</span><a href="#420" id="420" class="l">420: </a><span class="php-comment">     *==================================================================================*/</span>
+<a href="#421" id="421" class="l">421: </a>
+<a href="#422" id="422" class="l">422: </a>    <span class="php-comment">/**
+</span><a href="#423" id="423" class="l">423: </a><span class="php-comment">     * &lt;h4&gt;Insert an element&lt;/h4&gt;
+</span><a href="#424" id="424" class="l">424: </a><span class="php-comment">     *
+</span><a href="#425" id="425" class="l">425: </a><span class="php-comment">     * This method can be used to insert a term, node, edge or tag into the ontology. The
+</span><a href="#426" id="426" class="l">426: </a><span class="php-comment">     * method should only be used on new items, since it will raise an exception on
+</span><a href="#427" id="427" class="l">427: </a><span class="php-comment">     * duplicates.
+</span><a href="#428" id="428" class="l">428: </a><span class="php-comment">     *
+</span><a href="#429" id="429" class="l">429: </a><span class="php-comment">     * The following types are supported: {@link COntologyTerm}, {@link COntologyNode},
+</span><a href="#430" id="430" class="l">430: </a><span class="php-comment">     * {@link COntologyEdge} and {@link COntologyTag}.
+</span><a href="#431" id="431" class="l">431: </a><span class="php-comment">     *
+</span><a href="#432" id="432" class="l">432: </a><span class="php-comment">     * The method will return the object's native unique identifier attribute
+</span><a href="#433" id="433" class="l">433: </a><span class="php-comment">     * ({@link kOFFSET_NID}), or raise an exception if an error occurs.
+</span><a href="#434" id="434" class="l">434: </a><span class="php-comment">     *
+</span><a href="#435" id="435" class="l">435: </a><span class="php-comment">     * @param mixed                 $theElement         Term, node, edge or tag.
+</span><a href="#436" id="436" class="l">436: </a><span class="php-comment">     *
+</span><a href="#437" id="437" class="l">437: </a><span class="php-comment">     * @access public
+</span><a href="#438" id="438" class="l">438: </a><span class="php-comment">     * @return mixed                The object's native identifier.
+</span><a href="#439" id="439" class="l">439: </a><span class="php-comment">     *
+</span><a href="#440" id="440" class="l">440: </a><span class="php-comment">     * @throws Exception
+</span><a href="#441" id="441" class="l">441: </a><span class="php-comment">     */</span>
+<a href="#442" id="442" class="l">442: </a>    <span class="php-keyword1">public</span> <span class="php-keyword1">function</span> Insert( <span class="php-var">$theElement</span> )
+<a href="#443" id="443" class="l">443: </a>    {
+<a href="#444" id="444" class="l">444: </a>        <span class="php-comment">//</span>
+<a href="#445" id="445" class="l">445: </a>        <span class="php-comment">// Check if object is ready.</span>
+<a href="#446" id="446" class="l">446: </a>        <span class="php-comment">//</span>
+<a href="#447" id="447" class="l">447: </a>        <span class="php-keyword1">if</span>( <span class="php-var">$this</span>-&gt;_IsInited() )
+<a href="#448" id="448" class="l">448: </a>        {
+<a href="#449" id="449" class="l">449: </a>            <span class="php-comment">//</span>
+<a href="#450" id="450" class="l">450: </a>            <span class="php-comment">// Check object type.</span>
+<a href="#451" id="451" class="l">451: </a>            <span class="php-comment">//</span>
+<a href="#452" id="452" class="l">452: </a>            <span class="php-keyword1">if</span>( (<span class="php-var">$theElement</span> <span class="php-keyword1">instanceof</span> COntologyTerm)
+<a href="#453" id="453" class="l">453: </a>             || (<span class="php-var">$theElement</span> <span class="php-keyword1">instanceof</span> COntologyNode)
+<a href="#454" id="454" class="l">454: </a>             || (<span class="php-var">$theElement</span> <span class="php-keyword1">instanceof</span> COntologyEdge)
+<a href="#455" id="455" class="l">455: </a>             || (<span class="php-var">$theElement</span> <span class="php-keyword1">instanceof</span> COntologyTag) )
+<a href="#456" id="456" class="l">456: </a>                <span class="php-keyword1">return</span> <span class="php-var">$theElement</span>-&gt;Insert( <span class="php-var">$this</span>-&gt;Connection() );                  <span class="php-comment">// ==&gt;</span>
+<a href="#457" id="457" class="l">457: </a>            
+<a href="#458" id="458" class="l">458: </a>            <span class="php-keyword1">throw</span> <span class="php-keyword1">new</span> Exception
+<a href="#459" id="459" class="l">459: </a>                ( <span class="php-quote">&quot;Unsupported element type&quot;</span>,
+<a href="#460" id="460" class="l">460: </a>                  kERROR_PARAMETER );                                           <span class="php-comment">// !@! ==&gt;</span>
+<a href="#461" id="461" class="l">461: </a>        
+<a href="#462" id="462" class="l">462: </a>        } <span class="php-comment">// Object is initialised.</span>
+<a href="#463" id="463" class="l">463: </a>        
+<a href="#464" id="464" class="l">464: </a>        <span class="php-keyword1">throw</span> <span class="php-keyword1">new</span> Exception
+<a href="#465" id="465" class="l">465: </a>            ( <span class="php-quote">&quot;Object is not initialised&quot;</span>,
+<a href="#466" id="466" class="l">466: </a>              kERROR_STATE );                                                   <span class="php-comment">// !@! ==&gt;</span>
+<a href="#467" id="467" class="l">467: </a>
+<a href="#468" id="468" class="l">468: </a>    } <span class="php-comment">// Insert.</span>
+<a href="#469" id="469" class="l">469: </a>
+<a href="#470" id="470" class="l">470: </a>     
+<a href="#471" id="471" class="l">471: </a>
+<a href="#472" id="472" class="l">472: </a>} <span class="php-comment">// class COntology.</span>
+<a href="#473" id="473" class="l">473: </a>
+<a href="#474" id="474" class="l">474: </a>
+<a href="#475" id="475" class="l">475: </a><span class="xlang">?&gt;</span>
+<a href="#476" id="476" class="l">476: </a></code></pre>
 
 	<div id="footer">
 		MyWrapper Reference Documentation API documentation generated by <a href="http://apigen.org">ApiGen 2.7.0</a>

@@ -7,7 +7,7 @@
 	<title>Class COntology | MyWrapper Reference Documentation</title>
 
 	<script type="text/javascript" src="resources/combined.js?496895167"></script>
-	<script type="text/javascript" src="elementlist.js?3064769946"></script>
+	<script type="text/javascript" src="elementlist.js?4159639342"></script>
 	<link rel="stylesheet" type="text/css" media="all" href="resources/style.css?1567499433" />
 
 </head>
@@ -211,6 +211,10 @@ returning its name.</p>
 				</div>
 
 
+				<h4>Uses</h4>
+				<div class="list">
+						<code><code><a href="class-COntology.html#_">COntology::Connection()</a></code></code> <br />
+				</div>
 
 
 		</div>
@@ -227,7 +231,7 @@ returning its name.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#_Connection">#</a>
-		<code><a href="source-class-COntology.html#124" title="Go to source code">Connection</a>( <span>mixed <var>$theValue</var> = <span class="php-keyword1">NULL</span></span>, <span>boolean <var>$getOld</var> = <span class="php-keyword1">FALSE</span> </span> )</code>
+		<code><a href="source-class-COntology.html#126" title="Go to source code">Connection</a>( <span>mixed <var>$theValue</var> = <span class="php-keyword1">NULL</span></span>, <span>boolean <var>$getOld</var> = <span class="php-keyword1">FALSE</span> </span> )</code>
 
 		<div class="description short">
 			
@@ -256,11 +260,14 @@ returning its name.</p>
 					<code>mixed</code><br><i>New</i> or <i>old</i> native connection.<br />
 				</div>
 
-
-				<h4>Uses</h4>
+				<h4>Throws</h4>
 				<div class="list">
-						_isInited()<br />
-						<code><code><a href="function-ManageProperty.html">ManageProperty()</a></code></code> <br />
+					<code><code><a href="class-Exception.html">Exception</a></code></code><br />
+				</div>
+
+				<h4>Used by</h4>
+				<div class="list">
+						<code><code><a href="class-COntology.html#_">COntology::__toString()</a></code></code> <br />
 				</div>
 
 				<h4>Overrides</h4>
@@ -269,18 +276,18 @@ returning its name.</p>
 		</div>
 		</div></td>
 	</tr>
-	<tr data-order="Root" id="_Root">
+	<tr data-order="NewTerm" id="_NewTerm">
 
 		<td class="attributes"><code>
 			 public 
-			mixed
+			<code><a href="class-COntologyTerm.html">COntologyTerm</a></code>
 			
 			</code>
 		</td>
 
 		<td class="name"><div>
-		<a class="anchor" href="#_Root">#</a>
-		<code><a href="source-class-COntology.html#169" title="Go to source code">Root</a>( <span>mixed <var>$theValue</var> = <span class="php-keyword1">NULL</span></span>, <span>boolean <var>$getOld</var> = <span class="php-keyword1">FALSE</span> </span> )</code>
+		<a class="anchor" href="#_NewTerm">#</a>
+		<code><a href="source-class-COntology.html#170" title="Go to source code">NewTerm</a>( <span>string <var>$theIdentifier</var></span>, <span>mixed <var>$theNamespace</var> = <span class="php-keyword1">NULL</span></span>, <span>string <var>$theLabel</var> = <span class="php-keyword1">NULL</span></span>, <span>string <var>$theDescription</var> = <span class="php-keyword1">NULL</span></span>, <span>string <var>$theLanguage</var> = <span class="php-keyword1">NULL</span> </span> )</code>
 
 		<div class="description short">
 			
@@ -293,111 +300,192 @@ returning its name.</p>
 <h4>Instantiate a term</h4>
 
 <p>This method can be used to instantiate a new <code><a href="class-COntologyTerm.html">COntologyTerm</a></code> instance,
-it expects the following parameters:</p>
+the method allows creating a term including the label and description. The
+method expects the following parameters:</p>
 
 <ul>
-	<li><tt>$theNamespace</tt>: The term namespace, it can be provided in two forms:
+	<li><tt>$theIdentifier</tt>: The term local or global identifier, if you provide
+	<tt>NULL</tt>, the method will raise an exception.</li>
+
+	<li><tt>$theNamespace</tt>: The term namespace, it can be provided in the
+	following forms:
 		<ul>
-			<li><tt>string</tt>: A string is interpreted as the namespace global
-			identifier.</li>
+			<li><tt>NULL</tt>: This indicates that the term has no namespace.</li>
 
-			<li><tt>COntologyTerm</tt>: This type is expected to be the namespace term
-			object.</li>
+			<li><tt><code><a href="class-COntologyTerm.html">COntologyTerm</a></code></tt>: This type is expected to be the namespace
+			term object.</li>
 
-			<li><i>other</i>: Any other type is interpreted as the term native
-			identifier.</li>
+			<li><i>other</i>: Any other type is interpreted as the term native identifier;
+			if the namespace term cannot be found, the method will raise an exception.</li>
 		</ul>
-	</li>
+		 Note that if you want to provide a global identifier you should do so using the
+		first parameter.</li>
 
-	<li><tt>$theCode</tt>: The term code, it can be provided in two forms:
-		<ul>
-			<li><tt>string</tt>: A string is interpreted as the term local identifier.</li>
+	<li><tt>$theLabel</tt>: The term label string, this parameter is optional.</li>
 
-			<li><i>other</i>: Any other type is interpreted as the term native
-			identifier.</li>
-		</ul>
-	</li>
+	<li><tt>$theDescription</tt>: The term description string this parameter is
+	optional.</li>
+
+	<li><tt>$theLanguage</tt>: The language code of both the label and the
+	description.</li>
 </ul>
 
-<p>The second parameter is a boolean which if <tt>TRUE</tt> will return the
-<i>old</i> value when replacing nodes; if <tt>FALSE</tt>, it will return the
-currently set value.</p>
-
-<p>When providing a new node, this method will insert it if not <code><a href="class-CStatusDocument.html#_">CStatusDocument::_IsCommitted()</a></code>. The method will also add the kNODE_KIND_ROOT kind to
-the node and refresh it.</p>
+<p>The method will first attempt to locate a term matching the global identifier
+stemming from the provided parameters, if it matches one, this will be returned
+as found, regardless of the provided parameters. If the term was not found, the
+method will return a new uncommitted object with the provided attributes.</p>
 
 
 
 				<h4>Parameters</h4>
 				<div class="list"><dl>
-					<dt><var>$theValue</var></dt>
-					<dd><code>mixed</code><br> Root node or operation.</dd>
-					<dt><var>$getOld</var></dt>
-					<dd><code>boolean</code><br> <tt>TRUE</tt> get old value.</dd>
+					<dt><var>$theIdentifier</var></dt>
+					<dd><code>string</code><br> Term local identifier.</dd>
+					<dt><var>$theNamespace</var></dt>
+					<dd><code>mixed</code><br> Namespace term reference.</dd>
+					<dt><var>$theLabel</var></dt>
+					<dd><code>string</code><br> Term label.</dd>
+					<dt><var>$theDescription</var></dt>
+					<dd><code>string</code><br> Term description.</dd>
+					<dt><var>$theLanguage</var></dt>
+					<dd><code>string</code><br> Label and description language code.</dd>
 				</dl></div>
 
 				<h4>Returns</h4>
 				<div class="list">
-					<code>mixed</code><br><i>New</i> or <i>old</i> native connection.<br />
+					<code><code><a href="class-COntologyTerm.html">COntologyTerm</a></code></code><br>New or found term.<br />
 				</div>
 
-
-				<h4>Uses</h4>
+				<h4>Throws</h4>
 				<div class="list">
-						_isInited()<br />
-						<code><code><a href="function-ManageProperty.html">ManageProperty()</a></code></code> <br />
+					<code><code><a href="class-Exception.html">Exception</a></code></code><br />
 				</div>
+
 
 
 		</div>
 		</div></td>
 	</tr>
-	<tr data-order="_Ready" id="__Ready">
+	<tr data-order="NewNode" id="_NewNode">
 
 		<td class="attributes"><code>
-			 protected 
-			boolean
+			 public 
+			mixed
 			
 			</code>
 		</td>
 
 		<td class="name"><div>
-		<a class="anchor" href="#__Ready">#</a>
-		<code><a href="source-class-COntology.html#277" title="Go to source code">_Ready</a>( )</code>
+		<a class="anchor" href="#_NewNode">#</a>
+		<code><a href="source-class-COntology.html#312" title="Go to source code">NewNode</a>( <span>mixed <var>$theIdentifier</var></span> )</code>
 
 		<div class="description short">
 			
-<h4>Determine if the object is ready</h4>
+<h4>Instantiate a node</h4>
 
 		</div>
 
 		<div class="description detailed hidden">
 			
-<h4>Determine if the object is ready</h4>
+<h4>Instantiate a node</h4>
 
-<p>In this class we tie the <code><a href="class-CStatusDocument.html#_">CStatusDocument::_IsInited()</a></code> status to the presence or
-absence of the root or ontology node.</p>
+<p>This method can be used to instantiate a <code><a href="class-COntologyNode.html">COntologyNode</a></code> instance from
+a term or from a node identifier. The method accepts a single parameter that may
+take the following values:</p>
+
+<ul>
+	<li><tt><code><a href="class-COntologyTerm.html">COntologyTerm</a></code></tt>: In this case the method will assume you want
+	to retrieve the term or terms that refer to the provided term object. If any
+	nodes match, the method will return an array with the list of matching objects;
+	if no nodes match, the method will return a new node object pointing to the
+	provided term.</li>
+
+	<li><tt>integer</tt>: In this case the method assumes that the parameter
+	represents a node identifier and will attempt to retrieve it: if found it will
+	return it; if not, it will return <tt>NULL</tt>.</li>
+
+	<li><tt>string</tt>: Any other type will be cast to a string and will be
+	interpreted as the term's global identifier: the method will then follow the
+	same rules as if a term object was provided.</li>
+</ul>
+
+<p>The method will raise an exception if the object is not <code><a href="class-CStatusDocument.html#_">CStatusDocument::_IsInited()</a></code>
+and if the provided parameter is <tt>NULL</tt>.</p>
 
 
 
+				<h4>Parameters</h4>
+				<div class="list"><dl>
+					<dt><var>$theIdentifier</var></dt>
+					<dd><code>mixed</code><br> Node identifier or term reference.</dd>
+				</dl></div>
 
 				<h4>Returns</h4>
 				<div class="list">
-					<code>boolean</code><br><tt>TRUE</tt> means {@link _IsInited( <tt>TRUE</tt> ).<br />
+					<code>mixed</code><br>New, found node or nodes.<br />
 				</div>
 
-
-				<h4>Uses</h4>
+				<h4>Throws</h4>
 				<div class="list">
-						<code><code><a href="class-COntology.html#_">COntology::_Ready()</a></code></code> <br />
-				</div>
-				<h4>Used by</h4>
-				<div class="list">
-						<code><code><a href="class-COntology.html#_">COntology::_Ready()</a></code></code> <br />
+					<code><code><a href="class-Exception.html">Exception</a></code></code><br />
 				</div>
 
-				<h4>Overrides</h4>
-				<div class="list"><code><a href="class-CConnection.html#_">CConnection::_Ready</a></code></div>
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="Insert" id="_Insert">
+
+		<td class="attributes"><code>
+			 public 
+			mixed
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_Insert">#</a>
+		<code><a href="source-class-COntology.html#422" title="Go to source code">Insert</a>( <span>mixed <var>$theElement</var></span> )</code>
+
+		<div class="description short">
+			
+<h4>Insert an element</h4>
+
+		</div>
+
+		<div class="description detailed hidden">
+			
+<h4>Insert an element</h4>
+
+<p>This method can be used to insert a term, node, edge or tag into the
+ontology. The method should only be used on new items, since it will raise an
+exception on duplicates.</p>
+
+<p>The following types are supported: <code><a href="class-COntologyTerm.html">COntologyTerm</a></code>, <code><a href="class-COntologyNode.html">COntologyNode</a></code>, <code><a href="class-COntologyEdge.html">COntologyEdge</a></code> and <code><a href="class-COntologyTag.html">COntologyTag</a></code>.</p>
+
+<p>The method will return the object's native unique identifier attribute
+(kOFFSET_NID), or raise an exception if an error occurs.</p>
+
+
+
+				<h4>Parameters</h4>
+				<div class="list"><dl>
+					<dt><var>$theElement</var></dt>
+					<dd><code>mixed</code><br> Term, node, edge or tag.</dd>
+				</dl></div>
+
+				<h4>Returns</h4>
+				<div class="list">
+					<code>mixed</code><br>The object's native identifier.<br />
+				</div>
+
+				<h4>Throws</h4>
+				<div class="list">
+					<code><code><a href="class-Exception.html">Exception</a></code></code><br />
+				</div>
+
+
 
 		</div>
 		</div></td>
@@ -409,6 +497,7 @@ absence of the root or ontology node.</p>
 	<tr>
 		<td><code>
 			<a href="class-CConnection.html#_">_Connection()</a>, 
+			<a href="class-CConnection.html#_">_Ready()</a>, 
 			<a href="class-CConnection.html#_">__construct()</a>
 		</code></td>
 	</tr>
