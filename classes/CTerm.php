@@ -70,6 +70,9 @@ require_once( kPATH_MYWRAPPER_LIBRARY_CLASS."/CPersistentObject.php" );
  *	<li>{@link NS()}: This method manages the term's namespace, {@link kOFFSET_NAMESPACE}.
  *	<li>{@link LID()}: This method manages the local unique identifier,
  *		{@link kOFFSET_LID}.
+ *	<li>{@link Label()}: This method manages the term label, {@link kOFFSET_LABEL}.
+ *	<li>{@link Description()}: This method manages the term label,
+ *		{@link kOFFSET_DESCRIPTION}.
  * </ul>
  *
  *	@package	MyWrapper
@@ -173,6 +176,122 @@ class CTerm extends CPersistentObject
 		return ManageOffset( $this, kOFFSET_LID, $theValue, $getOld );				// ==>
 
 	} // LID.
+
+	 
+	/*===================================================================================
+	 *	Label																			*
+	 *==================================================================================*/
+
+	/**
+	 * <h4>Manage term label</h4>
+	 *
+	 * The term <i>label</i>, {@link kOFFSET_LABEL}, represents the term's name or short
+	 * human readable description. It is an optional attribute of the object that holds
+	 * an array of elements structured as follows:
+	 *
+	 * <ul>
+	 *	<li>{@link kOFFSET_DATA}: This item holds the label string, the item is required.
+	 *	<li>{@link kOFFSET_LANGUAGE}: This item holds the two character ISO 639 language
+	 *		code of the string, this element is optional.
+	 * </ul>
+	 *
+	 * No two elements may share the same language code and only one element may omit the
+	 * language code.
+	 *
+	 * The method accepts the following parameters:
+	 *
+	 * <ul>
+	 *	<li><tt>$theLanguage</tt>: Language code, <tt>NULL</tt> refers to the element
+	 *		lacking the language code.
+	 *	<li><tt>$theValue</tt>: The label string or the operation, depending on its value:
+	 *	 <ul>
+	 *		<li><tt>NULL</tt>: Return the string corresponding to the provided language.
+	 *		<li><tt>FALSE</tt>: Delete the element corresponding to the provided language.
+	 *		<li><i>other</i>: Any other value represents the label string that will be set
+	 *			or replace the entry for the provided language.
+	 *	 </ul>
+	 *	<li><tt>$getOld</tt>: If <tt>TRUE</tt>, the method will return the label
+	 *		<i>before</i> it was eventually modified; if <tt>FALSE</tt>, the method will
+	 *		return the value <i>after</i> eventual modifications.
+	 * </ul>
+	 *
+	 * @param mixed					$theLanguage		Language code.
+	 * @param mixed					$theValue			Label or operation.
+	 * @param boolean				$getOld				<tt>TRUE</tt> get old value.
+	 *
+	 * @access public
+	 * @return mixed				<i>New</i> or <i>old</i> label.
+	 *
+	 * @uses ManageTypedOffset()
+	 *
+	 * @see kOFFSET_LABEL
+	 */
+	public function Label( $theLanguage = NULL, $theValue = NULL, $getOld = FALSE )
+	{
+		return ManageTypedOffset( $this,
+								  kOFFSET_LABEL, kOFFSET_LANGUAGE, kOFFSET_DATA,
+								  $theLanguage, $theValue, $getOld );				// ==>
+
+	} // Label.
+
+	 
+	/*===================================================================================
+	 *	Description																		*
+	 *==================================================================================*/
+
+	/**
+	 * <h4>Manage term description</h4>
+	 *
+	 * The term <i>description</i>, {@link kOFFSET_DESCRIPTION}, represents the term's
+	 * definition or human readable description. It is an optional attribute of the object
+	 * that holds an array of elements structured as follows:
+	 *
+	 * <ul>
+	 *	<li>{@link kOFFSET_DATA}: This item holds the description string, the item is
+	 *		required.
+	 *	<li>{@link kOFFSET_LANGUAGE}: This item holds the two character ISO 639 language
+	 *		code of the string, this element is optional.
+	 * </ul>
+	 *
+	 * No two elements may share the same language code and only one element may omit the
+	 * language code.
+	 *
+	 * The method accepts the following parameters:
+	 *
+	 * <ul>
+	 *	<li><tt>$theLanguage</tt>: Language code, <tt>NULL</tt> refers to the element
+	 *		lacking the language code.
+	 *	<li><tt>$theValue</tt>: The description string or the operation, depending on its
+	 *		value:
+	 *	 <ul>
+	 *		<li><tt>NULL</tt>: Return the string corresponding to the provided language.
+	 *		<li><tt>FALSE</tt>: Delete the element corresponding to the provided language.
+	 *		<li><i>other</i>: Any other value represents the description string that will be
+	 *			set or replace the entry for the provided language.
+	 *	 </ul>
+	 *	<li><tt>$getOld</tt>: If <tt>TRUE</tt>, the method will return the description
+	 *		string <i>before</i> it was eventually modified; if <tt>FALSE</tt>, the method
+	 *		will return the value <i>after</i> eventual modifications.
+	 * </ul>
+	 *
+	 * @param mixed					$theLanguage		Language code.
+	 * @param mixed					$theValue			Description or operation.
+	 * @param boolean				$getOld				<tt>TRUE</tt> get old value.
+	 *
+	 * @access public
+	 * @return mixed				<i>New</i> or <i>old</i> label.
+	 *
+	 * @uses ManageTypedOffset()
+	 *
+	 * @see kOFFSET_DESCRIPTION
+	 */
+	public function Description( $theLanguage = NULL, $theValue = NULL, $getOld = FALSE )
+	{
+		return ManageTypedOffset( $this,
+								  kOFFSET_DESCRIPTION, kOFFSET_LANGUAGE, kOFFSET_DATA,
+								  $theLanguage, $theValue, $getOld );				// ==>
+
+	} // Description.
 		
 
 
@@ -284,6 +403,18 @@ class CTerm extends CPersistentObject
 				( "You cannot modify the [$theOffset] offset: "
 				 ."the object is committed",
 				  kERROR_LOCKED );												// !@! ==>
+		
+		//
+		// Check label and description types.
+		//
+		$offsets = array( kOFFSET_LABEL, kOFFSET_DESCRIPTION );
+		if( in_array( $theOffset, $offsets )
+		 && ($theValue !== NULL)
+		 && (! is_array( $theValue )) )
+			throw new Exception
+				( "You cannot set the [$theOffset] offset: "
+				 ."invalid value, expecting an array",
+				  kERROR_PARAMETER );											// !@! ==>
 		
 		//
 		// Call parent method.

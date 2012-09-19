@@ -4,7 +4,7 @@
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 	<meta name="generator" content="ApiGen 2.7.0" />
 
-	<title>Function ManageProperty | MyWrapper Reference Documentation</title>
+	<title>Function ManageTypedOffset | MyWrapper Reference Documentation</title>
 
 	<script type="text/javascript" src="resources/combined.js?496895167"></script>
 	<script type="text/javascript" src="elementlist.js?3064769946"></script>
@@ -55,8 +55,8 @@
 				<li><a href="function-ManageBitField.html">ManageBitField</a></li>
 				<li><a href="function-ManageObjectSetOffset.html">ManageObjectSetOffset</a></li>
 				<li><a href="function-ManageOffset.html">ManageOffset</a></li>
-				<li class="active"><a href="function-ManageProperty.html">ManageProperty</a></li>
-				<li><a href="function-ManageTypedOffset.html">ManageTypedOffset</a></li>
+				<li><a href="function-ManageProperty.html">ManageProperty</a></li>
+				<li class="active"><a href="function-ManageTypedOffset.html">ManageTypedOffset</a></li>
 				<li><a href="function-StringNormalise.html">StringNormalise</a></li>
 			</ul>
 		</div>
@@ -95,39 +95,62 @@
 	</div>
 
 <div id="content" class="function">
-	<h1>Function ManageProperty</h1>
+	<h1>Function ManageTypedOffset</h1>
 
 
 	<div class="description">
 	
-<h4>Manage a property</h4>
+<p>Manage a typed offset.</p>
 
-<p>This library implements a standard interface for managing object properties
-using accessor methods, this method implements this interface:</p>
+<p>Typed offsets are constituted by a list of structures, each containing two
+elements: a type code and a the string data.</p>
+
+<p>The type code is an optional field that represents the key of the list
+element, no two list elements may share the same type and no two elements may
+omit the type. The data element contains the data qualified by the type and the
+element is required.</p>
+
+<p>The method accepts the following parameters:</p>
 
 <ul>
-	<li><tt>&amp;$theMember</tt>: Reference to the property being managed.</li>
+	<li><tt>&amp;$theReference</tt>: Reference to the main container, it may either
+	refer to an array or an ArrayObject, any other type will trigger an
+	exception.</li>
 
-	<li><tt>$theValue</tt>: The property value or operation:
+	<li><tt>$theOffset</tt>: The offset to the attribute containing the list of
+	elements.</li>
+
+	<li><tt>$theTypeOffset</tt>: The offset to the type within the element.</li>
+
+	<li><tt>$theDataOffset</tt>: The offset to the data within the element.</li>
+
+	<li><tt>$theTypeValue</tt>: The value of the element's type to match, it
+	represents the key to the element; we assume the value to be a string.</li>
+
+	<li><tt>$theValue</tt>: The value or operation:
 		<ul>
-			<li><tt>NULL</tt>: Return the current property value.</li>
+			<li><tt>NULL</tt>: Return the offset's current value.</li>
 
-			<li><tt>FALSE</tt>: Reset the property to <tt>NULL</tt>, the default value.</li>
+			<li><tt>FALSE</tt>: Delete the offset.</li>
 
-			<li><i>other</i>: Any other type represents the new value of the property.</li>
+			<li><i>other</i>: Any other type represents the offset's new value.</li>
 		</ul>
 	</li>
 
 	<li><tt>$getOld</tt>: Determines what the method will return:
 		<ul>
-			<li><tt>TRUE</tt>: Return the value of the property <i>before</i> it was
+			<li><tt>TRUE</tt>: Return the value of the offset <i>before</i> it was
 			eventually modified.</li>
 
-			<li><tt>FALSE</tt>: Return the value of the property <i>after</i> it was
+			<li><tt>FALSE</tt>: Return the value of the offset <i>after</i> it was
 			eventually modified.</li>
 		</ul>
 	</li>
 </ul>
+
+<p>The method expects each element to be a structure containing at least an
+element indexed by the <tt>$theDataOffset</tt> offset, if that is not the case,
+the method will raise an exception.</p>
 
 	</div>
 
@@ -138,24 +161,58 @@ using accessor methods, this method implements this interface:</p>
 				Milko A. Škofič &lt;<a
 href="mailto:m.skofic&#64;cgiar.org">m.skofic&#64;<!---->cgiar.org</a>&gt;<br />
 				<b>Used by:</b>
-				<code><code><a href="class-CConnection.html#_">CConnection::Connection()</a></code></code> <br />
+				<code><code><a href="class-CTerm.html#_">CTerm::Label()</a></code></code> <br />
 				<b>Used by:</b>
-				<code><code><a href="class-COntology.html#_">COntology::Connection()</a></code></code> <br />
-				<b>Used by:</b>
-				<code><code><a href="class-COntology.html#_">COntology::Root()</a></code></code> <br />
-		<b>Located at</b> <a href="source-function-ManageProperty.html#43" title="Go to source code">accessors.php</a><br />
+				<code><code><a href="class-CTerm.html#_">CTerm::Description()</a></code></code> <br />
+		<b>Located at</b> <a href="source-function-ManageTypedOffset.html#283" title="Go to source code">accessors.php</a><br />
 	</div>
 
 
 	<table class="summary" id="parameters">
 	<caption>Parameters summary</caption>
-	<tr data-order="theMember" id="$theMember">
+	<tr data-order="theReference" id="$theReference">
+		<td class="name"><code>
+			reference
+		</code></td>
+		<td class="value"><code><var>&amp; $theReference</var></code></td>
+		<td>
+			&amp;$theReference Array or ArrayObject reference.
+		</td>
+	</tr>
+	<tr data-order="theOffset" id="$theOffset">
 		<td class="name"><code>
 			string
 		</code></td>
-		<td class="value"><code><var>&amp; $theMember</var></code></td>
+		<td class="value"><code><var>$theOffset</var></code></td>
 		<td>
-			&amp;$theMember Offset.
+			 Offset to be managed.
+		</td>
+	</tr>
+	<tr data-order="theTypeOffset" id="$theTypeOffset">
+		<td class="name"><code>
+			string
+		</code></td>
+		<td class="value"><code><var>$theTypeOffset</var></code></td>
+		<td>
+			 Offset of type item.
+		</td>
+	</tr>
+	<tr data-order="theDataOffset" id="$theDataOffset">
+		<td class="name"><code>
+			string
+		</code></td>
+		<td class="value"><code><var>$theDataOffset</var></code></td>
+		<td>
+			 Offset of data item.
+		</td>
+	</tr>
+	<tr data-order="theTypeValue" id="$theTypeValue">
+		<td class="name"><code>
+			string
+		</code></td>
+		<td class="value"><code><var>$theTypeValue</var> = <span class="php-keyword1">NULL</span></code></td>
+		<td>
+			 Offset to be managed.
 		</td>
 	</tr>
 	<tr data-order="theValue" id="$theValue">
@@ -164,7 +221,7 @@ href="mailto:m.skofic&#64;cgiar.org">m.skofic&#64;<!---->cgiar.org</a>&gt;<br />
 		</code></td>
 		<td class="value"><code><var>$theValue</var> = <span class="php-keyword1">NULL</span></code></td>
 		<td>
-			 Value or operation.
+			 New value or operation.
 		</td>
 	</tr>
 	<tr data-order="getOld" id="$getOld">
@@ -173,7 +230,7 @@ href="mailto:m.skofic&#64;cgiar.org">m.skofic&#64;<!---->cgiar.org</a>&gt;<br />
 		</code></td>
 		<td class="value"><code><var>$getOld</var> = <span class="php-keyword1">FALSE</span></code></td>
 		<td>
-			 <tt>TRUE</tt> get old value.
+			 TRUE get old value.
 		</td>
 	</tr>
 	</table>
@@ -185,11 +242,22 @@ href="mailto:m.skofic&#64;cgiar.org">m.skofic&#64;<!---->cgiar.org</a>&gt;<br />
 			mixed
 		</code></td>
 		<td>
-			Old or new property value.
+			
 		</td>
 	</tr>
 	</table>
 
+	<table class="summary" id="throws">
+	<caption>Thrown exceptions summary</caption>
+	<tr>
+		<td class="name"><code>
+			{@link
+		</code></td>
+		<td>
+			CException CException}
+		</td>
+	</tr>
+	</table>
 
 </div>
 

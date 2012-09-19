@@ -7,7 +7,7 @@
 	<title>Class CTerm | MyWrapper Reference Documentation</title>
 
 	<script type="text/javascript" src="resources/combined.js?496895167"></script>
-	<script type="text/javascript" src="elementlist.js?1725982047"></script>
+	<script type="text/javascript" src="elementlist.js?3064769946"></script>
 	<link rel="stylesheet" type="text/css" media="all" href="resources/style.css?1567499433" />
 
 </head>
@@ -131,6 +131,10 @@ offsets:</p>
 	<li><code><a href="class-CTerm.html#_">CTerm::NS()</a></code>: This method manages the term's namespace, kOFFSET_NAMESPACE.</li>
 
 	<li><code><a href="class-CTerm.html#_">CTerm::LID()</a></code>: This method manages the local unique identifier, kOFFSET_LID.</li>
+
+	<li><code><a href="class-CTerm.html#_">CTerm::Label()</a></code>: This method manages the term label, kOFFSET_LABEL.</li>
+
+	<li><code><a href="class-CTerm.html#_">CTerm::Description()</a></code>: This method manages the term label, kOFFSET_DESCRIPTION.</li>
 </ul>
 
 	</div>
@@ -225,7 +229,7 @@ href="mailto:m.skofic&#64;cgiar.org">m.skofic&#64;<!---->cgiar.org</a>&gt;<br />
 
 		<td class="name"><div>
 		<a class="anchor" href="#_NS">#</a>
-		<code><a href="source-class-CTerm.html#94" title="Go to source code">NS</a>( <span>mixed <var>$theValue</var> = <span class="php-keyword1">NULL</span></span>, <span>boolean <var>$getOld</var> = <span class="php-keyword1">FALSE</span> </span> )</code>
+		<code><a href="source-class-CTerm.html#97" title="Go to source code">NS</a>( <span>mixed <var>$theValue</var> = <span class="php-keyword1">NULL</span></span>, <span>boolean <var>$getOld</var> = <span class="php-keyword1">FALSE</span> </span> )</code>
 
 		<div class="description short">
 			
@@ -298,7 +302,7 @@ will be locked and an exception will be raised.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#_LID">#</a>
-		<code><a href="source-class-CTerm.html#137" title="Go to source code">LID</a>( <span>mixed <var>$theValue</var> = <span class="php-keyword1">NULL</span></span>, <span>boolean <var>$getOld</var> = <span class="php-keyword1">FALSE</span> </span> )</code>
+		<code><a href="source-class-CTerm.html#140" title="Go to source code">LID</a>( <span>mixed <var>$theValue</var> = <span class="php-keyword1">NULL</span></span>, <span>boolean <var>$getOld</var> = <span class="php-keyword1">FALSE</span> </span> )</code>
 
 		<div class="description short">
 			
@@ -362,6 +366,194 @@ will be locked and an exception will be raised.</p>
 		</div>
 		</div></td>
 	</tr>
+	<tr data-order="Label" id="_Label">
+
+		<td class="attributes"><code>
+			 public 
+			mixed
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_Label">#</a>
+		<code><a href="source-class-CTerm.html#185" title="Go to source code">Label</a>( <span>mixed <var>$theLanguage</var> = <span class="php-keyword1">NULL</span></span>, <span>mixed <var>$theValue</var> = <span class="php-keyword1">NULL</span></span>, <span>boolean <var>$getOld</var> = <span class="php-keyword1">FALSE</span> </span> )</code>
+
+		<div class="description short">
+			
+<h4>Manage term label</h4>
+
+		</div>
+
+		<div class="description detailed hidden">
+			
+<h4>Manage term label</h4>
+
+<p>The term <i>label</i>, kOFFSET_LABEL, represents the term's name or
+short human readable description. It is an optional attribute of the object that
+holds an array of elements structured as follows:</p>
+
+<ul>
+	<li>kOFFSET_DATA: This item holds the label string, the item is
+	required.</li>
+
+	<li>kOFFSET_LANGUAGE: This item holds the two character ISO 639 language
+	code of the string, this element is optional.</li>
+</ul>
+
+<p>No two elements may share the same language code and only one element may
+omit the language code.</p>
+
+<p>The method accepts the following parameters:</p>
+
+<ul>
+	<li><tt>$theLanguage</tt>: Language code, <tt>NULL</tt> refers to the element
+	lacking the language code.</li>
+
+	<li><tt>$theValue</tt>: The label string or the operation, depending on its
+	value:
+		<ul>
+			<li><tt>NULL</tt>: Return the string corresponding to the provided
+			language.</li>
+
+			<li><tt>FALSE</tt>: Delete the element corresponding to the provided
+			language.</li>
+
+			<li><i>other</i>: Any other value represents the label string that will be set
+			or replace the entry for the provided language.</li>
+		</ul>
+	</li>
+
+	<li><tt>$getOld</tt>: If <tt>TRUE</tt>, the method will return the label
+	<i>before</i> it was eventually modified; if <tt>FALSE</tt>, the method will
+	return the value <i>after</i> eventual modifications.</li>
+</ul>
+
+
+
+				<h4>Parameters</h4>
+				<div class="list"><dl>
+					<dt><var>$theLanguage</var></dt>
+					<dd><code>mixed</code><br> Language code.</dd>
+					<dt><var>$theValue</var></dt>
+					<dd><code>mixed</code><br> Label or operation.</dd>
+					<dt><var>$getOld</var></dt>
+					<dd><code>boolean</code><br> <tt>TRUE</tt> get old value.</dd>
+				</dl></div>
+
+				<h4>Returns</h4>
+				<div class="list">
+					<code>mixed</code><br><i>New</i> or <i>old</i> label.<br />
+				</div>
+
+
+				<h4>See</h4>
+				<div class="list">
+						kOFFSET_LABEL<br />
+				</div>
+				<h4>Uses</h4>
+				<div class="list">
+						<code><code><a href="function-ManageTypedOffset.html">ManageTypedOffset()</a></code></code> <br />
+				</div>
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="Description" id="_Description">
+
+		<td class="attributes"><code>
+			 public 
+			mixed
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_Description">#</a>
+		<code><a href="source-class-CTerm.html#242" title="Go to source code">Description</a>( <span>mixed <var>$theLanguage</var> = <span class="php-keyword1">NULL</span></span>, <span>mixed <var>$theValue</var> = <span class="php-keyword1">NULL</span></span>, <span>boolean <var>$getOld</var> = <span class="php-keyword1">FALSE</span> </span> )</code>
+
+		<div class="description short">
+			
+<h4>Manage term description</h4>
+
+		</div>
+
+		<div class="description detailed hidden">
+			
+<h4>Manage term description</h4>
+
+<p>The term <i>description</i>, kOFFSET_DESCRIPTION, represents the
+term's definition or human readable description. It is an optional attribute of
+the object that holds an array of elements structured as follows:</p>
+
+<ul>
+	<li>kOFFSET_DATA: This item holds the description string, the item is
+	required.</li>
+
+	<li>kOFFSET_LANGUAGE: This item holds the two character ISO 639 language
+	code of the string, this element is optional.</li>
+</ul>
+
+<p>No two elements may share the same language code and only one element may
+omit the language code.</p>
+
+<p>The method accepts the following parameters:</p>
+
+<ul>
+	<li><tt>$theLanguage</tt>: Language code, <tt>NULL</tt> refers to the element
+	lacking the language code.</li>
+
+	<li><tt>$theValue</tt>: The description string or the operation, depending on
+	its value:
+		<ul>
+			<li><tt>NULL</tt>: Return the string corresponding to the provided
+			language.</li>
+
+			<li><tt>FALSE</tt>: Delete the element corresponding to the provided
+			language.</li>
+
+			<li><i>other</i>: Any other value represents the description string that will be
+			set or replace the entry for the provided language.</li>
+		</ul>
+	</li>
+
+	<li><tt>$getOld</tt>: If <tt>TRUE</tt>, the method will return the description
+	string <i>before</i> it was eventually modified; if <tt>FALSE</tt>, the method
+	will return the value <i>after</i> eventual modifications.</li>
+</ul>
+
+
+
+				<h4>Parameters</h4>
+				<div class="list"><dl>
+					<dt><var>$theLanguage</var></dt>
+					<dd><code>mixed</code><br> Language code.</dd>
+					<dt><var>$theValue</var></dt>
+					<dd><code>mixed</code><br> Description or operation.</dd>
+					<dt><var>$getOld</var></dt>
+					<dd><code>boolean</code><br> <tt>TRUE</tt> get old value.</dd>
+				</dl></div>
+
+				<h4>Returns</h4>
+				<div class="list">
+					<code>mixed</code><br><i>New</i> or <i>old</i> label.<br />
+				</div>
+
+
+				<h4>See</h4>
+				<div class="list">
+						kOFFSET_DESCRIPTION<br />
+				</div>
+				<h4>Uses</h4>
+				<div class="list">
+						<code><code><a href="function-ManageTypedOffset.html">ManageTypedOffset()</a></code></code> <br />
+				</div>
+
+
+		</div>
+		</div></td>
+	</tr>
 	<tr data-order="_index" id="__index">
 
 		<td class="attributes"><code>
@@ -373,7 +565,7 @@ will be locked and an exception will be raised.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#__index">#</a>
-		<code><a href="source-class-CTerm.html#191" title="Go to source code">_index</a>( <span><code><a href="class-CConnection.html">CConnection</a></code> <var>$theConnection</var></span>, <span>bitfield <var>$theModifiers</var></span> )</code>
+		<code><a href="source-class-CTerm.html#310" title="Go to source code">_index</a>( <span><code><a href="class-CConnection.html">CConnection</a></code> <var>$theConnection</var></span>, <span>bitfield <var>$theModifiers</var></span> )</code>
 
 		<div class="description short">
 			
@@ -432,7 +624,7 @@ compute the global identifier.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#__Preset">#</a>
-		<code><a href="source-class-CTerm.html#254" title="Go to source code">_Preset</a>( <span>reference <var>&amp; $theOffset</var></span>, <span>reference <var>&amp; $theValue</var></span> )</code>
+		<code><a href="source-class-CTerm.html#373" title="Go to source code">_Preset</a>( <span>reference <var>&amp; $theOffset</var></span>, <span>reference <var>&amp; $theValue</var></span> )</code>
 
 		<div class="description short">
 			
@@ -493,7 +685,7 @@ object was committed, <code><a href="class-CStatusDocument.html#_">CStatusDocume
 
 		<td class="name"><div>
 		<a class="anchor" href="#__Preunset">#</a>
-		<code><a href="source-class-CTerm.html#300" title="Go to source code">_Preunset</a>( <span>reference <var>&amp; $theOffset</var></span> )</code>
+		<code><a href="source-class-CTerm.html#431" title="Go to source code">_Preunset</a>( <span>reference <var>&amp; $theOffset</var></span> )</code>
 
 		<div class="description short">
 			
@@ -552,7 +744,7 @@ object was committed, <code><a href="class-CStatusDocument.html#_">CStatusDocume
 
 		<td class="name"><div>
 		<a class="anchor" href="#__Ready">#</a>
-		<code><a href="source-class-CTerm.html#354" title="Go to source code">_Ready</a>( )</code>
+		<code><a href="source-class-CTerm.html#485" title="Go to source code">_Ready</a>( )</code>
 
 		<div class="description short">
 			

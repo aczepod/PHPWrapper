@@ -306,6 +306,119 @@ try
 	echo( '<hr />' );
 
 	//
+	// Add default label.
+	//
+	echo( '<h4>Add default label</h4>' );
+	echo( '<h5>$termB->Label( NULL, "Default label" );</h5>' );
+	$termB->Label( NULL, "Default label" );
+	echo( 'Inited['.$termB->inited()
+				   .'] Dirty['.$termB->dirty()
+				   .'] Saved['.$termB->committed()
+				   .'] Encoded['.$termB->encoded().']<br />' );
+	echo( '<pre>' ); print_r( $termB ); echo( '</pre>' );
+	echo( '<hr />' );
+
+	//
+	// Add italian label.
+	//
+	echo( '<h4>Add italian label</h4>' );
+	echo( '<h5>$termB->Label( "it", "Italian" );</h5>' );
+	$termB->Label( "it", "Italian" );
+	echo( 'Inited['.$termB->inited()
+				   .'] Dirty['.$termB->dirty()
+				   .'] Saved['.$termB->committed()
+				   .'] Encoded['.$termB->encoded().']<br />' );
+	echo( '<pre>' ); print_r( $termB ); echo( '</pre>' );
+	echo( '<hr />' );
+
+	//
+	// Add english label.
+	//
+	echo( '<h4>Add english label</h4>' );
+	echo( '<h5>$termB->Label( "en", "english" );</h5>' );
+	$termB->Label( "en", "english" );
+	echo( 'Inited['.$termB->inited()
+				   .'] Dirty['.$termB->dirty()
+				   .'] Saved['.$termB->committed()
+				   .'] Encoded['.$termB->encoded().']<br />' );
+	echo( '<pre>' ); print_r( $termB ); echo( '</pre>' );
+	echo( '<hr />' );
+
+	//
+	// Retrieve italian label.
+	//
+	echo( '<h4>Retrieve italian label</h4>' );
+	echo( '<h5>$label = $termB->Label( "it" );</h5>' );
+	$label = $termB->Label( "it" );
+	echo( '<pre>' ); print_r( $label ); echo( '</pre>' );
+	echo( '<hr />' );
+
+	//
+	// Retrieve default label.
+	//
+	echo( '<h4>Retrieve default label</h4>' );
+	echo( '<h5>$label = $termB->Label();</h5>' );
+	$label = $termB->Label();
+	echo( '<pre>' ); print_r( $label ); echo( '</pre>' );
+	echo( '<hr />' );
+
+	//
+	// Delete english label.
+	//
+	echo( '<h4>Delete english label</h4>' );
+	echo( '<h5>$termB->Label( "en", FALSE );</h5>' );
+	$termB->Label( "en", FALSE );
+	echo( '<pre>' ); print_r( $termB ); echo( '</pre>' );
+	echo( '<hr />' );
+
+	//
+	// Delete default label.
+	//
+	echo( '<h4>Delete default label</h4>' );
+	echo( '<h5>$termB->Label( NULL, FALSE );</h5>' );
+	$termB->Label( NULL, FALSE );
+	echo( '<pre>' ); print_r( $termB ); echo( '</pre>' );
+	echo( '<hr />' );
+
+	//
+	// Delete italian label.
+	//
+	echo( '<h4>Delete italian label</h4>' );
+	echo( '<h5>$termB->Label( "it", FALSE );</h5>' );
+	$termB->Label( "it", FALSE );
+	echo( '<pre>' ); print_r( $termB ); echo( '</pre>' );
+	echo( '<hr />' );
+
+	//
+	// Add default description.
+	//
+	echo( '<h4>Add default description</h4>' );
+	echo( '<h5>$termB->Description( NULL, "Default description" );</h5>' );
+	$termB->Description( NULL, "Default description" );
+	echo( '<pre>' ); print_r( $termB ); echo( '</pre>' );
+	echo( '<hr />' );
+
+	//
+	// Set wrong description.
+	//
+	try
+	{
+		echo( '<h4>Set wrong description</h4>' );
+		echo( '<h5>$termB[ kOFFSET_DESCRIPTION ] = "Description";</h5>' );
+		$termB[ kOFFSET_DESCRIPTION ] = "Description";
+		echo( '<h3><font color="red">Should have raised an exception</font></h3>' );
+		echo( '<pre>' ); print_r( $namespace ); echo( '</pre>' );
+		echo( '<hr />' );
+	}
+	catch( \Exception $error )
+	{
+		echo( '<h5>Expected exception</h5>' );
+		echo( '<pre>'.(string) $error.'</pre>' );
+		echo( '<hr>' );
+	}
+	echo( '<hr>' );
+
+	//
 	// Convert to string.
 	//
 	echo( '<h4>Convert to string</h4>' );

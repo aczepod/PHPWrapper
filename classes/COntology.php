@@ -71,20 +71,17 @@ require_once( kPATH_MYWRAPPER_LIBRARY_CLASS."/CConnection.php" );
  * This class represents an object whose duty is to provide a high level interface for
  * managing an ontology.
  *
+ * The class features a series of public methods that can be used to instantiate and relate
+ * ontology related objects.
+ *
+ * One instantiates the object witha {@link CDatabase} instance which refers to the database
+ * in which the ontology resides.
+ *
  *	@package	MyWrapper
  *	@subpackage	Ontology
  */
 class COntology extends CConnection
 {
-	/**
-	 * Ontology node.
-	 *
-	 * This data member holds the ontology root node, or ontology node.
-	 *
-	 * @var COntologyNode
-	 */
-	 protected $mOntology = NULL;
-
 		
 
 /*=======================================================================================
@@ -159,27 +156,35 @@ class COntology extends CConnection
 
 /*=======================================================================================
  *																						*
- *								PUBLIC OPERATIONS INTERFACE								*
+ *								PUBLIC COMPONENTS INTERFACE								*
  *																						*
  *======================================================================================*/
 
 
 	 
 	/*===================================================================================
-	 *	Root																			*
+	 *	NewTerm																			*
 	 *==================================================================================*/
 
 	/**
-	 * <h4>Manage ontology root node</h4>
+	 * <h4>Instantiate a term</h4>
 	 *
-	 * This method can be used to manage the ontology root node, it accepts a parameter
-	 * which represents either the root node or the requested operation, depending on its
-	 * value:
+	 * This method can be used to instantiate a new {@link COntologyTerm} instance, it
+	 * expects the following parameters:
 	 *
 	 * <ul>
-	 *	<li><tt>NULL</tt>: Return the current value.
-	 *	<li><tt>FALSE</tt>: Delete the current value.
-	 *	<li><i>other</i>: Set the value with the provided parameter.
+	 *	<li><tt>$theNamespace</tt>: The term namespace, it can be provided in two forms:
+	 *	 <ul>
+	 *		<li><tt>string</tt>: A string is interpreted as the namespace global identifier.
+	 *		<li><tt>COntologyTerm</tt>: This type is expected to be the namespace term
+	 *			object.
+	 *		<li><i>other</i>: Any other type is interpreted as the term native identifier.
+	 *	 </ul>
+	 *	<li><tt>$theCode</tt>: The term code, it can be provided in two forms:
+	 *	 <ul>
+	 *		<li><tt>string</tt>: A string is interpreted as the term local identifier.
+	 *		<li><i>other</i>: Any other type is interpreted as the term native identifier.
+	 *	 </ul>
 	 * </ul>
 	 *
 	 * The second parameter is a boolean which if <tt>TRUE</tt> will return the <i>old</i>

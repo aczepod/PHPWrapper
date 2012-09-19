@@ -277,6 +277,236 @@ require_once( kPATH_MYWRAPPER_LIBRARY_DEFINE."/Errors.inc.php" );
 
 	 
 	/*===================================================================================
+	 *	ManageTypedOffset																*
+	 *==================================================================================*/
+
+	/**
+	 * Manage a typed offset.
+	 *
+	 * Typed offsets are constituted by a list of structures, each containing two elements:
+	 * a type code and a the string data.
+	 *
+	 * The type code is an optional field that represents the key of the list element, no
+	 * two list elements may share the same type and no two elements may omit the type. The
+	 * data element contains the data qualified by the type and the element is required.
+	 *
+	 * The method accepts the following parameters:
+	 *
+	 * <ul>
+	 *	<li><tt>&$theReference</tt>: Reference to the main container, it may either refer to
+	 *		an array or an ArrayObject, any other type will trigger an exception.
+	 *	<li><tt>$theOffset</tt>: The offset to the attribute containing the list of
+	 *		elements.
+	 *	<li><tt>$theTypeOffset</tt>: The offset to the type within the element.
+	 *	<li><tt>$theDataOffset</tt>: The offset to the data within the element.
+	 *	<li><tt>$theTypeValue</tt>: The value of the element's type to match, it represents
+	 *		the key to the element; we assume the value to be a string.
+	 *	<li><tt>$theValue</tt>: The value or operation:
+	 *	 <ul>
+	 *		<li><tt>NULL</tt>: Return the offset's current value.
+	 *		<li><tt>FALSE</tt>: Delete the offset.
+	 *		<li><i>other</i>: Any other type represents the offset's new value.
+	 *	 </ul>
+	 *	<li><tt>$getOld</tt>: Determines what the method will return:
+	 *	 <ul>
+	 *		<li><tt>TRUE</tt>: Return the value of the offset <i>before</i> it was eventually
+	 *			modified.
+	 *		<li><tt>FALSE</tt>: Return the value of the offset <i>after</i> it was eventually
+	 *			modified.
+	 *	 </ul>
+	 * </ul>
+	 *
+	 * The method expects each element to be a structure containing at least an element
+	 * indexed by the <tt>$theDataOffset</tt> offset, if that is not the case, the method
+	 * will raise an exception.
+	 *
+	 * @param reference			   &$theReference		Array or ArrayObject reference.
+	 * @param string				$theOffset			Offset to be managed.
+	 * @param string				$theTypeOffset		Offset of type item.
+	 * @param string				$theDataOffset		Offset of data item.
+	 * @param string				$theTypeValue		Offset to be managed.
+	 * @param mixed					$theValue			New value or operation.
+	 * @param boolean				$getOld				TRUE get old value.
+	 *
+	 * @static
+	 * @return mixed
+	 *
+	 * @throws {@link CException CException}
+	 */
+	function ManageTypedOffset( &$theReference,
+								 $theOffset, $theTypeOffset, $theDataOffset,
+								 $theTypeValue = NULL, $theValue = NULL,
+								 $getOld = FALSE )
+	{
+		//
+		// Check list container.
+		//
+		if( is_array( $theReference )
+		 || ($theReference instanceof ArrayObject) )
+		{
+			//
+			// Init local storage.
+			//
+			$save = $match = $idx = NULL;
+			
+			//
+			// Normalise data.
+			//
+			$theOffset = (string) $theOffset;
+			$theTypeOffset = (string) $theTypeOffset;
+			
+			//
+			// Handle list.
+			//
+			if( ( is_array( $theReference )
+			   && array_key_exists( $theOffset, $theReference ) )
+			 || ( ($theReference instanceof ArrayObject)
+			   && $theReference->offsetExists( $theOffset ) ) )
+			{
+				//
+				// Save list.
+				//
+				$save = $theReference[ $theOffset ];
+				if( is_array( $save ) )
+				{
+					//
+					// Scan list for type.
+					//
+					for( $i = 0; $i < count( $save ); $i++ )
+					{
+						//
+						// Check element.
+						//
+						if( is_array( $save[ $i ] ) )
+						{
+							//
+							// Match type.
+							//
+							if( ( ($theTypeValue !== NULL)
+							   && array_key_exists( $theTypeOffset, $save[ $i ] )
+							   && ($theTypeValue == $save[ $i ][ $theTypeOffset ]) )
+							 || ( ($theTypeValue === NULL)
+							   && (! array_key_exists( $theTypeOffset, $save[ $i ] )) ) )
+							{
+								//
+								// Save match value.
+								//
+								if( array_key_exists( $theDataOffset, $save[ $i ] ) )
+									$match = $save[ $i ][ $theDataOffset ];
+								else
+									throw new Exception
+											( "Missing [$theDataOffset] item in element",
+											  kERROR_STATE );					// !@! ==>
+								
+								//
+								// Save index.
+								//
+								$idx = $i;
+								
+								break;										// =>
+							}
+						
+						} // Element is array.
+						
+						else
+							throw new Exception
+									( "Unsupported list element type",
+									  kERROR_UNSUPPORTED );						// !@! ==>
+					
+					} // Scanning list.
+				
+				} // Supported list.
+				
+				else
+					throw new Exception
+							( "Unsupported list type",
+							  kERROR_UNSUPPORTED );								// !@! ==>
+			
+			} // List exists
+			
+			//
+			// Handle retrieve.
+			//
+			if( $theValue === NULL )
+				return $match;														// ==>
+			
+			//
+			// Delete offset.
+			//
+			if( $theValue === FALSE )
+			{
+				//
+				// Handle match.
+				//
+				if( $idx !== NULL )
+				{
+					//
+					// Remove element.
+					//
+					unset( $save[ $idx ] );
+					
+					//
+					// No elements left.
+					//
+					if( ! count( $save ) )
+					{
+						//
+						// Remove list.
+						//
+						if( is_array( $theReference ) )
+							unset( $theReference[ $theOffset ] );
+						else
+							$theReference->offsetUnset( $theOffset );
+					
+					} // Deleted last element.
+					
+					//
+					// Update offset.
+					//
+					else
+						$theReference[ $theOffset ] = array_values( $save );
+				
+				} // Matched element.
+				
+				if( $getOld )
+					return $match;													// ==>
+				
+				return NULL;														// ==>
+			
+			} // Delete operation.
+			
+			//
+			// Build element.
+			//
+			$element = array( $theDataOffset => $theValue );
+			if( $theTypeValue !== NULL )
+				$element[ $theTypeOffset ] = $theTypeValue;
+			
+			//
+			// Append to list.
+			//
+			$save[] = $element;
+			
+			//
+			// Update offset.
+			//
+			$theReference[ $theOffset ] = $save;
+			
+			if( $getOld )
+				return $match;														// ==>
+			
+			return $theValue;														// ==>
+		
+		} // Supported list container.
+
+		throw new Exception
+				( "Unsupported list container type",
+				  kERROR_UNSUPPORTED );											// !@! ==>
+	
+	} // ManageTypedOffset.
+
+	 
+	/*===================================================================================
 	 *	ManageObjectSetOffset															*
 	 *==================================================================================*/
 

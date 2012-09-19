@@ -7,7 +7,7 @@
 	<title>Class COntology | MyWrapper Reference Documentation</title>
 
 	<script type="text/javascript" src="resources/combined.js?496895167"></script>
-	<script type="text/javascript" src="elementlist.js?1725982047"></script>
+	<script type="text/javascript" src="elementlist.js?3064769946"></script>
 	<link rel="stylesheet" type="text/css" media="all" href="resources/style.css?1567499433" />
 
 </head>
@@ -100,6 +100,12 @@
 <p>This class represents an object whose duty is to provide a high level
 interface for managing an ontology.</p>
 
+<p>The class features a series of public methods that can be used to instantiate
+and relate ontology related objects.</p>
+
+<p>One instantiates the object witha <code><a href="class-CDatabase.html">CDatabase</a></code> instance which refers to
+the database in which the ontology resides.</p>
+
 	</div>
 
 	<dl class="tree">
@@ -181,7 +187,7 @@ href="mailto:m.skofic&#64;cgiar.org">m.skofic&#64;<!---->cgiar.org</a>&gt;<br />
 
 		<td class="name"><div>
 		<a class="anchor" href="#___toString">#</a>
-		<code><a href="source-class-COntology.html#102" title="Go to source code">__toString</a>( )</code>
+		<code><a href="source-class-COntology.html#99" title="Go to source code">__toString</a>( )</code>
 
 		<div class="description short">
 			
@@ -221,7 +227,7 @@ returning its name.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#_Connection">#</a>
-		<code><a href="source-class-COntology.html#127" title="Go to source code">Connection</a>( <span>mixed <var>$theValue</var> = <span class="php-keyword1">NULL</span></span>, <span>boolean <var>$getOld</var> = <span class="php-keyword1">FALSE</span> </span> )</code>
+		<code><a href="source-class-COntology.html#124" title="Go to source code">Connection</a>( <span>mixed <var>$theValue</var> = <span class="php-keyword1">NULL</span></span>, <span>boolean <var>$getOld</var> = <span class="php-keyword1">FALSE</span> </span> )</code>
 
 		<div class="description short">
 			
@@ -274,28 +280,43 @@ returning its name.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#_Root">#</a>
-		<code><a href="source-class-COntology.html#172" title="Go to source code">Root</a>( <span>mixed <var>$theValue</var> = <span class="php-keyword1">NULL</span></span>, <span>boolean <var>$getOld</var> = <span class="php-keyword1">FALSE</span> </span> )</code>
+		<code><a href="source-class-COntology.html#169" title="Go to source code">Root</a>( <span>mixed <var>$theValue</var> = <span class="php-keyword1">NULL</span></span>, <span>boolean <var>$getOld</var> = <span class="php-keyword1">FALSE</span> </span> )</code>
 
 		<div class="description short">
 			
-<h4>Manage ontology root node</h4>
+<h4>Instantiate a term</h4>
 
 		</div>
 
 		<div class="description detailed hidden">
 			
-<h4>Manage ontology root node</h4>
+<h4>Instantiate a term</h4>
 
-<p>This method can be used to manage the ontology root node, it accepts a
-parameter which represents either the root node or the requested operation,
-depending on its value:</p>
+<p>This method can be used to instantiate a new <code><a href="class-COntologyTerm.html">COntologyTerm</a></code> instance,
+it expects the following parameters:</p>
 
 <ul>
-	<li><tt>NULL</tt>: Return the current value.</li>
+	<li><tt>$theNamespace</tt>: The term namespace, it can be provided in two forms:
+		<ul>
+			<li><tt>string</tt>: A string is interpreted as the namespace global
+			identifier.</li>
 
-	<li><tt>FALSE</tt>: Delete the current value.</li>
+			<li><tt>COntologyTerm</tt>: This type is expected to be the namespace term
+			object.</li>
 
-	<li><i>other</i>: Set the value with the provided parameter.</li>
+			<li><i>other</i>: Any other type is interpreted as the term native
+			identifier.</li>
+		</ul>
+	</li>
+
+	<li><tt>$theCode</tt>: The term code, it can be provided in two forms:
+		<ul>
+			<li><tt>string</tt>: A string is interpreted as the term local identifier.</li>
+
+			<li><i>other</i>: Any other type is interpreted as the term native
+			identifier.</li>
+		</ul>
+	</li>
 </ul>
 
 <p>The second parameter is a boolean which if <tt>TRUE</tt> will return the
@@ -342,7 +363,7 @@ the node and refresh it.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#__Ready">#</a>
-		<code><a href="source-class-COntology.html#272" title="Go to source code">_Ready</a>( )</code>
+		<code><a href="source-class-COntology.html#277" title="Go to source code">_Ready</a>( )</code>
 
 		<div class="description short">
 			
@@ -459,39 +480,6 @@ absence of the root or ontology node.</p>
 	</table>
 
 
-	<table class="summary" id="properties">
-	<caption>Properties summary</caption>
-	<tr data-order="mOntology" id="$mOntology">
-
-		<td class="attributes"><code>
-			protected 
-			<code><a href="class-COntologyNode.html">COntologyNode</a></code>
-		</code></td>
-
-		<td class="name">
-				<a href="source-class-COntology.html#79" title="Go to source code"><var>$mOntology</var></a>
-		</td>
-		<td class="value"><code><span class="php-keyword1">NULL</span></code></td>
-		<td class="description"><div>
-			<a href="#$mOntology" class="anchor">#</a>
-
-			<div class="description short">
-				
-<p>Ontology node.</p>
-
-			</div>
-
-			<div class="description detailed hidden">
-				
-<p>Ontology node.</p>
-
-<p>This data member holds the ontology root node, or ontology node.</p>
-
-
-			</div>
-		</div></td>
-	</tr>
-	</table>
 
 	<table class="summary inherited">
 	<caption>Properties inherited from <a href="class-CConnection.html#properties">CConnection</a></caption>
