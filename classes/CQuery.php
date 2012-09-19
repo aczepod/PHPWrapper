@@ -150,7 +150,7 @@ class CQuery extends CStatusDocument
 	 *==================================================================================*/
 
 	/**
-	 * Instantiate class.
+	 * <h4>Instantiate class</h4>
 	 *
 	 * If you omit the parameter the method will instantiate an empty query, if you provide
 	 * an <tt>array</tt> or <tt>{@link ArrayObject}</tt> it will assume the structure to be
@@ -208,7 +208,7 @@ class CQuery extends CStatusDocument
 	 *==================================================================================*/
 
 	/**
-	 * Append statement.
+	 * <h4>Append statement</h4>
 	 *
 	 * This method will append the provided statement to the query, the second parameter
 	 * represents the condition.
@@ -335,7 +335,7 @@ class CQuery extends CStatusDocument
 	 *==================================================================================*/
 
 	/**
-	 * Validate query.
+	 * <h4>Validate query</h4>
 	 *
 	 * This method will check whether the query structure is valid.
 	 *
@@ -368,7 +368,7 @@ class CQuery extends CStatusDocument
 	 *==================================================================================*/
 
 	/**
-	 * Append statement.
+	 * <h4>Append statement</h4>
 	 *
 	 * This method will append the provided statement to the current query.
 	 *
@@ -542,7 +542,7 @@ class CQuery extends CStatusDocument
 	 *==================================================================================*/
 
 	/**
-	 * Validate condition.
+	 * <h4>Validate condition</h4>
 	 *
 	 * This method expects a condition as its argument, it will check if it is a valid
 	 * condition, then it will validate all condition statements.
@@ -605,7 +605,7 @@ class CQuery extends CStatusDocument
 	 *==================================================================================*/
 
 	/**
-	 * Validate statement.
+	 * <h4>Validate statement</h4>
 	 *
 	 * This method expects a statement as its argument, it will check if it is a valid
 	 * statement and check if all required elements are there.

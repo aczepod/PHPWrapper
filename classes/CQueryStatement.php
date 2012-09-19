@@ -150,7 +150,7 @@ class CQueryStatement extends CDocument
 	 *==================================================================================*/
 
 	/**
-	 * Instantiate class.
+	 * <h4>Instantiate class</h4>
 	 *
 	 * The constructor can be used to instantiate a statement either by providing an
 	 * existing statement structure, or by providing the statement elements:
@@ -334,7 +334,7 @@ class CQueryStatement extends CDocument
 	 *==================================================================================*/
 
 	/**
-	 * Manage subject.
+	 * <h4>Manage subject</h4>
 	 *
 	 * This method can be used to manage the query {@link kOFFSET_QUERY_SUBJECT} subject, it
 	 * accepts a parameter which represents either the statement subject or the requested
@@ -372,7 +372,7 @@ class CQueryStatement extends CDocument
 	 *==================================================================================*/
 
 	/**
-	 * Manage object.
+	 * <h4>Manage object</h4>
 	 *
 	 * This method can be used to manage the query {@link kOFFSET_QUERY_DATA} object or
 	 * match data, it accepts a parameter which represents either the statement object or
@@ -410,7 +410,7 @@ class CQueryStatement extends CDocument
 	 *==================================================================================*/
 
 	/**
-	 * Manage predicate.
+	 * <h4>Manage predicate</h4>
 	 *
 	 * This method can be used to manage the query {@link kOFFSET_QUERY_OPERATOR} operator
 	 * or predicate, it accepts a parameter which represents either the statement predicate
@@ -526,7 +526,7 @@ class CQueryStatement extends CDocument
 	 *==================================================================================*/
 
 	/**
-	 * Manage data type.
+	 * <h4>Manage data type</h4>
 	 *
 	 * This method can be used to manage the query data type or object data type, it accepts
 	 * a parameter which represents either the data type in which the object is expressed,
@@ -605,7 +605,7 @@ class CQueryStatement extends CDocument
 	 *==================================================================================*/
 
 	/**
-	 * Manage range.
+	 * <h4>Manage range</h4>
 	 *
 	 * This method can be used to manage the query object if it is in the form of a range.
 	 * This method will only allow you to set the range, to retrieve or delete the range you
@@ -652,7 +652,7 @@ class CQueryStatement extends CDocument
 	 *==================================================================================*/
 
 	/**
-	 * Create a disabled statement.
+	 * <h4>Create a disabled statement</h4>
 	 *
 	 * This method can be used to instantiate a disabled query statement. A disabled
 	 * statement is one that should not execute, it can be used as a placeholder, or
@@ -694,7 +694,7 @@ class CQueryStatement extends CDocument
 	 *==================================================================================*/
 
 	/**
-	 * Create an equals statement.
+	 * <h4>Create an equals statement</h4>
 	 *
 	 * This method can be used to instantiate an equality query
 	 * statement.
@@ -721,10 +721,9 @@ class CQueryStatement extends CDocument
 	static function Equals( $theSubject, $theObject, $theType = NULL )
 	{
 		//
-		// Try to infer type.
+		// Handle data type.
 		//
-		if( $theType === NULL )
-			$theType = static::InferDataType( $theObject );
+		static::HandleDataType( $theType, $theObject );
 			
 		return new self
 			( (string) $theSubject, kOPERATOR_EQUAL, $theType, $theObject );		// ==>
@@ -737,7 +736,7 @@ class CQueryStatement extends CDocument
 	 *==================================================================================*/
 
 	/**
-	 * Create a not equals statement.
+	 * <h4>Create a not equals statement</h4>
 	 *
 	 * This method can be used to instantiate a not {@link kOPERATOR_EQUAL_NOT} query
 	 * statement, which is the negation of the {@link Equals()} statement.
@@ -764,10 +763,9 @@ class CQueryStatement extends CDocument
 	static function NotEquals( $theSubject, $theObject, $theType = NULL )
 	{
 		//
-		// Try to infer type.
+		// Handle data type.
 		//
-		if( $theType === NULL )
-			$theType = static::InferDataType( $theObject );
+		static::HandleDataType( $theType, $theObject );
 			
 		return new self
 			( (string) $theSubject, kOPERATOR_EQUAL_NOT, $theType, $theObject );	// ==>
@@ -780,7 +778,7 @@ class CQueryStatement extends CDocument
 	 *==================================================================================*/
 
 	/**
-	 * Create a case and accent insensitive equality statement.
+	 * <h4>Create a case and accent insensitive equality statement</h4>
 	 *
 	 * This method can be used to instantiate a {@link kOPERATOR_LIKE} query statement,
 	 * which is equivalent to the SQL <tt>LIKE</tt> clause, an accent and case insensitive
@@ -820,7 +818,7 @@ class CQueryStatement extends CDocument
 	 *==================================================================================*/
 
 	/**
-	 * Create a not like statement.
+	 * <h4>Create a not like statement</h4>
 	 *
 	 * This method can be used to instantiate a {@link kOPERATOR_LIKE_NOT} query statement,
 	 * which is the negation of the {@link Like()} statement.
@@ -857,7 +855,7 @@ class CQueryStatement extends CDocument
 	 *==================================================================================*/
 
 	/**
-	 * Create a prefix statement.
+	 * <h4>Create a prefix statement</h4>
 	 *
 	 * This method can be used to instantiate a query statement that will select all
 	 * elements whose contents beginning matches the test data.
@@ -896,7 +894,7 @@ class CQueryStatement extends CDocument
 	 *==================================================================================*/
 
 	/**
-	 * Create a case-insensitive prefix statement.
+	 * <h4>Create a case-insensitive prefix statement</h4>
 	 *
 	 * This method can be used to instantiate a query statement that will select all
 	 * elements whose contents beginning matches the test data in a case and accent
@@ -936,7 +934,7 @@ class CQueryStatement extends CDocument
 	 *==================================================================================*/
 
 	/**
-	 * Create a contains statement.
+	 * <h4>Create a contains statement</h4>
 	 *
 	 * This method can be used to instantiate a query statement that will select all
 	 * elements whose contents matches the test data in any position.
@@ -975,7 +973,7 @@ class CQueryStatement extends CDocument
 	 *==================================================================================*/
 
 	/**
-	 * Create a case-insensitive contains statement.
+	 * <h4>Create a case-insensitive contains statement</h4>
 	 *
 	 * This method can be used to instantiate a query statement that will select all
 	 * elements whose contents matches the test data in any position in a case and accent
@@ -1015,7 +1013,7 @@ class CQueryStatement extends CDocument
 	 *==================================================================================*/
 
 	/**
-	 * Create a suffix statement.
+	 * <h4>Create a suffix statement</h4>
 	 *
 	 * This method can be used to instantiate a query statement that will select all
 	 * elements whose contents end matches the test data.
@@ -1054,7 +1052,7 @@ class CQueryStatement extends CDocument
 	 *==================================================================================*/
 
 	/**
-	 * Create a case-insensitive suffix statement.
+	 * <h4>Create a case-insensitive suffix statement</h4>
 	 *
 	 * This method can be used to instantiate a query statement that will select all
 	 * elements whose contents end matches the test data in a case and accent insensitive
@@ -1094,7 +1092,7 @@ class CQueryStatement extends CDocument
 	 *==================================================================================*/
 
 	/**
-	 * Create a regular expression statement.
+	 * <h4>Create a regular expression statement</h4>
 	 *
 	 * This method can be used to instantiate a query statement that will select all
 	 * elements that match the provided regular expression pattern.
@@ -1133,7 +1131,7 @@ class CQueryStatement extends CDocument
 	 *==================================================================================*/
 
 	/**
-	 * Create a less than statement.
+	 * <h4>Create a less than statement</h4>
 	 *
 	 * This method can be used to instantiate a <tt><</tt> query statement.
 	 *
@@ -1159,10 +1157,9 @@ class CQueryStatement extends CDocument
 	static function Less( $theSubject, $theObject, $theType = NULL )
 	{
 		//
-		// Try to infer type.
+		// Handle data type.
 		//
-		if( $theType === NULL )
-			$theType = static::InferDataType( $theObject );
+		static::HandleDataType( $theType, $theObject );
 			
 		return new self
 			( (string) $theSubject, kOPERATOR_LESS, $theType, $theObject );			// ==>
@@ -1175,7 +1172,7 @@ class CQueryStatement extends CDocument
 	 *==================================================================================*/
 
 	/**
-	 * Create a less than or equal statement.
+	 * <h4>Create a less than or equal statement</h4>
 	 *
 	 * This method can be used to instantiate a <tt><=</tt> query statement.
 	 *
@@ -1201,10 +1198,9 @@ class CQueryStatement extends CDocument
 	static function LessEqual( $theSubject, $theObject, $theType = NULL )
 	{
 		//
-		// Try to infer type.
+		// Handle data type.
 		//
-		if( $theType === NULL )
-			$theType = static::InferDataType( $theObject );
+		static::HandleDataType( $theType, $theObject );
 			
 		return new self
 			( (string) $theSubject, kOPERATOR_LESS_EQUAL, $theType, $theObject );	// ==>
@@ -1217,7 +1213,7 @@ class CQueryStatement extends CDocument
 	 *==================================================================================*/
 
 	/**
-	 * Create a greater than statement.
+	 * <h4>Create a greater than statement</h4>
 	 *
 	 * This method can be used to instantiate a <tt>></tt> query statement.
 	 *
@@ -1243,10 +1239,9 @@ class CQueryStatement extends CDocument
 	static function Great( $theSubject, $theObject, $theType = NULL )
 	{
 		//
-		// Try to infer type.
+		// Handle data type.
 		//
-		if( $theType === NULL )
-			$theType = static::InferDataType( $theObject );
+		static::HandleDataType( $theType, $theObject );
 			
 		return new self
 			( (string) $theSubject, kOPERATOR_GREAT, $theType, $theObject );		// ==>
@@ -1259,7 +1254,7 @@ class CQueryStatement extends CDocument
 	 *==================================================================================*/
 
 	/**
-	 * Create a greater than or equal statement.
+	 * <h4>Create a greater than or equal statement</h4>
 	 *
 	 * This method can be used to instantiate a <tt>>=</tt> query statement.
 	 *
@@ -1285,10 +1280,9 @@ class CQueryStatement extends CDocument
 	static function GreatEqual( $theSubject, $theObject, $theType = NULL )
 	{
 		//
-		// Try to infer type.
+		// Handle data type.
 		//
-		if( $theType === NULL )
-			$theType = static::InferDataType( $theObject );
+		static::HandleDataType( $theType, $theObject );
 			
 		return new self
 			( (string) $theSubject, kOPERATOR_GREAT_EQUAL, $theType, $theObject );	// ==>
@@ -1301,7 +1295,7 @@ class CQueryStatement extends CDocument
 	 *==================================================================================*/
 
 	/**
-	 * Create a range inclusive statement.
+	 * <h4>Create a range inclusive statement</h4>
 	 *
 	 * This method can be used to instantiate a range inclusive query statement, the
 	 * statement will check if the subject value lies between the two range bounds including
@@ -1331,10 +1325,9 @@ class CQueryStatement extends CDocument
 	static function RangeInclusive( $theSubject, $theBound1, $theBound2, $theType = NULL )
 	{
 		//
-		// Try to infer type.
+		// Handle data type.
 		//
-		if( $theType === NULL )
-			$theType = static::InferDataType( $theBound1 );
+		static::HandleDataType( $theType, $theBound1 );
 			
 		return new self
 			( (string) $theSubject, kOPERATOR_IRANGE, $theType, $theBound1,
@@ -1348,7 +1341,7 @@ class CQueryStatement extends CDocument
 	 *==================================================================================*/
 
 	/**
-	 * Create a range exclusive statement.
+	 * <h4>Create a range exclusive statement</h4>
 	 *
 	 * This method can be used to instantiate a range exclusive query statement, the
 	 * statement will check if the subject value lies between the two range bounds excluding
@@ -1378,10 +1371,9 @@ class CQueryStatement extends CDocument
 	static function RangeExclusive( $theSubject, $theBound1, $theBound2, $theType = NULL )
 	{
 		//
-		// Try to infer type.
+		// Handle data type.
 		//
-		if( $theType === NULL )
-			$theType = static::InferDataType( $theBound1 );
+		static::HandleDataType( $theType, $theBound1 );
 			
 		return new self
 			( (string) $theSubject, kOPERATOR_ERANGE, $theType, $theBound1,
@@ -1395,7 +1387,7 @@ class CQueryStatement extends CDocument
 	 *==================================================================================*/
 
 	/**
-	 * Create a missing statement.
+	 * <h4>Create a missing statement</h4>
 	 *
 	 * This method can be used to instantiate a missing query statement, the statement will
 	 * check if the subject is missing or is <tt>NULL</tt>.
@@ -1427,7 +1419,7 @@ class CQueryStatement extends CDocument
 	 *==================================================================================*/
 
 	/**
-	 * Create an exists statement.
+	 * <h4>Create an exists statement</h4>
 	 *
 	 * This method can be used to instantiate an exists query statement, the statement will
 	 * check if the subject exists or is not <i>NULL</i>.
@@ -1459,7 +1451,7 @@ class CQueryStatement extends CDocument
 	 *==================================================================================*/
 
 	/**
-	 * Create a membership statement.
+	 * h4>Create a membership statement</h4>
 	 *
 	 * This method can be used to instantiate a membership query statement which will test
 	 * whether the subject value can be found in the provided object, which will be
@@ -1478,6 +1470,9 @@ class CQueryStatement extends CDocument
 	 * </ul>
 	 *
 	 * The method will return an instance of this class or raise an exception on errors.
+	 *
+	 * Note that the data type will eventually be inferred based on the first list element
+	 * data type.
 	 *
 	 * @param mixed					$theSubject			Statement subject.
 	 * @param mixed					$theObject			Statement object.
@@ -1501,7 +1496,12 @@ class CQueryStatement extends CDocument
 		//
 		$list = Array();
 		foreach( $theObject as $object )
+		{
+			if( $theType === NULL )
+				static::HandleDataType( $theType, $object );
+				
 			$list[] = $object;
+		}
 		
 		return new self( (string) $theSubject, kOPERATOR_IN, $theType, $list );		// ==>
 
@@ -1513,7 +1513,7 @@ class CQueryStatement extends CDocument
 	 *==================================================================================*/
 
 	/**
-	 * Create a non membership statement.
+	 * <h4>Create a non membership statement</h4>
 	 *
 	 * This method can be used to instantiate a non membership query statement which will
 	 * test whether the subject value cannot be found in the provided object, which will be
@@ -1532,6 +1532,9 @@ class CQueryStatement extends CDocument
 	 * </ul>
 	 *
 	 * The method will return an instance of this class or raise an exception on errors.
+	 *
+	 * Note that the data type will eventually be inferred based on the first list element
+	 * data type.
 	 *
 	 * @param mixed					$theSubject			Statement subject.
 	 * @param mixed					$theObject			Statement object.
@@ -1555,7 +1558,12 @@ class CQueryStatement extends CDocument
 		//
 		$list = Array();
 		foreach( $theObject as $object )
+		{
+			if( $theType === NULL )
+				static::HandleDataType( $theType, $object );
+				
 			$list[] = $object;
+		}
 		
 		return new self( (string) $theSubject, kOPERATOR_NI, $theType, $list );		// ==>
 
@@ -1567,7 +1575,7 @@ class CQueryStatement extends CDocument
 	 *==================================================================================*/
 
 	/**
-	 * Create an all statement.
+	 * <h4>Create an all statement</h4>
 	 *
 	 * This method can be used to instantiate an all query statement which will test whether
 	 * all the subject values can be found in the provided object, which will be interpreted
@@ -1586,6 +1594,9 @@ class CQueryStatement extends CDocument
 	 * </ul>
 	 *
 	 * The method will return an instance of this class or raise an exception on errors.
+	 *
+	 * Note that the data type will eventually be inferred based on the first list element
+	 * data type.
 	 *
 	 * @param mixed					$theSubject			Statement subject.
 	 * @param mixed					$theObject			Statement object.
@@ -1609,7 +1620,12 @@ class CQueryStatement extends CDocument
 		//
 		$list = Array();
 		foreach( $theObject as $object )
+		{
+			if( $theType === NULL )
+				static::HandleDataType( $theType, $object );
+				
 			$list[] = $object;
+		}
 		
 		return new self( (string) $theSubject, kOPERATOR_ALL, $theType, $list );	// ==>
 
@@ -1621,7 +1637,7 @@ class CQueryStatement extends CDocument
 	 *==================================================================================*/
 
 	/**
-	 * Create a not all statement.
+	 * <h4>Create a not all statement</h4>
 	 *
 	 * This method can be used to instantiate a not all query statement which will test
 	 * whether any of the subject values cannot be found in the provided object, which will
@@ -1641,6 +1657,9 @@ class CQueryStatement extends CDocument
 	 * </ul>
 	 *
 	 * The method will return an instance of this class or raise an exception on errors.
+	 *
+	 * Note that the data type will eventually be inferred based on the first list element
+	 * data type.
 	 *
 	 * @param mixed					$theSubject			Statement subject.
 	 * @param mixed					$theObject			Statement object.
@@ -1664,7 +1683,12 @@ class CQueryStatement extends CDocument
 		//
 		$list = Array();
 		foreach( $theObject as $object )
+		{
+			if( $theType === NULL )
+				static::HandleDataType( $theType, $object );
+				
 			$list[] = $object;
+		}
 		
 		return new self( (string) $theSubject, kOPERATOR_NALL, $theType, $list );	// ==>
 
@@ -1676,7 +1700,7 @@ class CQueryStatement extends CDocument
 	 *==================================================================================*/
 
 	/**
-	 * Create an expression statement.
+	 * <h4>Create an expression statement</h4>
 	 *
 	 * This method can be used to instantiate an expression query statement in which the
 	 * object of the statement represents an expression.
@@ -1713,54 +1737,73 @@ class CQueryStatement extends CDocument
 
 /*=======================================================================================
  *																						*
- *								STATIC UTILITIES INTERFACE								*
+ *								STATIC CONVERSION INTERFACE								*
  *																						*
  *======================================================================================*/
 
 
 	 
 	/*===================================================================================
-	 *	InferDataType																	*
+	 *	HandleDataType																	*
 	 *==================================================================================*/
 
 	/**
-	 * Infer data type.
+	 * <h4>Handle data type</h4>
 	 *
-	 * This method will try to infer the data type of the provided object according to its
-	 * PHP data type:
+	 * This method can be used to both infer the data type, if it is not provided, or to
+	 * convert the value to the native data type.
+	 *
+	 * The method will first check if the data type was not provided: in that case it will
+	 * make the following assumptions:
 	 *
 	 * <ul>
-	 *	<li><tt>boolean</tt>: Will return the {@link kTYPE_BOOLEAN} value.
-	 *	<li><tt>integer</tt>: Will return the {@link kTYPE_INT32} value.
-	 *	<li><tt>double</tt>: Will return the {@link kTYPE_FLOAT} value.
-	 *	<li><tt>string</tt>: Will return the {@link kTYPE_STRING} value.
-	 *	<li><i>other</i>: Any other type will return <tt>NULL</tt>.
+	 *	<li><tt>boolean</tt>: Will use the {@link kTYPE_BOOLEAN} type.
+	 *	<li><tt>integer</tt>: Will use the {@link kTYPE_INT32} type.
+	 *	<li><tt>double</tt>: Will use the {@link kTYPE_FLOAT} type.
+	 *	<li><tt>string</tt>: Will use the {@link kTYPE_STRING} type.
+	 *	<li><i>other</i>: Any other type will ignore the data type.
 	 * </ul>
 	 *
-	 * @param mixed					$theValue				Value to test.
+	 * @param reference			   &$theType				Data type.
+	 * @param reference			   &$theValue				Data value.
 	 *
 	 * @static
-	 *
-	 * @throws Exception
-	 * @return mixed				The data type or <tt>NULL</tt>.
 	 */
-	static function InferDataType( $theValue )
+	static function HandleDataType( &$theType, &$theValue )
 	{
 		//
-		// Check value.
+		// Check type.
 		//
-		switch( gettype( $theValue ) )
+		if( $theType === NULL )
 		{
-			case 'boolean':		return kTYPE_BOOLEAN;								// ==>
-			case 'integer':		return kTYPE_INT32;									// ==>
-			case 'double':		return kTYPE_FLOAT;									// ==>
-			case 'string':		return kTYPE_STRING;								// ==>
+			//
+			// Assume according to data value.
+			//
+			switch( gettype( $theValue ) )
+			{
+				case 'boolean':		$theType = kTYPE_BOOLEAN;			break;
+				case 'integer':		$theType = kTYPE_INT32;				break;
+				case 'double':		$theType = kTYPE_FLOAT;				break;
+				case 'string':		$theType = kTYPE_STRING;			break;
+			
+			} // Checking value.
 		
-		} // Checking value.
+		} // Type omitted.
 		
-		return NULL;																// ==>
+		//
+		// Convert according to data type.
+		//
+		switch( $theType )
+		{
+			case kTYPE_BOOLEAN:		$theValue = (boolean) $theValue;	break;
+			case kTYPE_INT32:
+			case kTYPE_INT64:		$theValue = (integer) $theValue;	break;
+			case kTYPE_FLOAT:		$theValue = (double) $theValue;		break;
+			case kTYPE_STRING:		$theValue = (string) $theValue;		break;
+		
+		} // Checking data value.
 	
-	} // InferDataType.
+	} // HandleDataType.
 
 	 
 

@@ -1,21 +1,21 @@
 <?php
 	
 /**
- * {@link CQueryStatement.php Query} object test suite.
+ * {@link CMongoQueryStatement.php Query} object test suite.
  *
  * This file contains routines to test and demonstrate the behaviour of the
- * base object {@link CQueryStatement class}.
+ * base object {@link CMongoQueryStatement class}.
  *
  *	@package	Test
  *	@subpackage	Persistence
  *
  *	@author		Milko A. Škofič <m.skofic@cgiar.org>
- *	@version	1.00 22/12/2012
+ *	@version	1.00 20/09/2012
  */
 
 /*=======================================================================================
  *																						*
- *								test_CQueryStatement.php								*
+ *							test_CMongoQueryStatement.php								*
  *																						*
  *======================================================================================*/
 
@@ -27,7 +27,7 @@ require_once( '/Library/WebServer/Library/PHPWrapper/includes.inc.php' );
 //
 // Class includes.
 //
-require_once( kPATH_MYWRAPPER_LIBRARY_CLASS."/CQueryStatement.php" );
+require_once( kPATH_MYWRAPPER_LIBRARY_CLASS."/CMongoQueryStatement.php" );
 
 
 /*=======================================================================================
@@ -42,7 +42,7 @@ try
 	//
 	// Instantiate empty query.
 	//
-	echo( '<i>$query = new CQuery();</i><br>' );
+	echo( '<i>$query = new CMongoQuery();</i><br>' );
 	$query = new CQuery();
 	echo( '<pre>' ); print_r( $query ); echo( '</pre>' );
 	echo( '<hr>' );
@@ -50,16 +50,16 @@ try
 	//
 	// Instantiate empty object.
 	//
-	echo( '<i>$test = new CQueryStatement();</i><br>' );
-	$test = new CQueryStatement();
+	echo( '<i>$test = new CMongoQueryStatement();</i><br>' );
+	$test = new CMongoQueryStatement();
 	echo( '<pre>' ); print_r( $test ); echo( '</pre>' );
 	echo( '<hr>' );
 	
 	//
 	// Instantiate typeless object.
 	//
-	echo( '<i>$test = new CQueryStatement( "SUBJECT", kOPERATOR_EQUAL, kTYPE_STAMP, "2010-01-15 00:00:00" );</i><br>' );
-	$test = new CQueryStatement( "SUBJECT", kOPERATOR_EQUAL, kTYPE_STAMP, "2010-01-15 00:00:00" );
+	echo( '<i>$test = new CMongoQueryStatement( "SUBJECT", kOPERATOR_EQUAL, kTYPE_STAMP, "2010-01-15 00:00:00" );</i><br>' );
+	$test = new CMongoQueryStatement( "SUBJECT", kOPERATOR_EQUAL, kTYPE_STAMP, "2010-01-15 00:00:00" );
 	echo( '<pre>' ); print_r( $test ); echo( '</pre>' );
 	echo( '<i>$query->AppendStatement( $test );</i><br>' );
 	$query->AppendStatement( $test );
@@ -69,8 +69,8 @@ try
 	//
 	// Instantiate disabled range statement.
 	//
-	echo( '<i>$test = CQueryStatement::Disabled( "SUBJECT", kTYPE_INT32, 10, 20 );</i><br>' );
-	$test = CQueryStatement::Disabled( "SUBJECT", 10, NULL, 20 );
+	echo( '<i>$test = CMongoQueryStatement::Disabled( "SUBJECT", kTYPE_INT32, 10, 20 );</i><br>' );
+	$test = CMongoQueryStatement::Disabled( "SUBJECT", 10, NULL, 20 );
 	echo( '<pre>' ); print_r( $test ); echo( '</pre>' );
 	echo( '<i>$query->AppendStatement( $test );</i><br>' );
 	$query->AppendStatement( $test );
@@ -80,8 +80,8 @@ try
 	//
 	// Instantiate disabled typed range statement.
 	//
-	echo( '<i>$test = CQueryStatement::Disabled( "SUBJECT", "2010-01-15 00:00:00"), NULL, "2012-04-03 12:30:15" );</i><br>' );
-	$test = CQueryStatement::Disabled( "SUBJECT", 
+	echo( '<i>$test = CMongoQueryStatement::Disabled( "SUBJECT", "2010-01-15 00:00:00"), NULL, "2012-04-03 12:30:15" );</i><br>' );
+	$test = CMongoQueryStatement::Disabled( "SUBJECT", 
 									   "2010-01-15 00:00:00",
 									   NULL,
 									   "2012-04-03 12:30:15" );
@@ -94,8 +94,8 @@ try
 	//
 	// Instantiate equality statement.
 	//
-	echo( '<i>$test = CQueryStatement::Equals( "SUB", 10.2 );</i><br>' );
-	$test = CQueryStatement::Equals( "SUB", 10.2 );
+	echo( '<i>$test = CMongoQueryStatement::Equals( "SUB", 10.2 );</i><br>' );
+	$test = CMongoQueryStatement::Equals( "SUB", 10.2 );
 	echo( '<pre>' ); print_r( $test ); echo( '</pre>' );
 	echo( '<i>$query->AppendStatement( $test );</i><br>' );
 	$query->AppendStatement( $test );
@@ -104,8 +104,8 @@ try
 	//
 	// Instantiate inequality statement.
 	//
-	echo( '<i>$test = CQueryStatement::NotEquals( "SUB", "123", kTYPE_INT32 );</i><br>' );
-	$test = CQueryStatement::NotEquals( "SUB", "123", kTYPE_INT32 );
+	echo( '<i>$test = CMongoQueryStatement::NotEquals( "SUB", "123", kTYPE_INT32 );</i><br>' );
+	$test = CMongoQueryStatement::NotEquals( "SUB", "123", kTYPE_INT32 );
 	echo( '<pre>' ); print_r( $test ); echo( '</pre>' );
 	echo( '<i>$query->AppendStatement( $test );</i><br>' );
 	$query->AppendStatement( $test );
@@ -114,8 +114,8 @@ try
 	//
 	// Instantiate LIKE statement.
 	//
-	echo( '<i>$test = CQueryStatement::Like( "SUB", 123 );</i><br>' );
-	$test = CQueryStatement::Like( "SUB", 123 );
+	echo( '<i>$test = CMongoQueryStatement::Like( "SUB", 123 );</i><br>' );
+	$test = CMongoQueryStatement::Like( "SUB", 123 );
 	echo( '<pre>' ); print_r( $test ); echo( '</pre>' );
 	echo( '<i>$query->AppendStatement( $test );</i><br>' );
 	$query->AppendStatement( $test );
@@ -124,8 +124,8 @@ try
 	//
 	// Instantiate not LIKE statement.
 	//
-	echo( '<i>$test = CQueryStatement::NotLike( "SUB", 123 );</i><br>' );
-	$test = CQueryStatement::NotLike( "SUB", 123 );
+	echo( '<i>$test = CMongoQueryStatement::NotLike( "SUB", 123 );</i><br>' );
+	$test = CMongoQueryStatement::NotLike( "SUB", 123 );
 	echo( '<pre>' ); print_r( $test ); echo( '</pre>' );
 	echo( '<i>$query->AppendStatement( $test );</i><br>' );
 	$query->AppendStatement( $test );
@@ -134,8 +134,8 @@ try
 	//
 	// Instantiate prefix statement.
 	//
-	echo( '<i>$test = CQueryStatement::Prefix( "SUB", 123 );</i><br>' );
-	$test = CQueryStatement::Prefix( "SUB", 123 );
+	echo( '<i>$test = CMongoQueryStatement::Prefix( "SUB", 123 );</i><br>' );
+	$test = CMongoQueryStatement::Prefix( "SUB", 123 );
 	echo( '<pre>' ); print_r( $test ); echo( '</pre>' );
 	echo( '<i>$query->AppendStatement( $test );</i><br>' );
 	$query->AppendStatement( $test );
@@ -144,8 +144,8 @@ try
 	//
 	// Instantiate contains statement.
 	//
-	echo( '<i>$test = CQueryStatement::Contains( "SUB", 123 );</i><br>' );
-	$test = CQueryStatement::Contains( "SUB", 123 );
+	echo( '<i>$test = CMongoQueryStatement::Contains( "SUB", 123 );</i><br>' );
+	$test = CMongoQueryStatement::Contains( "SUB", 123 );
 	echo( '<pre>' ); print_r( $test ); echo( '</pre>' );
 	echo( '<i>$query->AppendStatement( $test );</i><br>' );
 	$query->AppendStatement( $test );
@@ -154,16 +154,16 @@ try
 	//
 	// Instantiate suffix statement.
 	//
-	echo( '<i>$test = CQueryStatement::Suffix( "SUB", 123 );</i><br>' );
-	$test = CQueryStatement::Suffix( "SUB", 123 );
+	echo( '<i>$test = CMongoQueryStatement::Suffix( "SUB", 123 );</i><br>' );
+	$test = CMongoQueryStatement::Suffix( "SUB", 123 );
 	echo( '<pre>' ); print_r( $test ); echo( '</pre>' );
 	echo( '<hr>' );
 	
 	//
 	// Instantiate regular expression statement.
 	//
-	echo( '<i>$test = CQueryStatement::Regex( "SUB", \'/^pippo$/i\' );</i><br>' );
-	$test = CQueryStatement::Regex( "SUB", '/^pippo$/i' );
+	echo( '<i>$test = CMongoQueryStatement::Regex( "SUB", \'/^pippo$/i\' );</i><br>' );
+	$test = CMongoQueryStatement::Regex( "SUB", '/^pippo$/i' );
 	echo( '<pre>' ); print_r( $test ); echo( '</pre>' );
 	echo( '<i>$query->AppendStatement( $test );</i><br>' );
 	$query->AppendStatement( $test );
@@ -172,8 +172,8 @@ try
 	//
 	// Instantiate less than.
 	//
-	echo( '<i>$test = CQueryStatement::Less( "SUB", 12.3 );</i><br>' );
-	$test = CQueryStatement::Less( "SUB", 12.3 );
+	echo( '<i>$test = CMongoQueryStatement::Less( "SUB", 12.3 );</i><br>' );
+	$test = CMongoQueryStatement::Less( "SUB", 12.3 );
 	echo( '<pre>' ); print_r( $test ); echo( '</pre>' );
 	echo( '<i>$query->AppendStatement( $test );</i><br>' );
 	$query->AppendStatement( $test );
@@ -182,8 +182,8 @@ try
 	//
 	// Instantiate less than or equal.
 	//
-	echo( '<i>$test = CQueryStatement::LessEqual( "SUB", "baba" );</i><br>' );
-	$test = CQueryStatement::LessEqual( "SUB", 'baba' );
+	echo( '<i>$test = CMongoQueryStatement::LessEqual( "SUB", "baba" );</i><br>' );
+	$test = CMongoQueryStatement::LessEqual( "SUB", 'baba' );
 	echo( '<pre>' ); print_r( $test ); echo( '</pre>' );
 	echo( '<i>$query->AppendStatement( $test );</i><br>' );
 	$query->AppendStatement( $test );
@@ -192,8 +192,8 @@ try
 	//
 	// Instantiate greater than.
 	//
-	echo( '<i>$test = CQueryStatement::Great( "SUB", 12.3 );</i><br>' );
-	$test = CQueryStatement::Great( "SUB", 12.3 );
+	echo( '<i>$test = CMongoQueryStatement::Great( "SUB", 12.3 );</i><br>' );
+	$test = CMongoQueryStatement::Great( "SUB", 12.3 );
 	echo( '<pre>' ); print_r( $test ); echo( '</pre>' );
 	echo( '<i>$query->AppendStatement( $test );</i><br>' );
 	$query->AppendStatement( $test );
@@ -202,8 +202,8 @@ try
 	//
 	// Instantiate greater than or equal.
 	//
-	echo( '<i>$test = CQueryStatement::GreatEqual( "SUB", "baba" );</i><br>' );
-	$test = CQueryStatement::GreatEqual( "SUB", "baba" );
+	echo( '<i>$test = CMongoQueryStatement::GreatEqual( "SUB", "baba" );</i><br>' );
+	$test = CMongoQueryStatement::GreatEqual( "SUB", "baba" );
 	echo( '<pre>' ); print_r( $test ); echo( '</pre>' );
 	echo( '<i>$query->AppendStatement( $test );</i><br>' );
 	$query->AppendStatement( $test );
@@ -212,8 +212,8 @@ try
 	//
 	// Instantiate range inclusive.
 	//
-	echo( '<i>$test = CQueryStatement::RangeInclusive( "SUB", 10, 20 );</i><br>' );
-	$test = CQueryStatement::RangeInclusive( "SUB", 10, 20 );
+	echo( '<i>$test = CMongoQueryStatement::RangeInclusive( "SUB", 10, 20 );</i><br>' );
+	$test = CMongoQueryStatement::RangeInclusive( "SUB", 10, 20 );
 	echo( '<pre>' ); print_r( $test ); echo( '</pre>' );
 	echo( '<i>$query->AppendStatement( $test );</i><br>' );
 	$query->AppendStatement( $test );
@@ -222,8 +222,8 @@ try
 	//
 	// Instantiate range exclusive.
 	//
-	echo( '<i>$test = CQueryStatement::RangeExclusive( "SUB", 10, 20 );</i><br>' );
-	$test = CQueryStatement::RangeExclusive( "SUB", 10, 20 );
+	echo( '<i>$test = CMongoQueryStatement::RangeExclusive( "SUB", 10, 20 );</i><br>' );
+	$test = CMongoQueryStatement::RangeExclusive( "SUB", 10, 20 );
 	echo( '<pre>' ); print_r( $test ); echo( '</pre>' );
 	echo( '<i>$query->AppendStatement( $test );</i><br>' );
 	$query->AppendStatement( $test );
@@ -232,8 +232,8 @@ try
 	//
 	// Instantiate NULL.
 	//
-	echo( '<i>$test = CQueryStatement::Missing( "SUB" );</i><br>' );
-	$test = CQueryStatement::Missing( "SUB" );
+	echo( '<i>$test = CMongoQueryStatement::Missing( "SUB" );</i><br>' );
+	$test = CMongoQueryStatement::Missing( "SUB" );
 	echo( '<pre>' ); print_r( $test ); echo( '</pre>' );
 	echo( '<i>$query->AppendStatement( $test );</i><br>' );
 	$query->AppendStatement( $test );
@@ -242,8 +242,8 @@ try
 	//
 	// Instantiate not NULL.
 	//
-	echo( '<i>$test = CQueryStatement::Exists( "SUB" );</i><br>' );
-	$test = CQueryStatement::Exists( "SUB" );
+	echo( '<i>$test = CMongoQueryStatement::Exists( "SUB" );</i><br>' );
+	$test = CMongoQueryStatement::Exists( "SUB" );
 	echo( '<pre>' ); print_r( $test ); echo( '</pre>' );
 	echo( '<i>$query->AppendStatement( $test );</i><br>' );
 	$query->AppendStatement( $test );
@@ -252,8 +252,8 @@ try
 	//
 	// Instantiate member.
 	//
-	echo( '<i>$test = CQueryStatement::Member( "SUB", array( "2010-01-15 00:00:00", "2010-02-15 00:00:00", "2011-02-15 00:00:00" ) );</i><br>' );
-	$test = CQueryStatement::Member( "SUB", array( "2010-01-15 00:00:00", "2010-02-15 00:00:00", "2011-02-15 00:00:00" ) );
+	echo( '<i>$test = CMongoQueryStatement::Member( "SUB", array( "2010-01-15 00:00:00", "2010-02-15 00:00:00", "2011-02-15 00:00:00" ) );</i><br>' );
+	$test = CMongoQueryStatement::Member( "SUB", array( "2010-01-15 00:00:00", "2010-02-15 00:00:00", "2011-02-15 00:00:00" ) );
 	echo( '<pre>' ); print_r( $test ); echo( '</pre>' );
 	echo( '<i>$query->AppendStatement( $test );</i><br>' );
 	$query->AppendStatement( $test );
@@ -266,8 +266,8 @@ try
 				   new MongoDate( strtotime("2010-02-15 00:00:00") ),
 				   new MongoDate( strtotime("2011-02-15 00:00:00") ),
 				   new MongoDate() );
-	echo( '<i>$test = CQueryStatement::NotMember( "SUB", $list );</i><br>' );
-	$test = CQueryStatement::NotMember( "SUB", $list );
+	echo( '<i>$test = CMongoQueryStatement::NotMember( "SUB", $list );</i><br>' );
+	$test = CMongoQueryStatement::NotMember( "SUB", $list );
 	echo( '<pre>' ); print_r( $test ); echo( '</pre>' );
 	echo( '<i>$query->AppendStatement( $test );</i><br>' );
 	$query->AppendStatement( $test );
@@ -280,8 +280,8 @@ try
 				   new MongoDate( strtotime("2010-02-15 00:00:00") ),
 				   new MongoDate( strtotime("2011-02-15 00:00:00") ),
 				   new MongoDate() );
-	echo( '<i>$test = CQueryStatement::All( "SUB", $list );</i><br>' );
-	$test = CQueryStatement::All( "SUB", $list );
+	echo( '<i>$test = CMongoQueryStatement::All( "SUB", $list );</i><br>' );
+	$test = CMongoQueryStatement::All( "SUB", $list );
 	echo( '<pre>' ); print_r( $test ); echo( '</pre>' );
 	echo( '<i>$query->AppendStatement( $test );</i><br>' );
 	$query->AppendStatement( $test );
@@ -294,8 +294,8 @@ try
 				   new MongoDate( strtotime("2010-02-15 00:00:00") ),
 				   new MongoDate( strtotime("2011-02-15 00:00:00") ),
 				   new MongoDate() );
-	echo( '<i>$test = CQueryStatement::NotAll( "SUB", $list );</i><br>' );
-	$test = CQueryStatement::NotAll( "SUB", $list );
+	echo( '<i>$test = CMongoQueryStatement::NotAll( "SUB", $list );</i><br>' );
+	$test = CMongoQueryStatement::NotAll( "SUB", $list );
 	echo( '<pre>' ); print_r( $test ); echo( '</pre>' );
 	echo( '<i>$query->AppendStatement( $test );</i><br>' );
 	$query->AppendStatement( $test );
@@ -304,8 +304,8 @@ try
 	//
 	// Instantiate expression.
 	//
-	echo( '<i>$test = CQueryStatement::Expression( "SUB", \'E=MC2\' );</i><br>' );
-	$test = CQueryStatement::Expression( "SUB", 'E=MC2' );
+	echo( '<i>$test = CMongoQueryStatement::Expression( "SUB", \'E=MC2\' );</i><br>' );
+	$test = CMongoQueryStatement::Expression( "SUB", 'E=MC2' );
 	echo( '<pre>' ); print_r( $test ); echo( '</pre>' );
 	echo( '<i>$query->AppendStatement( $test );</i><br>' );
 	$query->AppendStatement( $test );
