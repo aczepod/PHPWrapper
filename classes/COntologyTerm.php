@@ -348,7 +348,7 @@ class COntologyTerm extends CTerm
 				  kERROR_MISSING );												// !@! ==>
 		
 		return static::ResolveContainer( $theConnection, TRUE )
-					 ->ConvertBinary( md5( $theIdentifier, TRUE ) );				// ==>
+					->ConvertValue( kTYPE_BINARY,  md5( $theIdentifier, TRUE ) );	// ==>
 	
 	} // _id.
 		

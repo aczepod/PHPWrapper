@@ -6,8 +6,8 @@
 
 	<title>Class CContainer | MyWrapper Reference Documentation</title>
 
-	<script type="text/javascript" src="resources/combined.js?417553483"></script>
-	<script type="text/javascript" src="elementlist.js?4159639342"></script>
+	<script type="text/javascript" src="resources/combined.js?496895167"></script>
+	<script type="text/javascript" src="elementlist.js?4206909522"></script>
 	<link rel="stylesheet" type="text/css" media="all" href="resources/style.css?1567499433" />
 
 </head>
@@ -120,8 +120,8 @@ a native container from a database.</p>
 	container. This method operates one object at the time and it is mainly used by
 	persistent objects for persisting in containers.</li>
 
-	<li><code><a href="class-CContainer.html#_">CContainer::ConvertBinary()</a></code>: This method will convert a binary string to a
-	format compatible with the current data store. container.</li>
+	<li><code><a href="class-CContainer.html#_">CContainer::ConvertValue()</a></code>: This method will convert a PHP value to a container
+	native value.</li>
 </ul>
 
 <p>The class does not implement a concrete data store, derived classes must
@@ -195,7 +195,7 @@ implement specific storage actions.</p>
 				<b>Author:</b>
 				Milko A. Škofič &lt;<a
 href="mailto:m.skofic&#64;cgiar.org">m.skofic&#64;<!---->cgiar.org</a>&gt;<br />
-		<b>Located at</b> <a href="source-class-CContainer.html#43" title="Go to source code">CContainer.php</a><br />
+		<b>Located at</b> <a href="source-class-CContainer.html#50" title="Go to source code">CContainer.php</a><br />
 	</div>
 
 
@@ -212,7 +212,7 @@ href="mailto:m.skofic&#64;cgiar.org">m.skofic&#64;<!---->cgiar.org</a>&gt;<br />
 
 		<td class="name"><div>
 		<a class="anchor" href="#_ManageObject">#</a>
-		<code><a href="source-class-CContainer.html#87" title="Go to source code">ManageObject</a>( <span>reference <var>&amp; $theObject</var></span>, <span>mixed <var>$theIdentifier</var> = <span class="php-keyword1">NULL</span></span>, <span>mixed <var>$theModifiers</var> = kFLAG_DEFAULT </span> )</code>
+		<code><a href="source-class-CContainer.html#93" title="Go to source code">ManageObject</a>( <span>reference <var>&amp; $theObject</var></span>, <span>mixed <var>$theIdentifier</var> = <span class="php-keyword1">NULL</span></span>, <span>mixed <var>$theModifiers</var> = kFLAG_DEFAULT </span> )</code>
 
 		<div class="description short">
 			
@@ -412,7 +412,7 @@ is declared abstract.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#_CheckObject">#</a>
-		<code><a href="source-class-CContainer.html#259" title="Go to source code">CheckObject</a>( <span>mixed <var>$theIdentifier</var></span>, <span>string <var>$theOffset</var> = <span class="php-keyword1">NULL</span> </span> )</code>
+		<code><a href="source-class-CContainer.html#265" title="Go to source code">CheckObject</a>( <span>mixed <var>$theIdentifier</var></span>, <span>string <var>$theOffset</var> = <span class="php-keyword1">NULL</span> </span> )</code>
 
 		<div class="description short">
 			
@@ -449,6 +449,56 @@ return <tt>TRUE</tt> if found and <tt>FALSE</tt> if not.</p>
 		</div>
 		</div></td>
 	</tr>
+	<tr data-order="Query" id="_Query">
+
+		<td class="attributes"><code>
+			abstract public 
+			mixed
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_Query">#</a>
+		<code><a href="source-class-CContainer.html#285" title="Go to source code">Query</a>( <span><code><a href="class-CQuery.html">CQuery</a></code> <var>$theQuery</var></span>, <span>array <var>$theFields</var> = <span class="php-keyword1">NULL</span> </span> )</code>
+
+		<div class="description short">
+			
+<h4>Perform a query</h4>
+
+		</div>
+
+		<div class="description detailed hidden">
+			
+<h4>Perform a query</h4>
+
+<p>This method can be used to perform a query on the container, it expects an
+instance of <code><a href="class-CQuery.html">CQuery</a></code> as the query and an optional parameter that
+represents the list of desired fields.</p>
+
+<p>The method should return the resulting query native recordset.</p>
+
+
+
+				<h4>Parameters</h4>
+				<div class="list"><dl>
+					<dt><var>$theQuery</var></dt>
+					<dd><code><code><a href="class-CQuery.html">CQuery</a></code></code><br> Query.</dd>
+					<dt><var>$theFields</var></dt>
+					<dd><code>array</code><br> Fieldset.</dd>
+				</dl></div>
+
+				<h4>Returns</h4>
+				<div class="list">
+					<code>mixed</code><br>Native recordset.<br />
+				</div>
+
+
+
+
+		</div>
+		</div></td>
+	</tr>
 	<tr data-order="NextSequence" id="_NextSequence">
 
 		<td class="attributes"><code>
@@ -460,7 +510,7 @@ return <tt>TRUE</tt> if found and <tt>FALSE</tt> if not.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#_NextSequence">#</a>
-		<code><a href="source-class-CContainer.html#288" title="Go to source code">NextSequence</a>( <span>string <var>$theKey</var></span>, <span>string <var>$theContainer</var> = <span class="php-keyword1">NULL</span> </span> )</code>
+		<code><a href="source-class-CContainer.html#316" title="Go to source code">NextSequence</a>( <span>string <var>$theKey</var></span>, <span>string <var>$theContainer</var> = <span class="php-keyword1">NULL</span> </span> )</code>
 
 		<div class="description short">
 			
@@ -519,7 +569,7 @@ exception.</p>
 		</div>
 		</div></td>
 	</tr>
-	<tr data-order="ConvertBinary" id="_ConvertBinary">
+	<tr data-order="ConvertValue" id="_ConvertValue">
 
 		<td class="attributes"><code>
 			 public static
@@ -529,41 +579,39 @@ exception.</p>
 		</td>
 
 		<td class="name"><div>
-		<a class="anchor" href="#_ConvertBinary">#</a>
-		<code><a href="source-class-CContainer.html#336" title="Go to source code">ConvertBinary</a>( <span>mixed <var>$theValue</var></span>, <span>boolean <var>$theSense</var> = <span class="php-keyword1">TRUE</span> </span> )</code>
+		<a class="anchor" href="#_ConvertValue">#</a>
+		<code><a href="source-class-CContainer.html#364" title="Go to source code">ConvertValue</a>( <span>string <var>$theType</var></span>, <span>mixed <var>$theValue</var></span> )</code>
 
 		<div class="description short">
 			
-<h4>Convert a binary string</h4>
+<h4>Convert a value</h4>
 
 		</div>
 
 		<div class="description detailed hidden">
 			
-<h4>Convert a binary string</h4>
+<h4>Convert a value</h4>
 
-<p>This method should be used to convert a binary string to a format compatible
-with the current container.</p>
+<p>This method can be used to convert value to the container's native type, the
+method accepts two parameters: the data type and the value; the method will
+return the converted value.</p>
 
-<p>The first parameter represents the value to be encoded or decoded, the second
-boolean parameter represents the conversion direction: <tt>TRUE</tt> means
-convert for database, <tt>FALSE</tt> convert back to PHP.</p>
-
-<p>By default we convert the string to hexadecimal.</p>
+<p>In this class we return the value as-is, in derived classes you should handle
+values according to the native container data types.</p>
 
 
 
 				<h4>Parameters</h4>
 				<div class="list"><dl>
+					<dt><var>$theType</var></dt>
+					<dd><code>string</code><br> Data type.</dd>
 					<dt><var>$theValue</var></dt>
-					<dd><code>mixed</code><br> Binary value.</dd>
-					<dt><var>$theSense</var></dt>
-					<dd><code>boolean</code><br> <tt>TRUE</tt> encode for database.</dd>
+					<dd><code>mixed</code><br> Data value.</dd>
 				</dl></div>
 
 				<h4>Returns</h4>
 				<div class="list">
-					<code>mixed</code><br>The encoded or decoded binary string.<br />
+					<code>mixed</code><br>The encoded data value.<br />
 				</div>
 
 

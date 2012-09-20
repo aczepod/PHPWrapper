@@ -27,6 +27,13 @@
 require_once( "CContainer.inc.php" );
 
 /**
+ * Types.
+ *
+ * This include file contains all type definitions.
+ */
+require_once( kPATH_MYWRAPPER_LIBRARY_DEFINE."/Types.inc.php" );
+
+/**
  * Documents.
  *
  * This includes the persistent documents class definitions.
@@ -57,9 +64,8 @@ require_once( kPATH_MYWRAPPER_LIBRARY_CLASS."/CConnection.php" );
  *		<i>modify</i>, <i>delete</i> and <i>load</i> an object from the current container.
  *		This method operates one object at the time and it is mainly used by persistent
  *		objects for persisting in containers.
- *	<li>{@link ConvertBinary()}: This method will convert a binary string to a format
- *		compatible with the current data store.
- *		container.
+ *	<li>{@link ConvertValue()}: This method will convert a PHP value to a container native
+ *		value.
  * </ul>
  *
  * The class does not implement a concrete data store, derived classes must implement
@@ -271,6 +277,28 @@ abstract class CContainer extends CConnection
 	 */
 	abstract public function CheckObject( $theIdentifier, $theOffset = NULL );
 
+	 
+	/*===================================================================================
+	 *	Query																			*
+	 *==================================================================================*/
+
+	/**
+	 * <h4>Perform a query</h4>
+	 *
+	 * This method can be used to perform a query on the container, it expects an instance
+	 * of {@link CQuery} as the query and an optional parameter that represents the list
+	 * of desired fields.
+	 *
+	 * The method should return the resulting query native recordset.
+	 *
+	 * @param CQuery				$theQuery			Query.
+	 * @param array					$theFields			Fieldset.
+	 *
+	 * @access public
+	 * @return mixed				Native recordset.
+	 */
+	abstract public function Query( CQuery $theQuery, $theFields = NULL );
+
 		
 
 /*=======================================================================================
@@ -330,35 +358,26 @@ abstract class CContainer extends CConnection
 
 	 
 	/*===================================================================================
-	 *	ConvertBinary																	*
+	 *	ConvertValue																	*
 	 *==================================================================================*/
 
 	/**
-	 * <h4>Convert a binary string</h4>
+	 * <h4>Convert a value</h4>
 	 *
-	 * This method should be used to convert a binary string to a format compatible with the
-	 * current container.
+	 * This method can be used to convert value to the container's native type, the method
+	 * accepts two parameters: the data type and the value; the method will return the
+	 * converted value.
 	 *
-	 * The first parameter represents the value to be encoded or decoded, the second boolean
-	 * parameter represents the conversion direction: <tt>TRUE</tt> means convert for
-	 * database, <tt>FALSE</tt> convert back to PHP.
+	 * In this class we return the value as-is, in derived classes you should handle values
+	 * according to the native container data types.
 	 *
-	 * By default we convert the string to hexadecimal.
-	 *
-	 * @param mixed					$theValue			Binary value.
-	 * @param boolean				$theSense			<tt>TRUE</tt> encode for database.
+	 * @param string				$theType			Data type.
+	 * @param mixed					$theValue			Data value.
 	 *
 	 * @static
-	 * @return mixed				The encoded or decoded binary string.
+	 * @return mixed				The encoded data value.
 	 */
-	static function ConvertBinary( $theValue, $theSense = TRUE )
-	{
-		if( $theSense )
-			return bin2hex( $theValue );											// ==>
-		
-		return hex2bin( $theValue );												// ==>
-	
-	} // ConvertBinary.
+	static function ConvertValue( $theType, $theValue )				{	return $theValue;	}
 
 	 
 

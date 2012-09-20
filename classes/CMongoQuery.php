@@ -61,19 +61,20 @@ class CMongoQuery extends CQuery
 	/**
 	 * <h4>Export query</h4>
 	 *
-	 * The method will return an array suitable to be provided as a MongoDB query, the
-	 * method requires a container that will take care of converting query arguments to
-	 * native data types, this container must be an instance of {@link CMongoContainer}, or
-	 * the method will raise an exception.
+	 * We overload the inherited method to generate Mongo specific queries.
 	 *
-	 * @param CMongoContainer		$theContainer			Query container.
+	 * The method will first check if the provided container is a {@link CMongoContainer},
+	 * it will then iterate all conditions and feed each to a protected method,
+	 * {@link _ConvertCondition()}, that will take care of converting the query elements.
+	 *
+	 * @param CConnection			$theContainer		Query container.
 	 *
 	 * @access public
 	 * @return array
 	 *
 	 * @throws Exception
 	 */
-	public function Export( $theContainer )
+	public function Export( CConnection $theContainer )
 	{
 		//
 		// Check container.
@@ -163,7 +164,12 @@ class CMongoQuery extends CQuery
 	/**
 	 * <h4>Convert condition</h4>
 	 *
-	 * This method will convert the statements of the provided condition to Mongo format.
+	 * This method is provided by the {@link Export()} method a condition to convert in
+	 * Mongo format. The method will iterate all statements in the condition and feed them
+	 * to the 
+	 *
+	 * The method is called by the {@link Export()} method and takes care of organising
+	 * the {@link _ConvertStatement()} method that will convert them.
 	 *
 	 * The parameters to this method are:
 	 *
@@ -330,44 +336,50 @@ class CMongoQuery extends CQuery
 				//
 				// Save query data.
 				//
-				if( array_key_exists( kAPI_QUERY_DATA, $theStatement ) )
-					$data = $theStatement[ kAPI_QUERY_DATA ];
+				if( array_key_exists( kOFFSET_QUERY_DATA, $theStatement ) )
+					$data = $theStatement[ kOFFSET_QUERY_DATA ];
+				
+				//
+				// Save query data type.
+				//
+				if( array_key_exists( kOFFSET_QUERY_TYPE, $theStatement ) )
+					$type = $theStatement[ kOFFSET_QUERY_TYPE ];
 				
 				//
 				// Parse by operator.
 				//
-				switch( $theStatement[ kAPI_QUERY_OPERATOR ] )
+				switch( $theStatement[ kOFFSET_QUERY_OPERATOR ] )
 				{
 					case kOPERATOR_EQUAL:
-						$theContainer->UnserialiseData( $data );
+						$data = $theContainer->ConvertValue( $type, $data );
 						switch( $theCondition )
 						{
 							case kOPERATOR_AND:
 							case kOPERATOR_OR:
-								$statement[ $theStatement[ kAPI_QUERY_SUBJECT ] ] = $data;
+								$statement[ $theStatement[ kOFFSET_QUERY_SUBJECT ] ] = $data;
 								break;
 							
 							case kOPERATOR_NAND:
 							case kOPERATOR_NOR:
-								$statement[ $theStatement[ kAPI_QUERY_SUBJECT ] ]
+								$statement[ $theStatement[ kOFFSET_QUERY_SUBJECT ] ]
 									= array( '$ne' => $data );
 								break;
 						}
 						break;
 						
 					case kOPERATOR_EQUAL_NOT:
-						$theContainer->UnserialiseData( $data );
+						$data = $theContainer->ConvertValue( $type, $data );
 						switch( $theCondition )
 						{
 							case kOPERATOR_AND:
 							case kOPERATOR_OR:
-								$statement[ $theStatement[ kAPI_QUERY_SUBJECT ] ]
+								$statement[ $theStatement[ kOFFSET_QUERY_SUBJECT ] ]
 									= array( '$ne' => $data );
 								break;
 							
 							case kOPERATOR_NAND:
 							case kOPERATOR_NOR:
-								$statement[ $theStatement[ kAPI_QUERY_SUBJECT ] ] = $data;
+								$statement[ $theStatement[ kOFFSET_QUERY_SUBJECT ] ] = $data;
 								break;
 						}
 						break;
@@ -378,13 +390,13 @@ class CMongoQuery extends CQuery
 						{
 							case kOPERATOR_AND:
 							case kOPERATOR_OR:
-								$statement[ $theStatement[ kAPI_QUERY_SUBJECT ] ]
+								$statement[ $theStatement[ kOFFSET_QUERY_SUBJECT ] ]
 									= new MongoRegex( $tmp );
 								break;
 							
 							case kOPERATOR_NAND:
 							case kOPERATOR_NOR:
-								$statement[ $theStatement[ kAPI_QUERY_SUBJECT ] ]
+								$statement[ $theStatement[ kOFFSET_QUERY_SUBJECT ] ]
 									= array( '$not' => new MongoRegex( $tmp ) );
 								break;
 						}
@@ -393,20 +405,20 @@ class CMongoQuery extends CQuery
 					case kOPERATOR_PREFIX:
 					case kOPERATOR_PREFIX_NOCASE:
 						$tmp = '/^'.$data.'/';
-						if( $theStatement[ kAPI_QUERY_OPERATOR ]
+						if( $theStatement[ kOFFSET_QUERY_OPERATOR ]
 							== kOPERATOR_PREFIX_NOCASE )
 							$tmp .= 'i';
 						switch( $theCondition )
 						{
 							case kOPERATOR_AND:
 							case kOPERATOR_OR:
-								$statement[ $theStatement[ kAPI_QUERY_SUBJECT ] ]
+								$statement[ $theStatement[ kOFFSET_QUERY_SUBJECT ] ]
 									= new MongoRegex( $tmp );
 								break;
 							
 							case kOPERATOR_NAND:
 							case kOPERATOR_NOR:
-								$statement[ $theStatement[ kAPI_QUERY_SUBJECT ] ]
+								$statement[ $theStatement[ kOFFSET_QUERY_SUBJECT ] ]
 									= array( '$not' => new MongoRegex( $tmp ) );
 								break;
 						}
@@ -415,20 +427,20 @@ class CMongoQuery extends CQuery
 					case kOPERATOR_CONTAINS:
 					case kOPERATOR_CONTAINS_NOCASE:
 						$tmp = '/'.$data.'/';
-						if( $theStatement[ kAPI_QUERY_OPERATOR ]
+						if( $theStatement[ kOFFSET_QUERY_OPERATOR ]
 							== kOPERATOR_CONTAINS_NOCASE )
 							$tmp .= 'i';
 						switch( $theCondition )
 						{
 							case kOPERATOR_AND:
 							case kOPERATOR_OR:
-								$statement[ $theStatement[ kAPI_QUERY_SUBJECT ] ]
+								$statement[ $theStatement[ kOFFSET_QUERY_SUBJECT ] ]
 									= new MongoRegex( $tmp );
 								break;
 							
 							case kOPERATOR_NAND:
 							case kOPERATOR_NOR:
-								$statement[ $theStatement[ kAPI_QUERY_SUBJECT ] ]
+								$statement[ $theStatement[ kOFFSET_QUERY_SUBJECT ] ]
 									= array( '$not' => new MongoRegex( $tmp ) );
 								break;
 						}
@@ -437,20 +449,20 @@ class CMongoQuery extends CQuery
 					case kOPERATOR_SUFFIX:
 					case kOPERATOR_SUFFIX_NOCASE:
 						$tmp = '/'.$data.'$/';
-						if( $theStatement[ kAPI_QUERY_OPERATOR ]
+						if( $theStatement[ kOFFSET_QUERY_OPERATOR ]
 							== kOPERATOR_SUFFIX_NOCASE )
 							$tmp .= 'i';
 						switch( $theCondition )
 						{
 							case kOPERATOR_AND:
 							case kOPERATOR_OR:
-								$statement[ $theStatement[ kAPI_QUERY_SUBJECT ] ]
+								$statement[ $theStatement[ kOFFSET_QUERY_SUBJECT ] ]
 									= new MongoRegex( $tmp );
 								break;
 							
 							case kOPERATOR_NAND:
 							case kOPERATOR_NOR:
-								$statement[ $theStatement[ kAPI_QUERY_SUBJECT ] ]
+								$statement[ $theStatement[ kOFFSET_QUERY_SUBJECT ] ]
 									= array( '$not' => new MongoRegex( $tmp ) );
 								break;
 						}
@@ -462,84 +474,84 @@ class CMongoQuery extends CQuery
 						{
 							case kOPERATOR_AND:
 							case kOPERATOR_OR:
-								$statement[ $theStatement[ kAPI_QUERY_SUBJECT ] ] = $tmp;
+								$statement[ $theStatement[ kOFFSET_QUERY_SUBJECT ] ] = $tmp;
 								break;
 							
 							case kOPERATOR_NAND:
 							case kOPERATOR_NOR:
-								$statement[ $theStatement[ kAPI_QUERY_SUBJECT ] ]
+								$statement[ $theStatement[ kOFFSET_QUERY_SUBJECT ] ]
 									= array( '$not' => $tmp );
 								break;
 						}
 						break;
 						
 					case kOPERATOR_LESS:
-						$theContainer->UnserialiseData( $data );
+						$data = $theContainer->ConvertValue( $type, $data );
 						switch( $theCondition )
 						{
 							case kOPERATOR_AND:
 							case kOPERATOR_OR:
-								$statement[ $theStatement[ kAPI_QUERY_SUBJECT ] ]
+								$statement[ $theStatement[ kOFFSET_QUERY_SUBJECT ] ]
 									= array( '$lt' => $data );
 								break;
 							
 							case kOPERATOR_NAND:
 							case kOPERATOR_NOR:
-								$statement[ $theStatement[ kAPI_QUERY_SUBJECT ] ]
+								$statement[ $theStatement[ kOFFSET_QUERY_SUBJECT ] ]
 									= array( '$gte' => $data );
 								break;
 						}
 						break;
 						
 					case kOPERATOR_LESS_EQUAL:
-						$theContainer->UnserialiseData( $data );
+						$data = $theContainer->ConvertValue( $type, $data );
 						switch( $theCondition )
 						{
 							case kOPERATOR_AND:
 							case kOPERATOR_OR:
-								$statement[ $theStatement[ kAPI_QUERY_SUBJECT ] ]
+								$statement[ $theStatement[ kOFFSET_QUERY_SUBJECT ] ]
 									= array( '$lte' => $data );
 								break;
 							
 							case kOPERATOR_NAND:
 							case kOPERATOR_NOR:
-								$statement[ $theStatement[ kAPI_QUERY_SUBJECT ] ]
+								$statement[ $theStatement[ kOFFSET_QUERY_SUBJECT ] ]
 									= array( '$gt' => $data );
 								break;
 						}
 						break;
 						
 					case kOPERATOR_GREAT:
-						$theContainer->UnserialiseData( $data );
+						$data = $theContainer->ConvertValue( $type, $data );
 						switch( $theCondition )
 						{
 							case kOPERATOR_AND:
 							case kOPERATOR_OR:
-								$statement[ $theStatement[ kAPI_QUERY_SUBJECT ] ]
+								$statement[ $theStatement[ kOFFSET_QUERY_SUBJECT ] ]
 									= array( '$gt' => $data );
 								break;
 							
 							case kOPERATOR_NAND:
 							case kOPERATOR_NOR:
-								$statement[ $theStatement[ kAPI_QUERY_SUBJECT ] ]
+								$statement[ $theStatement[ kOFFSET_QUERY_SUBJECT ] ]
 									= array( '$lte' => $data );
 								break;
 						}
 						break;
 						
 					case kOPERATOR_GREAT_EQUAL:
-						$theContainer->UnserialiseData( $data );
+						$data = $theContainer->ConvertValue( $type, $data );
 						switch( $theCondition )
 						{
 							case kOPERATOR_AND:
 							case kOPERATOR_OR:
-								$statement[ $theStatement[ kAPI_QUERY_SUBJECT ] ]
+								$statement[ $theStatement[ kOFFSET_QUERY_SUBJECT ] ]
 									= array( '$gte' => $data );
 								break;
 							
 							case kOPERATOR_NAND:
 							case kOPERATOR_NOR:
-								$statement[ $theStatement[ kAPI_QUERY_SUBJECT ] ]
+								$statement[ $theStatement[ kOFFSET_QUERY_SUBJECT ] ]
 									= array( '$lt' => $data );
 								break;
 						}
@@ -548,19 +560,19 @@ class CMongoQuery extends CQuery
 					case kOPERATOR_IRANGE:
 						$list = $this->_OrderRange( $data,
 													$theContainer,
-													$theStatement[ kAPI_QUERY_TYPE ] );
+													$theStatement[ kOFFSET_QUERY_TYPE ] );
 						switch( $theCondition )
 						{
 							case kOPERATOR_AND:
 							case kOPERATOR_OR:
-								$statement[ $theStatement[ kAPI_QUERY_SUBJECT ] ]
+								$statement[ $theStatement[ kOFFSET_QUERY_SUBJECT ] ]
 									= array( '$gte' => array_shift( $list ),
 											 '$lte' => array_shift( $list ) );
 								break;
 							
 							case kOPERATOR_NAND:
 							case kOPERATOR_NOR:
-								$statement[ $theStatement[ kAPI_QUERY_SUBJECT ] ]
+								$statement[ $theStatement[ kOFFSET_QUERY_SUBJECT ] ]
 									= array( '$or'
 										=> array( array( '$lt'
 															=> array_shift( $list ) ),
@@ -573,19 +585,19 @@ class CMongoQuery extends CQuery
 					case kOPERATOR_ERANGE:
 						$list = $this->_OrderRange( $data,
 													$theContainer,
-													$theStatement[ kAPI_QUERY_TYPE ] );
+													$theStatement[ kOFFSET_QUERY_TYPE ] );
 						switch( $theCondition )
 						{
 							case kOPERATOR_AND:
 							case kOPERATOR_OR:
-								$statement[ $theStatement[ kAPI_QUERY_SUBJECT ] ]
+								$statement[ $theStatement[ kOFFSET_QUERY_SUBJECT ] ]
 									= array( '$gt' => array_shift( $list ),
 											 '$lt' => array_shift( $list ) );
 								break;
 							
 							case kOPERATOR_NAND:
 							case kOPERATOR_NOR:
-								$statement[ $theStatement[ kAPI_QUERY_SUBJECT ] ]
+								$statement[ $theStatement[ kOFFSET_QUERY_SUBJECT ] ]
 									= array( '$or'
 										=> array( array( '$lte'
 															=> array_shift( $list ) ),
@@ -600,13 +612,13 @@ class CMongoQuery extends CQuery
 						{
 							case kOPERATOR_AND:
 							case kOPERATOR_OR:
-								$statement[ $theStatement[ kAPI_QUERY_SUBJECT ] ]
+								$statement[ $theStatement[ kOFFSET_QUERY_SUBJECT ] ]
 									= array( '$exists' => FALSE );
 								break;
 							
 							case kOPERATOR_NAND:
 							case kOPERATOR_NOR:
-								$statement[ $theStatement[ kAPI_QUERY_SUBJECT ] ]
+								$statement[ $theStatement[ kOFFSET_QUERY_SUBJECT ] ]
 									= array( '$exists' => TRUE );
 								break;
 						}
@@ -617,13 +629,13 @@ class CMongoQuery extends CQuery
 						{
 							case kOPERATOR_AND:
 							case kOPERATOR_OR:
-								$statement[ $theStatement[ kAPI_QUERY_SUBJECT ] ]
+								$statement[ $theStatement[ kOFFSET_QUERY_SUBJECT ] ]
 									= array( '$exists' => TRUE );
 								break;
 							
 							case kOPERATOR_NAND:
 							case kOPERATOR_NOR:
-								$statement[ $theStatement[ kAPI_QUERY_SUBJECT ] ]
+								$statement[ $theStatement[ kOFFSET_QUERY_SUBJECT ] ]
 									= array( '$exists' => FALSE );
 								break;
 						}
@@ -633,20 +645,20 @@ class CMongoQuery extends CQuery
 						$list = Array();
 						foreach( $data as $element )
 						{
-							$theContainer->UnserialiseData( $element );
+							$element = $theContainer->ConvertValue( $type, $element );
 							$list[] = $element;
 						}
 						switch( $theCondition )
 						{
 							case kOPERATOR_AND:
 							case kOPERATOR_OR:
-								$statement[ $theStatement[ kAPI_QUERY_SUBJECT ] ]
+								$statement[ $theStatement[ kOFFSET_QUERY_SUBJECT ] ]
 									= array( '$in' => $list );
 								break;
 							
 							case kOPERATOR_NAND:
 							case kOPERATOR_NOR:
-								$statement[ $theStatement[ kAPI_QUERY_SUBJECT ] ]
+								$statement[ $theStatement[ kOFFSET_QUERY_SUBJECT ] ]
 									= array( '$nin' => $list );
 								break;
 						}
@@ -656,20 +668,20 @@ class CMongoQuery extends CQuery
 						$list = Array();
 						foreach( $data as $element )
 						{
-							$theContainer->UnserialiseData( $element );
+							$element = $theContainer->ConvertValue( $type, $element );
 							$list[] = $element;
 						}
 						switch( $theCondition )
 						{
 							case kOPERATOR_AND:
 							case kOPERATOR_OR:
-								$statement[ $theStatement[ kAPI_QUERY_SUBJECT ] ]
+								$statement[ $theStatement[ kOFFSET_QUERY_SUBJECT ] ]
 									= array( '$nin' => $list );
 								break;
 							
 							case kOPERATOR_NAND:
 							case kOPERATOR_NOR:
-								$statement[ $theStatement[ kAPI_QUERY_SUBJECT ] ]
+								$statement[ $theStatement[ kOFFSET_QUERY_SUBJECT ] ]
 									= array( '$in' => $list );
 								break;
 						}
@@ -679,20 +691,20 @@ class CMongoQuery extends CQuery
 						$list = Array();
 						foreach( $data as $element )
 						{
-							$theContainer->UnserialiseData( $element );
+							$element = $theContainer->ConvertValue( $type, $element );
 							$list[] = $element;
 						}
 						switch( $theCondition )
 						{
 							case kOPERATOR_AND:
 							case kOPERATOR_OR:
-								$statement[ $theStatement[ kAPI_QUERY_SUBJECT ] ]
+								$statement[ $theStatement[ kOFFSET_QUERY_SUBJECT ] ]
 									= array( '$all' => $list );
 								break;
 							
 							case kOPERATOR_NAND:
 							case kOPERATOR_NOR:
-								$statement[ $theStatement[ kAPI_QUERY_SUBJECT ] ]
+								$statement[ $theStatement[ kOFFSET_QUERY_SUBJECT ] ]
 									= array
 										(
 											'$not' => array
@@ -703,6 +715,15 @@ class CMongoQuery extends CQuery
 								break;
 						}
 						break;
+						
+					case kOPERATOR_DISABLED:
+						break;
+						
+					case kOPERATOR_NALL:
+					case kOPERATOR_LIKE_NOT:
+						throw new Exception
+								( "Unsupported query operator",
+								  kERROR_UNSUPPORTED );							// !@! ==>
 					
 					//
 					// Catch unhandled operators.
@@ -772,6 +793,12 @@ class CMongoQuery extends CQuery
 		}
 		else
 			$list = array( $theRange, $theRange );
+		
+		//
+		// Convert range elements.
+		//
+		foreach( $list as $key => $value )
+			$list[ $key ] = $theContainer->ConvertValue( $theType, $value );
 	
 		//
 		// Parse by data type.

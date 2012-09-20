@@ -4,7 +4,7 @@
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 	<meta name="generator" content="ApiGen 2.7.0" />
 
-	<title>Class CMongoDatabase | MyWrapper Reference Documentation</title>
+	<title>Class CMongoQuery | MyWrapper Reference Documentation</title>
 
 	<script type="text/javascript" src="resources/combined.js?496895167"></script>
 	<script type="text/javascript" src="elementlist.js?4206909522"></script>
@@ -44,8 +44,8 @@
 			<h3>Classes</h3>
 			<ul>
 				<li><a href="class-CMongoContainer.html">CMongoContainer</a></li>
-				<li class="active"><a href="class-CMongoDatabase.html">CMongoDatabase</a></li>
-				<li><a href="class-CMongoQuery.html">CMongoQuery</a></li>
+				<li><a href="class-CMongoDatabase.html">CMongoDatabase</a></li>
+				<li class="active"><a href="class-CMongoQuery.html">CMongoQuery</a></li>
 				<li><a href="class-CMongoServer.html">CMongoServer</a></li>
 				<li><a href="class-CPersistentDocument.html">CPersistentDocument</a></li>
 				<li><a href="class-CPersistentObject.html">CPersistentObject</a></li>
@@ -91,15 +91,16 @@
 	</div>
 
 <div id="content" class="class">
-	<h1>Class CMongoDatabase</h1>
+	<h1>Class CMongoQuery</h1>
 
 
 	<div class="description">
 	
-<h3>Database object ancestor</h3>
+<h3>Mongo query</h3>
 
-<p>This class implements a database object that represents a MongoDB
-instance. This object can be used to generate Mongo container objects.</p>
+<p>This class extends its ancestor to implement a public method that will
+convert the current object's query into a query suitable to be submitted to a
+Mongo database.</p>
 
 	</div>
 
@@ -136,21 +137,14 @@ instance. This object can be used to generate Mongo container objects.</p>
 		</dd>
 		<dd style="padding-left:90px">
 			<img src="resources/inherit.png" alt="Extended by" />
-			<a href="class-CConnection.html"><span>CConnection</span></a>
+			<a href="class-CQuery.html"><span>CQuery</span></a>
 			
 			
 			
 		</dd>
 		<dd style="padding-left:120px">
 			<img src="resources/inherit.png" alt="Extended by" />
-			<a href="class-CDatabase.html"><span>CDatabase</span></a>
-			
-			
-			
-		</dd>
-		<dd style="padding-left:150px">
-			<img src="resources/inherit.png" alt="Extended by" />
-<b><span>CMongoDatabase</span></b>			
+<b><span>CMongoQuery</span></b>			
 			
 			
 		</dd>
@@ -172,250 +166,52 @@ instance. This object can be used to generate Mongo container objects.</p>
 				<b>Author:</b>
 				Milko A. Škofič &lt;<a
 href="mailto:m.skofic&#64;cgiar.org">m.skofic&#64;<!---->cgiar.org</a>&gt;<br />
-		<b>Located at</b> <a href="source-class-CMongoDatabase.html#29" title="Go to source code">CMongoDatabase.php</a><br />
+		<b>Located at</b> <a href="source-class-CMongoQuery.html#36" title="Go to source code">CMongoQuery.php</a><br />
 	</div>
 
 
 	<table class="summary" id="methods">
 	<caption>Methods summary</caption>
-	<tr data-order="__construct" id="___construct">
+	<tr data-order="Export" id="_Export">
 
 		<td class="attributes"><code>
 			 public 
-			
+			array
 			
 			</code>
 		</td>
 
 		<td class="name"><div>
-		<a class="anchor" href="#___construct">#</a>
-		<code><a href="source-class-CMongoDatabase.html#54" title="Go to source code">__construct</a>( <span>mixed <var>$theConnection</var> = <span class="php-keyword1">NULL</span></span>, <span>mixed <var>$theOptions</var> = <span class="php-keyword1">NULL</span> </span> )</code>
+		<a class="anchor" href="#_Export">#</a>
+		<code><a href="source-class-CMongoQuery.html#61" title="Go to source code">Export</a>( <span><code><a href="class-CConnection.html">CConnection</a></code> <var>$theContainer</var></span> )</code>
 
 		<div class="description short">
 			
-<h4>Instantiate class</h4>
+<h4>Export query</h4>
 
 		</div>
 
 		<div class="description detailed hidden">
 			
-<h4>Instantiate class</h4>
+<h4>Export query</h4>
 
-<p>The method accepts the same parameters as the MongoDB constructor,
-the first one represents the server object, the second represents the database
-name, if the latter is missing, the method will raise an exception.</p>
+<p>We overload the inherited method to generate Mongo specific queries.</p>
 
-<p>The method will also accept a server object in the first parameter, in that
-case the second parameter will be ignored.</p>
-
-<p>The method will first attempt to instantiate the MongoDB object, it
-will then store it in the connection data member.</p>
-
-
-
-				<h4>Parameters</h4>
-				<div class="list"><dl>
-					<dt><var>$theConnection</var></dt>
-					<dd><code>mixed</code><br> Server or database.</dd>
-					<dt><var>$theOptions</var></dt>
-					<dd><code>mixed</code><br> Database name.</dd>
-				</dl></div>
-
-
-
-				<h4>Uses</h4>
-				<div class="list">
-						<code><code><a href="class-CMongoDatabase.html#_">CMongoDatabase::Connection()</a></code></code> <br />
-				</div>
-
-				<h4>Overrides</h4>
-				<div class="list"><code><a href="class-CConnection.html#_">CConnection::__construct</a></code></div>
-
-		</div>
-		</div></td>
-	</tr>
-	<tr data-order="__toString" id="___toString">
-
-		<td class="attributes"><code>
-			 public 
-			string
-			
-			</code>
-		</td>
-
-		<td class="name"><div>
-		<a class="anchor" href="#___toString">#</a>
-		<code><a href="source-class-CMongoDatabase.html#141" title="Go to source code">__toString</a>( )</code>
-
-		<div class="description short">
-			
-<h4>Return connection name</h4>
-
-		</div>
-
-		<div class="description detailed hidden">
-			
-<h4>Return connection name</h4>
-
-<p>In this class the method will return the server's connection URL, which
-corresponds to the kOFFSET_NAME offset.</p>
-
-
-
-
-				<h4>Returns</h4>
-				<div class="list">
-					<code>string</code><br>The connection name.<br />
-				</div>
-
-
-
-
-		</div>
-		</div></td>
-	</tr>
-	<tr data-order="Connection" id="_Connection">
-
-		<td class="attributes"><code>
-			 public 
-			mixed
-			
-			</code>
-		</td>
-
-		<td class="name"><div>
-		<a class="anchor" href="#_Connection">#</a>
-		<code><a href="source-class-CMongoDatabase.html#176" title="Go to source code">Connection</a>( <span>mixed <var>$theValue</var> = <span class="php-keyword1">NULL</span></span>, <span>boolean <var>$getOld</var> = <span class="php-keyword1">FALSE</span> </span> )</code>
-
-		<div class="description short">
-			
-<h4>Manage native connection</h4>
-
-		</div>
-
-		<div class="description detailed hidden">
-			
-<h4>Manage native connection</h4>
-
-<p>We overload this method to ensure the provided value is an instance of Mongo, if this is not the case, the method will raise an exception.</p>
-
-<p>The method will attempt to parse the provided server URL and store the
-results in the array part of the object. For more information on the parsed
-elements consult the PHP parse_url() function.</p>
-
-<p>Although the database name can be obtained from the native connection, we
-still store it in the kOFFSET_NAME offset for consistency with other
-connection objects.</p>
-
-
-
-				<h4>Parameters</h4>
-				<div class="list"><dl>
-					<dt><var>$theValue</var></dt>
-					<dd><code>mixed</code><br> Native connection or operation.</dd>
-					<dt><var>$getOld</var></dt>
-					<dd><code>boolean</code><br> <tt>TRUE</tt> get old value.</dd>
-				</dl></div>
-
-				<h4>Returns</h4>
-				<div class="list">
-					<code>mixed</code><br><i>New</i> or <i>old</i> native connection.<br />
-				</div>
-
-				<h4>Throws</h4>
-				<div class="list">
-					<code><code><a href="class-Exception.html">Exception</a></code></code><br />
-				</div>
-
-				<h4>Used by</h4>
-				<div class="list">
-						<code><code><a href="class-CMongoDatabase.html#_">CMongoDatabase::__construct()</a></code></code> <br />
-				</div>
-
-				<h4>Overrides</h4>
-				<div class="list"><code><a href="class-CConnection.html#_">CConnection::Connection</a></code></div>
-
-		</div>
-		</div></td>
-	</tr>
-	<tr data-order="Drop" id="_Drop">
-
-		<td class="attributes"><code>
-			 public 
-			
-			
-			</code>
-		</td>
-
-		<td class="name"><div>
-		<a class="anchor" href="#_Drop">#</a>
-		<code><a href="source-class-CMongoDatabase.html#257" title="Go to source code">Drop</a>( )</code>
-
-		<div class="description short">
-			
-<h4>Delete a database</h4>
-
-		</div>
-
-		<div class="description detailed hidden">
-			
-<h4>Delete a database</h4>
-
-<p>In this class we drop the database.</p>
-
-
-
-
-
-
-
-
-		</div>
-		</div></td>
-	</tr>
-	<tr data-order="Container" id="_Container">
-
-		<td class="attributes"><code>
-			 public 
-			mixed
-			
-			</code>
-		</td>
-
-		<td class="name"><div>
-		<a class="anchor" href="#_Container">#</a>
-		<code><a href="source-class-CMongoDatabase.html#279" title="Go to source code">Container</a>( <span>string <var>$theContainer</var> = <span class="php-keyword1">NULL</span> </span> )</code>
-
-		<div class="description short">
-			
-<h4>Generate a container object</h4>
-
-		</div>
-
-		<div class="description detailed hidden">
-			
-<h4>Generate a container object</h4>
-
-<p>In this class we return <code><a href="class-CMongoContainer.html">CMongoContainer</a></code> instances, the provided
-parameter is interpreted as the container name.</p>
-
-<p>If you omit the parameter, the method will raise an exception, in derived
-classes you can overload the method to provide a default container name.</p>
-
-<p>If the object does not have its native connection, the method will also raise
-an exception.</p>
+<p>The method will first check if the provided container is a <code><a href="class-CMongoContainer.html">CMongoContainer</a></code>, it will then iterate all conditions and feed each to a
+protected method, <code><a href="class-CMongoQuery.html#_">CMongoQuery::_ConvertCondition()</a></code>, that will take care of converting
+the query elements.</p>
 
 
 
 				<h4>Parameters</h4>
 				<div class="list"><dl>
 					<dt><var>$theContainer</var></dt>
-					<dd><code>string</code><br> Container name.</dd>
+					<dd><code><code><a href="class-CConnection.html">CConnection</a></code></code><br> Query container.</dd>
 				</dl></div>
 
 				<h4>Returns</h4>
 				<div class="list">
-					<code>mixed</code><br>The container object.<br />
+					<code>array</code><br />
 				</div>
 
 				<h4>Throws</h4>
@@ -423,10 +219,249 @@ an exception.</p>
 					<code><code><a href="class-Exception.html">Exception</a></code></code><br />
 				</div>
 
-				<h4>Uses</h4>
+
+				<h4>Overrides</h4>
+				<div class="list"><code><a href="class-CQuery.html#_">CQuery::Export</a></code></div>
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="_ValidateCondition" id="__ValidateCondition">
+
+		<td class="attributes"><code>
+			 protected 
+			
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#__ValidateCondition">#</a>
+		<code><a href="source-class-CMongoQuery.html#116" title="Go to source code">_ValidateCondition</a>( <span>string <var>$theCondition</var></span>, <span>array <var>$theStatements</var></span>, <span>integer <var>$theLevel</var></span> )</code>
+
+		<div class="description short">
+			
+<h4>Validate condition</h4>
+
+		</div>
+
+		<div class="description detailed hidden">
+			
+<h4>Validate condition</h4>
+
+<p>This method expects a condition as its argument, it will check if it is a
+valid condition, then it will validate all condition statements.</p>
+
+<p>In this class we handle queries to Mongo databases, so the depth of the query
+conditions cannot go beyond 2 levels.</p>
+
+<p>We overload this method to prevent nesting OR conditions.</p>
+
+
+
+				<h4>Parameters</h4>
+				<div class="list"><dl>
+					<dt><var>$theCondition</var></dt>
+					<dd><code>string</code><br> Boolean condition.</dd>
+					<dt><var>$theStatements</var></dt>
+					<dd><code>array</code><br> Statements list.</dd>
+					<dt><var>$theLevel</var></dt>
+					<dd><code>integer</code><br> [PRIVATE] condition level.</dd>
+				</dl></div>
+
+
+				<h4>Throws</h4>
 				<div class="list">
-						<code><code><a href="class-CStatusDocument.html#_">CStatusDocument::_IsInited()</a></code></code> <br />
+					<code><code><a href="class-Exception.html">Exception</a></code></code><br />
 				</div>
+
+
+				<h4>Overrides</h4>
+				<div class="list"><code><a href="class-CQuery.html#_">CQuery::_ValidateCondition</a></code></div>
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="_ConvertCondition" id="__ConvertCondition">
+
+		<td class="attributes"><code>
+			 protected 
+			
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#__ConvertCondition">#</a>
+		<code><a href="source-class-CMongoQuery.html#164" title="Go to source code">_ConvertCondition</a>( <span>reference <var>&amp; $theQuery</var></span>, <span><code><a href="class-CMongoContainer.html">CMongoContainer</a></code> <var>$theContainer</var></span>, <span>string <var>$theCondition</var></span>, <span>array <var>$theStatements</var></span> )</code>
+
+		<div class="description short">
+			
+<h4>Convert condition</h4>
+
+		</div>
+
+		<div class="description detailed hidden">
+			
+<h4>Convert condition</h4>
+
+<p>This method is provided by the <code><a href="class-CMongoQuery.html#_">CMongoQuery::Export()</a></code> method a condition to convert
+in Mongo format. The method will iterate all statements in the condition and
+feed them to the</p>
+
+<p>The method is called by the <code><a href="class-CMongoQuery.html#_">CMongoQuery::Export()</a></code> method and takes care of
+organising the <code><a href="class-CMongoQuery.html#_">CMongoQuery::_ConvertStatement()</a></code> method that will convert them.</p>
+
+<p>The parameters to this method are:</p>
+
+<ul>
+	<li><tt>&amp;$theQuery</tt>: Reference to an array that will receive the
+	converted condition.</li>
+
+	<li><tt>$theContainer</tt>: Data container, must be derived from <code><a href="class-CMongoContainer.html">CMongoContainer</a></code>.</li>
+
+	<li><tt>$theCondition</tt>: Boolean condition code.</li>
+
+	<li><tt>$theStatements</tt>: List of condition statements.</li>
+</ul>
+
+
+
+				<h4>Parameters</h4>
+				<div class="list"><dl>
+					<dt><var>$theQuery</var></dt>
+					<dd><code>reference</code><br>&amp;$theQuery Receives converted query.</dd>
+					<dt><var>$theContainer</var></dt>
+					<dd><code><code><a href="class-CMongoContainer.html">CMongoContainer</a></code></code><br> Query container.</dd>
+					<dt><var>$theCondition</var></dt>
+					<dd><code>string</code><br> Boolean condition.</dd>
+					<dt><var>$theStatements</var></dt>
+					<dd><code>array</code><br> Statements list.</dd>
+				</dl></div>
+
+
+
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="_ConvertStatement" id="__ConvertStatement">
+
+		<td class="attributes"><code>
+			 protected 
+			
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#__ConvertStatement">#</a>
+		<code><a href="source-class-CMongoQuery.html#247" title="Go to source code">_ConvertStatement</a>( <span>reference <var>&amp; $theQuery</var></span>, <span><code><a href="class-CMongoContainer.html">CMongoContainer</a></code> <var>$theContainer</var></span>, <span>string <var>$theCondition</var></span>, <span>array <var>$theStatement</var></span> )</code>
+
+		<div class="description short">
+			
+<h4>Convert statement</h4>
+
+		</div>
+
+		<div class="description detailed hidden">
+			
+<h4>Convert statement</h4>
+
+<p>This method will convert the statement to Mongo format.</p>
+
+<p>The parameters to this method are:</p>
+
+<ul>
+	<li><tt>&amp;$theQuery</tt>: Reference to an array that will receive the
+	converted statement.</li>
+
+	<li><tt>$theContainer</tt>: Data container, must be derived from <code><a href="class-CMongoContainer.html">CMongoContainer</a></code> and we assume this check has been done by the caller.</li>
+
+	<li><tt>$theCondition</tt>: Boolean condition code.</li>
+
+	<li><tt>$theStatement</tt>: Statement.</li>
+</ul>
+
+
+
+				<h4>Parameters</h4>
+				<div class="list"><dl>
+					<dt><var>$theQuery</var></dt>
+					<dd><code>reference</code><br>&amp;$theQuery Receives converted statement.</dd>
+					<dt><var>$theContainer</var></dt>
+					<dd><code><code><a href="class-CMongoContainer.html">CMongoContainer</a></code></code><br> Query container.</dd>
+					<dt><var>$theCondition</var></dt>
+					<dd><code>string</code><br> Boolean condition.</dd>
+					<dt><var>$theStatement</var></dt>
+					<dd><code>array</code><br> Statement.</dd>
+				</dl></div>
+
+
+
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="_OrderRange" id="__OrderRange">
+
+		<td class="attributes"><code>
+			 protected 
+			array
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#__OrderRange">#</a>
+		<code><a href="source-class-CMongoQuery.html#758" title="Go to source code">_OrderRange</a>( <span>mixed <var>$theRange</var></span>, <span><code><a href="class-CMongoContainer.html">CMongoContainer</a></code> <var>$theContainer</var></span>, <span>string <var>$theType</var></span> )</code>
+
+		<div class="description short">
+			
+<h4>Order range elements</h4>
+
+		</div>
+
+		<div class="description detailed hidden">
+			
+<h4>Order range elements</h4>
+
+<p>This method will order the provided range elements, the method accepts an
+array of two elements which represent the range bounds and will return an array
+with the two provided elements sorted.</p>
+
+<p>The method accepts three parameters:</p>
+
+<ul>
+	<li><tt>$theRange</tt>: An array containing two elements representing the range
+	bounds.</li>
+
+	<li><tt>$theContainer</tt>: The <code><a href="class-CMongoContainer.html">CMongoContainer</a></code> on which the query will
+	be executed.</li>
+
+	<li><tt>$theType</tt>: The data type of the range elements.</li>
+</ul>
+
+
+
+				<h4>Parameters</h4>
+				<div class="list"><dl>
+					<dt><var>$theRange</var></dt>
+					<dd><code>mixed</code><br> Range elements.</dd>
+					<dt><var>$theContainer</var></dt>
+					<dd><code><code><a href="class-CMongoContainer.html">CMongoContainer</a></code></code><br> Query container.</dd>
+					<dt><var>$theType</var></dt>
+					<dd><code>string</code><br> Elements data type.</dd>
+				</dl></div>
+
+				<h4>Returns</h4>
+				<div class="list">
+					<code>array</code><br />
+				</div>
+
+
 
 
 		</div>
@@ -435,11 +470,15 @@ an exception.</p>
 	</table>
 
 	<table class="summary inherited">
-	<caption>Methods inherited from <a href="class-CConnection.html#methods">CConnection</a></caption>
+	<caption>Methods inherited from <a href="class-CQuery.html#methods">CQuery</a></caption>
 	<tr>
 		<td><code>
-			<a href="class-CConnection.html#_">_Connection()</a>, 
-			<a href="class-CConnection.html#_">_Ready()</a>
+			<a href="class-CQuery.html#_">AppendStatement()</a>, 
+			<a href="class-CQuery.html#_">Validate()</a>, 
+			<a href="class-CQuery.html#_">_AppendStatement()</a>, 
+			<a href="class-CQuery.html#_">_Ready()</a>, 
+			<a href="class-CQuery.html#_">_ValidateStatement()</a>, 
+			<a href="class-CQuery.html#_">__construct()</a>
 		</code></td>
 	</tr>
 	</table>
@@ -511,14 +550,6 @@ an exception.</p>
 
 
 
-	<table class="summary inherited">
-	<caption>Properties inherited from <a href="class-CConnection.html#properties">CConnection</a></caption>
-	<tr>
-		<td><code>
-			<a href="class-CConnection.html#$mConnection"><var>$mConnection</var></a>
-		</code></td>
-	</tr>
-	</table>
 	<table class="summary inherited">
 	<caption>Properties inherited from <a href="class-CStatusDocument.html#properties">CStatusDocument</a></caption>
 	<tr>

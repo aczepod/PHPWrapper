@@ -6,8 +6,8 @@
 
 	<title>Class CQuery | MyWrapper Reference Documentation</title>
 
-	<script type="text/javascript" src="resources/combined.js?417553483"></script>
-	<script type="text/javascript" src="elementlist.js?4159639342"></script>
+	<script type="text/javascript" src="resources/combined.js?496895167"></script>
+	<script type="text/javascript" src="elementlist.js?4206909522"></script>
 	<link rel="stylesheet" type="text/css" media="all" href="resources/style.css?1567499433" />
 
 </head>
@@ -267,6 +267,10 @@ exchange data store queries or filters.</p>
 	</dl>
 
 
+	<div>
+		<h4>Direct known subclasses</h4>
+			<a href="class-CMongoQuery.html">CMongoQuery</a>
+	</div>
 
 
 
@@ -428,6 +432,58 @@ current object.</p>
 		</div>
 		</div></td>
 	</tr>
+	<tr data-order="Export" id="_Export">
+
+		<td class="attributes"><code>
+			 public 
+			array
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_Export">#</a>
+		<code><a href="source-class-CQuery.html#370" title="Go to source code">Export</a>( <span><code><a href="class-CConnection.html">CConnection</a></code> <var>$theContainer</var></span> )</code>
+
+		<div class="description short">
+			
+<h4>Export query</h4>
+
+		</div>
+
+		<div class="description detailed hidden">
+			
+<h4>Export query</h4>
+
+<p>The method will return an array suitable to be provided as a native query,
+the method requires a container that will take care of converting query
+arguments to native data types.</p>
+
+<p>In this class we simply return the query as it is.</p>
+
+
+
+				<h4>Parameters</h4>
+				<div class="list"><dl>
+					<dt><var>$theContainer</var></dt>
+					<dd><code><code><a href="class-CConnection.html">CConnection</a></code></code><br> Query container.</dd>
+				</dl></div>
+
+				<h4>Returns</h4>
+				<div class="list">
+					<code>array</code><br />
+				</div>
+
+				<h4>Throws</h4>
+				<div class="list">
+					<code><code><a href="class-Exception.html">Exception</a></code></code><br />
+				</div>
+
+
+
+		</div>
+		</div></td>
+	</tr>
 	<tr data-order="_AppendStatement" id="__AppendStatement">
 
 		<td class="attributes"><code>
@@ -439,7 +495,7 @@ current object.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#__AppendStatement">#</a>
-		<code><a href="source-class-CQuery.html#370" title="Go to source code">_AppendStatement</a>( <span>reference <var>&amp; $theQuery</var></span>, <span>array <var>$theCondition</var></span>, <span>string <var>$theStatement</var></span> )</code>
+		<code><a href="source-class-CQuery.html#402" title="Go to source code">_AppendStatement</a>( <span>reference <var>&amp; $theQuery</var></span>, <span>array <var>$theCondition</var></span>, <span>string <var>$theStatement</var></span> )</code>
 
 		<div class="description short">
 			
@@ -496,7 +552,7 @@ added at the same level. If the top level is an kOPERATOR_OR or kOPERATOR_NOR an
 
 		<td class="name"><div>
 		<a class="anchor" href="#__ValidateCondition">#</a>
-		<code><a href="source-class-CQuery.html#544" title="Go to source code">_ValidateCondition</a>( <span>string <var>$theCondition</var></span>, <span>array <var>$theStatements</var></span>, <span>integer <var>$theLevel</var></span> )</code>
+		<code><a href="source-class-CQuery.html#576" title="Go to source code">_ValidateCondition</a>( <span>string <var>$theCondition</var></span>, <span>array <var>$theStatements</var></span>, <span>integer <var>$theLevel</var></span> )</code>
 
 		<div class="description short">
 			
@@ -554,7 +610,7 @@ valid condition, then it will validate all condition statements.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#__ValidateStatement">#</a>
-		<code><a href="source-class-CQuery.html#607" title="Go to source code">_ValidateStatement</a>( <span>array <var>$theStatement</var></span>, <span>integer <var>$theLevel</var></span> )</code>
+		<code><a href="source-class-CQuery.html#639" title="Go to source code">_ValidateStatement</a>( <span>array <var>$theStatement</var></span>, <span>integer <var>$theLevel</var></span> )</code>
 
 		<div class="description short">
 			
@@ -609,7 +665,7 @@ valid statement and check if all required elements are there.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#__Ready">#</a>
-		<code><a href="source-class-CQuery.html#736" title="Go to source code">_Ready</a>( )</code>
+		<code><a href="source-class-CQuery.html#768" title="Go to source code">_Ready</a>( )</code>
 
 		<div class="description short">
 			

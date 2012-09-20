@@ -1795,11 +1795,11 @@ class CQueryStatement extends CDocument
 		//
 		switch( $theType )
 		{
-			case kTYPE_BOOLEAN:		$theValue = (boolean) $theValue;	break;
 			case kTYPE_INT32:
 			case kTYPE_INT64:		$theValue = (integer) $theValue;	break;
 			case kTYPE_FLOAT:		$theValue = (double) $theValue;		break;
 			case kTYPE_STRING:		$theValue = (string) $theValue;		break;
+			case kTYPE_BOOLEAN:		$theValue = (boolean) $theValue;	break;
 		
 		} // Checking data value.
 	

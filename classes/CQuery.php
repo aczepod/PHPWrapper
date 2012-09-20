@@ -357,6 +357,38 @@ class CQuery extends CStatusDocument
 
 /*=======================================================================================
  *																						*
+ *									PUBLIC EXPORT INTERFACE								*
+ *																						*
+ *======================================================================================*/
+
+
+	 
+	/*===================================================================================
+	 *	Export																			*
+	 *==================================================================================*/
+
+	/**
+	 * <h4>Export query</h4>
+	 *
+	 * The method will return an array suitable to be provided as a native query, the
+	 * method requires a container that will take care of converting query arguments to
+	 * native data types.
+	 *
+	 * In this class we simply return the query as it is.
+	 *
+	 * @param CConnection			$theContainer		Query container.
+	 *
+	 * @access public
+	 * @return array
+	 *
+	 * @throws Exception
+	 */
+	public function Export( CConnection $theContainer )	{	return $this->getArrayCopy();	}
+
+	 
+
+/*=======================================================================================
+ *																						*
  *									PROTECTED QUERY UTILITIES							*
  *																						*
  *======================================================================================*/

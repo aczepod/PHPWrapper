@@ -20,6 +20,13 @@
  *======================================================================================*/
 
 /**
+ * Mongo queries.
+ *
+ * This includes the Mongo query class definitions.
+ */
+require_once( kPATH_MYWRAPPER_LIBRARY_CLASS."/CMongoQuery.php" );
+
+/**
  * Ancestor.
  *
  * This include file contains the parent class definitions.
@@ -797,6 +804,52 @@ class CMongoContainer extends CContainer
 	
 	} // CheckObject.
 
+	 
+	/*===================================================================================
+	 *	Query																			*
+	 *==================================================================================*/
+
+	/**
+	 * <h4>Perform a query</h4>
+	 *
+	 * We overload this method to perform the query on the current container.
+	 *
+	 * @param CQuery				$theQuery			Query.
+	 * @param array					$theFields			Fieldset.
+	 *
+	 * @access public
+	 * @return mixed				Native recordset.
+	 */
+	public function Query( CQuery $theQuery, $theFields = NULL )
+	{
+		//
+		// Get container.
+		//
+		$container = $this->Connection();
+		if( ! ($container instanceof MongoCollection) )
+			throw new Exception
+				( "Missing or invalid native container",
+				  kERROR_STATE );												// !@! ==>
+		
+		//
+		// Export query.
+		//
+		$query = $theQuery->Export( $this );
+		
+		//
+		// Set fieldset.
+		//
+		$fields = Array();
+		if( is_array( $theFields ) )
+		{
+			foreach( $theFields as $field )
+				$fields[ $field ] = TRUE;
+		}
+		
+		return $container->find( $query, $fields );									// ==>
+	
+	} // Query.
+
 		
 
 /*=======================================================================================
@@ -912,32 +965,77 @@ class CMongoContainer extends CContainer
 
 	 
 	/*===================================================================================
-	 *	ConvertBinary																	*
+	 *	ConvertValue																	*
 	 *==================================================================================*/
 
 	/**
-	 * <h4>Convert a binary string</h4>
+	 * <h4>Convert a value</h4>
 	 *
-	 * This method will take care of converting binary data to and from Mongo data stores,
-	 * we use here the {@link MongoBinData} class.
+	 * In this class we handle custom Mongo data types:
 	 *
-	 * This method can be used by the {@link CPersistentObject::_id()} method when
-	 * generating a hashed identifier.
+	 * <ul>
+	 *	<li>{@link kTYPE_INT32}: We convert the value to a {@link MongoInt32}.
+	 *	<li>{@link kTYPE_INT64}: We convert the value to a {@link MongoInt64}.
+	 *	<li>{@link kTYPE_BINARY}: We convert the value to a {@link MongoBinData}.
+	 *	<li>{@link kTYPE_STAMP}: We convert the value to a {@link MongoDate}, depending on
+	 *		the provided value:
+	 *	 <ul>
+	 *		<li><tt>string</tt>: We convert the string using the {@link strtotime()}
+	 *			function.
+	 *		<li><tt>integer</tt>: We provide it as-is.
+	 *		<li><tt>array</tt>: We assume the array contains two elements: the first with
+	 *			the seconds and the second with the microseconds.
+	 *	 </ul>
+	 * </ul>
 	 *
-	 * @param mixed					$theValue			Binary value.
-	 * @param boolean				$theSense			<tt>TRUE</tt> encode for database.
+	 * @param string				$theType			Data type.
+	 * @param mixed					$theValue			Data value.
 	 *
 	 * @static
-	 * @return mixed				The encoded or decoded binary string.
+	 * @return mixed				The encoded data value.
 	 */
-	static function ConvertBinary( $theValue, $theSense = TRUE )
+	static function ConvertValue( $theType, $theValue )
 	{
-		if( $theSense )
-			return new MongoBinData( $theValue );									// ==>
+		//
+		// Parse by type.
+		//
+		switch( $theType )
+		{
+			case kTYPE_INT32:
+				if( $theValue instanceof MongoInt32 )
+					return $theValue;												// ==>
+				return new MongoInt32( (int) $theValue );							// ==>
+				
+			case kTYPE_INT64:
+				if( $theValue instanceof MongoInt64 )
+					return $theValue;												// ==>
+				return new MongoInt64( (int) $theValue );							// ==>
+				
+			case kTYPE_BINARY:
+				if( $theValue instanceof MongoBinData )
+					return $theValue;												// ==>
+				return new MongoBinData( $theValue );							// ==>
+				
+			case kTYPE_STAMP:
+				if( $theValue instanceof MongoDate )
+					return $theValue;												// ==>
+				if( is_array( $theValue ) )
+				{
+					$sec = (int) array_shift( $theValue );
+					$usec = ( count( $theValue ) )
+						  ? (int) array_shift( $theValue )
+						  : 0;
+					
+					return new MongoDate( $sec, $usec );							// ==>
+				}
+				if( is_string( $theValue ) )
+					$theValue = strtotime( $theValue );
+				return new MongoDate( (int) $theValue );							// ==>
+		}
 		
-		return $theValue->bin;														// ==>
+		return parent::ConvertValue( $theType, $theValue );							// ==>
 	
-	} // ConvertBinary.
+	} // ConvertValue.
 
 	 
 

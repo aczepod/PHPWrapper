@@ -75,7 +75,7 @@ class MyClass extends CPersistentObject
 		if( ($theConnection !==  NULL)
 		 && ($theIdentifier !==  NULL) )
 			return self::ResolveContainer( $theConnection, TRUE )
-					   ->ConvertBinary( md5( $theIdentifier, TRUE ) );
+						->ConvertValue( kTYPE_BINARY, md5( $theIdentifier, TRUE ) );
 		
 		return parent::_id( $theIdentifier, $theConnection );
 	}

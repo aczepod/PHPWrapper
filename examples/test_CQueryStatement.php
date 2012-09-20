@@ -266,8 +266,8 @@ try
 				   new MongoDate( strtotime("2010-02-15 00:00:00") ),
 				   new MongoDate( strtotime("2011-02-15 00:00:00") ),
 				   new MongoDate() );
-	echo( '<i>$test = CQueryStatement::NotMember( "SUB", $list );</i><br>' );
-	$test = CQueryStatement::NotMember( "SUB", $list );
+	echo( '<i>$test = CQueryStatement::NotMember( "SUB", $list, kTYPE_STAMP );</i><br>' );
+	$test = CQueryStatement::NotMember( "SUB", $list, kTYPE_STAMP );
 	echo( '<pre>' ); print_r( $test ); echo( '</pre>' );
 	echo( '<i>$query->AppendStatement( $test );</i><br>' );
 	$query->AppendStatement( $test );
@@ -280,8 +280,8 @@ try
 				   new MongoDate( strtotime("2010-02-15 00:00:00") ),
 				   new MongoDate( strtotime("2011-02-15 00:00:00") ),
 				   new MongoDate() );
-	echo( '<i>$test = CQueryStatement::All( "SUB", $list );</i><br>' );
-	$test = CQueryStatement::All( "SUB", $list );
+	echo( '<i>$test = CQueryStatement::All( "SUB", $list, kTYPE_STAMP );</i><br>' );
+	$test = CQueryStatement::All( "SUB", $list, kTYPE_STAMP );
 	echo( '<pre>' ); print_r( $test ); echo( '</pre>' );
 	echo( '<i>$query->AppendStatement( $test );</i><br>' );
 	$query->AppendStatement( $test );
@@ -294,8 +294,8 @@ try
 				   new MongoDate( strtotime("2010-02-15 00:00:00") ),
 				   new MongoDate( strtotime("2011-02-15 00:00:00") ),
 				   new MongoDate() );
-	echo( '<i>$test = CQueryStatement::NotAll( "SUB", $list );</i><br>' );
-	$test = CQueryStatement::NotAll( "SUB", $list );
+	echo( '<i>$test = CQueryStatement::NotAll( "SUB", $list, kTYPE_STAMP );</i><br>' );
+	$test = CQueryStatement::NotAll( "SUB", $list, kTYPE_STAMP );
 	echo( '<pre>' ); print_r( $test ); echo( '</pre>' );
 	echo( '<i>$query->AppendStatement( $test );</i><br>' );
 	$query->AppendStatement( $test );

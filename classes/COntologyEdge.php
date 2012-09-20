@@ -972,7 +972,7 @@ class COntologyEdge extends CEdge
 					//
 					// Generate unique identifier.
 					//
-					$uid = $container->ConvertBinary( md5( $index, TRUE ) );
+					$uid = $container->ConvertValue( kTYPE_BINARY, md5( $index, TRUE ) );
 					
 					//
 					// Check unique identifier.

@@ -547,6 +547,45 @@ try
 	echo( '<pre>' ); print_r( $i ); echo( '</pre>' );
 	echo( '<hr />' );
 	echo( '<hr />' );
+	
+	//
+	// Test equals query.
+	//
+	echo( '<h4>Test equals query</h4>' );
+	echo( '<h5>$query = new CMongoQuery();</h5>' );
+	$query = new CMongoQuery();
+	echo( '<h5>$stmt = CQueryStatement::Equals( "B", "due" );</h5>' );
+	$stmt = CQueryStatement::Equals( "B", "due" );
+	echo( '<h5>$query->AppendStatement( $stmt );</h5>' );
+	$query->AppendStatement( $stmt );
+	echo( '<h5>$rs = $test->Query( $query );</h5>' );
+	$rs = $test->Query( $query );
+	echo( '<h5>$count = $rs->count();</h5>' );
+	$count = $rs->count();
+	echo( "$count<br>" );
+	foreach( $rs as $record )
+		{ 	echo( '<pre>' ); print_r( $record ); echo( '</pre>' );	}
+	echo( '<hr />' );
+	
+	//
+	// Test exists query.
+	//
+	echo( '<h4>Test exists query</h4>' );
+	echo( '<h5>$query = new CMongoQuery();</h5>' );
+	$query = new CMongoQuery();
+	echo( '<h5>$stmt = CQueryStatement::Exists( "DATA" );</h5>' );
+	$stmt = CQueryStatement::Exists( "DATA" );
+	echo( '<h5>$query->AppendStatement( $stmt );</h5>' );
+	$query->AppendStatement( $stmt );
+	echo( '<h5>$rs = $test->Query( $query );</h5>' );
+	$rs = $test->Query( $query );
+	echo( '<h5>$count = $rs->count();</h5>' );
+	$count = $rs->count();
+	echo( "$count<br>" );
+	foreach( $rs as $record )
+		{ 	echo( '<pre>' ); print_r( $record ); echo( '</pre>' );	}
+	echo( '<hr />' );
+	echo( '<hr />' );
 }
 
 //
