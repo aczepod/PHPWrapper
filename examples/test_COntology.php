@@ -156,45 +156,129 @@ try
 		echo( '<pre>' ); print_r( $test[ 'C' ][ 1 ] ); echo( '</pre>' );
 		echo( '<hr />' );
 	}
+
+	//
+	// Create empty ontology object.
+	//
+	echo( '<h4>Create empty ontology object</h4>' );
+	echo( '<h5>$ontology = new MyClass();</h5>' );
+	$test = new MyClass();
+	echo( 'Inited['.$test->inited()
+				   .'] Dirty['.$test->dirty()
+				   .'] Saved['.$test->committed()
+				   .'] Encoded['.$test->encoded().']<br />' );
+	echo( '<i>Name: </i>'.(string) $test );
+	echo( '<pre>' ); print_r( $test ); echo( '</pre>' );
+	echo( '<hr />' );
+	echo( '<hr />' );
+	
+	//
+	// Try getting a term.
+	//
+	try
+	{
+		echo( '<h4>Try getting a term</h4>' );
+		echo( '<h5>$term = $test->NewTerm( "NAMESPACE" );</h5>' );
+		$term = $test->NewTerm( "NAMESPACE" );
+		echo( '<h3><font color="red">Should have raised an exception</font></h3>' );
+		echo( '<pre>' ); print_r( $term ); echo( '</pre>' );
+		echo( '<hr />' );
+	}
+	catch( Exception $error )
+	{
+		echo( '<h5>Expected exception</h5>' );
+		echo( '<pre>'.(string) $error.'</pre>' );
+		echo( '<hr>' );
+	}
+
+	//
+	// Create filled ontology object.
+	//
+	echo( '<h4>Create filled ontology object</h4>' );
+	echo( '<h5>$test = new MyClass( $database );</h5>' );
+	$test = new MyClass( $database );
+	echo( 'Inited['.$test->inited()
+				   .'] Dirty['.$test->dirty()
+				   .'] Saved['.$test->committed()
+				   .'] Encoded['.$test->encoded().']<br />' );
+	echo( '<i>Name: </i>'.(string) $test );
+	echo( '<pre>' ); print_r( $test ); echo( '</pre>' );
+	echo( '<hr />' );
+	
+	//
+	// Try getting a term with empty identifier.
+	//
+	try
+	{
+		echo( '<h4>Try getting a term with empty identifier</h4>' );
+		echo( '<h5>$term = $test->NewTerm( NULL );</h5>' );
+		$term = $test->NewTerm( NULL );
+		echo( '<h3><font color="red">Should have raised an exception</font></h3>' );
+		echo( '<pre>' ); print_r( $term ); echo( '</pre>' );
+		echo( '<hr />' );
+	}
+	catch( Exception $error )
+	{
+		echo( '<h5>Expected exception</h5>' );
+		echo( '<pre>'.(string) $error.'</pre>' );
+		echo( '<hr>' );
+	}
+	echo( '<hr>' );
 	
 	//
 	// Create namespace term.
 	//
 	echo( '<h4>Create namespace term</h4>' );
-	$namespace = new COntologyTerm();
-	$namespace[ kOFFSET_LID ] = "NAMESPACE";
-	$namespace->Insert( $database );
-	echo( '<pre>' ); print_r( $namespace ); echo( '</pre>' );
+	echo( '<h5>$term = $test->NewTerm( "NAMESPACE", NULL, "Namespace", "This is the namespace term", "en" );</h5>' );
+	$term = $test->NewTerm( "NAMESPACE", NULL, "Namespace", "This is the namespace term", "en" );
+	echo( '<pre>' ); print_r( $term ); echo( '</pre>' );
+	echo( '<hr />' );
+	
+	//
+	// Try creating another namespace term.
+	//
+	echo( '<h4>Try creating another namespace term</h4>' );
+	echo( '<h5>$term = $test->NewTerm( "NAMESPACE", NULL, "Other label", "Other description", "en" );</h5>' );
+	$term = $test->NewTerm( "NAMESPACE", NULL, "Other label", "Other description", "en" );
+	echo( '<pre>' ); print_r( $term ); echo( '</pre>' );
+	echo( '<hr />' );
 	
 	//
 	// Create ontology term.
 	//
 	echo( '<h4>Create ontology term</h4>' );
-	$termOnto = new COntologyTerm();
-	$termOnto[ kOFFSET_NAMESPACE ] = $namespace;
-	$termOnto[ kOFFSET_LID ] = "ONTOLOGY";
-	$termOnto->Insert( $database );
-	echo( '<pre>' ); print_r( $termOnto ); echo( '</pre>' );
+	echo( '<h5>$term = $test->NewTerm( "ONTOLOGY", "NAMESPACE", "Ontology", "This is the ontology term", "en" );</h5>' );
+	$term = $test->NewTerm( "ONTOLOGY", "NAMESPACE", "Ontology", "This is the ontology term", "en" );
+	echo( '<pre>' ); print_r( $term ); echo( '</pre>' );
+	echo( '<hr />' );
+	
+	//
+	// Resolve namespace term.
+	//
+	echo( '<h4>Resolve namespace term</h4>' );
+	echo( '<h5>$namespace = $test->ResolveTerm( "NAMESPACE" );</h5>' );
+	$namespace = $test->ResolveTerm( "NAMESPACE" );
+	echo( '<pre>' ); print_r( $namespace ); echo( '</pre>' );
+	echo( '<hr />' );
 	
 	//
 	// Create category term.
 	//
 	echo( '<h4>Create category term</h4>' );
-	$termCat = new COntologyTerm();
-	$termCat[ kOFFSET_NAMESPACE ] = $namespace;
-	$termCat[ kOFFSET_LID ] = "CATEGORY";
-	$termCat->Insert( $database );
-	echo( '<pre>' ); print_r( $termCat ); echo( '</pre>' );
+	echo( '<h5>$term = $test->NewTerm( "CATEGORY", $namespace, "Category", "This is the category term", "en" );</h5>' );
+	$term = $test->NewTerm( "CATEGORY", $namespace, "Category", "This is the category term", "en" );
+	echo( '<pre>' ); print_r( $term ); echo( '</pre>' );
+	echo( '<hr />' );
 	
 	//
 	// Create predicate term.
 	//
 	echo( '<h4>Create predicate term</h4>' );
-	$termPredicate = new COntologyTerm();
-	$termPredicate[ kOFFSET_NAMESPACE ] = $namespace;
-	$termPredicate[ kOFFSET_LID ] = "PREDICATE";
-	$termPredicate->Insert( $database );
-	echo( '<pre>' ); print_r( $termPredicate ); echo( '</pre>' );
+	echo( '<h5>$term = $test->NewTerm( "PREDICATE", $namespace[ kOFFSET_NID ], "Predicate", "This is the predicate term", "en" );</h5>' );
+	$term = $test->NewTerm( "PREDICATE", $namespace[ kOFFSET_NID ], "Predicate", "This is the predicate term", "en" );
+	echo( '<pre>' ); print_r( $term ); echo( '</pre>' );
+	echo( '<hr />' );
+exit;
 	
 	//
 	// Create trait term.
@@ -274,74 +358,6 @@ try
 	echo( '<hr />' );
 
 	//
-	// Create empty ontology object.
-	//
-	echo( '<h4>Create empty ontology object</h4>' );
-	echo( '<h5>$ontology = new MyClass();</h5>' );
-	$test = new MyClass();
-	echo( 'Inited['.$test->inited()
-				   .'] Dirty['.$test->dirty()
-				   .'] Saved['.$test->committed()
-				   .'] Encoded['.$test->encoded().']<br />' );
-	echo( '<i>Name: </i>'.(string) $test );
-	echo( '<pre>' ); print_r( $test ); echo( '</pre>' );
-	echo( '<hr />' );
-	echo( '<hr />' );
-	
-	//
-	// Try getting a term.
-	//
-	try
-	{
-		echo( '<h4>Try getting a term</h4>' );
-		echo( '<h5>$term = $test->NewTerm( "NAMESPACE" );</h5>' );
-		$term = $test->NewTerm( "NAMESPACE" );
-		echo( '<h3><font color="red">Should have raised an exception</font></h3>' );
-		echo( '<pre>' ); print_r( $term ); echo( '</pre>' );
-		echo( '<hr />' );
-	}
-	catch( Exception $error )
-	{
-		echo( '<h5>Expected exception</h5>' );
-		echo( '<pre>'.(string) $error.'</pre>' );
-		echo( '<hr>' );
-	}
-
-	//
-	// Create filled ontology object.
-	//
-	echo( '<h4>Create filled ontology object</h4>' );
-	echo( '<h5>$test = new MyClass( $database );</h5>' );
-	$test = new MyClass( $database );
-	echo( 'Inited['.$test->inited()
-				   .'] Dirty['.$test->dirty()
-				   .'] Saved['.$test->committed()
-				   .'] Encoded['.$test->encoded().']<br />' );
-	echo( '<i>Name: </i>'.(string) $test );
-	echo( '<pre>' ); print_r( $test ); echo( '</pre>' );
-	echo( '<hr />' );
-	
-	//
-	// Try getting a term with empty identifier.
-	//
-	try
-	{
-		echo( '<h4>Try getting a term with empty identifier</h4>' );
-		echo( '<h5>$term = $test->NewTerm( NULL );</h5>' );
-		$term = $test->NewTerm( NULL );
-		echo( '<h3><font color="red">Should have raised an exception</font></h3>' );
-		echo( '<pre>' ); print_r( $term ); echo( '</pre>' );
-		echo( '<hr />' );
-	}
-	catch( Exception $error )
-	{
-		echo( '<h5>Expected exception</h5>' );
-		echo( '<pre>'.(string) $error.'</pre>' );
-		echo( '<hr>' );
-	}
-	echo( '<hr>' );
-
-	//
 	// Get namespace term.
 	//
 	echo( '<h4>Get namespace term</h4>' );
@@ -395,6 +411,16 @@ try
 	$status = $test->Insert( $term );
 	echo( 'Status: <pre>' ); print_r( $status ); echo( '</pre>' );
 	echo( 'Term: <pre>' ); print_r( $term ); echo( '</pre>' );
+	echo( '<hr />' );
+	echo( '<hr />' );
+
+	//
+	// Retrieve ontology node.
+	//
+	echo( '<h4>Retrieve ontology </h4>' );
+	echo( '<h5>$node = $test->NewNode( $termOnto );</h5>' );
+	$node = $test->NewNode( $termOnto );
+	echo( 'Nodes: <pre>' ); print_r( $node ); echo( '</pre>' );
 	echo( '<hr />' );
 	echo( '<hr />' );
 }

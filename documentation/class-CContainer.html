@@ -195,7 +195,7 @@ implement specific storage actions.</p>
 				<b>Author:</b>
 				Milko A. Škofič &lt;<a
 href="mailto:m.skofic&#64;cgiar.org">m.skofic&#64;<!---->cgiar.org</a>&gt;<br />
-		<b>Located at</b> <a href="source-class-CContainer.html#50" title="Go to source code">CContainer.php</a><br />
+		<b>Located at</b> <a href="source-class-CContainer.html#57" title="Go to source code">CContainer.php</a><br />
 	</div>
 
 
@@ -212,7 +212,7 @@ href="mailto:m.skofic&#64;cgiar.org">m.skofic&#64;<!---->cgiar.org</a>&gt;<br />
 
 		<td class="name"><div>
 		<a class="anchor" href="#_ManageObject">#</a>
-		<code><a href="source-class-CContainer.html#93" title="Go to source code">ManageObject</a>( <span>reference <var>&amp; $theObject</var></span>, <span>mixed <var>$theIdentifier</var> = <span class="php-keyword1">NULL</span></span>, <span>mixed <var>$theModifiers</var> = kFLAG_DEFAULT </span> )</code>
+		<code><a href="source-class-CContainer.html#100" title="Go to source code">ManageObject</a>( <span>reference <var>&amp; $theObject</var></span>, <span>mixed <var>$theIdentifier</var> = <span class="php-keyword1">NULL</span></span>, <span>mixed <var>$theModifiers</var> = kFLAG_DEFAULT </span> )</code>
 
 		<div class="description short">
 			
@@ -412,7 +412,7 @@ is declared abstract.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#_CheckObject">#</a>
-		<code><a href="source-class-CContainer.html#265" title="Go to source code">CheckObject</a>( <span>mixed <var>$theIdentifier</var></span>, <span>string <var>$theOffset</var> = <span class="php-keyword1">NULL</span> </span> )</code>
+		<code><a href="source-class-CContainer.html#272" title="Go to source code">CheckObject</a>( <span>mixed <var>$theIdentifier</var></span>, <span>string <var>$theOffset</var> = <span class="php-keyword1">NULL</span> </span> )</code>
 
 		<div class="description short">
 			
@@ -460,7 +460,7 @@ return <tt>TRUE</tt> if found and <tt>FALSE</tt> if not.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#_Query">#</a>
-		<code><a href="source-class-CContainer.html#285" title="Go to source code">Query</a>( <span><code><a href="class-CQuery.html">CQuery</a></code> <var>$theQuery</var></span>, <span>array <var>$theFields</var> = <span class="php-keyword1">NULL</span> </span> )</code>
+		<code><a href="source-class-CContainer.html#292" title="Go to source code">Query</a>( <span><code><a href="class-CQuery.html">CQuery</a></code> <var>$theQuery</var></span>, <span>array <var>$theFields</var> = <span class="php-keyword1">NULL</span> </span> )</code>
 
 		<div class="description short">
 			
@@ -510,7 +510,7 @@ represents the list of desired fields.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#_NextSequence">#</a>
-		<code><a href="source-class-CContainer.html#316" title="Go to source code">NextSequence</a>( <span>string <var>$theKey</var></span>, <span>string <var>$theContainer</var> = <span class="php-keyword1">NULL</span> </span> )</code>
+		<code><a href="source-class-CContainer.html#323" title="Go to source code">NextSequence</a>( <span>string <var>$theKey</var></span>, <span>string <var>$theContainer</var> = <span class="php-keyword1">NULL</span> </span> )</code>
 
 		<div class="description short">
 			
@@ -569,6 +569,49 @@ exception.</p>
 		</div>
 		</div></td>
 	</tr>
+	<tr data-order="NewQuery" id="_NewQuery">
+
+		<td class="attributes"><code>
+			 public static
+			<code><a href="class-CQuery.html">CQuery</a></code>
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_NewQuery">#</a>
+		<code><a href="source-class-CContainer.html#371" title="Go to source code">NewQuery</a>( )</code>
+
+		<div class="description short">
+			
+<h4>Return an empty query</h4>
+
+		</div>
+
+		<div class="description detailed hidden">
+			
+<h4>Return an empty query</h4>
+
+<p>This method can be used to retrieve an empty query, the main utility of this
+method is to return a query object that is compatible with the current
+container.</p>
+
+<p>In this class we return an instance of the base <code><a href="class-CQuery.html">CQuery</a></code> class.</p>
+
+
+
+
+				<h4>Returns</h4>
+				<div class="list">
+					<code><code><a href="class-CQuery.html">CQuery</a></code></code><br>An empty query object.<br />
+				</div>
+
+
+
+
+		</div>
+		</div></td>
+	</tr>
 	<tr data-order="ConvertValue" id="_ConvertValue">
 
 		<td class="attributes"><code>
@@ -580,7 +623,7 @@ exception.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#_ConvertValue">#</a>
-		<code><a href="source-class-CContainer.html#364" title="Go to source code">ConvertValue</a>( <span>string <var>$theType</var></span>, <span>mixed <var>$theValue</var></span> )</code>
+		<code><a href="source-class-CContainer.html#398" title="Go to source code">ConvertValue</a>( <span>string <var>$theType</var></span>, <span>mixed <var>$theValue</var></span> )</code>
 
 		<div class="description short">
 			

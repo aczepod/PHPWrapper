@@ -310,6 +310,65 @@ class CPersistentObject extends CPersistentDocument
 		return NULL;																// ==>
 	
 	} // NewObject.
+
+	 
+	/*===================================================================================
+	 *	DocumentObject																	*
+	 *==================================================================================*/
+
+	/**
+	 * <h4>Instantiate an object from a document</h4>
+	 *
+	 * This method can be used to instantiate an object from an array. The method will
+	 * attempt to locate the class name, {@link kOFFSET_CLASS}, if found, it will return an
+	 * object of that class, if not, it will return the unchanged received document.
+	 *
+	 * If the class name was found, the resulting object will have its
+	 * {@link _IsCommitted()} status set, so provide only data received from database
+	 * queries.
+	 *
+	 * The method accepts arrays and ArrayObjects, any other type will raise an exception.
+	 *
+	 * @param mixed					$theDocument		Persistent object data.
+	 *
+	 * @static
+	 * @return mixed				The document or an object.
+	 */
+	static function DocumentObject( $theDocument )
+	{
+		//
+		// Check document.
+		//
+		if( $theDocument instanceof ArrayObject )
+			$theDocument = $theDocument->getArrayCopy();
+		elseif( ! is_array( $theDocument  ) )
+			throw new Exception
+				( "Invalid document type",
+				  kERROR_PARAMETER );											// !@! ==>
+		
+		//
+		// Handle object.
+		//
+		if( array_key_exists( kOFFSET_CLASS, $theDocument ) )
+		{
+			//
+			// Instantiate object.
+			//
+			$class = $theDocument[ kOFFSET_CLASS ];
+			$object = new $class( $theDocument );
+			
+			//
+			// Mark as committed.
+			//
+			$object->_IsCommitted( TRUE );
+			
+			return $object;															// ==>
+		
+		} // Has class name.
+		
+		return $theDocument;														// ==>
+	
+	} // DocumentObject.
 		
 
 

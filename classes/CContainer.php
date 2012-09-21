@@ -34,6 +34,13 @@ require_once( "CContainer.inc.php" );
 require_once( kPATH_MYWRAPPER_LIBRARY_DEFINE."/Types.inc.php" );
 
 /**
+ * Query.
+ *
+ * This includes the query class definitions.
+ */
+require_once( kPATH_MYWRAPPER_LIBRARY_CLASS."/CQuery.php" );
+
+/**
  * Documents.
  *
  * This includes the persistent documents class definitions.
@@ -346,6 +353,33 @@ abstract class CContainer extends CConnection
 	 * @throws Exception
 	 */
 	public function NextSequence( $theKey, $theContainer = NULL )		{	return NULL;	}
+
+		
+
+/*=======================================================================================
+ *																						*
+ *								STATIC QUERY INTERFACE									*
+ *																						*
+ *======================================================================================*/
+
+
+	 
+	/*===================================================================================
+	 *	NewQuery																		*
+	 *==================================================================================*/
+
+	/**
+	 * <h4>Return an empty query</h4>
+	 *
+	 * This method can be used to retrieve an empty query, the main utility of this method
+	 * is to return a query object that is compatible with the current container.
+	 *
+	 * In this class we return an instance of the base {@link CQuery} class.
+	 *
+	 * @static
+	 * @return CQuery				An empty query object.
+	 */
+	static function NewQuery()									{	return new CQuery();	}
 
 		
 
