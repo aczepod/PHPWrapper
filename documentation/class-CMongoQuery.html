@@ -2,13 +2,13 @@
 <html>
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-	<meta name="generator" content="ApiGen 2.7.0" />
+	<meta name="generator" content="ApiGen 2.8.0" />
 
 	<title>Class CMongoQuery | MyWrapper Reference Documentation</title>
 
-	<script type="text/javascript" src="resources/combined.js?496895167"></script>
+	<script type="text/javascript" src="resources/combined.js?368249000"></script>
 	<script type="text/javascript" src="elementlist.js?4206909522"></script>
-	<link rel="stylesheet" type="text/css" media="all" href="resources/style.css?1567499433" />
+	<link rel="stylesheet" type="text/css" media="all" href="resources/style.css?3505392360" />
 
 </head>
 
@@ -166,8 +166,9 @@ Mongo database.</p>
 				<b>Author:</b>
 				Milko A. Škofič &lt;<a
 href="mailto:m.skofic&#64;cgiar.org">m.skofic&#64;<!---->cgiar.org</a>&gt;<br />
-		<b>Located at</b> <a href="source-class-CMongoQuery.html#36" title="Go to source code">CMongoQuery.php</a><br />
+		<b>Located at</b> <a href="source-class-CMongoQuery.html#36-850" title="Go to source code">CMongoQuery.php</a><br />
 	</div>
+
 
 
 	<table class="summary" id="methods">
@@ -183,7 +184,7 @@ href="mailto:m.skofic&#64;cgiar.org">m.skofic&#64;<!---->cgiar.org</a>&gt;<br />
 
 		<td class="name"><div>
 		<a class="anchor" href="#_Export">#</a>
-		<code><a href="source-class-CMongoQuery.html#61" title="Go to source code">Export</a>( <span><code><a href="class-CConnection.html">CConnection</a></code> <var>$theContainer</var></span> )</code>
+		<code><a href="source-class-CMongoQuery.html#61-100" title="Go to source code">Export</a>( <span><code><a href="class-CConnection.html">CConnection</a></code> <var>$theContainer</var></span> )</code>
 
 		<div class="description short">
 			
@@ -198,7 +199,7 @@ href="mailto:m.skofic&#64;cgiar.org">m.skofic&#64;<!---->cgiar.org</a>&gt;<br />
 <p>We overload the inherited method to generate Mongo specific queries.</p>
 
 <p>The method will first check if the provided container is a <code><a href="class-CMongoContainer.html">CMongoContainer</a></code>, it will then iterate all conditions and feed each to a
-protected method, <code><a href="class-CMongoQuery.html#_">CMongoQuery::_ConvertCondition()</a></code>, that will take care of converting
+protected method, <code><a href="class-CMongoQuery.html#__ConvertCondition">CMongoQuery::_ConvertCondition()</a></code>, that will take care of converting
 the query elements.</p>
 
 
@@ -206,7 +207,7 @@ the query elements.</p>
 				<h4>Parameters</h4>
 				<div class="list"><dl>
 					<dt><var>$theContainer</var></dt>
-					<dd><code><code><a href="class-CConnection.html">CConnection</a></code></code><br> Query container.</dd>
+					<dd><code><code><a href="class-CConnection.html">CConnection</a></code></code><br>$theContainer Query container.</dd>
 				</dl></div>
 
 				<h4>Returns</h4>
@@ -221,7 +222,7 @@ the query elements.</p>
 
 
 				<h4>Overrides</h4>
-				<div class="list"><code><a href="class-CQuery.html#_">CQuery::Export</a></code></div>
+				<div class="list"><code><a href="class-CQuery.html#_Export">CQuery::Export()</a></code></div>
 
 		</div>
 		</div></td>
@@ -237,7 +238,7 @@ the query elements.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#__ValidateCondition">#</a>
-		<code><a href="source-class-CMongoQuery.html#116" title="Go to source code">_ValidateCondition</a>( <span>string <var>$theCondition</var></span>, <span>array <var>$theStatements</var></span>, <span>integer <var>$theLevel</var></span> )</code>
+		<code><a href="source-class-CMongoQuery.html#116-148" title="Go to source code">_ValidateCondition</a>( <span>string <var>$theCondition</var></span>, <span>array <var>$theStatements</var></span>, <span>integer <var>$theLevel</var></span> )</code>
 
 		<div class="description short">
 			
@@ -262,11 +263,11 @@ conditions cannot go beyond 2 levels.</p>
 				<h4>Parameters</h4>
 				<div class="list"><dl>
 					<dt><var>$theCondition</var></dt>
-					<dd><code>string</code><br> Boolean condition.</dd>
+					<dd><code>string</code><br>$theCondition Boolean condition.</dd>
 					<dt><var>$theStatements</var></dt>
-					<dd><code>array</code><br> Statements list.</dd>
+					<dd><code>array</code><br>$theStatements Statements list.</dd>
 					<dt><var>$theLevel</var></dt>
-					<dd><code>integer</code><br> [PRIVATE] condition level.</dd>
+					<dd><code>integer</code><br>$theLevel [PRIVATE] condition level.</dd>
 				</dl></div>
 
 
@@ -277,7 +278,7 @@ conditions cannot go beyond 2 levels.</p>
 
 
 				<h4>Overrides</h4>
-				<div class="list"><code><a href="class-CQuery.html#_">CQuery::_ValidateCondition</a></code></div>
+				<div class="list"><code><a href="class-CQuery.html#__ValidateCondition">CQuery::_ValidateCondition()</a></code></div>
 
 		</div>
 		</div></td>
@@ -293,7 +294,7 @@ conditions cannot go beyond 2 levels.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#__ConvertCondition">#</a>
-		<code><a href="source-class-CMongoQuery.html#164" title="Go to source code">_ConvertCondition</a>( <span>reference <var>&amp; $theQuery</var></span>, <span><code><a href="class-CMongoContainer.html">CMongoContainer</a></code> <var>$theContainer</var></span>, <span>string <var>$theCondition</var></span>, <span>array <var>$theStatements</var></span> )</code>
+		<code><a href="source-class-CMongoQuery.html#164-240" title="Go to source code">_ConvertCondition</a>( <span>reference <var>&amp; $theQuery</var></span>, <span><code><a href="class-CMongoContainer.html">CMongoContainer</a></code> <var>$theContainer</var></span>, <span>string <var>$theCondition</var></span>, <span>array <var>$theStatements</var></span> )</code>
 
 		<div class="description short">
 			
@@ -305,12 +306,12 @@ conditions cannot go beyond 2 levels.</p>
 			
 <h4>Convert condition</h4>
 
-<p>This method is provided by the <code><a href="class-CMongoQuery.html#_">CMongoQuery::Export()</a></code> method a condition to convert
+<p>This method is provided by the <code><a href="class-CMongoQuery.html#_Export">CMongoQuery::Export()</a></code> method a condition to convert
 in Mongo format. The method will iterate all statements in the condition and
 feed them to the</p>
 
-<p>The method is called by the <code><a href="class-CMongoQuery.html#_">CMongoQuery::Export()</a></code> method and takes care of
-organising the <code><a href="class-CMongoQuery.html#_">CMongoQuery::_ConvertStatement()</a></code> method that will convert them.</p>
+<p>The method is called by the <code><a href="class-CMongoQuery.html#_Export">CMongoQuery::Export()</a></code> method and takes care of
+organising the <code><a href="class-CMongoQuery.html#__ConvertStatement">CMongoQuery::_ConvertStatement()</a></code> method that will convert them.</p>
 
 <p>The parameters to this method are:</p>
 
@@ -332,11 +333,11 @@ organising the <code><a href="class-CMongoQuery.html#_">CMongoQuery::_ConvertSta
 					<dt><var>$theQuery</var></dt>
 					<dd><code>reference</code><br>&amp;$theQuery Receives converted query.</dd>
 					<dt><var>$theContainer</var></dt>
-					<dd><code><code><a href="class-CMongoContainer.html">CMongoContainer</a></code></code><br> Query container.</dd>
+					<dd><code><code><a href="class-CMongoContainer.html">CMongoContainer</a></code></code><br>$theContainer Query container.</dd>
 					<dt><var>$theCondition</var></dt>
-					<dd><code>string</code><br> Boolean condition.</dd>
+					<dd><code>string</code><br>$theCondition Boolean condition.</dd>
 					<dt><var>$theStatements</var></dt>
-					<dd><code>array</code><br> Statements list.</dd>
+					<dd><code>array</code><br>$theStatements Statements list.</dd>
 				</dl></div>
 
 
@@ -357,7 +358,7 @@ organising the <code><a href="class-CMongoQuery.html#_">CMongoQuery::_ConvertSta
 
 		<td class="name"><div>
 		<a class="anchor" href="#__ConvertStatement">#</a>
-		<code><a href="source-class-CMongoQuery.html#247" title="Go to source code">_ConvertStatement</a>( <span>reference <var>&amp; $theQuery</var></span>, <span><code><a href="class-CMongoContainer.html">CMongoContainer</a></code> <var>$theContainer</var></span>, <span>string <var>$theCondition</var></span>, <span>array <var>$theStatement</var></span> )</code>
+		<code><a href="source-class-CMongoQuery.html#247-742" title="Go to source code">_ConvertStatement</a>( <span>reference <var>&amp; $theQuery</var></span>, <span><code><a href="class-CMongoContainer.html">CMongoContainer</a></code> <var>$theContainer</var></span>, <span>string <var>$theCondition</var></span>, <span>array <var>$theStatement</var></span> )</code>
 
 		<div class="description short">
 			
@@ -391,11 +392,11 @@ organising the <code><a href="class-CMongoQuery.html#_">CMongoQuery::_ConvertSta
 					<dt><var>$theQuery</var></dt>
 					<dd><code>reference</code><br>&amp;$theQuery Receives converted statement.</dd>
 					<dt><var>$theContainer</var></dt>
-					<dd><code><code><a href="class-CMongoContainer.html">CMongoContainer</a></code></code><br> Query container.</dd>
+					<dd><code><code><a href="class-CMongoContainer.html">CMongoContainer</a></code></code><br>$theContainer Query container.</dd>
 					<dt><var>$theCondition</var></dt>
-					<dd><code>string</code><br> Boolean condition.</dd>
+					<dd><code>string</code><br>$theCondition Boolean condition.</dd>
 					<dt><var>$theStatement</var></dt>
-					<dd><code>array</code><br> Statement.</dd>
+					<dd><code>array</code><br>$theStatement Statement.</dd>
 				</dl></div>
 
 
@@ -416,7 +417,7 @@ organising the <code><a href="class-CMongoQuery.html#_">CMongoQuery::_ConvertSta
 
 		<td class="name"><div>
 		<a class="anchor" href="#__OrderRange">#</a>
-		<code><a href="source-class-CMongoQuery.html#758" title="Go to source code">_OrderRange</a>( <span>mixed <var>$theRange</var></span>, <span><code><a href="class-CMongoContainer.html">CMongoContainer</a></code> <var>$theContainer</var></span>, <span>string <var>$theType</var></span> )</code>
+		<code><a href="source-class-CMongoQuery.html#758-846" title="Go to source code">_OrderRange</a>( <span>mixed <var>$theRange</var></span>, <span><code><a href="class-CMongoContainer.html">CMongoContainer</a></code> <var>$theContainer</var></span>, <span>string <var>$theType</var></span> )</code>
 
 		<div class="description short">
 			
@@ -449,11 +450,11 @@ with the two provided elements sorted.</p>
 				<h4>Parameters</h4>
 				<div class="list"><dl>
 					<dt><var>$theRange</var></dt>
-					<dd><code>mixed</code><br> Range elements.</dd>
+					<dd><code>mixed</code><br>$theRange Range elements.</dd>
 					<dt><var>$theContainer</var></dt>
-					<dd><code><code><a href="class-CMongoContainer.html">CMongoContainer</a></code></code><br> Query container.</dd>
+					<dd><code><code><a href="class-CMongoContainer.html">CMongoContainer</a></code></code><br>$theContainer Query container.</dd>
 					<dt><var>$theType</var></dt>
-					<dd><code>string</code><br> Elements data type.</dd>
+					<dd><code>string</code><br>$theType Elements data type.</dd>
 				</dl></div>
 
 				<h4>Returns</h4>
@@ -473,12 +474,12 @@ with the two provided elements sorted.</p>
 	<caption>Methods inherited from <a href="class-CQuery.html#methods">CQuery</a></caption>
 	<tr>
 		<td><code>
-			<a href="class-CQuery.html#_">AppendStatement()</a>, 
-			<a href="class-CQuery.html#_">Validate()</a>, 
-			<a href="class-CQuery.html#_">_AppendStatement()</a>, 
-			<a href="class-CQuery.html#_">_Ready()</a>, 
-			<a href="class-CQuery.html#_">_ValidateStatement()</a>, 
-			<a href="class-CQuery.html#_">__construct()</a>
+			<a href="class-CQuery.html#_AppendStatement">AppendStatement()</a>, 
+			<a href="class-CQuery.html#_Validate">Validate()</a>, 
+			<a href="class-CQuery.html#__AppendStatement">_AppendStatement()</a>, 
+			<a href="class-CQuery.html#__Ready">_Ready()</a>, 
+			<a href="class-CQuery.html#__ValidateStatement">_ValidateStatement()</a>, 
+			<a href="class-CQuery.html#___construct">__construct()</a>
 		</code></td>
 	</tr>
 	</table>
@@ -486,16 +487,16 @@ with the two provided elements sorted.</p>
 	<caption>Methods inherited from <a href="class-CStatusDocument.html#methods">CStatusDocument</a></caption>
 	<tr>
 		<td><code>
-			<a href="class-CStatusDocument.html#_">_IsCommitted()</a>, 
-			<a href="class-CStatusDocument.html#_">_IsDirty()</a>, 
-			<a href="class-CStatusDocument.html#_">_IsEncoded()</a>, 
-			<a href="class-CStatusDocument.html#_">_IsInited()</a>, 
-			<a href="class-CStatusDocument.html#_">_Postset()</a>, 
-			<a href="class-CStatusDocument.html#_">_Postunset()</a>, 
-			<a href="class-CStatusDocument.html#_">_Preset()</a>, 
-			<a href="class-CStatusDocument.html#_">_Preunset()</a>, 
-			<a href="class-CStatusDocument.html#_">offsetSet()</a>, 
-			<a href="class-CStatusDocument.html#_">offsetUnset()</a>
+			<a href="class-CStatusDocument.html#__IsCommitted">_IsCommitted()</a>, 
+			<a href="class-CStatusDocument.html#__IsDirty">_IsDirty()</a>, 
+			<a href="class-CStatusDocument.html#__IsEncoded">_IsEncoded()</a>, 
+			<a href="class-CStatusDocument.html#__IsInited">_IsInited()</a>, 
+			<a href="class-CStatusDocument.html#__Postset">_Postset()</a>, 
+			<a href="class-CStatusDocument.html#__Postunset">_Postunset()</a>, 
+			<a href="class-CStatusDocument.html#__Preset">_Preset()</a>, 
+			<a href="class-CStatusDocument.html#__Preunset">_Preunset()</a>, 
+			<a href="class-CStatusDocument.html#_offsetSet">offsetSet()</a>, 
+			<a href="class-CStatusDocument.html#_offsetUnset">offsetUnset()</a>
 		</code></td>
 	</tr>
 	</table>
@@ -503,9 +504,9 @@ with the two provided elements sorted.</p>
 	<caption>Methods inherited from <a href="class-CDocument.html#methods">CDocument</a></caption>
 	<tr>
 		<td><code>
-			<a href="class-CDocument.html#_">array_keys()</a>, 
-			<a href="class-CDocument.html#_">array_values()</a>, 
-			<a href="class-CDocument.html#_">offsetGet()</a>
+			<a href="class-CDocument.html#_array_keys">array_keys()</a>, 
+			<a href="class-CDocument.html#_array_values">array_values()</a>, 
+			<a href="class-CDocument.html#_offsetGet">offsetGet()</a>
 		</code></td>
 	</tr>
 	</table>
@@ -513,27 +514,31 @@ with the two provided elements sorted.</p>
 	<caption>Methods inherited from <a href="class-ArrayObject.html#methods">ArrayObject</a></caption>
 	<tr>
 		<td><code>
-			<a href="class-ArrayObject.html#_">append()</a>, 
-			<a href="class-ArrayObject.html#_">asort()</a>, 
-			<a href="class-ArrayObject.html#_">count()</a>, 
-			<a href="class-ArrayObject.html#_">exchangeArray()</a>, 
-			<a href="class-ArrayObject.html#_">getArrayCopy()</a>, 
-			<a href="class-ArrayObject.html#_">getFlags()</a>, 
-			<a href="class-ArrayObject.html#_">getIterator()</a>, 
-			<a href="class-ArrayObject.html#_">getIteratorClass()</a>, 
-			<a href="class-ArrayObject.html#_">ksort()</a>, 
-			<a href="class-ArrayObject.html#_">natcasesort()</a>, 
-			<a href="class-ArrayObject.html#_">natsort()</a>, 
-			<a href="class-ArrayObject.html#_">offsetExists()</a>, 
-			<a href="class-ArrayObject.html#_">serialize()</a>, 
-			<a href="class-ArrayObject.html#_">setFlags()</a>, 
-			<a href="class-ArrayObject.html#_">setIteratorClass()</a>, 
-			<a href="class-ArrayObject.html#_">uasort()</a>, 
-			<a href="class-ArrayObject.html#_">uksort()</a>, 
-			<a href="class-ArrayObject.html#_">unserialize()</a>
+			<a href="class-ArrayObject.html#_append">append()</a>, 
+			<a href="class-ArrayObject.html#_asort">asort()</a>, 
+			<a href="class-ArrayObject.html#_count">count()</a>, 
+			<a href="class-ArrayObject.html#_exchangeArray">exchangeArray()</a>, 
+			<a href="class-ArrayObject.html#_getArrayCopy">getArrayCopy()</a>, 
+			<a href="class-ArrayObject.html#_getFlags">getFlags()</a>, 
+			<a href="class-ArrayObject.html#_getIterator">getIterator()</a>, 
+			<a href="class-ArrayObject.html#_getIteratorClass">getIteratorClass()</a>, 
+			<a href="class-ArrayObject.html#_ksort">ksort()</a>, 
+			<a href="class-ArrayObject.html#_natcasesort">natcasesort()</a>, 
+			<a href="class-ArrayObject.html#_natsort">natsort()</a>, 
+			<a href="class-ArrayObject.html#_offsetExists">offsetExists()</a>, 
+			<a href="class-ArrayObject.html#_serialize">serialize()</a>, 
+			<a href="class-ArrayObject.html#_setFlags">setFlags()</a>, 
+			<a href="class-ArrayObject.html#_setIteratorClass">setIteratorClass()</a>, 
+			<a href="class-ArrayObject.html#_uasort">uasort()</a>, 
+			<a href="class-ArrayObject.html#_uksort">uksort()</a>, 
+			<a href="class-ArrayObject.html#_unserialize">unserialize()</a>
 		</code></td>
 	</tr>
 	</table>
+
+
+
+
 
 
 
@@ -550,6 +555,7 @@ with the two provided elements sorted.</p>
 
 
 
+
 	<table class="summary inherited">
 	<caption>Properties inherited from <a href="class-CStatusDocument.html#properties">CStatusDocument</a></caption>
 	<tr>
@@ -560,10 +566,13 @@ with the two provided elements sorted.</p>
 	</table>
 
 
+
+
+
 </div>
 
 	<div id="footer">
-		MyWrapper Reference Documentation API documentation generated by <a href="http://apigen.org">ApiGen 2.7.0</a>
+		MyWrapper Reference Documentation API documentation generated by <a href="http://apigen.org">ApiGen 2.8.0</a>
 	</div>
 </div>
 </div>

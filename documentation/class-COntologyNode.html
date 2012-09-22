@@ -2,13 +2,13 @@
 <html>
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-	<meta name="generator" content="ApiGen 2.7.0" />
+	<meta name="generator" content="ApiGen 2.8.0" />
 
 	<title>Class COntologyNode | MyWrapper Reference Documentation</title>
 
-	<script type="text/javascript" src="resources/combined.js?496895167"></script>
+	<script type="text/javascript" src="resources/combined.js?368249000"></script>
 	<script type="text/javascript" src="elementlist.js?4206909522"></script>
-	<link rel="stylesheet" type="text/css" media="all" href="resources/style.css?1567499433" />
+	<link rel="stylesheet" type="text/css" media="all" href="resources/style.css?3505392360" />
 
 </head>
 
@@ -97,12 +97,12 @@
 	
 <h3>Ontology node object ancestor</h3>
 
-<p>This class extends its ancestor, <code><a href="class-CNode.html">CNode</a></code>, by asserting the <code><a href="class-CNode.html#_">CNode::Term()</a></code> to be an instance of <code><a href="class-COntologyTerm.html">COntologyTerm</a></code> and by managing the kOFFSET_REFS_NODE offset of the related <code><a href="class-CNode.html#_">CNode::Term()</a></code>.</p>
+<p>This class extends its ancestor, <code><a href="class-CNode.html">CNode</a></code>, by asserting the <code><a href="class-CNode.html#_Term">CNode::Term()</a></code> to be an instance of <code><a href="class-COntologyTerm.html">COntologyTerm</a></code> and by managing the kOFFSET_REFS_NODE offset of the related <code><a href="class-CNode.html#_Term">CNode::Term()</a></code>.</p>
 
 <p>The class does not handle global identifiers and objects cannot be uniquely
 identified by its properties or attributes, it is the duty of the hosting
 container to provide the kOFFSET_NID identifier, In this class we use
-sequences, <code><a href="class-CContainer.html#_">CContainer::NextSequence()</a></code>, from a default container named
+sequences, <code><a href="class-CContainer.html#_NextSequence">CContainer::NextSequence()</a></code>, from a default container named
 after the default kCONTAINER_SEQUENCE_NAME tag in the same database,
 this is to make referencing nodes easier and to be compatible with most graph
 databases.</p>
@@ -128,7 +128,7 @@ identifiers implemented as an array. The offset definition is borrowed from the
 kOFFSET_TERM offset. This offset is managed by the tag class, this class
 locks the offset.</p>
 
-<p>The class implements the static method, <code><a href="class-COntologyNode.html#_">COntologyNode::DefaultContainer()</a></code>, it will
+<p>The class implements the static method, <code><a href="class-COntologyNode.html#_DefaultContainer">COntologyNode::DefaultContainer()</a></code>, it will
 use the kCONTAINER_NODE_NAME constant. Note that when passing <code><a href="class-CConnection.html">CConnection</a></code> based objects to the persisting methods of this class, you should
 provide preferably Database instances, since this class may have to commit
 terms.</p>
@@ -136,9 +136,9 @@ terms.</p>
 <p>The class features member accessor methods for the default offsets:</p>
 
 <ul>
-	<li><code><a href="class-COntologyNode.html#_">COntologyNode::TagRefs()</a></code>: This method returns the node's tag references, kOFFSET_REFS_TAG.</li>
+	<li><code><a href="class-COntologyNode.html#_TagRefs">COntologyNode::TagRefs()</a></code>: This method returns the node's tag references, kOFFSET_REFS_TAG.</li>
 
-	<li><code><a href="class-COntologyNode.html#_">COntologyNode::LoadTerm()</a></code>: This method will return the referenced term object.</li>
+	<li><code><a href="class-COntologyNode.html#_LoadTerm">COntologyNode::LoadTerm()</a></code>: This method will return the referenced term object.</li>
 </ul>
 
 	</div>
@@ -219,8 +219,9 @@ terms.</p>
 				<b>Author:</b>
 				Milko A. Škofič &lt;<a
 href="mailto:m.skofic&#64;cgiar.org">m.skofic&#64;<!---->cgiar.org</a>&gt;<br />
-		<b>Located at</b> <a href="source-class-COntologyNode.html#43" title="Go to source code">COntologyNode.php</a><br />
+		<b>Located at</b> <a href="source-class-COntologyNode.html#43-861" title="Go to source code">COntologyNode.php</a><br />
 	</div>
+
 
 
 	<table class="summary" id="methods">
@@ -236,7 +237,7 @@ href="mailto:m.skofic&#64;cgiar.org">m.skofic&#64;<!---->cgiar.org</a>&gt;<br />
 
 		<td class="name"><div>
 		<a class="anchor" href="#___toString">#</a>
-		<code><a href="source-class-COntologyNode.html#116" title="Go to source code">__toString</a>( )</code>
+		<code><a href="source-class-COntologyNode.html#116-140" title="Go to source code">__toString</a>( )</code>
 
 		<div class="description short">
 			
@@ -264,7 +265,7 @@ the unique identifier of the object.</p>
 
 
 				<h4>Overrides</h4>
-				<div class="list"><code><a href="class-CNode.html#_">CNode::__toString</a></code></div>
+				<div class="list"><code><a href="class-CNode.html#___toString">CNode::__toString()</a></code></div>
 
 		</div>
 		</div></td>
@@ -280,7 +281,7 @@ the unique identifier of the object.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#_TagRefs">#</a>
-		<code><a href="source-class-COntologyNode.html#156" title="Go to source code">TagRefs</a>( )</code>
+		<code><a href="source-class-COntologyNode.html#156-182" title="Go to source code">TagRefs</a>( )</code>
 
 		<div class="description short">
 			
@@ -328,7 +329,7 @@ identifiers of tags that reference the node.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#_EdgeRefs">#</a>
-		<code><a href="source-class-COntologyNode.html#189" title="Go to source code">EdgeRefs</a>( )</code>
+		<code><a href="source-class-COntologyNode.html#189-212" title="Go to source code">EdgeRefs</a>( )</code>
 
 		<div class="description short">
 			
@@ -374,7 +375,7 @@ identifiers of edges that reference the node.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#_LoadTerm">#</a>
-		<code><a href="source-class-COntologyNode.html#228" title="Go to source code">LoadTerm</a>( <span><code><a href="class-CConnection.html">CConnection</a></code> <var>$theConnection</var></span>, <span>boolean <var>$doReload</var> = <span class="php-keyword1">FALSE</span> </span> )</code>
+		<code><a href="source-class-COntologyNode.html#228-296" title="Go to source code">LoadTerm</a>( <span><code><a href="class-CConnection.html">CConnection</a></code> <var>$theConnection</var></span>, <span>boolean <var>$doReload</var> = <span class="php-keyword1">FALSE</span> </span> )</code>
 
 		<div class="description short">
 			
@@ -402,9 +403,9 @@ the object is to be read, or if the cached copy can be used.</p>
 				<h4>Parameters</h4>
 				<div class="list"><dl>
 					<dt><var>$theConnection</var></dt>
-					<dd><code><code><a href="class-CConnection.html">CConnection</a></code></code><br> Server, database or container.</dd>
+					<dd><code><code><a href="class-CConnection.html">CConnection</a></code></code><br>$theConnection Server, database or container.</dd>
 					<dt><var>$doReload</var></dt>
-					<dd><code>boolean</code><br> Reload if <tt>TRUE</tt>.</dd>
+					<dd><code>boolean</code><br>$doReload Reload if <tt>TRUE</tt>.</dd>
 				</dl></div>
 
 				<h4>Returns</h4>
@@ -423,11 +424,11 @@ the object is to be read, or if the cached copy can be used.</p>
 				</div>
 				<h4>Uses</h4>
 				<div class="list">
-						<code><code><a href="class-CPersistentObject.html#_">CPersistentObject::NewObject()</a></code></code> <br />
+						<code><code><a href="class-CPersistentObject.html#_NewObject">CPersistentObject::NewObject()</a></code></code> <br />
 				</div>
 				<h4>Used by</h4>
 				<div class="list">
-						<code><code><a href="class-COntologyNode.html#_">COntologyNode::_PrecommitRelated()</a></code></code> <br />
+						<code><code><a href="class-COntologyNode.html#__PrecommitRelated">COntologyNode::_PrecommitRelated()</a></code></code> <br />
 				</div>
 
 
@@ -445,7 +446,7 @@ the object is to be read, or if the cached copy can be used.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#_RelateTo">#</a>
-		<code><a href="source-class-COntologyNode.html#312" title="Go to source code">RelateTo</a>( <span>mixed <var>$thePredicate</var></span>, <span>mixed <var>$theObject</var></span> )</code>
+		<code><a href="source-class-COntologyNode.html#312-361" title="Go to source code">RelateTo</a>( <span>mixed <var>$thePredicate</var></span>, <span>mixed <var>$theObject</var></span> )</code>
 
 		<div class="description short">
 			
@@ -471,9 +472,9 @@ caller to do so.</p>
 				<h4>Parameters</h4>
 				<div class="list"><dl>
 					<dt><var>$thePredicate</var></dt>
-					<dd><code>mixed</code><br> Predicate term object or reference.</dd>
+					<dd><code>mixed</code><br>$thePredicate Predicate term object or reference.</dd>
 					<dt><var>$theObject</var></dt>
-					<dd><code>mixed</code><br> object node object or reference.</dd>
+					<dd><code>mixed</code><br>$theObject object node object or reference.</dd>
 				</dl></div>
 
 				<h4>Returns</h4>
@@ -492,11 +493,11 @@ caller to do so.</p>
 				</div>
 				<h4>Uses</h4>
 				<div class="list">
-						<code><code><a href="class-CPersistentObject.html#_">CPersistentObject::NewObject()</a></code></code> <br />
+						<code><code><a href="class-CPersistentObject.html#_NewObject">CPersistentObject::NewObject()</a></code></code> <br />
 				</div>
 
 				<h4>Overrides</h4>
-				<div class="list"><code><a href="class-CNode.html#_">CNode::RelateTo</a></code></div>
+				<div class="list"><code><a href="class-CNode.html#_RelateTo">CNode::RelateTo()</a></code></div>
 
 		</div>
 		</div></td>
@@ -512,7 +513,7 @@ caller to do so.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#_DefaultContainer">#</a>
-		<code><a href="source-class-COntologyNode.html#377" title="Go to source code">DefaultContainer</a>( <span><code><a href="class-CDatabase.html">CDatabase</a></code> <var>$theDatabase</var></span> )</code>
+		<code><a href="source-class-COntologyNode.html#377-394" title="Go to source code">DefaultContainer</a>( <span><code><a href="class-CDatabase.html">CDatabase</a></code> <var>$theDatabase</var></span> )</code>
 
 		<div class="description short">
 			
@@ -532,7 +533,7 @@ kCONTAINER_NODE_NAME name.</p>
 				<h4>Parameters</h4>
 				<div class="list"><dl>
 					<dt><var>$theDatabase</var></dt>
-					<dd><code><code><a href="class-CDatabase.html">CDatabase</a></code></code><br> Database object.</dd>
+					<dd><code><code><a href="class-CDatabase.html">CDatabase</a></code></code><br>$theDatabase Database object.</dd>
 				</dl></div>
 
 				<h4>Returns</h4>
@@ -547,7 +548,7 @@ kCONTAINER_NODE_NAME name.</p>
 				</div>
 
 				<h4>Overrides</h4>
-				<div class="list"><code><a href="class-CPersistentDocument.html#_">CPersistentDocument::DefaultContainer</a></code></div>
+				<div class="list"><code><a href="class-CPersistentDocument.html#_DefaultContainer">CPersistentDocument::DefaultContainer()</a></code></div>
 
 		</div>
 		</div></td>
@@ -563,7 +564,7 @@ kCONTAINER_NODE_NAME name.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#__Preset">#</a>
-		<code><a href="source-class-COntologyNode.html#410" title="Go to source code">_Preset</a>( <span>reference <var>&amp; $theOffset</var></span>, <span>reference <var>&amp; $theValue</var></span> )</code>
+		<code><a href="source-class-COntologyNode.html#410-508" title="Go to source code">_Preset</a>( <span>reference <var>&amp; $theOffset</var></span>, <span>reference <var>&amp; $theValue</var></span> )</code>
 
 		<div class="description short">
 			
@@ -605,12 +606,12 @@ modification.</p>
 				</div>
 				<h4>Uses</h4>
 				<div class="list">
-						<code><code><a href="class-CStatusDocument.html#_">CStatusDocument::_IsCommitted()</a></code></code> <br />
-						<code><code><a href="class-CPersistentObject.html#_">CPersistentObject::_AssertClass()</a></code></code> <br />
+						<code><code><a href="class-CStatusDocument.html#__IsCommitted">CStatusDocument::_IsCommitted()</a></code></code> <br />
+						<code><code><a href="class-CPersistentObject.html#__AssertClass">CPersistentObject::_AssertClass()</a></code></code> <br />
 				</div>
 
 				<h4>Overrides</h4>
-				<div class="list"><code><a href="class-CNode.html#_">CNode::_Preset</a></code></div>
+				<div class="list"><code><a href="class-CNode.html#__Preset">CNode::_Preset()</a></code></div>
 
 		</div>
 		</div></td>
@@ -626,7 +627,7 @@ modification.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#__Preunset">#</a>
-		<code><a href="source-class-COntologyNode.html#515" title="Go to source code">_Preunset</a>( <span>reference <var>&amp; $theOffset</var></span> )</code>
+		<code><a href="source-class-COntologyNode.html#515-556" title="Go to source code">_Preunset</a>( <span>reference <var>&amp; $theOffset</var></span> )</code>
 
 		<div class="description short">
 			
@@ -662,11 +663,11 @@ cases.</p>
 				</div>
 				<h4>Uses</h4>
 				<div class="list">
-						<code><code><a href="class-CStatusDocument.html#_">CStatusDocument::_IsCommitted()</a></code></code> <br />
+						<code><code><a href="class-CStatusDocument.html#__IsCommitted">CStatusDocument::_IsCommitted()</a></code></code> <br />
 				</div>
 
 				<h4>Overrides</h4>
-				<div class="list"><code><a href="class-CPersistentObject.html#_">CPersistentObject::_Preunset</a></code></div>
+				<div class="list"><code><a href="class-CPersistentObject.html#__Preunset">CPersistentObject::_Preunset()</a></code></div>
 
 		</div>
 		</div></td>
@@ -682,7 +683,7 @@ cases.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#__PrecommitRelated">#</a>
-		<code><a href="source-class-COntologyNode.html#572" title="Go to source code">_PrecommitRelated</a>( <span>reference <var>&amp; $theConnection</var></span>, <span>reference <var>&amp; $theModifiers</var></span> )</code>
+		<code><a href="source-class-COntologyNode.html#572-636" title="Go to source code">_PrecommitRelated</a>( <span>reference <var>&amp; $theConnection</var></span>, <span>reference <var>&amp; $theModifiers</var></span> )</code>
 
 		<div class="description short">
 			
@@ -716,11 +717,11 @@ provided as an identifier.</p>
 				</div>
 				<h4>Uses</h4>
 				<div class="list">
-						<code><code><a href="class-COntologyNode.html#_">COntologyNode::LoadTerm()</a></code></code> <br />
+						<code><code><a href="class-COntologyNode.html#_LoadTerm">COntologyNode::LoadTerm()</a></code></code> <br />
 				</div>
 
 				<h4>Overrides</h4>
-				<div class="list"><code><a href="class-CPersistentObject.html#_">CPersistentObject::_PrecommitRelated</a></code></div>
+				<div class="list"><code><a href="class-CPersistentObject.html#__PrecommitRelated">CPersistentObject::_PrecommitRelated()</a></code></div>
 
 		</div>
 		</div></td>
@@ -736,7 +737,7 @@ provided as an identifier.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#__PrecommitIdentify">#</a>
-		<code><a href="source-class-COntologyNode.html#643" title="Go to source code">_PrecommitIdentify</a>( <span>reference <var>&amp; $theConnection</var></span>, <span>reference <var>&amp; $theModifiers</var></span> )</code>
+		<code><a href="source-class-COntologyNode.html#643-688" title="Go to source code">_PrecommitIdentify</a>( <span>reference <var>&amp; $theConnection</var></span>, <span>reference <var>&amp; $theModifiers</var></span> )</code>
 
 		<div class="description short">
 			
@@ -751,7 +752,7 @@ provided as an identifier.</p>
 <p>Objects of this class are identified by a sequence number tagged kSEQUENCE_KEY_NODE, this method will set the native identifier, kOFFSET_NID, with this value.</p>
 
 <p>The parent method will then be called, which will ignore the global
-identifier, kOFFSET_GID, since the <code><a href="class-CPersistentObject.html#_">CPersistentObject::_index()</a></code> method returns
+identifier, kOFFSET_GID, since the <code><a href="class-CPersistentObject.html#__index">CPersistentObject::_index()</a></code> method returns
 <tt>NULL</tt> and also ignore the native identifier, kOFFSET_NID, since
 it will have been set here.</p>
 
@@ -774,7 +775,7 @@ it will have been set here.</p>
 				</div>
 
 				<h4>Overrides</h4>
-				<div class="list"><code><a href="class-CPersistentObject.html#_">CPersistentObject::_PrecommitIdentify</a></code></div>
+				<div class="list"><code><a href="class-CPersistentObject.html#__PrecommitIdentify">CPersistentObject::_PrecommitIdentify()</a></code></div>
 
 		</div>
 		</div></td>
@@ -790,7 +791,7 @@ it will have been set here.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#__PostcommitRelated">#</a>
-		<code><a href="source-class-COntologyNode.html#704" title="Go to source code">_PostcommitRelated</a>( <span>reference <var>&amp; $theConnection</var></span>, <span>reference <var>&amp; $theModifiers</var></span> )</code>
+		<code><a href="source-class-COntologyNode.html#704-749" title="Go to source code">_PostcommitRelated</a>( <span>reference <var>&amp; $theConnection</var></span>, <span>reference <var>&amp; $theModifiers</var></span> )</code>
 
 		<div class="description short">
 			
@@ -826,11 +827,11 @@ remove the element when deleting.</p>
 				</div>
 				<h4>Uses</h4>
 				<div class="list">
-						<code><code><a href="class-CStatusDocument.html#_">CStatusDocument::_IsCommitted()</a></code></code> <br />
+						<code><code><a href="class-CStatusDocument.html#__IsCommitted">CStatusDocument::_IsCommitted()</a></code></code> <br />
 				</div>
 
 				<h4>Overrides</h4>
-				<div class="list"><code><a href="class-CPersistentDocument.html#_">CPersistentDocument::_PostcommitRelated</a></code></div>
+				<div class="list"><code><a href="class-CPersistentDocument.html#__PostcommitRelated">CPersistentDocument::_PostcommitRelated()</a></code></div>
 
 		</div>
 		</div></td>
@@ -846,7 +847,7 @@ remove the element when deleting.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#__PostcommitCleanup">#</a>
-		<code><a href="source-class-COntologyNode.html#756" title="Go to source code">_PostcommitCleanup</a>( <span>reference <var>&amp; $theConnection</var></span>, <span>reference <var>&amp; $theModifiers</var></span> )</code>
+		<code><a href="source-class-COntologyNode.html#756-780" title="Go to source code">_PostcommitCleanup</a>( <span>reference <var>&amp; $theConnection</var></span>, <span>reference <var>&amp; $theModifiers</var></span> )</code>
 
 		<div class="description short">
 			
@@ -876,7 +877,7 @@ have to be refreshed and its references actualised.</p>
 
 
 				<h4>Overrides</h4>
-				<div class="list"><code><a href="class-CPersistentDocument.html#_">CPersistentDocument::_PostcommitCleanup</a></code></div>
+				<div class="list"><code><a href="class-CPersistentDocument.html#__PostcommitCleanup">CPersistentDocument::_PostcommitCleanup()</a></code></div>
 
 		</div>
 		</div></td>
@@ -892,7 +893,7 @@ have to be refreshed and its references actualised.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#__ReferenceInTerm">#</a>
-		<code><a href="source-class-COntologyNode.html#796" title="Go to source code">_ReferenceInTerm</a>( <span><code><a href="class-CConnection.html">CConnection</a></code> <var>$theConnection</var></span>, <span>boolean <var>$doAdd</var></span> )</code>
+		<code><a href="source-class-COntologyNode.html#796-857" title="Go to source code">_ReferenceInTerm</a>( <span><code><a href="class-CConnection.html">CConnection</a></code> <var>$theConnection</var></span>, <span>boolean <var>$doAdd</var></span> )</code>
 
 		<div class="description short">
 			
@@ -922,9 +923,9 @@ exception if the operation failed.</p>
 				<h4>Parameters</h4>
 				<div class="list"><dl>
 					<dt><var>$theConnection</var></dt>
-					<dd><code><code><a href="class-CConnection.html">CConnection</a></code></code><br> Server, database or container.</dd>
+					<dd><code><code><a href="class-CConnection.html">CConnection</a></code></code><br>$theConnection Server, database or container.</dd>
 					<dt><var>$doAdd</var></dt>
-					<dd><code>boolean</code><br> <tt>TRUE</tt> add reference.</dd>
+					<dd><code>boolean</code><br>$doAdd <tt>TRUE</tt> add reference.</dd>
 				</dl></div>
 
 				<h4>Returns</h4>
@@ -949,10 +950,10 @@ exception if the operation failed.</p>
 	<caption>Methods inherited from <a href="class-CNode.html#methods">CNode</a></caption>
 	<tr>
 		<td><code>
-			<a href="class-CNode.html#_">Kind()</a>, 
-			<a href="class-CNode.html#_">Term()</a>, 
-			<a href="class-CNode.html#_">Type()</a>, 
-			<a href="class-CNode.html#_">_Ready()</a>
+			<a href="class-CNode.html#_Kind">Kind()</a>, 
+			<a href="class-CNode.html#_Term">Term()</a>, 
+			<a href="class-CNode.html#_Type">Type()</a>, 
+			<a href="class-CNode.html#__Ready">_Ready()</a>
 		</code></td>
 	</tr>
 	</table>
@@ -960,14 +961,14 @@ exception if the operation failed.</p>
 	<caption>Methods inherited from <a href="class-CPersistentObject.html#methods">CPersistentObject</a></caption>
 	<tr>
 		<td><code>
-			<a href="class-CPersistentObject.html#_">CLassName()</a>, 
-			<a href="class-CPersistentObject.html#_">DocumentObject()</a>, 
-			<a href="class-CPersistentObject.html#_">GID()</a>, 
-			<a href="class-CPersistentObject.html#_">NewObject()</a>, 
-			<a href="class-CPersistentObject.html#_">_AssertClass()</a>, 
-			<a href="class-CPersistentObject.html#_">_PrecommitValidate()</a>, 
-			<a href="class-CPersistentObject.html#_">_id()</a>, 
-			<a href="class-CPersistentObject.html#_">_index()</a>
+			<a href="class-CPersistentObject.html#_CLassName">CLassName()</a>, 
+			<a href="class-CPersistentObject.html#_DocumentObject">DocumentObject()</a>, 
+			<a href="class-CPersistentObject.html#_GID">GID()</a>, 
+			<a href="class-CPersistentObject.html#_NewObject">NewObject()</a>, 
+			<a href="class-CPersistentObject.html#__AssertClass">_AssertClass()</a>, 
+			<a href="class-CPersistentObject.html#__PrecommitValidate">_PrecommitValidate()</a>, 
+			<a href="class-CPersistentObject.html#__id">_id()</a>, 
+			<a href="class-CPersistentObject.html#__index">_index()</a>
 		</code></td>
 	</tr>
 	</table>
@@ -975,18 +976,18 @@ exception if the operation failed.</p>
 	<caption>Methods inherited from <a href="class-CPersistentDocument.html#methods">CPersistentDocument</a></caption>
 	<tr>
 		<td><code>
-			<a href="class-CPersistentDocument.html#_">DefaultDatabase()</a>, 
-			<a href="class-CPersistentDocument.html#_">Delete()</a>, 
-			<a href="class-CPersistentDocument.html#_">Insert()</a>, 
-			<a href="class-CPersistentDocument.html#_">NID()</a>, 
-			<a href="class-CPersistentDocument.html#_">Replace()</a>, 
-			<a href="class-CPersistentDocument.html#_">ResolveClassContainer()</a>, 
-			<a href="class-CPersistentDocument.html#_">ResolveContainer()</a>, 
-			<a href="class-CPersistentDocument.html#_">Restore()</a>, 
-			<a href="class-CPersistentDocument.html#_">Update()</a>, 
-			<a href="class-CPersistentDocument.html#_">_Postcommit()</a>, 
-			<a href="class-CPersistentDocument.html#_">_PostcommitStatus()</a>, 
-			<a href="class-CPersistentDocument.html#_">_Precommit()</a>
+			<a href="class-CPersistentDocument.html#_DefaultDatabase">DefaultDatabase()</a>, 
+			<a href="class-CPersistentDocument.html#_Delete">Delete()</a>, 
+			<a href="class-CPersistentDocument.html#_Insert">Insert()</a>, 
+			<a href="class-CPersistentDocument.html#_NID">NID()</a>, 
+			<a href="class-CPersistentDocument.html#_Replace">Replace()</a>, 
+			<a href="class-CPersistentDocument.html#_ResolveClassContainer">ResolveClassContainer()</a>, 
+			<a href="class-CPersistentDocument.html#_ResolveContainer">ResolveContainer()</a>, 
+			<a href="class-CPersistentDocument.html#_Restore">Restore()</a>, 
+			<a href="class-CPersistentDocument.html#_Update">Update()</a>, 
+			<a href="class-CPersistentDocument.html#__Postcommit">_Postcommit()</a>, 
+			<a href="class-CPersistentDocument.html#__PostcommitStatus">_PostcommitStatus()</a>, 
+			<a href="class-CPersistentDocument.html#__Precommit">_Precommit()</a>
 		</code></td>
 	</tr>
 	</table>
@@ -994,15 +995,15 @@ exception if the operation failed.</p>
 	<caption>Methods inherited from <a href="class-CStatusDocument.html#methods">CStatusDocument</a></caption>
 	<tr>
 		<td><code>
-			<a href="class-CStatusDocument.html#_">_IsCommitted()</a>, 
-			<a href="class-CStatusDocument.html#_">_IsDirty()</a>, 
-			<a href="class-CStatusDocument.html#_">_IsEncoded()</a>, 
-			<a href="class-CStatusDocument.html#_">_IsInited()</a>, 
-			<a href="class-CStatusDocument.html#_">_Postset()</a>, 
-			<a href="class-CStatusDocument.html#_">_Postunset()</a>, 
-			<a href="class-CStatusDocument.html#_">__construct()</a>, 
-			<a href="class-CStatusDocument.html#_">offsetSet()</a>, 
-			<a href="class-CStatusDocument.html#_">offsetUnset()</a>
+			<a href="class-CStatusDocument.html#__IsCommitted">_IsCommitted()</a>, 
+			<a href="class-CStatusDocument.html#__IsDirty">_IsDirty()</a>, 
+			<a href="class-CStatusDocument.html#__IsEncoded">_IsEncoded()</a>, 
+			<a href="class-CStatusDocument.html#__IsInited">_IsInited()</a>, 
+			<a href="class-CStatusDocument.html#__Postset">_Postset()</a>, 
+			<a href="class-CStatusDocument.html#__Postunset">_Postunset()</a>, 
+			<a href="class-CStatusDocument.html#___construct">__construct()</a>, 
+			<a href="class-CStatusDocument.html#_offsetSet">offsetSet()</a>, 
+			<a href="class-CStatusDocument.html#_offsetUnset">offsetUnset()</a>
 		</code></td>
 	</tr>
 	</table>
@@ -1010,9 +1011,9 @@ exception if the operation failed.</p>
 	<caption>Methods inherited from <a href="class-CDocument.html#methods">CDocument</a></caption>
 	<tr>
 		<td><code>
-			<a href="class-CDocument.html#_">array_keys()</a>, 
-			<a href="class-CDocument.html#_">array_values()</a>, 
-			<a href="class-CDocument.html#_">offsetGet()</a>
+			<a href="class-CDocument.html#_array_keys">array_keys()</a>, 
+			<a href="class-CDocument.html#_array_values">array_values()</a>, 
+			<a href="class-CDocument.html#_offsetGet">offsetGet()</a>
 		</code></td>
 	</tr>
 	</table>
@@ -1020,27 +1021,31 @@ exception if the operation failed.</p>
 	<caption>Methods inherited from <a href="class-ArrayObject.html#methods">ArrayObject</a></caption>
 	<tr>
 		<td><code>
-			<a href="class-ArrayObject.html#_">append()</a>, 
-			<a href="class-ArrayObject.html#_">asort()</a>, 
-			<a href="class-ArrayObject.html#_">count()</a>, 
-			<a href="class-ArrayObject.html#_">exchangeArray()</a>, 
-			<a href="class-ArrayObject.html#_">getArrayCopy()</a>, 
-			<a href="class-ArrayObject.html#_">getFlags()</a>, 
-			<a href="class-ArrayObject.html#_">getIterator()</a>, 
-			<a href="class-ArrayObject.html#_">getIteratorClass()</a>, 
-			<a href="class-ArrayObject.html#_">ksort()</a>, 
-			<a href="class-ArrayObject.html#_">natcasesort()</a>, 
-			<a href="class-ArrayObject.html#_">natsort()</a>, 
-			<a href="class-ArrayObject.html#_">offsetExists()</a>, 
-			<a href="class-ArrayObject.html#_">serialize()</a>, 
-			<a href="class-ArrayObject.html#_">setFlags()</a>, 
-			<a href="class-ArrayObject.html#_">setIteratorClass()</a>, 
-			<a href="class-ArrayObject.html#_">uasort()</a>, 
-			<a href="class-ArrayObject.html#_">uksort()</a>, 
-			<a href="class-ArrayObject.html#_">unserialize()</a>
+			<a href="class-ArrayObject.html#_append">append()</a>, 
+			<a href="class-ArrayObject.html#_asort">asort()</a>, 
+			<a href="class-ArrayObject.html#_count">count()</a>, 
+			<a href="class-ArrayObject.html#_exchangeArray">exchangeArray()</a>, 
+			<a href="class-ArrayObject.html#_getArrayCopy">getArrayCopy()</a>, 
+			<a href="class-ArrayObject.html#_getFlags">getFlags()</a>, 
+			<a href="class-ArrayObject.html#_getIterator">getIterator()</a>, 
+			<a href="class-ArrayObject.html#_getIteratorClass">getIteratorClass()</a>, 
+			<a href="class-ArrayObject.html#_ksort">ksort()</a>, 
+			<a href="class-ArrayObject.html#_natcasesort">natcasesort()</a>, 
+			<a href="class-ArrayObject.html#_natsort">natsort()</a>, 
+			<a href="class-ArrayObject.html#_offsetExists">offsetExists()</a>, 
+			<a href="class-ArrayObject.html#_serialize">serialize()</a>, 
+			<a href="class-ArrayObject.html#_setFlags">setFlags()</a>, 
+			<a href="class-ArrayObject.html#_setIteratorClass">setIteratorClass()</a>, 
+			<a href="class-ArrayObject.html#_uasort">uasort()</a>, 
+			<a href="class-ArrayObject.html#_uksort">uksort()</a>, 
+			<a href="class-ArrayObject.html#_unserialize">unserialize()</a>
 		</code></td>
 	</tr>
 	</table>
+
+
+
+
 
 
 
@@ -1056,17 +1061,17 @@ exception if the operation failed.</p>
 	</table>
 
 
+
 	<table class="summary" id="properties">
 	<caption>Properties summary</caption>
 	<tr data-order="mTerm" id="$mTerm">
-
 		<td class="attributes"><code>
-			protected 
+			protected  
 			<code><a href="class-COntologyTerm.html">COntologyTerm</a></code>
 		</code></td>
 
 		<td class="name">
-				<a href="source-class-COntologyNode.html#93" title="Go to source code"><var>$mTerm</var></a>
+				<a href="source-class-COntologyNode.html#93-100" title="Go to source code"><var>$mTerm</var></a>
 		</td>
 		<td class="value"><code><span class="php-keyword1">NULL</span></code></td>
 		<td class="description"><div>
@@ -1100,10 +1105,13 @@ exception if the operation failed.</p>
 	</table>
 
 
+
+
+
 </div>
 
 	<div id="footer">
-		MyWrapper Reference Documentation API documentation generated by <a href="http://apigen.org">ApiGen 2.7.0</a>
+		MyWrapper Reference Documentation API documentation generated by <a href="http://apigen.org">ApiGen 2.8.0</a>
 	</div>
 </div>
 </div>

@@ -278,37 +278,34 @@ try
 	$term = $test->NewTerm( "PREDICATE", $namespace[ kOFFSET_NID ], "Predicate", "This is the predicate term", "en" );
 	echo( '<pre>' ); print_r( $term ); echo( '</pre>' );
 	echo( '<hr />' );
-exit;
 	
 	//
 	// Create trait term.
 	//
 	echo( '<h4>Create trait term</h4>' );
-	$termTrait = new COntologyTerm();
-	$termTrait[ kOFFSET_NAMESPACE ] = $namespace;
-	$termTrait[ kOFFSET_LID ] = "TRAIT";
-	$termTrait->Insert( $database );
-	echo( '<pre>' ); print_r( $termTrait ); echo( '</pre>' );
+	echo( '<h5>$term = $test->NewTerm( "TRAIT", $namespace[ kOFFSET_NID ], "Trait", "This is the trait term", "en" );</h5>' );
+	$term = $test->NewTerm( "TRAIT", $namespace[ kOFFSET_NID ], "Trait", "This is the trait term", "en" );
+	echo( '<pre>' ); print_r( $term ); echo( '</pre>' );
+	echo( '<hr />' );
 	
 	//
 	// Create method term.
 	//
 	echo( '<h4>Create method term</h4>' );
-	$termMethod = new COntologyTerm();
-	$termMethod[ kOFFSET_NAMESPACE ] = $namespace;
-	$termMethod[ kOFFSET_LID ] = "METHOD";
-	$termMethod->Insert( $database );
-	echo( '<pre>' ); print_r( $termMethod ); echo( '</pre>' );
+	echo( '<h5>$term = $test->NewTerm( "METHOD", $namespace[ kOFFSET_NID ], "Method", "This is the method term", "en" );</h5>' );
+	$term = $test->NewTerm( "METHOD", $namespace[ kOFFSET_NID ], "Method", "This is the method term", "en" );
+	echo( '<pre>' ); print_r( $term ); echo( '</pre>' );
+	echo( '<hr />' );
 	
 	//
 	// Create scale term.
 	//
 	echo( '<h4>Create scale term</h4>' );
-	$termScale = new COntologyTerm();
-	$termScale[ kOFFSET_NAMESPACE ] = $namespace;
-	$termScale[ kOFFSET_LID ] = "SCALE";
-	$termScale->Insert( $database );
-	echo( '<pre>' ); print_r( $termScale ); echo( '</pre>' );
+	echo( '<h5>$term = $test->NewTerm( "SCALE", $namespace, "Scale", "This is the scale term", "en" );</h5>' );
+	$term = $test->NewTerm( "SCALE", $namespace, "Scale", "This is the scale term", "en" );
+	echo( '<pre>' ); print_r( $term ); echo( '</pre>' );
+	echo( '<hr />' );
+exit;
 	
 	//
 	// Create ontology node.

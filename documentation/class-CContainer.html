@@ -2,13 +2,13 @@
 <html>
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-	<meta name="generator" content="ApiGen 2.7.0" />
+	<meta name="generator" content="ApiGen 2.8.0" />
 
 	<title>Class CContainer | MyWrapper Reference Documentation</title>
 
-	<script type="text/javascript" src="resources/combined.js?496895167"></script>
+	<script type="text/javascript" src="resources/combined.js?368249000"></script>
 	<script type="text/javascript" src="elementlist.js?4206909522"></script>
-	<link rel="stylesheet" type="text/css" media="all" href="resources/style.css?1567499433" />
+	<link rel="stylesheet" type="text/css" media="all" href="resources/style.css?3505392360" />
 
 </head>
 
@@ -115,12 +115,12 @@ a native container from a database.</p>
 <p>The public interface declares the following main operations:</p>
 
 <ul>
-	<li><code><a href="class-CContainer.html#_">CContainer::ManageObject()</a></code>: This method will <i>insert</i>, <i>update</i>,
+	<li><code><a href="class-CContainer.html#_ManageObject">CContainer::ManageObject()</a></code>: This method will <i>insert</i>, <i>update</i>,
 	<i>modify</i>, <i>delete</i> and <i>load</i> an object from the current
 	container. This method operates one object at the time and it is mainly used by
 	persistent objects for persisting in containers.</li>
 
-	<li><code><a href="class-CContainer.html#_">CContainer::ConvertValue()</a></code>: This method will convert a PHP value to a container
+	<li><code><a href="class-CContainer.html#_ConvertValue">CContainer::ConvertValue()</a></code>: This method will convert a PHP value to a container
 	native value.</li>
 </ul>
 
@@ -195,8 +195,9 @@ implement specific storage actions.</p>
 				<b>Author:</b>
 				Milko A. Škofič &lt;<a
 href="mailto:m.skofic&#64;cgiar.org">m.skofic&#64;<!---->cgiar.org</a>&gt;<br />
-		<b>Located at</b> <a href="source-class-CContainer.html#57" title="Go to source code">CContainer.php</a><br />
+		<b>Located at</b> <a href="source-class-CContainer.html#57-418" title="Go to source code">CContainer.php</a><br />
 	</div>
+
 
 
 	<table class="summary" id="methods">
@@ -212,7 +213,7 @@ href="mailto:m.skofic&#64;cgiar.org">m.skofic&#64;<!---->cgiar.org</a>&gt;<br />
 
 		<td class="name"><div>
 		<a class="anchor" href="#_ManageObject">#</a>
-		<code><a href="source-class-CContainer.html#100" title="Go to source code">ManageObject</a>( <span>reference <var>&amp; $theObject</var></span>, <span>mixed <var>$theIdentifier</var> = <span class="php-keyword1">NULL</span></span>, <span>mixed <var>$theModifiers</var> = kFLAG_DEFAULT </span> )</code>
+		<code><a href="source-class-CContainer.html#100-265" title="Go to source code">ManageObject</a>( <span>reference <var>&amp; $theObject</var></span>, <span>mixed <var>$theIdentifier</var> = <span class="php-keyword1">NULL</span></span>, <span>mixed <var>$theModifiers</var> = kFLAG_DEFAULT </span> )</code>
 
 		<div class="description short">
 			
@@ -364,7 +365,7 @@ and/or its native unique identifier (kOFFSET_NID).</p>
 update the provided object with whatever data the operation will generate.</p>
 
 <p>The method will also raise an exception if the object is not yet initialised
-(<code><a href="class-CStatusDocument.html#_">CStatusDocument::_IsInited()</a></code>), this happens when the object received the native
+(<code><a href="class-CStatusDocument.html#__IsInited">CStatusDocument::_IsInited()</a></code>), this happens when the object received the native
 container.</p>
 
 <p>This class is abstract, which means that derived classes must implement the
@@ -378,9 +379,9 @@ is declared abstract.</p>
 					<dt><var>$theObject</var></dt>
 					<dd><code>reference</code><br>&amp;$theObject Object.</dd>
 					<dt><var>$theIdentifier</var></dt>
-					<dd><code>mixed</code><br> Identifier.</dd>
+					<dd><code>mixed</code><br>$theIdentifier Identifier.</dd>
 					<dt><var>$theModifiers</var></dt>
-					<dd><code>mixed</code><br> Options or offsets list.</dd>
+					<dd><code>mixed</code><br>$theModifiers Options or offsets list.</dd>
 				</dl></div>
 
 				<h4>Returns</h4>
@@ -412,7 +413,7 @@ is declared abstract.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#_CheckObject">#</a>
-		<code><a href="source-class-CContainer.html#272" title="Go to source code">CheckObject</a>( <span>mixed <var>$theIdentifier</var></span>, <span>string <var>$theOffset</var> = <span class="php-keyword1">NULL</span> </span> )</code>
+		<code><a href="source-class-CContainer.html#272-285" title="Go to source code">CheckObject</a>( <span>mixed <var>$theIdentifier</var></span>, <span>string <var>$theOffset</var> = <span class="php-keyword1">NULL</span> </span> )</code>
 
 		<div class="description short">
 			
@@ -433,9 +434,9 @@ return <tt>TRUE</tt> if found and <tt>FALSE</tt> if not.</p>
 				<h4>Parameters</h4>
 				<div class="list"><dl>
 					<dt><var>$theIdentifier</var></dt>
-					<dd><code>mixed</code><br> Identifier.</dd>
+					<dd><code>mixed</code><br>$theIdentifier Identifier.</dd>
 					<dt><var>$theOffset</var></dt>
-					<dd><code>string</code><br> Offset.</dd>
+					<dd><code>string</code><br>$theOffset Offset.</dd>
 				</dl></div>
 
 				<h4>Returns</h4>
@@ -460,7 +461,7 @@ return <tt>TRUE</tt> if found and <tt>FALSE</tt> if not.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#_Query">#</a>
-		<code><a href="source-class-CContainer.html#292" title="Go to source code">Query</a>( <span><code><a href="class-CQuery.html">CQuery</a></code> <var>$theQuery</var></span>, <span>array <var>$theFields</var> = <span class="php-keyword1">NULL</span> </span> )</code>
+		<code><a href="source-class-CContainer.html#292-307" title="Go to source code">Query</a>( <span><code><a href="class-CQuery.html">CQuery</a></code> <var>$theQuery</var></span>, <span>array <var>$theFields</var> = <span class="php-keyword1">NULL</span> </span> )</code>
 
 		<div class="description short">
 			
@@ -483,9 +484,9 @@ represents the list of desired fields.</p>
 				<h4>Parameters</h4>
 				<div class="list"><dl>
 					<dt><var>$theQuery</var></dt>
-					<dd><code><code><a href="class-CQuery.html">CQuery</a></code></code><br> Query.</dd>
+					<dd><code><code><a href="class-CQuery.html">CQuery</a></code></code><br>$theQuery Query.</dd>
 					<dt><var>$theFields</var></dt>
-					<dd><code>array</code><br> Fieldset.</dd>
+					<dd><code>array</code><br>$theFields Fieldset.</dd>
 				</dl></div>
 
 				<h4>Returns</h4>
@@ -510,7 +511,7 @@ represents the list of desired fields.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#_NextSequence">#</a>
-		<code><a href="source-class-CContainer.html#323" title="Go to source code">NextSequence</a>( <span>string <var>$theKey</var></span>, <span>string <var>$theContainer</var> = <span class="php-keyword1">NULL</span> </span> )</code>
+		<code><a href="source-class-CContainer.html#323-355" title="Go to source code">NextSequence</a>( <span>string <var>$theKey</var></span>, <span>string <var>$theContainer</var> = <span class="php-keyword1">NULL</span> </span> )</code>
 
 		<div class="description short">
 			
@@ -549,9 +550,9 @@ exception.</p>
 				<h4>Parameters</h4>
 				<div class="list"><dl>
 					<dt><var>$theKey</var></dt>
-					<dd><code>string</code><br> Sequence key.</dd>
+					<dd><code>string</code><br>$theKey Sequence key.</dd>
 					<dt><var>$theContainer</var></dt>
-					<dd><code>string</code><br> Sequence container.</dd>
+					<dd><code>string</code><br>$theContainer Sequence container.</dd>
 				</dl></div>
 
 				<h4>Returns</h4>
@@ -580,7 +581,7 @@ exception.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#_NewQuery">#</a>
-		<code><a href="source-class-CContainer.html#371" title="Go to source code">NewQuery</a>( )</code>
+		<code><a href="source-class-CContainer.html#371-382" title="Go to source code">NewQuery</a>( )</code>
 
 		<div class="description short">
 			
@@ -623,7 +624,7 @@ container.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#_ConvertValue">#</a>
-		<code><a href="source-class-CContainer.html#398" title="Go to source code">ConvertValue</a>( <span>string <var>$theType</var></span>, <span>mixed <var>$theValue</var></span> )</code>
+		<code><a href="source-class-CContainer.html#398-414" title="Go to source code">ConvertValue</a>( <span>string <var>$theType</var></span>, <span>mixed <var>$theValue</var></span> )</code>
 
 		<div class="description short">
 			
@@ -647,9 +648,9 @@ values according to the native container data types.</p>
 				<h4>Parameters</h4>
 				<div class="list"><dl>
 					<dt><var>$theType</var></dt>
-					<dd><code>string</code><br> Data type.</dd>
+					<dd><code>string</code><br>$theType Data type.</dd>
 					<dt><var>$theValue</var></dt>
-					<dd><code>mixed</code><br> Data value.</dd>
+					<dd><code>mixed</code><br>$theValue Data value.</dd>
 				</dl></div>
 
 				<h4>Returns</h4>
@@ -669,11 +670,11 @@ values according to the native container data types.</p>
 	<caption>Methods inherited from <a href="class-CConnection.html#methods">CConnection</a></caption>
 	<tr>
 		<td><code>
-			<a href="class-CConnection.html#_">Connection()</a>, 
-			<a href="class-CConnection.html#_">_Connection()</a>, 
-			<a href="class-CConnection.html#_">_Ready()</a>, 
-			<a href="class-CConnection.html#_">__construct()</a>, 
-			<a href="class-CConnection.html#_">__toString()</a>
+			<a href="class-CConnection.html#_Connection">Connection()</a>, 
+			<a href="class-CConnection.html#__Connection">_Connection()</a>, 
+			<a href="class-CConnection.html#__Ready">_Ready()</a>, 
+			<a href="class-CConnection.html#___construct">__construct()</a>, 
+			<a href="class-CConnection.html#___toString">__toString()</a>
 		</code></td>
 	</tr>
 	</table>
@@ -681,16 +682,16 @@ values according to the native container data types.</p>
 	<caption>Methods inherited from <a href="class-CStatusDocument.html#methods">CStatusDocument</a></caption>
 	<tr>
 		<td><code>
-			<a href="class-CStatusDocument.html#_">_IsCommitted()</a>, 
-			<a href="class-CStatusDocument.html#_">_IsDirty()</a>, 
-			<a href="class-CStatusDocument.html#_">_IsEncoded()</a>, 
-			<a href="class-CStatusDocument.html#_">_IsInited()</a>, 
-			<a href="class-CStatusDocument.html#_">_Postset()</a>, 
-			<a href="class-CStatusDocument.html#_">_Postunset()</a>, 
-			<a href="class-CStatusDocument.html#_">_Preset()</a>, 
-			<a href="class-CStatusDocument.html#_">_Preunset()</a>, 
-			<a href="class-CStatusDocument.html#_">offsetSet()</a>, 
-			<a href="class-CStatusDocument.html#_">offsetUnset()</a>
+			<a href="class-CStatusDocument.html#__IsCommitted">_IsCommitted()</a>, 
+			<a href="class-CStatusDocument.html#__IsDirty">_IsDirty()</a>, 
+			<a href="class-CStatusDocument.html#__IsEncoded">_IsEncoded()</a>, 
+			<a href="class-CStatusDocument.html#__IsInited">_IsInited()</a>, 
+			<a href="class-CStatusDocument.html#__Postset">_Postset()</a>, 
+			<a href="class-CStatusDocument.html#__Postunset">_Postunset()</a>, 
+			<a href="class-CStatusDocument.html#__Preset">_Preset()</a>, 
+			<a href="class-CStatusDocument.html#__Preunset">_Preunset()</a>, 
+			<a href="class-CStatusDocument.html#_offsetSet">offsetSet()</a>, 
+			<a href="class-CStatusDocument.html#_offsetUnset">offsetUnset()</a>
 		</code></td>
 	</tr>
 	</table>
@@ -698,9 +699,9 @@ values according to the native container data types.</p>
 	<caption>Methods inherited from <a href="class-CDocument.html#methods">CDocument</a></caption>
 	<tr>
 		<td><code>
-			<a href="class-CDocument.html#_">array_keys()</a>, 
-			<a href="class-CDocument.html#_">array_values()</a>, 
-			<a href="class-CDocument.html#_">offsetGet()</a>
+			<a href="class-CDocument.html#_array_keys">array_keys()</a>, 
+			<a href="class-CDocument.html#_array_values">array_values()</a>, 
+			<a href="class-CDocument.html#_offsetGet">offsetGet()</a>
 		</code></td>
 	</tr>
 	</table>
@@ -708,27 +709,31 @@ values according to the native container data types.</p>
 	<caption>Methods inherited from <a href="class-ArrayObject.html#methods">ArrayObject</a></caption>
 	<tr>
 		<td><code>
-			<a href="class-ArrayObject.html#_">append()</a>, 
-			<a href="class-ArrayObject.html#_">asort()</a>, 
-			<a href="class-ArrayObject.html#_">count()</a>, 
-			<a href="class-ArrayObject.html#_">exchangeArray()</a>, 
-			<a href="class-ArrayObject.html#_">getArrayCopy()</a>, 
-			<a href="class-ArrayObject.html#_">getFlags()</a>, 
-			<a href="class-ArrayObject.html#_">getIterator()</a>, 
-			<a href="class-ArrayObject.html#_">getIteratorClass()</a>, 
-			<a href="class-ArrayObject.html#_">ksort()</a>, 
-			<a href="class-ArrayObject.html#_">natcasesort()</a>, 
-			<a href="class-ArrayObject.html#_">natsort()</a>, 
-			<a href="class-ArrayObject.html#_">offsetExists()</a>, 
-			<a href="class-ArrayObject.html#_">serialize()</a>, 
-			<a href="class-ArrayObject.html#_">setFlags()</a>, 
-			<a href="class-ArrayObject.html#_">setIteratorClass()</a>, 
-			<a href="class-ArrayObject.html#_">uasort()</a>, 
-			<a href="class-ArrayObject.html#_">uksort()</a>, 
-			<a href="class-ArrayObject.html#_">unserialize()</a>
+			<a href="class-ArrayObject.html#_append">append()</a>, 
+			<a href="class-ArrayObject.html#_asort">asort()</a>, 
+			<a href="class-ArrayObject.html#_count">count()</a>, 
+			<a href="class-ArrayObject.html#_exchangeArray">exchangeArray()</a>, 
+			<a href="class-ArrayObject.html#_getArrayCopy">getArrayCopy()</a>, 
+			<a href="class-ArrayObject.html#_getFlags">getFlags()</a>, 
+			<a href="class-ArrayObject.html#_getIterator">getIterator()</a>, 
+			<a href="class-ArrayObject.html#_getIteratorClass">getIteratorClass()</a>, 
+			<a href="class-ArrayObject.html#_ksort">ksort()</a>, 
+			<a href="class-ArrayObject.html#_natcasesort">natcasesort()</a>, 
+			<a href="class-ArrayObject.html#_natsort">natsort()</a>, 
+			<a href="class-ArrayObject.html#_offsetExists">offsetExists()</a>, 
+			<a href="class-ArrayObject.html#_serialize">serialize()</a>, 
+			<a href="class-ArrayObject.html#_setFlags">setFlags()</a>, 
+			<a href="class-ArrayObject.html#_setIteratorClass">setIteratorClass()</a>, 
+			<a href="class-ArrayObject.html#_uasort">uasort()</a>, 
+			<a href="class-ArrayObject.html#_uksort">uksort()</a>, 
+			<a href="class-ArrayObject.html#_unserialize">unserialize()</a>
 		</code></td>
 	</tr>
 	</table>
+
+
+
+
 
 
 
@@ -742,6 +747,7 @@ values according to the native container data types.</p>
 		</code></td>
 	</tr>
 	</table>
+
 
 
 
@@ -763,10 +769,13 @@ values according to the native container data types.</p>
 	</table>
 
 
+
+
+
 </div>
 
 	<div id="footer">
-		MyWrapper Reference Documentation API documentation generated by <a href="http://apigen.org">ApiGen 2.7.0</a>
+		MyWrapper Reference Documentation API documentation generated by <a href="http://apigen.org">ApiGen 2.8.0</a>
 	</div>
 </div>
 </div>

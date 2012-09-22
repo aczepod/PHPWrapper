@@ -2,13 +2,13 @@
 <html>
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-	<meta name="generator" content="ApiGen 2.7.0" />
+	<meta name="generator" content="ApiGen 2.8.0" />
 
 	<title>Class CPersistentObject | MyWrapper Reference Documentation</title>
 
-	<script type="text/javascript" src="resources/combined.js?496895167"></script>
+	<script type="text/javascript" src="resources/combined.js?368249000"></script>
 	<script type="text/javascript" src="elementlist.js?4206909522"></script>
-	<link rel="stylesheet" type="text/css" media="all" href="resources/style.css?1567499433" />
+	<link rel="stylesheet" type="text/css" media="all" href="resources/style.css?3505392360" />
 
 </head>
 
@@ -105,22 +105,22 @@ this class are identified within their container.</p>
 <p>The object is uniquely identified by a string, the <i>global unique
 identifier</i>, this string is generally a combination of the object's
 attributes and once set, it should not change. The string is composed by a
-protected method, <code><a href="class-CPersistentObject.html#_">CPersistentObject::_index()</a></code>, and set into a predefined offset, kOFFSET_GID.</p>
+protected method, <code><a href="class-CPersistentObject.html#__index">CPersistentObject::_index()</a></code>, and set into a predefined offset, kOFFSET_GID.</p>
 
 <p>This value will be used to generate the <i>native unique identifier</i>,
 kOFFSET_NID, which represents the object's primary key within the
-container in which it is stored. The value is obtained by feeding the kOFFSET_GID to a static method, <code><a href="class-CPersistentObject.html#_">CPersistentObject::_id()</a></code>, whose function is to transform
+container in which it is stored. The value is obtained by feeding the kOFFSET_GID to a static method, <code><a href="class-CPersistentObject.html#__id">CPersistentObject::_id()</a></code>, whose function is to transform
 the provided value into one optimised as a primary key. The method is static so
 that any global identifier can be converted into a native one.</p>
 
 <p>Once the object has been committed, these identifiers are locked by the
-<code><a href="class-CPersistentObject.html#_">CPersistentObject::_Preset()</a></code> and <code><a href="class-CPersistentObject.html#_">CPersistentObject::_Preunset()</a></code> methods to prevent invalidating object
+<code><a href="class-CPersistentObject.html#__Preset">CPersistentObject::_Preset()</a></code> and <code><a href="class-CPersistentObject.html#__Preunset">CPersistentObject::_Preunset()</a></code> methods to prevent invalidating object
 references.</p>
 
 <p>The class features a predefined offset, kOFFSET_CLASS, that receives
-the class name of the object: this value will be used by the static <code><a href="class-CPersistentObject.html#_">CPersistentObject::NewObject()</a></code> method to instantiate the correct object.</p>
+the class name of the object: this value will be used by the static <code><a href="class-CPersistentObject.html#_NewObject">CPersistentObject::NewObject()</a></code> method to instantiate the correct object.</p>
 
-<p>All objects derived from this class should implement the <code><a href="class-CPersistentObject.html#_">CPersistentObject::__toString()</a></code>
+<p>All objects derived from this class should implement the <code><a href="class-CPersistentObject.html#___toString">CPersistentObject::__toString()</a></code>
 method, by default this class returns the global identifier, kOFFSET_GID. Derived classes may change this behaviour, in particular when the
 class does not feature the global identifier: the important thing is to be able
 to cast an object to a string.</p>
@@ -129,7 +129,7 @@ to cast an object to a string.</p>
 offsets:</p>
 
 <ul>
-	<li><code><a href="class-CPersistentObject.html#_">CPersistentObject::GID()</a></code>: This method manages the global unique identifier, kOFFSET_GID.</li>
+	<li><code><a href="class-CPersistentObject.html#_GID">CPersistentObject::GID()</a></code>: This method manages the global unique identifier, kOFFSET_GID.</li>
 
 	<li>ClassName(): This method manages the object's class name, kOFFSET_CLASS.</li>
 </ul>
@@ -212,8 +212,9 @@ offsets:</p>
 				<b>Author:</b>
 				Milko A. Škofič &lt;<a
 href="mailto:m.skofic&#64;cgiar.org">m.skofic&#64;<!---->cgiar.org</a>&gt;<br />
-		<b>Located at</b> <a href="source-class-CPersistentObject.html#36" title="Go to source code">CPersistentObject.php</a><br />
+		<b>Located at</b> <a href="source-class-CPersistentObject.html#36-851" title="Go to source code">CPersistentObject.php</a><br />
 	</div>
+
 
 
 	<table class="summary" id="methods">
@@ -229,7 +230,7 @@ href="mailto:m.skofic&#64;cgiar.org">m.skofic&#64;<!---->cgiar.org</a>&gt;<br />
 
 		<td class="name"><div>
 		<a class="anchor" href="#___toString">#</a>
-		<code><a href="source-class-CPersistentObject.html#95" title="Go to source code">__toString</a>( )</code>
+		<code><a href="source-class-CPersistentObject.html#95-122" title="Go to source code">__toString</a>( )</code>
 
 		<div class="description short">
 			
@@ -274,7 +275,7 @@ value is not correct and because this method cannot throw exceptions.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#_GID">#</a>
-		<code><a href="source-class-CPersistentObject.html#138" title="Go to source code">GID</a>( <span>mixed <var>$theValue</var> = <span class="php-keyword1">NULL</span></span>, <span>boolean <var>$getOld</var> = <span class="php-keyword1">FALSE</span> </span> )</code>
+		<code><a href="source-class-CPersistentObject.html#138-176" title="Go to source code">GID</a>( <span>mixed <var>$theValue</var> = <span class="php-keyword1">NULL</span></span>, <span>boolean <var>$getOld</var> = <span class="php-keyword1">FALSE</span> </span> )</code>
 
 		<div class="description short">
 			
@@ -307,7 +308,7 @@ requested operation, depending on its value:</p>
 <i>old</i> value when replacing containers; if <tt>FALSE</tt>, it will return
 the currently set value.</p>
 
-<p>Note that when the object has the <code><a href="class-CStatusDocument.html#_">CStatusDocument::_IsCommitted()</a></code> status this offset
+<p>Note that when the object has the <code><a href="class-CStatusDocument.html#__IsCommitted">CStatusDocument::_IsCommitted()</a></code> status this offset
 will be locked and an exception will be raised.</p>
 
 
@@ -315,9 +316,9 @@ will be locked and an exception will be raised.</p>
 				<h4>Parameters</h4>
 				<div class="list"><dl>
 					<dt><var>$theValue</var></dt>
-					<dd><code>mixed</code><br> Native identifier or operation.</dd>
+					<dd><code>mixed</code><br>$theValue Native identifier or operation.</dd>
 					<dt><var>$getOld</var></dt>
-					<dd><code>boolean</code><br> <tt>TRUE</tt> get old value.</dd>
+					<dd><code>boolean</code><br>$getOld <tt>TRUE</tt> get old value.</dd>
 				</dl></div>
 
 				<h4>Returns</h4>
@@ -350,7 +351,7 @@ will be locked and an exception will be raised.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#_CLassName">#</a>
-		<code><a href="source-class-CPersistentObject.html#183" title="Go to source code">CLassName</a>( <span>mixed <var>$theValue</var> = <span class="php-keyword1">NULL</span></span>, <span>boolean <var>$getOld</var> = <span class="php-keyword1">FALSE</span> </span> )</code>
+		<code><a href="source-class-CPersistentObject.html#183-221" title="Go to source code">CLassName</a>( <span>mixed <var>$theValue</var> = <span class="php-keyword1">NULL</span></span>, <span>boolean <var>$getOld</var> = <span class="php-keyword1">FALSE</span> </span> )</code>
 
 		<div class="description short">
 			
@@ -364,7 +365,7 @@ will be locked and an exception will be raised.</p>
 
 <p>The <i>class name</i>, kOFFSET_CLASS, holds a string which is the
 class name of the object that first stored the object in the container. This
-value will be used by the static <code><a href="class-CPersistentObject.html#_">CPersistentObject::NewObject()</a></code> method to restore the
+value will be used by the static <code><a href="class-CPersistentObject.html#_NewObject">CPersistentObject::NewObject()</a></code> method to restore the
 object from the container.</p>
 
 <p>The method accepts a parameter which represents either the name or the
@@ -382,7 +383,7 @@ requested operation, depending on its value:</p>
 <i>old</i> value when replacing containers; if <tt>FALSE</tt>, it will return
 the currently set value.</p>
 
-<p>Note that when the object has the <code><a href="class-CStatusDocument.html#_">CStatusDocument::_IsCommitted()</a></code> status this offset
+<p>Note that when the object has the <code><a href="class-CStatusDocument.html#__IsCommitted">CStatusDocument::_IsCommitted()</a></code> status this offset
 will be locked and in many other classes this offset may not be writable.</p>
 
 
@@ -390,9 +391,9 @@ will be locked and in many other classes this offset may not be writable.</p>
 				<h4>Parameters</h4>
 				<div class="list"><dl>
 					<dt><var>$theValue</var></dt>
-					<dd><code>mixed</code><br> Persistent container or operation.</dd>
+					<dd><code>mixed</code><br>$theValue Persistent container or operation.</dd>
 					<dt><var>$getOld</var></dt>
-					<dd><code>boolean</code><br> <tt>TRUE</tt> get old value.</dd>
+					<dd><code>boolean</code><br>$getOld <tt>TRUE</tt> get old value.</dd>
 				</dl></div>
 
 				<h4>Returns</h4>
@@ -425,7 +426,7 @@ will be locked and in many other classes this offset may not be writable.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#_NewObject">#</a>
-		<code><a href="source-class-CPersistentObject.html#237" title="Go to source code">NewObject</a>( <span><code><a href="class-CConnection.html">CConnection</a></code> <var>$theConnection</var></span>, <span>mixed <var>$theIdentifier</var></span> )</code>
+		<code><a href="source-class-CPersistentObject.html#237-312" title="Go to source code">NewObject</a>( <span><code><a href="class-CConnection.html">CConnection</a></code> <var>$theConnection</var></span>, <span>mixed <var>$theIdentifier</var></span> )</code>
 
 		<div class="description short">
 			
@@ -447,8 +448,8 @@ the offset is missing, the method will instantiate the calling class.</p>
 	<li><tt>$theConnection</tt>: The container in which the object should be stored.
 	This parameter should be a concrete instance of of <code><a href="class-CContainer.html">CContainer</a></code>, or a
 	concrete instance of <code><a href="class-CServer.html">CServer</a></code> or <code><a href="class-CDatabase.html">CDatabase</a></code>, if the current class
-	has implemented the container resolve interface with <code><a href="class-CPersistentDocument.html#_">CPersistentDocument::DefaultDatabase()</a></code> and
-	<code><a href="class-CPersistentDocument.html#_">CPersistentDocument::DefaultContainer()</a></code>.</li>
+	has implemented the container resolve interface with <code><a href="class-CPersistentDocument.html#_DefaultDatabase">CPersistentDocument::DefaultDatabase()</a></code> and
+	<code><a href="class-CPersistentDocument.html#_DefaultContainer">CPersistentDocument::DefaultContainer()</a></code>.</li>
 
 	<li><tt>$theIdentifier</tt>: The key of the object in the container, by default
 	the kOFFSET_NID offset.</li>
@@ -461,9 +462,9 @@ the offset is missing, the method will instantiate the calling class.</p>
 				<h4>Parameters</h4>
 				<div class="list"><dl>
 					<dt><var>$theConnection</var></dt>
-					<dd><code><code><a href="class-CConnection.html">CConnection</a></code></code><br> Server, database or container.</dd>
+					<dd><code><code><a href="class-CConnection.html">CConnection</a></code></code><br>$theConnection Server, database or container.</dd>
 					<dt><var>$theIdentifier</var></dt>
-					<dd><code>mixed</code><br> Identifier.</dd>
+					<dd><code>mixed</code><br>$theIdentifier Identifier.</dd>
 				</dl></div>
 
 				<h4>Returns</h4>
@@ -474,7 +475,7 @@ the offset is missing, the method will instantiate the calling class.</p>
 
 
 				<h4>Overrides</h4>
-				<div class="list"><code><a href="class-CPersistentDocument.html#_">CPersistentDocument::NewObject</a></code></div>
+				<div class="list"><code><a href="class-CPersistentDocument.html#_NewObject">CPersistentDocument::NewObject()</a></code></div>
 
 		</div>
 		</div></td>
@@ -490,7 +491,7 @@ the offset is missing, the method will instantiate the calling class.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#_DocumentObject">#</a>
-		<code><a href="source-class-CPersistentObject.html#319" title="Go to source code">DocumentObject</a>( <span>mixed <var>$theDocument</var></span> )</code>
+		<code><a href="source-class-CPersistentObject.html#319-371" title="Go to source code">DocumentObject</a>( <span>mixed <var>$theDocument</var></span> )</code>
 
 		<div class="description short">
 			
@@ -507,7 +508,7 @@ will attempt to locate the class name, kOFFSET_CLASS, if found, it will
 return an object of that class, if not, it will return the unchanged received
 document.</p>
 
-<p>If the class name was found, the resulting object will have its <code><a href="class-CStatusDocument.html#_">CStatusDocument::_IsCommitted()</a></code> status set, so provide only data received from database
+<p>If the class name was found, the resulting object will have its <code><a href="class-CStatusDocument.html#__IsCommitted">CStatusDocument::_IsCommitted()</a></code> status set, so provide only data received from database
 queries.</p>
 
 <p>The method accepts arrays and ArrayObjects, any other type will raise an
@@ -518,7 +519,7 @@ exception.</p>
 				<h4>Parameters</h4>
 				<div class="list"><dl>
 					<dt><var>$theDocument</var></dt>
-					<dd><code>mixed</code><br> Persistent object data.</dd>
+					<dd><code>mixed</code><br>$theDocument Persistent object data.</dd>
 				</dl></div>
 
 				<h4>Returns</h4>
@@ -543,7 +544,7 @@ exception.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#__id">#</a>
-		<code><a href="source-class-CPersistentObject.html#387" title="Go to source code">_id</a>( <span>string <var>$theIdentifier</var> = <span class="php-keyword1">NULL</span></span>, <span><code><a href="class-CConnection.html">CConnection</a></code> <var>$theConnection</var> = <span class="php-keyword1">NULL</span> </span> )</code>
+		<code><a href="source-class-CPersistentObject.html#387-418" title="Go to source code">_id</a>( <span>string <var>$theIdentifier</var> = <span class="php-keyword1">NULL</span></span>, <span><code><a href="class-CConnection.html">CConnection</a></code> <var>$theConnection</var> = <span class="php-keyword1">NULL</span> </span> )</code>
 
 		<div class="description short">
 			
@@ -569,7 +570,7 @@ itself to convert, for instance binary strings, to a suitable value.</p>
 the object does not use the global identifier and it is the duty of the
 container to set the object's primary key, such as with autonumbers in SQL or
 missing <tt>_id</tt> in Mongo. In that case this method should not be called,
-see the <code><a href="class-CPersistentDocument.html#_">CPersistentDocument::_Precommit()</a></code> method to see where it is used.</p>
+see the <code><a href="class-CPersistentDocument.html#__Precommit">CPersistentDocument::_Precommit()</a></code> method to see where it is used.</p>
 
 <p>In this class we do not process the identifier, so we simply return it.</p>
 
@@ -578,9 +579,9 @@ see the <code><a href="class-CPersistentDocument.html#_">CPersistentDocument::_P
 				<h4>Parameters</h4>
 				<div class="list"><dl>
 					<dt><var>$theIdentifier</var></dt>
-					<dd><code>string</code><br> Global unique identifier.</dd>
+					<dd><code>string</code><br>$theIdentifier Global unique identifier.</dd>
 					<dt><var>$theConnection</var></dt>
-					<dd><code><code><a href="class-CConnection.html">CConnection</a></code></code><br> Server, database or container.</dd>
+					<dd><code><code><a href="class-CConnection.html">CConnection</a></code></code><br>$theConnection Server, database or container.</dd>
 				</dl></div>
 
 				<h4>Returns</h4>
@@ -591,7 +592,7 @@ see the <code><a href="class-CPersistentDocument.html#_">CPersistentDocument::_P
 
 				<h4>Used by</h4>
 				<div class="list">
-						<code><code><a href="class-CPersistentObject.html#_">CPersistentObject::_PrecommitIdentify()</a></code></code> <br />
+						<code><code><a href="class-CPersistentObject.html#__PrecommitIdentify">CPersistentObject::_PrecommitIdentify()</a></code></code> <br />
 				</div>
 
 
@@ -609,7 +610,7 @@ see the <code><a href="class-CPersistentDocument.html#_">CPersistentDocument::_P
 
 		<td class="name"><div>
 		<a class="anchor" href="#__index">#</a>
-		<code><a href="source-class-CPersistentObject.html#434" title="Go to source code">_index</a>( <span><code><a href="class-CConnection.html">CConnection</a></code> <var>$theConnection</var></span>, <span>bitfield <var>$theModifiers</var></span> )</code>
+		<code><a href="source-class-CPersistentObject.html#434-478" title="Go to source code">_index</a>( <span><code><a href="class-CConnection.html">CConnection</a></code> <var>$theConnection</var></span>, <span>bitfield <var>$theModifiers</var></span> )</code>
 
 		<div class="description short">
 			
@@ -626,12 +627,12 @@ is represented by a string which is generally extracted from selected attributes
 of the object and constitutes the unique key of the object.</p>
 
 <p>This string is stored in the kOFFSET_GID offset of the object and it
-is processed by the static <code><a href="class-CPersistentObject.html#_">CPersistentObject::_id()</a></code> method to generate the object's native
+is processed by the static <code><a href="class-CPersistentObject.html#__id">CPersistentObject::_id()</a></code> method to generate the object's native
 unique identifier, which is the native object's primary key stored in the kOFFSET_NID offset.</p>
 
-<p>This method is called by the <code><a href="class-CPersistentDocument.html#_">CPersistentDocument::_Precommit()</a></code> method, to fill the kOFFSET_GID offset and the resulting value is fed to the <code><a href="class-CPersistentObject.html#_">CPersistentObject::_id()</a></code> method
+<p>This method is called by the <code><a href="class-CPersistentDocument.html#__Precommit">CPersistentDocument::_Precommit()</a></code> method, to fill the kOFFSET_GID offset and the resulting value is fed to the <code><a href="class-CPersistentObject.html#__id">CPersistentObject::_id()</a></code> method
 to obtain the value that will be stored in the kOFFSET_NID offset. The
-inherited Precommit() method asserts whether the object <code><a href="class-CStatusDocument.html#_">CStatusDocument::_IsInited()</a></code>, before calling the local <code><a href="class-CPersistentDocument.html#_">CPersistentDocument::_Precommit()</a></code> method, this to
+inherited Precommit() method asserts whether the object <code><a href="class-CStatusDocument.html#__IsInited">CStatusDocument::_IsInited()</a></code>, before calling the local <code><a href="class-CPersistentDocument.html#__Precommit">CPersistentDocument::_Precommit()</a></code> method, this to
 ensure that this method can safely use the object's attributes to generate the
 identifier. If you intend to use this method in other places, you should check
 if the object is initialised.</p>
@@ -657,9 +658,9 @@ identifier, so we let the container set the identifier, and return
 				<h4>Parameters</h4>
 				<div class="list"><dl>
 					<dt><var>$theConnection</var></dt>
-					<dd><code><code><a href="class-CConnection.html">CConnection</a></code></code><br> Server, database or container.</dd>
+					<dd><code><code><a href="class-CConnection.html">CConnection</a></code></code><br>$theConnection Server, database or container.</dd>
 					<dt><var>$theModifiers</var></dt>
-					<dd><code>bitfield</code><br> Commit options.</dd>
+					<dd><code>bitfield</code><br>$theModifiers Commit options.</dd>
 				</dl></div>
 
 				<h4>Returns</h4>
@@ -670,7 +671,7 @@ identifier, so we let the container set the identifier, and return
 
 				<h4>Used by</h4>
 				<div class="list">
-						<code><code><a href="class-CPersistentObject.html#_">CPersistentObject::_PrecommitIdentify()</a></code></code> <br />
+						<code><code><a href="class-CPersistentObject.html#__PrecommitIdentify">CPersistentObject::_PrecommitIdentify()</a></code></code> <br />
 				</div>
 
 
@@ -688,7 +689,7 @@ identifier, so we let the container set the identifier, and return
 
 		<td class="name"><div>
 		<a class="anchor" href="#__Preset">#</a>
-		<code><a href="source-class-CPersistentObject.html#494" title="Go to source code">_Preset</a>( <span>reference <var>&amp; $theOffset</var></span>, <span>reference <var>&amp; $theValue</var></span> )</code>
+		<code><a href="source-class-CPersistentObject.html#494-530" title="Go to source code">_Preset</a>( <span>reference <var>&amp; $theOffset</var></span>, <span>reference <var>&amp; $theValue</var></span> )</code>
 
 		<div class="description short">
 			
@@ -701,7 +702,7 @@ identifier, so we let the container set the identifier, and return
 <h4>Handle offset before setting it</h4>
 
 <p>In this class we prevent the modification of offsets that concur in the
-generation of the object's identifier if the object has its <code><a href="class-CStatusDocument.html#_">CStatusDocument::_IsCommitted()</a></code> status set. This is because referenced objects must not change
+generation of the object's identifier if the object has its <code><a href="class-CStatusDocument.html#__IsCommitted">CStatusDocument::_IsCommitted()</a></code> status set. This is because referenced objects must not change
 identifier.</p>
 
 
@@ -726,11 +727,11 @@ identifier.</p>
 				</div>
 				<h4>Uses</h4>
 				<div class="list">
-						<code><code><a href="class-CStatusDocument.html#_">CStatusDocument::_IsCommitted()</a></code></code> <br />
+						<code><code><a href="class-CStatusDocument.html#__IsCommitted">CStatusDocument::_IsCommitted()</a></code></code> <br />
 				</div>
 
 				<h4>Overrides</h4>
-				<div class="list"><code><a href="class-CStatusDocument.html#_">CStatusDocument::_Preset</a></code></div>
+				<div class="list"><code><a href="class-CStatusDocument.html#__Preset">CStatusDocument::_Preset()</a></code></div>
 
 		</div>
 		</div></td>
@@ -746,7 +747,7 @@ identifier.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#__Preunset">#</a>
-		<code><a href="source-class-CPersistentObject.html#537" title="Go to source code">_Preunset</a>( <span>reference <var>&amp; $theOffset</var></span> )</code>
+		<code><a href="source-class-CPersistentObject.html#537-572" title="Go to source code">_Preunset</a>( <span>reference <var>&amp; $theOffset</var></span> )</code>
 
 		<div class="description short">
 			
@@ -759,7 +760,7 @@ identifier.</p>
 <h4>Handle offset before unsetting it</h4>
 
 <p>In this class we prevent the modification of offsets that concur in the
-generation of the object's identifier if the object has its <code><a href="class-CStatusDocument.html#_">CStatusDocument::_IsCommitted()</a></code> status set. This is because referenced objects must not change
+generation of the object's identifier if the object has its <code><a href="class-CStatusDocument.html#__IsCommitted">CStatusDocument::_IsCommitted()</a></code> status set. This is because referenced objects must not change
 identifier.</p>
 
 
@@ -782,11 +783,11 @@ identifier.</p>
 				</div>
 				<h4>Uses</h4>
 				<div class="list">
-						<code><code><a href="class-CStatusDocument.html#_">CStatusDocument::_IsCommitted()</a></code></code> <br />
+						<code><code><a href="class-CStatusDocument.html#__IsCommitted">CStatusDocument::_IsCommitted()</a></code></code> <br />
 				</div>
 
 				<h4>Overrides</h4>
-				<div class="list"><code><a href="class-CStatusDocument.html#_">CStatusDocument::_Preunset</a></code></div>
+				<div class="list"><code><a href="class-CStatusDocument.html#__Preunset">CStatusDocument::_Preunset()</a></code></div>
 
 		</div>
 		</div></td>
@@ -802,7 +803,7 @@ identifier.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#__PrecommitValidate">#</a>
-		<code><a href="source-class-CPersistentObject.html#588" title="Go to source code">_PrecommitValidate</a>( <span>reference <var>&amp; $theConnection</var></span>, <span>reference <var>&amp; $theModifiers</var></span> )</code>
+		<code><a href="source-class-CPersistentObject.html#588-626" title="Go to source code">_PrecommitValidate</a>( <span>reference <var>&amp; $theConnection</var></span>, <span>reference <var>&amp; $theModifiers</var></span> )</code>
 
 		<div class="description short">
 			
@@ -839,7 +840,7 @@ kOFFSET_NID, if the operation involves updating.</p>
 				</div>
 
 				<h4>Overrides</h4>
-				<div class="list"><code><a href="class-CPersistentDocument.html#_">CPersistentDocument::_PrecommitValidate</a></code></div>
+				<div class="list"><code><a href="class-CPersistentDocument.html#__PrecommitValidate">CPersistentDocument::_PrecommitValidate()</a></code></div>
 
 		</div>
 		</div></td>
@@ -855,7 +856,7 @@ kOFFSET_NID, if the operation involves updating.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#__PrecommitRelated">#</a>
-		<code><a href="source-class-CPersistentObject.html#633" title="Go to source code">_PrecommitRelated</a>( <span>reference <var>&amp; $theConnection</var></span>, <span>reference <var>&amp; $theModifiers</var></span> )</code>
+		<code><a href="source-class-CPersistentObject.html#633-663" title="Go to source code">_PrecommitRelated</a>( <span>reference <var>&amp; $theConnection</var></span>, <span>reference <var>&amp; $theModifiers</var></span> )</code>
 
 		<div class="description short">
 			
@@ -890,7 +891,7 @@ replacing or updating.</p>
 				</div>
 
 				<h4>Overrides</h4>
-				<div class="list"><code><a href="class-CPersistentDocument.html#_">CPersistentDocument::_PrecommitRelated</a></code></div>
+				<div class="list"><code><a href="class-CPersistentDocument.html#__PrecommitRelated">CPersistentDocument::_PrecommitRelated()</a></code></div>
 
 		</div>
 		</div></td>
@@ -906,7 +907,7 @@ replacing or updating.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#__PrecommitIdentify">#</a>
-		<code><a href="source-class-CPersistentObject.html#670" title="Go to source code">_PrecommitIdentify</a>( <span>reference <var>&amp; $theConnection</var></span>, <span>reference <var>&amp; $theModifiers</var></span> )</code>
+		<code><a href="source-class-CPersistentObject.html#670-749" title="Go to source code">_PrecommitIdentify</a>( <span>reference <var>&amp; $theConnection</var></span>, <span>reference <var>&amp; $theModifiers</var></span> )</code>
 
 		<div class="description short">
 			
@@ -921,19 +922,19 @@ replacing or updating.</p>
 <p>In this class this method is called only if the operation involves inserting
 or replacing.</p>
 
-<p>If the kOFFSET_GID offset is missing, we call the <code><a href="class-CPersistentObject.html#_">CPersistentObject::_index()</a></code>
+<p>If the kOFFSET_GID offset is missing, we call the <code><a href="class-CPersistentObject.html#__index">CPersistentObject::_index()</a></code>
 method: if the result of that method is not <tt>NULL</tt>, we use it to set the
 kOFFSET_GID offset value, this only if the operation involves inserting
 or replacing.</p>
 
-<p>If the kOFFSET_NID offset is missing, we check if the kOFFSET_GID offset was set: in that case we use its value to feed the <code><a href="class-CPersistentObject.html#_">CPersistentObject::_id()</a></code> method and the result is set in the kOFFSET_NID offset.</p>
+<p>If the kOFFSET_NID offset is missing, we check if the kOFFSET_GID offset was set: in that case we use its value to feed the <code><a href="class-CPersistentObject.html#__id">CPersistentObject::_id()</a></code> method and the result is set in the kOFFSET_NID offset.</p>
 
-<p>This workflow implies that only if the <code><a href="class-CPersistentObject.html#_">CPersistentObject::_index()</a></code> method returns a non
+<p>This workflow implies that only if the <code><a href="class-CPersistentObject.html#__index">CPersistentObject::_index()</a></code> method returns a non
 <tt>NULL</tt> value, the kOFFSET_GID offset will be set in this method,
 and that if the kOFFSET_GID offset is missing the native identifier will
 not be touched.</p>
 
-<p>Note that this is the only place in which the <code><a href="class-CPersistentObject.html#_">CPersistentObject::_index()</a></code> method is
+<p>Note that this is the only place in which the <code><a href="class-CPersistentObject.html#__index">CPersistentObject::_index()</a></code> method is
 called.</p>
 
 
@@ -955,13 +956,13 @@ called.</p>
 				</div>
 				<h4>Uses</h4>
 				<div class="list">
-						<code><code><a href="class-CPersistentObject.html#_">CPersistentObject::_id()</a></code></code> <br />
-						<code><code><a href="class-CPersistentObject.html#_">CPersistentObject::_index()</a></code></code> <br />
-						<code><code><a href="class-CPersistentDocument.html#_">CPersistentDocument::ResolveContainer()</a></code></code> <br />
+						<code><code><a href="class-CPersistentObject.html#__id">CPersistentObject::_id()</a></code></code> <br />
+						<code><code><a href="class-CPersistentObject.html#__index">CPersistentObject::_index()</a></code></code> <br />
+						<code><code><a href="class-CPersistentDocument.html#_ResolveContainer">CPersistentDocument::ResolveContainer()</a></code></code> <br />
 				</div>
 
 				<h4>Overrides</h4>
-				<div class="list"><code><a href="class-CPersistentDocument.html#_">CPersistentDocument::_PrecommitIdentify</a></code></div>
+				<div class="list"><code><a href="class-CPersistentDocument.html#__PrecommitIdentify">CPersistentDocument::_PrecommitIdentify()</a></code></div>
 
 		</div>
 		</div></td>
@@ -977,7 +978,7 @@ called.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#__AssertClass">#</a>
-		<code><a href="source-class-CPersistentObject.html#765" title="Go to source code">_AssertClass</a>( <span>reference <var>&amp; $theValue</var></span>, <span>string <var>$theBaseClass</var></span>, <span>string <var>$theDerivedClass</var> = <span class="php-keyword1">NULL</span></span>, <span>boolean <var>$doThrow</var> = <span class="php-keyword1">FALSE</span> </span> )</code>
+		<code><a href="source-class-CPersistentObject.html#765-847" title="Go to source code">_AssertClass</a>( <span>reference <var>&amp; $theValue</var></span>, <span>string <var>$theBaseClass</var></span>, <span>string <var>$theDerivedClass</var> = <span class="php-keyword1">NULL</span></span>, <span>boolean <var>$doThrow</var> = <span class="php-keyword1">FALSE</span> </span> )</code>
 
 		<div class="description short">
 			
@@ -1009,13 +1010,13 @@ value is an instance of the base class.</p>
 				<h4>Parameters</h4>
 				<div class="list"><dl>
 					<dt><var>$theValue</var></dt>
-					<dd><code>reference</code><br> Value to assert.</dd>
+					<dd><code>reference</code><br>$theValue Value to assert.</dd>
 					<dt><var>$theBaseClass</var></dt>
-					<dd><code>string</code><br> Base class to test.</dd>
+					<dd><code>string</code><br>$theBaseClass Base class to test.</dd>
 					<dt><var>$theDerivedClass</var></dt>
-					<dd><code>string</code><br> Derived class to test.</dd>
+					<dd><code>string</code><br>$theDerivedClass Derived class to test.</dd>
 					<dt><var>$doThrow</var></dt>
-					<dd><code>boolean</code><br> If <tt>TRUE</tt> raise exception.</dd>
+					<dd><code>boolean</code><br>$doThrow If <tt>TRUE</tt> raise exception.</dd>
 				</dl></div>
 
 				<h4>Returns</h4>
@@ -1040,21 +1041,21 @@ an object.<br />
 	<caption>Methods inherited from <a href="class-CPersistentDocument.html#methods">CPersistentDocument</a></caption>
 	<tr>
 		<td><code>
-			<a href="class-CPersistentDocument.html#_">DefaultContainer()</a>, 
-			<a href="class-CPersistentDocument.html#_">DefaultDatabase()</a>, 
-			<a href="class-CPersistentDocument.html#_">Delete()</a>, 
-			<a href="class-CPersistentDocument.html#_">Insert()</a>, 
-			<a href="class-CPersistentDocument.html#_">NID()</a>, 
-			<a href="class-CPersistentDocument.html#_">Replace()</a>, 
-			<a href="class-CPersistentDocument.html#_">ResolveClassContainer()</a>, 
-			<a href="class-CPersistentDocument.html#_">ResolveContainer()</a>, 
-			<a href="class-CPersistentDocument.html#_">Restore()</a>, 
-			<a href="class-CPersistentDocument.html#_">Update()</a>, 
-			<a href="class-CPersistentDocument.html#_">_Postcommit()</a>, 
-			<a href="class-CPersistentDocument.html#_">_PostcommitCleanup()</a>, 
-			<a href="class-CPersistentDocument.html#_">_PostcommitRelated()</a>, 
-			<a href="class-CPersistentDocument.html#_">_PostcommitStatus()</a>, 
-			<a href="class-CPersistentDocument.html#_">_Precommit()</a>
+			<a href="class-CPersistentDocument.html#_DefaultContainer">DefaultContainer()</a>, 
+			<a href="class-CPersistentDocument.html#_DefaultDatabase">DefaultDatabase()</a>, 
+			<a href="class-CPersistentDocument.html#_Delete">Delete()</a>, 
+			<a href="class-CPersistentDocument.html#_Insert">Insert()</a>, 
+			<a href="class-CPersistentDocument.html#_NID">NID()</a>, 
+			<a href="class-CPersistentDocument.html#_Replace">Replace()</a>, 
+			<a href="class-CPersistentDocument.html#_ResolveClassContainer">ResolveClassContainer()</a>, 
+			<a href="class-CPersistentDocument.html#_ResolveContainer">ResolveContainer()</a>, 
+			<a href="class-CPersistentDocument.html#_Restore">Restore()</a>, 
+			<a href="class-CPersistentDocument.html#_Update">Update()</a>, 
+			<a href="class-CPersistentDocument.html#__Postcommit">_Postcommit()</a>, 
+			<a href="class-CPersistentDocument.html#__PostcommitCleanup">_PostcommitCleanup()</a>, 
+			<a href="class-CPersistentDocument.html#__PostcommitRelated">_PostcommitRelated()</a>, 
+			<a href="class-CPersistentDocument.html#__PostcommitStatus">_PostcommitStatus()</a>, 
+			<a href="class-CPersistentDocument.html#__Precommit">_Precommit()</a>
 		</code></td>
 	</tr>
 	</table>
@@ -1062,16 +1063,16 @@ an object.<br />
 	<caption>Methods inherited from <a href="class-CStatusDocument.html#methods">CStatusDocument</a></caption>
 	<tr>
 		<td><code>
-			<a href="class-CStatusDocument.html#_">_IsCommitted()</a>, 
-			<a href="class-CStatusDocument.html#_">_IsDirty()</a>, 
-			<a href="class-CStatusDocument.html#_">_IsEncoded()</a>, 
-			<a href="class-CStatusDocument.html#_">_IsInited()</a>, 
-			<a href="class-CStatusDocument.html#_">_Postset()</a>, 
-			<a href="class-CStatusDocument.html#_">_Postunset()</a>, 
-			<a href="class-CStatusDocument.html#_">_Ready()</a>, 
-			<a href="class-CStatusDocument.html#_">__construct()</a>, 
-			<a href="class-CStatusDocument.html#_">offsetSet()</a>, 
-			<a href="class-CStatusDocument.html#_">offsetUnset()</a>
+			<a href="class-CStatusDocument.html#__IsCommitted">_IsCommitted()</a>, 
+			<a href="class-CStatusDocument.html#__IsDirty">_IsDirty()</a>, 
+			<a href="class-CStatusDocument.html#__IsEncoded">_IsEncoded()</a>, 
+			<a href="class-CStatusDocument.html#__IsInited">_IsInited()</a>, 
+			<a href="class-CStatusDocument.html#__Postset">_Postset()</a>, 
+			<a href="class-CStatusDocument.html#__Postunset">_Postunset()</a>, 
+			<a href="class-CStatusDocument.html#__Ready">_Ready()</a>, 
+			<a href="class-CStatusDocument.html#___construct">__construct()</a>, 
+			<a href="class-CStatusDocument.html#_offsetSet">offsetSet()</a>, 
+			<a href="class-CStatusDocument.html#_offsetUnset">offsetUnset()</a>
 		</code></td>
 	</tr>
 	</table>
@@ -1079,9 +1080,9 @@ an object.<br />
 	<caption>Methods inherited from <a href="class-CDocument.html#methods">CDocument</a></caption>
 	<tr>
 		<td><code>
-			<a href="class-CDocument.html#_">array_keys()</a>, 
-			<a href="class-CDocument.html#_">array_values()</a>, 
-			<a href="class-CDocument.html#_">offsetGet()</a>
+			<a href="class-CDocument.html#_array_keys">array_keys()</a>, 
+			<a href="class-CDocument.html#_array_values">array_values()</a>, 
+			<a href="class-CDocument.html#_offsetGet">offsetGet()</a>
 		</code></td>
 	</tr>
 	</table>
@@ -1089,27 +1090,31 @@ an object.<br />
 	<caption>Methods inherited from <a href="class-ArrayObject.html#methods">ArrayObject</a></caption>
 	<tr>
 		<td><code>
-			<a href="class-ArrayObject.html#_">append()</a>, 
-			<a href="class-ArrayObject.html#_">asort()</a>, 
-			<a href="class-ArrayObject.html#_">count()</a>, 
-			<a href="class-ArrayObject.html#_">exchangeArray()</a>, 
-			<a href="class-ArrayObject.html#_">getArrayCopy()</a>, 
-			<a href="class-ArrayObject.html#_">getFlags()</a>, 
-			<a href="class-ArrayObject.html#_">getIterator()</a>, 
-			<a href="class-ArrayObject.html#_">getIteratorClass()</a>, 
-			<a href="class-ArrayObject.html#_">ksort()</a>, 
-			<a href="class-ArrayObject.html#_">natcasesort()</a>, 
-			<a href="class-ArrayObject.html#_">natsort()</a>, 
-			<a href="class-ArrayObject.html#_">offsetExists()</a>, 
-			<a href="class-ArrayObject.html#_">serialize()</a>, 
-			<a href="class-ArrayObject.html#_">setFlags()</a>, 
-			<a href="class-ArrayObject.html#_">setIteratorClass()</a>, 
-			<a href="class-ArrayObject.html#_">uasort()</a>, 
-			<a href="class-ArrayObject.html#_">uksort()</a>, 
-			<a href="class-ArrayObject.html#_">unserialize()</a>
+			<a href="class-ArrayObject.html#_append">append()</a>, 
+			<a href="class-ArrayObject.html#_asort">asort()</a>, 
+			<a href="class-ArrayObject.html#_count">count()</a>, 
+			<a href="class-ArrayObject.html#_exchangeArray">exchangeArray()</a>, 
+			<a href="class-ArrayObject.html#_getArrayCopy">getArrayCopy()</a>, 
+			<a href="class-ArrayObject.html#_getFlags">getFlags()</a>, 
+			<a href="class-ArrayObject.html#_getIterator">getIterator()</a>, 
+			<a href="class-ArrayObject.html#_getIteratorClass">getIteratorClass()</a>, 
+			<a href="class-ArrayObject.html#_ksort">ksort()</a>, 
+			<a href="class-ArrayObject.html#_natcasesort">natcasesort()</a>, 
+			<a href="class-ArrayObject.html#_natsort">natsort()</a>, 
+			<a href="class-ArrayObject.html#_offsetExists">offsetExists()</a>, 
+			<a href="class-ArrayObject.html#_serialize">serialize()</a>, 
+			<a href="class-ArrayObject.html#_setFlags">setFlags()</a>, 
+			<a href="class-ArrayObject.html#_setIteratorClass">setIteratorClass()</a>, 
+			<a href="class-ArrayObject.html#_uasort">uasort()</a>, 
+			<a href="class-ArrayObject.html#_uksort">uksort()</a>, 
+			<a href="class-ArrayObject.html#_unserialize">unserialize()</a>
 		</code></td>
 	</tr>
 	</table>
+
+
+
+
 
 
 
@@ -1126,6 +1131,7 @@ an object.<br />
 
 
 
+
 	<table class="summary inherited">
 	<caption>Properties inherited from <a href="class-CStatusDocument.html#properties">CStatusDocument</a></caption>
 	<tr>
@@ -1136,10 +1142,13 @@ an object.<br />
 	</table>
 
 
+
+
+
 </div>
 
 	<div id="footer">
-		MyWrapper Reference Documentation API documentation generated by <a href="http://apigen.org">ApiGen 2.7.0</a>
+		MyWrapper Reference Documentation API documentation generated by <a href="http://apigen.org">ApiGen 2.8.0</a>
 	</div>
 </div>
 </div>

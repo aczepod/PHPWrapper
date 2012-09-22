@@ -2,13 +2,13 @@
 <html>
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-	<meta name="generator" content="ApiGen 2.7.0" />
+	<meta name="generator" content="ApiGen 2.8.0" />
 
 	<title>Class COntology | MyWrapper Reference Documentation</title>
 
-	<script type="text/javascript" src="resources/combined.js?496895167"></script>
+	<script type="text/javascript" src="resources/combined.js?368249000"></script>
 	<script type="text/javascript" src="elementlist.js?4206909522"></script>
-	<link rel="stylesheet" type="text/css" media="all" href="resources/style.css?1567499433" />
+	<link rel="stylesheet" type="text/css" media="all" href="resources/style.css?3505392360" />
 
 </head>
 
@@ -170,8 +170,9 @@ the database in which the ontology resides.</p>
 				<b>Author:</b>
 				Milko A. Škofič &lt;<a
 href="mailto:m.skofic&#64;cgiar.org">m.skofic&#64;<!---->cgiar.org</a>&gt;<br />
-		<b>Located at</b> <a href="source-class-COntology.html#68" title="Go to source code">COntology.php</a><br />
+		<b>Located at</b> <a href="source-class-COntology.html#68-872" title="Go to source code">COntology.php</a><br />
 	</div>
+
 
 
 	<table class="summary" id="methods">
@@ -187,7 +188,7 @@ href="mailto:m.skofic&#64;cgiar.org">m.skofic&#64;<!---->cgiar.org</a>&gt;<br />
 
 		<td class="name"><div>
 		<a class="anchor" href="#___toString">#</a>
-		<code><a href="source-class-COntology.html#99" title="Go to source code">__toString</a>( )</code>
+		<code><a href="source-class-COntology.html#99-110" title="Go to source code">__toString</a>( )</code>
 
 		<div class="description short">
 			
@@ -213,7 +214,7 @@ returning its name.</p>
 
 				<h4>Uses</h4>
 				<div class="list">
-						<code><code><a href="class-COntology.html#_">COntology::Connection()</a></code></code> <br />
+						<code><code><a href="class-COntology.html#_Connection">COntology::Connection()</a></code></code> <br />
 				</div>
 
 
@@ -231,7 +232,7 @@ returning its name.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#_Connection">#</a>
-		<code><a href="source-class-COntology.html#126" title="Go to source code">Connection</a>( <span>mixed <var>$theValue</var> = <span class="php-keyword1">NULL</span></span>, <span>boolean <var>$getOld</var> = <span class="php-keyword1">FALSE</span> </span> )</code>
+		<code><a href="source-class-COntology.html#126-154" title="Go to source code">Connection</a>( <span>mixed <var>$theValue</var> = <span class="php-keyword1">NULL</span></span>, <span>boolean <var>$getOld</var> = <span class="php-keyword1">FALSE</span> </span> )</code>
 
 		<div class="description short">
 			
@@ -250,9 +251,9 @@ returning its name.</p>
 				<h4>Parameters</h4>
 				<div class="list"><dl>
 					<dt><var>$theValue</var></dt>
-					<dd><code>mixed</code><br> Native connection or operation.</dd>
+					<dd><code>mixed</code><br>$theValue Native connection or operation.</dd>
 					<dt><var>$getOld</var></dt>
-					<dd><code>boolean</code><br> <tt>TRUE</tt> get old value.</dd>
+					<dd><code>boolean</code><br>$getOld <tt>TRUE</tt> get old value.</dd>
 				</dl></div>
 
 				<h4>Returns</h4>
@@ -267,11 +268,11 @@ returning its name.</p>
 
 				<h4>Used by</h4>
 				<div class="list">
-						<code><code><a href="class-COntology.html#_">COntology::__toString()</a></code></code> <br />
+						<code><code><a href="class-COntology.html#___toString">COntology::__toString()</a></code></code> <br />
 				</div>
 
 				<h4>Overrides</h4>
-				<div class="list"><code><a href="class-CConnection.html#_">CConnection::Connection</a></code></div>
+				<div class="list"><code><a href="class-CConnection.html#_Connection">CConnection::Connection()</a></code></div>
 
 		</div>
 		</div></td>
@@ -287,7 +288,7 @@ returning its name.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#_NewTerm">#</a>
-		<code><a href="source-class-COntology.html#170" title="Go to source code">NewTerm</a>( <span>string <var>$theIdentifier</var></span>, <span>mixed <var>$theNamespace</var> = <span class="php-keyword1">NULL</span></span>, <span>string <var>$theLabel</var> = <span class="php-keyword1">NULL</span></span>, <span>string <var>$theDescription</var> = <span class="php-keyword1">NULL</span></span>, <span>string <var>$theLanguage</var> = <span class="php-keyword1">NULL</span> </span> )</code>
+		<code><a href="source-class-COntology.html#170-338" title="Go to source code">NewTerm</a>( <span>string <var>$theIdentifier</var></span>, <span>mixed <var>$theNamespace</var> = <span class="php-keyword1">NULL</span></span>, <span>string <var>$theLabel</var> = <span class="php-keyword1">NULL</span></span>, <span>string <var>$theDescription</var> = <span class="php-keyword1">NULL</span></span>, <span>string <var>$theLanguage</var> = <span class="php-keyword1">NULL</span> </span> )</code>
 
 		<div class="description short">
 			
@@ -311,7 +312,7 @@ a new one will be instantiated <i>and committed before being returned</i>.</p>
 saved, we will only issue attributes modifications, we shall never load the
 whole object and replace it. This is necessary in order to prevent the need of
 complex locking mechanisms, since ontology elements share many references among
-each other. For this reason you should first call <code><a href="class-COntology.html#_">COntology::ResolveTerm()</a></code> before
+each other. For this reason you should first call <code><a href="class-COntology.html#_ResolveTerm">COntology::ResolveTerm()</a></code> before
 calling this method.</p>
 
 <p>The method expects the following parameters:</p>
@@ -351,15 +352,15 @@ will create a new one, commit it and return it.</p>
 				<h4>Parameters</h4>
 				<div class="list"><dl>
 					<dt><var>$theIdentifier</var></dt>
-					<dd><code>string</code><br> Term local identifier.</dd>
+					<dd><code>string</code><br>$theIdentifier Term local identifier.</dd>
 					<dt><var>$theNamespace</var></dt>
-					<dd><code>mixed</code><br> Term namespace reference.</dd>
+					<dd><code>mixed</code><br>$theNamespace Term namespace reference.</dd>
 					<dt><var>$theLabel</var></dt>
-					<dd><code>string</code><br> Term label.</dd>
+					<dd><code>string</code><br>$theLabel Term label.</dd>
 					<dt><var>$theDescription</var></dt>
-					<dd><code>string</code><br> Term description.</dd>
+					<dd><code>string</code><br>$theDescription Term description.</dd>
 					<dt><var>$theLanguage</var></dt>
-					<dd><code>string</code><br> Label and description language code.</dd>
+					<dd><code>string</code><br>$theLanguage Label and description language code.</dd>
 				</dl></div>
 
 				<h4>Returns</h4>
@@ -388,7 +389,7 @@ will create a new one, commit it and return it.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#_NewNode">#</a>
-		<code><a href="source-class-COntology.html#345" title="Go to source code">NewNode</a>( <span>mixed <var>$theIdentifier</var></span> )</code>
+		<code><a href="source-class-COntology.html#345-484" title="Go to source code">NewNode</a>( <span>mixed <var>$theIdentifier</var></span> )</code>
 
 		<div class="description short">
 			
@@ -428,7 +429,7 @@ identifier, or the term object or identifier:</p>
 	the array of found nodes, which will be empty if there are no matches.</li>
 </ul>
 
-<p>The method will raise an exception if the object is not <code><a href="class-CStatusDocument.html#_">CStatusDocument::_IsInited()</a></code>
+<p>The method will raise an exception if the object is not <code><a href="class-CStatusDocument.html#__IsInited">CStatusDocument::_IsInited()</a></code>
 and if the provided parameter is <tt>NULL</tt>.</p>
 
 
@@ -436,7 +437,7 @@ and if the provided parameter is <tt>NULL</tt>.</p>
 				<h4>Parameters</h4>
 				<div class="list"><dl>
 					<dt><var>$theIdentifier</var></dt>
-					<dd><code>mixed</code><br> Node identifier or term reference.</dd>
+					<dd><code>mixed</code><br>$theIdentifier Node identifier or term reference.</dd>
 				</dl></div>
 
 				<h4>Returns</h4>
@@ -465,7 +466,7 @@ and if the provided parameter is <tt>NULL</tt>.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#_ResolveTerm">#</a>
-		<code><a href="source-class-COntology.html#500" title="Go to source code">ResolveTerm</a>( <span>string <var>$theIdentifier</var></span>, <span>mixed <var>$theNamespace</var> = <span class="php-keyword1">NULL</span></span>, <span> <var>$doThrow</var> = <span class="php-keyword1">FALSE</span> </span> )</code>
+		<code><a href="source-class-COntology.html#500-666" title="Go to source code">ResolveTerm</a>( <span>string <var>$theIdentifier</var></span>, <span>mixed <var>$theNamespace</var> = <span class="php-keyword1">NULL</span></span>, <span>boolean <var>$doThrow</var> = <span class="php-keyword1">FALSE</span> </span> )</code>
 
 		<div class="description short">
 			
@@ -497,7 +498,7 @@ its identifier.</p>
 					<li><i>Native identifier:</i> The method will use the parameter as the native
 					identifier.</li>
 
-					<li><i>Global identifier:</i> The method will use the term's <code><a href="class-COntologyTerm.html#_">COntologyTerm::_id()</a></code> method to convert the global identifier into a native
+					<li><i>Global identifier:</i> The method will use the term's <code><a href="class-COntologyTerm.html#__id">COntologyTerm::_id()</a></code> method to convert the global identifier into a native
 					identifier.</li>
 				</ul>
 			</li>
@@ -540,16 +541,87 @@ an exception if the third parameter is <tt>TRUE</tt>.</p>
 				<h4>Parameters</h4>
 				<div class="list"><dl>
 					<dt><var>$theIdentifier</var></dt>
-					<dd><code>string</code><br> Term local identifier.</dd>
+					<dd><code>string</code><br>$theIdentifier Term local identifier.</dd>
 					<dt><var>$theNamespace</var></dt>
-					<dd><code>mixed</code><br> Namespace term reference.</dd>
+					<dd><code>mixed</code><br>$theNamespace Namespace term reference.</dd>
 					<dt><var>$doThrow</var></dt>
-					<dd></dd>
+					<dd><code>boolean</code><br>$doThrow If <tt>TRUE</tt> raise an exception.</dd>
 				</dl></div>
 
 				<h4>Returns</h4>
 				<div class="list">
 					<code><code><a href="class-COntologyTerm.html">COntologyTerm</a></code></code><br>New or found term.<br />
+				</div>
+
+				<h4>Throws</h4>
+				<div class="list">
+					<code><code><a href="class-Exception.html">Exception</a></code></code><br />
+				</div>
+
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="ResolveNode" id="_ResolveNode">
+
+		<td class="attributes"><code>
+			 public 
+			mixed
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_ResolveNode">#</a>
+		<code><a href="source-class-COntology.html#673-868" title="Go to source code">ResolveNode</a>( <span>mixed <var>$theIdentifier</var></span>, <span>boolean <var>$doThrow</var> = <span class="php-keyword1">FALSE</span> </span> )</code>
+
+		<div class="description short">
+			
+<h4>Find a node</h4>
+
+		</div>
+
+		<div class="description detailed hidden">
+			
+<h4>Find a node</h4>
+
+<p>This method can be used to retrieve an existing node by identifier, or
+retrieve all nodes matching a term.</p>
+
+<p>The method expects a single parameter that may represent either the node
+identifier, or the term reference:</p>
+
+<ul>
+	<li><tt>integer</tt>: In this case the method assumes that the parameter
+	represents the node identifier: it will attempt to retrieve the node, if it is
+	not found, the method will return <tt>NULL</tt>.</li>
+
+	<li><tt><code><a href="class-COntologyTerm.html">COntologyTerm</a></code></tt>: In this case the method locate all nodes
+	that refer to the provided term. If the term is not <code><a href="class-CStatusDocument.html#__IsCommitted">CStatusDocument::_IsCommitted()</a></code>, the
+	method will return <tt>NULL</tt>.</li>
+
+	<li><i>other</i>: Any other type will be interpreted either the term's native
+	identifier, or as the term's global identifier: the method will return all nodes
+	that refer to that term.</li>
+</ul>
+
+<p>The method will raise an exception if the object is not <code><a href="class-CStatusDocument.html#__IsInited">CStatusDocument::_IsInited()</a></code>
+and if the provided parameter is <tt>NULL</tt>.</p>
+
+
+
+				<h4>Parameters</h4>
+				<div class="list"><dl>
+					<dt><var>$theIdentifier</var></dt>
+					<dd><code>mixed</code><br>$theIdentifier Node identifier or term reference.</dd>
+					<dt><var>$doThrow</var></dt>
+					<dd><code>boolean</code><br>$doThrow If <tt>TRUE</tt> raise an exception.</dd>
+				</dl></div>
+
+				<h4>Returns</h4>
+				<div class="list">
+					<code>mixed</code><br>New node, found node or nodes list.<br />
 				</div>
 
 				<h4>Throws</h4>
@@ -568,9 +640,9 @@ an exception if the third parameter is <tt>TRUE</tt>.</p>
 	<caption>Methods inherited from <a href="class-CConnection.html#methods">CConnection</a></caption>
 	<tr>
 		<td><code>
-			<a href="class-CConnection.html#_">_Connection()</a>, 
-			<a href="class-CConnection.html#_">_Ready()</a>, 
-			<a href="class-CConnection.html#_">__construct()</a>
+			<a href="class-CConnection.html#__Connection">_Connection()</a>, 
+			<a href="class-CConnection.html#__Ready">_Ready()</a>, 
+			<a href="class-CConnection.html#___construct">__construct()</a>
 		</code></td>
 	</tr>
 	</table>
@@ -578,16 +650,16 @@ an exception if the third parameter is <tt>TRUE</tt>.</p>
 	<caption>Methods inherited from <a href="class-CStatusDocument.html#methods">CStatusDocument</a></caption>
 	<tr>
 		<td><code>
-			<a href="class-CStatusDocument.html#_">_IsCommitted()</a>, 
-			<a href="class-CStatusDocument.html#_">_IsDirty()</a>, 
-			<a href="class-CStatusDocument.html#_">_IsEncoded()</a>, 
-			<a href="class-CStatusDocument.html#_">_IsInited()</a>, 
-			<a href="class-CStatusDocument.html#_">_Postset()</a>, 
-			<a href="class-CStatusDocument.html#_">_Postunset()</a>, 
-			<a href="class-CStatusDocument.html#_">_Preset()</a>, 
-			<a href="class-CStatusDocument.html#_">_Preunset()</a>, 
-			<a href="class-CStatusDocument.html#_">offsetSet()</a>, 
-			<a href="class-CStatusDocument.html#_">offsetUnset()</a>
+			<a href="class-CStatusDocument.html#__IsCommitted">_IsCommitted()</a>, 
+			<a href="class-CStatusDocument.html#__IsDirty">_IsDirty()</a>, 
+			<a href="class-CStatusDocument.html#__IsEncoded">_IsEncoded()</a>, 
+			<a href="class-CStatusDocument.html#__IsInited">_IsInited()</a>, 
+			<a href="class-CStatusDocument.html#__Postset">_Postset()</a>, 
+			<a href="class-CStatusDocument.html#__Postunset">_Postunset()</a>, 
+			<a href="class-CStatusDocument.html#__Preset">_Preset()</a>, 
+			<a href="class-CStatusDocument.html#__Preunset">_Preunset()</a>, 
+			<a href="class-CStatusDocument.html#_offsetSet">offsetSet()</a>, 
+			<a href="class-CStatusDocument.html#_offsetUnset">offsetUnset()</a>
 		</code></td>
 	</tr>
 	</table>
@@ -595,9 +667,9 @@ an exception if the third parameter is <tt>TRUE</tt>.</p>
 	<caption>Methods inherited from <a href="class-CDocument.html#methods">CDocument</a></caption>
 	<tr>
 		<td><code>
-			<a href="class-CDocument.html#_">array_keys()</a>, 
-			<a href="class-CDocument.html#_">array_values()</a>, 
-			<a href="class-CDocument.html#_">offsetGet()</a>
+			<a href="class-CDocument.html#_array_keys">array_keys()</a>, 
+			<a href="class-CDocument.html#_array_values">array_values()</a>, 
+			<a href="class-CDocument.html#_offsetGet">offsetGet()</a>
 		</code></td>
 	</tr>
 	</table>
@@ -605,27 +677,31 @@ an exception if the third parameter is <tt>TRUE</tt>.</p>
 	<caption>Methods inherited from <a href="class-ArrayObject.html#methods">ArrayObject</a></caption>
 	<tr>
 		<td><code>
-			<a href="class-ArrayObject.html#_">append()</a>, 
-			<a href="class-ArrayObject.html#_">asort()</a>, 
-			<a href="class-ArrayObject.html#_">count()</a>, 
-			<a href="class-ArrayObject.html#_">exchangeArray()</a>, 
-			<a href="class-ArrayObject.html#_">getArrayCopy()</a>, 
-			<a href="class-ArrayObject.html#_">getFlags()</a>, 
-			<a href="class-ArrayObject.html#_">getIterator()</a>, 
-			<a href="class-ArrayObject.html#_">getIteratorClass()</a>, 
-			<a href="class-ArrayObject.html#_">ksort()</a>, 
-			<a href="class-ArrayObject.html#_">natcasesort()</a>, 
-			<a href="class-ArrayObject.html#_">natsort()</a>, 
-			<a href="class-ArrayObject.html#_">offsetExists()</a>, 
-			<a href="class-ArrayObject.html#_">serialize()</a>, 
-			<a href="class-ArrayObject.html#_">setFlags()</a>, 
-			<a href="class-ArrayObject.html#_">setIteratorClass()</a>, 
-			<a href="class-ArrayObject.html#_">uasort()</a>, 
-			<a href="class-ArrayObject.html#_">uksort()</a>, 
-			<a href="class-ArrayObject.html#_">unserialize()</a>
+			<a href="class-ArrayObject.html#_append">append()</a>, 
+			<a href="class-ArrayObject.html#_asort">asort()</a>, 
+			<a href="class-ArrayObject.html#_count">count()</a>, 
+			<a href="class-ArrayObject.html#_exchangeArray">exchangeArray()</a>, 
+			<a href="class-ArrayObject.html#_getArrayCopy">getArrayCopy()</a>, 
+			<a href="class-ArrayObject.html#_getFlags">getFlags()</a>, 
+			<a href="class-ArrayObject.html#_getIterator">getIterator()</a>, 
+			<a href="class-ArrayObject.html#_getIteratorClass">getIteratorClass()</a>, 
+			<a href="class-ArrayObject.html#_ksort">ksort()</a>, 
+			<a href="class-ArrayObject.html#_natcasesort">natcasesort()</a>, 
+			<a href="class-ArrayObject.html#_natsort">natsort()</a>, 
+			<a href="class-ArrayObject.html#_offsetExists">offsetExists()</a>, 
+			<a href="class-ArrayObject.html#_serialize">serialize()</a>, 
+			<a href="class-ArrayObject.html#_setFlags">setFlags()</a>, 
+			<a href="class-ArrayObject.html#_setIteratorClass">setIteratorClass()</a>, 
+			<a href="class-ArrayObject.html#_uasort">uasort()</a>, 
+			<a href="class-ArrayObject.html#_uksort">uksort()</a>, 
+			<a href="class-ArrayObject.html#_unserialize">unserialize()</a>
 		</code></td>
 	</tr>
 	</table>
+
+
+
+
 
 
 
@@ -639,6 +715,7 @@ an exception if the third parameter is <tt>TRUE</tt>.</p>
 		</code></td>
 	</tr>
 	</table>
+
 
 
 
@@ -660,10 +737,13 @@ an exception if the third parameter is <tt>TRUE</tt>.</p>
 	</table>
 
 
+
+
+
 </div>
 
 	<div id="footer">
-		MyWrapper Reference Documentation API documentation generated by <a href="http://apigen.org">ApiGen 2.7.0</a>
+		MyWrapper Reference Documentation API documentation generated by <a href="http://apigen.org">ApiGen 2.8.0</a>
 	</div>
 </div>
 </div>

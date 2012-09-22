@@ -2,13 +2,13 @@
 <html>
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-	<meta name="generator" content="ApiGen 2.7.0" />
+	<meta name="generator" content="ApiGen 2.8.0" />
 
 	<title>Class CEdge | MyWrapper Reference Documentation</title>
 
-	<script type="text/javascript" src="resources/combined.js?496895167"></script>
+	<script type="text/javascript" src="resources/combined.js?368249000"></script>
 	<script type="text/javascript" src="elementlist.js?4206909522"></script>
-	<link rel="stylesheet" type="text/css" media="all" href="resources/style.css?1567499433" />
+	<link rel="stylesheet" type="text/css" media="all" href="resources/style.css?3505392360" />
 
 </head>
 
@@ -121,7 +121,7 @@ direction of the relation flows from the subject towards the object.</p>
 	relationship.</li>
 </ul>
 
-<p>Objects of this class are <code><a href="class-CStatusDocument.html#_">CStatusDocument::_IsInited()</a></code> if all three properties are
+<p>Objects of this class are <code><a href="class-CStatusDocument.html#__IsInited">CStatusDocument::_IsInited()</a></code> if all three properties are
 set.</p>
 
 <p>The unique identifier of instances of this class is the combination of the
@@ -133,11 +133,11 @@ values must be convertable to string.</p>
 <p>The class features member accessor methods for the default offsets:</p>
 
 <ul>
-	<li><code><a href="class-CEdge.html#_">CEdge::Subject()</a></code>: This method manages the subject vertex, kOFFSET_VERTEX_SUBJECT.</li>
+	<li><code><a href="class-CEdge.html#_Subject">CEdge::Subject()</a></code>: This method manages the subject vertex, kOFFSET_VERTEX_SUBJECT.</li>
 
-	<li><code><a href="class-CEdge.html#_">CEdge::Predicate()</a></code>: This method manages the edge's predicate, kOFFSET_PREDICATE.</li>
+	<li><code><a href="class-CEdge.html#_Predicate">CEdge::Predicate()</a></code>: This method manages the edge's predicate, kOFFSET_PREDICATE.</li>
 
-	<li><code><a href="class-CEdge.html#_">CEdge::Object()</a></code>: This method manages the object vertex, kOFFSET_VERTEX_OBJECT.</li>
+	<li><code><a href="class-CEdge.html#_Object">CEdge::Object()</a></code>: This method manages the object vertex, kOFFSET_VERTEX_OBJECT.</li>
 </ul>
 
 	</div>
@@ -215,8 +215,9 @@ values must be convertable to string.</p>
 				<b>Author:</b>
 				Milko A. Škofič &lt;<a
 href="mailto:m.skofic&#64;cgiar.org">m.skofic&#64;<!---->cgiar.org</a>&gt;<br />
-		<b>Located at</b> <a href="source-class-CEdge.html#36" title="Go to source code">CEdge.php</a><br />
+		<b>Located at</b> <a href="source-class-CEdge.html#36-402" title="Go to source code">CEdge.php</a><br />
 	</div>
+
 
 
 	<table class="summary" id="methods">
@@ -232,7 +233,7 @@ href="mailto:m.skofic&#64;cgiar.org">m.skofic&#64;<!---->cgiar.org</a>&gt;<br />
 
 		<td class="name"><div>
 		<a class="anchor" href="#_Subject">#</a>
-		<code><a href="source-class-CEdge.html#91" title="Go to source code">Subject</a>( <span>mixed <var>$theValue</var> = <span class="php-keyword1">NULL</span></span>, <span>boolean <var>$getOld</var> = <span class="php-keyword1">FALSE</span> </span> )</code>
+		<code><a href="source-class-CEdge.html#91-128" title="Go to source code">Subject</a>( <span>mixed <var>$theValue</var> = <span class="php-keyword1">NULL</span></span>, <span>boolean <var>$getOld</var> = <span class="php-keyword1">FALSE</span> </span> )</code>
 
 		<div class="description short">
 			
@@ -262,7 +263,7 @@ operation, depending on its value:</p>
 <i>old</i> value when replacing containers; if <tt>FALSE</tt>, it will return
 the currently set value.</p>
 
-<p>Note that when the object has the <code><a href="class-CStatusDocument.html#_">CStatusDocument::_IsCommitted()</a></code> status this offset
+<p>Note that when the object has the <code><a href="class-CStatusDocument.html#__IsCommitted">CStatusDocument::_IsCommitted()</a></code> status this offset
 will be locked and an exception will be raised.</p>
 
 
@@ -270,9 +271,9 @@ will be locked and an exception will be raised.</p>
 				<h4>Parameters</h4>
 				<div class="list"><dl>
 					<dt><var>$theValue</var></dt>
-					<dd><code>mixed</code><br> Vertex or operation.</dd>
+					<dd><code>mixed</code><br>$theValue Vertex or operation.</dd>
 					<dt><var>$getOld</var></dt>
-					<dd><code>boolean</code><br> <tt>TRUE</tt> get old value.</dd>
+					<dd><code>boolean</code><br>$getOld <tt>TRUE</tt> get old value.</dd>
 				</dl></div>
 
 				<h4>Returns</h4>
@@ -305,7 +306,7 @@ will be locked and an exception will be raised.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#_Predicate">#</a>
-		<code><a href="source-class-CEdge.html#135" title="Go to source code">Predicate</a>( <span>mixed <var>$theValue</var> = <span class="php-keyword1">NULL</span></span>, <span>boolean <var>$getOld</var> = <span class="php-keyword1">FALSE</span> </span> )</code>
+		<code><a href="source-class-CEdge.html#135-172" title="Go to source code">Predicate</a>( <span>mixed <var>$theValue</var> = <span class="php-keyword1">NULL</span></span>, <span>boolean <var>$getOld</var> = <span class="php-keyword1">FALSE</span> </span> )</code>
 
 		<div class="description short">
 			
@@ -335,7 +336,7 @@ requested operation, depending on its value:</p>
 <i>old</i> value when replacing containers; if <tt>FALSE</tt>, it will return
 the currently set value.</p>
 
-<p>Note that when the object has the <code><a href="class-CStatusDocument.html#_">CStatusDocument::_IsCommitted()</a></code> status this offset
+<p>Note that when the object has the <code><a href="class-CStatusDocument.html#__IsCommitted">CStatusDocument::_IsCommitted()</a></code> status this offset
 will be locked and an exception will be raised.</p>
 
 
@@ -343,9 +344,9 @@ will be locked and an exception will be raised.</p>
 				<h4>Parameters</h4>
 				<div class="list"><dl>
 					<dt><var>$theValue</var></dt>
-					<dd><code>mixed</code><br> Predicate or operation.</dd>
+					<dd><code>mixed</code><br>$theValue Predicate or operation.</dd>
 					<dt><var>$getOld</var></dt>
-					<dd><code>boolean</code><br> <tt>TRUE</tt> get old value.</dd>
+					<dd><code>boolean</code><br>$getOld <tt>TRUE</tt> get old value.</dd>
 				</dl></div>
 
 				<h4>Returns</h4>
@@ -378,7 +379,7 @@ will be locked and an exception will be raised.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#_Object">#</a>
-		<code><a href="source-class-CEdge.html#179" title="Go to source code">Object</a>( <span>mixed <var>$theValue</var> = <span class="php-keyword1">NULL</span></span>, <span>boolean <var>$getOld</var> = <span class="php-keyword1">FALSE</span> </span> )</code>
+		<code><a href="source-class-CEdge.html#179-216" title="Go to source code">Object</a>( <span>mixed <var>$theValue</var> = <span class="php-keyword1">NULL</span></span>, <span>boolean <var>$getOld</var> = <span class="php-keyword1">FALSE</span> </span> )</code>
 
 		<div class="description short">
 			
@@ -408,7 +409,7 @@ operation, depending on its value:</p>
 <i>old</i> value when replacing containers; if <tt>FALSE</tt>, it will return
 the currently set value.</p>
 
-<p>Note that when the object has the <code><a href="class-CStatusDocument.html#_">CStatusDocument::_IsCommitted()</a></code> status this offset
+<p>Note that when the object has the <code><a href="class-CStatusDocument.html#__IsCommitted">CStatusDocument::_IsCommitted()</a></code> status this offset
 will be locked and an exception will be raised.</p>
 
 
@@ -416,9 +417,9 @@ will be locked and an exception will be raised.</p>
 				<h4>Parameters</h4>
 				<div class="list"><dl>
 					<dt><var>$theValue</var></dt>
-					<dd><code>mixed</code><br> Vertex or operation.</dd>
+					<dd><code>mixed</code><br>$theValue Vertex or operation.</dd>
 					<dt><var>$getOld</var></dt>
-					<dd><code>boolean</code><br> <tt>TRUE</tt> get old value.</dd>
+					<dd><code>boolean</code><br>$getOld <tt>TRUE</tt> get old value.</dd>
 				</dl></div>
 
 				<h4>Returns</h4>
@@ -451,7 +452,7 @@ will be locked and an exception will be raised.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#__index">#</a>
-		<code><a href="source-class-CEdge.html#232" title="Go to source code">_index</a>( <span><code><a href="class-CConnection.html">CConnection</a></code> <var>$theConnection</var></span>, <span>bitfield <var>$theModifiers</var></span> )</code>
+		<code><a href="source-class-CEdge.html#232-293" title="Go to source code">_index</a>( <span><code><a href="class-CConnection.html">CConnection</a></code> <var>$theConnection</var></span>, <span>bitfield <var>$theModifiers</var></span> )</code>
 
 		<div class="description short">
 			
@@ -475,9 +476,9 @@ exception.</p>
 				<h4>Parameters</h4>
 				<div class="list"><dl>
 					<dt><var>$theConnection</var></dt>
-					<dd><code><code><a href="class-CConnection.html">CConnection</a></code></code><br> Server, database or container.</dd>
+					<dd><code><code><a href="class-CConnection.html">CConnection</a></code></code><br>$theConnection Server, database or container.</dd>
 					<dt><var>$theModifiers</var></dt>
-					<dd><code>bitfield</code><br> Commit options.</dd>
+					<dd><code>bitfield</code><br>$theModifiers Commit options.</dd>
 				</dl></div>
 
 				<h4>Returns</h4>
@@ -497,7 +498,7 @@ exception.</p>
 				</div>
 
 				<h4>Overrides</h4>
-				<div class="list"><code><a href="class-CPersistentObject.html#_">CPersistentObject::_index</a></code></div>
+				<div class="list"><code><a href="class-CPersistentObject.html#__index">CPersistentObject::_index()</a></code></div>
 
 		</div>
 		</div></td>
@@ -513,7 +514,7 @@ exception.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#__Preunset">#</a>
-		<code><a href="source-class-CEdge.html#309" title="Go to source code">_Preunset</a>( <span>reference <var>&amp; $theOffset</var></span> )</code>
+		<code><a href="source-class-CEdge.html#309-356" title="Go to source code">_Preunset</a>( <span>reference <var>&amp; $theOffset</var></span> )</code>
 
 		<div class="description short">
 			
@@ -547,11 +548,11 @@ exception.</p>
 				</div>
 				<h4>Uses</h4>
 				<div class="list">
-						<code><code><a href="class-CStatusDocument.html#_">CStatusDocument::_IsCommitted()</a></code></code> <br />
+						<code><code><a href="class-CStatusDocument.html#__IsCommitted">CStatusDocument::_IsCommitted()</a></code></code> <br />
 				</div>
 
 				<h4>Overrides</h4>
-				<div class="list"><code><a href="class-CPersistentObject.html#_">CPersistentObject::_Preunset</a></code></div>
+				<div class="list"><code><a href="class-CPersistentObject.html#__Preunset">CPersistentObject::_Preunset()</a></code></div>
 
 		</div>
 		</div></td>
@@ -567,7 +568,7 @@ exception.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#__Ready">#</a>
-		<code><a href="source-class-CEdge.html#372" title="Go to source code">_Ready</a>( )</code>
+		<code><a href="source-class-CEdge.html#372-398" title="Go to source code">_Ready</a>( )</code>
 
 		<div class="description short">
 			
@@ -579,7 +580,7 @@ exception.</p>
 			
 <h4>Determine if the object is ready</h4>
 
-<p>In this class we tie the <code><a href="class-CStatusDocument.html#_">CStatusDocument::_IsInited()</a></code> status to the presence or
+<p>In this class we tie the <code><a href="class-CStatusDocument.html#__IsInited">CStatusDocument::_IsInited()</a></code> status to the presence or
 absence of the kOFFSET_VERTEX_SUBJECT, kOFFSET_PREDICATE and
 kOFFSET_VERTEX_OBJECT offsets.</p>
 
@@ -598,15 +599,15 @@ kOFFSET_VERTEX_OBJECT offsets.</p>
 				</div>
 				<h4>Uses</h4>
 				<div class="list">
-						<code><code><a href="class-CEdge.html#_">CEdge::_Ready()</a></code></code> <br />
+						<code><code><a href="class-CEdge.html#__Ready">CEdge::_Ready()</a></code></code> <br />
 				</div>
 				<h4>Used by</h4>
 				<div class="list">
-						<code><code><a href="class-CEdge.html#_">CEdge::_Ready()</a></code></code> <br />
+						<code><code><a href="class-CEdge.html#__Ready">CEdge::_Ready()</a></code></code> <br />
 				</div>
 
 				<h4>Overrides</h4>
-				<div class="list"><code><a href="class-CStatusDocument.html#_">CStatusDocument::_Ready</a></code></div>
+				<div class="list"><code><a href="class-CStatusDocument.html#__Ready">CStatusDocument::_Ready()</a></code></div>
 
 		</div>
 		</div></td>
@@ -617,17 +618,17 @@ kOFFSET_VERTEX_OBJECT offsets.</p>
 	<caption>Methods inherited from <a href="class-CPersistentObject.html#methods">CPersistentObject</a></caption>
 	<tr>
 		<td><code>
-			<a href="class-CPersistentObject.html#_">CLassName()</a>, 
-			<a href="class-CPersistentObject.html#_">DocumentObject()</a>, 
-			<a href="class-CPersistentObject.html#_">GID()</a>, 
-			<a href="class-CPersistentObject.html#_">NewObject()</a>, 
-			<a href="class-CPersistentObject.html#_">_AssertClass()</a>, 
-			<a href="class-CPersistentObject.html#_">_PrecommitIdentify()</a>, 
-			<a href="class-CPersistentObject.html#_">_PrecommitRelated()</a>, 
-			<a href="class-CPersistentObject.html#_">_PrecommitValidate()</a>, 
-			<a href="class-CPersistentObject.html#_">_Preset()</a>, 
-			<a href="class-CPersistentObject.html#_">__toString()</a>, 
-			<a href="class-CPersistentObject.html#_">_id()</a>
+			<a href="class-CPersistentObject.html#_CLassName">CLassName()</a>, 
+			<a href="class-CPersistentObject.html#_DocumentObject">DocumentObject()</a>, 
+			<a href="class-CPersistentObject.html#_GID">GID()</a>, 
+			<a href="class-CPersistentObject.html#_NewObject">NewObject()</a>, 
+			<a href="class-CPersistentObject.html#__AssertClass">_AssertClass()</a>, 
+			<a href="class-CPersistentObject.html#__PrecommitIdentify">_PrecommitIdentify()</a>, 
+			<a href="class-CPersistentObject.html#__PrecommitRelated">_PrecommitRelated()</a>, 
+			<a href="class-CPersistentObject.html#__PrecommitValidate">_PrecommitValidate()</a>, 
+			<a href="class-CPersistentObject.html#__Preset">_Preset()</a>, 
+			<a href="class-CPersistentObject.html#___toString">__toString()</a>, 
+			<a href="class-CPersistentObject.html#__id">_id()</a>
 		</code></td>
 	</tr>
 	</table>
@@ -635,21 +636,21 @@ kOFFSET_VERTEX_OBJECT offsets.</p>
 	<caption>Methods inherited from <a href="class-CPersistentDocument.html#methods">CPersistentDocument</a></caption>
 	<tr>
 		<td><code>
-			<a href="class-CPersistentDocument.html#_">DefaultContainer()</a>, 
-			<a href="class-CPersistentDocument.html#_">DefaultDatabase()</a>, 
-			<a href="class-CPersistentDocument.html#_">Delete()</a>, 
-			<a href="class-CPersistentDocument.html#_">Insert()</a>, 
-			<a href="class-CPersistentDocument.html#_">NID()</a>, 
-			<a href="class-CPersistentDocument.html#_">Replace()</a>, 
-			<a href="class-CPersistentDocument.html#_">ResolveClassContainer()</a>, 
-			<a href="class-CPersistentDocument.html#_">ResolveContainer()</a>, 
-			<a href="class-CPersistentDocument.html#_">Restore()</a>, 
-			<a href="class-CPersistentDocument.html#_">Update()</a>, 
-			<a href="class-CPersistentDocument.html#_">_Postcommit()</a>, 
-			<a href="class-CPersistentDocument.html#_">_PostcommitCleanup()</a>, 
-			<a href="class-CPersistentDocument.html#_">_PostcommitRelated()</a>, 
-			<a href="class-CPersistentDocument.html#_">_PostcommitStatus()</a>, 
-			<a href="class-CPersistentDocument.html#_">_Precommit()</a>
+			<a href="class-CPersistentDocument.html#_DefaultContainer">DefaultContainer()</a>, 
+			<a href="class-CPersistentDocument.html#_DefaultDatabase">DefaultDatabase()</a>, 
+			<a href="class-CPersistentDocument.html#_Delete">Delete()</a>, 
+			<a href="class-CPersistentDocument.html#_Insert">Insert()</a>, 
+			<a href="class-CPersistentDocument.html#_NID">NID()</a>, 
+			<a href="class-CPersistentDocument.html#_Replace">Replace()</a>, 
+			<a href="class-CPersistentDocument.html#_ResolveClassContainer">ResolveClassContainer()</a>, 
+			<a href="class-CPersistentDocument.html#_ResolveContainer">ResolveContainer()</a>, 
+			<a href="class-CPersistentDocument.html#_Restore">Restore()</a>, 
+			<a href="class-CPersistentDocument.html#_Update">Update()</a>, 
+			<a href="class-CPersistentDocument.html#__Postcommit">_Postcommit()</a>, 
+			<a href="class-CPersistentDocument.html#__PostcommitCleanup">_PostcommitCleanup()</a>, 
+			<a href="class-CPersistentDocument.html#__PostcommitRelated">_PostcommitRelated()</a>, 
+			<a href="class-CPersistentDocument.html#__PostcommitStatus">_PostcommitStatus()</a>, 
+			<a href="class-CPersistentDocument.html#__Precommit">_Precommit()</a>
 		</code></td>
 	</tr>
 	</table>
@@ -657,15 +658,15 @@ kOFFSET_VERTEX_OBJECT offsets.</p>
 	<caption>Methods inherited from <a href="class-CStatusDocument.html#methods">CStatusDocument</a></caption>
 	<tr>
 		<td><code>
-			<a href="class-CStatusDocument.html#_">_IsCommitted()</a>, 
-			<a href="class-CStatusDocument.html#_">_IsDirty()</a>, 
-			<a href="class-CStatusDocument.html#_">_IsEncoded()</a>, 
-			<a href="class-CStatusDocument.html#_">_IsInited()</a>, 
-			<a href="class-CStatusDocument.html#_">_Postset()</a>, 
-			<a href="class-CStatusDocument.html#_">_Postunset()</a>, 
-			<a href="class-CStatusDocument.html#_">__construct()</a>, 
-			<a href="class-CStatusDocument.html#_">offsetSet()</a>, 
-			<a href="class-CStatusDocument.html#_">offsetUnset()</a>
+			<a href="class-CStatusDocument.html#__IsCommitted">_IsCommitted()</a>, 
+			<a href="class-CStatusDocument.html#__IsDirty">_IsDirty()</a>, 
+			<a href="class-CStatusDocument.html#__IsEncoded">_IsEncoded()</a>, 
+			<a href="class-CStatusDocument.html#__IsInited">_IsInited()</a>, 
+			<a href="class-CStatusDocument.html#__Postset">_Postset()</a>, 
+			<a href="class-CStatusDocument.html#__Postunset">_Postunset()</a>, 
+			<a href="class-CStatusDocument.html#___construct">__construct()</a>, 
+			<a href="class-CStatusDocument.html#_offsetSet">offsetSet()</a>, 
+			<a href="class-CStatusDocument.html#_offsetUnset">offsetUnset()</a>
 		</code></td>
 	</tr>
 	</table>
@@ -673,9 +674,9 @@ kOFFSET_VERTEX_OBJECT offsets.</p>
 	<caption>Methods inherited from <a href="class-CDocument.html#methods">CDocument</a></caption>
 	<tr>
 		<td><code>
-			<a href="class-CDocument.html#_">array_keys()</a>, 
-			<a href="class-CDocument.html#_">array_values()</a>, 
-			<a href="class-CDocument.html#_">offsetGet()</a>
+			<a href="class-CDocument.html#_array_keys">array_keys()</a>, 
+			<a href="class-CDocument.html#_array_values">array_values()</a>, 
+			<a href="class-CDocument.html#_offsetGet">offsetGet()</a>
 		</code></td>
 	</tr>
 	</table>
@@ -683,27 +684,31 @@ kOFFSET_VERTEX_OBJECT offsets.</p>
 	<caption>Methods inherited from <a href="class-ArrayObject.html#methods">ArrayObject</a></caption>
 	<tr>
 		<td><code>
-			<a href="class-ArrayObject.html#_">append()</a>, 
-			<a href="class-ArrayObject.html#_">asort()</a>, 
-			<a href="class-ArrayObject.html#_">count()</a>, 
-			<a href="class-ArrayObject.html#_">exchangeArray()</a>, 
-			<a href="class-ArrayObject.html#_">getArrayCopy()</a>, 
-			<a href="class-ArrayObject.html#_">getFlags()</a>, 
-			<a href="class-ArrayObject.html#_">getIterator()</a>, 
-			<a href="class-ArrayObject.html#_">getIteratorClass()</a>, 
-			<a href="class-ArrayObject.html#_">ksort()</a>, 
-			<a href="class-ArrayObject.html#_">natcasesort()</a>, 
-			<a href="class-ArrayObject.html#_">natsort()</a>, 
-			<a href="class-ArrayObject.html#_">offsetExists()</a>, 
-			<a href="class-ArrayObject.html#_">serialize()</a>, 
-			<a href="class-ArrayObject.html#_">setFlags()</a>, 
-			<a href="class-ArrayObject.html#_">setIteratorClass()</a>, 
-			<a href="class-ArrayObject.html#_">uasort()</a>, 
-			<a href="class-ArrayObject.html#_">uksort()</a>, 
-			<a href="class-ArrayObject.html#_">unserialize()</a>
+			<a href="class-ArrayObject.html#_append">append()</a>, 
+			<a href="class-ArrayObject.html#_asort">asort()</a>, 
+			<a href="class-ArrayObject.html#_count">count()</a>, 
+			<a href="class-ArrayObject.html#_exchangeArray">exchangeArray()</a>, 
+			<a href="class-ArrayObject.html#_getArrayCopy">getArrayCopy()</a>, 
+			<a href="class-ArrayObject.html#_getFlags">getFlags()</a>, 
+			<a href="class-ArrayObject.html#_getIterator">getIterator()</a>, 
+			<a href="class-ArrayObject.html#_getIteratorClass">getIteratorClass()</a>, 
+			<a href="class-ArrayObject.html#_ksort">ksort()</a>, 
+			<a href="class-ArrayObject.html#_natcasesort">natcasesort()</a>, 
+			<a href="class-ArrayObject.html#_natsort">natsort()</a>, 
+			<a href="class-ArrayObject.html#_offsetExists">offsetExists()</a>, 
+			<a href="class-ArrayObject.html#_serialize">serialize()</a>, 
+			<a href="class-ArrayObject.html#_setFlags">setFlags()</a>, 
+			<a href="class-ArrayObject.html#_setIteratorClass">setIteratorClass()</a>, 
+			<a href="class-ArrayObject.html#_uasort">uasort()</a>, 
+			<a href="class-ArrayObject.html#_uksort">uksort()</a>, 
+			<a href="class-ArrayObject.html#_unserialize">unserialize()</a>
 		</code></td>
 	</tr>
 	</table>
+
+
+
+
 
 
 
@@ -720,6 +725,7 @@ kOFFSET_VERTEX_OBJECT offsets.</p>
 
 
 
+
 	<table class="summary inherited">
 	<caption>Properties inherited from <a href="class-CStatusDocument.html#properties">CStatusDocument</a></caption>
 	<tr>
@@ -730,10 +736,13 @@ kOFFSET_VERTEX_OBJECT offsets.</p>
 	</table>
 
 
+
+
+
 </div>
 
 	<div id="footer">
-		MyWrapper Reference Documentation API documentation generated by <a href="http://apigen.org">ApiGen 2.7.0</a>
+		MyWrapper Reference Documentation API documentation generated by <a href="http://apigen.org">ApiGen 2.8.0</a>
 	</div>
 </div>
 </div>
