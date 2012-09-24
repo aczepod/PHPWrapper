@@ -176,7 +176,7 @@ try
 			echo( '<pre>' ); print_r( $namespace ); echo( '</pre>' );
 			echo( '<hr />' );
 		}
-		catch( \Exception $error )
+		catch( Exception $error )
 		{
 			echo( '<h5>Expected exception</h5>' );
 			echo( '<pre>'.(string) $error.'</pre>' );
@@ -264,7 +264,7 @@ try
 			echo( '<pre>' ); print_r( $namespace ); echo( '</pre>' );
 			echo( '<hr />' );
 		}
-		catch( \Exception $error )
+		catch( Exception $error )
 		{
 			echo( '<h5>Expected exception</h5>' );
 			echo( '<pre>'.(string) $error.'</pre>' );
@@ -288,7 +288,7 @@ try
 			echo( '<pre>' ); print_r( $termA ); echo( '</pre>' );
 			echo( '<hr />' );
 		}
-		catch( \Exception $error )
+		catch( Exception $error )
 		{
 			echo( '<h5>Expected exception</h5>' );
 			echo( '<pre>'.(string) $error.'</pre>' );
@@ -318,7 +318,7 @@ try
 			echo( '<pre>' ); print_r( $termC ); echo( '</pre>' );
 			echo( '<hr />' );
 		}
-		catch( \Exception $error )
+		catch( Exception $error )
 		{
 			echo( '<h5>Expected exception</h5>' );
 			echo( '<pre>'.(string) $error.'</pre>' );
@@ -349,7 +349,7 @@ try
 			echo( '<hr />' );
 			echo( '<hr />' );
 		}
-		catch( \Exception $error )
+		catch( Exception $error )
 		{
 			echo( '<h5>Expected exception</h5>' );
 			echo( '<pre>'.(string) $error.'</pre>' );
@@ -396,7 +396,7 @@ try
 		echo( '<pre>' ); print_r( $namespace ); echo( '</pre>' );
 		echo( '<hr />' );
 	}
-	catch( \Exception $error )
+	catch( Exception $error )
 	{
 		echo( '<h5>Expected exception</h5>' );
 		echo( '<pre>'.(string) $error.'</pre>' );
@@ -419,7 +419,7 @@ try
 		echo( '<pre>' ); print_r( $namespace ); echo( '</pre>' );
 		echo( '<hr />' );
 	}
-	catch( \Exception $error )
+	catch( Exception $error )
 	{
 		echo( '<h5>Expected exception</h5>' );
 		echo( '<pre>'.(string) $error.'</pre>' );
@@ -442,7 +442,7 @@ try
 		echo( '<pre>' ); print_r( $namespace ); echo( '</pre>' );
 		echo( '<hr />' );
 	}
-	catch( \Exception $error )
+	catch( Exception $error )
 	{
 		echo( '<h5>Expected exception</h5>' );
 		echo( '<pre>'.(string) $error.'</pre>' );
@@ -457,13 +457,134 @@ try
 	$string = (string) $last_term;
 	echo( '<pre>' ); print_r( $string ); echo( '</pre>' );
 	echo( '<hr />' );
+
+	//
+	// Test modifying object.
+	//
+	try
+	{
+		echo( '<h4>Test modifying object</h4>' );
+		echo( '<h5>$last_term->Label( "it", "Prova" );</h5>' );
+		$last_term->Label( "it", "Prova" );
+		echo( '<pre>' ); print_r( $last_term ); echo( '</pre>' );
+		echo( '<h5>$status = $last_term->Update( $database );</h5>' );
+		$status = $last_term->Update( $database );
+		echo( '<h3><font color="red">Should have raised an exception</font></h3>' );
+		echo( '<pre>' ); print_r( $last_term ); echo( '</pre>' );
+		echo( '<hr />' );
+	}
+	catch( Exception $error )
+	{
+		echo( '<h5>Expected exception</h5>' );
+		echo( '<pre>'.(string) $error.'</pre>' );
+		echo( '<hr>' );
+	}
+
+	//
+	// Test replacing new object.
+	//
+	echo( '<h4>Test replacing new object</h4>' );
+	echo( '<h5>$new_term = new MyClass();</h5>' );
+	$new_term = new MyClass();
+	echo( '<h5>$new_term[ kOFFSET_LID ] = "new-object";</h5>' );
+	$new_term[ kOFFSET_LID ] = "new-object";
+	echo( '<h5>$status = $new_term->Replace( $database );</h5>' );
+	$status = $new_term->Replace( $database );
+	echo( '<pre>' ); print_r( $new_term ); echo( '</pre>' );
+	echo( '<hr />' );
+
+	//
+	// Test replacing old object.
+	//
+	try
+	{
+		echo( '<h4>Test replacing old object</h4>' );
+		echo( '<h5>$new_term->Label( "it", "Prova" );</h5>' );
+		$new_term->Label( "it", "Prova" );
+		echo( '<pre>' ); print_r( $new_term ); echo( '</pre>' );
+		echo( '<h5>$status = $new_term->Replace( $database );</h5>' );
+		$status = $new_term->Replace( $database );
+		echo( '<h3><font color="red">Should have raised an exception</font></h3>' );
+		echo( '<pre>' ); print_r( $namespace ); echo( '</pre>' );
+		echo( '<hr />' );
+	}
+	catch( Exception $error )
+	{
+		echo( '<h5>Expected exception</h5>' );
+		echo( '<pre>'.(string) $error.'</pre>' );
+		echo( '<hr>' );
+	}
+	echo( '<hr />' );
+
+	//
+	// Test resolving term with object.
+	//
+	echo( '<h4>Test resolving term with object</h4>' );
+	echo( '<h5>$term = COntologyTerm::Resolve( $database, $new_term, NULL, TRUE );</h5>' );
+	$term = COntologyTerm::Resolve( $database, $new_term, NULL, TRUE );
+	echo( '<pre>' ); print_r( $term ); echo( '</pre>' );
+	echo( '<hr />' );
+
+	//
+	// Test resolving term with identifier.
+	//
+	echo( '<h4>Test resolving term with identifier</h4>' );
+	echo( '<h5>$term = COntologyTerm::Resolve( $database, $new_term[ kOFFSET_NID ], NULL, TRUE );</h5>' );
+	$term = COntologyTerm::Resolve( $database, $new_term[ kOFFSET_NID ], NULL, TRUE );
+	echo( '<pre>' ); print_r( $term ); echo( '</pre>' );
+	echo( '<hr />' );
+
+	//
+	// Test resolving term with global identifier.
+	//
+	echo( '<h4>Test resolving term with global identifier</h4>' );
+	echo( '<h5>$term = COntologyTerm::Resolve( $database, "NAMESPACE", NULL, TRUE );</h5>' );
+	$term = COntologyTerm::Resolve( $database, "NAMESPACE", NULL, TRUE );
+	echo( '<pre>' ); print_r( $term ); echo( '</pre>' );
+	echo( '<hr />' );
+
+	//
+	// Test resolving term with namespace and identifier.
+	//
+	echo( '<h4>Test resolving term with namespace and identifier</h4>' );
+	echo( '<h5>$term = COntologyTerm::Resolve( $database, "last_code", "NAMESPACE", TRUE );</h5>' );
+	$term = COntologyTerm::Resolve( $database, "last_code", "NAMESPACE", TRUE );
+	echo( '<pre>' ); print_r( $term ); echo( '</pre>' );
+	echo( '<hr />' );
+
+	//
+	// Test adding label.
+	//
+	echo( '<h4>Test adding label</h4>' );
+	echo( '<h5>$status = COntologyTerm::HandleLabel( $database, $term, "it", "Nuovo" );</h5>' );
+	$status = COntologyTerm::HandleLabel( $database, $term, "it", "Nuovo" );
+	echo( '<pre>' ); print_r( $status ); echo( '</pre>' );
+	echo( '<hr />' );
+
+	//
+	// Test retrieving label.
+	//
+	echo( '<h4>Test retrieving label</h4>' );
+	echo( '<h5>$status = COntologyTerm::HandleLabel( $database, $term, "it", NULL );</h5>' );
+	$status = COntologyTerm::HandleLabel( $database, $term, "it", NULL );
+	echo( '<pre>' ); print_r( $status ); echo( '</pre>' );
+	echo( '<hr />' );
+
+	//
+	// Test deleting label.
+	//
+	echo( '<h4>Test deleting label</h4>' );
+	echo( '<h5>$status = COntologyTerm::HandleLabel( $database, $term, "it", FALSE );</h5>' );
+	$status = COntologyTerm::HandleLabel( $database, $term, "it", FALSE );
+	echo( '<pre>' ); print_r( $status ); echo( '</pre>' );
+	echo( '<hr />' );
 	echo( '<hr />' );
 }
 
 //
 // Catch exceptions.
 //
-catch( \Exception $error )
+catch( Exception $error )
 {
 	echo( '<h3><font color="red">Unexpected exception</font></h3>' );
 	echo( '<pre>'.(string) $error.'</pre>' );

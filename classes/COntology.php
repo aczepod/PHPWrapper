@@ -157,7 +157,7 @@ class COntology extends CConnection
 
 /*=======================================================================================
  *																						*
- *								PUBLIC COMPONENTS INTERFACE								*
+ *						PUBLIC COMPONENTS INSTANTIATION INTERFACE						*
  *																						*
  *======================================================================================*/
 
@@ -245,26 +245,9 @@ class COntology extends CConnection
 					// Handle new namespace object.
 					//
 					else	// Uncommitted object.
-					{
-						//
-						// Create term.
-						//
-						$term = new COntologyTerm();
-						$term->NS( $theNamespace );
-						$term->LID( $theIdentifier );
-						if( $theLabel !== NULL )
-							$term->Label( $theLanguage, $theLabel );
-						if( $theDescription !== NULL )
-							$term->Description( $theLanguage, $theDescription );
-						
-						//
-						// Save term.
-						//
-						$term->Insert( $this->Connection() );
-						
-						return $term;												// ==>
-					
-					} // New namespace.
+						return $this->_NewTerm
+							( $theIdentifier, $theNamespace,
+							  $theLabel, $theDescription, $theLanguage );			// ==>
 					
 					//
 					// Locate term.
@@ -279,23 +262,9 @@ class COntology extends CConnection
 					if( $term !== NULL )
 						return $term;												// ==>
 
-					//
-					// Create term.
-					//
-					$term = new COntologyTerm();
-					$term->NS( $theNamespace );
-					$term->LID( $theIdentifier );
-					if( $theLabel !== NULL )
-						$term->Label( $theLanguage, $theLabel );
-					if( $theDescription !== NULL )
-						$term->Description( $theLanguage, $theDescription );
-					
-					//
-					// Save term.
-					//
-					$term->Insert( $this->Connection() );
-					
-					return $term;													// ==>
+					return $this->_NewTerm
+						( $theIdentifier, $theNamespace,
+						  $theLabel, $theDescription, $theLanguage );				// ==>
 				
 				} // Provided namespace.
 				
@@ -306,22 +275,9 @@ class COntology extends CConnection
 				if( $term !== NULL )
 					return $term;													// ==>
 
-				//
-				// Create term.
-				//
-				$term = new COntologyTerm();
-				$term->LID( $theIdentifier );
-				if( $theLabel !== NULL )
-					$term->Label( $theLanguage, $theLabel );
-				if( $theDescription !== NULL )
-					$term->Description( $theLanguage, $theDescription );
-				
-				//
-				// Save term.
-				//
-				$term->Insert( $this->Connection() );
-				
-				return $term;														// ==>
+				return $this->_NewTerm
+					( $theIdentifier, $theNamespace,
+					  $theLabel, $theDescription, $theLanguage );					// ==>
 			
 			} // Provided local or global identifier.
 			
@@ -348,37 +304,199 @@ class COntology extends CConnection
 	 * This method can be used to instantiate a new node, retrieve an existing node by
 	 * identifier, or retrieve the list of nodes matching a term.
 	 *
-	 * The method expects a single parameter that may represent either the node identifier,
-	 * or the term object or identifier:
+	 * The method expects either a node identifier or a term reference. In the first case
+	 * the method will return the matching node or <tt>NULL</tt>. In the second case the
+	 * method will either return the list of nodes related to the provided term, or a new
+	 * node related to that term.
+	 *
+	 * This means that when you provide data for a new term, this will be instantiated and
+	 * committed in all cases.
+	 *
+	 * The method expects the following parameters:
 	 *
 	 * <ul>
-	 *	<li><tt>integer</tt>: In this case the method assumes that the parameter represents
-	 *		the node identifier: it will attempt to retrieve the node, if it is not found,
-	 *		the method will return <tt>NULL</tt>.
-	 *	<li><tt>{@link COntologyTerm}</tt>: In this case the method will check if the term
-	 *		exists:
+	 *	<li><tt>$theIdentifier</tt>: This parameter represents the node identifier, or the
+	 *		term reference:
 	 *	 <ul>
-	 *		<li><i>Term exists</i>: The method will locate all nodes that relate to that
-	 *			term and return the array of found nodes, which will be empty if there are
-	 *			no matches.
-	 *		<li><i>Term is new</i>: The method will return a new node related to that term.
+	 *		<li><tt>integer</tt>: In this case the method assumes that the parameter
+	 *			represents the node identifier: it will attempt to retrieve the node, if it
+	 *			is not found, the method will return <tt>NULL</tt>. With this option all
+	 *			other parameter are ignored.
+	 *		<li><tt>{@link COntologyTerm}</tt>: In this case the method assumes the
+	 *			parameter represents the term object: if the term is not committed, the
+	 *			method will return a new node, if the term is committed, the method will try
+	 *			to locate all nodes related to that term: if none are found, or if the last
+	 *			parameter is <tt>TRUE</tt>, the method will return a new node related to
+	 *			that term; if at least one node is found, the method will return the list
+	 *			of nodes related to that term.
+	 *		<li><i>other</i>: In this case the parameter is expected to be the term's native
+	 *			or global identifier and the method will behave as above.
 	 *	 </ul>
-	 *	<li><i>other</i>: Any other type will be interpreted as the term's native
-	 *		identifier: the method will locate all nodes that relate to that term and return
-	 *		the array of found nodes, which will be empty if there are no matches.
+	 *		The next four parameters have a meaning only if you are creating a new node with
+	 *		a new term, in all other cases these parameters will be ignored.
+	 *	<li><tt>$theNamespace</tt>: The term namespace, it can be provided in several ways:
+	 *	 <ul>
+	 *		<li><tt>NULL</tt>: This indicates that the term has no namespace.
+	 *		<li><tt>{@link COntologyTerm}</tt>: This represents the term namespace object.
+	 *		<li><i>other</i>: Any other type is interpreted as the namespace native
+	 *			identifier; if the namespace cannot be found, the method will raise an
+	 *			exception.
+	 *	 </ul>
+	 *	<li><tt>$theLabel</tt>: The term label string, this parameter is optional.
+	 *	<li><tt>$theDescription</tt>: The term description string this parameter is optional.
+	 *	<li><tt>$theLanguage</tt>: The language code of both the label and the description.
+	 *	<li><tt>$doNew</tt>: If <tt>TRUE</tt>, a new node will be instantiated in all cases,
+	 *		that means that the method will not attempt to find a node related to the term.
+	 *		Note that if the first parameter is an integer, this parameter is ignored.
 	 * </ul>
 	 *
 	 * The method will raise an exception if the object is not {@link _IsInited()} and if
-	 * the provided parameter is <tt>NULL</tt>.
+	 * the first parameter is <tt>NULL</tt>.
 	 *
 	 * @param mixed					$theIdentifier		Node identifier or term reference.
+	 * @param mixed					$theNamespace		Term namespace reference.
+	 * @param string				$theLabel			Term label.
+	 * @param string				$theDescription		Term description.
+	 * @param string				$theLanguage		Label and description language code.
+	 * @param boolean				$doNew				<tt>TRUE</tt> force new node.
 	 *
 	 * @access public
 	 * @return mixed				New node, found node or nodes list.
 	 *
 	 * @throws Exception
 	 */
-	public function NewNode( $theIdentifier )
+	public function NewNode( $theIdentifier, $theNamespace = NULL,
+											 $theLabel = NULL, $theDescription = NULL,
+											 $theLanguage = NULL, $doNew = FALSE )
+	{
+		//
+		// Check if object is ready.
+		//
+		if( $this->_IsInited() )
+		{
+			//
+			// Check identifier.
+			//
+			if( $theIdentifier !== NULL )
+			{
+				//
+				// Handle node identifier.
+				//
+				if( is_integer( $theIdentifier ) )
+					return COntologyNode::NewObject
+								( $this->Connection(), $theIdentifier );			// ==>
+				
+				//
+				// Create term.
+				//
+				$term = $this->NewTerm( $theIdentifier, $theNamespace,
+										$theLabel, $theDescription, $theLanguage );
+				
+				//
+				// Force new.
+				//
+				if( $doNew )
+					return $this->_NewNode( $term );								// ==>
+				
+				//
+				// Resolve container.
+				//
+				$container = COntologyNode::ResolveClassContainer
+								( $this->Connection(), TRUE );
+				
+				//
+				// Create query.
+				//
+				$query = $container->NewQuery();
+				
+				//
+				// Add statement.
+				//
+				$query->AppendStatement(
+					CQueryStatement::Equals(
+						kOFFSET_TERM, $term[ kOFFSET_NID ], kTYPE_BINARY ) );
+						
+				//
+				// Perform query.
+				//
+				$rs = $container->Query( $query );
+				if( $rs->count() )
+				{
+					//
+					// Return list of nodes.
+					//
+					$list = Array();
+					foreach( $rs as $document )
+						$list[] = CPersistentObject::DocumentObject( $document );
+					
+					return $list;													// ==>
+				
+				} // Found at least one node.
+				
+				return $this->_NewNode( $term );									// ==>
+				
+			} // Provided local or global identifier.
+			
+			throw new Exception
+				( "Missing node identifier or term",
+				  kERROR_PARAMETER );											// !@! ==>
+		
+		} // Object is ready.
+		
+		throw new Exception
+			( "Object is not initialised",
+			  kERROR_STATE );													// !@! ==>
+
+	} // NewNode.
+
+	 
+	/*===================================================================================
+	 *	NewRootNode																		*
+	 *==================================================================================*/
+
+	/**
+	 * <h4>Instantiate a root node</h4>
+	 *
+	 * This method can be used to instantiate a new root node, retrieve an existing node by
+	 * identifier, or retrieve the list of nodes matching a term.
+	 *
+	 * The method expects a single parameter that may represent either the node identifier,
+	 * or the term object or identifier:
+	 *
+	 * <ul>
+	 *	<li><tt>integer</tt>: In this case the method assumes that the parameter represents
+	 *		the node identifier: it will attempt to retrieve the node, if it is not found,
+	 *		the method will return <tt>NULL</tt>. With this option the second parameter is
+	 *		ignored.
+	 *	<li><tt>{@link COntologyTerm}</tt>: In this case the method will check if the term
+	 *		exists:
+	 *	 <ul>
+	 *		<li><i>Term exists</i>: The method will locate all root nodes that relate to
+	 *			that term and return the array of found nodes, or <tt>NULL</tt> if there are
+	 *			no matches. If the second parameter is <tt>TRUE</tt>, the method will
+	 *			instantiate a new root node whether or not there are matches.
+	 *		<li><i>Term is new</i>: The method will return a new root node related to that
+	 *			term.
+	 *	 </ul>
+	 *	<li><i>other</i>: Any other type will be interpreted as the term's native
+	 *		identifier: the method will locate all root nodes that relate to that term and
+	 *		return the array of found nodes, or a new root node if the second parameter is
+	 *		<tt>TRUE</tt>.
+	 * </ul>
+	 *
+	 * The method will raise an exception if the object is not {@link _IsInited()}, if the
+	 * provided parameter is <tt>NULL</tt>, or if the provided term identifier is not
+	 * resolved.
+	 *
+	 * @param mixed					$theIdentifier		Node identifier or term reference.
+	 * @param boolean				$doNew				<tt>TRUE</tt> force new node.
+	 *
+	 * @access public
+	 * @return mixed				New node, found node or nodes list.
+	 *
+	 * @throws Exception
+	 */
+	public function NewRootNode( $theIdentifier, $doNew = TRUE )
 	{
 		//
 		// Check if object is ready.
@@ -406,31 +524,20 @@ class COntology extends CConnection
 					// Handle new term.
 					//
 					if( ! $theIdentifier->_IsCommitted() )
-					{
-						//
-						// Instantiate new term.
-						//
-						$node = new COntologyNode();
-						$node->Term( $theIdentifier );
-						
-						return $node;												// ==>
-					
-					} // New term ==> new node.
-					
-					//
-					// Get term identifier.
-					//
-					$theIdentifier = $theIdentifier->offsetGet( kOFFSET_NID );
+						return $this->_NewNode( $theIdentifier, kNODE_KIND_ROOT );	// ==>
 				
 				} // Provided term object.
 				
 				//
-				// Handle term global identifier.
+				// Resolve term.
 				//
-				else
-					$theIdentifier
-						= COntologyTerm::_id
-							( $theIdentifier, $this->Connection() );
+				$theIdentifier = $this->ResolveTerm( $theIdentifier, NULL, TRUE );
+				
+				//
+				// Force new.
+				//
+				if( $doNew )
+					return $this->_NewNode( $theIdentifier, kNODE_KIND_ROOT );		// ==>
 				
 				//
 				// Resolve container.
@@ -444,11 +551,18 @@ class COntology extends CConnection
 				$query = $container->NewQuery();
 				
 				//
-				// Add statement.
+				// Add term reference statement.
 				//
 				$query->AppendStatement(
 					CQueryStatement::Equals(
-						kOFFSET_TERM, $theIdentifier, kTYPE_BINARY ) );
+						kOFFSET_TERM, $theIdentifier[ kOFFSET_NID ], kTYPE_BINARY ) );
+				
+				//
+				// Add root node kind statement.
+				//
+				$query->AppendStatement(
+					CQueryStatement::Equals(
+						kOFFSET_KIND, kNODE_KIND_ROOT, kTYPE_STRING ) );
 						
 				//
 				// Perform query.
@@ -481,7 +595,7 @@ class COntology extends CConnection
 			( "Object is not initialised",
 			  kERROR_STATE );													// !@! ==>
 
-	} // NewNode.
+	} // NewRootNode.
 
 		
 
@@ -866,6 +980,223 @@ class COntology extends CConnection
 			  kERROR_STATE );													// !@! ==>
 
 	} // ResolveNode.
+
+		
+
+/*=======================================================================================
+ *																						*
+ *								PROTECTED COMPONENTS INTERFACE							*
+ *																						*
+ *======================================================================================*/
+
+
+	 
+	/*===================================================================================
+	 *	_NewTerm																		*
+	 *==================================================================================*/
+
+	/**
+	 * <h4>Instantiate a new term</h4>
+	 *
+	 * This method can be used to instantiate a new term and commit it.
+	 *
+	 * The method will first instantiate the node from the provided parameter, then it
+	 * will insert it and finally return it, if there were no errors.
+	 *
+	 * This method is used by the public interface to perform the actual creation of terms.
+	 *
+	 * The method expects the following parameters:
+	 *
+	 * <ul>
+	 *	<li><tt>$theIdentifier</tt>: This parameter represents the term local identifier.
+	 *	<li><tt>$theNamespace</tt>: The term namespace, it can be provided both as an object
+	 *		or as the term native identifier.
+	 *	<li><tt>$theLabel</tt>: The term label string, this parameter is optional.
+	 *	<li><tt>$theDescription</tt>: The term description string this parameter is optional.
+	 *	<li><tt>$theLanguage</tt>: The language code of both the label and the description.
+	 * </ul>
+	 *
+	 * The method will return a new committed term or raise an exception if the term is a
+	 * duplicate.
+	 *
+	 * @param string				$theIdentifier		Term local identifier.
+	 * @param mixed					$theNamespace		Term namespace reference.
+	 * @param string				$theLabel			Term label.
+	 * @param string				$theDescription		Term description.
+	 * @param string				$theLanguage		Label and description language code.
+	 *
+	 * @access protected
+	 * @return COntologyTerm		New committed term.
+	 *
+	 * @throws Exception
+	 */
+	protected function _NewTerm( $theIdentifier, $theNamespace,
+								 $theLabel, $theDescription, $theLanguage )
+	{
+		//
+		// Check if object is ready.
+		//
+		if( $this->_IsInited() )
+		{
+			//
+			// Check local identifier.
+			//
+			if( $theIdentifier !== NULL )
+			{
+				//
+				// Create term.
+				//
+				$term = new COntologyTerm();
+				
+				//
+				// Set local identifier.
+				//
+				$term->LID( $theIdentifier );
+				
+				//
+				// Set namespace.
+				//
+				if( $theNamespace !== NULL )
+					$term->NS( $theNamespace );
+				
+				//
+				// Set label.
+				//
+				if( $theLabel !== NULL )
+					$term->Label( $theLanguage, $theLabel );
+				
+				//
+				// Set description.
+				//
+				if( $theDescription !== NULL )
+					$term->Description( $theLanguage, $theDescription );
+				
+				//
+				// Save term.
+				//
+				$term->Insert( $this->Connection() );
+				
+				return $term;														// ==>
+			
+			} // Provided local identifier.
+			
+			throw new Exception
+				( "Missing term local identifier",
+				  kERROR_PARAMETER );											// !@! ==>
+		
+		} // Object is ready.
+		
+		throw new Exception
+			( "Object is not initialised",
+			  kERROR_STATE );													// !@! ==>
+
+	} // _NewTerm.
+
+	 
+	/*===================================================================================
+	 *	_NewNode																		*
+	 *==================================================================================*/
+
+	/**
+	 * <h4>Instantiate a new term</h4>
+	 *
+	 * This method can be used to instantiate a new term and commit it.
+	 *
+	 * The method will first instantiate the node from the provided parameter, then it
+	 * will insert it and finally return it, if there were no errors.
+	 *
+	 * This method is used by the public interface to perform the actual creation of terms.
+	 *
+	 * The method expects the following parameters:
+	 *
+	 * <ul>
+	 *	<li><tt>$theTerm</tt>: This parameter represents the term reference, it can be
+	 *		provided as the term object or term native identifier.
+	 *	<li><tt>$theKind</tt>: This parameter represents the term kind, it can be provided
+	 *		as a list of values, as a scalar value or as <tt>NULL</tt>.
+	 *	<li><tt>$theType</tt>: This parameter represents the term type, it can be provided
+	 *		as a scalar value or as <tt>NULL</tt>.
+	 * </ul>
+	 *
+	 * The method will return a new committed term or raise an exception if the term is a
+	 * duplicate.
+	 *
+	 * @param mixed					$theTerm			Term object or identifier.
+	 * @param mixed					$theKind			Node kind value or values.
+	 * @param mixed					$theType			Node type value.
+	 *
+	 * @access protected
+	 * @return COntologyNode		New committed node.
+	 *
+	 * @throws Exception
+	 */
+	protected function _NewNode( $theTerm, $theKind = NULL, $theType = NULL )
+	{
+		//
+		// Check if object is ready.
+		//
+		if( $this->_IsInited() )
+		{
+			//
+			// Check term reference.
+			//
+			if( $theTerm !== NULL )
+			{
+				//
+				// Create node.
+				//
+				$node = new COntologyNode();
+				
+				//
+				// Set term reference.
+				//
+				$node->Term( $theTerm );
+				
+				//
+				// Set kind.
+				//
+				if( $theKind !== NULL )
+				{
+					//
+					// Handle array.
+					//
+					if( is_array( $theKind ) )
+						$node->Kind( $theKind, array_fill( 0, count( $theKind ), TRUE ) );
+					
+					//
+					// Handle scalar.
+					//
+					else
+						$node->Kind( $theKind, TRUE );
+				
+				} // Provided kind.
+				
+				//
+				// Set type.
+				//
+				if( $theType !== NULL )
+					$node->Type( $theType );
+				
+				//
+				// Save node.
+				//
+				$node->Insert( $this->Connection() );
+				
+				return $node;														// ==>
+			
+			} // Provided term reference.
+			
+			throw new Exception
+				( "Missing term reference or object",
+				  kERROR_PARAMETER );											// !@! ==>
+		
+		} // Object is ready.
+		
+		throw new Exception
+			( "Object is not initialised",
+			  kERROR_STATE );													// !@! ==>
+
+	} // _NewNode.
 
 	 
 

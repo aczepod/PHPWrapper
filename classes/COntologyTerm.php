@@ -54,6 +54,11 @@ require_once( kPATH_MYWRAPPER_LIBRARY_CLASS."/CTerm.php" );
  * reference this term, and the list of tags that reference the term. These offsets are
  * managed by the referenced objects.
  *
+ * This class prevents updating the full object once it has been inserted for the first
+ * time. This behaviour is necessary because terms are referenced by many other objects, so
+ * updating a full term object is risky, since it may have been updated elsewhere: for this
+ * reason the {@link Update()} and {@link Replace()} methods will raise an exception.
+ *
  * The class implements the static method, {@link DefaultContainer()}, it will use the
  * {@link kCONTAINER_TERM_NAME} constant.
  *
@@ -269,6 +274,199 @@ class COntologyTerm extends CTerm
 
 /*=======================================================================================
  *																						*
+ *								PUBLIC PERSISTENCE INTERFACE							*
+ *																						*
+ *======================================================================================*/
+
+
+	 
+	/*===================================================================================
+	 *	Update																			*
+	 *==================================================================================*/
+
+	/**
+	 * <h4>Update the object in a container</h4>
+	 *
+	 * We overload this method to raise an exception: objects of this class can only be
+	 * inserted, after this one can only modify their attributes using the modification
+	 * interface provided by container objects.
+	 *
+	 * @param CConnection			$theConnection		Server, database or container.
+	 *
+	 * @access public
+	 *
+	 * @throws Exception
+	 */
+	public function Update( CConnection $theConnection )
+	{
+		//
+		// Check if necessary.
+		//
+		if( $this->_IsDirty()
+		 || (! $this->_IsCommitted()) )
+		{
+			//
+			// Object is locked.
+			//
+			throw new Exception
+				( "This object can only be inserted and modified",
+				  kERROR_LOCKED );												// !@! ==>
+		
+		} // Dirty or not yet committed.
+	
+	} // Update.
+
+	 
+	/*===================================================================================
+	 *	Replace																			*
+	 *==================================================================================*/
+
+	/**
+	 * <h4>Replace the object into a container</h4>
+	 *
+	 * We overload this method to raise an exception: objects of this class can only be
+	 * inserted, after this one can only modify their attributes using the modification
+	 * interface provided by container objects.
+	 *
+	 * In this class we prevent replacing a committed object and allow inserting a non
+	 * committed object.
+	 *
+	 * @param CConnection			$theConnection		Server, database or container.
+	 *
+	 * @access public
+	 * @return mixed				The object's native identifier.
+	 */
+	public function Replace( CConnection $theConnection )
+	{
+		//
+		// Check if necessary.
+		//
+		if( $this->_IsDirty()
+		 || (! $this->_IsCommitted()) )
+		{
+			//
+			// Check if the object is not committed.
+			//
+			if( ! $this->_IsCommitted() )
+				return parent::Replace( $theConnection );							// ==>
+			
+			//
+			// Object is locked.
+			//
+			throw new Exception
+				( "This object can only be inserted and modified",
+				  kERROR_LOCKED );												// !@! ==>
+		
+		} // Dirty or not yet committed.
+		
+		return NULL;																// ==>
+	
+	} // Replace.
+
+		
+
+/*=======================================================================================
+ *																						*
+ *								STATIC MODIFICATION INTERFACE							*
+ *																						*
+ *======================================================================================*/
+
+
+	 
+	/*===================================================================================
+	 *	HandleLabel																		*
+	 *==================================================================================*/
+
+	/**
+	 * <h4>Modify label</h4>
+	 *
+	 * This method can be used to add or remove labels from a term, the method will not
+	 * operate on the object directly, but rather let the container make the modification
+	 * directly on the database.
+	 *
+	 * The method allows you to add or delete a specific label, it accepts the following
+	 * parameters:
+	 *
+	 * <ul>
+	 *	<li><tt>$theIdentifier</tt>: This parameter represents the term reference, it can be
+	 *		provided as a term object, as the term native identifier or as the term global
+	 *		identifier. If the term cannot be found, the method will raise an exception.
+	 *	<li><tt>$theLanguage</tt>: Language code, <tt>NULL</tt> refers to the element
+	 *		lacking the language code.
+	 *	<li><tt>$theValue</tt>: The label string or the operation, depending on its value:
+	 *	 <ul>
+	 *		<li><tt>NULL</tt>: Return the string corresponding to the provided language.
+	 *		<li><tt>FALSE</tt>: Delete the element corresponding to the provided language.
+	 *		<li><i>other</i>: Any other value represents the label string that will be set
+	 *			or replace the entry for the provided language.
+	 *	 </ul>
+	 * </ul>
+	 *
+	 * @param CConnection			$theConnection		Server, database or container.
+	 * @param mixed					$theIdentifier		Term reference.
+	 * @param mixed					$theLanguage		Language code.
+	 * @param mixed					$theValue			Label or operation.
+	 *
+	 * @static
+	 * @return CContainer			The label.
+	 */
+	static function HandleLabel( CConnection $theConnection,
+											 $theIdentifier,
+											 $theLanguage = NULL, $theValue = NULL )
+	{
+		//
+		// Check identifier.
+		//
+		if( $theIdentifier !== NULL )
+		{
+			//
+			// Resolve term.
+			//
+			$theIdentifier = static::Resolve( $theConnection, $theIdentifier, NULL, TRUE );
+			
+			//
+			// Handle label.
+			//
+			$status = $theIdentifier->Label( $theLanguage, $theValue );
+			if( $theValue === NULL )
+				return $status;														// ==>
+			
+			//
+			// Here we know the label should be modified.
+			//
+			
+			//
+			// Resolve container.
+			//
+			$container = self::ResolveClassContainer( $theConnection, TRUE );
+		
+			//
+			// Set modification criteria.
+			//
+			$mod = ( $theIdentifier->offsetExists( kOFFSET_LABEL ) )
+				 ? array( kOFFSET_LABEL => $theIdentifier->offsetGet( kOFFSET_LABEL ) )
+				 : array( kOFFSET_LABEL => NULL );
+			
+			//
+			// Update object.
+			//
+			$container->ManageObject
+							( $mod, $theIdentifier[ kOFFSET_NID ], kFLAG_PERSIST_MODIFY );
+			
+			return $mod;															// ==>
+
+		} // Provided identifier.
+		
+		throw new Exception
+			( "Missing term reference",
+			  kERROR_PARAMETER );												// !@! ==>
+	
+	} // HandleLabel.
+
+		
+
+/*=======================================================================================
+ *																						*
  *								STATIC CONTAINER INTERFACE								*
  *																						*
  *======================================================================================*/
@@ -295,6 +493,181 @@ class COntologyTerm extends CTerm
 		return $theDatabase->Container( kCONTAINER_TERM_NAME );						// ==>
 	
 	} // DefaultContainer.
+
+		
+
+/*=======================================================================================
+ *																						*
+ *								STATIC RESOLUTION INTERFACE								*
+ *																						*
+ *======================================================================================*/
+
+
+	 
+	/*===================================================================================
+	 *	Resolve																			*
+	 *==================================================================================*/
+
+	/**
+	 * <h4>Resolve a term</h4>
+	 *
+	 * This method can be used to locate a term given the attributes that comprise its
+	 * identifier.
+	 *
+	 * The method accepts the following parameters:
+	 *
+	 * <ul>
+	 *	<li><tt>$theConnection</tt>: This parameter represents the connection from which the
+	 *		terms container must be resolved. If this parameter cannot be correctly
+	 *		determined, the method will raise an exception.
+	 *	<li><tt>$theIdentifier</tt>: This parameter can be the term native or global
+	 *		identifier, if the namespace is not provided, or the local identifier if the
+	 *		namespace is provided:
+	 *	 <ul>
+	 *		<li><i>Namespace provided:</i> The method will try to resolve the namespace and
+	 *			combine the namespace global identifier with the provided local identifier
+	 *			to locate the term.
+	 *		<li><i>Namespace not provided:</i> If the namespace was not provided, the
+	 *			method will perform the following queries in order:
+	 *		 <ul>
+	 *			<li><i>Native identifier:</i> The method will use the parameter as the
+	 *				native identifier.
+	 *			<li><i>Global identifier:</i> The method will use the term's
+	 *				{@link COntologyTerm::_id()} method to convert the global identifier
+	 *				into a native identifier.
+	 *		 </ul>
+	 *	 </ul>
+	 *	<li><tt>$theNamespace</tt>: The term namespace:
+	 *	 <ul>
+	 *		<li><tt>NULL</tt>: This indicates that either the term has no namespace, which
+	 *			means that the first parameter must either be the native or global
+	 *			identifier, or that the first parameter is all that is needed to locate the
+	 *			term.
+	 *		<li><tt>{@link COntologyTerm}</tt>: This type is expected to be the namespace
+	 *			term object:
+	 *		 <ul>
+	 *			<li><i>Object is committed:</i> The method will use the namespace's global
+	 *				identifier and concatenate it to the first parameter.
+	 *			<li><i>Object is not committed:</i> The method will use the namespace's
+	 *				global identifier; if that is missing, the method will either raise an
+	 *				exception, or return <tt>NULL</tt>, depending on the third parameter.
+	 *		 </ul>
+	 *		<li><i>other</i>: Any other type is interpreted as the term native identifier;
+	 *			if the namespace term cannot be found, the method will either raise an
+	 *			exception, or return <tt>NULL</tt>, depending on the third parameter.
+	 *	 </ul>
+	 *	<li><tt>$doThrow</tt>: If <tt>TRUE</tt>, any failure to resolve the term or its
+	 *			namespace, will raise an exception.
+	 * </ul>
+	 *
+	 * The method will return the found term, <tt>NULL</tt> if not found, or raise an
+	 * exception if the last parameter is <tt>TRUE</tt>.
+	 *
+	 * @param CConnection			$theConnection		Server, database or container.
+	 * @param string				$theIdentifier		Term local identifier.
+	 * @param mixed					$theNamespace		Namespace term reference.
+	 * @param boolean				$doThrow			If <tt>TRUE</tt> raise an exception.
+	 *
+	 * @static
+	 * @return COntologyTerm		Found term or <tt>NULL</tt>.
+	 *
+	 * @throws Exception
+	 */
+	static function Resolve( CConnection $theConnection, $theIdentifier,
+										 $theNamespace = NULL, $doThrow = FALSE )
+	{
+		//
+		// Check identifier.
+		//
+		if( $theIdentifier !== NULL )
+		{
+			//
+			// Handle namespace.
+			//
+			if( $theNamespace !== NULL )
+			{
+				//
+				// Locate namespace.
+				//
+				if( ! ($theNamespace instanceof CPersistentObject) )
+				{
+					//
+					// Locate namespace.
+					//
+					$theNamespace = static::Resolve( $theConnection,
+													 $theNamespace, NULL, $doThrow );
+					if( $theNamespace === NULL )
+						return NULL;												// ==>
+				
+				} // Provided namespace identifier.
+			
+				//
+				// Handle missing namespace identifier.
+				//
+				if( ! $theNamespace->offsetExists( kOFFSET_GID ) )
+				{
+					if( $doThrow )
+						throw new Exception
+							( "Missing term namespace global identifier",
+							  kERROR_PARAMETER );								// !@! ==>
+					
+					return NULL;													// ==>
+				
+				} // Missing namespace identifier.
+
+				//
+				// Build term identifier.
+				//
+				$id = static::_id( ($theNamespace->offsetGet( kOFFSET_GID )
+										  .kTOKEN_NAMESPACE_SEPARATOR
+										  .(string) $theIdentifier),
+										  $theConnection );
+				
+				//
+				// Locate term.
+				//
+				$term = static::NewObject( $theConnection, $id );
+				if( $term !== NULL )
+					return $term;													// ==>
+				
+				if( $doThrow )
+					throw new Exception
+						( "Term not found",
+						  kERROR_NOT_FOUND );									// !@! ==>
+				
+				return NULL;														// ==>
+			
+			} // Provided namespace.
+			
+			//
+			// Try native identifier.
+			//
+			$term = static::NewObject( $theConnection, $theIdentifier );
+			if( $term !== NULL )
+				return $term;														// ==>
+			
+			//
+			// Try global identifier.
+			//
+			$term = static::NewObject( $theConnection,
+									   static::_id( $theIdentifier, $theConnection ) );
+			if( $term !== NULL )
+				return $term;														// ==>
+			
+			if( $doThrow )
+				throw new Exception
+					( "Term not found",
+					  kERROR_NOT_FOUND );										// !@! ==>
+			
+			return NULL;															// ==>
+		
+		} // Provided local or global identifier.
+		
+		throw new Exception
+			( "Missing term reference",
+			  kERROR_PARAMETER );													// !@! ==>
+
+	} // Resolve.
 		
 
 

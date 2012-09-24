@@ -62,6 +62,11 @@ require_once( kPATH_MYWRAPPER_LIBRARY_CLASS."/CEdge.php" );
  * is required by this class because of its {@link kOFFSET_PREDICATE} offset. This offset is
  * managed by the tag class, this class locks the offset.
  *
+ * The class also adds two enumerated sets that represent respectively the subject and the
+ * object vertex kind. These attributes are used to determine the nature of the subject and
+ * vertex nodes in terms of the graph path, rather than committing these kinds directly to
+ * the node.
+ *
  * The class implements the static method, {@link DefaultContainer()}, it will use the
  * {@link kCONTAINER_EDGE_NAME} constant. Note that when passing {@link CConnection} based
  * objects to the persisting methods of this class, you should provide preferably Database
@@ -120,6 +125,144 @@ class COntologyEdge extends CEdge
  *																						*
  *======================================================================================*/
 
+
+	 
+	/*===================================================================================
+	 *	SubjectKind																		*
+	 *==================================================================================*/
+
+	/**
+	 * <h4>Manage subject vertex kind set</h4>
+	 *
+	 * The subject vertex kind set, {@link kOFFSET_KIND_SUBJECT}, holds a list of unique
+	 * values that represent the different kinds or types associated with the subject vertex
+	 * node of the current edge.
+	 *
+	 * This offset collects the list of these qualifications in an enumerated set that can
+	 * be managed with the following parameters:
+	 *
+	 * <ul>
+	 *	<li><tt>$theValue</tt>: Depending on the next parameter, this may either refer to
+	 *		the value to be set or to the index of the element to be retrieved or deleted:
+	 *	 <ul>
+	 *		<li><tt>NULL</tt>: This value indicates that we want to operate on all elements,
+	 *			which means, in practical terms, that we either want to retrieve or delete
+	 *			the full list. If the next parameter resolves to <tt>TRUE</tt>, the method
+	 *			will default to retrieving the current list and no new element will be
+	 *			added.
+	 *		<li><tt>array</tt>: An array indicates that we want to operate on a list of
+	 *			values and that the next parameter will also be provided as a list. Note
+	 *			that {@link ArrayObject} instances are not considered here as arrays.
+	 *		<li><i>other</i>: Any other type represents either the new value to be added or
+	 *			the index to the value to be returned or deleted.
+	 *	 </ul>
+	 *	<li><tt>$theOperation</tt>: This parameter represents the operation to be performed
+	 *		whose scope depends on the value of the previous parameter:
+	 *	 <ul>
+	 *		<li><tt>NULL</tt>: Return the element or full list.
+	 *		<li><tt>FALSE</tt>: Delete the element or full list.
+	 *		<li><tt>array</tt>: This type is only considered if the <tt>$theValue</tt>
+	 *			parameter is provided as an array: the method will be called for each
+	 *			element of the <tt>$theValue</tt> parameter matched with the corresponding
+	 *			element of this parameter, which also means that both both parameters must
+	 *			share the same count.
+	 *		<li><i>other</i>: Add the <tt>$theValue</tt> value to the list. If you provided
+	 *			<tt>NULL</tt> in the previous parameter, the operation will be reset to
+	 *			<tt>NULL</tt>.
+	 *	 </ul>
+	 *	<li><tt>$getOld</tt>: Determines what the method will return:
+	 *	 <ul>
+	 *		<li><tt>TRUE</tt>: Return the value <i>before</i> it was eventually modified.
+	 *		<li><tt>FALSE</tt>: Return the value <i>after</i> it was eventually modified.
+	 *	 </ul>
+	 * </ul>
+	 *
+	 * @param mixed					$theValue			Value or index.
+	 * @param mixed					$theOperation		Operation.
+	 * @param boolean				$getOld				TRUE get old value.
+	 *
+	 * @access public
+	 * @return mixed				<i>New</i> or <i>old</i> kind.
+	 *
+	 * @uses ManageObjectSetOffset()
+	 *
+	 * @see kOFFSET_KIND_SUBJECT
+	 */
+	public function SubjectKind( $theValue = NULL, $theOperation = NULL, $getOld = FALSE )
+	{
+		return ManageObjectSetOffset
+			( $this, kOFFSET_KIND_SUBJECT, $theValue, $theOperation, $getOld );		// ==>
+
+	} // SubjectKind.
+
+	 
+	/*===================================================================================
+	 *	ObjectKind																		*
+	 *==================================================================================*/
+
+	/**
+	 * <h4>Manage object vertex kind set</h4>
+	 *
+	 * The object vertex kind set, {@link kOFFSET_KIND_OBJECT}, holds a list of unique
+	 * values that represent the different kinds or types associated with the object vertex
+	 * node of the current edge.
+	 *
+	 * This offset collects the list of these qualifications in an enumerated set that can
+	 * be managed with the following parameters:
+	 *
+	 * <ul>
+	 *	<li><tt>$theValue</tt>: Depending on the next parameter, this may either refer to
+	 *		the value to be set or to the index of the element to be retrieved or deleted:
+	 *	 <ul>
+	 *		<li><tt>NULL</tt>: This value indicates that we want to operate on all elements,
+	 *			which means, in practical terms, that we either want to retrieve or delete
+	 *			the full list. If the next parameter resolves to <tt>TRUE</tt>, the method
+	 *			will default to retrieving the current list and no new element will be
+	 *			added.
+	 *		<li><tt>array</tt>: An array indicates that we want to operate on a list of
+	 *			values and that the next parameter will also be provided as a list. Note
+	 *			that {@link ArrayObject} instances are not considered here as arrays.
+	 *		<li><i>other</i>: Any other type represents either the new value to be added or
+	 *			the index to the value to be returned or deleted.
+	 *	 </ul>
+	 *	<li><tt>$theOperation</tt>: This parameter represents the operation to be performed
+	 *		whose scope depends on the value of the previous parameter:
+	 *	 <ul>
+	 *		<li><tt>NULL</tt>: Return the element or full list.
+	 *		<li><tt>FALSE</tt>: Delete the element or full list.
+	 *		<li><tt>array</tt>: This type is only considered if the <tt>$theValue</tt>
+	 *			parameter is provided as an array: the method will be called for each
+	 *			element of the <tt>$theValue</tt> parameter matched with the corresponding
+	 *			element of this parameter, which also means that both both parameters must
+	 *			share the same count.
+	 *		<li><i>other</i>: Add the <tt>$theValue</tt> value to the list. If you provided
+	 *			<tt>NULL</tt> in the previous parameter, the operation will be reset to
+	 *			<tt>NULL</tt>.
+	 *	 </ul>
+	 *	<li><tt>$getOld</tt>: Determines what the method will return:
+	 *	 <ul>
+	 *		<li><tt>TRUE</tt>: Return the value <i>before</i> it was eventually modified.
+	 *		<li><tt>FALSE</tt>: Return the value <i>after</i> it was eventually modified.
+	 *	 </ul>
+	 * </ul>
+	 *
+	 * @param mixed					$theValue			Value or index.
+	 * @param mixed					$theOperation		Operation.
+	 * @param boolean				$getOld				TRUE get old value.
+	 *
+	 * @access public
+	 * @return mixed				<i>New</i> or <i>old</i> kind.
+	 *
+	 * @uses ManageObjectSetOffset()
+	 *
+	 * @see kOFFSET_KIND_OBJECT
+	 */
+	public function ObjectKind( $theValue = NULL, $theOperation = NULL, $getOld = FALSE )
+	{
+		return ManageObjectSetOffset
+			( $this, kOFFSET_KIND_OBJECT, $theValue, $theOperation, $getOld );		// ==>
+
+	} // ObjectKind.
 
 	 
 	/*===================================================================================

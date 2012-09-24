@@ -6,7 +6,7 @@
 
 	<title>Class COntologyTag | MyWrapper Reference Documentation</title>
 
-	<script type="text/javascript" src="resources/combined.js?368249000"></script>
+	<script type="text/javascript" src="resources/combined.js?3994123307"></script>
 	<script type="text/javascript" src="elementlist.js?4206909522"></script>
 	<link rel="stylesheet" type="text/css" media="all" href="resources/style.css?3505392360" />
 
@@ -114,6 +114,12 @@ committed will be saved when the current tag is saved.</p>
 version of the global identifier and can be used to identify duplicate
 objects.</p>
 
+<p>This class prevents updating the full object once it has been inserted for
+the first time. This behaviour is necessary because tags are referenced by many
+other objects, so updating a full tag object is risky, since it may have been
+updated elsewhere: for this reason the <code><a href="class-COntologyTag.html#_Update">COntologyTag::Update()</a></code> and <code><a href="class-COntologyTag.html#_Replace">COntologyTag::Replace()</a></code>
+methods will raise an exception.</p>
+
 <p>Objects of this class use a sequence number as their native identifier tagged
 as kSEQUENCE_KEY_TAG and feature a default container name kCONTAINER_TAG_NAME.</p>
 
@@ -195,7 +201,7 @@ as kSEQUENCE_KEY_TAG and feature a default container name kCONTAINER_TAG_NAME.</
 				<b>Author:</b>
 				Milko A. Škofič &lt;<a
 href="mailto:m.skofic&#64;cgiar.org">m.skofic&#64;<!---->cgiar.org</a>&gt;<br />
-		<b>Located at</b> <a href="source-class-COntologyTag.html#43-845" title="Go to source code">COntologyTag.php</a><br />
+		<b>Located at</b> <a href="source-class-COntologyTag.html#43-943" title="Go to source code">COntologyTag.php</a><br />
 	</div>
 
 
@@ -213,7 +219,7 @@ href="mailto:m.skofic&#64;cgiar.org">m.skofic&#64;<!---->cgiar.org</a>&gt;<br />
 
 		<td class="name"><div>
 		<a class="anchor" href="#_PushItem">#</a>
-		<code><a href="source-class-COntologyTag.html#85-198" title="Go to source code">PushItem</a>( <span>mixed <var>$theValue</var></span> )</code>
+		<code><a href="source-class-COntologyTag.html#90-203" title="Go to source code">PushItem</a>( <span>mixed <var>$theValue</var></span> )</code>
 
 		<div class="description short">
 			
@@ -264,6 +270,105 @@ href="mailto:m.skofic&#64;cgiar.org">m.skofic&#64;<!---->cgiar.org</a>&gt;<br />
 		</div>
 		</div></td>
 	</tr>
+	<tr data-order="Update" id="_Update">
+
+		<td class="attributes"><code>
+			 public 
+			
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_Update">#</a>
+		<code><a href="source-class-COntologyTag.html#219-249" title="Go to source code">Update</a>( <span><code><a href="class-CConnection.html">CConnection</a></code> <var>$theConnection</var></span> )</code>
+
+		<div class="description short">
+			
+<h4>Update the object in a container</h4>
+
+		</div>
+
+		<div class="description detailed hidden">
+			
+<h4>Update the object in a container</h4>
+
+<p>We overload this method to raise an exception: objects of this class can only
+be inserted, after this one can only modify their attributes using the
+modification interface provided by container objects.</p>
+
+
+
+				<h4>Parameters</h4>
+				<div class="list"><dl>
+					<dt><var>$theConnection</var></dt>
+					<dd><code><code><a href="class-CConnection.html">CConnection</a></code></code><br>$theConnection Server, database or container.</dd>
+				</dl></div>
+
+
+				<h4>Throws</h4>
+				<div class="list">
+					<code><code><a href="class-Exception.html">Exception</a></code></code><br />
+				</div>
+
+
+				<h4>Overrides</h4>
+				<div class="list"><code><a href="class-CPersistentDocument.html#_Update">CPersistentDocument::Update()</a></code></div>
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="Replace" id="_Replace">
+
+		<td class="attributes"><code>
+			 public 
+			mixed
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_Replace">#</a>
+		<code><a href="source-class-COntologyTag.html#256-296" title="Go to source code">Replace</a>( <span><code><a href="class-CConnection.html">CConnection</a></code> <var>$theConnection</var></span> )</code>
+
+		<div class="description short">
+			
+<h4>Replace the object into a container</h4>
+
+		</div>
+
+		<div class="description detailed hidden">
+			
+<h4>Replace the object into a container</h4>
+
+<p>We overload this method to raise an exception: objects of this class can only
+be inserted, after this one can only modify their attributes using the
+modification interface provided by container objects.</p>
+
+<p>In this class we prevent replacing a committed object and allow inserting a
+non committed object.</p>
+
+
+
+				<h4>Parameters</h4>
+				<div class="list"><dl>
+					<dt><var>$theConnection</var></dt>
+					<dd><code><code><a href="class-CConnection.html">CConnection</a></code></code><br>$theConnection Server, database or container.</dd>
+				</dl></div>
+
+				<h4>Returns</h4>
+				<div class="list">
+					<code>mixed</code><br>The object's native identifier.<br />
+				</div>
+
+
+
+				<h4>Overrides</h4>
+				<div class="list"><code><a href="class-CPersistentDocument.html#_Replace">CPersistentDocument::Replace()</a></code></div>
+
+		</div>
+		</div></td>
+	</tr>
 	<tr data-order="DefaultContainer" id="_DefaultContainer">
 
 		<td class="attributes"><code>
@@ -275,7 +380,7 @@ href="mailto:m.skofic&#64;cgiar.org">m.skofic&#64;<!---->cgiar.org</a>&gt;<br />
 
 		<td class="name"><div>
 		<a class="anchor" href="#_DefaultContainer">#</a>
-		<code><a href="source-class-COntologyTag.html#214-231" title="Go to source code">DefaultContainer</a>( <span><code><a href="class-CDatabase.html">CDatabase</a></code> <var>$theDatabase</var></span> )</code>
+		<code><a href="source-class-COntologyTag.html#312-329" title="Go to source code">DefaultContainer</a>( <span><code><a href="class-CDatabase.html">CDatabase</a></code> <var>$theDatabase</var></span> )</code>
 
 		<div class="description short">
 			
@@ -326,7 +431,7 @@ kCONTAINER_TAG_NAME name.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#__index">#</a>
-		<code><a href="source-class-COntologyTag.html#247-328" title="Go to source code">_index</a>( <span><code><a href="class-CConnection.html">CConnection</a></code> <var>$theConnection</var></span>, <span>bitfield <var>$theModifiers</var></span> )</code>
+		<code><a href="source-class-COntologyTag.html#345-426" title="Go to source code">_index</a>( <span><code><a href="class-CConnection.html">CConnection</a></code> <var>$theConnection</var></span>, <span>bitfield <var>$theModifiers</var></span> )</code>
 
 		<div class="description short">
 			
@@ -394,7 +499,7 @@ each element without checking if it is in the form of an object.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#__Preset">#</a>
-		<code><a href="source-class-COntologyTag.html#344-384" title="Go to source code">_Preset</a>( <span>reference <var>&amp; $theOffset</var></span>, <span>reference <var>&amp; $theValue</var></span> )</code>
+		<code><a href="source-class-COntologyTag.html#442-482" title="Go to source code">_Preset</a>( <span>reference <var>&amp; $theOffset</var></span>, <span>reference <var>&amp; $theValue</var></span> )</code>
 
 		<div class="description short">
 			
@@ -458,7 +563,7 @@ modification.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#__Preunset">#</a>
-		<code><a href="source-class-COntologyTag.html#391-425" title="Go to source code">_Preunset</a>( <span>reference <var>&amp; $theOffset</var></span> )</code>
+		<code><a href="source-class-COntologyTag.html#489-523" title="Go to source code">_Preunset</a>( <span>reference <var>&amp; $theOffset</var></span> )</code>
 
 		<div class="description short">
 			
@@ -514,7 +619,7 @@ offset in all cases.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#__PrecommitRelated">#</a>
-		<code><a href="source-class-COntologyTag.html#441-515" title="Go to source code">_PrecommitRelated</a>( <span>reference <var>&amp; $theConnection</var></span>, <span>reference <var>&amp; $theModifiers</var></span> )</code>
+		<code><a href="source-class-COntologyTag.html#539-613" title="Go to source code">_PrecommitRelated</a>( <span>reference <var>&amp; $theConnection</var></span>, <span>reference <var>&amp; $theModifiers</var></span> )</code>
 
 		<div class="description short">
 			
@@ -568,7 +673,7 @@ uncommitted objects and replace them with their native identifier.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#__PrecommitIdentify">#</a>
-		<code><a href="source-class-COntologyTag.html#522-616" title="Go to source code">_PrecommitIdentify</a>( <span>reference <var>&amp; $theConnection</var></span>, <span>reference <var>&amp; $theModifiers</var></span> )</code>
+		<code><a href="source-class-COntologyTag.html#620-714" title="Go to source code">_PrecommitIdentify</a>( <span>reference <var>&amp; $theConnection</var></span>, <span>reference <var>&amp; $theModifiers</var></span> )</code>
 
 		<div class="description short">
 			
@@ -633,7 +738,7 @@ native identifiers, since they will have been set here.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#__PostcommitRelated">#</a>
-		<code><a href="source-class-COntologyTag.html#632-714" title="Go to source code">_PostcommitRelated</a>( <span>reference <var>&amp; $theConnection</var></span>, <span>reference <var>&amp; $theModifiers</var></span> )</code>
+		<code><a href="source-class-COntologyTag.html#730-812" title="Go to source code">_PostcommitRelated</a>( <span>reference <var>&amp; $theConnection</var></span>, <span>reference <var>&amp; $theModifiers</var></span> )</code>
 
 		<div class="description short">
 			
@@ -694,7 +799,7 @@ remove it.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#__ReferenceInNode">#</a>
-		<code><a href="source-class-COntologyTag.html#730-782" title="Go to source code">_ReferenceInNode</a>( <span><code><a href="class-CConnection.html">CConnection</a></code> <var>$theConnection</var></span>, <span>mixed <var>$theNode</var></span>, <span>boolean <var>$doAdd</var></span> )</code>
+		<code><a href="source-class-COntologyTag.html#828-880" title="Go to source code">_ReferenceInNode</a>( <span><code><a href="class-CConnection.html">CConnection</a></code> <var>$theConnection</var></span>, <span>mixed <var>$theNode</var></span>, <span>boolean <var>$doAdd</var></span> )</code>
 
 		<div class="description short">
 			
@@ -757,7 +862,7 @@ failed.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#__ReferenceInTerm">#</a>
-		<code><a href="source-class-COntologyTag.html#789-841" title="Go to source code">_ReferenceInTerm</a>( <span><code><a href="class-CConnection.html">CConnection</a></code> <var>$theConnection</var></span>, <span>mixed <var>$theTerm</var></span>, <span>boolean <var>$doAdd</var></span> )</code>
+		<code><a href="source-class-COntologyTag.html#887-939" title="Go to source code">_ReferenceInTerm</a>( <span><code><a href="class-CConnection.html">CConnection</a></code> <var>$theConnection</var></span>, <span>mixed <var>$theTerm</var></span>, <span>boolean <var>$doAdd</var></span> )</code>
 
 		<div class="description short">
 			
@@ -843,11 +948,9 @@ failed.</p>
 			<a href="class-CPersistentDocument.html#_Delete">Delete()</a>, 
 			<a href="class-CPersistentDocument.html#_Insert">Insert()</a>, 
 			<a href="class-CPersistentDocument.html#_NID">NID()</a>, 
-			<a href="class-CPersistentDocument.html#_Replace">Replace()</a>, 
 			<a href="class-CPersistentDocument.html#_ResolveClassContainer">ResolveClassContainer()</a>, 
 			<a href="class-CPersistentDocument.html#_ResolveContainer">ResolveContainer()</a>, 
 			<a href="class-CPersistentDocument.html#_Restore">Restore()</a>, 
-			<a href="class-CPersistentDocument.html#_Update">Update()</a>, 
 			<a href="class-CPersistentDocument.html#__Postcommit">_Postcommit()</a>, 
 			<a href="class-CPersistentDocument.html#__PostcommitCleanup">_PostcommitCleanup()</a>, 
 			<a href="class-CPersistentDocument.html#__PostcommitStatus">_PostcommitStatus()</a>, 

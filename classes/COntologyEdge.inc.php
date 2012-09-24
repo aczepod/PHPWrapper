@@ -30,6 +30,24 @@
  */
 define( "kOFFSET_UID",							'_uniqueIdentifier' );
 
+/**
+ * Subject vertex kind.
+ *
+ * This tag identifies the subject vertex kind, it represents a set of enumerated values
+ * that define the subject vertex kind in the current edge.
+ * For instance one may indicate that the subject vertex of the relationship is a root node.
+ */
+define( "kOFFSET_KIND_SUBJECT",					'_subjectVertexKind' );
+
+/**
+ * Object vertex kind.
+ *
+ * This tag identifies the object vertex kind, it represents a set of enumerated values
+ * that define the object vertex kind in the current edge.
+ * For instance one may indicate that the object vertex of the relationship is a scale node.
+ */
+define( "kOFFSET_KIND_OBJECT",					'_objectVertexKind' );
+
 /*=======================================================================================
  *	DEFAULT CONTAINER NAMES																*
  *======================================================================================*/

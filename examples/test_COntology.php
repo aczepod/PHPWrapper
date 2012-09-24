@@ -271,86 +271,39 @@ try
 	echo( '<hr />' );
 	
 	//
-	// Create predicate term.
+	// Create IS-A predicate term.
 	//
-	echo( '<h4>Create predicate term</h4>' );
-	echo( '<h5>$term = $test->NewTerm( "PREDICATE", $namespace[ kOFFSET_NID ], "Predicate", "This is the predicate term", "en" );</h5>' );
-	$term = $test->NewTerm( "PREDICATE", $namespace[ kOFFSET_NID ], "Predicate", "This is the predicate term", "en" );
+	echo( '<h4>Create IS-A predicate term</h4>' );
+	echo( '<h5>$term = $test->NewTerm( "IS-A", NULL, "Is-a", "This is the “is-a” predicate term", "en" );</h5>' );
+	$term = $test->NewTerm( "IS-A", NULL, "Is-a", "This is the “is-a” predicate term", "en" );
 	echo( '<pre>' ); print_r( $term ); echo( '</pre>' );
 	echo( '<hr />' );
 	
 	//
-	// Create trait term.
+	// Create TRAIT-OF predicate term.
 	//
-	echo( '<h4>Create trait term</h4>' );
-	echo( '<h5>$term = $test->NewTerm( "TRAIT", $namespace[ kOFFSET_NID ], "Trait", "This is the trait term", "en" );</h5>' );
-	$term = $test->NewTerm( "TRAIT", $namespace[ kOFFSET_NID ], "Trait", "This is the trait term", "en" );
+	echo( '<h4>Create TRAIT-OF predicate term</h4>' );
+	echo( '<h5>$term = $test->NewTerm( "TRAIT-OF", NULL, "Trait-of", "This is the “trait-of” predicate term", "en" );</h5>' );
+	$term = $test->NewTerm( "TRAIT-OF", NULL, "Trait-of", "This is the “trait-of” predicate term", "en" );
 	echo( '<pre>' ); print_r( $term ); echo( '</pre>' );
 	echo( '<hr />' );
 	
 	//
-	// Create method term.
+	// Create METHOD-OF predicate term.
 	//
-	echo( '<h4>Create method term</h4>' );
-	echo( '<h5>$term = $test->NewTerm( "METHOD", $namespace[ kOFFSET_NID ], "Method", "This is the method term", "en" );</h5>' );
-	$term = $test->NewTerm( "METHOD", $namespace[ kOFFSET_NID ], "Method", "This is the method term", "en" );
+	echo( '<h4>Create METHOD-OF predicate term</h4>' );
+	echo( '<h5>$term = $test->NewTerm( "METHOD-OF", NULL, "Method-of", "This is the “method-of” predicate term", "en" );</h5>' );
+	$term = $test->NewTerm( "METHOD-OF", NULL, "Method-of", "This is the “method-of” predicate term", "en" );
 	echo( '<pre>' ); print_r( $term ); echo( '</pre>' );
 	echo( '<hr />' );
 	
 	//
-	// Create scale term.
+	// Create SCALE-OF predicate term.
 	//
-	echo( '<h4>Create scale term</h4>' );
-	echo( '<h5>$term = $test->NewTerm( "SCALE", $namespace, "Scale", "This is the scale term", "en" );</h5>' );
-	$term = $test->NewTerm( "SCALE", $namespace, "Scale", "This is the scale term", "en" );
+	echo( '<h4>Create SCALE-OF predicate term</h4>' );
+	echo( '<h5>$term = $test->NewTerm( "SCALE-OF", NULL, "Scale-of", "This is the “scale-of” predicate term", "en" );</h5>' );
+	$term = $test->NewTerm( "SCALE-OF", NULL, "Scale-of", "This is the “scale-of” predicate term", "en" );
 	echo( '<pre>' ); print_r( $term ); echo( '</pre>' );
-	echo( '<hr />' );
-exit;
-	
-	//
-	// Create ontology node.
-	//
-	echo( '<h4>Create ontology node</h4>' );
-	$nodeOnto = new COntologyNode();
-	$nodeOnto->Term( $termOnto );
-	$nodeOnto->Insert( $database );
-	echo( '<pre>' ); print_r( $nodeOnto ); echo( '</pre>' );
-	
-	//
-	// Create category node.
-	//
-	echo( '<h4>Create category node</h4>' );
-	$nodeCat = new COntologyNode();
-	$nodeCat->Term( $termCat );
-	$nodeCat->Insert( $database );
-	echo( '<pre>' ); print_r( $nodeCat ); echo( '</pre>' );
-	
-	//
-	// Create trait node.
-	//
-	echo( '<h4>Create trait node</h4>' );
-	$nodeTrait = new COntologyNode();
-	$nodeTrait->Term( $termTrait );
-	$nodeTrait->Insert( $database );
-	echo( '<pre>' ); print_r( $nodeTrait ); echo( '</pre>' );
-	
-	//
-	// Create method node.
-	//
-	echo( '<h4>Create method node</h4>' );
-	$nodeMethod = new COntologyNode();
-	$nodeMethod->Term( $termMethod );
-	$nodeMethod->Insert( $database );
-	echo( '<pre>' ); print_r( $nodeMethod ); echo( '</pre>' );
-	
-	//
-	// Create scale node.
-	//
-	echo( '<h4>Create scale node</h4>' );
-	$nodeScale = new COntologyNode();
-	$nodeScale->Term( $termScale );
-	$nodeScale->Insert( $database );
-	echo( '<pre>' ); print_r( $nodeScale ); echo( '</pre>' );
 	echo( '<hr />' );
 	echo( '<hr />' );
 
@@ -364,60 +317,79 @@ exit;
 	echo( '<hr />' );
 
 	//
-	// Get predicate term with global identifier.
+	// Get ontology term with global identifier.
 	//
-	echo( '<h4>Get predicate term with global identifier</h4>' );
-	echo( '<h5>$term = $test->NewTerm( "NAMESPACE:PREDICATE" );</h5>' );
-	$term = $test->NewTerm( "NAMESPACE:PREDICATE" );
+	echo( '<h4>Get ontology term with global identifier</h4>' );
+	echo( '<h5>$term = $test->NewTerm( "NAMESPACE:ONTOLOGY" );</h5>' );
+	$term = $test->NewTerm( "NAMESPACE:ONTOLOGY" );
 	echo( '<pre>' ); print_r( $term ); echo( '</pre>' );
 	echo( '<hr />' );
 
 	//
-	// Get predicate term with namespace object.
+	// Get ontology term with namespace object.
 	//
-	echo( '<h4>Get predicate term with namespace object</h4>' );
-	echo( '<h5>$term = $test->NewTerm( "PREDICATE", $namespace );</h5>' );
-	$term = $test->NewTerm( "PREDICATE", $namespace );
+	echo( '<h4>Get ontology term with namespace object</h4>' );
+	echo( '<h5>$term = $test->NewTerm( "ONTOLOGY", $namespace );</h5>' );
+	$term = $test->NewTerm( "ONTOLOGY", $namespace );
 	echo( '<pre>' ); print_r( $term ); echo( '</pre>' );
 	echo( '<hr />' );
 
 	//
-	// Get predicate term with namespace identifier.
+	// Get ontology term with namespace identifier.
 	//
-	echo( '<h4>Get predicate term with namespace identifier</h4>' );
-	echo( '<h5>$term = $test->NewTerm( "PREDICATE", $namespace[ kOFFSET_NID ] );</h5>' );
-	$term = $test->NewTerm( "PREDICATE", $namespace[ kOFFSET_NID ] );
+	echo( '<h4>Get ontology term with namespace identifier</h4>' );
+	echo( '<h5>$term = $test->NewTerm( "ONTOLOGY", $namespace[ kOFFSET_NID ] );</h5>' );
+	$term = $test->NewTerm( "ONTOLOGY", $namespace[ kOFFSET_NID ] );
 	echo( '<pre>' ); print_r( $term ); echo( '</pre>' );
 	echo( '<hr />' );
 	echo( '<hr />' );
+exit;
 
 	//
-	// Create new term.
+	// Create ontology node.
 	//
-	echo( '<h4>Create new term</h4>' );
-	echo( '<h5>$term = $test->NewTerm( "NEW", $namespace, "Label", "Description", "en" );</h5>' );
-	$term = $test->NewTerm( "NEW", $namespace, "Label", "Description", "en" );
-	echo( '<pre>' ); print_r( $term ); echo( '</pre>' );
+	echo( '<h4>Create ontology node</h4>' );
+	echo( '<h5>$node = $test->NewRootNode( "NAMESPACE:ONTOLOGY" );</h5>' );
+	$node = $test->NewRootNode( "NAMESPACE:ONTOLOGY" );
+	echo( '<pre>' ); print_r( $node ); echo( '</pre>' );
 	echo( '<hr />' );
-
+	
 	//
-	// Insert new term.
+	// Create category node.
 	//
-	echo( '<h4>Insert new term</h4>' );
-	echo( '<h5>$status = $test->Insert( $term );</h5>' );
-	$status = $test->Insert( $term );
-	echo( 'Status: <pre>' ); print_r( $status ); echo( '</pre>' );
-	echo( 'Term: <pre>' ); print_r( $term ); echo( '</pre>' );
+	echo( '<h4>Create category node</h4>' );
+	echo( '<h5>$term = $test->ResolveTerm( "CATEGORY", "NAMESPACE", TRUE );</h5>' );
+	$term = $test->ResolveTerm( "CATEGORY", "NAMESPACE", TRUE );
+	echo( '<h5>$node = $test->NewNode( $term );</h5>' );
+	$node = $test->NewNode( $term );
+	echo( '<pre>' ); print_r( $node ); echo( '</pre>' );
 	echo( '<hr />' );
+	
+	//
+	// Create trait node.
+	//
+	echo( '<h4>Create trait node</h4>' );
+	echo( '<h5>$node = $test->NewNode( "TRAIT", $namespace, "Trait", "This is the trait term", "en" );</h5>' );
+	$node = $test->NewNode( "TRAIT", $namespace, "Trait", "This is the trait term", "en" );
+	echo( '<pre>' ); print_r( $node ); echo( '</pre>' );
 	echo( '<hr />' );
-
+	
 	//
-	// Retrieve ontology node.
+	// Create method node.
 	//
-	echo( '<h4>Retrieve ontology </h4>' );
-	echo( '<h5>$node = $test->NewNode( $termOnto );</h5>' );
-	$node = $test->NewNode( $termOnto );
-	echo( 'Nodes: <pre>' ); print_r( $node ); echo( '</pre>' );
+	echo( '<h4>Create method node</h4>' );
+	echo( '<h5>$node = $test->NewNode( "METHOD", $namespace[ kOFFSET_NID ], "Method", "This is the method term", "en" );</h5>' );
+	$node = $test->NewNode( "TRAIT", $namespace[ kOFFSET_NID ], "Trait", "This is the trait term", "en" );
+	echo( '<pre>' ); print_r( $node ); echo( '</pre>' );
+	echo( '<hr />' );
+	
+	//
+	// Create scale node.
+	//
+	echo( '<h4>Create scale node</h4>' );
+	echo( '<h5>$node = $test->NewNode( "SCALE", $namespace, "Scale", "This is the scale term", "en" );</h5>' );
+	$node = $test->NewNode( "SCALE", $namespace, "Scale", "This is the scale term", "en" );
+	echo( '<pre>' ); print_r( $node ); echo( '</pre>' );
 	echo( '<hr />' );
 	echo( '<hr />' );
 }

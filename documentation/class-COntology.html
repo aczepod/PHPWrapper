@@ -6,7 +6,7 @@
 
 	<title>Class COntology | MyWrapper Reference Documentation</title>
 
-	<script type="text/javascript" src="resources/combined.js?368249000"></script>
+	<script type="text/javascript" src="resources/combined.js?3994123307"></script>
 	<script type="text/javascript" src="elementlist.js?4206909522"></script>
 	<link rel="stylesheet" type="text/css" media="all" href="resources/style.css?3505392360" />
 
@@ -170,7 +170,7 @@ the database in which the ontology resides.</p>
 				<b>Author:</b>
 				Milko A. Škofič &lt;<a
 href="mailto:m.skofic&#64;cgiar.org">m.skofic&#64;<!---->cgiar.org</a>&gt;<br />
-		<b>Located at</b> <a href="source-class-COntology.html#68-872" title="Go to source code">COntology.php</a><br />
+		<b>Located at</b> <a href="source-class-COntology.html#68-1203" title="Go to source code">COntology.php</a><br />
 	</div>
 
 
@@ -288,7 +288,7 @@ returning its name.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#_NewTerm">#</a>
-		<code><a href="source-class-COntology.html#170-338" title="Go to source code">NewTerm</a>( <span>string <var>$theIdentifier</var></span>, <span>mixed <var>$theNamespace</var> = <span class="php-keyword1">NULL</span></span>, <span>string <var>$theLabel</var> = <span class="php-keyword1">NULL</span></span>, <span>string <var>$theDescription</var> = <span class="php-keyword1">NULL</span></span>, <span>string <var>$theLanguage</var> = <span class="php-keyword1">NULL</span> </span> )</code>
+		<code><a href="source-class-COntology.html#170-294" title="Go to source code">NewTerm</a>( <span>string <var>$theIdentifier</var></span>, <span>mixed <var>$theNamespace</var> = <span class="php-keyword1">NULL</span></span>, <span>string <var>$theLabel</var> = <span class="php-keyword1">NULL</span></span>, <span>string <var>$theDescription</var> = <span class="php-keyword1">NULL</span></span>, <span>string <var>$theLanguage</var> = <span class="php-keyword1">NULL</span> </span> )</code>
 
 		<div class="description short">
 			
@@ -389,7 +389,7 @@ will create a new one, commit it and return it.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#_NewNode">#</a>
-		<code><a href="source-class-COntology.html#345-484" title="Go to source code">NewNode</a>( <span>mixed <var>$theIdentifier</var></span> )</code>
+		<code><a href="source-class-COntology.html#301-450" title="Go to source code">NewNode</a>( <span>mixed <var>$theIdentifier</var></span>, <span>mixed <var>$theNamespace</var> = <span class="php-keyword1">NULL</span></span>, <span>string <var>$theLabel</var> = <span class="php-keyword1">NULL</span></span>, <span>string <var>$theDescription</var> = <span class="php-keyword1">NULL</span></span>, <span>string <var>$theLanguage</var> = <span class="php-keyword1">NULL</span></span>, <span>boolean <var>$doNew</var> = <span class="php-keyword1">FALSE</span> </span> )</code>
 
 		<div class="description short">
 			
@@ -404,33 +404,69 @@ will create a new one, commit it and return it.</p>
 <p>This method can be used to instantiate a new node, retrieve an existing node
 by identifier, or retrieve the list of nodes matching a term.</p>
 
-<p>The method expects a single parameter that may represent either the node
-identifier, or the term object or identifier:</p>
+<p>The method expects either a node identifier or a term reference. In the first
+case the method will return the matching node or <tt>NULL</tt>. In the second
+case the method will either return the list of nodes related to the provided
+term, or a new node related to that term.</p>
+
+<p>This means that when you provide data for a new term, this will be
+instantiated and committed in all cases.</p>
+
+<p>The method expects the following parameters:</p>
 
 <ul>
-	<li><tt>integer</tt>: In this case the method assumes that the parameter
-	represents the node identifier: it will attempt to retrieve the node, if it is
-	not found, the method will return <tt>NULL</tt>.</li>
-
-	<li><tt><code><a href="class-COntologyTerm.html">COntologyTerm</a></code></tt>: In this case the method will check if the
-	term exists:
+	<li><tt>$theIdentifier</tt>: This parameter represents the node identifier, or
+	the term reference:
 		<ul>
-			<li><i>Term exists</i>: The method will locate all nodes that relate to that
-			term and return the array of found nodes, which will be empty if there are no
-			matches.</li>
+			<li><tt>integer</tt>: In this case the method assumes that the parameter
+			represents the node identifier: it will attempt to retrieve the node, if it is
+			not found, the method will return <tt>NULL</tt>. With this option all other
+			parameter are ignored.</li>
 
-			<li><i>Term is new</i>: The method will return a new node related to that
-			term.</li>
+			<li><tt><code><a href="class-COntologyTerm.html">COntologyTerm</a></code></tt>: In this case the method assumes the
+			parameter represents the term object: if the term is not committed, the method
+			will return a new node, if the term is committed, the method will try to locate
+			all nodes related to that term: if none are found, or if the last parameter is
+			<tt>TRUE</tt>, the method will return a new node related to that term; if at
+			least one node is found, the method will return the list of nodes related to
+			that term.</li>
+
+			<li><i>other</i>: In this case the parameter is expected to be the term's native
+			or global identifier and the method will behave as above.</li>
+		</ul>
+		 The next four parameters have a meaning only if you are creating a new node
+		with a new term, in all other cases these parameters will be ignored.</li>
+
+	<li><tt>$theNamespace</tt>: The term namespace, it can be provided in several
+	ways:
+		<ul>
+			<li><tt>NULL</tt>: This indicates that the term has no namespace.</li>
+
+			<li><tt><code><a href="class-COntologyTerm.html">COntologyTerm</a></code></tt>: This represents the term namespace
+			object.</li>
+
+			<li><i>other</i>: Any other type is interpreted as the namespace native
+			identifier; if the namespace cannot be found, the method will raise an
+			exception.</li>
 		</ul>
 	</li>
 
-	<li><i>other</i>: Any other type will be interpreted as the term's native
-	identifier: the method will locate all nodes that relate to that term and return
-	the array of found nodes, which will be empty if there are no matches.</li>
+	<li><tt>$theLabel</tt>: The term label string, this parameter is optional.</li>
+
+	<li><tt>$theDescription</tt>: The term description string this parameter is
+	optional.</li>
+
+	<li><tt>$theLanguage</tt>: The language code of both the label and the
+	description.</li>
+
+	<li><tt>$doNew</tt>: If <tt>TRUE</tt>, a new node will be instantiated in all
+	cases, that means that the method will not attempt to find a node related to the
+	term. Note that if the first parameter is an integer, this parameter is
+	ignored.</li>
 </ul>
 
 <p>The method will raise an exception if the object is not <code><a href="class-CStatusDocument.html#__IsInited">CStatusDocument::_IsInited()</a></code>
-and if the provided parameter is <tt>NULL</tt>.</p>
+and if the first parameter is <tt>NULL</tt>.</p>
 
 
 
@@ -438,6 +474,99 @@ and if the provided parameter is <tt>NULL</tt>.</p>
 				<div class="list"><dl>
 					<dt><var>$theIdentifier</var></dt>
 					<dd><code>mixed</code><br>$theIdentifier Node identifier or term reference.</dd>
+					<dt><var>$theNamespace</var></dt>
+					<dd><code>mixed</code><br>$theNamespace Term namespace reference.</dd>
+					<dt><var>$theLabel</var></dt>
+					<dd><code>string</code><br>$theLabel Term label.</dd>
+					<dt><var>$theDescription</var></dt>
+					<dd><code>string</code><br>$theDescription Term description.</dd>
+					<dt><var>$theLanguage</var></dt>
+					<dd><code>string</code><br>$theLanguage Label and description language code.</dd>
+					<dt><var>$doNew</var></dt>
+					<dd><code>boolean</code><br>$doNew <tt>TRUE</tt> force new node.</dd>
+				</dl></div>
+
+				<h4>Returns</h4>
+				<div class="list">
+					<code>mixed</code><br>New node, found node or nodes list.<br />
+				</div>
+
+				<h4>Throws</h4>
+				<div class="list">
+					<code><code><a href="class-Exception.html">Exception</a></code></code><br />
+				</div>
+
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="NewRootNode" id="_NewRootNode">
+
+		<td class="attributes"><code>
+			 public 
+			mixed
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_NewRootNode">#</a>
+		<code><a href="source-class-COntology.html#457-598" title="Go to source code">NewRootNode</a>( <span>mixed <var>$theIdentifier</var></span>, <span>boolean <var>$doNew</var> = <span class="php-keyword1">TRUE</span> </span> )</code>
+
+		<div class="description short">
+			
+<h4>Instantiate a root node</h4>
+
+		</div>
+
+		<div class="description detailed hidden">
+			
+<h4>Instantiate a root node</h4>
+
+<p>This method can be used to instantiate a new root node, retrieve an existing
+node by identifier, or retrieve the list of nodes matching a term.</p>
+
+<p>The method expects a single parameter that may represent either the node
+identifier, or the term object or identifier:</p>
+
+<ul>
+	<li><tt>integer</tt>: In this case the method assumes that the parameter
+	represents the node identifier: it will attempt to retrieve the node, if it is
+	not found, the method will return <tt>NULL</tt>. With this option the second
+	parameter is ignored.</li>
+
+	<li><tt><code><a href="class-COntologyTerm.html">COntologyTerm</a></code></tt>: In this case the method will check if the
+	term exists:
+		<ul>
+			<li><i>Term exists</i>: The method will locate all root nodes that relate to
+			that term and return the array of found nodes, or <tt>NULL</tt> if there are no
+			matches. If the second parameter is <tt>TRUE</tt>, the method will instantiate a
+			new root node whether or not there are matches.</li>
+
+			<li><i>Term is new</i>: The method will return a new root node related to that
+			term.</li>
+		</ul>
+	</li>
+
+	<li><i>other</i>: Any other type will be interpreted as the term's native
+	identifier: the method will locate all root nodes that relate to that term and
+	return the array of found nodes, or a new root node if the second parameter is
+	<tt>TRUE</tt>.</li>
+</ul>
+
+<p>The method will raise an exception if the object is not <code><a href="class-CStatusDocument.html#__IsInited">CStatusDocument::_IsInited()</a></code>,
+if the provided parameter is <tt>NULL</tt>, or if the provided term identifier
+is not resolved.</p>
+
+
+
+				<h4>Parameters</h4>
+				<div class="list"><dl>
+					<dt><var>$theIdentifier</var></dt>
+					<dd><code>mixed</code><br>$theIdentifier Node identifier or term reference.</dd>
+					<dt><var>$doNew</var></dt>
+					<dd><code>boolean</code><br>$doNew <tt>TRUE</tt> force new node.</dd>
 				</dl></div>
 
 				<h4>Returns</h4>
@@ -466,7 +595,7 @@ and if the provided parameter is <tt>NULL</tt>.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#_ResolveTerm">#</a>
-		<code><a href="source-class-COntology.html#500-666" title="Go to source code">ResolveTerm</a>( <span>string <var>$theIdentifier</var></span>, <span>mixed <var>$theNamespace</var> = <span class="php-keyword1">NULL</span></span>, <span>boolean <var>$doThrow</var> = <span class="php-keyword1">FALSE</span> </span> )</code>
+		<code><a href="source-class-COntology.html#614-780" title="Go to source code">ResolveTerm</a>( <span>string <var>$theIdentifier</var></span>, <span>mixed <var>$theNamespace</var> = <span class="php-keyword1">NULL</span></span>, <span>boolean <var>$doThrow</var> = <span class="php-keyword1">FALSE</span> </span> )</code>
 
 		<div class="description short">
 			
@@ -574,7 +703,7 @@ an exception if the third parameter is <tt>TRUE</tt>.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#_ResolveNode">#</a>
-		<code><a href="source-class-COntology.html#673-868" title="Go to source code">ResolveNode</a>( <span>mixed <var>$theIdentifier</var></span>, <span>boolean <var>$doThrow</var> = <span class="php-keyword1">FALSE</span> </span> )</code>
+		<code><a href="source-class-COntology.html#787-982" title="Go to source code">ResolveNode</a>( <span>mixed <var>$theIdentifier</var></span>, <span>boolean <var>$doThrow</var> = <span class="php-keyword1">FALSE</span> </span> )</code>
 
 		<div class="description short">
 			
@@ -622,6 +751,163 @@ and if the provided parameter is <tt>NULL</tt>.</p>
 				<h4>Returns</h4>
 				<div class="list">
 					<code>mixed</code><br>New node, found node or nodes list.<br />
+				</div>
+
+				<h4>Throws</h4>
+				<div class="list">
+					<code><code><a href="class-Exception.html">Exception</a></code></code><br />
+				</div>
+
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="_NewTerm" id="__NewTerm">
+
+		<td class="attributes"><code>
+			 protected 
+			<code><a href="class-COntologyTerm.html">COntologyTerm</a></code>
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#__NewTerm">#</a>
+		<code><a href="source-class-COntology.html#998-1093" title="Go to source code">_NewTerm</a>( <span>string <var>$theIdentifier</var></span>, <span>mixed <var>$theNamespace</var></span>, <span>string <var>$theLabel</var></span>, <span>string <var>$theDescription</var></span>, <span>string <var>$theLanguage</var></span> )</code>
+
+		<div class="description short">
+			
+<h4>Instantiate a new term</h4>
+
+		</div>
+
+		<div class="description detailed hidden">
+			
+<h4>Instantiate a new term</h4>
+
+<p>This method can be used to instantiate a new term and commit it.</p>
+
+<p>The method will first instantiate the node from the provided parameter, then
+it will insert it and finally return it, if there were no errors.</p>
+
+<p>This method is used by the public interface to perform the actual creation of
+terms.</p>
+
+<p>The method expects the following parameters:</p>
+
+<ul>
+	<li><tt>$theIdentifier</tt>: This parameter represents the term local
+	identifier.</li>
+
+	<li><tt>$theNamespace</tt>: The term namespace, it can be provided both as an
+	object or as the term native identifier.</li>
+
+	<li><tt>$theLabel</tt>: The term label string, this parameter is optional.</li>
+
+	<li><tt>$theDescription</tt>: The term description string this parameter is
+	optional.</li>
+
+	<li><tt>$theLanguage</tt>: The language code of both the label and the
+	description.</li>
+</ul>
+
+<p>The method will return a new committed term or raise an exception if the term
+is a duplicate.</p>
+
+
+
+				<h4>Parameters</h4>
+				<div class="list"><dl>
+					<dt><var>$theIdentifier</var></dt>
+					<dd><code>string</code><br>$theIdentifier Term local identifier.</dd>
+					<dt><var>$theNamespace</var></dt>
+					<dd><code>mixed</code><br>$theNamespace Term namespace reference.</dd>
+					<dt><var>$theLabel</var></dt>
+					<dd><code>string</code><br>$theLabel Term label.</dd>
+					<dt><var>$theDescription</var></dt>
+					<dd><code>string</code><br>$theDescription Term description.</dd>
+					<dt><var>$theLanguage</var></dt>
+					<dd><code>string</code><br>$theLanguage Label and description language code.</dd>
+				</dl></div>
+
+				<h4>Returns</h4>
+				<div class="list">
+					<code><code><a href="class-COntologyTerm.html">COntologyTerm</a></code></code><br>New committed term.<br />
+				</div>
+
+				<h4>Throws</h4>
+				<div class="list">
+					<code><code><a href="class-Exception.html">Exception</a></code></code><br />
+				</div>
+
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="_NewNode" id="__NewNode">
+
+		<td class="attributes"><code>
+			 protected 
+			<code><a href="class-COntologyNode.html">COntologyNode</a></code>
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#__NewNode">#</a>
+		<code><a href="source-class-COntology.html#1100-1199" title="Go to source code">_NewNode</a>( <span>mixed <var>$theTerm</var></span>, <span>mixed <var>$theKind</var> = <span class="php-keyword1">NULL</span></span>, <span>mixed <var>$theType</var> = <span class="php-keyword1">NULL</span> </span> )</code>
+
+		<div class="description short">
+			
+<h4>Instantiate a new term</h4>
+
+		</div>
+
+		<div class="description detailed hidden">
+			
+<h4>Instantiate a new term</h4>
+
+<p>This method can be used to instantiate a new term and commit it.</p>
+
+<p>The method will first instantiate the node from the provided parameter, then
+it will insert it and finally return it, if there were no errors.</p>
+
+<p>This method is used by the public interface to perform the actual creation of
+terms.</p>
+
+<p>The method expects the following parameters:</p>
+
+<ul>
+	<li><tt>$theTerm</tt>: This parameter represents the term reference, it can be
+	provided as the term object or term native identifier.</li>
+
+	<li><tt>$theKind</tt>: This parameter represents the term kind, it can be
+	provided as a list of values, as a scalar value or as <tt>NULL</tt>.</li>
+
+	<li><tt>$theType</tt>: This parameter represents the term type, it can be
+	provided as a scalar value or as <tt>NULL</tt>.</li>
+</ul>
+
+<p>The method will return a new committed term or raise an exception if the term
+is a duplicate.</p>
+
+
+
+				<h4>Parameters</h4>
+				<div class="list"><dl>
+					<dt><var>$theTerm</var></dt>
+					<dd><code>mixed</code><br>$theTerm Term object or identifier.</dd>
+					<dt><var>$theKind</var></dt>
+					<dd><code>mixed</code><br>$theKind Node kind value or values.</dd>
+					<dt><var>$theType</var></dt>
+					<dd><code>mixed</code><br>$theType Node type value.</dd>
+				</dl></div>
+
+				<h4>Returns</h4>
+				<div class="list">
+					<code><code><a href="class-COntologyNode.html">COntologyNode</a></code></code><br>New committed node.<br />
 				</div>
 
 				<h4>Throws</h4>

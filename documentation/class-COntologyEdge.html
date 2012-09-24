@@ -6,7 +6,7 @@
 
 	<title>Class COntologyEdge | MyWrapper Reference Documentation</title>
 
-	<script type="text/javascript" src="resources/combined.js?368249000"></script>
+	<script type="text/javascript" src="resources/combined.js?3994123307"></script>
 	<script type="text/javascript" src="elementlist.js?4206909522"></script>
 	<link rel="stylesheet" type="text/css" media="all" href="resources/style.css?3505392360" />
 
@@ -116,6 +116,11 @@ identifiers implemented as an array. The offset definition is borrowed from the
 kOFFSET_PREDICATE offset. This offset is managed by the tag class, this
 class locks the offset.</p>
 
+<p>The class also adds two enumerated sets that represent respectively the
+subject and the object vertex kind. These attributes are used to determine the
+nature of the subject and vertex nodes in terms of the graph path, rather than
+committing these kinds directly to the node.</p>
+
 <p>The class implements the static method, <code><a href="class-COntologyEdge.html#_DefaultContainer">COntologyEdge::DefaultContainer()</a></code>, it will
 use the kCONTAINER_EDGE_NAME constant. Note that when passing <code><a href="class-CConnection.html">CConnection</a></code> based objects to the persisting methods of this class, you should
 provide preferably Database instances, since this class may have to commit
@@ -214,13 +219,233 @@ terms.</p>
 				<b>Author:</b>
 				Milko A. Škofič &lt;<a
 href="mailto:m.skofic&#64;cgiar.org">m.skofic&#64;<!---->cgiar.org</a>&gt;<br />
-		<b>Located at</b> <a href="source-class-COntologyEdge.html#43-1276" title="Go to source code">COntologyEdge.php</a><br />
+		<b>Located at</b> <a href="source-class-COntologyEdge.html#43-1419" title="Go to source code">COntologyEdge.php</a><br />
 	</div>
 
 
 
 	<table class="summary" id="methods">
 	<caption>Methods summary</caption>
+	<tr data-order="SubjectKind" id="_SubjectKind">
+
+		<td class="attributes"><code>
+			 public 
+			mixed
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_SubjectKind">#</a>
+		<code><a href="source-class-COntologyEdge.html#134-196" title="Go to source code">SubjectKind</a>( <span>mixed <var>$theValue</var> = <span class="php-keyword1">NULL</span></span>, <span>mixed <var>$theOperation</var> = <span class="php-keyword1">NULL</span></span>, <span>boolean <var>$getOld</var> = <span class="php-keyword1">FALSE</span> </span> )</code>
+
+		<div class="description short">
+			
+<h4>Manage subject vertex kind set</h4>
+
+		</div>
+
+		<div class="description detailed hidden">
+			
+<h4>Manage subject vertex kind set</h4>
+
+<p>The subject vertex kind set, kOFFSET_KIND_SUBJECT, holds a list of
+unique values that represent the different kinds or types associated with the
+subject vertex node of the current edge.</p>
+
+<p>This offset collects the list of these qualifications in an enumerated set
+that can be managed with the following parameters:</p>
+
+<ul>
+	<li><tt>$theValue</tt>: Depending on the next parameter, this may either refer
+	to the value to be set or to the index of the element to be retrieved or
+	deleted:
+		<ul>
+			<li><tt>NULL</tt>: This value indicates that we want to operate on all elements,
+			which means, in practical terms, that we either want to retrieve or delete the
+			full list. If the next parameter resolves to <tt>TRUE</tt>, the method will
+			default to retrieving the current list and no new element will be added.</li>
+
+			<li><tt>array</tt>: An array indicates that we want to operate on a list of
+			values and that the next parameter will also be provided as a list. Note that
+			<code><a href="class-ArrayObject.html">ArrayObject</a></code> instances are not considered here as arrays.</li>
+
+			<li><i>other</i>: Any other type represents either the new value to be added or
+			the index to the value to be returned or deleted.</li>
+		</ul>
+	</li>
+
+	<li><tt>$theOperation</tt>: This parameter represents the operation to be
+	performed whose scope depends on the value of the previous parameter:
+		<ul>
+			<li><tt>NULL</tt>: Return the element or full list.</li>
+
+			<li><tt>FALSE</tt>: Delete the element or full list.</li>
+
+			<li><tt>array</tt>: This type is only considered if the <tt>$theValue</tt>
+			parameter is provided as an array: the method will be called for each element of
+			the <tt>$theValue</tt> parameter matched with the corresponding element of this
+			parameter, which also means that both both parameters must share the same
+			count.</li>
+
+			<li><i>other</i>: Add the <tt>$theValue</tt> value to the list. If you provided
+			<tt>NULL</tt> in the previous parameter, the operation will be reset to
+			<tt>NULL</tt>.</li>
+		</ul>
+	</li>
+
+	<li><tt>$getOld</tt>: Determines what the method will return:
+		<ul>
+			<li><tt>TRUE</tt>: Return the value <i>before</i> it was eventually
+			modified.</li>
+
+			<li><tt>FALSE</tt>: Return the value <i>after</i> it was eventually
+			modified.</li>
+		</ul>
+	</li>
+</ul>
+
+
+
+				<h4>Parameters</h4>
+				<div class="list"><dl>
+					<dt><var>$theValue</var></dt>
+					<dd><code>mixed</code><br>$theValue Value or index.</dd>
+					<dt><var>$theOperation</var></dt>
+					<dd><code>mixed</code><br>$theOperation Operation.</dd>
+					<dt><var>$getOld</var></dt>
+					<dd><code>boolean</code><br>$getOld TRUE get old value.</dd>
+				</dl></div>
+
+				<h4>Returns</h4>
+				<div class="list">
+					<code>mixed</code><br><i>New</i> or <i>old</i> kind.<br />
+				</div>
+
+
+				<h4>See</h4>
+				<div class="list">
+						kOFFSET_KIND_SUBJECT<br />
+				</div>
+				<h4>Uses</h4>
+				<div class="list">
+						<code><code><a href="function-ManageObjectSetOffset.html">ManageObjectSetOffset()</a></code></code> <br />
+				</div>
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="ObjectKind" id="_ObjectKind">
+
+		<td class="attributes"><code>
+			 public 
+			mixed
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_ObjectKind">#</a>
+		<code><a href="source-class-COntologyEdge.html#203-265" title="Go to source code">ObjectKind</a>( <span>mixed <var>$theValue</var> = <span class="php-keyword1">NULL</span></span>, <span>mixed <var>$theOperation</var> = <span class="php-keyword1">NULL</span></span>, <span>boolean <var>$getOld</var> = <span class="php-keyword1">FALSE</span> </span> )</code>
+
+		<div class="description short">
+			
+<h4>Manage object vertex kind set</h4>
+
+		</div>
+
+		<div class="description detailed hidden">
+			
+<h4>Manage object vertex kind set</h4>
+
+<p>The object vertex kind set, kOFFSET_KIND_OBJECT, holds a list of
+unique values that represent the different kinds or types associated with the
+object vertex node of the current edge.</p>
+
+<p>This offset collects the list of these qualifications in an enumerated set
+that can be managed with the following parameters:</p>
+
+<ul>
+	<li><tt>$theValue</tt>: Depending on the next parameter, this may either refer
+	to the value to be set or to the index of the element to be retrieved or
+	deleted:
+		<ul>
+			<li><tt>NULL</tt>: This value indicates that we want to operate on all elements,
+			which means, in practical terms, that we either want to retrieve or delete the
+			full list. If the next parameter resolves to <tt>TRUE</tt>, the method will
+			default to retrieving the current list and no new element will be added.</li>
+
+			<li><tt>array</tt>: An array indicates that we want to operate on a list of
+			values and that the next parameter will also be provided as a list. Note that
+			<code><a href="class-ArrayObject.html">ArrayObject</a></code> instances are not considered here as arrays.</li>
+
+			<li><i>other</i>: Any other type represents either the new value to be added or
+			the index to the value to be returned or deleted.</li>
+		</ul>
+	</li>
+
+	<li><tt>$theOperation</tt>: This parameter represents the operation to be
+	performed whose scope depends on the value of the previous parameter:
+		<ul>
+			<li><tt>NULL</tt>: Return the element or full list.</li>
+
+			<li><tt>FALSE</tt>: Delete the element or full list.</li>
+
+			<li><tt>array</tt>: This type is only considered if the <tt>$theValue</tt>
+			parameter is provided as an array: the method will be called for each element of
+			the <tt>$theValue</tt> parameter matched with the corresponding element of this
+			parameter, which also means that both both parameters must share the same
+			count.</li>
+
+			<li><i>other</i>: Add the <tt>$theValue</tt> value to the list. If you provided
+			<tt>NULL</tt> in the previous parameter, the operation will be reset to
+			<tt>NULL</tt>.</li>
+		</ul>
+	</li>
+
+	<li><tt>$getOld</tt>: Determines what the method will return:
+		<ul>
+			<li><tt>TRUE</tt>: Return the value <i>before</i> it was eventually
+			modified.</li>
+
+			<li><tt>FALSE</tt>: Return the value <i>after</i> it was eventually
+			modified.</li>
+		</ul>
+	</li>
+</ul>
+
+
+
+				<h4>Parameters</h4>
+				<div class="list"><dl>
+					<dt><var>$theValue</var></dt>
+					<dd><code>mixed</code><br>$theValue Value or index.</dd>
+					<dt><var>$theOperation</var></dt>
+					<dd><code>mixed</code><br>$theOperation Operation.</dd>
+					<dt><var>$getOld</var></dt>
+					<dd><code>boolean</code><br>$getOld TRUE get old value.</dd>
+				</dl></div>
+
+				<h4>Returns</h4>
+				<div class="list">
+					<code>mixed</code><br><i>New</i> or <i>old</i> kind.<br />
+				</div>
+
+
+				<h4>See</h4>
+				<div class="list">
+						kOFFSET_KIND_OBJECT<br />
+				</div>
+				<h4>Uses</h4>
+				<div class="list">
+						<code><code><a href="function-ManageObjectSetOffset.html">ManageObjectSetOffset()</a></code></code> <br />
+				</div>
+
+
+		</div>
+		</div></td>
+	</tr>
 	<tr data-order="TagRefs" id="_TagRefs">
 
 		<td class="attributes"><code>
@@ -232,7 +457,7 @@ href="mailto:m.skofic&#64;cgiar.org">m.skofic&#64;<!---->cgiar.org</a>&gt;<br />
 
 		<td class="name"><div>
 		<a class="anchor" href="#_TagRefs">#</a>
-		<code><a href="source-class-COntologyEdge.html#129-155" title="Go to source code">TagRefs</a>( )</code>
+		<code><a href="source-class-COntologyEdge.html#272-298" title="Go to source code">TagRefs</a>( )</code>
 
 		<div class="description short">
 			
@@ -280,7 +505,7 @@ identifiers of tags that reference the node.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#_LoadSubject">#</a>
-		<code><a href="source-class-COntologyEdge.html#171-239" title="Go to source code">LoadSubject</a>( <span><code><a href="class-CConnection.html">CConnection</a></code> <var>$theConnection</var></span>, <span>boolean <var>$doReload</var> = <span class="php-keyword1">FALSE</span> </span> )</code>
+		<code><a href="source-class-COntologyEdge.html#314-382" title="Go to source code">LoadSubject</a>( <span><code><a href="class-CConnection.html">CConnection</a></code> <var>$theConnection</var></span>, <span>boolean <var>$doReload</var> = <span class="php-keyword1">FALSE</span> </span> )</code>
 
 		<div class="description short">
 			
@@ -352,7 +577,7 @@ the object is to be read, or if the cached copy can be used.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#_LoadPredicate">#</a>
-		<code><a href="source-class-COntologyEdge.html#246-314" title="Go to source code">LoadPredicate</a>( <span><code><a href="class-CConnection.html">CConnection</a></code> <var>$theConnection</var></span>, <span>boolean <var>$doReload</var> = <span class="php-keyword1">FALSE</span> </span> )</code>
+		<code><a href="source-class-COntologyEdge.html#389-457" title="Go to source code">LoadPredicate</a>( <span><code><a href="class-CConnection.html">CConnection</a></code> <var>$theConnection</var></span>, <span>boolean <var>$doReload</var> = <span class="php-keyword1">FALSE</span> </span> )</code>
 
 		<div class="description short">
 			
@@ -424,7 +649,7 @@ the object is to be read, or if the cached copy can be used.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#_LoadObject">#</a>
-		<code><a href="source-class-COntologyEdge.html#321-389" title="Go to source code">LoadObject</a>( <span><code><a href="class-CConnection.html">CConnection</a></code> <var>$theConnection</var></span>, <span>boolean <var>$doReload</var> = <span class="php-keyword1">FALSE</span> </span> )</code>
+		<code><a href="source-class-COntologyEdge.html#464-532" title="Go to source code">LoadObject</a>( <span><code><a href="class-CConnection.html">CConnection</a></code> <var>$theConnection</var></span>, <span>boolean <var>$doReload</var> = <span class="php-keyword1">FALSE</span> </span> )</code>
 
 		<div class="description short">
 			
@@ -496,7 +721,7 @@ the object is to be read, or if the cached copy can be used.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#_DefaultContainer">#</a>
-		<code><a href="source-class-COntologyEdge.html#405-422" title="Go to source code">DefaultContainer</a>( <span><code><a href="class-CDatabase.html">CDatabase</a></code> <var>$theDatabase</var></span> )</code>
+		<code><a href="source-class-COntologyEdge.html#548-565" title="Go to source code">DefaultContainer</a>( <span><code><a href="class-CDatabase.html">CDatabase</a></code> <var>$theDatabase</var></span> )</code>
 
 		<div class="description short">
 			
@@ -547,7 +772,7 @@ kCONTAINER_EDGE_NAME name.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#__index">#</a>
-		<code><a href="source-class-COntologyEdge.html#438-504" title="Go to source code">_index</a>( <span><code><a href="class-CConnection.html">CConnection</a></code> <var>$theConnection</var></span>, <span>bitfield <var>$theModifiers</var></span> )</code>
+		<code><a href="source-class-COntologyEdge.html#581-647" title="Go to source code">_index</a>( <span><code><a href="class-CConnection.html">CConnection</a></code> <var>$theConnection</var></span>, <span>bitfield <var>$theModifiers</var></span> )</code>
 
 		<div class="description short">
 			
@@ -613,7 +838,7 @@ the kTOKEN_INDEX_SEPARATOR token.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#__Preset">#</a>
-		<code><a href="source-class-COntologyEdge.html#520-705" title="Go to source code">_Preset</a>( <span>reference <var>&amp; $theOffset</var></span>, <span>reference <var>&amp; $theValue</var></span> )</code>
+		<code><a href="source-class-COntologyEdge.html#663-848" title="Go to source code">_Preset</a>( <span>reference <var>&amp; $theOffset</var></span>, <span>reference <var>&amp; $theValue</var></span> )</code>
 
 		<div class="description short">
 			
@@ -679,7 +904,7 @@ modification.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#__Preunset">#</a>
-		<code><a href="source-class-COntologyEdge.html#712-758" title="Go to source code">_Preunset</a>( <span>reference <var>&amp; $theOffset</var></span> )</code>
+		<code><a href="source-class-COntologyEdge.html#855-901" title="Go to source code">_Preunset</a>( <span>reference <var>&amp; $theOffset</var></span> )</code>
 
 		<div class="description short">
 			
@@ -736,7 +961,7 @@ offset in all cases.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#__PrecommitRelated">#</a>
-		<code><a href="source-class-COntologyEdge.html#774-911" title="Go to source code">_PrecommitRelated</a>( <span>reference <var>&amp; $theConnection</var></span>, <span>reference <var>&amp; $theModifiers</var></span> )</code>
+		<code><a href="source-class-COntologyEdge.html#917-1054" title="Go to source code">_PrecommitRelated</a>( <span>reference <var>&amp; $theConnection</var></span>, <span>reference <var>&amp; $theModifiers</var></span> )</code>
 
 		<div class="description short">
 			
@@ -792,7 +1017,7 @@ provided as an identifier.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#__PrecommitIdentify">#</a>
-		<code><a href="source-class-COntologyEdge.html#918-1011" title="Go to source code">_PrecommitIdentify</a>( <span>reference <var>&amp; $theConnection</var></span>, <span>reference <var>&amp; $theModifiers</var></span> )</code>
+		<code><a href="source-class-COntologyEdge.html#1061-1154" title="Go to source code">_PrecommitIdentify</a>( <span>reference <var>&amp; $theConnection</var></span>, <span>reference <var>&amp; $theModifiers</var></span> )</code>
 
 		<div class="description short">
 			
@@ -853,7 +1078,7 @@ native identifiers, since they will have been set here.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#__PostcommitRelated">#</a>
-		<code><a href="source-class-COntologyEdge.html#1027-1094" title="Go to source code">_PostcommitRelated</a>( <span>reference <var>&amp; $theConnection</var></span>, <span>reference <var>&amp; $theModifiers</var></span> )</code>
+		<code><a href="source-class-COntologyEdge.html#1170-1237" title="Go to source code">_PostcommitRelated</a>( <span>reference <var>&amp; $theConnection</var></span>, <span>reference <var>&amp; $theModifiers</var></span> )</code>
 
 		<div class="description short">
 			
@@ -909,7 +1134,7 @@ vertives when inserting; we remove the element when deleting.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#__PostcommitCleanup">#</a>
-		<code><a href="source-class-COntologyEdge.html#1101-1125" title="Go to source code">_PostcommitCleanup</a>( <span>reference <var>&amp; $theConnection</var></span>, <span>reference <var>&amp; $theModifiers</var></span> )</code>
+		<code><a href="source-class-COntologyEdge.html#1244-1268" title="Go to source code">_PostcommitCleanup</a>( <span>reference <var>&amp; $theConnection</var></span>, <span>reference <var>&amp; $theModifiers</var></span> )</code>
 
 		<div class="description short">
 			
@@ -955,7 +1180,7 @@ will have to be refreshed.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#__ReferenceInSubject">#</a>
-		<code><a href="source-class-COntologyEdge.html#1141-1203" title="Go to source code">_ReferenceInSubject</a>( <span><code><a href="class-CConnection.html">CConnection</a></code> <var>$theConnection</var></span>, <span>boolean <var>$doAdd</var></span> )</code>
+		<code><a href="source-class-COntologyEdge.html#1284-1346" title="Go to source code">_ReferenceInSubject</a>( <span><code><a href="class-CConnection.html">CConnection</a></code> <var>$theConnection</var></span>, <span>boolean <var>$doAdd</var></span> )</code>
 
 		<div class="description short">
 			
@@ -1016,7 +1241,7 @@ and raise an exception if the operation failed.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#__ReferenceInObject">#</a>
-		<code><a href="source-class-COntologyEdge.html#1210-1272" title="Go to source code">_ReferenceInObject</a>( <span><code><a href="class-CConnection.html">CConnection</a></code> <var>$theConnection</var></span>, <span>boolean <var>$doAdd</var></span> )</code>
+		<code><a href="source-class-COntologyEdge.html#1353-1415" title="Go to source code">_ReferenceInObject</a>( <span><code><a href="class-CConnection.html">CConnection</a></code> <var>$theConnection</var></span>, <span>boolean <var>$doAdd</var></span> )</code>
 
 		<div class="description short">
 			
@@ -1194,7 +1419,7 @@ raise an exception if the operation failed.</p>
 		</code></td>
 
 		<td class="name">
-				<a href="source-class-COntologyEdge.html#88-95" title="Go to source code"><var>$mSubject</var></a>
+				<a href="source-class-COntologyEdge.html#93-100" title="Go to source code"><var>$mSubject</var></a>
 		</td>
 		<td class="value"><code><span class="php-keyword1">NULL</span></code></td>
 		<td class="description"><div>
@@ -1223,7 +1448,7 @@ raise an exception if the operation failed.</p>
 		</code></td>
 
 		<td class="name">
-				<a href="source-class-COntologyEdge.html#97-104" title="Go to source code"><var>$mPredicate</var></a>
+				<a href="source-class-COntologyEdge.html#102-109" title="Go to source code"><var>$mPredicate</var></a>
 		</td>
 		<td class="value"><code><span class="php-keyword1">NULL</span></code></td>
 		<td class="description"><div>
@@ -1252,7 +1477,7 @@ raise an exception if the operation failed.</p>
 		</code></td>
 
 		<td class="name">
-				<a href="source-class-COntologyEdge.html#106-113" title="Go to source code"><var>$mObject</var></a>
+				<a href="source-class-COntologyEdge.html#111-118" title="Go to source code"><var>$mObject</var></a>
 		</td>
 		<td class="value"><code><span class="php-keyword1">NULL</span></code></td>
 		<td class="description"><div>

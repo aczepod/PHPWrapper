@@ -72,6 +72,11 @@ require_once( kPATH_MYWRAPPER_LIBRARY_CLASS."/CNode.php" );
  * is required by this class because of its {@link kOFFSET_TERM} offset. This offset is
  * managed by the tag class, this class locks the offset.
  *
+ * This class prevents updating the full object once it has been inserted for the first
+ * time. This behaviour is necessary because nodes are referenced by many other objects, so
+ * updating a full node object is risky, since it may have been updated elsewhere: for this
+ * reason the {@link Update()} and {@link Replace()} methods will raise an exception.
+ *
  * The class implements the static method, {@link DefaultContainer()}, it will use the
  * {@link kCONTAINER_NODE_NAME} constant. Note that when passing {@link CConnection} based
  * objects to the persisting methods of this class, you should provide preferably Database
@@ -359,6 +364,99 @@ class COntologyNode extends CNode
 		return $edge;																// ==>
 
 	} // RelateTo.
+
+		
+
+/*=======================================================================================
+ *																						*
+ *								PUBLIC PERSISTENCE INTERFACE							*
+ *																						*
+ *======================================================================================*/
+
+
+	 
+	/*===================================================================================
+	 *	Update																			*
+	 *==================================================================================*/
+
+	/**
+	 * <h4>Update the object in a container</h4>
+	 *
+	 * We overload this method to raise an exception: objects of this class can only be
+	 * inserted, after this one can only modify their attributes using the modification
+	 * interface provided by container objects.
+	 *
+	 * @param CConnection			$theConnection		Server, database or container.
+	 *
+	 * @access public
+	 *
+	 * @throws Exception
+	 */
+	public function Update( CConnection $theConnection )
+	{
+		//
+		// Check if necessary.
+		//
+		if( $this->_IsDirty()
+		 || (! $this->_IsCommitted()) )
+		{
+			//
+			// Object is locked.
+			//
+			throw new Exception
+				( "This object can only be inserted and modified",
+				  kERROR_LOCKED );												// !@! ==>
+		
+		} // Dirty or not yet committed.
+	
+	} // Update.
+
+	 
+	/*===================================================================================
+	 *	Replace																			*
+	 *==================================================================================*/
+
+	/**
+	 * <h4>Replace the object into a container</h4>
+	 *
+	 * We overload this method to raise an exception: objects of this class can only be
+	 * inserted, after this one can only modify their attributes using the modification
+	 * interface provided by container objects.
+	 *
+	 * In this class we prevent replacing a committed object and allow inserting a non
+	 * committed object.
+	 *
+	 * @param CConnection			$theConnection		Server, database or container.
+	 *
+	 * @access public
+	 * @return mixed				The object's native identifier.
+	 */
+	public function Replace( CConnection $theConnection )
+	{
+		//
+		// Check if necessary.
+		//
+		if( $this->_IsDirty()
+		 || (! $this->_IsCommitted()) )
+		{
+			//
+			// Check if the object is not committed.
+			//
+			if( ! $this->_IsCommitted() )
+				return parent::Replace( $theConnection );							// ==>
+			
+			//
+			// Object is locked.
+			//
+			throw new Exception
+				( "This object can only be inserted and modified",
+				  kERROR_LOCKED );												// !@! ==>
+		
+		} // Dirty or not yet committed.
+		
+		return NULL;																// ==>
+	
+	} // Replace.
 
 		
 

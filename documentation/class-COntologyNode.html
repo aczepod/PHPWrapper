@@ -6,7 +6,7 @@
 
 	<title>Class COntologyNode | MyWrapper Reference Documentation</title>
 
-	<script type="text/javascript" src="resources/combined.js?368249000"></script>
+	<script type="text/javascript" src="resources/combined.js?3994123307"></script>
 	<script type="text/javascript" src="elementlist.js?4206909522"></script>
 	<link rel="stylesheet" type="text/css" media="all" href="resources/style.css?3505392360" />
 
@@ -128,6 +128,12 @@ identifiers implemented as an array. The offset definition is borrowed from the
 kOFFSET_TERM offset. This offset is managed by the tag class, this class
 locks the offset.</p>
 
+<p>This class prevents updating the full object once it has been inserted for
+the first time. This behaviour is necessary because nodes are referenced by many
+other objects, so updating a full node object is risky, since it may have been
+updated elsewhere: for this reason the <code><a href="class-COntologyNode.html#_Update">COntologyNode::Update()</a></code> and <code><a href="class-COntologyNode.html#_Replace">COntologyNode::Replace()</a></code>
+methods will raise an exception.</p>
+
 <p>The class implements the static method, <code><a href="class-COntologyNode.html#_DefaultContainer">COntologyNode::DefaultContainer()</a></code>, it will
 use the kCONTAINER_NODE_NAME constant. Note that when passing <code><a href="class-CConnection.html">CConnection</a></code> based objects to the persisting methods of this class, you should
 provide preferably Database instances, since this class may have to commit
@@ -219,7 +225,7 @@ terms.</p>
 				<b>Author:</b>
 				Milko A. Škofič &lt;<a
 href="mailto:m.skofic&#64;cgiar.org">m.skofic&#64;<!---->cgiar.org</a>&gt;<br />
-		<b>Located at</b> <a href="source-class-COntologyNode.html#43-861" title="Go to source code">COntologyNode.php</a><br />
+		<b>Located at</b> <a href="source-class-COntologyNode.html#43-959" title="Go to source code">COntologyNode.php</a><br />
 	</div>
 
 
@@ -237,7 +243,7 @@ href="mailto:m.skofic&#64;cgiar.org">m.skofic&#64;<!---->cgiar.org</a>&gt;<br />
 
 		<td class="name"><div>
 		<a class="anchor" href="#___toString">#</a>
-		<code><a href="source-class-COntologyNode.html#116-140" title="Go to source code">__toString</a>( )</code>
+		<code><a href="source-class-COntologyNode.html#121-145" title="Go to source code">__toString</a>( )</code>
 
 		<div class="description short">
 			
@@ -281,7 +287,7 @@ the unique identifier of the object.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#_TagRefs">#</a>
-		<code><a href="source-class-COntologyNode.html#156-182" title="Go to source code">TagRefs</a>( )</code>
+		<code><a href="source-class-COntologyNode.html#161-187" title="Go to source code">TagRefs</a>( )</code>
 
 		<div class="description short">
 			
@@ -329,7 +335,7 @@ identifiers of tags that reference the node.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#_EdgeRefs">#</a>
-		<code><a href="source-class-COntologyNode.html#189-212" title="Go to source code">EdgeRefs</a>( )</code>
+		<code><a href="source-class-COntologyNode.html#194-217" title="Go to source code">EdgeRefs</a>( )</code>
 
 		<div class="description short">
 			
@@ -375,7 +381,7 @@ identifiers of edges that reference the node.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#_LoadTerm">#</a>
-		<code><a href="source-class-COntologyNode.html#228-296" title="Go to source code">LoadTerm</a>( <span><code><a href="class-CConnection.html">CConnection</a></code> <var>$theConnection</var></span>, <span>boolean <var>$doReload</var> = <span class="php-keyword1">FALSE</span> </span> )</code>
+		<code><a href="source-class-COntologyNode.html#233-301" title="Go to source code">LoadTerm</a>( <span><code><a href="class-CConnection.html">CConnection</a></code> <var>$theConnection</var></span>, <span>boolean <var>$doReload</var> = <span class="php-keyword1">FALSE</span> </span> )</code>
 
 		<div class="description short">
 			
@@ -446,7 +452,7 @@ the object is to be read, or if the cached copy can be used.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#_RelateTo">#</a>
-		<code><a href="source-class-COntologyNode.html#312-361" title="Go to source code">RelateTo</a>( <span>mixed <var>$thePredicate</var></span>, <span>mixed <var>$theObject</var></span> )</code>
+		<code><a href="source-class-COntologyNode.html#317-366" title="Go to source code">RelateTo</a>( <span>mixed <var>$thePredicate</var></span>, <span>mixed <var>$theObject</var></span> )</code>
 
 		<div class="description short">
 			
@@ -502,6 +508,105 @@ caller to do so.</p>
 		</div>
 		</div></td>
 	</tr>
+	<tr data-order="Update" id="_Update">
+
+		<td class="attributes"><code>
+			 public 
+			
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_Update">#</a>
+		<code><a href="source-class-COntologyNode.html#382-412" title="Go to source code">Update</a>( <span><code><a href="class-CConnection.html">CConnection</a></code> <var>$theConnection</var></span> )</code>
+
+		<div class="description short">
+			
+<h4>Update the object in a container</h4>
+
+		</div>
+
+		<div class="description detailed hidden">
+			
+<h4>Update the object in a container</h4>
+
+<p>We overload this method to raise an exception: objects of this class can only
+be inserted, after this one can only modify their attributes using the
+modification interface provided by container objects.</p>
+
+
+
+				<h4>Parameters</h4>
+				<div class="list"><dl>
+					<dt><var>$theConnection</var></dt>
+					<dd><code><code><a href="class-CConnection.html">CConnection</a></code></code><br>$theConnection Server, database or container.</dd>
+				</dl></div>
+
+
+				<h4>Throws</h4>
+				<div class="list">
+					<code><code><a href="class-Exception.html">Exception</a></code></code><br />
+				</div>
+
+
+				<h4>Overrides</h4>
+				<div class="list"><code><a href="class-CPersistentDocument.html#_Update">CPersistentDocument::Update()</a></code></div>
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="Replace" id="_Replace">
+
+		<td class="attributes"><code>
+			 public 
+			mixed
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_Replace">#</a>
+		<code><a href="source-class-COntologyNode.html#419-459" title="Go to source code">Replace</a>( <span><code><a href="class-CConnection.html">CConnection</a></code> <var>$theConnection</var></span> )</code>
+
+		<div class="description short">
+			
+<h4>Replace the object into a container</h4>
+
+		</div>
+
+		<div class="description detailed hidden">
+			
+<h4>Replace the object into a container</h4>
+
+<p>We overload this method to raise an exception: objects of this class can only
+be inserted, after this one can only modify their attributes using the
+modification interface provided by container objects.</p>
+
+<p>In this class we prevent replacing a committed object and allow inserting a
+non committed object.</p>
+
+
+
+				<h4>Parameters</h4>
+				<div class="list"><dl>
+					<dt><var>$theConnection</var></dt>
+					<dd><code><code><a href="class-CConnection.html">CConnection</a></code></code><br>$theConnection Server, database or container.</dd>
+				</dl></div>
+
+				<h4>Returns</h4>
+				<div class="list">
+					<code>mixed</code><br>The object's native identifier.<br />
+				</div>
+
+
+
+				<h4>Overrides</h4>
+				<div class="list"><code><a href="class-CPersistentDocument.html#_Replace">CPersistentDocument::Replace()</a></code></div>
+
+		</div>
+		</div></td>
+	</tr>
 	<tr data-order="DefaultContainer" id="_DefaultContainer">
 
 		<td class="attributes"><code>
@@ -513,7 +618,7 @@ caller to do so.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#_DefaultContainer">#</a>
-		<code><a href="source-class-COntologyNode.html#377-394" title="Go to source code">DefaultContainer</a>( <span><code><a href="class-CDatabase.html">CDatabase</a></code> <var>$theDatabase</var></span> )</code>
+		<code><a href="source-class-COntologyNode.html#475-492" title="Go to source code">DefaultContainer</a>( <span><code><a href="class-CDatabase.html">CDatabase</a></code> <var>$theDatabase</var></span> )</code>
 
 		<div class="description short">
 			
@@ -564,7 +669,7 @@ kCONTAINER_NODE_NAME name.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#__Preset">#</a>
-		<code><a href="source-class-COntologyNode.html#410-508" title="Go to source code">_Preset</a>( <span>reference <var>&amp; $theOffset</var></span>, <span>reference <var>&amp; $theValue</var></span> )</code>
+		<code><a href="source-class-COntologyNode.html#508-606" title="Go to source code">_Preset</a>( <span>reference <var>&amp; $theOffset</var></span>, <span>reference <var>&amp; $theValue</var></span> )</code>
 
 		<div class="description short">
 			
@@ -627,7 +732,7 @@ modification.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#__Preunset">#</a>
-		<code><a href="source-class-COntologyNode.html#515-556" title="Go to source code">_Preunset</a>( <span>reference <var>&amp; $theOffset</var></span> )</code>
+		<code><a href="source-class-COntologyNode.html#613-654" title="Go to source code">_Preunset</a>( <span>reference <var>&amp; $theOffset</var></span> )</code>
 
 		<div class="description short">
 			
@@ -683,7 +788,7 @@ cases.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#__PrecommitRelated">#</a>
-		<code><a href="source-class-COntologyNode.html#572-636" title="Go to source code">_PrecommitRelated</a>( <span>reference <var>&amp; $theConnection</var></span>, <span>reference <var>&amp; $theModifiers</var></span> )</code>
+		<code><a href="source-class-COntologyNode.html#670-734" title="Go to source code">_PrecommitRelated</a>( <span>reference <var>&amp; $theConnection</var></span>, <span>reference <var>&amp; $theModifiers</var></span> )</code>
 
 		<div class="description short">
 			
@@ -737,7 +842,7 @@ provided as an identifier.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#__PrecommitIdentify">#</a>
-		<code><a href="source-class-COntologyNode.html#643-688" title="Go to source code">_PrecommitIdentify</a>( <span>reference <var>&amp; $theConnection</var></span>, <span>reference <var>&amp; $theModifiers</var></span> )</code>
+		<code><a href="source-class-COntologyNode.html#741-786" title="Go to source code">_PrecommitIdentify</a>( <span>reference <var>&amp; $theConnection</var></span>, <span>reference <var>&amp; $theModifiers</var></span> )</code>
 
 		<div class="description short">
 			
@@ -791,7 +896,7 @@ it will have been set here.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#__PostcommitRelated">#</a>
-		<code><a href="source-class-COntologyNode.html#704-749" title="Go to source code">_PostcommitRelated</a>( <span>reference <var>&amp; $theConnection</var></span>, <span>reference <var>&amp; $theModifiers</var></span> )</code>
+		<code><a href="source-class-COntologyNode.html#802-847" title="Go to source code">_PostcommitRelated</a>( <span>reference <var>&amp; $theConnection</var></span>, <span>reference <var>&amp; $theModifiers</var></span> )</code>
 
 		<div class="description short">
 			
@@ -847,7 +952,7 @@ remove the element when deleting.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#__PostcommitCleanup">#</a>
-		<code><a href="source-class-COntologyNode.html#756-780" title="Go to source code">_PostcommitCleanup</a>( <span>reference <var>&amp; $theConnection</var></span>, <span>reference <var>&amp; $theModifiers</var></span> )</code>
+		<code><a href="source-class-COntologyNode.html#854-878" title="Go to source code">_PostcommitCleanup</a>( <span>reference <var>&amp; $theConnection</var></span>, <span>reference <var>&amp; $theModifiers</var></span> )</code>
 
 		<div class="description short">
 			
@@ -893,7 +998,7 @@ have to be refreshed and its references actualised.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#__ReferenceInTerm">#</a>
-		<code><a href="source-class-COntologyNode.html#796-857" title="Go to source code">_ReferenceInTerm</a>( <span><code><a href="class-CConnection.html">CConnection</a></code> <var>$theConnection</var></span>, <span>boolean <var>$doAdd</var></span> )</code>
+		<code><a href="source-class-COntologyNode.html#894-955" title="Go to source code">_ReferenceInTerm</a>( <span><code><a href="class-CConnection.html">CConnection</a></code> <var>$theConnection</var></span>, <span>boolean <var>$doAdd</var></span> )</code>
 
 		<div class="description short">
 			
@@ -980,11 +1085,9 @@ exception if the operation failed.</p>
 			<a href="class-CPersistentDocument.html#_Delete">Delete()</a>, 
 			<a href="class-CPersistentDocument.html#_Insert">Insert()</a>, 
 			<a href="class-CPersistentDocument.html#_NID">NID()</a>, 
-			<a href="class-CPersistentDocument.html#_Replace">Replace()</a>, 
 			<a href="class-CPersistentDocument.html#_ResolveClassContainer">ResolveClassContainer()</a>, 
 			<a href="class-CPersistentDocument.html#_ResolveContainer">ResolveContainer()</a>, 
 			<a href="class-CPersistentDocument.html#_Restore">Restore()</a>, 
-			<a href="class-CPersistentDocument.html#_Update">Update()</a>, 
 			<a href="class-CPersistentDocument.html#__Postcommit">_Postcommit()</a>, 
 			<a href="class-CPersistentDocument.html#__PostcommitStatus">_PostcommitStatus()</a>, 
 			<a href="class-CPersistentDocument.html#__Precommit">_Precommit()</a>
@@ -1071,7 +1174,7 @@ exception if the operation failed.</p>
 		</code></td>
 
 		<td class="name">
-				<a href="source-class-COntologyNode.html#93-100" title="Go to source code"><var>$mTerm</var></a>
+				<a href="source-class-COntologyNode.html#98-105" title="Go to source code"><var>$mTerm</var></a>
 		</td>
 		<td class="value"><code><span class="php-keyword1">NULL</span></code></td>
 		<td class="description"><div>
