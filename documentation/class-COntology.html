@@ -6,7 +6,7 @@
 
 	<title>Class COntology | MyWrapper Reference Documentation</title>
 
-	<script type="text/javascript" src="resources/combined.js?3994123307"></script>
+	<script type="text/javascript" src="resources/combined.js?368249000"></script>
 	<script type="text/javascript" src="elementlist.js?4206909522"></script>
 	<link rel="stylesheet" type="text/css" media="all" href="resources/style.css?3505392360" />
 
@@ -170,7 +170,7 @@ the database in which the ontology resides.</p>
 				<b>Author:</b>
 				Milko A. Škofič &lt;<a
 href="mailto:m.skofic&#64;cgiar.org">m.skofic&#64;<!---->cgiar.org</a>&gt;<br />
-		<b>Located at</b> <a href="source-class-COntology.html#68-1203" title="Go to source code">COntology.php</a><br />
+		<b>Located at</b> <a href="source-class-COntology.html#68-977" title="Go to source code">COntology.php</a><br />
 	</div>
 
 
@@ -269,6 +269,8 @@ returning its name.</p>
 				<h4>Used by</h4>
 				<div class="list">
 						<code><code><a href="class-COntology.html#___toString">COntology::__toString()</a></code></code> <br />
+						<code><code><a href="class-COntology.html#_ResolveTerm">COntology::ResolveTerm()</a></code></code> <br />
+						<code><code><a href="class-COntology.html#_ResolveNode">COntology::ResolveNode()</a></code></code> <br />
 				</div>
 
 				<h4>Overrides</h4>
@@ -595,7 +597,7 @@ is not resolved.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#_ResolveTerm">#</a>
-		<code><a href="source-class-COntology.html#614-780" title="Go to source code">ResolveTerm</a>( <span>string <var>$theIdentifier</var></span>, <span>mixed <var>$theNamespace</var> = <span class="php-keyword1">NULL</span></span>, <span>boolean <var>$doThrow</var> = <span class="php-keyword1">FALSE</span> </span> )</code>
+		<code><a href="source-class-COntology.html#614-696" title="Go to source code">ResolveTerm</a>( <span>string <var>$theIdentifier</var></span>, <span>mixed <var>$theNamespace</var> = <span class="php-keyword1">NULL</span></span>, <span>boolean <var>$doThrow</var> = <span class="php-keyword1">FALSE</span> </span> )</code>
 
 		<div class="description short">
 			
@@ -665,6 +667,8 @@ its identifier.</p>
 <p>The method will return the found term, <tt>NULL</tt> if not found, or raise
 an exception if the third parameter is <tt>TRUE</tt>.</p>
 
+<p>This class takes advantage of the static method <code><a href="class-COntologyTerm.html#_Resolve">COntologyTerm::Resolve()</a></code>.</p>
+
 
 
 				<h4>Parameters</h4>
@@ -687,6 +691,11 @@ an exception if the third parameter is <tt>TRUE</tt>.</p>
 					<code><code><a href="class-Exception.html">Exception</a></code></code><br />
 				</div>
 
+				<h4>Uses</h4>
+				<div class="list">
+						<code><code><a href="class-COntology.html#_Connection">COntology::Connection()</a></code></code> <br />
+						<code><code><a href="class-COntologyTerm.html#_Resolve">COntologyTerm::Resolve()</a></code></code> <br />
+				</div>
 
 
 		</div>
@@ -703,7 +712,7 @@ an exception if the third parameter is <tt>TRUE</tt>.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#_ResolveNode">#</a>
-		<code><a href="source-class-COntology.html#787-982" title="Go to source code">ResolveNode</a>( <span>mixed <var>$theIdentifier</var></span>, <span>boolean <var>$doThrow</var> = <span class="php-keyword1">FALSE</span> </span> )</code>
+		<code><a href="source-class-COntology.html#703-756" title="Go to source code">ResolveNode</a>( <span>mixed <var>$theIdentifier</var></span>, <span>boolean <var>$doThrow</var> = <span class="php-keyword1">FALSE</span> </span> )</code>
 
 		<div class="description short">
 			
@@ -738,6 +747,8 @@ identifier, or the term reference:</p>
 <p>The method will raise an exception if the object is not <code><a href="class-CStatusDocument.html#__IsInited">CStatusDocument::_IsInited()</a></code>
 and if the provided parameter is <tt>NULL</tt>.</p>
 
+<p>This class takes advantage of the static method <code><a href="class-COntologyNode.html#_Resolve">COntologyNode::Resolve()</a></code>.</p>
+
 
 
 				<h4>Parameters</h4>
@@ -758,6 +769,11 @@ and if the provided parameter is <tt>NULL</tt>.</p>
 					<code><code><a href="class-Exception.html">Exception</a></code></code><br />
 				</div>
 
+				<h4>Uses</h4>
+				<div class="list">
+						<code><code><a href="class-COntology.html#_Connection">COntology::Connection()</a></code></code> <br />
+						<code><code><a href="class-COntologyNode.html#_Resolve">COntologyNode::Resolve()</a></code></code> <br />
+				</div>
 
 
 		</div>
@@ -774,7 +790,7 @@ and if the provided parameter is <tt>NULL</tt>.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#__NewTerm">#</a>
-		<code><a href="source-class-COntology.html#998-1093" title="Go to source code">_NewTerm</a>( <span>string <var>$theIdentifier</var></span>, <span>mixed <var>$theNamespace</var></span>, <span>string <var>$theLabel</var></span>, <span>string <var>$theDescription</var></span>, <span>string <var>$theLanguage</var></span> )</code>
+		<code><a href="source-class-COntology.html#772-867" title="Go to source code">_NewTerm</a>( <span>string <var>$theIdentifier</var></span>, <span>mixed <var>$theNamespace</var></span>, <span>string <var>$theLabel</var></span>, <span>string <var>$theDescription</var></span>, <span>string <var>$theLanguage</var></span> )</code>
 
 		<div class="description short">
 			
@@ -857,7 +873,7 @@ is a duplicate.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#__NewNode">#</a>
-		<code><a href="source-class-COntology.html#1100-1199" title="Go to source code">_NewNode</a>( <span>mixed <var>$theTerm</var></span>, <span>mixed <var>$theKind</var> = <span class="php-keyword1">NULL</span></span>, <span>mixed <var>$theType</var> = <span class="php-keyword1">NULL</span> </span> )</code>
+		<code><a href="source-class-COntology.html#874-973" title="Go to source code">_NewNode</a>( <span>mixed <var>$theTerm</var></span>, <span>mixed <var>$theKind</var> = <span class="php-keyword1">NULL</span></span>, <span>mixed <var>$theType</var> = <span class="php-keyword1">NULL</span> </span> )</code>
 
 		<div class="description short">
 			

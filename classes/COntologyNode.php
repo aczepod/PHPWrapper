@@ -495,6 +495,214 @@ class COntologyNode extends CNode
 
 /*=======================================================================================
  *																						*
+ *								STATIC RESOLUTION INTERFACE								*
+ *																						*
+ *======================================================================================*/
+
+
+	 
+	/*===================================================================================
+	 *	Resolve																			*
+	 *==================================================================================*/
+
+	/**
+	 * <h4>Resolve a node</h4>
+	 *
+	 * This method can be used to retrieve an existing node by identifier, or retrieve all
+	 * nodes matching a term.
+	 *
+	 * The method accepts the following parameters:
+	 *
+	 * <ul>
+	 *	<li><tt>$theConnection</tt>: This parameter represents the connection from which the
+	 *		nodes container must be resolved. If this parameter cannot be correctly
+	 *		determined, the method will raise an exception.
+	 *	<li><tt>$theIdentifier</tt>: This parameter represents either the node identifier
+	 *		or the term reference, depending on its type:
+	 *	 <ul>
+	 *		<li><tt>integer</tt>: In this case the method assumes that the parameter
+	 *			represents the node identifier: it will attempt to retrieve the node, if it
+	 *			is not found, the method will return <tt>NULL</tt>.
+	 *		<li><tt>{@link COntologyTerm}</tt>: In this case the method locate all nodes
+	 *			that
+	 *			refer to the provided term. If the term is not {@link _IsCommitted()}, the
+	 *			method will return <tt>NULL</tt>.
+	 *		<li><i>other</i>: Any other type will be interpreted either the term's native
+	 *			identifier, or as the term's global identifier: the method will return all
+	 *			nodes that refer to that term.
+	 *	 </ul>
+	 *	<li><tt>$doThrow</tt>: If <tt>TRUE</tt>, any failure to resolve the term or its
+	 *			namespace, will raise an exception.
+	 * </ul>
+	 *
+	 * The method will return the found term, <tt>NULL</tt> if not found, or raise an
+	 * exception if the last parameter is <tt>TRUE</tt>.
+	 *
+	 * @param CConnection			$theConnection		Server, database or container.
+	 * @param mixed					$theIdentifier		Node identifier or term reference.
+	 * @param boolean				$doThrow			If <tt>TRUE</tt> raise an exception.
+	 *
+	 * @static
+	 * @return COntologyTerm		Found term or <tt>NULL</tt>.
+	 *
+	 * @throws Exception
+	 */
+	static function Resolve( CConnection $theConnection, $theIdentifier, $doThrow = FALSE )
+	{
+		//
+		// Check identifier.
+		//
+		if( $theIdentifier !== NULL )
+		{
+			//
+			// Resolve container.
+			//
+			$container = COntologyNode::ResolveClassContainer( $theConnection, TRUE );
+			
+			//
+			// Handle node identifier.
+			//
+			if( is_integer( $theIdentifier ) )
+			{
+				//
+				// Get node.
+				//
+				$node = COntologyNode::NewObject( $theConnection, $theIdentifier );
+				
+				//
+				// Handle missing node.
+				//
+				if( ($node === NULL)
+				 && $doThrow )
+					throw new Exception
+						( "Node not found",
+						  kERROR_NOT_FOUND );									// !@! ==>
+				
+				return $node;														// ==>
+			
+			} // Provided node identifier.
+						
+			//
+			// Handle term object.
+			//
+			if( $theIdentifier instanceof COntologyTerm )
+			{
+				//
+				// Handle new term.
+				//
+				if( ! $theIdentifier->_IsCommitted() )
+				{
+					//
+					// Raise exception.
+					//
+					if( $doThrow )
+						throw new Exception
+							( "Node not found: term is not committed",
+							  kERROR_NOT_FOUND );								// !@! ==>
+					
+					return NULL;													// ==>
+				
+				} // New term.
+				
+				//
+				// Get term identifier.
+				//
+				$theIdentifier = $theIdentifier->offsetGet( kOFFSET_NID );
+				
+				//
+				// Make query.
+				//
+				$query = $container->NewQuery();
+				$query->AppendStatement(
+					CQueryStatement::Equals(
+						kOFFSET_TERM, $theIdentifier, kTYPE_BINARY ) );
+				$rs = $container->Query( $query );
+				
+				//
+				// Handle found nodes.
+				//
+				if( $rs->count() )
+				{
+					//
+					// Return list of nodes.
+					//
+					$list = Array();
+					foreach( $rs as $document )
+						$list[] = CPersistentObject::DocumentObject( $document );
+					
+					return $list;													// ==>
+				
+				} // Found at least one node.
+
+				//
+				// Raise exception.
+				//
+				if( $doThrow )
+					throw new Exception
+						( "Node not found",
+						  kERROR_NOT_FOUND );									// !@! ==>
+				
+				return NULL;														// ==>
+			
+			} // Provided term object.
+			
+			//
+			// Resolve term.
+			//
+			$term = COntologyTerm::Resolve( $theConnection, $theIdentifier, $doThrow );
+			
+			//
+			// Get term identifier.
+			//
+			$theIdentifier = $theIdentifier->offsetGet( kOFFSET_NID );
+			
+			//
+			// Make query.
+			//
+			$query = $container->NewQuery();
+			$query->AppendStatement(
+				CQueryStatement::Equals(
+					kOFFSET_TERM, $theIdentifier, kTYPE_BINARY ) );
+			$rs = $container->Query( $query );
+			
+			//
+			// Handle found nodes.
+			//
+			if( $rs->count() )
+			{
+				//
+				// Return list of nodes.
+				//
+				$list = Array();
+				foreach( $rs as $document )
+					$list[] = CPersistentObject::DocumentObject( $document );
+				
+				return $list;														// ==>
+			
+			} // Found at least one node.
+
+			//
+			// Raise exception.
+			//
+			if( $doThrow )
+				throw new Exception
+					( "Node not found",
+					  kERROR_NOT_FOUND );										// !@! ==>
+			
+			return NULL;															// ==>
+			
+		} // Provided local or global identifier.
+		
+		throw new Exception
+			( "Missing node identifier or term",
+			  kERROR_PARAMETER );												// !@! ==>
+
+	} // Resolve.
+
+		
+
+/*=======================================================================================
+ *																						*
  *								PROTECTED OFFSET INTERFACE								*
  *																						*
  *======================================================================================*/

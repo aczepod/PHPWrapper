@@ -663,6 +663,8 @@ class COntology extends CConnection
 	 * The method will return the found term, <tt>NULL</tt> if not found, or raise an
 	 * exception if the third parameter is <tt>TRUE</tt>.
 	 *
+	 * This class takes advantage of the static method {@link COntologyTerm::Resolve()}.
+	 *
 	 * @param string				$theIdentifier		Term local identifier.
 	 * @param mixed					$theNamespace		Namespace term reference.
 	 * @param boolean				$doThrow			If <tt>TRUE</tt> raise an exception.
@@ -671,6 +673,9 @@ class COntology extends CConnection
 	 * @return COntologyTerm		New or found term.
 	 *
 	 * @throws Exception
+	 *
+	 * @uses Connection()
+	 * @uses COntologyTerm::Resolve()
 	 */
 	public function ResolveTerm( $theIdentifier, $theNamespace = NULL, $doThrow = FALSE )
 	{
@@ -679,97 +684,8 @@ class COntology extends CConnection
 		//
 		if( $this->_IsInited() )
 		{
-			//
-			// Check identifier.
-			//
-			if( $theIdentifier !== NULL )
-			{
-				//
-				// Handle namespace.
-				//
-				if( $theNamespace !== NULL )
-				{
-					//
-					// Locate namespace.
-					//
-					if( ! ($theNamespace instanceof CPersistentObject) )
-					{
-						//
-						// Locate namespace.
-						//
-						$theNamespace = $this->ResolveTerm( $theNamespace, NULL, $doThrow );
-						if( $theNamespace === NULL )
-							return NULL;											// ==>
-					
-					} // Provided namespace identifier.
-				
-					//
-					// Handle missing namespace identifier.
-					//
-					if( ! $theNamespace->offsetExists( kOFFSET_GID ) )
-					{
-						if( $doThrow )
-							throw new Exception
-								( "Missing term namespace identifier",
-								  kERROR_PARAMETER );							// !@! ==>
-						
-						return NULL;												// ==>
-					
-					} // Missing namespace identifier.
-
-					//
-					// Build term identifier.
-					//
-					$id = COntologyTerm::_id( ($theNamespace->offsetGet( kOFFSET_GID )
-											  .kTOKEN_NAMESPACE_SEPARATOR
-											  .(string) $theIdentifier),
-											  $this->Connection() );
-					
-					//
-					// Locate term.
-					//
-					$term = COntologyTerm::NewObject( $this->Connection(), $id );
-					if( $term !== NULL )
-						return $term;												// ==>
-					
-					if( $doThrow )
-						throw new Exception
-							( "Term not found",
-							  kERROR_NOT_FOUND );								// !@! ==>
-					
-					return NULL;													// ==>
-				
-				} // Provided namespace.
-				
-				//
-				// Try native identifier.
-				//
-				$term = COntologyTerm::NewObject( $this->Connection(), $theIdentifier );
-				if( $term !== NULL )
-					return $term;													// ==>
-				
-				//
-				// Try global identifier.
-				//
-				$term = COntologyTerm::NewObject
-							( $this->Connection(),
-							  COntologyTerm::_id( $theIdentifier,
-												  $this->Connection() ) );
-				if( $term !== NULL )
-					return $term;													// ==>
-				
-				if( $doThrow )
-					throw new Exception
-						( "Term not found",
-						  kERROR_NOT_FOUND );									// !@! ==>
-				
-				return NULL;														// ==>
-			
-			} // Provided local or global identifier.
-			
-			throw new Exception
-				( "Missing term identifier",
-				  kERROR_PARAMETER );											// !@! ==>
+			return COntologyTerm::Resolve(
+				$this->Connection(), $theIdentifier, $theNamespace, $doThrow );		// ==>
 		
 		} // Object is ready.
 		
@@ -808,6 +724,8 @@ class COntology extends CConnection
 	 * The method will raise an exception if the object is not {@link _IsInited()} and if
 	 * the provided parameter is <tt>NULL</tt>.
 	 *
+	 * This class takes advantage of the static method {@link COntologyNode::Resolve()}.
+	 *
 	 * @param mixed					$theIdentifier		Node identifier or term reference.
 	 * @param boolean				$doThrow			If <tt>TRUE</tt> raise an exception.
 	 *
@@ -815,6 +733,9 @@ class COntology extends CConnection
 	 * @return mixed				New node, found node or nodes list.
 	 *
 	 * @throws Exception
+	 *
+	 * @uses Connection()
+	 * @uses COntologyNode::Resolve()
 	 */
 	public function ResolveNode( $theIdentifier, $doThrow = FALSE )
 	{
@@ -823,155 +744,8 @@ class COntology extends CConnection
 		//
 		if( $this->_IsInited() )
 		{
-			//
-			// Check identifier.
-			//
-			if( $theIdentifier !== NULL )
-			{
-				//
-				// Resolve container.
-				//
-				$container = COntologyNode::ResolveClassContainer
-								( $this->Connection(), TRUE );
-				
-				//
-				// Handle node identifier.
-				//
-				if( is_integer( $theIdentifier ) )
-				{
-					//
-					// Get node.
-					//
-					$node = COntologyNode::NewObject
-								( $this->Connection(), $theIdentifier );
-					
-					//
-					// Handle missing node.
-					//
-					if( ($node === NULL)
-					 && $doThrow )
-						throw new Exception
-							( "Node not found",
-							  kERROR_NOT_FOUND );								// !@! ==>
-					
-					return $node;													// ==>
-				
-				} // Provided node identifier.
-							
-				//
-				// Handle term object.
-				//
-				if( $theIdentifier instanceof COntologyTerm )
-				{
-					//
-					// Handle new term.
-					//
-					if( ! $theIdentifier->_IsCommitted() )
-					{
-						//
-						// Raise exception.
-						//
-						if( $doThrow )
-							throw new Exception
-								( "Node not found: term is not committed",
-								  kERROR_NOT_FOUND );							// !@! ==>
-						
-						return NULL;												// ==>
-					
-					} // New term.
-					
-					//
-					// Get term identifier.
-					//
-					$theIdentifier = $theIdentifier->offsetGet( kOFFSET_NID );
-					
-					//
-					// Make query.
-					//
-					$query = $container->NewQuery();
-					$query->AppendStatement(
-						CQueryStatement::Equals(
-							kOFFSET_TERM, $theIdentifier, kTYPE_BINARY ) );
-					$rs = $container->Query( $query );
-					
-					//
-					// Handle found nodes.
-					//
-					if( $rs->count() )
-					{
-						//
-						// Return list of nodes.
-						//
-						$list = Array();
-						foreach( $rs as $document )
-							$list[] = CPersistentObject::DocumentObject( $document );
-						
-						return $list;												// ==>
-					
-					} // Found at least one node.
-
-					//
-					// Raise exception.
-					//
-					if( $doThrow )
-						throw new Exception
-							( "Node not found",
-							  kERROR_NOT_FOUND );								// !@! ==>
-					
-					return NULL;													// ==>
-				
-				} // Provided term object.
-				
-				//
-				// Resolve term.
-				//
-				$term = $this->ResolveTerm( $theIdentifier, $doThrow );
-				
-				//
-				// Get term identifier.
-				//
-				$theIdentifier = $theIdentifier->offsetGet( kOFFSET_NID );
-				
-				//
-				// Make query.
-				//
-				$query = $container->NewQuery();
-				$query->AppendStatement(
-					CQueryStatement::Equals(
-						kOFFSET_TERM, $theIdentifier, kTYPE_BINARY ) );
-				$rs = $container->Query( $query );
-				
-				//
-				// Handle found nodes.
-				//
-				if( $rs->count() )
-				{
-					//
-					// Return list of nodes.
-					//
-					$list = Array();
-					foreach( $rs as $document )
-						$list[] = CPersistentObject::DocumentObject( $document );
-					
-					return $list;													// ==>
-				
-				} // Found at least one node.
-
-				//
-				// Raise exception.
-				//
-				if( $doThrow )
-					throw new Exception
-						( "Node not found",
-						  kERROR_NOT_FOUND );									// !@! ==>
-				
-				return NULL;													// ==>
-				
-			} // Provided local or global identifier.
-			
-			throw new Exception
-				( "Missing node identifier or term",
-				  kERROR_PARAMETER );											// !@! ==>
+			return COntologyNode::Resolve(
+				$this->Connection(), $theIdentifier, $doThrow );					// ==>
 		
 		} // Object is ready.
 		
