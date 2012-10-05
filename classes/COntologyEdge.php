@@ -64,8 +64,7 @@ require_once( kPATH_MYWRAPPER_LIBRARY_CLASS."/CEdge.php" );
  *
  * The class also adds two enumerated sets that represent respectively the subject and the
  * object vertex kind. These attributes are used to determine the nature of the subject and
- * vertex nodes in terms of the graph path, rather than committing these kinds directly to
- * the node.
+ * vertex nodes in terms of the current graph connection.
  *
  * The class implements the static method, {@link DefaultContainer()}, it will use the
  * {@link kCONTAINER_EDGE_NAME} constant. Note that when passing {@link CConnection} based

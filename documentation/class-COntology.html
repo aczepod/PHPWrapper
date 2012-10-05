@@ -170,7 +170,7 @@ the database in which the ontology resides.</p>
 				<b>Author:</b>
 				Milko A. Škofič &lt;<a
 href="mailto:m.skofic&#64;cgiar.org">m.skofic&#64;<!---->cgiar.org</a>&gt;<br />
-		<b>Located at</b> <a href="source-class-COntology.html#68-977" title="Go to source code">COntology.php</a><br />
+		<b>Located at</b> <a href="source-class-COntology.html#68-997" title="Go to source code">COntology.php</a><br />
 	</div>
 
 
@@ -269,8 +269,13 @@ returning its name.</p>
 				<h4>Used by</h4>
 				<div class="list">
 						<code><code><a href="class-COntology.html#___toString">COntology::__toString()</a></code></code> <br />
+						<code><code><a href="class-COntology.html#_NewTerm">COntology::NewTerm()</a></code></code> <br />
+						<code><code><a href="class-COntology.html#_NewNode">COntology::NewNode()</a></code></code> <br />
+						<code><code><a href="class-COntology.html#_NewRootNode">COntology::NewRootNode()</a></code></code> <br />
 						<code><code><a href="class-COntology.html#_ResolveTerm">COntology::ResolveTerm()</a></code></code> <br />
 						<code><code><a href="class-COntology.html#_ResolveNode">COntology::ResolveNode()</a></code></code> <br />
+						<code><code><a href="class-COntology.html#__NewTerm">COntology::_NewTerm()</a></code></code> <br />
+						<code><code><a href="class-COntology.html#__NewNode">COntology::_NewNode()</a></code></code> <br />
 				</div>
 
 				<h4>Overrides</h4>
@@ -290,7 +295,7 @@ returning its name.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#_NewTerm">#</a>
-		<code><a href="source-class-COntology.html#170-294" title="Go to source code">NewTerm</a>( <span>string <var>$theIdentifier</var></span>, <span>mixed <var>$theNamespace</var> = <span class="php-keyword1">NULL</span></span>, <span>string <var>$theLabel</var> = <span class="php-keyword1">NULL</span></span>, <span>string <var>$theDescription</var> = <span class="php-keyword1">NULL</span></span>, <span>string <var>$theLanguage</var> = <span class="php-keyword1">NULL</span> </span> )</code>
+		<code><a href="source-class-COntology.html#170-299" title="Go to source code">NewTerm</a>( <span>string <var>$theIdentifier</var></span>, <span>mixed <var>$theNamespace</var> = <span class="php-keyword1">NULL</span></span>, <span>string <var>$theLabel</var> = <span class="php-keyword1">NULL</span></span>, <span>string <var>$theDescription</var> = <span class="php-keyword1">NULL</span></span>, <span>string <var>$theLanguage</var> = <span class="php-keyword1">NULL</span> </span> )</code>
 
 		<div class="description short">
 			
@@ -375,6 +380,13 @@ will create a new one, commit it and return it.</p>
 					<code><code><a href="class-Exception.html">Exception</a></code></code><br />
 				</div>
 
+				<h4>Uses</h4>
+				<div class="list">
+						<code><code><a href="class-CStatusDocument.html#__IsInited">CStatusDocument::_IsInited()</a></code></code> <br />
+						<code><code><a href="class-COntology.html#_ResolveTerm">COntology::ResolveTerm()</a></code></code> <br />
+						<code><code><a href="class-COntology.html#__NewTerm">COntology::_NewTerm()</a></code></code> <br />
+						<code><code><a href="class-COntology.html#_Connection">COntology::Connection()</a></code></code> <br />
+				</div>
 
 
 		</div>
@@ -391,7 +403,7 @@ will create a new one, commit it and return it.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#_NewNode">#</a>
-		<code><a href="source-class-COntology.html#301-450" title="Go to source code">NewNode</a>( <span>mixed <var>$theIdentifier</var></span>, <span>mixed <var>$theNamespace</var> = <span class="php-keyword1">NULL</span></span>, <span>string <var>$theLabel</var> = <span class="php-keyword1">NULL</span></span>, <span>string <var>$theDescription</var> = <span class="php-keyword1">NULL</span></span>, <span>string <var>$theLanguage</var> = <span class="php-keyword1">NULL</span></span>, <span>boolean <var>$doNew</var> = <span class="php-keyword1">FALSE</span> </span> )</code>
+		<code><a href="source-class-COntology.html#306-459" title="Go to source code">NewNode</a>( <span>mixed <var>$theIdentifier</var></span>, <span>mixed <var>$theNamespace</var> = <span class="php-keyword1">NULL</span></span>, <span>string <var>$theLabel</var> = <span class="php-keyword1">NULL</span></span>, <span>string <var>$theDescription</var> = <span class="php-keyword1">NULL</span></span>, <span>string <var>$theLanguage</var> = <span class="php-keyword1">NULL</span></span>, <span>boolean <var>$doNew</var> = <span class="php-keyword1">FALSE</span> </span> )</code>
 
 		<div class="description short">
 			
@@ -498,6 +510,12 @@ and if the first parameter is <tt>NULL</tt>.</p>
 					<code><code><a href="class-Exception.html">Exception</a></code></code><br />
 				</div>
 
+				<h4>Uses</h4>
+				<div class="list">
+						<code><code><a href="class-CStatusDocument.html#__IsInited">CStatusDocument::_IsInited()</a></code></code> <br />
+						<code><code><a href="class-COntology.html#_Connection">COntology::Connection()</a></code></code> <br />
+						<code><code><a href="class-COntology.html#__NewNode">COntology::_NewNode()</a></code></code> <br />
+				</div>
 
 
 		</div>
@@ -514,7 +532,7 @@ and if the first parameter is <tt>NULL</tt>.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#_NewRootNode">#</a>
-		<code><a href="source-class-COntology.html#457-598" title="Go to source code">NewRootNode</a>( <span>mixed <var>$theIdentifier</var></span>, <span>boolean <var>$doNew</var> = <span class="php-keyword1">TRUE</span> </span> )</code>
+		<code><a href="source-class-COntology.html#466-614" title="Go to source code">NewRootNode</a>( <span>mixed <var>$theIdentifier</var></span>, <span>boolean <var>$doNew</var> = <span class="php-keyword1">TRUE</span> </span> )</code>
 
 		<div class="description short">
 			
@@ -581,6 +599,17 @@ is not resolved.</p>
 					<code><code><a href="class-Exception.html">Exception</a></code></code><br />
 				</div>
 
+				<h4>See</h4>
+				<div class="list">
+						kNODE_KIND_ROOT<br />
+				</div>
+				<h4>Uses</h4>
+				<div class="list">
+						<code><code><a href="class-CStatusDocument.html#__IsInited">CStatusDocument::_IsInited()</a></code></code> <br />
+						<code><code><a href="class-COntology.html#_Connection">COntology::Connection()</a></code></code> <br />
+						<code><code><a href="class-COntology.html#__NewNode">COntology::_NewNode()</a></code></code> <br />
+						<code><code><a href="class-COntology.html#_ResolveTerm">COntology::ResolveTerm()</a></code></code> <br />
+				</div>
 
 
 		</div>
@@ -597,7 +626,7 @@ is not resolved.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#_ResolveTerm">#</a>
-		<code><a href="source-class-COntology.html#614-696" title="Go to source code">ResolveTerm</a>( <span>string <var>$theIdentifier</var></span>, <span>mixed <var>$theNamespace</var> = <span class="php-keyword1">NULL</span></span>, <span>boolean <var>$doThrow</var> = <span class="php-keyword1">FALSE</span> </span> )</code>
+		<code><a href="source-class-COntology.html#630-712" title="Go to source code">ResolveTerm</a>( <span>string <var>$theIdentifier</var></span>, <span>mixed <var>$theNamespace</var> = <span class="php-keyword1">NULL</span></span>, <span>boolean <var>$doThrow</var> = <span class="php-keyword1">FALSE</span> </span> )</code>
 
 		<div class="description short">
 			
@@ -696,6 +725,11 @@ an exception if the third parameter is <tt>TRUE</tt>.</p>
 						<code><code><a href="class-COntology.html#_Connection">COntology::Connection()</a></code></code> <br />
 						<code><code><a href="class-COntologyTerm.html#_Resolve">COntologyTerm::Resolve()</a></code></code> <br />
 				</div>
+				<h4>Used by</h4>
+				<div class="list">
+						<code><code><a href="class-COntology.html#_NewTerm">COntology::NewTerm()</a></code></code> <br />
+						<code><code><a href="class-COntology.html#_NewRootNode">COntology::NewRootNode()</a></code></code> <br />
+				</div>
 
 
 		</div>
@@ -712,7 +746,7 @@ an exception if the third parameter is <tt>TRUE</tt>.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#_ResolveNode">#</a>
-		<code><a href="source-class-COntology.html#703-756" title="Go to source code">ResolveNode</a>( <span>mixed <var>$theIdentifier</var></span>, <span>boolean <var>$doThrow</var> = <span class="php-keyword1">FALSE</span> </span> )</code>
+		<code><a href="source-class-COntology.html#719-772" title="Go to source code">ResolveNode</a>( <span>mixed <var>$theIdentifier</var></span>, <span>boolean <var>$doThrow</var> = <span class="php-keyword1">FALSE</span> </span> )</code>
 
 		<div class="description short">
 			
@@ -790,7 +824,7 @@ and if the provided parameter is <tt>NULL</tt>.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#__NewTerm">#</a>
-		<code><a href="source-class-COntology.html#772-867" title="Go to source code">_NewTerm</a>( <span>string <var>$theIdentifier</var></span>, <span>mixed <var>$theNamespace</var></span>, <span>string <var>$theLabel</var></span>, <span>string <var>$theDescription</var></span>, <span>string <var>$theLanguage</var></span> )</code>
+		<code><a href="source-class-COntology.html#788-885" title="Go to source code">_NewTerm</a>( <span>string <var>$theIdentifier</var></span>, <span>mixed <var>$theNamespace</var></span>, <span>string <var>$theLabel</var></span>, <span>string <var>$theDescription</var></span>, <span>string <var>$theLanguage</var></span> )</code>
 
 		<div class="description short">
 			
@@ -857,6 +891,14 @@ is a duplicate.</p>
 					<code><code><a href="class-Exception.html">Exception</a></code></code><br />
 				</div>
 
+				<h4>Uses</h4>
+				<div class="list">
+						<code><code><a href="class-COntology.html#_Connection">COntology::Connection()</a></code></code> <br />
+				</div>
+				<h4>Used by</h4>
+				<div class="list">
+						<code><code><a href="class-COntology.html#_NewTerm">COntology::NewTerm()</a></code></code> <br />
+				</div>
 
 
 		</div>
@@ -873,7 +915,7 @@ is a duplicate.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#__NewNode">#</a>
-		<code><a href="source-class-COntology.html#874-973" title="Go to source code">_NewNode</a>( <span>mixed <var>$theTerm</var></span>, <span>mixed <var>$theKind</var> = <span class="php-keyword1">NULL</span></span>, <span>mixed <var>$theType</var> = <span class="php-keyword1">NULL</span> </span> )</code>
+		<code><a href="source-class-COntology.html#892-993" title="Go to source code">_NewNode</a>( <span>mixed <var>$theTerm</var></span>, <span>mixed <var>$theKind</var> = <span class="php-keyword1">NULL</span></span>, <span>mixed <var>$theType</var> = <span class="php-keyword1">NULL</span> </span> )</code>
 
 		<div class="description short">
 			
@@ -931,6 +973,15 @@ is a duplicate.</p>
 					<code><code><a href="class-Exception.html">Exception</a></code></code><br />
 				</div>
 
+				<h4>Uses</h4>
+				<div class="list">
+						<code><code><a href="class-COntology.html#_Connection">COntology::Connection()</a></code></code> <br />
+				</div>
+				<h4>Used by</h4>
+				<div class="list">
+						<code><code><a href="class-COntology.html#_NewNode">COntology::NewNode()</a></code></code> <br />
+						<code><code><a href="class-COntology.html#_NewRootNode">COntology::NewRootNode()</a></code></code> <br />
+				</div>
 
 
 		</div>

@@ -213,6 +213,11 @@ class COntology extends CConnection
 	 * @return COntologyTerm		New or found term.
 	 *
 	 * @throws Exception
+	 *
+	 * @uses _IsInited()
+	 * @uses ResolveTerm()
+	 * @uses _NewTerm()
+	 * @uses Connection()
 	 */
 	public function NewTerm( $theIdentifier, $theNamespace = NULL,
 											 $theLabel = NULL, $theDescription = NULL,
@@ -364,6 +369,10 @@ class COntology extends CConnection
 	 * @return mixed				New node, found node or nodes list.
 	 *
 	 * @throws Exception
+	 *
+	 * @uses _IsInited()
+	 * @uses Connection()
+	 * @uses _NewNode()
 	 */
 	public function NewNode( $theIdentifier, $theNamespace = NULL,
 											 $theLabel = NULL, $theDescription = NULL,
@@ -495,6 +504,13 @@ class COntology extends CConnection
 	 * @return mixed				New node, found node or nodes list.
 	 *
 	 * @throws Exception
+	 *
+	 * @uses _IsInited()
+	 * @uses Connection()
+	 * @uses _NewNode()
+	 * @uses ResolveTerm()
+	 *
+	 * @see kNODE_KIND_ROOT
 	 */
 	public function NewRootNode( $theIdentifier, $doNew = TRUE )
 	{
@@ -803,6 +819,8 @@ class COntology extends CConnection
 	 * @return COntologyTerm		New committed term.
 	 *
 	 * @throws Exception
+	 *
+	 * @uses Connection()
 	 */
 	protected function _NewTerm( $theIdentifier, $theNamespace,
 								 $theLabel, $theDescription, $theLanguage )
@@ -903,6 +921,8 @@ class COntology extends CConnection
 	 * @return COntologyNode		New committed node.
 	 *
 	 * @throws Exception
+	 *
+	 * @uses Connection()
 	 */
 	protected function _NewNode( $theTerm, $theKind = NULL, $theType = NULL )
 	{

@@ -118,8 +118,8 @@ class locks the offset.</p>
 
 <p>The class also adds two enumerated sets that represent respectively the
 subject and the object vertex kind. These attributes are used to determine the
-nature of the subject and vertex nodes in terms of the graph path, rather than
-committing these kinds directly to the node.</p>
+nature of the subject and vertex nodes in terms of the current graph
+connection.</p>
 
 <p>The class implements the static method, <code><a href="class-COntologyEdge.html#_DefaultContainer">COntologyEdge::DefaultContainer()</a></code>, it will
 use the kCONTAINER_EDGE_NAME constant. Note that when passing <code><a href="class-CConnection.html">CConnection</a></code> based objects to the persisting methods of this class, you should
@@ -219,7 +219,7 @@ terms.</p>
 				<b>Author:</b>
 				Milko A. Škofič &lt;<a
 href="mailto:m.skofic&#64;cgiar.org">m.skofic&#64;<!---->cgiar.org</a>&gt;<br />
-		<b>Located at</b> <a href="source-class-COntologyEdge.html#43-1419" title="Go to source code">COntologyEdge.php</a><br />
+		<b>Located at</b> <a href="source-class-COntologyEdge.html#43-1418" title="Go to source code">COntologyEdge.php</a><br />
 	</div>
 
 
@@ -237,7 +237,7 @@ href="mailto:m.skofic&#64;cgiar.org">m.skofic&#64;<!---->cgiar.org</a>&gt;<br />
 
 		<td class="name"><div>
 		<a class="anchor" href="#_SubjectKind">#</a>
-		<code><a href="source-class-COntologyEdge.html#134-196" title="Go to source code">SubjectKind</a>( <span>mixed <var>$theValue</var> = <span class="php-keyword1">NULL</span></span>, <span>mixed <var>$theOperation</var> = <span class="php-keyword1">NULL</span></span>, <span>boolean <var>$getOld</var> = <span class="php-keyword1">FALSE</span> </span> )</code>
+		<code><a href="source-class-COntologyEdge.html#133-195" title="Go to source code">SubjectKind</a>( <span>mixed <var>$theValue</var> = <span class="php-keyword1">NULL</span></span>, <span>mixed <var>$theOperation</var> = <span class="php-keyword1">NULL</span></span>, <span>boolean <var>$getOld</var> = <span class="php-keyword1">FALSE</span> </span> )</code>
 
 		<div class="description short">
 			
@@ -347,7 +347,7 @@ that can be managed with the following parameters:</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#_ObjectKind">#</a>
-		<code><a href="source-class-COntologyEdge.html#203-265" title="Go to source code">ObjectKind</a>( <span>mixed <var>$theValue</var> = <span class="php-keyword1">NULL</span></span>, <span>mixed <var>$theOperation</var> = <span class="php-keyword1">NULL</span></span>, <span>boolean <var>$getOld</var> = <span class="php-keyword1">FALSE</span> </span> )</code>
+		<code><a href="source-class-COntologyEdge.html#202-264" title="Go to source code">ObjectKind</a>( <span>mixed <var>$theValue</var> = <span class="php-keyword1">NULL</span></span>, <span>mixed <var>$theOperation</var> = <span class="php-keyword1">NULL</span></span>, <span>boolean <var>$getOld</var> = <span class="php-keyword1">FALSE</span> </span> )</code>
 
 		<div class="description short">
 			
@@ -457,7 +457,7 @@ that can be managed with the following parameters:</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#_TagRefs">#</a>
-		<code><a href="source-class-COntologyEdge.html#272-298" title="Go to source code">TagRefs</a>( )</code>
+		<code><a href="source-class-COntologyEdge.html#271-297" title="Go to source code">TagRefs</a>( )</code>
 
 		<div class="description short">
 			
@@ -505,7 +505,7 @@ identifiers of tags that reference the node.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#_LoadSubject">#</a>
-		<code><a href="source-class-COntologyEdge.html#314-382" title="Go to source code">LoadSubject</a>( <span><code><a href="class-CConnection.html">CConnection</a></code> <var>$theConnection</var></span>, <span>boolean <var>$doReload</var> = <span class="php-keyword1">FALSE</span> </span> )</code>
+		<code><a href="source-class-COntologyEdge.html#313-381" title="Go to source code">LoadSubject</a>( <span><code><a href="class-CConnection.html">CConnection</a></code> <var>$theConnection</var></span>, <span>boolean <var>$doReload</var> = <span class="php-keyword1">FALSE</span> </span> )</code>
 
 		<div class="description short">
 			
@@ -577,7 +577,7 @@ the object is to be read, or if the cached copy can be used.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#_LoadPredicate">#</a>
-		<code><a href="source-class-COntologyEdge.html#389-457" title="Go to source code">LoadPredicate</a>( <span><code><a href="class-CConnection.html">CConnection</a></code> <var>$theConnection</var></span>, <span>boolean <var>$doReload</var> = <span class="php-keyword1">FALSE</span> </span> )</code>
+		<code><a href="source-class-COntologyEdge.html#388-456" title="Go to source code">LoadPredicate</a>( <span><code><a href="class-CConnection.html">CConnection</a></code> <var>$theConnection</var></span>, <span>boolean <var>$doReload</var> = <span class="php-keyword1">FALSE</span> </span> )</code>
 
 		<div class="description short">
 			
@@ -649,7 +649,7 @@ the object is to be read, or if the cached copy can be used.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#_LoadObject">#</a>
-		<code><a href="source-class-COntologyEdge.html#464-532" title="Go to source code">LoadObject</a>( <span><code><a href="class-CConnection.html">CConnection</a></code> <var>$theConnection</var></span>, <span>boolean <var>$doReload</var> = <span class="php-keyword1">FALSE</span> </span> )</code>
+		<code><a href="source-class-COntologyEdge.html#463-531" title="Go to source code">LoadObject</a>( <span><code><a href="class-CConnection.html">CConnection</a></code> <var>$theConnection</var></span>, <span>boolean <var>$doReload</var> = <span class="php-keyword1">FALSE</span> </span> )</code>
 
 		<div class="description short">
 			
@@ -721,7 +721,7 @@ the object is to be read, or if the cached copy can be used.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#_DefaultContainer">#</a>
-		<code><a href="source-class-COntologyEdge.html#548-565" title="Go to source code">DefaultContainer</a>( <span><code><a href="class-CDatabase.html">CDatabase</a></code> <var>$theDatabase</var></span> )</code>
+		<code><a href="source-class-COntologyEdge.html#547-564" title="Go to source code">DefaultContainer</a>( <span><code><a href="class-CDatabase.html">CDatabase</a></code> <var>$theDatabase</var></span> )</code>
 
 		<div class="description short">
 			
@@ -772,7 +772,7 @@ kCONTAINER_EDGE_NAME name.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#__index">#</a>
-		<code><a href="source-class-COntologyEdge.html#581-647" title="Go to source code">_index</a>( <span><code><a href="class-CConnection.html">CConnection</a></code> <var>$theConnection</var></span>, <span>bitfield <var>$theModifiers</var></span> )</code>
+		<code><a href="source-class-COntologyEdge.html#580-646" title="Go to source code">_index</a>( <span><code><a href="class-CConnection.html">CConnection</a></code> <var>$theConnection</var></span>, <span>bitfield <var>$theModifiers</var></span> )</code>
 
 		<div class="description short">
 			
@@ -838,7 +838,7 @@ the kTOKEN_INDEX_SEPARATOR token.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#__Preset">#</a>
-		<code><a href="source-class-COntologyEdge.html#663-848" title="Go to source code">_Preset</a>( <span>reference <var>&amp; $theOffset</var></span>, <span>reference <var>&amp; $theValue</var></span> )</code>
+		<code><a href="source-class-COntologyEdge.html#662-847" title="Go to source code">_Preset</a>( <span>reference <var>&amp; $theOffset</var></span>, <span>reference <var>&amp; $theValue</var></span> )</code>
 
 		<div class="description short">
 			
@@ -904,7 +904,7 @@ modification.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#__Preunset">#</a>
-		<code><a href="source-class-COntologyEdge.html#855-901" title="Go to source code">_Preunset</a>( <span>reference <var>&amp; $theOffset</var></span> )</code>
+		<code><a href="source-class-COntologyEdge.html#854-900" title="Go to source code">_Preunset</a>( <span>reference <var>&amp; $theOffset</var></span> )</code>
 
 		<div class="description short">
 			
@@ -961,7 +961,7 @@ offset in all cases.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#__PrecommitRelated">#</a>
-		<code><a href="source-class-COntologyEdge.html#917-1054" title="Go to source code">_PrecommitRelated</a>( <span>reference <var>&amp; $theConnection</var></span>, <span>reference <var>&amp; $theModifiers</var></span> )</code>
+		<code><a href="source-class-COntologyEdge.html#916-1053" title="Go to source code">_PrecommitRelated</a>( <span>reference <var>&amp; $theConnection</var></span>, <span>reference <var>&amp; $theModifiers</var></span> )</code>
 
 		<div class="description short">
 			
@@ -1017,7 +1017,7 @@ provided as an identifier.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#__PrecommitIdentify">#</a>
-		<code><a href="source-class-COntologyEdge.html#1061-1154" title="Go to source code">_PrecommitIdentify</a>( <span>reference <var>&amp; $theConnection</var></span>, <span>reference <var>&amp; $theModifiers</var></span> )</code>
+		<code><a href="source-class-COntologyEdge.html#1060-1153" title="Go to source code">_PrecommitIdentify</a>( <span>reference <var>&amp; $theConnection</var></span>, <span>reference <var>&amp; $theModifiers</var></span> )</code>
 
 		<div class="description short">
 			
@@ -1078,7 +1078,7 @@ native identifiers, since they will have been set here.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#__PostcommitRelated">#</a>
-		<code><a href="source-class-COntologyEdge.html#1170-1237" title="Go to source code">_PostcommitRelated</a>( <span>reference <var>&amp; $theConnection</var></span>, <span>reference <var>&amp; $theModifiers</var></span> )</code>
+		<code><a href="source-class-COntologyEdge.html#1169-1236" title="Go to source code">_PostcommitRelated</a>( <span>reference <var>&amp; $theConnection</var></span>, <span>reference <var>&amp; $theModifiers</var></span> )</code>
 
 		<div class="description short">
 			
@@ -1134,7 +1134,7 @@ vertives when inserting; we remove the element when deleting.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#__PostcommitCleanup">#</a>
-		<code><a href="source-class-COntologyEdge.html#1244-1268" title="Go to source code">_PostcommitCleanup</a>( <span>reference <var>&amp; $theConnection</var></span>, <span>reference <var>&amp; $theModifiers</var></span> )</code>
+		<code><a href="source-class-COntologyEdge.html#1243-1267" title="Go to source code">_PostcommitCleanup</a>( <span>reference <var>&amp; $theConnection</var></span>, <span>reference <var>&amp; $theModifiers</var></span> )</code>
 
 		<div class="description short">
 			
@@ -1180,7 +1180,7 @@ will have to be refreshed.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#__ReferenceInSubject">#</a>
-		<code><a href="source-class-COntologyEdge.html#1284-1346" title="Go to source code">_ReferenceInSubject</a>( <span><code><a href="class-CConnection.html">CConnection</a></code> <var>$theConnection</var></span>, <span>boolean <var>$doAdd</var></span> )</code>
+		<code><a href="source-class-COntologyEdge.html#1283-1345" title="Go to source code">_ReferenceInSubject</a>( <span><code><a href="class-CConnection.html">CConnection</a></code> <var>$theConnection</var></span>, <span>boolean <var>$doAdd</var></span> )</code>
 
 		<div class="description short">
 			
@@ -1241,7 +1241,7 @@ and raise an exception if the operation failed.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#__ReferenceInObject">#</a>
-		<code><a href="source-class-COntologyEdge.html#1353-1415" title="Go to source code">_ReferenceInObject</a>( <span><code><a href="class-CConnection.html">CConnection</a></code> <var>$theConnection</var></span>, <span>boolean <var>$doAdd</var></span> )</code>
+		<code><a href="source-class-COntologyEdge.html#1352-1414" title="Go to source code">_ReferenceInObject</a>( <span><code><a href="class-CConnection.html">CConnection</a></code> <var>$theConnection</var></span>, <span>boolean <var>$doAdd</var></span> )</code>
 
 		<div class="description short">
 			
@@ -1419,7 +1419,7 @@ raise an exception if the operation failed.</p>
 		</code></td>
 
 		<td class="name">
-				<a href="source-class-COntologyEdge.html#93-100" title="Go to source code"><var>$mSubject</var></a>
+				<a href="source-class-COntologyEdge.html#92-99" title="Go to source code"><var>$mSubject</var></a>
 		</td>
 		<td class="value"><code><span class="php-keyword1">NULL</span></code></td>
 		<td class="description"><div>
@@ -1448,7 +1448,7 @@ raise an exception if the operation failed.</p>
 		</code></td>
 
 		<td class="name">
-				<a href="source-class-COntologyEdge.html#102-109" title="Go to source code"><var>$mPredicate</var></a>
+				<a href="source-class-COntologyEdge.html#101-108" title="Go to source code"><var>$mPredicate</var></a>
 		</td>
 		<td class="value"><code><span class="php-keyword1">NULL</span></code></td>
 		<td class="description"><div>
@@ -1477,7 +1477,7 @@ raise an exception if the operation failed.</p>
 		</code></td>
 
 		<td class="name">
-				<a href="source-class-COntologyEdge.html#111-118" title="Go to source code"><var>$mObject</var></a>
+				<a href="source-class-COntologyEdge.html#110-117" title="Go to source code"><var>$mObject</var></a>
 		</td>
 		<td class="value"><code><span class="php-keyword1">NULL</span></code></td>
 		<td class="description"><div>
