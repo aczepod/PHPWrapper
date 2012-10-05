@@ -1141,60 +1141,255 @@ class COntology extends CConnection
 	 * This method can be used to instantiate an edge by providing the subject and object
 	 * vertex nodes and the edge predicate term. The method makes use of the node's
 	 * {@link CNode::RelateTo()} method to perform the actual operation. This method will
-	 * only ensure that the subject node is committed before calling its method.
+	 * ensure that the subject node is committed before calling its method and eventually
+	 * create a new predicate term from its provided attributes.
+	 *
+	 * The method expects the vertex nodes to be provided as node references, the predicate
+	 * term can be created by this method by providing its attributes.
+	 *
+	 * <ul>
+	 *	<li><tt>$theSubject</tt>: Subject node reference.
+	 *	<li><tt>$theObject</tt>: Object node reference.
+	 *	<li><tt>$thePredicate</tt>: This parameter represents the predicate term reference,
+	 *		object or local identifier.
+	 *	<li><tt>$theNamespace</tt>: The predicate namespace, it can be provided in several
+	 *		ways:
+	 *	 <ul>
+	 *		<li><tt>NULL</tt>: This indicates that the term has no namespace.
+	 *		<li><tt>{@link COntologyTerm}</tt>: This represents the term namespace object.
+	 *		<li><i>other</i>: Any other type is interpreted as the namespace native
+	 *			identifier; if the namespace cannot be found, the method will raise an
+	 *			exception.
+	 *	 </ul>
+	 *	<li><tt>$theLabel</tt>: The term label string, this parameter is optional.
+	 *	<li><tt>$theDescription</tt>: The term description string this parameter is optional.
+	 *	<li><tt>$theLanguage</tt>: The language code of both the label and the description.
+	 * </ul>
 	 *
 	 * The method will return an instance of the {@link COntologyEdge} class, if any error
 	 * occurs, the method will raise an exception.
 	 *
 	 * @param mixed					$theSubject			Subject vertex.
 	 * @param mixed					$theObject			Object vertex.
-	 * @param mixed					$thePredicate		Relationship predicate.
+	 * @param mixed					$thePredicate		Relationship predicate reference.
+	 * @param mixed					$theNamespace		Predicate namespace reference.
+	 * @param string				$theLabel			Predicate label.
+	 * @param string				$theDescription		Predicate description.
+	 * @param string				$theLanguage		Label and description language code.
 	 *
 	 * @access public
-	 * @return CEdge				Relationship edge object.
+	 * @return COntologyEdge		Relationship edge object.
 	 *
 	 * @throws Exception
 	 *
-	 * @uses ResolveTerm()
-	 * @uses ResolveNode()
-	 *
-	 * @see kOFFSET_TERM
+	 * @uses _RelateTo()
 	 */
-	public function RelateTo( $theSubject, $theObject, $thePredicate )
+	public function RelateTo( $theSubject, $theObject, $thePredicate,
+							  $theNamespace = NULL,
+							  $theLabel = NULL, $theDescription = NULL,
+							  $theLanguage = NULL )
 	{
-		//
-		// Check if object is ready.
-		//
-		if( $this->_IsInited() )
-		{
-			//
-			// Commit subject.
-			//
-			if( $theSubject instanceof COntologyNode )
-			{
-				//
-				// Commit new node.
-				//
-				if( ! $theSubject->_IsCommitted() )
-					$theSubject->Insert( $this->Connection() );
-			
-			} // Provided subject node object.
-			
-			//
-			// Resolve subject.
-			//
-			else
-				$theSubject = $this->ResolveNode( $theSubject, TRUE );
-			
-			return $theSubject->RelateTo( $thePredicate, $theObject );				// ==>
-		
-		} // Object is ready.
-		
-		throw new Exception
-			( "Object is not initialised",
-			  kERROR_STATE );													// !@! ==>
+		return $this->_RelateTo( $theSubject, $theObject, $thePredicate,
+								 $theNamespace, $theLabel, $theDescription,
+								 $theLanguage );									// ==>
 
 	} // RelateTo.
+
+	 
+	/*===================================================================================
+	 *	SubclassOf																		*
+	 *==================================================================================*/
+
+	/**
+	 * <h4>Create a sub-class edge</h4>
+	 *
+	 * This method can be used to instantiate a {@link kPREDICATE_SUBCLASS_OF} edge by
+	 * providing the subject and object vertex nodes. The predicate term is inferred to have
+	 * a namespace with an empty code and a local code of {@link kPREDICATE_SUBCLASS_OF}; if
+	 * the term does not exist, it will be created.
+	 *
+	 * The method will return an instance of the {@link COntologyEdge} class, if any error
+	 * occurs, the method will raise an exception.
+	 *
+	 * @param mixed					$theSubject			Subject vertex.
+	 * @param mixed					$theObject			Object vertex.
+	 *
+	 * @access public
+	 * @return COntologyEdge		Relationship edge object.
+	 *
+	 * @throws Exception
+	 *
+	 * @uses _RelateTo()
+	 *
+	 * @see kPREDICATE_SUBCLASS_OF
+	 */
+	public function SubclassOf( $theSubject, $theObject )
+	{
+		//
+		// Resolve default namespace.
+		//
+		$namespace = $this->NewTerm( '', NULL,
+									 'Default namespace',
+									 'Default namespace term.',
+									 'en' );
+		if( ! $namespace->_IsCommitted() )
+			$namespace->Insert( $this->Connection() );
+		
+		return $this->_RelateTo( $theSubject, $theObject,
+								 kPREDICATE_SUBCLASS_OF,
+								 '',
+								 'Subclass-of',
+								 'Subclass-of predicate term.',
+								 'en' );											// ==>
+
+	} // SubclassOf.
+
+	 
+	/*===================================================================================
+	 *	MethodOf																		*
+	 *==================================================================================*/
+
+	/**
+	 * <h4>Create a method-of edge</h4>
+	 *
+	 * This method can be used to instantiate a {@link kPREDICATE_METHOD_OF} edge by
+	 * providing the subject and object vertex nodes. The predicate term is inferred to have
+	 * a namespace with an empty code and a local code of {@link kPREDICATE_METHOD_OF}; if
+	 * the term does not exist, it will be created.
+	 *
+	 * The method will return an instance of the {@link COntologyEdge} class, if any error
+	 * occurs, the method will raise an exception.
+	 *
+	 * @param mixed					$theSubject			Subject vertex.
+	 * @param mixed					$theObject			Object vertex.
+	 *
+	 * @access public
+	 * @return COntologyEdge		Relationship edge object.
+	 *
+	 * @throws Exception
+	 *
+	 * @uses _RelateTo()
+	 *
+	 * @see kPREDICATE_METHOD_OF
+	 */
+	public function MethodOf( $theSubject, $theObject )
+	{
+		//
+		// Resolve default namespace.
+		//
+		$namespace = $this->NewTerm( '', NULL,
+									 'Default namespace',
+									 'Default namespace term.',
+									 'en' );
+		if( ! $namespace->_IsCommitted() )
+			$namespace->Insert( $this->Connection() );
+		
+		return $this->_RelateTo( $theSubject, $theObject,
+								 kPREDICATE_METHOD_OF,
+								 '',
+								 'Method-of',
+								 'Method-of predicate term.',
+								 'en' );											// ==>
+
+	} // MethodOf.
+
+	 
+	/*===================================================================================
+	 *	ScaleOf																			*
+	 *==================================================================================*/
+
+	/**
+	 * <h4>Create a scale-of edge</h4>
+	 *
+	 * This method can be used to instantiate a {@link kPREDICATE_SCALE_OF} edge by
+	 * providing the subject and object vertex nodes. The predicate term is inferred to have
+	 * a namespace with an empty code and a local code of {@link kPREDICATE_SCALE_OF}; if
+	 * the term does not exist, it will be created.
+	 *
+	 * The method will return an instance of the {@link COntologyEdge} class, if any error
+	 * occurs, the method will raise an exception.
+	 *
+	 * @param mixed					$theSubject			Subject vertex.
+	 * @param mixed					$theObject			Object vertex.
+	 *
+	 * @access public
+	 * @return COntologyEdge		Relationship edge object.
+	 *
+	 * @throws Exception
+	 *
+	 * @uses _RelateTo()
+	 *
+	 * @see kPREDICATE_SCALE_OF
+	 */
+	public function ScaleOf( $theSubject, $theObject )
+	{
+		//
+		// Resolve default namespace.
+		//
+		$namespace = $this->NewTerm( '', NULL,
+									 'Default namespace',
+									 'Default namespace term.',
+									 'en' );
+		if( ! $namespace->_IsCommitted() )
+			$namespace->Insert( $this->Connection() );
+		
+		return $this->_RelateTo( $theSubject, $theObject,
+								 kPREDICATE_SCALE_OF,
+								 '',
+								 'Scale-of',
+								 'Scale-of predicate term.',
+								 'en' );											// ==>
+
+	} // ScaleOf.
+
+	 
+	/*===================================================================================
+	 *	EnumOf																			*
+	 *==================================================================================*/
+
+	/**
+	 * <h4>Create a enumeration-of edge</h4>
+	 *
+	 * This method can be used to instantiate a {@link kPREDICATE_ENUM_OF} edge by
+	 * providing the subject and object vertex nodes. The predicate term is inferred to have
+	 * a namespace with an empty code and a local code of {@link kPREDICATE_ENUM_OF}; if
+	 * the term does not exist, it will be created.
+	 *
+	 * The method will return an instance of the {@link COntologyEdge} class, if any error
+	 * occurs, the method will raise an exception.
+	 *
+	 * @param mixed					$theSubject			Subject vertex.
+	 * @param mixed					$theObject			Object vertex.
+	 *
+	 * @access public
+	 * @return COntologyEdge		Relationship edge object.
+	 *
+	 * @throws Exception
+	 *
+	 * @uses _RelateTo()
+	 *
+	 * @see kPREDICATE_ENUM_OF
+	 */
+	public function EnumOf( $theSubject, $theObject )
+	{
+		//
+		// Resolve default namespace.
+		//
+		$namespace = $this->NewTerm( '', NULL,
+									 'Default namespace',
+									 'Default namespace term.',
+									 'en' );
+		if( ! $namespace->_IsCommitted() )
+			$namespace->Insert( $this->Connection() );
+		
+		return $this->_RelateTo( $theSubject, $theObject,
+								 kPREDICATE_ENUM_OF,
+								 '',
+								 'Enumeration-of',
+								 'Enumeration-of predicate term.',
+								 'en' );											// ==>
+
+	} // EnumOf.
 
 		
 
@@ -1416,6 +1611,154 @@ class COntology extends CConnection
 			  kERROR_STATE );													// !@! ==>
 
 	} // _NewNode.
+
+		
+
+/*=======================================================================================
+ *																						*
+ *								PROTECTED OPERATIONS INTERFACE							*
+ *																						*
+ *======================================================================================*/
+
+
+	 
+	/*===================================================================================
+	 *	_RelateTo																		*
+	 *==================================================================================*/
+
+	/**
+	 * <h4>Create an edge</h4>
+	 *
+	 * This method can be used to instantiate an edge by providing the subject and object
+	 * vertex nodes and the edge predicate term. The method makes use of the subject node's
+	 * {@link CNode::RelateTo()} method to perform the actual operation. This method will
+	 * only ensure that the subject node is committed before calling its method.
+	 *
+	 * The method expects the vertex nodes to be provided as node references, the predicate
+	 * term can be created by this method by providing its attributes.
+	 *
+	 * <ul>
+	 *	<li><tt>$theSubject</tt>: Subject node reference.
+	 *	<li><tt>$theObject</tt>: Object node reference.
+	 *	<li><tt>$thePredicate</tt>: This parameter represents the predicate term reference,
+	 *		object or local identifier.
+	 *	<li><tt>$theNamespace</tt>: The predicate namespace, it can be provided in several
+	 *		ways:
+	 *	 <ul>
+	 *		<li><tt>NULL</tt>: This indicates that the term has no namespace.
+	 *		<li><tt>{@link COntologyTerm}</tt>: This represents the term namespace object.
+	 *		<li><i>other</i>: Any other type is interpreted as the namespace native
+	 *			identifier; if the namespace cannot be found, the method will raise an
+	 *			exception.
+	 *	 </ul>
+	 *	<li><tt>$theLabel</tt>: The term label string, this parameter is optional.
+	 *	<li><tt>$theDescription</tt>: The term description string this parameter is optional.
+	 *	<li><tt>$theLanguage</tt>: The language code of both the label and the description.
+	 * </ul>
+	 *
+	 * The method will return an instance of the {@link COntologyEdge} class, if any error
+	 * occurs, the method will raise an exception.
+	 *
+	 * @param mixed					$theSubject			Subject vertex.
+	 * @param mixed					$theObject			Object vertex.
+	 * @param mixed					$thePredicate		Relationship predicate reference.
+	 * @param mixed					$theNamespace		Predicate namespace reference.
+	 * @param string				$theLabel			Predicate label.
+	 * @param string				$theDescription		Predicate description.
+	 * @param string				$theLanguage		Label and description language code.
+	 *
+	 * @access protected
+	 * @return CEdge				Relationship edge object.
+	 *
+	 * @throws Exception
+	 *
+	 * @uses _IsInited()
+	 * @uses Connection()
+	 * @uses ResolveNode()
+	 * @uses NewTerm()
+	 */
+	protected function _RelateTo( $theSubject, $theObject, $thePredicate,
+								  $theNamespace = NULL,
+								  $theLabel = NULL, $theDescription = NULL,
+								  $theLanguage = NULL )
+	{
+		//
+		// Check if object is ready.
+		//
+		if( $this->_IsInited() )
+		{
+			//
+			// Resolve subject.
+			//
+			if( ! ($theSubject instanceof COntologyNode) )
+			{
+				//
+				// Resolve node.
+				//
+				$theSubject = $this->NewNode( $theSubject );
+				if( is_array( $theSubject ) )
+				{
+					//
+					// Handle many references.
+					//
+					if( count( $theSubject ) > 1 )
+						throw new Exception
+							( "Multiple reference subject node",
+							  kERROR_PARAMETER );								// !@! ==>
+					
+					//
+					// Use first.
+					//
+					$theSubject = $theSubject[ 0 ];
+				
+				} // Found nodes.
+			
+			} // Provided subject reference.
+			
+			//
+			// Resolve object.
+			//
+			if( ! ($theObject instanceof COntologyNode) )
+			{
+				//
+				// Resolve node.
+				//
+				$theObject = $this->NewNode( $theObject );
+				if( is_array( $theObject ) )
+				{
+					//
+					// Handle many references.
+					//
+					if( count( $theObject ) > 1 )
+						throw new Exception
+							( "Multiple reference object node",
+							  kERROR_PARAMETER );								// !@! ==>
+					
+					//
+					// Use first.
+					//
+					$theObject = $theObject[ 0 ];
+				
+				} // Found nodes.
+			
+			} // Provided object reference.
+			
+			//
+			// Resolve predicate.
+			//
+			$thePredicate = $this->NewTerm( $thePredicate, $theNamespace,
+											$theLabel, $theDescription,
+											$theLanguage );
+			
+			return $theSubject->RelateTo( $thePredicate, $theObject );				// ==>
+		
+		} // Object is ready.
+		
+		throw new Exception
+			( "Object is not initialised",
+			  kERROR_STATE );													// !@! ==>
+
+	} // _RelateTo.
 
 	 
 

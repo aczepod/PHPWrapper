@@ -413,8 +413,8 @@ try
 	// Create scale node.
 	//
 	echo( '<h4>Create scale node</h4>' );
-	echo( '<h5>$node = $test->NewScaleNode( "SCALE", kTYPE_STRING, $namespace, "Scale", "This is the scale term", "en" );</h5>' );
-	$node = $test->NewScaleNode( "SCALE", kTYPE_STRING, $namespace, "Scale", "This is the scale term", "en" );
+	echo( '<h5>$node = $test->NewScaleNode( "SCALE", kTYPE_ENUM, $namespace, "Scale", "This is the scale term", "en" );</h5>' );
+	$node = $test->NewScaleNode( "SCALE", kTYPE_ENUM, $namespace, "Scale", "This is the scale term", "en" );
 	echo( '<pre>' ); print_r( $node ); echo( '</pre>' );
 	echo( '<hr />' );
 	
@@ -445,6 +445,52 @@ try
 	echo( '<h5>$node = $test->NewEnumerationNode( ":STR" );</h5>' );
 	$node = $test->NewEnumerationNode( ":STR" );
 	echo( '<pre>' ); print_r( $node ); echo( '</pre>' );
+	echo( '<hr />' );
+	echo( '<hr />' );
+
+	//
+	// Category is subclass of ontology root node.
+	//
+	echo( '<h4>Category is subclass of ontology root node</h4>' );
+	echo( '<h5>$edge = $test->SubclassOf( $cat_node, "NAMESPACE:ONTOLOGY" );</h5>' );
+	$edge = $test->SubclassOf( $cat_node, "NAMESPACE:ONTOLOGY" );
+	echo( '<pre>' ); print_r( $edge ); echo( '</pre>' );
+	echo( '<hr />' );
+
+	//
+	// Trait is subclass of category node.
+	//
+	echo( '<h4>Trait is subclass of category node</h4>' );
+	echo( '<h5>$edge = $test->SubclassOf( "NAMESPACE:TRAIT", $cat_node );</h5>' );
+	$edge = $test->SubclassOf( "NAMESPACE:TRAIT", $cat_node );
+	echo( '<pre>' ); print_r( $edge ); echo( '</pre>' );
+	echo( '<hr />' );
+
+	//
+	// Method is method-of of trait node.
+	//
+	echo( '<h4>Method is method-of of trait node</h4>' );
+	echo( '<h5>$edge = $test->MethodOf( "NAMESPACE:METHOD", "NAMESPACE:TRAIT" );</h5>' );
+	$edge = $test->MethodOf( "NAMESPACE:METHOD", "NAMESPACE:TRAIT" );
+	echo( '<pre>' ); print_r( $edge ); echo( '</pre>' );
+	echo( '<hr />' );
+
+	//
+	// Scale is scale-of of method node.
+	//
+	echo( '<h4>Scale is scale-of of method node</h4>' );
+	echo( '<h5>$edge = $test->ScaleOf( "NAMESPACE:SCALE", "NAMESPACE:METHOD" );</h5>' );
+	$edge = $test->ScaleOf( "NAMESPACE:SCALE", "NAMESPACE:METHOD" );
+	echo( '<pre>' ); print_r( $edge ); echo( '</pre>' );
+	echo( '<hr />' );
+
+	//
+	// String is enumeration-of of scale node.
+	//
+	echo( '<h4>String is enumeration-of of scale node</h4>' );
+	echo( '<h5>$edge = $test->EnumOf( ":STR", "NAMESPACE:SCALE" );</h5>' );
+	$edge = $test->EnumOf( ":STR", "NAMESPACE:SCALE" );
+	echo( '<pre>' ); print_r( $edge ); echo( '</pre>' );
 	echo( '<hr />' );
 	echo( '<hr />' );
 }

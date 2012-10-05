@@ -170,7 +170,7 @@ the database in which the ontology resides.</p>
 				<b>Author:</b>
 				Milko A. Škofič &lt;<a
 href="mailto:m.skofic&#64;cgiar.org">m.skofic&#64;<!---->cgiar.org</a>&gt;<br />
-		<b>Located at</b> <a href="source-class-COntology.html#68-1422" title="Go to source code">COntology.php</a><br />
+		<b>Located at</b> <a href="source-class-COntology.html#68-1765" title="Go to source code">COntology.php</a><br />
 	</div>
 
 
@@ -276,6 +276,7 @@ returning its name.</p>
 						<code><code><a href="class-COntology.html#_ResolveNode">COntology::ResolveNode()</a></code></code> <br />
 						<code><code><a href="class-COntology.html#__NewTerm">COntology::_NewTerm()</a></code></code> <br />
 						<code><code><a href="class-COntology.html#__NewNode">COntology::_NewNode()</a></code></code> <br />
+						<code><code><a href="class-COntology.html#__RelateTo">COntology::_RelateTo()</a></code></code> <br />
 				</div>
 
 				<h4>Overrides</h4>
@@ -391,6 +392,7 @@ will create a new one, commit it and return it.</p>
 				<div class="list">
 						<code><code><a href="class-COntology.html#_NewNode">COntology::NewNode()</a></code></code> <br />
 						<code><code><a href="class-COntology.html#_NewScaleNode">COntology::NewScaleNode()</a></code></code> <br />
+						<code><code><a href="class-COntology.html#__RelateTo">COntology::_RelateTo()</a></code></code> <br />
 				</div>
 
 
@@ -1072,7 +1074,6 @@ an exception if the third parameter is <tt>TRUE</tt>.</p>
 				<h4>Used by</h4>
 				<div class="list">
 						<code><code><a href="class-COntology.html#_NewTerm">COntology::NewTerm()</a></code></code> <br />
-						<code><code><a href="class-COntology.html#_RelateTo">COntology::RelateTo()</a></code></code> <br />
 				</div>
 
 
@@ -1154,7 +1155,7 @@ and if the provided parameter is <tt>NULL</tt>.</p>
 				</div>
 				<h4>Used by</h4>
 				<div class="list">
-						<code><code><a href="class-COntology.html#_RelateTo">COntology::RelateTo()</a></code></code> <br />
+						<code><code><a href="class-COntology.html#__RelateTo">COntology::_RelateTo()</a></code></code> <br />
 				</div>
 
 
@@ -1165,14 +1166,14 @@ and if the provided parameter is <tt>NULL</tt>.</p>
 
 		<td class="attributes"><code>
 			 public 
-			<code><a href="class-CEdge.html">CEdge</a></code>
+			<code><a href="class-COntologyEdge.html">COntologyEdge</a></code>
 			
 			</code>
 		</td>
 
 		<td class="name"><div>
 		<a class="anchor" href="#_RelateTo">#</a>
-		<code><a href="source-class-COntology.html#1138-1197" title="Go to source code">RelateTo</a>( <span>mixed <var>$theSubject</var></span>, <span>mixed <var>$theObject</var></span>, <span>mixed <var>$thePredicate</var></span> )</code>
+		<code><a href="source-class-COntology.html#1138-1196" title="Go to source code">RelateTo</a>( <span>mixed <var>$theSubject</var></span>, <span>mixed <var>$theObject</var></span>, <span>mixed <var>$thePredicate</var></span>, <span>mixed <var>$theNamespace</var> = <span class="php-keyword1">NULL</span></span>, <span>string <var>$theLabel</var> = <span class="php-keyword1">NULL</span></span>, <span>string <var>$theDescription</var> = <span class="php-keyword1">NULL</span></span>, <span>string <var>$theLanguage</var> = <span class="php-keyword1">NULL</span> </span> )</code>
 
 		<div class="description short">
 			
@@ -1187,8 +1188,42 @@ and if the provided parameter is <tt>NULL</tt>.</p>
 <p>This method can be used to instantiate an edge by providing the subject and
 object vertex nodes and the edge predicate term. The method makes use of the
 node's <code><a href="class-CNode.html#_RelateTo">CNode::RelateTo()</a></code> method to perform the actual operation. This
-method will only ensure that the subject node is committed before calling its
-method.</p>
+method will ensure that the subject node is committed before calling its method
+and eventually create a new predicate term from its provided attributes.</p>
+
+<p>The method expects the vertex nodes to be provided as node references, the
+predicate term can be created by this method by providing its attributes.</p>
+
+<ul>
+	<li><tt>$theSubject</tt>: Subject node reference.</li>
+
+	<li><tt>$theObject</tt>: Object node reference.</li>
+
+	<li><tt>$thePredicate</tt>: This parameter represents the predicate term
+	reference, object or local identifier.</li>
+
+	<li><tt>$theNamespace</tt>: The predicate namespace, it can be provided in
+	several ways:
+		<ul>
+			<li><tt>NULL</tt>: This indicates that the term has no namespace.</li>
+
+			<li><tt><code><a href="class-COntologyTerm.html">COntologyTerm</a></code></tt>: This represents the term namespace
+			object.</li>
+
+			<li><i>other</i>: Any other type is interpreted as the namespace native
+			identifier; if the namespace cannot be found, the method will raise an
+			exception.</li>
+		</ul>
+	</li>
+
+	<li><tt>$theLabel</tt>: The term label string, this parameter is optional.</li>
+
+	<li><tt>$theDescription</tt>: The term description string this parameter is
+	optional.</li>
+
+	<li><tt>$theLanguage</tt>: The language code of both the label and the
+	description.</li>
+</ul>
 
 <p>The method will return an instance of the <code><a href="class-COntologyEdge.html">COntologyEdge</a></code> class, if any
 error occurs, the method will raise an exception.</p>
@@ -1202,12 +1237,79 @@ error occurs, the method will raise an exception.</p>
 					<dt><var>$theObject</var></dt>
 					<dd><code>mixed</code><br>$theObject Object vertex.</dd>
 					<dt><var>$thePredicate</var></dt>
-					<dd><code>mixed</code><br>$thePredicate Relationship predicate.</dd>
+					<dd><code>mixed</code><br>$thePredicate Relationship predicate reference.</dd>
+					<dt><var>$theNamespace</var></dt>
+					<dd><code>mixed</code><br>$theNamespace Predicate namespace reference.</dd>
+					<dt><var>$theLabel</var></dt>
+					<dd><code>string</code><br>$theLabel Predicate label.</dd>
+					<dt><var>$theDescription</var></dt>
+					<dd><code>string</code><br>$theDescription Predicate description.</dd>
+					<dt><var>$theLanguage</var></dt>
+					<dd><code>string</code><br>$theLanguage Label and description language code.</dd>
 				</dl></div>
 
 				<h4>Returns</h4>
 				<div class="list">
-					<code><code><a href="class-CEdge.html">CEdge</a></code></code><br>Relationship edge object.<br />
+					<code><code><a href="class-COntologyEdge.html">COntologyEdge</a></code></code><br>Relationship edge object.<br />
+				</div>
+
+				<h4>Throws</h4>
+				<div class="list">
+					<code><code><a href="class-Exception.html">Exception</a></code></code><br />
+				</div>
+
+				<h4>Uses</h4>
+				<div class="list">
+						<code><code><a href="class-COntology.html#__RelateTo">COntology::_RelateTo()</a></code></code> <br />
+				</div>
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="SubclassOf" id="_SubclassOf">
+
+		<td class="attributes"><code>
+			 public 
+			<code><a href="class-COntologyEdge.html">COntologyEdge</a></code>
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_SubclassOf">#</a>
+		<code><a href="source-class-COntology.html#1203-1245" title="Go to source code">SubclassOf</a>( <span>mixed <var>$theSubject</var></span>, <span>mixed <var>$theObject</var></span> )</code>
+
+		<div class="description short">
+			
+<h4>Create a sub-class edge</h4>
+
+		</div>
+
+		<div class="description detailed hidden">
+			
+<h4>Create a sub-class edge</h4>
+
+<p>This method can be used to instantiate a kPREDICATE_SUBCLASS_OF edge
+by providing the subject and object vertex nodes. The predicate term is inferred
+to have a namespace with an empty code and a local code of kPREDICATE_SUBCLASS_OF; if the term does not exist, it will be created.</p>
+
+<p>The method will return an instance of the <code><a href="class-COntologyEdge.html">COntologyEdge</a></code> class, if any
+error occurs, the method will raise an exception.</p>
+
+
+
+				<h4>Parameters</h4>
+				<div class="list"><dl>
+					<dt><var>$theSubject</var></dt>
+					<dd><code>mixed</code><br>$theSubject Subject vertex.</dd>
+					<dt><var>$theObject</var></dt>
+					<dd><code>mixed</code><br>$theObject Object vertex.</dd>
+				</dl></div>
+
+				<h4>Returns</h4>
+				<div class="list">
+					<code><code><a href="class-COntologyEdge.html">COntologyEdge</a></code></code><br>Relationship edge object.<br />
 				</div>
 
 				<h4>Throws</h4>
@@ -1217,12 +1319,200 @@ error occurs, the method will raise an exception.</p>
 
 				<h4>See</h4>
 				<div class="list">
-						kOFFSET_TERM<br />
+						kPREDICATE_SUBCLASS_OF<br />
 				</div>
 				<h4>Uses</h4>
 				<div class="list">
-						<code><code><a href="class-COntology.html#_ResolveTerm">COntology::ResolveTerm()</a></code></code> <br />
-						<code><code><a href="class-COntology.html#_ResolveNode">COntology::ResolveNode()</a></code></code> <br />
+						<code><code><a href="class-COntology.html#__RelateTo">COntology::_RelateTo()</a></code></code> <br />
+				</div>
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="MethodOf" id="_MethodOf">
+
+		<td class="attributes"><code>
+			 public 
+			<code><a href="class-COntologyEdge.html">COntologyEdge</a></code>
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_MethodOf">#</a>
+		<code><a href="source-class-COntology.html#1252-1294" title="Go to source code">MethodOf</a>( <span>mixed <var>$theSubject</var></span>, <span>mixed <var>$theObject</var></span> )</code>
+
+		<div class="description short">
+			
+<h4>Create a method-of edge</h4>
+
+		</div>
+
+		<div class="description detailed hidden">
+			
+<h4>Create a method-of edge</h4>
+
+<p>This method can be used to instantiate a kPREDICATE_METHOD_OF edge by
+providing the subject and object vertex nodes. The predicate term is inferred to
+have a namespace with an empty code and a local code of kPREDICATE_METHOD_OF; if the term does not exist, it will be created.</p>
+
+<p>The method will return an instance of the <code><a href="class-COntologyEdge.html">COntologyEdge</a></code> class, if any
+error occurs, the method will raise an exception.</p>
+
+
+
+				<h4>Parameters</h4>
+				<div class="list"><dl>
+					<dt><var>$theSubject</var></dt>
+					<dd><code>mixed</code><br>$theSubject Subject vertex.</dd>
+					<dt><var>$theObject</var></dt>
+					<dd><code>mixed</code><br>$theObject Object vertex.</dd>
+				</dl></div>
+
+				<h4>Returns</h4>
+				<div class="list">
+					<code><code><a href="class-COntologyEdge.html">COntologyEdge</a></code></code><br>Relationship edge object.<br />
+				</div>
+
+				<h4>Throws</h4>
+				<div class="list">
+					<code><code><a href="class-Exception.html">Exception</a></code></code><br />
+				</div>
+
+				<h4>See</h4>
+				<div class="list">
+						kPREDICATE_METHOD_OF<br />
+				</div>
+				<h4>Uses</h4>
+				<div class="list">
+						<code><code><a href="class-COntology.html#__RelateTo">COntology::_RelateTo()</a></code></code> <br />
+				</div>
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="ScaleOf" id="_ScaleOf">
+
+		<td class="attributes"><code>
+			 public 
+			<code><a href="class-COntologyEdge.html">COntologyEdge</a></code>
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_ScaleOf">#</a>
+		<code><a href="source-class-COntology.html#1301-1343" title="Go to source code">ScaleOf</a>( <span>mixed <var>$theSubject</var></span>, <span>mixed <var>$theObject</var></span> )</code>
+
+		<div class="description short">
+			
+<h4>Create a scale-of edge</h4>
+
+		</div>
+
+		<div class="description detailed hidden">
+			
+<h4>Create a scale-of edge</h4>
+
+<p>This method can be used to instantiate a kPREDICATE_SCALE_OF edge by
+providing the subject and object vertex nodes. The predicate term is inferred to
+have a namespace with an empty code and a local code of kPREDICATE_SCALE_OF; if the term does not exist, it will be created.</p>
+
+<p>The method will return an instance of the <code><a href="class-COntologyEdge.html">COntologyEdge</a></code> class, if any
+error occurs, the method will raise an exception.</p>
+
+
+
+				<h4>Parameters</h4>
+				<div class="list"><dl>
+					<dt><var>$theSubject</var></dt>
+					<dd><code>mixed</code><br>$theSubject Subject vertex.</dd>
+					<dt><var>$theObject</var></dt>
+					<dd><code>mixed</code><br>$theObject Object vertex.</dd>
+				</dl></div>
+
+				<h4>Returns</h4>
+				<div class="list">
+					<code><code><a href="class-COntologyEdge.html">COntologyEdge</a></code></code><br>Relationship edge object.<br />
+				</div>
+
+				<h4>Throws</h4>
+				<div class="list">
+					<code><code><a href="class-Exception.html">Exception</a></code></code><br />
+				</div>
+
+				<h4>See</h4>
+				<div class="list">
+						kPREDICATE_SCALE_OF<br />
+				</div>
+				<h4>Uses</h4>
+				<div class="list">
+						<code><code><a href="class-COntology.html#__RelateTo">COntology::_RelateTo()</a></code></code> <br />
+				</div>
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="EnumOf" id="_EnumOf">
+
+		<td class="attributes"><code>
+			 public 
+			<code><a href="class-COntologyEdge.html">COntologyEdge</a></code>
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_EnumOf">#</a>
+		<code><a href="source-class-COntology.html#1350-1392" title="Go to source code">EnumOf</a>( <span>mixed <var>$theSubject</var></span>, <span>mixed <var>$theObject</var></span> )</code>
+
+		<div class="description short">
+			
+<h4>Create a enumeration-of edge</h4>
+
+		</div>
+
+		<div class="description detailed hidden">
+			
+<h4>Create a enumeration-of edge</h4>
+
+<p>This method can be used to instantiate a kPREDICATE_ENUM_OF edge by
+providing the subject and object vertex nodes. The predicate term is inferred to
+have a namespace with an empty code and a local code of kPREDICATE_ENUM_OF; if the term does not exist, it will be created.</p>
+
+<p>The method will return an instance of the <code><a href="class-COntologyEdge.html">COntologyEdge</a></code> class, if any
+error occurs, the method will raise an exception.</p>
+
+
+
+				<h4>Parameters</h4>
+				<div class="list"><dl>
+					<dt><var>$theSubject</var></dt>
+					<dd><code>mixed</code><br>$theSubject Subject vertex.</dd>
+					<dt><var>$theObject</var></dt>
+					<dd><code>mixed</code><br>$theObject Object vertex.</dd>
+				</dl></div>
+
+				<h4>Returns</h4>
+				<div class="list">
+					<code><code><a href="class-COntologyEdge.html">COntologyEdge</a></code></code><br>Relationship edge object.<br />
+				</div>
+
+				<h4>Throws</h4>
+				<div class="list">
+					<code><code><a href="class-Exception.html">Exception</a></code></code><br />
+				</div>
+
+				<h4>See</h4>
+				<div class="list">
+						kPREDICATE_ENUM_OF<br />
+				</div>
+				<h4>Uses</h4>
+				<div class="list">
+						<code><code><a href="class-COntology.html#__RelateTo">COntology::_RelateTo()</a></code></code> <br />
 				</div>
 
 
@@ -1240,7 +1530,7 @@ error occurs, the method will raise an exception.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#__NewTerm">#</a>
-		<code><a href="source-class-COntology.html#1213-1310" title="Go to source code">_NewTerm</a>( <span>string <var>$theIdentifier</var></span>, <span>mixed <var>$theNamespace</var></span>, <span>string <var>$theLabel</var></span>, <span>string <var>$theDescription</var></span>, <span>string <var>$theLanguage</var></span> )</code>
+		<code><a href="source-class-COntology.html#1408-1505" title="Go to source code">_NewTerm</a>( <span>string <var>$theIdentifier</var></span>, <span>mixed <var>$theNamespace</var></span>, <span>string <var>$theLabel</var></span>, <span>string <var>$theDescription</var></span>, <span>string <var>$theLanguage</var></span> )</code>
 
 		<div class="description short">
 			
@@ -1331,7 +1621,7 @@ is a duplicate.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#__NewNode">#</a>
-		<code><a href="source-class-COntology.html#1317-1418" title="Go to source code">_NewNode</a>( <span>mixed <var>$theTerm</var></span>, <span>mixed <var>$theKind</var> = <span class="php-keyword1">NULL</span></span>, <span>mixed <var>$theType</var> = <span class="php-keyword1">NULL</span> </span> )</code>
+		<code><a href="source-class-COntology.html#1512-1613" title="Go to source code">_NewNode</a>( <span>mixed <var>$theTerm</var></span>, <span>mixed <var>$theKind</var> = <span class="php-keyword1">NULL</span></span>, <span>mixed <var>$theType</var> = <span class="php-keyword1">NULL</span> </span> )</code>
 
 		<div class="description short">
 			
@@ -1397,6 +1687,122 @@ is a duplicate.</p>
 				<div class="list">
 						<code><code><a href="class-COntology.html#_NewNode">COntology::NewNode()</a></code></code> <br />
 						<code><code><a href="class-COntology.html#_NewScaleNode">COntology::NewScaleNode()</a></code></code> <br />
+				</div>
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="_RelateTo" id="__RelateTo">
+
+		<td class="attributes"><code>
+			 protected 
+			<code><a href="class-CEdge.html">CEdge</a></code>
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#__RelateTo">#</a>
+		<code><a href="source-class-COntology.html#1629-1761" title="Go to source code">_RelateTo</a>( <span>mixed <var>$theSubject</var></span>, <span>mixed <var>$theObject</var></span>, <span>mixed <var>$thePredicate</var></span>, <span>mixed <var>$theNamespace</var> = <span class="php-keyword1">NULL</span></span>, <span>string <var>$theLabel</var> = <span class="php-keyword1">NULL</span></span>, <span>string <var>$theDescription</var> = <span class="php-keyword1">NULL</span></span>, <span>string <var>$theLanguage</var> = <span class="php-keyword1">NULL</span> </span> )</code>
+
+		<div class="description short">
+			
+<h4>Create an edge</h4>
+
+		</div>
+
+		<div class="description detailed hidden">
+			
+<h4>Create an edge</h4>
+
+<p>This method can be used to instantiate an edge by providing the subject and
+object vertex nodes and the edge predicate term. The method makes use of the
+subject node's <code><a href="class-CNode.html#_RelateTo">CNode::RelateTo()</a></code> method to perform the actual operation.
+This method will only ensure that the subject node is committed before calling
+its method.</p>
+
+<p>The method expects the vertex nodes to be provided as node references, the
+predicate term can be created by this method by providing its attributes.</p>
+
+<ul>
+	<li><tt>$theSubject</tt>: Subject node reference.</li>
+
+	<li><tt>$theObject</tt>: Object node reference.</li>
+
+	<li><tt>$thePredicate</tt>: This parameter represents the predicate term
+	reference, object or local identifier.</li>
+
+	<li><tt>$theNamespace</tt>: The predicate namespace, it can be provided in
+	several ways:
+		<ul>
+			<li><tt>NULL</tt>: This indicates that the term has no namespace.</li>
+
+			<li><tt><code><a href="class-COntologyTerm.html">COntologyTerm</a></code></tt>: This represents the term namespace
+			object.</li>
+
+			<li><i>other</i>: Any other type is interpreted as the namespace native
+			identifier; if the namespace cannot be found, the method will raise an
+			exception.</li>
+		</ul>
+	</li>
+
+	<li><tt>$theLabel</tt>: The term label string, this parameter is optional.</li>
+
+	<li><tt>$theDescription</tt>: The term description string this parameter is
+	optional.</li>
+
+	<li><tt>$theLanguage</tt>: The language code of both the label and the
+	description.</li>
+</ul>
+
+<p>The method will return an instance of the <code><a href="class-COntologyEdge.html">COntologyEdge</a></code> class, if any
+error occurs, the method will raise an exception.</p>
+
+
+
+				<h4>Parameters</h4>
+				<div class="list"><dl>
+					<dt><var>$theSubject</var></dt>
+					<dd><code>mixed</code><br>$theSubject Subject vertex.</dd>
+					<dt><var>$theObject</var></dt>
+					<dd><code>mixed</code><br>$theObject Object vertex.</dd>
+					<dt><var>$thePredicate</var></dt>
+					<dd><code>mixed</code><br>$thePredicate Relationship predicate reference.</dd>
+					<dt><var>$theNamespace</var></dt>
+					<dd><code>mixed</code><br>$theNamespace Predicate namespace reference.</dd>
+					<dt><var>$theLabel</var></dt>
+					<dd><code>string</code><br>$theLabel Predicate label.</dd>
+					<dt><var>$theDescription</var></dt>
+					<dd><code>string</code><br>$theDescription Predicate description.</dd>
+					<dt><var>$theLanguage</var></dt>
+					<dd><code>string</code><br>$theLanguage Label and description language code.</dd>
+				</dl></div>
+
+				<h4>Returns</h4>
+				<div class="list">
+					<code><code><a href="class-CEdge.html">CEdge</a></code></code><br>Relationship edge object.<br />
+				</div>
+
+				<h4>Throws</h4>
+				<div class="list">
+					<code><code><a href="class-Exception.html">Exception</a></code></code><br />
+				</div>
+
+				<h4>Uses</h4>
+				<div class="list">
+						<code><code><a href="class-CStatusDocument.html#__IsInited">CStatusDocument::_IsInited()</a></code></code> <br />
+						<code><code><a href="class-COntology.html#_Connection">COntology::Connection()</a></code></code> <br />
+						<code><code><a href="class-COntology.html#_ResolveNode">COntology::ResolveNode()</a></code></code> <br />
+						<code><code><a href="class-COntology.html#_NewTerm">COntology::NewTerm()</a></code></code> <br />
+				</div>
+				<h4>Used by</h4>
+				<div class="list">
+						<code><code><a href="class-COntology.html#_RelateTo">COntology::RelateTo()</a></code></code> <br />
+						<code><code><a href="class-COntology.html#_SubclassOf">COntology::SubclassOf()</a></code></code> <br />
+						<code><code><a href="class-COntology.html#_MethodOf">COntology::MethodOf()</a></code></code> <br />
+						<code><code><a href="class-COntology.html#_ScaleOf">COntology::ScaleOf()</a></code></code> <br />
+						<code><code><a href="class-COntology.html#_EnumOf">COntology::EnumOf()</a></code></code> <br />
 				</div>
 
 

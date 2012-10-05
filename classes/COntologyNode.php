@@ -328,7 +328,7 @@ class COntologyNode extends CNode
 	 * do so.
 	 *
 	 * @param mixed					$thePredicate		Predicate term object or reference.
-	 * @param mixed					$theObject			object node object or reference.
+	 * @param mixed					$theObject			Object node object or reference.
 	 *
 	 * @access public
 	 * @return COntologyEdge		Edge object.
