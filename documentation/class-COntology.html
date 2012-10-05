@@ -170,7 +170,7 @@ the database in which the ontology resides.</p>
 				<b>Author:</b>
 				Milko A. Škofič &lt;<a
 href="mailto:m.skofic&#64;cgiar.org">m.skofic&#64;<!---->cgiar.org</a>&gt;<br />
-		<b>Located at</b> <a href="source-class-COntology.html#68-997" title="Go to source code">COntology.php</a><br />
+		<b>Located at</b> <a href="source-class-COntology.html#68-1422" title="Go to source code">COntology.php</a><br />
 	</div>
 
 
@@ -271,7 +271,7 @@ returning its name.</p>
 						<code><code><a href="class-COntology.html#___toString">COntology::__toString()</a></code></code> <br />
 						<code><code><a href="class-COntology.html#_NewTerm">COntology::NewTerm()</a></code></code> <br />
 						<code><code><a href="class-COntology.html#_NewNode">COntology::NewNode()</a></code></code> <br />
-						<code><code><a href="class-COntology.html#_NewRootNode">COntology::NewRootNode()</a></code></code> <br />
+						<code><code><a href="class-COntology.html#_NewScaleNode">COntology::NewScaleNode()</a></code></code> <br />
 						<code><code><a href="class-COntology.html#_ResolveTerm">COntology::ResolveTerm()</a></code></code> <br />
 						<code><code><a href="class-COntology.html#_ResolveNode">COntology::ResolveNode()</a></code></code> <br />
 						<code><code><a href="class-COntology.html#__NewTerm">COntology::_NewTerm()</a></code></code> <br />
@@ -387,6 +387,11 @@ will create a new one, commit it and return it.</p>
 						<code><code><a href="class-COntology.html#__NewTerm">COntology::_NewTerm()</a></code></code> <br />
 						<code><code><a href="class-COntology.html#_Connection">COntology::Connection()</a></code></code> <br />
 				</div>
+				<h4>Used by</h4>
+				<div class="list">
+						<code><code><a href="class-COntology.html#_NewNode">COntology::NewNode()</a></code></code> <br />
+						<code><code><a href="class-COntology.html#_NewScaleNode">COntology::NewScaleNode()</a></code></code> <br />
+				</div>
 
 
 		</div>
@@ -403,17 +408,17 @@ will create a new one, commit it and return it.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#_NewNode">#</a>
-		<code><a href="source-class-COntology.html#306-459" title="Go to source code">NewNode</a>( <span>mixed <var>$theIdentifier</var></span>, <span>mixed <var>$theNamespace</var> = <span class="php-keyword1">NULL</span></span>, <span>string <var>$theLabel</var> = <span class="php-keyword1">NULL</span></span>, <span>string <var>$theDescription</var> = <span class="php-keyword1">NULL</span></span>, <span>string <var>$theLanguage</var> = <span class="php-keyword1">NULL</span></span>, <span>boolean <var>$doNew</var> = <span class="php-keyword1">FALSE</span> </span> )</code>
+		<code><a href="source-class-COntology.html#306-566" title="Go to source code">NewNode</a>( <span>mixed <var>$theIdentifier</var></span>, <span>mixed <var>$theKind</var> = <span class="php-keyword1">NULL</span></span>, <span>string <var>$theType</var> = <span class="php-keyword1">NULL</span></span>, <span>mixed <var>$theNamespace</var> = <span class="php-keyword1">NULL</span></span>, <span>string <var>$theLabel</var> = <span class="php-keyword1">NULL</span></span>, <span>string <var>$theDescription</var> = <span class="php-keyword1">NULL</span></span>, <span>string <var>$theLanguage</var> = <span class="php-keyword1">NULL</span></span>, <span>boolean <var>$doNew</var> = <span class="php-keyword1">FALSE</span> </span> )</code>
 
 		<div class="description short">
 			
-<h4>Instantiate a node</h4>
+<h4>Locate or instantiate a qualified node</h4>
 
 		</div>
 
 		<div class="description detailed hidden">
 			
-<h4>Instantiate a node</h4>
+<h4>Locate or instantiate a qualified node</h4>
 
 <p>This method can be used to instantiate a new node, retrieve an existing node
 by identifier, or retrieve the list of nodes matching a term.</p>
@@ -426,30 +431,50 @@ term, or a new node related to that term.</p>
 <p>This means that when you provide data for a new term, this will be
 instantiated and committed in all cases.</p>
 
+<p>The method also accepts the node qualifications through the <code><a href="class-CNode.html#_Kind">CNode::Kind()</a></code> and CNode.:Type() qualifiers: when resolving nodes, these
+have to match or a new instance is returned; when creating new nodes, these
+qualifiers will be set to the provided values.</p>
+
 <p>The method expects the following parameters:</p>
 
 <ul>
-	<li><tt>$theIdentifier</tt>: This parameter represents the node identifier, or
-	the term reference:
+	<li><tt>$theIdentifier</tt>: This parameter represents either the node
+	identifier, or the term reference, depending on the value type:
 		<ul>
 			<li><tt>integer</tt>: In this case the method assumes that the parameter
 			represents the node identifier: it will attempt to retrieve the node, if it is
 			not found, the method will return <tt>NULL</tt>. With this option all other
 			parameter are ignored.</li>
 
-			<li><tt><code><a href="class-COntologyTerm.html">COntologyTerm</a></code></tt>: In this case the method assumes the
-			parameter represents the term object: if the term is not committed, the method
-			will return a new node, if the term is committed, the method will try to locate
-			all nodes related to that term: if none are found, or if the last parameter is
-			<tt>TRUE</tt>, the method will return a new node related to that term; if at
-			least one node is found, the method will return the list of nodes related to
-			that term.</li>
+			<li><i>other</i>: Any other value indicates that the parameter represents a
+			reference to a term, either as a term object or identifier. The term will be
+			resolved: if the <tt>$doNew</tt> parameter is <tt>TRUE</tt>, the method will
+			return a new node related to the resolved term; if the <tt>$doNew</tt> parameter
+			is not <tt>TRUE</tt>:
+				<ul>
+					<li><i>The term is committed</i>: The method will try to locate all nodes
+					related to that term, if any are found, the method will return the list of
+					nodes; if none are found, the method will return a new node related to that
+					provided term.</li>
 
-			<li><i>other</i>: In this case the parameter is expected to be the term's native
-			or global identifier and the method will behave as above.</li>
+					<li><i>The term is <i>not</i> committed</i>: The ethod will return a new node
+					related to that term.</li>
+				</ul>
+			</li>
 		</ul>
 		 The next four parameters have a meaning only if you are creating a new node
 		with a new term, in all other cases these parameters will be ignored.</li>
+
+	<li><tt>$theKind</tt>: If not <tt>NULL</tt>, this parameter will serve as a
+	filter to locate matching nodes, or it will be set in new nodes. This parameter
+	represents the node's <code><a href="class-CNode.html#_Kind">CNode::Kind()</a></code>. The parameter can be provided both
+	as an array or as a scalar, in the first case it means that <i>all</i> elements
+	must match.</li>
+
+	<li><tt>$theType</tt>: If not <tt>NULL</tt>, this parameter will serve as a
+	filter to locate matching nodes, or it will be set in new nodes. This parameter
+	represents the node's <code><a href="class-CNode.html#_Type">CNode::Type()</a></code>. The parameter is expected to be a
+	scalar.</li>
 
 	<li><tt>$theNamespace</tt>: The term namespace, it can be provided in several
 	ways:
@@ -488,6 +513,10 @@ and if the first parameter is <tt>NULL</tt>.</p>
 				<div class="list"><dl>
 					<dt><var>$theIdentifier</var></dt>
 					<dd><code>mixed</code><br>$theIdentifier Node identifier or term reference.</dd>
+					<dt><var>$theKind</var></dt>
+					<dd><code>mixed</code><br>$theKind Node kind set.</dd>
+					<dt><var>$theType</var></dt>
+					<dd><code>string</code><br>$theType Node type.</dd>
 					<dt><var>$theNamespace</var></dt>
 					<dd><code>mixed</code><br>$theNamespace Term namespace reference.</dd>
 					<dt><var>$theLabel</var></dt>
@@ -514,7 +543,15 @@ and if the first parameter is <tt>NULL</tt>.</p>
 				<div class="list">
 						<code><code><a href="class-CStatusDocument.html#__IsInited">CStatusDocument::_IsInited()</a></code></code> <br />
 						<code><code><a href="class-COntology.html#_Connection">COntology::Connection()</a></code></code> <br />
+						<code><code><a href="class-COntology.html#_NewTerm">COntology::NewTerm()</a></code></code> <br />
 						<code><code><a href="class-COntology.html#__NewNode">COntology::_NewNode()</a></code></code> <br />
+				</div>
+				<h4>Used by</h4>
+				<div class="list">
+						<code><code><a href="class-COntology.html#_NewRootNode">COntology::NewRootNode()</a></code></code> <br />
+						<code><code><a href="class-COntology.html#_NewTraitNode">COntology::NewTraitNode()</a></code></code> <br />
+						<code><code><a href="class-COntology.html#_NewMethodNode">COntology::NewMethodNode()</a></code></code> <br />
+						<code><code><a href="class-COntology.html#_NewEnumerationNode">COntology::NewEnumerationNode()</a></code></code> <br />
 				</div>
 
 
@@ -532,7 +569,7 @@ and if the first parameter is <tt>NULL</tt>.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#_NewRootNode">#</a>
-		<code><a href="source-class-COntology.html#466-614" title="Go to source code">NewRootNode</a>( <span>mixed <var>$theIdentifier</var></span>, <span>boolean <var>$doNew</var> = <span class="php-keyword1">TRUE</span> </span> )</code>
+		<code><a href="source-class-COntology.html#573-615" title="Go to source code">NewRootNode</a>( <span>mixed <var>$theIdentifier</var></span>, <span>mixed <var>$theNamespace</var> = <span class="php-keyword1">NULL</span></span>, <span>string <var>$theLabel</var> = <span class="php-keyword1">NULL</span></span>, <span>string <var>$theDescription</var> = <span class="php-keyword1">NULL</span></span>, <span>string <var>$theLanguage</var> = <span class="php-keyword1">NULL</span></span>, <span>boolean <var>$doNew</var> = <span class="php-keyword1">FALSE</span> </span> )</code>
 
 		<div class="description short">
 			
@@ -545,39 +582,17 @@ and if the first parameter is <tt>NULL</tt>.</p>
 <h4>Instantiate a root node</h4>
 
 <p>This method can be used to instantiate a new root node, retrieve an existing
-node by identifier, or retrieve the list of nodes matching a term.</p>
+root node by identifier, or retrieve the list of root nodes matching a term.</p>
 
-<p>The method expects a single parameter that may represent either the node
-identifier, or the term object or identifier:</p>
+<p>A root node distinguishes itself from a <i>standard</i> node by having the
+kNODE_KIND_ROOT enumeration set in its kind (<code><a href="class-CNode.html#_Kind">CNode::Kind()</a></code>) list.</p>
 
-<ul>
-	<li><tt>integer</tt>: In this case the method assumes that the parameter
-	represents the node identifier: it will attempt to retrieve the node, if it is
-	not found, the method will return <tt>NULL</tt>. With this option the second
-	parameter is ignored.</li>
+<p>The method uses the same parameters as the <code><a href="class-COntology.html#_NewNode">COntology::NewNode()</a></code> method, except
+that it forces the kNODE_KIND_ROOT enumeration as the kind,
+<tt>NULL</tt> as the type and omits both parameters.</p>
 
-	<li><tt><code><a href="class-COntologyTerm.html">COntologyTerm</a></code></tt>: In this case the method will check if the
-	term exists:
-		<ul>
-			<li><i>Term exists</i>: The method will locate all root nodes that relate to
-			that term and return the array of found nodes, or <tt>NULL</tt> if there are no
-			matches. If the second parameter is <tt>TRUE</tt>, the method will instantiate a
-			new root node whether or not there are matches.</li>
-
-			<li><i>Term is new</i>: The method will return a new root node related to that
-			term.</li>
-		</ul>
-	</li>
-
-	<li><i>other</i>: Any other type will be interpreted as the term's native
-	identifier: the method will locate all root nodes that relate to that term and
-	return the array of found nodes, or a new root node if the second parameter is
-	<tt>TRUE</tt>.</li>
-</ul>
-
-<p>The method will raise an exception if the object is not <code><a href="class-CStatusDocument.html#__IsInited">CStatusDocument::_IsInited()</a></code>,
-if the provided parameter is <tt>NULL</tt>, or if the provided term identifier
-is not resolved.</p>
+<p>For more information, please consult the <code><a href="class-COntology.html#_NewNode">COntology::NewNode()</a></code> method
+reference.</p>
 
 
 
@@ -585,6 +600,14 @@ is not resolved.</p>
 				<div class="list"><dl>
 					<dt><var>$theIdentifier</var></dt>
 					<dd><code>mixed</code><br>$theIdentifier Node identifier or term reference.</dd>
+					<dt><var>$theNamespace</var></dt>
+					<dd><code>mixed</code><br>$theNamespace Term namespace reference.</dd>
+					<dt><var>$theLabel</var></dt>
+					<dd><code>string</code><br>$theLabel Term label.</dd>
+					<dt><var>$theDescription</var></dt>
+					<dd><code>string</code><br>$theDescription Term description.</dd>
+					<dt><var>$theLanguage</var></dt>
+					<dd><code>string</code><br>$theLanguage Label and description language code.</dd>
 					<dt><var>$doNew</var></dt>
 					<dd><code>boolean</code><br>$doNew <tt>TRUE</tt> force new node.</dd>
 				</dl></div>
@@ -605,10 +628,331 @@ is not resolved.</p>
 				</div>
 				<h4>Uses</h4>
 				<div class="list">
+						<code><code><a href="class-COntology.html#_NewNode">COntology::NewNode()</a></code></code> <br />
+				</div>
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="NewTraitNode" id="_NewTraitNode">
+
+		<td class="attributes"><code>
+			 public 
+			mixed
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_NewTraitNode">#</a>
+		<code><a href="source-class-COntology.html#622-665" title="Go to source code">NewTraitNode</a>( <span>mixed <var>$theIdentifier</var></span>, <span>mixed <var>$theNamespace</var> = <span class="php-keyword1">NULL</span></span>, <span>string <var>$theLabel</var> = <span class="php-keyword1">NULL</span></span>, <span>string <var>$theDescription</var> = <span class="php-keyword1">NULL</span></span>, <span>string <var>$theLanguage</var> = <span class="php-keyword1">NULL</span></span>, <span>boolean <var>$doNew</var> = <span class="php-keyword1">FALSE</span> </span> )</code>
+
+		<div class="description short">
+			
+<h4>Instantiate a trait node</h4>
+
+		</div>
+
+		<div class="description detailed hidden">
+			
+<h4>Instantiate a trait node</h4>
+
+<p>This method can be used to instantiate a new trait node, retrieve an existing
+trait node by identifier, or retrieve the list of trait nodes matching a
+term.</p>
+
+<p>A trait node distinguishes itself from a <i>standard</i> node by having the
+kNODE_KIND_TRAIT enumeration set in its kind (<code><a href="class-CNode.html#_Kind">CNode::Kind()</a></code>) list. Also, trait nodes represent the beginning of the
+path used to annotate data, trait nodes always represent the first term
+reference in a tag path.</p>
+
+<p>The method uses the same parameters as the <code><a href="class-COntology.html#_NewNode">COntology::NewNode()</a></code> method, except
+that it forces the kNODE_KIND_TRAIT enumeration as the kind,
+<tt>NULL</tt> as the type and omits both parameters.</p>
+
+<p>For more information, please consult the <code><a href="class-COntology.html#_NewNode">COntology::NewNode()</a></code> method
+reference.</p>
+
+
+
+				<h4>Parameters</h4>
+				<div class="list"><dl>
+					<dt><var>$theIdentifier</var></dt>
+					<dd><code>mixed</code><br>$theIdentifier Node identifier or term reference.</dd>
+					<dt><var>$theNamespace</var></dt>
+					<dd><code>mixed</code><br>$theNamespace Term namespace reference.</dd>
+					<dt><var>$theLabel</var></dt>
+					<dd><code>string</code><br>$theLabel Term label.</dd>
+					<dt><var>$theDescription</var></dt>
+					<dd><code>string</code><br>$theDescription Term description.</dd>
+					<dt><var>$theLanguage</var></dt>
+					<dd><code>string</code><br>$theLanguage Label and description language code.</dd>
+					<dt><var>$doNew</var></dt>
+					<dd><code>boolean</code><br>$doNew <tt>TRUE</tt> force new node.</dd>
+				</dl></div>
+
+				<h4>Returns</h4>
+				<div class="list">
+					<code>mixed</code><br>New node, found node or nodes list.<br />
+				</div>
+
+				<h4>Throws</h4>
+				<div class="list">
+					<code><code><a href="class-Exception.html">Exception</a></code></code><br />
+				</div>
+
+				<h4>See</h4>
+				<div class="list">
+						kNODE_KIND_TRAIT<br />
+				</div>
+				<h4>Uses</h4>
+				<div class="list">
+						<code><code><a href="class-COntology.html#_NewNode">COntology::NewNode()</a></code></code> <br />
+				</div>
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="NewMethodNode" id="_NewMethodNode">
+
+		<td class="attributes"><code>
+			 public 
+			mixed
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_NewMethodNode">#</a>
+		<code><a href="source-class-COntology.html#672-716" title="Go to source code">NewMethodNode</a>( <span>mixed <var>$theIdentifier</var></span>, <span>mixed <var>$theNamespace</var> = <span class="php-keyword1">NULL</span></span>, <span>string <var>$theLabel</var> = <span class="php-keyword1">NULL</span></span>, <span>string <var>$theDescription</var> = <span class="php-keyword1">NULL</span></span>, <span>string <var>$theLanguage</var> = <span class="php-keyword1">NULL</span></span>, <span>boolean <var>$doNew</var> = <span class="php-keyword1">FALSE</span> </span> )</code>
+
+		<div class="description short">
+			
+<h4>Instantiate a method node</h4>
+
+		</div>
+
+		<div class="description detailed hidden">
+			
+<h4>Instantiate a method node</h4>
+
+<p>This method can be used to instantiate a new method node, retrieve an
+existing method node by identifier, or retrieve the list of method nodes
+matching a term.</p>
+
+<p>A method node distinguishes itself from a <i>standard</i> node by having the
+kNODE_KIND_METH enumeration set in its kind (<code><a href="class-CNode.html#_Kind">CNode::Kind()</a></code>) list. Also, method nodes represent the intermediary
+elements of the path used to annotate data: method nodes will always be found
+after trait nodes and before scale nodes in a tag path.</p>
+
+<p>The method uses the same parameters as the <code><a href="class-COntology.html#_NewNode">COntology::NewNode()</a></code> method, except
+that it forces the kNODE_KIND_METH enumeration as the kind,
+<tt>NULL</tt> as the type and omits both parameters.</p>
+
+<p>For more information, please consult the <code><a href="class-COntology.html#_NewNode">COntology::NewNode()</a></code> method
+reference.</p>
+
+
+
+				<h4>Parameters</h4>
+				<div class="list"><dl>
+					<dt><var>$theIdentifier</var></dt>
+					<dd><code>mixed</code><br>$theIdentifier Node identifier or term reference.</dd>
+					<dt><var>$theNamespace</var></dt>
+					<dd><code>mixed</code><br>$theNamespace Term namespace reference.</dd>
+					<dt><var>$theLabel</var></dt>
+					<dd><code>string</code><br>$theLabel Term label.</dd>
+					<dt><var>$theDescription</var></dt>
+					<dd><code>string</code><br>$theDescription Term description.</dd>
+					<dt><var>$theLanguage</var></dt>
+					<dd><code>string</code><br>$theLanguage Label and description language code.</dd>
+					<dt><var>$doNew</var></dt>
+					<dd><code>boolean</code><br>$doNew <tt>TRUE</tt> force new node.</dd>
+				</dl></div>
+
+				<h4>Returns</h4>
+				<div class="list">
+					<code>mixed</code><br>New node, found node or nodes list.<br />
+				</div>
+
+				<h4>Throws</h4>
+				<div class="list">
+					<code><code><a href="class-Exception.html">Exception</a></code></code><br />
+				</div>
+
+				<h4>See</h4>
+				<div class="list">
+						kNODE_KIND_METH<br />
+				</div>
+				<h4>Uses</h4>
+				<div class="list">
+						<code><code><a href="class-COntology.html#_NewNode">COntology::NewNode()</a></code></code> <br />
+				</div>
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="NewScaleNode" id="_NewScaleNode">
+
+		<td class="attributes"><code>
+			 public 
+			mixed
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_NewScaleNode">#</a>
+		<code><a href="source-class-COntology.html#723-913" title="Go to source code">NewScaleNode</a>( <span>mixed <var>$theIdentifier</var></span>, <span>string <var>$theType</var> = <span class="php-keyword1">NULL</span></span>, <span>mixed <var>$theNamespace</var> = <span class="php-keyword1">NULL</span></span>, <span>string <var>$theLabel</var> = <span class="php-keyword1">NULL</span></span>, <span>string <var>$theDescription</var> = <span class="php-keyword1">NULL</span></span>, <span>string <var>$theLanguage</var> = <span class="php-keyword1">NULL</span></span>, <span>boolean <var>$doNew</var> = <span class="php-keyword1">FALSE</span> </span> )</code>
+
+		<div class="description short">
+			
+<h4>Locate or instantiate a scale node</h4>
+
+		</div>
+
+		<div class="description detailed hidden">
+			
+<h4>Locate or instantiate a scale node</h4>
+
+<p>This method can be used to instantiate a new scale node, retrieve an existing
+scale node by identifier, or retrieve the list of scale nodes matching a
+term.</p>
+
+<p>A scale node distinguishes itself from a <i>standard</i> node by having the
+kNODE_KIND_SCALE enumeration set in its kind (<code><a href="class-CNode.html#_Kind">CNode::Kind()</a></code>) list. Also, scale nodes represent the last element of
+the path used to annotate data: scale nodes will always have a data type
+attribute.</p>
+
+<p>The method uses the same parameters as the <code><a href="class-COntology.html#_NewNode">COntology::NewNode()</a></code> method, except
+that it forces the kNODE_KIND_SCALE enumeration as the kind and expects
+the type attribute to either be present in the resolved node, or provided as a
+parameter.</p>
+
+<p>For more information, please consult the <code><a href="class-COntology.html#_NewNode">COntology::NewNode()</a></code> method
+reference.</p>
+
+
+
+				<h4>Parameters</h4>
+				<div class="list"><dl>
+					<dt><var>$theIdentifier</var></dt>
+					<dd><code>mixed</code><br>$theIdentifier Node identifier or term reference.</dd>
+					<dt><var>$theType</var></dt>
+					<dd><code>string</code><br>$theType Node type.</dd>
+					<dt><var>$theNamespace</var></dt>
+					<dd><code>mixed</code><br>$theNamespace Term namespace reference.</dd>
+					<dt><var>$theLabel</var></dt>
+					<dd><code>string</code><br>$theLabel Term label.</dd>
+					<dt><var>$theDescription</var></dt>
+					<dd><code>string</code><br>$theDescription Term description.</dd>
+					<dt><var>$theLanguage</var></dt>
+					<dd><code>string</code><br>$theLanguage Label and description language code.</dd>
+					<dt><var>$doNew</var></dt>
+					<dd><code>boolean</code><br>$doNew <tt>TRUE</tt> force new node.</dd>
+				</dl></div>
+
+				<h4>Returns</h4>
+				<div class="list">
+					<code>mixed</code><br>New node, found node or nodes list.<br />
+				</div>
+
+				<h4>Throws</h4>
+				<div class="list">
+					<code><code><a href="class-Exception.html">Exception</a></code></code><br />
+				</div>
+
+				<h4>See</h4>
+				<div class="list">
+						kNODE_KIND_SCALE<br />
+				</div>
+				<h4>Uses</h4>
+				<div class="list">
 						<code><code><a href="class-CStatusDocument.html#__IsInited">CStatusDocument::_IsInited()</a></code></code> <br />
 						<code><code><a href="class-COntology.html#_Connection">COntology::Connection()</a></code></code> <br />
+						<code><code><a href="class-COntology.html#_NewTerm">COntology::NewTerm()</a></code></code> <br />
 						<code><code><a href="class-COntology.html#__NewNode">COntology::_NewNode()</a></code></code> <br />
-						<code><code><a href="class-COntology.html#_ResolveTerm">COntology::ResolveTerm()</a></code></code> <br />
+				</div>
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="NewEnumerationNode" id="_NewEnumerationNode">
+
+		<td class="attributes"><code>
+			 public 
+			mixed
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_NewEnumerationNode">#</a>
+		<code><a href="source-class-COntology.html#920-964" title="Go to source code">NewEnumerationNode</a>( <span>mixed <var>$theIdentifier</var></span>, <span>mixed <var>$theNamespace</var> = <span class="php-keyword1">NULL</span></span>, <span>string <var>$theLabel</var> = <span class="php-keyword1">NULL</span></span>, <span>string <var>$theDescription</var> = <span class="php-keyword1">NULL</span></span>, <span>string <var>$theLanguage</var> = <span class="php-keyword1">NULL</span></span>, <span>boolean <var>$doNew</var> = <span class="php-keyword1">FALSE</span> </span> )</code>
+
+		<div class="description short">
+			
+<h4>Instantiate an enumeration node</h4>
+
+		</div>
+
+		<div class="description detailed hidden">
+			
+<h4>Instantiate an enumeration node</h4>
+
+<p>This method can be used to instantiate a new enumeration node, retrieve an
+existing enumeration node by identifier, or retrieve the list of enumeration
+nodes matching a term.</p>
+
+<p>An enumeration node distinguishes itself from a <i>standard</i> node by
+having the kNODE_KIND_ENUM enumeration set in its kind (<code><a href="class-CNode.html#_Kind">CNode::Kind()</a></code>) list. Also, enumeration nodes represent elements of an
+enumerated set and have by default the kTYPE_STRING data type.</p>
+
+<p>The method uses the same parameters as the <code><a href="class-COntology.html#_NewNode">COntology::NewNode()</a></code> method, except
+that it forces the kNODE_KIND_ENUM enumeration as the kind, kTYPE_STRING as the type and omits both parameters.</p>
+
+<p>For more information, please consult the <code><a href="class-COntology.html#_NewNode">COntology::NewNode()</a></code> method
+reference.</p>
+
+
+
+				<h4>Parameters</h4>
+				<div class="list"><dl>
+					<dt><var>$theIdentifier</var></dt>
+					<dd><code>mixed</code><br>$theIdentifier Node identifier or term reference.</dd>
+					<dt><var>$theNamespace</var></dt>
+					<dd><code>mixed</code><br>$theNamespace Term namespace reference.</dd>
+					<dt><var>$theLabel</var></dt>
+					<dd><code>string</code><br>$theLabel Term label.</dd>
+					<dt><var>$theDescription</var></dt>
+					<dd><code>string</code><br>$theDescription Term description.</dd>
+					<dt><var>$theLanguage</var></dt>
+					<dd><code>string</code><br>$theLanguage Label and description language code.</dd>
+					<dt><var>$doNew</var></dt>
+					<dd><code>boolean</code><br>$doNew <tt>TRUE</tt> force new node.</dd>
+				</dl></div>
+
+				<h4>Returns</h4>
+				<div class="list">
+					<code>mixed</code><br>New node, found node or nodes list.<br />
+				</div>
+
+				<h4>Throws</h4>
+				<div class="list">
+					<code><code><a href="class-Exception.html">Exception</a></code></code><br />
+				</div>
+
+				<h4>See</h4>
+				<div class="list">
+						kNODE_KIND_ENUM kTYPE_STRING<br />
+				</div>
+				<h4>Uses</h4>
+				<div class="list">
+						<code><code><a href="class-COntology.html#_NewNode">COntology::NewNode()</a></code></code> <br />
 				</div>
 
 
@@ -626,7 +970,7 @@ is not resolved.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#_ResolveTerm">#</a>
-		<code><a href="source-class-COntology.html#630-712" title="Go to source code">ResolveTerm</a>( <span>string <var>$theIdentifier</var></span>, <span>mixed <var>$theNamespace</var> = <span class="php-keyword1">NULL</span></span>, <span>boolean <var>$doThrow</var> = <span class="php-keyword1">FALSE</span> </span> )</code>
+		<code><a href="source-class-COntology.html#980-1062" title="Go to source code">ResolveTerm</a>( <span>string <var>$theIdentifier</var></span>, <span>mixed <var>$theNamespace</var> = <span class="php-keyword1">NULL</span></span>, <span>boolean <var>$doThrow</var> = <span class="php-keyword1">FALSE</span> </span> )</code>
 
 		<div class="description short">
 			
@@ -728,7 +1072,7 @@ an exception if the third parameter is <tt>TRUE</tt>.</p>
 				<h4>Used by</h4>
 				<div class="list">
 						<code><code><a href="class-COntology.html#_NewTerm">COntology::NewTerm()</a></code></code> <br />
-						<code><code><a href="class-COntology.html#_NewRootNode">COntology::NewRootNode()</a></code></code> <br />
+						<code><code><a href="class-COntology.html#_RelateTo">COntology::RelateTo()</a></code></code> <br />
 				</div>
 
 
@@ -746,7 +1090,7 @@ an exception if the third parameter is <tt>TRUE</tt>.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#_ResolveNode">#</a>
-		<code><a href="source-class-COntology.html#719-772" title="Go to source code">ResolveNode</a>( <span>mixed <var>$theIdentifier</var></span>, <span>boolean <var>$doThrow</var> = <span class="php-keyword1">FALSE</span> </span> )</code>
+		<code><a href="source-class-COntology.html#1069-1122" title="Go to source code">ResolveNode</a>( <span>mixed <var>$theIdentifier</var></span>, <span>boolean <var>$doThrow</var> = <span class="php-keyword1">FALSE</span> </span> )</code>
 
 		<div class="description short">
 			
@@ -808,6 +1152,78 @@ and if the provided parameter is <tt>NULL</tt>.</p>
 						<code><code><a href="class-COntology.html#_Connection">COntology::Connection()</a></code></code> <br />
 						<code><code><a href="class-COntologyNode.html#_Resolve">COntologyNode::Resolve()</a></code></code> <br />
 				</div>
+				<h4>Used by</h4>
+				<div class="list">
+						<code><code><a href="class-COntology.html#_RelateTo">COntology::RelateTo()</a></code></code> <br />
+				</div>
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="RelateTo" id="_RelateTo">
+
+		<td class="attributes"><code>
+			 public 
+			<code><a href="class-CEdge.html">CEdge</a></code>
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_RelateTo">#</a>
+		<code><a href="source-class-COntology.html#1138-1197" title="Go to source code">RelateTo</a>( <span>mixed <var>$theSubject</var></span>, <span>mixed <var>$theObject</var></span>, <span>mixed <var>$thePredicate</var></span> )</code>
+
+		<div class="description short">
+			
+<h4>Create an edge</h4>
+
+		</div>
+
+		<div class="description detailed hidden">
+			
+<h4>Create an edge</h4>
+
+<p>This method can be used to instantiate an edge by providing the subject and
+object vertex nodes and the edge predicate term. The method makes use of the
+node's <code><a href="class-CNode.html#_RelateTo">CNode::RelateTo()</a></code> method to perform the actual operation. This
+method will only ensure that the subject node is committed before calling its
+method.</p>
+
+<p>The method will return an instance of the <code><a href="class-COntologyEdge.html">COntologyEdge</a></code> class, if any
+error occurs, the method will raise an exception.</p>
+
+
+
+				<h4>Parameters</h4>
+				<div class="list"><dl>
+					<dt><var>$theSubject</var></dt>
+					<dd><code>mixed</code><br>$theSubject Subject vertex.</dd>
+					<dt><var>$theObject</var></dt>
+					<dd><code>mixed</code><br>$theObject Object vertex.</dd>
+					<dt><var>$thePredicate</var></dt>
+					<dd><code>mixed</code><br>$thePredicate Relationship predicate.</dd>
+				</dl></div>
+
+				<h4>Returns</h4>
+				<div class="list">
+					<code><code><a href="class-CEdge.html">CEdge</a></code></code><br>Relationship edge object.<br />
+				</div>
+
+				<h4>Throws</h4>
+				<div class="list">
+					<code><code><a href="class-Exception.html">Exception</a></code></code><br />
+				</div>
+
+				<h4>See</h4>
+				<div class="list">
+						kOFFSET_TERM<br />
+				</div>
+				<h4>Uses</h4>
+				<div class="list">
+						<code><code><a href="class-COntology.html#_ResolveTerm">COntology::ResolveTerm()</a></code></code> <br />
+						<code><code><a href="class-COntology.html#_ResolveNode">COntology::ResolveNode()</a></code></code> <br />
+				</div>
 
 
 		</div>
@@ -824,7 +1240,7 @@ and if the provided parameter is <tt>NULL</tt>.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#__NewTerm">#</a>
-		<code><a href="source-class-COntology.html#788-885" title="Go to source code">_NewTerm</a>( <span>string <var>$theIdentifier</var></span>, <span>mixed <var>$theNamespace</var></span>, <span>string <var>$theLabel</var></span>, <span>string <var>$theDescription</var></span>, <span>string <var>$theLanguage</var></span> )</code>
+		<code><a href="source-class-COntology.html#1213-1310" title="Go to source code">_NewTerm</a>( <span>string <var>$theIdentifier</var></span>, <span>mixed <var>$theNamespace</var></span>, <span>string <var>$theLabel</var></span>, <span>string <var>$theDescription</var></span>, <span>string <var>$theLanguage</var></span> )</code>
 
 		<div class="description short">
 			
@@ -915,25 +1331,25 @@ is a duplicate.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#__NewNode">#</a>
-		<code><a href="source-class-COntology.html#892-993" title="Go to source code">_NewNode</a>( <span>mixed <var>$theTerm</var></span>, <span>mixed <var>$theKind</var> = <span class="php-keyword1">NULL</span></span>, <span>mixed <var>$theType</var> = <span class="php-keyword1">NULL</span> </span> )</code>
+		<code><a href="source-class-COntology.html#1317-1418" title="Go to source code">_NewNode</a>( <span>mixed <var>$theTerm</var></span>, <span>mixed <var>$theKind</var> = <span class="php-keyword1">NULL</span></span>, <span>mixed <var>$theType</var> = <span class="php-keyword1">NULL</span> </span> )</code>
 
 		<div class="description short">
 			
-<h4>Instantiate a new term</h4>
+<h4>Instantiate a new node</h4>
 
 		</div>
 
 		<div class="description detailed hidden">
 			
-<h4>Instantiate a new term</h4>
+<h4>Instantiate a new node</h4>
 
-<p>This method can be used to instantiate a new term and commit it.</p>
+<p>This method can be used to instantiate a new node and commit it.</p>
 
 <p>The method will first instantiate the node from the provided parameter, then
 it will insert it and finally return it, if there were no errors.</p>
 
 <p>This method is used by the public interface to perform the actual creation of
-terms.</p>
+nodes.</p>
 
 <p>The method expects the following parameters:</p>
 
@@ -941,14 +1357,14 @@ terms.</p>
 	<li><tt>$theTerm</tt>: This parameter represents the term reference, it can be
 	provided as the term object or term native identifier.</li>
 
-	<li><tt>$theKind</tt>: This parameter represents the term kind, it can be
+	<li><tt>$theKind</tt>: This parameter represents the node kind, it can be
 	provided as a list of values, as a scalar value or as <tt>NULL</tt>.</li>
 
-	<li><tt>$theType</tt>: This parameter represents the term type, it can be
+	<li><tt>$theType</tt>: This parameter represents the node type, it can be
 	provided as a scalar value or as <tt>NULL</tt>.</li>
 </ul>
 
-<p>The method will return a new committed term or raise an exception if the term
+<p>The method will return a new committed node or raise an exception if the node
 is a duplicate.</p>
 
 
@@ -980,7 +1396,7 @@ is a duplicate.</p>
 				<h4>Used by</h4>
 				<div class="list">
 						<code><code><a href="class-COntology.html#_NewNode">COntology::NewNode()</a></code></code> <br />
-						<code><code><a href="class-COntology.html#_NewRootNode">COntology::NewRootNode()</a></code></code> <br />
+						<code><code><a href="class-COntology.html#_NewScaleNode">COntology::NewScaleNode()</a></code></code> <br />
 				</div>
 
 

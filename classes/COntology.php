@@ -304,7 +304,7 @@ class COntology extends CConnection
 	 *==================================================================================*/
 
 	/**
-	 * <h4>Instantiate a node</h4>
+	 * <h4>Locate or instantiate a qualified node</h4>
 	 *
 	 * This method can be used to instantiate a new node, retrieve an existing node by
 	 * identifier, or retrieve the list of nodes matching a term.
@@ -317,28 +317,46 @@ class COntology extends CConnection
 	 * This means that when you provide data for a new term, this will be instantiated and
 	 * committed in all cases.
 	 *
+	 * The method also accepts the node qualifications through the {@link CNode::Kind()} and
+	 * {@link CNode.:Type()} qualifiers: when resolving nodes, these have to match or a new
+	 * instance is returned; when creating new nodes, these qualifiers will be set to the
+	 * provided values.
+	 *
 	 * The method expects the following parameters:
 	 *
 	 * <ul>
-	 *	<li><tt>$theIdentifier</tt>: This parameter represents the node identifier, or the
-	 *		term reference:
+	 *	<li><tt>$theIdentifier</tt>: This parameter represents either the node identifier,
+	 *		or the term reference, depending on the value type:
 	 *	 <ul>
 	 *		<li><tt>integer</tt>: In this case the method assumes that the parameter
 	 *			represents the node identifier: it will attempt to retrieve the node, if it
 	 *			is not found, the method will return <tt>NULL</tt>. With this option all
 	 *			other parameter are ignored.
-	 *		<li><tt>{@link COntologyTerm}</tt>: In this case the method assumes the
-	 *			parameter represents the term object: if the term is not committed, the
-	 *			method will return a new node, if the term is committed, the method will try
-	 *			to locate all nodes related to that term: if none are found, or if the last
-	 *			parameter is <tt>TRUE</tt>, the method will return a new node related to
-	 *			that term; if at least one node is found, the method will return the list
-	 *			of nodes related to that term.
-	 *		<li><i>other</i>: In this case the parameter is expected to be the term's native
-	 *			or global identifier and the method will behave as above.
+	 *		<li><i>other</i>: Any other value indicates that the parameter represents a
+	 *			reference to a term, either as a term object or identifier. The term will be
+	 *			resolved: if the <tt>$doNew</tt> parameter is <tt>TRUE</tt>, the method will
+	 *			return a new node related to the resolved term; if the <tt>$doNew</tt>
+	 *			parameter is not <tt>TRUE</tt>:
+	 *		 <ul>
+	 *			<li><i>The term is committed</i>: The method will try to locate all nodes
+	 *				related to that term, if any are found, the method will return the list
+	 *				of nodes; if none are found, the method will return a new node related
+	 *				to that provided term.
+	 *			<li><i>The term is <i>not</i> committed</i>: The ethod will return a new
+	 *				node related to that term.
+	 *		 </ul>
 	 *	 </ul>
 	 *		The next four parameters have a meaning only if you are creating a new node with
 	 *		a new term, in all other cases these parameters will be ignored.
+	 *	<li><tt>$theKind</tt>: If not <tt>NULL</tt>, this parameter will serve as a filter
+	 *		to locate matching nodes, or it will be set in new nodes. This parameter
+	 *		represents the node's {@link CNode::Kind()}. The parameter can be provided both
+	 *		as an array or as a scalar, in the first case it means that <i>all</i> elements
+	 *		must match.
+	 *	<li><tt>$theType</tt>: If not <tt>NULL</tt>, this parameter will serve as a filter
+	 *		to locate matching nodes, or it will be set in new nodes. This parameter
+	 *		represents the node's {@link CNode::Type()}. The parameter is expected to be a
+	 *		scalar.
 	 *	<li><tt>$theNamespace</tt>: The term namespace, it can be provided in several ways:
 	 *	 <ul>
 	 *		<li><tt>NULL</tt>: This indicates that the term has no namespace.
@@ -359,6 +377,8 @@ class COntology extends CConnection
 	 * the first parameter is <tt>NULL</tt>.
 	 *
 	 * @param mixed					$theIdentifier		Node identifier or term reference.
+	 * @param mixed					$theKind			Node kind set.
+	 * @param string				$theType			Node type.
 	 * @param mixed					$theNamespace		Term namespace reference.
 	 * @param string				$theLabel			Term label.
 	 * @param string				$theDescription		Term description.
@@ -372,9 +392,11 @@ class COntology extends CConnection
 	 *
 	 * @uses _IsInited()
 	 * @uses Connection()
+	 * @uses NewTerm()
 	 * @uses _NewNode()
 	 */
-	public function NewNode( $theIdentifier, $theNamespace = NULL,
+	public function NewNode( $theIdentifier, $theKind = NULL, $theType = NULL,
+											 $theNamespace = NULL,
 											 $theLabel = NULL, $theDescription = NULL,
 											 $theLanguage = NULL, $doNew = FALSE )
 	{
@@ -389,11 +411,72 @@ class COntology extends CConnection
 			if( $theIdentifier !== NULL )
 			{
 				//
+				// Normalise kind.
+				//
+				if( ! is_array( $theKind ) )
+					$theKind = array( $theKind );
+				else
+					$theKind = array_unique( $theKind );
+				
+				//
 				// Handle node identifier.
 				//
 				if( is_integer( $theIdentifier ) )
-					return COntologyNode::NewObject
-								( $this->Connection(), $theIdentifier );			// ==>
+				{
+					//
+					// Resolve node.
+					//
+					$node = COntologyNode::NewObject( $this->Connection(), $theIdentifier );
+					if( $node !== NULL )
+					{
+						//
+						// Check kind.
+						//
+						if( $theKind !== NULL )
+						{
+							//
+							// Get node kind.
+							//
+							$match = $node->Kind();
+							if( $match === NULL )
+								return NULL;										// ==>
+							
+							//
+							// Match.
+							//
+							if( count( array_intersect( $theKind, $match ) )
+							 != count( $theKind ) )
+								return NULL;										// ==>
+						
+						} // Provided kind.
+						
+						//
+						// Check type.
+						//
+						if( $theType !== NULL )
+						{
+							//
+							// Get node type.
+							//
+							$match = $node->Type();
+							if( $match === NULL )
+								return NULL;										// ==>
+							
+							//
+							// Match.
+							//
+							if( $match != $theType )
+								return NULL;										// ==>
+						
+						} // Provided type.
+						
+						return $node;												// ==>
+					
+					} // Node matches.
+					
+					return NULL;													// ==>
+					
+				} // Provided node identifier.
 				
 				//
 				// Create term.
@@ -405,7 +488,7 @@ class COntology extends CConnection
 				// Force new.
 				//
 				if( $doNew )
-					return $this->_NewNode( $term );								// ==>
+					return $this->_NewNode( $term, $theKind, $theType );			// ==>
 				
 				//
 				// Resolve container.
@@ -419,11 +502,35 @@ class COntology extends CConnection
 				$query = $container->NewQuery();
 				
 				//
-				// Add statement.
+				// Locate by identifier.
 				//
 				$query->AppendStatement(
 					CQueryStatement::Equals(
 						kOFFSET_TERM, $term[ kOFFSET_NID ], kTYPE_BINARY ) );
+				
+				//
+				// Filter by kind.
+				//
+				if( $theKind !== NULL )
+				{
+					//
+					// Iterate kinds.
+					// Note that the parameter was normalised.
+					//
+					foreach( $theKind as $match )
+						$query->AppendStatement(
+							CQueryStatement::Member(
+								kOFFSET_KIND, $match, kTYPE_STRING ) );
+				
+				} // Provided kind.
+				
+				//
+				// Filter by type.
+				//
+				if( $theType !== NULL )
+					$query->AppendStatement(
+						CQueryStatement::Equals(
+							kOFFSET_TYPE, $theType, kTYPE_STRING ) );
 						
 				//
 				// Perform query.
@@ -442,7 +549,7 @@ class COntology extends CConnection
 				
 				} // Found at least one node.
 				
-				return $this->_NewNode( $term );									// ==>
+				return $this->_NewNode( $term, $theKind, $theType );				// ==>
 				
 			} // Provided local or global identifier.
 			
@@ -466,38 +573,176 @@ class COntology extends CConnection
 	/**
 	 * <h4>Instantiate a root node</h4>
 	 *
-	 * This method can be used to instantiate a new root node, retrieve an existing node by
-	 * identifier, or retrieve the list of nodes matching a term.
+	 * This method can be used to instantiate a new root node, retrieve an existing root
+	 * node by identifier, or retrieve the list of root nodes matching a term.
 	 *
-	 * The method expects a single parameter that may represent either the node identifier,
-	 * or the term object or identifier:
+	 * A root node distinguishes itself from a <i>standard</i> node by having the
+	 * {@link kNODE_KIND_ROOT} enumeration set in its kind ({@link COntologyNode::Kind()})
+	 * list.
 	 *
-	 * <ul>
-	 *	<li><tt>integer</tt>: In this case the method assumes that the parameter represents
-	 *		the node identifier: it will attempt to retrieve the node, if it is not found,
-	 *		the method will return <tt>NULL</tt>. With this option the second parameter is
-	 *		ignored.
-	 *	<li><tt>{@link COntologyTerm}</tt>: In this case the method will check if the term
-	 *		exists:
-	 *	 <ul>
-	 *		<li><i>Term exists</i>: The method will locate all root nodes that relate to
-	 *			that term and return the array of found nodes, or <tt>NULL</tt> if there are
-	 *			no matches. If the second parameter is <tt>TRUE</tt>, the method will
-	 *			instantiate a new root node whether or not there are matches.
-	 *		<li><i>Term is new</i>: The method will return a new root node related to that
-	 *			term.
-	 *	 </ul>
-	 *	<li><i>other</i>: Any other type will be interpreted as the term's native
-	 *		identifier: the method will locate all root nodes that relate to that term and
-	 *		return the array of found nodes, or a new root node if the second parameter is
-	 *		<tt>TRUE</tt>.
-	 * </ul>
+	 * The method uses the same parameters as the {@link NewNode()} method, except that it
+	 * forces the {@link kNODE_KIND_ROOT} enumeration as the kind, <tt>NULL</tt> as the
+	 * type and omits both parameters.
 	 *
-	 * The method will raise an exception if the object is not {@link _IsInited()}, if the
-	 * provided parameter is <tt>NULL</tt>, or if the provided term identifier is not
-	 * resolved.
+	 * For more information, please consult the {@link NewNode()} method reference.
 	 *
 	 * @param mixed					$theIdentifier		Node identifier or term reference.
+	 * @param mixed					$theNamespace		Term namespace reference.
+	 * @param string				$theLabel			Term label.
+	 * @param string				$theDescription		Term description.
+	 * @param string				$theLanguage		Label and description language code.
+	 * @param boolean				$doNew				<tt>TRUE</tt> force new node.
+	 *
+	 * @access public
+	 * @return mixed				New node, found node or nodes list.
+	 *
+	 * @throws Exception
+	 *
+	 * @uses NewNode()
+	 *
+	 * @see kNODE_KIND_ROOT
+	 */
+	public function NewRootNode( $theIdentifier, $theNamespace = NULL,
+												 $theLabel = NULL, $theDescription = NULL,
+												 $theLanguage = NULL, $doNew = FALSE )
+	{
+		return $this->NewNode( $theIdentifier,
+							   kNODE_KIND_ROOT, NULL,
+							   $theNamespace,
+							   $theLabel, $theDescription,
+							   $theLanguage, $doNew );								// ==>
+
+	} // NewRootNode.
+
+	 
+	/*===================================================================================
+	 *	NewTraitNode																	*
+	 *==================================================================================*/
+
+	/**
+	 * <h4>Instantiate a trait node</h4>
+	 *
+	 * This method can be used to instantiate a new trait node, retrieve an existing trait
+	 * node by identifier, or retrieve the list of trait nodes matching a term.
+	 *
+	 * A trait node distinguishes itself from a <i>standard</i> node by having the
+	 * {@link kNODE_KIND_TRAIT} enumeration set in its kind ({@link COntologyNode::Kind()})
+	 * list. Also, trait nodes represent the beginning of the path used to annotate data,
+	 * trait nodes always represent the first term reference in a tag path.
+	 *
+	 * The method uses the same parameters as the {@link NewNode()} method, except that it
+	 * forces the {@link kNODE_KIND_TRAIT} enumeration as the kind, <tt>NULL</tt> as the
+	 * type and omits both parameters.
+	 *
+	 * For more information, please consult the {@link NewNode()} method reference.
+	 *
+	 * @param mixed					$theIdentifier		Node identifier or term reference.
+	 * @param mixed					$theNamespace		Term namespace reference.
+	 * @param string				$theLabel			Term label.
+	 * @param string				$theDescription		Term description.
+	 * @param string				$theLanguage		Label and description language code.
+	 * @param boolean				$doNew				<tt>TRUE</tt> force new node.
+	 *
+	 * @access public
+	 * @return mixed				New node, found node or nodes list.
+	 *
+	 * @throws Exception
+	 *
+	 * @uses NewNode()
+	 *
+	 * @see kNODE_KIND_TRAIT
+	 */
+	public function NewTraitNode( $theIdentifier, $theNamespace = NULL,
+												  $theLabel = NULL, $theDescription = NULL,
+												  $theLanguage = NULL, $doNew = FALSE )
+	{
+		return $this->NewNode( $theIdentifier,
+							   kNODE_KIND_TRAIT, NULL,
+							   $theNamespace,
+							   $theLabel, $theDescription,
+							   $theLanguage, $doNew );								// ==>
+
+	} // NewTraitNode.
+
+	 
+	/*===================================================================================
+	 *	NewMethodNode																	*
+	 *==================================================================================*/
+
+	/**
+	 * <h4>Instantiate a method node</h4>
+	 *
+	 * This method can be used to instantiate a new method node, retrieve an existing method
+	 * node by identifier, or retrieve the list of method nodes matching a term.
+	 *
+	 * A method node distinguishes itself from a <i>standard</i> node by having the
+	 * {@link kNODE_KIND_METH} enumeration set in its kind ({@link COntologyNode::Kind()})
+	 * list. Also, method nodes represent the intermediary elements of the path used to
+	 * annotate data: method nodes will always be found after trait nodes and before scale
+	 * nodes in a tag path.
+	 *
+	 * The method uses the same parameters as the {@link NewNode()} method, except that it
+	 * forces the {@link kNODE_KIND_METH} enumeration as the kind, <tt>NULL</tt> as the
+	 * type and omits both parameters.
+	 *
+	 * For more information, please consult the {@link NewNode()} method reference.
+	 *
+	 * @param mixed					$theIdentifier		Node identifier or term reference.
+	 * @param mixed					$theNamespace		Term namespace reference.
+	 * @param string				$theLabel			Term label.
+	 * @param string				$theDescription		Term description.
+	 * @param string				$theLanguage		Label and description language code.
+	 * @param boolean				$doNew				<tt>TRUE</tt> force new node.
+	 *
+	 * @access public
+	 * @return mixed				New node, found node or nodes list.
+	 *
+	 * @throws Exception
+	 *
+	 * @uses NewNode()
+	 *
+	 * @see kNODE_KIND_METH
+	 */
+	public function NewMethodNode( $theIdentifier, $theNamespace = NULL,
+												   $theLabel = NULL, $theDescription = NULL,
+												   $theLanguage = NULL, $doNew = FALSE )
+	{
+		return $this->NewNode( $theIdentifier,
+							   kNODE_KIND_METH, NULL,
+							   $theNamespace,
+							   $theLabel, $theDescription,
+							   $theLanguage, $doNew );								// ==>
+
+	} // NewMethodNode.
+
+	 
+	/*===================================================================================
+	 *	NewScaleNode																	*
+	 *==================================================================================*/
+
+	/**
+	 * <h4>Locate or instantiate a scale node</h4>
+	 *
+	 * This method can be used to instantiate a new scale node, retrieve an existing scale
+	 * node by identifier, or retrieve the list of scale nodes matching a term.
+	 *
+	 * A scale node distinguishes itself from a <i>standard</i> node by having the
+	 * {@link kNODE_KIND_SCALE} enumeration set in its kind ({@link COntologyNode::Kind()})
+	 * list. Also, scale nodes represent the last element of the path used to annotate data:
+	 * scale nodes will always have a data type attribute.
+	 *
+	 * The method uses the same parameters as the {@link NewNode()} method, except that it
+	 * forces the {@link kNODE_KIND_SCALE} enumeration as the kind and expects the type
+	 * attribute to either be present in the resolved node, or provided as a parameter.
+	 *
+	 * For more information, please consult the {@link NewNode()} method reference.
+	 *
+	 * @param mixed					$theIdentifier		Node identifier or term reference.
+	 * @param string				$theType			Node type.
+	 * @param mixed					$theNamespace		Term namespace reference.
+	 * @param string				$theLabel			Term label.
+	 * @param string				$theDescription		Term description.
+	 * @param string				$theLanguage		Label and description language code.
 	 * @param boolean				$doNew				<tt>TRUE</tt> force new node.
 	 *
 	 * @access public
@@ -507,12 +752,15 @@ class COntology extends CConnection
 	 *
 	 * @uses _IsInited()
 	 * @uses Connection()
+	 * @uses NewTerm()
 	 * @uses _NewNode()
-	 * @uses ResolveTerm()
 	 *
-	 * @see kNODE_KIND_ROOT
+	 * @see kNODE_KIND_SCALE
 	 */
-	public function NewRootNode( $theIdentifier, $doNew = TRUE )
+	public function NewScaleNode( $theIdentifier, $theType = NULL,
+												  $theNamespace = NULL,
+												  $theLabel = NULL, $theDescription = NULL,
+												  $theLanguage = NULL, $doNew = FALSE )
 	{
 		//
 		// Check if object is ready.
@@ -528,32 +776,63 @@ class COntology extends CConnection
 				// Handle node identifier.
 				//
 				if( is_integer( $theIdentifier ) )
-					return COntologyNode::NewObject
-								( $this->Connection(), $theIdentifier );			// ==>
-							
-				//
-				// Handle term object.
-				//
-				if( $theIdentifier instanceof COntologyTerm )
 				{
 					//
-					// Handle new term.
+					// Resolve node.
 					//
-					if( ! $theIdentifier->_IsCommitted() )
-						return $this->_NewNode( $theIdentifier, kNODE_KIND_ROOT );	// ==>
-				
-				} // Provided term object.
+					$node = COntologyNode::NewObject( $this->Connection(), $theIdentifier );
+					if( $node !== NULL )
+					{
+						//
+						// Check kind.
+						//
+						$match = $node->Kind();
+						if( $match === NULL )
+							return NULL;											// ==>
+						
+						//
+						// Match kind.
+						//
+						if( ! in_array( kNODE_KIND_SCALE, $match ) )
+							return NULL;											// ==>
+						
+						//
+						// Check type.
+						//
+						if( $node->Type() === NULL )
+							return NULL;											// ==>
+						
+						return $node;												// ==>
+					
+					} // Node matches.
+					
+					return NULL;													// ==>
+					
+				} // Provided node identifier.
 				
 				//
-				// Resolve term.
+				// Create term.
 				//
-				$theIdentifier = $this->ResolveTerm( $theIdentifier, NULL, TRUE );
+				$term = $this->NewTerm( $theIdentifier, $theNamespace,
+										$theLabel, $theDescription, $theLanguage );
 				
 				//
 				// Force new.
 				//
 				if( $doNew )
-					return $this->_NewNode( $theIdentifier, kNODE_KIND_ROOT );		// ==>
+				{
+					//
+					// Assert type.
+					//
+					if( $theType !== NULL )
+						return $this->_NewNode
+								( $term, kNODE_KIND_SCALE, $theType );				// ==>
+					
+					throw new Exception
+						( "Missing node data type",
+						  kERROR_PARAMETER );									// !@! ==>
+				
+				} // Force new node.
 				
 				//
 				// Resolve container.
@@ -567,18 +846,29 @@ class COntology extends CConnection
 				$query = $container->NewQuery();
 				
 				//
-				// Add term reference statement.
+				// Locate by identifier.
 				//
 				$query->AppendStatement(
 					CQueryStatement::Equals(
-						kOFFSET_TERM, $theIdentifier[ kOFFSET_NID ], kTYPE_BINARY ) );
+						kOFFSET_TERM, $term[ kOFFSET_NID ], kTYPE_BINARY ) );
 				
 				//
-				// Add root node kind statement.
+				// Filter by kind.
 				//
 				$query->AppendStatement(
-					CQueryStatement::Equals(
-						kOFFSET_KIND, kNODE_KIND_ROOT, kTYPE_STRING ) );
+					CQueryStatement::Member(
+						kOFFSET_KIND, kNODE_KIND_SCALE, kTYPE_STRING ) );
+				
+				//
+				// Filter by type.
+				//
+				if( $theType !== NULL )
+					$query->AppendStatement(
+						CQueryStatement::Exists( kOFFSET_TYPE ) );
+				else
+					throw new Exception
+						( "Missing node data type",
+						  kERROR_PARAMETER );									// !@! ==>
 						
 				//
 				// Perform query.
@@ -597,7 +887,16 @@ class COntology extends CConnection
 				
 				} // Found at least one node.
 				
-				return NULL;														// ==>
+				//
+				// Assert type.
+				//
+				if( $theType !== NULL )
+					return $this->_NewNode
+							( $term, kNODE_KIND_SCALE, $theType );					// ==>
+				
+				throw new Exception
+					( "Missing node data type",
+					  kERROR_PARAMETER );										// !@! ==>
 				
 			} // Provided local or global identifier.
 			
@@ -611,7 +910,58 @@ class COntology extends CConnection
 			( "Object is not initialised",
 			  kERROR_STATE );													// !@! ==>
 
-	} // NewRootNode.
+	} // NewScaleNode.
+
+	 
+	/*===================================================================================
+	 *	NewEnumerationNode																*
+	 *==================================================================================*/
+
+	/**
+	 * <h4>Instantiate an enumeration node</h4>
+	 *
+	 * This method can be used to instantiate a new enumeration node, retrieve an existing
+	 * enumeration node by identifier, or retrieve the list of enumeration nodes matching a
+	 * term.
+	 *
+	 * An enumeration node distinguishes itself from a <i>standard</i> node by having the
+	 * {@link kNODE_KIND_ENUM} enumeration set in its kind ({@link COntologyNode::Kind()})
+	 * list. Also, enumeration nodes represent elements of an enumerated set and have by
+	 * default the {@link kTYPE_STRING} data type.
+	 *
+	 * The method uses the same parameters as the {@link NewNode()} method, except that it
+	 * forces the {@link kNODE_KIND_ENUM} enumeration as the kind, {@link kTYPE_STRING} as
+	 * the type and omits both parameters.
+	 *
+	 * For more information, please consult the {@link NewNode()} method reference.
+	 *
+	 * @param mixed					$theIdentifier		Node identifier or term reference.
+	 * @param mixed					$theNamespace		Term namespace reference.
+	 * @param string				$theLabel			Term label.
+	 * @param string				$theDescription		Term description.
+	 * @param string				$theLanguage		Label and description language code.
+	 * @param boolean				$doNew				<tt>TRUE</tt> force new node.
+	 *
+	 * @access public
+	 * @return mixed				New node, found node or nodes list.
+	 *
+	 * @throws Exception
+	 *
+	 * @uses NewNode()
+	 *
+	 * @see kNODE_KIND_ENUM kTYPE_STRING
+	 */
+	public function NewEnumerationNode( $theIdentifier, $theNamespace = NULL,
+										$theLabel = NULL, $theDescription = NULL,
+										$theLanguage = NULL, $doNew = FALSE )
+	{
+		return $this->NewNode( $theIdentifier,
+							   kNODE_KIND_ENUM, kTYPE_STRING,
+							   $theNamespace,
+							   $theLabel, $theDescription,
+							   $theLanguage, $doNew );								// ==>
+
+	} // NewEnumerationNode.
 
 		
 
@@ -775,6 +1125,81 @@ class COntology extends CConnection
 
 /*=======================================================================================
  *																						*
+ *								PUBLIC OPERATIONS INTERFACE									*
+ *																						*
+ *======================================================================================*/
+
+
+	 
+	/*===================================================================================
+	 *	RelateTo																		*
+	 *==================================================================================*/
+
+	/**
+	 * <h4>Create an edge</h4>
+	 *
+	 * This method can be used to instantiate an edge by providing the subject and object
+	 * vertex nodes and the edge predicate term. The method makes use of the node's
+	 * {@link CNode::RelateTo()} method to perform the actual operation. This method will
+	 * only ensure that the subject node is committed before calling its method.
+	 *
+	 * The method will return an instance of the {@link COntologyEdge} class, if any error
+	 * occurs, the method will raise an exception.
+	 *
+	 * @param mixed					$theSubject			Subject vertex.
+	 * @param mixed					$theObject			Object vertex.
+	 * @param mixed					$thePredicate		Relationship predicate.
+	 *
+	 * @access public
+	 * @return CEdge				Relationship edge object.
+	 *
+	 * @throws Exception
+	 *
+	 * @uses ResolveTerm()
+	 * @uses ResolveNode()
+	 *
+	 * @see kOFFSET_TERM
+	 */
+	public function RelateTo( $theSubject, $theObject, $thePredicate )
+	{
+		//
+		// Check if object is ready.
+		//
+		if( $this->_IsInited() )
+		{
+			//
+			// Commit subject.
+			//
+			if( $theSubject instanceof COntologyNode )
+			{
+				//
+				// Commit new node.
+				//
+				if( ! $theSubject->_IsCommitted() )
+					$theSubject->Insert( $this->Connection() );
+			
+			} // Provided subject node object.
+			
+			//
+			// Resolve subject.
+			//
+			else
+				$theSubject = $this->ResolveNode( $theSubject, TRUE );
+			
+			return $theSubject->RelateTo( $thePredicate, $theObject );				// ==>
+		
+		} // Object is ready.
+		
+		throw new Exception
+			( "Object is not initialised",
+			  kERROR_STATE );													// !@! ==>
+
+	} // RelateTo.
+
+		
+
+/*=======================================================================================
+ *																						*
  *								PROTECTED COMPONENTS INTERFACE							*
  *																						*
  *======================================================================================*/
@@ -890,27 +1315,27 @@ class COntology extends CConnection
 	 *==================================================================================*/
 
 	/**
-	 * <h4>Instantiate a new term</h4>
+	 * <h4>Instantiate a new node</h4>
 	 *
-	 * This method can be used to instantiate a new term and commit it.
+	 * This method can be used to instantiate a new node and commit it.
 	 *
 	 * The method will first instantiate the node from the provided parameter, then it
 	 * will insert it and finally return it, if there were no errors.
 	 *
-	 * This method is used by the public interface to perform the actual creation of terms.
+	 * This method is used by the public interface to perform the actual creation of nodes.
 	 *
 	 * The method expects the following parameters:
 	 *
 	 * <ul>
 	 *	<li><tt>$theTerm</tt>: This parameter represents the term reference, it can be
 	 *		provided as the term object or term native identifier.
-	 *	<li><tt>$theKind</tt>: This parameter represents the term kind, it can be provided
+	 *	<li><tt>$theKind</tt>: This parameter represents the node kind, it can be provided
 	 *		as a list of values, as a scalar value or as <tt>NULL</tt>.
-	 *	<li><tt>$theType</tt>: This parameter represents the term type, it can be provided
+	 *	<li><tt>$theType</tt>: This parameter represents the node type, it can be provided
 	 *		as a scalar value or as <tt>NULL</tt>.
 	 * </ul>
 	 *
-	 * The method will return a new committed term or raise an exception if the term is a
+	 * The method will return a new committed node or raise an exception if the node is a
 	 * duplicate.
 	 *
 	 * @param mixed					$theTerm			Term object or identifier.

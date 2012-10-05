@@ -343,14 +343,40 @@ try
 	echo( '<pre>' ); print_r( $term ); echo( '</pre>' );
 	echo( '<hr />' );
 	echo( '<hr />' );
-exit;
 
 	//
-	// Create ontology node.
+	// Create new root node.
 	//
-	echo( '<h4>Create ontology node</h4>' );
+	echo( '<h4>Create new root node</h4>' );
+	echo( '<h5>$node = $test->NewRootNode( "ROOT", $namespace, "Root", "This is the root term", "en" );</h5>' );
+	$node = $test->NewRootNode( "ROOT", $namespace, "Root", "This is the root term", "en" );
+	echo( '<pre>' ); print_r( $node ); echo( '</pre>' );
+	echo( '<hr />' );
+
+	//
+	// Create ontology root node.
+	//
+	echo( '<h4>Create ontology root node</h4>' );
 	echo( '<h5>$node = $test->NewRootNode( "NAMESPACE:ONTOLOGY" );</h5>' );
 	$node = $test->NewRootNode( "NAMESPACE:ONTOLOGY" );
+	echo( '<pre>' ); print_r( $node ); echo( '</pre>' );
+	echo( '<hr />' );
+
+	//
+	// Retrieve root node.
+	//
+	echo( '<h4>Retrieve root node</h4>' );
+	echo( '<h5>$node = $test->NewRootNode( 1 );</h5>' );
+	$node = $test->NewRootNode( 1 );
+	echo( '<pre>' ); print_r( $node ); echo( '</pre>' );
+	echo( '<hr />' );
+
+	//
+	// Retrieve root node by term.
+	//
+	echo( '<h4>Retrieve root node by term</h4>' );
+	echo( '<h5>$node = $test->NewRootNode( "NAMESPACE:ROOT" );</h5>' );
+	$node = $test->NewRootNode( "NAMESPACE:ROOT" );
 	echo( '<pre>' ); print_r( $node ); echo( '</pre>' );
 	echo( '<hr />' );
 	
@@ -360,8 +386,8 @@ exit;
 	echo( '<h4>Create category node</h4>' );
 	echo( '<h5>$term = $test->ResolveTerm( "CATEGORY", "NAMESPACE", TRUE );</h5>' );
 	$term = $test->ResolveTerm( "CATEGORY", "NAMESPACE", TRUE );
-	echo( '<h5>$node = $test->NewNode( $term );</h5>' );
-	$node = $test->NewNode( $term );
+	echo( '<h5>$cat_node = $node = $test->NewNode( $term );</h5>' );
+	$cat_node = $node = $test->NewNode( $term );
 	echo( '<pre>' ); print_r( $node ); echo( '</pre>' );
 	echo( '<hr />' );
 	
@@ -369,8 +395,8 @@ exit;
 	// Create trait node.
 	//
 	echo( '<h4>Create trait node</h4>' );
-	echo( '<h5>$node = $test->NewNode( "TRAIT", $namespace, "Trait", "This is the trait term", "en" );</h5>' );
-	$node = $test->NewNode( "TRAIT", $namespace, "Trait", "This is the trait term", "en" );
+	echo( '<h5>$node = $test->NewTraitNode( "TRAIT", $namespace, "Trait", "This is the trait term", "en" );</h5>' );
+	$node = $test->NewTraitNode( "TRAIT", $namespace, "Trait", "This is the trait term", "en" );
 	echo( '<pre>' ); print_r( $node ); echo( '</pre>' );
 	echo( '<hr />' );
 	
@@ -378,8 +404,8 @@ exit;
 	// Create method node.
 	//
 	echo( '<h4>Create method node</h4>' );
-	echo( '<h5>$node = $test->NewNode( "METHOD", $namespace[ kOFFSET_NID ], "Method", "This is the method term", "en" );</h5>' );
-	$node = $test->NewNode( "TRAIT", $namespace[ kOFFSET_NID ], "Trait", "This is the trait term", "en" );
+	echo( '<h5>$node = $test->NewMethodNode( "METHOD", $namespace[ kOFFSET_NID ], "Method", "This is the method term", "en" );</h5>' );
+	$node = $test->NewMethodNode( "METHOD", $namespace[ kOFFSET_NID ], "Method", "This is the method term", "en" );
 	echo( '<pre>' ); print_r( $node ); echo( '</pre>' );
 	echo( '<hr />' );
 	
@@ -387,8 +413,37 @@ exit;
 	// Create scale node.
 	//
 	echo( '<h4>Create scale node</h4>' );
-	echo( '<h5>$node = $test->NewNode( "SCALE", $namespace, "Scale", "This is the scale term", "en" );</h5>' );
-	$node = $test->NewNode( "SCALE", $namespace, "Scale", "This is the scale term", "en" );
+	echo( '<h5>$node = $test->NewScaleNode( "SCALE", kTYPE_STRING, $namespace, "Scale", "This is the scale term", "en" );</h5>' );
+	$node = $test->NewScaleNode( "SCALE", kTYPE_STRING, $namespace, "Scale", "This is the scale term", "en" );
+	echo( '<pre>' ); print_r( $node ); echo( '</pre>' );
+	echo( '<hr />' );
+	
+	//
+	// Create enumeration node.
+	//
+	echo( '<h4>Create enumeration node</h4>' );
+	echo( '<h5>$node = $test->NewEnumerationNode( "STR", $namespace, "String", "String data type code", "en" );</h5>' );
+	$node = $test->NewEnumerationNode( "STR", $namespace, "String", "String data type code", "en" );
+	echo( '<pre>' ); print_r( $node ); echo( '</pre>' );
+	echo( '<hr />' );
+	echo( '<hr />' );
+	
+	//
+	// Instantiate enumeration node with category node.
+	//
+	echo( '<h4>Instantiate enumeration node with category node</h4>' );
+	echo( '<h5>$node = $test->NewEnumerationNode( (int) (string) $cat_node );</h5>' );
+	$node = $test->NewEnumerationNode( (int) (string) $cat_node );
+	echo( 'Template<pre>' ); print_r( $cat_node ); echo( '</pre>' );
+	echo( 'Node<pre>' ); print_r( $node ); echo( '</pre>' );
+	echo( '<hr />' );
+
+	//
+	// Instantiate enumeration node.
+	//
+	echo( '<h4>Instantiate enumeration node</h4>' );
+	echo( '<h5>$node = $test->NewEnumerationNode( ":STR" );</h5>' );
+	$node = $test->NewEnumerationNode( ":STR" );
 	echo( '<pre>' ); print_r( $node ); echo( '</pre>' );
 	echo( '<hr />' );
 	echo( '<hr />' );
