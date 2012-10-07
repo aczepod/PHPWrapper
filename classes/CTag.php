@@ -64,6 +64,11 @@ require_once( kPATH_MYWRAPPER_LIBRARY_CLASS."/CPersistentObject.php" );
  *		{@link kOFFSET_PATH}, it will remove the last item of the list.
  * </ul>
  *
+ * The object features an offset, {@link kOFFSET_PATH}, which is an array holding the
+ * elements of the path, the object's global identifier, {@link kOFFSET_GID}, is a string
+ * representing the elements of the path separated by the {@link kTOKEN_INDEX_SEPARATOR}
+ * token.
+ *
  * This class implements the logic to manage these paths without assuming the nature or
  * type of their elements: this will be the responsibility of derived classes. In this
  * class all items comprising the path must be convertable to strings

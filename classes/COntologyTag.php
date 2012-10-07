@@ -43,15 +43,16 @@ require_once( kPATH_MYWRAPPER_LIBRARY_CLASS."/CTag.php" );
 /**
  * <h3>Ontology tag object ancestor</h3>
  *
- * This class extends its ancestor, {@link CTag}, by checking the type of objects passed to
- * its path, {@link kOFFSET_PATH} and by overriding the {@link _index()} method to extract
- * the global identifiers from the path elements.
+ * This class extends its ancestor, {@link CTag}, by asserting the type of objects passed to
+ * the path, {@link kOFFSET_PATH}, and by using the native identifiers, {@link kOFFSET_NID},
+ * of the elements of the path in the {@link _index()} method.
  *
- * The tag's path must contain an odd number of elements in which the odd items must refer
- * to {@link COntologyNode} objects and the even elements must refer to
- * {@link COntologyTerm} objects. The global identifier of the object is composed of the
- * global identifier of all referenced terms in the path, that is, predicates provide their
- * own global identifier, nodes provide the global identifier of the referenced terms.
+ * Odd elements of the path must refer to {@link COntologyNode} objects, the predicate
+ * elements of the path must refer to {@link COntologyTerm} objects. The elements of the
+ * path offset, {@link kOFFSET_PATH}, will be the native identifier of the path elements,
+ * while the global identifier, {@link kOFFSET_GID}, will receive the global identifiers of
+ * the path element related terms. This last behaviour means that once a tag is saved, its
+ * terms, nodes and edges should not be changed.
  *
  * Elements of the path can be provided as objects and those that are not yet committed will
  * be saved when the current tag is saved.
@@ -90,13 +91,11 @@ class COntologyTag extends CTag
 	/**
 	 * <h4>Append to path</h4>
 	 *
-	 * We overload the parent method to check the provided elements:
+	 * We overload the parent method to assert the provided elements:
 	 *
 	 * <ul>
-	 *	<li>If the element was provided as an object, we ensure that odd items are derived
-	 *		from {@link COntologyNode} and even items from {@link COntologyTerm}.
-	 *	<li>If the element was provided as an object, if not yet committed, we insert it as
-	 *		is; if already committed, we use its native identifier.
+	 *	<li>{@link COntologyNode}: Nodes must be provided as odd elements.
+	 *	<li>{@link COntologyTerm}: Terms must be provided as even elements.
 	 * </ul>
 	 *
 	 * @param mixed					$theValue			Value to append.

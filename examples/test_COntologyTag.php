@@ -339,8 +339,6 @@ try
 				   .'] Dirty['.$tag->dirty()
 				   .'] Saved['.$tag->committed()
 				   .'] Encoded['.$tag->encoded().']<br />' );
-	echo( '<h5>$status = $tag->Insert( $database );</h5>' );
-	$status = $tag->Insert( $database );
 	echo( '<h5>$nodeTrait->Restore( $database );</h5>' );
 	$nodeTrait->Restore( $database );
 	echo( '<h5>$nodeMethod->Restore( $database );</h5>' );
@@ -386,7 +384,7 @@ try
 //
 // Catch exceptions.
 //
-catch( \Exception $error )
+catch( Exception $error )
 {
 	echo( '<h3><font color="red">Unexpected exception</font></h3>' );
 	echo( '<pre>'.(string) $error.'</pre>' );

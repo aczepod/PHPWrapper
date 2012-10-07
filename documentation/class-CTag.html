@@ -127,6 +127,10 @@ in the path, which represents the minimum legal number of path items.</p>
 	path, kOFFSET_PATH, it will remove the last item of the list.</li>
 </ul>
 
+<p>The object features an offset, kOFFSET_PATH, which is an array
+holding the elements of the path, the object's global identifier, kOFFSET_GID, is a string representing the elements of the path separated by the
+kTOKEN_INDEX_SEPARATOR token.</p>
+
 <p>This class implements the logic to manage these paths without assuming the
 nature or type of their elements: this will be the responsibility of derived
 classes. In this class all items comprising the path must be convertable to
@@ -207,7 +211,7 @@ strings</p>
 				<b>Author:</b>
 				Milko A. Škofič &lt;<a
 href="mailto:m.skofic&#64;cgiar.org">m.skofic&#64;<!---->cgiar.org</a>&gt;<br />
-		<b>Located at</b> <a href="source-class-CTag.html#43-382" title="Go to source code">CTag.php</a><br />
+		<b>Located at</b> <a href="source-class-CTag.html#43-387" title="Go to source code">CTag.php</a><br />
 	</div>
 
 
@@ -225,7 +229,7 @@ href="mailto:m.skofic&#64;cgiar.org">m.skofic&#64;<!---->cgiar.org</a>&gt;<br />
 
 		<td class="name"><div>
 		<a class="anchor" href="#_PushItem">#</a>
-		<code><a href="source-class-CTag.html#90-151" title="Go to source code">PushItem</a>( <span>mixed <var>$theValue</var></span> )</code>
+		<code><a href="source-class-CTag.html#95-156" title="Go to source code">PushItem</a>( <span>mixed <var>$theValue</var></span> )</code>
 
 		<div class="description short">
 			
@@ -280,7 +284,7 @@ ignored and the method will return <tt>FALSE</tt>.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#_PopItem">#</a>
-		<code><a href="source-class-CTag.html#158-206" title="Go to source code">PopItem</a>( )</code>
+		<code><a href="source-class-CTag.html#163-211" title="Go to source code">PopItem</a>( )</code>
 
 		<div class="description short">
 			
@@ -327,7 +331,7 @@ is missing, the method will return <tt>NULL</tt>.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#__index">#</a>
-		<code><a href="source-class-CTag.html#222-242" title="Go to source code">_index</a>( <span><code><a href="class-CConnection.html">CConnection</a></code> <var>$theConnection</var></span>, <span>bitfield <var>$theModifiers</var></span> )</code>
+		<code><a href="source-class-CTag.html#227-247" title="Go to source code">_index</a>( <span><code><a href="class-CConnection.html">CConnection</a></code> <var>$theConnection</var></span>, <span>bitfield <var>$theModifiers</var></span> )</code>
 
 		<div class="description short">
 			
@@ -383,7 +387,7 @@ string.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#__Preset">#</a>
-		<code><a href="source-class-CTag.html#258-291" title="Go to source code">_Preset</a>( <span>reference <var>&amp; $theOffset</var></span>, <span>reference <var>&amp; $theValue</var></span> )</code>
+		<code><a href="source-class-CTag.html#263-296" title="Go to source code">_Preset</a>( <span>reference <var>&amp; $theOffset</var></span>, <span>reference <var>&amp; $theValue</var></span> )</code>
 
 		<div class="description short">
 			
@@ -436,7 +440,7 @@ ArrayObject instances are not counted as an array.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#__PrecommitValidate">#</a>
-		<code><a href="source-class-CTag.html#307-339" title="Go to source code">_PrecommitValidate</a>( <span>reference <var>&amp; $theConnection</var></span>, <span>reference <var>&amp; $theModifiers</var></span> )</code>
+		<code><a href="source-class-CTag.html#312-344" title="Go to source code">_PrecommitValidate</a>( <span>reference <var>&amp; $theConnection</var></span>, <span>reference <var>&amp; $theModifiers</var></span> )</code>
 
 		<div class="description short">
 			
@@ -489,7 +493,7 @@ that is not the case, the method will raise an exception.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#__Ready">#</a>
-		<code><a href="source-class-CTag.html#355-378" title="Go to source code">_Ready</a>( )</code>
+		<code><a href="source-class-CTag.html#360-383" title="Go to source code">_Ready</a>( )</code>
 
 		<div class="description short">
 			
