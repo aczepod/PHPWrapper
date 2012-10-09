@@ -114,25 +114,5 @@ define( "kTYPE_TIME",						':TIME' );				// Time.
  */
 define( "kTYPE_STAMP",						':STAMP' );				// Timestamp.
 
-/**
- * Enumeration type.
- *
- * This value represents the enumeration data type, it represents an enumeration element or
- * container.
- *
- * Enumerations represent a vocabulary from which one value must be chosen.
- */
-define( "kTYPE_ENUM",						':ENUM' );				// Enumeration.
-
-/**
- * Set type.
- *
- * This value represents the enumerated set data type, it represents an enumerated set
- * element or container.
- *
- * Sets represent a vocabulary from which one or more value must be chosen.
- */
-define( "kTYPE_ENUM_SET",					':SET' );				// Set.
-
 
 ?>

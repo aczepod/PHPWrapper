@@ -6,7 +6,7 @@
 
 	<title>Class COntology | MyWrapper Reference Documentation</title>
 
-	<script type="text/javascript" src="resources/combined.js?368249000"></script>
+	<script type="text/javascript" src="resources/combined.js?3994123307"></script>
 	<script type="text/javascript" src="elementlist.js?4206909522"></script>
 	<link rel="stylesheet" type="text/css" media="all" href="resources/style.css?3505392360" />
 
@@ -170,7 +170,7 @@ the database in which the ontology resides.</p>
 				<b>Author:</b>
 				Milko A. Škofič &lt;<a
 href="mailto:m.skofic&#64;cgiar.org">m.skofic&#64;<!---->cgiar.org</a>&gt;<br />
-		<b>Located at</b> <a href="source-class-COntology.html#68-1774" title="Go to source code">COntology.php</a><br />
+		<b>Located at</b> <a href="source-class-COntology.html#68-1761" title="Go to source code">COntology.php</a><br />
 	</div>
 
 
@@ -808,7 +808,7 @@ reference.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#_NewScaleNode">#</a>
-		<code><a href="source-class-COntology.html#732-922" title="Go to source code">NewScaleNode</a>( <span>mixed <var>$theIdentifier</var></span>, <span>string <var>$theType</var> = <span class="php-keyword1">NULL</span></span>, <span>mixed <var>$theNamespace</var> = <span class="php-keyword1">NULL</span></span>, <span>string <var>$theLabel</var> = <span class="php-keyword1">NULL</span></span>, <span>string <var>$theDescription</var> = <span class="php-keyword1">NULL</span></span>, <span>string <var>$theLanguage</var> = <span class="php-keyword1">NULL</span></span>, <span>boolean <var>$doNew</var> = <span class="php-keyword1">FALSE</span> </span> )</code>
+		<code><a href="source-class-COntology.html#732-922" title="Go to source code">NewScaleNode</a>( <span>mixed <var>$theIdentifier</var></span>, <span>mixed <var>$theType</var> = <span class="php-keyword1">NULL</span></span>, <span>mixed <var>$theNamespace</var> = <span class="php-keyword1">NULL</span></span>, <span>string <var>$theLabel</var> = <span class="php-keyword1">NULL</span></span>, <span>string <var>$theDescription</var> = <span class="php-keyword1">NULL</span></span>, <span>string <var>$theLanguage</var> = <span class="php-keyword1">NULL</span></span>, <span>boolean <var>$doNew</var> = <span class="php-keyword1">FALSE</span> </span> )</code>
 
 		<div class="description short">
 			
@@ -826,8 +826,7 @@ term.</p>
 
 <p>A scale node distinguishes itself from a <i>standard</i> node by having the
 kNODE_KIND_SCALE enumeration set in its kind (<code><a href="class-CNode.html#_Kind">CNode::Kind()</a></code>) list. Also, scale nodes represent the last element of
-the path used to annotate data: scale nodes will always have a data type
-attribute.</p>
+the path used to annotate data: scale nodes will always have a data type, <code><a href="class-CNode.html#_Type">CNode::Type()</a></code>, attribute.</p>
 
 <p>The method uses the same parameters as the <code><a href="class-COntology.html#_NewNode">COntology::NewNode()</a></code> method, except
 that it forces the kNODE_KIND_SCALE enumeration as the kind and expects
@@ -844,7 +843,7 @@ reference.</p>
 					<dt><var>$theIdentifier</var></dt>
 					<dd><code>mixed</code><br>$theIdentifier Node identifier or term reference.</dd>
 					<dt><var>$theType</var></dt>
-					<dd><code>string</code><br>$theType Node type.</dd>
+					<dd><code>mixed</code><br>$theType Node type.</dd>
 					<dt><var>$theNamespace</var></dt>
 					<dd><code>mixed</code><br>$theNamespace Term namespace reference.</dd>
 					<dt><var>$theLabel</var></dt>
@@ -1621,7 +1620,7 @@ is a duplicate.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#__NewNode">#</a>
-		<code><a href="source-class-COntology.html#1521-1622" title="Go to source code">_NewNode</a>( <span>mixed <var>$theTerm</var></span>, <span>mixed <var>$theKind</var> = <span class="php-keyword1">NULL</span></span>, <span>mixed <var>$theType</var> = <span class="php-keyword1">NULL</span> </span> )</code>
+		<code><a href="source-class-COntology.html#1521-1609" title="Go to source code">_NewNode</a>( <span>mixed <var>$theTerm</var></span>, <span>mixed <var>$theKind</var> = <span class="php-keyword1">NULL</span></span>, <span>mixed <var>$theType</var> = <span class="php-keyword1">NULL</span> </span> )</code>
 
 		<div class="description short">
 			
@@ -1651,7 +1650,7 @@ nodes.</p>
 	provided as a list of values, as a scalar value or as <tt>NULL</tt>.</li>
 
 	<li><tt>$theType</tt>: This parameter represents the node type, it can be
-	provided as a scalar value or as <tt>NULL</tt>.</li>
+	provided as a list of values, as a scalar value or as <tt>NULL</tt>.</li>
 </ul>
 
 <p>The method will return a new committed node or raise an exception if the node
@@ -1704,7 +1703,7 @@ is a duplicate.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#__RelateTo">#</a>
-		<code><a href="source-class-COntology.html#1638-1770" title="Go to source code">_RelateTo</a>( <span>mixed <var>$theSubject</var></span>, <span>mixed <var>$theObject</var></span>, <span>mixed <var>$thePredicate</var></span>, <span>mixed <var>$theNamespace</var> = <span class="php-keyword1">NULL</span></span>, <span>string <var>$theLabel</var> = <span class="php-keyword1">NULL</span></span>, <span>string <var>$theDescription</var> = <span class="php-keyword1">NULL</span></span>, <span>string <var>$theLanguage</var> = <span class="php-keyword1">NULL</span> </span> )</code>
+		<code><a href="source-class-COntology.html#1625-1757" title="Go to source code">_RelateTo</a>( <span>mixed <var>$theSubject</var></span>, <span>mixed <var>$theObject</var></span>, <span>mixed <var>$thePredicate</var></span>, <span>mixed <var>$theNamespace</var> = <span class="php-keyword1">NULL</span></span>, <span>string <var>$theLabel</var> = <span class="php-keyword1">NULL</span></span>, <span>string <var>$theDescription</var> = <span class="php-keyword1">NULL</span></span>, <span>string <var>$theLanguage</var> = <span class="php-keyword1">NULL</span> </span> )</code>
 
 		<div class="description short">
 			

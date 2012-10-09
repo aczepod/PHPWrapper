@@ -738,7 +738,7 @@ class COntology extends CConnection
 	 * A scale node distinguishes itself from a <i>standard</i> node by having the
 	 * {@link kNODE_KIND_SCALE} enumeration set in its kind ({@link COntologyNode::Kind()})
 	 * list. Also, scale nodes represent the last element of the path used to annotate data:
-	 * scale nodes will always have a data type attribute.
+	 * scale nodes will always have a data type, {@link CNode::Type()}, attribute.
 	 *
 	 * The method uses the same parameters as the {@link NewNode()} method, except that it
 	 * forces the {@link kNODE_KIND_SCALE} enumeration as the kind and expects the type
@@ -747,7 +747,7 @@ class COntology extends CConnection
 	 * For more information, please consult the {@link NewNode()} method reference.
 	 *
 	 * @param mixed					$theIdentifier		Node identifier or term reference.
-	 * @param string				$theType			Node type.
+	 * @param mixed					$theType			Node type.
 	 * @param mixed					$theNamespace		Term namespace reference.
 	 * @param string				$theLabel			Term label.
 	 * @param string				$theDescription		Term description.
@@ -1536,7 +1536,7 @@ class COntology extends CConnection
 	 *	<li><tt>$theKind</tt>: This parameter represents the node kind, it can be provided
 	 *		as a list of values, as a scalar value or as <tt>NULL</tt>.
 	 *	<li><tt>$theType</tt>: This parameter represents the node type, it can be provided
-	 *		as a scalar value or as <tt>NULL</tt>.
+	 *		as a list of values, as a scalar value or as <tt>NULL</tt>.
 	 * </ul>
 	 *
 	 * The method will return a new committed node or raise an exception if the node is a
@@ -1579,26 +1579,13 @@ class COntology extends CConnection
 				// Set kind.
 				//
 				if( $theKind !== NULL )
-				{
-					//
-					// Handle array.
-					//
-					if( is_array( $theKind ) )
-						$node->Kind( $theKind, array_fill( 0, count( $theKind ), TRUE ) );
-					
-					//
-					// Handle scalar.
-					//
-					else
-						$node->Kind( $theKind, TRUE );
-				
-				} // Provided kind.
+					$node->Kind( $theKind, TRUE );
 				
 				//
 				// Set type.
 				//
 				if( $theType !== NULL )
-					$node->Type( $theType );
+					$node->Type( $theType, TRUE );
 				
 				//
 				// Save node.

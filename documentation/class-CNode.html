@@ -6,7 +6,7 @@
 
 	<title>Class CNode | MyWrapper Reference Documentation</title>
 
-	<script type="text/javascript" src="resources/combined.js?368249000"></script>
+	<script type="text/javascript" src="resources/combined.js?3994123307"></script>
 	<script type="text/javascript" src="elementlist.js?4206909522"></script>
 	<link rel="stylesheet" type="text/css" media="all" href="resources/style.css?3505392360" />
 
@@ -123,7 +123,11 @@ set describing the specific type, or the specific function of the node in its
 chain or path.</p>
 
 <p>Finally, the class features the kOFFSET_TYPE property which defines
-the data type of the node or the data unit it represents.</p>
+the data type of the node or the data unit it represents, this offset is an
+enumerated set in which two elements can reside: the data type or unit, which is
+required, and optionally one or both kTYPE_CARD_REQUIRED and kTYPE_CARD_ARRAY which respectively indicate whether the node represents a
+required attribute and whether the data type indicated in the first element of
+the offset is a list or not.</p>
 
 <p>This class does not feature attributes that can represent the unique
 identifier of the object, this means that the container is responsible of
@@ -219,7 +223,7 @@ rule.</p>
 				<b>Author:</b>
 				Milko A. Škofič &lt;<a
 href="mailto:m.skofic&#64;cgiar.org">m.skofic&#64;<!---->cgiar.org</a>&gt;<br />
-		<b>Located at</b> <a href="source-class-CNode.html#36-438" title="Go to source code">CNode.php</a><br />
+		<b>Located at</b> <a href="source-class-CNode.html#36-470" title="Go to source code">CNode.php</a><br />
 	</div>
 
 
@@ -237,7 +241,7 @@ href="mailto:m.skofic&#64;cgiar.org">m.skofic&#64;<!---->cgiar.org</a>&gt;<br />
 
 		<td class="name"><div>
 		<a class="anchor" href="#___toString">#</a>
-		<code><a href="source-class-CNode.html#94-118" title="Go to source code">__toString</a>( )</code>
+		<code><a href="source-class-CNode.html#98-122" title="Go to source code">__toString</a>( )</code>
 
 		<div class="description short">
 			
@@ -281,7 +285,7 @@ the unique identifier of the object.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#_Term">#</a>
-		<code><a href="source-class-CNode.html#134-167" title="Go to source code">Term</a>( <span>mixed <var>$theValue</var> = <span class="php-keyword1">NULL</span></span>, <span>boolean <var>$getOld</var> = <span class="php-keyword1">FALSE</span> </span> )</code>
+		<code><a href="source-class-CNode.html#138-171" title="Go to source code">Term</a>( <span>mixed <var>$theValue</var> = <span class="php-keyword1">NULL</span></span>, <span>boolean <var>$getOld</var> = <span class="php-keyword1">FALSE</span> </span> )</code>
 
 		<div class="description short">
 			
@@ -351,7 +355,7 @@ the currently set value.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#_Kind">#</a>
-		<code><a href="source-class-CNode.html#174-238" title="Go to source code">Kind</a>( <span>mixed <var>$theValue</var> = <span class="php-keyword1">NULL</span></span>, <span>mixed <var>$theOperation</var> = <span class="php-keyword1">NULL</span></span>, <span>boolean <var>$getOld</var> = <span class="php-keyword1">FALSE</span> </span> )</code>
+		<code><a href="source-class-CNode.html#178-242" title="Go to source code">Kind</a>( <span>mixed <var>$theValue</var> = <span class="php-keyword1">NULL</span></span>, <span>mixed <var>$theOperation</var> = <span class="php-keyword1">NULL</span></span>, <span>boolean <var>$getOld</var> = <span class="php-keyword1">FALSE</span> </span> )</code>
 
 		<div class="description short">
 			
@@ -434,7 +438,7 @@ that can be managed with the following parameters:</p>
 
 				<h4>Returns</h4>
 				<div class="list">
-					<code>mixed</code><br><i>New</i> or <i>old</i> native container.<br />
+					<code>mixed</code><br><i>New</i> or <i>old</i> kind.<br />
 				</div>
 
 
@@ -462,50 +466,88 @@ that can be managed with the following parameters:</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#_Type">#</a>
-		<code><a href="source-class-CNode.html#245-278" title="Go to source code">Type</a>( <span>mixed <var>$theValue</var> = <span class="php-keyword1">NULL</span></span>, <span>boolean <var>$getOld</var> = <span class="php-keyword1">FALSE</span> </span> )</code>
+		<code><a href="source-class-CNode.html#249-310" title="Go to source code">Type</a>( <span>mixed <var>$theValue</var> = <span class="php-keyword1">NULL</span></span>, <span>mixed <var>$theOperation</var> = <span class="php-keyword1">NULL</span></span>, <span>boolean <var>$getOld</var> = <span class="php-keyword1">FALSE</span> </span> )</code>
 
 		<div class="description short">
 			
-<h4>Manage node type</h4>
+<h4>Manage node type set</h4>
 
 		</div>
 
 		<div class="description detailed hidden">
 			
-<h4>Manage node type</h4>
+<h4>Manage node type set</h4>
 
 <p>This method can be used to manage the node's type, kOFFSET_TYPE,
-which is an enumerated value that represents the data type or unit of the
+which is an enumerated set that represents the data type or unit of the
 node.</p>
 
-<p>The method accepts a parameter which represents either the type, or the
-requested operation, depending on its value:</p>
+<p>This offset collects the list of these types in an enumerated set that can be
+managed with the following parameters:</p>
 
 <ul>
-	<li><tt>NULL</tt>: Return the current value.</li>
+	<li><tt>$theValue</tt>: Depending on the next parameter, this may either refer
+	to the value to be set or to the index of the element to be retrieved or
+	deleted:
+		<ul>
+			<li><tt>NULL</tt>: This value indicates that we want to operate on all elements,
+			which means, in practical terms, that we either want to retrieve or delete the
+			full list. If the operation parameter resolves to <tt>TRUE</tt>, the method will
+			default to retrieving the current list and no new element will be added.</li>
 
-	<li><tt>FALSE</tt>: Delete the current value.</li>
+			<li><tt>array</tt>: An array indicates that we want to operate on a list of
+			values and that other parameters may also be provided as lists. Note that <code><a href="class-ArrayObject.html">ArrayObject</a></code> instances are not considered here as arrays.</li>
 
-	<li><i>other</i>: Set the value with the provided parameter.</li>
+			<li><i>other</i>: Any other type represents either the new value to be added or
+			the index to the value to be returned or deleted.</li>
+		</ul>
+	</li>
+
+	<li><tt>$theOperation</tt>: This parameter represents the operation to be
+	performed whose scope depends on the value of the previous parameter:
+		<ul>
+			<li><tt>NULL</tt>: Return the element or full list.</li>
+
+			<li><tt>FALSE</tt>: Delete the element or full list.</li>
+
+			<li><tt>array</tt>: This type is only considered if the <tt>$theValue</tt>
+			parameter is provided as an array: the method will be called for each element of
+			the <tt>$theValue</tt> parameter matched with the corresponding element of this
+			parameter, which also means that both both parameters must share the same
+			count.</li>
+
+			<li><i>other</i>: Add the <tt>$theValue</tt> value to the list. If you provided
+			<tt>NULL</tt> in the previous parameter, the operation will be reset to
+			<tt>NULL</tt>.</li>
+		</ul>
+	</li>
+
+	<li><tt>$getOld</tt>: Determines what the method will return:
+		<ul>
+			<li><tt>TRUE</tt>: Return the value <i>before</i> it was eventually
+			modified.</li>
+
+			<li><tt>FALSE</tt>: Return the value <i>after</i> it was eventually
+			modified.</li>
+		</ul>
+	</li>
 </ul>
-
-<p>The second parameter is a boolean which if <tt>TRUE</tt> will return the
-<i>old</i> value when replacing containers; if <tt>FALSE</tt>, it will return
-the currently set value.</p>
 
 
 
 				<h4>Parameters</h4>
 				<div class="list"><dl>
 					<dt><var>$theValue</var></dt>
-					<dd><code>mixed</code><br>$theValue Type or operation.</dd>
+					<dd><code>mixed</code><br>$theValue Value or index.</dd>
+					<dt><var>$theOperation</var></dt>
+					<dd><code>mixed</code><br>$theOperation Operation.</dd>
 					<dt><var>$getOld</var></dt>
-					<dd><code>boolean</code><br>$getOld <tt>TRUE</tt> get old value.</dd>
+					<dd><code>boolean</code><br>$getOld TRUE get old value.</dd>
 				</dl></div>
 
 				<h4>Returns</h4>
 				<div class="list">
-					<code>mixed</code><br><i>New</i> or <i>old</i> native container.<br />
+					<code>mixed</code><br><i>New</i> or <i>old</i> type.<br />
 				</div>
 
 
@@ -515,7 +557,7 @@ the currently set value.</p>
 				</div>
 				<h4>Uses</h4>
 				<div class="list">
-						<code><code><a href="function-ManageOffset.html">ManageOffset()</a></code></code> <br />
+						<code><code><a href="function-ManageObjectSetOffset.html">ManageObjectSetOffset()</a></code></code> <br />
 				</div>
 
 
@@ -533,7 +575,7 @@ the currently set value.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#_RelateTo">#</a>
-		<code><a href="source-class-CNode.html#294-346" title="Go to source code">RelateTo</a>( <span>mixed <var>$theObject</var></span>, <span>mixed <var>$thePredicate</var></span> )</code>
+		<code><a href="source-class-CNode.html#326-378" title="Go to source code">RelateTo</a>( <span>mixed <var>$theObject</var></span>, <span>mixed <var>$thePredicate</var></span> )</code>
 
 		<div class="description short">
 			
@@ -601,7 +643,7 @@ occurs, the method will raise an exception.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#__Preset">#</a>
-		<code><a href="source-class-CNode.html#362-395" title="Go to source code">_Preset</a>( <span>reference <var>&amp; $theOffset</var></span>, <span>reference <var>&amp; $theValue</var></span> )</code>
+		<code><a href="source-class-CNode.html#394-427" title="Go to source code">_Preset</a>( <span>reference <var>&amp; $theOffset</var></span>, <span>reference <var>&amp; $theValue</var></span> )</code>
 
 		<div class="description short">
 			
@@ -654,7 +696,7 @@ ArrayObject instances are not counted as an array.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#__Ready">#</a>
-		<code><a href="source-class-CNode.html#411-434" title="Go to source code">_Ready</a>( )</code>
+		<code><a href="source-class-CNode.html#443-466" title="Go to source code">_Ready</a>( )</code>
 
 		<div class="description short">
 			

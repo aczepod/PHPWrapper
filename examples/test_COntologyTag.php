@@ -223,6 +223,7 @@ try
 	echo( '<h4>Create scale node</h4>' );
 	$nodeScale = new COntologyNode();
 	$nodeScale->Term( $termScale );
+	$nodeScale->Type( kTYPE_ENUM );
 	echo( '<pre>' ); print_r( $nodeScale ); echo( '</pre>' );
 	echo( '<hr />' );
 	echo( '<hr />' );
@@ -250,9 +251,9 @@ try
 	echo( '<hr>' );
 	
 	//
-	// Insert tag with trait node.
+	// Instantiate tag with trait node.
 	//
-	echo( '<h4>Insert tag with trait node</h4>' );
+	echo( '<h4>Instantiate tag with trait node</h4>' );
 	echo( '<h5>$tag = new MyClass();</h5>' );
 	$tag = new MyClass();
 	echo( '<h5>$tag->PushItem( $nodeTrait );</h5>' );
@@ -261,11 +262,7 @@ try
 				   .'] Dirty['.$tag->dirty()
 				   .'] Saved['.$tag->committed()
 				   .'] Encoded['.$tag->encoded().']<br />' );
-	echo( '<h5>$status = $tag->Insert( $database );</h5>' );
-	$status = $tag->Insert( $database );
-	echo( 'Tag<pre>' ); print_r( $tag ); echo( '</pre>' );
-	echo( 'Node<pre>' ); print_r( $nodeTrait ); echo( '</pre>' );
-	echo( 'Term<pre>' ); print_r( $nodeTrait->LoadTerm( $database ) ); echo( '</pre>' );
+	echo( '<pre>' ); print_r( $tag ); echo( '</pre>' );
 	echo( '<hr />' );
 	
 	//
@@ -352,6 +349,35 @@ try
 	echo( 'Method term<pre>' ); print_r( $nodeMethod->LoadTerm( $database ) ); echo( '</pre>' );
 	echo( 'Scale node<pre>' ); print_r( (array) $nodeScale ); echo( '</pre>' );
 	echo( 'Scale term<pre>' ); print_r( $nodeScale->LoadTerm( $database ) ); echo( '</pre>' );
+	echo( '<hr />' );
+	echo( '<hr />' );
+	
+	//
+	// Get trait.
+	//
+	echo( '<h4>Get trait</h4>' );
+	echo( '<h5>$node = $tag->GetTrait();</h5>' );
+	$node = $tag->GetTrait();
+	echo( '<pre>' ); print_r( $node ); echo( '</pre>' );
+	echo( '<hr />' );
+	
+	//
+	// Get scale.
+	//
+	echo( '<h4>Get scale</h4>' );
+	echo( '<h5>$node = $tag->GetScale();</h5>' );
+	$node = $tag->GetScale();
+	echo( '<pre>' ); print_r( $node ); echo( '</pre>' );
+	echo( '<hr />' );
+	
+	//
+	// Get methods.
+	//
+	echo( '<h4>Get methods</h4>' );
+	echo( '<h5>$nodes = $tag->GetMethods();</h5>' );
+	$nodes = $tag->GetMethods();
+	echo( '<pre>' ); print_r( $nodes ); echo( '</pre>' );
+	echo( '<hr />' );
 	echo( '<hr />' );
 	
 	//

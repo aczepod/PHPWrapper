@@ -155,6 +155,154 @@ class COntologyNode extends CNode
 
 	 
 	/*===================================================================================
+	 *	Type																			*
+	 *==================================================================================*/
+
+	/**
+	 * <h4>Manage node type set</h4>
+	 *
+	 * In this class we overload the parent method to assert the kind of elements that can
+	 * be set in the offset. The offset accepts two types of elements:
+	 *
+	 * <ul>
+	 *	<li><i>Data type</i>: The set accepts one of the following primary data types:
+	 *	 <ul>
+	 *		<li><i>{@link kTYPE_STRING}</i>: String, we assume in UTF8 character set.
+	 *		<li><i>{@link kTYPE_INT32}</i>: 32 bit signed integer.
+	 *		<li><i>{@link kTYPE_INT64}</i>: 64 bit signed integer.
+	 *		<li><i>{@link kTYPE_FLOAT}</i>: Floating point number.
+	 *		<li><i>{@link kTYPE_DATE}</i>: A date.
+	 *		<li><i>{@link kTYPE_TIME}</i>: A date and time.
+	 *		<li><i>{@link kTYPE_STAMP}</i>: A native timestamp.
+	 *		<li><i>{@link kTYPE_BOOLEAN}</i>: An <tt>on</tt>/<tt>off</tt> switch.
+	 *		<li><i>{@link kTYPE_BINARY}</i>: A binary string.
+	 *		<li><i>{@link kTYPE_ENUM}</i>: Enumerated scalar, this data type resolves by
+	 *			default to a string and indicates that the node refers to a controlled
+	 *			vocabulary scalar whose elements will be found related to the current node.
+	 *		<li><i>{@link kTYPE_ENUM_SET}</i>: Enumerated set, this data type resolves by
+	 *			default to a list of string elements and indicates that the node refers to
+	 *			an enumerated set whose elements will be found related to the current node.
+	 *	 </ul>
+	 *		Only one of the above may be present in the list, when adding a new element, if
+	 *		the offset already contains a data type, this will be replaced by the new one.
+	 *	<li><i>Cardinality</i>: The set accepts one or more cardinality indicators from the
+	 *		following set:
+	 *	 <ul>
+	 *		<li><i>{@link kTYPE_CARD_REQUIRED}</i>: Required, the element referred by the
+	 *			current node is required and cannot be omitted; if this tag is missing, it
+	 *			means that the element is optional.
+	 *		<li><i>{@link kTYPE_CARD_ARRAY}</i>: Array, the element referred by the current
+	 *			node is a list in which each element is of the data type indicated by the
+	 *			previous set; if this tag is missing, it means that the element is a scalar.
+	 *	 </ul>
+	 * </ul>
+	 *
+	 * @param mixed					$theValue			Type or operation.
+	 * @param boolean				$getOld				<tt>TRUE</tt> get old value.
+	 *
+	 * @access public
+	 * @return mixed				<i>New</i> or <i>old</i> type.
+	 */
+	public function Type( $theValue = NULL, $theOperation = NULL, $getOld = FALSE )
+	{
+		//
+		// Handle multiple parameters:
+		//
+		if( is_array( $theValue ) )
+		{
+			//
+			// Init local storage.
+			//
+			$result = Array();
+			$count = count( $theValue );
+			$current = $this->offsetGet( kOFFSET_TYPE );
+			
+			//
+			// Check operation.
+			//
+			if( is_array( $theOperation )
+			 && (count( $theOperation ) != $count) )
+				throw new Exception
+						( "Values and operations counts do not match",
+						  kERROR_PARAMETER );									// !@! ==>
+			
+			//
+			// Iterate values.
+			//
+			foreach( $theValue as $index => $value )
+			{
+				//
+				// Set operation.
+				//
+				$operation = ( is_array( $theOperation ) )
+						   ? $theOperation[ $index ]
+						   : $theOperation;
+				
+				//
+				// Get result.
+				//
+				$result[] = parent::Type( $value, $operation, $getOld );
+			
+			} // Iterating list of values.
+			
+			return $result;															// ==>
+		
+		} // Multiple parameters.
+		
+		//
+		// Check add operation.
+		//
+		if( ($theOperation !== NULL)
+		 && ($theOperation !== FALSE) )
+		{
+			//
+			// Check value.
+			//
+			switch( $theValue )
+			{
+				//
+				// Handle data types.
+				//
+				case kTYPE_STRING:
+				case kTYPE_INT32:
+				case kTYPE_INT64:
+				case kTYPE_FLOAT:
+				case kTYPE_DATE:
+				case kTYPE_TIME:
+				case kTYPE_STAMP:
+				case kTYPE_BOOLEAN:
+				case kTYPE_BINARY:
+				case kTYPE_ENUM:
+				case kTYPE_ENUM_SET:
+					//
+					// Remove eventual existing data type.
+					//
+					parent::Type( array( kTYPE_STRING, kTYPE_INT32,
+										 kTYPE_INT64, kTYPE_FLOAT,
+										 kTYPE_DATE, kTYPE_TIME,
+										 kTYPE_STAMP, kTYPE_BOOLEAN,
+										 kTYPE_BINARY, kTYPE_ENUM, kTYPE_ENUM_SET ),
+								  FALSE );
+			
+				case kTYPE_CARD_REQUIRED:
+				case kTYPE_CARD_ARRAY:
+					break;
+				
+				default:
+					throw new Exception
+							( "Unsupported type",
+							  kERROR_PARAMETER );								// !@! ==>
+			
+			} // Parsed value.
+		
+		} // Add operation.
+		
+		return parent::Type( $theValue, $theOperation, $getOld );					// ==>
+
+	} // Type.
+
+	 
+	/*===================================================================================
 	 *	TagRefs																			*
 	 *==================================================================================*/
 

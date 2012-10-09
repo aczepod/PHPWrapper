@@ -119,8 +119,6 @@ require_once( kPATH_MYWRAPPER_LIBRARY_CLASS."/CDocument.php" );
  *		<li><i>{@link kTYPE_STAMP}</i>: A native timestamp.
  *		<li><i>{@link kTYPE_BOOLEAN}</i>: An <tt>on</tt>/<tt>off</tt> switch.
  *		<li><i>{@link kTYPE_BINARY}</i>: A binary string.
- *		<li><i>{@link kTYPE_ENUM }</i>: An enumerated value.
- *		<li><i>{@link kTYPE_ENUM_SET}</i>: An enumerated set of values.
  *	 </ul>
  *	<li><i>{@link kOFFSET_QUERY_DATA}</i>: The statement object or test data.
  * </ul>

@@ -250,8 +250,8 @@ try
 	// Add kind 1.
 	//
 	echo( '<h4>Add kind 1</h4>' );
-	echo( '<h5>$node->Kind( $termA, TRUE );</h5>' );
-	$node->Kind( $termA, TRUE );
+	echo( '<h5>$node->Kind( "KIND1", TRUE );</h5>' );
+	$node->Kind( "KIND1", TRUE );
 	echo( '<pre>' ); print_r( $node ); echo( '</pre>' );
 	echo( '<hr />' );
 	
@@ -259,8 +259,8 @@ try
 	// Add kind 2.
 	//
 	echo( '<h4>Add kind 2</h4>' );
-	echo( '<h5>$node->Kind( $termB, TRUE );</h5>' );
-	$node->Kind( $termB, TRUE );
+	echo( '<h5>$node->Kind( "KIND2", TRUE );</h5>' );
+	$node->Kind( "KIND2", TRUE );
 	echo( '<pre>' ); print_r( $node ); echo( '</pre>' );
 	echo( '<hr />' );
 	
@@ -268,8 +268,8 @@ try
 	// Add kind 1.
 	//
 	echo( '<h4>Add kind 1</h4>' );
-	echo( '<h5>$node->Kind( $termA, TRUE );</h5>' );
-	$node->Kind( $termA, TRUE );
+	echo( '<h5>$node->Kind( "KIND1", TRUE );</h5>' );
+	$node->Kind( "KIND1", TRUE );
 	echo( '<pre>' ); print_r( $node ); echo( '</pre>' );
 	echo( '<hr />' );
 	
@@ -277,8 +277,8 @@ try
 	// Remove kind 2.
 	//
 	echo( '<h4>Remove kind 2</h4>' );
-	echo( '<h5>$node->Kind( $termB, FALSE );</h5>' );
-	$node->Kind( $termB, FALSE );
+	echo( '<h5>$node->Kind( "KIND2", FALSE );</h5>' );
+	$node->Kind( "KIND2", FALSE );
 	echo( '<pre>' ); print_r( $node ); echo( '</pre>' );
 	echo( '<hr />' );
 	
@@ -286,24 +286,45 @@ try
 	// Remove kind 1.
 	//
 	echo( '<h4>Remove kind 1</h4>' );
-	echo( '<h5>$node->Kind( $termA, FALSE );</h5>' );
-	$node->Kind( $termA, FALSE );
+	echo( '<h5>$node->Kind( "KIND1", FALSE );</h5>' );
+	$node->Kind( "KIND1", FALSE );
 	echo( '<pre>' ); print_r( $node ); echo( '</pre>' );
 	echo( '<hr />' );
 	echo( '<hr />' );
 	
 	//
-	// Add type.
+	// Add string data type.
 	//
-	echo( '<h4>Add type</h4>' );
-	echo( '<h5>$node->Type( $termC );</h5>' );
-	$node->Type( $termC );
-	echo( 'Inited['.$node->inited()
-				   .'] Dirty['.$node->dirty()
-				   .'] Saved['.$node->committed()
-				   .'] Encoded['.$node->encoded().']<br />' );
-	echo( '<h5>$status = $node->Replace( $container );</h5>' );
-	$status = $node->Replace( $container );
+	echo( '<h4>Add string data type</h4>' );
+	echo( '<h5>$node->Type( kTYPE_STRING, TRUE );</h5>' );
+	$node->Type( kTYPE_STRING, TRUE );
+	echo( '<pre>' ); print_r( $node ); echo( '</pre>' );
+	echo( '<hr />' );
+	
+	//
+	// Add required cardinality.
+	//
+	echo( '<h4>Add required cardinality</h4>' );
+	echo( '<h5>$node->Type( kTYPE_CARD_REQUIRED, TRUE );</h5>' );
+	$node->Type( kTYPE_CARD_REQUIRED, TRUE );
+	echo( '<pre>' ); print_r( $node ); echo( '</pre>' );
+	echo( '<hr />' );
+	
+	//
+	// Add array cardinality.
+	//
+	echo( '<h4>Add array cardinality</h4>' );
+	echo( '<h5>$node->Type( kTYPE_CARD_ARRAY, TRUE );</h5>' );
+	$node->Type( kTYPE_CARD_ARRAY, TRUE );
+	echo( '<pre>' ); print_r( $node ); echo( '</pre>' );
+	echo( '<hr />' );
+	
+	//
+	// Add float data type.
+	//
+	echo( '<h4>Add float data type</h4>' );
+	echo( '<h5>$node->Type( kTYPE_FLOAT, TRUE );</h5>' );
+	$node->Type( kTYPE_FLOAT, TRUE );
 	echo( '<pre>' ); print_r( $node ); echo( '</pre>' );
 	echo( '<hr />' );
 	echo( '<hr>' );

@@ -211,7 +211,7 @@ require_once( kPATH_MYWRAPPER_LIBRARY_DEFINE."/Errors.inc.php" );
 	 * @static
 	 * @return mixed
 	 *
-	 * @throws {@link CException CException}
+	 * @throws Exception
 	 */
 	function ManageOffset( &$theReference, $theOffset, $theValue = NULL,
 													   $getOld = FALSE )
@@ -331,7 +331,7 @@ require_once( kPATH_MYWRAPPER_LIBRARY_DEFINE."/Errors.inc.php" );
 	 * @static
 	 * @return mixed
 	 *
-	 * @throws {@link CException CException}
+	 * @throws Exception
 	 */
 	function ManageTypedOffset( &$theReference,
 								 $theOffset, $theTypeOffset, $theDataOffset,
@@ -577,7 +577,7 @@ require_once( kPATH_MYWRAPPER_LIBRARY_DEFINE."/Errors.inc.php" );
 	 *
 	 * @return mixed
 	 *
-	 * @throws {@link CException CException}
+	 * @throws Exception
 	 *
 	 * @uses HashClosure()
 	 * @uses ManageOffset()
@@ -613,7 +613,7 @@ require_once( kPATH_MYWRAPPER_LIBRARY_DEFINE."/Errors.inc.php" );
 				//
 				if( is_array( $theOperation )
 				 && (count( $theOperation ) != $count) )
-					throw new CException
+					throw new Exception
 							( "Values and operations counts do not match",
 							  kERROR_PARAMETER );								// !@! ==>
 				
@@ -720,7 +720,7 @@ require_once( kPATH_MYWRAPPER_LIBRARY_DEFINE."/Errors.inc.php" );
 			// Invalid attribute type.
 			//
 			elseif( $list !== NULL )
-				throw new CException
+				throw new Exception
 						( "Unsupported list attribute type",
 						  kERROR_UNSUPPORTED );									// !@! ==>
 			
@@ -812,7 +812,7 @@ require_once( kPATH_MYWRAPPER_LIBRARY_DEFINE."/Errors.inc.php" );
 		
 		} // Supported reference.
 
-		throw new CException
+		throw new Exception
 				( "Unsupported object reference",
 				  kERROR_UNSUPPORTED );											// !@! ==>
 	

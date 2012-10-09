@@ -7,7 +7,7 @@
 
 	<title>File accessors.php | MyWrapper Reference Documentation</title>
 
-	<script type="text/javascript" src="resources/combined.js?368249000"></script>
+	<script type="text/javascript" src="resources/combined.js?3994123307"></script>
 	<script type="text/javascript" src="elementlist.js?4206909522"></script>
 	<link rel="stylesheet" type="text/css" media="all" href="resources/style.css?3505392360" />
 
@@ -309,7 +309,7 @@
 </span></span><span id="211" class="l"><a class="l" href="#211">211: </a><span class="php-comment">     * @static
 </span></span><span id="212" class="l"><a class="l" href="#212">212: </a><span class="php-comment">     * @return mixed
 </span></span><span id="213" class="l"><a class="l" href="#213">213: </a><span class="php-comment">     *
-</span></span><span id="214" class="l"><a class="l" href="#214">214: </a><span class="php-comment">     * @throws {@link CException CException}
+</span></span><span id="214" class="l"><a class="l" href="#214">214: </a><span class="php-comment">     * @throws Exception
 </span></span><span id="215" class="l"><a class="l" href="#215">215: </a><span class="php-comment">     */</span>
 </span><span id="216" class="l"><a class="l" href="#216">216: </a>    <span class="php-keyword1">function</span> <a id="_ManageOffset" href="#_ManageOffset">ManageOffset</a>( &amp;<span class="php-var">$theReference</span>, <span class="php-var">$theOffset</span>, <span class="php-var">$theValue</span> = <span class="php-keyword1">NULL</span>,
 </span><span id="217" class="l"><a class="l" href="#217">217: </a>                                                       <span class="php-var">$getOld</span> = <span class="php-keyword1">FALSE</span> )
@@ -429,7 +429,7 @@
 </span></span><span id="331" class="l"><a class="l" href="#331">331: </a><span class="php-comment">     * @static
 </span></span><span id="332" class="l"><a class="l" href="#332">332: </a><span class="php-comment">     * @return mixed
 </span></span><span id="333" class="l"><a class="l" href="#333">333: </a><span class="php-comment">     *
-</span></span><span id="334" class="l"><a class="l" href="#334">334: </a><span class="php-comment">     * @throws {@link CException CException}
+</span></span><span id="334" class="l"><a class="l" href="#334">334: </a><span class="php-comment">     * @throws Exception
 </span></span><span id="335" class="l"><a class="l" href="#335">335: </a><span class="php-comment">     */</span>
 </span><span id="336" class="l"><a class="l" href="#336">336: </a>    <span class="php-keyword1">function</span> <a id="_ManageTypedOffset" href="#_ManageTypedOffset">ManageTypedOffset</a>( &amp;<span class="php-var">$theReference</span>,
 </span><span id="337" class="l"><a class="l" href="#337">337: </a>                                 <span class="php-var">$theOffset</span>, <span class="php-var">$theTypeOffset</span>, <span class="php-var">$theDataOffset</span>,
@@ -675,7 +675,7 @@
 </span></span><span id="577" class="l"><a class="l" href="#577">577: </a><span class="php-comment">     *
 </span></span><span id="578" class="l"><a class="l" href="#578">578: </a><span class="php-comment">     * @return mixed
 </span></span><span id="579" class="l"><a class="l" href="#579">579: </a><span class="php-comment">     *
-</span></span><span id="580" class="l"><a class="l" href="#580">580: </a><span class="php-comment">     * @throws {@link CException CException}
+</span></span><span id="580" class="l"><a class="l" href="#580">580: </a><span class="php-comment">     * @throws Exception
 </span></span><span id="581" class="l"><a class="l" href="#581">581: </a><span class="php-comment">     *
 </span></span><span id="582" class="l"><a class="l" href="#582">582: </a><span class="php-comment">     * @uses HashClosure()
 </span></span><span id="583" class="l"><a class="l" href="#583">583: </a><span class="php-comment">     * @uses ManageOffset()
@@ -711,7 +711,7 @@
 </span><span id="613" class="l"><a class="l" href="#613">613: </a>                <span class="php-comment">//</span>
 </span><span id="614" class="l"><a class="l" href="#614">614: </a>                <span class="php-keyword1">if</span>( <span class="php-keyword2">is_array</span>( <span class="php-var">$theOperation</span> )
 </span><span id="615" class="l"><a class="l" href="#615">615: </a>                 &amp;&amp; (<span class="php-keyword2">count</span>( <span class="php-var">$theOperation</span> ) != <span class="php-var">$count</span>) )
-</span><span id="616" class="l"><a class="l" href="#616">616: </a>                    <span class="php-keyword1">throw</span> <span class="php-keyword1">new</span> CException
+</span><span id="616" class="l"><a class="l" href="#616">616: </a>                    <span class="php-keyword1">throw</span> <span class="php-keyword1">new</span> Exception
 </span><span id="617" class="l"><a class="l" href="#617">617: </a>                            ( <span class="php-quote">&quot;Values and operations counts do not match&quot;</span>,
 </span><span id="618" class="l"><a class="l" href="#618">618: </a>                              kERROR_PARAMETER );                               <span class="php-comment">// !@! ==&gt;</span>
 </span><span id="619" class="l"><a class="l" href="#619">619: </a>                
@@ -818,7 +818,7 @@
 </span><span id="720" class="l"><a class="l" href="#720">720: </a>            <span class="php-comment">// Invalid attribute type.</span>
 </span><span id="721" class="l"><a class="l" href="#721">721: </a>            <span class="php-comment">//</span>
 </span><span id="722" class="l"><a class="l" href="#722">722: </a>            <span class="php-keyword1">elseif</span>( <span class="php-var">$list</span> !== <span class="php-keyword1">NULL</span> )
-</span><span id="723" class="l"><a class="l" href="#723">723: </a>                <span class="php-keyword1">throw</span> <span class="php-keyword1">new</span> CException
+</span><span id="723" class="l"><a class="l" href="#723">723: </a>                <span class="php-keyword1">throw</span> <span class="php-keyword1">new</span> Exception
 </span><span id="724" class="l"><a class="l" href="#724">724: </a>                        ( <span class="php-quote">&quot;Unsupported list attribute type&quot;</span>,
 </span><span id="725" class="l"><a class="l" href="#725">725: </a>                          kERROR_UNSUPPORTED );                                 <span class="php-comment">// !@! ==&gt;</span>
 </span><span id="726" class="l"><a class="l" href="#726">726: </a>            
@@ -910,7 +910,7 @@
 </span><span id="812" class="l"><a class="l" href="#812">812: </a>        
 </span><span id="813" class="l"><a class="l" href="#813">813: </a>        } <span class="php-comment">// Supported reference.</span>
 </span><span id="814" class="l"><a class="l" href="#814">814: </a>
-</span><span id="815" class="l"><a class="l" href="#815">815: </a>        <span class="php-keyword1">throw</span> <span class="php-keyword1">new</span> CException
+</span><span id="815" class="l"><a class="l" href="#815">815: </a>        <span class="php-keyword1">throw</span> <span class="php-keyword1">new</span> Exception
 </span><span id="816" class="l"><a class="l" href="#816">816: </a>                ( <span class="php-quote">&quot;Unsupported object reference&quot;</span>,
 </span><span id="817" class="l"><a class="l" href="#817">817: </a>                  kERROR_UNSUPPORTED );                                         <span class="php-comment">// !@! ==&gt;</span>
 </span><span id="818" class="l"><a class="l" href="#818">818: </a>    

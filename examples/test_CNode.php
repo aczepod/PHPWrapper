@@ -317,11 +317,41 @@ try
 	echo( '<hr />' );
 	
 	//
-	// Add type.
+	// Add data type.
 	//
-	echo( '<h4>Add type</h4>' );
-	echo( '<h5>$node->Type( $termC );</h5>' );
-	$node->Type( $termC );
+	echo( '<h4>Add data type</h4>' );
+	echo( '<h5>$node->Type( kTYPE_STRING, TRUE );</h5>' );
+	$node->Type( kTYPE_STRING, TRUE );
+	echo( 'Inited['.$node->inited()
+				   .'] Dirty['.$node->dirty()
+				   .'] Saved['.$node->committed()
+				   .'] Encoded['.$node->encoded().']<br />' );
+	echo( '<h5>$status = $node->Replace( $node_container );</h5>' );
+	$status = $node->Replace( $node_container );
+	echo( '<pre>' ); print_r( $node ); echo( '</pre>' );
+	echo( '<hr />' );
+	
+	//
+	// Add required flag.
+	//
+	echo( '<h4>Add required flag</h4>' );
+	echo( '<h5>$node->Type( kTYPE_CARD_REQUIRED, TRUE );</h5>' );
+	$node->Type( kTYPE_CARD_REQUIRED, TRUE );
+	echo( 'Inited['.$node->inited()
+				   .'] Dirty['.$node->dirty()
+				   .'] Saved['.$node->committed()
+				   .'] Encoded['.$node->encoded().']<br />' );
+	echo( '<h5>$status = $node->Replace( $node_container );</h5>' );
+	$status = $node->Replace( $node_container );
+	echo( '<pre>' ); print_r( $node ); echo( '</pre>' );
+	echo( '<hr />' );
+	
+	//
+	// Add list flag.
+	//
+	echo( '<h4>Add list flag</h4>' );
+	echo( '<h5>$node->Type( kTYPE_CARD_ARRAY, TRUE );</h5>' );
+	$node->Type( kTYPE_CARD_ARRAY, TRUE );
 	echo( 'Inited['.$node->inited()
 				   .'] Dirty['.$node->dirty()
 				   .'] Saved['.$node->committed()

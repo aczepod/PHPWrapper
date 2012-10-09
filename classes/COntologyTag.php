@@ -57,6 +57,12 @@ require_once( kPATH_MYWRAPPER_LIBRARY_CLASS."/CTag.php" );
  * Elements of the path can be provided as objects and those that are not yet committed will
  * be saved when the current tag is saved.
  *
+ * Another action tags perform over nodes is the setting of the node {@link CNode::Kind()}:
+ * the first element of the path is a trait node, {@link kNODE_KIND_TRAIT}, the last
+ * element of the path is a scale node, {@link kNODE_KIND_SCALE}, and the eventual middle
+ * elements are method nodes, {@link kNODE_KIND_METH}. Once the tag is committed, the node's
+ * kind will be updated accordingly.
+ *
  * The class adds an offset, {@link kOFFSET_UID}, which stores the hashed version of the
  * global identifier and can be used to identify duplicate objects.
  *
@@ -200,6 +206,118 @@ class COntologyTag extends CTag
 		return parent::PushItem( $theValue );										// ==>
 
 	} // PushItem.
+
+	 
+	/*===================================================================================
+	 *	GetTrait																		*
+	 *==================================================================================*/
+
+	/**
+	 * <h4>Return trait node</h4>
+	 *
+	 * This method will return the current tag's trait node, if present, or <tt>NULL</tt>.
+	 *
+	 * The trait node, according to the tag, is the first node of the path.
+	 *
+	 * @access public
+	 * @return mixed				First element of the path, or <tt>NULL</tt>.
+	 *
+	 * @see kOFFSET_PATH
+	 */
+	public function GetTrait()
+	{
+		//
+		// Check path.
+		//
+		if( $this->offsetExists( kOFFSET_PATH ) )
+			return $this[ kOFFSET_PATH ][ 0 ];										// ==>
+		
+		return NULL;																// ==>
+
+	} // GetTrait.
+
+	 
+	/*===================================================================================
+	 *	GetScale																		*
+	 *==================================================================================*/
+
+	/**
+	 * <h4>Return scale node</h4>
+	 *
+	 * This method will return the current tag's scale node, if present, or <tt>NULL</tt>.
+	 *
+	 * The scale node, according to the tag, is the last node of the path.
+	 *
+	 * @access public
+	 * @return mixed				Last element of the path, or <tt>NULL</tt>.
+	 *
+	 * @see kOFFSET_PATH
+	 */
+	public function GetScale()
+	{
+		//
+		// Check path.
+		//
+		if( $this->offsetExists( kOFFSET_PATH ) )
+			return $this[ kOFFSET_PATH ][ count( $this[ kOFFSET_PATH ] ) - 1 ];		// ==>
+		
+		return NULL;																// ==>
+
+	} // GetScale.
+
+	 
+	/*===================================================================================
+	 *	GetMethods																		*
+	 *==================================================================================*/
+
+	/**
+	 * <h4>Return method nodes</h4>
+	 *
+	 * This method will return the current tag's list of method nodes, if present, or
+	 * <tt>NULL</tt>.
+	 *
+	 * The method nodes, according to the tag, are all the nodes between the trait node,
+	 * {@link GetTrait()}, an the scale node, {@link GetScale()}.
+	 *
+	 * The method will return an array if at least one method is present.
+	 *
+	 * @access public
+	 * @return mixed				List of method nodes, or <tt>NULL</tt>.
+	 *
+	 * @see kOFFSET_PATH
+	 */
+	public function GetMethods()
+	{
+		//
+		// Check path.
+		//
+		if( $this->offsetExists( kOFFSET_PATH ) )
+		{
+			//
+			// Check for methods.
+			//
+			if( ($count = count( $path = $this->offsetGet( kOFFSET_PATH ) )) > 3 )
+			{
+				//
+				// Init local storage.
+				//
+				$list = Array();
+				
+				//
+				// Load methods.
+				//
+				for( $i = 2; $i < ($count - 1); $i += 2 )
+					$list[] = $path[ $i ];
+				
+				return $list;														// ==>
+			
+			} // Has methods.
+		
+		} // Has at least one element.
+		
+		return NULL;																// ==>
+
+	} // GetMethods.
 
 		
 
@@ -541,10 +659,15 @@ class COntologyTag extends CTag
 	 * In this class we commit the eventual nodes and terms provided as an uncommitted
 	 * objects and replace them with their native identifier.
 	 *
+	 * The method will also assert that the last node element of the path has a
+	 * {@link CNode::Type()}, if that is not the case, the method will raise an exception.
+	 *
 	 * @param reference			   &$theConnection		Server, database or container.
 	 * @param reference			   &$theModifiers		Commit options.
 	 *
 	 * @access protected
+	 *
+	 * @throws Exception
 	 *
 	 * @uses _IsCommitted()
 	 *
@@ -589,9 +712,25 @@ class COntologyTag extends CTag
 					// Commit node.
 					//
 					else
+					{
+						//
+						// Check if scale node has type.
+						//
+						if( ($i == (count( $path ) - 1))
+						 && ($item->offsetGet( kOFFSET_TYPE ) === NULL) )
+							throw new Exception
+								( "Cannot commit tag: "
+								 ."the scale node is missing its type.",
+								  kERROR_STATE );								// !@! ==>
+							
+						//
+						// Insert node.
+						//
 						$item->Insert(
 							COntologyNode::ResolveClassContainer(
 								$theConnection, TRUE ) );
+					
+					} // New node object.
 					
 					//
 					// Replace object.
@@ -736,6 +875,10 @@ class COntologyTag extends CTag
 	 * When inserting a new tag, we add the tag reference, when deleting the tag we remove
 	 * it.
 	 *
+	 * The method will also set the node {@link CNode::Kind()}s to {@link kNODE_KIND_TRAIT}
+	 * for the first element of the path, to {@link kNODE_KIND_SCALE} for the last element
+	 * and to {@link kNODE_KIND_METH} for the eventual in-between node elements.
+	 *
 	 * We only handle vertex elements, we do not refer predicate terms.
 	 *
 	 * @param reference			   &$theConnection		Server, database or container.
@@ -748,6 +891,7 @@ class COntologyTag extends CTag
 	 * @see kOFFSET_REFS_TAG
 	 * @see kFLAG_PERSIST_INSERT kFLAG_PERSIST_REPLACE kFLAG_PERSIST_DELETE
 	 * @see kFLAG_PERSIST_MODIFY kFLAG_MODIFY_ADDSET kFLAG_MODIFY_PULL
+	 * @see kNODE_KIND_TRAIT kNODE_KIND_METH kNODE_KIND_SCALE
 	 */
 	protected function _PostcommitRelated( &$theConnection, &$theModifiers )
 	{
@@ -773,36 +917,48 @@ class COntologyTag extends CTag
 			// Iterate path elements.
 			//
 			$path = $this->offsetGet( kOFFSET_PATH );
-			for( $i = 0; $i < count( $path ); $i++ )
+			for( $i = 0; $i < count( $path ); $i += 2 )
 			{
 				//
-				// Handle node.
+				// Set operation.
 				//
-				if( ! ($i % 2) )
-				{
-					//
-					// Set operation.
-					//
-					$operation = ! ($theModifiers & kFLAG_PERSIST_DELETE);
-					
-					//
-					// Load node.
-					//
-					$node = COntologyNode::NewObject(
-							COntologyNode::ResolveClassContainer(
-								$theConnection, TRUE ), $path[ $i ] );
-					
-					//
-					// Reference in node.
-					//
-					$this->_ReferenceInNode( $theConnection, $path[ $i ], $operation );
-					
-					//
-					// Reference in term.
-					//
-					$this->_ReferenceInTerm( $theConnection, $node->Term(), $operation );
+				$operation = ! ($theModifiers & kFLAG_PERSIST_DELETE);
 				
-				} // Vertex.
+				//
+				// Load node.
+				//
+				$node = COntologyNode::NewObject(
+						COntologyNode::ResolveClassContainer(
+							$theConnection, TRUE ), $path[ $i ] );
+				
+				//
+				// Set node trait kind.
+				//
+				if( $i == 0 )
+					$this->_SetTraitNode( $theConnection, $path[ $i ] );
+				
+				//
+				// Set node nethod kind.
+				//
+				if( $i								// Not first
+				 && ($i < (count( $path ) - 1)) )	// and not last.
+					$this->_SetMethodNode( $theConnection, $path[ $i ] );
+				
+				//
+				// Set node scale kind.
+				//
+				if( $i == (count( $path ) - 1) )
+					$this->_SetScaleNode( $theConnection, $path[ $i ] );
+				
+				//
+				// Reference in node.
+				//
+				$this->_ReferenceInNode( $theConnection, $path[ $i ], $operation );
+				
+				//
+				// Reference in term.
+				//
+				$this->_ReferenceInTerm( $theConnection, $node->Term(), $operation );
 			
 			} // Iterating path elements.
 		
@@ -843,7 +999,7 @@ class COntologyTag extends CTag
 	 * @param mixed					$theNode			Node object or identifier.
 	 * @param boolean				$doAdd				<tt>TRUE</tt> add reference.
 	 *
-	 * @static
+	 * @access protected
 	 * @return boolean				<tt>TRUE</tt> operation affected at least one object.
 	 *
 	 * @see kOFFSET_NID kOFFSET_REFS_TAG
@@ -902,7 +1058,7 @@ class COntologyTag extends CTag
 	 * @param mixed					$theTerm			Term object or identifier.
 	 * @param boolean				$doAdd				<tt>TRUE</tt> add reference.
 	 *
-	 * @static
+	 * @access protected
 	 * @return boolean				<tt>TRUE</tt> operation affected at least one object.
 	 *
 	 * @see kOFFSET_NID kOFFSET_REFS_TAG
@@ -936,6 +1092,141 @@ class COntologyTag extends CTag
 					);															// ==>
 	
 	} // _ReferenceInTerm.
+
+		
+
+/*=======================================================================================
+ *																						*
+ *							PROTECTED NODE QUALIFICATION INTERFACE						*
+ *																						*
+ *======================================================================================*/
+
+
+	 
+	/*===================================================================================
+	 *	_SetTraitNode																	*
+	 *==================================================================================*/
+
+	/**
+	 * <h4>Set node's kind to trait</h4>
+	 *
+	 * This method will set the provided node's kind to {@link kNODE_KIND_TRAIT}.
+	 *
+	 * The method will return <tt>TRUE</tt> if the operation affected at least one object,
+	 * <tt>FALSE</tt> if not and raise an exception if the operation failed.
+	 *
+	 * @param CConnection			$theConnection		Server, database or container.
+	 * @param mixed					$theNode			Node object or identifier.
+	 *
+	 * @access protected
+	 * @return boolean				<tt>TRUE</tt> operation affected at least one object.
+	 *
+	 * @see kOFFSET_KIND kNODE_KIND_TRAIT
+	 * @see kFLAG_PERSIST_MODIFY kFLAG_MODIFY_ADDSET
+	 */
+	protected function _SetTraitNode( CConnection $theConnection, $theNode )
+	{
+		//
+		// Set modification criteria.
+		//
+		$criteria = array( kOFFSET_KIND => kNODE_KIND_TRAIT );
+		
+		//
+		// Add to kind set.
+		//
+		return COntologyNode::ResolveClassContainer( $theConnection, TRUE )
+				->ManageObject
+					(
+						$criteria,
+						$theNode,
+						kFLAG_PERSIST_MODIFY + kFLAG_MODIFY_ADDSET
+					);																// ==>
+	
+	} // _SetTraitNode.
+
+	 
+	/*===================================================================================
+	 *	_SetMethodNode																	*
+	 *==================================================================================*/
+
+	/**
+	 * <h4>Set node's kind to method</h4>
+	 *
+	 * This method will set the provided node's kind to {@link kNODE_KIND_METH}.
+	 *
+	 * The method will return <tt>TRUE</tt> if the operation affected at least one object,
+	 * <tt>FALSE</tt> if not and raise an exception if the operation failed.
+	 *
+	 * @param CConnection			$theConnection		Server, database or container.
+	 * @param mixed					$theNode			Node object or identifier.
+	 *
+	 * @access protected
+	 * @return boolean				<tt>TRUE</tt> operation affected at least one object.
+	 *
+	 * @see kOFFSET_KIND kNODE_KIND_METH
+	 * @see kFLAG_PERSIST_MODIFY kFLAG_MODIFY_ADDSET
+	 */
+	protected function _SetMethodNode( CConnection $theConnection, $theNode )
+	{
+		//
+		// Set modification criteria.
+		//
+		$criteria = array( kOFFSET_KIND => kNODE_KIND_METH );
+		
+		//
+		// Add to kind set.
+		//
+		return COntologyNode::ResolveClassContainer( $theConnection, TRUE )
+				->ManageObject
+					(
+						$criteria,
+						$theNode,
+						kFLAG_PERSIST_MODIFY + kFLAG_MODIFY_ADDSET
+					);																// ==>
+	
+	} // _SetMethodNode.
+
+	 
+	/*===================================================================================
+	 *	_SetScaleNode																	*
+	 *==================================================================================*/
+
+	/**
+	 * <h4>Set node's kind to scale</h4>
+	 *
+	 * This method will set the provided node's kind to {@link kNODE_KIND_SCALE}.
+	 *
+	 * The method will return <tt>TRUE</tt> if the operation affected at least one object,
+	 * <tt>FALSE</tt> if not and raise an exception if the operation failed.
+	 *
+	 * @param CConnection			$theConnection		Server, database or container.
+	 * @param mixed					$theNode			Node object or identifier.
+	 *
+	 * @access protected
+	 * @return boolean				<tt>TRUE</tt> operation affected at least one object.
+	 *
+	 * @see kOFFSET_KIND kNODE_KIND_SCALE
+	 * @see kFLAG_PERSIST_MODIFY kFLAG_MODIFY_ADDSET
+	 */
+	protected function _SetScaleNode( CConnection $theConnection, $theNode )
+	{
+		//
+		// Set modification criteria.
+		//
+		$criteria = array( kOFFSET_KIND => kNODE_KIND_SCALE );
+		
+		//
+		// Add to kind set.
+		//
+		return COntologyNode::ResolveClassContainer( $theConnection, TRUE )
+				->ManageObject
+					(
+						$criteria,
+						$theNode,
+						kFLAG_PERSIST_MODIFY + kFLAG_MODIFY_ADDSET
+					);																// ==>
+	
+	} // _SetScaleNode.
 
 	 
 

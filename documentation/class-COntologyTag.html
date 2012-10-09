@@ -6,7 +6,7 @@
 
 	<title>Class COntologyTag | MyWrapper Reference Documentation</title>
 
-	<script type="text/javascript" src="resources/combined.js?368249000"></script>
+	<script type="text/javascript" src="resources/combined.js?3994123307"></script>
 	<script type="text/javascript" src="elementlist.js?4206909522"></script>
 	<link rel="stylesheet" type="text/css" media="all" href="resources/style.css?3505392360" />
 
@@ -112,6 +112,9 @@ be changed.</p>
 <p>Elements of the path can be provided as objects and those that are not yet
 committed will be saved when the current tag is saved.</p>
 
+<p>Another action tags perform over nodes is the setting of the node <code><a href="class-CNode.html#_Kind">CNode::Kind()</a></code>: the first element of the path is a trait node, kNODE_KIND_TRAIT, the last element of the path is a scale node, kNODE_KIND_SCALE, and the eventual middle elements are method nodes, kNODE_KIND_METH. Once the tag is committed, the node's kind will be updated
+accordingly.</p>
+
 <p>The class adds an offset, kOFFSET_UID, which stores the hashed
 version of the global identifier and can be used to identify duplicate
 objects.</p>
@@ -203,7 +206,7 @@ as kSEQUENCE_KEY_TAG and feature a default container name kCONTAINER_TAG_NAME.</
 				<b>Author:</b>
 				Milko A. Škofič &lt;<a
 href="mailto:m.skofic&#64;cgiar.org">m.skofic&#64;<!---->cgiar.org</a>&gt;<br />
-		<b>Located at</b> <a href="source-class-COntologyTag.html#43-942" title="Go to source code">COntologyTag.php</a><br />
+		<b>Located at</b> <a href="source-class-COntologyTag.html#43-1233" title="Go to source code">COntologyTag.php</a><br />
 	</div>
 
 
@@ -221,7 +224,7 @@ href="mailto:m.skofic&#64;cgiar.org">m.skofic&#64;<!---->cgiar.org</a>&gt;<br />
 
 		<td class="name"><div>
 		<a class="anchor" href="#_PushItem">#</a>
-		<code><a href="source-class-COntologyTag.html#91-202" title="Go to source code">PushItem</a>( <span>mixed <var>$theValue</var></span> )</code>
+		<code><a href="source-class-COntologyTag.html#97-208" title="Go to source code">PushItem</a>( <span>mixed <var>$theValue</var></span> )</code>
 
 		<div class="description short">
 			
@@ -270,6 +273,147 @@ href="mailto:m.skofic&#64;cgiar.org">m.skofic&#64;<!---->cgiar.org</a>&gt;<br />
 		</div>
 		</div></td>
 	</tr>
+	<tr data-order="GetTrait" id="_GetTrait">
+
+		<td class="attributes"><code>
+			 public 
+			mixed
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_GetTrait">#</a>
+		<code><a href="source-class-COntologyTag.html#215-237" title="Go to source code">GetTrait</a>( )</code>
+
+		<div class="description short">
+			
+<h4>Return trait node</h4>
+
+		</div>
+
+		<div class="description detailed hidden">
+			
+<h4>Return trait node</h4>
+
+<p>This method will return the current tag's trait node, if present, or
+<tt>NULL</tt>.</p>
+
+<p>The trait node, according to the tag, is the first node of the path.</p>
+
+
+
+
+				<h4>Returns</h4>
+				<div class="list">
+					<code>mixed</code><br>First element of the path, or <tt>NULL</tt>.<br />
+				</div>
+
+
+				<h4>See</h4>
+				<div class="list">
+						kOFFSET_PATH<br />
+				</div>
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="GetScale" id="_GetScale">
+
+		<td class="attributes"><code>
+			 public 
+			mixed
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_GetScale">#</a>
+		<code><a href="source-class-COntologyTag.html#244-266" title="Go to source code">GetScale</a>( )</code>
+
+		<div class="description short">
+			
+<h4>Return scale node</h4>
+
+		</div>
+
+		<div class="description detailed hidden">
+			
+<h4>Return scale node</h4>
+
+<p>This method will return the current tag's scale node, if present, or
+<tt>NULL</tt>.</p>
+
+<p>The scale node, according to the tag, is the last node of the path.</p>
+
+
+
+
+				<h4>Returns</h4>
+				<div class="list">
+					<code>mixed</code><br>Last element of the path, or <tt>NULL</tt>.<br />
+				</div>
+
+
+				<h4>See</h4>
+				<div class="list">
+						kOFFSET_PATH<br />
+				</div>
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="GetMethods" id="_GetMethods">
+
+		<td class="attributes"><code>
+			 public 
+			mixed
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_GetMethods">#</a>
+		<code><a href="source-class-COntologyTag.html#273-320" title="Go to source code">GetMethods</a>( )</code>
+
+		<div class="description short">
+			
+<h4>Return method nodes</h4>
+
+		</div>
+
+		<div class="description detailed hidden">
+			
+<h4>Return method nodes</h4>
+
+<p>This method will return the current tag's list of method nodes, if present,
+or <tt>NULL</tt>.</p>
+
+<p>The method nodes, according to the tag, are all the nodes between the trait
+node, <code><a href="class-COntologyTag.html#_GetTrait">COntologyTag::GetTrait()</a></code>, an the scale node, <code><a href="class-COntologyTag.html#_GetScale">COntologyTag::GetScale()</a></code>.</p>
+
+<p>The method will return an array if at least one method is present.</p>
+
+
+
+
+				<h4>Returns</h4>
+				<div class="list">
+					<code>mixed</code><br>List of method nodes, or <tt>NULL</tt>.<br />
+				</div>
+
+
+				<h4>See</h4>
+				<div class="list">
+						kOFFSET_PATH<br />
+				</div>
+
+
+		</div>
+		</div></td>
+	</tr>
 	<tr data-order="Update" id="_Update">
 
 		<td class="attributes"><code>
@@ -281,7 +425,7 @@ href="mailto:m.skofic&#64;cgiar.org">m.skofic&#64;<!---->cgiar.org</a>&gt;<br />
 
 		<td class="name"><div>
 		<a class="anchor" href="#_Update">#</a>
-		<code><a href="source-class-COntologyTag.html#218-248" title="Go to source code">Update</a>( <span><code><a href="class-CConnection.html">CConnection</a></code> <var>$theConnection</var></span> )</code>
+		<code><a href="source-class-COntologyTag.html#336-366" title="Go to source code">Update</a>( <span><code><a href="class-CConnection.html">CConnection</a></code> <var>$theConnection</var></span> )</code>
 
 		<div class="description short">
 			
@@ -329,7 +473,7 @@ modification interface provided by container objects.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#_Replace">#</a>
-		<code><a href="source-class-COntologyTag.html#255-295" title="Go to source code">Replace</a>( <span><code><a href="class-CConnection.html">CConnection</a></code> <var>$theConnection</var></span> )</code>
+		<code><a href="source-class-COntologyTag.html#373-413" title="Go to source code">Replace</a>( <span><code><a href="class-CConnection.html">CConnection</a></code> <var>$theConnection</var></span> )</code>
 
 		<div class="description short">
 			
@@ -380,7 +524,7 @@ non committed object.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#_DefaultContainer">#</a>
-		<code><a href="source-class-COntologyTag.html#311-328" title="Go to source code">DefaultContainer</a>( <span><code><a href="class-CDatabase.html">CDatabase</a></code> <var>$theDatabase</var></span> )</code>
+		<code><a href="source-class-COntologyTag.html#429-446" title="Go to source code">DefaultContainer</a>( <span><code><a href="class-CDatabase.html">CDatabase</a></code> <var>$theDatabase</var></span> )</code>
 
 		<div class="description short">
 			
@@ -431,7 +575,7 @@ kCONTAINER_TAG_NAME name.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#__index">#</a>
-		<code><a href="source-class-COntologyTag.html#344-425" title="Go to source code">_index</a>( <span><code><a href="class-CConnection.html">CConnection</a></code> <var>$theConnection</var></span>, <span>bitfield <var>$theModifiers</var></span> )</code>
+		<code><a href="source-class-COntologyTag.html#462-543" title="Go to source code">_index</a>( <span><code><a href="class-CConnection.html">CConnection</a></code> <var>$theConnection</var></span>, <span>bitfield <var>$theModifiers</var></span> )</code>
 
 		<div class="description short">
 			
@@ -499,7 +643,7 @@ each element without checking if it is in the form of an object.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#__Preset">#</a>
-		<code><a href="source-class-COntologyTag.html#441-481" title="Go to source code">_Preset</a>( <span>reference <var>&amp; $theOffset</var></span>, <span>reference <var>&amp; $theValue</var></span> )</code>
+		<code><a href="source-class-COntologyTag.html#559-599" title="Go to source code">_Preset</a>( <span>reference <var>&amp; $theOffset</var></span>, <span>reference <var>&amp; $theValue</var></span> )</code>
 
 		<div class="description short">
 			
@@ -563,7 +707,7 @@ modification.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#__Preunset">#</a>
-		<code><a href="source-class-COntologyTag.html#488-522" title="Go to source code">_Preunset</a>( <span>reference <var>&amp; $theOffset</var></span> )</code>
+		<code><a href="source-class-COntologyTag.html#606-640" title="Go to source code">_Preunset</a>( <span>reference <var>&amp; $theOffset</var></span> )</code>
 
 		<div class="description short">
 			
@@ -619,7 +763,7 @@ offset in all cases.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#__PrecommitRelated">#</a>
-		<code><a href="source-class-COntologyTag.html#538-612" title="Go to source code">_PrecommitRelated</a>( <span>reference <var>&amp; $theConnection</var></span>, <span>reference <var>&amp; $theModifiers</var></span> )</code>
+		<code><a href="source-class-COntologyTag.html#656-751" title="Go to source code">_PrecommitRelated</a>( <span>reference <var>&amp; $theConnection</var></span>, <span>reference <var>&amp; $theModifiers</var></span> )</code>
 
 		<div class="description short">
 			
@@ -634,6 +778,10 @@ offset in all cases.</p>
 <p>In this class we commit the eventual nodes and terms provided as an
 uncommitted objects and replace them with their native identifier.</p>
 
+<p>The method will also assert that the last node element of the path has a
+<code><a href="class-CNode.html#_Type">CNode::Type()</a></code>, if that is not the case, the method will raise an
+exception.</p>
+
 
 
 				<h4>Parameters</h4>
@@ -645,6 +793,10 @@ uncommitted objects and replace them with their native identifier.</p>
 				</dl></div>
 
 
+				<h4>Throws</h4>
+				<div class="list">
+					<code><code><a href="class-Exception.html">Exception</a></code></code><br />
+				</div>
 
 				<h4>See</h4>
 				<div class="list">
@@ -673,7 +825,7 @@ uncommitted objects and replace them with their native identifier.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#__PrecommitIdentify">#</a>
-		<code><a href="source-class-COntologyTag.html#619-713" title="Go to source code">_PrecommitIdentify</a>( <span>reference <var>&amp; $theConnection</var></span>, <span>reference <var>&amp; $theModifiers</var></span> )</code>
+		<code><a href="source-class-COntologyTag.html#758-852" title="Go to source code">_PrecommitIdentify</a>( <span>reference <var>&amp; $theConnection</var></span>, <span>reference <var>&amp; $theModifiers</var></span> )</code>
 
 		<div class="description short">
 			
@@ -738,7 +890,7 @@ native identifiers, since they will have been set here.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#__PostcommitRelated">#</a>
-		<code><a href="source-class-COntologyTag.html#729-811" title="Go to source code">_PostcommitRelated</a>( <span>reference <var>&amp; $theConnection</var></span>, <span>reference <var>&amp; $theModifiers</var></span> )</code>
+		<code><a href="source-class-COntologyTag.html#868-967" title="Go to source code">_PostcommitRelated</a>( <span>reference <var>&amp; $theConnection</var></span>, <span>reference <var>&amp; $theModifiers</var></span> )</code>
 
 		<div class="description short">
 			
@@ -756,6 +908,10 @@ kOFFSET_REFS_TAG offset.</p>
 
 <p>When inserting a new tag, we add the tag reference, when deleting the tag we
 remove it.</p>
+
+<p>The method will also set the node <code><a href="class-CNode.html#_Kind">CNode::Kind()</a></code>s to kNODE_KIND_TRAIT for the first element of the path, to kNODE_KIND_SCALE
+for the last element and to kNODE_KIND_METH for the eventual in-between
+node elements.</p>
 
 <p>We only handle vertex elements, we do not refer predicate terms.</p>
 
@@ -776,6 +932,7 @@ remove it.</p>
 						kOFFSET_REFS_TAG<br />
 						kFLAG_PERSIST_INSERT kFLAG_PERSIST_REPLACE kFLAG_PERSIST_DELETE<br />
 						kFLAG_PERSIST_MODIFY kFLAG_MODIFY_ADDSET kFLAG_MODIFY_PULL<br />
+						kNODE_KIND_TRAIT kNODE_KIND_METH kNODE_KIND_SCALE<br />
 				</div>
 				<h4>Uses</h4>
 				<div class="list">
@@ -799,7 +956,7 @@ remove it.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#__ReferenceInNode">#</a>
-		<code><a href="source-class-COntologyTag.html#827-879" title="Go to source code">_ReferenceInNode</a>( <span><code><a href="class-CConnection.html">CConnection</a></code> <var>$theConnection</var></span>, <span>mixed <var>$theNode</var></span>, <span>boolean <var>$doAdd</var></span> )</code>
+		<code><a href="source-class-COntologyTag.html#983-1035" title="Go to source code">_ReferenceInNode</a>( <span><code><a href="class-CConnection.html">CConnection</a></code> <var>$theConnection</var></span>, <span>mixed <var>$theNode</var></span>, <span>boolean <var>$doAdd</var></span> )</code>
 
 		<div class="description short">
 			
@@ -862,7 +1019,7 @@ failed.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#__ReferenceInTerm">#</a>
-		<code><a href="source-class-COntologyTag.html#886-938" title="Go to source code">_ReferenceInTerm</a>( <span><code><a href="class-CConnection.html">CConnection</a></code> <var>$theConnection</var></span>, <span>mixed <var>$theTerm</var></span>, <span>boolean <var>$doAdd</var></span> )</code>
+		<code><a href="source-class-COntologyTag.html#1042-1094" title="Go to source code">_ReferenceInTerm</a>( <span><code><a href="class-CConnection.html">CConnection</a></code> <var>$theConnection</var></span>, <span>mixed <var>$theTerm</var></span>, <span>boolean <var>$doAdd</var></span> )</code>
 
 		<div class="description short">
 			
@@ -908,6 +1065,171 @@ failed.</p>
 				<div class="list">
 						kOFFSET_NID kOFFSET_REFS_TAG<br />
 						kFLAG_PERSIST_MODIFY kFLAG_MODIFY_ADDSET kFLAG_MODIFY_PULL<br />
+				</div>
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="_SetTraitNode" id="__SetTraitNode">
+
+		<td class="attributes"><code>
+			 protected 
+			boolean
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#__SetTraitNode">#</a>
+		<code><a href="source-class-COntologyTag.html#1110-1145" title="Go to source code">_SetTraitNode</a>( <span><code><a href="class-CConnection.html">CConnection</a></code> <var>$theConnection</var></span>, <span>mixed <var>$theNode</var></span> )</code>
+
+		<div class="description short">
+			
+<h4>Set node's kind to trait</h4>
+
+		</div>
+
+		<div class="description detailed hidden">
+			
+<h4>Set node's kind to trait</h4>
+
+<p>This method will set the provided node's kind to kNODE_KIND_TRAIT.</p>
+
+<p>The method will return <tt>TRUE</tt> if the operation affected at least one
+object, <tt>FALSE</tt> if not and raise an exception if the operation
+failed.</p>
+
+
+
+				<h4>Parameters</h4>
+				<div class="list"><dl>
+					<dt><var>$theConnection</var></dt>
+					<dd><code><code><a href="class-CConnection.html">CConnection</a></code></code><br>$theConnection Server, database or container.</dd>
+					<dt><var>$theNode</var></dt>
+					<dd><code>mixed</code><br>$theNode Node object or identifier.</dd>
+				</dl></div>
+
+				<h4>Returns</h4>
+				<div class="list">
+					<code>boolean</code><br><tt>TRUE</tt> operation affected at least one object.<br />
+				</div>
+
+
+				<h4>See</h4>
+				<div class="list">
+						kOFFSET_KIND kNODE_KIND_TRAIT<br />
+						kFLAG_PERSIST_MODIFY kFLAG_MODIFY_ADDSET<br />
+				</div>
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="_SetMethodNode" id="__SetMethodNode">
+
+		<td class="attributes"><code>
+			 protected 
+			boolean
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#__SetMethodNode">#</a>
+		<code><a href="source-class-COntologyTag.html#1152-1187" title="Go to source code">_SetMethodNode</a>( <span><code><a href="class-CConnection.html">CConnection</a></code> <var>$theConnection</var></span>, <span>mixed <var>$theNode</var></span> )</code>
+
+		<div class="description short">
+			
+<h4>Set node's kind to method</h4>
+
+		</div>
+
+		<div class="description detailed hidden">
+			
+<h4>Set node's kind to method</h4>
+
+<p>This method will set the provided node's kind to kNODE_KIND_METH.</p>
+
+<p>The method will return <tt>TRUE</tt> if the operation affected at least one
+object, <tt>FALSE</tt> if not and raise an exception if the operation
+failed.</p>
+
+
+
+				<h4>Parameters</h4>
+				<div class="list"><dl>
+					<dt><var>$theConnection</var></dt>
+					<dd><code><code><a href="class-CConnection.html">CConnection</a></code></code><br>$theConnection Server, database or container.</dd>
+					<dt><var>$theNode</var></dt>
+					<dd><code>mixed</code><br>$theNode Node object or identifier.</dd>
+				</dl></div>
+
+				<h4>Returns</h4>
+				<div class="list">
+					<code>boolean</code><br><tt>TRUE</tt> operation affected at least one object.<br />
+				</div>
+
+
+				<h4>See</h4>
+				<div class="list">
+						kOFFSET_KIND kNODE_KIND_METH<br />
+						kFLAG_PERSIST_MODIFY kFLAG_MODIFY_ADDSET<br />
+				</div>
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="_SetScaleNode" id="__SetScaleNode">
+
+		<td class="attributes"><code>
+			 protected 
+			boolean
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#__SetScaleNode">#</a>
+		<code><a href="source-class-COntologyTag.html#1194-1229" title="Go to source code">_SetScaleNode</a>( <span><code><a href="class-CConnection.html">CConnection</a></code> <var>$theConnection</var></span>, <span>mixed <var>$theNode</var></span> )</code>
+
+		<div class="description short">
+			
+<h4>Set node's kind to scale</h4>
+
+		</div>
+
+		<div class="description detailed hidden">
+			
+<h4>Set node's kind to scale</h4>
+
+<p>This method will set the provided node's kind to kNODE_KIND_SCALE.</p>
+
+<p>The method will return <tt>TRUE</tt> if the operation affected at least one
+object, <tt>FALSE</tt> if not and raise an exception if the operation
+failed.</p>
+
+
+
+				<h4>Parameters</h4>
+				<div class="list"><dl>
+					<dt><var>$theConnection</var></dt>
+					<dd><code><code><a href="class-CConnection.html">CConnection</a></code></code><br>$theConnection Server, database or container.</dd>
+					<dt><var>$theNode</var></dt>
+					<dd><code>mixed</code><br>$theNode Node object or identifier.</dd>
+				</dl></div>
+
+				<h4>Returns</h4>
+				<div class="list">
+					<code>boolean</code><br><tt>TRUE</tt> operation affected at least one object.<br />
+				</div>
+
+
+				<h4>See</h4>
+				<div class="list">
+						kOFFSET_KIND kNODE_KIND_SCALE<br />
+						kFLAG_PERSIST_MODIFY kFLAG_MODIFY_ADDSET<br />
 				</div>
 
 
