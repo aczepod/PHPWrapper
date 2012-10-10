@@ -358,8 +358,8 @@ try
 	//
 	echo( '<h4>Create ontology root node</h4>' );
 	echo( '<h5>$node = $test->NewRootNode( "NAMESPACE:ONTOLOGY" );</h5>' );
-	$node = $test->NewRootNode( "NAMESPACE:ONTOLOGY" );
-	echo( '<pre>' ); print_r( $node ); echo( '</pre>' );
+	$root_node = $test->NewRootNode( "NAMESPACE:ONTOLOGY" );
+	echo( '<pre>' ); print_r( $root_node ); echo( '</pre>' );
 	echo( '<hr />' );
 
 	//
@@ -388,7 +388,7 @@ try
 	$term = $test->ResolveTerm( "CATEGORY", "NAMESPACE", TRUE );
 	echo( '<h5>$cat_node = $node = $test->NewNode( $term );</h5>' );
 	$cat_node = $node = $test->NewNode( $term );
-	echo( '<pre>' ); print_r( $node ); echo( '</pre>' );
+	echo( '<pre>' ); print_r( $cat_node ); echo( '</pre>' );
 	echo( '<hr />' );
 	
 	//
@@ -396,17 +396,26 @@ try
 	//
 	echo( '<h4>Create trait node</h4>' );
 	echo( '<h5>$node = $test->NewTraitNode( "TRAIT", $namespace, "Trait", "This is the trait term", "en" );</h5>' );
-	$node = $test->NewTraitNode( "TRAIT", $namespace, "Trait", "This is the trait term", "en" );
-	echo( '<pre>' ); print_r( $node ); echo( '</pre>' );
+	$trait_node = $test->NewTraitNode( "TRAIT", $namespace, "Trait", "This is the trait term", "en" );
+	echo( '<pre>' ); print_r( $trait_node ); echo( '</pre>' );
 	echo( '<hr />' );
 	
 	//
-	// Create method node.
+	// Create method node 1.
 	//
-	echo( '<h4>Create method node</h4>' );
-	echo( '<h5>$node = $test->NewMethodNode( "METHOD", $namespace[ kOFFSET_NID ], "Method", "This is the method term", "en" );</h5>' );
-	$node = $test->NewMethodNode( "METHOD", $namespace[ kOFFSET_NID ], "Method", "This is the method term", "en" );
-	echo( '<pre>' ); print_r( $node ); echo( '</pre>' );
+	echo( '<h4>Create method node 1</h4>' );
+	echo( '<h5>$node = $test->NewMethodNode( "METHOD1", $namespace[ kOFFSET_NID ], "Method 1", "This is the method term 1", "en" );</h5>' );
+	$method_node1 = $test->NewMethodNode( "METHOD1", $namespace[ kOFFSET_NID ], "Method 1", "This is the method term 1", "en" );
+	echo( '<pre>' ); print_r( $method_node1 ); echo( '</pre>' );
+	echo( '<hr />' );
+	
+	//
+	// Create method node 2.
+	//
+	echo( '<h4>Create method node 2</h4>' );
+	echo( '<h5>$node = $test->NewMethodNode( "METHOD2", $namespace[ kOFFSET_NID ], "Method 2", "This is the method term 2", "en" );</h5>' );
+	$method_node2 = $test->NewMethodNode( "METHOD2", $namespace[ kOFFSET_NID ], "Method 2", "This is the method term 2", "en" );
+	echo( '<pre>' ); print_r( $method_node2 ); echo( '</pre>' );
 	echo( '<hr />' );
 	
 	//
@@ -414,8 +423,8 @@ try
 	//
 	echo( '<h4>Create scale node</h4>' );
 	echo( '<h5>$node = $test->NewScaleNode( "SCALE", kTYPE_ENUM, $namespace, "Scale", "This is the scale term", "en" );</h5>' );
-	$node = $test->NewScaleNode( "SCALE", kTYPE_ENUM, $namespace, "Scale", "This is the scale term", "en" );
-	echo( '<pre>' ); print_r( $node ); echo( '</pre>' );
+	$scale_node = $test->NewScaleNode( "SCALE", kTYPE_ENUM, $namespace, "Scale", "This is the scale term", "en" );
+	echo( '<pre>' ); print_r( $scale_node ); echo( '</pre>' );
 	echo( '<hr />' );
 	
 	//
@@ -423,8 +432,8 @@ try
 	//
 	echo( '<h4>Create enumeration node</h4>' );
 	echo( '<h5>$node = $test->NewEnumerationNode( "STR", $namespace, "String", "String data type code", "en" );</h5>' );
-	$node = $test->NewEnumerationNode( "STR", $namespace, "String", "String data type code", "en" );
-	echo( '<pre>' ); print_r( $node ); echo( '</pre>' );
+	$enum_node = $test->NewEnumerationNode( "STR", $namespace, "String", "String data type code", "en" );
+	echo( '<pre>' ); print_r( $enum_node ); echo( '</pre>' );
 	echo( '<hr />' );
 	echo( '<hr />' );
 	
@@ -432,6 +441,7 @@ try
 	// Instantiate enumeration node with category node.
 	//
 	echo( '<h4>Instantiate enumeration node with category node</h4>' );
+	echo( '<h4><i>Notice that it will not be an enumeration node.</i></h4>' );
 	echo( '<h5>$node = $test->NewEnumerationNode( (int) (string) $cat_node );</h5>' );
 	$node = $test->NewEnumerationNode( (int) (string) $cat_node );
 	echo( 'Template<pre>' ); print_r( $cat_node ); echo( '</pre>' );
@@ -467,21 +477,30 @@ try
 	echo( '<hr />' );
 
 	//
-	// Method is method-of of trait node.
+	// Method 1 is method-of of trait node.
 	//
-	echo( '<h4>Method is method-of of trait node</h4>' );
-	echo( '<h5>$edge = $test->MethodOf( "NAMESPACE:METHOD", "NAMESPACE:TRAIT" );</h5>' );
-	$edge = $test->MethodOf( "NAMESPACE:METHOD", "NAMESPACE:TRAIT" );
-	echo( '<pre>' ); print_r( $edge ); echo( '</pre>' );
+	echo( '<h4>Method 1 is method-of of trait node</h4>' );
+	echo( '<h5>$edge1 = $test->MethodOf( "NAMESPACE:METHOD1", "NAMESPACE:TRAIT" );</h5>' );
+	$edge1 = $test->MethodOf( "NAMESPACE:METHOD1", "NAMESPACE:TRAIT" );
+	echo( '<pre>' ); print_r( $edge1 ); echo( '</pre>' );
 	echo( '<hr />' );
 
 	//
-	// Scale is scale-of of method node.
+	// Method 2 is method-of of method 1 node.
 	//
-	echo( '<h4>Scale is scale-of of method node</h4>' );
-	echo( '<h5>$edge = $test->ScaleOf( "NAMESPACE:SCALE", "NAMESPACE:METHOD" );</h5>' );
-	$edge = $test->ScaleOf( "NAMESPACE:SCALE", "NAMESPACE:METHOD" );
-	echo( '<pre>' ); print_r( $edge ); echo( '</pre>' );
+	echo( '<h4>Method 2 is method-of of method 1 node</h4>' );
+	echo( '<h5>$edge2 = $test->MethodOf( "NAMESPACE:METHOD2", "NAMESPACE:METHOD1" );</h5>' );
+	$edge2 = $test->MethodOf( "NAMESPACE:METHOD2", "NAMESPACE:METHOD1" );
+	echo( '<pre>' ); print_r( $edge2 ); echo( '</pre>' );
+	echo( '<hr />' );
+
+	//
+	// Scale is scale-of of method 2 node.
+	//
+	echo( '<h4>Scale is scale-of of method 2 node</h4>' );
+	echo( '<h5>$edge3 = $test->ScaleOf( "NAMESPACE:SCALE", "NAMESPACE:METHOD2" );</h5>' );
+	$edge3 = $test->ScaleOf( "NAMESPACE:SCALE", "NAMESPACE:METHOD2" );
+	echo( '<pre>' ); print_r( $edge3 ); echo( '</pre>' );
 	echo( '<hr />' );
 
 	//
@@ -491,6 +510,103 @@ try
 	echo( '<h5>$edge = $test->EnumOf( ":STR", "NAMESPACE:SCALE" );</h5>' );
 	$edge = $test->EnumOf( ":STR", "NAMESPACE:SCALE" );
 	echo( '<pre>' ); print_r( $edge ); echo( '</pre>' );
+	echo( '<hr />' );
+	echo( '<hr />' );
+
+	//
+	// Create tag from elements.
+	//
+	echo( '<h4>Create tag from elements</h4>' );
+	echo( '<h5>$count = $test->AddToTag( $tag, $trait_node );</h5>' );
+	$count = $test->AddToTag( $tag, $trait_node );
+	echo( '<h5>$count = $test->AddToTag( $tag, ":".kPREDICATE_METHOD_OF );</h5>' );
+	$count = $test->AddToTag( $tag, ":".kPREDICATE_METHOD_OF );
+	echo( '<h5>$count = $test->AddToTag( $tag, $method_node1 );</h5>' );
+	$count = $test->AddToTag( $tag, $method_node1 );
+	echo( '<h5>$count = $test->AddToTag( $tag, ":".kPREDICATE_METHOD_OF );</h5>' );
+	$count = $test->AddToTag( $tag, ":".kPREDICATE_METHOD_OF );
+	echo( '<h5>$count = $test->AddToTag( $tag, $method_node2 );</h5>' );
+	$count = $test->AddToTag( $tag, $method_node2 );
+	echo( '<h5>$count = $test->AddToTag( $tag, ":".kPREDICATE_SCALE_OF );</h5>' );
+	$count = $test->AddToTag( $tag, ":".kPREDICATE_SCALE_OF );
+	echo( '<h5>$count = $test->AddToTag( $tag, $scale_node );</h5>' );
+	$count = $test->AddToTag( $tag, $scale_node );
+	echo( '<h5>$status = $test->AddToTag( $tag, TRUE );</h5>' );
+	$status = $test->AddToTag( $tag, TRUE );
+	echo( '<pre>' ); print_r( $tag ); echo( '</pre>' );
+	echo( '<hr />' );
+	echo( '<hr />' );
+	
+	//
+	// Wrong type of vertex.
+	//
+	try
+	{
+		echo( '<h4>Wrong type of vertex</h4>' );
+		echo( '<h5>$tag = NULL;</h5>' );
+		$tag = NULL;
+		echo( '<h5>$count = $test->AddToTag( $tag, ":".kPREDICATE_SUBCLASS_OF );</h5>' );
+		$count = $test->AddToTag( $tag, ":".kPREDICATE_SUBCLASS_OF );
+		echo( '<h3><font color="red">Should have raised an exception</font></h3>' );
+		echo( '<pre>' ); print_r( $term ); echo( '</pre>' );
+		echo( '<hr />' );
+	}
+	catch( Exception $error )
+	{
+		echo( '<h5>Expected exception</h5>' );
+		echo( '<pre>'.(string) $error.'</pre>' );
+		echo( '<hr>' );
+	}
+	
+	//
+	// Wrong type of predicate.
+	//
+	try
+	{
+		echo( '<h4>Wrong type of predicate</h4>' );
+		echo( '<h5>$tag = NULL;</h5>' );
+		$tag = NULL;
+		echo( '<h5>$count = $test->AddToTag( $tag, $trait_node );</h5>' );
+		$count = $test->AddToTag( $tag, $trait_node );
+		echo( '<h5>$count = $test->AddToTag( $tag, $method_node1 );</h5>' );
+		$count = $test->AddToTag( $tag, $method_node1 );
+		echo( '<h3><font color="red">Should have raised an exception</font></h3>' );
+		echo( '<pre>' ); print_r( $term ); echo( '</pre>' );
+		echo( '<hr />' );
+	}
+	catch( Exception $error )
+	{
+		echo( '<h5>Expected exception</h5>' );
+		echo( '<pre>'.(string) $error.'</pre>' );
+		echo( '<hr>' );
+	}
+	echo( '<hr>' );
+
+	//
+	// Resolve tag with ID.
+	//
+	echo( '<h4>Resolve tag with ID</h4>' );
+	echo( '<h5>$tag = $test->ResolveTag( 1 );</h5>' );
+	$tag = $test->ResolveTag( 1 );
+	echo( '<pre>' ); print_r( $tag ); echo( '</pre>' );
+	echo( '<hr />' );
+
+	//
+	// Resolve tag with trait term global identifier.
+	//
+	echo( '<h4>Resolve tag with trait term global identifier</h4>' );
+	echo( '<h5>$tag = $test->ResolveTag( $test->ResolveTerm( "TRAIT", "NAMESPACE" ) );</h5>' );
+	$tag = $test->ResolveTag( $test->ResolveTerm( "TRAIT", "NAMESPACE" ) );
+	echo( '<pre>' ); print_r( $tag ); echo( '</pre>' );
+	echo( '<hr />' );
+
+	//
+	// Resolve tag with method 1 term global identifier.
+	//
+	echo( '<h4>Resolve tag with method 1 term global identifier</h4>' );
+	echo( '<h5>$tag = $test->ResolveTag( $test->ResolveTerm( "METHOD1", "NAMESPACE" ) );</h5>' );
+	$tag = $test->ResolveTag( $test->ResolveTerm( "METHOD1", "NAMESPACE" ) );
+	echo( '<pre>' ); print_r( $tag ); echo( '</pre>' );
 	echo( '<hr />' );
 	echo( '<hr />' );
 }

@@ -223,7 +223,7 @@ try
 	echo( '<h4>Create scale node</h4>' );
 	$nodeScale = new COntologyNode();
 	$nodeScale->Term( $termScale );
-	$nodeScale->Type( kTYPE_ENUM );
+	$nodeScale->Type( kTYPE_ENUM, TRUE );
 	echo( '<pre>' ); print_r( $nodeScale ); echo( '</pre>' );
 	echo( '<hr />' );
 	echo( '<hr />' );
@@ -242,7 +242,7 @@ try
 		echo( '<pre>' ); print_r( $tag ); echo( '</pre>' );
 		echo( '<hr />' );
 	}
-	catch( \Exception $error )
+	catch( Exception $error )
 	{
 		echo( '<h5>Expected exception</h5>' );
 		echo( '<pre>'.(string) $error.'</pre>' );
@@ -281,7 +281,7 @@ try
 		echo( '<pre>' ); print_r( $tag ); echo( '</pre>' );
 		echo( '<hr />' );
 	}
-	catch( \Exception $error )
+	catch( Exception $error )
 	{
 		echo( '<h5>Expected exception</h5>' );
 		echo( '<pre>'.(string) $error.'</pre>' );
@@ -353,30 +353,57 @@ try
 	echo( '<hr />' );
 	
 	//
-	// Get trait.
+	// Get trait node.
 	//
-	echo( '<h4>Get trait</h4>' );
-	echo( '<h5>$node = $tag->GetTrait();</h5>' );
-	$node = $tag->GetTrait();
+	echo( '<h4>Get trait node</h4>' );
+	echo( '<h5>$node = $tag->GetTraitNode();</h5>' );
+	$node = $tag->GetTraitNode();
 	echo( '<pre>' ); print_r( $node ); echo( '</pre>' );
 	echo( '<hr />' );
 	
 	//
-	// Get scale.
+	// Get trait term.
 	//
-	echo( '<h4>Get scale</h4>' );
-	echo( '<h5>$node = $tag->GetScale();</h5>' );
-	$node = $tag->GetScale();
+	echo( '<h4>Get trait term</h4>' );
+	echo( '<h5>$node = $tag->GetTraitTerm();</h5>' );
+	$term = $tag->GetTraitTerm();
+	echo( '<pre>' ); print_r( $term ); echo( '</pre>' );
+	echo( '<hr />' );
+	
+	//
+	// Get scale node.
+	//
+	echo( '<h4>Get scale node</h4>' );
+	echo( '<h5>$node = $tag->GetScaleNode();</h5>' );
+	$node = $tag->GetScaleNode();
 	echo( '<pre>' ); print_r( $node ); echo( '</pre>' );
 	echo( '<hr />' );
 	
 	//
-	// Get methods.
+	// Get scale term.
 	//
-	echo( '<h4>Get methods</h4>' );
-	echo( '<h5>$nodes = $tag->GetMethods();</h5>' );
-	$nodes = $tag->GetMethods();
+	echo( '<h4>Get scale term</h4>' );
+	echo( '<h5>$term = $tag->GetScaleTerm();</h5>' );
+	$term = $tag->GetScaleTerm();
+	echo( '<pre>' ); print_r( $term ); echo( '</pre>' );
+	echo( '<hr />' );
+	
+	//
+	// Get method nodes.
+	//
+	echo( '<h4>Get method nodes</h4>' );
+	echo( '<h5>$nodes = $tag->GetMethodNodes();</h5>' );
+	$nodes = $tag->GetMethodNodes();
 	echo( '<pre>' ); print_r( $nodes ); echo( '</pre>' );
+	echo( '<hr />' );
+	
+	//
+	// Get method terms.
+	//
+	echo( '<h4>Get method terms</h4>' );
+	echo( '<h5>$terms = $tag->GetMethodTerms();</h5>' );
+	$terms = $tag->GetMethodTerms();
+	echo( '<pre>' ); print_r( $terms ); echo( '</pre>' );
 	echo( '<hr />' );
 	echo( '<hr />' );
 	

@@ -19,6 +19,18 @@
  */
 
 /*=======================================================================================
+ *	DEFAULT OFFSETS																		*
+ *======================================================================================*/
+
+/**
+ * Term references.
+ *
+ * This tag identifies the offset that will contain the list of identifiers of the terms
+ * referenced by the tag path's vertex elements.
+ */
+define( "kOFFSET_TERM_LIST",					'_terms' );
+
+/*=======================================================================================
  *	DEFAULT CONTAINER NAMES																*
  *======================================================================================*/
 

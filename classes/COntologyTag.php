@@ -47,12 +47,18 @@ require_once( kPATH_MYWRAPPER_LIBRARY_CLASS."/CTag.php" );
  * the path, {@link kOFFSET_PATH}, and by using the native identifiers, {@link kOFFSET_NID},
  * of the elements of the path in the {@link _index()} method.
  *
- * Odd elements of the path must refer to {@link COntologyNode} objects, the predicate
- * elements of the path must refer to {@link COntologyTerm} objects. The elements of the
- * path offset, {@link kOFFSET_PATH}, will be the native identifier of the path elements,
- * while the global identifier, {@link kOFFSET_GID}, will receive the global identifiers of
- * the path element related terms. This last behaviour means that once a tag is saved, its
- * terms, nodes and edges should not be changed.
+ * Odd elements of the path must refer to vertex elements of the graph, in this case
+ * {@link COntologyNode} objects; even elements of the path must refer to predicates of the
+ * graph, in this case {@link COntologyTerm} objects.
+ *
+ * The elements of the path offset, {@link kOFFSET_PATH}, will be the native identifier of
+ * the path elements, while the global identifier, {@link kOFFSET_GID}, will receive the
+ * global identifiers of the path element related {@link COntologyTerm} instances. This last
+ * behaviour means that once a tag is saved, related terms, nodes and edges should not be
+ * deleted.
+ *
+ * The class adds an offset, {@link kOFFSET_UID}, which stores the hashed version of the
+ * global identifier and can be used to identify duplicate objects.
  *
  * Elements of the path can be provided as objects and those that are not yet committed will
  * be saved when the current tag is saved.
@@ -63,8 +69,24 @@ require_once( kPATH_MYWRAPPER_LIBRARY_CLASS."/CTag.php" );
  * elements are method nodes, {@link kNODE_KIND_METH}. Once the tag is committed, the node's
  * kind will be updated accordingly.
  *
- * The class adds an offset, {@link kOFFSET_UID}, which stores the hashed version of the
- * global identifier and can be used to identify duplicate objects.
+ * When adding elements to the tag's path you must consistently follow these rules:
+ *
+ * <ul>
+ *	<li>The first vertex of the path must represent the descriptor or main category of the
+ *		tag, it will be qualified as {@link kNODE_KIND_TRAIT}.
+ *	<li>The last vertex of the path must represent the data type of the tag and must have
+ *		a {@link COntologyNode::Type()}, it will be qualified as {@link kNODE_KIND_SCALE}.
+ *	<li>The eventual vertices between the first and the last one should represent variations
+ *		or subclasses of the first vertex and will be marked as {@link kNODE_KIND_METH}.
+ * </ul>
+ *
+ * Because of this rule, it is not guaranteed that tag paths are in sync with graph paths,
+ * the predicate term glue is used as a discriminant to differentiate paths holding the same
+ * vertices.
+ *
+ * The other effect of this is that it is not easy to match the path of a tag with the
+ * original path in the graph that was used to constitute the tag, the only thing one can do
+ * is ensure tags are constituted from elements following the ontology graph paths.
  *
  * This class prevents updating the full object once it has been inserted for the first
  * time. This behaviour is necessary because tags are referenced by many other objects, so
@@ -147,8 +169,8 @@ class COntologyTag extends CTag
 					//
 					if( $ok === FALSE )
 						throw new Exception
-							( "Cannot set path element, expecting a vertex: "
-							 ."the object must be a node reference or object",
+							( "Cannot set path element, expecting a predicate: "
+							 ."the object must be a term reference or object",
 							  kERROR_PARAMETER );								// !@! ==>
 				
 				} // Predicate.
@@ -168,8 +190,8 @@ class COntologyTag extends CTag
 					//
 					if( $ok === FALSE )
 						throw new Exception
-							( "Cannot set path element, expecting a predicate: "
-							 ."the object must be a term reference or object",
+							( "Cannot set path element, expecting a vertex: "
+							 ."the object must be a node reference or object",
 							  kERROR_PARAMETER );								// !@! ==>
 				
 				} // Vertex.
@@ -209,7 +231,7 @@ class COntologyTag extends CTag
 
 	 
 	/*===================================================================================
-	 *	GetTrait																		*
+	 *	GetTraitNode																	*
 	 *==================================================================================*/
 
 	/**
@@ -217,14 +239,16 @@ class COntologyTag extends CTag
 	 *
 	 * This method will return the current tag's trait node, if present, or <tt>NULL</tt>.
 	 *
-	 * The trait node, according to the tag, is the first node of the path.
+	 * The trait node refers the ontology node that represents the type of descriptor the
+	 * current tag annotates, by default it is the first vertex of the path.
 	 *
 	 * @access public
 	 * @return mixed				First element of the path, or <tt>NULL</tt>.
 	 *
 	 * @see kOFFSET_PATH
+	 * @see kNODE_KIND_TRAIT
 	 */
-	public function GetTrait()
+	public function GetTraitNode()
 	{
 		//
 		// Check path.
@@ -234,11 +258,43 @@ class COntologyTag extends CTag
 		
 		return NULL;																// ==>
 
-	} // GetTrait.
+	} // GetTraitNode.
 
 	 
 	/*===================================================================================
-	 *	GetScale																		*
+	 *	GetTraitTerm																	*
+	 *==================================================================================*/
+
+	/**
+	 * <h4>Return trait term</h4>
+	 *
+	 * This method will return the current tag's trait term, if present, or <tt>NULL</tt>.
+	 *
+	 * The trait term refers the ontology term that represents the type of descriptor the
+	 * current tag annotates, by default it is the term referred to by the first vertex of
+	 * the path.
+	 *
+	 * @access public
+	 * @return mixed				First element of the terms list, or <tt>NULL</tt>.
+	 *
+	 * @see kOFFSET_TERM_LIST
+	 * @see kNODE_KIND_TRAIT
+	 */
+	public function GetTraitTerm()
+	{
+		//
+		// Check path.
+		//
+		if( $this->offsetExists( kOFFSET_TERM_LIST ) )
+			return $this[ kOFFSET_TERM_LIST ][ 0 ];									// ==>
+		
+		return NULL;																// ==>
+
+	} // GetTraitTerm.
+
+	 
+	/*===================================================================================
+	 *	GetScaleNode																	*
 	 *==================================================================================*/
 
 	/**
@@ -246,14 +302,18 @@ class COntologyTag extends CTag
 	 *
 	 * This method will return the current tag's scale node, if present, or <tt>NULL</tt>.
 	 *
-	 * The scale node, according to the tag, is the last node of the path.
+	 * The scale node refers the ontology node that represents the data type of the item the
+	 * current tag annotates, by default it is the last vertex of the path.
+	 *
+	 * Note that if the tag contains only one vertex, that will be both a trait and a scale.
 	 *
 	 * @access public
 	 * @return mixed				Last element of the path, or <tt>NULL</tt>.
 	 *
 	 * @see kOFFSET_PATH
+	 * @see kNODE_KIND_SCALE
 	 */
-	public function GetScale()
+	public function GetScaleNode()
 	{
 		//
 		// Check path.
@@ -263,11 +323,46 @@ class COntologyTag extends CTag
 		
 		return NULL;																// ==>
 
-	} // GetScale.
+	} // GetScaleNode.
 
 	 
 	/*===================================================================================
-	 *	GetMethods																		*
+	 *	GetScaleTerm																	*
+	 *==================================================================================*/
+
+	/**
+	 * <h4>Return scale term</h4>
+	 *
+	 * This method will return the current tag's scale term, if present, or <tt>NULL</tt>.
+	 *
+	 * The scale term refers the ontology term that represents the data type of the item the
+	 * current tag annotates, by default it is the term referred to by last vertex of the
+	 * path.
+	 *
+	 * Note that if the tag contains only one vertex, that will be both a trait and a scale.
+	 *
+	 * @access public
+	 * @return mixed				Last element of the terms list, or <tt>NULL</tt>.
+	 *
+	 * @see kOFFSET_TERM_LIST
+	 * @see kNODE_KIND_SCALE
+	 */
+	public function GetScaleTerm()
+	{
+		//
+		// Check path.
+		//
+		if( $this->offsetExists( kOFFSET_TERM_LIST ) )
+			return $this[ kOFFSET_TERM_LIST ]
+						[count( $this[ kOFFSET_TERM_LIST ] ) - 1 ];					// ==>
+		
+		return NULL;																// ==>
+
+	} // GetScaleTerm.
+
+	 
+	/*===================================================================================
+	 *	GetMethodNodes																	*
 	 *==================================================================================*/
 
 	/**
@@ -276,8 +371,11 @@ class COntologyTag extends CTag
 	 * This method will return the current tag's list of method nodes, if present, or
 	 * <tt>NULL</tt>.
 	 *
-	 * The method nodes, according to the tag, are all the nodes between the trait node,
-	 * {@link GetTrait()}, an the scale node, {@link GetScale()}.
+	 * The method node refers the ontology node that represents a subclass or variation of
+	 * the tag trait, it can be considered a pipeline of modifiers applied to the trait
+	 * vertex. This kind of elements cannot be neither the first nor the last element of the
+	 * path and can be found between the trait node, {@link GetTraitNode()}, an the scale
+	 * node, {@link GetScaleNode()}.
 	 *
 	 * The method will return an array if at least one method is present.
 	 *
@@ -285,8 +383,9 @@ class COntologyTag extends CTag
 	 * @return mixed				List of method nodes, or <tt>NULL</tt>.
 	 *
 	 * @see kOFFSET_PATH
+	 * @see kNODE_KIND_METH
 	 */
-	public function GetMethods()
+	public function GetMethodNodes()
 	{
 		//
 		// Check path.
@@ -317,7 +416,69 @@ class COntologyTag extends CTag
 		
 		return NULL;																// ==>
 
-	} // GetMethods.
+	} // GetMethodNodes.
+
+	 
+	/*===================================================================================
+	 *	GetMethodTerms																	*
+	 *==================================================================================*/
+
+	/**
+	 * <h4>Return method terms</h4>
+	 *
+	 * This method will return the current tag's list of method terms, if present, or
+	 * <tt>NULL</tt>.
+	 *
+	 * The scale term refers the ontology term that represents the data type of the item the
+	 * current tag annotates, by default it is the term referred to by last vertex of the
+	 * path.
+	 *
+	 * The method term refers the ontology term that represents a subclass or variation of
+	 * the tag trait, it can be considered a pipeline of modifiers applied to the trait
+	 * vertex. This kind of elements cannot be neither the first nor the last element of the
+	 * path and can be found between the trait term, {@link GetTraitTerm()}, an the scale
+	 * term, {@link GetScaleTerm()}.
+	 *
+	 * The method will return an array if at least one method is present.
+	 *
+	 * @access public
+	 * @return mixed				List of method nodes, or <tt>NULL</tt>.
+	 *
+	 * @see kOFFSET_TERM_LIST
+	 * @see kNODE_KIND_METH
+	 */
+	public function GetMethodTerms()
+	{
+		//
+		// Check path.
+		//
+		if( $this->offsetExists( kOFFSET_TERM_LIST ) )
+		{
+			//
+			// Check for methods.
+			//
+			if( ($count = count( $path = $this->offsetGet( kOFFSET_TERM_LIST ) )) > 2 )
+			{
+				//
+				// Init local storage.
+				//
+				$list = Array();
+				
+				//
+				// Load methods.
+				//
+				for( $i = 1; $i < ($count - 1); $i++ )
+					$list[] = $path[ $i ];
+				
+				return $list;														// ==>
+			
+			} // Has methods.
+		
+		} // Has at least one element.
+		
+		return NULL;																// ==>
+
+	} // GetMethodTerms.
 
 		
 
@@ -449,6 +610,195 @@ class COntologyTag extends CTag
 
 /*=======================================================================================
  *																						*
+ *								STATIC RESOLUTION INTERFACE								*
+ *																						*
+ *======================================================================================*/
+
+
+	 
+	/*===================================================================================
+	 *	Resolve																			*
+	 *==================================================================================*/
+
+	/**
+	 * <h4>Resolve a tag</h4>
+	 *
+	 * This method can be used to retrieve an existing tag by identifier, or retrieve all
+	 * tags matching a term.
+	 *
+	 * The method accepts the following parameters:
+	 *
+	 * <ul>
+	 *	<li><tt>$theConnection</tt>: This parameter represents the connection from which the
+	 *		tags container must be resolved. If this parameter cannot be correctly
+	 *		determined, the method will raise an exception.
+	 *	<li><tt>$theIdentifier</tt>: This parameter represents either the tag identifier
+	 *		or the term reference, depending on its type:
+	 *	 <ul>
+	 *		<li><tt>integer</tt>: In this case the method assumes that the parameter
+	 *			represents the tag identifier: it will attempt to retrieve the tag, if it
+	 *			is not found, the method will return <tt>NULL</tt>.
+	 *		<li><tt>{@link COntologyTerm}</tt>: In this case the method locate all tags
+	 *			that refer to the provided term. If the term is not {@link _IsCommitted()},
+	 *			the method will return <tt>NULL</tt>.
+	 *		<li><i>other</i>: Any other type will be interpreted either the term's native
+	 *			identifier, or as the term's global identifier: the method will return all
+	 *			tags that refer to that term.
+	 *	 </ul>
+	 *	<li><tt>$doThrow</tt>: If <tt>TRUE</tt>, any failure to resolve the tag will raise
+	 *		an exception.
+	 * </ul>
+	 *
+	 * The method will return the found tag(s), <tt>NULL</tt> if not found, or raise an
+	 * exception if the last parameter is <tt>TRUE</tt>.
+	 *
+	 * @param CConnection			$theConnection		Server, database or container.
+	 * @param mixed					$theIdentifier		Node identifier or term reference.
+	 * @param boolean				$doThrow			If <tt>TRUE</tt> raise an exception.
+	 *
+	 * @static
+	 * @return COntologyTerm		Found tag or <tt>NULL</tt>.
+	 *
+	 * @throws Exception
+	 */
+	static function Resolve( CConnection $theConnection, $theIdentifier, $doThrow = FALSE )
+	{
+		//
+		// Check identifier.
+		//
+		if( $theIdentifier !== NULL )
+		{
+			//
+			// Resolve container.
+			//
+			$container = COntologyTag::ResolveClassContainer( $theConnection, TRUE );
+			
+			//
+			// Handle tag identifier.
+			//
+			if( is_integer( $theIdentifier ) )
+			{
+				//
+				// Get node.
+				//
+				$tag = COntologyTag::NewObject( $theConnection, $theIdentifier );
+				
+				//
+				// Handle missing tag.
+				//
+				if( ($tag === NULL)
+				 && $doThrow )
+					throw new Exception
+						( "Tag not found",
+						  kERROR_NOT_FOUND );									// !@! ==>
+				
+				return $tag;														// ==>
+			
+			} // Provided tag identifier.
+						
+			//
+			// Handle term object.
+			//
+			if( $theIdentifier instanceof COntologyTerm )
+			{
+				//
+				// Handle new term.
+				//
+				if( ! $theIdentifier->_IsCommitted() )
+				{
+					//
+					// Raise exception.
+					//
+					if( $doThrow )
+						throw new Exception
+							( "Tag not found: term is not committed",
+							  kERROR_NOT_FOUND );								// !@! ==>
+					
+					return NULL;													// ==>
+				
+				} // New term.
+				
+				//
+				// Get term identifier.
+				//
+				$theIdentifier = $theIdentifier->offsetGet( kOFFSET_NID );
+			
+			} // Provided term object.
+			
+			//
+			// Handle term reference.
+			//
+			else
+			{
+				//
+				// Resolve term.
+				//
+				$term = COntologyTerm::Resolve( $theConnection, $theIdentifier, $doThrow );
+				if( $term instanceof COntologyTerm )
+					$theIdentifier = $term->offsetGet( kOFFSET_NID );
+				else
+				{
+					//
+					// Raise exception.
+					//
+					if( $doThrow )
+						throw new Exception
+							( "Tag not found: unresolved term reference [$theIdentifier]",
+							  kERROR_NOT_FOUND );								// !@! ==>
+					
+					return NULL;													// ==>
+				
+				} // Unresolved term.
+			
+			} // Provided term reference.
+			
+			//
+			// Make query.
+			//
+			$query = $container->NewQuery();
+			$query->AppendStatement(
+				CQueryStatement::Member(
+					kOFFSET_TERM_LIST, $theIdentifier, kTYPE_BINARY ) );
+			$rs = $container->Query( $query );
+			
+			//
+			// Handle found tags.
+			//
+			if( $rs->count() )
+			{
+				//
+				// Return list of tags.
+				//
+				$list = Array();
+				foreach( $rs as $document )
+					$list[] = CPersistentObject::DocumentObject( $document );
+				
+				return $list;														// ==>
+			
+			} // Found at least one tag.
+
+			//
+			// Raise exception.
+			//
+			if( $doThrow )
+				throw new Exception
+					( "Tag not found",
+					  kERROR_NOT_FOUND );										// !@! ==>
+			
+			return NULL;															// ==>
+			
+		} // Provided local or global identifier.
+		
+		throw new Exception
+			( "Missing tag identifier or term",
+			  kERROR_PARAMETER );												// !@! ==>
+
+	} // Resolve.
+
+		
+
+/*=======================================================================================
+ *																						*
  *							PROTECTED IDENTIFICATION INTERFACE							*
  *																						*
  *======================================================================================*/
@@ -471,6 +821,10 @@ class COntologyTag extends CTag
 	 * the path to be object native identifiers, so the method will resolve each element
 	 * without checking if it is in the form of an object.
 	 *
+	 * This method is also responsible for loading the {@link kOFFSET_TERM_LIST} offset: it
+	 * will contain all the term native identifiers referred to by the tag's path vertex
+	 * elements.
+	 *
 	 * @param CConnection			$theConnection		Server, database or container.
 	 * @param bitfield				$theModifiers		Commit options.
 	 *
@@ -481,6 +835,7 @@ class COntologyTag extends CTag
 	 *
 	 * @throws Exception
 	 *
+	 * @see kOFFSET_TERM_LIST
 	 * @see kOFFSET_PATH kTOKEN_INDEX_SEPARATOR
 	 */
 	protected function _index( CConnection $theConnection, $theModifiers )
@@ -488,7 +843,7 @@ class COntologyTag extends CTag
 		//
 		// Init local storage.
 		//
-		$identifier = Array();
+		$identifier = $terms = Array();
 		$path = $this->offsetGet( kOFFSET_PATH );
 		
 		//
@@ -529,7 +884,14 @@ class COntologyTag extends CTag
 			// Handle terms.
 			//
 			$term = COntologyTerm::NewObject(
-						COntologyTerm::ResolveClassContainer( $theConnection, TRUE ), $id );
+						COntologyTerm::ResolveClassContainer(
+							$theConnection, TRUE ), $id );
+			
+			//
+			// Add term reference.
+			//
+			if( ! ($i % 2) )
+				$terms[] = $term[ kOFFSET_NID ];
 			
 			//
 			// Add identifier.
@@ -537,6 +899,12 @@ class COntologyTag extends CTag
 			$identifier[] = $term[ kOFFSET_GID ];
 		
 		} // Iterating path elements.
+		
+		//
+		// Set terms list offset.
+		//
+		if( count( $terms ) )
+			$this->offsetSet( kOFFSET_TERM_LIST, $terms );
 		
 		return implode( kTOKEN_INDEX_SEPARATOR, $identifier );						// ==>
 	
@@ -717,7 +1085,7 @@ class COntologyTag extends CTag
 						// Check if scale node has type.
 						//
 						if( ($i == (count( $path ) - 1))
-						 && ($item->offsetGet( kOFFSET_TYPE ) === NULL) )
+						 && (! $item->offsetExists( kOFFSET_TYPE )) )
 							throw new Exception
 								( "Cannot commit tag: "
 								 ."the scale node is missing its type.",

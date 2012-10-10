@@ -976,6 +976,119 @@ class COntology extends CConnection
 
 /*=======================================================================================
  *																						*
+ *							PUBLIC TAG INSTANTIATION INTERFACE							*
+ *																						*
+ *======================================================================================*/
+
+
+	 
+	/*===================================================================================
+	 *	AddToTag																		*
+	 *==================================================================================*/
+
+	/**
+	 * <h4>Add an element to a tag</h4>
+	 *
+	 * This method can be used to instantiate and append elements to a {@link COntologyTag},
+	 * the method will perform specific checks to ensure elements added to the tag are of
+	 * the correct kind.
+	 *
+	 * The method expects the following parameters:
+	 *
+	 * <ul>
+	 *	<li><tt>&$theTag</tt>: This parameter is a reference to a tag, if the provided
+	 *		parameter is a {@link COntologyTag}, it will be used to append elements, if not,
+	 *		it will be instantiated.
+	 *	<li><tt>$theItem</tt>: This parameter represents either the item to be appended or
+	 *		the operation:
+	 *	 <ul>
+	 *		<li><tt>{@link COntologyNode}</tt>: This type will be interpreted as a node to
+	 *			be added.
+	 *		<li><tt>{@link COntologyTerm}</tt>: This type will be interpreted as a predicate
+	 *			term to be added.
+	 *		<li><tt>integer</tt>: This type will be interpreted as a node identifier.
+	 *		<li><tt>TRUE</tt>: This value is interpreted as the command to commit the tag.
+	 *		<li><i>other</i>: Any other type is interpreted as the predicate term
+	 *			identifier (native or global).
+	 *	 </ul>
+	 * </ul>
+	 *
+	 * The method makes use of the {@link COntologyTag::PushItem()} method, please consult
+	 * that method to determine what elements can be appended.
+	 *
+	 * Note: provided nodes must be committed, or the method will raise an exception.
+	 *
+	 * When appending elements, the method will return the current number of elements in the
+	 * path; when committing the tag, the method will return its native identifier.
+	 *
+	 * If any error occurs, the method will raise an exception.
+	 *
+	 * @param reference			   &$theTag				Tag object reference.
+	 * @param mixed					$theItem			Item to be added or commit command.
+	 *
+	 * @access public
+	 * @return mixed				Path elements count or tag identifier.
+	 *
+	 * @throws Exception
+	 *
+	 * @uses _IsInited()
+	 * @uses Connection()
+	 * @uses NewTerm()
+	 * @uses _NewNode()
+	 */
+	public function AddToTag( &$theTag, $theItem )
+	{
+		//
+		// Check if object is ready.
+		//
+		if( $this->_IsInited() )
+		{
+			//
+			// Instantiate tag.
+			//
+			if( ! ($theTag instanceof COntologyTag) )
+				$theTag = new COntologyTag();
+			
+			//
+			// Commit tag.
+			//
+			if( $theItem === TRUE )
+				return $theTag->Insert( $this->Connection() );						// ==>
+		
+			//
+			// Resolve objects.
+			//
+			if( (! ($theItem instanceof COntologyNode))
+			 && (! ($theItem instanceof COntologyTerm)) )
+			{
+				//
+				// Resolve node.
+				//
+				if( is_integer( $theItem ) )
+					$theItem = $this->ResolveNode( $theItem, TRUE );
+				
+				//
+				// Resolve term.
+				//
+				else
+					$theItem = $this->ResolveTerm( $theItem, NULL, TRUE );
+			
+			} // Not an object.
+		
+			return $theTag->PushItem( $theItem );									// ==>
+		
+		} // Object is ready.
+		
+		throw new Exception
+			( "Object is not initialised",
+			  kERROR_STATE );													// !@! ==>
+
+	} // AddToTag.
+
+		
+
+/*=======================================================================================
+ *																						*
  *								PUBLIC RESOLUTION INTERFACE								*
  *																						*
  *======================================================================================*/
@@ -1130,6 +1243,66 @@ class COntology extends CConnection
 
 	} // ResolveNode.
 
+	 
+	/*===================================================================================
+	 *	ResolveTag																		*
+	 *==================================================================================*/
+
+	/**
+	 * <h4>Find a tag</h4>
+	 *
+	 * This method can be used to retrieve an existing tag by identifier, or retrieve all
+	 * tags matching the provided term.
+	 *
+	 * The method expects a single parameter that may represent either the tag identifier,
+	 * or the term reference:
+	 *
+	 * <ul>
+	 *	<li><tt>integer</tt>: In this case the method assumes that the parameter represents
+	 *		the tag identifier: it will attempt to retrieve the tag, if it is not found,
+	 *		the method will return <tt>NULL</tt>.
+	 *	<li><tt>{@link COntologyTerm}</tt>: In this case the method locate all tags that
+	 *		refer to the provided term. If the term is not {@link _IsCommitted()}, the
+	 *		method will return <tt>NULL</tt>.
+	 *	<li><i>other</i>: Any other type will be interpreted either the term's native
+	 *		identifier, or as the term's global identifier: the method will return all tags
+	 *		that refer to that term.
+	 * </ul>
+	 *
+	 * The method will raise an exception if the object is not {@link _IsInited()} and if
+	 * the provided parameter is <tt>NULL</tt>.
+	 *
+	 * This class takes advantage of the static method {@link COntologyTag::Resolve()}.
+	 *
+	 * @param mixed					$theIdentifier		Tag identifier or term reference.
+	 * @param boolean				$doThrow			If <tt>TRUE</tt> raise an exception.
+	 *
+	 * @access public
+	 * @return mixed				New tag, found tag or tags list.
+	 *
+	 * @throws Exception
+	 *
+	 * @uses Connection()
+	 * @uses COntologyTag::Resolve()
+	 */
+	public function ResolveTag( $theIdentifier, $doThrow = FALSE )
+	{
+		//
+		// Check if object is ready.
+		//
+		if( $this->_IsInited() )
+		{
+			return COntologyTag::Resolve(
+				$this->Connection(), $theIdentifier, $doThrow );					// ==>
+		
+		} // Object is ready.
+		
+		throw new Exception
+			( "Object is not initialised",
+			  kERROR_STATE );													// !@! ==>
+
+	} // ResolveTag.
+
 		
 
 /*=======================================================================================
@@ -1175,8 +1348,8 @@ class COntology extends CConnection
 	 *	<li><tt>$theLanguage</tt>: The language code of both the label and the description.
 	 * </ul>
 	 *
-	 * The method will return an instance of the {@link COntologyEdge} class, if any error
-	 * occurs, the method will raise an exception.
+	 * The method will return a committed instance of the {@link COntologyEdge} class, if
+	 * any error occurs, the method will raise an exception.
 	 *
 	 * @param mixed					$theSubject			Subject vertex.
 	 * @param mixed					$theObject			Object vertex.
@@ -1191,16 +1364,39 @@ class COntology extends CConnection
 	 *
 	 * @throws Exception
 	 *
+	 * @uses _IsInited()
 	 * @uses _RelateTo()
+	 * @uses Connection()
 	 */
 	public function RelateTo( $theSubject, $theObject, $thePredicate,
 							  $theNamespace = NULL,
 							  $theLabel = NULL, $theDescription = NULL,
 							  $theLanguage = NULL )
 	{
-		return $this->_RelateTo( $theSubject, $theObject, $thePredicate,
-								 $theNamespace, $theLabel, $theDescription,
-								 $theLanguage );									// ==>
+		//
+		// Check if object is ready.
+		//
+		if( $this->_IsInited() )
+		{
+			//
+			// Create edge.
+			//
+			$edge = $this->_RelateTo( $theSubject, $theObject, $thePredicate,
+									  $theNamespace, $theLabel, $theDescription,
+									  $theLanguage );
+			
+			//
+			// Commit edge.
+			//
+			$edge->Insert( $this->Connection() );
+			
+			return $edge;															// ==>
+		
+		} // Object is ready.
+		
+		throw new Exception
+			( "Object is not initialised",
+			  kERROR_STATE );													// !@! ==>
 
 	} // RelateTo.
 

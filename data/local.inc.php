@@ -29,7 +29,7 @@
  *
  * This tag indicates the default database name.
  */
-define( "kDEFAULT_DATABASE",				"TIP" );
+define( "kDEFAULT_DATABASE",				"ONTOLOGY" );
 
 /**
  * Default language.
