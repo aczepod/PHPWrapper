@@ -399,6 +399,42 @@ try
 	echo( '<hr />' );
 
 	//
+	// Add synonym1.
+	//
+	echo( '<h4>Add synonym1</h4>' );
+	echo( '<h5>$termB->Synonym( "synonym1", TRUE );</h5>' );
+	$termB->Synonym( "synonym1", TRUE );
+	echo( '<pre>' ); print_r( $termB ); echo( '</pre>' );
+	echo( '<hr />' );
+
+	//
+	// Add synonym2.
+	//
+	echo( '<h4>Add synonym2</h4>' );
+	echo( '<h5>$termB->Synonym( "synonym2", TRUE );</h5>' );
+	$termB->Synonym( "synonym2", TRUE );
+	echo( '<pre>' ); print_r( $termB ); echo( '</pre>' );
+	echo( '<hr />' );
+
+	//
+	// Add synonym1.
+	//
+	echo( '<h4>Add synonym1</h4>' );
+	echo( '<h5>$termB->Synonym( "synonym1", TRUE );</h5>' );
+	$termB->Synonym( "synonym1", TRUE );
+	echo( '<pre>' ); print_r( $termB ); echo( '</pre>' );
+	echo( '<hr />' );
+
+	//
+	// Add list of synonyms.
+	//
+	echo( '<h4>Add list of synonyms</h4>' );
+	echo( '<h5>$termB->Synonym( array( "synonym2", "synonym3" ), TRUE );</h5>' );
+	$termB->Synonym( array( "synonym2", "synonym3" ), TRUE );
+	echo( '<pre>' ); print_r( $termB ); echo( '</pre>' );
+	echo( '<hr />' );
+
+	//
 	// Set wrong description.
 	//
 	try

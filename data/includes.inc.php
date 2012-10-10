@@ -7,7 +7,7 @@
  *======================================================================================*/
  
 /**
- *	User include file.
+ *	Global include file.
  *
  *	This file should be included at the top level of the application or web site as the
  *	first entry, it includes the file paths to the relevant directories and the autoload
@@ -21,7 +21,7 @@
  */
 
 /*=======================================================================================
- *	MYWRAPPER NAMESPACE ROOT															*
+ *	NAMESPACE ROOT																		*
  *======================================================================================*/
 
 /**
@@ -32,7 +32,7 @@
 define( "kPATH_MYWRAPPER_NAMESPACE_ROOT",	"MyWrapper" );
 
 /*=======================================================================================
- *	MYWRAPPER LIBRARY PATHS																*
+ *	LIBRARY PATHS																		*
  *======================================================================================*/
 
 /**
@@ -66,6 +66,31 @@ define( "kPATH_MYWRAPPER_LIBRARY_CLASS",	"/Library/WebServer/Library/PHPWrapper/
  * sources directory.
  */
 define( "kPATH_MYWRAPPER_LIBRARY_FUNCTION",	"/Library/WebServer/Library/PHPWrapper/functions" );
+
+/*=======================================================================================
+ *	SESSION GLOBALS																		*
+ *======================================================================================*/
+
+/**
+ * Server instance.
+ *
+ * This tag identifies the session element that will hold the native server connection.
+ */
+define( "kSESSION_SERVER",					"@sr" );
+
+/**
+ * Database instance.
+ *
+ * This tag identifies the session element that will hold the native database connection.
+ */
+define( "kSESSION_DATABASE",				"@db" );
+
+/**
+ * Ontology instance.
+ *
+ * This tag identifies the session element that will hold the ontology instance.
+ */
+define( "kSESSION_ONTOLOGY",				"@on" );
 
 /*=======================================================================================
  *	CLASS AUTOLOADER																	*

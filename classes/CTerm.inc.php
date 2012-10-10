@@ -72,4 +72,12 @@ define( "kOFFSET_LANGUAGE",						'_language' );
  */
 define( "kOFFSET_DATA",							'_data' );
 
+/**
+ * Synonyms.
+ *
+ * This tag identifies the synonyms offset, this attribute is a list of strings that
+ * represent alternate codes or names that identify the specific term.
+ */
+define( "kOFFSET_SYNONYMS",						'_synonyms' );
+
 ?>
