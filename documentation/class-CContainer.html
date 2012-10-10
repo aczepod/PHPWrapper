@@ -6,7 +6,7 @@
 
 	<title>Class CContainer | MyWrapper Reference Documentation</title>
 
-	<script type="text/javascript" src="resources/combined.js?3994123307"></script>
+	<script type="text/javascript" src="resources/combined.js?368249000"></script>
 	<script type="text/javascript" src="elementlist.js?4206909522"></script>
 	<link rel="stylesheet" type="text/css" media="all" href="resources/style.css?3505392360" />
 
@@ -195,7 +195,7 @@ implement specific storage actions.</p>
 				<b>Author:</b>
 				Milko A. Škofič &lt;<a
 href="mailto:m.skofic&#64;cgiar.org">m.skofic&#64;<!---->cgiar.org</a>&gt;<br />
-		<b>Located at</b> <a href="source-class-CContainer.html#57-418" title="Go to source code">CContainer.php</a><br />
+		<b>Located at</b> <a href="source-class-CContainer.html#57-423" title="Go to source code">CContainer.php</a><br />
 	</div>
 
 
@@ -511,7 +511,7 @@ represents the list of desired fields.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#_NextSequence">#</a>
-		<code><a href="source-class-CContainer.html#323-355" title="Go to source code">NextSequence</a>( <span>string <var>$theKey</var></span>, <span>string <var>$theContainer</var> = <span class="php-keyword1">NULL</span> </span> )</code>
+		<code><a href="source-class-CContainer.html#323-360" title="Go to source code">NextSequence</a>( <span>string <var>$theKey</var></span>, <span>mixed <var>$theContainer</var> = <span class="php-keyword1">NULL</span></span>, <span>mixed <var>$theObject</var> = <span class="php-keyword1">NULL</span> </span> )</code>
 
 		<div class="description short">
 			
@@ -537,6 +537,10 @@ container; if you provide <tt>TRUE</tt>, the method will use the string stored
 in kCONTAINER_SEQUENCE_NAME; if you provide <tt>NULL</tt>, the method
 will use the current container.</p>
 
+<p>The third optional parameter should refer to the object receiving the
+sequence, this will be useful in derived classes that handle graph
+databases.</p>
+
 <p>If the object is not _Is Inited(), the method should raise an
 exception.</p>
 
@@ -552,7 +556,9 @@ exception.</p>
 					<dt><var>$theKey</var></dt>
 					<dd><code>string</code><br>$theKey Sequence key.</dd>
 					<dt><var>$theContainer</var></dt>
-					<dd><code>string</code><br>$theContainer Sequence container.</dd>
+					<dd><code>mixed</code><br>$theContainer Sequence container.</dd>
+					<dt><var>$theObject</var></dt>
+					<dd><code>mixed</code><br>$theObject Receiving object.</dd>
 				</dl></div>
 
 				<h4>Returns</h4>
@@ -581,7 +587,7 @@ exception.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#_NewQuery">#</a>
-		<code><a href="source-class-CContainer.html#371-382" title="Go to source code">NewQuery</a>( )</code>
+		<code><a href="source-class-CContainer.html#376-387" title="Go to source code">NewQuery</a>( )</code>
 
 		<div class="description short">
 			
@@ -624,7 +630,7 @@ container.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#_ConvertValue">#</a>
-		<code><a href="source-class-CContainer.html#398-414" title="Go to source code">ConvertValue</a>( <span>string <var>$theType</var></span>, <span>mixed <var>$theValue</var></span> )</code>
+		<code><a href="source-class-CContainer.html#403-419" title="Go to source code">ConvertValue</a>( <span>string <var>$theType</var></span>, <span>mixed <var>$theValue</var></span> )</code>
 
 		<div class="description short">
 			

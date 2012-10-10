@@ -92,15 +92,18 @@ try
 				"Default namespace",
 				"This represents the default namespace term.",
 				kDEFAULT_LANGUAGE );
+	echo( "    - :".$ns[ kOFFSET_GID ]."\n" );
 
 	//
 	// Create and relate root and attributes category.
 	//
+	echo( "    - :".kONTOLOGY_DEFAULT_ROOT."\n" );
+	echo( "    - :".kONTOLOGY_DEFAULT_ATTRIBUTES."\n" );
 	$_SESSION[ kSESSION_ONTOLOGY ]
 		->SubclassOf(
 			$category = $_SESSION[ kSESSION_ONTOLOGY ]
 							->NewNode(
-								"ATTRIBUTES",
+								kONTOLOGY_DEFAULT_ATTRIBUTES,
 								NULL, NULL,
 								$ns,
 								"Default attributes",
@@ -121,11 +124,12 @@ try
 	//
 	// Create and relate authorship to attributes category.
 	//
+	echo( "    - :".kONTOLOGY_DEFAULT_AUTHORS."\n" );
 	$_SESSION[ kSESSION_ONTOLOGY ]
 		->SubclassOf(
 			$trait = $_SESSION[ kSESSION_ONTOLOGY ]
 						->NewScaleNode(
-							"AUTHORS",
+							kONTOLOGY_DEFAULT_AUTHORS,
 							array( kTYPE_STRING, kTYPE_CARD_ARRAY ),
 							$ns,
 							"Authors",
@@ -145,11 +149,12 @@ try
 	//
 	// Create and relate notes to attributes category.
 	//
+	echo( "    - :".kONTOLOGY_DEFAULT_NOTES."\n" );
 	$_SESSION[ kSESSION_ONTOLOGY ]
 		->SubclassOf(
 			$trait = $_SESSION[ kSESSION_ONTOLOGY ]
 						->NewScaleNode(
-							"NOTES",
+							kONTOLOGY_DEFAULT_NOTES,
 							kTYPE_STRING,
 							$ns,
 							"Notes",
@@ -159,7 +164,7 @@ try
 			$category );
 	
 	//
-	// Create authorship attribute tag.
+	// Create notes attribute tag.
 	//
 	$tag = NULL;
 	$_SESSION[ kSESSION_ONTOLOGY ]->AddToTag( $tag, $trait );
@@ -169,11 +174,12 @@ try
 	//
 	// Create and relate acknowledgments to attributes category.
 	//
+	echo( "    - :".kONTOLOGY_DEFAULT_ACKNOWLEDGMENTS."\n" );
 	$_SESSION[ kSESSION_ONTOLOGY ]
 		->SubclassOf(
 			$trait = $_SESSION[ kSESSION_ONTOLOGY ]
 						->NewScaleNode(
-							"ACKNOWLEDGMENTS",
+							kONTOLOGY_DEFAULT_ACKNOWLEDGMENTS,
 							kTYPE_STRING,
 							$ns,
 							"Acknowledgments",
@@ -183,7 +189,7 @@ try
 			$category );
 	
 	//
-	// Create authorship attribute tag.
+	// Create acknowledgments attribute tag.
 	//
 	$tag = NULL;
 	$_SESSION[ kSESSION_ONTOLOGY ]->AddToTag( $tag, $trait );
@@ -193,11 +199,12 @@ try
 	//
 	// Create and relate bibliography to attributes category.
 	//
+	echo( "    - :".kONTOLOGY_DEFAULT_BIBLIOGRAPHY."\n" );
 	$_SESSION[ kSESSION_ONTOLOGY ]
 		->SubclassOf(
 			$trait = $_SESSION[ kSESSION_ONTOLOGY ]
 						->NewScaleNode(
-							"BIBLIOGRAPHY",
+							kONTOLOGY_DEFAULT_BIBLIOGRAPHY,
 							array( kTYPE_STRING, kTYPE_CARD_ARRAY ),
 							$ns,
 							"Bibliography",
@@ -207,11 +214,36 @@ try
 			$category );
 	
 	//
-	// Create authorship attribute tag.
+	// Create bibliography attribute tag.
 	//
 	$tag = NULL;
 	$_SESSION[ kSESSION_ONTOLOGY ]->AddToTag( $tag, $trait );
 	$attribute_bibliography
+		= $_SESSION[ kSESSION_ONTOLOGY ]->AddToTag( $tag, TRUE );
+
+	//
+	// Create and relate examples to attributes category.
+	//
+	echo( "    - :".kONTOLOGY_DEFAULT_EXAMPLES."\n" );
+	$_SESSION[ kSESSION_ONTOLOGY ]
+		->SubclassOf(
+			$trait = $_SESSION[ kSESSION_ONTOLOGY ]
+						->NewScaleNode(
+							kONTOLOGY_DEFAULT_EXAMPLES,
+							array( kTYPE_STRING, kTYPE_CARD_ARRAY ),
+							$ns,
+							"Examples",
+							"List of examples or templates.",
+							kDEFAULT_LANGUAGE,
+							FALSE ),
+			$category );
+	
+	//
+	// Create examples attribute tag.
+	//
+	$tag = NULL;
+	$_SESSION[ kSESSION_ONTOLOGY ]->AddToTag( $tag, $trait );
+	$attribute_examples
 		= $_SESSION[ kSESSION_ONTOLOGY ]->AddToTag( $tag, TRUE );
 }
 

@@ -198,6 +198,7 @@ class COntology extends CConnection
 	 *	<li><tt>$theLabel</tt>: The term label string, this parameter is optional.
 	 *	<li><tt>$theDescription</tt>: The term description string this parameter is optional.
 	 *	<li><tt>$theLanguage</tt>: The language code of both the label and the description.
+	 *	<li><tt>$theAttributes</tt>: An optional list of additional key/value attributes.
 	 * </ul>
 	 *
 	 * The method will first attempt to locate an existing term. if that fails, it will
@@ -208,6 +209,7 @@ class COntology extends CConnection
 	 * @param string				$theLabel			Term label.
 	 * @param string				$theDescription		Term description.
 	 * @param string				$theLanguage		Label and description language code.
+	 * @param array					$theAttributes		Additional attributes list.
 	 *
 	 * @access public
 	 * @return COntologyTerm		New or found term.
@@ -221,7 +223,7 @@ class COntology extends CConnection
 	 */
 	public function NewTerm( $theIdentifier, $theNamespace = NULL,
 											 $theLabel = NULL, $theDescription = NULL,
-											 $theLanguage = NULL )
+											 $theLanguage = NULL, $theAttributes = NULL )
 	{
 		//
 		// Check if object is ready.
@@ -252,7 +254,8 @@ class COntology extends CConnection
 					else	// Uncommitted object.
 						return $this->_NewTerm
 							( $theIdentifier, $theNamespace,
-							  $theLabel, $theDescription, $theLanguage );			// ==>
+							  $theLabel, $theDescription, $theLanguage,
+							  $theAttributes );										// ==>
 					
 					//
 					// Locate term.
@@ -269,7 +272,8 @@ class COntology extends CConnection
 
 					return $this->_NewTerm
 						( $theIdentifier, $theNamespace,
-						  $theLabel, $theDescription, $theLanguage );				// ==>
+						  $theLabel, $theDescription, $theLanguage,
+						  $theAttributes );											// ==>
 				
 				} // Provided namespace.
 				
@@ -282,7 +286,8 @@ class COntology extends CConnection
 
 				return $this->_NewTerm
 					( $theIdentifier, $theNamespace,
-					  $theLabel, $theDescription, $theLanguage );					// ==>
+					  $theLabel, $theDescription, $theLanguage,
+					  $theAttributes );												// ==>
 			
 			} // Provided local or global identifier.
 			
@@ -1629,6 +1634,7 @@ class COntology extends CConnection
 	 *	<li><tt>$theLabel</tt>: The term label string, this parameter is optional.
 	 *	<li><tt>$theDescription</tt>: The term description string this parameter is optional.
 	 *	<li><tt>$theLanguage</tt>: The language code of both the label and the description.
+	 *	<li><tt>$theAttributes</tt>: An optional list of additional key/value attributes.
 	 * </ul>
 	 *
 	 * The method will return a new committed term or raise an exception if the term is a
@@ -1639,6 +1645,7 @@ class COntology extends CConnection
 	 * @param string				$theLabel			Term label.
 	 * @param string				$theDescription		Term description.
 	 * @param string				$theLanguage		Label and description language code.
+	 * @param array					$theAttributes		Additional attributes list.
 	 *
 	 * @access protected
 	 * @return COntologyTerm		New committed term.
@@ -1648,7 +1655,8 @@ class COntology extends CConnection
 	 * @uses Connection()
 	 */
 	protected function _NewTerm( $theIdentifier, $theNamespace,
-								 $theLabel, $theDescription, $theLanguage )
+								 $theLabel, $theDescription, $theLanguage,
+								 $theAttributes )
 	{
 		//
 		// Check if object is ready.
@@ -1687,6 +1695,19 @@ class COntology extends CConnection
 				//
 				if( $theDescription !== NULL )
 					$term->Description( $theLanguage, $theDescription );
+				
+				//
+				// Set additional attributes.
+				//
+				if( $theAttributes !== NULL )
+				{
+					//
+					// Append attributes.
+					//
+					foreach( $theAttributes as $key => $value )
+						$term->offsetSet( $key, $value );
+				
+				} // Provided additional atributes
 				
 				//
 				// Save term.

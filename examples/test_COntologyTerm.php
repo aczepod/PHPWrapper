@@ -189,7 +189,8 @@ try
 		//
 		echo( '<h4>Insert initialized object</h4>' );
 		echo( '<h5>$namespace[ kOFFSET_LID ] = "NAMESPACE";</h5>' );
-		$namespace[ kOFFSET_LID ] = "NAMESPACE";
+	//	$namespace[ kOFFSET_LID ] = "NAMESPACE";
+		$namespace->LID( "NAMESPACE" );
 		echo( 'Inited['.$namespace->inited()
 					   .'] Dirty['.$namespace->dirty()
 					   .'] Saved['.$namespace->committed()

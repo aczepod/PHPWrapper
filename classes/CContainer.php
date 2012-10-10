@@ -337,6 +337,9 @@ abstract class CContainer extends CConnection
 	 * {@link kCONTAINER_SEQUENCE_NAME}; if you provide <tt>NULL</tt>, the method will use
 	 * the current container.
 	 *
+	 * The third optional parameter should refer to the object receiving the sequence, this
+	 * will be useful in derived classes that handle graph databases.
+	 *
 	 * If the object is not {@link _Is Inited()}, the method should raise an exception.
 	 *
 	 * If the current object does not support sequences, this method should return
@@ -345,14 +348,16 @@ abstract class CContainer extends CConnection
 	 * This class is abstract and by default sequences are not supported.
 	 *
 	 * @param string				$theKey				Sequence key.
-	 * @param string				$theContainer		Sequence container.
+	 * @param mixed					$theContainer		Sequence container.
+	 * @param mixed					$theObject			Receiving object.
 	 *
 	 * @access public
 	 * @return mixed				The sequence number or <tt>NULL</tt>.
 	 *
 	 * @throws Exception
 	 */
-	public function NextSequence( $theKey, $theContainer = NULL )		{	return NULL;	}
+	public function NextSequence( $theKey, $theContainer = NULL,
+										   $theObject = NULL )			{	return NULL;	}
 
 		
 
