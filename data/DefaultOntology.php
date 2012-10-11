@@ -120,7 +120,7 @@ try
 						   ."building blocks of all other ontologies.",
 							kDEFAULT_LANGUAGE,
 							FALSE ) );
-
+	
 	//
 	// Create and relate authorship to attributes category.
 	//

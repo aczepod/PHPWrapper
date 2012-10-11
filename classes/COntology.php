@@ -1393,7 +1393,7 @@ class COntology extends CConnection
 			//
 			// Commit edge.
 			//
-			$edge->Insert( $this->Connection() );
+			$status = $edge->Insert( $this->Connection() );
 			
 			return $edge;															// ==>
 		
@@ -1429,7 +1429,7 @@ class COntology extends CConnection
 	 *
 	 * @throws Exception
 	 *
-	 * @uses _RelateTo()
+	 * @uses RelateTo()
 	 *
 	 * @see kPREDICATE_SUBCLASS_OF
 	 */
@@ -1445,12 +1445,12 @@ class COntology extends CConnection
 		if( ! $namespace->_IsCommitted() )
 			$namespace->Insert( $this->Connection() );
 		
-		return $this->_RelateTo( $theSubject, $theObject,
-								 kPREDICATE_SUBCLASS_OF,
-								 '',
-								 'Subclass-of',
-								 'Subclass-of predicate term.',
-								 'en' );											// ==>
+		return $this->RelateTo( $theSubject, $theObject,
+								kPREDICATE_SUBCLASS_OF,
+								'',
+								'Subclass-of',
+								'Subclass-of predicate term.',
+								'en' );												// ==>
 
 	} // SubclassOf.
 
@@ -1478,7 +1478,7 @@ class COntology extends CConnection
 	 *
 	 * @throws Exception
 	 *
-	 * @uses _RelateTo()
+	 * @uses RelateTo()
 	 *
 	 * @see kPREDICATE_METHOD_OF
 	 */
@@ -1494,12 +1494,12 @@ class COntology extends CConnection
 		if( ! $namespace->_IsCommitted() )
 			$namespace->Insert( $this->Connection() );
 		
-		return $this->_RelateTo( $theSubject, $theObject,
-								 kPREDICATE_METHOD_OF,
-								 '',
-								 'Method-of',
-								 'Method-of predicate term.',
-								 'en' );											// ==>
+		return $this->RelateTo( $theSubject, $theObject,
+								kPREDICATE_METHOD_OF,
+								'',
+								'Method-of',
+								'Method-of predicate term.',
+								'en' );												// ==>
 
 	} // MethodOf.
 
@@ -1527,7 +1527,7 @@ class COntology extends CConnection
 	 *
 	 * @throws Exception
 	 *
-	 * @uses _RelateTo()
+	 * @uses RelateTo()
 	 *
 	 * @see kPREDICATE_SCALE_OF
 	 */
@@ -1543,12 +1543,12 @@ class COntology extends CConnection
 		if( ! $namespace->_IsCommitted() )
 			$namespace->Insert( $this->Connection() );
 		
-		return $this->_RelateTo( $theSubject, $theObject,
-								 kPREDICATE_SCALE_OF,
-								 '',
-								 'Scale-of',
-								 'Scale-of predicate term.',
-								 'en' );											// ==>
+		return $this->RelateTo( $theSubject, $theObject,
+								kPREDICATE_SCALE_OF,
+								'',
+								'Scale-of',
+								'Scale-of predicate term.',
+								'en' );												// ==>
 
 	} // ScaleOf.
 
@@ -1576,7 +1576,7 @@ class COntology extends CConnection
 	 *
 	 * @throws Exception
 	 *
-	 * @uses _RelateTo()
+	 * @uses RelateTo()
 	 *
 	 * @see kPREDICATE_ENUM_OF
 	 */
@@ -1592,12 +1592,12 @@ class COntology extends CConnection
 		if( ! $namespace->_IsCommitted() )
 			$namespace->Insert( $this->Connection() );
 		
-		return $this->_RelateTo( $theSubject, $theObject,
-								 kPREDICATE_ENUM_OF,
-								 '',
-								 'Enumeration-of',
-								 'Enumeration-of predicate term.',
-								 'en' );											// ==>
+		return $this->RelateTo( $theSubject, $theObject,
+								kPREDICATE_ENUM_OF,
+								'',
+								'Enumeration-of',
+								'Enumeration-of predicate term.',
+								'en' );												// ==>
 
 	} // EnumOf.
 

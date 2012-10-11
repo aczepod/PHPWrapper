@@ -7,7 +7,7 @@
 
 	<title>File COntology.php | MyWrapper Reference Documentation</title>
 
-	<script type="text/javascript" src="resources/combined.js?368249000"></script>
+	<script type="text/javascript" src="resources/combined.js?3994123307"></script>
 	<script type="text/javascript" src="elementlist.js?4206909522"></script>
 	<link rel="stylesheet" type="text/css" media="all" href="resources/style.css?3505392360" />
 
@@ -1486,7 +1486,7 @@
 </span><span id="1393" class="l"><a class="l" href="#1393">1393: </a>            <span class="php-comment">//</span>
 </span><span id="1394" class="l"><a class="l" href="#1394">1394: </a>            <span class="php-comment">// Commit edge.</span>
 </span><span id="1395" class="l"><a class="l" href="#1395">1395: </a>            <span class="php-comment">//</span>
-</span><span id="1396" class="l"><a class="l" href="#1396">1396: </a>            <span class="php-var">$edge</span>-&gt;Insert( <span class="php-var">$this</span>-&gt;Connection() );
+</span><span id="1396" class="l"><a class="l" href="#1396">1396: </a>            <span class="php-var">$status</span> = <span class="php-var">$edge</span>-&gt;Insert( <span class="php-var">$this</span>-&gt;Connection() );
 </span><span id="1397" class="l"><a class="l" href="#1397">1397: </a>            
 </span><span id="1398" class="l"><a class="l" href="#1398">1398: </a>            <span class="php-keyword1">return</span> <span class="php-var">$edge</span>;                                                           <span class="php-comment">// ==&gt;</span>
 </span><span id="1399" class="l"><a class="l" href="#1399">1399: </a>        
@@ -1522,7 +1522,7 @@
 </span></span><span id="1429" class="l"><a class="l" href="#1429">1429: </a><span class="php-comment">     *
 </span></span><span id="1430" class="l"><a class="l" href="#1430">1430: </a><span class="php-comment">     * @throws Exception
 </span></span><span id="1431" class="l"><a class="l" href="#1431">1431: </a><span class="php-comment">     *
-</span></span><span id="1432" class="l"><a class="l" href="#1432">1432: </a><span class="php-comment">     * @uses _RelateTo()
+</span></span><span id="1432" class="l"><a class="l" href="#1432">1432: </a><span class="php-comment">     * @uses RelateTo()
 </span></span><span id="1433" class="l"><a class="l" href="#1433">1433: </a><span class="php-comment">     *
 </span></span><span id="1434" class="l"><a class="l" href="#1434">1434: </a><span class="php-comment">     * @see kPREDICATE_SUBCLASS_OF
 </span></span><span id="1435" class="l"><a class="l" href="#1435">1435: </a><span class="php-comment">     */</span>
@@ -1538,12 +1538,12 @@
 </span><span id="1445" class="l"><a class="l" href="#1445">1445: </a>        <span class="php-keyword1">if</span>( ! <span class="php-var">$namespace</span>-&gt;_IsCommitted() )
 </span><span id="1446" class="l"><a class="l" href="#1446">1446: </a>            <span class="php-var">$namespace</span>-&gt;Insert( <span class="php-var">$this</span>-&gt;Connection() );
 </span><span id="1447" class="l"><a class="l" href="#1447">1447: </a>        
-</span><span id="1448" class="l"><a class="l" href="#1448">1448: </a>        <span class="php-keyword1">return</span> <span class="php-var">$this</span>-&gt;_RelateTo( <span class="php-var">$theSubject</span>, <span class="php-var">$theObject</span>,
-</span><span id="1449" class="l"><a class="l" href="#1449">1449: </a>                                 kPREDICATE_SUBCLASS_OF,
-</span><span id="1450" class="l"><a class="l" href="#1450">1450: </a>                                 <span class="php-quote">''</span>,
-</span><span id="1451" class="l"><a class="l" href="#1451">1451: </a>                                 <span class="php-quote">'Subclass-of'</span>,
-</span><span id="1452" class="l"><a class="l" href="#1452">1452: </a>                                 <span class="php-quote">'Subclass-of predicate term.'</span>,
-</span><span id="1453" class="l"><a class="l" href="#1453">1453: </a>                                 <span class="php-quote">'en'</span> );                                            <span class="php-comment">// ==&gt;</span>
+</span><span id="1448" class="l"><a class="l" href="#1448">1448: </a>        <span class="php-keyword1">return</span> <span class="php-var">$this</span>-&gt;RelateTo( <span class="php-var">$theSubject</span>, <span class="php-var">$theObject</span>,
+</span><span id="1449" class="l"><a class="l" href="#1449">1449: </a>                                kPREDICATE_SUBCLASS_OF,
+</span><span id="1450" class="l"><a class="l" href="#1450">1450: </a>                                <span class="php-quote">''</span>,
+</span><span id="1451" class="l"><a class="l" href="#1451">1451: </a>                                <span class="php-quote">'Subclass-of'</span>,
+</span><span id="1452" class="l"><a class="l" href="#1452">1452: </a>                                <span class="php-quote">'Subclass-of predicate term.'</span>,
+</span><span id="1453" class="l"><a class="l" href="#1453">1453: </a>                                <span class="php-quote">'en'</span> );                                             <span class="php-comment">// ==&gt;</span>
 </span><span id="1454" class="l"><a class="l" href="#1454">1454: </a>
 </span><span id="1455" class="l"><a class="l" href="#1455">1455: </a>    } <span class="php-comment">// SubclassOf.</span>
 </span><span id="1456" class="l"><a class="l" href="#1456">1456: </a>
@@ -1571,7 +1571,7 @@
 </span></span><span id="1478" class="l"><a class="l" href="#1478">1478: </a><span class="php-comment">     *
 </span></span><span id="1479" class="l"><a class="l" href="#1479">1479: </a><span class="php-comment">     * @throws Exception
 </span></span><span id="1480" class="l"><a class="l" href="#1480">1480: </a><span class="php-comment">     *
-</span></span><span id="1481" class="l"><a class="l" href="#1481">1481: </a><span class="php-comment">     * @uses _RelateTo()
+</span></span><span id="1481" class="l"><a class="l" href="#1481">1481: </a><span class="php-comment">     * @uses RelateTo()
 </span></span><span id="1482" class="l"><a class="l" href="#1482">1482: </a><span class="php-comment">     *
 </span></span><span id="1483" class="l"><a class="l" href="#1483">1483: </a><span class="php-comment">     * @see kPREDICATE_METHOD_OF
 </span></span><span id="1484" class="l"><a class="l" href="#1484">1484: </a><span class="php-comment">     */</span>
@@ -1587,12 +1587,12 @@
 </span><span id="1494" class="l"><a class="l" href="#1494">1494: </a>        <span class="php-keyword1">if</span>( ! <span class="php-var">$namespace</span>-&gt;_IsCommitted() )
 </span><span id="1495" class="l"><a class="l" href="#1495">1495: </a>            <span class="php-var">$namespace</span>-&gt;Insert( <span class="php-var">$this</span>-&gt;Connection() );
 </span><span id="1496" class="l"><a class="l" href="#1496">1496: </a>        
-</span><span id="1497" class="l"><a class="l" href="#1497">1497: </a>        <span class="php-keyword1">return</span> <span class="php-var">$this</span>-&gt;_RelateTo( <span class="php-var">$theSubject</span>, <span class="php-var">$theObject</span>,
-</span><span id="1498" class="l"><a class="l" href="#1498">1498: </a>                                 kPREDICATE_METHOD_OF,
-</span><span id="1499" class="l"><a class="l" href="#1499">1499: </a>                                 <span class="php-quote">''</span>,
-</span><span id="1500" class="l"><a class="l" href="#1500">1500: </a>                                 <span class="php-quote">'Method-of'</span>,
-</span><span id="1501" class="l"><a class="l" href="#1501">1501: </a>                                 <span class="php-quote">'Method-of predicate term.'</span>,
-</span><span id="1502" class="l"><a class="l" href="#1502">1502: </a>                                 <span class="php-quote">'en'</span> );                                            <span class="php-comment">// ==&gt;</span>
+</span><span id="1497" class="l"><a class="l" href="#1497">1497: </a>        <span class="php-keyword1">return</span> <span class="php-var">$this</span>-&gt;RelateTo( <span class="php-var">$theSubject</span>, <span class="php-var">$theObject</span>,
+</span><span id="1498" class="l"><a class="l" href="#1498">1498: </a>                                kPREDICATE_METHOD_OF,
+</span><span id="1499" class="l"><a class="l" href="#1499">1499: </a>                                <span class="php-quote">''</span>,
+</span><span id="1500" class="l"><a class="l" href="#1500">1500: </a>                                <span class="php-quote">'Method-of'</span>,
+</span><span id="1501" class="l"><a class="l" href="#1501">1501: </a>                                <span class="php-quote">'Method-of predicate term.'</span>,
+</span><span id="1502" class="l"><a class="l" href="#1502">1502: </a>                                <span class="php-quote">'en'</span> );                                             <span class="php-comment">// ==&gt;</span>
 </span><span id="1503" class="l"><a class="l" href="#1503">1503: </a>
 </span><span id="1504" class="l"><a class="l" href="#1504">1504: </a>    } <span class="php-comment">// MethodOf.</span>
 </span><span id="1505" class="l"><a class="l" href="#1505">1505: </a>
@@ -1620,7 +1620,7 @@
 </span></span><span id="1527" class="l"><a class="l" href="#1527">1527: </a><span class="php-comment">     *
 </span></span><span id="1528" class="l"><a class="l" href="#1528">1528: </a><span class="php-comment">     * @throws Exception
 </span></span><span id="1529" class="l"><a class="l" href="#1529">1529: </a><span class="php-comment">     *
-</span></span><span id="1530" class="l"><a class="l" href="#1530">1530: </a><span class="php-comment">     * @uses _RelateTo()
+</span></span><span id="1530" class="l"><a class="l" href="#1530">1530: </a><span class="php-comment">     * @uses RelateTo()
 </span></span><span id="1531" class="l"><a class="l" href="#1531">1531: </a><span class="php-comment">     *
 </span></span><span id="1532" class="l"><a class="l" href="#1532">1532: </a><span class="php-comment">     * @see kPREDICATE_SCALE_OF
 </span></span><span id="1533" class="l"><a class="l" href="#1533">1533: </a><span class="php-comment">     */</span>
@@ -1636,12 +1636,12 @@
 </span><span id="1543" class="l"><a class="l" href="#1543">1543: </a>        <span class="php-keyword1">if</span>( ! <span class="php-var">$namespace</span>-&gt;_IsCommitted() )
 </span><span id="1544" class="l"><a class="l" href="#1544">1544: </a>            <span class="php-var">$namespace</span>-&gt;Insert( <span class="php-var">$this</span>-&gt;Connection() );
 </span><span id="1545" class="l"><a class="l" href="#1545">1545: </a>        
-</span><span id="1546" class="l"><a class="l" href="#1546">1546: </a>        <span class="php-keyword1">return</span> <span class="php-var">$this</span>-&gt;_RelateTo( <span class="php-var">$theSubject</span>, <span class="php-var">$theObject</span>,
-</span><span id="1547" class="l"><a class="l" href="#1547">1547: </a>                                 kPREDICATE_SCALE_OF,
-</span><span id="1548" class="l"><a class="l" href="#1548">1548: </a>                                 <span class="php-quote">''</span>,
-</span><span id="1549" class="l"><a class="l" href="#1549">1549: </a>                                 <span class="php-quote">'Scale-of'</span>,
-</span><span id="1550" class="l"><a class="l" href="#1550">1550: </a>                                 <span class="php-quote">'Scale-of predicate term.'</span>,
-</span><span id="1551" class="l"><a class="l" href="#1551">1551: </a>                                 <span class="php-quote">'en'</span> );                                            <span class="php-comment">// ==&gt;</span>
+</span><span id="1546" class="l"><a class="l" href="#1546">1546: </a>        <span class="php-keyword1">return</span> <span class="php-var">$this</span>-&gt;RelateTo( <span class="php-var">$theSubject</span>, <span class="php-var">$theObject</span>,
+</span><span id="1547" class="l"><a class="l" href="#1547">1547: </a>                                kPREDICATE_SCALE_OF,
+</span><span id="1548" class="l"><a class="l" href="#1548">1548: </a>                                <span class="php-quote">''</span>,
+</span><span id="1549" class="l"><a class="l" href="#1549">1549: </a>                                <span class="php-quote">'Scale-of'</span>,
+</span><span id="1550" class="l"><a class="l" href="#1550">1550: </a>                                <span class="php-quote">'Scale-of predicate term.'</span>,
+</span><span id="1551" class="l"><a class="l" href="#1551">1551: </a>                                <span class="php-quote">'en'</span> );                                             <span class="php-comment">// ==&gt;</span>
 </span><span id="1552" class="l"><a class="l" href="#1552">1552: </a>
 </span><span id="1553" class="l"><a class="l" href="#1553">1553: </a>    } <span class="php-comment">// ScaleOf.</span>
 </span><span id="1554" class="l"><a class="l" href="#1554">1554: </a>
@@ -1669,7 +1669,7 @@
 </span></span><span id="1576" class="l"><a class="l" href="#1576">1576: </a><span class="php-comment">     *
 </span></span><span id="1577" class="l"><a class="l" href="#1577">1577: </a><span class="php-comment">     * @throws Exception
 </span></span><span id="1578" class="l"><a class="l" href="#1578">1578: </a><span class="php-comment">     *
-</span></span><span id="1579" class="l"><a class="l" href="#1579">1579: </a><span class="php-comment">     * @uses _RelateTo()
+</span></span><span id="1579" class="l"><a class="l" href="#1579">1579: </a><span class="php-comment">     * @uses RelateTo()
 </span></span><span id="1580" class="l"><a class="l" href="#1580">1580: </a><span class="php-comment">     *
 </span></span><span id="1581" class="l"><a class="l" href="#1581">1581: </a><span class="php-comment">     * @see kPREDICATE_ENUM_OF
 </span></span><span id="1582" class="l"><a class="l" href="#1582">1582: </a><span class="php-comment">     */</span>
@@ -1685,12 +1685,12 @@
 </span><span id="1592" class="l"><a class="l" href="#1592">1592: </a>        <span class="php-keyword1">if</span>( ! <span class="php-var">$namespace</span>-&gt;_IsCommitted() )
 </span><span id="1593" class="l"><a class="l" href="#1593">1593: </a>            <span class="php-var">$namespace</span>-&gt;Insert( <span class="php-var">$this</span>-&gt;Connection() );
 </span><span id="1594" class="l"><a class="l" href="#1594">1594: </a>        
-</span><span id="1595" class="l"><a class="l" href="#1595">1595: </a>        <span class="php-keyword1">return</span> <span class="php-var">$this</span>-&gt;_RelateTo( <span class="php-var">$theSubject</span>, <span class="php-var">$theObject</span>,
-</span><span id="1596" class="l"><a class="l" href="#1596">1596: </a>                                 kPREDICATE_ENUM_OF,
-</span><span id="1597" class="l"><a class="l" href="#1597">1597: </a>                                 <span class="php-quote">''</span>,
-</span><span id="1598" class="l"><a class="l" href="#1598">1598: </a>                                 <span class="php-quote">'Enumeration-of'</span>,
-</span><span id="1599" class="l"><a class="l" href="#1599">1599: </a>                                 <span class="php-quote">'Enumeration-of predicate term.'</span>,
-</span><span id="1600" class="l"><a class="l" href="#1600">1600: </a>                                 <span class="php-quote">'en'</span> );                                            <span class="php-comment">// ==&gt;</span>
+</span><span id="1595" class="l"><a class="l" href="#1595">1595: </a>        <span class="php-keyword1">return</span> <span class="php-var">$this</span>-&gt;RelateTo( <span class="php-var">$theSubject</span>, <span class="php-var">$theObject</span>,
+</span><span id="1596" class="l"><a class="l" href="#1596">1596: </a>                                kPREDICATE_ENUM_OF,
+</span><span id="1597" class="l"><a class="l" href="#1597">1597: </a>                                <span class="php-quote">''</span>,
+</span><span id="1598" class="l"><a class="l" href="#1598">1598: </a>                                <span class="php-quote">'Enumeration-of'</span>,
+</span><span id="1599" class="l"><a class="l" href="#1599">1599: </a>                                <span class="php-quote">'Enumeration-of predicate term.'</span>,
+</span><span id="1600" class="l"><a class="l" href="#1600">1600: </a>                                <span class="php-quote">'en'</span> );                                             <span class="php-comment">// ==&gt;</span>
 </span><span id="1601" class="l"><a class="l" href="#1601">1601: </a>
 </span><span id="1602" class="l"><a class="l" href="#1602">1602: </a>    } <span class="php-comment">// EnumOf.</span>
 </span><span id="1603" class="l"><a class="l" href="#1603">1603: </a>
