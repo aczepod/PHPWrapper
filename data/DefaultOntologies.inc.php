@@ -2,14 +2,14 @@
 
 /*=======================================================================================
  *																						*
- *								DefaultOntology.inc.php									*
+ *								DefaultOntologies.inc.php								*
  *																						*
  *======================================================================================*/
  
 /**
- *	Default ontology definitions.
+ *	Default ontology code definitions.
  *
- *	This file contains common definitions used by the default ontology.
+ *	This file contains common definitions used by the default ontologies.
  *
  *	@package	MyWrapper
  *	@subpackage	Data
