@@ -93,6 +93,9 @@ try
 	LoadLandraceOntology();
 	LoadLandraceCategories();
 	LoadLandraceInventoryTraits();
+	LoadLandraceTaxonomyTraits();
+	LoadLandraceIdentificationTraits();
+	LoadLandraceSiteTraits();
 }
 
 //
