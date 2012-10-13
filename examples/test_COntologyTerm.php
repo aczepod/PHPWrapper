@@ -580,6 +580,27 @@ try
 	echo( '<pre>' ); print_r( $status ); echo( '</pre>' );
 	echo( '<hr />' );
 	echo( '<hr />' );
+
+	//
+	// Test setting term reference.
+	//
+	echo( '<h4>Test setting term reference</h4>' );
+	echo( '<h5>$preferred = new MyClass();</h5>' );
+	$preferred = new MyClass();
+	echo( '<h5>$preferred[ kOFFSET_LID ] = "preferred";</h5>' );
+	$preferred[ kOFFSET_LID ] = "preferred";
+	echo( '<h5>$synonym = new MyClass();</h5>' );
+	$synonym = new MyClass();
+	echo( '<h5>$synonym[ kOFFSET_LID ] = "synonym";</h5>' );
+	$synonym[ kOFFSET_LID ] = "synonym";
+	echo( '<h5>$synonym->Term( $preferred );</h5>' );
+	$synonym->Term( $preferred );
+	echo( 'Synonym:<pre>' ); print_r( $synonym ); echo( '</pre>' );
+	echo( '<h5>$status = $synonym->Replace( $database );</h5>' );
+	$status = $synonym->Replace( $database );
+	echo( '<pre>' ); print_r( $synonym ); echo( '</pre>' );
+	echo( '<hr />' );
+	echo( '<hr />' );
 }
 
 //

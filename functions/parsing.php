@@ -1,20 +1,20 @@
 <?php
 
 /**
- * <h3>JSON utilities</h3>
+ * <h3>Parsing utilities</h3>
  *
- * This file contains common JSON functions used by the library.
+ * This file contains common parsing functions used by the library.
  *
  *	@package	MyWrapper
  *	@subpackage	Functions
  *
  *	@author		Milko A. Škofič <m.skofic@cgiar.org>
- *	@version	1.00 03/09/2012
+ *	@version	1.00 13/10/2012
  */
 
 /*=======================================================================================
  *																						*
- *										json.php										*
+ *										parsing.php										*
  *																						*
  *======================================================================================*/
 
@@ -131,33 +131,179 @@ require_once( kPATH_MYWRAPPER_LIBRARY_DEFINE."/Errors.inc.php" );
 		switch( json_last_error() )
 		{
 			case JSON_ERROR_DEPTH:
-				throw new \Exception
+				throw new Exception
 					( "JSON $sense error: maximum stack depth exceeded",
 					  $code );													// !@! ==>
 
 			case JSON_ERROR_STATE_MISMATCH:
-				throw new \Exception
+				throw new Exception
 					( "JSON $sense error: invalid or malformed JSON",
 					  $code );													// !@! ==>
 
 			case JSON_ERROR_CTRL_CHAR:
-				throw new \Exception
+				throw new Exception
 					( "JSON $sense error: unexpected control character found",
 					  $code );													// !@! ==>
 
 			case JSON_ERROR_SYNTAX:
-				throw new \Exception
+				throw new Exception
 					( "JSON $sense error: syntax error, malformed JSON",
 					  $code );													// !@! ==>
 
 			case JSON_ERROR_UTF8:
-				throw new \Exception
+				throw new Exception
 					( "JSON $sense error: malformed UTF-8 characters, "
 					 ."possibly incorrectly encoded",
 					  $code );													// !@! ==>
 		}
 	
 	} // JsonError.
+
+
+
+/*=======================================================================================
+ *																						*
+ *										PO INTERFACE									*
+ *																						*
+ *======================================================================================*/
+
+
+	 
+	/*===================================================================================
+	 *	PO2Array																		*
+	 *==================================================================================*/
+
+	/**
+	 * <h4>Convert a PO file into an array</h4>
+	 *
+	 * This function will parse the provided PO file and return its contents as an array in
+	 * which the element's key represents the english string and the element's value the
+	 * translated string.
+	 *
+	 * If any error occurs, the function will raise an exception; if the file is empty, the
+	 * function will return <tt>NULL</tt>.
+	 *
+	 * @param string				$theFile			File path.
+	 *
+	 * @return array				Parsed key/value array.
+	 *
+	 * @uses JsonError()
+	 */
+	function PO2Array( $theFile )
+	{
+		//
+		// Read file.
+		//
+		$file = file_get_contents( $theFile );
+		if( $file !== FALSE )
+		{
+			//
+			// Match english strings in file.
+			//
+			$count = preg_match_all( '/msgid ("(.*)"\n)+/', $file, $match );
+			if( $count === FALSE )
+				throw new Exception
+						( "Error parsing the file [$theFile]",
+						  kERROR_STATE );										// !@! ==>
+			
+			//
+			// Normalise matches.
+			//
+			$match = $match[ 0 ];
+			
+			//
+			// Normalise english strings.
+			//
+			$keys = Array();
+			while( ($line = array_shift( $match )) !== NULL )
+			{
+				//
+				// Get strings.
+				//
+				$count = preg_match_all( '/"(.*)"/', $line, $strings );
+				if( $count === FALSE )
+					throw new Exception
+							( "Error parsing the file [$theFile]",
+							  kERROR_STATE );									// !@! ==>
+				
+				//
+				// Merge strings.
+				//
+				$strings = $strings[ 1 ];
+				if( count( $strings ) > 1 )
+				{
+					$tmp = '';
+					foreach( $strings as $item )
+						$tmp .= $item;
+					$keys[] = $tmp;
+				}
+				else
+					$keys[] = $strings[ 0 ];
+			}
+			
+			//
+			// Match translated strings in file.
+			//
+			$count = preg_match_all( '/msgstr ("(.*)"\n)+/', $file, $match );
+			if( $count === FALSE )
+				throw new Exception
+						( "Error parsing the file [$theFile]",
+						  kERROR_STATE );										// !@! ==>
+			
+			//
+			// Normalise matches.
+			//
+			$match = $match[ 0 ];
+			
+			//
+			// Normalise english strings.
+			//
+			$values = Array();
+			while( ($line = array_shift( $match )) !== NULL )
+			{
+				//
+				// Get strings.
+				//
+				$count = preg_match_all( '/"(.*)"/', $line, $strings );
+				if( $count === FALSE )
+					throw new Exception
+							( "Error parsing the file [$theFile]",
+							  kERROR_STATE );									// !@! ==>
+				
+				//
+				// Merge strings.
+				//
+				$strings = $strings[ 1 ];
+				if( count( $strings ) > 1 )
+				{
+					$tmp = '';
+					foreach( $strings as $item )
+						$tmp .= $item;
+					$values[] = $tmp;
+				}
+				else
+					$values[] = $strings[ 0 ];
+			}
+			
+			//
+			// Combine array.
+			//
+			$matches = array_combine( $keys, $values );
+			
+			//
+			// Get rid of header.
+			//
+			array_shift( $matches );
+			
+			return $matches;														// ==>
+		
+		} // Read the file.
+		
+		throw new Exception
+				( "Unable to read the file [$theFile]",
+				  kERROR_STATE );												// !@! ==>
+	
+	} // PO2Array.
 
 
 ?>

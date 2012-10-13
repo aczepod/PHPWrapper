@@ -34,6 +34,11 @@ require_once( 'local.inc.php' );
 require_once( 'DefaultOntologies.php' );
 
 //
+// ISO ontologies.
+//
+require_once( 'ISOOntologies.php' );
+
+//
 // Landrace ontology.
 //
 require_once( 'LandracesPassport.php' );
@@ -84,6 +89,16 @@ try
 	LoadDefaultOntologies();
 	LoadDefaultCategories();
 	LoadDefaultAttributes();
+	
+	echo( "  • Loading ISO ontology.\n" );
+	
+	//
+	// Load ISO ontology.
+	//
+	LoadISOOntologies();
+	LoadISOStandards();
+	LoadISO639Categories();
+	LoadISO3166Categories();
 	
 	echo( "  • Loading landraces passport ontology.\n" );
 	

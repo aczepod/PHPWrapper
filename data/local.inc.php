@@ -38,4 +38,15 @@ define( "kDEFAULT_DATABASE",				"ONTOLOGY" );
  */
 define( "kDEFAULT_LANGUAGE",				"en" );
 
+/*=======================================================================================
+ *	VERBOSE FLAG																		*
+ *======================================================================================*/
+
+/**
+ * Vervose flag.
+ *
+ * If set, the method will echo all created elements.
+ */
+define( "kOPTION_VERBOSE",					TRUE );
+
 ?>

@@ -80,4 +80,12 @@ define( "kOFFSET_DATA",							'_data' );
  */
 define( "kOFFSET_SYNONYMS",						'_synonyms' );
 
+/**
+ * Term.
+ *
+ * This tag identifies a reference to a term object, its value will be the native unique
+ * identifier, {@link kOFFSET_NID}, of the referenced term.
+ */
+define( "kOFFSET_TERM",							'_term' );
+
 ?>

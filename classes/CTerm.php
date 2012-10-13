@@ -361,6 +361,50 @@ class CTerm extends CPersistentObject
 			( $this, kOFFSET_SYNONYMS, $theValue, $theOperation, $getOld );			// ==>
 
 	} // Synonym.
+
+	 
+	/*===================================================================================
+	 *	Term																			*
+	 *==================================================================================*/
+
+	/**
+	 * <h4>Manage term reference</h4>
+	 *
+	 * This method can be used to manage the term reference, {@link kOFFSET_TERM}, which
+	 * represents the term that hosts all the attributes for the current term.
+	 *
+	 * This attribute is used when defining exact term synonyms: instead of duplicating the
+	 * attributes in all the synonyms, one can store them in one term and have all the other
+	 * synonyms point to that term, that way storage and changes reside in a single place.
+	 *
+	 * The method accepts a parameter which represents either the term, or the requested
+	 * operation, depending on its value:
+	 *
+	 * <ul>
+	 *	<li><tt>NULL</tt>: Return the current value.
+	 *	<li><tt>FALSE</tt>: Delete the current value.
+	 *	<li><i>other</i>: Set the value with the provided parameter.
+	 * </ul>
+	 *
+	 * The second parameter is a boolean which if <tt>TRUE</tt> will return the <i>old</i>
+	 * value when replacing containers; if <tt>FALSE</tt>, it will return the currently set
+	 * value.
+	 *
+	 * @param mixed					$theValue			Term or operation.
+	 * @param boolean				$getOld				<tt>TRUE</tt> get old value.
+	 *
+	 * @access public
+	 * @return mixed				<i>New</i> or <i>old</i> native container.
+	 *
+	 * @uses ManageOffset()
+	 *
+	 * @see kOFFSET_TERM
+	 */
+	public function Term( $theValue = NULL, $getOld = FALSE )
+	{
+		return ManageOffset( $this, kOFFSET_TERM, $theValue, $getOld );				// ==>
+
+	} // Term.
 		
 
 

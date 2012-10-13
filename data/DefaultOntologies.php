@@ -62,7 +62,8 @@ require_once( 'DefaultOntologies.inc.php' );
 		//
 		// Inform.
 		//
-		echo( "    - :".$_SESSION[ 'TERMS' ][ 0 ][ kOFFSET_GID ]."\n" );
+		if( kOPTION_VERBOSE )
+			echo( "    - :".$_SESSION[ 'TERMS' ][ 0 ][ kOFFSET_GID ]."\n" );
 
 	} // LoadDefaultNamespaces.
 
@@ -96,7 +97,8 @@ require_once( 'DefaultOntologies.inc.php' );
 		//
 		// Inform.
 		//
-		echo( "    - $id [".$_SESSION[ 'NODES' ][ $id ]."]\n" );
+		if( kOPTION_VERBOSE )
+			echo( "    - $id [".$_SESSION[ 'NODES' ][ $id ]."]\n" );
 
 	} // LoadDefaultOntologies.
 
@@ -132,7 +134,8 @@ require_once( 'DefaultOntologies.inc.php' );
 		//
 		// Inform.
 		//
-		echo( "    - $id [".$_SESSION[ 'NODES' ][ $id ]."]\n" );
+		if( kOPTION_VERBOSE )
+			echo( "    - $id [".$_SESSION[ 'NODES' ][ $id ]."]\n" );
 
 	} // LoadDefaultCategories.
 
@@ -221,11 +224,12 @@ require_once( 'DefaultOntologies.inc.php' );
 			//
 			// Inform.
 			//
-			echo( "    - $id ["
-				 .$_SESSION[ 'NODES' ][ $id ]
-				 ."] ("
-				 .$_SESSION[ 'TAGS' ][ $id ][ kOFFSET_NID ]
-				 .")\n" );
+			if( kOPTION_VERBOSE )
+				echo( "    - $id ["
+					 .$_SESSION[ 'NODES' ][ $id ]
+					 ."] ("
+					 .$_SESSION[ 'TAGS' ][ $id ][ kOFFSET_NID ]
+					 .")\n" );
 		}
 
 	} // LoadDefaultAttributes.

@@ -6,8 +6,8 @@
 
 	<title>Class CTerm | MyWrapper Reference Documentation</title>
 
-	<script type="text/javascript" src="resources/combined.js?3994123307"></script>
-	<script type="text/javascript" src="elementlist.js?4206909522"></script>
+	<script type="text/javascript" src="resources/combined.js?368249000"></script>
+	<script type="text/javascript" src="elementlist.js?1057014722"></script>
 	<link rel="stylesheet" type="text/css" media="all" href="resources/style.css?3505392360" />
 
 </head>
@@ -214,7 +214,7 @@ offsets:</p>
 				<b>Author:</b>
 				Milko A. Škofič &lt;<a
 href="mailto:m.skofic&#64;cgiar.org">m.skofic&#64;<!---->cgiar.org</a>&gt;<br />
-		<b>Located at</b> <a href="source-class-CTerm.html#43-611" title="Go to source code">CTerm.php</a><br />
+		<b>Located at</b> <a href="source-class-CTerm.html#43-655" title="Go to source code">CTerm.php</a><br />
 	</div>
 
 
@@ -665,6 +665,82 @@ managed with the following parameters:</p>
 		</div>
 		</div></td>
 	</tr>
+	<tr data-order="Term" id="_Term">
+
+		<td class="attributes"><code>
+			 public 
+			mixed
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_Term">#</a>
+		<code><a href="source-class-CTerm.html#370-407" title="Go to source code">Term</a>( <span>mixed <var>$theValue</var> = <span class="php-keyword1">NULL</span></span>, <span>boolean <var>$getOld</var> = <span class="php-keyword1">FALSE</span> </span> )</code>
+
+		<div class="description short">
+			
+<h4>Manage term reference</h4>
+
+		</div>
+
+		<div class="description detailed hidden">
+			
+<h4>Manage term reference</h4>
+
+<p>This method can be used to manage the term reference, kOFFSET_TERM,
+which represents the term that hosts all the attributes for the current
+term.</p>
+
+<p>This attribute is used when defining exact term synonyms: instead of
+duplicating the attributes in all the synonyms, one can store them in one term
+and have all the other synonyms point to that term, that way storage and changes
+reside in a single place.</p>
+
+<p>The method accepts a parameter which represents either the term, or the
+requested operation, depending on its value:</p>
+
+<ul>
+	<li><tt>NULL</tt>: Return the current value.</li>
+
+	<li><tt>FALSE</tt>: Delete the current value.</li>
+
+	<li><i>other</i>: Set the value with the provided parameter.</li>
+</ul>
+
+<p>The second parameter is a boolean which if <tt>TRUE</tt> will return the
+<i>old</i> value when replacing containers; if <tt>FALSE</tt>, it will return
+the currently set value.</p>
+
+
+
+				<h4>Parameters</h4>
+				<div class="list"><dl>
+					<dt><var>$theValue</var></dt>
+					<dd><code>mixed</code><br>$theValue Term or operation.</dd>
+					<dt><var>$getOld</var></dt>
+					<dd><code>boolean</code><br>$getOld <tt>TRUE</tt> get old value.</dd>
+				</dl></div>
+
+				<h4>Returns</h4>
+				<div class="list">
+					<code>mixed</code><br><i>New</i> or <i>old</i> native container.<br />
+				</div>
+
+
+				<h4>See</h4>
+				<div class="list">
+						kOFFSET_TERM<br />
+				</div>
+				<h4>Uses</h4>
+				<div class="list">
+						<code><code><a href="function-ManageOffset.html">ManageOffset()</a></code></code> <br />
+				</div>
+
+
+		</div>
+		</div></td>
+	</tr>
 	<tr data-order="TermCode" id="_TermCode">
 
 		<td class="attributes"><code>
@@ -676,7 +752,7 @@ managed with the following parameters:</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#_TermCode">#</a>
-		<code><a href="source-class-CTerm.html#379-405" title="Go to source code">TermCode</a>( <span>string <var>$theIdentifier</var></span>, <span>string <var>$theNamespace</var> = <span class="php-keyword1">NULL</span> </span> )</code>
+		<code><a href="source-class-CTerm.html#423-449" title="Go to source code">TermCode</a>( <span>string <var>$theIdentifier</var></span>, <span>string <var>$theNamespace</var> = <span class="php-keyword1">NULL</span> </span> )</code>
 
 		<div class="description short">
 			
@@ -728,7 +804,7 @@ the method will generate the term's global identifier.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#__index">#</a>
-		<code><a href="source-class-CTerm.html#421-456" title="Go to source code">_index</a>( <span><code><a href="class-CConnection.html">CConnection</a></code> <var>$theConnection</var></span>, <span>bitfield <var>$theModifiers</var></span> )</code>
+		<code><a href="source-class-CTerm.html#465-500" title="Go to source code">_index</a>( <span><code><a href="class-CConnection.html">CConnection</a></code> <var>$theConnection</var></span>, <span>bitfield <var>$theModifiers</var></span> )</code>
 
 		<div class="description short">
 			
@@ -787,7 +863,7 @@ compute the global identifier.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#__Preset">#</a>
-		<code><a href="source-class-CTerm.html#472-523" title="Go to source code">_Preset</a>( <span>reference <var>&amp; $theOffset</var></span>, <span>reference <var>&amp; $theValue</var></span> )</code>
+		<code><a href="source-class-CTerm.html#516-567" title="Go to source code">_Preset</a>( <span>reference <var>&amp; $theOffset</var></span>, <span>reference <var>&amp; $theValue</var></span> )</code>
 
 		<div class="description short">
 			
@@ -848,7 +924,7 @@ object was committed, <code><a href="class-CStatusDocument.html#__IsCommitted">C
 
 		<td class="name"><div>
 		<a class="anchor" href="#__Preunset">#</a>
-		<code><a href="source-class-CTerm.html#530-568" title="Go to source code">_Preunset</a>( <span>reference <var>&amp; $theOffset</var></span> )</code>
+		<code><a href="source-class-CTerm.html#574-612" title="Go to source code">_Preunset</a>( <span>reference <var>&amp; $theOffset</var></span> )</code>
 
 		<div class="description short">
 			
@@ -907,7 +983,7 @@ object was committed, <code><a href="class-CStatusDocument.html#__IsCommitted">C
 
 		<td class="name"><div>
 		<a class="anchor" href="#__Ready">#</a>
-		<code><a href="source-class-CTerm.html#584-607" title="Go to source code">_Ready</a>( )</code>
+		<code><a href="source-class-CTerm.html#628-651" title="Go to source code">_Ready</a>( )</code>
 
 		<div class="description short">
 			

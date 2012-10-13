@@ -221,7 +221,6 @@
 	echo( 'Object<pre>' ); print_r( $object ); echo( '</pre>' );
 	echo( 'Status<pre>' ); print_r( $ok ); echo( '</pre>' );
 	echo( '<hr />' );
-*/
 	
 	//
 	// Test late static binding.
@@ -266,5 +265,97 @@
 	echo( '<hr />' );
 	$x->CallStatic();
 	echo( '<hr /><hr />' );
+*/
+	//
+	// Simplexml parsing tests.
+	//
+	
+	//
+	// Init local storage.
+	//
+	$iso = Array();
+	$iso[ '3166' ] = Array();
+	
+	//
+	// Open file.
+	//
+	$iso = Array();
+	$file = '/usr/local/Cellar/iso-codes/3.37/share/xml/iso-codes/iso_3166.xml';
+	$xml = simplexml_load_file( $file );
+	if( $xml instanceof SimpleXMLElement )
+	{
+		//
+		// Collect ISO 3166 offsets.
+		//
+		$offsets = Array();
+		foreach( $xml->{'iso_3166_entry'} as $iso_3166 )
+		{
+			foreach( $iso_3166->attributes() as $key => $value )
+			{
+				if( ! in_array( $key, $offsets ) )
+					$offsets[] = $key;
+			}
+		}
+		
+		echo( '<pre>' );
+		print_r( $offsets );
+		echo( '</pre>' );
+		
+		//
+		// Load ISO 3166 codes.
+		//
+		foreach( $xml->{'iso_3166_entry'} as $element )
+		{
+			$record = Array();
+			foreach( $element->attributes() as $key => $value )
+			{
+				$record[ $key ] = (string) $value;
+			}
+			
+			$iso[ '3166' ][] = $record;
+		}
+	
+		//
+		// Collect ISO 3166 3 offsets.
+		//
+		$offsets = Array();
+		foreach( $xml->{'iso_3166_3_entry'} as $element )
+		{
+			foreach( $element->attributes() as $key => $value )
+			{
+				if( ! in_array( $key, $offsets ) )
+					$offsets[] = $key;
+			}
+		}
+		
+		echo( '<pre>' );
+		print_r( $offsets );
+		echo( '</pre>' );
+
+		$iso[ '3166_3' ] = Array();
+		
+		//
+		// Load ISO 3166 3 codes.
+		//
+		foreach( $xml->{'iso_3166_3_entry'} as $element )
+		{
+			$record = Array();
+			foreach( $element->attributes() as $key => $value )
+			{
+				$record[ $key ] = (string) $value;
+			}
+			
+			$iso[ '3166_3' ][] = $record;
+		}
+		
+		echo( '<hr />' );
+	}
+	else
+		exit( "unable to load XML file [$file]." );
+	
+	echo( count( $iso[ '3166' ] ) );
+	echo( '<pre>' );
+	print_r( $iso );
+	echo( '</pre>' );
 	
 ?>

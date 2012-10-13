@@ -1,0 +1,3 @@
+Grep pattern to select .po elements:
+^msgid ((".*")\r)+^msgstr ((".*")\r)+
+

@@ -480,12 +480,6 @@ class COntologyNode extends CNode
 	 *
 	 * @access public
 	 * @return COntologyEdge		Edge object.
-	 *
-	 * @throws Exception
-	 *
-	 * @uses NewObject()
-	 *
-	 * @see kOFFSET_TERM
 	 */
 	public function RelateTo( $thePredicate, $theObject )
 	{
@@ -1149,10 +1143,9 @@ class COntologyNode extends CNode
 	 * @access protected
 	 *
 	 * @uses _IsCommitted()
+	 * @uses _ReferenceInTerm()
 	 *
-	 * @see kOFFSET_REFS_NODE kOFFSET_TERM
-	 * @see kFLAG_PERSIST_INSERT kFLAG_PERSIST_REPLACE kFLAG_PERSIST_DELETE
-	 * @see kFLAG_PERSIST_MODIFY kFLAG_MODIFY_ADDSET kFLAG_MODIFY_PULL
+	 * @see kFLAG_PERSIST_INSERT kFLAG_PERSIST_REPLACE
 	 */
 	protected function _PostcommitRelated( &$theConnection, &$theModifiers )
 	{

@@ -83,7 +83,8 @@
 		//
 		// Inform.
 		//
-		echo( "    - $id [".$_SESSION[ 'NODES' ][ $id ]."]\n" );
+		if( kOPTION_VERBOSE )
+			echo( "    - $id [".$_SESSION[ 'NODES' ][ $id ]."]\n" );
 
 	} // LoadLandraceOntology.
 
@@ -175,7 +176,8 @@
 			//
 			// Inform.
 			//
-			echo( "    - $id [".$_SESSION[ 'NODES' ][ $id ]."]\n" );
+			if( kOPTION_VERBOSE )
+				echo( "    - $id [".$_SESSION[ 'NODES' ][ $id ]."]\n" );
 		}
 
 		//
@@ -231,7 +233,8 @@
 			//
 			// Inform.
 			//
-			echo( "    - $id [".$_SESSION[ 'NODES' ][ $id ]."]\n" );
+			if( kOPTION_VERBOSE )
+				echo( "    - $id [".$_SESSION[ 'NODES' ][ $id ]."]\n" );
 		}
 
 	} // LoadLandraceCategories.
@@ -322,11 +325,12 @@
 			//
 			// Inform.
 			//
-			echo( "    - $id ["
-				 .$_SESSION[ 'NODES' ][ $id ]
-				 ."] ("
-				 .$_SESSION[ 'TAGS' ][ $id ][ kOFFSET_NID ]
-				 .")\n" );
+			if( kOPTION_VERBOSE )
+				echo( "    - $id ["
+					 .$_SESSION[ 'NODES' ][ $id ]
+					 ."] ("
+					 .$_SESSION[ 'TAGS' ][ $id ][ kOFFSET_NID ]
+					 .")\n" );
 		}
 
 	} // LoadLandraceInventoryTraits.
@@ -441,11 +445,12 @@
 			//
 			// Inform.
 			//
-			echo( "    - $id ["
-				 .$_SESSION[ 'NODES' ][ $id ]
-				 ."] ("
-				 .$_SESSION[ 'TAGS' ][ $id ][ kOFFSET_NID ]
-				 .")\n" );
+			if( kOPTION_VERBOSE )
+				echo( "    - $id ["
+					 .$_SESSION[ 'NODES' ][ $id ]
+					 ."] ("
+					 .$_SESSION[ 'TAGS' ][ $id ][ kOFFSET_NID ]
+					 .")\n" );
 		}
 
 	} // LoadLandraceTaxonomyTraits.
@@ -542,11 +547,12 @@
 			//
 			// Inform.
 			//
-			echo( "    - $id ["
-				 .$_SESSION[ 'NODES' ][ $id ]
-				 ."] ("
-				 .$_SESSION[ 'TAGS' ][ $id ][ kOFFSET_NID ]
-				 .")\n" );
+			if( kOPTION_VERBOSE )
+				echo( "    - $id ["
+					 .$_SESSION[ 'NODES' ][ $id ]
+					 ."] ("
+					 .$_SESSION[ 'TAGS' ][ $id ][ kOFFSET_NID ]
+					 .")\n" );
 		}
 
 	} // LoadLandraceIdentificationTraits.
@@ -759,11 +765,12 @@
 			//
 			// Inform.
 			//
-			echo( "    - $id ["
-				 .$_SESSION[ 'NODES' ][ $id ]
-				 ."] ("
-				 .$_SESSION[ 'TAGS' ][ $id ][ kOFFSET_NID ]
-				 .")\n" );
+			if( kOPTION_VERBOSE )
+				echo( "    - $id ["
+					 .$_SESSION[ 'NODES' ][ $id ]
+					 ."] ("
+					 .$_SESSION[ 'TAGS' ][ $id ][ kOFFSET_NID ]
+					 .")\n" );
 		}
 
 		//
@@ -827,7 +834,8 @@
 			//
 			// Inform.
 			//
-			echo( "    - $id [".$_SESSION[ 'NODES' ][ $id ]."]\n" );
+			if( kOPTION_VERBOSE )
+				echo( "    - $id [".$_SESSION[ 'NODES' ][ $id ]."]\n" );
 		}
 
 	} // LoadLandraceSiteTraits.

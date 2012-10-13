@@ -89,6 +89,15 @@ class COntologyTerm extends CTerm
 	 * @var COntologyTerm
 	 */
 	 protected $mNamespace = NULL;
+	 
+	/**
+	 * <b>Term object</b>
+	 *
+	 * This data member holds the eventual term object when requested.
+	 *
+	 * @var COntologyTerm
+	 */
+	 protected $mTerm = NULL;
 
 		
 
@@ -269,6 +278,81 @@ class COntologyTerm extends CTerm
 		return $this->mNamespace;													// ==>
 
 	} // LoadNamespace.
+
+	 
+	/*===================================================================================
+	 *	LoadTerm																		*
+	 *==================================================================================*/
+
+	/**
+	 * <h4>Load term object</h4>
+	 *
+	 * This method will return the current term object: if the term is not set, the method
+	 * will return <tt>NULL</tt>; if the term cannot be found, the method will raise an
+	 * exception.
+	 *
+	 * The object will also be loaded in a data member that can function as a cache.
+	 *
+	 * The method features two parameters: the first refers to the container in which the
+	 * term is stored, the second is a boolean flag that determines whether the object
+	 * is to be read, or if the cached copy can be used.
+	 *
+	 * @param CConnection			$theConnection		Server, database or container.
+	 * @param boolean				$doReload			Reload if <tt>TRUE</tt>.
+	 *
+	 * @access public
+	 * @return COntologyTerm		Term object or <tt>NULL</tt>.
+	 *
+	 * @throws Exception
+	 *
+	 * @uses NewObject()
+	 *
+	 * @see kOFFSET_TERM
+	 */
+	public function LoadTerm( CConnection $theConnection, $doReload = FALSE )
+	{
+		//
+		// Check offset.
+		//
+		if( $this->offsetExists( kOFFSET_TERM ) )
+		{
+			//
+			// Refresh cache.
+			// Uncommitted terms are cached by default.
+			//
+			if( $doReload						// Reload,
+			 || ($this->mTerm === NULL) )	// or not cached.
+			{
+				//
+				// Handle term object.
+				//
+				$term = $this->offsetGet( kOFFSET_TERM );
+				if( $term instanceof COntologyTerm )
+					return $term;													// ==>
+				
+				//
+				// Load term object.
+				//
+				$this->mTerm
+					= $this->NewObject
+						( static::ResolveClassContainer( $theConnection, TRUE ),
+						  $term );
+			
+			} // Reload or empty cache.
+			
+			//
+			// Handle not found.
+			//
+			if( $this->mTerm === NULL )
+				throw new Exception
+					( "Term not found",
+					  kERROR_STATE );											// !@! ==>
+		
+		} // Has term.
+		
+		return $this->mTerm;														// ==>
+
+	} // LoadTerm.
 
 		
 
@@ -889,6 +973,67 @@ class COntologyTerm extends CTerm
 		} // Provided namespace.
 		
 		//
+		// Handle term.
+		//
+		if( $theOffset == kOFFSET_TERM )
+		{
+			//
+			// Lock term if object is committed.
+			//
+			if( $this->_IsCommitted() )
+				throw new Exception
+					( "You cannot modify the [$theOffset] offset: "
+					 ."the object is committed",
+					  kERROR_LOCKED );											// !@! ==>
+			
+			//
+			// Check value type.
+			//
+			$ok = $this->_AssertClass( $theValue, 'CDocument', 'COntologyTerm' );
+			
+			//
+			// Handle wrong object.
+			//
+			if( $ok === FALSE )
+				throw new Exception
+					( "Cannot set term: "
+					 ."the object must be a term reference or object",
+					  kERROR_PARAMETER );										// !@! ==>
+			
+			//
+			// Handle right object.
+			//
+			if( $ok )
+			{
+				//
+				// Use native identifier.
+				//
+				if( $theValue->_IsCommitted() )
+				{
+					//
+					// Check native identifier.
+					//
+					if( $theValue->offsetExists( kOFFSET_NID ) )
+						$theValue = $theValue->offsetGet( kOFFSET_NID );
+					else
+						throw new Exception
+							( "Cannot set term: "
+							 ."the object is missing its native identifier",
+							  kERROR_PARAMETER );								// !@! ==>
+				
+				} // Term is committed.
+				
+				//
+				// Copy to data member.
+				//
+				else
+					$this->mTerm = $theValue;
+			
+			} // Correct object class.
+		
+		} // Provided term.
+		
+		//
 		// Call parent method.
 		//
 		parent::_Preset( $theOffset, $theValue );
@@ -928,6 +1073,16 @@ class COntologyTerm extends CTerm
 		if( in_array( $theOffset, $offsets ) )
 			throw new Exception
 				( "The [$theOffset] offset cannot be modified",
+				  kERROR_LOCKED );												// !@! ==>
+		
+		//
+		// Lock term if object is committed.
+		//
+		if( ($theOffset == kOFFSET_TERM)
+		 && $this->_IsCommitted() )
+			throw new Exception
+				( "You cannot modify the [$theOffset] offset: "
+				 ."the object is committed",
 				  kERROR_LOCKED );												// !@! ==>
 		
 		//
@@ -1019,6 +1174,46 @@ class COntologyTerm extends CTerm
 					$this->LoadNamespace( $theConnection, TRUE );
 			
 			} // Has namespace.
+		
+			//
+			// Handle term object.
+			// Note that we let _Preset() method take care of the specific class.
+			//
+			if( $this->offsetExists( kOFFSET_TERM ) )
+			{
+				//
+				// Get term.
+				//
+				$term = $this->offsetGet( kOFFSET_TERM );
+				if( $term instanceof COntologyTerm )
+				{
+					//
+					// Commit.
+					// Note that we insert, to ensure the object is new.
+					//
+					$term->Insert(
+						static::ResolveClassContainer( $theConnection, TRUE ) );
+					
+					//
+					// Cache it.
+					//
+					$this->mTerm = $term;
+					
+					//
+					// Set identifier in term offset.
+					//
+					$this->offsetSet( kOFFSET_TERM,
+									  $term->offsetGet( kOFFSET_NID ) );
+					
+				} // Term is object.
+				
+				//
+				// Handle term identifier.
+				//
+				else
+					$this->LoadTerm( $theConnection, TRUE );
+			
+			} // Has a term reference.
 		
 		} // Not deleting.
 	
