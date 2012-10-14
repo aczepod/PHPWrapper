@@ -1,0 +1,840 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: iso_4217\n"
+"Report-Msgid-Bugs-To: Debian iso-codes team <pkg-isocodes-devel@lists.alioth."
+"debian.org>\n"
+"POT-Creation-Date: 2010-04-05 14:35+0200\n"
+"PO-Revision-Date: 2012-01-28 11:34+0700\n"
+"Last-Translator: Andhika Padmawan <andhika.padmawan@gmail.com>\n"
+"Language-Team: Indonesian <translation-team-id@lists.sourceforge.net>\n"
+"Language: id\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Poedit-Language: Indonesian\n"
+"X-Poedit-Country: INDONESIA\n"
+
+msgid "Afghani"
+msgstr "Afghani"
+
+msgid "Albanian Old Lek"
+msgstr "Lek Lama Angola"
+
+msgid "Algerian Dinar"
+msgstr "Dinar Algeria"
+
+msgid "Andorran Franc"
+msgstr "Franc Andora"
+
+msgid "Andorran Peseta"
+msgstr "Peseta Andora"
+
+msgid "Angola Kwanza Reajustado"
+msgstr "Angola Kwanza Reajustado"
+
+msgid "Angola New Kwanza"
+msgstr "Kwanza Baru Angola"
+
+msgid "Angolan New Kwanza"
+msgstr "Kwanza Baru Angola"
+
+msgid "Argentine Austral"
+msgstr "Austral Argentina"
+
+msgid "Argentine Peso"
+msgstr "Peso Argentina"
+
+msgid "Argentine peso ley"
+msgstr "Peso Ley Argentina"
+
+msgid "Argentine peso moneda nacional"
+msgstr "Argentine peso moneda nacional"
+
+msgid "Armenian Dram"
+msgstr "Dram Armenia"
+
+msgid "Aruban Guilder"
+msgstr "Guilder Aruban"
+
+msgid "Australian Dollar"
+msgstr "Dollar Australia"
+
+msgid "Austrian Schilling"
+msgstr "Shilling Austria"
+
+msgid "Azerbaijanian Manat"
+msgstr "Manat Azerbaijan"
+
+msgid "Bahamian Dollar"
+msgstr "Dollar Bahami"
+
+msgid "Bahraini Dinar"
+msgstr "Dinar Bahrain"
+
+msgid "Baht"
+msgstr "Baht"
+
+msgid "Balboa"
+msgstr "Balboa"
+
+msgid "Barbados Dollar"
+msgstr "Dollar Barbados"
+
+msgid "Belarussian Rouble"
+msgstr "Rouble Belarusia"
+
+msgid "Belarussian Ruble"
+msgstr "Ruble Belarusia"
+
+msgid "Belgian Franc"
+msgstr "Franc Belgia"
+
+msgid "Belgian Franc Convertible"
+msgstr "Konvertibel Franc Belgia"
+
+msgid "Belgian Franc Financial"
+msgstr "Finansial Franc Belgia"
+
+msgid "Belize Dollar"
+msgstr "Dollar Belize"
+
+msgid "Bermudian Dollar"
+msgstr "Dollar Bermuda"
+
+msgid "Bolivar Fuerte"
+msgstr "Fuerte Bolivar"
+
+msgid "Bolivian Peso"
+msgstr "Peso Bolivia"
+
+msgid "Boliviano"
+msgstr "Boliviano"
+
+msgid "Bosnia and Herzegovina Dinar"
+msgstr "Dinar Bosnia  dan Herzegovina "
+
+msgid "Brazilian Cruzado"
+msgstr "Cruzado Brasil"
+
+msgid "Brazilian Cruzeiro"
+msgstr "Cruizeiro Brazil"
+
+msgid "Brazilian Cruzeiro Real"
+msgstr "Real Cruzeiro Brasil"
+
+msgid "Brazilian New Cruzado"
+msgstr "Cruzado Baru Brasil"
+
+msgid "Brazilian Real"
+msgstr "Real Brazil"
+
+msgid "Brunei Dollar"
+msgstr "Dollar Brunei"
+
+msgid "Bulgarian Lev"
+msgstr "Lev Bulgaria"
+
+msgid "Bulgarian Lev A/52"
+msgstr "Lev A/52 Bulgaria"
+
+msgid "Bulgarian Lev A/62"
+msgstr "Lev A/62 Bulgaria"
+
+msgid "Bulgarian Lev A/99"
+msgstr "Lev A/99 Bulgaria"
+
+msgid "Burundi Franc"
+msgstr "Franc Burundi"
+
+msgid "CFA Franc BCEAO"
+msgstr "CFA Franc BCEAO"
+
+msgid "CFA Franc BEAC"
+msgstr "CFA Franc BEAC"
+
+msgid "CFP Franc"
+msgstr "CFP Franc"
+
+msgid "Canadian Dollar"
+msgstr "Dollar Kanada"
+
+msgid "Cape Verde Escudo"
+msgstr "Escudo Cape Verde"
+
+msgid "Cayman Islands Dollar"
+msgstr "Dollar Kepulauan Cayman"
+
+msgid "Cedi"
+msgstr "Cedi"
+
+msgid "Chilean Peso"
+msgstr "Peso Chili"
+
+msgid "Chinese Peoples Bank Dollar"
+msgstr "Dollar Bank Rakyat China"
+
+msgid "Code for testing purposes"
+msgstr "Kode untuk keperluan pengujian"
+
+msgid "Colombian Peso"
+msgstr "Peso Kolumbia"
+
+msgid "Comoro Franc"
+msgstr "Franc Comoro"
+
+msgid "Congolese Franc"
+msgstr "Franc Komoro"
+
+msgid "Convertible Marks"
+msgstr "Marks Konvertibel"
+
+msgid "Cordoba Oro"
+msgstr "Oro Kordoba"
+
+msgid "Costa Rican Colon"
+msgstr "Colon Kosta Rika"
+
+msgid "Croatian Dinar"
+msgstr "Dinar Kroasia"
+
+msgid "Croatian Kuna"
+msgstr "Kuna Kroasia"
+
+msgid "Cuban Peso"
+msgstr "Peso Kuba"
+
+msgid "Cyprus Pound"
+msgstr "Pound Cyprus"
+
+msgid "Czech Koruna"
+msgstr "Koruna Ceko"
+
+msgid "Czechoslovak Koruna"
+msgstr "Koruna Cekoslovakia"
+
+msgid "Czechoslovak Krona A/53"
+msgstr "Krona A/53 Cekoslovakia"
+
+msgid "Dalasi"
+msgstr "Dalasi"
+
+msgid "Danish Krone"
+msgstr "Krone Denmark"
+
+msgid "Denar"
+msgstr "Denar"
+
+msgid "Deutsche Mark"
+msgstr "Mark German"
+
+msgid "Djibouti Franc"
+msgstr "Franc Djibouti"
+
+msgid "Dobra"
+msgstr "Dobra"
+
+msgid "Dominican Peso"
+msgstr "Peso Dominika"
+
+msgid "Dong"
+msgstr "Dong"
+
+msgid "East Caribbean Dollar"
+msgstr "Dollar Karibia "
+
+msgid "East German Mark of the GDR"
+msgstr "East German Mark of the GDR"
+
+msgid "Ecuador Sucre"
+msgstr "Sucre Ekuador"
+
+msgid "Ecuador Unidad de Valor Constante UVC"
+msgstr "Ecuador Unidad de Valor Constante UVC"
+
+msgid "Egyptian Pound"
+msgstr "Pound Mesir"
+
+msgid "El Salvador Colon"
+msgstr "Colon El Salvador"
+
+msgid "Equatorial Guinea Ekwele"
+msgstr "Equatorial Guinea Ekwele"
+
+msgid "Ethiopian Birr"
+msgstr "Birr Ethiopia"
+
+msgid "Euro"
+msgstr "Euro"
+
+msgid "European Composite Unit (EURCO)"
+msgstr "European Composite Unit (EURCO)"
+
+msgid "European Currency Unit ECU"
+msgstr "European Currency Unit ECU"
+
+msgid "European Monetary Unit (E.M.U.-6)"
+msgstr "European Monetary Unit (E.M.U.-6)"
+
+msgid "European Unit of Account 17 (E.U.A.-17)"
+msgstr "European Unit of Account 17 (E.U.A.-17)"
+
+msgid "European Unit of Account 9 (E.U.A.-9)"
+msgstr "European Unit of Account 9 (E.U.A.-9)"
+
+msgid "Falkland Islands Pound"
+msgstr "Pound Pulau Falkland"
+
+msgid "Fiji Dollar"
+msgstr "Dollar Fiji"
+
+msgid "Finnish Markka"
+msgstr "Markka Finlandia"
+
+msgid "Forint"
+msgstr "Forint"
+
+msgid "French Franc"
+msgstr "Franc Perancis"
+
+msgid "Georgian Coupon"
+msgstr "Coupon Georgia"
+
+msgid "Ghana Cedi"
+msgstr "Cedi Ghana"
+
+msgid "Gibraltar Pound"
+msgstr "Pound Gibraltar"
+
+msgid "Gold"
+msgstr "Emas"
+
+msgid "Gold-Franc"
+msgstr "Emas-Franc"
+
+msgid "Gourde"
+msgstr "Gourde"
+
+msgid "Greek Drachma"
+msgstr "Drachma Yunani"
+
+msgid "Guarani"
+msgstr "Guarani"
+
+msgid "Guinea Escudo"
+msgstr "Escudo Guinea"
+
+msgid "Guinea Franc"
+msgstr "Franc Guinea"
+
+msgid "Guinea Syli"
+msgstr "Syli Guinea"
+
+msgid "Guinea-Bissau Peso"
+msgstr "Peso Guinea-Bissau"
+
+msgid "Guyana Dollar"
+msgstr "Dollar Guyana"
+
+msgid "Hong Kong Dollar"
+msgstr "Dollar Hongkong"
+
+msgid "Hryvnia"
+msgstr "Hryvnia"
+
+msgid "Iceland Krona"
+msgstr "Krona Icelandia"
+
+msgid "Iceland Old Krona"
+msgstr "Krona Lama Islandia"
+
+msgid "Indian Rupee"
+msgstr "Rupee India"
+
+msgid "Iranian Rial"
+msgstr "Rial Iran"
+
+msgid "Iraqi Dinar"
+msgstr "Dinar Irak"
+
+msgid "Irish Pound"
+msgstr "Pound Irlandia"
+
+msgid "Israeli Old Shekel"
+msgstr "Shekel Lama Israel"
+
+msgid "Israeli Pound"
+msgstr "Pound Israel"
+
+msgid "Italian Lira"
+msgstr "Lira Italia"
+
+msgid "Jamaican Dollar"
+msgstr "Dollar Jamaika"
+
+msgid "Jordanian Dinar"
+msgstr "Dinar Jordania"
+
+msgid "Kenyan Shilling"
+msgstr "Shilling Kenya"
+
+msgid "Kina"
+msgstr "Kina"
+
+msgid "Kip"
+msgstr "Kip"
+
+msgid "Kroon"
+msgstr "Kroon"
+
+msgid "Kuwaiti Dinar"
+msgstr "Dinar Kuwait"
+
+msgid "Kwacha"
+msgstr "Kwacha"
+
+msgid "Kwanza"
+msgstr "Kwanza"
+
+msgid "Kyat"
+msgstr "Kyat"
+
+msgid "Lao kip"
+msgstr "Kip Lao"
+
+msgid "Lari"
+msgstr "Lari"
+
+msgid "Latvian Lats"
+msgstr "Lats Latvia"
+
+msgid "Latvian Ruble"
+msgstr "Ruble Latvia"
+
+msgid "Lebanese Pound"
+msgstr "Pound Lebanon"
+
+msgid "Lek"
+msgstr "Lek"
+
+msgid "Lempira"
+msgstr "Lempira"
+
+msgid "Leone"
+msgstr "Leona"
+
+msgid "Lesotho Maloti"
+msgstr "Maloti Lesotho"
+
+msgid "Liberian Dollar"
+msgstr "Dollar Liberia"
+
+msgid "Libyan Dinar"
+msgstr "Dinar Libya"
+
+msgid "Lilangeni"
+msgstr "Lilageni"
+
+msgid "Lithuanian Litas"
+msgstr "Litas Lithuana"
+
+msgid "Lithuanian Talonas"
+msgstr "Talonas Lithuania"
+
+msgid "Loti"
+msgstr "Loti"
+
+msgid "Luxembourg Convertible Franc"
+msgstr "Konvertibel Franc Luxemberg"
+
+msgid "Luxembourg Financial Franc"
+msgstr "Finansial Franc Luxemberg"
+
+msgid "Luxembourg Franc"
+msgstr "Franc Luxemberg"
+
+msgid "Malagasy Ariary"
+msgstr "Ariary Malagasi"
+
+msgid "Malagasy Franc"
+msgstr "Franc Malagasi"
+
+msgid "Malaysian Ringgit"
+msgstr "Ringgit Malaysia"
+
+msgid "Maldive Rupee"
+msgstr "Rupee Maldiva"
+
+msgid "Mali Franc"
+msgstr "Franc Mali"
+
+msgid "Maltese Lira"
+msgstr "Lira Maltese"
+
+msgid "Maltese Pound"
+msgstr "Pound Malta"
+
+msgid "Manat"
+msgstr "Manat"
+
+msgid "Mauritius Rupee"
+msgstr "Rupee Mauritius"
+
+msgid "Metical"
+msgstr "Metical"
+
+msgid "Mexican Peso"
+msgstr "Peso Meksiko"
+
+msgid "Mexican Unidad de Inversion (UDI)"
+msgstr "Mexican Unidad de Inversion (UDI)"
+
+msgid "Moldovan Leu"
+msgstr "Leu Moldova"
+
+msgid "Moroccan Dirham"
+msgstr "Durham Maroko"
+
+msgid "Mozambique Escudo"
+msgstr "Escudo Mozambik"
+
+msgid "Mozambique Metical"
+msgstr "Metical Mozambik"
+
+msgid "Mvdol"
+msgstr "Mvdol"
+
+msgid "Naira"
+msgstr "Naira"
+
+msgid "Nakfa"
+msgstr "Nakfa"
+
+msgid "Namibia Dollar"
+msgstr "Dollar Namibia"
+
+msgid "Nepalese Rupee"
+msgstr "Rupee Nepal"
+
+msgid "Netherlands Antillian Guilder"
+msgstr "Antillian Guilder Belanda"
+
+msgid "Netherlands Guilder"
+msgstr "Guilder Belanda"
+
+msgid "New Israeli Sheqel"
+msgstr "New Sheqel Israel"
+
+msgid "New Leu"
+msgstr "Leu Baru"
+
+msgid "New Taiwan Dollar"
+msgstr "Dollar Baru Taiwan"
+
+msgid "New Turkish Lira"
+msgstr "Lira Baru Turki "
+
+msgid "New Zaire"
+msgstr "Zaire Baru"
+
+msgid "New Zealand Dollar"
+msgstr "Dollar Selandia Baru"
+
+msgid "Ngultrum"
+msgstr "Ngultrum"
+
+msgid "Nicaraguan Cordoba"
+msgstr "Cordoba Nikaragua"
+
+msgid "No currency"
+msgstr "Tidak ada mata uang"
+
+msgid "North Korean Won"
+msgstr "Won Korea Utara"
+
+msgid "Norwegian Krone"
+msgstr "Krone Norwegia"
+
+msgid "Nuevo Sol"
+msgstr "Nuevo Sol"
+
+msgid "Old Uruguayan Peso"
+msgstr "Peso Lama Uruguai"
+
+msgid "Ouguiya"
+msgstr "Ouguiya"
+
+msgid "Pa'anga"
+msgstr "Pa'anga"
+
+msgid "Pakistan Rupee"
+msgstr "Rupee Pakistan"
+
+msgid "Palladium"
+msgstr "Palladium"
+
+msgid "Pataca"
+msgstr "Pataca"
+
+msgid "Peruvian Inti"
+msgstr "Inti Peruvia"
+
+msgid "Peruvian Sol"
+msgstr "Sol Peruvia"
+
+msgid "Peso Argentino"
+msgstr "Peso Argentina "
+
+msgid "Peso Uruguayo"
+msgstr "Peso Uruguayo"
+
+msgid "Philippine Peso"
+msgstr "Peso Filipina"
+
+msgid "Platinum"
+msgstr "Platina"
+
+msgid "Polish Złoty"
+msgstr "Złoty Polandia"
+
+msgid "Portuguese Escudo"
+msgstr "Escudo Portugis"
+
+msgid "Pound Sterling"
+msgstr "Pound Sterling"
+
+msgid "Pula"
+msgstr "Pula"
+
+msgid "Qatari Rial"
+msgstr "Rial Qatar"
+
+msgid "Quetzal"
+msgstr "Quetzal"
+
+msgid "RINET Funds Code"
+msgstr "RINET Funds Code"
+
+msgid "Rand"
+msgstr "rand"
+
+msgid "Rhodesian Dollar"
+msgstr "Dollar Rhodensia"
+
+msgid "Rial Omani"
+msgstr "Rial Oman"
+
+msgid "Riel"
+msgstr "Riel"
+
+msgid "Romanian Leu A/52"
+msgstr "Leu A/52 Rumania"
+
+msgid "Romanian Old Leu"
+msgstr "Leu Lama Rumania"
+
+msgid "Rufiyaa"
+msgstr "Rufiyaa"
+
+msgid "Rupiah"
+msgstr "Rupiah"
+
+msgid "Russian Rouble"
+msgstr "Rouble Rusia"
+
+msgid "Russian Ruble"
+msgstr "Rubel Rusia"
+
+msgid "Rwanda Franc"
+msgstr "Franc Rwanda"
+
+msgid "Saint Helena Pound"
+msgstr "Pound Saint Helena"
+
+msgid "Saudi Riyal"
+msgstr "Saudi Riyal"
+
+msgid "Serbian Dinar"
+msgstr "Dnar Serbia"
+
+msgid "Seychelles Rupee"
+msgstr "Rupee Seychelle"
+
+msgid "Silver"
+msgstr "Perak"
+
+msgid "Singapore Dollar"
+msgstr "Dollar Singapura"
+
+msgid "Slovak Koruna"
+msgstr "Koruna Slovakia"
+
+msgid "Slovenian Tolar"
+msgstr "Tolar Slovenia"
+
+msgid "Solomon Islands Dollar"
+msgstr "Dollar Kepulauan Solomon"
+
+msgid "Som"
+msgstr "Som"
+
+msgid "Somali Shilling"
+msgstr "Shilling Somalia"
+
+msgid "Somoni"
+msgstr "Somoni"
+
+msgid "South African Financial Rand"
+msgstr "South African Financial Rand"
+
+msgid "Spanish Peseta"
+msgstr "Peseta Spanyol"
+
+msgid "Spanish Peseta ('A' Account)"
+msgstr "Peseta Spanyol ('A' Account)"
+
+msgid "Spanish Peseta (convertible)"
+msgstr "Peseta Spanyol (Konvertibel)"
+
+msgid "Special Drawing Rights"
+msgstr "Hak Menggambar Khusus"
+
+msgid "Sri Lanka Rupee"
+msgstr "Rupee Sri Lanka"
+
+msgid "Sudanese Pound"
+msgstr "Pound Sudan"
+
+msgid "Surinam Dollar"
+msgstr "Dollar Suriname"
+
+msgid "Suriname Guilder"
+msgstr "Guilder Suriname"
+
+msgid "Swedish Krona"
+msgstr "Krona Swedia"
+
+msgid "Swiss Franc"
+msgstr "Franc Swiss"
+
+msgid "Syrian Pound"
+msgstr "Pound Syiria"
+
+msgid "Tajik Rouble"
+msgstr "Rouble Tajik"
+
+msgid "Taka"
+msgstr "Taka"
+
+msgid "Tala"
+msgstr "Tala"
+
+msgid "Tanzanian Shilling"
+msgstr "Shilling Tanzania"
+
+msgid "Tenge"
+msgstr "Tenge"
+
+msgid "Timor Escudo"
+msgstr "Escudo Timor"
+
+msgid "Trinidad and Tobago Dollar"
+msgstr "Dollar Trinidad dan Tobago"
+
+msgid "Tugrik"
+msgstr "Tugrik"
+
+msgid "Tunisian Dinar"
+msgstr "Dinar Tunisia"
+
+msgid "Turkish Lira"
+msgstr "Lira Turki"
+
+msgid "UAE Dirham"
+msgstr "Dirham UEA"
+
+msgid "UIC-Franc"
+msgstr "UIC-Franc"
+
+msgid "US Dollar"
+msgstr "Dollar Amerika"
+
+msgid "US Dollar (Next day)"
+msgstr "Dollar Amerika (Hari Berikutnya)"
+
+msgid "US Dollar (Same day)"
+msgstr "Dollar Amerika (Hari yang sama)"
+
+msgid "USSR Rouble"
+msgstr "Rouble USSR"
+
+msgid "Uganda Old Schilling"
+msgstr "Schilling Lama Uganda"
+
+msgid "Uganda Schilling"
+msgstr "Schilling Uganda"
+
+msgid "Uganda Shilling"
+msgstr "Shilling Uganda"
+
+msgid "Ukrainian Karbovanet"
+msgstr "Karbovanet Ukrania"
+
+msgid "Unidad de Valor Real"
+msgstr "Unidad de Valor Real"
+
+msgid "Unidades de fomento"
+msgstr "Unidades de fomento"
+
+msgid "Uruguay Peso en Unidades Indexadas"
+msgstr "Uruguay Peso en Unidades Indexadas"
+
+msgid "Uruguayan Peso"
+msgstr "Peso Uruguai"
+
+msgid "Uzbekistan Sum"
+msgstr "Sum Uzbekistan"
+
+msgid "Vatu"
+msgstr "Vatu"
+
+msgid "Venezuela Bolívar"
+msgstr "Bolivar Venezuela"
+
+msgid "Viet Nam Old Dong"
+msgstr "Dong Lama Vietnam"
+
+msgid "WIR Euro"
+msgstr "Euro WIR"
+
+msgid "WIR Franc"
+msgstr "Franc WIR"
+
+msgid "Won"
+msgstr "Won"
+
+msgid "Yemeni Dinar"
+msgstr "Dinar Yaman"
+
+msgid "Yemeni Rial"
+msgstr "Rial Yaman"
+
+msgid "Yen"
+msgstr "Yen"
+
+msgid "Yuan Renminbi"
+msgstr "Yuan Renminbi"
+
+msgid "Yugoslavian Dinar"
+msgstr "Dinar Yugoslavia"
+
+msgid "Zaire"
+msgstr "Zaire"
+
+msgid "Zambian Kwacha"
+msgstr "Kwacha Zambia"
+
+msgid "Zimbabwe Dollar"
+msgstr "Dollar Zimbabwe"
+
+msgid "Zloty"
+msgstr "Zloty"

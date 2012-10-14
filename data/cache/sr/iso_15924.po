@@ -1,0 +1,65 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: iso_15924\n"
+"Report-Msgid-Bugs-To: Debian iso-codes team <pkg-isocodes-devel@lists.alioth."
+"debian.org>\n"
+"POT-Creation-Date: 2012-02-09 22:36+0100\n"
+"PO-Revision-Date: 2007-09-09 16:07+0200\n"
+"Last-Translator: Tobias Quathamer <toddy@debian.org>\n"
+"Language-Team: Serbian\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: KBabel 1.11.4\n"
+
+msgid "Arabic"
+msgstr "арапско писмо"
+
+msgid "Armenian"
+msgstr "јерменско писмо"
+
+msgid "Bengali"
+msgstr "бенгалско писмо"
+
+msgid "Braille"
+msgstr "Брајево писмо"
+
+msgid "Cherokee"
+msgstr "Чероки"
+
+msgid "Coptic"
+msgstr "коптичко писмо"
+
+msgid "Cyrillic"
+msgstr "Ћирилица"
+
+msgid "Glagolitic"
+msgstr "глагољица"
+
+msgid "Gothic"
+msgstr "Готика"
+
+msgid "Greek"
+msgstr "грчко писмо"
+
+msgid "Hebrew"
+msgstr "хебрејско писмо"
+
+msgid "Hiragana"
+msgstr "Хирагана"
+
+msgid "Katakana"
+msgstr "Катакана"
+
+msgid "Khmer"
+msgstr "кмерско писмо"
+
+msgid "Latin"
+msgstr "Латиница"
+
+msgid "Phoenician"
+msgstr "Феничанско писмо"
+
+msgid "Runic"
+msgstr "рунско писмо"

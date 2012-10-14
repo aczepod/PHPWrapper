@@ -1,0 +1,1305 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: iso_639\n"
+"Report-Msgid-Bugs-To: Debian iso-codes team <pkg-isocodes-devel@lists.alioth."
+"debian.org>\n"
+"POT-Creation-Date: 2010-03-31 08:26+0200\n"
+"PO-Revision-Date: 2010-02-07 19:39+0900\n"
+"Last-Translator: IIDA Yosiaki <iida@gnu.org>\n"
+"Language-Team: Japanese <translation-team-ja@lists.sourceforge.net>\n"
+"Language: ja\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+msgid "Abkhazian"
+msgstr "アブハジア語"
+
+msgid "Achinese"
+msgstr "アチェー語"
+
+msgid "Acoli"
+msgstr "アチョリ語"
+
+msgid "Adangme"
+msgstr "アダングメ語"
+
+msgid "Adyghe; Adygei"
+msgstr "アディゲ語; アディジェイ語"
+
+msgid "Afar"
+msgstr "アファル語"
+
+msgid "Afrihili"
+msgstr "アフリヒリ語"
+
+msgid "Afrikaans"
+msgstr "アフリカーンス語"
+
+msgid "Ainu"
+msgstr "アイヌ語"
+
+msgid "Akan"
+msgstr "アカン語"
+
+msgid "Akkadian"
+msgstr "アッカド語"
+
+msgid "Albanian"
+msgstr "アルバニア語"
+
+msgid "Aleut"
+msgstr "アレウト語"
+
+msgid "Algonquian languages"
+msgstr "アルゴンキアン語族"
+
+msgid "Amharic"
+msgstr "アムハラ語"
+
+msgid "Angika"
+msgstr "アンギカ語"
+
+msgid "Apache languages"
+msgstr "アパッチ語族"
+
+msgid "Arabic"
+msgstr "アラビア語"
+
+msgid "Aragonese"
+msgstr "アラゴン語"
+
+msgid "Arapaho"
+msgstr "アラパホー語"
+
+msgid "Arawak"
+msgstr "アラワク語"
+
+msgid "Armenian"
+msgstr "アルメニア語"
+
+msgid "Aromanian; Arumanian; Macedo-Romanian"
+msgstr "Aromanian; アルーマニア語; マケド・ルーマニア語"
+
+msgid "Assamese"
+msgstr "アッサム語"
+
+msgid "Athapascan languages"
+msgstr "アサパスカン語族"
+
+msgid "Australian languages"
+msgstr "オーストラリア語族"
+
+msgid "Avaric"
+msgstr "アヴァル語"
+
+msgid "Avestan"
+msgstr "アヴェスタ語"
+
+msgid "Awadhi"
+msgstr "アワディー語"
+
+msgid "Aymara"
+msgstr "アイマラ語"
+
+msgid "Azerbaijani"
+msgstr "アゼルバイジャン語"
+
+msgid "Balinese"
+msgstr "バリ語"
+
+msgid "Baluchi"
+msgstr "バルーチー語"
+
+msgid "Bambara"
+msgstr "バンバラ語"
+
+msgid "Bamileke languages"
+msgstr "バミレケ語族"
+
+msgid "Banda languages"
+msgstr "バンダ語族"
+
+msgid "Basa"
+msgstr "バサ語"
+
+msgid "Bashkir"
+msgstr "バシキール語"
+
+msgid "Basque"
+msgstr "バスク語"
+
+msgid "Batak languages"
+msgstr "バタク語族"
+
+msgid "Belarusian"
+msgstr "白ロシア語"
+
+msgid "Bemba"
+msgstr "ベンバ語"
+
+msgid "Bengali"
+msgstr "ベンガル語"
+
+msgid "Berber languages"
+msgstr "ベルベル語族"
+
+msgid "Bhojpuri"
+msgstr "ボージプリー語"
+
+msgid "Bihari languages"
+msgstr "ビハール語族"
+
+msgid "Bikol"
+msgstr "ビコル語"
+
+msgid "Bini; Edo"
+msgstr "ビニ語; エド語"
+
+msgid "Bislama"
+msgstr "ビスラマ語"
+
+msgid "Blin; Bilin"
+msgstr "Blin; ビリン語"
+
+msgid "Bosnian"
+msgstr "ボスニア語"
+
+msgid "Braj"
+msgstr "ブラジ語"
+
+msgid "Breton"
+msgstr "ブルトン語"
+
+msgid "Buginese"
+msgstr "ブギ語"
+
+msgid "Bulgarian"
+msgstr "ブルガリア語"
+
+msgid "Buriat"
+msgstr "ブリヤート語"
+
+msgid "Burmese"
+msgstr "ビルマ語"
+
+msgid "Caddo"
+msgstr "カドー語"
+
+msgid "Catalan; Valencian"
+msgstr "カタロニア語; バレンシア語"
+
+msgid "Cebuano"
+msgstr "セブアノ語"
+
+msgid "Central Khmer"
+msgstr "中央クメール語"
+
+msgid "Chagatai"
+msgstr "チャガタイ語"
+
+msgid "Chamic languages"
+msgstr "チャム語族"
+
+msgid "Chamorro"
+msgstr "チャモロ語"
+
+msgid "Chechen"
+msgstr "チェチェン語"
+
+msgid "Cherokee"
+msgstr "チェロキー語"
+
+msgid "Cheyenne"
+msgstr "シャイアン語"
+
+msgid "Chibcha"
+msgstr "チブチャ語"
+
+msgid "Chichewa; Chewa; Nyanja"
+msgstr "チチェワ語; チェワ語; ニャンジャ語"
+
+msgid "Chinese"
+msgstr "中国語"
+
+msgid "Chinook jargon"
+msgstr "チヌーク混成語"
+
+msgid "Choctaw"
+msgstr "チョクトー語"
+
+msgid ""
+"Church Slavic; Old Slavonic; Church Slavonic; Old Bulgarian; Old Church "
+"Slavonic"
+msgstr "教会スラブ語; 古スラブ語; 教会スラブ語; 古ブルガリア語; 古教会スラブ語"
+
+msgid "Chuukese"
+msgstr "チューク語"
+
+msgid "Chuvash"
+msgstr "チュヴァシュ語"
+
+msgid "Classical Newari; Old Newari; Classical Nepal Bhasa"
+msgstr "古典ネワール語; 古期ネワール語; Classical Nepal Bhasa"
+
+msgid "Classical Syriac"
+msgstr "古代シリア語"
+
+msgid "Coptic"
+msgstr "コプト語"
+
+msgid "Cornish"
+msgstr "コーンウォール語"
+
+msgid "Corsican"
+msgstr "コルシカ語"
+
+msgid "Cree"
+msgstr "クリー語"
+
+msgid "Creek"
+msgstr "クリーク語"
+
+msgid "Crimean Tatar; Crimean Turkish"
+msgstr "クリミア・タタール語; クリミア・トルコ語"
+
+msgid "Croatian"
+msgstr "クロアチア語"
+
+msgid "Czech"
+msgstr "チェコ語"
+
+msgid "Dakota"
+msgstr "ダコタ語"
+
+msgid "Danish"
+msgstr "デンマーク語"
+
+msgid "Dargwa"
+msgstr "ダルガン語"
+
+msgid "Delaware"
+msgstr "デラウェア語"
+
+msgid "Dinka"
+msgstr "ディンカ語"
+
+msgid "Divehi; Dhivehi; Maldivian"
+msgstr "ディベヒ語; ディヴェーヒー語; モルジブ語"
+
+msgid "Dogri"
+msgstr "ドグリ語"
+
+msgid "Dogrib"
+msgstr "ドグリブ語"
+
+msgid "Duala"
+msgstr "ドゥアラ語"
+
+msgid "Dutch, Middle (ca. 1050-1350)"
+msgstr "オランダ語, 中世 (約1050-1350)"
+
+msgid "Dutch; Flemish"
+msgstr "オランダ語; フラマン語"
+
+msgid "Dyula"
+msgstr "デゥウラ語"
+
+msgid "Dzongkha"
+msgstr "ゾンカ語"
+
+msgid "Eastern Frisian"
+msgstr "東フリジア語"
+
+msgid "Efik"
+msgstr "エフィク語"
+
+msgid "Egyptian (Ancient)"
+msgstr "エジプト語 (古代)"
+
+msgid "Ekajuk"
+msgstr "エカジュク語"
+
+msgid "Elamite"
+msgstr "エラム語"
+
+msgid "English"
+msgstr "英語"
+
+msgid "English, Middle (1100-1500)"
+msgstr "英語, 中世 (1100-1500)"
+
+msgid "English, Old (ca. 450-1100)"
+msgstr "英語, 古期 (約 450-1100)"
+
+msgid "Erzya"
+msgstr "エルジャ語"
+
+msgid "Esperanto"
+msgstr "エスペラント語"
+
+msgid "Estonian"
+msgstr "エストニア語"
+
+msgid "Ewe"
+msgstr "エウェ語"
+
+msgid "Ewondo"
+msgstr "エウォンド語"
+
+msgid "Fang"
+msgstr "ファング語"
+
+msgid "Fanti"
+msgstr "ファンティー語"
+
+msgid "Faroese"
+msgstr "フェロー語"
+
+msgid "Fijian"
+msgstr "フィジー語"
+
+msgid "Filipino; Pilipino"
+msgstr "フィリピノ語; ピリピノ語"
+
+msgid "Finnish"
+msgstr "フィン語"
+
+msgid "Fon"
+msgstr "フォン語"
+
+msgid "French"
+msgstr "フランス語"
+
+msgid "French, Middle (ca. 1400-1600)"
+msgstr "フランス語, 中世 (約 1400-1600)"
+
+msgid "French, Old (842-ca. 1400)"
+msgstr "フランス語, 古 (842-約 1400)"
+
+msgid "Friulian"
+msgstr "フリウリ語"
+
+msgid "Fulah"
+msgstr "フラ語"
+
+msgid "Ga"
+msgstr "ガ語"
+
+msgid "Gaelic; Scottish Gaelic"
+msgstr "ゲール語; スコットランド・ゲール語"
+
+msgid "Galibi Carib"
+msgstr "ガリビ・カリブ語"
+
+msgid "Galician"
+msgstr "ガリシア語"
+
+msgid "Ganda"
+msgstr "ガンダ語"
+
+msgid "Gayo"
+msgstr "ガヨ語"
+
+msgid "Gbaya"
+msgstr "バヤ語"
+
+msgid "Geez"
+msgstr "ゲーズ語"
+
+msgid "Georgian"
+msgstr "グルジア語"
+
+msgid "German"
+msgstr "ドイツ語"
+
+msgid "German, Middle High (ca. 1050-1500)"
+msgstr "ドイツ語, 中高 (約 1050-1500)"
+
+msgid "German, Old High (ca. 750-1050)"
+msgstr "ドイツ語, 古高 (約 750-1050)"
+
+msgid "Gilbertese"
+msgstr "キリバス語"
+
+msgid "Gondi"
+msgstr "ゴーンディー語"
+
+msgid "Gorontalo"
+msgstr "ゴロンタロ語"
+
+msgid "Gothic"
+msgstr "ゴート語"
+
+msgid "Grebo"
+msgstr "グレボ語"
+
+msgid "Greek, Ancient (to 1453)"
+msgstr "ギリシア語, 古代 (-1453)"
+
+msgid "Greek, Modern (1453-)"
+msgstr "ギリシア語, 現代 (1453-)"
+
+msgid "Guarani"
+msgstr "グアラニー語"
+
+msgid "Gujarati"
+msgstr "グジャラーティー語"
+
+msgid "Gwich'in"
+msgstr "グウィッチン語"
+
+msgid "Haida"
+msgstr "ハイダ語"
+
+msgid "Haitian; Haitian Creole"
+msgstr "ハイチ; ハイチ混成語"
+
+msgid "Hausa"
+msgstr "ハウサ語"
+
+msgid "Hawaiian"
+msgstr "ハワイ語"
+
+msgid "Hebrew"
+msgstr "ヘブライ語"
+
+msgid "Herero"
+msgstr "ヘレロ語"
+
+msgid "Hiligaynon"
+msgstr "ヒリガイノン語"
+
+msgid "Hindi"
+msgstr "ヒンディー語"
+
+msgid "Hiri Motu"
+msgstr "ヒリモトゥ語"
+
+msgid "Hittite"
+msgstr "ヒッタイト語"
+
+msgid "Hungarian"
+msgstr "ハンガリー語"
+
+msgid "Hupa"
+msgstr "アタパスカ語"
+
+msgid "Iban"
+msgstr "イバン語"
+
+msgid "Icelandic"
+msgstr "アイスランド語"
+
+msgid "Ido"
+msgstr "イド語"
+
+msgid "Igbo"
+msgstr "イボ語"
+
+msgid "Ijo languages"
+msgstr "イジョ語族"
+
+msgid "Iloko"
+msgstr "イロカノ語"
+
+msgid "Inari Sami"
+msgstr "イナリ・サーミ語"
+
+msgid "Indonesian"
+msgstr "インドネシア語"
+
+msgid "Ingush"
+msgstr "イングシ語"
+
+msgid "Interlingua (International Auxiliary Language Association)"
+msgstr "インターリングア語 (国際補助語協会)"
+
+msgid "Inuktitut"
+msgstr "イヌクウティトット語"
+
+msgid "Inupiaq"
+msgstr "イヌピアック語"
+
+msgid "Irish"
+msgstr "アイルランド語"
+
+msgid "Irish, Middle (900-1200)"
+msgstr "アイルランド語, 中期 (900-1200)"
+
+msgid "Irish, Old (to 900)"
+msgstr "アイルランド語, 古 (-900)"
+
+msgid "Iroquoian languages"
+msgstr "イロコイ語族"
+
+msgid "Italian"
+msgstr "イタリア語"
+
+msgid "Japanese"
+msgstr "日本語"
+
+msgid "Javanese"
+msgstr "ジャワ語"
+
+msgid "Judeo-Arabic"
+msgstr "ユダヤ・アラビア語"
+
+msgid "Judeo-Persian"
+msgstr "ユダヤ・ペルシア語"
+
+msgid "Kabardian"
+msgstr "カバルダ語"
+
+msgid "Kabyle"
+msgstr "カビル語"
+
+msgid "Kachin; Jingpho"
+msgstr "カチン語; Jingpho"
+
+msgid "Kalaallisut; Greenlandic"
+msgstr "カラアリス語; グリーンランド語"
+
+msgid "Kalmyk; Oirat"
+msgstr "カルミック語; オイラート語"
+
+msgid "Kamba"
+msgstr "カンバ語"
+
+msgid "Kannada"
+msgstr "カンナダ語"
+
+msgid "Kanuri"
+msgstr "カヌリ語"
+
+msgid "Kara-Kalpak"
+msgstr "カラ・カルパク語"
+
+msgid "Karachay-Balkar"
+msgstr "カラチャイ・バルカル語"
+
+msgid "Karelian"
+msgstr "カレリア語"
+
+msgid "Karen languages"
+msgstr "カレン語族"
+
+msgid "Kashmiri"
+msgstr "カシミーリー語"
+
+msgid "Kashubian"
+msgstr "カシューブ語"
+
+msgid "Kawi"
+msgstr "カウィ語"
+
+msgid "Kazakh"
+msgstr "カザーフ語"
+
+msgid "Khasi"
+msgstr "カシ語"
+
+msgid "Kikuyu; Gikuyu"
+msgstr "キクユ語; Gikuyu"
+
+msgid "Kimbundu"
+msgstr "キンブンドゥ語"
+
+msgid "Kinyarwanda"
+msgstr "キンヤルワンダ語"
+
+msgid "Kirghiz; Kyrgyz"
+msgstr "キルギス語; クルグズ語"
+
+msgid "Klingon; tlhIngan-Hol"
+msgstr "クリンゴン語; tlhIngan-Hol"
+
+msgid "Komi"
+msgstr "コミ語"
+
+msgid "Kongo"
+msgstr "コンゴ語"
+
+msgid "Konkani"
+msgstr "コンカニー語"
+
+msgid "Korean"
+msgstr "朝鮮語"
+
+msgid "Kosraean"
+msgstr "コスラエ語"
+
+msgid "Kpelle"
+msgstr "クペレ語"
+
+msgid "Kru languages"
+msgstr "クルー語族"
+
+msgid "Kuanyama; Kwanyama"
+msgstr "クアニャマ語; Kwanyama"
+
+msgid "Kumyk"
+msgstr "クムク語"
+
+msgid "Kurdish"
+msgstr "クルド語"
+
+msgid "Kurukh"
+msgstr "クルク語"
+
+msgid "Kutenai"
+msgstr "クテナイ語"
+
+msgid "Ladino"
+msgstr "ラジノ語"
+
+msgid "Lahnda"
+msgstr "ラフンダー語"
+
+msgid "Lamba"
+msgstr "ランバ語"
+
+msgid "Land Dayak languages"
+msgstr "ランドダヤク語族"
+
+msgid "Lao"
+msgstr "ラオ語"
+
+msgid "Latin"
+msgstr "ラテン語"
+
+msgid "Latvian"
+msgstr "ラトヴィア語"
+
+msgid "Lezghian"
+msgstr "レズギ語"
+
+msgid "Limburgan; Limburger; Limburgish"
+msgstr "リンブルフ語"
+
+msgid "Lingala"
+msgstr "リンガラ語"
+
+msgid "Lithuanian"
+msgstr "リトアニア語"
+
+msgid "Lojban"
+msgstr "ロジバン語"
+
+msgid "Low German; Low Saxon; German, Low; Saxon, Low"
+msgstr "低地ドイツ語; 低地サクソン語; ドイツ語, 低地; サクソン, 低地"
+
+msgid "Lower Sorbian"
+msgstr "低ソルビア語"
+
+msgid "Lozi"
+msgstr "ロジ語"
+
+msgid "Luba-Katanga"
+msgstr "ルバ語"
+
+msgid "Luba-Lulua"
+msgstr "ルバ・ルルア語"
+
+msgid "Luiseno"
+msgstr "ルイセニョ語"
+
+msgid "Lule Sami"
+msgstr "ルレ・サーミ語"
+
+msgid "Lunda"
+msgstr "ルンダ語"
+
+msgid "Luo (Kenya and Tanzania)"
+msgstr "ルオ語 (ケニアとタンザニア)"
+
+msgid "Lushai"
+msgstr "ルシャイ語"
+
+msgid "Luxembourgish; Letzeburgesch"
+msgstr "ルクセンブルク語; レッツェブルク語"
+
+msgid "Macedonian"
+msgstr "マケドニア語"
+
+msgid "Madurese"
+msgstr "マドゥラ語"
+
+msgid "Magahi"
+msgstr "マガヒー語"
+
+msgid "Maithili"
+msgstr "マイティリー語"
+
+msgid "Makasar"
+msgstr "マカッサル語"
+
+msgid "Malagasy"
+msgstr "マラガシ語"
+
+msgid "Malay"
+msgstr "マライ語"
+
+msgid "Malayalam"
+msgstr "マラヤーラム語"
+
+msgid "Maltese"
+msgstr "マルタ語"
+
+msgid "Manchu"
+msgstr "満州語"
+
+msgid "Mandar"
+msgstr "マンダル語"
+
+msgid "Mandingo"
+msgstr "マンディンゴ語"
+
+msgid "Manipuri"
+msgstr "マニプル語"
+
+msgid "Manobo languages"
+msgstr "マノボ語族"
+
+msgid "Manx"
+msgstr "マン島語"
+
+msgid "Maori"
+msgstr "マオリ語"
+
+msgid "Mapudungun; Mapuche"
+msgstr "Mapudungun; Mapuche"
+
+msgid "Marathi"
+msgstr "マラーティー語"
+
+msgid "Mari"
+msgstr "マリ語"
+
+msgid "Marshallese"
+msgstr "マーシャル語"
+
+msgid "Marwari"
+msgstr "マールワーリー語"
+
+msgid "Masai"
+msgstr "マサイ語"
+
+msgid "Mayan languages"
+msgstr "マヤ語族"
+
+msgid "Mende"
+msgstr "メンデ語"
+
+msgid "Mi'kmaq; Micmac"
+msgstr "Mi'kmaq; ミクマク語"
+
+msgid "Minangkabau"
+msgstr "ミナンカバウ語"
+
+msgid "Mirandese"
+msgstr "ミランダ語"
+
+msgid "Mohawk"
+msgstr "モーホーク語"
+
+msgid "Moksha"
+msgstr "モクシャ語"
+
+msgid "Moldavian; Moldovan"
+msgstr "モルダヴィア語"
+
+msgid "Mongo"
+msgstr "モンゴ語"
+
+msgid "Mongolian"
+msgstr "蒙古語"
+
+msgid "Mossi"
+msgstr "モッシー語"
+
+msgid "Multiple languages"
+msgstr "多言語"
+
+msgid "Munda languages"
+msgstr "ムンダ語族"
+
+msgid "N'Ko"
+msgstr "ンコ語"
+
+msgid "Nahuatl languages"
+msgstr "ナワトル語族"
+
+msgid "Nauru"
+msgstr "ナウル語"
+
+msgid "Navajo; Navaho"
+msgstr "ナヴァホ語"
+
+msgid "Ndebele, North; North Ndebele"
+msgstr "マタベレ語, 北; 北ヌデベレ語"
+
+msgid "Ndebele, South; South Ndebele"
+msgstr "マタベレ語, 南; 南ヌデベレ語"
+
+msgid "Ndonga"
+msgstr "ンドンガ語"
+
+msgid "Neapolitan"
+msgstr "ナポリ語"
+
+msgid "Nepali"
+msgstr "ネパール語"
+
+msgid "Nias"
+msgstr "ニアス語"
+
+msgid "Niuean"
+msgstr "ニウーエイ語"
+
+msgid "Nogai"
+msgstr "ノガイ語"
+
+msgid "Norse, Old"
+msgstr "スカンジナビア語, 古期"
+
+msgid "Northern Frisian"
+msgstr "北フリジア語"
+
+msgid "Northern Sami"
+msgstr "北サーミ語"
+
+msgid "Norwegian"
+msgstr "ノルウェー語"
+
+msgid "Norwegian Nynorsk; Nynorsk, Norwegian"
+msgstr "ニーノシュク・ノルウェー語; ノルウェー語, ニーノシュク"
+
+msgid "Nubian languages"
+msgstr "ヌバ語族"
+
+msgid "Nyamwezi"
+msgstr "ムエジ語"
+
+msgid "Nyankole"
+msgstr "ニャンコレ語"
+
+msgid "Nyoro"
+msgstr "ニョロ語"
+
+msgid "Nzima"
+msgstr "ンゼマ語"
+
+msgid "Ojibwa"
+msgstr "オジブワ語"
+
+msgid "Oriya"
+msgstr "オリヤー語"
+
+msgid "Oromo"
+msgstr "オロモ語"
+
+msgid "Osage"
+msgstr "オーセージ語"
+
+msgid "Ossetian; Ossetic"
+msgstr "オセト語; オセット語"
+
+msgid "Otomian languages"
+msgstr "オトミ語族"
+
+msgid "Pahlavi"
+msgstr "パーラヴィー語"
+
+msgid "Palauan"
+msgstr "パラオ語"
+
+msgid "Pali"
+msgstr "パーリ語"
+
+msgid "Pangasinan"
+msgstr "パンガシナーン語"
+
+msgid "Panjabi; Punjabi"
+msgstr "パンジャブ語; Punjabi"
+
+msgid "Papiamento"
+msgstr "パピアメント語"
+
+msgid "Persian"
+msgstr "ペルシア語"
+
+msgid "Persian, Old (ca. 600-400 B.C.)"
+msgstr "ペルシア語, 古代 (紀元前約 600-400)"
+
+msgid "Phoenician"
+msgstr "フェニキア語"
+
+msgid "Pohnpeian"
+msgstr "ポンペイ語"
+
+msgid "Polish"
+msgstr "ポーランド語"
+
+msgid "Portuguese"
+msgstr "ポルトガル語"
+
+msgid "Prakrit languages"
+msgstr "プラークリット語族"
+
+msgid "Quechua"
+msgstr "キチュワ語"
+
+msgid "Rajasthani"
+msgstr "ラージャスターニー語"
+
+msgid "Rapanui"
+msgstr "ラパヌーイ語"
+
+msgid "Reserved for local use"
+msgstr "局所利用のため予約"
+
+msgid "Romanian"
+msgstr "ルーマニア語"
+
+msgid "Romansh"
+msgstr "ロマンシュ語"
+
+msgid "Romany"
+msgstr "ロマニ語"
+
+msgid "Rundi"
+msgstr "ルンディ語"
+
+msgid "Russian"
+msgstr "ロシア語"
+
+msgid "Salishan languages"
+msgstr "サリシュ語族"
+
+msgid "Samaritan Aramaic"
+msgstr "サマリア語"
+
+msgid "Samoan"
+msgstr "サモア語"
+
+msgid "Sandawe"
+msgstr "サンダウェ語"
+
+msgid "Sango"
+msgstr "サンゴ語"
+
+msgid "Sanskrit"
+msgstr "梵語"
+
+msgid "Santali"
+msgstr "サンターリー語"
+
+msgid "Sardinian"
+msgstr "サルデーニャ語"
+
+msgid "Sasak"
+msgstr "ササク語"
+
+msgid "Scots"
+msgstr "スコットランド語"
+
+msgid "Selkup"
+msgstr "セリクプ語"
+
+msgid "Serbian"
+msgstr "セルビア語"
+
+msgid "Serer"
+msgstr "セレル語"
+
+msgid "Shan"
+msgstr "シャン語"
+
+msgid "Shona"
+msgstr "ショナ語"
+
+msgid "Sicilian"
+msgstr "シチリア語"
+
+msgid "Sidamo"
+msgstr "シダモ語"
+
+msgid "Sign Languages"
+msgstr "手話語族"
+
+msgid "Siksika"
+msgstr "シクシカ語"
+
+msgid "Sindhi"
+msgstr "シンディー語"
+
+msgid "Sinhala; Sinhalese"
+msgstr "シンハラ語; シンハリーズ語"
+
+msgid "Siouan languages"
+msgstr "スー語族"
+
+msgid "Skolt Sami"
+msgstr "スコルト・サーミ語"
+
+msgid "Slave (Athapascan)"
+msgstr "スレイビー語 (アサパスカン語)"
+
+msgid "Slovak"
+msgstr "スロヴァキア語"
+
+msgid "Slovenian"
+msgstr "スロヴェニア語"
+
+msgid "Sogdian"
+msgstr "ソグド語"
+
+msgid "Somali"
+msgstr "ソマリ語"
+
+msgid "Songhai languages"
+msgstr "ソンガイ語族"
+
+msgid "Soninke"
+msgstr "ソニンケ語"
+
+msgid "Sorbian languages"
+msgstr "ソルビア語族"
+
+msgid "Sotho, Southern"
+msgstr "ソト語, 南"
+
+msgid "Southern Altai"
+msgstr "南アルタイ語"
+
+msgid "Southern Sami"
+msgstr "南サーミ語"
+
+msgid "Spanish; Castilian"
+msgstr "スペイン語; Castilian"
+
+msgid "Sranan Tongo"
+msgstr "スリナム語"
+
+msgid "Sukuma"
+msgstr "スクマ語"
+
+msgid "Sumerian"
+msgstr "シュメール語"
+
+msgid "Sundanese"
+msgstr "スンダ語"
+
+msgid "Susu"
+msgstr "スス語"
+
+msgid "Swahili"
+msgstr "スワヒリ語"
+
+msgid "Swati"
+msgstr "シスワティ語"
+
+msgid "Swedish"
+msgstr "スウェーデン語"
+
+msgid "Syriac"
+msgstr "シリア語"
+
+msgid "Tagalog"
+msgstr "タガログ語"
+
+msgid "Tahitian"
+msgstr "タヒチ語"
+
+msgid "Tajik"
+msgstr "タジク語"
+
+msgid "Tamashek"
+msgstr "タマシェク語"
+
+msgid "Tamil"
+msgstr "タミル語"
+
+msgid "Tatar"
+msgstr "タタール語"
+
+msgid "Telugu"
+msgstr "テルグ語"
+
+msgid "Tereno"
+msgstr "テレーノ語"
+
+msgid "Tetum"
+msgstr "テトゥン語"
+
+msgid "Thai"
+msgstr "タイ語"
+
+msgid "Tibetan"
+msgstr "チベット語"
+
+msgid "Tigre"
+msgstr "ティグレ語"
+
+msgid "Tigrinya"
+msgstr "ティグリニア語"
+
+msgid "Timne"
+msgstr "テムネ語"
+
+msgid "Tiv"
+msgstr "ティブ語"
+
+msgid "Tlingit"
+msgstr "トリンギット語"
+
+msgid "Tok Pisin"
+msgstr "トク・ピシン語"
+
+msgid "Tokelau"
+msgstr "トケラウ語"
+
+msgid "Tonga (Nyasa)"
+msgstr "トンガ語 (ニアサ)"
+
+msgid "Tonga (Tonga Islands)"
+msgstr "トンガ語 (トンガ諸島)"
+
+msgid "Tsimshian"
+msgstr "チムシュ語"
+
+msgid "Tsonga"
+msgstr "ツォンガ語"
+
+msgid "Tswana"
+msgstr "ツワナ語"
+
+msgid "Tumbuka"
+msgstr "トゥンブカ語"
+
+msgid "Tupi languages"
+msgstr "トゥピ語族"
+
+msgid "Turkish"
+msgstr "トルコ語"
+
+msgid "Turkish, Ottoman (1500-1928)"
+msgstr "トルコ語, オスマン (1500-1928)"
+
+msgid "Turkmen"
+msgstr "トゥルクメン語"
+
+msgid "Tuvalu"
+msgstr "ツバル語"
+
+msgid "Tuvinian"
+msgstr "トゥヴァ語"
+
+msgid "Twi"
+msgstr "トウィ語"
+
+msgid "Udmurt"
+msgstr "ウドムルト語"
+
+msgid "Ugaritic"
+msgstr "ウガリット語"
+
+msgid "Uighur; Uyghur"
+msgstr "ウイグル語; Uyghur"
+
+msgid "Ukrainian"
+msgstr "ウクライナ語"
+
+msgid "Umbundu"
+msgstr "アンブンドゥ語"
+
+msgid "Undetermined"
+msgstr "言語名不明"
+
+msgid "Upper Sorbian"
+msgstr "上ソルビア語"
+
+msgid "Urdu"
+msgstr "ウルドゥー語"
+
+msgid "Uzbek"
+msgstr "ウズベク語"
+
+msgid "Vai"
+msgstr "ヴァイ語"
+
+msgid "Venda"
+msgstr "ベンダ語"
+
+msgid "Vietnamese"
+msgstr "ベトナム語"
+
+msgid "Volapük"
+msgstr "ボラピューク語"
+
+msgid "Votic"
+msgstr "ヴォート語"
+
+msgid "Wakashan languages"
+msgstr "ワカシ語族"
+
+msgid "Walloon"
+msgstr "ワロン語"
+
+msgid "Waray"
+msgstr "ワライ語"
+
+msgid "Washo"
+msgstr "ワショ語"
+
+msgid "Welsh"
+msgstr "ウェールズ語"
+
+msgid "Western Frisian"
+msgstr "西フリジア語"
+
+msgid "Wolof"
+msgstr "ウォロフ語"
+
+msgid "Xhosa"
+msgstr "ホサ語"
+
+msgid "Yakut"
+msgstr "ヤクート語"
+
+msgid "Yao"
+msgstr "ヤオ語"
+
+msgid "Yapese"
+msgstr "ヤップ語"
+
+msgid "Yiddish"
+msgstr "イディッシュ語"
+
+msgid "Yoruba"
+msgstr "ヨルバ語"
+
+msgid "Yupik languages"
+msgstr "ユピック語族"
+
+msgid "Zande languages"
+msgstr "ザンデ語族"
+
+msgid "Zapotec"
+msgstr "ザポテック語"
+
+msgid "Zaza; Dimili; Dimli; Kirdki; Kirmanjki; Zazaki"
+msgstr "ザザ語; ディミリ語; Dimli; Kirdki; Kirmanjki; Zazaki"
+
+msgid "Zenaga"
+msgstr "ゼナガ語"
+
+msgid "Zhuang; Chuang"
+msgstr "チュワン語; チワン語"
+
+msgid "Zulu"
+msgstr "ズールー語"
+
+msgid "Zuni"
+msgstr "ズニ語"

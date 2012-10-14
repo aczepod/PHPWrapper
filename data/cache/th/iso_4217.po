@@ -1,0 +1,733 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: iso_4217\n"
+"Report-Msgid-Bugs-To: Debian iso-codes team <pkg-isocodes-devel@lists.alioth."
+"debian.org>\n"
+"POT-Creation-Date: 2010-04-05 14:35+0200\n"
+"PO-Revision-Date: 2011-08-16 21:59+0700\n"
+"Last-Translator: Theppitak Karoonboonyanan <thep@linux.thai.net>\n"
+"Language-Team: Thai <thai-l10n@googlegroups.com>\n"
+"Language: th\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+msgid "Afghani"
+msgstr "อัฟกานิ"
+
+msgid "Albanian Old Lek"
+msgstr "เลคเก่า แอลเบเนีย"
+
+msgid "Algerian Dinar"
+msgstr "ดีนาร์ แอลจีเรีย"
+
+msgid "Andorran Franc"
+msgstr "ฟรังก์ อันดอร์รา"
+
+msgid "Andorran Peseta"
+msgstr "เปเซตา อันดอร์รา"
+
+msgid "Angola New Kwanza"
+msgstr "ควันซาใหม่ แองโกลา"
+
+msgid "Angolan New Kwanza"
+msgstr "ควันซาใหม่ แองโกลา"
+
+msgid "Argentine Peso"
+msgstr "เปโซ อาร์เจนตินา"
+
+msgid "Armenian Dram"
+msgstr "ดีแรห์ม อาร์เมเนีย"
+
+msgid "Aruban Guilder"
+msgstr "กิลเดอร์ อารูบา"
+
+msgid "Australian Dollar"
+msgstr "ดอลลาร์ ออสเตรเลีย"
+
+msgid "Austrian Schilling"
+msgstr "ชิลลิง ออสเตรีย"
+
+msgid "Azerbaijanian Manat"
+msgstr "มานาท อาเซอร์ไบจาน"
+
+msgid "Bahamian Dollar"
+msgstr "ดอลลาร์ บาฮามาส"
+
+msgid "Bahraini Dinar"
+msgstr "ดีนาร์ บาห์เรน"
+
+msgid "Baht"
+msgstr "บาท"
+
+msgid "Balboa"
+msgstr "บัลโบอา"
+
+msgid "Barbados Dollar"
+msgstr "ดอลลาร์ บาร์เบโดส"
+
+msgid "Belarussian Rouble"
+msgstr "รูเบิล เบลารุส"
+
+msgid "Belarussian Ruble"
+msgstr "รูเบิล เบลารุส"
+
+msgid "Belgian Franc"
+msgstr "ฟรังก์ เบลเยียม"
+
+msgid "Belize Dollar"
+msgstr "ดอลลาร์ เบลีซ"
+
+msgid "Bermudian Dollar"
+msgstr "ดอลลาร์ เบอร์มิวดา"
+
+msgid "Bolivar Fuerte"
+msgstr "โบลิวาร์"
+
+msgid "Bolivian Peso"
+msgstr "เปโซ โบลิเวีย"
+
+msgid "Boliviano"
+msgstr "โบลิเวียโน"
+
+msgid "Bosnia and Herzegovina Dinar"
+msgstr "ดีนาร์ บอสเนียและเฮอร์เซโกวีนา"
+
+msgid "Brazilian Real"
+msgstr "เรียล บราซิล"
+
+msgid "Brunei Dollar"
+msgstr "ดอลลาร์ บรูไน"
+
+msgid "Bulgarian Lev"
+msgstr "เลฟ บัลแกเรีย"
+
+msgid "Burundi Franc"
+msgstr "ฟรังก์ บุรุนดี"
+
+msgid "CFA Franc BCEAO"
+msgstr "ฟรังก์ ซีเอฟเอ บีซีอีเอโอ"
+
+msgid "CFA Franc BEAC"
+msgstr "ฟรังก์ ซีเอฟเอ บีอีเอซี"
+
+msgid "CFP Franc"
+msgstr "ฟรังก์ ซีเอฟพี"
+
+msgid "Canadian Dollar"
+msgstr "ดอลลาร์ แคนาดา"
+
+msgid "Cape Verde Escudo"
+msgstr "เอสคูโด เคปเวิร์ด"
+
+msgid "Cayman Islands Dollar"
+msgstr "ดอลลาร์ หมู่เกาะเคย์แมน"
+
+msgid "Chilean Peso"
+msgstr "เปโซ ชิลี"
+
+msgid "Code for testing purposes"
+msgstr "รหัสสำหรับทดสอบ"
+
+msgid "Colombian Peso"
+msgstr "เปโซ โคลอมเบีย"
+
+msgid "Comoro Franc"
+msgstr "ฟรังก์ คอโมโรส"
+
+msgid "Congolese Franc"
+msgstr "ฟรังก์ คองโก"
+
+msgid "Convertible Marks"
+msgstr "มาร์ก บอสเนียและเฮอร์เซโกวีนา"
+
+msgid "Cordoba Oro"
+msgstr "คอร์โดบา"
+
+msgid "Costa Rican Colon"
+msgstr "โคโลน คอสตาริกา"
+
+msgid "Croatian Dinar"
+msgstr "ดีนาร์ โครเอเชีย"
+
+msgid "Croatian Kuna"
+msgstr "คูนา โครเอเชีย"
+
+msgid "Cuban Peso"
+msgstr "เปโซ คิวบา"
+
+msgid "Cyprus Pound"
+msgstr "ปอนด์ ไซปรัส"
+
+msgid "Czech Koruna"
+msgstr "โครูนา เช็ก"
+
+msgid "Czechoslovak Koruna"
+msgstr "โครูนา เชคโกสโลวาเกีย"
+
+msgid "Dalasi"
+msgstr "ดาลาซี"
+
+msgid "Danish Krone"
+msgstr "โครน เดนมาร์ก"
+
+msgid "Denar"
+msgstr "ดีนาร์ มาซิโดเนีย"
+
+msgid "Deutsche Mark"
+msgstr "มาร์ก เยอรมัน"
+
+msgid "Djibouti Franc"
+msgstr "ฟรังก์ จิบูตี"
+
+msgid "Dobra"
+msgstr "โดบรา"
+
+msgid "Dominican Peso"
+msgstr "เปโซ โดมินิกัน"
+
+msgid "Dong"
+msgstr "ดอง"
+
+msgid "East Caribbean Dollar"
+msgstr "ดอลลาร์ แคริบเบียนตะวันออก"
+
+msgid "Ecuador Sucre"
+msgstr "ซูเกร เอกวาดอร์"
+
+msgid "Egyptian Pound"
+msgstr "ปอนด์ อียิปต์"
+
+msgid "El Salvador Colon"
+msgstr "โคโลน เอลซัลวาดอร์"
+
+msgid "Ethiopian Birr"
+msgstr "เปอร์ เอธิโอเปีย"
+
+msgid "Euro"
+msgstr "ยูโร"
+
+msgid "European Composite Unit (EURCO)"
+msgstr "อียูอาร์ซีโอ"
+
+msgid "European Currency Unit ECU"
+msgstr "อี ซี ยู"
+
+msgid "European Monetary Unit (E.M.U.-6)"
+msgstr "อีเอ็มยู 6"
+
+msgid "European Unit of Account 17 (E.U.A.-17)"
+msgstr "บัญชี อียู 17"
+
+msgid "European Unit of Account 9 (E.U.A.-9)"
+msgstr "บัญชี อียู 9"
+
+msgid "Falkland Islands Pound"
+msgstr "ปอนด์ หมู่เกาะฟอล์กแลนด์"
+
+msgid "Fiji Dollar"
+msgstr "ดอลลาร์ ฟิจิ"
+
+msgid "Finnish Markka"
+msgstr "มาร์คคา ฟินแลนด์"
+
+msgid "Forint"
+msgstr "ฟอรินท์"
+
+msgid "French Franc"
+msgstr "ฟรังก์ ฝรั่งเศส"
+
+msgid "Georgian Coupon"
+msgstr "คูปอง จอร์เจีย"
+
+msgid "Ghana Cedi"
+msgstr "เซดี กานา"
+
+msgid "Gibraltar Pound"
+msgstr "ปอนด์ ยิบรอลตาร์"
+
+msgid "Gold"
+msgstr "ทองคำ"
+
+msgid "Gourde"
+msgstr "กอร์ด"
+
+msgid "Greek Drachma"
+msgstr "ดแรคมะ กรีซ"
+
+msgid "Guarani"
+msgstr "กวารานี"
+
+msgid "Guinea Escudo"
+msgstr "เอสคูโด กินี"
+
+msgid "Guinea Franc"
+msgstr "ฟรังก์ กินี"
+
+msgid "Guinea-Bissau Peso"
+msgstr "เปโซ กินีบิสเซา"
+
+msgid "Guyana Dollar"
+msgstr "ดอลลาร์ กายอานา"
+
+msgid "Hong Kong Dollar"
+msgstr "ดอลลาร์ ฮ่องกง"
+
+msgid "Hryvnia"
+msgstr "รีฟเนีย"
+
+msgid "Iceland Krona"
+msgstr "โครนา ไอซ์แลนด์"
+
+msgid "Iceland Old Krona"
+msgstr "โครนาเก่า ไอซ์แลนด์"
+
+msgid "Indian Rupee"
+msgstr "รูปี อินเดีย"
+
+msgid "Iranian Rial"
+msgstr "เรียล อิหร่าน"
+
+msgid "Iraqi Dinar"
+msgstr "ดีนาร์ อิรัก"
+
+msgid "Irish Pound"
+msgstr "ปอนด์ ไอริช"
+
+msgid "Israeli Old Shekel"
+msgstr "เชคเกิลเก่า อิสราเอล"
+
+msgid "Israeli Pound"
+msgstr "ปอนด์ อิสราเอล"
+
+msgid "Italian Lira"
+msgstr "ลีร์ อิตาลี"
+
+msgid "Jamaican Dollar"
+msgstr "ดอลลาร์ จาเมกา"
+
+msgid "Jordanian Dinar"
+msgstr "ดีนาร์ จอร์แดน"
+
+msgid "Kenyan Shilling"
+msgstr "ชิลลิง เคนยา"
+
+msgid "Kina"
+msgstr "คีนา"
+
+msgid "Kip"
+msgstr "กีบ"
+
+msgid "Kroon"
+msgstr "โครน เอสโตเนีย"
+
+msgid "Kuwaiti Dinar"
+msgstr "ดีนาร์ คูเวต"
+
+msgid "Kwacha"
+msgstr "ควาซา มาลาวี"
+
+msgid "Kwanza"
+msgstr "ควันซา"
+
+msgid "Kyat"
+msgstr "จัต"
+
+msgid "Lao kip"
+msgstr "เงินกีบ ลาว"
+
+msgid "Lari"
+msgstr "ลารี"
+
+msgid "Latvian Lats"
+msgstr "ลัตส์ ลัตเวีย"
+
+msgid "Latvian Ruble"
+msgstr "รูเบิล ลัตเวีย"
+
+msgid "Lebanese Pound"
+msgstr "ปอนด์ เลบานอน"
+
+msgid "Lek"
+msgstr "เลค"
+
+msgid "Lempira"
+msgstr "เลมพีรา ฮอนดูรัส"
+
+msgid "Leone"
+msgstr "ลีโอน"
+
+msgid "Liberian Dollar"
+msgstr "ดอลลาร์ ไลบีเรีย"
+
+msgid "Libyan Dinar"
+msgstr "ดีนาร์ ลิเบีย"
+
+msgid "Lilangeni"
+msgstr "ลิลอนเกนี"
+
+msgid "Lithuanian Litas"
+msgstr "ลีทาส ลิทัวเนีย"
+
+msgid "Loti"
+msgstr "โลตี"
+
+msgid "Luxembourg Franc"
+msgstr "ฟรังก์ ลักเซมเบิร์ก"
+
+msgid "Malagasy Ariary"
+msgstr "อเรียรี มาดากัสการ์"
+
+msgid "Malagasy Franc"
+msgstr "ฟรังก์ มาลากาซี"
+
+msgid "Malaysian Ringgit"
+msgstr "ริงกิต มาเลเซีย"
+
+msgid "Maldive Rupee"
+msgstr "รูปี มัลดีฟส์"
+
+msgid "Mali Franc"
+msgstr "ฟรังก์ มาลี"
+
+msgid "Maltese Lira"
+msgstr "ลีร์ มอลตา"
+
+msgid "Maltese Pound"
+msgstr "ปอนด์ มอลตา"
+
+msgid "Manat"
+msgstr "มานาท"
+
+msgid "Mauritius Rupee"
+msgstr "รูปี มอริเชียส"
+
+msgid "Metical"
+msgstr "เมททิคัล โมซัมบิก"
+
+msgid "Mexican Peso"
+msgstr "เปโซ เม็กซิโก"
+
+msgid "Mexican Unidad de Inversion (UDI)"
+msgstr "ยูนิแดด ดี อินเวอร์ชัน เม็กซิโก"
+
+msgid "Moldovan Leu"
+msgstr "ลิว มอลโดวา"
+
+msgid "Moroccan Dirham"
+msgstr "ดีแรห์ม โมร็อกโก"
+
+msgid "Mozambique Escudo"
+msgstr "เอสคูโด โมซัมบิก"
+
+msgid "Mozambique Metical"
+msgstr "เมททิคัล โมซัมบิก"
+
+msgid "Mvdol"
+msgstr "อิมมิอูเบโดล์"
+
+msgid "Naira"
+msgstr "ไนรา"
+
+msgid "Nakfa"
+msgstr "นาคฟา"
+
+msgid "Namibia Dollar"
+msgstr "ดอลลาร์ นามิเบีย"
+
+msgid "Nepalese Rupee"
+msgstr "รูปี เนปาล"
+
+msgid "Netherlands Antillian Guilder"
+msgstr "กิลเดอร์ เนเธอร์แลนด์แอนทิลลิส"
+
+msgid "Netherlands Guilder"
+msgstr "กิลเดอร์ เนเธอร์แลนด์"
+
+msgid "New Israeli Sheqel"
+msgstr "เชคเกิล อิสราเอล"
+
+msgid "New Leu"
+msgstr "ลิว โรมาเนีย"
+
+msgid "New Taiwan Dollar"
+msgstr "ดอลลาร์ ไต้หวัน"
+
+msgid "New Turkish Lira"
+msgstr "ลีร์ ตุรกี"
+
+msgid "New Zaire"
+msgstr "ซาอีร์ใหม่"
+
+msgid "New Zealand Dollar"
+msgstr "ดอลลาร์ นิวซีแลนด์"
+
+msgid "Ngultrum"
+msgstr "เองกัลทรัม"
+
+msgid "No currency"
+msgstr "ธุรกรรมที่ไม่มีเงินสกุลใดเกี่ยวข้อง"
+
+msgid "North Korean Won"
+msgstr "วอน เกาหลีเหนือ"
+
+msgid "Norwegian Krone"
+msgstr "โครน นอร์เวย์"
+
+msgid "Nuevo Sol"
+msgstr "ซัล เปรู"
+
+msgid "Old Uruguayan Peso"
+msgstr "เปโซเก่า อุรุกวัย"
+
+msgid "Ouguiya"
+msgstr "อูกุยยา"
+
+msgid "Pa'anga"
+msgstr "พาอานกา ตองกา"
+
+msgid "Pakistan Rupee"
+msgstr "รูปี ปากีสถาน"
+
+msgid "Palladium"
+msgstr "แพลเลเดียม"
+
+msgid "Pataca"
+msgstr "พาทากา"
+
+msgid "Peruvian Sol"
+msgstr "เงินซัล เปรู"
+
+msgid "Peso Argentino"
+msgstr "เปโซ อาร์เจนตินา"
+
+msgid "Peso Uruguayo"
+msgstr "เปโซ อุรุกวัย"
+
+msgid "Philippine Peso"
+msgstr "เปโซ ฟิลิปปินส์"
+
+msgid "Platinum"
+msgstr "แพลทินัม"
+
+msgid "Polish Złoty"
+msgstr "เงินสล็อตตี โปแลนด์"
+
+msgid "Portuguese Escudo"
+msgstr "เอสคูโด โปรตุเกส"
+
+msgid "Pound Sterling"
+msgstr "ปอนด์ สเตอร์ลิง"
+
+msgid "Pula"
+msgstr "พูลา"
+
+msgid "Qatari Rial"
+msgstr "เรียล กาตาร์"
+
+msgid "Quetzal"
+msgstr "เก็ตซาล"
+
+msgid "Rand"
+msgstr "แรนด์"
+
+msgid "Rhodesian Dollar"
+msgstr "ดอลลาร์ โรดีเซีย"
+
+msgid "Rial Omani"
+msgstr "เรียล โอมาน"
+
+msgid "Riel"
+msgstr "เรียล กัมพูชา"
+
+msgid "Romanian Old Leu"
+msgstr "ลิวเก่า โรมาเนีย"
+
+msgid "Rufiyaa"
+msgstr "รูฟียา"
+
+msgid "Rupiah"
+msgstr "รูเปีย"
+
+msgid "Russian Rouble"
+msgstr "รูเบิล รัสเซีย"
+
+msgid "Russian Ruble"
+msgstr "รูเบิล รัสเซีย"
+
+msgid "Rwanda Franc"
+msgstr "ฟรังก์ รวันดา"
+
+msgid "Saint Helena Pound"
+msgstr "ปอนด์ เซนต์เฮเลนา"
+
+msgid "Saudi Riyal"
+msgstr "ริยัล ซาอุดีอาระเบีย"
+
+msgid "Serbian Dinar"
+msgstr "ดีนาร์ เซอร์เบีย"
+
+msgid "Seychelles Rupee"
+msgstr "รูปี เซเชลส์"
+
+msgid "Silver"
+msgstr "เงิน"
+
+msgid "Singapore Dollar"
+msgstr "ดอลลาร์ สิงคโปร์"
+
+msgid "Slovak Koruna"
+msgstr "โครูนา สโลวัก"
+
+msgid "Slovenian Tolar"
+msgstr "โทลาร์ สโลวีเนีย"
+
+msgid "Solomon Islands Dollar"
+msgstr "ดอลลาร์ หมู่เกาะโซโลมอน"
+
+msgid "Som"
+msgstr "ซอม"
+
+msgid "Somali Shilling"
+msgstr "ชิลลิง โซมาเลีย"
+
+msgid "Somoni"
+msgstr "โซโมนิ"
+
+msgid "Spanish Peseta"
+msgstr "เปเซตา สเปน"
+
+msgid "Special Drawing Rights"
+msgstr "สิทธิพิเศษถอนเงิน"
+
+msgid "Sri Lanka Rupee"
+msgstr "รูปี ศรีลังกา"
+
+msgid "Sudanese Pound"
+msgstr "ปอนด์ ซูดาน"
+
+msgid "Surinam Dollar"
+msgstr "ดอลลาร์ ซูรินาเม"
+
+msgid "Suriname Guilder"
+msgstr "กิลเดอร์ ซูรินาเม"
+
+msgid "Swedish Krona"
+msgstr "โครนา สวีเดน"
+
+msgid "Swiss Franc"
+msgstr "ฟรังก์ สวิส"
+
+msgid "Syrian Pound"
+msgstr "ปอนด์ ซีเรีย"
+
+msgid "Tajik Rouble"
+msgstr "รูเบิล ทาจิกิสถาน"
+
+msgid "Taka"
+msgstr "ตากา"
+
+msgid "Tala"
+msgstr "ทาลา"
+
+msgid "Tanzanian Shilling"
+msgstr "ชิลลิง แทนซาเนีย"
+
+msgid "Tenge"
+msgstr "เทงเก"
+
+msgid "Timor Escudo"
+msgstr "เอสคูโด ติมอร์"
+
+msgid "Trinidad and Tobago Dollar"
+msgstr "ดอลลาร์ ตรินิแดดและโตเบโก"
+
+msgid "Tugrik"
+msgstr "ทูกริค"
+
+msgid "Tunisian Dinar"
+msgstr "ดีนาร์ ตูนิเซีย"
+
+msgid "Turkish Lira"
+msgstr "เงินลีร์ ตุรกี"
+
+msgid "UAE Dirham"
+msgstr "ดีแรห์ม สหรัฐอาหรับเอมิเรตส์"
+
+msgid "UIC-Franc"
+msgstr "ยูไอซี-ฟรังก์"
+
+msgid "US Dollar"
+msgstr "ดอลลาร์ สหรัฐ"
+
+msgid "US Dollar (Next day)"
+msgstr "ดอลลาร์ สหรัฐ (วันถัดไป)"
+
+msgid "US Dollar (Same day)"
+msgstr "ดอลลาร์ สหรัฐ (วันเดียวกัน)"
+
+msgid "USSR Rouble"
+msgstr "รูเบิล สหภาพโซเวียต"
+
+msgid "Uganda Old Schilling"
+msgstr "ชิลลิงเก่า ยูกันดา"
+
+msgid "Uganda Schilling"
+msgstr "ชิลลิง ยูกันดา"
+
+msgid "Uganda Shilling"
+msgstr "ชิลลิง ยูกันดา"
+
+msgid "Unidad de Valor Real"
+msgstr "ยูนิแดด ดี วาโล เรียล"
+
+msgid "Unidades de fomento"
+msgstr "ยูนิแดด ดี โฟเมนโต"
+
+msgid "Uruguay Peso en Unidades Indexadas"
+msgstr "อุรุกวัย เปโซ เอ็น อุนดิดาเดซ อินเด็กซาดาซ"
+
+msgid "Uruguayan Peso"
+msgstr "เปโซ อุรุกวัย"
+
+msgid "Uzbekistan Sum"
+msgstr "โซม อุซเบกิสถาน"
+
+msgid "Vatu"
+msgstr "วาตู"
+
+msgid "Venezuela Bolívar"
+msgstr "เงินโบลีวาร์ เวเนซุเอลา"
+
+msgid "Viet Nam Old Dong"
+msgstr "ดองเก่า เวียดนาม"
+
+msgid "Won"
+msgstr "วอน เกาหลีใต้"
+
+msgid "Yemeni Dinar"
+msgstr "ดีนาร์ เยเมน"
+
+msgid "Yemeni Rial"
+msgstr "เรียล เยเมน"
+
+msgid "Yen"
+msgstr "เยน"
+
+msgid "Yuan Renminbi"
+msgstr "หยวน เหรินหมินปี้"
+
+msgid "Yugoslavian Dinar"
+msgstr "ดีนาร์ ยูโกสลาเวีย"
+
+msgid "Zaire"
+msgstr "ซาอีร์"
+
+msgid "Zambian Kwacha"
+msgstr "ควาซา แซมเบีย"
+
+msgid "Zimbabwe Dollar"
+msgstr "ดอลลาร์ ซิมบับเว"
+
+msgid "Zloty"
+msgstr "สล็อตตี"

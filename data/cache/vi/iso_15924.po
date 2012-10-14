@@ -1,0 +1,405 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: iso_15924\n"
+"Report-Msgid-Bugs-To: Debian iso-codes team <pkg-isocodes-devel@lists.alioth."
+"debian.org>\n"
+"POT-Creation-Date: 2012-02-09 22:36+0100\n"
+"PO-Revision-Date: 2009-05-12 23:46+0930\n"
+"Last-Translator: Clytie Siddall <clytie@riverland.net.au>\n"
+"Language-Team: Vietnamese <vi-VN@googlegroups.com>\n"
+"Language: vi\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+"X-Generator: LocFactoryEditor 1.8\n"
+
+msgid "Arabic"
+msgstr "A Rập"
+
+msgid "Armenian"
+msgstr "Ác-mê-ni"
+
+msgid "Avestan"
+msgstr "A-ve-x-tanh"
+
+msgid "Balinese"
+msgstr "Ba-li"
+
+msgid "Batak"
+msgstr "Ba-tắc"
+
+msgid "Bengali"
+msgstr "Ben-ga-li"
+
+msgid "Blissymbols"
+msgstr "Ký hiệu Bliss"
+
+msgid "Book Pahlavi"
+msgstr "Pa-la-vi sách"
+
+msgid "Bopomofo"
+msgstr "Bô-pô-mô-phô"
+
+msgid "Brahmi"
+msgstr "Bợ-ră-mi"
+
+msgid "Braille"
+msgstr "Chữ Braille"
+
+msgid "Buginese"
+msgstr "Bu-gi-ni"
+
+msgid "Buhid"
+msgstr "Bu-hít"
+
+msgid "Carian"
+msgstr "Ca-ri"
+
+msgid "Chakma"
+msgstr "Chác-ma"
+
+msgid "Cham"
+msgstr "Cham"
+
+msgid "Cherokee"
+msgstr "Che-rô-khi"
+
+msgid "Cirth"
+msgstr "Cirth"
+
+msgid "Code for inherited script"
+msgstr "Mã cho chữ viết kế thừa"
+
+msgid "Code for uncoded script"
+msgstr "Mã cho chữ viết chưa có mã"
+
+msgid "Code for undetermined script"
+msgstr "Mã cho chữ viết chưa xác định"
+
+msgid "Code for unwritten documents"
+msgstr "Mã cho tài liệu không viết"
+
+msgid "Coptic"
+msgstr "Giáo hội Ai Cập"
+
+msgid "Cuneiform, Sumero-Akkadian"
+msgstr "Chữ hình nêm (Xu-me-rô Ác-ca-đi)"
+
+msgid "Cypriot"
+msgstr "Síp"
+
+msgid "Cyrillic"
+msgstr "Chữ Ki-rin"
+
+msgid "Cyrillic (Old Church Slavonic variant)"
+msgstr "Chữ Ki-rin (biến thể Xla-vô-ni Nhà Thơ Cũ)"
+
+msgid "Deseret (Mormon)"
+msgstr "Đe-se-rét (Moa-mon)"
+
+msgid "Devanagari (Nagari)"
+msgstr "Đe-va-na-ga-ri (Na-ga-ri)"
+
+msgid "Egyptian demotic"
+msgstr "Ai Cập thông dụng"
+
+msgid "Egyptian hieratic"
+msgstr "Ai Cập thầy tu"
+
+msgid "Egyptian hieroglyphs"
+msgstr "Ai Cập viết tượng hình"
+
+msgid "Ethiopic (Geʻez)"
+msgstr "Ê-ti-ô-pi (Ge'ez)"
+
+msgid "Georgian (Mkhedruli)"
+msgstr "Gi-oa-gi-a (Mkhedruli)"
+
+msgid "Glagolitic"
+msgstr "G-la-gô-li-ti"
+
+msgid "Gothic"
+msgstr "Gô-tích"
+
+msgid "Greek"
+msgstr "Hy Lạp"
+
+msgid "Gujarati"
+msgstr "Gu-gia-ra-ti"
+
+msgid "Gurmukhi"
+msgstr "Gổ-mu-khi"
+
+msgid "Han (Hanzi, Kanji, Hanja)"
+msgstr "Han (Hanzi, Kanji, Hanja)"
+
+msgid "Han (Simplified variant)"
+msgstr "Han (biến thể phổ thông)"
+
+msgid "Han (Traditional variant)"
+msgstr "Han (biến thể truyền thống)"
+
+msgid "Hangul (Hangŭl, Hangeul)"
+msgstr "Hangul (Hangŭl, Hangeul)"
+
+msgid "Hanunoo (Hanunóo)"
+msgstr "Hanunoo (Hanunóo)"
+
+msgid "Hebrew"
+msgstr "Do Thái"
+
+msgid "Hiragana"
+msgstr "Hi-ra-ga-na"
+
+msgid "Imperial Aramaic"
+msgstr "Xy-ri cũ hoàng đế"
+
+msgid "Indus (Harappan)"
+msgstr "In-du-x (Ha-ra-pa)"
+
+msgid "Inscriptional Pahlavi"
+msgstr "Pa-la-vi câu viết"
+
+msgid "Inscriptional Parthian"
+msgstr "Pa-thi xư câu viết"
+
+msgid "Japanese (alias for Han + Hiragana + Katakana)"
+msgstr "Nhật (bí danh đại diện Han + Hiragana + Katakana)"
+
+msgid "Javanese"
+msgstr "Gia-va"
+
+msgid "Kaithi"
+msgstr "Kai-thi"
+
+msgid "Kannada"
+msgstr "Kan-na-đa"
+
+msgid "Katakana"
+msgstr "Ka-ta-ka-na"
+
+msgid "Kayah Li"
+msgstr "Kayah Li"
+
+msgid "Kharoshthi"
+msgstr "Kha-ro-s-thi"
+
+msgid "Khmer"
+msgstr "Khơ-me"
+
+msgid "Khutsuri (Asomtavruli and Nuskhuri)"
+msgstr "Khu-t-xu-ri (Asomtavruli và Nuskhuri)"
+
+msgid "Korean (alias for Hangul + Han)"
+msgstr "Hàn (bí danh đại diện Hangul + Han)"
+
+msgid "Lao"
+msgstr "Lào"
+
+msgid "Latin"
+msgstr "La-tinh"
+
+msgid "Latin (Fraktur variant)"
+msgstr "La-tinh (biến thể Fraktur)"
+
+msgid "Latin (Gaelic variant)"
+msgstr "La-tinh (biến thể Xen-tơ)"
+
+msgid "Lepcha (Róng)"
+msgstr "Lep-cha (Róng)"
+
+msgid "Limbu"
+msgstr "Lim-bu"
+
+msgid "Linear A"
+msgstr "Tuyến A"
+
+msgid "Linear B"
+msgstr "Tuyến B"
+
+msgid "Lisu (Fraser)"
+msgstr "Lisu (Fraser)"
+
+msgid "Lycian"
+msgstr "Ly-xi"
+
+msgid "Lydian"
+msgstr "Ly-đi-a"
+
+msgid "Malayalam"
+msgstr "Mã Lai"
+
+msgid "Mandaic, Mandaean"
+msgstr "Man-đaíc"
+
+msgid "Manichaean"
+msgstr "Ma-ni-chi-a"
+
+msgid "Mathematical notation"
+msgstr "Cách ghi toán học"
+
+msgid "Mayan hieroglyphs"
+msgstr "Ma-ya viết tượng hình"
+
+msgid "Meitei Mayek (Meithei, Meetei)"
+msgstr "Mei-tei May-ek (Meithei, Meetei)"
+
+msgid "Miao (Pollard)"
+msgstr "Miao (Pollard)"
+
+msgid "Mongolian"
+msgstr "Mông Cổ"
+
+msgid "Moon (Moon code, Moon script, Moon type)"
+msgstr "Moon (mã Moon, chữ viết Moon, chữ in Moon)"
+
+msgid "Myanmar (Burmese)"
+msgstr "Miến Điện"
+
+msgid "Nakhi Geba ('Na-'Khi ²Ggŏ-¹baw, Naxi Geba)"
+msgstr "Nakhi Geba ('Na-'Khi ²Ggŏ-¹baw, Naxi Geba)"
+
+msgid "New Tai Lue"
+msgstr "Tai Lue mới"
+
+msgid "N’Ko"
+msgstr "N’Ko"
+
+msgid "Ogham"
+msgstr "Ogam"
+
+msgid "Ol Chiki (Ol Cemet’, Ol, Santali)"
+msgstr "Ol Chiki (Ol Cemet’, Ol, Santali)"
+
+msgid "Old Hungarian"
+msgstr "Hun-ga-ri cũ"
+
+msgid "Old Italic (Etruscan, Oscan, etc.)"
+msgstr "Ý cũ (E-tợ-ru-x-ca, O-x-ca v.v.)"
+
+msgid "Old Permic"
+msgstr "Pơ-míc cũ"
+
+msgid "Old Persian"
+msgstr "Ba Tư cũ"
+
+msgid "Oriya"
+msgstr "O-ri-a"
+
+msgid "Osmanya"
+msgstr "O-x-man-i-a"
+
+msgid "Pahawh Hmong"
+msgstr "Miêu Pahawh"
+
+msgid "Phags-pa"
+msgstr "Pha-g-x-pa"
+
+msgid "Phoenician"
+msgstr "Phi-ni-xi"
+
+msgid "Psalter Pahlavi"
+msgstr "Pa-la-vi sách thánh ca"
+
+msgid "Rejang (Redjang, Kaganga)"
+msgstr "Rejang (Redjang, Kaganga)"
+
+msgid "Reserved for private use (end)"
+msgstr "Dành để sử dụng riêng (cuối)"
+
+msgid "Reserved for private use (start)"
+msgstr "Dành để sử dụng riêng (đầu)"
+
+msgid "Rongorongo"
+msgstr "Ron-gô-ron-gô"
+
+msgid "Runic"
+msgstr "Chữ Run"
+
+msgid "Samaritan"
+msgstr "Xa-ma-ri"
+
+msgid "Sarati"
+msgstr "Xa-ra-ti"
+
+msgid "Saurashtra"
+msgstr "Xau-ra-s-tợ-ra"
+
+msgid "Shavian (Shaw)"
+msgstr "Sa-vi (Shaw)"
+
+msgid "SignWriting"
+msgstr "Viết ước hiệu"
+
+msgid "Sinhala"
+msgstr "Xin-ha-la"
+
+msgid "Sundanese"
+msgstr "Xun-đa-ni"
+
+msgid "Syloti Nagri"
+msgstr "Xi-lô-ti Na-gợ-ri"
+
+msgid "Symbols"
+msgstr "Ký hiệu"
+
+msgid "Syriac"
+msgstr "Xi-ri"
+
+msgid "Syriac (Eastern variant)"
+msgstr "Xi-ri (biến thể Đông)"
+
+msgid "Syriac (Estrangelo variant)"
+msgstr "Xi-ri (biến thể Estralengo)"
+
+msgid "Syriac (Western variant)"
+msgstr "Xi-ri (biến thể Tây)"
+
+msgid "Tagalog (Baybayin, Alibata)"
+msgstr "Tagalog (Baybayin, Alibata)"
+
+msgid "Tagbanwa"
+msgstr "Tac-ba-nouă"
+
+msgid "Tai Le"
+msgstr "Tai Le"
+
+msgid "Tai Viet"
+msgstr "Tai Viet"
+
+msgid "Tamil"
+msgstr "Ta-min"
+
+msgid "Telugu"
+msgstr "Te-lu-gu"
+
+msgid "Tengwar"
+msgstr "Teng-ouă"
+
+msgid "Thaana"
+msgstr "Thă-na"
+
+msgid "Thai"
+msgstr "Thái"
+
+msgid "Tibetan"
+msgstr "Tây Tạng"
+
+msgid "Tifinagh (Berber)"
+msgstr "Ti-phi-nach (Bơ-bơ)"
+
+msgid "Ugaritic"
+msgstr "U-ga-ri-ti"
+
+msgid "Unified Canadian Aboriginal Syllabics"
+msgstr "Âm Tiết Thổ Dân Ca-na-đa Thống Nhất"
+
+msgid "Vai"
+msgstr "Vai"
+
+msgid "Visible Speech"
+msgstr "Giọng Nói Hiện Rõ"
+
+msgid "Yi"
+msgstr "Yi"

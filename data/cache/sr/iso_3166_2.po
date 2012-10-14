@@ -1,0 +1,547 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: iso_3166_2\n"
+"Report-Msgid-Bugs-To: Debian iso-codes team <pkg-isocodes-devel@lists.alioth."
+"debian.org>\n"
+"POT-Creation-Date: 2012-04-09 14:32+0200\n"
+"PO-Revision-Date: 2006-12-23 18:25+0000\n"
+"Last-Translator: Nikola Smolenski <smolensk@eunet.yu>\n"
+"Language-Team: Serbian <gnu@prevod.org>\n"
+"Language: sr\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+msgid "Adygeya, Respublika"
+msgstr "Адигеј, Република"
+
+msgid "Alaska"
+msgstr "Аљаска"
+
+msgid "Alicante"
+msgstr "Аликанте"
+
+msgid "Altayskiy kray"
+msgstr "Алтајски Крај"
+
+msgid "Amurskaya oblast'"
+msgstr "Амурска Област"
+
+msgid "Andalucía"
+msgstr "Андалузија"
+
+msgid "Arad"
+msgstr "Арад"
+
+msgid "Arkansas"
+msgstr "Арканзас"
+
+msgid "Arkhangel'skaya oblast'"
+msgstr "Архангелска Област"
+
+msgid "Astrakhanskaya oblast'"
+msgstr "Астраханска Област"
+
+msgid "Australian Capital Territory"
+msgstr "Аустралијска Престоничка Територија"
+
+msgid "Baghdad"
+msgstr "Багдад"
+
+msgid "Baranya"
+msgstr "Барања"
+
+msgid "Bashkortostan, Respublika"
+msgstr "Башкортостан, Република"
+
+msgid "Bayern"
+msgstr "Бајерн"
+
+msgid "Blagoevgrad"
+msgstr "Благојевград"
+
+msgid "Bologna"
+msgstr "Болоња"
+
+msgid "Brandenburg"
+msgstr "Бранденбург"
+
+msgid "Bremen"
+msgstr "Бремен"
+
+msgid "Brindisi"
+msgstr "Бриндизи"
+
+msgid "Budapest"
+msgstr "Будимпешта"
+
+msgid "Buryatiya, Respublika"
+msgstr "Бурјатија, Република"
+
+msgid "Castilla y León"
+msgstr "Кастиља и Леон"
+
+msgid "Castilla-La Mancha"
+msgstr "Кастиља-Ла Манча"
+
+msgid "Chechenskaya Respublika"
+msgstr "Чеченска Република"
+
+msgid "Chelyabinskaya oblast'"
+msgstr "Чељабинска Област"
+
+msgid "Chukotskiy avtonomnyy okrug"
+msgstr "Чукотски Аутономни округ"
+
+msgid "Ciudad Real"
+msgstr "Сиудад Реал"
+
+msgid "Connecticut"
+msgstr "Конектикет"
+
+msgid "Cornwall"
+msgstr "Корнвол"
+
+msgid "Croydon"
+msgstr "Кројдон"
+
+msgid "Csongrád"
+msgstr "Чонград"
+
+msgid "Dagestan, Respublika"
+msgstr "Дагестан, Република"
+
+msgid "Delaware"
+msgstr "Делавер"
+
+msgid "Derby"
+msgstr "Дерби"
+
+msgid "District of Columbia"
+msgstr "Дистрикт Колумбија"
+
+msgid "Dnipropetrovs'ka Oblast'"
+msgstr "Дњепропетровска Област"
+
+msgid "Donets'ka Oblast'"
+msgstr "Доњецка Област"
+
+msgid "Dubayy"
+msgstr "Дубаји"
+
+msgid "Extremadura"
+msgstr "Естрамадура"
+
+msgid "Florida"
+msgstr "Флорида"
+
+msgid "Fukuoka"
+msgstr "Фукуока"
+
+msgid "Glasgow City"
+msgstr "Глазгов"
+
+msgid "Gloucestershire"
+msgstr "Глочестершир"
+
+msgid "Hamburg"
+msgstr "Хамбург"
+
+msgid "Hampshire"
+msgstr "Хемшир"
+
+msgid "Hawaii"
+msgstr "Хаваји"
+
+msgid "Hiroshima"
+msgstr "Хирошима"
+
+msgid "Hokkaido"
+msgstr "Хокаидо"
+
+msgid "Idaho"
+msgstr "Ајдахо"
+
+msgid "Illinois"
+msgstr "Илиноис"
+
+msgid "Indiana"
+msgstr "Индијана"
+
+msgid "Ivanovskaya oblast'"
+msgstr "Ивановска Област"
+
+msgid "Kagoshima"
+msgstr "Кагошима"
+
+msgid "Kaliningradskaya oblast'"
+msgstr "Калињинградска Област"
+
+msgid "Kalmykiya, Respublika"
+msgstr "Калмикија, Република"
+
+msgid "Kansas"
+msgstr "Канзас"
+
+msgid "Kareliya, Respublika"
+msgstr "Карелија, Република"
+
+msgid "Kemerovskaya oblast'"
+msgstr "Кемеровска Област"
+
+msgid "Kentucky"
+msgstr "Кентаки"
+
+msgid "Khabarovskiy kray"
+msgstr "Хабаровски Крај"
+
+msgid "Kharkivs'ka Oblast'"
+msgstr "Харковска Област"
+
+msgid "Kirovskaya oblast'"
+msgstr "Кировска Област"
+
+msgid "Kosovo-Metohija"
+msgstr "Косово и Метохија"
+
+msgid "Kostromskaya oblast'"
+msgstr "Костромска Област"
+
+msgid "Krasnodarskiy kray"
+msgstr "Краснодарски Крај"
+
+msgid "Krasnoyarskiy kray"
+msgstr "Краснојарски Крај"
+
+msgid "Kukës"
+msgstr "Кукси"
+
+msgid "Kurganskaya oblast'"
+msgstr "Курганска Област"
+
+msgid "Kurskaya oblast'"
+msgstr "Курска Област"
+
+msgid "Kyoto"
+msgstr "Кјото"
+
+msgid "L'vivs'ka Oblast'"
+msgstr "Лавовска Област"
+
+msgid "Leeds"
+msgstr "Лидс"
+
+msgid "Leningradskaya oblast'"
+msgstr "Лењинградска Област"
+
+msgid "Lezhë"
+msgstr "Лежани"
+
+msgid "León"
+msgstr "Леон"
+
+msgid "Louisiana"
+msgstr "Лујзијана"
+
+msgid "Madrid"
+msgstr "Мадрид"
+
+msgid "Magadanskaya oblast'"
+msgstr "Мадаганска Област"
+
+msgid "Massachusetts"
+msgstr "Масачусетс"
+
+msgid "Michigan"
+msgstr "Мичиген"
+
+msgid "Minnesota"
+msgstr "Минесота"
+
+msgid "Mississippi"
+msgstr "Мисисипи"
+
+msgid "Missouri"
+msgstr "Мисури"
+
+msgid "Miyagi"
+msgstr "Мијаги"
+
+msgid "Miyazaki"
+msgstr "Мијазаки"
+
+msgid "Moskovskaya oblast'"
+msgstr "Московска Област"
+
+msgid "Moskva"
+msgstr "Москва"
+
+msgid "Murmanskaya oblast'"
+msgstr "Мурманска Област"
+
+msgid "Nagano"
+msgstr "Нагано"
+
+msgid "Nagasaki"
+msgstr "Нагасаки"
+
+msgid "Napoli"
+msgstr "Напуљ"
+
+msgid "Nebraska"
+msgstr "Небраска"
+
+msgid "New South Wales"
+msgstr "Нови Јужни Велс"
+
+msgid "New York"
+msgstr "Њујорк"
+
+msgid "Nizhegorodskaya oblast'"
+msgstr "Нижегородска Област"
+
+msgid "Northern Mariana Islands"
+msgstr "Северна Маријанска Острва"
+
+msgid "Northern Territory"
+msgstr "Северна Територија"
+
+msgid "Novgorodskaya oblast'"
+msgstr "Новгородска Област"
+
+msgid "Novosibirskaya oblast'"
+msgstr "Новосибирска Област"
+
+msgid "Ohio"
+msgstr "Охајо"
+
+msgid "Okinawa"
+msgstr "Окинава"
+
+msgid "Oklahoma"
+msgstr "Оклахома"
+
+msgid "Omskaya oblast'"
+msgstr "Омска Област"
+
+msgid "Oregon"
+msgstr "Орегон"
+
+msgid "Orenburgskaya oblast'"
+msgstr "Оренбуршка Област"
+
+msgid "Orlovskaya oblast'"
+msgstr "Орловска Област"
+
+msgid "Osaka"
+msgstr "Осака"
+
+msgid "Padova"
+msgstr "Падова"
+
+msgid "Pennsylvania"
+msgstr "Пенсилванија"
+
+msgid "Pest"
+msgstr "Пешта"
+
+msgid "Piemonte"
+msgstr "Пијемонт"
+
+msgid "Plovdiv"
+msgstr "Пловдив"
+
+msgid "Primorskiy kray"
+msgstr "Приморски Крај"
+
+msgid "Pskovskaya oblast'"
+msgstr "Псковска Област"
+
+msgid "Puerto Rico"
+msgstr "Порторико"
+
+msgid "Queensland"
+msgstr "Квинсленд"
+
+msgid "Republika Srpska"
+msgstr "Република Српска"
+
+msgid "Respublika Krym"
+msgstr "Република Крим"
+
+msgid "Rheinland-Pfalz"
+msgstr "Рајнланд-Фалц"
+
+msgid "Rostovskaya oblast'"
+msgstr "Ростовска Област"
+
+msgid "Ryazanskaya oblast'"
+msgstr "Рјазањска Област"
+
+msgid "Sakhalinskaya oblast'"
+msgstr "Сахалинска Област"
+
+msgid "Sankt-Peterburg"
+msgstr "Санкт-Петербург"
+
+msgid "Saratovskaya oblast'"
+msgstr "Саратовска Област"
+
+msgid "Schleswig-Holstein"
+msgstr "Шлезвиг-Холштајн"
+
+msgid "Sevastopol"
+msgstr "Севастопољ"
+
+msgid "Shetland Islands"
+msgstr "Шетландска Острва"
+
+msgid "Shkodër"
+msgstr "Скадар"
+
+msgid "Siracusa"
+msgstr "Сиракуза"
+
+msgid "Smolenskaya oblast'"
+msgstr "Смоленска Област"
+
+msgid "Stavropol'skiy kray"
+msgstr "Ставропољски Крај"
+
+msgid "Sverdlovskaya oblast'"
+msgstr "Свердловска Област"
+
+msgid "Tambovskaya oblast'"
+msgstr "Тамбовска Област"
+
+msgid "Tatarstan, Respublika"
+msgstr "Татарстан, Република"
+
+msgid "Tel-Aviv"
+msgstr "Тел Авив"
+
+msgid "Tennessee"
+msgstr "Тенеси"
+
+msgid "Texas"
+msgstr "Тексас"
+
+msgid "Tirol"
+msgstr "Тирол"
+
+msgid "Tokushima"
+msgstr "Токушима"
+
+msgid "Tokyo"
+msgstr "Токио"
+
+msgid "Tomskaya oblast'"
+msgstr "Томска Област"
+
+msgid "Torino"
+msgstr "Торино"
+
+msgid "Trieste"
+msgstr "Трст"
+
+msgid "Tropojë"
+msgstr "Требопоље"
+
+msgid "Tul'skaya oblast'"
+msgstr "Тулска Област"
+
+msgid "Tverskaya oblast'"
+msgstr "Тверска Област"
+
+msgid "Tyumenskaya oblast'"
+msgstr "Тјуменска Област"
+
+msgid "Udmurtskaya Respublika"
+msgstr "Удмуртска Република"
+
+msgid "Ul'yanovskaya oblast'"
+msgstr "Уљановска Област"
+
+msgid "Utah"
+msgstr "Јута"
+
+msgid "Utrecht"
+msgstr "Утрехт"
+
+msgid "Varna"
+msgstr "Варна"
+
+msgid "Veliko Tarnovo"
+msgstr "Велико Трново"
+
+msgid "Vermont"
+msgstr "Вермонт"
+
+msgid "Verona"
+msgstr "Верона"
+
+msgid "Victoria"
+msgstr "Викторија"
+
+msgid "Virgin Islands"
+msgstr "Девичанска Острва"
+
+msgid "Virginia"
+msgstr "Вирџинија"
+
+msgid "Vladimirskaya oblast'"
+msgstr "Владимирска Област"
+
+msgid "Vojvodina"
+msgstr "Војводина"
+
+msgid "Volgogradskaya oblast'"
+msgstr "Волгоградска Област"
+
+msgid "Voronezhskaya oblast'"
+msgstr "Вороњешка Област"
+
+msgid "Washington"
+msgstr "Вашингтон"
+
+msgid "Wellington"
+msgstr "Велингтон"
+
+msgid "West Berkshire"
+msgstr "Западни Беркшир"
+
+msgid "West Virginia"
+msgstr "Западна Вирџинија"
+
+msgid "Wien"
+msgstr "Беч"
+
+msgid "Wisconsin"
+msgstr "Висконсин"
+
+msgid "Wyoming"
+msgstr "Вајоминг"
+
+msgid "Yamagata"
+msgstr "Јамагата"
+
+msgid "Yamaguchi"
+msgstr "Јамагучи"
+
+msgid "Yamanashi"
+msgstr "Јаманаши"
+
+msgid "Yaroslavskaya oblast'"
+msgstr "Јарославска Област"
+
+msgid "Yevreyskaya avtonomnaya oblast'"
+msgstr "Јеврејска Аутономна Област"
+
+msgid "Zakarpats'ka Oblast'"
+msgstr "Закарпатска Област"
+
+msgid "Zaporiz'ka Oblast'"
+msgstr "Запорошка Област"
+
+msgid "Zhytomyrs'ka Oblast'"
+msgstr "Житомирска Област"

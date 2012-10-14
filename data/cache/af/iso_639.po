@@ -1,0 +1,487 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: iso_639\n"
+"Report-Msgid-Bugs-To: Debian iso-codes team <pkg-isocodes-devel@lists.alioth."
+"debian.org>\n"
+"POT-Creation-Date: 2010-03-31 08:26+0200\n"
+"PO-Revision-Date: 2007-1116 22:3+0200\n"
+"Last-Translator: Friedel Wolff <friedel@translate.org.za>\n"
+"Language-Team: Afrikaans <translate-discuss-af@lists.sourceforge.net>\n"
+"Language: af\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+msgid "Abkhazian"
+msgstr "Abgasies"
+
+msgid "Afar"
+msgstr "Afar"
+
+msgid "Afrikaans"
+msgstr "Afrikaans"
+
+msgid "Akan"
+msgstr "Akan"
+
+msgid "Albanian"
+msgstr "Albanees"
+
+msgid "Amharic"
+msgstr "Amharies"
+
+msgid "Apache languages"
+msgstr "Apache-tale"
+
+msgid "Arabic"
+msgstr "Arabies"
+
+msgid "Aragonese"
+msgstr "Aragonees"
+
+msgid "Armenian"
+msgstr "Armeens"
+
+msgid "Assamese"
+msgstr "Assamese"
+
+msgid "Australian languages"
+msgstr "Australiese tale"
+
+msgid "Aymara"
+msgstr "Aymara"
+
+msgid "Azerbaijani"
+msgstr "Azerbaidjans"
+
+msgid "Basque"
+msgstr "Baskies"
+
+msgid "Belarusian"
+msgstr "Belo-Russies"
+
+msgid "Bengali"
+msgstr "Bengalees"
+
+msgid "Bislama"
+msgstr "Bislamees"
+
+msgid "Bosnian"
+msgstr "Bosnies"
+
+msgid "Breton"
+msgstr "Bretons"
+
+msgid "Bulgarian"
+msgstr "Bulgaars"
+
+msgid "Burmese"
+msgstr "Burmees"
+
+msgid "Catalan; Valencian"
+msgstr "Katalaans"
+
+msgid "Cherokee"
+msgstr "Tjerokees"
+
+msgid "Chinese"
+msgstr "Sjinees"
+
+msgid "Coptic"
+msgstr "Kopties"
+
+msgid "Cornish"
+msgstr "Kornies"
+
+msgid "Corsican"
+msgstr "Korsikaans"
+
+msgid "Croatian"
+msgstr "Kroaties"
+
+msgid "Czech"
+msgstr "Tsjeggies"
+
+msgid "Danish"
+msgstr "Deens"
+
+msgid "Dutch; Flemish"
+msgstr "Nederlands"
+
+msgid "Eastern Frisian"
+msgstr "Oos-Fries"
+
+msgid "Egyptian (Ancient)"
+msgstr "Egipties (antiek)"
+
+msgid "English"
+msgstr "Engels"
+
+msgid "Esperanto"
+msgstr "Esperanto"
+
+msgid "Estonian"
+msgstr "Estlands"
+
+msgid "Ewe"
+msgstr "Ewe"
+
+msgid "Fang"
+msgstr "Fang"
+
+msgid "Fanti"
+msgstr "Fanti"
+
+msgid "Faroese"
+msgstr "Faroees"
+
+msgid "Fijian"
+msgstr "Fidjies"
+
+msgid "Finnish"
+msgstr "Fins"
+
+msgid "Fon"
+msgstr "Fon"
+
+msgid "French"
+msgstr "Frans"
+
+msgid "Galician"
+msgstr "Galisies"
+
+msgid "Georgian"
+msgstr "Georgies"
+
+msgid "German"
+msgstr "Duits"
+
+msgid "Gothic"
+msgstr "Goties"
+
+msgid "Guarani"
+msgstr "Guarani"
+
+msgid "Gujarati"
+msgstr "Goedjarati"
+
+msgid "Hausa"
+msgstr "Hausa"
+
+msgid "Hawaiian"
+msgstr "Hawais"
+
+msgid "Hebrew"
+msgstr "Hebreeus"
+
+msgid "Herero"
+msgstr "Herero"
+
+msgid "Hindi"
+msgstr "Hindi"
+
+msgid "Hungarian"
+msgstr "Hongaars"
+
+msgid "Icelandic"
+msgstr "Yslands"
+
+msgid "Indonesian"
+msgstr "Indonesies"
+
+msgid "Inuktitut"
+msgstr "Innuïties"
+
+msgid "Inupiaq"
+msgstr "Inupiak"
+
+msgid "Irish"
+msgstr "Iers"
+
+msgid "Italian"
+msgstr "Italiaans"
+
+msgid "Japanese"
+msgstr "Japannees"
+
+msgid "Javanese"
+msgstr "Javanees"
+
+msgid "Kannada"
+msgstr "Kannada"
+
+msgid "Kashmiri"
+msgstr "Kasjmiri"
+
+msgid "Kashubian"
+msgstr "Kasjoebies"
+
+msgid "Kazakh"
+msgstr "Kazak"
+
+msgid "Kinyarwanda"
+msgstr "Kinyarwanda"
+
+msgid "Korean"
+msgstr "Koreaans"
+
+msgid "Kurdish"
+msgstr "Koerdies"
+
+msgid "Lao"
+msgstr "Lao"
+
+msgid "Latin"
+msgstr "Latyn"
+
+msgid "Latvian"
+msgstr "Letties"
+
+msgid "Limburgan; Limburger; Limburgish"
+msgstr "Limburgs"
+
+msgid "Lingala"
+msgstr "Lingalees"
+
+msgid "Lithuanian"
+msgstr "Litaus"
+
+msgid "Luxembourgish; Letzeburgesch"
+msgstr "Luxemburgs"
+
+msgid "Macedonian"
+msgstr "Masedonies"
+
+msgid "Malay"
+msgstr "Maleis"
+
+msgid "Malayalam"
+msgstr "Malabaars"
+
+msgid "Maltese"
+msgstr "Maltees"
+
+msgid "Manx"
+msgstr "Manx"
+
+msgid "Maori"
+msgstr "Maori"
+
+msgid "Marathi"
+msgstr "Marafi"
+
+msgid "Mayan languages"
+msgstr "Majatale"
+
+msgid "Moldavian; Moldovan"
+msgstr "Moldawies"
+
+msgid "Mongolian"
+msgstr "Mongools"
+
+msgid "Multiple languages"
+msgstr "Veelvuldige tale"
+
+msgid "Nauru"
+msgstr "Nauru"
+
+msgid "Ndonga"
+msgstr "Ndonga"
+
+msgid "Nepali"
+msgstr "Nepalees"
+
+msgid "Norse, Old"
+msgstr "Oud-Noors"
+
+msgid "Northern Frisian"
+msgstr "Noord-Fries"
+
+msgid "Northern Sami"
+msgstr "Noord-Sami"
+
+msgid "Norwegian"
+msgstr "Noorweegs"
+
+msgid "Norwegian Nynorsk; Nynorsk, Norwegian"
+msgstr "Noorweegse Nynorsk"
+
+msgid "Oriya"
+msgstr "Oria"
+
+msgid "Oromo"
+msgstr "Oromees"
+
+msgid "Persian"
+msgstr "Persies"
+
+msgid "Polish"
+msgstr "Pools"
+
+msgid "Portuguese"
+msgstr "Portugees"
+
+msgid "Quechua"
+msgstr "Quechua"
+
+msgid "Reserved for local use"
+msgstr "Gereserveer vir plaaslike gebruik"
+
+msgid "Romanian"
+msgstr "Roemeens"
+
+msgid "Romansh"
+msgstr "Reto-Romaans"
+
+msgid "Rundi"
+msgstr "Rundi"
+
+msgid "Russian"
+msgstr "Russies"
+
+msgid "Samoan"
+msgstr "Samoaans"
+
+msgid "Sango"
+msgstr "Sangro"
+
+msgid "Sanskrit"
+msgstr "Sanskrit"
+
+msgid "Sardinian"
+msgstr "Sardinies"
+
+msgid "Scots"
+msgstr "Skots"
+
+msgid "Serbian"
+msgstr "Serwies"
+
+msgid "Shona"
+msgstr "Shona"
+
+msgid "Sicilian"
+msgstr "Sisiliaans"
+
+msgid "Sign Languages"
+msgstr "Gebaretale"
+
+msgid "Sindhi"
+msgstr "Sindhi"
+
+msgid "Sinhala; Sinhalese"
+msgstr "Singalees"
+
+msgid "Slovak"
+msgstr "Slowaaks"
+
+msgid "Slovenian"
+msgstr "Sloweens"
+
+msgid "Somali"
+msgstr "Somali"
+
+msgid "Sorbian languages"
+msgstr "Sorbiese tale"
+
+msgid "Sotho, Southern"
+msgstr "Sotho, Suid-"
+
+msgid "Southern Sami"
+msgstr "Suid-Sami"
+
+msgid "Spanish; Castilian"
+msgstr "Spaans"
+
+msgid "Sundanese"
+msgstr "Soedanees"
+
+msgid "Swahili"
+msgstr "Swahili"
+
+msgid "Swati"
+msgstr "Swati"
+
+msgid "Swedish"
+msgstr "Sweeds"
+
+msgid "Tagalog"
+msgstr "Tagalog"
+
+msgid "Tajik"
+msgstr "Tadjikistans"
+
+msgid "Tamil"
+msgstr "Tamil"
+
+msgid "Tatar"
+msgstr "Tartaars"
+
+msgid "Telugu"
+msgstr "Teloegoe"
+
+msgid "Thai"
+msgstr "Thai"
+
+msgid "Tibetan"
+msgstr "Tibettaans"
+
+msgid "Tsonga"
+msgstr "Tsonga"
+
+msgid "Tswana"
+msgstr "Tswana"
+
+msgid "Turkish"
+msgstr "Turks"
+
+msgid "Turkmen"
+msgstr "Turkmeens"
+
+msgid "Twi"
+msgstr "Twi"
+
+msgid "Ugaritic"
+msgstr "Oegarities"
+
+msgid "Uighur; Uyghur"
+msgstr "Oeigoers"
+
+msgid "Ukrainian"
+msgstr "Oekraïens"
+
+msgid "Urdu"
+msgstr "Oerdoe"
+
+msgid "Uzbek"
+msgstr "Oezbekies"
+
+msgid "Venda"
+msgstr "Venda"
+
+msgid "Vietnamese"
+msgstr "Viëtnamees"
+
+msgid "Walloon"
+msgstr "walloonse"
+
+msgid "Welsh"
+msgstr "Wallies"
+
+msgid "Western Frisian"
+msgstr "Wes-Fries"
+
+msgid "Wolof"
+msgstr "Wolof"
+
+msgid "Xhosa"
+msgstr "Xhosa"
+
+msgid "Yiddish"
+msgstr "Jiddisj"
+
+msgid "Yoruba"
+msgstr "Joroeba"
+
+msgid "Zulu"
+msgstr "Zoeloe"

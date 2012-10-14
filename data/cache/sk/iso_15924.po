@@ -1,0 +1,98 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: iso_15924\n"
+"Report-Msgid-Bugs-To: Debian iso-codes team <pkg-isocodes-devel@lists.alioth."
+"debian.org>\n"
+"POT-Creation-Date: 2012-02-09 22:36+0100\n"
+"PO-Revision-Date: 2008-06-17 23:29+0100\n"
+"Last-Translator: Ivan Masár <helix84@centrum.sk>\n"
+"Language-Team: Slovak\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: KBabel 1.11.4\n"
+
+msgid "Arabic"
+msgstr "arabské"
+
+msgid "Armenian"
+msgstr "arménske"
+
+msgid "Bopomofo"
+msgstr "bopomofo"
+
+msgid "Brahmi"
+msgstr "brahmické"
+
+msgid "Braille"
+msgstr "braillovo"
+
+msgid "Cherokee"
+msgstr "čerokí"
+
+msgid "Cyrillic"
+msgstr "cyrilské"
+
+msgid "Egyptian demotic"
+msgstr "egyptské demotické"
+
+msgid "Egyptian hieratic"
+msgstr "egyptské hieratické"
+
+msgid "Egyptian hieroglyphs"
+msgstr "Egyptské hieroglyfické"
+
+msgid "Glagolitic"
+msgstr "hlaholika"
+
+msgid "Greek"
+msgstr "grécke"
+
+msgid "Hangul (Hangŭl, Hangeul)"
+msgstr "hangul (hangül)"
+
+msgid "Hebrew"
+msgstr "hebrejské"
+
+msgid "Hiragana"
+msgstr "hiragana"
+
+msgid "Japanese (alias for Han + Hiragana + Katakana)"
+msgstr "japonské (alias pre han + hiragana + katakana)"
+
+msgid "Katakana"
+msgstr "katakana"
+
+msgid "Korean (alias for Hangul + Han)"
+msgstr "kórejské (alias pre hangul + han)"
+
+msgid "Latin"
+msgstr "latinské"
+
+msgid "Linear A"
+msgstr "lineárne písmo A"
+
+msgid "Linear B"
+msgstr "lineárne písmo B"
+
+msgid "Mayan hieroglyphs"
+msgstr "mayské hieroglyfické"
+
+msgid "Phoenician"
+msgstr "fénické"
+
+msgid "Rongorongo"
+msgstr "rongorongo"
+
+msgid "Thaana"
+msgstr "tána"
+
+msgid "Thai"
+msgstr "thajské"
+
+msgid "Tibetan"
+msgstr "tibetské"
+
+msgid "Ugaritic"
+msgstr "ugaritské klinové"

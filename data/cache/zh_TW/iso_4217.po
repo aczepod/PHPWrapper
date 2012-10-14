@@ -1,0 +1,839 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: iso_4217\n"
+"Report-Msgid-Bugs-To: Debian iso-codes team <pkg-isocodes-devel@lists.alioth."
+"debian.org>\n"
+"POT-Creation-Date: 2010-04-05 14:35+0200\n"
+"PO-Revision-Date: 2010-08-28 22:10+0800\n"
+"Last-Translator: Wei-Lun Chao <chaoweilun@gmail.com>\n"
+"Language-Team: Chinese (traditional) <zh-l10n@linux.org.tw>\n"
+"Language: zh_TW\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+
+msgid "Afghani"
+msgstr "阿富汗尼"
+
+msgid "Albanian Old Lek"
+msgstr "阿爾巴尼亞舊列克"
+
+msgid "Algerian Dinar"
+msgstr "阿爾及利亞戴納"
+
+msgid "Andorran Franc"
+msgstr "安道爾法郎"
+
+msgid "Andorran Peseta"
+msgstr "安道爾陪士特"
+
+msgid "Angola Kwanza Reajustado"
+msgstr "安哥拉重新調整寬扎"
+
+msgid "Angola New Kwanza"
+msgstr "安哥拉新寬扎"
+
+msgid "Angolan New Kwanza"
+msgstr "安哥拉恩新寬扎"
+
+msgid "Argentine Austral"
+msgstr "阿根廷奧斯特拉爾"
+
+msgid "Argentine Peso"
+msgstr "阿根廷披索"
+
+msgid "Argentine peso ley"
+msgstr "阿根廷法定披索"
+
+msgid "Argentine peso moneda nacional"
+msgstr "阿根廷國家貨幣披索"
+
+msgid "Armenian Dram"
+msgstr "亞美尼亞德藍"
+
+msgid "Aruban Guilder"
+msgstr "阿魯巴盾"
+
+msgid "Australian Dollar"
+msgstr "澳大利亞元"
+
+msgid "Austrian Schilling"
+msgstr "奧地利先令"
+
+msgid "Azerbaijanian Manat"
+msgstr "亞塞拜然馬納特"
+
+msgid "Bahamian Dollar"
+msgstr "巴哈馬元"
+
+msgid "Bahraini Dinar"
+msgstr "巴林戴納"
+
+msgid "Baht"
+msgstr "泰銖"
+
+msgid "Balboa"
+msgstr "巴拿馬波亞"
+
+msgid "Barbados Dollar"
+msgstr "巴貝多元"
+
+msgid "Belarussian Rouble"
+msgstr "白俄羅斯盧布"
+
+msgid "Belarussian Ruble"
+msgstr "白俄羅斯盧布"
+
+msgid "Belgian Franc"
+msgstr "比利時法郎"
+
+msgid "Belgian Franc Convertible"
+msgstr "比利時可兌換法郎"
+
+msgid "Belgian Franc Financial"
+msgstr "比利時金融法郎"
+
+msgid "Belize Dollar"
+msgstr "貝里斯幣"
+
+msgid "Bermudian Dollar"
+msgstr "百慕達幣"
+
+msgid "Bolivar Fuerte"
+msgstr "強勢玻利瓦"
+
+msgid "Bolivian Peso"
+msgstr "玻利維亞披索"
+
+msgid "Boliviano"
+msgstr "玻利維亞諾"
+
+msgid "Bosnia and Herzegovina Dinar"
+msgstr "波士尼亞及赫塞哥維納戴納"
+
+msgid "Brazilian Cruzado"
+msgstr "巴西克魯薩多"
+
+msgid "Brazilian Cruzeiro"
+msgstr "巴西舊克魯薩多"
+
+msgid "Brazilian Cruzeiro Real"
+msgstr "巴西皇家克魯薩多"
+
+msgid "Brazilian New Cruzado"
+msgstr "巴西新克魯薩多"
+
+msgid "Brazilian Real"
+msgstr "巴西里耳"
+
+msgid "Brunei Dollar"
+msgstr "汶萊元"
+
+msgid "Bulgarian Lev"
+msgstr "保加利亞列弗"
+
+msgid "Bulgarian Lev A/52"
+msgstr "保加利亞 A/52 列弗"
+
+msgid "Bulgarian Lev A/62"
+msgstr "保加利亞 A/62 列弗"
+
+msgid "Bulgarian Lev A/99"
+msgstr "保加利亞 A/99 列弗"
+
+msgid "Burundi Franc"
+msgstr "蒲隆地法郎"
+
+msgid "CFA Franc BCEAO"
+msgstr "非洲金融共同體法郎"
+
+msgid "CFA Franc BEAC"
+msgstr "中非法郎"
+
+msgid "CFP Franc"
+msgstr "太平洋法郎"
+
+msgid "Canadian Dollar"
+msgstr "加拿大元"
+
+msgid "Cape Verde Escudo"
+msgstr "維德角埃斯庫多"
+
+msgid "Cayman Islands Dollar"
+msgstr "開曼群島幣"
+
+msgid "Cedi"
+msgstr "迦納塞地"
+
+msgid "Chilean Peso"
+msgstr "智利披索"
+
+msgid "Chinese Peoples Bank Dollar"
+msgstr "中國人民銀行幣"
+
+msgid "Code for testing purposes"
+msgstr "測試目的編碼"
+
+msgid "Colombian Peso"
+msgstr "哥倫比亞披索"
+
+msgid "Comoro Franc"
+msgstr "葛摩法郎"
+
+msgid "Congolese Franc"
+msgstr "剛果法郎"
+
+msgid "Convertible Marks"
+msgstr "可兌換標記"
+
+msgid "Cordoba Oro"
+msgstr "尼加拉瓜科多巴"
+
+msgid "Costa Rican Colon"
+msgstr "哥斯大黎加科郎"
+
+msgid "Croatian Dinar"
+msgstr "克羅埃西亞戴納"
+
+msgid "Croatian Kuna"
+msgstr "克羅埃西亞庫那"
+
+msgid "Cuban Peso"
+msgstr "古巴披索"
+
+msgid "Cyprus Pound"
+msgstr "賽普勒斯鎊"
+
+msgid "Czech Koruna"
+msgstr "捷克克朗"
+
+msgid "Czechoslovak Koruna"
+msgstr "捷克克朗"
+
+msgid "Czechoslovak Krona A/53"
+msgstr "捷克 A/53 克朗"
+
+msgid "Dalasi"
+msgstr "甘比亞達拉西"
+
+msgid "Danish Krone"
+msgstr "丹麥克朗"
+
+msgid "Denar"
+msgstr "前南馬其頓代納爾"
+
+msgid "Deutsche Mark"
+msgstr "德國馬克"
+
+msgid "Djibouti Franc"
+msgstr "吉布地法郎"
+
+msgid "Dobra"
+msgstr "聖多美及普林西比多布拉"
+
+msgid "Dominican Peso"
+msgstr "多明尼加披索"
+
+msgid "Dong"
+msgstr "越南盾"
+
+msgid "East Caribbean Dollar"
+msgstr "東加勒比元"
+
+msgid "East German Mark of the GDR"
+msgstr "東德馬克"
+
+msgid "Ecuador Sucre"
+msgstr "厄瓜多蘇克雷"
+
+msgid "Ecuador Unidad de Valor Constante UVC"
+msgstr "厄瓜多基金代碼"
+
+msgid "Egyptian Pound"
+msgstr "埃及鎊"
+
+msgid "El Salvador Colon"
+msgstr "薩爾瓦多科郎"
+
+msgid "Equatorial Guinea Ekwele"
+msgstr "赤道幾內亞埃奎勒"
+
+msgid "Ethiopian Birr"
+msgstr "衣索比亞比爾"
+
+msgid "Euro"
+msgstr "歐元"
+
+msgid "European Composite Unit (EURCO)"
+msgstr "歐洲混合單位"
+
+msgid "European Currency Unit ECU"
+msgstr "歐洲的貨幣單位"
+
+msgid "European Monetary Unit (E.M.U.-6)"
+msgstr "歐洲貨幣單位"
+
+msgid "European Unit of Account 17 (E.U.A.-17)"
+msgstr "歐洲 17 號帳戶單位"
+
+msgid "European Unit of Account 9 (E.U.A.-9)"
+msgstr "歐洲 9 號帳戶單位"
+
+msgid "Falkland Islands Pound"
+msgstr "福克蘭群島鎊"
+
+msgid "Fiji Dollar"
+msgstr "斐濟元"
+
+msgid "Finnish Markka"
+msgstr "芬蘭馬克"
+
+msgid "Forint"
+msgstr "匈牙利福林"
+
+msgid "French Franc"
+msgstr "法國法郎"
+
+msgid "Georgian Coupon"
+msgstr "喬治亞價劵"
+
+msgid "Ghana Cedi"
+msgstr "迦納塞地"
+
+msgid "Gibraltar Pound"
+msgstr "直布羅陀鎊"
+
+msgid "Gold"
+msgstr "金"
+
+msgid "Gold-Franc"
+msgstr "金法郎"
+
+msgid "Gourde"
+msgstr "海地古德"
+
+msgid "Greek Drachma"
+msgstr "希臘德拉克馬幣"
+
+msgid "Guarani"
+msgstr "巴拉圭瓜拉尼"
+
+msgid "Guinea Escudo"
+msgstr "幾內亞埃斯庫多"
+
+msgid "Guinea Franc"
+msgstr "幾內亞法郎"
+
+msgid "Guinea Syli"
+msgstr "幾內亞西里"
+
+msgid "Guinea-Bissau Peso"
+msgstr "幾內亞比索披索"
+
+msgid "Guyana Dollar"
+msgstr "蓋亞那元"
+
+msgid "Hong Kong Dollar"
+msgstr "香港幣"
+
+msgid "Hryvnia"
+msgstr "烏克蘭赫里夫尼亞"
+
+msgid "Iceland Krona"
+msgstr "冰島克朗"
+
+msgid "Iceland Old Krona"
+msgstr "冰島舊克朗"
+
+msgid "Indian Rupee"
+msgstr "印度盧比"
+
+msgid "Iranian Rial"
+msgstr "伊朗里亞爾"
+
+msgid "Iraqi Dinar"
+msgstr "伊拉克戴納"
+
+msgid "Irish Pound"
+msgstr "愛爾蘭鎊"
+
+msgid "Israeli Old Shekel"
+msgstr "以色列舊賽克爾"
+
+msgid "Israeli Pound"
+msgstr "以色列鎊"
+
+msgid "Italian Lira"
+msgstr "義大利里拉"
+
+msgid "Jamaican Dollar"
+msgstr "牙買加元"
+
+msgid "Jordanian Dinar"
+msgstr "約旦戴納"
+
+msgid "Kenyan Shilling"
+msgstr "肯亞先令"
+
+msgid "Kina"
+msgstr "巴布亞新幾內亞基那"
+
+msgid "Kip"
+msgstr "寮國基普"
+
+msgid "Kroon"
+msgstr "愛沙尼亞克朗"
+
+msgid "Kuwaiti Dinar"
+msgstr "科威特戴納"
+
+msgid "Kwacha"
+msgstr "馬拉維克瓦查"
+
+msgid "Kwanza"
+msgstr "寬扎"
+
+msgid "Kyat"
+msgstr "緬甸元"
+
+msgid "Lao kip"
+msgstr "老撾基普"
+
+msgid "Lari"
+msgstr "喬治亞拉里"
+
+msgid "Latvian Lats"
+msgstr "拉脫維亞拉特"
+
+msgid "Latvian Ruble"
+msgstr "拉脫維亞盧布"
+
+msgid "Lebanese Pound"
+msgstr "黎巴嫩鎊"
+
+msgid "Lek"
+msgstr "列克"
+
+msgid "Lempira"
+msgstr "宏都拉斯倫皮拉"
+
+msgid "Leone"
+msgstr "利昂"
+
+msgid "Lesotho Maloti"
+msgstr "賴索托馬洛蒂"
+
+msgid "Liberian Dollar"
+msgstr "賴比瑞亞元"
+
+msgid "Libyan Dinar"
+msgstr "利比亞戴納"
+
+msgid "Lilangeni"
+msgstr "史瓦濟蘭里蘭吉尼"
+
+msgid "Lithuanian Litas"
+msgstr "立陶宛立特"
+
+msgid "Lithuanian Talonas"
+msgstr "立陶宛特羅"
+
+msgid "Loti"
+msgstr "賴索托洛蒂"
+
+msgid "Luxembourg Convertible Franc"
+msgstr "盧森堡可兌換法郎"
+
+msgid "Luxembourg Financial Franc"
+msgstr "盧森堡金融法郎"
+
+msgid "Luxembourg Franc"
+msgstr "盧森堡法郎"
+
+msgid "Malagasy Ariary"
+msgstr "馬達加斯加阿里亞里"
+
+msgid "Malagasy Franc"
+msgstr "馬達加斯加法郎"
+
+msgid "Malaysian Ringgit"
+msgstr "馬來西亞林吉特"
+
+msgid "Maldive Rupee"
+msgstr "馬爾地夫盧比"
+
+msgid "Mali Franc"
+msgstr "馬利法郎"
+
+msgid "Maltese Lira"
+msgstr "馬爾他里拉"
+
+msgid "Maltese Pound"
+msgstr "馬爾他鎊"
+
+msgid "Manat"
+msgstr "土庫曼斯坦馬納特"
+
+msgid "Mauritius Rupee"
+msgstr "模里西斯盧比"
+
+msgid "Metical"
+msgstr "莫三比克梅蒂卡爾"
+
+msgid "Mexican Peso"
+msgstr "墨西哥披索"
+
+msgid "Mexican Unidad de Inversion (UDI)"
+msgstr "墨西哥基金單位"
+
+msgid "Moldovan Leu"
+msgstr "摩爾達維亞列伊"
+
+msgid "Moroccan Dirham"
+msgstr "摩洛哥迪拉姆"
+
+msgid "Mozambique Escudo"
+msgstr "莫三比克埃斯庫多"
+
+msgid "Mozambique Metical"
+msgstr "莫三比克梅蒂卡爾"
+
+msgid "Mvdol"
+msgstr "姆夫多爾"
+
+msgid "Naira"
+msgstr "奈及利亞奈拉"
+
+msgid "Nakfa"
+msgstr "厄立特里亞納克法"
+
+msgid "Namibia Dollar"
+msgstr "納米比亞幣"
+
+msgid "Nepalese Rupee"
+msgstr "尼泊爾盧比"
+
+msgid "Netherlands Antillian Guilder"
+msgstr "荷屬安地列斯盾"
+
+msgid "Netherlands Guilder"
+msgstr "荷蘭盾"
+
+msgid "New Israeli Sheqel"
+msgstr "以色列新謝克爾"
+
+msgid "New Leu"
+msgstr "羅馬尼亞新列伊"
+
+msgid "New Taiwan Dollar"
+msgstr "新臺幣"
+
+msgid "New Turkish Lira"
+msgstr "新土耳其里拉"
+
+msgid "New Zaire"
+msgstr "新薩伊"
+
+msgid "New Zealand Dollar"
+msgstr "紐西蘭元"
+
+msgid "Ngultrum"
+msgstr "努爾特魯姆"
+
+msgid "Nicaraguan Cordoba"
+msgstr "尼加拉瓜科多巴"
+
+msgid "No currency"
+msgstr "無貨幣"
+
+msgid "North Korean Won"
+msgstr "北韓朝鮮圜"
+
+msgid "Norwegian Krone"
+msgstr "挪威克朗"
+
+msgid "Nuevo Sol"
+msgstr "祕魯新索爾"
+
+msgid "Old Uruguayan Peso"
+msgstr "舊烏拉圭披索"
+
+msgid "Ouguiya"
+msgstr "毛利塔尼亞烏吉亞"
+
+msgid "Pa'anga"
+msgstr "湯加潘加"
+
+msgid "Pakistan Rupee"
+msgstr "巴基斯坦盧比"
+
+msgid "Palladium"
+msgstr "鈀"
+
+msgid "Pataca"
+msgstr "澳門幣"
+
+msgid "Peruvian Inti"
+msgstr "祕魯因蒂"
+
+msgid "Peruvian Sol"
+msgstr "祕魯索爾"
+
+msgid "Peso Argentino"
+msgstr "阿根廷披索"
+
+msgid "Peso Uruguayo"
+msgstr "烏拉圭披索"
+
+msgid "Philippine Peso"
+msgstr "菲律賓披索"
+
+msgid "Platinum"
+msgstr "鉑"
+
+msgid "Polish Złoty"
+msgstr "波蘭茲羅提"
+
+msgid "Portuguese Escudo"
+msgstr "葡萄牙埃斯庫多"
+
+msgid "Pound Sterling"
+msgstr "英鎊"
+
+msgid "Pula"
+msgstr "普拉"
+
+msgid "Qatari Rial"
+msgstr "卡達里亞爾"
+
+msgid "Quetzal"
+msgstr "瓜地馬拉格查爾"
+
+msgid "RINET Funds Code"
+msgstr "RINET 存款編碼"
+
+msgid "Rand"
+msgstr "南非蘭特"
+
+msgid "Rhodesian Dollar"
+msgstr "羅德西亞元"
+
+msgid "Rial Omani"
+msgstr "阿曼里亞爾"
+
+msgid "Riel"
+msgstr "柬埔寨瑞爾"
+
+msgid "Romanian Leu A/52"
+msgstr "羅馬尼亞 A/52 列伊"
+
+msgid "Romanian Old Leu"
+msgstr "羅馬尼亞舊列伊"
+
+msgid "Rufiyaa"
+msgstr "馬爾地夫拉菲亞"
+
+msgid "Rupiah"
+msgstr "印度尼西亞盧比"
+
+msgid "Russian Rouble"
+msgstr "俄羅斯盧布"
+
+msgid "Russian Ruble"
+msgstr "俄羅斯盧布"
+
+msgid "Rwanda Franc"
+msgstr "盧安達法郎"
+
+msgid "Saint Helena Pound"
+msgstr "聖赫倫那島鎊"
+
+msgid "Saudi Riyal"
+msgstr "沙烏地里亞爾"
+
+msgid "Serbian Dinar"
+msgstr "塞爾維亞戴納"
+
+msgid "Seychelles Rupee"
+msgstr "塞席爾盧比"
+
+msgid "Silver"
+msgstr "銀"
+
+msgid "Singapore Dollar"
+msgstr "新加坡元"
+
+msgid "Slovak Koruna"
+msgstr "斯洛伐克克朗"
+
+msgid "Slovenian Tolar"
+msgstr "斯洛維尼亞托勒"
+
+msgid "Solomon Islands Dollar"
+msgstr "索羅門群島元"
+
+msgid "Som"
+msgstr "吉爾吉斯索姆"
+
+msgid "Somali Shilling"
+msgstr "索馬利亞先令"
+
+msgid "Somoni"
+msgstr "塔吉克索莫尼"
+
+msgid "South African Financial Rand"
+msgstr "南非金融蘭特"
+
+msgid "Spanish Peseta"
+msgstr "西班牙陪士特"
+
+msgid "Spanish Peseta ('A' Account)"
+msgstr "西班牙陪士特 ('A' 帳號)"
+
+msgid "Spanish Peseta (convertible)"
+msgstr "西班牙陪士特 (可兌換)"
+
+msgid "Special Drawing Rights"
+msgstr "特別提款權"
+
+msgid "Sri Lanka Rupee"
+msgstr "斯里蘭卡盧比"
+
+msgid "Sudanese Pound"
+msgstr "蘇丹鎊"
+
+msgid "Surinam Dollar"
+msgstr "蘇利南元"
+
+msgid "Suriname Guilder"
+msgstr "蘇利南盾"
+
+msgid "Swedish Krona"
+msgstr "瑞典克朗"
+
+msgid "Swiss Franc"
+msgstr "瑞士法郎"
+
+msgid "Syrian Pound"
+msgstr "敘利亞鎊"
+
+msgid "Tajik Rouble"
+msgstr "塔吉克盧布"
+
+msgid "Taka"
+msgstr "塔卡"
+
+msgid "Tala"
+msgstr "薩摩亞塔拉"
+
+msgid "Tanzanian Shilling"
+msgstr "坦尚尼亞先令"
+
+msgid "Tenge"
+msgstr "哈薩克坦吉"
+
+msgid "Timor Escudo"
+msgstr "帝汶埃斯庫多"
+
+msgid "Trinidad and Tobago Dollar"
+msgstr "千里達及托巴哥幣"
+
+msgid "Tugrik"
+msgstr "蒙古圖格里克"
+
+msgid "Tunisian Dinar"
+msgstr "突尼西亞戴納"
+
+msgid "Turkish Lira"
+msgstr "土耳其里拉"
+
+msgid "UAE Dirham"
+msgstr "阿拉伯聯合大公國迪拉姆"
+
+msgid "UIC-Franc"
+msgstr "國際鐵路聯盟法郎"
+
+msgid "US Dollar"
+msgstr "美元"
+
+msgid "US Dollar (Next day)"
+msgstr "美元 (次日)"
+
+msgid "US Dollar (Same day)"
+msgstr "美元 (當日)"
+
+msgid "USSR Rouble"
+msgstr "蘇聯盧布"
+
+msgid "Uganda Old Schilling"
+msgstr "烏干達舊先令"
+
+msgid "Uganda Schilling"
+msgstr "烏干達先令"
+
+msgid "Uganda Shilling"
+msgstr "烏干達先令"
+
+msgid "Ukrainian Karbovanet"
+msgstr "烏克蘭卡本瓦那茲"
+
+msgid "Unidad de Valor Real"
+msgstr "哥倫比亞 Unidad de Valor Real"
+
+msgid "Unidades de fomento"
+msgstr "智利會計單位"
+
+msgid "Uruguay Peso en Unidades Indexadas"
+msgstr "烏拉圭披索索引單位"
+
+msgid "Uruguayan Peso"
+msgstr "烏拉圭披索"
+
+msgid "Uzbekistan Sum"
+msgstr "烏茲別克頌"
+
+msgid "Vatu"
+msgstr "萬那杜瓦土"
+
+msgid "Venezuela Bolívar"
+msgstr "委內瑞拉玻利瓦"
+
+msgid "Viet Nam Old Dong"
+msgstr "越南舊盾"
+
+msgid "WIR Euro"
+msgstr "瑞士經濟圈合作社歐元"
+
+msgid "WIR Franc"
+msgstr "瑞士經濟圈合作社法郎"
+
+msgid "Won"
+msgstr "南韓韓圜"
+
+msgid "Yemeni Dinar"
+msgstr "葉門戴納"
+
+msgid "Yemeni Rial"
+msgstr "葉門里亞爾"
+
+msgid "Yen"
+msgstr "日本日圓"
+
+msgid "Yuan Renminbi"
+msgstr "中國人民幣元"
+
+msgid "Yugoslavian Dinar"
+msgstr "南斯拉夫戴納"
+
+msgid "Zaire"
+msgstr "薩伊"
+
+msgid "Zambian Kwacha"
+msgstr "尚比亞克瓦查"
+
+msgid "Zimbabwe Dollar"
+msgstr "辛巴威元"
+
+msgid "Zloty"
+msgstr "波蘭羅提"

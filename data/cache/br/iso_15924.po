@@ -1,0 +1,385 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: iso_15924\n"
+"Report-Msgid-Bugs-To: Debian iso-codes team <pkg-isocodes-devel@lists.alioth."
+"debian.org>\n"
+"POT-Creation-Date: 2012-02-09 22:36+0100\n"
+"PO-Revision-Date: 2009-04-18 19:58+0000\n"
+"Last-Translator: Denis <Unknown>\n"
+"Language-Team: Breton <brenux@free.fr>\n"
+"Language: br\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+msgid "Arabic"
+msgstr "Arabeg"
+
+msgid "Armenian"
+msgstr "Armenieg"
+
+msgid "Avestan"
+msgstr "Avestaneg"
+
+msgid "Balinese"
+msgstr "Balineg"
+
+msgid "Batak"
+msgstr "Batak"
+
+msgid "Bengali"
+msgstr "Bengali"
+
+msgid "Blissymbols"
+msgstr "Arouezioù Bliss"
+
+msgid "Book Pahlavi"
+msgstr "Pahlavi al levrioù"
+
+msgid "Bopomofo"
+msgstr "Bopomofo"
+
+msgid "Brahmi"
+msgstr "Brahmi"
+
+msgid "Braille"
+msgstr "Brailh"
+
+msgid "Buginese"
+msgstr "Bugi"
+
+msgid "Buhid"
+msgstr "Bouhid"
+
+msgid "Carian"
+msgstr "Karianeg"
+
+msgid "Chakma"
+msgstr "Chakma"
+
+msgid "Cham"
+msgstr "Cham"
+
+msgid "Cherokee"
+msgstr "Cheroki"
+
+msgid "Cirth"
+msgstr "Cirth"
+
+msgid "Code for uncoded script"
+msgstr "Kodoù evit ar skridur na godet"
+
+msgid "Code for undetermined script"
+msgstr "Kodoù evit skridur dianav"
+
+msgid "Code for unwritten documents"
+msgstr "Kodoù evit an dielloù na skrid"
+
+msgid "Coptic"
+msgstr "Kopteg"
+
+msgid "Cuneiform, Sumero-Akkadian"
+msgstr "Skritur gennheñvel, Sumero-Akkadianeg"
+
+msgid "Cypriot"
+msgstr "Chipreg"
+
+msgid "Cyrillic"
+msgstr "Lizherenneg ar ruseg"
+
+msgid "Cyrillic (Old Church Slavonic variant)"
+msgstr "Lizhennereg ar ruseg (stumm ar Slaved)"
+
+msgid "Deseret (Mormon)"
+msgstr "Deseret (Mormon)"
+
+msgid "Devanagari (Nagari)"
+msgstr "Devanagari (Nagari)"
+
+msgid "Egyptian demotic"
+msgstr "Ejipteg demotek"
+
+msgid "Egyptian hieratic"
+msgstr "Ejipteg Hieratik"
+
+msgid "Egyptian hieroglyphs"
+msgstr "Hieroglifoù Ejipt"
+
+msgid "Ethiopic (Geʻez)"
+msgstr "Etiopeg (Geʻez)"
+
+msgid "Georgian (Mkhedruli)"
+msgstr "Jorjieg (mkhédrouli)"
+
+msgid "Glagolitic"
+msgstr "Lizherenneg ar c'hlagolitek"
+
+msgid "Gothic"
+msgstr "Goteg"
+
+msgid "Greek"
+msgstr "Gresianeg"
+
+msgid "Gujarati"
+msgstr "Goudjarateg"
+
+msgid "Gurmukhi"
+msgstr "Gurmukhī"
+
+msgid "Han (Hanzi, Kanji, Hanja)"
+msgstr "Han (Hanzi, Kanji, Hanja)"
+
+msgid "Han (Simplified variant)"
+msgstr "Han (stumm aeset)"
+
+msgid "Han (Traditional variant)"
+msgstr "Han (stumm gozh)"
+
+msgid "Hangul (Hangŭl, Hangeul)"
+msgstr "Hangeul"
+
+msgid "Hanunoo (Hanunóo)"
+msgstr "Hanounoo"
+
+msgid "Hebrew"
+msgstr "Hebraeg"
+
+msgid "Hiragana"
+msgstr "Hiragana"
+
+msgid "Imperial Aramaic"
+msgstr "Amareeg impalaer"
+
+msgid "Indus (Harappan)"
+msgstr "Indus (Harapan)"
+
+msgid "Inscriptional Pahlavi"
+msgstr "Skritur Pahlavi"
+
+msgid "Inscriptional Parthian"
+msgstr "Skridur Parsia"
+
+msgid "Japanese (alias for Han + Hiragana + Katakana)"
+msgstr "Japaneg (lesanv evit Han + Hiragana + Katakana)"
+
+msgid "Javanese"
+msgstr "Javaeg"
+
+msgid "Kaithi"
+msgstr "Kaithi"
+
+msgid "Kannada"
+msgstr "Kannadeg"
+
+msgid "Katakana"
+msgstr "Katakana"
+
+msgid "Kayah Li"
+msgstr "Kayah Li"
+
+msgid "Kharoshthi"
+msgstr "Kharoshthi"
+
+msgid "Khmer"
+msgstr "Kmereg"
+
+msgid "Khutsuri (Asomtavruli and Nuskhuri)"
+msgstr "Skritur Jorjieg (assomtavrouli ha nouskhouri)"
+
+msgid "Korean (alias for Hangul + Han)"
+msgstr "Koreaneg (lesanv evit Hangul + Han)"
+
+msgid "Lao"
+msgstr "Lao"
+
+msgid "Latin"
+msgstr "Latin"
+
+msgid "Latin (Fraktur variant)"
+msgstr "Latin (stumm torret)"
+
+msgid "Latin (Gaelic variant)"
+msgstr "Latin (stumm Gouezeleg)"
+
+msgid "Lepcha (Róng)"
+msgstr "Lepcha (Róng)"
+
+msgid "Limbu"
+msgstr "Limbourgeg"
+
+msgid "Linear A"
+msgstr "Linenneg A"
+
+msgid "Linear B"
+msgstr "Linenneg B"
+
+msgid "Lycian"
+msgstr "Lisianeg"
+
+msgid "Lydian"
+msgstr "Lidianeg"
+
+msgid "Malayalam"
+msgstr "Malayalameg"
+
+msgid "Mandaic, Mandaean"
+msgstr "Mandaeg"
+
+msgid "Manichaean"
+msgstr "Manikeaneg"
+
+msgid "Mathematical notation"
+msgstr "Notadur matematikel"
+
+msgid "Mayan hieroglyphs"
+msgstr "Hieroglifoù Mayan"
+
+msgid "Meitei Mayek (Meithei, Meetei)"
+msgstr "Meitei Mayek (Meithei, Meetei)"
+
+msgid "Mongolian"
+msgstr "Mongoleg"
+
+msgid "Moon (Moon code, Moon script, Moon type)"
+msgstr "Skritur Moon"
+
+msgid "Myanmar (Burmese)"
+msgstr "Burmeg"
+
+msgid "New Tai Lue"
+msgstr "Tai Lue nevez"
+
+msgid "N’Ko"
+msgstr "Skritur nkoek"
+
+msgid "Ogham"
+msgstr "Ogham"
+
+msgid "Ol Chiki (Ol Cemet’, Ol, Santali)"
+msgstr "Ol Chiki (Ol Cemet’, Ol, Santali)"
+
+msgid "Old Hungarian"
+msgstr "Henhungareg"
+
+msgid "Old Italic (Etruscan, Oscan, etc.)"
+msgstr "Lzherenn stouet gozh (Etrurieg, Oskaneg, hag all)"
+
+msgid "Old Permic"
+msgstr "Permieg kozh"
+
+msgid "Old Persian"
+msgstr "Hen Perseg"
+
+msgid "Oriya"
+msgstr "Oriyeg"
+
+msgid "Osmanya"
+msgstr "Osmanieg"
+
+msgid "Pahawh Hmong"
+msgstr "Pahawh Hmong"
+
+msgid "Phags-pa"
+msgstr "Phagspa"
+
+msgid "Phoenician"
+msgstr "Fenikianeg"
+
+msgid "Psalter Pahlavi"
+msgstr "Pahlavi ar saoterien"
+
+msgid "Reserved for private use (end)"
+msgstr "Implijadur prevez (echu)"
+
+msgid "Reserved for private use (start)"
+msgstr "Implijadur prevez (da gentañ)"
+
+msgid "Rongorongo"
+msgstr "Rongorongo"
+
+msgid "Runic"
+msgstr "Runek"
+
+msgid "Samaritan"
+msgstr "Hebraeg ar Samaritaned"
+
+msgid "Sarati"
+msgstr "Sarati"
+
+msgid "Saurashtra"
+msgstr "Saurashtra"
+
+msgid "Shavian (Shaw)"
+msgstr "shavianeg (Shaw)"
+
+msgid "SignWriting"
+msgstr "Sinskridur"
+
+msgid "Sinhala"
+msgstr "Sinhaleg"
+
+msgid "Sundanese"
+msgstr "Soudaneg"
+
+msgid "Syloti Nagri"
+msgstr "Syloti Nagri"
+
+msgid "Symbols"
+msgstr "Arouezioù"
+
+msgid "Syriac"
+msgstr "Sirieg"
+
+msgid "Syriac (Eastern variant)"
+msgstr "Sirieg (Reter)"
+
+msgid "Syriac (Estrangelo variant)"
+msgstr "Sirieg (Estrangelo)"
+
+msgid "Syriac (Western variant)"
+msgstr "Sirieg (Gwalarn)"
+
+msgid "Tagbanwa"
+msgstr "Tagbanwa"
+
+msgid "Tai Le"
+msgstr "Tai Le"
+
+msgid "Tai Viet"
+msgstr "Tai Viet"
+
+msgid "Tamil"
+msgstr "Tamileg"
+
+msgid "Telugu"
+msgstr "Telougoueg"
+
+msgid "Tengwar"
+msgstr "Tengwar"
+
+msgid "Thaana"
+msgstr "Diveheg"
+
+msgid "Thai"
+msgstr "Tai"
+
+msgid "Tibetan"
+msgstr "Tibeteg"
+
+msgid "Tifinagh (Berber)"
+msgstr "Tifinagh (Skritur Berberek)"
+
+msgid "Ugaritic"
+msgstr "Ougariteg"
+
+msgid "Unified Canadian Aboriginal Syllabics"
+msgstr "Kanadianeg silabenneg broel unanet"
+
+msgid "Vai"
+msgstr "Vai"
+
+msgid "Visible Speech"
+msgstr "Komz a wel"
+
+msgid "Yi"
+msgstr "Yi"

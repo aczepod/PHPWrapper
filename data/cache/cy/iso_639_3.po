@@ -1,0 +1,358 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: iso_639_3\n"
+"Report-Msgid-Bugs-To: Debian iso-codes team <pkg-isocodes-devel@lists.alioth."
+"debian.org>\n"
+"POT-Creation-Date: 2012-06-26 09:55+0200\n"
+"PO-Revision-Date: 2002-08-14 20:57+0100\n"
+"Last-Translator: Dafydd Tomos <dafydd.tomos@imaginet.co.uk>\n"
+"Language-Team: Welsh <cy@li.org>\n"
+"Language: cy\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+msgid "Abkhazian"
+msgstr "Abcaseg"
+
+msgid "Afar"
+msgstr "Affareg"
+
+msgid "Afrikaans"
+msgstr "Affricaneg"
+
+msgid "Albanian"
+msgstr "Albaneg"
+
+msgid "Amharic"
+msgstr "Amhareg"
+
+msgid "Arabic"
+msgstr "Arabeg"
+
+msgid "Armenian"
+msgstr "Armeneg"
+
+msgid "Assamese"
+msgstr "Asameg"
+
+msgid "Aymara"
+msgstr "Aimareg"
+
+msgid "Azerbaijani"
+msgstr "Aserbaijani"
+
+msgid "Basque"
+msgstr "Basgeg"
+
+msgid "Belarusian"
+msgstr "Belarwseg"
+
+msgid "Bengali"
+msgstr "Bengaleg"
+
+msgid "Bislama"
+msgstr "Bislama"
+
+msgid "Breton"
+msgstr "Llydaweg"
+
+msgid "Bulgarian"
+msgstr "Bwlgareg"
+
+msgid "Burmese"
+msgstr "Byrmaneg"
+
+msgid "Catalan"
+msgstr "Catalaneg"
+
+msgid "Chinese"
+msgstr "Tsieinëeg"
+
+msgid "Cornish"
+msgstr "Cernyweg"
+
+msgid "Corsican"
+msgstr "Corseg"
+
+msgid "Croatian"
+msgstr "Croateg"
+
+msgid "Czech"
+msgstr "Tsieceg"
+
+msgid "Danish"
+msgstr "Daneg"
+
+msgid "Dutch"
+msgstr "Iseldireg"
+
+msgid "English"
+msgstr "Saesneg"
+
+msgid "Esperanto"
+msgstr "Esperanto"
+
+msgid "Estonian"
+msgstr "Estoneg"
+
+msgid "Faroese"
+msgstr "Ffaröeg"
+
+msgid "Fijian"
+msgstr "Ffijïeg"
+
+msgid "Finnish"
+msgstr "Ffinneg"
+
+msgid "French"
+msgstr "Ffrangeg"
+
+msgid "Georgian"
+msgstr "Georgeg"
+
+msgid "German"
+msgstr "Almaeneg"
+
+msgid "Guarani"
+msgstr "Gwarani"
+
+msgid "Gujarati"
+msgstr "Gwjwrati"
+
+msgid "Hausa"
+msgstr "Hawsa"
+
+msgid "Hebrew"
+msgstr "Hebraeg"
+
+msgid "Hindi"
+msgstr "Hindi"
+
+msgid "Hungarian"
+msgstr "Hwngareg"
+
+msgid "Icelandic"
+msgstr "Islandeg"
+
+msgid "Indonesian"
+msgstr "Indoneseg"
+
+msgid "Interlingue"
+msgstr "Interlingue"
+
+msgid "Inuktitut"
+msgstr "Inwctitwt"
+
+msgid "Inupiaq"
+msgstr "Inwpiac"
+
+msgid "Irish"
+msgstr "Gwyddeleg"
+
+msgid "Italian"
+msgstr "Eidaleg"
+
+msgid "Japanese"
+msgstr "Siapaneg"
+
+msgid "Javanese"
+msgstr "Jafaneg"
+
+msgid "Kannada"
+msgstr "Canareg"
+
+msgid "Kashmiri"
+msgstr "Cashmireg"
+
+msgid "Kazakh"
+msgstr "Cazacheg"
+
+msgid "Kinyarwanda"
+msgstr "Ciniarwanda"
+
+msgid "Kirghiz"
+msgstr "Cirgiseg"
+
+msgid "Korean"
+msgstr "Corëeg"
+
+msgid "Kurdish"
+msgstr "Cwrdeg"
+
+msgid "Lao"
+msgstr "Laoeg"
+
+msgid "Latin"
+msgstr "Lladin"
+
+msgid "Latvian"
+msgstr "Latfieg"
+
+msgid "Lingala"
+msgstr "Lingala"
+
+msgid "Lithuanian"
+msgstr "Lithwaneg"
+
+msgid "Macedonian"
+msgstr "Macedoneg"
+
+msgid "Malagasy"
+msgstr "Malagasi"
+
+msgid "Malayalam"
+msgstr "Malaialameg"
+
+msgid "Maltese"
+msgstr "Malteg"
+
+msgid "Manx"
+msgstr "Manaweg"
+
+msgid "Maori"
+msgstr "Maori"
+
+msgid "Marathi"
+msgstr "Marati"
+
+msgid "Mongolian"
+msgstr "Mongoleg"
+
+msgid "Nauru"
+msgstr "Nawrŵeg"
+
+msgid "Norwegian"
+msgstr "Norwyeg"
+
+msgid "Oromo"
+msgstr "Oromo"
+
+msgid "Polish"
+msgstr "Pwyleg"
+
+msgid "Portuguese"
+msgstr "Portiwgaleg"
+
+msgid "Pushto"
+msgstr "Pwshtw"
+
+msgid "Quechua"
+msgstr "Cetshwa"
+
+msgid "Romanian"
+msgstr "Rwmaneg"
+
+msgid "Rundi"
+msgstr "Rwndi"
+
+msgid "Russian"
+msgstr "Rwsieg"
+
+msgid "Samoan"
+msgstr "Samöeg"
+
+msgid "Sango"
+msgstr "Sango"
+
+msgid "Sanskrit"
+msgstr "Sansgrit"
+
+msgid "Serbian"
+msgstr "Serbeg"
+
+msgid "Serbo-Croatian"
+msgstr "Serbo-Croateg"
+
+msgid "Shona"
+msgstr "Shona"
+
+msgid "Sindhi"
+msgstr "Sindhi"
+
+msgid "Slovak"
+msgstr "Slofaceg"
+
+msgid "Slovenian"
+msgstr "Slofeneg"
+
+msgid "Somali"
+msgstr "Somalieg"
+
+msgid "Spanish"
+msgstr "Sbaeneg"
+
+msgid "Sundanese"
+msgstr "Swndaneg"
+
+msgid "Swati"
+msgstr "Swati"
+
+msgid "Swedish"
+msgstr "Swedeg"
+
+msgid "Tagalog"
+msgstr "Tagalog"
+
+msgid "Tajik"
+msgstr "Tajiceg"
+
+msgid "Tamil"
+msgstr "Tamileg"
+
+msgid "Tatar"
+msgstr "Tatareg"
+
+msgid "Telugu"
+msgstr "Telwgw"
+
+msgid "Thai"
+msgstr "Tai"
+
+msgid "Tibetan"
+msgstr "Tibeteg"
+
+msgid "Tsonga"
+msgstr "Tsongeg"
+
+msgid "Tswana"
+msgstr "Tswana"
+
+msgid "Turkish"
+msgstr "Tyrceg"
+
+msgid "Turkmen"
+msgstr "Tyrcmeneg"
+
+msgid "Twi"
+msgstr "Twi"
+
+msgid "Uighur"
+msgstr "Wigwreg"
+
+msgid "Urdu"
+msgstr "Wrdw"
+
+msgid "Uzbek"
+msgstr "Wsbeceg"
+
+msgid "Vietnamese"
+msgstr "Fietnameg"
+
+msgid "Welsh"
+msgstr "Cymraeg"
+
+msgid "Wolof"
+msgstr "Woloff"
+
+msgid "Xhosa"
+msgstr "Xhosa"
+
+msgid "Yiddish"
+msgstr "Iddeweg"
+
+msgid "Yoruba"
+msgstr "Iorwba"
+
+msgid "Zulu"
+msgstr "Zwlw"

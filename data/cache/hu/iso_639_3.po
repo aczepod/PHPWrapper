@@ -1,0 +1,2916 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: iso_639_3\n"
+"Report-Msgid-Bugs-To: Debian iso-codes team <pkg-isocodes-devel@lists.alioth."
+"debian.org>\n"
+"POT-Creation-Date: 2012-06-26 09:55+0200\n"
+"PO-Revision-Date: 2006-09-30 17:54+0100\n"
+"Last-Translator: SZERVÁC Attila <sas@321.hu>\n"
+"Language-Team: Hungarian <debian-l10n-hungarian@lists.d.o>\n"
+"Language: hu\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Poedit-Language: Hungarian\n"
+"X-Poedit-Country: HUNGARY\n"
+
+msgid "Abkhazian"
+msgstr "abház"
+
+msgid "Achinese"
+msgstr "akinéz"
+
+msgid "Acoli"
+msgstr "acoli"
+
+msgid "Adai"
+msgstr "adáj"
+
+msgid "Adangme"
+msgstr "adangme"
+
+msgid "Afar"
+msgstr "afar"
+
+msgid "Afrihili"
+msgstr "afrihili"
+
+msgid "Afrikaans"
+msgstr "afrikaans"
+
+msgid "Aghwan"
+msgstr "agván"
+
+msgid "Aheu"
+msgstr "aheu"
+
+msgid "Akan"
+msgstr "akan"
+
+msgid "Akkadian"
+msgstr "akkád"
+
+msgid "Alagwa"
+msgstr "alagva"
+
+msgid "Albanian"
+msgstr "albán"
+
+msgid "Aleut"
+msgstr "aleut"
+
+msgid "Amba (Solomon Islands)"
+msgstr "amba (Salamon-szigetek)"
+
+msgid "Amharic"
+msgstr "amhara"
+
+msgid "Angika"
+msgstr "angika"
+
+msgid "Arabic"
+msgstr "arab"
+
+msgid "Aragonese"
+msgstr "aragóniai"
+
+msgid "Arapaho"
+msgstr "arapaho"
+
+msgid "Arawak"
+msgstr "arawak"
+
+msgid "Armenian"
+msgstr "örmény"
+
+msgid "Assamese"
+msgstr "asszámi"
+
+msgid "Avaric"
+msgstr "avar"
+
+msgid "Avestan"
+msgstr "aveszti"
+
+msgid "Awadhi"
+msgstr "avádi"
+
+msgid "Aymara"
+msgstr "aymara"
+
+msgid "Azerbaijani"
+msgstr "azeri"
+
+msgid "Balinese"
+msgstr "balinéz"
+
+msgid "Baluchi"
+msgstr "baluchi"
+
+msgid "Bambara"
+msgstr "bambara"
+
+msgid "Bashkir"
+msgstr "baskír"
+
+msgid "Basque"
+msgstr "baszk"
+
+msgid "Beja"
+msgstr "beja"
+
+msgid "Belarusian"
+msgstr "belorusz"
+
+msgid "Bengali"
+msgstr "bengáli"
+
+msgid "Berta"
+msgstr "berta"
+
+msgid "Bhojpuri"
+msgstr "bhodzspuri"
+
+msgid "Bikol"
+msgstr "bikol"
+
+msgid "Bini"
+msgstr "bini"
+
+msgid "Bislama"
+msgstr "biszlama"
+
+msgid "Bolgarian"
+msgstr "bolgár"
+
+msgid "Bomitaba"
+msgstr "bombitaba"
+
+msgid "Bosnian"
+msgstr "bosnyák"
+
+msgid "Braj"
+msgstr "bradzs"
+
+msgid "Breton"
+msgstr "breton"
+
+msgid "Breton, Middle"
+msgstr "breton, közép"
+
+msgid "Buginese"
+msgstr "buginéz"
+
+msgid "Buksa"
+msgstr "buksza"
+
+msgid "Bulgarian"
+msgstr "bolgár"
+
+msgid "Buriat"
+msgstr "burját"
+
+msgid "Burmbar"
+msgstr "burmbar"
+
+msgid "Burmese"
+msgstr "burmai"
+
+msgid "Caddo"
+msgstr "caddo"
+
+msgid "Catalan"
+msgstr "katalán"
+
+msgid "Cebuano"
+msgstr "cebuano"
+
+msgid "Chagatai"
+msgstr "chagati"
+
+msgid "Chalikha"
+msgstr "csalika"
+
+msgid "Chamorro"
+msgstr "chamorro"
+
+msgid "Chechen"
+msgstr "csecsen"
+
+msgid "Cherokee"
+msgstr "cserokí"
+
+msgid "Cheyenne"
+msgstr "csejen"
+
+msgid "Chibcha"
+msgstr "csibcsa"
+
+msgid "Chinese"
+msgstr "kínai"
+
+msgid "Chinese, Wu"
+msgstr "kínai, Wu"
+
+msgid "Chinese, Yue"
+msgstr "kínai, Yue"
+
+msgid "Chinook jargon"
+msgstr "chinook zsargon"
+
+msgid "Chipewyan"
+msgstr "csippeva"
+
+msgid "Choctaw"
+msgstr "csoktó"
+
+msgid "Chuukese"
+msgstr "csukéz"
+
+msgid "Chuvash"
+msgstr "csuvas"
+
+msgid "Ciwogai"
+msgstr "civogai"
+
+msgid "Coptic"
+msgstr "kopt"
+
+msgid "Cornish"
+msgstr "cornwalli"
+
+msgid "Corsican"
+msgstr "korzikai"
+
+msgid "Cree"
+msgstr "cree"
+
+msgid "Creek"
+msgstr "creek"
+
+msgid "Croatian"
+msgstr "horvát"
+
+msgid "Czech"
+msgstr "cseh"
+
+msgid "Dakota"
+msgstr "dakota"
+
+msgid "Damal"
+msgstr "damal"
+
+msgid "Danish"
+msgstr "dán"
+
+msgid "Dargwa"
+msgstr "dargwa"
+
+msgid "Datooga"
+msgstr "datooga"
+
+msgid "Delaware"
+msgstr "delavár"
+
+msgid "Dinka"
+msgstr "dinka"
+
+msgid "Dogrib"
+msgstr "dogrib"
+
+msgid "Doutai"
+msgstr "doutaj"
+
+msgid "Duala"
+msgstr "duala"
+
+msgid "Dutch"
+msgstr "holland"
+
+msgid "Dyula"
+msgstr "djula"
+
+msgid "Dzongkha"
+msgstr "dzongka"
+
+msgid "Efik"
+msgstr "efik"
+
+msgid "Egyptian (Ancient)"
+msgstr "óegyiptomi"
+
+msgid "Ekajuk"
+msgstr "ekajuk"
+
+msgid "Elamite"
+msgstr "elamita"
+
+msgid "English"
+msgstr "angol"
+
+msgid "English, Middle (1100-1500)"
+msgstr "közép-angol (1100-1500)"
+
+msgid "Ere"
+msgstr "ere"
+
+msgid "Erzya"
+msgstr "erzija"
+
+msgid "Esperanto"
+msgstr "eszperantó"
+
+msgid "Estonian"
+msgstr "észt"
+
+msgid "Ewe"
+msgstr "ewe"
+
+msgid "Ewondo"
+msgstr "ewondo"
+
+msgid "Fanti"
+msgstr "fanti"
+
+msgid "Faroese"
+msgstr "feröi"
+
+msgid "Fijian"
+msgstr "fidzsi"
+
+msgid "Finnish"
+msgstr "finn"
+
+msgid "Fon"
+msgstr "fon"
+
+msgid "French"
+msgstr "francia"
+
+msgid "Friulian"
+msgstr "friul"
+
+msgid "Fulah"
+msgstr "fula"
+
+msgid "Fungwa"
+msgstr "fungva"
+
+msgid "Ga"
+msgstr "ga"
+
+msgid "Gaa"
+msgstr "gaa"
+
+msgid "Gaam"
+msgstr "gám"
+
+msgid "Ganda"
+msgstr "ganda"
+
+msgid "Garza"
+msgstr "garza"
+
+msgid "Gayo"
+msgstr "gajo"
+
+msgid "Geez"
+msgstr "gíz"
+
+msgid "Georgian"
+msgstr "grúz"
+
+msgid "German"
+msgstr "német"
+
+msgid "Gilbertese"
+msgstr "gilberti"
+
+msgid "Gitonga"
+msgstr "gitonga"
+
+msgid "Gondi"
+msgstr "gondi"
+
+msgid "Gorontalo"
+msgstr "gorontalo"
+
+msgid "Gothic"
+msgstr "gót"
+
+msgid "Grebo"
+msgstr "grebo"
+
+msgid "Greek, Ancient (to 1453)"
+msgstr "ógörög (1453-ig)"
+
+msgid "Greek, Modern (1453-)"
+msgstr "modern görög (1453-)"
+
+msgid "Guarani"
+msgstr "guarani"
+
+msgid "Gujarati"
+msgstr "gudzsarati"
+
+msgid "Hadrami"
+msgstr "hadrámi"
+
+msgid "Haida"
+msgstr "haida"
+
+msgid "Harami"
+msgstr "harámi"
+
+msgid "Haruai"
+msgstr "haruai"
+
+msgid "Hasha"
+msgstr "hasa"
+
+msgid "Hausa"
+msgstr "hausza"
+
+msgid "Hawaiian"
+msgstr "hawaii"
+
+msgid "Hebrew"
+msgstr "héber"
+
+msgid "Herero"
+msgstr "herero"
+
+msgid "Hiligaynon"
+msgstr "hiligajnon"
+
+msgid "Hindi"
+msgstr "hindi"
+
+msgid "Hiri Motu"
+msgstr "hiri motu"
+
+msgid "Hittite"
+msgstr "hettita"
+
+msgid "Hmong"
+msgstr "hmong"
+
+msgid "Hungarian"
+msgstr "magyar"
+
+msgid "Hunnic"
+msgstr "hun"
+
+msgid "Hupa"
+msgstr "hupa"
+
+msgid "Iban"
+msgstr "iba"
+
+msgid "Icelandic"
+msgstr "izlandi"
+
+msgid "Ido"
+msgstr "ido"
+
+msgid "Iduna"
+msgstr "iduna"
+
+msgid "Igbo"
+msgstr "igbo"
+
+msgid "Iloko"
+msgstr "iloko"
+
+msgid "Indonesian"
+msgstr "indonéz"
+
+msgid "Indus Valley Language"
+msgstr "Indus-völgyi nyelv"
+
+msgid "Ingush"
+msgstr "ingus"
+
+msgid "Interlingua (International Auxiliary Language Association)"
+msgstr "interlingva (Nemzetközi Segédnyelv Egyesület)"
+
+msgid "Interlingue"
+msgstr "interlingva"
+
+msgid "Inuktitut"
+msgstr "inuktitut"
+
+msgid "Inupiaq"
+msgstr "inupiak"
+
+msgid "Irish"
+msgstr "ír"
+
+msgid "Irish, Middle (900-1200)"
+msgstr "közép-ír (900-1200)"
+
+msgid "Irish, Old (to 900)"
+msgstr "óír (900-ig)"
+
+msgid "Italian"
+msgstr "olasz"
+
+msgid "Japanese"
+msgstr "japán"
+
+msgid "Javanese"
+msgstr "jávai"
+
+msgid "Jemez"
+msgstr "Dzsemez"
+
+msgid "Judeo-Arabic"
+msgstr "judeo-arab"
+
+msgid "Judeo-Persian"
+msgstr "judeo-perzsa"
+
+msgid "Kabardian"
+msgstr "kabardi"
+
+msgid "Kabatei"
+msgstr "kabatej"
+
+msgid "Kaburi"
+msgstr "kaburi"
+
+msgid "Kabyle"
+msgstr "kabile"
+
+msgid "Kachari"
+msgstr "kacsari"
+
+msgid "Kachin"
+msgstr "kachin"
+
+msgid "Kaimbulawa"
+msgstr "kaimbulava"
+
+msgid "Kaiy"
+msgstr "kaij"
+
+msgid "Kalkoti"
+msgstr "kalkoti"
+
+msgid "Kamakan"
+msgstr "kamakán"
+
+msgid "Kamang"
+msgstr "kamang"
+
+msgid "Kamas"
+msgstr "kamasz"
+
+msgid "Kambera"
+msgstr "kambera"
+
+msgid "Kamu"
+msgstr "kamu"
+
+msgid "Kamula"
+msgstr "kamula"
+
+msgid "Kamviri"
+msgstr "kamviri"
+
+msgid "Kanashi"
+msgstr "kanasi"
+
+msgid "Kangri"
+msgstr "kangri"
+
+msgid "Kaninuwa"
+msgstr "kaninuva"
+
+msgid "Kankanay, Northern"
+msgstr "kankanáj, északi"
+
+msgid "Kannada"
+msgstr "kannada"
+
+msgid "Kantosi"
+msgstr "kantosi"
+
+msgid "Kanuri"
+msgstr "kanuri"
+
+msgid "Kapin"
+msgstr "kapin"
+
+msgid "Kara-Kalpak"
+msgstr "kara-kalpak"
+
+msgid "Karachay-Balkar"
+msgstr "karacsai-balkar"
+
+msgid "Karami"
+msgstr "karámi"
+
+msgid "Karankawa"
+msgstr "karankava"
+
+msgid "Karawa"
+msgstr "karava"
+
+msgid "Karelian"
+msgstr "kareliai"
+
+msgid "Kariyarra"
+msgstr "karijarra"
+
+msgid "Karore"
+msgstr "karore"
+
+msgid "Kashmiri"
+msgstr "kasmíri"
+
+msgid "Kashubian"
+msgstr "kasubi"
+
+msgid "Katbol"
+msgstr "katbol"
+
+msgid "Kaur"
+msgstr "kaur"
+
+msgid "Kawi"
+msgstr "kawi"
+
+msgid "Kazakh"
+msgstr "kazah"
+
+msgid "Kelo"
+msgstr "kelo"
+
+msgid "Kembayan"
+msgstr "kembajan"
+
+msgid "Kembra"
+msgstr "kembra"
+
+msgid "Kenyan Sign Language"
+msgstr "kenyai jelnyelv"
+
+msgid "Khasi"
+msgstr "kazi"
+
+msgid "Khazar"
+msgstr "kazár"
+
+msgid "Khehek"
+msgstr "kehek"
+
+msgid "Khengkha"
+msgstr "kengka"
+
+msgid "Khetrani"
+msgstr "ketrani"
+
+msgid "Khotanese"
+msgstr "kotáni"
+
+msgid "Kikuyu"
+msgstr "kikuyu"
+
+msgid "Kimbundu"
+msgstr "kimbundu"
+
+msgid "Kinga"
+msgstr "kinga"
+
+msgid "Kinyarwanda"
+msgstr "kinyarwanda"
+
+msgid "Kioko"
+msgstr "kjoko"
+
+msgid "Kirghiz"
+msgstr "kirgiz"
+
+msgid "Kodeoha"
+msgstr "kodeoha"
+
+msgid "Koguryo"
+msgstr "kongurio"
+
+msgid "Koibal"
+msgstr "koibal"
+
+msgid "Kokoda"
+msgstr "kokoda"
+
+msgid "Kombai"
+msgstr "kombaj"
+
+msgid "Kombio"
+msgstr "kombio"
+
+msgid "Komi"
+msgstr "komi"
+
+msgid "Kongo"
+msgstr "kongo"
+
+msgid "Konkomba"
+msgstr "konkomba"
+
+msgid "Korean"
+msgstr "koreai"
+
+msgid "Koroni"
+msgstr "koroni"
+
+msgid "Korubo"
+msgstr "korubo"
+
+msgid "Kosraean"
+msgstr "koszrai"
+
+msgid "Kowaki"
+msgstr "kovaki"
+
+msgid "Kpelle"
+msgstr "kpelle"
+
+msgid "Kua"
+msgstr "kua"
+
+msgid "Kuan"
+msgstr "kuán"
+
+msgid "Kuanhua"
+msgstr "kvanhua"
+
+msgid "Kuanyama"
+msgstr "kuanyama"
+
+msgid "Kujarge"
+msgstr "kudzsarge"
+
+msgid "Kula"
+msgstr "kula"
+
+msgid "Kumyk"
+msgstr "kumyk"
+
+msgid "Kumzari"
+msgstr "kumzari"
+
+msgid "Kunbarlang"
+msgstr "kunbarlang"
+
+msgid "Kunigami"
+msgstr "kunigami"
+
+msgid "Kuo"
+msgstr "kuo"
+
+msgid "Kurdish"
+msgstr "kurd"
+
+msgid "Kurrama"
+msgstr "kurrama"
+
+msgid "Kurtokha"
+msgstr "kurtoka"
+
+msgid "Kurukh"
+msgstr "kuruk"
+
+msgid "Kutenai"
+msgstr "kutenai"
+
+msgid "Kwamera"
+msgstr "kvamera"
+
+msgid "Kyenga"
+msgstr "kjenga"
+
+msgid "Ladino"
+msgstr "ladino"
+
+msgid "Lahnda"
+msgstr "landa"
+
+msgid "Lamba"
+msgstr "lamba"
+
+msgid "Lao"
+msgstr "lao"
+
+msgid "Latin"
+msgstr "latin"
+
+msgid "Latvian"
+msgstr "lett"
+
+msgid "Lawunuia"
+msgstr "lavunuia"
+
+msgid "Lehali"
+msgstr "lehali"
+
+msgid "Lezghian"
+msgstr "lezgi"
+
+msgid "Lingala"
+msgstr "lingala"
+
+msgid "Lithuanian"
+msgstr "litván"
+
+msgid "Lojban"
+msgstr "lodzsban"
+
+msgid "Longto"
+msgstr "longto"
+
+msgid "Lozi"
+msgstr "lozi"
+
+msgid "Luba-Katanga"
+msgstr "luba-katanga"
+
+msgid "Luba-Lulua"
+msgstr "luba-lulua"
+
+msgid "Luiseno"
+msgstr "luisendo"
+
+msgid "Lule Sami"
+msgstr "lule szami"
+
+msgid "Lunda"
+msgstr "lunda"
+
+msgid "Luo (Kenya and Tanzania)"
+msgstr "luo (Kenya és Tanzánia)"
+
+msgid "Lushai"
+msgstr "lushai"
+
+msgid "Macedonian"
+msgstr "macedón"
+
+msgid "Macedonian, Ancient"
+msgstr "macedón, ősi"
+
+msgid "Maco"
+msgstr "mako"
+
+msgid "Maden"
+msgstr "maden"
+
+msgid "Madngele"
+msgstr "madngele"
+
+msgid "Madurese"
+msgstr "maduri"
+
+msgid "Magahi"
+msgstr "magahi"
+
+msgid "Magori"
+msgstr "magori"
+
+msgid "Maiani"
+msgstr "majani"
+
+msgid "Mairasi"
+msgstr "mairasi"
+
+msgid "Maithili"
+msgstr "maithili"
+
+msgid "Maiwa (Indonesia)"
+msgstr "maiva (Indonézia)"
+
+msgid "Makasar"
+msgstr "makasar"
+
+msgid "Makhuwa"
+msgstr "makuva"
+
+msgid "Malagasy"
+msgstr "malagasy"
+
+msgid "Malagasy, Tanosy"
+msgstr "malagasy, Tanosy"
+
+msgid "Malay, Manado"
+msgstr "maláj, Manado"
+
+msgid "Malayalam"
+msgstr "malajalam"
+
+msgid "Malaysian Sign Language"
+msgstr "maláj jelnyelv"
+
+msgid "Malgana"
+msgstr "malgana"
+
+msgid "Maltese"
+msgstr "máltai"
+
+msgid "Manangkari"
+msgstr "mankari"
+
+msgid "Manchu"
+msgstr "manchu"
+
+msgid "Mandar"
+msgstr "mandar"
+
+msgid "Mandara"
+msgstr "mandara"
+
+msgid "Mandingo"
+msgstr "mandingo"
+
+msgid "Mang"
+msgstr "mang"
+
+msgid "Mangas"
+msgstr "mangas"
+
+msgid "Mangerr"
+msgstr "mangerr"
+
+msgid "Manipuri"
+msgstr "manipuri"
+
+msgid "Manombai"
+msgstr "manombaj"
+
+msgid "Manusela"
+msgstr "manusela"
+
+msgid "Manx"
+msgstr "manx"
+
+msgid "Maori"
+msgstr "maori"
+
+msgid "Maraghei"
+msgstr "maragei"
+
+msgid "Marathi"
+msgstr "marathi"
+
+msgid "Marenje"
+msgstr "marendzse"
+
+msgid "Margany"
+msgstr "margani"
+
+msgid "Maringarr"
+msgstr "maringar"
+
+msgid "Mariyedi"
+msgstr "marijedi"
+
+msgid "Marwari"
+msgstr "marwari"
+
+msgid "Masai"
+msgstr "maszáj"
+
+msgid "Masela, East"
+msgstr "masela, kelet"
+
+msgid "Matbat"
+msgstr "matbat"
+
+msgid "Mbabaram"
+msgstr "mbabarám"
+
+msgid "Mbandja"
+msgstr "mbandja"
+
+msgid "Mbesa"
+msgstr "mbesa"
+
+msgid "Mbonga"
+msgstr "mbonga"
+
+msgid "Mengaka"
+msgstr "mengaka"
+
+msgid "Merwari"
+msgstr "mervari"
+
+msgid "Mesme"
+msgstr "mesme"
+
+msgid "Mewati"
+msgstr "mevati"
+
+msgid "Minangkabau"
+msgstr "minangkabau"
+
+msgid "Mirandese"
+msgstr "mirandese"
+
+msgid "Miwa"
+msgstr "miva"
+
+msgid "Mohawk"
+msgstr "mohawk"
+
+msgid "Moksela"
+msgstr "moksela"
+
+msgid "Moksha"
+msgstr "moksa"
+
+msgid "Moldova Sign Language"
+msgstr "moldovai jelnyelv"
+
+msgid "Molo"
+msgstr "molo"
+
+msgid "Mom Jango"
+msgstr "mom dzsango"
+
+msgid "Mongo"
+msgstr "mongo"
+
+msgid "Mongolian"
+msgstr "mongol"
+
+msgid "Mongolian, Middle"
+msgstr "mongol, közép"
+
+msgid "Morerebi"
+msgstr "morerebi"
+
+msgid "Moroccan Sign Language"
+msgstr "marokkói jelnyelv"
+
+msgid "Mossi"
+msgstr "mossi"
+
+msgid "Mpuono"
+msgstr "mpuono"
+
+msgid "Mubami"
+msgstr "mubami"
+
+msgid "Multiple languages"
+msgstr "több nyelv"
+
+msgid "Muruwari"
+msgstr "muruvari"
+
+msgid "Mwani"
+msgstr "mvani"
+
+msgid "Nauru"
+msgstr "nauru"
+
+msgid "Ndebele, North"
+msgstr "ndebele (északi)"
+
+msgid "Ndebele, South"
+msgstr "ndebele (déli)"
+
+msgid "Ndonga"
+msgstr "ndonga"
+
+msgid "Neapolitan"
+msgstr "nápolyi"
+
+msgid "Ngarinyin"
+msgstr "ngarinyin"
+
+msgid "Nias"
+msgstr "nias"
+
+msgid "Niuean"
+msgstr "niuei"
+
+msgid "Nogai"
+msgstr "nogai"
+
+msgid "Norse, Old"
+msgstr "ónorvég"
+
+msgid "North Arabian, Ancient"
+msgstr "észak-arábiai, ősi"
+
+msgid "Norwegian"
+msgstr "norvég"
+
+msgid "Norwegian Nynorsk"
+msgstr "norvég (nynorsk)"
+
+msgid "Nume"
+msgstr "nume"
+
+msgid "Nyamwezi"
+msgstr "nyamwezi"
+
+msgid "Nyankole"
+msgstr "nyankole"
+
+msgid "Nyoro"
+msgstr "nyoro"
+
+msgid "Nzima"
+msgstr "nzima"
+
+msgid "Ojibwa"
+msgstr "odzsibwa"
+
+msgid "Oromo"
+msgstr "oromo"
+
+msgid "Osage"
+msgstr "oszage"
+
+msgid "Otank"
+msgstr "otank"
+
+msgid "Pahlavi"
+msgstr "pahlavi"
+
+msgid "Palauan"
+msgstr "palaui"
+
+msgid "Pali"
+msgstr "pali"
+
+msgid "Pampanga"
+msgstr "pampanga"
+
+msgid "Panchpargania"
+msgstr "pancspargania"
+
+msgid "Pangasinan"
+msgstr "pangasini"
+
+msgid "Papiamento"
+msgstr "papiamento"
+
+msgid "Pendau"
+msgstr "pendau"
+
+msgid "Perai"
+msgstr "peraj"
+
+msgid "Persian"
+msgstr "perzsa"
+
+msgid "Phoenician"
+msgstr "főníciai"
+
+msgid "Phrygian"
+msgstr "fríg"
+
+msgid "Pictish"
+msgstr "pikt"
+
+msgid "Pohnpeian"
+msgstr "ponpei"
+
+msgid "Polish"
+msgstr "lengyel"
+
+msgid "Portuguese"
+msgstr "portugál"
+
+msgid "Punic"
+msgstr "pun"
+
+msgid "Purepecha"
+msgstr "purepecsa"
+
+msgid "Pushto"
+msgstr "pushto"
+
+msgid "Puyo"
+msgstr "pujo"
+
+msgid "Qatabanian"
+msgstr "katabáni"
+
+msgid "Quechan"
+msgstr "kecsa"
+
+msgid "Quechua"
+msgstr "kecsua"
+
+msgid "Rajasthani"
+msgstr "radzsasztani"
+
+msgid "Rapanui"
+msgstr "rapanui"
+
+msgid "Romanian"
+msgstr "román"
+
+msgid "Romany"
+msgstr "roma"
+
+msgid "Rundi"
+msgstr "rundi"
+
+msgid "Russian"
+msgstr "orosz"
+
+msgid "Samarokena"
+msgstr "szamarokena"
+
+msgid "Samoan"
+msgstr "szamoai"
+
+msgid "Sandawe"
+msgstr "sandawe"
+
+msgid "Sango"
+msgstr "szango"
+
+msgid "Sanskrit"
+msgstr "szankszrit"
+
+msgid "Santali"
+msgstr "szantáli"
+
+msgid "Sardinian"
+msgstr "szardíniai"
+
+msgid "Sasak"
+msgstr "szaszak"
+
+msgid "Sawai"
+msgstr "szavai"
+
+msgid "Scots"
+msgstr "skót"
+
+msgid "Scythian"
+msgstr "szkíta"
+
+msgid "Sedoa"
+msgstr "szedoa"
+
+msgid "Selkup"
+msgstr "szelkup"
+
+msgid "Semelai"
+msgstr "szemelai"
+
+msgid "Senaya"
+msgstr "szenaja"
+
+msgid "Serbian"
+msgstr "szerb"
+
+msgid "Serer"
+msgstr "serer"
+
+msgid "Seru"
+msgstr "szeru"
+
+msgid "Seze"
+msgstr "szeze"
+
+msgid "Shan"
+msgstr "shan"
+
+msgid "Sherpa"
+msgstr "serpa"
+
+msgid "Shona"
+msgstr "shona"
+
+msgid "Sicilian"
+msgstr "friuli"
+
+msgid "Sidamo"
+msgstr "szidamo"
+
+msgid "Sikaritai"
+msgstr "sikaritaj"
+
+msgid "Siksika"
+msgstr "szikszika"
+
+msgid "Silimo"
+msgstr "szilimo"
+
+msgid "Silopi"
+msgstr "silopi"
+
+msgid "Sindhi"
+msgstr "szindi"
+
+msgid "Sio"
+msgstr "szio"
+
+msgid "Slave (Athapascan)"
+msgstr "Szolga (atapaszkán)"
+
+msgid "Slovak"
+msgstr "szlovák"
+
+msgid "Slovenian"
+msgstr "szlovén"
+
+msgid "Soga"
+msgstr "soga"
+
+msgid "Sogdian"
+msgstr "sogdi"
+
+msgid "Solano"
+msgstr "szolano"
+
+msgid "Somali"
+msgstr "szomáli"
+
+msgid "Soninke"
+msgstr "soninke"
+
+msgid "Sotho, Northern"
+msgstr "sotho (északi)"
+
+msgid "Sotho, Southern"
+msgstr "sotho, déli"
+
+msgid "Spanish"
+msgstr "spanyol"
+
+msgid "Suabo"
+msgstr "szuabo"
+
+msgid "Sukuma"
+msgstr "sukuma"
+
+msgid "Sula"
+msgstr "Szula"
+
+msgid "Sumerian"
+msgstr "sumér"
+
+msgid "Sundanese"
+msgstr "szundanéz"
+
+msgid "Susu"
+msgstr "susu"
+
+msgid "Swati"
+msgstr "swati"
+
+msgid "Swedish"
+msgstr "svéd"
+
+msgid "Syriac"
+msgstr "szír"
+
+msgid "T'en"
+msgstr "t'en"
+
+msgid "Tabaru"
+msgstr "tabaru"
+
+msgid "Tabassaran"
+msgstr "tabaszár"
+
+msgid "Tabla"
+msgstr "tabla"
+
+msgid "Tabriak"
+msgstr "tabriak"
+
+msgid "Tacana"
+msgstr "Tacana"
+
+msgid "Tafi"
+msgstr "tafi"
+
+msgid "Tagalog"
+msgstr "tagalog"
+
+msgid "Tagdal"
+msgstr "tagdal"
+
+msgid "Tagish"
+msgstr "tagis"
+
+msgid "Tagoi"
+msgstr "tagoj"
+
+msgid "Tahitian"
+msgstr "tahiti"
+
+msgid "Tahltan"
+msgstr "talta"
+
+msgid "Tai"
+msgstr "Tai"
+
+msgid "Tai Do"
+msgstr "Taj Dó"
+
+msgid "Taino"
+msgstr "tajno"
+
+msgid "Taiwan Sign Language"
+msgstr "tajvani jelnyelv"
+
+msgid "Tajik"
+msgstr "tadzsik"
+
+msgid "Tajio"
+msgstr "tadzsió"
+
+msgid "Tajuasohn"
+msgstr "tajuason"
+
+msgid "Takelma"
+msgstr "takelma"
+
+msgid "Takestani"
+msgstr "takesztán"
+
+msgid "Takia"
+msgstr "takia"
+
+msgid "Takua"
+msgstr "takua"
+
+msgid "Takwane"
+msgstr "takvane"
+
+msgid "Tal"
+msgstr "tal"
+
+msgid "Tala"
+msgstr "tala"
+
+msgid "Talaud"
+msgstr "talaud"
+
+msgid "Taliabu"
+msgstr "taliabu"
+
+msgid "Talieng"
+msgstr "talieng"
+
+msgid "Talise"
+msgstr "talisze"
+
+msgid "Talodi"
+msgstr "talodi"
+
+msgid "Taloki"
+msgstr "taloki"
+
+msgid "Tamagario"
+msgstr "tamagarjó"
+
+msgid "Taman (Indonesia)"
+msgstr "taman (Indonézia)"
+
+msgid "Tamanaku"
+msgstr "tamanaku"
+
+msgid "Tamashek"
+msgstr "tamasek"
+
+msgid "Tamasheq"
+msgstr "tamasek"
+
+msgid "Tambas"
+msgstr "tambasz"
+
+msgid "Tambotalo"
+msgstr "tambotalo"
+
+msgid "Tami"
+msgstr "tami"
+
+msgid "Tamil"
+msgstr "tamil"
+
+msgid "Tamki"
+msgstr "tamki"
+
+msgid "Tampuan"
+msgstr "tampua"
+
+msgid "Tampulma"
+msgstr "tampulma"
+
+msgid "Tanaina"
+msgstr "tanajna"
+
+msgid "Tanapag"
+msgstr "tanapag"
+
+msgid "Tandia"
+msgstr "tandia"
+
+msgid "Tanema"
+msgstr "tanema"
+
+msgid "Tangale"
+msgstr "tangale"
+
+msgid "Tangga"
+msgstr "tanga"
+
+msgid "Tanggu"
+msgstr "tangu"
+
+msgid "Tangko"
+msgstr "tangko"
+
+msgid "Tangoa"
+msgstr "tangoa"
+
+msgid "Tanguat"
+msgstr "tanguat"
+
+msgid "Tangut"
+msgstr "tangut"
+
+msgid "Tanimbili"
+msgstr "tanimbili"
+
+msgid "Tanzanian Sign Language"
+msgstr "tanzániai jelnyelv"
+
+msgid "Tarahumara, Northern"
+msgstr "tarahumara, észak"
+
+msgid "Tareng"
+msgstr "tareng"
+
+msgid "Tarok"
+msgstr "tarok"
+
+msgid "Tartessian"
+msgstr "tarteszi"
+
+msgid "Tasawaq"
+msgstr "taszavak"
+
+msgid "Tasmanian"
+msgstr "tasmán"
+
+msgid "Tasmate"
+msgstr "tasmate"
+
+msgid "Tatana"
+msgstr "tatana"
+
+msgid "Tatar"
+msgstr "tatár"
+
+msgid "Tatuyo"
+msgstr "tatuyo"
+
+msgid "Taulil"
+msgstr "taulil"
+
+msgid "Taungyo"
+msgstr "taungjo"
+
+msgid "Taupota"
+msgstr "taupota"
+
+msgid "Tause"
+msgstr "tausze"
+
+msgid "Taushiro"
+msgstr "tausiro"
+
+msgid "Tausug"
+msgstr "tauszug"
+
+msgid "Tauya"
+msgstr "tauja"
+
+msgid "Taveta"
+msgstr "taveta"
+
+msgid "Tavoyan"
+msgstr "tavoja"
+
+msgid "Tawala"
+msgstr "tavala"
+
+msgid "Tawara"
+msgstr "tavara"
+
+msgid "Taworta"
+msgstr "tavorta"
+
+msgid "Tawoyan"
+msgstr "tavoja"
+
+msgid "Tboli"
+msgstr "tboli"
+
+msgid "Te'un"
+msgstr "teun"
+
+msgid "Teanu"
+msgstr "teanu"
+
+msgid "Tedaga"
+msgstr "tedaga"
+
+msgid "Tee"
+msgstr "tee"
+
+msgid "Tefaro"
+msgstr "tefaró"
+
+msgid "Tehuelche"
+msgstr "tehelcse"
+
+msgid "Telefol"
+msgstr "telefol"
+
+msgid "Telugu"
+msgstr "telugu"
+
+msgid "Teluti"
+msgstr "teluti"
+
+msgid "Teme"
+msgstr "teme"
+
+msgid "Temein"
+msgstr "temejn"
+
+msgid "Temoq"
+msgstr "temok"
+
+msgid "Temuan"
+msgstr "temuan"
+
+msgid "Tenino"
+msgstr "tenino"
+
+msgid "Teop"
+msgstr "teop"
+
+msgid "Teor"
+msgstr "teor"
+
+msgid "Tepecano"
+msgstr "tepekano"
+
+msgid "Tera"
+msgstr "tera"
+
+msgid "Terebu"
+msgstr "terebu"
+
+msgid "Tereno"
+msgstr "tereno"
+
+msgid "Teressa"
+msgstr "teressza"
+
+msgid "Tereweng"
+msgstr "tereveng"
+
+msgid "Teribe"
+msgstr "reribe"
+
+msgid "Termanu"
+msgstr "termanu"
+
+msgid "Ternate"
+msgstr "ternate"
+
+msgid "Ternateño"
+msgstr "ternateño"
+
+msgid "Teso"
+msgstr "teszo"
+
+msgid "Tetela"
+msgstr "tetela"
+
+msgid "Tetum"
+msgstr "tetum"
+
+msgid "Tewa (Indonesia)"
+msgstr "teva (Indonézia)"
+
+msgid "Tewe"
+msgstr "teve"
+
+msgid "Tha"
+msgstr "ta"
+
+msgid "Thai"
+msgstr "thai"
+
+msgid "Thai Sign Language"
+msgstr "thai jelnyelv"
+
+msgid "Thai, Northeastern"
+msgstr "thai, (észak-kelet)"
+
+msgid "Thakali"
+msgstr "takali"
+
+msgid "Thangmi"
+msgstr "tangmi"
+
+msgid "Thracian"
+msgstr "trák"
+
+msgid "Thu Lao"
+msgstr "Tu lao"
+
+msgid "Thudam"
+msgstr "tudam"
+
+msgid "Thulung"
+msgstr "tulung"
+
+msgid "Thuri"
+msgstr "turi"
+
+msgid "Tiang"
+msgstr "tiang"
+
+msgid "Tibetan"
+msgstr "tibeti"
+
+msgid "Tidong"
+msgstr "tidong"
+
+msgid "Tidore"
+msgstr "tidore"
+
+msgid "Tiene"
+msgstr "tiene"
+
+msgid "Tifal"
+msgstr "tifal"
+
+msgid "Tigak"
+msgstr "tigak"
+
+msgid "Tigre"
+msgstr "tigre"
+
+msgid "Tigrinya"
+msgstr "tigrinya"
+
+msgid "Tii"
+msgstr "tii"
+
+msgid "Tikar"
+msgstr "tikar"
+
+msgid "Tilung"
+msgstr "tilung"
+
+msgid "Tima"
+msgstr "tima"
+
+msgid "Timbe"
+msgstr "timbe"
+
+msgid "Timne"
+msgstr "timne"
+
+msgid "Tindi"
+msgstr "tindi"
+
+msgid "Tingui-Boto"
+msgstr "tingui-Boto"
+
+msgid "Tinigua"
+msgstr "tinigua"
+
+msgid "Tira"
+msgstr "tira"
+
+msgid "Tirahi"
+msgstr "tirahi"
+
+msgid "Tita"
+msgstr "tita"
+
+msgid "Titan"
+msgstr "titan"
+
+msgid "Tiv"
+msgstr "tiv"
+
+msgid "Tiwa, Northern"
+msgstr "tiva, északi"
+
+msgid "Tiwa, Southern"
+msgstr "tiva, déli"
+
+msgid "Tiwi"
+msgstr "tivi"
+
+msgid "Tlingit"
+msgstr "tlingit"
+
+msgid "Toba"
+msgstr "toba"
+
+msgid "Tobanga"
+msgstr "tobanga"
+
+msgid "Tobati"
+msgstr "tobati"
+
+msgid "Tobelo"
+msgstr "tobelo"
+
+msgid "Tobian"
+msgstr "tobi"
+
+msgid "Toda"
+msgstr "toda"
+
+msgid "Tofanma"
+msgstr "tofanma"
+
+msgid "Tok Pisin"
+msgstr "tok pisin"
+
+msgid "Tokano"
+msgstr "tokano"
+
+msgid "Tokelau"
+msgstr "tokelau"
+
+msgid "Tokharian B"
+msgstr "tokári B"
+
+msgid "Tolomako"
+msgstr "tolomakó"
+
+msgid "Tolowa"
+msgstr "tolova"
+
+msgid "Toma"
+msgstr "toma"
+
+msgid "Tomadino"
+msgstr "tomadinó"
+
+msgid "Tombelala"
+msgstr "tombelala"
+
+msgid "Tombulu"
+msgstr "tombulu"
+
+msgid "Tomini"
+msgstr "tomini"
+
+msgid "Tomoip"
+msgstr "tomoip"
+
+msgid "Tondano"
+msgstr "tondanó"
+
+msgid "Tonga (Nyasa)"
+msgstr "tonga (nyasza)"
+
+msgid "Tonga (Thailand)"
+msgstr "tonga (Thaiföld)"
+
+msgid "Tonga (Tonga Islands)"
+msgstr "tonga (Tonga-szigetek)"
+
+msgid "Tonga (Zambia)"
+msgstr "tonga (Zambia)"
+
+msgid "Tongwe"
+msgstr "tongve"
+
+msgid "Tonkawa"
+msgstr "tonkava"
+
+msgid "Tonsawang"
+msgstr "tonsavang"
+
+msgid "Tonsea"
+msgstr "tonszea"
+
+msgid "Tooro"
+msgstr "tóró"
+
+msgid "Toram"
+msgstr "torám"
+
+msgid "Torau"
+msgstr "torau"
+
+msgid "Toro"
+msgstr "toró"
+
+msgid "Toromono"
+msgstr "toromono"
+
+msgid "Torona"
+msgstr "torona"
+
+msgid "Torwali"
+msgstr "torvali"
+
+msgid "Totela"
+msgstr "totela"
+
+msgid "Toussian, Northern"
+msgstr "tuszi, északi"
+
+msgid "Toussian, Southern"
+msgstr "tuszi, déli"
+
+msgid "Towei"
+msgstr "tovei"
+
+msgid "Tregami"
+msgstr "tregami"
+
+msgid "Trimuris"
+msgstr "trimurisz"
+
+msgid "Tring"
+msgstr "tring"
+
+msgid "Tsaangi"
+msgstr "caangi"
+
+msgid "Tsakonian"
+msgstr "cakoni"
+
+msgid "Tsamai"
+msgstr "camaj"
+
+msgid "Tseku"
+msgstr "tszeku"
+
+msgid "Tsetsaut"
+msgstr "tszetszaut"
+
+msgid "Tshangla"
+msgstr "tsangla"
+
+msgid "Tsimshian"
+msgstr "cimsi"
+
+msgid "Tsishingini"
+msgstr "tszisingini"
+
+msgid "Tsogo"
+msgstr "tszogo"
+
+msgid "Tsonga"
+msgstr "tsonga"
+
+msgid "Tsou"
+msgstr "tszou"
+
+msgid "Tsum"
+msgstr "tszum"
+
+msgid "Tsuvadi"
+msgstr "tszuvadi"
+
+msgid "Tsuvan"
+msgstr "tszuvan"
+
+msgid "Tswa"
+msgstr "cva"
+
+msgid "Tswana"
+msgstr "tswana"
+
+msgid "Tswapong"
+msgstr "tszvapong"
+
+msgid "Tubar"
+msgstr "tubar"
+
+msgid "Tucano"
+msgstr "tucano"
+
+msgid "Tugun"
+msgstr "tugun"
+
+msgid "Tugutil"
+msgstr "tugutil"
+
+msgid "Tujia, Northern"
+msgstr "tujia, észak"
+
+msgid "Tujia, Southern"
+msgstr "tujia, dél"
+
+msgid "Tukpa"
+msgstr "tukpa"
+
+msgid "Tula"
+msgstr "tula"
+
+msgid "Tulehu"
+msgstr "tulehu"
+
+msgid "Tulishi"
+msgstr "tulisi"
+
+msgid "Tulu"
+msgstr "tulu"
+
+msgid "Tumak"
+msgstr "tumak"
+
+msgid "Tumbuka"
+msgstr "tumbuka"
+
+msgid "Tumleo"
+msgstr "tumleo"
+
+msgid "Tumtum"
+msgstr "tumtum"
+
+msgid "Tunggare"
+msgstr "tungare"
+
+msgid "Tunia"
+msgstr "tunia"
+
+msgid "Tunica"
+msgstr "tunica"
+
+msgid "Tunisian Sign Language"
+msgstr "tunéziai jelnyelv"
+
+msgid "Tunni"
+msgstr "tunni"
+
+msgid "Tupinikin"
+msgstr "tupinikin"
+
+msgid "Tupuri"
+msgstr "tupuri"
+
+msgid "Turaka"
+msgstr "turaka"
+
+msgid "Turi"
+msgstr "turi"
+
+msgid "Turka"
+msgstr "turka"
+
+msgid "Turkana"
+msgstr "turkana"
+
+msgid "Turkish"
+msgstr "török"
+
+msgid "Turkish Sign Language"
+msgstr "török jelnyelv"
+
+msgid "Turkish, Ottoman (1500-1928)"
+msgstr "török (ottomán) (1500-1928)"
+
+msgid "Turkmen"
+msgstr "türkmén"
+
+msgid "Turumsa"
+msgstr "turumsza"
+
+msgid "Turung"
+msgstr "turung"
+
+msgid "Tutchone, Northern"
+msgstr "tutcson, (északi)"
+
+msgid "Tutchone, Southern"
+msgstr "Tutcsone, dél"
+
+msgid "Tutuba"
+msgstr "tutuba"
+
+msgid "Tuvalu"
+msgstr "tuvalu"
+
+msgid "Tuvinian"
+msgstr "tuvini"
+
+msgid "Tuwari"
+msgstr "tuvari"
+
+msgid "Tuyuca"
+msgstr "tujuca"
+
+msgid "Twana"
+msgstr "tvana"
+
+msgid "Twendi"
+msgstr "tvendi"
+
+msgid "Twi"
+msgstr "twi"
+
+msgid "Ubang"
+msgstr "ubang"
+
+msgid "Ubir"
+msgstr "ubir"
+
+msgid "Udmurt"
+msgstr "udmurt"
+
+msgid "Uduk"
+msgstr "uduk"
+
+msgid "Ugandan Sign Language"
+msgstr "ugandai jelnyelv"
+
+msgid "Ugaritic"
+msgstr "uragi"
+
+msgid "Ugong"
+msgstr "ugong"
+
+msgid "Uhami"
+msgstr "uhámi"
+
+msgid "Uighur"
+msgstr "ujgur"
+
+msgid "Uisai"
+msgstr "ujszaj"
+
+msgid "Ujir"
+msgstr "udzsir"
+
+msgid "Ukrainian"
+msgstr "ukrán"
+
+msgid "Ukrainian Sign Language"
+msgstr "ukrán jelnyelv"
+
+msgid "Umbindhamu"
+msgstr "umbindamu"
+
+msgid "Umbrian"
+msgstr "umbriai"
+
+msgid "Umbu-Ungu"
+msgstr "umbu-ungu"
+
+msgid "Umbugarla"
+msgstr "umbugarla"
+
+msgid "Umbundu"
+msgstr "umbundu"
+
+msgid "Umbuygamu"
+msgstr "umbujgamu"
+
+msgid "Umeda"
+msgstr "umeda"
+
+msgid "Umon"
+msgstr "umon"
+
+msgid "Unami"
+msgstr "unámi"
+
+msgid "Undetermined"
+msgstr "ismeretlen"
+
+msgid "Uokha"
+msgstr "uoka"
+
+msgid "Uradhi"
+msgstr "uradi"
+
+msgid "Urali"
+msgstr "uráli"
+
+msgid "Urapmin"
+msgstr "urapmin"
+
+msgid "Urarina"
+msgstr "urarina"
+
+msgid "Urat"
+msgstr "urát"
+
+msgid "Urdu"
+msgstr "urdu"
+
+msgid "Urigina"
+msgstr "urugina"
+
+msgid "Urimo"
+msgstr "urimo"
+
+msgid "Urningangg"
+msgstr "urningang"
+
+msgid "Uru"
+msgstr "uru"
+
+msgid "Uruangnirin"
+msgstr "uruangnirin"
+
+msgid "Uruava"
+msgstr "uruava"
+
+msgid "Uruguayan Sign Language"
+msgstr "uruguayi jelnyelv"
+
+msgid "Urum"
+msgstr "urum"
+
+msgid "Urumi"
+msgstr "urumi"
+
+msgid "Usan"
+msgstr "uszan"
+
+msgid "Uzbek"
+msgstr "üzbég"
+
+msgid "Uzbek, Northern"
+msgstr "üzbég, északi"
+
+msgid "Uzbek, Southern"
+msgstr "üzbég, déli"
+
+msgid "Vafsi"
+msgstr "vafszi"
+
+msgid "Vaghri"
+msgstr "vagri"
+
+msgid "Vaghua"
+msgstr "vagua"
+
+msgid "Vagla"
+msgstr "vagla"
+
+msgid "Vai"
+msgstr "vai"
+
+msgid "Vale"
+msgstr "vale"
+
+msgid "Valman"
+msgstr "valmán"
+
+msgid "Valpei"
+msgstr "valpej"
+
+msgid "Vanimo"
+msgstr "vanimó"
+
+msgid "Vano"
+msgstr "vano"
+
+msgid "Vao"
+msgstr "vao"
+
+msgid "Varisi"
+msgstr "varisi"
+
+msgid "Varli"
+msgstr "varli"
+
+msgid "Vasavi"
+msgstr "vasavi"
+
+msgid "Veddah"
+msgstr "vedda"
+
+msgid "Venda"
+msgstr "venda"
+
+msgid "Venetian"
+msgstr "velencei"
+
+msgid "Venezuelan Sign Language"
+msgstr "venezuelai jelnyelv"
+
+msgid "Vidunda"
+msgstr "vidunda"
+
+msgid "Vietnamese"
+msgstr "vietnami"
+
+msgid "Vinza"
+msgstr "vinza"
+
+msgid "Viti"
+msgstr "viti"
+
+msgid "Volapük"
+msgstr "volapük"
+
+msgid "Voro"
+msgstr "voro"
+
+msgid "Votic"
+msgstr "vót"
+
+msgid "Vumbu"
+msgstr "vumbu"
+
+msgid "Vunapu"
+msgstr "vunapu"
+
+msgid "Waama"
+msgstr "váma"
+
+msgid "Waamwang"
+msgstr "vámvang"
+
+msgid "Wabo"
+msgstr "vabo"
+
+msgid "Waddar"
+msgstr "vaddar"
+
+msgid "Waffa"
+msgstr "vaffa"
+
+msgid "Wagaya"
+msgstr "vagaja"
+
+msgid "Wageman"
+msgstr "vageman"
+
+msgid "Wahgi"
+msgstr "vahgi"
+
+msgid "Waigali"
+msgstr "vaigali"
+
+msgid "Wailaki"
+msgstr "vailaki"
+
+msgid "Wailapa"
+msgstr "vailapa"
+
+msgid "Waioli"
+msgstr "vajoli"
+
+msgid "Waiwai"
+msgstr "vajvaj"
+
+msgid "Waja"
+msgstr "vadzsa"
+
+msgid "Waka"
+msgstr "vaka"
+
+msgid "Wakde"
+msgstr "vakde"
+
+msgid "Wakhi"
+msgstr "vaki"
+
+msgid "Walak"
+msgstr "valak"
+
+msgid "Waling"
+msgstr "valing"
+
+msgid "Walio"
+msgstr "valio"
+
+msgid "Walla Walla"
+msgstr "Valla-valla"
+
+msgid "Wallisian"
+msgstr "vallisi"
+
+msgid "Walloon"
+msgstr "vallon"
+
+msgid "Walser"
+msgstr "valszer"
+
+msgid "Wamas"
+msgstr "vamas"
+
+msgid "Wambaya"
+msgstr "vambaja"
+
+msgid "Wambon"
+msgstr "vambon"
+
+msgid "Wambule"
+msgstr "vambule"
+
+msgid "Wamin"
+msgstr "vamin"
+
+msgid "Wampanoag"
+msgstr "vampanoag"
+
+msgid "Wan"
+msgstr "van"
+
+msgid "Wanap"
+msgstr "vanap"
+
+msgid "Wanda"
+msgstr "vanda"
+
+msgid "Wandamen"
+msgstr "vandamen"
+
+msgid "Wandarang"
+msgstr "vandarang"
+
+msgid "Wanggom"
+msgstr "vanggom"
+
+msgid "Wanman"
+msgstr "vanman"
+
+msgid "Wano"
+msgstr "vano"
+
+msgid "Wappo"
+msgstr "vappo"
+
+msgid "Wara"
+msgstr "vara"
+
+msgid "Warao"
+msgstr "varao"
+
+msgid "Warapu"
+msgstr "varapu"
+
+msgid "Wardaman"
+msgstr "vardamán"
+
+msgid "Wares"
+msgstr "varesz"
+
+msgid "Waris"
+msgstr "varis"
+
+msgid "Waritai"
+msgstr "varitáj"
+
+msgid "Warluwara"
+msgstr "varluvara"
+
+msgid "Warnang"
+msgstr "varnang"
+
+msgid "Waropen"
+msgstr "varopen"
+
+msgid "Warrgamay"
+msgstr "vargamáj"
+
+msgid "Warrwa"
+msgstr "varrva"
+
+msgid "Waru"
+msgstr "varu"
+
+msgid "Waruna"
+msgstr "varuna"
+
+msgid "Wasa"
+msgstr "vasza"
+
+msgid "Washo"
+msgstr "washo"
+
+msgid "Waskia"
+msgstr "vaszkia"
+
+msgid "Wasu"
+msgstr "vaszu"
+
+msgid "Watam"
+msgstr "vatam"
+
+msgid "Wawa"
+msgstr "vava"
+
+msgid "Wayu"
+msgstr "vaju"
+
+msgid "Wedau"
+msgstr "vedau"
+
+msgid "Weh"
+msgstr "veh"
+
+msgid "Wejewa"
+msgstr "vedzseva"
+
+msgid "Welsh"
+msgstr "velszi"
+
+msgid "Weri"
+msgstr "veri"
+
+msgid "Wogeo"
+msgstr "vogeo"
+
+msgid "Wolani"
+msgstr "volani"
+
+msgid "Woleaian"
+msgstr "voleai"
+
+msgid "Wolio"
+msgstr "volio"
+
+msgid "Wolof"
+msgstr "wolof"
+
+msgid "Wongo"
+msgstr "vongo"
+
+msgid "Woria"
+msgstr "voria"
+
+msgid "Wulna"
+msgstr "vulna"
+
+msgid "Wumbvu"
+msgstr "vumbvu"
+
+msgid "Wunambal"
+msgstr "vunanbal"
+
+msgid "Wusi"
+msgstr "vuszi"
+
+msgid "Wuzlam"
+msgstr "vuzlam"
+
+msgid "Wára"
+msgstr "vára"
+
+msgid "Wè Northern"
+msgstr "vé, északi"
+
+msgid "Xhosa"
+msgstr "xhosa"
+
+msgid "Yabarana"
+msgstr "jabarana"
+
+msgid "Yaben"
+msgstr "jaben"
+
+msgid "Yabong"
+msgstr "jabong"
+
+msgid "Yagaria"
+msgstr "jagaria"
+
+msgid "Yagnobi"
+msgstr "jagnobi"
+
+msgid "Yagomi"
+msgstr "jagomi"
+
+msgid "Yagua"
+msgstr "jagua"
+
+msgid "Yagwoia"
+msgstr "jagvoja"
+
+msgid "Yahuna"
+msgstr "jahuna"
+
+msgid "Yakan"
+msgstr "jakan"
+
+msgid "Yakha"
+msgstr "jakha"
+
+msgid "Yakoma"
+msgstr "jakoma"
+
+msgid "Yakut"
+msgstr "jakut"
+
+msgid "Yala"
+msgstr "jala"
+
+msgid "Yamap"
+msgstr "jamap"
+
+msgid "Yamba"
+msgstr "jamba"
+
+msgid "Yambes"
+msgstr "jambesz"
+
+msgid "Yambeta"
+msgstr "jambeta"
+
+msgid "Yameo"
+msgstr "jameo"
+
+msgid "Yami"
+msgstr "jami"
+
+msgid "Yamna"
+msgstr "jamna"
+
+msgid "Yana"
+msgstr "jana"
+
+msgid "Yandruwandha"
+msgstr "jandruvanda"
+
+msgid "Yangho"
+msgstr "jangho"
+
+msgid "Yango"
+msgstr "jango"
+
+msgid "Yansi"
+msgstr "jansi"
+
+msgid "Yao"
+msgstr "yao"
+
+msgid "Yaouré"
+msgstr "jauré"
+
+msgid "Yapese"
+msgstr "jap"
+
+msgid "Yapunda"
+msgstr "japunda"
+
+msgid "Yareba"
+msgstr "jareba"
+
+msgid "Yasa"
+msgstr "jasa"
+
+msgid "Yaul"
+msgstr "jaul"
+
+msgid "Yauma"
+msgstr "jauma"
+
+msgid "Yawa"
+msgstr "jawa"
+
+msgid "Yawiyo"
+msgstr "javijo"
+
+msgid "Yawuru"
+msgstr "javuru"
+
+msgid "Yekora"
+msgstr "jekora"
+
+msgid "Yele"
+msgstr "jele"
+
+msgid "Yelogu"
+msgstr "jelogu"
+
+msgid "Yemba"
+msgstr "yemba"
+
+msgid "Yendang"
+msgstr "jendang"
+
+msgid "Yeniche"
+msgstr "jenicse"
+
+msgid "Yevanic"
+msgstr "jevani"
+
+msgid "Yiddish"
+msgstr "jiddis"
+
+msgid "Yiddish Sign Language"
+msgstr "jiddis jelnyelv"
+
+msgid "Yiddish, Eastern"
+msgstr "jiddis, keleti"
+
+msgid "Yiddish, Western"
+msgstr "jiddis, nyugati"
+
+msgid "Yidgha"
+msgstr "jidga"
+
+msgid "Yidiny"
+msgstr "jidini"
+
+msgid "Yimas"
+msgstr "jimas"
+
+msgid "Yinchia"
+msgstr "jincsia"
+
+msgid "Yinggarda"
+msgstr "jingarda"
+
+msgid "Yis"
+msgstr "jis"
+
+msgid "Yoba"
+msgstr "joba"
+
+msgid "Yogad"
+msgstr "jogád"
+
+msgid "Yoidik"
+msgstr "joidik"
+
+msgid "Yonaguni"
+msgstr "jonaguni"
+
+msgid "Yong"
+msgstr "jong"
+
+msgid "Yopno"
+msgstr "jopno"
+
+msgid "Yoron"
+msgstr "joron"
+
+msgid "Yoruba"
+msgstr "joruba"
+
+msgid "Yos"
+msgstr "josz"
+
+msgid "Yoy"
+msgstr "joj"
+
+msgid "Yuchi"
+msgstr "jucsi"
+
+msgid "Yucuna"
+msgstr "jukuna"
+
+msgid "Yugambal"
+msgstr "jugambál"
+
+msgid "Yugoslavian Sign Language"
+msgstr "jugoszláv jelnyelv"
+
+msgid "Yukaghir, Northern"
+msgstr "jukagir. északi"
+
+msgid "Yukaghir, Southern"
+msgstr "jukagir, déli"
+
+msgid "Yukpa"
+msgstr "jukpa"
+
+msgid "Yulu"
+msgstr "julu"
+
+msgid "Yupik, Naukan"
+msgstr "jupi, Naukan"
+
+msgid "Yuwana"
+msgstr "juvana"
+
+msgid "Zaghawa"
+msgstr "zagava"
+
+msgid "Zambian Sign Language"
+msgstr "zambiai jelnyelv"
+
+msgid "Zanaki"
+msgstr "zanaki"
+
+msgid "Zangskari"
+msgstr "zangskari"
+
+msgid "Zangwal"
+msgstr "zangval"
+
+msgid "Zapotec"
+msgstr "zapoték"
+
+msgid "Zapotec, Cajonos"
+msgstr "zapoték, Cajonos"
+
+msgid "Zapotec, Choapan"
+msgstr "zapoték, Choapan"
+
+msgid "Zapotec, El Alto"
+msgstr "zapoték, El Alto"
+
+msgid "Zapotec, Güilá"
+msgstr "zapoték, Güilá"
+
+msgid "Zapotec, Isthmus"
+msgstr "zapoték, Isthmus"
+
+msgid "Zapotec, Loxicha"
+msgstr "zapoték, Loxicha"
+
+msgid "Zapotec, Mitla"
+msgstr "zapoték, Mitla"
+
+msgid "Zapotec, Petapa"
+msgstr "zapoték, Petapa"
+
+msgid "Zapotec, Rincón"
+msgstr "zapoték, Rincón"
+
+msgid "Zapotec, Southern Rincon"
+msgstr "zapoték, dél-Rincon"
+
+msgid "Zapotec, Tabaa"
+msgstr "zapoték, Tabaa"
+
+msgid "Zapotec, Xadani"
+msgstr "zapoték, Xadani"
+
+msgid "Zapotec, Yareni"
+msgstr "zapoték, Yareni"
+
+msgid "Zapotec, Yatee"
+msgstr "zapoték, Yatee"
+
+msgid "Zapotec, Zaniza"
+msgstr "zapoték, Zaniza"
+
+msgid "Zaramo"
+msgstr "zaramo"
+
+msgid "Zari"
+msgstr "zari"
+
+msgid "Zarphatic"
+msgstr "zapatik"
+
+msgid "Zauzou"
+msgstr "zozu"
+
+msgid "Zenag"
+msgstr "zenag"
+
+msgid "Zenaga"
+msgstr "zenaga"
+
+msgid "Zhaba"
+msgstr "zsaba"
+
+msgid "Zhire"
+msgstr "zsire"
+
+msgid "Zhoa"
+msgstr "zsoa"
+
+msgid "Zhuang"
+msgstr "zsuang"
+
+msgid "Zigula"
+msgstr "zigula"
+
+msgid "Zimba"
+msgstr "zimba"
+
+msgid "Zimbabwe Sign Language"
+msgstr "zimbabwei jelnyelv"
+
+msgid "Zinza"
+msgstr "zinza"
+
+msgid "Ziriya"
+msgstr "zirija"
+
+msgid "Zulu"
+msgstr "zulu"
+
+msgid "Zuni"
+msgstr "zuni"

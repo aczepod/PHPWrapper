@@ -1,0 +1,236 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: iso_15924\n"
+"Report-Msgid-Bugs-To: Debian iso-codes team <pkg-isocodes-devel@lists.alioth."
+"debian.org>\n"
+"POT-Creation-Date: 2012-02-09 22:36+0100\n"
+"PO-Revision-Date: 2007-09-09 16:07+0200\n"
+"Last-Translator: Tobias Quathamer <toddy@debian.org>\n"
+"Language-Team: Portuguese\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: KBabel 1.11.4\n"
+
+msgid "Arabic"
+msgstr "árabe"
+
+msgid "Armenian"
+msgstr "armênio"
+
+msgid "Balinese"
+msgstr "balinês"
+
+msgid "Batak"
+msgstr "bataque"
+
+msgid "Bengali"
+msgstr "bengali"
+
+msgid "Blissymbols"
+msgstr "símbolos bliss"
+
+msgid "Bopomofo"
+msgstr "bopomofo"
+
+msgid "Brahmi"
+msgstr "brahmi"
+
+msgid "Braille"
+msgstr "braile"
+
+msgid "Buginese"
+msgstr "buginês"
+
+msgid "Buhid"
+msgstr "buhid"
+
+msgid "Cham"
+msgstr "cham"
+
+msgid "Cherokee"
+msgstr "cheroqui"
+
+msgid "Cirth"
+msgstr "cirth"
+
+msgid "Coptic"
+msgstr "cóptico"
+
+msgid "Cypriot"
+msgstr "cipriota"
+
+msgid "Cyrillic"
+msgstr "cirílico"
+
+msgid "Egyptian demotic"
+msgstr "demótico egípcio"
+
+msgid "Egyptian hieratic"
+msgstr "hierático egípcio"
+
+msgid "Egyptian hieroglyphs"
+msgstr "hieróglifos egípcios"
+
+msgid "Glagolitic"
+msgstr "glagolítico"
+
+msgid "Gothic"
+msgstr "gótico"
+
+msgid "Greek"
+msgstr "grego"
+
+msgid "Gujarati"
+msgstr "gujerati"
+
+msgid "Gurmukhi"
+msgstr "gurmuqui"
+
+msgid "Hebrew"
+msgstr "hebraico"
+
+msgid "Hiragana"
+msgstr "hiragana"
+
+msgid "Javanese"
+msgstr "javanês"
+
+msgid "Kannada"
+msgstr "kannada"
+
+msgid "Katakana"
+msgstr "katakana"
+
+msgid "Kayah Li"
+msgstr "kayah li"
+
+msgid "Kharoshthi"
+msgstr "kharoshthi"
+
+msgid "Khmer"
+msgstr "khmer"
+
+msgid "Lao"
+msgstr "lao"
+
+msgid "Latin"
+msgstr "latim"
+
+msgid "Limbu"
+msgstr "limbu"
+
+msgid "Linear B"
+msgstr "b linear"
+
+msgid "Lycian"
+msgstr "lício"
+
+msgid "Lydian"
+msgstr "lídio"
+
+msgid "Malayalam"
+msgstr "malaiala"
+
+msgid "Mayan hieroglyphs"
+msgstr "hieróglifos maias"
+
+msgid "Mongolian"
+msgstr "mongol"
+
+msgid "New Tai Lue"
+msgstr "novo tai lue"
+
+msgid "N’Ko"
+msgstr "n'ko"
+
+msgid "Ogham"
+msgstr "ogâmico"
+
+msgid "Old Hungarian"
+msgstr "húngaro antigo"
+
+msgid "Old Persian"
+msgstr "persa antigo"
+
+msgid "Oriya"
+msgstr "oriya"
+
+msgid "Osmanya"
+msgstr "osmania"
+
+msgid "Pahawh Hmong"
+msgstr "pahawh hmong"
+
+msgid "Phags-pa"
+msgstr "phags-pa"
+
+msgid "Phoenician"
+msgstr "fenício"
+
+msgid "Rongorongo"
+msgstr "rongorongo"
+
+msgid "Runic"
+msgstr "rúnico"
+
+msgid "Sarati"
+msgstr "sarati"
+
+msgid "Saurashtra"
+msgstr "saurashtra"
+
+msgid "SignWriting"
+msgstr "signwriting"
+
+msgid "Sinhala"
+msgstr "cingalês"
+
+msgid "Sundanese"
+msgstr "sundanês"
+
+msgid "Syloti Nagri"
+msgstr "syloti nagri"
+
+msgid "Syriac"
+msgstr "siríaco"
+
+msgid "Tagbanwa"
+msgstr "tagbanwa"
+
+msgid "Tai Le"
+msgstr "tai Le"
+
+msgid "Tamil"
+msgstr "tâmil"
+
+msgid "Telugu"
+msgstr "télugu"
+
+msgid "Tengwar"
+msgstr "tengwar"
+
+msgid "Thaana"
+msgstr "thaana"
+
+msgid "Thai"
+msgstr "tailandês"
+
+msgid "Tibetan"
+msgstr "tibetano"
+
+msgid "Ugaritic"
+msgstr "ugarítico"
+
+msgid "Unified Canadian Aboriginal Syllabics"
+msgstr "símbolos aborígenes do Canadá Unificado"
+
+msgid "Vai"
+msgstr "vai"
+
+msgid "Visible Speech"
+msgstr "visible speech"
+
+msgid "Yi"
+msgstr "yi"

@@ -1,0 +1,386 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: iso_15924\n"
+"Report-Msgid-Bugs-To: Debian iso-codes team <pkg-isocodes-devel@lists.alioth."
+"debian.org>\n"
+"POT-Creation-Date: 2012-02-09 22:36+0100\n"
+"PO-Revision-Date: 2008-12-22 19:36+0800\n"
+"Last-Translator: Wei-Lun Chao <chaoweilun@gmail.com>\n"
+"Language-Team: Chinese (traditional) <zh-l10n@linux.org.tw>\n"
+"Language: zh_TW\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+
+msgid "Arabic"
+msgstr "阿拉伯文"
+
+msgid "Armenian"
+msgstr "亞美尼亞文"
+
+msgid "Avestan"
+msgstr "阿維斯塔文"
+
+msgid "Balinese"
+msgstr "峇里文"
+
+msgid "Batak"
+msgstr "巴塔克文"
+
+msgid "Bengali"
+msgstr "孟加拉文"
+
+msgid "Blissymbols"
+msgstr "布列斯符號"
+
+msgid "Book Pahlavi"
+msgstr "巴拉維書體"
+
+msgid "Bopomofo"
+msgstr "注音符號"
+
+msgid "Brahmi"
+msgstr "婆羅米文"
+
+msgid "Braille"
+msgstr "盲人點字符號"
+
+msgid "Buginese"
+msgstr "布吉斯文"
+
+msgid "Buhid"
+msgstr "布黑德文"
+
+msgid "Carian"
+msgstr "卡里亞文"
+
+msgid "Chakma"
+msgstr "查克馬文"
+
+msgid "Cham"
+msgstr "占文"
+
+msgid "Cherokee"
+msgstr "卻洛奇文"
+
+msgid "Cirth"
+msgstr "精靈-色斯文"
+
+msgid "Code for uncoded script"
+msgstr "未定碼文字編碼"
+
+msgid "Code for undetermined script"
+msgstr "未判別文字編碼"
+
+msgid "Code for unwritten documents"
+msgstr "非書面文件編碼"
+
+msgid "Coptic"
+msgstr "科普特文"
+
+msgid "Cuneiform, Sumero-Akkadian"
+msgstr "蘇美亞喀得楔形文字"
+
+msgid "Cypriot"
+msgstr "賽普勒斯文"
+
+msgid "Cyrillic"
+msgstr "西里爾文"
+
+msgid "Cyrillic (Old Church Slavonic variant)"
+msgstr "西里爾文 (古教會斯拉夫文的變體)"
+
+msgid "Deseret (Mormon)"
+msgstr "德瑟雷特文 (Mormon)"
+
+msgid "Devanagari (Nagari)"
+msgstr "梵文字母天城體 (Nagari)"
+
+msgid "Egyptian demotic"
+msgstr "古埃及文世俗體"
+
+msgid "Egyptian hieratic"
+msgstr "古埃及文僧侶體"
+
+msgid "Egyptian hieroglyphs"
+msgstr "古埃及象形文"
+
+msgid "Ethiopic (Geʻez)"
+msgstr "衣索比亞文 (Geʻez)"
+
+msgid "Georgian (Mkhedruli)"
+msgstr "喬治亞文 (Mkhedruli)"
+
+msgid "Glagolitic"
+msgstr "格拉哥里文"
+
+msgid "Gothic"
+msgstr "哥德體"
+
+msgid "Greek"
+msgstr "希臘文"
+
+msgid "Gujarati"
+msgstr "古吉拉特文"
+
+msgid "Gurmukhi"
+msgstr "果魯穆其文"
+
+msgid "Han (Hanzi, Kanji, Hanja)"
+msgstr "中日韓漢字 (Hanzi, Kanji, Hanja)"
+
+msgid "Han (Simplified variant)"
+msgstr "漢字 (簡化變體)"
+
+msgid "Han (Traditional variant)"
+msgstr "漢字 (傳統變體)"
+
+msgid "Hangul (Hangŭl, Hangeul)"
+msgstr "韓國-諺文 (Hangŭl, Hangeul)"
+
+msgid "Hanunoo (Hanunóo)"
+msgstr "菲律賓-含努鬧語 (Hanunóo)"
+
+msgid "Hebrew"
+msgstr "希伯來文"
+
+msgid "Hiragana"
+msgstr "平假名"
+
+msgid "Imperial Aramaic"
+msgstr "皇室阿拉姆文"
+
+msgid "Indus (Harappan)"
+msgstr "印度文 (Harappan)"
+
+msgid "Inscriptional Pahlavi"
+msgstr "巴拉維碑銘體"
+
+msgid "Inscriptional Parthian"
+msgstr "帕提亞碑銘體"
+
+msgid "Japanese (alias for Han + Hiragana + Katakana)"
+msgstr "日文 (漢字+平假名+片假名的別名)"
+
+msgid "Javanese"
+msgstr "爪哇文"
+
+msgid "Kaithi"
+msgstr "凱提體"
+
+msgid "Kannada"
+msgstr "卡納達文"
+
+msgid "Katakana"
+msgstr "片假名"
+
+msgid "Kayah Li"
+msgstr "克耶李文字"
+
+msgid "Kharoshthi"
+msgstr "卡羅須提文"
+
+msgid "Khmer"
+msgstr "高棉文"
+
+msgid "Khutsuri (Asomtavruli and Nuskhuri)"
+msgstr "格魯吉亞文 (Asomtavruli 和 Nuskhuri)"
+
+msgid "Korean (alias for Hangul + Han)"
+msgstr "韓文 (諺文+漢字的別名)"
+
+msgid "Lao"
+msgstr "老撾文"
+
+msgid "Latin"
+msgstr "拉丁文"
+
+msgid "Latin (Fraktur variant)"
+msgstr "拉丁文（尖角活字變體）"
+
+msgid "Latin (Gaelic variant)"
+msgstr "拉丁文 (蓋爾語變體)"
+
+msgid "Lepcha (Róng)"
+msgstr "雷布查文 (Ró ng)"
+
+msgid "Limbu"
+msgstr "林佈文"
+
+msgid "Linear A"
+msgstr "線性文字 A"
+
+msgid "Linear B"
+msgstr "線性文字 B"
+
+msgid "Lycian"
+msgstr "呂基亞文"
+
+msgid "Lydian"
+msgstr "利底安文"
+
+msgid "Malayalam"
+msgstr "馬來亞拉姆文"
+
+msgid "Mandaic, Mandaean"
+msgstr "曼底克文"
+
+msgid "Manichaean"
+msgstr "摩尼教文"
+
+msgid "Mathematical notation"
+msgstr "數學記號"
+
+msgid "Mayan hieroglyphs"
+msgstr "馬雅語象形文字"
+
+msgid "Meitei Mayek (Meithei, Meetei)"
+msgstr "曼尼普爾文"
+
+msgid "Mongolian"
+msgstr "蒙古文"
+
+msgid "Moon (Moon code, Moon script, Moon type)"
+msgstr "蒙氏點字"
+
+msgid "Myanmar (Burmese)"
+msgstr "緬甸語"
+
+msgid "New Tai Lue"
+msgstr "新傣仂文"
+
+msgid "N’Ko"
+msgstr "西非書面文"
+
+msgid "Ogham"
+msgstr "歐甘文"
+
+msgid "Ol Chiki (Ol Cemet’, Ol, Santali)"
+msgstr "桑塔利文"
+
+msgid "Old Hungarian"
+msgstr "古匈牙利文"
+
+msgid "Old Italic (Etruscan, Oscan, etc.)"
+msgstr "古斜體 (伊特魯里亞文、奧斯坎文…)"
+
+msgid "Old Permic"
+msgstr "古彼爾姆諸文"
+
+msgid "Old Persian"
+msgstr "古波斯文"
+
+msgid "Oriya"
+msgstr "歐利亞文"
+
+msgid "Osmanya"
+msgstr "歐斯曼亞文"
+
+msgid "Pahawh Hmong"
+msgstr "楊松錄苗文"
+
+msgid "Phags-pa"
+msgstr "八思巴文"
+
+msgid "Phoenician"
+msgstr "腓尼基文"
+
+msgid "Psalter Pahlavi"
+msgstr "巴拉維聖詩體"
+
+msgid "Reserved for private use (end)"
+msgstr "保留給私人使用 (結束)"
+
+msgid "Reserved for private use (start)"
+msgstr "保留給私人使用 (開始)"
+
+msgid "Rongorongo"
+msgstr "朗格朗格象形文字"
+
+msgid "Runic"
+msgstr "古代北歐文字"
+
+msgid "Samaritan"
+msgstr "撒瑪麗亞文"
+
+msgid "Sarati"
+msgstr "沙拉堤文"
+
+msgid "Saurashtra"
+msgstr "索拉什特拉文"
+
+msgid "Shavian (Shaw)"
+msgstr "蕭伯納字母"
+
+msgid "SignWriting"
+msgstr "手語文"
+
+msgid "Sinhala"
+msgstr "錫蘭僧加羅字母"
+
+msgid "Sundanese"
+msgstr "巽丹文"
+
+msgid "Syloti Nagri"
+msgstr "錫爾赫特文"
+
+msgid "Symbols"
+msgstr "符號"
+
+msgid "Syriac"
+msgstr "敘利亞文"
+
+msgid "Syriac (Eastern variant)"
+msgstr "敘利亞文 (東方變體)"
+
+msgid "Syriac (Estrangelo variant)"
+msgstr "敘利亞文 (福音變體)"
+
+msgid "Syriac (Western variant)"
+msgstr "敘利亞文 (西方變體)"
+
+msgid "Tagbanwa"
+msgstr "菲律賓塔格板瓦文"
+
+msgid "Tai Le"
+msgstr "德宏傣文"
+
+msgid "Tai Viet"
+msgstr "越南傣文"
+
+msgid "Tamil"
+msgstr "坦米爾文"
+
+msgid "Telugu"
+msgstr "特拉古文"
+
+msgid "Tengwar"
+msgstr "精靈-談格瓦文"
+
+msgid "Thaana"
+msgstr "塔安那文"
+
+msgid "Thai"
+msgstr "泰文"
+
+msgid "Tibetan"
+msgstr "藏文"
+
+msgid "Tifinagh (Berber)"
+msgstr "提非納字母 (柏柏爾語)"
+
+msgid "Ugaritic"
+msgstr "烏加里特楔形文字"
+
+msgid "Unified Canadian Aboriginal Syllabics"
+msgstr "加拿大原住民通用字符"
+
+msgid "Vai"
+msgstr "瓦伊文"
+
+msgid "Visible Speech"
+msgstr "可視語音"
+
+msgid "Yi"
+msgstr "彝文"

@@ -34,6 +34,11 @@ require_once( 'local.inc.php' );
 require_once( 'DefaultOntologies.php' );
 
 //
+// ISO codes.
+//
+require_once( 'ISOCodes.php' );
+
+//
 // ISO ontologies.
 //
 require_once( 'ISOOntologies.php' );
@@ -79,6 +84,15 @@ try
 	// Initialise connections.
 	//
 	Init();
+	
+	echo( "  • Compiling ISO codes.\n" );
+	
+	//
+	// Compile ISO codes.
+	//
+	ISODecodePOFiles();
+	ISOBuildXMLFiles();
+exit;
 	
 	echo( "  • Loading default ontologies.\n" );
 	

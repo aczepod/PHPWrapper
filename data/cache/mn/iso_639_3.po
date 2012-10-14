@@ -1,0 +1,434 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: iso_639_3\n"
+"Report-Msgid-Bugs-To: Debian iso-codes team <pkg-isocodes-devel@lists.alioth."
+"debian.org>\n"
+"POT-Creation-Date: 2012-06-26 09:55+0200\n"
+"PO-Revision-Date: 2003-02-17 12:05+0100\n"
+"Last-Translator: Alastair McKinstry <mckinstry@debian.org>\n"
+"Language-Team: Mongolian <mn@li.org>\n"
+"Language: mn\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: KBabel 0.9.6\n"
+
+msgid "Abkhazian"
+msgstr "Абкааз"
+
+msgid "Afar"
+msgstr "Афаар"
+
+msgid "Afrikaans"
+msgstr "Африк"
+
+msgid "Albanian"
+msgstr "Албани"
+
+msgid "Amharic"
+msgstr "Амхарик"
+
+msgid "Arabic"
+msgstr "Араб"
+
+msgid "Armenian"
+msgstr "Армен"
+
+msgid "Assamese"
+msgstr "Ассамес"
+
+msgid "Avestan"
+msgstr "Авестан"
+
+msgid "Aymara"
+msgstr "Аямара"
+
+msgid "Azerbaijani"
+msgstr "Азербежайн"
+
+msgid "Bashkir"
+msgstr "Башкир"
+
+msgid "Basque"
+msgstr "Баскүе"
+
+msgid "Belarusian"
+msgstr "Цагаан орос"
+
+msgid "Bengali"
+msgstr "Бенгаль"
+
+msgid "Bislama"
+msgstr "Бислама"
+
+msgid "Bosnian"
+msgstr "Босни"
+
+msgid "Breton"
+msgstr "Бретон"
+
+msgid "Bulgarian"
+msgstr "Болгар"
+
+msgid "Burmese"
+msgstr "Бурн"
+
+msgid "Catalan"
+msgstr "Каталан"
+
+msgid "Chamorro"
+msgstr "Чаморро"
+
+msgid "Chechen"
+msgstr "Чечень"
+
+msgid "Chinese"
+msgstr "Хятад"
+
+msgid "Chuvash"
+msgstr "Чуваш"
+
+msgid "Cornish"
+msgstr "Корни"
+
+msgid "Corsican"
+msgstr "Корсикан"
+
+msgid "Croatian"
+msgstr "Хорват"
+
+msgid "Czech"
+msgstr "Чех"
+
+msgid "Danish"
+msgstr "Дани"
+
+msgid "Dutch"
+msgstr "Нидерланд"
+
+msgid "Dzongkha"
+msgstr "Жонгка"
+
+msgid "English"
+msgstr "Англи"
+
+msgid "Esperanto"
+msgstr "Аспиранто"
+
+msgid "Estonian"
+msgstr "Эстони"
+
+msgid "Faroese"
+msgstr "Фароес"
+
+msgid "Fijian"
+msgstr "Фижиан"
+
+msgid "Finnish"
+msgstr "Финнлянд"
+
+msgid "French"
+msgstr "Франц"
+
+msgid "Georgian"
+msgstr "Георги"
+
+msgid "German"
+msgstr "Герман"
+
+msgid "Greek, Modern (1453-)"
+msgstr "Грек, шинэ (1453-)"
+
+msgid "Guarani"
+msgstr "Гуяран"
+
+msgid "Gujarati"
+msgstr "Гуярати"
+
+msgid "Hausa"
+msgstr "Хайза"
+
+msgid "Hebrew"
+msgstr "Еврей"
+
+msgid "Herero"
+msgstr "Хереро"
+
+msgid "Hindi"
+msgstr "Хинди"
+
+msgid "Hiri Motu"
+msgstr "Хири моту"
+
+msgid "Hungarian"
+msgstr "Унгар"
+
+msgid "Icelandic"
+msgstr "Исланд"
+
+msgid "Ido"
+msgstr "Идо"
+
+msgid "Indonesian"
+msgstr "Индонези"
+
+msgid "Interlingue"
+msgstr "Интэрлингуэ"
+
+msgid "Inuktitut"
+msgstr "Инуктитут"
+
+msgid "Inupiaq"
+msgstr "Инупиак"
+
+msgid "Irish"
+msgstr "Ирланд"
+
+msgid "Italian"
+msgstr "Итали"
+
+msgid "Japanese"
+msgstr "Япон"
+
+msgid "Javanese"
+msgstr "Жава"
+
+msgid "Kannada"
+msgstr "Канад"
+
+msgid "Kashmiri"
+msgstr "Кашмири"
+
+msgid "Kazakh"
+msgstr "Казак"
+
+msgid "Kikuyu"
+msgstr "Кикуюу"
+
+msgid "Kinyarwanda"
+msgstr "Кинярванда"
+
+msgid "Kirghiz"
+msgstr "Киргиз"
+
+msgid "Komi"
+msgstr "Коми"
+
+msgid "Korean"
+msgstr "Солонгос"
+
+msgid "Kuanyama"
+msgstr "Куаняма"
+
+msgid "Kurdish"
+msgstr "Күрд"
+
+msgid "Lao"
+msgstr "Лао"
+
+msgid "Latin"
+msgstr "Латин"
+
+msgid "Latvian"
+msgstr "Латви"
+
+msgid "Lingala"
+msgstr "Лингал"
+
+msgid "Lithuanian"
+msgstr "Литва"
+
+msgid "Macedonian"
+msgstr "Макидони"
+
+msgid "Malagasy"
+msgstr "Малагас"
+
+msgid "Malayalam"
+msgstr "Малаялам"
+
+msgid "Maltese"
+msgstr "Малтес"
+
+msgid "Manx"
+msgstr "Манкс"
+
+msgid "Maori"
+msgstr "Маори"
+
+msgid "Marathi"
+msgstr "Марати"
+
+msgid "Mongolian"
+msgstr "Монгол"
+
+msgid "Nauru"
+msgstr "Науру"
+
+msgid "Ndonga"
+msgstr "Ндонга"
+
+msgid "Norwegian"
+msgstr "Норвеги"
+
+msgid "Norwegian Nynorsk"
+msgstr "Норвеги (Nynorsk)"
+
+msgid "Oromo"
+msgstr "Оромо"
+
+msgid "Pali"
+msgstr "Пали"
+
+msgid "Persian"
+msgstr "Перс"
+
+msgid "Polish"
+msgstr "Польш"
+
+msgid "Portuguese"
+msgstr "Португали"
+
+msgid "Pushto"
+msgstr "Пушто"
+
+msgid "Quechua"
+msgstr "Куэчуа"
+
+msgid "Romanian"
+msgstr "Румын"
+
+msgid "Rundi"
+msgstr "Рунди"
+
+msgid "Russian"
+msgstr "Орос"
+
+msgid "Samoan"
+msgstr "Самоан"
+
+msgid "Sango"
+msgstr "Санго"
+
+msgid "Sanskrit"
+msgstr "Санскрит"
+
+msgid "Sardinian"
+msgstr "Сардиниан"
+
+msgid "Serbian"
+msgstr "Серби"
+
+msgid "Shona"
+msgstr "Шона"
+
+msgid "Sindhi"
+msgstr "Синди"
+
+msgid "Slovak"
+msgstr "Словак"
+
+msgid "Slovenian"
+msgstr "Словиен"
+
+msgid "Somali"
+msgstr "Самали"
+
+msgid "Sotho, Southern"
+msgstr "Сото, Соутерн"
+
+msgid "Spanish"
+msgstr "Испани"
+
+msgid "Sundanese"
+msgstr "Сундан"
+
+msgid "Swati"
+msgstr "Свати"
+
+msgid "Swedish"
+msgstr "Швед"
+
+msgid "Tagalog"
+msgstr "Тагалог"
+
+msgid "Tahitian"
+msgstr "Тахит"
+
+msgid "Tajik"
+msgstr "Тажик"
+
+msgid "Tamil"
+msgstr "Тамил"
+
+msgid "Tatar"
+msgstr "Татаар"
+
+msgid "Telugu"
+msgstr "Тэлүгү"
+
+msgid "Thai"
+msgstr "Тай"
+
+msgid "Tibetan"
+msgstr "Төвд"
+
+msgid "Tigrinya"
+msgstr "Тигран"
+
+msgid "Tonga (Tonga Islands)"
+msgstr "Тонга (исландын тонга)"
+
+msgid "Tsonga"
+msgstr "Цонга"
+
+msgid "Tswana"
+msgstr "Цвана"
+
+msgid "Turkish"
+msgstr "Турк"
+
+msgid "Turkmen"
+msgstr "Туркмен"
+
+msgid "Twi"
+msgstr "Тви"
+
+msgid "Uighur"
+msgstr "Уйгур"
+
+msgid "Ukrainian"
+msgstr "Украйн"
+
+msgid "Urdu"
+msgstr "Урду"
+
+msgid "Uzbek"
+msgstr "Үзбек"
+
+msgid "Venda"
+msgstr "Венда"
+
+msgid "Vietnamese"
+msgstr "Ветьнам"
+
+msgid "Walloon"
+msgstr "Валлон"
+
+msgid "Welsh"
+msgstr "Уэльс"
+
+msgid "Wolof"
+msgstr "Волоф"
+
+msgid "Xhosa"
+msgstr "Чхоса"
+
+msgid "Yiddish"
+msgstr "Юүд"
+
+msgid "Yoruba"
+msgstr "Ёруба"
+
+msgid "Zulu"
+msgstr "Зулу"

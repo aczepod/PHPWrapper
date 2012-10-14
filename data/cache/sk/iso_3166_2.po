@@ -1,0 +1,691 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: iso_3166_2\n"
+"Report-Msgid-Bugs-To: Debian iso-codes team <pkg-isocodes-devel@lists.alioth."
+"debian.org>\n"
+"POT-Creation-Date: 2012-04-09 14:32+0200\n"
+"PO-Revision-Date: 2007-08-08 16:06+0100\n"
+"Last-Translator: Ivan Masár <helix84@centrum.sk>\n"
+"Language-Team: Slovak <sk-i18n@lists.linux.sk>\n"
+"Language: sk\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+msgid "Aargau"
+msgstr "Aargau"
+
+msgid "Abia"
+msgstr "Abia"
+
+msgid "Acre"
+msgstr "Acre"
+
+msgid "Adamawa"
+msgstr "Adamawa"
+
+msgid "Adygeya, Respublika"
+msgstr "Adygejsko"
+
+msgid "Akwa Ibom"
+msgstr "Akwa Ibom"
+
+msgid "Al Fujayrah"
+msgstr "Fudžajra"
+
+msgid "Alabama"
+msgstr "Alabama"
+
+msgid "Alagoas"
+msgstr "Alagoas"
+
+msgid "Alaska"
+msgstr "Alijaška"
+
+msgid "Altay, Respublika"
+msgstr "Altajsko"
+
+msgid "American Samoa"
+msgstr "Americká Samoa"
+
+msgid "Anambra"
+msgstr "Anambra"
+
+msgid "Andalucía"
+msgstr "Andalúzia"
+
+msgid "Anhui"
+msgstr "An-chuej"
+
+msgid "Appenzell Ausserrhoden"
+msgstr "Appenzell Ausserrhoden"
+
+msgid "Appenzell Innerrhoden"
+msgstr "Appenzell Innerrhoden"
+
+msgid "Aragón"
+msgstr "Aragónsko"
+
+msgid "Arizona"
+msgstr "Arizona"
+
+msgid "Arkansas"
+msgstr "Arkansas"
+
+msgid "Asturias, Principado de"
+msgstr "Astúrske kniežatstvo"
+
+msgid "Bahia"
+msgstr "Bahia"
+
+msgid "Baker Island"
+msgstr "Baker"
+
+msgid "Barcelona"
+msgstr "Barcelona"
+
+msgid "Basel-Landschaft"
+msgstr "Bazilej-vidiek"
+
+msgid "Basel-Stadt"
+msgstr "Bazilej-mesto"
+
+msgid "Bashkortostan, Respublika"
+msgstr "Baškirsko"
+
+msgid "Bauchi"
+msgstr "Bauchi"
+
+msgid "Bayelsa"
+msgstr "Bayelsa"
+
+msgid "Bayern"
+msgstr "Bavorsko"
+
+msgid "Beijing"
+msgstr "Peking"
+
+msgid "Benue"
+msgstr "Benue"
+
+msgid "Berlin"
+msgstr "Berlín"
+
+msgid "Bern"
+msgstr "Bern"
+
+msgid "Borno"
+msgstr "Borno"
+
+msgid "Brandenburg"
+msgstr "Brandenbursko"
+
+msgid "Bremen"
+msgstr "Brémy"
+
+msgid "Burgenland"
+msgstr "Burgenland"
+
+msgid "Buryatiya, Respublika"
+msgstr "Buriatsko"
+
+msgid "California"
+msgstr "Kalifornia"
+
+msgid "Canarias"
+msgstr "Kanárske ostrovy"
+
+msgid "Cantabria"
+msgstr "Cantabria"
+
+msgid "Castilla y León"
+msgstr "Kastília-León"
+
+msgid "Castilla-La Mancha"
+msgstr "Kastília-La Mancha"
+
+msgid "Ceuta"
+msgstr "Ceuta"
+
+msgid "Chechenskaya Respublika"
+msgstr "Čečensko"
+
+msgid "Chongqing"
+msgstr "Čchung-čching"
+
+msgid "Chuvashskaya Respublika"
+msgstr "Čuvašsko"
+
+msgid "Colorado"
+msgstr "Colorado"
+
+msgid "Connecticut"
+msgstr "Connecticut"
+
+msgid "Cross River"
+msgstr "Cross River"
+
+msgid "Dagestan, Respublika"
+msgstr "Dagestan"
+
+msgid "Delaware"
+msgstr "Delaware"
+
+msgid "Delta"
+msgstr "Delta"
+
+msgid "District of Columbia"
+msgstr "Federálny dištrikt Kolumbia"
+
+msgid "Dubayy"
+msgstr "Dubaj"
+
+msgid "Durrës"
+msgstr "Drač"
+
+msgid "Ebonyi"
+msgstr "Ebonyi"
+
+msgid "Edo"
+msgstr "Edo"
+
+msgid "Ekiti"
+msgstr "Ekiti"
+
+msgid "Enugu"
+msgstr "Enugu"
+
+msgid "Extremadura"
+msgstr "Estremadura"
+
+msgid "Fribourg"
+msgstr "Freiburg"
+
+msgid "Fujian"
+msgstr "Fu-ťien"
+
+msgid "Galicia"
+msgstr "Galícia"
+
+msgid "Gansu"
+msgstr "Kan-su"
+
+msgid "Georgia"
+msgstr "Georgia"
+
+msgid "Glarus"
+msgstr "Glarus"
+
+msgid "Gombe"
+msgstr "Gombe"
+
+msgid "Guam"
+msgstr "Guam"
+
+msgid "Guangdong"
+msgstr "Kuang-tung"
+
+msgid "Guangxi"
+msgstr "Kuang-si"
+
+msgid "Guizhou"
+msgstr "Kuej-čou"
+
+msgid "Hainan"
+msgstr "Chaj-nan"
+
+msgid "Hamburg"
+msgstr "Hamburg"
+
+msgid "Hawaii"
+msgstr "Havaj"
+
+msgid "Hebei"
+msgstr "Che-pej"
+
+msgid "Heilongjiang"
+msgstr "Chej-lung-ťiang"
+
+msgid "Henan"
+msgstr "Che-nan"
+
+msgid "Hessen"
+msgstr "Hesensko"
+
+msgid "Howland Island"
+msgstr "Howland"
+
+msgid "Hubei"
+msgstr "Che-pej"
+
+msgid "Hunan"
+msgstr "Chu-nan"
+
+msgid "Idaho"
+msgstr "Idaho"
+
+msgid "Illinois"
+msgstr "Illinois"
+
+msgid "Imo"
+msgstr "Imo"
+
+msgid "Indiana"
+msgstr "Indiana"
+
+msgid "Iowa"
+msgstr "Iowa"
+
+msgid "Jarvis Island"
+msgstr "Jarvis"
+
+msgid "Jiangsu"
+msgstr "Ťiang-su"
+
+msgid "Jiangxi"
+msgstr "Ťiang-si"
+
+msgid "Jigawa"
+msgstr "Jigawa"
+
+msgid "Jilin"
+msgstr "Ťi-lin"
+
+msgid "Johnston Atoll"
+msgstr "Johnston"
+
+msgid "Kaduna"
+msgstr "Kaduna"
+
+msgid "Kalmykiya, Respublika"
+msgstr "Kalmycko"
+
+msgid "Kano"
+msgstr "Kano"
+
+msgid "Kansas"
+msgstr "Kansas"
+
+msgid "Karachayevo-Cherkesskaya Respublika"
+msgstr "Karačajsko-Čerkesko"
+
+msgid "Kareliya, Respublika"
+msgstr "Karelsko"
+
+msgid "Katsina"
+msgstr "Katsina"
+
+msgid "Kebbi"
+msgstr "Kebbi"
+
+msgid "Kentucky"
+msgstr "Kentucky"
+
+msgid "Khakasiya, Respublika"
+msgstr "Chakasko"
+
+msgid "Kingman Reef"
+msgstr "Kingmanreef"
+
+msgid "Kogi"
+msgstr "Kogi"
+
+msgid "Komi, Respublika"
+msgstr "Komijsko"
+
+msgid "Kwara"
+msgstr "Kwara"
+
+msgid "Kärnten"
+msgstr "Korutánsko"
+
+msgid "La Rioja"
+msgstr "La Rioja"
+
+msgid "Lagos"
+msgstr "Lagos"
+
+msgid "Liaoning"
+msgstr "Liao-ning"
+
+msgid "Louisiana"
+msgstr "Louisiana"
+
+msgid "Luzern"
+msgstr "Luzern"
+
+msgid "Madrid"
+msgstr "Madrid"
+
+msgid "Madrid, Comunidad de"
+msgstr "Madrid"
+
+msgid "Maine"
+msgstr "Maine"
+
+msgid "Mariy El, Respublika"
+msgstr "Marijsko"
+
+msgid "Massachusetts"
+msgstr "Massachusetts"
+
+msgid "Mato Grosso"
+msgstr "Mato Grosso"
+
+msgid "Mato Grosso do Sul"
+msgstr "Mato Grosso do Sul"
+
+msgid "Mecklenburg-Vorpommern"
+msgstr "Meklenbursko-Predpomoransko"
+
+msgid "Melilla"
+msgstr "Melilla"
+
+msgid "Michigan"
+msgstr "Michigan"
+
+msgid "Midway Islands"
+msgstr "Midway"
+
+msgid "Minas Gerais"
+msgstr "Minas Gerais"
+
+msgid "Minnesota"
+msgstr "Minnesota"
+
+msgid "Mississippi"
+msgstr "Mississippi"
+
+msgid "Missouri"
+msgstr "Missouri"
+
+msgid "Mordoviya, Respublika"
+msgstr "Mordviansko"
+
+msgid "Murcia"
+msgstr "Murcia"
+
+msgid "Málaga"
+msgstr "Malaga"
+
+msgid "Nassarawa"
+msgstr "Nassarawa"
+
+msgid "Navassa Island"
+msgstr "Navassa"
+
+msgid "Nebraska"
+msgstr "Nebraska"
+
+msgid "Nevada"
+msgstr "Nevada"
+
+msgid "New Hampshire"
+msgstr "New Hampshire"
+
+msgid "New Jersey"
+msgstr "New Jersey"
+
+msgid "New Mexico"
+msgstr "Nové Mexiko"
+
+msgid "New York"
+msgstr "New York"
+
+msgid "Nidwalden"
+msgstr "Unterwalden nid dem Wald"
+
+msgid "Niedersachsen"
+msgstr "Dolné Sasko"
+
+msgid "Niger"
+msgstr "Niger"
+
+msgid "Ningxia"
+msgstr "Ning-sia"
+
+msgid "Nordrhein-Westfalen"
+msgstr "Severné Porýnie - Vestfálsko"
+
+msgid "North Carolina"
+msgstr "Severná Karolína"
+
+msgid "North Dakota"
+msgstr "Severná Dakota"
+
+msgid "Northern Mariana Islands"
+msgstr "Spoločenstvo ostrovov Severné Mariány"
+
+msgid "Obwalden"
+msgstr "Unterwalden ob dem Wald"
+
+msgid "Ogun"
+msgstr "Ogun"
+
+msgid "Ohio"
+msgstr "Ohio"
+
+msgid "Oklahoma"
+msgstr "Oklahoma"
+
+msgid "Ondo"
+msgstr "Ondo"
+
+msgid "Oregon"
+msgstr "Oregon"
+
+msgid "Osun"
+msgstr "Osun"
+
+msgid "Oyo"
+msgstr "Oyo"
+
+msgid "Palmyra Atoll"
+msgstr "Palmyra"
+
+msgid "Pennsylvania"
+msgstr "Pensylvánia"
+
+msgid "Pernambuco"
+msgstr "Pernambuco"
+
+msgid "Puerto Rico"
+msgstr "Portorické spoločenstvo"
+
+msgid "Qinghai"
+msgstr "Čching-chaj"
+
+msgid "Rheinland-Pfalz"
+msgstr "Porýnie-Falcko"
+
+msgid "Rhode Island"
+msgstr "Rhode Island"
+
+msgid "Rio Grande do Norte"
+msgstr "Rio Grande do Norte"
+
+msgid "Rio Grande do Sul"
+msgstr "Rio Grande do Sul"
+
+msgid "Rio de Janeiro"
+msgstr "Rio de Janeiro"
+
+msgid "Rivers"
+msgstr "Rivers"
+
+msgid "Roraima"
+msgstr "Roraima"
+
+msgid "Saarland"
+msgstr "Sársko"
+
+msgid "Sachsen"
+msgstr "Sasko"
+
+msgid "Sachsen-Anhalt"
+msgstr "Sasko-Anhaltsko"
+
+msgid "Sakha, Respublika [Yakutiya]"
+msgstr "Jakutsko"
+
+msgid "Salzburg"
+msgstr "Salzbursko"
+
+msgid "Sankt Gallen"
+msgstr "Sankt Gallen"
+
+msgid "Santa Cruz de Tenerife"
+msgstr "Santa Cruz de Tenerife"
+
+msgid "Schaffhausen"
+msgstr "Schaffhausen"
+
+msgid "Schleswig-Holstein"
+msgstr "Šlezvicko-Holštajnsko"
+
+msgid "Schwyz"
+msgstr "Schwyz"
+
+msgid "Sergipe"
+msgstr "Sergipe"
+
+msgid "Sevilla"
+msgstr "Sevilla"
+
+msgid "Shaanxi"
+msgstr "Šen-si"
+
+msgid "Shandong"
+msgstr "Šan-tung"
+
+msgid "Shanghai"
+msgstr "Šanghaj"
+
+msgid "Shanxi"
+msgstr "Šan-si"
+
+msgid "Sichuan"
+msgstr "S'-čchuan"
+
+msgid "Sokoto"
+msgstr "Sokoto"
+
+msgid "Solothurn"
+msgstr "Solothurn"
+
+msgid "South Carolina"
+msgstr "Južná Karolína"
+
+msgid "South Dakota"
+msgstr "Južná Dakota"
+
+msgid "Steiermark"
+msgstr "Štajersko"
+
+msgid "Taiwan"
+msgstr "Taiwan"
+
+msgid "Taraba"
+msgstr "Taraba"
+
+msgid "Tatarstan, Respublika"
+msgstr "Tatársko"
+
+msgid "Tennessee"
+msgstr "Tennessee"
+
+msgid "Texas"
+msgstr "Texas"
+
+msgid "Thurgau"
+msgstr "Thurgau"
+
+msgid "Tianjin"
+msgstr "Tchien-ťin"
+
+msgid "Ticino"
+msgstr "Ticino"
+
+msgid "Tirol"
+msgstr "Tirolsko"
+
+msgid "Tyva, Respublika [Tuva]"
+msgstr "Tuviansko"
+
+msgid "Udmurtskaya Respublika"
+msgstr "Udmurtsko"
+
+msgid "Umm al Qaywayn"
+msgstr "Umm al-Kuvajn"
+
+msgid "United States Minor Outlying Islands"
+msgstr "Menšie odľahlé ostrovy Spojených štátov"
+
+msgid "Uri"
+msgstr "Uri"
+
+msgid "Utah"
+msgstr "Utah"
+
+msgid "Valais"
+msgstr "Valais"
+
+msgid "Valladolid"
+msgstr "Valladolid"
+
+msgid "Vaud"
+msgstr "Vaud"
+
+msgid "Vermont"
+msgstr "Vermont"
+
+msgid "Virgin Islands"
+msgstr "Panenské ostrovy Spojených štátov"
+
+msgid "Virginia"
+msgstr "Virgínia"
+
+msgid "Vorarlberg"
+msgstr "Vorarlbersko"
+
+msgid "Wake Island"
+msgstr "Wake"
+
+msgid "Washington"
+msgstr "Washington"
+
+msgid "West Virginia"
+msgstr "Západná Virgínia"
+
+msgid "Wien"
+msgstr "Viedeň"
+
+msgid "Wisconsin"
+msgstr "Wisconsin"
+
+msgid "Wyoming"
+msgstr "Wyoming"
+
+msgid "Xinjiang"
+msgstr "Sin-ťiang"
+
+msgid "Xizang"
+msgstr "Tibet"
+
+msgid "Yobe"
+msgstr "Yobe"
+
+msgid "Yunnan"
+msgstr "Jün-nan"
+
+msgid "Zamfara"
+msgstr "Zamfara"
+
+msgid "Zaragoza"
+msgstr "Zaragoza"
+
+msgid "Zhejiang"
+msgstr "Če-ťiang"
+
+msgid "Zug"
+msgstr "Zug"

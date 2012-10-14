@@ -1,0 +1,307 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: iso_639_3\n"
+"Report-Msgid-Bugs-To: Debian iso-codes team <pkg-isocodes-devel@lists.alioth."
+"debian.org>\n"
+"POT-Creation-Date: 2012-06-26 09:55+0200\n"
+"PO-Revision-Date: 2005-08-02 18:03+0200\n"
+"Last-Translator: Juan Carlos Castro y Castro <jcastro@vialink.com.br>\n"
+"Language-Team: Brazilian Portuguese\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+msgid "Afrikaans"
+msgstr "Africâner"
+
+msgid "Albanian"
+msgstr "Albanês"
+
+msgid "Arabic"
+msgstr "Árabe"
+
+msgid "Aragonese"
+msgstr "Aragonês"
+
+msgid "Armenian"
+msgstr "Armênio"
+
+msgid "Azerbaijani"
+msgstr "Azerbaidjani"
+
+msgid "Balinese"
+msgstr "Balinês"
+
+msgid "Basque"
+msgstr "Basco"
+
+msgid "Belarusian"
+msgstr "Bielorusso"
+
+msgid "Bengali"
+msgstr "Bengali"
+
+msgid "Bosnian"
+msgstr "Bósnio"
+
+msgid "Breton"
+msgstr "Bretão"
+
+msgid "Bulgarian"
+msgstr "Búlgaro"
+
+msgid "Burmese"
+msgstr "Birmanês"
+
+msgid "Catalan"
+msgstr "Catalão"
+
+msgid "Chechen"
+msgstr "Checheno"
+
+msgid "Cherokee"
+msgstr "Cherokee"
+
+msgid "Cheyenne"
+msgstr "Cheyenne"
+
+msgid "Chinese"
+msgstr "Chinês"
+
+msgid "Chinook jargon"
+msgstr "Jargão Chinook"
+
+msgid "Coptic"
+msgstr "Copta"
+
+msgid "Corsican"
+msgstr "Corso"
+
+msgid "Croatian"
+msgstr "Croata"
+
+msgid "Czech"
+msgstr "Tcheco"
+
+msgid "Danish"
+msgstr "Dinamarquês"
+
+msgid "Dutch"
+msgstr "Holandês"
+
+msgid "Egyptian (Ancient)"
+msgstr "Egípcio (Antigo)"
+
+msgid "Elamite"
+msgstr "Elamita"
+
+msgid "English"
+msgstr "Inglês"
+
+msgid "English, Middle (1100-1500)"
+msgstr "Inglês, Medieval (1100-1500)"
+
+msgid "Esperanto"
+msgstr "Esperanto"
+
+msgid "Estonian"
+msgstr "Estoniano"
+
+msgid "Faroese"
+msgstr "Faroês"
+
+msgid "Finnish"
+msgstr "Finlandês"
+
+msgid "French"
+msgstr "Francês"
+
+msgid "Georgian"
+msgstr "Georgiano"
+
+msgid "German"
+msgstr "Alemão"
+
+msgid "Gothic"
+msgstr "Gótico"
+
+msgid "Greek, Ancient (to 1453)"
+msgstr "Grego, Arcaico (até 1453)"
+
+msgid "Greek, Modern (1453-)"
+msgstr "Grego, Moderno (1453-)"
+
+msgid "Guarani"
+msgstr "Guarani"
+
+msgid "Hawaiian"
+msgstr "Havaiano"
+
+msgid "Hebrew"
+msgstr "Hebraico"
+
+msgid "Hindi"
+msgstr "Hindu"
+
+msgid "Hungarian"
+msgstr "Húngaro"
+
+msgid "Icelandic"
+msgstr "Islandês"
+
+msgid "Indonesian"
+msgstr "Indonésio"
+
+msgid "Irish"
+msgstr "Irlandês"
+
+msgid "Irish, Middle (900-1200)"
+msgstr "Irlandês, Medieval (900-1200)"
+
+msgid "Irish, Old (to 900)"
+msgstr "Irlandês, Arcaico (até 900)"
+
+msgid "Italian"
+msgstr "Italiano"
+
+msgid "Japanese"
+msgstr "Japonês"
+
+msgid "Javanese"
+msgstr "Javanês"
+
+msgid "Judeo-Arabic"
+msgstr "Judaico-Árabe"
+
+msgid "Judeo-Persian"
+msgstr "Judaico-Persa"
+
+msgid "Korean"
+msgstr "Coreano"
+
+msgid "Kurdish"
+msgstr "Curdo"
+
+msgid "Latin"
+msgstr "Latim"
+
+msgid "Latvian"
+msgstr "Letão"
+
+msgid "Lithuanian"
+msgstr "Lituano"
+
+msgid "Macedonian"
+msgstr "Macedônio"
+
+msgid "Maltese"
+msgstr "Maltês"
+
+msgid "Manx"
+msgstr "Manx"
+
+msgid "Maori"
+msgstr "Maori"
+
+msgid "Mongolian"
+msgstr "Mongol"
+
+msgid "Multiple languages"
+msgstr "Idiomas múltiplos"
+
+msgid "Norse, Old"
+msgstr "Nórdico, Arcaico"
+
+msgid "Norwegian"
+msgstr "Norueguês"
+
+msgid "Norwegian Nynorsk"
+msgstr "Norueguês Nynorsk"
+
+msgid "Persian"
+msgstr "Persa"
+
+msgid "Phoenician"
+msgstr "Fenício"
+
+msgid "Polish"
+msgstr "Polonês"
+
+msgid "Portuguese"
+msgstr "Português"
+
+msgid "Rapanui"
+msgstr "Rapanui"
+
+msgid "Romanian"
+msgstr "Romeno"
+
+msgid "Russian"
+msgstr "Russo"
+
+msgid "Sanskrit"
+msgstr "Sânscrito"
+
+msgid "Serbian"
+msgstr "Sérvio"
+
+msgid "Sicilian"
+msgstr "Siciliano"
+
+msgid "Slovak"
+msgstr "Eslovaco"
+
+msgid "Slovenian"
+msgstr "Esloveno"
+
+msgid "Spanish"
+msgstr "Espanhol"
+
+msgid "Sumerian"
+msgstr "Sumeriano"
+
+msgid "Swedish"
+msgstr "Sueco"
+
+msgid "Tamil"
+msgstr "Tamil"
+
+msgid "Thai"
+msgstr "Tailandês"
+
+msgid "Tibetan"
+msgstr "Tibetano"
+
+msgid "Turkish"
+msgstr "Turco"
+
+msgid "Turkish, Ottoman (1500-1928)"
+msgstr "Turco, Otomano (1500-1928)"
+
+msgid "Ukrainian"
+msgstr "Ucraniano"
+
+msgid "Undetermined"
+msgstr "Indeterminado"
+
+msgid "Urdu"
+msgstr "Urdu"
+
+msgid "Vietnamese"
+msgstr "Vietnamita"
+
+msgid "Welsh"
+msgstr "Galês"
+
+msgid "Yiddish"
+msgstr "Ídiche"
+
+msgid "Yoruba"
+msgstr "Iorubá"
+
+msgid "Zulu"
+msgstr "Zulu"
+
+msgid "Zuni"
+msgstr "Zuni"

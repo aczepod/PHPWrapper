@@ -1,0 +1,1087 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: iso_639\n"
+"Report-Msgid-Bugs-To: Debian iso-codes team <pkg-isocodes-devel@lists.alioth."
+"debian.org>\n"
+"POT-Creation-Date: 2010-03-31 08:26+0200\n"
+"PO-Revision-Date: 2005-03-09 12:02+0700\n"
+"Last-Translator: Steve Murphy <murf@e-tools.com>\n"
+"Language-Team: Kinyarwanda <translation-team-rw@lists.sourceforge.net>\n"
+"Language: rw\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+msgid "Abkhazian"
+msgstr "Abukaziyani"
+
+msgid "Achinese"
+msgstr "Ikinyabashinwa"
+
+msgid "Acoli"
+msgstr "Ikinyakoli"
+
+msgid "Adangme"
+msgstr "Ikinyadangume"
+
+msgid "Adyghe; Adygei"
+msgstr "Ikinyadugeyi"
+
+msgid "Afar"
+msgstr "Ikinyafari"
+
+msgid "Afrihili"
+msgstr "Ikinyafurihili"
+
+msgid "Afrikaans"
+msgstr "Ikinyafurikansi"
+
+msgid "Akan"
+msgstr "Ikinyakani"
+
+msgid "Akkadian"
+msgstr "Ikinyakadiyani"
+
+msgid "Albanian"
+msgstr "Ikinyalubaniya"
+
+msgid "Algonquian languages"
+msgstr "Indimi za Aligonkiyani"
+
+msgid "Amharic"
+msgstr "Ikinyamarike"
+
+msgid "Apache languages"
+msgstr "Indimi z'Apashe"
+
+msgid "Arabic"
+msgstr "Icyarabu"
+
+msgid "Aragonese"
+msgstr "Icyaragoneze"
+
+msgid "Arapaho"
+msgstr "Icyarapaho"
+
+msgid "Arawak"
+msgstr "Icyarawaka"
+
+msgid "Armenian"
+msgstr "Icyarumeniya"
+
+msgid "Assamese"
+msgstr "Ikinyasamese"
+
+msgid "Australian languages"
+msgstr "Indimi za Ositaraliya"
+
+msgid "Avaric"
+msgstr "Ikinyavarika"
+
+msgid "Avestan"
+msgstr "Ikinyavesitani"
+
+msgid "Awadhi"
+msgstr "Ikinyawadi"
+
+msgid "Aymara"
+msgstr "Ikinyayimara"
+
+msgid "Azerbaijani"
+msgstr "Ikinyazeribayijani"
+
+msgid "Balinese"
+msgstr "Ikibalineze"
+
+msgid "Baluchi"
+msgstr "Ikibalushi"
+
+msgid "Bambara"
+msgstr "Ikibambara"
+
+msgid "Bamileke languages"
+msgstr "Indimi za bamileke"
+
+msgid "Basa"
+msgstr "Ikibasa"
+
+msgid "Bashkir"
+msgstr "Ikinyabashikiri"
+
+msgid "Basque"
+msgstr "Ikibasike"
+
+msgid "Belarusian"
+msgstr "Ikibelarusiya"
+
+msgid "Bemba"
+msgstr "Ikibemba"
+
+msgid "Bengali"
+msgstr "Ikibengali"
+
+msgid "Bhojpuri"
+msgstr "Ikibojipuri"
+
+msgid "Bikol"
+msgstr "Ikinyabikoli"
+
+msgid "Bislama"
+msgstr "Ikibisilamu"
+
+msgid "Blin; Bilin"
+msgstr "Ikibulini; Ikibirini"
+
+msgid "Bosnian"
+msgstr "Ikinyabosiniya"
+
+msgid "Braj"
+msgstr "Ikiburaji"
+
+msgid "Breton"
+msgstr "Ikinyabureto"
+
+msgid "Buginese"
+msgstr "Ikibagini"
+
+msgid "Bulgarian"
+msgstr "Ikinyabulugariya"
+
+msgid "Buriat"
+msgstr "Ikiburiyati"
+
+msgid "Burmese"
+msgstr "Ikibarumi"
+
+msgid "Caddo"
+msgstr "Ikinyakado"
+
+msgid "Cebuano"
+msgstr "Igisebuwano"
+
+msgid "Chagatai"
+msgstr "Igicagatayi"
+
+msgid "Chamic languages"
+msgstr "Indimi za camika"
+
+msgid "Chamorro"
+msgstr "Igishamoro"
+
+msgid "Chechen"
+msgstr "Igiceceni"
+
+msgid "Cherokee"
+msgstr "Igisheroki"
+
+msgid "Cheyenne"
+msgstr "Igiceyene"
+
+msgid "Chibcha"
+msgstr "Igicibusha"
+
+msgid "Chinese"
+msgstr "Igishinwa"
+
+msgid "Chinook jargon"
+msgstr "Urugobeko rwa Cinuki"
+
+msgid "Choctaw"
+msgstr "Igicokitawu"
+
+msgid "Chuvash"
+msgstr "Igicuvashi"
+
+msgid "Coptic"
+msgstr "Igikopute"
+
+msgid "Cornish"
+msgstr "Igikorunishe"
+
+msgid "Corsican"
+msgstr "Igikoruse"
+
+msgid "Cree"
+msgstr "Igikiri"
+
+msgid "Creek"
+msgstr "Igikirike"
+
+msgid "Croatian"
+msgstr "Ikinyakorowasi"
+
+msgid "Czech"
+msgstr "Ikinyaceke"
+
+msgid "Dakota"
+msgstr "Ikidakota"
+
+msgid "Danish"
+msgstr "Ikidanwa"
+
+msgid "Dargwa"
+msgstr "Ikidarugwa"
+
+msgid "Delaware"
+msgstr "Ikinyadelaweya"
+
+msgid "Dinka"
+msgstr "Ikidinka"
+
+msgid "Dogri"
+msgstr "Ikidogiri"
+
+msgid "Dogrib"
+msgstr "Ikinyadogiribu"
+
+msgid "Duala"
+msgstr "Ikinyaduwala"
+
+msgid "Dutch, Middle (ca. 1050-1350)"
+msgstr "Ikinyaholande, Hagati (ca. 1050-1350)"
+
+msgid "Dyula"
+msgstr "Ikinyaduyula"
+
+msgid "Dzongkha"
+msgstr "Ikinyazongika"
+
+msgid "Efik"
+msgstr "Ikinyefike"
+
+msgid "Egyptian (Ancient)"
+msgstr "Ikinyamisiri (Cya kera)"
+
+msgid "Ekajuk"
+msgstr "Ikinyekajuke"
+
+msgid "Elamite"
+msgstr "Icyelamite"
+
+msgid "English"
+msgstr "Icyongereza"
+
+msgid "English, Middle (1100-1500)"
+msgstr "Icyongereza, Hagati (1100-1500)"
+
+msgid "Erzya"
+msgstr "Ikinyeriza"
+
+msgid "Esperanto"
+msgstr "Icyesiperanto"
+
+msgid "Estonian"
+msgstr "Icyesitoniya"
+
+msgid "Ewe"
+msgstr "Icyewe"
+
+msgid "Ewondo"
+msgstr "Icyewendo"
+
+msgid "Fang"
+msgstr "Igifangi"
+
+msgid "Fanti"
+msgstr "Igifanti"
+
+msgid "Faroese"
+msgstr "Igifero"
+
+msgid "Fijian"
+msgstr "Igifijiyani"
+
+msgid "Filipino; Pilipino"
+msgstr "Ikibulini; Ikibirini"
+
+msgid "Finnish"
+msgstr "Ikinyafinilande"
+
+msgid "Fon"
+msgstr "Igifoni"
+
+msgid "French"
+msgstr "Igifaransa"
+
+msgid "Friulian"
+msgstr "Igifuriyuliyani"
+
+msgid "Fulah"
+msgstr "Igifurahe"
+
+msgid "Ga"
+msgstr "Ikinyaga"
+
+msgid "Galician"
+msgstr "Ikigalegani"
+
+msgid "Ganda"
+msgstr "Ikiganda"
+
+msgid "Gayo"
+msgstr "Ikinyagayo"
+
+msgid "Gbaya"
+msgstr "Ikigubaya"
+
+msgid "Geez"
+msgstr "Ikinyagwizi"
+
+msgid "Georgian"
+msgstr "Ikinyageworugiya"
+
+msgid "German"
+msgstr "Ikidage"
+
+msgid "Gilbertese"
+msgstr "Ikinyagiliberiti"
+
+msgid "Gondi"
+msgstr "Ikigondi"
+
+msgid "Gorontalo"
+msgstr "Ikigorontalo"
+
+msgid "Gothic"
+msgstr "Ikinyagotike"
+
+msgid "Grebo"
+msgstr "Ikigerebo"
+
+msgid "Greek, Ancient (to 1453)"
+msgstr "Ikigereki, Cya kera (ku 1453)"
+
+msgid "Greek, Modern (1453-)"
+msgstr "Ikigereki, Gishya (1453-)"
+
+msgid "Guarani"
+msgstr "Ikigwarani"
+
+msgid "Gujarati"
+msgstr "Ikigujarati"
+
+msgid "Haida"
+msgstr "Igihayida"
+
+msgid "Haitian; Haitian Creole"
+msgstr "Ikinyahayiti; Igikerewole nyahayiti"
+
+msgid "Hausa"
+msgstr "Igihawusa"
+
+msgid "Hawaiian"
+msgstr "Ikinyahawayi"
+
+msgid "Hebrew"
+msgstr "Igiheburayo"
+
+msgid "Herero"
+msgstr "Igiherero"
+
+msgid "Hiligaynon"
+msgstr "Igihiligayino"
+
+msgid "Hindi"
+msgstr "Igihindi"
+
+msgid "Hittite"
+msgstr "Ikinyahitite"
+
+msgid "Hungarian"
+msgstr "Ikinyahangariya"
+
+msgid "Hupa"
+msgstr "Igihupa"
+
+msgid "Iban"
+msgstr "Ikibani"
+
+msgid "Icelandic"
+msgstr "Ikinyisilande"
+
+msgid "Ido"
+msgstr "Ikido"
+
+msgid "Igbo"
+msgstr "Ikigibo"
+
+msgid "Iloko"
+msgstr "Ikiloko"
+
+msgid "Inari Sami"
+msgstr "Ikinarisami"
+
+msgid "Indonesian"
+msgstr "Ikinyendonisiya"
+
+msgid "Ingush"
+msgstr "Ikingushi"
+
+msgid "Inuktitut"
+msgstr "Ikinukititutu"
+
+msgid "Inupiaq"
+msgstr "Ikinupiyake"
+
+msgid "Irish"
+msgstr "Ikinyirilande"
+
+msgid "Irish, Middle (900-1200)"
+msgstr "Ikinyirilande, Hagati (900-1200)"
+
+msgid "Irish, Old (to 900)"
+msgstr "Ikinyirilande, Gishaje (ku 900)"
+
+msgid "Iroquoian languages"
+msgstr "Indimi za Irokwa"
+
+msgid "Italian"
+msgstr "Igitaliyani"
+
+msgid "Japanese"
+msgstr "Ikiyapani"
+
+msgid "Javanese"
+msgstr "Ikijavani"
+
+msgid "Judeo-Arabic"
+msgstr "Ikinyajudewo-nyarabu"
+
+msgid "Judeo-Persian"
+msgstr "Ikinyajudewo-nyaperisi"
+
+msgid "Kabardian"
+msgstr "Igikabaridiyani"
+
+msgid "Kabyle"
+msgstr "Ikikabile"
+
+msgid "Kamba"
+msgstr "Igikamba"
+
+msgid "Kannada"
+msgstr "Iginyakanada"
+
+msgid "Kanuri"
+msgstr "Igikanuri"
+
+msgid "Kara-Kalpak"
+msgstr "Igikarakalupake"
+
+msgid "Karachay-Balkar"
+msgstr "Igikaracayi-bali"
+
+msgid "Kashmiri"
+msgstr "Igikashimiri"
+
+msgid "Kashubian"
+msgstr "Ikikashubiyani"
+
+msgid "Kawi"
+msgstr "Igikawi"
+
+msgid "Kazakh"
+msgstr "Igikazaki"
+
+msgid "Kimbundu"
+msgstr "Ikimbundu"
+
+msgid "Kinyarwanda"
+msgstr "Ikinyarwanda"
+
+msgid "Klingon; tlhIngan-Hol"
+msgstr "Igikilingoni"
+
+msgid "Komi"
+msgstr "Igikomi"
+
+msgid "Kongo"
+msgstr "Ikinyakongo"
+
+msgid "Konkani"
+msgstr "Igikonkani"
+
+msgid "Korean"
+msgstr "Igikoreya"
+
+msgid "Kosraean"
+msgstr "Igikosiriyani"
+
+msgid "Kpelle"
+msgstr "Igikipele"
+
+msgid "Kumyk"
+msgstr "Igikumiki"
+
+msgid "Kurdish"
+msgstr "Igikurudishi"
+
+msgid "Kurukh"
+msgstr "Igikuruki"
+
+msgid "Kutenai"
+msgstr "Igikutenayi"
+
+msgid "Ladino"
+msgstr "Ikiladino"
+
+msgid "Lahnda"
+msgstr "Ikilahinda"
+
+msgid "Lamba"
+msgstr "Ikilamba"
+
+msgid "Lao"
+msgstr "Ikilawo"
+
+msgid "Latin"
+msgstr "Ikilatini"
+
+msgid "Latvian"
+msgstr "Ikilativiya"
+
+msgid "Lezghian"
+msgstr "Ikileziyani"
+
+msgid "Lingala"
+msgstr "Ilingala"
+
+msgid "Lithuanian"
+msgstr "Ikinyalitwani"
+
+msgid "Lojban"
+msgstr "Ikilojibani"
+
+msgid "Lower Sorbian"
+msgstr "Igisorubiyani cyo hasi"
+
+msgid "Lozi"
+msgstr "Ikilozi"
+
+msgid "Luba-Katanga"
+msgstr "Ikiluba-Katanga"
+
+msgid "Luba-Lulua"
+msgstr "Ikiluba-Lulwa"
+
+msgid "Luiseno"
+msgstr "Ikilwizeno"
+
+msgid "Lule Sami"
+msgstr "Ikilule-sami"
+
+msgid "Lunda"
+msgstr "Ikilunda"
+
+msgid "Luo (Kenya and Tanzania)"
+msgstr "Ikiluwo (Kenya na Tanzaniya)"
+
+msgid "Lushai"
+msgstr "Ikirushayi"
+
+msgid "Macedonian"
+msgstr "Ikinyamacedoniya"
+
+msgid "Madurese"
+msgstr "Ikimeduri"
+
+msgid "Magahi"
+msgstr "Ikimagahi"
+
+msgid "Maithili"
+msgstr "Ikimayitili"
+
+msgid "Makasar"
+msgstr "Ikimakasari"
+
+msgid "Malagasy"
+msgstr "Ikimaragasi"
+
+msgid "Malay"
+msgstr "Ikimalayi"
+
+msgid "Malayalam"
+msgstr "Ikimalayalamu"
+
+msgid "Maltese"
+msgstr "Ikinyamalite"
+
+msgid "Manchu"
+msgstr "Ikimancu"
+
+msgid "Mandar"
+msgstr "Ikimandari"
+
+msgid "Mandingo"
+msgstr "Ikimandingo"
+
+msgid "Manobo languages"
+msgstr "Indimi manobo"
+
+msgid "Manx"
+msgstr "Ikimangisi"
+
+msgid "Maori"
+msgstr "Ikimawori"
+
+msgid "Marathi"
+msgstr "Ikimarati"
+
+msgid "Mari"
+msgstr "Ikimari"
+
+msgid "Marshallese"
+msgstr "Ikimarishali"
+
+msgid "Marwari"
+msgstr "Ikimarwari"
+
+msgid "Masai"
+msgstr "Ikimasayi"
+
+msgid "Mayan languages"
+msgstr "Indimi mayani"
+
+msgid "Mende"
+msgstr "Ikimende"
+
+msgid "Mi'kmaq; Micmac"
+msgstr "Mikimaki"
+
+msgid "Minangkabau"
+msgstr "Ikiminangikabawu"
+
+msgid "Mirandese"
+msgstr "Ikimeduri"
+
+msgid "Mohawk"
+msgstr "Ikimohawuki"
+
+msgid "Moksha"
+msgstr "Ikimokisha"
+
+msgid "Moldavian; Moldovan"
+msgstr "Ikinyamoludavi"
+
+msgid "Mongo"
+msgstr "Ikimongo"
+
+msgid "Mongolian"
+msgstr "Ikinyamongoliya"
+
+msgid "Mossi"
+msgstr "Ikimosi"
+
+msgid "Multiple languages"
+msgstr "Indimi nyinshi"
+
+msgid "Munda languages"
+msgstr "Indimi munda"
+
+msgid "Nauru"
+msgstr "Ikinawuru"
+
+msgid "Ndonga"
+msgstr "Ikindonga"
+
+msgid "Neapolitan"
+msgstr "Ikinewopolita"
+
+msgid "Nepali"
+msgstr "Ikinyanepale"
+
+msgid "Nias"
+msgstr "Ikiniyasi"
+
+msgid "Niuean"
+msgstr "Ikiniyuweni"
+
+msgid "Nogai"
+msgstr "Ikinogayi"
+
+msgid "Norse, Old"
+msgstr "Ikinorusi, Gishaje"
+
+msgid "Northern Sami"
+msgstr "Igisami amajyaruguru"
+
+msgid "Norwegian"
+msgstr "Ikinyanoruveji"
+
+msgid "Nubian languages"
+msgstr "Indimi nubiyani"
+
+msgid "Nyamwezi"
+msgstr "Nyamwezi"
+
+msgid "Nyankole"
+msgstr "Ikinyankole"
+
+msgid "Nyoro"
+msgstr "Ikinyoro"
+
+msgid "Nzima"
+msgstr "Ikinzima"
+
+msgid "Ojibwa"
+msgstr "Icyojibwa"
+
+msgid "Oriya"
+msgstr "Icyoriya"
+
+msgid "Oromo"
+msgstr "Icyoromo"
+
+msgid "Osage"
+msgstr "Icyoseje"
+
+msgid "Otomian languages"
+msgstr "Indimi za Otomiyani"
+
+msgid "Pahlavi"
+msgstr "Igipahilavi"
+
+msgid "Palauan"
+msgstr "Igipalawani"
+
+msgid "Pali"
+msgstr "Igipali"
+
+msgid "Pangasinan"
+msgstr "Igipangasinani"
+
+msgid "Papiamento"
+msgstr "Igipapiyamento"
+
+msgid "Persian"
+msgstr "Ikinyaperisi"
+
+msgid "Phoenician"
+msgstr "Ikinyafowenisiyani"
+
+msgid "Pohnpeian"
+msgstr "Igipohinipeyini"
+
+msgid "Polish"
+msgstr "Ikinyapolonye"
+
+msgid "Portuguese"
+msgstr "Igiporutigali"
+
+msgid "Prakrit languages"
+msgstr "Indimi za purakiriti"
+
+msgid "Quechua"
+msgstr "Igikwecuwa"
+
+msgid "Rajasthani"
+msgstr "Ikirajasitani"
+
+msgid "Rapanui"
+msgstr "Ikirapanuyi"
+
+msgid "Romanian"
+msgstr "Ikinyarumaniya"
+
+msgid "Romany"
+msgstr "Ikiromani"
+
+msgid "Rundi"
+msgstr "Ikirundi"
+
+msgid "Russian"
+msgstr "Ikirusiya"
+
+msgid "Salishan languages"
+msgstr "Indimi za salisha"
+
+msgid "Samaritan Aramaic"
+msgstr "Igisamaritani"
+
+msgid "Samoan"
+msgstr "Igisamowani"
+
+msgid "Sandawe"
+msgstr "Igisanidawe"
+
+msgid "Sango"
+msgstr "Igisango"
+
+msgid "Sanskrit"
+msgstr "Igisansikiriti"
+
+msgid "Santali"
+msgstr "Igisentali"
+
+msgid "Sardinian"
+msgstr "Ikinyasaridini"
+
+msgid "Sasak"
+msgstr "Igisasaki"
+
+msgid "Scots"
+msgstr "Ikinyasikoti"
+
+msgid "Selkup"
+msgstr "Igiselikupe"
+
+msgid "Serbian"
+msgstr "Ikinyaseribiya"
+
+msgid "Serer"
+msgstr "Igisera"
+
+msgid "Shan"
+msgstr "Igishani"
+
+msgid "Shona"
+msgstr "Igishona"
+
+msgid "Sicilian"
+msgstr "Igifuriyuliyani"
+
+msgid "Sidamo"
+msgstr "Igisidamo"
+
+msgid "Siksika"
+msgstr "Igisikisika"
+
+msgid "Sindhi"
+msgstr "Igisindi"
+
+msgid "Sinhala; Sinhalese"
+msgstr "Ikinyasinali"
+
+msgid "Siouan languages"
+msgstr "Indimi za siwu"
+
+msgid "Skolt Sami"
+msgstr "Igisikoluti-sami"
+
+msgid "Slave (Athapascan)"
+msgstr "Igicakara (Antapasikani)"
+
+msgid "Slovak"
+msgstr "Igisilovake"
+
+msgid "Slovenian"
+msgstr "Ikinyasiloveniya"
+
+msgid "Sogdian"
+msgstr "Igisogidiyani"
+
+msgid "Somali"
+msgstr "Igisomali"
+
+msgid "Soninke"
+msgstr "Igisonenki"
+
+msgid "Sorbian languages"
+msgstr "Indimi za sorubiyani"
+
+msgid "Sotho, Southern"
+msgstr "Igisotho, Amajyepfo"
+
+msgid "Southern Sami"
+msgstr "Igisami Amajyepfo"
+
+msgid "Sukuma"
+msgstr "Igisukuma"
+
+msgid "Sumerian"
+msgstr "Ikinyasumeri"
+
+msgid "Sundanese"
+msgstr "Ikinyasundani"
+
+msgid "Susu"
+msgstr "Igisusu"
+
+msgid "Swahili"
+msgstr "Igiswayili"
+
+msgid "Swati"
+msgstr "Igiswati"
+
+msgid "Swedish"
+msgstr "Ikinyasuwede"
+
+msgid "Syriac"
+msgstr "Ikinyasiriya"
+
+msgid "Tagalog"
+msgstr "Igitagaloge"
+
+msgid "Tahitian"
+msgstr "Ikinyatahiti"
+
+msgid "Tajik"
+msgstr "Igitajika"
+
+msgid "Tamashek"
+msgstr "Igitamasheke"
+
+msgid "Tamil"
+msgstr "Igitamili"
+
+msgid "Tatar"
+msgstr "Igitatari"
+
+msgid "Telugu"
+msgstr "Igitelugu"
+
+msgid "Tereno"
+msgstr "Igitereno"
+
+msgid "Tetum"
+msgstr "Igitetumu"
+
+msgid "Thai"
+msgstr "Igitayi"
+
+msgid "Tibetan"
+msgstr "Ikinyatibeti"
+
+msgid "Tigre"
+msgstr "Ikinyatigire"
+
+msgid "Tigrinya"
+msgstr "Igitigirinya"
+
+msgid "Timne"
+msgstr "Ikinyatimine"
+
+msgid "Tiv"
+msgstr "Igitivu"
+
+msgid "Tok Pisin"
+msgstr "Igitokipisini"
+
+msgid "Tokelau"
+msgstr "Igitokelawu"
+
+msgid "Tonga (Nyasa)"
+msgstr "Igitonga (Nyansa)"
+
+msgid "Tonga (Tonga Islands)"
+msgstr "Igitonga (Ibirwa bya Tonga)"
+
+msgid "Tsimshian"
+msgstr "Igitsimushiyani"
+
+msgid "Tsonga"
+msgstr "Igitsonga"
+
+msgid "Tswana"
+msgstr "Igitswana"
+
+msgid "Tumbuka"
+msgstr "Igitumbuka"
+
+msgid "Tupi languages"
+msgstr "Indimi za tupi"
+
+msgid "Turkish"
+msgstr "Ikinyaturukiya"
+
+msgid "Turkish, Ottoman (1500-1928)"
+msgstr "Ikinyaturukiya, Otomani (1500-1928)"
+
+msgid "Turkmen"
+msgstr "Igiturukimeni"
+
+msgid "Tuvalu"
+msgstr "Igituvalu"
+
+msgid "Tuvinian"
+msgstr "Ikinyatuvini"
+
+msgid "Twi"
+msgstr "Igitwi"
+
+msgid "Udmurt"
+msgstr "Icyudimuriti"
+
+msgid "Ugaritic"
+msgstr "Icyugaritike"
+
+msgid "Ukrainian"
+msgstr "Ikinya-ikarayini"
+
+msgid "Umbundu"
+msgstr "Icyumbundu"
+
+msgid "Undetermined"
+msgstr "Kitazwi"
+
+msgid "Upper Sorbian"
+msgstr "Ikinyasorubiya cyo hejuru"
+
+msgid "Urdu"
+msgstr "Icyuridu"
+
+msgid "Uzbek"
+msgstr "Icyuzubeka"
+
+msgid "Vai"
+msgstr "Ikivayi"
+
+msgid "Venda"
+msgstr "Ikivenda"
+
+msgid "Vietnamese"
+msgstr "Ikinyaviyetinamu"
+
+msgid "Votic"
+msgstr "Ikivotika"
+
+msgid "Wakashan languages"
+msgstr "Indimi za wakashi"
+
+msgid "Walloon"
+msgstr "Ikiwaluni"
+
+msgid "Waray"
+msgstr "Ikiwarayi"
+
+msgid "Washo"
+msgstr "Ikiwasho"
+
+msgid "Welsh"
+msgstr "Ikiwelishi"
+
+msgid "Wolof"
+msgstr "Ikiwolofu"
+
+msgid "Xhosa"
+msgstr "Ikigisosa"
+
+msgid "Yakut"
+msgstr "Ikiyakuti"
+
+msgid "Yao"
+msgstr "Ikiyawo"
+
+msgid "Yapese"
+msgstr "Ikiyapi"
+
+msgid "Yiddish"
+msgstr "Ikiyidishi"
+
+msgid "Yoruba"
+msgstr "Ikiyoruba"
+
+msgid "Yupik languages"
+msgstr "Indimi za yupika"
+
+msgid "Zapotec"
+msgstr "Ikizapoteke"
+
+msgid "Zenaga"
+msgstr "Ikizenega"
+
+msgid "Zulu"
+msgstr "Ikizulu"
+
+msgid "Zuni"
+msgstr "Ikizuni"

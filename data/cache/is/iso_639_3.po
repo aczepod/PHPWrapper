@@ -1,0 +1,708 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: iso_639_3\n"
+"Report-Msgid-Bugs-To: Debian iso-codes team <pkg-isocodes-devel@lists.alioth."
+"debian.org>\n"
+"POT-Creation-Date: 2012-06-26 09:55+0200\n"
+"PO-Revision-Date: 2011-08-16 22:40+0000\n"
+"Last-Translator: Sveinn í Felli <sveinki@nett.is>\n"
+"Language-Team: Icelandic <translation-team-is@lists.sourceforge.net>\n"
+"Language: is\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: KBabel 1.11.4\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+
+msgid "Ache"
+msgstr "Ache"
+
+msgid "Afrikaans"
+msgstr "Afrikaans"
+
+msgid "Albanian, Arbëreshë"
+msgstr "Albanska, Arbëreshë"
+
+msgid "Alumu-Tesu"
+msgstr "Alumu-Tesu"
+
+msgid "Amal"
+msgstr "Amal"
+
+msgid "Ambrak"
+msgstr "Ambrak"
+
+msgid "Arabic"
+msgstr "Arabíska"
+
+msgid "Arabic, Cypriot"
+msgstr "Arabíska, kýpverska"
+
+msgid "Arabic, Hijazi"
+msgstr "Arabíska, Hijazi"
+
+msgid "Arabic, Omani"
+msgstr "Arabíska, ómanska"
+
+msgid "Aranadan"
+msgstr "Aranadan"
+
+msgid "Ari"
+msgstr "Ari"
+
+msgid "Armenian"
+msgstr "Armenska"
+
+msgid "Arpitan"
+msgstr "Arpitan"
+
+msgid "Assan"
+msgstr "Assan"
+
+msgid "Azerbaijani"
+msgstr "Azerbaijanska"
+
+msgid "Baikeno"
+msgstr "Baikeno"
+
+msgid "Bantik"
+msgstr "Bantik"
+
+msgid "Basque"
+msgstr "Baskamál"
+
+msgid "Bena (Nigeria)"
+msgstr "Bena (Nígería)"
+
+msgid "Boro (Ghana)"
+msgstr "Boro (Gana)"
+
+msgid "Breton"
+msgstr "Bretónska"
+
+msgid "Bulgarian"
+msgstr "Búlgarska"
+
+msgid "Catalan"
+msgstr "Katalónska"
+
+msgid "Chinantec, Valle Nacional"
+msgstr "Chinantec, Valle Nacional"
+
+msgid "Chinese"
+msgstr "Kínverska"
+
+msgid "Chinese, Min Bei"
+msgstr "Kínverska, Min Bei"
+
+msgid "Chinese, Yue"
+msgstr "Kínverska, Yue"
+
+msgid "Chug"
+msgstr "Chug"
+
+msgid "Croatian"
+msgstr "Króatíska"
+
+msgid "Cuicatec, Tepeuxila"
+msgstr "Cuicatec, Tepeuxila"
+
+msgid "Czech"
+msgstr "Tékkneska"
+
+msgid "Daantanai'"
+msgstr "Daantanai'"
+
+msgid "Danish"
+msgstr "Danska"
+
+msgid "Dano"
+msgstr "Dano"
+
+msgid "Dawro"
+msgstr "Dawro"
+
+msgid "Duano"
+msgstr "Duano"
+
+msgid "Dutch"
+msgstr "Hollenska"
+
+msgid "Esperanto"
+msgstr "Esperanto"
+
+msgid "Estonian"
+msgstr "Eistneska"
+
+msgid "Evant"
+msgstr "Evant"
+
+msgid "Fagani"
+msgstr "Fagani"
+
+msgid "Faita"
+msgstr "Faita"
+
+msgid "Fania"
+msgstr "Fania"
+
+msgid "Finnish"
+msgstr "Finnska"
+
+msgid "French"
+msgstr "Franska"
+
+msgid "Gants"
+msgstr "Gants"
+
+msgid "German"
+msgstr "Þýska"
+
+msgid "Ghotuo"
+msgstr "Ghotuo"
+
+msgid "Haji"
+msgstr "Haji"
+
+msgid "Hani"
+msgstr "Hani"
+
+msgid "Hano"
+msgstr "Hano"
+
+msgid "Hebrew"
+msgstr "Hebreska"
+
+msgid "Hungarian"
+msgstr "Ungverska"
+
+msgid "Ibaloi"
+msgstr "Ibaloi"
+
+msgid "Icelandic"
+msgstr "Íslenska"
+
+msgid "Indonesian"
+msgstr "Indónesíska"
+
+msgid "Irish"
+msgstr "Írska"
+
+msgid "Italian"
+msgstr "Ítalska"
+
+msgid "Japanese"
+msgstr "Japanska"
+
+msgid "Javindo"
+msgstr "Javindo"
+
+msgid "Kaian"
+msgstr "Kaian"
+
+msgid "Kantosi"
+msgstr "Kantosi"
+
+msgid "Kapin"
+msgstr "Kapin"
+
+msgid "Kaptiau"
+msgstr "Kaptiau"
+
+msgid "Kara (Korea)"
+msgstr "Kara (Kórea)"
+
+msgid "Kati"
+msgstr "Kati"
+
+msgid "Korean"
+msgstr "Kóreska"
+
+msgid "Kpati"
+msgstr "Kpati"
+
+msgid "Kumzari"
+msgstr "Kumzari"
+
+msgid "Kurdish"
+msgstr "Kúrdíska"
+
+msgid "La'bi"
+msgstr "La'bi"
+
+msgid "Labir"
+msgstr "Labir"
+
+msgid "Labo"
+msgstr "Labo"
+
+msgid "Lachi"
+msgstr "Lachi"
+
+msgid "Ladakhi"
+msgstr "Ladakhi"
+
+msgid "Ladin"
+msgstr "Ladin"
+
+msgid "Laiyolo"
+msgstr "Laiyolo"
+
+msgid "Laki"
+msgstr "Laki"
+
+msgid "Lakkia"
+msgstr "Lakkia"
+
+msgid "Lamang"
+msgstr "Lamang"
+
+msgid "Lambadi"
+msgstr "Lambadi"
+
+msgid "Lamet"
+msgstr "Lamet"
+
+msgid "Lamnso'"
+msgstr "Lamnso'"
+
+msgid "Lampung Api"
+msgstr "Lampung Api"
+
+msgid "Landoma"
+msgstr "Landoma"
+
+msgid "Lang'e"
+msgstr "Lang'e"
+
+msgid "Langi"
+msgstr "Langi"
+
+msgid "Lanoh"
+msgstr "Lanoh"
+
+msgid "Laomian"
+msgstr "Laomian"
+
+msgid "Laragia"
+msgstr "Laragia"
+
+msgid "Lardil"
+msgstr "Lardil"
+
+msgid "Laro"
+msgstr "Laro"
+
+msgid "Latu"
+msgstr "Latu"
+
+msgid "Latundê"
+msgstr "Latundê"
+
+msgid "Latvian"
+msgstr "Lettneska"
+
+msgid "Lauan"
+msgstr "Lauan"
+
+msgid "Laurentian"
+msgstr "Laurentian"
+
+msgid "Laven"
+msgstr "Laven"
+
+msgid "Li'o"
+msgstr "Li'o"
+
+msgid "Lindu"
+msgstr "Lindu"
+
+msgid "Lingao"
+msgstr "Lingao"
+
+msgid "Lipo"
+msgstr "Lipo"
+
+msgid "Lithuanian"
+msgstr "Litháíska"
+
+msgid "Loarki"
+msgstr "Loarki"
+
+msgid "Lolopo"
+msgstr "Lolopo"
+
+msgid "Lorang"
+msgstr "Lorang"
+
+msgid "Luang"
+msgstr "Luang"
+
+msgid "Ludian"
+msgstr "Ludian"
+
+msgid "Luwati"
+msgstr "Luwati"
+
+msgid "Láadan"
+msgstr "Láadan"
+
+msgid "Macedonian"
+msgstr "Makedóníska"
+
+msgid "Mahican"
+msgstr "Mahican"
+
+msgid "Maindo"
+msgstr "Maindo"
+
+msgid "Malavedan"
+msgstr "Malavedan"
+
+msgid "Malay, Standard"
+msgstr "Malaíska, stöðluð"
+
+msgid "Maltese"
+msgstr "Maltneska"
+
+msgid "Mamaindé"
+msgstr "Mamaindé"
+
+msgid "Manangkari"
+msgstr "Manangkari"
+
+msgid "Manda (Australia)"
+msgstr "Manda (Ástralía)"
+
+msgid "Mang"
+msgstr "Mang"
+
+msgid "Mangas"
+msgstr "Mangas"
+
+msgid "Mansi"
+msgstr "Mansi"
+
+msgid "Mantsi"
+msgstr "Mantsi"
+
+msgid "Maori"
+msgstr "Maori"
+
+msgid "Mapena"
+msgstr "Mapena"
+
+msgid "Marachi"
+msgstr "Marachi"
+
+msgid "Marama"
+msgstr "Marama"
+
+msgid "Maranunggu"
+msgstr "Maranunggu"
+
+msgid "Maringarr"
+msgstr "Maringarr"
+
+msgid "Mariyedi"
+msgstr "Mariyedi"
+
+msgid "Mbandja"
+msgstr "Mbandja"
+
+msgid "Mbariman-Gudhinma"
+msgstr "Mbariman-Gudhinma"
+
+msgid "Mbesa"
+msgstr "Mbesa"
+
+msgid "Mian"
+msgstr "Mian"
+
+msgid "Minriq"
+msgstr "Minriq"
+
+msgid "Mirgan"
+msgstr "Mirgan"
+
+msgid "Mnong, Southern"
+msgstr "Mnong, suður"
+
+msgid "Mobilian"
+msgstr "Mobilian"
+
+msgid "Mongolian, Middle"
+msgstr "Mongólska, mið"
+
+msgid "Mono (USA)"
+msgstr "Mono (BNA)"
+
+msgid "Motlav"
+msgstr "Motlav"
+
+msgid "Movima"
+msgstr "Movima"
+
+msgid "Murut, Timugon"
+msgstr "Murut, Timugon"
+
+msgid "Muruwari"
+msgstr "Muruwari"
+
+msgid "Nanti"
+msgstr "Nanti"
+
+msgid "Nasu, Wusa"
+msgstr "Nasu, Wusa"
+
+msgid "No linguistic content"
+msgstr "Ekkert tungumálatengt efni"
+
+msgid "Nugunu (Cameroon)"
+msgstr "Nugunu (Kamerún)"
+
+msgid "Phala"
+msgstr "Phala"
+
+msgid "Phola"
+msgstr "Phola"
+
+msgid "Phola, Alo"
+msgstr "Phola, Alo"
+
+msgid "Phowa, Ani"
+msgstr "Phowa, Ani"
+
+msgid "Phowa, Labo"
+msgstr "Phowa, Labo"
+
+msgid "Phuma"
+msgstr "Phuma"
+
+msgid "Phupa"
+msgstr "Phupa"
+
+msgid "Phupha"
+msgstr "Phupha"
+
+msgid "Phuza"
+msgstr "Phuza"
+
+msgid "Polabian"
+msgstr "Polabíska"
+
+msgid "Polish"
+msgstr "Pólska"
+
+msgid "Portuguese"
+msgstr "Portúgalska"
+
+msgid "Purari"
+msgstr "Purari"
+
+msgid "Rapting"
+msgstr "Rapting"
+
+msgid "Romanian"
+msgstr "Rúmenska"
+
+msgid "Russian"
+msgstr "Rússneska"
+
+msgid "Samogitian"
+msgstr "Samogitian"
+
+msgid "Serbian"
+msgstr "Serbneska"
+
+msgid "Sherpa"
+msgstr "Sherpa"
+
+msgid "Slovak"
+msgstr "Slóvakía"
+
+msgid "Slovenian"
+msgstr "Slóvenska"
+
+msgid "Spanish"
+msgstr "Spænska"
+
+msgid "Sukurum"
+msgstr "Sukurum"
+
+msgid "Swedish"
+msgstr "Sænska"
+
+msgid "Tahltan"
+msgstr "Tahltíska"
+
+msgid "Taino"
+msgstr "Taino"
+
+msgid "Taita"
+msgstr "Taita"
+
+msgid "Tamahaq, Tahaggart"
+msgstr "Tamahaq, Tahaggart"
+
+msgid "Tamajeq, Tayart"
+msgstr "Tamajeq, Tayart"
+
+msgid "Tamazight, Tidikelt"
+msgstr "Tamazight, Tidikelt"
+
+msgid "Tamil"
+msgstr "Tamilska"
+
+msgid "Tariana"
+msgstr "Tariana"
+
+msgid "Tartessian"
+msgstr "Tartessian"
+
+msgid "Tatana"
+msgstr "Tatana"
+
+msgid "Taznatit"
+msgstr "Taznatit"
+
+msgid "Tha"
+msgstr "Tha"
+
+msgid "Thachanadan"
+msgstr "Thachanadan"
+
+msgid "Thai"
+msgstr "Tælenska"
+
+msgid "Thangmi"
+msgstr "Thangmi"
+
+msgid "The"
+msgstr "The"
+
+msgid "Thudam"
+msgstr "Thudam"
+
+msgid "Thuri"
+msgstr "Thuri"
+
+msgid "Tiale"
+msgstr "Tiale"
+
+msgid "Tiang"
+msgstr "Tiang"
+
+msgid "Tidong"
+msgstr "Tidong"
+
+msgid "Tiene"
+msgstr "Tiene"
+
+msgid "Tifal"
+msgstr "Tifal"
+
+msgid "Tigre"
+msgstr "Tigre"
+
+msgid "Tilung"
+msgstr "Tilung"
+
+msgid "Tira"
+msgstr "Tira"
+
+msgid "Tita"
+msgstr "Tita"
+
+msgid "Tokano"
+msgstr "Tokano"
+
+msgid "Tomadino"
+msgstr "Tomadino"
+
+msgid "Turkish"
+msgstr "Tyrkneska"
+
+msgid "Vano"
+msgstr "Vano"
+
+msgid "Vietnamese"
+msgstr "Víetnamska"
+
+msgid "Walloon"
+msgstr "Vallónska"
+
+msgid "Welsh"
+msgstr "Velska"
+
+msgid "Wogeo"
+msgstr "Wogeo"
+
+msgid "Wolani"
+msgstr "Wolani"
+
+msgid "Wolaytta"
+msgstr "Wolaytta"
+
+msgid "Woleaian"
+msgstr "Woleanska"
+
+msgid "Xhosa"
+msgstr "Xhosa"
+
+msgid "Yiddish"
+msgstr "Jiddíska"
+
+msgid "Yiddish Sign Language"
+msgstr "Jiddískt táknmál"
+
+msgid "Yiddish, Eastern"
+msgstr "Jiddíska, austur"
+
+msgid "Yiddish, Western"
+msgstr "Jiddíska, vestur"
+
+msgid "Yugoslavian Sign Language"
+msgstr "Júgóslavískt táknmál"
+
+msgid "Zambian Sign Language"
+msgstr "Sambískt táknmál"
+
+msgid "Zan Gula"
+msgstr "Zan Gula"
+
+msgid "Zay"
+msgstr "Zay"
+
+msgid "Zaza"
+msgstr "Zaza"
+
+msgid "Zeem"
+msgstr "Zeem"
+
+msgid "Zhuang, Yang"
+msgstr "Zhuang, Yang"
+
+msgid "Zhuang, Yongbei"
+msgstr "Zhuang, Yongbei"
+
+msgid "Zhuang, Yongnan"
+msgstr "Zhuang, Yongnan"
+
+msgid "Zhuang, Youjiang"
+msgstr "Zhuang, Youjiang"
+
+msgid "Zhuang, Zuojiang"
+msgstr "Zhuang, Zuojiang"
+
+msgid "Zulu"
+msgstr "Zúlú"
+
+msgid "Zumaya"
+msgstr "Zumaya"
+
+msgid "Zuni"
+msgstr "Zuní"
+
+msgid "Zyphe"
+msgstr "Zyphe"

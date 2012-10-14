@@ -1,0 +1,879 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: iso_639\n"
+"Report-Msgid-Bugs-To: Debian iso-codes team <pkg-isocodes-devel@lists.alioth."
+"debian.org>\n"
+"POT-Creation-Date: 2010-03-31 08:26+0200\n"
+"PO-Revision-Date: 2011-05-05 07:10-0600\n"
+"Last-Translator: Kevin Scannell <kscanne@gmail.com>\n"
+"Language-Team: Irish <gaeilge-gnulinux@lists.sourceforge.net>\n"
+"Language: ga\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+msgid "Abkhazian"
+msgstr "Abcáisis"
+
+msgid "Afar"
+msgstr "Afárais"
+
+msgid "Afrikaans"
+msgstr "Afracáinis"
+
+msgid "Afro-Asiatic languages"
+msgstr "Teangacha Afra-Áiseacha"
+
+msgid "Akan"
+msgstr "Acáinis"
+
+msgid "Akkadian"
+msgstr "Acáidis"
+
+msgid "Albanian"
+msgstr "Albáinis"
+
+msgid "Aleut"
+msgstr "Ailiúitis"
+
+msgid "Algonquian languages"
+msgstr "Teangacha Algancacha"
+
+msgid "Altaic languages"
+msgstr "Teangacha Altaecha"
+
+msgid "Amharic"
+msgstr "Amáiris"
+
+msgid "Apache languages"
+msgstr "Teangacha Apáiseacha"
+
+msgid "Arabic"
+msgstr "Araibis"
+
+msgid "Aragonese"
+msgstr "Aragóinis"
+
+msgid "Armenian"
+msgstr "Airméinis"
+
+msgid "Artificial languages"
+msgstr "Teangacha saorga"
+
+msgid "Assamese"
+msgstr "Asaimis"
+
+msgid "Asturian; Bable; Leonese; Asturleonese"
+msgstr "Astúiris; Baiblis"
+
+msgid "Australian languages"
+msgstr "Teangacha Astrálacha"
+
+msgid "Austronesian languages"
+msgstr "Teangacha Astrainéiseacha"
+
+msgid "Avaric"
+msgstr "Avairis"
+
+msgid "Avestan"
+msgstr "Aivéistis"
+
+msgid "Aymara"
+msgstr "Aidhmiris"
+
+msgid "Azerbaijani"
+msgstr "Asarbaiseáinis"
+
+msgid "Baltic languages"
+msgstr "Teangacha Baltacha"
+
+msgid "Bambara"
+msgstr "Bambáiris"
+
+msgid "Bantu languages"
+msgstr "Teangacha Bantúcha"
+
+msgid "Bashkir"
+msgstr "Baiscíris"
+
+msgid "Basque"
+msgstr "Bascais"
+
+msgid "Belarusian"
+msgstr "Bealarúisis"
+
+msgid "Bengali"
+msgstr "Beangáilis"
+
+msgid "Berber languages"
+msgstr "Teangacha Beirbeireacha"
+
+msgid "Bislama"
+msgstr "Bioslamais"
+
+msgid "Bokmål, Norwegian; Norwegian Bokmål"
+msgstr "Ioruais Bokmål"
+
+msgid "Bosnian"
+msgstr "Boisnis"
+
+msgid "Breton"
+msgstr "Briotáinis"
+
+msgid "Bulgarian"
+msgstr "Bulgáiris"
+
+msgid "Burmese"
+msgstr "Burmais"
+
+msgid "Catalan; Valencian"
+msgstr "Catalóinis; Vaileinsis"
+
+msgid "Caucasian languages"
+msgstr "Teangacha Cugasacha"
+
+msgid "Celtic languages"
+msgstr "Teangacha Ceilteacha"
+
+msgid "Central Khmer"
+msgstr "Ciméiris Láir"
+
+msgid "Chamorro"
+msgstr "Seamóróis"
+
+msgid "Chechen"
+msgstr "Seisnis"
+
+msgid "Cherokee"
+msgstr "Seiricis"
+
+msgid "Chichewa; Chewa; Nyanja"
+msgstr "Siséivis"
+
+msgid "Chinese"
+msgstr "Sínis"
+
+msgid ""
+"Church Slavic; Old Slavonic; Church Slavonic; Old Bulgarian; Old Church "
+"Slavonic"
+msgstr "Slaivis; Slavóinic; Slavóinis"
+
+msgid "Chuvash"
+msgstr "Suvaisis"
+
+msgid "Classical Syriac"
+msgstr "Síris Chlasaiceach"
+
+msgid "Coptic"
+msgstr "Coptais"
+
+msgid "Cornish"
+msgstr "Coirnis"
+
+msgid "Corsican"
+msgstr "Corsaicis"
+
+msgid "Cree"
+msgstr "Craíais"
+
+msgid "Creoles and pidgins"
+msgstr "Crióil agus teangacha briotaireachta"
+
+msgid "Creoles and pidgins, English based"
+msgstr "Crióil agus teangacha briotaireachta, bunaithe ar an mBéarla"
+
+msgid "Creoles and pidgins, French-based"
+msgstr "Crióil agus teangacha briotaireachta, bunaithe ar an bhFraincis"
+
+msgid "Creoles and pidgins, Portuguese-based"
+msgstr "Crióil agus teangacha briotaireachta, bunaithe ar an bPortaingéilis"
+
+msgid "Crimean Tatar; Crimean Turkish"
+msgstr "Tatairis Chriméach; Tuircis Chriméach"
+
+msgid "Croatian"
+msgstr "Cróitis"
+
+msgid "Czech"
+msgstr "Seicis"
+
+msgid "Danish"
+msgstr "Danmhairgis"
+
+msgid "Divehi; Dhivehi; Maldivian"
+msgstr "Divéihis; Maildívis"
+
+msgid "Dogri"
+msgstr "Dóigris"
+
+msgid "Dravidian languages"
+msgstr "Teangacha Dráivideacha"
+
+msgid "Dutch, Middle (ca. 1050-1350)"
+msgstr "Meán-Ollainnis (ca. 1050-1350)"
+
+msgid "Dutch; Flemish"
+msgstr "Ollainnis; Pléimeannais"
+
+msgid "Dzongkha"
+msgstr "Seoinicis"
+
+msgid "Eastern Frisian"
+msgstr "Freaslainnis Oirthearach"
+
+msgid "Egyptian (Ancient)"
+msgstr "Éigiptis (Cianaosta)"
+
+msgid "Elamite"
+msgstr "Éaláimis"
+
+msgid "English"
+msgstr "Béarla"
+
+msgid "English, Middle (1100-1500)"
+msgstr "Meán-Bhéarla (1100-1500)"
+
+msgid "English, Old (ca. 450-1100)"
+msgstr "Sean-Bhéarla (ca. 450-1100)"
+
+msgid "Esperanto"
+msgstr "Esperanto"
+
+msgid "Estonian"
+msgstr "Eastóinis"
+
+msgid "Ewe"
+msgstr "Éivéis"
+
+msgid "Faroese"
+msgstr "Faróis"
+
+msgid "Fijian"
+msgstr "Fidsis"
+
+msgid "Filipino; Pilipino"
+msgstr "Filipínis"
+
+msgid "Finnish"
+msgstr "Fionlainnis"
+
+msgid "Finno-Ugrian languages"
+msgstr "Teangacha Fionn-Úgracha"
+
+msgid "French"
+msgstr "Fraincis"
+
+msgid "French, Middle (ca. 1400-1600)"
+msgstr "Meán-Fraincis (ca. 1400-1600)"
+
+msgid "French, Old (842-ca. 1400)"
+msgstr "Sean-Fhraincis (842-ca. 1400)"
+
+msgid "Friulian"
+msgstr "Friúilis"
+
+msgid "Fulah"
+msgstr "Fulfuildis"
+
+msgid "Gaelic; Scottish Gaelic"
+msgstr "Gaeilge na hAlban"
+
+msgid "Galician"
+msgstr "Gailísis"
+
+msgid "Ganda"
+msgstr "Gandais"
+
+msgid "Georgian"
+msgstr "Seoirsis"
+
+msgid "German"
+msgstr "Gearmáinis"
+
+msgid "German, Middle High (ca. 1050-1500)"
+msgstr "Meán-Ard-Ghearmáinis (ca. 1050-1500)"
+
+msgid "German, Old High (ca. 750-1050)"
+msgstr "Sean-Ard-Ghearmáinis (ca. 750-1050)"
+
+msgid "Germanic languages"
+msgstr "Teangacha Gearmánacha"
+
+msgid "Gilbertese"
+msgstr "Cireabaitis"
+
+msgid "Gothic"
+msgstr "Gotais"
+
+msgid "Greek, Ancient (to 1453)"
+msgstr "Gréigis Chianaosta (go dtí 1453)"
+
+msgid "Greek, Modern (1453-)"
+msgstr "Gréigis Nua-Aimseartha (1453-)"
+
+msgid "Guarani"
+msgstr "Guaráinis"
+
+msgid "Gujarati"
+msgstr "Gúisearáitis"
+
+msgid "Haitian; Haitian Creole"
+msgstr "Criól Háítíoch"
+
+msgid "Hausa"
+msgstr "Hásais"
+
+msgid "Hawaiian"
+msgstr "Haváis"
+
+msgid "Hebrew"
+msgstr "Eabhrais"
+
+msgid "Herero"
+msgstr "Heiréiróis"
+
+msgid "Hiligaynon"
+msgstr "Hiligionóinis"
+
+msgid "Hindi"
+msgstr "Hiondúis"
+
+msgid "Hiri Motu"
+msgstr "Hírí-Mótúis"
+
+msgid "Hittite"
+msgstr "Hitis"
+
+msgid "Hungarian"
+msgstr "Ungáiris"
+
+msgid "Icelandic"
+msgstr "Íoslainnis"
+
+msgid "Igbo"
+msgstr "Íogbóis"
+
+msgid "Indo-European languages"
+msgstr "Teangacha Ind-Eorpacha"
+
+msgid "Indonesian"
+msgstr "Indinéisis"
+
+msgid "Interlingua (International Auxiliary Language Association)"
+msgstr "Idirtheanga (International Auxiliary Language Association)"
+
+msgid "Interlingue; Occidental"
+msgstr "Idirtheanga iartharach"
+
+msgid "Inuktitut"
+msgstr "Ionúitis"
+
+msgid "Inupiaq"
+msgstr "Iniúipiaicis"
+
+msgid "Iranian languages"
+msgstr "Teangacha Iaránacha"
+
+msgid "Irish"
+msgstr "Gaeilge"
+
+msgid "Irish, Middle (900-1200)"
+msgstr "Meán-Ghaeilge (900-1200)"
+
+msgid "Irish, Old (to 900)"
+msgstr "Sean-Ghaeilge (go dtí 900)"
+
+msgid "Italian"
+msgstr "Iodáilis"
+
+msgid "Japanese"
+msgstr "Seapáinis"
+
+msgid "Javanese"
+msgstr "Iávais"
+
+msgid "Kalaallisut; Greenlandic"
+msgstr "Graonlainnis"
+
+msgid "Kalmyk; Oirat"
+msgstr "Cailmícis"
+
+msgid "Kannada"
+msgstr "Cannadais"
+
+msgid "Kanuri"
+msgstr "Canúiris"
+
+msgid "Kara-Kalpak"
+msgstr "Cara-Chalpáicis"
+
+msgid "Karelian"
+msgstr "Cairéailis"
+
+msgid "Kashmiri"
+msgstr "Caismíris"
+
+msgid "Kashubian"
+msgstr "Caisiúibis"
+
+msgid "Kazakh"
+msgstr "Casaicis"
+
+msgid "Khoisan languages"
+msgstr "Teangacha Cóíseacha"
+
+msgid "Kikuyu; Gikuyu"
+msgstr "Ciocúis"
+
+msgid "Kinyarwanda"
+msgstr "Cinearuáindis"
+
+msgid "Kirghiz; Kyrgyz"
+msgstr "Cirgisis"
+
+msgid "Klingon; tlhIngan-Hol"
+msgstr "Klingon; tlhIngan-Hol"
+
+msgid "Komi"
+msgstr "Coimí"
+
+msgid "Kongo"
+msgstr "Congóis"
+
+msgid "Konkani"
+msgstr "Concáinis"
+
+msgid "Korean"
+msgstr "Cóiréis"
+
+msgid "Kuanyama; Kwanyama"
+msgstr "Cuainiáimis"
+
+msgid "Kurdish"
+msgstr "Coirdis"
+
+msgid "Ladino"
+msgstr "Laideanóis"
+
+msgid "Lao"
+msgstr "Láóis"
+
+msgid "Latin"
+msgstr "Laidin"
+
+msgid "Latvian"
+msgstr "Laitvis"
+
+msgid "Limburgan; Limburger; Limburgish"
+msgstr "Limbuirgis"
+
+msgid "Lingala"
+msgstr "Liongáilis"
+
+msgid "Lithuanian"
+msgstr "Liotuáinis"
+
+msgid "Lojban"
+msgstr "Lojban"
+
+msgid "Low German; Low Saxon; German, Low; Saxon, Low"
+msgstr "Sacsainis Íochtarach; Gearmáinis Íochtarach"
+
+msgid "Lower Sorbian"
+msgstr "Sorbais Íochtarach"
+
+msgid "Luba-Katanga"
+msgstr "Lúba-Cataingis"
+
+msgid "Luxembourgish; Letzeburgesch"
+msgstr "Lucsambuirgis; Leitseabuirgis"
+
+msgid "Macedonian"
+msgstr "Macadóinis"
+
+msgid "Maithili"
+msgstr "Maitilis"
+
+msgid "Malagasy"
+msgstr "Malagáisis"
+
+msgid "Malay"
+msgstr "Malaeis"
+
+msgid "Malayalam"
+msgstr "Mailéalaimis"
+
+msgid "Maltese"
+msgstr "Máltais"
+
+msgid "Manchu"
+msgstr "Manchúiris"
+
+msgid "Manipuri"
+msgstr "Manapúiris"
+
+msgid "Manx"
+msgstr "Manainnis"
+
+msgid "Maori"
+msgstr "Maorais"
+
+msgid "Mapudungun; Mapuche"
+msgstr "Mapúitsis"
+
+msgid "Marathi"
+msgstr "Maraitis"
+
+msgid "Marshallese"
+msgstr "Marascailis"
+
+msgid "Mayan languages"
+msgstr "Teangacha Máigeacha"
+
+msgid "Mohawk"
+msgstr "Móháicis"
+
+msgid "Moldavian; Moldovan"
+msgstr "Moldávais"
+
+msgid "Mongolian"
+msgstr "Mongóilis"
+
+msgid "Multiple languages"
+msgstr "Teangacha iomadúla"
+
+msgid "Nauru"
+msgstr "Nárúis"
+
+msgid "Navajo; Navaho"
+msgstr "Navachóis"
+
+msgid "Ndebele, North; North Ndebele"
+msgstr "Ndebele Thuaidh"
+
+msgid "Ndebele, South; South Ndebele"
+msgstr "Ndebele Theas"
+
+msgid "Ndonga"
+msgstr "Ndongais"
+
+msgid "Neapolitan"
+msgstr "Naiplis"
+
+msgid "Nepali"
+msgstr "Neipeailis"
+
+msgid "No linguistic content; Not applicable"
+msgstr "Gan ábhar teangeolaíoch; Níl bainteach"
+
+msgid "Norse, Old"
+msgstr "Lochlainnis"
+
+msgid "Northern Frisian"
+msgstr "Freaslainnis Thuaidh"
+
+msgid "Northern Sami"
+msgstr "Sáimis Thuaidh"
+
+msgid "Norwegian"
+msgstr "Ioruais"
+
+msgid "Norwegian Nynorsk; Nynorsk, Norwegian"
+msgstr "Ioruais Nynorsk"
+
+msgid "Nubian languages"
+msgstr "Teangacha Núibiacha"
+
+msgid "Occitan (post 1500)"
+msgstr "Ocatáinis (tar éis 1500)"
+
+msgid "Official Aramaic (700-300 BCE); Imperial Aramaic (700-300 BCE)"
+msgstr "Aramais Oifigiúil (700-300 RC); Aramais Impiriúil (700-300 RC)"
+
+msgid "Ojibwa"
+msgstr "Óisibvis"
+
+msgid "Oriya"
+msgstr "Oirísis"
+
+msgid "Oromo"
+msgstr "Oraimis"
+
+msgid "Ossetian; Ossetic"
+msgstr "Óiséitis"
+
+msgid "Pali"
+msgstr "Páilis"
+
+msgid "Panjabi; Punjabi"
+msgstr "Puinseáibis"
+
+msgid "Papiamento"
+msgstr "Paipeamaintis"
+
+msgid "Papuan languages"
+msgstr "Teangacha Papuacha"
+
+msgid "Pedi; Sepedi; Northern Sotho"
+msgstr "Seipidis"
+
+msgid "Persian"
+msgstr "Peirsis"
+
+msgid "Persian, Old (ca. 600-400 B.C.)"
+msgstr "Sean-Pheirsis (ca. 600-400 R.C.)"
+
+msgid "Philippine languages"
+msgstr "Teangacha Filipíneacha"
+
+msgid "Phoenician"
+msgstr "Féinícis"
+
+msgid "Polish"
+msgstr "Polainnis"
+
+msgid "Portuguese"
+msgstr "Portaingéilis"
+
+msgid "Provençal, Old (to 1500); Occitan, Old (to 1500)"
+msgstr "Sean-Phroibhinsis (go dtí 1500); Sean-Ocatáinis (go dtí 1500)"
+
+msgid "Pushto; Pashto"
+msgstr "Paistis"
+
+msgid "Quechua"
+msgstr "Ceatsuais"
+
+msgid "Romance languages"
+msgstr "Teangacha Rómánsacha"
+
+msgid "Romanian"
+msgstr "Rómáinis"
+
+msgid "Romansh"
+msgstr "Rómainis"
+
+msgid "Romany"
+msgstr "Romainis"
+
+msgid "Russian"
+msgstr "Rúisis"
+
+msgid "Samaritan Aramaic"
+msgstr "Aramais Shamárach"
+
+msgid "Samoan"
+msgstr "Samóis"
+
+msgid "Sango"
+msgstr "Sangóis"
+
+msgid "Sanskrit"
+msgstr "Sanscrait"
+
+msgid "Santali"
+msgstr "Santáilis"
+
+msgid "Sardinian"
+msgstr "Sairdínis"
+
+msgid "Scots"
+msgstr "Béarla na hAlban"
+
+msgid "Semitic languages"
+msgstr "Teangacha Seimíteacha"
+
+msgid "Serbian"
+msgstr "Seirbis"
+
+msgid "Shona"
+msgstr "Seoinis"
+
+msgid "Sichuan Yi; Nuosu"
+msgstr "Íais Shisiuánach"
+
+msgid "Sicilian"
+msgstr "Sicilis"
+
+msgid "Sign Languages"
+msgstr "Teangacha Comharthaí"
+
+msgid "Sindhi"
+msgstr "Sindis"
+
+msgid "Sinhala; Sinhalese"
+msgstr "Siolóinis"
+
+msgid "Sino-Tibetan languages"
+msgstr "Teangacha Sín-Tibéadacha"
+
+msgid "Slavic languages"
+msgstr "Teangacha Slavacha"
+
+msgid "Slovak"
+msgstr "Slóvaicis"
+
+msgid "Slovenian"
+msgstr "Slóivéinis"
+
+msgid "Sogdian"
+msgstr "Sogdánais"
+
+msgid "Somali"
+msgstr "Somáilis"
+
+msgid "Sorbian languages"
+msgstr "Teangacha Sorbacha"
+
+msgid "Sotho, Southern"
+msgstr "Sótó Theas"
+
+msgid "Southern Altai"
+msgstr "Altaeis Theas"
+
+msgid "Southern Sami"
+msgstr "Sáimis Theas"
+
+msgid "Spanish; Castilian"
+msgstr "Spáinnis; Caistílis"
+
+msgid "Sumerian"
+msgstr "Suiméiris"
+
+msgid "Sundanese"
+msgstr "Sundais"
+
+msgid "Swahili"
+msgstr "Svahaílis"
+
+msgid "Swati"
+msgstr "Suaisis"
+
+msgid "Swedish"
+msgstr "Sualainnis"
+
+msgid "Syriac"
+msgstr "Síris"
+
+msgid "Tagalog"
+msgstr "Tagálaigis"
+
+msgid "Tahitian"
+msgstr "Taihítis"
+
+msgid "Tajik"
+msgstr "Táidsícis"
+
+msgid "Tamil"
+msgstr "Tamailis"
+
+msgid "Tatar"
+msgstr "Tatairis"
+
+msgid "Telugu"
+msgstr "Teileagúis"
+
+msgid "Tetum"
+msgstr "Teitinis"
+
+msgid "Thai"
+msgstr "Téalainnis"
+
+msgid "Tibetan"
+msgstr "Tibéidis"
+
+msgid "Tigre"
+msgstr "Tígréis"
+
+msgid "Tigrinya"
+msgstr "Tigrínis"
+
+msgid "Tonga (Nyasa)"
+msgstr "Tongais (Maláiv)"
+
+msgid "Tonga (Tonga Islands)"
+msgstr "Tongais (Oileáin Thonga)"
+
+msgid "Tsonga"
+msgstr "Songais"
+
+msgid "Tswana"
+msgstr "Suáinis"
+
+msgid "Turkish"
+msgstr "Tuircis"
+
+msgid "Turkish, Ottoman (1500-1928)"
+msgstr "Tuircis Otamánach (1500-1928)"
+
+msgid "Turkmen"
+msgstr "Tuircméinis"
+
+msgid "Twi"
+msgstr "Tiuíais"
+
+msgid "Udmurt"
+msgstr "Udmairtis"
+
+msgid "Ugaritic"
+msgstr "Úgairitis"
+
+msgid "Uighur; Uyghur"
+msgstr "Úígiúiris"
+
+msgid "Ukrainian"
+msgstr "Úcráinis"
+
+msgid "Uncoded languages"
+msgstr "Teangacha gan chód"
+
+msgid "Undetermined"
+msgstr "Éiginnte"
+
+msgid "Upper Sorbian"
+msgstr "Sorbais Uachtarach"
+
+msgid "Urdu"
+msgstr "Urdúis"
+
+msgid "Uzbek"
+msgstr "Úisbéicis"
+
+msgid "Venda"
+msgstr "Veindis"
+
+msgid "Vietnamese"
+msgstr "Vítneamais"
+
+msgid "Volapük"
+msgstr "Volapük"
+
+msgid "Walloon"
+msgstr "Vallúnais"
+
+msgid "Welsh"
+msgstr "Breatnais"
+
+msgid "Western Frisian"
+msgstr "Freaslainnis Iartharach"
+
+msgid "Wolof"
+msgstr "Volaifis"
+
+msgid "Xhosa"
+msgstr "Cóisis"
+
+msgid "Yakut"
+msgstr "Iacúitis"
+
+msgid "Yiddish"
+msgstr "Giúdais"
+
+msgid "Yoruba"
+msgstr "Iarúibis"
+
+msgid "Zhuang; Chuang"
+msgstr "Siuáingis"
+
+msgid "Zulu"
+msgstr "Súlúis"

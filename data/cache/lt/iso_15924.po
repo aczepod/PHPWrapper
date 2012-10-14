@@ -1,0 +1,386 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: iso_15924\n"
+"Report-Msgid-Bugs-To: Debian iso-codes team <pkg-isocodes-devel@lists.alioth."
+"debian.org>\n"
+"POT-Creation-Date: 2012-02-09 22:36+0100\n"
+"PO-Revision-Date: 2008-05-17 21:01+0300\n"
+"Last-Translator: Gintautas Miliauskas <gintas@akl.lt>\n"
+"Language-Team: Lithuanian <komp_lt@konferencijos.lt>\n"
+"Language: lt\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: KBabel 1.11.4\n"
+
+msgid "Arabic"
+msgstr "Arabų"
+
+msgid "Armenian"
+msgstr "Armėnų"
+
+msgid "Avestan"
+msgstr "Avestos"
+
+msgid "Balinese"
+msgstr "Baliečių"
+
+msgid "Batak"
+msgstr "Batak"
+
+msgid "Bengali"
+msgstr "Bengalų"
+
+msgid "Blissymbols"
+msgstr "Blissimbolių"
+
+msgid "Book Pahlavi"
+msgstr "Knyginis Pahlavi"
+
+msgid "Bopomofo"
+msgstr "Bopomofo"
+
+msgid "Brahmi"
+msgstr "Brahmi"
+
+msgid "Braille"
+msgstr "Brailis"
+
+msgid "Buginese"
+msgstr "Buginų"
+
+msgid "Buhid"
+msgstr "Buhid"
+
+msgid "Carian"
+msgstr "Karų"
+
+msgid "Chakma"
+msgstr "Chakma"
+
+msgid "Cham"
+msgstr "Chamų"
+
+msgid "Cherokee"
+msgstr "Čerokių"
+
+msgid "Cirth"
+msgstr "Cirth"
+
+msgid "Code for uncoded script"
+msgstr "Kodas nekoduotam raštui"
+
+msgid "Code for undetermined script"
+msgstr "Kodas nenustatytam raštui"
+
+msgid "Code for unwritten documents"
+msgstr "Kodas nerašytiems dokumentams"
+
+msgid "Coptic"
+msgstr "Koptų"
+
+msgid "Cuneiform, Sumero-Akkadian"
+msgstr "Dantiraštis (šumerų-akadų)"
+
+msgid "Cypriot"
+msgstr "Kipro"
+
+msgid "Cyrillic"
+msgstr "Kirilica"
+
+msgid "Cyrillic (Old Church Slavonic variant)"
+msgstr "Kirilica (senasis bažnytinis variantas)"
+
+msgid "Deseret (Mormon)"
+msgstr "Deseret (mormonų)"
+
+msgid "Devanagari (Nagari)"
+msgstr "Devanagari (Nagari)"
+
+msgid "Egyptian demotic"
+msgstr "Egiptiečių demotinis"
+
+msgid "Egyptian hieratic"
+msgstr "Egiptiečių hieratinis"
+
+msgid "Egyptian hieroglyphs"
+msgstr "Egipto hieroglifai"
+
+msgid "Ethiopic (Geʻez)"
+msgstr "Etiopų (Geʻez)"
+
+msgid "Georgian (Mkhedruli)"
+msgstr "Gruzinų (Mkhedruli)"
+
+msgid "Glagolitic"
+msgstr "Glagolitiškas"
+
+msgid "Gothic"
+msgstr "Gotų"
+
+msgid "Greek"
+msgstr "Graikų"
+
+msgid "Gujarati"
+msgstr "Gudžaratų"
+
+msgid "Gurmukhi"
+msgstr "Gurmukhi"
+
+msgid "Han (Hanzi, Kanji, Hanja)"
+msgstr "Han (kandži)"
+
+msgid "Han (Simplified variant)"
+msgstr "Han (supaprastintas variantas)"
+
+msgid "Han (Traditional variant)"
+msgstr "Han (tradicinis variantas)"
+
+msgid "Hangul (Hangŭl, Hangeul)"
+msgstr "Hangul (Hangŭl, Hangeul)"
+
+msgid "Hanunoo (Hanunóo)"
+msgstr "Hanunoo (Hanunóo)"
+
+msgid "Hebrew"
+msgstr "Hebrajų"
+
+msgid "Hiragana"
+msgstr "Hiragana"
+
+msgid "Imperial Aramaic"
+msgstr "Imperinė aramėjų"
+
+msgid "Indus (Harappan)"
+msgstr "Indų (harapų)"
+
+msgid "Inscriptional Pahlavi"
+msgstr "Inskripcinis Pahlavi"
+
+msgid "Inscriptional Parthian"
+msgstr "Inskripcinis partų"
+
+msgid "Japanese (alias for Han + Hiragana + Katakana)"
+msgstr "Japonų (Han + Hiragana + Katakana)"
+
+msgid "Javanese"
+msgstr "Javiečių"
+
+msgid "Kaithi"
+msgstr "Kaithi"
+
+msgid "Kannada"
+msgstr "Kannada"
+
+msgid "Katakana"
+msgstr "Katakana"
+
+msgid "Kayah Li"
+msgstr "Kayah Li"
+
+msgid "Kharoshthi"
+msgstr "Kharoshthi"
+
+msgid "Khmer"
+msgstr "Khmerų"
+
+msgid "Khutsuri (Asomtavruli and Nuskhuri)"
+msgstr "Khutsuri (Asomtavruli ir Nuskhuri)"
+
+msgid "Korean (alias for Hangul + Han)"
+msgstr "Korėjiečių (Hangul + Han)"
+
+msgid "Lao"
+msgstr "Lao"
+
+msgid "Latin"
+msgstr "Lotynų"
+
+msgid "Latin (Fraktur variant)"
+msgstr "Lotynų (Fraktur variantas)"
+
+msgid "Latin (Gaelic variant)"
+msgstr "Lotynų (gėlų variantas)"
+
+msgid "Lepcha (Róng)"
+msgstr "Lepcha (Róng)"
+
+msgid "Limbu"
+msgstr "Limbu"
+
+msgid "Linear A"
+msgstr "Linijinis A"
+
+msgid "Linear B"
+msgstr "Linijinis B"
+
+msgid "Lycian"
+msgstr "Likiečių"
+
+msgid "Lydian"
+msgstr "Lidų"
+
+msgid "Malayalam"
+msgstr "Malajų"
+
+msgid "Mandaic, Mandaean"
+msgstr "Mandėjų"
+
+msgid "Manichaean"
+msgstr "Manichėjų"
+
+msgid "Mathematical notation"
+msgstr "Matematiniai ženklai"
+
+msgid "Mayan hieroglyphs"
+msgstr "Majų hieroglifai"
+
+msgid "Meitei Mayek (Meithei, Meetei)"
+msgstr "Meitei Mayek (Meithei, Meetei)"
+
+msgid "Mongolian"
+msgstr "Mongolų"
+
+msgid "Moon (Moon code, Moon script, Moon type)"
+msgstr "Moon (Moon kodas, Moon raštas, Moon tipografija)"
+
+msgid "Myanmar (Burmese)"
+msgstr "Mianmaro (Birmos)"
+
+msgid "New Tai Lue"
+msgstr "Naujas Tai Lue"
+
+msgid "N’Ko"
+msgstr "N’Ko"
+
+msgid "Ogham"
+msgstr "Ogham"
+
+msgid "Ol Chiki (Ol Cemet’, Ol, Santali)"
+msgstr "Ol Chiki (Ol Cemet’, Ol, Santali)"
+
+msgid "Old Hungarian"
+msgstr "Senasis vengrų"
+
+msgid "Old Italic (Etruscan, Oscan, etc.)"
+msgstr "Senasis italų (etruskų, oskų, etc.)"
+
+msgid "Old Permic"
+msgstr "Senasis Permės"
+
+msgid "Old Persian"
+msgstr "Senoji persų"
+
+msgid "Oriya"
+msgstr "Oriya"
+
+msgid "Osmanya"
+msgstr "Osmanų"
+
+msgid "Pahawh Hmong"
+msgstr "Pahawh Hmong"
+
+msgid "Phags-pa"
+msgstr "Fags-pa"
+
+msgid "Phoenician"
+msgstr "Finikiečių"
+
+msgid "Psalter Pahlavi"
+msgstr "Psalminis Pahlavi"
+
+msgid "Reserved for private use (end)"
+msgstr "Rezervuota asmeniniam naudojimui (pabaiga)"
+
+msgid "Reserved for private use (start)"
+msgstr "Rezervuota asmeniniam naudojimui (pradžia)"
+
+msgid "Rongorongo"
+msgstr "Rongorongo"
+
+msgid "Runic"
+msgstr "Runų"
+
+msgid "Samaritan"
+msgstr "Samariečių"
+
+msgid "Sarati"
+msgstr "Sarati"
+
+msgid "Saurashtra"
+msgstr "Saurashtra"
+
+msgid "Shavian (Shaw)"
+msgstr "Šo"
+
+msgid "SignWriting"
+msgstr "Ženklų raštas"
+
+msgid "Sinhala"
+msgstr "Singhų"
+
+msgid "Sundanese"
+msgstr "Sundaniečių"
+
+msgid "Syloti Nagri"
+msgstr "Syloti Nagri"
+
+msgid "Symbols"
+msgstr "Simboliai"
+
+msgid "Syriac"
+msgstr "Siriečių"
+
+msgid "Syriac (Eastern variant)"
+msgstr "Sirų (rytietiškas variantas)"
+
+msgid "Syriac (Estrangelo variant)"
+msgstr "Sirų (estrangelo)"
+
+msgid "Syriac (Western variant)"
+msgstr "Sirų (vakarietiškas variantas)"
+
+msgid "Tagbanwa"
+msgstr "Tagbanwa"
+
+msgid "Tai Le"
+msgstr "Tai Le"
+
+msgid "Tai Viet"
+msgstr "Tai Viet"
+
+msgid "Tamil"
+msgstr "Tamilų"
+
+msgid "Telugu"
+msgstr "Telugu"
+
+msgid "Tengwar"
+msgstr "Tengwar"
+
+msgid "Thaana"
+msgstr "Thaana"
+
+msgid "Thai"
+msgstr "Tajų"
+
+msgid "Tibetan"
+msgstr "Tibetiečių"
+
+msgid "Tifinagh (Berber)"
+msgstr "Tifinagų (berberų)"
+
+msgid "Ugaritic"
+msgstr "Ugaritic"
+
+msgid "Unified Canadian Aboriginal Syllabics"
+msgstr "Unifikuoti kanados aborigenų skiemenys"
+
+msgid "Vai"
+msgstr "Vai"
+
+msgid "Visible Speech"
+msgstr "Matoma kalba"
+
+msgid "Yi"
+msgstr "Dži"

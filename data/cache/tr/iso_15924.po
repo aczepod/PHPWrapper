@@ -1,0 +1,242 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: iso_15924\n"
+"Report-Msgid-Bugs-To: Debian iso-codes team <pkg-isocodes-devel@lists.alioth."
+"debian.org>\n"
+"POT-Creation-Date: 2012-02-09 22:36+0100\n"
+"PO-Revision-Date: 2007-09-09 16:07+0200\n"
+"Last-Translator: Tobias Quathamer <toddy@debian.org>\n"
+"Language-Team: Turkish\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: KBabel 1.11.4\n"
+
+msgid "Arabic"
+msgstr "Arapça"
+
+msgid "Armenian"
+msgstr "Ermenice"
+
+msgid "Balinese"
+msgstr "Bali Dili"
+
+msgid "Batak"
+msgstr "Batak"
+
+msgid "Bengali"
+msgstr "Bengalce"
+
+msgid "Blissymbols"
+msgstr "Blis Sembolleri"
+
+msgid "Bopomofo"
+msgstr "Bopomofo"
+
+msgid "Brahmi"
+msgstr "Brahmi"
+
+msgid "Braille"
+msgstr "Braille"
+
+msgid "Buginese"
+msgstr "Bugis"
+
+msgid "Buhid"
+msgstr "Buhid"
+
+msgid "Carian"
+msgstr "Karya"
+
+msgid "Cherokee"
+msgstr "Çeroki"
+
+msgid "Cirth"
+msgstr "Cirth"
+
+msgid "Coptic"
+msgstr "Koptik"
+
+msgid "Cypriot"
+msgstr "Kıbrıs"
+
+msgid "Cyrillic"
+msgstr "Kiril"
+
+msgid "Egyptian demotic"
+msgstr "Mısır Yazısı - Demotik"
+
+msgid "Egyptian hieratic"
+msgstr "Mısır Yazısı - Hiyeratik"
+
+msgid "Egyptian hieroglyphs"
+msgstr "Mısır Yazısı - Hiyeroglif"
+
+msgid "Glagolitic"
+msgstr "Glagolit"
+
+msgid "Gothic"
+msgstr "Gotik"
+
+msgid "Greek"
+msgstr "Yunan"
+
+msgid "Gujarati"
+msgstr "Gujarati"
+
+msgid "Gurmukhi"
+msgstr "Gurmukhi"
+
+msgid "Hebrew"
+msgstr "İbranice"
+
+msgid "Hiragana"
+msgstr "Hiragana"
+
+msgid "Javanese"
+msgstr "Cava Dili"
+
+msgid "Kannada"
+msgstr "Kannada"
+
+msgid "Katakana"
+msgstr "Katakana"
+
+msgid "Kayah Li"
+msgstr "Kayah Li"
+
+msgid "Kharoshthi"
+msgstr "Kharoshthi"
+
+msgid "Khmer"
+msgstr "Khmer"
+
+msgid "Lao"
+msgstr "Lao Dili"
+
+msgid "Latin"
+msgstr "Latin"
+
+msgid "Limbu"
+msgstr "Limbu"
+
+msgid "Linear A"
+msgstr "Lineer A"
+
+msgid "Linear B"
+msgstr "Lineer B"
+
+msgid "Lycian"
+msgstr "Likya Dili"
+
+msgid "Lydian"
+msgstr "Lidya DIli"
+
+msgid "Malayalam"
+msgstr "Malayalam"
+
+msgid "Mayan hieroglyphs"
+msgstr "Maya Hiyeroglifleri"
+
+msgid "Mongolian"
+msgstr "Moğolca"
+
+msgid "New Tai Lue"
+msgstr "New Tai Lue"
+
+msgid "N’Ko"
+msgstr "N’Ko"
+
+msgid "Ogham"
+msgstr "Ogham"
+
+msgid "Old Hungarian"
+msgstr "Eski Macarca"
+
+msgid "Old Permic"
+msgstr "Eski Permic"
+
+msgid "Old Persian"
+msgstr "Eski Farsça"
+
+msgid "Oriya"
+msgstr "Oriya"
+
+msgid "Osmanya"
+msgstr "Osmanya"
+
+msgid "Pahawh Hmong"
+msgstr "Pahawh Hmong"
+
+msgid "Phags-pa"
+msgstr "Phags-pa"
+
+msgid "Phoenician"
+msgstr "Fonetik"
+
+msgid "Rongorongo"
+msgstr "Rongorongo"
+
+msgid "Runic"
+msgstr "Runik"
+
+msgid "Sarati"
+msgstr "Sarati"
+
+msgid "Saurashtra"
+msgstr "Saurashtra"
+
+msgid "SignWriting"
+msgstr "İşaret Dili Yazımı"
+
+msgid "Sinhala"
+msgstr "Sinhal"
+
+msgid "Sundanese"
+msgstr "Sunda"
+
+msgid "Syloti Nagri"
+msgstr "Syloti Nagri"
+
+msgid "Syriac"
+msgstr "Süryanice"
+
+msgid "Tagbanwa"
+msgstr "Tagbanwa"
+
+msgid "Tai Le"
+msgstr "Tai Le"
+
+msgid "Tamil"
+msgstr "Tamil"
+
+msgid "Telugu"
+msgstr "Telugu"
+
+msgid "Tengwar"
+msgstr "Tengwar"
+
+msgid "Thaana"
+msgstr "Thaana"
+
+msgid "Thai"
+msgstr "Tayca"
+
+msgid "Tibetan"
+msgstr "Tibetçe"
+
+msgid "Ugaritic"
+msgstr "Ugarit Çivi Yazısı"
+
+msgid "Unified Canadian Aboriginal Syllabics"
+msgstr "UCAS"
+
+msgid "Vai"
+msgstr "Vai"
+
+msgid "Visible Speech"
+msgstr "Konuşma Sesleri Çizimlemesi"
+
+msgid "Yi"
+msgstr "Yi"

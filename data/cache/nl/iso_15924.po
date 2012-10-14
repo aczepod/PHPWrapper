@@ -1,0 +1,499 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: iso_15924\n"
+"Report-Msgid-Bugs-To: Debian iso-codes team <pkg-isocodes-devel@lists.alioth."
+"debian.org>\n"
+"POT-Creation-Date: 2012-02-09 22:36+0100\n"
+"PO-Revision-Date: 2012-05-04 16:08+0200\n"
+"Last-Translator: Freek de Kruijf <f.de.kruijf@gmail.com>\n"
+"Language-Team: Dutch <vertaling@vrijschrift.org>\n"
+"Language: nl\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Lokalize 1.2\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+
+msgid "Afaka"
+msgstr "Afaka"
+
+msgid "Anatolian Hieroglyphs (Luwian Hieroglyphs, Hittite Hieroglyphs)"
+msgstr ""
+"Anatolische hiërogliefen (Luwische hiërogliefen, Hettitische hiërogliefen)"
+
+msgid "Arabic"
+msgstr "Arabisch"
+
+msgid "Armenian"
+msgstr "Armeens"
+
+msgid "Avestan"
+msgstr "Avestaans"
+
+msgid "Balinese"
+msgstr "Balinees"
+
+msgid "Bamum"
+msgstr "Bamum"
+
+msgid "Bassa Vah"
+msgstr "Bassa Vah"
+
+msgid "Batak"
+msgstr "Batak"
+
+msgid "Bengali"
+msgstr "Bengaals"
+
+msgid "Blissymbols"
+msgstr "Blissymbolen"
+
+msgid "Book Pahlavi"
+msgstr "Book Pahlavi"
+
+msgid "Bopomofo"
+msgstr "Bopomofo"
+
+msgid "Brahmi"
+msgstr "Brahmi"
+
+msgid "Braille"
+msgstr "Braille"
+
+msgid "Buginese"
+msgstr "Buginees"
+
+msgid "Buhid"
+msgstr "Buhid"
+
+msgid "Carian"
+msgstr "Carisch"
+
+msgid "Chakma"
+msgstr "Chakma"
+
+msgid "Cham"
+msgstr "Cham"
+
+msgid "Cherokee"
+msgstr "Cherokee"
+
+msgid "Cirth"
+msgstr "Cirth"
+
+msgid "Code for inherited script"
+msgstr "Code voor overgeërfd schrift"
+
+msgid "Code for uncoded script"
+msgstr "Code voor niet-gecodeerd schrift"
+
+msgid "Code for undetermined script"
+msgstr "Code voor onbepaald schrift"
+
+msgid "Code for unwritten documents"
+msgstr "Code voor ongeschreven documenten"
+
+msgid "Coptic"
+msgstr "Koptisch"
+
+msgid "Cuneiform, Sumero-Akkadian"
+msgstr "Spijkerschrift, Sumerisch-Akkadiaans"
+
+msgid "Cypriot"
+msgstr "Cyprisch"
+
+msgid "Cyrillic"
+msgstr "Cyrillisch"
+
+msgid "Cyrillic (Old Church Slavonic variant)"
+msgstr "Cyrillisch (Oudkerkslavische variant)"
+
+msgid "Deseret (Mormon)"
+msgstr "Deseret (Mormon)"
+
+msgid "Devanagari (Nagari)"
+msgstr "Devanagari (Nagari)"
+
+msgid "Duployan shorthand, Duployan stenography"
+msgstr "Duployan stenografie"
+
+msgid "Egyptian demotic"
+msgstr "Egyptisch demotisch"
+
+msgid "Egyptian hieratic"
+msgstr "Egyptisch hiëratisch"
+
+msgid "Egyptian hieroglyphs"
+msgstr "Egyptische hiërogliefen"
+
+msgid "Elbasan"
+msgstr "Elbasan"
+
+msgid "Ethiopic (Geʻez)"
+msgstr "Ethiopisch (GeDez)"
+
+msgid "Georgian (Mkhedruli)"
+msgstr "Georgisch (Mkhedruli)"
+
+msgid "Glagolitic"
+msgstr "Glagolitisch"
+
+msgid "Gothic"
+msgstr "Gothisch"
+
+msgid "Grantha"
+msgstr "Grantha"
+
+msgid "Greek"
+msgstr "Grieks"
+
+msgid "Gujarati"
+msgstr "Gujarati"
+
+msgid "Gurmukhi"
+msgstr "Gurmukhi"
+
+msgid "Han (Hanzi, Kanji, Hanja)"
+msgstr "Han (Hanzi, Kanji, Hanja)"
+
+msgid "Han (Simplified variant)"
+msgstr "Han (vereenvoudigd)"
+
+msgid "Han (Traditional variant)"
+msgstr "Han (traditioneel)"
+
+msgid "Hangul (Hangŭl, Hangeul)"
+msgstr "Hangul (Hangŭl, Hangeul)"
+
+msgid "Hanunoo (Hanunóo)"
+msgstr "Hanunoo (Hanunóo)"
+
+msgid "Hebrew"
+msgstr "Hebreeuws"
+
+msgid "Hiragana"
+msgstr "Hiragana"
+
+msgid "Imperial Aramaic"
+msgstr "Rijks-Aramees"
+
+msgid "Indus (Harappan)"
+msgstr "Indus (Harappan)"
+
+msgid "Inscriptional Pahlavi"
+msgstr "Inscriptie Pahlavi"
+
+msgid "Inscriptional Parthian"
+msgstr "Inscriptie Parthian"
+
+msgid "Japanese (alias for Han + Hiragana + Katakana)"
+msgstr "Japans (alias voor Han + Hiragana + Katakana)"
+
+msgid "Japanese syllabaries (alias for Hiragana + Katakana)"
+msgstr "Japanse lettergrepen (alias voor Hiragana + Katakana)"
+
+msgid "Javanese"
+msgstr "Javaans"
+
+msgid "Jurchen"
+msgstr "Jurchen"
+
+msgid "Kaithi"
+msgstr "Kaithi"
+
+msgid "Kannada"
+msgstr "Kannada"
+
+msgid "Katakana"
+msgstr "Katakana"
+
+msgid "Kayah Li"
+msgstr "Kayah Li"
+
+msgid "Kharoshthi"
+msgstr "Kharoshthi"
+
+msgid "Khmer"
+msgstr "Khmer"
+
+msgid "Khojki"
+msgstr "Khojki"
+
+msgid "Khudawadi, Sindhi"
+msgstr "Khudawadi, Sindhi"
+
+msgid "Khutsuri (Asomtavruli and Nuskhuri)"
+msgstr "Khutsuri (Asomtavruli en Nuskhuri)"
+
+msgid "Korean (alias for Hangul + Han)"
+msgstr "Koreaans (alias voor (Hangul + Han)"
+
+msgid "Kpelle"
+msgstr "Kpelle"
+
+msgid "Lao"
+msgstr "Lao"
+
+msgid "Latin"
+msgstr "Latijn"
+
+msgid "Latin (Fraktur variant)"
+msgstr "Latijn (Fraktur-variant)"
+
+msgid "Latin (Gaelic variant)"
+msgstr "Latijn (Gaelic-variant)"
+
+msgid "Lepcha (Róng)"
+msgstr "Lepcha (Róng)"
+
+msgid "Limbu"
+msgstr "Limbu"
+
+msgid "Linear A"
+msgstr "Lineair A"
+
+msgid "Linear B"
+msgstr "Lineair B"
+
+msgid "Lisu (Fraser)"
+msgstr "Lisu (Fraser)"
+
+msgid "Loma"
+msgstr "Loma"
+
+msgid "Lycian"
+msgstr "Lycisch"
+
+msgid "Lydian"
+msgstr "Lydisch"
+
+msgid "Malayalam"
+msgstr "Malayalam"
+
+msgid "Mandaic, Mandaean"
+msgstr "Mandaeans"
+
+msgid "Manichaean"
+msgstr "Manichaeans"
+
+msgid "Mathematical notation"
+msgstr "Wiskundige notatie"
+
+msgid "Mayan hieroglyphs"
+msgstr "Mayahiërogliefen"
+
+msgid "Meitei Mayek (Meithei, Meetei)"
+msgstr "Meitei Mayek (Meithei, Meetei)"
+
+msgid "Mende"
+msgstr "Mende"
+
+msgid "Meroitic Cursive"
+msgstr "Meroïtisch cursief"
+
+msgid "Meroitic Hieroglyphs"
+msgstr "Meroïtische hiërogliefen"
+
+msgid "Miao (Pollard)"
+msgstr "Miao (Pollard)"
+
+msgid "Mongolian"
+msgstr "Mongools"
+
+msgid "Moon (Moon code, Moon script, Moon type)"
+msgstr "Moon (Moon code, Moon script, Moon type)"
+
+msgid "Mro, Mru"
+msgstr "Mro, Mru"
+
+msgid "Myanmar (Burmese)"
+msgstr "Birmees"
+
+msgid "Nabataean"
+msgstr "Nabatees"
+
+msgid "Nakhi Geba ('Na-'Khi ²Ggŏ-¹baw, Naxi Geba)"
+msgstr "Nakhi Geba ('Na-'Khi ²Ggŏ-¹baw, Naxi Geba)"
+
+msgid "New Tai Lue"
+msgstr "Nieuw Tai Lue"
+
+msgid "Nüshu"
+msgstr "Nüshu"
+
+msgid "N’Ko"
+msgstr "N’Ko"
+
+msgid "Ogham"
+msgstr "Ogham"
+
+msgid "Ol Chiki (Ol Cemet’, Ol, Santali)"
+msgstr "Ol Chiki (Ol Cemet’, Ol, Santali)"
+
+msgid "Old Hungarian"
+msgstr "Oudhongaars"
+
+msgid "Old Italic (Etruscan, Oscan, etc.)"
+msgstr "Oud-Italiaans (Etruskisch, Oskisch, etc.)"
+
+msgid "Old North Arabian (Ancient North Arabian)"
+msgstr "Oud-Noord-Arabisch"
+
+msgid "Old Permic"
+msgstr "Oudpermisch"
+
+msgid "Old Persian"
+msgstr "Oudperzisch"
+
+msgid "Old South Arabian"
+msgstr "Oud-Zuid-Arabisch"
+
+msgid "Old Turkic, Orkhon Runic"
+msgstr "Oud Turks, Orkhon runen"
+
+msgid "Oriya"
+msgstr "Oriya"
+
+msgid "Osmanya"
+msgstr "Osmanya"
+
+msgid "Pahawh Hmong"
+msgstr "Pahawh Hmong"
+
+msgid "Palmyrene"
+msgstr "Palmyreens"
+
+msgid "Phags-pa"
+msgstr "Phags-pa"
+
+msgid "Phoenician"
+msgstr "Foenicisch"
+
+msgid "Psalter Pahlavi"
+msgstr "Psalmen Pahlavi"
+
+msgid "Rejang (Redjang, Kaganga)"
+msgstr "Rejang (Redjang, Kaganga)"
+
+msgid "Reserved for private use (end)"
+msgstr "Gereserveerd voor privégebruik (einde)"
+
+msgid "Reserved for private use (start)"
+msgstr "Gereserveerd voor privégebruik (begin)"
+
+msgid "Rongorongo"
+msgstr "Rongorongo"
+
+msgid "Runic"
+msgstr "Runen"
+
+msgid "Samaritan"
+msgstr "Samaritaans"
+
+msgid "Sarati"
+msgstr "Sarati"
+
+msgid "Saurashtra"
+msgstr "Saurashtra"
+
+msgid "Sharada, Śāradā"
+msgstr "Sharada, Śāradā"
+
+msgid "Shavian (Shaw)"
+msgstr "Shavian (Shaw)"
+
+msgid "SignWriting"
+msgstr "Gebarentaal"
+
+msgid "Sinhala"
+msgstr "Sinhala"
+
+msgid "Sora Sompeng"
+msgstr "Sora Sompeng"
+
+msgid "Sundanese"
+msgstr "Sundanees"
+
+msgid "Syloti Nagri"
+msgstr "Syloti Nagri"
+
+msgid "Symbols"
+msgstr "Symbolen"
+
+msgid "Syriac"
+msgstr "Syrisch"
+
+msgid "Syriac (Eastern variant)"
+msgstr "Syrisch (Oosterse variant)"
+
+msgid "Syriac (Estrangelo variant)"
+msgstr "Syrisch (Estrangelo-variant)"
+
+msgid "Syriac (Western variant)"
+msgstr "Syrisch (Westerse variant)"
+
+msgid "Tagalog (Baybayin, Alibata)"
+msgstr "Tagalog (Baybayin, Alibata)"
+
+msgid "Tagbanwa"
+msgstr "Tagbanwa"
+
+msgid "Tai Le"
+msgstr "Tai Le"
+
+msgid "Tai Tham (Lanna)"
+msgstr "Noordelijk Thai (Lanna)"
+
+msgid "Tai Viet"
+msgstr "Tai Viet"
+
+msgid "Takri, Ṭākrī, Ṭāṅkrī"
+msgstr "Takri, Ṭākrī, Ṭāṅkrī"
+
+msgid "Tamil"
+msgstr "Tamil"
+
+msgid "Tangut"
+msgstr "Tangut"
+
+msgid "Telugu"
+msgstr "Telugu"
+
+msgid "Tengwar"
+msgstr "Tengwar"
+
+msgid "Thaana"
+msgstr "Thaana"
+
+msgid "Thai"
+msgstr "Thais"
+
+msgid "Tibetan"
+msgstr "Tibettaans"
+
+msgid "Tifinagh (Berber)"
+msgstr "Tifinagh (Berbers)"
+
+msgid "Tirhuta"
+msgstr "Tirhuta"
+
+msgid "Ugaritic"
+msgstr "Ugaritisch"
+
+msgid "Unified Canadian Aboriginal Syllabics"
+msgstr "Verenigde Canadese Aboriginal-symbolen"
+
+msgid "Vai"
+msgstr "Vai"
+
+msgid "Visible Speech"
+msgstr "Zichtbare spraak"
+
+msgid "Warang Citi (Varang Kshiti)"
+msgstr "Warang Citi (Varang Kshiti)"
+
+msgid "Woleai"
+msgstr "Woleai"
+
+msgid "Yi"
+msgstr "Yi"

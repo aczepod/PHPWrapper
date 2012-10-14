@@ -1,0 +1,245 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: iso_15924\n"
+"Report-Msgid-Bugs-To: Debian iso-codes team <pkg-isocodes-devel@lists.alioth."
+"debian.org>\n"
+"POT-Creation-Date: 2012-02-09 22:36+0100\n"
+"PO-Revision-Date: 2007-09-09 16:07+0200\n"
+"Last-Translator: Tobias Quathamer <toddy@debian.org>\n"
+"Language-Team: Swedish\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: KBabel 1.11.4\n"
+
+msgid "Arabic"
+msgstr "arabiska"
+
+msgid "Armenian"
+msgstr "armeniska"
+
+msgid "Balinese"
+msgstr "balinesiska"
+
+msgid "Batak"
+msgstr "batak"
+
+msgid "Bengali"
+msgstr "bengaliska"
+
+msgid "Blissymbols"
+msgstr "blissymboler"
+
+msgid "Bopomofo"
+msgstr "bopomofo"
+
+msgid "Brahmi"
+msgstr "brami"
+
+msgid "Braille"
+msgstr "blindskrift"
+
+msgid "Buginese"
+msgstr "buginesiska"
+
+msgid "Buhid"
+msgstr "buhid"
+
+msgid "Carian"
+msgstr "kariska"
+
+msgid "Cham"
+msgstr "cham"
+
+msgid "Cherokee"
+msgstr "cherokee"
+
+msgid "Cirth"
+msgstr "cirt"
+
+msgid "Coptic"
+msgstr "koptiska"
+
+msgid "Cypriot"
+msgstr "cypriotiska"
+
+msgid "Cyrillic"
+msgstr "kyrilliska"
+
+msgid "Egyptian demotic"
+msgstr "demotiska"
+
+msgid "Egyptian hieratic"
+msgstr "hieratiska"
+
+msgid "Egyptian hieroglyphs"
+msgstr "egyptiska hieroglyfer"
+
+msgid "Glagolitic"
+msgstr "glagolitiska"
+
+msgid "Gothic"
+msgstr "gotiska"
+
+msgid "Greek"
+msgstr "grekiska"
+
+msgid "Gujarati"
+msgstr "gujarati"
+
+msgid "Gurmukhi"
+msgstr "gurmukhi"
+
+msgid "Hebrew"
+msgstr "hebreiska"
+
+msgid "Hiragana"
+msgstr "hiragana"
+
+msgid "Javanese"
+msgstr "javanska"
+
+msgid "Kannada"
+msgstr "kanaresiska"
+
+msgid "Katakana"
+msgstr "katakana"
+
+msgid "Kayah Li"
+msgstr "kaya li"
+
+msgid "Kharoshthi"
+msgstr "kharoshti"
+
+msgid "Khmer"
+msgstr "khmeriska"
+
+msgid "Lao"
+msgstr "laotiska"
+
+msgid "Latin"
+msgstr "latinska"
+
+msgid "Limbu"
+msgstr "limbu"
+
+msgid "Linear A"
+msgstr "linjär A"
+
+msgid "Linear B"
+msgstr "linjär B"
+
+msgid "Lycian"
+msgstr "lykiska"
+
+msgid "Lydian"
+msgstr "lydiska"
+
+msgid "Malayalam"
+msgstr "malayalam"
+
+msgid "Mayan hieroglyphs"
+msgstr "mayahieroglyfer"
+
+msgid "Mongolian"
+msgstr "mongoliska"
+
+msgid "New Tai Lue"
+msgstr "tai lue"
+
+msgid "N’Ko"
+msgstr "n-kå"
+
+msgid "Ogham"
+msgstr "ogham"
+
+msgid "Old Hungarian"
+msgstr "fornungerska"
+
+msgid "Old Permic"
+msgstr "fornpermiska"
+
+msgid "Old Persian"
+msgstr "fornpersiska"
+
+msgid "Oriya"
+msgstr "oriya"
+
+msgid "Osmanya"
+msgstr "osmanja"
+
+msgid "Pahawh Hmong"
+msgstr "pahaw mong"
+
+msgid "Phags-pa"
+msgstr "phags-pa"
+
+msgid "Phoenician"
+msgstr "fenikiska"
+
+msgid "Rongorongo"
+msgstr "rongo-rongo"
+
+msgid "Runic"
+msgstr "runor"
+
+msgid "Sarati"
+msgstr "sarati"
+
+msgid "Saurashtra"
+msgstr "saurashtra"
+
+msgid "SignWriting"
+msgstr "teckningsskrift"
+
+msgid "Sinhala"
+msgstr "singalesiska"
+
+msgid "Sundanese"
+msgstr "sundanesiska"
+
+msgid "Syloti Nagri"
+msgstr "syloti nagri"
+
+msgid "Syriac"
+msgstr "syriska"
+
+msgid "Tagbanwa"
+msgstr "tagbanwa"
+
+msgid "Tai Le"
+msgstr "tai le"
+
+msgid "Tamil"
+msgstr "tamil"
+
+msgid "Telugu"
+msgstr "telugu"
+
+msgid "Tengwar"
+msgstr "tengwar"
+
+msgid "Thaana"
+msgstr "taana"
+
+msgid "Thai"
+msgstr "thailändska"
+
+msgid "Tibetan"
+msgstr "tibetanska"
+
+msgid "Ugaritic"
+msgstr "ugaritiska"
+
+msgid "Unified Canadian Aboriginal Syllabics"
+msgstr "kanadensiska stavelsetecken"
+
+msgid "Vai"
+msgstr "vaj"
+
+msgid "Visible Speech"
+msgstr "synligt tal"
+
+msgid "Yi"
+msgstr "yi"

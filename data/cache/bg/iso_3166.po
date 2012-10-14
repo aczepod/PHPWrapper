@@ -1,0 +1,1374 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: iso_3166\n"
+"Report-Msgid-Bugs-To: Debian iso-codes team <pkg-isocodes-devel@lists.alioth."
+"debian.org>\n"
+"POT-Creation-Date: 2012-03-03 15:40+0100\n"
+"PO-Revision-Date: 2011-12-27 14:20+0200\n"
+"Last-Translator: Damyan Ivanov <dmn@debian.org>\n"
+"Language-Team: Bulgarian <dict@fsa-bg.org>\n"
+"Language: bg\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: KBabel 1.11.4\n"
+"Plural-Forms: nplurals=2; plural=(n != 1)\n"
+
+msgid "Afghanistan"
+msgstr "Афганистан"
+
+msgid "Albania"
+msgstr "Албания"
+
+msgid "Algeria"
+msgstr "Алжир"
+
+msgid "American Samoa"
+msgstr "Американска Самоа"
+
+msgid "Andorra"
+msgstr "Андора"
+
+msgid "Angola"
+msgstr "Ангола"
+
+msgid "Anguilla"
+msgstr "Ангила"
+
+msgid "Antarctica"
+msgstr "Антарктика"
+
+msgid "Antigua and Barbuda"
+msgstr "Антигуа и Барбуда"
+
+msgid "Arab Republic of Egypt"
+msgstr "Арабска република Египет"
+
+msgid "Argentina"
+msgstr "Аржентина"
+
+msgid "Argentine Republic"
+msgstr "Аржентинска република"
+
+msgid "Armenia"
+msgstr "Армения"
+
+msgid "Aruba"
+msgstr "Аруба"
+
+msgid "Australia"
+msgstr "Австралия"
+
+msgid "Austria"
+msgstr "Австрия"
+
+msgid "Azerbaijan"
+msgstr "Азербайджан"
+
+msgid "Bahamas"
+msgstr "Бахами"
+
+msgid "Bahrain"
+msgstr "Бахрейн"
+
+msgid "Bangladesh"
+msgstr "Бангладеш"
+
+msgid "Barbados"
+msgstr "Барбадос"
+
+msgid "Belarus"
+msgstr "Беларус"
+
+msgid "Belgium"
+msgstr "Белгия"
+
+msgid "Belize"
+msgstr "Белиз"
+
+msgid "Benin"
+msgstr "Бенин"
+
+msgid "Bermuda"
+msgstr "Бермуда"
+
+msgid "Bhutan"
+msgstr "Бутан"
+
+msgid "Bolivarian Republic of Venezuela"
+msgstr "Боливарска република Венецуела"
+
+msgid "Bolivia"
+msgstr "Боливия"
+
+msgid "Bolivia, Plurinational State of"
+msgstr "Боливия, Многонационална държава"
+
+msgid "Bonaire, Sint Eustatius and Saba"
+msgstr "О-ви Бонер, Св. Евстатий и Саба"
+
+msgid "Bosnia and Herzegovina"
+msgstr "Босна и Херцеговина"
+
+msgid "Botswana"
+msgstr "Ботсуана"
+
+msgid "Bouvet Island"
+msgstr "Остров Буве"
+
+msgid "Brazil"
+msgstr "Бразилия"
+
+msgid "British Antarctic Territory"
+msgstr "Британски антарктически територии"
+
+msgid "British Indian Ocean Territory"
+msgstr "Английски територии в индийския океан"
+
+msgid "British Virgin Islands"
+msgstr "Британски вирджински острови"
+
+msgid "Brunei Darussalam"
+msgstr "Бруней"
+
+msgid "Bulgaria"
+msgstr "България"
+
+msgid "Burkina Faso"
+msgstr "Буркина Фасо"
+
+msgid "Burma, Socialist Republic of the Union of"
+msgstr "Бурма, Социалистическа република на обединението"
+
+msgid "Burundi"
+msgstr "Бурунди"
+
+msgid "Byelorussian SSR Soviet Socialist Republic"
+msgstr "Белоруска ССР"
+
+msgid "Cambodia"
+msgstr "Камбоджа"
+
+msgid "Cameroon"
+msgstr "Камерун"
+
+msgid "Canada"
+msgstr "Канада"
+
+msgid "Canton and Enderbury Islands"
+msgstr "Острови Кантон и Ендербъри"
+
+msgid "Cape Verde"
+msgstr "Кейп Верде"
+
+msgid "Cayman Islands"
+msgstr "Кайманови острови"
+
+msgid "Central African Republic"
+msgstr "Централноафриканска Република"
+
+msgid "Chad"
+msgstr "Чад"
+
+msgid "Chile"
+msgstr "Чили"
+
+msgid "China"
+msgstr "Китай"
+
+msgid "Christmas Island"
+msgstr "Коледни острови"
+
+msgid "Cocos (Keeling) Islands"
+msgstr "Кокосови острови"
+
+msgid "Colombia"
+msgstr "Колумбия"
+
+msgid "Commonwealth of Dominica"
+msgstr "Обединение Доминика"
+
+msgid "Commonwealth of the Bahamas"
+msgstr "Бахамски острови"
+
+msgid "Commonwealth of the Northern Mariana Islands"
+msgstr "Обединение на северните марианови острови"
+
+msgid "Comoros"
+msgstr "Комори"
+
+msgid "Congo"
+msgstr "Конго"
+
+msgid "Congo, The Democratic Republic of the"
+msgstr "Конго, Демократична република"
+
+msgid "Cook Islands"
+msgstr "Острови Кук"
+
+msgid "Costa Rica"
+msgstr "Коста Рика"
+
+msgid "Croatia"
+msgstr "Хърватия"
+
+msgid "Cuba"
+msgstr "Куба"
+
+msgid "Curaçao"
+msgstr "Кюрасао"
+
+msgid "Cyprus"
+msgstr "Кипър"
+
+msgid "Czech Republic"
+msgstr "Чешка република"
+
+msgid "Czechoslovakia, Czechoslovak Socialist Republic"
+msgstr "Чехословакия, Чехословашка социалистическа република"
+
+msgid "Côte d'Ivoire"
+msgstr "Кот д'Ивоар"
+
+msgid "Dahomey"
+msgstr "Дахоми"
+
+msgid "Democratic People's Republic of Korea"
+msgstr "Демократична народна република Корея"
+
+msgid "Democratic Republic of Sao Tome and Principe"
+msgstr "Демократична република Сао Томе и Принсипи"
+
+msgid "Democratic Republic of Timor-Leste"
+msgstr "Демократична република Тимор-Лест"
+
+msgid "Democratic Socialist Republic of Sri Lanka"
+msgstr "Демократична социалистическа република Шри Ланка"
+
+msgid "Denmark"
+msgstr "Дания"
+
+msgid "Djibouti"
+msgstr "Джибути"
+
+msgid "Dominica"
+msgstr "Доминика"
+
+msgid "Dominican Republic"
+msgstr "Доминиканска република"
+
+msgid "Dronning Maud Land"
+msgstr "Земя на кралица Мод"
+
+msgid "East Timor"
+msgstr "Източен Тимор"
+
+msgid "Eastern Republic of Uruguay"
+msgstr "Източна република Уругвай"
+
+msgid "Ecuador"
+msgstr "Еквадор"
+
+msgid "Egypt"
+msgstr "Египет"
+
+msgid "El Salvador"
+msgstr "Ел Салвадор"
+
+msgid "Equatorial Guinea"
+msgstr "Екваториална Гвинея"
+
+msgid "Eritrea"
+msgstr "Еритрея"
+
+msgid "Estonia"
+msgstr "Естония"
+
+msgid "Ethiopia"
+msgstr "Етиопия"
+
+msgid "Falkland Islands (Malvinas)"
+msgstr "Фолклендски Острови (Малвини)"
+
+msgid "Faroe Islands"
+msgstr "Острови Фаро"
+
+msgid "Federal Democratic Republic of Ethiopia"
+msgstr "Федерална демократична република Етиопия"
+
+msgid "Federal Democratic Republic of Nepal"
+msgstr "Федерална демократична република Непал"
+
+msgid "Federal Republic of Germany"
+msgstr "Федерална република Германия"
+
+msgid "Federal Republic of Nigeria"
+msgstr "Федерална република Нигерия"
+
+msgid "Federated States of Micronesia"
+msgstr "Обединени щати Микронезия"
+
+msgid "Federative Republic of Brazil"
+msgstr "Съюзна република Бразилия"
+
+msgid "Fiji"
+msgstr "Фиджи"
+
+msgid "Finland"
+msgstr "Финландия"
+
+msgid "France"
+msgstr "Франция"
+
+msgid "France, Metropolitan"
+msgstr "Франция, метрополитен"
+
+msgid "French Afars and Issas"
+msgstr "Френски Афари и Исаи"
+
+msgid "French Guiana"
+msgstr "Френска Гвиана"
+
+msgid "French Polynesia"
+msgstr "Френска Полинезия"
+
+msgid "French Republic"
+msgstr "Френска република"
+
+msgid "French Southern Territories"
+msgstr "Френски южни територии"
+
+msgid "French Southern and Antarctic Territories"
+msgstr "Френски южни и антарктически територии"
+
+msgid "Gabon"
+msgstr "Габон"
+
+msgid "Gabonese Republic"
+msgstr "Габонска Република"
+
+msgid "Gambia"
+msgstr "Гамбия"
+
+msgid "Georgia"
+msgstr "Грузия"
+
+msgid "German Democratic Republic"
+msgstr "Германска Демократична Република"
+
+msgid "Germany"
+msgstr "Германия"
+
+msgid "Germany, Federal Republic of"
+msgstr "Федерална република Германия"
+
+msgid "Ghana"
+msgstr "Гана"
+
+msgid "Gibraltar"
+msgstr "Гибралтар"
+
+msgid "Gilbert and Ellice Islands"
+msgstr "Острови Гилберт и Елис"
+
+msgid "Grand Duchy of Luxembourg"
+msgstr "Велико херцогство Люксембург"
+
+msgid "Greece"
+msgstr "Гърция"
+
+msgid "Greenland"
+msgstr "Гренландия"
+
+msgid "Grenada"
+msgstr "Гренада"
+
+msgid "Guadeloupe"
+msgstr "Гваделупа"
+
+msgid "Guam"
+msgstr "Гуам"
+
+msgid "Guatemala"
+msgstr "Гватемала"
+
+msgid "Guernsey"
+msgstr "Гърнсей"
+
+msgid "Guinea"
+msgstr "Гвинея"
+
+msgid "Guinea-Bissau"
+msgstr "Гвинея-Бисау"
+
+msgid "Guyana"
+msgstr "Гияна"
+
+msgid "Haiti"
+msgstr "Хаити"
+
+msgid "Hashemite Kingdom of Jordan"
+msgstr "Хашемитско кралство на Йордания"
+
+msgid "Heard Island and McDonald Islands"
+msgstr "Острови Хърд и МакДоналд"
+
+msgid "Hellenic Republic"
+msgstr "Елинска република"
+
+msgid "Holy See (Vatican City State)"
+msgstr "Ватикана"
+
+msgid "Honduras"
+msgstr "Хондурас"
+
+msgid "Hong Kong"
+msgstr "Хонг Конг"
+
+msgid "Hong Kong Special Administrative Region of China"
+msgstr "Специален административен регион на Китай Хонг Конг"
+
+msgid "Hungary"
+msgstr "Унгария"
+
+msgid "Iceland"
+msgstr "Исландия"
+
+msgid "Independent State of Samoa"
+msgstr "Независима самоаска държава"
+
+msgid "India"
+msgstr "Индия"
+
+msgid "Indonesia"
+msgstr "Индонезия"
+
+msgid "Iran, Islamic Republic of"
+msgstr "Иран, Ислямска република"
+
+msgid "Iraq"
+msgstr "Ирак"
+
+msgid "Ireland"
+msgstr "Ирландия"
+
+msgid "Islamic Republic of Afghanistan"
+msgstr "Ислямска република Афганистан"
+
+msgid "Islamic Republic of Iran"
+msgstr "Ислямска република Иран"
+
+msgid "Islamic Republic of Mauritania"
+msgstr "Ислямска република Мавритания"
+
+msgid "Islamic Republic of Pakistan"
+msgstr "Ислямска република Пакистан"
+
+msgid "Isle of Man"
+msgstr "Айл ъф мен"
+
+msgid "Israel"
+msgstr "Израел"
+
+msgid "Italian Republic"
+msgstr "Италианска република"
+
+msgid "Italy"
+msgstr "Италия"
+
+msgid "Jamaica"
+msgstr "Ямайка"
+
+msgid "Japan"
+msgstr "Япония"
+
+msgid "Jersey"
+msgstr "Джърси"
+
+msgid "Johnston Island"
+msgstr "Остров Джонсън"
+
+msgid "Jordan"
+msgstr "Йордания"
+
+msgid "Kazakhstan"
+msgstr "Казахстан"
+
+msgid "Kenya"
+msgstr "Кения"
+
+msgid "Kingdom of Bahrain"
+msgstr "Кралство Бахрейн"
+
+msgid "Kingdom of Belgium"
+msgstr "Кралство Белгия"
+
+msgid "Kingdom of Bhutan"
+msgstr "Кралство Бутан"
+
+msgid "Kingdom of Cambodia"
+msgstr "Кралство Камбоджа"
+
+msgid "Kingdom of Denmark"
+msgstr "Кралство Дания"
+
+msgid "Kingdom of Lesotho"
+msgstr "Кралство Лесото"
+
+msgid "Kingdom of Morocco"
+msgstr "Кралство Мароко"
+
+msgid "Kingdom of Norway"
+msgstr "Кралство Норвегия"
+
+msgid "Kingdom of Saudi Arabia"
+msgstr "Кралство Саудитска Арабия"
+
+msgid "Kingdom of Spain"
+msgstr "Кралство Испания"
+
+msgid "Kingdom of Swaziland"
+msgstr "Кралство Свазиленд"
+
+msgid "Kingdom of Sweden"
+msgstr "Кралство Швеция"
+
+msgid "Kingdom of Thailand"
+msgstr "Кралство Тайланд"
+
+msgid "Kingdom of Tonga"
+msgstr "Кралство Тонга"
+
+msgid "Kingdom of the Netherlands"
+msgstr "Кралство Холандия"
+
+msgid "Kiribati"
+msgstr "Кирибати"
+
+msgid "Korea, Democratic People's Republic of"
+msgstr "Корея, Демократична народна република"
+
+msgid "Korea, Republic of"
+msgstr "Корея, Република"
+
+msgid "Kuwait"
+msgstr "Кувейт"
+
+msgid "Kyrgyz Republic"
+msgstr "Киргизска република"
+
+msgid "Kyrgyzstan"
+msgstr "Киргизстан"
+
+msgid "Lao People's Democratic Republic"
+msgstr "Демократична република на народа на Лао"
+
+msgid "Latvia"
+msgstr "Латвия"
+
+msgid "Lebanese Republic"
+msgstr "Лебанска република"
+
+msgid "Lebanon"
+msgstr "Лебанон"
+
+msgid "Lesotho"
+msgstr "Лесото"
+
+msgid "Liberia"
+msgstr "Либерия"
+
+msgid "Libya"
+msgstr "Либия"
+
+msgid "Liechtenstein"
+msgstr "Лихтенщайн"
+
+msgid "Lithuania"
+msgstr "Литва"
+
+msgid "Luxembourg"
+msgstr "Люксембург"
+
+msgid "Macao"
+msgstr "Макао"
+
+msgid "Macao Special Administrative Region of China"
+msgstr "Макаоски специален административен регион на Китай"
+
+msgid "Macedonia, Republic of"
+msgstr "Македония, Република"
+
+msgid "Madagascar"
+msgstr "Мадагаскар"
+
+msgid "Malawi"
+msgstr "Малави"
+
+msgid "Malaysia"
+msgstr "Малайзия"
+
+msgid "Maldives"
+msgstr "Малдиви"
+
+msgid "Mali"
+msgstr "Мали"
+
+msgid "Malta"
+msgstr "Малта"
+
+msgid "Marshall Islands"
+msgstr "Маршалски острови"
+
+msgid "Martinique"
+msgstr "Мартиника"
+
+msgid "Mauritania"
+msgstr "Мавритания"
+
+msgid "Mauritius"
+msgstr "Мавриций"
+
+msgid "Mayotte"
+msgstr "Майот"
+
+msgid "Mexico"
+msgstr "Мексико"
+
+msgid "Micronesia, Federated States of"
+msgstr "Микронезия, Обединени щати"
+
+msgid "Midway Islands"
+msgstr "Острови Мидуей"
+
+msgid "Moldova"
+msgstr "Молдова"
+
+msgid "Moldova, Republic of"
+msgstr "Молдова, Република"
+
+msgid "Monaco"
+msgstr "Монако"
+
+msgid "Mongolia"
+msgstr "Монголия"
+
+msgid "Montenegro"
+msgstr "Черна гора"
+
+msgid "Montserrat"
+msgstr "Монсерат"
+
+msgid "Morocco"
+msgstr "Мароко"
+
+msgid "Mozambique"
+msgstr "Мозамбик"
+
+msgid "Myanmar"
+msgstr "Мянмар"
+
+msgid "Namibia"
+msgstr "Намибия"
+
+msgid "Nauru"
+msgstr "Науру"
+
+msgid "Nepal"
+msgstr "Непал"
+
+msgid "Netherlands"
+msgstr "Холандия"
+
+msgid "Netherlands Antilles"
+msgstr "Холандски Антили"
+
+msgid "Neutral Zone"
+msgstr "Неутрална зона"
+
+msgid "New Caledonia"
+msgstr "Нова Каледония"
+
+msgid "New Hebrides"
+msgstr "Нови Хебриди"
+
+msgid "New Zealand"
+msgstr "Нова Зеландия"
+
+msgid "Nicaragua"
+msgstr "Никарагуа"
+
+msgid "Niger"
+msgstr "Нигер"
+
+msgid "Nigeria"
+msgstr "Нигерия"
+
+msgid "Niue"
+msgstr "Нию"
+
+msgid "Norfolk Island"
+msgstr "Остров Норфолк"
+
+msgid "Northern Mariana Islands"
+msgstr "Северни марианови Острови"
+
+msgid "Norway"
+msgstr "Норвегия"
+
+msgid "Occupied Palestinian Territory"
+msgstr "Окупирана палестинска територия"
+
+msgid "Oman"
+msgstr "Оман"
+
+msgid "Pacific Islands (trust territory)"
+msgstr "Тихоокеански острови"
+
+msgid "Pakistan"
+msgstr "Пакистан"
+
+msgid "Palau"
+msgstr "Палау"
+
+msgid "Palestinian Territory, Occupied"
+msgstr "Палестинска територия, Окупирана"
+
+msgid "Panama"
+msgstr "Панама"
+
+msgid "Panama Canal Zone"
+msgstr "Панама централна зона"
+
+msgid "Panama, Republic of"
+msgstr "Панама, Република"
+
+msgid "Papua New Guinea"
+msgstr "Папуа Нова Гвинея"
+
+msgid "Paraguay"
+msgstr "Парагвай"
+
+msgid "People's Democratic Republic of Algeria"
+msgstr "Народна демократична република Алжир"
+
+msgid "People's Republic of Bangladesh"
+msgstr "Народна република Бангладеш"
+
+msgid "People's Republic of China"
+msgstr "Народна република Китай"
+
+msgid "Peru"
+msgstr "Перу"
+
+msgid "Philippines"
+msgstr "Филипини"
+
+msgid "Pitcairn"
+msgstr "Питкеърн"
+
+msgid "Plurinational State of Bolivia"
+msgstr "Многонационална държава Боливия"
+
+msgid "Poland"
+msgstr "Полша"
+
+msgid "Portugal"
+msgstr "Португалия"
+
+msgid "Portuguese Republic"
+msgstr "Република Португалия"
+
+msgid "Principality of Andorra"
+msgstr "Княжество Андора"
+
+msgid "Principality of Liechtenstein"
+msgstr "Княжество Лихтенщайн"
+
+msgid "Principality of Monaco"
+msgstr "Княжество Монако"
+
+msgid "Puerto Rico"
+msgstr "Пуерто Рико"
+
+msgid "Qatar"
+msgstr "Катар"
+
+msgid "Republic of Albania"
+msgstr "Република Албания"
+
+msgid "Republic of Angola"
+msgstr "Република Ангола"
+
+msgid "Republic of Armenia"
+msgstr "Република Армения"
+
+msgid "Republic of Austria"
+msgstr "Република Австрия"
+
+msgid "Republic of Azerbaijan"
+msgstr "Република Азербайджан"
+
+msgid "Republic of Belarus"
+msgstr "Република Беларус"
+
+msgid "Republic of Benin"
+msgstr "Република Бенин"
+
+msgid "Republic of Bosnia and Herzegovina"
+msgstr "Република Босна и Херцеговина"
+
+msgid "Republic of Botswana"
+msgstr "Република Ботсуана"
+
+msgid "Republic of Bulgaria"
+msgstr "Република България"
+
+msgid "Republic of Burundi"
+msgstr "Република Бурунди"
+
+msgid "Republic of Cameroon"
+msgstr "Република Камерун"
+
+msgid "Republic of Cape Verde"
+msgstr "Република Кейп Верде"
+
+msgid "Republic of Chad"
+msgstr "Република Чад"
+
+msgid "Republic of Chile"
+msgstr "Република Чили"
+
+msgid "Republic of Colombia"
+msgstr "Република Колумбия"
+
+msgid "Republic of Costa Rica"
+msgstr "Република Коста Рика"
+
+msgid "Republic of Croatia"
+msgstr "Република Хърватия"
+
+msgid "Republic of Cuba"
+msgstr "Република Куба"
+
+msgid "Republic of Cyprus"
+msgstr "Република Кипър"
+
+msgid "Republic of Côte d'Ivoire"
+msgstr "Република Кот д'Ивоар"
+
+msgid "Republic of Djibouti"
+msgstr "Република Джибути"
+
+msgid "Republic of Ecuador"
+msgstr "Република Еквадор"
+
+msgid "Republic of El Salvador"
+msgstr "Република Ел Салвадор"
+
+msgid "Republic of Equatorial Guinea"
+msgstr "Република Екваториална Гвинея"
+
+msgid "Republic of Estonia"
+msgstr "Република Естония"
+
+msgid "Republic of Fiji"
+msgstr "Република Фиджи"
+
+msgid "Republic of Finland"
+msgstr "Република Финландия"
+
+msgid "Republic of Ghana"
+msgstr "Република Гана"
+
+msgid "Republic of Guatemala"
+msgstr "Република Гватемала"
+
+msgid "Republic of Guinea"
+msgstr "Република Гвинея"
+
+msgid "Republic of Guinea-Bissau"
+msgstr "Република Гвинея-Бисау"
+
+msgid "Republic of Guyana"
+msgstr "Република Гияна"
+
+msgid "Republic of Haiti"
+msgstr "Република Хаити"
+
+msgid "Republic of Honduras"
+msgstr "Република Хондурас"
+
+msgid "Republic of Iceland"
+msgstr "Република Исландия"
+
+msgid "Republic of India"
+msgstr "Република Индия"
+
+msgid "Republic of Indonesia"
+msgstr "Република Индонезия"
+
+msgid "Republic of Iraq"
+msgstr "Република Ирак"
+
+msgid "Republic of Kazakhstan"
+msgstr "Република Казахстан"
+
+msgid "Republic of Kenya"
+msgstr "Република Кения"
+
+msgid "Republic of Kiribati"
+msgstr "Република Кирибати"
+
+msgid "Republic of Latvia"
+msgstr "Република Латвия"
+
+msgid "Republic of Liberia"
+msgstr "Република Либерия"
+
+msgid "Republic of Lithuania"
+msgstr "Република Литва"
+
+msgid "Republic of Madagascar"
+msgstr "Република Мадагаскар"
+
+msgid "Republic of Malawi"
+msgstr "Република Малави"
+
+msgid "Republic of Maldives"
+msgstr "Република Малдиви"
+
+msgid "Republic of Mali"
+msgstr "Република Мали"
+
+msgid "Republic of Malta"
+msgstr "Република Малта"
+
+msgid "Republic of Mauritius"
+msgstr "Република Мавриций"
+
+msgid "Republic of Moldova"
+msgstr "Република Молдова"
+
+msgid "Republic of Mozambique"
+msgstr "Република Мозамбик"
+
+msgid "Republic of Myanmar"
+msgstr "Република Мианмар"
+
+msgid "Republic of Namibia"
+msgstr "Република Намибия"
+
+msgid "Republic of Nauru"
+msgstr "Република Науру"
+
+msgid "Republic of Nicaragua"
+msgstr "Република Никарагуа"
+
+msgid "Republic of Palau"
+msgstr "Република Палау"
+
+msgid "Republic of Panama"
+msgstr "Република Панама"
+
+msgid "Republic of Paraguay"
+msgstr "Република Парагвай"
+
+msgid "Republic of Peru"
+msgstr "Република Перу"
+
+msgid "Republic of Poland"
+msgstr "Република Полша"
+
+msgid "Republic of San Marino"
+msgstr "Република Сан Марино"
+
+msgid "Republic of Senegal"
+msgstr "Република Сенегал"
+
+msgid "Republic of Serbia"
+msgstr "Република Сърбия"
+
+msgid "Republic of Seychelles"
+msgstr "Република Сейшели"
+
+msgid "Republic of Sierra Leone"
+msgstr "Република Сиера Леоне"
+
+msgid "Republic of Singapore"
+msgstr "Република Сингапур"
+
+msgid "Republic of Slovenia"
+msgstr "Република Словения"
+
+msgid "Republic of South Africa"
+msgstr "Република Южна Африка"
+
+msgid "Republic of South Sudan"
+msgstr "Република Южен Судан"
+
+msgid "Republic of Suriname"
+msgstr "Република Суринам"
+
+msgid "Republic of Tajikistan"
+msgstr "Република Таджикистан"
+
+msgid "Republic of Trinidad and Tobago"
+msgstr "Република Тринидад и Тобаго"
+
+msgid "Republic of Tunisia"
+msgstr "Република Тунис"
+
+msgid "Republic of Turkey"
+msgstr "Република Турция"
+
+msgid "Republic of Uganda"
+msgstr "Република Уганда"
+
+msgid "Republic of Uzbekistan"
+msgstr "Република Узбекистан"
+
+msgid "Republic of Vanuatu"
+msgstr "Република Вануату"
+
+msgid "Republic of Yemen"
+msgstr "Република Йемен"
+
+msgid "Republic of Zambia"
+msgstr "Република Замбия"
+
+msgid "Republic of Zimbabwe"
+msgstr "Република Зимбабве"
+
+msgid "Republic of the Congo"
+msgstr "Република Конго"
+
+msgid "Republic of the Gambia"
+msgstr "Република Гамбия"
+
+msgid "Republic of the Marshall Islands"
+msgstr "Република на маршалските острови"
+
+msgid "Republic of the Niger"
+msgstr "Република Нигер"
+
+msgid "Republic of the Philippines"
+msgstr "Република Филипини"
+
+msgid "Republic of the Sudan"
+msgstr "Република Судан"
+
+msgid "Romania"
+msgstr "Румъния"
+
+msgid "Romania, Socialist Republic of"
+msgstr "Румъния, Социалистическа република Виетнам"
+
+msgid "Russian Federation"
+msgstr "Руска федерация"
+
+msgid "Rwanda"
+msgstr "Руанда"
+
+msgid "Rwandese Republic"
+msgstr "Руандска република"
+
+msgid "Réunion"
+msgstr "Риюниън"
+
+msgid "Saint Barthélemy"
+msgstr "Свети Вартоломей"
+
+msgid "Saint Helena, Ascension and Tristan da Cunha"
+msgstr "Света Елена, Възнесение и Тристан да Куня"
+
+msgid "Saint Kitts and Nevis"
+msgstr "Свети Китс и Невис"
+
+msgid "Saint Lucia"
+msgstr "Санта Лучия"
+
+msgid "Saint Martin (French part)"
+msgstr "Свети Мартин (френска част)"
+
+msgid "Saint Pierre and Miquelon"
+msgstr "Свети Пиер и Микелон"
+
+msgid "Saint Vincent and the Grenadines"
+msgstr "Свети Винсент и Гренадин"
+
+msgid "Samoa"
+msgstr "Самоа"
+
+msgid "San Marino"
+msgstr "Сан Марино"
+
+msgid "Sao Tome and Principe"
+msgstr "Сао Томе и Принсипи"
+
+msgid "Saudi Arabia"
+msgstr "Саудитска Арабия"
+
+msgid "Senegal"
+msgstr "Сенегал"
+
+msgid "Serbia"
+msgstr "Сърбия"
+
+msgid "Serbia and Montenegro"
+msgstr "Сърбия и Черна гора"
+
+msgid "Seychelles"
+msgstr "Сейшели"
+
+msgid "Sierra Leone"
+msgstr "Сиера Леоне"
+
+msgid "Sikkim"
+msgstr "Сиким"
+
+msgid "Singapore"
+msgstr "Сингапур"
+
+msgid "Sint Maarten (Dutch part)"
+msgstr "Синт Мартен (холандска част)"
+
+msgid "Slovak Republic"
+msgstr "Словашка република"
+
+msgid "Slovakia"
+msgstr "Словакия"
+
+msgid "Slovenia"
+msgstr "Словения"
+
+msgid "Socialist Republic of Viet Nam"
+msgstr "Социалистическа република Виетнам"
+
+msgid "Solomon Islands"
+msgstr "Соломонови острови"
+
+msgid "Somali Republic"
+msgstr "Сомалийска република"
+
+msgid "Somalia"
+msgstr "Сомалия"
+
+msgid "South Africa"
+msgstr "Южна Африка"
+
+msgid "South Georgia and the South Sandwich Islands"
+msgstr "Южна Джорджия и Южни Сандвичеви острови"
+
+msgid "South Sudan"
+msgstr "Южен Судан"
+
+msgid "Southern Rhodesia"
+msgstr "Южна Родезия"
+
+msgid "Spain"
+msgstr "Испания"
+
+msgid "Spanish Sahara"
+msgstr "Испанска Сахара"
+
+msgid "Sri Lanka"
+msgstr "Шри Ланка"
+
+msgid "St. Kitts-Nevis-Anguilla"
+msgstr "Св. Китс-Невис-Ангила"
+
+msgid "State of Israel"
+msgstr "Израелска държава"
+
+msgid "State of Kuwait"
+msgstr "Кувейтска държава"
+
+msgid "State of Qatar"
+msgstr "Катарска държава"
+
+msgid "Sudan"
+msgstr "Судан"
+
+msgid "Sultanate of Oman"
+msgstr "Султанат Оман"
+
+msgid "Suriname"
+msgstr "Суринам"
+
+msgid "Svalbard and Jan Mayen"
+msgstr "Свалбард и Ян Майен"
+
+msgid "Swaziland"
+msgstr "Свазиленд"
+
+msgid "Sweden"
+msgstr "Швеция"
+
+msgid "Swiss Confederation"
+msgstr "Швейцарска конфедерация"
+
+msgid "Switzerland"
+msgstr "Швейцария"
+
+msgid "Syrian Arab Republic"
+msgstr "Сирийска арабска република"
+
+msgid "Taiwan"
+msgstr "Тайван"
+
+msgid "Taiwan, Province of China"
+msgstr "Тайван, Китайска провинция"
+
+msgid "Tajikistan"
+msgstr "Таджикистан"
+
+msgid "Tanzania, United Republic of"
+msgstr "Танзания, Обединена република"
+
+msgid "Thailand"
+msgstr "Тайланд"
+
+msgid "The Former Yugoslav Republic of Macedonia"
+msgstr "Бивша югославска република Македония"
+
+msgid "Timor-Leste"
+msgstr "Тимор-Лест"
+
+msgid "Togo"
+msgstr "Того"
+
+msgid "Togolese Republic"
+msgstr "Тогоска република"
+
+msgid "Tokelau"
+msgstr "Токелау"
+
+msgid "Tonga"
+msgstr "Тонга"
+
+msgid "Trinidad and Tobago"
+msgstr "Тринидад и Тобаго"
+
+msgid "Tunisia"
+msgstr "Тунис"
+
+msgid "Turkey"
+msgstr "Турция"
+
+msgid "Turkmenistan"
+msgstr "Туркменистан"
+
+msgid "Turks and Caicos Islands"
+msgstr "Острови Тюрк и Кайкос"
+
+msgid "Tuvalu"
+msgstr "Тувалу"
+
+msgid "US Miscellaneous Pacific Islands"
+msgstr "САЩ - тихоокеански острови"
+
+msgid "USSR, Union of Soviet Socialist Republics"
+msgstr "СССР, Съюз на съветските социалистически републики"
+
+msgid "Uganda"
+msgstr "Уганда"
+
+msgid "Ukraine"
+msgstr "Украйна"
+
+msgid "Union of the Comoros"
+msgstr "Съюз на Комори"
+
+msgid "United Arab Emirates"
+msgstr "Обединени арабски емирства"
+
+msgid "United Kingdom"
+msgstr "Обединено кралство"
+
+msgid "United Kingdom of Great Britain and Northern Ireland"
+msgstr "Обединено кралство на Великобритания и северна Ирландия"
+
+msgid "United Mexican States"
+msgstr "Съединени мексикански щати"
+
+msgid "United Republic of Tanzania"
+msgstr "Обединена република Танзания"
+
+msgid "United States"
+msgstr "Съединени щати"
+
+msgid "United States Minor Outlying Islands"
+msgstr "Обединени малки острови по крайбрежието на САЩ"
+
+msgid "United States of America"
+msgstr "Съединени американски щати"
+
+msgid "Upper Volta, Republic of"
+msgstr "Горна Волта, Република"
+
+msgid "Uruguay"
+msgstr "Уругвай"
+
+msgid "Uzbekistan"
+msgstr "Узбекистан"
+
+msgid "Vanuatu"
+msgstr "Вануату"
+
+msgid "Vatican City State (Holy See)"
+msgstr "Ватиканска държава"
+
+msgid "Venezuela"
+msgstr "Венецуела"
+
+msgid "Venezuela, Bolivarian Republic of"
+msgstr "Венецуела, Боливарска република"
+
+msgid "Viet Nam"
+msgstr "Виетнам"
+
+msgid "Viet-Nam, Democratic Republic of"
+msgstr "Виетнам, Демократична република"
+
+msgid "Virgin Islands of the United States"
+msgstr "Вирджински острови на САЩ"
+
+msgid "Virgin Islands, British"
+msgstr "Вирджински острови, Британски"
+
+msgid "Virgin Islands, U.S."
+msgstr "Вирджински острови, САЩ"
+
+msgid "Wake Island"
+msgstr "Остров Уейк"
+
+msgid "Wallis and Futuna"
+msgstr "Острови Уолис и Футуна"
+
+msgid "Western Sahara"
+msgstr "Западна Сахара"
+
+msgid "Yemen"
+msgstr "Йемен"
+
+msgid "Yemen, Democratic, People's Democratic Republic of"
+msgstr "Йемен, Демократична, Народна демократична република"
+
+msgid "Yemen, Yemen Arab Republic"
+msgstr "Йемен, Арабска република"
+
+msgid "Yugoslavia, Socialist Federal Republic of"
+msgstr "Югославия, Социалистическа федеративна република"
+
+msgid "Zaire, Republic of"
+msgstr "Заир, Република"
+
+msgid "Zambia"
+msgstr "Замбия"
+
+msgid "Zimbabwe"
+msgstr "Зимбабве"
+
+msgid "Åland Islands"
+msgstr "Аландски острови"

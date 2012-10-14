@@ -1,0 +1,212 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: iso_15924\n"
+"Report-Msgid-Bugs-To: Debian iso-codes team <pkg-isocodes-devel@lists.alioth."
+"debian.org>\n"
+"POT-Creation-Date: 2012-02-09 22:36+0100\n"
+"PO-Revision-Date: 2007-09-09 16:07+0200\n"
+"Last-Translator: Tobias Quathamer <toddy@debian.org>\n"
+"Language-Team: Japanese\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: KBabel 1.11.4\n"
+
+msgid "Arabic"
+msgstr "アラビア文字"
+
+msgid "Armenian"
+msgstr "アルメニア文字"
+
+msgid "Balinese"
+msgstr "バリ文字"
+
+msgid "Batak"
+msgstr "バタク文字"
+
+msgid "Bengali"
+msgstr "ベンガル文字"
+
+msgid "Blissymbols"
+msgstr "ブリスシンボル"
+
+msgid "Bopomofo"
+msgstr "注音字母"
+
+msgid "Brahmi"
+msgstr "ブラーフミー文字"
+
+msgid "Braille"
+msgstr "ブライユ点字"
+
+msgid "Buginese"
+msgstr "ブギス文字"
+
+msgid "Buhid"
+msgstr "ブヒッド文字"
+
+msgid "Cham"
+msgstr "チャム文字"
+
+msgid "Cherokee"
+msgstr "チェロキー文字"
+
+msgid "Cirth"
+msgstr "キアス文字"
+
+msgid "Coptic"
+msgstr "コプト文字"
+
+msgid "Cypriot"
+msgstr "キプロス文字"
+
+msgid "Cyrillic"
+msgstr "キリル文字"
+
+msgid "Egyptian demotic"
+msgstr "エジプト民衆文字"
+
+msgid "Egyptian hieratic"
+msgstr "エジプト神官文字"
+
+msgid "Egyptian hieroglyphs"
+msgstr "エジプト聖刻文字"
+
+msgid "Glagolitic"
+msgstr "グラゴール文字"
+
+msgid "Gothic"
+msgstr "ゴート文字"
+
+msgid "Greek"
+msgstr "ギリシャ文字"
+
+msgid "Gujarati"
+msgstr "グジャラート文字"
+
+msgid "Gurmukhi"
+msgstr "グルムキー文字"
+
+msgid "Hebrew"
+msgstr "ヘブライ文字"
+
+msgid "Hiragana"
+msgstr "ひらがな"
+
+msgid "Javanese"
+msgstr "ジャワ文字"
+
+msgid "Kannada"
+msgstr "カンナダ文字"
+
+msgid "Katakana"
+msgstr "カタカナ"
+
+msgid "Kharoshthi"
+msgstr "カローシュティー文字"
+
+msgid "Khmer"
+msgstr "クメール文字"
+
+msgid "Lao"
+msgstr "ラオ文字"
+
+msgid "Latin"
+msgstr "ラテン文字"
+
+msgid "Limbu"
+msgstr "リンブ文字"
+
+msgid "Linear B"
+msgstr "線文字B"
+
+msgid "Malayalam"
+msgstr "マラヤーラム文字"
+
+msgid "Mayan hieroglyphs"
+msgstr "マヤ象形文字"
+
+msgid "Mongolian"
+msgstr "モンゴル文字"
+
+msgid "New Tai Lue"
+msgstr "新タイ・ルー文字"
+
+msgid "Ogham"
+msgstr "オガム文字"
+
+msgid "Old Hungarian"
+msgstr "古代ハンガリー文字"
+
+msgid "Old Persian"
+msgstr "古代ペルシア文字"
+
+msgid "Oriya"
+msgstr "オリヤー文字"
+
+msgid "Osmanya"
+msgstr "オスマニア文字"
+
+msgid "Pahawh Hmong"
+msgstr "パハウ・フモン文字"
+
+msgid "Phags-pa"
+msgstr "パスパ文字"
+
+msgid "Phoenician"
+msgstr "フェニキア文字"
+
+msgid "Rongorongo"
+msgstr "ロンゴロンゴ文字"
+
+msgid "Runic"
+msgstr "ルーン文字"
+
+msgid "Sarati"
+msgstr "サラティ文字"
+
+msgid "Sinhala"
+msgstr "シンハラ文字"
+
+msgid "Syloti Nagri"
+msgstr "シロティ・ナグリ文字"
+
+msgid "Syriac"
+msgstr "シリア文字"
+
+msgid "Tagbanwa"
+msgstr "タグバンワ文字"
+
+msgid "Tai Le"
+msgstr "タイレ文字"
+
+msgid "Tamil"
+msgstr "タミール文字"
+
+msgid "Telugu"
+msgstr "テルグ文字"
+
+msgid "Tengwar"
+msgstr "テングワール文字"
+
+msgid "Thaana"
+msgstr "ターナ文字"
+
+msgid "Thai"
+msgstr "タイ文字"
+
+msgid "Tibetan"
+msgstr "チベット文字"
+
+msgid "Ugaritic"
+msgstr "ウガリト文字"
+
+msgid "Unified Canadian Aboriginal Syllabics"
+msgstr "統合カナダ先住民記号"
+
+msgid "Vai"
+msgstr "ヴァイ文字"
+
+msgid "Yi"
+msgstr "イ文字"

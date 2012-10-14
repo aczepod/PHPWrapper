@@ -1,0 +1,730 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: iso_639_3\n"
+"Report-Msgid-Bugs-To: Debian iso-codes team <pkg-isocodes-devel@lists.alioth."
+"debian.org>\n"
+"POT-Creation-Date: 2012-06-26 09:55+0200\n"
+"PO-Revision-Date: 2002-01-05 19:35+0000\n"
+"Last-Translator: Alastair McKinstry <mckinstry@debian.org>\n"
+"Language-Team: Maltese <mt@li.org>\n"
+"Language: mt\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+msgid "Acoli"
+msgstr "Akoli"
+
+msgid "Adangme"
+msgstr "Adangme"
+
+msgid "Afar"
+msgstr "Afar"
+
+msgid "Afrihili"
+msgstr "Afriħili"
+
+msgid "Afrikaans"
+msgstr "Afrikaans"
+
+msgid "Aleut"
+msgstr "Aleut"
+
+msgid "Arabic"
+msgstr "Għarbi"
+
+msgid "Aragonese"
+msgstr "Aragonese"
+
+msgid "Arapaho"
+msgstr "Arapaħo"
+
+msgid "Arawak"
+msgstr "Arawak"
+
+msgid "Assamese"
+msgstr "Assamese"
+
+msgid "Avestan"
+msgstr "Avestan"
+
+msgid "Awadhi"
+msgstr "Awadħi"
+
+msgid "Aymara"
+msgstr "Ajmara"
+
+msgid "Azerbaijani"
+msgstr "Ażerbajġani"
+
+msgid "Baluchi"
+msgstr "Baluċi"
+
+msgid "Bambara"
+msgstr "Bambara"
+
+msgid "Bashkir"
+msgstr "Baxkir"
+
+msgid "Basque"
+msgstr "Bask"
+
+msgid "Beja"
+msgstr "Beja"
+
+msgid "Bengali"
+msgstr "Bengali"
+
+msgid "Bhojpuri"
+msgstr "Bojpuri"
+
+msgid "Bikol"
+msgstr "Bikol"
+
+msgid "Bislama"
+msgstr "Bislama"
+
+msgid "Braj"
+msgstr "Braj"
+
+msgid "Breton"
+msgstr "Breton"
+
+msgid "Bulgarian"
+msgstr "Bulgaru"
+
+msgid "Burmese"
+msgstr "Burmiż"
+
+msgid "Caddo"
+msgstr "Kaddo"
+
+msgid "Catalan"
+msgstr "Katalan"
+
+msgid "Cebuano"
+msgstr "Sibwano"
+
+msgid "Chagatai"
+msgstr "Ċagataj"
+
+msgid "Chamorro"
+msgstr "Ċamorro"
+
+msgid "Cherokee"
+msgstr "Ċerokij"
+
+msgid "Cheyenne"
+msgstr "Xajenn"
+
+msgid "Chibcha"
+msgstr "Ċibċa"
+
+msgid "Chinese"
+msgstr "Ċiniż"
+
+msgid "Chipewyan"
+msgstr "Ċipewjan"
+
+msgid "Choctaw"
+msgstr "Ċostaw"
+
+msgid "Chuvash"
+msgstr "Ċuvax"
+
+msgid "Coptic"
+msgstr "Koptiku"
+
+msgid "Croatian"
+msgstr "Kroat"
+
+msgid "Czech"
+msgstr "Kżekk"
+
+msgid "Dakota"
+msgstr "Dakota"
+
+msgid "Danish"
+msgstr "Daniż"
+
+msgid "Delaware"
+msgstr "Delawerjan"
+
+msgid "Dinka"
+msgstr "Dinka"
+
+msgid "Dogrib"
+msgstr "Dogrib"
+
+msgid "Duala"
+msgstr "Dwala"
+
+msgid "Dutch"
+msgstr "Olandiż"
+
+msgid "Dyula"
+msgstr "Djula"
+
+msgid "Dzongkha"
+msgstr "Dżongka"
+
+msgid "Efik"
+msgstr "Efik"
+
+msgid "Egyptian (Ancient)"
+msgstr "Eġizzjan (Antik)"
+
+msgid "Ekajuk"
+msgstr "Ekajuk"
+
+msgid "Elamite"
+msgstr "Elamit"
+
+msgid "English, Middle (1100-1500)"
+msgstr "Ingliż, Medjevali (1100-1500)"
+
+msgid "Erzya"
+msgstr "Erzya"
+
+msgid "Esperanto"
+msgstr "Esperanto"
+
+msgid "Estonian"
+msgstr "Estonjan"
+
+msgid "Ewe"
+msgstr "Ewe"
+
+msgid "Ewondo"
+msgstr "Ewondo"
+
+msgid "Faroese"
+msgstr "Fawriż"
+
+msgid "Fijian"
+msgstr "Fiġi"
+
+msgid "Finnish"
+msgstr "Finlandiż"
+
+msgid "Fon"
+msgstr "Fon"
+
+msgid "French"
+msgstr "Franċiż"
+
+msgid "Fulah"
+msgstr "Fulaħ"
+
+msgid "Ga"
+msgstr "Ga"
+
+msgid "Ganda"
+msgstr "Ganda"
+
+msgid "Gayo"
+msgstr "Gajo"
+
+msgid "German"
+msgstr "Ġermaniż"
+
+msgid "Gondi"
+msgstr "Gondi"
+
+msgid "Gorontalo"
+msgstr "Gorontalo"
+
+msgid "Gothic"
+msgstr "Gotiku"
+
+msgid "Greek, Ancient (to 1453)"
+msgstr "Grieg, Antik (to 1453)"
+
+msgid "Gujarati"
+msgstr "Guġarati"
+
+msgid "Haida"
+msgstr "Ħajda"
+
+msgid "Hausa"
+msgstr "Ħawsa"
+
+msgid "Hawaiian"
+msgstr "Ħawajjan"
+
+msgid "Hebrew"
+msgstr "Lhudi"
+
+msgid "Hiligaynon"
+msgstr "Hiligaynon"
+
+msgid "Hindi"
+msgstr "Ħindi"
+
+msgid "Hittite"
+msgstr "Ħittit"
+
+msgid "Hmong"
+msgstr "Ħmong"
+
+msgid "Hungarian"
+msgstr "Ungeriż"
+
+msgid "Hupa"
+msgstr "Ħupa"
+
+msgid "Iban"
+msgstr "Iban"
+
+msgid "Icelandic"
+msgstr "Islandiż"
+
+msgid "Ido"
+msgstr "Ido"
+
+msgid "Igbo"
+msgstr "Igbo"
+
+msgid "Iloko"
+msgstr "Iloko"
+
+msgid "Interlingue"
+msgstr "Interlingue"
+
+msgid "Inuktitut"
+msgstr "Inukitut"
+
+msgid "Inupiaq"
+msgstr "Inupjak"
+
+msgid "Irish"
+msgstr "Irlandiż"
+
+msgid "Irish, Middle (900-1200)"
+msgstr "Irlandiż, Medjevali (900-1200)"
+
+msgid "Irish, Old (to 900)"
+msgstr "Irlandiż, Antik (sa l-900)"
+
+msgid "Italian"
+msgstr "Taljan"
+
+msgid "Japanese"
+msgstr "Ġappuniż"
+
+msgid "Kabardian"
+msgstr "Kabardian"
+
+msgid "Kabyle"
+msgstr "Kabuljan"
+
+msgid "Kachin"
+msgstr "Kaċin"
+
+msgid "Kannada"
+msgstr "Kannada"
+
+msgid "Kara-Kalpak"
+msgstr "Kara-Kalpak"
+
+msgid "Karachay-Balkar"
+msgstr "Karachay-Balkar"
+
+msgid "Kashmiri"
+msgstr "Kaxmiri"
+
+msgid "Kashubian"
+msgstr "Kashubian"
+
+msgid "Kawi"
+msgstr "Kawi"
+
+msgid "Kazakh"
+msgstr "Każak"
+
+msgid "Kikuyu"
+msgstr "Kikuju"
+
+msgid "Kimbundu"
+msgstr "Kimbundu"
+
+msgid "Kinyarwanda"
+msgstr "Kinjarwanda"
+
+msgid "Kirghiz"
+msgstr "Kirgiż"
+
+msgid "Komi"
+msgstr "Komi"
+
+msgid "Kongo"
+msgstr "Kongo"
+
+msgid "Korean"
+msgstr "Korean"
+
+msgid "Kpelle"
+msgstr "Kpelle"
+
+msgid "Kuanyama"
+msgstr "Kuanyama"
+
+msgid "Kumyk"
+msgstr "Kumiku"
+
+msgid "Kutenai"
+msgstr "Kutenaj"
+
+msgid "Lahnda"
+msgstr "Landa"
+
+msgid "Lamba"
+msgstr "Lamba"
+
+msgid "Lao"
+msgstr "Lao"
+
+msgid "Latvian"
+msgstr "Latvjan"
+
+msgid "Lingala"
+msgstr "Lingaljan"
+
+msgid "Lithuanian"
+msgstr "Litwanjan"
+
+msgid "Lojban"
+msgstr "Lojban"
+
+msgid "Lozi"
+msgstr "Lożi"
+
+msgid "Luba-Katanga"
+msgstr "Luba-Katanga"
+
+msgid "Luba-Lulua"
+msgstr "Luba-Luluwa"
+
+msgid "Luiseno"
+msgstr "Luwisinuż"
+
+msgid "Lule Sami"
+msgstr "Lule Sami"
+
+msgid "Lunda"
+msgstr "Lunda"
+
+msgid "Macedonian"
+msgstr "Maċedonjan"
+
+msgid "Makasar"
+msgstr "Makasar"
+
+msgid "Malagasy"
+msgstr "Malagażi"
+
+msgid "Malayalam"
+msgstr "Malajalam"
+
+msgid "Maltese"
+msgstr "Malti"
+
+msgid "Manchu"
+msgstr "Manċurjan"
+
+msgid "Mandar"
+msgstr "Mandar"
+
+msgid "Mandingo"
+msgstr "Mandingwan"
+
+msgid "Manx"
+msgstr "Manks"
+
+msgid "Maori"
+msgstr "Maori"
+
+msgid "Minangkabau"
+msgstr "Minangkabaw"
+
+msgid "Mohawk"
+msgstr "Moħak"
+
+msgid "Moksha"
+msgstr "Moksha"
+
+msgid "Nauru"
+msgstr "Nawuru"
+
+msgid "Ndebele, North"
+msgstr "Ndebele, ta' Fuq"
+
+msgid "Ndebele, South"
+msgstr "Ndebele, t'Isfel"
+
+msgid "Neapolitan"
+msgstr "Neapolitan"
+
+msgid "Nias"
+msgstr "Nijas"
+
+msgid "Niuean"
+msgstr "Nijuwejan"
+
+msgid "Norse, Old"
+msgstr "Skandinav, Antik"
+
+msgid "Nyankole"
+msgstr "Nyankole"
+
+msgid "Nyoro"
+msgstr "Njoro"
+
+msgid "Nzima"
+msgstr "Nżima"
+
+msgid "Ojibwa"
+msgstr "Oġibwa"
+
+msgid "Oromo"
+msgstr "Oromo (Afan)"
+
+msgid "Osage"
+msgstr "Osaġjan"
+
+msgid "Pahlavi"
+msgstr "Paħlavi"
+
+msgid "Palauan"
+msgstr "Palawjan"
+
+msgid "Pampanga"
+msgstr "Pampamga"
+
+msgid "Papiamento"
+msgstr "Papjamento"
+
+msgid "Polish"
+msgstr "Pollakk"
+
+msgid "Portuguese"
+msgstr "Portugiż"
+
+msgid "Quechua"
+msgstr "Keċwa"
+
+msgid "Rajasthani"
+msgstr "Raġastani"
+
+msgid "Rapanui"
+msgstr "Rapanwi"
+
+msgid "Romanian"
+msgstr "Rumen"
+
+msgid "Rundi"
+msgstr "Rundi"
+
+msgid "Russian"
+msgstr "Russu"
+
+msgid "Samoan"
+msgstr "Samojan"
+
+msgid "Sandawe"
+msgstr "Sandawe"
+
+msgid "Sango"
+msgstr "Sango"
+
+msgid "Sanskrit"
+msgstr "Sanskrit"
+
+msgid "Santali"
+msgstr "Santali"
+
+msgid "Sasak"
+msgstr "Saska"
+
+msgid "Scots"
+msgstr "Skoċċiż"
+
+msgid "Selkup"
+msgstr "Selkup"
+
+msgid "Serbian"
+msgstr "Serb"
+
+msgid "Serer"
+msgstr "Serer"
+
+msgid "Sidamo"
+msgstr "Sidamo"
+
+msgid "Siksika"
+msgstr "Siksika"
+
+msgid "Sindhi"
+msgstr "Sindi"
+
+msgid "Slovak"
+msgstr "Slovakk"
+
+msgid "Slovenian"
+msgstr "Sloven"
+
+msgid "Somali"
+msgstr "Somali"
+
+msgid "Sotho, Northern"
+msgstr "Soto, ta' Fuq"
+
+msgid "Sotho, Southern"
+msgstr "Soto, t'Isfel"
+
+msgid "Spanish"
+msgstr "Spanjol"
+
+msgid "Sukuma"
+msgstr "Sukuma"
+
+msgid "Sundanese"
+msgstr "Sundaniż"
+
+msgid "Susu"
+msgstr "Susu"
+
+msgid "Swati"
+msgstr "Swati"
+
+msgid "Swedish"
+msgstr "Svediż"
+
+msgid "Tagalog"
+msgstr "Tagalog"
+
+msgid "Tamashek"
+msgstr "Tamaxek"
+
+msgid "Tamil"
+msgstr "Tamil"
+
+msgid "Tatar"
+msgstr "Tatar"
+
+msgid "Telugu"
+msgstr "Telugu"
+
+msgid "Tereno"
+msgstr "Tereno"
+
+msgid "Tetum"
+msgstr "Tetum"
+
+msgid "Thai"
+msgstr "Tai"
+
+msgid "Tibetan"
+msgstr "Tibetjan"
+
+msgid "Timne"
+msgstr "Timne"
+
+msgid "Tiv"
+msgstr "Tiv"
+
+msgid "Tok Pisin"
+msgstr "Tok Pisin"
+
+msgid "Tokelau"
+msgstr "Tokelau"
+
+msgid "Tonga (Nyasa)"
+msgstr "Tonga (Njasa)"
+
+msgid "Tonga (Tonga Islands)"
+msgstr "Tongan (Gżejjer ta' Tonga)"
+
+msgid "Tsonga"
+msgstr "Tsonga"
+
+msgid "Tswana"
+msgstr "Zwana"
+
+msgid "Tumbuka"
+msgstr "Tumbuka"
+
+msgid "Turkish"
+msgstr "Tork"
+
+msgid "Turkish, Ottoman (1500-1928)"
+msgstr "Tork (Imperu Ottoman)"
+
+msgid "Turkmen"
+msgstr "Turkmeni"
+
+msgid "Tuvinian"
+msgstr "Tuvinjan"
+
+msgid "Twi"
+msgstr "Twi"
+
+msgid "Udmurt"
+msgstr "Udmurt"
+
+msgid "Ugaritic"
+msgstr "Ugaritiku"
+
+msgid "Uighur"
+msgstr "Wigur"
+
+msgid "Umbundu"
+msgstr "Umbundu"
+
+msgid "Undetermined"
+msgstr "Indeterminat"
+
+msgid "Urdu"
+msgstr "Urdu"
+
+msgid "Uzbek"
+msgstr "Użbek"
+
+msgid "Vai"
+msgstr "Vai"
+
+msgid "Venda"
+msgstr "Venda"
+
+msgid "Votic"
+msgstr "Votik"
+
+msgid "Walloon"
+msgstr "Walloon"
+
+msgid "Welsh"
+msgstr "Welsh"
+
+msgid "Wolof"
+msgstr "Wolof"
+
+msgid "Yakut"
+msgstr "Jakut"
+
+msgid "Yao"
+msgstr "Jao"
+
+msgid "Yiddish"
+msgstr "Jiddix"
+
+msgid "Yoruba"
+msgstr "Joruba"
+
+msgid "Zapotec"
+msgstr "Żapotek"
+
+msgid "Zenaga"
+msgstr "Żenaga"
+
+msgid "Zuni"
+msgstr "Żuni"

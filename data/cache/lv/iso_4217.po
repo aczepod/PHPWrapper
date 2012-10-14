@@ -1,0 +1,841 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: iso_4217\n"
+"Report-Msgid-Bugs-To: Debian iso-codes team <pkg-isocodes-devel@lists.alioth."
+"debian.org>\n"
+"POT-Creation-Date: 2010-04-05 14:35+0200\n"
+"PO-Revision-Date: 2011-09-01 23:56+0300\n"
+"Last-Translator: Rihards Priedītis <rprieditis@gmail.com>\n"
+"Language-Team: Latvian <translation-team-lv@lists.sourceforge.net>\n"
+"Language: lv\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Lokalize 1.1\n"
+"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n != 0 ? 1 : "
+"2);\n"
+
+msgid "Afghani"
+msgstr "Afgāns"
+
+msgid "Albanian Old Lek"
+msgstr "Albānijas vecais leks"
+
+msgid "Algerian Dinar"
+msgstr "Alžīrijas dinārs"
+
+msgid "Andorran Franc"
+msgstr "Andoras franks"
+
+msgid "Andorran Peseta"
+msgstr "Andoras peseta"
+
+msgid "Angola Kwanza Reajustado"
+msgstr "Angola kvanza Reajustado"
+
+msgid "Angola New Kwanza"
+msgstr "Angola jaunā kvanza"
+
+msgid "Angolan New Kwanza"
+msgstr "Angolas jaunais kvanza"
+
+msgid "Argentine Austral"
+msgstr "Argentīnas australs"
+
+msgid "Argentine Peso"
+msgstr "Argentīnas peso"
+
+msgid "Argentine peso ley"
+msgstr "Argentīnas peso leja"
+
+msgid "Argentine peso moneda nacional"
+msgstr "Argentīnas peso moneda nacional"
+
+msgid "Armenian Dram"
+msgstr "Armēņu drams"
+
+msgid "Aruban Guilder"
+msgstr "Arubas guldenis"
+
+msgid "Australian Dollar"
+msgstr "Austrālijas dolārs"
+
+msgid "Austrian Schilling"
+msgstr "Austrijas šiliņš"
+
+msgid "Azerbaijanian Manat"
+msgstr "Azerbaidžānas manats"
+
+msgid "Bahamian Dollar"
+msgstr "Bahamu dolārs"
+
+msgid "Bahraini Dinar"
+msgstr "Bahreinas dinārs"
+
+msgid "Baht"
+msgstr "Bāts"
+
+msgid "Balboa"
+msgstr "Balboa"
+
+msgid "Barbados Dollar"
+msgstr "Barbadosas dolārs"
+
+msgid "Belarussian Rouble"
+msgstr "Baltkrievijas rublis"
+
+msgid "Belarussian Ruble"
+msgstr "Baltkrievijas rubelis"
+
+msgid "Belgian Franc"
+msgstr "Beļģijas franks"
+
+msgid "Belgian Franc Convertible"
+msgstr "Beļģijas franks konvertējams"
+
+msgid "Belgian Franc Financial"
+msgstr "Beļģijas franks finanšu"
+
+msgid "Belize Dollar"
+msgstr "Belizas dolārs"
+
+msgid "Bermudian Dollar"
+msgstr "Bermudu salu dolārs"
+
+msgid "Bolivar Fuerte"
+msgstr "Stiprais bolivārs"
+
+msgid "Bolivian Peso"
+msgstr "Bolīvijas peso"
+
+msgid "Boliviano"
+msgstr "Boliviano"
+
+msgid "Bosnia and Herzegovina Dinar"
+msgstr "Bosnijas un Hercegovinas dinārs"
+
+msgid "Brazilian Cruzado"
+msgstr "Brazīlijas kruzado"
+
+msgid "Brazilian Cruzeiro"
+msgstr "Brazīlijas kruzeiro"
+
+msgid "Brazilian Cruzeiro Real"
+msgstr "Brazīlijas kruzeiro reāls"
+
+msgid "Brazilian New Cruzado"
+msgstr "Brazīlijas jaunais kruzado"
+
+msgid "Brazilian Real"
+msgstr "Brazīlijas reāls"
+
+msgid "Brunei Dollar"
+msgstr "Brunejas dolārs"
+
+msgid "Bulgarian Lev"
+msgstr "Bulgārijas leva"
+
+msgid "Bulgarian Lev A/52"
+msgstr "Bulgāru levs A/52"
+
+msgid "Bulgarian Lev A/62"
+msgstr "Bulgāru levs A/62"
+
+msgid "Bulgarian Lev A/99"
+msgstr "Bulgāru levs A/99"
+
+msgid "Burundi Franc"
+msgstr "Burundi franks"
+
+msgid "CFA Franc BCEAO"
+msgstr "Rietumāfrikas CFA franks"
+
+msgid "CFA Franc BEAC"
+msgstr "Centrālāfrikas CFA franks"
+
+msgid "CFP Franc"
+msgstr "Polinēzijas franks"
+
+msgid "Canadian Dollar"
+msgstr "Kanādas dolārs"
+
+msgid "Cape Verde Escudo"
+msgstr "Kaboverdes eskudo"
+
+msgid "Cayman Islands Dollar"
+msgstr "Kaimanu dolārs"
+
+msgid "Cedi"
+msgstr "Sedi"
+
+msgid "Chilean Peso"
+msgstr "Čīles peso"
+
+msgid "Chinese Peoples Bank Dollar"
+msgstr "Ķīnas Tautas Bankas dolārs"
+
+msgid "Code for testing purposes"
+msgstr "Kods testēšanas nolūkam"
+
+msgid "Colombian Peso"
+msgstr "Kolumbijas peso"
+
+msgid "Comoro Franc"
+msgstr "Komoru franks"
+
+msgid "Congolese Franc"
+msgstr "KDR franks"
+
+msgid "Convertible Marks"
+msgstr "Konvertējamā marka"
+
+msgid "Cordoba Oro"
+msgstr "Kordovas oro"
+
+msgid "Costa Rican Colon"
+msgstr "Kostarikas kolons"
+
+msgid "Croatian Dinar"
+msgstr "Horvātijas dinārs"
+
+msgid "Croatian Kuna"
+msgstr "Horvātijas kuna"
+
+msgid "Cuban Peso"
+msgstr "Kubas peso"
+
+msgid "Cyprus Pound"
+msgstr "Kipras mārciņa"
+
+msgid "Czech Koruna"
+msgstr "Čehijas krona"
+
+msgid "Czechoslovak Koruna"
+msgstr "Čehoslovākijas krona"
+
+msgid "Czechoslovak Krona A/53"
+msgstr "Čehoslovākijas krona A/53"
+
+msgid "Dalasi"
+msgstr "Dalasi"
+
+msgid "Danish Krone"
+msgstr "Dānijas krona"
+
+msgid "Denar"
+msgstr "Denārs"
+
+msgid "Deutsche Mark"
+msgstr "Vācu marka"
+
+msgid "Djibouti Franc"
+msgstr "Džibutijas franks"
+
+msgid "Dobra"
+msgstr "Dobra"
+
+msgid "Dominican Peso"
+msgstr "Dominikanas peso"
+
+msgid "Dong"
+msgstr "Dongi"
+
+msgid "East Caribbean Dollar"
+msgstr "Austrumkarību dolārs"
+
+msgid "East German Mark of the GDR"
+msgstr "VDR Austrumvācijas marka"
+
+msgid "Ecuador Sucre"
+msgstr "Ekvadoras sukre"
+
+msgid "Ecuador Unidad de Valor Constante UVC"
+msgstr "Ekvadoras Unidad de Valor Constante UVC"
+
+msgid "Egyptian Pound"
+msgstr "Ēģiptes mārciņa"
+
+msgid "El Salvador Colon"
+msgstr "Salvadoras kolons"
+
+msgid "Equatorial Guinea Ekwele"
+msgstr "Ekvatoriālās Gvinejas ekvele"
+
+msgid "Ethiopian Birr"
+msgstr "Etiopijas birs"
+
+msgid "Euro"
+msgstr "Eiro"
+
+msgid "European Composite Unit (EURCO)"
+msgstr "Eiropas saliktā vienība (EURCO)"
+
+msgid "European Currency Unit ECU"
+msgstr "Eiropas valūtas vienība ECU"
+
+msgid "European Monetary Unit (E.M.U.-6)"
+msgstr "Eiropas naudas vienība (E.M.U.-6)"
+
+msgid "European Unit of Account 17 (E.U.A.-17)"
+msgstr "Eiropas konta vienība 17 (E.U.A.-17)"
+
+msgid "European Unit of Account 9 (E.U.A.-9)"
+msgstr "Eiropas konta vienība 9 (E.U.A.-9)"
+
+msgid "Falkland Islands Pound"
+msgstr "Folklenda salu mārciņa"
+
+msgid "Fiji Dollar"
+msgstr "Fidži dolārs"
+
+msgid "Finnish Markka"
+msgstr "Somijas marka"
+
+msgid "Forint"
+msgstr "Forints"
+
+msgid "French Franc"
+msgstr "Francijas franks"
+
+msgid "Georgian Coupon"
+msgstr "Gruzijas kupons"
+
+msgid "Ghana Cedi"
+msgstr "Ganas sedi"
+
+msgid "Gibraltar Pound"
+msgstr "Gibraltāra mārciņa"
+
+msgid "Gold"
+msgstr "Zelts"
+
+msgid "Gold-Franc"
+msgstr "Zelta franks"
+
+msgid "Gourde"
+msgstr "Gurds"
+
+msgid "Greek Drachma"
+msgstr "Grieķijas drahma"
+
+msgid "Guarani"
+msgstr "Gvarani"
+
+msgid "Guinea Escudo"
+msgstr "Gvinejas eskudo"
+
+msgid "Guinea Franc"
+msgstr "Gvinejas franks"
+
+msgid "Guinea Syli"
+msgstr "Gvinejas sili"
+
+msgid "Guinea-Bissau Peso"
+msgstr "Gvinejas peso"
+
+msgid "Guyana Dollar"
+msgstr "Gajānas dolārs"
+
+msgid "Hong Kong Dollar"
+msgstr "Honkongas dolārs"
+
+msgid "Hryvnia"
+msgstr "Grivna"
+
+msgid "Iceland Krona"
+msgstr "Islandes krona"
+
+msgid "Iceland Old Krona"
+msgstr "Islandes vecā krona"
+
+msgid "Indian Rupee"
+msgstr "Indijas rūpija"
+
+msgid "Iranian Rial"
+msgstr "Irānas riāls"
+
+msgid "Iraqi Dinar"
+msgstr "Irākas dinārs"
+
+msgid "Irish Pound"
+msgstr "Īrijas mārciņa"
+
+msgid "Israeli Old Shekel"
+msgstr "Izraēlas vecais šekels"
+
+msgid "Israeli Pound"
+msgstr "Izraēlas mārciņa"
+
+msgid "Italian Lira"
+msgstr "Itālijas lira"
+
+msgid "Jamaican Dollar"
+msgstr "Jamaikas dolārs"
+
+msgid "Jordanian Dinar"
+msgstr "Jordānijas dinārs"
+
+msgid "Kenyan Shilling"
+msgstr "Kenijas šiliņš"
+
+msgid "Kina"
+msgstr "Kina"
+
+msgid "Kip"
+msgstr "Kips"
+
+msgid "Kroon"
+msgstr "Igaunijas krona"
+
+msgid "Kuwaiti Dinar"
+msgstr "Kuveitas dinārs"
+
+msgid "Kwacha"
+msgstr "Kvača"
+
+msgid "Kwanza"
+msgstr "Kvanza"
+
+msgid "Kyat"
+msgstr "Kjats"
+
+msgid "Lao kip"
+msgstr "Laosas kipa"
+
+msgid "Lari"
+msgstr "Lari"
+
+msgid "Latvian Lats"
+msgstr "Latvijas lats"
+
+msgid "Latvian Ruble"
+msgstr "Latvijas rublis"
+
+msgid "Lebanese Pound"
+msgstr "Libānas mārciņa"
+
+msgid "Lek"
+msgstr "Leks"
+
+msgid "Lempira"
+msgstr "Lempīra"
+
+msgid "Leone"
+msgstr "Leone"
+
+msgid "Lesotho Maloti"
+msgstr "Lesoto Maloti"
+
+msgid "Liberian Dollar"
+msgstr "Libērijas dolārs"
+
+msgid "Libyan Dinar"
+msgstr "Lībijas dinārs"
+
+msgid "Lilangeni"
+msgstr "Lilangeni"
+
+msgid "Lithuanian Litas"
+msgstr "Lietuvas lits"
+
+msgid "Lithuanian Talonas"
+msgstr "Lietuvas talons"
+
+msgid "Loti"
+msgstr "Loti"
+
+msgid "Luxembourg Convertible Franc"
+msgstr "Luksemburgas konvertējamais franks"
+
+msgid "Luxembourg Financial Franc"
+msgstr "Luksemburgas finanšu franks"
+
+msgid "Luxembourg Franc"
+msgstr "Luksemburgas franks"
+
+msgid "Malagasy Ariary"
+msgstr "Malgašu ariari"
+
+msgid "Malagasy Franc"
+msgstr "Malgašu franks"
+
+msgid "Malaysian Ringgit"
+msgstr "Malaizijas ringits"
+
+msgid "Maldive Rupee"
+msgstr "Maldīvijas rūpija"
+
+msgid "Mali Franc"
+msgstr "Mali franks"
+
+msgid "Maltese Lira"
+msgstr "Maltas lira"
+
+msgid "Maltese Pound"
+msgstr "Maltas mārciņa"
+
+msgid "Manat"
+msgstr "Manats"
+
+msgid "Mauritius Rupee"
+msgstr "Maurīcijas rūpija"
+
+msgid "Metical"
+msgstr "Metikals"
+
+msgid "Mexican Peso"
+msgstr "Meksikas peso"
+
+msgid "Mexican Unidad de Inversion (UDI)"
+msgstr "Meksikas Unidad de Inversion (UDI)"
+
+msgid "Moldovan Leu"
+msgstr "Moldovas leja"
+
+msgid "Moroccan Dirham"
+msgstr "Marokas dirhēms"
+
+msgid "Mozambique Escudo"
+msgstr "Mozambikas eskudo"
+
+msgid "Mozambique Metical"
+msgstr "Mozambikas metikals"
+
+msgid "Mvdol"
+msgstr "Mvdol"
+
+msgid "Naira"
+msgstr "Naira"
+
+msgid "Nakfa"
+msgstr "Nakfa"
+
+msgid "Namibia Dollar"
+msgstr "Namībijas dolārs"
+
+msgid "Nepalese Rupee"
+msgstr "Nepālas rūpija"
+
+msgid "Netherlands Antillian Guilder"
+msgstr "Nīderlandes Antiļu guldenis"
+
+msgid "Netherlands Guilder"
+msgstr "Nīderlandes guldenis"
+
+msgid "New Israeli Sheqel"
+msgstr "Jaunais Izraēlas šekels"
+
+msgid "New Leu"
+msgstr "Rumānijas leja"
+
+msgid "New Taiwan Dollar"
+msgstr "Jaunais Taivānas dolārs"
+
+msgid "New Turkish Lira"
+msgstr "Jaunā Turcijas lira"
+
+msgid "New Zaire"
+msgstr "Jaunā zaira"
+
+msgid "New Zealand Dollar"
+msgstr "Jaunzēlandes dolārs"
+
+msgid "Ngultrum"
+msgstr "Ngultrums"
+
+msgid "Nicaraguan Cordoba"
+msgstr "Nikaragvas kordoba"
+
+msgid "No currency"
+msgstr "Nav valūtas"
+
+msgid "North Korean Won"
+msgstr "Ziemeļkorejas vona"
+
+msgid "Norwegian Krone"
+msgstr "Norvēģijas krona"
+
+msgid "Nuevo Sol"
+msgstr "Jaunais sols"
+
+msgid "Old Uruguayan Peso"
+msgstr "Vecais Urugvajas peso"
+
+msgid "Ouguiya"
+msgstr "Ugija"
+
+msgid "Pa'anga"
+msgstr "Paanga"
+
+msgid "Pakistan Rupee"
+msgstr "Pakistānas rūpija"
+
+msgid "Palladium"
+msgstr "Pallādijs"
+
+msgid "Pataca"
+msgstr "Pataka"
+
+msgid "Peruvian Inti"
+msgstr "Peruāņu inti"
+
+msgid "Peruvian Sol"
+msgstr "Peruāņu sols"
+
+msgid "Peso Argentino"
+msgstr "Argentīnas peso"
+
+msgid "Peso Uruguayo"
+msgstr "Urugvajas peso"
+
+msgid "Philippine Peso"
+msgstr "Filipīnu peso"
+
+msgid "Platinum"
+msgstr "Platīns"
+
+msgid "Polish Złoty"
+msgstr "Polijas zlots"
+
+msgid "Portuguese Escudo"
+msgstr "Portugāles eskudo"
+
+msgid "Pound Sterling"
+msgstr "Sterliņu mārciņa"
+
+msgid "Pula"
+msgstr "Pula"
+
+msgid "Qatari Rial"
+msgstr "Kataras riāls"
+
+msgid "Quetzal"
+msgstr "Ketsals"
+
+msgid "RINET Funds Code"
+msgstr "RINET fondu kods"
+
+msgid "Rand"
+msgstr "Rands"
+
+msgid "Rhodesian Dollar"
+msgstr "Rodesijas dolārs"
+
+msgid "Rial Omani"
+msgstr "Omānas riāls"
+
+msgid "Riel"
+msgstr "Riels"
+
+msgid "Romanian Leu A/52"
+msgstr "Rumānijas leja A/52"
+
+msgid "Romanian Old Leu"
+msgstr "Rumānijas vecā leja"
+
+msgid "Rufiyaa"
+msgstr "Rūfija"
+
+msgid "Rupiah"
+msgstr "Indonēzijas rūpija"
+
+msgid "Russian Rouble"
+msgstr "Krievijas rublis"
+
+msgid "Russian Ruble"
+msgstr "Krievijas rublis"
+
+msgid "Rwanda Franc"
+msgstr "Ruandas franks"
+
+msgid "Saint Helena Pound"
+msgstr "Svētās Helēnas salas mārciņa"
+
+msgid "Saudi Riyal"
+msgstr "Saūda riāls"
+
+msgid "Serbian Dinar"
+msgstr "Serbijas dinārs"
+
+msgid "Seychelles Rupee"
+msgstr "Seišelu salu rūpija"
+
+msgid "Silver"
+msgstr "Sudrabs"
+
+msgid "Singapore Dollar"
+msgstr "Singapūras dolārs"
+
+msgid "Slovak Koruna"
+msgstr "Slovāku krona"
+
+msgid "Slovenian Tolar"
+msgstr "Slovēnijas tolars"
+
+msgid "Solomon Islands Dollar"
+msgstr "Zālamana salu dolārs"
+
+msgid "Som"
+msgstr "Soms"
+
+msgid "Somali Shilling"
+msgstr "Somālijas šiliņš"
+
+msgid "Somoni"
+msgstr "Somons"
+
+msgid "South African Financial Rand"
+msgstr "Dienvidāfrikas finanšu rends"
+
+msgid "Spanish Peseta"
+msgstr "Spāņu peseta"
+
+msgid "Spanish Peseta ('A' Account)"
+msgstr "Spāņu peseta ('A' konts)"
+
+msgid "Spanish Peseta (convertible)"
+msgstr "Spāņu peseta (konvertējama)"
+
+msgid "Special Drawing Rights"
+msgstr "Speciālās aizņēmuma tiesības"
+
+msgid "Sri Lanka Rupee"
+msgstr "Šrilankas rūpija"
+
+msgid "Sudanese Pound"
+msgstr "Sudānas mārciņa"
+
+msgid "Surinam Dollar"
+msgstr "Surinamas dolārs"
+
+msgid "Suriname Guilder"
+msgstr "Surinama guldenis"
+
+msgid "Swedish Krona"
+msgstr "Zviedrijas krona"
+
+msgid "Swiss Franc"
+msgstr "Šveices franks"
+
+msgid "Syrian Pound"
+msgstr "Sīrijas mārciņa"
+
+msgid "Tajik Rouble"
+msgstr "Tadžikistānas rublis"
+
+msgid "Taka"
+msgstr "Taka"
+
+msgid "Tala"
+msgstr "Tala"
+
+msgid "Tanzanian Shilling"
+msgstr "Tanzānijas šiliņš"
+
+msgid "Tenge"
+msgstr "Tenge"
+
+msgid "Timor Escudo"
+msgstr "Timoras eskudo"
+
+msgid "Trinidad and Tobago Dollar"
+msgstr "Trinidādas un Tobāgas dolārs"
+
+msgid "Tugrik"
+msgstr "Tugriks"
+
+msgid "Tunisian Dinar"
+msgstr "Tunisijas dinārs"
+
+msgid "Turkish Lira"
+msgstr "Turku lira"
+
+msgid "UAE Dirham"
+msgstr "AAE dirhēms"
+
+msgid "UIC-Franc"
+msgstr "UIC franks"
+
+msgid "US Dollar"
+msgstr "ASV dolārs"
+
+msgid "US Dollar (Next day)"
+msgstr "ASV dolārs (nākamā diena)"
+
+msgid "US Dollar (Same day)"
+msgstr "ASV dolārs (tā pati diena)"
+
+msgid "USSR Rouble"
+msgstr "PSRS rublis"
+
+msgid "Uganda Old Schilling"
+msgstr "Ugandas vecais šiliņš"
+
+msgid "Uganda Schilling"
+msgstr "Ugandas šiliņš"
+
+msgid "Uganda Shilling"
+msgstr "Ugandas šiliņš"
+
+msgid "Ukrainian Karbovanet"
+msgstr "Ukrainas karbovaņecs"
+
+msgid "Unidad de Valor Real"
+msgstr "Kolumbijas reāls"
+
+msgid "Unidades de fomento"
+msgstr "Unidades de fomento"
+
+msgid "Uruguay Peso en Unidades Indexadas"
+msgstr "Urugvajas peso en Unidades Indexadas"
+
+msgid "Uruguayan Peso"
+msgstr "Urugvajas peso"
+
+msgid "Uzbekistan Sum"
+msgstr "Uzbekistānas sums"
+
+msgid "Vatu"
+msgstr "Vatu"
+
+msgid "Venezuela Bolívar"
+msgstr "Venecuēlas bolivārs"
+
+msgid "Viet Nam Old Dong"
+msgstr "Vjetnamas vecā donga"
+
+msgid "WIR Euro"
+msgstr "WIR Eiro"
+
+msgid "WIR Franc"
+msgstr "WIR franks"
+
+msgid "Won"
+msgstr "Dienvidkorejas vona"
+
+msgid "Yemeni Dinar"
+msgstr "Jemenas dinārs"
+
+msgid "Yemeni Rial"
+msgstr "Jemenas riāls"
+
+msgid "Yen"
+msgstr "Jena"
+
+msgid "Yuan Renminbi"
+msgstr "Juana"
+
+msgid "Yugoslavian Dinar"
+msgstr "Dienvidslāvijas dinārs"
+
+msgid "Zaire"
+msgstr "Zaira"
+
+msgid "Zambian Kwacha"
+msgstr "Zambijas kvača"
+
+msgid "Zimbabwe Dollar"
+msgstr "Zimbabves dolārs"
+
+msgid "Zloty"
+msgstr "Zlots"

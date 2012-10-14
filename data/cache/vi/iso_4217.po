@@ -1,0 +1,834 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: iso_4217\n"
+"Report-Msgid-Bugs-To: Debian iso-codes team <pkg-isocodes-devel@lists.alioth."
+"debian.org>\n"
+"POT-Creation-Date: 2010-04-05 14:35+0200\n"
+"PO-Revision-Date: 2009-05-12 23:37+0930\n"
+"Last-Translator: Clytie Siddall <clytie@riverland.net.au>\n"
+"Language-Team: Vietnamese <vi-VN@googlegroups.com>\n"
+"Language: vi\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+"X-Generator: LocFactoryEditor 1.8\n"
+
+msgid "Afghani"
+msgstr "Đồng Ap-ga-ni"
+
+msgid "Albanian Old Lek"
+msgstr "Đồng Léc cũ An-ba-ni"
+
+msgid "Algerian Dinar"
+msgstr "Đồng Đi-nă An-giê-ri"
+
+msgid "Andorran Franc"
+msgstr "Đồng Frăng An-đoa-ra"
+
+msgid "Andorran Peseta"
+msgstr "Đồng Pe-xê-ta An-đoa-ra"
+
+msgid "Angola Kwanza Reajustado"
+msgstr "Đồng Cou-an-xa Rê-a-giu-x-ta-đô An-go-la"
+
+msgid "Angola New Kwanza"
+msgstr "Đồng Cou-an-xa mới An-go-la"
+
+msgid "Angolan New Kwanza"
+msgstr "Đồng Cou-an-xa mới An-go-la"
+
+msgid "Argentine Austral"
+msgstr "Đồng Au-x-tơ-ran Á-căn-đình"
+
+msgid "Argentine Peso"
+msgstr "Đồng Pê-xô Á-căn-đình"
+
+msgid "Argentine peso ley"
+msgstr "Đồng Pê-xô Lê Á-căn-đình"
+
+msgid "Argentine peso moneda nacional"
+msgstr "Đồng pe-xô tiền quốc gia"
+
+msgid "Armenian Dram"
+msgstr "Đồng Đơ-ram Ac-mê-ni"
+
+msgid "Aruban Guilder"
+msgstr "Đồng guin-đơn A-ru-ba"
+
+msgid "Australian Dollar"
+msgstr "Đô-la Úc"
+
+msgid "Austrian Schilling"
+msgstr "Đồng Silinh Ao"
+
+msgid "Azerbaijanian Manat"
+msgstr "Đồng Ma-nát Ai-xơ-bai-gianh"
+
+msgid "Bahamian Dollar"
+msgstr "Đô-la Ba-ha-ma"
+
+msgid "Bahraini Dinar"
+msgstr "Đồng Đi-nă Ba-rê-ni"
+
+msgid "Baht"
+msgstr "Đồng Băt"
+
+msgid "Balboa"
+msgstr "Đồng Ban-bô-a"
+
+msgid "Barbados Dollar"
+msgstr "Đô-la Ba-bê-đoxơ"
+
+msgid "Belarussian Rouble"
+msgstr "Đồng Rúp Be-la-ruxợ"
+
+msgid "Belarussian Ruble"
+msgstr "Đồng Rúp Be-la-ruxợ"
+
+msgid "Belgian Franc"
+msgstr "Đồng Frăng Bỉ"
+
+msgid "Belgian Franc Convertible"
+msgstr "Đồng Frăng Bỉ có thể chuyển đổi"
+
+msgid "Belgian Franc Financial"
+msgstr "Đồng Frăng Bỉ tài chính"
+
+msgid "Belize Dollar"
+msgstr "Đô-la Be-li-xơ"
+
+msgid "Bermudian Dollar"
+msgstr "Đô-la Bơ-mu-đa"
+
+msgid "Bolivar Fuerte"
+msgstr "Đồng Phu-e-tê Bo-li-vă"
+
+msgid "Bolivian Peso"
+msgstr "Đồng Pê-sô Bo-li-vi-a"
+
+msgid "Boliviano"
+msgstr "Đồng Bo-li-vi-a-nô"
+
+msgid "Bosnia and Herzegovina Dinar"
+msgstr "Đồng Đi-nă Bô-x-ni-a và Héc-xê-gô-vi-na"
+
+msgid "Brazilian Cruzado"
+msgstr "Đồng Cơ-ru-xa-đô Bra-xin"
+
+msgid "Brazilian Cruzeiro"
+msgstr "Đồng Cơ-ru-xi-e-rô Bra-xin"
+
+msgid "Brazilian Cruzeiro Real"
+msgstr "Đồng Cơ-ru-xi-e-rô Rê-an Bra-xin"
+
+msgid "Brazilian New Cruzado"
+msgstr "Đồng Cơ-ru-xa-đô mới Bra-xin"
+
+msgid "Brazilian Real"
+msgstr "Đồng Rê-ăn Braxin"
+
+msgid "Brunei Dollar"
+msgstr "Đô-la Bơ-ru-nei"
+
+msgid "Bulgarian Lev"
+msgstr "Đồng Lév Bảo Gia Lơi"
+
+msgid "Bulgarian Lev A/52"
+msgstr "Đồng Lév Bảo Gia Lơi A/52"
+
+msgid "Bulgarian Lev A/62"
+msgstr "Đồng Lév Bảo Gia Lơi A/62"
+
+msgid "Bulgarian Lev A/99"
+msgstr "Đồng Lév Bun-ga-ri A/99"
+
+msgid "Burundi Franc"
+msgstr "Đồng frăng Bu-run-đi"
+
+msgid "CFA Franc BCEAO"
+msgstr "Đồng Frăng CFA BCEAO"
+
+msgid "CFA Franc BEAC"
+msgstr "Đồng Frăng CFA BEAC"
+
+msgid "CFP Franc"
+msgstr "Đồng Frăng CFP"
+
+msgid "Canadian Dollar"
+msgstr "Đô-la Ca-na-đa"
+
+msgid "Cape Verde Escudo"
+msgstr "Đồng Ex-cu-đô Cáp Vea-đợ"
+
+msgid "Cayman Islands Dollar"
+msgstr "Đô-la Quần Đảo Cay-manh"
+
+msgid "Cedi"
+msgstr "Đồng Xe-đi"
+
+msgid "Chilean Peso"
+msgstr "Đồng Pê-sô Chi-lê"
+
+msgid "Chinese Peoples Bank Dollar"
+msgstr "Đô-la Ngân Hàng Nhân Dân Trung Quốc"
+
+msgid "Code for testing purposes"
+msgstr "Mã để thử ra"
+
+msgid "Colombian Peso"
+msgstr "Đồng Pê-sô Co-lom-bi-a"
+
+msgid "Comoro Franc"
+msgstr "Đồng Frăng Co-mo-rô"
+
+msgid "Convertible Marks"
+msgstr "Đồng Mác có thể chuyển đổi"
+
+msgid "Cordoba Oro"
+msgstr "Đồng Coa-đô-ba O-rô"
+
+msgid "Costa Rican Colon"
+msgstr "Đồng Co-lon Cốt-x-tha Ri-ca"
+
+msgid "Croatian Dinar"
+msgstr "Đồng Đi-nă Cợ-rô-a-ti-a"
+
+msgid "Croatian Kuna"
+msgstr "Đồng Cu-na Cơ-rô-a-ti-a"
+
+msgid "Cuban Peso"
+msgstr "Đồng Pê-sô Cu-ba"
+
+msgid "Cyprus Pound"
+msgstr "Đồng bảng Síp"
+
+msgid "Czech Koruna"
+msgstr "Đồng Ko-ru-na Séc"
+
+msgid "Czechoslovak Koruna"
+msgstr "Đồng Co-ru-na Tiệp Khắc"
+
+msgid "Czechoslovak Krona A/53"
+msgstr "Đồng Cơ-ro-na Tiệp Khắc A/53"
+
+msgid "Dalasi"
+msgstr "Đồng Đa-la-si"
+
+msgid "Danish Krone"
+msgstr "Đồng Cơ-rô-ne Đan Mạch"
+
+msgid "Denar"
+msgstr "Đồng Đi-nă"
+
+msgid "Deutsche Mark"
+msgstr "Đồng Mác Đức"
+
+msgid "Djibouti Franc"
+msgstr "Đồng Frăng Gi-bou-ti"
+
+msgid "Dobra"
+msgstr "Đồng Đóp-ra"
+
+msgid "Dominican Peso"
+msgstr "Đồng Pê-sô Đo-mi-ni-ca"
+
+msgid "Dong"
+msgstr "Đồng"
+
+msgid "East Caribbean Dollar"
+msgstr "Đô-la Đông Ca-rib"
+
+msgid "East German Mark of the GDR"
+msgstr "Đồng Mác Đông Đức (GDR)"
+
+msgid "Ecuador Sucre"
+msgstr "Đồng Xu-cơ-re E-cua-doa"
+
+msgid "Ecuador Unidad de Valor Constante UVC"
+msgstr "Đồng E-cu-a-đoa U-ni-đát đe Va-loa Con-x-tan-te UVC"
+
+msgid "Egyptian Pound"
+msgstr "Đồng bảng Ai Cập"
+
+msgid "El Salvador Colon"
+msgstr "Đồng Co-lon En Xan-va-đoa"
+
+msgid "Equatorial Guinea Ekwele"
+msgstr "Đồng E-cou-ê-lê Ghi-nê Xích-đạo"
+
+msgid "Ethiopian Birr"
+msgstr "Đông Bi-rợ Ê-ti-ô-pi"
+
+msgid "Euro"
+msgstr "Đồng Eu-rô"
+
+msgid "European Composite Unit (EURCO)"
+msgstr "Dơn Vị Đa Hợp Châu Âu (EURCO)"
+
+msgid "European Currency Unit ECU"
+msgstr "Dơn Vị Tiền Tệ Châu Âu ECU"
+
+msgid "European Monetary Unit (E.M.U.-6)"
+msgstr "Dơn Vị Tiền Tệ Châu Âu (E.M.U.-6)"
+
+msgid "European Unit of Account 17 (E.U.A.-17)"
+msgstr "Dơn Vị của Tài Khoản Châu Âu 17 (E.U.A.-17)"
+
+msgid "European Unit of Account 9 (E.U.A.-9)"
+msgstr "Dơn Vị của Tài Khoản Châu Âu 9 (E.U.A.-9)"
+
+msgid "Falkland Islands Pound"
+msgstr "Đồng bảng Đảo Phoa-kh-lận-đh"
+
+msgid "Fiji Dollar"
+msgstr "Đô-la Phi-gi"
+
+msgid "Finnish Markka"
+msgstr "Đồng Mă-ca Phần Lan"
+
+msgid "Forint"
+msgstr "Đồng Pho-rin-th"
+
+msgid "French Franc"
+msgstr "Đồng Frăng Pháp"
+
+msgid "Georgian Coupon"
+msgstr "Đồng Cou-pon Gi-oa-gi-a"
+
+msgid "Ghana Cedi"
+msgstr "Đồng Xê-đi của Gha-na"
+
+msgid "Gibraltar Pound"
+msgstr "Đồng bảng Gi-boa-tha"
+
+msgid "Gold"
+msgstr "Vàng"
+
+msgid "Gold-Franc"
+msgstr "Đồng Frăng Vàng"
+
+msgid "Gourde"
+msgstr "Đồng Guo-đe"
+
+msgid "Greek Drachma"
+msgstr "Đồng đrac-ma Hy Lạp"
+
+msgid "Guarani"
+msgstr "Đồng Gua-ra-ni"
+
+msgid "Guinea Escudo"
+msgstr "Đồng Et-cu-đô Ghi-ni"
+
+msgid "Guinea Franc"
+msgstr "Đồng Frăng Ghi-ni"
+
+msgid "Guinea Syli"
+msgstr "Đồng Xi-li Ghi-ni"
+
+msgid "Guinea-Bissau Peso"
+msgstr "Đồng Pê-sô Ghi-ni-Bi-sau"
+
+msgid "Guyana Dollar"
+msgstr "Đô-la Guy-a-na"
+
+msgid "Hong Kong Dollar"
+msgstr "Đô-la Hồng Kông"
+
+msgid "Hryvnia"
+msgstr "Đồng H-ri-v-ni-a"
+
+msgid "Iceland Krona"
+msgstr "Đồng Cơ-rô-na Băng Đảo"
+
+msgid "Iceland Old Krona"
+msgstr "Đồng Cơ-ro-na cũ Băng Đảo"
+
+msgid "Indian Rupee"
+msgstr "Đồng Ru-pi Ấn Độ"
+
+msgid "Iranian Rial"
+msgstr "Đồng Ri-an Ba Tư"
+
+msgid "Iraqi Dinar"
+msgstr "Đồng Đi-nă I-rắc"
+
+msgid "Irish Pound"
+msgstr "Đồng Bảng Ái-nhĩ-lan"
+
+msgid "Israeli Old Shekel"
+msgstr "Đồng Seken cũ Do Thái"
+
+msgid "Israeli Pound"
+msgstr "Đồng bảng Do Thái"
+
+msgid "Italian Lira"
+msgstr "Đồng Li-ra Ý"
+
+msgid "Jamaican Dollar"
+msgstr "Đô-la Gia-mê-ca"
+
+msgid "Jordanian Dinar"
+msgstr "Đồng Đi-nă Gi-oa-đanh"
+
+msgid "Kenyan Shilling"
+msgstr "Đồng Silinh Khi-ni-a"
+
+msgid "Kina"
+msgstr "Đồng Khi-na"
+
+msgid "Kip"
+msgstr "Đồng Kip"
+
+msgid "Kroon"
+msgstr "Đồng Khơ-runh"
+
+msgid "Kuwaiti Dinar"
+msgstr "Đồng Đi-nă Cu-ouai-thi"
+
+msgid "Kwacha"
+msgstr "Đồng Cơ-ouă-cha"
+
+msgid "Kwanza"
+msgstr "Đồng Cou-ăn-xa"
+
+msgid "Kyat"
+msgstr "Đồng Kyat"
+
+msgid "Lao kip"
+msgstr "Đồng Kip Lào"
+
+msgid "Lari"
+msgstr "Đồng La-ri"
+
+msgid "Latvian Lats"
+msgstr "Đồng Lát-x Lát-vi-a"
+
+msgid "Latvian Ruble"
+msgstr "Đồng Rúp Lát-vi-a"
+
+msgid "Lebanese Pound"
+msgstr "Đồng Bảng Le-ba-nonh"
+
+msgid "Lek"
+msgstr "Đồng Léc"
+
+msgid "Lempira"
+msgstr "Đồng Lem-pi-ra"
+
+msgid "Leone"
+msgstr "Đồng Le-ô-ne"
+
+msgid "Lesotho Maloti"
+msgstr "Đồng Ma-lo-ti Le-xo-to"
+
+msgid "Liberian Dollar"
+msgstr "Đô-la Li-be-ri-a"
+
+msgid "Libyan Dinar"
+msgstr "Đồng Đi-nă Lib-i-a"
+
+msgid "Lilangeni"
+msgstr "Đồng Li-lan-ge-ni"
+
+msgid "Lithuanian Litas"
+msgstr "Đồng Li-tax Li-tu-a-ni-a"
+
+msgid "Lithuanian Talonas"
+msgstr "Đồng Ta-lo-nax Li-tu-a-ni"
+
+msgid "Loti"
+msgstr "Đồng Lô-ti"
+
+msgid "Luxembourg Convertible Franc"
+msgstr "Đồng Frăng có thể chuyển đổi Lục Xâm Bảo"
+
+msgid "Luxembourg Financial Franc"
+msgstr "Đồng Frăng Tài Chính Lục Xâm Bảo"
+
+msgid "Luxembourg Franc"
+msgstr "Đồng Frăng Lục Xâm Bảo"
+
+msgid "Malagasy Ariary"
+msgstr "Đồng A-ri-a-ri Ma-la-ga-xi"
+
+msgid "Malagasy Franc"
+msgstr "Đồng Frăng Ma-la-ga-xi"
+
+msgid "Malaysian Ringgit"
+msgstr "Đồng Ring-git Ma-lay-si-a"
+
+msgid "Maldive Rupee"
+msgstr "Đồng Ru-pi Man-đi-ve"
+
+msgid "Mali Franc"
+msgstr "Đồng Frăng Ma-li"
+
+msgid "Maltese Lira"
+msgstr "Đồng Li-ra Mantơ"
+
+msgid "Maltese Pound"
+msgstr "Đang bảng Mantơ"
+
+msgid "Manat"
+msgstr "Đồng Ma-nát"
+
+msgid "Mauritius Rupee"
+msgstr "Đồng Ru-pi Mau-ri-sợx"
+
+msgid "Metical"
+msgstr "Đồng Me-ti-can"
+
+msgid "Mexican Peso"
+msgstr "Đồng Pê-sô Mê-hi-cô"
+
+msgid "Mexican Unidad de Inversion (UDI)"
+msgstr "Đồng U-ni-đat đe In-ve-si-onh (UID) Mê-hi-cô"
+
+msgid "Moldovan Leu"
+msgstr "Đồng Leu Moc-đo-vanh"
+
+msgid "Moroccan Dirham"
+msgstr "Đồng Đơ-rậm Mo-ro-cô"
+
+msgid "Mozambique Escudo"
+msgstr "Đồng Ex-cu-đô Mo-xam-bi-cơ"
+
+msgid "Mozambique Metical"
+msgstr "Đồng Me-ti-can Mo-xam-bi-khợ"
+
+msgid "Mvdol"
+msgstr "Đồng M-v-đon"
+
+msgid "Naira"
+msgstr "Đồng Nai-ra"
+
+msgid "Nakfa"
+msgstr "Đồng Nác-pha"
+
+msgid "Namibia Dollar"
+msgstr "Đô-la Na-mi-bi-a"
+
+msgid "Nepalese Rupee"
+msgstr "Đồng Ru-pi Ne-pan"
+
+msgid "Netherlands Antillian Guilder"
+msgstr "Đồng guin-đơn An-ti-li Hòa Lan"
+
+msgid "Netherlands Guilder"
+msgstr "Đồng Guin-đơn Hòa Lan"
+
+msgid "New Israeli Sheqel"
+msgstr "Đồng seken Do Thái mới"
+
+msgid "New Leu"
+msgstr "Đồng Leu mới"
+
+msgid "New Taiwan Dollar"
+msgstr "Đô-la mới Đài Loan"
+
+msgid "New Turkish Lira"
+msgstr "Đồng Li-ra mới Thổ Nhĩ Kỳ"
+
+msgid "New Zaire"
+msgstr "Đồng Xai-i-re mới"
+
+msgid "New Zealand Dollar"
+msgstr "Đô-la Niu Di-Lan"
+
+msgid "Ngultrum"
+msgstr "Đồng N-gun-trum"
+
+msgid "Nicaraguan Cordoba"
+msgstr "Đồng Coa-đô-ba Ni-ca-ra-gu-a"
+
+msgid "No currency"
+msgstr "Không có tiền tệ"
+
+msgid "North Korean Won"
+msgstr "Đồng Ouonh Bắc Hàn"
+
+msgid "Norwegian Krone"
+msgstr "Đồng Cu-rô-ne Na Uy"
+
+msgid "Nuevo Sol"
+msgstr "Đồng Nu-ê-vô Son"
+
+msgid "Old Uruguayan Peso"
+msgstr "Đồng Pê-sô cũ U-ru-guay"
+
+msgid "Ouguiya"
+msgstr "Đồng Ou-gui-ya"
+
+msgid "Pa'anga"
+msgstr "Đồng Pa-an-ga"
+
+msgid "Pakistan Rupee"
+msgstr "Đồng Ru-pi Pa-ki-x-thănh"
+
+msgid "Palladium"
+msgstr "Pa-la-đi"
+
+msgid "Pataca"
+msgstr "Đồng Pa-ta-ca"
+
+msgid "Peruvian Inti"
+msgstr "Đồng In-ti Pe-ru"
+
+msgid "Peruvian Sol"
+msgstr "Đồng Xon Pe-ru"
+
+msgid "Peso Argentino"
+msgstr "Đồng Pê-sô Á-căn-đình"
+
+msgid "Peso Uruguayo"
+msgstr "Đồng Pê-sô U-ru-guay"
+
+msgid "Philippine Peso"
+msgstr "Đồng Pê-sô Phi-li-pi-nô"
+
+msgid "Platinum"
+msgstr "Bạch kim"
+
+msgid "Polish Złoty"
+msgstr "Đồng Doua-ti Ba Lan"
+
+msgid "Portuguese Escudo"
+msgstr "Đồng Ex-cu-đô Bồ Đào Nha"
+
+msgid "Pound Sterling"
+msgstr "Đồng bảng Quốc Anh"
+
+msgid "Pula"
+msgstr "Đồng Pu-la"
+
+msgid "Qatari Rial"
+msgstr "Đồng Ri-an Ca-tă"
+
+msgid "Quetzal"
+msgstr "Đồng Quét-xan"
+
+msgid "RINET Funds Code"
+msgstr "Mã Tiền RINET"
+
+msgid "Rand"
+msgstr "Đồng Ran-đợ"
+
+msgid "Rhodesian Dollar"
+msgstr "Đô-la Rô-đi-xi-a"
+
+msgid "Rial Omani"
+msgstr "Đồng Ri-an O-ma-ni"
+
+msgid "Riel"
+msgstr "Đồng Ri-en"
+
+msgid "Romanian Leu A/52"
+msgstr "Đồng Leu Lỗ Ma Ni A/52"
+
+msgid "Romanian Old Leu"
+msgstr "Đồng Leu cũ Lỗ Má Ni"
+
+msgid "Rufiyaa"
+msgstr "Đồng Ru-fi-i-ă"
+
+msgid "Rupiah"
+msgstr "Đồng Ru-pi-a"
+
+msgid "Russian Rouble"
+msgstr "Đồng Rúp Nga"
+
+msgid "Russian Ruble"
+msgstr "Đồng Rúp Nga"
+
+msgid "Rwanda Franc"
+msgstr "Đồng Frăng Rou-an-đa"
+
+msgid "Saint Helena Pound"
+msgstr "Đồng Bảng Xan He-le-na"
+
+msgid "Saudi Riyal"
+msgstr "Đồng Ri-an Sau-đi"
+
+msgid "Serbian Dinar"
+msgstr "Đồng Đi-nă Xéc-bi"
+
+msgid "Seychelles Rupee"
+msgstr "Đồng Ru-pi Xê-sen"
+
+msgid "Silver"
+msgstr "Bạc"
+
+msgid "Singapore Dollar"
+msgstr "Đô-la Xin-ga-po"
+
+msgid "Slovak Koruna"
+msgstr "Đồng Co-ru-na Xlô-vác"
+
+msgid "Slovenian Tolar"
+msgstr "Đồng To-la Xlô-ven"
+
+msgid "Solomon Islands Dollar"
+msgstr "Đô-la Quần Đảo So-lo-mon"
+
+msgid "Som"
+msgstr "Đồng Xom"
+
+msgid "Somali Shilling"
+msgstr "Đồng Silinh So-ma-li"
+
+msgid "Somoni"
+msgstr "Đồng Xo-mo-ni"
+
+msgid "South African Financial Rand"
+msgstr "Đồng Ranh-đh tài chính Nam Phi"
+
+msgid "Spanish Peseta"
+msgstr "Đồng Pe-sê-ta Tây Ban Nha"
+
+msgid "Spanish Peseta ('A' Account)"
+msgstr "Đồng Pe-sê-ta Tây Ban Nha (Tài khoản 'A')"
+
+msgid "Spanish Peseta (convertible)"
+msgstr "Đồng Pe-sê-ta Tây Ban Nha (có thể chuyển đổi)"
+
+msgid "Special Drawing Rights"
+msgstr "Quyền rút đặc biệt"
+
+msgid "Sri Lanka Rupee"
+msgstr "Đồng Ru-pi Tích Lan"
+
+msgid "Sudanese Pound"
+msgstr "Đồng bảng Xu-đanh"
+
+msgid "Surinam Dollar"
+msgstr "Đô-la Xu-ri-nam"
+
+msgid "Suriname Guilder"
+msgstr "Đồng Guin-đơn Xu-ri-na-me"
+
+msgid "Swedish Krona"
+msgstr "Đồng Cơ-rô-na Thuỵ Điển"
+
+msgid "Swiss Franc"
+msgstr "Đồng Frăng Thụy Sĩ"
+
+msgid "Syrian Pound"
+msgstr "Đồng Bảng Xi-ri"
+
+msgid "Tajik Rouble"
+msgstr "Đồng Rúp Ta-gíkh"
+
+msgid "Taka"
+msgstr "Đồng Ta-ca"
+
+msgid "Tala"
+msgstr "Đồng Ta-la"
+
+msgid "Tanzanian Shilling"
+msgstr "Đồng Silinh Tan-xa-ni-a"
+
+msgid "Tenge"
+msgstr "Đồng Ten-ge"
+
+msgid "Timor Escudo"
+msgstr "Đồng Ex-cu-đo Thi-moa"
+
+msgid "Trinidad and Tobago Dollar"
+msgstr "Đô-la Trinh-i-đat và To-ba-gô"
+
+msgid "Tugrik"
+msgstr "Đồng Tu-gợ-ríc"
+
+msgid "Tunisian Dinar"
+msgstr "Đồng Đi-nă Tu-ni-xi-a"
+
+msgid "Turkish Lira"
+msgstr "Đồng Li-ra Thổ Nhĩ Kỳ"
+
+msgid "UAE Dirham"
+msgstr "Đồng đơ-âm UAE"
+
+msgid "UIC-Franc"
+msgstr "Đồng Frăng UIC"
+
+msgid "US Dollar"
+msgstr "Đô-la Mỹ"
+
+msgid "US Dollar (Next day)"
+msgstr "Đô-la Mỹ (ngày tới)"
+
+msgid "US Dollar (Same day)"
+msgstr "Đô-la Mỹ (cùng ngày)"
+
+msgid "USSR Rouble"
+msgstr "Đồng Rúp Nga Xô-viết"
+
+msgid "Uganda Old Schilling"
+msgstr "Đồng Silinh cũ U-gan-đa"
+
+msgid "Uganda Schilling"
+msgstr "Đồng Silinh U-gan-đa"
+
+msgid "Uganda Shilling"
+msgstr "Đồng Silinh U-gan-đa"
+
+msgid "Ukrainian Karbovanet"
+msgstr "Đồng Că-bo-va-néc U-cợ-rainh"
+
+msgid "Unidad de Valor Real"
+msgstr "Đồng Rê-an U-ni-đat đe Va-loa"
+
+msgid "Unidades de fomento"
+msgstr "Đồng U-ni-đa-đêxợ đe phô-men-tô"
+
+msgid "Uruguay Peso en Unidades Indexadas"
+msgstr "Đồng Pê-xô en U-ni-đa-đê-x In-đe-xa-đa-x của U-ru-guay"
+
+msgid "Uruguayan Peso"
+msgstr "Đồng Pê-sô U-ru-guay"
+
+msgid "Uzbekistan Sum"
+msgstr "Đồng Xum U-dơ-bê-ki-xtanh"
+
+msgid "Vatu"
+msgstr "Đồng Va-tu"
+
+msgid "Venezuela Bolívar"
+msgstr "Đồng Bo-li-vă Ve-ne-xuê-la"
+
+msgid "Viet Nam Old Dong"
+msgstr "Đồng cũ Việt Nam"
+
+msgid "WIR Euro"
+msgstr "Đồng Eu-rô WIR"
+
+msgid "WIR Franc"
+msgstr "Đồng Frăng WIR"
+
+msgid "Won"
+msgstr "Đồng ouonh"
+
+msgid "Yemeni Dinar"
+msgstr "Đồng Đi-nă Ye-me-ni"
+
+msgid "Yemeni Rial"
+msgstr "Đồng Ri-an Ye-me-ni"
+
+msgid "Yen"
+msgstr "Đồng yên"
+
+msgid "Yuan Renminbi"
+msgstr "Đồng Yu-an Ren-min-bi"
+
+msgid "Yugoslavian Dinar"
+msgstr "Đồng Đi-nă Nam Tư"
+
+msgid "Zaire"
+msgstr "Đồng Xai-i-re"
+
+msgid "Zimbabwe Dollar"
+msgstr "Đô-la Xim-ba-bui"
+
+msgid "Zloty"
+msgstr "Đồng x-lo-ti"

@@ -1,0 +1,1006 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: iso_639_3\n"
+"Report-Msgid-Bugs-To: Debian iso-codes team <pkg-isocodes-devel@lists.alioth."
+"debian.org>\n"
+"POT-Creation-Date: 2012-06-26 09:55+0200\n"
+"PO-Revision-Date: 2004-06-21 18:03+0200\n"
+"Last-Translator: Miroslav Kure <kurem@debian.cz>\n"
+"Language-Team: Czech <debian-l10n-czech@lists.debian.org>\n"
+"Language: cs\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+msgid "Abkhazian"
+msgstr "abchazajština"
+
+msgid "Achinese"
+msgstr "atěžština"
+
+msgid "Acoli"
+msgstr "ačoli (luoština)"
+
+msgid "Adangme"
+msgstr "adangmeština"
+
+msgid "Afar"
+msgstr "afarština"
+
+msgid "Afrihili"
+msgstr "afrihilijština"
+
+msgid "Afrikaans"
+msgstr "afrikánština"
+
+msgid "Akan"
+msgstr "akanština"
+
+msgid "Akkadian"
+msgstr "akkadština"
+
+msgid "Albanian"
+msgstr "albánština"
+
+msgid "Aleut"
+msgstr "aleutština"
+
+msgid "Amharic"
+msgstr "Amharština"
+
+msgid "Angika"
+msgstr "angika"
+
+msgid "Arabic"
+msgstr "arabština"
+
+msgid "Aragonese"
+msgstr "aragonská španělština"
+
+msgid "Arapaho"
+msgstr "arapaho"
+
+msgid "Arawak"
+msgstr "arawacké jazyky"
+
+msgid "Armenian"
+msgstr "arménština"
+
+msgid "Assamese"
+msgstr "ásámština"
+
+msgid "Avaric"
+msgstr "avarština"
+
+msgid "Avestan"
+msgstr "avestština"
+
+msgid "Awadhi"
+msgstr "avadhština (avadhí)"
+
+msgid "Aymara"
+msgstr "Aymárština"
+
+msgid "Azerbaijani"
+msgstr "azerbajdžánština"
+
+msgid "Balinese"
+msgstr "balijština"
+
+msgid "Baluchi"
+msgstr "balúčština"
+
+msgid "Bambara"
+msgstr "bambarština"
+
+msgid "Bashkir"
+msgstr "Baskirština"
+
+msgid "Basque"
+msgstr "baskičtina"
+
+msgid "Beja"
+msgstr "bedža"
+
+msgid "Belarusian"
+msgstr "běloruština"
+
+msgid "Bengali"
+msgstr "bengálština"
+
+msgid "Bhojpuri"
+msgstr "bhódžpurština"
+
+msgid "Bikol"
+msgstr "bikolština"
+
+msgid "Bislama"
+msgstr "Bislámština"
+
+msgid "Bosnian"
+msgstr "bosenština"
+
+msgid "Braj"
+msgstr "bradžština"
+
+msgid "Breton"
+msgstr "bretonština"
+
+msgid "Buginese"
+msgstr "bugiština"
+
+msgid "Bulgarian"
+msgstr "bulharština"
+
+msgid "Buriat"
+msgstr "burjatština"
+
+msgid "Burmese"
+msgstr "Barmština"
+
+msgid "Caddo"
+msgstr "caddo"
+
+msgid "Catalan"
+msgstr "katalánština"
+
+msgid "Cebuano"
+msgstr "cebuánština"
+
+msgid "Chagatai"
+msgstr "čagatajština"
+
+msgid "Chamorro"
+msgstr "čamoro"
+
+msgid "Chechen"
+msgstr "čečenština"
+
+msgid "Cherokee"
+msgstr "čerokézština"
+
+msgid "Cheyenne"
+msgstr "čejenština"
+
+msgid "Chibcha"
+msgstr "čibča"
+
+msgid "Chinese"
+msgstr "čínština"
+
+msgid "Chinook jargon"
+msgstr "činuk pidžin"
+
+msgid "Chipewyan"
+msgstr "čipeva"
+
+msgid "Choctaw"
+msgstr "choctawština"
+
+msgid "Chuukese"
+msgstr "čukčtina"
+
+msgid "Chuvash"
+msgstr "čuvaština"
+
+msgid "Coptic"
+msgstr "koptština"
+
+msgid "Cornish"
+msgstr "kornština"
+
+msgid "Corsican"
+msgstr "korsičtina"
+
+msgid "Cree"
+msgstr "krí"
+
+msgid "Creek"
+msgstr "krík"
+
+msgid "Croatian"
+msgstr "chorvatština"
+
+msgid "Czech"
+msgstr "čeština"
+
+msgid "Dakota"
+msgstr "dakotština"
+
+msgid "Danish"
+msgstr "dánština"
+
+msgid "Dargwa"
+msgstr "dargwa"
+
+msgid "Delaware"
+msgstr "delawarština"
+
+msgid "Dinka"
+msgstr "dinkština"
+
+msgid "Dogrib"
+msgstr "dogrib"
+
+msgid "Duala"
+msgstr "dualština"
+
+msgid "Dutch"
+msgstr "holandština"
+
+msgid "Dyula"
+msgstr "djula"
+
+msgid "Dzongkha"
+msgstr "Bhútánština"
+
+msgid "Efik"
+msgstr "efik"
+
+msgid "Egyptian (Ancient)"
+msgstr "egyptština (starověká)"
+
+msgid "Ekajuk"
+msgstr "ekajuk"
+
+msgid "Elamite"
+msgstr "elamština"
+
+msgid "English"
+msgstr "angličtina"
+
+msgid "English, Middle (1100-1500)"
+msgstr "angličtina, středověká (1100-1500)"
+
+msgid "Erzya"
+msgstr "erzya"
+
+msgid "Esperanto"
+msgstr "esperanto"
+
+msgid "Estonian"
+msgstr "estonština"
+
+msgid "Ewe"
+msgstr "eweština"
+
+msgid "Ewondo"
+msgstr "ewondo"
+
+msgid "Fanti"
+msgstr "fantiština"
+
+msgid "Faroese"
+msgstr "faerština"
+
+msgid "Fijian"
+msgstr "Fidži"
+
+msgid "Finnish"
+msgstr "finština"
+
+msgid "Fon"
+msgstr "fonština"
+
+msgid "French"
+msgstr "francouzština"
+
+msgid "Friulian"
+msgstr "furlanština"
+
+msgid "Fulah"
+msgstr "fulahština"
+
+msgid "Ga"
+msgstr "ga"
+
+msgid "Ganda"
+msgstr "ganda"
+
+msgid "Gayo"
+msgstr "gayo"
+
+msgid "Geez"
+msgstr "etiopština"
+
+msgid "Georgian"
+msgstr "Gruzínština"
+
+msgid "German"
+msgstr "němčina"
+
+msgid "Gilbertese"
+msgstr "kiribatština"
+
+msgid "Gondi"
+msgstr "góndština"
+
+msgid "Gorontalo"
+msgstr "gorontalo"
+
+msgid "Gothic"
+msgstr "gótština"
+
+msgid "Grebo"
+msgstr "grebo"
+
+msgid "Greek, Ancient (to 1453)"
+msgstr "řečtina, starověká (do 1453)"
+
+msgid "Greek, Modern (1453-)"
+msgstr "řečtina, moderní (1453-)"
+
+msgid "Guarani"
+msgstr "Guaranština"
+
+msgid "Gujarati"
+msgstr "Gujaratština"
+
+msgid "Haida"
+msgstr "haida"
+
+msgid "Hausa"
+msgstr "Hausa"
+
+msgid "Hawaiian"
+msgstr "havajština"
+
+msgid "Hebrew"
+msgstr "hebrejština"
+
+msgid "Herero"
+msgstr "herero"
+
+msgid "Hiligaynon"
+msgstr "hiligayonština"
+
+msgid "Hindi"
+msgstr "hindština"
+
+msgid "Hiri Motu"
+msgstr "hiri motu"
+
+msgid "Hittite"
+msgstr "chetitština"
+
+msgid "Hmong"
+msgstr "hmongština"
+
+msgid "Hungarian"
+msgstr "maďarština"
+
+msgid "Hupa"
+msgstr "hupa"
+
+msgid "Iban"
+msgstr "iban"
+
+msgid "Icelandic"
+msgstr "islandština"
+
+msgid "Ido"
+msgstr "ido"
+
+msgid "Igbo"
+msgstr "igbo"
+
+msgid "Iloko"
+msgstr "ilokánština"
+
+msgid "Indonesian"
+msgstr "indonézština"
+
+msgid "Ingush"
+msgstr "inguština"
+
+msgid "Interlingua (International Auxiliary Language Association)"
+msgstr "Interlingua (Mezinárodní pomocná jazyková asociace)"
+
+msgid "Interlingue"
+msgstr "Interlingue"
+
+msgid "Inuktitut"
+msgstr "Inuktitutština"
+
+msgid "Inupiaq"
+msgstr "Inupiakština"
+
+msgid "Irish"
+msgstr "irština"
+
+msgid "Irish, Middle (900-1200)"
+msgstr "irština, středověká (900-1200)"
+
+msgid "Irish, Old (to 900)"
+msgstr "irština, stará (do 900)"
+
+msgid "Italian"
+msgstr "italština"
+
+msgid "Japanese"
+msgstr "japonština"
+
+msgid "Javanese"
+msgstr "jávština"
+
+msgid "Judeo-Arabic"
+msgstr "judeo-arabština"
+
+msgid "Judeo-Persian"
+msgstr "judeo-perština"
+
+msgid "Kabardian"
+msgstr "kabardština"
+
+msgid "Kabyle"
+msgstr "kabulí"
+
+msgid "Kachin"
+msgstr "kačjinština"
+
+msgid "Kannada"
+msgstr "Kannadština"
+
+msgid "Kanuri"
+msgstr "kanuri"
+
+msgid "Kara-Kalpak"
+msgstr "karakalpačtina"
+
+msgid "Karachay-Balkar"
+msgstr "karachay-balkarština"
+
+msgid "Karelian"
+msgstr "karelština"
+
+msgid "Kashmiri"
+msgstr "kašmírština"
+
+msgid "Kashubian"
+msgstr "kašubština"
+
+msgid "Kawi"
+msgstr "kawi"
+
+msgid "Kazakh"
+msgstr "Kazachština"
+
+msgid "Khasi"
+msgstr "khásí"
+
+msgid "Khotanese"
+msgstr "chotánština"
+
+msgid "Kimbundu"
+msgstr "kimbundština"
+
+msgid "Kinyarwanda"
+msgstr "Kinyarwandština"
+
+msgid "Kirghiz"
+msgstr "Kirgizština"
+
+msgid "Komi"
+msgstr "komijština"
+
+msgid "Kongo"
+msgstr "konžština"
+
+msgid "Korean"
+msgstr "korejština"
+
+msgid "Kosraean"
+msgstr "kosrajština"
+
+msgid "Kpelle"
+msgstr "kpelle"
+
+msgid "Kumyk"
+msgstr "kumyčtina"
+
+msgid "Kurdish"
+msgstr "kurdština"
+
+msgid "Kurukh"
+msgstr "kurukh"
+
+msgid "Kutenai"
+msgstr "kutenai"
+
+msgid "Ladino"
+msgstr "ladino"
+
+msgid "Lahnda"
+msgstr "lahnda"
+
+msgid "Lamba"
+msgstr "lambština"
+
+msgid "Lao"
+msgstr "Laoština"
+
+msgid "Latin"
+msgstr "latina"
+
+msgid "Latvian"
+msgstr "litevština"
+
+msgid "Lezghian"
+msgstr "lezgiština"
+
+msgid "Lingala"
+msgstr "Lingalština"
+
+msgid "Lithuanian"
+msgstr "litevština"
+
+msgid "Lojban"
+msgstr "lojban"
+
+msgid "Lozi"
+msgstr "lozština"
+
+msgid "Luba-Katanga"
+msgstr "lubu-katanžština"
+
+msgid "Luba-Lulua"
+msgstr "luba-luluaština"
+
+msgid "Luiseno"
+msgstr "luiseňo"
+
+msgid "Lule Sami"
+msgstr "lule sami"
+
+msgid "Lunda"
+msgstr "lundština"
+
+msgid "Luo (Kenya and Tanzania)"
+msgstr "luoština (Keňa a Tanzanie)"
+
+msgid "Lushai"
+msgstr "lušáí"
+
+msgid "Macedonian"
+msgstr "makedonština"
+
+msgid "Madurese"
+msgstr "madurština"
+
+msgid "Magahi"
+msgstr "magahština"
+
+msgid "Maithili"
+msgstr "maithilština"
+
+msgid "Makasar"
+msgstr "makasarština"
+
+msgid "Malagasy"
+msgstr "Malgaština"
+
+msgid "Malayalam"
+msgstr "Malabarština"
+
+msgid "Maltese"
+msgstr "maltézština"
+
+msgid "Manchu"
+msgstr "manchu"
+
+msgid "Mandar"
+msgstr "mandarínština"
+
+msgid "Mandingo"
+msgstr "mandingština"
+
+msgid "Manipuri"
+msgstr "manipurština"
+
+msgid "Manx"
+msgstr "manština"
+
+msgid "Maori"
+msgstr "maorština"
+
+msgid "Marathi"
+msgstr "maráthština"
+
+msgid "Marwari"
+msgstr "márvárština"
+
+msgid "Masai"
+msgstr "masajština"
+
+msgid "Minangkabau"
+msgstr "minangkabau"
+
+msgid "Mirandese"
+msgstr "mirandština"
+
+msgid "Mohawk"
+msgstr "mohawk"
+
+msgid "Moksha"
+msgstr "moksha"
+
+msgid "Mongo"
+msgstr "mongština"
+
+msgid "Mongolian"
+msgstr "mongolština"
+
+msgid "Mossi"
+msgstr "mosi"
+
+msgid "Multiple languages"
+msgstr "násobné jazyky"
+
+msgid "Nauru"
+msgstr "naurština"
+
+msgid "Ndonga"
+msgstr "ndondština"
+
+msgid "Neapolitan"
+msgstr "neapolština"
+
+msgid "Nias"
+msgstr "nias"
+
+msgid "Niuean"
+msgstr "niue"
+
+msgid "Nogai"
+msgstr "nogai"
+
+msgid "Norse, Old"
+msgstr "norština, stará"
+
+msgid "Norwegian"
+msgstr "norština"
+
+msgid "Nyamwezi"
+msgstr "ňamwežština"
+
+msgid "Nyankole"
+msgstr "nyankolština"
+
+msgid "Nyoro"
+msgstr "nyorština"
+
+msgid "Nzima"
+msgstr "nzima"
+
+msgid "Ojibwa"
+msgstr "odžibwejština"
+
+msgid "Oromo"
+msgstr "Oromo (Afan)"
+
+msgid "Osage"
+msgstr "osagština"
+
+msgid "Pahlavi"
+msgstr "pahlaví"
+
+msgid "Palauan"
+msgstr "palauština"
+
+msgid "Pali"
+msgstr "páli"
+
+msgid "Pampanga"
+msgstr "pampangau"
+
+msgid "Pangasinan"
+msgstr "pangsinan"
+
+msgid "Papiamento"
+msgstr "papiamento"
+
+msgid "Persian"
+msgstr "perština"
+
+msgid "Phoenician"
+msgstr "Slovinština"
+
+msgid "Pohnpeian"
+msgstr "pohnpeiština"
+
+msgid "Polish"
+msgstr "polština"
+
+msgid "Portuguese"
+msgstr "portugalština"
+
+msgid "Pushto"
+msgstr "pašto"
+
+msgid "Quechua"
+msgstr "Kečuánština"
+
+msgid "Rajasthani"
+msgstr "rádžasthánština"
+
+msgid "Rapanui"
+msgstr "rapanuiština"
+
+msgid "Romanian"
+msgstr "rumunština"
+
+msgid "Romany"
+msgstr "římština"
+
+msgid "Rundi"
+msgstr "Kirundi"
+
+msgid "Russian"
+msgstr "ruština"
+
+msgid "Samoan"
+msgstr "Samoyština"
+
+msgid "Sandawe"
+msgstr "sandawština"
+
+msgid "Sango"
+msgstr "Sangho"
+
+msgid "Sanskrit"
+msgstr "sanskrt"
+
+msgid "Santali"
+msgstr "santálí"
+
+msgid "Sardinian"
+msgstr "sardinština"
+
+msgid "Sasak"
+msgstr "sačtina"
+
+msgid "Scots"
+msgstr "skotština"
+
+msgid "Selkup"
+msgstr "selkupština"
+
+msgid "Serbian"
+msgstr "srbština"
+
+msgid "Serer"
+msgstr "serer"
+
+msgid "Shan"
+msgstr "šanština"
+
+msgid "Shona"
+msgstr "Shona"
+
+msgid "Sicilian"
+msgstr "sicilština"
+
+msgid "Sidamo"
+msgstr "sidamo"
+
+msgid "Siksika"
+msgstr "siksika"
+
+msgid "Sindhi"
+msgstr "sindhština"
+
+msgid "Slave (Athapascan)"
+msgstr "atabaské jazyky"
+
+msgid "Slovak"
+msgstr "slovenština"
+
+msgid "Slovenian"
+msgstr "slovinština"
+
+msgid "Sogdian"
+msgstr "sogdijština"
+
+msgid "Somali"
+msgstr "somálština"
+
+msgid "Soninke"
+msgstr "sonikština"
+
+msgid "Sotho, Southern"
+msgstr "Sesotho"
+
+msgid "Spanish"
+msgstr "španělština"
+
+msgid "Sukuma"
+msgstr "sukuma"
+
+msgid "Sumerian"
+msgstr "sumerština"
+
+msgid "Sundanese"
+msgstr "Sundanština"
+
+msgid "Susu"
+msgstr "susu"
+
+msgid "Swati"
+msgstr "Siswatština"
+
+msgid "Swedish"
+msgstr "švédština"
+
+msgid "Syriac"
+msgstr "syrština"
+
+msgid "Tagalog"
+msgstr "Tagalog"
+
+msgid "Tahitian"
+msgstr "tahitština"
+
+msgid "Tajik"
+msgstr "Tádžičtina"
+
+msgid "Tamashek"
+msgstr "tamašek"
+
+msgid "Tamil"
+msgstr "Tamilština"
+
+msgid "Tatar"
+msgstr "tatarština"
+
+msgid "Telugu"
+msgstr "Telugština"
+
+msgid "Tereno"
+msgstr "tereno"
+
+msgid "Tetum"
+msgstr "tetumština"
+
+msgid "Thai"
+msgstr "thajština"
+
+msgid "Tibetan"
+msgstr "tibetština"
+
+msgid "Tigre"
+msgstr "tigrejština"
+
+msgid "Tigrinya"
+msgstr "Tigrinijština"
+
+msgid "Timne"
+msgstr "temne"
+
+msgid "Tiv"
+msgstr "tivština"
+
+msgid "Tlingit"
+msgstr "tlingit"
+
+msgid "Tok Pisin"
+msgstr "tok pisin"
+
+msgid "Tokelau"
+msgstr "tokelauština"
+
+msgid "Tonga (Nyasa)"
+msgstr "tongština (nyasa)"
+
+msgid "Tonga (Tonga Islands)"
+msgstr "Tonga"
+
+msgid "Tsimshian"
+msgstr "tsimshijské jazyky"
+
+msgid "Tsonga"
+msgstr "Tsonga"
+
+msgid "Tswana"
+msgstr "Setswanština"
+
+msgid "Tumbuka"
+msgstr "tumbukština"
+
+msgid "Turkish"
+msgstr "turečtina"
+
+msgid "Turkish, Ottoman (1500-1928)"
+msgstr "turečtina, osmanská (1500-1928)"
+
+msgid "Turkmen"
+msgstr "turkmenistánština"
+
+msgid "Tuvalu"
+msgstr "tuvalština"
+
+msgid "Tuvinian"
+msgstr "tuvština"
+
+msgid "Twi"
+msgstr "Twi"
+
+msgid "Udmurt"
+msgstr "udmurtština"
+
+msgid "Ugaritic"
+msgstr "ugaritština"
+
+msgid "Uighur"
+msgstr "Uighurština"
+
+msgid "Ukrainian"
+msgstr "ukrajinština"
+
+msgid "Umbundu"
+msgstr "umbundu"
+
+msgid "Undetermined"
+msgstr "neurčitý"
+
+msgid "Urdu"
+msgstr "urdština"
+
+msgid "Uzbek"
+msgstr "uzbekistánština"
+
+msgid "Vai"
+msgstr "vai"
+
+msgid "Venda"
+msgstr "vendština"
+
+msgid "Vietnamese"
+msgstr "vietnamština"
+
+msgid "Volapük"
+msgstr "volapük"
+
+msgid "Votic"
+msgstr "votiatština"
+
+msgid "Walloon"
+msgstr "valonština"
+
+msgid "Washo"
+msgstr "washo"
+
+msgid "Welsh"
+msgstr "velština"
+
+msgid "Wolof"
+msgstr "Wolof"
+
+msgid "Xhosa"
+msgstr "Xhosa"
+
+msgid "Yakut"
+msgstr "jakutština"
+
+msgid "Yao"
+msgstr "jaoština"
+
+msgid "Yapese"
+msgstr "japština"
+
+msgid "Yiddish"
+msgstr "Jidiš"
+
+msgid "Yoruba"
+msgstr "Yoruba"
+
+msgid "Zapotec"
+msgstr "zapotéčtina"
+
+msgid "Zenaga"
+msgstr "zenaga"
+
+msgid "Zulu"
+msgstr "Zulu"
+
+msgid "Zuni"
+msgstr "zunijština"

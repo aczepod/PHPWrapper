@@ -1,0 +1,1295 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: iso_639\n"
+"Report-Msgid-Bugs-To: Debian iso-codes team <pkg-isocodes-devel@lists.alioth."
+"debian.org>\n"
+"POT-Creation-Date: 2010-03-31 08:26+0200\n"
+"PO-Revision-Date: 2008-05-21 13:48+0200\n"
+"Last-Translator: Frederik 'Freso' S. Olesen <freso.dk@gmail.com>\n"
+"Language-Team: Danish <dansk@dansk-gruppen.dk>\n"
+"Language: da\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: KBabel 1.11.4\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Poedit-Language: Danish\n"
+"X-Poedit-Country: DENMARK\n"
+
+msgid "Abkhazian"
+msgstr "Abkhazian"
+
+msgid "Achinese"
+msgstr "Achinesisk"
+
+msgid "Acoli"
+msgstr "Acoli"
+
+msgid "Adangme"
+msgstr "Adangme"
+
+msgid "Adyghe; Adygei"
+msgstr "Adygé; Adygei"
+
+msgid "Afar"
+msgstr "Afar"
+
+msgid "Afrihili"
+msgstr "Afrihili"
+
+msgid "Afrikaans"
+msgstr "Afrikaans"
+
+msgid "Ainu"
+msgstr "Ainu"
+
+msgid "Akan"
+msgstr "Akan"
+
+msgid "Akkadian"
+msgstr "Akkadisk"
+
+msgid "Albanian"
+msgstr "Albansk"
+
+msgid "Aleut"
+msgstr "Aleutiske sprog"
+
+msgid "Algonquian languages"
+msgstr "Algonkiske sprog"
+
+msgid "Amharic"
+msgstr "Amharisk"
+
+msgid "Apache languages"
+msgstr "Apachesprog"
+
+msgid "Arabic"
+msgstr "Arabisk"
+
+msgid "Aragonese"
+msgstr "Aragonisk"
+
+msgid "Arapaho"
+msgstr "Arapaho"
+
+msgid "Arawak"
+msgstr "Arawak"
+
+msgid "Armenian"
+msgstr "Armensk"
+
+msgid "Assamese"
+msgstr "Assamesisk"
+
+msgid "Athapascan languages"
+msgstr "Athapascan-sprog"
+
+msgid "Australian languages"
+msgstr "Australske sprog"
+
+msgid "Avaric"
+msgstr "Avarisk"
+
+msgid "Avestan"
+msgstr "Avestisk"
+
+msgid "Awadhi"
+msgstr "Awadhi"
+
+msgid "Aymara"
+msgstr "Aymará"
+
+msgid "Azerbaijani"
+msgstr "Azerbaijansk"
+
+msgid "Balinese"
+msgstr "Balinesisk"
+
+msgid "Baluchi"
+msgstr "Baluchi"
+
+msgid "Bambara"
+msgstr "Bambara"
+
+msgid "Bamileke languages"
+msgstr "Bamileke sprog"
+
+msgid "Banda languages"
+msgstr "Banda-sprog"
+
+msgid "Basa"
+msgstr "Basa"
+
+msgid "Bashkir"
+msgstr "Bajkirsk"
+
+msgid "Basque"
+msgstr "Baskisk"
+
+msgid "Batak languages"
+msgstr "Batak-sprog"
+
+msgid "Beja; Bedawiyet"
+msgstr "Beja"
+
+msgid "Belarusian"
+msgstr "Hviderussisk"
+
+msgid "Bemba"
+msgstr "Bemba"
+
+msgid "Bengali"
+msgstr "Bengali"
+
+msgid "Bhojpuri"
+msgstr "Bhojpuri"
+
+msgid "Bikol"
+msgstr "Bikol"
+
+msgid "Bini; Edo"
+msgstr "Bini"
+
+msgid "Bislama"
+msgstr "Bislama"
+
+msgid "Blin; Bilin"
+msgstr "Blin; Bilin"
+
+msgid "Bosnian"
+msgstr "Bosnisk"
+
+msgid "Braj"
+msgstr "Braj"
+
+msgid "Breton"
+msgstr "Bretonsk"
+
+msgid "Buginese"
+msgstr "Buginesisk"
+
+msgid "Bulgarian"
+msgstr "Bulgarsk"
+
+msgid "Buriat"
+msgstr "Buriat"
+
+msgid "Burmese"
+msgstr "Murmesisk"
+
+msgid "Caddo"
+msgstr "Caddo"
+
+msgid "Catalan; Valencian"
+msgstr "Catalansk; Valensisk"
+
+msgid "Cebuano"
+msgstr "Cebuano"
+
+msgid "Central Khmer"
+msgstr "Central khmer"
+
+msgid "Chagatai"
+msgstr "Chagatai"
+
+msgid "Chamic languages"
+msgstr "Chamiksprog"
+
+msgid "Chamorro"
+msgstr "Chamorro"
+
+msgid "Chechen"
+msgstr "Tjetjensk"
+
+msgid "Cherokee"
+msgstr "Cherokee"
+
+msgid "Cheyenne"
+msgstr "Cheyenne"
+
+msgid "Chibcha"
+msgstr "Chibcha"
+
+msgid "Chichewa; Chewa; Nyanja"
+msgstr "Nyanja; CiNyanja"
+
+msgid "Chinese"
+msgstr "Kinesisk"
+
+msgid "Chinook jargon"
+msgstr "Chinook jargon"
+
+msgid "Chipewyan; Dene Suline"
+msgstr "Chipewyan"
+
+msgid "Choctaw"
+msgstr "Choctaw"
+
+msgid ""
+"Church Slavic; Old Slavonic; Church Slavonic; Old Bulgarian; Old Church "
+"Slavonic"
+msgstr "Kirkeslavisk; Oldbulgarsk"
+
+msgid "Chuukese"
+msgstr "Chuukese"
+
+msgid "Chuvash"
+msgstr "Tjuvaskisk"
+
+msgid "Classical Newari; Old Newari; Classical Nepal Bhasa"
+msgstr "Klassisk Newari; Oldnewari; Klassisk Nepalbhasa"
+
+msgid "Classical Syriac"
+msgstr "Klassisk syrisk"
+
+msgid "Coptic"
+msgstr "Koptisk"
+
+msgid "Cornish"
+msgstr "Cornisk"
+
+msgid "Corsican"
+msgstr "Korsikansk"
+
+msgid "Cree"
+msgstr "Cree"
+
+msgid "Creek"
+msgstr "Muskogee"
+
+msgid "Crimean Tatar; Crimean Turkish"
+msgstr "Krim-tatarisk; Krim-tyrkisk"
+
+msgid "Croatian"
+msgstr "Kroatisk"
+
+msgid "Czech"
+msgstr "Tjekkisk"
+
+msgid "Dakota"
+msgstr "Dakota"
+
+msgid "Danish"
+msgstr "Dansk"
+
+msgid "Dargwa"
+msgstr "Dargwa"
+
+msgid "Delaware"
+msgstr "Delaware"
+
+msgid "Dinka"
+msgstr "Dinka"
+
+msgid "Divehi; Dhivehi; Maldivian"
+msgstr "Divehi"
+
+msgid "Dogri"
+msgstr "Dogri"
+
+msgid "Dogrib"
+msgstr "Dogrib"
+
+msgid "Duala"
+msgstr "Duala"
+
+msgid "Dutch, Middle (ca. 1050-1350)"
+msgstr "Hollandsk, Middelalderligt (ca. 1050-1350)"
+
+msgid "Dutch; Flemish"
+msgstr "Hollandsk; Flamsk"
+
+msgid "Dyula"
+msgstr "Dyula"
+
+msgid "Dzongkha"
+msgstr "Dzongkha"
+
+msgid "Eastern Frisian"
+msgstr "Østfrisisk"
+
+msgid "Efik"
+msgstr "Efik"
+
+msgid "Egyptian (Ancient)"
+msgstr "Oldægyptisk"
+
+msgid "Ekajuk"
+msgstr "Ekajuk"
+
+msgid "Elamite"
+msgstr "Elamitisk"
+
+msgid "English"
+msgstr "Engelsk"
+
+msgid "English, Middle (1100-1500)"
+msgstr "Engelsk, Middel- (ca. 1100-1500)"
+
+msgid "English, Old (ca. 450-1100)"
+msgstr "Engelsk, Old- (ca. 450-1100); Angelsaksisk"
+
+msgid "Erzya"
+msgstr "Erza"
+
+msgid "Esperanto"
+msgstr "Esperanto"
+
+msgid "Estonian"
+msgstr "Estisk"
+
+msgid "Ewe"
+msgstr "Ewe"
+
+msgid "Ewondo"
+msgstr "Ewondo"
+
+msgid "Fang"
+msgstr "Fang"
+
+msgid "Fanti"
+msgstr "Fanti"
+
+msgid "Faroese"
+msgstr "Færøsk"
+
+msgid "Fijian"
+msgstr "Fijisk"
+
+msgid "Filipino; Pilipino"
+msgstr "Filipino; Pilipino"
+
+msgid "Finnish"
+msgstr "Finsk"
+
+msgid "Fon"
+msgstr "Fon"
+
+msgid "French"
+msgstr "Fransk"
+
+msgid "French, Middle (ca. 1400-1600)"
+msgstr "Fransk, Middelalderligt (ca.1400-1600)"
+
+msgid "French, Old (842-ca. 1400)"
+msgstr "Fransk, Old- (842-ca.1400)"
+
+msgid "Friulian"
+msgstr "Friulian"
+
+msgid "Fulah"
+msgstr "Fulah"
+
+msgid "Ga"
+msgstr "Ga"
+
+msgid "Gaelic; Scottish Gaelic"
+msgstr "Gælisk; Skotsk gælisk; Gælisk (skotsk)"
+
+msgid "Galibi Carib"
+msgstr "Caribisk; Caraibisk; Karibisk"
+
+msgid "Galician"
+msgstr "Galicisk"
+
+msgid "Ganda"
+msgstr "Luganda"
+
+msgid "Gayo"
+msgstr "Gayo"
+
+msgid "Gbaya"
+msgstr "Gbaya"
+
+msgid "Geez"
+msgstr "Geez"
+
+msgid "Georgian"
+msgstr "Georgisk"
+
+msgid "German"
+msgstr "Tysk"
+
+msgid "German, Middle High (ca. 1050-1500)"
+msgstr "Tysk, Middelhøj- (ca. 1050-1500)"
+
+msgid "German, Old High (ca. 750-1050)"
+msgstr "Tysk, Oldhøj- (ca. 750-1050)"
+
+msgid "Gilbertese"
+msgstr "Gilbertansk"
+
+msgid "Gondi"
+msgstr "Gondi"
+
+msgid "Gorontalo"
+msgstr "Gorontalo"
+
+msgid "Gothic"
+msgstr "Gotisk"
+
+msgid "Grebo"
+msgstr "Grebo"
+
+msgid "Greek, Ancient (to 1453)"
+msgstr "Oldgræsk (til 1453)"
+
+msgid "Greek, Modern (1453-)"
+msgstr "Græsk, moderne (1453-)"
+
+msgid "Guarani"
+msgstr "Guarani"
+
+msgid "Gujarati"
+msgstr "Gujarati"
+
+msgid "Gwich'in"
+msgstr "Gwich'in"
+
+msgid "Haida"
+msgstr "Haida"
+
+msgid "Haitian; Haitian Creole"
+msgstr "Haitisk; Haitisk Kreolsk"
+
+msgid "Hausa"
+msgstr "Hausa"
+
+msgid "Hawaiian"
+msgstr "Hawaiansk"
+
+msgid "Hebrew"
+msgstr "Hebraisk"
+
+msgid "Herero"
+msgstr "Herero"
+
+msgid "Hiligaynon"
+msgstr "Hiligaynon"
+
+msgid "Hindi"
+msgstr "Hindi"
+
+msgid "Hiri Motu"
+msgstr "Hiri Motu"
+
+msgid "Hittite"
+msgstr "Hittisk"
+
+msgid "Hungarian"
+msgstr "Ungarsk"
+
+msgid "Hupa"
+msgstr "Hupa"
+
+msgid "Iban"
+msgstr "Iban"
+
+msgid "Icelandic"
+msgstr "Islandsk"
+
+msgid "Ido"
+msgstr "Ido"
+
+msgid "Igbo"
+msgstr "Igbo"
+
+msgid "Ijo languages"
+msgstr "Ijo-sprog"
+
+msgid "Iloko"
+msgstr "Iloko"
+
+msgid "Inari Sami"
+msgstr "Inari-samisk"
+
+msgid "Indonesian"
+msgstr "Indonesisk"
+
+msgid "Interlingua (International Auxiliary Language Association)"
+msgstr "Interlingua"
+
+msgid "Interlingue; Occidental"
+msgstr "Interlingue"
+
+msgid "Inuktitut"
+msgstr "Inuktitut"
+
+msgid "Inupiaq"
+msgstr "Inupiaq"
+
+msgid "Irish"
+msgstr "Irsk; Gælisk (irsk)"
+
+msgid "Irish, Middle (900-1200)"
+msgstr "Irsk, Middelalderligt (900-1200)"
+
+msgid "Irish, Old (to 900)"
+msgstr "Irsk, old- (til 900)"
+
+msgid "Iroquoian languages"
+msgstr "Irokesiske sprog"
+
+msgid "Italian"
+msgstr "Italiensk"
+
+msgid "Japanese"
+msgstr "Japansk"
+
+msgid "Javanese"
+msgstr "Javanesisk"
+
+msgid "Judeo-Arabic"
+msgstr "Jødisk-arabisk"
+
+msgid "Judeo-Persian"
+msgstr "Jødisk-persisk"
+
+msgid "Kabardian"
+msgstr "Kabardi"
+
+msgid "Kabyle"
+msgstr "Kabyle"
+
+msgid "Kachin; Jingpho"
+msgstr "Kachin"
+
+msgid "Kalaallisut; Greenlandic"
+msgstr "Kalaallisut; Grønlandsk"
+
+msgid "Kalmyk; Oirat"
+msgstr "Kalmyk; Oirat"
+
+msgid "Kamba"
+msgstr "Kamba"
+
+msgid "Kannada"
+msgstr "Kannaresisk"
+
+msgid "Kanuri"
+msgstr "Kanuri"
+
+msgid "Kara-Kalpak"
+msgstr "Karakalpakisk"
+
+msgid "Karachay-Balkar"
+msgstr "Karatjask (Balkarisk)"
+
+msgid "Karen languages"
+msgstr "Karen-sprog"
+
+msgid "Kashmiri"
+msgstr "Kashmirsk"
+
+msgid "Kashubian"
+msgstr "Kashubisk"
+
+msgid "Kawi"
+msgstr "Kawi"
+
+msgid "Kazakh"
+msgstr "Kasakhisk"
+
+msgid "Khasi"
+msgstr "Khasi"
+
+msgid "Kikuyu; Gikuyu"
+msgstr "Kikuyu; Gikuyu"
+
+msgid "Kimbundu"
+msgstr "Kimbundu"
+
+msgid "Kinyarwanda"
+msgstr "Kinyarwanda"
+
+msgid "Kirghiz; Kyrgyz"
+msgstr "Kirgisisk"
+
+msgid "Klingon; tlhIngan-Hol"
+msgstr "Klingon; tlhIngan-Hol"
+
+msgid "Komi"
+msgstr "Komi (Syrjænsk)"
+
+msgid "Kongo"
+msgstr "Kongo"
+
+msgid "Konkani"
+msgstr "Konkani"
+
+msgid "Korean"
+msgstr "Koreansk"
+
+msgid "Kosraean"
+msgstr "Kosraean"
+
+msgid "Kpelle"
+msgstr "Kpelle"
+
+msgid "Kru languages"
+msgstr "Kru-sprog"
+
+msgid "Kuanyama; Kwanyama"
+msgstr "Kuanyama"
+
+msgid "Kumyk"
+msgstr "Kumyk"
+
+msgid "Kurdish"
+msgstr "Kurdisk"
+
+msgid "Kurukh"
+msgstr "Kurukh"
+
+msgid "Kutenai"
+msgstr "Kutenai"
+
+msgid "Ladino"
+msgstr "Ladino"
+
+msgid "Lahnda"
+msgstr "Lahnda"
+
+msgid "Lamba"
+msgstr "Lamba"
+
+msgid "Lao"
+msgstr "Laotisk"
+
+msgid "Latin"
+msgstr "Latin"
+
+msgid "Latvian"
+msgstr "Lettisk"
+
+msgid "Lezghian"
+msgstr "Lezghian"
+
+msgid "Lingala"
+msgstr "Lingala"
+
+msgid "Lithuanian"
+msgstr "Litauisk"
+
+msgid "Lojban"
+msgstr "Lojban"
+
+msgid "Low German; Low Saxon; German, Low; Saxon, Low"
+msgstr ""
+"Plattysk; Nedertysk; Nedersaksisk; Tysk, plat-; Tysk, neder-; Saksisk, neder-"
+
+msgid "Lower Sorbian"
+msgstr "Nedresorbisk"
+
+msgid "Lozi"
+msgstr "Lozi"
+
+msgid "Luba-Katanga"
+msgstr "Luba-Katanga"
+
+msgid "Luba-Lulua"
+msgstr "Luba-Lulua"
+
+msgid "Luiseno"
+msgstr "Luiseño"
+
+msgid "Lule Sami"
+msgstr "Lule-samisk"
+
+msgid "Lunda"
+msgstr "Lunda"
+
+msgid "Luo (Kenya and Tanzania)"
+msgstr "Luo (Kenya og Tanzania)"
+
+msgid "Lushai"
+msgstr "Lushai"
+
+msgid "Luxembourgish; Letzeburgesch"
+msgstr "Luxembourgsk"
+
+msgid "Macedonian"
+msgstr "Makedonsk"
+
+msgid "Madurese"
+msgstr "Madurese"
+
+msgid "Magahi"
+msgstr "Magahi"
+
+msgid "Maithili"
+msgstr "Maithili"
+
+msgid "Makasar"
+msgstr "Makasar"
+
+msgid "Malagasy"
+msgstr "Malagasy"
+
+msgid "Malay"
+msgstr "Malajisk"
+
+msgid "Malayalam"
+msgstr "Malayalam"
+
+msgid "Maltese"
+msgstr "Maltesisk"
+
+msgid "Manchu"
+msgstr "Man"
+
+msgid "Mandar"
+msgstr "Mandar"
+
+msgid "Mandingo"
+msgstr "Mandingo"
+
+msgid "Manipuri"
+msgstr "Manipuri"
+
+msgid "Manobo languages"
+msgstr "Manobo sprog"
+
+msgid "Manx"
+msgstr "Manx"
+
+msgid "Maori"
+msgstr "Maori"
+
+msgid "Mapudungun; Mapuche"
+msgstr "Araukansk"
+
+msgid "Marathi"
+msgstr "Marathi"
+
+msgid "Mari"
+msgstr "Mari (Tjeremissisk)"
+
+msgid "Marshallese"
+msgstr "Marshall"
+
+msgid "Marwari"
+msgstr "Marwari"
+
+msgid "Masai"
+msgstr "Masai"
+
+msgid "Mayan languages"
+msgstr "Maya sprog"
+
+msgid "Mende"
+msgstr "Mende"
+
+msgid "Mi'kmaq; Micmac"
+msgstr "Mi'kmaq; Micmac"
+
+msgid "Minangkabau"
+msgstr "Minangkabau"
+
+msgid "Mirandese"
+msgstr "Mirandesisk"
+
+msgid "Mohawk"
+msgstr "Mohawk"
+
+msgid "Moksha"
+msgstr "Moksha"
+
+msgid "Moldavian; Moldovan"
+msgstr "Moldavisk"
+
+msgid "Mongo"
+msgstr "Mongo"
+
+msgid "Mongolian"
+msgstr "Mongolsk"
+
+msgid "Mossi"
+msgstr "Mossi"
+
+msgid "Multiple languages"
+msgstr "Flere sprog"
+
+msgid "Munda languages"
+msgstr "Munda (øvrige)"
+
+msgid "Nahuatl languages"
+msgstr "Nahuatl-sprog; Aztekiske sprog"
+
+msgid "Nauru"
+msgstr "Nauru"
+
+msgid "Navajo; Navaho"
+msgstr "Navajo"
+
+msgid "Ndebele, North; North Ndebele"
+msgstr "Ndebele, Nord; Nordndebele"
+
+msgid "Ndebele, South; South Ndebele"
+msgstr "Ndebele, Syd; Sydndebele"
+
+msgid "Ndonga"
+msgstr "Ndonga"
+
+msgid "Neapolitan"
+msgstr "Nyt _alias"
+
+msgid "Nepali"
+msgstr "Nepalesisk"
+
+msgid "Nias"
+msgstr "Nias"
+
+msgid "Niuean"
+msgstr "Niuean"
+
+msgid "Nogai"
+msgstr "Nogajisk"
+
+msgid "Norse, Old"
+msgstr "Oldnordisk"
+
+msgid "Northern Frisian"
+msgstr "Nordfrisisk"
+
+msgid "Northern Sami"
+msgstr "Sydsamisk"
+
+msgid "Norwegian"
+msgstr "Norsk"
+
+msgid "Norwegian Nynorsk; Nynorsk, Norwegian"
+msgstr "Norsk Nynorsk: Nynorsk"
+
+msgid "Nubian languages"
+msgstr "Nubiske sprog"
+
+msgid "Nyamwezi"
+msgstr "Nyamwezisk"
+
+msgid "Nyankole"
+msgstr "Nyankole"
+
+msgid "Nyoro"
+msgstr "Nyoro sprog"
+
+msgid "Nzima"
+msgstr "Nzima"
+
+msgid "Ojibwa"
+msgstr "Ojibwa"
+
+msgid "Oriya"
+msgstr "Orija"
+
+msgid "Oromo"
+msgstr "Oromo"
+
+msgid "Osage"
+msgstr "Osage"
+
+msgid "Ossetian; Ossetic"
+msgstr "Ossetisk"
+
+msgid "Otomian languages"
+msgstr "Otomi sprog"
+
+msgid "Pahlavi"
+msgstr "Pahlavi"
+
+msgid "Palauan"
+msgstr "Palauan"
+
+msgid "Pali"
+msgstr "Pali"
+
+msgid "Pampanga; Kapampangan"
+msgstr "Pampanga"
+
+msgid "Pangasinan"
+msgstr "Pangasinan"
+
+msgid "Panjabi; Punjabi"
+msgstr "Punjabi"
+
+msgid "Papiamento"
+msgstr "Papiamento"
+
+msgid "Persian"
+msgstr "Persisk"
+
+msgid "Persian, Old (ca. 600-400 B.C.)"
+msgstr "Oldpersisk (ca. 600-400 f.Kr.)"
+
+msgid "Phoenician"
+msgstr "Fønikisk"
+
+msgid "Pohnpeian"
+msgstr "Ponape"
+
+msgid "Polish"
+msgstr "Polsk"
+
+msgid "Portuguese"
+msgstr "Portugisisk"
+
+msgid "Prakrit languages"
+msgstr "Prakrit sprog"
+
+msgid "Pushto; Pashto"
+msgstr "Pashto; Pushto"
+
+msgid "Quechua"
+msgstr "Kechua"
+
+msgid "Rajasthani"
+msgstr "Rajasthani"
+
+msgid "Rapanui"
+msgstr "Rapanui"
+
+msgid "Reserved for local use"
+msgstr "Reserveret til lokalt brug"
+
+msgid "Romanian"
+msgstr "Rumænsk"
+
+msgid "Romansh"
+msgstr "Rætoromansk; Rhætoromansk"
+
+msgid "Romany"
+msgstr "Romani"
+
+msgid "Rundi"
+msgstr "Rundi"
+
+msgid "Russian"
+msgstr "Russisk"
+
+msgid "Salishan languages"
+msgstr "Salishan sprog"
+
+msgid "Samaritan Aramaic"
+msgstr "Samaritansk"
+
+msgid "Samoan"
+msgstr "Samoansk"
+
+msgid "Sandawe"
+msgstr "Sandawe"
+
+msgid "Sango"
+msgstr "Sango"
+
+msgid "Sanskrit"
+msgstr "Sanskrit"
+
+msgid "Santali"
+msgstr "Santali"
+
+msgid "Sardinian"
+msgstr "Sardinsk"
+
+msgid "Sasak"
+msgstr "Sasak"
+
+msgid "Scots"
+msgstr "Skotsk"
+
+msgid "Selkup"
+msgstr "Selkupisk"
+
+msgid "Serbian"
+msgstr "Serbisk"
+
+msgid "Serer"
+msgstr "Serer"
+
+msgid "Shan"
+msgstr "Shan"
+
+msgid "Shona"
+msgstr "Shona"
+
+msgid "Sicilian"
+msgstr "Siciliansk"
+
+msgid "Sidamo"
+msgstr "Sidamo"
+
+msgid "Sign Languages"
+msgstr "Tegnsprog"
+
+msgid "Siksika"
+msgstr "Siksika"
+
+msgid "Sindhi"
+msgstr "Sindhi"
+
+msgid "Sinhala; Sinhalese"
+msgstr "Sinala; Sinhalesisk"
+
+msgid "Siouan languages"
+msgstr "Siouan sprog"
+
+msgid "Skolt Sami"
+msgstr "Skolt-samisk"
+
+msgid "Slave (Athapascan)"
+msgstr "Slave (Athapascan)"
+
+msgid "Slovak"
+msgstr "Slovakisk"
+
+msgid "Slovenian"
+msgstr "Slovensk"
+
+msgid "Sogdian"
+msgstr "Sogdiansk"
+
+msgid "Somali"
+msgstr "Somalisk"
+
+msgid "Songhai languages"
+msgstr "Songe-sprog"
+
+msgid "Soninke"
+msgstr "Soninke"
+
+msgid "Sorbian languages"
+msgstr "Vendiske sprog"
+
+msgid "Sotho, Southern"
+msgstr "Sotho, Syd"
+
+msgid "Southern Altai"
+msgstr "Sydaltai"
+
+msgid "Southern Sami"
+msgstr "Nordsamisk"
+
+msgid "Spanish; Castilian"
+msgstr "Spansk"
+
+msgid "Sukuma"
+msgstr "Sukuma"
+
+msgid "Sumerian"
+msgstr "Sumerisk"
+
+msgid "Sundanese"
+msgstr "Sundanesisk"
+
+msgid "Susu"
+msgstr "Susu"
+
+msgid "Swahili"
+msgstr "Swahili"
+
+msgid "Swati"
+msgstr "Swati"
+
+msgid "Swedish"
+msgstr "Svensk"
+
+msgid "Syriac"
+msgstr "Syrisk"
+
+msgid "Tagalog"
+msgstr "Tagalog"
+
+msgid "Tahitian"
+msgstr "Tahitiansk"
+
+msgid "Tajik"
+msgstr "Tajik"
+
+msgid "Tamashek"
+msgstr "Tamashek"
+
+msgid "Tamil"
+msgstr "Tamilsk"
+
+msgid "Tatar"
+msgstr "Tatarisk"
+
+msgid "Telugu"
+msgstr "Telugu"
+
+msgid "Tereno"
+msgstr "Tereno"
+
+msgid "Tetum"
+msgstr "Tetum"
+
+msgid "Thai"
+msgstr "Thai"
+
+msgid "Tibetan"
+msgstr "Tibetansk"
+
+msgid "Tigre"
+msgstr "Tigré"
+
+msgid "Tigrinya"
+msgstr "Tigrinja"
+
+msgid "Timne"
+msgstr "Temne"
+
+msgid "Tiv"
+msgstr "iTiv"
+
+msgid "Tlingit"
+msgstr "Tlingit"
+
+msgid "Tok Pisin"
+msgstr "Tok Pisin"
+
+msgid "Tokelau"
+msgstr "Tokelau"
+
+msgid "Tonga (Nyasa)"
+msgstr "Tonga (Nyasa)"
+
+msgid "Tonga (Tonga Islands)"
+msgstr "Tonga (Tongaøerne)"
+
+msgid "Tsimshian"
+msgstr "Tsimshisk"
+
+msgid "Tsonga"
+msgstr "Tonga"
+
+msgid "Tswana"
+msgstr "Tswana"
+
+msgid "Tumbuka"
+msgstr "Tumbuka"
+
+msgid "Tupi languages"
+msgstr "Tupi-sprog"
+
+msgid "Turkish"
+msgstr "Tyrkisk"
+
+msgid "Turkish, Ottoman (1500-1928)"
+msgstr "Tyrkisk, Ottomansk (1500-1928)"
+
+msgid "Turkmen"
+msgstr "Turkmensk"
+
+msgid "Tuvalu"
+msgstr "Tuvalu"
+
+msgid "Tuvinian"
+msgstr "Tuvinian"
+
+msgid "Twi"
+msgstr "Twi"
+
+msgid "Udmurt"
+msgstr "Udmurt (Votjakkisk)"
+
+msgid "Ugaritic"
+msgstr "Ugaritic"
+
+msgid "Uighur; Uyghur"
+msgstr "Uigurisk"
+
+msgid "Ukrainian"
+msgstr "Ukrainsk"
+
+msgid "Umbundu"
+msgstr "Umbundu"
+
+msgid "Uncoded languages"
+msgstr "Ukodede sprog"
+
+msgid "Undetermined"
+msgstr "Ubestemt"
+
+msgid "Upper Sorbian"
+msgstr "Øversorbisk"
+
+msgid "Urdu"
+msgstr "Urdu"
+
+msgid "Uzbek"
+msgstr "Uzbesisk"
+
+msgid "Vai"
+msgstr "Vai"
+
+msgid "Venda"
+msgstr "Venda"
+
+msgid "Vietnamese"
+msgstr "Vietnamesisk"
+
+msgid "Volapük"
+msgstr "Volapyk"
+
+msgid "Votic"
+msgstr "Votisk"
+
+msgid "Wakashan languages"
+msgstr "Wakashan sprog"
+
+msgid "Walloon"
+msgstr "Wallonsk"
+
+msgid "Waray"
+msgstr "Waray"
+
+msgid "Washo"
+msgstr "Washo"
+
+msgid "Welsh"
+msgstr "Walisisk"
+
+msgid "Western Frisian"
+msgstr "Vestfrisisk"
+
+msgid "Wolof"
+msgstr "Wolof"
+
+msgid "Xhosa"
+msgstr "Xhosa"
+
+msgid "Yakut"
+msgstr "Yakut"
+
+msgid "Yao"
+msgstr "Yao"
+
+msgid "Yapese"
+msgstr "Yap"
+
+msgid "Yiddish"
+msgstr "Jiddish"
+
+msgid "Yoruba"
+msgstr "Yoruba"
+
+msgid "Yupik languages"
+msgstr "Yupik-sprog"
+
+msgid "Zande languages"
+msgstr "Zande-sprog"
+
+msgid "Zapotec"
+msgstr "Zapotec"
+
+msgid "Zenaga"
+msgstr "Zenaga"
+
+msgid "Zhuang; Chuang"
+msgstr "Zhuang"
+
+msgid "Zulu"
+msgstr "Zulu"
+
+msgid "Zuni"
+msgstr "Zuni"

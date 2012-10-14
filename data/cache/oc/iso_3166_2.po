@@ -1,0 +1,419 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: oc\n"
+"Report-Msgid-Bugs-To: Debian iso-codes team <pkg-isocodes-devel@lists.alioth."
+"debian.org>\n"
+"POT-Creation-Date: 2012-04-09 14:32+0200\n"
+"PO-Revision-Date: 2008-11-10 00:51+0100\n"
+"Last-Translator: Yannig Marchegay (Kokoyaya) <yannig@marchegay.org>\n"
+"Language-Team: \n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+
+msgid "Ain"
+msgstr "Ain"
+
+msgid "Aisne"
+msgstr "Aisne"
+
+msgid "Allier"
+msgstr "Alèir"
+
+msgid "Alpes-Maritimes"
+msgstr "Aups Maritims"
+
+msgid "Alpes-de-Haute-Provence"
+msgstr "Aups d'Auta Provença"
+
+msgid "Alsace"
+msgstr "Alsàcia"
+
+msgid "American Samoa"
+msgstr "Samoa Americanas"
+
+msgid "Aquitaine"
+msgstr "Aquitània"
+
+msgid "Ardennes"
+msgstr "Ardenas"
+
+msgid "Ardèche"
+msgstr "Ardecha"
+
+msgid "Ariège"
+msgstr "Arièja"
+
+msgid "Aube"
+msgstr "Auba"
+
+msgid "Aude"
+msgstr "Auda"
+
+msgid "Auvergne"
+msgstr "Auvèrnhe"
+
+msgid "Aveyron"
+msgstr "Avairon"
+
+msgid "Bas-Rhin"
+msgstr "Bas Ren"
+
+msgid "Basse-Normandie"
+msgstr "Bassa Normandia"
+
+msgid "Belize"
+msgstr "Belize"
+
+msgid "Bouches-du-Rhône"
+msgstr "Bocas de Ròse"
+
+msgid "Bourgogne"
+msgstr "Borgonha"
+
+msgid "Bretagne"
+msgstr "Bretanha"
+
+msgid "Calvados"
+msgstr "Calvadòs"
+
+msgid "Cantal"
+msgstr "Cantal"
+
+msgid "Champagne-Ardenne"
+msgstr "Champanha-Ardena"
+
+msgid "Charente"
+msgstr "Charanta"
+
+msgid "Charente-Maritime"
+msgstr "Charanta Maritima"
+
+msgid "Cher"
+msgstr "Char"
+
+msgid "Corrèze"
+msgstr "Corresa"
+
+msgid "Corse"
+msgstr "Corsega"
+
+msgid "Corse-du-Sud"
+msgstr "Corsega del Sud"
+
+msgid "Creuse"
+msgstr "Cruesa"
+
+msgid "Côte-d'Or"
+msgstr "Còsta d'Aur"
+
+msgid "Côtes-d'Armor"
+msgstr "Còstas d'Arvòr"
+
+msgid "Deux-Sèvres"
+msgstr "Doas Sèvras"
+
+msgid "Djibouti"
+msgstr "Jiboti"
+
+msgid "Dordogne"
+msgstr "Dordonha"
+
+msgid "Doubs"
+msgstr "Doubs"
+
+msgid "Drôme"
+msgstr "Droma"
+
+msgid "England"
+msgstr "Anglatèrra"
+
+msgid "Essonne"
+msgstr "Essonne"
+
+msgid "Eure"
+msgstr "Eure"
+
+msgid "Eure-et-Loir"
+msgstr "Eure et Loir"
+
+msgid "Finistère"
+msgstr "Finistèrra"
+
+msgid "Franche-Comté"
+msgstr "Franca Comtat"
+
+msgid "Gard"
+msgstr "Gard"
+
+msgid "Georgia"
+msgstr "Georgia"
+
+msgid "Gers"
+msgstr "Gers"
+
+msgid "Gironde"
+msgstr "Gironda"
+
+msgid "Guadeloupe"
+msgstr "Guadalope"
+
+msgid "Guatemala"
+msgstr "Guatemala"
+
+msgid "Guyane"
+msgstr "Guaiana"
+
+msgid "Haut-Rhin"
+msgstr "Naut Ren"
+
+msgid "Haute-Corse"
+msgstr "Nauta Corsega"
+
+msgid "Haute-Garonne"
+msgstr "Nauta Garona"
+
+msgid "Haute-Loire"
+msgstr "Naut Léger"
+
+msgid "Haute-Marne"
+msgstr "Nauta Marna"
+
+msgid "Haute-Normandie"
+msgstr "Nauta Normandia"
+
+msgid "Haute-Savoie"
+msgstr "Nauta Savòia"
+
+msgid "Haute-Saône"
+msgstr "Nauta Sòna"
+
+msgid "Haute-Vienne"
+msgstr "Nauta Vinhana"
+
+msgid "Hautes-Alpes"
+msgstr "Auts Aups"
+
+msgid "Hautes-Pyrénées"
+msgstr "Nauts Pirenèus"
+
+msgid "Hauts-de-Seine"
+msgstr "Nauts de Sèina"
+
+msgid "Hérault"
+msgstr "Erau"
+
+msgid "Ille-et-Vilaine"
+msgstr "Ille e Vilaine"
+
+msgid "Indre"
+msgstr "Indre"
+
+msgid "Indre-et-Loire"
+msgstr "Indre e Léger"
+
+msgid "Isère"
+msgstr "Isèra"
+
+msgid "Landes"
+msgstr "Lanas"
+
+msgid "Languedoc-Roussillon"
+msgstr "Lengadòc-Rosselhon"
+
+msgid "Limousin"
+msgstr "Lemosin"
+
+msgid "Loir-et-Cher"
+msgstr "Loir e Char"
+
+msgid "Loire"
+msgstr "Léger"
+
+msgid "Loire-Atlantique"
+msgstr "Léger Atlantic"
+
+msgid "Loiret"
+msgstr "Loiret"
+
+msgid "Lorraine"
+msgstr "Lorena"
+
+msgid "Lot"
+msgstr "Òlt"
+
+msgid "Lot-et-Garonne"
+msgstr "Òlt e Garona"
+
+msgid "Lozère"
+msgstr "Losera"
+
+msgid "Luxembourg"
+msgstr "Luxemborg"
+
+msgid "Maine-et-Loire"
+msgstr "Maine e Léger"
+
+msgid "Mali"
+msgstr "Mali"
+
+msgid "Manche"
+msgstr "Marga"
+
+msgid "Marne"
+msgstr "Marna"
+
+msgid "Martinique"
+msgstr "Martinica"
+
+msgid "Mayenne"
+msgstr "Mayenne"
+
+msgid "Meurthe-et-Moselle"
+msgstr "Meurthe e Mosèla"
+
+msgid "Meuse"
+msgstr "Mòsa"
+
+msgid "Midi-Pyrénées"
+msgstr "Miègjorn-Pirenèus"
+
+msgid "Morbihan"
+msgstr "Morbihan"
+
+msgid "Moselle"
+msgstr "Mosèla"
+
+msgid "Niger"
+msgstr "Nigèr"
+
+msgid "Nièvre"
+msgstr "Nièvre"
+
+msgid "Nord"
+msgstr "Nòrd"
+
+msgid "Nord - Pas-de-Calais"
+msgstr "Nòrd-Pas de Calais"
+
+msgid "Northern Ireland"
+msgstr "Irlanda del Nòrd"
+
+msgid "Oise"
+msgstr "Oise"
+
+msgid "Orne"
+msgstr "Orne"
+
+msgid "Paris"
+msgstr "Paris"
+
+msgid "Pas-de-Calais"
+msgstr "Pas de Calais"
+
+msgid "Pays de la Loire"
+msgstr "Païses de Léger"
+
+msgid "Picardie"
+msgstr "Picardia"
+
+msgid "Poitou-Charentes"
+msgstr "Peitau-Charantas"
+
+msgid "Provence-Alpes-Côte d'Azur"
+msgstr "Provença-Aups-Còsta d'Azur"
+
+msgid "Puy-de-Dôme"
+msgstr "Puèi Domat"
+
+msgid "Pyrénées-Atlantiques"
+msgstr "Pirenèus Atlantics"
+
+msgid "Pyrénées-Orientales"
+msgstr "Pirenèus Orientals"
+
+msgid "Rhône"
+msgstr "Ròse"
+
+msgid "Rhône-Alpes"
+msgstr "Ròse-Aups"
+
+msgid "Réunion"
+msgstr "Reünion"
+
+msgid "San Marino"
+msgstr "Sant Marin"
+
+msgid "Sarthe"
+msgstr "Sarthe"
+
+msgid "Savoie"
+msgstr "Savòia"
+
+msgid "Saône-et-Loire"
+msgstr "Sòna e Léger"
+
+msgid "Scotland"
+msgstr "Escòcia"
+
+msgid "Seine-Maritime"
+msgstr "Sèina Maritima"
+
+msgid "Seine-Saint-Denis"
+msgstr "Sèina Saint Denis"
+
+msgid "Seine-et-Marne"
+msgstr "Sèina e Marna"
+
+msgid "Somme"
+msgstr "Somme"
+
+msgid "Taiwan"
+msgstr "Taiwan"
+
+msgid "Tarn"
+msgstr "Tarn"
+
+msgid "Tarn-et-Garonne"
+msgstr "Tarn e Garona"
+
+msgid "Territoire de Belfort"
+msgstr "Territòri de Belfòrt"
+
+msgid "United Kingdom"
+msgstr "Reialme Unit"
+
+msgid "Val d'Oise"
+msgstr "Val d'Oise"
+
+msgid "Val-de-Marne"
+msgstr "Val de Marna"
+
+msgid "Var"
+msgstr "Var"
+
+msgid "Vaucluse"
+msgstr "Vauclusa"
+
+msgid "Vendée"
+msgstr "Vendèa"
+
+msgid "Vienne"
+msgstr "Vinhana"
+
+msgid "Vosges"
+msgstr "Vòges"
+
+msgid "Wales"
+msgstr "País de Galas"
+
+msgid "Yonne"
+msgstr "Yonne"
+
+msgid "Yvelines"
+msgstr "Yvelines"
+
+msgid "Île-de-France"
+msgstr "Illa de França"

@@ -11,7 +11,7 @@
  *
  *	This file should be included at the top level of the application or web site as the
  *	second entry, it includes the local definitions specific to the current site or
- * application.
+ *	application.
  *
  *	@package	MyWrapper
  *	@subpackage	Definitions
@@ -43,7 +43,7 @@ define( "kDEFAULT_LANGUAGE",				"en" );
  *======================================================================================*/
 
 /**
- * Vervose flag.
+ * Verbnose flag.
  *
  * If set, the method will echo all created elements.
  */

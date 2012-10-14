@@ -1,0 +1,494 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: iso_15924\n"
+"Report-Msgid-Bugs-To: Debian iso-codes team <pkg-isocodes-devel@lists.alioth."
+"debian.org>\n"
+"POT-Creation-Date: 2012-02-09 22:36+0100\n"
+"PO-Revision-Date: 2011-11-28 12:01+0100\n"
+"Last-Translator: Marek Černocký <marek@manet.cz>\n"
+"Language-Team: Czech <translation-team-cs@lists.sourceforge.net>\n"
+"Language: cs\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=3; plural=(n==1) ? 0 : (n>=2 && n<=4) ? 1 : 2;\n"
+
+msgid "Afaka"
+msgstr "Afaka"
+
+msgid "Arabic"
+msgstr "Arabské"
+
+msgid "Armenian"
+msgstr "Arménské"
+
+msgid "Avestan"
+msgstr "Avestické"
+
+msgid "Balinese"
+msgstr "Balinéské"
+
+msgid "Bamum"
+msgstr "Bamumské"
+
+msgid "Bassa Vah"
+msgstr "Bassa Vah"
+
+msgid "Batak"
+msgstr "Batacké"
+
+msgid "Bengali"
+msgstr "Bengálské"
+
+msgid "Blissymbols"
+msgstr "Bliss"
+
+msgid "Book Pahlavi"
+msgstr "Pahlavské knižní"
+
+msgid "Bopomofo"
+msgstr "Bopomofo"
+
+msgid "Brahmi"
+msgstr "Bráhmí"
+
+msgid "Braille"
+msgstr "Braillovo"
+
+msgid "Buginese"
+msgstr "Buginské"
+
+msgid "Buhid"
+msgstr "Buhid"
+
+msgid "Carian"
+msgstr "Karijské"
+
+msgid "Chakma"
+msgstr "Chakma"
+
+msgid "Cham"
+msgstr "Čam"
+
+msgid "Cherokee"
+msgstr "Čerokí"
+
+msgid "Cirth"
+msgstr "Cirth"
+
+msgid "Code for inherited script"
+msgstr "Zděděná"
+
+msgid "Code for uncoded script"
+msgstr "Nezařazené"
+
+msgid "Code for undetermined script"
+msgstr "Obecné"
+
+msgid "Code for unwritten documents"
+msgstr "Nepsané dokumenty"
+
+msgid "Coptic"
+msgstr "Koptské"
+
+msgid "Cuneiform, Sumero-Akkadian"
+msgstr "Klínové (sumersko-akkadské)"
+
+msgid "Cypriot"
+msgstr "Kyperské"
+
+msgid "Cyrillic"
+msgstr "Cyrilice"
+
+msgid "Cyrillic (Old Church Slavonic variant)"
+msgstr "Cyrilice (staroslověnská varianta)"
+
+msgid "Deseret (Mormon)"
+msgstr "Deseret (mormonské)"
+
+msgid "Devanagari (Nagari)"
+msgstr "Devanágarí (nágarí)"
+
+msgid "Duployan shorthand, Duployan stenography"
+msgstr "Duployého těsnopis"
+
+msgid "Egyptian demotic"
+msgstr "Egyptské démotické"
+
+msgid "Egyptian hieratic"
+msgstr "Egyptské hieratické"
+
+msgid "Egyptian hieroglyphs"
+msgstr "Egyptské hieroglyfy"
+
+msgid "Elbasan"
+msgstr "Elbasánské"
+
+msgid "Ethiopic (Geʻez)"
+msgstr "Etiopské (Geʻez)"
+
+msgid "Georgian (Mkhedruli)"
+msgstr "Gruzínské (Mkhedruli)"
+
+msgid "Glagolitic"
+msgstr "Hlaholice"
+
+msgid "Gothic"
+msgstr "Gotické"
+
+msgid "Grantha"
+msgstr "Grantha"
+
+msgid "Greek"
+msgstr "Řecké"
+
+msgid "Gujarati"
+msgstr "Gudžarátí"
+
+msgid "Gurmukhi"
+msgstr "Gurmukhí"
+
+msgid "Han (Hanzi, Kanji, Hanja)"
+msgstr "Čínské (chan-c')"
+
+msgid "Han (Simplified variant)"
+msgstr "Čínské (zjednodušená varianta)"
+
+msgid "Han (Traditional variant)"
+msgstr "Čínské (tradiční varianta)"
+
+msgid "Hangul (Hangŭl, Hangeul)"
+msgstr "Hangul (hangŭl)"
+
+msgid "Hanunoo (Hanunóo)"
+msgstr "Hanunoo (Hanunóo)"
+
+msgid "Hebrew"
+msgstr "Hebrejské"
+
+msgid "Hiragana"
+msgstr "Hiragana"
+
+msgid "Imperial Aramaic"
+msgstr "Říšské aramejské"
+
+msgid "Indus (Harappan)"
+msgstr "Harappské"
+
+msgid "Inscriptional Pahlavi"
+msgstr "Pahlavské klínové"
+
+msgid "Inscriptional Parthian"
+msgstr "Parthské klínové"
+
+msgid "Japanese (alias for Han + Hiragana + Katakana)"
+msgstr "Japonské (alias pro han + hiragana + katakana)"
+
+msgid "Japanese syllabaries (alias for Hiragana + Katakana)"
+msgstr "Japonské sylabické (alias pro hiragana + katakana)"
+
+msgid "Javanese"
+msgstr "Javánské"
+
+msgid "Jurchen"
+msgstr "Džürčenské"
+
+msgid "Kaithi"
+msgstr "Kaithi"
+
+msgid "Kannada"
+msgstr "Kannadské"
+
+msgid "Katakana"
+msgstr "Katakana"
+
+msgid "Kayah Li"
+msgstr "Kayah li"
+
+msgid "Kharoshthi"
+msgstr "Kháróští"
+
+msgid "Khmer"
+msgstr "Kmérské"
+
+msgid "Khojki"
+msgstr "Khojki"
+
+msgid "Khudawadi, Sindhi"
+msgstr "Sindhské (khudawadi)"
+
+msgid "Khutsuri (Asomtavruli and Nuskhuri)"
+msgstr "Khutsuri (asomtavruli a nuskhuri)"
+
+msgid "Korean (alias for Hangul + Han)"
+msgstr "Korejské (alias pro hangul + han)"
+
+msgid "Kpelle"
+msgstr "Kpelle"
+
+msgid "Lao"
+msgstr "Laoské"
+
+msgid "Latin"
+msgstr "Latinka"
+
+msgid "Latin (Fraktur variant)"
+msgstr "Latinka (fraktur)"
+
+msgid "Latin (Gaelic variant)"
+msgstr "Latinka (gaelská varianta)"
+
+msgid "Lepcha (Róng)"
+msgstr "Lepčské"
+
+msgid "Limbu"
+msgstr "Limbu"
+
+msgid "Linear A"
+msgstr "Lineární A"
+
+msgid "Linear B"
+msgstr "Lineární B"
+
+msgid "Lisu (Fraser)"
+msgstr "Lisu (Fraserovo)"
+
+msgid "Loma"
+msgstr "Loma"
+
+msgid "Lycian"
+msgstr "Lykijské"
+
+msgid "Lydian"
+msgstr "Lýdské"
+
+msgid "Malayalam"
+msgstr "Malajálamské"
+
+msgid "Mandaic, Mandaean"
+msgstr "Mandejské"
+
+msgid "Manichaean"
+msgstr "Manichejské"
+
+msgid "Mathematical notation"
+msgstr "Matematický zápis"
+
+msgid "Mayan hieroglyphs"
+msgstr "Mayské hieroglyfy"
+
+msgid "Meitei Mayek (Meithei, Meetei)"
+msgstr "Manipurské (Meitei Mayek)"
+
+msgid "Mende"
+msgstr "Mendeské"
+
+msgid "Meroitic Cursive"
+msgstr "Meroitické psací"
+
+msgid "Meroitic Hieroglyphs"
+msgstr "Meroitické hieroglyfy"
+
+msgid "Miao (Pollard)"
+msgstr "Pollardovo fonetické"
+
+msgid "Mongolian"
+msgstr "Mongolské"
+
+msgid "Moon (Moon code, Moon script, Moon type)"
+msgstr "Moonovo"
+
+msgid "Mro, Mru"
+msgstr "Mro, Mru"
+
+msgid "Myanmar (Burmese)"
+msgstr "Myanmarské (barmské)"
+
+msgid "Nabataean"
+msgstr "Nabataeanské"
+
+msgid "Nakhi Geba ('Na-'Khi ²Ggŏ-¹baw, Naxi Geba)"
+msgstr "Nakhi Geba ('Na-'Khi Ggŏ-baw, Naxi Geba)"
+
+msgid "New Tai Lue"
+msgstr "Nové Tai Lue"
+
+msgid "Nüshu"
+msgstr "Nüshu"
+
+msgid "N’Ko"
+msgstr "N’Ko"
+
+msgid "Ogham"
+msgstr "Ogham"
+
+msgid "Ol Chiki (Ol Cemet’, Ol, Santali)"
+msgstr "Ol Chiki (Ol Cemet’, Ol, Santali)"
+
+msgid "Old Hungarian"
+msgstr "Staromaďarské"
+
+msgid "Old Italic (Etruscan, Oscan, etc.)"
+msgstr "Staroitalické (etruské, oscan atd.)"
+
+msgid "Old North Arabian (Ancient North Arabian)"
+msgstr "Starověké severoarabské"
+
+msgid "Old Permic"
+msgstr "Staropermské"
+
+msgid "Old Persian"
+msgstr "Staroperské"
+
+msgid "Old South Arabian"
+msgstr "Starojihoarabské"
+
+msgid "Old Turkic, Orkhon Runic"
+msgstr "Staroturkické, orchonské runové"
+
+msgid "Oriya"
+msgstr "Urijské"
+
+msgid "Osmanya"
+msgstr "Osmanské"
+
+msgid "Pahawh Hmong"
+msgstr "Pahawh Hmong"
+
+msgid "Palmyrene"
+msgstr "Palmýrské"
+
+msgid "Phags-pa"
+msgstr "Phags-pa"
+
+msgid "Phoenician"
+msgstr "Fénické"
+
+msgid "Psalter Pahlavi"
+msgstr "Pahlavské žalmové"
+
+msgid "Rejang (Redjang, Kaganga)"
+msgstr "Rejang (Redjang, Kaganga)"
+
+msgid "Reserved for private use (end)"
+msgstr "Rezervované pro soukromé použití (konec)"
+
+msgid "Reserved for private use (start)"
+msgstr "Rezervované pro soukromé použití (začátek)"
+
+msgid "Rongorongo"
+msgstr "Rongorongo"
+
+msgid "Runic"
+msgstr "Runové"
+
+msgid "Samaritan"
+msgstr "Samaritánské"
+
+msgid "Sarati"
+msgstr "Sarati"
+
+msgid "Saurashtra"
+msgstr "Sauráštra"
+
+msgid "Sharada, Śāradā"
+msgstr "Šáradá (Śāradā)"
+
+msgid "Shavian (Shaw)"
+msgstr "Shaw"
+
+msgid "SignWriting"
+msgstr "Znakovací"
+
+msgid "Sinhala"
+msgstr "Sinhálské"
+
+msgid "Sora Sompeng"
+msgstr "Sora Sompeng"
+
+msgid "Sundanese"
+msgstr "Sundánské"
+
+msgid "Syloti Nagri"
+msgstr "Syloti Nagri"
+
+msgid "Symbols"
+msgstr "Symboly"
+
+msgid "Syriac"
+msgstr "Syrské"
+
+msgid "Syriac (Eastern variant)"
+msgstr "Syrské (východní varianta)"
+
+msgid "Syriac (Estrangelo variant)"
+msgstr "Syrské (varianta Estrangelo)"
+
+msgid "Syriac (Western variant)"
+msgstr "Syrské (západní varianta)"
+
+msgid "Tagalog (Baybayin, Alibata)"
+msgstr "Tagalské (Baybayin, Alibata)"
+
+msgid "Tagbanwa"
+msgstr "Tagbanwa"
+
+msgid "Tai Le"
+msgstr "Tai Le"
+
+msgid "Tai Tham (Lanna)"
+msgstr "Tai Tham (Lanna)"
+
+msgid "Tai Viet"
+msgstr "Tai Viet"
+
+msgid "Takri, Ṭākrī, Ṭāṅkrī"
+msgstr "Takri (Ṭākrī, Ṭāṅkrī)"
+
+msgid "Tamil"
+msgstr "Tamilské"
+
+msgid "Tangut"
+msgstr "Tangutské"
+
+msgid "Telugu"
+msgstr "Telugské"
+
+msgid "Tengwar"
+msgstr "Tengwar"
+
+msgid "Thaana"
+msgstr "Thaana"
+
+msgid "Thai"
+msgstr "Thajské"
+
+msgid "Tibetan"
+msgstr "Tibetské"
+
+msgid "Tifinagh (Berber)"
+msgstr "Tifinagh (berberské)"
+
+msgid "Tirhuta"
+msgstr "Tirhuta"
+
+msgid "Ugaritic"
+msgstr "Ugaritské"
+
+msgid "Unified Canadian Aboriginal Syllabics"
+msgstr "Sylabické kanadské domorodé"
+
+msgid "Vai"
+msgstr "Vai"
+
+msgid "Visible Speech"
+msgstr "Viditelná řeč"
+
+msgid "Warang Citi (Varang Kshiti)"
+msgstr "Varang Kshiti"
+
+msgid "Woleai"
+msgstr "Woleai"
+
+msgid "Yi"
+msgstr "Yi"
