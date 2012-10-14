@@ -171,11 +171,13 @@ class COntologyNode extends CNode
 	 *		<li><i>{@link kTYPE_INT32}</i>: 32 bit signed integer.
 	 *		<li><i>{@link kTYPE_INT64}</i>: 64 bit signed integer.
 	 *		<li><i>{@link kTYPE_FLOAT}</i>: Floating point number.
+	 *		<li><i>{@link kTYPE_BOOLEAN}</i>: An <tt>on</tt>/<tt>off</tt> switch.
+	 *		<li><i>{@link kTYPE_BINARY}</i>: A binary string.
 	 *		<li><i>{@link kTYPE_DATE}</i>: A date.
 	 *		<li><i>{@link kTYPE_TIME}</i>: A date and time.
 	 *		<li><i>{@link kTYPE_STAMP}</i>: A native timestamp.
-	 *		<li><i>{@link kTYPE_BOOLEAN}</i>: An <tt>on</tt>/<tt>off</tt> switch.
-	 *		<li><i>{@link kTYPE_BINARY}</i>: A binary string.
+	 *		<li><i>{@link kTYPE_CODED_LIST}</i>: A list of strings expressed in several
+	 *			languages.
 	 *		<li><i>{@link kTYPE_ENUM}</i>: Enumerated scalar, this data type resolves by
 	 *			default to a string and indicates that the node refers to a controlled
 	 *			vocabulary scalar whose elements will be found related to the current node.
@@ -267,11 +269,12 @@ class COntologyNode extends CNode
 				case kTYPE_INT32:
 				case kTYPE_INT64:
 				case kTYPE_FLOAT:
+				case kTYPE_BINARY:
 				case kTYPE_DATE:
 				case kTYPE_TIME:
 				case kTYPE_STAMP:
+				case kTYPE_CODED_LIST:
 				case kTYPE_BOOLEAN:
-				case kTYPE_BINARY:
 				case kTYPE_ENUM:
 				case kTYPE_ENUM_SET:
 					//

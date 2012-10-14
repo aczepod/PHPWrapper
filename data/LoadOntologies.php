@@ -85,15 +85,6 @@ try
 	//
 	Init();
 	
-	echo( "  • Compiling ISO codes.\n" );
-	
-	//
-	// Compile ISO codes.
-	//
-	ISODecodePOFiles();
-	ISOBuildXMLFiles();
-exit;
-	
 	echo( "  • Loading default ontologies.\n" );
 	
 	//
@@ -103,16 +94,26 @@ exit;
 	LoadDefaultOntologies();
 	LoadDefaultCategories();
 	LoadDefaultAttributes();
+	LoadDefaultTypes();
 	
-	echo( "  • Loading ISO ontology.\n" );
+	echo( "  • Loading ISO standards.\n" );
 	
 	//
-	// Load ISO ontology.
+	// Load ISO standards.
 	//
 	LoadISOOntologies();
 	LoadISOStandards();
 	LoadISO639Categories();
+	LoadISO639Enums();
 	LoadISO3166Categories();
+	
+	echo( "  • Loading ISO codes.\n" );
+	
+	//
+	// Load ISO codes.
+	//
+	ISODecodePOFiles();
+	ISOBuildXMLFiles();
 	
 	echo( "  • Loading landraces passport ontology.\n" );
 	

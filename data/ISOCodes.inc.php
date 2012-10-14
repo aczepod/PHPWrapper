@@ -33,15 +33,6 @@
 define( "kISO_CODES_PATH",					'/usr/local/Cellar/iso-codes/3.37/share' );
 
 /**
- * Generated ISO XML files directory path.
- *
- * This defines the path to the <i>generated</i> XML files directory.
- *
- * You may customise this.
- */
-define( "kISO_CODES_XML_PATH",				'/Library/WebServer/Library/PHPWrapper/data/iso-codes' );
-
-/**
  * ISO-codes locale directory path.
  *
  * This defines the path to the <i>locale</i> directory <i>relative</i> to the

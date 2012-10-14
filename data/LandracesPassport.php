@@ -813,7 +813,7 @@
 			//
 			// Relate to root.
 			//
-			$_SESSION[ kSESSION_ONTOLOGY ]->SubclassOf(
+			$_SESSION[ kSESSION_ONTOLOGY ]->EnumOf(
 				//
 				// Create node.
 				//

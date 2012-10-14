@@ -59,8 +59,13 @@ require_once( kPATH_MYWRAPPER_LIBRARY_FUNCTION.'/parsing.php' );
 		// Init local storage.
 		//
 		$_SESSION[ kISO_LANGUAGES ] = Array();
+		
+		//
+		// Init files list.
+		// The order is important!!!
+		//
 		$_SESSION[ kISO_FILES ]
-			= array( kISO_FILE_639, kISO_FILE_639_3, kISO_FILE_3166,
+			= array( kISO_FILE_639_3, kISO_FILE_639, kISO_FILE_3166,
 					 kISO_FILE_3166_2, kISO_FILE_4217, kISO_FILE_15924 );
 		
 		//
@@ -189,6 +194,9 @@ $_SESSION[ kISO_FILE_PO_DIR ] = '/Library/WebServer/Library/PHPWrapper/data/cach
 			//
 			switch( $file )
 			{
+				case kISO_FILE_639_3:
+					ISOBuild6393XML();
+					break;
 				case kISO_FILE_639:
 					ISOBuild639XML();
 					break;
@@ -197,6 +205,152 @@ $_SESSION[ kISO_FILE_PO_DIR ] = '/Library/WebServer/Library/PHPWrapper/data/cach
 		} // Iterating the files.
 		
 	} // ISOBuildXMLFiles.
+
+	 
+	/*===================================================================================
+	 *	ISOBuild6393XML																	*
+	 *==================================================================================*/
+
+	/**
+	 * <h4>Build XML files</h4>
+	 *
+	 * This method will generate the XML files completed with all the translations and save
+	 * it at the top level of the cache directory.
+	 */
+	function ISOBuild6393XML()
+	{
+		//
+		// Load XML file.
+		//
+		$xml = simplexml_load_file(
+					kISO_CODES_PATH.kISO_CODES_PATH_XML.'/'.kISO_FILE_639_3.'.xml' );
+		if( $xml instanceof SimpleXMLElement )
+		{
+			//
+			// Init local storage.
+			//
+			$namespace
+				= $_SESSION[ kSESSION_ONTOLOGY ]->ResolveTerm(
+					implode(
+						kTOKEN_NAMESPACE_SEPARATOR,
+						array( kONTOLOGY_ISO, kONTOLOGY_ISO_639, kONTOLOGY_ISO_639_3 ) ),
+					NULL,
+					TRUE );
+			$inv_name_tag
+				= $_SESSION[ kSESSION_ONTOLOGY ]->ResolveTag(
+					implode(
+						kTOKEN_NAMESPACE_SEPARATOR,
+						array( kONTOLOGY_ISO, kONTOLOGY_ISO_639, kONTOLOGY_ISO_639_3_INVNAME ) ),
+					NULL,
+					TRUE )[ 0 ];
+			$status_tag
+				= $_SESSION[ kSESSION_ONTOLOGY ]->ResolveTag(
+					implode(
+						kTOKEN_NAMESPACE_SEPARATOR,
+						array( kONTOLOGY_ISO, kONTOLOGY_ISO_639, kONTOLOGY_ISO_639_3_status ) ),
+					NULL,
+					TRUE )[ 0 ];
+			$scope_tag
+				= $_SESSION[ kSESSION_ONTOLOGY ]->ResolveTag(
+					implode(
+						kTOKEN_NAMESPACE_SEPARATOR,
+						array( kONTOLOGY_ISO, kONTOLOGY_ISO_639, kONTOLOGY_ISO_639_3_scope ) ),
+					NULL,
+					TRUE )[ 0 ];
+			$type_tag
+				= $_SESSION[ kSESSION_ONTOLOGY ]->ResolveTag(
+					implode(
+						kTOKEN_NAMESPACE_SEPARATOR,
+						array( kONTOLOGY_ISO, kONTOLOGY_ISO_639, kONTOLOGY_ISO_639_3_type ) ),
+					NULL,
+					TRUE )[ 0 ];
+
+			//
+			// Iterate XML file.
+			//
+			foreach( $xml->{'iso_639_3_entry'} as $record )
+			{
+				//
+				// Init term.
+				//
+				$term = new COntologyTerm();
+				$term->LID( (string) $record[ 'id' ] );
+				$term->NS( $namespace );
+				$term->Label( 'en', (string) $record[ 'name' ] );
+				$term->Description( 'en', (string) $record[ 'reference_name' ] );
+				if( ($tmp = $record[ 'status' ]) !== NULL )
+					$term[ $status_tag[ kOFFSET_NID ] ] = (string) $tmp;
+				if( ($tmp = $record[ 'scope' ]) !== NULL )
+					$term[ $scope_tag[ kOFFSET_NID ] ] = (string) $tmp;
+				if( ($tmp = $record[ 'type' ]) !== NULL )
+					$term[ $type_tag[ kOFFSET_NID ] ] = (string) $tmp;
+				if( ($tmp = $record[ 'inverted_name' ]) !== NULL )
+					ManageTypedOffset( $term, (string) $inv_name_tag[ kOFFSET_NID ],
+						  			   kOFFSET_LANGUAGE, kOFFSET_DATA, 'en', (string) $tmp );
+				
+				//
+				// Iterate languages.
+				//
+				foreach( $_SESSION[ kISO_LANGUAGES ] as $language )
+				{
+					//
+					// Check language key file.
+					//
+					$file_path = $_SESSION[ kISO_FILE_PO_DIR ]."/$language/".kISO_FILE_639_3.'.serial';
+					if( is_file( $file_path ) )
+					{
+						//
+						// Instantiate keys array.
+						//
+						$keys = unserialize( file_get_contents( $file_path ) );
+						
+						//
+						// Update label.
+						//
+						if( ($string = $term->Label( 'en' )) !== NULL )
+						{
+							if( array_key_exists( $string, $keys ) )
+								$term->Label( $language, $keys[ $string ] );
+						}
+						
+						//
+						// Update description.
+						//
+						if( ($string = $term->Description( 'en' )) !== NULL )
+						{
+							if( array_key_exists( $string, $keys ) )
+								$term->Description( $language, $keys[ $string ] );
+						}
+						
+						//
+						// Update inverted name.
+						//
+						if( $term->offsetExists( (string) $inv_name_tag[ kOFFSET_NID ] ) )
+						{
+print_r( $term );
+exit;
+							$string = $term[ (string) $inv_name_tag[ kOFFSET_NID ] ]
+										   [ kOFFSET_DATA ];
+							if( array_key_exists( $string, $keys ) )
+								ManageTypedOffset( $term, (string) $inv_name_tag[ kOFFSET_NID ],
+												   kOFFSET_LANGUAGE, kOFFSET_DATA,
+												   $language, $keys[ $string ] );
+						}
+					
+					} // Key file exists.
+				
+				} // Iterating languages.
+				
+				//
+				// Commit term.
+				//
+				$term->Insert( $_SESSION[ kSESSION_ONTOLOGY ]->Connection() );
+			
+			} // Iterating records.
+		
+		} // Loaded file.
+
+	} // ISOBuild6393XML.
 
 	 
 	/*===================================================================================
@@ -211,23 +365,6 @@ $_SESSION[ kISO_FILE_PO_DIR ] = '/Library/WebServer/Library/PHPWrapper/data/cach
 	 */
 	function ISOBuild639XML()
 	{
-		//
-		// Init local storage.
-		//
-		$path = kISO_CODES_PATH.kISO_CODES_PATH_XML."/".kISO_FILE_639.".xml";
-		
-		//
-		// Open input XML file.
-		//
-		$xml_in = simplexml_load_file( $path );
-		
-		//
-		// Open destination XML file.
-		//
-		$xml_out = new SimpleXMLElement( '<'.kISO_FILE_639.'></'.kISO_FILE_639.'>' );
-		
-		//
-		// Iterate
 		
 	} // ISOBuild639XML.
 

@@ -58,21 +58,6 @@ define( "kOFFSET_LABEL",						'_label' );
 define( "kOFFSET_DESCRIPTION",					'_description' );
 
 /**
- * Language.
- *
- * This tag is used as a sub-offset of a language group, it represents the two character
- * language code.
- */
-define( "kOFFSET_LANGUAGE",						'_language' );
-
-/**
- * Data.
- *
- * This tag is used as a sub-offset of a language group, it represents the data element.
- */
-define( "kOFFSET_DATA",							'_data' );
-
-/**
  * Synonyms.
  *
  * This tag identifies the synonyms offset, this attribute is a list of strings that

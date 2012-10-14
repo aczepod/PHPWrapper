@@ -192,6 +192,15 @@ require_once( 'ISOOntologies.inc.php' );
 			array( 'code' => kONTOLOGY_ISO_639_1,
 				   'label' => "Part 1",
 				   'descr' => "Alpha-2 code." ),
+			array( 'code' => kONTOLOGY_ISO_639_2,
+				   'label' => "Part 2",
+				   'descr' => "Alpha-3 code." ),
+			array( 'code' => kONTOLOGY_ISO_639_2T,
+				   'label' => "Terminological code",
+				   'descr' => "While most languages are given one code by the standard, twenty of the languages described have two three-letter codes, the “terminological” code (ISO 639-2/T), is derived from the native name for the language." ),
+			array( 'code' => kONTOLOGY_ISO_639_2B,
+				   'label' => "Bibliographic code",
+				   'descr' => "While most languages are given one code by the standard, twenty of the languages described have two three-letter codes, the “bibliographic” code (ISO 639-2/B), is derived from the English name for the language and was a necessary legacy feature." ),
 			array( 'code' => kONTOLOGY_ISO_639_3,
 				   'label' => "Part 3",
 				   'descr' => "Alpha-3 code for comprehensive coverage of languages." ) );
@@ -235,47 +244,44 @@ require_once( 'ISOOntologies.inc.php' );
 				echo( "    - $id [".$_SESSION[ 'NODES' ][ $id ]."]\n" );
 		}
 
-		//
-		// Set part 2 category.
-		//
-		$id = $ns_id.kTOKEN_NAMESPACE_SEPARATOR.kONTOLOGY_ISO_639_2;
-		$_SESSION[ kSESSION_ONTOLOGY ]->SubclassOf(
-			//
-			// Create node.
-			//
-			$_SESSION[ 'NODES' ][ $id ]
-				= $_SESSION[ kSESSION_ONTOLOGY ]->NewNode(
-					$_SESSION[ 'TERMS' ][ $id ]
-						//
-						// Create term.
-						//
-						= $_SESSION[ kSESSION_ONTOLOGY ]->NewTerm(
-							kONTOLOGY_ISO_639_2,	// Local identifier.
-							$namespace,				// Namespace.
-							"Part 2",				// Label or name.
-							"Alpha-3 code.",		// Description or definition.
-							kDEFAULT_LANGUAGE ) ),	// Language.
-			$category );							// Object vertex node.
+	} // LoadISO639Categories.
 
-		//
-		// Inform.
-		//
-		if( kOPTION_VERBOSE )
-			echo( "    - $id [".$_SESSION[ 'NODES' ][ $id ]."]\n" );
+	 
+	/*===================================================================================
+	 *	LoadISO639Enums																	*
+	 *==================================================================================*/
 
+	/**
+	 * <h4>Load ISO 639 enumerations</h4>
+	 *
+	 * This method will create the ISO 639 enumeration nodes and relate them to their
+	 * standards.
+	 */
+	function LoadISO639Enums()
+	{
 		//
-		// Set part 2 traita.
+		// Init data.
 		//
-		$ns_id = $id;
+		$ns_id = kONTOLOGY_ISO.kTOKEN_NAMESPACE_SEPARATOR.kONTOLOGY_ISO_639;
 		$namespace = $_SESSION[ 'TERMS' ][ $ns_id ];
 		$category = $_SESSION[ 'NODES' ][ $ns_id ];
 		$params = array(
-			array( 'code' => kONTOLOGY_ISO_639_2T,
-				   'label' => "Terminological code",
-				   'descr' => "While most languages are given one code by the standard, twenty of the languages described have two three-letter codes, the “terminological” code (ISO 639-2/T), is derived from the native name for the language." ),
-			array( 'code' => kONTOLOGY_ISO_639_2B,
-				   'label' => "Bibliographic code",
-				   'descr' => "While most languages are given one code by the standard, twenty of the languages described have two three-letter codes, the “bibliographic” code (ISO 639-2/B), is derived from the English name for the language and was a necessary legacy feature." ) );
+			array( 'code' => kONTOLOGY_ISO_639_3_scope,
+				   'type' => kTYPE_ENUM,
+				   'label' => "Scope",
+				   'descr' => "Scope of denotation for language identifiers." ),
+			array( 'code' => kONTOLOGY_ISO_639_3_type,
+				   'type' => kTYPE_ENUM,
+				   'label' => "Type",
+				   'descr' => "Type of individual language." ),
+			array( 'code' => kONTOLOGY_ISO_639_3_status,
+				   'type' => kTYPE_STRING,
+				   'label' => "Status",
+				   'descr' => "Type of individual language." ),
+			array( 'code' => kONTOLOGY_ISO_639_3_INVNAME,
+				   'type' => kTYPE_CODED_LIST,
+				   'label' => "Inverted name",
+				   'descr' => "An \"inverted\" name is one that is altered from the usual English-language order by moving adjectival qualifiers to the end, after the main language name and separated by a comma." ) );
 		
 		//
 		// Load data.
@@ -306,8 +312,87 @@ require_once( 'ISOOntologies.inc.php' );
 								$param[ 'label' ],		// Label or name.
 								$param[ 'descr' ],		// Description or definition.
 								kDEFAULT_LANGUAGE ),	// Language.
-						kTYPE_ENUM ),					// Node data type.
+						$param[ 'type' ] ),				// Node data type.
 				$category );							// Object vertex node.
+		
+			//
+			// Create tag.
+			//
+			$_SESSION[ 'TAGS' ][ $id ] = NULL;
+			$_SESSION[ kSESSION_ONTOLOGY ]->AddToTag(
+				$_SESSION[ 'TAGS' ][ $id ], $_SESSION[ 'NODES' ][ $id ] );
+			$_SESSION[ kSESSION_ONTOLOGY ]->AddToTag(
+				$_SESSION[ 'TAGS' ][ $id ], TRUE );
+			
+			//
+			// Inform.
+			//
+			if( kOPTION_VERBOSE )
+				echo( "    - $id ["
+					 .$_SESSION[ 'NODES' ][ $id ]
+					 ."] ("
+					 .$_SESSION[ 'TAGS' ][ $id ][ kOFFSET_NID ]
+					 .")\n" );
+		}
+
+		//
+		// Set scope enumerations.
+		//
+		$ns_id = implode(
+					kTOKEN_NAMESPACE_SEPARATOR,
+					array( kONTOLOGY_ISO, kONTOLOGY_ISO_639, kONTOLOGY_ISO_639_3_scope ) );
+		$namespace = $_SESSION[ 'TERMS' ][ $ns_id ];
+		$trait = $_SESSION[ 'NODES' ][ $ns_id ];
+		$params = array(
+			array( 'code' => 'I',
+				   'label' => "Individual",
+				   'descr' => "A distinct individual language." ),
+			array( 'code' => 'M',
+				   'label' => "Macrolanguage",
+				   'descr' => "Language that corresponds in a one-to-many manner with several individual languages." ),
+			array( 'code' => 'C',
+				   'label' => "Collection of languages",
+				   'descr' => "A collective language code element is an identifier that represents a group of individual languages that are not deemed to be one language in any usage context." ),
+			array( 'code' => 'D',
+				   'label' => "Dialect",
+				   'descr' => "Sub-variety of a language such as might be based on geographic region, age, gender, social class, time period, or the like." ),
+			array( 'code' => 'R',
+				   'label' => "Reserved",
+				   'descr' => "Reserved for local use." ),
+			array( 'code' => 'S',
+				   'label' => "Special",
+				   'descr' => "Special situation." ) );
+		
+		//
+		// Load data.
+		//
+		foreach( $params as $param )
+		{
+			//
+			// Set global identifier.
+			//
+			$id = $ns_id.kTOKEN_NAMESPACE_SEPARATOR.$param[ 'code' ];
+			
+			//
+			// Relate to category.
+			//
+			$_SESSION[ kSESSION_ONTOLOGY ]->EnumOf(
+				//
+				// Create node.
+				//
+				$_SESSION[ 'NODES' ][ $id ]
+					= $_SESSION[ kSESSION_ONTOLOGY ]->NewEnumerationNode(
+						$_SESSION[ 'TERMS' ][ $id ]
+							//
+							// Create term.
+							//
+							= $_SESSION[ kSESSION_ONTOLOGY ]->NewTerm(
+								$param[ 'code' ],		// Local identifier.
+								$namespace,				// Namespace.
+								$param[ 'label' ],		// Label or name.
+								$param[ 'descr' ],		// Description or definition.
+								kDEFAULT_LANGUAGE ) ),	// Language.
+				$trait );								// Object vertex node.
 	
 			//
 			// Inform.
@@ -316,7 +401,73 @@ require_once( 'ISOOntologies.inc.php' );
 				echo( "    - $id [".$_SESSION[ 'NODES' ][ $id ]."]\n" );
 		}
 
-	} // LoadISO639Categories.
+		//
+		// Set type enumerations.
+		//
+		$ns_id = implode(
+					kTOKEN_NAMESPACE_SEPARATOR,
+					array( kONTOLOGY_ISO, kONTOLOGY_ISO_639, kONTOLOGY_ISO_639_3_type ) );
+		$namespace = $_SESSION[ 'TERMS' ][ $ns_id ];
+		$trait = $_SESSION[ 'NODES' ][ $ns_id ];
+		$params = array(
+			array( 'code' => 'L',
+				   'label' => "Living",
+				   'descr' => "A language is listed as living when there are people still living who learned it as a first language." ),
+			array( 'code' => 'E',
+				   'label' => "Extinct",
+				   'descr' => "Language that are no longer living." ),
+			array( 'code' => 'A',
+				   'label' => "Ancient",
+				   'descr' => "A language went extinct in ancient times (e.g. more than a millennium ago)." ),
+			array( 'code' => 'H',
+				   'label' => "Historic",
+				   'descr' => "A language considered to be distinct from any modern languages that are descended from it; for instance, Old English and Middle English." ),
+			array( 'code' => 'C',
+				   'label' => "Constructed",
+				   'descr' => "A constructed (or artificial) language." ),
+			array( 'code' => 'G',
+				   'label' => "Genetic",
+				   'descr' => "In linguistics, genetic relationship is the usual term for the relationship which exists between languages that are members of the same language family, mixed languages, pidgins and creole languages constitute special genetic types of languages." ) );
+		
+		//
+		// Load data.
+		//
+		foreach( $params as $param )
+		{
+			//
+			// Set global identifier.
+			//
+			$id = $ns_id.kTOKEN_NAMESPACE_SEPARATOR.$param[ 'code' ];
+			
+			//
+			// Relate to category.
+			//
+			$_SESSION[ kSESSION_ONTOLOGY ]->EnumOf(
+				//
+				// Create node.
+				//
+				$_SESSION[ 'NODES' ][ $id ]
+					= $_SESSION[ kSESSION_ONTOLOGY ]->NewEnumerationNode(
+						//
+						// Create term.
+						//
+						$_SESSION[ 'TERMS' ][ $id ]
+							= $_SESSION[ kSESSION_ONTOLOGY ]->NewTerm(
+								$param[ 'code' ],		// Local identifier.
+								$namespace,				// Namespace.
+								$param[ 'label' ],		// Label or name.
+								$param[ 'descr' ],		// Description or definition.
+								kDEFAULT_LANGUAGE ) ),	// Language.
+				$trait );
+	
+			//
+			// Inform.
+			//
+			if( kOPTION_VERBOSE )
+				echo( "    - $id [".$_SESSION[ 'NODES' ][ $id ]."]\n" );
+		}
+
+	} // LoadISO639Enums.
 
 	 
 	/*===================================================================================

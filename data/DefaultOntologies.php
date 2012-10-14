@@ -115,27 +115,49 @@ require_once( 'DefaultOntologies.inc.php' );
 	function LoadDefaultCategories()
 	{
 		//
-		// Create default attributes category.
+		// Init local storage.
 		//
-		$code = kONTOLOGY_DEFAULT_ATTRIBUTES;
-		$id = kTOKEN_NAMESPACE_SEPARATOR.kONTOLOGY_DEFAULT_ATTRIBUTES;
-		$_SESSION[ kSESSION_ONTOLOGY ]->SubclassOf(
-			$_SESSION[ 'NODES' ][ $id ]
-				= $_SESSION[ kSESSION_ONTOLOGY ]->NewNode(
-					$_SESSION[ 'TERMS' ][ $id ]
-						= $_SESSION[ kSESSION_ONTOLOGY ]->NewTerm(
-							$code,
-							$_SESSION[ 'TERMS' ][ 0 ],
-							"Default attributes",
-							"The predefined default attributes available to all.",
-							kDEFAULT_LANGUAGE ) ),
-			$_SESSION[ 'NODES' ][ kTOKEN_NAMESPACE_SEPARATOR.kONTOLOGY_DEFAULT_ROOT ] );
-
+		$namespace = $_SESSION[ 'TERMS' ][ 0 ];
+		$root = $_SESSION[ 'NODES' ][ kTOKEN_NAMESPACE_SEPARATOR.kONTOLOGY_DEFAULT_ROOT ];
+		$params = array(
+			array( 'code' => kONTOLOGY_DEFAULT_ATTRIBUTES,
+				   'label' => "Default attributes",
+				   'descr' => "The predefined default attributes available to all." ),
+			array( 'code' => kONTOLOGY_DEFAULT_TYPES,
+				   'label' => "Default types",
+				   'descr' => "The predefined default data types available to all." ) );
+		
 		//
-		// Inform.
+		// Load data.
 		//
-		if( kOPTION_VERBOSE )
-			echo( "    - $id [".$_SESSION[ 'NODES' ][ $id ]."]\n" );
+		foreach( $params as $param )
+		{
+			//
+			// Set global identifier.
+			//
+			$id = kTOKEN_NAMESPACE_SEPARATOR.$param[ 'code' ];
+			
+			//
+			// Relate to root.
+			//
+			$_SESSION[ kSESSION_ONTOLOGY ]->SubclassOf(
+				$_SESSION[ 'NODES' ][ $id ]
+					= $_SESSION[ kSESSION_ONTOLOGY ]->NewNode(
+						$_SESSION[ 'TERMS' ][ $id ]
+							= $_SESSION[ kSESSION_ONTOLOGY ]->NewTerm(
+								$param[ 'code' ],		// Local identifier.
+								$namespace,				// Namespace.
+								$param[ 'label' ],		// Label or name.
+								$param[ 'descr' ],		// Description or definition.
+								kDEFAULT_LANGUAGE ) ),	// Language.
+				$root );
+	
+			//
+			// Inform.
+			//
+			if( kOPTION_VERBOSE )
+				echo( "    - $id [".$_SESSION[ 'NODES' ][ $id ]."]\n" );
+		}
 
 	} // LoadDefaultCategories.
 
@@ -233,5 +255,96 @@ require_once( 'DefaultOntologies.inc.php' );
 		}
 
 	} // LoadDefaultAttributes.
+
+	 
+	/*===================================================================================
+	 *	LoadDefaultTypes																*
+	 *==================================================================================*/
+
+	/**
+	 * <h4>Load default types</h4>
+	 *
+	 * This method will create the default data type nodes and relate them to their
+	 * category.
+	 */
+	function LoadDefaultTypes()
+	{
+		//
+		// Init local storage.
+		//
+		$namespace = $_SESSION[ 'TERMS' ][ 0 ];
+		$category = $_SESSION[ 'NODES' ]
+							 [ kTOKEN_NAMESPACE_SEPARATOR.kONTOLOGY_DEFAULT_TYPES ];
+		$params = array(
+			array( 'code' => substr( kTYPE_STRING, 1 ),
+				   'label' => "String",
+				   'descr' => "Primitive string data type." ),
+			array( 'code' => substr( kTYPE_INT32, 1 ),
+				   'label' => "32 bit integer",
+				   'descr' => "32 bit signed integer type." ),
+			array( 'code' => substr( kTYPE_INT64, 1 ),
+				   'label' => "64 bit integer",
+				   'descr' => "64 bit signed integer type." ),
+			array( 'code' => substr( kTYPE_FLOAT, 1 ),
+				   'label' => "Floating point",
+				   'descr' => "Floating point data type." ),
+			array( 'code' => substr( kTYPE_BOOLEAN, 1 ),
+				   'label' => "Boolean",
+				   'descr' => "The primitive boolean data type, it is assumed that it is provided as (y/n; Yes/No; 1/0; TRUE/FALSE) and will be converted to 1/0." ),
+			array( 'code' => substr( kTYPE_BINARY, 1 ),
+				   'label' => "Binary string",
+				   'descr' => "The binary string data type, it differs from the {@link kTYPE_STRING} type only because it needs to be handled in a custom way to accomodate different databases." ),
+			array( 'code' => substr( kTYPE_DATE, 1 ),
+				   'label' => "Date",
+				   'descr' => "A date represented as a YYYYMMDD string in which missing elements should be omitted. This means that if we don't know the day we can express that date as YYYYMM." ),
+			array( 'code' => substr( kTYPE_TIME, 1 ),
+				   'label' => "Time",
+				   'descr' => "A time represented as a YYYY-MM-DD HH:MM:SS string in which you may not have missing elements." ),
+			array( 'code' => substr( kTYPE_STAMP, 1 ),
+				   'label' => "Time-stamp",
+				   'descr' => "This data type should be used for native time-stamps." ),
+			array( 'code' => substr( kTYPE_CODED_LIST, 1 ),
+				   'label' => "Coded list",
+				   'descr' => "This data type refers to a list of elements containing two items: a code an the data. No two elements mat share the same code and only one element may omit the code." ) );
+		
+		//
+		// Load data.
+		//
+		foreach( $params as $param )
+		{
+			//
+			// Set global identifier.
+			//
+			$id = kTOKEN_NAMESPACE_SEPARATOR.$param[ 'code' ];
+			
+			//
+			// Relate to category.
+			//
+			$_SESSION[ kSESSION_ONTOLOGY ]->SubclassOf(
+				//
+				// Create node.
+				//
+				$_SESSION[ 'NODES' ][ $id ]
+					= $_SESSION[ kSESSION_ONTOLOGY ]->NewEnumerationNode(
+						$_SESSION[ 'TERMS' ][ $id ]
+							//
+							// Create term.
+							//
+							= $_SESSION[ kSESSION_ONTOLOGY ]->NewTerm(
+								$param[ 'code' ],		// Local identifier.
+								$namespace,				// Namespace.
+								$param[ 'label' ],		// Label or name.
+								$param[ 'descr' ],		// Description or definition.
+								kDEFAULT_LANGUAGE ) ),	// Language.
+				$category );							// Object vertex node.
+	
+			//
+			// Inform.
+			//
+			if( kOPTION_VERBOSE )
+				echo( "    - $id [".$_SESSION[ 'NODES' ][ $id ]."]\n" );
+		}
+
+	} // LoadDefaultTypes.
 
 ?>

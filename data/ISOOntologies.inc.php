@@ -2,7 +2,7 @@
 
 /*=======================================================================================
  *																						*
- *								DefaultISOOntologies.inc.php							*
+ *									ISOOntologies.inc.php								*
  *																						*
  *======================================================================================*/
  
@@ -59,14 +59,14 @@ define( "kONTOLOGY_ISO_639_2",					'2' );
  *
  * This tag represents the local identifier of the ISO 639-2B ontology term.
  */
-define( "kONTOLOGY_ISO_639_2B",					'B' );
+define( "kONTOLOGY_ISO_639_2B",					'2B' );
 
 /**
  * ISO 639-2T ontology term.
  *
  * This tag represents the local identifier of the ISO 639-2T ontology term.
  */
-define( "kONTOLOGY_ISO_639_2T",					'T' );
+define( "kONTOLOGY_ISO_639_2T",					'2T' );
 
 /**
  * ISO 639-3 ontology term.
@@ -74,6 +74,34 @@ define( "kONTOLOGY_ISO_639_2T",					'T' );
  * This tag represents the local identifier of the ISO 639-3 ontology term.
  */
 define( "kONTOLOGY_ISO_639_3",					'3' );
+
+/**
+ * ISO 639-3 scope trait.
+ *
+ * This tag represents the local identifier of the ISO 639-3 scope trait term.
+ */
+define( "kONTOLOGY_ISO_639_3_scope",			'scope' );
+
+/**
+ * ISO 639-3 type trait.
+ *
+ * This tag represents the local identifier of the ISO 639-3 type trait term.
+ */
+define( "kONTOLOGY_ISO_639_3_type",				'type' );
+
+/**
+ * ISO 639-3 status trait.
+ *
+ * This tag represents the local identifier of the ISO 639-3 status trait term.
+ */
+define( "kONTOLOGY_ISO_639_3_status",			'status' );
+
+/**
+ * ISO 639-3 inverted name trait.
+ *
+ * This tag represents the local identifier of the ISO 639-3 inverted name trait term.
+ */
+define( "kONTOLOGY_ISO_639_3_INVNAME",			'inverted_name' );
 
 /*=======================================================================================
  *	ISO 3166 CODES																		*
