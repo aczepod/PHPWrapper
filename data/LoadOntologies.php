@@ -29,6 +29,11 @@ require_once( 'includes.inc.php' );
 require_once( 'local.inc.php' );
 
 //
+// Class includes.
+//
+require_once( kPATH_MYWRAPPER_LIBRARY_CLASS."/COntology.php" );
+
+//
 // Default ontologies.
 //
 require_once( 'DefaultOntologies.php' );
@@ -47,11 +52,6 @@ require_once( 'ISOOntologies.php' );
 // Landrace ontology.
 //
 require_once( 'LandracesPassport.php' );
-
-//
-// Class includes.
-//
-require_once( kPATH_MYWRAPPER_LIBRARY_CLASS."/COntology.php" );
 
 //
 // Start session.

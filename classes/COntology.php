@@ -332,7 +332,7 @@ class COntology extends CConnection
 	 * committed in all cases.
 	 *
 	 * The method also accepts the node qualifications through the {@link CNode::Kind()} and
-	 * {@link CNode.:Type()} qualifiers: when resolving nodes, these have to match or a new
+	 * {@link CNode:Type()} qualifiers: when resolving nodes, these have to match or a new
 	 * instance is returned; when creating new nodes, these qualifiers will be set to the
 	 * provided values.
 	 *
@@ -495,8 +495,9 @@ class COntology extends CConnection
 				//
 				// Create term.
 				//
-				$term = $this->NewTerm( $theIdentifier, $theNamespace,
-										$theLabel, $theDescription, $theLanguage );
+				$term = $this->NewTerm(
+							$theIdentifier, $theNamespace,
+							$theLabel, $theDescription, $theLanguage );
 				
 				//
 				// Force new.
@@ -1163,7 +1164,7 @@ class COntology extends CConnection
 	 * @param boolean				$doThrow			If <tt>TRUE</tt> raise an exception.
 	 *
 	 * @access public
-	 * @return COntologyTerm		New or found term.
+	 * @return COntologyTerm		Found term or <tt>NULL</tt>.
 	 *
 	 * @throws Exception
 	 *

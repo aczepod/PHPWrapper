@@ -425,9 +425,18 @@ require_once( 'ISOOntologies.inc.php' );
 			array( 'code' => 'C',
 				   'label' => "Constructed",
 				   'descr' => "A constructed (or artificial) language." ),
-			array( 'code' => 'G',
+			array( 'code' => 'S',
+				   'label' => "Special",
+				   'descr' => "Special language." ),
+			array( 'code' => 'Genetic',
 				   'label' => "Genetic",
-				   'descr' => "In linguistics, genetic relationship is the usual term for the relationship which exists between languages that are members of the same language family, mixed languages, pidgins and creole languages constitute special genetic types of languages." ) );
+				   'descr' => "In linguistics, genetic relationship is the usual term for the relationship which exists between languages that are members of the same language family, mixed languages, pidgins and creole languages constitute special genetic types of languages." ),
+			array( 'code' => 'Genetic-like',
+				   'label' => "Genetic-like",
+				   'descr' => "Genetic-like language." ),
+			array( 'code' => 'Geographic',
+				   'label' => "Geographic",
+				   'descr' => "Geographic language." ) );
 		
 		//
 		// Load data.

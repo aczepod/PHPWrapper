@@ -4,7 +4,7 @@
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 	<meta name="generator" content="ApiGen 2.8.0" />
 
-	<title>Function StringNormalise | MyWrapper Reference Documentation</title>
+	<title>Function DeleteFileDir | MyWrapper Reference Documentation</title>
 
 	<script type="text/javascript" src="resources/combined.js?3994123307"></script>
 	<script type="text/javascript" src="elementlist.js?3428385880"></script>
@@ -50,7 +50,7 @@
 
 			<h3>Functions</h3>
 			<ul>
-				<li><a href="function-DeleteFileDir.html">DeleteFileDir</a></li>
+				<li class="active"><a href="function-DeleteFileDir.html">DeleteFileDir</a></li>
 				<li><a href="function-DurationString.html">DurationString</a></li>
 				<li><a href="function-ManageBitField.html">ManageBitField</a></li>
 				<li><a href="function-ManageObjectSetOffset.html">ManageObjectSetOffset</a></li>
@@ -58,7 +58,7 @@
 				<li><a href="function-ManageProperty.html">ManageProperty</a></li>
 				<li><a href="function-ManageTypedOffset.html">ManageTypedOffset</a></li>
 				<li><a href="function-PO2Array.html">PO2Array</a></li>
-				<li class="active"><a href="function-StringNormalise.html">StringNormalise</a></li>
+				<li><a href="function-StringNormalise.html">StringNormalise</a></li>
 			</ul>
 		</div>
 	</div>
@@ -96,68 +96,15 @@
 	</div>
 
 <div id="content" class="function">
-	<h1>Function StringNormalise</h1>
+	<h1>Function DeleteFileDir</h1>
 
 
 	<div class="description">
 	
-<h4>Normalise string</h4>
+<h4>Delete a file or directory</h4>
 
-<p>This function can be used to format a string, the provided modifiers bitfield
-determines what manipulations are applied:</p>
-
-<ul>
-	<li><tt>kFLAG_MODIFIER_UTF8</tt>: Convert the string to the
-	<tt>UTF8</tt> character set.</li>
-
-	<li><tt>kFLAG_MODIFIER_LTRIM</tt>: Apply left trimming to the
-	string.</li>
-
-	<li><tt>kFLAG_MODIFIER_RTRIM</tt>: Apply right trimming to the
-	string.</li>
-
-	<li><tt>kFLAG_MODIFIER_TRIM</tt>: Apply both left and right trimming to
-	the string.</li>
-
-	<li><tt>kFLAG_MODIFIER_NULL</tt>: If the resulting string is empty, the
-	method will return <tt>NULL</tt>.
-		<ul>
-			<li><tt>kFLAG_MODIFIER_NULLSTR</tt>: If this flag is set and the
-			resulting string is empty, the method will return the '<tt>NULL</tt>'
-			string.</li>
-		</ul>
-	</li>
-
-	<li><tt>kFLAG_MODIFIER_NOCASE</tt>: Set the string to lowercase, this is
-	the default way to generate a case insensitive string.</li>
-
-	<li><tt>kFLAG_MODIFIER_URL</tt>: URL-encode the string; note that this
-	option and kFLAG_MODIFIER_HTML are mutually exclusive.</li>
-
-	<li><tt>kFLAG_MODIFIER_HTML</tt>: HTML-encode the string; note that this
-	option and kFLAG_MODIFIER_URL are mutually exclusive.</li>
-
-	<li><tt>kFLAG_MODIFIER_HEX</tt>: Convert the string to hexadecimal; note
-	that this option and kFLAG_MODIFIER_MASK_HASH are mutually exclusive.
-		<ul>
-			<li><tt>kFLAG_MODIFIER_HEXEXP</tt>: Convert the string to a hexadecimal
-			expression; note that this option and kFLAG_MODIFIER_MASK_HASH are
-			mutually exclusive.</li>
-		</ul>
-	</li>
-
-	<li><tt>kFLAG_MODIFIER_HASH</tt>: If this bit is set, the resulting
-	string will be hashed using the <tt>md5</tt> algorithm resulting in a 32
-	character hexadecimal string; this option is mutually exclusive with the kFLAG_MODIFIER_MASK_HEX option.
-		<ul>
-			<li><tt>kFLAG_MODIFIER_HASH_BIN</tt>: If this bit is set, the resulting
-			value should be a 16 character binary string; if the bit is <tt>OFF</tt>, the
-			resulting value should be a 32 character hexadecimal string.</li>
-		</ul>
-	</li>
-</ul>
-
-<p>The order in which these modifications are applied are as stated.</p>
+<p>If provided with a file path this function will delete it; if provided with a
+directory path, it will recursively remove its contents and delete it also.</p>
 
 	</div>
 
@@ -167,38 +114,17 @@ determines what manipulations are applied:</p>
 				<b>Author:</b>
 				Milko A. Škofič &lt;<a
 href="mailto:m.skofic&#64;cgiar.org">m.skofic&#64;<!---->cgiar.org</a>&gt;<br />
-				<b>See:</b>
-				kFLAG_DEFAULT, kFLAG_MODIFIER_MASK<br />
-				<b>See:</b>
-				kFLAG_MODIFIER_UTF8<br />
-				<b>See:</b>
-				kFLAG_MODIFIER_LTRIM, kFLAG_MODIFIER_RTRIM, kFLAG_MODIFIER_TRIM<br />
-				<b>See:</b>
-				kFLAG_MODIFIER_NULL, kFLAG_MODIFIER_NULLSTR<br />
-				<b>See:</b>
-				kFLAG_MODIFIER_NOCASE, kFLAG_MODIFIER_URL, kFLAG_MODIFIER_HTML<br />
-				<b>See:</b>
-				kFLAG_MODIFIER_HEX, kFLAG_MODIFIER_HEXEXP<br />
-				<b>See:</b>
-				kFLAG_MODIFIER_HASH, kFLAG_MODIFIER_HASH_BIN<br />
-		<b>Located at</b> <a href="source-function-StringNormalise.html#49-216" title="Go to source code">string.php</a><br />
+		<b>Located at</b> <a href="source-function-DeleteFileDir.html#42-82" title="Go to source code">file.php</a><br />
 	</div>
 
 
 	<table class="summary" id="parameters">
 	<caption>Parameters summary</caption>
-	<tr id="$theString">
+	<tr id="$thePath">
 		<td class="name"><code>string</code></td>
-		<td class="value"><code><var>$theString</var></code></td>
+		<td class="value"><code><var>$thePath</var></code></td>
 		<td>
-			 String to normalise.
-		</td>
-	</tr>
-	<tr id="$theModifiers">
-		<td class="name"><code>bitfield</code></td>
-		<td class="value"><code><var>$theModifiers</var> = kFLAG_DEFAULT</code></td>
-		<td>
-			 Modifiers bitfield.
+			 Directory path.
 		</td>
 	</tr>
 	</table>
@@ -207,10 +133,10 @@ href="mailto:m.skofic&#64;cgiar.org">m.skofic&#64;<!---->cgiar.org</a>&gt;<br />
 	<caption>Return value summary</caption>
 	<tr>
 		<td class="name"><code>
-			mixed
+			string
 		</code></td>
 		<td>
-			Normalised string.
+			JSON string.
 		</td>
 	</tr>
 	</table>
