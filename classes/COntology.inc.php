@@ -25,13 +25,14 @@
 /**
  * SUBCLASS-OF.
  *
- * This tag identifies the SUBCLASS-OF predicate term local code, this predicate is
- * equivalent to the <i>is-a</i> OBO predicate.
+ * This tag identifies the SUBCLASS-OF predicate term local code, this predicate indicates
+ * that the subject of the relationship is a subclass of the object of the relationship, in
+ * other words, the subject is derived from the object.
  *
  * Note that this term is expected to belong to the default namespace which has an empty
  * local identifier.
  */
-define( "kPREDICATE_SUBCLASS_OF",				'SUBCLASS-OF' );
+define( "kPREDICATE_SUBCLASS_OF",				':SUBCLASS-OF' );
 
 /**
  * METHOD-OF.
@@ -43,7 +44,7 @@ define( "kPREDICATE_SUBCLASS_OF",				'SUBCLASS-OF' );
  * Note that this term is expected to belong to the default namespace which has an empty
  * local identifier.
  */
-define( "kPREDICATE_METHOD_OF",					'METHOD-OF' );
+define( "kPREDICATE_METHOD_OF",					':METHOD-OF' );
 
 /**
  * SCALE-OF.
@@ -55,7 +56,7 @@ define( "kPREDICATE_METHOD_OF",					'METHOD-OF' );
  * Note that this term is expected to belong to the default namespace which has an empty
  * local identifier.
  */
-define( "kPREDICATE_SCALE_OF",					'SCALE-OF' );
+define( "kPREDICATE_SCALE_OF",					':SCALE-OF' );
 
 /**
  * ENUM-OF.
@@ -66,6 +67,43 @@ define( "kPREDICATE_SCALE_OF",					'SCALE-OF' );
  * Note that this term is expected to belong to the default namespace which has an empty
  * local identifier.
  */
-define( "kPREDICATE_ENUM_OF",					'ENUM-OF' );
+define( "kPREDICATE_ENUM_OF",					':ENUM-OF' );
+
+/**
+ * PREFERRED.
+ *
+ * This tag identifies the PREFERRED predicate term local code, this predicate indicates
+ * that the object of the relationship is the preferred choice, in other words, if possible,
+ * one should use the object of the relationship in place of the subject.
+ *
+ * Note that this term is expected to belong to the default namespace which has an empty
+ * local identifier.
+ */
+define( "kPREDICATE_PREFERRED",					':PREFERRED' );
+
+/**
+ * VALID.
+ *
+ * This tag identifies the VALID predicate term local code, this predicate indicates
+ * that the object of the relationship is the valid choice, in other words, the subject of
+ * the relationship is obsolete or not valid, and one should use the object od the
+ * relationship in its place.
+ *
+ * Note that this term is expected to belong to the default namespace which has an empty
+ * local identifier.
+ */
+define( "kPREDICATE_VALID",						':VALID' );
+
+/**
+ * XREF-EXACT.
+ *
+ * This tag identifies the XREF-EXACT predicate term local code, this predicate indicates
+ * that the subject and the object of the relationship represent an exact cross-reference,
+ * in other words, both elements are interchangeable.
+ *
+ * Note that this term is expected to belong to the default namespace which has an empty
+ * local identifier.
+ */
+define( "kPREDICATE_XREF_EXACT",				':XREF-EXACT' );
 
 ?>

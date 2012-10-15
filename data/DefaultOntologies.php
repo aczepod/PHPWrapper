@@ -34,18 +34,18 @@ require_once( 'DefaultOntologies.inc.php' );
 
 	 
 	/*===================================================================================
-	 *	LoadDefaultNamespaces															*
+	 *	LoadDefaultNamespace															*
 	 *==================================================================================*/
 
 	/**
 	 * <h4>Load default namespaces</h4>
 	 *
-	 * This method will create the default namespaces.
+	 * This method will create the default namespace.
 	 *
 	 * Note that the default namespace will be accessible via the zero offset in the terms
 	 * session array.
 	 */
-	function LoadDefaultNamespaces()
+	function LoadDefaultNamespace()
 	{
 		//
 		// Create default namespace.
@@ -65,19 +65,19 @@ require_once( 'DefaultOntologies.inc.php' );
 		if( kOPTION_VERBOSE )
 			echo( "    - :".$_SESSION[ 'TERMS' ][ 0 ][ kOFFSET_GID ]."\n" );
 
-	} // LoadDefaultNamespaces.
+	} // LoadDefaultNamespace.
 
 	 
 	/*===================================================================================
-	 *	LoadDefaultOntologies															*
+	 *	LoadDefaultOntology																*
 	 *==================================================================================*/
 
 	/**
-	 * <h4>Load default ontologies</h4>
+	 * <h4>Load default ontology</h4>
 	 *
-	 * This method will create the default root nodes.
+	 * This method will create the default root node.
 	 */
-	function LoadDefaultOntologies()
+	function LoadDefaultOntology()
 	{
 		//
 		// Create default ontology.
@@ -100,7 +100,7 @@ require_once( 'DefaultOntologies.inc.php' );
 		if( kOPTION_VERBOSE )
 			echo( "    - $id [".$_SESSION[ 'NODES' ][ $id ]."]\n" );
 
-	} // LoadDefaultOntologies.
+	} // LoadDefaultOntology.
 
 	 
 	/*===================================================================================
@@ -125,7 +125,10 @@ require_once( 'DefaultOntologies.inc.php' );
 				   'descr' => "The predefined default attributes available to all." ),
 			array( 'code' => kONTOLOGY_DEFAULT_TYPES,
 				   'label' => "Default types",
-				   'descr' => "The predefined default data types available to all." ) );
+				   'descr' => "The predefined default data types available to all." ),
+			array( 'code' => kONTOLOGY_DEFAULT_PREDICATES,
+				   'label' => "Default predicates",
+				   'descr' => "The predefined default predicates available to all." ) );
 		
 		//
 		// Load data.
@@ -160,6 +163,104 @@ require_once( 'DefaultOntologies.inc.php' );
 		}
 
 	} // LoadDefaultCategories.
+
+	 
+	/*===================================================================================
+	 *	LoadDefaultPredicates																*
+	 *==================================================================================*/
+
+	/**
+	 * <h4>Load default predicates</h4>
+	 *
+	 * This method will create the default predicate nodes and relate them to their
+	 * category.
+	 */
+	function LoadDefaultPredicates()
+	{
+		//
+		// Init local storage.
+		//
+		$namespace = $_SESSION[ 'TERMS' ][ 0 ];
+		$category = $_SESSION[ 'NODES' ]
+							 [ kTOKEN_NAMESPACE_SEPARATOR.kONTOLOGY_DEFAULT_PREDICATES ];
+		
+		//
+		// Create subclass predicate.
+		//
+		$_SESSION[ kSESSION_ONTOLOGY ]->SubclassOf(
+			$_SESSION[ 'NODES' ][ kPREDICATE_SUBCLASS_OF ]
+				= $_SESSION[ kSESSION_ONTOLOGY ]->NewEnumerationNode(
+					$_SESSION[ 'TERMS' ][ kPREDICATE_SUBCLASS_OF ]
+						= $_SESSION[ kSESSION_ONTOLOGY ]->NewTerm(
+							substr( kPREDICATE_SUBCLASS_OF, 1 ),
+							$namespace,
+						   "Subclass-of",
+						   "This tag identifies the SUBCLASS-OF predicate term local code, this predicate indicates that the subject of the relationship is a subclass of the object of the relationship, in other words, the subject is derived from the object.",
+							kDEFAULT_LANGUAGE ) ),
+			$category );
+		
+		//
+		// Load data.
+		//
+		$params = array(
+			array( 'code' => substr( kPREDICATE_METHOD_OF, 1 ),
+				   'label' => "Method-of",
+				   'descr' => "This tag identifies the METHOD-OF predicate term local code, this predicate relates method nodes with trait nodes or other method nodes, it indicates that the subject of the relationship is a method variation of the object of the relationship." ),
+			array( 'code' => substr( kPREDICATE_SCALE_OF, 1 ),
+				   'label' => "Scale-of",
+				   'descr' => "This tag identifies the SCALE-OF predicate term local code, this predicate relates scale nodes with Method or trait nodes, it indicates that the subject of the relationship represents a scale or measure that is used by a trait or method node." ),
+			array( 'code' => substr( kPREDICATE_ENUM_OF, 1 ),
+				   'label' => "Enumeration-of",
+				   'descr' => "This tag identifies the ENUM-OF predicate term local code, this predicate relates enumerated set elements or controlled vocabulary elements." ),
+			array( 'code' => substr( kPREDICATE_PREFERRED, 1 ),
+				   'label' => "Preferred to",
+				   'descr' => "This tag identifies the PREFERRED predicate term local code, this predicate indicates that the object of the relationship is the preferred choice, in other words, if possible, one should use the object of the relationship in place of the subject." ),
+			array( 'code' => substr( kPREDICATE_VALID, 1 ),
+				   'label' => "Valid object",
+				   'descr' => "This tag identifies the VALID predicate term local code, this predicate indicates that the object of the relationship is the valid choice, in other words, the subject of the relationship is obsolete or not valid, and one should use the object od the relationship in its place." ),
+			array( 'code' => substr( kPREDICATE_XREF_EXACT, 1 ),
+				   'label' => "Exact cross-reference",
+				   'descr' => "This tag identifies the XREF-EXACT predicate term local code, this predicate indicates that the subject and the object of the relationship represent an exact cross-reference, in other words, both elements are interchangeable." ) );
+		
+		//
+		// Load data.
+		//
+		foreach( $params as $param )
+		{
+			//
+			// Set global identifier.
+			//
+			$id = kTOKEN_NAMESPACE_SEPARATOR.$param[ 'code' ];
+			
+			//
+			// Relate to category.
+			//
+			$_SESSION[ kSESSION_ONTOLOGY ]->SubclassOf(
+				//
+				// Create node.
+				//
+				$_SESSION[ 'NODES' ][ $id ]
+					= $_SESSION[ kSESSION_ONTOLOGY ]->NewEnumerationNode(
+						$_SESSION[ 'TERMS' ][ $id ]
+							//
+							// Create term.
+							//
+							= $_SESSION[ kSESSION_ONTOLOGY ]->NewTerm(
+								$param[ 'code' ],		// Local identifier.
+								$namespace,				// Namespace.
+								$param[ 'label' ],		// Label or name.
+								$param[ 'descr' ],		// Description or definition.
+								kDEFAULT_LANGUAGE ) ),	// Language.
+				$category );							// Object vertex node.
+	
+			//
+			// Inform.
+			//
+			if( kOPTION_VERBOSE )
+				echo( "    - $id [".$_SESSION[ 'NODES' ][ $id ]."]\n" );
+		}
+
+	} // LoadDefaultPredicates.
 
 	 
 	/*===================================================================================

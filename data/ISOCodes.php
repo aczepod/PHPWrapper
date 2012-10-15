@@ -222,46 +222,84 @@ $_SESSION[ kISO_FILE_PO_DIR ] = '/Library/WebServer/Library/PHPWrapper/data/cach
 		//
 		// Load XML file.
 		//
-		$xml = simplexml_load_file(
-					kISO_CODES_PATH.kISO_CODES_PATH_XML.'/'.kISO_FILE_639_3.'.xml' );
+		$xml = kISO_CODES_PATH.kISO_CODES_PATH_XML.'/'.kISO_FILE_639_3.'.xml';
+		$xml = simplexml_load_file( $xml  );
 		if( $xml instanceof SimpleXMLElement )
 		{
 			//
-			// Init local storage.
+			// Load namespaces.
 			//
-			$namespace
+			$part1_ns
+				= $_SESSION[ kSESSION_ONTOLOGY ]->ResolveTerm(
+					implode(
+						kTOKEN_NAMESPACE_SEPARATOR,
+						array( kONTOLOGY_ISO, kONTOLOGY_ISO_639, kONTOLOGY_ISO_639_1 ) ),
+					NULL,
+					TRUE );
+			$part2_ns
+				= $_SESSION[ kSESSION_ONTOLOGY ]->ResolveTerm(
+					implode(
+						kTOKEN_NAMESPACE_SEPARATOR,
+						array( kONTOLOGY_ISO, kONTOLOGY_ISO_639, kONTOLOGY_ISO_639_2 ) ),
+					NULL,
+					TRUE );
+			$part3_ns
 				= $_SESSION[ kSESSION_ONTOLOGY ]->ResolveTerm(
 					implode(
 						kTOKEN_NAMESPACE_SEPARATOR,
 						array( kONTOLOGY_ISO, kONTOLOGY_ISO_639, kONTOLOGY_ISO_639_3 ) ),
 					NULL,
 					TRUE );
+			
+			//
+			// Load parent nodes.
+			//
+			$part1_parent
+				= $_SESSION[ kSESSION_ONTOLOGY ]->ResolveNode(
+					$part1_ns,
+					TRUE )[ 0 ];
+			$part2_parent
+				= $_SESSION[ kSESSION_ONTOLOGY ]->ResolveNode(
+					$part2_ns,
+					TRUE )[ 0 ];
+			$part3_parent
+				= $_SESSION[ kSESSION_ONTOLOGY ]->ResolveNode(
+					$part3_ns,
+					TRUE )[ 0 ];
+			
+			//
+			// Load attribute tags.
+			//
 			$inv_name_tag
 				= $_SESSION[ kSESSION_ONTOLOGY ]->ResolveTag(
 					implode(
 						kTOKEN_NAMESPACE_SEPARATOR,
-						array( kONTOLOGY_ISO, kONTOLOGY_ISO_639, kONTOLOGY_ISO_639_3_INVNAME ) ),
+						array( kONTOLOGY_ISO, kONTOLOGY_ISO_639,
+							   kONTOLOGY_ISO_639_3_INVNAME ) ),
 					NULL,
 					TRUE )[ 0 ];
 			$status_tag
 				= $_SESSION[ kSESSION_ONTOLOGY ]->ResolveTag(
 					implode(
 						kTOKEN_NAMESPACE_SEPARATOR,
-						array( kONTOLOGY_ISO, kONTOLOGY_ISO_639, kONTOLOGY_ISO_639_3_status ) ),
+						array( kONTOLOGY_ISO, kONTOLOGY_ISO_639,
+							   kONTOLOGY_ISO_639_3_status ) ),
 					NULL,
 					TRUE )[ 0 ];
 			$scope_tag
 				= $_SESSION[ kSESSION_ONTOLOGY ]->ResolveTag(
 					implode(
 						kTOKEN_NAMESPACE_SEPARATOR,
-						array( kONTOLOGY_ISO, kONTOLOGY_ISO_639, kONTOLOGY_ISO_639_3_scope ) ),
+						array( kONTOLOGY_ISO, kONTOLOGY_ISO_639,
+							   kONTOLOGY_ISO_639_3_scope ) ),
 					NULL,
 					TRUE )[ 0 ];
 			$type_tag
 				= $_SESSION[ kSESSION_ONTOLOGY ]->ResolveTag(
 					implode(
 						kTOKEN_NAMESPACE_SEPARATOR,
-						array( kONTOLOGY_ISO, kONTOLOGY_ISO_639, kONTOLOGY_ISO_639_3_type ) ),
+						array( kONTOLOGY_ISO, kONTOLOGY_ISO_639,
+							   kONTOLOGY_ISO_639_3_type ) ),
 					NULL,
 					TRUE )[ 0 ];
 
@@ -273,20 +311,21 @@ $_SESSION[ kISO_FILE_PO_DIR ] = '/Library/WebServer/Library/PHPWrapper/data/cach
 				//
 				// Init term.
 				//
-				$term = new COntologyTerm();
-				$term->LID( (string) $record[ 'id' ] );
-				$term->NS( $namespace );
-				$term->Label( 'en', (string) $record[ 'name' ] );
-				$term->Description( 'en', (string) $record[ 'reference_name' ] );
+				$part3_term = new COntologyTerm();
+				$part3_term->LID( (string) $record[ 'id' ] );
+				$part3_term->NS( $part3_ns );
+				$part3_term->Label( 'en', (string) $record[ 'name' ] );
+				$part3_term->Description( 'en', (string) $record[ 'reference_name' ] );
 				if( ($tmp = $record[ 'status' ]) !== NULL )
-					$term[ $status_tag[ kOFFSET_NID ] ] = (string) $tmp;
+					$part3_term[ $status_tag[ kOFFSET_NID ] ] = (string) $tmp;
 				if( ($tmp = $record[ 'scope' ]) !== NULL )
-					$term[ $scope_tag[ kOFFSET_NID ] ] = (string) $tmp;
+					$part3_term[ $scope_tag[ kOFFSET_NID ] ] = (string) $tmp;
 				if( ($tmp = $record[ 'type' ]) !== NULL )
-					$term[ $type_tag[ kOFFSET_NID ] ] = (string) $tmp;
+					$part3_term[ $type_tag[ kOFFSET_NID ] ] = (string) $tmp;
 				if( ($tmp = $record[ 'inverted_name' ]) !== NULL )
-					ManageTypedOffset( $term, (string) $inv_name_tag[ kOFFSET_NID ],
-						  			   kOFFSET_LANGUAGE, kOFFSET_DATA, 'en', (string) $tmp );
+					ManageTypedOffset( $part3_term, (string) $inv_name_tag[ kOFFSET_NID ],
+						  			   kOFFSET_LANGUAGE, kOFFSET_DATA,
+						  			   'en', (string) $tmp );
 				
 				//
 				// Iterate languages.
@@ -296,7 +335,8 @@ $_SESSION[ kISO_FILE_PO_DIR ] = '/Library/WebServer/Library/PHPWrapper/data/cach
 					//
 					// Check language key file.
 					//
-					$file_path = $_SESSION[ kISO_FILE_PO_DIR ]."/$language/".kISO_FILE_639_3.'.serial';
+					$file_path = $_SESSION[ kISO_FILE_PO_DIR ]."/$language/"
+								.kISO_FILE_639_3.'.serial';
 					if( is_file( $file_path ) )
 					{
 						//
@@ -307,34 +347,35 @@ $_SESSION[ kISO_FILE_PO_DIR ] = '/Library/WebServer/Library/PHPWrapper/data/cach
 						//
 						// Update label.
 						//
-						if( ($string = $term->Label( 'en' )) !== NULL )
+						if( ($string = $part3_term->Label( 'en' )) !== NULL )
 						{
 							if( array_key_exists( $string, $keys ) )
-								$term->Label( $language, $keys[ $string ] );
+								$part3_term->Label( $language, $keys[ $string ] );
 						}
 						
 						//
 						// Update description.
 						//
-						if( ($string = $term->Description( 'en' )) !== NULL )
+						if( ($string = $part3_term->Description( 'en' )) !== NULL )
 						{
 							if( array_key_exists( $string, $keys ) )
-								$term->Description( $language, $keys[ $string ] );
+								$part3_term->Description( $language, $keys[ $string ] );
 						}
 						
 						//
 						// Update inverted name.
 						//
-						if( $term->offsetExists( (string) $inv_name_tag[ kOFFSET_NID ] ) )
+						if( $part3_term->offsetExists( (string) $inv_name_tag[ kOFFSET_NID ] ) )
 						{
-print_r( $term );
-exit;
-							$string = $term[ (string) $inv_name_tag[ kOFFSET_NID ] ]
-										   [ kOFFSET_DATA ];
+							$string = ManageTypedOffset(
+										$part3_term, (string) $inv_name_tag[ kOFFSET_NID ],
+										kOFFSET_LANGUAGE, kOFFSET_DATA,
+										'en' );
 							if( array_key_exists( $string, $keys ) )
-								ManageTypedOffset( $term, (string) $inv_name_tag[ kOFFSET_NID ],
-												   kOFFSET_LANGUAGE, kOFFSET_DATA,
-												   $language, $keys[ $string ] );
+								ManageTypedOffset(
+									$part3_term, (string) $inv_name_tag[ kOFFSET_NID ],
+									kOFFSET_LANGUAGE, kOFFSET_DATA,
+									$language, $keys[ $string ] );
 						}
 					
 					} // Key file exists.
@@ -342,9 +383,61 @@ exit;
 				} // Iterating languages.
 				
 				//
-				// Commit term.
+				// Create node, relate to parent and commit.
 				//
-				$term->Insert( $_SESSION[ kSESSION_ONTOLOGY ]->Connection() );
+				$_SESSION[ kSESSION_ONTOLOGY ]->EnumOf(
+					$part3_node
+						= $_SESSION[ kSESSION_ONTOLOGY ]->NewEnumerationNode(
+							$part3_term ),
+					$part3_parent );
+				
+				//
+				// Handle part 1 code.
+				//
+				if( $record[ 'part1_code' ] !== NULL )
+				{
+					//
+					// Init term.
+					//
+					$part1_term = new COntologyTerm();
+					$part1_term->LID( (string) $record[ 'part1_code' ] );
+					$part1_term->NS( $part1_ns );
+					$part1_term->Term( $part3_term );					
+					
+					//
+					// Create node, relate to parent and commit.
+					//
+					$_SESSION[ kSESSION_ONTOLOGY ]->EnumOf(
+						$part1_node
+							= $_SESSION[ kSESSION_ONTOLOGY ]->NewEnumerationNode(
+								$part1_term ),
+						$part1_parent );
+				
+				} // Has part 1 code.
+				
+				//
+				// Handle part 2 code.
+				//
+				if( $record[ 'part2_code' ] !== NULL )
+				{
+					//
+					// Init term.
+					//
+					$part2_term = new COntologyTerm();
+					$part2_term->LID( (string) $record[ 'part2_code' ] );
+					$part2_term->NS( $part2_ns );
+					$part2_term->Term( $part3_term );					
+					
+					//
+					// Create node, relate to parent and commit.
+					//
+					$_SESSION[ kSESSION_ONTOLOGY ]->EnumOf(
+						$part1_node
+							= $_SESSION[ kSESSION_ONTOLOGY ]->NewEnumerationNode(
+								$part2_term ),
+						$part2_parent );
+				
+				} // Has part 2 code.
 			
 			} // Iterating records.
 		

@@ -34,7 +34,7 @@ define( "kONTOLOGY_DEFAULT_ROOT",				'DEFAULT' );
  *
  * This tag represents the local identifier of the default data types category term.
  */
-define( "kONTOLOGY_DEFAULT_TYPES",			'TYPES' );
+define( "kONTOLOGY_DEFAULT_TYPES",				'TYPES' );
 
 /**
  * Default attributes category term.
@@ -42,6 +42,13 @@ define( "kONTOLOGY_DEFAULT_TYPES",			'TYPES' );
  * This tag represents the local identifier of the default attributes category term.
  */
 define( "kONTOLOGY_DEFAULT_ATTRIBUTES",			'ATTRIBUTES' );
+
+/**
+ * Default predicates category term.
+ *
+ * This tag represents the local identifier of the default predicates category term.
+ */
+define( "kONTOLOGY_DEFAULT_PREDICATES",			'PREDICATES' );
 
 /**
  * Default authors attribute term.

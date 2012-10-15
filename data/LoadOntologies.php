@@ -90,9 +90,10 @@ try
 	//
 	// Load default ontologies.
 	//
-	LoadDefaultNamespaces();
-	LoadDefaultOntologies();
+	LoadDefaultNamespace();
+	LoadDefaultOntology();
 	LoadDefaultCategories();
+	LoadDefaultPredicates();
 	LoadDefaultAttributes();
 	LoadDefaultTypes();
 	
