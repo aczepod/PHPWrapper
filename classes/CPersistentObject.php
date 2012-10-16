@@ -20,13 +20,6 @@
  *======================================================================================*/
 
 /**
- * Local definitions.
- *
- * This include file contains common offset definitions.
- */
-require_once( "CPersistentObject.inc.php" );
-
-/**
  * Ancestor.
  *
  * This includes the ancestor class definitions.

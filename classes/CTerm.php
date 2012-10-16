@@ -20,13 +20,6 @@
  *======================================================================================*/
 
 /**
- * Local definitions.
- *
- * This include file contains common offset definitions.
- */
-require_once( "CTerm.inc.php" );
-
-/**
  * Tokens.
  *
  * This include file contains all default token definitions.

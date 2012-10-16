@@ -172,7 +172,7 @@ the database in which the ontology resides.</p>
 				<b>Author:</b>
 				Milko A. Škofič &lt;<a
 href="mailto:m.skofic&#64;cgiar.org">m.skofic&#64;<!---->cgiar.org</a>&gt;<br />
-		<b>Located at</b> <a href="source-class-COntology.html#68-1979" title="Go to source code">COntology.php</a><br />
+		<b>Located at</b> <a href="source-class-COntology.html#75-2549" title="Go to source code">COntology.php</a><br />
 	</div>
 
 
@@ -190,7 +190,7 @@ href="mailto:m.skofic&#64;cgiar.org">m.skofic&#64;<!---->cgiar.org</a>&gt;<br />
 
 		<td class="name"><div>
 		<a class="anchor" href="#___toString">#</a>
-		<code><a href="source-class-COntology.html#99-110" title="Go to source code">__toString</a>( )</code>
+		<code><a href="source-class-COntology.html#106-117" title="Go to source code">__toString</a>( )</code>
 
 		<div class="description short">
 			
@@ -234,7 +234,7 @@ returning its name.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#_Connection">#</a>
-		<code><a href="source-class-COntology.html#126-154" title="Go to source code">Connection</a>( <span>mixed <var>$theValue</var> = <span class="php-keyword1">NULL</span></span>, <span>boolean <var>$getOld</var> = <span class="php-keyword1">FALSE</span> </span> )</code>
+		<code><a href="source-class-COntology.html#133-161" title="Go to source code">Connection</a>( <span>mixed <var>$theValue</var> = <span class="php-keyword1">NULL</span></span>, <span>boolean <var>$getOld</var> = <span class="php-keyword1">FALSE</span> </span> )</code>
 
 		<div class="description short">
 			
@@ -271,6 +271,7 @@ returning its name.</p>
 				<h4>Used by</h4>
 				<div class="list">
 						<code><code><a href="class-COntology.html#___toString">COntology::__toString()</a></code></code> <br />
+						<code><code><a href="class-COntology.html#_InitOntology">COntology::InitOntology()</a></code></code> <br />
 						<code><code><a href="class-COntology.html#_NewTerm">COntology::NewTerm()</a></code></code> <br />
 						<code><code><a href="class-COntology.html#_NewNode">COntology::NewNode()</a></code></code> <br />
 						<code><code><a href="class-COntology.html#_NewScaleNode">COntology::NewScaleNode()</a></code></code> <br />
@@ -282,10 +283,105 @@ returning its name.</p>
 						<code><code><a href="class-COntology.html#__NewTerm">COntology::_NewTerm()</a></code></code> <br />
 						<code><code><a href="class-COntology.html#__NewNode">COntology::_NewNode()</a></code></code> <br />
 						<code><code><a href="class-COntology.html#__RelateTo">COntology::_RelateTo()</a></code></code> <br />
+						<code><code><a href="class-COntology.html#__InitDefaultNamespace">COntology::_InitDefaultNamespace()</a></code></code> <br />
 				</div>
 
 				<h4>Overrides</h4>
 				<div class="list"><code><a href="class-CConnection.html#_Connection">CConnection::Connection()</a></code></div>
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="GetDatabase" id="_GetDatabase">
+
+		<td class="attributes"><code>
+			 public 
+			mixed
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_GetDatabase">#</a>
+		<code><a href="source-class-COntology.html#168-202" title="Go to source code">GetDatabase</a>( <span>mixed <var>$theValue</var> = <span class="php-keyword1">NULL</span></span>, <span>mixed <var>$getOld</var> = <span class="php-keyword1">FALSE</span> </span> )</code>
+
+		<div class="description short">
+			
+<h4>Return database connection</h4>
+
+		</div>
+
+		<div class="description detailed hidden">
+			
+<h4>Return database connection</h4>
+
+<p>This method should return the database connection, <tt>FALSE<tt> if no
+connection is set and <tt>NULL</tt>, if the database cannot be
+inferred..</tt></tt></p>
+
+
+
+
+				<h4>Returns</h4>
+				<div class="list">
+					<code>mixed</code><br>Database connection, <tt>NULL&lt;7tt&gt; or <tt>FALSE</tt>.</tt><br />
+				</div>
+
+
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="InitOntology" id="_InitOntology">
+
+		<td class="attributes"><code>
+			 public 
+			
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_InitOntology">#</a>
+		<code><a href="source-class-COntology.html#218-279" title="Go to source code">InitOntology</a>( )</code>
+
+		<div class="description short">
+			
+<h4>Initialise the ontology</h4>
+
+		</div>
+
+		<div class="description detailed hidden">
+			
+<h4>Initialise the ontology</h4>
+
+<p>This method will clear the current database and initialise it with the
+default ontology elements.</p>
+
+<p>This method can be used to create a new ontology, so you should be aware that
+the method will erase any existing data.</p>
+
+<p>The curent object must be <code><a href="class-CStatusDocument.html#__IsInited">CStatusDocument::_IsInited()</a></code> and the method does not return
+any value.</p>
+
+
+
+
+
+				<h4>Throws</h4>
+				<div class="list">
+					<code><code><a href="class-Exception.html">Exception</a></code></code><br />
+				</div>
+
+				<h4>Uses</h4>
+				<div class="list">
+						<code><code><a href="class-CStatusDocument.html#__IsInited">CStatusDocument::_IsInited()</a></code></code> <br />
+						<code><code><a href="class-COntology.html#_ResolveTerm">COntology::ResolveTerm()</a></code></code> <br />
+						<code><code><a href="class-COntology.html#__NewTerm">COntology::_NewTerm()</a></code></code> <br />
+						<code><code><a href="class-COntology.html#_Connection">COntology::Connection()</a></code></code> <br />
+				</div>
+
 
 		</div>
 		</div></td>
@@ -301,7 +397,7 @@ returning its name.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#_NewTerm">#</a>
-		<code><a href="source-class-COntology.html#170-304" title="Go to source code">NewTerm</a>( <span>string <var>$theIdentifier</var></span>, <span>mixed <var>$theNamespace</var> = <span class="php-keyword1">NULL</span></span>, <span>string <var>$theLabel</var> = <span class="php-keyword1">NULL</span></span>, <span>string <var>$theDescription</var> = <span class="php-keyword1">NULL</span></span>, <span>string <var>$theLanguage</var> = <span class="php-keyword1">NULL</span></span>, <span>array <var>$theAttributes</var> = <span class="php-keyword1">NULL</span> </span> )</code>
+		<code><a href="source-class-COntology.html#295-429" title="Go to source code">NewTerm</a>( <span>string <var>$theIdentifier</var></span>, <span>mixed <var>$theNamespace</var> = <span class="php-keyword1">NULL</span></span>, <span>string <var>$theLabel</var> = <span class="php-keyword1">NULL</span></span>, <span>string <var>$theDescription</var> = <span class="php-keyword1">NULL</span></span>, <span>string <var>$theLanguage</var> = <span class="php-keyword1">NULL</span></span>, <span>array <var>$theAttributes</var> = <span class="php-keyword1">NULL</span> </span> )</code>
 
 		<div class="description short">
 			
@@ -404,6 +500,7 @@ will create a new one, commit it and return it.</p>
 						<code><code><a href="class-COntology.html#_NewScaleNode">COntology::NewScaleNode()</a></code></code> <br />
 						<code><code><a href="class-COntology.html#_AddToTag">COntology::AddToTag()</a></code></code> <br />
 						<code><code><a href="class-COntology.html#__RelateTo">COntology::_RelateTo()</a></code></code> <br />
+						<code><code><a href="class-COntology.html#__InitDefaultNamespace">COntology::_InitDefaultNamespace()</a></code></code> <br />
 				</div>
 
 
@@ -421,7 +518,7 @@ will create a new one, commit it and return it.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#_NewNode">#</a>
-		<code><a href="source-class-COntology.html#320-581" title="Go to source code">NewNode</a>( <span>mixed <var>$theIdentifier</var></span>, <span>mixed <var>$theKind</var> = <span class="php-keyword1">NULL</span></span>, <span>string <var>$theType</var> = <span class="php-keyword1">NULL</span></span>, <span>mixed <var>$theNamespace</var> = <span class="php-keyword1">NULL</span></span>, <span>string <var>$theLabel</var> = <span class="php-keyword1">NULL</span></span>, <span>string <var>$theDescription</var> = <span class="php-keyword1">NULL</span></span>, <span>string <var>$theLanguage</var> = <span class="php-keyword1">NULL</span></span>, <span>boolean <var>$doNew</var> = <span class="php-keyword1">FALSE</span> </span> )</code>
+		<code><a href="source-class-COntology.html#445-706" title="Go to source code">NewNode</a>( <span>mixed <var>$theIdentifier</var></span>, <span>mixed <var>$theKind</var> = <span class="php-keyword1">NULL</span></span>, <span>string <var>$theType</var> = <span class="php-keyword1">NULL</span></span>, <span>mixed <var>$theNamespace</var> = <span class="php-keyword1">NULL</span></span>, <span>string <var>$theLabel</var> = <span class="php-keyword1">NULL</span></span>, <span>string <var>$theDescription</var> = <span class="php-keyword1">NULL</span></span>, <span>string <var>$theLanguage</var> = <span class="php-keyword1">NULL</span></span>, <span>boolean <var>$doNew</var> = <span class="php-keyword1">FALSE</span> </span> )</code>
 
 		<div class="description short">
 			
@@ -582,7 +679,7 @@ and if the first parameter is <tt>NULL</tt>.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#_NewRootNode">#</a>
-		<code><a href="source-class-COntology.html#588-630" title="Go to source code">NewRootNode</a>( <span>mixed <var>$theIdentifier</var></span>, <span>mixed <var>$theNamespace</var> = <span class="php-keyword1">NULL</span></span>, <span>string <var>$theLabel</var> = <span class="php-keyword1">NULL</span></span>, <span>string <var>$theDescription</var> = <span class="php-keyword1">NULL</span></span>, <span>string <var>$theLanguage</var> = <span class="php-keyword1">NULL</span></span>, <span>boolean <var>$doNew</var> = <span class="php-keyword1">FALSE</span> </span> )</code>
+		<code><a href="source-class-COntology.html#713-755" title="Go to source code">NewRootNode</a>( <span>mixed <var>$theIdentifier</var></span>, <span>mixed <var>$theNamespace</var> = <span class="php-keyword1">NULL</span></span>, <span>string <var>$theLabel</var> = <span class="php-keyword1">NULL</span></span>, <span>string <var>$theDescription</var> = <span class="php-keyword1">NULL</span></span>, <span>string <var>$theLanguage</var> = <span class="php-keyword1">NULL</span></span>, <span>boolean <var>$doNew</var> = <span class="php-keyword1">FALSE</span> </span> )</code>
 
 		<div class="description short">
 			
@@ -598,10 +695,10 @@ and if the first parameter is <tt>NULL</tt>.</p>
 root node by identifier, or retrieve the list of root nodes matching a term.</p>
 
 <p>A root node distinguishes itself from a <i>standard</i> node by having the
-kNODE_KIND_ROOT enumeration set in its kind (<code><a href="class-CNode.html#_Kind">CNode::Kind()</a></code>) list.</p>
+kKIND_NODE_ROOT enumeration set in its kind (<code><a href="class-CNode.html#_Kind">CNode::Kind()</a></code>) list.</p>
 
 <p>The method uses the same parameters as the <code><a href="class-COntology.html#_NewNode">COntology::NewNode()</a></code> method, except
-that it forces the kNODE_KIND_ROOT enumeration as the kind,
+that it forces the kKIND_NODE_ROOT enumeration as the kind,
 <tt>NULL</tt> as the type and omits both parameters.</p>
 
 <p>For more information, please consult the <code><a href="class-COntology.html#_NewNode">COntology::NewNode()</a></code> method
@@ -637,7 +734,7 @@ reference.</p>
 
 				<h4>See</h4>
 				<div class="list">
-						kNODE_KIND_ROOT<br />
+						kKIND_NODE_ROOT<br />
 				</div>
 				<h4>Uses</h4>
 				<div class="list">
@@ -659,7 +756,7 @@ reference.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#_NewTraitNode">#</a>
-		<code><a href="source-class-COntology.html#637-680" title="Go to source code">NewTraitNode</a>( <span>mixed <var>$theIdentifier</var></span>, <span>mixed <var>$theNamespace</var> = <span class="php-keyword1">NULL</span></span>, <span>string <var>$theLabel</var> = <span class="php-keyword1">NULL</span></span>, <span>string <var>$theDescription</var> = <span class="php-keyword1">NULL</span></span>, <span>string <var>$theLanguage</var> = <span class="php-keyword1">NULL</span></span>, <span>boolean <var>$doNew</var> = <span class="php-keyword1">FALSE</span> </span> )</code>
+		<code><a href="source-class-COntology.html#762-805" title="Go to source code">NewTraitNode</a>( <span>mixed <var>$theIdentifier</var></span>, <span>mixed <var>$theNamespace</var> = <span class="php-keyword1">NULL</span></span>, <span>string <var>$theLabel</var> = <span class="php-keyword1">NULL</span></span>, <span>string <var>$theDescription</var> = <span class="php-keyword1">NULL</span></span>, <span>string <var>$theLanguage</var> = <span class="php-keyword1">NULL</span></span>, <span>boolean <var>$doNew</var> = <span class="php-keyword1">FALSE</span> </span> )</code>
 
 		<div class="description short">
 			
@@ -676,12 +773,12 @@ trait node by identifier, or retrieve the list of trait nodes matching a
 term.</p>
 
 <p>A trait node distinguishes itself from a <i>standard</i> node by having the
-kNODE_KIND_TRAIT enumeration set in its kind (<code><a href="class-CNode.html#_Kind">CNode::Kind()</a></code>) list. Also, trait nodes represent the beginning of the
+kKIND_NODE_TRAIT enumeration set in its kind (<code><a href="class-CNode.html#_Kind">CNode::Kind()</a></code>) list. Also, trait nodes represent the beginning of the
 path used to annotate data, trait nodes always represent the first term
 reference in a tag path.</p>
 
 <p>The method uses the same parameters as the <code><a href="class-COntology.html#_NewNode">COntology::NewNode()</a></code> method, except
-that it forces the kNODE_KIND_TRAIT enumeration as the kind,
+that it forces the kKIND_NODE_TRAIT enumeration as the kind,
 <tt>NULL</tt> as the type and omits both parameters.</p>
 
 <p>For more information, please consult the <code><a href="class-COntology.html#_NewNode">COntology::NewNode()</a></code> method
@@ -717,7 +814,7 @@ reference.</p>
 
 				<h4>See</h4>
 				<div class="list">
-						kNODE_KIND_TRAIT<br />
+						kKIND_NODE_TRAIT<br />
 				</div>
 				<h4>Uses</h4>
 				<div class="list">
@@ -739,7 +836,7 @@ reference.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#_NewMethodNode">#</a>
-		<code><a href="source-class-COntology.html#687-731" title="Go to source code">NewMethodNode</a>( <span>mixed <var>$theIdentifier</var></span>, <span>mixed <var>$theNamespace</var> = <span class="php-keyword1">NULL</span></span>, <span>string <var>$theLabel</var> = <span class="php-keyword1">NULL</span></span>, <span>string <var>$theDescription</var> = <span class="php-keyword1">NULL</span></span>, <span>string <var>$theLanguage</var> = <span class="php-keyword1">NULL</span></span>, <span>boolean <var>$doNew</var> = <span class="php-keyword1">FALSE</span> </span> )</code>
+		<code><a href="source-class-COntology.html#812-856" title="Go to source code">NewMethodNode</a>( <span>mixed <var>$theIdentifier</var></span>, <span>mixed <var>$theNamespace</var> = <span class="php-keyword1">NULL</span></span>, <span>string <var>$theLabel</var> = <span class="php-keyword1">NULL</span></span>, <span>string <var>$theDescription</var> = <span class="php-keyword1">NULL</span></span>, <span>string <var>$theLanguage</var> = <span class="php-keyword1">NULL</span></span>, <span>boolean <var>$doNew</var> = <span class="php-keyword1">FALSE</span> </span> )</code>
 
 		<div class="description short">
 			
@@ -756,12 +853,12 @@ existing method node by identifier, or retrieve the list of method nodes
 matching a term.</p>
 
 <p>A method node distinguishes itself from a <i>standard</i> node by having the
-kNODE_KIND_METH enumeration set in its kind (<code><a href="class-CNode.html#_Kind">CNode::Kind()</a></code>) list. Also, method nodes represent the intermediary
+kKIND_NODE_METHOD enumeration set in its kind (<code><a href="class-CNode.html#_Kind">CNode::Kind()</a></code>) list. Also, method nodes represent the intermediary
 elements of the path used to annotate data: method nodes will always be found
 after trait nodes and before scale nodes in a tag path.</p>
 
 <p>The method uses the same parameters as the <code><a href="class-COntology.html#_NewNode">COntology::NewNode()</a></code> method, except
-that it forces the kNODE_KIND_METH enumeration as the kind,
+that it forces the kKIND_NODE_METHOD enumeration as the kind,
 <tt>NULL</tt> as the type and omits both parameters.</p>
 
 <p>For more information, please consult the <code><a href="class-COntology.html#_NewNode">COntology::NewNode()</a></code> method
@@ -797,7 +894,7 @@ reference.</p>
 
 				<h4>See</h4>
 				<div class="list">
-						kNODE_KIND_METH<br />
+						kKIND_NODE_METHOD<br />
 				</div>
 				<h4>Uses</h4>
 				<div class="list">
@@ -819,7 +916,7 @@ reference.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#_NewScaleNode">#</a>
-		<code><a href="source-class-COntology.html#738-928" title="Go to source code">NewScaleNode</a>( <span>mixed <var>$theIdentifier</var></span>, <span>mixed <var>$theType</var> = <span class="php-keyword1">NULL</span></span>, <span>mixed <var>$theNamespace</var> = <span class="php-keyword1">NULL</span></span>, <span>string <var>$theLabel</var> = <span class="php-keyword1">NULL</span></span>, <span>string <var>$theDescription</var> = <span class="php-keyword1">NULL</span></span>, <span>string <var>$theLanguage</var> = <span class="php-keyword1">NULL</span></span>, <span>boolean <var>$doNew</var> = <span class="php-keyword1">FALSE</span> </span> )</code>
+		<code><a href="source-class-COntology.html#863-1053" title="Go to source code">NewScaleNode</a>( <span>mixed <var>$theIdentifier</var></span>, <span>mixed <var>$theType</var> = <span class="php-keyword1">NULL</span></span>, <span>mixed <var>$theNamespace</var> = <span class="php-keyword1">NULL</span></span>, <span>string <var>$theLabel</var> = <span class="php-keyword1">NULL</span></span>, <span>string <var>$theDescription</var> = <span class="php-keyword1">NULL</span></span>, <span>string <var>$theLanguage</var> = <span class="php-keyword1">NULL</span></span>, <span>boolean <var>$doNew</var> = <span class="php-keyword1">FALSE</span> </span> )</code>
 
 		<div class="description short">
 			
@@ -836,11 +933,11 @@ scale node by identifier, or retrieve the list of scale nodes matching a
 term.</p>
 
 <p>A scale node distinguishes itself from a <i>standard</i> node by having the
-kNODE_KIND_SCALE enumeration set in its kind (<code><a href="class-CNode.html#_Kind">CNode::Kind()</a></code>) list. Also, scale nodes represent the last element of
+kKIND_NODE_SCALE enumeration set in its kind (<code><a href="class-CNode.html#_Kind">CNode::Kind()</a></code>) list. Also, scale nodes represent the last element of
 the path used to annotate data: scale nodes will always have a data type, <code><a href="class-CNode.html#_Type">CNode::Type()</a></code>, attribute.</p>
 
 <p>The method uses the same parameters as the <code><a href="class-COntology.html#_NewNode">COntology::NewNode()</a></code> method, except
-that it forces the kNODE_KIND_SCALE enumeration as the kind and expects
+that it forces the kKIND_NODE_SCALE enumeration as the kind and expects
 the type attribute to either be present in the resolved node, or provided as a
 parameter.</p>
 
@@ -879,7 +976,7 @@ reference.</p>
 
 				<h4>See</h4>
 				<div class="list">
-						kNODE_KIND_SCALE<br />
+						kKIND_NODE_SCALE<br />
 				</div>
 				<h4>Uses</h4>
 				<div class="list">
@@ -904,7 +1001,7 @@ reference.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#_NewEnumerationNode">#</a>
-		<code><a href="source-class-COntology.html#935-979" title="Go to source code">NewEnumerationNode</a>( <span>mixed <var>$theIdentifier</var></span>, <span>mixed <var>$theNamespace</var> = <span class="php-keyword1">NULL</span></span>, <span>string <var>$theLabel</var> = <span class="php-keyword1">NULL</span></span>, <span>string <var>$theDescription</var> = <span class="php-keyword1">NULL</span></span>, <span>string <var>$theLanguage</var> = <span class="php-keyword1">NULL</span></span>, <span>boolean <var>$doNew</var> = <span class="php-keyword1">FALSE</span> </span> )</code>
+		<code><a href="source-class-COntology.html#1060-1104" title="Go to source code">NewEnumerationNode</a>( <span>mixed <var>$theIdentifier</var></span>, <span>mixed <var>$theNamespace</var> = <span class="php-keyword1">NULL</span></span>, <span>string <var>$theLabel</var> = <span class="php-keyword1">NULL</span></span>, <span>string <var>$theDescription</var> = <span class="php-keyword1">NULL</span></span>, <span>string <var>$theLanguage</var> = <span class="php-keyword1">NULL</span></span>, <span>boolean <var>$doNew</var> = <span class="php-keyword1">FALSE</span> </span> )</code>
 
 		<div class="description short">
 			
@@ -921,11 +1018,11 @@ existing enumeration node by identifier, or retrieve the list of enumeration
 nodes matching a term.</p>
 
 <p>An enumeration node distinguishes itself from a <i>standard</i> node by
-having the kNODE_KIND_ENUM enumeration set in its kind (<code><a href="class-CNode.html#_Kind">CNode::Kind()</a></code>) list. Also, enumeration nodes represent elements of an
+having the kKIND_NODE_INSTANCE enumeration set in its kind (<code><a href="class-CNode.html#_Kind">CNode::Kind()</a></code>) list. Also, enumeration nodes represent elements of an
 enumerated set and have by default the kTYPE_STRING data type.</p>
 
 <p>The method uses the same parameters as the <code><a href="class-COntology.html#_NewNode">COntology::NewNode()</a></code> method, except
-that it forces the kNODE_KIND_ENUM enumeration as the kind, kTYPE_STRING as the type and omits both parameters.</p>
+that it forces the kKIND_NODE_INSTANCE enumeration as the kind, kTYPE_STRING as the type and omits both parameters.</p>
 
 <p>For more information, please consult the <code><a href="class-COntology.html#_NewNode">COntology::NewNode()</a></code> method
 reference.</p>
@@ -960,7 +1057,7 @@ reference.</p>
 
 				<h4>See</h4>
 				<div class="list">
-						kNODE_KIND_ENUM kTYPE_STRING<br />
+						kKIND_NODE_INSTANCE kTYPE_STRING<br />
 				</div>
 				<h4>Uses</h4>
 				<div class="list">
@@ -982,7 +1079,7 @@ reference.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#_AddToTag">#</a>
-		<code><a href="source-class-COntology.html#995-1092" title="Go to source code">AddToTag</a>( <span>reference <var>&amp; $theTag</var></span>, <span>mixed <var>$theItem</var></span> )</code>
+		<code><a href="source-class-COntology.html#1120-1217" title="Go to source code">AddToTag</a>( <span>reference <var>&amp; $theTag</var></span>, <span>mixed <var>$theItem</var></span> )</code>
 
 		<div class="description short">
 			
@@ -1079,7 +1176,7 @@ identifier.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#_ResolveTerm">#</a>
-		<code><a href="source-class-COntology.html#1108-1190" title="Go to source code">ResolveTerm</a>( <span>string <var>$theIdentifier</var></span>, <span>mixed <var>$theNamespace</var> = <span class="php-keyword1">NULL</span></span>, <span>boolean <var>$doThrow</var> = <span class="php-keyword1">FALSE</span> </span> )</code>
+		<code><a href="source-class-COntology.html#1233-1315" title="Go to source code">ResolveTerm</a>( <span>string <var>$theIdentifier</var></span>, <span>mixed <var>$theNamespace</var> = <span class="php-keyword1">NULL</span></span>, <span>boolean <var>$doThrow</var> = <span class="php-keyword1">FALSE</span> </span> )</code>
 
 		<div class="description short">
 			
@@ -1180,6 +1277,7 @@ an exception if the third parameter is <tt>TRUE</tt>.</p>
 				</div>
 				<h4>Used by</h4>
 				<div class="list">
+						<code><code><a href="class-COntology.html#_InitOntology">COntology::InitOntology()</a></code></code> <br />
 						<code><code><a href="class-COntology.html#_NewTerm">COntology::NewTerm()</a></code></code> <br />
 				</div>
 
@@ -1198,7 +1296,7 @@ an exception if the third parameter is <tt>TRUE</tt>.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#_ResolveNode">#</a>
-		<code><a href="source-class-COntology.html#1197-1250" title="Go to source code">ResolveNode</a>( <span>mixed <var>$theIdentifier</var></span>, <span>boolean <var>$doThrow</var> = <span class="php-keyword1">FALSE</span> </span> )</code>
+		<code><a href="source-class-COntology.html#1322-1375" title="Go to source code">ResolveNode</a>( <span>mixed <var>$theIdentifier</var></span>, <span>boolean <var>$doThrow</var> = <span class="php-keyword1">FALSE</span> </span> )</code>
 
 		<div class="description short">
 			
@@ -1280,7 +1378,7 @@ and if the provided parameter is <tt>NULL</tt>.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#_ResolveTag">#</a>
-		<code><a href="source-class-COntology.html#1257-1310" title="Go to source code">ResolveTag</a>( <span>mixed <var>$theIdentifier</var></span>, <span>boolean <var>$doThrow</var> = <span class="php-keyword1">FALSE</span> </span> )</code>
+		<code><a href="source-class-COntology.html#1382-1435" title="Go to source code">ResolveTag</a>( <span>mixed <var>$theIdentifier</var></span>, <span>boolean <var>$doThrow</var> = <span class="php-keyword1">FALSE</span> </span> )</code>
 
 		<div class="description short">
 			
@@ -1358,7 +1456,7 @@ and if the provided parameter is <tt>NULL</tt>.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#_RelateTo">#</a>
-		<code><a href="source-class-COntology.html#1326-1407" title="Go to source code">RelateTo</a>( <span>mixed <var>$theSubject</var></span>, <span>mixed <var>$theObject</var></span>, <span>mixed <var>$thePredicate</var></span>, <span>mixed <var>$theNamespace</var> = <span class="php-keyword1">NULL</span></span>, <span>string <var>$theLabel</var> = <span class="php-keyword1">NULL</span></span>, <span>string <var>$theDescription</var> = <span class="php-keyword1">NULL</span></span>, <span>string <var>$theLanguage</var> = <span class="php-keyword1">NULL</span> </span> )</code>
+		<code><a href="source-class-COntology.html#1451-1532" title="Go to source code">RelateTo</a>( <span>mixed <var>$theSubject</var></span>, <span>mixed <var>$theObject</var></span>, <span>mixed <var>$thePredicate</var></span>, <span>mixed <var>$theNamespace</var> = <span class="php-keyword1">NULL</span></span>, <span>string <var>$theLabel</var> = <span class="php-keyword1">NULL</span></span>, <span>string <var>$theDescription</var> = <span class="php-keyword1">NULL</span></span>, <span>string <var>$theLanguage</var> = <span class="php-keyword1">NULL</span> </span> )</code>
 
 		<div class="description short">
 			
@@ -1472,7 +1570,7 @@ class, if any error occurs, the method will raise an exception.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#_SubclassOf">#</a>
-		<code><a href="source-class-COntology.html#1414-1456" title="Go to source code">SubclassOf</a>( <span>mixed <var>$theSubject</var></span>, <span>mixed <var>$theObject</var></span> )</code>
+		<code><a href="source-class-COntology.html#1539-1581" title="Go to source code">SubclassOf</a>( <span>mixed <var>$theSubject</var></span>, <span>mixed <var>$theObject</var></span> )</code>
 
 		<div class="description short">
 			
@@ -1535,7 +1633,7 @@ error occurs, the method will raise an exception.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#_MethodOf">#</a>
-		<code><a href="source-class-COntology.html#1463-1505" title="Go to source code">MethodOf</a>( <span>mixed <var>$theSubject</var></span>, <span>mixed <var>$theObject</var></span> )</code>
+		<code><a href="source-class-COntology.html#1588-1630" title="Go to source code">MethodOf</a>( <span>mixed <var>$theSubject</var></span>, <span>mixed <var>$theObject</var></span> )</code>
 
 		<div class="description short">
 			
@@ -1598,7 +1696,7 @@ error occurs, the method will raise an exception.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#_ScaleOf">#</a>
-		<code><a href="source-class-COntology.html#1512-1554" title="Go to source code">ScaleOf</a>( <span>mixed <var>$theSubject</var></span>, <span>mixed <var>$theObject</var></span> )</code>
+		<code><a href="source-class-COntology.html#1637-1679" title="Go to source code">ScaleOf</a>( <span>mixed <var>$theSubject</var></span>, <span>mixed <var>$theObject</var></span> )</code>
 
 		<div class="description short">
 			
@@ -1661,7 +1759,7 @@ error occurs, the method will raise an exception.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#_EnumOf">#</a>
-		<code><a href="source-class-COntology.html#1561-1603" title="Go to source code">EnumOf</a>( <span>mixed <var>$theSubject</var></span>, <span>mixed <var>$theObject</var></span> )</code>
+		<code><a href="source-class-COntology.html#1686-1728" title="Go to source code">EnumOf</a>( <span>mixed <var>$theSubject</var></span>, <span>mixed <var>$theObject</var></span> )</code>
 
 		<div class="description short">
 			
@@ -1724,7 +1822,7 @@ error occurs, the method will raise an exception.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#__NewTerm">#</a>
-		<code><a href="source-class-COntology.html#1619-1732" title="Go to source code">_NewTerm</a>( <span>string <var>$theIdentifier</var></span>, <span>mixed <var>$theNamespace</var></span>, <span>string <var>$theLabel</var></span>, <span>string <var>$theDescription</var></span>, <span>string <var>$theLanguage</var></span>, <span>array <var>$theAttributes</var></span> )</code>
+		<code><a href="source-class-COntology.html#1744-1857" title="Go to source code">_NewTerm</a>( <span>string <var>$theIdentifier</var></span>, <span>mixed <var>$theNamespace</var></span>, <span>string <var>$theLabel</var></span>, <span>string <var>$theDescription</var></span>, <span>string <var>$theLanguage</var></span>, <span>array <var>$theAttributes</var></span> )</code>
 
 		<div class="description short">
 			
@@ -1802,6 +1900,7 @@ is a duplicate.</p>
 				</div>
 				<h4>Used by</h4>
 				<div class="list">
+						<code><code><a href="class-COntology.html#_InitOntology">COntology::InitOntology()</a></code></code> <br />
 						<code><code><a href="class-COntology.html#_NewTerm">COntology::NewTerm()</a></code></code> <br />
 				</div>
 
@@ -1820,7 +1919,7 @@ is a duplicate.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#__NewNode">#</a>
-		<code><a href="source-class-COntology.html#1739-1827" title="Go to source code">_NewNode</a>( <span>mixed <var>$theTerm</var></span>, <span>mixed <var>$theKind</var> = <span class="php-keyword1">NULL</span></span>, <span>mixed <var>$theType</var> = <span class="php-keyword1">NULL</span> </span> )</code>
+		<code><a href="source-class-COntology.html#1864-1952" title="Go to source code">_NewNode</a>( <span>mixed <var>$theTerm</var></span>, <span>mixed <var>$theKind</var> = <span class="php-keyword1">NULL</span></span>, <span>mixed <var>$theType</var> = <span class="php-keyword1">NULL</span> </span> )</code>
 
 		<div class="description short">
 			
@@ -1904,7 +2003,7 @@ is a duplicate.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#__RelateTo">#</a>
-		<code><a href="source-class-COntology.html#1843-1975" title="Go to source code">_RelateTo</a>( <span>mixed <var>$theSubject</var></span>, <span>mixed <var>$theObject</var></span>, <span>mixed <var>$thePredicate</var></span>, <span>mixed <var>$theNamespace</var> = <span class="php-keyword1">NULL</span></span>, <span>string <var>$theLabel</var> = <span class="php-keyword1">NULL</span></span>, <span>string <var>$theDescription</var> = <span class="php-keyword1">NULL</span></span>, <span>string <var>$theLanguage</var> = <span class="php-keyword1">NULL</span> </span> )</code>
+		<code><a href="source-class-COntology.html#1968-2100" title="Go to source code">_RelateTo</a>( <span>mixed <var>$theSubject</var></span>, <span>mixed <var>$theObject</var></span>, <span>mixed <var>$thePredicate</var></span>, <span>mixed <var>$theNamespace</var> = <span class="php-keyword1">NULL</span></span>, <span>string <var>$theLabel</var> = <span class="php-keyword1">NULL</span></span>, <span>string <var>$theDescription</var> = <span class="php-keyword1">NULL</span></span>, <span>string <var>$theLanguage</var> = <span class="php-keyword1">NULL</span> </span> )</code>
 
 		<div class="description short">
 			
@@ -2000,6 +2099,216 @@ error occurs, the method will raise an exception.</p>
 				<div class="list">
 						<code><code><a href="class-COntology.html#_RelateTo">COntology::RelateTo()</a></code></code> <br />
 				</div>
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="_InitDefaultNamespace" id="__InitDefaultNamespace">
+
+		<td class="attributes"><code>
+			 protected 
+			
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#__InitDefaultNamespace">#</a>
+		<code><a href="source-class-COntology.html#2116-2161" title="Go to source code">_InitDefaultNamespace</a>( )</code>
+
+		<div class="description short">
+			
+<h4>Initialise default namespaces</h4>
+
+		</div>
+
+		<div class="description detailed hidden">
+			
+<h4>Initialise default namespaces</h4>
+
+<p>This method will first erase the current database and then create the default
+namespace.</p>
+
+<p>The method assumed that the object is <code><a href="class-CStatusDocument.html#__IsInited">CStatusDocument::_IsInited()</a></code> and that the
+current <code><a href="class-COntology.html#_Connection">COntology::Connection()</a></code> is a database.</p>
+
+<p><b>When calling this method you must be aware that all the ontology data will
+be erased, this method for intended to create a new ontolofy. This must be the
+first method called by the procedure that initialises the ontology.</b></p>
+
+
+
+
+
+				<h4>Throws</h4>
+				<div class="list">
+					<code><code><a href="class-Exception.html">Exception</a></code></code><br />
+				</div>
+
+				<h4>Uses</h4>
+				<div class="list">
+						<code><code><a href="class-COntology.html#_Connection">COntology::Connection()</a></code></code> <br />
+						<code><code><a href="class-COntology.html#_NewTerm">COntology::NewTerm()</a></code></code> <br />
+				</div>
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="_InitDefaultTypeTerms" id="__InitDefaultTypeTerms">
+
+		<td class="attributes"><code>
+			 protected 
+			
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#__InitDefaultTypeTerms">#</a>
+		<code><a href="source-class-COntology.html#2168-2306" title="Go to source code">_InitDefaultTypeTerms</a>( )</code>
+
+		<div class="description short">
+			
+<h4>Initialise default data type terms</h4>
+
+		</div>
+
+		<div class="description detailed hidden">
+			
+<h4>Initialise default data type terms</h4>
+
+<p>This method will create all the default data type terms of the ontology.</p>
+
+<p>The method assumed that the object is <code><a href="class-CStatusDocument.html#__IsInited">CStatusDocument::_IsInited()</a></code>, that the current
+<code><a href="class-COntology.html#_Connection">COntology::Connection()</a></code> is a database and that the <code><a href="class-COntology.html#__InitDefaultNamespace">COntology::_InitDefaultNamespace()</a></code>
+method has been called beforehand.</p>
+
+<p>&lt;bThis method is called in the context of the ontology initialisation
+procedure, you should not use this method outside of that scope.</p>
+
+
+
+
+
+
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="_InitDefaultAttributeTerms" id="__InitDefaultAttributeTerms">
+
+		<td class="attributes"><code>
+			 protected 
+			
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#__InitDefaultAttributeTerms">#</a>
+		<code><a href="source-class-COntology.html#2313-2419" title="Go to source code">_InitDefaultAttributeTerms</a>( )</code>
+
+		<div class="description short">
+			
+<h4>Initialise default attribute terms</h4>
+
+		</div>
+
+		<div class="description detailed hidden">
+			
+<h4>Initialise default attribute terms</h4>
+
+<p>This method will create all the default attribute terms of the ontology.</p>
+
+<p>The method assumed that the object is <code><a href="class-CStatusDocument.html#__IsInited">CStatusDocument::_IsInited()</a></code>, that the current
+<code><a href="class-COntology.html#_Connection">COntology::Connection()</a></code> is a database and that the <code><a href="class-COntology.html#__InitDefaultNamespace">COntology::_InitDefaultNamespace()</a></code>
+method has been called beforehand.</p>
+
+<p>&lt;bThis method is called in the context of the ontology initialisation
+procedure, you should not use this method outside of that scope.</p>
+
+
+
+
+
+
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="_InitDefaultDataDictionaries" id="__InitDefaultDataDictionaries">
+
+		<td class="attributes"><code>
+			 protected 
+			
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#__InitDefaultDataDictionaries">#</a>
+		<code><a href="source-class-COntology.html#2426-2482" title="Go to source code">_InitDefaultDataDictionaries</a>( )</code>
+
+		<div class="description short">
+			
+<h4>Initialise default data dictionaries</h4>
+
+		</div>
+
+		<div class="description detailed hidden">
+			
+<h4>Initialise default data dictionaries</h4>
+
+<p>This method will create all the default data dictionary root nodes of the
+ontology.</p>
+
+<p>&lt;bThis method is called in the context of the ontology initialisation
+procedure, you should not use this method outside of that scope.</p>
+
+
+
+
+
+
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="_LoadTermDataDictionary" id="__LoadTermDataDictionary">
+
+		<td class="attributes"><code>
+			 protected 
+			
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#__LoadTermDataDictionary">#</a>
+		<code><a href="source-class-COntology.html#2489-2545" title="Go to source code">_LoadTermDataDictionary</a>( )</code>
+
+		<div class="description short">
+			
+<h4>Load term data dictionary</h4>
+
+		</div>
+
+		<div class="description detailed hidden">
+			
+<h4>Load term data dictionary</h4>
+
+<p>This method will load the ontology term data dictionary.</p>
+
+
+
+
+
+
 
 
 		</div>

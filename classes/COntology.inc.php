@@ -19,91 +19,39 @@
  */
 
 /*=======================================================================================
- *	DEFAULT PREDICATE TERM CODES														*
+ *	DEFAULT ONTOLOGY OBJECT DATA STRUCTURES												*
  *======================================================================================*/
 
 /**
- * SUBCLASS-OF.
+ * Terms.
  *
- * This tag identifies the SUBCLASS-OF predicate term local code, this predicate indicates
- * that the subject of the relationship is a subclass of the object of the relationship, in
- * other words, the subject is derived from the object.
- *
- * Note that this term is expected to belong to the default namespace which has an empty
- * local identifier.
+ * This tag identifies the root data dictionary node of the terms object data structure, it
+ * describes the default elements comprising the term objects in this library.
  */
-define( "kPREDICATE_SUBCLASS_OF",				':SUBCLASS-OF' );
+define( "kDDICT_TERM",							':DDICT-TERM' );
 
 /**
- * METHOD-OF.
+ * Nodes.
  *
- * This tag identifies the METHOD-OF predicate term local code, this predicate relates
- * method nodes with trait nodes or other method nodes, it indicates that the subject of the
- * relationship is a method variation of the object of the relationship.
- *
- * Note that this term is expected to belong to the default namespace which has an empty
- * local identifier.
+ * This tag identifies the root data dictionary node of the nodes object data structure, it
+ * describes the default elements comprising the node objects in this library.
  */
-define( "kPREDICATE_METHOD_OF",					':METHOD-OF' );
+define( "kDDICT_NODE",							':DDICT-NODE' );
 
 /**
- * SCALE-OF.
+ * Edges.
  *
- * This tag identifies the SCALE-OF predicate term local code, this predicate relates scale
- * nodes with Method or trait nodes, it indicates that the subject of the relationship
- * represents a scale or measure that is used by a trait or method node.
- *
- * Note that this term is expected to belong to the default namespace which has an empty
- * local identifier.
+ * This tag identifies the root data dictionary node of the edges object data structure, it
+ * describes the default elements comprising the edge objects in this library.
  */
-define( "kPREDICATE_SCALE_OF",					':SCALE-OF' );
+define( "kDDICT_EDGE",							':DDICT-EDGE' );
 
 /**
- * ENUM-OF.
+ * Tags.
  *
- * This tag identifies the ENUM-OF predicate term local code, this predicate relates
- * enumerated set elements or controlled vocabulary elements.
- *
- * Note that this term is expected to belong to the default namespace which has an empty
- * local identifier.
+ * This tag identifies the root data dictionary node of the tags object data structure, it
+ * describes the default elements comprising the tag objects in this library.
  */
-define( "kPREDICATE_ENUM_OF",					':ENUM-OF' );
-
-/**
- * PREFERRED.
- *
- * This tag identifies the PREFERRED predicate term local code, this predicate indicates
- * that the object of the relationship is the preferred choice, in other words, if possible,
- * one should use the object of the relationship in place of the subject.
- *
- * Note that this term is expected to belong to the default namespace which has an empty
- * local identifier.
- */
-define( "kPREDICATE_PREFERRED",					':PREFERRED' );
-
-/**
- * VALID.
- *
- * This tag identifies the VALID predicate term local code, this predicate indicates
- * that the object of the relationship is the valid choice, in other words, the subject of
- * the relationship is obsolete or not valid, and one should use the object od the
- * relationship in its place.
- *
- * Note that this term is expected to belong to the default namespace which has an empty
- * local identifier.
- */
-define( "kPREDICATE_VALID",						':VALID' );
-
-/**
- * XREF-EXACT.
- *
- * This tag identifies the XREF-EXACT predicate term local code, this predicate indicates
- * that the subject and the object of the relationship represent an exact cross-reference,
- * in other words, both elements are interchangeable.
- *
- * Note that this term is expected to belong to the default namespace which has an empty
- * local identifier.
- */
-define( "kPREDICATE_XREF_EXACT",				':XREF-EXACT' );
+define( "kDDICT_TAG",							':DDICT-TAG' );
 
 ?>

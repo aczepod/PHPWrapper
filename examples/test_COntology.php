@@ -609,6 +609,26 @@ try
 	echo( '<pre>' ); print_r( $tag ); echo( '</pre>' );
 	echo( '<hr />' );
 	echo( '<hr />' );
+
+	//
+	// Initialise ontology.
+	//
+	echo( '<h4>Initialise ontology</h4>' );
+	echo( '<h5>define( "kDEFAULT_LANGUAGE", "en" );</h5>' );
+	define( "kDEFAULT_LANGUAGE", "en" );
+	echo( '<h5>$test->InitOntology();</h5>' );
+	$test->InitOntology();
+	echo( '<hr />' );
+
+	//
+	// Instantiate default term.
+	//
+	echo( '<h4>Instantiate default term</h4>' );
+	echo( '<h5>$term = $test->ResolveTerm( kOFFSET_TERM, NULL, TRUE );</h5>' );
+	$term = $test->ResolveTerm( kOFFSET_TERM, NULL, TRUE );
+	echo( '<pre>' ); print_r( $term ); echo( '</pre>' );
+	echo( '<hr />' );
+	echo( '<hr />' );
 }
 
 //

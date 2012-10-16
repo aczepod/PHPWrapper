@@ -20,13 +20,6 @@
  *======================================================================================*/
 
 /**
- * Local definitions.
- *
- * This include file contains common offset definitions.
- */
-require_once( "CNode.inc.php" );
-
-/**
  * Ancestor.
  *
  * This includes the ancestor class definitions.

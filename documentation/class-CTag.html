@@ -122,14 +122,14 @@ in the path, which represents the minimum legal number of path items.</p>
 
 <ul>
 	<li><code><a href="class-CTag.html#_PushItem">CTag::PushItem()</a></code>: This method can be used to add items to the tag path,
-	kOFFSET_PATH, it will append the provided item to the end of the
+	kOFFSET_TAG_PATH, it will append the provided item to the end of the
 	list.</li>
 
 	<li><code><a href="class-CTag.html#_PopItem">CTag::PopItem()</a></code>: This method can be used to remove items from the tag
-	path, kOFFSET_PATH, it will remove the last item of the list.</li>
+	path, kOFFSET_TAG_PATH, it will remove the last item of the list.</li>
 </ul>
 
-<p>The object features an offset, kOFFSET_PATH, which is an array
+<p>The object features an offset, kOFFSET_TAG_PATH, which is an array
 holding the elements of the path, the object's global identifier, kOFFSET_GID, is a string representing the elements of the path separated by the
 kTOKEN_INDEX_SEPARATOR token.</p>
 
@@ -213,7 +213,7 @@ strings</p>
 				<b>Author:</b>
 				Milko A. Škofič &lt;<a
 href="mailto:m.skofic&#64;cgiar.org">m.skofic&#64;<!---->cgiar.org</a>&gt;<br />
-		<b>Located at</b> <a href="source-class-CTag.html#43-387" title="Go to source code">CTag.php</a><br />
+		<b>Located at</b> <a href="source-class-CTag.html#36-381" title="Go to source code">CTag.php</a><br />
 	</div>
 
 
@@ -231,7 +231,7 @@ href="mailto:m.skofic&#64;cgiar.org">m.skofic&#64;<!---->cgiar.org</a>&gt;<br />
 
 		<td class="name"><div>
 		<a class="anchor" href="#_PushItem">#</a>
-		<code><a href="source-class-CTag.html#95-156" title="Go to source code">PushItem</a>( <span>mixed <var>$theValue</var></span> )</code>
+		<code><a href="source-class-CTag.html#88-149" title="Go to source code">PushItem</a>( <span>mixed <var>$theValue</var></span> )</code>
 
 		<div class="description short">
 			
@@ -268,7 +268,7 @@ ignored and the method will return <tt>FALSE</tt>.</p>
 
 				<h4>See</h4>
 				<div class="list">
-						kOFFSET_PATH<br />
+						kOFFSET_TAG_PATH<br />
 				</div>
 
 
@@ -286,7 +286,7 @@ ignored and the method will return <tt>FALSE</tt>.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#_PopItem">#</a>
-		<code><a href="source-class-CTag.html#163-211" title="Go to source code">PopItem</a>( )</code>
+		<code><a href="source-class-CTag.html#156-204" title="Go to source code">PopItem</a>( )</code>
 
 		<div class="description short">
 			
@@ -315,7 +315,7 @@ is missing, the method will return <tt>NULL</tt>.</p>
 
 				<h4>See</h4>
 				<div class="list">
-						kOFFSET_PATH<br />
+						kOFFSET_TAG_PATH<br />
 				</div>
 
 
@@ -333,7 +333,7 @@ is missing, the method will return <tt>NULL</tt>.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#__index">#</a>
-		<code><a href="source-class-CTag.html#227-247" title="Go to source code">_index</a>( <span><code><a href="class-CConnection.html">CConnection</a></code> <var>$theConnection</var></span>, <span>bitfield <var>$theModifiers</var></span> )</code>
+		<code><a href="source-class-CTag.html#220-241" title="Go to source code">_index</a>( <span><code><a href="class-CConnection.html">CConnection</a></code> <var>$theConnection</var></span>, <span>bitfield <var>$theModifiers</var></span> )</code>
 
 		<div class="description short">
 			
@@ -369,7 +369,7 @@ string.</p>
 
 				<h4>See</h4>
 				<div class="list">
-						kOFFSET_PATH kTOKEN_INDEX_SEPARATOR<br />
+						kOFFSET_TAG_PATH kTOKEN_INDEX_SEPARATOR<br />
 				</div>
 
 				<h4>Overrides</h4>
@@ -389,7 +389,7 @@ string.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#__Preset">#</a>
-		<code><a href="source-class-CTag.html#263-296" title="Go to source code">_Preset</a>( <span>reference <var>&amp; $theOffset</var></span>, <span>reference <var>&amp; $theValue</var></span> )</code>
+		<code><a href="source-class-CTag.html#257-290" title="Go to source code">_Preset</a>( <span>reference <var>&amp; $theOffset</var></span>, <span>reference <var>&amp; $theValue</var></span> )</code>
 
 		<div class="description short">
 			
@@ -401,7 +401,7 @@ string.</p>
 			
 <h4>Handle offset before setting it</h4>
 
-<p>In this class we ensure that the kOFFSET_PATH offset is an array,
+<p>In this class we ensure that the kOFFSET_TAG_PATH offset is an array,
 ArrayObject instances are not counted as an array.</p>
 
 
@@ -422,7 +422,7 @@ ArrayObject instances are not counted as an array.</p>
 
 				<h4>See</h4>
 				<div class="list">
-						kOFFSET_PATH<br />
+						kOFFSET_TAG_PATH<br />
 				</div>
 
 				<h4>Overrides</h4>
@@ -442,7 +442,7 @@ ArrayObject instances are not counted as an array.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#__PrecommitValidate">#</a>
-		<code><a href="source-class-CTag.html#312-344" title="Go to source code">_PrecommitValidate</a>( <span>reference <var>&amp; $theConnection</var></span>, <span>reference <var>&amp; $theModifiers</var></span> )</code>
+		<code><a href="source-class-CTag.html#306-338" title="Go to source code">_PrecommitValidate</a>( <span>reference <var>&amp; $theConnection</var></span>, <span>reference <var>&amp; $theModifiers</var></span> )</code>
 
 		<div class="description short">
 			
@@ -475,7 +475,7 @@ that is not the case, the method will raise an exception.</p>
 
 				<h4>See</h4>
 				<div class="list">
-						kOFFSET_PATH<br />
+						kOFFSET_TAG_PATH<br />
 				</div>
 
 				<h4>Overrides</h4>
@@ -495,7 +495,7 @@ that is not the case, the method will raise an exception.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#__Ready">#</a>
-		<code><a href="source-class-CTag.html#360-383" title="Go to source code">_Ready</a>( )</code>
+		<code><a href="source-class-CTag.html#354-377" title="Go to source code">_Ready</a>( )</code>
 
 		<div class="description short">
 			
@@ -508,7 +508,7 @@ that is not the case, the method will raise an exception.</p>
 <h4>Determine if the object is ready</h4>
 
 <p>In this class we tie the <code><a href="class-CStatusDocument.html#__IsInited">CStatusDocument::_IsInited()</a></code> status to the presence or
-absence of the kOFFSET_PATH offset.</p>
+absence of the kOFFSET_TAG_PATH offset.</p>
 
 
 
@@ -521,7 +521,7 @@ absence of the kOFFSET_PATH offset.</p>
 
 				<h4>See</h4>
 				<div class="list">
-						kOFFSET_PATH<br />
+						kOFFSET_TAG_PATH<br />
 				</div>
 				<h4>Uses</h4>
 				<div class="list">

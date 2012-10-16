@@ -20,11 +20,11 @@
  *======================================================================================*/
 
 /**
- * Local definitions.
+ * Attributes.
  *
- * This include file contains common offset definitions.
+ * This includes the containers ancestor class definitions.
  */
-require_once( "CPersistentDocument.inc.php" );
+require_once( kPATH_MYWRAPPER_LIBRARY_DEFINE."/Attributes.inc.php" );
 
 /**
  * Container.

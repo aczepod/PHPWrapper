@@ -31,6 +31,13 @@
 require_once( "COntology.inc.php" );
 
 /**
+ * Global attributes.
+ *
+ * This include file contains common offset definitions.
+ */
+require_once( kPATH_MYWRAPPER_LIBRARY_DEFINE."/Attributes.inc.php" );
+
+/**
  * Terms.
  *
  * This includes the term class definitions.
@@ -152,6 +159,124 @@ class COntology extends CConnection
 		return parent::Connection( $theValue, $getOld );							// ==>
 
 	} // Connection.
+
+	 
+	/*===================================================================================
+	 *	GetDatabase																		*
+	 *==================================================================================*/
+
+	/**
+	 * <h4>Return database connection</h4>
+	 *
+	 * This method should return the database connection, <tt>FALSE<tt> if no connection
+	 * is set and <tt>NULL</tt>, if the database cannot be inferred..
+	 *
+	 * @access public
+	 * @return mixed				Database connection, <tt>NULL<7tt> or <tt>FALSE</tt>.
+	 */
+	public function GetDatabase( $theValue = NULL, $getOld = FALSE )
+	{
+		//
+		// Check connection
+		//
+		if( ($connection = $this->Connection()) !== NULL )
+		{
+			//
+			// Check for server.
+			//
+			if( $connection instanceof CServer )
+				$connection = $connection->Database();
+			
+			//
+			// Check for database.
+			//
+			if( $connection instanceof Cdatabase )
+				return $connection;													// ==>
+			
+			return NULL;															// ==>
+		
+		} // Has connection.
+		
+		return FALSE;																// ==>
+
+	} // GetDatabase.
+
+		
+
+/*=======================================================================================
+ *																						*
+ *						PUBLIC ONTOLOGY INITIALISATION INTERFACE						*
+ *																						*
+ *======================================================================================*/
+
+
+	 
+	/*===================================================================================
+	 *	InitOntology																	*
+	 *==================================================================================*/
+
+	/**
+	 * <h4>Initialise the ontology</h4>
+	 *
+	 * This method will clear the current database and initialise it with the default
+	 * ontology elements.
+	 *
+	 * This method can be used to create a new ontology, so you should be aware that the
+	 * method will erase any existing data.
+	 *
+	 * The curent object must be {@link _IsInited()} and the method does not return any
+	 * value.
+	 *
+	 * @access public
+	 *
+	 * @throws Exception
+	 *
+	 * @uses _IsInited()
+	 * @uses ResolveTerm()
+	 * @uses _NewTerm()
+	 * @uses Connection()
+	 */
+	public function InitOntology()
+	{
+		//
+		// Check if object is ready.
+		//
+		if( $this->_IsInited() )
+		{
+			//
+			// Create namespace term.
+			//
+			$this->_InitDefaultNamespace();
+			
+			//
+			// Create default type terms.
+			//
+			$this->_InitDefaultTypeTerms();
+			
+			//
+			// Create default attribute terms.
+			//
+			$this->_InitDefaultAttributeTerms();
+			
+			//
+			// Create default data dictionaries.
+			//
+			$this->_InitDefaultDataDictionaries();
+			
+			//
+			// Load default data dictionaries.
+			//
+			$this->_LoadTermDataDictionary();
+			
+			return;																	// ==>
+		
+		} // Object is ready.
+		
+		throw new Exception
+			( "Object is not initialised",
+			  kERROR_STATE );													// !@! ==>
+
+	} // InitOntology.
 
 		
 
@@ -592,11 +717,11 @@ class COntology extends CConnection
 	 * node by identifier, or retrieve the list of root nodes matching a term.
 	 *
 	 * A root node distinguishes itself from a <i>standard</i> node by having the
-	 * {@link kNODE_KIND_ROOT} enumeration set in its kind ({@link COntologyNode::Kind()})
+	 * {@link kKIND_NODE_ROOT} enumeration set in its kind ({@link COntologyNode::Kind()})
 	 * list.
 	 *
 	 * The method uses the same parameters as the {@link NewNode()} method, except that it
-	 * forces the {@link kNODE_KIND_ROOT} enumeration as the kind, <tt>NULL</tt> as the
+	 * forces the {@link kKIND_NODE_ROOT} enumeration as the kind, <tt>NULL</tt> as the
 	 * type and omits both parameters.
 	 *
 	 * For more information, please consult the {@link NewNode()} method reference.
@@ -615,14 +740,14 @@ class COntology extends CConnection
 	 *
 	 * @uses NewNode()
 	 *
-	 * @see kNODE_KIND_ROOT
+	 * @see kKIND_NODE_ROOT
 	 */
 	public function NewRootNode( $theIdentifier, $theNamespace = NULL,
 												 $theLabel = NULL, $theDescription = NULL,
 												 $theLanguage = NULL, $doNew = FALSE )
 	{
 		return $this->NewNode( $theIdentifier,
-							   kNODE_KIND_ROOT, NULL,
+							   kKIND_NODE_ROOT, NULL,
 							   $theNamespace,
 							   $theLabel, $theDescription,
 							   $theLanguage, $doNew );								// ==>
@@ -641,12 +766,12 @@ class COntology extends CConnection
 	 * node by identifier, or retrieve the list of trait nodes matching a term.
 	 *
 	 * A trait node distinguishes itself from a <i>standard</i> node by having the
-	 * {@link kNODE_KIND_TRAIT} enumeration set in its kind ({@link COntologyNode::Kind()})
+	 * {@link kKIND_NODE_TRAIT} enumeration set in its kind ({@link COntologyNode::Kind()})
 	 * list. Also, trait nodes represent the beginning of the path used to annotate data,
 	 * trait nodes always represent the first term reference in a tag path.
 	 *
 	 * The method uses the same parameters as the {@link NewNode()} method, except that it
-	 * forces the {@link kNODE_KIND_TRAIT} enumeration as the kind, <tt>NULL</tt> as the
+	 * forces the {@link kKIND_NODE_TRAIT} enumeration as the kind, <tt>NULL</tt> as the
 	 * type and omits both parameters.
 	 *
 	 * For more information, please consult the {@link NewNode()} method reference.
@@ -665,14 +790,14 @@ class COntology extends CConnection
 	 *
 	 * @uses NewNode()
 	 *
-	 * @see kNODE_KIND_TRAIT
+	 * @see kKIND_NODE_TRAIT
 	 */
 	public function NewTraitNode( $theIdentifier, $theNamespace = NULL,
 												  $theLabel = NULL, $theDescription = NULL,
 												  $theLanguage = NULL, $doNew = FALSE )
 	{
 		return $this->NewNode( $theIdentifier,
-							   kNODE_KIND_TRAIT, NULL,
+							   kKIND_NODE_TRAIT, NULL,
 							   $theNamespace,
 							   $theLabel, $theDescription,
 							   $theLanguage, $doNew );								// ==>
@@ -691,13 +816,13 @@ class COntology extends CConnection
 	 * node by identifier, or retrieve the list of method nodes matching a term.
 	 *
 	 * A method node distinguishes itself from a <i>standard</i> node by having the
-	 * {@link kNODE_KIND_METH} enumeration set in its kind ({@link COntologyNode::Kind()})
+	 * {@link kKIND_NODE_METHOD} enumeration set in its kind ({@link COntologyNode::Kind()})
 	 * list. Also, method nodes represent the intermediary elements of the path used to
 	 * annotate data: method nodes will always be found after trait nodes and before scale
 	 * nodes in a tag path.
 	 *
 	 * The method uses the same parameters as the {@link NewNode()} method, except that it
-	 * forces the {@link kNODE_KIND_METH} enumeration as the kind, <tt>NULL</tt> as the
+	 * forces the {@link kKIND_NODE_METHOD} enumeration as the kind, <tt>NULL</tt> as the
 	 * type and omits both parameters.
 	 *
 	 * For more information, please consult the {@link NewNode()} method reference.
@@ -716,14 +841,14 @@ class COntology extends CConnection
 	 *
 	 * @uses NewNode()
 	 *
-	 * @see kNODE_KIND_METH
+	 * @see kKIND_NODE_METHOD
 	 */
 	public function NewMethodNode( $theIdentifier, $theNamespace = NULL,
 												   $theLabel = NULL, $theDescription = NULL,
 												   $theLanguage = NULL, $doNew = FALSE )
 	{
 		return $this->NewNode( $theIdentifier,
-							   kNODE_KIND_METH, NULL,
+							   kKIND_NODE_METHOD, NULL,
 							   $theNamespace,
 							   $theLabel, $theDescription,
 							   $theLanguage, $doNew );								// ==>
@@ -742,12 +867,12 @@ class COntology extends CConnection
 	 * node by identifier, or retrieve the list of scale nodes matching a term.
 	 *
 	 * A scale node distinguishes itself from a <i>standard</i> node by having the
-	 * {@link kNODE_KIND_SCALE} enumeration set in its kind ({@link COntologyNode::Kind()})
+	 * {@link kKIND_NODE_SCALE} enumeration set in its kind ({@link COntologyNode::Kind()})
 	 * list. Also, scale nodes represent the last element of the path used to annotate data:
 	 * scale nodes will always have a data type, {@link CNode::Type()}, attribute.
 	 *
 	 * The method uses the same parameters as the {@link NewNode()} method, except that it
-	 * forces the {@link kNODE_KIND_SCALE} enumeration as the kind and expects the type
+	 * forces the {@link kKIND_NODE_SCALE} enumeration as the kind and expects the type
 	 * attribute to either be present in the resolved node, or provided as a parameter.
 	 *
 	 * For more information, please consult the {@link NewNode()} method reference.
@@ -770,7 +895,7 @@ class COntology extends CConnection
 	 * @uses NewTerm()
 	 * @uses _NewNode()
 	 *
-	 * @see kNODE_KIND_SCALE
+	 * @see kKIND_NODE_SCALE
 	 */
 	public function NewScaleNode( $theIdentifier, $theType = NULL,
 												  $theNamespace = NULL,
@@ -808,7 +933,7 @@ class COntology extends CConnection
 						//
 						// Match kind.
 						//
-						if( ! in_array( kNODE_KIND_SCALE, $match ) )
+						if( ! in_array( kKIND_NODE_SCALE, $match ) )
 							return NULL;											// ==>
 						
 						//
@@ -841,7 +966,7 @@ class COntology extends CConnection
 					//
 					if( $theType !== NULL )
 						return $this->_NewNode
-								( $term, kNODE_KIND_SCALE, $theType );				// ==>
+								( $term, kKIND_NODE_SCALE, $theType );				// ==>
 					
 					throw new Exception
 						( "Missing node data type",
@@ -872,7 +997,7 @@ class COntology extends CConnection
 				//
 				$query->AppendStatement(
 					CQueryStatement::Member(
-						kOFFSET_KIND, kNODE_KIND_SCALE, kTYPE_STRING ) );
+						kOFFSET_KIND, kKIND_NODE_SCALE, kTYPE_STRING ) );
 				
 				//
 				// Filter by type.
@@ -907,7 +1032,7 @@ class COntology extends CConnection
 				//
 				if( $theType !== NULL )
 					return $this->_NewNode
-							( $term, kNODE_KIND_SCALE, $theType );					// ==>
+							( $term, kKIND_NODE_SCALE, $theType );					// ==>
 				
 				throw new Exception
 					( "Missing node data type",
@@ -940,13 +1065,13 @@ class COntology extends CConnection
 	 * term.
 	 *
 	 * An enumeration node distinguishes itself from a <i>standard</i> node by having the
-	 * {@link kNODE_KIND_ENUM} enumeration set in its kind ({@link COntologyNode::Kind()})
-	 * list. Also, enumeration nodes represent elements of an enumerated set and have by
-	 * default the {@link kTYPE_STRING} data type.
+	 * {@link kKIND_NODE_INSTANCE} enumeration set in its kind
+	 * ({@link COntologyNode::Kind()}) list. Also, enumeration nodes represent elements of
+	 * an enumerated set and have by default the {@link kTYPE_STRING} data type.
 	 *
 	 * The method uses the same parameters as the {@link NewNode()} method, except that it
-	 * forces the {@link kNODE_KIND_ENUM} enumeration as the kind, {@link kTYPE_STRING} as
-	 * the type and omits both parameters.
+	 * forces the {@link kKIND_NODE_INSTANCE} enumeration as the kind, {@link kTYPE_STRING}
+	 * as the type and omits both parameters.
 	 *
 	 * For more information, please consult the {@link NewNode()} method reference.
 	 *
@@ -964,14 +1089,14 @@ class COntology extends CConnection
 	 *
 	 * @uses NewNode()
 	 *
-	 * @see kNODE_KIND_ENUM kTYPE_STRING
+	 * @see kKIND_NODE_INSTANCE kTYPE_STRING
 	 */
 	public function NewEnumerationNode( $theIdentifier, $theNamespace = NULL,
 										$theLabel = NULL, $theDescription = NULL,
 										$theLanguage = NULL, $doNew = FALSE )
 	{
 		return $this->NewNode( $theIdentifier,
-							   kNODE_KIND_ENUM, kTYPE_STRING,
+							   kKIND_NODE_INSTANCE, kTYPE_STRING,
 							   $theNamespace,
 							   $theLabel, $theDescription,
 							   $theLanguage, $doNew );								// ==>
@@ -1973,6 +2098,451 @@ class COntology extends CConnection
 			  kERROR_STATE );													// !@! ==>
 
 	} // _RelateTo.
+
+		
+
+/*=======================================================================================
+ *																						*
+ *						PROTECTED ONTOLOGY INITIALISATION INTERFACE						*
+ *																						*
+ *======================================================================================*/
+
+
+	 
+	/*===================================================================================
+	 *	_InitDefaultNamespace															*
+	 *==================================================================================*/
+
+	/**
+	 * <h4>Initialise default namespaces</h4>
+	 *
+	 * This method will first erase the current database and then create the default
+	 * namespace.
+	 *
+	 * The method assumed that the object is {@link _IsInited()} and that the current
+	 * {@link Connection()} is a database.
+	 *
+	 * <b>When calling this method you must be aware that all the ontology data will be
+	 * erased, this method for intended to create a new ontolofy. This must be the first
+	 * method called by the procedure that initialises the ontology.</b>
+	 *
+	 * @access protected
+	 *
+	 * @throws Exception
+	 *
+	 * @uses Connection()
+	 * @uses NewTerm()
+	 */
+	protected function _InitDefaultNamespace()
+	{
+		//
+		// Get database.
+		//
+		$db = $this->GetDatabase();
+		if( ! ($db instanceof CDatabase) )
+			throw new Exception
+				( "Unable to retrieve database connection",
+				  kERROR_STATE );												// !@! ==>
+		
+		//
+		// Clear database.
+		//
+		$db->Drop();
+		
+		//
+		// Create default namespace.
+		//
+		$this->NewTerm(
+				"", NULL,
+				"Default namespace",
+				"This represents the default namespace term.",
+				kDEFAULT_LANGUAGE );
+
+	} // _InitDefaultNamespace.
+
+	 
+	/*===================================================================================
+	 *	_InitDefaultTypeTerms															*
+	 *==================================================================================*/
+
+	/**
+	 * <h4>Initialise default data type terms</h4>
+	 *
+	 * This method will create all the default data type terms of the ontology.
+	 *
+	 * The method assumed that the object is {@link _IsInited()}, that the current
+	 * {@link Connection()} is a database and that the {@link _InitDefaultNamespace()}
+	 * method has been called beforehand.
+	 *
+	 * <bThis method is called in the context of the ontology initialisation procedure, you
+	 * should not use this method outside of that scope.</b>
+	 *
+	 * @access protected
+	 */
+	protected function _InitDefaultTypeTerms()
+	{
+		//
+		// Load namespace term.
+		//
+		$ns = $this->NewTerm( '', NULL );
+		if( ! $ns->_IsCommitted() )
+			throw new Exception
+				( "Unable to initialise terms: default namespace not found",
+				  kERROR_NOT_FOUND );											// !@! ==>
+		
+		//
+		// Load term definitions.
+		//
+		$terms = array(
+			array( kOFFSET_LID => substr( kTYPE_STRING, 1 ),
+				   kOFFSET_LABEL => "String",
+				   kOFFSET_DESCRIPTION => "Primitive string data type." ),
+			array( kOFFSET_LID => substr( kTYPE_INT32, 1 ),
+				   kOFFSET_LABEL => "32 bit integer",
+				   kOFFSET_DESCRIPTION => "32 bit signed integer type." ),
+			array( kOFFSET_LID => substr( kTYPE_INT64, 1 ),
+				   kOFFSET_LABEL => "64 bit integer",
+				   kOFFSET_DESCRIPTION => "64 bit signed integer type." ),
+			array( kOFFSET_LID => substr( kTYPE_FLOAT, 1 ),
+				   kOFFSET_LABEL => "Floating point",
+				   kOFFSET_DESCRIPTION => "Floating point data type." ),
+			array( kOFFSET_LID => substr( kTYPE_BOOLEAN, 1 ),
+				   kOFFSET_LABEL => "Boolean",
+				   kOFFSET_DESCRIPTION => "The primitive boolean data type, it is assumed that it is provided as (y/n; Yes/No; 1/0; TRUE/FALSE) and will be converted to 1/0." ),
+			array( kOFFSET_LID => substr( kTYPE_REF, 1 ),
+				   kOFFSET_LABEL => "Object reference",
+				   kOFFSET_DESCRIPTION => "This value represents the primitive object reference type, this is a logical type, since the actual data type of object native identifiers is not univoque." ),
+			array( kOFFSET_LID => substr( kTYPE_ANY, 1 ),
+				   kOFFSET_LABEL => "Any",
+				   kOFFSET_DESCRIPTION => "This value represents the primitive wildcard type, itqualifies an attribute that can take any kind of value." ),
+			array( kOFFSET_LID => substr( kTYPE_BINARY, 1 ),
+				   kOFFSET_LABEL => "Binary string",
+				   kOFFSET_DESCRIPTION => "The binary string data type, it differs from the {@link kTYPE_STRING} type only because it needs to be handled in a custom way to accomodate different databases." ),
+			array( kOFFSET_LID => substr( kTYPE_DATE, 1 ),
+				   kOFFSET_LABEL => "Date",
+				   kOFFSET_DESCRIPTION => "A date represented as a YYYYMMDD string in which missing elements should be omitted. This means that if we don't know the day we can express that date as YYYYMM." ),
+			array( kOFFSET_LID => substr( kTYPE_TIME, 1 ),
+				   kOFFSET_LABEL => "Time",
+				   kOFFSET_DESCRIPTION => "A time represented as a YYYY-MM-DD HH:MM:SS string in which you may not have missing elements." ),
+			array( kOFFSET_LID => substr( kTYPE_STAMP, 1 ),
+				   kOFFSET_LABEL => "Time-stamp",
+				   kOFFSET_DESCRIPTION => "This data type should be used for native time-stamps." ),
+			array( kOFFSET_LID => substr( kTYPE_CODED_LIST, 1 ),
+				   kOFFSET_LABEL => "Coded list",
+				   kOFFSET_DESCRIPTION => "This data type refers to a list of elements containing two items: a code an the data. No two elements mat share the same code and only one element may omit the code." ),
+			array( kOFFSET_LID => substr( kOFFSET_LANGUAGE, 1 ),
+				   kOFFSET_LABEL => "Language code",
+				   kOFFSET_DESCRIPTION => "This tag is used as a sub-offset of the coded list type elements, it is expected to contain a language character code identifying the language in which the coded list instance element is expressed in." ),
+			array( kOFFSET_LID => substr( kOFFSET_DATA, 1 ),
+				   kOFFSET_LABEL => "Data",
+				   kOFFSET_DESCRIPTION => "This tag is used in structured data types as the sub-offset of the item holding the data. For instance in coded list structures, this will be the offset holding the actual data." ),
+			array( kOFFSET_LID => substr( kTYPE_ENUM, 1 ),
+				   kOFFSET_LABEL => "Enumerated scalar",
+				   kOFFSET_DESCRIPTION => "This value represents the enumeration data type, it represents an enumeration element or container. Enumerations represent a vocabulary from which one value must be chosen, this particular data type is used in node objects: it indicates that the node refers to a controlled vocabulary scalar data type and that the enumerated set follows in the graph definition." ),
+			array( kOFFSET_LID => substr( kTYPE_ENUM_SET, 1 ),
+				   kOFFSET_LABEL => "Enumerated set",
+				   kOFFSET_DESCRIPTION => "This value represents the enumerated set data type, it represents an enumerated set element or container. Sets represent a vocabulary from which one or more values must be chosen, this particular data type is used in node objects: it indicates that the node refers to a controlled vocabulary array data type and that the enumerated set follows in the graph definition." ),
+			array( kOFFSET_LID => substr( kTYPE_CARD_REQUIRED, 1 ),
+				   kOFFSET_LABEL => "Required value",
+				   kOFFSET_DESCRIPTION => "This tag indicates that the element is required, which means that the offset must be present in the object." ),
+			array( kOFFSET_LID => substr( kTYPE_CARD_ARRAY, 1 ),
+				   kOFFSET_LABEL => "Array value",
+				   kOFFSET_DESCRIPTION => "This tag indicates that the element represents an array and that the data type applies to the elements of the array." ),
+			array( kOFFSET_LID => substr( kKIND_NODE_ROOT, 1 ),
+				   kOFFSET_LABEL => "Root node",
+				   kOFFSET_DESCRIPTION => "This tag identifies a root or ontology node kind." ),
+			array( kOFFSET_LID => substr( kKIND_NODE_DDICT, 1 ),
+				   kOFFSET_LABEL => "Data dictionary node",
+				   kOFFSET_DESCRIPTION => "This tag identifies a structure definition or data dictionary node kind, in general this will be used in conjunction to the root node kind to indicate a data structure description." ),
+			array( kOFFSET_LID => substr( kKIND_NODE_TRAIT, 1 ),
+				   kOFFSET_LABEL => "Trait node",
+				   kOFFSET_DESCRIPTION => "This tag identifies a trait or measurable node kind." ),
+			array( kOFFSET_LID => substr( kKIND_NODE_METHOD, 1 ),
+				   kOFFSET_LABEL => "Method node",
+				   kOFFSET_DESCRIPTION => "This tag identifies a method node kind." ),
+			array( kOFFSET_LID => substr( kKIND_NODE_SCALE, 1 ),
+				   kOFFSET_LABEL => "Scale node",
+				   kOFFSET_DESCRIPTION => "This tag identifies a scale or measure node kind." ),
+			array( kOFFSET_LID => substr( kKIND_NODE_INSTANCE, 1 ),
+				   kOFFSET_LABEL => "Instance node",
+				   kOFFSET_DESCRIPTION => "This tag identifies an an instance node kind, it represents in general enumerated set elements." ),
+			array( kOFFSET_LID => substr( kPREDICATE_SUBCLASS_OF, 1 ),
+				   kOFFSET_LABEL => "Subclass-of",
+				   kOFFSET_DESCRIPTION => "This tag identifies the SUBCLASS-OF predicate term local code, this predicate indicates that the subject of the relationship is a subclass of the object of the relationship, in other words, the subject is derived from the object." ),
+			array( kOFFSET_LID => substr( kPREDICATE_METHOD_OF, 1 ),
+				   kOFFSET_LABEL => "Method-of",
+				   kOFFSET_DESCRIPTION => "This tag identifies the METHOD-OF predicate term local code, this predicate relates method nodes with trait nodes or other method nodes, it indicates that the subject of the relationship is a method variation of the object of the relationship." ),
+			array( kOFFSET_LID => substr( kPREDICATE_SCALE_OF, 1 ),
+				   kOFFSET_LABEL => "Scale-of",
+				   kOFFSET_DESCRIPTION => "This tag identifies the SCALE-OF predicate term local code, this predicate relates scale nodes with Method or trait nodes, it indicates that the subject of the relationship represents a scale or measure that is used by a trait or method node." ),
+			array( kOFFSET_LID => substr( kPREDICATE_ENUM_OF, 1 ),
+				   kOFFSET_LABEL => "Enumeration-of",
+				   kOFFSET_DESCRIPTION => "This tag identifies the ENUM-OF predicate term local code, this predicate relates enumerated set elements or controlled vocabulary elements." ),
+			array( kOFFSET_LID => substr( kPREDICATE_PREFERRED, 1 ),
+				   kOFFSET_LABEL => "Preferred choice",
+				   kOFFSET_DESCRIPTION => "This tag identifies the PREFERRED predicate term local code, this predicate indicates that the object of the relationship is the preferred choice, in other words, if possible, one should use the object of the relationship in place of the subject." ),
+			array( kOFFSET_LID => substr( kPREDICATE_VALID, 1 ),
+				   kOFFSET_LABEL => "Valid choice",
+				   kOFFSET_DESCRIPTION => "This tag identifies the VALID predicate term local code, this predicate indicates that the object of the relationship is the valid choice, in other words, the subject of the relationship is obsolete or not valid, and one should use the object od the relationship in its place." ),
+			array( kOFFSET_LID => substr( kPREDICATE_XREF_EXACT, 1 ),
+				   kOFFSET_LABEL => "Exact cross-reference",
+				   kOFFSET_DESCRIPTION => "This tag identifies the XREF-EXACT predicate term local code, this predicate indicates that the subject and the object of the relationship represent an exact cross-reference, in other words, both elements are interchangeable." ) );
+		
+		//
+		// Iterate definitions.
+		//
+		foreach( $terms as $term )
+		{
+			$this->NewTerm
+			(
+				$term[ kOFFSET_LID ],			// Local identifier.
+				$ns,							// Namespace.
+				$term[ kOFFSET_LABEL ],			// Label or name.
+				$term[ kOFFSET_DESCRIPTION ],	// Description or definition.
+				kDEFAULT_LANGUAGE				// Language.
+			);
+		}
+
+	} // _InitDefaultTypeTerms.
+
+	 
+	/*===================================================================================
+	 *	_InitDefaultAttributeTerms														*
+	 *==================================================================================*/
+
+	/**
+	 * <h4>Initialise default attribute terms</h4>
+	 *
+	 * This method will create all the default attribute terms of the ontology.
+	 *
+	 * The method assumed that the object is {@link _IsInited()}, that the current
+	 * {@link Connection()} is a database and that the {@link _InitDefaultNamespace()}
+	 * method has been called beforehand.
+	 *
+	 * <bThis method is called in the context of the ontology initialisation procedure, you
+	 * should not use this method outside of that scope.</b>
+	 *
+	 * @access protected
+	 */
+	protected function _InitDefaultAttributeTerms()
+	{
+		//
+		// Load namespace term.
+		//
+		$ns = $this->NewTerm( '', NULL );
+		if( ! $ns->_IsCommitted() )
+			throw new Exception
+				( "Unable to initialise terms: default namespace not found",
+				  kERROR_NOT_FOUND );											// !@! ==>
+		
+		//
+		// Load term definitions.
+		//
+		$terms = array(
+			array( kOFFSET_LID => substr( kOFFSET_LID, 1 ),
+				   kOFFSET_LABEL => "Local unique identifier",
+				   kOFFSET_DESCRIPTION => "This tag identifies the attribute that contains the local or full unique identifier. This value represents the identifier that uniquely identifies an object within a specific domain or namespace. It is by default a string constituting a portion of the global unique identifier." ),
+			array( kOFFSET_LID => substr( kOFFSET_NID, 1 ),
+				   kOFFSET_LABEL => "Native unique identifier",
+				   kOFFSET_DESCRIPTION => "This tag identifies the attribute that contains the native unique identifier. This value is a full or hashed representation of the object's global unique identifier optimised specifically for the container in which the object will be stored." ),
+			array( kOFFSET_LID => substr( kOFFSET_LABEL, 1 ),
+				   kOFFSET_LABEL => "Label",
+				   kOFFSET_DESCRIPTION => "This tag is used as the offset for the term's label, this attribute represents the term name or short description." ),
+			array( kOFFSET_LID => substr( kOFFSET_DESCRIPTION, 1 ),
+				   kOFFSET_LABEL => "Description",
+				   kOFFSET_DESCRIPTION => "This tag is used as the offset for the term's description, this attribute represents the term description or definition." ),
+			array( kOFFSET_LID => substr( kOFFSET_GID, 1 ),
+				   kOFFSET_LABEL => "Global unique identifier",
+				   kOFFSET_DESCRIPTION => "This tag identifies the attribute that contains the global or full unique identifier. This value will constitute the object's native key in full or hashed format." ),
+			array( kOFFSET_LID => substr( kOFFSET_UID, 1 ),
+				   kOFFSET_LABEL => "Unique identifier",
+				   kOFFSET_DESCRIPTION => "This tag represents the hashed unique identifier of an object in which its native identifier is not related to the global identifier. This is generally used when the native identifier is a sequence number." ),
+			array( kOFFSET_LID => substr( kOFFSET_CLASS, 1 ),
+				   kOFFSET_LABEL => "Class name",
+				   kOFFSET_DESCRIPTION => "This tag identifies the class name of the object, it can be used to instantiate a class rather than using an array when retrieving from containers." ),
+			array( kOFFSET_LID => substr( kOFFSET_KIND, 1 ),
+				   kOFFSET_LABEL => "Object kind",
+				   kOFFSET_DESCRIPTION => "This tag identifies the object kind or type, the offset is a set of enumerations that define the kind or specific type of an object, these enumerations will be in the form of native unique identifiers of the terms that define the enumeration." ),
+			array( kOFFSET_LID => substr( kOFFSET_TYPE, 1 ),
+				   kOFFSET_LABEL => "Object data type",
+				   kOFFSET_DESCRIPTION => "This tag identifies the object data type, the offset is an enumerated scalar that defines the specific data type of an object, this value will be in the form of the native unique identifier of the term that defines the enumeration." ),
+			array( kOFFSET_LID => substr( kOFFSET_NAMESPACE, 1 ),
+				   kOFFSET_LABEL => "Namespace",
+				   kOFFSET_DESCRIPTION => "This tag is used as the offset for a namespace. By default this attribute contains the native unique identifier of the namespace object; if you want to refer to the namespace code, this is not the offset to use." ),
+			array( kOFFSET_LID => substr( kOFFSET_TAG_PATH, 1 ),
+				   kOFFSET_LABEL => "Path",
+				   kOFFSET_DESCRIPTION => "This tag identifies a list of items constituting a path or sequence." ),
+			array( kOFFSET_LID => substr( kOFFSET_TERM, 1 ),
+				   kOFFSET_LABEL => "Term",
+				   kOFFSET_DESCRIPTION => "This tag identifies a reference to a term object, its value will be the native unique identifier of the referenced term." ),
+			array( kOFFSET_LID => substr( kOFFSET_VERTEX_SUBJECT, 1 ),
+				   kOFFSET_LABEL => "Subject vertex",
+				   kOFFSET_DESCRIPTION => "This tag identifies the reference to the subject vertex of a subject/predicate/object triplet in a graph." ),
+			array( kOFFSET_LID => substr( kOFFSET_VERTEX_OBJECT, 1 ),
+				   kOFFSET_LABEL => "Object vertex",
+				   kOFFSET_DESCRIPTION => "This tag identifies the reference to the object vertex of a subject/predicate/object triplet in a graph." ),
+			array( kOFFSET_LID => substr( kOFFSET_PREDICATE, 1 ),
+				   kOFFSET_LABEL => "Predicate reference",
+				   kOFFSET_DESCRIPTION => "This tag identifies the reference to the predicate object of a subject/predicate/object triplet in a graph." ),
+			array( kOFFSET_LID => substr( kOFFSET_SYNONYMS, 1 ),
+				   kOFFSET_LABEL => "Synonyms list",
+				   kOFFSET_DESCRIPTION => "This tag identifies the synonyms offset, this attribute is a list of strings that represent alternate codes or names that identify the specific term." ),
+			array( kOFFSET_LID => substr( kOFFSET_VERTEX_TERMS, 1 ),
+				   kOFFSET_LABEL => "Vertex terms",
+				   kOFFSET_DESCRIPTION => "This tag identifies the offset that will contain the list of identifiers of the terms referenced by the tag path's vertex elements." ),
+			array( kOFFSET_LID => substr( kOFFSET_REFS_NAMESPACE, 1 ),
+				   kOFFSET_LABEL => "Namespace references",
+				   kOFFSET_DESCRIPTION => "This tag identifies namespace references, the attribute contains the count of how many times the term was referenced as a namespace." ),
+			array( kOFFSET_LID => substr( kOFFSET_REFS_NODE, 1 ),
+				   kOFFSET_LABEL => "Node references",
+				   kOFFSET_DESCRIPTION => "This tag identifies node references, the attribute contains the list of identifiers of nodes that reference the current object." ),
+			array( kOFFSET_LID => substr( kOFFSET_REFS_TAG, 1 ),
+				   kOFFSET_LABEL => "Tag references",
+				   kOFFSET_DESCRIPTION => "This tag identifies tag references, the attribute contains the list of identifiers of tags that reference the current term." ),
+			array( kOFFSET_LID => substr( kOFFSET_REFS_EDGE, 1 ),
+				   kOFFSET_LABEL => "Edge references",
+				   kOFFSET_DESCRIPTION => "This tag identifies edge references, the attribute contains the list of identifiers of edges that reference the current node." ) );
+		
+		//
+		// Iterate definitions.
+		//
+		foreach( $terms as $term )
+		{
+			$new = new COntologyTerm();
+			$new->NS( $ns );
+			$new->LID( $term[ kOFFSET_LID ] );
+			$new->Label( kDEFAULT_LANGUAGE, $term[ kOFFSET_LABEL ] );
+			$new->Description( kDEFAULT_LANGUAGE, $term[ kOFFSET_DESCRIPTION ] );
+			$new->Insert( $this->Connection() );
+		}
+
+	} // _InitDefaultAttributeTerms.
+
+	 
+	/*===================================================================================
+	 *	_InitDefaultDataDictionaries													*
+	 *==================================================================================*/
+
+	/**
+	 * <h4>Initialise default data dictionaries</h4>
+	 *
+	 * This method will create all the default data dictionary root nodes of the ontology.
+	 *
+	 * <bThis method is called in the context of the ontology initialisation procedure, you
+	 * should not use this method outside of that scope.</b>
+	 *
+	 * @access protected
+	 */
+	protected function _InitDefaultDataDictionaries()
+	{
+		//
+		// Load namespace term.
+		//
+		$namespace = $this->NewTerm( '', NULL );
+		if( ! $namespace->_IsCommitted() )
+			throw new Exception
+				( "Unable to initialise terms: default namespace not found",
+				  kERROR_NOT_FOUND );											// !@! ==>
+		
+		//
+		// Load  definitions.
+		//
+		$terms = array(
+			array( kOFFSET_LID => substr( kDDICT_TERM, 1 ),
+				   kOFFSET_LABEL => "Ontology term",
+				   kOFFSET_DESCRIPTION => "This tag identifies the root data dictionary node of the terms object data structure, it describes the default elements comprising the term objects in this library." ),
+			array( kOFFSET_LID => substr( kDDICT_NODE, 1 ),
+				   kOFFSET_LABEL => "Ontology node",
+				   kOFFSET_DESCRIPTION => "This tag identifies the root data dictionary node of the nodes object data structure, it describes the default elements comprising the node objects in this library." ),
+			array( kOFFSET_LID => substr( kDDICT_EDGE, 1 ),
+				   kOFFSET_LABEL => "Ontology edge",
+				   kOFFSET_DESCRIPTION => "This tag identifies the root data dictionary node of the edges object data structure, it describes the default elements comprising the edge objects in this library." ),
+			array( kOFFSET_LID => substr( kDDICT_TAG, 1 ),
+				   kOFFSET_LABEL => "Ontology tag",
+				   kOFFSET_DESCRIPTION => "This tag identifies the root data dictionary node of the tags object data structure, it describes the default elements comprising the tag objects in this library." ) );
+		
+		//
+		// Iterate definitions.
+		//
+		foreach( $terms as $term )
+		{
+			//
+			// Create term and node.
+			//
+			$this->NewNode(
+				$this->NewTerm(
+						$term[ kOFFSET_LID ],					// Local identifier.
+						$namespace,								// Namespace.
+						$term[ kOFFSET_LID ],					// Label.
+						$term[ kOFFSET_DESCRIPTION ],			// Description.
+						kDEFAULT_LANGUAGE ),					// Language.
+				array( kKIND_NODE_ROOT, kKIND_NODE_DDICT ) );	// Node kind.
+		}
+
+	} // _InitDefaultDataDictionaries.
+
+	 
+	/*===================================================================================
+	 *	_LoadTermDataDictionary															*
+	 *==================================================================================*/
+
+	/**
+	 * <h4>Load term data dictionary</h4>
+	 *
+	 * This method will load the ontology term data dictionary.
+	 *
+	 * @access protected
+	 */
+	protected function _LoadTermDataDictionary()
+	{
+		//
+		// Load data dictionary root term.
+		//
+		$root_node
+			= $this->ResolveNode(
+				$this->ResolveTerm(
+					kDDICT_TERM, NULL, TRUE ),
+				TRUE );
+echo( '<pre>' );
+print_r( $root_node );
+exit( '</pre>' );
+		
+		//
+		// Load  definitions.
+		//
+		$terms = array(
+			array( kOFFSET_LID => substr( kDDICT_TERM, 1 ),
+				   kOFFSET_LABEL => "Ontology term",
+				   kOFFSET_DESCRIPTION => "This tag identifies the root data dictionary node of the terms object data structure, it describes the default elements comprising the term objects in this library." ),
+			array( kOFFSET_LID => substr( kDDICT_NODE, 1 ),
+				   kOFFSET_LABEL => "Ontology node",
+				   kOFFSET_DESCRIPTION => "This tag identifies the root data dictionary node of the nodes object data structure, it describes the default elements comprising the node objects in this library." ),
+			array( kOFFSET_LID => substr( kDDICT_EDGE, 1 ),
+				   kOFFSET_LABEL => "Ontology edge",
+				   kOFFSET_DESCRIPTION => "This tag identifies the root data dictionary node of the edges object data structure, it describes the default elements comprising the edge objects in this library." ),
+			array( kOFFSET_LID => substr( kDDICT_TAG, 1 ),
+				   kOFFSET_LABEL => "Ontology tag",
+				   kOFFSET_DESCRIPTION => "This tag identifies the root data dictionary node of the tags object data structure, it describes the default elements comprising the tag objects in this library." ) );
+		
+		//
+		// Iterate definitions.
+		//
+		foreach( $terms as $term )
+		{
+			//
+			// Create term and node.
+			//
+			$this->NewNode(
+				$this->NewTerm(
+						$term[ kOFFSET_LID ],					// Local identifier.
+						$namespace,								// Namespace.
+						$term[ kOFFSET_LID ],					// Label.
+						$term[ kOFFSET_DESCRIPTION ],			// Description.
+						kDEFAULT_LANGUAGE ),					// Language.
+				array( kKIND_NODE_ROOT, kKIND_NODE_DDICT ) );	// Node kind.
+		}
+
+	} // _LoadTermDataDictionary.
 
 	 
 

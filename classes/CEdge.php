@@ -20,13 +20,6 @@
  *======================================================================================*/
 
 /**
- * Local definitions.
- *
- * This include file contains common offset definitions.
- */
-require_once( "CEdge.inc.php" );
-
-/**
  * Ancestor.
  *
  * This includes the ancestor class definitions.

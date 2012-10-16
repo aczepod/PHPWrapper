@@ -44,15 +44,15 @@ require_once( kPATH_MYWRAPPER_LIBRARY_CLASS."/CTag.php" );
  * <h3>Ontology tag object ancestor</h3>
  *
  * This class extends its ancestor, {@link CTag}, by asserting the type of objects passed to
- * the path, {@link kOFFSET_PATH}, and by using the native identifiers, {@link kOFFSET_NID},
- * of the elements of the path in the {@link _index()} method.
+ * the path, {@link kOFFSET_TAG_PATH}, and by using the native identifiers,
+ * {@link kOFFSET_NID}, of the elements of the path in the {@link _index()} method.
  *
  * Odd elements of the path must refer to vertex elements of the graph, in this case
  * {@link COntologyNode} objects; even elements of the path must refer to predicates of the
  * graph, in this case {@link COntologyTerm} objects.
  *
- * The elements of the path offset, {@link kOFFSET_PATH}, will be the native identifier of
- * the path elements, while the global identifier, {@link kOFFSET_GID}, will receive the
+ * The elements of the path offset, {@link kOFFSET_TAG_PATH}, will be the native identifier
+ * of the path elements, while the global identifier, {@link kOFFSET_GID}, will receive the
  * global identifiers of the path element related {@link COntologyTerm} instances. This last
  * behaviour means that once a tag is saved, related terms, nodes and edges should not be
  * deleted.
@@ -64,20 +64,20 @@ require_once( kPATH_MYWRAPPER_LIBRARY_CLASS."/CTag.php" );
  * be saved when the current tag is saved.
  *
  * Another action tags perform over nodes is the setting of the node {@link CNode::Kind()}:
- * the first element of the path is a trait node, {@link kNODE_KIND_TRAIT}, the last
- * element of the path is a scale node, {@link kNODE_KIND_SCALE}, and the eventual middle
- * elements are method nodes, {@link kNODE_KIND_METH}. Once the tag is committed, the node's
- * kind will be updated accordingly.
+ * the first element of the path is a trait node, {@link kKIND_NODE_TRAIT}, the last
+ * element of the path is a scale node, {@link kKIND_NODE_SCALE}, and the eventual middle
+ * elements are method nodes, {@link kKIND_NODE_METHOD}. Once the tag is committed, the
+ * node's kind will be updated accordingly.
  *
  * When adding elements to the tag's path you must consistently follow these rules:
  *
  * <ul>
  *	<li>The first vertex of the path must represent the descriptor or main category of the
- *		tag, it will be qualified as {@link kNODE_KIND_TRAIT}.
+ *		tag, it will be qualified as {@link kKIND_NODE_TRAIT}.
  *	<li>The last vertex of the path must represent the data type of the tag and must have
- *		a {@link COntologyNode::Type()}, it will be qualified as {@link kNODE_KIND_SCALE}.
+ *		a {@link COntologyNode::Type()}, it will be qualified as {@link kKIND_NODE_SCALE}.
  *	<li>The eventual vertices between the first and the last one should represent variations
- *		or subclasses of the first vertex and will be marked as {@link kNODE_KIND_METH}.
+ *		or subclasses of the first vertex and will be marked as {@link kKIND_NODE_METHOD}.
  * </ul>
  *
  * Because of this rule, it is not guaranteed that tag paths are in sync with graph paths,
@@ -133,7 +133,7 @@ class COntologyTag extends CTag
 	 *
 	 * @uses _AssertClass()
 	 *
-	 * @see kOFFSET_PATH
+	 * @see kOFFSET_TAG_PATH
 	 */
 	public function PushItem( $theValue )
 	{
@@ -150,8 +150,8 @@ class COntologyTag extends CTag
 				//
 				// Get element count.
 				//
-				$count = ( $this->offsetExists( kOFFSET_PATH ) )
-					   ? count( $this->offsetGet( kOFFSET_PATH ) )
+				$count = ( $this->offsetExists( kOFFSET_TAG_PATH ) )
+					   ? count( $this->offsetGet( kOFFSET_TAG_PATH ) )
 					   : 0;
 				
 				//
@@ -245,16 +245,16 @@ class COntologyTag extends CTag
 	 * @access public
 	 * @return mixed				First element of the path, or <tt>NULL</tt>.
 	 *
-	 * @see kOFFSET_PATH
-	 * @see kNODE_KIND_TRAIT
+	 * @see kOFFSET_TAG_PATH
+	 * @see kKIND_NODE_TRAIT
 	 */
 	public function GetTraitNode()
 	{
 		//
 		// Check path.
 		//
-		if( $this->offsetExists( kOFFSET_PATH ) )
-			return $this[ kOFFSET_PATH ][ 0 ];										// ==>
+		if( $this->offsetExists( kOFFSET_TAG_PATH ) )
+			return $this[ kOFFSET_TAG_PATH ][ 0 ];									// ==>
 		
 		return NULL;																// ==>
 
@@ -277,16 +277,16 @@ class COntologyTag extends CTag
 	 * @access public
 	 * @return mixed				First element of the terms list, or <tt>NULL</tt>.
 	 *
-	 * @see kOFFSET_TERM_LIST
-	 * @see kNODE_KIND_TRAIT
+	 * @see kOFFSET_VERTEX_TERMS
+	 * @see kKIND_NODE_TRAIT
 	 */
 	public function GetTraitTerm()
 	{
 		//
 		// Check path.
 		//
-		if( $this->offsetExists( kOFFSET_TERM_LIST ) )
-			return $this[ kOFFSET_TERM_LIST ][ 0 ];									// ==>
+		if( $this->offsetExists( kOFFSET_VERTEX_TERMS ) )
+			return $this[ kOFFSET_VERTEX_TERMS ][ 0 ];								// ==>
 		
 		return NULL;																// ==>
 
@@ -310,16 +310,17 @@ class COntologyTag extends CTag
 	 * @access public
 	 * @return mixed				Last element of the path, or <tt>NULL</tt>.
 	 *
-	 * @see kOFFSET_PATH
-	 * @see kNODE_KIND_SCALE
+	 * @see kOFFSET_TAG_PATH
+	 * @see kKIND_NODE_SCALE
 	 */
 	public function GetScaleNode()
 	{
 		//
 		// Check path.
 		//
-		if( $this->offsetExists( kOFFSET_PATH ) )
-			return $this[ kOFFSET_PATH ][ count( $this[ kOFFSET_PATH ] ) - 1 ];		// ==>
+		if( $this->offsetExists( kOFFSET_TAG_PATH ) )
+			return $this[ kOFFSET_TAG_PATH ]
+						[ count( $this[ kOFFSET_TAG_PATH ] ) - 1 ];					// ==>
 		
 		return NULL;																// ==>
 
@@ -344,17 +345,17 @@ class COntologyTag extends CTag
 	 * @access public
 	 * @return mixed				Last element of the terms list, or <tt>NULL</tt>.
 	 *
-	 * @see kOFFSET_TERM_LIST
-	 * @see kNODE_KIND_SCALE
+	 * @see kOFFSET_VERTEX_TERMS
+	 * @see kKIND_NODE_SCALE
 	 */
 	public function GetScaleTerm()
 	{
 		//
 		// Check path.
 		//
-		if( $this->offsetExists( kOFFSET_TERM_LIST ) )
-			return $this[ kOFFSET_TERM_LIST ]
-						[count( $this[ kOFFSET_TERM_LIST ] ) - 1 ];					// ==>
+		if( $this->offsetExists( kOFFSET_VERTEX_TERMS ) )
+			return $this[ kOFFSET_VERTEX_TERMS ]
+						[count( $this[ kOFFSET_VERTEX_TERMS ] ) - 1 ];				// ==>
 		
 		return NULL;																// ==>
 
@@ -382,20 +383,20 @@ class COntologyTag extends CTag
 	 * @access public
 	 * @return mixed				List of method nodes, or <tt>NULL</tt>.
 	 *
-	 * @see kOFFSET_PATH
-	 * @see kNODE_KIND_METH
+	 * @see kOFFSET_TAG_PATH
+	 * @see kKIND_NODE_METHOD
 	 */
 	public function GetMethodNodes()
 	{
 		//
 		// Check path.
 		//
-		if( $this->offsetExists( kOFFSET_PATH ) )
+		if( $this->offsetExists( kOFFSET_TAG_PATH ) )
 		{
 			//
 			// Check for methods.
 			//
-			if( ($count = count( $path = $this->offsetGet( kOFFSET_PATH ) )) > 3 )
+			if( ($count = count( $path = $this->offsetGet( kOFFSET_TAG_PATH ) )) > 3 )
 			{
 				//
 				// Init local storage.
@@ -444,20 +445,20 @@ class COntologyTag extends CTag
 	 * @access public
 	 * @return mixed				List of method nodes, or <tt>NULL</tt>.
 	 *
-	 * @see kOFFSET_TERM_LIST
-	 * @see kNODE_KIND_METH
+	 * @see kOFFSET_VERTEX_TERMS
+	 * @see kKIND_NODE_METHOD
 	 */
 	public function GetMethodTerms()
 	{
 		//
 		// Check path.
 		//
-		if( $this->offsetExists( kOFFSET_TERM_LIST ) )
+		if( $this->offsetExists( kOFFSET_VERTEX_TERMS ) )
 		{
 			//
 			// Check for methods.
 			//
-			if( ($count = count( $path = $this->offsetGet( kOFFSET_TERM_LIST ) )) > 2 )
+			if( ($count = count( $path = $this->offsetGet( kOFFSET_VERTEX_TERMS ) )) > 2 )
 			{
 				//
 				// Init local storage.
@@ -758,7 +759,7 @@ class COntologyTag extends CTag
 			$query = $container->NewQuery();
 			$query->AppendStatement(
 				CQueryStatement::Member(
-					kOFFSET_TERM_LIST, $theIdentifier, kTYPE_BINARY ) );
+					kOFFSET_VERTEX_TERMS, $theIdentifier, kTYPE_BINARY ) );
 			$rs = $container->Query( $query );
 			
 			//
@@ -821,8 +822,8 @@ class COntologyTag extends CTag
 	 * the path to be object native identifiers, so the method will resolve each element
 	 * without checking if it is in the form of an object.
 	 *
-	 * This method is also responsible for loading the {@link kOFFSET_TERM_LIST} offset: it
-	 * will contain all the term native identifiers referred to by the tag's path vertex
+	 * This method is also responsible for loading the {@link kOFFSET_VERTEX_TERMS} offset:
+	 * it will contain all the term native identifiers referred to by the tag's path vertex
 	 * elements.
 	 *
 	 * @param CConnection			$theConnection		Server, database or container.
@@ -835,8 +836,8 @@ class COntologyTag extends CTag
 	 *
 	 * @throws Exception
 	 *
-	 * @see kOFFSET_TERM_LIST
-	 * @see kOFFSET_PATH kTOKEN_INDEX_SEPARATOR
+	 * @see kOFFSET_VERTEX_TERMS
+	 * @see kOFFSET_TAG_PATH kTOKEN_INDEX_SEPARATOR
 	 */
 	protected function _index( CConnection $theConnection, $theModifiers )
 	{
@@ -844,7 +845,7 @@ class COntologyTag extends CTag
 		// Init local storage.
 		//
 		$identifier = $terms = Array();
-		$path = $this->offsetGet( kOFFSET_PATH );
+		$path = $this->offsetGet( kOFFSET_TAG_PATH );
 		
 		//
 		// Iterate path elements.
@@ -904,7 +905,7 @@ class COntologyTag extends CTag
 		// Set terms list offset.
 		//
 		if( count( $terms ) )
-			$this->offsetSet( kOFFSET_TERM_LIST, $terms );
+			$this->offsetSet( kOFFSET_VERTEX_TERMS, $terms );
 		
 		return implode( kTOKEN_INDEX_SEPARATOR, $identifier );						// ==>
 	
@@ -945,14 +946,14 @@ class COntologyTag extends CTag
 	 *
 	 * @uses _IsCommitted()
 	 *
-	 * @see kOFFSET_PATH
+	 * @see kOFFSET_TAG_PATH
 	 */
 	protected function _Preset( &$theOffset, &$theValue )
 	{
 		//
 		// Lock path.
 		//
-		if( ($theOffset == kOFFSET_PATH)
+		if( ($theOffset == kOFFSET_TAG_PATH)
 		 && $this->_IsCommitted() )
 			throw new Exception
 				( "You cannot modify the [$theOffset] offset: "
@@ -986,14 +987,14 @@ class COntologyTag extends CTag
 	 *
 	 * @uses _IsCommitted()
 	 *
-	 * @see kOFFSET_PATH
+	 * @see kOFFSET_TAG_PATH
 	 */
 	protected function _Preunset( &$theOffset )
 	{
 		//
 		// Lock path.
 		//
-		if( ($theOffset == kOFFSET_PATH)
+		if( ($theOffset == kOFFSET_TAG_PATH)
 		 && $this->_IsCommitted() )
 			throw new Exception
 				( "You cannot modify the [$theOffset] offset: "
@@ -1039,7 +1040,7 @@ class COntologyTag extends CTag
 	 *
 	 * @uses _IsCommitted()
 	 *
-	 * @see kOFFSET_PATH
+	 * @see kOFFSET_TAG_PATH
 	 * @see kFLAG_PERSIST_INSERT kFLAG_PERSIST_REPLACE
 	 */
 	protected function _PrecommitRelated( &$theConnection, &$theModifiers )
@@ -1059,7 +1060,7 @@ class COntologyTag extends CTag
 			//
 			// Iterate path elements.
 			//
-			$path = $this->offsetGet( kOFFSET_PATH );
+			$path = $this->offsetGet( kOFFSET_TAG_PATH );
 			for( $i = 0; $i < count( $path ); $i++ )
 			{
 				//
@@ -1112,7 +1113,7 @@ class COntologyTag extends CTag
 			//
 			// Replace path.
 			//
-			$this->offsetSet( kOFFSET_PATH, $path );
+			$this->offsetSet( kOFFSET_TAG_PATH, $path );
 		
 		} // Insert or replace and not committed.
 	
@@ -1243,9 +1244,9 @@ class COntologyTag extends CTag
 	 * When inserting a new tag, we add the tag reference, when deleting the tag we remove
 	 * it.
 	 *
-	 * The method will also set the node {@link CNode::Kind()}s to {@link kNODE_KIND_TRAIT}
-	 * for the first element of the path, to {@link kNODE_KIND_SCALE} for the last element
-	 * and to {@link kNODE_KIND_METH} for the eventual in-between node elements.
+	 * The method will also set the node {@link CNode::Kind()}s to {@link kKIND_NODE_TRAIT}
+	 * for the first element of the path, to {@link kKIND_NODE_SCALE} for the last element
+	 * and to {@link kKIND_NODE_METHOD} for the eventual in-between node elements.
 	 *
 	 * We only handle vertex elements, we do not refer predicate terms.
 	 *
@@ -1259,7 +1260,7 @@ class COntologyTag extends CTag
 	 * @see kOFFSET_REFS_TAG
 	 * @see kFLAG_PERSIST_INSERT kFLAG_PERSIST_REPLACE kFLAG_PERSIST_DELETE
 	 * @see kFLAG_PERSIST_MODIFY kFLAG_MODIFY_ADDSET kFLAG_MODIFY_PULL
-	 * @see kNODE_KIND_TRAIT kNODE_KIND_METH kNODE_KIND_SCALE
+	 * @see kKIND_NODE_TRAIT kKIND_NODE_METHOD kKIND_NODE_SCALE
 	 */
 	protected function _PostcommitRelated( &$theConnection, &$theModifiers )
 	{
@@ -1284,7 +1285,7 @@ class COntologyTag extends CTag
 			//
 			// Iterate path elements.
 			//
-			$path = $this->offsetGet( kOFFSET_PATH );
+			$path = $this->offsetGet( kOFFSET_TAG_PATH );
 			for( $i = 0; $i < count( $path ); $i += 2 )
 			{
 				//
@@ -1478,7 +1479,7 @@ class COntologyTag extends CTag
 	/**
 	 * <h4>Set node's kind to trait</h4>
 	 *
-	 * This method will set the provided node's kind to {@link kNODE_KIND_TRAIT}.
+	 * This method will set the provided node's kind to {@link kKIND_NODE_TRAIT}.
 	 *
 	 * The method will return <tt>TRUE</tt> if the operation affected at least one object,
 	 * <tt>FALSE</tt> if not and raise an exception if the operation failed.
@@ -1489,7 +1490,7 @@ class COntologyTag extends CTag
 	 * @access protected
 	 * @return boolean				<tt>TRUE</tt> operation affected at least one object.
 	 *
-	 * @see kOFFSET_KIND kNODE_KIND_TRAIT
+	 * @see kOFFSET_KIND kKIND_NODE_TRAIT
 	 * @see kFLAG_PERSIST_MODIFY kFLAG_MODIFY_ADDSET
 	 */
 	protected function _SetTraitNode( CConnection $theConnection, $theNode )
@@ -1497,7 +1498,7 @@ class COntologyTag extends CTag
 		//
 		// Set modification criteria.
 		//
-		$criteria = array( kOFFSET_KIND => kNODE_KIND_TRAIT );
+		$criteria = array( kOFFSET_KIND => kKIND_NODE_TRAIT );
 		
 		//
 		// Add to kind set.
@@ -1520,7 +1521,7 @@ class COntologyTag extends CTag
 	/**
 	 * <h4>Set node's kind to method</h4>
 	 *
-	 * This method will set the provided node's kind to {@link kNODE_KIND_METH}.
+	 * This method will set the provided node's kind to {@link kKIND_NODE_METHOD}.
 	 *
 	 * The method will return <tt>TRUE</tt> if the operation affected at least one object,
 	 * <tt>FALSE</tt> if not and raise an exception if the operation failed.
@@ -1531,7 +1532,7 @@ class COntologyTag extends CTag
 	 * @access protected
 	 * @return boolean				<tt>TRUE</tt> operation affected at least one object.
 	 *
-	 * @see kOFFSET_KIND kNODE_KIND_METH
+	 * @see kOFFSET_KIND kKIND_NODE_METHOD
 	 * @see kFLAG_PERSIST_MODIFY kFLAG_MODIFY_ADDSET
 	 */
 	protected function _SetMethodNode( CConnection $theConnection, $theNode )
@@ -1539,7 +1540,7 @@ class COntologyTag extends CTag
 		//
 		// Set modification criteria.
 		//
-		$criteria = array( kOFFSET_KIND => kNODE_KIND_METH );
+		$criteria = array( kOFFSET_KIND => kKIND_NODE_METHOD );
 		
 		//
 		// Add to kind set.
@@ -1562,7 +1563,7 @@ class COntologyTag extends CTag
 	/**
 	 * <h4>Set node's kind to scale</h4>
 	 *
-	 * This method will set the provided node's kind to {@link kNODE_KIND_SCALE}.
+	 * This method will set the provided node's kind to {@link kKIND_NODE_SCALE}.
 	 *
 	 * The method will return <tt>TRUE</tt> if the operation affected at least one object,
 	 * <tt>FALSE</tt> if not and raise an exception if the operation failed.
@@ -1573,7 +1574,7 @@ class COntologyTag extends CTag
 	 * @access protected
 	 * @return boolean				<tt>TRUE</tt> operation affected at least one object.
 	 *
-	 * @see kOFFSET_KIND kNODE_KIND_SCALE
+	 * @see kOFFSET_KIND kKIND_NODE_SCALE
 	 * @see kFLAG_PERSIST_MODIFY kFLAG_MODIFY_ADDSET
 	 */
 	protected function _SetScaleNode( CConnection $theConnection, $theNode )
@@ -1581,7 +1582,7 @@ class COntologyTag extends CTag
 		//
 		// Set modification criteria.
 		//
-		$criteria = array( kOFFSET_KIND => kNODE_KIND_SCALE );
+		$criteria = array( kOFFSET_KIND => kKIND_NODE_SCALE );
 		
 		//
 		// Add to kind set.

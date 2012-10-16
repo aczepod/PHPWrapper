@@ -269,13 +269,13 @@
 				   'type' => array( kTYPE_STRING, kTYPE_CARD_REQUIRED ),
 				   'label' => "National Inventory edition number",
 				   'descr' => "Code identifying the edition of the National in situ LR Inventory made up of the edition number and the year of publication.",
-				   'examp' => array( 'NLD' ) ),
+				   'examp' => array( 'the first edition that is compiled in 2012 will be coded as 001/2012', 'the second edition that is compiled in 2014 will be coded 002/2014' ) ),
 			array( 'code' => 'INSTCODE',
 				   'syn' => '1.3',
 				   'type' => array( kTYPE_STRING, kTYPE_CARD_REQUIRED ),
-				   'label' => "National Inventory edition number",
-				   'descr' => "Code identifying the edition of the National in situ LR Inventory made up of the edition number and the year of publication.",
-				   'examp' => array( 'NLD' ) ) );
+				   'label' => "Institute code",
+				   'descr' => "FAO WIEWS code of the institute (see: http://apps3.fao.org/wiews/institute_query.htm?i_l=EN) who is responsible at the national level for the production of the National in situ LR Inventory.",
+				   'examp' => array( 'NLD037' ) ) );
 		
 		//
 		// Load data.
