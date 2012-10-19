@@ -115,19 +115,19 @@ define( "kTYPE_TIME",						':TIME-STRING' );		// Time.
  *======================================================================================*/
 
 /**
+ * Structure.
+ *
+ * This data type refers to a structure, it implies that the offset to which it refers to
+ * is a container of other offsets that will hold the actual data.
+ */
+define( "kTYPE_STRUCT",						':STRUCT' );			// Structure.
+
+/**
  * Timestamp type.
  *
  * This data type should be used for native time-stamps.
  */
 define( "kTYPE_STAMP",						':TIME-STAMP' );		// Timestamp.
-
-/**
- * Coded list.
- *
- * This data type refers to a list of elements containing two items: a code an the data.
- * No two elements mat share the same code and only one element may omit the code.
- */
-define( "kTYPE_CODED_LIST",					':LIST-CODED' );		// Coded list.
 
 /*=======================================================================================
  *	STRUCTURED DATA TYPE OFFSETS														*
@@ -136,9 +136,9 @@ define( "kTYPE_CODED_LIST",					':LIST-CODED' );		// Coded list.
 /**
  * Language code.
  *
- * This tag is used as a sub-offset of the {@link kTYPE_CODED_LIST} type elements, it
+ * This tag is used as a sub-offset of a {@link kTYPE_STRUCT} type element, it
  * is expected to contain a language character code identifying the language in which the
- * {@link kTYPE_CODED_LIST} instance element is expressed in.
+ * {@link kTYPE_STRUCT} instance element is expressed in.
  */
 define( "kOFFSET_LANGUAGE",					':LANGUAGE' );			// Language code
 
@@ -146,8 +146,6 @@ define( "kOFFSET_LANGUAGE",					':LANGUAGE' );			// Language code
  * Data.
  *
  * This tag is used in structured data types as the sub-offset of the item holding the data.
- * For instance in {@link kTYPE_CODED_LIST} structures, this will be the offset holding the
- * actual string.
  */
 define( "kOFFSET_DATA",						':DATA' );				// Data.
 

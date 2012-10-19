@@ -176,8 +176,7 @@ class COntologyNode extends CNode
 	 *		<li><i>{@link kTYPE_DATE}</i>: A date.
 	 *		<li><i>{@link kTYPE_TIME}</i>: A date and time.
 	 *		<li><i>{@link kTYPE_STAMP}</i>: A native timestamp.
-	 *		<li><i>{@link kTYPE_CODED_LIST}</i>: A list of strings expressed in several
-	 *			languages.
+	 *		<li><i>{@link kTYPE_STRUCT}</i>: A structure container.
 	 *		<li><i>{@link kTYPE_ENUM}</i>: Enumerated scalar, this data type resolves by
 	 *			default to a string and indicates that the node refers to a controlled
 	 *			vocabulary scalar whose elements will be found related to the current node.
@@ -273,7 +272,7 @@ class COntologyNode extends CNode
 				case kTYPE_DATE:
 				case kTYPE_TIME:
 				case kTYPE_STAMP:
-				case kTYPE_CODED_LIST:
+				case kTYPE_STRUCT:
 				case kTYPE_BOOLEAN:
 				case kTYPE_ENUM:
 				case kTYPE_ENUM_SET:

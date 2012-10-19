@@ -33,8 +33,6 @@
 				<li class="main"><a href="package-MyWrapper.Persistence.html">Persistence</a>
 						</li>
 							</ul></li>
-				<li><a href="package-None.html">None</a>
-						</li>
 				<li><a href="package-PHP.html">PHP</a>
 						</li>
 			</ul>
@@ -2322,9 +2320,9 @@
 </span><span id="2227" class="l"><a class="l" href="#2227">2227: </a>            <span class="php-keyword1">array</span>( kOFFSET_LID =&gt; <span class="php-keyword2">substr</span>( kTYPE_STAMP, <span class="php-num">1</span> ),
 </span><span id="2228" class="l"><a class="l" href="#2228">2228: </a>                   kOFFSET_LABEL =&gt; <span class="php-quote">&quot;Time-stamp&quot;</span>,
 </span><span id="2229" class="l"><a class="l" href="#2229">2229: </a>                   kOFFSET_DESCRIPTION =&gt; <span class="php-quote">&quot;This data type should be used for native time-stamps.&quot;</span> ),
-</span><span id="2230" class="l"><a class="l" href="#2230">2230: </a>            <span class="php-keyword1">array</span>( kOFFSET_LID =&gt; <span class="php-keyword2">substr</span>( kTYPE_CODED_LIST, <span class="php-num">1</span> ),
-</span><span id="2231" class="l"><a class="l" href="#2231">2231: </a>                   kOFFSET_LABEL =&gt; <span class="php-quote">&quot;Coded list&quot;</span>,
-</span><span id="2232" class="l"><a class="l" href="#2232">2232: </a>                   kOFFSET_DESCRIPTION =&gt; <span class="php-quote">&quot;This data type refers to a list of elements containing two items: a code an the data. No two elements mat share the same code and only one element may omit the code.&quot;</span> ),
+</span><span id="2230" class="l"><a class="l" href="#2230">2230: </a>            <span class="php-keyword1">array</span>( kOFFSET_LID =&gt; <span class="php-keyword2">substr</span>( kTYPE_STRUCT, <span class="php-num">1</span> ),
+</span><span id="2231" class="l"><a class="l" href="#2231">2231: </a>                   kOFFSET_LABEL =&gt; <span class="php-quote">&quot;Structure&quot;</span>,
+</span><span id="2232" class="l"><a class="l" href="#2232">2232: </a>                   kOFFSET_DESCRIPTION =&gt; <span class="php-quote">&quot;This data type refers to a structure, it implies that the offset to which it refers to is a container of other offsets that will hold the actual data.&quot;</span> ),
 </span><span id="2233" class="l"><a class="l" href="#2233">2233: </a>            <span class="php-keyword1">array</span>( kOFFSET_LID =&gt; <span class="php-keyword2">substr</span>( kOFFSET_LANGUAGE, <span class="php-num">1</span> ),
 </span><span id="2234" class="l"><a class="l" href="#2234">2234: </a>                   kOFFSET_LABEL =&gt; <span class="php-quote">&quot;Language code&quot;</span>,
 </span><span id="2235" class="l"><a class="l" href="#2235">2235: </a>                   kOFFSET_DESCRIPTION =&gt; <span class="php-quote">&quot;This tag is used as a sub-offset of the coded list type elements, it is expected to contain a language character code identifying the language in which the coded list instance element is expressed in.&quot;</span> ),
@@ -2591,61 +2589,163 @@
 </span><span id="2496" class="l"><a class="l" href="#2496">2496: </a>    <span class="php-keyword1">protected</span> <span class="php-keyword1">function</span> <a id="__LoadTermDataDictionary" href="#__LoadTermDataDictionary">_LoadTermDataDictionary</a>()
 </span><span id="2497" class="l"><a class="l" href="#2497">2497: </a>    {
 </span><span id="2498" class="l"><a class="l" href="#2498">2498: </a>        <span class="php-comment">//</span>
-</span><span id="2499" class="l"><a class="l" href="#2499">2499: </a>        <span class="php-comment">// Load data dictionary root term.</span>
+</span><span id="2499" class="l"><a class="l" href="#2499">2499: </a>        <span class="php-comment">// Load namespace term.</span>
 </span><span id="2500" class="l"><a class="l" href="#2500">2500: </a>        <span class="php-comment">//</span>
-</span><span id="2501" class="l"><a class="l" href="#2501">2501: </a>        <span class="php-var">$root_node</span>
-</span><span id="2502" class="l"><a class="l" href="#2502">2502: </a>            = <span class="php-var">$this</span>-&gt;ResolveNode(
-</span><span id="2503" class="l"><a class="l" href="#2503">2503: </a>                <span class="php-var">$this</span>-&gt;ResolveTerm(
-</span><span id="2504" class="l"><a class="l" href="#2504">2504: </a>                    kDDICT_TERM, <span class="php-keyword1">NULL</span>, <span class="php-keyword1">TRUE</span> ),
-</span><span id="2505" class="l"><a class="l" href="#2505">2505: </a>                <span class="php-keyword1">TRUE</span> );
-</span><span id="2506" class="l"><a class="l" href="#2506">2506: </a><span class="php-keyword1">echo</span>( <span class="php-quote">'&lt;pre&gt;'</span> );
-</span><span id="2507" class="l"><a class="l" href="#2507">2507: </a><span class="php-keyword2">print_r</span>( <span class="php-var">$root_node</span> );
-</span><span id="2508" class="l"><a class="l" href="#2508">2508: </a><span class="php-keyword1">exit</span>( <span class="php-quote">'&lt;/pre&gt;'</span> );
-</span><span id="2509" class="l"><a class="l" href="#2509">2509: </a>        
-</span><span id="2510" class="l"><a class="l" href="#2510">2510: </a>        <span class="php-comment">//</span>
-</span><span id="2511" class="l"><a class="l" href="#2511">2511: </a>        <span class="php-comment">// Load  definitions.</span>
-</span><span id="2512" class="l"><a class="l" href="#2512">2512: </a>        <span class="php-comment">//</span>
-</span><span id="2513" class="l"><a class="l" href="#2513">2513: </a>        <span class="php-var">$terms</span> = <span class="php-keyword1">array</span>(
-</span><span id="2514" class="l"><a class="l" href="#2514">2514: </a>            <span class="php-keyword1">array</span>( kOFFSET_LID =&gt; <span class="php-keyword2">substr</span>( kDDICT_TERM, <span class="php-num">1</span> ),
-</span><span id="2515" class="l"><a class="l" href="#2515">2515: </a>                   kOFFSET_LABEL =&gt; <span class="php-quote">&quot;Ontology term&quot;</span>,
-</span><span id="2516" class="l"><a class="l" href="#2516">2516: </a>                   kOFFSET_DESCRIPTION =&gt; <span class="php-quote">&quot;This tag identifies the root data dictionary node of the terms object data structure, it describes the default elements comprising the term objects in this library.&quot;</span> ),
-</span><span id="2517" class="l"><a class="l" href="#2517">2517: </a>            <span class="php-keyword1">array</span>( kOFFSET_LID =&gt; <span class="php-keyword2">substr</span>( kDDICT_NODE, <span class="php-num">1</span> ),
-</span><span id="2518" class="l"><a class="l" href="#2518">2518: </a>                   kOFFSET_LABEL =&gt; <span class="php-quote">&quot;Ontology node&quot;</span>,
-</span><span id="2519" class="l"><a class="l" href="#2519">2519: </a>                   kOFFSET_DESCRIPTION =&gt; <span class="php-quote">&quot;This tag identifies the root data dictionary node of the nodes object data structure, it describes the default elements comprising the node objects in this library.&quot;</span> ),
-</span><span id="2520" class="l"><a class="l" href="#2520">2520: </a>            <span class="php-keyword1">array</span>( kOFFSET_LID =&gt; <span class="php-keyword2">substr</span>( kDDICT_EDGE, <span class="php-num">1</span> ),
-</span><span id="2521" class="l"><a class="l" href="#2521">2521: </a>                   kOFFSET_LABEL =&gt; <span class="php-quote">&quot;Ontology edge&quot;</span>,
-</span><span id="2522" class="l"><a class="l" href="#2522">2522: </a>                   kOFFSET_DESCRIPTION =&gt; <span class="php-quote">&quot;This tag identifies the root data dictionary node of the edges object data structure, it describes the default elements comprising the edge objects in this library.&quot;</span> ),
-</span><span id="2523" class="l"><a class="l" href="#2523">2523: </a>            <span class="php-keyword1">array</span>( kOFFSET_LID =&gt; <span class="php-keyword2">substr</span>( kDDICT_TAG, <span class="php-num">1</span> ),
-</span><span id="2524" class="l"><a class="l" href="#2524">2524: </a>                   kOFFSET_LABEL =&gt; <span class="php-quote">&quot;Ontology tag&quot;</span>,
-</span><span id="2525" class="l"><a class="l" href="#2525">2525: </a>                   kOFFSET_DESCRIPTION =&gt; <span class="php-quote">&quot;This tag identifies the root data dictionary node of the tags object data structure, it describes the default elements comprising the tag objects in this library.&quot;</span> ) );
-</span><span id="2526" class="l"><a class="l" href="#2526">2526: </a>        
-</span><span id="2527" class="l"><a class="l" href="#2527">2527: </a>        <span class="php-comment">//</span>
-</span><span id="2528" class="l"><a class="l" href="#2528">2528: </a>        <span class="php-comment">// Iterate definitions.</span>
-</span><span id="2529" class="l"><a class="l" href="#2529">2529: </a>        <span class="php-comment">//</span>
-</span><span id="2530" class="l"><a class="l" href="#2530">2530: </a>        <span class="php-keyword1">foreach</span>( <span class="php-var">$terms</span> <span class="php-keyword1">as</span> <span class="php-var">$term</span> )
-</span><span id="2531" class="l"><a class="l" href="#2531">2531: </a>        {
-</span><span id="2532" class="l"><a class="l" href="#2532">2532: </a>            <span class="php-comment">//</span>
-</span><span id="2533" class="l"><a class="l" href="#2533">2533: </a>            <span class="php-comment">// Create term and node.</span>
-</span><span id="2534" class="l"><a class="l" href="#2534">2534: </a>            <span class="php-comment">//</span>
-</span><span id="2535" class="l"><a class="l" href="#2535">2535: </a>            <span class="php-var">$this</span>-&gt;NewNode(
-</span><span id="2536" class="l"><a class="l" href="#2536">2536: </a>                <span class="php-var">$this</span>-&gt;NewTerm(
-</span><span id="2537" class="l"><a class="l" href="#2537">2537: </a>                        <span class="php-var">$term</span>[ kOFFSET_LID ],                   <span class="php-comment">// Local identifier.</span>
-</span><span id="2538" class="l"><a class="l" href="#2538">2538: </a>                        <span class="php-var">$namespace</span>,                             <span class="php-comment">// Namespace.</span>
-</span><span id="2539" class="l"><a class="l" href="#2539">2539: </a>                        <span class="php-var">$term</span>[ kOFFSET_LID ],                   <span class="php-comment">// Label.</span>
-</span><span id="2540" class="l"><a class="l" href="#2540">2540: </a>                        <span class="php-var">$term</span>[ kOFFSET_DESCRIPTION ],           <span class="php-comment">// Description.</span>
-</span><span id="2541" class="l"><a class="l" href="#2541">2541: </a>                        kDEFAULT_LANGUAGE ),                    <span class="php-comment">// Language.</span>
-</span><span id="2542" class="l"><a class="l" href="#2542">2542: </a>                <span class="php-keyword1">array</span>( kKIND_NODE_ROOT, kKIND_NODE_DDICT ) );   <span class="php-comment">// Node kind.</span>
-</span><span id="2543" class="l"><a class="l" href="#2543">2543: </a>        }
-</span><span id="2544" class="l"><a class="l" href="#2544">2544: </a>
-</span><span id="2545" class="l"><a class="l" href="#2545">2545: </a>    } <span class="php-comment">// _LoadTermDataDictionary.</span>
-</span><span id="2546" class="l"><a class="l" href="#2546">2546: </a>
-</span><span id="2547" class="l"><a class="l" href="#2547">2547: </a>     
-</span><span id="2548" class="l"><a class="l" href="#2548">2548: </a>
-</span><span id="2549" class="l"><a class="l" href="#2549">2549: </a>} <span class="php-comment">// class COntology.</span>
-</span><span id="2550" class="l"><a class="l" href="#2550">2550: </a>
-</span><span id="2551" class="l"><a class="l" href="#2551">2551: </a>
-</span><span id="2552" class="l"><a class="l" href="#2552">2552: </a><span class="xlang">?&gt;</span>
-</span><span id="2553" class="l"><a class="l" href="#2553">2553: </a></span></code></pre>
+</span><span id="2501" class="l"><a class="l" href="#2501">2501: </a>        <span class="php-var">$namespace</span> = <span class="php-var">$this</span>-&gt;NewTerm( <span class="php-quote">''</span>, <span class="php-keyword1">NULL</span> );
+</span><span id="2502" class="l"><a class="l" href="#2502">2502: </a>        <span class="php-keyword1">if</span>( ! <span class="php-var">$namespace</span>-&gt;_IsCommitted() )
+</span><span id="2503" class="l"><a class="l" href="#2503">2503: </a>            <span class="php-keyword1">throw</span> <span class="php-keyword1">new</span> Exception
+</span><span id="2504" class="l"><a class="l" href="#2504">2504: </a>                ( <span class="php-quote">&quot;Unable to initialise terms: default namespace not found&quot;</span>,
+</span><span id="2505" class="l"><a class="l" href="#2505">2505: </a>                  kERROR_NOT_FOUND );                                           <span class="php-comment">// !@! ==&gt;</span>
+</span><span id="2506" class="l"><a class="l" href="#2506">2506: </a>        
+</span><span id="2507" class="l"><a class="l" href="#2507">2507: </a>        <span class="php-comment">//</span>
+</span><span id="2508" class="l"><a class="l" href="#2508">2508: </a>        <span class="php-comment">// Load data dictionary root term.</span>
+</span><span id="2509" class="l"><a class="l" href="#2509">2509: </a>        <span class="php-comment">//</span>
+</span><span id="2510" class="l"><a class="l" href="#2510">2510: </a>        <span class="php-var">$root_node</span>
+</span><span id="2511" class="l"><a class="l" href="#2511">2511: </a>            = <span class="php-var">$this</span>-&gt;ResolveNode(
+</span><span id="2512" class="l"><a class="l" href="#2512">2512: </a>                <span class="php-var">$this</span>-&gt;ResolveTerm(
+</span><span id="2513" class="l"><a class="l" href="#2513">2513: </a>                    kDDICT_TERM, <span class="php-keyword1">NULL</span>, <span class="php-keyword1">TRUE</span> ),
+</span><span id="2514" class="l"><a class="l" href="#2514">2514: </a>                <span class="php-keyword1">TRUE</span> )[ <span class="php-num">0</span> ];
+</span><span id="2515" class="l"><a class="l" href="#2515">2515: </a>
+</span><span id="2516" class="l"><a class="l" href="#2516">2516: </a>        <span class="php-comment">//</span>
+</span><span id="2517" class="l"><a class="l" href="#2517">2517: </a>        <span class="php-comment">// Load  definitions.</span>
+</span><span id="2518" class="l"><a class="l" href="#2518">2518: </a>        <span class="php-comment">//</span>
+</span><span id="2519" class="l"><a class="l" href="#2519">2519: </a>        <span class="php-var">$terms</span> = <span class="php-keyword1">array</span>(
+</span><span id="2520" class="l"><a class="l" href="#2520">2520: </a>            <span class="php-keyword1">array</span>( kOFFSET_LID =&gt; <span class="php-keyword2">substr</span>( kOFFSET_NID, <span class="php-num">1</span> ),
+</span><span id="2521" class="l"><a class="l" href="#2521">2521: </a>                   kOFFSET_GID =&gt; kOFFSET_NID,
+</span><span id="2522" class="l"><a class="l" href="#2522">2522: </a>                   kOFFSET_TYPE =&gt; <span class="php-keyword1">array</span>( kTYPE_BINARY, kTYPE_CARD_REQUIRED ) ),
+</span><span id="2523" class="l"><a class="l" href="#2523">2523: </a>            <span class="php-keyword1">array</span>( kOFFSET_LID =&gt; <span class="php-keyword2">substr</span>( kOFFSET_LID, <span class="php-num">1</span> ),
+</span><span id="2524" class="l"><a class="l" href="#2524">2524: </a>                   kOFFSET_GID =&gt; kOFFSET_LID,
+</span><span id="2525" class="l"><a class="l" href="#2525">2525: </a>                   kOFFSET_TYPE =&gt; <span class="php-keyword1">array</span>( kTYPE_STRING, kTYPE_CARD_REQUIRED ) ),
+</span><span id="2526" class="l"><a class="l" href="#2526">2526: </a>            <span class="php-keyword1">array</span>( kOFFSET_LID =&gt; <span class="php-keyword2">substr</span>( kOFFSET_GID, <span class="php-num">1</span> ),
+</span><span id="2527" class="l"><a class="l" href="#2527">2527: </a>                   kOFFSET_GID =&gt; kOFFSET_GID,
+</span><span id="2528" class="l"><a class="l" href="#2528">2528: </a>                   kOFFSET_TYPE =&gt; <span class="php-keyword1">array</span>( kTYPE_STRING, kTYPE_CARD_REQUIRED ),
+</span><span id="2529" class="l"><a class="l" href="#2529">2529: </a>            <span class="php-keyword1">array</span>( kOFFSET_LID =&gt; <span class="php-keyword2">substr</span>( kOFFSET_CLASS, <span class="php-num">1</span> ) ),
+</span><span id="2530" class="l"><a class="l" href="#2530">2530: </a>                   kOFFSET_GID =&gt; kOFFSET_CLASS,
+</span><span id="2531" class="l"><a class="l" href="#2531">2531: </a>                   kOFFSET_TYPE =&gt; <span class="php-keyword1">array</span>( kTYPE_STRING, kTYPE_CARD_REQUIRED ) ),
+</span><span id="2532" class="l"><a class="l" href="#2532">2532: </a>            <span class="php-keyword1">array</span>( kOFFSET_LID =&gt; <span class="php-keyword2">substr</span>( kOFFSET_LABEL, <span class="php-num">1</span> ),
+</span><span id="2533" class="l"><a class="l" href="#2533">2533: </a>                   kOFFSET_GID =&gt; kOFFSET_LABEL,
+</span><span id="2534" class="l"><a class="l" href="#2534">2534: </a>                   kOFFSET_TYPE =&gt; <span class="php-keyword1">array</span>( kTYPE_STRUCT, kTYPE_CARD_ARRAY ) ),
+</span><span id="2535" class="l"><a class="l" href="#2535">2535: </a>            <span class="php-keyword1">array</span>( kOFFSET_LID =&gt; <span class="php-keyword2">substr</span>( kOFFSET_DESCRIPTION, <span class="php-num">1</span> ),
+</span><span id="2536" class="l"><a class="l" href="#2536">2536: </a>                   kOFFSET_GID =&gt; kOFFSET_DESCRIPTION,
+</span><span id="2537" class="l"><a class="l" href="#2537">2537: </a>                   kOFFSET_TYPE =&gt; <span class="php-keyword1">array</span>( kTYPE_STRUCT, kTYPE_CARD_ARRAY ),
+</span><span id="2538" class="l"><a class="l" href="#2538">2538: </a>            <span class="php-keyword1">array</span>( kOFFSET_LID =&gt; <span class="php-keyword2">substr</span>( kOFFSET_NAMESPACE, <span class="php-num">1</span> ) ),
+</span><span id="2539" class="l"><a class="l" href="#2539">2539: </a>                   kOFFSET_GID =&gt; kOFFSET_NAMESPACE,
+</span><span id="2540" class="l"><a class="l" href="#2540">2540: </a>                   kOFFSET_TYPE =&gt; kTYPE_BINARY,
+</span><span id="2541" class="l"><a class="l" href="#2541">2541: </a>            <span class="php-keyword1">array</span>( kOFFSET_LID =&gt; <span class="php-keyword2">substr</span>( kOFFSET_SYNONYMS, <span class="php-num">1</span> ) ),
+</span><span id="2542" class="l"><a class="l" href="#2542">2542: </a>                   kOFFSET_GID =&gt; kOFFSET_SYNONYMS,
+</span><span id="2543" class="l"><a class="l" href="#2543">2543: </a>                   kOFFSET_TYPE =&gt; <span class="php-keyword1">array</span>( kTYPE_STRING, kTYPE_CARD_ARRAY ),
+</span><span id="2544" class="l"><a class="l" href="#2544">2544: </a>            <span class="php-keyword1">array</span>( kOFFSET_LID =&gt; <span class="php-keyword2">substr</span>( kOFFSET_TERM, <span class="php-num">1</span> ) ),
+</span><span id="2545" class="l"><a class="l" href="#2545">2545: </a>                   kOFFSET_GID =&gt; kOFFSET_TERM,
+</span><span id="2546" class="l"><a class="l" href="#2546">2546: </a>                   kOFFSET_TYPE =&gt; kTYPE_BINARY,
+</span><span id="2547" class="l"><a class="l" href="#2547">2547: </a>            <span class="php-keyword1">array</span>( kOFFSET_LID =&gt; <span class="php-keyword2">substr</span>( kOFFSET_REFS_NAMESPACE, <span class="php-num">1</span> ) ),
+</span><span id="2548" class="l"><a class="l" href="#2548">2548: </a>                   kOFFSET_GID =&gt; kOFFSET_REFS_NAMESPACE,
+</span><span id="2549" class="l"><a class="l" href="#2549">2549: </a>                   kOFFSET_TYPE =&gt; kTYPE_INT64,
+</span><span id="2550" class="l"><a class="l" href="#2550">2550: </a>            <span class="php-keyword1">array</span>( kOFFSET_LID =&gt; <span class="php-keyword2">substr</span>( kOFFSET_REFS_NODE, <span class="php-num">1</span> ) ),
+</span><span id="2551" class="l"><a class="l" href="#2551">2551: </a>                   kOFFSET_GID =&gt; kOFFSET_REFS_NODE,
+</span><span id="2552" class="l"><a class="l" href="#2552">2552: </a>                   kOFFSET_TYPE =&gt; <span class="php-keyword1">array</span>( kTYPE_INT64, kTYPE_CARD_ARRAY ) ),
+</span><span id="2553" class="l"><a class="l" href="#2553">2553: </a>            <span class="php-keyword1">array</span>( kOFFSET_LID =&gt; <span class="php-keyword2">substr</span>( kOFFSET_REFS_TAG, <span class="php-num">1</span> ),
+</span><span id="2554" class="l"><a class="l" href="#2554">2554: </a>                   kOFFSET_GID =&gt; kOFFSET_REFS_TAG,
+</span><span id="2555" class="l"><a class="l" href="#2555">2555: </a>                   kOFFSET_TYPE =&gt; <span class="php-keyword1">array</span>( kTYPE_INT64, kTYPE_CARD_ARRAY ) ) );
+</span><span id="2556" class="l"><a class="l" href="#2556">2556: </a>        
+</span><span id="2557" class="l"><a class="l" href="#2557">2557: </a>        <span class="php-comment">//</span>
+</span><span id="2558" class="l"><a class="l" href="#2558">2558: </a>        <span class="php-comment">// Iterate definitions.</span>
+</span><span id="2559" class="l"><a class="l" href="#2559">2559: </a>        <span class="php-comment">//</span>
+</span><span id="2560" class="l"><a class="l" href="#2560">2560: </a>        <span class="php-keyword1">foreach</span>( <span class="php-var">$terms</span> <span class="php-keyword1">as</span> <span class="php-var">$term</span> )
+</span><span id="2561" class="l"><a class="l" href="#2561">2561: </a>        {
+</span><span id="2562" class="l"><a class="l" href="#2562">2562: </a>            <span class="php-comment">//</span>
+</span><span id="2563" class="l"><a class="l" href="#2563">2563: </a>            <span class="php-comment">// Create term, node and relate.</span>
+</span><span id="2564" class="l"><a class="l" href="#2564">2564: </a>            <span class="php-comment">//</span>
+</span><span id="2565" class="l"><a class="l" href="#2565">2565: </a>            <span class="php-var">$this</span>-&gt;SubclassOf(
+</span><span id="2566" class="l"><a class="l" href="#2566">2566: </a>                <span class="php-var">$node</span>
+</span><span id="2567" class="l"><a class="l" href="#2567">2567: </a>                    = <span class="php-var">$this</span>-&gt;NewScaleNode(
+</span><span id="2568" class="l"><a class="l" href="#2568">2568: </a>                        <span class="php-var">$tmp</span>
+</span><span id="2569" class="l"><a class="l" href="#2569">2569: </a>                            = <span class="php-var">$this</span>-&gt;NewTerm(
+</span><span id="2570" class="l"><a class="l" href="#2570">2570: </a>                                <span class="php-var">$term</span>[ kOFFSET_LID ],   <span class="php-comment">// Local identifier.</span>
+</span><span id="2571" class="l"><a class="l" href="#2571">2571: </a>                                <span class="php-var">$namespace</span> ),           <span class="php-comment">// Namespace.</span>
+</span><span id="2572" class="l"><a class="l" href="#2572">2572: </a>                        <span class="php-var">$term</span>[ kOFFSET_TYPE ],          <span class="php-comment">// Data type.</span>
+</span><span id="2573" class="l"><a class="l" href="#2573">2573: </a>                        <span class="php-keyword1">NULL</span>,                           <span class="php-comment">// Namespace.</span>
+</span><span id="2574" class="l"><a class="l" href="#2574">2574: </a>                        <span class="php-keyword1">NULL</span>,                           <span class="php-comment">// Label.</span>
+</span><span id="2575" class="l"><a class="l" href="#2575">2575: </a>                        <span class="php-keyword1">NULL</span>,                           <span class="php-comment">// Description.</span>
+</span><span id="2576" class="l"><a class="l" href="#2576">2576: </a>                        <span class="php-keyword1">NULL</span>,                           <span class="php-comment">// Language.</span>
+</span><span id="2577" class="l"><a class="l" href="#2577">2577: </a>                        <span class="php-keyword1">TRUE</span> ),                         <span class="php-comment">// New node flag.</span>
+</span><span id="2578" class="l"><a class="l" href="#2578">2578: </a>                <span class="php-var">$root_node</span> );
+</span><span id="2579" class="l"><a class="l" href="#2579">2579: </a>            
+</span><span id="2580" class="l"><a class="l" href="#2580">2580: </a>            <span class="php-comment">//</span>
+</span><span id="2581" class="l"><a class="l" href="#2581">2581: </a>            <span class="php-comment">// Exclude structures.</span>
+</span><span id="2582" class="l"><a class="l" href="#2582">2582: </a>            <span class="php-comment">//</span>
+</span><span id="2583" class="l"><a class="l" href="#2583">2583: </a>            <span class="php-keyword1">if</span>( (<span class="php-var">$tmp</span>[ kOFFSET_GID ] != kOFFSET_LABEL)
+</span><span id="2584" class="l"><a class="l" href="#2584">2584: </a>             &amp;&amp; (<span class="php-var">$tmp</span>[ kOFFSET_GID ] != kOFFSET_DESCRIPTION) )
+</span><span id="2585" class="l"><a class="l" href="#2585">2585: </a>            {
+</span><span id="2586" class="l"><a class="l" href="#2586">2586: </a>                <span class="php-comment">//</span>
+</span><span id="2587" class="l"><a class="l" href="#2587">2587: </a>                <span class="php-comment">// Create tag.</span>
+</span><span id="2588" class="l"><a class="l" href="#2588">2588: </a>                <span class="php-comment">// Note that you must set the identifier AFTER instantiating the tag.</span>
+</span><span id="2589" class="l"><a class="l" href="#2589">2589: </a>                <span class="php-comment">//</span>
+</span><span id="2590" class="l"><a class="l" href="#2590">2590: </a>                <span class="php-var">$tag</span> = <span class="php-keyword1">NULL</span>;
+</span><span id="2591" class="l"><a class="l" href="#2591">2591: </a>                <span class="php-var">$this</span>-&gt;AddToTag( <span class="php-var">$tag</span>, <span class="php-var">$node</span> );
+</span><span id="2592" class="l"><a class="l" href="#2592">2592: </a>                <span class="php-var">$tag</span>[ kOFFSET_NID ] = <span class="php-var">$term</span>[ kOFFSET_GID ];
+</span><span id="2593" class="l"><a class="l" href="#2593">2593: </a>                <span class="php-var">$this</span>-&gt;AddToTag( <span class="php-var">$tag</span>, <span class="php-keyword1">TRUE</span> );
+</span><span id="2594" class="l"><a class="l" href="#2594">2594: </a>            }
+</span><span id="2595" class="l"><a class="l" href="#2595">2595: </a>            
+</span><span id="2596" class="l"><a class="l" href="#2596">2596: </a>            <span class="php-comment">//</span>
+</span><span id="2597" class="l"><a class="l" href="#2597">2597: </a>            <span class="php-comment">// Save label and description nodes.</span>
+</span><span id="2598" class="l"><a class="l" href="#2598">2598: </a>            <span class="php-comment">//</span>
+</span><span id="2599" class="l"><a class="l" href="#2599">2599: </a>            <span class="php-keyword1">else</span>
+</span><span id="2600" class="l"><a class="l" href="#2600">2600: </a>            {
+</span><span id="2601" class="l"><a class="l" href="#2601">2601: </a>                <span class="php-comment">//</span>
+</span><span id="2602" class="l"><a class="l" href="#2602">2602: </a>                <span class="php-comment">// Load term data.</span>
+</span><span id="2603" class="l"><a class="l" href="#2603">2603: </a>                <span class="php-comment">//</span>
+</span><span id="2604" class="l"><a class="l" href="#2604">2604: </a>                <span class="php-var">$list</span> = <span class="php-keyword1">array</span>(
+</span><span id="2605" class="l"><a class="l" href="#2605">2605: </a>                    <span class="php-keyword1">array</span>( kOFFSET_LID =&gt; <span class="php-keyword2">substr</span>( kOFFSET_LANGUAGE, <span class="php-num">1</span> ),
+</span><span id="2606" class="l"><a class="l" href="#2606">2606: </a>                           kOFFSET_GID =&gt; kOFFSET_LANGUAGE,
+</span><span id="2607" class="l"><a class="l" href="#2607">2607: </a>                           kOFFSET_TYPE =&gt; kTYPE_STRING ),
+</span><span id="2608" class="l"><a class="l" href="#2608">2608: </a>                    <span class="php-keyword1">array</span>( kOFFSET_LID =&gt; <span class="php-keyword2">substr</span>( kOFFSET_DATA, <span class="php-num">1</span> ),
+</span><span id="2609" class="l"><a class="l" href="#2609">2609: </a>                           kOFFSET_GID =&gt; kOFFSET_DATA,
+</span><span id="2610" class="l"><a class="l" href="#2610">2610: </a>                           kOFFSET_TYPE =&gt; <span class="php-keyword1">array</span>( kTYPE_STRING, kTYPE_CARD_REQUIRED ) ) );
+</span><span id="2611" class="l"><a class="l" href="#2611">2611: </a>                
+</span><span id="2612" class="l"><a class="l" href="#2612">2612: </a>                <span class="php-comment">//</span>
+</span><span id="2613" class="l"><a class="l" href="#2613">2613: </a>                <span class="php-comment">// Create structure elements.</span>
+</span><span id="2614" class="l"><a class="l" href="#2614">2614: </a>                <span class="php-comment">//</span>
+</span><span id="2615" class="l"><a class="l" href="#2615">2615: </a>                <span class="php-keyword1">foreach</span>( <span class="php-var">$list</span> <span class="php-keyword1">as</span> <span class="php-var">$item</span> )
+</span><span id="2616" class="l"><a class="l" href="#2616">2616: </a>                {
+</span><span id="2617" class="l"><a class="l" href="#2617">2617: </a>                    <span class="php-comment">//</span>
+</span><span id="2618" class="l"><a class="l" href="#2618">2618: </a>                    <span class="php-comment">// Create term, node and relate.</span>
+</span><span id="2619" class="l"><a class="l" href="#2619">2619: </a>                    <span class="php-comment">//</span>
+</span><span id="2620" class="l"><a class="l" href="#2620">2620: </a>                    <span class="php-var">$this</span>-&gt;SubclassOf(
+</span><span id="2621" class="l"><a class="l" href="#2621">2621: </a>                        <span class="php-var">$child</span>
+</span><span id="2622" class="l"><a class="l" href="#2622">2622: </a>                            = <span class="php-var">$this</span>-&gt;NewScaleNode(
+</span><span id="2623" class="l"><a class="l" href="#2623">2623: </a>                                <span class="php-var">$this</span>-&gt;NewTerm(
+</span><span id="2624" class="l"><a class="l" href="#2624">2624: </a>                                    <span class="php-var">$item</span>[ kOFFSET_LID ],   <span class="php-comment">// Local identifier.</span>
+</span><span id="2625" class="l"><a class="l" href="#2625">2625: </a>                                    <span class="php-var">$namespace</span> ),           <span class="php-comment">// Namespace.</span>
+</span><span id="2626" class="l"><a class="l" href="#2626">2626: </a>                                <span class="php-var">$item</span>[ kOFFSET_TYPE ],      <span class="php-comment">// Data type.</span>
+</span><span id="2627" class="l"><a class="l" href="#2627">2627: </a>                                <span class="php-keyword1">NULL</span>,                       <span class="php-comment">// Namespace.</span>
+</span><span id="2628" class="l"><a class="l" href="#2628">2628: </a>                                <span class="php-keyword1">NULL</span>,                       <span class="php-comment">// Label.</span>
+</span><span id="2629" class="l"><a class="l" href="#2629">2629: </a>                                <span class="php-keyword1">NULL</span>,                       <span class="php-comment">// Description.</span>
+</span><span id="2630" class="l"><a class="l" href="#2630">2630: </a>                                <span class="php-keyword1">NULL</span>,                       <span class="php-comment">// Language.</span>
+</span><span id="2631" class="l"><a class="l" href="#2631">2631: </a>                                <span class="php-keyword1">TRUE</span> ),                     <span class="php-comment">// New node flag.</span>
+</span><span id="2632" class="l"><a class="l" href="#2632">2632: </a>                        <span class="php-var">$node</span> );
+</span><span id="2633" class="l"><a class="l" href="#2633">2633: </a>                        
+</span><span id="2634" class="l"><a class="l" href="#2634">2634: </a>                    <span class="php-comment">//</span>
+</span><span id="2635" class="l"><a class="l" href="#2635">2635: </a>                    <span class="php-comment">// Create tag.</span>
+</span><span id="2636" class="l"><a class="l" href="#2636">2636: </a>                    <span class="php-comment">// Note that you must set the identifier AFTER instantiating the tag.</span>
+</span><span id="2637" class="l"><a class="l" href="#2637">2637: </a>                    <span class="php-comment">//</span>
+</span><span id="2638" class="l"><a class="l" href="#2638">2638: </a>                    <span class="php-var">$tag</span> = <span class="php-keyword1">NULL</span>;
+</span><span id="2639" class="l"><a class="l" href="#2639">2639: </a>                    <span class="php-var">$this</span>-&gt;AddToTag( <span class="php-var">$tag</span>, <span class="php-var">$child</span> );
+</span><span id="2640" class="l"><a class="l" href="#2640">2640: </a>                    <span class="php-var">$tag</span>[ kOFFSET_NID ] = <span class="php-var">$item</span>[ kOFFSET_GID ];
+</span><span id="2641" class="l"><a class="l" href="#2641">2641: </a>                    <span class="php-var">$this</span>-&gt;AddToTag( <span class="php-var">$tag</span>, <span class="php-keyword1">TRUE</span> );
+</span><span id="2642" class="l"><a class="l" href="#2642">2642: </a>                }
+</span><span id="2643" class="l"><a class="l" href="#2643">2643: </a>            
+</span><span id="2644" class="l"><a class="l" href="#2644">2644: </a>            } <span class="php-comment">// Handle structures.</span>
+</span><span id="2645" class="l"><a class="l" href="#2645">2645: </a>        }
+</span><span id="2646" class="l"><a class="l" href="#2646">2646: </a>
+</span><span id="2647" class="l"><a class="l" href="#2647">2647: </a>    } <span class="php-comment">// _LoadTermDataDictionary.</span>
+</span><span id="2648" class="l"><a class="l" href="#2648">2648: </a>
+</span><span id="2649" class="l"><a class="l" href="#2649">2649: </a>     
+</span><span id="2650" class="l"><a class="l" href="#2650">2650: </a>
+</span><span id="2651" class="l"><a class="l" href="#2651">2651: </a>} <span class="php-comment">// class COntology.</span>
+</span><span id="2652" class="l"><a class="l" href="#2652">2652: </a>
+</span><span id="2653" class="l"><a class="l" href="#2653">2653: </a>
+</span><span id="2654" class="l"><a class="l" href="#2654">2654: </a><span class="xlang">?&gt;</span>
+</span><span id="2655" class="l"><a class="l" href="#2655">2655: </a></span></code></pre>
 
 	<div id="footer">
 		MyWrapper Reference Documentation API documentation generated by <a href="http://apigen.org">ApiGen 2.8.0</a>

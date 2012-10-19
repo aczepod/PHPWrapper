@@ -279,7 +279,7 @@ require_once( 'ISOOntologies.inc.php' );
 				   'label' => "Status",
 				   'descr' => "Type of individual language." ),
 			array( 'code' => kONTOLOGY_ISO_639_3_INVNAME,
-				   'type' => kTYPE_CODED_LIST,
+				   'type' => kTYPE_STRUCT,
 				   'label' => "Inverted name",
 				   'descr' => "An \"inverted\" name is one that is altered from the usual English-language order by moving adjectival qualifiers to the end, after the main language name and separated by a comma." ) );
 		

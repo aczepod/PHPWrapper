@@ -2227,9 +2227,9 @@ class COntology extends CConnection
 			array( kOFFSET_LID => substr( kTYPE_STAMP, 1 ),
 				   kOFFSET_LABEL => "Time-stamp",
 				   kOFFSET_DESCRIPTION => "This data type should be used for native time-stamps." ),
-			array( kOFFSET_LID => substr( kTYPE_CODED_LIST, 1 ),
-				   kOFFSET_LABEL => "Coded list",
-				   kOFFSET_DESCRIPTION => "This data type refers to a list of elements containing two items: a code an the data. No two elements mat share the same code and only one element may omit the code." ),
+			array( kOFFSET_LID => substr( kTYPE_STRUCT, 1 ),
+				   kOFFSET_LABEL => "Structure",
+				   kOFFSET_DESCRIPTION => "This data type refers to a structure, it implies that the offset to which it refers to is a container of other offsets that will hold the actual data." ),
 			array( kOFFSET_LID => substr( kOFFSET_LANGUAGE, 1 ),
 				   kOFFSET_LABEL => "Language code",
 				   kOFFSET_DESCRIPTION => "This tag is used as a sub-offset of the coded list type elements, it is expected to contain a language character code identifying the language in which the coded list instance element is expressed in." ),
@@ -2496,33 +2496,63 @@ class COntology extends CConnection
 	protected function _LoadTermDataDictionary()
 	{
 		//
+		// Load namespace term.
+		//
+		$namespace = $this->NewTerm( '', NULL );
+		if( ! $namespace->_IsCommitted() )
+			throw new Exception
+				( "Unable to initialise terms: default namespace not found",
+				  kERROR_NOT_FOUND );											// !@! ==>
+		
+		//
 		// Load data dictionary root term.
 		//
 		$root_node
 			= $this->ResolveNode(
 				$this->ResolveTerm(
 					kDDICT_TERM, NULL, TRUE ),
-				TRUE );
-echo( '<pre>' );
-print_r( $root_node );
-exit( '</pre>' );
-		
+				TRUE )[ 0 ];
+
 		//
 		// Load  definitions.
 		//
 		$terms = array(
-			array( kOFFSET_LID => substr( kDDICT_TERM, 1 ),
-				   kOFFSET_LABEL => "Ontology term",
-				   kOFFSET_DESCRIPTION => "This tag identifies the root data dictionary node of the terms object data structure, it describes the default elements comprising the term objects in this library." ),
-			array( kOFFSET_LID => substr( kDDICT_NODE, 1 ),
-				   kOFFSET_LABEL => "Ontology node",
-				   kOFFSET_DESCRIPTION => "This tag identifies the root data dictionary node of the nodes object data structure, it describes the default elements comprising the node objects in this library." ),
-			array( kOFFSET_LID => substr( kDDICT_EDGE, 1 ),
-				   kOFFSET_LABEL => "Ontology edge",
-				   kOFFSET_DESCRIPTION => "This tag identifies the root data dictionary node of the edges object data structure, it describes the default elements comprising the edge objects in this library." ),
-			array( kOFFSET_LID => substr( kDDICT_TAG, 1 ),
-				   kOFFSET_LABEL => "Ontology tag",
-				   kOFFSET_DESCRIPTION => "This tag identifies the root data dictionary node of the tags object data structure, it describes the default elements comprising the tag objects in this library." ) );
+			array( kOFFSET_LID => substr( kOFFSET_NID, 1 ),
+				   kOFFSET_GID => kOFFSET_NID,
+				   kOFFSET_TYPE => array( kTYPE_BINARY, kTYPE_CARD_REQUIRED ) ),
+			array( kOFFSET_LID => substr( kOFFSET_LID, 1 ),
+				   kOFFSET_GID => kOFFSET_LID,
+				   kOFFSET_TYPE => array( kTYPE_STRING, kTYPE_CARD_REQUIRED ) ),
+			array( kOFFSET_LID => substr( kOFFSET_GID, 1 ),
+				   kOFFSET_GID => kOFFSET_GID,
+				   kOFFSET_TYPE => array( kTYPE_STRING, kTYPE_CARD_REQUIRED ),
+			array( kOFFSET_LID => substr( kOFFSET_CLASS, 1 ) ),
+				   kOFFSET_GID => kOFFSET_CLASS,
+				   kOFFSET_TYPE => array( kTYPE_STRING, kTYPE_CARD_REQUIRED ) ),
+			array( kOFFSET_LID => substr( kOFFSET_LABEL, 1 ),
+				   kOFFSET_GID => kOFFSET_LABEL,
+				   kOFFSET_TYPE => array( kTYPE_STRUCT, kTYPE_CARD_ARRAY ) ),
+			array( kOFFSET_LID => substr( kOFFSET_DESCRIPTION, 1 ),
+				   kOFFSET_GID => kOFFSET_DESCRIPTION,
+				   kOFFSET_TYPE => array( kTYPE_STRUCT, kTYPE_CARD_ARRAY ),
+			array( kOFFSET_LID => substr( kOFFSET_NAMESPACE, 1 ) ),
+				   kOFFSET_GID => kOFFSET_NAMESPACE,
+				   kOFFSET_TYPE => kTYPE_BINARY,
+			array( kOFFSET_LID => substr( kOFFSET_SYNONYMS, 1 ) ),
+				   kOFFSET_GID => kOFFSET_SYNONYMS,
+				   kOFFSET_TYPE => array( kTYPE_STRING, kTYPE_CARD_ARRAY ),
+			array( kOFFSET_LID => substr( kOFFSET_TERM, 1 ) ),
+				   kOFFSET_GID => kOFFSET_TERM,
+				   kOFFSET_TYPE => kTYPE_BINARY,
+			array( kOFFSET_LID => substr( kOFFSET_REFS_NAMESPACE, 1 ) ),
+				   kOFFSET_GID => kOFFSET_REFS_NAMESPACE,
+				   kOFFSET_TYPE => kTYPE_INT64,
+			array( kOFFSET_LID => substr( kOFFSET_REFS_NODE, 1 ) ),
+				   kOFFSET_GID => kOFFSET_REFS_NODE,
+				   kOFFSET_TYPE => array( kTYPE_INT64, kTYPE_CARD_ARRAY ) ),
+			array( kOFFSET_LID => substr( kOFFSET_REFS_TAG, 1 ),
+				   kOFFSET_GID => kOFFSET_REFS_TAG,
+				   kOFFSET_TYPE => array( kTYPE_INT64, kTYPE_CARD_ARRAY ) ) );
 		
 		//
 		// Iterate definitions.
@@ -2530,16 +2560,88 @@ exit( '</pre>' );
 		foreach( $terms as $term )
 		{
 			//
-			// Create term and node.
+			// Create term, node and relate.
 			//
-			$this->NewNode(
-				$this->NewTerm(
-						$term[ kOFFSET_LID ],					// Local identifier.
-						$namespace,								// Namespace.
-						$term[ kOFFSET_LID ],					// Label.
-						$term[ kOFFSET_DESCRIPTION ],			// Description.
-						kDEFAULT_LANGUAGE ),					// Language.
-				array( kKIND_NODE_ROOT, kKIND_NODE_DDICT ) );	// Node kind.
+			$this->SubclassOf(
+				$node
+					= $this->NewScaleNode(
+						$tmp
+							= $this->NewTerm(
+								$term[ kOFFSET_LID ],	// Local identifier.
+								$namespace ),			// Namespace.
+						$term[ kOFFSET_TYPE ],			// Data type.
+						NULL,							// Namespace.
+						NULL,							// Label.
+						NULL,							// Description.
+						NULL,							// Language.
+						TRUE ),							// New node flag.
+				$root_node );
+			
+			//
+			// Exclude structures.
+			//
+			if( ($tmp[ kOFFSET_GID ] != kOFFSET_LABEL)
+			 && ($tmp[ kOFFSET_GID ] != kOFFSET_DESCRIPTION) )
+			{
+				//
+				// Create tag.
+				// Note that you must set the identifier AFTER instantiating the tag.
+				//
+				$tag = NULL;
+				$this->AddToTag( $tag, $node );
+				$tag[ kOFFSET_NID ] = $term[ kOFFSET_GID ];
+				$this->AddToTag( $tag, TRUE );
+			}
+			
+			//
+			// Save label and description nodes.
+			//
+			else
+			{
+				//
+				// Load term data.
+				//
+				$list = array(
+					array( kOFFSET_LID => substr( kOFFSET_LANGUAGE, 1 ),
+						   kOFFSET_GID => kOFFSET_LANGUAGE,
+						   kOFFSET_TYPE => kTYPE_STRING ),
+					array( kOFFSET_LID => substr( kOFFSET_DATA, 1 ),
+						   kOFFSET_GID => kOFFSET_DATA,
+						   kOFFSET_TYPE => array( kTYPE_STRING, kTYPE_CARD_REQUIRED ) ) );
+				
+				//
+				// Create structure elements.
+				//
+				foreach( $list as $item )
+				{
+					//
+					// Create term, node and relate.
+					//
+					$this->SubclassOf(
+						$child
+							= $this->NewScaleNode(
+								$this->NewTerm(
+									$item[ kOFFSET_LID ],	// Local identifier.
+									$namespace ),			// Namespace.
+								$item[ kOFFSET_TYPE ],		// Data type.
+								NULL,						// Namespace.
+								NULL,						// Label.
+								NULL,						// Description.
+								NULL,						// Language.
+								TRUE ),						// New node flag.
+						$node );
+						
+					//
+					// Create tag.
+					// Note that you must set the identifier AFTER instantiating the tag.
+					//
+					$tag = NULL;
+					$this->AddToTag( $tag, $child );
+					$tag[ kOFFSET_NID ] = $item[ kOFFSET_GID ];
+					$this->AddToTag( $tag, TRUE );
+				}
+			
+			} // Handle structures.
 		}
 
 	} // _LoadTermDataDictionary.

@@ -404,9 +404,9 @@ require_once( 'DefaultOntologies.inc.php' );
 			array( 'code' => substr( kTYPE_STAMP, 1 ),
 				   'label' => "Time-stamp",
 				   'descr' => "This data type should be used for native time-stamps." ),
-			array( 'code' => substr( kTYPE_CODED_LIST, 1 ),
-				   'label' => "Coded list",
-				   'descr' => "This data type refers to a list of elements containing two items: a code an the data. No two elements mat share the same code and only one element may omit the code." ) );
+			array( 'code' => substr( kTYPE_STRUCT, 1 ),
+				   'label' => "Structure",
+				   'descr' => "This data type refers to a structure, it implies that the offset to which it refers to is a container of other offsets that will hold the actual data." ) );
 		
 		//
 		// Load data.
