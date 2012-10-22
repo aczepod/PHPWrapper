@@ -2,35 +2,25 @@
 
 /*=======================================================================================
  *																						*
- *									Attributes.inc.php									*
+ *										Tags.inc.php									*
  *																						*
  *======================================================================================*/
  
 /**
- *	Attributes.
+ *	Tags.
  *
- *	This file contains common attribute terms used by all elements of the ontology.
+ *	This file contains default attribute tags used by the elements of the ontology.
  *
  *	@package	MyWrapper
  *	@subpackage	Definitions
  *
  *	@author		Milko A. Škofič <m.skofic@cgiar.org>
- *	@version	1.00 15/10/2012
+ *	@version	1.00 22/10/2012
  */
 
 /*=======================================================================================
  *	IDENTIFICATION ATTRIBUTES															*
  *======================================================================================*/
-
-/**
- * Native unique identifier.
- *
- * This tag identifies the attribute that contains the native unique identifier.
- * This value is a full or hashed representation of the object's global unique identifier
- * ({@link kOFFSET_GID}) optimised specifically for the container in which the object will
- * be stored.
- */
-define( "kOFFSET_NID",							'_id' );
 
 /**
  * Local unique identifier.
@@ -40,7 +30,7 @@ define( "kOFFSET_NID",							'_id' );
  * domain or namespace. It is by default a string constituting a portion of the global
  * unique identifier, {@link kOFFSET_GID}.
  */
-define( "kOFFSET_LID",							':LID' );
+define( "kTAG_LID",								'1' );
 
 /**
  * Global unique identifier.
@@ -49,7 +39,7 @@ define( "kOFFSET_LID",							':LID' );
  * This value will constitute the object's native key ({@link kOFFSET_NID}) in full or
  * hashed format.
  */
-define( "kOFFSET_GID",							':GID' );
+define( "kTAG_GID",								'2' );
 
 /**
  * Unique identifier.
@@ -58,7 +48,7 @@ define( "kOFFSET_GID",							':GID' );
  * {@link kOFFSET_NID} is not related to the {@link kOFFSET_GID}. This is generally used
  * when the {@link kOFFSET_NID} is a sequence number.
  */
-define( "kOFFSET_UID",							':UID' );
+define( "kTAG_UID",								'22' );
 
 /*=======================================================================================
  *	QUALIFICATION ATTRIBUTES															*
@@ -70,7 +60,7 @@ define( "kOFFSET_UID",							':UID' );
  * This tag identifies the class name of the object, it can be used to instantiate a class
  * rather than return an array when querying containers.
  */
-define( "kOFFSET_CLASS",						':CLS' );
+define( "kTAG_CLASS",							'3' );
 
 /**
  * Object kind.
@@ -79,7 +69,7 @@ define( "kOFFSET_CLASS",						':CLS' );
  * define the kind or specific type of an object, these enumerations will be in the form of
  * native unique identifiers, {@link kOFFSET_NID}, of the terms that define the enumeration.
  */
-define( "kOFFSET_KIND",							':KIND' );
+define( "kTAG_KIND",							'16' );
 
 /**
  * Object data type.
@@ -88,27 +78,7 @@ define( "kOFFSET_KIND",							':KIND' );
  * the specific data type of an object, this value will be in the form of the native unique
  * identifier, {@link kOFFSET_NID}, of the term that defines the enumeration.
  */
-define( "kOFFSET_TYPE",							':TYPE' );
-
-/*=======================================================================================
- *	GENERIC ATTRIBUTES																	*
- *======================================================================================*/
-
-/**
- * Label.
- *
- * This tag is used as the offset for the term's label, this attribute represents the term
- * name or short description.
- */
-define( "kOFFSET_LABEL",						':LABEL' );
-
-/**
- * Description.
- *
- * This tag is used as the offset for the term's description, this attribute represents the
- * term description or definition.
- */
-define( "kOFFSET_DESCRIPTION",					':DESCR' );
+define( "kTAG_TYPE",							'17' );
 
 /*=======================================================================================
  *	ONTOLOGY ATTRIBUTES																	*
@@ -121,7 +91,7 @@ define( "kOFFSET_DESCRIPTION",					':DESCR' );
  * native unique identifier, {@link kOFFSET_NID}, of the namespace object; if you want to
  * refer to the namespace code, this is not the offset to use.
  */
-define( "kOFFSET_NAMESPACE",					':NS' );
+define( "kTAG_NAMESPACE",						'10' );
 
 /**
  * Term.
@@ -129,7 +99,7 @@ define( "kOFFSET_NAMESPACE",					':NS' );
  * This tag identifies a reference to a term object, its value will be the native unique
  * identifier, {@link kOFFSET_NID}, of the referenced term.
  */
-define( "kOFFSET_TERM",							':TERM' );
+define( "kTAG_TERM",							'12' );
 
 /**
  * Subject reference.
@@ -137,7 +107,7 @@ define( "kOFFSET_TERM",							':TERM' );
  * This tag identifies the reference to the subject vertex of a subject/predicate/object
  * triplet in a graph.
  */
-define( "kOFFSET_VERTEX_SUBJECT",				':SUBJECT' );
+define( "kTAG_VERTEX_SUBJECT",					'19' );
 
 /**
  * Object reference.
@@ -145,7 +115,7 @@ define( "kOFFSET_VERTEX_SUBJECT",				':SUBJECT' );
  * This tag identifies the reference to the object vertex of a subject/predicate/object
  * triplet in a graph.
  */
-define( "kOFFSET_VERTEX_OBJECT",				':OBJECT' );
+define( "kTAG_VERTEX_OBJECT",					'21' );
 
 /**
  * Predicate reference.
@@ -153,7 +123,7 @@ define( "kOFFSET_VERTEX_OBJECT",				':OBJECT' );
  * This tag identifies the reference to the predicate object of a subject/predicate/object
  * triplet in a graph.
  */
-define( "kOFFSET_PREDICATE",					':PREDICATE' );
+define( "kTAG_PREDICATE",						'20' );
 
 /**
  * Synonyms.
@@ -161,7 +131,7 @@ define( "kOFFSET_PREDICATE",					':PREDICATE' );
  * This tag identifies the synonyms offset, this attribute is a list of strings that
  * represent alternate codes or names that identify the specific term.
  */
-define( "kOFFSET_SYNONYMS",						':SYN' );
+define( "kTAG_SYNONYMS",						'11' );
 
 /**
  * Vertex terms.
@@ -169,14 +139,14 @@ define( "kOFFSET_SYNONYMS",						':SYN' );
  * This tag identifies the offset that will contain the list of identifiers of the terms
  * referenced by the tag path's vertex elements.
  */
-define( "kOFFSET_VERTEX_TERMS",					':VERTEX-TERMS' );
+define( "kTAG_VERTEX_TERMS",					'24' );
 
 /**
  * Tag path.
  *
  * This tag identifies a list of items constituting the path or sequence of a tag.
  */
-define( "kOFFSET_TAG_PATH",						':TAG-PATH' );
+define( "kTAG_TAG_PATH",						'23' );
 
 /**
  * Namespace references.
@@ -184,7 +154,7 @@ define( "kOFFSET_TAG_PATH",						':TAG-PATH' );
  * This tag identifies namespace references, the attribute contains the count of how many
  * times the term was referenced as a namespace.
  */
-define( "kOFFSET_REFS_NAMESPACE",				':REF-NS' );
+define( "kTAG_REFS_NAMESPACE",					'13' );
 
 /**
  * Node references.
@@ -192,7 +162,7 @@ define( "kOFFSET_REFS_NAMESPACE",				':REF-NS' );
  * This tag identifies node references, the attribute contains the list of identifiers of
  * nodes that reference the current object.
  */
-define( "kOFFSET_REFS_NODE",					':REF-NODE' );
+define( "kTAG_REFS_NODE",						'14' );
 
 /**
  * Tag references.
@@ -200,7 +170,7 @@ define( "kOFFSET_REFS_NODE",					':REF-NODE' );
  * This tag identifies tag references, the attribute contains the list of identifiers of
  * tags that reference the current term.
  */
-define( "kOFFSET_REFS_TAG",						':REF-TAG' );
+define( "kTAG_REFS_TAG",						'15' );
 
 /**
  * Edge references.
@@ -208,27 +178,57 @@ define( "kOFFSET_REFS_TAG",						':REF-TAG' );
  * This tag identifies edge references, the attribute contains the list of identifiers of
  * edges that reference the current node.
  */
-define( "kOFFSET_REFS_EDGE",					':REF-EDGE' );
+define( "kTAG_REFS_EDGE",						'18' );
 
 /*=======================================================================================
- *	STRUCTURED DATA TYPE OFFSETS														*
+ *	STRUCTURED ATTRIBUTES																*
  *======================================================================================*/
 
 /**
- * Language code.
+ * Label.
  *
- * This tag is used as a sub-offset of a {@link kTYPE_STRUCT} type element, it
- * is expected to contain a language character code identifying the language in which the
- * {@link kTYPE_STRUCT} instance element is expressed in.
+ * This tag is used as the offset for the term's label, this attribute represents the term
+ * name or short description structure.
  */
-define( "kOFFSET_LANGUAGE",					':LANGUAGE' );			// Language code
+define( "kTAG_LABEL",							'4' );
 
 /**
- * Data.
+ * Label language code.
  *
- * This tag is used in structured data types as the sub-offset of the item holding the data.
+ * This tag is used as a sub-offset of {@link kTAG_LABEL} element, it represents the
+ * language code of the {@link kTAG_LABEL_DATA} string element.
  */
-define( "kOFFSET_DATA",						':DATA' );				// Data.
+define( "kTAG_LABEL_LANGUAGE",					'5' );
+
+/**
+ * Label data.
+ *
+ * This tag represents the string item in the {@link kTAG_LABEL} elements.
+ */
+define( "kTAG_LABEL_DATA",						'6' );
+
+/**
+ * Description.
+ *
+ * This tag is used as the offset for the term's description, this attribute represents the
+ * term description or definition structure.
+ */
+define( "kTAG_DESCRIPTION",						'7' );
+
+/**
+ * Description language code.
+ *
+ * This tag is used as a sub-offset of {@link kTAG_DESCRIPTION} element, it represents the
+ * language code of the {@link kTAG_DESCRIPTION_DATA} string element.
+ */
+define( "kTAG_DESCRIPTION_LANGUAGE",			'8' );
+
+/**
+ * Description data.
+ *
+ * This tag represents the string item in the {@link kTAG_DESCRIPTION} elements.
+ */
+define( "kTAG_DESCRIPTION_DATA",				'9' );
 
 
 ?>

@@ -656,6 +656,7 @@ class COntologyTag extends CTag
 	 * @param CConnection			$theConnection		Server, database or container.
 	 * @param mixed					$theIdentifier		Node identifier or term reference.
 	 * @param boolean				$doThrow			If <tt>TRUE</tt> raise an exception.
+	 * @param boolean				$doTerm				If <tt>TRUE</tt> revert to term ref.
 	 *
 	 * @static
 	 * @return COntologyTerm		Found tag or <tt>NULL</tt>.

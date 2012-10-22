@@ -352,7 +352,7 @@ class COntologyNode extends CNode
 	 * @access public
 	 * @return array				Edge reference list.
 	 *
-	 * @see kOFFSET_REFS_TAG
+	 * @see kOFFSET_REFS_EDGE
 	 */
 	public function EdgeRefs()
 	{

@@ -259,6 +259,11 @@ class COntology extends CConnection
 			$this->_InitDefaultAttributeTerms();
 			
 			//
+			// Create default predicate instances.
+			//
+			$this->_InitDefaultPredicates();
+			
+			//
 			// Create default data dictionaries.
 			//
 			$this->_InitDefaultDataDictionaries();
@@ -267,6 +272,9 @@ class COntology extends CConnection
 			// Load default data dictionaries.
 			//
 			$this->_LoadTermDataDictionary();
+			$this->_LoadNodeDataDictionary();
+			$this->_LoadEdgeDataDictionary();
+			$this->_LoadTagDataDictionary();
 			
 			return;																	// ==>
 		
@@ -2184,11 +2192,7 @@ class COntology extends CConnection
 		//
 		// Load namespace term.
 		//
-		$ns = $this->NewTerm( '', NULL );
-		if( ! $ns->_IsCommitted() )
-			throw new Exception
-				( "Unable to initialise terms: default namespace not found",
-				  kERROR_NOT_FOUND );											// !@! ==>
+		$ns = $this->ResolveTerm( '', NULL, TRUE );
 		
 		//
 		// Load term definitions.
@@ -2209,9 +2213,6 @@ class COntology extends CConnection
 			array( kOFFSET_LID => substr( kTYPE_BOOLEAN, 1 ),
 				   kOFFSET_LABEL => "Boolean",
 				   kOFFSET_DESCRIPTION => "The primitive boolean data type, it is assumed that it is provided as (y/n; Yes/No; 1/0; TRUE/FALSE) and will be converted to 1/0." ),
-			array( kOFFSET_LID => substr( kTYPE_REF, 1 ),
-				   kOFFSET_LABEL => "Object reference",
-				   kOFFSET_DESCRIPTION => "This value represents the primitive object reference type, this is a logical type, since the actual data type of object native identifiers is not univoque." ),
 			array( kOFFSET_LID => substr( kTYPE_ANY, 1 ),
 				   kOFFSET_LABEL => "Any",
 				   kOFFSET_DESCRIPTION => "This value represents the primitive wildcard type, itqualifies an attribute that can take any kind of value." ),
@@ -2230,12 +2231,6 @@ class COntology extends CConnection
 			array( kOFFSET_LID => substr( kTYPE_STRUCT, 1 ),
 				   kOFFSET_LABEL => "Structure",
 				   kOFFSET_DESCRIPTION => "This data type refers to a structure, it implies that the offset to which it refers to is a container of other offsets that will hold the actual data." ),
-			array( kOFFSET_LID => substr( kOFFSET_LANGUAGE, 1 ),
-				   kOFFSET_LABEL => "Language code",
-				   kOFFSET_DESCRIPTION => "This tag is used as a sub-offset of the coded list type elements, it is expected to contain a language character code identifying the language in which the coded list instance element is expressed in." ),
-			array( kOFFSET_LID => substr( kOFFSET_DATA, 1 ),
-				   kOFFSET_LABEL => "Data",
-				   kOFFSET_DESCRIPTION => "This tag is used in structured data types as the sub-offset of the item holding the data. For instance in coded list structures, this will be the offset holding the actual data." ),
 			array( kOFFSET_LID => substr( kTYPE_ENUM, 1 ),
 				   kOFFSET_LABEL => "Enumerated scalar",
 				   kOFFSET_DESCRIPTION => "This value represents the enumeration data type, it represents an enumeration element or container. Enumerations represent a vocabulary from which one value must be chosen, this particular data type is used in node objects: it indicates that the node refers to a controlled vocabulary scalar data type and that the enumerated set follows in the graph definition." ),
@@ -2329,79 +2324,104 @@ class COntology extends CConnection
 		//
 		// Load namespace term.
 		//
-		$ns = $this->NewTerm( '', NULL );
-		if( ! $ns->_IsCommitted() )
-			throw new Exception
-				( "Unable to initialise terms: default namespace not found",
-				  kERROR_NOT_FOUND );											// !@! ==>
+		$ns = $this->ResolveTerm( '', NULL, TRUE );
 		
 		//
 		// Load term definitions.
 		//
 		$terms = array(
 			array( kOFFSET_LID => substr( kOFFSET_LID, 1 ),
+				   kOFFSET_NAMESPACE => $ns,
 				   kOFFSET_LABEL => "Local unique identifier",
 				   kOFFSET_DESCRIPTION => "This tag identifies the attribute that contains the local or full unique identifier. This value represents the identifier that uniquely identifies an object within a specific domain or namespace. It is by default a string constituting a portion of the global unique identifier." ),
-			array( kOFFSET_LID => substr( kOFFSET_NID, 1 ),
+			array( kOFFSET_LID => kOFFSET_NID,
+				   kOFFSET_NAMESPACE => NULL,
 				   kOFFSET_LABEL => "Native unique identifier",
 				   kOFFSET_DESCRIPTION => "This tag identifies the attribute that contains the native unique identifier. This value is a full or hashed representation of the object's global unique identifier optimised specifically for the container in which the object will be stored." ),
 			array( kOFFSET_LID => substr( kOFFSET_LABEL, 1 ),
+				   kOFFSET_NAMESPACE => $ns,
 				   kOFFSET_LABEL => "Label",
 				   kOFFSET_DESCRIPTION => "This tag is used as the offset for the term's label, this attribute represents the term name or short description." ),
 			array( kOFFSET_LID => substr( kOFFSET_DESCRIPTION, 1 ),
+				   kOFFSET_NAMESPACE => $ns,
 				   kOFFSET_LABEL => "Description",
 				   kOFFSET_DESCRIPTION => "This tag is used as the offset for the term's description, this attribute represents the term description or definition." ),
 			array( kOFFSET_LID => substr( kOFFSET_GID, 1 ),
+				   kOFFSET_NAMESPACE => $ns,
 				   kOFFSET_LABEL => "Global unique identifier",
 				   kOFFSET_DESCRIPTION => "This tag identifies the attribute that contains the global or full unique identifier. This value will constitute the object's native key in full or hashed format." ),
 			array( kOFFSET_LID => substr( kOFFSET_UID, 1 ),
+				   kOFFSET_NAMESPACE => $ns,
 				   kOFFSET_LABEL => "Unique identifier",
 				   kOFFSET_DESCRIPTION => "This tag represents the hashed unique identifier of an object in which its native identifier is not related to the global identifier. This is generally used when the native identifier is a sequence number." ),
 			array( kOFFSET_LID => substr( kOFFSET_CLASS, 1 ),
+				   kOFFSET_NAMESPACE => $ns,
 				   kOFFSET_LABEL => "Class name",
 				   kOFFSET_DESCRIPTION => "This tag identifies the class name of the object, it can be used to instantiate a class rather than using an array when retrieving from containers." ),
 			array( kOFFSET_LID => substr( kOFFSET_KIND, 1 ),
+				   kOFFSET_NAMESPACE => $ns,
 				   kOFFSET_LABEL => "Object kind",
 				   kOFFSET_DESCRIPTION => "This tag identifies the object kind or type, the offset is a set of enumerations that define the kind or specific type of an object, these enumerations will be in the form of native unique identifiers of the terms that define the enumeration." ),
 			array( kOFFSET_LID => substr( kOFFSET_TYPE, 1 ),
+				   kOFFSET_NAMESPACE => $ns,
 				   kOFFSET_LABEL => "Object data type",
 				   kOFFSET_DESCRIPTION => "This tag identifies the object data type, the offset is an enumerated scalar that defines the specific data type of an object, this value will be in the form of the native unique identifier of the term that defines the enumeration." ),
 			array( kOFFSET_LID => substr( kOFFSET_NAMESPACE, 1 ),
+				   kOFFSET_NAMESPACE => $ns,
 				   kOFFSET_LABEL => "Namespace",
 				   kOFFSET_DESCRIPTION => "This tag is used as the offset for a namespace. By default this attribute contains the native unique identifier of the namespace object; if you want to refer to the namespace code, this is not the offset to use." ),
 			array( kOFFSET_LID => substr( kOFFSET_TAG_PATH, 1 ),
+				   kOFFSET_NAMESPACE => $ns,
 				   kOFFSET_LABEL => "Path",
 				   kOFFSET_DESCRIPTION => "This tag identifies a list of items constituting a path or sequence." ),
 			array( kOFFSET_LID => substr( kOFFSET_TERM, 1 ),
+				   kOFFSET_NAMESPACE => $ns,
 				   kOFFSET_LABEL => "Term",
 				   kOFFSET_DESCRIPTION => "This tag identifies a reference to a term object, its value will be the native unique identifier of the referenced term." ),
 			array( kOFFSET_LID => substr( kOFFSET_VERTEX_SUBJECT, 1 ),
+				   kOFFSET_NAMESPACE => $ns,
 				   kOFFSET_LABEL => "Subject vertex",
 				   kOFFSET_DESCRIPTION => "This tag identifies the reference to the subject vertex of a subject/predicate/object triplet in a graph." ),
 			array( kOFFSET_LID => substr( kOFFSET_VERTEX_OBJECT, 1 ),
+				   kOFFSET_NAMESPACE => $ns,
 				   kOFFSET_LABEL => "Object vertex",
 				   kOFFSET_DESCRIPTION => "This tag identifies the reference to the object vertex of a subject/predicate/object triplet in a graph." ),
 			array( kOFFSET_LID => substr( kOFFSET_PREDICATE, 1 ),
+				   kOFFSET_NAMESPACE => $ns,
 				   kOFFSET_LABEL => "Predicate reference",
 				   kOFFSET_DESCRIPTION => "This tag identifies the reference to the predicate object of a subject/predicate/object triplet in a graph." ),
 			array( kOFFSET_LID => substr( kOFFSET_SYNONYMS, 1 ),
+				   kOFFSET_NAMESPACE => $ns,
 				   kOFFSET_LABEL => "Synonyms list",
 				   kOFFSET_DESCRIPTION => "This tag identifies the synonyms offset, this attribute is a list of strings that represent alternate codes or names that identify the specific term." ),
 			array( kOFFSET_LID => substr( kOFFSET_VERTEX_TERMS, 1 ),
+				   kOFFSET_NAMESPACE => $ns,
 				   kOFFSET_LABEL => "Vertex terms",
 				   kOFFSET_DESCRIPTION => "This tag identifies the offset that will contain the list of identifiers of the terms referenced by the tag path's vertex elements." ),
 			array( kOFFSET_LID => substr( kOFFSET_REFS_NAMESPACE, 1 ),
+				   kOFFSET_NAMESPACE => $ns,
 				   kOFFSET_LABEL => "Namespace references",
 				   kOFFSET_DESCRIPTION => "This tag identifies namespace references, the attribute contains the count of how many times the term was referenced as a namespace." ),
 			array( kOFFSET_LID => substr( kOFFSET_REFS_NODE, 1 ),
+				   kOFFSET_NAMESPACE => $ns,
 				   kOFFSET_LABEL => "Node references",
 				   kOFFSET_DESCRIPTION => "This tag identifies node references, the attribute contains the list of identifiers of nodes that reference the current object." ),
 			array( kOFFSET_LID => substr( kOFFSET_REFS_TAG, 1 ),
+				   kOFFSET_NAMESPACE => $ns,
 				   kOFFSET_LABEL => "Tag references",
 				   kOFFSET_DESCRIPTION => "This tag identifies tag references, the attribute contains the list of identifiers of tags that reference the current term." ),
 			array( kOFFSET_LID => substr( kOFFSET_REFS_EDGE, 1 ),
+				   kOFFSET_NAMESPACE => $ns,
 				   kOFFSET_LABEL => "Edge references",
-				   kOFFSET_DESCRIPTION => "This tag identifies edge references, the attribute contains the list of identifiers of edges that reference the current node." ) );
+				   kOFFSET_DESCRIPTION => "This tag identifies edge references, the attribute contains the list of identifiers of edges that reference the current node." ),
+			array( kOFFSET_LID => substr( kOFFSET_LANGUAGE, 1 ),
+				   kOFFSET_NAMESPACE => $ns,
+				   kOFFSET_LABEL => "Language code",
+				   kOFFSET_DESCRIPTION => "This tag is used as a sub-offset of the coded list type elements, it is expected to contain a language character code identifying the language in which the coded list instance element is expressed in." ),
+			array( kOFFSET_LID => substr( kOFFSET_DATA, 1 ),
+				   kOFFSET_NAMESPACE => $ns,
+				   kOFFSET_LABEL => "Data",
+				   kOFFSET_DESCRIPTION => "This tag is used in structured data types as the sub-offset of the item holding the data. For instance in coded list structures, this will be the offset holding the actual data." ) );
 		
 		//
 		// Iterate definitions.
@@ -2409,7 +2429,7 @@ class COntology extends CConnection
 		foreach( $terms as $term )
 		{
 			$new = new COntologyTerm();
-			$new->NS( $ns );
+			$new->NS( $term[ kOFFSET_NAMESPACE ] );
 			$new->LID( $term[ kOFFSET_LID ] );
 			$new->Label( kDEFAULT_LANGUAGE, $term[ kOFFSET_LABEL ] );
 			$new->Description( kDEFAULT_LANGUAGE, $term[ kOFFSET_DESCRIPTION ] );
@@ -2438,11 +2458,7 @@ class COntology extends CConnection
 		//
 		// Load namespace term.
 		//
-		$namespace = $this->NewTerm( '', NULL );
-		if( ! $namespace->_IsCommitted() )
-			throw new Exception
-				( "Unable to initialise terms: default namespace not found",
-				  kERROR_NOT_FOUND );											// !@! ==>
+		$ns = $this->ResolveTerm( '', NULL, TRUE );
 		
 		//
 		// Load  definitions.
@@ -2472,8 +2488,8 @@ class COntology extends CConnection
 			$this->NewNode(
 				$this->NewTerm(
 						$term[ kOFFSET_LID ],					// Local identifier.
-						$namespace,								// Namespace.
-						$term[ kOFFSET_LID ],					// Label.
+						$ns,									// Namespace.
+						$term[ kOFFSET_LABEL ],					// Label.
 						$term[ kOFFSET_DESCRIPTION ],			// Description.
 						kDEFAULT_LANGUAGE ),					// Language.
 				array( kKIND_NODE_ROOT, kKIND_NODE_DDICT ) );	// Node kind.
@@ -2483,13 +2499,75 @@ class COntology extends CConnection
 
 	 
 	/*===================================================================================
+	 *	_InitDefaultPredicates															*
+	 *==================================================================================*/
+
+	/**
+	 * <h4>Initialise default instances</h4>
+	 *
+	 * This method will create all the default instance root nodes of the ontology.
+	 *
+	 * <bThis method is called in the context of the ontology initialisation procedure, you
+	 * should not use this method outside of that scope.</b>
+	 *
+	 * @access protected
+	 */
+	protected function _InitDefaultPredicates()
+	{
+		//
+		// Load namespace term.
+		//
+		$ns = $this->ResolveTerm( '', NULL, TRUE );
+		
+		//
+		// Create parent term and node.
+		//
+		$parent_node
+			= $this->NewNode(
+				$this->NewTerm(
+						substr( kINSTANCE_PREDICATES, 1 ),
+						$ns,
+						"Default predicates",
+						"This tag collects all default predicate terms in this library.",
+						kDEFAULT_LANGUAGE ),					// Language.
+				array( kKIND_NODE_ROOT, kKIND_NODE_SCALE ),		// Node kind.
+				kTYPE_ENUM );									// Node type.
+		
+		//
+		// Load instance definitions.
+		//
+		$terms = array( kPREDICATE_SUBCLASS_OF, kPREDICATE_METHOD_OF,
+						kPREDICATE_SCALE_OF, kPREDICATE_ENUM_OF,
+						kPREDICATE_PREFERRED, kPREDICATE_VALID,
+						kPREDICATE_XREF_EXACT );
+		
+		//
+		// Load instances.
+		//
+		foreach( $terms as $term )
+		{
+			$this->EnumOf(
+				$child_node
+					= $this->NewEnumerationNode(
+						$tmp
+							= $this->ResolveTerm(
+								substr( $term, 1 ),		// Local identifier.
+								$ns,					// Namespace object.
+								TRUE ) ),				// Raise exception on fail.
+				$parent_node );
+		}
+
+	} // _InitDefaultPredicates.
+
+	 
+	/*===================================================================================
 	 *	_LoadTermDataDictionary															*
 	 *==================================================================================*/
 
 	/**
 	 * <h4>Load term data dictionary</h4>
 	 *
-	 * This method will load the ontology term data dictionary.
+	 * This method will load the ontology term, {@link COntologyTerm}, data dictionary.
 	 *
 	 * @access protected
 	 */
@@ -2498,11 +2576,16 @@ class COntology extends CConnection
 		//
 		// Load namespace term.
 		//
-		$namespace = $this->NewTerm( '', NULL );
-		if( ! $namespace->_IsCommitted() )
-			throw new Exception
-				( "Unable to initialise terms: default namespace not found",
-				  kERROR_NOT_FOUND );											// !@! ==>
+		$ns = $this->ResolveTerm( '', NULL, TRUE );
+		
+		//
+		// Load predicate term.
+		//
+		$predicate
+			= $this->ResolveTerm(
+				substr( kPREDICATE_SUBCLASS_OF, 1 ),
+				$ns,
+				TRUE );
 		
 		//
 		// Load data dictionary root term.
@@ -2517,41 +2600,49 @@ class COntology extends CConnection
 		// Load  definitions.
 		//
 		$terms = array(
-			array( kOFFSET_LID => substr( kOFFSET_NID, 1 ),
-				   kOFFSET_GID => kOFFSET_NID,
-				   kOFFSET_TYPE => array( kTYPE_BINARY, kTYPE_CARD_REQUIRED ) ),
 			array( kOFFSET_LID => substr( kOFFSET_LID, 1 ),
 				   kOFFSET_GID => kOFFSET_LID,
+				   kOFFSET_NAMESPACE => $ns,
 				   kOFFSET_TYPE => array( kTYPE_STRING, kTYPE_CARD_REQUIRED ) ),
 			array( kOFFSET_LID => substr( kOFFSET_GID, 1 ),
 				   kOFFSET_GID => kOFFSET_GID,
-				   kOFFSET_TYPE => array( kTYPE_STRING, kTYPE_CARD_REQUIRED ),
-			array( kOFFSET_LID => substr( kOFFSET_CLASS, 1 ) ),
+				   kOFFSET_NAMESPACE => $ns,
+				   kOFFSET_TYPE => array( kTYPE_STRING, kTYPE_CARD_REQUIRED ) ),
+			array( kOFFSET_LID => substr( kOFFSET_CLASS, 1 ),
 				   kOFFSET_GID => kOFFSET_CLASS,
+				   kOFFSET_NAMESPACE => $ns,
 				   kOFFSET_TYPE => array( kTYPE_STRING, kTYPE_CARD_REQUIRED ) ),
 			array( kOFFSET_LID => substr( kOFFSET_LABEL, 1 ),
 				   kOFFSET_GID => kOFFSET_LABEL,
+				   kOFFSET_NAMESPACE => $ns,
 				   kOFFSET_TYPE => array( kTYPE_STRUCT, kTYPE_CARD_ARRAY ) ),
 			array( kOFFSET_LID => substr( kOFFSET_DESCRIPTION, 1 ),
 				   kOFFSET_GID => kOFFSET_DESCRIPTION,
-				   kOFFSET_TYPE => array( kTYPE_STRUCT, kTYPE_CARD_ARRAY ),
-			array( kOFFSET_LID => substr( kOFFSET_NAMESPACE, 1 ) ),
+				   kOFFSET_NAMESPACE => $ns,
+				   kOFFSET_TYPE => array( kTYPE_STRUCT, kTYPE_CARD_ARRAY ) ),
+			array( kOFFSET_LID => substr( kOFFSET_NAMESPACE, 1 ),
 				   kOFFSET_GID => kOFFSET_NAMESPACE,
-				   kOFFSET_TYPE => kTYPE_BINARY,
-			array( kOFFSET_LID => substr( kOFFSET_SYNONYMS, 1 ) ),
+				   kOFFSET_NAMESPACE => $ns,
+				   kOFFSET_TYPE => kTYPE_BINARY ),
+			array( kOFFSET_LID => substr( kOFFSET_SYNONYMS, 1 ),
 				   kOFFSET_GID => kOFFSET_SYNONYMS,
-				   kOFFSET_TYPE => array( kTYPE_STRING, kTYPE_CARD_ARRAY ),
-			array( kOFFSET_LID => substr( kOFFSET_TERM, 1 ) ),
+				   kOFFSET_NAMESPACE => $ns,
+				   kOFFSET_TYPE => array( kTYPE_STRING, kTYPE_CARD_ARRAY ) ),
+			array( kOFFSET_LID => substr( kOFFSET_TERM, 1 ),
 				   kOFFSET_GID => kOFFSET_TERM,
-				   kOFFSET_TYPE => kTYPE_BINARY,
-			array( kOFFSET_LID => substr( kOFFSET_REFS_NAMESPACE, 1 ) ),
+				   kOFFSET_NAMESPACE => $ns,
+				   kOFFSET_TYPE => kTYPE_BINARY ),
+			array( kOFFSET_LID => substr( kOFFSET_REFS_NAMESPACE, 1 ),
 				   kOFFSET_GID => kOFFSET_REFS_NAMESPACE,
-				   kOFFSET_TYPE => kTYPE_INT64,
-			array( kOFFSET_LID => substr( kOFFSET_REFS_NODE, 1 ) ),
+				   kOFFSET_NAMESPACE => $ns,
+				   kOFFSET_TYPE => kTYPE_INT64 ),
+			array( kOFFSET_LID => substr( kOFFSET_REFS_NODE, 1 ),
 				   kOFFSET_GID => kOFFSET_REFS_NODE,
+				   kOFFSET_NAMESPACE => $ns,
 				   kOFFSET_TYPE => array( kTYPE_INT64, kTYPE_CARD_ARRAY ) ),
 			array( kOFFSET_LID => substr( kOFFSET_REFS_TAG, 1 ),
 				   kOFFSET_GID => kOFFSET_REFS_TAG,
+				   kOFFSET_NAMESPACE => $ns,
 				   kOFFSET_TYPE => array( kTYPE_INT64, kTYPE_CARD_ARRAY ) ) );
 		
 		//
@@ -2560,91 +2651,452 @@ class COntology extends CConnection
 		foreach( $terms as $term )
 		{
 			//
-			// Create term, node and relate.
+			// Create node and relate.
 			//
 			$this->SubclassOf(
-				$node
+				$parent_node
 					= $this->NewScaleNode(
 						$tmp
-							= $this->NewTerm(
-								$term[ kOFFSET_LID ],	// Local identifier.
-								$namespace ),			// Namespace.
-						$term[ kOFFSET_TYPE ],			// Data type.
-						NULL,							// Namespace.
-						NULL,							// Label.
-						NULL,							// Description.
-						NULL,							// Language.
-						TRUE ),							// New node flag.
+							= $this->ResolveTerm(
+								$term[ kOFFSET_LID ],			// Local identifier.
+								$term[ kOFFSET_NAMESPACE ],		// Namespace object.
+								TRUE ),							// Raise exception on fail.
+						$term[ kOFFSET_TYPE ],					// Data type.
+						NULL,									// Namespace.
+						NULL,									// Label.
+						NULL,									// Description.
+						NULL,									// Language.
+						TRUE ),									// New node flag.
 				$root_node );
 			
 			//
-			// Exclude structures.
+			// Create tag.
 			//
-			if( ($tmp[ kOFFSET_GID ] != kOFFSET_LABEL)
-			 && ($tmp[ kOFFSET_GID ] != kOFFSET_DESCRIPTION) )
-			{
-				//
-				// Create tag.
-				// Note that you must set the identifier AFTER instantiating the tag.
-				//
-				$tag = NULL;
-				$this->AddToTag( $tag, $node );
-				$tag[ kOFFSET_NID ] = $term[ kOFFSET_GID ];
-				$this->AddToTag( $tag, TRUE );
-			}
-			
+			$tag = NULL;
+			$this->AddToTag( $tag, $parent_node );
+			$this->AddToTag( $tag, TRUE );
+
 			//
-			// Save label and description nodes.
+			// Create subtag.
 			//
-			else
+			if( ($tmp[ kOFFSET_GID ] == kOFFSET_LABEL)
+			 || ($tmp[ kOFFSET_GID ] == kOFFSET_DESCRIPTION) )
 			{
 				//
 				// Load term data.
 				//
 				$list = array(
 					array( kOFFSET_LID => substr( kOFFSET_LANGUAGE, 1 ),
-						   kOFFSET_GID => kOFFSET_LANGUAGE,
 						   kOFFSET_TYPE => kTYPE_STRING ),
 					array( kOFFSET_LID => substr( kOFFSET_DATA, 1 ),
-						   kOFFSET_GID => kOFFSET_DATA,
 						   kOFFSET_TYPE => array( kTYPE_STRING, kTYPE_CARD_REQUIRED ) ) );
 				
 				//
-				// Create structure elements.
+				// Create structure nodes.
 				//
 				foreach( $list as $item )
 				{
 					//
-					// Create term, node and relate.
+					// Create node and relate.
 					//
 					$this->SubclassOf(
-						$child
+						$child_node
 							= $this->NewScaleNode(
-								$this->NewTerm(
-									$item[ kOFFSET_LID ],	// Local identifier.
-									$namespace ),			// Namespace.
-								$item[ kOFFSET_TYPE ],		// Data type.
-								NULL,						// Namespace.
-								NULL,						// Label.
-								NULL,						// Description.
-								NULL,						// Language.
-								TRUE ),						// New node flag.
-						$node );
-						
+								$tmp
+									= $this->ResolveTerm(
+										$item[ kOFFSET_LID ],	// Local identifier.
+										$ns,				// Namespace object.
+										TRUE ),					// Raise exception on fail.
+								$item[ kOFFSET_TYPE ],			// Data type.
+								NULL,							// Namespace.
+								NULL,							// Label.
+								NULL,							// Description.
+								NULL,							// Language.
+								TRUE ),							// New node flag.
+						$parent_node );
+				
 					//
 					// Create tag.
-					// Note that you must set the identifier AFTER instantiating the tag.
 					//
 					$tag = NULL;
-					$this->AddToTag( $tag, $child );
-					$tag[ kOFFSET_NID ] = $item[ kOFFSET_GID ];
+					$this->AddToTag( $tag, $parent_node );
+					$this->AddToTag( $tag, $predicate );
+					$this->AddToTag( $tag, $child_node );
 					$this->AddToTag( $tag, TRUE );
-				}
+				
+				} // Iterating substructure elements.
 			
-			} // Handle structures.
-		}
+			} // Structured tag.
+		
+		} // Iterating first level terms.
 
 	} // _LoadTermDataDictionary.
+
+	 
+	/*===================================================================================
+	 *	_LoadNodeDataDictionary															*
+	 *==================================================================================*/
+
+	/**
+	 * <h4>Load node data dictionary</h4>
+	 *
+	 * This method will load the ontology node, {@link COntologyNode}, data dictionary.
+	 *
+	 * @access protected
+	 */
+	protected function _LoadNodeDataDictionary()
+	{
+		//
+		// Load namespace term.
+		//
+		$ns = $this->ResolveTerm( '', NULL, TRUE );
+		
+		//
+		// Load predicate term.
+		//
+		$predicate
+			= $this->ResolveTerm(
+				substr( kPREDICATE_SUBCLASS_OF, 1 ),
+				$ns,
+				TRUE );
+		
+		//
+		// Load data dictionary root term.
+		//
+		$root_node
+			= $this->ResolveNode(
+				$this->ResolveTerm(
+					kDDICT_NODE, NULL, TRUE ),
+				TRUE )[ 0 ];
+
+		//
+		// Load  definitions.
+		//
+		$terms = array(
+			array( kOFFSET_LID => substr( kOFFSET_CLASS, 1 ),
+				   kOFFSET_GID => kOFFSET_CLASS,
+				   kOFFSET_NAMESPACE => $ns,
+				   kOFFSET_TYPE => array( kTYPE_STRING, kTYPE_CARD_REQUIRED ) ),
+			array( kOFFSET_LID => substr( kOFFSET_TERM, 1 ),
+				   kOFFSET_GID => kOFFSET_TERM,
+				   kOFFSET_NAMESPACE => $ns,
+				   kOFFSET_TYPE => array( kTYPE_BINARY, kTYPE_CARD_REQUIRED ) ),
+			array( kOFFSET_LID => substr( kOFFSET_KIND, 1 ),
+				   kOFFSET_GID => kOFFSET_KIND,
+				   kOFFSET_NAMESPACE => $ns,
+				   kOFFSET_TYPE => kTYPE_ENUM_SET ),
+			array( kOFFSET_LID => substr( kOFFSET_TYPE, 1 ),
+				   kOFFSET_GID => kOFFSET_TYPE,
+				   kOFFSET_NAMESPACE => $ns,
+				   kOFFSET_TYPE => kTYPE_ENUM_SET ),
+			array( kOFFSET_LID => substr( kOFFSET_REFS_TAG, 1 ),
+				   kOFFSET_GID => kOFFSET_REFS_TAG,
+				   kOFFSET_NAMESPACE => $ns,
+				   kOFFSET_TYPE => array( kTYPE_INT64, kTYPE_CARD_ARRAY ) ),
+			array( kOFFSET_LID => substr( kOFFSET_REFS_EDGE, 1 ),
+				   kOFFSET_GID => kOFFSET_REFS_EDGE,
+				   kOFFSET_NAMESPACE => $ns,
+				   kOFFSET_TYPE => array( kTYPE_INT64, kTYPE_CARD_ARRAY ) ) );
+		
+		//
+		// Iterate definitions.
+		//
+		foreach( $terms as $term )
+		{
+			//
+			// Create node and relate.
+			//
+			$this->SubclassOf(
+				$parent_node
+					= $this->NewScaleNode(
+						$tmp
+							= $this->ResolveTerm(
+								$term[ kOFFSET_LID ],			// Local identifier.
+								$term[ kOFFSET_NAMESPACE ],		// Namespace object.
+								TRUE ),							// Raise exception on fail.
+						$term[ kOFFSET_TYPE ],					// Data type.
+						NULL,									// Namespace.
+						NULL,									// Label.
+						NULL,									// Description.
+						NULL,									// Language.
+						TRUE ),									// New node flag.
+				$root_node );
+			
+			//
+			// Create tag.
+			//
+			$tag = $this->ResolveTag( $tmp );
+			if( $tag === NULL )
+			{
+				$this->AddToTag( $tag, $parent_node );
+				$this->AddToTag( $tag, TRUE );
+			
+			} // New tag.
+		
+			//
+			// Handle enumerations.
+			//
+			switch( $term[ kOFFSET_GID ] )
+			{
+				//
+				// Node kind.
+				//
+				case kOFFSET_KIND:
+					// List kinds.
+					$list = array( kKIND_NODE_ROOT, kKIND_NODE_DDICT,
+								   kKIND_NODE_TRAIT, kKIND_NODE_METHOD,
+								   kKIND_NODE_SCALE, kKIND_NODE_INSTANCE );
+					// Create nodes and relate.
+					foreach( $list as $item )
+					{
+						$this->EnumOf(
+							$child_node
+								= $this->NewEnumerationNode(
+									$tmp
+										= $this->ResolveTerm(
+											substr( $item, 1 ),	// Local identifier.
+											$ns,				// Namespace object.
+											TRUE ) ),			// Raise exception on fail.
+							$parent_node );
+					}
+					break;
+				
+				//
+				// Node type.
+				//
+				case kOFFSET_TYPE:
+					// List types.
+					$list = array( kTYPE_STRING, kTYPE_INT32, kTYPE_INT64, kTYPE_FLOAT,
+								   kTYPE_BOOLEAN, kTYPE_ANY, kTYPE_BINARY, kTYPE_DATE,
+								   kTYPE_TIME, kTYPE_STRUCT, kTYPE_STAMP, kTYPE_ENUM,
+								   kTYPE_ENUM_SET,
+								   kTYPE_CARD_REQUIRED, kTYPE_CARD_ARRAY );
+					// Create nodes and relate.
+					foreach( $list as $item )
+					{
+						$this->EnumOf(
+							$child_node
+								= $this->NewEnumerationNode(
+									$tmp
+										= $this->ResolveTerm(
+											substr( $item, 1 ),	// Local identifier.
+											$ns,				// Namespace object.
+											TRUE ) ),			// Raise exception on fail.
+							$parent_node );
+					}
+					break;
+			
+			} // Parsing current term.
+		
+		} // Iterating first level terms.
+
+	} // _LoadNodeDataDictionary.
+
+	 
+	/*===================================================================================
+	 *	_LoadEdgeDataDictionary															*
+	 *==================================================================================*/
+
+	/**
+	 * <h4>Load edge data dictionary</h4>
+	 *
+	 * This method will load the ontology edge, {@link COntologyEdge}, data dictionary.
+	 *
+	 * @access protected
+	 */
+	protected function _LoadEdgeDataDictionary()
+	{
+		//
+		// Load namespace term.
+		//
+		$ns = $this->ResolveTerm( '', NULL, TRUE );
+		
+		//
+		// Load predicate term.
+		//
+		$predicate
+			= $this->ResolveTerm(
+				substr( kPREDICATE_SUBCLASS_OF, 1 ),
+				$ns,
+				TRUE );
+		
+		//
+		// Load data dictionary root term.
+		//
+		$root_node
+			= $this->ResolveNode(
+				$this->ResolveTerm(
+					kDDICT_EDGE, NULL, TRUE ),
+				TRUE )[ 0 ];
+
+		//
+		// Load  definitions.
+		//
+		$terms = array(
+			array( kOFFSET_LID => substr( kOFFSET_VERTEX_SUBJECT, 1 ),
+				   kOFFSET_GID => kOFFSET_VERTEX_SUBJECT,
+				   kOFFSET_NAMESPACE => $ns,
+				   kOFFSET_TYPE => array( kTYPE_INT64, kTYPE_CARD_REQUIRED ) ),
+			array( kOFFSET_LID => substr( kOFFSET_PREDICATE, 1 ),
+				   kOFFSET_GID => kOFFSET_PREDICATE,
+				   kOFFSET_NAMESPACE => $ns,
+				   kOFFSET_TYPE => array( kTYPE_BINARY, kTYPE_CARD_REQUIRED ) ),
+			array( kOFFSET_LID => substr( kOFFSET_VERTEX_OBJECT, 1 ),
+				   kOFFSET_GID => kOFFSET_VERTEX_OBJECT,
+				   kOFFSET_NAMESPACE => $ns,
+				   kOFFSET_TYPE => array( kTYPE_INT64, kTYPE_CARD_REQUIRED ) ),
+			array( kOFFSET_LID => substr( kOFFSET_GID, 1 ),
+				   kOFFSET_GID => kOFFSET_GID,
+				   kOFFSET_NAMESPACE => $ns,
+				   kOFFSET_TYPE => array( kTYPE_STRING, kTYPE_CARD_REQUIRED ) ),
+			array( kOFFSET_LID => substr( kOFFSET_UID, 1 ),
+				   kOFFSET_GID => kOFFSET_UID,
+				   kOFFSET_NAMESPACE => $ns,
+				   kOFFSET_TYPE => array( kTYPE_BINARY, kTYPE_CARD_REQUIRED ) ),
+			array( kOFFSET_LID => substr( kOFFSET_CLASS, 1 ),
+				   kOFFSET_GID => kOFFSET_CLASS,
+				   kOFFSET_NAMESPACE => $ns,
+				   kOFFSET_TYPE => array( kTYPE_STRING, kTYPE_CARD_REQUIRED ) ) );
+		
+		//
+		// Iterate definitions.
+		//
+		foreach( $terms as $term )
+		{
+			//
+			// Create node and relate.
+			//
+			$this->SubclassOf(
+				$parent_node
+					= $this->NewScaleNode(
+						$tmp
+							= $this->ResolveTerm(
+								$term[ kOFFSET_LID ],			// Local identifier.
+								$term[ kOFFSET_NAMESPACE ],		// Namespace object.
+								TRUE ),							// Raise exception on fail.
+						$term[ kOFFSET_TYPE ],					// Data type.
+						NULL,									// Namespace.
+						NULL,									// Label.
+						NULL,									// Description.
+						NULL,									// Language.
+						TRUE ),									// New node flag.
+				$root_node );
+			
+			//
+			// Create tag.
+			//
+			$tag = $this->ResolveTag( $tmp );
+			if( $tag === NULL )
+			{
+				$this->AddToTag( $tag, $parent_node );
+				$this->AddToTag( $tag, TRUE );
+			
+			} // New tag.
+		
+		} // Iterating first level terms.
+
+	} // _LoadEdgeDataDictionary.
+
+	 
+	/*===================================================================================
+	 *	_LoadTagDataDictionary															*
+	 *==================================================================================*/
+
+	/**
+	 * <h4>Load tag data dictionary</h4>
+	 *
+	 * This method will load the ontology tag, {@link COntologyTag}, data dictionary.
+	 *
+	 * @access protected
+	 */
+	protected function _LoadTagDataDictionary()
+	{
+		//
+		// Load namespace term.
+		//
+		$ns = $this->ResolveTerm( '', NULL, TRUE );
+		
+		//
+		// Load predicate term.
+		//
+		$predicate
+			= $this->ResolveTerm(
+				substr( kPREDICATE_SUBCLASS_OF, 1 ),
+				$ns,
+				TRUE );
+		
+		//
+		// Load data dictionary root term.
+		//
+		$root_node
+			= $this->ResolveNode(
+				$this->ResolveTerm(
+					kDDICT_TAG, NULL, TRUE ),
+				TRUE )[ 0 ];
+
+		//
+		// Load  definitions.
+		//
+		$terms = array(
+			array( kOFFSET_LID => substr( kOFFSET_GID, 1 ),
+				   kOFFSET_GID => kOFFSET_GID,
+				   kOFFSET_NAMESPACE => $ns,
+				   kOFFSET_TYPE => array( kTYPE_STRING, kTYPE_CARD_REQUIRED ) ),
+			array( kOFFSET_LID => substr( kOFFSET_UID, 1 ),
+				   kOFFSET_GID => kOFFSET_UID,
+				   kOFFSET_NAMESPACE => $ns,
+				   kOFFSET_TYPE => array( kTYPE_BINARY, kTYPE_CARD_REQUIRED ) ),
+			array( kOFFSET_LID => substr( kOFFSET_CLASS, 1 ),
+				   kOFFSET_GID => kOFFSET_CLASS,
+				   kOFFSET_NAMESPACE => $ns,
+				   kOFFSET_TYPE => array( kTYPE_STRING, kTYPE_CARD_REQUIRED ) ),
+			array( kOFFSET_LID => substr( kOFFSET_TAG_PATH, 1 ),
+				   kOFFSET_GID => kOFFSET_TAG_PATH,
+				   kOFFSET_NAMESPACE => $ns,
+				   kOFFSET_TYPE => array( kTYPE_ANY, kTYPE_CARD_ARRAY ) ),
+			array( kOFFSET_LID => substr( kOFFSET_VERTEX_TERMS, 1 ),
+				   kOFFSET_GID => kOFFSET_VERTEX_TERMS,
+				   kOFFSET_NAMESPACE => $ns,
+				   kOFFSET_TYPE => array( kTYPE_BINARY, kTYPE_CARD_ARRAY ) ) );
+		
+		//
+		// Iterate definitions.
+		//
+		foreach( $terms as $term )
+		{
+			//
+			// Create node and relate.
+			//
+			$this->SubclassOf(
+				$parent_node
+					= $this->NewScaleNode(
+						$tmp
+							= $this->ResolveTerm(
+								$term[ kOFFSET_LID ],			// Local identifier.
+								$term[ kOFFSET_NAMESPACE ],		// Namespace object.
+								TRUE ),							// Raise exception on fail.
+						$term[ kOFFSET_TYPE ],					// Data type.
+						NULL,									// Namespace.
+						NULL,									// Label.
+						NULL,									// Description.
+						NULL,									// Language.
+						TRUE ),									// New node flag.
+				$root_node );
+			
+			//
+			// Create tag.
+			//
+			$tag = $this->ResolveTag( $tmp );
+			if( $tag === NULL )
+			{
+				$this->AddToTag( $tag, $parent_node );
+				$this->AddToTag( $tag, TRUE );
+			
+			} // New tag.
+		
+		} // Iterating first level terms.
+
+	} // _LoadTagDataDictionary.
 
 	 
 

@@ -74,8 +74,6 @@ require_once( kPATH_MYWRAPPER_LIBRARY_CLASS."/CEdge.php" );
  * The class features member accessor methods for the default offsets:
  *
  * <ul>
- *	<li>{@link TagRefs()}: This method returns the node's tag references,
- *		{@link kOFFSET_REFS_TAG}.
  *	<li>{@link LoadSubject()}: This method will return the referenced subject vertex
  *		{@link COntologyNode} object.
  *	<li>{@link LoadPredicate()}: This method will return the referenced predicate
@@ -115,48 +113,6 @@ class COntologyEdge extends CEdge
 	 * @var COntologyNode
 	 */
 	 protected $mObject = NULL;
-
-		
-
-/*=======================================================================================
- *																						*
- *								PUBLIC MEMBER INTERFACE									*
- *																						*
- *======================================================================================*/
-
-
-	 
-	/*===================================================================================
-	 *	TagRefs																			*
-	 *==================================================================================*/
-
-	/**
-	 * <h4>Manage tag references</h4>
-	 *
-	 * The <i>tag references</i>, {@link kOFFSET_REFS_TAG}, holds a list of identifiers of
-	 * tags that reference the node.
-	 *
-	 * The method is read-only, because this value must be managed externally.
-	 *
-	 * The {@link kOFFSET_REFS_TAG} offset tag is defined by the {@link COntologyTerm} class
-	 * which is included in this class by default.
-	 *
-	 * @access public
-	 * @return array				Tags reference list.
-	 *
-	 * @see kOFFSET_REFS_TAG
-	 */
-	public function TagRefs()
-	{
-		//
-		// Handle reference count.
-		//
-		if( $this->offsetExists( kOFFSET_REFS_TAG ) )
-			return $this->offsetGet( kOFFSET_REFS_TAG );							// ==>
-		
-		return Array();																// ==>
-
-	} // TagRefs.
 
 		
 

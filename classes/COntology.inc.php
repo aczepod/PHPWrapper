@@ -54,4 +54,15 @@ define( "kDDICT_EDGE",							':DDICT-EDGE' );
  */
 define( "kDDICT_TAG",							':DDICT-TAG' );
 
+/*=======================================================================================
+ *	DEFAULT ONTOLOGY INSTANCES															*
+ *======================================================================================*/
+
+/**
+ * Predicates.
+ *
+ * This tag collects all default predicate terms.
+ */
+define( "kINSTANCE_PREDICATES",					':INSTANCES-PREDICATES' );
+
 ?>

@@ -59,14 +59,6 @@ define( "kTYPE_FLOAT",						':FLOAT' );				// Float.
 define( "kTYPE_BOOLEAN",					':BOOLEAN' );			// Boolean.
 
 /**
- * Object reference.
- *
- * This value represents the primitive object reference type, this is a logical type, since
- * the actual data type of object native identifiers is not univoque.
- */
-define( "kTYPE_REF",						':REF' );				// Reference.
-
-/**
  * Any type.
  *
  * This value represents the primitive wildcard type, it qualifies an attribute that can
@@ -128,26 +120,6 @@ define( "kTYPE_STRUCT",						':STRUCT' );			// Structure.
  * This data type should be used for native time-stamps.
  */
 define( "kTYPE_STAMP",						':TIME-STAMP' );		// Timestamp.
-
-/*=======================================================================================
- *	STRUCTURED DATA TYPE OFFSETS														*
- *======================================================================================*/
-
-/**
- * Language code.
- *
- * This tag is used as a sub-offset of a {@link kTYPE_STRUCT} type element, it
- * is expected to contain a language character code identifying the language in which the
- * {@link kTYPE_STRUCT} instance element is expressed in.
- */
-define( "kOFFSET_LANGUAGE",					':LANGUAGE' );			// Language code
-
-/**
- * Data.
- *
- * This tag is used in structured data types as the sub-offset of the item holding the data.
- */
-define( "kOFFSET_DATA",						':DATA' );				// Data.
 
 /*=======================================================================================
  *	NODE DATA TYPES																		*
