@@ -259,9 +259,11 @@ class COntology extends CConnection
 			$this->_InitDefaultAttributeTerms();
 			
 			//
-			// Create default predicate instances.
+			// Create default instances.
 			//
 			$this->_InitDefaultPredicates();
+			$this->_InitDefaultNodeKinds();
+			$this->_InitDefaultDataTypes();
 			
 			//
 			// Create default data dictionaries.
@@ -626,78 +628,89 @@ class COntology extends CConnection
 				} // Provided node identifier.
 				
 				//
-				// Create term.
+				// Exclude arrays.
 				//
-				$term = $this->NewTerm(
-							$theIdentifier, $theNamespace,
-							$theLabel, $theDescription, $theLanguage );
-				
-				//
-				// Force new.
-				//
-				if( $doNew )
-					return $this->_NewNode( $term, $theKind, $theType );			// ==>
-				
-				//
-				// Resolve container.
-				//
-				$container = COntologyNode::ResolveClassContainer
-								( $this->Connection(), TRUE );
-				
-				//
-				// Create query.
-				//
-				$query = $container->NewQuery();
-				
-				//
-				// Locate by identifier.
-				//
-				$query->AppendStatement(
-					CQueryStatement::Equals(
-						kOFFSET_TERM, $term[ kOFFSET_NID ], kTYPE_BINARY ) );
-				
-				//
-				// Filter by kind.
-				//
-				if( $theKind !== NULL )
+				elseif( ! is_array( $theIdentifier ) )
 				{
 					//
-					// Iterate kinds.
-					// Note that the parameter was normalised.
+					// Create term.
 					//
-					foreach( $theKind as $match )
-						$query->AppendStatement(
-							CQueryStatement::Member(
-								kOFFSET_KIND, $match, kTYPE_STRING ) );
-				
-				} // Provided kind.
-				
-				//
-				// Filter by type.
-				//
-				if( $theType !== NULL )
+					$term = $this->NewTerm(
+								$theIdentifier, $theNamespace,
+								$theLabel, $theDescription, $theLanguage );
+					
+					//
+					// Force new.
+					//
+					if( $doNew )
+						return $this->_NewNode( $term, $theKind, $theType );		// ==>
+					
+					//
+					// Resolve container.
+					//
+					$container = COntologyNode::ResolveClassContainer
+									( $this->Connection(), TRUE );
+					
+					//
+					// Create query.
+					//
+					$query = $container->NewQuery();
+					
+					//
+					// Locate by identifier.
+					//
 					$query->AppendStatement(
 						CQueryStatement::Equals(
-							kOFFSET_TYPE, $theType, kTYPE_STRING ) );
-						
-				//
-				// Perform query.
-				//
-				$rs = $container->Query( $query );
-				if( $rs->count() )
-				{
-					//
-					// Return list of nodes.
-					//
-					$list = Array();
-					foreach( $rs as $document )
-						$list[] = CPersistentObject::DocumentObject( $document );
+							kOFFSET_TERM, $term[ kOFFSET_NID ], kTYPE_BINARY ) );
 					
-					return $list;													// ==>
+					//
+					// Filter by kind.
+					//
+					if( $theKind !== NULL )
+					{
+						//
+						// Iterate kinds.
+						// Note that the parameter was normalised.
+						//
+						foreach( $theKind as $match )
+							$query->AppendStatement(
+								CQueryStatement::Member(
+									kOFFSET_KIND, $match, kTYPE_STRING ) );
+					
+					} // Provided kind.
+					
+					//
+					// Filter by type.
+					//
+					if( $theType !== NULL )
+						$query->AppendStatement(
+							CQueryStatement::Equals(
+								kOFFSET_TYPE, $theType, kTYPE_STRING ) );
+							
+					//
+					// Perform query.
+					//
+					$rs = $container->Query( $query );
+					if( $rs->count() )
+					{
+						//
+						// Return list of nodes.
+						//
+						$list = Array();
+						foreach( $rs as $document )
+							$list[] = CPersistentObject::DocumentObject( $document );
+						
+						return $list;												// ==>
+					
+					} // Found at least one node.
+					
+					return $this->_NewNode( $term, $theKind, $theType );			// ==>
 				
-				} // Found at least one node.
+				} // Did not provide an array.
 				
-				return $this->_NewNode( $term, $theKind, $theType );				// ==>
+				throw new Exception
+					( "Provided an array in place of the identifier",
+					  kERROR_PARAMETER );										// !@! ==>
 				
 			} // Provided local or global identifier.
 			
@@ -1569,22 +1582,7 @@ class COntology extends CConnection
 	 */
 	public function SubclassOf( $theSubject, $theObject )
 	{
-		//
-		// Resolve default namespace.
-		//
-		$namespace = $this->NewTerm( '', NULL,
-									 'Default namespace',
-									 'Default namespace term.',
-									 'en' );
-		if( ! $namespace->_IsCommitted() )
-			$namespace->Insert( $this->Connection() );
-		
-		return $this->RelateTo( $theSubject, $theObject,
-								kPREDICATE_SUBCLASS_OF,
-								'',
-								'Subclass-of',
-								'Subclass-of predicate term.',
-								'en' );												// ==>
+		return $this->RelateTo( $theSubject, $theObject, kPREDICATE_SUBCLASS_OF );	// ==>
 
 	} // SubclassOf.
 
@@ -1618,22 +1616,7 @@ class COntology extends CConnection
 	 */
 	public function MethodOf( $theSubject, $theObject )
 	{
-		//
-		// Resolve default namespace.
-		//
-		$namespace = $this->NewTerm( '', NULL,
-									 'Default namespace',
-									 'Default namespace term.',
-									 'en' );
-		if( ! $namespace->_IsCommitted() )
-			$namespace->Insert( $this->Connection() );
-		
-		return $this->RelateTo( $theSubject, $theObject,
-								kPREDICATE_METHOD_OF,
-								'',
-								'Method-of',
-								'Method-of predicate term.',
-								'en' );												// ==>
+		return $this->RelateTo( $theSubject, $theObject, kPREDICATE_METHOD_OF );	// ==>
 
 	} // MethodOf.
 
@@ -1667,22 +1650,7 @@ class COntology extends CConnection
 	 */
 	public function ScaleOf( $theSubject, $theObject )
 	{
-		//
-		// Resolve default namespace.
-		//
-		$namespace = $this->NewTerm( '', NULL,
-									 'Default namespace',
-									 'Default namespace term.',
-									 'en' );
-		if( ! $namespace->_IsCommitted() )
-			$namespace->Insert( $this->Connection() );
-		
-		return $this->RelateTo( $theSubject, $theObject,
-								kPREDICATE_SCALE_OF,
-								'',
-								'Scale-of',
-								'Scale-of predicate term.',
-								'en' );												// ==>
+		return $this->RelateTo( $theSubject, $theObject, kPREDICATE_SCALE_OF );		// ==>
 
 	} // ScaleOf.
 
@@ -1716,22 +1684,7 @@ class COntology extends CConnection
 	 */
 	public function EnumOf( $theSubject, $theObject )
 	{
-		//
-		// Resolve default namespace.
-		//
-		$namespace = $this->NewTerm( '', NULL,
-									 'Default namespace',
-									 'Default namespace term.',
-									 'en' );
-		if( ! $namespace->_IsCommitted() )
-			$namespace->Insert( $this->Connection() );
-		
-		return $this->RelateTo( $theSubject, $theObject,
-								kPREDICATE_ENUM_OF,
-								'',
-								'Enumeration-of',
-								'Enumeration-of predicate term.',
-								'en' );												// ==>
+		return $this->RelateTo( $theSubject, $theObject, kPREDICATE_ENUM_OF );		// ==>
 
 	} // EnumOf.
 
@@ -2481,10 +2434,6 @@ class COntology extends CConnection
 		// Iterate definitions.
 		//
 		foreach( $terms as $term )
-		{
-			//
-			// Create term and node.
-			//
 			$this->NewNode(
 				$this->NewTerm(
 						$term[ kOFFSET_LID ],					// Local identifier.
@@ -2493,7 +2442,6 @@ class COntology extends CConnection
 						$term[ kOFFSET_DESCRIPTION ],			// Description.
 						kDEFAULT_LANGUAGE ),					// Language.
 				array( kKIND_NODE_ROOT, kKIND_NODE_DDICT ) );	// Node kind.
-		}
 
 	} // _InitDefaultDataDictionaries.
 
@@ -2525,11 +2473,11 @@ class COntology extends CConnection
 		$parent_node
 			= $this->NewNode(
 				$this->NewTerm(
-						substr( kINSTANCE_PREDICATES, 1 ),
-						$ns,
-						"Default predicates",
-						"This tag collects all default predicate terms in this library.",
-						kDEFAULT_LANGUAGE ),					// Language.
+					substr( kINSTANCE_PREDICATES, 1 ),
+					$ns,
+					"Default predicates",
+					"This tag collects all default predicate terms in this library.",
+					kDEFAULT_LANGUAGE ),						// Language.
 				array( kKIND_NODE_ROOT, kKIND_NODE_SCALE ),		// Node kind.
 				kTYPE_ENUM );									// Node type.
 		
@@ -2545,19 +2493,130 @@ class COntology extends CConnection
 		// Load instances.
 		//
 		foreach( $terms as $term )
-		{
 			$this->EnumOf(
-				$child_node
-					= $this->NewEnumerationNode(
-						$tmp
-							= $this->ResolveTerm(
-								substr( $term, 1 ),		// Local identifier.
-								$ns,					// Namespace object.
-								TRUE ) ),				// Raise exception on fail.
+				$this->NewEnumerationNode(
+					$this->ResolveTerm(
+						substr( $term, 1 ),		// Local identifier.
+						$ns,					// Namespace object.
+						TRUE ) ),				// Raise exception on fail.
 				$parent_node );
-		}
 
 	} // _InitDefaultPredicates.
+
+	 
+	/*===================================================================================
+	 *	_InitDefaultNodeKinds															*
+	 *==================================================================================*/
+
+	/**
+	 * <h4>Initialise default instances</h4>
+	 *
+	 * This method will create all the default instance root nodes of the ontology.
+	 *
+	 * <bThis method is called in the context of the ontology initialisation procedure, you
+	 * should not use this method outside of that scope.</b>
+	 *
+	 * @access protected
+	 */
+	protected function _InitDefaultNodeKinds()
+	{
+		//
+		// Load namespace term.
+		//
+		$ns = $this->ResolveTerm( '', NULL, TRUE );
+		
+		//
+		// Create parent term and node.
+		//
+		$parent_node
+			= $this->NewNode(
+				$this->NewTerm(
+					substr( kINSTANCE_NODE_KINDS, 1 ),
+					$ns,
+					"Node kinds",
+					"This tag collects all default node kind terms in this library.",
+					kDEFAULT_LANGUAGE ),						// Language.
+				array( kKIND_NODE_ROOT, kKIND_NODE_SCALE ),		// Node kind.
+				kTYPE_ENUM );									// Node type.
+		
+		//
+		// Load instance definitions.
+		//
+		$terms = array( kKIND_NODE_ROOT, kKIND_NODE_DDICT, kKIND_NODE_TRAIT,
+						kKIND_NODE_METHOD, kKIND_NODE_SCALE, kKIND_NODE_INSTANCE );
+		
+		//
+		// Load instances.
+		//
+		foreach( $terms as $term )
+			$this->EnumOf(
+				$this->NewEnumerationNode(
+					$this->ResolveTerm(
+						substr( $term, 1 ),		// Local identifier.
+						$ns,					// Namespace object.
+						TRUE ) ),				// Raise exception on fail.
+				$parent_node );
+
+	} // _InitDefaultNodeKinds.
+
+	 
+	/*===================================================================================
+	 *	_InitDefaultDataTypes															*
+	 *==================================================================================*/
+
+	/**
+	 * <h4>Initialise default instances</h4>
+	 *
+	 * This method will create all the default instance root nodes of the ontology.
+	 *
+	 * <bThis method is called in the context of the ontology initialisation procedure, you
+	 * should not use this method outside of that scope.</b>
+	 *
+	 * @access protected
+	 */
+	protected function _InitDefaultDataTypes()
+	{
+		//
+		// Load namespace term.
+		//
+		$ns = $this->ResolveTerm( '', NULL, TRUE );
+		
+		//
+		// Create parent term and node.
+		//
+		$parent_node
+			= $this->NewNode(
+				$this->NewTerm(
+					substr( kINSTANCE_DATA_TYPES, 1 ),
+					$ns,
+					"Data types",
+					"This tag collects all default data type terms in this library.",
+					kDEFAULT_LANGUAGE ),						// Language.
+				array( kKIND_NODE_ROOT, kKIND_NODE_SCALE ),		// Node kind.
+				kTYPE_ENUM );									// Node type.
+		
+		//
+		// Load instance definitions.
+		//
+		$terms = array( kTYPE_STRING, kTYPE_INT32, kTYPE_INT64, kTYPE_FLOAT,
+						kTYPE_BOOLEAN, kTYPE_ANY, kTYPE_BINARY, kTYPE_DATE,
+						kTYPE_TIME, kTYPE_STRUCT, kTYPE_STAMP, kTYPE_ENUM,
+						kTYPE_ENUM_SET,
+						kTYPE_CARD_REQUIRED, kTYPE_CARD_ARRAY );
+		
+		//
+		// Load instances.
+		//
+		foreach( $terms as $term )
+			$this->EnumOf(
+				$this->NewEnumerationNode(
+					$this->ResolveTerm(
+						substr( $term, 1 ),		// Local identifier.
+						$ns,					// Namespace object.
+						TRUE ) ),				// Raise exception on fail.
+				$parent_node );
+
+	} // _InitDefaultDataTypes.
 
 	 
 	/*===================================================================================
@@ -2835,6 +2894,7 @@ class COntology extends CConnection
 		
 			//
 			// Handle enumerations.
+			// Notice we know the enumerations already exist.
 			//
 			switch( $term[ kOFFSET_GID ] )
 			{
@@ -2848,17 +2908,13 @@ class COntology extends CConnection
 								   kKIND_NODE_SCALE, kKIND_NODE_INSTANCE );
 					// Create nodes and relate.
 					foreach( $list as $item )
-					{
 						$this->EnumOf(
-							$child_node
-								= $this->NewEnumerationNode(
-									$tmp
-										= $this->ResolveTerm(
-											substr( $item, 1 ),	// Local identifier.
-											$ns,				// Namespace object.
-											TRUE ) ),			// Raise exception on fail.
+							$this->NewEnumerationNode(
+								$this->ResolveTerm(
+									substr( $item, 1 ),	// Local identifier.
+									$ns,				// Namespace object.
+									TRUE ) )[ 0 ],		// Raise exception on fail.
 							$parent_node );
-					}
 					break;
 				
 				//
@@ -2873,17 +2929,13 @@ class COntology extends CConnection
 								   kTYPE_CARD_REQUIRED, kTYPE_CARD_ARRAY );
 					// Create nodes and relate.
 					foreach( $list as $item )
-					{
 						$this->EnumOf(
-							$child_node
-								= $this->NewEnumerationNode(
-									$tmp
-										= $this->ResolveTerm(
-											substr( $item, 1 ),	// Local identifier.
-											$ns,				// Namespace object.
-											TRUE ) ),			// Raise exception on fail.
+							$this->NewEnumerationNode(
+								$this->ResolveTerm(
+									substr( $item, 1 ),	// Local identifier.
+									$ns,				// Namespace object.
+									TRUE ) )[ 0 ],		// Raise exception on fail.
 							$parent_node );
-					}
 					break;
 			
 			} // Parsing current term.

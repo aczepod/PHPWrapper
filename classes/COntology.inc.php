@@ -63,6 +63,20 @@ define( "kDDICT_TAG",							':DDICT-TAG' );
  *
  * This tag collects all default predicate terms.
  */
-define( "kINSTANCE_PREDICATES",					':INSTANCES-PREDICATES' );
+define( "kINSTANCE_PREDICATES",					':INSTANCE-PREDICATES' );
+
+/**
+ * Node kinds.
+ *
+ * This tag collects all default node kind terms.
+ */
+define( "kINSTANCE_NODE_KINDS",					':INSTANCE-NODE-KIND' );
+
+/**
+ * Data types.
+ *
+ * This tag collects all default node kind terms.
+ */
+define( "kINSTANCE_DATA_TYPES",					':INSTANCE-DATA-TYPE' );
 
 ?>
