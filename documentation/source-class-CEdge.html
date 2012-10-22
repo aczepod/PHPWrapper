@@ -136,10 +136,10 @@
 </span></span><span id="36" class="l"><a class="l" href="#36"> 36: </a><span class="php-comment"> * Objects of this class feature three main properties:
 </span></span><span id="37" class="l"><a class="l" href="#37"> 37: </a><span class="php-comment"> *
 </span></span><span id="38" class="l"><a class="l" href="#38"> 38: </a><span class="php-comment"> * &lt;ul&gt;
-</span></span><span id="39" class="l"><a class="l" href="#39"> 39: </a><span class="php-comment"> *  &lt;li&gt;{@link kOFFSET_VERTEX_SUBJECT}: The subject vertex, or the origin of the
+</span></span><span id="39" class="l"><a class="l" href="#39"> 39: </a><span class="php-comment"> *  &lt;li&gt;{@link kTAG_VERTEX_SUBJECT}: The subject vertex, or the origin of the
 </span></span><span id="40" class="l"><a class="l" href="#40"> 40: </a><span class="php-comment"> *      relationship.
-</span></span><span id="41" class="l"><a class="l" href="#41"> 41: </a><span class="php-comment"> *  &lt;li&gt;{@link kOFFSET_PREDICATE}: The predicate reference, or the type of relationship.
-</span></span><span id="42" class="l"><a class="l" href="#42"> 42: </a><span class="php-comment"> *  &lt;li&gt;{@link kOFFSET_VERTEX_OBJECT}: The object vertex, or the destination of the
+</span></span><span id="41" class="l"><a class="l" href="#41"> 41: </a><span class="php-comment"> *  &lt;li&gt;{@link kTAG_PREDICATE}: The predicate reference, or the type of relationship.
+</span></span><span id="42" class="l"><a class="l" href="#42"> 42: </a><span class="php-comment"> *  &lt;li&gt;{@link kTAG_VERTEX_OBJECT}: The object vertex, or the destination of the
 </span></span><span id="43" class="l"><a class="l" href="#43"> 43: </a><span class="php-comment"> *      relationship.
 </span></span><span id="44" class="l"><a class="l" href="#44"> 44: </a><span class="php-comment"> * &lt;/ul&gt;
 </span></span><span id="45" class="l"><a class="l" href="#45"> 45: </a><span class="php-comment"> *
@@ -148,18 +148,18 @@
 </span></span><span id="48" class="l"><a class="l" href="#48"> 48: </a><span class="php-comment"> * The unique identifier of instances of this class is the combination of the above three
 </span></span><span id="49" class="l"><a class="l" href="#49"> 49: </a><span class="php-comment"> * elements, no two edges can connect the same vertices in the same direction and with the
 </span></span><span id="50" class="l"><a class="l" href="#50"> 50: </a><span class="php-comment"> * same predicate. This value is computed and stored in the global identifier,
-</span></span><span id="51" class="l"><a class="l" href="#51"> 51: </a><span class="php-comment"> * {@link kOFFSET_GID}, because of this workflow, these three values must be convertable to
+</span></span><span id="51" class="l"><a class="l" href="#51"> 51: </a><span class="php-comment"> * {@link kTAG_GID}, because of this workflow, these three values must be convertable to
 </span></span><span id="52" class="l"><a class="l" href="#52"> 52: </a><span class="php-comment"> * string.
 </span></span><span id="53" class="l"><a class="l" href="#53"> 53: </a><span class="php-comment"> *
 </span></span><span id="54" class="l"><a class="l" href="#54"> 54: </a><span class="php-comment"> * The class features member accessor methods for the default offsets:
 </span></span><span id="55" class="l"><a class="l" href="#55"> 55: </a><span class="php-comment"> *
 </span></span><span id="56" class="l"><a class="l" href="#56"> 56: </a><span class="php-comment"> * &lt;ul&gt;
 </span></span><span id="57" class="l"><a class="l" href="#57"> 57: </a><span class="php-comment"> *  &lt;li&gt;{@link Subject()}: This method manages the subject vertex,
-</span></span><span id="58" class="l"><a class="l" href="#58"> 58: </a><span class="php-comment"> *      {@link kOFFSET_VERTEX_SUBJECT}.
+</span></span><span id="58" class="l"><a class="l" href="#58"> 58: </a><span class="php-comment"> *      {@link kTAG_VERTEX_SUBJECT}.
 </span></span><span id="59" class="l"><a class="l" href="#59"> 59: </a><span class="php-comment"> *  &lt;li&gt;{@link Predicate()}: This method manages the edge's predicate,
-</span></span><span id="60" class="l"><a class="l" href="#60"> 60: </a><span class="php-comment"> *      {@link kOFFSET_PREDICATE}.
+</span></span><span id="60" class="l"><a class="l" href="#60"> 60: </a><span class="php-comment"> *      {@link kTAG_PREDICATE}.
 </span></span><span id="61" class="l"><a class="l" href="#61"> 61: </a><span class="php-comment"> *  &lt;li&gt;{@link Object()}: This method manages the object vertex,
-</span></span><span id="62" class="l"><a class="l" href="#62"> 62: </a><span class="php-comment"> *      {@link kOFFSET_VERTEX_OBJECT}.
+</span></span><span id="62" class="l"><a class="l" href="#62"> 62: </a><span class="php-comment"> *      {@link kTAG_VERTEX_OBJECT}.
 </span></span><span id="63" class="l"><a class="l" href="#63"> 63: </a><span class="php-comment"> * &lt;/ul&gt;
 </span></span><span id="64" class="l"><a class="l" href="#64"> 64: </a><span class="php-comment"> *
 </span></span><span id="65" class="l"><a class="l" href="#65"> 65: </a><span class="php-comment"> *  @package    MyWrapper
@@ -185,7 +185,7 @@
 </span></span><span id="85" class="l"><a class="l" href="#85"> 85: </a><span class="php-comment">     * &lt;h4&gt;Manage edge subject&lt;/h4&gt;
 </span></span><span id="86" class="l"><a class="l" href="#86"> 86: </a><span class="php-comment">     *
 </span></span><span id="87" class="l"><a class="l" href="#87"> 87: </a><span class="php-comment">     * This method can be used to manage the edge's subject vertex,
-</span></span><span id="88" class="l"><a class="l" href="#88"> 88: </a><span class="php-comment">     * {@link kOFFSET_VERTEX_SUBJECT}, which is a reference to an object that represents the
+</span></span><span id="88" class="l"><a class="l" href="#88"> 88: </a><span class="php-comment">     * {@link kTAG_VERTEX_SUBJECT}, which is a reference to an object that represents the
 </span></span><span id="89" class="l"><a class="l" href="#89"> 89: </a><span class="php-comment">     * origin of the relationship this edge represents.
 </span></span><span id="90" class="l"><a class="l" href="#90"> 90: </a><span class="php-comment">     *
 </span></span><span id="91" class="l"><a class="l" href="#91"> 91: </a><span class="php-comment">     * The method accepts a parameter which represents the vertex, or the requested
@@ -212,11 +212,11 @@
 </span></span><span id="112" class="l"><a class="l" href="#112">112: </a><span class="php-comment">     *
 </span></span><span id="113" class="l"><a class="l" href="#113">113: </a><span class="php-comment">     * @uses ManageOffset()
 </span></span><span id="114" class="l"><a class="l" href="#114">114: </a><span class="php-comment">     *
-</span></span><span id="115" class="l"><a class="l" href="#115">115: </a><span class="php-comment">     * @see kOFFSET_VERTEX_SUBJECT
+</span></span><span id="115" class="l"><a class="l" href="#115">115: </a><span class="php-comment">     * @see kTAG_VERTEX_SUBJECT
 </span></span><span id="116" class="l"><a class="l" href="#116">116: </a><span class="php-comment">     */</span>
 </span><span id="117" class="l"><a class="l" href="#117">117: </a>    <span class="php-keyword1">public</span> <span class="php-keyword1">function</span> <a id="_Subject" href="#_Subject">Subject</a>( <span class="php-var">$theValue</span> = <span class="php-keyword1">NULL</span>, <span class="php-var">$getOld</span> = <span class="php-keyword1">FALSE</span> )
 </span><span id="118" class="l"><a class="l" href="#118">118: </a>    {
-</span><span id="119" class="l"><a class="l" href="#119">119: </a>        <span class="php-keyword1">return</span> ManageOffset( <span class="php-var">$this</span>, kOFFSET_VERTEX_SUBJECT, <span class="php-var">$theValue</span>, <span class="php-var">$getOld</span> );   <span class="php-comment">// ==&gt;</span>
+</span><span id="119" class="l"><a class="l" href="#119">119: </a>        <span class="php-keyword1">return</span> ManageOffset( <span class="php-var">$this</span>, kTAG_VERTEX_SUBJECT, <span class="php-var">$theValue</span>, <span class="php-var">$getOld</span> );      <span class="php-comment">// ==&gt;</span>
 </span><span id="120" class="l"><a class="l" href="#120">120: </a>
 </span><span id="121" class="l"><a class="l" href="#121">121: </a>    } <span class="php-comment">// Subject.</span>
 </span><span id="122" class="l"><a class="l" href="#122">122: </a>
@@ -228,7 +228,7 @@
 </span><span id="128" class="l"><a class="l" href="#128">128: </a>    <span class="php-comment">/**
 </span></span><span id="129" class="l"><a class="l" href="#129">129: </a><span class="php-comment">     * &lt;h4&gt;Manage edge predicate&lt;/h4&gt;
 </span></span><span id="130" class="l"><a class="l" href="#130">130: </a><span class="php-comment">     *
-</span></span><span id="131" class="l"><a class="l" href="#131">131: </a><span class="php-comment">     * This method can be used to manage the edge's predicate, {@link kOFFSET_PREDICATE},
+</span></span><span id="131" class="l"><a class="l" href="#131">131: </a><span class="php-comment">     * This method can be used to manage the edge's predicate, {@link kTAG_PREDICATE},
 </span></span><span id="132" class="l"><a class="l" href="#132">132: </a><span class="php-comment">     * which is a reference to an object that represents the origin of the relationship this
 </span></span><span id="133" class="l"><a class="l" href="#133">133: </a><span class="php-comment">     * edge represents.
 </span></span><span id="134" class="l"><a class="l" href="#134">134: </a><span class="php-comment">     *
@@ -256,11 +256,11 @@
 </span></span><span id="156" class="l"><a class="l" href="#156">156: </a><span class="php-comment">     *
 </span></span><span id="157" class="l"><a class="l" href="#157">157: </a><span class="php-comment">     * @uses ManageOffset()
 </span></span><span id="158" class="l"><a class="l" href="#158">158: </a><span class="php-comment">     *
-</span></span><span id="159" class="l"><a class="l" href="#159">159: </a><span class="php-comment">     * @see kOFFSET_PREDICATE
+</span></span><span id="159" class="l"><a class="l" href="#159">159: </a><span class="php-comment">     * @see kTAG_PREDICATE
 </span></span><span id="160" class="l"><a class="l" href="#160">160: </a><span class="php-comment">     */</span>
 </span><span id="161" class="l"><a class="l" href="#161">161: </a>    <span class="php-keyword1">public</span> <span class="php-keyword1">function</span> <a id="_Predicate" href="#_Predicate">Predicate</a>( <span class="php-var">$theValue</span> = <span class="php-keyword1">NULL</span>, <span class="php-var">$getOld</span> = <span class="php-keyword1">FALSE</span> )
 </span><span id="162" class="l"><a class="l" href="#162">162: </a>    {
-</span><span id="163" class="l"><a class="l" href="#163">163: </a>        <span class="php-keyword1">return</span> ManageOffset( <span class="php-var">$this</span>, kOFFSET_PREDICATE, <span class="php-var">$theValue</span>, <span class="php-var">$getOld</span> );        <span class="php-comment">// ==&gt;</span>
+</span><span id="163" class="l"><a class="l" href="#163">163: </a>        <span class="php-keyword1">return</span> ManageOffset( <span class="php-var">$this</span>, kTAG_PREDICATE, <span class="php-var">$theValue</span>, <span class="php-var">$getOld</span> );           <span class="php-comment">// ==&gt;</span>
 </span><span id="164" class="l"><a class="l" href="#164">164: </a>
 </span><span id="165" class="l"><a class="l" href="#165">165: </a>    } <span class="php-comment">// Predicate.</span>
 </span><span id="166" class="l"><a class="l" href="#166">166: </a>
@@ -273,7 +273,7 @@
 </span></span><span id="173" class="l"><a class="l" href="#173">173: </a><span class="php-comment">     * &lt;h4&gt;Manage edge object&lt;/h4&gt;
 </span></span><span id="174" class="l"><a class="l" href="#174">174: </a><span class="php-comment">     *
 </span></span><span id="175" class="l"><a class="l" href="#175">175: </a><span class="php-comment">     * This method can be used to manage the edge's object vertex,
-</span></span><span id="176" class="l"><a class="l" href="#176">176: </a><span class="php-comment">     * {@link kOFFSET_VERTEX_OBJECT}, which is a reference to an object that represents the
+</span></span><span id="176" class="l"><a class="l" href="#176">176: </a><span class="php-comment">     * {@link kTAG_VERTEX_OBJECT}, which is a reference to an object that represents the
 </span></span><span id="177" class="l"><a class="l" href="#177">177: </a><span class="php-comment">     * destination of the relationship this edge represents.
 </span></span><span id="178" class="l"><a class="l" href="#178">178: </a><span class="php-comment">     *
 </span></span><span id="179" class="l"><a class="l" href="#179">179: </a><span class="php-comment">     * The method accepts a parameter which represents the vertex, or the requested
@@ -300,11 +300,11 @@
 </span></span><span id="200" class="l"><a class="l" href="#200">200: </a><span class="php-comment">     *
 </span></span><span id="201" class="l"><a class="l" href="#201">201: </a><span class="php-comment">     * @uses ManageOffset()
 </span></span><span id="202" class="l"><a class="l" href="#202">202: </a><span class="php-comment">     *
-</span></span><span id="203" class="l"><a class="l" href="#203">203: </a><span class="php-comment">     * @see kOFFSET_VERTEX_OBJECT
+</span></span><span id="203" class="l"><a class="l" href="#203">203: </a><span class="php-comment">     * @see kTAG_VERTEX_OBJECT
 </span></span><span id="204" class="l"><a class="l" href="#204">204: </a><span class="php-comment">     */</span>
 </span><span id="205" class="l"><a class="l" href="#205">205: </a>    <span class="php-keyword1">public</span> <span class="php-keyword1">function</span> <a id="_Object" href="#_Object">Object</a>( <span class="php-var">$theValue</span> = <span class="php-keyword1">NULL</span>, <span class="php-var">$getOld</span> = <span class="php-keyword1">FALSE</span> )
 </span><span id="206" class="l"><a class="l" href="#206">206: </a>    {
-</span><span id="207" class="l"><a class="l" href="#207">207: </a>        <span class="php-keyword1">return</span> ManageOffset( <span class="php-var">$this</span>, kOFFSET_VERTEX_OBJECT, <span class="php-var">$theValue</span>, <span class="php-var">$getOld</span> );    <span class="php-comment">// ==&gt;</span>
+</span><span id="207" class="l"><a class="l" href="#207">207: </a>        <span class="php-keyword1">return</span> ManageOffset( <span class="php-var">$this</span>, kTAG_VERTEX_OBJECT, <span class="php-var">$theValue</span>, <span class="php-var">$getOld</span> );       <span class="php-comment">// ==&gt;</span>
 </span><span id="208" class="l"><a class="l" href="#208">208: </a>
 </span><span id="209" class="l"><a class="l" href="#209">209: </a>    } <span class="php-comment">// Object.</span>
 </span><span id="210" class="l"><a class="l" href="#210">210: </a>
@@ -325,7 +325,7 @@
 </span><span id="225" class="l"><a class="l" href="#225">225: </a>    <span class="php-comment">/**
 </span></span><span id="226" class="l"><a class="l" href="#226">226: </a><span class="php-comment">     * &lt;h4&gt;Return the object's global unique identifier&lt;/h4&gt;
 </span></span><span id="227" class="l"><a class="l" href="#227">227: </a><span class="php-comment">     *
-</span></span><span id="228" class="l"><a class="l" href="#228">228: </a><span class="php-comment">     * The edge class defines the global identifier, {@link kOFFSET_GID}, as the
+</span></span><span id="228" class="l"><a class="l" href="#228">228: </a><span class="php-comment">     * The edge class defines the global identifier, {@link kTAG_GID}, as the
 </span></span><span id="229" class="l"><a class="l" href="#229">229: </a><span class="php-comment">     * concatenation of the subject, predicate and object offsets converted to string.
 </span></span><span id="230" class="l"><a class="l" href="#230">230: </a><span class="php-comment">     *
 </span></span><span id="231" class="l"><a class="l" href="#231">231: </a><span class="php-comment">     * In this method we check whether all three are present, or we raise an exception.
@@ -338,7 +338,7 @@
 </span></span><span id="238" class="l"><a class="l" href="#238">238: </a><span class="php-comment">     * @access protected
 </span></span><span id="239" class="l"><a class="l" href="#239">239: </a><span class="php-comment">     * @return string|NULL          The object's global unique identifier.
 </span></span><span id="240" class="l"><a class="l" href="#240">240: </a><span class="php-comment">     *
-</span></span><span id="241" class="l"><a class="l" href="#241">241: </a><span class="php-comment">     * @see kOFFSET_VERTEX_SUBJECT kOFFSET_PREDICATE kOFFSET_VERTEX_OBJECT
+</span></span><span id="241" class="l"><a class="l" href="#241">241: </a><span class="php-comment">     * @see kTAG_VERTEX_SUBJECT kTAG_PREDICATE kTAG_VERTEX_OBJECT
 </span></span><span id="242" class="l"><a class="l" href="#242">242: </a><span class="php-comment">     * @see kTOKEN_INDEX_SEPARATOR
 </span></span><span id="243" class="l"><a class="l" href="#243">243: </a><span class="php-comment">     */</span>
 </span><span id="244" class="l"><a class="l" href="#244">244: </a>    <span class="php-keyword1">protected</span> <span class="php-keyword1">function</span> <a id="__index" href="#__index">_index</a>( CConnection <span class="php-var">$theConnection</span>, <span class="php-var">$theModifiers</span> )
@@ -351,7 +351,7 @@
 </span><span id="251" class="l"><a class="l" href="#251">251: </a>        <span class="php-comment">//</span>
 </span><span id="252" class="l"><a class="l" href="#252">252: </a>        <span class="php-comment">// Get subject.</span>
 </span><span id="253" class="l"><a class="l" href="#253">253: </a>        <span class="php-comment">//</span>
-</span><span id="254" class="l"><a class="l" href="#254">254: </a>        <span class="php-var">$tmp</span> = (string) <span class="php-var">$this</span>-&gt;offsetGet( kOFFSET_VERTEX_SUBJECT );
+</span><span id="254" class="l"><a class="l" href="#254">254: </a>        <span class="php-var">$tmp</span> = (string) <span class="php-var">$this</span>-&gt;offsetGet( kTAG_VERTEX_SUBJECT );
 </span><span id="255" class="l"><a class="l" href="#255">255: </a>        <span class="php-keyword1">if</span>( <span class="php-var">$tmp</span> !== <span class="php-keyword1">NULL</span> )
 </span><span id="256" class="l"><a class="l" href="#256">256: </a>            <span class="php-var">$identifier</span>[] = <span class="php-var">$tmp</span>;
 </span><span id="257" class="l"><a class="l" href="#257">257: </a>        <span class="php-keyword1">else</span>
@@ -362,7 +362,7 @@
 </span><span id="262" class="l"><a class="l" href="#262">262: </a>        <span class="php-comment">//</span>
 </span><span id="263" class="l"><a class="l" href="#263">263: </a>        <span class="php-comment">// Get predicate.</span>
 </span><span id="264" class="l"><a class="l" href="#264">264: </a>        <span class="php-comment">//</span>
-</span><span id="265" class="l"><a class="l" href="#265">265: </a>        <span class="php-var">$tmp</span> = (string) <span class="php-var">$this</span>-&gt;offsetGet( kOFFSET_PREDICATE );
+</span><span id="265" class="l"><a class="l" href="#265">265: </a>        <span class="php-var">$tmp</span> = (string) <span class="php-var">$this</span>-&gt;offsetGet( kTAG_PREDICATE );
 </span><span id="266" class="l"><a class="l" href="#266">266: </a>        <span class="php-keyword1">if</span>( <span class="php-var">$tmp</span> !== <span class="php-keyword1">NULL</span> )
 </span><span id="267" class="l"><a class="l" href="#267">267: </a>            <span class="php-var">$identifier</span>[] = <span class="php-var">$tmp</span>;
 </span><span id="268" class="l"><a class="l" href="#268">268: </a>        <span class="php-keyword1">else</span>
@@ -373,7 +373,7 @@
 </span><span id="273" class="l"><a class="l" href="#273">273: </a>        <span class="php-comment">//</span>
 </span><span id="274" class="l"><a class="l" href="#274">274: </a>        <span class="php-comment">// Get object.</span>
 </span><span id="275" class="l"><a class="l" href="#275">275: </a>        <span class="php-comment">//</span>
-</span><span id="276" class="l"><a class="l" href="#276">276: </a>        <span class="php-var">$tmp</span> = (string) <span class="php-var">$this</span>-&gt;offsetGet( kOFFSET_VERTEX_OBJECT );
+</span><span id="276" class="l"><a class="l" href="#276">276: </a>        <span class="php-var">$tmp</span> = (string) <span class="php-var">$this</span>-&gt;offsetGet( kTAG_VERTEX_OBJECT );
 </span><span id="277" class="l"><a class="l" href="#277">277: </a>        <span class="php-keyword1">if</span>( <span class="php-var">$tmp</span> !== <span class="php-keyword1">NULL</span> )
 </span><span id="278" class="l"><a class="l" href="#278">278: </a>            <span class="php-var">$identifier</span>[] = <span class="php-var">$tmp</span>;
 </span><span id="279" class="l"><a class="l" href="#279">279: </a>        <span class="php-keyword1">else</span>
@@ -402,8 +402,8 @@
 </span><span id="302" class="l"><a class="l" href="#302">302: </a>    <span class="php-comment">/**
 </span></span><span id="303" class="l"><a class="l" href="#303">303: </a><span class="php-comment">     * &lt;h4&gt;Handle offset before unsetting it&lt;/h4&gt;
 </span></span><span id="304" class="l"><a class="l" href="#304">304: </a><span class="php-comment">     *
-</span></span><span id="305" class="l"><a class="l" href="#305">305: </a><span class="php-comment">     * In this class we prevent the modification of the {@link kOFFSET_VERTEX_SUBJECT},
-</span></span><span id="306" class="l"><a class="l" href="#306">306: </a><span class="php-comment">     * {@link kOFFSET_PREDICATE} and {@link kOFFSET_VERTEX_OBJECT} offsets if the object is
+</span></span><span id="305" class="l"><a class="l" href="#305">305: </a><span class="php-comment">     * In this class we prevent the modification of the {@link kTAG_VERTEX_SUBJECT},
+</span></span><span id="306" class="l"><a class="l" href="#306">306: </a><span class="php-comment">     * {@link kTAG_PREDICATE} and {@link kTAG_VERTEX_OBJECT} offsets if the object is
 </span></span><span id="307" class="l"><a class="l" href="#307">307: </a><span class="php-comment">     * committed.
 </span></span><span id="308" class="l"><a class="l" href="#308">308: </a><span class="php-comment">     *
 </span></span><span id="309" class="l"><a class="l" href="#309">309: </a><span class="php-comment">     * @param reference            &amp;$theOffset          Offset.
@@ -414,7 +414,7 @@
 </span></span><span id="314" class="l"><a class="l" href="#314">314: </a><span class="php-comment">     *
 </span></span><span id="315" class="l"><a class="l" href="#315">315: </a><span class="php-comment">     * @uses _IsCommitted()
 </span></span><span id="316" class="l"><a class="l" href="#316">316: </a><span class="php-comment">     *
-</span></span><span id="317" class="l"><a class="l" href="#317">317: </a><span class="php-comment">     * @see kOFFSET_VERTEX_SUBJECT kOFFSET_PREDICATE kOFFSET_VERTEX_OBJECT
+</span></span><span id="317" class="l"><a class="l" href="#317">317: </a><span class="php-comment">     * @see kTAG_VERTEX_SUBJECT kTAG_PREDICATE kTAG_VERTEX_OBJECT
 </span></span><span id="318" class="l"><a class="l" href="#318">318: </a><span class="php-comment">     */</span>
 </span><span id="319" class="l"><a class="l" href="#319">319: </a>    <span class="php-keyword1">protected</span> <span class="php-keyword1">function</span> <a id="__Preunset" href="#__Preunset">_Preunset</a>( &amp;<span class="php-var">$theOffset</span> )
 </span><span id="320" class="l"><a class="l" href="#320">320: </a>    {
@@ -426,9 +426,9 @@
 </span><span id="326" class="l"><a class="l" href="#326">326: </a>            <span class="php-comment">//</span>
 </span><span id="327" class="l"><a class="l" href="#327">327: </a>            <span class="php-comment">// Load locked offsets.</span>
 </span><span id="328" class="l"><a class="l" href="#328">328: </a>            <span class="php-comment">//</span>
-</span><span id="329" class="l"><a class="l" href="#329">329: </a>            <span class="php-var">$offsets</span> = <span class="php-keyword1">array</span>( kOFFSET_VERTEX_SUBJECT,
-</span><span id="330" class="l"><a class="l" href="#330">330: </a>                              kOFFSET_PREDICATE,
-</span><span id="331" class="l"><a class="l" href="#331">331: </a>                              kOFFSET_VERTEX_OBJECT );
+</span><span id="329" class="l"><a class="l" href="#329">329: </a>            <span class="php-var">$offsets</span> = <span class="php-keyword1">array</span>( kTAG_VERTEX_SUBJECT,
+</span><span id="330" class="l"><a class="l" href="#330">330: </a>                              kTAG_PREDICATE,
+</span><span id="331" class="l"><a class="l" href="#331">331: </a>                              kTAG_VERTEX_OBJECT );
 </span><span id="332" class="l"><a class="l" href="#332">332: </a>            
 </span><span id="333" class="l"><a class="l" href="#333">333: </a>            <span class="php-comment">//</span>
 </span><span id="334" class="l"><a class="l" href="#334">334: </a>            <span class="php-comment">// Check offsets.</span>
@@ -466,15 +466,15 @@
 </span></span><span id="366" class="l"><a class="l" href="#366">366: </a><span class="php-comment">     * &lt;h4&gt;Determine if the object is ready&lt;/h4&gt;
 </span></span><span id="367" class="l"><a class="l" href="#367">367: </a><span class="php-comment">     *
 </span></span><span id="368" class="l"><a class="l" href="#368">368: </a><span class="php-comment">     * In this class we tie the {@link _IsInited()} status to the presence or absence of the
-</span></span><span id="369" class="l"><a class="l" href="#369">369: </a><span class="php-comment">     * {@link kOFFSET_VERTEX_SUBJECT}, {@link kOFFSET_PREDICATE} and
-</span></span><span id="370" class="l"><a class="l" href="#370">370: </a><span class="php-comment">     * {@link kOFFSET_VERTEX_OBJECT} offsets.
+</span></span><span id="369" class="l"><a class="l" href="#369">369: </a><span class="php-comment">     * {@link kTAG_VERTEX_SUBJECT}, {@link kTAG_PREDICATE} and
+</span></span><span id="370" class="l"><a class="l" href="#370">370: </a><span class="php-comment">     * {@link kTAG_VERTEX_OBJECT} offsets.
 </span></span><span id="371" class="l"><a class="l" href="#371">371: </a><span class="php-comment">     *
 </span></span><span id="372" class="l"><a class="l" href="#372">372: </a><span class="php-comment">     * @access protected
 </span></span><span id="373" class="l"><a class="l" href="#373">373: </a><span class="php-comment">     * @return boolean              &lt;tt&gt;TRUE&lt;/tt&gt; means {@link _IsInited( &lt;tt&gt;TRUE&lt;/tt&gt; ).
 </span></span><span id="374" class="l"><a class="l" href="#374">374: </a><span class="php-comment">     *
 </span></span><span id="375" class="l"><a class="l" href="#375">375: </a><span class="php-comment">     * @uses _Ready()
 </span></span><span id="376" class="l"><a class="l" href="#376">376: </a><span class="php-comment">     *
-</span></span><span id="377" class="l"><a class="l" href="#377">377: </a><span class="php-comment">     * @see kOFFSET_VERTEX_SUBJECT kOFFSET_PREDICATE kOFFSET_VERTEX_OBJECT
+</span></span><span id="377" class="l"><a class="l" href="#377">377: </a><span class="php-comment">     * @see kTAG_VERTEX_SUBJECT kTAG_PREDICATE kTAG_VERTEX_OBJECT
 </span></span><span id="378" class="l"><a class="l" href="#378">378: </a><span class="php-comment">     */</span>
 </span><span id="379" class="l"><a class="l" href="#379">379: </a>    <span class="php-keyword1">protected</span> <span class="php-keyword1">function</span> <a id="__Ready" href="#__Ready">_Ready</a>()
 </span><span id="380" class="l"><a class="l" href="#380">380: </a>    {
@@ -482,9 +482,9 @@
 </span><span id="382" class="l"><a class="l" href="#382">382: </a>        <span class="php-comment">// Check parent.</span>
 </span><span id="383" class="l"><a class="l" href="#383">383: </a>        <span class="php-comment">//</span>
 </span><span id="384" class="l"><a class="l" href="#384">384: </a>        <span class="php-keyword1">if</span>( parent::_Ready() )
-</span><span id="385" class="l"><a class="l" href="#385">385: </a>            <span class="php-keyword1">return</span> ( <span class="php-var">$this</span>-&gt;offsetExists( kOFFSET_VERTEX_SUBJECT )
-</span><span id="386" class="l"><a class="l" href="#386">386: </a>                  &amp;&amp; <span class="php-var">$this</span>-&gt;offsetExists( kOFFSET_PREDICATE )
-</span><span id="387" class="l"><a class="l" href="#387">387: </a>                  &amp;&amp; <span class="php-var">$this</span>-&gt;offsetExists( kOFFSET_VERTEX_OBJECT ) );                <span class="php-comment">// ==&gt;</span>
+</span><span id="385" class="l"><a class="l" href="#385">385: </a>            <span class="php-keyword1">return</span> ( <span class="php-var">$this</span>-&gt;offsetExists( kTAG_VERTEX_SUBJECT )
+</span><span id="386" class="l"><a class="l" href="#386">386: </a>                  &amp;&amp; <span class="php-var">$this</span>-&gt;offsetExists( kTAG_PREDICATE )
+</span><span id="387" class="l"><a class="l" href="#387">387: </a>                  &amp;&amp; <span class="php-var">$this</span>-&gt;offsetExists( kTAG_VERTEX_OBJECT ) );                   <span class="php-comment">// ==&gt;</span>
 </span><span id="388" class="l"><a class="l" href="#388">388: </a>        
 </span><span id="389" class="l"><a class="l" href="#389">389: </a>        <span class="php-keyword1">return</span> <span class="php-keyword1">FALSE</span>;                                                               <span class="php-comment">// ==&gt;</span>
 </span><span id="390" class="l"><a class="l" href="#390">390: </a>    

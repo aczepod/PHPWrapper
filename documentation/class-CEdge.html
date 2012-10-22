@@ -111,13 +111,13 @@ direction of the relation flows from the subject towards the object.</p>
 <p>Objects of this class feature three main properties:</p>
 
 <ul>
-	<li>kOFFSET_VERTEX_SUBJECT: The subject vertex, or the origin of the
+	<li>kTAG_VERTEX_SUBJECT: The subject vertex, or the origin of the
 	relationship.</li>
 
-	<li>kOFFSET_PREDICATE: The predicate reference, or the type of
+	<li>kTAG_PREDICATE: The predicate reference, or the type of
 	relationship.</li>
 
-	<li>kOFFSET_VERTEX_OBJECT: The object vertex, or the destination of the
+	<li>kTAG_VERTEX_OBJECT: The object vertex, or the destination of the
 	relationship.</li>
 </ul>
 
@@ -127,17 +127,17 @@ set.</p>
 <p>The unique identifier of instances of this class is the combination of the
 above three elements, no two edges can connect the same vertices in the same
 direction and with the same predicate. This value is computed and stored in the
-global identifier, kOFFSET_GID, because of this workflow, these three
+global identifier, kTAG_GID, because of this workflow, these three
 values must be convertable to string.</p>
 
 <p>The class features member accessor methods for the default offsets:</p>
 
 <ul>
-	<li><code><a href="class-CEdge.html#_Subject">CEdge::Subject()</a></code>: This method manages the subject vertex, kOFFSET_VERTEX_SUBJECT.</li>
+	<li><code><a href="class-CEdge.html#_Subject">CEdge::Subject()</a></code>: This method manages the subject vertex, kTAG_VERTEX_SUBJECT.</li>
 
-	<li><code><a href="class-CEdge.html#_Predicate">CEdge::Predicate()</a></code>: This method manages the edge's predicate, kOFFSET_PREDICATE.</li>
+	<li><code><a href="class-CEdge.html#_Predicate">CEdge::Predicate()</a></code>: This method manages the edge's predicate, kTAG_PREDICATE.</li>
 
-	<li><code><a href="class-CEdge.html#_Object">CEdge::Object()</a></code>: This method manages the object vertex, kOFFSET_VERTEX_OBJECT.</li>
+	<li><code><a href="class-CEdge.html#_Object">CEdge::Object()</a></code>: This method manages the object vertex, kTAG_VERTEX_OBJECT.</li>
 </ul>
 
 	</div>
@@ -245,7 +245,7 @@ href="mailto:m.skofic&#64;cgiar.org">m.skofic&#64;<!---->cgiar.org</a>&gt;<br />
 			
 <h4>Manage edge subject</h4>
 
-<p>This method can be used to manage the edge's subject vertex, kOFFSET_VERTEX_SUBJECT, which is a reference to an object that represents the
+<p>This method can be used to manage the edge's subject vertex, kTAG_VERTEX_SUBJECT, which is a reference to an object that represents the
 origin of the relationship this edge represents.</p>
 
 <p>The method accepts a parameter which represents the vertex, or the requested
@@ -284,7 +284,7 @@ will be locked and an exception will be raised.</p>
 
 				<h4>See</h4>
 				<div class="list">
-						kOFFSET_VERTEX_SUBJECT<br />
+						kTAG_VERTEX_SUBJECT<br />
 				</div>
 				<h4>Uses</h4>
 				<div class="list">
@@ -318,8 +318,8 @@ will be locked and an exception will be raised.</p>
 			
 <h4>Manage edge predicate</h4>
 
-<p>This method can be used to manage the edge's predicate, kOFFSET_PREDICATE, which is a reference to an object that represents the origin
-of the relationship this edge represents.</p>
+<p>This method can be used to manage the edge's predicate, kTAG_PREDICATE, which is a reference to an object that represents the origin of
+the relationship this edge represents.</p>
 
 <p>The method accepts a parameter which represents the predicate, or the
 requested operation, depending on its value:</p>
@@ -357,7 +357,7 @@ will be locked and an exception will be raised.</p>
 
 				<h4>See</h4>
 				<div class="list">
-						kOFFSET_PREDICATE<br />
+						kTAG_PREDICATE<br />
 				</div>
 				<h4>Uses</h4>
 				<div class="list">
@@ -391,7 +391,7 @@ will be locked and an exception will be raised.</p>
 			
 <h4>Manage edge object</h4>
 
-<p>This method can be used to manage the edge's object vertex, kOFFSET_VERTEX_OBJECT, which is a reference to an object that represents the
+<p>This method can be used to manage the edge's object vertex, kTAG_VERTEX_OBJECT, which is a reference to an object that represents the
 destination of the relationship this edge represents.</p>
 
 <p>The method accepts a parameter which represents the vertex, or the requested
@@ -430,7 +430,7 @@ will be locked and an exception will be raised.</p>
 
 				<h4>See</h4>
 				<div class="list">
-						kOFFSET_VERTEX_OBJECT<br />
+						kTAG_VERTEX_OBJECT<br />
 				</div>
 				<h4>Uses</h4>
 				<div class="list">
@@ -464,7 +464,7 @@ will be locked and an exception will be raised.</p>
 			
 <h4>Return the object's global unique identifier</h4>
 
-<p>The edge class defines the global identifier, kOFFSET_GID, as the
+<p>The edge class defines the global identifier, kTAG_GID, as the
 concatenation of the subject, predicate and object offsets converted to
 string.</p>
 
@@ -493,7 +493,7 @@ exception.</p>
 
 				<h4>See</h4>
 				<div class="list">
-						kOFFSET_VERTEX_SUBJECT kOFFSET_PREDICATE kOFFSET_VERTEX_OBJECT<br />
+						kTAG_VERTEX_SUBJECT kTAG_PREDICATE kTAG_VERTEX_OBJECT<br />
 						kTOKEN_INDEX_SEPARATOR<br />
 				</div>
 
@@ -526,7 +526,9 @@ exception.</p>
 			
 <h4>Handle offset before unsetting it</h4>
 
-<p>In this class we prevent the modification of the kOFFSET_VERTEX_SUBJECT, kOFFSET_PREDICATE and kOFFSET_VERTEX_OBJECT offsets if the object is committed.</p>
+<p>In this class we prevent the modification of the kTAG_VERTEX_SUBJECT,
+kTAG_PREDICATE and kTAG_VERTEX_OBJECT offsets if the object is
+committed.</p>
 
 
 
@@ -544,7 +546,7 @@ exception.</p>
 
 				<h4>See</h4>
 				<div class="list">
-						kOFFSET_VERTEX_SUBJECT kOFFSET_PREDICATE kOFFSET_VERTEX_OBJECT<br />
+						kTAG_VERTEX_SUBJECT kTAG_PREDICATE kTAG_VERTEX_OBJECT<br />
 				</div>
 				<h4>Uses</h4>
 				<div class="list">
@@ -581,8 +583,7 @@ exception.</p>
 <h4>Determine if the object is ready</h4>
 
 <p>In this class we tie the <code><a href="class-CStatusDocument.html#__IsInited">CStatusDocument::_IsInited()</a></code> status to the presence or
-absence of the kOFFSET_VERTEX_SUBJECT, kOFFSET_PREDICATE and
-kOFFSET_VERTEX_OBJECT offsets.</p>
+absence of the kTAG_VERTEX_SUBJECT, kTAG_PREDICATE and kTAG_VERTEX_OBJECT offsets.</p>
 
 
 
@@ -595,7 +596,7 @@ kOFFSET_VERTEX_OBJECT offsets.</p>
 
 				<h4>See</h4>
 				<div class="list">
-						kOFFSET_VERTEX_SUBJECT kOFFSET_PREDICATE kOFFSET_VERTEX_OBJECT<br />
+						kTAG_VERTEX_SUBJECT kTAG_PREDICATE kTAG_VERTEX_OBJECT<br />
 				</div>
 				<h4>Uses</h4>
 				<div class="list">

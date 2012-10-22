@@ -40,32 +40,31 @@ require_once( kPATH_MYWRAPPER_LIBRARY_CLASS."/CPersistentObject.php" );
  * an abstract concept if considered by itself, but takes a precise meaning if related to
  * other terms, as a sequence of words that constitute a statement.
  *
- * Terms are uniquely identified by their global identifier, {@link kOFFSET_GID}, which is a
+ * Terms are uniquely identified by their global identifier, {@link kTAG_GID}, which is a
  * string code formed by the concatenation of two elements of the object: the namespace,
- * {@link kOFFSET_NAMESPACE}, which represents the group to which the term belongs and the
- * local identifier, {@link kOFFSET_LID}, which represents the unique identifier of the term
+ * {@link kTAG_NAMESPACE}, which represents the group to which the term belongs and the
+ * local identifier, {@link kTAG_LID}, which represents the unique identifier of the term
  * within its namespace. These two elements are separated by the
  * {@link kTOKEN_NAMESPACE_SEPARATOR} token and the resulting string is set into the
- * object's {@link kOFFSET_GID}.
+ * object's {@link kTAG_GID}.
  *
  * In this class we do not hash the native identifier, {@link kOFFSET_NID}.
  *
  * When the object is committed, {@link _IsCommitted()}, besides the global and native
- * identifiers, also the {@link kOFFSET_NAMESPACE} and {@link kOFFSET_LID} offsets will be
- * locked, since they are used to generate the global identifier, {@link kOFFSET_GID}.
+ * identifiers, also the {@link kTAG_NAMESPACE} and {@link kTAG_LID} offsets will be
+ * locked, since they are used to generate the global identifier, {@link kTAG_GID}.
  *
  * The object will have its {@link _IsInited()} status set if the local unique identifier,
- * {@link kOFFSET_LID}, is set.
+ * {@link kTAG_LID}, is set.
  *
  * Finally, the class features member accessor methods for the default offsets:
  *
  * <ul>
- *	<li>{@link NS()}: This method manages the term's namespace, {@link kOFFSET_NAMESPACE}.
- *	<li>{@link LID()}: This method manages the local unique identifier,
- *		{@link kOFFSET_LID}.
- *	<li>{@link Label()}: This method manages the term label, {@link kOFFSET_LABEL}.
+ *	<li>{@link NS()}: This method manages the term's namespace, {@link kTAG_NAMESPACE}.
+ *	<li>{@link LID()}: This method manages the local unique identifier, {@link kTAG_LID}.
+ *	<li>{@link Label()}: This method manages the term label, {@link kTAG_LABEL}.
  *	<li>{@link Description()}: This method manages the term label,
- *		{@link kOFFSET_DESCRIPTION}.
+ *		{@link kTAG_DESCRIPTION}.
  * </ul>
  *
  *	@package	MyWrapper
@@ -90,7 +89,7 @@ class CTerm extends CPersistentObject
 	/**
 	 * <h4>Manage namespace native identifier</h4>
 	 *
-	 * The <i>namespace native identifier</i>, {@link kOFFSET_NAMESPACE}, holds the native
+	 * The <i>namespace native identifier</i>, {@link kTAG_NAMESPACE}, holds the native
 	 * identifier of the object that represents the term's namespace.
 	 *
 	 * The method accepts a parameter which represents either the namespace or the
@@ -117,11 +116,11 @@ class CTerm extends CPersistentObject
 	 *
 	 * @uses ManageOffset()
 	 *
-	 * @see kOFFSET_NAMESPACE
+	 * @see kTAG_NAMESPACE
 	 */
 	public function NS( $theValue = NULL, $getOld = FALSE )
 	{
-		return ManageOffset( $this, kOFFSET_NAMESPACE, $theValue, $getOld );		// ==>
+		return ManageOffset( $this, kTAG_NAMESPACE, $theValue, $getOld );			// ==>
 
 	} // NS.
 
@@ -133,7 +132,7 @@ class CTerm extends CPersistentObject
 	/**
 	 * <h4>Manage local unique identifier</h4>
 	 *
-	 * The <i>local unique identifier</i>, {@link kOFFSET_LID}, holds a string which
+	 * The <i>local unique identifier</i>, {@link kTAG_LID}, holds a string which
 	 * represents the object's unique identifier within its namespace, this value is
 	 * concatenated to the eventual's namespace's global identifier to form the term's
 	 * global identifier. 
@@ -162,11 +161,11 @@ class CTerm extends CPersistentObject
 	 *
 	 * @uses ManageOffset()
 	 *
-	 * @see kOFFSET_LID
+	 * @see kTAG_LID
 	 */
 	public function LID( $theValue = NULL, $getOld = FALSE )
 	{
-		return ManageOffset( $this, kOFFSET_LID, $theValue, $getOld );				// ==>
+		return ManageOffset( $this, kTAG_LID, $theValue, $getOld );					// ==>
 
 	} // LID.
 
@@ -178,14 +177,15 @@ class CTerm extends CPersistentObject
 	/**
 	 * <h4>Manage term label</h4>
 	 *
-	 * The term <i>label</i>, {@link kOFFSET_LABEL}, represents the term's name or short
+	 * The term <i>label</i>, {@link kTAG_LABEL}, represents the term's name or short
 	 * human readable description. It is an optional attribute of the object that holds
 	 * an array of elements structured as follows:
 	 *
 	 * <ul>
-	 *	<li>{@link kOFFSET_DATA}: This item holds the label string, the item is required.
-	 *	<li>{@link kOFFSET_LANGUAGE}: This item holds the two character ISO 639 language
-	 *		code of the string, this element is optional.
+	 *	<li>{@link kTAG_LABEL_STRING}: This item holds the label string, the item is
+	 *		required.
+	 *	<li>{@link kTAG_LABEL_LANGUAGE}: This item holds the three character ISO 639
+	 *		language code of the string, this element is optional.
 	 * </ul>
 	 *
 	 * No two elements may share the same language code and only one element may omit the
@@ -217,12 +217,12 @@ class CTerm extends CPersistentObject
 	 *
 	 * @uses ManageTypedOffset()
 	 *
-	 * @see kOFFSET_LABEL
+	 * @see kTAG_LABEL kTAG_LABEL_LANGUAGE kTAG_LABEL_STRING
 	 */
 	public function Label( $theLanguage = NULL, $theValue = NULL, $getOld = FALSE )
 	{
 		return ManageTypedOffset( $this,
-								  kOFFSET_LABEL, kOFFSET_LANGUAGE, kOFFSET_DATA,
+								  kTAG_LABEL, kTAG_LABEL_LANGUAGE, kTAG_LABEL_STRING,
 								  $theLanguage, $theValue, $getOld );				// ==>
 
 	} // Label.
@@ -235,15 +235,15 @@ class CTerm extends CPersistentObject
 	/**
 	 * <h4>Manage term description</h4>
 	 *
-	 * The term <i>description</i>, {@link kOFFSET_DESCRIPTION}, represents the term's
+	 * The term <i>description</i>, {@link kTAG_DESCRIPTION}, represents the term's
 	 * definition or human readable description. It is an optional attribute of the object
 	 * that holds an array of elements structured as follows:
 	 *
 	 * <ul>
-	 *	<li>{@link kOFFSET_DATA}: This item holds the description string, the item is
-	 *		required.
-	 *	<li>{@link kOFFSET_LANGUAGE}: This item holds the two character ISO 639 language
-	 *		code of the string, this element is optional.
+	 *	<li>{@link kTAG_DESCRIPTION_STRING}: This item holds the description string, the
+	 *		item is required.
+	 *	<li>{@link kTAG_DESCRIPTION_LANGUAGE}: This item holds the three character ISO 639
+	 *		language code of the string, this element is optional.
 	 * </ul>
 	 *
 	 * No two elements may share the same language code and only one element may omit the
@@ -276,12 +276,14 @@ class CTerm extends CPersistentObject
 	 *
 	 * @uses ManageTypedOffset()
 	 *
-	 * @see kOFFSET_DESCRIPTION
+	 * @see kTAG_DESCRIPTION kTAG_DESCRIPTION_LANGUAGE kTAG_DESCRIPTION_STRING
 	 */
 	public function Description( $theLanguage = NULL, $theValue = NULL, $getOld = FALSE )
 	{
 		return ManageTypedOffset( $this,
-								  kOFFSET_DESCRIPTION, kOFFSET_LANGUAGE, kOFFSET_DATA,
+								  kTAG_DESCRIPTION,
+								  kTAG_DESCRIPTION_LANGUAGE,
+								  kTAG_DESCRIPTION_STRING,
 								  $theLanguage, $theValue, $getOld );				// ==>
 
 	} // Description.
@@ -294,7 +296,7 @@ class CTerm extends CPersistentObject
 	/**
 	 * <h4>Manage term synonyms</h4>
 	 *
-	 * This method can be used to manage the term's synonyms, {@link kOFFSET_SYNONYMS},
+	 * This method can be used to manage the term's synonyms, {@link kTAG_SYNONYMS},
 	 * which contains a list of strings that represent alternate codes or names that can be
 	 * used to identify the term.
 	 *
@@ -346,12 +348,12 @@ class CTerm extends CPersistentObject
 	 *
 	 * @uses ManageObjectSetOffset()
 	 *
-	 * @see kOFFSET_SYNONYMS
+	 * @see kTAG_SYNONYMS
 	 */
 	public function Synonym( $theValue = NULL, $theOperation = NULL, $getOld = FALSE )
 	{
 		return ManageObjectSetOffset
-			( $this, kOFFSET_SYNONYMS, $theValue, $theOperation, $getOld );			// ==>
+			( $this, kTAG_SYNONYMS, $theValue, $theOperation, $getOld );			// ==>
 
 	} // Synonym.
 
@@ -363,7 +365,7 @@ class CTerm extends CPersistentObject
 	/**
 	 * <h4>Manage term reference</h4>
 	 *
-	 * This method can be used to manage the term reference, {@link kOFFSET_TERM}, which
+	 * This method can be used to manage the term reference, {@link kTAG_TERM}, which
 	 * represents the term that hosts all the attributes for the current term.
 	 *
 	 * This attribute is used when defining exact term synonyms: instead of duplicating the
@@ -391,11 +393,11 @@ class CTerm extends CPersistentObject
 	 *
 	 * @uses ManageOffset()
 	 *
-	 * @see kOFFSET_TERM
+	 * @see kTAG_TERM
 	 */
 	public function Term( $theValue = NULL, $getOld = FALSE )
 	{
-		return ManageOffset( $this, kOFFSET_TERM, $theValue, $getOld );				// ==>
+		return ManageOffset( $this, kTAG_TERM, $theValue, $getOld );				// ==>
 
 	} // Term.
 		
@@ -426,7 +428,7 @@ class CTerm extends CPersistentObject
 	 * @static
 	 * @return string				The term's global unique identifier.
 	 *
-	 * @see kOFFSET_GID kOFFSET_NAMESPACE kTOKEN_NAMESPACE_SEPARATOR
+	 * @see kTAG_GID kTAG_NAMESPACE kTOKEN_NAMESPACE_SEPARATOR
 	 */
 	static function TermCode( $theIdentifier, $theNamespace = NULL )
 	{
@@ -475,17 +477,17 @@ class CTerm extends CPersistentObject
 	 * @access protected
 	 * @return string|NULL			The object's global unique identifier.
 	 *
-	 * @see kOFFSET_LID kOFFSET_NAMESPACE kTOKEN_NAMESPACE_SEPARATOR
+	 * @see kTAG_LID kTAG_NAMESPACE kTOKEN_NAMESPACE_SEPARATOR
 	 */
 	protected function _index( CConnection $theConnection, $theModifiers )
 	{
 		//
 		// Get term local identifier.
 		//
-		if( $this->offsetExists( kOFFSET_LID ) )
-			return static::TermCode( $this->offsetGet( kOFFSET_LID ),
-									 ( $this->offsetExists( kOFFSET_NAMESPACE ) )
-									 ? $this->offsetGet( kOFFSET_NAMESPACE )
+		if( $this->offsetExists( kTAG_LID ) )
+			return static::TermCode( $this->offsetGet( kTAG_LID ),
+									 ( $this->offsetExists( kTAG_NAMESPACE ) )
+									 ? $this->offsetGet( kTAG_NAMESPACE )
 									 : NULL );										// ==>
 		
 		return parent::_index( $theContainer, $theModifiers );						// ==>
@@ -513,7 +515,7 @@ class CTerm extends CPersistentObject
 	 * the object's identifier if the object has its {@link _IsCommitted()} status set. This
 	 * is because referenced objects must not change identifier.
 	 *
-	 * The {@link kOFFSET_NAMESPACE} and {@link kOFFSET_LID} are locked if the object was
+	 * The {@link kTAG_NAMESPACE} and {@link kTAG_LID} are locked if the object was
 	 * committed, {@link _IsCommitted()}.
 	 *
 	 * @param reference			   &$theOffset			Offset.
@@ -525,14 +527,14 @@ class CTerm extends CPersistentObject
 	 *
 	 * @uses _IsCommitted()
 	 *
-	 * @see kOFFSET_NAMESPACE kOFFSET_LID
+	 * @see kTAG_NAMESPACE kTAG_LID
 	 */
 	protected function _Preset( &$theOffset, &$theValue )
 	{
 		//
 		// Intercept namespace and local identifier.
 		//
-		$offsets = array( kOFFSET_NAMESPACE, kOFFSET_LID );
+		$offsets = array( kTAG_NAMESPACE, kTAG_LID );
 		if( $this->_IsCommitted()
 		 && in_array( $theOffset, $offsets ) )
 			throw new Exception
@@ -543,7 +545,7 @@ class CTerm extends CPersistentObject
 		//
 		// Check label and description types.
 		//
-		$offsets = array( kOFFSET_LABEL, kOFFSET_DESCRIPTION );
+		$offsets = array( kTAG_LABEL, kTAG_DESCRIPTION );
 		if( in_array( $theOffset, $offsets )
 		 && ($theValue !== NULL)
 		 && (! is_array( $theValue )) )
@@ -571,7 +573,7 @@ class CTerm extends CPersistentObject
 	 * the object's identifier if the object has its {@link _IsCommitted()} status set. This
 	 * is because referenced objects must not change identifier.
 	 *
-	 * The {@link kOFFSET_NAMESPACE} and {@link kOFFSET_LID} are locked if the object was
+	 * The {@link kTAG_NAMESPACE} and {@link kTAG_LID} are locked if the object was
 	 * committed, {@link _IsCommitted()}.
 	 *
 	 * @param reference			   &$theOffset			Offset.
@@ -582,14 +584,14 @@ class CTerm extends CPersistentObject
 	 *
 	 * @uses _IsCommitted()
 	 *
-	 * @see kOFFSET_NAMESPACE kOFFSET_LID
+	 * @see kTAG_NAMESPACE kTAG_LID
 	 */
 	protected function _Preunset( &$theOffset )
 	{
 		//
 		// Intercept namespace and local identifier.
 		//
-		$offsets = array( kOFFSET_NAMESPACE, kOFFSET_LID );
+		$offsets = array( kTAG_NAMESPACE, kTAG_LID );
 		if( $this->_IsCommitted()
 		 && in_array( $theOffset, $offsets ) )
 			throw new Exception
@@ -622,14 +624,14 @@ class CTerm extends CPersistentObject
 	 * <h4>Determine if the object is ready</h4>
 	 *
 	 * In this class we tie the {@link _IsInited()} status to the presence or absence of the
-	 * {@link kOFFSET_LID} offset.
+	 * {@link kTAG_LID} offset.
 	 *
 	 * @access protected
 	 * @return boolean				<tt>TRUE</tt> means {@link _IsInited( <tt>TRUE</tt> ).
 	 *
 	 * @uses _Ready()
 	 *
-	 * @see kOFFSET_LID
+	 * @see kTAG_LID
 	 */
 	protected function _Ready()
 	{
@@ -637,7 +639,7 @@ class CTerm extends CPersistentObject
 		// Check parent.
 		//
 		if( parent::_Ready() )
-			return $this->offsetExists( kOFFSET_LID );								// ==>
+			return $this->offsetExists( kTAG_LID );									// ==>
 		
 		return FALSE;																// ==>
 	

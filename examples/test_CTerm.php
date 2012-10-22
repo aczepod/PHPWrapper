@@ -227,8 +227,8 @@ try
 	$termA = new MyClass();
 	echo( '<h5>$termA->NS( $namespace );</h5>' );
 	$termA->NS( $namespace );
-	echo( '<h5>$termA[ kOFFSET_LID ] = "A";</h5>' );
-	$termA[ kOFFSET_LID ] = "A";
+	echo( '<h5>$termA[ kTAG_LID ] = "A";</h5>' );
+	$termA[ kTAG_LID ] = "A";
 	echo( '<h5>$status = $termA->Insert( $container );</h5>' );
 	$status = $termA->Insert( $container );
 	echo( 'Inited['.$termA->inited()
@@ -244,8 +244,8 @@ try
 	try
 	{
 		echo( '<h4>Test namespace lock</h4>' );
-		echo( '<h5>$termA[ kOFFSET_NAMESPACE ] = NULL;</h5>' );
-		$termA[ kOFFSET_NAMESPACE ] = NULL;
+		echo( '<h5>$termA[ kTAG_NAMESPACE ] = NULL;</h5>' );
+		$termA[ kTAG_NAMESPACE ] = NULL;
 		echo( '<h3><font color="red">Should have raised an exception</font></h3>' );
 		echo( 'Inited['.$namespace->inited()
 					   .'] Dirty['.$namespace->dirty()
@@ -268,8 +268,8 @@ try
 	try
 	{
 		echo( '<h4>Test local identifier lock</h4>' );
-		echo( '<h5>$termA[ kOFFSET_LID ] = "B";</h5>' );
-		$termA[ kOFFSET_LID ] = "B";
+		echo( '<h5>$termA[ kTAG_LID ] = "B";</h5>' );
+		$termA[ kTAG_LID ] = "B";
 		echo( '<h3><font color="red">Should have raised an exception</font></h3>' );
 		echo( 'Inited['.$namespace->inited()
 					   .'] Dirty['.$namespace->dirty()
@@ -294,8 +294,8 @@ try
 	$termB = new MyClass();
 	echo( '<h5>$termB->NS( (string) $namespace );</h5>' );
 	$termB->NS( (string) $namespace );
-	echo( '<h5>$termB[ kOFFSET_LID ] = "B";</h5>' );
-	$termB[ kOFFSET_LID ] = "B";
+	echo( '<h5>$termB[ kTAG_LID ] = "B";</h5>' );
+	$termB[ kTAG_LID ] = "B";
 	echo( '<h5>$status = $termB->Insert( $container );</h5>' );
 	$status = $termB->Insert( $container );
 	echo( 'Inited['.$termB->inited()
@@ -440,8 +440,8 @@ try
 	try
 	{
 		echo( '<h4>Set wrong description</h4>' );
-		echo( '<h5>$termB[ kOFFSET_DESCRIPTION ] = "Description";</h5>' );
-		$termB[ kOFFSET_DESCRIPTION ] = "Description";
+		echo( '<h5>$termB[ kTAG_DESCRIPTION ] = "Description";</h5>' );
+		$termB[ kTAG_DESCRIPTION ] = "Description";
 		echo( '<h3><font color="red">Should have raised an exception</font></h3>' );
 		echo( '<pre>' ); print_r( $namespace ); echo( '</pre>' );
 		echo( '<hr />' );

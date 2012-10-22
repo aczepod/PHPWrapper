@@ -39,18 +39,18 @@ require_once( kPATH_MYWRAPPER_LIBRARY_CLASS."/CTerm.php" );
  * This class extends its ancestor, {@link CTerm}, by adding new rules and reference
  * management.
  *
- * In this class, the namespace, {@link kOFFSET_NAMESPACE}, is a reference to another object
+ * In this class, the namespace, {@link kTAG_NAMESPACE}, is a reference to another object
  * derived from this class. This means that the offset will contain the native identifier of
  * the namespace term and that this namespace offset must reside in the same container as
  * the current term.
  *
- * The class features an offset, {@link kOFFSET_REFS_NAMESPACE}, that keeps a reference
+ * The class features an offset, {@link kTAG_REFS_NAMESPACE}, that keeps a reference
  * count of how many times the current term has been referenced as namespace, that is, the
  * number of times this term was used as a namespace by other terms. This offset is updated
  * in the {@link _Postcommit()} method.
  *
- * The class features also two other offsets, {@link kOFFSET_REFS_NODE} and
- * {@link kOFFSET_REFS_TAG}, which collect respectively the list of node identifiers who
+ * The class features also two other offsets, {@link kTAG_REFS_NODE} and
+ * {@link kTAG_REFS_TAG}, which collect respectively the list of node identifiers who
  * reference this term, and the list of tags that reference the term. These offsets are
  * managed by the referenced objects.
  *
@@ -66,14 +66,14 @@ require_once( kPATH_MYWRAPPER_LIBRARY_CLASS."/CTerm.php" );
  *
  * <ul>
  *	<li>{@link NamespaceRefs()}: This method returns the term's namespace references,
- *		{@link kOFFSET_REFS_NAMESPACE}.
+ *		{@link kTAG_REFS_NAMESPACE}.
  *	<li>{@link NodeRefs()}: This method returns the term's node references,
- *		{@link kOFFSET_REFS_NODE}.
+ *		{@link kTAG_REFS_NODE}.
  *	<li>{@link TagRefs()}: This method returns the term's tag references,
- *		{@link kOFFSET_REFS_TAG}.
+ *		{@link kTAG_REFS_TAG}.
  *	<li>{@link LoadNamespace()}: This method will return the eventual namespace object
- *		pointed by {@link kOFFSET_NAMESPACE}.
- *		{@link kOFFSET_REFS_NAMESPACE}.
+ *		pointed by {@link kTAG_NAMESPACE}.
+ *		{@link kTAG_REFS_NAMESPACE}.
  * </ul>
  *
  *	@package	MyWrapper
@@ -116,24 +116,24 @@ class COntologyTerm extends CTerm
 	/**
 	 * <h4>Manage namespace references</h4>
 	 *
-	 * The <i>namespace references</i>, {@link kOFFSET_REFS_NAMESPACE}, holds an integer
+	 * The <i>namespace references</i>, {@link kTAG_REFS_NAMESPACE}, holds an integer
 	 * which represents the number of times the current term has been referenced as a
-	 * namespace, that is, stored in the {@link kOFFSET_NAMESPACE} offset of another term.
+	 * namespace, that is, stored in the {@link kTAG_NAMESPACE} offset of another term.
 	 *
 	 * The method is read-only, because this value must be managed externally.
 	 *
 	 * @access public
 	 * @return integer				Namespace reference count.
 	 *
-	 * @see kOFFSET_REFS_NAMESPACE
+	 * @see kTAG_REFS_NAMESPACE
 	 */
 	public function NamespaceRefs()
 	{
 		//
 		// Handle reference count.
 		//
-		if( $this->offsetExists( kOFFSET_REFS_NAMESPACE ) )
-			return $this->offsetGet( kOFFSET_REFS_NAMESPACE );						// ==>
+		if( $this->offsetExists( kTAG_REFS_NAMESPACE ) )
+			return $this->offsetGet( kTAG_REFS_NAMESPACE );							// ==>
 		
 		return 0;																	// ==>
 
@@ -147,7 +147,7 @@ class COntologyTerm extends CTerm
 	/**
 	 * <h4>Manage node references</h4>
 	 *
-	 * The <i>node references</i>, {@link kOFFSET_REFS_NODE}, holds a list of identifiers of
+	 * The <i>node references</i>, {@link kTAG_REFS_NODE}, holds a list of identifiers of
 	 * nodes that reference the term.
 	 *
 	 * The method is read-only, because this value must be managed externally.
@@ -155,15 +155,15 @@ class COntologyTerm extends CTerm
 	 * @access public
 	 * @return array				Nodes reference list.
 	 *
-	 * @see kOFFSET_REFS_NODE
+	 * @see kTAG_REFS_NODE
 	 */
 	public function NodeRefs()
 	{
 		//
 		// Handle reference count.
 		//
-		if( $this->offsetExists( kOFFSET_REFS_NODE ) )
-			return $this->offsetGet( kOFFSET_REFS_NODE );							// ==>
+		if( $this->offsetExists( kTAG_REFS_NODE ) )
+			return $this->offsetGet( kTAG_REFS_NODE );								// ==>
 		
 		return Array();																// ==>
 
@@ -177,7 +177,7 @@ class COntologyTerm extends CTerm
 	/**
 	 * <h4>Manage tag references</h4>
 	 *
-	 * The <i>tag references</i>, {@link kOFFSET_REFS_TAG}, holds a list of identifiers of
+	 * The <i>tag references</i>, {@link kTAG_REFS_TAG}, holds a list of identifiers of
 	 * tags that reference the term.
 	 *
 	 * The method is read-only, because this value must be managed externally.
@@ -185,15 +185,15 @@ class COntologyTerm extends CTerm
 	 * @access public
 	 * @return array				Tags reference list.
 	 *
-	 * @see kOFFSET_REFS_TAG
+	 * @see kTAG_REFS_TAG
 	 */
 	public function TagRefs()
 	{
 		//
 		// Handle reference count.
 		//
-		if( $this->offsetExists( kOFFSET_REFS_TAG ) )
-			return $this->offsetGet( kOFFSET_REFS_TAG );							// ==>
+		if( $this->offsetExists( kTAG_REFS_TAG ) )
+			return $this->offsetGet( kTAG_REFS_TAG );								// ==>
 		
 		return Array();																// ==>
 
@@ -232,14 +232,14 @@ class COntologyTerm extends CTerm
 	 * @access public
 	 * @return COntologyTerm		Namespace object or <tt>NULL</tt>.
 	 *
-	 * @see kOFFSET_NAMESPACE
+	 * @see kTAG_NAMESPACE
 	 */
 	public function LoadNamespace( CConnection $theConnection, $doReload = FALSE )
 	{
 		//
 		// Check offset.
 		//
-		if( $this->offsetExists( kOFFSET_NAMESPACE ) )
+		if( $this->offsetExists( kTAG_NAMESPACE ) )
 		{
 			//
 			// Refresh cache.
@@ -251,7 +251,7 @@ class COntologyTerm extends CTerm
 				//
 				// Handle namespace object.
 				//
-				$namespace = $this->offsetGet( kOFFSET_NAMESPACE );
+				$namespace = $this->offsetGet( kTAG_NAMESPACE );
 				if( $namespace instanceof self )
 					return $namespace;												// ==>
 				
@@ -307,14 +307,14 @@ class COntologyTerm extends CTerm
 	 *
 	 * @uses NewObject()
 	 *
-	 * @see kOFFSET_TERM
+	 * @see kTAG_TERM
 	 */
 	public function LoadTerm( CConnection $theConnection, $doReload = FALSE )
 	{
 		//
 		// Check offset.
 		//
-		if( $this->offsetExists( kOFFSET_TERM ) )
+		if( $this->offsetExists( kTAG_TERM ) )
 		{
 			//
 			// Refresh cache.
@@ -326,7 +326,7 @@ class COntologyTerm extends CTerm
 				//
 				// Handle term object.
 				//
-				$term = $this->offsetGet( kOFFSET_TERM );
+				$term = $this->offsetGet( kTAG_TERM );
 				if( $term instanceof COntologyTerm )
 					return $term;													// ==>
 				
@@ -527,9 +527,9 @@ class COntologyTerm extends CTerm
 			//
 			// Set modification criteria.
 			//
-			$mod = ( $theIdentifier->offsetExists( kOFFSET_LABEL ) )
-				 ? array( kOFFSET_LABEL => $theIdentifier->offsetGet( kOFFSET_LABEL ) )
-				 : array( kOFFSET_LABEL => NULL );
+			$mod = ( $theIdentifier->offsetExists( kTAG_LABEL ) )
+				 ? array( kTAG_LABEL => $theIdentifier->offsetGet( kTAG_LABEL ) )
+				 : array( kTAG_LABEL => NULL );
 			
 			//
 			// Update object.
@@ -688,7 +688,7 @@ class COntologyTerm extends CTerm
 				//
 				// Handle missing namespace identifier.
 				//
-				if( ! $theNamespace->offsetExists( kOFFSET_GID ) )
+				if( ! $theNamespace->offsetExists( kTAG_GID ) )
 				{
 					if( $doThrow )
 						throw new Exception
@@ -702,7 +702,7 @@ class COntologyTerm extends CTerm
 				//
 				// Build term identifier.
 				//
-				$id = static::_id( ($theNamespace->offsetGet( kOFFSET_GID )
+				$id = static::_id( ($theNamespace->offsetGet( kTAG_GID )
 										  .kTOKEN_NAMESPACE_SEPARATOR
 										  .(string) $theIdentifier),
 										  $theConnection );
@@ -850,12 +850,12 @@ class COntologyTerm extends CTerm
 		//
 		// Handle namespace.
 		//
-		if( $this->offsetExists( kOFFSET_NAMESPACE ) )
-			return $this->mNamespace->offsetGet( kOFFSET_GID )
+		if( $this->offsetExists( kTAG_NAMESPACE ) )
+			return $this->mNamespace->offsetGet( kTAG_GID )
 				  .kTOKEN_NAMESPACE_SEPARATOR
-				  .$this->offsetGet( kOFFSET_LID );									// ==>
+				  .$this->offsetGet( kTAG_LID );									// ==>
 		
-		return $this->offsetGet( kOFFSET_LID );										// ==>
+		return $this->offsetGet( kTAG_LID );										// ==>
 	
 	} // _index.
 		
@@ -877,8 +877,8 @@ class COntologyTerm extends CTerm
 	 * <h4>Handle offset before setting it</h4>
 	 *
 	 * In this class we prevent the modification of the three
-	 * {@link kOFFSET_REFS_NAMESPACE}, {@link kOFFSET_REFS_NODE} and
-	 * {@link kOFFSET_REFS_TAG} offsets in all cases, since they must be programmatically
+	 * {@link kTAG_REFS_NAMESPACE}, {@link kTAG_REFS_NODE} and
+	 * {@link kTAG_REFS_TAG} offsets in all cases, since they must be programmatically
 	 * managed directly by the container and not through the object.
 	 *
 	 * We also handle the namespace offset, if provided as an object we leave it unchanged
@@ -887,8 +887,8 @@ class COntologyTerm extends CTerm
 	 * {@link CDocument} descendants to be of this class; any other type is assumed to be
 	 * the namespace identifier.
 	 *
-	 * In this class the local identifier, {@link kOFFSET_LID}, is a string, in this method
-	 * we cast the parameter to that type.
+	 * In this class the local identifier, {@link kTAG_LID}, is a string, in this method we
+	 * cast the parameter to that type.
 	 *
 	 * @param reference			   &$theOffset			Offset.
 	 * @param reference			   &$theValue			Value to set at offset.
@@ -899,15 +899,15 @@ class COntologyTerm extends CTerm
 	 *
 	 * @uses _AssertClass()
 	 *
-	 * @see kOFFSET_NAMESPACE kOFFSET_LID kOFFSET_NID
-	 * @see kOFFSET_REFS_NAMESPACE kOFFSET_REFS_NODE kOFFSET_REFS_TAG
+	 * @see kTAG_NAMESPACE kTAG_LID kOFFSET_NID
+	 * @see kTAG_REFS_NAMESPACE kTAG_REFS_NODE kTAG_REFS_TAG
 	 */
 	protected function _Preset( &$theOffset, &$theValue )
 	{
 		//
 		// Intercept reference offsets.
 		//
-		$offsets = array( kOFFSET_REFS_NAMESPACE, kOFFSET_REFS_NODE, kOFFSET_REFS_TAG );
+		$offsets = array( kTAG_REFS_NAMESPACE, kTAG_REFS_NODE, kTAG_REFS_TAG );
 		if( in_array( $theOffset, $offsets ) )
 			throw new Exception
 				( "The [$theOffset] offset cannot be modified",
@@ -917,13 +917,13 @@ class COntologyTerm extends CTerm
 		// Cast local identifier.
 		//
 		if( ($theValue !== NULL )
-		 && ($theOffset == kOFFSET_LID) )
+		 && ($theOffset == kTAG_LID) )
 			$theValue = (string) $theValue;
 		
 		//
 		// Handle namespace.
 		//
-		if( $theOffset == kOFFSET_NAMESPACE )
+		if( $theOffset == kTAG_NAMESPACE )
 		{
 			//
 			// Check value type.
@@ -975,7 +975,7 @@ class COntologyTerm extends CTerm
 		//
 		// Handle term.
 		//
-		if( $theOffset == kOFFSET_TERM )
+		if( $theOffset == kTAG_TERM )
 		{
 			//
 			// Lock term if object is committed.
@@ -1049,8 +1049,8 @@ class COntologyTerm extends CTerm
 	 * <h4>Handle offset before unsetting it</h4>
 	 *
 	 * In this class we prevent the modification of the three
-	 * {@link kOFFSET_REFS_NAMESPACE}, {@link kOFFSET_REFS_NODE} and
-	 * {@link kOFFSET_REFS_TAG} offsets in all cases, since they must be programmatically
+	 * {@link kTAG_REFS_NAMESPACE}, {@link kTAG_REFS_NODE} and
+	 * {@link kTAG_REFS_TAG} offsets in all cases, since they must be programmatically
 	 * managed directly by the container and not through the object.
 	 *
 	 * The parent class will take care of locking namespace and local identifier if the
@@ -1062,14 +1062,14 @@ class COntologyTerm extends CTerm
 	 *
 	 * @throws Exception
 	 *
-	 * @see kOFFSET_REFS_NAMESPACE kOFFSET_REFS_NODE kOFFSET_REFS_TAG
+	 * @see kTAG_REFS_NAMESPACE kTAG_REFS_NODE kTAG_REFS_TAG
 	 */
 	protected function _Preunset( &$theOffset )
 	{
 		//
 		// Intercept reference offsets.
 		//
-		$offsets = array( kOFFSET_REFS_NAMESPACE, kOFFSET_REFS_NODE, kOFFSET_REFS_TAG );
+		$offsets = array( kTAG_REFS_NAMESPACE, kTAG_REFS_NODE, kTAG_REFS_TAG );
 		if( in_array( $theOffset, $offsets ) )
 			throw new Exception
 				( "The [$theOffset] offset cannot be modified",
@@ -1078,7 +1078,7 @@ class COntologyTerm extends CTerm
 		//
 		// Lock term if object is committed.
 		//
-		if( ($theOffset == kOFFSET_TERM)
+		if( ($theOffset == kTAG_TERM)
 		 && $this->_IsCommitted() )
 			throw new Exception
 				( "You cannot modify the [$theOffset] offset: "
@@ -1088,12 +1088,12 @@ class COntologyTerm extends CTerm
 		//
 		// Remove cached namespace.
 		//
-		if( $theOffset == kOFFSET_NAMESPACE )
+		if( $theOffset == kTAG_NAMESPACE )
 			$this->mNamespace = NULL;
 		
 		//
 		// Call parent method.
-		// Will take care of kOFFSET_NAMESPACE and kOFFSET_NID.
+		// Will take care of kTAG_NAMESPACE and kOFFSET_NID.
 		//
 		parent::_Preunset( $theOffset );
 	
@@ -1139,13 +1139,13 @@ class COntologyTerm extends CTerm
 			//
 			// Handle namespace.
 			//
-			if( $this->offsetExists( kOFFSET_NAMESPACE ) )
+			if( $this->offsetExists( kTAG_NAMESPACE ) )
 			{
 				//
 				// Handle namespace object.
 				// Note that we let _Preset() method take care of the specific class.
 				//
-				$namespace = $this->offsetGet( kOFFSET_NAMESPACE );
+				$namespace = $this->offsetGet( kTAG_NAMESPACE );
 				if( $namespace instanceof self )
 				{
 					//
@@ -1162,7 +1162,7 @@ class COntologyTerm extends CTerm
 					//
 					// Set identifier in namespace.
 					//
-					$this->offsetSet( kOFFSET_NAMESPACE,
+					$this->offsetSet( kTAG_NAMESPACE,
 									  $namespace->offsetGet( kOFFSET_NID ) );
 					
 				} // Namespace is object.
@@ -1179,12 +1179,12 @@ class COntologyTerm extends CTerm
 			// Handle term object.
 			// Note that we let _Preset() method take care of the specific class.
 			//
-			if( $this->offsetExists( kOFFSET_TERM ) )
+			if( $this->offsetExists( kTAG_TERM ) )
 			{
 				//
 				// Get term.
 				//
-				$term = $this->offsetGet( kOFFSET_TERM );
+				$term = $this->offsetGet( kTAG_TERM );
 				if( $term instanceof COntologyTerm )
 				{
 					//
@@ -1202,7 +1202,7 @@ class COntologyTerm extends CTerm
 					//
 					// Set identifier in term offset.
 					//
-					$this->offsetSet( kOFFSET_TERM,
+					$this->offsetSet( kTAG_TERM,
 									  $term->offsetGet( kOFFSET_NID ) );
 					
 				} // Term is object.
@@ -1236,7 +1236,7 @@ class COntologyTerm extends CTerm
 	/**
 	 * <h4>Update related objects after committing</h4>
 	 *
-	 * In this class we let the container increment the {@link kOFFSET_REFS_NAMESPACE} of
+	 * In this class we let the container increment the {@link kTAG_REFS_NAMESPACE} of
 	 * the eventual namespace.
 	 *
 	 * @param reference			   &$theConnection		Server, database or container.
@@ -1249,7 +1249,7 @@ class COntologyTerm extends CTerm
 	 * @uses _IsCommitted()
 	 * @uses _ReferenceNamespace()
 	 *
-	 * @see kOFFSET_NAMESPACE
+	 * @see kTAG_NAMESPACE
 	 * @see kFLAG_PERSIST_INSERT kFLAG_PERSIST_REPLACE kFLAG_PERSIST_DELETE
 	 */
 	protected function _PostcommitRelated( &$theConnection, &$theModifiers )
@@ -1262,7 +1262,7 @@ class COntologyTerm extends CTerm
 		//
 		// Check namespace.
 		//
-		if( $this->offsetExists( kOFFSET_NAMESPACE ) )
+		if( $this->offsetExists( kTAG_NAMESPACE ) )
 		{
 			//
 			// Handle insert or replace.
@@ -1338,7 +1338,7 @@ class COntologyTerm extends CTerm
 	 * <h4>Increment namespace term references</h4>
 	 *
 	 * This method can be used to increment the namespace reference count,
-	 * {@link kOFFSET_REFS_NAMESPACE}, by providing a connection object and an increment
+	 * {@link kTAG_REFS_NAMESPACE}, by providing a connection object and an increment
 	 * delta.
 	 *
 	 * The method will return <tt>TRUE</tt> if the operation affected at least one object,
@@ -1353,7 +1353,7 @@ class COntologyTerm extends CTerm
 	 *
 	 * @uses ResolveContainer()
 	 *
-	 * @see kOFFSET_NAMESPACE kOFFSET_REFS_NAMESPACE
+	 * @see kTAG_NAMESPACE kTAG_REFS_NAMESPACE
 	 * @see kFLAG_PERSIST_MODIFY kFLAG_MODIFY_INCREMENT
 	 */
 	protected function _ReferenceNamespace( CConnection $theConnection, $theCount )
@@ -1361,12 +1361,12 @@ class COntologyTerm extends CTerm
 		//
 		// Check namespace.
 		//
-		if( $this->offsetExists( kOFFSET_NAMESPACE ) )
+		if( $this->offsetExists( kTAG_NAMESPACE ) )
 		{
 			//
 			// Set modification criteria.
 			//
-			$criteria = array( kOFFSET_REFS_NAMESPACE => (int) $theCount );
+			$criteria = array( kTAG_REFS_NAMESPACE => (int) $theCount );
 			
 			//
 			// Let container do the modification.
@@ -1376,7 +1376,7 @@ class COntologyTerm extends CTerm
 					->ManageObject
 						(
 							$criteria,
-							$this->offsetGet( kOFFSET_NAMESPACE ),
+							$this->offsetGet( kTAG_NAMESPACE ),
 							kFLAG_PERSIST_MODIFY + kFLAG_MODIFY_INCREMENT
 						);															// ==>
 		

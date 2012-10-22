@@ -105,33 +105,34 @@ this class are identified within their container.</p>
 <p>The object is uniquely identified by a string, the <i>global unique
 identifier</i>, this string is generally a combination of the object's
 attributes and once set, it should not change. The string is composed by a
-protected method, <code><a href="class-CPersistentObject.html#__index">CPersistentObject::_index()</a></code>, and set into a predefined offset, kOFFSET_GID.</p>
+protected method, <code><a href="class-CPersistentObject.html#__index">CPersistentObject::_index()</a></code>, and set into a predefined offset, kTAG_GID.</p>
 
 <p>This value will be used to generate the <i>native unique identifier</i>,
 kOFFSET_NID, which represents the object's primary key within the
-container in which it is stored. The value is obtained by feeding the kOFFSET_GID to a static method, <code><a href="class-CPersistentObject.html#__id">CPersistentObject::_id()</a></code>, whose function is to transform
-the provided value into one optimised as a primary key. The method is static so
-that any global identifier can be converted into a native one.</p>
+container in which it is stored. The value is obtained by feeding the kTAG_GID to a static method, <code><a href="class-CPersistentObject.html#__id">CPersistentObject::_id()</a></code>, whose function is to transform the
+provided value into one optimised as a primary key. The method is static so that
+any global identifier can be converted into a native one.</p>
 
 <p>Once the object has been committed, these identifiers are locked by the
 <code><a href="class-CPersistentObject.html#__Preset">CPersistentObject::_Preset()</a></code> and <code><a href="class-CPersistentObject.html#__Preunset">CPersistentObject::_Preunset()</a></code> methods to prevent invalidating object
 references.</p>
 
-<p>The class features a predefined offset, kOFFSET_CLASS, that receives
-the class name of the object: this value will be used by the static <code><a href="class-CPersistentObject.html#_NewObject">CPersistentObject::NewObject()</a></code> method to instantiate the correct object.</p>
+<p>The class features a predefined offset, kTAG_CLASS, that receives the
+class name of the object: this value will be used by the static <code><a href="class-CPersistentObject.html#_NewObject">CPersistentObject::NewObject()</a></code> method to instantiate the correct object.</p>
 
 <p>All objects derived from this class should implement the <code><a href="class-CPersistentObject.html#___toString">CPersistentObject::__toString()</a></code>
-method, by default this class returns the global identifier, kOFFSET_GID. Derived classes may change this behaviour, in particular when the
-class does not feature the global identifier: the important thing is to be able
-to cast an object to a string.</p>
+method, by default this class returns the global identifier, kTAG_GID.
+Derived classes may change this behaviour, in particular when the class does not
+feature the global identifier: the important thing is to be able to cast an
+object to a string.</p>
 
 <p>Finally, the class features member accessor methods for the default
 offsets:</p>
 
 <ul>
-	<li><code><a href="class-CPersistentObject.html#_GID">CPersistentObject::GID()</a></code>: This method manages the global unique identifier, kOFFSET_GID.</li>
+	<li><code><a href="class-CPersistentObject.html#_GID">CPersistentObject::GID()</a></code>: This method manages the global unique identifier, kTAG_GID.</li>
 
-	<li>ClassName(): This method manages the object's class name, kOFFSET_CLASS.</li>
+	<li>ClassName(): This method manages the object's class name, kTAG_CLASS.</li>
 </ul>
 
 	</div>
@@ -212,7 +213,7 @@ offsets:</p>
 				<b>Author:</b>
 				Milko A. Škofič &lt;<a
 href="mailto:m.skofic&#64;cgiar.org">m.skofic&#64;<!---->cgiar.org</a>&gt;<br />
-		<b>Located at</b> <a href="source-class-CPersistentObject.html#29-844" title="Go to source code">CPersistentObject.php</a><br />
+		<b>Located at</b> <a href="source-class-CPersistentObject.html#36-851" title="Go to source code">CPersistentObject.php</a><br />
 	</div>
 
 
@@ -230,7 +231,7 @@ href="mailto:m.skofic&#64;cgiar.org">m.skofic&#64;<!---->cgiar.org</a>&gt;<br />
 
 		<td class="name"><div>
 		<a class="anchor" href="#___toString">#</a>
-		<code><a href="source-class-CPersistentObject.html#88-115" title="Go to source code">__toString</a>( )</code>
+		<code><a href="source-class-CPersistentObject.html#95-122" title="Go to source code">__toString</a>( )</code>
 
 		<div class="description short">
 			
@@ -245,10 +246,10 @@ href="mailto:m.skofic&#64;cgiar.org">m.skofic&#64;<!---->cgiar.org</a>&gt;<br />
 <p>This method should return the current object's name which should represent
 the unique identifier of the object.</p>
 
-<p>By default we return the value of the kOFFSET_GID offset, if this
-offset is missing, the method will return <tt>NULL</tt>, which will result in a
-fatal error. This behaviour is intentional, since in this case the returned
-value is not correct and because this method cannot throw exceptions.</p>
+<p>By default we return the value of the kTAG_GID offset, if this offset
+is missing, the method will return <tt>NULL</tt>, which will result in a fatal
+error. This behaviour is intentional, since in this case the returned value is
+not correct and because this method cannot throw exceptions.</p>
 
 
 
@@ -275,7 +276,7 @@ value is not correct and because this method cannot throw exceptions.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#_GID">#</a>
-		<code><a href="source-class-CPersistentObject.html#131-169" title="Go to source code">GID</a>( <span>mixed <var>$theValue</var> = <span class="php-keyword1">NULL</span></span>, <span>boolean <var>$getOld</var> = <span class="php-keyword1">FALSE</span> </span> )</code>
+		<code><a href="source-class-CPersistentObject.html#138-176" title="Go to source code">GID</a>( <span>mixed <var>$theValue</var> = <span class="php-keyword1">NULL</span></span>, <span>boolean <var>$getOld</var> = <span class="php-keyword1">FALSE</span> </span> )</code>
 
 		<div class="description short">
 			
@@ -287,9 +288,9 @@ value is not correct and because this method cannot throw exceptions.</p>
 			
 <h4>Manage global unique identifier</h4>
 
-<p>The <i>global unique identifier</i>, kOFFSET_GID, holds a string
-which represents the object's unique identifier, this value is hashed or used
-as-is to serve as the native unique identifier, kOFFSET_NID. The global
+<p>The <i>global unique identifier</i>, kTAG_GID, holds a string which
+represents the object's unique identifier, this value is hashed or used as-is to
+serve as the native unique identifier, kOFFSET_NID. The global
 identifier is usually a computed value extracted from a series of offsets of the
 object.</p>
 
@@ -329,7 +330,7 @@ will be locked and an exception will be raised.</p>
 
 				<h4>See</h4>
 				<div class="list">
-						kOFFSET_GID<br />
+						kTAG_GID<br />
 				</div>
 				<h4>Uses</h4>
 				<div class="list">
@@ -351,7 +352,7 @@ will be locked and an exception will be raised.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#_CLassName">#</a>
-		<code><a href="source-class-CPersistentObject.html#176-214" title="Go to source code">CLassName</a>( <span>mixed <var>$theValue</var> = <span class="php-keyword1">NULL</span></span>, <span>boolean <var>$getOld</var> = <span class="php-keyword1">FALSE</span> </span> )</code>
+		<code><a href="source-class-CPersistentObject.html#183-221" title="Go to source code">CLassName</a>( <span>mixed <var>$theValue</var> = <span class="php-keyword1">NULL</span></span>, <span>boolean <var>$getOld</var> = <span class="php-keyword1">FALSE</span> </span> )</code>
 
 		<div class="description short">
 			
@@ -363,10 +364,10 @@ will be locked and an exception will be raised.</p>
 			
 <h4>Manage global unique identifier</h4>
 
-<p>The <i>class name</i>, kOFFSET_CLASS, holds a string which is the
-class name of the object that first stored the object in the container. This
-value will be used by the static <code><a href="class-CPersistentObject.html#_NewObject">CPersistentObject::NewObject()</a></code> method to restore the
-object from the container.</p>
+<p>The <i>class name</i>, kTAG_CLASS, holds a string which is the class
+name of the object that first stored the object in the container. This value
+will be used by the static <code><a href="class-CPersistentObject.html#_NewObject">CPersistentObject::NewObject()</a></code> method to restore the object from
+the container.</p>
 
 <p>The method accepts a parameter which represents either the name or the
 requested operation, depending on its value:</p>
@@ -404,7 +405,7 @@ will be locked and in many other classes this offset may not be writable.</p>
 
 				<h4>See</h4>
 				<div class="list">
-						kOFFSET_CLASS<br />
+						kTAG_CLASS<br />
 				</div>
 				<h4>Uses</h4>
 				<div class="list">
@@ -426,7 +427,7 @@ will be locked and in many other classes this offset may not be writable.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#_NewObject">#</a>
-		<code><a href="source-class-CPersistentObject.html#230-305" title="Go to source code">NewObject</a>( <span><code><a href="class-CConnection.html">CConnection</a></code> <var>$theConnection</var></span>, <span>mixed <var>$theIdentifier</var></span> )</code>
+		<code><a href="source-class-CPersistentObject.html#237-312" title="Go to source code">NewObject</a>( <span><code><a href="class-CConnection.html">CConnection</a></code> <var>$theConnection</var></span>, <span>mixed <var>$theIdentifier</var></span> )</code>
 
 		<div class="description short">
 			
@@ -438,9 +439,9 @@ will be locked and in many other classes this offset may not be writable.</p>
 			
 <h4>Instantiate an object from a container</h4>
 
-<p>We override this method to handle the kOFFSET_CLASS offset: if found
-in the retrieved object, it will be used to instantiate the correct class. If
-the offset is missing, the method will instantiate the calling class.</p>
+<p>We override this method to handle the kTAG_CLASS offset: if found in
+the retrieved object, it will be used to instantiate the correct class. If the
+offset is missing, the method will instantiate the calling class.</p>
 
 <p>The method expects two parameters:</p>
 
@@ -491,7 +492,7 @@ the offset is missing, the method will instantiate the calling class.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#_DocumentObject">#</a>
-		<code><a href="source-class-CPersistentObject.html#312-364" title="Go to source code">DocumentObject</a>( <span>mixed <var>$theDocument</var></span> )</code>
+		<code><a href="source-class-CPersistentObject.html#319-371" title="Go to source code">DocumentObject</a>( <span>mixed <var>$theDocument</var></span> )</code>
 
 		<div class="description short">
 			
@@ -504,7 +505,7 @@ the offset is missing, the method will instantiate the calling class.</p>
 <h4>Instantiate an object from a document</h4>
 
 <p>This method can be used to instantiate an object from an array. The method
-will attempt to locate the class name, kOFFSET_CLASS, if found, it will
+will attempt to locate the class name, kTAG_CLASS, if found, it will
 return an object of that class, if not, it will return the unchanged received
 document.</p>
 
@@ -544,7 +545,7 @@ exception.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#__id">#</a>
-		<code><a href="source-class-CPersistentObject.html#380-411" title="Go to source code">_id</a>( <span>string <var>$theIdentifier</var> = <span class="php-keyword1">NULL</span></span>, <span><code><a href="class-CConnection.html">CConnection</a></code> <var>$theConnection</var> = <span class="php-keyword1">NULL</span> </span> )</code>
+		<code><a href="source-class-CPersistentObject.html#387-418" title="Go to source code">_id</a>( <span>string <var>$theIdentifier</var> = <span class="php-keyword1">NULL</span></span>, <span><code><a href="class-CConnection.html">CConnection</a></code> <var>$theConnection</var> = <span class="php-keyword1">NULL</span> </span> )</code>
 
 		<div class="description short">
 			
@@ -558,7 +559,7 @@ exception.</p>
 
 <p>This method is used to generate the object's <i>native unique identifier</i>,
 kOFFSET_NID, from the string representing the object's <i>global unique
-identifier</i>, kOFFSET_GID.</p>
+identifier</i>, kTAG_GID.</p>
 
 <p>The first parameter of the method is a string, the second parameter can be a
 server or database which can be resolved into a container, or the container
@@ -610,7 +611,7 @@ see the <code><a href="class-CPersistentDocument.html#__Precommit">CPersistentDo
 
 		<td class="name"><div>
 		<a class="anchor" href="#__index">#</a>
-		<code><a href="source-class-CPersistentObject.html#427-471" title="Go to source code">_index</a>( <span><code><a href="class-CConnection.html">CConnection</a></code> <var>$theConnection</var></span>, <span>bitfield <var>$theModifiers</var></span> )</code>
+		<code><a href="source-class-CPersistentObject.html#434-478" title="Go to source code">_index</a>( <span><code><a href="class-CConnection.html">CConnection</a></code> <var>$theConnection</var></span>, <span>bitfield <var>$theModifiers</var></span> )</code>
 
 		<div class="description short">
 			
@@ -626,12 +627,12 @@ see the <code><a href="class-CPersistentDocument.html#__Precommit">CPersistentDo
 is represented by a string which is generally extracted from selected attributes
 of the object and constitutes the unique key of the object.</p>
 
-<p>This string is stored in the kOFFSET_GID offset of the object and it
-is processed by the static <code><a href="class-CPersistentObject.html#__id">CPersistentObject::_id()</a></code> method to generate the object's native
+<p>This string is stored in the kTAG_GID offset of the object and it is
+processed by the static <code><a href="class-CPersistentObject.html#__id">CPersistentObject::_id()</a></code> method to generate the object's native
 unique identifier, which is the native object's primary key stored in the kOFFSET_NID offset.</p>
 
-<p>This method is called by the <code><a href="class-CPersistentDocument.html#__Precommit">CPersistentDocument::_Precommit()</a></code> method, to fill the kOFFSET_GID offset and the resulting value is fed to the <code><a href="class-CPersistentObject.html#__id">CPersistentObject::_id()</a></code> method
-to obtain the value that will be stored in the kOFFSET_NID offset. The
+<p>This method is called by the <code><a href="class-CPersistentDocument.html#__Precommit">CPersistentDocument::_Precommit()</a></code> method, to fill the kTAG_GID offset and the resulting value is fed to the <code><a href="class-CPersistentObject.html#__id">CPersistentObject::_id()</a></code> method to
+obtain the value that will be stored in the kOFFSET_NID offset. The
 inherited Precommit() method asserts whether the object <code><a href="class-CStatusDocument.html#__IsInited">CStatusDocument::_IsInited()</a></code>, before calling the local <code><a href="class-CPersistentDocument.html#__Precommit">CPersistentDocument::_Precommit()</a></code> method, this to
 ensure that this method can safely use the object's attributes to generate the
 identifier. If you intend to use this method in other places, you should check
@@ -689,7 +690,7 @@ identifier, so we let the container set the identifier, and return
 
 		<td class="name"><div>
 		<a class="anchor" href="#__Preset">#</a>
-		<code><a href="source-class-CPersistentObject.html#487-523" title="Go to source code">_Preset</a>( <span>reference <var>&amp; $theOffset</var></span>, <span>reference <var>&amp; $theValue</var></span> )</code>
+		<code><a href="source-class-CPersistentObject.html#494-530" title="Go to source code">_Preset</a>( <span>reference <var>&amp; $theOffset</var></span>, <span>reference <var>&amp; $theValue</var></span> )</code>
 
 		<div class="description short">
 			
@@ -723,7 +724,7 @@ identifier.</p>
 
 				<h4>See</h4>
 				<div class="list">
-						kOFFSET_NID kOFFSET_GID<br />
+						kOFFSET_NID kTAG_GID<br />
 				</div>
 				<h4>Uses</h4>
 				<div class="list">
@@ -747,7 +748,7 @@ identifier.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#__Preunset">#</a>
-		<code><a href="source-class-CPersistentObject.html#530-565" title="Go to source code">_Preunset</a>( <span>reference <var>&amp; $theOffset</var></span> )</code>
+		<code><a href="source-class-CPersistentObject.html#537-572" title="Go to source code">_Preunset</a>( <span>reference <var>&amp; $theOffset</var></span> )</code>
 
 		<div class="description short">
 			
@@ -779,7 +780,7 @@ identifier.</p>
 
 				<h4>See</h4>
 				<div class="list">
-						kOFFSET_NID kOFFSET_GID<br />
+						kOFFSET_NID kTAG_GID<br />
 				</div>
 				<h4>Uses</h4>
 				<div class="list">
@@ -803,7 +804,7 @@ identifier.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#__PrecommitValidate">#</a>
-		<code><a href="source-class-CPersistentObject.html#581-619" title="Go to source code">_PrecommitValidate</a>( <span>reference <var>&amp; $theConnection</var></span>, <span>reference <var>&amp; $theModifiers</var></span> )</code>
+		<code><a href="source-class-CPersistentObject.html#588-626" title="Go to source code">_PrecommitValidate</a>( <span>reference <var>&amp; $theConnection</var></span>, <span>reference <var>&amp; $theModifiers</var></span> )</code>
 
 		<div class="description short">
 			
@@ -856,7 +857,7 @@ kOFFSET_NID, if the operation involves updating.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#__PrecommitRelated">#</a>
-		<code><a href="source-class-CPersistentObject.html#626-656" title="Go to source code">_PrecommitRelated</a>( <span>reference <var>&amp; $theConnection</var></span>, <span>reference <var>&amp; $theModifiers</var></span> )</code>
+		<code><a href="source-class-CPersistentObject.html#633-663" title="Go to source code">_PrecommitRelated</a>( <span>reference <var>&amp; $theConnection</var></span>, <span>reference <var>&amp; $theModifiers</var></span> )</code>
 
 		<div class="description short">
 			
@@ -869,7 +870,7 @@ kOFFSET_NID, if the operation involves updating.</p>
 <h4>Handle embedded or related objects before committing</h4>
 
 <p>In this class we have no related objects, but we use this method to set
-default values, such as the class name in kOFFSET_CLASS when inserting,
+default values, such as the class name in kTAG_CLASS when inserting,
 replacing or updating.</p>
 
 
@@ -886,7 +887,7 @@ replacing or updating.</p>
 
 				<h4>See</h4>
 				<div class="list">
-						kOFFSET_CLASS<br />
+						kTAG_CLASS<br />
 						kFLAG_PERSIST_INSERT kFLAG_PERSIST_REPLACE kFLAG_PERSIST_UPDATE<br />
 				</div>
 
@@ -907,7 +908,7 @@ replacing or updating.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#__PrecommitIdentify">#</a>
-		<code><a href="source-class-CPersistentObject.html#663-742" title="Go to source code">_PrecommitIdentify</a>( <span>reference <var>&amp; $theConnection</var></span>, <span>reference <var>&amp; $theModifiers</var></span> )</code>
+		<code><a href="source-class-CPersistentObject.html#670-749" title="Go to source code">_PrecommitIdentify</a>( <span>reference <var>&amp; $theConnection</var></span>, <span>reference <var>&amp; $theModifiers</var></span> )</code>
 
 		<div class="description short">
 			
@@ -922,17 +923,17 @@ replacing or updating.</p>
 <p>In this class this method is called only if the operation involves inserting
 or replacing.</p>
 
-<p>If the kOFFSET_GID offset is missing, we call the <code><a href="class-CPersistentObject.html#__index">CPersistentObject::_index()</a></code>
+<p>If the kTAG_GID offset is missing, we call the <code><a href="class-CPersistentObject.html#__index">CPersistentObject::_index()</a></code>
 method: if the result of that method is not <tt>NULL</tt>, we use it to set the
-kOFFSET_GID offset value, this only if the operation involves inserting
-or replacing.</p>
+kTAG_GID offset value, this only if the operation involves inserting or
+replacing.</p>
 
-<p>If the kOFFSET_NID offset is missing, we check if the kOFFSET_GID offset was set: in that case we use its value to feed the <code><a href="class-CPersistentObject.html#__id">CPersistentObject::_id()</a></code> method and the result is set in the kOFFSET_NID offset.</p>
+<p>If the kOFFSET_NID offset is missing, we check if the kTAG_GID offset was set: in that case we use its value to feed the <code><a href="class-CPersistentObject.html#__id">CPersistentObject::_id()</a></code> method and the result is set in the kOFFSET_NID offset.</p>
 
 <p>This workflow implies that only if the <code><a href="class-CPersistentObject.html#__index">CPersistentObject::_index()</a></code> method returns a non
-<tt>NULL</tt> value, the kOFFSET_GID offset will be set in this method,
-and that if the kOFFSET_GID offset is missing the native identifier will
-not be touched.</p>
+<tt>NULL</tt> value, the kTAG_GID offset will be set in this method, and
+that if the kTAG_GID offset is missing the native identifier will not be
+touched.</p>
 
 <p>Note that this is the only place in which the <code><a href="class-CPersistentObject.html#__index">CPersistentObject::_index()</a></code> method is
 called.</p>
@@ -951,7 +952,7 @@ called.</p>
 
 				<h4>See</h4>
 				<div class="list">
-						kOFFSET_GID kOFFSET_NID<br />
+						kTAG_GID kOFFSET_NID<br />
 						kFLAG_PERSIST_INSERT kFLAG_PERSIST_REPLACE<br />
 				</div>
 				<h4>Uses</h4>
@@ -978,7 +979,7 @@ called.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#__AssertClass">#</a>
-		<code><a href="source-class-CPersistentObject.html#758-840" title="Go to source code">_AssertClass</a>( <span>reference <var>&amp; $theValue</var></span>, <span>string <var>$theBaseClass</var></span>, <span>string <var>$theDerivedClass</var> = <span class="php-keyword1">NULL</span></span>, <span>boolean <var>$doThrow</var> = <span class="php-keyword1">FALSE</span> </span> )</code>
+		<code><a href="source-class-CPersistentObject.html#765-847" title="Go to source code">_AssertClass</a>( <span>reference <var>&amp; $theValue</var></span>, <span>string <var>$theBaseClass</var></span>, <span>string <var>$theDerivedClass</var> = <span class="php-keyword1">NULL</span></span>, <span>boolean <var>$doThrow</var> = <span class="php-keyword1">FALSE</span> </span> )</code>
 
 		<div class="description short">
 			

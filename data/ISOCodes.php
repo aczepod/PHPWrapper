@@ -339,8 +339,8 @@ $_SESSION[ kISO_FILE_PO_DIR ] = '/Library/WebServer/Library/PHPWrapper/data/cach
 					$part3_term = new COntologyTerm();
 					$part3_term->LID( (string) $record[ 'id' ] );
 					$part3_term->NS( $part3_ns );
-					$part3_term->Label( 'en', (string) $record[ 'name' ] );
-					$part3_term->Description( 'en', (string) $record[ 'reference_name' ] );
+					$part3_term->Label( kDEFAULT_LANGUAGE, (string) $record[ 'name' ] );
+					$part3_term->Description( kDEFAULT_LANGUAGE, (string) $record[ 'reference_name' ] );
 					if( ($tmp = $record[ 'status' ]) !== NULL )
 						$part3_term[ $status_tag[ kOFFSET_NID ] ] = (string) $tmp;
 					if( (($tmp = $record[ 'scope' ]) !== NULL)
@@ -430,8 +430,8 @@ $_SESSION[ kISO_FILE_PO_DIR ] = '/Library/WebServer/Library/PHPWrapper/data/cach
 					if( ($tmp = $record[ 'inverted_name' ]) !== NULL )
 						ManageTypedOffset(
 							$part3_term, (string) $inv_name_tag[ kOFFSET_NID ],
-							kOFFSET_LANGUAGE, kOFFSET_DATA,
-							'en', (string) $tmp );
+							kOFFSET_LANGUAGE, kOFFSET_STRING,
+							kDEFAULT_LANGUAGE, (string) $tmp );
 					
 					//
 					// Iterate languages.
@@ -453,7 +453,7 @@ $_SESSION[ kISO_FILE_PO_DIR ] = '/Library/WebServer/Library/PHPWrapper/data/cach
 							//
 							// Update label.
 							//
-							if( ($string = $part3_term->Label( 'en' )) !== NULL )
+							if( ($string = $part3_term->Label( kDEFAULT_LANGUAGE )) !== NULL )
 							{
 								if( array_key_exists( $string, $keys ) )
 									$part3_term->Label( $language, $keys[ $string ] );
@@ -462,7 +462,7 @@ $_SESSION[ kISO_FILE_PO_DIR ] = '/Library/WebServer/Library/PHPWrapper/data/cach
 							//
 							// Update description.
 							//
-							if( ($string = $part3_term->Description( 'en' )) !== NULL )
+							if( ($string = $part3_term->Description( kDEFAULT_LANGUAGE )) !== NULL )
 							{
 								if( array_key_exists( $string, $keys ) )
 									$part3_term->Description( $language, $keys[ $string ] );
@@ -477,13 +477,13 @@ $_SESSION[ kISO_FILE_PO_DIR ] = '/Library/WebServer/Library/PHPWrapper/data/cach
 								$string = ManageTypedOffset(
 											$part3_term,
 											(string) $inv_name_tag[ kOFFSET_NID ],
-											kOFFSET_LANGUAGE, kOFFSET_DATA,
-											'en' );
+											kOFFSET_LANGUAGE, kOFFSET_STRING,
+											kDEFAULT_LANGUAGE );
 								if( array_key_exists( $string, $keys ) )
 									ManageTypedOffset(
 										$part3_term,
 										(string) $inv_name_tag[ kOFFSET_NID ],
-										kOFFSET_LANGUAGE, kOFFSET_DATA,
+										kOFFSET_LANGUAGE, kOFFSET_STRING,
 										$language, $keys[ $string ] );
 							}
 						

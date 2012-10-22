@@ -229,8 +229,8 @@ try
 	// Create namespace term.
 	//
 	echo( '<h4>Create namespace term</h4>' );
-	echo( '<h5>$term = $test->NewTerm( "NAMESPACE", NULL, "Namespace", "This is the namespace term", "en" );</h5>' );
-	$term = $test->NewTerm( "NAMESPACE", NULL, "Namespace", "This is the namespace term", "en" );
+	echo( '<h5>$term = $test->NewTerm( "NAMESPACE", NULL, "Namespace", "This is the namespace term", "eng" );</h5>' );
+	$term = $test->NewTerm( "NAMESPACE", NULL, "Namespace", "This is the namespace term", "eng" );
 	echo( '<pre>' ); print_r( $term ); echo( '</pre>' );
 	echo( '<hr />' );
 	
@@ -238,8 +238,8 @@ try
 	// Try creating another namespace term.
 	//
 	echo( '<h4>Try creating another namespace term</h4>' );
-	echo( '<h5>$term = $test->NewTerm( "NAMESPACE", NULL, "Other label", "Other description", "en" );</h5>' );
-	$term = $test->NewTerm( "NAMESPACE", NULL, "Other label", "Other description", "en" );
+	echo( '<h5>$term = $test->NewTerm( "NAMESPACE", NULL, "Other label", "Other description", "eng" );</h5>' );
+	$term = $test->NewTerm( "NAMESPACE", NULL, "Other label", "Other description", "eng" );
 	echo( '<pre>' ); print_r( $term ); echo( '</pre>' );
 	echo( '<hr />' );
 	
@@ -247,8 +247,8 @@ try
 	// Create ontology term.
 	//
 	echo( '<h4>Create ontology term</h4>' );
-	echo( '<h5>$term = $test->NewTerm( "ONTOLOGY", "NAMESPACE", "Ontology", "This is the ontology term", "en" );</h5>' );
-	$term = $test->NewTerm( "ONTOLOGY", "NAMESPACE", "Ontology", "This is the ontology term", "en" );
+	echo( '<h5>$term = $test->NewTerm( "ONTOLOGY", "NAMESPACE", "Ontology", "This is the ontology term", "eng" );</h5>' );
+	$term = $test->NewTerm( "ONTOLOGY", "NAMESPACE", "Ontology", "This is the ontology term", "eng" );
 	echo( '<pre>' ); print_r( $term ); echo( '</pre>' );
 	echo( '<hr />' );
 	
@@ -265,8 +265,8 @@ try
 	// Create category term.
 	//
 	echo( '<h4>Create category term</h4>' );
-	echo( '<h5>$term = $test->NewTerm( "CATEGORY", $namespace, "Category", "This is the category term", "en" );</h5>' );
-	$term = $test->NewTerm( "CATEGORY", $namespace, "Category", "This is the category term", "en" );
+	echo( '<h5>$term = $test->NewTerm( "CATEGORY", $namespace, "Category", "This is the category term", "eng" );</h5>' );
+	$term = $test->NewTerm( "CATEGORY", $namespace, "Category", "This is the category term", "eng" );
 	echo( '<pre>' ); print_r( $term ); echo( '</pre>' );
 	echo( '<hr />' );
 	
@@ -274,8 +274,8 @@ try
 	// Create IS-A predicate term.
 	//
 	echo( '<h4>Create IS-A predicate term</h4>' );
-	echo( '<h5>$term = $test->NewTerm( "IS-A", NULL, "Is-a", "This is the “is-a” predicate term", "en" );</h5>' );
-	$term = $test->NewTerm( "IS-A", NULL, "Is-a", "This is the “is-a” predicate term", "en" );
+	echo( '<h5>$term = $test->NewTerm( "IS-A", NULL, "Is-a", "This is the “is-a” predicate term", "eng" );</h5>' );
+	$term = $test->NewTerm( "IS-A", NULL, "Is-a", "This is the “is-a” predicate term", "eng" );
 	echo( '<pre>' ); print_r( $term ); echo( '</pre>' );
 	echo( '<hr />' );
 	
@@ -283,8 +283,8 @@ try
 	// Create TRAIT-OF predicate term.
 	//
 	echo( '<h4>Create TRAIT-OF predicate term</h4>' );
-	echo( '<h5>$term = $test->NewTerm( "TRAIT-OF", NULL, "Trait-of", "This is the “trait-of” predicate term", "en" );</h5>' );
-	$term = $test->NewTerm( "TRAIT-OF", NULL, "Trait-of", "This is the “trait-of” predicate term", "en" );
+	echo( '<h5>$term = $test->NewTerm( "TRAIT-OF", NULL, "Trait-of", "This is the “trait-of” predicate term", "eng" );</h5>' );
+	$term = $test->NewTerm( "TRAIT-OF", NULL, "Trait-of", "This is the “trait-of” predicate term", "eng" );
 	echo( '<pre>' ); print_r( $term ); echo( '</pre>' );
 	echo( '<hr />' );
 	
@@ -292,8 +292,8 @@ try
 	// Create METHOD-OF predicate term.
 	//
 	echo( '<h4>Create METHOD-OF predicate term</h4>' );
-	echo( '<h5>$term = $test->NewTerm( "METHOD-OF", NULL, "Method-of", "This is the “method-of” predicate term", "en" );</h5>' );
-	$term = $test->NewTerm( "METHOD-OF", NULL, "Method-of", "This is the “method-of” predicate term", "en" );
+	echo( '<h5>$term = $test->NewTerm( "METHOD-OF", NULL, "Method-of", "This is the “method-of” predicate term", "eng" );</h5>' );
+	$term = $test->NewTerm( "METHOD-OF", NULL, "Method-of", "This is the “method-of” predicate term", "eng" );
 	echo( '<pre>' ); print_r( $term ); echo( '</pre>' );
 	echo( '<hr />' );
 	
@@ -301,8 +301,8 @@ try
 	// Create SCALE-OF predicate term.
 	//
 	echo( '<h4>Create SCALE-OF predicate term</h4>' );
-	echo( '<h5>$term = $test->NewTerm( "SCALE-OF", NULL, "Scale-of", "This is the “scale-of” predicate term", "en" );</h5>' );
-	$term = $test->NewTerm( "SCALE-OF", NULL, "Scale-of", "This is the “scale-of” predicate term", "en" );
+	echo( '<h5>$term = $test->NewTerm( "SCALE-OF", NULL, "Scale-of", "This is the “scale-of” predicate term", "eng" );</h5>' );
+	$term = $test->NewTerm( "SCALE-OF", NULL, "Scale-of", "This is the “scale-of” predicate term", "eng" );
 	echo( '<pre>' ); print_r( $term ); echo( '</pre>' );
 	echo( '<hr />' );
 	echo( '<hr />' );
@@ -348,8 +348,8 @@ try
 	// Create new root node.
 	//
 	echo( '<h4>Create new root node</h4>' );
-	echo( '<h5>$node = $test->NewRootNode( "ROOT", $namespace, "Root", "This is the root term", "en" );</h5>' );
-	$node = $test->NewRootNode( "ROOT", $namespace, "Root", "This is the root term", "en" );
+	echo( '<h5>$node = $test->NewRootNode( "ROOT", $namespace, "Root", "This is the root term", "eng" );</h5>' );
+	$node = $test->NewRootNode( "ROOT", $namespace, "Root", "This is the root term", "eng" );
 	echo( '<pre>' ); print_r( $node ); echo( '</pre>' );
 	echo( '<hr />' );
 
@@ -395,8 +395,8 @@ try
 	// Create trait node.
 	//
 	echo( '<h4>Create trait node</h4>' );
-	echo( '<h5>$node = $test->NewTraitNode( "TRAIT", $namespace, "Trait", "This is the trait term", "en" );</h5>' );
-	$trait_node = $test->NewTraitNode( "TRAIT", $namespace, "Trait", "This is the trait term", "en" );
+	echo( '<h5>$node = $test->NewTraitNode( "TRAIT", $namespace, "Trait", "This is the trait term", "eng" );</h5>' );
+	$trait_node = $test->NewTraitNode( "TRAIT", $namespace, "Trait", "This is the trait term", "eng" );
 	echo( '<pre>' ); print_r( $trait_node ); echo( '</pre>' );
 	echo( '<hr />' );
 	
@@ -404,8 +404,8 @@ try
 	// Create method node 1.
 	//
 	echo( '<h4>Create method node 1</h4>' );
-	echo( '<h5>$node = $test->NewMethodNode( "METHOD1", $namespace[ kOFFSET_NID ], "Method 1", "This is the method term 1", "en" );</h5>' );
-	$method_node1 = $test->NewMethodNode( "METHOD1", $namespace[ kOFFSET_NID ], "Method 1", "This is the method term 1", "en" );
+	echo( '<h5>$node = $test->NewMethodNode( "METHOD1", $namespace[ kOFFSET_NID ], "Method 1", "This is the method term 1", "eng" );</h5>' );
+	$method_node1 = $test->NewMethodNode( "METHOD1", $namespace[ kOFFSET_NID ], "Method 1", "This is the method term 1", "eng" );
 	echo( '<pre>' ); print_r( $method_node1 ); echo( '</pre>' );
 	echo( '<hr />' );
 	
@@ -413,8 +413,8 @@ try
 	// Create method node 2.
 	//
 	echo( '<h4>Create method node 2</h4>' );
-	echo( '<h5>$node = $test->NewMethodNode( "METHOD2", $namespace[ kOFFSET_NID ], "Method 2", "This is the method term 2", "en" );</h5>' );
-	$method_node2 = $test->NewMethodNode( "METHOD2", $namespace[ kOFFSET_NID ], "Method 2", "This is the method term 2", "en" );
+	echo( '<h5>$node = $test->NewMethodNode( "METHOD2", $namespace[ kOFFSET_NID ], "Method 2", "This is the method term 2", "eng" );</h5>' );
+	$method_node2 = $test->NewMethodNode( "METHOD2", $namespace[ kOFFSET_NID ], "Method 2", "This is the method term 2", "eng" );
 	echo( '<pre>' ); print_r( $method_node2 ); echo( '</pre>' );
 	echo( '<hr />' );
 	
@@ -422,8 +422,8 @@ try
 	// Create scale node.
 	//
 	echo( '<h4>Create scale node</h4>' );
-	echo( '<h5>$node = $test->NewScaleNode( "SCALE", kTYPE_ENUM, $namespace, "Scale", "This is the scale term", "en" );</h5>' );
-	$scale_node = $test->NewScaleNode( "SCALE", kTYPE_ENUM, $namespace, "Scale", "This is the scale term", "en" );
+	echo( '<h5>$node = $test->NewScaleNode( "SCALE", kTYPE_ENUM, $namespace, "Scale", "This is the scale term", "eng" );</h5>' );
+	$scale_node = $test->NewScaleNode( "SCALE", kTYPE_ENUM, $namespace, "Scale", "This is the scale term", "eng" );
 	echo( '<pre>' ); print_r( $scale_node ); echo( '</pre>' );
 	echo( '<hr />' );
 	
@@ -431,8 +431,8 @@ try
 	// Create enumeration node.
 	//
 	echo( '<h4>Create enumeration node</h4>' );
-	echo( '<h5>$node = $test->NewEnumerationNode( "STR", $namespace, "String", "String data type code", "en" );</h5>' );
-	$enum_node = $test->NewEnumerationNode( "STR", $namespace, "String", "String data type code", "en" );
+	echo( '<h5>$node = $test->NewEnumerationNode( "STR", $namespace, "String", "String data type code", "eng" );</h5>' );
+	$enum_node = $test->NewEnumerationNode( "STR", $namespace, "String", "String data type code", "eng" );
 	echo( '<pre>' ); print_r( $enum_node ); echo( '</pre>' );
 	echo( '<hr />' );
 	echo( '<hr />' );
@@ -614,8 +614,8 @@ try
 	// Initialise ontology.
 	//
 	echo( '<h4>Initialise ontology</h4>' );
-	echo( '<h5>define( "kDEFAULT_LANGUAGE", "en" );</h5>' );
-	define( "kDEFAULT_LANGUAGE", "en" );
+	echo( '<h5>define( "kDEFAULT_LANGUAGE", "eng" );</h5>' );
+	define( "kDEFAULT_LANGUAGE", "eng" );
 	echo( '<h5>$test->InitOntology();</h5>' );
 	$test->InitOntology();
 	echo( '<hr />' );
@@ -627,6 +627,39 @@ try
 	echo( '<h5>$term = $test->ResolveTerm( kOFFSET_TERM, NULL, TRUE );</h5>' );
 	$term = $test->ResolveTerm( kOFFSET_TERM, NULL, TRUE );
 	echo( '<pre>' ); print_r( $term ); echo( '</pre>' );
+	echo( '<hr />' );
+
+	//
+	// Instantiate any type term.
+	//
+	echo( '<h4>Instantiate any type term</h4>' );
+	echo( '<h5>$term = $test->ResolveTerm( kTYPE_ANY, NULL, TRUE );</h5>' );
+	$term = $test->ResolveTerm( kTYPE_ANY, NULL, TRUE );
+	echo( '<pre>' ); print_r( $term ); echo( '</pre>' );
+	echo( '<hr />' );
+
+	//
+	// Locate the any type term.
+	//
+	echo( '<h4>Locate the any type term</h4>' );
+	echo( '$server = new CMongoServer();<br />' );
+	$server = New CMongoServer();
+	echo( '$database = $server->Database( "TEST" );<br />' );
+	$database = $server->Database( "TEST" );
+	echo( '$container = $database->Container( kCONTAINER_TERM_NAME );<br />' );
+	$container = $database->Container( kCONTAINER_TERM_NAME );
+	echo( '$query = new CMongoQuery();<br />' );
+	$query = new CMongoQuery();
+	echo( '$stmt = CQueryStatement::Equals( kTAG_GID, kTYPE_ANY, kTYPE_STRING );<br />' );
+	$stmt = CQueryStatement::Equals( kTAG_GID, kTYPE_ANY, kTYPE_STRING );
+	echo( '$query->AppendStatement( $stmt );<br />' );
+	$query->AppendStatement( $stmt );
+	echo( '$converted = $query->Export( $container );<br />' );
+	$converted = $query->Export( $container );
+	echo( '$found = $container->Connection()->find( $converted );<br />' );
+	$found = $container->Connection()->find( $converted );
+	foreach( $found as $record )
+		echo( '<i>'.$record[ kTAG_GID ].'</i><br />' );
 	echo( '<hr />' );
 	echo( '<hr />' );
 }

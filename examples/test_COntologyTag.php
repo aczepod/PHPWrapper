@@ -162,7 +162,7 @@ try
 	//
 	echo( '<h4>Create namespace term</h4>' );
 	$namespace = new COntologyTerm();
-	$namespace[ kOFFSET_LID ] = "NAMESPACE";
+	$namespace[ kTAG_LID ] = "NAMESPACE";
 	echo( '<pre>' ); print_r( $namespace ); echo( '</pre>' );
 	
 	//
@@ -170,8 +170,8 @@ try
 	//
 	echo( '<h4>Create predicate term</h4>' );
 	$termPredicate = new COntologyTerm();
-	$termPredicate[ kOFFSET_NAMESPACE ] = $namespace;
-	$termPredicate[ kOFFSET_LID ] = "PREDICATE";
+	$termPredicate[ kTAG_NAMESPACE ] = $namespace;
+	$termPredicate[ kTAG_LID ] = "PREDICATE";
 	echo( '<pre>' ); print_r( $termPredicate ); echo( '</pre>' );
 	
 	//
@@ -179,8 +179,8 @@ try
 	//
 	echo( '<h4>Create trait term</h4>' );
 	$termTrait = new COntologyTerm();
-	$termTrait[ kOFFSET_NAMESPACE ] = $namespace;
-	$termTrait[ kOFFSET_LID ] = "TRAIT";
+	$termTrait[ kTAG_NAMESPACE ] = $namespace;
+	$termTrait[ kTAG_LID ] = "TRAIT";
 	echo( '<pre>' ); print_r( $termTrait ); echo( '</pre>' );
 	
 	//
@@ -188,8 +188,8 @@ try
 	//
 	echo( '<h4>Create method term</h4>' );
 	$termMethod = new COntologyTerm();
-	$termMethod[ kOFFSET_NAMESPACE ] = $namespace;
-	$termMethod[ kOFFSET_LID ] = "METHOD";
+	$termMethod[ kTAG_NAMESPACE ] = $namespace;
+	$termMethod[ kTAG_LID ] = "METHOD";
 	echo( '<pre>' ); print_r( $termMethod ); echo( '</pre>' );
 	
 	//
@@ -197,8 +197,8 @@ try
 	//
 	echo( '<h4>Create scale term</h4>' );
 	$termScale = new COntologyTerm();
-	$termScale[ kOFFSET_NAMESPACE ] = $namespace;
-	$termScale[ kOFFSET_LID ] = "SCALE";
+	$termScale[ kTAG_NAMESPACE ] = $namespace;
+	$termScale[ kTAG_LID ] = "SCALE";
 	echo( '<pre>' ); print_r( $termScale ); echo( '</pre>' );
 	
 	//

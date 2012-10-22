@@ -188,8 +188,8 @@ try
 		// Insert namespace term.
 		//
 		echo( '<h4>Insert initialized object</h4>' );
-		echo( '<h5>$namespace[ kOFFSET_LID ] = "NAMESPACE";</h5>' );
-	//	$namespace[ kOFFSET_LID ] = "NAMESPACE";
+		echo( '<h5>$namespace[ kTAG_LID ] = "NAMESPACE";</h5>' );
+	//	$namespace[ kTAG_LID ] = "NAMESPACE";
 		$namespace->LID( "NAMESPACE" );
 		echo( 'Inited['.$namespace->inited()
 					   .'] Dirty['.$namespace->dirty()
@@ -206,10 +206,10 @@ try
 		echo( '<h4>Insert term A</h4>' );
 		echo( '<h5>$termA = new MyClass();</h5>' );
 		$termA = new MyClass();
-		echo( '<h5>$termA[ kOFFSET_NAMESPACE ] = $namespace;</h5>' );
-		$termA[ kOFFSET_NAMESPACE ] = $namespace;
-		echo( '<h5>$termA[ kOFFSET_LID ] = "A";</h5>' );
-		$termA[ kOFFSET_LID ] = "A";
+		echo( '<h5>$termA[ kTAG_NAMESPACE ] = $namespace;</h5>' );
+		$termA[ kTAG_NAMESPACE ] = $namespace;
+		echo( '<h5>$termA[ kTAG_LID ] = "A";</h5>' );
+		$termA[ kTAG_LID ] = "A";
 		echo( '<h5>$status = $termA->Insert( $container );</h5>' );
 		$status = $termA->Insert( $container );
 		echo( 'Inited['.$termA->inited()
@@ -255,8 +255,8 @@ try
 		try
 		{
 			echo( '<h4>Test namespace lock</h4>' );
-			echo( '<h5>$termA[ kOFFSET_NAMESPACE ] = NULL;</h5>' );
-			$termA[ kOFFSET_NAMESPACE ] = NULL;
+			echo( '<h5>$termA[ kTAG_NAMESPACE ] = NULL;</h5>' );
+			$termA[ kTAG_NAMESPACE ] = NULL;
 			echo( '<h3><font color="red">Should have raised an exception</font></h3>' );
 			echo( 'Inited['.$termA->inited()
 						   .'] Dirty['.$termA->dirty()
@@ -279,8 +279,8 @@ try
 		try
 		{
 			echo( '<h4>Test local identifier lock</h4>' );
-			echo( '<h5>$termA[ kOFFSET_LID ] = "B";</h5>' );
-			$termA[ kOFFSET_LID ] = "B";
+			echo( '<h5>$termA[ kTAG_LID ] = "B";</h5>' );
+			$termA[ kTAG_LID ] = "B";
 			echo( '<h3><font color="red">Should have raised an exception</font></h3>' );
 			echo( 'Inited['.$termA->inited()
 						   .'] Dirty['.$termA->dirty()
@@ -305,8 +305,8 @@ try
 			echo( '<h4>Test wrong namespace type</h4>' );
 			echo( '<h5>$namespace_tris = new CPersistentObject;</h5>' );
 			$namespace_tris = new CPersistentObject();
-			echo( '<h5>$namespace_tris[ kOFFSET_LID ] = "GAGA";</h5>' );
-			$namespace_tris[ kOFFSET_LID ] = "GAGA";
+			echo( '<h5>$namespace_tris[ kTAG_LID ] = "GAGA";</h5>' );
+			$namespace_tris[ kTAG_LID ] = "GAGA";
 			echo( '<h5>$termC = new MyClass();</h5>' );
 			$termC = new MyClass();
 			echo( '<h5>$termC->NS( $namespace_tris );</h5>' );
@@ -335,10 +335,10 @@ try
 			echo( '<h4>Create term with crap namespace</h4>' );
 			echo( '<h5>$crap_term = new MyClass();</h5>' );
 			$crap_term = new MyClass();
-			echo( '<h5>$crap_term[ kOFFSET_LID ] = "crap_code";</h5>' );
-			$crap_term[ kOFFSET_LID ] = "crap_code";
-			echo( '<h5>$crap_term[ kOFFSET_NAMESPACE ] = "should not find me";</h5>' );
-			$crap_term[ kOFFSET_NAMESPACE ] = "should not find me";
+			echo( '<h5>$crap_term[ kTAG_LID ] = "crap_code";</h5>' );
+			$crap_term[ kTAG_LID ] = "crap_code";
+			echo( '<h5>$crap_term[ kTAG_NAMESPACE ] = "should not find me";</h5>' );
+			$crap_term[ kTAG_NAMESPACE ] = "should not find me";
 			echo( '<h5>$status = $crap_term->Insert( $container );</h5>' );
 			$status = $crap_term->Insert( $container );
 			echo( '<h3><font color="red">Should have raised an exception</font></h3>' );
@@ -365,10 +365,10 @@ try
 	echo( '<h4>Create term with namespace ID from database</h4>' );
 	echo( '<h5>$last_term = new MyClass();</h5>' );
 	$last_term = new MyClass();
-	echo( '<h5>$last_term[ kOFFSET_LID ] = "last_code";</h5>' );
-	$last_term[ kOFFSET_LID ] = "last_code";
-	echo( '<h5>$last_term[ kOFFSET_NAMESPACE ] = $namespace[ kOFFSET_NID ];</h5>' );
-	$last_term[ kOFFSET_NAMESPACE ] = $namespace[ kOFFSET_NID ];
+	echo( '<h5>$last_term[ kTAG_LID ] = "last_code";</h5>' );
+	$last_term[ kTAG_LID ] = "last_code";
+	echo( '<h5>$last_term[ kTAG_NAMESPACE ] = $namespace[ kOFFSET_NID ];</h5>' );
+	$last_term[ kTAG_NAMESPACE ] = $namespace[ kOFFSET_NID ];
 	echo( '<h5>$status = $last_term->Insert( $database );</h5>' );
 	$status = $last_term->Insert( $database );
 	echo( 'Inited['.$last_term->inited()
@@ -387,8 +387,8 @@ try
 	try
 	{
 		echo( '<h4>Test modifying namespace counter</h4>' );
-		echo( '<h5>$last_term[ kOFFSET_REFS_NAMESPACE ] = 24;</h5>' );
-		$last_term[ kOFFSET_REFS_NAMESPACE ] = 24;
+		echo( '<h5>$last_term[ kTAG_REFS_NAMESPACE ] = 24;</h5>' );
+		$last_term[ kTAG_REFS_NAMESPACE ] = 24;
 		echo( '<h3><font color="red">Should have raised an exception</font></h3>' );
 		echo( 'Inited['.$namespace->inited()
 					   .'] Dirty['.$namespace->dirty()
@@ -410,8 +410,8 @@ try
 	try
 	{
 		echo( '<h4>Test modifying node list</h4>' );
-		echo( '<h5>$last_term[ kOFFSET_REFS_NODE ] = 24;</h5>' );
-		$last_term[ kOFFSET_REFS_NODE ] = 24;
+		echo( '<h5>$last_term[ kTAG_REFS_NODE ] = 24;</h5>' );
+		$last_term[ kTAG_REFS_NODE ] = 24;
 		echo( '<h3><font color="red">Should have raised an exception</font></h3>' );
 		echo( 'Inited['.$namespace->inited()
 					   .'] Dirty['.$namespace->dirty()
@@ -433,8 +433,8 @@ try
 	try
 	{
 		echo( '<h4>Test modifying tag list</h4>' );
-		echo( '<h5>$last_term[ kOFFSET_REFS_TAG ] = 24;</h5>' );
-		$last_term[ kOFFSET_REFS_TAG ] = 24;
+		echo( '<h5>$last_term[ kTAG_REFS_TAG ] = 24;</h5>' );
+		$last_term[ kTAG_REFS_TAG ] = 24;
 		echo( '<h3><font color="red">Should have raised an exception</font></h3>' );
 		echo( 'Inited['.$namespace->inited()
 					   .'] Dirty['.$namespace->dirty()
@@ -487,8 +487,8 @@ try
 	echo( '<h4>Test replacing new object</h4>' );
 	echo( '<h5>$new_term = new MyClass();</h5>' );
 	$new_term = new MyClass();
-	echo( '<h5>$new_term[ kOFFSET_LID ] = "new-object";</h5>' );
-	$new_term[ kOFFSET_LID ] = "new-object";
+	echo( '<h5>$new_term[ kTAG_LID ] = "new-object";</h5>' );
+	$new_term[ kTAG_LID ] = "new-object";
 	echo( '<h5>$status = $new_term->Replace( $database );</h5>' );
 	$status = $new_term->Replace( $database );
 	echo( '<pre>' ); print_r( $new_term ); echo( '</pre>' );
@@ -587,12 +587,12 @@ try
 	echo( '<h4>Test setting term reference</h4>' );
 	echo( '<h5>$preferred = new MyClass();</h5>' );
 	$preferred = new MyClass();
-	echo( '<h5>$preferred[ kOFFSET_LID ] = "preferred";</h5>' );
-	$preferred[ kOFFSET_LID ] = "preferred";
+	echo( '<h5>$preferred[ kTAG_LID ] = "preferred";</h5>' );
+	$preferred[ kTAG_LID ] = "preferred";
 	echo( '<h5>$synonym = new MyClass();</h5>' );
 	$synonym = new MyClass();
-	echo( '<h5>$synonym[ kOFFSET_LID ] = "synonym";</h5>' );
-	$synonym[ kOFFSET_LID ] = "synonym";
+	echo( '<h5>$synonym[ kTAG_LID ] = "synonym";</h5>' );
+	$synonym[ kTAG_LID ] = "synonym";
 	echo( '<h5>$synonym->Term( $preferred );</h5>' );
 	$synonym->Term( $preferred );
 	echo( 'Synonym:<pre>' ); print_r( $synonym ); echo( '</pre>' );

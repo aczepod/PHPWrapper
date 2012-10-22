@@ -44,7 +44,7 @@ require_once( kPATH_MYWRAPPER_LIBRARY_CLASS."/CNode.php" );
  * <h3>Ontology node object ancestor</h3>
  *
  * This class extends its ancestor, {@link CNode}, by asserting the {@link Term()} to be an
- * instance of {@link COntologyTerm} and by managing the {@link kOFFSET_REFS_NODE} offset
+ * instance of {@link COntologyTerm} and by managing the {@link kTAG_REFS_NODE} offset
  * of the related {@link Term()}.
  *
  * The class does not handle global identifiers and objects cannot be uniquely identified
@@ -54,22 +54,22 @@ require_once( kPATH_MYWRAPPER_LIBRARY_CLASS."/CNode.php" );
  * {@link kCONTAINER_SEQUENCE_NAME} tag in the same database, this is to make referencing
  * nodes easier and to be compatible with most graph databases.
  *
- * In this class, the term, {@link kOFFSET_TERM}, is a reference to an instance of
+ * In this class, the term, {@link kTAG_TERM}, is a reference to an instance of
  * {@link COntologyTerm}, meaning that the offset will contain the native identifier of the
  * term. The value may be provided as an uncommitted term object, in that case the term will
  * be committed before the current node is committed.
  *
  * Once the node has been committed, it will not be possible to modify the term,
- * {@link kOFFSET_TERM}. 
+ * {@link kTAG_TERM}. 
  *
  * When inserting a new node, the class will also make sure that the referenced term gets a
- * reference to the current node in its {@link kOFFSET_REFS_NODE} offset, this means that
+ * reference to the current node in its {@link kTAG_REFS_NODE} offset, this means that
  * once a node is committed, one cannot change its term reference.
  *
- * The class features an offset, {@link kOFFSET_REFS_TAG}, which represents the list of tags
+ * The class features an offset, {@link kTAG_REFS_TAG}, which represents the list of tags
  * that reference the current node. This offset is a set of tag identifiers implemented as
  * an array. The offset definition is borrowed from the {@link COntologyTerm} class, which
- * is required by this class because of its {@link kOFFSET_TERM} offset. This offset is
+ * is required by this class because of its {@link kTAG_TERM} offset. This offset is
  * managed by the tag class, this class locks the offset.
  *
  * This class prevents updating the full object once it has been inserted for the first
@@ -86,7 +86,7 @@ require_once( kPATH_MYWRAPPER_LIBRARY_CLASS."/CNode.php" );
  *
  * <ul>
  *	<li>{@link TagRefs()}: This method returns the node's tag references,
- *		{@link kOFFSET_REFS_TAG}.
+ *		{@link kTAG_REFS_TAG}.
  *	<li>{@link LoadTerm()}: This method will return the referenced term object.
  * </ul>
  *
@@ -124,7 +124,7 @@ class COntologyNode extends CNode
 	 * This method should return the current object's name which should represent the unique
 	 * identifier of the object.
 	 *
-	 * By default we return the string representation of the term, {@link kOFFSET_TERM}.
+	 * By default we return the string representation of the term, {@link kTAG_TERM}.
 	 *
 	 * @access public
 	 * @return string				The connection name.
@@ -216,7 +216,7 @@ class COntologyNode extends CNode
 			//
 			$result = Array();
 			$count = count( $theValue );
-			$current = $this->offsetGet( kOFFSET_TYPE );
+			$current = $this->offsetGet( kTAG_TYPE );
 			
 			//
 			// Check operation.
@@ -311,26 +311,26 @@ class COntologyNode extends CNode
 	/**
 	 * <h4>Manage tag references</h4>
 	 *
-	 * The <i>tag references</i>, {@link kOFFSET_REFS_TAG}, holds a list of identifiers of
+	 * The <i>tag references</i>, {@link kTAG_REFS_TAG}, holds a list of identifiers of
 	 * tags that reference the node.
 	 *
 	 * The method is read-only, because this value must be managed externally.
 	 *
-	 * The {@link kOFFSET_REFS_TAG} offset tag is defined by the {@link COntologyTerm} class
+	 * The {@link kTAG_REFS_TAG} offset tag is defined by the {@link COntologyTerm} class
 	 * which is included in this class by default.
 	 *
 	 * @access public
 	 * @return array				Tags reference list.
 	 *
-	 * @see kOFFSET_REFS_TAG
+	 * @see kTAG_REFS_TAG
 	 */
 	public function TagRefs()
 	{
 		//
 		// Handle reference count.
 		//
-		if( $this->offsetExists( kOFFSET_REFS_TAG ) )
-			return $this->offsetGet( kOFFSET_REFS_TAG );							// ==>
+		if( $this->offsetExists( kTAG_REFS_TAG ) )
+			return $this->offsetGet( kTAG_REFS_TAG );								// ==>
 		
 		return Array();																// ==>
 
@@ -344,7 +344,7 @@ class COntologyNode extends CNode
 	/**
 	 * <h4>Manage edge references</h4>
 	 *
-	 * The <i>edge references</i>, {@link kOFFSET_REFS_EDGE}, holds a list of identifiers of
+	 * The <i>edge references</i>, {@link kTAG_REFS_EDGE}, holds a list of identifiers of
 	 * edges that reference the node.
 	 *
 	 * The method is read-only, because this value must be managed externally.
@@ -352,15 +352,15 @@ class COntologyNode extends CNode
 	 * @access public
 	 * @return array				Edge reference list.
 	 *
-	 * @see kOFFSET_REFS_EDGE
+	 * @see kTAG_REFS_EDGE
 	 */
 	public function EdgeRefs()
 	{
 		//
 		// Handle reference count.
 		//
-		if( $this->offsetExists( kOFFSET_REFS_EDGE ) )
-			return $this->offsetGet( kOFFSET_REFS_EDGE );							// ==>
+		if( $this->offsetExists( kTAG_REFS_EDGE ) )
+			return $this->offsetGet( kTAG_REFS_EDGE );								// ==>
 		
 		return Array();																// ==>
 
@@ -403,14 +403,14 @@ class COntologyNode extends CNode
 	 *
 	 * @uses NewObject()
 	 *
-	 * @see kOFFSET_TERM
+	 * @see kTAG_TERM
 	 */
 	public function LoadTerm( CConnection $theConnection, $doReload = FALSE )
 	{
 		//
 		// Check offset.
 		//
-		if( $this->offsetExists( kOFFSET_TERM ) )
+		if( $this->offsetExists( kTAG_TERM ) )
 		{
 			//
 			// Refresh cache.
@@ -422,7 +422,7 @@ class COntologyNode extends CNode
 				//
 				// Handle term object.
 				//
-				$term = $this->offsetGet( kOFFSET_TERM );
+				$term = $this->offsetGet( kTAG_TERM );
 				if( $term instanceof COntologyTerm )
 					return $term;													// ==>
 				
@@ -787,7 +787,7 @@ class COntologyNode extends CNode
 			$query = $container->NewQuery();
 			$query->AppendStatement(
 				CQueryStatement::Equals(
-					kOFFSET_TERM, $theIdentifier, kTYPE_BINARY ) );
+					kTAG_TERM, $theIdentifier, kTYPE_BINARY ) );
 			$rs = $container->Query( $query );
 			
 			//
@@ -846,7 +846,7 @@ class COntologyNode extends CNode
 	 * We also ensure the provided term object to be an instance of {@link COntologyTerm} by
 	 * asserting {@link CDocument} descendants to be of that class.
 	 *
-	 * This method will lock the {@link kOFFSET_REFS_TAG} offset from any modification.
+	 * This method will lock the {@link kTAG_REFS_TAG} offset from any modification.
 	 *
 	 * @param reference			   &$theOffset			Offset.
 	 * @param reference			   &$theValue			Value to set at offset.
@@ -858,14 +858,14 @@ class COntologyNode extends CNode
 	 * @uses _IsCommitted()
 	 * @uses _AssertClass()
 	 *
-	 * @see kOFFSET_TERM kOFFSET_REFS_TAG
+	 * @see kTAG_TERM kTAG_REFS_TAG
 	 */
 	protected function _Preset( &$theOffset, &$theValue )
 	{
 		//
 		// Intercept reference offsets.
 		//
-		if( $theOffset == kOFFSET_REFS_TAG )
+		if( $theOffset == kTAG_REFS_TAG )
 			throw new Exception
 				( "The [$theOffset] offset cannot be modified",
 				  kERROR_LOCKED );												// !@! ==>
@@ -873,7 +873,7 @@ class COntologyNode extends CNode
 		//
 		// Handle term.
 		//
-		if( $theOffset == kOFFSET_TERM )
+		if( $theOffset == kTAG_TERM )
 		{
 			//
 			// Lock term if object is committed.
@@ -946,8 +946,8 @@ class COntologyNode extends CNode
 	/**
 	 * <h4>Handle offset before unsetting it</h4>
 	 *
-	 * In this class we prevent the modification of the {@link kOFFSET_TERM} offset if the
-	 * object is committed and of the {@link kOFFSET_REFS_TAG} offset in all cases.
+	 * In this class we prevent the modification of the {@link kTAG_TERM} offset if the
+	 * object is committed and of the {@link kTAG_REFS_TAG} offset in all cases.
 	 *
 	 * @param reference			   &$theOffset			Offset.
 	 *
@@ -957,14 +957,14 @@ class COntologyNode extends CNode
 	 *
 	 * @uses _IsCommitted()
 	 *
-	 * @see kOFFSET_REFS_TAG kOFFSET_TERM
+	 * @see kTAG_REFS_TAG kTAG_TERM
 	 */
 	protected function _Preunset( &$theOffset )
 	{
 		//
 		// Intercept reference offsets.
 		//
-		if( $theOffset == kOFFSET_REFS_TAG )
+		if( $theOffset == kTAG_REFS_TAG )
 			throw new Exception
 				( "The [$theOffset] offset cannot be modified",
 				  kERROR_LOCKED );												// !@! ==>
@@ -972,7 +972,7 @@ class COntologyNode extends CNode
 		//
 		// Lock term if object is committed.
 		//
-		if( ($theOffset == kOFFSET_TERM)
+		if( ($theOffset == kTAG_TERM)
 		 && $this->_IsCommitted() )
 			throw new Exception
 				( "You cannot modify the [$theOffset] offset: "
@@ -1014,7 +1014,7 @@ class COntologyNode extends CNode
 	 *
 	 * @uses LoadTerm()
 	 *
-	 * @see kOFFSET_TERM
+	 * @see kTAG_TERM
 	 */
 	protected function _PrecommitRelated( &$theConnection, &$theModifiers )
 	{
@@ -1033,7 +1033,7 @@ class COntologyNode extends CNode
 			// Note that we let _Preset() method take care of the specific class.
 			// Note that we do not check for the term: it is required to be inited.
 			//
-			$term = $this->offsetGet( kOFFSET_TERM );
+			$term = $this->offsetGet( kTAG_TERM );
 			if( $term instanceof COntologyTerm )
 			{
 				//
@@ -1051,7 +1051,7 @@ class COntologyNode extends CNode
 				//
 				// Set identifier in term offset.
 				//
-				$this->offsetSet( kOFFSET_TERM,
+				$this->offsetSet( kTAG_TERM,
 								  $term->offsetGet( kOFFSET_NID ) );
 				
 			} // Term is object.
@@ -1079,7 +1079,7 @@ class COntologyNode extends CNode
 	 * {@link kOFFSET_NID}, with this value.
 	 *
 	 * The parent method will then be called, which will ignore the global identifier,
-	 * {@link kOFFSET_GID}, since the {@link _index()} method returns <tt>NULL</tt> and
+	 * {@link kTAG_LID}, since the {@link _index()} method returns <tt>NULL</tt> and
 	 * also ignore the native identifier, {@link kOFFSET_NID}, since it will have been set
 	 * here.
 	 *
@@ -1136,7 +1136,7 @@ class COntologyNode extends CNode
 	 * <h4>Update related objects after committing</h4>
 	 *
 	 * In this class we add the current node's identifier to the list of node references,
-	 * {@link kOFFSET_REFS_NODE}, in the related term when inserting; we remove the element
+	 * {@link kTAG_REFS_NODE}, in the related term when inserting; we remove the element
 	 * when deleting.
 	 *
 	 * @param reference			   &$theConnection		Server, database or container.
@@ -1227,7 +1227,7 @@ class COntologyNode extends CNode
 	 * <h4>Add node reference to term</h4>
 	 *
 	 * This method can be used to add or remove the current node's reference from the
-	 * referenced term, {@link kOFFSET_REFS_NODE}. This method should be used whenever
+	 * referenced term, {@link kTAG_REFS_NODE}. This method should be used whenever
 	 * committing a new node or deleting one: it will add the current node's native
 	 * identifier to the set of node references of the node's term when committing a new
 	 * node; it will remove it when deleting the node.
@@ -1245,7 +1245,7 @@ class COntologyNode extends CNode
 	 * @access protected
 	 * @return boolean				<tt>TRUE</tt> operation affected at least one object.
 	 *
-	 * @see kOFFSET_TERM kOFFSET_REFS_NODE
+	 * @see kTAG_TERM kTAG_REFS_NODE
 	 * @see kFLAG_PERSIST_MODIFY kFLAG_MODIFY_ADDSET kFLAG_MODIFY_PULL
 	 */
 	protected function _ReferenceInTerm( CConnection $theConnection, $doAdd )
@@ -1253,12 +1253,12 @@ class COntologyNode extends CNode
 		//
 		// Check term.
 		//
-		if( $this->offsetExists( kOFFSET_TERM ) )
+		if( $this->offsetExists( kTAG_TERM ) )
 		{
 			//
 			// Set modification criteria.
 			//
-			$criteria = array( kOFFSET_REFS_NODE => $this->offsetGet( kOFFSET_NID ) );
+			$criteria = array( kTAG_REFS_NODE => $this->offsetGet( kOFFSET_NID ) );
 			
 			//
 			// Handle add to set.
@@ -1268,7 +1268,7 @@ class COntologyNode extends CNode
 						->ManageObject
 							(
 								$criteria,
-								$this->offsetGet( kOFFSET_TERM ),
+								$this->offsetGet( kTAG_TERM ),
 								kFLAG_PERSIST_MODIFY + kFLAG_MODIFY_ADDSET
 							);														// ==>
 			
@@ -1276,7 +1276,7 @@ class COntologyNode extends CNode
 					->ManageObject
 						(
 							$criteria,
-							$this->offsetGet( kOFFSET_TERM ),
+							$this->offsetGet( kTAG_TERM ),
 							kFLAG_PERSIST_MODIFY + kFLAG_MODIFY_PULL
 						);															// ==>
 		

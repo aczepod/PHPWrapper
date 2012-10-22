@@ -100,6 +100,10 @@ class CPersistentDocument extends CStatusDocument
 	 * The <i>native unique identifier</i>, {@link kOFFSET_NID}, represents the primary key
 	 * of the object in the native format of the container in which the object is stored.
 	 *
+	 * This is the only attribute tag that will not be a {@link COntologyTag} reference: all
+	 * other object attributes will be a {@link COntologyTag} native identifier,
+	 * {@link kOFFSET_NID}.
+	 *
 	 * The method accepts a parameter which represents either the identifier or the
 	 * requested operation, depending on its value:
 	 *

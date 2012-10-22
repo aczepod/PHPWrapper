@@ -217,18 +217,18 @@ define( "kOFFSET_REFS_EDGE",					':REF-EDGE' );
 /**
  * Language code.
  *
- * This tag is used as a sub-offset of a {@link kTYPE_STRUCT} type element, it
- * is expected to contain a language character code identifying the language in which the
- * {@link kTYPE_STRUCT} instance element is expressed in.
+ * This tag is generally used as a sub-offset containing a language character code that
+ * identifies the language in which the {@link kOFFSET_STRING} attribute is expressed in.
  */
-define( "kOFFSET_LANGUAGE",					':LANGUAGE' );			// Language code
+define( "kOFFSET_LANGUAGE",						':SUB-LANGUAGE' );
 
 /**
- * Data.
+ * String.
  *
- * This tag is used in structured data types as the sub-offset of the item holding the data.
+ * This tag is used as a sub-offset containing a string, which generally is expressed in the
+ * {@link kOFFSET_LANGUAGE} language.
  */
-define( "kOFFSET_DATA",						':DATA' );				// Data.
+define( "kOFFSET_STRING",						':SUB-STRING' );
 
 
 ?>

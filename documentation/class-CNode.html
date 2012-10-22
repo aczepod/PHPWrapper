@@ -109,7 +109,7 @@ through edges, a node is a vertex of a relationship. This class concentrates in
 the core features of the node, without taking into consideration the connections
 to other nodes.</p>
 
-<p>The node's main property is the term, kOFFSET_TERM, which defines the
+<p>The node's main property is the term, kTAG_TERM, which defines the
 abstract concept that the node represents: a term taken by itself is an abstract
 concept, when it is referenced from a node which is related to other nodes
 through predicates, this term takes a different meaning, it becomes a term in
@@ -118,12 +118,12 @@ meaning; put in context, they take a different meaning depending in what
 position of a term chain they are positioned. In this class, terms may hold any
 value.</p>
 
-<p>The node also features a kOFFSET_KIND property which is an enumerated
+<p>The node also features a kTAG_KIND property which is an enumerated
 set describing the specific type, or the specific function of the node in its
 chain or path.</p>
 
-<p>Finally, the class features the kOFFSET_TYPE property which defines
-the data type of the node or the data unit it represents, this offset is an
+<p>Finally, the class features the kTAG_TYPE property which defines the
+data type of the node or the data unit it represents, this offset is an
 enumerated set in which two elements can reside: the data type or unit, which is
 required, and optionally one or both kTYPE_CARD_REQUIRED and kTYPE_CARD_ARRAY which respectively indicate whether the node represents a
 required attribute and whether the data type indicated in the first element of
@@ -133,19 +133,18 @@ the offset is a list or not.</p>
 identifier of the object, this means that the container is responsible of
 providing the primary key of the object.</p>
 
-<p>Nodes can be considered <code><a href="class-CStatusDocument.html#__IsInited">CStatusDocument::_IsInited()</a></code> when they have the kOFFSET_TERM offset set. This and the other properties can be changed at any
-time, none are locked once the object has been committed: it is the
-responsibility of the caller or of derived classes to implement a locking
-rule.</p>
+<p>Nodes can be considered <code><a href="class-CStatusDocument.html#__IsInited">CStatusDocument::_IsInited()</a></code> when they have the kTAG_TERM offset set. This and the other properties can be changed at any time,
+none are locked once the object has been committed: it is the responsibility of
+the caller or of derived classes to implement a locking rule.</p>
 
 <p>The class features member accessor methods for the default offsets:</p>
 
 <ul>
-	<li><code><a href="class-CNode.html#_Term">CNode::Term()</a></code>: This method manages the node's term, kOFFSET_TERM.</li>
+	<li><code><a href="class-CNode.html#_Term">CNode::Term()</a></code>: This method manages the node's term, kTAG_TERM.</li>
 
-	<li><code><a href="class-CNode.html#_Kind">CNode::Kind()</a></code>: This method manages the node's kind, kOFFSET_KIND.</li>
+	<li><code><a href="class-CNode.html#_Kind">CNode::Kind()</a></code>: This method manages the node's kind, kTAG_KIND.</li>
 
-	<li><code><a href="class-CNode.html#_Type">CNode::Type()</a></code>: This method manages the node's type, kOFFSET_TYPE.</li>
+	<li><code><a href="class-CNode.html#_Type">CNode::Type()</a></code>: This method manages the node's type, kTAG_TYPE.</li>
 </ul>
 
 	</div>
@@ -256,7 +255,7 @@ href="mailto:m.skofic&#64;cgiar.org">m.skofic&#64;<!---->cgiar.org</a>&gt;<br />
 <p>This method should return the current object's name which should represent
 the unique identifier of the object.</p>
 
-<p>By default we return the string representation of the term, kOFFSET_TERM.</p>
+<p>By default we return the string representation of the term, kTAG_TERM.</p>
 
 
 
@@ -297,8 +296,8 @@ the unique identifier of the object.</p>
 			
 <h4>Manage node term</h4>
 
-<p>This method can be used to manage the node's term, kOFFSET_TERM,
-which represents the node abstract term.</p>
+<p>This method can be used to manage the node's term, kTAG_TERM, which
+represents the node abstract term.</p>
 
 <p>The method accepts a parameter which represents either the term, or the
 requested operation, depending on its value:</p>
@@ -333,7 +332,7 @@ the currently set value.</p>
 
 				<h4>See</h4>
 				<div class="list">
-						kOFFSET_TERM<br />
+						kTAG_TERM<br />
 				</div>
 				<h4>Uses</h4>
 				<div class="list">
@@ -367,7 +366,7 @@ the currently set value.</p>
 			
 <h4>Manage node kind set</h4>
 
-<p>The node kind set, kOFFSET_KIND, holds a list of unique values that
+<p>The node kind set, kTAG_KIND, holds a list of unique values that
 represent the different kinds or types associated with the current node. The
 type, <code><a href="class-CNode.html#_Type">CNode::Type()</a></code>, of a node is a general qualification that applies to any
 class of object, such as a data type; the kind, instead, refers to a
@@ -444,7 +443,7 @@ that can be managed with the following parameters:</p>
 
 				<h4>See</h4>
 				<div class="list">
-						kOFFSET_KIND<br />
+						kTAG_KIND<br />
 				</div>
 				<h4>Uses</h4>
 				<div class="list">
@@ -478,9 +477,8 @@ that can be managed with the following parameters:</p>
 			
 <h4>Manage node type set</h4>
 
-<p>This method can be used to manage the node's type, kOFFSET_TYPE,
-which is an enumerated set that represents the data type or unit of the
-node.</p>
+<p>This method can be used to manage the node's type, kTAG_TYPE, which
+is an enumerated set that represents the data type or unit of the node.</p>
 
 <p>This offset collects the list of these types in an enumerated set that can be
 managed with the following parameters:</p>
@@ -553,7 +551,7 @@ managed with the following parameters:</p>
 
 				<h4>See</h4>
 				<div class="list">
-						kOFFSET_TYPE<br />
+						kTAG_TYPE<br />
 				</div>
 				<h4>Uses</h4>
 				<div class="list">
@@ -621,7 +619,7 @@ occurs, the method will raise an exception.</p>
 
 				<h4>See</h4>
 				<div class="list">
-						kOFFSET_TERM<br />
+						kTAG_TERM<br />
 				</div>
 				<h4>Uses</h4>
 				<div class="list">
@@ -655,7 +653,7 @@ occurs, the method will raise an exception.</p>
 			
 <h4>Handle offset before setting it</h4>
 
-<p>In this class we ensure that the kOFFSET_KIND offset is an array,
+<p>In this class we ensure that the kTAG_KIND offset is an array,
 ArrayObject instances are not counted as an array.</p>
 
 
@@ -676,7 +674,7 @@ ArrayObject instances are not counted as an array.</p>
 
 				<h4>See</h4>
 				<div class="list">
-						kOFFSET_KIND<br />
+						kTAG_KIND<br />
 				</div>
 
 				<h4>Overrides</h4>
@@ -709,7 +707,7 @@ ArrayObject instances are not counted as an array.</p>
 <h4>Determine if the object is ready</h4>
 
 <p>In this class we tie the <code><a href="class-CStatusDocument.html#__IsInited">CStatusDocument::_IsInited()</a></code> status to the presence or
-absence of the kOFFSET_TERM offset.</p>
+absence of the kTAG_TERM offset.</p>
 
 
 
@@ -722,7 +720,7 @@ absence of the kOFFSET_TERM offset.</p>
 
 				<h4>See</h4>
 				<div class="list">
-						kOFFSET_TERM<br />
+						kTAG_TERM<br />
 				</div>
 				<h4>Uses</h4>
 				<div class="list">

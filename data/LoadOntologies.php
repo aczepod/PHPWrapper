@@ -34,11 +34,6 @@ require_once( 'local.inc.php' );
 require_once( kPATH_MYWRAPPER_LIBRARY_CLASS."/COntology.php" );
 
 //
-// Default ontologies.
-//
-require_once( 'DefaultOntologies.php' );
-
-//
 // ISO codes.
 //
 require_once( 'ISOCodes.php' );
@@ -85,18 +80,6 @@ try
 	//
 	Init();
 	
-	echo( "  • Loading default ontologies.\n" );
-	
-	//
-	// Load default ontologies.
-	//
-	LoadDefaultNamespace();
-	LoadDefaultOntology();
-	LoadDefaultCategories();
-	LoadDefaultPredicates();
-	LoadDefaultAttributes();
-	LoadDefaultTypes();
-	
 	echo( "  • Loading ISO standards.\n" );
 	
 	//
@@ -104,6 +87,7 @@ try
 	//
 	LoadISOOntologies();
 	LoadISOStandards();
+exit;
 	LoadISO639Categories();
 	LoadISO639Enums();
 	LoadISO3166Categories();
@@ -171,18 +155,17 @@ echo( "\nDone!\n" );
 				->Database( kDEFAULT_DATABASE );
 		
 		//
-		// Clear database.
-		// Note that when creating the default ontology the database is cleared by default.
-		//
-		echo( "  • Clearing database.\n" );
-		$_SESSION[ kSESSION_DATABASE ]->Drop();
-		
-		//
 		// Instantiate ontology.
 		//
 		echo( "  • Instantiating ontology.\n" );
 		$_SESSION[ kSESSION_ONTOLOGY ]
 			= new COntology( $_SESSION[ kSESSION_DATABASE ] );
+		
+		//
+		// Initialising ontology.
+		//
+		echo( "  • Initialising ontology.\n" );
+		$_SESSION[ kSESSION_ONTOLOGY ]->InitOntology();
 
 	} // Init.
 

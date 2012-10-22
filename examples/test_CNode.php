@@ -166,7 +166,7 @@ try
 	//
 	echo( '<h4>Create namespace term</h4>' );
 	$namespace = new CTerm();
-	$namespace[ kOFFSET_LID ] = "NAMESPACE";
+	$namespace[ kTAG_LID ] = "NAMESPACE";
 	$status = $namespace->Insert( $term_container );
 	echo( '<pre>' ); print_r( $namespace ); echo( '</pre>' );
 	
@@ -175,8 +175,8 @@ try
 	//
 	echo( '<h4>Create term A</h4>' );
 	$termA = new CTerm();
-	$termA[ kOFFSET_NAMESPACE ] = $namespace;
-	$termA[ kOFFSET_LID ] = "A";
+	$termA[ kTAG_NAMESPACE ] = $namespace;
+	$termA[ kTAG_LID ] = "A";
 	$status = $termA->Insert( $term_container );
 	echo( '<pre>' ); print_r( $termA ); echo( '</pre>' );
 	
@@ -185,8 +185,8 @@ try
 	//
 	echo( '<h4>Create term B</h4>' );
 	$termB = new CTerm();
-	$termB[ kOFFSET_NAMESPACE ] = $namespace;
-	$termB[ kOFFSET_LID ] = "B";
+	$termB[ kTAG_NAMESPACE ] = $namespace;
+	$termB[ kTAG_LID ] = "B";
 	$status = $termB->Insert( $term_container );
 	echo( '<pre>' ); print_r( $termB ); echo( '</pre>' );
 	
@@ -195,8 +195,8 @@ try
 	//
 	echo( '<h4>Create term C</h4>' );
 	$termC = new CTerm();
-	$termC[ kOFFSET_NAMESPACE ] = $namespace;
-	$termC[ kOFFSET_LID ] = "C";
+	$termC[ kTAG_NAMESPACE ] = $namespace;
+	$termC[ kTAG_LID ] = "C";
 	$status = $termC->Insert( $term_container );
 	echo( '<pre>' ); print_r( $termC ); echo( '</pre>' );
 	echo( '<hr />' );
@@ -228,8 +228,8 @@ try
 	// Insert node with term.
 	//
 	echo( '<h4>Insert node with term</h4>' );
-	echo( '<h5>$node[ kOFFSET_TERM ] = $termA;</h5>' );
-	$node[ kOFFSET_TERM ] = $termA;
+	echo( '<h5>$node[ kTAG_TERM ] = $termA;</h5>' );
+	$node[ kTAG_TERM ] = $termA;
 	echo( 'Inited['.$node->inited()
 				   .'] Dirty['.$node->dirty()
 				   .'] Saved['.$node->committed()
@@ -368,8 +368,8 @@ try
 	try
 	{
 		echo( '<h4>Insert wrong kind</h4>' );
-		echo( '<h5>$node[ kOFFSET_KIND ] = "pippo";</h5>' );
-		$node[ kOFFSET_KIND ] = "pippo";
+		echo( '<h5>$node[ kTAG_KIND ] = "pippo";</h5>' );
+		$node[ kTAG_KIND ] = "pippo";
 		echo( '<h3><font color="red">Should have raised an exception</font></h3>' );
 		echo( '<pre>' ); print_r( $node ); echo( '</pre>' );
 		echo( '<hr />' );
@@ -415,8 +415,8 @@ try
 	echo( '<h4>Add new node</h4>' );
 	echo( '<h5>$node0 = new MyClass();</h5>' );
 	$node0 = new MyClass();
-	echo( '<h5>$node0[ kOFFSET_TERM ] = $termB;</h5>' );
-	$node0[ kOFFSET_TERM ] = $termB;
+	echo( '<h5>$node0[ kTAG_TERM ] = $termB;</h5>' );
+	$node0[ kTAG_TERM ] = $termB;
 	echo( 'Inited['.$node0->inited()
 				   .'] Dirty['.$node0->dirty()
 				   .'] Saved['.$node0->committed()

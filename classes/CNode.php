@@ -33,7 +33,7 @@ require_once( kPATH_MYWRAPPER_LIBRARY_CLASS."/CPersistentObject.php" );
  * edges, a node is a vertex of a relationship. This class concentrates in the core
  * features of the node, without taking into consideration the connections to other nodes.
  *
- * The node's main property is the term, {@link kOFFSET_TERM}, which defines the abstract
+ * The node's main property is the term, {@link kTAG_TERM}, which defines the abstract
  * concept that the node represents: a term taken by itself is an abstract concept, when it
  * is referenced from a node which is related to other nodes through predicates, this term
  * takes a different meaning, it becomes a term in context. Terms are like vocabulary, taken
@@ -41,11 +41,11 @@ require_once( kPATH_MYWRAPPER_LIBRARY_CLASS."/CPersistentObject.php" );
  * meaning depending in what position of a term chain they are positioned. In this class,
  * terms may hold any value.
  *
- * The node also features a {@link kOFFSET_KIND} property which is an enumerated set
+ * The node also features a {@link kTAG_KIND} property which is an enumerated set
  * describing the specific type, or the specific function of the node in its chain or
  * path.
  *
- * Finally, the class features the {@link kOFFSET_TYPE} property which defines the data type
+ * Finally, the class features the {@link kTAG_TYPE} property which defines the data type
  * of the node or the data unit it represents, this offset is an enumerated set in which
  * two elements can reside: the data type or unit, which is required, and optionally one or
  * both {@link kTYPE_CARD_REQUIRED} and {@link kTYPE_CARD_ARRAY} which respectively indicate
@@ -56,7 +56,7 @@ require_once( kPATH_MYWRAPPER_LIBRARY_CLASS."/CPersistentObject.php" );
  * object, this means that the container is responsible of providing the primary key of the
  * object.
  *
- * Nodes can be considered {@link _IsInited()} when they have the  {@link kOFFSET_TERM}
+ * Nodes can be considered {@link _IsInited()} when they have the  {@link kTAG_TERM}
  * offset set. This and the other properties can be changed at any time, none are locked
  * once the object has been committed: it is the responsibility of the caller or of derived
  * classes to implement a locking rule.
@@ -64,9 +64,9 @@ require_once( kPATH_MYWRAPPER_LIBRARY_CLASS."/CPersistentObject.php" );
  * The class features member accessor methods for the default offsets:
  *
  * <ul>
- *	<li>{@link Term()}: This method manages the node's term, {@link kOFFSET_TERM}.
- *	<li>{@link Kind()}: This method manages the node's kind, {@link kOFFSET_KIND}.
- *	<li>{@link Type()}: This method manages the node's type, {@link kOFFSET_TYPE}.
+ *	<li>{@link Term()}: This method manages the node's term, {@link kTAG_TERM}.
+ *	<li>{@link Kind()}: This method manages the node's kind, {@link kTAG_KIND}.
+ *	<li>{@link Type()}: This method manages the node's type, {@link kTAG_TYPE}.
  * </ul>
  *
  *	@package	MyWrapper
@@ -94,7 +94,7 @@ class CNode extends CPersistentObject
 	 * This method should return the current object's name which should represent the unique
 	 * identifier of the object.
 	 *
-	 * By default we return the string representation of the term, {@link kOFFSET_TERM}.
+	 * By default we return the string representation of the term, {@link kTAG_TERM}.
 	 *
 	 * @access public
 	 * @return string				The connection name.
@@ -104,8 +104,8 @@ class CNode extends CPersistentObject
 		//
 		// Check term.
 		//
-		if( $this->offsetExists( kOFFSET_TERM ) )
-			return (string) $this->offsetGet( kOFFSET_TERM );						// ==>
+		if( $this->offsetExists( kTAG_TERM ) )
+			return (string) $this->offsetGet( kTAG_TERM );							// ==>
 		
 		//
 		// Yes, I know...
@@ -131,7 +131,7 @@ class CNode extends CPersistentObject
 	/**
 	 * <h4>Manage node term</h4>
 	 *
-	 * This method can be used to manage the node's term, {@link kOFFSET_TERM}, which
+	 * This method can be used to manage the node's term, {@link kTAG_TERM}, which
 	 * represents the node abstract term.
 	 *
 	 * The method accepts a parameter which represents either the term, or the requested
@@ -155,11 +155,11 @@ class CNode extends CPersistentObject
 	 *
 	 * @uses ManageOffset()
 	 *
-	 * @see kOFFSET_TERM
+	 * @see kTAG_TERM
 	 */
 	public function Term( $theValue = NULL, $getOld = FALSE )
 	{
-		return ManageOffset( $this, kOFFSET_TERM, $theValue, $getOld );				// ==>
+		return ManageOffset( $this, kTAG_TERM, $theValue, $getOld );				// ==>
 
 	} // Term.
 
@@ -171,7 +171,7 @@ class CNode extends CPersistentObject
 	/**
 	 * <h4>Manage node kind set</h4>
 	 *
-	 * The node kind set, {@link kOFFSET_KIND}, holds a list of unique values that represent
+	 * The node kind set, {@link kTAG_KIND}, holds a list of unique values that represent
 	 * the different kinds or types associated with the current node. The type,
 	 * {@link Type()}, of a node is a general qualification that applies to any class of
 	 * object, such as a data type; the kind, instead, refers to a qualification specific to
@@ -225,12 +225,12 @@ class CNode extends CPersistentObject
 	 *
 	 * @uses ManageObjectSetOffset()
 	 *
-	 * @see kOFFSET_KIND
+	 * @see kTAG_KIND
 	 */
 	public function Kind( $theValue = NULL, $theOperation = NULL, $getOld = FALSE )
 	{
 		return ManageObjectSetOffset
-			( $this, kOFFSET_KIND, $theValue, $theOperation, $getOld );				// ==>
+			( $this, kTAG_KIND, $theValue, $theOperation, $getOld );				// ==>
 
 	} // Kind.
 
@@ -242,7 +242,7 @@ class CNode extends CPersistentObject
 	/**
 	 * <h4>Manage node type set</h4>
 	 *
-	 * This method can be used to manage the node's type, {@link kOFFSET_TYPE}, which is an
+	 * This method can be used to manage the node's type, {@link kTAG_TYPE}, which is an
 	 * enumerated set that represents the data type or unit of the node.
 	 *
 	 * This offset collects the list of these types in an enumerated set that can be managed
@@ -293,12 +293,12 @@ class CNode extends CPersistentObject
 	 *
 	 * @uses ManageObjectSetOffset()
 	 *
-	 * @see kOFFSET_TYPE
+	 * @see kTAG_TYPE
 	 */
 	public function Type( $theValue = NULL, $theOperation = NULL, $getOld = FALSE )
 	{
 		return ManageObjectSetOffset
-			( $this, kOFFSET_TYPE, $theValue, $theOperation, $getOld );				// ==>
+			( $this, kTAG_TYPE, $theValue, $theOperation, $getOld );				// ==>
 
 	} // Type.
 
@@ -342,7 +342,7 @@ class CNode extends CPersistentObject
 	 *
 	 * @uses ManageOffset()
 	 *
-	 * @see kOFFSET_TERM
+	 * @see kTAG_TERM
 	 */
 	public function RelateTo( $theObject, $thePredicate )
 	{
@@ -387,7 +387,7 @@ class CNode extends CPersistentObject
 	/**
 	 * <h4>Handle offset before setting it</h4>
 	 *
-	 * In this class we ensure that the {@link kOFFSET_KIND} offset is an array, ArrayObject
+	 * In this class we ensure that the {@link kTAG_KIND} offset is an array, ArrayObject
 	 * instances are not counted as an array.
 	 *
 	 * @param reference			   &$theOffset			Offset.
@@ -397,14 +397,14 @@ class CNode extends CPersistentObject
 	 *
 	 * @throws Exception
 	 *
-	 * @see kOFFSET_KIND
+	 * @see kTAG_KIND
 	 */
 	protected function _Preset( &$theOffset, &$theValue )
 	{
 		//
 		// Ensure kind is array.
 		//
-		if( ($theOffset == kOFFSET_KIND)
+		if( ($theOffset == kTAG_KIND)
 		 && ($theValue !== NULL)
 		 && (! is_array( $theValue )) )
 			throw new Exception
@@ -437,14 +437,14 @@ class CNode extends CPersistentObject
 	 * <h4>Determine if the object is ready</h4>
 	 *
 	 * In this class we tie the {@link _IsInited()} status to the presence or absence of the
-	 * {@link kOFFSET_TERM} offset.
+	 * {@link kTAG_TERM} offset.
 	 *
 	 * @access protected
 	 * @return boolean				<tt>TRUE</tt> means {@link _IsInited( <tt>TRUE</tt> ).
 	 *
 	 * @uses _Ready()
 	 *
-	 * @see kOFFSET_TERM
+	 * @see kTAG_TERM
 	 */
 	protected function _Ready()
 	{
@@ -452,7 +452,7 @@ class CNode extends CPersistentObject
 		// Check parent.
 		//
 		if( parent::_Ready() )
-			return $this->offsetExists( kOFFSET_TERM );								// ==>
+			return $this->offsetExists( kTAG_TERM );								// ==>
 		
 		return FALSE;																// ==>
 	

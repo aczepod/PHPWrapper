@@ -20,6 +20,13 @@
  *======================================================================================*/
 
 /**
+ * Tags.
+ *
+ * This includes the default tag definitions.
+ */
+require_once( kPATH_MYWRAPPER_LIBRARY_DEFINE."/Tags.inc.php" );
+
+/**
  * Ancestor.
  *
  * This includes the ancestor class definitions.
@@ -36,11 +43,11 @@ require_once( kPATH_MYWRAPPER_LIBRARY_CLASS."/CPersistentDocument.php" );
  * The object is uniquely identified by a string, the <i>global unique identifier</i>, this
  * string is generally a combination of the object's attributes and once set, it should not
  * change. The string is composed by a protected method, {@link _index()}, and set into a
- * predefined offset, {@link kOFFSET_GID}.
+ * predefined offset, {@link kTAG_GID}.
  *
  * This value will be used to generate the <i>native unique identifier</i>,
  * {@link kOFFSET_NID}, which represents the object's primary key within the container in
- * which it is stored. The value is obtained by feeding the {@link kOFFSET_GID} to a static
+ * which it is stored. The value is obtained by feeding the {@link kTAG_GID} to a static
  * method, {@link _id()}, whose function is to transform the provided value into one
  * optimised as a primary key. The method is static so that any global identifier can be
  * converted into a native one.
@@ -48,12 +55,12 @@ require_once( kPATH_MYWRAPPER_LIBRARY_CLASS."/CPersistentDocument.php" );
  * Once the object has been committed, these identifiers are locked by the {@link _Preset()}
  * and {@link _Preunset()} methods to prevent invalidating object references.
  *
- * The class features a predefined offset, {@link kOFFSET_CLASS}, that receives the class
+ * The class features a predefined offset, {@link kTAG_CLASS}, that receives the class
  * name of the object: this value will be used by the static {@link NewObject()} method to
  * instantiate the correct object.
  *
  * All objects derived from this class should implement the {@link __toString()} method, by
- * default this class returns the global identifier, {@link kOFFSET_GID}. Derived classes
+ * default this class returns the global identifier, {@link kTAG_GID}. Derived classes
  * may change this behaviour, in particular when the class does not feature the global
  * identifier: the important thing is to be able to cast an object to a string.
  *
@@ -61,9 +68,9 @@ require_once( kPATH_MYWRAPPER_LIBRARY_CLASS."/CPersistentDocument.php" );
  *
  * <ul>
  *	<li>{@link GID()}: This method manages the global unique identifier,
- *		{@link kOFFSET_GID}.
+ *		{@link kTAG_GID}.
  *	<li>{@link ClassName()}: This method manages the object's class name,
- *		{@link kOFFSET_CLASS}.
+ *		{@link kTAG_CLASS}.
  * </ul>
  *
  *	@package	MyWrapper
@@ -91,7 +98,7 @@ class CPersistentObject extends CPersistentDocument
 	 * This method should return the current object's name which should represent the unique
 	 * identifier of the object.
 	 *
-	 * By default we return the value of the {@link kOFFSET_GID} offset, if this offset is
+	 * By default we return the value of the {@link kTAG_GID} offset, if this offset is
 	 * missing, the method will return <tt>NULL</tt>, which will result in a fatal error.
 	 * This behaviour is intentional, since in this case the returned value is not correct
 	 * and because this method cannot throw exceptions.
@@ -104,8 +111,8 @@ class CPersistentObject extends CPersistentDocument
 		//
 		// Check global identifier.
 		//
-		if( $this->offsetExists( kOFFSET_GID ) )
-			return $this->offsetGet( kOFFSET_GID );									// ==>
+		if( $this->offsetExists( kTAG_GID ) )
+			return $this->offsetGet( kTAG_GID );									// ==>
 		
 		//
 		// Yes, I know...
@@ -131,7 +138,7 @@ class CPersistentObject extends CPersistentDocument
 	/**
 	 * <h4>Manage global unique identifier</h4>
 	 *
-	 * The <i>global unique identifier</i>, {@link kOFFSET_GID}, holds a string which
+	 * The <i>global unique identifier</i>, {@link kTAG_GID}, holds a string which
 	 * represents the object's unique identifier, this value is hashed or used as-is to
 	 * serve as the native unique identifier, {@link kOFFSET_NID}. The global identifier
 	 * is usually a computed value extracted from a series of offsets of the object.
@@ -160,11 +167,11 @@ class CPersistentObject extends CPersistentDocument
 	 *
 	 * @uses ManageOffset()
 	 *
-	 * @see kOFFSET_GID
+	 * @see kTAG_GID
 	 */
 	public function GID( $theValue = NULL, $getOld = FALSE )
 	{
-		return ManageOffset( $this, kOFFSET_GID, $theValue, $getOld );				// ==>
+		return ManageOffset( $this, kTAG_LID, $theValue, $getOld );					// ==>
 
 	} // GID.
 
@@ -176,7 +183,7 @@ class CPersistentObject extends CPersistentDocument
 	/**
 	 * <h4>Manage global unique identifier</h4>
 	 *
-	 * The <i>class name</i>, {@link kOFFSET_CLASS}, holds a string which is the class
+	 * The <i>class name</i>, {@link kTAG_CLASS}, holds a string which is the class
 	 * name of the object that first stored the object in the container. This value will
 	 * be used by the static {@link NewObject()} method to restore the object from the
 	 * container.
@@ -205,11 +212,11 @@ class CPersistentObject extends CPersistentDocument
 	 *
 	 * @uses ManageOffset()
 	 *
-	 * @see kOFFSET_CLASS
+	 * @see kTAG_CLASS
 	 */
 	public function CLassName( $theValue = NULL, $getOld = FALSE )
 	{
-		return ManageOffset( $this, kOFFSET_CLASS, $theValue, $getOld );			// ==>
+		return ManageOffset( $this, kTAG_CLASS, $theValue, $getOld );				// ==>
 
 	} // CLassName.
 
@@ -230,7 +237,7 @@ class CPersistentObject extends CPersistentDocument
 	/**
 	 * <h4>Instantiate an object from a container</h4>
 	 *
-	 * We override this method to handle the {@link kOFFSET_CLASS} offset: if found in the
+	 * We override this method to handle the {@link kTAG_CLASS} offset: if found in the
 	 * retrieved object, it will be used to instantiate the correct class. If the offset is
 	 * missing, the method will instantiate the calling class.
 	 *
@@ -269,12 +276,12 @@ class CPersistentObject extends CPersistentDocument
 			//
 			// Handle custom class.
 			//
-			if( array_key_exists( kOFFSET_CLASS, $object ) )
+			if( array_key_exists( kTAG_CLASS, $object ) )
 			{
 				//
 				// Save class name.
 				//
-				$class = $object[ kOFFSET_CLASS ];
+				$class = $object[ kTAG_CLASS ];
 				
 				//
 				// Instantiate class.
@@ -313,7 +320,7 @@ class CPersistentObject extends CPersistentDocument
 	 * <h4>Instantiate an object from a document</h4>
 	 *
 	 * This method can be used to instantiate an object from an array. The method will
-	 * attempt to locate the class name, {@link kOFFSET_CLASS}, if found, it will return an
+	 * attempt to locate the class name, {@link kTAG_CLASS}, if found, it will return an
 	 * object of that class, if not, it will return the unchanged received document.
 	 *
 	 * If the class name was found, the resulting object will have its
@@ -342,12 +349,12 @@ class CPersistentObject extends CPersistentDocument
 		//
 		// Handle object.
 		//
-		if( array_key_exists( kOFFSET_CLASS, $theDocument ) )
+		if( array_key_exists( kTAG_CLASS, $theDocument ) )
 		{
 			//
 			// Instantiate object.
 			//
-			$class = $theDocument[ kOFFSET_CLASS ];
+			$class = $theDocument[ kTAG_CLASS ];
 			$object = new $class( $theDocument );
 			
 			//
@@ -382,7 +389,7 @@ class CPersistentObject extends CPersistentDocument
 	 *
 	 * This method is used to generate the object's <i>native unique identifier</i>,
 	 * {@link kOFFSET_NID}, from the string representing the object's <i>global unique
-	 * identifier</i>, {@link kOFFSET_GID}.
+	 * identifier</i>, {@link kTAG_GID}.
 	 *
 	 * The first parameter of the method is a string, the second parameter can be a server
 	 * or database which can be resolved into a container, or the container itself. This
@@ -431,13 +438,13 @@ class CPersistentObject extends CPersistentDocument
 	 * represented by a string which is generally extracted from selected attributes of the
 	 * object and constitutes the unique key of the object.
 	 *
-	 * This string is stored in the {@link kOFFSET_GID} offset of the object and it is
+	 * This string is stored in the {@link kTAG_GID} offset of the object and it is
 	 * processed by the static {@link _id()} method to generate the object's native unique
 	 * identifier, which is the native object's primary key stored in the
 	 * {@link kOFFSET_NID} offset.
 	 *
 	 * This method is called by the {@link _Precommit()} method, to fill the
-	 * {@link kOFFSET_GID} offset and the resulting value is fed to the {@link _id()} method
+	 * {@link kTAG_GID} offset and the resulting value is fed to the {@link _id()} method
 	 * to obtain the value that will be stored in the {@link kOFFSET_NID} offset. The
 	 * inherited {@link Precommit()} method asserts whether the object {@link _IsInited()},
 	 * before calling the local {@link _Precommit()} method, this to ensure that this method
@@ -500,14 +507,14 @@ class CPersistentObject extends CPersistentDocument
 	 *
 	 * @uses _IsCommitted()
 	 *
-	 * @see kOFFSET_NID kOFFSET_GID
+	 * @see kOFFSET_NID kTAG_GID
 	 */
 	protected function _Preset( &$theOffset, &$theValue )
 	{
 		//
 		// Intercept identifiers.
 		//
-		$offsets = array( kOFFSET_NID, kOFFSET_GID );
+		$offsets = array( kOFFSET_NID, kTAG_GID );
 		if( $this->_IsCommitted()
 		 && in_array( $theOffset, $offsets ) )
 			throw new Exception
@@ -542,14 +549,14 @@ class CPersistentObject extends CPersistentDocument
 	 *
 	 * @uses _IsCommitted()
 	 *
-	 * @see kOFFSET_NID kOFFSET_GID
+	 * @see kOFFSET_NID kTAG_GID
 	 */
 	protected function _Preunset( &$theOffset )
 	{
 		//
 		// Intercept identifiers.
 		//
-		$offsets = array( kOFFSET_NID, kOFFSET_GID );
+		$offsets = array( kOFFSET_NID, kTAG_GID );
 		if( $this->_IsCommitted()
 		 && in_array( $theOffset, $offsets ) )
 			throw new Exception
@@ -627,7 +634,7 @@ class CPersistentObject extends CPersistentDocument
 	 * <h4>Handle embedded or related objects before committing</h4>
 	 *
 	 * In this class we have no related objects, but we use this method to set default
-	 * values, such as the class name in {@link kOFFSET_CLASS} when inserting, replacing or
+	 * values, such as the class name in {@link kTAG_CLASS} when inserting, replacing or
 	 * updating.
 	 *
 	 * @param reference			   &$theConnection		Server, database or container.
@@ -635,7 +642,7 @@ class CPersistentObject extends CPersistentDocument
 	 *
 	 * @access protected
 	 *
-	 * @see kOFFSET_CLASS
+	 * @see kTAG_CLASS
 	 * @see kFLAG_PERSIST_INSERT kFLAG_PERSIST_REPLACE kFLAG_PERSIST_UPDATE
 	 */
 	protected function _PrecommitRelated( &$theConnection, &$theModifiers )
@@ -651,7 +658,7 @@ class CPersistentObject extends CPersistentDocument
 		if( (($theModifiers & kFLAG_PERSIST_MASK) == kFLAG_PERSIST_INSERT)
 		 || (($theModifiers & kFLAG_PERSIST_MASK) == kFLAG_PERSIST_REPLACE)
 		 || (($theModifiers & kFLAG_PERSIST_MASK) == kFLAG_PERSIST_UPDATE) )
-			$this->offsetSet( kOFFSET_CLASS, get_class( $this ) );
+			$this->offsetSet( kTAG_CLASS, get_class( $this ) );
 	
 	} // _PrecommitRelated.
 
@@ -666,18 +673,18 @@ class CPersistentObject extends CPersistentDocument
 	 * In this class this method is called only if the operation involves inserting or
 	 * replacing.
 	 *
-	 * If the {@link kOFFSET_GID} offset is missing, we call the {@link _index()} method: if
+	 * If the {@link kTAG_GID} offset is missing, we call the {@link _index()} method: if
 	 * the result of that method is not <tt>NULL</tt>, we use it to set the
-	 * {@link kOFFSET_GID} offset value, this only if the operation involves inserting or
+	 * {@link kTAG_GID} offset value, this only if the operation involves inserting or
 	 * replacing.
 	 *
-	 * If the {@link kOFFSET_NID} offset is missing, we check if the {@link kOFFSET_GID}
+	 * If the {@link kOFFSET_NID} offset is missing, we check if the {@link kTAG_GID}
 	 * offset was set: in that case we use its value to feed the {@link _id()} method and
 	 * the result is set in the {@link kOFFSET_NID} offset.
 	 *
 	 * This workflow implies that only if the {@link _index()} method returns a non
-	 * <tt>NULL</tt> value, the {@link kOFFSET_GID} offset will be set in this method, and
-	 * that if the {@link kOFFSET_GID} offset is missing the native identifier will not be
+	 * <tt>NULL</tt> value, the {@link kTAG_GID} offset will be set in this method, and
+	 * that if the {@link kTAG_GID} offset is missing the native identifier will not be
 	 * touched.
 	 *
 	 * Note that this is the only place in which the {@link _index()} method is called.
@@ -691,7 +698,7 @@ class CPersistentObject extends CPersistentDocument
 	 * @uses _index()
 	 * @uses ResolveContainer()
 	 *
-	 * @see kOFFSET_GID kOFFSET_NID
+	 * @see kTAG_GID kOFFSET_NID
 	 * @see kFLAG_PERSIST_INSERT kFLAG_PERSIST_REPLACE
 	 */
 	protected function _PrecommitIdentify( &$theConnection, &$theModifiers )
@@ -710,14 +717,14 @@ class CPersistentObject extends CPersistentDocument
 			//
 			// Set global identifier.
 			//
-			if( ! $this->offsetExists( kOFFSET_GID ) )
+			if( ! $this->offsetExists( kTAG_GID ) )
 			{
 				//
 				// Generate global identifier.
 				//
 				$index = $this->_index( $theConnection, $theModifiers );
 				if( $index !== NULL )
-					$this->offsetSet( kOFFSET_GID, $index );
+					$this->offsetSet( kTAG_GID, $index );
 			
 			} // Missing global identifier.
 		
@@ -729,9 +736,9 @@ class CPersistentObject extends CPersistentDocument
 				//
 				// Use global identifier.
 				//
-				if( $this->offsetExists( kOFFSET_GID ) )
+				if( $this->offsetExists( kTAG_GID ) )
 					$this->offsetSet( kOFFSET_NID,
-									  $this->_id( $this->offsetGet( kOFFSET_GID ),
+									  $this->_id( $this->offsetGet( kTAG_GID ),
 												  $this->ResolveContainer( $theConnection,
 																		   TRUE ) ) );
 			

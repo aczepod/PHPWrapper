@@ -400,7 +400,7 @@ class COntology extends CConnection
 								COntologyTerm::_id(
 									COntologyTerm::TermCode(
 										$theIdentifier,
-										$theNamespace->offsetGet( kOFFSET_GID ) ),
+										$theNamespace->offsetGet( kTAG_LID ) ),
 									$this->Connection() ) );
 					if( $term !== NULL )
 						return $term;												// ==>
@@ -661,7 +661,7 @@ class COntology extends CConnection
 					//
 					$query->AppendStatement(
 						CQueryStatement::Equals(
-							kOFFSET_TERM, $term[ kOFFSET_NID ], kTYPE_BINARY ) );
+							kTAG_TERM, $term[ kOFFSET_NID ], kTYPE_BINARY ) );
 					
 					//
 					// Filter by kind.
@@ -675,7 +675,7 @@ class COntology extends CConnection
 						foreach( $theKind as $match )
 							$query->AppendStatement(
 								CQueryStatement::Member(
-									kOFFSET_KIND, $match, kTYPE_STRING ) );
+									kTAG_KIND, $match, kTYPE_STRING ) );
 					
 					} // Provided kind.
 					
@@ -685,7 +685,7 @@ class COntology extends CConnection
 					if( $theType !== NULL )
 						$query->AppendStatement(
 							CQueryStatement::Equals(
-								kOFFSET_TYPE, $theType, kTYPE_STRING ) );
+								kTAG_TYPE, $theType, kTYPE_STRING ) );
 							
 					//
 					// Perform query.
@@ -1011,21 +1011,21 @@ class COntology extends CConnection
 				//
 				$query->AppendStatement(
 					CQueryStatement::Equals(
-						kOFFSET_TERM, $term[ kOFFSET_NID ], kTYPE_BINARY ) );
+						kTAG_TERM, $term[ kOFFSET_NID ], kTYPE_BINARY ) );
 				
 				//
 				// Filter by kind.
 				//
 				$query->AppendStatement(
 					CQueryStatement::Member(
-						kOFFSET_KIND, kKIND_NODE_SCALE, kTYPE_STRING ) );
+						kTAG_KIND, kKIND_NODE_SCALE, kTYPE_STRING ) );
 				
 				//
 				// Filter by type.
 				//
 				if( $theType !== NULL )
 					$query->AppendStatement(
-						CQueryStatement::Exists( kOFFSET_TYPE ) );
+						CQueryStatement::Exists( kTAG_TYPE ) );
 				else
 					throw new Exception
 						( "Missing node data type",
@@ -2369,12 +2369,12 @@ class COntology extends CConnection
 				   kOFFSET_DESCRIPTION => "This tag identifies edge references, the attribute contains the list of identifiers of edges that reference the current node." ),
 			array( kOFFSET_LID => substr( kOFFSET_LANGUAGE, 1 ),
 				   kOFFSET_NAMESPACE => $ns,
-				   kOFFSET_LABEL => "Language code",
-				   kOFFSET_DESCRIPTION => "This tag is used as a sub-offset of the coded list type elements, it is expected to contain a language character code identifying the language in which the coded list instance element is expressed in." ),
-			array( kOFFSET_LID => substr( kOFFSET_DATA, 1 ),
+				   kOFFSET_LABEL => "Language",
+				   kOFFSET_DESCRIPTION => "This tag is used as a sub-offset that contains the code identifying the language in which the corresponding string sub-offset is expressed in." ),
+			array( kOFFSET_LID => substr( kOFFSET_STRING, 1 ),
 				   kOFFSET_NAMESPACE => $ns,
-				   kOFFSET_LABEL => "Data",
-				   kOFFSET_DESCRIPTION => "This tag is used in structured data types as the sub-offset of the item holding the data. For instance in coded list structures, this will be the offset holding the actual data." ) );
+				   kOFFSET_LABEL => "String",
+				   kOFFSET_DESCRIPTION => "This tag is used as a sub-offset that contains the string expressed in the language indicated by the corresponding language code sub-offset." ) );
 		
 		//
 		// Iterate definitions.
@@ -2720,12 +2720,7 @@ class COntology extends CConnection
 								$term[ kOFFSET_LID ],			// Local identifier.
 								$term[ kOFFSET_NAMESPACE ],		// Namespace object.
 								TRUE ),							// Raise exception on fail.
-						$term[ kOFFSET_TYPE ],					// Data type.
-						NULL,									// Namespace.
-						NULL,									// Label.
-						NULL,									// Description.
-						NULL,									// Language.
-						TRUE ),									// New node flag.
+						$term[ kOFFSET_TYPE ] ),				// Data type.
 				$root_node );
 			
 			//
@@ -2738,8 +2733,8 @@ class COntology extends CConnection
 			//
 			// Create subtag.
 			//
-			if( ($tmp[ kOFFSET_GID ] == kOFFSET_LABEL)
-			 || ($tmp[ kOFFSET_GID ] == kOFFSET_DESCRIPTION) )
+			if( ($tmp[ kTAG_GID ] == kOFFSET_LABEL)
+			 || ($tmp[ kTAG_GID ] == kOFFSET_DESCRIPTION) )
 			{
 				//
 				// Load term data.
@@ -2747,7 +2742,7 @@ class COntology extends CConnection
 				$list = array(
 					array( kOFFSET_LID => substr( kOFFSET_LANGUAGE, 1 ),
 						   kOFFSET_TYPE => kTYPE_STRING ),
-					array( kOFFSET_LID => substr( kOFFSET_DATA, 1 ),
+					array( kOFFSET_LID => substr( kOFFSET_STRING, 1 ),
 						   kOFFSET_TYPE => array( kTYPE_STRING, kTYPE_CARD_REQUIRED ) ) );
 				
 				//
@@ -2756,23 +2751,22 @@ class COntology extends CConnection
 				foreach( $list as $item )
 				{
 					//
-					// Create node and relate.
+					// Resolve node.
 					//
-					$this->SubclassOf(
-						$child_node
-							= $this->NewScaleNode(
-								$tmp
-									= $this->ResolveTerm(
-										$item[ kOFFSET_LID ],	// Local identifier.
-										$ns,				// Namespace object.
-										TRUE ),					// Raise exception on fail.
-								$item[ kOFFSET_TYPE ],			// Data type.
-								NULL,							// Namespace.
-								NULL,							// Label.
-								NULL,							// Description.
-								NULL,							// Language.
-								TRUE ),							// New node flag.
-						$parent_node );
+					$child_node
+						= $this->NewScaleNode(
+							$this->ResolveTerm(
+								$item[ kOFFSET_LID ],	// Local identifier.
+								$ns,					// Namespace object.
+								TRUE ),					// Raise exception on fail.
+							$item[ kOFFSET_TYPE ] );	// Data type.
+					if( is_array( $child_node ) )
+						$child_node = $child_node[ 0 ];
+					
+					//
+					// Relate.
+					//
+					$this->SubclassOf( $child_node, $parent_node );
 				
 					//
 					// Create tag.

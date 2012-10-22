@@ -28,7 +28,7 @@
  * This tag identifies the attribute that contains the local or full unique identifier.
  * This value represents the identifier that uniquely identifies an object within a specific
  * domain or namespace. It is by default a string constituting a portion of the global
- * unique identifier, {@link kOFFSET_GID}.
+ * unique identifier, {@link kTAG_GID}.
  */
 define( "kTAG_LID",								'1' );
 
@@ -45,7 +45,7 @@ define( "kTAG_GID",								'2' );
  * Unique identifier.
  *
  * This tag represents the hashed unique identifier of an object in which its
- * {@link kOFFSET_NID} is not related to the {@link kOFFSET_GID}. This is generally used
+ * {@link kOFFSET_NID} is not related to the {@link kTAG_GID}. This is generally used
  * when the {@link kOFFSET_NID} is a sequence number.
  */
 define( "kTAG_UID",								'22' );
@@ -196,7 +196,7 @@ define( "kTAG_LABEL",							'4' );
  * Label language code.
  *
  * This tag is used as a sub-offset of {@link kTAG_LABEL} element, it represents the
- * language code of the {@link kTAG_LABEL_DATA} string element.
+ * language code of the {@link kTAG_LABEL_STRING} string element.
  */
 define( "kTAG_LABEL_LANGUAGE",					'5' );
 
@@ -205,7 +205,7 @@ define( "kTAG_LABEL_LANGUAGE",					'5' );
  *
  * This tag represents the string item in the {@link kTAG_LABEL} elements.
  */
-define( "kTAG_LABEL_DATA",						'6' );
+define( "kTAG_LABEL_STRING",					'6' );
 
 /**
  * Description.
@@ -219,7 +219,7 @@ define( "kTAG_DESCRIPTION",						'7' );
  * Description language code.
  *
  * This tag is used as a sub-offset of {@link kTAG_DESCRIPTION} element, it represents the
- * language code of the {@link kTAG_DESCRIPTION_DATA} string element.
+ * language code of the {@link kTAG_DESCRIPTION_STRING} string element.
  */
 define( "kTAG_DESCRIPTION_LANGUAGE",			'8' );
 
@@ -228,7 +228,7 @@ define( "kTAG_DESCRIPTION_LANGUAGE",			'8' );
  *
  * This tag represents the string item in the {@link kTAG_DESCRIPTION} elements.
  */
-define( "kTAG_DESCRIPTION_DATA",				'9' );
+define( "kTAG_DESCRIPTION_STRING",				'9' );
 
 
 ?>

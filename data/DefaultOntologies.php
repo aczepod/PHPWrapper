@@ -63,7 +63,7 @@ require_once( 'DefaultOntologies.inc.php' );
 		// Inform.
 		//
 		if( kOPTION_VERBOSE )
-			echo( "    - :".$_SESSION[ 'TERMS' ][ 0 ][ kOFFSET_GID ]."\n" );
+			echo( "    - :".$_SESSION[ 'TERMS' ][ 0 ][ kTAG_GID ]."\n" );
 
 	} // LoadDefaultNamespace.
 

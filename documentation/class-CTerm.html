@@ -109,34 +109,34 @@ component that is an abstract concept if considered by itself, but takes a
 precise meaning if related to other terms, as a sequence of words that
 constitute a statement.</p>
 
-<p>Terms are uniquely identified by their global identifier, kOFFSET_GID, which is a string code formed by the concatenation of two elements
-of the object: the namespace, kOFFSET_NAMESPACE, which represents the
-group to which the term belongs and the local identifier, kOFFSET_LID,
-which represents the unique identifier of the term within its namespace. These
-two elements are separated by the kTOKEN_NAMESPACE_SEPARATOR token and
-the resulting string is set into the object's kOFFSET_GID.</p>
+<p>Terms are uniquely identified by their global identifier, kTAG_GID,
+which is a string code formed by the concatenation of two elements of the
+object: the namespace, kTAG_NAMESPACE, which represents the group to
+which the term belongs and the local identifier, kTAG_LID, which
+represents the unique identifier of the term within its namespace. These two
+elements are separated by the kTOKEN_NAMESPACE_SEPARATOR token and the
+resulting string is set into the object's kTAG_GID.</p>
 
 <p>In this class we do not hash the native identifier, kOFFSET_NID.</p>
 
 <p>When the object is committed, <code><a href="class-CStatusDocument.html#__IsCommitted">CStatusDocument::_IsCommitted()</a></code>, besides the global and
-native identifiers, also the kOFFSET_NAMESPACE and kOFFSET_LID
-offsets will be locked, since they are used to generate the global identifier,
-kOFFSET_GID.</p>
+native identifiers, also the kTAG_NAMESPACE and kTAG_LID offsets
+will be locked, since they are used to generate the global identifier, kTAG_GID.</p>
 
 <p>The object will have its <code><a href="class-CStatusDocument.html#__IsInited">CStatusDocument::_IsInited()</a></code> status set if the local unique
-identifier, kOFFSET_LID, is set.</p>
+identifier, kTAG_LID, is set.</p>
 
 <p>Finally, the class features member accessor methods for the default
 offsets:</p>
 
 <ul>
-	<li><code><a href="class-CTerm.html#_NS">CTerm::NS()</a></code>: This method manages the term's namespace, kOFFSET_NAMESPACE.</li>
+	<li><code><a href="class-CTerm.html#_NS">CTerm::NS()</a></code>: This method manages the term's namespace, kTAG_NAMESPACE.</li>
 
-	<li><code><a href="class-CTerm.html#_LID">CTerm::LID()</a></code>: This method manages the local unique identifier, kOFFSET_LID.</li>
+	<li><code><a href="class-CTerm.html#_LID">CTerm::LID()</a></code>: This method manages the local unique identifier, kTAG_LID.</li>
 
-	<li><code><a href="class-CTerm.html#_Label">CTerm::Label()</a></code>: This method manages the term label, kOFFSET_LABEL.</li>
+	<li><code><a href="class-CTerm.html#_Label">CTerm::Label()</a></code>: This method manages the term label, kTAG_LABEL.</li>
 
-	<li><code><a href="class-CTerm.html#_Description">CTerm::Description()</a></code>: This method manages the term label, kOFFSET_DESCRIPTION.</li>
+	<li><code><a href="class-CTerm.html#_Description">CTerm::Description()</a></code>: This method manages the term label, kTAG_DESCRIPTION.</li>
 </ul>
 
 	</div>
@@ -214,7 +214,7 @@ offsets:</p>
 				<b>Author:</b>
 				Milko A. Škofič &lt;<a
 href="mailto:m.skofic&#64;cgiar.org">m.skofic&#64;<!---->cgiar.org</a>&gt;<br />
-		<b>Located at</b> <a href="source-class-CTerm.html#36-648" title="Go to source code">CTerm.php</a><br />
+		<b>Located at</b> <a href="source-class-CTerm.html#36-650" title="Go to source code">CTerm.php</a><br />
 	</div>
 
 
@@ -232,7 +232,7 @@ href="mailto:m.skofic&#64;cgiar.org">m.skofic&#64;<!---->cgiar.org</a>&gt;<br />
 
 		<td class="name"><div>
 		<a class="anchor" href="#_NS">#</a>
-		<code><a href="source-class-CTerm.html#90-126" title="Go to source code">NS</a>( <span>mixed <var>$theValue</var> = <span class="php-keyword1">NULL</span></span>, <span>boolean <var>$getOld</var> = <span class="php-keyword1">FALSE</span> </span> )</code>
+		<code><a href="source-class-CTerm.html#89-125" title="Go to source code">NS</a>( <span>mixed <var>$theValue</var> = <span class="php-keyword1">NULL</span></span>, <span>boolean <var>$getOld</var> = <span class="php-keyword1">FALSE</span> </span> )</code>
 
 		<div class="description short">
 			
@@ -244,7 +244,7 @@ href="mailto:m.skofic&#64;cgiar.org">m.skofic&#64;<!---->cgiar.org</a>&gt;<br />
 			
 <h4>Manage namespace native identifier</h4>
 
-<p>The <i>namespace native identifier</i>, kOFFSET_NAMESPACE, holds the
+<p>The <i>namespace native identifier</i>, kTAG_NAMESPACE, holds the
 native identifier of the object that represents the term's namespace.</p>
 
 <p>The method accepts a parameter which represents either the namespace or the
@@ -283,7 +283,7 @@ will be locked and an exception will be raised.</p>
 
 				<h4>See</h4>
 				<div class="list">
-						kOFFSET_NAMESPACE<br />
+						kTAG_NAMESPACE<br />
 				</div>
 				<h4>Uses</h4>
 				<div class="list">
@@ -305,7 +305,7 @@ will be locked and an exception will be raised.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#_LID">#</a>
-		<code><a href="source-class-CTerm.html#133-171" title="Go to source code">LID</a>( <span>mixed <var>$theValue</var> = <span class="php-keyword1">NULL</span></span>, <span>boolean <var>$getOld</var> = <span class="php-keyword1">FALSE</span> </span> )</code>
+		<code><a href="source-class-CTerm.html#132-170" title="Go to source code">LID</a>( <span>mixed <var>$theValue</var> = <span class="php-keyword1">NULL</span></span>, <span>boolean <var>$getOld</var> = <span class="php-keyword1">FALSE</span> </span> )</code>
 
 		<div class="description short">
 			
@@ -317,7 +317,7 @@ will be locked and an exception will be raised.</p>
 			
 <h4>Manage local unique identifier</h4>
 
-<p>The <i>local unique identifier</i>, kOFFSET_LID, holds a string which
+<p>The <i>local unique identifier</i>, kTAG_LID, holds a string which
 represents the object's unique identifier within its namespace, this value is
 concatenated to the eventual's namespace's global identifier to form the term's
 global identifier.</p>
@@ -358,7 +358,7 @@ will be locked and an exception will be raised.</p>
 
 				<h4>See</h4>
 				<div class="list">
-						kOFFSET_LID<br />
+						kTAG_LID<br />
 				</div>
 				<h4>Uses</h4>
 				<div class="list">
@@ -380,7 +380,7 @@ will be locked and an exception will be raised.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#_Label">#</a>
-		<code><a href="source-class-CTerm.html#178-228" title="Go to source code">Label</a>( <span>mixed <var>$theLanguage</var> = <span class="php-keyword1">NULL</span></span>, <span>mixed <var>$theValue</var> = <span class="php-keyword1">NULL</span></span>, <span>boolean <var>$getOld</var> = <span class="php-keyword1">FALSE</span> </span> )</code>
+		<code><a href="source-class-CTerm.html#177-228" title="Go to source code">Label</a>( <span>mixed <var>$theLanguage</var> = <span class="php-keyword1">NULL</span></span>, <span>mixed <var>$theValue</var> = <span class="php-keyword1">NULL</span></span>, <span>boolean <var>$getOld</var> = <span class="php-keyword1">FALSE</span> </span> )</code>
 
 		<div class="description short">
 			
@@ -392,16 +392,16 @@ will be locked and an exception will be raised.</p>
 			
 <h4>Manage term label</h4>
 
-<p>The term <i>label</i>, kOFFSET_LABEL, represents the term's name or
+<p>The term <i>label</i>, kTAG_LABEL, represents the term's name or
 short human readable description. It is an optional attribute of the object that
 holds an array of elements structured as follows:</p>
 
 <ul>
-	<li>kOFFSET_DATA: This item holds the label string, the item is
+	<li>kTAG_LABEL_STRING: This item holds the label string, the item is
 	required.</li>
 
-	<li>kOFFSET_LANGUAGE: This item holds the two character ISO 639 language
-	code of the string, this element is optional.</li>
+	<li>kTAG_LABEL_LANGUAGE: This item holds the three character ISO 639
+	language code of the string, this element is optional.</li>
 </ul>
 
 <p>No two elements may share the same language code and only one element may
@@ -452,7 +452,7 @@ omit the language code.</p>
 
 				<h4>See</h4>
 				<div class="list">
-						kOFFSET_LABEL<br />
+						kTAG_LABEL kTAG_LABEL_LANGUAGE kTAG_LABEL_STRING<br />
 				</div>
 				<h4>Uses</h4>
 				<div class="list">
@@ -474,7 +474,7 @@ omit the language code.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#_Description">#</a>
-		<code><a href="source-class-CTerm.html#235-287" title="Go to source code">Description</a>( <span>mixed <var>$theLanguage</var> = <span class="php-keyword1">NULL</span></span>, <span>mixed <var>$theValue</var> = <span class="php-keyword1">NULL</span></span>, <span>boolean <var>$getOld</var> = <span class="php-keyword1">FALSE</span> </span> )</code>
+		<code><a href="source-class-CTerm.html#235-289" title="Go to source code">Description</a>( <span>mixed <var>$theLanguage</var> = <span class="php-keyword1">NULL</span></span>, <span>mixed <var>$theValue</var> = <span class="php-keyword1">NULL</span></span>, <span>boolean <var>$getOld</var> = <span class="php-keyword1">FALSE</span> </span> )</code>
 
 		<div class="description short">
 			
@@ -486,16 +486,16 @@ omit the language code.</p>
 			
 <h4>Manage term description</h4>
 
-<p>The term <i>description</i>, kOFFSET_DESCRIPTION, represents the
-term's definition or human readable description. It is an optional attribute of
-the object that holds an array of elements structured as follows:</p>
+<p>The term <i>description</i>, kTAG_DESCRIPTION, represents the term's
+definition or human readable description. It is an optional attribute of the
+object that holds an array of elements structured as follows:</p>
 
 <ul>
-	<li>kOFFSET_DATA: This item holds the description string, the item is
-	required.</li>
+	<li>kTAG_DESCRIPTION_STRING: This item holds the description string, the
+	item is required.</li>
 
-	<li>kOFFSET_LANGUAGE: This item holds the two character ISO 639 language
-	code of the string, this element is optional.</li>
+	<li>kTAG_DESCRIPTION_LANGUAGE: This item holds the three character ISO
+	639 language code of the string, this element is optional.</li>
 </ul>
 
 <p>No two elements may share the same language code and only one element may
@@ -546,7 +546,7 @@ omit the language code.</p>
 
 				<h4>See</h4>
 				<div class="list">
-						kOFFSET_DESCRIPTION<br />
+						kTAG_DESCRIPTION kTAG_DESCRIPTION_LANGUAGE kTAG_DESCRIPTION_STRING<br />
 				</div>
 				<h4>Uses</h4>
 				<div class="list">
@@ -568,7 +568,7 @@ omit the language code.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#_Synonym">#</a>
-		<code><a href="source-class-CTerm.html#294-356" title="Go to source code">Synonym</a>( <span>mixed <var>$theValue</var> = <span class="php-keyword1">NULL</span></span>, <span>mixed <var>$theOperation</var> = <span class="php-keyword1">NULL</span></span>, <span>boolean <var>$getOld</var> = <span class="php-keyword1">FALSE</span> </span> )</code>
+		<code><a href="source-class-CTerm.html#296-358" title="Go to source code">Synonym</a>( <span>mixed <var>$theValue</var> = <span class="php-keyword1">NULL</span></span>, <span>mixed <var>$theOperation</var> = <span class="php-keyword1">NULL</span></span>, <span>boolean <var>$getOld</var> = <span class="php-keyword1">FALSE</span> </span> )</code>
 
 		<div class="description short">
 			
@@ -580,8 +580,9 @@ omit the language code.</p>
 			
 <h4>Manage term synonyms</h4>
 
-<p>This method can be used to manage the term's synonyms, kOFFSET_SYNONYMS, which contains a list of strings that represent alternate
-codes or names that can be used to identify the term.</p>
+<p>This method can be used to manage the term's synonyms, kTAG_SYNONYMS,
+which contains a list of strings that represent alternate codes or names that
+can be used to identify the term.</p>
 
 <p>This offset collects the list of synonyms in an enumerated set that can be
 managed with the following parameters:</p>
@@ -654,7 +655,7 @@ managed with the following parameters:</p>
 
 				<h4>See</h4>
 				<div class="list">
-						kOFFSET_SYNONYMS<br />
+						kTAG_SYNONYMS<br />
 				</div>
 				<h4>Uses</h4>
 				<div class="list">
@@ -676,7 +677,7 @@ managed with the following parameters:</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#_Term">#</a>
-		<code><a href="source-class-CTerm.html#363-400" title="Go to source code">Term</a>( <span>mixed <var>$theValue</var> = <span class="php-keyword1">NULL</span></span>, <span>boolean <var>$getOld</var> = <span class="php-keyword1">FALSE</span> </span> )</code>
+		<code><a href="source-class-CTerm.html#365-402" title="Go to source code">Term</a>( <span>mixed <var>$theValue</var> = <span class="php-keyword1">NULL</span></span>, <span>boolean <var>$getOld</var> = <span class="php-keyword1">FALSE</span> </span> )</code>
 
 		<div class="description short">
 			
@@ -688,7 +689,7 @@ managed with the following parameters:</p>
 			
 <h4>Manage term reference</h4>
 
-<p>This method can be used to manage the term reference, kOFFSET_TERM,
+<p>This method can be used to manage the term reference, kTAG_TERM,
 which represents the term that hosts all the attributes for the current
 term.</p>
 
@@ -730,7 +731,7 @@ the currently set value.</p>
 
 				<h4>See</h4>
 				<div class="list">
-						kOFFSET_TERM<br />
+						kTAG_TERM<br />
 				</div>
 				<h4>Uses</h4>
 				<div class="list">
@@ -752,7 +753,7 @@ the currently set value.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#_TermCode">#</a>
-		<code><a href="source-class-CTerm.html#416-442" title="Go to source code">TermCode</a>( <span>string <var>$theIdentifier</var></span>, <span>string <var>$theNamespace</var> = <span class="php-keyword1">NULL</span> </span> )</code>
+		<code><a href="source-class-CTerm.html#418-444" title="Go to source code">TermCode</a>( <span>string <var>$theIdentifier</var></span>, <span>string <var>$theNamespace</var> = <span class="php-keyword1">NULL</span> </span> )</code>
 
 		<div class="description short">
 			
@@ -786,7 +787,7 @@ the method will generate the term's global identifier.</p>
 
 				<h4>See</h4>
 				<div class="list">
-						kOFFSET_GID kOFFSET_NAMESPACE kTOKEN_NAMESPACE_SEPARATOR<br />
+						kTAG_GID kTAG_NAMESPACE kTOKEN_NAMESPACE_SEPARATOR<br />
 				</div>
 
 
@@ -804,7 +805,7 @@ the method will generate the term's global identifier.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#__index">#</a>
-		<code><a href="source-class-CTerm.html#458-493" title="Go to source code">_index</a>( <span><code><a href="class-CConnection.html">CConnection</a></code> <var>$theConnection</var></span>, <span>bitfield <var>$theModifiers</var></span> )</code>
+		<code><a href="source-class-CTerm.html#460-495" title="Go to source code">_index</a>( <span><code><a href="class-CConnection.html">CConnection</a></code> <var>$theConnection</var></span>, <span>bitfield <var>$theModifiers</var></span> )</code>
 
 		<div class="description short">
 			
@@ -843,7 +844,7 @@ compute the global identifier.</p>
 
 				<h4>See</h4>
 				<div class="list">
-						kOFFSET_LID kOFFSET_NAMESPACE kTOKEN_NAMESPACE_SEPARATOR<br />
+						kTAG_LID kTAG_NAMESPACE kTOKEN_NAMESPACE_SEPARATOR<br />
 				</div>
 
 				<h4>Overrides</h4>
@@ -863,7 +864,7 @@ compute the global identifier.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#__Preset">#</a>
-		<code><a href="source-class-CTerm.html#509-560" title="Go to source code">_Preset</a>( <span>reference <var>&amp; $theOffset</var></span>, <span>reference <var>&amp; $theValue</var></span> )</code>
+		<code><a href="source-class-CTerm.html#511-562" title="Go to source code">_Preset</a>( <span>reference <var>&amp; $theOffset</var></span>, <span>reference <var>&amp; $theValue</var></span> )</code>
 
 		<div class="description short">
 			
@@ -879,8 +880,8 @@ compute the global identifier.</p>
 generation of the object's identifier if the object has its <code><a href="class-CStatusDocument.html#__IsCommitted">CStatusDocument::_IsCommitted()</a></code> status set. This is because referenced objects must not change
 identifier.</p>
 
-<p>The kOFFSET_NAMESPACE and kOFFSET_LID are locked if the
-object was committed, <code><a href="class-CStatusDocument.html#__IsCommitted">CStatusDocument::_IsCommitted()</a></code>.</p>
+<p>The kTAG_NAMESPACE and kTAG_LID are locked if the object was
+committed, <code><a href="class-CStatusDocument.html#__IsCommitted">CStatusDocument::_IsCommitted()</a></code>.</p>
 
 
 
@@ -900,7 +901,7 @@ object was committed, <code><a href="class-CStatusDocument.html#__IsCommitted">C
 
 				<h4>See</h4>
 				<div class="list">
-						kOFFSET_NAMESPACE kOFFSET_LID<br />
+						kTAG_NAMESPACE kTAG_LID<br />
 				</div>
 				<h4>Uses</h4>
 				<div class="list">
@@ -924,7 +925,7 @@ object was committed, <code><a href="class-CStatusDocument.html#__IsCommitted">C
 
 		<td class="name"><div>
 		<a class="anchor" href="#__Preunset">#</a>
-		<code><a href="source-class-CTerm.html#567-605" title="Go to source code">_Preunset</a>( <span>reference <var>&amp; $theOffset</var></span> )</code>
+		<code><a href="source-class-CTerm.html#569-607" title="Go to source code">_Preunset</a>( <span>reference <var>&amp; $theOffset</var></span> )</code>
 
 		<div class="description short">
 			
@@ -940,8 +941,8 @@ object was committed, <code><a href="class-CStatusDocument.html#__IsCommitted">C
 generation of the object's identifier if the object has its <code><a href="class-CStatusDocument.html#__IsCommitted">CStatusDocument::_IsCommitted()</a></code> status set. This is because referenced objects must not change
 identifier.</p>
 
-<p>The kOFFSET_NAMESPACE and kOFFSET_LID are locked if the
-object was committed, <code><a href="class-CStatusDocument.html#__IsCommitted">CStatusDocument::_IsCommitted()</a></code>.</p>
+<p>The kTAG_NAMESPACE and kTAG_LID are locked if the object was
+committed, <code><a href="class-CStatusDocument.html#__IsCommitted">CStatusDocument::_IsCommitted()</a></code>.</p>
 
 
 
@@ -959,7 +960,7 @@ object was committed, <code><a href="class-CStatusDocument.html#__IsCommitted">C
 
 				<h4>See</h4>
 				<div class="list">
-						kOFFSET_NAMESPACE kOFFSET_LID<br />
+						kTAG_NAMESPACE kTAG_LID<br />
 				</div>
 				<h4>Uses</h4>
 				<div class="list">
@@ -983,7 +984,7 @@ object was committed, <code><a href="class-CStatusDocument.html#__IsCommitted">C
 
 		<td class="name"><div>
 		<a class="anchor" href="#__Ready">#</a>
-		<code><a href="source-class-CTerm.html#621-644" title="Go to source code">_Ready</a>( )</code>
+		<code><a href="source-class-CTerm.html#623-646" title="Go to source code">_Ready</a>( )</code>
 
 		<div class="description short">
 			
@@ -996,7 +997,7 @@ object was committed, <code><a href="class-CStatusDocument.html#__IsCommitted">C
 <h4>Determine if the object is ready</h4>
 
 <p>In this class we tie the <code><a href="class-CStatusDocument.html#__IsInited">CStatusDocument::_IsInited()</a></code> status to the presence or
-absence of the kOFFSET_LID offset.</p>
+absence of the kTAG_LID offset.</p>
 
 
 
@@ -1009,7 +1010,7 @@ absence of the kOFFSET_LID offset.</p>
 
 				<h4>See</h4>
 				<div class="list">
-						kOFFSET_LID<br />
+						kTAG_LID<br />
 				</div>
 				<h4>Uses</h4>
 				<div class="list">

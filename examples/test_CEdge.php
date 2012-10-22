@@ -168,7 +168,7 @@ try
 	//
 	echo( '<h4>Create namespace term</h4>' );
 	$namespace = new CTerm();
-	$namespace[ kOFFSET_LID ] = "NAMESPACE";
+	$namespace[ kTAG_LID ] = "NAMESPACE";
 	$status = $namespace->Insert( $term_container );
 	echo( '<pre>' ); print_r( $namespace ); echo( '</pre>' );
 	
@@ -177,8 +177,8 @@ try
 	//
 	echo( '<h4>Create term A</h4>' );
 	$termA = new CTerm();
-	$termA[ kOFFSET_NAMESPACE ] = $namespace;
-	$termA[ kOFFSET_LID ] = "A";
+	$termA[ kTAG_NAMESPACE ] = $namespace;
+	$termA[ kTAG_LID ] = "A";
 	$status = $termA->Insert( $term_container );
 	echo( '<pre>' ); print_r( $termA ); echo( '</pre>' );
 	
@@ -187,8 +187,8 @@ try
 	//
 	echo( '<h4>Create term B</h4>' );
 	$termB = new CTerm();
-	$termB[ kOFFSET_NAMESPACE ] = $namespace;
-	$termB[ kOFFSET_LID ] = "B";
+	$termB[ kTAG_NAMESPACE ] = $namespace;
+	$termB[ kTAG_LID ] = "B";
 	$status = $termB->Insert( $term_container );
 	echo( '<pre>' ); print_r( $termB ); echo( '</pre>' );
 	
@@ -197,8 +197,8 @@ try
 	//
 	echo( '<h4>Create term C</h4>' );
 	$termC = new CTerm();
-	$termC[ kOFFSET_NAMESPACE ] = $namespace;
-	$termC[ kOFFSET_LID ] = "C";
+	$termC[ kTAG_NAMESPACE ] = $namespace;
+	$termC[ kTAG_LID ] = "C";
 	$status = $termC->Insert( $term_container );
 	echo( '<pre>' ); print_r( $termC ); echo( '</pre>' );
 	echo( '<hr />' );

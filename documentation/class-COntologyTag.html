@@ -98,21 +98,20 @@
 <h3>Ontology tag object ancestor</h3>
 
 <p>This class extends its ancestor, <code><a href="class-CTag.html">CTag</a></code>, by asserting the type of
-objects passed to the path, kOFFSET_TAG_PATH, and by using the native
+objects passed to the path, kTAG_TAG_PATH, and by using the native
 identifiers, kOFFSET_NID, of the elements of the path in the <code><a href="class-COntologyTag.html#__index">COntologyTag::_index()</a></code> method.</p>
 
 <p>Odd elements of the path must refer to vertex elements of the graph, in this
 case <code><a href="class-COntologyNode.html">COntologyNode</a></code> objects; even elements of the path must refer to
 predicates of the graph, in this case <code><a href="class-COntologyTerm.html">COntologyTerm</a></code> objects.</p>
 
-<p>The elements of the path offset, kOFFSET_TAG_PATH, will be the native
-identifier of the path elements, while the global identifier, kOFFSET_GID, will receive the global identifiers of the path element related
-<code><a href="class-COntologyTerm.html">COntologyTerm</a></code> instances. This last behaviour means that once a tag is
-saved, related terms, nodes and edges should not be deleted.</p>
+<p>The elements of the path offset, kTAG_TAG_PATH, will be the native
+identifier of the path elements, while the global identifier, kTAG_GID,
+will receive the global identifiers of the path element related <code><a href="class-COntologyTerm.html">COntologyTerm</a></code> instances. This last behaviour means that once a tag is saved,
+related terms, nodes and edges should not be deleted.</p>
 
-<p>The class adds an offset, kOFFSET_UID, which stores the hashed
-version of the global identifier and can be used to identify duplicate
-objects.</p>
+<p>The class adds an offset, kTAG_UID, which stores the hashed version
+of the global identifier and can be used to identify duplicate objects.</p>
 
 <p>Elements of the path can be provided as objects and those that are not yet
 committed will be saved when the current tag is saved.</p>
@@ -284,7 +283,7 @@ href="mailto:m.skofic&#64;cgiar.org">m.skofic&#64;<!---->cgiar.org</a>&gt;<br />
 
 				<h4>See</h4>
 				<div class="list">
-						kOFFSET_TAG_PATH<br />
+						kTAG_TAG_PATH<br />
 				</div>
 				<h4>Uses</h4>
 				<div class="list">
@@ -338,7 +337,7 @@ path.</p>
 
 				<h4>See</h4>
 				<div class="list">
-						kOFFSET_TAG_PATH<br />
+						kTAG_TAG_PATH<br />
 						kKIND_NODE_TRAIT<br />
 				</div>
 
@@ -387,7 +386,7 @@ the first vertex of the path.</p>
 
 				<h4>See</h4>
 				<div class="list">
-						kOFFSET_VERTEX_TERMS<br />
+						kTAG_VERTEX_TERMS<br />
 						kKIND_NODE_TRAIT<br />
 				</div>
 
@@ -439,7 +438,7 @@ a scale.</p>
 
 				<h4>See</h4>
 				<div class="list">
-						kOFFSET_TAG_PATH<br />
+						kTAG_TAG_PATH<br />
 						kKIND_NODE_SCALE<br />
 				</div>
 
@@ -491,7 +490,7 @@ a scale.</p>
 
 				<h4>See</h4>
 				<div class="list">
-						kOFFSET_VERTEX_TERMS<br />
+						kTAG_VERTEX_TERMS<br />
 						kKIND_NODE_SCALE<br />
 				</div>
 
@@ -543,7 +542,7 @@ last element of the path and can be found between the trait node, <code><a href=
 
 				<h4>See</h4>
 				<div class="list">
-						kOFFSET_TAG_PATH<br />
+						kTAG_TAG_PATH<br />
 						kKIND_NODE_METHOD<br />
 				</div>
 
@@ -599,7 +598,7 @@ last element of the path and can be found between the trait term, <code><a href=
 
 				<h4>See</h4>
 				<div class="list">
-						kOFFSET_VERTEX_TERMS<br />
+						kTAG_VERTEX_TERMS<br />
 						kKIND_NODE_METHOD<br />
 				</div>
 
@@ -877,7 +876,7 @@ building the global identifier.</p>
 elements of the path to be object native identifiers, so the method will resolve
 each element without checking if it is in the form of an object.</p>
 
-<p>This method is also responsible for loading the kOFFSET_VERTEX_TERMS
+<p>This method is also responsible for loading the kTAG_VERTEX_TERMS
 offset: it will contain all the term native identifiers referred to by the tag's
 path vertex elements.</p>
 
@@ -904,8 +903,8 @@ path vertex elements.</p>
 
 				<h4>See</h4>
 				<div class="list">
-						kOFFSET_VERTEX_TERMS<br />
-						kOFFSET_TAG_PATH kTOKEN_INDEX_SEPARATOR<br />
+						kTAG_VERTEX_TERMS<br />
+						kTAG_TAG_PATH kTOKEN_INDEX_SEPARATOR<br />
 				</div>
 				<h4>Used by</h4>
 				<div class="list">
@@ -948,7 +947,7 @@ we convert them to their native identifiers.</p>
 <p>We also ensure that the provided objects are instances of the correct classes
 by asserting <code><a href="class-CDocument.html">CDocument</a></code> descendants.</p>
 
-<p>This method will lock the kOFFSET_REFS_TAG offset from any
+<p>This method will lock the kTAG_REFS_TAG offset from any
 modification.</p>
 
 
@@ -969,7 +968,7 @@ modification.</p>
 
 				<h4>See</h4>
 				<div class="list">
-						kOFFSET_TAG_PATH<br />
+						kTAG_TAG_PATH<br />
 				</div>
 				<h4>Uses</h4>
 				<div class="list">
@@ -1006,7 +1005,7 @@ modification.</p>
 <h4>Handle offset before unsetting it</h4>
 
 <p>In this class we prevent the modification of the subject, predicate and
-object offsets if the object is committed and of the kOFFSET_REFS_TAG
+object offsets if the object is committed and of the kTAG_REFS_TAG
 offset in all cases.</p>
 
 
@@ -1025,7 +1024,7 @@ offset in all cases.</p>
 
 				<h4>See</h4>
 				<div class="list">
-						kOFFSET_TAG_PATH<br />
+						kTAG_TAG_PATH<br />
 				</div>
 				<h4>Uses</h4>
 				<div class="list">
@@ -1086,7 +1085,7 @@ exception.</p>
 
 				<h4>See</h4>
 				<div class="list">
-						kOFFSET_TAG_PATH<br />
+						kTAG_TAG_PATH<br />
 						kFLAG_PERSIST_INSERT kFLAG_PERSIST_REPLACE<br />
 				</div>
 				<h4>Uses</h4>
@@ -1124,9 +1123,9 @@ exception.</p>
 <h4>Determine the identifiers before committing</h4>
 
 <p>This method will use the result of the <code><a href="class-COntologyTag.html#__index">COntologyTag::_index()</a></code> method to set the
-global identifier, kOFFSET_GID; the same value will be hashed and
-constitute the unique identifier, kOFFSET_UID, while the native
-identifier, kOFFSET_NID, will be set by the sequence number kSEQUENCE_KEY_TAG.</p>
+global identifier, kTAG_GID; the same value will be hashed and
+constitute the unique identifier, kTAG_UID, while the native identifier,
+kOFFSET_NID, will be set by the sequence number kSEQUENCE_KEY_TAG.</p>
 
 <p>The parent method will then be called, which will ignore the global and
 native identifiers, since they will have been set here.</p>
@@ -1150,7 +1149,7 @@ native identifiers, since they will have been set here.</p>
 				<h4>See</h4>
 				<div class="list">
 						kSEQUENCE_KEY_TAG<br />
-						kOFFSET_NID kOFFSET_GID kOFFSET_UID<br />
+						kOFFSET_NID kTAG_GID kTAG_UID<br />
 						kFLAG_PERSIST_INSERT kFLAG_PERSIST_REPLACE<br />
 				</div>
 				<h4>Uses</h4>
@@ -1190,7 +1189,7 @@ native identifiers, since they will have been set here.</p>
 
 <p>The current tag will update related vertex object, <code><a href="class-COntologyNode.html">COntologyNode</a></code>
 instances and their relative <code><a href="class-COntologyTerm.html">COntologyTerm</a></code> instances, both with the
-kOFFSET_REFS_TAG offset.</p>
+kTAG_REFS_TAG offset.</p>
 
 <p>When inserting a new tag, we add the tag reference, when deleting the tag we
 remove it.</p>
@@ -1215,7 +1214,7 @@ in-between node elements.</p>
 
 				<h4>See</h4>
 				<div class="list">
-						kOFFSET_REFS_TAG<br />
+						kTAG_REFS_TAG<br />
 						kFLAG_PERSIST_INSERT kFLAG_PERSIST_REPLACE kFLAG_PERSIST_DELETE<br />
 						kFLAG_PERSIST_MODIFY kFLAG_MODIFY_ADDSET kFLAG_MODIFY_PULL<br />
 						kKIND_NODE_TRAIT kKIND_NODE_METHOD kKIND_NODE_SCALE<br />
@@ -1254,7 +1253,7 @@ in-between node elements.</p>
 			
 <h4>Add tag reference to node</h4>
 
-<p>This method can be used to add or remove the current tag's reference, kOFFSET_REFS_TAG, from the provided node. This method should be used whenever
+<p>This method can be used to add or remove the current tag's reference, kTAG_REFS_TAG, from the provided node. This method should be used whenever
 committing a new tag or when deleting one: it will add the current tag's native
 identifier to the set of tag references of the provided node when committing a
 new tag; it will remove it when deleting the tag.</p>
@@ -1286,7 +1285,7 @@ failed.</p>
 
 				<h4>See</h4>
 				<div class="list">
-						kOFFSET_NID kOFFSET_REFS_TAG<br />
+						kOFFSET_NID kTAG_REFS_TAG<br />
 						kFLAG_PERSIST_MODIFY kFLAG_MODIFY_ADDSET kFLAG_MODIFY_PULL<br />
 				</div>
 
@@ -1317,7 +1316,7 @@ failed.</p>
 			
 <h4>Add tag reference to term</h4>
 
-<p>This method can be used to add or remove the current tag's reference, kOFFSET_REFS_TAG, from the provided term. This method should be used whenever
+<p>This method can be used to add or remove the current tag's reference, kTAG_REFS_TAG, from the provided term. This method should be used whenever
 committing a new tag or when deleting one: it will add the current tag's native
 identifier to the set of tag references of the provided term when committing a
 new tag; it will remove it when deleting the tag.</p>
@@ -1349,7 +1348,7 @@ failed.</p>
 
 				<h4>See</h4>
 				<div class="list">
-						kOFFSET_NID kOFFSET_REFS_TAG<br />
+						kOFFSET_NID kTAG_REFS_TAG<br />
 						kFLAG_PERSIST_MODIFY kFLAG_MODIFY_ADDSET kFLAG_MODIFY_PULL<br />
 				</div>
 
@@ -1404,7 +1403,7 @@ failed.</p>
 
 				<h4>See</h4>
 				<div class="list">
-						kOFFSET_KIND kKIND_NODE_TRAIT<br />
+						kTAG_KIND kKIND_NODE_TRAIT<br />
 						kFLAG_PERSIST_MODIFY kFLAG_MODIFY_ADDSET<br />
 				</div>
 
@@ -1459,7 +1458,7 @@ failed.</p>
 
 				<h4>See</h4>
 				<div class="list">
-						kOFFSET_KIND kKIND_NODE_METHOD<br />
+						kTAG_KIND kKIND_NODE_METHOD<br />
 						kFLAG_PERSIST_MODIFY kFLAG_MODIFY_ADDSET<br />
 				</div>
 
@@ -1514,7 +1513,7 @@ failed.</p>
 
 				<h4>See</h4>
 				<div class="list">
-						kOFFSET_KIND kKIND_NODE_SCALE<br />
+						kTAG_KIND kKIND_NODE_SCALE<br />
 						kFLAG_PERSIST_MODIFY kFLAG_MODIFY_ADDSET<br />
 				</div>
 

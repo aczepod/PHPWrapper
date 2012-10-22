@@ -36,10 +36,10 @@ require_once( kPATH_MYWRAPPER_LIBRARY_CLASS."/CPersistentObject.php" );
  * Objects of this class feature three main properties:
  *
  * <ul>
- *	<li>{@link kOFFSET_VERTEX_SUBJECT}: The subject vertex, or the origin of the
+ *	<li>{@link kTAG_VERTEX_SUBJECT}: The subject vertex, or the origin of the
  *		relationship.
- *	<li>{@link kOFFSET_PREDICATE}: The predicate reference, or the type of relationship.
- *	<li>{@link kOFFSET_VERTEX_OBJECT}: The object vertex, or the destination of the
+ *	<li>{@link kTAG_PREDICATE}: The predicate reference, or the type of relationship.
+ *	<li>{@link kTAG_VERTEX_OBJECT}: The object vertex, or the destination of the
  *		relationship.
  * </ul>
  *
@@ -48,18 +48,18 @@ require_once( kPATH_MYWRAPPER_LIBRARY_CLASS."/CPersistentObject.php" );
  * The unique identifier of instances of this class is the combination of the above three
  * elements, no two edges can connect the same vertices in the same direction and with the
  * same predicate. This value is computed and stored in the global identifier,
- * {@link kOFFSET_GID}, because of this workflow, these three values must be convertable to
+ * {@link kTAG_GID}, because of this workflow, these three values must be convertable to
  * string.
  *
  * The class features member accessor methods for the default offsets:
  *
  * <ul>
  *	<li>{@link Subject()}: This method manages the subject vertex,
- *		{@link kOFFSET_VERTEX_SUBJECT}.
+ *		{@link kTAG_VERTEX_SUBJECT}.
  *	<li>{@link Predicate()}: This method manages the edge's predicate,
- *		{@link kOFFSET_PREDICATE}.
+ *		{@link kTAG_PREDICATE}.
  *	<li>{@link Object()}: This method manages the object vertex,
- *		{@link kOFFSET_VERTEX_OBJECT}.
+ *		{@link kTAG_VERTEX_OBJECT}.
  * </ul>
  *
  *	@package	MyWrapper
@@ -85,7 +85,7 @@ class CEdge extends CPersistentObject
 	 * <h4>Manage edge subject</h4>
 	 *
 	 * This method can be used to manage the edge's subject vertex,
-	 * {@link kOFFSET_VERTEX_SUBJECT}, which is a reference to an object that represents the
+	 * {@link kTAG_VERTEX_SUBJECT}, which is a reference to an object that represents the
 	 * origin of the relationship this edge represents.
 	 *
 	 * The method accepts a parameter which represents the vertex, or the requested
@@ -112,11 +112,11 @@ class CEdge extends CPersistentObject
 	 *
 	 * @uses ManageOffset()
 	 *
-	 * @see kOFFSET_VERTEX_SUBJECT
+	 * @see kTAG_VERTEX_SUBJECT
 	 */
 	public function Subject( $theValue = NULL, $getOld = FALSE )
 	{
-		return ManageOffset( $this, kOFFSET_VERTEX_SUBJECT, $theValue, $getOld );	// ==>
+		return ManageOffset( $this, kTAG_VERTEX_SUBJECT, $theValue, $getOld );		// ==>
 
 	} // Subject.
 
@@ -128,7 +128,7 @@ class CEdge extends CPersistentObject
 	/**
 	 * <h4>Manage edge predicate</h4>
 	 *
-	 * This method can be used to manage the edge's predicate, {@link kOFFSET_PREDICATE},
+	 * This method can be used to manage the edge's predicate, {@link kTAG_PREDICATE},
 	 * which is a reference to an object that represents the origin of the relationship this
 	 * edge represents.
 	 *
@@ -156,11 +156,11 @@ class CEdge extends CPersistentObject
 	 *
 	 * @uses ManageOffset()
 	 *
-	 * @see kOFFSET_PREDICATE
+	 * @see kTAG_PREDICATE
 	 */
 	public function Predicate( $theValue = NULL, $getOld = FALSE )
 	{
-		return ManageOffset( $this, kOFFSET_PREDICATE, $theValue, $getOld );		// ==>
+		return ManageOffset( $this, kTAG_PREDICATE, $theValue, $getOld );			// ==>
 
 	} // Predicate.
 
@@ -173,7 +173,7 @@ class CEdge extends CPersistentObject
 	 * <h4>Manage edge object</h4>
 	 *
 	 * This method can be used to manage the edge's object vertex,
-	 * {@link kOFFSET_VERTEX_OBJECT}, which is a reference to an object that represents the
+	 * {@link kTAG_VERTEX_OBJECT}, which is a reference to an object that represents the
 	 * destination of the relationship this edge represents.
 	 *
 	 * The method accepts a parameter which represents the vertex, or the requested
@@ -200,11 +200,11 @@ class CEdge extends CPersistentObject
 	 *
 	 * @uses ManageOffset()
 	 *
-	 * @see kOFFSET_VERTEX_OBJECT
+	 * @see kTAG_VERTEX_OBJECT
 	 */
 	public function Object( $theValue = NULL, $getOld = FALSE )
 	{
-		return ManageOffset( $this, kOFFSET_VERTEX_OBJECT, $theValue, $getOld );	// ==>
+		return ManageOffset( $this, kTAG_VERTEX_OBJECT, $theValue, $getOld );		// ==>
 
 	} // Object.
 
@@ -225,7 +225,7 @@ class CEdge extends CPersistentObject
 	/**
 	 * <h4>Return the object's global unique identifier</h4>
 	 *
-	 * The edge class defines the global identifier, {@link kOFFSET_GID}, as the
+	 * The edge class defines the global identifier, {@link kTAG_GID}, as the
 	 * concatenation of the subject, predicate and object offsets converted to string.
 	 *
 	 * In this method we check whether all three are present, or we raise an exception.
@@ -238,7 +238,7 @@ class CEdge extends CPersistentObject
 	 * @access protected
 	 * @return string|NULL			The object's global unique identifier.
 	 *
-	 * @see kOFFSET_VERTEX_SUBJECT kOFFSET_PREDICATE kOFFSET_VERTEX_OBJECT
+	 * @see kTAG_VERTEX_SUBJECT kTAG_PREDICATE kTAG_VERTEX_OBJECT
 	 * @see kTOKEN_INDEX_SEPARATOR
 	 */
 	protected function _index( CConnection $theConnection, $theModifiers )
@@ -251,7 +251,7 @@ class CEdge extends CPersistentObject
 		//
 		// Get subject.
 		//
-		$tmp = (string) $this->offsetGet( kOFFSET_VERTEX_SUBJECT );
+		$tmp = (string) $this->offsetGet( kTAG_VERTEX_SUBJECT );
 		if( $tmp !== NULL )
 			$identifier[] = $tmp;
 		else
@@ -262,7 +262,7 @@ class CEdge extends CPersistentObject
 		//
 		// Get predicate.
 		//
-		$tmp = (string) $this->offsetGet( kOFFSET_PREDICATE );
+		$tmp = (string) $this->offsetGet( kTAG_PREDICATE );
 		if( $tmp !== NULL )
 			$identifier[] = $tmp;
 		else
@@ -273,7 +273,7 @@ class CEdge extends CPersistentObject
 		//
 		// Get object.
 		//
-		$tmp = (string) $this->offsetGet( kOFFSET_VERTEX_OBJECT );
+		$tmp = (string) $this->offsetGet( kTAG_VERTEX_OBJECT );
 		if( $tmp !== NULL )
 			$identifier[] = $tmp;
 		else
@@ -302,8 +302,8 @@ class CEdge extends CPersistentObject
 	/**
 	 * <h4>Handle offset before unsetting it</h4>
 	 *
-	 * In this class we prevent the modification of the {@link kOFFSET_VERTEX_SUBJECT},
-	 * {@link kOFFSET_PREDICATE} and {@link kOFFSET_VERTEX_OBJECT} offsets if the object is
+	 * In this class we prevent the modification of the {@link kTAG_VERTEX_SUBJECT},
+	 * {@link kTAG_PREDICATE} and {@link kTAG_VERTEX_OBJECT} offsets if the object is
 	 * committed.
 	 *
 	 * @param reference			   &$theOffset			Offset.
@@ -314,7 +314,7 @@ class CEdge extends CPersistentObject
 	 *
 	 * @uses _IsCommitted()
 	 *
-	 * @see kOFFSET_VERTEX_SUBJECT kOFFSET_PREDICATE kOFFSET_VERTEX_OBJECT
+	 * @see kTAG_VERTEX_SUBJECT kTAG_PREDICATE kTAG_VERTEX_OBJECT
 	 */
 	protected function _Preunset( &$theOffset )
 	{
@@ -326,9 +326,9 @@ class CEdge extends CPersistentObject
 			//
 			// Load locked offsets.
 			//
-			$offsets = array( kOFFSET_VERTEX_SUBJECT,
-							  kOFFSET_PREDICATE,
-							  kOFFSET_VERTEX_OBJECT );
+			$offsets = array( kTAG_VERTEX_SUBJECT,
+							  kTAG_PREDICATE,
+							  kTAG_VERTEX_OBJECT );
 			
 			//
 			// Check offsets.
@@ -366,15 +366,15 @@ class CEdge extends CPersistentObject
 	 * <h4>Determine if the object is ready</h4>
 	 *
 	 * In this class we tie the {@link _IsInited()} status to the presence or absence of the
-	 * {@link kOFFSET_VERTEX_SUBJECT}, {@link kOFFSET_PREDICATE} and
-	 * {@link kOFFSET_VERTEX_OBJECT} offsets.
+	 * {@link kTAG_VERTEX_SUBJECT}, {@link kTAG_PREDICATE} and
+	 * {@link kTAG_VERTEX_OBJECT} offsets.
 	 *
 	 * @access protected
 	 * @return boolean				<tt>TRUE</tt> means {@link _IsInited( <tt>TRUE</tt> ).
 	 *
 	 * @uses _Ready()
 	 *
-	 * @see kOFFSET_VERTEX_SUBJECT kOFFSET_PREDICATE kOFFSET_VERTEX_OBJECT
+	 * @see kTAG_VERTEX_SUBJECT kTAG_PREDICATE kTAG_VERTEX_OBJECT
 	 */
 	protected function _Ready()
 	{
@@ -382,9 +382,9 @@ class CEdge extends CPersistentObject
 		// Check parent.
 		//
 		if( parent::_Ready() )
-			return ( $this->offsetExists( kOFFSET_VERTEX_SUBJECT )
-				  && $this->offsetExists( kOFFSET_PREDICATE )
-				  && $this->offsetExists( kOFFSET_VERTEX_OBJECT ) );				// ==>
+			return ( $this->offsetExists( kTAG_VERTEX_SUBJECT )
+				  && $this->offsetExists( kTAG_PREDICATE )
+				  && $this->offsetExists( kTAG_VERTEX_OBJECT ) );					// ==>
 		
 		return FALSE;																// ==>
 	

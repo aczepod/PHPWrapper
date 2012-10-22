@@ -120,15 +120,15 @@ in the path, which represents the minimum legal number of path items.</p>
 
 <ul>
 	<li><code><a href="class-CTag.html#_PushItem">CTag::PushItem()</a></code>: This method can be used to add items to the tag path,
-	kOFFSET_TAG_PATH, it will append the provided item to the end of the
+	kTAG_TAG_PATH, it will append the provided item to the end of the
 	list.</li>
 
 	<li><code><a href="class-CTag.html#_PopItem">CTag::PopItem()</a></code>: This method can be used to remove items from the tag
-	path, kOFFSET_TAG_PATH, it will remove the last item of the list.</li>
+	path, kTAG_TAG_PATH, it will remove the last item of the list.</li>
 </ul>
 
-<p>The object features an offset, kOFFSET_TAG_PATH, which is an array
-holding the elements of the path, the object's global identifier, kOFFSET_GID, is a string representing the elements of the path separated by the
+<p>The object features an offset, kTAG_TAG_PATH, which is an array
+holding the elements of the path, the object's global identifier, kTAG_GID, is a string representing the elements of the path separated by the
 kTOKEN_INDEX_SEPARATOR token.</p>
 
 <p>This class implements the logic to manage these paths without assuming the
@@ -266,7 +266,7 @@ ignored and the method will return <tt>FALSE</tt>.</p>
 
 				<h4>See</h4>
 				<div class="list">
-						kOFFSET_TAG_PATH<br />
+						kTAG_TAG_PATH<br />
 				</div>
 
 
@@ -313,7 +313,7 @@ is missing, the method will return <tt>NULL</tt>.</p>
 
 				<h4>See</h4>
 				<div class="list">
-						kOFFSET_TAG_PATH<br />
+						kTAG_TAG_PATH<br />
 				</div>
 
 
@@ -367,7 +367,7 @@ string.</p>
 
 				<h4>See</h4>
 				<div class="list">
-						kOFFSET_TAG_PATH kTOKEN_INDEX_SEPARATOR<br />
+						kTAG_TAG_PATH kTOKEN_INDEX_SEPARATOR<br />
 				</div>
 
 				<h4>Overrides</h4>
@@ -399,7 +399,7 @@ string.</p>
 			
 <h4>Handle offset before setting it</h4>
 
-<p>In this class we ensure that the kOFFSET_TAG_PATH offset is an array,
+<p>In this class we ensure that the kTAG_TAG_PATH offset is an array,
 ArrayObject instances are not counted as an array.</p>
 
 
@@ -420,7 +420,7 @@ ArrayObject instances are not counted as an array.</p>
 
 				<h4>See</h4>
 				<div class="list">
-						kOFFSET_TAG_PATH<br />
+						kTAG_TAG_PATH<br />
 				</div>
 
 				<h4>Overrides</h4>
@@ -473,7 +473,7 @@ that is not the case, the method will raise an exception.</p>
 
 				<h4>See</h4>
 				<div class="list">
-						kOFFSET_TAG_PATH<br />
+						kTAG_TAG_PATH<br />
 				</div>
 
 				<h4>Overrides</h4>
@@ -506,7 +506,7 @@ that is not the case, the method will raise an exception.</p>
 <h4>Determine if the object is ready</h4>
 
 <p>In this class we tie the <code><a href="class-CStatusDocument.html#__IsInited">CStatusDocument::_IsInited()</a></code> status to the presence or
-absence of the kOFFSET_TAG_PATH offset.</p>
+absence of the kTAG_TAG_PATH offset.</p>
 
 
 
@@ -519,7 +519,7 @@ absence of the kOFFSET_TAG_PATH offset.</p>
 
 				<h4>See</h4>
 				<div class="list">
-						kOFFSET_TAG_PATH<br />
+						kTAG_TAG_PATH<br />
 				</div>
 				<h4>Uses</h4>
 				<div class="list">

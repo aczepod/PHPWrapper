@@ -53,7 +53,7 @@
 						"DESCRIPTORS FOR WEB-ENABLED NATIONAL IN SITU LANDRACE INVENTORIES",
 						"Descriptors For Web-Enabled National In Situ Landrace (LR) Inventories",
 						kDEFAULT_LANGUAGE,
-						array( kOFFSET_SYNONYMS => array( $code ),
+						array( kTAG_SYNONYMS => array( $code ),
 							   $_SESSION[ 'TAGS' ]
 							   			[ kTOKEN_NAMESPACE_SEPARATOR.kONTOLOGY_DEFAULT_AUTHORS ]
 							   			[ kOFFSET_NID ]
@@ -169,7 +169,7 @@
 								$param[ 'label' ],		// Label or name.
 								$param[ 'descr' ],		// Description or definition.
 								kDEFAULT_LANGUAGE,		// Language.
-								array( kOFFSET_SYNONYMS	// Additional attributes.
+								array( kTAG_SYNONYMS	// Additional attributes.
 										=> array( $param[ 'code' ], $param[ 'syn' ] ) ) ) ),
 				$root );
 	
@@ -226,7 +226,7 @@
 								$param[ 'label' ],		// Label or name.
 								$param[ 'descr' ],		// Description or definition.
 								kDEFAULT_LANGUAGE,		// Language.
-								array( kOFFSET_SYNONYMS	// Additional attributes.
+								array( kTAG_SYNONYMS	// Additional attributes.
 										=> array( $param[ 'code' ], $param[ 'syn' ] ) ) ) ),
 				$root );
 	
@@ -306,7 +306,7 @@
 								$param[ 'label' ],		// Label or name.
 								$param[ 'descr' ],		// Description or definition.
 								kDEFAULT_LANGUAGE,		// Language.
-								array( kOFFSET_SYNONYMS	// Additional attributes.
+								array( kTAG_SYNONYMS	// Additional attributes.
 											=> array( $param[ 'code' ], $param[ 'syn' ] ),
 										kTOKEN_NAMESPACE_SEPARATOR.kONTOLOGY_DEFAULT_EXAMPLES
 											=> $param[ 'examp' ] ) ),
@@ -426,7 +426,7 @@
 								$param[ 'label' ],		// Label or name.
 								$param[ 'descr' ],		// Description or definition.
 								kDEFAULT_LANGUAGE,		// Language.
-								array( kOFFSET_SYNONYMS	// Additional attributes.
+								array( kTAG_SYNONYMS	// Additional attributes.
 											=> array( $param[ 'code' ], $param[ 'syn' ] ),
 										kTOKEN_NAMESPACE_SEPARATOR.kONTOLOGY_DEFAULT_EXAMPLES
 											=> $param[ 'examp' ] ) ),
@@ -528,7 +528,7 @@
 								$param[ 'label' ],		// Label or name.
 								$param[ 'descr' ],		// Description or definition.
 								kDEFAULT_LANGUAGE,		// Language.
-								array( kOFFSET_SYNONYMS	// Additional attributes.
+								array( kTAG_SYNONYMS	// Additional attributes.
 											=> array( $param[ 'code' ], $param[ 'syn' ] ),
 										kTOKEN_NAMESPACE_SEPARATOR.kONTOLOGY_DEFAULT_EXAMPLES
 											=> $param[ 'examp' ] ) ),
@@ -746,7 +746,7 @@
 								$param[ 'label' ],		// Label or name.
 								$param[ 'descr' ],		// Description or definition.
 								kDEFAULT_LANGUAGE,		// Language.
-								array( kOFFSET_SYNONYMS	// Additional attributes.
+								array( kTAG_SYNONYMS	// Additional attributes.
 											=> array( $param[ 'code' ], $param[ 'syn' ] ),
 										kTOKEN_NAMESPACE_SEPARATOR.kONTOLOGY_DEFAULT_EXAMPLES
 											=> $param[ 'examp' ] ) ),

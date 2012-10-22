@@ -133,7 +133,7 @@
 </span></span><span id="33" class="l"><a class="l" href="#33"> 33: </a><span class="php-comment"> * edges, a node is a vertex of a relationship. This class concentrates in the core
 </span></span><span id="34" class="l"><a class="l" href="#34"> 34: </a><span class="php-comment"> * features of the node, without taking into consideration the connections to other nodes.
 </span></span><span id="35" class="l"><a class="l" href="#35"> 35: </a><span class="php-comment"> *
-</span></span><span id="36" class="l"><a class="l" href="#36"> 36: </a><span class="php-comment"> * The node's main property is the term, {@link kOFFSET_TERM}, which defines the abstract
+</span></span><span id="36" class="l"><a class="l" href="#36"> 36: </a><span class="php-comment"> * The node's main property is the term, {@link kTAG_TERM}, which defines the abstract
 </span></span><span id="37" class="l"><a class="l" href="#37"> 37: </a><span class="php-comment"> * concept that the node represents: a term taken by itself is an abstract concept, when it
 </span></span><span id="38" class="l"><a class="l" href="#38"> 38: </a><span class="php-comment"> * is referenced from a node which is related to other nodes through predicates, this term
 </span></span><span id="39" class="l"><a class="l" href="#39"> 39: </a><span class="php-comment"> * takes a different meaning, it becomes a term in context. Terms are like vocabulary, taken
@@ -141,11 +141,11 @@
 </span></span><span id="41" class="l"><a class="l" href="#41"> 41: </a><span class="php-comment"> * meaning depending in what position of a term chain they are positioned. In this class,
 </span></span><span id="42" class="l"><a class="l" href="#42"> 42: </a><span class="php-comment"> * terms may hold any value.
 </span></span><span id="43" class="l"><a class="l" href="#43"> 43: </a><span class="php-comment"> *
-</span></span><span id="44" class="l"><a class="l" href="#44"> 44: </a><span class="php-comment"> * The node also features a {@link kOFFSET_KIND} property which is an enumerated set
+</span></span><span id="44" class="l"><a class="l" href="#44"> 44: </a><span class="php-comment"> * The node also features a {@link kTAG_KIND} property which is an enumerated set
 </span></span><span id="45" class="l"><a class="l" href="#45"> 45: </a><span class="php-comment"> * describing the specific type, or the specific function of the node in its chain or
 </span></span><span id="46" class="l"><a class="l" href="#46"> 46: </a><span class="php-comment"> * path.
 </span></span><span id="47" class="l"><a class="l" href="#47"> 47: </a><span class="php-comment"> *
-</span></span><span id="48" class="l"><a class="l" href="#48"> 48: </a><span class="php-comment"> * Finally, the class features the {@link kOFFSET_TYPE} property which defines the data type
+</span></span><span id="48" class="l"><a class="l" href="#48"> 48: </a><span class="php-comment"> * Finally, the class features the {@link kTAG_TYPE} property which defines the data type
 </span></span><span id="49" class="l"><a class="l" href="#49"> 49: </a><span class="php-comment"> * of the node or the data unit it represents, this offset is an enumerated set in which
 </span></span><span id="50" class="l"><a class="l" href="#50"> 50: </a><span class="php-comment"> * two elements can reside: the data type or unit, which is required, and optionally one or
 </span></span><span id="51" class="l"><a class="l" href="#51"> 51: </a><span class="php-comment"> * both {@link kTYPE_CARD_REQUIRED} and {@link kTYPE_CARD_ARRAY} which respectively indicate
@@ -156,7 +156,7 @@
 </span></span><span id="56" class="l"><a class="l" href="#56"> 56: </a><span class="php-comment"> * object, this means that the container is responsible of providing the primary key of the
 </span></span><span id="57" class="l"><a class="l" href="#57"> 57: </a><span class="php-comment"> * object.
 </span></span><span id="58" class="l"><a class="l" href="#58"> 58: </a><span class="php-comment"> *
-</span></span><span id="59" class="l"><a class="l" href="#59"> 59: </a><span class="php-comment"> * Nodes can be considered {@link _IsInited()} when they have the  {@link kOFFSET_TERM}
+</span></span><span id="59" class="l"><a class="l" href="#59"> 59: </a><span class="php-comment"> * Nodes can be considered {@link _IsInited()} when they have the  {@link kTAG_TERM}
 </span></span><span id="60" class="l"><a class="l" href="#60"> 60: </a><span class="php-comment"> * offset set. This and the other properties can be changed at any time, none are locked
 </span></span><span id="61" class="l"><a class="l" href="#61"> 61: </a><span class="php-comment"> * once the object has been committed: it is the responsibility of the caller or of derived
 </span></span><span id="62" class="l"><a class="l" href="#62"> 62: </a><span class="php-comment"> * classes to implement a locking rule.
@@ -164,9 +164,9 @@
 </span></span><span id="64" class="l"><a class="l" href="#64"> 64: </a><span class="php-comment"> * The class features member accessor methods for the default offsets:
 </span></span><span id="65" class="l"><a class="l" href="#65"> 65: </a><span class="php-comment"> *
 </span></span><span id="66" class="l"><a class="l" href="#66"> 66: </a><span class="php-comment"> * &lt;ul&gt;
-</span></span><span id="67" class="l"><a class="l" href="#67"> 67: </a><span class="php-comment"> *  &lt;li&gt;{@link Term()}: This method manages the node's term, {@link kOFFSET_TERM}.
-</span></span><span id="68" class="l"><a class="l" href="#68"> 68: </a><span class="php-comment"> *  &lt;li&gt;{@link Kind()}: This method manages the node's kind, {@link kOFFSET_KIND}.
-</span></span><span id="69" class="l"><a class="l" href="#69"> 69: </a><span class="php-comment"> *  &lt;li&gt;{@link Type()}: This method manages the node's type, {@link kOFFSET_TYPE}.
+</span></span><span id="67" class="l"><a class="l" href="#67"> 67: </a><span class="php-comment"> *  &lt;li&gt;{@link Term()}: This method manages the node's term, {@link kTAG_TERM}.
+</span></span><span id="68" class="l"><a class="l" href="#68"> 68: </a><span class="php-comment"> *  &lt;li&gt;{@link Kind()}: This method manages the node's kind, {@link kTAG_KIND}.
+</span></span><span id="69" class="l"><a class="l" href="#69"> 69: </a><span class="php-comment"> *  &lt;li&gt;{@link Type()}: This method manages the node's type, {@link kTAG_TYPE}.
 </span></span><span id="70" class="l"><a class="l" href="#70"> 70: </a><span class="php-comment"> * &lt;/ul&gt;
 </span></span><span id="71" class="l"><a class="l" href="#71"> 71: </a><span class="php-comment"> *
 </span></span><span id="72" class="l"><a class="l" href="#72"> 72: </a><span class="php-comment"> *  @package    MyWrapper
@@ -194,7 +194,7 @@
 </span></span><span id="94" class="l"><a class="l" href="#94"> 94: </a><span class="php-comment">     * This method should return the current object's name which should represent the unique
 </span></span><span id="95" class="l"><a class="l" href="#95"> 95: </a><span class="php-comment">     * identifier of the object.
 </span></span><span id="96" class="l"><a class="l" href="#96"> 96: </a><span class="php-comment">     *
-</span></span><span id="97" class="l"><a class="l" href="#97"> 97: </a><span class="php-comment">     * By default we return the string representation of the term, {@link kOFFSET_TERM}.
+</span></span><span id="97" class="l"><a class="l" href="#97"> 97: </a><span class="php-comment">     * By default we return the string representation of the term, {@link kTAG_TERM}.
 </span></span><span id="98" class="l"><a class="l" href="#98"> 98: </a><span class="php-comment">     *
 </span></span><span id="99" class="l"><a class="l" href="#99"> 99: </a><span class="php-comment">     * @access public
 </span></span><span id="100" class="l"><a class="l" href="#100">100: </a><span class="php-comment">     * @return string               The connection name.
@@ -204,8 +204,8 @@
 </span><span id="104" class="l"><a class="l" href="#104">104: </a>        <span class="php-comment">//</span>
 </span><span id="105" class="l"><a class="l" href="#105">105: </a>        <span class="php-comment">// Check term.</span>
 </span><span id="106" class="l"><a class="l" href="#106">106: </a>        <span class="php-comment">//</span>
-</span><span id="107" class="l"><a class="l" href="#107">107: </a>        <span class="php-keyword1">if</span>( <span class="php-var">$this</span>-&gt;offsetExists( kOFFSET_TERM ) )
-</span><span id="108" class="l"><a class="l" href="#108">108: </a>            <span class="php-keyword1">return</span> (string) <span class="php-var">$this</span>-&gt;offsetGet( kOFFSET_TERM );                       <span class="php-comment">// ==&gt;</span>
+</span><span id="107" class="l"><a class="l" href="#107">107: </a>        <span class="php-keyword1">if</span>( <span class="php-var">$this</span>-&gt;offsetExists( kTAG_TERM ) )
+</span><span id="108" class="l"><a class="l" href="#108">108: </a>            <span class="php-keyword1">return</span> (string) <span class="php-var">$this</span>-&gt;offsetGet( kTAG_TERM );                          <span class="php-comment">// ==&gt;</span>
 </span><span id="109" class="l"><a class="l" href="#109">109: </a>        
 </span><span id="110" class="l"><a class="l" href="#110">110: </a>        <span class="php-comment">//</span>
 </span><span id="111" class="l"><a class="l" href="#111">111: </a>        <span class="php-comment">// Yes, I know...</span>
@@ -231,7 +231,7 @@
 </span><span id="131" class="l"><a class="l" href="#131">131: </a>    <span class="php-comment">/**
 </span></span><span id="132" class="l"><a class="l" href="#132">132: </a><span class="php-comment">     * &lt;h4&gt;Manage node term&lt;/h4&gt;
 </span></span><span id="133" class="l"><a class="l" href="#133">133: </a><span class="php-comment">     *
-</span></span><span id="134" class="l"><a class="l" href="#134">134: </a><span class="php-comment">     * This method can be used to manage the node's term, {@link kOFFSET_TERM}, which
+</span></span><span id="134" class="l"><a class="l" href="#134">134: </a><span class="php-comment">     * This method can be used to manage the node's term, {@link kTAG_TERM}, which
 </span></span><span id="135" class="l"><a class="l" href="#135">135: </a><span class="php-comment">     * represents the node abstract term.
 </span></span><span id="136" class="l"><a class="l" href="#136">136: </a><span class="php-comment">     *
 </span></span><span id="137" class="l"><a class="l" href="#137">137: </a><span class="php-comment">     * The method accepts a parameter which represents either the term, or the requested
@@ -255,11 +255,11 @@
 </span></span><span id="155" class="l"><a class="l" href="#155">155: </a><span class="php-comment">     *
 </span></span><span id="156" class="l"><a class="l" href="#156">156: </a><span class="php-comment">     * @uses ManageOffset()
 </span></span><span id="157" class="l"><a class="l" href="#157">157: </a><span class="php-comment">     *
-</span></span><span id="158" class="l"><a class="l" href="#158">158: </a><span class="php-comment">     * @see kOFFSET_TERM
+</span></span><span id="158" class="l"><a class="l" href="#158">158: </a><span class="php-comment">     * @see kTAG_TERM
 </span></span><span id="159" class="l"><a class="l" href="#159">159: </a><span class="php-comment">     */</span>
 </span><span id="160" class="l"><a class="l" href="#160">160: </a>    <span class="php-keyword1">public</span> <span class="php-keyword1">function</span> <a id="_Term" href="#_Term">Term</a>( <span class="php-var">$theValue</span> = <span class="php-keyword1">NULL</span>, <span class="php-var">$getOld</span> = <span class="php-keyword1">FALSE</span> )
 </span><span id="161" class="l"><a class="l" href="#161">161: </a>    {
-</span><span id="162" class="l"><a class="l" href="#162">162: </a>        <span class="php-keyword1">return</span> ManageOffset( <span class="php-var">$this</span>, kOFFSET_TERM, <span class="php-var">$theValue</span>, <span class="php-var">$getOld</span> );             <span class="php-comment">// ==&gt;</span>
+</span><span id="162" class="l"><a class="l" href="#162">162: </a>        <span class="php-keyword1">return</span> ManageOffset( <span class="php-var">$this</span>, kTAG_TERM, <span class="php-var">$theValue</span>, <span class="php-var">$getOld</span> );                <span class="php-comment">// ==&gt;</span>
 </span><span id="163" class="l"><a class="l" href="#163">163: </a>
 </span><span id="164" class="l"><a class="l" href="#164">164: </a>    } <span class="php-comment">// Term.</span>
 </span><span id="165" class="l"><a class="l" href="#165">165: </a>
@@ -271,7 +271,7 @@
 </span><span id="171" class="l"><a class="l" href="#171">171: </a>    <span class="php-comment">/**
 </span></span><span id="172" class="l"><a class="l" href="#172">172: </a><span class="php-comment">     * &lt;h4&gt;Manage node kind set&lt;/h4&gt;
 </span></span><span id="173" class="l"><a class="l" href="#173">173: </a><span class="php-comment">     *
-</span></span><span id="174" class="l"><a class="l" href="#174">174: </a><span class="php-comment">     * The node kind set, {@link kOFFSET_KIND}, holds a list of unique values that represent
+</span></span><span id="174" class="l"><a class="l" href="#174">174: </a><span class="php-comment">     * The node kind set, {@link kTAG_KIND}, holds a list of unique values that represent
 </span></span><span id="175" class="l"><a class="l" href="#175">175: </a><span class="php-comment">     * the different kinds or types associated with the current node. The type,
 </span></span><span id="176" class="l"><a class="l" href="#176">176: </a><span class="php-comment">     * {@link Type()}, of a node is a general qualification that applies to any class of
 </span></span><span id="177" class="l"><a class="l" href="#177">177: </a><span class="php-comment">     * object, such as a data type; the kind, instead, refers to a qualification specific to
@@ -325,12 +325,12 @@
 </span></span><span id="225" class="l"><a class="l" href="#225">225: </a><span class="php-comment">     *
 </span></span><span id="226" class="l"><a class="l" href="#226">226: </a><span class="php-comment">     * @uses ManageObjectSetOffset()
 </span></span><span id="227" class="l"><a class="l" href="#227">227: </a><span class="php-comment">     *
-</span></span><span id="228" class="l"><a class="l" href="#228">228: </a><span class="php-comment">     * @see kOFFSET_KIND
+</span></span><span id="228" class="l"><a class="l" href="#228">228: </a><span class="php-comment">     * @see kTAG_KIND
 </span></span><span id="229" class="l"><a class="l" href="#229">229: </a><span class="php-comment">     */</span>
 </span><span id="230" class="l"><a class="l" href="#230">230: </a>    <span class="php-keyword1">public</span> <span class="php-keyword1">function</span> <a id="_Kind" href="#_Kind">Kind</a>( <span class="php-var">$theValue</span> = <span class="php-keyword1">NULL</span>, <span class="php-var">$theOperation</span> = <span class="php-keyword1">NULL</span>, <span class="php-var">$getOld</span> = <span class="php-keyword1">FALSE</span> )
 </span><span id="231" class="l"><a class="l" href="#231">231: </a>    {
 </span><span id="232" class="l"><a class="l" href="#232">232: </a>        <span class="php-keyword1">return</span> ManageObjectSetOffset
-</span><span id="233" class="l"><a class="l" href="#233">233: </a>            ( <span class="php-var">$this</span>, kOFFSET_KIND, <span class="php-var">$theValue</span>, <span class="php-var">$theOperation</span>, <span class="php-var">$getOld</span> );             <span class="php-comment">// ==&gt;</span>
+</span><span id="233" class="l"><a class="l" href="#233">233: </a>            ( <span class="php-var">$this</span>, kTAG_KIND, <span class="php-var">$theValue</span>, <span class="php-var">$theOperation</span>, <span class="php-var">$getOld</span> );                <span class="php-comment">// ==&gt;</span>
 </span><span id="234" class="l"><a class="l" href="#234">234: </a>
 </span><span id="235" class="l"><a class="l" href="#235">235: </a>    } <span class="php-comment">// Kind.</span>
 </span><span id="236" class="l"><a class="l" href="#236">236: </a>
@@ -342,7 +342,7 @@
 </span><span id="242" class="l"><a class="l" href="#242">242: </a>    <span class="php-comment">/**
 </span></span><span id="243" class="l"><a class="l" href="#243">243: </a><span class="php-comment">     * &lt;h4&gt;Manage node type set&lt;/h4&gt;
 </span></span><span id="244" class="l"><a class="l" href="#244">244: </a><span class="php-comment">     *
-</span></span><span id="245" class="l"><a class="l" href="#245">245: </a><span class="php-comment">     * This method can be used to manage the node's type, {@link kOFFSET_TYPE}, which is an
+</span></span><span id="245" class="l"><a class="l" href="#245">245: </a><span class="php-comment">     * This method can be used to manage the node's type, {@link kTAG_TYPE}, which is an
 </span></span><span id="246" class="l"><a class="l" href="#246">246: </a><span class="php-comment">     * enumerated set that represents the data type or unit of the node.
 </span></span><span id="247" class="l"><a class="l" href="#247">247: </a><span class="php-comment">     *
 </span></span><span id="248" class="l"><a class="l" href="#248">248: </a><span class="php-comment">     * This offset collects the list of these types in an enumerated set that can be managed
@@ -393,12 +393,12 @@
 </span></span><span id="293" class="l"><a class="l" href="#293">293: </a><span class="php-comment">     *
 </span></span><span id="294" class="l"><a class="l" href="#294">294: </a><span class="php-comment">     * @uses ManageObjectSetOffset()
 </span></span><span id="295" class="l"><a class="l" href="#295">295: </a><span class="php-comment">     *
-</span></span><span id="296" class="l"><a class="l" href="#296">296: </a><span class="php-comment">     * @see kOFFSET_TYPE
+</span></span><span id="296" class="l"><a class="l" href="#296">296: </a><span class="php-comment">     * @see kTAG_TYPE
 </span></span><span id="297" class="l"><a class="l" href="#297">297: </a><span class="php-comment">     */</span>
 </span><span id="298" class="l"><a class="l" href="#298">298: </a>    <span class="php-keyword1">public</span> <span class="php-keyword1">function</span> <a id="_Type" href="#_Type">Type</a>( <span class="php-var">$theValue</span> = <span class="php-keyword1">NULL</span>, <span class="php-var">$theOperation</span> = <span class="php-keyword1">NULL</span>, <span class="php-var">$getOld</span> = <span class="php-keyword1">FALSE</span> )
 </span><span id="299" class="l"><a class="l" href="#299">299: </a>    {
 </span><span id="300" class="l"><a class="l" href="#300">300: </a>        <span class="php-keyword1">return</span> ManageObjectSetOffset
-</span><span id="301" class="l"><a class="l" href="#301">301: </a>            ( <span class="php-var">$this</span>, kOFFSET_TYPE, <span class="php-var">$theValue</span>, <span class="php-var">$theOperation</span>, <span class="php-var">$getOld</span> );             <span class="php-comment">// ==&gt;</span>
+</span><span id="301" class="l"><a class="l" href="#301">301: </a>            ( <span class="php-var">$this</span>, kTAG_TYPE, <span class="php-var">$theValue</span>, <span class="php-var">$theOperation</span>, <span class="php-var">$getOld</span> );                <span class="php-comment">// ==&gt;</span>
 </span><span id="302" class="l"><a class="l" href="#302">302: </a>
 </span><span id="303" class="l"><a class="l" href="#303">303: </a>    } <span class="php-comment">// Type.</span>
 </span><span id="304" class="l"><a class="l" href="#304">304: </a>
@@ -442,7 +442,7 @@
 </span></span><span id="342" class="l"><a class="l" href="#342">342: </a><span class="php-comment">     *
 </span></span><span id="343" class="l"><a class="l" href="#343">343: </a><span class="php-comment">     * @uses ManageOffset()
 </span></span><span id="344" class="l"><a class="l" href="#344">344: </a><span class="php-comment">     *
-</span></span><span id="345" class="l"><a class="l" href="#345">345: </a><span class="php-comment">     * @see kOFFSET_TERM
+</span></span><span id="345" class="l"><a class="l" href="#345">345: </a><span class="php-comment">     * @see kTAG_TERM
 </span></span><span id="346" class="l"><a class="l" href="#346">346: </a><span class="php-comment">     */</span>
 </span><span id="347" class="l"><a class="l" href="#347">347: </a>    <span class="php-keyword1">public</span> <span class="php-keyword1">function</span> <a id="_RelateTo" href="#_RelateTo">RelateTo</a>( <span class="php-var">$theObject</span>, <span class="php-var">$thePredicate</span> )
 </span><span id="348" class="l"><a class="l" href="#348">348: </a>    {
@@ -487,7 +487,7 @@
 </span><span id="387" class="l"><a class="l" href="#387">387: </a>    <span class="php-comment">/**
 </span></span><span id="388" class="l"><a class="l" href="#388">388: </a><span class="php-comment">     * &lt;h4&gt;Handle offset before setting it&lt;/h4&gt;
 </span></span><span id="389" class="l"><a class="l" href="#389">389: </a><span class="php-comment">     *
-</span></span><span id="390" class="l"><a class="l" href="#390">390: </a><span class="php-comment">     * In this class we ensure that the {@link kOFFSET_KIND} offset is an array, ArrayObject
+</span></span><span id="390" class="l"><a class="l" href="#390">390: </a><span class="php-comment">     * In this class we ensure that the {@link kTAG_KIND} offset is an array, ArrayObject
 </span></span><span id="391" class="l"><a class="l" href="#391">391: </a><span class="php-comment">     * instances are not counted as an array.
 </span></span><span id="392" class="l"><a class="l" href="#392">392: </a><span class="php-comment">     *
 </span></span><span id="393" class="l"><a class="l" href="#393">393: </a><span class="php-comment">     * @param reference            &amp;$theOffset          Offset.
@@ -497,14 +497,14 @@
 </span></span><span id="397" class="l"><a class="l" href="#397">397: </a><span class="php-comment">     *
 </span></span><span id="398" class="l"><a class="l" href="#398">398: </a><span class="php-comment">     * @throws Exception
 </span></span><span id="399" class="l"><a class="l" href="#399">399: </a><span class="php-comment">     *
-</span></span><span id="400" class="l"><a class="l" href="#400">400: </a><span class="php-comment">     * @see kOFFSET_KIND
+</span></span><span id="400" class="l"><a class="l" href="#400">400: </a><span class="php-comment">     * @see kTAG_KIND
 </span></span><span id="401" class="l"><a class="l" href="#401">401: </a><span class="php-comment">     */</span>
 </span><span id="402" class="l"><a class="l" href="#402">402: </a>    <span class="php-keyword1">protected</span> <span class="php-keyword1">function</span> <a id="__Preset" href="#__Preset">_Preset</a>( &amp;<span class="php-var">$theOffset</span>, &amp;<span class="php-var">$theValue</span> )
 </span><span id="403" class="l"><a class="l" href="#403">403: </a>    {
 </span><span id="404" class="l"><a class="l" href="#404">404: </a>        <span class="php-comment">//</span>
 </span><span id="405" class="l"><a class="l" href="#405">405: </a>        <span class="php-comment">// Ensure kind is array.</span>
 </span><span id="406" class="l"><a class="l" href="#406">406: </a>        <span class="php-comment">//</span>
-</span><span id="407" class="l"><a class="l" href="#407">407: </a>        <span class="php-keyword1">if</span>( (<span class="php-var">$theOffset</span> == kOFFSET_KIND)
+</span><span id="407" class="l"><a class="l" href="#407">407: </a>        <span class="php-keyword1">if</span>( (<span class="php-var">$theOffset</span> == kTAG_KIND)
 </span><span id="408" class="l"><a class="l" href="#408">408: </a>         &amp;&amp; (<span class="php-var">$theValue</span> !== <span class="php-keyword1">NULL</span>)
 </span><span id="409" class="l"><a class="l" href="#409">409: </a>         &amp;&amp; (! <span class="php-keyword2">is_array</span>( <span class="php-var">$theValue</span> )) )
 </span><span id="410" class="l"><a class="l" href="#410">410: </a>            <span class="php-keyword1">throw</span> <span class="php-keyword1">new</span> Exception
@@ -537,14 +537,14 @@
 </span></span><span id="437" class="l"><a class="l" href="#437">437: </a><span class="php-comment">     * &lt;h4&gt;Determine if the object is ready&lt;/h4&gt;
 </span></span><span id="438" class="l"><a class="l" href="#438">438: </a><span class="php-comment">     *
 </span></span><span id="439" class="l"><a class="l" href="#439">439: </a><span class="php-comment">     * In this class we tie the {@link _IsInited()} status to the presence or absence of the
-</span></span><span id="440" class="l"><a class="l" href="#440">440: </a><span class="php-comment">     * {@link kOFFSET_TERM} offset.
+</span></span><span id="440" class="l"><a class="l" href="#440">440: </a><span class="php-comment">     * {@link kTAG_TERM} offset.
 </span></span><span id="441" class="l"><a class="l" href="#441">441: </a><span class="php-comment">     *
 </span></span><span id="442" class="l"><a class="l" href="#442">442: </a><span class="php-comment">     * @access protected
 </span></span><span id="443" class="l"><a class="l" href="#443">443: </a><span class="php-comment">     * @return boolean              &lt;tt&gt;TRUE&lt;/tt&gt; means {@link _IsInited( &lt;tt&gt;TRUE&lt;/tt&gt; ).
 </span></span><span id="444" class="l"><a class="l" href="#444">444: </a><span class="php-comment">     *
 </span></span><span id="445" class="l"><a class="l" href="#445">445: </a><span class="php-comment">     * @uses _Ready()
 </span></span><span id="446" class="l"><a class="l" href="#446">446: </a><span class="php-comment">     *
-</span></span><span id="447" class="l"><a class="l" href="#447">447: </a><span class="php-comment">     * @see kOFFSET_TERM
+</span></span><span id="447" class="l"><a class="l" href="#447">447: </a><span class="php-comment">     * @see kTAG_TERM
 </span></span><span id="448" class="l"><a class="l" href="#448">448: </a><span class="php-comment">     */</span>
 </span><span id="449" class="l"><a class="l" href="#449">449: </a>    <span class="php-keyword1">protected</span> <span class="php-keyword1">function</span> <a id="__Ready" href="#__Ready">_Ready</a>()
 </span><span id="450" class="l"><a class="l" href="#450">450: </a>    {
@@ -552,7 +552,7 @@
 </span><span id="452" class="l"><a class="l" href="#452">452: </a>        <span class="php-comment">// Check parent.</span>
 </span><span id="453" class="l"><a class="l" href="#453">453: </a>        <span class="php-comment">//</span>
 </span><span id="454" class="l"><a class="l" href="#454">454: </a>        <span class="php-keyword1">if</span>( parent::_Ready() )
-</span><span id="455" class="l"><a class="l" href="#455">455: </a>            <span class="php-keyword1">return</span> <span class="php-var">$this</span>-&gt;offsetExists( kOFFSET_TERM );                             <span class="php-comment">// ==&gt;</span>
+</span><span id="455" class="l"><a class="l" href="#455">455: </a>            <span class="php-keyword1">return</span> <span class="php-var">$this</span>-&gt;offsetExists( kTAG_TERM );                                <span class="php-comment">// ==&gt;</span>
 </span><span id="456" class="l"><a class="l" href="#456">456: </a>        
 </span><span id="457" class="l"><a class="l" href="#457">457: </a>        <span class="php-keyword1">return</span> <span class="php-keyword1">FALSE</span>;                                                               <span class="php-comment">// ==&gt;</span>
 </span><span id="458" class="l"><a class="l" href="#458">458: </a>    

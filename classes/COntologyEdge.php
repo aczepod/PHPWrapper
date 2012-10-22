@@ -49,17 +49,17 @@ require_once( kPATH_MYWRAPPER_LIBRARY_CLASS."/CEdge.php" );
  *
  * This class overloads the native identification workflow by using a number sequence tagged
  * by {@link kSEQUENCE_KEY_EDGE}. The class also features a unique identifier,
- * {@link kOFFSET_UID}, which receives the hash of the global identifier, this will be
+ * {@link kTAG_UID}, which receives the hash of the global identifier, this will be
  * useful to identify duplicates.
  *
  * When adding vertices and predicates to the object, these can be provided as objects and
  * if these objects are not {@link _IsCommitted}, they will be stored before the current
  * edge object is committed.
  *
- * The class features an offset, {@link kOFFSET_REFS_TAG}, which represents the list of tags
+ * The class features an offset, {@link kTAG_REFS_TAG}, which represents the list of tags
  * that reference the current node. This offset is a set of tag identifiers implemented as
  * an array. The offset definition is borrowed from the {@link COntologyTerm} class, which
- * is required by this class because of its {@link kOFFSET_PREDICATE} offset. This offset is
+ * is required by this class because of its {@link kTAG_PREDICATE} offset. This offset is
  * managed by the tag class, this class locks the offset.
  *
  * The class also adds two enumerated sets that represent respectively the subject and the
@@ -151,14 +151,14 @@ class COntologyEdge extends CEdge
 	 *
 	 * @uses NewObject()
 	 *
-	 * @see kOFFSET_VERTEX_SUBJECT
+	 * @see kTAG_VERTEX_SUBJECT
 	 */
 	public function LoadSubject( CConnection $theConnection, $doReload = FALSE )
 	{
 		//
 		// Check offset.
 		//
-		if( $this->offsetExists( kOFFSET_VERTEX_SUBJECT ) )
+		if( $this->offsetExists( kTAG_VERTEX_SUBJECT ) )
 		{
 			//
 			// Refresh cache.
@@ -170,7 +170,7 @@ class COntologyEdge extends CEdge
 				//
 				// Handle node object.
 				//
-				$node = $this->offsetGet( kOFFSET_VERTEX_SUBJECT );
+				$node = $this->offsetGet( kTAG_VERTEX_SUBJECT );
 				if( $node instanceof COntologyNode )
 					return $node;													// ==>
 				
@@ -226,14 +226,14 @@ class COntologyEdge extends CEdge
 	 *
 	 * @uses NewObject()
 	 *
-	 * @see kOFFSET_PREDICATE
+	 * @see kTAG_PREDICATE
 	 */
 	public function LoadPredicate( CConnection $theConnection, $doReload = FALSE )
 	{
 		//
 		// Check offset.
 		//
-		if( $this->offsetExists( kOFFSET_PREDICATE ) )
+		if( $this->offsetExists( kTAG_PREDICATE ) )
 		{
 			//
 			// Refresh cache.
@@ -245,7 +245,7 @@ class COntologyEdge extends CEdge
 				//
 				// Handle term object.
 				//
-				$term = $this->offsetGet( kOFFSET_PREDICATE );
+				$term = $this->offsetGet( kTAG_PREDICATE );
 				if( $term instanceof COntologyTerm )
 					return $term;													// ==>
 				
@@ -301,14 +301,14 @@ class COntologyEdge extends CEdge
 	 *
 	 * @uses NewObject()
 	 *
-	 * @see kOFFSET_VERTEX_OBJECT
+	 * @see kTAG_VERTEX_OBJECT
 	 */
 	public function LoadObject( CConnection $theConnection, $doReload = FALSE )
 	{
 		//
 		// Check offset.
 		//
-		if( $this->offsetExists( kOFFSET_VERTEX_OBJECT ) )
+		if( $this->offsetExists( kTAG_VERTEX_OBJECT ) )
 		{
 			//
 			// Refresh cache.
@@ -320,7 +320,7 @@ class COntologyEdge extends CEdge
 				//
 				// Handle node object.
 				//
-				$node = $this->offsetGet( kOFFSET_VERTEX_OBJECT );
+				$node = $this->offsetGet( kTAG_VERTEX_OBJECT );
 				if( $node instanceof COntologyNode )
 					return $node;													// ==>
 				
@@ -417,7 +417,7 @@ class COntologyEdge extends CEdge
 	 * @uses LoadPredicate()
 	 * @uses LoadObject()
 	 *
-	 * @see kOFFSET_NID kOFFSET_GID kTOKEN_INDEX_SEPARATOR
+	 * @see kOFFSET_NID kTAG_LID kTOKEN_INDEX_SEPARATOR
 	 */
 	protected function _index( CConnection $theConnection, $theModifiers )
 	{
@@ -442,7 +442,7 @@ class COntologyEdge extends CEdge
 		//
 		$tmp = $this->LoadPredicate( $theConnection );
 		if( $tmp !== NULL )
-			$identifier[] = $tmp[ kOFFSET_GID ];
+			$identifier[] = $tmp[ kTAG_GID ];
 		else
 			throw new Exception
 				( "Missing predicate",
@@ -487,7 +487,7 @@ class COntologyEdge extends CEdge
 	 * We also ensure that the provided objects are instances of the correct classes by
 	 * asserting {@link CDocument} descendants.
 	 *
-	 * This method will lock the {@link kOFFSET_REFS_TAG} offset from any modification.
+	 * This method will lock the {@link kTAG_REFS_TAG} offset from any modification.
 	 *
 	 * @param reference			   &$theOffset			Offset.
 	 * @param reference			   &$theValue			Value to set at offset.
@@ -499,15 +499,15 @@ class COntologyEdge extends CEdge
 	 * @uses _IsCommitted()
 	 * @uses _AssertClass()
 	 *
-	 * @see kOFFSET_REFS_TAG
-	 * @see kOFFSET_PREDICATE kOFFSET_VERTEX_OBJECT kOFFSET_VERTEX_SUBJECT
+	 * @see kTAG_REFS_TAG
+	 * @see kTAG_PREDICATE kTAG_VERTEX_OBJECT kTAG_VERTEX_SUBJECT
 	 */
 	protected function _Preset( &$theOffset, &$theValue )
 	{
 		//
 		// Intercept reference offsets.
 		//
-		if( $theOffset == kOFFSET_REFS_TAG )
+		if( $theOffset == kTAG_REFS_TAG )
 			throw new Exception
 				( "The [$theOffset] offset cannot be modified",
 				  kERROR_LOCKED );												// !@! ==>
@@ -517,7 +517,7 @@ class COntologyEdge extends CEdge
 		//
 		switch( $theOffset )
 		{
-			case kOFFSET_PREDICATE:
+			case kTAG_PREDICATE:
 	
 				//
 				// Lock term if object is committed.
@@ -575,8 +575,8 @@ class COntologyEdge extends CEdge
 				
 				break;
 
-			case kOFFSET_VERTEX_OBJECT:
-			case kOFFSET_VERTEX_SUBJECT:
+			case kTAG_VERTEX_OBJECT:
+			case kTAG_VERTEX_SUBJECT:
 			
 				//
 				// Lock node if object is committed.
@@ -597,7 +597,7 @@ class COntologyEdge extends CEdge
 				//
 				if( $ok === FALSE )
 				{
-					if( $theOffset == kOFFSET_VERTEX_OBJECT )
+					if( $theOffset == kTAG_VERTEX_OBJECT )
 						throw new Exception
 							( "Cannot set object vertex: "
 							 ."the object must be a node reference or object",
@@ -626,7 +626,7 @@ class COntologyEdge extends CEdge
 							$theValue = $theValue->offsetGet( kOFFSET_NID );
 						else
 						{
-							if( $theOffset == kOFFSET_VERTEX_OBJECT )
+							if( $theOffset == kTAG_VERTEX_OBJECT )
 								throw new Exception
 									( "Cannot set object vertex: "
 									 ."the object is missing its native identifier",
@@ -645,7 +645,7 @@ class COntologyEdge extends CEdge
 					//
 					else
 					{
-						if( $theOffset == kOFFSET_VERTEX_OBJECT )
+						if( $theOffset == kTAG_VERTEX_OBJECT )
 							$this->mObject = $theValue;
 						else
 							$this->mSubject = $theValue;
@@ -673,7 +673,7 @@ class COntologyEdge extends CEdge
 	 * <h4>Handle offset before unsetting it</h4>
 	 *
 	 * In this class we prevent the modification of the subject, predicate and object
-	 * offsets if the object is committed and of the {@link kOFFSET_REFS_TAG} offset in all
+	 * offsets if the object is committed and of the {@link kTAG_REFS_TAG} offset in all
 	 * cases.
 	 *
 	 * @param reference			   &$theOffset			Offset.
@@ -684,15 +684,15 @@ class COntologyEdge extends CEdge
 	 *
 	 * @uses _IsCommitted()
 	 *
-	 * @see kOFFSET_REFS_TAG
-	 * @see kOFFSET_PREDICATE kOFFSET_VERTEX_OBJECT kOFFSET_VERTEX_SUBJECT
+	 * @see kTAG_REFS_TAG
+	 * @see kTAG_PREDICATE kTAG_VERTEX_OBJECT kTAG_VERTEX_SUBJECT
 	 */
 	protected function _Preunset( &$theOffset )
 	{
 		//
 		// Intercept reference offsets.
 		//
-		if( $theOffset == kOFFSET_REFS_TAG )
+		if( $theOffset == kTAG_REFS_TAG )
 			throw new Exception
 				( "The [$theOffset] offset cannot be modified",
 				  kERROR_LOCKED );												// !@! ==>
@@ -700,9 +700,9 @@ class COntologyEdge extends CEdge
 		//
 		// Lock subject, predicate and object vertices if object is committed.
 		//
-		$offsets = array( kOFFSET_VERTEX_SUBJECT,
-						  kOFFSET_PREDICATE,
-						  kOFFSET_VERTEX_OBJECT );
+		$offsets = array( kTAG_VERTEX_SUBJECT,
+						  kTAG_PREDICATE,
+						  kTAG_VERTEX_OBJECT );
 		if( in_array( $theOffset, $offsets )
 		 && $this->_IsCommitted() )
 			throw new Exception
@@ -747,7 +747,7 @@ class COntologyEdge extends CEdge
 	 * @uses LoadPredicate()
 	 * @uses LoadObject()
 	 *
-	 * @see kOFFSET_PREDICATE kOFFSET_VERTEX_OBJECT kOFFSET_VERTEX_SUBJECT
+	 * @see kTAG_PREDICATE kTAG_VERTEX_OBJECT kTAG_VERTEX_SUBJECT
 	 */
 	protected function _PrecommitRelated( &$theConnection, &$theModifiers )
 	{
@@ -766,7 +766,7 @@ class COntologyEdge extends CEdge
 			// Note that we let _Preset() method take care of the specific class.
 			// Note that we do not check the object: it is required to be inited.
 			//
-			$object = $this->offsetGet( kOFFSET_VERTEX_SUBJECT );
+			$object = $this->offsetGet( kTAG_VERTEX_SUBJECT );
 			if( $object instanceof COntologyNode )
 			{
 				//
@@ -785,7 +785,7 @@ class COntologyEdge extends CEdge
 				//
 				// Set identifier in subject offset.
 				//
-				$this->offsetSet( kOFFSET_VERTEX_SUBJECT,
+				$this->offsetSet( kTAG_VERTEX_SUBJECT,
 								  $this->mSubject->offsetGet( kOFFSET_NID ) );
 				
 			} // Subject is object.
@@ -801,7 +801,7 @@ class COntologyEdge extends CEdge
 			// Note that we let _Preset() method take care of the specific class.
 			// Note that we do not check the object: it is required to be inited.
 			//
-			$object = $this->offsetGet( kOFFSET_PREDICATE );
+			$object = $this->offsetGet( kTAG_PREDICATE );
 			if( $object instanceof COntologyTerm )
 			{
 				//
@@ -820,7 +820,7 @@ class COntologyEdge extends CEdge
 				//
 				// Set identifier in predicate offset.
 				//
-				$this->offsetSet( kOFFSET_PREDICATE,
+				$this->offsetSet( kTAG_PREDICATE,
 								  $this->mPredicate->offsetGet( kOFFSET_NID ) );
 				
 			} // Predicate is object.
@@ -836,7 +836,7 @@ class COntologyEdge extends CEdge
 			// Note that we let _Preset() method take care of the specific class.
 			// Note that we do not check the object: it is required to be inited.
 			//
-			$object = $this->offsetGet( kOFFSET_VERTEX_OBJECT );
+			$object = $this->offsetGet( kTAG_VERTEX_OBJECT );
 			if( $object instanceof COntologyNode )
 			{
 				//
@@ -855,7 +855,7 @@ class COntologyEdge extends CEdge
 				//
 				// Set identifier in object offset.
 				//
-				$this->offsetSet( kOFFSET_VERTEX_OBJECT,
+				$this->offsetSet( kTAG_VERTEX_OBJECT,
 								  $this->mObject->offsetGet( kOFFSET_NID ) );
 				
 			} // Object is object.
@@ -879,8 +879,8 @@ class COntologyEdge extends CEdge
 	 * <h4>Determine the identifiers before committing</h4>
 	 *
 	 * This method will use the result of the {@link _index()} method to set the global
-	 * identifier, {@link kOFFSET_GID}; the same value will be hashed and constitute the
-	 * unique identifier, {@link kOFFSET_UID}.
+	 * identifier, {@link kTAG_GID}; the same value will be hashed and constitute the
+	 * unique identifier, {@link kTAG_UID}.
 	 *
 	 * Objects of this class are identified by a sequence number tagged
 	 * {@link kSEQUENCE_KEY_EDGE}, this method will set the native identifier,
@@ -897,7 +897,7 @@ class COntologyEdge extends CEdge
 	 * @throws Exception
 	 *
 	 * @see kSEQUENCE_KEY_EDGE
-	 * @see kOFFSET_NID kOFFSET_GID kOFFSET_UID
+	 * @see kOFFSET_NID kTAG_GID kTAG_UID
 	 * @see kFLAG_PERSIST_INSERT kFLAG_PERSIST_REPLACE
 	 */
 	protected function _PrecommitIdentify( &$theConnection, &$theModifiers )
@@ -911,7 +911,7 @@ class COntologyEdge extends CEdge
 			//
 			// Set global identifier.
 			//
-			if( ! $this->offsetExists( kOFFSET_GID ) )
+			if( ! $this->offsetExists( kTAG_GID ) )
 			{
 				//
 				// Generate global identifier.
@@ -922,7 +922,7 @@ class COntologyEdge extends CEdge
 					//
 					// Set global identifier.
 					//
-					$this->offsetSet( kOFFSET_GID, $index );
+					$this->offsetSet( kTAG_GID, $index );
 					
 					//
 					// Resolve container.
@@ -937,7 +937,7 @@ class COntologyEdge extends CEdge
 					//
 					// Check unique identifier.
 					//
-					if( $container->CheckObject( $uid, kOFFSET_UID ) )
+					if( $container->CheckObject( $uid, kTAG_UID ) )
 						throw new Exception
 							( "Duplicate object",
 							  kERROR_COMMIT );												// !@! ==>
@@ -945,7 +945,7 @@ class COntologyEdge extends CEdge
 					//
 					// Set unique identifier.
 					//
-					$this->offsetSet( kOFFSET_UID, $uid );
+					$this->offsetSet( kTAG_UID, $uid );
 				
 				} // Has global identifier.
 			
@@ -988,7 +988,7 @@ class COntologyEdge extends CEdge
 	 * <h4>Update related objects after committing</h4>
 	 *
 	 * In this class we add the current edge's identifier to the list of edge references,
-	 * {@link kOFFSET_REFS_EDGE}, in the related subject and object vertives when inserting;
+	 * {@link kTAG_REFS_EDGE}, in the related subject and object vertives when inserting;
 	 * we remove the element when deleting.
 	 *
 	 * @param reference			   &$theConnection		Server, database or container.
@@ -998,7 +998,7 @@ class COntologyEdge extends CEdge
 	 *
 	 * @uses _IsCommitted()
 	 *
-	 * @see kOFFSET_REFS_EDGE kOFFSET_VERTEX_SUBJECT kOFFSET_VERTEX_OBJECT
+	 * @see kTAG_REFS_EDGE kTAG_VERTEX_SUBJECT kTAG_VERTEX_OBJECT
 	 * @see kFLAG_PERSIST_INSERT kFLAG_PERSIST_REPLACE kFLAG_PERSIST_DELETE
 	 * @see kFLAG_PERSIST_MODIFY kFLAG_MODIFY_ADDSET kFLAG_MODIFY_PULL
 	 */
@@ -1102,8 +1102,8 @@ class COntologyEdge extends CEdge
 	 * <h4>Add edge reference to subject vertex</h4>
 	 *
 	 * This method can be used to add or remove the current edge's reference,
-	 * {@link kOFFSET_REFS_EDGE}, from the subject vertex node,
-	 * {@link kOFFSET_VERTEX_SUBJECT}. This method should be used whenever committing a new
+	 * {@link kTAG_REFS_EDGE}, from the subject vertex node,
+	 * {@link kTAG_VERTEX_SUBJECT}. This method should be used whenever committing a new
 	 * edge or when deleting one: it will add the current edge's native identifier to the
 	 * set of edge references of the edge's subject vertex when committing a new edge; it
 	 * will remove it when deleting the edge.
@@ -1121,7 +1121,7 @@ class COntologyEdge extends CEdge
 	 * @access protected
 	 * @return boolean				<tt>TRUE</tt> operation affected at least one object.
 	 *
-	 * @see kOFFSET_VERTEX_SUBJECT kOFFSET_REFS_EDGE
+	 * @see kTAG_VERTEX_SUBJECT kTAG_REFS_EDGE
 	 * @see kFLAG_PERSIST_MODIFY kFLAG_MODIFY_ADDSET kFLAG_MODIFY_PULL
 	 */
 	protected function _ReferenceInSubject( CConnection $theConnection, $doAdd )
@@ -1129,12 +1129,12 @@ class COntologyEdge extends CEdge
 		//
 		// Check subject vertex.
 		//
-		if( $this->offsetExists( kOFFSET_VERTEX_SUBJECT ) )
+		if( $this->offsetExists( kTAG_VERTEX_SUBJECT ) )
 		{
 			//
 			// Set modification criteria.
 			//
-			$criteria = array( kOFFSET_REFS_EDGE => $this->offsetGet( kOFFSET_NID ) );
+			$criteria = array( kTAG_REFS_EDGE => $this->offsetGet( kOFFSET_NID ) );
 			
 			//
 			// Handle add to set.
@@ -1144,7 +1144,7 @@ class COntologyEdge extends CEdge
 						->ManageObject
 							(
 								$criteria,
-								$this->offsetGet( kOFFSET_VERTEX_SUBJECT ),
+								$this->offsetGet( kTAG_VERTEX_SUBJECT ),
 								kFLAG_PERSIST_MODIFY + kFLAG_MODIFY_ADDSET
 							);														// ==>
 			
@@ -1152,7 +1152,7 @@ class COntologyEdge extends CEdge
 					->ManageObject
 						(
 							$criteria,
-							$this->offsetGet( kOFFSET_VERTEX_SUBJECT ),
+							$this->offsetGet( kTAG_VERTEX_SUBJECT ),
 							kFLAG_PERSIST_MODIFY + kFLAG_MODIFY_PULL
 						);															// ==>
 		
@@ -1171,8 +1171,8 @@ class COntologyEdge extends CEdge
 	 * <h4>Add edge reference to object vertex</h4>
 	 *
 	 * This method can be used to add or remove the current edge's reference,
-	 * {@link kOFFSET_REFS_EDGE}, from the object vertex node,
-	 * {@link kOFFSET_VERTEX_OBJECT}. This method should be used whenever committing a new
+	 * {@link kTAG_REFS_EDGE}, from the object vertex node,
+	 * {@link kTAG_VERTEX_OBJECT}. This method should be used whenever committing a new
 	 * edge or when deleting one: it will add the current edge's native identifier to the
 	 * set of edge references of the edge's object vertex when committing a new edge; it
 	 * will remove it when deleting the edge.
@@ -1190,7 +1190,7 @@ class COntologyEdge extends CEdge
 	 * @access protected
 	 * @return boolean				<tt>TRUE</tt> operation affected at least one object.
 	 *
-	 * @see kOFFSET_VERTEX_OBJECT kOFFSET_REFS_EDGE
+	 * @see kTAG_VERTEX_OBJECT kTAG_REFS_EDGE
 	 * @see kFLAG_PERSIST_MODIFY kFLAG_MODIFY_ADDSET kFLAG_MODIFY_PULL
 	 */
 	protected function _ReferenceInObject( CConnection $theConnection, $doAdd )
@@ -1198,12 +1198,12 @@ class COntologyEdge extends CEdge
 		//
 		// Check object vertex.
 		//
-		if( $this->offsetExists( kOFFSET_VERTEX_OBJECT ) )
+		if( $this->offsetExists( kTAG_VERTEX_OBJECT ) )
 		{
 			//
 			// Set modification criteria.
 			//
-			$criteria = array( kOFFSET_REFS_EDGE => $this->offsetGet( kOFFSET_NID ) );
+			$criteria = array( kTAG_REFS_EDGE => $this->offsetGet( kOFFSET_NID ) );
 			
 			//
 			// Handle add to set.
@@ -1213,7 +1213,7 @@ class COntologyEdge extends CEdge
 						->ManageObject
 							(
 								$criteria,
-								$this->offsetGet( kOFFSET_VERTEX_OBJECT ),
+								$this->offsetGet( kTAG_VERTEX_OBJECT ),
 								kFLAG_PERSIST_MODIFY + kFLAG_MODIFY_ADDSET
 							);														// ==>
 			
@@ -1221,7 +1221,7 @@ class COntologyEdge extends CEdge
 					->ManageObject
 						(
 							$criteria,
-							$this->offsetGet( kOFFSET_VERTEX_OBJECT ),
+							$this->offsetGet( kTAG_VERTEX_OBJECT ),
 							kFLAG_PERSIST_MODIFY + kFLAG_MODIFY_PULL
 						);															// ==>
 		

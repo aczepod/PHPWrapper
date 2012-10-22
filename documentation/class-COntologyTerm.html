@@ -100,20 +100,19 @@
 <p>This class extends its ancestor, <code><a href="class-CTerm.html">CTerm</a></code>, by adding new rules and
 reference management.</p>
 
-<p>In this class, the namespace, kOFFSET_NAMESPACE, is a reference to
+<p>In this class, the namespace, kTAG_NAMESPACE, is a reference to
 another object derived from this class. This means that the offset will contain
 the native identifier of the namespace term and that this namespace offset must
 reside in the same container as the current term.</p>
 
-<p>The class features an offset, kOFFSET_REFS_NAMESPACE, that keeps a
+<p>The class features an offset, kTAG_REFS_NAMESPACE, that keeps a
 reference count of how many times the current term has been referenced as
 namespace, that is, the number of times this term was used as a namespace by
 other terms. This offset is updated in the <code><a href="class-CPersistentDocument.html#__Postcommit">CPersistentDocument::_Postcommit()</a></code> method.</p>
 
-<p>The class features also two other offsets, kOFFSET_REFS_NODE and
-kOFFSET_REFS_TAG, which collect respectively the list of node
-identifiers who reference this term, and the list of tags that reference the
-term. These offsets are managed by the referenced objects.</p>
+<p>The class features also two other offsets, kTAG_REFS_NODE and kTAG_REFS_TAG, which collect respectively the list of node identifiers who
+reference this term, and the list of tags that reference the term. These offsets
+are managed by the referenced objects.</p>
 
 <p>This class prevents updating the full object once it has been inserted for
 the first time. This behaviour is necessary because terms are referenced by many
@@ -128,14 +127,14 @@ use the kCONTAINER_TERM_NAME constant.</p>
 
 <ul>
 	<li><code><a href="class-COntologyTerm.html#_NamespaceRefs">COntologyTerm::NamespaceRefs()</a></code>: This method returns the term's namespace
-	references, kOFFSET_REFS_NAMESPACE.</li>
+	references, kTAG_REFS_NAMESPACE.</li>
 
-	<li><code><a href="class-COntologyTerm.html#_NodeRefs">COntologyTerm::NodeRefs()</a></code>: This method returns the term's node references, kOFFSET_REFS_NODE.</li>
+	<li><code><a href="class-COntologyTerm.html#_NodeRefs">COntologyTerm::NodeRefs()</a></code>: This method returns the term's node references, kTAG_REFS_NODE.</li>
 
-	<li><code><a href="class-COntologyTerm.html#_TagRefs">COntologyTerm::TagRefs()</a></code>: This method returns the term's tag references, kOFFSET_REFS_TAG.</li>
+	<li><code><a href="class-COntologyTerm.html#_TagRefs">COntologyTerm::TagRefs()</a></code>: This method returns the term's tag references, kTAG_REFS_TAG.</li>
 
 	<li><code><a href="class-COntologyTerm.html#_LoadNamespace">COntologyTerm::LoadNamespace()</a></code>: This method will return the eventual namespace
-	object pointed by kOFFSET_NAMESPACE. kOFFSET_REFS_NAMESPACE.</li>
+	object pointed by kTAG_NAMESPACE. kTAG_REFS_NAMESPACE.</li>
 </ul>
 
 	</div>
@@ -246,10 +245,10 @@ href="mailto:m.skofic&#64;cgiar.org">m.skofic&#64;<!---->cgiar.org</a>&gt;<br />
 			
 <h4>Manage namespace references</h4>
 
-<p>The <i>namespace references</i>, kOFFSET_REFS_NAMESPACE, holds an
+<p>The <i>namespace references</i>, kTAG_REFS_NAMESPACE, holds an
 integer which represents the number of times the current term has been
-referenced as a namespace, that is, stored in the kOFFSET_NAMESPACE
-offset of another term.</p>
+referenced as a namespace, that is, stored in the kTAG_NAMESPACE offset
+of another term.</p>
 
 <p>The method is read-only, because this value must be managed externally.</p>
 
@@ -264,7 +263,7 @@ offset of another term.</p>
 
 				<h4>See</h4>
 				<div class="list">
-						kOFFSET_REFS_NAMESPACE<br />
+						kTAG_REFS_NAMESPACE<br />
 				</div>
 
 
@@ -294,7 +293,7 @@ offset of another term.</p>
 			
 <h4>Manage node references</h4>
 
-<p>The <i>node references</i>, kOFFSET_REFS_NODE, holds a list of
+<p>The <i>node references</i>, kTAG_REFS_NODE, holds a list of
 identifiers of nodes that reference the term.</p>
 
 <p>The method is read-only, because this value must be managed externally.</p>
@@ -310,7 +309,7 @@ identifiers of nodes that reference the term.</p>
 
 				<h4>See</h4>
 				<div class="list">
-						kOFFSET_REFS_NODE<br />
+						kTAG_REFS_NODE<br />
 				</div>
 
 
@@ -340,8 +339,8 @@ identifiers of nodes that reference the term.</p>
 			
 <h4>Manage tag references</h4>
 
-<p>The <i>tag references</i>, kOFFSET_REFS_TAG, holds a list of
-identifiers of tags that reference the term.</p>
+<p>The <i>tag references</i>, kTAG_REFS_TAG, holds a list of identifiers
+of tags that reference the term.</p>
 
 <p>The method is read-only, because this value must be managed externally.</p>
 
@@ -356,7 +355,7 @@ identifiers of tags that reference the term.</p>
 
 				<h4>See</h4>
 				<div class="list">
-						kOFFSET_REFS_TAG<br />
+						kTAG_REFS_TAG<br />
 				</div>
 
 
@@ -415,7 +414,7 @@ whether the object is to be read, or if the cached copy can be used.</p>
 
 				<h4>See</h4>
 				<div class="list">
-						kOFFSET_NAMESPACE<br />
+						kTAG_NAMESPACE<br />
 				</div>
 
 
@@ -478,7 +477,7 @@ the object is to be read, or if the cached copy can be used.</p>
 
 				<h4>See</h4>
 				<div class="list">
-						kOFFSET_TERM<br />
+						kTAG_TERM<br />
 				</div>
 				<h4>Uses</h4>
 				<div class="list">
@@ -976,9 +975,9 @@ cache, so its global identifier will be available there.</p>
 			
 <h4>Handle offset before setting it</h4>
 
-<p>In this class we prevent the modification of the three kOFFSET_REFS_NAMESPACE, kOFFSET_REFS_NODE and kOFFSET_REFS_TAG
-offsets in all cases, since they must be programmatically managed directly by
-the container and not through the object.</p>
+<p>In this class we prevent the modification of the three kTAG_REFS_NAMESPACE, kTAG_REFS_NODE and kTAG_REFS_TAG offsets
+in all cases, since they must be programmatically managed directly by the
+container and not through the object.</p>
 
 <p>We also handle the namespace offset, if provided as an object we leave it
 unchanged only if not yet committed, if not, we convert it to its native
@@ -986,7 +985,7 @@ identifier. We also ensure the provided namespace object to be an instance of
 this class by asserting <code><a href="class-CDocument.html">CDocument</a></code> descendants to be of this class; any
 other type is assumed to be the namespace identifier.</p>
 
-<p>In this class the local identifier, kOFFSET_LID, is a string, in this
+<p>In this class the local identifier, kTAG_LID, is a string, in this
 method we cast the parameter to that type.</p>
 
 
@@ -1007,8 +1006,8 @@ method we cast the parameter to that type.</p>
 
 				<h4>See</h4>
 				<div class="list">
-						kOFFSET_NAMESPACE kOFFSET_LID kOFFSET_NID<br />
-						kOFFSET_REFS_NAMESPACE kOFFSET_REFS_NODE kOFFSET_REFS_TAG<br />
+						kTAG_NAMESPACE kTAG_LID kOFFSET_NID<br />
+						kTAG_REFS_NAMESPACE kTAG_REFS_NODE kTAG_REFS_TAG<br />
 				</div>
 				<h4>Uses</h4>
 				<div class="list">
@@ -1044,9 +1043,9 @@ method we cast the parameter to that type.</p>
 			
 <h4>Handle offset before unsetting it</h4>
 
-<p>In this class we prevent the modification of the three kOFFSET_REFS_NAMESPACE, kOFFSET_REFS_NODE and kOFFSET_REFS_TAG
-offsets in all cases, since they must be programmatically managed directly by
-the container and not through the object.</p>
+<p>In this class we prevent the modification of the three kTAG_REFS_NAMESPACE, kTAG_REFS_NODE and kTAG_REFS_TAG offsets
+in all cases, since they must be programmatically managed directly by the
+container and not through the object.</p>
 
 <p>The parent class will take care of locking namespace and local identifier if
 the object is committed.</p>
@@ -1067,7 +1066,7 @@ the object is committed.</p>
 
 				<h4>See</h4>
 				<div class="list">
-						kOFFSET_REFS_NAMESPACE kOFFSET_REFS_NODE kOFFSET_REFS_TAG<br />
+						kTAG_REFS_NAMESPACE kTAG_REFS_NODE kTAG_REFS_TAG<br />
 				</div>
 
 				<h4>Overrides</h4>
@@ -1144,7 +1143,8 @@ load the namespace if provided as an identifier.</p>
 			
 <h4>Update related objects after committing</h4>
 
-<p>In this class we let the container increment the kOFFSET_REFS_NAMESPACE of the eventual namespace.</p>
+<p>In this class we let the container increment the kTAG_REFS_NAMESPACE
+of the eventual namespace.</p>
 
 
 
@@ -1164,7 +1164,7 @@ load the namespace if provided as an identifier.</p>
 
 				<h4>See</h4>
 				<div class="list">
-						kOFFSET_NAMESPACE<br />
+						kTAG_NAMESPACE<br />
 						kFLAG_PERSIST_INSERT kFLAG_PERSIST_REPLACE kFLAG_PERSIST_DELETE<br />
 				</div>
 				<h4>Uses</h4>
@@ -1248,7 +1248,7 @@ will have to be refreshed and its references actualised.</p>
 			
 <h4>Increment namespace term references</h4>
 
-<p>This method can be used to increment the namespace reference count, kOFFSET_REFS_NAMESPACE, by providing a connection object and an increment
+<p>This method can be used to increment the namespace reference count, kTAG_REFS_NAMESPACE, by providing a connection object and an increment
 delta.</p>
 
 <p>The method will return <tt>TRUE</tt> if the operation affected at least one
@@ -1273,7 +1273,7 @@ namespace and raise an exception if the operation failed.</p>
 
 				<h4>See</h4>
 				<div class="list">
-						kOFFSET_NAMESPACE kOFFSET_REFS_NAMESPACE<br />
+						kTAG_NAMESPACE kTAG_REFS_NAMESPACE<br />
 						kFLAG_PERSIST_MODIFY kFLAG_MODIFY_INCREMENT<br />
 				</div>
 				<h4>Uses</h4>

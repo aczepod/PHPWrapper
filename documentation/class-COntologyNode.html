@@ -97,7 +97,7 @@
 	
 <h3>Ontology node object ancestor</h3>
 
-<p>This class extends its ancestor, <code><a href="class-CNode.html">CNode</a></code>, by asserting the <code><a href="class-CNode.html#_Term">CNode::Term()</a></code> to be an instance of <code><a href="class-COntologyTerm.html">COntologyTerm</a></code> and by managing the kOFFSET_REFS_NODE offset of the related <code><a href="class-CNode.html#_Term">CNode::Term()</a></code>.</p>
+<p>This class extends its ancestor, <code><a href="class-CNode.html">CNode</a></code>, by asserting the <code><a href="class-CNode.html#_Term">CNode::Term()</a></code> to be an instance of <code><a href="class-COntologyTerm.html">COntologyTerm</a></code> and by managing the kTAG_REFS_NODE offset of the related <code><a href="class-CNode.html#_Term">CNode::Term()</a></code>.</p>
 
 <p>The class does not handle global identifiers and objects cannot be uniquely
 identified by its properties or attributes, it is the duty of the hosting
@@ -107,25 +107,25 @@ after the default kCONTAINER_SEQUENCE_NAME tag in the same database,
 this is to make referencing nodes easier and to be compatible with most graph
 databases.</p>
 
-<p>In this class, the term, kOFFSET_TERM, is a reference to an instance
-of <code><a href="class-COntologyTerm.html">COntologyTerm</a></code>, meaning that the offset will contain the native
+<p>In this class, the term, kTAG_TERM, is a reference to an instance of
+<code><a href="class-COntologyTerm.html">COntologyTerm</a></code>, meaning that the offset will contain the native
 identifier of the term. The value may be provided as an uncommitted term object,
 in that case the term will be committed before the current node is
 committed.</p>
 
 <p>Once the node has been committed, it will not be possible to modify the term,
-kOFFSET_TERM.</p>
+kTAG_TERM.</p>
 
 <p>When inserting a new node, the class will also make sure that the referenced
-term gets a reference to the current node in its kOFFSET_REFS_NODE
-offset, this means that once a node is committed, one cannot change its term
+term gets a reference to the current node in its kTAG_REFS_NODE offset,
+this means that once a node is committed, one cannot change its term
 reference.</p>
 
-<p>The class features an offset, kOFFSET_REFS_TAG, which represents the
+<p>The class features an offset, kTAG_REFS_TAG, which represents the
 list of tags that reference the current node. This offset is a set of tag
 identifiers implemented as an array. The offset definition is borrowed from the
 <code><a href="class-COntologyTerm.html">COntologyTerm</a></code> class, which is required by this class because of its
-kOFFSET_TERM offset. This offset is managed by the tag class, this class
+kTAG_TERM offset. This offset is managed by the tag class, this class
 locks the offset.</p>
 
 <p>This class prevents updating the full object once it has been inserted for
@@ -142,7 +142,7 @@ terms.</p>
 <p>The class features member accessor methods for the default offsets:</p>
 
 <ul>
-	<li><code><a href="class-COntologyNode.html#_TagRefs">COntologyNode::TagRefs()</a></code>: This method returns the node's tag references, kOFFSET_REFS_TAG.</li>
+	<li><code><a href="class-COntologyNode.html#_TagRefs">COntologyNode::TagRefs()</a></code>: This method returns the node's tag references, kTAG_REFS_TAG.</li>
 
 	<li><code><a href="class-COntologyNode.html#_LoadTerm">COntologyNode::LoadTerm()</a></code>: This method will return the referenced term object.</li>
 </ul>
@@ -258,7 +258,7 @@ href="mailto:m.skofic&#64;cgiar.org">m.skofic&#64;<!---->cgiar.org</a>&gt;<br />
 <p>This method should return the current object's name which should represent
 the unique identifier of the object.</p>
 
-<p>By default we return the string representation of the term, kOFFSET_TERM.</p>
+<p>By default we return the string representation of the term, kTAG_TERM.</p>
 
 
 
@@ -400,12 +400,13 @@ that can be set in the offset. The offset accepts two types of elements:</p>
 			
 <h4>Manage tag references</h4>
 
-<p>The <i>tag references</i>, kOFFSET_REFS_TAG, holds a list of
-identifiers of tags that reference the node.</p>
+<p>The <i>tag references</i>, kTAG_REFS_TAG, holds a list of identifiers
+of tags that reference the node.</p>
 
 <p>The method is read-only, because this value must be managed externally.</p>
 
-<p>The kOFFSET_REFS_TAG offset tag is defined by the <code><a href="class-COntologyTerm.html">COntologyTerm</a></code> class which is included in this class by default.</p>
+<p>The kTAG_REFS_TAG offset tag is defined by the <code><a href="class-COntologyTerm.html">COntologyTerm</a></code>
+class which is included in this class by default.</p>
 
 
 
@@ -418,7 +419,7 @@ identifiers of tags that reference the node.</p>
 
 				<h4>See</h4>
 				<div class="list">
-						kOFFSET_REFS_TAG<br />
+						kTAG_REFS_TAG<br />
 				</div>
 
 
@@ -448,7 +449,7 @@ identifiers of tags that reference the node.</p>
 			
 <h4>Manage edge references</h4>
 
-<p>The <i>edge references</i>, kOFFSET_REFS_EDGE, holds a list of
+<p>The <i>edge references</i>, kTAG_REFS_EDGE, holds a list of
 identifiers of edges that reference the node.</p>
 
 <p>The method is read-only, because this value must be managed externally.</p>
@@ -464,7 +465,7 @@ identifiers of edges that reference the node.</p>
 
 				<h4>See</h4>
 				<div class="list">
-						kOFFSET_REFS_EDGE<br />
+						kTAG_REFS_EDGE<br />
 				</div>
 
 
@@ -527,7 +528,7 @@ the object is to be read, or if the cached copy can be used.</p>
 
 				<h4>See</h4>
 				<div class="list">
-						kOFFSET_TERM<br />
+						kTAG_TERM<br />
 				</div>
 				<h4>Uses</h4>
 				<div class="list">
@@ -863,7 +864,7 @@ unchanged only if not yet committed, if not, we convert it to its native
 identifier. We also ensure the provided term object to be an instance of <code><a href="class-COntologyTerm.html">COntologyTerm</a></code> by asserting <code><a href="class-CDocument.html">CDocument</a></code> descendants to be of that
 class.</p>
 
-<p>This method will lock the kOFFSET_REFS_TAG offset from any
+<p>This method will lock the kTAG_REFS_TAG offset from any
 modification.</p>
 
 
@@ -884,7 +885,7 @@ modification.</p>
 
 				<h4>See</h4>
 				<div class="list">
-						kOFFSET_TERM kOFFSET_REFS_TAG<br />
+						kTAG_TERM kTAG_REFS_TAG<br />
 				</div>
 				<h4>Uses</h4>
 				<div class="list">
@@ -921,8 +922,8 @@ modification.</p>
 			
 <h4>Handle offset before unsetting it</h4>
 
-<p>In this class we prevent the modification of the kOFFSET_TERM offset
-if the object is committed and of the kOFFSET_REFS_TAG offset in all
+<p>In this class we prevent the modification of the kTAG_TERM offset if
+the object is committed and of the kTAG_REFS_TAG offset in all
 cases.</p>
 
 
@@ -941,7 +942,7 @@ cases.</p>
 
 				<h4>See</h4>
 				<div class="list">
-						kOFFSET_REFS_TAG kOFFSET_TERM<br />
+						kTAG_REFS_TAG kTAG_TERM<br />
 				</div>
 				<h4>Uses</h4>
 				<div class="list">
@@ -995,7 +996,7 @@ provided as an identifier.</p>
 
 				<h4>See</h4>
 				<div class="list">
-						kOFFSET_TERM<br />
+						kTAG_TERM<br />
 				</div>
 				<h4>Uses</h4>
 				<div class="list">
@@ -1034,7 +1035,7 @@ provided as an identifier.</p>
 <p>Objects of this class are identified by a sequence number tagged kSEQUENCE_KEY_NODE, this method will set the native identifier, kOFFSET_NID, with this value.</p>
 
 <p>The parent method will then be called, which will ignore the global
-identifier, kOFFSET_GID, since the <code><a href="class-CPersistentObject.html#__index">CPersistentObject::_index()</a></code> method returns
+identifier, kTAG_LID, since the <code><a href="class-CPersistentObject.html#__index">CPersistentObject::_index()</a></code> method returns
 <tt>NULL</tt> and also ignore the native identifier, kOFFSET_NID, since
 it will have been set here.</p>
 
@@ -1086,7 +1087,7 @@ it will have been set here.</p>
 <h4>Update related objects after committing</h4>
 
 <p>In this class we add the current node's identifier to the list of node
-references, kOFFSET_REFS_NODE, in the related term when inserting; we
+references, kTAG_REFS_NODE, in the related term when inserting; we
 remove the element when deleting.</p>
 
 
@@ -1187,10 +1188,10 @@ have to be refreshed and its references actualised.</p>
 <h4>Add node reference to term</h4>
 
 <p>This method can be used to add or remove the current node's reference from
-the referenced term, kOFFSET_REFS_NODE. This method should be used
-whenever committing a new node or deleting one: it will add the current node's
-native identifier to the set of node references of the node's term when
-committing a new node; it will remove it when deleting the node.</p>
+the referenced term, kTAG_REFS_NODE. This method should be used whenever
+committing a new node or deleting one: it will add the current node's native
+identifier to the set of node references of the node's term when committing a
+new node; it will remove it when deleting the node.</p>
 
 <p>The last parameter is a boolean: if <tt>TRUE</tt> the method will add to the
 set; if <tt>FALSE</tt>, it will remove from the set.</p>
@@ -1217,7 +1218,7 @@ exception if the operation failed.</p>
 
 				<h4>See</h4>
 				<div class="list">
-						kOFFSET_TERM kOFFSET_REFS_NODE<br />
+						kTAG_TERM kTAG_REFS_NODE<br />
 						kFLAG_PERSIST_MODIFY kFLAG_MODIFY_ADDSET kFLAG_MODIFY_PULL<br />
 				</div>
 				<h4>Used by</h4>

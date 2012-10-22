@@ -50,10 +50,10 @@ require_once( 'ISOOntologies.inc.php' );
 		$id = kONTOLOGY_ISO;
 		$_SESSION[ 'TERMS' ][ $id ] = new COntologyTerm();
 		$_SESSION[ 'TERMS' ][ $id ]->LID( $id );
-		$_SESSION[ 'TERMS' ][ $id ]->Label( 'en', 'International Organization for Standardization' );
-		$_SESSION[ 'TERMS' ][ $id ]->Label( 'fr', 'Organisation internationale de normalisation' );
-		$_SESSION[ 'TERMS' ][ $id ]->Label( 'ru', 'Международная организация по стандартизации' );
-		$_SESSION[ 'TERMS' ][ $id ]->Description( 'en', 'Collection of industrial and commercial standards and codes.' );
+		$_SESSION[ 'TERMS' ][ $id ]->Label( kDEFAULT_LANGUAGE, 'International Organization for Standardization' );
+		$_SESSION[ 'TERMS' ][ $id ]->Label( 'fra', 'Organisation internationale de normalisation' );
+		$_SESSION[ 'TERMS' ][ $id ]->Label( 'rus', 'Международная организация по стандартизации' );
+		$_SESSION[ 'TERMS' ][ $id ]->Description( kDEFAULT_LANGUAGE, 'Collection of industrial and commercial standards and codes.' );
 		$_SESSION[ 'TERMS' ][ $id ]->Insert( $_SESSION[ kSESSION_ONTOLOGY ]->Connection() );
 
 		//

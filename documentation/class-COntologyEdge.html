@@ -102,18 +102,18 @@ the <code><a href="class-CEdge.html#_Predicate">CEdge::Predicate()</a></code> to
 
 <p>This class overloads the native identification workflow by using a number
 sequence tagged by kSEQUENCE_KEY_EDGE. The class also features a unique
-identifier, kOFFSET_UID, which receives the hash of the global
-identifier, this will be useful to identify duplicates.</p>
+identifier, kTAG_UID, which receives the hash of the global identifier,
+this will be useful to identify duplicates.</p>
 
 <p>When adding vertices and predicates to the object, these can be provided as
 objects and if these objects are not <code><a href="class-CStatusDocument.html#__IsCommitted">CStatusDocument::_IsCommitted()</a></code>, they will be stored
 before the current edge object is committed.</p>
 
-<p>The class features an offset, kOFFSET_REFS_TAG, which represents the
+<p>The class features an offset, kTAG_REFS_TAG, which represents the
 list of tags that reference the current node. This offset is a set of tag
 identifiers implemented as an array. The offset definition is borrowed from the
 <code><a href="class-COntologyTerm.html">COntologyTerm</a></code> class, which is required by this class because of its
-kOFFSET_PREDICATE offset. This offset is managed by the tag class, this
+kTAG_PREDICATE offset. This offset is managed by the tag class, this
 class locks the offset.</p>
 
 <p>The class also adds two enumerated sets that represent respectively the
@@ -280,7 +280,7 @@ the object is to be read, or if the cached copy can be used.</p>
 
 				<h4>See</h4>
 				<div class="list">
-						kOFFSET_VERTEX_SUBJECT<br />
+						kTAG_VERTEX_SUBJECT<br />
 				</div>
 				<h4>Uses</h4>
 				<div class="list">
@@ -352,7 +352,7 @@ the object is to be read, or if the cached copy can be used.</p>
 
 				<h4>See</h4>
 				<div class="list">
-						kOFFSET_PREDICATE<br />
+						kTAG_PREDICATE<br />
 				</div>
 				<h4>Uses</h4>
 				<div class="list">
@@ -424,7 +424,7 @@ the object is to be read, or if the cached copy can be used.</p>
 
 				<h4>See</h4>
 				<div class="list">
-						kOFFSET_VERTEX_OBJECT<br />
+						kTAG_VERTEX_OBJECT<br />
 				</div>
 				<h4>Uses</h4>
 				<div class="list">
@@ -542,7 +542,7 @@ the kTOKEN_INDEX_SEPARATOR token.</p>
 
 				<h4>See</h4>
 				<div class="list">
-						kOFFSET_NID kOFFSET_GID kTOKEN_INDEX_SEPARATOR<br />
+						kOFFSET_NID kTAG_LID kTOKEN_INDEX_SEPARATOR<br />
 				</div>
 				<h4>Uses</h4>
 				<div class="list">
@@ -587,7 +587,7 @@ we convert them to their native identifiers.</p>
 <p>We also ensure that the provided objects are instances of the correct classes
 by asserting <code><a href="class-CDocument.html">CDocument</a></code> descendants.</p>
 
-<p>This method will lock the kOFFSET_REFS_TAG offset from any
+<p>This method will lock the kTAG_REFS_TAG offset from any
 modification.</p>
 
 
@@ -608,8 +608,8 @@ modification.</p>
 
 				<h4>See</h4>
 				<div class="list">
-						kOFFSET_REFS_TAG<br />
-						kOFFSET_PREDICATE kOFFSET_VERTEX_OBJECT kOFFSET_VERTEX_SUBJECT<br />
+						kTAG_REFS_TAG<br />
+						kTAG_PREDICATE kTAG_VERTEX_OBJECT kTAG_VERTEX_SUBJECT<br />
 				</div>
 				<h4>Uses</h4>
 				<div class="list">
@@ -647,7 +647,7 @@ modification.</p>
 <h4>Handle offset before unsetting it</h4>
 
 <p>In this class we prevent the modification of the subject, predicate and
-object offsets if the object is committed and of the kOFFSET_REFS_TAG
+object offsets if the object is committed and of the kTAG_REFS_TAG
 offset in all cases.</p>
 
 
@@ -666,8 +666,8 @@ offset in all cases.</p>
 
 				<h4>See</h4>
 				<div class="list">
-						kOFFSET_REFS_TAG<br />
-						kOFFSET_PREDICATE kOFFSET_VERTEX_OBJECT kOFFSET_VERTEX_SUBJECT<br />
+						kTAG_REFS_TAG<br />
+						kTAG_PREDICATE kTAG_VERTEX_OBJECT kTAG_VERTEX_SUBJECT<br />
 				</div>
 				<h4>Uses</h4>
 				<div class="list">
@@ -721,7 +721,7 @@ provided as an identifier.</p>
 
 				<h4>See</h4>
 				<div class="list">
-						kOFFSET_PREDICATE kOFFSET_VERTEX_OBJECT kOFFSET_VERTEX_SUBJECT<br />
+						kTAG_PREDICATE kTAG_VERTEX_OBJECT kTAG_VERTEX_SUBJECT<br />
 				</div>
 				<h4>Uses</h4>
 				<div class="list">
@@ -760,8 +760,8 @@ provided as an identifier.</p>
 <h4>Determine the identifiers before committing</h4>
 
 <p>This method will use the result of the <code><a href="class-COntologyEdge.html#__index">COntologyEdge::_index()</a></code> method to set the
-global identifier, kOFFSET_GID; the same value will be hashed and
-constitute the unique identifier, kOFFSET_UID.</p>
+global identifier, kTAG_GID; the same value will be hashed and
+constitute the unique identifier, kTAG_UID.</p>
 
 <p>Objects of this class are identified by a sequence number tagged kSEQUENCE_KEY_EDGE, this method will set the native identifier, kOFFSET_NID, with this value.</p>
 
@@ -787,7 +787,7 @@ native identifiers, since they will have been set here.</p>
 				<h4>See</h4>
 				<div class="list">
 						kSEQUENCE_KEY_EDGE<br />
-						kOFFSET_NID kOFFSET_GID kOFFSET_UID<br />
+						kOFFSET_NID kTAG_GID kTAG_UID<br />
 						kFLAG_PERSIST_INSERT kFLAG_PERSIST_REPLACE<br />
 				</div>
 
@@ -821,8 +821,8 @@ native identifiers, since they will have been set here.</p>
 <h4>Update related objects after committing</h4>
 
 <p>In this class we add the current edge's identifier to the list of edge
-references, kOFFSET_REFS_EDGE, in the related subject and object
-vertives when inserting; we remove the element when deleting.</p>
+references, kTAG_REFS_EDGE, in the related subject and object vertives
+when inserting; we remove the element when deleting.</p>
 
 
 
@@ -838,7 +838,7 @@ vertives when inserting; we remove the element when deleting.</p>
 
 				<h4>See</h4>
 				<div class="list">
-						kOFFSET_REFS_EDGE kOFFSET_VERTEX_SUBJECT kOFFSET_VERTEX_OBJECT<br />
+						kTAG_REFS_EDGE kTAG_VERTEX_SUBJECT kTAG_VERTEX_OBJECT<br />
 						kFLAG_PERSIST_INSERT kFLAG_PERSIST_REPLACE kFLAG_PERSIST_DELETE<br />
 						kFLAG_PERSIST_MODIFY kFLAG_MODIFY_ADDSET kFLAG_MODIFY_PULL<br />
 				</div>
@@ -922,10 +922,11 @@ will have to be refreshed.</p>
 			
 <h4>Add edge reference to subject vertex</h4>
 
-<p>This method can be used to add or remove the current edge's reference, kOFFSET_REFS_EDGE, from the subject vertex node, kOFFSET_VERTEX_SUBJECT. This method should be used whenever committing a new
-edge or when deleting one: it will add the current edge's native identifier to
-the set of edge references of the edge's subject vertex when committing a new
-edge; it will remove it when deleting the edge.</p>
+<p>This method can be used to add or remove the current edge's reference, kTAG_REFS_EDGE, from the subject vertex node, kTAG_VERTEX_SUBJECT. This
+method should be used whenever committing a new edge or when deleting one: it
+will add the current edge's native identifier to the set of edge references of
+the edge's subject vertex when committing a new edge; it will remove it when
+deleting the edge.</p>
 
 <p>The last parameter is a boolean: if <tt>TRUE</tt> the method will add to the
 set; if <tt>FALSE</tt>, it will remove from the set.</p>
@@ -952,7 +953,7 @@ and raise an exception if the operation failed.</p>
 
 				<h4>See</h4>
 				<div class="list">
-						kOFFSET_VERTEX_SUBJECT kOFFSET_REFS_EDGE<br />
+						kTAG_VERTEX_SUBJECT kTAG_REFS_EDGE<br />
 						kFLAG_PERSIST_MODIFY kFLAG_MODIFY_ADDSET kFLAG_MODIFY_PULL<br />
 				</div>
 
@@ -983,10 +984,10 @@ and raise an exception if the operation failed.</p>
 			
 <h4>Add edge reference to object vertex</h4>
 
-<p>This method can be used to add or remove the current edge's reference, kOFFSET_REFS_EDGE, from the object vertex node, kOFFSET_VERTEX_OBJECT.
-This method should be used whenever committing a new edge or when deleting one:
-it will add the current edge's native identifier to the set of edge references
-of the edge's object vertex when committing a new edge; it will remove it when
+<p>This method can be used to add or remove the current edge's reference, kTAG_REFS_EDGE, from the object vertex node, kTAG_VERTEX_OBJECT. This
+method should be used whenever committing a new edge or when deleting one: it
+will add the current edge's native identifier to the set of edge references of
+the edge's object vertex when committing a new edge; it will remove it when
 deleting the edge.</p>
 
 <p>The last parameter is a boolean: if <tt>TRUE</tt> the method will add to the
@@ -1014,7 +1015,7 @@ raise an exception if the operation failed.</p>
 
 				<h4>See</h4>
 				<div class="list">
-						kOFFSET_VERTEX_OBJECT kOFFSET_REFS_EDGE<br />
+						kTAG_VERTEX_OBJECT kTAG_REFS_EDGE<br />
 						kFLAG_PERSIST_MODIFY kFLAG_MODIFY_ADDSET kFLAG_MODIFY_PULL<br />
 				</div>
 

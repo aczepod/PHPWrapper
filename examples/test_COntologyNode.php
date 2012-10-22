@@ -165,7 +165,7 @@ try
 	//
 	echo( '<h4>Instantiate namespace term</h4>' );
 	$namespace = new COntologyTerm();
-	$namespace[ kOFFSET_LID ] = "NAMESPACE";
+	$namespace[ kTAG_LID ] = "NAMESPACE";
 //	$status = $namespace->Insert( $database );
 	echo( '<pre>' ); print_r( $namespace ); echo( '</pre>' );
 	
@@ -174,8 +174,8 @@ try
 	//
 	echo( '<h4>Instantiate term A</h4>' );
 	$termA = new COntologyTerm();
-	$termA[ kOFFSET_NAMESPACE ] = $namespace;
-	$termA[ kOFFSET_LID ] = "A";
+	$termA[ kTAG_NAMESPACE ] = $namespace;
+	$termA[ kTAG_LID ] = "A";
 //	$status = $termA->Insert( $database );
 	echo( '<pre>' ); print_r( $termA ); echo( '</pre>' );
 	
@@ -184,8 +184,8 @@ try
 	//
 	echo( '<h4>Instantiate term B</h4>' );
 	$termB = new COntologyTerm();
-	$termB[ kOFFSET_NAMESPACE ] = $namespace;
-	$termB[ kOFFSET_LID ] = "B";
+	$termB[ kTAG_NAMESPACE ] = $namespace;
+	$termB[ kTAG_LID ] = "B";
 //	$status = $termB->Insert( $database );
 	echo( '<pre>' ); print_r( $termB ); echo( '</pre>' );
 	
@@ -194,8 +194,8 @@ try
 	//
 	echo( '<h4>Create term C</h4>' );
 	$termC = new COntologyTerm();
-	$termC[ kOFFSET_NAMESPACE ] = $namespace;
-	$termC[ kOFFSET_LID ] = "C";
+	$termC[ kTAG_NAMESPACE ] = $namespace;
+	$termC[ kTAG_LID ] = "C";
 	$status = $termC->Insert( $database );
 	echo( '<pre>' ); print_r( $termC ); echo( '</pre>' );
 	echo( '<hr />' );
@@ -227,8 +227,8 @@ try
 	// Insert node with term.
 	//
 	echo( '<h4>Insert node with term</h4>' );
-	echo( '<h5>$node[ kOFFSET_TERM ] = $termA;</h5>' );
-	$node[ kOFFSET_TERM ] = $termA;
+	echo( '<h5>$node[ kTAG_TERM ] = $termA;</h5>' );
+	$node[ kTAG_TERM ] = $termA;
 	echo( 'Inited['.$node->inited()
 				   .'] Dirty['.$node->dirty()
 				   .'] Saved['.$node->committed()
@@ -335,8 +335,8 @@ try
 	try
 	{
 		echo( '<h4>Insert wrong term</h4>' );
-		echo( '<h5>$node[ kOFFSET_TERM ] = "pippo";</h5>' );
-		$node[ kOFFSET_TERM ] = "pippo";
+		echo( '<h5>$node[ kTAG_TERM ] = "pippo";</h5>' );
+		$node[ kTAG_TERM ] = "pippo";
 		echo( '<h3><font color="red">Should have raised an exception</font></h3>' );
 		echo( '<pre>' ); print_r( $node ); echo( '</pre>' );
 		echo( '<hr />' );
@@ -354,8 +354,8 @@ try
 	try
 	{
 		echo( '<h4>Insert wrong term type</h4>' );
-		echo( '<h5>$node[ kOFFSET_TERM ] = $node;</h5>' );
-		$node[ kOFFSET_TERM ] = $node;
+		echo( '<h5>$node[ kTAG_TERM ] = $node;</h5>' );
+		$node[ kTAG_TERM ] = $node;
 		echo( '<h3><font color="red">Should have raised an exception</font></h3>' );
 		echo( '<pre>' ); print_r( $node ); echo( '</pre>' );
 		echo( '<hr />' );
@@ -373,8 +373,8 @@ try
 	try
 	{
 		echo( '<h4>Insert wrong kind</h4>' );
-		echo( '<h5>$node[ kOFFSET_KIND ] = "pippo";</h5>' );
-		$node[ kOFFSET_KIND ] = "pippo";
+		echo( '<h5>$node[ kTAG_KIND ] = "pippo";</h5>' );
+		$node[ kTAG_KIND ] = "pippo";
 		echo( '<h3><font color="red">Should have raised an exception</font></h3>' );
 		echo( '<pre>' ); print_r( $node ); echo( '</pre>' );
 		echo( '<hr />' );
@@ -410,8 +410,8 @@ try
 	echo( '<h4>Insert new node</h4>' );
 	echo( '<h5>$node = new MyClass();</h5>' );
 	$node = new MyClass();
-	echo( '<h5>$node[ kOFFSET_TERM ] = $termA;</h5>' );
-	$node[ kOFFSET_TERM ] = $termA;
+	echo( '<h5>$node[ kTAG_TERM ] = $termA;</h5>' );
+	$node[ kTAG_TERM ] = $termA;
 	echo( 'Inited['.$node->inited()
 				   .'] Dirty['.$node->dirty()
 				   .'] Saved['.$node->committed()
@@ -430,8 +430,8 @@ try
 	echo( '<h4>Insert another node with same term</h4>' );
 	echo( '<h5>$node = new MyClass();</h5>' );
 	$node = new MyClass();
-	echo( '<h5>$node[ kOFFSET_TERM ] = $termA;</h5>' );
-	$node[ kOFFSET_TERM ] = $termA;
+	echo( '<h5>$node[ kTAG_TERM ] = $termA;</h5>' );
+	$node[ kTAG_TERM ] = $termA;
 	echo( 'Inited['.$node->inited()
 				   .'] Dirty['.$node->dirty()
 				   .'] Saved['.$node->committed()
