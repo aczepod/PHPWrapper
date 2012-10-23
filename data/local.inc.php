@@ -36,7 +36,7 @@ define( "kDEFAULT_DATABASE",				"ONTOLOGY" );
  *
  * This tag indicates the default language code.
  */
-define( "kDEFAULT_LANGUAGE",				"eng" );
+define( "kDEFAULT_LANGUAGE",				"en" );
 
 /*=======================================================================================
  *	VERBOSE FLAG																		*

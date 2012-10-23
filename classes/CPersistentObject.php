@@ -171,7 +171,7 @@ class CPersistentObject extends CPersistentDocument
 	 */
 	public function GID( $theValue = NULL, $getOld = FALSE )
 	{
-		return ManageOffset( $this, kTAG_LID, $theValue, $getOld );					// ==>
+		return ManageOffset( $this, kTAG_GID, $theValue, $getOld );					// ==>
 
 	} // GID.
 

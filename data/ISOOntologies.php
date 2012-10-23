@@ -47,21 +47,21 @@ require_once( 'ISOOntologies.inc.php' );
 		//
 		// Create ISO term.
 		//
-		$id = kONTOLOGY_ISO;
-		$_SESSION[ 'TERMS' ][ $id ] = new COntologyTerm();
-		$_SESSION[ 'TERMS' ][ $id ]->LID( $id );
-		$_SESSION[ 'TERMS' ][ $id ]->Label( kDEFAULT_LANGUAGE, 'International Organization for Standardization' );
-		$_SESSION[ 'TERMS' ][ $id ]->Label( 'fra', 'Organisation internationale de normalisation' );
-		$_SESSION[ 'TERMS' ][ $id ]->Label( 'rus', 'Международная организация по стандартизации' );
-		$_SESSION[ 'TERMS' ][ $id ]->Description( kDEFAULT_LANGUAGE, 'Collection of industrial and commercial standards and codes.' );
-		$_SESSION[ 'TERMS' ][ $id ]->Insert( $_SESSION[ kSESSION_ONTOLOGY ]->Connection() );
-
+		$term = new COntologyTerm();
+		$term->LID( kONTOLOGY_ISO );
+		$term->Label( kDEFAULT_LANGUAGE, 'International Organization for Standardization' );
+		$term->Label( 'fr', 'Organisation internationale de normalisation' );
+		$term->Label( 'ru', 'Международная организация по стандартизации' );
+		$term->Description( kDEFAULT_LANGUAGE, 'Collection of industrial and commercial standards and codes.' );
+		$term->Insert( $_SESSION[ kSESSION_ONTOLOGY ]->Connection() );
+		$id = $term->GID();
+		$_SESSION[ 'TERMS' ][ $id ] = $term;
+		
 		//
-		// Create ISO ontology.
+		// Create ISO node.
 		//
-		$_SESSION[ 'NODES' ][ $id ]
-			= $_SESSION[ kSESSION_ONTOLOGY ]->NewRootNode(
-				$_SESSION[ 'TERMS' ][ $id ] );
+		$node = $_SESSION[ kSESSION_ONTOLOGY ]->NewRootNode( $term );
+		$_SESSION[ 'NODES' ][ $id ] = $node;
 
 		//
 		// Inform.
@@ -106,23 +106,12 @@ require_once( 'ISOOntologies.inc.php' );
 		foreach( $params as $param )
 		{
 			//
-			// Set global identifier.
-			//
-			$id = kONTOLOGY_ISO.kTOKEN_NAMESPACE_SEPARATOR.$param[ 'code' ];
-			
-			//
 			// Relate to root.
 			//
 			$_SESSION[ kSESSION_ONTOLOGY ]->SubclassOf(
-				//
-				// Create node.
-				//
-				$_SESSION[ 'NODES' ][ $id ]
+				$node
 					= $_SESSION[ kSESSION_ONTOLOGY ]->NewNode(
-						//
-						// Create term.
-						//
-						$_SESSION[ 'TERMS' ][ $id ]
+						$term
 							= $_SESSION[ kSESSION_ONTOLOGY ]->NewTerm(
 								$param[ 'code' ],		// Local identifier.
 								$namespace,				// Namespace.
@@ -130,6 +119,13 @@ require_once( 'ISOOntologies.inc.php' );
 								$param[ 'descr' ],		// Description or definition.
 								kDEFAULT_LANGUAGE ) ),	// Language.
 				$root );
+			
+			//
+			// Save references.
+			//
+			$id = $term->GID();
+			$_SESSION[ 'NODES' ][ $id ] = $node;
+			$_SESSION[ 'TERMS' ][ $id ] = $term;
 	
 			//
 			// Inform.
@@ -141,17 +137,10 @@ require_once( 'ISOOntologies.inc.php' );
 		//
 		// Set ISO 15924 trait..
 		//
-		$id = kONTOLOGY_ISO.kTOKEN_NAMESPACE_SEPARATOR.kONTOLOGY_ISO_15924;
 		$_SESSION[ kSESSION_ONTOLOGY ]->SubclassOf(
-			//
-			// Create node.
-			//
-			$_SESSION[ 'NODES' ][ $id ]
+			$node
 				= $_SESSION[ kSESSION_ONTOLOGY ]->NewScaleNode(
-					//
-					// Create term.
-					//
-					$_SESSION[ 'TERMS' ][ $id ]
+					$term
 						= $_SESSION[ kSESSION_ONTOLOGY ]->NewTerm(
 							kONTOLOGY_ISO_15924,	// Local identifier.
 							$namespace,				// Namespace.
@@ -160,6 +149,13 @@ require_once( 'ISOOntologies.inc.php' );
 							kDEFAULT_LANGUAGE ),	// Language.
 					kTYPE_ENUM ),					// Node data type.
 			$root );
+		
+		//
+		// Save references.
+		//
+		$id = $term->GID();
+		$_SESSION[ 'NODES' ][ $id ] = $node;
+		$_SESSION[ 'TERMS' ][ $id ] = $term;
 
 		//
 		// Inform.
@@ -185,7 +181,8 @@ require_once( 'ISOOntologies.inc.php' );
 		//
 		// Set part 1 and 3 categories.
 		//
-		$ns_id = kONTOLOGY_ISO.kTOKEN_NAMESPACE_SEPARATOR.kONTOLOGY_ISO_639;
+		$ns_id = implode( kTOKEN_NAMESPACE_SEPARATOR,
+						  array( kONTOLOGY_ISO, kONTOLOGY_ISO_639 ) );
 		$namespace = $_SESSION[ 'TERMS' ][ $ns_id ];
 		$category = $_SESSION[ 'NODES' ][ $ns_id ];
 		$params = array(
@@ -211,23 +208,12 @@ require_once( 'ISOOntologies.inc.php' );
 		foreach( $params as $param )
 		{
 			//
-			// Set global identifier.
-			//
-			$id = $ns_id.kTOKEN_NAMESPACE_SEPARATOR.$param[ 'code' ];
-			
-			//
 			// Relate to category.
 			//
 			$_SESSION[ kSESSION_ONTOLOGY ]->SubclassOf(
-				//
-				// Create node.
-				//
-				$_SESSION[ 'NODES' ][ $id ]
+				$node
 					= $_SESSION[ kSESSION_ONTOLOGY ]->NewScaleNode(
-						$_SESSION[ 'TERMS' ][ $id ]
-							//
-							// Create term.
-							//
+						$term
 							= $_SESSION[ kSESSION_ONTOLOGY ]->NewTerm(
 								$param[ 'code' ],		// Local identifier.
 								$namespace,				// Namespace.
@@ -236,6 +222,13 @@ require_once( 'ISOOntologies.inc.php' );
 								kDEFAULT_LANGUAGE ),	// Language.
 						kTYPE_ENUM ),					// Node data type.
 				$category );							// Object vertex node.
+			
+			//
+			// Save references.
+			//
+			$id = $term->GID();
+			$_SESSION[ 'NODES' ][ $id ] = $node;
+			$_SESSION[ 'TERMS' ][ $id ] = $term;
 	
 			//
 			// Inform.
@@ -262,7 +255,8 @@ require_once( 'ISOOntologies.inc.php' );
 		//
 		// Init data.
 		//
-		$ns_id = kONTOLOGY_ISO.kTOKEN_NAMESPACE_SEPARATOR.kONTOLOGY_ISO_639;
+		$ns_id = implode( kTOKEN_NAMESPACE_SEPARATOR,
+						  array( kONTOLOGY_ISO, kONTOLOGY_ISO_639 ) );
 		$namespace = $_SESSION[ 'TERMS' ][ $ns_id ];
 		$category = $_SESSION[ 'NODES' ][ $ns_id ];
 		$params = array(
@@ -289,23 +283,12 @@ require_once( 'ISOOntologies.inc.php' );
 		foreach( $params as $param )
 		{
 			//
-			// Set global identifier.
-			//
-			$id = $ns_id.kTOKEN_NAMESPACE_SEPARATOR.$param[ 'code' ];
-			
-			//
 			// Relate to category.
 			//
 			$_SESSION[ kSESSION_ONTOLOGY ]->SubclassOf(
-				//
-				// Create node.
-				//
-				$_SESSION[ 'NODES' ][ $id ]
+				$node
 					= $_SESSION[ kSESSION_ONTOLOGY ]->NewScaleNode(
-						$_SESSION[ 'TERMS' ][ $id ]
-							//
-							// Create term.
-							//
+						$term
 							= $_SESSION[ kSESSION_ONTOLOGY ]->NewTerm(
 								$param[ 'code' ],		// Local identifier.
 								$namespace,				// Namespace.
@@ -314,6 +297,13 @@ require_once( 'ISOOntologies.inc.php' );
 								kDEFAULT_LANGUAGE ),	// Language.
 						$param[ 'type' ] ),				// Node data type.
 				$category );							// Object vertex node.
+			
+			//
+			// Save references.
+			//
+			$id = $term->GID();
+			$_SESSION[ 'NODES' ][ $id ] = $node;
+			$_SESSION[ 'TERMS' ][ $id ] = $term;
 		
 			//
 			// Create tag.
@@ -338,9 +328,10 @@ require_once( 'ISOOntologies.inc.php' );
 		//
 		// Set scope enumerations.
 		//
-		$ns_id = implode(
-					kTOKEN_NAMESPACE_SEPARATOR,
-					array( kONTOLOGY_ISO, kONTOLOGY_ISO_639, kONTOLOGY_ISO_639_3_scope ) );
+		$ns_id = implode( kTOKEN_NAMESPACE_SEPARATOR,
+						  array( kONTOLOGY_ISO,
+						  		 kONTOLOGY_ISO_639,
+						  		 kONTOLOGY_ISO_639_3_scope ) );
 		$namespace = $_SESSION[ 'TERMS' ][ $ns_id ];
 		$trait = $_SESSION[ 'NODES' ][ $ns_id ];
 		$params = array(
@@ -369,23 +360,12 @@ require_once( 'ISOOntologies.inc.php' );
 		foreach( $params as $param )
 		{
 			//
-			// Set global identifier.
-			//
-			$id = $ns_id.kTOKEN_NAMESPACE_SEPARATOR.$param[ 'code' ];
-			
-			//
 			// Relate to category.
 			//
 			$_SESSION[ kSESSION_ONTOLOGY ]->EnumOf(
-				//
-				// Create node.
-				//
-				$_SESSION[ 'NODES' ][ $id ]
+				$node
 					= $_SESSION[ kSESSION_ONTOLOGY ]->NewEnumerationNode(
-						$_SESSION[ 'TERMS' ][ $id ]
-							//
-							// Create term.
-							//
+						$term
 							= $_SESSION[ kSESSION_ONTOLOGY ]->NewTerm(
 								$param[ 'code' ],		// Local identifier.
 								$namespace,				// Namespace.
@@ -393,6 +373,13 @@ require_once( 'ISOOntologies.inc.php' );
 								$param[ 'descr' ],		// Description or definition.
 								kDEFAULT_LANGUAGE ) ),	// Language.
 				$trait );								// Object vertex node.
+			
+			//
+			// Save references.
+			//
+			$id = $term->GID();
+			$_SESSION[ 'NODES' ][ $id ] = $node;
+			$_SESSION[ 'TERMS' ][ $id ] = $term;
 	
 			//
 			// Inform.
@@ -404,9 +391,10 @@ require_once( 'ISOOntologies.inc.php' );
 		//
 		// Set type enumerations.
 		//
-		$ns_id = implode(
-					kTOKEN_NAMESPACE_SEPARATOR,
-					array( kONTOLOGY_ISO, kONTOLOGY_ISO_639, kONTOLOGY_ISO_639_3_type ) );
+		$ns_id = implode( kTOKEN_NAMESPACE_SEPARATOR,
+						  array( kONTOLOGY_ISO,
+						  		 kONTOLOGY_ISO_639,
+						  		 kONTOLOGY_ISO_639_3_type ) );
 		$namespace = $_SESSION[ 'TERMS' ][ $ns_id ];
 		$trait = $_SESSION[ 'NODES' ][ $ns_id ];
 		$params = array(
@@ -444,23 +432,12 @@ require_once( 'ISOOntologies.inc.php' );
 		foreach( $params as $param )
 		{
 			//
-			// Set global identifier.
-			//
-			$id = $ns_id.kTOKEN_NAMESPACE_SEPARATOR.$param[ 'code' ];
-			
-			//
 			// Relate to category.
 			//
 			$_SESSION[ kSESSION_ONTOLOGY ]->EnumOf(
-				//
-				// Create node.
-				//
-				$_SESSION[ 'NODES' ][ $id ]
+				$node
 					= $_SESSION[ kSESSION_ONTOLOGY ]->NewEnumerationNode(
-						//
-						// Create term.
-						//
-						$_SESSION[ 'TERMS' ][ $id ]
+						$term
 							= $_SESSION[ kSESSION_ONTOLOGY ]->NewTerm(
 								$param[ 'code' ],		// Local identifier.
 								$namespace,				// Namespace.
@@ -468,6 +445,13 @@ require_once( 'ISOOntologies.inc.php' );
 								$param[ 'descr' ],		// Description or definition.
 								kDEFAULT_LANGUAGE ) ),	// Language.
 				$trait );
+			
+			//
+			// Save references.
+			//
+			$id = $term->GID();
+			$_SESSION[ 'NODES' ][ $id ] = $node;
+			$_SESSION[ 'TERMS' ][ $id ] = $term;
 	
 			//
 			// Inform.
@@ -494,7 +478,9 @@ require_once( 'ISOOntologies.inc.php' );
 		//
 		// Set part 1, 2 and 3 categories.
 		//
-		$ns_id = kONTOLOGY_ISO.kTOKEN_NAMESPACE_SEPARATOR.kONTOLOGY_ISO_3166;
+		$ns_id = implode( kTOKEN_NAMESPACE_SEPARATOR,
+						  array( kONTOLOGY_ISO,
+						  		 kONTOLOGY_ISO_3166 ) );
 		$namespace = $_SESSION[ 'TERMS' ][ $ns_id ];
 		$category = $_SESSION[ 'NODES' ][ $ns_id ];
 		$params = array(
@@ -511,23 +497,12 @@ require_once( 'ISOOntologies.inc.php' );
 		foreach( $params as $param )
 		{
 			//
-			// Set global identifier.
-			//
-			$id = $ns_id.kTOKEN_NAMESPACE_SEPARATOR.$param[ 'code' ];
-			
-			//
 			// Relate to category.
 			//
 			$_SESSION[ kSESSION_ONTOLOGY ]->SubclassOf(
-				//
-				// Create node.
-				//
-				$_SESSION[ 'NODES' ][ $id ]
+				$node
 					= $_SESSION[ kSESSION_ONTOLOGY ]->NewScaleNode(
-						$_SESSION[ 'TERMS' ][ $id ]
-							//
-							// Create term.
-							//
+						$term
 							= $_SESSION[ kSESSION_ONTOLOGY ]->NewTerm(
 								$param[ 'code' ],		// Local identifier.
 								$namespace,				// Namespace.
@@ -536,6 +511,13 @@ require_once( 'ISOOntologies.inc.php' );
 								kDEFAULT_LANGUAGE ),	// Language.
 						kTYPE_ENUM ),					// Node data type.
 				$category );							// Object vertex node.
+			
+			//
+			// Save references.
+			//
+			$id = $term->GID();
+			$_SESSION[ 'NODES' ][ $id ] = $node;
+			$_SESSION[ 'TERMS' ][ $id ] = $term;
 	
 			//
 			// Inform.
@@ -547,17 +529,10 @@ require_once( 'ISOOntologies.inc.php' );
 		//
 		// Set part 1 category.
 		//
-		$id = $ns_id.kTOKEN_NAMESPACE_SEPARATOR.kONTOLOGY_ISO_3166_1;
 		$_SESSION[ kSESSION_ONTOLOGY ]->SubclassOf(
-			//
-			// Create node.
-			//
-			$_SESSION[ 'NODES' ][ $id ]
+			$node
 				= $_SESSION[ kSESSION_ONTOLOGY ]->NewNode(
-					$_SESSION[ 'TERMS' ][ $id ]
-						//
-						// Create term.
-						//
+					$term
 						= $_SESSION[ kSESSION_ONTOLOGY ]->NewTerm(
 							kONTOLOGY_ISO_3166_1,	// Local identifier.
 							$namespace,				// Namespace.
@@ -565,6 +540,13 @@ require_once( 'ISOOntologies.inc.php' );
 							"Country codes, defines codes for the names of countries, dependent territories, and special areas of geographical interest.",
 							kDEFAULT_LANGUAGE ) ),	// Language.
 			$category );							// Object vertex node.
+		
+		//
+		// Save references.
+		//
+		$id = $term->GID();
+		$_SESSION[ 'NODES' ][ $id ] = $node;
+		$_SESSION[ 'TERMS' ][ $id ] = $term;
 
 		//
 		// Inform.
@@ -595,23 +577,12 @@ require_once( 'ISOOntologies.inc.php' );
 		foreach( $params as $param )
 		{
 			//
-			// Set global identifier.
-			//
-			$id = $ns_id.kTOKEN_NAMESPACE_SEPARATOR.$param[ 'code' ];
-			
-			//
 			// Relate to category.
 			//
 			$_SESSION[ kSESSION_ONTOLOGY ]->SubclassOf(
-				//
-				// Create node.
-				//
-				$_SESSION[ 'NODES' ][ $id ]
+				$node
 					= $_SESSION[ kSESSION_ONTOLOGY ]->NewScaleNode(
-						$_SESSION[ 'TERMS' ][ $id ]
-							//
-							// Create term.
-							//
+						$term
 							= $_SESSION[ kSESSION_ONTOLOGY ]->NewTerm(
 								$param[ 'code' ],		// Local identifier.
 								$namespace,				// Namespace.
@@ -620,6 +591,13 @@ require_once( 'ISOOntologies.inc.php' );
 								kDEFAULT_LANGUAGE ),	// Language.
 						kTYPE_ENUM ),					// Node data type.
 				$category );							// Object vertex node.
+			
+			//
+			// Save references.
+			//
+			$id = $term->GID();
+			$_SESSION[ 'NODES' ][ $id ] = $node;
+			$_SESSION[ 'TERMS' ][ $id ] = $term;
 	
 			//
 			// Inform.

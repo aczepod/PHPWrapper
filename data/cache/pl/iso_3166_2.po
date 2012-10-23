@@ -3,8 +3,8 @@ msgstr ""
 "Project-Id-Version: iso_3166_2\n"
 "Report-Msgid-Bugs-To: Debian iso-codes team <pkg-isocodes-devel@lists.alioth."
 "debian.org>\n"
-"POT-Creation-Date: 2012-04-09 14:32+0200\n"
-"PO-Revision-Date: 2012-06-05 19:05+0200\n"
+"POT-Creation-Date: 2012-08-25 16:22+0200\n"
+"PO-Revision-Date: 2012-07-01 08:15+0200\n"
 "Last-Translator: Jakub Bogusz <qboosh@pld-linux.org>\n"
 "Language-Team: Polish <translation-team-pl@lists.sourceforge.net>\n"
 "Language: pl\n"
@@ -335,6 +335,9 @@ msgstr "Al-Karak"
 
 msgid "Al Kharţūm"
 msgstr "Chartum"
+
+msgid "Al Khawr wa adh Dhakhīrah"
+msgstr "Al-Chaur"
 
 msgid "Al Kufrah"
 msgstr "Al-Kufra"
@@ -3360,9 +3363,6 @@ msgstr "Dajkondi"
 msgid "Děčín"
 msgstr "Děčín"
 
-msgid "Dəvəçi"
-msgstr "Deweczi"
-
 msgid "Ealing"
 msgstr "Ealing"
 
@@ -4421,9 +4421,6 @@ msgstr "Hatay"
 
 msgid "Hatobohei"
 msgstr "Hatobohei"
-
-msgid "Haut-Congo"
-msgstr "Tshopo"
 
 msgid "Haut-Mbomou"
 msgstr "Haut-Mbomou"
@@ -8088,9 +8085,6 @@ msgstr "Newry and Mourne"
 msgid "Newtownabbey"
 msgstr "Newtownabbey"
 
-msgid "Ngamiland"
-msgstr "Ngamiland"
-
 msgid "Ngaraard"
 msgstr "Ngaraard"
 
@@ -8321,9 +8315,6 @@ msgstr "Północno-Wschodni"
 
 msgid "North-Eastern Kaskazini Mashariki"
 msgstr "Prowincja Północno-Wschodnia"
-
-msgid "North-West (Botswana)"
-msgstr "Północno-Zachodni"
 
 msgid "North-West (Cameroon)"
 msgstr "Północno-Zachodnia"
@@ -11147,9 +11138,6 @@ msgstr "Southampton"
 
 msgid "Southend-on-Sea"
 msgstr "Southend-on-Sea"
-
-msgid "Southern (Botswana)"
-msgstr "Południowy"
 
 msgid "Southern (Sierra Leone)"
 msgstr "Prowincja Południowa"

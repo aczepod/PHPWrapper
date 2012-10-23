@@ -4,7 +4,7 @@ msgstr ""
 "Report-Msgid-Bugs-To: Debian iso-codes team <pkg-isocodes-devel@lists.alioth."
 "debian.org>\n"
 "POT-Creation-Date: 2010-03-31 08:26+0200\n"
-"PO-Revision-Date: 2010-06-23 21:38+0200\n"
+"PO-Revision-Date: 2010-06-30 12:38+0200\n"
 "Last-Translator: Freek de Kruijf <f.de.kruijf@gmail.com>\n"
 "Language-Team: Dutch <vertaling@vrijschrift.org>\n"
 "Language: nl\n"
@@ -275,7 +275,7 @@ msgstr "Choctaw"
 msgid ""
 "Church Slavic; Old Slavonic; Church Slavonic; Old Bulgarian; Old Church "
 "Slavonic"
-msgstr "Kerk-Slavisch; Oud Slavisch; Oud Bulgaars; Oud Kerk-Slavisch"
+msgstr "Kerkslavisch; Oud-Slavisch; Oud-Bulgaars; Oud-Kerkslavisch"
 
 msgid "Chuukese"
 msgstr "Tsjoekees"
@@ -392,7 +392,7 @@ msgid "English, Middle (1100-1500)"
 msgstr "Engels, Middel (1100-1500)"
 
 msgid "English, Old (ca. 450-1100)"
-msgstr "Engels, Oud (ca.450-1100)"
+msgstr "Engels, Oud (ca. 450-1100)"
 
 msgid "Erzya"
 msgstr "Erzya"
@@ -437,10 +437,10 @@ msgid "French"
 msgstr "Frans"
 
 msgid "French, Middle (ca. 1400-1600)"
-msgstr "Frans, Middel (ca.1400-1600)"
+msgstr "Frans, Middel (ca. 1400-1600)"
 
 msgid "French, Old (842-ca. 1400)"
-msgstr "Frans, Oud (842-ca.1400)"
+msgstr "Frans, Oud (842-ca. 1400)"
 
 msgid "Friulian"
 msgstr "Friulisch"
@@ -479,10 +479,10 @@ msgid "German"
 msgstr "Duits"
 
 msgid "German, Middle High (ca. 1050-1500)"
-msgstr "Duits, Middel Hoog (ca.1050-1500)"
+msgstr "Duits, Middel Hoog (ca. 1050-1500)"
 
 msgid "German, Old High (ca. 750-1050)"
-msgstr "Duits, Oud Hoog (ca.750-1050)"
+msgstr "Duits, Oud Hoog (ca. 750-1050)"
 
 msgid "Germanic languages"
 msgstr "Germaanse talen"
@@ -506,7 +506,7 @@ msgid "Greek, Ancient (to 1453)"
 msgstr "Grieks, Oud (tot 1453)"
 
 msgid "Greek, Modern (1453-)"
-msgstr "Grieks, Modern (1453-)"
+msgstr "Grieks, Modern (vanaf 1453)"
 
 msgid "Guarani"
 msgstr "Guarani"
@@ -689,7 +689,7 @@ msgid "Khoisan languages"
 msgstr "Khoisan-talen"
 
 msgid "Khotanese;Sakan"
-msgstr "Khotanees;Sakan"
+msgstr "Khotanees; Sakan"
 
 msgid "Kikuyu; Gikuyu"
 msgstr "Kikuyu; Gikuyu"
@@ -1005,7 +1005,7 @@ msgstr "Occitaans (na 1500)"
 
 msgid "Official Aramaic (700-300 BCE); Imperial Aramaic (700-300 BCE)"
 msgstr ""
-"Officiëel Aramees (700-300 v.Chr.); Keizerlijk Aramees (700-300 v.Chr.)"
+"Officieel Aramees (700-300 v.Chr.); Keizerlijk Aramees (700-300 v.Chr.)"
 
 msgid "Ojibwa"
 msgstr "Ojibwa"
@@ -1056,7 +1056,7 @@ msgid "Persian"
 msgstr "Perzisch"
 
 msgid "Persian, Old (ca. 600-400 B.C.)"
-msgstr "Oud Perzisch (ca.600-400 B.C.)"
+msgstr "Oud Perzisch (ca. 600-400 v.Chr.)"
 
 msgid "Philippine languages"
 msgstr "Filipijnse talen"

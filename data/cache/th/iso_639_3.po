@@ -4,7 +4,7 @@ msgstr ""
 "Report-Msgid-Bugs-To: Debian iso-codes team <pkg-isocodes-devel@lists.alioth."
 "debian.org>\n"
 "POT-Creation-Date: 2012-06-26 09:55+0200\n"
-"PO-Revision-Date: 2011-01-28 19:19+0700\n"
+"PO-Revision-Date: 2012-09-23 20:47+0700\n"
 "Last-Translator: Theppitak Karoonboonyanan <thep@linux.thai.net>\n"
 "Language-Team: Thai <thai-l10n@googlegroups.com>\n"
 "Language: th\n"
@@ -194,6 +194,9 @@ msgstr "ภาษามือคาตะลาน"
 
 msgid "Chadian Sign Language"
 msgstr "ภาษามือชาด"
+
+msgid "Chakma"
+msgstr "จักมา"
 
 msgid "Cham, Eastern"
 msgstr "จามตะวันออก"
@@ -819,6 +822,9 @@ msgstr "มารวารี (อินเดีย)"
 msgid "Mauritian Sign Language"
 msgstr "ภาษามือมอริเชียส"
 
+msgid "Meroitic"
+msgstr "เมโรอิติก"
+
 msgid "Mexican Sign Language"
 msgstr "ภาษามือเม็กซิโก"
 
@@ -1029,6 +1035,9 @@ msgstr "คิวชัวแบบฉบับ"
 msgid "Rakhine"
 msgstr "ยะไข่"
 
+msgid "Rejang"
+msgstr "เรอจัง"
+
 msgid "Romanian"
 msgstr "โรมาเนีย"
 
@@ -1128,6 +1137,9 @@ msgstr "โซมาลี"
 msgid "Songa"
 msgstr "ซองกา"
 
+msgid "Sora"
+msgstr "โสรา"
+
 msgid "Sotho, Northern"
 msgstr "เซโสโทเหนือ"
 
@@ -1148,6 +1160,9 @@ msgstr "สเปนโบราณ"
 
 msgid "Sri Lankan Sign Language"
 msgstr "ภาษามือศรีลังกา"
+
+msgid "Sudanese Arabic"
+msgstr "อารบิกซูดาน"
 
 msgid "Sumerian"
 msgstr "สุเมเรีย"

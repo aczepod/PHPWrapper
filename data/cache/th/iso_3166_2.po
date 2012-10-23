@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: iso_3166_2\n"
 "Report-Msgid-Bugs-To: Debian iso-codes team <pkg-isocodes-devel@lists.alioth."
 "debian.org>\n"
-"POT-Creation-Date: 2012-04-09 14:32+0200\n"
+"POT-Creation-Date: 2012-08-25 16:22+0200\n"
 "PO-Revision-Date: 2009-01-13 14:52+0700\n"
 "Last-Translator: Theppitak Karoonboonyanan <thep@linux.thai.net>\n"
 "Language-Team: Thai <thai-l10n@googlegroups.com>\n"
@@ -1212,9 +1212,6 @@ msgstr "ตะวันตกเฉียงเหนือ"
 msgid "North-East"
 msgstr "ภาคตะวันออกเฉียงเหนือ"
 
-msgid "North-West (Botswana)"
-msgstr "ภาคตะวันตกเฉียงเหนือ (บอตสวานา)"
-
 msgid "North-West (Cameroon)"
 msgstr "ภาคตะวันตกเฉียงเหนือ (แคเมอรูน)"
 
@@ -1772,9 +1769,6 @@ msgstr "ภาคตะวันตกเฉียงใต้"
 
 msgid "Southampton"
 msgstr "เซาแธมป์ตัน"
-
-msgid "Southern (Botswana)"
-msgstr "ภาคใต้ (บอตสวานา)"
 
 msgid "Southern (Sierra Leone)"
 msgstr "เขตใต้ (เซียร์ราลีโอน)"

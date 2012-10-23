@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: iso_3166_2\n"
 "Report-Msgid-Bugs-To: Debian iso-codes team <pkg-isocodes-devel@lists.alioth."
 "debian.org>\n"
-"POT-Creation-Date: 2012-04-09 14:32+0200\n"
+"POT-Creation-Date: 2012-08-25 16:22+0200\n"
 "PO-Revision-Date: 2009-06-27 18:21+0800\n"
 "Last-Translator: LI Daobing <lidaobing@gmail.com>\n"
 "Language-Team: Chinese (simplified) <translation-team-zh-cn@lists."
@@ -2992,9 +2992,6 @@ msgstr "哈塔伊"
 msgid "Hatobohei"
 msgstr "哈托博海伊"
 
-msgid "Haut-Congo"
-msgstr "上刚果"
-
 msgid "Haut-Mbomou"
 msgstr "上姆博穆"
 
@@ -5536,9 +5533,6 @@ msgstr "纽里-莫恩"
 msgid "Newtownabbey"
 msgstr "纽敦阿比"
 
-msgid "Ngamiland"
-msgstr "恩加米兰"
-
 msgid "Ngaraard"
 msgstr "雅拉尔德"
 
@@ -5727,9 +5721,6 @@ msgstr "东北"
 
 msgid "North-Eastern Kaskazini Mashariki"
 msgstr "东北省"
-
-msgid "North-West (Botswana)"
-msgstr "西北"
 
 msgid "North-West (Cameroon)"
 msgstr "西北"

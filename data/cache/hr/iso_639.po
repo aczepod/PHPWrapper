@@ -4,7 +4,7 @@ msgstr ""
 "Report-Msgid-Bugs-To: Debian iso-codes team <pkg-isocodes-devel@lists.alioth."
 "debian.org>\n"
 "POT-Creation-Date: 2010-03-31 08:26+0200\n"
-"PO-Revision-Date: 2012-04-10 23:33+0200\n"
+"PO-Revision-Date: 2012-07-01 15:21+0200\n"
 "Last-Translator: Tomislav Krznar <tomislav.krznar@gmail.com>\n"
 "Language-Team: Croatian <lokalizacija@linux.hr>\n"
 "Language: hr\n"
@@ -79,7 +79,7 @@ msgid "Aymara"
 msgstr "ajmarski"
 
 msgid "Azerbaijani"
-msgstr "azerski"
+msgstr "azerbejdžanski"
 
 msgid "Balinese"
 msgstr "balijski"
@@ -92,9 +92,6 @@ msgstr "baločijski"
 
 msgid "Bambara"
 msgstr "bambarski"
-
-msgid "Basa"
-msgstr "basaa"
 
 msgid "Bashkir"
 msgstr "baškirski"
@@ -129,6 +126,9 @@ msgstr "bretonski"
 msgid "Bulgarian"
 msgstr "bugarski"
 
+msgid "Buriat"
+msgstr "burijatski"
+
 msgid "Burmese"
 msgstr "burmanski"
 
@@ -143,9 +143,6 @@ msgstr "srednjoamerički indijanski jezici"
 
 msgid "Central Khmer"
 msgstr "kmerski"
-
-msgid "Chamorro"
-msgstr "chamorro"
 
 msgid "Chechen"
 msgstr "čečenski"
@@ -176,23 +173,14 @@ msgstr "hrvatski"
 msgid "Czech"
 msgstr "češki"
 
-msgid "Dakota"
-msgstr "dakota"
-
 msgid "Danish"
 msgstr "danski"
 
-msgid "Dargwa"
-msgstr "darginski"
-
 msgid "Divehi; Dhivehi; Maldivian"
-msgstr "divehi"
+msgstr "divehi; maldivski"
 
 msgid "Dutch; Flemish"
 msgstr "nizozemski; flamanski"
-
-msgid "Dzongkha"
-msgstr "dzongkha"
 
 msgid "Eastern Frisian"
 msgstr "istočnofrizijski"
@@ -211,12 +199,6 @@ msgstr "esperanto"
 
 msgid "Estonian"
 msgstr "estonski"
-
-msgid "Ewe"
-msgstr "ewe"
-
-msgid "Fang"
-msgstr "fang bantu"
 
 msgid "Fanti"
 msgstr "fantijski"
@@ -245,9 +227,6 @@ msgstr "friulski"
 msgid "Fulah"
 msgstr "fulanski"
 
-msgid "Ga"
-msgstr "ga"
-
 msgid "Gaelic; Scottish Gaelic"
 msgstr "škotski gaelski"
 
@@ -264,7 +243,10 @@ msgid "German"
 msgstr "njemački"
 
 msgid "German, Middle High (ca. 1050-1500)"
-msgstr "srednjovisokonjemački (cca 1050.-1500.)"
+msgstr "srednjovisokonjemački (cca. 1050.-1500.)"
+
+msgid "German, Old High (ca. 750-1050)"
+msgstr "starovisokonjemački (cca. 750.-1050.)"
 
 msgid "Germanic languages"
 msgstr "germanski jezici"
@@ -274,9 +256,6 @@ msgstr "starogrčki (do 1453.)"
 
 msgid "Greek, Modern (1453-)"
 msgstr "novogrčki (od 1453.)"
-
-msgid "Guarani"
-msgstr "guaraní"
 
 msgid "Gujarati"
 msgstr "gudžaratski"
@@ -296,14 +275,8 @@ msgstr "havajski"
 msgid "Hebrew"
 msgstr "hebrejski"
 
-msgid "Herero"
-msgstr "herero"
-
 msgid "Hindi"
 msgstr "hindski"
-
-msgid "Hiri Motu"
-msgstr "hiri motu"
 
 msgid "Hungarian"
 msgstr "mađarski"
@@ -313,9 +286,6 @@ msgstr "islandski"
 
 msgid "Ido"
 msgstr "ido"
-
-msgid "Igbo"
-msgstr "igbo"
 
 msgid "Indic languages"
 msgstr "indijski jezici"
@@ -328,12 +298,6 @@ msgstr "indonezijski"
 
 msgid "Interlingua (International Auxiliary Language Association)"
 msgstr "interlingua"
-
-msgid "Interlingue; Occidental"
-msgstr "interlingue; okcidentalni"
-
-msgid "Inupiaq"
-msgstr "Inupiaq"
 
 msgid "Iranian languages"
 msgstr "iranski jezici"
@@ -362,17 +326,11 @@ msgstr "judeoperzijski"
 msgid "Kabyle"
 msgstr "kabilski"
 
-msgid "Kachin; Jingpho"
-msgstr "jingpho"
-
 msgid "Kalaallisut; Greenlandic"
 msgstr "grenlandski"
 
 msgid "Kamba"
 msgstr "kamba"
-
-msgid "Kannada"
-msgstr "kannada"
 
 msgid "Kanuri"
 msgstr "kanurski"
@@ -386,17 +344,11 @@ msgstr "kašmirski"
 msgid "Kazakh"
 msgstr "kazaški"
 
-msgid "Kikuyu; Gikuyu"
-msgstr "kikuyu"
-
 msgid "Kirghiz; Kyrgyz"
-msgstr "kirgiski"
+msgstr "kirgiški"
 
-msgid "Komi"
-msgstr "komi"
-
-msgid "Kongo"
-msgstr "kongo"
+msgid "Klingon; tlhIngan-Hol"
+msgstr "klingonski"
 
 msgid "Korean"
 msgstr "korejski"
@@ -422,9 +374,6 @@ msgstr "lingala"
 msgid "Lithuanian"
 msgstr "litavski"
 
-msgid "Lojban"
-msgstr "lojban"
-
 msgid "Luxembourgish; Letzeburgesch"
 msgstr "luksemburški"
 
@@ -442,9 +391,6 @@ msgstr "maithili"
 
 msgid "Makasar"
 msgstr "makasarski"
-
-msgid "Malagasy"
-msgstr "malgaški"
 
 msgid "Malay"
 msgstr "malajski"
@@ -470,6 +416,9 @@ msgstr "maršalski"
 msgid "Masai"
 msgstr "masai"
 
+msgid "Mayan languages"
+msgstr "majanski jezici"
+
 msgid "Mirandese"
 msgstr "mirandski"
 
@@ -489,7 +438,7 @@ msgid "Ndonga"
 msgstr "ndonga"
 
 msgid "Neapolitan"
-msgstr "napolitansko-kalabrijski"
+msgstr "napolitanski"
 
 msgid "Nepali"
 msgstr "nepalski"
@@ -515,26 +464,21 @@ msgstr "nubijski jezici"
 msgid "Occitan (post 1500)"
 msgstr "okcitanski (nakon 1500.)"
 
+msgid "Official Aramaic (700-300 BCE); Imperial Aramaic (700-300 BCE)"
+msgstr ""
+"službeni aramejski (700.-300. pr. Kr.); carski aramejski (700.-300. pr. Kr.)"
+
 msgid "Ossetian; Ossetic"
 msgstr "osetski"
 
 msgid "Palauan"
 msgstr "palauski"
 
-msgid "Pali"
-msgstr "pāli"
-
-msgid "Pampanga; Kapampangan"
-msgstr "pampango"
-
 msgid "Pangasinan"
 msgstr "pangasinanski"
 
 msgid "Panjabi; Punjabi"
 msgstr "istočnopandžapski"
-
-msgid "Papiamento"
-msgstr "papiamentu"
 
 msgid "Papuan languages"
 msgstr "papuanski jezici"
@@ -543,16 +487,22 @@ msgid "Persian"
 msgstr "perzijski"
 
 msgid "Persian, Old (ca. 600-400 B.C.)"
-msgstr "staroperzijski (cca 600.-400. pr. Kr.)"
+msgstr "staroperzijski (cca. 600.-400. pr. Kr.)"
 
 msgid "Philippine languages"
 msgstr "filipinski jezici"
+
+msgid "Phoenician"
+msgstr "fenički"
 
 msgid "Polish"
 msgstr "poljski"
 
 msgid "Portuguese"
 msgstr "portugalski"
+
+msgid "Prakrit languages"
+msgstr "prakritski jezici"
 
 msgid "Pushto; Pashto"
 msgstr "paštunski"
@@ -562,9 +512,6 @@ msgstr "kečuanski"
 
 msgid "Rajasthani"
 msgstr "radžastanski"
-
-msgid "Rapanui"
-msgstr "rapa nui"
 
 msgid "Rarotongan; Cook Islands Maori"
 msgstr "rarotonški"
@@ -592,6 +539,9 @@ msgstr "samoanski"
 
 msgid "Sanskrit"
 msgstr "sanskrt"
+
+msgid "Semitic languages"
+msgstr "semitski jezici"
 
 msgid "Serbian"
 msgstr "srpski"
@@ -630,7 +580,7 @@ msgid "Swedish"
 msgstr "švedski"
 
 msgid "Swiss German; Alemannic; Alsatian"
-msgstr "alemanski"
+msgstr "švicarski njemački; alemanski"
 
 msgid "Tahitian"
 msgstr "tahićanski"
@@ -648,7 +598,7 @@ msgid "Telugu"
 msgstr "teluški"
 
 msgid "Tibetan"
-msgstr "srednjotibetski"
+msgstr "tibetski"
 
 msgid "Turkish"
 msgstr "turski"
@@ -679,6 +629,12 @@ msgstr "uzbečki"
 
 msgid "Vietnamese"
 msgstr "vijetnamski"
+
+msgid "Wakashan languages"
+msgstr "vakašanski jezici"
+
+msgid "Walloon"
+msgstr "valonski"
 
 msgid "Welsh"
 msgstr "velški"

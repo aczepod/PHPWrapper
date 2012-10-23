@@ -79,4 +79,15 @@ define( "kINSTANCE_NODE_KINDS",					':INSTANCE-NODE-KIND' );
  */
 define( "kINSTANCE_DATA_TYPES",					':INSTANCE-DATA-TYPE' );
 
+/*=======================================================================================
+ *	DEFAULT ONTOLOGY ATTRIBUTES															*
+ *======================================================================================*/
+
+/**
+ * Attributes.
+ *
+ * This tag collects all default attributes.
+ */
+define( "kDEFAULT_ATTRIBUTES",					':DEFAULT-ATTRIBUTES' );
+
 ?>

@@ -400,7 +400,7 @@ class COntology extends CConnection
 								COntologyTerm::_id(
 									COntologyTerm::TermCode(
 										$theIdentifier,
-										$theNamespace->offsetGet( kTAG_LID ) ),
+										$theNamespace->offsetGet( kTAG_GID ) ),
 									$this->Connection() ) );
 					if( $term !== NULL )
 						return $term;												// ==>
@@ -2451,7 +2451,7 @@ class COntology extends CConnection
 	 *==================================================================================*/
 
 	/**
-	 * <h4>Initialise default instances</h4>
+	 * <h4>Initialise default predicate instances</h4>
 	 *
 	 * This method will create all the default instance root nodes of the ontology.
 	 *
@@ -2509,7 +2509,7 @@ class COntology extends CConnection
 	 *==================================================================================*/
 
 	/**
-	 * <h4>Initialise default instances</h4>
+	 * <h4>Initialise default node kind instances</h4>
 	 *
 	 * This method will create all the default instance root nodes of the ontology.
 	 *
@@ -2565,7 +2565,7 @@ class COntology extends CConnection
 	 *==================================================================================*/
 
 	/**
-	 * <h4>Initialise default instances</h4>
+	 * <h4>Initialise default data type instances</h4>
 	 *
 	 * This method will create all the default instance root nodes of the ontology.
 	 *

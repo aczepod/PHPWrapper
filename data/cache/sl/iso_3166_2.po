@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: iso_3166_2\n"
 "Report-Msgid-Bugs-To: Debian iso-codes team <pkg-isocodes-devel@lists.alioth."
 "debian.org>\n"
-"POT-Creation-Date: 2012-04-09 14:32+0200\n"
+"POT-Creation-Date: 2012-08-25 16:22+0200\n"
 "PO-Revision-Date: 2011-08-14 23:02+0200\n"
 "Last-Translator:  Primož Peterlin <primozz.peterlin@gmail.com>\n"
 "Language-Team: Slovenian <translation-team-sl@lists.sourceforge.net>\n"
@@ -2046,9 +2046,6 @@ msgstr "Has"
 msgid "Haskovo"
 msgstr "Haskovo"
 
-msgid "Haut-Congo"
-msgstr "Zgornji Kongo"
-
 msgid "Haut-Mbomou"
 msgstr "Haut-Mbomou"
 
@@ -3828,9 +3825,6 @@ msgstr "Newry and Mourne"
 msgid "Newtownabbey"
 msgstr "Newtownabbey"
 
-msgid "Ngamiland"
-msgstr "Ngamiland"
-
 msgid "Ngozi"
 msgstr "Ngozi"
 
@@ -3929,9 +3923,6 @@ msgstr "North Yorkshire"
 
 msgid "North-East"
 msgstr "North-East"
-
-msgid "North-West (Botswana)"
-msgstr "North-West (Botswana)"
 
 msgid "North-West (Cameroon)"
 msgstr "North-West (Cameroon)"
@@ -5372,9 +5363,6 @@ msgstr "Southampton"
 
 msgid "Southend-on-Sea"
 msgstr "Southend-on-Sea"
-
-msgid "Southern (Botswana)"
-msgstr "Southern (Botswana)"
 
 msgid "Southern (Sierra Leone)"
 msgstr "Southern (Sierra Leone)"

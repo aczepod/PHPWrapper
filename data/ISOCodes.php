@@ -232,12 +232,14 @@ $_SESSION[ kISO_FILE_PO_DIR ] = '/Library/WebServer/Library/PHPWrapper/data/cach
 			$scope_code
 				= implode(
 					kTOKEN_NAMESPACE_SEPARATOR,
-					array( kONTOLOGY_ISO, kONTOLOGY_ISO_639,
+					array( kONTOLOGY_ISO,
+						   kONTOLOGY_ISO_639,
 						   kONTOLOGY_ISO_639_3_scope ) );
 			$type_code
 				= implode(
 					kTOKEN_NAMESPACE_SEPARATOR,
-					array( kONTOLOGY_ISO, kONTOLOGY_ISO_639,
+					array( kONTOLOGY_ISO,
+						   kONTOLOGY_ISO_639,
 						   kONTOLOGY_ISO_639_3_type ) );
 			
 			//
@@ -247,21 +249,36 @@ $_SESSION[ kISO_FILE_PO_DIR ] = '/Library/WebServer/Library/PHPWrapper/data/cach
 				= $_SESSION[ kSESSION_ONTOLOGY ]->ResolveTerm(
 					implode(
 						kTOKEN_NAMESPACE_SEPARATOR,
-						array( kONTOLOGY_ISO, kONTOLOGY_ISO_639, kONTOLOGY_ISO_639_1 ) ),
+						array( kONTOLOGY_ISO,
+							   kONTOLOGY_ISO_639,
+							   kONTOLOGY_ISO_639_1 ) ),
 					NULL,
 					TRUE );
 			$part2_ns
 				= $_SESSION[ kSESSION_ONTOLOGY ]->ResolveTerm(
 					implode(
 						kTOKEN_NAMESPACE_SEPARATOR,
-						array( kONTOLOGY_ISO, kONTOLOGY_ISO_639, kONTOLOGY_ISO_639_2 ) ),
+						array( kONTOLOGY_ISO,
+							   kONTOLOGY_ISO_639,
+							   kONTOLOGY_ISO_639_2 ) ),
 					NULL,
 					TRUE );
 			$part3_ns
 				= $_SESSION[ kSESSION_ONTOLOGY ]->ResolveTerm(
 					implode(
 						kTOKEN_NAMESPACE_SEPARATOR,
-						array( kONTOLOGY_ISO, kONTOLOGY_ISO_639, kONTOLOGY_ISO_639_3 ) ),
+						array( kONTOLOGY_ISO,
+							   kONTOLOGY_ISO_639,
+							   kONTOLOGY_ISO_639_3 ) ),
+					NULL,
+					TRUE );
+			
+			//
+			// Load predicates.
+			//
+			$pred_xref_exact
+				= $_SESSION[ kSESSION_ONTOLOGY ]->ResolveTerm(
+					kPREDICATE_XREF_EXACT,
 					NULL,
 					TRUE );
 			
@@ -269,17 +286,11 @@ $_SESSION[ kISO_FILE_PO_DIR ] = '/Library/WebServer/Library/PHPWrapper/data/cach
 			// Load parent nodes.
 			//
 			$part1_parent
-				= $_SESSION[ kSESSION_ONTOLOGY ]->ResolveNode(
-					$part1_ns,
-					TRUE )[ 0 ];
+				= $_SESSION[ kSESSION_ONTOLOGY ]->ResolveNode( $part1_ns, TRUE )[ 0 ];
 			$part2_parent
-				= $_SESSION[ kSESSION_ONTOLOGY ]->ResolveNode(
-					$part2_ns,
-					TRUE )[ 0 ];
+				= $_SESSION[ kSESSION_ONTOLOGY ]->ResolveNode( $part2_ns, TRUE )[ 0 ];
 			$part3_parent
-				= $_SESSION[ kSESSION_ONTOLOGY ]->ResolveNode(
-					$part3_ns,
-					TRUE )[ 0 ];
+				= $_SESSION[ kSESSION_ONTOLOGY ]->ResolveNode( $part3_ns, TRUE )[ 0 ];
 			
 			//
 			// Load attribute tags.
@@ -288,7 +299,8 @@ $_SESSION[ kISO_FILE_PO_DIR ] = '/Library/WebServer/Library/PHPWrapper/data/cach
 				= $_SESSION[ kSESSION_ONTOLOGY ]->ResolveTag(
 					implode(
 						kTOKEN_NAMESPACE_SEPARATOR,
-						array( kONTOLOGY_ISO, kONTOLOGY_ISO_639,
+						array( kONTOLOGY_ISO,
+							   kONTOLOGY_ISO_639,
 							   kONTOLOGY_ISO_639_3_INVNAME ) ),
 					NULL,
 					TRUE )[ 0 ];
@@ -296,23 +308,18 @@ $_SESSION[ kISO_FILE_PO_DIR ] = '/Library/WebServer/Library/PHPWrapper/data/cach
 				= $_SESSION[ kSESSION_ONTOLOGY ]->ResolveTag(
 					implode(
 						kTOKEN_NAMESPACE_SEPARATOR,
-						array( kONTOLOGY_ISO, kONTOLOGY_ISO_639,
+						array( kONTOLOGY_ISO,
+							   kONTOLOGY_ISO_639,
 							   kONTOLOGY_ISO_639_3_status ) ),
 					NULL,
 					TRUE )[ 0 ];
 			$scope_tag
-				= $_SESSION[ kSESSION_ONTOLOGY ]->ResolveTag(
-					$scope_code,
+				= $_SESSION[ kSESSION_ONTOLOGY ]->ResolveTag( $scope_code,
 					NULL,
 					TRUE )[ 0 ];
 			$type_tag
 				= $_SESSION[ kSESSION_ONTOLOGY ]->ResolveTag(
 					$type_code,
-					NULL,
-					TRUE )[ 0 ];
-			$notes_tag
-				= $_SESSION[ kSESSION_ONTOLOGY ]->ResolveTag(
-					kONTOLOGY_DEFAULT_ATTRIBUTES.kONTOLOGY_DEFAULT_NOTES,
 					NULL,
 					TRUE )[ 0 ];
 
@@ -519,27 +526,32 @@ $_SESSION[ kISO_FILE_PO_DIR ] = '/Library/WebServer/Library/PHPWrapper/data/cach
 								=== NULL )
 						{
 							//
-							// Create term.
+							// Slip deprecated.
 							//
-							$part1_term = new COntologyTerm();
-							$part1_term->LID(
-								substr( (string) $record[ 'part1_code' ], 0, 2 ) );
-							$part1_term->NS( $part1_ns );
-							$part1_term->Term( $part3_term );					
-							if( (strlen( (string) $record[ 'part1_code' ] ) > 2)
-							 && (substr( (string) $record[ 'part1_code' ], 3 )
-									== '(deprecated') )
-								$part1_term[ $notes_tag[ kOFFSET_NID ] ] = 'deprecated';
-							$part1_term->Insert( $_SESSION[ kSESSION_ONTOLOGY ]->Connection() );
+							if( (substr( (string) $record[ 'part1_code' ], 3 )
+									!= '(deprecated)') )
+							{
+								//
+								// Create term.
+								//
+								$part1_term = new COntologyTerm();
+								$part1_term->LID(
+									substr( (string) $record[ 'part1_code' ], 0, 2 ) );
+								$part1_term->NS( $part1_ns );
+								$part1_term->Term( $part3_term );					
+								$part1_term->Insert( $_SESSION[ kSESSION_ONTOLOGY ]
+														->Connection() );
+								
+								//
+								// Create node and relate to parent.
+								//
+								$_SESSION[ kSESSION_ONTOLOGY ]->EnumOf(
+									$part1_node
+										= $_SESSION[ kSESSION_ONTOLOGY ]->NewEnumerationNode(
+											$part1_term ),
+									$part1_parent );
 							
-							//
-							// Create node and relate to parent.
-							//
-							$_SESSION[ kSESSION_ONTOLOGY ]->EnumOf(
-								$part1_node
-									= $_SESSION[ kSESSION_ONTOLOGY ]->NewEnumerationNode(
-										$part1_term ),
-								$part1_parent );
+							} // Not deprecated.
 						
 						} // New term.
 						
@@ -595,15 +607,13 @@ $_SESSION[ kISO_FILE_PO_DIR ] = '/Library/WebServer/Library/PHPWrapper/data/cach
 						// Cross reference part 3 and 1.
 						//
 						$_SESSION[ kSESSION_ONTOLOGY ]->RelateTo(
-							$part1_node, $part3_node,
-							$_SESSION[ 'TERMS' ][ kPREDICATE_XREF_EXACT] );
+							$part1_node, $part3_node, $pred_xref_exact );
 					
 						//
 						// Cross reference part 1 and 3.
 						//
 						$_SESSION[ kSESSION_ONTOLOGY ]->RelateTo(
-							$part3_node, $part1_node,
-							$_SESSION[ 'TERMS' ][ kPREDICATE_XREF_EXACT] );
+							$part3_node, $part1_node, $pred_xref_exact );
 						
 						//
 						// Create cross-references.
@@ -614,29 +624,25 @@ $_SESSION[ kISO_FILE_PO_DIR ] = '/Library/WebServer/Library/PHPWrapper/data/cach
 							// Cross reference part 2 and 3.
 							//
 							$_SESSION[ kSESSION_ONTOLOGY ]->RelateTo(
-								$part2_node, $part3_node,
-								$_SESSION[ 'TERMS' ][ kPREDICATE_XREF_EXACT] );
+								$part2_node, $part3_node, $pred_xref_exact );
 						
 							//
 							// Cross reference part 3 and 2.
 							//
 							$_SESSION[ kSESSION_ONTOLOGY ]->RelateTo(
-								$part3_node, $part2_node,
-								$_SESSION[ 'TERMS' ][ kPREDICATE_XREF_EXACT] );
+								$part3_node, $part2_node, $pred_xref_exact );
 						
 							//
 							// Cross reference part 1 and 2.
 							//
 							$_SESSION[ kSESSION_ONTOLOGY ]->RelateTo(
-								$part1_node, $part2_node,
-								$_SESSION[ 'TERMS' ][ kPREDICATE_XREF_EXACT] );
+								$part1_node, $part2_node, $pred_xref_exact );
 						
 							//
 							// Cross reference part 2 and 1.
 							//
 							$_SESSION[ kSESSION_ONTOLOGY ]->RelateTo(
-								$part2_node, $part1_node,
-								$_SESSION[ 'TERMS' ][ kPREDICATE_XREF_EXACT] );
+								$part2_node, $part1_node, $pred_xref_exact );
 						
 						} // Has part 1 code.
 					
@@ -651,15 +657,13 @@ $_SESSION[ kISO_FILE_PO_DIR ] = '/Library/WebServer/Library/PHPWrapper/data/cach
 						// Cross reference part 2 and 3.
 						//
 						$_SESSION[ kSESSION_ONTOLOGY ]->RelateTo(
-							$part2_node, $part3_node,
-							$_SESSION[ 'TERMS' ][ kPREDICATE_XREF_EXACT] );
+							$part2_node, $part3_node, $pred_xref_exact );
 					
 						//
 						// Cross reference part 3 and 2.
 						//
 						$_SESSION[ kSESSION_ONTOLOGY ]->RelateTo(
-							$part3_node, $part2_node,
-							$_SESSION[ 'TERMS' ][ kPREDICATE_XREF_EXACT] );
+							$part3_node, $part2_node, $pred_xref_exact );
 					
 					} // Has part 2 code only.
 				

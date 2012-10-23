@@ -4,7 +4,7 @@ msgstr ""
 "Report-Msgid-Bugs-To: Debian iso-codes team <pkg-isocodes-devel@lists.alioth."
 "debian.org>\n"
 "POT-Creation-Date: 2012-06-26 09:55+0200\n"
-"PO-Revision-Date: 2011-09-09 11:09+0200\n"
+"PO-Revision-Date: 2012-07-01 16:38+0200\n"
 "Last-Translator: Freek de Kruijf <f.de.kruijf@gmail.com>\n"
 "Language-Team: Dutch <vertaling@vrijschrift.org>\n"
 "Language: nl\n"
@@ -16,6 +16,9 @@ msgstr ""
 
 msgid "Aari"
 msgstr "Aari"
+
+msgid "Aariya"
+msgstr "Aariya"
 
 msgid "Aasáx"
 msgstr "Aasáx"
@@ -34,6 +37,9 @@ msgstr "Abau"
 
 msgid "Abaza"
 msgstr "Abaza"
+
+msgid "Abellen Ayta"
+msgstr "Abellen Ayta"
 
 msgid "Abidji"
 msgstr "Abidji"
@@ -58,6 +64,9 @@ msgstr "Abron"
 
 msgid "Abu"
 msgstr "Abu"
+
+msgid "Abu' Arapesh"
+msgstr "Abu' Arapesh"
 
 msgid "Abua"
 msgstr "Abua"
@@ -151,6 +160,9 @@ msgstr "Adzera"
 
 msgid "Aeka"
 msgstr "Aeka"
+
+msgid "Aer"
+msgstr "Aer"
 
 msgid "Afade"
 msgstr "Afade"
@@ -260,6 +272,9 @@ msgstr "Akoose"
 msgid "Akpa"
 msgstr "Akpa"
 
+msgid "Akrukay"
+msgstr "Akrukay"
+
 msgid "Akum"
 msgstr "Akum"
 
@@ -307,6 +322,9 @@ msgstr "Albanees, Toskisch"
 
 msgid "Aleut"
 msgstr "Aleut"
+
+msgid "Algerian Saharan Arabic"
+msgstr "Algerijns Sahara Arabisch"
 
 msgid "Algerian Sign Language"
 msgstr "Algerijnse gebarentaal"
@@ -377,11 +395,17 @@ msgstr "Ambai"
 msgid "Ambakich"
 msgstr "Ambakich"
 
+msgid "Ambala Ayta"
+msgstr "Ambala Ayta"
+
 msgid "Ambele"
 msgstr "Ambele"
 
 msgid "Amblong"
 msgstr "Amblong"
+
+msgid "Ambonese Malay"
+msgstr "Ambonees Maleis"
 
 msgid "Ambrak"
 msgstr "Ambrak"
@@ -501,7 +525,7 @@ msgid "Arabic"
 msgstr "Arabisch"
 
 msgid "Arabic, Algerian Saharan"
-msgstr "Arabisch, Algerijns Saharaans"
+msgstr "Arabisch, Algerijns Sahara"
 
 msgid "Arabic, Baharna"
 msgstr "Arabisch, Bahrain"
@@ -561,7 +585,7 @@ msgid "Arabic, Ta'izzi-Adeni"
 msgstr "Arabisch, Taiz-Aden"
 
 msgid "Arabic, Tajiki"
-msgstr "Arabisch, Tajika"
+msgstr "Arabisch, Tadzjieks"
 
 msgid "Arabic, Tunisian"
 msgstr "Arabisch, Tunesisch"
@@ -598,6 +622,9 @@ msgstr "Arawak"
 
 msgid "Arawum"
 msgstr "Arawum"
+
+msgid "Arbëreshë Albanian"
+msgstr "Arbëreshë Albanees"
 
 msgid "Archi"
 msgstr "Archi"
@@ -644,6 +671,9 @@ msgstr "Armeens, Midden"
 msgid "Arosi"
 msgstr "Arosi"
 
+msgid "Arrernte, Eastern"
+msgstr "Arrernte, Oostelijk"
+
 msgid "Arta"
 msgstr "Arta"
 
@@ -652,6 +682,9 @@ msgstr "Aruek"
 
 msgid "Arutani"
 msgstr "Arutani"
+
+msgid "Arvanitika Albanian"
+msgstr "Arvanitika Albanees"
 
 msgid "Arára, Pará"
 msgstr "Arára, Pará"
@@ -712,6 +745,9 @@ msgstr "Australische gebarentaal"
 
 msgid "Austrian Sign Language"
 msgstr "Oostenrijkse gebarentaal"
+
+msgid "Austro-Asiatic languages"
+msgstr "Austroaziatische talen"
 
 msgid "Avaric"
 msgstr "Avaars, Awari"
@@ -881,6 +917,9 @@ msgstr "Bagusa"
 msgid "Baham"
 msgstr "Baham"
 
+msgid "Baharna Arabic"
+msgstr "Bahrein Arabisch"
+
 msgid "Bahau"
 msgstr "Bahau"
 
@@ -1045,6 +1084,9 @@ msgstr "Bandial"
 
 msgid "Bandjalang"
 msgstr "Bandjalang"
+
+msgid "Bandjigali"
+msgstr "Bandjigali"
 
 msgid "Bangala"
 msgstr "Bangala"
@@ -1378,6 +1420,9 @@ msgstr "Benggoi"
 
 msgid "Bengkala Sign Language"
 msgstr "Benkala gebarentaal"
+
+msgid "Bengkulu"
+msgstr "Bengkulu"
 
 msgid "Bentong"
 msgstr "Bentong"
@@ -2369,6 +2414,15 @@ msgstr "Dzodinka"
 msgid "Dzongkha"
 msgstr "Dzongkha"
 
+msgid "Eastern Abnaki"
+msgstr "Oostelijk Abnaki"
+
+msgid "Eastern Acipa"
+msgstr "Oostelijk Acipa"
+
+msgid "Eastern Arrernte"
+msgstr "Oostelijk Arrernte"
+
 msgid "Efik"
 msgstr "Efikisch"
 
@@ -2380,6 +2434,9 @@ msgstr "Ekajuk"
 
 msgid "Elamite"
 msgstr "Elamitisch"
+
+msgid "Eloyi"
+msgstr "Eloyi"
 
 msgid "Enga"
 msgstr "Enga"
@@ -2663,6 +2720,9 @@ msgstr "Judeo-Arabisch"
 msgid "Judeo-Persian"
 msgstr "Judeo-Perzisch"
 
+msgid "Jurchen"
+msgstr "Jurchen"
+
 msgid "Kabardian"
 msgstr "Kabardisch, Tsjerkessisch"
 
@@ -2879,6 +2939,9 @@ msgstr "Lezghiaans"
 msgid "Limbu"
 msgstr "Limbu"
 
+msgid "Limousin"
+msgstr "Limousin"
+
 msgid "Linear A"
 msgstr "Lineair A"
 
@@ -2938,6 +3001,9 @@ msgstr "Macedonisch"
 
 msgid "Machinga"
 msgstr "Machinga"
+
+msgid "Madang"
+msgstr "Madang"
 
 msgid "Madurese"
 msgstr "Madurees"
@@ -3083,6 +3149,9 @@ msgstr "Mbongno"
 msgid "Medumba"
 msgstr "Medumba"
 
+msgid "Mesopotamian Arabic"
+msgstr "Mesopotamisch Arabisch"
+
 msgid "Mien, Biao-Jiao"
 msgstr "Mien, Biao-Jiao"
 
@@ -3197,6 +3266,9 @@ msgstr "Nogai"
 msgid "Norse, Old"
 msgstr "Noors, Oud"
 
+msgid "Northeast Pashayi"
+msgstr "Noordoostelijk Pashayi"
+
 msgid "Norwegian"
 msgstr "Noors"
 
@@ -3245,6 +3317,15 @@ msgstr "Odiai"
 msgid "Ojibwa"
 msgstr "Ojibwa"
 
+msgid "Old Hungarian"
+msgstr "Oudhongaars"
+
+msgid "Old Persian"
+msgstr "Oudperzisch"
+
+msgid "Oriya, Adivasi"
+msgstr "Odia, Adivasi"
+
 msgid "Oroko"
 msgstr "Oroko"
 
@@ -3285,7 +3366,7 @@ msgid "Paranan"
 msgstr "Paranan"
 
 msgid "Pashayi, Northeast"
-msgstr "Noordoostelijk Pashayi"
+msgstr "Pashayi, Noordoostelijk"
 
 msgid "Pattani"
 msgstr "Pattani"
@@ -3316,6 +3397,9 @@ msgstr "Pouye"
 
 msgid "Pushto"
 msgstr "Poesjto"
+
+msgid "Putukwam"
+msgstr "Putukwam"
 
 msgid "Qaqet"
 msgstr "Qaqet"
@@ -3383,6 +3467,12 @@ msgstr "Rwa"
 msgid "Sa'a"
 msgstr "Sa'a"
 
+msgid "Saba"
+msgstr "Saba"
+
+msgid "Saint Lucian Creole French"
+msgstr "Saint Lucian Creools Frans"
+
 msgid "Samaritan"
 msgstr "Samaritaans"
 
@@ -3397,6 +3487,9 @@ msgstr "Sangho"
 
 msgid "Sanskrit"
 msgstr "Sanskriet"
+
+msgid "Santa Cruz"
+msgstr "Santa Cruz"
 
 msgid "Santali"
 msgstr "Santali"
@@ -3515,6 +3608,9 @@ msgstr "Zweeds"
 msgid "Syriac"
 msgstr "Syrisch"
 
+msgid "Ta'izzi-Adeni Arabic"
+msgstr "Taiz-Aden Arabisch"
+
 msgid "Tagabawa"
 msgstr "Tagabawa"
 
@@ -3536,6 +3632,9 @@ msgstr "Tainae"
 msgid "Tajik"
 msgstr "Tadzjieks"
 
+msgid "Tajiki Arabic"
+msgstr "Tadzjieks Arabisch"
+
 msgid "Tala"
 msgstr "Samoa tala"
 
@@ -3547,6 +3646,9 @@ msgstr "Tamasjek"
 
 msgid "Tamil"
 msgstr "Tamil"
+
+msgid "Tangut"
+msgstr "Tangut"
 
 msgid "Tapei"
 msgstr "Tapei"
@@ -3631,6 +3733,9 @@ msgstr "Tumbuka"
 
 msgid "Tunen"
 msgstr "Tunen"
+
+msgid "Tunisian Arabic"
+msgstr "Tunesisch Arabisch"
 
 msgid "Turkish"
 msgstr "Turks"
@@ -3730,6 +3835,9 @@ msgstr "Wasjo"
 
 msgid "Welsh"
 msgstr "Welsh"
+
+msgid "Western Abnaki"
+msgstr "Westelijk Abnaki"
 
 msgid "Wolof"
 msgstr "Wolof"

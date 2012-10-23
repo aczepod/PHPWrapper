@@ -30,7 +30,7 @@
  *
  * You may customise this.
  */
-define( "kISO_CODES_PATH",					'/usr/local/Cellar/iso-codes/3.37/share' );
+define( "kISO_CODES_PATH",					'/usr/local/Cellar/iso-codes/3.39/share' );
 
 /**
  * ISO-codes locale directory path.

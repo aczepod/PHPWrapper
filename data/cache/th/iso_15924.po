@@ -4,7 +4,7 @@ msgstr ""
 "Report-Msgid-Bugs-To: Debian iso-codes team <pkg-isocodes-devel@lists.alioth."
 "debian.org>\n"
 "POT-Creation-Date: 2012-02-09 22:36+0100\n"
-"PO-Revision-Date: 2011-02-03 23:07+0200\n"
+"PO-Revision-Date: 2012-09-23 20:42+0200\n"
 "Last-Translator: Theppitak Karoonboonyanan <thep@linux.thai.net>\n"
 "Language-Team: Thai\n"
 "Language: \n"
@@ -23,6 +23,9 @@ msgstr "อเวสตะ"
 
 msgid "Balinese"
 msgstr "บาหลี"
+
+msgid "Bamum"
+msgstr "บามุม"
 
 msgid "Batak"
 msgstr "บาตัก"
@@ -50,6 +53,9 @@ msgstr "บูฮิด"
 
 msgid "Carian"
 msgstr "แคเรีย"
+
+msgid "Chakma"
+msgstr "จักมา"
 
 msgid "Cham"
 msgstr "จาม"
@@ -100,7 +106,7 @@ msgid "Egyptian hieratic"
 msgstr "ไฮราติกอียิปต์"
 
 msgid "Egyptian hieroglyphs"
-msgstr "ไฮโรกลิฟส์อียิปต์"
+msgstr "ไฮโรกลิฟอียิปต์"
 
 msgid "Ethiopic (Geʻez)"
 msgstr "เอธิโอเปีย (กี'อิซ)"
@@ -220,7 +226,7 @@ msgid "Malayalam"
 msgstr "มลยาฬัม"
 
 msgid "Mandaic, Mandaean"
-msgstr "แมนเดอิก, แมนดีอัน"
+msgstr "มันดาอิก, มันเดียน"
 
 msgid "Manichaean"
 msgstr "แมนิคีอัน"
@@ -230,6 +236,18 @@ msgstr "สัญกรณ์คณิตศาสตร์"
 
 msgid "Mayan hieroglyphs"
 msgstr "มายันไฮโรกลิฟส์"
+
+msgid "Meitei Mayek (Meithei, Meetei)"
+msgstr "มณีปุรี"
+
+msgid "Meroitic Cursive"
+msgstr "เมโรอิติกแบบตัวเขียนต่อเชื่อม"
+
+msgid "Meroitic Hieroglyphs"
+msgstr "เมโรอิติกแบบไฮโรกลิฟ"
+
+msgid "Miao (Pollard)"
+msgstr "ม้ง (พอลลาร์ด)"
 
 msgid "Mongolian"
 msgstr "มองโกเลีย"
@@ -245,6 +263,9 @@ msgstr "เอ็นโก"
 
 msgid "Ogham"
 msgstr "ออกัม"
+
+msgid "Ol Chiki (Ol Cemet’, Ol, Santali)"
+msgstr "โอล จิกี (สันถาลี)"
 
 msgid "Old Hungarian"
 msgstr "ฮังการีโบราณ"
@@ -276,6 +297,9 @@ msgstr "ผัคสปะ"
 msgid "Phoenician"
 msgstr "ฟินิเชียน"
 
+msgid "Rejang (Redjang, Kaganga)"
+msgstr "เรอจัง"
+
 msgid "Reserved for private use (end)"
 msgstr "สงวนสำหรับการใช้งานเอกชน (จบ)"
 
@@ -297,6 +321,9 @@ msgstr "ซาราทิ"
 msgid "Saurashtra"
 msgstr "เสาราษฎร์"
 
+msgid "Sharada, Śāradā"
+msgstr "ศารทา"
+
 msgid "Shavian (Shaw)"
 msgstr "เชเวียน (ชอว์)"
 
@@ -305,6 +332,9 @@ msgstr "การเขียนภาษามือ"
 
 msgid "Sinhala"
 msgstr "สิงหล"
+
+msgid "Sora Sompeng"
+msgstr "โสรา โสมเปงค์"
 
 msgid "Sundanese"
 msgstr "ซุนดา"
@@ -338,6 +368,9 @@ msgstr "ธรรมล้านนา"
 
 msgid "Tai Viet"
 msgstr "ไทเวียด"
+
+msgid "Takri, Ṭākrī, Ṭāṅkrī"
+msgstr "ตากรี"
 
 msgid "Tamil"
 msgstr "ทมิฬ"

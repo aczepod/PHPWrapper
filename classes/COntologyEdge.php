@@ -417,7 +417,7 @@ class COntologyEdge extends CEdge
 	 * @uses LoadPredicate()
 	 * @uses LoadObject()
 	 *
-	 * @see kOFFSET_NID kTAG_LID kTOKEN_INDEX_SEPARATOR
+	 * @see kOFFSET_NID kTAG_GID kTOKEN_INDEX_SEPARATOR
 	 */
 	protected function _index( CConnection $theConnection, $theModifiers )
 	{

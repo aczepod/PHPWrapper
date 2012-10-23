@@ -497,7 +497,7 @@
 				   'type' => kTYPE_ENUM,
 				   'label' => "Landrace language codes",
 				   'descr' => "The language code of the LR local name. Use ISO 639-2 is the alpha-3 code in Codes for the representation of names of languages (see: http://www.loc.gov/standards/iso639- 2/php/code_list.php).",
-				   'examp' => array( 'eng', 'fra', 'ita' ) ) );
+				   'examp' => array( 'en', 'fra', 'ita' ) ) );
 		
 		//
 		// Load data.

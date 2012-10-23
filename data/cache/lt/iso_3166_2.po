@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: iso_3166_2\n"
 "Report-Msgid-Bugs-To: Debian iso-codes team <pkg-isocodes-devel@lists.alioth."
 "debian.org>\n"
-"POT-Creation-Date: 2012-04-09 14:32+0200\n"
+"POT-Creation-Date: 2012-08-25 16:22+0200\n"
 "PO-Revision-Date: 2009-09-26 20:46+0300\n"
 "Last-Translator: Kęstutis Biliūnas <kebil@kaunas.init.lt>\n"
 "Language-Team: Lithuanian <komp_lt@konferencijos.lt>\n"
@@ -1499,9 +1499,6 @@ msgstr "Zabchano provincija"
 
 msgid "Děčín"
 msgstr "Dečynas"
-
-msgid "Dəvəçi"
-msgstr "Davačis"
 
 msgid "East"
 msgstr "Rytai"
@@ -3729,9 +3726,6 @@ msgstr "Šiaurės Jorkšyras"
 msgid "North-East"
 msgstr "Šiaurės rytų rajonas"
 
-msgid "North-West (Botswana)"
-msgstr "Šiaurės vakarų rajonas (Botsvana)"
-
 msgid "North-West (Cameroon)"
 msgstr "Šiaurės Vakarai ( Kamerūnas)"
 
@@ -5072,9 +5066,6 @@ msgstr "Sauthemptonas"
 
 msgid "Southend-on-Sea"
 msgstr "Sautendas prie jūros"
-
-msgid "Southern (Botswana)"
-msgstr "Pietų rajonas (Botsvana)"
 
 msgid "Southern Highlands"
 msgstr "Pietų Hailandas"

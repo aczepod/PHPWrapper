@@ -97,16 +97,14 @@ define( "kOFFSET_TYPE",							':TYPE' );
 /**
  * Label.
  *
- * This tag is used as the offset for the term's label, this attribute represents the term
- * name or short description.
+ * This tag is used as the offset for an object's label, name or short description.
  */
 define( "kOFFSET_LABEL",						':LABEL' );
 
 /**
  * Description.
  *
- * This tag is used as the offset for the term's description, this attribute represents the
- * term description or definition.
+ * This tag is used as the offset for an object's description or definition.
  */
 define( "kOFFSET_DESCRIPTION",					':DESCR' );
 

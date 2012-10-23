@@ -3,8 +3,8 @@ msgstr ""
 "Project-Id-Version: iso_3166_2\n"
 "Report-Msgid-Bugs-To: Debian iso-codes team <pkg-isocodes-devel@lists.alioth."
 "debian.org>\n"
-"POT-Creation-Date: 2012-04-09 14:32+0200\n"
-"PO-Revision-Date: 2012-05-04 16:42+0200\n"
+"POT-Creation-Date: 2012-08-25 16:22+0200\n"
+"PO-Revision-Date: 2012-07-01 21:33+0200\n"
 "Last-Translator: Freek de Kruijf <f.de.kruijf@gmail.com>\n"
 "Language-Team: Dutch <vertaling@vrijschrift.org>\n"
 "Language: nl\n"
@@ -80,6 +80,9 @@ msgstr "Aceh"
 msgid "Achaïa"
 msgstr "Achaea"
 
+msgid "Acklins"
+msgstr "Acklins"
+
 msgid "Acquaviva"
 msgstr "Acquaviva"
 
@@ -122,6 +125,9 @@ msgstr "Ad Dali'"
 msgid "Aerodrom"
 msgstr "Aerodrom"
 
+msgid "Afyonkarahisar"
+msgstr "Afyonkarahisar"
+
 msgid "Agadez"
 msgstr "Agadez"
 
@@ -133,6 +139,9 @@ msgstr "Agalega-eilanden"
 
 msgid "Agio Oros"
 msgstr "Ágion Óros / Heilige Berg"
+
+msgid "Aglonas novads"
+msgstr "Aglona"
 
 msgid "Agnébi (Région de l')"
 msgstr "Agnébi"
@@ -154,6 +163,9 @@ msgstr "Ahal"
 
 msgid "Ahuachapán"
 msgstr "Ahuachapán"
+
+msgid "Ahvenanmaan maakunta"
+msgstr "Åland"
 
 msgid "Aichi"
 msgstr "Aichi"
@@ -194,6 +206,12 @@ msgstr "Etolia-Akarnania"
 msgid "Aiwo"
 msgstr "Aiwo"
 
+msgid "Aizkraukles novads"
+msgstr "Aglona"
+
+msgid "Aizputes novads"
+msgstr "Aizpute"
+
 msgid "Ajaria"
 msgstr "Adzjarië"
 
@@ -209,6 +227,9 @@ msgstr "Akita"
 msgid "Aklan"
 msgstr "Aklan"
 
+msgid "Aknīstes novads"
+msgstr "Aknīste"
+
 msgid "Aksaray"
 msgstr "Aksaray"
 
@@ -220,6 +241,9 @@ msgstr "Al Ahmadi"
 
 msgid "Al Anbar"
 msgstr "Al Anbar"
+
+msgid "Al Awsaţ"
+msgstr "Maekel"
 
 msgid "Al Bahr al Ahmar"
 msgstr "Al Bahr al Ahmar"
@@ -290,6 +314,12 @@ msgstr "Al Jabal al Akhdar"
 msgid "Al Jabal al Gharbī"
 msgstr "Al Jabal al Gharbī"
 
+msgid "Al Jahrrā’"
+msgstr "Jahra"
+
+msgid "Al Janūbī"
+msgstr "Debub"
+
 msgid "Al Janūbīyah"
 msgstr "Al Janblyah"
 
@@ -314,8 +344,14 @@ msgstr "Kerak"
 msgid "Al Kharţūm"
 msgstr "Khartoem"
 
+msgid "Al Khawr wa adh Dhakhīrah"
+msgstr "Al Khawr wa adh Dhakhīrah"
+
 msgid "Al Kufrah"
 msgstr "Al Kufrah"
+
+msgid "Al Kuwayt (Al ‘Āşimah)"
+msgstr "Al-Asimah"
 
 msgid "Al Ladhiqiyah"
 msgstr "Al Ladhiqiyah"
@@ -389,6 +425,9 @@ msgstr "Al Hudud ash Shamaliyah"
 msgid "Al Ḩudaydah"
 msgstr "Al Hudaydah"
 
+msgid "Al ‘Aqabah"
+msgstr "Akaba"
+
 msgid "Alabama"
 msgstr "Alabama"
 
@@ -428,6 +467,12 @@ msgstr "Alibori"
 msgid "Alicante"
 msgstr "Alicante"
 
+msgid "Alifu Alifu"
+msgstr "Alifu Alifu"
+
+msgid "Alifu Dhaalu"
+msgstr "Alifu Dhaalu"
+
 msgid "Allier"
 msgstr "Allier"
 
@@ -440,6 +485,9 @@ msgstr "Oblast Alma-Ata [Almati]"
 msgid "Almería"
 msgstr "Almería"
 
+msgid "Alojas novads"
+msgstr "Aloja"
+
 msgid "Alpes-Maritimes"
 msgstr "Zee-Alpen"
 
@@ -448,6 +496,9 @@ msgstr "Alpen van Hoog-Provence"
 
 msgid "Alsace"
 msgstr "Elzas"
+
+msgid "Alsungas novads"
+msgstr "Alsunga"
 
 msgid "Alta Verapaz"
 msgstr "Alta Verapaz"
@@ -467,6 +518,9 @@ msgstr "Hoog-Paraná"
 msgid "Alytaus Apskritis"
 msgstr "Alytus"
 
+msgid "Alūksnes novads"
+msgstr "Alūksne"
+
 msgid "Amambay"
 msgstr "Amambay"
 
@@ -475,6 +529,9 @@ msgstr "Amapá"
 
 msgid "Amasya"
 msgstr "Amasya"
+
+msgid "Amatas novads"
+msgstr "Amata"
 
 msgid "Amazonas"
 msgstr "Amazonas"
@@ -590,6 +647,9 @@ msgstr "Annaba"
 msgid "Annobón"
 msgstr "Annobón"
 
+msgid "Ansabā"
+msgstr "Anseba"
+
 msgid "Anse Boileau"
 msgstr "Anse Boileau"
 
@@ -655,6 +715,9 @@ msgstr "Apayao"
 
 msgid "Apače"
 msgstr "Apače"
+
+msgid "Apes novads"
+msgstr "Ape"
 
 msgid "Appenzell Ausserrhoden"
 msgstr "Appenzell Ausserrhoden"
@@ -746,6 +809,9 @@ msgstr "Argyll en Bute"
 msgid "Arhangay"
 msgstr "Arhangay"
 
+msgid "Ariana"
+msgstr "Ariana"
+
 msgid "Arica y Parinacota"
 msgstr "Arica y Parinacota"
 
@@ -791,6 +857,12 @@ msgstr "Artvin"
 msgid "Arua"
 msgstr "Arua"
 
+msgid "Aruba"
+msgstr "Aruba"
+
+msgid "Arunachal Pradesh"
+msgstr "Arunachal Pradesh"
+
 msgid "Arusha"
 msgstr "Arusha"
 
@@ -811,6 +883,9 @@ msgstr "Ascension"
 
 msgid "Ascoli Piceno"
 msgstr "Ascoli Piceno"
+
+msgid "Ash Shamal"
+msgstr "Ash Shamal"
 
 msgid "Ash Shamālīyah"
 msgstr "Ash Shamallyah"
@@ -902,6 +977,9 @@ msgstr "Oblast Atiraw"
 msgid "Aube"
 msgstr "Aube"
 
+msgid "Auces novads"
+msgstr "Auce"
+
 msgid "Auckland"
 msgstr "Auckland"
 
@@ -968,6 +1046,9 @@ msgstr "Azua"
 msgid "Azuay"
 msgstr "Azuay"
 
+msgid "Az̧ Z̧a‘āyin"
+msgstr "Az Za'ayin"
+
 msgid "Az̧ Z̧āhirah"
 msgstr "Az Zahirah"
 
@@ -1010,6 +1091,9 @@ msgstr "Baalbek-Hermel"
 msgid "Babil"
 msgstr "Babil [Babylon]"
 
+msgid "Babītes novads"
+msgstr "Babīte"
+
 msgid "Babək"
 msgstr "Babak"
 
@@ -1033,6 +1117,9 @@ msgstr "Bafatá"
 
 msgid "Bafing (Région du)"
 msgstr "Bafing"
+
+msgid "Bagerhat"
+msgstr "Bagerhat"
 
 msgid "Baghdad"
 msgstr "Bagdad"
@@ -1088,6 +1175,9 @@ msgstr "Balaka"
 msgid "Balakən"
 msgstr "Balakan"
 
+msgid "Baldones novads"
+msgstr "Baldone"
+
 msgid "Balears"
 msgstr "Balearen"
 
@@ -1108,6 +1198,12 @@ msgstr "Ballymoney"
 
 msgid "Balochistan"
 msgstr "Beloetsjistan"
+
+msgid "Baltinavas novads"
+msgstr "Baltinava"
+
+msgid "Balvu novads"
+msgstr "Balvi"
 
 msgid "Balzan"
 msgstr "Balzan"
@@ -1135,6 +1231,9 @@ msgstr "Banaadir"
 
 msgid "Banbridge"
 msgstr "Banbridge"
+
+msgid "Bandarban"
+msgstr "Bandarban"
 
 msgid "Bandundu"
 msgstr "Bandundu"
@@ -1181,6 +1280,9 @@ msgstr "Barbuda"
 msgid "Barcelona"
 msgstr "Barcelona"
 
+msgid "Barguna"
+msgstr "Barguna"
+
 msgid "Bari"
 msgstr "Bari"
 
@@ -1189,6 +1291,9 @@ msgstr "Barima-Waini"
 
 msgid "Barinas"
 msgstr "Barinas"
+
+msgid "Barisal"
+msgstr "Barisal"
 
 msgid "Barking and Dagenham"
 msgstr "Barking en Dagenham"
@@ -1273,6 +1378,9 @@ msgstr "Baucau"
 
 msgid "Bauchi"
 msgstr "Bauchi"
+
+msgid "Bauskas novads"
+msgstr "Bauska"
 
 msgid "Bay"
 msgstr "Bay"
@@ -1403,6 +1511,12 @@ msgstr "Berovo"
 msgid "Berry Islands"
 msgstr "Berry-eilanden"
 
+msgid "Bethlehem"
+msgstr "Bethlehem"
+
+msgid "Beverīnas novads"
+msgstr "Beverīna"
+
 msgid "Bexley"
 msgstr "Bexley"
 
@@ -1418,11 +1532,17 @@ msgstr "Beirout"
 msgid "Bheri"
 msgstr "Bheri"
 
+msgid "Bhola"
+msgstr "Bhola"
+
 msgid "Bicol (Region V)"
 msgstr "Bicol (Region V)"
 
 msgid "Biella"
 msgstr "Biella"
+
+msgid "Bihar"
+msgstr "Bihar"
 
 msgid "Bihor"
 msgstr "Bihor"
@@ -1556,6 +1676,9 @@ msgstr "Bogdanci"
 msgid "Bogovinje"
 msgstr "Bogovinje"
 
+msgid "Bogra"
+msgstr "Bogra"
+
 msgid "Bohinj"
 msgstr "Bohinj"
 
@@ -1591,6 +1714,9 @@ msgstr "Bolívar"
 
 msgid "Bomi"
 msgstr "Bomi"
+
+msgid "Bonaire"
+msgstr "Bonaire"
 
 msgid "Bong"
 msgstr "Bong"
@@ -1640,6 +1766,9 @@ msgstr "Boucle du Mouhoun"
 msgid "Bouenza"
 msgstr "Bouenza"
 
+msgid "Bougainville"
+msgstr "Bougainville"
+
 msgid "Bougouriba"
 msgstr "Bougouriba"
 
@@ -1673,6 +1802,9 @@ msgstr "Bovec"
 msgid "Boyacá"
 msgstr "Boyacá"
 
+msgid "Brabant wallon"
+msgstr "Waals-Brabant"
+
 msgid "Bracknell Forest"
 msgstr "Bracknell Forest"
 
@@ -1684,6 +1816,9 @@ msgstr "Braga"
 
 msgid "Bragança"
 msgstr "Bragança"
+
+msgid "Brahmanbaria"
+msgstr "Brahmanbaria"
 
 msgid "Brakna"
 msgstr "Brakna"
@@ -1754,6 +1889,9 @@ msgstr "Brno-město"
 msgid "Brno-venkov"
 msgstr "Brno-venkov"
 
+msgid "Brocēnu novads"
+msgstr "Brocēni"
+
 msgid "Brodsko-posavska županija"
 msgstr "Provincie Brod-Posavina"
 
@@ -1771,6 +1909,9 @@ msgstr "Brunei en Muara"
 
 msgid "Bruntál"
 msgstr "Bruntál"
+
+msgid "Bruxelles-Capitale, Région de;Brussels Hoofdstedelijk Gewest"
+msgstr "Bruxelles-Capitale, Région de;Brussels Hoofdstedelijk Gewest"
 
 msgid "Brvenica"
 msgstr "Brvenica"
@@ -1871,6 +2012,9 @@ msgstr "Buri Ram"
 msgid "Bursa"
 msgstr "Bursa"
 
+msgid "Burtnieku novads"
+msgstr "Burtnieki"
+
 msgid "Bururi"
 msgstr "Bururi"
 
@@ -1906,6 +2050,9 @@ msgstr "Buchara"
 
 msgid "Buzău"
 msgstr "Buzău"
+
+msgid "Bà Rịa-Vũng Tàu"
+msgstr "Bà Rịa-Vũng Tàu"
 
 msgid "Bács-Kiskun"
 msgstr "Bács-Kiskun"
@@ -2144,6 +2291,9 @@ msgstr "Carlow"
 msgid "Carmarthenshire;Sir Gaerfyrddin"
 msgstr "Carmarthenshire;Sir Gaerfyrddin"
 
+msgid "Carnikavas novads"
+msgstr "Carnikava"
+
 msgid "Carrickfergus"
 msgstr "Carrickfergus"
 
@@ -2243,6 +2393,9 @@ msgstr "Centraal-Bedfordshire"
 msgid "Central Eleuthera"
 msgstr "Central Eleuthera"
 
+msgid "Central Equatoria"
+msgstr "Centraal-Equatoria"
+
 msgid "Central Luzon (Region III)"
 msgstr "Central Luzon (Region III)"
 
@@ -2297,6 +2450,9 @@ msgstr "Cerro Largo"
 msgid "Cesar"
 msgstr "Cesar"
 
+msgid "Cesvaines novads"
+msgstr "Cesvaine"
+
 msgid "Cetinje"
 msgstr "Cetinje"
 
@@ -2335,6 +2491,12 @@ msgstr "Champagne-Ardennen"
 
 msgid "Champasak"
 msgstr "Champassak"
+
+msgid "Chandigarh"
+msgstr "Chandigarh"
+
+msgid "Chandpur"
+msgstr "Chandpur"
 
 msgid "Changhua"
 msgstr "Changhua"
@@ -2389,6 +2551,9 @@ msgstr "Oost-Cheshire"
 
 msgid "Cheshire West and Chester"
 msgstr "West-Cheshire en Chester"
+
+msgid "Chhattisgarh"
+msgstr "Chhattisgarh"
 
 msgid "Chhukha"
 msgstr "Chhukha"
@@ -2456,6 +2621,9 @@ msgstr "Chiriquí"
 msgid "Chitipa"
 msgstr "Chitipa"
 
+msgid "Chittagong"
+msgstr "Chittagong"
+
 msgid "Chișinău"
 msgstr "Chișinău"
 
@@ -2495,6 +2663,9 @@ msgstr "Chrudim"
 msgid "Chtouka-Ait Baha"
 msgstr "Chtouka-Ait Baha"
 
+msgid "Chuadanga"
+msgstr "Chuadanga"
+
 msgid "Chubut"
 msgstr "Chubut"
 
@@ -2524,6 +2695,9 @@ msgstr "Chü"
 
 msgid "Cibitoke"
 msgstr "Cibitoke"
+
+msgid "Ciblas novads"
+msgstr "Cibla"
 
 msgid "Ciego de Ávila"
 msgstr "Ciego de Ávila"
@@ -2602,6 +2776,9 @@ msgstr "Colón"
 
 msgid "Comayagua"
 msgstr "Comayagua"
+
+msgid "Comilla"
+msgstr "Comilla"
 
 msgid "Commewijne"
 msgstr "Commewijne"
@@ -2702,6 +2879,9 @@ msgstr "Covasna"
 msgid "Coventry"
 msgstr "Coventry"
 
+msgid "Cox's Bazar"
+msgstr "Cox's Bazar"
+
 msgid "Coyah"
 msgstr "Coyah"
 
@@ -2759,6 +2939,9 @@ msgstr "Cunene"
 msgid "Cuneo"
 msgstr "Cuneo"
 
+msgid "Curaçao"
+msgstr "Curaçao"
+
 msgid "Curepipe"
 msgstr "Curepipe"
 
@@ -2801,6 +2984,9 @@ msgstr "Călărași"
 msgid "Căușeni"
 msgstr "Căușeni"
 
+msgid "Cēsu novads"
+msgstr "Cēsis"
+
 msgid "Cəbrayıl"
 msgstr "Cabrayil"
 
@@ -2813,6 +2999,9 @@ msgstr "Can Tho"
 msgid "Dabola"
 msgstr "Dabola"
 
+msgid "Dadra and Nagar Haveli"
+msgstr "Dadra en Nagar Haveli"
+
 msgid "Daegu Gwang'yeogsi"
 msgstr "Stadsgewest Daegu Gwang'yeog"
 
@@ -2821,6 +3010,9 @@ msgstr "Stadsgewest Daejeon Gwang'yeog"
 
 msgid "Dagana"
 msgstr "Dagana"
+
+msgid "Dagdas novads"
+msgstr "Dagda"
 
 msgid "Dagestan, Respublika"
 msgstr "Dagestan, (Republiek)"
@@ -2846,6 +3038,9 @@ msgstr "Dalaba"
 msgid "Dalarnas län"
 msgstr "Graafschap Dalarna"
 
+msgid "Damen and Diu"
+msgstr "Daman en Diu"
+
 msgid "Danilovgrad"
 msgstr "Danilovgrad"
 
@@ -2868,6 +3063,9 @@ msgid "Darnah"
 msgstr "Darnah"
 
 msgid "Daugavpils"
+msgstr "Daugavpils"
+
+msgid "Daugavpils novads"
 msgstr "Daugavpils"
 
 msgid "Davao (Region XI)"
@@ -2902,6 +3100,9 @@ msgstr "Debrecen"
 
 msgid "Dedza"
 msgstr "Dedza"
+
+msgid "Deir El Balah"
+msgstr "Deir El Balah"
 
 msgid "Delaware"
 msgstr "Delaware"
@@ -2969,6 +3170,9 @@ msgstr "Devon"
 msgid "Dhaalu"
 msgstr "Dhaalu"
 
+msgid "Dhaka"
+msgstr "Dhaka"
+
 msgid "Dhamār"
 msgstr "Dhamar"
 
@@ -2998,6 +3202,9 @@ msgstr "Dimashq"
 
 msgid "Dinagat Islands"
 msgstr "Dinagat Islands"
+
+msgid "Dinajpur"
+msgstr "Dinajpur"
 
 msgid "Dingli"
 msgstr "Dingli"
@@ -3040,6 +3247,9 @@ msgstr "Djibouti"
 
 msgid "Dnipropetrovs'ka Oblast'"
 msgstr "Regio Dnipropetrovs'k"
+
+msgid "Dobeles novads"
+msgstr "Dobele"
 
 msgid "Dobje"
 msgstr "Dobje"
@@ -3188,11 +3398,17 @@ msgstr "Dimyat"
 msgid "Dunaújváros"
 msgstr "Dunaújváros"
 
+msgid "Dundagas novads"
+msgstr "Dundaga"
+
 msgid "Dundee City"
 msgstr "Dundee-Stad"
 
 msgid "Dundgovi"
 msgstr "Dundgovĭ"
+
+msgid "Dungannon and South Tyrone"
+msgstr "Dungannon en South Tyrone"
 
 msgid "Duplek"
 msgstr "Duplek"
@@ -3202,6 +3418,12 @@ msgstr "Durango"
 
 msgid "Durazno"
 msgstr "Durazno"
+
+msgid "Durbes novads"
+msgstr "Durbe"
+
+msgid "Durham, County"
+msgstr "Durham, County"
 
 msgid "Durrës"
 msgstr "Durrsës"
@@ -3218,6 +3440,9 @@ msgstr "Dzavhan"
 msgid "Dâmbovița"
 msgstr "Dâmbovița"
 
+msgid "Díli"
+msgstr "Díli"
+
 msgid "Düzce"
 msgstr "Düzce"
 
@@ -3226,9 +3451,6 @@ msgstr "Daikondi"
 
 msgid "Děčín"
 msgstr "Děčín"
-
-msgid "Dəvəçi"
-msgstr "Davaci"
 
 msgid "Ealing"
 msgstr "Ealing"
@@ -3271,6 +3493,9 @@ msgstr "Oost"
 
 msgid "Eastern Cape"
 msgstr "Oost-Kaap"
+
+msgid "Eastern Equatoria"
+msgstr "Oost-Equatoria"
 
 msgid "Eastern Highlands"
 msgstr "Oostelijke Hooglanden"
@@ -3380,6 +3605,9 @@ msgstr "Engeland en Wales"
 msgid "English River"
 msgstr "La Riviere Anglaise"
 
+msgid "Engures novads"
+msgstr "Engure"
+
 msgid "Enna"
 msgstr "Enna"
 
@@ -3452,6 +3680,15 @@ msgstr "Estelí"
 msgid "Estuaire"
 msgstr "Estuaire"
 
+msgid "Etelä-Karjala"
+msgstr "Zuid-Karelië"
+
+msgid "Etelä-Pohjanmaa"
+msgstr "Zuid-Österbotten"
+
+msgid "Etelä-Savo"
+msgstr "Zuid-Savo"
+
 msgid "Eure"
 msgstr "Eure"
 
@@ -3506,6 +3743,9 @@ msgstr "Faranah"
 msgid "Farg'ona"
 msgstr "Farg'ona"
 
+msgid "Faridpur"
+msgstr "Faridpur"
+
 msgid "Faro"
 msgstr "Faro"
 
@@ -3523,6 +3763,9 @@ msgstr "Federaal Bestuurde Stamgebieden"
 
 msgid "Fejér"
 msgstr "Fejér"
+
+msgid "Feni"
+msgstr "Feni"
 
 msgid "Fermanagh"
 msgstr "Fermanagh"
@@ -3595,6 +3838,9 @@ msgstr "Fokida"
 
 msgid "Fontana"
 msgstr "Fontana"
+
+msgid "Fontvieille"
+msgstr "Fontvieille"
 
 msgid "Forlì-Cesena"
 msgstr "Forlì-Cesena"
@@ -3671,6 +3917,12 @@ msgstr "Faryab"
 msgid "Fălești"
 msgstr "Fălești"
 
+msgid "Gaafu Alifu"
+msgstr "Gaafu Alifu"
+
+msgid "Gaafu Dhaalu"
+msgstr "Gaafu Dhaalu"
+
 msgid "Gabrovo"
 msgstr "Gabrovo"
 
@@ -3688,6 +3940,9 @@ msgstr "Gaga'emauga"
 
 msgid "Gagaifomauga"
 msgstr "Gagaifomauga"
+
+msgid "Gaibandha"
+msgstr "Gaibandha"
 
 msgid "Galați"
 msgstr "Galați"
@@ -3734,6 +3989,9 @@ msgstr "Gaoual"
 msgid "Gard"
 msgstr "Gard"
 
+msgid "Garkalnes novads"
+msgstr "Garkalne"
+
 msgid "Gasa"
 msgstr "Gasa"
 
@@ -3751,6 +4009,9 @@ msgstr "Gazi Baba"
 
 msgid "Gaziantep"
 msgstr "Gaziantep"
+
+msgid "Gazipur"
+msgstr "Gazipur"
 
 msgid "Gedo"
 msgstr "Gedo"
@@ -3805,6 +4066,9 @@ msgstr "Gifu"
 
 msgid "Gilbert Islands"
 msgstr "Gilbert-eilanden"
+
+msgid "Gilgit-Baltistan"
+msgstr "Gilgit-Baltistan"
 
 msgid "Giresun"
 msgstr "Giresun"
@@ -3862,6 +4126,9 @@ msgstr "Golestan"
 
 msgid "Gombe"
 msgstr "Gombe"
+
+msgid "Gopalganj"
+msgstr "Gopalganj"
 
 msgid "Goranboy"
 msgstr "Goranboy"
@@ -3989,6 +4256,9 @@ msgstr "Grevenmacher"
 msgid "Gribingui"
 msgstr "Gribingui"
 
+msgid "Grobiņas novads"
+msgstr "Grobiņa"
+
 msgid "Groningen"
 msgstr "Groningen"
 
@@ -4070,6 +4340,12 @@ msgstr "Guipúzcoa / Gipuzkoa"
 msgid "Guizhou"
 msgstr "Guizhou"
 
+msgid "Gujarat"
+msgstr "Gujarat"
+
+msgid "Gulbenes novads"
+msgstr "Gulbene"
+
 msgid "Gulf"
 msgstr "Golf"
 
@@ -4114,6 +4390,9 @@ msgstr "Győr-Moson-Sopron"
 
 msgid "Gävleborgs län"
 msgstr "Graafschap Gävleborg"
+
+msgid "Göygöl"
+msgstr "Göygöl"
 
 msgid "Göyçay"
 msgstr "Goycay"
@@ -4169,8 +4448,14 @@ msgstr "Centrum provincie [Merkaz]"
 msgid "HaZafon"
 msgstr "Noordelijke provincie [Tsafon]"
 
+msgid "Haa Alifu"
+msgstr "Haa Alifu"
+
 msgid "Haa Dhaalu"
 msgstr "Haa Dhaalu"
+
+msgid "Habiganj"
+msgstr "Habiganj"
 
 msgid "Hackney"
 msgstr "Hackney"
@@ -4253,6 +4538,9 @@ msgstr "Harrow"
 msgid "Hartlepool"
 msgstr "Hartlepool"
 
+msgid "Haryana"
+msgstr "Haryana"
+
 msgid "Has"
 msgstr "Has"
 
@@ -4267,9 +4555,6 @@ msgstr "Hato Mayor"
 
 msgid "Hatobohei"
 msgstr "Hatobohei"
-
-msgid "Haut-Congo"
-msgstr "Opper-Congo"
 
 msgid "Haut-Mbomou"
 msgstr "Boven-Mbomou"
@@ -4335,13 +4620,16 @@ msgid "Hawaii"
 msgstr "Hawaii"
 
 msgid "Hawallī"
-msgstr "Hawallī"
+msgstr "Hawalli"
 
 msgid "Hawke's Bay"
 msgstr "Hawke's Bay"
 
 msgid "Hebei"
 msgstr "Hebei"
+
+msgid "Hebron"
+msgstr "Hebron"
 
 msgid "Hedmark"
 msgstr "Hedmark"
@@ -4405,6 +4693,9 @@ msgstr "Hiiumaa"
 
 msgid "Hillingdon"
 msgstr "Hillingdon"
+
+msgid "Himachal Pradesh"
+msgstr "Himachal Pradesh"
 
 msgid "Hiroshima"
 msgstr "Hiroshima"
@@ -4544,6 +4835,9 @@ msgstr "Ha Giang"
 msgid "Hà Nam"
 msgstr "Ha Nam"
 
+msgid "Hà Nội"
+msgstr "Hanoi"
+
 msgid "Hà Tây"
 msgstr "Ha Tay"
 
@@ -4577,8 +4871,14 @@ msgstr "Ḩulwān"
 msgid "Hải Duong"
 msgstr "Hai Duong"
 
+msgid "Hải Phòng"
+msgstr "Hai Phong"
+
 msgid "Hậu Giang"
 msgstr "Hau Giang"
+
+msgid "Hồ Chí Minh [Sài Gòn]"
+msgstr "Ho Chi Minh (stad) [Sai Gon]"
 
 msgid "Ialomița"
 msgstr "Ialomița"
@@ -4613,6 +4913,9 @@ msgstr "Idlib"
 msgid "Idrija"
 msgstr "Idrija"
 
+msgid "Iecavas novads"
+msgstr "Iecava"
+
 msgid "Ifrane"
 msgstr "Ifrane"
 
@@ -4630,6 +4933,9 @@ msgstr "Ijuw"
 
 msgid "Iklin"
 msgstr "Iklin"
+
+msgid "Ikšķiles novads"
+msgstr "Ikšķile"
 
 msgid "Ilan"
 msgstr "Ilan"
@@ -4675,6 +4981,9 @@ msgstr "Ilocos Sur"
 
 msgid "Iloilo"
 msgstr "Iloilo"
+
+msgid "Ilūkstes novads"
+msgstr "Ilūkste"
 
 msgid "Imathia"
 msgstr "Imathia"
@@ -4726,6 +5035,9 @@ msgstr "Intibucá"
 
 msgid "Inverclyde"
 msgstr "Inverclyde"
+
+msgid "Inčukalna novads"
+msgstr "Inčukalns"
 
 msgid "Ioannina"
 msgstr "Ioannina"
@@ -4835,6 +5147,9 @@ msgstr "Jablonec nad Nisou"
 msgid "Jaghbūb"
 msgstr "Jaghbub"
 
+msgid "Jaipurhat"
+msgstr "Jaipurhat"
+
 msgid "Jakarta Raya"
 msgstr "Groot-Jakarta"
 
@@ -4850,8 +5165,17 @@ msgstr "Jalisco"
 msgid "Jaluit"
 msgstr "Jaluit"
 
+msgid "Jamalpur"
+msgstr "Jamalpur"
+
 msgid "Jambi"
 msgstr "Jambi"
+
+msgid "Jammu and Kashmir"
+msgstr "Jammu en Kashmir"
+
+msgid "Jan Mayen (Arctic Region)"
+msgstr "Jan Mayen (Arctische regio)"
 
 msgid "Janakpur"
 msgstr "Janakpur"
@@ -4865,11 +5189,26 @@ msgstr "Janub-Kordofan"
 msgid "Janūb Sīnā'"
 msgstr "Zuidelijke Sinaï"
 
+msgid "Janūbī al Baḩrī al Aḩmar"
+msgstr "Debubawi Keyih Bahri"
+
 msgid "Jarash"
 msgstr "Jerash"
 
+msgid "Jardin Exotique"
+msgstr "Jardin Exotique"
+
 msgid "Jarvis Island"
 msgstr "Jarvis-eiland"
+
+msgid "Jaunjelgavas novads"
+msgstr "Jaunjelgava"
+
+msgid "Jaunpiebalgas novads"
+msgstr "Jaunpiebalga"
+
+msgid "Jaunpils novads"
+msgstr "Jaunpils"
 
 msgid "Jawa"
 msgstr "Java"
@@ -4895,8 +5234,14 @@ msgstr "Provincie Jeju"
 msgid "Jelgava"
 msgstr "Jelgava"
 
+msgid "Jelgavas novads"
+msgstr "Jelgava"
+
 msgid "Jendouba"
 msgstr "Jendouba"
+
+msgid "Jenin"
+msgstr "Jenin"
 
 msgid "Jeonrabukdo"
 msgstr "Provincie Noord-Jeonra"
@@ -4904,17 +5249,32 @@ msgstr "Provincie Noord-Jeonra"
 msgid "Jeonranamdo"
 msgstr "Provincie Zuid-Jeonra"
 
+msgid "Jericho - Al Aghwar"
+msgstr "Jericho"
+
+msgid "Jerusalem"
+msgstr "Jeruzalem"
+
 msgid "Jesenice"
 msgstr "Jesenice"
 
 msgid "Jeseník"
 msgstr "Jeseník"
 
+msgid "Jessore"
+msgstr "Jessore"
+
 msgid "Jezersko"
 msgstr "Jezersko"
 
+msgid "Jhalakati"
+msgstr "Jhalakati"
+
 msgid "Jharkhand"
 msgstr "Jharkhand"
+
+msgid "Jhenaidah"
+msgstr "Jhenaidah"
 
 msgid "Jiangsu"
 msgstr "Jiangsu"
@@ -4960,6 +5320,9 @@ msgstr "Johnston-atol"
 
 msgid "Johor"
 msgstr "Johor"
+
+msgid "Jonglei"
+msgstr "Jonquali"
 
 msgid "Jowzjān"
 msgstr "Jowzjan"
@@ -5008,6 +5371,12 @@ msgstr "Jõgevamaa"
 
 msgid "Jönköpings län"
 msgstr "Graafschap Jönköpings"
+
+msgid "Jēkabpils"
+msgstr "Jēkabpils"
+
+msgid "Jēkabpils novads"
+msgstr "Jēkabpils"
 
 msgid "Jīzan"
 msgstr "Jizan"
@@ -5062,6 +5431,9 @@ msgstr "Kagoshima"
 
 msgid "Kahramanmaraş"
 msgstr "Kahramanmaraş"
+
+msgid "Kainuu"
+msgstr "Kainuu"
 
 msgid "Kairouan"
 msgstr "Kairouan"
@@ -5159,6 +5531,9 @@ msgstr "Kandahar"
 msgid "Kandal"
 msgstr "Provincie Kandal"
 
+msgid "Kandavas novads"
+msgstr "Kandava"
+
 msgid "Kangwŏn-do"
 msgstr "Kangwŏn-do"
 
@@ -5170,6 +5545,9 @@ msgstr "Kano"
 
 msgid "Kansas"
 msgstr "Kansas"
+
+msgid "Kanta-Häme"
+msgstr "Kanta-Häme"
 
 msgid "Kanton Sarajevo"
 msgstr "Kanton Sarajevo"
@@ -5233,6 +5611,9 @@ msgstr "Karlsbad"
 
 msgid "Karnali"
 msgstr "Karnali"
+
+msgid "Karnataka"
+msgstr "Karnataka"
 
 msgid "Karonga"
 msgstr "Karonga"
@@ -5387,6 +5768,12 @@ msgstr "Keryneia"
 msgid "Kerċem"
 msgstr "Kerċem"
 
+msgid "Keski-Pohjanmaa"
+msgstr "Centraal-Österbotten"
+
+msgid "Keski-Suomi"
+msgstr "Centraal-Finland"
+
 msgid "Kgalagadi"
 msgstr "Kgalagadi"
 
@@ -5396,11 +5783,17 @@ msgstr "Kgatleng"
 msgid "Khabarovskiy kray"
 msgstr "Chabarovsk, (Territorium)"
 
+msgid "Khagrachari"
+msgstr "Khagrachari"
+
 msgid "Khakasiya, Respublika"
 msgstr "Chakassië, (Republiek)"
 
 msgid "Khammouan"
 msgstr "Khammuan"
+
+msgid "Khan Yunis"
+msgstr "Khan Yunis"
 
 msgid "Khanty-Mansiysky avtonomnyy okrug-Yugra"
 msgstr "Chanto-Mansië, (Autonoom district)"
@@ -5443,6 +5836,12 @@ msgstr "Khorasan-e-shomali"
 
 msgid "Khouribga"
 msgstr "Khouribga"
+
+msgid "Khulna"
+msgstr "Khulna"
+
+msgid "Khyber Pakhtunkhwa"
+msgstr "Khyber Pakhtunkhwa"
 
 msgid "Khánh Hòa"
 msgstr "Khanh Hoa"
@@ -5517,7 +5916,7 @@ msgid "Kirovohrads'ka Oblast'"
 msgstr "Regio Kirovohrad"
 
 msgid "Kirovskaya oblast'"
-msgstr "Kirov , (Provincie)"
+msgstr "Kirov, (Provincie)"
 
 msgid "Kiruhura"
 msgstr "Kiruhura"
@@ -5527,6 +5926,9 @@ msgstr "Kirundo"
 
 msgid "Kisela Voda"
 msgstr "Kisela Voda"
+
+msgid "Kishorganj"
+msgstr "Kishorganj"
 
 msgid "Kisoro"
 msgstr "Kisoro"
@@ -5573,11 +5975,17 @@ msgstr "Kocaeli"
 msgid "Kochi"
 msgstr "Kochi"
 
+msgid "Kocēnu novads"
+msgstr "Kocēnu novads"
+
 msgid "Kogi"
 msgstr "Kogi"
 
 msgid "Kohgīlūyeh va Būyer Ahmad"
 msgstr "Kohjiluyeh en Buyer Ahmad"
+
+msgid "Kokneses novads"
+msgstr "Koknese"
 
 msgid "Kolašin"
 msgstr "Kolašin"
@@ -5750,6 +6158,9 @@ msgstr "Krasnojarsk, (Territorium)"
 msgid "Kratovo"
 msgstr "Kratovo"
 
+msgid "Krimuldas novads"
+msgstr "Krimulda"
+
 msgid "Kriti"
 msgstr "Kreta"
 
@@ -5783,11 +6194,17 @@ msgstr "Krujë"
 msgid "Krung Thep Maha Nakhon Bangkok"
 msgstr "Krung Thep Maha Nakhon Bangkok"
 
+msgid "Krustpils novads"
+msgstr "Krustpils"
+
 msgid "Kruševo"
 msgstr "Kruševo"
 
 msgid "Královéhradecký kraj"
 msgstr "Regio Hradec Králové"
+
+msgid "Krāslavas novads"
+msgstr "Krāslava"
 
 msgid "Krško"
 msgstr "Krsko"
@@ -5797,6 +6214,9 @@ msgstr "Kujawsko-pomorski"
 
 msgid "Kukës"
 msgstr "Kukës"
+
+msgid "Kuldīgas novads"
+msgstr "Kuldīga"
 
 msgid "Kumamoto"
 msgstr "Kumamoto"
@@ -5828,11 +6248,17 @@ msgstr "Kurbin"
 msgid "Kurganskaya oblast'"
 msgstr "Koergan, (Provincie)"
 
+msgid "Kurigram"
+msgstr "Kurigram"
+
 msgid "Kurskaya oblast'"
 msgstr "Koersk, (Provincie)"
 
 msgid "Kuruṇægala"
 msgstr "Kurunegala"
+
+msgid "Kushtia"
+msgstr "Kushtia"
 
 msgid "Kusini Pemba"
 msgstr "Kusini Pemba"
@@ -5866,6 +6292,9 @@ msgstr "Kyenjojo"
 
 msgid "Kyklades"
 msgstr "Cycladen"
+
+msgid "Kymenlaakso"
+msgstr "Kymenlaakso"
 
 msgid "Kyoto"
 msgstr "Kyoto"
@@ -5915,6 +6344,9 @@ msgstr "Kanem"
 msgid "Kāpīsā"
 msgstr "Kapisa"
 
+msgid "Kārsavas novads"
+msgstr "Kārsava"
+
 msgid "Kırklareli"
 msgstr "Kırklareli"
 
@@ -5927,8 +6359,11 @@ msgstr "Kırşehir"
 msgid "Kŏḷamba"
 msgstr "Coḷombo"
 
+msgid "Kǝngǝrli"
+msgstr "Kangarli"
+
 msgid "Kəlbəcər"
-msgstr "Kalbacar,"
+msgstr "Kalbacar"
 
 msgid "K’vemo K’art’li"
 msgstr "Kvemo Kartli"
@@ -5945,11 +6380,20 @@ msgstr "Regio L'viv"
 msgid "La Altagracia"
 msgstr "La Altagracia"
 
+msgid "La Colle"
+msgstr "La Colle"
+
+msgid "La Condamine"
+msgstr "La Condamine"
+
 msgid "La Digue"
 msgstr "La Digue"
 
 msgid "La Estrelleta [Elías Piña]"
 msgstr "La Estrelleta [Elías Piña]"
+
+msgid "La Gare"
+msgstr "La Gare"
 
 msgid "La Guajira"
 msgstr "La Guajira"
@@ -5977,6 +6421,9 @@ msgstr "La Rioja"
 
 msgid "La Romana"
 msgstr "La Romana"
+
+msgid "La Source"
+msgstr "La Source"
 
 msgid "La Spezia"
 msgstr "La Spezia"
@@ -6020,11 +6467,20 @@ msgstr "Lagunes"
 msgid "Lai Châu"
 msgstr "Lai Chau"
 
+msgid "Lakes"
+msgstr "Meren"
+
 msgid "Lakonia"
 msgstr "Laconië"
 
 msgid "Lakshadweep"
 msgstr "Lakshadweep"
+
+msgid "Lakshmipur"
+msgstr "Lakshmipur"
+
+msgid "Lalmonirhat"
+msgstr "Lalmonirhat"
 
 msgid "Lambayeque"
 msgstr "Lambayeque"
@@ -6059,6 +6515,9 @@ msgstr "Languedoc-Roussillon"
 msgid "Laois"
 msgstr "Laois"
 
+msgid "Lappi"
+msgstr "Lapland"
+
 msgid "Lara"
 msgstr "Lara"
 
@@ -6070,6 +6529,9 @@ msgstr "Larissa"
 
 msgid "Larne"
 msgstr "Larne"
+
+msgid "Larvotto"
+msgstr "Larvotto"
 
 msgid "Las Palmas"
 msgstr "Las Palmas"
@@ -6218,6 +6680,9 @@ msgstr "Bevrijder Generaal Bernard O'Higgins"
 msgid "Librazhd"
 msgstr "Librazhd"
 
+msgid "Lielvārdes novads"
+msgstr "Lielvārde"
+
 msgid "Liepāja"
 msgstr "Liepāja"
 
@@ -6244,6 +6709,9 @@ msgstr "Lima"
 
 msgid "Limavady"
 msgstr "Limavady"
+
+msgid "Limbažu novads"
+msgstr "Limbaži"
 
 msgid "Limburg"
 msgstr "Limburg"
@@ -6304,6 +6772,9 @@ msgstr "Liverpool"
 
 msgid "Livorno"
 msgstr "Livorno"
+
+msgid "Liège"
+msgstr "Luik"
 
 msgid "Ličko-senjska županija"
 msgstr "Provincie Lika-Senj"
@@ -6458,8 +6929,14 @@ msgstr "Lubombo"
 msgid "Lubuskie"
 msgstr "Provincie Lubusz"
 
+msgid "Lubānas novads"
+msgstr "Lubāna"
+
 msgid "Lucca"
 msgstr "Lucca"
+
+msgid "Ludzas novads"
+msgstr "Ludza"
 
 msgid "Lugo"
 msgstr "Lugo"
@@ -6530,6 +7007,12 @@ msgstr "Lélouma"
 msgid "Léraba"
 msgstr "Léraba"
 
+msgid "Līgatnes novads"
+msgstr "Līgatne"
+
+msgid "Līvānu novads"
+msgstr "Līvāni"
+
 msgid "Lōgar"
 msgstr "Logar"
 
@@ -6563,6 +7046,9 @@ msgstr "Machinga"
 msgid "Madang"
 msgstr "Madang"
 
+msgid "Madaripur"
+msgstr "Madaripur"
+
 msgid "Madhya Pashchimanchal"
 msgstr "Madhya Pashchimanchal"
 
@@ -6574,6 +7060,9 @@ msgstr "Centrale Provincie"
 
 msgid "Madhyamanchal"
 msgstr "Madhyamanchal"
+
+msgid "Madonas novads"
+msgstr "Madona"
 
 msgid "Madre de Dios"
 msgstr "Madre de Dios"
@@ -6614,6 +7103,9 @@ msgstr "Magnisia"
 msgid "Maguindanao"
 msgstr "Maguindanao"
 
+msgid "Magura"
+msgstr "Magura"
+
 msgid "Magway"
 msgstr "Magway"
 
@@ -6631,6 +7123,9 @@ msgstr "Mahakali"
 
 msgid "Mahanuvara"
 msgstr "Mahanuvara"
+
+msgid "Maharashtra"
+msgstr "Maharashtra"
 
 msgid "Mahdia"
 msgstr "Mahdia"
@@ -6682,6 +7177,9 @@ msgstr "Malange"
 
 msgid "Malatya"
 msgstr "Malatya"
+
+msgid "Malbousquet"
+msgstr "Malbousquet"
 
 msgid "Maldonado"
 msgstr "Maldonado"
@@ -6754,6 +7252,9 @@ msgstr "Manicaland"
 
 msgid "Maniema"
 msgstr "Maniema"
+
+msgid "Manikganj"
+msgstr "Manikganj"
 
 msgid "Manipur"
 msgstr "Manipur"
@@ -6974,6 +7475,9 @@ msgstr "Mayuge"
 msgid "Mazowieckie"
 msgstr "Provincie Masovië"
 
+msgid "Mazsalacas novads"
+msgstr "Mazsalaca"
+
 msgid "Mačvanski okrug"
 msgstr "Mačva"
 
@@ -6982,6 +7486,9 @@ msgstr "Provincie Klein-Polen"
 
 msgid "Maḍakalapuva"
 msgstr "Maḍakalapuva"
+
+msgid "Ma‘ān"
+msgstr "Ma'an"
 
 msgid "Mbale"
 msgstr "Mbale"
@@ -7025,8 +7532,14 @@ msgstr "Medway"
 msgid "Meemu"
 msgstr "Meemu"
 
+msgid "Meghalaya"
+msgstr "Meghalaya"
+
 msgid "Mehedinți"
 msgstr "Mehedinți"
+
+msgid "Meherpur"
+msgstr "Meherpur"
 
 msgid "Mejit"
 msgstr "Mejit"
@@ -7057,6 +7570,9 @@ msgstr "Meneng"
 
 msgid "Mengeš"
 msgstr "Menges"
+
+msgid "Mersin"
+msgstr "Mersin"
 
 msgid "Merthyr Tydfil;Merthyr Tudful"
 msgstr "Merthyr Tydfil;Merthyr Tudful"
@@ -7238,6 +7754,9 @@ msgstr "Molise"
 msgid "Mon"
 msgstr "Mon"
 
+msgid "Monaco-Ville"
+msgstr "Monaco-stad"
+
 msgid "Monagas"
 msgstr "Monagas"
 
@@ -7249,6 +7768,9 @@ msgstr "Monastir"
 
 msgid "Mondol Kiri"
 msgstr "Provincie Mondol Kiri"
+
+msgid "Moneghetti"
+msgstr "Moneghetti"
 
 msgid "Monggar"
 msgstr "Monggar"
@@ -7279,6 +7801,9 @@ msgstr "Monte Cristi"
 
 msgid "Monte Plata"
 msgstr "Monte Plata"
+
+msgid "Monte-Carlo"
+msgstr "Monte-Carlo"
 
 msgid "Montegiardino"
 msgstr "Monte Giardino"
@@ -7367,6 +7892,12 @@ msgstr "Mouhoun"
 msgid "Moulay Yacoub"
 msgstr "Moulay Yacoub"
 
+msgid "Moulins"
+msgstr "Moulins"
+
+msgid "Moulvibazar"
+msgstr "Moulvibazar"
+
 msgid "Mountain Province"
 msgstr "Mountain Province"
 
@@ -7421,6 +7952,9 @@ msgstr "Mtwara"
 msgid "Mubende"
 msgstr "Mubende"
 
+msgid "Mubārak al Kabīr"
+msgstr "Mubarak Al-Kabier"
+
 msgid "Mudug"
 msgstr "Mudug"
 
@@ -7438,6 +7972,9 @@ msgstr "Mullaitivu"
 
 msgid "Municipalidad Metropolitana de Lima"
 msgstr "Hoofdstedelijke metropool van Lima"
+
+msgid "Munshiganj"
+msgstr "Munshiganj"
 
 msgid "Munster"
 msgstr "Munster"
@@ -7487,6 +8024,9 @@ msgstr "Mwaro"
 msgid "Mykolaïvs'ka Oblast'"
 msgstr "Regio Mykolajiv"
 
+msgid "Mymensingh"
+msgstr "Mymensingh"
+
 msgid "Mzimba"
 msgstr "Mzimba"
 
@@ -7511,8 +8051,14 @@ msgstr "Møre og Romsdal"
 msgid "Mādabā"
 msgstr "Madaba"
 
+msgid "Mālpils novads"
+msgstr "Mālpils"
+
 msgid "Māndūl"
 msgstr "Mandoul"
+
+msgid "Mārupes novads"
+msgstr "Mārupe"
 
 msgid "Mātale"
 msgstr "Matale"
@@ -7528,6 +8074,9 @@ msgstr "Mayo-Kebbi Est"
 
 msgid "Māzandarān"
 msgstr "Mazandaran"
+
+msgid "Mērsraga novads"
+msgstr "Mērsraga novads"
 
 msgid "Mělník"
 msgstr "Mělník"
@@ -7547,6 +8096,9 @@ msgstr "Nabatiye"
 msgid "Nabeul"
 msgstr "Nabeul"
 
+msgid "Nablus"
+msgstr "Nablus"
+
 msgid "Nador"
 msgstr "Nador"
 
@@ -7555,6 +8107,9 @@ msgstr "Nadur"
 
 msgid "Naftalan"
 msgstr "Naftalan"
+
+msgid "Nagaland"
+msgstr "Nagaland"
 
 msgid "Nagano"
 msgstr "Nagano"
@@ -7643,6 +8198,9 @@ msgstr "Nanumanga"
 msgid "Nanumea"
 msgstr "Nanumea"
 
+msgid "Naogaon"
+msgstr "Naogaon"
+
 msgid "Naouri"
 msgstr "Nahouri"
 
@@ -7655,14 +8213,23 @@ msgstr "Napels"
 msgid "Nara"
 msgstr "Nara"
 
+msgid "Narail"
+msgstr "Narail"
+
 msgid "Narathiwat"
 msgstr "Narathiwat"
+
+msgid "Narayanganj"
+msgstr "Narayanganj"
 
 msgid "Narayani"
 msgstr "Narayani"
 
 msgid "Nariño"
 msgstr "Nariño"
+
+msgid "Narsingdi"
+msgstr "Narsingdi"
 
 msgid "Naryn"
 msgstr "Naryn"
@@ -7679,6 +8246,12 @@ msgstr "Nationaal hoofdstedelijk district (Port Moresby)"
 msgid "National Capital Region"
 msgstr "Nationale Hoofstadregio"
 
+msgid "Natore"
+msgstr "Natore"
+
+msgid "Naukšēnu novads"
+msgstr "Naukšēni"
+
 msgid "Navarra / Nafarroa"
 msgstr "Navarra / Nafarroa"
 
@@ -7690,6 +8263,9 @@ msgstr "Navassa-eiland"
 
 msgid "Navoiy"
 msgstr "Navoiy"
+
+msgid "Nawabganj"
+msgstr "Nawabganj"
 
 msgid "Naxxar"
 msgstr "Naxxar"
@@ -7745,6 +8321,12 @@ msgstr "Nenetsië, (Autonoom district)"
 msgid "Neno"
 msgstr "Neno"
 
+msgid "Neretas novads"
+msgstr "Nereta"
+
+msgid "Netrakona"
+msgstr "Netrakona"
+
 msgid "Neuchâtel"
 msgstr "Neuchâtel"
 
@@ -7798,9 +8380,6 @@ msgstr "Newry en Mourne"
 
 msgid "Newtownabbey"
 msgstr "Newtownabbey"
-
-msgid "Ngamiland"
-msgstr "Ngamiland "
 
 msgid "Ngaraard"
 msgstr "Ngaraard"
@@ -7868,6 +8447,9 @@ msgstr "Niigata"
 msgid "Nikšić"
 msgstr "Nikšić"
 
+msgid "Nilphamari"
+msgstr "Nilphamari"
+
 msgid "Nimba"
 msgstr "Nimba"
 
@@ -7912,6 +8494,9 @@ msgstr "Nkhata Baai"
 
 msgid "Nkhotakota"
 msgstr "Nkhotakota"
+
+msgid "Noakhali"
+msgstr "Noakhali"
 
 msgid "Nong Bua Lam Phu"
 msgstr "Nong Bua Lam Phu"
@@ -7988,6 +8573,9 @@ msgstr "North Bank"
 msgid "North Carolina"
 msgstr "Noord-Carolina"
 
+msgid "North Central"
+msgstr "Midden-Noord"
+
 msgid "North Cotabato"
 msgstr "North Cotabato"
 
@@ -8005,6 +8593,9 @@ msgstr "North East Lincolnshire"
 
 msgid "North Eleuthera"
 msgstr "North Eleuthera"
+
+msgid "North Gaza"
+msgstr "Noord-Gaza"
 
 msgid "North Island"
 msgstr "Noordereiland"
@@ -8033,9 +8624,6 @@ msgstr "Noord-Oost"
 msgid "North-Eastern Kaskazini Mashariki"
 msgstr "Provincie Noord-Oost"
 
-msgid "North-West (Botswana)"
-msgstr "North-West (Botswana)"
-
 msgid "North-West (Cameroon)"
 msgstr "Noord-West (Kameroen)"
 
@@ -8050,6 +8638,9 @@ msgstr "Northamptonshire"
 
 msgid "Northern"
 msgstr "Noord"
+
+msgid "Northern Bahr el-Ghazal"
+msgstr "Noord-Bahr-el-Ghazal"
 
 msgid "Northern Cape"
 msgstr "Noord-Kaap"
@@ -8222,6 +8813,9 @@ msgstr "Nógrád"
 msgid "Nālūt"
 msgstr "Nalut"
 
+msgid "Nīcas novads"
+msgstr "Nīca"
+
 msgid "Nīmrōz"
 msgstr "Nimroz"
 
@@ -8270,6 +8864,9 @@ msgstr "Ogooué-Lolo"
 msgid "Ogooué-Maritime"
 msgstr "Ogooué-Maritime"
 
+msgid "Ogres novads"
+msgstr "Ogre"
+
 msgid "Ogun"
 msgstr "Ogun"
 
@@ -8302,6 +8899,9 @@ msgstr "Okinawa"
 
 msgid "Oklahoma"
 msgstr "Oklahoma"
+
+msgid "Olaines novads"
+msgstr "Olaine"
 
 msgid "Olancho"
 msgstr "Olancho"
@@ -8516,8 +9116,14 @@ msgstr "Oyam"
 msgid "Oyo"
 msgstr "Oyo"
 
+msgid "Ozolnieku novads"
+msgstr "Ozolnieki"
+
 msgid "Oğuz"
 msgstr "Oguz"
+
+msgid "Pabna"
+msgstr "Pabna"
 
 msgid "Pader"
 msgstr "Pader"
@@ -8560,6 +9166,9 @@ msgstr "Pamplemousses"
 
 msgid "Panamá"
 msgstr "Panama"
+
+msgid "Panchagarh"
+msgstr "Panchagarh"
 
 msgid "Pando"
 msgstr "Pando"
@@ -8638,6 +9247,9 @@ msgstr "Pathum Thani"
 
 msgid "Pattani"
 msgstr "Pattani"
+
+msgid "Patuakhali"
+msgstr "Patuakhali"
 
 msgid "Paul"
 msgstr "Paul"
@@ -8831,6 +9443,12 @@ msgstr "Pingtung"
 msgid "Piran/Pirano"
 msgstr "Piran/Pirano"
 
+msgid "Pirkanmaa"
+msgstr "Pirkanmaa"
+
+msgid "Pirojpur"
+msgstr "Pirojpur"
+
 msgid "Pirotski okrug"
 msgstr "Pirot"
 
@@ -8924,6 +9542,18 @@ msgstr "Podcetrtek"
 msgid "Pogradec"
 msgstr "Pogradec"
 
+msgid "Pohjanmaa"
+msgstr "Österbotten"
+
+msgid "Pohjois-Karjala"
+msgstr "Noord-Karelië"
+
+msgid "Pohjois-Pohjanmaa"
+msgstr "Noord-Österbotten"
+
+msgid "Pohjois-Savo"
+msgstr "Noord-Savo"
+
 msgid "Pohnpei"
 msgstr "Pohnpei"
 
@@ -8980,6 +9610,9 @@ msgstr "Port Louis"
 
 msgid "Port of Spain"
 msgstr "Port of Spain"
+
+msgid "Port-Hercule"
+msgstr "Port-Hercule"
 
 msgid "Portalegre"
 msgstr "Portalegre"
@@ -9104,6 +9737,9 @@ msgstr "Prebold"
 msgid "Preddvor"
 msgstr "Preddvor"
 
+msgid "Preiļu novads"
+msgstr "Preiļi"
+
 msgid "Presidente Hayes"
 msgstr "President Hayes"
 
@@ -9118,6 +9754,12 @@ msgstr "Provincie Prey Veng"
 
 msgid "Prešovský kraj"
 msgstr "Provincie Prešov"
+
+msgid "Priekules novads"
+msgstr "Priekule"
+
+msgid "Priekuļu novads"
+msgstr "Priekuļi"
 
 msgid "Prilep"
 msgstr "Prilep"
@@ -9157,6 +9799,9 @@ msgstr "Ptuj"
 
 msgid "Puconci"
 msgstr "Puconci"
+
+msgid "Puducherry"
+msgstr "Puducherry"
 
 msgid "Puebla"
 msgstr "Puebla"
@@ -9212,6 +9857,9 @@ msgstr "Oost-Pyreneeën"
 msgid "Páfos"
 msgstr "Paphos"
 
+msgid "Päijät-Häme"
+msgstr "Päijät-Häme"
+
 msgid "Pärnumaa"
 msgstr "Pärnumaa"
 
@@ -9230,8 +9878,17 @@ msgstr "Písek"
 msgid "Põlvamaa"
 msgstr "Põlvamaa"
 
+msgid "Pārgaujas novads"
+msgstr "Pārgauja"
+
+msgid "Pāvilostas novads"
+msgstr "Pāvilosta"
+
 msgid "Pčinjski okrug"
 msgstr "Pčinja"
+
+msgid "Pļaviņu novads"
+msgstr "Pļaviņas"
 
 msgid "Pŏḷŏnnaruva"
 msgstr "Polonnaruwa"
@@ -9259,6 +9916,9 @@ msgstr "Qacha's Nek"
 
 msgid "Qala"
 msgstr "Qala"
+
+msgid "Qalqilya"
+msgstr "Qalqilya"
 
 msgid "Qaraghandy oblysy"
 msgstr "Oblast Qarağandı"
@@ -9365,6 +10025,9 @@ msgstr "Quang Tri"
 msgid "Qyzylorda oblysy"
 msgstr "Oblast Qizilorda"
 
+msgid "Qāsh-Barkah"
+msgstr "Gash-Barka"
+
 msgid "Qīrā"
 msgstr "Guéra"
 
@@ -9404,11 +10067,23 @@ msgstr "Radoviš"
 msgid "Radovljica"
 msgstr "Radovljica"
 
+msgid "Rafah"
+msgstr "Rafah"
+
 msgid "Ragged Island"
 msgstr "Ragged Island"
 
 msgid "Ragusa"
 msgstr "Ragusa"
+
+msgid "Rajasthan"
+msgstr "Rajasthan"
+
+msgid "Rajbari"
+msgstr "Rajbari"
+
+msgid "Rajshahi"
+msgstr "Rajshahi"
 
 msgid "Rakai"
 msgstr "Rakai"
@@ -9421,6 +10096,15 @@ msgstr "Rakovník"
 
 msgid "Ralik chain"
 msgstr "Ralik-keten"
+
+msgid "Ramallah"
+msgstr "Ramallah"
+
+msgid "Rangamati"
+msgstr "Rangamati"
+
+msgid "Rangpur"
+msgstr "Rangpur"
 
 msgid "Rankovce"
 msgstr "Rankovce"
@@ -9445,6 +10129,9 @@ msgstr "Ratchaburi"
 
 msgid "Ratnapura"
 msgstr "Ratnapura"
+
+msgid "Raunas novads"
+msgstr "Rauna"
 
 msgid "Ravenna"
 msgstr "Ravenna"
@@ -9528,7 +10215,7 @@ msgid "Respublika Ingushetiya"
 msgstr "Ingoesjetië, (Republiek)"
 
 msgid "Respublika Krym"
-msgstr "Republiek Krim"
+msgstr "Krimrepubliek"
 
 msgid "Retalhuleu"
 msgstr "Retalhuleu"
@@ -9552,7 +10239,7 @@ msgid "Rhode Island"
 msgstr "Rhode-eiland"
 
 msgid "Rhondda, Cynon, Taff;Rhondda, Cynon,Taf"
-msgstr "Rhondda, Cynon, Taff;Rhondda, Cynon,Taf"
+msgstr "Rhondda, Cynon, Taff;Rhondda, Cynon, Taf"
 
 msgid "Rhône"
 msgstr "Rhône"
@@ -9580,6 +10267,9 @@ msgstr "Ribnica na Pohorju"
 
 msgid "Richmond upon Thames"
 msgstr "Richmond a/d Thames"
+
+msgid "Riebiņu novads"
+msgstr "Riebiņi"
 
 msgid "Rieti"
 msgstr "Rieti"
@@ -9665,6 +10355,9 @@ msgstr "Rogasovci"
 msgid "Roi Et"
 msgstr "Roi Et"
 
+msgid "Rojas novads"
+msgstr "Roja"
+
 msgid "Rokycany"
 msgstr "Rokycany"
 
@@ -9679,6 +10372,9 @@ msgstr "Rondônia"
 
 msgid "Rongelap"
 msgstr "Rongelap"
+
+msgid "Ropažu novads"
+msgstr "Ropaži"
 
 msgid "Roraima"
 msgstr "Roraima"
@@ -9707,8 +10403,14 @@ msgstr "Rovigo"
 msgid "Rožaje"
 msgstr "Rožaje"
 
+msgid "Rucavas novads"
+msgstr "Rucava"
+
 msgid "Ruggell"
 msgstr "Ruggell"
+
+msgid "Rugāju novads"
+msgstr "Rugāji"
 
 msgid "Rukungiri"
 msgstr "Rukungiri"
@@ -9721,6 +10423,9 @@ msgstr "Rum Cay"
 
 msgid "Rumphi"
 msgstr "Rumphi"
+
+msgid "Rundāles novads"
+msgstr "Rundāle"
 
 msgid "Ruse"
 msgstr "Roese"
@@ -9776,8 +10481,14 @@ msgstr "Rîșcani"
 msgid "Rēzekne"
 msgstr "Rēzekne"
 
+msgid "Rēzeknes novads"
+msgstr "Rēzekne"
+
 msgid "Rīga"
 msgstr "Riga"
+
+msgid "Rūjienas novads"
+msgstr "Rūjiena"
 
 msgid "Sa Kaeo"
 msgstr "Sa Kaeo"
@@ -9790,6 +10501,9 @@ msgstr "Saarland"
 
 msgid "Saatlı"
 msgstr "Saatli"
+
+msgid "Saba"
+msgstr "Saba"
 
 msgid "Sabah"
 msgstr "Sabah"
@@ -9941,6 +10655,12 @@ msgstr "Sint Maarten"
 msgid "Saint-Pierre-et-Miquelon"
 msgstr "Saint-Pierre-et-Miquelon"
 
+msgid "Saint-Roman"
+msgstr "Saint-Roman"
+
+msgid "Sainte-Dévote"
+msgstr "Sainte-Dévote"
+
 msgid "Saitama"
 msgstr "Saitama"
 
@@ -9959,11 +10679,20 @@ msgstr "Sakon Nakhon"
 msgid "Sal"
 msgstr "Sal"
 
+msgid "Salacgrīvas novads"
+msgstr "Salacgrīva"
+
 msgid "Salah ad Din"
 msgstr "Salah ad Din [Saladin]"
 
 msgid "Salamanca"
 msgstr "Salamanca"
+
+msgid "Salas novads"
+msgstr "Sala"
+
+msgid "Salaspils novads"
+msgstr "Salaspils"
 
 msgid "Salavan"
 msgstr "Salavan"
@@ -9971,8 +10700,14 @@ msgstr "Salavan"
 msgid "Salcedo"
 msgstr "Salcedo"
 
+msgid "Saldus novads"
+msgstr "Saldus"
+
 msgid "Salerno"
 msgstr "Salerno"
+
+msgid "Salfit"
+msgstr "Salfit"
 
 msgid "Salford"
 msgstr "Salford"
@@ -10235,6 +10970,12 @@ msgstr "Saskatchewan"
 msgid "Sassari"
 msgstr "Sassari"
 
+msgid "Satakunta"
+msgstr "Satakunta"
+
+msgid "Satkhira"
+msgstr "Satkhira"
+
 msgid "Satu Mare"
 msgstr "Satu Mare"
 
@@ -10243,6 +10984,9 @@ msgstr "Satun"
 
 msgid "Satupa'itea"
 msgstr "Satupa'itea"
+
+msgid "Saulkrastu novads"
+msgstr "Saulkrasti"
 
 msgid "Savanes (Région des)"
 msgstr "Savanes"
@@ -10389,10 +11133,10 @@ msgid "Shamal Sīnā'"
 msgstr "Noordelijke Sinaï"
 
 msgid "Shamāl Dārfūr"
-msgstr "Shamal-Darfoer"
+msgstr "Noord-Darfur"
 
 msgid "Shamāl Kurdufān"
-msgstr "Shamal-Kordofan"
+msgstr "Shamāl Kurdufān"
 
 msgid "Shan"
 msgstr "Shan"
@@ -10406,11 +11150,20 @@ msgstr "Sjanghai"
 msgid "Shanxi"
 msgstr "Shanxi"
 
+msgid "Shariatpur"
+msgstr "Shariatpur"
+
+msgid "Sharq Dārfūr"
+msgstr "Oost-Darfur"
+
 msgid "Shaviyani"
 msgstr "Shaviyani"
 
 msgid "Sheffield"
 msgstr "Sheffield"
+
+msgid "Sherpur"
+msgstr "Sherpur"
 
 msgid "Shetland Islands"
 msgstr "Shetland-eilanden"
@@ -10423,6 +11176,9 @@ msgstr "Shiga"
 
 msgid "Shimane"
 msgstr "Shimane"
+
+msgid "Shimālī al Baḩrī al Aḩmar"
+msgstr "Semenawi Keyih Bahri"
 
 msgid "Shinyanga"
 msgstr "Shinyanga"
@@ -10487,6 +11243,9 @@ msgstr "Siena"
 msgid "Siguiri"
 msgstr "Siguiri"
 
+msgid "Siguldas novads"
+msgstr "Sigulda"
+
 msgid "Siirt"
 msgstr "Siirt"
 
@@ -10523,6 +11282,12 @@ msgstr "Sinoe"
 msgid "Sinop"
 msgstr "Sinop"
 
+msgid "Sint Eustatius"
+msgstr "Sint Eustatius"
+
+msgid "Sint Maarten"
+msgstr "Sint Maarten"
+
 msgid "Sipaliwini"
 msgstr "Sipaliwini"
 
@@ -10534,6 +11299,9 @@ msgstr "Siquijor"
 
 msgid "Siracusa"
 msgstr "Siracuse"
+
+msgid "Sirajganj"
+msgstr "Sirajganj"
 
 msgid "Sirak"
 msgstr "Sirak"
@@ -10571,6 +11339,12 @@ msgstr "Skikda"
 msgid "Skrapar"
 msgstr "Skrapar"
 
+msgid "Skrundas novads"
+msgstr "Skrunda"
+
+msgid "Skrīveru novads"
+msgstr "Skrīveri"
+
 msgid "Skåne län"
 msgstr "Graafschap Skåne"
 
@@ -10594,6 +11368,9 @@ msgstr "Slovenska Bistrica"
 
 msgid "Slovenske Konjice"
 msgstr "Slovenske Konjice"
+
+msgid "Smiltenes novads"
+msgstr "Smiltene"
 
 msgid "Smolenskaya oblast'"
 msgstr "Smolensk, (Provincie)"
@@ -10721,6 +11498,9 @@ msgstr "South Ayrshire"
 msgid "South Carolina"
 msgstr "Zuid-Carolina"
 
+msgid "South Central"
+msgstr "Midden-Zuid"
+
 msgid "South Cotabato"
 msgstr "South Cotabato"
 
@@ -10760,9 +11540,6 @@ msgstr "Southampton"
 msgid "Southend-on-Sea"
 msgstr "Southend aan Zee"
 
-msgid "Southern (Botswana)"
-msgstr "Southern (Botswana)"
-
 msgid "Southern (Sierra Leone)"
 msgstr "Southern (Sierra Leone)"
 
@@ -10792,6 +11569,9 @@ msgstr "Spanish Wells"
 
 msgid "Splitsko-dalmatinska županija"
 msgstr "Provincie Split-Dalmatië"
+
+msgid "Spélugues"
+msgstr "Spélugues"
 
 msgid "Središče ob Dravi"
 msgstr "Središče ob Dravi"
@@ -10847,6 +11627,9 @@ msgstr "Stockton aan Tees"
 msgid "Stoke-on-Trent"
 msgstr "Stoke aan Trent"
 
+msgid "Stopiņu novads"
+msgstr "Stopiņi"
+
 msgid "Strabane"
 msgstr "Strabane"
 
@@ -10855,6 +11638,9 @@ msgstr "Strakonice"
 
 msgid "Straža"
 msgstr "Straža"
+
+msgid "Strenču novads"
+msgstr "Strenči"
 
 msgid "Struga"
 msgstr "Struga"
@@ -10967,6 +11753,9 @@ msgstr "Sumqayit"
 msgid "Sums 'ka Oblast'"
 msgstr "Regio Sumy"
 
+msgid "Sunamganj"
+msgstr "Sunamganj"
+
 msgid "Sunderland"
 msgstr "Sunderland"
 
@@ -11006,6 +11795,9 @@ msgstr "Zuidelijk schiereiland"
 msgid "Svaay Rieng"
 msgstr "Provincie Svay Rieng"
 
+msgid "Svalbard (Arctic Region)"
+msgstr "Svalbard (Arctische regio)"
+
 msgid "Sverdlovskaya oblast'"
 msgstr "Sverdlovsk, (Provincie)"
 
@@ -11044,6 +11836,9 @@ msgstr "Swindon"
 
 msgid "Syddanmark"
 msgstr "Zuid-Denemarken"
+
+msgid "Sylhet"
+msgstr "Sylhet"
 
 msgid "Syunik'"
 msgstr "Syunik''"
@@ -11122,6 +11917,9 @@ msgstr "Sühbaatar"
 
 msgid "Sălaj"
 msgstr "Sălaj"
+
+msgid "Sējas novads"
+msgstr "Sēja"
 
 msgid "Sīlā"
 msgstr "Gilan"
@@ -11213,6 +12011,9 @@ msgstr "Takhār"
 msgid "Talas"
 msgstr "Talas"
 
+msgid "Talsu novads"
+msgstr "Talsi"
+
 msgid "Tamanghasset"
 msgstr "Tamanghasset"
 
@@ -11228,11 +12029,17 @@ msgstr "Tambov, (Provincie)"
 msgid "Tameside"
 msgstr "Tameside"
 
+msgid "Tamil Nadu"
+msgstr "Tamil Nadu"
+
 msgid "Tan-Tan"
 msgstr "Tan-Tan"
 
 msgid "Tanga"
 msgstr "Tanga"
+
+msgid "Tangail"
+msgstr "Tangail"
 
 msgid "Tanger-Assilah"
 msgstr "Tanger-Assilah"
@@ -11419,6 +12226,9 @@ msgstr "Thaa"
 
 msgid "Thaba-Tseka"
 msgstr "Thaba-Tseka"
+
+msgid "Thakurgaon"
+msgstr "Thakurgaon"
 
 msgid "Thanh Hóa"
 msgstr "Thanh Hoa"
@@ -11729,17 +12539,26 @@ msgstr "Tsirang"
 msgid "Tuamasaga"
 msgstr "Tuamasaga"
 
+msgid "Tubas"
+msgstr "Tubas"
+
 msgid "Tucuman"
 msgstr "Tucuman"
 
 msgid "Tui"
 msgstr "Tuy"
 
+msgid "Tukuma novads"
+msgstr "Tukums"
+
 msgid "Tul'skaya oblast'"
 msgstr "Toela, (Provincie)"
 
 msgid "Tulcea"
 msgstr "Tulcea"
+
+msgid "Tulkarm"
+msgstr "Tulkarm"
 
 msgid "Tumbes"
 msgstr "Tumbes"
@@ -11803,6 +12622,9 @@ msgstr "Ta'izz"
 
 msgid "Tānjilī"
 msgstr "Tandjilé"
+
+msgid "Tērvetes novads"
+msgstr "Tērvete"
 
 msgid "Třebíč"
 msgstr "Třebíč"
@@ -11873,6 +12695,9 @@ msgstr "Verenigd Koninkrijk"
 msgid "United States Minor Outlying Islands"
 msgstr "Verenigde Staten Kleine Uitliggende Eilanden"
 
+msgid "Unity"
+msgstr "Eenheid"
+
 msgid "Unsko-sanski kanton"
 msgstr "Una-Sana, kanton"
 
@@ -11882,8 +12707,17 @@ msgstr "Boven-Demerara-Berbice"
 msgid "Upper East"
 msgstr "Opper-Oost"
 
+msgid "Upper Nile"
+msgstr "Opper-Nijl"
+
+msgid "Upper North"
+msgstr "Boven-Noord"
+
 msgid "Upper River"
 msgstr "Upper River"
+
+msgid "Upper South"
+msgstr "Boven-Zuid"
 
 msgid "Upper Takutu-Upper Essequibo"
 msgstr "Boven-Takutu-Boven-Essequibo"
@@ -11924,11 +12758,17 @@ msgstr "Uttar Pradesh"
 msgid "Uttaradit"
 msgstr "Uttaradit"
 
+msgid "Uttarakhand"
+msgstr "Uttarakhand"
+
 msgid "Uturu paḷāta"
 msgstr "Noordelijke Provincie"
 
 msgid "Uturumæ̆da paḷāta"
 msgstr "Noordelijke Centrale Provincie"
+
+msgid "Uusimaa"
+msgstr "Uusimaa"
 
 msgid "Uvs"
 msgstr "Uvs"
@@ -11957,6 +12797,9 @@ msgstr "Vaisigano"
 msgid "Vaitupu"
 msgstr "Vaitupu"
 
+msgid "Vaiņodes novads"
+msgstr "Vaiņode"
+
 msgid "Vakaga"
 msgstr "Vakaga"
 
@@ -11984,6 +12827,9 @@ msgstr "Valencia, Gemeenschap"
 msgid "Valgamaa"
 msgstr "Valgamaa"
 
+msgid "Valkas novads"
+msgstr "Valka"
+
 msgid "Valladolid"
 msgstr "Valladolid"
 
@@ -11998,6 +12844,9 @@ msgstr "Vallei van de Cauca"
 
 msgid "Valletta"
 msgstr "Valletta"
+
+msgid "Vallon de la Rousse"
+msgstr "Vallon de la Rousse"
 
 msgid "Vallée du Bandama (Région de la)"
 msgstr "Vallée du Bandama"
@@ -12017,6 +12866,9 @@ msgstr "Van"
 msgid "Var"
 msgstr "Var"
 
+msgid "Varakļānu novads"
+msgstr "Varakļāni"
+
 msgid "Varaždinska županija"
 msgstr "Provincie Varazdin"
 
@@ -12028,6 +12880,9 @@ msgstr "Vargas"
 
 msgid "Varna"
 msgstr "Varna"
+
+msgid "Varsinais-Suomi"
+msgstr "Varsinais-Suomi"
 
 msgid "Vas"
 msgstr "Vas"
@@ -12059,6 +12914,12 @@ msgstr "Vayamba paḷāta"
 msgid "Vayoc Jor"
 msgstr "Vayoc Jor"
 
+msgid "Vecpiebalgas novads"
+msgstr "Vecpiebalga"
+
+msgid "Vecumnieku novads"
+msgstr "Vecumnieki"
+
 msgid "Velenje"
 msgstr "Velenje"
 
@@ -12084,6 +12945,9 @@ msgid "Venezia"
 msgstr "Venetië"
 
 msgid "Ventspils"
+msgstr "Ventspils"
+
+msgid "Ventspils novads"
 msgstr "Ventspils"
 
 msgid "Veracruz"
@@ -12158,6 +13022,9 @@ msgstr "Vienne"
 msgid "Vientiane"
 msgstr "Vientiane"
 
+msgid "Viesītes novads"
+msgstr "Viesīte"
+
 msgid "Vila Real"
 msgstr "Vila Real"
 
@@ -12205,6 +13072,15 @@ msgstr "Viterbo"
 
 msgid "Vizcayaa / Bizkaia"
 msgstr "Biskaje / Bizkaia"
+
+msgid "Viļakas novads"
+msgstr "Viļaka"
+
+msgid "Viļānu novads"
+msgstr "Viļāni"
+
+msgid "Vlaams Gewest"
+msgstr "Vlaams Gewest"
 
 msgid "Vlaams-Brabant"
 msgstr "Vlaams-Brabant"
@@ -12305,6 +13181,9 @@ msgstr "Graafschap Västra Götaland"
 msgid "Võrumaa"
 msgstr "Võrumaa"
 
+msgid "Vārkavas novads"
+msgstr "Vārkava"
+
 msgid "Vĩnh Long"
 msgstr "Vinh Long"
 
@@ -12356,6 +13235,9 @@ msgstr "Wardak"
 msgid "Warmińsko-mazurskie"
 msgstr "Provincie Warmië-Masurië"
 
+msgid "Warrap"
+msgstr "Warab"
+
 msgid "Warrington"
 msgstr "Warrington"
 
@@ -12370,6 +13252,9 @@ msgstr "Wasit"
 
 msgid "Waterford"
 msgstr "Waterford"
+
+msgid "Wele-Nzas"
+msgstr "Wele-Nzas"
 
 msgid "Wellington"
 msgstr "Wellington"
@@ -12416,14 +13301,20 @@ msgstr "Westelijk gebied (Freetown)"
 msgid "Western Australia"
 msgstr "West-Australië"
 
+msgid "Western Bahr el-Ghazal"
+msgstr "West-Bahr-el-Ghazal"
+
 msgid "Western Cape"
 msgstr "West-Kaap"
+
+msgid "Western Equatoria"
+msgstr "West-Equatoria"
 
 msgid "Western Highlands"
 msgstr "Westelijke Hooglanden"
 
 msgid "Western Magharibi"
-msgstr "Westelijke provinciei"
+msgstr "Westelijke provincie"
 
 msgid "Western Samar"
 msgstr "Western Samar"
@@ -12681,7 +13572,7 @@ msgid "Yāpanaya"
 msgstr "Jaffna"
 
 msgid "Zabajkal'skij kraj"
-msgstr "Zabajkal'skij (provincie)"
+msgstr "Zabajkal'skij (Provincie)"
 
 msgid "Zacapa"
 msgstr "Zacapa"
@@ -12727,6 +13618,9 @@ msgstr "Zala"
 
 msgid "Zalaegerszeg"
 msgstr "Zalaegerszeg"
+
+msgid "Zalingei"
+msgstr "Zalingei"
 
 msgid "Zambales"
 msgstr "Zambales"
@@ -12803,6 +13697,9 @@ msgstr "Regio Zhytomyr"
 msgid "Ziguinchor"
 msgstr "Ziguinchor"
 
+msgid "Zilupes novads"
+msgstr "Zilupe"
+
 msgid "Zinder"
 msgstr "Zinder"
 
@@ -12869,6 +13766,9 @@ msgstr "Z̧ufār"
 msgid "`Asīr"
 msgstr "Asir"
 
+msgid "wallonne, Région"
+msgstr "Wallonië, Gewest"
+
 msgid "Álava"
 msgstr "Álava"
 
@@ -12923,6 +13823,9 @@ msgstr "Ústí nad Labem"
 msgid "Ústí nad Orlicí"
 msgstr "Ústí nad Orlicí"
 
+msgid "Ādažu novads"
+msgstr "Ādaži"
+
 msgid "Ādīs Ābeba"
 msgstr "Addis Abeba"
 
@@ -12971,6 +13874,9 @@ msgstr "Čučer Sandevo"
 msgid "Điện Biên"
 msgstr "Dien Bien"
 
+msgid "Đà Nẵng"
+msgstr "Da Nang (stad)"
+
 msgid "Đắc Lắk"
 msgstr "Dac Lak"
 
@@ -12982,6 +13888,9 @@ msgstr "Dong Nai"
 
 msgid "Đồng Tháp"
 msgstr "Dong Thap"
+
+msgid "Ērgļu novads"
+msgstr "Ērgļi"
 
 msgid "Ħamrun"
 msgstr "Ħamrun"
@@ -13001,6 +13910,12 @@ msgstr "Istanbul"
 msgid "İzmir"
 msgstr "Izmir"
 
+msgid "Ķeguma novads"
+msgstr "Ķegums"
+
+msgid "Ķekavas novads"
+msgstr "Ķekava"
+
 msgid "Łódzkie"
 msgstr "Provincie Lodzkie"
 
@@ -13013,6 +13928,9 @@ msgstr "Provincie Heilig-Kruis"
 msgid "Şa'dah"
 msgstr "Sa'dah"
 
+msgid "Şabran"
+msgstr "Şabran"
+
 msgid "Şahbuz"
 msgstr "Sahbuz"
 
@@ -13024,6 +13942,9 @@ msgstr "Sana'a"
 
 msgid "Şanlıurfa"
 msgstr "Şanlıurfa"
+
+msgid "Şirvan"
+msgstr "Şirvan"
 
 msgid "Şuşa"
 msgstr "Susa"
@@ -13177,3 +14098,9 @@ msgstr "Hajjah"
 
 msgid "Ḩaḑramawt"
 msgstr "Hadramaut"
+
+msgid "‘Ajlūn"
+msgstr "Ajlun"
+
+msgid "‘Ammān (Al ‘Aşimah)"
+msgstr "Amman"

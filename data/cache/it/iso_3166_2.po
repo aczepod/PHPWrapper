@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: iso_3166_2\n"
 "Report-Msgid-Bugs-To: Debian iso-codes team <pkg-isocodes-devel@lists.alioth."
 "debian.org>\n"
-"POT-Creation-Date: 2012-04-09 14:32+0200\n"
+"POT-Creation-Date: 2012-08-25 16:22+0200\n"
 "PO-Revision-Date: 2012-06-06 08:36+0200\n"
 "Last-Translator: Milo Casagrande <milo@casagrande.name>\n"
 "Language-Team: Italian <tp@lists.linux.it>\n"
@@ -3451,9 +3451,6 @@ msgstr "Dāykundī"
 msgid "Děčín"
 msgstr "Decin"
 
-msgid "Dəvəçi"
-msgstr "Davachi"
-
 msgid "Ealing"
 msgstr "Ealing"
 
@@ -4557,9 +4554,6 @@ msgstr "Hato Mayor"
 
 msgid "Hatobohei"
 msgstr "Hatobohei"
-
-msgid "Haut-Congo"
-msgstr "Alto Congo"
 
 msgid "Haut-Mbomou"
 msgstr "Haut-Mbomou"
@@ -8386,9 +8380,6 @@ msgstr "Newry e Mourne"
 msgid "Newtownabbey"
 msgstr "Newtownabbey"
 
-msgid "Ngamiland"
-msgstr "Ngamiland"
-
 msgid "Ngaraard"
 msgstr "Ngaraard"
 
@@ -8631,9 +8622,6 @@ msgstr "Nordorientale (Botswana)"
 
 msgid "North-Eastern Kaskazini Mashariki"
 msgstr "Provincia Nordorientale"
-
-msgid "North-West (Botswana)"
-msgstr "Nordoccidentale (Botswana)"
 
 msgid "North-West (Cameroon)"
 msgstr "Provincia del Nordovest (Camerun)"
@@ -11550,9 +11538,6 @@ msgstr "Southampton"
 
 msgid "Southend-on-Sea"
 msgstr "Southend-on-Sea"
-
-msgid "Southern (Botswana)"
-msgstr "Meridionale (Botswana)"
 
 msgid "Southern (Sierra Leone)"
 msgstr "Area meridionale (Sierra Leone)"

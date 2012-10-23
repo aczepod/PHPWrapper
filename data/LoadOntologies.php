@@ -87,7 +87,6 @@ try
 	//
 	LoadISOOntologies();
 	LoadISOStandards();
-exit;
 	LoadISO639Categories();
 	LoadISO639Enums();
 	LoadISO3166Categories();
@@ -99,6 +98,7 @@ exit;
 	//
 	ISODecodePOFiles();
 	ISOBuildXMLFiles();
+exit;
 	
 	echo( "  • Loading landraces passport ontology.\n" );
 	

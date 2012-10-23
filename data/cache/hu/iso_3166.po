@@ -3,8 +3,8 @@ msgstr ""
 "Project-Id-Version: iso_3166\n"
 "Report-Msgid-Bugs-To: Debian iso-codes team <pkg-isocodes-devel@lists.alioth."
 "debian.org>\n"
-"POT-Creation-Date: 2012-03-03 15:40+0100\n"
-"PO-Revision-Date: 2011-07-10 03:07+0200\n"
+"POT-Creation-Date: 2012-08-23 07:39+0200\n"
+"PO-Revision-Date: 2012-08-16 07:43+0200\n"
 "Last-Translator: Kalman Kemenczy <kkemenczy@gmail.com>\n"
 "Language-Team: Hungarian <translation-team-hu@lists.sourceforge.net>\n"
 "Language: hu\n"
@@ -1007,6 +1007,9 @@ msgstr "Szlovén Köztársaság"
 msgid "Republic of South Africa"
 msgstr "Dél-afrikai Köztársaság"
 
+msgid "Republic of South Sudan"
+msgstr "Dél-szudáni Köztársaság"
+
 msgid "Republic of Suriname"
 msgstr "Suriname Köztársaság"
 
@@ -1159,6 +1162,9 @@ msgstr "Dél-Afrika"
 
 msgid "South Georgia and the South Sandwich Islands"
 msgstr "Dél-Georgia és Déli-Sandwich-szigetek"
+
+msgid "South Sudan"
+msgstr "Dél-Szudán"
 
 msgid "Southern Rhodesia"
 msgstr "Dél-Rodézia"
@@ -1320,7 +1326,7 @@ msgid "Venezuela"
 msgstr "Venezuela"
 
 msgid "Venezuela, Bolivarian Republic of"
-msgstr "Venezuela"
+msgstr "Venezuelai Bolivári Köztársaság"
 
 msgid "Viet Nam"
 msgstr "Vietnam"

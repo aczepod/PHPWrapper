@@ -4,7 +4,7 @@ msgstr ""
 "Report-Msgid-Bugs-To: Debian iso-codes team <pkg-isocodes-devel@lists.alioth."
 "debian.org>\n"
 "POT-Creation-Date: 2012-06-26 09:55+0200\n"
-"PO-Revision-Date: 2012-06-12 21:00+0100\n"
+"PO-Revision-Date: 2012-07-01 17:47+0200\n"
 "Last-Translator: Tomislav Krznar <tomislav.krznar@gmail.com>\n"
 "Language-Team: Croatian <lokalizacija@linux.hr>\n"
 "Language: hr\n"
@@ -12,12 +12,20 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "X-Generator: KTranslator v 0.6.0\n"
+"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n"
+"%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2)\n"
 
 msgid "Abkhazian"
 msgstr "abhaski"
 
 msgid "Afghan Sign Language"
 msgstr "afganistanski znakovni jezik"
+
+msgid "Afrikaans"
+msgstr "afrikaans"
+
+msgid "Afro-Asiatic languages"
+msgstr "afroazijatski jezici"
 
 msgid "Akkadian"
 msgstr "akadski"
@@ -28,6 +36,15 @@ msgstr "albanski"
 msgid "Albanian Sign Language"
 msgstr "albanski znakovni jezik"
 
+msgid "Albanian languages"
+msgstr "albanski jezici"
+
+msgid "Algerian Arabic"
+msgstr "alžirski arapski"
+
+msgid "Algerian Saharan Arabic"
+msgstr "alžirski saharski arapski"
+
 msgid "Algerian Sign Language"
 msgstr "alžirski znakovni jezik"
 
@@ -37,8 +54,26 @@ msgstr "američki znakovni jezik"
 msgid "Amharic"
 msgstr "amharski"
 
+msgid "Ancient Greek (to 1453)"
+msgstr "starogrčki (do 1453.)"
+
+msgid "Ancient Hebrew"
+msgstr "starohebrejski"
+
+msgid "Ancient Macedonian"
+msgstr "antički makedonski"
+
+msgid "Ancient North Arabian"
+msgstr "antički sjevernoarapski"
+
+msgid "Andalusian Arabic"
+msgstr "andaluzijski arapski"
+
 msgid "Anglo-Norman"
 msgstr "anglonormanski"
+
+msgid "Antigua and Barbuda Creole English"
+msgstr "kreolski engleski, Antigva i Barbuda"
 
 msgid "Aquitanian"
 msgstr "akvitanski"
@@ -55,14 +90,26 @@ msgstr "arapski, alžirski saharski"
 msgid "Arabic, Andalusian"
 msgstr "arapski, andaluzijski"
 
+msgid "Arabic, Chadian"
+msgstr "arapski, čadski"
+
 msgid "Arabic, Cypriot"
 msgstr "arapski, ciparski"
 
 msgid "Arabic, Egyptian"
 msgstr "arapski, egipatski"
 
+msgid "Arabic, Judeo-Iraqi"
+msgstr "arapski, judeoirački"
+
+msgid "Arabic, Judeo-Yemeni"
+msgstr "arapski, judeojemenski"
+
 msgid "Arabic, Libyan"
 msgstr "arapski, libijski"
+
+msgid "Arabic, Moroccan"
+msgstr "arapski, marokanski"
 
 msgid "Arabic, Standard"
 msgstr "arapski, standardni"
@@ -79,8 +126,11 @@ msgstr "arapski, uzbeški"
 msgid "Aragonese"
 msgstr "aragonski"
 
+msgid "Aramaic, Ancient (up to 700 BCE)"
+msgstr "staroaramejski (do 700. pr. Kr.)"
+
 msgid "Aramaic, Jewish Babylonian (ca. 200-1200 CE)"
-msgstr "aramejski, židovski babilonski (cca 200.-1200.)"
+msgstr "aramejski, židovski babilonski (cca. 200.-1200.)"
 
 msgid "Aramaic, Jewish Palestinian"
 msgstr "aramejski, židovski palestinski"
@@ -103,8 +153,17 @@ msgstr "armenski znakovni jezik"
 msgid "Armenian, Classical"
 msgstr "armenski, klasični"
 
+msgid "Artificial languages"
+msgstr "umjetni jezici"
+
+msgid "Assyrian Neo-Aramaic"
+msgstr "asirski novoaramejski"
+
 msgid "Asturian"
 msgstr "asturijski"
+
+msgid "Athapascan languages"
+msgstr "atapaskanski jezici"
 
 msgid "Australian Aborigines Sign Language"
 msgstr "znakovni jezik australskih Aboridžina"
@@ -112,8 +171,17 @@ msgstr "znakovni jezik australskih Aboridžina"
 msgid "Australian Sign Language"
 msgstr "australski znakovni jezik"
 
+msgid "Australian languages"
+msgstr "australski jezici"
+
 msgid "Austrian Sign Language"
 msgstr "austrijski znakovni jezik"
+
+msgid "Austro-Asiatic languages"
+msgstr "austroazijatski jezici"
+
+msgid "Austronesian languages"
+msgstr "austronezijski jezici"
 
 msgid "Avaric"
 msgstr "avarski"
@@ -127,6 +195,12 @@ msgstr "sjevernoazerbejdžanski"
 msgid "Azerbaijani, South"
 msgstr "južnoazerbejdžanski"
 
+msgid "Baltic languages"
+msgstr "baltički jezici"
+
+msgid "Barzani Jewish Neo-Aramaic"
+msgstr "barzanski židovski novoaramejski"
+
 msgid "Basque"
 msgstr "baskijski"
 
@@ -136,8 +210,20 @@ msgstr "bavarski"
 msgid "Belarusian"
 msgstr "bjeloruski"
 
+msgid "Belgian Sign Language"
+msgstr "belgijski znakovni jezik"
+
 msgid "Bengali"
 msgstr "bengalski"
+
+msgid "Berber languages"
+msgstr "berberski jezici"
+
+msgid "Bihari languages"
+msgstr "biharski jezici"
+
+msgid "Bohtan Neo-Aramaic"
+msgstr "bohtanski novoaramejski"
 
 msgid "Bolivian Sign Language"
 msgstr "bolivijski znakovni jezik"
@@ -166,6 +252,21 @@ msgstr "bugarski"
 msgid "Bulgarian Sign Language"
 msgstr "bugarski znakovni jezik"
 
+msgid "Bulgarian, Old"
+msgstr "starobugarski"
+
+msgid "Buriat, China"
+msgstr "burijatski, kineski"
+
+msgid "Buriat, Mongolia"
+msgstr "burijatski, mongolski"
+
+msgid "Buriat, Russia"
+msgstr "burijatski, ruski"
+
+msgid "Caribbean Javanese"
+msgstr "karipski javanski"
+
 msgid "Carolinian"
 msgstr "karolinski"
 
@@ -175,11 +276,35 @@ msgstr "katalonski"
 msgid "Catalan Sign Language"
 msgstr "katalonski znakovni jezik"
 
+msgid "Celtic languages"
+msgstr "keltski jezici"
+
+msgid "Central American Indian languages"
+msgstr "srednjoamerički indijanski jezici"
+
+msgid "Central Khmer"
+msgstr "srednjekmerski"
+
+msgid "Central Kurdish"
+msgstr "srednjekurdski"
+
+msgid "Central Sudanic languages"
+msgstr "srednjesudanski jezici"
+
+msgid "Chadian Arabic"
+msgstr "čadski arapski"
+
 msgid "Chadian Sign Language"
 msgstr "čadski znakovni jezik"
 
+msgid "Chadic languages"
+msgstr "čadski jezici"
+
 msgid "Chilean Sign Language"
 msgstr "čileanski znakovni jezik"
+
+msgid "China Buriat"
+msgstr "kineski burijatski"
 
 msgid "Chinese"
 msgstr "kineski"
@@ -193,11 +318,26 @@ msgstr "kineski, mandarinski"
 msgid "Chinese, Old"
 msgstr "starokineski"
 
+msgid "Church Slavic"
+msgstr "crkveni slavenski"
+
+msgid "Chuvash"
+msgstr "čuvaški"
+
+msgid "Classical Armenian"
+msgstr "klasični armenski"
+
+msgid "Classical Mongolian"
+msgstr "klasični mongolski"
+
+msgid "Classical Tibetan"
+msgstr "klasični tibetski"
+
 msgid "Colombian Sign Language"
 msgstr "kolumbijski znakovni jezik"
 
 msgid "Corsican"
-msgstr "korzikanski"
+msgstr "korzički"
 
 msgid "Costa Rican Sign Language"
 msgstr "kostarikanski znakovni jezik"
@@ -208,11 +348,17 @@ msgstr "kreolski arapski, sudanski"
 msgid "Creole English, Antigua and Barbuda"
 msgstr "kreolski engleski, Antigva i Barbuda"
 
+msgid "Creole English, Hawai'i"
+msgstr "kreolski engleski, havajski"
+
 msgid "Creole English, Jamaican"
 msgstr "kreolski engleski, jamajkanski"
 
 msgid "Creole English, Nicaragua"
-msgstr "kreolski engleski, Nikaragva"
+msgstr "kreolski engleski, nikaragvanski"
+
+msgid "Creole English, Trinidadian"
+msgstr "kreolski engleski, trinidadski"
 
 msgid "Creole French, Saint Lucian"
 msgstr "kreolski francuski, svetolucijanski"
@@ -220,11 +366,20 @@ msgstr "kreolski francuski, svetolucijanski"
 msgid "Creole, Haitian"
 msgstr "kreolski, haićanski"
 
+msgid "Crimean Tatar"
+msgstr "krimski tatarski"
+
 msgid "Croatia Sign Language"
 msgstr "hrvatski znakovni jezik"
 
 msgid "Croatian"
 msgstr "hrvatski"
+
+msgid "Cuba Sign Language"
+msgstr "kubanski znakovni jezik"
+
+msgid "Cypriot Arabic"
+msgstr "ciparski arapski"
 
 msgid "Czech"
 msgstr "češki"
@@ -256,6 +411,18 @@ msgstr "nizozemski znakovni jezik"
 msgid "Dutch, Old"
 msgstr "staronizozemski"
 
+msgid "East Germanic languages"
+msgstr "istočnogermanski jezici"
+
+msgid "East Slavic languages"
+msgstr "istočnoslavenski jezici"
+
+msgid "Eastern Sudanic languages"
+msgstr "istočnosudanski jezici"
+
+msgid "Eastern Yiddish"
+msgstr "istočni jidiš"
+
 msgid "Ecuadorian Sign Language"
 msgstr "ekvadorski znakovni jezik"
 
@@ -264,6 +431,12 @@ msgstr "egipatski znakovni jezik"
 
 msgid "Egyptian (Ancient)"
 msgstr "egipatski (antički)"
+
+msgid "Egyptian Arabic"
+msgstr "egipatski arapski"
+
+msgid "Egyptian languages"
+msgstr "egipatski jezici"
 
 msgid "Emilian"
 msgstr "emilijanski"
@@ -275,7 +448,7 @@ msgid "English, Liberian"
 msgstr "engleski, liberijski"
 
 msgid "English, Old (ca. 450-1100)"
-msgstr "staroengleski (cca 450.-1100.)"
+msgstr "staroengleski (cca. 450.-1100.)"
 
 msgid "Esperanto"
 msgstr "esperanto"
@@ -304,6 +477,9 @@ msgstr "finski"
 msgid "Finnish Sign Language"
 msgstr "finski znakovni jezik"
 
+msgid "Finno-Ugrian languages"
+msgstr "ugrofinski jezici"
+
 msgid "Frankish"
 msgstr "franački"
 
@@ -314,7 +490,10 @@ msgid "French Sign Language"
 msgstr "francuski znakovni jezik"
 
 msgid "French, Old (842-ca. 1400)"
-msgstr "starofrancuski (842.-cca 1400.)"
+msgstr "starofrancuski (842.-cca. 1400.)"
+
+msgid "Frisian, Old"
+msgstr "starofrizijski"
 
 msgid "Friulian"
 msgstr "friulski"
@@ -337,14 +516,20 @@ msgstr "njemački znakovni jezik"
 msgid "German, Swiss"
 msgstr "njemački, švicarski"
 
+msgid "Germanic languages"
+msgstr "germanski jezici"
+
 msgid "Greek Sign Language"
 msgstr "grčki znakovni jezik"
 
+msgid "Greek languages"
+msgstr "grčki jezici"
+
 msgid "Greek, Ancient (to 1453)"
-msgstr "grčki, antički (do 1453.)"
+msgstr "starogrčki (do 1453.)"
 
 msgid "Greek, Modern (1453-)"
-msgstr "grčki, suvremeni (1453.-)"
+msgstr "novogrčki (od 1453.)"
 
 msgid "Guatemalan Sign Language"
 msgstr "gvatemalski znakovni jezik"
@@ -352,14 +537,23 @@ msgstr "gvatemalski znakovni jezik"
 msgid "Guinean Sign Language"
 msgstr "gvinejski znakovni jezik"
 
+msgid "Haitian"
+msgstr "haićanski"
+
 msgid "Hanoi Sign Language"
 msgstr "hanojski znakovni jezik"
+
+msgid "Hawai'i Creole English"
+msgstr "havajski kreolski engleski"
+
+msgid "Hawaiian"
+msgstr "havajski"
 
 msgid "Hebrew"
 msgstr "hebrejski"
 
 msgid "Hebrew, Ancient"
-msgstr "hebrejski, antički"
+msgstr "starohebrejski"
 
 msgid "Hungarian"
 msgstr "mađarski"
@@ -382,6 +576,15 @@ msgstr "ilirski"
 msgid "Indian Sign Language"
 msgstr "indijski znakovni jezik"
 
+msgid "Indic languages"
+msgstr "indijski jezici"
+
+msgid "Indo-European languages"
+msgstr "indoeuropski jezici"
+
+msgid "Indo-Iranian languages"
+msgstr "indoiranski jezici"
+
 msgid "Indo-Portuguese"
 msgstr "indoportugalski"
 
@@ -390,6 +593,15 @@ msgstr "indonezijski"
 
 msgid "Indonesian Sign Language"
 msgstr "indonezijski znakovni jezik"
+
+msgid "Interlingua (International Auxiliary Language Association)"
+msgstr "interlingua"
+
+msgid "Iranian Persian"
+msgstr "iranski perzijski"
+
+msgid "Iranian languages"
+msgstr "iranski jezici"
 
 msgid "Irish"
 msgstr "irski"
@@ -409,6 +621,9 @@ msgstr "talijanski"
 msgid "Italian Sign Language"
 msgstr "talijanski znakovni jezik"
 
+msgid "Jamaican Creole English"
+msgstr "jamajkanski kreolski engleski"
+
 msgid "Jamaican Sign Language"
 msgstr "jamajkanski znakovni jezik"
 
@@ -421,8 +636,38 @@ msgstr "japanski znakovni jezik"
 msgid "Japanese, Old"
 msgstr "starojapanski"
 
+msgid "Javanese, Caribbean"
+msgstr "javanski, karipski"
+
+msgid "Jewish Babylonian Aramaic (ca. 200-1200 CE)"
+msgstr "židovski babilonski aramejski (cca. 200.-1200.)"
+
+msgid "Jewish Palestinian Aramaic"
+msgstr "židovski palestinski aramejski"
+
 msgid "Jordanian Sign Language"
 msgstr "jordanski znakovni jezik"
+
+msgid "Judeo-Arabic"
+msgstr "judeoarapski"
+
+msgid "Judeo-Iraqi Arabic"
+msgstr "judeoirački arapski"
+
+msgid "Judeo-Persian"
+msgstr "judeoperzijski"
+
+msgid "Judeo-Yemeni Arabic"
+msgstr "judeojemenski arapski"
+
+msgid "Kanuri"
+msgstr "kanurski"
+
+msgid "Kashmiri"
+msgstr "kašmirski"
+
+msgid "Kazakh"
+msgstr "kazaški"
 
 msgid "Kenyan Sign Language"
 msgstr "kenijski znakovni jezik"
@@ -442,6 +687,9 @@ msgstr "korejski"
 msgid "Korean Sign Language"
 msgstr "korejski znakovni jezik"
 
+msgid "Korean, Old (3rd-9th cent.)"
+msgstr "starokorejski (3.-9. st.)"
+
 msgid "Kuman (Russia)"
 msgstr "kumanski (Rusija)"
 
@@ -450,6 +698,12 @@ msgstr "kurdski"
 
 msgid "Kurdish, Central"
 msgstr "srednjekurdski"
+
+msgid "Kurdish, Northern"
+msgstr "sjevernokurdski"
+
+msgid "Kurdish, Southern"
+msgstr "južnokurdski"
 
 msgid "Langue des signes de Belgique Francophone"
 msgstr "belgijski frankofonski znakovni jezik"
@@ -466,8 +720,14 @@ msgstr "latvijski znakovni jezik"
 msgid "Latvian, Standard"
 msgstr "latvijski, standardni"
 
+msgid "Liberian English"
+msgstr "liberijski engleski"
+
 msgid "Liburnian"
 msgstr "liburnijski"
+
+msgid "Libyan Arabic"
+msgstr "libijski arapski"
 
 msgid "Libyan Sign Language"
 msgstr "libijski znakovni jezik"
@@ -493,6 +753,9 @@ msgstr "luksemburški"
 msgid "Lydian"
 msgstr "lidijski"
 
+msgid "Macedo-Romanian"
+msgstr "makedorumunjski"
+
 msgid "Macedonian"
 msgstr "makedonski"
 
@@ -511,14 +774,29 @@ msgstr "malteški"
 msgid "Maltese Sign Language"
 msgstr "malteški znakovni jezik"
 
+msgid "Mandarin Chinese"
+msgstr "mandarinski kineski"
+
 msgid "Maori"
 msgstr "maorski"
+
+msgid "Mayan languages"
+msgstr "majanski jezici"
 
 msgid "Mexican Sign Language"
 msgstr "meksički znakovni jezik"
 
+msgid "Modern Greek (1453-)"
+msgstr "novogrčki (od 1453.)"
+
+msgid "Moldavian"
+msgstr "moldavski"
+
 msgid "Moldova Sign Language"
 msgstr "moldavski znakovni jezik"
+
+msgid "Mongolia Buriat"
+msgstr "mongolski burijatski"
 
 msgid "Mongolian"
 msgstr "mongolski"
@@ -526,8 +804,14 @@ msgstr "mongolski"
 msgid "Mongolian Sign Language"
 msgstr "mongolski znakovni jezik"
 
+msgid "Mongolian languages"
+msgstr "mongolski jezici"
+
 msgid "Mongolian, Classical"
 msgstr "mongolski, klasični"
+
+msgid "Moroccan Arabic"
+msgstr "marokanski arapski"
 
 msgid "Moroccan Sign Language"
 msgstr "marokanski znakovni jezik"
@@ -537,6 +821,9 @@ msgstr "mozambički znakovni jezik"
 
 msgid "Multiple languages"
 msgstr "višestruki jezici"
+
+msgid "Namibian Sign Language"
+msgstr "namibijski znakovni jezik"
 
 msgid "Neapolitan"
 msgstr "napolitanski"
@@ -559,32 +846,125 @@ msgstr "nepalski znakovni jezik"
 msgid "New Zealand Sign Language"
 msgstr "novozelandski znakovni jezik"
 
+msgid "Nicaragua Creole English"
+msgstr "nikaragvanski kreolski engleski"
+
 msgid "Nicaraguan Sign Language"
 msgstr "nikaragvanski znakovni jezik"
 
 msgid "Nigerian Sign Language"
 msgstr "nigerijski znakovni jezik"
 
+msgid "Nilo-Saharan languages"
+msgstr "nilskosaharski jezici"
+
 msgid "No linguistic content"
 msgstr "nema jezičnog sadržaja"
 
+msgid "North American Indian"
+msgstr "sjevernoamerički indijanski"
+
 msgid "North Arabian, Ancient"
 msgstr "sjevernoarapski, antički"
+
+msgid "North Azerbaijani"
+msgstr "sjevernoazerbejdžanski"
+
+msgid "North Germanic languages"
+msgstr "sjevernogermanski jezici"
+
+msgid "Northern Kurdish"
+msgstr "sjevernokurdski"
+
+msgid "Northern Uzbek"
+msgstr "sjevernouzbečki"
 
 msgid "Norwegian"
 msgstr "norveški"
 
 msgid "Norwegian Bokmål"
-msgstr "knjiškonorveški"
+msgstr "knjiški norveški (bokmål)"
 
 msgid "Norwegian Nynorsk"
-msgstr "novonorveški"
+msgstr "novonorveški (nynorsk)"
 
 msgid "Norwegian Sign Language"
 msgstr "norveški znakovni jezik"
 
+msgid "Nubian languages"
+msgstr "nubijski jezici"
+
 msgid "Numidian"
 msgstr "numidijski"
+
+msgid "Occitan (post 1500)"
+msgstr "okcitanski (nakon 1500.)"
+
+msgid "Official Aramaic (700-300 BCE)"
+msgstr "službeni aramejski (700.-300. pr. Kr.)"
+
+msgid "Old Aramaic (up to 700 BCE)"
+msgstr "staroaramejski (do 700. pr. Kr.)"
+
+msgid "Old Breton"
+msgstr "starobretonski"
+
+msgid "Old Chinese"
+msgstr "starokineski"
+
+msgid "Old Dutch"
+msgstr "staronizozemski"
+
+msgid "Old English (ca. 450-1100)"
+msgstr "staroengleski (cca. 450.-1100.)"
+
+msgid "Old French (842-ca. 1400)"
+msgstr "starofrancuski (842.-cca. 1400.)"
+
+msgid "Old Frisian"
+msgstr "starofrizijski"
+
+msgid "Old Georgian"
+msgstr "starogruzijski"
+
+msgid "Old Hungarian"
+msgstr "staromađarski"
+
+msgid "Old Irish (to 900)"
+msgstr "staroirski (do 900.)"
+
+msgid "Old Japanese"
+msgstr "starojapanski"
+
+msgid "Old Korean (3rd-9th cent.)"
+msgstr "starokorejski (3.-9. st.)"
+
+msgid "Old Ossetic"
+msgstr "staroosetski"
+
+msgid "Old Persian"
+msgstr "staroperzijski"
+
+msgid "Old Persian (ca. 600-400 B.C.)"
+msgstr "staroperzijski (cca. 600.-400. pr. Kr.)"
+
+msgid "Old Russian"
+msgstr "staroruski"
+
+msgid "Old Spanish"
+msgstr "starošpanjolski"
+
+msgid "Old Tamil"
+msgstr "starotamilski"
+
+msgid "Old Tibetan"
+msgstr "starotibetski"
+
+msgid "Old Turkish"
+msgstr "staroturski"
+
+msgid "Old Welsh"
+msgstr "starovelški"
 
 msgid "Ossetian"
 msgstr "osetski"
@@ -592,8 +972,20 @@ msgstr "osetski"
 msgid "Ossetic, Old"
 msgstr "staroosetski"
 
+msgid "Ottoman Turkish (1500-1928)"
+msgstr "otomanski turski (1500.-1928.)"
+
 msgid "Pakistan Sign Language"
 msgstr "pakistanski znakovni jezik"
+
+msgid "Pangasinan"
+msgstr "pangasinanski"
+
+msgid "Panjabi"
+msgstr "pandžapski"
+
+msgid "Papuan languages"
+msgstr "papuanski jezici"
 
 msgid "Paraguayan Sign Language"
 msgstr "paragvajski znakovni jezik"
@@ -610,11 +1002,17 @@ msgstr "perzijski, afganistanski"
 msgid "Persian, Iranian"
 msgstr "perzijski, iranski"
 
+msgid "Persian, Old"
+msgstr "staroperzijski"
+
 msgid "Persian, Old (ca. 600-400 B.C.)"
-msgstr "staroperzijski (cca 600.-400. pr. Kr.)"
+msgstr "staroperzijski (cca. 600.-400. pr. Kr.)"
 
 msgid "Philippine Sign Language"
 msgstr "filipinski znakovni jezik"
+
+msgid "Philippine languages"
+msgstr "filipinski jezici"
 
 msgid "Phoenician"
 msgstr "fenički"
@@ -637,6 +1035,9 @@ msgstr "portugalski"
 msgid "Portuguese Sign Language"
 msgstr "portugalski znakovni jezik"
 
+msgid "Prakrit languages"
+msgstr "prakritski jezici"
+
 msgid "Prussian"
 msgstr "pruski"
 
@@ -649,8 +1050,14 @@ msgstr "rumunjski"
 msgid "Romanian Sign Language"
 msgstr "rumunjski znakovni jezik"
 
+msgid "Romanian, Macedo-"
+msgstr "makedorumunjski"
+
 msgid "Romano-Greek"
 msgstr "rimskogrčki"
+
+msgid "Russia Buriat"
+msgstr "ruski burijatski"
 
 msgid "Russian"
 msgstr "ruski"
@@ -661,11 +1068,20 @@ msgstr "ruski znakovni jezik"
 msgid "Russian, Old"
 msgstr "staroruski"
 
+msgid "Saint Lucian Creole French"
+msgstr "svetolucijanski kreolski francuski"
+
+msgid "Salishan languages"
+msgstr "sališanski jezici"
+
 msgid "Salvadoran Sign Language"
 msgstr "salvadorski znakovni jezik"
 
 msgid "Samaritan"
 msgstr "samaritanski"
+
+msgid "Samaritan Aramaic"
+msgstr "samaritanski aramejski"
 
 msgid "Sanskrit"
 msgstr "sanskrt"
@@ -676,6 +1092,9 @@ msgstr "sardinijski"
 msgid "Saudi Arabian Sign Language"
 msgstr "znakovni jezik Saudijske Arabije"
 
+msgid "Semitic languages"
+msgstr "semitski jezici"
+
 msgid "Serbian"
 msgstr "srpski"
 
@@ -683,10 +1102,16 @@ msgid "Serbo-Croatian"
 msgstr "srpskohrvatski"
 
 msgid "Sicilian"
-msgstr "sicilijski"
+msgstr "sicilijanski"
+
+msgid "Sign Languages"
+msgstr "znakovni jezici"
 
 msgid "Singapore Sign Language"
 msgstr "singapurski znakovni jezik"
+
+msgid "Slavic languages"
+msgstr "slavenski jezici"
 
 msgid "Slovak"
 msgstr "slovački"
@@ -700,6 +1125,21 @@ msgstr "slovenski"
 msgid "South African Sign Language"
 msgstr "južnoafrički znakovni jezik"
 
+msgid "South American Indian languages"
+msgstr "južnoamerički indijanski jezici"
+
+msgid "South Azerbaijani"
+msgstr "južnoazerbejdžanski"
+
+msgid "South Slavic languages"
+msgstr "južnoslavenski jezici"
+
+msgid "Southern Kurdish"
+msgstr "južnokurdski"
+
+msgid "Southern Uzbek"
+msgstr "južnouzbečki"
+
 msgid "Spanish"
 msgstr "španjolski"
 
@@ -709,11 +1149,32 @@ msgstr "španjolski znakovni jezik"
 msgid "Spanish, Old"
 msgstr "starošpanjolski"
 
+msgid "Standard Arabic"
+msgstr "standardni arapski"
+
+msgid "Standard Estonian"
+msgstr "standardni estonski"
+
+msgid "Standard Latvian"
+msgstr "standardni latvijski"
+
+msgid "Sudanese Arabic"
+msgstr "sudanski arapski"
+
+msgid "Sudanese Creole Arabic"
+msgstr "sudanski kreolski arapski"
+
 msgid "Sumerian"
 msgstr "sumerski"
 
 msgid "Swedish"
 msgstr "švedski"
+
+msgid "Swedish Sign Language"
+msgstr "švedski znakovni jezik"
+
+msgid "Swiss German"
+msgstr "švicarski njemački"
 
 msgid "Swiss-French Sign Language"
 msgstr "švicarskofrancuski znakovni jezik"
@@ -727,6 +1188,9 @@ msgstr "švicarskotalijanski znakovni jezik"
 msgid "Taiwan Sign Language"
 msgstr "tajvanski znakovni jezik"
 
+msgid "Tajik"
+msgstr "tadžički"
+
 msgid "Tamil"
 msgstr "tamilski"
 
@@ -739,11 +1203,29 @@ msgstr "tanzanijski znakovni jezik"
 msgid "Tasmanian"
 msgstr "tasmanijski"
 
+msgid "Tatar"
+msgstr "tatarski"
+
+msgid "Telugu"
+msgstr "teluški"
+
 msgid "Thai"
 msgstr "tajlandski"
 
+msgid "Tibetan"
+msgstr "tibetski"
+
 msgid "Tibetan, Classical"
-msgstr "tibetanski, klasični"
+msgstr "tibetski, klasični"
+
+msgid "Tibetan, Old"
+msgstr "starotibetski"
+
+msgid "Trinidadian Creole English"
+msgstr "trinidadski kreolski engleski"
+
+msgid "Tunisian Arabic"
+msgstr "tuniški arapski"
 
 msgid "Tunisian Sign Language"
 msgstr "tuniški znakovni jezik"
@@ -775,8 +1257,23 @@ msgstr "ukrajinski znakovni jezik"
 msgid "Undetermined"
 msgstr "neodređeni"
 
+msgid "Urdu"
+msgstr "urdski"
+
 msgid "Uruguayan Sign Language"
 msgstr "urugvajski znakovni jezik"
+
+msgid "Uzbek"
+msgstr "uzbečki"
+
+msgid "Uzbek, Northern"
+msgstr "sjevernouzbečki"
+
+msgid "Uzbek, Southern"
+msgstr "južnouzbečki"
+
+msgid "Uzbeki Arabic"
+msgstr "uzbeški arapski"
 
 msgid "Valencian Sign Language"
 msgstr "valencijski znakovni jezik"
@@ -793,6 +1290,9 @@ msgstr "venecuelanski znakovni jezik"
 msgid "Vietnamese"
 msgstr "vijetnamski"
 
+msgid "Wakashan languages"
+msgstr "vakašanski jezici"
+
 msgid "Walloon"
 msgstr "valonski"
 
@@ -802,8 +1302,23 @@ msgstr "velški"
 msgid "Welsh, Old"
 msgstr "starovelški"
 
+msgid "West Germanic languages"
+msgstr "zapadnogermanski jezici"
+
+msgid "West Slavic languages"
+msgstr "zapadnoslavenski jezici"
+
+msgid "Western Neo-Aramaic"
+msgstr "zapadni novoaramejski"
+
+msgid "Western Yiddish"
+msgstr "zapadni jidiš"
+
 msgid "Yiddish Sign Language"
 msgstr "jidiš znakovni jezik"
+
+msgid "Yiddish, Eastern"
+msgstr "jidiš, istočni"
 
 msgid "Yiddish, Western"
 msgstr "jidiš, zapadni"

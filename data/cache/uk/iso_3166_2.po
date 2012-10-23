@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: iso_3166_2\n"
 "Report-Msgid-Bugs-To: Debian iso-codes team <pkg-isocodes-devel@lists.alioth."
 "debian.org>\n"
-"POT-Creation-Date: 2012-04-09 14:32+0200\n"
+"POT-Creation-Date: 2012-08-25 16:22+0200\n"
 "PO-Revision-Date: 2012-06-05 18:16+0300\n"
 "Last-Translator: Yuri Chornoivan <yurchor@ukr.net>\n"
 "Language-Team: Ukrainian <translation-team-uk@lists.sourceforge.net>\n"
@@ -3453,9 +3453,6 @@ msgstr "Дайкунді"
 msgid "Děčín"
 msgstr "Дечін"
 
-msgid "Dəvəçi"
-msgstr "Дівічі"
-
 msgid "Ealing"
 msgstr "Ілінґ"
 
@@ -4559,9 +4556,6 @@ msgstr "Хато-Майор"
 
 msgid "Hatobohei"
 msgstr "Хатохобей"
-
-msgid "Haut-Congo"
-msgstr "Верхнє Конго"
 
 msgid "Haut-Mbomou"
 msgstr "Верхнє Мбому"
@@ -8388,9 +8382,6 @@ msgstr "Ньюрі-і-Мурн"
 msgid "Newtownabbey"
 msgstr "Ньютаунаббі"
 
-msgid "Ngamiland"
-msgstr "Нгаміланд"
-
 msgid "Ngaraard"
 msgstr "Нгараард"
 
@@ -8633,9 +8624,6 @@ msgstr "Північно-східний округ"
 
 msgid "North-Eastern Kaskazini Mashariki"
 msgstr "Північно-Східна провінція"
-
-msgid "North-West (Botswana)"
-msgstr "Північно-західний (Ботсвана)"
 
 msgid "North-West (Cameroon)"
 msgstr "Північний Захід (Камерун)"
@@ -11552,9 +11540,6 @@ msgstr "Саутгемптон"
 
 msgid "Southend-on-Sea"
 msgstr "Саутенд-он-Сі"
-
-msgid "Southern (Botswana)"
-msgstr "Південна (Ботсвана)"
 
 msgid "Southern (Sierra Leone)"
 msgstr "Південна провінція (Сьєрра-Леоне)"

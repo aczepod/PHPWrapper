@@ -1079,7 +1079,7 @@ class COntologyNode extends CNode
 	 * {@link kOFFSET_NID}, with this value.
 	 *
 	 * The parent method will then be called, which will ignore the global identifier,
-	 * {@link kTAG_LID}, since the {@link _index()} method returns <tt>NULL</tt> and
+	 * {@link kTAG_GID}, since the {@link _index()} method returns <tt>NULL</tt> and
 	 * also ignore the native identifier, {@link kOFFSET_NID}, since it will have been set
 	 * here.
 	 *
