@@ -143,6 +143,13 @@ define( "kONTOLOGY_ISO_3166_1_ALPHA3",			'alpha-3' );
 define( "kONTOLOGY_ISO_3166_1_NUMERIC",			'numeric' );
 
 /**
+ * ISO 3166-1 common name term.
+ *
+ * This tag represents the local identifier of the 3166-1 common name term.
+ */
+define( "kONTOLOGY_ISO_3166_1_COMMON_NAME",		'common_name' );
+
+/**
  * ISO 3166-2 ontology term.
  *
  * This tag represents the local identifier of the ISO 3166-2 ontology term.
@@ -150,11 +157,47 @@ define( "kONTOLOGY_ISO_3166_1_NUMERIC",			'numeric' );
 define( "kONTOLOGY_ISO_3166_2",					'2' );
 
 /**
+ * ISO 3166-2 subdivision type ontology term.
+ *
+ * This tag represents the local identifier of the ISO 3166-2 subdivision type ontology
+ * term.
+ */
+define( "kONTOLOGY_ISO_3166_2_TYPE",			'type' );
+
+/**
  * ISO 3166-3 ontology term.
  *
  * This tag represents the local identifier of the ISO 3166-3 ontology term.
  */
 define( "kONTOLOGY_ISO_3166_3",					'3' );
+
+/**
+ * ISO 3166-3 alpha-3 ontology term.
+ *
+ * This tag represents the local identifier of the 3166-3 alpha-3 ontology term.
+ */
+define( "kONTOLOGY_ISO_3166_3_ALPHA3",			'alpha-3' );
+
+/**
+ * ISO 3166-3 alpha-4 ontology term.
+ *
+ * This tag represents the local identifier of the 3166-3 alpha-4 ontology term.
+ */
+define( "kONTOLOGY_ISO_3166_3_ALPHA4",			'alpha-4' );
+
+/**
+ * ISO 3166-3 numeric ontology term.
+ *
+ * This tag represents the local identifier of the 3166-3 numeric ontology term.
+ */
+define( "kONTOLOGY_ISO_3166_3_NUMERIC",			'numeric' );
+
+/**
+ * ISO 3166-3 date withdrawn ontology term.
+ *
+ * This tag represents the local identifier of the 3166-3 date withdrawn ontology term.
+ */
+define( "kONTOLOGY_ISO_3166_3_DATE_WITHDRAWN",	'date_withdrawn' );
 
 /*=======================================================================================
  *	ISO 4217 CODES																		*
@@ -180,6 +223,13 @@ define( "kONTOLOGY_ISO_4217_A",					'A' );
  * This tag represents the local identifier of the ISO 4217-H ontology term.
  */
 define( "kONTOLOGY_ISO_4217_H",					'H' );
+
+/**
+ * ISO 4217-H date withdrawn ontology term.
+ *
+ * This tag represents the local identifier of the 4217-H date withdrawn ontology term.
+ */
+define( "kONTOLOGY_ISO_4217_H_DATE_WITHDRAWN",	'date_withdrawn' );
 
 /*=======================================================================================
  *	ISO 15924 CODES																		*

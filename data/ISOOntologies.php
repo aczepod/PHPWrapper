@@ -93,8 +93,8 @@ require_once( 'ISOOntologies.inc.php' );
 				   'label' => "International Standard for language codes",
 				   'descr' => "The purpose of ISO 639 is to establish internationally recognised codes (either 2, 3, or 4 letters long) for the representation of languages or language families." ),
 			array( 'code' => kONTOLOGY_ISO_3166,
-				   'label' => "International Standard for country codes and codes for their subdivisions",
-				   'descr' => "The purpose of ISO 3166 is to establish internationally recognised codes for the representation of names of countries, territories or areas of geographical interest, and their subdivisions. However, ISO 3166 does not establish the names of countries, only the codes that represent them." ),
+				   'label' => "International Standard of codes for the representation of names of countries and their subdivisions",
+				   'descr' => "The purpose of ISO 3166 is to define codes for the names of countries, dependent territories, special areas of geographical interest, and their principal subdivisions (e.g., provinces or states)." ),
 			array( 'code' => kONTOLOGY_ISO_4217,
 				   'label' => "International Standard for currency codes",
 				   'descr' => "The purpose of ISO 4217 is to establish internationally recognised codes for the representation of currencies. Currencies can be represented in the code in two ways: a three-letter alphabetic code and a three-digit numeric code." )
@@ -257,6 +257,7 @@ require_once( 'ISOOntologies.inc.php' );
 		//
 		$ns_id = implode( kTOKEN_NAMESPACE_SEPARATOR,
 						  array( kONTOLOGY_ISO, kONTOLOGY_ISO_639 ) );
+		$def_ns = $_SESSION[ kSESSION_ONTOLOGY ]->ResolveTerm( '', NULL, TRUE );
 		$namespace = $_SESSION[ 'TERMS' ][ $ns_id ];
 		$category = $_SESSION[ 'NODES' ][ $ns_id ];
 		$params = array(
@@ -265,7 +266,7 @@ require_once( 'ISOOntologies.inc.php' );
 				   'label' => "Scope",
 				   'descr' => "Scope of denotation for language identifiers." ),
 			array( 'code' => kONTOLOGY_ISO_639_3_type,
-				   'type' => kTYPE_ENUM,
+				   'type' => kTYPE_ENUM_SET,
 				   'label' => "Type",
 				   'descr' => "Type of individual language." ),
 			array( 'code' => kONTOLOGY_ISO_639_3_status,
@@ -276,6 +277,15 @@ require_once( 'ISOOntologies.inc.php' );
 				   'type' => kTYPE_STRUCT,
 				   'label' => "Inverted name",
 				   'descr' => "An \"inverted\" name is one that is altered from the usual English-language order by moving adjectival qualifiers to the end, after the main language name and separated by a comma." ) );
+		
+		//
+		// Load predicate term.
+		//
+		$predicate
+			= $_SESSION[ kSESSION_ONTOLOGY ]->ResolveTerm(
+				substr( kPREDICATE_SUBCLASS_OF, 1 ),
+				$def_ns,
+				TRUE );
 		
 		//
 		// Load data.
@@ -323,7 +333,77 @@ require_once( 'ISOOntologies.inc.php' );
 					 ."] ("
 					 .$_SESSION[ 'TAGS' ][ $id ][ kOFFSET_NID ]
 					 .")\n" );
-		}
+
+			//
+			// Create subtag.
+			//
+			if( $param[ 'code' ] == kONTOLOGY_ISO_639_3_INVNAME )
+			{
+				//
+				// Load term data.
+				//
+				$list = array(
+					array( kOFFSET_LID => substr( kOFFSET_LANGUAGE, 1 ),
+						   kOFFSET_TYPE => kTYPE_STRING ),
+					array( kOFFSET_LID => substr( kOFFSET_STRING, 1 ),
+						   kOFFSET_TYPE => array( kTYPE_STRING, kTYPE_CARD_REQUIRED ) ) );
+				
+				//
+				// Create structure nodes.
+				//
+				foreach( $list as $item )
+				{
+					//
+					// Resolve node.
+					//
+					$child_node
+						= $_SESSION[ kSESSION_ONTOLOGY ]->NewScaleNode(
+							$child_term
+								= $_SESSION[ kSESSION_ONTOLOGY ]->ResolveTerm(
+									$item[ kOFFSET_LID ],	// Local identifier.
+									$def_ns,				// Namespace object.
+									TRUE ),					// Raise exception on fail.
+							$item[ kOFFSET_TYPE ] );		// Data type.
+					if( is_array( $child_node ) )
+						$child_node = $child_node[ 0 ];
+					
+					//
+					// Relate.
+					//
+					$_SESSION[ kSESSION_ONTOLOGY ]->SubclassOf( $child_node, $node );
+					
+					//
+					// Save references.
+					//
+					$id = $child_term->GID();
+					$_SESSION[ 'NODES' ][ $id ] = $child_node;
+					$_SESSION[ 'TERMS' ][ $id ] = $child_term;
+				
+					//
+					// Create tag.
+					//
+					$tag = NULL;
+					$_SESSION[ kSESSION_ONTOLOGY ]->AddToTag( $tag, $node );
+					$_SESSION[ kSESSION_ONTOLOGY ]->AddToTag( $tag, $predicate );
+					$_SESSION[ kSESSION_ONTOLOGY ]->AddToTag( $tag, $child_node );
+					$_SESSION[ kSESSION_ONTOLOGY ]->AddToTag( $tag, TRUE );
+					$_SESSION[ 'TAGS' ][ $tag->GID() ] = $tag;
+					
+					//
+					// Inform.
+					//
+					if( kOPTION_VERBOSE )
+						echo( "    - $id ["
+							 .$_SESSION[ 'NODES' ][ $id ]
+							 ."] ("
+							 .$_SESSION[ 'TAGS' ][ $tag->GID() ][ kOFFSET_NID ]
+							 .")\n" );
+				
+				} // Iterating substructure elements.
+			
+			} // Structured tag.
+		
+		} // Iterating first level parameters.
 
 		//
 		// Set scope enumerations.
@@ -476,55 +556,13 @@ require_once( 'ISOOntologies.inc.php' );
 	function LoadISO3166Categories()
 	{
 		//
-		// Set part 1, 2 and 3 categories.
+		// Init local storage.
 		//
 		$ns_id = implode( kTOKEN_NAMESPACE_SEPARATOR,
 						  array( kONTOLOGY_ISO,
 						  		 kONTOLOGY_ISO_3166 ) );
 		$namespace = $_SESSION[ 'TERMS' ][ $ns_id ];
 		$category = $_SESSION[ 'NODES' ][ $ns_id ];
-		$params = array(
-			array( 'code' => kONTOLOGY_ISO_3166_2,
-				   'label' => "Part 2",
-				   'descr' => "Country subdivision code, defines codes for the names of the principal subdivisions (e.g., provinces or states) of all countries coded in ISO 3166-1." ),
-			array( 'code' => kONTOLOGY_ISO_3166_3,
-				   'label' => "Part 3",
-				   'descr' => "Code for formerly used names of countries, defines codes for country names which have been deleted from ISO 3166-1 since its first publication in 1974." ) );
-		
-		//
-		// Load data.
-		//
-		foreach( $params as $param )
-		{
-			//
-			// Relate to category.
-			//
-			$_SESSION[ kSESSION_ONTOLOGY ]->SubclassOf(
-				$node
-					= $_SESSION[ kSESSION_ONTOLOGY ]->NewScaleNode(
-						$term
-							= $_SESSION[ kSESSION_ONTOLOGY ]->NewTerm(
-								$param[ 'code' ],		// Local identifier.
-								$namespace,				// Namespace.
-								$param[ 'label' ],		// Label or name.
-								$param[ 'descr' ],		// Description or definition.
-								kDEFAULT_LANGUAGE ),	// Language.
-						kTYPE_ENUM ),					// Node data type.
-				$category );							// Object vertex node.
-			
-			//
-			// Save references.
-			//
-			$id = $term->GID();
-			$_SESSION[ 'NODES' ][ $id ] = $node;
-			$_SESSION[ 'TERMS' ][ $id ] = $term;
-	
-			//
-			// Inform.
-			//
-			if( kOPTION_VERBOSE )
-				echo( "    - $id [".$_SESSION[ 'NODES' ][ $id ]."]\n" );
-		}
 
 		//
 		// Set part 1 category.
@@ -562,14 +600,21 @@ require_once( 'ISOOntologies.inc.php' );
 		$category = $_SESSION[ 'NODES' ][ $ns_id ];
 		$params = array(
 			array( 'code' => kONTOLOGY_ISO_3166_1_ALPHA2,
+				   'type' => kTYPE_ENUM,
 				   'label' => "Alpha-2 code",
 				   'descr' => "Two-letter country codes which are the most widely used of the three ISO 3166-1 subdivisions, and used most prominently for the Internet's country code top-level domains (with a few exceptions)." ),
 			array( 'code' => kONTOLOGY_ISO_3166_1_ALPHA3,
+				   'type' => kTYPE_ENUM,
 				   'label' => "Alpha-3 code",
 				   'descr' => "Three-letter country codes which allow a better visual association between the codes and the country names than the alpha-2 codes." ),
 			array( 'code' => kONTOLOGY_ISO_3166_1_NUMERIC,
+				   'type' => kTYPE_ENUM,
 				   'label' => "Numeric code",
-				   'descr' => "Three-digit country codes which are identical to those developed and maintained by the United Nations Statistics Division, with the advantage of script (writing system) independence, and hence useful for people or systems using non-Latin scripts." ) );
+				   'descr' => "Three-digit country codes which are identical to those developed and maintained by the United Nations Statistics Division, with the advantage of script (writing system) independence, and hence useful for people or systems using non-Latin scripts." ),
+			array( 'code' => kONTOLOGY_ISO_3166_1_COMMON_NAME,
+				   'type' => kTYPE_STRUCT,
+				   'label' => "Common name",
+				   'descr' => "Country common name." ) );
 		
 		//
 		// Load data.
@@ -589,7 +634,7 @@ require_once( 'ISOOntologies.inc.php' );
 								$param[ 'label' ],		// Label or name.
 								$param[ 'descr' ],		// Description or definition.
 								kDEFAULT_LANGUAGE ),	// Language.
-						kTYPE_ENUM ),					// Node data type.
+						$param[ 'type' ] ),				// Node data type.
 				$category );							// Object vertex node.
 			
 			//
@@ -598,19 +643,298 @@ require_once( 'ISOOntologies.inc.php' );
 			$id = $term->GID();
 			$_SESSION[ 'NODES' ][ $id ] = $node;
 			$_SESSION[ 'TERMS' ][ $id ] = $term;
-	
+			
 			//
-			// Inform.
+			// Handle tag.
 			//
-			if( kOPTION_VERBOSE )
-				echo( "    - $id [".$_SESSION[ 'NODES' ][ $id ]."]\n" );
+			if( $param[ 'code' ] == kONTOLOGY_ISO_3166_1_COMMON_NAME )
+			{
+				//
+				// Create tag.
+				//
+				$_SESSION[ 'TAGS' ][ $id ] = NULL;
+				$_SESSION[ kSESSION_ONTOLOGY ]->AddToTag(
+					$_SESSION[ 'TAGS' ][ $id ], $_SESSION[ 'NODES' ][ $id ] );
+				$_SESSION[ kSESSION_ONTOLOGY ]->AddToTag(
+					$_SESSION[ 'TAGS' ][ $id ], TRUE );
+			
+				//
+				// Inform.
+				//
+				if( kOPTION_VERBOSE )
+					echo( "    - $id ["
+						 .$_SESSION[ 'NODES' ][ $id ]
+						 ."] ("
+						 .$_SESSION[ 'TAGS' ][ $id ][ kOFFSET_NID ]
+						 .")\n" );
+			
+			} // Taggable term.
+			
+			//
+			// Handle non-taggable.
+			//
+			else
+			{
+				//
+				// Inform.
+				//
+				if( kOPTION_VERBOSE )
+					echo( "    - $id [".$_SESSION[ 'NODES' ][ $id ]."]\n" );
+			
+			} // Non taggable.
+		}
+
+		//
+		// Init local storage.
+		//
+		$ns_id = implode( kTOKEN_NAMESPACE_SEPARATOR,
+						  array( kONTOLOGY_ISO,
+						  		 kONTOLOGY_ISO_3166 ) );
+		$namespace = $_SESSION[ 'TERMS' ][ $ns_id ];
+		$category = $_SESSION[ 'NODES' ][ $ns_id ];
+
+		//
+		// Set part 2 category.
+		//
+		$_SESSION[ kSESSION_ONTOLOGY ]->SubclassOf(
+			$node
+				= $_SESSION[ kSESSION_ONTOLOGY ]->NewNode(
+					$term
+						= $_SESSION[ kSESSION_ONTOLOGY ]->NewTerm(
+							kONTOLOGY_ISO_3166_2,	// Local identifier.
+							$namespace,				// Namespace.
+							"Part 2",				// Label or name.
+							"Country subdivision code, defines codes for the names of the principal subdivisions (e.g., provinces or states) of all countries coded in ISO 3166-1.",
+							kDEFAULT_LANGUAGE ) ),	// Language.
+			$category );							// Object vertex node.
+		
+		//
+		// Save references.
+		//
+		$id = $term->GID();
+		$_SESSION[ 'NODES' ][ $id ] = $node;
+		$_SESSION[ 'TERMS' ][ $id ] = $term;
+
+		//
+		// Inform.
+		//
+		if( kOPTION_VERBOSE )
+			echo( "    - $id [".$_SESSION[ 'NODES' ][ $id ]."]\n" );
+
+		//
+		// Set part 1 traits.
+		//
+		$ns_id = $id;
+		$namespace = $_SESSION[ 'TERMS' ][ $ns_id ];
+		$category = $_SESSION[ 'NODES' ][ $ns_id ];
+		$params = array(
+			array( 'code' => kONTOLOGY_ISO_3166_2_TYPE,
+				   'type' => kTYPE_STRING,
+				   'label' => "Subdivision type",
+				   'descr' => "Type or kind of the subdivision." ) );
+		
+		//
+		// Load data.
+		//
+		foreach( $params as $param )
+		{
+			//
+			// Relate to category.
+			//
+			$_SESSION[ kSESSION_ONTOLOGY ]->SubclassOf(
+				$node
+					= $_SESSION[ kSESSION_ONTOLOGY ]->NewScaleNode(
+						$term
+							= $_SESSION[ kSESSION_ONTOLOGY ]->NewTerm(
+								$param[ 'code' ],		// Local identifier.
+								$namespace,				// Namespace.
+								$param[ 'label' ],		// Label or name.
+								$param[ 'descr' ],		// Description or definition.
+								kDEFAULT_LANGUAGE ),	// Language.
+						$param[ 'type' ] ),				// Node data type.
+				$category );							// Object vertex node.
+			
+			//
+			// Save references.
+			//
+			$id = $term->GID();
+			$_SESSION[ 'NODES' ][ $id ] = $node;
+			$_SESSION[ 'TERMS' ][ $id ] = $term;
+			
+			//
+			// Handle tag.
+			//
+			if( $param[ 'code' ] == kONTOLOGY_ISO_3166_2_TYPE )
+			{
+				//
+				// Create tag.
+				//
+				$_SESSION[ 'TAGS' ][ $id ] = NULL;
+				$_SESSION[ kSESSION_ONTOLOGY ]->AddToTag(
+					$_SESSION[ 'TAGS' ][ $id ], $_SESSION[ 'NODES' ][ $id ] );
+				$_SESSION[ kSESSION_ONTOLOGY ]->AddToTag(
+					$_SESSION[ 'TAGS' ][ $id ], TRUE );
+				
+				//
+				// Inform.
+				//
+				if( kOPTION_VERBOSE )
+					echo( "    - $id ["
+						 .$_SESSION[ 'NODES' ][ $id ]
+						 ."] ("
+						 .$_SESSION[ 'TAGS' ][ $id ][ kOFFSET_NID ]
+						 .")\n" );
+			
+			} // Taggable term.
+			
+			//
+			// Handle non-taggable.
+			//
+			else
+			{
+				//
+				// Inform.
+				//
+				if( kOPTION_VERBOSE )
+					echo( "    - $id [".$_SESSION[ 'NODES' ][ $id ]."]\n" );
+			
+			} // Non taggable.
+		}
+
+		//
+		// Init local storage.
+		//
+		$ns_id = implode( kTOKEN_NAMESPACE_SEPARATOR,
+						  array( kONTOLOGY_ISO,
+						  		 kONTOLOGY_ISO_3166 ) );
+		$namespace = $_SESSION[ 'TERMS' ][ $ns_id ];
+		$category = $_SESSION[ 'NODES' ][ $ns_id ];
+
+		//
+		// Set part 3 category.
+		//
+		$_SESSION[ kSESSION_ONTOLOGY ]->SubclassOf(
+			$node
+				= $_SESSION[ kSESSION_ONTOLOGY ]->NewNode(
+					$term
+						= $_SESSION[ kSESSION_ONTOLOGY ]->NewTerm(
+							kONTOLOGY_ISO_3166_3,	// Local identifier.
+							$namespace,				// Namespace.
+							"Part 3",				// Label or name.
+							"Code for formerly used names of countries, defines codes for country names which have been deleted from ISO 3166-1 since its first publication in 1974.",
+							kDEFAULT_LANGUAGE ) ),	// Language.
+			$category );							// Object vertex node.
+		
+		//
+		// Save references.
+		//
+		$id = $term->GID();
+		$_SESSION[ 'NODES' ][ $id ] = $node;
+		$_SESSION[ 'TERMS' ][ $id ] = $term;
+
+		//
+		// Inform.
+		//
+		if( kOPTION_VERBOSE )
+			echo( "    - $id [".$_SESSION[ 'NODES' ][ $id ]."]\n" );
+
+		//
+		// Set part 3 traits.
+		//
+		$ns_id = $id;
+		$namespace = $_SESSION[ 'TERMS' ][ $ns_id ];
+		$category = $_SESSION[ 'NODES' ][ $ns_id ];
+		$params = array(
+			array( 'code' => kONTOLOGY_ISO_3166_3_ALPHA3,
+				   'type' => kTYPE_ENUM,
+				   'label' => "Alpha-3 code",
+				   'descr' => "Former ISO 3166-1 three-letter country code." ),
+			array( 'code' => kONTOLOGY_ISO_3166_3_ALPHA4,
+				   'type' => kTYPE_ENUM,
+				   'label' => "Alpha-4 code",
+				   'descr' => "Four-letter country code. Each former country name in ISO 3166-3 is assigned a four-letter alphabetic code. The first two letters are the ISO 3166-1 alpha-2 code of the former country, while the last two letters are allocated according to the following rules: 1.) If the country changed its name, the new ISO 3166-1 alpha-2 code is used (e.g., Burma changed its name to Myanmar, whose new alpha-2 code is MM), or the special code AA is used if its alpha-2 code was not changed (e.g., Byelorussian SSR changed its name to Belarus, which has kept the same alpha-2 code). 2.) If the country merged into an existing country, the ISO 3166-1 alpha-2 code of this country is used (e.g., the German Democratic Republic merged into Germany, whose alpha-2 code is DE). 3.) If the country was divided into several parts, the special code HH is used to indicate that there is no single successor country (e.g., Czechoslovakia was divided into the Czech Republic and Slovakia), with the exception of Serbia and Montenegro, for which XX is used to avoid duplicate use of the same ISO 3166-3 code, as the alpha-2 code CS had twice been deleted from ISO 3166-1, the first time due to the split of Czechoslovakia and the second time due to the split of Serbia and Montenegro." ),
+			array( 'code' => kONTOLOGY_ISO_3166_3_NUMERIC,
+				   'type' => kTYPE_ENUM,
+				   'label' => "Numeric code",
+				   'descr' => "Former ISO 3166-1 three-digit country code." ),
+			array( 'code' => kONTOLOGY_ISO_3166_3_DATE_WITHDRAWN,
+				   'type' => kTYPE_STRING,
+				   'label' => "Date withdrawn",
+				   'descr' => "Date in which the standard was withdrawn." ) );
+		
+		//
+		// Load data.
+		//
+		foreach( $params as $param )
+		{
+			//
+			// Relate to category.
+			//
+			$_SESSION[ kSESSION_ONTOLOGY ]->SubclassOf(
+				$node
+					= $_SESSION[ kSESSION_ONTOLOGY ]->NewScaleNode(
+						$term
+							= $_SESSION[ kSESSION_ONTOLOGY ]->NewTerm(
+								$param[ 'code' ],		// Local identifier.
+								$namespace,				// Namespace.
+								$param[ 'label' ],		// Label or name.
+								$param[ 'descr' ],		// Description or definition.
+								kDEFAULT_LANGUAGE ),	// Language.
+						$param[ 'type' ] ),				// Node data type.
+				$category );							// Object vertex node.
+			
+			//
+			// Save references.
+			//
+			$id = $term->GID();
+			$_SESSION[ 'NODES' ][ $id ] = $node;
+			$_SESSION[ 'TERMS' ][ $id ] = $term;
+			
+			//
+			// Handle tag.
+			//
+			if( $param[ 'code' ] == kONTOLOGY_ISO_3166_3_DATE_WITHDRAWN )
+			{
+				//
+				// Create tag.
+				//
+				$_SESSION[ 'TAGS' ][ $id ] = NULL;
+				$_SESSION[ kSESSION_ONTOLOGY ]->AddToTag(
+					$_SESSION[ 'TAGS' ][ $id ], $_SESSION[ 'NODES' ][ $id ] );
+				$_SESSION[ kSESSION_ONTOLOGY ]->AddToTag(
+					$_SESSION[ 'TAGS' ][ $id ], TRUE );
+				
+				//
+				// Inform.
+				//
+				if( kOPTION_VERBOSE )
+					echo( "    - $id ["
+						 .$_SESSION[ 'NODES' ][ $id ]
+						 ."] ("
+						 .$_SESSION[ 'TAGS' ][ $id ][ kOFFSET_NID ]
+						 .")\n" );
+			
+			} // Taggable term.
+			
+			//
+			// Handle non-taggable.
+			//
+			else
+			{
+				//
+				// Inform.
+				//
+				if( kOPTION_VERBOSE )
+					echo( "    - $id [".$_SESSION[ 'NODES' ][ $id ]."]\n" );
+			
+			} // Non taggable.
 		}
 
 	} // LoadISO3166Categories.
 
 	 
 	/*===================================================================================
-	 *	LoadISO4217Traits																*
+	 *	LoadISO4217Categories																*
 	 *==================================================================================*/
 
 	/**
@@ -619,21 +943,86 @@ require_once( 'ISOOntologies.inc.php' );
 	 * This method will create the ISO 4217 category nodes and relate them to their
 	 * standards.
 	 */
-	function LoadISO4217Traits()
+	function LoadISO4217Categories()
 	{
 		//
-		// Set active and historic traits.
+		// Init local storage.
 		//
-		$ns_id = kONTOLOGY_ISO.kTOKEN_NAMESPACE_SEPARATOR.kONTOLOGY_ISO_4217;
+		$ns_id = implode( kTOKEN_NAMESPACE_SEPARATOR,
+						  array( kONTOLOGY_ISO,
+						  		 kONTOLOGY_ISO_4217 ) );
+		$namespace = $_SESSION[ 'TERMS' ][ $ns_id ];
+		$category = $_SESSION[ 'NODES' ][ $ns_id ];
+
+		//
+		// Set active codes category.
+		//
+		$_SESSION[ kSESSION_ONTOLOGY ]->SubclassOf(
+			$node
+				= $_SESSION[ kSESSION_ONTOLOGY ]->NewScaleNode(
+					$term
+						= $_SESSION[ kSESSION_ONTOLOGY ]->NewTerm(
+							kONTOLOGY_ISO_4217_A,	// Local identifier.
+							$namespace,				// Namespace.
+							"Active codes",			// Label or name.
+							"Codes currently in use.",
+							kDEFAULT_LANGUAGE ),	// Language.
+					kTYPE_ENUM ),					// Node data type.
+			$category );							// Object vertex node.
+		
+		//
+		// Save references.
+		//
+		$id = $term->GID();
+		$_SESSION[ 'NODES' ][ $id ] = $node;
+		$_SESSION[ 'TERMS' ][ $id ] = $term;
+
+		//
+		// Inform.
+		//
+		if( kOPTION_VERBOSE )
+			echo( "    - $id [".$_SESSION[ 'NODES' ][ $id ]."]\n" );
+
+		//
+		// Set historic codes category.
+		//
+		$_SESSION[ kSESSION_ONTOLOGY ]->SubclassOf(
+			$node
+				= $_SESSION[ kSESSION_ONTOLOGY ]->NewScaleNode(
+					$term
+						= $_SESSION[ kSESSION_ONTOLOGY ]->NewTerm(
+							kONTOLOGY_ISO_4217_H,	// Local identifier.
+							$namespace,				// Namespace.
+							"Historic codes",		// Label or name.
+							"Historical or obsolete codes.",
+							kDEFAULT_LANGUAGE ),	// Language.
+					kTYPE_ENUM ),					// Node data type.
+			$category );							// Object vertex node.
+		
+		//
+		// Save references.
+		//
+		$id = $term->GID();
+		$_SESSION[ 'NODES' ][ $id ] = $node;
+		$_SESSION[ 'TERMS' ][ $id ] = $term;
+
+		//
+		// Inform.
+		//
+		if( kOPTION_VERBOSE )
+			echo( "    - $id [".$_SESSION[ 'NODES' ][ $id ]."]\n" );
+
+		//
+		// Set historic code traits.
+		//
+		$ns_id = $id;
 		$namespace = $_SESSION[ 'TERMS' ][ $ns_id ];
 		$category = $_SESSION[ 'NODES' ][ $ns_id ];
 		$params = array(
-			array( 'code' => kONTOLOGY_ISO_4217_A,
-				   'label' => "Active codes",
-				   'descr' => "Codes currently in use." ),
-			array( 'code' => kONTOLOGY_ISO_4217_H,
-				   'label' => "Historic codes",
-				   'descr' => "Historical or obsolete codes." ) );
+			array( 'code' => kONTOLOGY_ISO_4217_H_DATE_WITHDRAWN,
+				   'type' => kTYPE_STRING,
+				   'label' => "Date withdrawn",
+				   'descr' => "Date in which the standard was withdrawn." ) );
 		
 		//
 		// Load data.
@@ -641,39 +1030,68 @@ require_once( 'ISOOntologies.inc.php' );
 		foreach( $params as $param )
 		{
 			//
-			// Set global identifier.
-			//
-			$id = $ns_id.kTOKEN_NAMESPACE_SEPARATOR.$param[ 'code' ];
-			
-			//
 			// Relate to category.
 			//
 			$_SESSION[ kSESSION_ONTOLOGY ]->SubclassOf(
-				//
-				// Create node.
-				//
-				$_SESSION[ 'NODES' ][ $id ]
+				$node
 					= $_SESSION[ kSESSION_ONTOLOGY ]->NewScaleNode(
-						$_SESSION[ 'TERMS' ][ $id ]
-							//
-							// Create term.
-							//
+						$term
 							= $_SESSION[ kSESSION_ONTOLOGY ]->NewTerm(
 								$param[ 'code' ],		// Local identifier.
 								$namespace,				// Namespace.
 								$param[ 'label' ],		// Label or name.
 								$param[ 'descr' ],		// Description or definition.
 								kDEFAULT_LANGUAGE ),	// Language.
-						kTYPE_ENUM ),					// Node data type.
+						$param[ 'type' ] ),				// Node data type.
 				$category );							// Object vertex node.
-	
+			
 			//
-			// Inform.
+			// Save references.
 			//
-			if( kOPTION_VERBOSE )
-				echo( "    - $id [".$_SESSION[ 'NODES' ][ $id ]."]\n" );
+			$id = $term->GID();
+			$_SESSION[ 'NODES' ][ $id ] = $node;
+			$_SESSION[ 'TERMS' ][ $id ] = $term;
+			
+			//
+			// Handle tag.
+			//
+			if( $param[ 'code' ] == kONTOLOGY_ISO_4217_H_DATE_WITHDRAWN )
+			{
+				//
+				// Create tag.
+				//
+				$_SESSION[ 'TAGS' ][ $id ] = NULL;
+				$_SESSION[ kSESSION_ONTOLOGY ]->AddToTag(
+					$_SESSION[ 'TAGS' ][ $id ], $_SESSION[ 'NODES' ][ $id ] );
+				$_SESSION[ kSESSION_ONTOLOGY ]->AddToTag(
+					$_SESSION[ 'TAGS' ][ $id ], TRUE );
+				
+				//
+				// Inform.
+				//
+				if( kOPTION_VERBOSE )
+					echo( "    - $id ["
+						 .$_SESSION[ 'NODES' ][ $id ]
+						 ."] ("
+						 .$_SESSION[ 'TAGS' ][ $id ][ kOFFSET_NID ]
+						 .")\n" );
+			
+			} // Taggable term.
+			
+			//
+			// Handle non-taggable.
+			//
+			else
+			{
+				//
+				// Inform.
+				//
+				if( kOPTION_VERBOSE )
+					echo( "    - $id [".$_SESSION[ 'NODES' ][ $id ]."]\n" );
+			
+			} // Non taggable.
 		}
 
-	} // LoadISO4217Traits.
+	} // LoadISO4217Categories.
 
 ?>

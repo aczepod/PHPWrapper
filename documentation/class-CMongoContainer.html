@@ -171,7 +171,7 @@
 				<b>Author:</b>
 				Milko A. Škofič &lt;<a
 href="mailto:m.skofic&#64;cgiar.org">m.skofic&#64;<!---->cgiar.org</a>&gt;<br />
-		<b>Located at</b> <a href="source-class-CMongoContainer.html#36-1068" title="Go to source code">CMongoContainer.php</a><br />
+		<b>Located at</b> <a href="source-class-CMongoContainer.html#36-1075" title="Go to source code">CMongoContainer.php</a><br />
 	</div>
 
 
@@ -470,7 +470,7 @@ object, it will then store it in the connection data member.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#_Query">#</a>
-		<code><a href="source-class-CMongoContainer.html#812-851" title="Go to source code">Query</a>( <span><code><a href="class-CQuery.html">CQuery</a></code> <var>$theQuery</var></span>, <span>array <var>$theFields</var> = <span class="php-keyword1">NULL</span> </span> )</code>
+		<code><a href="source-class-CMongoContainer.html#812-858" title="Go to source code">Query</a>( <span><code><a href="class-CQuery.html">CQuery</a></code> <var>$theQuery</var></span>, <span>array <var>$theFields</var> = <span class="php-keyword1">NULL</span></span>, <span>boolean <var>$doOne</var> = <span class="php-keyword1">FALSE</span> </span> )</code>
 
 		<div class="description short">
 			
@@ -482,7 +482,7 @@ object, it will then store it in the connection data member.</p>
 			
 <h4>Perform a query</h4>
 
-<p>We overload this method to perform the query on the current container.</p>
+<p>This method will perform the provided query on the current container.</p>
 
 
 
@@ -492,6 +492,8 @@ object, it will then store it in the connection data member.</p>
 					<dd><code><code><a href="class-CQuery.html">CQuery</a></code></code><br>$theQuery Query.</dd>
 					<dt><var>$theFields</var></dt>
 					<dd><code>array</code><br>$theFields Fieldset.</dd>
+					<dt><var>$doOne</var></dt>
+					<dd><code>boolean</code><br>$doOne If TRUE return first match or NULL.</dd>
 				</dl></div>
 
 				<h4>Returns</h4>
@@ -516,7 +518,7 @@ object, it will then store it in the connection data member.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#_NextSequence">#</a>
-		<code><a href="source-class-CMongoContainer.html#867-957" title="Go to source code">NextSequence</a>( <span>string <var>$theKey</var></span>, <span>mixed <var>$theContainer</var> = <span class="php-keyword1">NULL</span></span>, <span>mixed <var>$theObject</var> = <span class="php-keyword1">NULL</span> </span> )</code>
+		<code><a href="source-class-CMongoContainer.html#874-964" title="Go to source code">NextSequence</a>( <span>string <var>$theKey</var></span>, <span>mixed <var>$theContainer</var> = <span class="php-keyword1">NULL</span></span>, <span>mixed <var>$theObject</var> = <span class="php-keyword1">NULL</span> </span> )</code>
 
 		<div class="description short">
 			
@@ -572,7 +574,7 @@ for more information.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#_NewQuery">#</a>
-		<code><a href="source-class-CMongoContainer.html#973-981" title="Go to source code">NewQuery</a>( )</code>
+		<code><a href="source-class-CMongoContainer.html#980-988" title="Go to source code">NewQuery</a>( )</code>
 
 		<div class="description short">
 			
@@ -613,7 +615,7 @@ for more information.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#_ConvertValue">#</a>
-		<code><a href="source-class-CMongoContainer.html#997-1064" title="Go to source code">ConvertValue</a>( <span>string <var>$theType</var></span>, <span>mixed <var>$theValue</var></span> )</code>
+		<code><a href="source-class-CMongoContainer.html#1004-1071" title="Go to source code">ConvertValue</a>( <span>string <var>$theType</var></span>, <span>mixed <var>$theValue</var></span> )</code>
 
 		<div class="description short">
 			

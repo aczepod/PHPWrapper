@@ -166,16 +166,15 @@ $_SESSION[ kISO_FILE_PO_DIR ] = '/Library/WebServer/Library/PHPWrapper/data/cach
 
 	 
 	/*===================================================================================
-	 *	ISOBuildXMLFiles																*
+	 *	ISOParseXMLFiles																*
 	 *==================================================================================*/
 
 	/**
-	 * <h4>Build XML files</h4>
+	 * <h4>Parse XML files</h4>
 	 *
-	 * This method will generate the XML files completed with all the translations and save
-	 * it at the top level of the cache directory.
+	 * This method will parse the XML files and store the data in the database.
 	 */
-	function ISOBuildXMLFiles()
+	function ISOParseXMLFiles()
 	{
 		//
 		// Iterate known fiels.
@@ -195,29 +194,28 @@ $_SESSION[ kISO_FILE_PO_DIR ] = '/Library/WebServer/Library/PHPWrapper/data/cach
 			switch( $file )
 			{
 				case kISO_FILE_639_3:
-					ISOBuild6393XML();
+					ISOParse6393XML();
 					break;
 				case kISO_FILE_639:
-					ISOBuild639XML();
+					ISOParse639XML();
 					break;
 			}
 		
 		} // Iterating the files.
 		
-	} // ISOBuildXMLFiles.
+	} // ISOParseXMLFiles.
 
 	 
 	/*===================================================================================
-	 *	ISOBuild6393XML																	*
+	 *	ISOParse6393XML																	*
 	 *==================================================================================*/
 
 	/**
-	 * <h4>Build XML files</h4>
+	 * <h4>Parse ISO 639-3 XML files</h4>
 	 *
-	 * This method will generate the XML files completed with all the translations and save
-	 * it at the top level of the cache directory.
+	 * This method will parse the XML ISO 639-3 files.
 	 */
-	function ISOBuild6393XML()
+	function ISOParse6393XML()
 	{
 		//
 		// Load XML file.
@@ -241,6 +239,30 @@ $_SESSION[ kISO_FILE_PO_DIR ] = '/Library/WebServer/Library/PHPWrapper/data/cach
 					array( kONTOLOGY_ISO,
 						   kONTOLOGY_ISO_639,
 						   kONTOLOGY_ISO_639_3_type ) );
+			$status_code
+				= implode(
+					kTOKEN_NAMESPACE_SEPARATOR,
+					array( kONTOLOGY_ISO,
+						   kONTOLOGY_ISO_639,
+						   kONTOLOGY_ISO_639_3_status ) );
+			$inv_name_code
+				= implode(
+					kTOKEN_NAMESPACE_SEPARATOR,
+					array( kONTOLOGY_ISO,
+						   kONTOLOGY_ISO_639,
+						   kONTOLOGY_ISO_639_3_INVNAME ) );
+			$inv_name_lng_code
+				= implode(
+					kTOKEN_INDEX_SEPARATOR,
+					array( $inv_name_code,
+						   kPREDICATE_SUBCLASS_OF,
+						   kOFFSET_LANGUAGE ) );
+			$inv_name_str_code
+				= implode(
+					kTOKEN_INDEX_SEPARATOR,
+					array( $inv_name_code,
+						   kPREDICATE_SUBCLASS_OF,
+						   kOFFSET_STRING ) );
 			
 			//
 			// Load namespaces.
@@ -297,30 +319,39 @@ $_SESSION[ kISO_FILE_PO_DIR ] = '/Library/WebServer/Library/PHPWrapper/data/cach
 			//
 			$inv_name_tag
 				= $_SESSION[ kSESSION_ONTOLOGY ]->ResolveTag(
-					implode(
-						kTOKEN_NAMESPACE_SEPARATOR,
-						array( kONTOLOGY_ISO,
-							   kONTOLOGY_ISO_639,
-							   kONTOLOGY_ISO_639_3_INVNAME ) ),
-					NULL,
+					$_SESSION[ kSESSION_ONTOLOGY ]->ResolveTerm(
+						$inv_name_code,
+						NULL,
+						TRUE ),
 					TRUE )[ 0 ];
+			$inv_name_lng_tag
+				= $_SESSION[ kSESSION_ONTOLOGY ]->ResolveTag(
+					$inv_name_lng_code,
+					TRUE );
+			$inv_name_str_tag
+				= $_SESSION[ kSESSION_ONTOLOGY ]->ResolveTag(
+					$inv_name_str_code,
+					TRUE );
 			$status_tag
 				= $_SESSION[ kSESSION_ONTOLOGY ]->ResolveTag(
-					implode(
-						kTOKEN_NAMESPACE_SEPARATOR,
-						array( kONTOLOGY_ISO,
-							   kONTOLOGY_ISO_639,
-							   kONTOLOGY_ISO_639_3_status ) ),
-					NULL,
+					$_SESSION[ kSESSION_ONTOLOGY ]->ResolveTerm(
+						$status_code,
+						NULL,
+						TRUE ),
 					TRUE )[ 0 ];
 			$scope_tag
-				= $_SESSION[ kSESSION_ONTOLOGY ]->ResolveTag( $scope_code,
-					NULL,
+				= $_SESSION[ kSESSION_ONTOLOGY ]->ResolveTag(
+					$_SESSION[ kSESSION_ONTOLOGY ]->ResolveTerm(
+						$scope_code,
+						NULL,
+						TRUE ),
 					TRUE )[ 0 ];
 			$type_tag
 				= $_SESSION[ kSESSION_ONTOLOGY ]->ResolveTag(
-					$type_code,
-					NULL,
+					$_SESSION[ kSESSION_ONTOLOGY ]->ResolveTerm(
+						$type_code,
+						NULL,
+						TRUE ),
 					TRUE )[ 0 ];
 
 			//
@@ -346,8 +377,12 @@ $_SESSION[ kISO_FILE_PO_DIR ] = '/Library/WebServer/Library/PHPWrapper/data/cach
 					$part3_term = new COntologyTerm();
 					$part3_term->LID( (string) $record[ 'id' ] );
 					$part3_term->NS( $part3_ns );
-					$part3_term->Label( kDEFAULT_LANGUAGE, (string) $record[ 'name' ] );
-					$part3_term->Description( kDEFAULT_LANGUAGE, (string) $record[ 'reference_name' ] );
+					if( $record[ 'name' ] !== NULL )
+						$part3_term->Label( kDEFAULT_LANGUAGE,
+											(string) $record[ 'name' ] );
+					if( $record[ 'reference_name' ] !== NULL )
+						$part3_term->Description( kDEFAULT_LANGUAGE,
+												  (string) $record[ 'reference_name' ] );
 					if( ($tmp = $record[ 'status' ]) !== NULL )
 						$part3_term[ $status_tag[ kOFFSET_NID ] ] = (string) $tmp;
 					if( (($tmp = $record[ 'scope' ]) !== NULL)
@@ -371,6 +406,7 @@ $_SESSION[ kISO_FILE_PO_DIR ] = '/Library/WebServer/Library/PHPWrapper/data/cach
 								$part3_term[ $scope_tag[ kOFFSET_NID ] ]
 									= $scope_code.kTOKEN_NAMESPACE_SEPARATOR.'D';
 								break;
+							case 'L':
 							case 'R':
 								$part3_term[ $scope_tag[ kOFFSET_NID ] ]
 									= $scope_code.kTOKEN_NAMESPACE_SEPARATOR.'R';
@@ -427,6 +463,12 @@ $_SESSION[ kISO_FILE_PO_DIR ] = '/Library/WebServer/Library/PHPWrapper/data/cach
 								$part3_term[ $type_tag[ kOFFSET_NID ] ]
 									= $type_code.kTOKEN_NAMESPACE_SEPARATOR.'Geographic';
 								break;
+							case 'Genetic, Ancient':
+								$part3_term[ $type_tag[ kOFFSET_NID ] ]
+									= array(
+										$type_code.kTOKEN_NAMESPACE_SEPARATOR.'Genetic',
+										$type_code.kTOKEN_NAMESPACE_SEPARATOR.'A' );
+								break;
 							default:
 								echo( "!!! Unknown type [".(string) $tmp."] !!!\n" );
 								$part3_term[ $type_tag[ kOFFSET_NID ] ]
@@ -435,9 +477,10 @@ $_SESSION[ kISO_FILE_PO_DIR ] = '/Library/WebServer/Library/PHPWrapper/data/cach
 						}
 					}
 					if( ($tmp = $record[ 'inverted_name' ]) !== NULL )
-						ManageTypedOffset(
-							$part3_term, (string) $inv_name_tag[ kOFFSET_NID ],
-							kOFFSET_LANGUAGE, kOFFSET_STRING,
+						ManageTypedOffset( $part3_term,
+							(string) $inv_name_tag[ kOFFSET_NID ],
+							(string) $inv_name_lng_tag[ kOFFSET_NID ],
+							(string) $inv_name_str_tag[ kOFFSET_NID ],
 							kDEFAULT_LANGUAGE, (string) $tmp );
 					
 					//
@@ -460,7 +503,8 @@ $_SESSION[ kISO_FILE_PO_DIR ] = '/Library/WebServer/Library/PHPWrapper/data/cach
 							//
 							// Update label.
 							//
-							if( ($string = $part3_term->Label( kDEFAULT_LANGUAGE )) !== NULL )
+							if( ($string = $part3_term->Label( kDEFAULT_LANGUAGE ))
+								!== NULL )
 							{
 								if( array_key_exists( $string, $keys ) )
 									$part3_term->Label( $language, $keys[ $string ] );
@@ -469,7 +513,8 @@ $_SESSION[ kISO_FILE_PO_DIR ] = '/Library/WebServer/Library/PHPWrapper/data/cach
 							//
 							// Update description.
 							//
-							if( ($string = $part3_term->Description( kDEFAULT_LANGUAGE )) !== NULL )
+							if( ($string = $part3_term->Description( kDEFAULT_LANGUAGE ))
+								!== NULL )
 							{
 								if( array_key_exists( $string, $keys ) )
 									$part3_term->Description( $language, $keys[ $string ] );
@@ -481,16 +526,16 @@ $_SESSION[ kISO_FILE_PO_DIR ] = '/Library/WebServer/Library/PHPWrapper/data/cach
 							if( $part3_term->offsetExists(
 								(string) $inv_name_tag[ kOFFSET_NID ] ) )
 							{
-								$string = ManageTypedOffset(
-											$part3_term,
-											(string) $inv_name_tag[ kOFFSET_NID ],
-											kOFFSET_LANGUAGE, kOFFSET_STRING,
-											kDEFAULT_LANGUAGE );
+								$string = ManageTypedOffset( $part3_term,
+									(string) $inv_name_tag[ kOFFSET_NID ],
+									(string) $inv_name_lng_tag[ kOFFSET_NID ],
+									(string) $inv_name_str_tag[ kOFFSET_NID ],
+									kDEFAULT_LANGUAGE );
 								if( array_key_exists( $string, $keys ) )
-									ManageTypedOffset(
-										$part3_term,
+									ManageTypedOffset($part3_term,
 										(string) $inv_name_tag[ kOFFSET_NID ],
-										kOFFSET_LANGUAGE, kOFFSET_STRING,
+										(string) $inv_name_lng_tag[ kOFFSET_NID ],
+										(string) $inv_name_str_tag[ kOFFSET_NID ],
 										$language, $keys[ $string ] );
 							}
 						
@@ -676,22 +721,742 @@ $_SESSION[ kISO_FILE_PO_DIR ] = '/Library/WebServer/Library/PHPWrapper/data/cach
 		
 		} // Loaded file.
 
-	} // ISOBuild6393XML.
+	} // ISOParse6393XML.
 
 	 
 	/*===================================================================================
-	 *	ISOBuild639XML																	*
+	 *	ISOParse639XML																	*
 	 *==================================================================================*/
 
 	/**
-	 * <h4>Build XML files</h4>
+	 * <h4>Parse ISO 639 XML files</h4>
 	 *
-	 * This method will generate the XML files completed with all the translations and save
-	 * it at the top level of the cache directory.
+	 * This method will parse the XML ISO 639 files.
 	 */
-	function ISOBuild639XML()
+	function ISOParse639XML()
 	{
+		//
+		// Load XML file.
+		//
+		$xml = kISO_CODES_PATH.kISO_CODES_PATH_XML.'/'.kISO_FILE_639.'.xml';
+		$xml = simplexml_load_file( $xml  );
+		if( $xml instanceof SimpleXMLElement )
+		{
+			//
+			// Load namespaces.
+			//
+			$part1_ns
+				= $_SESSION[ kSESSION_ONTOLOGY ]->ResolveTerm(
+					implode(
+						kTOKEN_NAMESPACE_SEPARATOR,
+						array( kONTOLOGY_ISO,
+							   kONTOLOGY_ISO_639,
+							   kONTOLOGY_ISO_639_1 ) ),
+					NULL,
+					TRUE );
+			$part2b_ns
+				= $_SESSION[ kSESSION_ONTOLOGY ]->ResolveTerm(
+					implode(
+						kTOKEN_NAMESPACE_SEPARATOR,
+						array( kONTOLOGY_ISO,
+							   kONTOLOGY_ISO_639,
+							   kONTOLOGY_ISO_639_2B ) ),
+					NULL,
+					TRUE );
+			$part2t_ns
+				= $_SESSION[ kSESSION_ONTOLOGY ]->ResolveTerm(
+					implode(
+						kTOKEN_NAMESPACE_SEPARATOR,
+						array( kONTOLOGY_ISO,
+							   kONTOLOGY_ISO_639,
+							   kONTOLOGY_ISO_639_2T ) ),
+					NULL,
+					TRUE );
+			
+			//
+			// Load predicates.
+			//
+			$pred_xref_exact
+				= $_SESSION[ kSESSION_ONTOLOGY ]->ResolveTerm(
+					kPREDICATE_XREF_EXACT,
+					NULL,
+					TRUE );
+			
+			//
+			// Load parent nodes.
+			//
+			$part2b_parent
+				= $_SESSION[ kSESSION_ONTOLOGY ]->ResolveNode( $part2b_ns, TRUE )[ 0 ];
+			$part2t_parent
+				= $_SESSION[ kSESSION_ONTOLOGY ]->ResolveNode( $part2t_ns, TRUE )[ 0 ];
+			
+			//
+			// Iterate XML file.
+			//
+			foreach( $xml->{'iso_639_entry'} as $record )
+			{
+				//
+				// Init loop data.
+				//
+				$part1_term = $part2b_term = $part2t_term = NULL;
+				
+				//
+				// Get part 1 term.
+				//
+				$part1_term
+					= $_SESSION[ kSESSION_ONTOLOGY ]->ResolveTerm(
+						(string) $record[ 'iso_639_1_code' ], $part1_ns,
+						NULL,
+						TRUE );
+				if( $part1_term !== NULL )
+					$part1_node
+						= $_SESSION[ kSESSION_ONTOLOGY ]
+							->ResolveNode( $part1_term, TRUE )[ 0 ];
+				else
+					echo( "!!! part1[".(string) $record[ 'iso_639_1_code' ]."] !!!\n" );
+				
+				//
+				// Handle part 2b term.
+				//
+				if( $record[ 'iso_639_2B_code' ] !== NULL )
+				{
+					//
+					// Resolve term.
+					//
+					$part2b_term
+						= $_SESSION[ kSESSION_ONTOLOGY ]->ResolveTerm(
+							(string) $record[ 'iso_639_2B_code' ], $part2b_ns );
+					
+					//
+					// Create term.
+					//
+					if( $part2b_term === NULL )
+					{
+						//
+						// Initialise term.
+						//
+						$part2b_term = new COntologyTerm();
+						$part2b_term->LID( (string) $record[ 'iso_639_2B_code' ] );
+						$part2b_term->NS( $part2b_ns );
+						if( $record[ 'name' ] !== NULL )
+							$part2b_term->Label( kDEFAULT_LANGUAGE,
+												 (string) $record[ 'name' ] );
+						
+						//
+						// Iterate language files.
+						//
+						foreach( $_SESSION[ kISO_LANGUAGES ] as $language )
+						{
+							//
+							// Check language key file.
+							//
+							$file_path = $_SESSION[ kISO_FILE_PO_DIR ]."/$language/"
+										.kISO_FILE_639.'.serial';
+							if( is_file( $file_path ) )
+							{
+								//
+								// Instantiate keys array.
+								//
+								$keys = unserialize( file_get_contents( $file_path ) );
+								
+								//
+								// Update label.
+								//
+								if( ($string = $part2b_term->Label( kDEFAULT_LANGUAGE ))
+									!== NULL )
+								{
+									if( array_key_exists( $string, $keys ) )
+										$part2b_term->Label( $language, $keys[ $string ] );
+								}
+							
+							} // Key file exists.
+						
+						} // Iterating languages.
+						
+						//
+						// Commit term.
+						// !!! For some reason it will not work with an uncommitted term !!!
+						//
+						$part2b_term->Insert(
+							$_SESSION[ kSESSION_ONTOLOGY ]->Connection() );
+						
+						//
+						// Create and relate term.
+						//
+						$_SESSION[ kSESSION_ONTOLOGY ]->EnumOf(
+							$part2b_node
+								= $_SESSION[ kSESSION_ONTOLOGY ]->NewEnumerationNode(
+									$part2b_term ),
+							$part2b_parent );
+					
+					} // New term.
+				
+				} // Provided part 2b code.
+				
+				//
+				// Handle part 2t term.
+				//
+				if( $record[ 'iso_639_2T_code' ] !== NULL )
+				{
+					//
+					// Resolve term.
+					//
+					$part2t_term
+						= $_SESSION[ kSESSION_ONTOLOGY ]->ResolveTerm(
+							(string) $record[ 'iso_639_2T_code' ], $part2t_ns );
+					
+					//
+					// Create term.
+					//
+					if( $part2t_term === NULL )
+					{
+						//
+						// Initialise term.
+						//
+						$part2t_term = new COntologyTerm();
+						$part2t_term->LID( (string) $record[ 'iso_639_2T_code' ] );
+						$part2t_term->NS( $part2t_ns );
+						$part2t_term->Label( kDEFAULT_LANGUAGE,
+											 (string) $record[ 'name' ] );
+						
+						//
+						// Iterate language files.
+						//
+						foreach( $_SESSION[ kISO_LANGUAGES ] as $language )
+						{
+							//
+							// Check language key file.
+							//
+							$file_path = $_SESSION[ kISO_FILE_PO_DIR ]."/$language/"
+										.kISO_FILE_639.'.serial';
+							if( is_file( $file_path ) )
+							{
+								//
+								// Instantiate keys array.
+								//
+								$keys = unserialize( file_get_contents( $file_path ) );
+								
+								//
+								// Update label.
+								//
+								if( ($string = $part2t_term->Label( kDEFAULT_LANGUAGE ))
+									!== NULL )
+								{
+									if( array_key_exists( $string, $keys ) )
+										$part2t_term->Label( $language, $keys[ $string ] );
+								}
+							
+							} // Key file exists.
+						
+						} // Iterating languages.
+						
+						//
+						// Commit term.
+						// !!! For some reason it will not work with an uncommitted term !!!
+						//
+						$part2t_term->Insert(
+							$_SESSION[ kSESSION_ONTOLOGY ]->Connection() );
+						
+						//
+						// Create and relate term.
+						//
+						$_SESSION[ kSESSION_ONTOLOGY ]->EnumOf(
+							$part2t_node
+								= $_SESSION[ kSESSION_ONTOLOGY ]->NewEnumerationNode(
+									$part2t_term ),
+							$part2t_parent );
+					
+					} // New term.
+				
+				} // Provided part 2t code.
+				
+				//
+				// Relate to part 1.
+				//
+				if( $part1_term !== NULL )
+				{
+					//
+					// Cross reference part 2b and 1.
+					//
+					if( $part2b_term !== NULL )
+						$_SESSION[ kSESSION_ONTOLOGY ]->RelateTo(
+							$part2b_node, $part1_node, $pred_xref_exact );
+				
+					//
+					// Cross reference part 2t and 1.
+					//
+					if( $part2t_term !== NULL )
+						$_SESSION[ kSESSION_ONTOLOGY ]->RelateTo(
+							$part2t_node, $part1_node, $pred_xref_exact );
+				
+				} // Provided part 1 code.
+				
+				//
+				// Relate part 2b.
+				//
+				if( $part2b_term !== NULL )
+				{
+					//
+					// Cross reference part 2b and 2t.
+					//
+					if( $part2t_term !== NULL )
+					{
+						$_SESSION[ kSESSION_ONTOLOGY ]->RelateTo(
+							$part2b_node, $part2t_node, $pred_xref_exact );
+						$_SESSION[ kSESSION_ONTOLOGY ]->RelateTo(
+							$part2t_term, $part2b_node, $pred_xref_exact );
+					}
+				
+				} // Provided part 2b code.
+				
+				//
+				// Relate part 2t.
+				//
+				if( $part2t_term !== NULL )
+				{
+					//
+					// Cross reference part 2b and 2t.
+					//
+					if( $part2b_term !== NULL )
+					{
+						$_SESSION[ kSESSION_ONTOLOGY ]->RelateTo(
+							$part2t_term, $part2b_term, $pred_xref_exact );
+						$_SESSION[ kSESSION_ONTOLOGY ]->RelateTo(
+							$part2b_term, $part2t_term, $pred_xref_exact );
+					}
+				
+				} // Provided part 2t code.
+			
+			} // Iterating records.
 		
-	} // ISOBuild639XML.
+		} // Loaded file.
+		
+	} // ISOParse639XML.
+
+	 
+	/*===================================================================================
+	 *	ISOParse3166XML																	*
+	 *==================================================================================*/
+
+	/**
+	 * <h4>Parse ISO 3166 1 and 3 XML files</h4>
+	 *
+	 * This method will parse the XML ISO 3166-1 and 3166-3 files.
+	 */
+	function ISOParse3166XML()
+	{
+		//
+		// Load XML file.
+		//
+		$xml = kISO_CODES_PATH.kISO_CODES_PATH_XML.'/'.kISO_FILE_3166.'.xml';
+		$xml = simplexml_load_file( $xml  );
+		if( $xml instanceof SimpleXMLElement )
+		{
+			//
+			// Load namespaces.
+			//
+			$part1_2_ns
+				= $_SESSION[ kSESSION_ONTOLOGY ]->ResolveTerm(
+					implode(
+						kTOKEN_NAMESPACE_SEPARATOR,
+						array( kONTOLOGY_ISO,
+							   kONTOLOGY_ISO_3166,
+							   kONTOLOGY_ISO_3166_1,
+							   kONTOLOGY_ISO_3166_1_ALPHA2 ) ),
+					NULL,
+					TRUE );
+			$part1_3_ns
+				= $_SESSION[ kSESSION_ONTOLOGY ]->ResolveTerm(
+					implode(
+						kTOKEN_NAMESPACE_SEPARATOR,
+						array( kONTOLOGY_ISO,
+							   kONTOLOGY_ISO_3166,
+							   kONTOLOGY_ISO_3166_1,
+							   kONTOLOGY_ISO_3166_1_ALPHA3 ) ),
+					NULL,
+					TRUE );
+			$part1_n_ns
+				= $_SESSION[ kSESSION_ONTOLOGY ]->ResolveTerm(
+					implode(
+						kTOKEN_NAMESPACE_SEPARATOR,
+						array( kONTOLOGY_ISO,
+							   kONTOLOGY_ISO_3166,
+							   kONTOLOGY_ISO_3166_1,
+							   kONTOLOGY_ISO_3166_1_NUMERIC ) ),
+					NULL,
+					TRUE );
+			$part3_3_ns
+				= $_SESSION[ kSESSION_ONTOLOGY ]->ResolveTerm(
+					implode(
+						kTOKEN_NAMESPACE_SEPARATOR,
+						array( kONTOLOGY_ISO,
+							   kONTOLOGY_ISO_3166,
+							   kONTOLOGY_ISO_3166_3,
+							   kONTOLOGY_ISO_3166_3_ALPHA3 ) ),
+					NULL,
+					TRUE );
+			$part3_4_ns
+				= $_SESSION[ kSESSION_ONTOLOGY ]->ResolveTerm(
+					implode(
+						kTOKEN_NAMESPACE_SEPARATOR,
+						array( kONTOLOGY_ISO,
+							   kONTOLOGY_ISO_3166,
+							   kONTOLOGY_ISO_3166_3,
+							   kONTOLOGY_ISO_3166_3_ALPHA4 ) ),
+					NULL,
+					TRUE );
+			$part3_n_ns
+				= $_SESSION[ kSESSION_ONTOLOGY ]->ResolveTerm(
+					implode(
+						kTOKEN_NAMESPACE_SEPARATOR,
+						array( kONTOLOGY_ISO,
+							   kONTOLOGY_ISO_3166,
+							   kONTOLOGY_ISO_3166_3,
+							   kONTOLOGY_ISO_3166_3_NUMERIC ) ),
+					NULL,
+					TRUE );
+			
+			//
+			// Load predicates.
+			//
+			$pred_xref_exact
+				= $_SESSION[ kSESSION_ONTOLOGY ]->ResolveTerm(
+					kPREDICATE_XREF_EXACT,
+					NULL,
+					TRUE );
+			
+			//
+			// Load parent nodes.
+			//
+			$part1_2_parent
+				= $_SESSION[ kSESSION_ONTOLOGY ]->ResolveNode( $part1_2_ns, TRUE )[ 0 ];
+			$part1_3_parent
+				= $_SESSION[ kSESSION_ONTOLOGY ]->ResolveNode( $part1_3_ns, TRUE )[ 0 ];
+			$part1_n_parent
+				= $_SESSION[ kSESSION_ONTOLOGY ]->ResolveNode( $part1_n_ns, TRUE )[ 0 ];
+			$part3_3_parent
+				= $_SESSION[ kSESSION_ONTOLOGY ]->ResolveNode( $part3_3_ns, TRUE )[ 0 ];
+			$part3_4_parent
+				= $_SESSION[ kSESSION_ONTOLOGY ]->ResolveNode( $part3_4_ns, TRUE )[ 0 ];
+			$part3_n_parent
+				= $_SESSION[ kSESSION_ONTOLOGY ]->ResolveNode( $part3_n_ns, TRUE )[ 0 ];
+			
+			//
+			// Load attribute tags.
+			//
+			$part1_common_name_tag
+				= $_SESSION[ kSESSION_ONTOLOGY ]->ResolveTag(
+					implode(
+						kTOKEN_NAMESPACE_SEPARATOR,
+						array( kONTOLOGY_ISO,
+							   kONTOLOGY_ISO_3166,
+							   kONTOLOGY_ISO_3166_1,
+							   kONTOLOGY_ISO_3166_1_COMMON_NAME ) ),
+					NULL,
+					TRUE )[ 0 ];
+			$part2_type_tag
+				= $_SESSION[ kSESSION_ONTOLOGY ]->ResolveTag(
+					implode(
+						kTOKEN_NAMESPACE_SEPARATOR,
+						array( kONTOLOGY_ISO,
+							   kONTOLOGY_ISO_3166,
+							   kONTOLOGY_ISO_3166_2,
+							   kONTOLOGY_ISO_3166_2_TYPE ) ),
+					NULL,
+					TRUE )[ 0 ];
+			$part3_date_tag
+				= $_SESSION[ kSESSION_ONTOLOGY ]->ResolveTag(
+					implode(
+						kTOKEN_NAMESPACE_SEPARATOR,
+						array( kONTOLOGY_ISO,
+							   kONTOLOGY_ISO_3166,
+							   kONTOLOGY_ISO_3166_3,
+							   kONTOLOGY_ISO_3166_3_DATE_WITHDRAWN ) ),
+					NULL,
+					TRUE )[ 0 ];
+			$part3_date_tag
+				= $_SESSION[ kSESSION_ONTOLOGY ]->ResolveTag(
+					implode(
+						kTOKEN_NAMESPACE_SEPARATOR,
+						array( kONTOLOGY_ISO,
+							   kONTOLOGY_ISO_3166,
+							   kONTOLOGY_ISO_3166_3,
+							   kONTOLOGY_ISO_3166_3_COMMENT ) ),
+					NULL,
+					TRUE )[ 0 ];
+
+			//
+			// Iterate 3166-1 XML file.
+			//
+			foreach( $xml->{'iso_3166_entry'} as $record )
+			{
+				//
+				// Init loop data.
+				//
+				$part1_2_term = $part1_3_term = $part1_n_term = NULL;
+				
+				//
+				// Check alpha 2 term.
+				//
+				if( $_SESSION[ kSESSION_ONTOLOGY ]->ResolveTerm
+					( (string) $record[ 'alpha_2_code' ], $part1_2_ns )
+						=== NULL )
+				{
+					//
+					// Init term.
+					//
+					$part1_2_term = new COntologyTerm();
+					$part1_2_term->LID( (string) $record[ 'id' ] );
+					$part1_2_term->NS( $part1_2_ns );
+					if( $record[ 'name' ] !== NULL )
+						$part1_2_term->Label( kDEFAULT_LANGUAGE,
+											  (string) $record[ 'name' ] );
+					if( $record[ 'official_name' ] !== NULL )
+						$part1_2_term->Description( kDEFAULT_LANGUAGE,
+													(string) $record[ 'official_name' ] );
+					if( $record[ 'common_name' ] !== NULL )
+						ManageTypedOffset( $part3_term,
+							(string) $inv_name_tag[ kOFFSET_NID ],
+							(string) $inv_name_lng_tag[ kOFFSET_NID ],
+							(string) $inv_name_str_tag[ kOFFSET_NID ],
+							kDEFAULT_LANGUAGE, (string) $tmp );
+					
+					//
+					// Iterate languages.
+					//
+					foreach( $_SESSION[ kISO_LANGUAGES ] as $language )
+					{
+						//
+						// Check language key file.
+						//
+						$file_path = $_SESSION[ kISO_FILE_PO_DIR ]."/$language/"
+									.kISO_FILE_639_3.'.serial';
+						if( is_file( $file_path ) )
+						{
+							//
+							// Instantiate keys array.
+							//
+							$keys = unserialize( file_get_contents( $file_path ) );
+							
+							//
+							// Update label.
+							//
+							if( ($string = $part3_term->Label( kDEFAULT_LANGUAGE )) !== NULL )
+							{
+								if( array_key_exists( $string, $keys ) )
+									$part3_term->Label( $language, $keys[ $string ] );
+							}
+							
+							//
+							// Update description.
+							//
+							if( ($string = $part3_term->Description( kDEFAULT_LANGUAGE )) !== NULL )
+							{
+								if( array_key_exists( $string, $keys ) )
+									$part3_term->Description( $language, $keys[ $string ] );
+							}
+							
+							//
+							// Update inverted name.
+							//
+							if( $part3_term->offsetExists(
+								(string) $inv_name_tag[ kOFFSET_NID ] ) )
+							{
+								$string = ManageTypedOffset( $part3_term,
+									(string) $inv_name_tag[ kOFFSET_NID ],
+									(string) $inv_name_lng_tag[ kOFFSET_NID ],
+									(string) $inv_name_str_tag[ kOFFSET_NID ],
+									kDEFAULT_LANGUAGE );
+								if( array_key_exists( $string, $keys ) )
+									ManageTypedOffset($part3_term,
+										(string) $inv_name_tag[ kOFFSET_NID ],
+										(string) $inv_name_lng_tag[ kOFFSET_NID ],
+										(string) $inv_name_str_tag[ kOFFSET_NID ],
+										$language, $keys[ $string ] );
+							}
+						
+						} // Key file exists.
+					
+					} // Iterating languages.
+					
+					//
+					// Commit term.
+					// !!! For some reason it will not work with an uncommitted term !!!
+					//
+					$part3_term->Insert( $_SESSION[ kSESSION_ONTOLOGY ]->Connection() );
+					
+					//
+					// Create node and relate to parent.
+					//
+					$_SESSION[ kSESSION_ONTOLOGY ]->EnumOf(
+						$part3_node
+							= $_SESSION[ kSESSION_ONTOLOGY ]->NewEnumerationNode(
+								$part3_term ),
+						$part3_parent );
+					
+					//
+					// Handle part 1 code.
+					//
+					if( $record[ 'part1_code' ] !== NULL )
+					{
+						//
+						// Check term.
+						//
+						if( $_SESSION[ kSESSION_ONTOLOGY ]->ResolveTerm
+							( (string) $record[ 'part1_code' ], $part1_ns )
+								=== NULL )
+						{
+							//
+							// Slip deprecated.
+							//
+							if( (substr( (string) $record[ 'part1_code' ], 3 )
+									!= '(deprecated)') )
+							{
+								//
+								// Create term.
+								//
+								$part1_term = new COntologyTerm();
+								$part1_term->LID(
+									substr( (string) $record[ 'part1_code' ], 0, 2 ) );
+								$part1_term->NS( $part1_ns );
+								$part1_term->Term( $part3_term );					
+								$part1_term->Insert( $_SESSION[ kSESSION_ONTOLOGY ]
+														->Connection() );
+								
+								//
+								// Create node and relate to parent.
+								//
+								$_SESSION[ kSESSION_ONTOLOGY ]->EnumOf(
+									$part1_node
+										= $_SESSION[ kSESSION_ONTOLOGY ]->NewEnumerationNode(
+											$part1_term ),
+									$part1_parent );
+							
+							} // Not deprecated.
+						
+						} // New term.
+						
+						else
+							echo( "!!! part1[".(string) $record[ 'part1_code' ]."] !!!\n" );
+					
+					} // Has part 1 code.
+					
+					//
+					// Handle part 2 code.
+					//
+					if( $record[ 'part2_code' ] !== NULL )
+					{
+						//
+						// Check term.
+						//
+						if( $_SESSION[ kSESSION_ONTOLOGY ]->ResolveTerm
+							( (string) $record[ 'part2_code' ], $part2_ns )
+								=== NULL )
+						{
+							//
+							// Create term.
+							//
+							$part2_term = new COntologyTerm();
+							$part2_term->LID( (string) $record[ 'part2_code' ] );
+							$part2_term->NS( $part2_ns );
+							$part2_term->Term( $part3_term );					
+							$part2_term->Insert(
+								$_SESSION[ kSESSION_ONTOLOGY ]->Connection() );
+							
+							//
+							// Create node and relate to parent.
+							//
+							$_SESSION[ kSESSION_ONTOLOGY ]->EnumOf(
+								$part2_node
+									= $_SESSION[ kSESSION_ONTOLOGY ]->NewEnumerationNode(
+										$part2_term ),
+								$part2_parent );
+						
+						} // New term.
+						
+						else
+							echo( "!!! part2[".(string) $record[ 'part2_code' ]."] !!!\n" );
+					
+					} // Has part 2 code.
+					
+					//
+					// Create cross-references.
+					//
+					if( $part1_term !== NULL )
+					{
+						//
+						// Cross reference part 3 and 1.
+						//
+						$_SESSION[ kSESSION_ONTOLOGY ]->RelateTo(
+							$part1_node, $part3_node, $pred_xref_exact );
+					
+						//
+						// Cross reference part 1 and 3.
+						//
+						$_SESSION[ kSESSION_ONTOLOGY ]->RelateTo(
+							$part3_node, $part1_node, $pred_xref_exact );
+						
+						//
+						// Create cross-references.
+						//
+						if( $part2_term !== NULL )
+						{
+							//
+							// Cross reference part 2 and 3.
+							//
+							$_SESSION[ kSESSION_ONTOLOGY ]->RelateTo(
+								$part2_node, $part3_node, $pred_xref_exact );
+						
+							//
+							// Cross reference part 3 and 2.
+							//
+							$_SESSION[ kSESSION_ONTOLOGY ]->RelateTo(
+								$part3_node, $part2_node, $pred_xref_exact );
+						
+							//
+							// Cross reference part 1 and 2.
+							//
+							$_SESSION[ kSESSION_ONTOLOGY ]->RelateTo(
+								$part1_node, $part2_node, $pred_xref_exact );
+						
+							//
+							// Cross reference part 2 and 1.
+							//
+							$_SESSION[ kSESSION_ONTOLOGY ]->RelateTo(
+								$part2_node, $part1_node, $pred_xref_exact );
+						
+						} // Has part 1 code.
+					
+					} // Has part 1 code.
+					
+					//
+					// Create cross-references.
+					//
+					elseif( $part2_term !== NULL )
+					{
+						//
+						// Cross reference part 2 and 3.
+						//
+						$_SESSION[ kSESSION_ONTOLOGY ]->RelateTo(
+							$part2_node, $part3_node, $pred_xref_exact );
+					
+						//
+						// Cross reference part 3 and 2.
+						//
+						$_SESSION[ kSESSION_ONTOLOGY ]->RelateTo(
+							$part3_node, $part2_node, $pred_xref_exact );
+					
+					} // Has part 2 code only.
+				
+				} // New part 3 term.
+				
+				else
+					echo( "!!! part3[".(string) $record[ 'id' ]."] !!!\n" );
+			
+			} // Iterating records.
+		
+		} // Loaded file.
+
+	} // ISOParse3166XML.
 
 ?>

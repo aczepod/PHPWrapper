@@ -673,7 +673,7 @@ class COntologyTag extends CTag
 			//
 			// Resolve container.
 			//
-			$container = COntologyTag::ResolveClassContainer( $theConnection, TRUE );
+			$container = static::ResolveClassContainer( $theConnection, TRUE );
 			
 			//
 			// Handle tag identifier.
@@ -724,60 +724,74 @@ class COntologyTag extends CTag
 				// Get term identifier.
 				//
 				$theIdentifier = $theIdentifier->offsetGet( kOFFSET_NID );
+				
+				//
+				// Make query.
+				//
+				$query = $container->NewQuery();
+				$query->AppendStatement(
+					CQueryStatement::Member(
+						kTAG_VERTEX_TERMS, $theIdentifier, kTYPE_BINARY ) );
+				$rs = $container->Query( $query );
+				
+				//
+				// Handle found tags.
+				//
+				if( $rs->count() )
+				{
+					//
+					// Return list of tags.
+					//
+					$list = Array();
+					foreach( $rs as $document )
+						$list[] = CPersistentObject::DocumentObject( $document );
+					
+					return $list;													// ==>
+				
+				} // Found at least one tag.
+	
+				//
+				// Raise exception.
+				//
+				if( $doThrow )
+					throw new Exception
+						( "Tag not found",
+						  kERROR_NOT_FOUND );									// !@! ==>
+				
+				return NULL;														// ==>
 			
 			} // Provided term object.
 			
 			//
-			// Handle term reference.
-			//
-			else
-			{
-				//
-				// Resolve term.
-				//
-				$term = COntologyTerm::Resolve( $theConnection, $theIdentifier, $doThrow );
-				if( $term instanceof COntologyTerm )
-					$theIdentifier = $term->offsetGet( kOFFSET_NID );
-				else
-				{
-					//
-					// Raise exception.
-					//
-					if( $doThrow )
-						throw new Exception
-							( "Tag not found: unresolved term reference [$theIdentifier]",
-							  kERROR_NOT_FOUND );								// !@! ==>
-					
-					return NULL;													// ==>
-				
-				} // Unresolved term.
-			
-			} // Provided term reference.
-			
-			//
-			// Make query.
+			// Query global identifier.
 			//
 			$query = $container->NewQuery();
 			$query->AppendStatement(
-				CQueryStatement::Member(
-					kTAG_VERTEX_TERMS, $theIdentifier, kTYPE_BINARY ) );
-			$rs = $container->Query( $query );
+				CQueryStatement::Equals(
+					kTAG_GID, $theIdentifier, kTYPE_STRING ) );
+			$found = $container->Query( $query, NULL, TRUE );
 			
 			//
-			// Handle found tags.
+			// Look again.
 			//
-			if( $rs->count() )
+			if( $found === NULL )
 			{
 				//
-				// Return list of tags.
+				// Query unique identifier.
 				//
-				$list = Array();
-				foreach( $rs as $document )
-					$list[] = CPersistentObject::DocumentObject( $document );
-				
-				return $list;														// ==>
+				$query = $container->NewQuery();
+				$query->AppendStatement(
+					CQueryStatement::Equals(
+						kTAG_UID, $theIdentifier, kTYPE_BINARY ) );
+				$found = $container->Query( $query, NULL, TRUE );
 			
-			} // Found at least one tag.
+			} // Not found in global identifier.
+			
+			//
+			// Handle found.
+			//
+			if( $found !== NULL )
+				return $found;														// ==>
 
 			//
 			// Raise exception.

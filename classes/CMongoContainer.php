@@ -812,15 +812,16 @@ class CMongoContainer extends CContainer
 	/**
 	 * <h4>Perform a query</h4>
 	 *
-	 * We overload this method to perform the query on the current container.
+	 * This method will perform the provided query on the current container.
 	 *
 	 * @param CQuery				$theQuery			Query.
 	 * @param array					$theFields			Fieldset.
+	 * @param boolean				$doOne				If TRUE return first match or NULL.
 	 *
 	 * @access public
 	 * @return mixed				Native recordset.
 	 */
-	public function Query( CQuery $theQuery, $theFields = NULL )
+	public function Query( CQuery $theQuery, $theFields = NULL, $doOne = FALSE )
 	{
 		//
 		// Get container.
@@ -845,6 +846,12 @@ class CMongoContainer extends CContainer
 			foreach( $theFields as $field )
 				$fields[ $field ] = TRUE;
 		}
+		
+		//
+		// Return first object.
+		//
+		if( $doOne )
+			return $container->findOne( $query, $fields );							// ==>
 		
 		return $container->find( $query, $fields );									// ==>
 	

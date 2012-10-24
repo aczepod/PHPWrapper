@@ -324,7 +324,7 @@ require_once( kPATH_MYWRAPPER_LIBRARY_DEFINE."/Errors.inc.php" );
 	 * @param string				$theOffset			Offset to be managed.
 	 * @param string				$theTypeOffset		Offset of type item.
 	 * @param string				$theDataOffset		Offset of data item.
-	 * @param string				$theTypeValue		Offset to be managed.
+	 * @param string				$theTypeValue		Type value.
 	 * @param mixed					$theValue			New value or operation.
 	 * @param boolean				$getOld				TRUE get old value.
 	 *

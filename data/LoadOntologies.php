@@ -90,6 +90,7 @@ try
 	LoadISO639Categories();
 	LoadISO639Enums();
 	LoadISO3166Categories();
+	LoadISO4217Categories();
 	
 	echo( "  • Loading ISO codes.\n" );
 	
@@ -97,7 +98,7 @@ try
 	// Load ISO codes.
 	//
 	ISODecodePOFiles();
-	ISOBuildXMLFiles();
+	ISOParseXMLFiles();
 exit;
 	
 	echo( "  • Loading landraces passport ontology.\n" );

@@ -1416,9 +1416,8 @@ class COntology extends CConnection
 	 *	<li><tt>{@link COntologyTerm}</tt>: In this case the method locate all tags that
 	 *		refer to the provided term. If the term is not {@link _IsCommitted()}, the
 	 *		method will return <tt>NULL</tt>.
-	 *	<li><i>other</i>: Any other type will be interpreted either the term's native
-	 *		identifier, or as the term's global identifier: the method will return all tags
-	 *		that refer to that term.
+	 *	<li><i>other</i>: Any other type will be interpreted as the tag's global or unique
+	 *		identifier.
 	 * </ul>
 	 *
 	 * The method will raise an exception if the object is not {@link _IsInited()} and if
