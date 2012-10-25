@@ -356,13 +356,14 @@ class CMongoQuery extends CQuery
 						{
 							case kOPERATOR_AND:
 							case kOPERATOR_OR:
-								$statement[ $theStatement[ kOFFSET_QUERY_SUBJECT ] ] = $data;
+								$subject = (string) $theStatement[ kOFFSET_QUERY_SUBJECT ];
+								$statement[ $subject ] = $data;
 								break;
 							
 							case kOPERATOR_NAND:
 							case kOPERATOR_NOR:
-								$statement[ $theStatement[ kOFFSET_QUERY_SUBJECT ] ]
-									= array( '$ne' => $data );
+								$subject = (string) $theStatement[ kOFFSET_QUERY_SUBJECT ];
+								$statement[ $subject ] = array( '$ne' => $data );
 								break;
 						}
 						break;
@@ -373,8 +374,8 @@ class CMongoQuery extends CQuery
 						{
 							case kOPERATOR_AND:
 							case kOPERATOR_OR:
-								$statement[ $theStatement[ kOFFSET_QUERY_SUBJECT ] ]
-									= array( '$ne' => $data );
+								$subject = (string) $theStatement[ kOFFSET_QUERY_SUBJECT ];
+								$statement[ $subject ] = array( '$ne' => $data );
 								break;
 							
 							case kOPERATOR_NAND:

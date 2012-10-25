@@ -339,6 +339,43 @@ try
 	echo( '<pre>' ); print_r( $string ); echo( '</pre>' );
 	echo( '<hr />' );
 	echo( '<hr />' );
+
+	//
+	// Resolve by ID.
+	//
+	echo( '<h4>Resolve by ID</h4>' );
+	echo( '<h5>$found = COntologyEdge::Resolve( $database, $edge[ kOFFSET_NID ], TRUE );</h5>' );
+	$found = COntologyEdge::Resolve( $database, $edge[ kOFFSET_NID ], TRUE );
+	echo( '<pre>' ); print_r( $found ); echo( '</pre>' );
+	echo( '<hr />' );
+
+	//
+	// Resolve by object.
+	//
+	echo( '<h4>Resolve by object</h4>' );
+	echo( '<h5>$found = COntologyEdge::Resolve( $edge_container, $edge, TRUE );</h5>' );
+	$found = COntologyEdge::Resolve( $edge_container, $edge, TRUE );
+	echo( '<pre>' ); print_r( $found ); echo( '</pre>' );
+	echo( '<hr />' );
+
+	//
+	// Resolve by global identifier.
+	//
+	echo( '<h4>Resolve by global identifier</h4>' );
+	echo( '<h5>$found = COntologyEdge::Resolve( $database, $string, TRUE );</h5>' );
+	$found = COntologyEdge::Resolve( $database, $string, TRUE );
+	echo( '<pre>' ); print_r( $found ); echo( '</pre>' );
+	echo( '<hr />' );
+
+	//
+	// Resolve by unique identifier.
+	//
+	echo( '<h4>Resolve by unique identifier</h4>' );
+	echo( '<h5>$found = COntologyEdge::Resolve( $database, $edge[ kTAG_UID ], TRUE );</h5>' );
+	$found = COntologyEdge::Resolve( $database, $edge[ kTAG_UID ], TRUE );
+	echo( '<pre>' ); print_r( $found ); echo( '</pre>' );
+	echo( '<hr />' );
+	echo( '<hr />' );
 	
 	//
 	// Delete edge.

@@ -236,6 +236,19 @@ define( "kKIND_NODE_INSTANCE",					':INSTANCE' );
 define( "kPREDICATE_SUBCLASS_OF",				':SUBCLASS-OF' );
 
 /**
+ * SUBSET-OF.
+ *
+ * This tag identifies the SUBSET-OF predicate term local code, this predicate indicates
+ * that the subject of the relationship represents a subset of the object of the
+ * relationship, in other words, the subject is a subset of the object, or the subject is
+ * contained by the object.
+ *
+ * Note that this term is expected to belong to the default namespace which has an empty
+ * local identifier.
+ */
+define( "kPREDICATE_SUBSET_OF",					':SUBSET-OF' );
+
+/**
  * METHOD-OF.
  *
  * This tag identifies the METHOD-OF predicate term local code, this predicate relates
@@ -294,6 +307,19 @@ define( "kPREDICATE_PREFERRED",					':PREFERRED' );
  * local identifier.
  */
 define( "kPREDICATE_VALID",						':VALID' );
+
+/**
+ * LEGACY.
+ *
+ * This tag identifies the LEGACY predicate term local code, this predicate indicates
+ * that the object of the relationship is the former or legacy choice, in other words, the
+ * object of the relationship is obsolete or not valid, and one should use the subject of
+ * the relationship in its place.
+ *
+ * Note that this term is expected to belong to the default namespace which has an empty
+ * local identifier.
+ */
+define( "kPREDICATE_LEGACY",					':LEGACY' );
 
 /**
  * XREF-EXACT.

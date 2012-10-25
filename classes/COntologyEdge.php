@@ -385,6 +385,141 @@ class COntologyEdge extends CEdge
 
 /*=======================================================================================
  *																						*
+ *								STATIC RESOLUTION INTERFACE								*
+ *																						*
+ *======================================================================================*/
+
+
+	 
+	/*===================================================================================
+	 *	Resolve																			*
+	 *==================================================================================*/
+
+	/**
+	 * <h4>Resolve an edge</h4>
+	 *
+	 * This method can be used to retrieve an existing edge by identifier.
+	 *
+	 * The method accepts the following parameters:
+	 *
+	 * <ul>
+	 *	<li><tt>$theConnection</tt>: This parameter represents the connection from which the
+	 *		nodes container must be resolved. If this parameter cannot be correctly
+	 *		determined, the method will raise an exception.
+	 *	<li><tt>$theIdentifier</tt>: This parameter represents the edge unique, global,
+	 *		native identifier or object, depending on its type:
+	 *	 <ul>
+	 *		<li><tt>{@link COntologyEdge}</tt>: In this case the method will use the
+	 *			provided edge's global identifier.
+	 *		<li><tt>integer</tt>: In this case the method assumes that the parameter
+	 *			represents the edge identifier: it will attempt to retrieve the edge, if it
+	 *			is not found, the method will return <tt>NULL</tt>.
+	 *		<li><i>other</i>: Any other type will be interpreted either as the edge's unique
+	 *			identifier, or as the edges's global identifier: the method will return the
+	 *			matching edge or <tt>NULL</tt>.
+	 *	 </ul>
+	 *	<li><tt>$doThrow</tt>: If <tt>TRUE</tt>, any failure to resolve the edge will raise
+	 *		an exception.
+	 * </ul>
+	 *
+	 * The method will return the found edge, <tt>NULL</tt> if not found, or raise an
+	 * exception if the last parameter is <tt>TRUE</tt>.
+	 *
+	 * @param CConnection			$theConnection		Server, database or container.
+	 * @param mixed					$theIdentifier		Edge reference.
+	 * @param boolean				$doThrow			If <tt>TRUE</tt> raise an exception.
+	 *
+	 * @static
+	 * @return COntologyEdge		Found edge or <tt>NULL</tt>.
+	 *
+	 * @throws Exception
+	 */
+	static function Resolve( CConnection $theConnection, $theIdentifier, $doThrow = FALSE )
+	{
+		//
+		// Check identifier.
+		//
+		if( $theIdentifier !== NULL )
+		{
+			//
+			// Resolve container.
+			//
+			$container = COntologyEdge::ResolveClassContainer( $theConnection, TRUE );
+			
+			//
+			// Handle edge native identifier.
+			//
+			if( is_integer( $theIdentifier ) )
+			{
+				//
+				// Get edge.
+				//
+				$edge = COntologyEdge::NewObject( $theConnection, $theIdentifier );
+				
+				//
+				// Handle missing node.
+				//
+				if( ($edge === NULL)
+				 && $doThrow )
+					throw new Exception
+						( "Edge not found",
+						  kERROR_NOT_FOUND );									// !@! ==>
+				
+				return $edge;														// ==>
+			
+			} // Provided edge identifier.
+			
+			//
+			// Handle edge object.
+			//
+			if( $theIdentifier instanceof COntologyEdge )
+				$theIdentifier = $theIdentifier->GID();
+			
+			//
+			// Try unique identifier.
+			//
+			$query = $container->NewQuery();
+			$query->AppendStatement(
+				CQueryStatement::Equals(
+					kTAG_UID, $theIdentifier, kTYPE_BINARY ) );
+			$found = $container->Query( $query, NULL, TRUE );
+			if( $found !== NULL )
+				return $found;														// ==>
+			
+			//
+			// Try global identifier.
+			//
+			$theIdentifier = md5( $theIdentifier, TRUE );
+			$query = $container->NewQuery();
+			$query->AppendStatement(
+				CQueryStatement::Equals(
+					kTAG_UID, $theIdentifier, kTYPE_BINARY ) );
+			$found = $container->Query( $query, NULL, TRUE );
+			if( $found !== NULL )
+				return $found;														// ==>
+
+			//
+			// Raise exception.
+			//
+			if( $doThrow )
+				throw new Exception
+					( "Edge not found",
+					  kERROR_NOT_FOUND );										// !@! ==>
+			
+			return NULL;															// ==>
+			
+		} // Provided local or global identifier.
+		
+		throw new Exception
+			( "Missing edge reference",
+			  kERROR_PARAMETER );												// !@! ==>
+
+	} // Resolve.
+
+		
+
+/*=======================================================================================
+ *																						*
  *							PROTECTED IDENTIFICATION INTERFACE							*
  *																						*
  *======================================================================================*/

@@ -1397,6 +1397,273 @@ class COntology extends CConnection
 
 	 
 	/*===================================================================================
+	 *	ResolveEdge																		*
+	 *==================================================================================*/
+
+	/**
+	 * <h4>Find an edge</h4>
+	 *
+	 * This method can be used to retrieve an existing edge by providing the elements that
+	 * constitute it.
+	 *
+	 * The method expects the following parameters:
+	 *
+	 * <ul>
+	 *	<li><tt>$theSubject</tt>: This parameter is interpreted as the edge subject vertex
+	 *		node reference:
+	 *	 <ul>
+	 *		<li><tt>{@link COntologyNode}</tt>: It will be interpreted as the node object.
+	 *		<li><tt>integer</tt>: It will be interpreted as the node native identifier.
+	 *		<li><i>other</i>: The method will assume the value to be a term reference: in
+	 *			this case the method will use the list of nodes that reference the eventual
+	 *			referenced term.
+	 *	 </ul>
+	 *	<li><tt>$thePredicate</tt>: This parameter is interpreted as the edge predicate term
+	 *		reference:
+	 *	 <ul>
+	 *		<li><tt>{@link COntologyTerm}</tt>: It will be interpreted as the term object.
+	 *		<li><i>other</i>: The method will attempt to resolve the term by testing in turn
+	 *			the value as its global and native identifier.
+	 *	 </ul>
+	 *	<li><tt>$theObject</tt>: This parameter is interpreted as the edge object vertex
+	 *		node reference:
+	 *	 <ul>
+	 *		<li><tt>{@link COntologyNode}</tt>: It will be interpreted as the node object.
+	 *		<li><tt>integer</tt>: It will be interpreted as the node native identifier.
+	 *		<li><i>other</i>: The method will assume the value to be a term reference: in
+	 *			this case the method will use the list of nodes that reference the eventual
+	 *			referenced term.
+	 *	 </ul>
+	 *	<li><tt>$doThrow</tt>: If this parameter is <tt>TRUE</tt> and no edge is found, the
+	 *		method will raise an exception.
+	 * </ul>
+	 *
+	 * The method will return an array of {@link COntologyEdge} instances, or <tt>NULL</tt>
+	 * if no edge was found.
+	 *
+	 * The method will raise an exception if the object is not {@link _IsInited()}.
+	 *
+	 * @param mixed					$theSubject			Subject vertex reference.
+	 * @param mixed					$thePredicate		Predicate reference.
+	 * @param mixed					$theObject			Object vertex reference.
+	 * @param boolean				$doThrow			If <tt>TRUE</tt> raise an exception.
+	 *
+	 * @access public
+	 * @return mixed				<tt>NULL</tt>, found edge or edges list.
+	 *
+	 * @throws Exception
+	 *
+	 * @uses Connection()
+	 * @uses COntologyNode::Resolve()
+	 */
+	public function ResolveEdge( $theSubject = NULL,
+								 $thePredicate = NULL,
+								 $theObject = NULL,
+								 $doThrow = FALSE )
+	{
+		//
+		// Check if object is ready.
+		//
+		if( $this->_IsInited() )
+		{
+			//
+			// Init local storage.
+			//
+			$found = NULL;
+			
+			//
+			// Resolve subject.
+			//
+			if( $theSubject !== NULL )
+			{
+				//
+				// Handle object.
+				//
+				if( $theSubject instanceof COntologyNode )
+					$theSubject = $theSubject[ kOFFSET_NID ];
+				
+				//
+				// Handle term.
+				//
+				elseif( ! is_integer( $theSubject ) )
+				{
+					//
+					// Resolve nodes.
+					//
+					$list = $this->ResolveNode( $theSubject, $doThrow );
+					if( is_array( $list ) )
+					{
+						$theSubject = Array();
+						foreach( $list as $node )
+							$theSubject[] = $node[ kOFFSET_NID ];
+					
+					} // Resolved.
+				
+				} // Provided term reference.
+				
+			} // Provided subject.
+			
+			//
+			// Resolve predicate.
+			//
+			if( $thePredicate !== NULL )
+			{
+				//
+				// Handle object.
+				//
+				if( $thePredicate instanceof COntologyTerm )
+					$thePredicate = $thePredicate[ kOFFSET_NID ];
+				
+				//
+				// Resolve term.
+				//
+				else
+				{
+					//
+					// Resolve predicate.
+					//
+					$thePredicate = $this->ResolveTerm( $thePredicate, NULL, $doThrow );
+					if( $thePredicate !== NULL )
+						$thePredicate = $thePredicate[ kOFFSET_NID ];
+				
+				} // Resolved predicate.
+				
+			} // Provided predicate.
+			
+			//
+			// Resolve object.
+			//
+			if( $theObject !== NULL )
+			{
+				//
+				// Handle object.
+				//
+				if( $theObject instanceof COntologyNode )
+					$theObject = $theSubject[ kOFFSET_NID ];
+				
+				//
+				// Handle term.
+				//
+				elseif( ! is_integer( $theObject ) )
+				{
+					//
+					// Resolve nodes.
+					//
+					$list = $this->ResolveNode( $theObject, $doThrow );
+					if( is_array( $list ) )
+					{
+						$theObject = Array();
+						foreach( $list as $node )
+							$theObject[] = $node[ kOFFSET_NID ];
+					
+					} // Resolved.
+				
+				} // Provided term reference.
+				
+			} // Provided object.
+			
+			//
+			// Prevent resolving all.
+			//
+			if( ($theSubject !== NULL)
+			 || ($thePredicate !== NULL)
+			 || ($theObject !== NULL) )
+			{
+				//
+				// Resolve container.
+				//
+				$container = COntologyEdge::ResolveClassContainer
+								( $this->Connection(), TRUE );
+				
+				//
+				// Create query.
+				//
+				$query = $container->NewQuery();
+				
+				//
+				// Locate by subject.
+				//
+				if( $theSubject !== NULL )
+				{
+					//
+					// Set statement.
+					//
+					if( is_array( $theSubject ) )
+						$query->AppendStatement(
+							CQueryStatement::Member(
+								kTAG_VERTEX_SUBJECT, $theSubject ) );
+					else
+						$query->AppendStatement(
+							CQueryStatement::Equals(
+								kTAG_VERTEX_SUBJECT, $theSubject ) );
+				
+				} // Selected subject.
+				
+				//
+				// Locate by predicate.
+				//
+				if( $thePredicate !== NULL )
+					$query->AppendStatement(
+						CQueryStatement::Equals(
+							kTAG_PREDICATE, $thePredicate, kTYPE_BINARY ) );
+				
+				//
+				// Locate by object.
+				//
+				if( $theObject !== NULL )
+				{
+					//
+					// Set statement.
+					//
+					if( is_array( $theObject ) )
+						$query->AppendStatement(
+							CQueryStatement::Member(
+								kTAG_VERTEX_OBJECT, $theObject ) );
+					else
+						$query->AppendStatement(
+							CQueryStatement::Equals(
+								kTAG_VERTEX_OBJECT, $theObject ) );
+				
+				} // Selected subject.
+				
+				//
+				// Perform query.
+				//
+				$rs = $container->Query( $query );
+				if( $rs->count() )
+				{
+					//
+					// Init results array.
+					//
+					$found = Array();
+					foreach( $rs as $element )
+						$found[] = CPersistentObject::DocumentObject( $element );
+				
+				} // Found results.
+			
+			} // At least one selection.
+			
+			//
+			// Raise exception.
+			//
+			if( ( !$found)
+			 && $doThrow )
+				throw new Exception
+					( "Edge not found",
+					  kERROR_NOT_FOUND );										// !@! ==>
+			
+			return NULL;															// ==>
+		
+		} // Object is ready.
+		
+		throw new Exception
+			( "Object is not initialised",
+			  kERROR_STATE );													// !@! ==>
+
+	} // ResolveEdge.
+
+	 
+	/*===================================================================================
 	 *	ResolveTag																		*
 	 *==================================================================================*/
 
@@ -2216,6 +2483,9 @@ class COntology extends CConnection
 			array( kOFFSET_LID => substr( kPREDICATE_SUBCLASS_OF, 1 ),
 				   kOFFSET_LABEL => "Subclass-of",
 				   kOFFSET_DESCRIPTION => "This tag identifies the SUBCLASS-OF predicate term local code, this predicate indicates that the subject of the relationship is a subclass of the object of the relationship, in other words, the subject is derived from the object." ),
+			array( kOFFSET_LID => substr( kPREDICATE_SUBSET_OF, 1 ),
+				   kOFFSET_LABEL => "Subset-of",
+				   kOFFSET_DESCRIPTION => "This tag identifies the SUBSET-OF predicate term local code, this predicate indicates that the subject of the relationship represents a subset of the object of the relationship, in other words, the subject is a subset of the object, or the subject is contained by the object." ),
 			array( kOFFSET_LID => substr( kPREDICATE_METHOD_OF, 1 ),
 				   kOFFSET_LABEL => "Method-of",
 				   kOFFSET_DESCRIPTION => "This tag identifies the METHOD-OF predicate term local code, this predicate relates method nodes with trait nodes or other method nodes, it indicates that the subject of the relationship is a method variation of the object of the relationship." ),
@@ -2231,6 +2501,9 @@ class COntology extends CConnection
 			array( kOFFSET_LID => substr( kPREDICATE_VALID, 1 ),
 				   kOFFSET_LABEL => "Valid choice",
 				   kOFFSET_DESCRIPTION => "This tag identifies the VALID predicate term local code, this predicate indicates that the object of the relationship is the valid choice, in other words, the subject of the relationship is obsolete or not valid, and one should use the object od the relationship in its place." ),
+			array( kOFFSET_LID => substr( kPREDICATE_LEGACY, 1 ),
+				   kOFFSET_LABEL => "Legacy choice",
+				   kOFFSET_DESCRIPTION => "This tag identifies the LEGACY predicate term local code, this predicate indicates that the object of the relationship is the former or legacy choice, in other words, the object of the relationship is obsolete or not valid, and one should use the subject of the relationship in its place." ),
 			array( kOFFSET_LID => substr( kPREDICATE_XREF_EXACT, 1 ),
 				   kOFFSET_LABEL => "Exact cross-reference",
 				   kOFFSET_DESCRIPTION => "This tag identifies the XREF-EXACT predicate term local code, this predicate indicates that the subject and the object of the relationship represent an exact cross-reference, in other words, both elements are interchangeable." ) );
@@ -2483,9 +2756,10 @@ class COntology extends CConnection
 		//
 		// Load instance definitions.
 		//
-		$terms = array( kPREDICATE_SUBCLASS_OF, kPREDICATE_METHOD_OF,
-						kPREDICATE_SCALE_OF, kPREDICATE_ENUM_OF,
-						kPREDICATE_PREFERRED, kPREDICATE_VALID,
+		$terms = array( kPREDICATE_SUBCLASS_OF, kPREDICATE_SUBSET_OF,
+						kPREDICATE_METHOD_OF, kPREDICATE_SCALE_OF,
+						kPREDICATE_ENUM_OF, kPREDICATE_PREFERRED,
+						kPREDICATE_VALID, kPREDICATE_LEGACY,
 						kPREDICATE_XREF_EXACT );
 		
 		//

@@ -686,7 +686,7 @@ class COntologyNode extends CNode
 	 * @param boolean				$doThrow			If <tt>TRUE</tt> raise an exception.
 	 *
 	 * @static
-	 * @return COntologyTerm		Found node or <tt>NULL</tt>.
+	 * @return COntologyNode		Found node or <tt>NULL</tt>.
 	 *
 	 * @throws Exception
 	 */

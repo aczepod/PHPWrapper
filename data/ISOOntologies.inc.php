@@ -179,6 +179,13 @@ define( "kONTOLOGY_ISO_3166_3",					'3' );
 define( "kONTOLOGY_ISO_3166_3_ALPHA3",			'alpha-3' );
 
 /**
+ * ISO 3166-3 alpha-2 ontology term.
+ *
+ * This tag represents the local identifier of the 3166-3 alpha-2 ontology term.
+ */
+define( "kONTOLOGY_ISO_3166_3_ALPHA2",			'alpha-2' );
+
+/**
  * ISO 3166-3 alpha-4 ontology term.
  *
  * This tag represents the local identifier of the 3166-3 alpha-4 ontology term.

@@ -561,8 +561,18 @@ require_once( 'ISOOntologies.inc.php' );
 		$ns_id = implode( kTOKEN_NAMESPACE_SEPARATOR,
 						  array( kONTOLOGY_ISO,
 						  		 kONTOLOGY_ISO_3166 ) );
+		$def_ns = $_SESSION[ kSESSION_ONTOLOGY ]->ResolveTerm( '', NULL, TRUE );
 		$namespace = $_SESSION[ 'TERMS' ][ $ns_id ];
 		$category = $_SESSION[ 'NODES' ][ $ns_id ];
+		
+		//
+		// Load predicate term.
+		//
+		$predicate
+			= $_SESSION[ kSESSION_ONTOLOGY ]->ResolveTerm(
+				substr( kPREDICATE_SUBCLASS_OF, 1 ),
+				$def_ns,
+				TRUE );
 
 		//
 		// Set part 1 category.
@@ -667,6 +677,68 @@ require_once( 'ISOOntologies.inc.php' );
 						 ."] ("
 						 .$_SESSION[ 'TAGS' ][ $id ][ kOFFSET_NID ]
 						 .")\n" );
+
+				//
+				// Load term data.
+				//
+				$list = array(
+					array( kOFFSET_LID => substr( kOFFSET_LANGUAGE, 1 ),
+						   kOFFSET_TYPE => kTYPE_STRING ),
+					array( kOFFSET_LID => substr( kOFFSET_STRING, 1 ),
+						   kOFFSET_TYPE => array( kTYPE_STRING, kTYPE_CARD_REQUIRED ) ) );
+				
+				//
+				// Create structure nodes.
+				//
+				foreach( $list as $item )
+				{
+					//
+					// Resolve node.
+					//
+					$child_node
+						= $_SESSION[ kSESSION_ONTOLOGY ]->NewScaleNode(
+							$child_term
+								= $_SESSION[ kSESSION_ONTOLOGY ]->ResolveTerm(
+									$item[ kOFFSET_LID ],	// Local identifier.
+									$def_ns,				// Namespace object.
+									TRUE ),					// Raise exception on fail.
+							$item[ kOFFSET_TYPE ] );		// Data type.
+					if( is_array( $child_node ) )
+						$child_node = $child_node[ 0 ];
+					
+					//
+					// Relate.
+					//
+					$_SESSION[ kSESSION_ONTOLOGY ]->SubclassOf( $child_node, $node );
+					
+					//
+					// Save references.
+					//
+					$id = $child_term->GID();
+					$_SESSION[ 'NODES' ][ $id ] = $child_node;
+					$_SESSION[ 'TERMS' ][ $id ] = $child_term;
+				
+					//
+					// Create tag.
+					//
+					$tag = NULL;
+					$_SESSION[ kSESSION_ONTOLOGY ]->AddToTag( $tag, $node );
+					$_SESSION[ kSESSION_ONTOLOGY ]->AddToTag( $tag, $predicate );
+					$_SESSION[ kSESSION_ONTOLOGY ]->AddToTag( $tag, $child_node );
+					$_SESSION[ kSESSION_ONTOLOGY ]->AddToTag( $tag, TRUE );
+					$_SESSION[ 'TAGS' ][ $tag->GID() ] = $tag;
+					
+					//
+					// Inform.
+					//
+					if( kOPTION_VERBOSE )
+						echo( "    - $id ["
+							 .$_SESSION[ 'NODES' ][ $id ]
+							 ."] ("
+							 .$_SESSION[ 'TAGS' ][ $tag->GID() ][ kOFFSET_NID ]
+							 .")\n" );
+				
+				} // Iterating substructure elements.
 			
 			} // Taggable term.
 			
@@ -845,6 +917,10 @@ require_once( 'ISOOntologies.inc.php' );
 		$namespace = $_SESSION[ 'TERMS' ][ $ns_id ];
 		$category = $_SESSION[ 'NODES' ][ $ns_id ];
 		$params = array(
+			array( 'code' => kONTOLOGY_ISO_3166_3_ALPHA2,
+				   'type' => kTYPE_ENUM,
+				   'label' => "Alpha-2 code",
+				   'descr' => "Former ISO 3166-1 two-letter country code." ),
 			array( 'code' => kONTOLOGY_ISO_3166_3_ALPHA3,
 				   'type' => kTYPE_ENUM,
 				   'label' => "Alpha-3 code",

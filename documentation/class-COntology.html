@@ -170,7 +170,7 @@ the database in which the ontology resides.</p>
 				<b>Author:</b>
 				Milko A. Škofič &lt;<a
 href="mailto:m.skofic&#64;cgiar.org">m.skofic&#64;<!---->cgiar.org</a>&gt;<br />
-		<b>Located at</b> <a href="source-class-COntology.html#75-3148" title="Go to source code">COntology.php</a><br />
+		<b>Located at</b> <a href="source-class-COntology.html#75-3422" title="Go to source code">COntology.php</a><br />
 	</div>
 
 
@@ -276,6 +276,7 @@ returning its name.</p>
 						<code><code><a href="class-COntology.html#_AddToTag">COntology::AddToTag()</a></code></code> <br />
 						<code><code><a href="class-COntology.html#_ResolveTerm">COntology::ResolveTerm()</a></code></code> <br />
 						<code><code><a href="class-COntology.html#_ResolveNode">COntology::ResolveNode()</a></code></code> <br />
+						<code><code><a href="class-COntology.html#_ResolveEdge">COntology::ResolveEdge()</a></code></code> <br />
 						<code><code><a href="class-COntology.html#_ResolveTag">COntology::ResolveTag()</a></code></code> <br />
 						<code><code><a href="class-COntology.html#_RelateTo">COntology::RelateTo()</a></code></code> <br />
 						<code><code><a href="class-COntology.html#__NewTerm">COntology::_NewTerm()</a></code></code> <br />
@@ -1365,6 +1366,117 @@ and if the provided parameter is <tt>NULL</tt>.</p>
 		</div>
 		</div></td>
 	</tr>
+	<tr data-order="ResolveEdge" id="_ResolveEdge">
+
+		<td class="attributes"><code>
+			 public 
+			mixed
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_ResolveEdge">#</a>
+		<code><a href="source-class-COntology.html#1403-1663" title="Go to source code">ResolveEdge</a>( <span>mixed <var>$theSubject</var> = <span class="php-keyword1">NULL</span></span>, <span>mixed <var>$thePredicate</var> = <span class="php-keyword1">NULL</span></span>, <span>mixed <var>$theObject</var> = <span class="php-keyword1">NULL</span></span>, <span>boolean <var>$doThrow</var> = <span class="php-keyword1">FALSE</span> </span> )</code>
+
+		<div class="description short">
+			
+<h4>Find an edge</h4>
+
+		</div>
+
+		<div class="description detailed hidden">
+			
+<h4>Find an edge</h4>
+
+<p>This method can be used to retrieve an existing edge by providing the
+elements that constitute it.</p>
+
+<p>The method expects the following parameters:</p>
+
+<ul>
+	<li><tt>$theSubject</tt>: This parameter is interpreted as the edge subject
+	vertex node reference:
+		<ul>
+			<li><tt><code><a href="class-COntologyNode.html">COntologyNode</a></code></tt>: It will be interpreted as the node
+			object.</li>
+
+			<li><tt>integer</tt>: It will be interpreted as the node native identifier.</li>
+
+			<li><i>other</i>: The method will assume the value to be a term reference: in
+			this case the method will use the list of nodes that reference the eventual
+			referenced term.</li>
+		</ul>
+	</li>
+
+	<li><tt>$thePredicate</tt>: This parameter is interpreted as the edge predicate
+	term reference:
+		<ul>
+			<li><tt><code><a href="class-COntologyTerm.html">COntologyTerm</a></code></tt>: It will be interpreted as the term
+			object.</li>
+
+			<li><i>other</i>: The method will attempt to resolve the term by testing in turn
+			the value as its global and native identifier.</li>
+		</ul>
+	</li>
+
+	<li><tt>$theObject</tt>: This parameter is interpreted as the edge object vertex
+	node reference:
+		<ul>
+			<li><tt><code><a href="class-COntologyNode.html">COntologyNode</a></code></tt>: It will be interpreted as the node
+			object.</li>
+
+			<li><tt>integer</tt>: It will be interpreted as the node native identifier.</li>
+
+			<li><i>other</i>: The method will assume the value to be a term reference: in
+			this case the method will use the list of nodes that reference the eventual
+			referenced term.</li>
+		</ul>
+	</li>
+
+	<li><tt>$doThrow</tt>: If this parameter is <tt>TRUE</tt> and no edge is found,
+	the method will raise an exception.</li>
+</ul>
+
+<p>The method will return an array of <code><a href="class-COntologyEdge.html">COntologyEdge</a></code> instances, or
+<tt>NULL</tt> if no edge was found.</p>
+
+<p>The method will raise an exception if the object is not <code><a href="class-CStatusDocument.html#__IsInited">CStatusDocument::_IsInited()</a></code>.</p>
+
+
+
+				<h4>Parameters</h4>
+				<div class="list"><dl>
+					<dt><var>$theSubject</var></dt>
+					<dd><code>mixed</code><br>$theSubject Subject vertex reference.</dd>
+					<dt><var>$thePredicate</var></dt>
+					<dd><code>mixed</code><br>$thePredicate Predicate reference.</dd>
+					<dt><var>$theObject</var></dt>
+					<dd><code>mixed</code><br>$theObject Object vertex reference.</dd>
+					<dt><var>$doThrow</var></dt>
+					<dd><code>boolean</code><br>$doThrow If <tt>TRUE</tt> raise an exception.</dd>
+				</dl></div>
+
+				<h4>Returns</h4>
+				<div class="list">
+					<code>mixed</code><br><tt>NULL</tt>, found edge or edges list.<br />
+				</div>
+
+				<h4>Throws</h4>
+				<div class="list">
+					<code><code><a href="class-Exception.html">Exception</a></code></code><br />
+				</div>
+
+				<h4>Uses</h4>
+				<div class="list">
+						<code><code><a href="class-COntology.html#_Connection">COntology::Connection()</a></code></code> <br />
+						<code><code><a href="class-COntologyNode.html#_Resolve">COntologyNode::Resolve()</a></code></code> <br />
+				</div>
+
+
+		</div>
+		</div></td>
+	</tr>
 	<tr data-order="ResolveTag" id="_ResolveTag">
 
 		<td class="attributes"><code>
@@ -1376,7 +1488,7 @@ and if the provided parameter is <tt>NULL</tt>.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#_ResolveTag">#</a>
-		<code><a href="source-class-COntology.html#1403-1455" title="Go to source code">ResolveTag</a>( <span>mixed <var>$theIdentifier</var></span>, <span>boolean <var>$doThrow</var> = <span class="php-keyword1">FALSE</span> </span> )</code>
+		<code><a href="source-class-COntology.html#1670-1722" title="Go to source code">ResolveTag</a>( <span>mixed <var>$theIdentifier</var></span>, <span>boolean <var>$doThrow</var> = <span class="php-keyword1">FALSE</span> </span> )</code>
 
 		<div class="description short">
 			
@@ -1453,7 +1565,7 @@ and if the provided parameter is <tt>NULL</tt>.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#_RelateTo">#</a>
-		<code><a href="source-class-COntology.html#1471-1552" title="Go to source code">RelateTo</a>( <span>mixed <var>$theSubject</var></span>, <span>mixed <var>$theObject</var></span>, <span>mixed <var>$thePredicate</var></span>, <span>mixed <var>$theNamespace</var> = <span class="php-keyword1">NULL</span></span>, <span>string <var>$theLabel</var> = <span class="php-keyword1">NULL</span></span>, <span>string <var>$theDescription</var> = <span class="php-keyword1">NULL</span></span>, <span>string <var>$theLanguage</var> = <span class="php-keyword1">NULL</span> </span> )</code>
+		<code><a href="source-class-COntology.html#1738-1819" title="Go to source code">RelateTo</a>( <span>mixed <var>$theSubject</var></span>, <span>mixed <var>$theObject</var></span>, <span>mixed <var>$thePredicate</var></span>, <span>mixed <var>$theNamespace</var> = <span class="php-keyword1">NULL</span></span>, <span>string <var>$theLabel</var> = <span class="php-keyword1">NULL</span></span>, <span>string <var>$theDescription</var> = <span class="php-keyword1">NULL</span></span>, <span>string <var>$theLanguage</var> = <span class="php-keyword1">NULL</span> </span> )</code>
 
 		<div class="description short">
 			
@@ -1567,7 +1679,7 @@ class, if any error occurs, the method will raise an exception.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#_SubclassOf">#</a>
-		<code><a href="source-class-COntology.html#1559-1586" title="Go to source code">SubclassOf</a>( <span>mixed <var>$theSubject</var></span>, <span>mixed <var>$theObject</var></span> )</code>
+		<code><a href="source-class-COntology.html#1826-1853" title="Go to source code">SubclassOf</a>( <span>mixed <var>$theSubject</var></span>, <span>mixed <var>$theObject</var></span> )</code>
 
 		<div class="description short">
 			
@@ -1630,7 +1742,7 @@ error occurs, the method will raise an exception.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#_MethodOf">#</a>
-		<code><a href="source-class-COntology.html#1593-1620" title="Go to source code">MethodOf</a>( <span>mixed <var>$theSubject</var></span>, <span>mixed <var>$theObject</var></span> )</code>
+		<code><a href="source-class-COntology.html#1860-1887" title="Go to source code">MethodOf</a>( <span>mixed <var>$theSubject</var></span>, <span>mixed <var>$theObject</var></span> )</code>
 
 		<div class="description short">
 			
@@ -1693,7 +1805,7 @@ error occurs, the method will raise an exception.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#_ScaleOf">#</a>
-		<code><a href="source-class-COntology.html#1627-1654" title="Go to source code">ScaleOf</a>( <span>mixed <var>$theSubject</var></span>, <span>mixed <var>$theObject</var></span> )</code>
+		<code><a href="source-class-COntology.html#1894-1921" title="Go to source code">ScaleOf</a>( <span>mixed <var>$theSubject</var></span>, <span>mixed <var>$theObject</var></span> )</code>
 
 		<div class="description short">
 			
@@ -1756,7 +1868,7 @@ error occurs, the method will raise an exception.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#_EnumOf">#</a>
-		<code><a href="source-class-COntology.html#1661-1688" title="Go to source code">EnumOf</a>( <span>mixed <var>$theSubject</var></span>, <span>mixed <var>$theObject</var></span> )</code>
+		<code><a href="source-class-COntology.html#1928-1955" title="Go to source code">EnumOf</a>( <span>mixed <var>$theSubject</var></span>, <span>mixed <var>$theObject</var></span> )</code>
 
 		<div class="description short">
 			
@@ -1819,7 +1931,7 @@ error occurs, the method will raise an exception.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#__NewTerm">#</a>
-		<code><a href="source-class-COntology.html#1704-1817" title="Go to source code">_NewTerm</a>( <span>string <var>$theIdentifier</var></span>, <span>mixed <var>$theNamespace</var></span>, <span>string <var>$theLabel</var></span>, <span>string <var>$theDescription</var></span>, <span>string <var>$theLanguage</var></span>, <span>array <var>$theAttributes</var></span> )</code>
+		<code><a href="source-class-COntology.html#1971-2084" title="Go to source code">_NewTerm</a>( <span>string <var>$theIdentifier</var></span>, <span>mixed <var>$theNamespace</var></span>, <span>string <var>$theLabel</var></span>, <span>string <var>$theDescription</var></span>, <span>string <var>$theLanguage</var></span>, <span>array <var>$theAttributes</var></span> )</code>
 
 		<div class="description short">
 			
@@ -1916,7 +2028,7 @@ is a duplicate.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#__NewNode">#</a>
-		<code><a href="source-class-COntology.html#1824-1912" title="Go to source code">_NewNode</a>( <span>mixed <var>$theTerm</var></span>, <span>mixed <var>$theKind</var> = <span class="php-keyword1">NULL</span></span>, <span>mixed <var>$theType</var> = <span class="php-keyword1">NULL</span> </span> )</code>
+		<code><a href="source-class-COntology.html#2091-2179" title="Go to source code">_NewNode</a>( <span>mixed <var>$theTerm</var></span>, <span>mixed <var>$theKind</var> = <span class="php-keyword1">NULL</span></span>, <span>mixed <var>$theType</var> = <span class="php-keyword1">NULL</span> </span> )</code>
 
 		<div class="description short">
 			
@@ -2000,7 +2112,7 @@ is a duplicate.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#__RelateTo">#</a>
-		<code><a href="source-class-COntology.html#1928-2060" title="Go to source code">_RelateTo</a>( <span>mixed <var>$theSubject</var></span>, <span>mixed <var>$theObject</var></span>, <span>mixed <var>$thePredicate</var></span>, <span>mixed <var>$theNamespace</var> = <span class="php-keyword1">NULL</span></span>, <span>string <var>$theLabel</var> = <span class="php-keyword1">NULL</span></span>, <span>string <var>$theDescription</var> = <span class="php-keyword1">NULL</span></span>, <span>string <var>$theLanguage</var> = <span class="php-keyword1">NULL</span> </span> )</code>
+		<code><a href="source-class-COntology.html#2195-2327" title="Go to source code">_RelateTo</a>( <span>mixed <var>$theSubject</var></span>, <span>mixed <var>$theObject</var></span>, <span>mixed <var>$thePredicate</var></span>, <span>mixed <var>$theNamespace</var> = <span class="php-keyword1">NULL</span></span>, <span>string <var>$theLabel</var> = <span class="php-keyword1">NULL</span></span>, <span>string <var>$theDescription</var> = <span class="php-keyword1">NULL</span></span>, <span>string <var>$theLanguage</var> = <span class="php-keyword1">NULL</span> </span> )</code>
 
 		<div class="description short">
 			
@@ -2112,7 +2224,7 @@ error occurs, the method will raise an exception.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#__InitDefaultNamespace">#</a>
-		<code><a href="source-class-COntology.html#2076-2121" title="Go to source code">_InitDefaultNamespace</a>( )</code>
+		<code><a href="source-class-COntology.html#2343-2388" title="Go to source code">_InitDefaultNamespace</a>( )</code>
 
 		<div class="description short">
 			
@@ -2164,7 +2276,7 @@ first method called by the procedure that initialises the ontology.</b></p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#__InitDefaultTypeTerms">#</a>
-		<code><a href="source-class-COntology.html#2128-2253" title="Go to source code">_InitDefaultTypeTerms</a>( )</code>
+		<code><a href="source-class-COntology.html#2395-2526" title="Go to source code">_InitDefaultTypeTerms</a>( )</code>
 
 		<div class="description short">
 			
@@ -2206,7 +2318,7 @@ procedure, you should not use this method outside of that scope.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#__InitDefaultAttributeTerms">#</a>
-		<code><a href="source-class-COntology.html#2260-2391" title="Go to source code">_InitDefaultAttributeTerms</a>( )</code>
+		<code><a href="source-class-COntology.html#2533-2664" title="Go to source code">_InitDefaultAttributeTerms</a>( )</code>
 
 		<div class="description short">
 			
@@ -2248,7 +2360,7 @@ procedure, you should not use this method outside of that scope.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#__InitDefaultDataDictionaries">#</a>
-		<code><a href="source-class-COntology.html#2398-2445" title="Go to source code">_InitDefaultDataDictionaries</a>( )</code>
+		<code><a href="source-class-COntology.html#2671-2718" title="Go to source code">_InitDefaultDataDictionaries</a>( )</code>
 
 		<div class="description short">
 			
@@ -2287,7 +2399,7 @@ procedure, you should not use this method outside of that scope.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#__InitDefaultPredicates">#</a>
-		<code><a href="source-class-COntology.html#2452-2503" title="Go to source code">_InitDefaultPredicates</a>( )</code>
+		<code><a href="source-class-COntology.html#2725-2777" title="Go to source code">_InitDefaultPredicates</a>( )</code>
 
 		<div class="description short">
 			
@@ -2326,7 +2438,7 @@ procedure, you should not use this method outside of that scope.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#__InitDefaultNodeKinds">#</a>
-		<code><a href="source-class-COntology.html#2510-2559" title="Go to source code">_InitDefaultNodeKinds</a>( )</code>
+		<code><a href="source-class-COntology.html#2784-2833" title="Go to source code">_InitDefaultNodeKinds</a>( )</code>
 
 		<div class="description short">
 			
@@ -2365,7 +2477,7 @@ procedure, you should not use this method outside of that scope.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#__InitDefaultDataTypes">#</a>
-		<code><a href="source-class-COntology.html#2566-2618" title="Go to source code">_InitDefaultDataTypes</a>( )</code>
+		<code><a href="source-class-COntology.html#2840-2892" title="Go to source code">_InitDefaultDataTypes</a>( )</code>
 
 		<div class="description short">
 			
@@ -2404,7 +2516,7 @@ procedure, you should not use this method outside of that scope.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#__LoadTermDataDictionary">#</a>
-		<code><a href="source-class-COntology.html#2625-2785" title="Go to source code">_LoadTermDataDictionary</a>( )</code>
+		<code><a href="source-class-COntology.html#2899-3059" title="Go to source code">_LoadTermDataDictionary</a>( )</code>
 
 		<div class="description short">
 			
@@ -2440,7 +2552,7 @@ dictionary.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#__LoadNodeDataDictionary">#</a>
-		<code><a href="source-class-COntology.html#2792-2938" title="Go to source code">_LoadNodeDataDictionary</a>( )</code>
+		<code><a href="source-class-COntology.html#3066-3212" title="Go to source code">_LoadNodeDataDictionary</a>( )</code>
 
 		<div class="description short">
 			
@@ -2476,7 +2588,7 @@ dictionary.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#__LoadEdgeDataDictionary">#</a>
-		<code><a href="source-class-COntology.html#2945-3043" title="Go to source code">_LoadEdgeDataDictionary</a>( )</code>
+		<code><a href="source-class-COntology.html#3219-3317" title="Go to source code">_LoadEdgeDataDictionary</a>( )</code>
 
 		<div class="description short">
 			
@@ -2512,7 +2624,7 @@ dictionary.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#__LoadTagDataDictionary">#</a>
-		<code><a href="source-class-COntology.html#3050-3144" title="Go to source code">_LoadTagDataDictionary</a>( )</code>
+		<code><a href="source-class-COntology.html#3324-3418" title="Go to source code">_LoadTagDataDictionary</a>( )</code>
 
 		<div class="description short">
 			
