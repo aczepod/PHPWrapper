@@ -409,11 +409,11 @@ class COntologyEdge extends CEdge
 	 *	<li><tt>$theIdentifier</tt>: This parameter represents the edge unique, global,
 	 *		native identifier or object, depending on its type:
 	 *	 <ul>
-	 *		<li><tt>{@link COntologyEdge}</tt>: In this case the method will use the
-	 *			provided edge's global identifier.
 	 *		<li><tt>integer</tt>: In this case the method assumes that the parameter
 	 *			represents the edge identifier: it will attempt to retrieve the edge, if it
 	 *			is not found, the method will return <tt>NULL</tt>.
+	 *		<li><tt>{@link COntologyEdge}</tt>: In this case the method will use the
+	 *			provided edge's unique identifier.
 	 *		<li><i>other</i>: Any other type will be interpreted either as the edge's unique
 	 *			identifier, or as the edges's global identifier: the method will return the
 	 *			matching edge or <tt>NULL</tt>.
@@ -454,49 +454,90 @@ class COntologyEdge extends CEdge
 				//
 				// Get edge.
 				//
-				$edge = COntologyEdge::NewObject( $theConnection, $theIdentifier );
+				$edge = static::NewObject( $theConnection, $theIdentifier );
+				if( (! $doThrow)
+				 || ($edge !== NULL) )
+					return $edge;													// ==>
 				
-				//
-				// Handle missing node.
-				//
-				if( ($edge === NULL)
-				 && $doThrow )
-					throw new Exception
-						( "Edge not found",
-						  kERROR_NOT_FOUND );									// !@! ==>
-				
-				return $edge;														// ==>
+				throw new Exception
+					( "Edge not found",
+					  kERROR_NOT_FOUND );										// !@! ==>
 			
 			} // Provided edge identifier.
+			
+			//
+			// Init local storage.
+			//
+			$query = $container->NewQuery();
 			
 			//
 			// Handle edge object.
 			//
 			if( $theIdentifier instanceof COntologyEdge )
-				$theIdentifier = $theIdentifier->GID();
+			{
+				//
+				// Check edge global identifier.
+				//
+				$ident = $theIdentifier->GID();
+				if( $ident === NULL )
+					throw new Exception
+						( "Missing edge global identifier",
+						  kERROR_PARAMETER );									// !@! ==>
+				
+				//
+				// Convert to unique identifier.
+				// By convention it is the binary md5 of the GID.
+				//
+				$query->AppendStatement(
+					CQueryStatement::Equals(
+						kTAG_UID, md5( $ident, TRUE ), kTYPE_BINARY ) );
+			
+			} // Provided object.
 			
 			//
-			// Try unique identifier.
+			// Assume unique identifier.
 			//
-			$query = $container->NewQuery();
-			$query->AppendStatement(
-				CQueryStatement::Equals(
-					kTAG_UID, $theIdentifier, kTYPE_BINARY ) );
-			$found = $container->Query( $query, NULL, TRUE );
-			if( $found !== NULL )
-				return $found;														// ==>
+			else
+				$query->AppendStatement(
+					CQueryStatement::Equals(
+						kTAG_UID, $theIdentifier, kTYPE_BINARY ) );
 			
 			//
-			// Try global identifier.
+			// Query.
 			//
-			$theIdentifier = md5( $theIdentifier, TRUE );
-			$query = $container->NewQuery();
-			$query->AppendStatement(
-				CQueryStatement::Equals(
-					kTAG_UID, $theIdentifier, kTYPE_BINARY ) );
-			$found = $container->Query( $query, NULL, TRUE );
-			if( $found !== NULL )
-				return $found;														// ==>
+			$rs = $container->Query( $query );
+			if( ! $rs->count() )
+			{
+				//
+				// Assume global identifier.
+				//
+				if( ! isset( $ident ) )	// Not provided edge object.
+				{
+					$query = $container->NewQuery();
+					$query->AppendStatement(
+						CQueryStatement::Equals(
+							kTAG_UID, md5( $theIdentifier, TRUE ), kTYPE_BINARY ) );
+					$rs = $container->Query( $query );
+				
+				} // Provided global identifier.
+			
+			} // Provided unique identifier doesn't match.
+			
+			//
+			// Handle matches.
+			//
+			if( $rs->count() )
+			{
+				//
+				// Return list of nodes.
+				//
+				$list = Array();
+				foreach( $rs as $document )
+					$list[] = CPersistentObject::DocumentObject( $document );
+				
+				return $list;														// ==>
+			
+			} // Matched.
 
 			//
 			// Raise exception.

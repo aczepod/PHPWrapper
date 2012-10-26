@@ -247,6 +247,62 @@ class CMongoContainer extends CContainer
 
 /*=======================================================================================
  *																						*
+ *								PUBLIC CONNECTION INTERFACE								*
+ *																						*
+ *======================================================================================*/
+
+
+	 
+	/*===================================================================================
+	 *	Drop																			*
+	 *==================================================================================*/
+
+	/**
+	 * <h4>Delete a container</h4>
+	 *
+	 * In this class we drop the collection.
+	 *
+	 * @access public
+	 */
+	public function Drop()
+	{
+		//
+		// Check if inited.
+		//
+		if( ($collection = $this->Connection()) !== NULL )
+			$collection->Drop();
+	
+	} // Drop.
+
+	 
+	/*===================================================================================
+	 *	AddIndex																		*
+	 *==================================================================================*/
+
+	/**
+	 * <h4>Add an index</h4>
+	 *
+	 * In this class we simply pass the parameter to the MongoCollection.
+	 *
+	 * @param array					$theIndex			Key/Sort list.
+	 * @param array					$theOptions			List of index options.
+	 *
+	 * @access public
+	 */
+	public function AddIndex( $theIndex, $theOptions = Array() )
+	{
+		//
+		// Check if inited.
+		//
+		if( ($collection = $this->Connection()) !== NULL )
+			$collection->ensureIndex( $theIndex, $theOptions );
+	
+	} // AddIndex.
+
+		
+
+/*=======================================================================================
+ *																						*
  *								PUBLIC PERSISTENCE INTERFACE							*
  *																						*
  *======================================================================================*/

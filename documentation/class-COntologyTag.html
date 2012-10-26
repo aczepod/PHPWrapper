@@ -7,7 +7,7 @@
 	<title>Class COntologyTag | MyWrapper Reference Documentation</title>
 
 	<script type="text/javascript" src="resources/combined.js?3994123307"></script>
-	<script type="text/javascript" src="elementlist.js?3428385880"></script>
+	<script type="text/javascript" src="elementlist.js?2871210445"></script>
 	<link rel="stylesheet" type="text/css" media="all" href="resources/style.css?3505392360" />
 
 </head>
@@ -23,6 +23,10 @@
 			<ul>
 				<li class="active main"><a href="package-MyWrapper.html">MyWrapper<span></span></a>
 						<ul>
+				<li class="main"><a href="package-MyWrapper.Data.html">Data</a>
+						</li>
+				<li class="main"><a href="package-MyWrapper.Definitions.html">Definitions</a>
+						</li>
 				<li class="main"><a href="package-MyWrapper.Framework.html">Framework</a>
 						</li>
 				<li class="main"><a href="package-MyWrapper.Functions.html">Functions</a>
@@ -229,7 +233,7 @@ as kSEQUENCE_KEY_TAG and feature a default container name kCONTAINER_TAG_NAME.</
 				<b>Author:</b>
 				Milko A. Škofič &lt;<a
 href="mailto:m.skofic&#64;cgiar.org">m.skofic&#64;<!---->cgiar.org</a>&gt;<br />
-		<b>Located at</b> <a href="source-class-COntologyTag.html#43-1617" title="Go to source code">COntologyTag.php</a><br />
+		<b>Located at</b> <a href="source-class-COntologyTag.html#43-1613" title="Go to source code">COntologyTag.php</a><br />
 	</div>
 
 
@@ -767,7 +771,7 @@ kCONTAINER_TAG_NAME name.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#_Resolve">#</a>
-		<code><a href="source-class-COntologyTag.html#624-812" title="Go to source code">Resolve</a>( <span><code><a href="class-CConnection.html">CConnection</a></code> <var>$theConnection</var></span>, <span>mixed <var>$theIdentifier</var></span>, <span>boolean <var>$doThrow</var> = <span class="php-keyword1">FALSE</span> </span> )</code>
+		<code><a href="source-class-COntologyTag.html#624-808" title="Go to source code">Resolve</a>( <span><code><a href="class-CConnection.html">CConnection</a></code> <var>$theConnection</var></span>, <span>mixed <var>$theIdentifier</var></span>, <span>boolean <var>$doThrow</var> = <span class="php-keyword1">FALSE</span> </span> )</code>
 
 		<div class="description short">
 			
@@ -790,19 +794,18 @@ retrieve all tags matching a term.</p>
 	determined, the method will raise an exception.</li>
 
 	<li><tt>$theIdentifier</tt>: This parameter represents either the tag identifier
-	or the term reference, depending on its type:
+	or a vertex term reference, depending on its type:
 		<ul>
 			<li><tt>integer</tt>: In this case the method assumes that the parameter
 			represents the tag identifier: it will attempt to retrieve the tag, if it is not
 			found, the method will return <tt>NULL</tt>.</li>
 
-			<li><tt><code><a href="class-COntologyTerm.html">COntologyTerm</a></code></tt>: In this case the method locate all tags that
-			refer to the provided term. If the term is not <code><a href="class-CStatusDocument.html#__IsCommitted">CStatusDocument::_IsCommitted()</a></code>, the
-			method will return <tt>NULL</tt>.</li>
+			<li><tt><code><a href="class-COntologyTerm.html">COntologyTerm</a></code></tt>: In this case the method locate all tags
+			whose vertex nodes refer to the provided term. If the term is not <code><a href="class-CStatusDocument.html#__IsCommitted">CStatusDocument::_IsCommitted()</a></code>, the method will attempt to resolve it.</li>
 
-			<li><i>other</i>: Any other type will be interpreted either the term's native
-			identifier, or as the term's global identifier: the method will return all tags
-			that refer to that term.</li>
+			<li><i>other</i>: Any other type will be interpreted either the tag's unique
+			identifier, or as the tag's global identifier: the method will return the
+			matching tag.</li>
 		</ul>
 	</li>
 
@@ -810,8 +813,14 @@ retrieve all tags matching a term.</p>
 	raise an exception.</li>
 </ul>
 
-<p>The method will return the found tag(s), <tt>NULL</tt> if not found, or raise
-an exception if the last parameter is <tt>TRUE</tt>.</p>
+<p>It is important to note that when using term references we are only
+interested in those terms that are referred by nodes, predicate terms are not
+considered by this method.</p>
+
+<p>If the provided parameter is a <code><a href="class-COntologyTerm.html">COntologyTerm</a></code> instance, the method
+will return an array, in all other cases it will return a scalar; if there was
+no match it will either return <tt>NULL</tt> or raise an exception if the third
+parameter is <tt>TRUE</tt>.</p>
 
 
 
@@ -827,7 +836,7 @@ an exception if the last parameter is <tt>TRUE</tt>.</p>
 
 				<h4>Returns</h4>
 				<div class="list">
-					<code><code><a href="class-COntologyTerm.html">COntologyTerm</a></code></code><br>Found tag or <tt>NULL</tt>.<br />
+					<code><code><a href="class-COntologyTerm.html">COntologyTerm</a></code></code><br>Found tag, tags or <tt>NULL</tt>.<br />
 				</div>
 
 				<h4>Throws</h4>
@@ -855,7 +864,7 @@ an exception if the last parameter is <tt>TRUE</tt>.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#__index">#</a>
-		<code><a href="source-class-COntologyTag.html#828-927" title="Go to source code">_index</a>( <span><code><a href="class-CConnection.html">CConnection</a></code> <var>$theConnection</var></span>, <span>bitfield <var>$theModifiers</var></span> )</code>
+		<code><a href="source-class-COntologyTag.html#824-923" title="Go to source code">_index</a>( <span><code><a href="class-CConnection.html">CConnection</a></code> <var>$theConnection</var></span>, <span>bitfield <var>$theModifiers</var></span> )</code>
 
 		<div class="description short">
 			
@@ -928,7 +937,7 @@ path vertex elements.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#__Preset">#</a>
-		<code><a href="source-class-COntologyTag.html#943-983" title="Go to source code">_Preset</a>( <span>reference <var>&amp; $theOffset</var></span>, <span>reference <var>&amp; $theValue</var></span> )</code>
+		<code><a href="source-class-COntologyTag.html#939-979" title="Go to source code">_Preset</a>( <span>reference <var>&amp; $theOffset</var></span>, <span>reference <var>&amp; $theValue</var></span> )</code>
 
 		<div class="description short">
 			
@@ -992,7 +1001,7 @@ modification.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#__Preunset">#</a>
-		<code><a href="source-class-COntologyTag.html#990-1024" title="Go to source code">_Preunset</a>( <span>reference <var>&amp; $theOffset</var></span> )</code>
+		<code><a href="source-class-COntologyTag.html#986-1020" title="Go to source code">_Preunset</a>( <span>reference <var>&amp; $theOffset</var></span> )</code>
 
 		<div class="description short">
 			
@@ -1048,7 +1057,7 @@ offset in all cases.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#__PrecommitRelated">#</a>
-		<code><a href="source-class-COntologyTag.html#1040-1135" title="Go to source code">_PrecommitRelated</a>( <span>reference <var>&amp; $theConnection</var></span>, <span>reference <var>&amp; $theModifiers</var></span> )</code>
+		<code><a href="source-class-COntologyTag.html#1036-1131" title="Go to source code">_PrecommitRelated</a>( <span>reference <var>&amp; $theConnection</var></span>, <span>reference <var>&amp; $theModifiers</var></span> )</code>
 
 		<div class="description short">
 			
@@ -1110,7 +1119,7 @@ exception.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#__PrecommitIdentify">#</a>
-		<code><a href="source-class-COntologyTag.html#1142-1236" title="Go to source code">_PrecommitIdentify</a>( <span>reference <var>&amp; $theConnection</var></span>, <span>reference <var>&amp; $theModifiers</var></span> )</code>
+		<code><a href="source-class-COntologyTag.html#1138-1232" title="Go to source code">_PrecommitIdentify</a>( <span>reference <var>&amp; $theConnection</var></span>, <span>reference <var>&amp; $theModifiers</var></span> )</code>
 
 		<div class="description short">
 			
@@ -1175,7 +1184,7 @@ native identifiers, since they will have been set here.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#__PostcommitRelated">#</a>
-		<code><a href="source-class-COntologyTag.html#1252-1351" title="Go to source code">_PostcommitRelated</a>( <span>reference <var>&amp; $theConnection</var></span>, <span>reference <var>&amp; $theModifiers</var></span> )</code>
+		<code><a href="source-class-COntologyTag.html#1248-1347" title="Go to source code">_PostcommitRelated</a>( <span>reference <var>&amp; $theConnection</var></span>, <span>reference <var>&amp; $theModifiers</var></span> )</code>
 
 		<div class="description short">
 			
@@ -1241,7 +1250,7 @@ in-between node elements.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#__ReferenceInNode">#</a>
-		<code><a href="source-class-COntologyTag.html#1367-1419" title="Go to source code">_ReferenceInNode</a>( <span><code><a href="class-CConnection.html">CConnection</a></code> <var>$theConnection</var></span>, <span>mixed <var>$theNode</var></span>, <span>boolean <var>$doAdd</var></span> )</code>
+		<code><a href="source-class-COntologyTag.html#1363-1415" title="Go to source code">_ReferenceInNode</a>( <span><code><a href="class-CConnection.html">CConnection</a></code> <var>$theConnection</var></span>, <span>mixed <var>$theNode</var></span>, <span>boolean <var>$doAdd</var></span> )</code>
 
 		<div class="description short">
 			
@@ -1304,7 +1313,7 @@ failed.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#__ReferenceInTerm">#</a>
-		<code><a href="source-class-COntologyTag.html#1426-1478" title="Go to source code">_ReferenceInTerm</a>( <span><code><a href="class-CConnection.html">CConnection</a></code> <var>$theConnection</var></span>, <span>mixed <var>$theTerm</var></span>, <span>boolean <var>$doAdd</var></span> )</code>
+		<code><a href="source-class-COntologyTag.html#1422-1474" title="Go to source code">_ReferenceInTerm</a>( <span><code><a href="class-CConnection.html">CConnection</a></code> <var>$theConnection</var></span>, <span>mixed <var>$theTerm</var></span>, <span>boolean <var>$doAdd</var></span> )</code>
 
 		<div class="description short">
 			
@@ -1367,7 +1376,7 @@ failed.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#__SetTraitNode">#</a>
-		<code><a href="source-class-COntologyTag.html#1494-1529" title="Go to source code">_SetTraitNode</a>( <span><code><a href="class-CConnection.html">CConnection</a></code> <var>$theConnection</var></span>, <span>mixed <var>$theNode</var></span> )</code>
+		<code><a href="source-class-COntologyTag.html#1490-1525" title="Go to source code">_SetTraitNode</a>( <span><code><a href="class-CConnection.html">CConnection</a></code> <var>$theConnection</var></span>, <span>mixed <var>$theNode</var></span> )</code>
 
 		<div class="description short">
 			
@@ -1422,7 +1431,7 @@ failed.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#__SetMethodNode">#</a>
-		<code><a href="source-class-COntologyTag.html#1536-1571" title="Go to source code">_SetMethodNode</a>( <span><code><a href="class-CConnection.html">CConnection</a></code> <var>$theConnection</var></span>, <span>mixed <var>$theNode</var></span> )</code>
+		<code><a href="source-class-COntologyTag.html#1532-1567" title="Go to source code">_SetMethodNode</a>( <span><code><a href="class-CConnection.html">CConnection</a></code> <var>$theConnection</var></span>, <span>mixed <var>$theNode</var></span> )</code>
 
 		<div class="description short">
 			
@@ -1477,7 +1486,7 @@ failed.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#__SetScaleNode">#</a>
-		<code><a href="source-class-COntologyTag.html#1578-1613" title="Go to source code">_SetScaleNode</a>( <span><code><a href="class-CConnection.html">CConnection</a></code> <var>$theConnection</var></span>, <span>mixed <var>$theNode</var></span> )</code>
+		<code><a href="source-class-COntologyTag.html#1574-1609" title="Go to source code">_SetScaleNode</a>( <span><code><a href="class-CConnection.html">CConnection</a></code> <var>$theConnection</var></span>, <span>mixed <var>$theNode</var></span> )</code>
 
 		<div class="description short">
 			

@@ -66,6 +66,7 @@ echo( "\n==> Ontology creation procedure.\n" );
 //
 // Init local storage.
 //
+$start = time();
 $list = array( 'TERMS', 'NODES', 'TAGS' );
 foreach( $list as $item )
 	$_SESSION[ $item ] = Array();
@@ -99,6 +100,7 @@ try
 	//
 	ISODecodePOFiles();
 	ISOParseXMLFiles();
+echo( "\nTime elapsed: ".(time() - $start)."\n" );
 exit;
 	
 	echo( "  • Loading landraces passport ontology.\n" );
@@ -112,6 +114,8 @@ exit;
 	LoadLandraceTaxonomyTraits();
 	LoadLandraceIdentificationTraits();
 	LoadLandraceSiteTraits();
+
+	echo( "\nTime elapsed: ".(time() - $start)."\n" );
 }
 
 //

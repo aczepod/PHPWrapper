@@ -604,13 +604,13 @@ class COntologyTerm extends CTerm
 	 *	<li><tt>$theConnection</tt>: This parameter represents the connection from which the
 	 *		terms container must be resolved. If this parameter cannot be correctly
 	 *		determined, the method will raise an exception.
-	 *	<li><tt>$theIdentifier</tt>: This parameter can be the term native or global
-	 *		identifier, if the namespace is not provided, or the local identifier if the
-	 *		namespace is provided:
+	 *	<li><tt>$theIdentifier</tt>: If the namespace parameter is provided, this parameter
+	 *		should represent the local identifier; if the namespace parameter was omitted,
+	 *		this parameter should represent the native or global identifier.
 	 *	 <ul>
-	 *		<li><i>Namespace provided:</i> The method will try to resolve the namespace and
-	 *			combine the namespace global identifier with the provided local identifier
-	 *			to locate the term.
+	 *		<li><i>Namespace provided:</i> If the namespace was provided, this parameter is
+	 *			interpreted as the term's local identifier and will be combined with the
+	 *			resolved namespace global identifier to locate the desired term.
 	 *		<li><i>Namespace not provided:</i> If the namespace was not provided, the
 	 *			method will perform the following queries in order:
 	 *		 <ul>
@@ -620,6 +620,8 @@ class COntologyTerm extends CTerm
 	 *				{@link COntologyTerm::_id()} method to convert the global identifier
 	 *				into a native identifier.
 	 *		 </ul>
+	 *			If the parameter was provided as an instance of {@link COntologyTerm}, this
+	 *			method will use its global identifier for the search.
 	 *	 </ul>
 	 *	<li><tt>$theNamespace</tt>: The term namespace:
 	 *	 <ul>
@@ -636,9 +638,9 @@ class COntologyTerm extends CTerm
 	 *				global identifier; if that is missing, the method will either raise an
 	 *				exception, or return <tt>NULL</tt>, depending on the third parameter.
 	 *		 </ul>
-	 *		<li><i>other</i>: Any other type is interpreted as the term native identifier;
-	 *			if the namespace term cannot be found, the method will either raise an
-	 *			exception, or return <tt>NULL</tt>, depending on the third parameter.
+	 *		<li><i>other</i>: Any other type will be interpreted as the namespace's native
+	 *			or global identifier and will be resolved using this same method; the third
+	 *			parameter also applies to this quest.
 	 *	 </ul>
 	 *	<li><tt>$doThrow</tt>: If <tt>TRUE</tt>, any failure to resolve the term or its
 	 *			namespace, will raise an exception.
@@ -666,62 +668,96 @@ class COntologyTerm extends CTerm
 		if( $theIdentifier !== NULL )
 		{
 			//
+			// Init local storage.
+			//
+			$term = NULL;
+			
+			//
 			// Handle namespace.
 			//
 			if( $theNamespace !== NULL )
 			{
 				//
-				// Locate namespace.
+				// Handle namespace object.
 				//
-				if( ! ($theNamespace instanceof CPersistentObject) )
+				if( $theNamespace instanceof COntologyTerm )
 				{
 					//
-					// Locate namespace.
+					// Use global identifier.
 					//
-					$theNamespace = static::Resolve( $theConnection,
-													 $theNamespace, NULL, $doThrow );
+					$theNamespace = $theNamespace->GID();
 					if( $theNamespace === NULL )
+					{
+						if( $doThrow )
+							throw new Exception
+								( "Missing namespace global identifier",
+								  kERROR_PARAMETER );							// !@! ==>
+						
 						return NULL;												// ==>
+					
+					} // Unresolved namespace identifier.
 				
-				} // Provided namespace identifier.
+				} // Provided namespace object.
+				
+				//
+				// Handle identifier object.
+				//
+				if( $theIdentifier instanceof COntologyTerm )
+				{
+					//
+					// Use local identifier.
+					//
+					$theIdentifier = $theIdentifier->LID();
+					if( ! strlen( $theIdentifier ) )
+					{
+						if( $doThrow )
+							throw new Exception
+								( "Missing term local identifier",
+								  kERROR_PARAMETER );							// !@! ==>
+						
+						return NULL;												// ==>
+					
+					} // Unresolved identifier.
+				
+				} // Provided identifier object.
 			
 				//
-				// Handle missing namespace identifier.
+				// Build term native identifier.
 				//
-				if( ! $theNamespace->offsetExists( kTAG_GID ) )
+				$theIdentifier
+					= static::_id(
+						implode( kTOKEN_NAMESPACE_SEPARATOR,
+								 array( $theNamespace, $theIdentifier ) ),
+						$theConnection );
+				
+			} // Provided namespace.
+			
+			//
+			// Use provided object global identifier.
+			//
+			elseif( $theIdentifier instanceof COntologyTerm )
+			{
+				//
+				// Use global identifier.
+				//
+				$theIdentifier = $theIdentifier->GID();
+				if( ! strlen( $theIdentifier ) )
 				{
 					if( $doThrow )
 						throw new Exception
-							( "Missing term namespace global identifier",
+							( "Missing term global identifier",
 							  kERROR_PARAMETER );								// !@! ==>
 					
 					return NULL;													// ==>
 				
-				} // Missing namespace identifier.
-
-				//
-				// Build term identifier.
-				//
-				$id = static::_id( ($theNamespace->offsetGet( kTAG_GID )
-										  .kTOKEN_NAMESPACE_SEPARATOR
-										  .(string) $theIdentifier),
-										  $theConnection );
-				
-				//
-				// Locate term.
-				//
-				$term = static::NewObject( $theConnection, $id );
-				if( $term !== NULL )
-					return $term;													// ==>
-				
-				if( $doThrow )
-					throw new Exception
-						( "Term not found",
-						  kERROR_NOT_FOUND );									// !@! ==>
-				
-				return NULL;														// ==>
+				} // Unresolved identifier.
 			
-			} // Provided namespace.
+				//
+				// Build term native identifier.
+				//
+				$theIdentifier = static::_id( $theIdentifier, $theConnection );
+			
+			} // Provided object global identifier.
 			
 			//
 			// Try native identifier.
@@ -733,11 +769,21 @@ class COntologyTerm extends CTerm
 			//
 			// Try global identifier.
 			//
-			$term = static::NewObject( $theConnection,
-									   static::_id( $theIdentifier, $theConnection ) );
+			if( $theNamespace === NULL )
+				$term
+					= static::NewObject(
+						$theConnection,
+						static::_id( $theIdentifier, $theConnection ) );
+			
+			//
+			// Found term.
+			//
 			if( $term !== NULL )
 				return $term;														// ==>
 			
+			//
+			// Raise exception if missing.
+			//
 			if( $doThrow )
 				throw new Exception
 					( "Term not found",
@@ -745,7 +791,7 @@ class COntologyTerm extends CTerm
 			
 			return NULL;															// ==>
 		
-		} // Provided local or global identifier.
+		} // Provided local, native or global identifier.
 		
 		throw new Exception
 			( "Missing term reference",

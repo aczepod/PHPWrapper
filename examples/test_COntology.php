@@ -662,6 +662,16 @@ try
 		echo( '<i>'.$record[ kTAG_GID ].'</i><br />' );
 	echo( '<hr />' );
 	echo( '<hr />' );
+
+	//
+	// Resolve all edges whose subject is any type node.
+	//
+	echo( '<h4>Resolve all edges whose subject is any type node</h4>' );
+	echo( '<h5>$found = $test->ResolveEdge( $record[ kTAG_REFS_NODE ][ 0 ], NULL, NULL, TRUE );</h5>' );
+	$found = $test->ResolveEdge( $record[ kTAG_REFS_NODE ][ 0 ], NULL, NULL, TRUE );
+	echo( '<pre>' ); print_r( $found ); echo( '</pre>' );
+	echo( '<hr />' );
+	echo( '<hr />' );
 }
 
 //

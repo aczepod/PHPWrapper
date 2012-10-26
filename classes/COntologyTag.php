@@ -634,32 +634,37 @@ class COntologyTag extends CTag
 	 *		tags container must be resolved. If this parameter cannot be correctly
 	 *		determined, the method will raise an exception.
 	 *	<li><tt>$theIdentifier</tt>: This parameter represents either the tag identifier
-	 *		or the term reference, depending on its type:
+	 *		or a vertex term reference, depending on its type:
 	 *	 <ul>
 	 *		<li><tt>integer</tt>: In this case the method assumes that the parameter
 	 *			represents the tag identifier: it will attempt to retrieve the tag, if it
 	 *			is not found, the method will return <tt>NULL</tt>.
 	 *		<li><tt>{@link COntologyTerm}</tt>: In this case the method locate all tags
-	 *			that refer to the provided term. If the term is not {@link _IsCommitted()},
-	 *			the method will return <tt>NULL</tt>.
-	 *		<li><i>other</i>: Any other type will be interpreted either the term's native
-	 *			identifier, or as the term's global identifier: the method will return all
-	 *			tags that refer to that term.
+	 *			whose vertex nodes refer to the provided term. If the term is not
+	 *			{@link _IsCommitted()}, the method will attempt to resolve it.
+	 *		<li><i>other</i>: Any other type will be interpreted either the tag's unique
+	 *			identifier, or as the tag's global identifier: the method will return the
+	 *			matching tag.
 	 *	 </ul>
 	 *	<li><tt>$doThrow</tt>: If <tt>TRUE</tt>, any failure to resolve the tag will raise
 	 *		an exception.
 	 * </ul>
 	 *
-	 * The method will return the found tag(s), <tt>NULL</tt> if not found, or raise an
-	 * exception if the last parameter is <tt>TRUE</tt>.
+	 * It is important to note that when using term references we are only interested in
+	 * those terms that are referred by nodes, predicate terms are not considered by this
+	 * method.
+	 *
+	 * If the provided parameter is a {@link COntologyTerm} instance, the method will return
+	 * an array, in all other cases it will return a scalar; if there was no match it will
+	 * either return <tt>NULL</tt> or raise an exception if the third parameter is
+	 * <tt>TRUE</tt>.
 	 *
 	 * @param CConnection			$theConnection		Server, database or container.
 	 * @param mixed					$theIdentifier		Node identifier or term reference.
 	 * @param boolean				$doThrow			If <tt>TRUE</tt> raise an exception.
-	 * @param boolean				$doTerm				If <tt>TRUE</tt> revert to term ref.
 	 *
 	 * @static
-	 * @return COntologyTerm		Found tag or <tt>NULL</tt>.
+	 * @return COntologyTerm		Found tag, tags or <tt>NULL</tt>.
 	 *
 	 * @throws Exception
 	 */
@@ -683,64 +688,65 @@ class COntologyTag extends CTag
 				//
 				// Get node.
 				//
-				$tag = COntologyTag::NewObject( $theConnection, $theIdentifier );
+				$tag = static::NewObject( $theConnection, $theIdentifier );
+				if( (! $doThrow)
+				 || ($tag !== NULL) )
+					return $tag;													// ==>
 				
-				//
-				// Handle missing tag.
-				//
-				if( ($tag === NULL)
-				 && $doThrow )
-					throw new Exception
-						( "Tag not found",
-						  kERROR_NOT_FOUND );									// !@! ==>
-				
-				return $tag;														// ==>
+				throw new Exception
+					( "Tag not found",
+					  kERROR_NOT_FOUND );										// !@! ==>
 			
 			} // Provided tag identifier.
-						
+			
 			//
-			// Handle term object.
+			// Init local storage.
+			//
+			$query = $container->NewQuery();
+			
+			//
+			// Handle term.
 			//
 			if( $theIdentifier instanceof COntologyTerm )
 			{
 				//
-				// Handle new term.
+				// Check uncommitted term.
 				//
 				if( ! $theIdentifier->_IsCommitted() )
 				{
 					//
-					// Raise exception.
+					// Resolve term.
 					//
-					if( $doThrow )
+					$theIdentifier = COntologyTerm::Resolve( $theIdentifier );
+					if( $theIdentifier === NULL )
+					{
+						if( ! $doThrow )
+							return NULL;											// ==>
+						
 						throw new Exception
-							( "Tag not found: term is not committed",
+							( "Tag not found: unresolved term",
 							  kERROR_NOT_FOUND );								// !@! ==>
 					
-					return NULL;													// ==>
+					} // Unresolved term.
 				
-				} // New term.
-				
+				} // Term not committed.
+	
 				//
-				// Get term identifier.
+				// Use term native identifier.
 				//
 				$theIdentifier = $theIdentifier->offsetGet( kOFFSET_NID );
 				
 				//
 				// Make query.
 				//
-				$query = $container->NewQuery();
 				$query->AppendStatement(
-					CQueryStatement::Member(
+					CQueryStatement::Equals(
 						kTAG_VERTEX_TERMS, $theIdentifier, kTYPE_BINARY ) );
 				$rs = $container->Query( $query );
-				
-				//
-				// Handle found tags.
-				//
 				if( $rs->count() )
 				{
 					//
-					// Return list of tags.
+					// Return list of nodes.
 					//
 					$list = Array();
 					foreach( $rs as $document )
@@ -749,7 +755,7 @@ class COntologyTag extends CTag
 					return $list;													// ==>
 				
 				} // Found at least one tag.
-	
+				
 				//
 				// Raise exception.
 				//
@@ -760,48 +766,38 @@ class COntologyTag extends CTag
 				
 				return NULL;														// ==>
 			
-			} // Provided term object.
+			} // Provided term.
 			
 			//
-			// Query global identifier.
+			// Try unique identifier.
 			//
-			$query = $container->NewQuery();
 			$query->AppendStatement(
 				CQueryStatement::Equals(
-					kTAG_GID, $theIdentifier, kTYPE_STRING ) );
-			$found = $container->Query( $query, NULL, TRUE );
-			
-			//
-			// Look again.
-			//
-			if( $found === NULL )
+					kTAG_UID, $theIdentifier, kTYPE_BINARY ) );
+			$tag = $container->Query( $query, NULL, TRUE );
+			if( $tag === NULL )
 			{
 				//
-				// Query unique identifier.
+				// Try global identifier.
 				//
 				$query = $container->NewQuery();
 				$query->AppendStatement(
 					CQueryStatement::Equals(
-						kTAG_UID, $theIdentifier, kTYPE_BINARY ) );
-				$found = $container->Query( $query, NULL, TRUE );
+						kTAG_UID, md5( $theIdentifier, TRUE ), kTYPE_BINARY ) );
+				$tag = $container->Query( $query, NULL, TRUE );
 			
-			} // Not found in global identifier.
+			} // Provided unique identifier doesn't match.
 			
 			//
-			// Handle found.
+			// Return result.
 			//
-			if( $found !== NULL )
-				return $found;														// ==>
+			if( (! $doThrow)
+			 || ($tag !== NULL) )
+				return $tag;														// ==>
 
-			//
-			// Raise exception.
-			//
-			if( $doThrow )
-				throw new Exception
-					( "Tag not found",
-					  kERROR_NOT_FOUND );										// !@! ==>
-			
-			return NULL;															// ==>
+			throw new Exception
+				( "Tag not found",
+				  kERROR_NOT_FOUND );											// !@! ==>
 			
 		} // Provided local or global identifier.
 		

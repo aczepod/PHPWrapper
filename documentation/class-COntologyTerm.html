@@ -7,7 +7,7 @@
 	<title>Class COntologyTerm | MyWrapper Reference Documentation</title>
 
 	<script type="text/javascript" src="resources/combined.js?3994123307"></script>
-	<script type="text/javascript" src="elementlist.js?3428385880"></script>
+	<script type="text/javascript" src="elementlist.js?2871210445"></script>
 	<link rel="stylesheet" type="text/css" media="all" href="resources/style.css?3505392360" />
 
 </head>
@@ -23,6 +23,10 @@
 			<ul>
 				<li class="active main"><a href="package-MyWrapper.html">MyWrapper<span></span></a>
 						<ul>
+				<li class="main"><a href="package-MyWrapper.Data.html">Data</a>
+						</li>
+				<li class="main"><a href="package-MyWrapper.Definitions.html">Definitions</a>
+						</li>
 				<li class="main"><a href="package-MyWrapper.Framework.html">Framework</a>
 						</li>
 				<li class="main"><a href="package-MyWrapper.Functions.html">Functions</a>
@@ -215,7 +219,7 @@ use the kCONTAINER_TERM_NAME constant.</p>
 				<b>Author:</b>
 				Milko A. Škofič &lt;<a
 href="mailto:m.skofic&#64;cgiar.org">m.skofic&#64;<!---->cgiar.org</a>&gt;<br />
-		<b>Located at</b> <a href="source-class-COntologyTerm.html#36-1391" title="Go to source code">COntologyTerm.php</a><br />
+		<b>Located at</b> <a href="source-class-COntologyTerm.html#36-1437" title="Go to source code">COntologyTerm.php</a><br />
 	</div>
 
 
@@ -724,7 +728,7 @@ kCONTAINER_TERM_NAME name.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#_Resolve">#</a>
-		<code><a href="source-class-COntologyTerm.html#595-754" title="Go to source code">Resolve</a>( <span><code><a href="class-CConnection.html">CConnection</a></code> <var>$theConnection</var></span>, <span>string <var>$theIdentifier</var></span>, <span>mixed <var>$theNamespace</var> = <span class="php-keyword1">NULL</span></span>, <span>boolean <var>$doThrow</var> = <span class="php-keyword1">FALSE</span> </span> )</code>
+		<code><a href="source-class-COntologyTerm.html#595-800" title="Go to source code">Resolve</a>( <span><code><a href="class-CConnection.html">CConnection</a></code> <var>$theConnection</var></span>, <span>string <var>$theIdentifier</var></span>, <span>mixed <var>$theNamespace</var> = <span class="php-keyword1">NULL</span></span>, <span>boolean <var>$doThrow</var> = <span class="php-keyword1">FALSE</span> </span> )</code>
 
 		<div class="description short">
 			
@@ -746,13 +750,13 @@ its identifier.</p>
 	the terms container must be resolved. If this parameter cannot be correctly
 	determined, the method will raise an exception.</li>
 
-	<li><tt>$theIdentifier</tt>: This parameter can be the term native or global
-	identifier, if the namespace is not provided, or the local identifier if the
-	namespace is provided:
+	<li><tt>$theIdentifier</tt>: If the namespace parameter is provided, this
+	parameter should represent the local identifier; if the namespace parameter was
+	omitted, this parameter should represent the native or global identifier.
 		<ul>
-			<li><i>Namespace provided:</i> The method will try to resolve the namespace and
-			combine the namespace global identifier with the provided local identifier to
-			locate the term.</li>
+			<li><i>Namespace provided:</i> If the namespace was provided, this parameter is
+			interpreted as the term's local identifier and will be combined with the
+			resolved namespace global identifier to locate the desired term.</li>
 
 			<li><i>Namespace not provided:</i> If the namespace was not provided, the method
 			will perform the following queries in order:
@@ -763,7 +767,8 @@ its identifier.</p>
 					<li><i>Global identifier:</i> The method will use the term's <code><a href="class-COntologyTerm.html#__id">COntologyTerm::_id()</a></code> method to convert the global identifier into a native
 					identifier.</li>
 				</ul>
-			</li>
+				 If the parameter was provided as an instance of <code><a href="class-COntologyTerm.html">COntologyTerm</a></code>, this
+				method will use its global identifier for the search.</li>
 		</ul>
 	</li>
 
@@ -785,9 +790,9 @@ its identifier.</p>
 				</ul>
 			</li>
 
-			<li><i>other</i>: Any other type is interpreted as the term native identifier;
-			if the namespace term cannot be found, the method will either raise an
-			exception, or return <tt>NULL</tt>, depending on the third parameter.</li>
+			<li><i>other</i>: Any other type will be interpreted as the namespace's native
+			or global identifier and will be resolved using this same method; the third
+			parameter also applies to this quest.</li>
 		</ul>
 	</li>
 
@@ -842,7 +847,7 @@ an exception if the last parameter is <tt>TRUE</tt>.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#__id">#</a>
-		<code><a href="source-class-COntologyTerm.html#770-810" title="Go to source code">_id</a>( <span>string <var>$theIdentifier</var> = <span class="php-keyword1">NULL</span></span>, <span><code><a href="class-CConnection.html">CConnection</a></code> <var>$theConnection</var> = <span class="php-keyword1">NULL</span> </span> )</code>
+		<code><a href="source-class-COntologyTerm.html#816-856" title="Go to source code">_id</a>( <span>string <var>$theIdentifier</var> = <span class="php-keyword1">NULL</span></span>, <span><code><a href="class-CConnection.html">CConnection</a></code> <var>$theConnection</var> = <span class="php-keyword1">NULL</span> </span> )</code>
 
 		<div class="description short">
 			
@@ -900,7 +905,7 @@ this object primary key depends on the content of its attributes.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#__index">#</a>
-		<code><a href="source-class-COntologyTerm.html#826-860" title="Go to source code">_index</a>( <span><code><a href="class-CConnection.html">CConnection</a></code> <var>$theConnection</var></span>, <span>bitfield <var>$theModifiers</var></span> )</code>
+		<code><a href="source-class-COntologyTerm.html#872-906" title="Go to source code">_index</a>( <span><code><a href="class-CConnection.html">CConnection</a></code> <var>$theConnection</var></span>, <span>bitfield <var>$theModifiers</var></span> )</code>
 
 		<div class="description short">
 			
@@ -963,7 +968,7 @@ cache, so its global identifier will be available there.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#__Preset">#</a>
-		<code><a href="source-class-COntologyTerm.html#876-1041" title="Go to source code">_Preset</a>( <span>reference <var>&amp; $theOffset</var></span>, <span>reference <var>&amp; $theValue</var></span> )</code>
+		<code><a href="source-class-COntologyTerm.html#922-1087" title="Go to source code">_Preset</a>( <span>reference <var>&amp; $theOffset</var></span>, <span>reference <var>&amp; $theValue</var></span> )</code>
 
 		<div class="description short">
 			
@@ -1031,7 +1036,7 @@ method we cast the parameter to that type.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#__Preunset">#</a>
-		<code><a href="source-class-COntologyTerm.html#1048-1100" title="Go to source code">_Preunset</a>( <span>reference <var>&amp; $theOffset</var></span> )</code>
+		<code><a href="source-class-COntologyTerm.html#1094-1146" title="Go to source code">_Preunset</a>( <span>reference <var>&amp; $theOffset</var></span> )</code>
 
 		<div class="description short">
 			
@@ -1086,7 +1091,7 @@ the object is committed.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#__PrecommitRelated">#</a>
-		<code><a href="source-class-COntologyTerm.html#1116-1220" title="Go to source code">_PrecommitRelated</a>( <span>reference <var>&amp; $theConnection</var></span>, <span>reference <var>&amp; $theModifiers</var></span> )</code>
+		<code><a href="source-class-COntologyTerm.html#1162-1266" title="Go to source code">_PrecommitRelated</a>( <span>reference <var>&amp; $theConnection</var></span>, <span>reference <var>&amp; $theModifiers</var></span> )</code>
 
 		<div class="description short">
 			
@@ -1131,7 +1136,7 @@ load the namespace if provided as an identifier.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#__PostcommitRelated">#</a>
-		<code><a href="source-class-COntologyTerm.html#1236-1290" title="Go to source code">_PostcommitRelated</a>( <span>reference <var>&amp; $theConnection</var></span>, <span>reference <var>&amp; $theModifiers</var></span> )</code>
+		<code><a href="source-class-COntologyTerm.html#1282-1336" title="Go to source code">_PostcommitRelated</a>( <span>reference <var>&amp; $theConnection</var></span>, <span>reference <var>&amp; $theModifiers</var></span> )</code>
 
 		<div class="description short">
 			
@@ -1190,7 +1195,7 @@ of the eventual namespace.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#__PostcommitCleanup">#</a>
-		<code><a href="source-class-COntologyTerm.html#1297-1321" title="Go to source code">_PostcommitCleanup</a>( <span>reference <var>&amp; $theConnection</var></span>, <span>reference <var>&amp; $theModifiers</var></span> )</code>
+		<code><a href="source-class-COntologyTerm.html#1343-1367" title="Go to source code">_PostcommitCleanup</a>( <span>reference <var>&amp; $theConnection</var></span>, <span>reference <var>&amp; $theModifiers</var></span> )</code>
 
 		<div class="description short">
 			
@@ -1236,7 +1241,7 @@ will have to be refreshed and its references actualised.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#__ReferenceNamespace">#</a>
-		<code><a href="source-class-COntologyTerm.html#1337-1387" title="Go to source code">_ReferenceNamespace</a>( <span><code><a href="class-CConnection.html">CConnection</a></code> <var>$theConnection</var></span>, <span>integer <var>$theCount</var></span> )</code>
+		<code><a href="source-class-COntologyTerm.html#1383-1433" title="Go to source code">_ReferenceNamespace</a>( <span><code><a href="class-CConnection.html">CConnection</a></code> <var>$theConnection</var></span>, <span>integer <var>$theCount</var></span> )</code>
 
 		<div class="description short">
 			

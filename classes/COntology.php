@@ -244,6 +244,11 @@ class COntology extends CConnection
 		if( $this->_IsInited() )
 		{
 			//
+			// Initialise containers.
+			//
+			$this->_InitOntologyContainers();
+			
+			//
 			// Create namespace term.
 			//
 			$this->_InitDefaultNamespace();
@@ -322,13 +327,15 @@ class COntology extends CConnection
 	 *
 	 * <ul>
 	 *	<li><tt>$theIdentifier</tt>: This parameter represents the term local identifier.
-	 *	<li><tt>$theNamespace</tt>: The term namespace, it can be provided in several ways:
+	 *	<li><tt>$theNamespace</tt>: This parameter represents the term namespace, it must
+	 *		resolve to a committed term or the method will fail. It can be provided in
+	 *		several ways:
 	 *	 <ul>
 	 *		<li><tt>NULL</tt>: This indicates that the term has no namespace.
 	 *		<li><tt>{@link COntologyTerm}</tt>: This represents the term namespace object.
-	 *		<li><i>other</i>: Any other type is interpreted as the namespace native
-	 *			identifier; if the namespace cannot be found, the method will raise an
-	 *			exception.
+	 *		<li><i>other</i>: Any other type is interpreted as the namespace native or
+	 *			global identifier; if the namespace cannot be found, the method will raise
+	 *			an exception.
 	 *	 </ul>
 	 *	<li><tt>$theLabel</tt>: The term label string, this parameter is optional.
 	 *	<li><tt>$theDescription</tt>: The term description string this parameter is optional.
@@ -366,69 +373,71 @@ class COntology extends CConnection
 		if( $this->_IsInited() )
 		{
 			//
-			// Check identifier.
+			// Resolve namespace.
 			//
-			if( $theIdentifier !== NULL )
+			if( $theNamespace !== NULL )
 			{
 				//
-				// Handle namespace.
+				// Check namespace object.
 				//
-				if( $theNamespace !== NULL )
+				if( $theNamespace instanceof COntologyTerm )
 				{
 					//
-					// Resolve namespace.
-					// Notice we expect an exception if not resolved.
+					// Resolve term.
 					//
-					if( (! ($theNamespace instanceof COntologyTerm))	// Not an object,
-					 || $theNamespace->_IsCommitted() )					// or committed.
-						$theNamespace = $this->ResolveTerm( $theNamespace, NULL, TRUE );
-					
-					//
-					// Handle new namespace object.
-					//
-					else	// Uncommitted object.
-						return $this->_NewTerm
-							( $theIdentifier, $theNamespace,
-							  $theLabel, $theDescription, $theLanguage,
-							  $theAttributes );										// ==>
-					
-					//
-					// Locate term.
-					//
-					$term = COntologyTerm::NewObject(
-								$this->Connection(),
-								COntologyTerm::_id(
-									COntologyTerm::TermCode(
-										$theIdentifier,
-										$theNamespace->offsetGet( kTAG_GID ) ),
-									$this->Connection() ) );
-					if( $term !== NULL )
-						return $term;												// ==>
-
-					return $this->_NewTerm
-						( $theIdentifier, $theNamespace,
-						  $theLabel, $theDescription, $theLanguage,
-						  $theAttributes );											// ==>
+					if( ! $theNamespace->_IsCommitted() )
+						$theNamespace = $this->ResolveTerm( $theNamespace );
 				
-				} // Provided namespace.
+				} // Provided namespace object.
 				
 				//
-				// Look for term.
+				// Resolve namespace.
 				//
-				$term = $this->ResolveTerm( $theIdentifier );
-				if( $term !== NULL )
-					return $term;													// ==>
-
-				return $this->_NewTerm
-					( $theIdentifier, $theNamespace,
-					  $theLabel, $theDescription, $theLanguage,
-					  $theAttributes );												// ==>
+				else
+					$theNamespace = $this->ResolveTerm( $theNamespace );
+				
+				//
+				// Check namespace.
+				//
+				if( $theNamespace === NULL )
+					throw new Exception
+						( "Namespace not found",
+						  kERROR_NOT_FOUND );									// !@! ==>
+				
+				//
+				// Normalise identifier.
+				//
+				if( $theIdentifier instanceof COntologyTerm )
+				{
+					//
+					// Use local identifier.
+					//
+					$theIdentifier = $theIdentifier->LID();
+					if( $theIdentifier === NULL )
+						throw new Exception
+							( "Missing term local identifier",
+							  kERROR_PARAMETER );								// !@! ==>
+				
+				} // Provided term object copy.
+				
+				//
+				// Cast to string.
+				//
+				else
+					$theIdentifier = (string) $theIdentifier;
 			
-			} // Provided local or global identifier.
+			} // Provided namespace.
 			
-			throw new Exception
-				( "Missing term identifier",
-				  kERROR_PARAMETER );											// !@! ==>
+			//
+			// Check object.
+			//
+			$term = $this->ResolveTerm( $theIdentifier, $theNamespace );
+			if( $term !== NULL )
+				return $term;														// ==>
+			
+			return $this->_NewTerm( $theIdentifier, $theNamespace,
+									$theLabel, $theDescription, $theLanguage,
+									$theAttributes );								// ==>
 		
 		} // Object is ready.
 		
@@ -1438,6 +1447,9 @@ class COntology extends CConnection
 	 *		method will raise an exception.
 	 * </ul>
 	 *
+	 * If any of the provided parameters fail to resolve, the method will assume the edge
+	 * cannot be found.
+	 *
 	 * The method will return an array of {@link COntologyEdge} instances, or <tt>NULL</tt>
 	 * if no edge was found.
 	 *
@@ -1490,7 +1502,7 @@ class COntology extends CConnection
 					//
 					// Resolve nodes.
 					//
-					$list = $this->ResolveNode( $theSubject, $doThrow );
+					$list = $this->ResolveNode( $theSubject );
 					if( is_array( $list ) )
 					{
 						$theSubject = Array();
@@ -1500,6 +1512,17 @@ class COntology extends CConnection
 					} // Resolved.
 				
 				} // Provided term reference.
+				
+				if( $theSubject === NULL )
+				{
+					if( ! $doThrow  )
+						return NULL;												// ==>
+					
+					throw new Exception
+						( "Edge not found: unable to resolve subject node vertex",
+						  kERROR_NOT_FOUND );									// !@! ==>
+				
+				} // Unable to resolve.
 				
 			} // Provided subject.
 			
@@ -1528,6 +1551,17 @@ class COntology extends CConnection
 				
 				} // Resolved predicate.
 				
+				if( $thePredicate === NULL )
+				{
+					if( ! $doThrow  )
+						return NULL;												// ==>
+					
+					throw new Exception
+						( "Edge not found: unable to resolve predicate term",
+						  kERROR_NOT_FOUND );									// !@! ==>
+				
+				} // Unable to resolve.
+				
 			} // Provided predicate.
 			
 			//
@@ -1539,7 +1573,7 @@ class COntology extends CConnection
 				// Handle object.
 				//
 				if( $theObject instanceof COntologyNode )
-					$theObject = $theSubject[ kOFFSET_NID ];
+					$theObject = $theObject[ kOFFSET_NID ];
 				
 				//
 				// Handle term.
@@ -1560,6 +1594,17 @@ class COntology extends CConnection
 				
 				} // Provided term reference.
 				
+				if( $theObject === NULL )
+				{
+					if( ! $doThrow  )
+						return NULL;												// ==>
+					
+					throw new Exception
+						( "Edge not found: unable to resolve object node vertex",
+						  kERROR_NOT_FOUND );									// !@! ==>
+				
+				} // Unable to resolve.
+				
 			} // Provided object.
 			
 			//
@@ -1573,7 +1618,7 @@ class COntology extends CConnection
 				// Resolve container.
 				//
 				$container = COntologyEdge::ResolveClassContainer
-								( $this->Connection(), TRUE );
+												( $this->Connection(), TRUE );
 				
 				//
 				// Create query.
@@ -1644,15 +1689,15 @@ class COntology extends CConnection
 			} // At least one selection.
 			
 			//
-			// Raise exception.
+			// Return result.
 			//
-			if( ( !$found)
-			 && $doThrow )
-				throw new Exception
-					( "Edge not found",
-					  kERROR_NOT_FOUND );										// !@! ==>
+			if( (! $doThrow)
+			 || ($found !== NULL) )
+				return $found;														// ==>
 			
-			return NULL;															// ==>
+			throw new Exception
+				( "Edge not found",
+				  kERROR_NOT_FOUND );											// !@! ==>
 		
 		} // Object is ready.
 		
@@ -2337,6 +2382,128 @@ class COntology extends CConnection
 
 	 
 	/*===================================================================================
+	 *	_InitOntologyContainers															*
+	 *==================================================================================*/
+
+	/**
+	 * <h4>Initialise ontology containers</h4>
+	 *
+	 * This method will reset and create indexes for containers related to terms, nodes,
+	 * edges, tags and sequences.
+	 *
+	 * <b>When calling this method you must be aware that all the ontology data will be
+	 * erased, this method for intended to create a new ontology. This must be the first
+	 * method called by the procedure that initialises the ontology.</b>
+	 *
+	 * @access protected
+	 *
+	 * @throws Exception
+	 *
+	 * @uses Connection()
+	 * @uses NewTerm()
+	 */
+	protected function _InitOntologyContainers()
+	{
+		//
+		// Get database.
+		//
+		$db = $this->GetDatabase();
+		if( ! ($db instanceof CDatabase) )
+			throw new Exception
+				( "Unable to retrieve database connection",
+				  kERROR_STATE );												// !@! ==>
+		
+		//
+		// Get terms container.
+		//
+		$container = COntologyTerm::DefaultContainer( $db );
+		if( ! ($container instanceof CContainer) )
+			throw new Exception
+				( "Unable to retrieve terms container",
+				  kERROR_STATE );												// !@! ==>
+		
+		//
+		// Init terms container.
+		//
+		$container->drop();
+		$container->AddIndex( array( kTAG_LID => 1 ) );
+		$container->AddIndex( array( kTAG_TERM => 1 ), array( 'sparse' => TRUE ) );
+		$container->AddIndex( array( kTAG_NAMESPACE => 1 ), array( 'sparse' => TRUE ) );
+	//	$container->AddIndex( array( kTAG_REFS_NODE => 1 ), array( 'sparse' => TRUE ) );
+	//	$container->AddIndex( array( kTAG_REFS_EDGE => 1 ), array( 'sparse' => TRUE ) );
+	//	$container->AddIndex( array( kTAG_REFS_TAG => 1 ), array( 'sparse' => TRUE ) );
+		
+		//
+		// Get nodes container.
+		//
+		$container = COntologyNode::DefaultContainer( $db );
+		if( ! ($container instanceof CContainer) )
+			throw new Exception
+				( "Unable to retrieve nodes container",
+				  kERROR_STATE );												// !@! ==>
+		
+		//
+		// Init nodes container.
+		//
+		$container->drop();
+		$container->AddIndex( array( kTAG_TERM => 1 ) );
+		$container->AddIndex( array( kTAG_KIND => 1 ), array( 'sparse' => TRUE ) );
+	//	$container->AddIndex( array( kTAG_TYPE => 1 ), array( 'sparse' => TRUE ) );
+	//	$container->AddIndex( array( kTAG_REFS_EDGE => 1 ), array( 'sparse' => TRUE ) );
+		
+		//
+		// Get edges container.
+		//
+		$container = COntologyEdge::DefaultContainer( $db );
+		if( ! ($container instanceof CContainer) )
+			throw new Exception
+				( "Unable to retrieve edges container",
+				  kERROR_STATE );												// !@! ==>
+		
+		//
+		// Init edges container.
+		//
+		$container->drop();
+		$container->AddIndex( array( kTAG_UID => 1 ), array( 'unique' => TRUE ) );
+		$container->AddIndex( array( kTAG_PREDICATE => 1 ) );
+		$container->AddIndex( array( kTAG_VERTEX_SUBJECT => 1 ) );
+		$container->AddIndex( array( kTAG_VERTEX_OBJECT => 1 ) );
+		
+		//
+		// Get tags container.
+		//
+		$container = COntologyTag::DefaultContainer( $db );
+		if( ! ($container instanceof CContainer) )
+			throw new Exception
+				( "Unable to retrieve tags container",
+				  kERROR_STATE );												// !@! ==>
+		
+		//
+		// Init tags container.
+		//
+		$container->drop();
+		$container->AddIndex( array( kTAG_UID => 1 ), array( 'unique' => TRUE ) );
+	//	$container->AddIndex( array( kTAG_TAG_PATH => 1 ) );
+		$container->AddIndex( array( kTAG_VERTEX_TERMS => 1 ) );
+		
+		//
+		// Get sequences container.
+		//
+		$container = $db->Container( kCONTAINER_SEQUENCE_NAME );
+		if( ! ($container instanceof CContainer) )
+			throw new Exception
+				( "Unable to retrieve sequences container",
+				  kERROR_STATE );												// !@! ==>
+		
+		//
+		// Init sequences container.
+		//
+		$container->drop();
+
+	} // _InitOntologyContainers.
+
+	 
+	/*===================================================================================
 	 *	_InitDefaultNamespace															*
 	 *==================================================================================*/
 
@@ -2349,9 +2516,8 @@ class COntology extends CConnection
 	 * The method assumed that the object is {@link _IsInited()} and that the current
 	 * {@link Connection()} is a database.
 	 *
-	 * <b>When calling this method you must be aware that all the ontology data will be
-	 * erased, this method for intended to create a new ontolofy. This must be the first
-	 * method called by the procedure that initialises the ontology.</b>
+	 * <bThis method is called in the context of the ontology initialisation procedure, you
+	 * should not use this method outside of that scope.</b>
 	 *
 	 * @access protected
 	 *
@@ -2370,11 +2536,6 @@ class COntology extends CConnection
 			throw new Exception
 				( "Unable to retrieve database connection",
 				  kERROR_STATE );												// !@! ==>
-		
-		//
-		// Clear database.
-		//
-		$db->Drop();
 		
 		//
 		// Create default namespace.

@@ -7,7 +7,7 @@
 	<title>Class CMongoContainer | MyWrapper Reference Documentation</title>
 
 	<script type="text/javascript" src="resources/combined.js?3994123307"></script>
-	<script type="text/javascript" src="elementlist.js?3428385880"></script>
+	<script type="text/javascript" src="elementlist.js?2871210445"></script>
 	<link rel="stylesheet" type="text/css" media="all" href="resources/style.css?3505392360" />
 
 </head>
@@ -23,6 +23,10 @@
 			<ul>
 				<li class="active main"><a href="package-MyWrapper.html">MyWrapper<span></span></a>
 						<ul>
+				<li class="main"><a href="package-MyWrapper.Data.html">Data</a>
+						</li>
+				<li class="main"><a href="package-MyWrapper.Definitions.html">Definitions</a>
+						</li>
 				<li class="main"><a href="package-MyWrapper.Framework.html">Framework</a>
 						</li>
 				<li class="main"><a href="package-MyWrapper.Functions.html">Functions</a>
@@ -171,7 +175,7 @@
 				<b>Author:</b>
 				Milko A. Škofič &lt;<a
 href="mailto:m.skofic&#64;cgiar.org">m.skofic&#64;<!---->cgiar.org</a>&gt;<br />
-		<b>Located at</b> <a href="source-class-CMongoContainer.html#36-1075" title="Go to source code">CMongoContainer.php</a><br />
+		<b>Located at</b> <a href="source-class-CMongoContainer.html#36-1131" title="Go to source code">CMongoContainer.php</a><br />
 	</div>
 
 
@@ -339,6 +343,83 @@ object, it will then store it in the connection data member.</p>
 		</div>
 		</div></td>
 	</tr>
+	<tr data-order="Drop" id="_Drop">
+
+		<td class="attributes"><code>
+			 public 
+			
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_Drop">#</a>
+		<code><a href="source-class-CMongoContainer.html#260-275" title="Go to source code">Drop</a>( )</code>
+
+		<div class="description short">
+			
+<h4>Delete a container</h4>
+
+		</div>
+
+		<div class="description detailed hidden">
+			
+<h4>Delete a container</h4>
+
+<p>In this class we drop the collection.</p>
+
+
+
+
+
+
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="AddIndex" id="_AddIndex">
+
+		<td class="attributes"><code>
+			 public 
+			
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_AddIndex">#</a>
+		<code><a href="source-class-CMongoContainer.html#282-300" title="Go to source code">AddIndex</a>( <span>array <var>$theIndex</var></span>, <span>array <var>$theOptions</var> = <span class="php-keyword1">Array</span>() </span> )</code>
+
+		<div class="description short">
+			
+<h4>Add an index</h4>
+
+		</div>
+
+		<div class="description detailed hidden">
+			
+<h4>Add an index</h4>
+
+<p>In this class we simply pass the parameter to the MongoCollection.</p>
+
+
+
+				<h4>Parameters</h4>
+				<div class="list"><dl>
+					<dt><var>$theIndex</var></dt>
+					<dd><code>array</code><br>$theIndex Key/Sort list.</dd>
+					<dt><var>$theOptions</var></dt>
+					<dd><code>array</code><br>$theOptions List of index options.</dd>
+				</dl></div>
+
+
+
+
+
+		</div>
+		</div></td>
+	</tr>
 	<tr data-order="ManageObject" id="_ManageObject">
 
 		<td class="attributes"><code>
@@ -350,7 +431,7 @@ object, it will then store it in the connection data member.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#_ManageObject">#</a>
-		<code><a href="source-class-CMongoContainer.html#260-753" title="Go to source code">ManageObject</a>( <span>reference <var>&amp; $theObject</var></span>, <span>mixed <var>$theIdentifier</var> = <span class="php-keyword1">NULL</span></span>, <span>mixed <var>$theModifiers</var> = kFLAG_DEFAULT </span> )</code>
+		<code><a href="source-class-CMongoContainer.html#316-809" title="Go to source code">ManageObject</a>( <span>reference <var>&amp; $theObject</var></span>, <span>mixed <var>$theIdentifier</var> = <span class="php-keyword1">NULL</span></span>, <span>mixed <var>$theModifiers</var> = kFLAG_DEFAULT </span> )</code>
 
 		<div class="description short">
 			
@@ -416,7 +497,7 @@ object, it will then store it in the connection data member.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#_CheckObject">#</a>
-		<code><a href="source-class-CMongoContainer.html#760-805" title="Go to source code">CheckObject</a>( <span>mixed <var>$theIdentifier</var></span>, <span>string <var>$theOffset</var> = <span class="php-keyword1">NULL</span> </span> )</code>
+		<code><a href="source-class-CMongoContainer.html#816-861" title="Go to source code">CheckObject</a>( <span>mixed <var>$theIdentifier</var></span>, <span>string <var>$theOffset</var> = <span class="php-keyword1">NULL</span> </span> )</code>
 
 		<div class="description short">
 			
@@ -470,7 +551,7 @@ object, it will then store it in the connection data member.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#_Query">#</a>
-		<code><a href="source-class-CMongoContainer.html#812-858" title="Go to source code">Query</a>( <span><code><a href="class-CQuery.html">CQuery</a></code> <var>$theQuery</var></span>, <span>array <var>$theFields</var> = <span class="php-keyword1">NULL</span></span>, <span>boolean <var>$doOne</var> = <span class="php-keyword1">FALSE</span> </span> )</code>
+		<code><a href="source-class-CMongoContainer.html#868-914" title="Go to source code">Query</a>( <span><code><a href="class-CQuery.html">CQuery</a></code> <var>$theQuery</var></span>, <span>array <var>$theFields</var> = <span class="php-keyword1">NULL</span></span>, <span>boolean <var>$doOne</var> = <span class="php-keyword1">FALSE</span> </span> )</code>
 
 		<div class="description short">
 			
@@ -518,7 +599,7 @@ object, it will then store it in the connection data member.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#_NextSequence">#</a>
-		<code><a href="source-class-CMongoContainer.html#874-964" title="Go to source code">NextSequence</a>( <span>string <var>$theKey</var></span>, <span>mixed <var>$theContainer</var> = <span class="php-keyword1">NULL</span></span>, <span>mixed <var>$theObject</var> = <span class="php-keyword1">NULL</span> </span> )</code>
+		<code><a href="source-class-CMongoContainer.html#930-1020" title="Go to source code">NextSequence</a>( <span>string <var>$theKey</var></span>, <span>mixed <var>$theContainer</var> = <span class="php-keyword1">NULL</span></span>, <span>mixed <var>$theObject</var> = <span class="php-keyword1">NULL</span> </span> )</code>
 
 		<div class="description short">
 			
@@ -574,7 +655,7 @@ for more information.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#_NewQuery">#</a>
-		<code><a href="source-class-CMongoContainer.html#980-988" title="Go to source code">NewQuery</a>( )</code>
+		<code><a href="source-class-CMongoContainer.html#1036-1044" title="Go to source code">NewQuery</a>( )</code>
 
 		<div class="description short">
 			
@@ -615,7 +696,7 @@ for more information.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#_ConvertValue">#</a>
-		<code><a href="source-class-CMongoContainer.html#1004-1071" title="Go to source code">ConvertValue</a>( <span>string <var>$theType</var></span>, <span>mixed <var>$theValue</var></span> )</code>
+		<code><a href="source-class-CMongoContainer.html#1060-1127" title="Go to source code">ConvertValue</a>( <span>string <var>$theType</var></span>, <span>mixed <var>$theValue</var></span> )</code>
 
 		<div class="description short">
 			
