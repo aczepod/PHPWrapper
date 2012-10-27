@@ -45,48 +45,48 @@ define( "KLR_INVENTORY",						'LR:INVENTORY' );
  *
  * Descriptors identifying the scientific nomenclature of the landrace or population.
  */
-define( "KLR_TAXONOMY",							'LR:DDICT:TAXONOMY' );
+define( "KLR_TAXONOMY",							'LR:TAXONOMY' );
 
 /**
  * LANDRACE/POPULATION IDENTIFICATION.
  *
  * Descriptors identifying the specific landrace or population.
  */
-define( "KLR_IDENTIFICATION",					'LR:DDICT:IDENTIFICATION' );
+define( "KLR_IDENTIFICATION",					'LR:IDENTIFICATION' );
 
 /**
  * SITE/LOCATION IDENTIFICATION.
  *
  * Descriptors identifying the location of the landrace or population.
  */
-define( "KLR_SITE",								'LR:DDICT:SITE' );
+define( "KLR_SITE",								'LR:SITE' );
 
 /**
  * THE FARMER (I.E. THE MAINTAINER).
  *
  * Descriptors identifying the maintainer of the landrace or population.
  */
-define( "KLR_MAINTAINER",						'LR:DDICT:MAINTAINER' );
+define( "KLR_MAINTAINER",						'LR:MAINTAINER' );
 
 /**
  * THE LANDRACE.
  *
  * Descriptors describing the landrace.
  */
-define( "KLR_LANDRACE",							'LR:DDICT:LANDRACE' );
+define( "KLR_LANDRACE",							'LR:LANDRACE' );
 
 /**
  * CONSERVATION AND MONITORING.
  *
  * Descriptors covering conservation and maintenance of the landrace or population.
  */
-define( "KLR_MONITOR",							'LR:DDICT:MONITOR' );
+define( "KLR_MONITOR",							'LR:MONITOR' );
 
 /**
  * CONSERVATION AND MONITORING.
  *
  * Descriptors collecting comments on the landrace or population.
  */
-define( "KLR_REMARKS",							'LR:DDICT:REMARKS' );
+define( "KLR_REMARKS",							'LR:REMARKS' );
 
 ?>

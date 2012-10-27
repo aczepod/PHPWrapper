@@ -108,8 +108,6 @@ try
 	//
 	LoadLandraceOntology();
 	LoadLandraceCategories();
-echo( "\nTime elapsed: ".(time() - $start)."\n" );
-exit;
 	LoadLandraceInventoryTraits();
 	LoadLandraceTaxonomyTraits();
 	LoadLandraceIdentificationTraits();

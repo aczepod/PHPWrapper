@@ -99,35 +99,35 @@ require_once( 'LandracesPassport.inc.php' );
 		// Init top level storage.
 		//
 		$params = array(
-			array( 'code' => substr( KLR_INVENTORY, 4 ),
+			array( 'code' => substr( KLR_INVENTORY, 3 ),
 				   'syn' => '1',
 				   'label' => "INVENTORY IDENTIFICATION",
 				   'descr' => "Descriptors identifying the inventory and origin of the landrace or population." ),
-			array( 'code' => substr( KLR_TAXONOMY, 4 ),
+			array( 'code' => substr( KLR_TAXONOMY, 3 ),
 				   'syn' => '2',
 				   'label' => "TAXON IDENTIFICATION",
 				   'descr' => "Descriptors identifying the scientific nomenclature of the landrace or population." ),
-			array( 'code' => substr( KLR_IDENTIFICATION, 4 ),
+			array( 'code' => substr( KLR_IDENTIFICATION, 3 ),
 				   'syn' => '3',
 				   'label' => "LANDRACE/POPULATION IDENTIFICATION",
 				   'descr' => "Descriptors identifying the specific landrace or population." ),
-			array( 'code' => substr( KLR_SITE, 4 ),
+			array( 'code' => substr( KLR_SITE, 3 ),
 				   'syn' => '4',
 				   'label' => "SITE/LOCATION IDENTIFICATION",
 				   'descr' => "Descriptors identifying the location of the landrace or population." ),
-			array( 'code' => substr( KLR_MAINTAINER, 4 ),
+			array( 'code' => substr( KLR_MAINTAINER, 3 ),
 				   'syn' => '5',
 				   'label' => "THE FARMER (I.E. THE MAINTAINER)",
 				   'descr' => "Descriptors identifying the maintainer of the landrace or population." ),
-			array( 'code' => substr( KLR_LANDRACE, 4 ),
+			array( 'code' => substr( KLR_LANDRACE, 3 ),
 				   'syn' => '6',
 				   'label' => "THE LANDRACE",
 				   'descr' => "Descriptors describing the landrace." ),
-			array( 'code' => substr( KLR_MONITOR, 4 ),
+			array( 'code' => substr( KLR_MONITOR, 3 ),
 				   'syn' => '7',
 				   'label' => "CONSERVATION AND MONITORING",
 				   'descr' => "Descriptors covering conservation and maintenance of the landrace or population." ),
-			array( 'code' => substr( KLR_REMARKS, 4 ),
+			array( 'code' => substr( KLR_REMARKS, 3 ),
 				   'syn' => '8',
 				   'label' => "REMARKS",
 				   'descr' => "Descriptors collecting comments on the landrace or population." )
@@ -161,7 +161,7 @@ require_once( 'LandracesPassport.inc.php' );
 			//
 			// Save site node.
 			//
-			if( $param[ 'code' ] == substr( KLR_SITE, 4 ) )
+			if( $param[ 'code' ] == substr( KLR_SITE, 3 ) )
 			{
 				$save_term = $term;
 				$save_node = $node;
@@ -239,10 +239,28 @@ require_once( 'LandracesPassport.inc.php' );
 	function LoadLandraceInventoryTraits()
 	{
 		//
+		// Get namespace.
+		//
+		$namespace
+			= $_SESSION[ kSESSION_ONTOLOGY ]->ResolveTerm(
+				kLR_ROOT,
+				NULL,
+				TRUE );
+		
+		//
+		// Get category.
+		//
+		$category
+			= $_SESSION[ kSESSION_ONTOLOGY ]->ResolveNode(
+				$_SESSION[ kSESSION_ONTOLOGY ]->ResolveTerm(
+					KLR_INVENTORY,
+					NULL,
+					TRUE ),
+				TRUE )[ 0 ]	;
+		
+		//
 		// Init local storage.
 		//
-		$namespace = $_SESSION[ 'TERMS' ][ 'LR' ];
-		$category = $_SESSION[ 'NODES' ][ 'LR'.kTOKEN_NAMESPACE_SEPARATOR.'INVENTORY' ];
 		$params = array(
 			array( 'code' => 'NICODE',
 				   'syn' => '1.1',
@@ -269,54 +287,38 @@ require_once( 'LandracesPassport.inc.php' );
 		foreach( $params as $param )
 		{
 			//
-			// Set global identifier.
-			//
-			$id = 'LR'.kTOKEN_NAMESPACE_SEPARATOR.$param[ 'code' ];
-			
-			//
 			// Relate to category.
 			//
 			$_SESSION[ kSESSION_ONTOLOGY ]->SubclassOf(
-				//
-				// Create node.
-				//
-				$_SESSION[ 'NODES' ][ $id ]
-					= $_SESSION[ kSESSION_ONTOLOGY ]->NewScaleNode(
-						$_SESSION[ 'TERMS' ][ $id ]
-							//
-							// Create term.
-							//
+				$node
+					= $_SESSION[ kSESSION_ONTOLOGY ]->NewNode(
+						$term
 							= $_SESSION[ kSESSION_ONTOLOGY ]->NewTerm(
 								$param[ 'code' ],		// Local identifier.
 								$namespace,				// Namespace.
 								$param[ 'label' ],		// Label or name.
 								$param[ 'descr' ],		// Description or definition.
 								kDEFAULT_LANGUAGE,		// Language.
-								array( kTAG_SYNONYMS	// Additional attributes.
-											=> array( $param[ 'code' ], $param[ 'syn' ] ),
-										kTOKEN_NAMESPACE_SEPARATOR.kONTOLOGY_DEFAULT_EXAMPLES
-											=> $param[ 'examp' ] ) ),
+								// Additional attributes.
+								array( kTAG_SYNONYMS => array( $param[ 'code' ], $param[ 'syn' ] ),
+									   kTAG_EXAMPLES => $param[ 'examp' ] ) ),
 						$param[ 'type' ] ),				// Node data type.
-				$category );							// Object vertex node.
+				$category );
 			
 			//
 			// Create tag.
 			//
-			$_SESSION[ 'TAGS' ][ $id ] = NULL;
-			$_SESSION[ kSESSION_ONTOLOGY ]->AddToTag(
-				$_SESSION[ 'TAGS' ][ $id ], $_SESSION[ 'NODES' ][ $id ] );
-			$_SESSION[ kSESSION_ONTOLOGY ]->AddToTag(
-				$_SESSION[ 'TAGS' ][ $id ], TRUE );
+			$tag = NULL;
+			$_SESSION[ kSESSION_ONTOLOGY ]->AddToTag( $tag, $node );
+			$_SESSION[ kSESSION_ONTOLOGY ]->AddToTag( $tag, TRUE );
 			
 			//
 			// Inform.
 			//
 			if( kOPTION_VERBOSE )
-				echo( "    - $id ["
-					 .$_SESSION[ 'NODES' ][ $id ]
-					 ."] ("
-					 .$_SESSION[ 'TAGS' ][ $id ][ kOFFSET_NID ]
-					 .")\n" );
+				echo( "    - ".$term->GID()." ["
+							  .$node[ kOFFSET_NID ]."] ("
+							  .$tag[ kOFFSET_NID ].")\n" );
 		}
 
 	} // LoadLandraceInventoryTraits.
@@ -335,10 +337,28 @@ require_once( 'LandracesPassport.inc.php' );
 	function LoadLandraceTaxonomyTraits()
 	{
 		//
+		// Get namespace.
+		//
+		$namespace
+			= $_SESSION[ kSESSION_ONTOLOGY ]->ResolveTerm(
+				kLR_ROOT,
+				NULL,
+				TRUE );
+		
+		//
+		// Get category.
+		//
+		$category
+			= $_SESSION[ kSESSION_ONTOLOGY ]->ResolveNode(
+				$_SESSION[ kSESSION_ONTOLOGY ]->ResolveTerm(
+					KLR_TAXONOMY,
+					NULL,
+					TRUE ),
+				TRUE )[ 0 ]	;
+		
+		//
 		// Init local storage.
 		//
-		$namespace = $_SESSION[ 'TERMS' ][ 'LR' ];
-		$category = $_SESSION[ 'NODES' ][ 'LR'.kTOKEN_NAMESPACE_SEPARATOR.'TAXONOMY' ];
 		$params = array(
 			array( 'code' => 'GENUS',
 				   'syn' => '2.1',
@@ -389,54 +409,38 @@ require_once( 'LandracesPassport.inc.php' );
 		foreach( $params as $param )
 		{
 			//
-			// Set global identifier.
-			//
-			$id = 'LR'.kTOKEN_NAMESPACE_SEPARATOR.$param[ 'code' ];
-			
-			//
 			// Relate to category.
 			//
 			$_SESSION[ kSESSION_ONTOLOGY ]->SubclassOf(
-				//
-				// Create node.
-				//
-				$_SESSION[ 'NODES' ][ $id ]
-					= $_SESSION[ kSESSION_ONTOLOGY ]->NewScaleNode(
-						$_SESSION[ 'TERMS' ][ $id ]
-							//
-							// Create term.
-							//
+				$node
+					= $_SESSION[ kSESSION_ONTOLOGY ]->NewNode(
+						$term
 							= $_SESSION[ kSESSION_ONTOLOGY ]->NewTerm(
 								$param[ 'code' ],		// Local identifier.
 								$namespace,				// Namespace.
 								$param[ 'label' ],		// Label or name.
 								$param[ 'descr' ],		// Description or definition.
 								kDEFAULT_LANGUAGE,		// Language.
-								array( kTAG_SYNONYMS	// Additional attributes.
-											=> array( $param[ 'code' ], $param[ 'syn' ] ),
-										kTOKEN_NAMESPACE_SEPARATOR.kONTOLOGY_DEFAULT_EXAMPLES
-											=> $param[ 'examp' ] ) ),
+								// Additional attributes.
+								array( kTAG_SYNONYMS => array( $param[ 'code' ], $param[ 'syn' ] ),
+									   kTAG_EXAMPLES => $param[ 'examp' ] ) ),
 						$param[ 'type' ] ),				// Node data type.
-				$category );							// Object vertex node.
+				$category );
 			
 			//
 			// Create tag.
 			//
-			$_SESSION[ 'TAGS' ][ $id ] = NULL;
-			$_SESSION[ kSESSION_ONTOLOGY ]->AddToTag(
-				$_SESSION[ 'TAGS' ][ $id ], $_SESSION[ 'NODES' ][ $id ] );
-			$_SESSION[ kSESSION_ONTOLOGY ]->AddToTag(
-				$_SESSION[ 'TAGS' ][ $id ], TRUE );
+			$tag = NULL;
+			$_SESSION[ kSESSION_ONTOLOGY ]->AddToTag( $tag, $node );
+			$_SESSION[ kSESSION_ONTOLOGY ]->AddToTag( $tag, TRUE );
 			
 			//
 			// Inform.
 			//
 			if( kOPTION_VERBOSE )
-				echo( "    - $id ["
-					 .$_SESSION[ 'NODES' ][ $id ]
-					 ."] ("
-					 .$_SESSION[ 'TAGS' ][ $id ][ kOFFSET_NID ]
-					 .")\n" );
+				echo( "    - ".$term->GID()." ["
+							  .$node[ kOFFSET_NID ]."] ("
+							  .$tag[ kOFFSET_NID ].")\n" );
 		}
 
 	} // LoadLandraceTaxonomyTraits.
@@ -455,10 +459,28 @@ require_once( 'LandracesPassport.inc.php' );
 	function LoadLandraceIdentificationTraits()
 	{
 		//
+		// Get namespace.
+		//
+		$namespace
+			= $_SESSION[ kSESSION_ONTOLOGY ]->ResolveTerm(
+				kLR_ROOT,
+				NULL,
+				TRUE );
+		
+		//
+		// Get category.
+		//
+		$category
+			= $_SESSION[ kSESSION_ONTOLOGY ]->ResolveNode(
+				$_SESSION[ kSESSION_ONTOLOGY ]->ResolveTerm(
+					KLR_IDENTIFICATION,
+					NULL,
+					TRUE ),
+				TRUE )[ 0 ]	;
+		
+		//
 		// Init local storage.
 		//
-		$namespace = $_SESSION[ 'TERMS' ][ 'LR' ];
-		$category = $_SESSION[ 'NODES' ][ 'LR'.kTOKEN_NAMESPACE_SEPARATOR.'IDENTIFICATION' ];
 		$params = array(
 			array( 'code' => 'LRRECDATE',
 				   'syn' => '3.1',
@@ -491,54 +513,38 @@ require_once( 'LandracesPassport.inc.php' );
 		foreach( $params as $param )
 		{
 			//
-			// Set global identifier.
-			//
-			$id = 'LR'.kTOKEN_NAMESPACE_SEPARATOR.$param[ 'code' ];
-			
-			//
 			// Relate to category.
 			//
 			$_SESSION[ kSESSION_ONTOLOGY ]->SubclassOf(
-				//
-				// Create node.
-				//
-				$_SESSION[ 'NODES' ][ $id ]
-					= $_SESSION[ kSESSION_ONTOLOGY ]->NewScaleNode(
-						$_SESSION[ 'TERMS' ][ $id ]
-							//
-							// Create term.
-							//
+				$node
+					= $_SESSION[ kSESSION_ONTOLOGY ]->NewNode(
+						$term
 							= $_SESSION[ kSESSION_ONTOLOGY ]->NewTerm(
 								$param[ 'code' ],		// Local identifier.
 								$namespace,				// Namespace.
 								$param[ 'label' ],		// Label or name.
 								$param[ 'descr' ],		// Description or definition.
 								kDEFAULT_LANGUAGE,		// Language.
-								array( kTAG_SYNONYMS	// Additional attributes.
-											=> array( $param[ 'code' ], $param[ 'syn' ] ),
-										kTOKEN_NAMESPACE_SEPARATOR.kONTOLOGY_DEFAULT_EXAMPLES
-											=> $param[ 'examp' ] ) ),
+								// Additional attributes.
+								array( kTAG_SYNONYMS => array( $param[ 'code' ], $param[ 'syn' ] ),
+									   kTAG_EXAMPLES => $param[ 'examp' ] ) ),
 						$param[ 'type' ] ),				// Node data type.
-				$category );							// Object vertex node.
+				$category );
 			
 			//
 			// Create tag.
 			//
-			$_SESSION[ 'TAGS' ][ $id ] = NULL;
-			$_SESSION[ kSESSION_ONTOLOGY ]->AddToTag(
-				$_SESSION[ 'TAGS' ][ $id ], $_SESSION[ 'NODES' ][ $id ] );
-			$_SESSION[ kSESSION_ONTOLOGY ]->AddToTag(
-				$_SESSION[ 'TAGS' ][ $id ], TRUE );
+			$tag = NULL;
+			$_SESSION[ kSESSION_ONTOLOGY ]->AddToTag( $tag, $node );
+			$_SESSION[ kSESSION_ONTOLOGY ]->AddToTag( $tag, TRUE );
 			
 			//
 			// Inform.
 			//
 			if( kOPTION_VERBOSE )
-				echo( "    - $id ["
-					 .$_SESSION[ 'NODES' ][ $id ]
-					 ."] ("
-					 .$_SESSION[ 'TAGS' ][ $id ][ kOFFSET_NID ]
-					 .")\n" );
+				echo( "    - ".$term->GID()." ["
+							  .$node[ kOFFSET_NID ]."] ("
+							  .$tag[ kOFFSET_NID ].")\n" );
 		}
 
 	} // LoadLandraceIdentificationTraits.
@@ -557,145 +563,167 @@ require_once( 'LandracesPassport.inc.php' );
 	function LoadLandraceSiteTraits()
 	{
 		//
+		// Get namespace.
+		//
+		$namespace
+			= $_SESSION[ kSESSION_ONTOLOGY ]->ResolveTerm(
+				kLR_ROOT,
+				NULL,
+				TRUE );
+		
+		//
 		// Init local storage.
 		//
-		$namespace = $_SESSION[ 'TERMS' ][ 'LR' ];
 		$params = array(
 			array( 'code' => 'FARMFIRSTADMIN',
-				   'parent' => 'LR'.kTOKEN_NAMESPACE_SEPARATOR.'SITE',
+				   'parent' => KLR_SITE,
 				   'syn' => '4.1',
 				   'type' => kTYPE_STRING,
 				   'label' => "Farm location: primary administrative subdivision of the country where farm is located",
 				   'descr' => "Name of the primary administrative subdivision of the country where the farm is located for the most part of its extension. Free text.",
 				   'examp' => array( 'Umbria Region' ) ),
 			array( 'code' => 'FARMSECONDADMIN',
-				   'parent' => 'LR'.kTOKEN_NAMESPACE_SEPARATOR.'SITE',
+				   'parent' => KLR_SITE,
 				   'syn' => '4.2',
 				   'type' => kTYPE_STRING,
 				   'label' => "Farm location: secondary administrative subdivision",
 				   'descr' => "Name of the secondary administrative subdivision (within the primary administrative subdivision) of the country where the farm is located. Free text.",
 				   'examp' => array( 'Perugia Province' ) ),
 			array( 'code' => 'FARMLOWESTADMIN',
-				   'parent' => 'LR'.kTOKEN_NAMESPACE_SEPARATOR.'SITE',
+				   'parent' => KLR_SITE,
 				   'syn' => '4.3',
 				   'type' => kTYPE_STRING,
 				   'label' => "Farm location: lowest administrative subdivision",
 				   'descr' => "Name of the lowest administrative subdivision (i.e. municipality). Free text.",
 				   'examp' => array( 'Panicale municipality' ) ),
 			array( 'code' => 'LOCATION',
-				   'parent' => 'LR'.kTOKEN_NAMESPACE_SEPARATOR.'SITE',
+				   'parent' => KLR_SITE,
 				   'syn' => '4.4',
 				   'type' => kTYPE_STRING,
 				   'label' => "Location of the nearest known place",
 				   'descr' => "Information relevant to the nearest known place, distance from nearest named place, and directions from the nearest named place. Descriptive field as detailed as possible. Free text.",
 				   'examp' => array( '7 km south of Panicale towards Perugia on SS.74' ) ),
 			array( 'code' => 'FLATDMS',
-				   'parent' => 'LR'.kTOKEN_NAMESPACE_SEPARATOR.'SITE'.kTOKEN_NAMESPACE_SEPARATOR.'COORD-FARM',
+				   'parent' => implode( kTOKEN_NAMESPACE_SEPARATOR,
+				   						array( KLR_SITE, 'COORD-FARM' ) ),
 				   'syn' => '4.5.1',
 				   'type' => array( kTYPE_STRING, kTYPE_CARD_REQUIRED ),
 				   'label' => "Latitude of farm site",
 				   'descr' => "Degrees (2 digits) minutes (2 digits), and seconds (2 digits) followed by N (North) or S (South). Every missing digit (minutes or seconds) should be indicated with a zero. Leading zeros are also required for figures that are lower than ten.",
 				   'examp' => array( '45° (i.e. 45 degrees), 4’ (i.e. 4 minutes) and unknown seconds North (Turin latitude) is coded as 450400N', '45°, 4’ and 8’’ (i.e. 8 seconds) North (Turin_Mole Antonelliana latitude) is coded as 450408N', '40° 25’ 6" N (Madrid) is coded as 402506N', '00° 13’ 23’’ S (Quito) is coded as 001323S' ) ),
 			array( 'code' => 'FLATDD',
-				   'parent' => 'LR'.kTOKEN_NAMESPACE_SEPARATOR.'SITE'.kTOKEN_NAMESPACE_SEPARATOR.'COORD-FARM',
+				   'parent' => implode( kTOKEN_NAMESPACE_SEPARATOR,
+				   						array( KLR_SITE, 'COORD-FARM' ) ),
 				   'syn' => '4.5.1bis',
 				   'type' => array( kTYPE_FLOAT, kTYPE_CARD_REQUIRED ),
 				   'label' => "Latitude of farm site",
 				   'descr' => "Latitude expressed in decimal degrees. Degree measurements should be written with decimal places like 45.069031° with the degree symbol behind the decimals. Every missing digit should be indicated with a zero. Positive values are North of the Equator; negative values are South of the Equator.",
 				   'examp' => array( 'the same latitude of Turin_Mole Antonelliana reported above is coded as 45.069031°', 'the Madrid latitude reported above is coded as 40.418446°', 'the Quito latitude reported above is coded as -0.222900°' ) ),
 			array( 'code' => 'FLONGDMS',
-				   'parent' => 'LR'.kTOKEN_NAMESPACE_SEPARATOR.'SITE'.kTOKEN_NAMESPACE_SEPARATOR.'COORD-FARM',
+				   'parent' => implode( kTOKEN_NAMESPACE_SEPARATOR,
+				   						array( KLR_SITE, 'COORD-FARM' ) ),
 				   'syn' => '4.5.2',
 				   'type' => array( kTYPE_STRING, kTYPE_CARD_REQUIRED ),
 				   'label' => "Longitude of farm site",
 				   'descr' => "Degrees (3 digits), minutes (2 digits), and seconds (2 digits) followed by E (East) or W (West). Every missing digit (minutes or seconds) should be indicated with a zero. Leading zeros are also required for figures lower than ten.",
 				   'examp' => array( '7° 41’ and unknown seconds E (Turin) is coded as 0074100E (2 zeros before the 7 degrees because longitude varies from 0 and 180 degrees and needs 3 digits)', '7° 41’ 36" E (Turin_Mole Antonelliana longitude) is coded as 0074135E', '3°42’ 51" W (Madrid) is coded as 0034251W', '78° 30’ 19’’ W (Quito) is coded as 0783019W' ) ),
 			array( 'code' => 'FLONGDD',
-				   'parent' => 'LR'.kTOKEN_NAMESPACE_SEPARATOR.'SITE'.kTOKEN_NAMESPACE_SEPARATOR.'COORD-FARM',
+				   'parent' => implode( kTOKEN_NAMESPACE_SEPARATOR,
+				   						array( KLR_SITE, 'COORD-FARM' ) ),
 				   'syn' => '4.5.2bis',
 				   'type' => array( kTYPE_FLOAT, kTYPE_CARD_REQUIRED ),
 				   'label' => "Longitude of farm site",
 				   'descr' => "Longitude expressed in decimal degrees. Degree measurements should be written with decimal places like 74.044636° with the degree symbol behind the decimals. Every missing digit should be indicated with a zero. Positive values are East of the Greenwich Meridian; negative values are West of the Greenwich Meridian.",
 				   'examp' => array( 'the same longitude of Turin_Mole Antonelliana reported above is coded as 7.693154°', 'the same longitude of Madrid reported above is coded as -3.714277°', 'the same longitude of Quito reported above is coded as -78.505386°' ) ),
 			array( 'code' => 'FEPSGCODE',
-				   'parent' => 'LR'.kTOKEN_NAMESPACE_SEPARATOR.'SITE'.kTOKEN_NAMESPACE_SEPARATOR.'COORD-FARM',
+				   'parent' => implode( kTOKEN_NAMESPACE_SEPARATOR,
+				   						array( KLR_SITE, 'COORD-FARM' ) ),
 				   'syn' => '4.5.3',
 				   'type' => kTYPE_STRING,
 				   'label' => "Geodetic datum",
 				   'descr' => "The geodetic datum or spatial reference system upon which the coordinates given in decimal latitude and decimal longitude are based. If not known, use ‘not recorded’, when not known the default WGS 1984 Datum will be used.",
 				   'examp' => array( 'WGS84 (for World Geodetic System 1984 – EPSG 4326)' ) ),
 			array( 'code' => 'FGPS',
-				   'parent' => 'LR'.kTOKEN_NAMESPACE_SEPARATOR.'SITE'.kTOKEN_NAMESPACE_SEPARATOR.'COORD-FARM',
+				   'parent' => implode( kTOKEN_NAMESPACE_SEPARATOR,
+				   						array( KLR_SITE, 'COORD-FARM' ) ),
 				   'syn' => '4.5.4',
 				   'type' => kTYPE_ENUM,
 				   'label' => "Geographic data recording system",
 				   'descr' => "Data recorded by GPS: Yes or No.",
 				   'examp' => array( '10', '20' ) ),
 			array( 'code' => 'FRADIALED',
-				   'parent' => 'LR'.kTOKEN_NAMESPACE_SEPARATOR.'SITE'.kTOKEN_NAMESPACE_SEPARATOR.'COORD-FARM',
+				   'parent' => implode( kTOKEN_NAMESPACE_SEPARATOR,
+				   						array( KLR_SITE, 'COORD-FARM' ) ),
 				   'syn' => '4.5.5',
 				   'type' => kTYPE_INT32,
 				   'label' => "Maximum error distance",
 				   'descr' => "To be compiled if the field GPS is ‘No’. The upper limit of the distance (in meters) from the given latitude and longitude describing a circle within which the whole of the described locality must lie.",
 				   'examp' => array( '1000', '100000' ) ),
 			array( 'code' => 'FELEVATION',
-				   'parent' => 'LR'.kTOKEN_NAMESPACE_SEPARATOR.'SITE',
+				   'parent' => KLR_SITE,
 				   'syn' => '4.6',
 				   'type' => array( kTYPE_INT32, kTYPE_CARD_REQUIRED ),
 				   'label' => "Elevation of farm site",
 				   'descr' => "Elevation of farm site expressed in meters above sea level. Negative values are allowed.",
 				   'examp' => array( '763', '-35' ) ),
 			array( 'code' => 'LRSLATDMS',
-				   'parent' => 'LR'.kTOKEN_NAMESPACE_SEPARATOR.'SITE'.kTOKEN_NAMESPACE_SEPARATOR.'COORD-LR',
+				   'parent' => implode( kTOKEN_NAMESPACE_SEPARATOR,
+				   						array( KLR_SITE, 'COORD-LR' ) ),
 				   'syn' => '4.7.1',
 				   'type' => array( kTYPE_STRING, kTYPE_CARD_REQUIRED ),
 				   'label' => "Latitude of LR site",
 				   'descr' => "Degrees (2 digits) minutes (2 digits), and seconds (2 digits) followed by N (North) or S (South).",
 				   'examp' => array( '45° (i.e. 45 degrees), 4’ (i.e. 4 minutes) and unknown seconds North (Turin latitude) is coded as 450400N', '45°, 4’ and 8’’ (i.e. 8 seconds) North (Turin_Mole Antonelliana latitude) is coded as 450408N', '40° 25’ 6" N (Madrid) is coded as 402506N', '00° 13’ 23’’ S (Quito) is coded as 001323S' ) ),
 			array( 'code' => 'LRSLATDD',
-				   'parent' => 'LR'.kTOKEN_NAMESPACE_SEPARATOR.'SITE'.kTOKEN_NAMESPACE_SEPARATOR.'COORD-LR',
+				   'parent' => implode( kTOKEN_NAMESPACE_SEPARATOR,
+				   						array( KLR_SITE, 'COORD-LR' ) ),
 				   'syn' => '4.7.1bis',
 				   'type' => array( kTYPE_FLOAT, kTYPE_CARD_REQUIRED ),
 				   'label' => "Latitude of LR site",
 				   'descr' => "Latitude expressed in decimal degrees.",
 				   'examp' => array( 'the same latitude of Turin_Mole Antonelliana reported above is coded as 45.069031°', 'the Madrid latitude reported above is coded as 40.418446°', 'the Quito latitude reported above is coded as -0.222900°' ) ),
 			array( 'code' => 'LRSLONGDMS',
-				   'parent' => 'LR'.kTOKEN_NAMESPACE_SEPARATOR.'SITE'.kTOKEN_NAMESPACE_SEPARATOR.'COORD-LR',
+				   'parent' => implode( kTOKEN_NAMESPACE_SEPARATOR,
+				   						array( KLR_SITE, 'COORD-LR' ) ),
 				   'syn' => '4.7.2',
 				   'type' => array( kTYPE_STRING, kTYPE_CARD_REQUIRED ),
 				   'label' => "Longitude of LR site",
 				   'descr' => "Degrees (3 digits), minutes (2 digits), and seconds (2 digits) followed by E (East) or W (West).",
 				   'examp' => array( '7° 41’ and unknown seconds E (Turin) is coded as 0074100E (2 zeros before the 7 degrees because longitude varies from 0 and 180 degrees and needs 3 digits)', '7° 41’ 36" E (Turin_Mole Antonelliana longitude) is coded as 0074135E', '3°42’ 51" W (Madrid) is coded as 0034251W', '78° 30’ 19’’ W (Quito) is coded as 0783019W' ) ),
 			array( 'code' => 'LRSLONGITUDEDD',
-				   'parent' => 'LR'.kTOKEN_NAMESPACE_SEPARATOR.'SITE'.kTOKEN_NAMESPACE_SEPARATOR.'COORD-LR',
+				   'parent' => implode( kTOKEN_NAMESPACE_SEPARATOR,
+				   						array( KLR_SITE, 'COORD-LR' ) ),
 				   'syn' => '4.7.2bis',
 				   'type' => array( kTYPE_FLOAT, kTYPE_CARD_REQUIRED ),
 				   'label' => "Longitude of LR site",
 				   'descr' => "Longitude expressed in decimal degrees.",
 				   'examp' => array( 'the same longitude of Turin_Mole Antonelliana reported above is coded as 7.693154°', 'the same longitude of Madrid reported above is coded as -3.714277°', 'the same longitude of Quito reported above is coded as -78.505386°' ) ),
 			array( 'code' => 'LRSEPSGCODE',
-				   'parent' => 'LR'.kTOKEN_NAMESPACE_SEPARATOR.'SITE'.kTOKEN_NAMESPACE_SEPARATOR.'COORD-LR',
+				   'parent' => implode( kTOKEN_NAMESPACE_SEPARATOR,
+				   						array( KLR_SITE, 'COORD-LR' ) ),
 				   'syn' => '4.7.3',
 				   'type' => kTYPE_STRING,
 				   'label' => "Geodetic datum",
 				   'descr' => "The geodetic datum or spatial reference system upon which the coordinates given in decimal latitude and decimal longitude are based. If not known, use ‘not recorded’, when not known the default WGS 1984 Datum will be used.",
 				   'examp' => array( 'WGS84 (for World Geodetic System 1984 – EPSG 4326)' ) ),
 			array( 'code' => 'LRSGPS',
-				   'parent' => 'LR'.kTOKEN_NAMESPACE_SEPARATOR.'SITE'.kTOKEN_NAMESPACE_SEPARATOR.'COORD-LR',
+				   'parent' => implode( kTOKEN_NAMESPACE_SEPARATOR,
+				   						array( KLR_SITE, 'COORD-LR' ) ),
 				   'syn' => '4.7.4',
 				   'type' => kTYPE_ENUM,
 				   'label' => "Geographic data recording system",
 				   'descr' => "Data recorded by GPS: Yes or No.",
 				   'examp' => array( '10', '20' ) ),
 			array( 'code' => 'LRSRADIALED',
-				   'parent' => 'LR'.kTOKEN_NAMESPACE_SEPARATOR.'SITE'.kTOKEN_NAMESPACE_SEPARATOR.'COORD-LR',
+				   'parent' => implode( kTOKEN_NAMESPACE_SEPARATOR,
+				   						array( KLR_SITE, 'COORD-LR' ) ),
 				   'syn' => '4.7.5',
 				   'type' => kTYPE_INT32,
 				   'label' => "Maximum error distance",
 				   'descr' => "To be compiled if the field GPS is ‘No’. The upper limit of the distance (in meters) from the given latitude and longitude describing a circle within which the whole of the described locality must lie.",
 				   'examp' => array( '1000', '100000' ) ),
 			array( 'code' => 'LRSELEVATION',
-				   'parent' => 'LR'.kTOKEN_NAMESPACE_SEPARATOR.'SITE',
+				   'parent' => KLR_SITE,
 				   'syn' => '4.8',
 				   'type' => array( kTYPE_INT32, kTYPE_CARD_REQUIRED ),
 				   'label' => "Elevation of LR site",
@@ -708,55 +736,49 @@ require_once( 'LandracesPassport.inc.php' );
 		foreach( $params as $param )
 		{
 			//
-			// Set global identifier.
+			// Get category.
 			//
-			$id = 'LR'.kTOKEN_NAMESPACE_SEPARATOR.$param[ 'code' ];
-			$category = $_SESSION[ 'NODES' ][ $param[ 'parent' ] ];
+			$category
+				= $_SESSION[ kSESSION_ONTOLOGY ]->ResolveNode(
+					$_SESSION[ kSESSION_ONTOLOGY ]->ResolveTerm(
+						$param[ 'parent' ],
+						NULL,
+						TRUE ),
+					TRUE )[ 0 ]	;
 			
 			//
 			// Relate to category.
 			//
 			$_SESSION[ kSESSION_ONTOLOGY ]->SubclassOf(
-				//
-				// Create node.
-				//
-				$_SESSION[ 'NODES' ][ $id ]
-					= $_SESSION[ kSESSION_ONTOLOGY ]->NewScaleNode(
-						$_SESSION[ 'TERMS' ][ $id ]
-							//
-							// Create term.
-							//
+				$node
+					= $_SESSION[ kSESSION_ONTOLOGY ]->NewNode(
+						$term
 							= $_SESSION[ kSESSION_ONTOLOGY ]->NewTerm(
 								$param[ 'code' ],		// Local identifier.
 								$namespace,				// Namespace.
 								$param[ 'label' ],		// Label or name.
 								$param[ 'descr' ],		// Description or definition.
 								kDEFAULT_LANGUAGE,		// Language.
-								array( kTAG_SYNONYMS	// Additional attributes.
-											=> array( $param[ 'code' ], $param[ 'syn' ] ),
-										kTOKEN_NAMESPACE_SEPARATOR.kONTOLOGY_DEFAULT_EXAMPLES
-											=> $param[ 'examp' ] ) ),
+								// Additional attributes.
+								array( kTAG_SYNONYMS => array( $param[ 'code' ], $param[ 'syn' ] ),
+									   kTAG_EXAMPLES => $param[ 'examp' ] ) ),
 						$param[ 'type' ] ),				// Node data type.
-				$category );							// Object vertex node.
+				$category );
 			
 			//
 			// Create tag.
 			//
-			$_SESSION[ 'TAGS' ][ $id ] = NULL;
-			$_SESSION[ kSESSION_ONTOLOGY ]->AddToTag(
-				$_SESSION[ 'TAGS' ][ $id ], $_SESSION[ 'NODES' ][ $id ] );
-			$_SESSION[ kSESSION_ONTOLOGY ]->AddToTag(
-				$_SESSION[ 'TAGS' ][ $id ], TRUE );
+			$tag = NULL;
+			$_SESSION[ kSESSION_ONTOLOGY ]->AddToTag( $tag, $node );
+			$_SESSION[ kSESSION_ONTOLOGY ]->AddToTag( $tag, TRUE );
 			
 			//
 			// Inform.
 			//
 			if( kOPTION_VERBOSE )
-				echo( "    - $id ["
-					 .$_SESSION[ 'NODES' ][ $id ]
-					 ."] ("
-					 .$_SESSION[ 'TAGS' ][ $id ][ kOFFSET_NID ]
-					 .")\n" );
+				echo( "    - ".$term->GID()." ["
+							  .$node[ kOFFSET_NID ]."] ("
+							  .$tag[ kOFFSET_NID ].")\n" );
 		}
 
 		//
@@ -790,25 +812,32 @@ require_once( 'LandracesPassport.inc.php' );
 		foreach( $params as $param )
 		{
 			//
-			// Set global identifier.
+			// Get namespace.
 			//
-			$namespace = $_SESSION[ 'TERMS' ][ $param[ 'parent' ] ];
-			$trait = $_SESSION[ 'NODES' ][ $param[ 'parent' ] ];
-			$id = $param[ 'parent' ].kTOKEN_NAMESPACE_SEPARATOR.$param[ 'code' ];
+			$namespace
+				= $_SESSION[ kSESSION_ONTOLOGY ]->ResolveTerm(
+					$param[ 'parent' ],
+					NULL,
+					TRUE );
 			
 			//
-			// Relate to root.
+			// Get trait.
+			//
+			$trait
+				= $_SESSION[ kSESSION_ONTOLOGY ]->ResolveNode(
+					$_SESSION[ kSESSION_ONTOLOGY ]->ResolveTerm(
+						$namespace,
+						NULL,
+						TRUE ),
+					TRUE )[ 0 ]	;
+			
+			//
+			// Relate to trait.
 			//
 			$_SESSION[ kSESSION_ONTOLOGY ]->EnumOf(
-				//
-				// Create node.
-				//
-				$_SESSION[ 'NODES' ][ $id ]
-					= $_SESSION[ kSESSION_ONTOLOGY ]->NewEnumerationNode(
-						//
-						// Create term.
-						//
-						$_SESSION[ 'TERMS' ][ $id ]
+				$node
+					= $_SESSION[ kSESSION_ONTOLOGY ]->NewNode(
+						$term
 							= $_SESSION[ kSESSION_ONTOLOGY ]->NewTerm(
 								$param[ 'code' ],		// Local identifier.
 								$namespace,				// Namespace.
@@ -821,7 +850,7 @@ require_once( 'LandracesPassport.inc.php' );
 			// Inform.
 			//
 			if( kOPTION_VERBOSE )
-				echo( "    - $id [".$_SESSION[ 'NODES' ][ $id ]."]\n" );
+				echo( "    - ".$term->GID()." [".$node[ kOFFSET_NID ]."]\n" );
 		}
 
 	} // LoadLandraceSiteTraits.
