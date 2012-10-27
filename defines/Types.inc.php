@@ -213,9 +213,16 @@ define( "kKIND_NODE_METHOD",					':METHOD' );
 define( "kKIND_NODE_SCALE",						':SCALE' );
 
 /**
+ * Enumeration node.
+ *
+ * This tag identifies an enumeration node kind.
+ */
+define( "kKIND_NODE_ENUMERATION",				':ENUMERATION' );
+
+/**
  * Instance node.
  *
- * This tag identifies an an instance node kind.
+ * This tag identifies an instance node kind.
  */
 define( "kKIND_NODE_INSTANCE",					':INSTANCE' );
 

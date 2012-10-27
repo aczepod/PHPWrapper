@@ -100,8 +100,6 @@ try
 	//
 	ISODecodePOFiles();
 	ISOParseXMLFiles();
-echo( "\nTime elapsed: ".(time() - $start)."\n" );
-exit;
 	
 	echo( "  • Loading landraces passport ontology.\n" );
 	
@@ -110,6 +108,8 @@ exit;
 	//
 	LoadLandraceOntology();
 	LoadLandraceCategories();
+echo( "\nTime elapsed: ".(time() - $start)."\n" );
+exit;
 	LoadLandraceInventoryTraits();
 	LoadLandraceTaxonomyTraits();
 	LoadLandraceIdentificationTraits();

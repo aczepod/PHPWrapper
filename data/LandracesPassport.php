@@ -18,6 +18,11 @@
  *																						*
  *======================================================================================*/
 
+//
+// Local includes.
+//
+require_once( 'LandracesPassport.inc.php' );
+
 		
 
 /*=======================================================================================
@@ -42,49 +47,27 @@
 		//
 		// Create default ontology.
 		//
-		$code = 'LR';
-		$id = $code;
-		$_SESSION[ 'NODES' ][ $id ]
-			= $_SESSION[ kSESSION_ONTOLOGY ]->NewRootNode(
-				$_SESSION[ 'TERMS' ][ $id ]
-					= $_SESSION[ kSESSION_ONTOLOGY ]->NewTerm(
-						$code,
+		$node = $_SESSION[ kSESSION_ONTOLOGY ]->NewRootNode(
+			$term = $_SESSION[ kSESSION_ONTOLOGY ]->NewTerm(
+						kLR_ROOT,
 						NULL,
 						"DESCRIPTORS FOR WEB-ENABLED NATIONAL IN SITU LANDRACE INVENTORIES",
 						"Descriptors For Web-Enabled National In Situ Landrace (LR) Inventories",
 						kDEFAULT_LANGUAGE,
-						array( kTAG_SYNONYMS => array( $code ),
-							   $_SESSION[ 'TAGS' ]
-							   			[ kTOKEN_NAMESPACE_SEPARATOR.kONTOLOGY_DEFAULT_AUTHORS ]
-							   			[ kOFFSET_NID ]
-								=>	array( 'V. Negri', 'N. Maxted', 'R. Torricelli', 'M. Heinonen', 'M. Vetelainen', 'S. Dias' ),
-							   $_SESSION[ 'TAGS' ]
-							   			[ kTOKEN_NAMESPACE_SEPARATOR.kONTOLOGY_DEFAULT_NOTES ]
-							   			[ kOFFSET_NID ]
-								=>	"Landraces are part of agro-biodiversity in urgent need of conservation. A prerequisite of any active conservation is some form of inventory of what is conserved.\n\n"
-								   ."In this context, the EC Framework 7 PGR Secure project is aimed to provide help in generating National Landrace Inventories in European countries and so to begin the process of creating a European Landrace Inventory pivoted on the National Inventories.\n\n"
-								   ."A European LR Inventory can only be based on National Inventories considered that the responsibility to conserve and sustainably use landrace diversity (as well as any other biodiversity component) lies with individual Nations and that any concerted action will be implemented at national level, even when driven by policy at European level.\n\n"
-								   ."This draft descriptor list was worked out to facilitate the development of National Inventories of landraces that are still maintained in situ (i.e. on farm or in garden).\n\n"
-								   ."It was drafted to record different types of information that were discussed at the “Crop Wild Relative and Landrace Conservation Training Workshop” held in Palanga Lithuania, 7-9 September 2011 by the in situ National Inventory Focal Points, the ECPGR Documentation and Information Network members and the PGR Secure team working on landraces.\n\n"
-								   ."However, it also takes into account the contribution that the ECPGR On-farm Conservation and Management Working Group of the In Situ and On-Farm Conservation Network gave through years to the definition of descriptors for extant landraces (see draft descriptor list downloadable from http://www.ecpgr.cgiar.org/networks/in_situ_and_on_farm/on_farm_wg.html).\n\n"
-								   ."The draft descriptor list includes fields related to the Inventory, taxon, landrace, site and farmer identification, the landrace status, characteristics and use and finally fields concerning conservation and monitoring actions eventually taken in favour of the landrace diversity maintenance.",
-							   $_SESSION[ 'TAGS' ]
-							   			[ kTOKEN_NAMESPACE_SEPARATOR.kONTOLOGY_DEFAULT_ACKNOWLEDGMENTS ]
-							   			[ kOFFSET_NID ]
-								=>	"Thanks are due to Adriana Alercia (Bioversity International, Rome), Theo van Hintum (Centre for Genetic Resources _ Wageningen University and Research Centre, the Netherlands) and Lorenzo Maggioni (ECPGR Secretariat, Rome) for helpful suggestions and comments.",
-							   $_SESSION[ 'TAGS' ]
-							   			[ kTOKEN_NAMESPACE_SEPARATOR.kONTOLOGY_DEFAULT_BIBLIOGRAPHY ]
-							   			[ kOFFSET_NID ]
-								=>	"Bioversity and The Christensen Fund, 2009. Descriptors for farmer’s knowledge of plants. Bioversity International, Rome, Italy and The Christensen Fund, Palo Alto, California, USA."
-							)
+						array( kTAG_SYNONYMS => array( kLR_ROOT ),
+							   kTAG_AUTHORS => array( 'V. Negri', 'N. Maxted', 'R. Torricelli', 'M. Heinonen', 'M. Vetelainen', 'S. Dias' ),
+							   kTAG_NOTES => "Landraces are part of agro-biodiversity in urgent need of conservation. A prerequisite of any active conservation is some form of inventory of what is conserved.\n\nIn this context, the EC Framework 7 PGR Secure project is aimed to provide help in generating National Landrace Inventories in European countries and so to begin the process of creating a European Landrace Inventory pivoted on the National Inventories.\n\nA European LR Inventory can only be based on National Inventories considered that the responsibility to conserve and sustainably use landrace diversity (as well as any other biodiversity component) lies with individual Nations and that any concerted action will be implemented at national level, even when driven by policy at European level.\n\nThis draft descriptor list was worked out to facilitate the development of National Inventories of landraces that are still maintained in situ (i.e. on farm or in garden).\n\nIt was drafted to record different types of information that were discussed at the “Crop Wild Relative and Landrace Conservation Training Workshop” held in Palanga Lithuania, 7-9 September 2011 by the in situ National Inventory Focal Points, the ECPGR Documentation and Information Network members and the PGR Secure team working on landraces.\n\nHowever, it also takes into account the contribution that the ECPGR On-farm Conservation and Management Working Group of the In Situ and On-Farm Conservation Network gave through years to the definition of descriptors for extant landraces (see draft descriptor list downloadable from http://www.ecpgr.cgiar.org/networks/in_situ_and_on_farm/on_farm_wg.html).\n\nThe draft descriptor list includes fields related to the Inventory, taxon, landrace, site and farmer identification, the landrace status, characteristics and use and finally fields concerning conservation and monitoring actions eventually taken in favour of the landrace diversity maintenance.",
+							   kTAG_ACKNOWLEDGMENTS => "Thanks are due to Adriana Alercia (Bioversity International, Rome), Theo van Hintum (Centre for Genetic Resources _ Wageningen University and Research Centre, the Netherlands) and Lorenzo Maggioni (ECPGR Secretariat, Rome) for helpful suggestions and comments.",
+							   kTAG_BIBLIOGRAPHY => "Bioversity and The Christensen Fund, 2009. Descriptors for farmer’s knowledge of plants. Bioversity International, Rome, Italy and The Christensen Fund, Palo Alto, California, USA."
 						)
-					);
+					)
+				);
 
 		//
 		// Inform.
 		//
 		if( kOPTION_VERBOSE )
-			echo( "    - $id [".$_SESSION[ 'NODES' ][ $id ]."]\n" );
+			echo( "    - ".$term->GID()." [".$node[ kOFFSET_NID ]."]\n" );
 
 	} // LoadLandraceOntology.
 
@@ -101,40 +84,50 @@
 	function LoadLandraceCategories()
 	{
 		//
+		// Get namespace.
+		//
+		$root
+			= $_SESSION[ kSESSION_ONTOLOGY ]->ResolveNode(
+				$namespace
+					= $_SESSION[ kSESSION_ONTOLOGY ]->ResolveTerm(
+						kLR_ROOT,
+						NULL,
+						TRUE ),
+				TRUE )[ 0 ]	;
+		
+		//
 		// Init top level storage.
 		//
-		$namespace = $_SESSION[ 'TERMS' ][ 'LR' ];
-		$root = $_SESSION[ 'NODES' ][ 'LR' ];
 		$params = array(
-			array( 'code' => 'INVENTORY',
+			array( 'code' => substr( KLR_INVENTORY, 4 ),
 				   'syn' => '1',
 				   'label' => "INVENTORY IDENTIFICATION",
 				   'descr' => "Descriptors identifying the inventory and origin of the landrace or population." ),
-			array( 'code' => 'TAXONOMY',
+			array( 'code' => substr( KLR_TAXONOMY, 4 ),
 				   'syn' => '2',
 				   'label' => "TAXON IDENTIFICATION",
 				   'descr' => "Descriptors identifying the scientific nomenclature of the landrace or population." ),
-			array( 'code' => 'IDENTIFICATION',
+			array( 'code' => substr( KLR_IDENTIFICATION, 4 ),
 				   'syn' => '3',
 				   'label' => "LANDRACE/POPULATION IDENTIFICATION",
 				   'descr' => "Descriptors identifying the specific landrace or population." ),
-			array( 'code' => 'SITE',
+			array( 'code' => substr( KLR_SITE, 4 ),
 				   'syn' => '4',
 				   'label' => "SITE/LOCATION IDENTIFICATION",
 				   'descr' => "Descriptors identifying the location of the landrace or population." ),
-			array( 'code' => 'MAINTAINER',
+			array( 'code' => substr( KLR_MAINTAINER, 4 ),
 				   'syn' => '5',
 				   'label' => "THE FARMER (I.E. THE MAINTAINER)",
 				   'descr' => "Descriptors identifying the maintainer of the landrace or population." ),
-			array( 'code' => 'LANDRACE',
+			array( 'code' => substr( KLR_LANDRACE, 4 ),
 				   'syn' => '6',
 				   'label' => "THE LANDRACE",
 				   'descr' => "Descriptors describing the landrace." ),
-			array( 'code' => 'MONITOR',
+			array( 'code' => substr( KLR_MONITOR, 4 ),
 				   'syn' => '7',
 				   'label' => "CONSERVATION AND MONITORING",
 				   'descr' => "Descriptors covering conservation and maintenance of the landrace or population." ),
-			array( 'code' => 'REMARKS',
+			array( 'code' => substr( KLR_REMARKS, 4 ),
 				   'syn' => '8',
 				   'label' => "REMARKS",
 				   'descr' => "Descriptors collecting comments on the landrace or population." )
@@ -146,46 +139,50 @@
 		foreach( $params as $param )
 		{
 			//
-			// Set global identifier.
-			//
-			$id = 'LR'.kTOKEN_NAMESPACE_SEPARATOR.$param[ 'code' ];
-			
-			//
 			// Relate to root.
 			//
 			$_SESSION[ kSESSION_ONTOLOGY ]->SubclassOf(
-				//
-				// Create node.
-				//
-				$_SESSION[ 'NODES' ][ $id ]
+				$node
 					= $_SESSION[ kSESSION_ONTOLOGY ]->NewNode(
-						//
-						// Create term.
-						//
-						$_SESSION[ 'TERMS' ][ $id ]
+						$term
 							= $_SESSION[ kSESSION_ONTOLOGY ]->NewTerm(
 								$param[ 'code' ],		// Local identifier.
 								$namespace,				// Namespace.
 								$param[ 'label' ],		// Label or name.
 								$param[ 'descr' ],		// Description or definition.
 								kDEFAULT_LANGUAGE,		// Language.
-								array( kTAG_SYNONYMS	// Additional attributes.
-										=> array( $param[ 'code' ], $param[ 'syn' ] ) ) ) ),
+								// Additional attributes.
+								array( kTAG_SYNONYMS => array( $param[ 'code' ], $param[ 'syn' ] )
+							)
+						)
+					),
 				$root );
+			
+			//
+			// Save site node.
+			//
+			if( $param[ 'code' ] == substr( KLR_SITE, 4 ) )
+			{
+				$save_term = $term;
+				$save_node = $node;
+			}
 	
 			//
 			// Inform.
 			//
 			if( kOPTION_VERBOSE )
-				echo( "    - $id [".$_SESSION[ 'NODES' ][ $id ]."]\n" );
+				echo( "    - ".$term->GID()." [".$node[ kOFFSET_NID ]."]\n" );
 		}
 
 		//
-		// Init site category storage.
+		// Get site category.
 		//
-		$category = 'LR'.kTOKEN_NAMESPACE_SEPARATOR.'SITE';
-		$namespace = $_SESSION[ 'TERMS' ][ $category ];
-		$root = $_SESSION[ 'NODES' ][ $category ];
+		$root = $save_node;
+		$namespace = $save_term;
+
+		//
+		// Create site subcategories.
+		//
 		$params = array(
 			array( 'code' => 'COORD-FARM',
 				   'syn' => '4.5',
@@ -202,39 +199,28 @@
 		//
 		foreach( $params as $param )
 		{
-			//
-			// Set global identifier.
-			//
-			$id = $category.kTOKEN_NAMESPACE_SEPARATOR.$param[ 'code' ];
-			
-			//
-			// Relate to root.
-			//
 			$_SESSION[ kSESSION_ONTOLOGY ]->SubclassOf(
-				//
-				// Create node.
-				//
-				$_SESSION[ 'NODES' ][ $id ]
+				$node
 					= $_SESSION[ kSESSION_ONTOLOGY ]->NewNode(
-						//
-						// Create term.
-						//
-						$_SESSION[ 'TERMS' ][ $id ]
+						$term
 							= $_SESSION[ kSESSION_ONTOLOGY ]->NewTerm(
 								$param[ 'code' ],		// Local identifier.
 								$namespace,				// Namespace.
 								$param[ 'label' ],		// Label or name.
 								$param[ 'descr' ],		// Description or definition.
 								kDEFAULT_LANGUAGE,		// Language.
-								array( kTAG_SYNONYMS	// Additional attributes.
-										=> array( $param[ 'code' ], $param[ 'syn' ] ) ) ) ),
+								// Additional attributes.
+								array( kTAG_SYNONYMS => array( $param[ 'code' ], $param[ 'syn' ] )
+							)
+						)
+					),
 				$root );
 	
 			//
 			// Inform.
 			//
 			if( kOPTION_VERBOSE )
-				echo( "    - $id [".$_SESSION[ 'NODES' ][ $id ]."]\n" );
+				echo( "    - ".$term->GID()." [".$node[ kOFFSET_NID ]."]\n" );
 		}
 
 	} // LoadLandraceCategories.

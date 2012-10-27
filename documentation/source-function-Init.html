@@ -7,7 +7,7 @@
 
 	<title>File LoadOntologies.php | MyWrapper Reference Documentation</title>
 
-	<script type="text/javascript" src="resources/combined.js?3994123307"></script>
+	<script type="text/javascript" src="resources/combined.js?368249000"></script>
 	<script type="text/javascript" src="elementlist.js?2871210445"></script>
 	<link rel="stylesheet" type="text/css" media="all" href="resources/style.css?3505392360" />
 
@@ -199,36 +199,36 @@
 </span><span id="80" class="l"><a class="l" href="#80"> 80: </a>    <span class="php-comment">// Initialise connections.</span>
 </span><span id="81" class="l"><a class="l" href="#81"> 81: </a>    <span class="php-comment">//</span>
 </span><span id="82" class="l"><a class="l" href="#82"> 82: </a>    Init();
-</span><span id="83" class="l"><a class="l" href="#83"> 83: </a>    
-</span><span id="84" class="l"><a class="l" href="#84"> 84: </a>    <span class="php-keyword1">echo</span>( <span class="php-quote">&quot;  • Loading ISO standards.\n&quot;</span> );
-</span><span id="85" class="l"><a class="l" href="#85"> 85: </a>    
-</span><span id="86" class="l"><a class="l" href="#86"> 86: </a>    <span class="php-comment">//</span>
-</span><span id="87" class="l"><a class="l" href="#87"> 87: </a>    <span class="php-comment">// Load ISO standards.</span>
-</span><span id="88" class="l"><a class="l" href="#88"> 88: </a>    <span class="php-comment">//</span>
-</span><span id="89" class="l"><a class="l" href="#89"> 89: </a>    LoadISOOntologies();
-</span><span id="90" class="l"><a class="l" href="#90"> 90: </a>    LoadISOStandards();
-</span><span id="91" class="l"><a class="l" href="#91"> 91: </a>    LoadISO639Categories();
-</span><span id="92" class="l"><a class="l" href="#92"> 92: </a>    LoadISO639Enums();
-</span><span id="93" class="l"><a class="l" href="#93"> 93: </a>    LoadISO3166Categories();
-</span><span id="94" class="l"><a class="l" href="#94"> 94: </a>    LoadISO4217Categories();
-</span><span id="95" class="l"><a class="l" href="#95"> 95: </a>    
-</span><span id="96" class="l"><a class="l" href="#96"> 96: </a>    <span class="php-keyword1">echo</span>( <span class="php-quote">&quot;  • Loading ISO codes.\n&quot;</span> );
-</span><span id="97" class="l"><a class="l" href="#97"> 97: </a>    
-</span><span id="98" class="l"><a class="l" href="#98"> 98: </a>    <span class="php-comment">//</span>
-</span><span id="99" class="l"><a class="l" href="#99"> 99: </a>    <span class="php-comment">// Load ISO codes.</span>
-</span><span id="100" class="l"><a class="l" href="#100">100: </a>    <span class="php-comment">//</span>
-</span><span id="101" class="l"><a class="l" href="#101">101: </a>    ISODecodePOFiles();
-</span><span id="102" class="l"><a class="l" href="#102">102: </a>    ISOParseXMLFiles();
-</span><span id="103" class="l"><a class="l" href="#103">103: </a><span class="php-keyword1">echo</span>( <span class="php-quote">&quot;\nTime elapsed: &quot;</span>.(<span class="php-keyword2">time</span>() - <span class="php-var">$start</span>).<span class="php-quote">&quot;\n&quot;</span> );
-</span><span id="104" class="l"><a class="l" href="#104">104: </a><span class="php-keyword1">exit</span>;
+</span><span id="83" class="l"><a class="l" href="#83"> 83: </a><span class="php-comment">/*  
+</span></span><span id="84" class="l"><a class="l" href="#84"> 84: </a><span class="php-comment">    echo( &quot;  • Loading ISO standards.\n&quot; );
+</span></span><span id="85" class="l"><a class="l" href="#85"> 85: </a><span class="php-comment">    
+</span></span><span id="86" class="l"><a class="l" href="#86"> 86: </a><span class="php-comment">    //
+</span></span><span id="87" class="l"><a class="l" href="#87"> 87: </a><span class="php-comment">    // Load ISO standards.
+</span></span><span id="88" class="l"><a class="l" href="#88"> 88: </a><span class="php-comment">    //
+</span></span><span id="89" class="l"><a class="l" href="#89"> 89: </a><span class="php-comment">    LoadISOOntologies();
+</span></span><span id="90" class="l"><a class="l" href="#90"> 90: </a><span class="php-comment">    LoadISOStandards();
+</span></span><span id="91" class="l"><a class="l" href="#91"> 91: </a><span class="php-comment">    LoadISO639Categories();
+</span></span><span id="92" class="l"><a class="l" href="#92"> 92: </a><span class="php-comment">    LoadISO639Enums();
+</span></span><span id="93" class="l"><a class="l" href="#93"> 93: </a><span class="php-comment">    LoadISO3166Categories();
+</span></span><span id="94" class="l"><a class="l" href="#94"> 94: </a><span class="php-comment">    LoadISO4217Categories();
+</span></span><span id="95" class="l"><a class="l" href="#95"> 95: </a><span class="php-comment">    
+</span></span><span id="96" class="l"><a class="l" href="#96"> 96: </a><span class="php-comment">    echo( &quot;  • Loading ISO codes.\n&quot; );
+</span></span><span id="97" class="l"><a class="l" href="#97"> 97: </a><span class="php-comment">    
+</span></span><span id="98" class="l"><a class="l" href="#98"> 98: </a><span class="php-comment">    //
+</span></span><span id="99" class="l"><a class="l" href="#99"> 99: </a><span class="php-comment">    // Load ISO codes.
+</span></span><span id="100" class="l"><a class="l" href="#100">100: </a><span class="php-comment">    //
+</span></span><span id="101" class="l"><a class="l" href="#101">101: </a><span class="php-comment">    ISODecodePOFiles();
+</span></span><span id="102" class="l"><a class="l" href="#102">102: </a><span class="php-comment">    ISOParseXMLFiles();
+</span></span><span id="103" class="l"><a class="l" href="#103">103: </a><span class="php-comment">*/</span>  
+</span><span id="104" class="l"><a class="l" href="#104">104: </a>    <span class="php-keyword1">echo</span>( <span class="php-quote">&quot;  • Loading landraces passport ontology.\n&quot;</span> );
 </span><span id="105" class="l"><a class="l" href="#105">105: </a>    
-</span><span id="106" class="l"><a class="l" href="#106">106: </a>    <span class="php-keyword1">echo</span>( <span class="php-quote">&quot;  • Loading landraces passport ontology.\n&quot;</span> );
-</span><span id="107" class="l"><a class="l" href="#107">107: </a>    
+</span><span id="106" class="l"><a class="l" href="#106">106: </a>    <span class="php-comment">//</span>
+</span><span id="107" class="l"><a class="l" href="#107">107: </a>    <span class="php-comment">// Load landrace passport ontology.</span>
 </span><span id="108" class="l"><a class="l" href="#108">108: </a>    <span class="php-comment">//</span>
-</span><span id="109" class="l"><a class="l" href="#109">109: </a>    <span class="php-comment">// Load landrace passport ontology.</span>
-</span><span id="110" class="l"><a class="l" href="#110">110: </a>    <span class="php-comment">//</span>
-</span><span id="111" class="l"><a class="l" href="#111">111: </a>    LoadLandraceOntology();
-</span><span id="112" class="l"><a class="l" href="#112">112: </a>    LoadLandraceCategories();
+</span><span id="109" class="l"><a class="l" href="#109">109: </a>    LoadLandraceOntology();
+</span><span id="110" class="l"><a class="l" href="#110">110: </a>    LoadLandraceCategories();
+</span><span id="111" class="l"><a class="l" href="#111">111: </a><span class="php-keyword1">echo</span>( <span class="php-quote">&quot;\nTime elapsed: &quot;</span>.(<span class="php-keyword2">time</span>() - <span class="php-var">$start</span>).<span class="php-quote">&quot;\n&quot;</span> );
+</span><span id="112" class="l"><a class="l" href="#112">112: </a><span class="php-keyword1">exit</span>;
 </span><span id="113" class="l"><a class="l" href="#113">113: </a>    LoadLandraceInventoryTraits();
 </span><span id="114" class="l"><a class="l" href="#114">114: </a>    LoadLandraceTaxonomyTraits();
 </span><span id="115" class="l"><a class="l" href="#115">115: </a>    LoadLandraceIdentificationTraits();

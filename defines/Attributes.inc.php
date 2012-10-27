@@ -108,6 +108,41 @@ define( "kOFFSET_LABEL",						':LABEL' );
  */
 define( "kOFFSET_DESCRIPTION",					':DESCR' );
 
+/**
+ * Authors.
+ *
+ * This tag is used as the offset for a list of authors.
+ */
+define( "kOFFSET_AUTHORS",						':AUTHORS' );
+
+/**
+ * Notes.
+ *
+ * This tag is used as the offset for generic notes.
+ */
+define( "kOFFSET_NOTES",						':NOTES' );
+
+/**
+ * Acknowledgments.
+ *
+ * This tag is used as the offset for generic acknowledgments.
+ */
+define( "kOFFSET_ACKNOWLEDGMENTS",				':ACKNOWLEDGMENTS' );
+
+/**
+ * Bibliography.
+ *
+ * This tag represents the local identifier of the default bibliography attribute term.
+ */
+define( "kOFFSET_BIBLIOGRAPHY",					':BIBLIOGRAPHY' );
+
+/**
+ * Examples.
+ *
+ * This tag represents the local identifier of the default examples attribute term.
+ */
+define( "kOFFSET_EXAMPLES",						':EXAMPLES' );
+
 /*=======================================================================================
  *	ONTOLOGY ATTRIBUTES																	*
  *======================================================================================*/

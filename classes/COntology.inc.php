@@ -19,6 +19,18 @@
  */
 
 /*=======================================================================================
+ *	GENERIC ATTRIBUTESß																	*
+ *======================================================================================*/
+
+/**
+ * Attributes.
+ *
+ * This tag identifies the root node for the generic attributes, it collects all generic
+ * attributes available to all other data dictionaries in this library.
+ */
+define( "kDDICT_ATTRIBUTES",					':DDICT-ATTR' );
+
+/*=======================================================================================
  *	DEFAULT ONTOLOGY OBJECT DATA STRUCTURES												*
  *======================================================================================*/
 

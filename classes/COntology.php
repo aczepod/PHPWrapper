@@ -282,6 +282,7 @@ class COntology extends CConnection
 			$this->_LoadNodeDataDictionary();
 			$this->_LoadEdgeDataDictionary();
 			$this->_LoadTagDataDictionary();
+			$this->_LoadAttributesDataDictionary();
 			
 			return;																	// ==>
 		
@@ -1126,7 +1127,7 @@ class COntology extends CConnection
 										$theLanguage = NULL, $doNew = FALSE )
 	{
 		return $this->NewNode( $theIdentifier,
-							   kKIND_NODE_INSTANCE, kTYPE_STRING,
+							   kKIND_NODE_ENUMERATION, kTYPE_STRING,
 							   $theNamespace,
 							   $theLabel, $theDescription,
 							   $theLanguage, $doNew );								// ==>
@@ -2640,7 +2641,10 @@ class COntology extends CConnection
 				   kOFFSET_DESCRIPTION => "This tag identifies a scale or measure node kind." ),
 			array( kOFFSET_LID => substr( kKIND_NODE_INSTANCE, 1 ),
 				   kOFFSET_LABEL => "Instance node",
-				   kOFFSET_DESCRIPTION => "This tag identifies an an instance node kind, it represents in general enumerated set elements." ),
+				   kOFFSET_DESCRIPTION => "This tag identifies an instance node kind, it represents a definition which is also its instance." ),
+			array( kOFFSET_LID => substr( kKIND_NODE_ENUMERATION, 1 ),
+				   kOFFSET_LABEL => "Enumeration node",
+				   kOFFSET_DESCRIPTION => "This tag identifies an enumerated value node kind, it represents an element of an enumerated set." ),
 			array( kOFFSET_LID => substr( kPREDICATE_SUBCLASS_OF, 1 ),
 				   kOFFSET_LABEL => "Subclass-of",
 				   kOFFSET_DESCRIPTION => "This tag identifies the SUBCLASS-OF predicate term local code, this predicate indicates that the subject of the relationship is a subclass of the object of the relationship, in other words, the subject is derived from the object." ),
@@ -2724,14 +2728,6 @@ class COntology extends CConnection
 				   kOFFSET_NAMESPACE => NULL,
 				   kOFFSET_LABEL => "Native unique identifier",
 				   kOFFSET_DESCRIPTION => "This tag identifies the attribute that contains the native unique identifier. This value is a full or hashed representation of the object's global unique identifier optimised specifically for the container in which the object will be stored." ),
-			array( kOFFSET_LID => substr( kOFFSET_LABEL, 1 ),
-				   kOFFSET_NAMESPACE => $ns,
-				   kOFFSET_LABEL => "Label",
-				   kOFFSET_DESCRIPTION => "This tag is used as the offset for the term's label, this attribute represents the term name or short description." ),
-			array( kOFFSET_LID => substr( kOFFSET_DESCRIPTION, 1 ),
-				   kOFFSET_NAMESPACE => $ns,
-				   kOFFSET_LABEL => "Description",
-				   kOFFSET_DESCRIPTION => "This tag is used as the offset for the term's description, this attribute represents the term description or definition." ),
 			array( kOFFSET_LID => substr( kOFFSET_GID, 1 ),
 				   kOFFSET_NAMESPACE => $ns,
 				   kOFFSET_LABEL => "Global unique identifier",
@@ -2800,6 +2796,34 @@ class COntology extends CConnection
 				   kOFFSET_NAMESPACE => $ns,
 				   kOFFSET_LABEL => "Edge references",
 				   kOFFSET_DESCRIPTION => "This tag identifies edge references, the attribute contains the list of identifiers of edges that reference the current node." ),
+			array( kOFFSET_LID => substr( kOFFSET_LABEL, 1 ),
+				   kOFFSET_NAMESPACE => $ns,
+				   kOFFSET_LABEL => "Label",
+				   kOFFSET_DESCRIPTION => "This tag is used as the offset for the term's label, this attribute represents the term name or short description." ),
+			array( kOFFSET_LID => substr( kOFFSET_DESCRIPTION, 1 ),
+				   kOFFSET_NAMESPACE => $ns,
+				   kOFFSET_LABEL => "Description",
+				   kOFFSET_DESCRIPTION => "This tag is used as the offset for the term's description, this attribute represents the term description or definition." ),
+			array( kOFFSET_LID => substr( kOFFSET_AUTHORS, 1 ),
+				   kOFFSET_NAMESPACE => $ns,
+				   kOFFSET_LABEL => "Authors",
+				   kOFFSET_DESCRIPTION => "List of authors." ),
+			array( kOFFSET_LID => substr( kOFFSET_NOTES, 1 ),
+				   kOFFSET_NAMESPACE => $ns,
+				   kOFFSET_LABEL => "Notes",
+				   kOFFSET_DESCRIPTION => "General notes." ),
+			array( kOFFSET_LID => substr( kOFFSET_ACKNOWLEDGMENTS, 1 ),
+				   kOFFSET_NAMESPACE => $ns,
+				   kOFFSET_LABEL => "Acknowledgments",
+				   kOFFSET_DESCRIPTION => "General acknowledgments." ),
+			array( kOFFSET_LID => substr( kOFFSET_BIBLIOGRAPHY, 1 ),
+				   kOFFSET_NAMESPACE => $ns,
+				   kOFFSET_LABEL => "Bibliography",
+				   kOFFSET_DESCRIPTION => "List of bibliographic references." ),
+			array( kOFFSET_LID => substr( kOFFSET_EXAMPLES, 1 ),
+				   kOFFSET_NAMESPACE => $ns,
+				   kOFFSET_LABEL => "Examples",
+				   kOFFSET_DESCRIPTION => "List of examples or templates." ),
 			array( kOFFSET_LID => substr( kOFFSET_LANGUAGE, 1 ),
 				   kOFFSET_NAMESPACE => $ns,
 				   kOFFSET_LABEL => "Language",
@@ -2850,6 +2874,9 @@ class COntology extends CConnection
 		// Load  definitions.
 		//
 		$terms = array(
+			array( kOFFSET_LID => substr( kDDICT_ATTRIBUTES, 1 ),
+				   kOFFSET_LABEL => "Generic attributes",
+				   kOFFSET_DESCRIPTION => "This tag identifies the root data dictionary node of the terms object data structure, it describes the default elements comprising the term objects in this library." ),
 			array( kOFFSET_LID => substr( kDDICT_TERM, 1 ),
 				   kOFFSET_LABEL => "Ontology term",
 				   kOFFSET_DESCRIPTION => "This tag identifies the root data dictionary node of the terms object data structure, it describes the default elements comprising the term objects in this library." ),
@@ -2977,7 +3004,8 @@ class COntology extends CConnection
 		// Load instance definitions.
 		//
 		$terms = array( kKIND_NODE_ROOT, kKIND_NODE_DDICT, kKIND_NODE_TRAIT,
-						kKIND_NODE_METHOD, kKIND_NODE_SCALE, kKIND_NODE_INSTANCE );
+						kKIND_NODE_METHOD, kKIND_NODE_SCALE, kKIND_NODE_ENUMERATION,
+						kKIND_NODE_INSTANCE );
 		
 		//
 		// Load instances.
@@ -3066,6 +3094,12 @@ class COntology extends CConnection
 	 */
 	protected function _LoadTermDataDictionary()
 	{
+		//
+		// Inform.
+		//
+		if( kOPTION_VERBOSE )
+			echo( "  • Loading Term data dictionary.\n" );
+
 		//
 		// Load namespace term.
 		//
@@ -3163,6 +3197,14 @@ class COntology extends CConnection
 			$tag = NULL;
 			$this->AddToTag( $tag, $parent_node );
 			$this->AddToTag( $tag, TRUE );
+			
+			//
+			// Inform.
+			//
+			if( kOPTION_VERBOSE )
+				echo( "    - ".$tmp->GID()." ["
+							  .$parent_node[ kOFFSET_NID ]."] ("
+							  .$tag[ kOFFSET_NID ].")\n" );
 
 			//
 			// Create subtag.
@@ -3189,11 +3231,12 @@ class COntology extends CConnection
 					//
 					$child_node
 						= $this->NewScaleNode(
-							$this->ResolveTerm(
-								$item[ kOFFSET_LID ],	// Local identifier.
-								$ns,					// Namespace object.
-								TRUE ),					// Raise exception on fail.
-							$item[ kOFFSET_TYPE ] );	// Data type.
+							$tmp
+								= $this->ResolveTerm(
+									$item[ kOFFSET_LID ],	// Local identifier.
+									$ns,					// Namespace object.
+									TRUE ),					// Raise exception on fail.
+							$item[ kOFFSET_TYPE ] );		// Data type.
 					if( is_array( $child_node ) )
 						$child_node = $child_node[ 0 ];
 					
@@ -3210,6 +3253,14 @@ class COntology extends CConnection
 					$this->AddToTag( $tag, $predicate );
 					$this->AddToTag( $tag, $child_node );
 					$this->AddToTag( $tag, TRUE );
+					
+					//
+					// Inform.
+					//
+					if( kOPTION_VERBOSE )
+						echo( "    - ".$tmp->GID()." ["
+									  .$child_node[ kOFFSET_NID ]."] ("
+									  .$tag[ kOFFSET_NID ].")\n" );
 				
 				} // Iterating substructure elements.
 			
@@ -3233,6 +3284,12 @@ class COntology extends CConnection
 	 */
 	protected function _LoadNodeDataDictionary()
 	{
+		//
+		// Inform.
+		//
+		if( kOPTION_VERBOSE )
+			echo( "  • Loading Node data dictionary.\n" );
+
 		//
 		// Load namespace term.
 		//
@@ -3318,7 +3375,16 @@ class COntology extends CConnection
 				$this->AddToTag( $tag, $parent_node );
 				$this->AddToTag( $tag, TRUE );
 			
-			} // New tag.
+			} if( is_array( $tag ) )
+				$tag = $tag[ 0 ];
+			
+			//
+			// Inform.
+			//
+			if( kOPTION_VERBOSE )
+				echo( "    - ".$tmp->GID()." ["
+							  .$parent_node[ kOFFSET_NID ]."] ("
+							  .$tag[ kOFFSET_NID ].")\n" );
 		
 			//
 			// Handle enumerations.
@@ -3386,6 +3452,12 @@ class COntology extends CConnection
 	 */
 	protected function _LoadEdgeDataDictionary()
 	{
+		//
+		// Inform.
+		//
+		if( kOPTION_VERBOSE )
+			echo( "  • Loading Edge data dictionary.\n" );
+
 		//
 		// Load namespace term.
 		//
@@ -3471,7 +3543,16 @@ class COntology extends CConnection
 				$this->AddToTag( $tag, $parent_node );
 				$this->AddToTag( $tag, TRUE );
 			
-			} // New tag.
+			} if( is_array( $tag ) )
+				$tag = $tag[ 0 ];
+			
+			//
+			// Inform.
+			//
+			if( kOPTION_VERBOSE )
+				echo( "    - ".$tmp->GID()." ["
+							  .$parent_node[ kOFFSET_NID ]."] ("
+							  .$tag[ kOFFSET_NID ].")\n" );
 		
 		} // Iterating first level terms.
 
@@ -3491,6 +3572,12 @@ class COntology extends CConnection
 	 */
 	protected function _LoadTagDataDictionary()
 	{
+		//
+		// Inform.
+		//
+		if( kOPTION_VERBOSE )
+			echo( "  • Loading Tag data dictionary.\n" );
+
 		//
 		// Load namespace term.
 		//
@@ -3572,11 +3659,136 @@ class COntology extends CConnection
 				$this->AddToTag( $tag, $parent_node );
 				$this->AddToTag( $tag, TRUE );
 			
-			} // New tag.
+			} if( is_array( $tag ) )
+				$tag = $tag[ 0 ];
+			
+			//
+			// Inform.
+			//
+			if( kOPTION_VERBOSE )
+				echo( "    - ".$tmp->GID()." ["
+							  .$parent_node[ kOFFSET_NID ]."] ("
+							  .$tag[ kOFFSET_NID ].")\n" );
 		
 		} // Iterating first level terms.
 
 	} // _LoadTagDataDictionary.
+
+	 
+	/*===================================================================================
+	 *	_LoadAttributesDataDictionary													*
+	 *==================================================================================*/
+
+	/**
+	 * <h4>Load attributes data dictionary</h4>
+	 *
+	 * This method will load the ontology default attributes data dictionary.
+	 *
+	 * @access protected
+	 */
+	protected function _LoadAttributesDataDictionary()
+	{
+		//
+		// Inform.
+		//
+		if( kOPTION_VERBOSE )
+			echo( "  • Loading generic attributes data dictionary.\n" );
+
+		//
+		// Load namespace term.
+		//
+		$ns = $this->ResolveTerm( '', NULL, TRUE );
+		
+		//
+		// Load predicate term.
+		//
+		$predicate
+			= $this->ResolveTerm(
+				substr( kPREDICATE_SUBCLASS_OF, 1 ),
+				$ns,
+				TRUE );
+		
+		//
+		// Load data dictionary root term.
+		//
+		$root_node
+			= $this->ResolveNode(
+				$this->ResolveTerm(
+					kDDICT_ATTRIBUTES, NULL, TRUE ),
+				TRUE )[ 0 ];
+
+		//
+		// Load  definitions.
+		//
+		$terms = array(
+			array( kOFFSET_LID => substr( kOFFSET_AUTHORS, 1 ),
+				   kOFFSET_GID => kOFFSET_AUTHORS,
+				   kOFFSET_NAMESPACE => $ns,
+				   kOFFSET_TYPE => array( kTYPE_STRING, kTYPE_CARD_ARRAY ) ),
+			array( kOFFSET_LID => substr( kOFFSET_NOTES, 1 ),
+				   kOFFSET_GID => kOFFSET_NOTES,
+				   kOFFSET_NAMESPACE => $ns,
+				   kOFFSET_TYPE => array( kTYPE_STRING, kTYPE_CARD_ARRAY ) ),
+			array( kOFFSET_LID => substr( kOFFSET_ACKNOWLEDGMENTS, 1 ),
+				   kOFFSET_GID => kOFFSET_ACKNOWLEDGMENTS,
+				   kOFFSET_NAMESPACE => $ns,
+				   kOFFSET_TYPE => kTYPE_STRING ),
+			array( kOFFSET_LID => substr( kOFFSET_BIBLIOGRAPHY, 1 ),
+				   kOFFSET_GID => kOFFSET_BIBLIOGRAPHY,
+				   kOFFSET_NAMESPACE => $ns,
+				   kOFFSET_TYPE => array( kTYPE_STRING, kTYPE_CARD_ARRAY ) ),
+			array( kOFFSET_LID => substr( kOFFSET_EXAMPLES, 1 ),
+				   kOFFSET_GID => kOFFSET_EXAMPLES,
+				   kOFFSET_NAMESPACE => $ns,
+				   kOFFSET_TYPE => array( kTYPE_STRING, kTYPE_CARD_ARRAY ) ) );
+		
+		//
+		// Iterate definitions.
+		//
+		foreach( $terms as $term )
+		{
+			//
+			// Create node and relate.
+			//
+			$this->SubclassOf(
+				$parent_node
+					= $this->NewScaleNode(
+						$tmp
+							= $this->ResolveTerm(
+								$term[ kOFFSET_LID ],			// Local identifier.
+								$term[ kOFFSET_NAMESPACE ],		// Namespace object.
+								TRUE ),							// Raise exception on fail.
+						$term[ kOFFSET_TYPE ],					// Data type.
+						NULL,									// Namespace.
+						NULL,									// Label.
+						NULL,									// Description.
+						NULL,									// Language.
+						TRUE ),									// New node flag.
+				$root_node );
+			
+			//
+			// Create tag.
+			//
+			$tag = $this->ResolveTag( $tmp );
+			if( $tag === NULL )
+			{
+				$this->AddToTag( $tag, $parent_node );
+				$this->AddToTag( $tag, TRUE );
+			
+			} if( is_array( $tag ) )
+				$tag = $tag[ 0 ];
+			
+			//
+			// Inform.
+			//
+			if( kOPTION_VERBOSE )
+				echo( "    - ".$tmp->GID()." ["
+							  .$parent_node[ kOFFSET_NID ]."] ("
+							  .$tag[ kOFFSET_NID ].")\n" );
+		
+		} // Iterating first level terms.
+
+	} // _LoadAttributesDataDictionary.
 
 	 
 

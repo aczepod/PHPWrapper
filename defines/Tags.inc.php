@@ -230,5 +230,44 @@ define( "kTAG_DESCRIPTION_LANGUAGE",			'8' );
  */
 define( "kTAG_DESCRIPTION_STRING",				'9' );
 
+/*=======================================================================================
+ *	GENERIC ATTRIBUTES																	*
+ *======================================================================================*/
+
+/**
+ * Authors.
+ *
+ * This tag is used as the offset for a list of authors.
+ */
+define( "kTAG_AUTHORS",							'25' );
+
+/**
+ * Notes.
+ *
+ * This tag is used as the offset for generic notes.
+ */
+define( "kTAG_NOTES",							'26' );
+
+/**
+ * Acknowledgments.
+ *
+ * This tag is used as the offset for generic acknowledgments.
+ */
+define( "kTAG_ACKNOWLEDGMENTS",					'27' );
+
+/**
+ * Bibliography.
+ *
+ * This tag represents the offset for a bibliography list.
+ */
+define( "kTAG_BIBLIOGRAPHY",					'28' );
+
+/**
+ * Examples.
+ *
+ * This tag represents the offset for a list of examples or templates.
+ */
+define( "kTAG_EXAMPLES",						'29' );
+
 
 ?>
