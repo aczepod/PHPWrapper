@@ -112,6 +112,10 @@ try
 	LoadLandraceTaxonomyTraits();
 	LoadLandraceIdentificationTraits();
 	LoadLandraceSiteTraits();
+	LoadLandraceMaintainerTraits();
+	LoadLandraceLandraceTraits();
+	LoadLandraceMonitoringTraits();
+	LoadLandraceRemarkTraits();
 
 	echo( "\nTime elapsed: ".(time() - $start)."\n" );
 }

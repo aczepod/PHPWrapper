@@ -126,11 +126,7 @@ require_once( 'LandracesPassport.inc.php' );
 			array( 'code' => substr( KLR_MONITOR, 3 ),
 				   'syn' => '7',
 				   'label' => "CONSERVATION AND MONITORING",
-				   'descr' => "Descriptors covering conservation and maintenance of the landrace or population." ),
-			array( 'code' => substr( KLR_REMARKS, 3 ),
-				   'syn' => '8',
-				   'label' => "REMARKS",
-				   'descr' => "Descriptors collecting comments on the landrace or population." )
+				   'descr' => "Descriptors covering conservation and maintenance of the landrace or population." )
 		);
 		
 		//
@@ -496,7 +492,7 @@ require_once( 'LandracesPassport.inc.php' );
 				   'examp' => array( '00010' ) ),
 			array( 'code' => 'LRNAME',
 				   'syn' => '3.3',
-				   'type' => kTYPE_STRING,
+				   'type' => array( kTYPE_STRING, kTYPE_CARD_REQUIRED ),
 				   'label' => "Landrace local names",
 				   'descr' => "Local name/s of the LR in the colloquial language of the farm. Free text.",
 				   'examp' => array( 'fagiolina, cornetti, fagiolino dall’occhio' ) ),
@@ -854,6 +850,1518 @@ require_once( 'LandracesPassport.inc.php' );
 		}
 
 	} // LoadLandraceSiteTraits.
+
+	 
+	/*===================================================================================
+	 *	LoadLandraceMaintainerTraits													*
+	 *==================================================================================*/
+
+	/**
+	 * <h4>Load landrace maintainer traits</h4>
+	 *
+	 * This method will create the landrace farmer or maintainer trait nodes and relate them
+	 * to their category.
+	 */
+	function LoadLandraceMaintainerTraits()
+	{
+		//
+		// Get namespace.
+		//
+		$namespace
+			= $_SESSION[ kSESSION_ONTOLOGY ]->ResolveTerm(
+				kLR_ROOT,
+				NULL,
+				TRUE );
+		
+		//
+		// Init local storage.
+		//
+		$params = array(
+			array( 'code' => 'FARMERID',
+				   'parent' => KLR_MAINTAINER,
+				   'syn' => '5.1',
+				   'type' => kTYPE_STRING,
+				   'label' => "Farmer identification number",
+				   'descr' => "Unique number identifier of the farmer who maintains the LR and provides information (Landrace maintainer unique ID to be held in database). It is assigned by the institute that is responsible at the national level for the production of the National LR in situ Inventory. This number should not be duplicated or reassigned to other unit. This number should be composed of the ‘National Inventory Code (NICODE 1.1.)’ + ’National Inventory Edition Number (1.2.NIENUMB)’ + ’Landrace number (3.2. LRNUMB)’.",
+				   'examp' => array( 'NLD001/201200010' ) ),
+			array( 'code' => 'FARMERYB',
+				   'parent' => KLR_MAINTAINER,
+				   'syn' => '5.2',
+				   'type' => kTYPE_STRING,
+				   'label' => "Farmer year of birth",
+				   'descr' => "Recorded as YYYY. If not certain, indicate that this is an estimate in REMARKS.",
+				   'examp' => array( '1957' ) ),
+			array( 'code' => 'FARMHT',
+				   'parent' => KLR_MAINTAINER,
+				   'syn' => '5.3',
+				   'type' => kTYPE_ENUM_SET,
+				   'label' => "Holding/tenancy of the farm/estate",
+				   'descr' => "Multiple choices are allowed since the farm can be made of several types of holdings. Multiple choices are allowed separated by a semicolon (;) without space.",
+				   'examp' => array( '10;30' ) ),
+			array( 'code' => 'FIR',
+				   'parent' => KLR_MAINTAINER,
+				   'syn' => '5.4',
+				   'type' => kTYPE_ENUM,
+				   'label' => "Farmer identification restrictions",
+				   'descr' => "Restriction in making the above mentioned (i.e. 5.2. and 5.3.) farmer data publicly available: ‘Yes’ or ‘No’. If ‘No’ only FARMERID (5.1) will be public.",
+				   'examp' => array( '10' ) ) );
+		
+		//
+		// Load data.
+		//
+		foreach( $params as $param )
+		{
+			//
+			// Get category.
+			//
+			$category
+				= $_SESSION[ kSESSION_ONTOLOGY ]->ResolveNode(
+					$_SESSION[ kSESSION_ONTOLOGY ]->ResolveTerm(
+						$param[ 'parent' ],
+						NULL,
+						TRUE ),
+					TRUE )[ 0 ]	;
+			
+			//
+			// Relate to category.
+			//
+			$_SESSION[ kSESSION_ONTOLOGY ]->SubclassOf(
+				$node
+					= $_SESSION[ kSESSION_ONTOLOGY ]->NewNode(
+						$term
+							= $_SESSION[ kSESSION_ONTOLOGY ]->NewTerm(
+								$param[ 'code' ],		// Local identifier.
+								$namespace,				// Namespace.
+								$param[ 'label' ],		// Label or name.
+								$param[ 'descr' ],		// Description or definition.
+								kDEFAULT_LANGUAGE,		// Language.
+								// Additional attributes.
+								array( kTAG_SYNONYMS => array( $param[ 'code' ], $param[ 'syn' ] ),
+									   kTAG_EXAMPLES => $param[ 'examp' ] ) ),
+						$param[ 'type' ] ),				// Node data type.
+				$category );
+			
+			//
+			// Create tag.
+			//
+			$tag = NULL;
+			$_SESSION[ kSESSION_ONTOLOGY ]->AddToTag( $tag, $node );
+			$_SESSION[ kSESSION_ONTOLOGY ]->AddToTag( $tag, TRUE );
+			
+			//
+			// Inform.
+			//
+			if( kOPTION_VERBOSE )
+				echo( "    - ".$term->GID()." ["
+							  .$node[ kOFFSET_NID ]."] ("
+							  .$tag[ kOFFSET_NID ].")\n" );
+		}
+
+		//
+		// Init site enumerations storage.
+		//
+		$params = array(
+			array( 'code' => '10',
+				   'parent' => 'LR'.kTOKEN_NAMESPACE_SEPARATOR.'FARMHT',
+				   'syn' => '10',
+				   'label' => "Owner",
+				   'descr' => "Owner." ),
+			array( 'code' => '20',
+				   'parent' => 'LR'.kTOKEN_NAMESPACE_SEPARATOR.'FARMHT',
+				   'syn' => '20',
+				   'label' => "Tenant",
+				   'descr' => "Tenant." ),
+			array( 'code' => '30',
+				   'parent' => 'LR'.kTOKEN_NAMESPACE_SEPARATOR.'FARMHT',
+				   'syn' => '30',
+				   'label' => "Life tenant",
+				   'descr' => "Life tenant." ),
+			array( 'code' => '40',
+				   'parent' => 'LR'.kTOKEN_NAMESPACE_SEPARATOR.'FARMHT',
+				   'syn' => '40',
+				   'label' => "Cultivating public land",
+				   'descr' => "Cultivating public land." ),
+			array( 'code' => '99',
+				   'parent' => 'LR'.kTOKEN_NAMESPACE_SEPARATOR.'FARMHT',
+				   'syn' => '99',
+				   'label' => "Other",
+				   'descr' => "Other (elaborate in REMARKS)." ),
+			array( 'code' => '10',
+				   'parent' => 'LR'.kTOKEN_NAMESPACE_SEPARATOR.'FIR',
+				   'syn' => '10',
+				   'label' => "Yes",
+				   'descr' => "Yes." ),
+			array( 'code' => '20',
+				   'parent' => 'LR'.kTOKEN_NAMESPACE_SEPARATOR.'FIR',
+				   'syn' => '20',
+				   'label' => "No",
+				   'descr' => "No." ) );
+		
+		//
+		// Create landrace categories.
+		//
+		foreach( $params as $param )
+		{
+			//
+			// Get namespace.
+			//
+			$namespace
+				= $_SESSION[ kSESSION_ONTOLOGY ]->ResolveTerm(
+					$param[ 'parent' ],
+					NULL,
+					TRUE );
+			
+			//
+			// Get trait.
+			//
+			$trait
+				= $_SESSION[ kSESSION_ONTOLOGY ]->ResolveNode(
+					$_SESSION[ kSESSION_ONTOLOGY ]->ResolveTerm(
+						$namespace,
+						NULL,
+						TRUE ),
+					TRUE )[ 0 ]	;
+			
+			//
+			// Relate to trait.
+			//
+			$_SESSION[ kSESSION_ONTOLOGY ]->EnumOf(
+				$node
+					= $_SESSION[ kSESSION_ONTOLOGY ]->NewNode(
+						$term
+							= $_SESSION[ kSESSION_ONTOLOGY ]->NewTerm(
+								$param[ 'code' ],		// Local identifier.
+								$namespace,				// Namespace.
+								$param[ 'label' ],		// Label or name.
+								$param[ 'descr' ],		// Description or definition.
+								kDEFAULT_LANGUAGE ) ),	// Language.
+				$trait );
+	
+			//
+			// Inform.
+			//
+			if( kOPTION_VERBOSE )
+				echo( "    - ".$term->GID()." [".$node[ kOFFSET_NID ]."]\n" );
+		}
+
+	} // LoadLandraceMaintainerTraits.
+
+	 
+	/*===================================================================================
+	 *	LoadLandraceLandraceTraits														*
+	 *==================================================================================*/
+
+	/**
+	 * <h4>Load landrace description traits</h4>
+	 *
+	 * This method will create the landrace description trait nodes and relate them to their
+	 * category.
+	 */
+	function LoadLandraceLandraceTraits()
+	{
+		//
+		// Get namespace.
+		//
+		$namespace
+			= $_SESSION[ kSESSION_ONTOLOGY ]->ResolveTerm(
+				kLR_ROOT,
+				NULL,
+				TRUE );
+		
+		//
+		// Init local storage.
+		//
+		$params = array(
+			array( 'code' => 'LRTOTAREA',
+				   'parent' => KLR_LANDRACE,
+				   'syn' => '6.1',
+				   'type' => kTYPE_FLOAT,
+				   'label' => "Landrace total area",
+				   'descr' => "The total area (ha) cultivated under the inventoried LR on that farm as from farmer statement.",
+				   'examp' => array( '125.7' ) ),
+			array( 'code' => 'LRCULTPER',
+				   'parent' => KLR_LANDRACE,
+				   'syn' => '6.2',
+				   'type' => array( kTYPE_ENUM, kTYPE_CARD_REQUIRED ),
+				   'label' => "Landrace cultivation period",
+				   'descr' => "The length of time the LR was cultivated on that farm as from farmer memory, i.e. cultivated for an unknown number of years, over 50 years, less than 50 years; in the latter case it can be specified the time.",
+				   'examp' => array( '20' ) ),
+			array( 'code' => 'LRSTATUS',
+				   'parent' => KLR_LANDRACE,
+				   'syn' => '6.3',
+				   'type' => kTYPE_ENUM,
+				   'label' => "Landrace status",
+				   'descr' => "The status of the LR on that farm, i.e. whether inherent the farm or reintroduced in the farm as from farmer statement. For ‘inherent the farm’ a cultivation period over 25 years in that farm should be intended. If introduced/reintroduced from other farms it can be specified from where. To be eventually elaborated in REMARKS.",
+				   'examp' => array( '30' ) ),
+			array( 'code' => 'LRSSS',
+				   'parent' => KLR_LANDRACE,
+				   'syn' => '6.4',
+				   'type' => array( kTYPE_ENUM, kTYPE_CARD_REQUIRED ),
+				   'label' => "Landrace seed/propagation material supply system",
+				   'descr' => "From where the seed (or propagation material in general) initially came, as from farmer statement.",
+				   'examp' => array( '20' ) ),
+			array( 'code' => 'LRCONT',
+				   'parent' => KLR_LANDRACE,
+				   'syn' => '6.5',
+				   'type' => kTYPE_ENUM,
+				   'label' => "Landrace continuity",
+				   'descr' => "Whether the LR maintainer plans to continue to grow LR for the foreseeable future.",
+				   'examp' => array( '20' ) ),
+			array( 'code' => 'LRDISTR',
+				   'parent' => KLR_LANDRACE,
+				   'syn' => '6.6',
+				   'type' => kTYPE_ENUM,
+				   'label' => "Landrace distribution",
+				   'descr' => "Whether the LR maintainer plans to give/exchange the LR to/with other growers.",
+				   'examp' => array( '12' ) ),
+			array( 'code' => 'LRFARMERMOT',
+				   'parent' => KLR_LANDRACE,
+				   'syn' => '6.7',
+				   'type' => kTYPE_ENUM_SET,
+				   'label' => "Farmer motivations for growing the landrace",
+				   'descr' => "Taken from farmer statement. See codes in the table below. Multiple choices are allowed separated by a semicolon (;) without space.",
+				   'examp' => array( '12' ) ),
+			array( 'code' => 'LRFARMERSELCRI',
+				   'parent' => KLR_LANDRACE,
+				   'syn' => '6.8',
+				   'type' => kTYPE_ENUM,
+				   'label' => "Farmer LR selection criteria",
+				   'descr' => "The main criteria farmer uses when selecting material for propagation.",
+				   'examp' => array( '12' ) ),
+			array( 'code' => 'PPU',
+				   'parent' => KLR_LANDRACE,
+				   'syn' => '6.9',
+				   'type' => kTYPE_ENUM_SET,
+				   'label' => "Part of the plant used",
+				   'descr' => "Part/s of the plant used by the farmer, as from farmer statement. Multiple choices are allowed separated by a semicolon (;) without space.",
+				   'examp' => array( '110;70' ) ),
+			array( 'code' => 'LRPRODUSE',
+				   'parent' => KLR_LANDRACE,
+				   'syn' => '6.10',
+				   'type' => kTYPE_ENUM_SET,
+				   'label' => "Product use",
+				   'descr' => "Type of use of the product obtained from the LR: if as direct product or as processed product for larger use, as from farmer statement. Multiple choices are allowed separated by a semicolon (;) without space.",
+				   'examp' => array( '13;16' ) ),
+			array( 'code' => 'LRPRODEST',
+				   'parent' => KLR_LANDRACE,
+				   'syn' => '6.11',
+				   'type' => kTYPE_ENUM,
+				   'label' => "Main destination of the product",
+				   'descr' => "Where the product from the LR is mainly destined for use, as from farmer statement.",
+				   'examp' => array( '21' ) ),
+			array( 'code' => 'LRMARKTDEMAND',
+				   'parent' => KLR_LANDRACE,
+				   'syn' => '6.12',
+				   'type' => kTYPE_ENUM,
+				   'label' => "Market landrace demand",
+				   'descr' => "Demand for LR / LR product as from farmer statement.",
+				   'examp' => array( '30' ) ),
+			array( 'code' => 'LRTHREATF',
+				   'parent' => KLR_LANDRACE,
+				   'syn' => '6.13',
+				   'type' => kTYPE_ENUM,
+				   'label' => "Loss risk as for the farmer",
+				   'descr' => "Risk of losing this LR as perceived by the interviewed farmer. It helps to decide if conservation is needed and plan monitoring actions.",
+				   'examp' => array( '40' ) ),
+			array( 'code' => 'LRTHREATCT',
+				   'parent' => KLR_LANDRACE,
+				   'syn' => '6.14',
+				   'type' => kTYPE_ENUM,
+				   'label' => "Loss risk as assessed by the collecting team",
+				   'descr' => "Risk of losing this LR as perceived by the team recording data. It helps to decide if conservation is needed and plan monitoring actions.",
+				   'examp' => array( '40' ) ) );
+		
+		//
+		// Load data.
+		//
+		foreach( $params as $param )
+		{
+			//
+			// Get category.
+			//
+			$category
+				= $_SESSION[ kSESSION_ONTOLOGY ]->ResolveNode(
+					$_SESSION[ kSESSION_ONTOLOGY ]->ResolveTerm(
+						$param[ 'parent' ],
+						NULL,
+						TRUE ),
+					TRUE )[ 0 ]	;
+			
+			//
+			// Relate to category.
+			//
+			$_SESSION[ kSESSION_ONTOLOGY ]->SubclassOf(
+				$node
+					= $_SESSION[ kSESSION_ONTOLOGY ]->NewNode(
+						$term
+							= $_SESSION[ kSESSION_ONTOLOGY ]->NewTerm(
+								$param[ 'code' ],		// Local identifier.
+								$namespace,				// Namespace.
+								$param[ 'label' ],		// Label or name.
+								$param[ 'descr' ],		// Description or definition.
+								kDEFAULT_LANGUAGE,		// Language.
+								// Additional attributes.
+								array( kTAG_SYNONYMS => array( $param[ 'code' ], $param[ 'syn' ] ),
+									   kTAG_EXAMPLES => $param[ 'examp' ] ) ),
+						$param[ 'type' ] ),				// Node data type.
+				$category );
+			
+			//
+			// Create tag.
+			//
+			$tag = NULL;
+			$_SESSION[ kSESSION_ONTOLOGY ]->AddToTag( $tag, $node );
+			$_SESSION[ kSESSION_ONTOLOGY ]->AddToTag( $tag, TRUE );
+			
+			//
+			// Inform.
+			//
+			if( kOPTION_VERBOSE )
+				echo( "    - ".$term->GID()." ["
+							  .$node[ kOFFSET_NID ]."] ("
+							  .$tag[ kOFFSET_NID ].")\n" );
+		}
+
+		//
+		// Init site enumerations storage.
+		//
+		$params = array(
+			array( 'code' => '10',
+				   'namespace' => 'LR'.kTOKEN_NAMESPACE_SEPARATOR.'LRCULTPER',
+				   'parent' => 'LR'.kTOKEN_NAMESPACE_SEPARATOR.'LRCULTPER',
+				   'syn' => '10',
+				   'label' => "Does not answer",
+				   'descr' => "Does not answer." ),
+			array( 'code' => '20',
+				   'namespace' => 'LR'.kTOKEN_NAMESPACE_SEPARATOR.'LRCULTPER',
+				   'parent' => 'LR'.kTOKEN_NAMESPACE_SEPARATOR.'LRCULTPER',
+				   'syn' => '20',
+				   'label' => "Over 50 years",
+				   'descr' => "Over 50 years." ),
+			array( 'code' => '30',
+				   'namespace' => 'LR'.kTOKEN_NAMESPACE_SEPARATOR.'LRCULTPER',
+				   'parent' => 'LR'.kTOKEN_NAMESPACE_SEPARATOR.'LRCULTPER',
+				   'syn' => '30',
+				   'label' => "Under 50 years",
+				   'descr' => "Under 50 years." ),
+			array( 'code' => '31',
+				   'namespace' => 'LR'.kTOKEN_NAMESPACE_SEPARATOR.'LRCULTPER',
+				   'parent' => implode( kTOKEN_NAMESPACE_SEPARATOR, array( 'LR', 'LRCULTPER', '30' ) ),
+				   'syn' => '31',
+				   'label' => "Less than 10 years ago",
+				   'descr' => "Less than 10 years ago." ),
+			array( 'code' => '32',
+				   'namespace' => 'LR'.kTOKEN_NAMESPACE_SEPARATOR.'LRCULTPER',
+				   'parent' => implode( kTOKEN_NAMESPACE_SEPARATOR, array( 'LR', 'LRCULTPER', '30' ) ),
+				   'syn' => '32',
+				   'label' => "11-25 years ago",
+				   'descr' => "11-25 years ago." ),
+			array( 'code' => '33',
+				   'namespace' => 'LR'.kTOKEN_NAMESPACE_SEPARATOR.'LRCULTPER',
+				   'parent' => implode( kTOKEN_NAMESPACE_SEPARATOR, array( 'LR', 'LRCULTPER', '30' ) ),
+				   'syn' => '33',
+				   'label' => "26-50 years ago",
+				   'descr' => "26-50 years ago." ),
+				   
+			array( 'code' => '10',
+				   'namespace' => 'LR'.kTOKEN_NAMESPACE_SEPARATOR.'LRSTATUS',
+				   'parent' => 'LR'.kTOKEN_NAMESPACE_SEPARATOR.'LRSTATUS',
+				   'syn' => '10',
+				   'label' => "Does not answer",
+				   'descr' => "Does not answer." ),
+			array( 'code' => '20',
+				   'namespace' => 'LR'.kTOKEN_NAMESPACE_SEPARATOR.'LRSTATUS',
+				   'parent' => 'LR'.kTOKEN_NAMESPACE_SEPARATOR.'LRSTATUS',
+				   'syn' => '20',
+				   'label' => "Inherent",
+				   'descr' => "Should match with LRCULTPER 20 or 33, at least." ),
+			array( 'code' => '30',
+				   'namespace' => 'LR'.kTOKEN_NAMESPACE_SEPARATOR.'LRSTATUS',
+				   'parent' => 'LR'.kTOKEN_NAMESPACE_SEPARATOR.'LRSTATUS',
+				   'syn' => '30',
+				   'label' => "Reintroduced by the family which presently cultivates the LR from a different estate belonging to the same family",
+				   'descr' => "For example: the very same LR has been grown for several decades and generations in the same family at the same farm/garden, but now it is grown at the summer cottage in different district/neighboring house belonging to the same family. Provide details under REMARKS." ),
+			array( 'code' => '40',
+				   'namespace' => 'LR'.kTOKEN_NAMESPACE_SEPARATOR.'LRSTATUS',
+				   'parent' => 'LR'.kTOKEN_NAMESPACE_SEPARATOR.'LRSTATUS',
+				   'syn' => '40',
+				   'label' => "Introduced/Reintroduced from gene bank",
+				   'descr' => "Provide Gene Bank name in REMARKS." ),
+			array( 'code' => '50',
+				   'namespace' => 'LR'.kTOKEN_NAMESPACE_SEPARATOR.'LRSTATUS',
+				   'parent' => 'LR'.kTOKEN_NAMESPACE_SEPARATOR.'LRSTATUS',
+				   'syn' => '50',
+				   'label' => "Introduced/Reintroduced from other farms",
+				   'descr' => "Introduced/Reintroduced from other farms." ),
+			array( 'code' => '51',
+				   'namespace' => 'LR'.kTOKEN_NAMESPACE_SEPARATOR.'LRSTATUS',
+				   'parent' => implode( kTOKEN_NAMESPACE_SEPARATOR, array( 'LR', 'LRSTATUS', '50' ) ),
+				   'syn' => '51',
+				   'label' => "Introduced/Reintroduced from neighbouring farm",
+				   'descr' => "Introduced/Reintroduced from other farms: neighbouring farm." ),
+			array( 'code' => '52',
+				   'namespace' => 'LR'.kTOKEN_NAMESPACE_SEPARATOR.'LRSTATUS',
+				   'parent' => implode( kTOKEN_NAMESPACE_SEPARATOR, array( 'LR', 'LRSTATUS', '50' ) ),
+				   'syn' => '52',
+				   'label' => "Introduced/Reintroduced from farm in the same district",
+				   'descr' => "Introduced/Reintroduced from other farms: farm in the same district." ),
+			array( 'code' => '53',
+				   'namespace' => 'LR'.kTOKEN_NAMESPACE_SEPARATOR.'LRSTATUS',
+				   'parent' => implode( kTOKEN_NAMESPACE_SEPARATOR, array( 'LR', 'LRSTATUS', '50' ) ),
+				   'syn' => '53',
+				   'label' => "Introduced/Reintroduced from farm in different district/country",
+				   'descr' => "Introduced/Reintroduced from other farms: farm in different district/country." ),
+			array( 'code' => '60',
+				   'namespace' => 'LR'.kTOKEN_NAMESPACE_SEPARATOR.'LRSTATUS',
+				   'parent' => 'LR'.kTOKEN_NAMESPACE_SEPARATOR.'LRSTATUS',
+				   'syn' => '60',
+				   'label' => "Introduced/Reintroduced from the seed market",
+				   'descr' => "Introduced/Reintroduced from the seed market." ),
+			array( 'code' => '99',
+				   'namespace' => 'LR'.kTOKEN_NAMESPACE_SEPARATOR.'LRSTATUS',
+				   'parent' => 'LR'.kTOKEN_NAMESPACE_SEPARATOR.'LRSTATUS',
+				   'syn' => '99',
+				   'label' => "Other",
+				   'descr' => "Other (elaborate in REMARKS)." ),
+				   
+			array( 'code' => '10',
+				   'namespace' => 'LR'.kTOKEN_NAMESPACE_SEPARATOR.'LRSSS',
+				   'parent' => 'LR'.kTOKEN_NAMESPACE_SEPARATOR.'LRSSS',
+				   'syn' => '10',
+				   'label' => "Informal sector",
+				   'descr' => "Informal sector." ),
+			array( 'code' => '11',
+				   'namespace' => 'LR'.kTOKEN_NAMESPACE_SEPARATOR.'LRSSS',
+				   'parent' => implode( kTOKEN_NAMESPACE_SEPARATOR, array( 'LR', 'LRSSS', '10' ) ),
+				   'syn' => '11',
+				   'label' => "Own family harvest",
+				   'descr' => "Own family harvest." ),
+			array( 'code' => '12',
+				   'namespace' => 'LR'.kTOKEN_NAMESPACE_SEPARATOR.'LRSSS',
+				   'parent' => implode( kTOKEN_NAMESPACE_SEPARATOR, array( 'LR', 'LRSSS', '10' ) ),
+				   'syn' => '12',
+				   'label' => "Exchanges with relatives, neighbours",
+				   'descr' => "Exchanges with relatives, neighbours." ),
+			array( 'code' => '13',
+				   'namespace' => 'LR'.kTOKEN_NAMESPACE_SEPARATOR.'LRSSS',
+				   'parent' => implode( kTOKEN_NAMESPACE_SEPARATOR, array( 'LR', 'LRSSS', '10' ) ),
+				   'syn' => '13',
+				   'label' => "Exchanges between close villages via barter system",
+				   'descr' => "Exchanges between close villages via barter system." ),
+			array( 'code' => '14',
+				   'namespace' => 'LR'.kTOKEN_NAMESPACE_SEPARATOR.'LRSSS',
+				   'parent' => implode( kTOKEN_NAMESPACE_SEPARATOR, array( 'LR', 'LRSSS', '10' ) ),
+				   'syn' => '14',
+				   'label' => "Local / regional market",
+				   'descr' => "Local / regional market." ),
+			array( 'code' => '20',
+				   'namespace' => 'LR'.kTOKEN_NAMESPACE_SEPARATOR.'LRSSS',
+				   'parent' => 'LR'.kTOKEN_NAMESPACE_SEPARATOR.'LRSSS',
+				   'syn' => '20',
+				   'label' => "Formal sector",
+				   'descr' => "Formal sector." ),
+			array( 'code' => '21',
+				   'namespace' => 'LR'.kTOKEN_NAMESPACE_SEPARATOR.'LRSSS',
+				   'parent' => implode( kTOKEN_NAMESPACE_SEPARATOR, array( 'LR', 'LRSSS', '20' ) ),
+				   'syn' => '21',
+				   'label' => "Certified material from the seed market",
+				   'descr' => "Certified material from the seed market." ),
+			array( 'code' => '22',
+				   'namespace' => 'LR'.kTOKEN_NAMESPACE_SEPARATOR.'LRSSS',
+				   'parent' => implode( kTOKEN_NAMESPACE_SEPARATOR, array( 'LR', 'LRSSS', '20' ) ),
+				   'syn' => '22',
+				   'label' => "Genebank",
+				   'descr' => "Genebank (to be specified from which genebank in REMARKS)." ),
+			array( 'code' => '30',
+				   'namespace' => 'LR'.kTOKEN_NAMESPACE_SEPARATOR.'LRSSS',
+				   'parent' => 'LR'.kTOKEN_NAMESPACE_SEPARATOR.'LRSSS',
+				   'syn' => '30',
+				   'label' => "Does not answer",
+				   'descr' => "Does not answer." ),
+			array( 'code' => '99',
+				   'namespace' => 'LR'.kTOKEN_NAMESPACE_SEPARATOR.'LRSSS',
+				   'parent' => 'LR'.kTOKEN_NAMESPACE_SEPARATOR.'LRSSS',
+				   'syn' => '99',
+				   'label' => "Other",
+				   'descr' => "Other (elaborate in REMARKS)." ),
+				   
+			array( 'code' => '10',
+				   'namespace' => 'LR'.kTOKEN_NAMESPACE_SEPARATOR.'LRCONT',
+				   'parent' => 'LR'.kTOKEN_NAMESPACE_SEPARATOR.'LRCONT',
+				   'syn' => '10',
+				   'label' => "Undecided",
+				   'descr' => "Undecided." ),
+			array( 'code' => '20',
+				   'namespace' => 'LR'.kTOKEN_NAMESPACE_SEPARATOR.'LRCONT',
+				   'parent' => 'LR'.kTOKEN_NAMESPACE_SEPARATOR.'LRCONT',
+				   'syn' => '20',
+				   'label' => "Will stop next year",
+				   'descr' => "Will stop next year." ),
+			array( 'code' => '30',
+				   'namespace' => 'LR'.kTOKEN_NAMESPACE_SEPARATOR.'LRCONT',
+				   'parent' => 'LR'.kTOKEN_NAMESPACE_SEPARATOR.'LRCONT',
+				   'syn' => '30',
+				   'label' => "Will continue, but considers changing within a few years",
+				   'descr' => "Will continue, but considers changing within a few years." ),
+			array( 'code' => '40',
+				   'namespace' => 'LR'.kTOKEN_NAMESPACE_SEPARATOR.'LRCONT',
+				   'parent' => 'LR'.kTOKEN_NAMESPACE_SEPARATOR.'LRCONT',
+				   'syn' => '40',
+				   'label' => "Will continue as long as possible",
+				   'descr' => "Will continue as long as possible." ),
+			array( 'code' => '99',
+				   'namespace' => 'LR'.kTOKEN_NAMESPACE_SEPARATOR.'LRCONT',
+				   'parent' => 'LR'.kTOKEN_NAMESPACE_SEPARATOR.'LRCONT',
+				   'syn' => '99',
+				   'label' => "Other",
+				   'descr' => "Other (elaborate in REMARKS)." ),
+				   
+			array( 'code' => '10',
+				   'namespace' => 'LR'.kTOKEN_NAMESPACE_SEPARATOR.'LRDISTR',
+				   'parent' => 'LR'.kTOKEN_NAMESPACE_SEPARATOR.'LRDISTR',
+				   'syn' => '10',
+				   'label' => "Yes",
+				   'descr' => "Yes." ),
+			array( 'code' => '11',
+				   'namespace' => 'LR'.kTOKEN_NAMESPACE_SEPARATOR.'LRDISTR',
+				   'parent' => implode( kTOKEN_NAMESPACE_SEPARATOR, array( 'LR', 'LRDISTR', '10' ) ),
+				   'syn' => '11',
+				   'label' => "To relative",
+				   'descr' => "Yes, to relative." ),
+			array( 'code' => '12',
+				   'namespace' => 'LR'.kTOKEN_NAMESPACE_SEPARATOR.'LRDISTR',
+				   'parent' => implode( kTOKEN_NAMESPACE_SEPARATOR, array( 'LR', 'LRDISTR', '10' ) ),
+				   'syn' => '12',
+				   'label' => "To friend or neighbour",
+				   'descr' => "Yes, to friend or neighbour." ),
+			array( 'code' => '13',
+				   'namespace' => 'LR'.kTOKEN_NAMESPACE_SEPARATOR.'LRDISTR',
+				   'parent' => implode( kTOKEN_NAMESPACE_SEPARATOR, array( 'LR', 'LRDISTR', '10' ) ),
+				   'syn' => '13',
+				   'label' => "To another grower",
+				   'descr' => "Yes, to another grower." ),
+			array( 'code' => '14',
+				   'namespace' => 'LR'.kTOKEN_NAMESPACE_SEPARATOR.'LRDISTR',
+				   'parent' => implode( kTOKEN_NAMESPACE_SEPARATOR, array( 'LR', 'LRDISTR', '10' ) ),
+				   'syn' => '14',
+				   'label' => "To seed/seedlings-swap event",
+				   'descr' => "Yes, to seed/seedlings-swap event." ),
+			array( 'code' => '15',
+				   'namespace' => 'LR'.kTOKEN_NAMESPACE_SEPARATOR.'LRDISTR',
+				   'parent' => implode( kTOKEN_NAMESPACE_SEPARATOR, array( 'LR', 'LRDISTR', '10' ) ),
+				   'syn' => '15',
+				   'label' => "To plant genebank",
+				   'descr' => "Yes, to plant genebank." ),
+			array( 'code' => '20',
+				   'namespace' => 'LR'.kTOKEN_NAMESPACE_SEPARATOR.'LRDISTR',
+				   'parent' => 'LR'.kTOKEN_NAMESPACE_SEPARATOR.'LRDISTR',
+				   'syn' => '20',
+				   'label' => "No",
+				   'descr' => "No." ),
+			array( 'code' => '30',
+				   'namespace' => 'LR'.kTOKEN_NAMESPACE_SEPARATOR.'LRDISTR',
+				   'parent' => 'LR'.kTOKEN_NAMESPACE_SEPARATOR.'LRDISTR',
+				   'syn' => '30',
+				   'label' => "Undecided",
+				   'descr' => "Undecided." ),
+
+			array( 'code' => '10',
+				   'namespace' => 'LR'.kTOKEN_NAMESPACE_SEPARATOR.'LRFARMERMOT',
+				   'parent' => 'LR'.kTOKEN_NAMESPACE_SEPARATOR.'LRFARMERMOT',
+				   'syn' => '10',
+				   'label' => "Agronomical traits",
+				   'descr' => "Agronomical traits." ),
+			array( 'code' => '11',
+				   'namespace' => 'LR'.kTOKEN_NAMESPACE_SEPARATOR.'LRFARMERMOT',
+				   'parent' => implode( kTOKEN_NAMESPACE_SEPARATOR, array( 'LR', 'LRFARMERMOT', '10' ) ),
+				   'syn' => '11',
+				   'label' => "Easy/simple cultivation required",
+				   'descr' => "Easy/simple cultivation required." ),
+			array( 'code' => '12',
+				   'namespace' => 'LR'.kTOKEN_NAMESPACE_SEPARATOR.'LRFARMERMOT',
+				   'parent' => implode( kTOKEN_NAMESPACE_SEPARATOR, array( 'LR', 'LRFARMERMOT', '10' ) ),
+				   'syn' => '12',
+				   'label' => "Precocity",
+				   'descr' => "Precocity (early development or maturity)." ),
+			array( 'code' => '13',
+				   'namespace' => 'LR'.kTOKEN_NAMESPACE_SEPARATOR.'LRFARMERMOT',
+				   'parent' => implode( kTOKEN_NAMESPACE_SEPARATOR, array( 'LR', 'LRFARMERMOT', '10' ) ),
+				   'syn' => '13',
+				   'label' => "Lateness",
+				   'descr' => "Lateness." ),
+			array( 'code' => '14',
+				   'namespace' => 'LR'.kTOKEN_NAMESPACE_SEPARATOR.'LRFARMERMOT',
+				   'parent' => implode( kTOKEN_NAMESPACE_SEPARATOR, array( 'LR', 'LRFARMERMOT', '10' ) ),
+				   'syn' => '14',
+				   'label' => "Lodging resistance",
+				   'descr' => "Lodging resistance." ),
+			array( 'code' => '15',
+				   'namespace' => 'LR'.kTOKEN_NAMESPACE_SEPARATOR.'LRFARMERMOT',
+				   'parent' => implode( kTOKEN_NAMESPACE_SEPARATOR, array( 'LR', 'LRFARMERMOT', '10' ) ),
+				   'syn' => '15',
+				   'label' => "High yield",
+				   'descr' => "High yield." ),
+			array( 'code' => '16',
+				   'namespace' => 'LR'.kTOKEN_NAMESPACE_SEPARATOR.'LRFARMERMOT',
+				   'parent' => implode( kTOKEN_NAMESPACE_SEPARATOR, array( 'LR', 'LRFARMERMOT', '10' ) ),
+				   'syn' => '16',
+				   'label' => "Stable yield",
+				   'descr' => "Stable yield." ),
+			array( 'code' => '20',
+				   'namespace' => 'LR'.kTOKEN_NAMESPACE_SEPARATOR.'LRFARMERMOT',
+				   'parent' => 'LR'.kTOKEN_NAMESPACE_SEPARATOR.'LRFARMERMOT',
+				   'syn' => '20',
+				   'label' => "Resistance to stresses",
+				   'descr' => "Resistance to stresses." ),
+			array( 'code' => '21',
+				   'namespace' => 'LR'.kTOKEN_NAMESPACE_SEPARATOR.'LRFARMERMOT',
+				   'parent' => implode( kTOKEN_NAMESPACE_SEPARATOR, array( 'LR', 'LRFARMERMOT', '20' ) ),
+				   'syn' => '21',
+				   'label' => "Abiotic factors",
+				   'descr' => "Abiotic factors." ),
+			array( 'code' => '211',
+				   'namespace' => 'LR'.kTOKEN_NAMESPACE_SEPARATOR.'LRFARMERMOT',
+				   'parent' => implode( kTOKEN_NAMESPACE_SEPARATOR, array( 'LR', 'LRFARMERMOT', '21' ) ),
+				   'syn' => '211',
+				   'label' => "Cold",
+				   'descr' => "Abiotic factors: cold." ),
+			array( 'code' => '212',
+				   'namespace' => 'LR'.kTOKEN_NAMESPACE_SEPARATOR.'LRFARMERMOT',
+				   'parent' => implode( kTOKEN_NAMESPACE_SEPARATOR, array( 'LR', 'LRFARMERMOT', '21' ) ),
+				   'syn' => '212',
+				   'label' => "Drought",
+				   'descr' => "Abiotic factors: drought." ),
+			array( 'code' => '213',
+				   'namespace' => 'LR'.kTOKEN_NAMESPACE_SEPARATOR.'LRFARMERMOT',
+				   'parent' => implode( kTOKEN_NAMESPACE_SEPARATOR, array( 'LR', 'LRFARMERMOT', '21' ) ),
+				   'syn' => '213',
+				   'label' => "High humidity",
+				   'descr' => "Abiotic factors: high humidity." ),
+			array( 'code' => '214',
+				   'namespace' => 'LR'.kTOKEN_NAMESPACE_SEPARATOR.'LRFARMERMOT',
+				   'parent' => implode( kTOKEN_NAMESPACE_SEPARATOR, array( 'LR', 'LRFARMERMOT', '21' ) ),
+				   'syn' => '214',
+				   'label' => "Salinity",
+				   'descr' => "Abiotic factors: salinity." ),
+			array( 'code' => '22',
+				   'namespace' => 'LR'.kTOKEN_NAMESPACE_SEPARATOR.'LRFARMERMOT',
+				   'parent' => implode( kTOKEN_NAMESPACE_SEPARATOR, array( 'LR', 'LRFARMERMOT', '20' ) ),
+				   'syn' => '22',
+				   'label' => "Biotic factors",
+				   'descr' => "Biotic factors." ),
+			array( 'code' => '221',
+				   'namespace' => 'LR'.kTOKEN_NAMESPACE_SEPARATOR.'LRFARMERMOT',
+				   'parent' => implode( kTOKEN_NAMESPACE_SEPARATOR, array( 'LR', 'LRFARMERMOT', '22' ) ),
+				   'syn' => '221',
+				   'label' => "Fungal/bacterial/virus",
+				   'descr' => "Biotic factors: fungal/bacterial/virus." ),
+			array( 'code' => '222',
+				   'namespace' => 'LR'.kTOKEN_NAMESPACE_SEPARATOR.'LRFARMERMOT',
+				   'parent' => implode( kTOKEN_NAMESPACE_SEPARATOR, array( 'LR', 'LRFARMERMOT', '22' ) ),
+				   'syn' => '222',
+				   'label' => "Insect/nematode/etc.",
+				   'descr' => "Biotic factors: insect/nematode/etc." ),
+			array( 'code' => '30',
+				   'namespace' => 'LR'.kTOKEN_NAMESPACE_SEPARATOR.'LRFARMERMOT',
+				   'parent' => 'LR'.kTOKEN_NAMESPACE_SEPARATOR.'LRFARMERMOT',
+				   'syn' => '30',
+				   'label' => "Cultural and religious motivations",
+				   'descr' => "Cultural and religious motivations." ),
+			array( 'code' => '31',
+				   'namespace' => 'LR'.kTOKEN_NAMESPACE_SEPARATOR.'LRFARMERMOT',
+				   'parent' => implode( kTOKEN_NAMESPACE_SEPARATOR, array( 'LR', 'LRFARMERMOT', '30' ) ),
+				   'syn' => '31',
+				   'label' => "Personal affection",
+				   'descr' => "Personal affection." ),
+			array( 'code' => '32',
+				   'namespace' => 'LR'.kTOKEN_NAMESPACE_SEPARATOR.'LRFARMERMOT',
+				   'parent' => implode( kTOKEN_NAMESPACE_SEPARATOR, array( 'LR', 'LRFARMERMOT', '30' ) ),
+				   'syn' => '32',
+				   'label' => "Special family food preparations",
+				   'descr' => "Special family food preparations." ),
+			array( 'code' => '33',
+				   'namespace' => 'LR'.kTOKEN_NAMESPACE_SEPARATOR.'LRFARMERMOT',
+				   'parent' => implode( kTOKEN_NAMESPACE_SEPARATOR, array( 'LR', 'LRFARMERMOT', '30' ) ),
+				   'syn' => '33',
+				   'label' => "Special family ceremonies",
+				   'descr' => "Special family ceremonies." ),
+			array( 'code' => '34',
+				   'namespace' => 'LR'.kTOKEN_NAMESPACE_SEPARATOR.'LRFARMERMOT',
+				   'parent' => implode( kTOKEN_NAMESPACE_SEPARATOR, array( 'LR', 'LRFARMERMOT', '30' ) ),
+				   'syn' => '34',
+				   'label' => "Ritual or religious use of the community",
+				   'descr' => "Ritual or religious use of the community." ),
+			array( 'code' => '35',
+				   'namespace' => 'LR'.kTOKEN_NAMESPACE_SEPARATOR.'LRFARMERMOT',
+				   'parent' => implode( kTOKEN_NAMESPACE_SEPARATOR, array( 'LR', 'LRFARMERMOT', '30' ) ),
+				   'syn' => '35',
+				   'label' => "Local fairs/festivals",
+				   'descr' => "Local fairs/festivals." ),
+			array( 'code' => '36',
+				   'namespace' => 'LR'.kTOKEN_NAMESPACE_SEPARATOR.'LRFARMERMOT',
+				   'parent' => implode( kTOKEN_NAMESPACE_SEPARATOR, array( 'LR', 'LRFARMERMOT', '30' ) ),
+				   'syn' => '36',
+				   'label' => "Historical/collector/ amateur interest",
+				   'descr' => "Historical/collector/ amateur interest." ),
+			array( 'code' => '40',
+				   'namespace' => 'LR'.kTOKEN_NAMESPACE_SEPARATOR.'LRFARMERMOT',
+				   'parent' => 'LR'.kTOKEN_NAMESPACE_SEPARATOR.'LRFARMERMOT',
+				   'syn' => '40',
+				   'label' => "Quality traits",
+				   'descr' => "Quality traits (taste, fragrance, colour, etc.)." ),
+			array( 'code' => '50',
+				   'namespace' => 'LR'.kTOKEN_NAMESPACE_SEPARATOR.'LRFARMERMOT',
+				   'parent' => 'LR'.kTOKEN_NAMESPACE_SEPARATOR.'LRFARMERMOT',
+				   'syn' => '50',
+				   'label' => "Market traits",
+				   'descr' => "Market traits (good storability, easy transformation etc.)." ),
+			array( 'code' => '99',
+				   'namespace' => 'LR'.kTOKEN_NAMESPACE_SEPARATOR.'LRFARMERMOT',
+				   'parent' => 'LR'.kTOKEN_NAMESPACE_SEPARATOR.'LRFARMERMOT',
+				   'syn' => '99',
+				   'label' => "Other",
+				   'descr' => "Other (elaborate in REMARKS)." ),
+
+			array( 'code' => '10',
+				   'namespace' => 'LR'.kTOKEN_NAMESPACE_SEPARATOR.'LRFARMERSELCRI',
+				   'parent' => 'LR'.kTOKEN_NAMESPACE_SEPARATOR.'LRFARMERSELCRI',
+				   'syn' => '10',
+				   'label' => "Yield",
+				   'descr' => "Yield." ),
+			array( 'code' => '20',
+				   'namespace' => 'LR'.kTOKEN_NAMESPACE_SEPARATOR.'LRFARMERSELCRI',
+				   'parent' => 'LR'.kTOKEN_NAMESPACE_SEPARATOR.'LRFARMERSELCRI',
+				   'syn' => '20',
+				   'label' => "Organ size",
+				   'descr' => "Organ size." ),
+			array( 'code' => '30',
+				   'namespace' => 'LR'.kTOKEN_NAMESPACE_SEPARATOR.'LRFARMERSELCRI',
+				   'parent' => 'LR'.kTOKEN_NAMESPACE_SEPARATOR.'LRFARMERSELCRI',
+				   'syn' => '30',
+				   'label' => "Taste",
+				   'descr' => "Taste." ),
+			array( 'code' => '40',
+				   'namespace' => 'LR'.kTOKEN_NAMESPACE_SEPARATOR.'LRFARMERSELCRI',
+				   'parent' => 'LR'.kTOKEN_NAMESPACE_SEPARATOR.'LRFARMERSELCRI',
+				   'syn' => '40',
+				   'label' => "Colour",
+				   'descr' => "Colour." ),
+			array( 'code' => '50',
+				   'namespace' => 'LR'.kTOKEN_NAMESPACE_SEPARATOR.'LRFARMERSELCRI',
+				   'parent' => 'LR'.kTOKEN_NAMESPACE_SEPARATOR.'LRFARMERSELCRI',
+				   'syn' => '50',
+				   'label' => "Shape",
+				   'descr' => "Shape." ),
+			array( 'code' => '60',
+				   'namespace' => 'LR'.kTOKEN_NAMESPACE_SEPARATOR.'LRFARMERSELCRI',
+				   'parent' => 'LR'.kTOKEN_NAMESPACE_SEPARATOR.'LRFARMERSELCRI',
+				   'syn' => '60',
+				   'label' => "Uniformity",
+				   'descr' => "Uniformity." ),
+			array( 'code' => '99',
+				   'namespace' => 'LR'.kTOKEN_NAMESPACE_SEPARATOR.'LRFARMERSELCRI',
+				   'parent' => 'LR'.kTOKEN_NAMESPACE_SEPARATOR.'LRFARMERSELCRI',
+				   'syn' => '99',
+				   'label' => "Other",
+				   'descr' => "Other (elaborate in REMARKS)." ),
+
+			array( 'code' => '10',
+				   'namespace' => 'LR'.kTOKEN_NAMESPACE_SEPARATOR.'PPU',
+				   'parent' => 'LR'.kTOKEN_NAMESPACE_SEPARATOR.'PPU',
+				   'syn' => '10',
+				   'label' => "Entire plant",
+				   'descr' => "Entire plant." ),
+			array( 'code' => '20',
+				   'namespace' => 'LR'.kTOKEN_NAMESPACE_SEPARATOR.'PPU',
+				   'parent' => 'LR'.kTOKEN_NAMESPACE_SEPARATOR.'PPU',
+				   'syn' => '20',
+				   'label' => "Branch",
+				   'descr' => "Branch." ),
+			array( 'code' => '30',
+				   'namespace' => 'LR'.kTOKEN_NAMESPACE_SEPARATOR.'PPU',
+				   'parent' => 'LR'.kTOKEN_NAMESPACE_SEPARATOR.'PPU',
+				   'syn' => '30',
+				   'label' => "Seedling/germinated seed",
+				   'descr' => "Seedling/germinated seed." ),
+			array( 'code' => '40',
+				   'namespace' => 'LR'.kTOKEN_NAMESPACE_SEPARATOR.'PPU',
+				   'parent' => 'LR'.kTOKEN_NAMESPACE_SEPARATOR.'PPU',
+				   'syn' => '40',
+				   'label' => "Gall",
+				   'descr' => "Gall." ),
+			array( 'code' => '50',
+				   'namespace' => 'LR'.kTOKEN_NAMESPACE_SEPARATOR.'PPU',
+				   'parent' => 'LR'.kTOKEN_NAMESPACE_SEPARATOR.'PPU',
+				   'syn' => '50',
+				   'label' => "Stem/trunk",
+				   'descr' => "Stem/trunk." ),
+			array( 'code' => '60',
+				   'namespace' => 'LR'.kTOKEN_NAMESPACE_SEPARATOR.'PPU',
+				   'parent' => 'LR'.kTOKEN_NAMESPACE_SEPARATOR.'PPU',
+				   'syn' => '60',
+				   'label' => "Bark",
+				   'descr' => "Bark." ),
+			array( 'code' => '70',
+				   'namespace' => 'LR'.kTOKEN_NAMESPACE_SEPARATOR.'PPU',
+				   'parent' => 'LR'.kTOKEN_NAMESPACE_SEPARATOR.'PPU',
+				   'syn' => '70',
+				   'label' => "Leaf",
+				   'descr' => "Leaf." ),
+			array( 'code' => '80',
+				   'namespace' => 'LR'.kTOKEN_NAMESPACE_SEPARATOR.'PPU',
+				   'parent' => 'LR'.kTOKEN_NAMESPACE_SEPARATOR.'PPU',
+				   'syn' => '80',
+				   'label' => "Flower/inflorescence",
+				   'descr' => "Flower/inflorescence." ),
+			array( 'code' => '90',
+				   'namespace' => 'LR'.kTOKEN_NAMESPACE_SEPARATOR.'PPU',
+				   'parent' => 'LR'.kTOKEN_NAMESPACE_SEPARATOR.'PPU',
+				   'syn' => '90',
+				   'label' => "Fruit/infructescence",
+				   'descr' => "Fruit/infructescence." ),
+			array( 'code' => '100',
+				   'namespace' => 'LR'.kTOKEN_NAMESPACE_SEPARATOR.'PPU',
+				   'parent' => 'LR'.kTOKEN_NAMESPACE_SEPARATOR.'PPU',
+				   'syn' => '100',
+				   'label' => "Seed",
+				   'descr' => "Seed." ),
+			array( 'code' => '110',
+				   'namespace' => 'LR'.kTOKEN_NAMESPACE_SEPARATOR.'PPU',
+				   'parent' => 'LR'.kTOKEN_NAMESPACE_SEPARATOR.'PPU',
+				   'syn' => '110',
+				   'label' => "Root/corm",
+				   'descr' => "Root/corm." ),
+			array( 'code' => '120',
+				   'namespace' => 'LR'.kTOKEN_NAMESPACE_SEPARATOR.'PPU',
+				   'parent' => 'LR'.kTOKEN_NAMESPACE_SEPARATOR.'PPU',
+				   'syn' => '120',
+				   'label' => "Exudate",
+				   'descr' => "Exudate." ),
+			array( 'code' => '99',
+				   'namespace' => 'LR'.kTOKEN_NAMESPACE_SEPARATOR.'PPU',
+				   'parent' => 'LR'.kTOKEN_NAMESPACE_SEPARATOR.'PPU',
+				   'syn' => '99',
+				   'label' => "Other",
+				   'descr' => "Other (elaborate in REMARKS)." ),
+
+			array( 'code' => '10',
+				   'namespace' => 'LR'.kTOKEN_NAMESPACE_SEPARATOR.'LRPRODUSE',
+				   'parent' => 'LR'.kTOKEN_NAMESPACE_SEPARATOR.'LRPRODUSE',
+				   'syn' => '10',
+				   'label' => "As direct product",
+				   'descr' => "As direct product." ),
+			array( 'code' => '11',
+				   'namespace' => 'LR'.kTOKEN_NAMESPACE_SEPARATOR.'LRPRODUSE',
+				   'parent' => implode( kTOKEN_NAMESPACE_SEPARATOR, array( 'LR', 'LRPRODUSE', '10' ) ),
+				   'syn' => '11',
+				   'label' => "Food",
+				   'descr' => "Food (e.g. vegetable, soups)." ),
+			array( 'code' => '12',
+				   'namespace' => 'LR'.kTOKEN_NAMESPACE_SEPARATOR.'LRPRODUSE',
+				   'parent' => implode( kTOKEN_NAMESPACE_SEPARATOR, array( 'LR', 'LRPRODUSE', '10' ) ),
+				   'syn' => '12',
+				   'label' => "Fodder",
+				   'descr' => "Fodder." ),
+			array( 'code' => '13',
+				   'namespace' => 'LR'.kTOKEN_NAMESPACE_SEPARATOR.'LRPRODUSE',
+				   'parent' => implode( kTOKEN_NAMESPACE_SEPARATOR, array( 'LR', 'LRPRODUSE', '10' ) ),
+				   'syn' => '13',
+				   'label' => "Spice - aromatic",
+				   'descr' => "Spice - aromatic." ),
+			array( 'code' => '14',
+				   'namespace' => 'LR'.kTOKEN_NAMESPACE_SEPARATOR.'LRPRODUSE',
+				   'parent' => implode( kTOKEN_NAMESPACE_SEPARATOR, array( 'LR', 'LRPRODUSE', '10' ) ),
+				   'syn' => '14',
+				   'label' => "Medicinal purpose",
+				   'descr' => "Medicinal purpose." ),
+			array( 'code' => '15',
+				   'namespace' => 'LR'.kTOKEN_NAMESPACE_SEPARATOR.'LRPRODUSE',
+				   'parent' => implode( kTOKEN_NAMESPACE_SEPARATOR, array( 'LR', 'LRPRODUSE', '10' ) ),
+				   'syn' => '15',
+				   'label' => "Odoriferous purpose",
+				   'descr' => "Odoriferous purpose." ),
+			array( 'code' => '16',
+				   'namespace' => 'LR'.kTOKEN_NAMESPACE_SEPARATOR.'LRPRODUSE',
+				   'parent' => implode( kTOKEN_NAMESPACE_SEPARATOR, array( 'LR', 'LRPRODUSE', '10' ) ),
+				   'syn' => '16',
+				   'label' => "Ornamental purpose",
+				   'descr' => "Ornamental purpose." ),
+			array( 'code' => '20',
+				   'namespace' => 'LR'.kTOKEN_NAMESPACE_SEPARATOR.'LRPRODUSE',
+				   'parent' => 'LR'.kTOKEN_NAMESPACE_SEPARATOR.'LRPRODUSE',
+				   'syn' => '20',
+				   'label' => "As processed product",
+				   'descr' => "As processed product." ),
+			array( 'code' => '21',
+				   'namespace' => 'LR'.kTOKEN_NAMESPACE_SEPARATOR.'LRPRODUSE',
+				   'parent' => implode( kTOKEN_NAMESPACE_SEPARATOR, array( 'LR', 'LRPRODUSE', '20' ) ),
+				   'syn' => '21',
+				   'label' => "Bakery product",
+				   'descr' => "Bakery product." ),
+			array( 'code' => '22',
+				   'namespace' => 'LR'.kTOKEN_NAMESPACE_SEPARATOR.'LRPRODUSE',
+				   'parent' => implode( kTOKEN_NAMESPACE_SEPARATOR, array( 'LR', 'LRPRODUSE', '20' ) ),
+				   'syn' => '22',
+				   'label' => "Long term storage culinary product",
+				   'descr' => "Long term storage culinary product (e.g. canned food)." ),
+			array( 'code' => '23',
+				   'namespace' => 'LR'.kTOKEN_NAMESPACE_SEPARATOR.'LRPRODUSE',
+				   'parent' => implode( kTOKEN_NAMESPACE_SEPARATOR, array( 'LR', 'LRPRODUSE', '20' ) ),
+				   'syn' => '23',
+				   'label' => "Distillery product",
+				   'descr' => "Distillery product." ),
+			array( 'code' => '24',
+				   'namespace' => 'LR'.kTOKEN_NAMESPACE_SEPARATOR.'LRPRODUSE',
+				   'parent' => implode( kTOKEN_NAMESPACE_SEPARATOR, array( 'LR', 'LRPRODUSE', '20' ) ),
+				   'syn' => '24',
+				   'label' => "For oil extraction",
+				   'descr' => "For oil extraction." ),
+			array( 'code' => '25',
+				   'namespace' => 'LR'.kTOKEN_NAMESPACE_SEPARATOR.'LRPRODUSE',
+				   'parent' => implode( kTOKEN_NAMESPACE_SEPARATOR, array( 'LR', 'LRPRODUSE', '20' ) ),
+				   'syn' => '25',
+				   'label' => "For textile fibers production",
+				   'descr' => "For textile fibers production." ),
+			array( 'code' => '99',
+				   'namespace' => 'LR'.kTOKEN_NAMESPACE_SEPARATOR.'LRPRODUSE',
+				   'parent' => 'LR'.kTOKEN_NAMESPACE_SEPARATOR.'LRPRODUSE',
+				   'syn' => '99',
+				   'label' => "Other",
+				   'descr' => "Other (elaborate in REMARKS)." ),
+
+			array( 'code' => '10',
+				   'namespace' => 'LR'.kTOKEN_NAMESPACE_SEPARATOR.'LRPRODEST',
+				   'parent' => 'LR'.kTOKEN_NAMESPACE_SEPARATOR.'LRPRODEST',
+				   'syn' => '10',
+				   'label' => "Owner's household",
+				   'descr' => "Owner's household." ),
+			array( 'code' => '20',
+				   'namespace' => 'LR'.kTOKEN_NAMESPACE_SEPARATOR.'LRPRODEST',
+				   'parent' => 'LR'.kTOKEN_NAMESPACE_SEPARATOR.'LRPRODEST',
+				   'syn' => '20',
+				   'label' => "Market",
+				   'descr' => "Market." ),
+			array( 'code' => '21',
+				   'namespace' => 'LR'.kTOKEN_NAMESPACE_SEPARATOR.'LRPRODEST',
+				   'parent' => implode( kTOKEN_NAMESPACE_SEPARATOR, array( 'LR', 'LRPRODEST', '10' ) ),
+				   'syn' => '21',
+				   'label' => "Local market",
+				   'descr' => "In local market." ),
+			array( 'code' => '22',
+				   'namespace' => 'LR'.kTOKEN_NAMESPACE_SEPARATOR.'LRPRODEST',
+				   'parent' => implode( kTOKEN_NAMESPACE_SEPARATOR, array( 'LR', 'LRPRODEST', '10' ) ),
+				   'syn' => '22',
+				   'label' => "District / regional markets",
+				   'descr' => "In district / regional markets." ),
+			array( 'code' => '23',
+				   'namespace' => 'LR'.kTOKEN_NAMESPACE_SEPARATOR.'LRPRODEST',
+				   'parent' => implode( kTOKEN_NAMESPACE_SEPARATOR, array( 'LR', 'LRPRODEST', '10' ) ),
+				   'syn' => '23',
+				   'label' => "National markets",
+				   'descr' => "In national markets." ),
+			array( 'code' => '24',
+				   'namespace' => 'LR'.kTOKEN_NAMESPACE_SEPARATOR.'LRPRODEST',
+				   'parent' => implode( kTOKEN_NAMESPACE_SEPARATOR, array( 'LR', 'LRPRODEST', '10' ) ),
+				   'syn' => '24',
+				   'label' => "International sale",
+				   'descr' => "In international sale." ),
+			array( 'code' => '99',
+				   'namespace' => 'LR'.kTOKEN_NAMESPACE_SEPARATOR.'LRPRODEST',
+				   'parent' => 'LR'.kTOKEN_NAMESPACE_SEPARATOR.'LRPRODEST',
+				   'syn' => '99',
+				   'label' => "Other",
+				   'descr' => "Other (elaborate in REMARKS)." ),
+
+			array( 'code' => '10',
+				   'namespace' => 'LR'.kTOKEN_NAMESPACE_SEPARATOR.'LRMARKTDEMAND',
+				   'parent' => 'LR'.kTOKEN_NAMESPACE_SEPARATOR.'LRMARKTDEMAND',
+				   'syn' => '10',
+				   'label' => "Does not answer",
+				   'descr' => "Does not answer." ),
+			array( 'code' => '20',
+				   'namespace' => 'LR'.kTOKEN_NAMESPACE_SEPARATOR.'LRMARKTDEMAND',
+				   'parent' => 'LR'.kTOKEN_NAMESPACE_SEPARATOR.'LRMARKTDEMAND',
+				   'syn' => '20',
+				   'label' => "Strong existing market demand",
+				   'descr' => "Strong existing market demand." ),
+			array( 'code' => '30',
+				   'namespace' => 'LR'.kTOKEN_NAMESPACE_SEPARATOR.'LRMARKTDEMAND',
+				   'parent' => 'LR'.kTOKEN_NAMESPACE_SEPARATOR.'LRMARKTDEMAND',
+				   'syn' => '30',
+				   'label' => "Growing market demand",
+				   'descr' => "Growing market demand." ),
+			array( 'code' => '40',
+				   'namespace' => 'LR'.kTOKEN_NAMESPACE_SEPARATOR.'LRMARKTDEMAND',
+				   'parent' => 'LR'.kTOKEN_NAMESPACE_SEPARATOR.'LRMARKTDEMAND',
+				   'syn' => '40',
+				   'label' => "Stable market demand",
+				   'descr' => "Stable market demand." ),
+			array( 'code' => '50',
+				   'namespace' => 'LR'.kTOKEN_NAMESPACE_SEPARATOR.'LRMARKTDEMAND',
+				   'parent' => 'LR'.kTOKEN_NAMESPACE_SEPARATOR.'LRMARKTDEMAND',
+				   'syn' => '50',
+				   'label' => "Falling market demand",
+				   'descr' => "Falling market demand." ),
+			array( 'code' => '99',
+				   'namespace' => 'LR'.kTOKEN_NAMESPACE_SEPARATOR.'LRMARKTDEMAND',
+				   'parent' => 'LR'.kTOKEN_NAMESPACE_SEPARATOR.'LRMARKTDEMAND',
+				   'syn' => '99',
+				   'label' => "Other",
+				   'descr' => "Other (elaborate in REMARKS)." ),
+
+			array( 'code' => '10',
+				   'namespace' => 'LR'.kTOKEN_NAMESPACE_SEPARATOR.'LRTHREATF',
+				   'parent' => 'LR'.kTOKEN_NAMESPACE_SEPARATOR.'LRTHREATF',
+				   'syn' => '10',
+				   'label' => "Does not answer/know",
+				   'descr' => "Does not answer/know." ),
+			array( 'code' => '20',
+				   'namespace' => 'LR'.kTOKEN_NAMESPACE_SEPARATOR.'LRTHREATF',
+				   'parent' => 'LR'.kTOKEN_NAMESPACE_SEPARATOR.'LRTHREATF',
+				   'syn' => '20',
+				   'label' => "Null / scarce",
+				   'descr' => "Null / scarce." ),
+			array( 'code' => '30',
+				   'namespace' => 'LR'.kTOKEN_NAMESPACE_SEPARATOR.'LRTHREATF',
+				   'parent' => 'LR'.kTOKEN_NAMESPACE_SEPARATOR.'LRTHREATF',
+				   'syn' => '30',
+				   'label' => "Low",
+				   'descr' => "Low." ),
+			array( 'code' => '40',
+				   'namespace' => 'LR'.kTOKEN_NAMESPACE_SEPARATOR.'LRTHREATF',
+				   'parent' => 'LR'.kTOKEN_NAMESPACE_SEPARATOR.'LRTHREATF',
+				   'syn' => '40',
+				   'label' => "Medium",
+				   'descr' => "Medium." ),
+			array( 'code' => '50',
+				   'namespace' => 'LR'.kTOKEN_NAMESPACE_SEPARATOR.'LRTHREATF',
+				   'parent' => 'LR'.kTOKEN_NAMESPACE_SEPARATOR.'LRTHREATF',
+				   'syn' => '50',
+				   'label' => "High",
+				   'descr' => "High." ),
+			array( 'code' => '99',
+				   'namespace' => 'LR'.kTOKEN_NAMESPACE_SEPARATOR.'LRTHREATF',
+				   'parent' => 'LR'.kTOKEN_NAMESPACE_SEPARATOR.'LRTHREATF',
+				   'syn' => '99',
+				   'label' => "Other",
+				   'descr' => "Other (elaborate in REMARKS)." ),
+
+			array( 'code' => '10',
+				   'namespace' => 'LR'.kTOKEN_NAMESPACE_SEPARATOR.'LRTHREATCT',
+				   'parent' => 'LR'.kTOKEN_NAMESPACE_SEPARATOR.'LRTHREATCT',
+				   'syn' => '10',
+				   'label' => "Unable to judge/assess",
+				   'descr' => "Unable to judge/assess." ),
+			array( 'code' => '20',
+				   'namespace' => 'LR'.kTOKEN_NAMESPACE_SEPARATOR.'LRTHREATCT',
+				   'parent' => 'LR'.kTOKEN_NAMESPACE_SEPARATOR.'LRTHREATCT',
+				   'syn' => '20',
+				   'label' => "Null / scarce",
+				   'descr' => "Null / scarce." ),
+			array( 'code' => '30',
+				   'namespace' => 'LR'.kTOKEN_NAMESPACE_SEPARATOR.'LRTHREATCT',
+				   'parent' => 'LR'.kTOKEN_NAMESPACE_SEPARATOR.'LRTHREATCT',
+				   'syn' => '30',
+				   'label' => "Low",
+				   'descr' => "Low." ),
+			array( 'code' => '40',
+				   'namespace' => 'LR'.kTOKEN_NAMESPACE_SEPARATOR.'LRTHREATCT',
+				   'parent' => 'LR'.kTOKEN_NAMESPACE_SEPARATOR.'LRTHREATCT',
+				   'syn' => '40',
+				   'label' => "Medium",
+				   'descr' => "Medium." ),
+			array( 'code' => '50',
+				   'namespace' => 'LR'.kTOKEN_NAMESPACE_SEPARATOR.'LRTHREATCT',
+				   'parent' => 'LR'.kTOKEN_NAMESPACE_SEPARATOR.'LRTHREATCT',
+				   'syn' => '50',
+				   'label' => "High",
+				   'descr' => "High." ),
+			array( 'code' => '99',
+				   'namespace' => 'LR'.kTOKEN_NAMESPACE_SEPARATOR.'LRTHREATCT',
+				   'parent' => 'LR'.kTOKEN_NAMESPACE_SEPARATOR.'LRTHREATCT',
+				   'syn' => '99',
+				   'label' => "Other",
+				   'descr' => "Other (elaborate in REMARKS)." ) );
+		
+		//
+		// Create landrace categories.
+		//
+		foreach( $params as $param )
+		{
+			//
+			// Get namespace.
+			//
+			$namespace
+				= $_SESSION[ kSESSION_ONTOLOGY ]->ResolveTerm(
+					$param[ 'namespace' ],
+					NULL,
+					TRUE );
+			
+			
+			//
+			// Get parent.
+			//
+			$parent
+				= $_SESSION[ kSESSION_ONTOLOGY ]->ResolveNode(
+					$_SESSION[ kSESSION_ONTOLOGY ]->ResolveTerm(
+						$param[ 'parent' ],
+						NULL,
+						TRUE ),
+					TRUE )[ 0 ]	;
+			
+			//
+			// Relate to trait.
+			//
+			$_SESSION[ kSESSION_ONTOLOGY ]->EnumOf(
+				$node
+					= $_SESSION[ kSESSION_ONTOLOGY ]->NewNode(
+						$term
+							= $_SESSION[ kSESSION_ONTOLOGY ]->NewTerm(
+								$param[ 'code' ],		// Local identifier.
+								$namespace,				// Namespace.
+								$param[ 'label' ],		// Label or name.
+								$param[ 'descr' ],		// Description or definition.
+								kDEFAULT_LANGUAGE ) ),	// Language.
+				$parent );
+	
+			//
+			// Inform.
+			//
+			if( kOPTION_VERBOSE )
+				echo( "    - ".$term->GID()." [".$node[ kOFFSET_NID ]."]\n" );
+		}
+
+	} // LoadLandraceLandraceTraits.
+
+	 
+	/*===================================================================================
+	 *	LoadLandraceMonitoringTraits														*
+	 *==================================================================================*/
+
+	/**
+	 * <h4>Load landrace conservation and monitoring traits</h4>
+	 *
+	 * This method will create the landrace conservation and monitoring trait nodes and
+	 * relate them to their category.
+	 */
+	function LoadLandraceMonitoringTraits()
+	{
+		//
+		// Get namespace.
+		//
+		$namespace
+			= $_SESSION[ kSESSION_ONTOLOGY ]->ResolveTerm(
+				kLR_ROOT,
+				NULL,
+				TRUE );
+		
+		//
+		// Init local storage.
+		//
+		$params = array(
+			array( 'code' => 'CONSERVACTIONS',
+				   'parent' => KLR_MONITOR,
+				   'syn' => '7.1',
+				   'type' => kTYPE_ENUM,
+				   'label' => "Conservation actions",
+				   'descr' => "Whether any structured and funded in situ conservation action related to the LR is in place at the moment of the Inventory compilation.",
+				   'examp' => array( '11' ) ),
+			array( 'code' => 'CONORG',
+				   'parent' => KLR_MONITOR,
+				   'syn' => '7.2',
+				   'type' => kTYPE_STRING,
+				   'label' => "Conservation organiser",
+				   'descr' => "To be compiled if CONSERVACTIONS is ‘Yes’. Name of the Authority/Public subject/Farmer organisation/Foundation that has organised the conservation action. Free text.",
+				   'examp' => array( 'FNR' ) ),
+			array( 'code' => 'MONIT',
+				   'parent' => KLR_MONITOR,
+				   'syn' => '7.3',
+				   'type' => kTYPE_ENUM,
+				   'label' => "Monitoring",
+				   'descr' => "Whether any monitoring of the in situ maintenance of LR is foreseen across years. Yes or No.",
+				   'examp' => array( '10' ) ),
+			array( 'code' => 'MONITRESP',
+				   'parent' => KLR_MONITOR,
+				   'syn' => '7.4',
+				   'type' => kTYPE_STRING,
+				   'label' => "Monitoring responsible",
+				   'descr' => "To be compiled if MONIT is ‘Yes’. Indicate who is in charge of monitoring. Free text.",
+				   'examp' => array( 'Raul Sanchez' ) ),
+			array( 'code' => 'MONINT',
+				   'parent' => KLR_MONITOR,
+				   'syn' => '7.5',
+				   'type' => kTYPE_INT32,
+				   'label' => "Monitoring interval",
+				   'descr' => "To be compiled if MONIT is ‘Yes’. Indicate the monitoring interval in years.",
+				   'examp' => array( '2' ) ),
+			array( 'code' => 'EXSECURE',
+				   'parent' => KLR_MONITOR,
+				   'syn' => '7.6',
+				   'type' => kTYPE_ENUM,
+				   'label' => "Safety duplication ex situ",
+				   'descr' => "State if a sample was collected for safety duplication in gene bank. Yes or No.",
+				   'examp' => array( '10' ) ),
+			array( 'code' => 'EXDUPL',
+				   'parent' => KLR_MONITOR,
+				   'syn' => '7.7',
+				   'type' => kTYPE_STRING,
+				   'label' => "Location of ex situ duplicate/s",
+				   'descr' => "To be filled in if the answer of EXSECURE (7.6) is ‘Yes’. FAO WIEWS institute code/s of the institute/s where an ex situ safety duplicate of the landrace has been eventually deposited. The codes consist of the 3-letter ISO 3166 country code of the country where the institute is located plus a number. Multiple codes are separated by a semicolon (;) without space.",
+				   'examp' => array( 'ARM002' ) ) );
+		
+		//
+		// Load data.
+		//
+		foreach( $params as $param )
+		{
+			//
+			// Get category.
+			//
+			$category
+				= $_SESSION[ kSESSION_ONTOLOGY ]->ResolveNode(
+					$_SESSION[ kSESSION_ONTOLOGY ]->ResolveTerm(
+						$param[ 'parent' ],
+						NULL,
+						TRUE ),
+					TRUE )[ 0 ]	;
+			
+			//
+			// Relate to category.
+			//
+			$_SESSION[ kSESSION_ONTOLOGY ]->SubclassOf(
+				$node
+					= $_SESSION[ kSESSION_ONTOLOGY ]->NewNode(
+						$term
+							= $_SESSION[ kSESSION_ONTOLOGY ]->NewTerm(
+								$param[ 'code' ],		// Local identifier.
+								$namespace,				// Namespace.
+								$param[ 'label' ],		// Label or name.
+								$param[ 'descr' ],		// Description or definition.
+								kDEFAULT_LANGUAGE,		// Language.
+								// Additional attributes.
+								array( kTAG_SYNONYMS => array( $param[ 'code' ], $param[ 'syn' ] ),
+									   kTAG_EXAMPLES => $param[ 'examp' ] ) ),
+						$param[ 'type' ] ),				// Node data type.
+				$category );
+			
+			//
+			// Create tag.
+			//
+			$tag = NULL;
+			$_SESSION[ kSESSION_ONTOLOGY ]->AddToTag( $tag, $node );
+			$_SESSION[ kSESSION_ONTOLOGY ]->AddToTag( $tag, TRUE );
+			
+			//
+			// Inform.
+			//
+			if( kOPTION_VERBOSE )
+				echo( "    - ".$term->GID()." ["
+							  .$node[ kOFFSET_NID ]."] ("
+							  .$tag[ kOFFSET_NID ].")\n" );
+		}
+
+		//
+		// Init site enumerations storage.
+		//
+		$params = array(
+			array( 'code' => '10',
+				   'namespace' => 'LR'.kTOKEN_NAMESPACE_SEPARATOR.'CONSERVACTIONS',
+				   'parent' => 'LR'.kTOKEN_NAMESPACE_SEPARATOR.'CONSERVACTIONS',
+				   'syn' => '10',
+				   'label' => "Yes",
+				   'descr' => "Yes." ),
+			array( 'code' => '11',
+				   'namespace' => 'LR'.kTOKEN_NAMESPACE_SEPARATOR.'CONSERVACTIONS',
+				   'parent' => implode( kTOKEN_NAMESPACE_SEPARATOR, array( 'LR', 'CONSERVACTIONS', '10' ) ),
+				   'syn' => '11',
+				   'label' => "Policy-based actions",
+				   'descr' => "Policy-based actions." ),
+			array( 'code' => '12',
+				   'namespace' => 'LR'.kTOKEN_NAMESPACE_SEPARATOR.'CONSERVACTIONS',
+				   'parent' => implode( kTOKEN_NAMESPACE_SEPARATOR, array( 'LR', 'CONSERVACTIONS', '10' ) ),
+				   'syn' => '12',
+				   'label' => "Educational actions",
+				   'descr' => "Educational actions (didactic gardens, living museum etc.)." ),
+			array( 'code' => '13',
+				   'namespace' => 'LR'.kTOKEN_NAMESPACE_SEPARATOR.'CONSERVACTIONS',
+				   'parent' => implode( kTOKEN_NAMESPACE_SEPARATOR, array( 'LR', 'CONSERVACTIONS', '10' ) ),
+				   'syn' => '13',
+				   'label' => "Other",
+				   'descr' => "Other (To be specified in REMARKS)." ),
+			array( 'code' => '20',
+				   'namespace' => 'LR'.kTOKEN_NAMESPACE_SEPARATOR.'CONSERVACTIONS',
+				   'parent' => 'LR'.kTOKEN_NAMESPACE_SEPARATOR.'CONSERVACTIONS',
+				   'syn' => '20',
+				   'label' => "No",
+				   'descr' => "No." ),
+			array( 'code' => '30',
+				   'namespace' => 'LR'.kTOKEN_NAMESPACE_SEPARATOR.'CONSERVACTIONS',
+				   'parent' => 'LR'.kTOKEN_NAMESPACE_SEPARATOR.'CONSERVACTIONS',
+				   'syn' => '30',
+				   'label' => "Unknown",
+				   'descr' => "Unknown." ),
+
+			array( 'code' => '10',
+				   'namespace' => 'LR'.kTOKEN_NAMESPACE_SEPARATOR.'MONIT',
+				   'parent' => 'LR'.kTOKEN_NAMESPACE_SEPARATOR.'MONIT',
+				   'syn' => '10',
+				   'label' => "Yes",
+				   'descr' => "Yes." ),
+			array( 'code' => '20',
+				   'namespace' => 'LR'.kTOKEN_NAMESPACE_SEPARATOR.'MONIT',
+				   'parent' => 'LR'.kTOKEN_NAMESPACE_SEPARATOR.'MONIT',
+				   'syn' => '20',
+				   'label' => "No",
+				   'descr' => "No." ),
+
+			array( 'code' => '10',
+				   'namespace' => 'LR'.kTOKEN_NAMESPACE_SEPARATOR.'EXSECURE',
+				   'parent' => 'LR'.kTOKEN_NAMESPACE_SEPARATOR.'EXSECURE',
+				   'syn' => '10',
+				   'label' => "Yes",
+				   'descr' => "Yes." ),
+			array( 'code' => '20',
+				   'namespace' => 'LR'.kTOKEN_NAMESPACE_SEPARATOR.'EXSECURE',
+				   'parent' => 'LR'.kTOKEN_NAMESPACE_SEPARATOR.'EXSECURE',
+				   'syn' => '20',
+				   'label' => "No",
+				   'descr' => "No." ) );
+		
+		//
+		// Create landrace categories.
+		//
+		foreach( $params as $param )
+		{
+			//
+			// Get namespace.
+			//
+			$namespace
+				= $_SESSION[ kSESSION_ONTOLOGY ]->ResolveTerm(
+					$param[ 'namespace' ],
+					NULL,
+					TRUE );
+			
+			
+			//
+			// Get parent.
+			//
+			$parent
+				= $_SESSION[ kSESSION_ONTOLOGY ]->ResolveNode(
+					$_SESSION[ kSESSION_ONTOLOGY ]->ResolveTerm(
+						$param[ 'parent' ],
+						NULL,
+						TRUE ),
+					TRUE )[ 0 ]	;
+			
+			//
+			// Relate to trait.
+			//
+			$_SESSION[ kSESSION_ONTOLOGY ]->EnumOf(
+				$node
+					= $_SESSION[ kSESSION_ONTOLOGY ]->NewNode(
+						$term
+							= $_SESSION[ kSESSION_ONTOLOGY ]->NewTerm(
+								$param[ 'code' ],		// Local identifier.
+								$namespace,				// Namespace.
+								$param[ 'label' ],		// Label or name.
+								$param[ 'descr' ],		// Description or definition.
+								kDEFAULT_LANGUAGE ) ),	// Language.
+				$parent );
+	
+			//
+			// Inform.
+			//
+			if( kOPTION_VERBOSE )
+				echo( "    - ".$term->GID()." [".$node[ kOFFSET_NID ]."]\n" );
+		}
+
+	} // LoadLandraceMonitoringTraits.
+
+	 
+	/*===================================================================================
+	 *	LoadLandraceRemarkTraits														*
+	 *==================================================================================*/
+
+	/**
+	 * <h4>Load landrace remark traits</h4>
+	 *
+	 * This method will create the landrace remark trait nodes and relate them to their
+	 * category.
+	 */
+	function LoadLandraceRemarkTraits()
+	{
+		//
+		// Get namespace.
+		//
+		$namespace
+			= $_SESSION[ kSESSION_ONTOLOGY ]->ResolveTerm(
+				kLR_ROOT,
+				NULL,
+				TRUE );
+		
+		//
+		// Get parent.
+		//
+		$root
+			= $_SESSION[ kSESSION_ONTOLOGY ]->ResolveNode(
+				$_SESSION[ kSESSION_ONTOLOGY ]->ResolveTerm(
+					$namespace,
+					NULL,
+					TRUE ),
+				TRUE )[ 0 ]	;
+		
+		//
+		// Init local storage.
+		//
+		$params = array(
+			array( 'code' => 'REMARKS',
+				   'syn' => '8',
+				   'type' => kTYPE_STRING,
+				   'label' => "Remarks",
+				   'descr' => "The remarks field is used to add notes or to elaborate on descriptors with value 99 or 999 (=Other). Prefix remarks with the field name they refer to and make them follow by a colon (:). Distinct remarks referring to different fields are separated by semicolons (;) without space.",
+				   'examp' => array( 'The farmer often observes flower colour instability; PRODUCTUSE: chaff also used for fuel pellet and pillow filling; LRMARKTDEMAND: falling locally but growing in the district nearby.' ) ) );
+		
+		//
+		// Load data.
+		//
+		foreach( $params as $param )
+		{
+			//
+			// Relate to category.
+			//
+			$_SESSION[ kSESSION_ONTOLOGY ]->SubclassOf(
+				$node
+					= $_SESSION[ kSESSION_ONTOLOGY ]->NewNode(
+						$term
+							= $_SESSION[ kSESSION_ONTOLOGY ]->NewTerm(
+								$param[ 'code' ],		// Local identifier.
+								$namespace,				// Namespace.
+								$param[ 'label' ],		// Label or name.
+								$param[ 'descr' ],		// Description or definition.
+								kDEFAULT_LANGUAGE,		// Language.
+								// Additional attributes.
+								array( kTAG_SYNONYMS => array( $param[ 'code' ], $param[ 'syn' ] ),
+									   kTAG_EXAMPLES => $param[ 'examp' ] ) ),
+						$param[ 'type' ] ),				// Node data type.
+				$root );
+			
+			//
+			// Create tag.
+			//
+			$tag = NULL;
+			$_SESSION[ kSESSION_ONTOLOGY ]->AddToTag( $tag, $node );
+			$_SESSION[ kSESSION_ONTOLOGY ]->AddToTag( $tag, TRUE );
+			
+			//
+			// Inform.
+			//
+			if( kOPTION_VERBOSE )
+				echo( "    - ".$term->GID()." ["
+							  .$node[ kOFFSET_NID ]."] ("
+							  .$tag[ kOFFSET_NID ].")\n" );
+		}
+
+	} // LoadLandraceRemarkTraits.
 
 
 ?>
