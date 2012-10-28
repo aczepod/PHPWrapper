@@ -56,7 +56,18 @@ class MyClass extends COntology
 //
 // Debug switches.
 //
-define( 'kDEBUG_PARENT', TRUE );
+define( 'kDEBUG_PARENT', 		TRUE );
+
+/*=======================================================================================
+ *	VERBOSE FLAG																		*
+ *======================================================================================*/
+
+/**
+ * Verbnose flag.
+ *
+ * If set, the method will echo all created elements.
+ */
+define( "kOPTION_VERBOSE",		FALSE );
 
 
 /*=======================================================================================

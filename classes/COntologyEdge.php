@@ -1131,11 +1131,56 @@ class COntologyEdge extends CEdge
 			// Set native identifier.
 			//
 			if( ! $this->offsetExists( kOFFSET_NID ) )
-				$this->offsetSet(
-					kOFFSET_NID,
-					static::ResolveContainer(
-						$theConnection, TRUE )
-							->NextSequence( kSEQUENCE_KEY_EDGE, TRUE ) );
+			{
+				//
+				// Create graph edge.
+				//
+				if( kGRAPH_DB )
+				{
+					//
+					// Connect.
+					//
+					if( (! isset( $_SESSION ))
+					 || (! array_key_exists( 'neo4j', $_SESSION )) )
+						$client = $_SESSION[ 'neo4j' ]
+							= new Everyman\Neo4j\Client( 'localhost', 7474 );
+					else
+						$client = $_SESSION[ 'neo4j' ];
+					
+					//
+					// Build node.
+					//
+					$edge = $client->makeRelationship();
+					$edge->setStartNode( $client->getNode( $this->Subject() ) );
+					$edge->setEndNode( $client->getNode( $this->Object() ) );
+					$edge->setType( $this->mPredicate->GID() );
+					
+					//
+					// Save node.
+					//
+					$edge->save();
+					
+					//
+					// Use its ID.
+					//
+					$id = $edge->getId();
+				
+				} // Use graph DB.
+				
+				//
+				// Use sequence number.
+				//
+				else
+					$id = static::ResolveContainer(
+							$theConnection, TRUE )
+								->NextSequence( kSEQUENCE_KEY_EDGE, TRUE );
+				
+				//
+				// Set identifier.
+				//
+				$this->offsetSet( kOFFSET_NID, $id );
+			
+			} // Missing native identifier.
 		
 		} // Insert or replace.
 	

@@ -21,6 +21,17 @@
  */
 
 /*=======================================================================================
+ *	GRAPH DB SWITCH																		*
+ *======================================================================================*/
+
+/**
+ * Graph database activator.
+ *
+ * If this switch is set on, it means that the library will make use of the graph database.
+ */
+define( "kGRAPH_DB",						FALSE );
+
+/*=======================================================================================
  *	NAMESPACE ROOT																		*
  *======================================================================================*/
 
@@ -66,6 +77,17 @@ define( "kPATH_MYWRAPPER_LIBRARY_CLASS",	"/Library/WebServer/Library/PHPWrapper/
  * sources directory.
  */
 define( "kPATH_MYWRAPPER_LIBRARY_FUNCTION",	"/Library/WebServer/Library/PHPWrapper/functions" );
+
+/*=======================================================================================
+ *	NEO4J LIBRARY PATHS																	*
+ *======================================================================================*/
+
+/**
+ * Neo4j library root.
+ *
+ * This value defines the <b><i>absolute</i></b> path to the Neo4j library directory.
+ */
+define( "kPATH_LIBRARY_NEO4J",				"/Library/WebServer/Library/Neo4jphp/" );
 
 /*=======================================================================================
  *	SESSION GLOBALS																		*
@@ -121,18 +143,6 @@ function MyAutoload( $theClassName )
 		// Create path.
 		//
 		$path = implode( DIRECTORY_SEPARATOR, $namespaces ).'.php';
-		
-		//
-		// Require class.
-		//
-		if( file_exists( $path ) )
-			require_once( $path );
-		
-		//
-		// Require whatever.
-		//
-		else
-			require_once( $theClassName );
 	
 	} // This librarie's namespace.
 	
@@ -140,8 +150,42 @@ function MyAutoload( $theClassName )
 	// Handle without namespaces.
 	//
 	else
-		require_once( kPATH_MYWRAPPER_LIBRARY_CLASS."/$theClassName.php" );
+		$path = kPATH_MYWRAPPER_LIBRARY_CLASS."/$theClassName.php";
+		
+	//
+	// Require class.
+	//
+	if( file_exists( $path ) )
+		require_once( $path );
 
 } spl_autoload_register( 'MyAutoload' );
+
+/*=======================================================================================
+ *	GRAPG DB AUTOLOADER																	*
+ *======================================================================================*/
+
+/**
+ * Autoloader.
+ *
+ * This section allows automatic inclusion of the library classes.
+ *
+ * @param string				$theClassName		name of class to load.
+ */
+function Neo4jAutoload( $theClassName )
+{
+	//
+	// Build path.
+	//
+	$_path = kPATH_LIBRARY_NEO4J.'lib/'
+			.str_replace( '\\', DIRECTORY_SEPARATOR, $theClassName )
+			.'.php';
+	
+	//
+	// Check file.
+	//
+	if( file_exists( $_path ) )
+		require_once( $_path );
+
+} spl_autoload_register( 'Neo4jAutoload' );
 
 ?>

@@ -19,6 +19,14 @@
  *																						*
  *======================================================================================*/
 
+//
+// Class includes.
+//
+use	Everyman\Neo4j\Client,
+	Everyman\Neo4j\Transport,
+	Everyman\Neo4j\Node,
+	Everyman\Neo4j\Relationship;
+
 /**
  * Local definitions.
  *
@@ -416,7 +424,7 @@ class COntologyNode extends CNode
 			// Refresh cache.
 			// Uncommitted terms are cached by default.
 			//
-			if( $doReload						// Reload,
+			if( $doReload					// Reload,
 			 || ($this->mTerm === NULL) )	// or not cached.
 			{
 				//
@@ -1017,8 +1025,7 @@ class COntologyNode extends CNode
 				//
 				// Set identifier in term offset.
 				//
-				$this->offsetSet( kTAG_TERM,
-								  $term->offsetGet( kOFFSET_NID ) );
+				$this->offsetSet( kTAG_TERM, $term->offsetGet( kOFFSET_NID ) );
 				
 			} // Term is object.
 			
@@ -1069,11 +1076,58 @@ class COntologyNode extends CNode
 			// Set native identifier.
 			//
 			if( ! $this->offsetExists( kOFFSET_NID ) )
-				$this->offsetSet(
-					kOFFSET_NID,
-					COntologyTerm::ResolveClassContainer(
-						$theConnection, TRUE )
-							->NextSequence( kSEQUENCE_KEY_NODE, TRUE ) );
+			{
+				//
+				// Create graph node.
+				//
+				if( kGRAPH_DB )
+				{
+					//
+					// Connect.
+					//
+					if( (! isset( $_SESSION ))
+					 || (! array_key_exists( 'neo4j', $_SESSION )) )
+						$client = $_SESSION[ 'neo4j' ]
+							= new Everyman\Neo4j\Client( 'localhost', 7474 );
+					else
+						$client = $_SESSION[ 'neo4j' ];
+					
+					//
+					// Build node.
+					//
+					$node = new Node( $client );
+					$node->setProperty( kTAG_TERM, $this->mTerm->GID() );
+					if( $this->mTerm->offsetExists( kTAG_KIND ) )
+						$node->setProperty( kTAG_KIND, $this->mTerm->Kind() );
+					if( $this->mTerm->offsetExists( kTAG_TYPE ) )
+						$node->setProperty( kTAG_TYPE, $this->mTerm->Type() );
+					
+					//
+					// Save node.
+					//
+					$node->save();
+					
+					//
+					// Use its ID.
+					//
+					$id = $node->getId();
+				
+				} // Use graph database.
+				
+				//
+				// Get sequence number.
+				//
+				else
+					$id = static::ResolveClassContainer(
+							$theConnection, TRUE )
+								->NextSequence( kSEQUENCE_KEY_NODE, TRUE );
+				
+				//
+				// Set identifier.
+				//
+				$this->offsetSet( kOFFSET_NID, $id );
+			
+			} // Missing native identifier.
 		
 		} // Insert or replace.
 	

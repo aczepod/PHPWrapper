@@ -936,15 +936,13 @@ class CMongoContainer extends CContainer
 	 *
 	 * @param string				$theKey				Sequence key.
 	 * @param mixed					$theContainer		Sequence container.
-	 * @param mixed					$theObject			Receiving object.
 	 *
 	 * @access public
 	 * @return mixed				The sequence number or <tt>NULL</tt>.
 	 *
 	 * @throws Exception
 	 */
-	public function NextSequence( $theKey, $theContainer = NULL,
-										   $theObject = NULL )
+	public function NextSequence( $theKey, $theContainer = NULL )
 	{
 		//
 		// Check inited status.

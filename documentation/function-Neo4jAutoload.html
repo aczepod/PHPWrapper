@@ -4,7 +4,7 @@
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 	<meta name="generator" content="ApiGen 2.8.0" />
 
-	<title>Function PO2Array | MyWrapper Reference Documentation</title>
+	<title>Function Neo4jAutoload | MyWrapper Reference Documentation</title>
 
 	<script type="text/javascript" src="resources/combined.js?368249000"></script>
 	<script type="text/javascript" src="elementlist.js?4074054978"></script>
@@ -25,11 +25,11 @@
 						<ul>
 				<li class="main"><a href="package-MyWrapper.Data.html">Data</a>
 						</li>
-				<li class="main"><a href="package-MyWrapper.Definitions.html">Definitions</a>
+				<li class="active main"><a href="package-MyWrapper.Definitions.html">Definitions</a>
 						</li>
 				<li class="main"><a href="package-MyWrapper.Framework.html">Framework</a>
 						</li>
-				<li class="active main"><a href="package-MyWrapper.Functions.html">Functions</a>
+				<li class="main"><a href="package-MyWrapper.Functions.html">Functions</a>
 						</li>
 				<li class="main"><a href="package-MyWrapper.Ontology.html">Ontology</a>
 						</li>
@@ -52,18 +52,8 @@
 
 			<h3>Functions</h3>
 			<ul>
-				<li><a href="function-DeleteFileDir.html">DeleteFileDir</a></li>
-				<li><a href="function-DurationString.html">DurationString</a></li>
-				<li><a href="function-JsonDecode.html">JsonDecode</a></li>
-				<li><a href="function-JsonEncode.html">JsonEncode</a></li>
-				<li><a href="function-JsonError.html">JsonError</a></li>
-				<li><a href="function-ManageBitField.html">ManageBitField</a></li>
-				<li><a href="function-ManageObjectSetOffset.html">ManageObjectSetOffset</a></li>
-				<li><a href="function-ManageOffset.html">ManageOffset</a></li>
-				<li><a href="function-ManageProperty.html">ManageProperty</a></li>
-				<li><a href="function-ManageTypedOffset.html">ManageTypedOffset</a></li>
-				<li class="active"><a href="function-PO2Array.html">PO2Array</a></li>
-				<li><a href="function-StringNormalise.html">StringNormalise</a></li>
+				<li><a href="function-MyAutoload.html">MyAutoload</a></li>
+				<li class="active"><a href="function-Neo4jAutoload.html">Neo4jAutoload</a></li>
 			</ul>
 		</div>
 	</div>
@@ -86,7 +76,7 @@
 				<a href="index.html" title="Overview"><span>Overview</span></a>
 			</li>
 			<li>
-				<a href="package-MyWrapper.Functions.html" title="Summary of MyWrapper\Functions"><span>Package</span></a>
+				<a href="package-MyWrapper.Definitions.html" title="Summary of MyWrapper\Definitions"><span>Package</span></a>
 			</li>
 			<li class="active">
 <span>Function</span>			</li>
@@ -101,56 +91,38 @@
 	</div>
 
 <div id="content" class="function">
-	<h1>Function PO2Array</h1>
+	<h1>Function Neo4jAutoload</h1>
 
 
 	<div class="description">
 	
-<h4>Convert a PO file into an array</h4>
+<p>Autoloader.</p>
 
-<p>This function will parse the provided PO file and return its contents as an
-array in which the element's key represents the english string and the element's
-value the translated string.</p>
-
-<p>If any error occurs, the function will raise an exception; if the file is
-empty, the function will return <tt>NULL</tt>.</p>
+<p>This section allows automatic inclusion of the library classes.</p>
 
 	</div>
 
 	<div class="info">
 		
-		<b>Package:</b> <a href="package-MyWrapper.html">MyWrapper</a>\<a href="package-MyWrapper.Functions.html">Functions</a><br />
+		<b>Package:</b> <a href="package-MyWrapper.html">MyWrapper</a>\<a href="package-MyWrapper.Definitions.html">Definitions</a><br />
 				<b>Author:</b>
-				Milko A. Škofič &lt;<a
+				Milko A. Skofic &lt;<a
 href="mailto:m.skofic&#64;cgiar.org">m.skofic&#64;<!---->cgiar.org</a>&gt;<br />
-				<b>Uses:</b>
-				<code><code><a href="function-JsonError.html">JsonError()</a></code></code> <br />
-		<b>Located at</b> <a href="source-function-PO2Array.html#176-306" title="Go to source code">parsing.php</a><br />
+		<b>Located at</b> <a href="source-function-Neo4jAutoload.html#167-189" title="Go to source code">includes.inc.php</a><br />
 	</div>
 
 
 	<table class="summary" id="parameters">
 	<caption>Parameters summary</caption>
-	<tr id="$theFile">
+	<tr id="$theClassName">
 		<td class="name"><code>string</code></td>
-		<td class="value"><code><var>$theFile</var></code></td>
+		<td class="value"><code><var>$theClassName</var></code></td>
 		<td>
-			 File path.
+			 name of class to load.
 		</td>
 	</tr>
 	</table>
 
-	<table class="summary" id="returns">
-	<caption>Return value summary</caption>
-	<tr>
-		<td class="name"><code>
-			array
-		</code></td>
-		<td>
-			Parsed key/value array.
-		</td>
-	</tr>
-	</table>
 
 
 </div>

@@ -7,7 +7,7 @@
 	<title>Class CContainer | MyWrapper Reference Documentation</title>
 
 	<script type="text/javascript" src="resources/combined.js?368249000"></script>
-	<script type="text/javascript" src="elementlist.js?3910854734"></script>
+	<script type="text/javascript" src="elementlist.js?4074054978"></script>
 	<link rel="stylesheet" type="text/css" media="all" href="resources/style.css?3505392360" />
 
 </head>
@@ -199,7 +199,7 @@ implement specific storage actions.</p>
 				<b>Author:</b>
 				Milko A. Škofič &lt;<a
 href="mailto:m.skofic&#64;cgiar.org">m.skofic&#64;<!---->cgiar.org</a>&gt;<br />
-		<b>Located at</b> <a href="source-class-CContainer.html#57-423" title="Go to source code">CContainer.php</a><br />
+		<b>Located at</b> <a href="source-class-CContainer.html#57-422" title="Go to source code">CContainer.php</a><br />
 	</div>
 
 
@@ -515,7 +515,7 @@ represents the list of desired fields.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#_NextSequence">#</a>
-		<code><a href="source-class-CContainer.html#323-360" title="Go to source code">NextSequence</a>( <span>string <var>$theKey</var></span>, <span>mixed <var>$theContainer</var> = <span class="php-keyword1">NULL</span></span>, <span>mixed <var>$theObject</var> = <span class="php-keyword1">NULL</span> </span> )</code>
+		<code><a href="source-class-CContainer.html#323-359" title="Go to source code">NextSequence</a>( <span>string <var>$theKey</var></span>, <span>mixed <var>$theContainer</var> = <span class="php-keyword1">NULL</span> </span> )</code>
 
 		<div class="description short">
 			
@@ -536,14 +536,16 @@ will be the kOFFSET_NID of the record holding the sequence and the field
 holding the current number has the kOFFSET_SEQUENCE offset.</p>
 
 <p>The second parameter represents the container in which the sequence is
-stored: if you provide a string, the method should use a corresponding native
-container; if you provide <tt>TRUE</tt>, the method will use the string stored
-in kCONTAINER_SEQUENCE_NAME; if you provide <tt>NULL</tt>, the method
-will use the current container.</p>
+stored:</p>
 
-<p>The third optional parameter should refer to the object receiving the
-sequence, this will be useful in derived classes that handle graph
-databases.</p>
+<ul>
+	<li><tt>string<tt>: The method should use the native container corresponding to
+	the provided string. </tt></tt></li>
+
+	<li><tt>TRUE<tt>: The method should use the string stored in kCONTAINER_SEQUENCE_NAME. </tt></tt></li>
+
+	<li><tt>NULL<tt>: The method should use the current container. </tt></tt></li>
+</ul>
 
 <p>If the object is not _Is Inited(), the method should raise an
 exception.</p>
@@ -561,8 +563,6 @@ exception.</p>
 					<dd><code>string</code><br>$theKey Sequence key.</dd>
 					<dt><var>$theContainer</var></dt>
 					<dd><code>mixed</code><br>$theContainer Sequence container.</dd>
-					<dt><var>$theObject</var></dt>
-					<dd><code>mixed</code><br>$theObject Receiving object.</dd>
 				</dl></div>
 
 				<h4>Returns</h4>
@@ -591,7 +591,7 @@ exception.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#_NewQuery">#</a>
-		<code><a href="source-class-CContainer.html#376-387" title="Go to source code">NewQuery</a>( )</code>
+		<code><a href="source-class-CContainer.html#375-386" title="Go to source code">NewQuery</a>( )</code>
 
 		<div class="description short">
 			
@@ -634,7 +634,7 @@ container.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#_ConvertValue">#</a>
-		<code><a href="source-class-CContainer.html#403-419" title="Go to source code">ConvertValue</a>( <span>string <var>$theType</var></span>, <span>mixed <var>$theValue</var></span> )</code>
+		<code><a href="source-class-CContainer.html#402-418" title="Go to source code">ConvertValue</a>( <span>string <var>$theType</var></span>, <span>mixed <var>$theValue</var></span> )</code>
 
 		<div class="description short">
 			

@@ -331,14 +331,15 @@ abstract class CContainer extends CConnection
 	 * be the {@link kOFFSET_NID} of the record holding the sequence and the field holding
 	 * the current number has the {@link kOFFSET_SEQUENCE} offset.
 	 *
-	 * The second parameter represents the container in which the sequence is stored: if you
-	 * provide a string, the method should use a corresponding native container; if you
-	 * provide <tt>TRUE</tt>, the method will use the string stored in
-	 * {@link kCONTAINER_SEQUENCE_NAME}; if you provide <tt>NULL</tt>, the method will use
-	 * the current container.
+	 * The second parameter represents the container in which the sequence is stored:
 	 *
-	 * The third optional parameter should refer to the object receiving the sequence, this
-	 * will be useful in derived classes that handle graph databases.
+	 * <ul>
+	 *	<li><tt>string<tt>: The method should use the native container corresponding to the
+	 *		provided string.
+	 *	<li><tt>TRUE<tt>: The method should use the string stored in
+	 *		{@link kCONTAINER_SEQUENCE_NAME}.
+	 *	<li><tt>NULL<tt>: The method should use the current container.
+	 * </ul>
 	 *
 	 * If the object is not {@link _Is Inited()}, the method should raise an exception.
 	 *
@@ -349,15 +350,13 @@ abstract class CContainer extends CConnection
 	 *
 	 * @param string				$theKey				Sequence key.
 	 * @param mixed					$theContainer		Sequence container.
-	 * @param mixed					$theObject			Receiving object.
 	 *
 	 * @access public
 	 * @return mixed				The sequence number or <tt>NULL</tt>.
 	 *
 	 * @throws Exception
 	 */
-	public function NextSequence( $theKey, $theContainer = NULL,
-										   $theObject = NULL )			{	return NULL;	}
+	public function NextSequence( $theKey, $theContainer = NULL )		{	return NULL;	}
 
 		
 
