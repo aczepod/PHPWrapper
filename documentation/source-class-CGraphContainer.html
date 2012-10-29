@@ -5,7 +5,7 @@
 	<meta name="generator" content="ApiGen 2.8.0" />
 	<meta name="robots" content="noindex" />
 
-	<title>File CConnection.php | MyWrapper Reference Documentation</title>
+	<title>File CGraphContainer.php | MyWrapper Reference Documentation</title>
 
 	<script type="text/javascript" src="resources/combined.js?3994123307"></script>
 	<script type="text/javascript" src="elementlist.js?3540368508"></script>
@@ -48,12 +48,12 @@
 		<div id="elements">
 			<h3>Classes</h3>
 			<ul>
-				<li class="active"><a href="class-CConnection.html">CConnection</a></li>
+				<li><a href="class-CConnection.html">CConnection</a></li>
 				<li><a href="class-CContainer.html">CContainer</a></li>
 				<li><a href="class-CDatabase.html">CDatabase</a></li>
 				<li><a href="class-CDocument.html">CDocument</a></li>
 				<li><a href="class-CEdge.html">CEdge</a></li>
-				<li><a href="class-CGraphContainer.html">CGraphContainer</a></li>
+				<li class="active"><a href="class-CGraphContainer.html">CGraphContainer</a></li>
 				<li><a href="class-CNode.html">CNode</a></li>
 				<li><a href="class-CQuery.html">CQuery</a></li>
 				<li><a href="class-CQueryStatement.html">CQueryStatement</a></li>
@@ -91,7 +91,7 @@
 				<a href="package-MyWrapper.Framework.html" title="Summary of MyWrapper\Framework"><span>Package</span></a>
 			</li>
 			<li>
-				<a href="class-CConnection.html" title="Summary of CConnection"><span>Class</span></a>
+				<a href="class-CGraphContainer.html" title="Summary of CGraphContainer"><span>Class</span></a>
 			</li>
 		</ul>
 		<ul>
@@ -106,21 +106,21 @@
 <pre><code><span id="1" class="l"><a class="l" href="#1">  1: </a><span class="xlang">&lt;?php</span>
 </span><span id="2" class="l"><a class="l" href="#2">  2: </a>
 </span><span id="3" class="l"><a class="l" href="#3">  3: </a><span class="php-comment">/**
-</span></span><span id="4" class="l"><a class="l" href="#4">  4: </a><span class="php-comment"> * &lt;i&gt;CConnection&lt;/i&gt; class definition.
+</span></span><span id="4" class="l"><a class="l" href="#4">  4: </a><span class="php-comment"> * &lt;i&gt;CGraphContainer&lt;/i&gt; class definition.
 </span></span><span id="5" class="l"><a class="l" href="#5">  5: </a><span class="php-comment"> *
-</span></span><span id="6" class="l"><a class="l" href="#6">  6: </a><span class="php-comment"> * This file contains the class definition of &lt;b&gt;CConnection&lt;/b&gt; which represents the
-</span></span><span id="7" class="l"><a class="l" href="#7">  7: </a><span class="php-comment"> * ancestor of all connection and container objects in this library.
+</span></span><span id="6" class="l"><a class="l" href="#6">  6: </a><span class="php-comment"> * This file contains the class definition of &lt;b&gt;CGraphContainer&lt;/b&gt; which implements a
+</span></span><span id="7" class="l"><a class="l" href="#7">  7: </a><span class="php-comment"> * graph container.
 </span></span><span id="8" class="l"><a class="l" href="#8">  8: </a><span class="php-comment"> *
 </span></span><span id="9" class="l"><a class="l" href="#9">  9: </a><span class="php-comment"> *  @package    MyWrapper
-</span></span><span id="10" class="l"><a class="l" href="#10"> 10: </a><span class="php-comment"> *  @subpackage Framework
+</span></span><span id="10" class="l"><a class="l" href="#10"> 10: </a><span class="php-comment"> *  @subpackage Persistence
 </span></span><span id="11" class="l"><a class="l" href="#11"> 11: </a><span class="php-comment"> *
 </span></span><span id="12" class="l"><a class="l" href="#12"> 12: </a><span class="php-comment"> *  @author     Milko A. Škofič &lt;m.skofic@cgiar.org&gt;
-</span></span><span id="13" class="l"><a class="l" href="#13"> 13: </a><span class="php-comment"> *  @version    1.00 08/09/2012
+</span></span><span id="13" class="l"><a class="l" href="#13"> 13: </a><span class="php-comment"> *  @version    1.00 29/10/2012
 </span></span><span id="14" class="l"><a class="l" href="#14"> 14: </a><span class="php-comment"> */</span>
 </span><span id="15" class="l"><a class="l" href="#15"> 15: </a>
 </span><span id="16" class="l"><a class="l" href="#16"> 16: </a><span class="php-comment">/*=======================================================================================
 </span></span><span id="17" class="l"><a class="l" href="#17"> 17: </a><span class="php-comment"> *                                                                                      *
-</span></span><span id="18" class="l"><a class="l" href="#18"> 18: </a><span class="php-comment"> *                                  CConnection.php                                     *
+</span></span><span id="18" class="l"><a class="l" href="#18"> 18: </a><span class="php-comment"> *                                  CGraphContainer.php                                 *
 </span></span><span id="19" class="l"><a class="l" href="#19"> 19: </a><span class="php-comment"> *                                                                                      *
 </span></span><span id="20" class="l"><a class="l" href="#20"> 20: </a><span class="php-comment"> *======================================================================================*/</span>
 </span><span id="21" class="l"><a class="l" href="#21"> 21: </a>
@@ -129,14 +129,14 @@
 </span></span><span id="24" class="l"><a class="l" href="#24"> 24: </a><span class="php-comment"> *
 </span></span><span id="25" class="l"><a class="l" href="#25"> 25: </a><span class="php-comment"> * This include file contains common offset definitions.
 </span></span><span id="26" class="l"><a class="l" href="#26"> 26: </a><span class="php-comment"> */</span>
-</span><span id="27" class="l"><a class="l" href="#27"> 27: </a><span class="php-keyword1">require_once</span>( <span class="php-quote">&quot;CConnection.inc.php&quot;</span> );
+</span><span id="27" class="l"><a class="l" href="#27"> 27: </a><span class="php-keyword1">require_once</span>( <span class="php-quote">&quot;CGraphContainer.inc.php&quot;</span> );
 </span><span id="28" class="l"><a class="l" href="#28"> 28: </a>
 </span><span id="29" class="l"><a class="l" href="#29"> 29: </a><span class="php-comment">/**
 </span></span><span id="30" class="l"><a class="l" href="#30"> 30: </a><span class="php-comment"> * Ancestor.
 </span></span><span id="31" class="l"><a class="l" href="#31"> 31: </a><span class="php-comment"> *
 </span></span><span id="32" class="l"><a class="l" href="#32"> 32: </a><span class="php-comment"> * This includes the ancestor class definitions.
 </span></span><span id="33" class="l"><a class="l" href="#33"> 33: </a><span class="php-comment"> */</span>
-</span><span id="34" class="l"><a class="l" href="#34"> 34: </a><span class="php-keyword1">require_once</span>( kPATH_MYWRAPPER_LIBRARY_CLASS.<span class="php-quote">&quot;/CStatusDocument.php&quot;</span> );
+</span><span id="34" class="l"><a class="l" href="#34"> 34: </a><span class="php-keyword1">require_once</span>( kPATH_MYWRAPPER_LIBRARY_CLASS.<span class="php-quote">&quot;/CConnection.php&quot;</span> );
 </span><span id="35" class="l"><a class="l" href="#35"> 35: </a>
 </span><span id="36" class="l"><a class="l" href="#36"> 36: </a><span class="php-comment">/**
 </span></span><span id="37" class="l"><a class="l" href="#37"> 37: </a><span class="php-comment"> * &lt;h3&gt;Connection object ancestor&lt;/h3&gt;
@@ -176,16 +176,16 @@
 </span></span><span id="71" class="l"><a class="l" href="#71"> 71: </a><span class="php-comment"> *  @package    MyWrapper
 </span></span><span id="72" class="l"><a class="l" href="#72"> 72: </a><span class="php-comment"> *  @subpackage Framework
 </span></span><span id="73" class="l"><a class="l" href="#73"> 73: </a><span class="php-comment"> */</span>
-</span><span id="74" class="l"><a class="l" href="#74"> 74: </a><span class="php-keyword1">abstract</span> <span class="php-keyword1">class</span> <a id="CConnection" href="#CConnection">CConnection</a> <span class="php-keyword1">extends</span> CStatusDocument
+</span><span id="74" class="l"><a class="l" href="#74"> 74: </a><span class="php-keyword1">class</span> <a id="CGraphContainer" href="#CGraphContainer">CGraphContainer</a> <span class="php-keyword1">extends</span> CConnection
 </span><span id="75" class="l"><a class="l" href="#75"> 75: </a>{
 </span><span id="76" class="l"><a class="l" href="#76"> 76: </a>    <span class="php-comment">/**
 </span></span><span id="77" class="l"><a class="l" href="#77"> 77: </a><span class="php-comment">     * Persistent data store.
 </span></span><span id="78" class="l"><a class="l" href="#78"> 78: </a><span class="php-comment">     *
-</span></span><span id="79" class="l"><a class="l" href="#79"> 79: </a><span class="php-comment">     * This data member holds the native persistent store.
+</span></span><span id="79" class="l"><a class="l" href="#79"> 79: </a><span class="php-comment">     * This data member holds the native graph client connection.
 </span></span><span id="80" class="l"><a class="l" href="#80"> 80: </a><span class="php-comment">     *
 </span></span><span id="81" class="l"><a class="l" href="#81"> 81: </a><span class="php-comment">     * @var mixed
 </span></span><span id="82" class="l"><a class="l" href="#82"> 82: </a><span class="php-comment">     */</span>
-</span><span id="83" class="l"><a class="l" href="#83"> 83: </a>     <span class="php-keyword1">protected</span> <span class="php-var"><a id="$mConnection" href="#$mConnection">$mConnection</a></span> = <span class="php-keyword1">NULL</span>;
+</span><span id="83" class="l"><a class="l" href="#83"> 83: </a>     <span class="php-keyword1">protected</span> <span class="php-keyword1">static</span> <span class="php-var"><a id="$mGraphClient" href="#$mGraphClient">$mGraphClient</a></span> = <span class="php-keyword1">NULL</span>;
 </span><span id="84" class="l"><a class="l" href="#84"> 84: </a>
 </span><span id="85" class="l"><a class="l" href="#85"> 85: </a>        
 </span><span id="86" class="l"><a class="l" href="#86"> 86: </a>
@@ -372,7 +372,7 @@
 </span><span id="267" class="l"><a class="l" href="#267">267: </a>
 </span><span id="268" class="l"><a class="l" href="#268">268: </a>     
 </span><span id="269" class="l"><a class="l" href="#269">269: </a>
-</span><span id="270" class="l"><a class="l" href="#270">270: </a>} <span class="php-comment">// class CConnection.</span>
+</span><span id="270" class="l"><a class="l" href="#270">270: </a>} <span class="php-comment">// class CGraphContainer.</span>
 </span><span id="271" class="l"><a class="l" href="#271">271: </a>
 </span><span id="272" class="l"><a class="l" href="#272">272: </a>
 </span><span id="273" class="l"><a class="l" href="#273">273: </a><span class="xlang">?&gt;</span>

@@ -4,7 +4,7 @@
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 	<meta name="generator" content="ApiGen 2.8.0" />
 
-	<title>Class CConnection | MyWrapper Reference Documentation</title>
+	<title>Class CGraphContainer | MyWrapper Reference Documentation</title>
 
 	<script type="text/javascript" src="resources/combined.js?3994123307"></script>
 	<script type="text/javascript" src="elementlist.js?3540368508"></script>
@@ -47,12 +47,12 @@
 		<div id="elements">
 			<h3>Classes</h3>
 			<ul>
-				<li class="active"><a href="class-CConnection.html">CConnection</a></li>
+				<li><a href="class-CConnection.html">CConnection</a></li>
 				<li><a href="class-CContainer.html">CContainer</a></li>
 				<li><a href="class-CDatabase.html">CDatabase</a></li>
 				<li><a href="class-CDocument.html">CDocument</a></li>
 				<li><a href="class-CEdge.html">CEdge</a></li>
-				<li><a href="class-CGraphContainer.html">CGraphContainer</a></li>
+				<li class="active"><a href="class-CGraphContainer.html">CGraphContainer</a></li>
 				<li><a href="class-CNode.html">CNode</a></li>
 				<li><a href="class-CQuery.html">CQuery</a></li>
 				<li><a href="class-CQueryStatement.html">CQueryStatement</a></li>
@@ -102,7 +102,7 @@
 	</div>
 
 <div id="content" class="class">
-	<h1>Class CConnection</h1>
+	<h1>Class CGraphContainer</h1>
 
 
 	<div class="description">
@@ -122,10 +122,10 @@ native derived concrete classes.</p>
 in a data member of the object, the array part of the object can be used to
 store specific attributes of the native connection.</p>
 
-<p>All objects derived from this class must implement the <code><a href="class-CConnection.html#___toString">CConnection::__toString()</a></code>
+<p>All objects derived from this class must implement the <code><a href="class-CGraphContainer.html#___toString">CGraphContainer::__toString()</a></code>
 method that will return the specific name of the current connection.</p>
 
-<p>The <code><a href="class-CConnection.html#_Connection">CConnection::Connection()</a></code> accessor method can be used to manage the native
+<p>The <code><a href="class-CGraphContainer.html#_Connection">CGraphContainer::Connection()</a></code> accessor method can be used to manage the native
 connection and the inherited offset management methods can be used to manage the
 connection attributes.</p>
 
@@ -177,35 +177,28 @@ instance, the database, given the container.</p>
 		</dd>
 		<dd style="padding-left:90px">
 			<img src="resources/inherit.png" alt="Extended by" />
-<b><span>CConnection</span></b>			
+			<a href="class-CConnection.html"><span>CConnection</span></a>
+			
+			
+			
+		</dd>
+		<dd style="padding-left:120px">
+			<img src="resources/inherit.png" alt="Extended by" />
+<b><span>CGraphContainer</span></b>			
 			
 			
 		</dd>
 	</dl>
 
 
-	<div>
-		<h4>Direct known subclasses</h4>
-			<a href="class-CContainer.html">CContainer</a>, 
-			<a href="class-CDatabase.html">CDatabase</a>, 
-			<a href="class-CGraphContainer.html">CGraphContainer</a>, 
-			<a href="class-COntology.html">COntology</a>, 
-			<a href="class-CServer.html">CServer</a>
-	</div>
 
-	<div>
-		<h4>Indirect known subclasses</h4>
-			<a href="class-CMongoContainer.html">CMongoContainer</a>, 
-			<a href="class-CMongoDatabase.html">CMongoDatabase</a>, 
-			<a href="class-CMongoServer.html">CMongoServer</a>
-	</div>
 
 
 
 
 
 	<div class="info">
-		<b>Abstract</b><br />
+		
 		
 		
 		<b>Package:</b> <a href="package-MyWrapper.html">MyWrapper</a>\<a href="package-MyWrapper.Framework.html">Framework</a><br />
@@ -213,7 +206,7 @@ instance, the database, given the container.</p>
 				<b>Author:</b>
 				Milko A. Škofič &lt;<a
 href="mailto:m.skofic&#64;cgiar.org">m.skofic&#64;<!---->cgiar.org</a>&gt;<br />
-		<b>Located at</b> <a href="source-class-CConnection.html#36-270" title="Go to source code">CConnection.php</a><br />
+		<b>Located at</b> <a href="source-class-CGraphContainer.html#36-270" title="Go to source code">CGraphContainer.php</a><br />
 	</div>
 
 
@@ -231,7 +224,7 @@ href="mailto:m.skofic&#64;cgiar.org">m.skofic&#64;<!---->cgiar.org</a>&gt;<br />
 
 		<td class="name"><div>
 		<a class="anchor" href="#___construct">#</a>
-		<code><a href="source-class-CConnection.html#99-124" title="Go to source code">__construct</a>( <span>mixed <var>$theConnection</var> = <span class="php-keyword1">NULL</span></span>, <span>mixed <var>$theOptions</var> = <span class="php-keyword1">NULL</span> </span> )</code>
+		<code><a href="source-class-CGraphContainer.html#99-124" title="Go to source code">__construct</a>( <span>mixed <var>$theConnection</var> = <span class="php-keyword1">NULL</span></span>, <span>mixed <var>$theOptions</var> = <span class="php-keyword1">NULL</span> </span> )</code>
 
 		<div class="description short">
 			
@@ -265,11 +258,11 @@ accessor method.</p>
 
 				<h4>Uses</h4>
 				<div class="list">
-						<code><code><a href="class-CConnection.html#_Connection">CConnection::Connection()</a></code></code> <br />
+						<code><code><a href="class-CGraphContainer.html#_Connection">CGraphContainer::Connection()</a></code></code> <br />
 				</div>
 
 				<h4>Overrides</h4>
-				<div class="list"><code><a href="class-CStatusDocument.html#___construct">CStatusDocument::__construct()</a></code></div>
+				<div class="list"><code><a href="class-CConnection.html#___construct">CConnection::__construct()</a></code></div>
 
 		</div>
 		</div></td>
@@ -285,7 +278,7 @@ accessor method.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#___toString">#</a>
-		<code><a href="source-class-CConnection.html#131-142" title="Go to source code">__toString</a>( )</code>
+		<code><a href="source-class-CGraphContainer.html#131-142" title="Go to source code">__toString</a>( )</code>
 
 		<div class="description short">
 			
@@ -327,7 +320,7 @@ must be able to return a name.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#_Connection">#</a>
-		<code><a href="source-class-CConnection.html#158-203" title="Go to source code">Connection</a>( <span>mixed <var>$theValue</var> = <span class="php-keyword1">NULL</span></span>, <span>boolean <var>$getOld</var> = <span class="php-keyword1">FALSE</span> </span> )</code>
+		<code><a href="source-class-CGraphContainer.html#158-203" title="Go to source code">Connection</a>( <span>mixed <var>$theValue</var> = <span class="php-keyword1">NULL</span></span>, <span>boolean <var>$getOld</var> = <span class="php-keyword1">FALSE</span> </span> )</code>
 
 		<div class="description short">
 			
@@ -384,9 +377,11 @@ has been set.</p>
 				</div>
 				<h4>Used by</h4>
 				<div class="list">
-						<code><code><a href="class-CConnection.html#___construct">CConnection::__construct()</a></code></code> <br />
+						<code><code><a href="class-CGraphContainer.html#___construct">CGraphContainer::__construct()</a></code></code> <br />
 				</div>
 
+				<h4>Overrides</h4>
+				<div class="list"><code><a href="class-CConnection.html#_Connection">CConnection::Connection()</a></code></div>
 
 		</div>
 		</div></td>
@@ -402,7 +397,7 @@ has been set.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#__Connection">#</a>
-		<code><a href="source-class-CConnection.html#219-229" title="Go to source code">_Connection</a>( )</code>
+		<code><a href="source-class-CGraphContainer.html#219-229" title="Go to source code">_Connection</a>( )</code>
 
 		<div class="description short">
 			
@@ -415,7 +410,7 @@ has been set.</p>
 <h4>Get connection reference</h4>
 
 <p>This method can be used to retrieve a reference to the native connection
-member, this can be useful when the native <code><a href="class-CConnection.html#_Connection">CConnection::Connection()</a></code> is not an object
+member, this can be useful when the native <code><a href="class-CGraphContainer.html#_Connection">CGraphContainer::Connection()</a></code> is not an object
 passed by reference.</p>
 
 
@@ -428,6 +423,8 @@ passed by reference.</p>
 
 
 
+				<h4>Overrides</h4>
+				<div class="list"><code><a href="class-CConnection.html#__Connection">CConnection::_Connection()</a></code></div>
 
 		</div>
 		</div></td>
@@ -443,7 +440,7 @@ passed by reference.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#__Ready">#</a>
-		<code><a href="source-class-CConnection.html#245-266" title="Go to source code">_Ready</a>( )</code>
+		<code><a href="source-class-CGraphContainer.html#245-266" title="Go to source code">_Ready</a>( )</code>
 
 		<div class="description short">
 			
@@ -469,15 +466,15 @@ absence of the connection.</p>
 
 				<h4>Uses</h4>
 				<div class="list">
-						<code><code><a href="class-CConnection.html#__Ready">CConnection::_Ready()</a></code></code> <br />
+						<code><code><a href="class-CGraphContainer.html#__Ready">CGraphContainer::_Ready()</a></code></code> <br />
 				</div>
 				<h4>Used by</h4>
 				<div class="list">
-						<code><code><a href="class-CConnection.html#__Ready">CConnection::_Ready()</a></code></code> <br />
+						<code><code><a href="class-CGraphContainer.html#__Ready">CGraphContainer::_Ready()</a></code></code> <br />
 				</div>
 
 				<h4>Overrides</h4>
-				<div class="list"><code><a href="class-CStatusDocument.html#__Ready">CStatusDocument::_Ready()</a></code></div>
+				<div class="list"><code><a href="class-CConnection.html#__Ready">CConnection::_Ready()</a></code></div>
 
 		</div>
 		</div></td>
@@ -558,18 +555,18 @@ absence of the connection.</p>
 
 	<table class="summary" id="properties">
 	<caption>Properties summary</caption>
-	<tr data-order="mConnection" id="$mConnection">
+	<tr data-order="mGraphClient" id="$mGraphClient">
 		<td class="attributes"><code>
-			protected  
+			protected static 
 			mixed
 		</code></td>
 
 		<td class="name">
-				<a href="source-class-CConnection.html#76-83" title="Go to source code"><var>$mConnection</var></a>
+				<a href="source-class-CGraphContainer.html#76-83" title="Go to source code"><var>$mGraphClient</var></a>
 		</td>
 		<td class="value"><code><span class="php-keyword1">NULL</span></code></td>
 		<td class="description"><div>
-			<a href="#$mConnection" class="anchor">#</a>
+			<a href="#$mGraphClient" class="anchor">#</a>
 
 			<div class="description short">
 				
@@ -581,7 +578,7 @@ absence of the connection.</p>
 				
 <p>Persistent data store.</p>
 
-<p>This data member holds the native persistent store.</p>
+<p>This data member holds the native graph client connection.</p>
 
 
 			</div>
@@ -589,6 +586,14 @@ absence of the connection.</p>
 	</tr>
 	</table>
 
+	<table class="summary inherited">
+	<caption>Properties inherited from <a href="class-CConnection.html#properties">CConnection</a></caption>
+	<tr>
+		<td><code>
+			<a href="class-CConnection.html#$mConnection"><var>$mConnection</var></a>
+		</code></td>
+	</tr>
+	</table>
 	<table class="summary inherited">
 	<caption>Properties inherited from <a href="class-CStatusDocument.html#properties">CStatusDocument</a></caption>
 	<tr>
