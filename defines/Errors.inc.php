@@ -92,5 +92,12 @@ define( "kERROR_MISSING",					-8 );			// Missing.
  */
 define( "kERROR_LOCKED",					-9 );			// Locked.
 
+/**
+ * Unimplemented.
+ *
+ * This code indicates that the requested operation is not yet implemented.
+ */
+define( "kERROR_NOT_IMPLEMENTED",			-10 );			// Unimplemented.
+
 
 ?>

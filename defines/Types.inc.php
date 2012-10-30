@@ -152,6 +152,38 @@ define( "kTYPE_ENUM",							':ENUM' );
 define( "kTYPE_ENUM_SET",						':SET' );
 
 /*=======================================================================================
+ *	FORMAT TYPES																		*
+ *======================================================================================*/
+
+/**
+ * PHP-encoded.
+ *
+ * This tag represents the PHP serialised data format.
+ */
+define( "kTYPE_PHP",							':PHP' );
+
+/**
+ * JSON-encoded.
+ *
+ * This tag represents the JSON serialised data format.
+ */
+define( "kTYPE_JSON",							':JSON' );
+
+/**
+ * XML-encoded.
+ *
+ * This tag represents the generic XML serialised data format.
+ */
+define( "kTYPE_XML",							':XML' );
+
+/**
+ * SVG-encoded.
+ *
+ * This tag represents the SVG image serialised data format.
+ */
+define( "kTYPE_SVG",							':SVG' );
+
+/*=======================================================================================
  *	CARDINALITY TYPES																	*
  *======================================================================================*/
 
