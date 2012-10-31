@@ -83,8 +83,8 @@ require_once( kPATH_MYWRAPPER_LIBRARY_CLASS."/CWrapper.inc.php" );
  *		operations:
  *	 <ul>
  *		<li><i>{@link kAPI_OP_HELP}</i>: A <i>LIST-OP</i> command, this command will return
- *			in the {@link kAPI_DATA_RESPONSE response} section the list of supported
- *			operations as an array structured as follows:
+ *			in the {@link kAPI_DATA_RESPONSE} section the list of supported operations as an
+ *			array structured as follows:
  *		 <ul>
  *			<li><i>index</i>: The index will be the operation code.
  *			<li><i>value</i>: The value will be the operation description.
@@ -102,13 +102,31 @@ require_once( kPATH_MYWRAPPER_LIBRARY_CLASS."/CWrapper.inc.php" );
  *		This section is returned by default and will inform on the status of the requested
  *		operation. It consists of an array containing the following elements:
  *	 <ul>
- *		<li><i>{@link kAPI_HTTP_STATUS}</i>: <i>Response status</i>.
+ *		<li><i>{@link kAPI_SEVERITY}</i>: <i>Response status</i>.
  *			This element will be returned by default regardless of the operation outcome.
- *			This corresponds to the HTTP status code and can be found in the
- *			{@link Status.inc.php} file.
+ *			This corresponds to the severity of the response and it can take the following
+ *			values:
+ *		 <ul>
+ *			<li><i>{@link kMESSAGE_TYPE_IDLE}</i>: This is the status of the web-service
+ *				before any operation has been executed, or when the operation was
+ *				successful; this is the response of a successful {@link kAPI_OP_PING}
+ *				request.
+ *			<li><i>{@link kMESSAGE_TYPE_NOTICE}</i>: The operation was successful and a
+ *				notice message was returned.
+ *			<li><i>{@link kMESSAGE_TYPE_MESSAGE}</i>: The operation was successful and a
+ *				message was returned.
+ *			<li><i>{@link kMESSAGE_TYPE_WARNING}</i>: The operation was successful but a
+ *				warning was raised.
+ *			<li><i>{@link kMESSAGE_TYPE_ERROR}</i>: The operation failed because of an
+ *				error.
+ *			<li><i>{@link kMESSAGE_TYPE_FATAL}</i>: The operation failed because of a fatal
+ *				error, this will generally mean that the web-service is not operational.
+ *			<li><i>{@link kMESSAGE_TYPE_BUG}</i>: The operation failed because of a bug, the
+ *				developers should be informed of this kind of errors.
+ *		 </ul>
  *		<li><i>{@link kAPI_RESPONSE_CODE}</i>: <i>Status code</i>.
  *			This element will be returned by default regardless of the operation outcome.
- *			It corresponds to the error code; {@link kERROR_OK zero} means no error.
+ *			It corresponds to the error code; {@link kERROR_OK} means no error.
  *		<li><i>{@link kAPI_MESSAGE}</i>: <i>Status message</i>.
  *			The response message from the operation, this element is used to return
  *			informative messages or to return error messages when the service fails. It will
@@ -220,7 +238,7 @@ class CWrapper extends CStatusDocument
 	 *		of the request are there, only if this is the case will the constructor init the
 	 *		service.
 	 *	<li><i>{@link _InitStatus()}</i>: The response status will be initialised to the
-	 *		{@link HTTP_STATUS_OK idle} state.
+	 *		{@link kMESSAGE_TYPE_IDLE} state.
 	 *	<li><i>{@link _InitOptions()}</i>: Service options will be initialised.
 	 *	<li><i>{@link _InitResources()}</i>: Eventual resources are initialised.
 	 *	<li><i>{@link _ParseRequest()}</i>: The request is parsed.
@@ -336,7 +354,7 @@ class CWrapper extends CStatusDocument
 	 *
 	 * This method will handle the request.
 	 *
-	 * Note that we only run the method if the object is {@link _IsInited() inited}, if this
+	 * Note that we only run the method if the object is {@link _IsInited()}, if this
 	 * is not the case, the method will do nothing.
 	 *
 	 * @access public
@@ -408,12 +426,12 @@ class CWrapper extends CStatusDocument
 	/**
 	 * Initialise status.
 	 *
-	 * This method is responsible for initialising the {@link kAPI_DATA_STATUS status}
+	 * This method is responsible for initialising the {@link kAPI_DATA_STATUS}
 	 * section, derived classes may overload this method if they need to handle other
 	 * states.
 	 *
-	 * In this class we set the status to {@link HTTP_STATUS_OK} and reset the
-	 * status {@link kAPI_RESPONSE_CODE code}.
+	 * In this class we set the status to {@link kMESSAGE_TYPE_IDLE} and reset the
+	 * status {@link kAPI_RESPONSE_CODE}.
 	 *
 	 * @access protected
 	 *
@@ -429,7 +447,7 @@ class CWrapper extends CStatusDocument
 		//
 		// Set state.
 		//
-		$status[ kAPI_HTTP_STATUS ] = HTTP_STATUS_OK;
+		$status[ kAPI_SEVERITY ] = kMESSAGE_TYPE_IDLE;
 		
 		//
 		// Set idle status code.
@@ -468,8 +486,8 @@ class CWrapper extends CStatusDocument
 	 * This method is responsible for parsing and setting all default and provided options,
 	 * derived classes should overload this method to handle custom options.
 	 *
-	 * In this class we initialise the {@link kAPI_DATA_REQUEST request} and
-	 * {@link kAPI_DATA_TIMING timer} sections if required.
+	 * In this class we initialise the {@link kAPI_DATA_REQUEST} and
+	 * {@link kAPI_DATA_TIMING} sections if required.
 	 *
 	 * @access protected
 	 *
@@ -539,16 +557,16 @@ class CWrapper extends CStatusDocument
 	 * Parse request.
 	 *
 	 * This method should be used to parse the request, check the request elements and make
-	 * any necessary adjustments before the request is {@link _ValidateRequest() validated}.
+	 * any necessary adjustments before the request is {@link _ValidateRequest()}.
 	 *
 	 * This is also where the relevant request elements will be logged to the relative
 	 * response sections.
 	 *
-	 * The method is called by the {@link __construct() constructor} and should be
-	 * overloaded to handle derived classes custom elements.
+	 * The method is called by the constructor and should be overloaded to handle derived
+	 * classes custom elements.
 	 *
-	 * In this class we handle the {@link kAPI_FORMAT format},
-	 * {@link kAPI_OPERATION operation} and {@link kAPI_DATA_TIMING timing} elements.
+	 * In this class we handle the {@link kAPI_FORMAT}, {@link kAPI_OPERATION} and
+	 * {@link kAPI_DATA_TIMING} elements.
 	 *
 	 * @access protected
 	 *
@@ -624,9 +642,8 @@ class CWrapper extends CStatusDocument
 	 * This method should check that the request is valid and that all required parameters
 	 * have been received.
 	 *
-	 * In this class we check the {@link kAPI_FORMAT format} and
-	 * {@link kAPI_OPERATION operation} codes (their presence is checked by the
-	 * {@link __construct() constructor}.
+	 * In this class we check the {@link kAPI_FORMAT} and {@link kAPI_OPERATION} codes
+	 * (their presence is checked by the constructor.
 	 *
 	 * @access protected
 	 *
@@ -785,7 +802,7 @@ class CWrapper extends CStatusDocument
 	/**
 	 * Validate request format.
 	 *
-	 * This method can be used to check whether the provided {@link kAPI_FORMAT format}
+	 * This method can be used to check whether the provided {@link kAPI_FORMAT}
 	 * parameter is valid.
 	 *
 	 * @access protected
@@ -813,7 +830,7 @@ class CWrapper extends CStatusDocument
 				throw new CException
 					( "Unsupported format",
 					  kERROR_UNSUPPORTED,
-					  HTTP_STATUS_NOT_SUPPORTED,
+					  kMESSAGE_TYPE_WARNING,
 					  array( 'Parameter' => kAPI_FORMAT,
 							 'Value' => $_REQUEST[ kAPI_FORMAT ] ) );			// !@! ==>
 			
@@ -848,7 +865,7 @@ class CWrapper extends CStatusDocument
 	 * Validate request operation.
 	 *
 	 * This method can be used to check whether the provided
-	 * {@link kAPI_OPERATION operation} parameter is valid.
+	 * {@link kAPI_OPERATION} parameter is valid.
 	 *
 	 * @access protected
 	 *
@@ -875,7 +892,7 @@ class CWrapper extends CStatusDocument
 				throw new CException
 					( "Unsupported operation",
 					  kERROR_UNSUPPORTED,
-					  HTTP_STATUS_NOT_SUPPORTED,
+					  kMESSAGE_TYPE_WARNING,
 					  array( 'Parameter' => kAPI_OPERATION,
 							 'Value' => $_REQUEST[ kAPI_OPERATION ] ) );		// !@! ==>
 			
@@ -948,7 +965,7 @@ class CWrapper extends CStatusDocument
 				throw new CException
 					( "Unable to handle request: operation not implemented",
 					  kERROR_NOT_IMPLEMENTED,
-					  HTTP_STATUS_BAD_REQUEST,
+					  kMESSAGE_TYPE_WARNING,
 					  array( 'Operation' => $op ) );							// !@! ==>
 		}
 	
@@ -960,9 +977,9 @@ class CWrapper extends CStatusDocument
 	 *==================================================================================*/
 
 	/**
-	 * Handle {@link kAPI_OP_HELP list} operations request.
+	 * Handle {@link kAPI_OP_HELP} operations request.
 	 *
-	 * This method will handle the {@link kAPI_OP_HELP kAPI_OP_HELP} request, which
+	 * This method will handle the {@link kAPI_OP_HELP} request, which
 	 * should return the list of supported operations.
 	 *
 	 * @param reference				$theList			Receives operations list.
@@ -991,12 +1008,12 @@ class CWrapper extends CStatusDocument
 	 *==================================================================================*/
 
 	/**
-	 * Handle {@link kAPI_OP_PING ping} request.
+	 * Handle {@link kAPI_OP_PING} request.
 	 *
-	 * This method will handle the {@link kAPI_OP_PING kAPI_OP_PING} request, which can be
-	 * used to check if a service is alive.
+	 * This method will handle the {@link kAPI_OP_PING} request, which can be used to check
+	 * if a service is alive.
 	 *
-	 * The ping request will return by default the {@link kAPI_DATA_STATUS status} block.
+	 * The ping request will return by default the {@link kAPI_DATA_STATUS} block.
 	 *
 	 * @access protected
 	 */
@@ -1167,20 +1184,20 @@ class CWrapper extends CStatusDocument
 	 * This method can be used to set the service status according to an exception:
 	 *
 	 * <ul>
-	 *	<li><i>{@link CException::Severity() Severity}</i>: This value will be set as the
-	 *		status {@link kAPI_HTTP_STATUS status}.
-	 *	<li><i>{@link Exception::getCode() Code}</i>: This value will be set as the
-	 *		status {@link kAPI_RESPONSE_CODE code}.
-	 *	<li><i>{@link Exception::getMessage() Message}</i>: This value will be set in the
-	 *		status {@link kAPI_MESSAGE description} field as a language block.
-	 *	<li><i>{@link Exception::getFile() File}</i>: This value will be set in the status
-	 *		{@link kAPI_ANNOTATIONS annotations}.
-	 *	<li><i>{@link Exception::getLine() Line}</i>: This value will be set in the status
-	 *		{@link kAPI_ANNOTATIONS annotations}.
-	 *	<li><i>{@link Exception::getTrace() Trace}</i>: This value will be set in the status
-	 *		{@link kAPI_ANNOTATIONS annotations}.
-	 *	<li><i>{@link CException::Reference() References}</i>: These valuew will be set in
-	 *		the status {@link kAPI_ANNOTATIONS annotations}.
+	 *	<li><i>{@link CException::Severity()}</i>: This value will be set as the status
+	 *		{@link kAPI_SEVERITY}.
+	 *	<li><i>{@link Exception::getCode()}</i>: This value will be set as the status
+	 *		{@link kAPI_RESPONSE_CODE}.
+	 *	<li><i>{@link Exception::getMessage()}</i>: This value will be set in the status
+	 *		{@link kAPI_MESSAGE} field as a language block.
+	 *	<li><i>{@link Exception::getFile()}</i>: This value will be set in the status
+	 *		{@link kAPI_ANNOTATIONS}.
+	 *	<li><i>{@link Exception::getLine()}</i>: This value will be set in the status
+	 *		{@link kAPI_ANNOTATIONS}.
+	 *	<li><i>{@link Exception::getTrace()}</i>: This value will be set in the status
+	 *		{@link kAPI_ANNOTATIONS}.
+	 *	<li><i>{@link CException::Reference()}</i>: These valuew will be set in the status
+	 *		{@link kAPI_ANNOTATIONS}.
 	 * </ul>
 	 *
 	 * @param Exception				$theException		Exception.
@@ -1246,7 +1263,7 @@ class CWrapper extends CStatusDocument
 		if( $theException instanceof CException )
 		{
 			if( ($tmp = $theException->Severity()) !== NULL )
-				$status[ kAPI_HTTP_STATUS ] = $tmp;
+				$status[ kAPI_SEVERITY ] = $tmp;
 			if( $tmp = $theException->Reference() )
 			{
 				if( ! array_key_exists( kAPI_ANNOTATIONS, $status ) )

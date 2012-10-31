@@ -7,7 +7,7 @@
 	<title>Class CException | MyWrapper Reference Documentation</title>
 
 	<script type="text/javascript" src="resources/combined.js?3994123307"></script>
-	<script type="text/javascript" src="elementlist.js?2247145456"></script>
+	<script type="text/javascript" src="elementlist.js?4082782532"></script>
 	<link rel="stylesheet" type="text/css" media="all" href="resources/style.css?3505392360" />
 
 </head>
@@ -35,9 +35,9 @@
 						</li>
 				<li class="main"><a href="package-MyWrapper.Persistence.html">Persistence</a>
 						</li>
-				<li class="main"><a href="package-MyWrapper.Wrappers.html">Wrappers</a>
-						</li>
 							</ul></li>
+				<li><a href="package-None.html">None</a>
+						</li>
 				<li><a href="package-PHP.html">PHP</a>
 						</li>
 			</ul>
@@ -117,10 +117,25 @@
 
 <p>This class extends the built-in <i>Exception</i> class by adding a series of
 additional members and functionality.</p>
-
-<p>Severity() Severity represents the severity of the exception such as
+Severity() Severity represents the severity of the exception such as
 <i>error</i>, <i>warning</i>, etc. You are free to set any value, but in this
-library we support the HTTP status codes defined in Status.inc.php.</p>
+library we support the following standard:
+<ul>
+	<li><b>kMESSAGE_TYPE_IDLE Idle</b>: Idle state.</li>
+
+	<li><b>kMESSAGE_TYPE_NOTICE Notice</b>: Statistical information or
+	message.</li>
+
+	<li><b>kMESSAGE_TYPE_MESSAGE Message</b>: A message.</li>
+
+	<li><b>kMESSAGE_TYPE_WARNING Warning</b>: A warning.</li>
+
+	<li><b>kMESSAGE_TYPE_ERROR Error</b>: An error.</li>
+
+	<li><b>kMESSAGE_TYPE_FATAL Fatal</b>: A fatal error.</li>
+
+	<li><b>kMESSAGE_TYPE_BUG Bug</b>: A bug.</li>
+</ul>
 
 <p>References() References represent a list of reference values
 structured as an array of key/value pairs where the key represents the reference
@@ -163,7 +178,7 @@ are simply aborted.</p>
 				<b>Author:</b>
 				Milko A. Škofič &lt;<a
 href="mailto:m.skofic&#64;cgiar.org">m.skofic&#64;<!---->cgiar.org</a>&gt;<br />
-		<b>Located at</b> <a href="source-class-CException.html#42-1194" title="Go to source code">CException.php</a><br />
+		<b>Located at</b> <a href="source-class-CException.html#42-1200" title="Go to source code">CException.php</a><br />
 	</div>
 
 
@@ -181,7 +196,7 @@ href="mailto:m.skofic&#64;cgiar.org">m.skofic&#64;<!---->cgiar.org</a>&gt;<br />
 
 		<td class="name"><div>
 		<a class="anchor" href="#___construct">#</a>
-		<code><a href="source-class-CException.html#96-164" title="Go to source code">__construct</a>( <span>string <var>$theMessage</var> = <span class="php-keyword1">NULL</span></span>, <span>integer <var>$theCode</var> = <span class="php-keyword1">NULL</span></span>, <span>string <var>$theSeverity</var> = <span class="php-keyword1">NULL</span></span>, <span>array <var>$theReferences</var> = <span class="php-keyword1">NULL</span></span>, <span><code><a href="class-Exception.html">Exception</a></code> <var>$thePrevious</var> = <span class="php-keyword1">NULL</span> </span> )</code>
+		<code><a href="source-class-CException.html#105-171" title="Go to source code">__construct</a>( <span>string <var>$theMessage</var> = <span class="php-keyword1">NULL</span></span>, <span>integer <var>$theCode</var> = <span class="php-keyword1">NULL</span></span>, <span>string <var>$theSeverity</var> = <span class="php-keyword1">NULL</span></span>, <span>array <var>$theReferences</var> = <span class="php-keyword1">NULL</span></span>, <span><code><a href="class-Exception.html">Exception</a></code> <var>$thePrevious</var> = <span class="php-keyword1">NULL</span> </span> )</code>
 
 		<div class="description short">
 			
@@ -205,23 +220,20 @@ support for the extended class members:</p>
 	<li><b>$theSeverity</b>: This parameter holds Severity() the exception
 	type, level or severity:
 		<ul>
-			<li><i>kMESSAGE_TYPE_IDLE kMESSAGE_TYPE_IDLE</i>: This indicates an idle
-			state.</li>
+			<li><i>kMESSAGE_TYPE_IDLE</i>: This indicates an idle state.</li>
 
-			<li><i>kMESSAGE_TYPE_NOTICE kMESSAGE_TYPE_NOTICE</i>: This indicates an
-			informative note or message.</li>
+			<li><i>kMESSAGE_TYPE_NOTICE</i>: This indicates an informative note or
+			message.</li>
 
-			<li><i>kMESSAGE_TYPE_WARNING kMESSAGE_TYPE_WARNING</i>: This indicates a
-			warning.</li>
+			<li><i>kMESSAGE_TYPE_WARNING</i>: This indicates a warning.</li>
 
-			<li><i>kMESSAGE_TYPE_ERROR kMESSAGE_TYPE_ERROR</i>: This indicates an
-			error.</li>
+			<li><i>kMESSAGE_TYPE_ERROR</i>: This indicates an error.</li>
 
-			<li><i>kMESSAGE_TYPE_FATAL kMESSAGE_TYPE_FATAL</i>: This indicates a
-			fatal error, in general this should halt program execution.</li>
+			<li><i>kMESSAGE_TYPE_FATAL</i>: This indicates a fatal error, in general
+			this should halt program execution.</li>
 
-			<li><i>kMESSAGE_TYPE_BUG kMESSAGE_TYPE_BUG</i>: This indicates a bug,
-			such exceptions should be logged and forwarded to developers.</li>
+			<li><i>kMESSAGE_TYPE_BUG</i>: This indicates a bug, such exceptions
+			should be logged and forwarded to developers.</li>
 		</ul>
 	</li>
 
@@ -277,7 +289,7 @@ support for the extended class members:</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#___toString">#</a>
-		<code><a href="source-class-CException.html#171-352" title="Go to source code">__toString</a>( )</code>
+		<code><a href="source-class-CException.html#178-359" title="Go to source code">__toString</a>( )</code>
 
 		<div class="description short">
 			
@@ -318,7 +330,7 @@ support for the extended class members:</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#_Severity">#</a>
-		<code><a href="source-class-CException.html#368-434" title="Go to source code">Severity</a>( <span>null|false|integer <var>$theValue</var> = <span class="php-keyword1">NULL</span> </span> )</code>
+		<code><a href="source-class-CException.html#375-440" title="Go to source code">Severity</a>( <span>null|false|integer <var>$theValue</var> = <span class="php-keyword1">NULL</span> </span> )</code>
 
 		<div class="description short">
 			
@@ -339,33 +351,31 @@ support for the extended class members:</p>
 
 	<li><i>Integer</i>: Set the member to the provided value:
 		<ul>
-			<li><i>kMESSAGE_TYPE_IDLE kMESSAGE_TYPE_IDLE</i>: Idle state.</li>
+			<li><i>kMESSAGE_TYPE_IDLE</i>: Idle state.</li>
 
-			<li><i>kMESSAGE_TYPE_NOTICE kMESSAGE_TYPE_NOTICE</i>: A notice is an
-			informative message that does not imply an error, nor a situation that should be
-			handled; it can be considered as statistical data.</li>
+			<li><i>kMESSAGE_TYPE_NOTICE</i>: A notice is an informative message that
+			does not imply an error, nor a situation that should be handled; it can be
+			considered as statistical data.</li>
 
-			<li><i>kMESSAGE_TYPE_MESSAGE kMESSAGE_TYPE_MESSAGE</i>: A message is an
-			informative message that is addressed to somebody, although it does not imply an
-			error or warning, it was issued to a receiving party.</li>
+			<li><i>kMESSAGE_TYPE_MESSAGE</i>: A message is an informative message
+			that is addressed to somebody, although it does not imply an error or warning,
+			it was issued to a receiving party.</li>
 
-			<li><i>kMESSAGE_TYPE_WARNING kMESSAGE_TYPE_WARNING</i>: Warnings are
-			informative data that indicate a potential problem, although they do not imply
-			an error, they indicate a potential problem or an issue that should be addressed
-			at least at a later stage.</li>
+			<li><i>kMESSAGE_TYPE_WARNING</i>: Warnings are informative data that
+			indicate a potential problem, although they do not imply an error, they indicate
+			a potential problem or an issue that should be addressed at least at a later
+			stage.</li>
 
-			<li><i>kMESSAGE_TYPE_ERROR kMESSAGE_TYPE_ERROR</i>: Errors indicate that
-			something prevented an operation from being performed, this does not necessarily
-			mean that the whole process is halted, but that the results of an operation will
-			not be as expected.</li>
+			<li><i>kMESSAGE_TYPE_ERROR</i>: Errors indicate that something prevented
+			an operation from being performed, this does not necessarily mean that the whole
+			process is halted, but that the results of an operation will not be as
+			expected.</li>
 
-			<li><i>kMESSAGE_TYPE_FATAL kMESSAGE_TYPE_FATAL</i>: Fatal errors are
-			kMESSAGE_TYPE_ERROR errors that result in stopping the whole process: in
-			this case the error will prevent other operations from being performed and the
-			whole process should be halted.</li>
+			<li><i>kMESSAGE_TYPE_FATAL</i>: Fatal errors are kMESSAGE_TYPE_ERROR errors that result in stopping the whole process: in this
+			case the error will prevent other operations from being performed and the whole
+			process should be halted.</li>
 
-			<li><i>kMESSAGE_TYPE_BUG kMESSAGE_TYPE_BUG</i>: Bugs, as opposed to
-			kMESSAGE_TYPE_ERROR errors, result from internal causes independant from
+			<li><i>kMESSAGE_TYPE_BUG</i>: Bugs, as opposed to kMESSAGE_TYPE_ERROR errors, result from internal causes independant from
 			external factors. A bug indicates that an operation will never execute as
 			stated, it does not necessarily mean that it is kMESSAGE_TYPE_FATAL
 			fatal, but rather that the behaviour of an operation does not correspond to its
@@ -415,7 +425,7 @@ any modification was made.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#_Reference">#</a>
-		<code><a href="source-class-CException.html#441-554" title="Go to source code">Reference</a>( <span>mixed <var>$theIndex</var> = <span class="php-keyword1">NULL</span></span>, <span>mixed <var>$theValue</var> = <span class="php-keyword1">NULL</span> </span> )</code>
+		<code><a href="source-class-CException.html#447-560" title="Go to source code">Reference</a>( <span>mixed <var>$theIndex</var> = <span class="php-keyword1">NULL</span></span>, <span>mixed <var>$theValue</var> = <span class="php-keyword1">NULL</span> </span> )</code>
 
 		<div class="description short">
 			
@@ -504,7 +514,7 @@ exception.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#_AsHTML">#</a>
-		<code><a href="source-class-CException.html#570-636" title="Go to source code">AsHTML</a>( <span><code><a href="class-Exception.html">Exception</a></code> <var>$theException</var></span> )</code>
+		<code><a href="source-class-CException.html#576-642" title="Go to source code">AsHTML</a>( <span><code><a href="class-Exception.html">Exception</a></code> <var>$theException</var></span> )</code>
 
 		<div class="description short">
 			
@@ -554,7 +564,7 @@ exception.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#__Trace">#</a>
-		<code><a href="source-class-CException.html#652-716" title="Go to source code">_Trace</a>( <span><code><a href="class-Exception.html">Exception</a></code> <var>$theException</var></span> )</code>
+		<code><a href="source-class-CException.html#658-722" title="Go to source code">_Trace</a>( <span><code><a href="class-Exception.html">Exception</a></code> <var>$theException</var></span> )</code>
 
 		<div class="description short">
 			
@@ -606,7 +616,7 @@ elements will be mixed.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#__TraceArgumentString">#</a>
-		<code><a href="source-class-CException.html#723-766" title="Go to source code">_TraceArgumentString</a>( <span>mixed <var>$theValue</var></span> )</code>
+		<code><a href="source-class-CException.html#729-772" title="Go to source code">_TraceArgumentString</a>( <span>mixed <var>$theValue</var></span> )</code>
 
 		<div class="description short">
 			
@@ -651,7 +661,7 @@ argument.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#__Trace2HTML">#</a>
-		<code><a href="source-class-CException.html#773-928" title="Go to source code">_Trace2HTML</a>( <span><code><a href="class-DOMNode.html">DOMNode</a></code> <var>$theTable</var></span>, <span>array <var>$theElement</var></span> )</code>
+		<code><a href="source-class-CException.html#779-934" title="Go to source code">_Trace2HTML</a>( <span><code><a href="class-DOMNode.html">DOMNode</a></code> <var>$theTable</var></span>, <span>array <var>$theElement</var></span> )</code>
 
 		<div class="description short">
 			
@@ -702,7 +712,7 @@ argument.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#__Exception2HTML">#</a>
-		<code><a href="source-class-CException.html#935-1190" title="Go to source code">_Exception2HTML</a>( <span><code><a href="class-DOMElement.html">DOMElement</a></code> <var>$theTable</var></span>, <span>array <var>$theElement</var></span>, <span>null|true|string <var>$theSource</var> = <span class="php-keyword1">NULL</span> </span> )</code>
+		<code><a href="source-class-CException.html#941-1196" title="Go to source code">_Exception2HTML</a>( <span><code><a href="class-DOMElement.html">DOMElement</a></code> <var>$theTable</var></span>, <span>array <var>$theElement</var></span>, <span>null|true|string <var>$theSource</var> = <span class="php-keyword1">NULL</span> </span> )</code>
 
 		<div class="description short">
 			
@@ -794,7 +804,7 @@ return a series of table rows.</p>
 		</code></td>
 
 		<td class="name">
-				<a href="source-class-CException.html#64-71" title="Go to source code"><var>$mSeverity</var></a>
+				<a href="source-class-CException.html#73-80" title="Go to source code"><var>$mSeverity</var></a>
 		</td>
 		<td class="value"><code><span class="php-keyword1">NULL</span></code></td>
 		<td class="description"><div>
@@ -823,7 +833,7 @@ return a series of table rows.</p>
 		</code></td>
 
 		<td class="name">
-				<a href="source-class-CException.html#73-80" title="Go to source code"><var>$mReferences</var></a>
+				<a href="source-class-CException.html#82-89" title="Go to source code"><var>$mReferences</var></a>
 		</td>
 		<td class="value"><code><span class="php-keyword1">Array</span>()</code></td>
 		<td class="description"><div>

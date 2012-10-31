@@ -4,7 +4,7 @@
  * <i>CDataWrapper</i> class definition.
  *
  * This file contains the class definition of <b>CDataWrapper</b> which overloads its
- * {@link CWrapper ancestor} to implement a data store wrapper.
+ * ancestor to implement a data store wrapper.
  *
  *	@package	MyWrapper
  *	@subpackage	Wrappers
@@ -25,21 +25,21 @@
  *
  * This include file contains the parent class definitions.
  */
-require_once( kPATH_MYWRAPPER_LIBRARY_CLASS."CWrapper.php" );
+require_once( kPATH_MYWRAPPER_LIBRARY_CLASS."/CWrapper.php" );
 
 /**
  * Query definitions.
  *
- * This include file contains the definitions of the {@link CQuery query} class.
+ * This include file contains the definitions of the {@link CQuery} class.
  */
-require_once( kPATH_MYWRAPPER_LIBRARY_CLASS."CQuery.php" );
+require_once( kPATH_MYWRAPPER_LIBRARY_CLASS."/CQuery.php" );
 
 /**
  * Local definitions.
  *
  * This include file contains all local definitions to this class.
  */
-require_once( kPATH_MYWRAPPER_LIBRARY_CLASS."CDataWrapper.inc.php" );
+require_once( kPATH_MYWRAPPER_LIBRARY_CLASS."/CDataWrapper.inc.php" );
 
 /**
  *	Data wrapper.
@@ -79,48 +79,45 @@ require_once( kPATH_MYWRAPPER_LIBRARY_CLASS."CDataWrapper.inc.php" );
  *	 <ul>
  *		<li><i>{@link kAPI_DATA_QUERY}</i>: <i>Query</i>, this parameter is used when
  *			retrieving data, it represents the filter or selection query; it must be
- *			expressed as one of the query {@link CQuery class} siblings. This parameter can
+ *			expressed as one of the query {@link CQuery} siblings. This parameter can
  *			be compared to the <i>WHERE</i> part of an SQL query.
  *		<li><i>{@link kAPI_DATA_FIELD}</i>: <i>Fields</i>, this parameter indicates which
  *			elements of the selected objects we want returned. This parameter can be
  *			compared to the <i>SELECT</i> part of an SQL query.
- *		<li><i>{@link kAPI_DATA_SORT kAPI_DATA_SORT}</i>: <i>Sort fields</i>, this parameter
- *			indicates the sort order, the list of data elements by which the result is to
- *			be sorted. This parameter can be compared to the {@link kAPI_DATA_FIELD field}
- *			parameter or to the <i>ORDER BY</i> part of an SQL query.
- *		<li><i>{@link kAPI_DATA_OBJECT kAPI_DATA_OBJECT}</i>: <i>Object data</i>, this
- *			parameter represents the data to be stored in the database, the type should
- *			ideally be abstracted from the data store engine. This parameter can be compared
- *			to the <i>VALUES</i> or <i>SET</i> part of an SQL query.
- *		<li><i>{@link kAPI_DATA_OPTIONS kAPI_DATA_OPTIONS}</i>: <i>Options</i>, this
- *			parameter represents the options governing data store and retrieve operations.
- *			In general it will cover the options when storing data and the actual
- *			implementation is the responsibility of derived classes:
+ *		<li><i>{@link kAPI_DATA_SORT}</i>: <i>Sort fields</i>, this parameter indicates the
+ *			sort order, the list of data elements by which the result is to be sorted. This
+ *			parameter can be compared to the {@link kAPI_DATA_FIELD} parameter or to the
+ *			<i>ORDER BY</i> part of an SQL query.
+ *		<li><i>{@link kAPI_DATA_OBJECT}</i>: <i>Object data</i>, this parameter represents
+ *			the data to be stored in the database, the type should ideally be abstracted
+ *			from the data store engine. This parameter can be compared to the <i>VALUES</i>
+ *			or <i>SET</i> part of an SQL query.
+ *		<li><i>{@link kAPI_DATA_OPTIONS}</i>: <i>Options</i>, this parameter represents the
+ *			options governing data store and retrieve operations. In general it will cover
+ *			the options when storing data and the actual implementation is the
+ *			responsibility of derived classes:
  *		 <ul>
- *			<li><i>{@link kAPI_OPT_SAFE kAPI_OPT_SAFE}</i>: Safe commit option, this is
- *				relevant only when committing data. If this option is <i>OFF</i>, it means
- *				we want to perform an asynchronous operation: the store operation will occur
- *				in the background and the program execution will not wait for it to finish;
- *				this also means that the client is responsible for checking whether the
- *				operation completed. If the option is <i>ON</i>, the operation is
- *				synchronous, which means that the program will wait for the store operation
- *				to complete.
- *			<li><i>{@link kAPI_OPT_FSYNC kAPI_OPT_FSYNC}</i>: File sync option, this tag is
- *				relevant only when committing data. If the option is <i>ON</i>, it means
- *				that the store operation will wait until the data is actually written to
- *				disk; which may not necessarily be the case even if the
- *				{@link kAPI_OPT_SAFE kAPI_OPT_SAFE} option was on. When this option is set,
- *				it is implied that the {@link kAPI_OPT_SAFE kAPI_OPT_SAFE} option is also
- *				on. If the option is <i>OFF</i>, it means that the data will be synched to
- *				disk only when the buffer is flushed.
- *			<li><i>{@link kAPI_OPT_TIMEOUT kAPI_OPT_TIMEOUT}</i>: Operation timeout, it
- *				represents the time in milliseconds beyond which the client will stop
- *				waiting for a response and expect a time out status.
- *			<li><i>{@link kAPI_OPT_SINGLE kAPI_OPT_SINGLE}</i>: First element, this option
- *				is used by the {@link kAPI_OP_DEL delete} operation: if <i>ON</i>, only the
- *				first object satisfying the {@link kAPI_DATA_QUERY query} will be deleted;
- *				if <i>OFF</i> all selected elements will be deleted.
- *			<li><i>{@link kAPI_OPT_SINGLE kAPI_OPT_SINGLE}</i>: First element, this option
+ *			<li><i>{@link kAPI_OPT_SAFE}</i>: Safe commit option, this is relevant only when
+ *				committing data. If this option is <i>OFF</i>, it means we want to perform
+ *				an asynchronous operation: the store operation will occur in the background
+ *				and the program execution will not wait for it to finish; this also means
+ *				that the client is responsible for checking whether the operation completed.
+ *				If the option is <i>ON</i>, the operation is synchronous, which means that
+ *				the program will wait for the store operation to complete.
+ *			<li><i>{@link kAPI_OPT_FSYNC}</i>: File sync option, this tag is relevant only
+ *				when committing data. If the option is <i>ON</i>, it means that the store
+ *				operation will wait until the data is actually written to disk; which may
+ *				not necessarily be the case even if the {@link kAPI_OPT_SAFE} option was on.
+ *				When this option is set, it is implied that the {@link kAPI_OPT_SAFE} option
+ *				is also on. If the option is <i>OFF</i>, it means that the data will be
+ *				synched to disk only when the buffer is flushed.
+ *			<li><i>{@link kAPI_OPT_TIMEOUT}</i>: Operation timeout, it represents the time
+ *				in milliseconds beyond which the client will stop waiting for a response and
+ *				expect a time out status.
+ *			<li><i>{@link kAPI_OPT_SINGLE}</i>: First element, this option is used by the
+ *				{@link kAPI_OP_DEL} operation: if <i>ON</i>, only the first object
+ *				satisfying the {@link kAPI_DATA_QUERY} will be deleted; if <i>OFF</i> all
+ *				selected elements will be deleted.
  *		 </ul>
  *	 </ul>
  * </ul>
@@ -128,51 +125,46 @@ require_once( kPATH_MYWRAPPER_LIBRARY_CLASS."CDataWrapper.inc.php" );
  * The new operations declared in this class are:
  *
  * <ul>
- *	<li><i>{@link kAPI_OP_COUNT kAPI_OP_COUNT}</i>: This operation requests a count, which
- *		is an integer indicating the total number of elements satisfying the provided
- *		{@link kAPI_DATA_QUERY query}. This number is not to be confused with the page
- *		element {@link kAPI_PAGE_COUNT count} described further.
- *	<li><i>{@link kAPI_OP_MATCH kAPI_OP_MATCH}</i>: This operation is equivalent to a read
- *		query, except that it will try to match one {@link kAPI_DATA_QUERY query} clause at
- *		the time and will return a result on the first match.
- *	<li><i>{@link kAPI_OP_GET kAPI_OP_GET}</i>: This operation is equivalent to a read
- *		query, it requests a list of objects satisfying the provided
- *		{@link kAPI_DATA_QUERY query}.
- *	<li><i>{@link kAPI_OP_SET kAPI_OP_SET}</i>: This operation is equivalent to an insert
- *		for new objects or an update for existing objects, the operation will replace the
- *		object in the data store with the one provided in the
- *		{@link kAPI_DATA_OBJECT kAPI_DATA_OBJECT} parameter.
- *	<li><i>{@link kAPI_OP_UPDATE kAPI_OP_UPDATE}</i>: This operation is equivalent to an
- *		update operation, this implies that the object must already exist in the data store
- *		and that the operation will replace the object in the data store with the one
- *		provided in the {@link kAPI_DATA_OBJECT kAPI_DATA_OBJECT} parameter.
- *	<li><i>{@link kAPI_OP_INSERT kAPI_OP_INSERT}</i>: This operation is equivalent to an
- *		insert operation, this implies that the object must not already exist in the data
- *		store.
- *	<li><i>{@link kAPI_OP_BATCH_INSERT kAPI_OP_BATCH_INSERT}</i>: This operation is
- *		equivalent to the {@link kAPI_OP_INSERT kAPI_OP_INSERT} operation, except that we
- *		provide here a list of objects to be inserted.
- *	<li><i>{@link kAPI_OP_MODIFY kAPI_OP_MODIFY}</i>: This operation indicates that we want
- *		to modify the contents of an existing object and that the
- *		{@link kAPI_DATA_OBJECT provided} data represents only the changed elements.
- *	<li><i>{@link kAPI_OP_DEL kAPI_OP_DEL}</i>: This operation indicates that we want to
- *		delete the elements matching the provided {@link kAPI_DATA_QUERY query}: the
- *		first one only, if the provided {@link kAPI_OPT_SINGLE kAPI_OPT_SINGLE} option is
- *		on, or all if off or omitted.
+ *	<li><i>{@link kAPI_OP_COUNT}</i>: This operation requests a count, which is an integer
+ *		indicating the total number of elements satisfying the provided
+ *		{@link kAPI_DATA_QUERY}. This number is not to be confused with the page element
+ *		{@link kAPI_PAGE_COUNT} described further.
+ *	<li><i>{@link kAPI_OP_MATCH}</i>: This operation is equivalent to a read query, except
+ *		that it will try to match one {@link kAPI_DATA_QUERY} clause at the time and will
+ *		return a result on the first match.
+ *	<li><i>{@link kAPI_OP_GET}</i>: This operation is equivalent to a read query, it
+ *		requests a list of objects satisfying the provided {@link kAPI_DATA_QUERY}.
+ *	<li><i>{@link kAPI_OP_SET}</i>: This operation is equivalent to an insert for new
+ *		objects or an update for existing objects, the operation will replace the object in
+ *		the data store with the one provided in the {@link kAPI_DATA_OBJECT} parameter.
+ *	<li><i>{@link kAPI_OP_UPDATE}</i>: This operation is equivalent to an update operation,
+ *		this implies that the object must already exist in the data store and that the
+ *		operation will replace the object in the data store with the one provided in the
+ *		{@link kAPI_DATA_OBJECT} parameter.
+ *	<li><i>{@link kAPI_OP_INSERT}</i>: This operation is equivalent to an insert operation,
+ *		this implies that the object must not already exist in the data store.
+ *	<li><i>{@link kAPI_OP_BATCH_INSERT}</i>: This operation is equivalent to the
+ *		{@link kAPI_OP_INSERT} operation, except that we provide here a list of objects to
+ *		be inserted.
+ *	<li><i>{@link kAPI_OP_MODIFY}</i>: This operation indicates that we want to modify the
+ *		contents of an existing object and that the {@link kAPI_DATA_OBJECT} data represents
+ *		only the changed elements.
+ *	<li><i>{@link kAPI_OP_DEL}</i>: This operation indicates that we want to delete the
+ *		elements matching the provided {@link kAPI_DATA_QUERY}: the first one only, if the
+ *		provided {@link kAPI_OPT_SINGLE} option is on, or all if off or omitted.
  * </ul>
  *
  * The added functionality implies that a series of additional sections will be returned in
  * the response:
  *
  * <ul>
- *	<li><i>{@link kAPI_DATA_PAGING kAPI_DATA_PAGING}</i>: Paging section, this section will
- *		return the paging information of the current operation, besides the provided
- *		{@link kAPI_PAGE_START start} and {@link kAPI_PAGE_LIMIT limit} parameters, it will
- *		also feature:
+ *	<li><i>{@link kAPI_DATA_PAGING}</i>: Paging section, this section will return the paging
+ *		information of the current operation, besides the provided {@link kAPI_PAGE_START}
+ *		and {@link kAPI_PAGE_LIMIT} parameters, it will also feature:
  *	 <ul>
- *		<li><i>{@link kAPI_PAGE_COUNT kAPI_PAGE_COUNT}</i>: This element will hold the
- *			actual number of returned objects, this number will be either equal or smaller
- *			than the provided {@link kAPI_PAGE_LIMIT limit} parameter. 
+ *		<li><i>{@link kAPI_PAGE_COUNT}</i>: This element will hold the actual number of
+ *			returned objects, this number will be either equal or smaller than the provided
+ *			{@link kAPI_PAGE_LIMIT} parameter. 
  *	 </ul>
  * </ul>
  *
@@ -198,7 +190,7 @@ class CDataWrapper extends CWrapper
 	/**
 	 * Initialise options.
 	 *
-	 * We overload this method to normalise the {@link kAPI_DATA_PAGING paging} options.
+	 * We overload this method to normalise the {@link kAPI_DATA_PAGING} options.
 	 *
 	 * @access protected
 	 *
@@ -263,13 +255,13 @@ class CDataWrapper extends CWrapper
 	 * Parse request.
 	 *
 	 * This method should be used to parse the request, check the request elements and make
-	 * any necessary adjustments before the request is {@link _ValidateRequest() validated}.
+	 * any necessary adjustments before the request is {@link _ValidateRequest()}.
 	 *
 	 * This is also where the relevant request elements will be logged to the relative
 	 * response sections.
 	 *
-	 * The method is called by the {@link __construct() constructor} and should be
-	 * overloaded to handle derived classes custom elements.
+	 * The method is called by the constructor and should be overloaded to handle derived
+	 * classes custom elements.
 	 *
 	 * In this class we handle the paging request.
 	 *
@@ -355,9 +347,8 @@ class CDataWrapper extends CWrapper
 	 * This method should check that the request is valid and that all required parameters
 	 * have been sent.
 	 *
-	 * In this class we check the {@link kAPI_FORMAT format} and
-	 * {@link kAPI_OPERATION operation} codes (their presence is checked by the
-	 * {@link __construct() constructor}.
+	 * In this class we check the {@link kAPI_FORMAT} and {@link kAPI_OPERATION} codes
+	 * (their presence is checked by the constructor.
 	 *
 	 * @access protected
 	 *
@@ -784,8 +775,8 @@ class CDataWrapper extends CWrapper
 	/**
 	 * Validate request operation.
 	 *
-	 * This method can be used to check whether the provided
-	 * {@link kAPI_OPERATION operation} parameter is valid.
+	 * This method can be used to check whether the provided {@link kAPI_OPERATION}
+	 * parameter is valid.
 	 *
 	 * @access protected
 	 *
@@ -963,8 +954,8 @@ class CDataWrapper extends CWrapper
 	/**
 	 * Validate field selection reference.
 	 *
-	 * This method can be used to check whether the provided
-	 * {@link kAPI_DATA_FIELD field} parameter is valid.
+	 * This method can be used to check whether the provided {@link kAPI_DATA_FIELD}
+	 * parameter is valid.
 	 *
 	 * In this class we ensure that the fields list is an array.
 	 *
@@ -1007,8 +998,8 @@ class CDataWrapper extends CWrapper
 	/**
 	 * Validate sort selection reference.
 	 *
-	 * This method can be used to check whether the provided
-	 * {@link kAPI_DATA_SORT sort} parameter is valid.
+	 * This method can be used to check whether the provided {@link kAPI_DATA_SORT}
+	 * parameter is valid.
 	 *
 	 * In this class we ensure that the sort list is an array.
 	 *
@@ -1052,8 +1043,8 @@ class CDataWrapper extends CWrapper
 	/**
 	 * Validate sort selection reference.
 	 *
-	 * This method can be used to check whether the provided
-	 * {@link kAPI_DATA_SORT sort} parameter is valid.
+	 * This method can be used to check whether the provided {@link kAPI_DATA_SORT}
+	 * parameter is valid.
 	 *
 	 * In this class we ensure that the sort list is an array.
 	 *
@@ -1104,10 +1095,10 @@ class CDataWrapper extends CWrapper
 	 *==================================================================================*/
 
 	/**
-	 * Handle {@link kAPI_OP_HELP list} operations request.
+	 * Handle {@link kAPI_OP_HELP} operations request.
 	 *
-	 * This method will handle the {@link kAPI_OP_HELP kAPI_OP_HELP} request, which
-	 * should return the list of supported operations.
+	 * This method will handle the {@link kAPI_OP_HELP} request, which should return the
+	 * list of supported operations.
 	 *
 	 * @param reference				$theList			Receives operations list.
 	 *
@@ -1220,7 +1211,7 @@ class CDataWrapper extends CWrapper
 	 * Decode parameter.
 	 *
 	 * This method can be used to decode a parameter according to the provided format,
-	 * {@link kTYPE_JSON JSON} or {@link kTYPE_PHP PHP}.
+	 * {@link kTYPE_JSON} or {@link kTYPE_PHP}.
 	 *
 	 * The method will return the decoded parameter.
 	 *
@@ -1229,7 +1220,7 @@ class CDataWrapper extends CWrapper
 	 * @access protected
 	 * @return array
 	 *
-	 * @uses CObject::JsonDecode()
+	 * @uses JsonDecode()
 	 *
 	 * @see kTYPE_JSON kTYPE_PHP
 	 */
@@ -1254,7 +1245,7 @@ class CDataWrapper extends CWrapper
 				case kTYPE_JSON:
 					try
 					{
-						$_REQUEST[ $theParameter ] = CObject::JsonDecode( $encoded );
+						$_REQUEST[ $theParameter ] = JsonDecode( $encoded );
 					}
 					catch( Exception $error )
 					{

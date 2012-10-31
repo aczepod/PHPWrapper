@@ -9,304 +9,92 @@
 /**
  *	Status codes.
  *
- *	This file contains the HTTP status codes that will be used in this library.
+ *	This file contains general status codes used to categorise the severity of responses.
  *
  *	@package	MyWrapper
  *	@subpackage	Definitions
  *
  *	@author		Milko A. Škofič <m.skofic@cgiar.org>
- *	@version	1.00 30/10/2009
+ *	@version	1.00 23/06/2009
  */
 
-/**
- * HTTP_STATUS_CONTINUE.
- *
- * The request can be continued.
- */
-define( "HTTP_STATUS_CONTINUE",							100 );
+/*=======================================================================================
+ *	MESSAGE TYPES																		*
+ *======================================================================================*/
 
 /**
- * HTTP_STATUS_SWITCH_PROTOCOLS.
+ * OK.
  *
- * The server has switched protocols in an upgrade header.
+ * This code indicates no errors.
+ *
+ * This state can be equated to an idle state.
  */
-define( "HTTP_STATUS_SWITCH_PROTOCOLS",					101 );
+define( "kMESSAGE_TYPE_IDLE",							0 );		// Idle.
 
 /**
- * HTTP_STATUS_OK.
+ * Notice.
  *
- * The request completed successfully.
+ * This code indicates a notice.
+ *
+ * A notice is an informative message that does not imply an error, nor a situation that
+ * should be handled; it can be considered as statistical data.
  */
-define( "HTTP_STATUS_OK",								200 );
+define( "kMESSAGE_TYPE_NOTICE",							10 );		// Notice.
 
 /**
- * HTTP_STATUS_CREATED.
+ * Message.
  *
- * The request has been fulfilled and resulted in the creation of a new resource.
+ * This code indicates a message.
+ *
+ * A message is an informative message that is addressed to somebody, although it does not
+ * imply an error or warning, it was issued to a receiving party.
  */
-define( "HTTP_STATUS_CREATED",							201 );
+define( "kMESSAGE_TYPE_MESSAGE",						20 );		// Message.
 
 /**
- * HTTP_STATUS_ACCEPTED.
+ * Warning.
  *
- * The request has been accepted for processing, but the processing has not been completed.
+ * This code indicates a warning.
+ *
+ * Warnings are informative data that indicate a potential problem, although they do not
+ * imply an error, they indicate a potential problem or an issue that should be addressed
+ * at least at a later stage.
  */
-define( "HTTP_STATUS_ACCEPTED",							202 );
+define( "kMESSAGE_TYPE_WARNING",						30 );		// Warning.
 
 /**
- * HTTP_STATUS_PARTIAL.
+ * Error.
  *
- * The returned meta information in the entity-header is not the definitive set available
- * from the origin server.
+ * This code indicates an error.
+ *
+ * Errors indicate that something prevented an operation from being performed, this does
+ * not necessarily mean that the whole process is halted, but that the results of an
+ * operation will not be as expected.
  */
-define( "HTTP_STATUS_PARTIAL",							203 );
+define( "kMESSAGE_TYPE_ERROR",							40 );		// Error.
 
 /**
- * HTTP_STATUS_NO_CONTENT.
+ * Fatal.
  *
- * The server has fulfilled the request, but there is no new information to send back.
+ * This code indicates a fatal error.
+ *
+ * Fatal errors are {@link kMESSAGE_TYPE_ERROR errors} that result in stopping the whole
+ * process: in this case the error will prevent other operations from being performed and
+ * the whole process should be halted.
  */
-define( "HTTP_STATUS_NO_CONTENT",						204 );
+define( "kMESSAGE_TYPE_FATAL",							50 );		// Fatal.
 
 /**
- * HTTP_STATUS_RESET_CONTENT.
+ * Bug.
  *
- * The request has been completed, and the client program should reset the document view
- * that caused the request to be sent to allow the user to easily initiate another input
- * action.
- */
-define( "HTTP_STATUS_RESET_CONTENT",					205 );
-
-/**
- * HTTP_STATUS_PARTIAL_CONTENT.
+ * This code indicates a bug.
  *
- * The server has fulfilled the partial GET request for the resource.
+ * Bugs, as opposed to {@link kMESSAGE_TYPE_ERROR errors}, result from internal causes
+ * independant from external factors. A bug indicates that an operation will never execute
+ * as stated, it does not necessarily mean that it is {@link kMESSAGE_TYPE_FATAL fatal}, but
+ * rather that the behaviour of an operation does not correspond to its declaration.
  */
-define( "HTTP_STATUS_PARTIAL_CONTENT",					206 );
-
-/**
- * HTTP_STATUS_AMBIGUOUS.
- *
- * The server couldn't decide what to return.
- */
-define( "HTTP_STATUS_AMBIGUOUS",						300 );
-
-/**
- * HTTP_STATUS_MOVED.
- *
- * The requested resource has been assigned to a new permanent URI (Uniform Resource
- * Identifier), and any future references to this resource should be done using one of the
- * returned URIs.
- */
-define( "HTTP_STATUS_MOVED",							301 );
-
-/**
- * HTTP_STATUS_REDIRECT.
- *
- * The requested resource resides temporarily under a different URI (Uniform Resource
- * Identifier).
- */
-define( "HTTP_STATUS_REDIRECT",							302 );
-
-/**
- * HTTP_STATUS_REDIRECT_METHOD.
- *
- * The response to the request can be found under a different URI (Uniform Resource
- * Identifier) and should be retrieved using a GET HTTP verb on that resource.
- */
-define( "HTTP_STATUS_REDIRECT_METHOD",					303 );
-
-/**
- * HTTP_STATUS_NOT_MODIFIED.
- *
- * The requested resource has not been modified.
- */
-define( "HTTP_STATUS_NOT_MODIFIED",						304 );
-
-/**
- * HTTP_STATUS_USE_PROXY.
- *
- * The requested resource must be accessed through the proxy given by the location field.
- */
-define( "HTTP_STATUS_USE_PROXY",						305 );
-
-/**
- * HTTP_STATUS_REDIRECT_KEEP_VERB.
- *
- * The redirected request keeps the same HTTP verb. HTTP/1.1 behavior.
- */
-define( "HTTP_STATUS_REDIRECT_KEEP_VERB",				307 );
-
-/**
- * HTTP_STATUS_BAD_REQUEST.
- *
- * The request could not be processed by the server due to invalid syntax.
- */
-define( "HTTP_STATUS_BAD_REQUEST",						400 );
-
-/**
- * HTTP_STATUS_DENIED.
- *
- * The requested resource requires user authentication.
- */
-define( "HTTP_STATUS_DENIED",							401 );
-
-/**
- * HTTP_STATUS_PAYMENT_REQ.
- *
- * Not currently implemented in the HTTP protocol.
- */
-define( "HTTP_STATUS_PAYMENT_REQ",						402 );
-
-/**
- * HTTP_STATUS_FORBIDDEN.
- *
- * The server understood the request, but is refusing to fulfill it.
- */
-define( "HTTP_STATUS_FORBIDDEN",						403 );
-
-/**
- * HTTP_STATUS_NOT_FOUND.
- *
- * The server has not found anything matching the requested URI (Uniform Resource
- * Identifier).
- */
-define( "HTTP_STATUS_NOT_FOUND",						404 );
-
-/**
- * HTTP_STATUS_BAD_METHOD.
- *
- * The HTTP verb used is not allowed.
- */
-define( "HTTP_STATUS_BAD_METHOD",						405 );
-
-/**
- * HTTP_STATUS_NONE_ACCEPTABLE.
- *
- * No responses acceptable to the client were found.
- */
-define( "HTTP_STATUS_NONE_ACCEPTABLE",					406 );
-
-/**
- * HTTP_STATUS_PROXY_AUTH_REQ.
- *
- * Proxy authentication required.
- */
-define( "HTTP_STATUS_PROXY_AUTH_REQ",					407 );
-
-/**
- * HTTP_STATUS_REQUEST_TIMEOUT.
- *
- * The server timed out waiting for the request.
- */
-define( "HTTP_STATUS_REQUEST_TIMEOUT",					408 );
-
-/**
- * HTTP_STATUS_CONFLICT.
- *
- * The request could not be completed due to a conflict with the current state of the
- * resource. The user should resubmit with more information.
- */
-define( "HTTP_STATUS_CONFLICT",							409 );
-
-/**
- * HTTP_STATUS_GONE.
- *
- * The requested resource is no longer available at the server, and no forwarding address is
- * known.
- */
-define( "HTTP_STATUS_GONE",								410 );
-
-/**
- * HTTP_STATUS_LENGTH_REQUIRED.
- *
- * The server refuses to accept the request without a defined content length.
- */
-define( "HTTP_STATUS_LENGTH_REQUIRED",					411 );
-
-/**
- * HTTP_STATUS_PRECOND_FAILED.
- *
- * The precondition given in one or more of the request header fields evaluated to false
- * when it was tested on the server.
- */
-define( "HTTP_STATUS_PRECOND_FAILED",					412 );
-
-/**
- * HTTP_STATUS_REQUEST_TOO_LARGE.
- *
- * The server is refusing to process a request because the request entity is larger than the
- * server is willing or able to process.
- */
-define( "HTTP_STATUS_REQUEST_TOO_LARGE",				413 );
-
-/**
- * HTTP_STATUS_URI_TOO_LONG.
- *
- * The server is refusing to service the request because the request URI (Uniform Resource
- * Identifier) is longer than the server is willing to interpret.
- */
-define( "HTTP_STATUS_URI_TOO_LONG",						414 );
-
-/**
- * HTTP_STATUS_UNSUPPORTED_MEDIA.
- *
- * The server is refusing to service the request because the entity of the request is in a
- * format not supported by the requested resource for the requested method.
- */
-define( "HTTP_STATUS_UNSUPPORTED_MEDIA",				415 );
-
-/**
- * HTTP_STATUS_RETRY_WITH.
- *
- * The request should be retried after doing the appropriate action.
- */
-define( "HTTP_STATUS_RETRY_WITH",						449 );
-
-/**
- * HTTP_STATUS_SERVER_ERROR.
- *
- * The server encountered an unexpected condition that prevented it from fulfilling the
- * request.
- */
-define( "HTTP_STATUS_SERVER_ERROR",						500 );
-
-/**
- * HTTP_STATUS_NOT_SUPPORTED.
- *
- * The server does not support the functionality required to fulfill the request.
- */
-define( "HTTP_STATUS_NOT_SUPPORTED",					501 );
-
-/**
- * HTTP_STATUS_BAD_GATEWAY.
- *
- * The server, while acting as a gateway or proxy, received an invalid response from the
- * upstream server it accessed in attempting to fulfill the request.
- */
-define( "HTTP_STATUS_BAD_GATEWAY",						502 );
-
-/**
- * HTTP_STATUS_SERVICE_UNAVAIL.
- *
- * The service is temporarily overloaded.
- */
-define( "HTTP_STATUS_SERVICE_UNAVAIL",					503 );
-
-/**
- * HTTP_STATUS_GATEWAY_TIMEOUT.
- *
- * The request was timed out waiting for a gateway.
- */
-define( "HTTP_STATUS_GATEWAY_TIMEOUT",					504 );
-
-/**
- * HTTP_STATUS_VERSION_NOT_SUP.
- *
- * The server does not support, or refuses to support, the HTTP protocol version that was
- * used in the request message.
- */
-define( "HTTP_STATUS_VERSION_NOT_SUP",					505 );
+define( "kMESSAGE_TYPE_BUG",							60 );		// Bug.
 
 
 ?>

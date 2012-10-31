@@ -7,10 +7,9 @@
  *======================================================================================*/
  
 /**
- *	{@link CDataWrapper CDataWrapper} definitions.
+ *	{@link CDataWrapper} definitions.
  *
- *	This file contains common definitions used by the {@link CDataWrapper CDataWrapper}
- *	class.
+ *	This file contains common definitions used by the {@link CDataWrapper} class.
  *
  *	@package	MyWrapper
  *	@subpackage	Wrappers
@@ -79,8 +78,8 @@ define( "kAPI_OP_INSERT",			'$INSERT' );
 /**
  * BATCH-INSERT web-service.
  *
- * This service is equivalent to the {@link kAPI_OP_INSERT kAPI_OP_INSERT} command, except
- * that in this case you provide a list ov objects to insert.
+ * This service is equivalent to the {@link kAPI_OP_INSERT} command, except that in this
+ * case you provide a list ov objects to insert.
  *
  * This option implies that the objects do not exists, or the operation should fail.
  */
@@ -141,8 +140,8 @@ define( "kAPI_PAGE_START",			':@page-start' );
  * Page limit tag.
  *
  * This tag is used to define the maximum number of elements to be returned by a request,
- * this should not be confused with the {@link kAPI_PAGE_COUNT count} tag which defines
- * the total number of elements affected by a request.
+ * this should not be confused with the {@link kAPI_PAGE_COUNT} tag which defines the total
+ * number of elements affected by a request.
  */
 define( "kAPI_PAGE_LIMIT",			':@page-limit' );
 
@@ -150,8 +149,8 @@ define( "kAPI_PAGE_LIMIT",			':@page-limit' );
  * Page count tag.
  *
  * This tag is used to define the <i>actual</i> number of elements returned by a request,
- * this value will be smaller or equal {@link kAPI_PAGE_LIMIT limit} tag which defines
- * the maximum number of elements to be returned by a request.
+ * this value will be smaller or equal {@link kAPI_PAGE_LIMIT} tag which defines the maximum
+ * number of elements to be returned by a request.
  */
 define( "kAPI_PAGE_COUNT",			':@page-count' );
 
@@ -206,10 +205,10 @@ define( "kAPI_DATA_OBJECT",			':@object' );
  * following default key elements:
  *
  * <ul>
- *	<li><i>{@link kAPI_OPT_SAFE kAPI_OPT_SAFE}</i>: Safe commit option.
- *	<li><i>{@link kAPI_OPT_FSYNC kAPI_OPT_FSYNC}</i>: Safe and sync commit option.
- *	<li><i>{@link kAPI_OPT_TIMEOUT kAPI_OPT_TIMEOUT}</i>: Operation timeout.
- *	<li><i>{@link kAPI_OPT_SINGLE kAPI_OPT_SINGLE}</i>: Single object selection.
+ *	<li><i>{@link kAPI_OPT_SAFE}</i>: Safe commit option.
+ *	<li><i>{@link kAPI_OPT_FSYNC}</i>: Safe and sync commit option.
+ *	<li><i>{@link kAPI_OPT_TIMEOUT}</i>: Operation timeout.
+ *	<li><i>{@link kAPI_OPT_SINGLE}</i>: Single object selection.
  * </ul>
  *
  * Cardinality: one or zero.
@@ -262,8 +261,8 @@ define( "kAPI_OPT_TIMEOUT",			'timeout' );
 /**
  * SINGLE option.
  *
- * Boolean, used in the {@link kAPI_OP_DEL delete} operation: if TRUE, only one object will
- * be deleted; if not, all matching objects will be deleted.
+ * Boolean, used in the {@link kAPI_OP_DEL} operation: if TRUE, only one object will be
+ * deleted; if not, all matching objects will be deleted.
  */
 define( "kAPI_OPT_SINGLE",			'justOne' );
 

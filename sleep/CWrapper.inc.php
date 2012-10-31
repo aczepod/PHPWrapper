@@ -7,9 +7,9 @@
  *======================================================================================*/
  
 /**
- *	{@link CWrapper CWrapper} definitions.
+ *	{@link CWrapper} definitions.
  *
- *	This file contains common definitions used by the {@link CWrapper CWrapper}
+ *	This file contains common definitions used by the {@link CWrapper}
  *	class.
  *
  *	@package	MyWrapper
@@ -18,6 +18,7 @@
  *	@author		Milko A. Škofič <m.skofic@cgiar.org>
  *	@version	1.00 03/06/2011
  *				2.00 22/02/2012
+ *				3.00 31/10/2012
  */
 
 /*=======================================================================================
@@ -100,9 +101,9 @@ define( "kAPI_OPT_LOG_TRACE",		':@log-trace' );
  * time stamps:
  *
  * <ul>
- *	<li><i>{@link kAPI_REC_STAMP kAPI_REC_STAMP}</i>: Received time stamp.
- *	<li><i>{@link kAPI_PARSE_STAMP kAPI_PARSE_STAMP}</i>: Parsed time stamp.
- *	<li><i>{@link kAPI_RES_STAMP kAPI_RES_STAMP}</i>: Response time stamp.
+ *	<li><i>{@link kAPI_REC_STAMP}</i>: Received time stamp.
+ *	<li><i>{@link kAPI_PARSE_STAMP}</i>: Parsed time stamp.
+ *	<li><i>{@link kAPI_RES_STAMP}</i>: Response time stamp.
  * </ul>
  *
  * These values are provided as floating point numbers such as the result of the
@@ -167,11 +168,11 @@ define( "kAPI_DATA_REQUEST",		'_request' );
 define( "kAPI_DATA_STATUS",			'_status' );
 
 /**
- * Response status.
+ * Severity.
  *
- * This tag holds the response http status.
+ * This tag holds the response severity code.
  */
-define( "kAPI_HTTP_STATUS",			'_http' );
+define( "kAPI_SEVERITY",			'_severity' );
 
 /**
  * Code.
