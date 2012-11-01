@@ -269,5 +269,45 @@ define( "kTAG_BIBLIOGRAPHY",					'28' );
  */
 define( "kTAG_EXAMPLES",						'29' );
 
+/*=======================================================================================
+ *	CUSTOM TYPE SUB ATTRIBUTES															*
+ *======================================================================================*/
+
+/**
+ * Custom data type.
+ *
+ * This tag is used as the default offset for indicating a custom data type, in general it
+ * is used in a structure in conjunction with the {@link kTAG_CUSTOM_DATA} offset to indicate the
+ * data type of the item.
+ */
+define( "kTAG_CUSTOM_TYPE",						'type' );
+
+/**
+ * Custom data type data.
+ *
+ * This tag is used as the default offset for indicating a custom data type content, in
+ * general this tag is used in conjunction with the {@link kTAG_CUSTOM_TYPE} to wrap a custom data
+ * type in a standard structure.
+ */
+define( "kTAG_CUSTOM_DATA",						'data' );
+
+/*=======================================================================================
+ *	SUB-OBJECT TYPES																	*
+ *======================================================================================*/
+
+/**
+ * Seconds.
+ *
+ * This tag defines the number of seconds since January 1st, 1970.
+ */
+define( "kTYPE_STAMP_SEC",						'sec' );
+
+/**
+ * Microseconds.
+ *
+ * This tag defines microseconds.
+ */
+define( "kTYPE_STAMP_USEC",						'usec' );
+
 
 ?>

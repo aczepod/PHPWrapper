@@ -116,13 +116,6 @@ define( "kOFFSET_DESCRIPTION",					':DESCR' );
 define( "kOFFSET_AUTHORS",						':AUTHORS' );
 
 /**
- * Notes.
- *
- * This tag is used as the offset for generic notes.
- */
-define( "kOFFSET_NOTES",						':NOTES' );
-
-/**
  * Acknowledgments.
  *
  * This tag is used as the offset for generic acknowledgments.
@@ -132,16 +125,44 @@ define( "kOFFSET_ACKNOWLEDGMENTS",				':ACKNOWLEDGMENTS' );
 /**
  * Bibliography.
  *
- * This tag represents the local identifier of the default bibliography attribute term.
+ * This tag represents the generic offset used for a list of bibliographic references.
  */
 define( "kOFFSET_BIBLIOGRAPHY",					':BIBLIOGRAPHY' );
 
 /**
+ * Message.
+ *
+ * This tag is used as the generic offset for a message.
+ */
+define( "kOFFSET_MESSAGE",						':MESSAGE' );
+
+/**
+ * Notes.
+ *
+ * This tag is used as the generic offset for notes.
+ */
+define( "kOFFSET_NOTES",						':NOTES' );
+
+/**
  * Examples.
  *
- * This tag represents the local identifier of the default examples attribute term.
+ * This tag represents the generic offset for a list of examples.
  */
 define( "kOFFSET_EXAMPLES",						':EXAMPLES' );
+
+/**
+ * Severity.
+ *
+ * This tag represents the generic offset for the severity code of a response.
+ */
+define( "kOFFSET_SEVERITY",						':SEVERITY' );
+
+/**
+ * Code.
+ *
+ * This tag represents the generic offset for a code.
+ */
+define( "kOFFSET_CODE",							':CODE' );
 
 /*=======================================================================================
  *	ONTOLOGY ATTRIBUTES																	*
@@ -253,7 +274,7 @@ define( "kOFFSET_REFS_EDGE",					':REF-EDGE' );
  * This tag is generally used as a sub-offset containing a language character code that
  * identifies the language in which the {@link kOFFSET_STRING} attribute is expressed in.
  */
-define( "kOFFSET_LANGUAGE",						':SUB-LANGUAGE' );
+define( "kOFFSET_LANGUAGE",						':STR-LANGUAGE' );
 
 /**
  * String.
@@ -261,7 +282,7 @@ define( "kOFFSET_LANGUAGE",						':SUB-LANGUAGE' );
  * This tag is used as a sub-offset containing a string, which generally is expressed in the
  * {@link kOFFSET_LANGUAGE} language.
  */
-define( "kOFFSET_STRING",						':SUB-STRING' );
+define( "kOFFSET_STRING",						':STR-STRING' );
 
 
 ?>

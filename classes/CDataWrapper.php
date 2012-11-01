@@ -77,22 +77,22 @@ require_once( kPATH_MYWRAPPER_LIBRARY_CLASS."/CDataWrapper.inc.php" );
  *	<li><i>Data parameters</i>: A query is formed by a series of sections, each of which is
  *		provided with the following parameters:
  *	 <ul>
- *		<li><i>{@link kAPI_DATA_QUERY}</i>: <i>Query</i>, this parameter is used when
+ *		<li><i>{@link kAPI_QUERY}</i>: <i>Query</i>, this parameter is used when
  *			retrieving data, it represents the filter or selection query; it must be
  *			expressed as one of the query {@link CQuery} siblings. This parameter can
  *			be compared to the <i>WHERE</i> part of an SQL query.
- *		<li><i>{@link kAPI_DATA_FIELD}</i>: <i>Fields</i>, this parameter indicates which
+ *		<li><i>{@link kAPI_SELECT}</i>: <i>Fields</i>, this parameter indicates which
  *			elements of the selected objects we want returned. This parameter can be
  *			compared to the <i>SELECT</i> part of an SQL query.
- *		<li><i>{@link kAPI_DATA_SORT}</i>: <i>Sort fields</i>, this parameter indicates the
+ *		<li><i>{@link kAPI_SORT}</i>: <i>Sort fields</i>, this parameter indicates the
  *			sort order, the list of data elements by which the result is to be sorted. This
- *			parameter can be compared to the {@link kAPI_DATA_FIELD} parameter or to the
+ *			parameter can be compared to the {@link kAPI_SELECT} parameter or to the
  *			<i>ORDER BY</i> part of an SQL query.
- *		<li><i>{@link kAPI_DATA_OBJECT}</i>: <i>Object data</i>, this parameter represents
+ *		<li><i>{@link kAPI_OBJECT}</i>: <i>Object data</i>, this parameter represents
  *			the data to be stored in the database, the type should ideally be abstracted
  *			from the data store engine. This parameter can be compared to the <i>VALUES</i>
  *			or <i>SET</i> part of an SQL query.
- *		<li><i>{@link kAPI_DATA_OPTIONS}</i>: <i>Options</i>, this parameter represents the
+ *		<li><i>{@link kAPI_OPTIONS}</i>: <i>Options</i>, this parameter represents the
  *			options governing data store and retrieve operations. In general it will cover
  *			the options when storing data and the actual implementation is the
  *			responsibility of derived classes:
@@ -116,7 +116,7 @@ require_once( kPATH_MYWRAPPER_LIBRARY_CLASS."/CDataWrapper.inc.php" );
  *				expect a time out status.
  *			<li><i>{@link kAPI_OPT_SINGLE}</i>: First element, this option is used by the
  *				{@link kAPI_OP_DEL} operation: if <i>ON</i>, only the first object
- *				satisfying the {@link kAPI_DATA_QUERY} will be deleted; if <i>OFF</i> all
+ *				satisfying the {@link kAPI_QUERY} will be deleted; if <i>OFF</i> all
  *				selected elements will be deleted.
  *		 </ul>
  *	 </ul>
@@ -127,30 +127,30 @@ require_once( kPATH_MYWRAPPER_LIBRARY_CLASS."/CDataWrapper.inc.php" );
  * <ul>
  *	<li><i>{@link kAPI_OP_COUNT}</i>: This operation requests a count, which is an integer
  *		indicating the total number of elements satisfying the provided
- *		{@link kAPI_DATA_QUERY}. This number is not to be confused with the page element
- *		{@link kAPI_PAGE_COUNT} described further.
+ *		{@link kAPI_QUERY}. This number is not to be confused with the page element
+ *		{@link kAPI_RESP_PAGE_COUNT} described further.
  *	<li><i>{@link kAPI_OP_MATCH}</i>: This operation is equivalent to a read query, except
- *		that it will try to match one {@link kAPI_DATA_QUERY} clause at the time and will
+ *		that it will try to match one {@link kAPI_QUERY} clause at the time and will
  *		return a result on the first match.
  *	<li><i>{@link kAPI_OP_GET}</i>: This operation is equivalent to a read query, it
- *		requests a list of objects satisfying the provided {@link kAPI_DATA_QUERY}.
+ *		requests a list of objects satisfying the provided {@link kAPI_QUERY}.
  *	<li><i>{@link kAPI_OP_SET}</i>: This operation is equivalent to an insert for new
  *		objects or an update for existing objects, the operation will replace the object in
- *		the data store with the one provided in the {@link kAPI_DATA_OBJECT} parameter.
+ *		the data store with the one provided in the {@link kAPI_OBJECT} parameter.
  *	<li><i>{@link kAPI_OP_UPDATE}</i>: This operation is equivalent to an update operation,
  *		this implies that the object must already exist in the data store and that the
  *		operation will replace the object in the data store with the one provided in the
- *		{@link kAPI_DATA_OBJECT} parameter.
+ *		{@link kAPI_OBJECT} parameter.
  *	<li><i>{@link kAPI_OP_INSERT}</i>: This operation is equivalent to an insert operation,
  *		this implies that the object must not already exist in the data store.
  *	<li><i>{@link kAPI_OP_BATCH_INSERT}</i>: This operation is equivalent to the
  *		{@link kAPI_OP_INSERT} operation, except that we provide here a list of objects to
  *		be inserted.
  *	<li><i>{@link kAPI_OP_MODIFY}</i>: This operation indicates that we want to modify the
- *		contents of an existing object and that the {@link kAPI_DATA_OBJECT} data represents
+ *		contents of an existing object and that the {@link kAPI_OBJECT} data represents
  *		only the changed elements.
  *	<li><i>{@link kAPI_OP_DEL}</i>: This operation indicates that we want to delete the
- *		elements matching the provided {@link kAPI_DATA_QUERY}: the first one only, if the
+ *		elements matching the provided {@link kAPI_QUERY}: the first one only, if the
  *		provided {@link kAPI_OPT_SINGLE} option is on, or all if off or omitted.
  * </ul>
  *
@@ -158,11 +158,11 @@ require_once( kPATH_MYWRAPPER_LIBRARY_CLASS."/CDataWrapper.inc.php" );
  * the response:
  *
  * <ul>
- *	<li><i>{@link kAPI_DATA_PAGING}</i>: Paging section, this section will return the paging
+ *	<li><i>{@link kAPI_PAGING}</i>: Paging section, this section will return the paging
  *		information of the current operation, besides the provided {@link kAPI_PAGE_START}
  *		and {@link kAPI_PAGE_LIMIT} parameters, it will also feature:
  *	 <ul>
- *		<li><i>{@link kAPI_PAGE_COUNT}</i>: This element will hold the actual number of
+ *		<li><i>{@link kAPI_RESP_PAGE_COUNT}</i>: This element will hold the actual number of
  *			returned objects, this number will be either equal or smaller than the provided
  *			{@link kAPI_PAGE_LIMIT} parameter. 
  *	 </ul>
@@ -173,70 +173,6 @@ require_once( kPATH_MYWRAPPER_LIBRARY_CLASS."/CDataWrapper.inc.php" );
  */
 class CDataWrapper extends CWrapper
 {
-		
-
-/*=======================================================================================
- *																						*
- *							PROTECTED INITIALISATION INTERFACE							*
- *																						*
- *======================================================================================*/
-
-
-	 
-	/*===================================================================================
-	 *	_InitOptions																	*
-	 *==================================================================================*/
-
-	/**
-	 * Initialise options.
-	 *
-	 * We overload this method to normalise the {@link kAPI_DATA_PAGING} options.
-	 *
-	 * @access protected
-	 *
-	 * @see kAPI_PAGE_START kAPI_PAGE_LIMIT kAPI_DATA_PAGING
-	 */
-	protected function _InitOptions()
-	{
-		//
-		// Call parent method.
-		//
-		parent::_InitOptions();
-		
-		//
-		// Check paging option.
-		//
-		if( array_key_exists( kAPI_PAGE_START, $_REQUEST )
-		 || array_key_exists( kAPI_PAGE_LIMIT, $_REQUEST ) )
-		{
-			//
-			// Check limit.
-			//
-			if( array_key_exists( kAPI_PAGE_LIMIT, $_REQUEST ) )
-			{
-				//
-				// Set start.
-				//
-				if( ! array_key_exists( kAPI_PAGE_START, $_REQUEST ) )
-					$_REQUEST[ kAPI_PAGE_START ] = 0;
-			
-			} // Provided limit.
-			
-			//
-			// Handle start only.
-			//
-			elseif( $_REQUEST[ kAPI_PAGE_START ] == 0 )
-				return;																// ==>
-			
-			//
-			// Create paging container.
-			//
-			$this->offsetSet( kAPI_DATA_PAGING, Array() );
-		
-		} // Provided paging options.
-	
-	} // _InitOptions.
-
 		
 
 /*=======================================================================================
@@ -390,60 +326,63 @@ class CDataWrapper extends CWrapper
 	/**
 	 * Parse paging.
 	 *
-	 * This method will parse the request pager.
+	 * This method will parse the request pager, or enforce the maximum number of returned
+	 * elements for the {@link kAPI_OP_MATCH} and {@link kAPI_OP_GET} operations, in this
+	 * last case the {@link kAPI_PAGE_LIMIT} will be set to {@link kDEFAULT_LIMIT}.
 	 *
 	 * @access protected
 	 *
 	 * @uses _OffsetManage()
 	 *
-	 * @see kAPI_PAGE_START kAPI_PAGE_LIMIT kAPI_DATA_PAGING kAPI_DATA_REQUEST
+	 * @see kDEFAULT_LIMIT
+	 * @see kAPI_PAGE_START kAPI_PAGE_LIMIT kAPI_PAGING kAPI_REQUEST
 	 */
 	protected function _ParsePaging()
 	{
 		//
-		// Note: the kAPI_DATA_PAGING offset was created by _InitOptions().
+		// Enforce page limit.
 		//
+		if( $this->offsetExists( kAPI_REQUEST )
+		 && ( ($this->offsetGet( kAPI_REQUEST ) == kAPI_OP_MATCH)
+		   || ($this->offsetGet( kAPI_REQUEST ) == kAPI_OP_GET) )
+		 && (! array_key_exists( kAPI_PAGE_LIMIT, $_REQUEST )) )
+			$_REQUEST[ kAPI_PAGE_LIMIT ] = kDEFAULT_LIMIT;
 		
 		//
-		// Handle paging.
+		// Check paging option.
 		//
-		if( $this->offsetExists( kAPI_DATA_PAGING ) )
+		if( array_key_exists( kAPI_PAGE_START, $_REQUEST )
+		 || array_key_exists( kAPI_PAGE_LIMIT, $_REQUEST ) )
 		{
 			//
-			// Init pagers block.
+			// Enforce page limits.
 			//
-			$options = Array();
-			$tags = array( kAPI_PAGE_START, kAPI_PAGE_LIMIT );
+			if( ! array_key_exists( kAPI_PAGE_LIMIT, $_REQUEST ) )
+				$_REQUEST[ kAPI_PAGE_LIMIT ] = kDEFAULT_LIMIT;
 			
 			//
-			// Handle options.
+			// Enforce page start.
 			//
-			foreach( $tags as $tag )
+			elseif( ! array_key_exists( kAPI_PAGE_START, $_REQUEST ) )
+				$_REQUEST[ kAPI_PAGE_START ] = 0;
+			
+			//
+			// Create paging container.
+			//
+			$this->offsetSet( kAPI_PAGING,
+							  array( kAPI_PAGE_START => $_REQUEST[ kAPI_PAGE_START ],
+									 kAPI_PAGE_LIMIT => $_REQUEST[ kAPI_PAGE_LIMIT ] ) );
+
+			//
+			// Handle log request.
+			//
+			if( $this->offsetExists( kAPI_REQUEST ) )
 			{
-				//
-				// Check option.
-				//
-				if( array_key_exists( $tag, $_REQUEST ) )
-				{
-					//
-					// Set option.
-					//
-					$options[ $tag ] = $_REQUEST[ $tag ];
-					
-					//
-					// Log to request.
-					//
-					if( $this->offsetExists( kAPI_DATA_REQUEST ) )
-						$this->_OffsetManage( kAPI_DATA_REQUEST, $tag, $_REQUEST[ $tag ] );
-				
-				} // Has page start.
-			
-			} // Iterating options.
-			
-			//
-			// Update block.
-			//
-			$this[ kAPI_DATA_PAGING ] = $options;
+				$this->_OffsetManage
+					( kAPI_REQUEST, kAPI_PAGE_START, $_REQUEST[ kAPI_PAGE_START ] );
+				$this->_OffsetManage
+					( kAPI_REQUEST, kAPI_PAGE_LIMIT, $_REQUEST[ kAPI_PAGE_LIMIT ] );
+			}
 		
 		} // Provided paging options.
 	
@@ -463,7 +402,7 @@ class CDataWrapper extends CWrapper
 	 *
 	 * @uses _OffsetManage()
 	 *
-	 * @see kAPI_DATABASE kAPI_DATA_REQUEST
+	 * @see kAPI_DATABASE kAPI_REQUEST
 	 */
 	protected function _ParseDatabase()
 	{
@@ -472,9 +411,9 @@ class CDataWrapper extends CWrapper
 		//
 		if( array_key_exists( kAPI_DATABASE, $_REQUEST ) )
 		{
-			if( $this->offsetExists( kAPI_DATA_REQUEST ) )
+			if( $this->offsetExists( kAPI_REQUEST ) )
 				$this->_OffsetManage
-					( kAPI_DATA_REQUEST, kAPI_DATABASE, $_REQUEST[ kAPI_DATABASE ] );
+					( kAPI_REQUEST, kAPI_DATABASE, $_REQUEST[ kAPI_DATABASE ] );
 		}
 	
 	} // _ParseDatabase.
@@ -493,7 +432,7 @@ class CDataWrapper extends CWrapper
 	 *
 	 * @uses _OffsetManage()
 	 *
-	 * @see kAPI_CONTAINER kAPI_DATA_REQUEST
+	 * @see kAPI_CONTAINER kAPI_REQUEST
 	 */
 	protected function _ParseContainer()
 	{
@@ -502,9 +441,9 @@ class CDataWrapper extends CWrapper
 		//
 		if( array_key_exists( kAPI_CONTAINER, $_REQUEST ) )
 		{
-			if( $this->offsetExists( kAPI_DATA_REQUEST ) )
+			if( $this->offsetExists( kAPI_REQUEST ) )
 				$this->_OffsetManage
-					( kAPI_DATA_REQUEST, kAPI_CONTAINER, $_REQUEST[ kAPI_CONTAINER ] );
+					( kAPI_REQUEST, kAPI_CONTAINER, $_REQUEST[ kAPI_CONTAINER ] );
 		}
 	
 	} // _ParseContainer.
@@ -523,18 +462,18 @@ class CDataWrapper extends CWrapper
 	 *
 	 * @uses _OffsetManage()
 	 *
-	 * @see kAPI_DATA_QUERY kAPI_DATA_REQUEST
+	 * @see kAPI_QUERY kAPI_REQUEST
 	 */
 	protected function _ParseQuery()
 	{
 		//
 		// Handle query.
 		//
-		if( array_key_exists( kAPI_DATA_QUERY, $_REQUEST ) )
+		if( array_key_exists( kAPI_QUERY, $_REQUEST ) )
 		{
-			if( $this->offsetExists( kAPI_DATA_REQUEST ) )
+			if( $this->offsetExists( kAPI_REQUEST ) )
 				$this->_OffsetManage
-					( kAPI_DATA_REQUEST, kAPI_DATA_QUERY, $_REQUEST[ kAPI_DATA_QUERY ] );
+					( kAPI_REQUEST, kAPI_QUERY, $_REQUEST[ kAPI_QUERY ] );
 		}
 	
 	} // _ParseQuery.
@@ -553,18 +492,18 @@ class CDataWrapper extends CWrapper
 	 *
 	 * @uses _OffsetManage()
 	 *
-	 * @see kAPI_DATA_FIELD kAPI_DATA_REQUEST
+	 * @see kAPI_SELECT kAPI_REQUEST
 	 */
 	protected function _ParseFields()
 	{
 		//
 		// Handle fields.
 		//
-		if( array_key_exists( kAPI_DATA_FIELD, $_REQUEST ) )
+		if( array_key_exists( kAPI_SELECT, $_REQUEST ) )
 		{
-			if( $this->offsetExists( kAPI_DATA_REQUEST ) )
+			if( $this->offsetExists( kAPI_REQUEST ) )
 				$this->_OffsetManage
-					( kAPI_DATA_REQUEST, kAPI_DATA_FIELD, $_REQUEST[ kAPI_DATA_FIELD ] );
+					( kAPI_REQUEST, kAPI_SELECT, $_REQUEST[ kAPI_SELECT ] );
 		}
 	
 	} // _ParseFields.
@@ -583,18 +522,18 @@ class CDataWrapper extends CWrapper
 	 *
 	 * @uses _OffsetManage()
 	 *
-	 * @see kAPI_DATA_SORT kAPI_DATA_REQUEST
+	 * @see kAPI_SORT kAPI_REQUEST
 	 */
 	protected function _ParseSort()
 	{
 		//
 		// Handle sort.
 		//
-		if( array_key_exists( kAPI_DATA_SORT, $_REQUEST ) )
+		if( array_key_exists( kAPI_SORT, $_REQUEST ) )
 		{
-			if( $this->offsetExists( kAPI_DATA_REQUEST ) )
+			if( $this->offsetExists( kAPI_REQUEST ) )
 				$this->_OffsetManage
-					( kAPI_DATA_REQUEST, kAPI_DATA_SORT, $_REQUEST[ kAPI_DATA_SORT ] );
+					( kAPI_REQUEST, kAPI_SORT, $_REQUEST[ kAPI_SORT ] );
 		}
 	
 	} // _ParseSort.
@@ -613,18 +552,18 @@ class CDataWrapper extends CWrapper
 	 *
 	 * @uses _OffsetManage()
 	 *
-	 * @see kAPI_DATA_OBJECT kAPI_DATA_REQUEST
+	 * @see kAPI_OBJECT kAPI_REQUEST
 	 */
 	protected function _ParseObject()
 	{
 		//
 		// Handle object.
 		//
-		if( array_key_exists( kAPI_DATA_OBJECT, $_REQUEST ) )
+		if( array_key_exists( kAPI_OBJECT, $_REQUEST ) )
 		{
-			if( $this->offsetExists( kAPI_DATA_REQUEST ) )
+			if( $this->offsetExists( kAPI_REQUEST ) )
 				$this->_OffsetManage
-					( kAPI_DATA_REQUEST, kAPI_DATA_OBJECT, $_REQUEST[ kAPI_DATA_OBJECT ] );
+					( kAPI_REQUEST, kAPI_OBJECT, $_REQUEST[ kAPI_OBJECT ] );
 		}
 	
 	} // _ParseObject.
@@ -643,18 +582,18 @@ class CDataWrapper extends CWrapper
 	 *
 	 * @uses _OffsetManage()
 	 *
-	 * @see kAPI_DATA_OPTIONS kAPI_DATA_REQUEST
+	 * @see kAPI_OPTIONS kAPI_REQUEST
 	 */
 	protected function _ParseOptions()
 	{
 		//
 		// Handle object.
 		//
-		if( array_key_exists( kAPI_DATA_OPTIONS, $_REQUEST ) )
+		if( array_key_exists( kAPI_OPTIONS, $_REQUEST ) )
 		{
-			if( $this->offsetExists( kAPI_DATA_REQUEST ) )
+			if( $this->offsetExists( kAPI_REQUEST ) )
 				$this->_OffsetManage
-					( kAPI_DATA_REQUEST, kAPI_DATA_OPTIONS, $_REQUEST[ kAPI_DATA_OPTIONS ] );
+					( kAPI_REQUEST, kAPI_OPTIONS, $_REQUEST[ kAPI_OPTIONS ] );
 		}
 	
 	} // _ParseOptions.
@@ -682,9 +621,9 @@ class CDataWrapper extends CWrapper
 	 *
 	 * @uses _DecodeParameter()
 	 *
-	 * @see kAPI_DATA_QUERY
+	 * @see kAPI_QUERY
 	 */
-	protected function _FormatQuery()		{	$this->_DecodeParameter( kAPI_DATA_QUERY );	}
+	protected function _FormatQuery()			{	$this->_DecodeParameter( kAPI_QUERY );	}
 
 	 
 	/*===================================================================================
@@ -700,9 +639,9 @@ class CDataWrapper extends CWrapper
 	 *
 	 * @uses _DecodeParameter()
 	 *
-	 * @see kAPI_DATA_FIELD
+	 * @see kAPI_SELECT
 	 */
-	protected function _FormatFields()		{	$this->_DecodeParameter( kAPI_DATA_FIELD );	}
+	protected function _FormatFields()			{	$this->_DecodeParameter( kAPI_SELECT );	}
 
 	 
 	/*===================================================================================
@@ -718,9 +657,9 @@ class CDataWrapper extends CWrapper
 	 *
 	 * @uses _DecodeParameter()
 	 *
-	 * @see kAPI_DATA_SORT
+	 * @see kAPI_SORT
 	 */
-	protected function _FormatSort()		{	$this->_DecodeParameter( kAPI_DATA_SORT );	}
+	protected function _FormatSort()			{	$this->_DecodeParameter( kAPI_SORT );	}
 
 	 
 	/*===================================================================================
@@ -736,9 +675,9 @@ class CDataWrapper extends CWrapper
 	 *
 	 * @uses _DecodeParameter()
 	 *
-	 * @see kAPI_DATA_OBJECT
+	 * @see kAPI_OBJECT
 	 */
-	protected function _FormatObject()	{	$this->_DecodeParameter( kAPI_DATA_OBJECT );	}
+	protected function _FormatObject()			{	$this->_DecodeParameter( kAPI_OBJECT );	}
 
 	 
 	/*===================================================================================
@@ -754,9 +693,9 @@ class CDataWrapper extends CWrapper
 	 *
 	 * @uses _DecodeParameter()
 	 *
-	 * @see kAPI_DATA_OPTIONS
+	 * @see kAPI_OPTIONS
 	 */
-	protected function _FormatOptions()	{	$this->_DecodeParameter( kAPI_DATA_OPTIONS );	}
+	protected function _FormatOptions()		{	$this->_DecodeParameter( kAPI_OPTIONS );	}
 
 		
 
@@ -781,7 +720,7 @@ class CDataWrapper extends CWrapper
 	 * @access protected
 	 *
 	 * @see kAPI_OPERATION kAPI_OP_SET kAPI_OP_INSERT
-	 * @see kAPI_DATABASE kAPI_CONTAINER kAPI_DATA_OBJECT kAPI_DATA_QUERY
+	 * @see kAPI_DATABASE kAPI_CONTAINER kAPI_OBJECT kAPI_QUERY
 	 */
 	protected function _ValidateOperation()
 	{
@@ -819,7 +758,7 @@ class CDataWrapper extends CWrapper
 				//
 				// Check for object.
 				//
-				if( ! array_key_exists( kAPI_DATA_OBJECT, $_REQUEST ) )
+				if( ! array_key_exists( kAPI_OBJECT, $_REQUEST ) )
 					throw new CException
 						( "Missing object reference",
 						  kERROR_OPTION_MISSING,
@@ -882,7 +821,7 @@ class CDataWrapper extends CWrapper
 				//
 				// Check for query.
 				//
-				if( ! array_key_exists( kAPI_DATA_QUERY, $_REQUEST ) )
+				if( ! array_key_exists( kAPI_QUERY, $_REQUEST ) )
 					throw new CException
 						( "Missing query reference",
 						  kERROR_OPTION_MISSING,
@@ -892,7 +831,7 @@ class CDataWrapper extends CWrapper
 				//
 				// Check for object.
 				//
-				if( ! array_key_exists( kAPI_DATA_OBJECT, $_REQUEST ) )
+				if( ! array_key_exists( kAPI_OBJECT, $_REQUEST ) )
 					throw new CException
 						( "Missing object reference",
 						  kERROR_OPTION_MISSING,
@@ -927,7 +866,7 @@ class CDataWrapper extends CWrapper
 				//
 				// Check for query.
 				//
-				if( ! array_key_exists( kAPI_DATA_QUERY, $_REQUEST ) )
+				if( ! array_key_exists( kAPI_QUERY, $_REQUEST ) )
 					throw new CException
 						( "Missing query reference",
 						  kERROR_OPTION_MISSING,
@@ -954,37 +893,37 @@ class CDataWrapper extends CWrapper
 	/**
 	 * Validate field selection reference.
 	 *
-	 * This method can be used to check whether the provided {@link kAPI_DATA_FIELD}
+	 * This method can be used to check whether the provided {@link kAPI_SELECT}
 	 * parameter is valid.
 	 *
 	 * In this class we ensure that the fields list is an array.
 	 *
 	 * @access protected
 	 *
-	 * @see kAPI_DATA_FIELD
+	 * @see kAPI_SELECT
 	 */
 	protected function _ValidateFields()
 	{
 		// Check fields.
 		//
-		if( array_key_exists( kAPI_DATA_FIELD, $_REQUEST ) )
+		if( array_key_exists( kAPI_SELECT, $_REQUEST ) )
 		{
 			//
 			// Convert to array.
 			//
-			if( $_REQUEST[ kAPI_DATA_FIELD ] instanceof ArrayObject )
-				$_REQUEST[ kAPI_DATA_FIELD ]
-					= $_REQUEST[ kAPI_DATA_FIELD ]->getArrayCopy();
+			if( $_REQUEST[ kAPI_SELECT ] instanceof ArrayObject )
+				$_REQUEST[ kAPI_SELECT ]
+					= $_REQUEST[ kAPI_SELECT ]->getArrayCopy();
 			
 			//
 			// Check type.
 			//
-			if( ! is_array( $_REQUEST[ kAPI_DATA_FIELD ] ) )
+			if( ! is_array( $_REQUEST[ kAPI_SELECT ] ) )
 				throw new CException
 					( "Invalid fields list data type: must be an array",
-					  kERROR_INVALID_PARAMETER,
+					  kERROR_PARAMETER,
 					  kMESSAGE_TYPE_ERROR,
-					  array( 'Fields' => $_REQUEST[ kAPI_DATA_FIELD ] ) );		// !@! ==>
+					  array( 'Fields' => $_REQUEST[ kAPI_SELECT ] ) );		// !@! ==>
 		
 		} // Provided fields.
 	
@@ -998,38 +937,38 @@ class CDataWrapper extends CWrapper
 	/**
 	 * Validate sort selection reference.
 	 *
-	 * This method can be used to check whether the provided {@link kAPI_DATA_SORT}
+	 * This method can be used to check whether the provided {@link kAPI_SORT}
 	 * parameter is valid.
 	 *
 	 * In this class we ensure that the sort list is an array.
 	 *
 	 * @access protected
 	 *
-	 * @see kAPI_DATA_SORT
+	 * @see kAPI_SORT
 	 */
 	protected function _ValidateSort()
 	{
 		//
 		// Check sort.
 		//
-		if( array_key_exists( kAPI_DATA_SORT, $_REQUEST ) )
+		if( array_key_exists( kAPI_SORT, $_REQUEST ) )
 		{
 			//
 			// Convert to array.
 			//
-			if( $_REQUEST[ kAPI_DATA_SORT ] instanceof ArrayObject )
-				$_REQUEST[ kAPI_DATA_SORT ]
-					= $_REQUEST[ kAPI_DATA_SORT ]->getArrayCopy();
+			if( $_REQUEST[ kAPI_SORT ] instanceof ArrayObject )
+				$_REQUEST[ kAPI_SORT ]
+					= $_REQUEST[ kAPI_SORT ]->getArrayCopy();
 			
 			//
 			// Check type.
 			//
-			if( ! is_array( $_REQUEST[ kAPI_DATA_SORT ] ) )
+			if( ! is_array( $_REQUEST[ kAPI_SORT ] ) )
 				throw new CException
 					( "Invalid sort list data type: must be an array",
-					  kERROR_INVALID_PARAMETER,
+					  kERROR_PARAMETER,
 					  kMESSAGE_TYPE_ERROR,
-					  array( 'Fields' => $_REQUEST[ kAPI_DATA_SORT ] ) );		// !@! ==>
+					  array( 'Fields' => $_REQUEST[ kAPI_SORT ] ) );		// !@! ==>
 		
 		} // Provided sort.
 	
@@ -1043,38 +982,38 @@ class CDataWrapper extends CWrapper
 	/**
 	 * Validate sort selection reference.
 	 *
-	 * This method can be used to check whether the provided {@link kAPI_DATA_SORT}
+	 * This method can be used to check whether the provided {@link kAPI_SORT}
 	 * parameter is valid.
 	 *
 	 * In this class we ensure that the sort list is an array.
 	 *
 	 * @access protected
 	 *
-	 * @see kAPI_DATA_OPTIONS
+	 * @see kAPI_OPTIONS
 	 */
 	protected function _ValidateOptions()
 	{
 		//
 		// Check options.
 		//
-		if( array_key_exists( kAPI_DATA_OPTIONS, $_REQUEST ) )
+		if( array_key_exists( kAPI_OPTIONS, $_REQUEST ) )
 		{
 			//
 			// Convert to array.
 			//
-			if( $_REQUEST[ kAPI_DATA_OPTIONS ] instanceof ArrayObject )
-				$_REQUEST[ kAPI_DATA_OPTIONS ]
-					= $_REQUEST[ kAPI_DATA_OPTIONS ]->getArrayCopy();
+			if( $_REQUEST[ kAPI_OPTIONS ] instanceof ArrayObject )
+				$_REQUEST[ kAPI_OPTIONS ]
+					= $_REQUEST[ kAPI_OPTIONS ]->getArrayCopy();
 			
 			//
 			// Check type.
 			//
-			if( ! is_array( $_REQUEST[ kAPI_DATA_OPTIONS ] ) )
+			if( ! is_array( $_REQUEST[ kAPI_OPTIONS ] ) )
 				throw new CException
 					( "Invalid options list data type: must be an array",
-					  kERROR_INVALID_PARAMETER,
+					  kERROR_PARAMETER,
 					  kMESSAGE_TYPE_ERROR,
-					  array( 'Options' => $_REQUEST[ kAPI_DATA_OPTIONS ] ) );	// !@! ==>
+					  array( 'Options' => $_REQUEST[ kAPI_OPTIONS ] ) );	// !@! ==>
 		
 		} // Provided options.
 	
@@ -1117,7 +1056,7 @@ class CDataWrapper extends CWrapper
 		$theList[ kAPI_OP_COUNT ]
 			= 'This operation requests a count, which is an integer indicating the total '
 			 .'number of elements satisfying the provided query ['
-			.kAPI_DATA_QUERY
+			.kAPI_QUERY
 			.'].';
 		
 		//
@@ -1126,7 +1065,7 @@ class CDataWrapper extends CWrapper
 		$theList[ kAPI_OP_MATCH ]
 			= 'This operation is equivalent to a read query, it requests a list of objects '
 			.'satisfying the provided query ['
-			.kAPI_DATA_QUERY
+			.kAPI_QUERY
 			.'], except that in this case each query clause is executed separately until '
 			.'there is the first match.';
 		
@@ -1136,7 +1075,7 @@ class CDataWrapper extends CWrapper
 		$theList[ kAPI_OP_GET ]
 			= 'This operation is equivalent to a read query, it requests a list of objects '
 			.'satisfying the provided query ['
-			.kAPI_DATA_QUERY
+			.kAPI_QUERY
 			.'].';
 		
 		//
@@ -1146,7 +1085,7 @@ class CDataWrapper extends CWrapper
 			= 'This operation is equivalent to an insert for new objects '
 			 .'or an update for existing objects, the operation will replace the object '
 			 .'in the data store with the one provided in the ['
-			 .kAPI_DATA_OBJECT
+			 .kAPI_OBJECT
 			 .'] parameter.';
 		
 		//
@@ -1156,7 +1095,7 @@ class CDataWrapper extends CWrapper
 			= 'This operation is equivalent to an update operation, this implies that '
 			 .'the object must already exist in the data store and that the operation '
 			 .'will replace the object in the data store with the one provided in the ['
-			 .kAPI_DATA_OBJECT
+			 .kAPI_OBJECT
 			 .'] parameter.';
 		
 		//

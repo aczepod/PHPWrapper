@@ -102,6 +102,14 @@ define( "kTYPE_DATE",						':DATE-STRING' );		// Date.
  */
 define( "kTYPE_TIME",						':TIME-STRING' );		// Time.
 
+/**
+ * Regular expression type.
+ *
+ * This tag defines a regular expression string type, it is generally expressed as an
+ * instance of the {@link CDataTypeRegex} class.
+ */
+define( "kTYPE_REGEX",						':REGEX' );				// Regular expression.
+
 /*=======================================================================================
  *	STRUCTURED DATA TYPE ENUMERATIONS													*
  *======================================================================================*/
@@ -371,6 +379,40 @@ define( "kPREDICATE_LEGACY",					':LEGACY' );
  * local identifier.
  */
 define( "kPREDICATE_XREF_EXACT",				':XREF-EXACT' );
+
+/*=======================================================================================
+ *	MONGODB DATA TYPES																	*
+ *======================================================================================*/
+
+/**
+ * MongoId.
+ *
+ * This value represents the MongoId object data type, when serialised it will have the
+ * following structure:
+ *
+ * <ul>
+ *	<li><i>{@link kTAG_TYPE kTAG_TYPE}</i>: Will contain this constant.
+ *	<li><i>{@link kTAG_CUSTOM_DATA kTAG_CUSTOM_DATA}</i>: Will contain the HEX string ID.
+ * </ul>
+ */
+define( "kTYPE_MongoId",					':MongoId' );			// MongoId.
+
+/**
+ * MongoCode.
+ *
+ * This value represents the MongoCode object data type, when serialised it will have the
+ * following structure:
+ *
+ * <ul>
+ *	<li><i>{@link kTAG_TYPE kTAG_TYPE}</i>: Will contain this constant.
+ *	<li><i>{@link kTAG_CUSTOM_DATA kTAG_CUSTOM_DATA}</i>: Will contain the following structure:
+ *	 <ul>
+ *		<li><i>code</i>: The javascript code string.
+ *		<li><i>scope</i>: The list of key/value pairs.
+ *	 </ul>
+ * </ul>
+ */
+define( "kTYPE_MongoCode",					':MongoCode' );		// MongoCode.
 
 
 ?>

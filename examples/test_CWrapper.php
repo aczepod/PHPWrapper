@@ -114,7 +114,7 @@ try
 	//
 	$params = array( (kAPI_FORMAT.'='.kTYPE_JSON),
 					 (kAPI_OPERATION.'='.kAPI_OP_PING),
-					 (kAPI_OPT_LOG_REQUEST.'='.'1') );
+					 (kAPI_LOG_REQUEST.'='.'1') );
 	$request = implode( '&', $params );
 	$request = "$url?$request";
 	$response = file_get_contents( $request );
@@ -148,8 +148,8 @@ try
 	//
 	$params = array( (kAPI_FORMAT.'='.kTYPE_JSON),
 					 (kAPI_OPERATION.'='.kAPI_OP_PING),
-					 (kAPI_REQ_STAMP.'='.gettimeofday( true )),
-					 (kAPI_OPT_LOG_REQUEST.'='.'1') );
+					 (kAPI_STAMP_REQUEST.'='.gettimeofday( true )),
+					 (kAPI_LOG_REQUEST.'='.'1') );
 	$request = implode( '&', $params );
 	$request = "$url?$request";
 	$response = file_get_contents( $request );
@@ -216,8 +216,8 @@ try
 	//
 	$params = array( (kAPI_FORMAT.'='.kTYPE_JSON),
 					 (kAPI_OPERATION.'='.'XXX'),
-					 (kAPI_REQ_STAMP.'='.gettimeofday( true )),
-					 (kAPI_OPT_LOG_REQUEST.'='.'1') );
+					 (kAPI_STAMP_REQUEST.'='.gettimeofday( true )),
+					 (kAPI_LOG_REQUEST.'='.'1') );
 	$request = implode( '&', $params );
 	$request = "$url?$request";
 	$response = file_get_contents( $request );
@@ -250,8 +250,8 @@ try
 	// Missing operator.
 	//
 	$params = array( (kAPI_FORMAT.'='.kTYPE_JSON),
-					 (kAPI_REQ_STAMP.'='.gettimeofday( true )),
-					 (kAPI_OPT_LOG_REQUEST.'='.'1') );
+					 (kAPI_STAMP_REQUEST.'='.gettimeofday( true )),
+					 (kAPI_LOG_REQUEST.'='.'1') );
 	$request = implode( '&', $params );
 	$request = "$url?$request";
 	$response = file_get_contents( $request );

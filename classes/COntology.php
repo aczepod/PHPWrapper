@@ -2606,6 +2606,9 @@ class COntology extends CConnection
 			array( kOFFSET_LID => substr( kTYPE_TIME, 1 ),
 				   kOFFSET_LABEL => "Time",
 				   kOFFSET_DESCRIPTION => "A time represented as a YYYY-MM-DD HH:MM:SS string in which you may not have missing elements." ),
+			array( kOFFSET_LID => substr( kTYPE_REGEX, 1 ),
+				   kOFFSET_LABEL => "Regular expression",
+				   kOFFSET_DESCRIPTION => "This tag defines a regular expression string type." ),
 			array( kOFFSET_LID => substr( kTYPE_STAMP, 1 ),
 				   kOFFSET_LABEL => "Time-stamp",
 				   kOFFSET_DESCRIPTION => "This data type should be used for native time-stamps." ),
@@ -2671,7 +2674,13 @@ class COntology extends CConnection
 				   kOFFSET_DESCRIPTION => "This tag identifies the LEGACY predicate term local code, this predicate indicates that the object of the relationship is the former or legacy choice, in other words, the object of the relationship is obsolete or not valid, and one should use the subject of the relationship in its place." ),
 			array( kOFFSET_LID => substr( kPREDICATE_XREF_EXACT, 1 ),
 				   kOFFSET_LABEL => "Exact cross-reference",
-				   kOFFSET_DESCRIPTION => "This tag identifies the XREF-EXACT predicate term local code, this predicate indicates that the subject and the object of the relationship represent an exact cross-reference, in other words, both elements are interchangeable." ) );
+				   kOFFSET_DESCRIPTION => "This tag identifies the XREF-EXACT predicate term local code, this predicate indicates that the subject and the object of the relationship represent an exact cross-reference, in other words, both elements are interchangeable." ),
+			array( kOFFSET_LID => substr( kTYPE_MongoId, 1 ),
+				   kOFFSET_LABEL => "MongoId",
+				   kOFFSET_DESCRIPTION => "This tag identifies the MongoId object data type." ),
+			array( kOFFSET_LID => substr( kTYPE_MongoCode, 1 ),
+				   kOFFSET_LABEL => "MongoCode",
+				   kOFFSET_DESCRIPTION => "This tag identifies the MongoCode object data type." ) );
 		
 		//
 		// Iterate definitions.
@@ -2877,6 +2886,9 @@ class COntology extends CConnection
 			array( kOFFSET_LID => substr( kDDICT_ATTRIBUTES, 1 ),
 				   kOFFSET_LABEL => "Generic attributes",
 				   kOFFSET_DESCRIPTION => "This tag identifies the root data dictionary node of the terms object data structure, it describes the default elements comprising the term objects in this library." ),
+			array( kOFFSET_LID => substr( kDDICT_WRAPPER, 1 ),
+				   kOFFSET_LABEL => "Wrapper API",
+				   kOFFSET_DESCRIPTION => "This tag identifies the root node for the wrapper web-services API." ),
 			array( kOFFSET_LID => substr( kDDICT_TERM, 1 ),
 				   kOFFSET_LABEL => "Ontology term",
 				   kOFFSET_DESCRIPTION => "This tag identifies the root data dictionary node of the terms object data structure, it describes the default elements comprising the term objects in this library." ),

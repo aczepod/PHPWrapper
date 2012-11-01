@@ -1,7 +1,7 @@
 <?php
 	
 /**
- * Wrapper server.
+ * On server.
  *
  * This file contains a wrapper server using the {@link CWrapper CWrapper} class.
  *
@@ -15,7 +15,7 @@
 
 /*=======================================================================================
  *																						*
- *										Wrapper.php										*
+ *										Ontology.php									*
  *																						*
  *======================================================================================*/
 

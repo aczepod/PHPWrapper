@@ -38,6 +38,13 @@ define( "kDEFAULT_DATABASE",				"ONTOLOGY" );
  */
 define( "kDEFAULT_LANGUAGE",				"en" );
 
+/**
+ * Default page limit.
+ *
+ * This tag indicates the default page limit.
+ */
+define( "kDEFAULT_LIMIT",					50 );
+
 /*=======================================================================================
  *	VERBOSE FLAG																		*
  *======================================================================================*/

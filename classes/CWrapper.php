@@ -28,6 +28,13 @@
 require_once( kPATH_MYWRAPPER_LIBRARY_DEFINE."/Types.inc.php" );
 
 /**
+ * Global attributes.
+ *
+ * This include file contains common offset definitions.
+ */
+require_once( kPATH_MYWRAPPER_LIBRARY_DEFINE."/Attributes.inc.php" );
+
+/**
  * Status.
  *
  * This include file contains all status type definitions.
@@ -83,7 +90,7 @@ require_once( kPATH_MYWRAPPER_LIBRARY_CLASS."/CWrapper.inc.php" );
  *		operations:
  *	 <ul>
  *		<li><i>{@link kAPI_OP_HELP}</i>: A <i>LIST-OP</i> command, this command will return
- *			in the {@link kAPI_DATA_RESPONSE} section the list of supported operations as an
+ *			in the {@link kAPI_RESPONSE} section the list of supported operations as an
  *			array structured as follows:
  *		 <ul>
  *			<li><i>index</i>: The index will be the operation code.
@@ -98,11 +105,11 @@ require_once( kPATH_MYWRAPPER_LIBRARY_CLASS."/CWrapper.inc.php" );
  * the following three sections:
  *
  * <ul>
- *	<li><i>{@link kAPI_DATA_STATUS}</i>: <i>Operation status</i>.
+ *	<li><i>{@link kAPI_STATUS}</i>: <i>Operation status</i>.
  *		This section is returned by default and will inform on the status of the requested
  *		operation. It consists of an array containing the following elements:
  *	 <ul>
- *		<li><i>{@link kAPI_SEVERITY}</i>: <i>Response status</i>.
+ *		<li><i>{@link kOFFSET_SEVERITY}</i>: <i>Response status</i>.
  *			This element will be returned by default regardless of the operation outcome.
  *			This corresponds to the severity of the response and it can take the following
  *			values:
@@ -124,44 +131,44 @@ require_once( kPATH_MYWRAPPER_LIBRARY_CLASS."/CWrapper.inc.php" );
  *			<li><i>{@link kMESSAGE_TYPE_BUG}</i>: The operation failed because of a bug, the
  *				developers should be informed of this kind of errors.
  *		 </ul>
- *		<li><i>{@link kAPI_RESPONSE_CODE}</i>: <i>Status code</i>.
+ *		<li><i>{@link kOFFSET_CODE}</i>: <i>Status code</i>.
  *			This element will be returned by default regardless of the operation outcome.
  *			It corresponds to the error code; {@link kERROR_OK} means no error.
- *		<li><i>{@link kAPI_MESSAGE}</i>: <i>Status message</i>.
+ *		<li><i>{@link kOFFSET_MESSAGE}</i>: <i>Status message</i>.
  *			The response message from the operation, this element is used to return
  *			informative messages or to return error messages when the service fails. It will
  *			generally be formatted as an array structured as follows:
  *		 <ul>
- *			<li><i>{@link kAPI_MESSAGE_LANGUAGE}</i>: The language ISO 639 2
+ *			<li><i>{@link kOFFSET_LANGUAGE}</i>: The language ISO 639 2
  *				character code in which the message is expressed in.
- *			<li><i>{@link kAPI_MESSAGE_STRING}</i>: The actual message data contents.
+ *			<li><i>{@link kOFFSET_STRING}</i>: The actual message data contents.
  *		 </ul>
  *		<li><i>{@link kAPI_AFFECTED_COUNT}</i>: <i>Record count</i>.
  *			The total number of elements affected by the operation. This tag will only be
  *			used by derived classes returning data elements.
- *		<li><i>{@link kAPI_ANNOTATIONS}</i>: <i>Attachments</i>.
+ *		<li><i>{@link kOFFSET_NOTES}</i>: <i>Attachments</i>.
  *				A list of key/value pairs containing information relevant to the operation
  *				response. For instance, if a series of parameters are required and were not
  *				provided, this could list them.
  *	 </ul>
- *	<li><i>{@link kAPI_DATA_REQUEST}</i>: <i>Service request</i>.
+ *	<li><i>{@link kAPI_REQUEST}</i>: <i>Service request</i>.
  *		This section will return the actual request provided to the service, this can be
  *		used for debugging purposes and will only occur if the optional
- *		{@link kAPI_OPT_LOG_REQUEST} parameter has been set to 1.
- *	<li><i>{@link kAPI_DATA_TIMING}</i>: <i>Timers</i>.
+ *		{@link kAPI_LOG_REQUEST} parameter has been set to 1.
+ *	<li><i>{@link kAPI_STAMP}</i>: <i>Timers</i>.
  *		This section holds timing information, it will be returned only if you provide the
  *		time of day [<i>gettimeofday( TRUE )</i>] in the
- *		{@link kAPI_REQ_STAMP} parameter. This section is structured as follows:
+ *		{@link kAPI_STAMP_REQUEST} parameter. This section is structured as follows:
  *	 <ul>
- *		<li><i>{@link kAPI_REQ_STAMP}</i>: Request time stamp, the time in which the request
+ *		<li><i>{@link kAPI_STAMP_REQUEST}</i>: Request time stamp, the time in which the request
  *			was sent; this is the same value sent by the caller in the
- *			{@link kAPI_REQ_STAMP} parameter.
- *		<li><i>{@link kAPI_PARSE_STAMP}</i>: Parse time stamp, the time in which the service
+ *			{@link kAPI_STAMP_REQUEST} parameter.
+ *		<li><i>{@link kAPI_STAMP_PARSE}</i>: Parse time stamp, the time in which the service
  *			finished parsing the request.
- *		<li><i>{@link kAPI_RES_STAMP}</i>: Response time stamp, the time in which the
+ *		<li><i>{@link kAPI_STAMP_SENT}</i>: Response time stamp, the time in which the
  *			response was sent.
  *	 </ul>
- *	<li><i>{@link kAPI_DATA_RESPONSE}</i>: Response, this section will hold the operation
+ *	<li><i>{@link kAPI_RESPONSE}</i>: Response, this section will hold the operation
  *		response, in this class we only respond to {@link kAPI_OP_HELP} list requests.
  * </ul>
  *
@@ -170,15 +177,15 @@ require_once( kPATH_MYWRAPPER_LIBRARY_CLASS."/CWrapper.inc.php" );
  * specific information sections in the response:
  *
  * <ul>
- *	<li><i>{@link kAPI_OPT_LOG_REQUEST}</i>: Log the request, if the value of this parameter
+ *	<li><i>{@link kAPI_LOG_REQUEST}</i>: Log the request, if the value of this parameter
  *		is 1, the response will contain the received request in the
- *		{@link kAPI_DATA_REQUEST} section.
- *	<li><i>{@link kAPI_OPT_LOG_TRACE}</i>: Trace exceptions, if the value of this parameter
+ *		{@link kAPI_REQUEST} section.
+ *	<li><i>{@link kAPI_LOG_TRACE}</i>: Trace exceptions, if the value of this parameter
  *		is 1, in the case of an error that triggered an exception, the error response will
  *		also include the call trace.
- *	<li><i>{@link kAPI_REQ_STAMP}</i>: This parameter should hold the timestamp
+ *	<li><i>{@link kAPI_STAMP_REQUEST}</i>: This parameter should hold the timestamp
  *		[<i>gettimeofday( TRUE )</i>] in which the client has sent the request, if provided,
- *		the service will return the timing information in the {@link kAPI_DATA_TIMING}
+ *		the service will return the timing information in the {@link kAPI_STAMP}
  *		section.
  * </ul>
  *
@@ -302,9 +309,9 @@ class CWrapper extends CStatusDocument
 				//
 				// Set parsed timer.
 				//
-				if( $this->offsetExists( kAPI_DATA_TIMING ) )
+				if( $this->offsetExists( kAPI_STAMP ) )
 					$this->_OffsetManage
-						( kAPI_DATA_TIMING, kAPI_PARSE_STAMP, gettimeofday( TRUE ) );
+						( kAPI_STAMP, kAPI_STAMP_PARSE, gettimeofday( TRUE ) );
 				
 				//
 				// Set inited status.
@@ -395,9 +402,9 @@ class CWrapper extends CStatusDocument
 			//
 			// Set sent timer.
 			//
-			if( $this->offsetExists( kAPI_DATA_TIMING ) )
-				$this->_OffsetManage( kAPI_DATA_TIMING,
-									  kAPI_RES_STAMP,
+			if( $this->offsetExists( kAPI_STAMP ) )
+				$this->_OffsetManage( kAPI_STAMP,
+									  kAPI_STAMP_SENT,
 									  gettimeofday( TRUE ) );
 			
 			//
@@ -426,16 +433,16 @@ class CWrapper extends CStatusDocument
 	/**
 	 * Initialise status.
 	 *
-	 * This method is responsible for initialising the {@link kAPI_DATA_STATUS}
+	 * This method is responsible for initialising the {@link kAPI_STATUS}
 	 * section, derived classes may overload this method if they need to handle other
 	 * states.
 	 *
 	 * In this class we set the status to {@link kMESSAGE_TYPE_IDLE} and reset the
-	 * status {@link kAPI_RESPONSE_CODE}.
+	 * status {@link kOFFSET_CODE}.
 	 *
 	 * @access protected
 	 *
-	 * @see kAPI_DATA_STATUS
+	 * @see kAPI_STATUS
 	 */
 	protected function _InitStatus()
 	{
@@ -447,17 +454,17 @@ class CWrapper extends CStatusDocument
 		//
 		// Set state.
 		//
-		$status[ kAPI_SEVERITY ] = kMESSAGE_TYPE_IDLE;
+		$status[ kOFFSET_SEVERITY ] = kMESSAGE_TYPE_IDLE;
 		
 		//
 		// Set idle status code.
 		//
-		$status[ kAPI_RESPONSE_CODE ] = 0;
+		$status[ kOFFSET_CODE ] = 0;
 		
 		//
 		// Copy status to object.
 		//
-		$this->offsetSet( kAPI_DATA_STATUS, $status );
+		$this->offsetSet( kAPI_STATUS, $status );
 	
 	//
 	// In derived classes.
@@ -486,27 +493,27 @@ class CWrapper extends CStatusDocument
 	 * This method is responsible for parsing and setting all default and provided options,
 	 * derived classes should overload this method to handle custom options.
 	 *
-	 * In this class we initialise the {@link kAPI_DATA_REQUEST} and
-	 * {@link kAPI_DATA_TIMING} sections if required.
+	 * In this class we initialise the {@link kAPI_REQUEST} and
+	 * {@link kAPI_STAMP} sections if required.
 	 *
 	 * @access protected
 	 *
-	 * @see kAPI_DATA_REQUEST kAPI_DATA_TIMING
+	 * @see kAPI_REQUEST kAPI_STAMP
 	 */
 	protected function _InitOptions()
 	{
 		//
 		// Check request log option.
 		//
-		if( array_key_exists( kAPI_OPT_LOG_REQUEST, $_REQUEST )
-		 && $_REQUEST[ kAPI_OPT_LOG_REQUEST ] )
-			$this->offsetSet( kAPI_DATA_REQUEST, Array() );
+		if( array_key_exists( kAPI_LOG_REQUEST, $_REQUEST )
+		 && $_REQUEST[ kAPI_LOG_REQUEST ] )
+			$this->offsetSet( kAPI_REQUEST, Array() );
 	
 		//
 		// Check timing option.
 		//
-		if( array_key_exists( kAPI_REQ_STAMP, $_REQUEST ) )
-			$this->offsetSet( kAPI_DATA_TIMING, Array() );
+		if( array_key_exists( kAPI_STAMP_REQUEST, $_REQUEST ) )
+			$this->offsetSet( kAPI_STAMP, Array() );
 	
 	//
 	// In derived classes.
@@ -566,7 +573,7 @@ class CWrapper extends CStatusDocument
 	 * classes custom elements.
 	 *
 	 * In this class we handle the {@link kAPI_FORMAT}, {@link kAPI_OPERATION} and
-	 * {@link kAPI_DATA_TIMING} elements.
+	 * {@link kAPI_STAMP} elements.
 	 *
 	 * @access protected
 	 *
@@ -695,7 +702,7 @@ class CWrapper extends CStatusDocument
 	 *
 	 * @access protected
 	 *
-	 * @see kAPI_DATA_REQUEST kAPI_FORMAT
+	 * @see kAPI_REQUEST kAPI_FORMAT
 	 */
 	protected function _ParseFormat()
 	{
@@ -706,9 +713,9 @@ class CWrapper extends CStatusDocument
 		//
 		// Log format to request.
 		//
-		if( $this->offsetExists( kAPI_DATA_REQUEST ) )
+		if( $this->offsetExists( kAPI_REQUEST ) )
 			$this->_OffsetManage
-				( kAPI_DATA_REQUEST, kAPI_FORMAT, $_REQUEST[ kAPI_FORMAT ] );
+				( kAPI_REQUEST, kAPI_FORMAT, $_REQUEST[ kAPI_FORMAT ] );
 	
 	} // _ParseFormat.
 
@@ -724,7 +731,7 @@ class CWrapper extends CStatusDocument
 	 *
 	 * @access protected
 	 *
-	 * @see kAPI_DATA_REQUEST kAPI_OPERATION
+	 * @see kAPI_REQUEST kAPI_OPERATION
 	 */
 	protected function _ParseOperation()
 	{
@@ -735,9 +742,9 @@ class CWrapper extends CStatusDocument
 		//
 		// Log operation to request.
 		//
-		if( $this->offsetExists( kAPI_DATA_REQUEST ) )
+		if( $this->offsetExists( kAPI_REQUEST ) )
 			$this->_OffsetManage
-				( kAPI_DATA_REQUEST, kAPI_OPERATION, $_REQUEST[ kAPI_OPERATION ] );
+				( kAPI_REQUEST, kAPI_OPERATION, $_REQUEST[ kAPI_OPERATION ] );
 	
 	} // _ParseOperation.
 
@@ -753,33 +760,33 @@ class CWrapper extends CStatusDocument
 	 *
 	 * @access protected
 	 *
-	 * @see kAPI_DATA_REQUEST kAPI_REQ_STAMP
+	 * @see kAPI_REQUEST kAPI_STAMP_REQUEST
 	 */
 	protected function _ParseTiming()
 	{
 		//
-		// Note: the kAPI_DATA_TIMING offset was created by _InitOptions().
+		// Note: the kAPI_STAMP offset was created by _InitOptions().
 		//
 		
 		//
 		// Handle timing.
 		//
-		if( $this->offsetExists( kAPI_DATA_TIMING ) )
+		if( $this->offsetExists( kAPI_STAMP ) )
 		{
 			//
 			// Log request time to request.
 			//
-			if( $this->offsetExists( kAPI_DATA_REQUEST ) )
+			if( $this->offsetExists( kAPI_REQUEST ) )
 				$this->_OffsetManage
-					( kAPI_DATA_REQUEST, kAPI_REQ_STAMP, $_REQUEST[ kAPI_REQ_STAMP ] );
+					( kAPI_REQUEST, kAPI_STAMP_REQUEST, $_REQUEST[ kAPI_STAMP_REQUEST ] );
 			
 			//
 			// Init timers block.
 			//
 			$options = Array();
-			$options[ kAPI_REQ_STAMP ] = $_REQUEST[ kAPI_REQ_STAMP ];
-			$options[ kAPI_REC_STAMP ] = $this->mReceivedStamp;
-			$this->offsetSet( kAPI_DATA_TIMING, $options );
+			$options[ kAPI_STAMP_REQUEST ] = $_REQUEST[ kAPI_STAMP_REQUEST ];
+			$options[ kAPI_STAMP_REC ] = $this->mReceivedStamp;
+			$this->offsetSet( kAPI_STAMP, $options );
 		
 		} // Log timers.
 	
@@ -954,7 +961,7 @@ class CWrapper extends CStatusDocument
 				$list = Array();
 				$this->_Handle_ListOp( $list );
 				if( count( $list ) )
-					$this->offsetSet( kAPI_DATA_RESPONSE, $list );
+					$this->offsetSet( kAPI_RESPONSE, $list );
 				break;
 
 			case kAPI_OP_PING:
@@ -1013,7 +1020,7 @@ class CWrapper extends CStatusDocument
 	 * This method will handle the {@link kAPI_OP_PING} request, which can be used to check
 	 * if a service is alive.
 	 *
-	 * The ping request will return by default the {@link kAPI_DATA_STATUS} block.
+	 * The ping request will return by default the {@link kAPI_STATUS} block.
 	 *
 	 * @access protected
 	 */
@@ -1185,19 +1192,19 @@ class CWrapper extends CStatusDocument
 	 *
 	 * <ul>
 	 *	<li><i>{@link CException::Severity()}</i>: This value will be set as the status
-	 *		{@link kAPI_SEVERITY}.
+	 *		{@link kOFFSET_SEVERITY}.
 	 *	<li><i>{@link Exception::getCode()}</i>: This value will be set as the status
-	 *		{@link kAPI_RESPONSE_CODE}.
+	 *		{@link kOFFSET_CODE}.
 	 *	<li><i>{@link Exception::getMessage()}</i>: This value will be set in the status
-	 *		{@link kAPI_MESSAGE} field as a language block.
+	 *		{@link kOFFSET_MESSAGE} field as a language block.
 	 *	<li><i>{@link Exception::getFile()}</i>: This value will be set in the status
-	 *		{@link kAPI_ANNOTATIONS}.
+	 *		{@link kOFFSET_NOTES}.
 	 *	<li><i>{@link Exception::getLine()}</i>: This value will be set in the status
-	 *		{@link kAPI_ANNOTATIONS}.
+	 *		{@link kOFFSET_NOTES}.
 	 *	<li><i>{@link Exception::getTrace()}</i>: This value will be set in the status
-	 *		{@link kAPI_ANNOTATIONS}.
+	 *		{@link kOFFSET_NOTES}.
 	 *	<li><i>{@link CException::Reference()}</i>: These valuew will be set in the status
-	 *		{@link kAPI_ANNOTATIONS}.
+	 *		{@link kOFFSET_NOTES}.
 	 * </ul>
 	 *
 	 * @param Exception				$theException		Exception.
@@ -1215,21 +1222,21 @@ class CWrapper extends CStatusDocument
 		// Set exception code.
 		//
 		if( ($tmp = $theException->getCode()) !== NULL )
-			$status[ kAPI_RESPONSE_CODE ] = $tmp;
+			$status[ kOFFSET_CODE ] = $tmp;
 		
 		//
 		// Set exception message.
 		//
 		if( ($tmp = $theException->getMessage()) !== NULL )
-			$status[ kAPI_MESSAGE ]
-				= array( array( kAPI_MESSAGE_LANGUAGE => kDEFAULT_LANGUAGE,
-								kAPI_MESSAGE_STRING => $tmp ) );
+			$status[ kOFFSET_MESSAGE ]
+				= array( array( kOFFSET_LANGUAGE => kDEFAULT_LANGUAGE,
+								kOFFSET_STRING => $tmp ) );
 		
 		//
 		// Set exception trace.
 		//
-		if( array_key_exists( kAPI_OPT_LOG_TRACE, $_REQUEST )
-		 && $_REQUEST[ kAPI_OPT_LOG_TRACE ] )
+		if( array_key_exists( kAPI_LOG_TRACE, $_REQUEST )
+		 && $_REQUEST[ kAPI_LOG_TRACE ] )
 		{
 			//
 			// Get trace parameters.
@@ -1245,13 +1252,13 @@ class CWrapper extends CStatusDocument
 			 || ($line !== NULL)
 			 || ($trace !== NULL) )
 			{
-				$status[ kAPI_ANNOTATIONS ] = Array();
+				$status[ kOFFSET_NOTES ] = Array();
 				if( $file !== NULL )
-					$status[ kAPI_ANNOTATIONS ][ 'File' ] = $file;
+					$status[ kOFFSET_NOTES ][ 'File' ] = $file;
 				if( $line !== NULL )
-					$status[ kAPI_ANNOTATIONS ][ 'Line' ] = $line;
+					$status[ kOFFSET_NOTES ][ 'Line' ] = $line;
 				if( $trace !== NULL )
-					$status[ kAPI_ANNOTATIONS ][ 'Trace' ] = $trace;
+					$status[ kOFFSET_NOTES ][ 'Trace' ] = $trace;
 			
 			} // Has trace elements.
 		
@@ -1263,15 +1270,15 @@ class CWrapper extends CStatusDocument
 		if( $theException instanceof CException )
 		{
 			if( ($tmp = $theException->Severity()) !== NULL )
-				$status[ kAPI_SEVERITY ] = $tmp;
+				$status[ kOFFSET_SEVERITY ] = $tmp;
 			if( $tmp = $theException->Reference() )
 			{
-				if( ! array_key_exists( kAPI_ANNOTATIONS, $status ) )
-					$status[ kAPI_ANNOTATIONS ] = Array();
+				if( ! array_key_exists( kOFFSET_NOTES, $status ) )
+					$status[ kOFFSET_NOTES ] = Array();
 				if( $references = $theException->Reference() )
 				{
 					foreach( $references as $key => $value )
-						$status[ kAPI_ANNOTATIONS ][ $key ] = $value;
+						$status[ kOFFSET_NOTES ][ $key ] = $value;
 				}
 			}
 		
@@ -1280,7 +1287,7 @@ class CWrapper extends CStatusDocument
 		//
 		// Set status.
 		//
-		$this->offsetSet( kAPI_DATA_STATUS, $status );
+		$this->offsetSet( kAPI_STATUS, $status );
 	
 	} // _Exception2Status.
 
