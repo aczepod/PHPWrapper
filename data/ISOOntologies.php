@@ -274,7 +274,7 @@ require_once( 'ISOOntologies.inc.php' );
 				   'label' => "Status",
 				   'descr' => "Type of individual language." ),
 			array( 'code' => kONTOLOGY_ISO_639_3_INVNAME,
-				   'type' => kTYPE_STRUCT,
+				   'type' => kTYPE_LSTRING,
 				   'label' => "Inverted name",
 				   'descr' => "An \"inverted\" name is one that is altered from the usual English-language order by moving adjectival qualifiers to the end, after the main language name and separated by a comma." ) );
 		
@@ -622,7 +622,7 @@ require_once( 'ISOOntologies.inc.php' );
 				   'label' => "Numeric code",
 				   'descr' => "Three-digit country codes which are identical to those developed and maintained by the United Nations Statistics Division, with the advantage of script (writing system) independence, and hence useful for people or systems using non-Latin scripts." ),
 			array( 'code' => kONTOLOGY_ISO_3166_1_COMMON_NAME,
-				   'type' => kTYPE_STRUCT,
+				   'type' => kTYPE_LSTRING,
 				   'label' => "Common name",
 				   'descr' => "Country common name." ) );
 		

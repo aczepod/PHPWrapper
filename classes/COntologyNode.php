@@ -276,12 +276,26 @@ class COntologyNode extends CNode
 				case kTYPE_INT32:
 				case kTYPE_INT64:
 				case kTYPE_FLOAT:
+				case kTYPE_BOOLEAN:
+				case kTYPE_ANY:
+
 				case kTYPE_BINARY:
 				case kTYPE_DATE:
 				case kTYPE_TIME:
+				case kTYPE_REGEX:
+				
+				case kTYPE_LSTRING:
 				case kTYPE_STAMP:
 				case kTYPE_STRUCT:
-				case kTYPE_BOOLEAN:
+				
+				case kTYPE_PHP:
+				case kTYPE_JSON:
+				case kTYPE_XML:
+				case kTYPE_SVG:
+				
+				case kTYPE_MongoId:
+				case kTYPE_MongoCode:
+				
 				case kTYPE_ENUM:
 				case kTYPE_ENUM_SET:
 					//

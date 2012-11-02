@@ -188,22 +188,27 @@ define( "kTAG_REFS_EDGE",						'18' );
  * Label.
  *
  * This tag is used as the offset for the term's label, this attribute represents the term
- * name or short description structure.
+ * name or short description structure that is an array of elements containing the following
+ * items:
+ *
+ * <ul>
+ *	<li><tt>{@link kTAG_STRING}</tt>: The string.
+ *	<li><tt>{@link kTAG_LANGUAGE}</tt>: The language code of the string.
+ * </ul>
  */
 define( "kTAG_LABEL",							'4' );
 
 /**
  * Label language code.
  *
- * This tag is used as a sub-offset of {@link kTAG_LABEL} element, it represents the
- * language code of the {@link kTAG_LABEL_STRING} string element.
+ * This tag represents the label language code.
  */
 define( "kTAG_LABEL_LANGUAGE",					'5' );
 
 /**
- * Label data.
+ * Label string.
  *
- * This tag represents the string item in the {@link kTAG_LABEL} elements.
+ * This tag represents the label string.
  */
 define( "kTAG_LABEL_STRING",					'6' );
 
@@ -211,22 +216,27 @@ define( "kTAG_LABEL_STRING",					'6' );
  * Description.
  *
  * This tag is used as the offset for the term's description, this attribute represents the
- * term description or definition structure.
+ * term description or definition structure that is an array of elements containing the following
+ * items:
+ *
+ * <ul>
+ *	<li><tt>{@link kTAG_STRING}</tt>: The string.
+ *	<li><tt>{@link kTAG_LANGUAGE}</tt>: The language code of the string.
+ * </ul>
  */
 define( "kTAG_DESCRIPTION",						'7' );
 
 /**
  * Description language code.
  *
- * This tag is used as a sub-offset of {@link kTAG_DESCRIPTION} element, it represents the
- * language code of the {@link kTAG_DESCRIPTION_STRING} string element.
+ * This tag represents the description language code.
  */
 define( "kTAG_DESCRIPTION_LANGUAGE",			'8' );
 
 /**
- * Description data.
+ * Description string.
  *
- * This tag represents the string item in the {@link kTAG_DESCRIPTION} elements.
+ * This tag represents the description string.
  */
 define( "kTAG_DESCRIPTION_STRING",				'9' );
 

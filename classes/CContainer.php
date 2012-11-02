@@ -94,6 +94,46 @@ abstract class CContainer extends CConnection
 
 	 
 	/*===================================================================================
+	 *	Drop																			*
+	 *==================================================================================*/
+
+	/**
+	 * <h4>Delete a container</h4>
+	 *
+	 * This method should be implemented by derived concrete instances.
+	 *
+	 * @access public
+	 */
+	abstract public function Drop();
+
+	 
+	/*===================================================================================
+	 *	AddIndex																		*
+	 *==================================================================================*/
+
+	/**
+	 * <h4>Add an index</h4>
+	 *
+	 * This method should be implemented by derived concrete instances.
+	 *
+	 * @param array					$theIndex			Key/Sort list.
+	 * @param array					$theOptions			List of index options.
+	 *
+	 * @access public
+	 */
+	abstract public function AddIndex( $theIndex, $theOptions = Array() );
+
+		
+
+/*=======================================================================================
+ *																						*
+ *								PUBLIC CONNECTION INTERFACE								*
+ *																						*
+ *======================================================================================*/
+
+
+	 
+	/*===================================================================================
 	 *	ManageObject																	*
 	 *==================================================================================*/
 

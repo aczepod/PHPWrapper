@@ -164,6 +164,20 @@ define( "kOFFSET_SEVERITY",						':SEVERITY' );
  */
 define( "kOFFSET_CODE",							':CODE' );
 
+/**
+ * Language code.
+ *
+ * This tag represents a language code.
+ */
+define( "kOFFSET_LANGUAGE",						':LANGUAGE' );
+
+/**
+ * String.
+ *
+ * This tag represents a generic string.
+ */
+define( "kOFFSET_STRING",						':STRING' );
+
 /*=======================================================================================
  *	ONTOLOGY ATTRIBUTES																	*
  *======================================================================================*/
@@ -263,26 +277,6 @@ define( "kOFFSET_REFS_TAG",						':REF-TAG' );
  * edges that reference the current node.
  */
 define( "kOFFSET_REFS_EDGE",					':REF-EDGE' );
-
-/*=======================================================================================
- *	STRUCTURED DATA TYPE OFFSETS														*
- *======================================================================================*/
-
-/**
- * Language code.
- *
- * This tag is generally used as a sub-offset containing a language character code that
- * identifies the language in which the {@link kOFFSET_STRING} attribute is expressed in.
- */
-define( "kOFFSET_LANGUAGE",						':STR-LANGUAGE' );
-
-/**
- * String.
- *
- * This tag is used as a sub-offset containing a string, which generally is expressed in the
- * {@link kOFFSET_LANGUAGE} language.
- */
-define( "kOFFSET_STRING",						':STR-STRING' );
 
 
 ?>

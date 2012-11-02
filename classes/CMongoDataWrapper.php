@@ -1011,7 +1011,7 @@ class CMongoDataWrapper extends CDataWrapper
 			$this->_OffsetManage( kAPI_STATUS, kTAG_DESCRIPTION,
 								  array( kTAG_TYPE => kTYPE_STRING,
 										 kTAG_LANGUAGE => 'en',
-										 kTAG_DATA => 'Object not found.' ) );
+										 kTAG_STRING => 'Object not found.' ) );
 		}
 	
 	} // _Handle_GetOne.
@@ -1691,7 +1691,7 @@ class CMongoDataWrapper extends CDataWrapper
 				$this->_OffsetManage( kAPI_STATUS, kTAG_DESCRIPTION,
 									  array( kTAG_TYPE => kTYPE_STRING,
 											 kTAG_LANGUAGE => 'en',
-											 kTAG_DATA => $ok[ 'errmsg' ] ) );
+											 kTAG_STRING => $ok[ 'errmsg' ] ) );
 			}
 			else
 				$this->_OffsetManage( kAPI_STATUS, kAPI_AFFECTED_COUNT, $ok[ 'n' ] );
@@ -1858,7 +1858,7 @@ class CMongoDataWrapper extends CDataWrapper
 				$this->_OffsetManage( kAPI_STATUS, kTAG_DESCRIPTION,
 									  array( kTAG_TYPE => kTYPE_STRING,
 											 kTAG_LANGUAGE => 'en',
-											 kTAG_DATA => $ok[ 'errmsg' ] ) );
+											 kTAG_STRING => $ok[ 'errmsg' ] ) );
 			}
 			else
 				$this->_OffsetManage( kAPI_STATUS, kAPI_AFFECTED_COUNT, $ok[ 'n' ] );
@@ -1956,7 +1956,7 @@ class CMongoDataWrapper extends CDataWrapper
 				$this->_OffsetManage( kAPI_STATUS, kTAG_DESCRIPTION,
 									  array( kTAG_TYPE => kTYPE_STRING,
 											 kTAG_LANGUAGE => 'en',
-											 kTAG_DATA => $ok[ 'errmsg' ] ) );
+											 kTAG_STRING => $ok[ 'errmsg' ] ) );
 			}
 			else
 				$this->_OffsetManage( kAPI_STATUS, kAPI_AFFECTED_COUNT, $ok[ 'n' ] );

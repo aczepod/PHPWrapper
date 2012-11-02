@@ -2004,6 +2004,549 @@ class COntology extends CConnection
 
 /*=======================================================================================
  *																						*
+ *									PUBLIC EXPORT INTERFACE								*
+ *																						*
+ *======================================================================================*/
+
+
+	 
+	/*===================================================================================
+	 *	ExportTerm																		*
+	 *==================================================================================*/
+
+	/**
+	 * <h4>Export a term</h4>
+	 *
+	 * The main duty of this method is to provide a common display format for the elements
+	 * of the graph, given a term identifier or identifiers list, this method will resolve
+	 * all its references and return a single object that merges all its attributes.
+	 *
+	 * The method expects the following parameters:
+	 *
+	 * <ul>
+	 *	<li><tt>&$theCollection</tt>: This parameter is a reference to an array that
+	 *		collects all exported objects in four elements:
+	 *	 <ul>
+	 *		<li><tt>{@link kCONTAINER_NODE_NAME}</tt>: This element is an array that holds
+	 *			a list of exported nodes, the array indexes refer to the node
+	 *			{@link kOFFSET_NID} and the value to the exported node.
+	 *		<li><tt>{@link kCONTAINER_TAG_NAME}</tt>: This element is an array that holds
+	 *			a list of exported tags, the array indexes will be the tag
+	 *			{@link kOFFSET_NID} and the array values will be the exported nodes referred
+	 *			to by the tag.
+	 *		<li><tt>{@link kCONTAINER_TERM_NAME}</tt>: This element is an array that holds
+	 *			a list of terms, the array keys will be the term's {@link kTAG_GID} and
+	 *			the value will be the attributes of the term (the result of thismethod).
+	 *		<li><tt>{@link kCONTAINER_EDGE_NAME}</tt>: This element is an array that holds
+	 *			a list of exported edges, the array keys will be the edge's
+	 *			{@link kOFFSET_NID} and the value will be the edge's attributes that refer
+	 *			to nodes and terms. This method does not handle this element.
+	 *	 </ul>
+	 *	<li><tt>$theTerm</tt>: This parameter represents the term identifier or a list of
+	 *		term identifiers if the parameter is an array.
+	 *	<li><tt>$theLanguage</tt>: This optional parameter can be used to restrict the
+	 *		attributes of type {@link kTYPE_LSTRING}, if provided, all attributes of that
+	 *		type will only hold the string corresponding to the provided language code, or
+	 *		the string of the first attribute's element if the language cannot be found.
+	 *	<li><tt>$theAttributes</tt>: This optional parameter can be used to limit the
+	 *		returned attributes to the list provided in this array.
+	 * </ul>
+	 *
+	 * The method will generate an array containing the normalised attributes of the term.
+	 * By default we perform the following transformations:
+	 *
+	 * <ul>
+	 *	<li><tt>{@link kOFFSET_NID}</tt>: This attribute will be omitted.
+	 *	<li><tt>{@link kTAG_CLASS}</tt>: This attribute will be omitted.
+	 *	<li><tt>{@link kOFFSET_NAMESPACE}</tt>: This attribute will be omitted.
+	 *	<li><tt>{@link kTAG_TERM}</tt>: This attribute will be omitted.
+	 *	<li><tt>{@link kTAG_REFS_NODE}</tt>: This attribute will be omitted.
+	 *	<li><tt>{@link kTAG_REFS_NAMESPACE}</tt>: This attribute will be omitted.
+	 * </ul>
+	 *
+	 * The method will raise an exception if any element cannot be resolved.
+	 *
+	 * @param reference			   &$theCollection		Exported collection.
+	 * @param mixed					$theTerm			Node identifier or list.
+	 * @param string				$theLanguage		Language code.
+	 * @param array					$theAttributes		List of attribute tags.
+	 *
+	 * @access public
+	 *
+	 * @throws Exception
+	 */
+	public function ExportTerm( &$theCollection, $theTerm, $theLanguage = NULL,
+														   $theAttributes = NULL )
+	{
+		//
+		// Check if object is ready.
+		//
+		if( $this->_IsInited() )
+		{
+			//
+			// Resolve node object.
+			//
+			if( $theTerm instanceof COntologyTerm )
+			{
+				//
+				// Check identifier.
+				//
+				if( $theTerm->offsetExists( kOFFSET_NID ) )
+					$theTerm = $theTerm->offsetGet( kOFFSET_NID );
+				
+				else
+					throw new Exception
+						( "Provided term is missing its identifier",
+						  kERROR_PARAMETER );									// !@! ==>
+			
+			} // Provided node object.
+			
+			//
+			// Handle terms list.
+			//
+			if( is_array( $theTerm ) )
+			{
+				//
+				// Iterate list.
+				//
+				foreach( $theTerm as $id )
+					$this->ExportTerm( $theCollection, $id, $theLanguage, $theAttributes );
+			
+			} // Provided term identifiers list.
+			
+			//
+			// Handle term identifier.
+			//
+			else
+			{
+				//
+				// Init collection.
+				//
+				if( ! is_array( $theCollection ) )
+					$theCollection = array( kCONTAINER_NODE_NAME => Array(),
+											kCONTAINER_TERM_NAME => Array(),
+											kCONTAINER_EDGE_NAME => Array(),
+											kCONTAINER_TAG_NAME  => Array() );
+				
+				//
+				// Export term.
+				//
+				$theTerm = $this->ResolveTerm( $theTerm, NULL, TRUE );
+				$id = $theTerm->offsetGet( kTAG_GID );
+				
+				//
+				// Handle new.
+				//
+				if( ! array_key_exists( $id, $theCollection[ kCONTAINER_TERM_NAME ] ) )
+					$theCollection[ kCONTAINER_TERM_NAME ][ $id ]
+						= $this->_ExportTerm(
+							$theTerm->offsetGet( kOFFSET_NID ), $theAttributes );
+				
+				//
+				// Get term tags.
+				//
+				$this->ExportTag( $theCollection,
+								  array_keys( $theCollection[ kCONTAINER_TERM_NAME ]
+								   							[ $id ] ),
+								  $theLanguage, $theAttributes );
+			
+			} // Provided term identifier.
+			
+		} // Object is ready.
+		
+		else
+			throw new Exception
+				( "Object is not initialised",
+				  kERROR_STATE );												// !@! ==>
+
+	} // ExportTerm.
+
+	 
+	/*===================================================================================
+	 *	ExportNode																		*
+	 *==================================================================================*/
+
+	/**
+	 * <h4>Export a node</h4>
+	 *
+	 * The main duty of this method is to provide a common display format for the elements
+	 * of the graph, given a node identifier or identifiers list, this method will resolve
+	 * all its references and return a single object that merges all its term and node
+	 * attributes.
+	 *
+	 * The method expects the following parameters:
+	 *
+	 * <ul>
+	 *	<li><tt>&$theCollection</tt>: This parameter is a reference to an array that
+	 *		collects all exported objects in four elements:
+	 *	 <ul>
+	 *		<li><tt>{@link kCONTAINER_NODE_NAME}</tt>: This element is an array that holds
+	 *			a list of exported nodes, the array indexes refer to the node
+	 *			{@link kOFFSET_NID} and the value to the exported node (the result of this
+	 *			method).
+	 *		<li><tt>{@link kCONTAINER_TAG_NAME}</tt>: This element is an array that holds
+	 *			a list of exported tags, the array indexes will be the tag
+	 *			{@link kOFFSET_NID} and the array values will be the exported nodes referred
+	 *			to by the tag.
+	 *		<li><tt>{@link kCONTAINER_TERM_NAME}</tt>: This element is an array that holds
+	 *			a list of terms, this list represents all the predicate terms referred to
+	 *			by the other elements of this parameter, the array keys will be the
+	 *			term's {@link kOFFSET_GID} and the value will be the attributes of the
+	 *			term.
+	 *		<li><tt>{@link kCONTAINER_EDGE_NAME}</tt>: This element is an array that holds
+	 *			a list of exported edges, the array keys will be the edge's
+	 *			{@link kOFFSET_NID} and the value will be the edge's attributes that refer
+	 *			to nodes and terms. This method does not handle this element.
+	 *	 </ul>
+	 *	<li><tt>$theNode</tt>: This parameter represents the node identifier or a list of
+	 *		node identifiers if the parameter is an array.
+	 *	<li><tt>$theLanguage</tt>: This optional parameter can be used to restrict the
+	 *		attributes of type {@link kTYPE_LSTRING}, if provided, all attributes of that
+	 *		type will only hold the string corresponding to the provided language code, or
+	 *		the string of the first attribute's element if the language cannot be found.
+	 *	<li><tt>$theAttributes</tt>: This optional parameter can be used to limit the
+	 *		returned attributes to the list provided in this array.
+	 * </ul>
+	 *
+	 * The method will generate an array containing the merged attributes of the node and
+	 * the referenced term, this array will be set in the {@link kCONTAINER_NODE_NAME} of
+	 * the <tt>&$theCollection</tt> parameter with as index the node {@link kOFFSET_NID}.
+	 * If a matching element already exists in the <tt>&$theCollection</tt> parameter, the
+	 * method will do nothing.
+	 *
+	 * By default, in case of conflict, the node attributes will overwrite the term
+	 * attributes, except in the following cases:
+	 *
+	 * <ul>
+	 *	<li><tt>{@link kOFFSET_NID}</tt>: This attribute will be taken from the node.
+	 *	<li><tt>{@link kTAG_LID}</tt>: This attribute will be taken from the term.
+	 *	<li><tt>{@link kTAG_GID}</tt>: This attribute will be taken from the term.
+	 *	<li><tt>{@link kTAG_CLASS}</tt>: This attribute will be omitted.
+	 *	<li><tt>{@link kTAG_TERM}</tt>: This attribute will be omitted.
+	 *	<li><tt>{@link kTAG_REFS_NODE}</tt>: This attribute will be omitted.
+	 *	<li><tt>{@link kTAG_REFS_NAMESPACE}</tt>: This attribute will be omitted.
+	 * </ul>
+	 *
+	 * The method will raise an exception if any element cannot be resolved.
+	 *
+	 * @param reference			   &$theCollection		Exported collection.
+	 * @param mixed					$theNode			Node identifier or list.
+	 * @param string				$theLanguage		Language code.
+	 * @param array					$theAttributes		List of attribute tags.
+	 *
+	 * @access public
+	 *
+	 * @throws Exception
+	 */
+	public function ExportNode( &$theCollection, $theNode, $theLanguage = NULL,
+														   $theAttributes = NULL )
+	{
+		//
+		// Check if object is ready.
+		//
+		if( $this->_IsInited() )
+		{
+			//
+			// Resolve node object.
+			//
+			if( $theNode instanceof COntologyNode )
+			{
+				//
+				// Check identifier.
+				//
+				if( $theNode->offsetExists( kOFFSET_NID ) )
+					$theNode = $theNode->offsetGet( kOFFSET_NID );
+				
+				else
+					throw new Exception
+						( "Provided node is missing its identifier",
+						  kERROR_PARAMETER );									// !@! ==>
+			
+			} // Provided node object.
+			
+			//
+			// Handle nodes list.
+			//
+			if( is_array( $theNode ) )
+			{
+				//
+				// Iterate list.
+				//
+				foreach( $theNode as $id )
+					$this->ExportNode( $theCollection, $id, $theLanguage, $theAttributes );
+			
+			} // Provided node identifiers list.
+			
+			//
+			// Handle node identifier.
+			//
+			elseif( is_integer( $theNode ) )
+			{
+				//
+				// Init collection.
+				//
+				if( ! is_array( $theCollection ) )
+					$theCollection = array( kCONTAINER_NODE_NAME => Array(),
+											kCONTAINER_TERM_NAME => Array(),
+											kCONTAINER_EDGE_NAME => Array(),
+											kCONTAINER_TAG_NAME  => Array() );
+				
+				//
+				// Check if new.
+				//
+				if( ! array_key_exists( $theNode, $theCollection[ kCONTAINER_NODE_NAME ] ) )
+				{
+					//
+					// Export node.
+					//
+					$node = $this->_ExportNode( $theNode, $theAttributes );
+					
+					//
+					// Add the node to the collection.
+					//
+					$theCollection[ kCONTAINER_NODE_NAME ][ $theNode ] = $node;
+					
+					//
+					// Get node tags.
+					//
+					$this->ExportTag( $theCollection,
+									  array_keys( $node ),
+									  $theLanguage, $theAttributes );
+				
+				} // New node.
+			
+			} // Provided node identifier.
+			
+			//
+			// Invalid node reference.
+			//
+			else
+				throw new Exception
+					( "Invalid node reference",
+					  kERROR_PARAMETER );										// !@! ==>
+			
+		} // Object is ready.
+		
+		else
+			throw new Exception
+				( "Object is not initialised",
+				  kERROR_STATE );												// !@! ==>
+
+	} // ExportNode.
+	
+	
+	/*===================================================================================
+	 *	ExportTag																		*
+	 *==================================================================================*/
+
+	/**
+	 * <h4>Export a tag</h4>
+	 *
+	 * The main duty of this method is to provide a common display format for the elements
+	 * of the graph, given a tag identifier or identifiers list, this method will resolve
+	 * all its references and return a single object that merges all its tag, term and node
+	 * attributes.
+	 *
+	 * The method expects the following parameters:
+	 *
+	 * <ul>
+	 *	<li><tt>&$theCollection</tt>: This parameter is a reference to an array that
+	 *		collects all exported objects in four elements:
+	 *	 <ul>
+	 *		<li><tt>{@link kCONTAINER_NODE_NAME}</tt>: This element is an array that holds
+	 *			a list of exported nodes, the array indexes refer to the node
+	 *			{@link kOFFSET_NID} and the value to the exported node.
+	 *		<li><tt>{@link kCONTAINER_TAG_NAME}</tt>: This element is an array that holds
+	 *			a list of exported tags, the array indexes will be the tag
+	 *			{@link kOFFSET_NID} and the array values will be the exported nodes referred
+	 *			to by the tag (the
+	 *			output of this method).
+	 *		<li><tt>{@link kCONTAINER_TERM_NAME}</tt>: This element is an array that holds
+	 *			a list of terms, this list represents all the predicate terms referred to
+	 *			by the other elements of this parameter, the array keys will be the
+	 *			term's {@link kOFFSET_GID} and the value will be the attributes of the
+	 *			term.
+	 *		<li><tt>{@link kCONTAINER_EDGE_NAME}</tt>: This element is an array that holds
+	 *			a list of exported edges, the array keys will be the edge's
+	 *			{@link kOFFSET_NID} and the value will be the edge's attributes that refer
+	 *			to nodes and terms. This method does not handle this element.
+	 *	 </ul>
+	 *	<li><tt>$theTag</tt>: This parameter represents the tag identifier or a list of
+	 *		tag identifiers if the parameter is an array.
+	 *	<li><tt>$theLanguage</tt>: This optional parameter can be used to restrict the
+	 *		attributes of type {@link kTYPE_LSTRING}, if provided, all attributes of that
+	 *		type will only hold the string corresponding to the provided language code, or
+	 *		the string of the first attribute's element if the language cannot be found.
+	 *	<li><tt>$theAttributes</tt>: This optional parameter can be used to limit the
+	 *		returned attributes to the list provided in this array.
+	 * </ul>
+	 *
+	 * The method will generate an array containing the merged attributes of the tag and the
+	 * referenced nodes and terms. The only attribute taken from the tag will be its
+	 * {@link kTAG_TAG_PATH}, all other attributes will be resolved by providing the
+	 * referenced node's {@link kOFFSET_NID} to the {@link _ExportNode()} method and in the
+	 * <tt>&$theCollection</tt> {@link kCONTAINER_TAG_NAME} element with the index
+	 * corresponding to the tag {@link kOFFSET_NID}.
+	 *
+	 * The method will raise an exception if any element cannot be resolved.
+	 *
+	 * @param reference			   &$theCollection		Exported collection.
+	 * @param mixed					$theTag				Tag identifier or list.
+	 * @param string				$theLanguage		Language code.
+	 * @param array					$theAttributes		List of attribute tags.
+	 *
+	 * @access public
+	 *
+	 * @throws Exception
+	 */
+	public function ExportTag( &$theCollection, $theTag, $theLanguage = NULL,
+														 $theAttributes = NULL )
+	{
+		//
+		// Check if object is ready.
+		//
+		if( $this->_IsInited() )
+		{
+			//
+			// Resolve tag object.
+			//
+			if( $theTag instanceof COntologyTag )
+			{
+				//
+				// Check identifier.
+				//
+				if( $theTag->offsetExists( kOFFSET_NID ) )
+					$theTag = $theTag->offsetGet( kOFFSET_NID );
+				
+				else
+					throw new Exception
+						( "Provided tag is missing its identifier",
+						  kERROR_PARAMETER );									// !@! ==>
+			
+			} // Provided tag object.
+			
+			//
+			// Handle tags list.
+			//
+			if( is_array( $theTag ) )
+			{
+				//
+				// Iterate list.
+				//
+				foreach( $theTag as $id )
+					$this->ExportTag( $theCollection, $id, $theLanguage, $theAttributes );
+			
+			} // Provided tag identifiers list.
+			
+			//
+			// Handle tag identifier.
+			//
+			else
+			{
+				//
+				// Init collection.
+				//
+				if( ! is_array( $theCollection ) )
+					$theCollection = array( kCONTAINER_NODE_NAME => Array(),
+											kCONTAINER_TERM_NAME => Array(),
+											kCONTAINER_EDGE_NAME => Array(),
+											kCONTAINER_TAG_NAME  => Array() );
+				
+				//
+				// Exclude native identifier.
+				//
+				if( $theTag != kOFFSET_NID )
+				{
+					//
+					// Check if new.
+					//
+					if( ! array_key_exists( $theTag,
+											$theCollection[ kCONTAINER_TAG_NAME ] ) )
+					{
+						//
+						// Resolve tag and save path.
+						//
+						$path = $this->ResolveTag( $theTag, TRUE )
+									->offsetGet( kTAG_TAG_PATH );
+						
+						//
+						// Handle single vertex path.
+						//
+						if( count( $path ) == 1 )
+							$theCollection[ kCONTAINER_TAG_NAME ][ $theTag ]
+								= $this->_ExportNode( $path[ 0 ], $theAttributes );
+						
+						//
+						// Handle multiple vertex tag.
+						//
+						else
+						{
+							//
+							// Init export path.
+							//
+							$export = Array();
+							
+							//
+							// Iterate path.
+							//
+							for( $i = 0; $i < count( $path ); $i++ )
+							{
+								//
+								// Handle term.
+								//
+								if( $i % 2 )
+								{
+									//
+									// Save reference.
+									//
+									$export[ $i ]
+										= $this->ResolveTerm( $path[ $i ], NULL, TRUE )
+											->offsetGet( kTAG_GID );
+									
+									//
+									// Export term.
+									//
+									$this->ExportTerm( $theCollection,
+													   $path[ $i ],
+													   $theLanguage, $theAttributes );
+								
+								} // Predicate.
+								
+								//
+								// Handle vertex.
+								//
+								else
+									$export[ $i ]
+										= $this->_ExportNode( $path[ $i ], $theAttributes );
+							
+							} // Iterating path elements.
+						
+							//
+							// Set path in collection.
+							//
+							$theCollection[ kCONTAINER_TAG_NAME ][ $theTag ] = $export;
+							
+						} // Multiple vertex tag.
+					
+					} // New tag.
+				
+				} // Not the native identifier.
+				
+			} // Provided tag identifier.
+			
+		} // Object is ready.
+		
+		else
+			throw new Exception
+				( "Object is not initialised",
+				  kERROR_STATE );												// !@! ==>
+
+	} // ExportTag.
+
+		
+
+/*=======================================================================================
+ *																						*
  *								PROTECTED COMPONENTS INTERFACE							*
  *																						*
  *======================================================================================*/
@@ -2376,6 +2919,231 @@ class COntology extends CConnection
 
 /*=======================================================================================
  *																						*
+ *								PROTECTED EXPORT INTERFACE								*
+ *																						*
+ *======================================================================================*/
+
+
+	 
+	/*===================================================================================
+	 *	_ExportTerm																		*
+	 *==================================================================================*/
+
+	/**
+	 * <h4>Export a term</h4>
+	 *
+	 * The main duty of this method is to resolve the provided term reference and return a
+	 * single object that holds a selection of attributes.
+	 *
+	 * The method expects the following parameters:
+	 *
+	 * <ul>
+	 *	<li><tt>$theTerm</tt>: This parameter represents the term identifier.
+	 *	<li><tt>$theAttributes</tt>: This optional parameter can be used to limit the
+	 *		returned attributes to the list provided in this array.
+	 * </ul>
+	 *
+	 * The method will return an array containing the normalised attributes of the term.
+	 * By default we perform the following transformations:
+	 *
+	 * <ul>
+	 *	<li><tt>{@link kOFFSET_NID}</tt>: This attribute will be omitted.
+	 *	<li><tt>{@link kTAG_CLASS}</tt>: This attribute will be omitted.
+	 *	<li><tt>{@link kTAG_NAMESPACE}</tt>: This attribute will be omitted.
+	 *	<li><tt>{@link kTAG_TERM}</tt>: This attribute will be omitted.
+	 *	<li><tt>{@link kTAG_REFS_NODE}</tt>: This attribute will be omitted.
+	 *	<li><tt>{@link kTAG_REFS_NAMESPACE}</tt>: This attribute will be omitted.
+	 * </ul>
+	 *
+	 * If the term has a {@link kTAG_TERM} reference, the returned structure will have the
+	 * {@link kOFFSET_LID} and {@link kOFFSET_GID} of the original term and the other
+	 * attributes will come from the referenced term.
+	 *
+	 * The method will raise an exception if any element cannot be resolved.
+	 *
+	 * @param integer				$theTerm			Term identifier.
+	 * @param array					$theAttributes		List of attribute tags.
+	 *
+	 * @access public
+	 * @return array				Exported term.
+	 */
+	public function _ExportTerm( $theTerm, $theAttributes = NULL )
+	{
+		//
+		// Init local storage.
+		//
+		$export = Array();
+		$exclude = array( kOFFSET_NID, kTAG_LID, kTAG_GID, kTAG_CLASS, kTAG_NAMESPACE,
+						  kTAG_TERM, kTAG_REFS_NODE, kTAG_REFS_NAMESPACE );
+		$exclude = array_combine( $exclude, $exclude );
+		
+		//
+		// Resolve term.
+		//
+		$theTerm = $this->ResolveTerm( $theTerm, NULL, TRUE );
+		
+		//
+		// Load default attributes.
+		//
+		$export[ kTAG_GID ] = $theTerm->offsetGet( kTAG_GID );
+		$export[ kTAG_LID ] = $theTerm->offsetGet( kTAG_LID );
+		
+		//
+		// Resolve term references, if necessary.
+		//
+		while( $theTerm->offsetExists( kTAG_TERM ) )
+			$theTerm = $this->ResolveTerm( $theTerm[ kTAG_TERM ], NULL, TRUE );
+		
+		//
+		// Normalise term.
+		//
+		$theTerm = $theTerm->getArrayCopy();
+		
+		//
+		// Remove excluded attributes from term.
+		//
+		foreach( $exclude as $tag )
+		{
+			if( array_key_exists( $tag, $theTerm ) )
+				unset( $theTerm[ $tag ] );
+		}
+		
+		//
+		// Copy attributes.
+		//
+		foreach( $theTerm as $key => $value )
+		{
+			if( ! array_key_exists( $key, $export ) )
+				$export[ $key ] = $value;
+		}
+		
+		//
+		// Restrict attributes.
+		//
+		if( is_array( $theAttributes ) )
+		{
+			$tags = array_keys( $export );
+			foreach( $tags as $tag )
+			{
+				if( ! in_array( $tag, $theAttributes ) )
+					unset( $export[ $tag ] );
+			}
+		
+		} // Provided 
+		
+		return $export;																// ==>
+
+	} // _ExportTerm.
+
+	 
+	/*===================================================================================
+	 *	_ExportNode																		*
+	 *==================================================================================*/
+
+	/**
+	 * <h4>Export a node</h4>
+	 *
+	 * The main duty of this method is to resolve the provided node reference and return a
+	 * single object that merges all its term and node attributes.
+	 *
+	 * The method expects the following parameters:
+	 *
+	 * <ul>
+	 *	<li><tt>$theNode</tt>: This parameter represents the node identifier.
+	 *	<li><tt>$theAttributes</tt>: This optional parameter can be used to limit the
+	 *		returned attributes to the list provided in this array.
+	 * </ul>
+	 *
+	 * The method will return an array containing the merged attributes of the node and
+	 * the referenced term. By default, in case of conflict, the node attributes will
+	 * overwrite the term attributes, except in the following cases:
+	 *
+	 * <ul>
+	 *	<li><tt>{@link kOFFSET_NID}</tt>: This attribute will be taken from the node.
+	 *	<li><tt>{@link kTAG_LID}</tt>: This attribute will be taken from the term.
+	 *	<li><tt>{@link kTAG_GID}</tt>: This attribute will be taken from the term.
+	 *	<li><tt>{@link kTAG_CLASS}</tt>: This attribute will be omitted.
+	 *	<li><tt>{@link kTAG_NAMESPACE}</tt>: This attribute will be omitted.
+	 *	<li><tt>{@link kTAG_TERM}</tt>: This attribute will be omitted.
+	 *	<li><tt>{@link kTAG_REFS_NODE}</tt>: This attribute will be omitted.
+	 *	<li><tt>{@link kTAG_REFS_NAMESPACE}</tt>: This attribute will be omitted.
+	 * </ul>
+	 *
+	 * The method will raise an exception if any element cannot be resolved.
+	 *
+	 * @param integer				$theNode			Node identifier.
+	 * @param array					$theAttributes		List of attribute tags.
+	 *
+	 * @access public
+	 * @return array				Exported node.
+	 */
+	public function _ExportNode( $theNode, $theAttributes = NULL )
+	{
+		//
+		// Init local storage.
+		//
+		$export = Array();
+		$exclude = array( kOFFSET_NID, kTAG_LID, kTAG_GID, kTAG_CLASS, kTAG_NAMESPACE,
+						  kTAG_TERM, kTAG_REFS_NODE, kTAG_REFS_NAMESPACE );
+		$exclude = array_combine( $exclude, $exclude );
+		
+		//
+		// Resolve node.
+		//
+		$theNode = $this->ResolveNode( $theNode, TRUE )->getArrayCopy();
+		
+		//
+		// Load default node attributes.
+		//
+		$export[ kOFFSET_NID ] = $theNode[ kOFFSET_NID ];
+		
+		//
+		// Export node term.
+		//
+		$term = $this->_ExportTerm( $theNode[ kTAG_TERM ], $theAttributes );
+		
+		//
+		// Load default attributes.
+		//
+		$export[ kTAG_LID ] = $term[ kTAG_LID ];
+		$export[ kTAG_GID ] = $term[ kTAG_GID ];
+		
+		//
+		// Remove excluded attributes from node.
+		//
+		foreach( $exclude as $tag )
+		{
+			if( array_key_exists( $tag, $theNode ) )
+				unset( $theNode[ $tag ] );
+		}
+		
+		//
+		// Merge attributes.
+		//
+		$theNode = array_replace( $export, $term, $theNode );
+		
+		//
+		// Restrict attributes.
+		//
+		if( is_array( $theAttributes ) )
+		{
+			$tags = array_keys( $theNode );
+			foreach( $tags as $tag )
+			{
+				if( ! in_array( $tag, $theAttributes ) )
+					unset( $theNode[ $tag ] );
+			}
+		
+		} // Provided 
+		
+		return $theNode;															// ==>
+
+	} // _ExportNode.
+
+		
+
+/*=======================================================================================
+ *																						*
  *						PROTECTED ONTOLOGY INITIALISATION INTERFACE						*
  *																						*
  *======================================================================================*/
@@ -2609,6 +3377,9 @@ class COntology extends CConnection
 			array( kOFFSET_LID => substr( kTYPE_REGEX, 1 ),
 				   kOFFSET_LABEL => "Regular expression",
 				   kOFFSET_DESCRIPTION => "This tag defines a regular expression string type." ),
+			array( kOFFSET_LID => substr( kTYPE_LSTRING, 1 ),
+				   kOFFSET_LABEL => "Language strings list",
+				   kOFFSET_DESCRIPTION => "This data type represents a string attribute that can be expressed in several languages, it is implemented as an array of elements with two items in which one contains the language code and the other the string." ),
 			array( kOFFSET_LID => substr( kTYPE_STAMP, 1 ),
 				   kOFFSET_LABEL => "Time-stamp",
 				   kOFFSET_DESCRIPTION => "This data type should be used for native time-stamps." ),
@@ -2621,6 +3392,18 @@ class COntology extends CConnection
 			array( kOFFSET_LID => substr( kTYPE_ENUM_SET, 1 ),
 				   kOFFSET_LABEL => "Enumerated set",
 				   kOFFSET_DESCRIPTION => "This value represents the enumerated set data type, it represents an enumerated set element or container. Sets represent a vocabulary from which one or more values must be chosen, this particular data type is used in node objects: it indicates that the node refers to a controlled vocabulary array data type and that the enumerated set follows in the graph definition." ),
+			array( kOFFSET_LID => substr( kTYPE_PHP, 1 ),
+				   kOFFSET_LABEL => "PHP-encoded string",
+				   kOFFSET_DESCRIPTION => "This value represents an object or scalar serialised by PHP." ),
+			array( kOFFSET_LID => substr( kTYPE_JSON, 1 ),
+				   kOFFSET_LABEL => "JSON-encoded string",
+				   kOFFSET_DESCRIPTION => "This value represents an object or scalar encoded in a JSON string." ),
+			array( kOFFSET_LID => substr( kTYPE_XML, 1 ),
+				   kOFFSET_LABEL => "XML-encoded string",
+				   kOFFSET_DESCRIPTION => "This value represents an XML string." ),
+			array( kOFFSET_LID => substr( kTYPE_SVG, 1 ),
+				   kOFFSET_LABEL => "SVG-encoded string",
+				   kOFFSET_DESCRIPTION => "This value represents an image encoded in an SVG string." ),
 			array( kOFFSET_LID => substr( kTYPE_CARD_REQUIRED, 1 ),
 				   kOFFSET_LABEL => "Required value",
 				   kOFFSET_DESCRIPTION => "This tag indicates that the element is required, which means that the offset must be present in the object." ),
@@ -2729,14 +3512,14 @@ class COntology extends CConnection
 		// Load term definitions.
 		//
 		$terms = array(
-			array( kOFFSET_LID => substr( kOFFSET_LID, 1 ),
-				   kOFFSET_NAMESPACE => $ns,
-				   kOFFSET_LABEL => "Local unique identifier",
-				   kOFFSET_DESCRIPTION => "This tag identifies the attribute that contains the local or full unique identifier. This value represents the identifier that uniquely identifies an object within a specific domain or namespace. It is by default a string constituting a portion of the global unique identifier." ),
 			array( kOFFSET_LID => kOFFSET_NID,
 				   kOFFSET_NAMESPACE => NULL,
 				   kOFFSET_LABEL => "Native unique identifier",
 				   kOFFSET_DESCRIPTION => "This tag identifies the attribute that contains the native unique identifier. This value is a full or hashed representation of the object's global unique identifier optimised specifically for the container in which the object will be stored." ),
+			array( kOFFSET_LID => substr( kOFFSET_LID, 1 ),
+				   kOFFSET_NAMESPACE => $ns,
+				   kOFFSET_LABEL => "Local unique identifier",
+				   kOFFSET_DESCRIPTION => "This tag identifies the attribute that contains the local or full unique identifier. This value represents the identifier that uniquely identifies an object within a specific domain or namespace. It is by default a string constituting a portion of the global unique identifier." ),
 			array( kOFFSET_LID => substr( kOFFSET_GID, 1 ),
 				   kOFFSET_NAMESPACE => $ns,
 				   kOFFSET_LABEL => "Global unique identifier",
@@ -2745,6 +3528,7 @@ class COntology extends CConnection
 				   kOFFSET_NAMESPACE => $ns,
 				   kOFFSET_LABEL => "Unique identifier",
 				   kOFFSET_DESCRIPTION => "This tag represents the hashed unique identifier of an object in which its native identifier is not related to the global identifier. This is generally used when the native identifier is a sequence number." ),
+
 			array( kOFFSET_LID => substr( kOFFSET_CLASS, 1 ),
 				   kOFFSET_NAMESPACE => $ns,
 				   kOFFSET_LABEL => "Class name",
@@ -2757,14 +3541,60 @@ class COntology extends CConnection
 				   kOFFSET_NAMESPACE => $ns,
 				   kOFFSET_LABEL => "Object data type",
 				   kOFFSET_DESCRIPTION => "This tag identifies the object data type, the offset is an enumerated scalar that defines the specific data type of an object, this value will be in the form of the native unique identifier of the term that defines the enumeration." ),
+
+			array( kOFFSET_LID => substr( kOFFSET_LABEL, 1 ),
+				   kOFFSET_NAMESPACE => $ns,
+				   kOFFSET_LABEL => "Label",
+				   kOFFSET_DESCRIPTION => "This tag is used as the offset for the term's label, this attribute represents the term name or short description." ),
+			array( kOFFSET_LID => substr( kOFFSET_DESCRIPTION, 1 ),
+				   kOFFSET_NAMESPACE => $ns,
+				   kOFFSET_LABEL => "Description",
+				   kOFFSET_DESCRIPTION => "This tag is used as the offset for the term's description, this attribute represents the term description or definition." ),
+			array( kOFFSET_LID => substr( kOFFSET_AUTHORS, 1 ),
+				   kOFFSET_NAMESPACE => $ns,
+				   kOFFSET_LABEL => "Authors",
+				   kOFFSET_DESCRIPTION => "List of authors." ),
+			array( kOFFSET_LID => substr( kOFFSET_ACKNOWLEDGMENTS, 1 ),
+				   kOFFSET_NAMESPACE => $ns,
+				   kOFFSET_LABEL => "Acknowledgments",
+				   kOFFSET_DESCRIPTION => "General acknowledgments." ),
+			array( kOFFSET_LID => substr( kOFFSET_BIBLIOGRAPHY, 1 ),
+				   kOFFSET_NAMESPACE => $ns,
+				   kOFFSET_LABEL => "Bibliography",
+				   kOFFSET_DESCRIPTION => "List of bibliographic references." ),
+			array( kOFFSET_LID => substr( kOFFSET_MESSAGE, 1 ),
+				   kOFFSET_NAMESPACE => $ns,
+				   kOFFSET_LABEL => "Message",
+				   kOFFSET_DESCRIPTION => "Generic message." ),
+			array( kOFFSET_LID => substr( kOFFSET_NOTES, 1 ),
+				   kOFFSET_NAMESPACE => $ns,
+				   kOFFSET_LABEL => "Notes",
+				   kOFFSET_DESCRIPTION => "Generic notes." ),
+			array( kOFFSET_LID => substr( kOFFSET_EXAMPLES, 1 ),
+				   kOFFSET_NAMESPACE => $ns,
+				   kOFFSET_LABEL => "Examples",
+				   kOFFSET_DESCRIPTION => "List of examples or templates." ),
+			array( kOFFSET_LID => substr( kOFFSET_SEVERITY, 1 ),
+				   kOFFSET_NAMESPACE => $ns,
+				   kOFFSET_LABEL => "Severity",
+				   kOFFSET_DESCRIPTION => "Code that characterises the importance or severity of a status." ),
+			array( kOFFSET_LID => substr( kOFFSET_CODE, 1 ),
+				   kOFFSET_NAMESPACE => $ns,
+				   kOFFSET_LABEL => "Code",
+				   kOFFSET_DESCRIPTION => "Generic code." ),
+			array( kOFFSET_LID => substr( kOFFSET_LANGUAGE, 1 ),
+				   kOFFSET_NAMESPACE => $ns,
+				   kOFFSET_LABEL => "Language",
+				   kOFFSET_DESCRIPTION => "This tag represents a language code." ),
+			array( kOFFSET_LID => substr( kOFFSET_STRING, 1 ),
+				   kOFFSET_NAMESPACE => $ns,
+				   kOFFSET_LABEL => "String",
+				   kOFFSET_DESCRIPTION => "This tag represents a generic string." ),
+
 			array( kOFFSET_LID => substr( kOFFSET_NAMESPACE, 1 ),
 				   kOFFSET_NAMESPACE => $ns,
 				   kOFFSET_LABEL => "Namespace",
 				   kOFFSET_DESCRIPTION => "This tag is used as the offset for a namespace. By default this attribute contains the native unique identifier of the namespace object; if you want to refer to the namespace code, this is not the offset to use." ),
-			array( kOFFSET_LID => substr( kOFFSET_TAG_PATH, 1 ),
-				   kOFFSET_NAMESPACE => $ns,
-				   kOFFSET_LABEL => "Path",
-				   kOFFSET_DESCRIPTION => "This tag identifies a list of items constituting a path or sequence." ),
 			array( kOFFSET_LID => substr( kOFFSET_TERM, 1 ),
 				   kOFFSET_NAMESPACE => $ns,
 				   kOFFSET_LABEL => "Term",
@@ -2789,6 +3619,10 @@ class COntology extends CConnection
 				   kOFFSET_NAMESPACE => $ns,
 				   kOFFSET_LABEL => "Vertex terms",
 				   kOFFSET_DESCRIPTION => "This tag identifies the offset that will contain the list of identifiers of the terms referenced by the tag path's vertex elements." ),
+			array( kOFFSET_LID => substr( kOFFSET_TAG_PATH, 1 ),
+				   kOFFSET_NAMESPACE => $ns,
+				   kOFFSET_LABEL => "Path",
+				   kOFFSET_DESCRIPTION => "This tag identifies a list of items constituting a path or sequence." ),
 			array( kOFFSET_LID => substr( kOFFSET_REFS_NAMESPACE, 1 ),
 				   kOFFSET_NAMESPACE => $ns,
 				   kOFFSET_LABEL => "Namespace references",
@@ -2804,43 +3638,7 @@ class COntology extends CConnection
 			array( kOFFSET_LID => substr( kOFFSET_REFS_EDGE, 1 ),
 				   kOFFSET_NAMESPACE => $ns,
 				   kOFFSET_LABEL => "Edge references",
-				   kOFFSET_DESCRIPTION => "This tag identifies edge references, the attribute contains the list of identifiers of edges that reference the current node." ),
-			array( kOFFSET_LID => substr( kOFFSET_LABEL, 1 ),
-				   kOFFSET_NAMESPACE => $ns,
-				   kOFFSET_LABEL => "Label",
-				   kOFFSET_DESCRIPTION => "This tag is used as the offset for the term's label, this attribute represents the term name or short description." ),
-			array( kOFFSET_LID => substr( kOFFSET_DESCRIPTION, 1 ),
-				   kOFFSET_NAMESPACE => $ns,
-				   kOFFSET_LABEL => "Description",
-				   kOFFSET_DESCRIPTION => "This tag is used as the offset for the term's description, this attribute represents the term description or definition." ),
-			array( kOFFSET_LID => substr( kOFFSET_AUTHORS, 1 ),
-				   kOFFSET_NAMESPACE => $ns,
-				   kOFFSET_LABEL => "Authors",
-				   kOFFSET_DESCRIPTION => "List of authors." ),
-			array( kOFFSET_LID => substr( kOFFSET_NOTES, 1 ),
-				   kOFFSET_NAMESPACE => $ns,
-				   kOFFSET_LABEL => "Notes",
-				   kOFFSET_DESCRIPTION => "General notes." ),
-			array( kOFFSET_LID => substr( kOFFSET_ACKNOWLEDGMENTS, 1 ),
-				   kOFFSET_NAMESPACE => $ns,
-				   kOFFSET_LABEL => "Acknowledgments",
-				   kOFFSET_DESCRIPTION => "General acknowledgments." ),
-			array( kOFFSET_LID => substr( kOFFSET_BIBLIOGRAPHY, 1 ),
-				   kOFFSET_NAMESPACE => $ns,
-				   kOFFSET_LABEL => "Bibliography",
-				   kOFFSET_DESCRIPTION => "List of bibliographic references." ),
-			array( kOFFSET_LID => substr( kOFFSET_EXAMPLES, 1 ),
-				   kOFFSET_NAMESPACE => $ns,
-				   kOFFSET_LABEL => "Examples",
-				   kOFFSET_DESCRIPTION => "List of examples or templates." ),
-			array( kOFFSET_LID => substr( kOFFSET_LANGUAGE, 1 ),
-				   kOFFSET_NAMESPACE => $ns,
-				   kOFFSET_LABEL => "Language",
-				   kOFFSET_DESCRIPTION => "This tag is used as a sub-offset that contains the code identifying the language in which the corresponding string sub-offset is expressed in." ),
-			array( kOFFSET_LID => substr( kOFFSET_STRING, 1 ),
-				   kOFFSET_NAMESPACE => $ns,
-				   kOFFSET_LABEL => "String",
-				   kOFFSET_DESCRIPTION => "This tag is used as a sub-offset that contains the string expressed in the language indicated by the corresponding language code sub-offset." ) );
+				   kOFFSET_DESCRIPTION => "This tag identifies edge references, the attribute contains the list of identifiers of edges that reference the current node." ) );
 		
 		//
 		// Iterate definitions.
@@ -3074,8 +3872,9 @@ class COntology extends CConnection
 		//
 		$terms = array( kTYPE_STRING, kTYPE_INT32, kTYPE_INT64, kTYPE_FLOAT,
 						kTYPE_BOOLEAN, kTYPE_ANY, kTYPE_BINARY, kTYPE_DATE,
-						kTYPE_TIME, kTYPE_STRUCT, kTYPE_STAMP, kTYPE_ENUM,
-						kTYPE_ENUM_SET,
+						kTYPE_TIME, kTYPE_REGEX, kTYPE_LSTRING, kTYPE_STAMP,
+						kTYPE_STRUCT, kTYPE_ENUM, kTYPE_ENUM_SET, kTYPE_PHP,
+						kTYPE_JSON, kTYPE_XML, kTYPE_SVG,
 						kTYPE_CARD_REQUIRED, kTYPE_CARD_ARRAY );
 		
 		//
@@ -3154,11 +3953,11 @@ class COntology extends CConnection
 			array( kOFFSET_LID => substr( kOFFSET_LABEL, 1 ),
 				   kOFFSET_GID => kOFFSET_LABEL,
 				   kOFFSET_NAMESPACE => $ns,
-				   kOFFSET_TYPE => array( kTYPE_STRUCT, kTYPE_CARD_ARRAY ) ),
+				   kOFFSET_TYPE => kTYPE_LSTRING ),
 			array( kOFFSET_LID => substr( kOFFSET_DESCRIPTION, 1 ),
 				   kOFFSET_GID => kOFFSET_DESCRIPTION,
 				   kOFFSET_NAMESPACE => $ns,
-				   kOFFSET_TYPE => array( kTYPE_STRUCT, kTYPE_CARD_ARRAY ) ),
+				   kOFFSET_TYPE => kTYPE_LSTRING ),
 			array( kOFFSET_LID => substr( kOFFSET_NAMESPACE, 1 ),
 				   kOFFSET_GID => kOFFSET_NAMESPACE,
 				   kOFFSET_NAMESPACE => $ns,
@@ -3429,10 +4228,11 @@ class COntology extends CConnection
 				case kOFFSET_TYPE:
 					// List types.
 					$list = array( kTYPE_STRING, kTYPE_INT32, kTYPE_INT64, kTYPE_FLOAT,
-								   kTYPE_BOOLEAN, kTYPE_ANY, kTYPE_BINARY, kTYPE_DATE,
-								   kTYPE_TIME, kTYPE_STRUCT, kTYPE_STAMP, kTYPE_ENUM,
-								   kTYPE_ENUM_SET,
-								   kTYPE_CARD_REQUIRED, kTYPE_CARD_ARRAY );
+									kTYPE_BOOLEAN, kTYPE_ANY, kTYPE_BINARY, kTYPE_DATE,
+									kTYPE_TIME, kTYPE_REGEX, kTYPE_LSTRING, kTYPE_STAMP,
+									kTYPE_STRUCT, kTYPE_ENUM, kTYPE_ENUM_SET, kTYPE_PHP,
+									kTYPE_JSON, kTYPE_XML, kTYPE_SVG,
+									kTYPE_CARD_REQUIRED, kTYPE_CARD_ARRAY );
 					// Create nodes and relate.
 					foreach( $list as $item )
 						$this->EnumOf(

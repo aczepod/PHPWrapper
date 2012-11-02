@@ -1101,7 +1101,7 @@ class CMongoContainer extends CContainer
 			case kTYPE_BINARY:
 				if( $theValue instanceof MongoBinData )
 					return $theValue;												// ==>
-				return new MongoBinData( $theValue );							// ==>
+				return new MongoBinData( $theValue );								// ==>
 				
 			case kTYPE_STAMP:
 				if( $theValue instanceof MongoDate )
