@@ -2030,20 +2030,26 @@ class COntology extends CConnection
 	 *		<li><tt>{@link kCONTAINER_NODE_NAME}</tt>: This element is an array that holds
 	 *			a list of exported nodes, the array indexes refer to the node
 	 *			{@link kOFFSET_NID} and the value to the exported node.
+	 *		<li><tt>{@link kCONTAINER_TERM_NAME}</tt>: This element is an array that holds
+	 *			a list of terms, the array keys will be the term's {@link kTAG_GID} and
+	 *			the value will be the attributes of the term (the result of this method).
+	 *		<li><tt>{@link kCONTAINER_EDGE_NAME}</tt>: This element is an array that holds
+	 *			a list of exported edges, the array keys will be the edge's {@link kTAG_GID}
+	 *			and the value will be the edge's attributes that refer to nodes and terms.
+	 *			This method does not handle this element.
 	 *		<li><tt>{@link kCONTAINER_TAG_NAME}</tt>: This element is an array that holds
 	 *			a list of exported tags, the array indexes will be the tag
 	 *			{@link kOFFSET_NID} and the array values will be the exported nodes referred
 	 *			to by the tag.
-	 *		<li><tt>{@link kCONTAINER_TERM_NAME}</tt>: This element is an array that holds
-	 *			a list of terms, the array keys will be the term's {@link kTAG_GID} and
-	 *			the value will be the attributes of the term (the result of thismethod).
-	 *		<li><tt>{@link kCONTAINER_EDGE_NAME}</tt>: This element is an array that holds
-	 *			a list of exported edges, the array keys will be the edge's
-	 *			{@link kOFFSET_NID} and the value will be the edge's attributes that refer
-	 *			to nodes and terms. This method does not handle this element.
 	 *	 </ul>
-	 *	<li><tt>$theTerm</tt>: This parameter represents the term identifier or a list of
-	 *		term identifiers if the parameter is an array.
+	 *	<li><tt>$theTerm</tt>: This parameter represents the term identifier, object or a
+	 *		list of term identifiers:
+	 *	 <ul>
+	 *		<li><tt>array</tt>: A list of terms or term identifiers.
+	 *		<li><tt>{@link COntologyTerm}</tt>: The term will be used as-is.
+	 *		<li><i>other</i>: Any other type will be interpreted as a term reference and
+	 *			resolved with {@link ResolveTerm()}.
+	 *	 </ul>
 	 *	<li><tt>$theLanguage</tt>: This optional parameter can be used to restrict the
 	 *		attributes of type {@link kTYPE_LSTRING}, if provided, all attributes of that
 	 *		type will only hold the string corresponding to the provided language code, or
@@ -2084,24 +2090,6 @@ class COntology extends CConnection
 		if( $this->_IsInited() )
 		{
 			//
-			// Resolve node object.
-			//
-			if( $theTerm instanceof COntologyTerm )
-			{
-				//
-				// Check identifier.
-				//
-				if( $theTerm->offsetExists( kOFFSET_NID ) )
-					$theTerm = $theTerm->offsetGet( kOFFSET_NID );
-				
-				else
-					throw new Exception
-						( "Provided term is missing its identifier",
-						  kERROR_PARAMETER );									// !@! ==>
-			
-			} // Provided node object.
-			
-			//
 			// Handle terms list.
 			//
 			if( is_array( $theTerm ) )
@@ -2120,6 +2108,12 @@ class COntology extends CConnection
 			else
 			{
 				//
+				// Resolve term.
+				//
+				if( ! ($theTerm instanceof COntologyTerm) )
+					$theTerm = $this->ResolveTerm( $theTerm, NULL, TRUE );
+				
+				//
 				// Init collection.
 				//
 				if( ! is_array( $theCollection ) )
@@ -2129,9 +2123,8 @@ class COntology extends CConnection
 											kCONTAINER_TAG_NAME  => Array() );
 				
 				//
-				// Export term.
+				// Save identifier.
 				//
-				$theTerm = $this->ResolveTerm( $theTerm, NULL, TRUE );
 				$id = $theTerm->offsetGet( kTAG_GID );
 				
 				//
@@ -2184,22 +2177,28 @@ class COntology extends CConnection
 	 *			a list of exported nodes, the array indexes refer to the node
 	 *			{@link kOFFSET_NID} and the value to the exported node (the result of this
 	 *			method).
-	 *		<li><tt>{@link kCONTAINER_TAG_NAME}</tt>: This element is an array that holds
-	 *			a list of exported tags, the array indexes will be the tag
-	 *			{@link kOFFSET_NID} and the array values will be the exported nodes referred
-	 *			to by the tag.
 	 *		<li><tt>{@link kCONTAINER_TERM_NAME}</tt>: This element is an array that holds
 	 *			a list of terms, this list represents all the predicate terms referred to
 	 *			by the other elements of this parameter, the array keys will be the
 	 *			term's {@link kOFFSET_GID} and the value will be the attributes of the
 	 *			term.
 	 *		<li><tt>{@link kCONTAINER_EDGE_NAME}</tt>: This element is an array that holds
-	 *			a list of exported edges, the array keys will be the edge's
-	 *			{@link kOFFSET_NID} and the value will be the edge's attributes that refer
-	 *			to nodes and terms. This method does not handle this element.
+	 *			a list of exported edges, the array keys will be the edge's {@link kTAG_GID}
+	 *			and the value will be the edge's attributes that refer to nodes and terms.
+	 *			This method does not handle this element.
+	 *		<li><tt>{@link kCONTAINER_TAG_NAME}</tt>: This element is an array that holds
+	 *			a list of exported tags, the array indexes will be the tag
+	 *			{@link kOFFSET_NID} and the array values will be the exported nodes referred
+	 *			to by the tag.
 	 *	 </ul>
-	 *	<li><tt>$theNode</tt>: This parameter represents the node identifier or a list of
-	 *		node identifiers if the parameter is an array.
+	 *	<li><tt>$theNode</tt>: This parameter represents the node identifier, object or a
+	 *		list of node identifiers:
+	 *	 <ul>
+	 *		<li><tt>array</tt>: A list of nodes or node identifiers.
+	 *		<li><tt>{@link COntologyNode}</tt>: The node will be used as-is.
+	 *		<li><i>other</i>: Any other type will be interpreted as a node reference and
+	 *			resolved with {@link ResolveNode()}.
+	 *	 </ul>
 	 *	<li><tt>$theLanguage</tt>: This optional parameter can be used to restrict the
 	 *		attributes of type {@link kTYPE_LSTRING}, if provided, all attributes of that
 	 *		type will only hold the string corresponding to the provided language code, or
@@ -2247,24 +2246,6 @@ class COntology extends CConnection
 		if( $this->_IsInited() )
 		{
 			//
-			// Resolve node object.
-			//
-			if( $theNode instanceof COntologyNode )
-			{
-				//
-				// Check identifier.
-				//
-				if( $theNode->offsetExists( kOFFSET_NID ) )
-					$theNode = $theNode->offsetGet( kOFFSET_NID );
-				
-				else
-					throw new Exception
-						( "Provided node is missing its identifier",
-						  kERROR_PARAMETER );									// !@! ==>
-			
-			} // Provided node object.
-			
-			//
 			// Handle nodes list.
 			//
 			if( is_array( $theNode ) )
@@ -2280,8 +2261,19 @@ class COntology extends CConnection
 			//
 			// Handle node identifier.
 			//
-			elseif( is_integer( $theNode ) )
+			else
 			{
+				//
+				// Resolve node.
+				//
+				if( ! ($theNode instanceof COntologyNode) )
+					$theNode = $this->ResolveNode( $theNode, TRUE );
+				
+				//
+				// Get node identifier.
+				//
+				$id = $theNode->offsetGet( kOFFSET_NID );
+				
 				//
 				// Init collection.
 				//
@@ -2294,7 +2286,7 @@ class COntology extends CConnection
 				//
 				// Check if new.
 				//
-				if( ! array_key_exists( $theNode, $theCollection[ kCONTAINER_NODE_NAME ] ) )
+				if( ! array_key_exists( $id, $theCollection[ kCONTAINER_NODE_NAME ] ) )
 				{
 					//
 					// Export node.
@@ -2304,7 +2296,7 @@ class COntology extends CConnection
 					//
 					// Add the node to the collection.
 					//
-					$theCollection[ kCONTAINER_NODE_NAME ][ $theNode ] = $node;
+					$theCollection[ kCONTAINER_NODE_NAME ][ $id ] = $node;
 					
 					//
 					// Get node tags.
@@ -2317,12 +2309,175 @@ class COntology extends CConnection
 			
 			} // Provided node identifier.
 			
+		} // Object is ready.
+		
+		else
+			throw new Exception
+				( "Object is not initialised",
+				  kERROR_STATE );												// !@! ==>
+
+	} // ExportNode.
+
+	 
+	/*===================================================================================
+	 *	ExportEdge																		*
+	 *==================================================================================*/
+
+	/**
+	 * <h4>Export an edge</h4>
+	 *
+	 * The main duty of this method is to provide a common display format for the elements
+	 * of the graph, given an edge identifier or identifiers list, this method will resolve
+	 * all its references and return a single object that merges all its term and node
+	 * attributes.
+	 *
+	 * The method expects the following parameters:
+	 *
+	 * <ul>
+	 *	<li><tt>&$theCollection</tt>: This parameter is a reference to an array that
+	 *		collects all exported objects in four elements:
+	 *	 <ul>
+	 *		<li><tt>{@link kCONTAINER_NODE_NAME}</tt>: This element is an array that holds
+	 *			a list of exported nodes, the array indexes refer to the node
+	 *			{@link kOFFSET_NID} and the value to the exported node.
+	 *		<li><tt>{@link kCONTAINER_TERM_NAME}</tt>: This element is an array that holds
+	 *			a list of terms, this list represents all the predicate terms referred to
+	 *			by the other elements of this parameter, the array keys will be the
+	 *			term's {@link kOFFSET_GID} and the value will be the attributes of the
+	 *			term.
+	 *		<li><tt>{@link kCONTAINER_EDGE_NAME}</tt>: This element is an array that holds
+	 *			a list of exported edges, the array keys will be the edge's {@link kTAG_GID}
+	 *			and the value will be the edge's attributes that refer to nodes and terms
+	 *			(the result of this method).
+	 *		<li><tt>{@link kCONTAINER_TAG_NAME}</tt>: This element is an array that holds
+	 *			a list of exported tags, the array indexes will be the tag
+	 *			{@link kOFFSET_NID} and the array values will be the exported nodes referred
+	 *			to by the tag.
+	 *	 </ul>
+	 *	<li><tt>$theEdge</tt>: This parameter represents the edge object or a list of edges:
+	 *	 <ul>
+	 *		<li><tt>array</tt>: A list of edges.
+	 *		<li><tt>{@link COntologyEdge}</tt>: The edge will be used as-is.
+	 *	 </ul>
+	 *	<li><tt>$theLanguage</tt>: This optional parameter can be used to restrict the
+	 *		attributes of type {@link kTYPE_LSTRING}, if provided, all attributes of that
+	 *		type will only hold the string corresponding to the provided language code, or
+	 *		the string of the first attribute's element if the language cannot be found.
+	 *	<li><tt>$theAttributes</tt>: This optional parameter can be used to limit the
+	 *		returned attributes to the list provided in this array.
+	 * </ul>
+	 *
+	 * The method will only use the {@link kTAG_VERTEX_SUBJECT}, {@link kTAG_PREDICATE} and
+	 * {@link kTAG_VERTEX_OBJECT} elements of the edge, it will replace the predicate
+	 * identifier with the term {@link kTAG_GID} and export all the referenced objects into
+	 * the provided collection.
+	 *
+	 * The method will raise an exception if any element cannot be resolved.
+	 *
+	 * @param reference			   &$theCollection		Exported collection.
+	 * @param mixed					$theEdge			Edge or edges list.
+	 * @param string				$theLanguage		Language code.
+	 * @param array					$theAttributes		List of attribute tags.
+	 *
+	 * @access public
+	 *
+	 * @throws Exception
+	 */
+	public function ExportEdge( &$theCollection, $theEdge, $theLanguage = NULL,
+														   $theAttributes = NULL )
+	{
+		//
+		// Check if object is ready.
+		//
+		if( $this->_IsInited() )
+		{
 			//
-			// Invalid node reference.
+			// Handle edges list.
+			//
+			if( is_array( $theEdge ) )
+			{
+				//
+				// Iterate list.
+				//
+				foreach( $theEdge as $edge )
+					$this->ExportEdge(
+						$theCollection, $edge, $theLanguage, $theAttributes );
+			
+			} // Provided edge identifiers list.
+			
+			//
+			// Handle edge object.
+			//
+			elseif( $theEdge instanceof COntologyEdge )
+			{
+				//
+				// Resolve edge identifier.
+				//
+				$id = $theEdge->offsetGet( kTAG_GID );
+				
+				//
+				// Init collection.
+				//
+				if( ! is_array( $theCollection ) )
+					$theCollection = array( kCONTAINER_NODE_NAME => Array(),
+											kCONTAINER_TERM_NAME => Array(),
+											kCONTAINER_EDGE_NAME => Array(),
+											kCONTAINER_TAG_NAME  => Array() );
+				
+				//
+				// Check if new.
+				//
+				if( ! array_key_exists(
+						$theEdge->offsetGet( kOFFSET_NID ),
+						$theCollection[ kCONTAINER_EDGE_NAME ] ) )
+				{
+					//
+					// Export edge subject vertex.
+					//
+					$this->ExportNode( $theCollection,
+									   $theEdge->offsetGet( kTAG_VERTEX_SUBJECT ),
+									   $theLanguage, $theAttributes );
+					
+					//
+					// Export edge predicate.
+					//
+					$this->ExportTerm( $theCollection,
+									   $theEdge->offsetGet( kTAG_PREDICATE ),
+									   $theLanguage, $theAttributes );
+					
+					//
+					// Export edge object vertex.
+					//
+					$this->ExportNode( $theCollection,
+									   $theEdge->offsetGet( kTAG_VERTEX_OBJECT ),
+									   $theLanguage, $theAttributes );
+					
+					//
+					// Resolve predicate.
+					//
+					$predicate = $this->ResolveTerm( $theEdge->offsetGet( kTAG_PREDICATE ),
+													 NULL, TRUE )->offsetGet( kTAG_GID );
+					
+					//
+					// Set edge in collection.
+					//
+					$theCollection[ kCONTAINER_EDGE_NAME ][ $id ]
+								  	= array( kTAG_VERTEX_SUBJECT
+								  			=> $theEdge->offsetGet( kTAG_VERTEX_SUBJECT ),
+								  			 kTAG_PREDICATE => $predicate,
+								  			 kTAG_VERTEX_OBJECT
+								  			=> $theEdge->offsetGet( kTAG_VERTEX_OBJECT ) );
+				
+				} // New edge.
+			
+			} // Provided node identifier.
+			
+			//
+			// Invalid edge reference.
 			//
 			else
 				throw new Exception
-					( "Invalid node reference",
+					( "Invalid edge reference",
 					  kERROR_PARAMETER );										// !@! ==>
 			
 		} // Object is ready.
@@ -2332,7 +2487,7 @@ class COntology extends CConnection
 				( "Object is not initialised",
 				  kERROR_STATE );												// !@! ==>
 
-	} // ExportNode.
+	} // ExportEdge.
 	
 	
 	/*===================================================================================
@@ -2371,6 +2526,14 @@ class COntology extends CConnection
 	 *			{@link kOFFSET_NID} and the value will be the edge's attributes that refer
 	 *			to nodes and terms. This method does not handle this element.
 	 *	 </ul>
+	 *	<li><tt>$theTag</tt>: This parameter represents the tag identifier, object or a
+	 *		list of tag identifiers:
+	 *	 <ul>
+	 *		<li><tt>array</tt>: A list of tag or node identifiers.
+	 *		<li><tt>{@link COntologyTag}</tt>: The tag will be used as-is.
+	 *		<li><i>other</i>: Any other type will be interpreted as a tag reference and
+	 *			resolved with {@link ResolveTag()}.
+	 *	 </ul>
 	 *	<li><tt>$theTag</tt>: This parameter represents the tag identifier or a list of
 	 *		tag identifiers if the parameter is an array.
 	 *	<li><tt>$theLanguage</tt>: This optional parameter can be used to restrict the
@@ -2408,24 +2571,6 @@ class COntology extends CConnection
 		if( $this->_IsInited() )
 		{
 			//
-			// Resolve tag object.
-			//
-			if( $theTag instanceof COntologyTag )
-			{
-				//
-				// Check identifier.
-				//
-				if( $theTag->offsetExists( kOFFSET_NID ) )
-					$theTag = $theTag->offsetGet( kOFFSET_NID );
-				
-				else
-					throw new Exception
-						( "Provided tag is missing its identifier",
-						  kERROR_PARAMETER );									// !@! ==>
-			
-			} // Provided tag object.
-			
-			//
 			// Handle tags list.
 			//
 			if( is_array( $theTag ) )
@@ -2441,8 +2586,14 @@ class COntology extends CConnection
 			//
 			// Handle tag identifier.
 			//
-			else
+			elseif( $theTag != kOFFSET_NID )
 			{
+				//
+				// Resolve tag.
+				//
+				if( ! ($theTag instanceof COntologyTag) )
+					$theTag = $this->ResolveTag( $theTag, TRUE )->offsetGet( kOFFSET_NID );
+				
 				//
 				// Init collection.
 				//
@@ -2451,87 +2602,78 @@ class COntology extends CConnection
 											kCONTAINER_TERM_NAME => Array(),
 											kCONTAINER_EDGE_NAME => Array(),
 											kCONTAINER_TAG_NAME  => Array() );
-				
+			
 				//
-				// Exclude native identifier.
+				// Check if new.
 				//
-				if( $theTag != kOFFSET_NID )
+				if( ! array_key_exists( $theTag, $theCollection[ kCONTAINER_TAG_NAME ] ) )
 				{
 					//
-					// Check if new.
+					// Resolve tag and save path.
 					//
-					if( ! array_key_exists( $theTag,
-											$theCollection[ kCONTAINER_TAG_NAME ] ) )
+					$path = $this->ResolveTag( $theTag, TRUE )->offsetGet( kTAG_TAG_PATH );
+					
+					//
+					// Handle single vertex path.
+					//
+					if( count( $path ) == 1 )
+						$theCollection[ kCONTAINER_TAG_NAME ][ $theTag ]
+							= $this->_ExportNode( $path[ 0 ], $theAttributes );
+					
+					//
+					// Handle multiple vertex tag.
+					//
+					else
 					{
 						//
-						// Resolve tag and save path.
+						// Init export path.
 						//
-						$path = $this->ResolveTag( $theTag, TRUE )
-									->offsetGet( kTAG_TAG_PATH );
+						$export = Array();
 						
 						//
-						// Handle single vertex path.
+						// Iterate path.
 						//
-						if( count( $path ) == 1 )
-							$theCollection[ kCONTAINER_TAG_NAME ][ $theTag ]
-								= $this->_ExportNode( $path[ 0 ], $theAttributes );
-						
-						//
-						// Handle multiple vertex tag.
-						//
-						else
+						for( $i = 0; $i < count( $path ); $i++ )
 						{
 							//
-							// Init export path.
+							// Handle term.
 							//
-							$export = Array();
-							
-							//
-							// Iterate path.
-							//
-							for( $i = 0; $i < count( $path ); $i++ )
+							if( $i % 2 )
 							{
 								//
-								// Handle term.
+								// Save reference.
 								//
-								if( $i % 2 )
-								{
-									//
-									// Save reference.
-									//
-									$export[ $i ]
-										= $this->ResolveTerm( $path[ $i ], NULL, TRUE )
-											->offsetGet( kTAG_GID );
-									
-									//
-									// Export term.
-									//
-									$this->ExportTerm( $theCollection,
-													   $path[ $i ],
-													   $theLanguage, $theAttributes );
-								
-								} // Predicate.
+								$export[ $i ]
+									= $this->ResolveTerm( $path[ $i ], NULL, TRUE )
+										->offsetGet( kTAG_GID );
 								
 								//
-								// Handle vertex.
+								// Export term.
 								//
-								else
-									$export[ $i ]
-										= $this->_ExportNode( $path[ $i ], $theAttributes );
+								$this->ExportTerm( $theCollection,
+												   $path[ $i ],
+												   $theLanguage, $theAttributes );
 							
-							} // Iterating path elements.
+							} // Predicate.
+							
+							//
+							// Handle vertex.
+							//
+							else
+								$export[ $i ]
+									= $this->_ExportNode( $path[ $i ], $theAttributes );
 						
-							//
-							// Set path in collection.
-							//
-							$theCollection[ kCONTAINER_TAG_NAME ][ $theTag ] = $export;
-							
-						} // Multiple vertex tag.
+						} // Iterating path elements.
 					
-					} // New tag.
+						//
+						// Set path in collection.
+						//
+						$theCollection[ kCONTAINER_TAG_NAME ][ $theTag ] = $export;
+						
+					} // Multiple vertex tag.
 				
-				} // Not the native identifier.
-				
+				} // New tag.
+			
 			} // Provided tag identifier.
 			
 		} // Object is ready.
@@ -3090,7 +3232,10 @@ class COntology extends CConnection
 		//
 		// Resolve node.
 		//
-		$theNode = $this->ResolveNode( $theNode, TRUE )->getArrayCopy();
+		if( ! ($theNode instanceof COntologyNode) )
+			$theNode = $this->ResolveNode( $theNode, TRUE )->getArrayCopy();
+		else
+			$theNode = $theNode->getArrayCopy();
 		
 		//
 		// Load default node attributes.

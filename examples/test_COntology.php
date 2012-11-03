@@ -716,21 +716,17 @@ try
 	echo( '<pre>' ); print_r( $collection ); echo( '</pre>' );
 	$collection = NULL;
 	echo( '<hr />' );
-exit;
 
 	//
-	// Export node 13766.
+	// Export edges in which node 13766 is the subject.
 	//
-	echo( '<h4>Export node 13766</h4>' );
-	echo( '$server = new CMongoServer();<br />' );
-	$server = New CMongoServer();
-	echo( '$database = $server->Database( "ONTOLOGY" );<br />' );
-	$database = $server->Database( "ONTOLOGY" );
-	echo( '$test = new MyClass( $database );<br />' );
-	$test = new MyClass( $database );
-	echo( '<h5>$test->ExportNode( $collection, 13766, NULL, NULL );</h5>' );
-	$test->ExportNode( $collection, 13766, NULL, NULL );
+	echo( '<h4>Export edges in which node 13766 is the subject</h4>' );
+	echo( '<h5>$edges = $test->ResolveEdge( 13766, NULL, NULL, TRUE );</h5>' );
+	$edges = $test->ResolveEdge( 13766, NULL, NULL, TRUE );
+	echo( '<h5>$test->ExportEdge( $collection, $edges, NULL, NULL );</h5>' );
+	$test->ExportEdge( $collection, $edges, NULL, NULL );
 	echo( '<pre>' ); print_r( $collection ); echo( '</pre>' );
+	$collection = NULL;
 	echo( '<hr />' );
 	echo( '<hr />' );
 }

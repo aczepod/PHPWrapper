@@ -50,83 +50,211 @@ try
 	if( $rs->count() )
 	{
 		//
-		// Init local storage.
-		//
-		$data = array( 'status' => array( 'code' => 0, 'message' => 'OK' ),
-					   'tags' => Array(),
-					   'terms' => Array(),
-					   'nodes' => Array(),
-					   'edges' => Array() );
-		
-		//
 		// Iterate nodes.
 		//
-		$json = Array();
 		foreach( $rs as $node )
-			ParseNode( $node, $data, $ontology );
-				
-		//
-		// Write roots.
-		//
-		$filename = 'roots.json';
-		$json = JsonEncode( $data );
-		file_put_contents( $filename, $json );
-		echo( "$filename\n" );
-		
-		//
-		// Iterate roots.
-		//
-		$roots = array_keys( $data[ 'nodes' ] );
-		foreach( $roots as $root )
 		{
 			//
 			// Init local storage.
 			//
-			$data = array( 'status' => array( 'code' => 0, 'message' => 'OK' ),
-						   'tags' => Array(),
-						   'terms' => Array(),
-						   'nodes' => Array(),
-						   'edges' => Array() );
+			$data = NULL;
 			
 			//
-			// Get pointers to root.
+			// Get node ID.
 			//
-			$query = CMongoContainer::NewQuery();
-			$stmt = CQueryStatement::Equals( kTAG_VERTEX_OBJECT, $root, kTYPE_INT32 );
-			$query->AppendStatement( $stmt );
-			$rs = $edge_cont->Query( $query );
-			if( $rs->count() )
-			{
-				//
-				// Iterate edges.
-				//
-				foreach( $rs as $edge )
-					ParseEdge( $edge, $data, $ontology );
-			}
+			$root = $node[ kOFFSET_NID ];
+			$node = CPersistentObject::DocumentObject( $node );
 			
 			//
-			// Get pointers from root.
+			// Export node.
 			//
-			$query = CMongoContainer::NewQuery();
-			$stmt = CQueryStatement::Equals( kTAG_VERTEX_SUBJECT, $root, kTYPE_INT32 );
-			$query->AppendStatement( $stmt );
-			$rs = $edge_cont->Query( $query );
-			if( $rs->count() )
-			{
-				//
-				// Iterate edges.
-				//
-				foreach( $rs as $edge )
-					ParseEdge( $edge, $data, $ontology );
-			}
-					
+			$ontology->ExportNode( $data, $node );
+
 			//
-			// Write root.
+			// Write root json.
 			//
-			$filename = "root$root.json";
+			$filename = "ROOT.$root.json";
 			$json = JsonEncode( $data );
 			file_put_contents( $filename, $json );
 			echo( "$filename\n" );
+			
+			//
+			// Get root relations.
+			//
+			$parents = $ontology->ResolveEdge( NULL, NULL, $root );
+			$children = $ontology->ResolveEdge( $root, NULL, NULL );
+			if( is_array( $parents )
+			 || is_array( $children ) )
+			{
+				//
+				// Init local storage.
+				//
+				$data = NULL;
+				
+				//
+				// Collect edges.
+				//
+				if( is_array( $parents )
+				 && is_array( $children ) )
+					$edges = array_merge( $parents, $children );
+				elseif( is_array( $parents ) )
+					$edges = $parents;
+				elseif( is_array( $children ) )
+					$edges = $children;
+				
+				//
+				// Export edges.
+				//
+				$ontology->ExportEdge( $data, $edges );
+	
+				//
+				// Write root relations json.
+				//
+				$filename = "ROOT.$root.RELATIONS.json";
+				$json = JsonEncode( $data );
+				file_put_contents( $filename, $json );
+				echo( "$filename\n" );
+				
+				//
+				// Iterate first level parents.
+				//
+				if( is_array( $parents ) )
+				{
+					foreach( $parents as $parent )
+					{
+						//
+						// Init local storage.
+						//
+						$data = NULL;
+						
+						//
+						// Get parent ID.
+						//
+						$id = $parent->offsetGet( kTAG_VERTEX_SUBJECT );
+						
+						//
+						// Export node.
+						//
+						$ontology->ExportNode( $data, $id );
+			
+						//
+						// Write root json.
+						//
+						$filename = "ROOT.$root.PARENT.$id.json";
+						$json = JsonEncode( $data );
+						file_put_contents( $filename, $json );
+						echo( "$filename\n" );
+						
+						//
+						// Get node relations.
+						//
+						$parents_bis = $ontology->ResolveEdge( NULL, NULL, $id );
+						$children_bis = $ontology->ResolveEdge( $id, NULL, NULL );
+						if( is_array( $parents )
+						 || is_array( $children ) )
+						{
+							//
+							// Init local storage.
+							//
+							$data = NULL;
+							
+							//
+							// Collect edges.
+							//
+							if( is_array( $parents_bis )
+							 && is_array( $children_bis ) )
+								$edges = array_merge( $parents_bis, $children_bis );
+							elseif( is_array( $parents_bis ) )
+								$edges = $parents_bis;
+							elseif( is_array( $children_bis ) )
+								$edges = $children_bis;
+							
+							//
+							// Export edges.
+							//
+							$ontology->ExportEdge( $data, $edges );
+				
+							//
+							// Write node relations json.
+							//
+							$filename = "NODE.$id.RELATIONS.json";
+							$json = JsonEncode( $data );
+							file_put_contents( $filename, $json );
+							echo( "$filename\n" );
+						}
+					}
+				}
+				
+				//
+				// Iterate first level children.
+				//
+				if( is_array( $children ) )
+				{
+					foreach( $children as $child )
+					{
+						//
+						// Init local storage.
+						//
+						$data = NULL;
+						
+						//
+						// Get child ID.
+						//
+						$id = $child->offsetGet( kTAG_VERTEX_OBJECT );
+						
+						//
+						// Export node.
+						//
+						$ontology->ExportNode( $data, $id );
+			
+						//
+						// Write root json.
+						//
+						$filename = "ROOT.$root.CHILD.$id.json";
+						$json = JsonEncode( $data );
+						file_put_contents( $filename, $json );
+						echo( "$filename\n" );
+						
+						//
+						// Get node relations.
+						//
+						$parents_bis = $ontology->ResolveEdge( NULL, NULL, $id );
+						$children_bis = $ontology->ResolveEdge( $id, NULL, NULL );
+						if( is_array( $parents )
+						 || is_array( $children ) )
+						{
+							//
+							// Init local storage.
+							//
+							$data = NULL;
+							
+							//
+							// Collect edges.
+							//
+							if( is_array( $parents_bis )
+							 && is_array( $children_bis ) )
+								$edges = array_merge( $parents_bis, $children_bis );
+							elseif( is_array( $parents_bis ) )
+								$edges = $parents_bis;
+							elseif( is_array( $children_bis ) )
+								$edges = $children_bis;
+							
+							//
+							// Export edges.
+							//
+							$ontology->ExportEdge( $data, $edges );
+				
+							//
+							// Write node relations json.
+							//
+							$filename = "NODE.$id.RELATIONS.json";
+							$json = JsonEncode( $data );
+							file_put_contents( $filename, $json );
+							echo( "$filename\n" );
+						}
+					}
+				}
+			}
 		}
 	}
 }
@@ -140,291 +268,5 @@ catch( Exception $error )
 }
 
 echo( "\nDone!\n" );
-
-/*=======================================================================================
- *																						*
- *										FUNCTIONS										*
- *																						*
- *======================================================================================*/
-
-function ParseNode( &$theNode, &$theData, $theOntology )
-{
-	//
-	// Convert to array.
-	//
-	if( ! is_array( $theNode ) )
-		$theNode = $theNode->getArrayCopy();
-	
-	//
-	// Check node.
-	//
-	if( ! array_key_exists( $theNode[ '_id' ], $theData[ 'nodes' ] ) )
-	{
-		//
-		// Convert node.
-		//
-		foreach( $theNode as $key => $value )
-		{
-			//
-			// Parse tags.
-			//
-			switch( $key )
-			{
-				//
-				// Resolve term.
-				//
-				case kTAG_TERM:
-					//
-					// Resolve term.
-					//
-					$term = $theOntology->ResolveTerm( $value, NULL, TRUE );
-					ParseTerm( $term, $theData, $theOntology );
-					
-					//
-					// Convert in node.
-					//
-					$value = bin2hex( $value->bin );
-					$theNode[ $key ] = $value;
-	
-					break;
-			}
-		}
-		
-		//
-		// Write node.
-		//
-		$theData[ 'nodes' ][ (string) $theNode[ '_id' ] ] = $theNode;
-		
-		//
-		// Parse tags.
-		//
-		$tags = array_keys( $theNode );
-		foreach( $tags as $tag )
-		{
-			if( $tag != '_id' )
-				ParseTag( $tag, $theData, $theOntology );
-		}
-	}
-}
-
-function ParseTerm( &$theTerm, &$theData, $theOntology )
-{
-	//
-	// Init local storage.
-	//
-	$terms = Array();
-	
-	//
-	// Convert to array.
-	//
-	if( $theTerm instanceof COntologyTerm )
-		$theTerm = $theTerm->getArrayCopy();
-	
-	//
-	// Check node.
-	//
-	if( ! array_key_exists( bin2hex( $theTerm[ '_id' ]->bin ), $theData[ 'terms' ] ) )
-	{
-		//
-		// Convert term.
-		//
-		foreach( $theTerm as $key => $value )
-		{
-			//
-			// Parse tags.
-			//
-			switch( $key )
-			{
-				//
-				// Handle binary properties.
-				//
-				case kTAG_TERM:
-				case kTAG_NAMESPACE:
-					//
-					// Resolve term.
-					//
-					$term = $theOntology->ResolveTerm( $value, NULL, TRUE );
-					$terms[] = $term;
-					
-				case '_id':
-					//
-					// Convert in term.
-					//
-					$value = bin2hex( $value->bin );
-					$theTerm[ $key ] = $value;
-	
-					break;
-			}
-		}
-		
-		//
-		// Write term.
-		//
-		$theData[ 'terms' ][ $theTerm[ '_id' ] ] = $theTerm;
-		
-		//
-		// Parse recursive terms.
-		//
-		foreach( $terms as $term )
-			ParseTerm( $term, $theData, $theOntology );
-		
-		//
-		// Parse tags.
-		//
-		$tags = array_keys( $theTerm );
-		foreach( $tags as $tag )
-		{
-			if( $tag != '_id' )
-				ParseTag( $tag, $theData, $theOntology );
-		}
-	}
-}
-
-function ParseEdge( &$theEdge, &$theData, $theOntology )
-{
-	//
-	// Convert to array.
-	//
-	if( ! is_array( $theEdge ) )
-		$theEdge = $theEdge->getArrayCopy();
-	
-	//
-	// Check node.
-	//
-	if( ! array_key_exists( $theEdge[ '_id' ], $theData[ 'edges' ] ) )
-	{
-		//
-		// Convert edge.
-		//
-		foreach( $theEdge as $key => $value )
-		{
-			//
-			// Parse tags.
-			//
-			switch( $key )
-			{
-				//
-				// Handle term.
-				//
-				case kTAG_PREDICATE:
-					//
-					// Resolve term.
-					//
-					$term = $theOntology->ResolveTerm( $value, NULL, TRUE );
-					ParseTerm( $term, $theData, $theOntology );
-					
-				case kTAG_UID:
-					//
-					// Convert in node.
-					//
-					$value = bin2hex( $value->bin );
-					$theEdge[ $key ] = $value;
-	
-					break;
-			}
-		}
-		
-		//
-		// Write edge.
-		//
-		$theData[ 'edges' ][ (string) $theEdge[ '_id' ] ] = $theEdge;
-		
-		//
-		// Parse tags.
-		//
-		$tags = array_keys( $theEdge );
-		foreach( $tags as $tag )
-		{
-			if( $tag != '_id' )
-				ParseTag( $tag, $theData, $theOntology );
-		}
-	}
-}
-
-function ParseTag( $theTag, &$theData, $theOntology )
-{
-	//
-	// Check tag.
-	//
-	if( ! array_key_exists( $theTag, $theData[ 'tags' ] ) )
-	{
-		//
-		// Init tag.
-		//
-		$tag = $theOntology->ResolveTag( $theTag, TRUE )->getArrayCopy();
-		$theTag = Array();
-		
-		//
-		// Convert tag.
-		//
-		foreach( $tag as $key => $value )
-		{
-			//
-			// Parse tags.
-			//
-			switch( $key )
-			{
-				//
-				// Handle unique identifier.
-				//
-				case kTAG_UID:
-					//
-					// Convert in tag.
-					//
-					$value = bin2hex( $value->bin );
-	
-					break;
-				
-				//
-				// Handle path.
-				//
-				case kTAG_TAG_PATH:
-					for( $i = 1; $i < count( $value ); $i += 2 )
-					{
-						$id = $value[ $i ];
-						$term = $theOntology->ResolveTerm( $id, NULL, TRUE );
-						ParseTerm( $term, $theData, $theOntology );
-						$value[ $i ] = bin2hex( $id->bin );
-					}
-					
-					break;
-				
-				//
-				// Handle vertex terms.
-				//
-				case kTAG_VERTEX_TERMS:
-					for( $i = 0; $i < count( $value ); $i++ )
-					{
-						$id = $value[ $i ];
-						$term = $theOntology->ResolveTerm( $id, NULL, TRUE );
-						ParseTerm( $term, $theData, $theOntology );
-						$value[ $i ] = bin2hex( $id->bin );
-					}
-					
-					break;
-			}
-			
-			//
-			// Set property.
-			//
-			$theTag[ $key ] = $value;
-		}
-		
-		//
-		// Write tag.
-		//
-		$theData[ 'tags' ][ (string) $theTag[ '_id' ] ] = $theTag;
-		
-		//
-		// Parse tags.
-		//
-		$tags = array_keys( $theTag );
-		foreach( $tags as $tag )
-		{
-			if( $tag != '_id' )
-				ParseTag( $tag, $theData, $theOntology );
-		}
-	}
-}
 
 ?>
