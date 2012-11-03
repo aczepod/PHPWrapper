@@ -113,4 +113,36 @@ define( "kINSTANCE_DATA_TYPES",					':INSTANCE-DATA-TYPE' );
  */
 define( "kDEFAULT_ATTRIBUTES",					':DEFAULT-ATTRIBUTES' );
 
+/*=======================================================================================
+ *	EXPORT COLLECTION OFFSETS															*
+ *======================================================================================*/
+
+/**
+ * Predicate elements.
+ *
+ * This offset tags the export collection element that holds the predicate items.
+ */
+define( "kOFFSET_EXPORT_PREDICATE",				'_predicate' );
+
+/**
+ * Vertex elements.
+ *
+ * This offset tags the export collection element that holds the vertex items.
+ */
+define( "kOFFSET_EXPORT_VERTEX",				'_vertex' );
+
+/**
+ * Edge elements.
+ *
+ * This offset tags the export collection element that holds the edge items.
+ */
+define( "kOFFSET_EXPORT_EDGE",					'_edge' );
+
+/**
+ * Tag elements.
+ *
+ * This offset tags the export collection element that holds the tag items.
+ */
+define( "kOFFSET_EXPORT_TAG",					'_tag' );
+
 ?>

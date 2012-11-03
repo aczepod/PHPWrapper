@@ -698,11 +698,23 @@ try
 	echo( '<hr />' );
 
 	//
-	// Export term kTYPE_ANY.
+	// Export term ISO:3166:1:alpha-2:IT.
 	//
-	echo( '<h4>Export term kTYPE_ANY</h4>' );
-	echo( '<h5>$test->ExportTerm( $collection, kTYPE_ANY, NULL, NULL );</h5>' );
-	$test->ExportTerm( $collection, kTYPE_ANY, NULL, NULL );
+	echo( '<h4>Export term ISO:3166:1:alpha-2:IT</h4>' );
+	echo( '<h5>$test->ExportTerm( $collection, "ISO:3166:1:alpha-2:IT" );</h5>' );
+	$test->ExportTerm( $collection, "ISO:3166:1:alpha-2:IT" );
+	echo( '<pre>' ); print_r( $collection ); echo( '</pre>' );
+	$collection = NULL;
+	echo( '<hr />' );
+
+	//
+	// Export term ISO:3166:1:alpha-2:IT with selected attributes.
+	//
+	echo( '<h4>Export term ISO:3166:1:alpha-2:IT with selected attributes</h4>' );
+	echo( '<h5>$attributes = array( kTAG_LID, kTAG_NAMESPACE );</h5>' );
+	$attributes = array( kTAG_LID, kTAG_NAMESPACE );
+	echo( '<h5>$test->ExportTerm( $collection, "ISO:3166:1:alpha-2:IT", $attributes );</h5>' );
+	$test->ExportTerm( $collection, "ISO:3166:1:alpha-2:IT", $attributes );
 	echo( '<pre>' ); print_r( $collection ); echo( '</pre>' );
 	$collection = NULL;
 	echo( '<hr />' );

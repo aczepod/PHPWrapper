@@ -176,7 +176,7 @@ the database in which the ontology resides.</p>
 				<b>Author:</b>
 				Milko A. Škofič &lt;<a
 href="mailto:m.skofic&#64;cgiar.org">m.skofic&#64;<!---->cgiar.org</a>&gt;<br />
-		<b>Located at</b> <a href="source-class-COntology.html#75-4752" title="Go to source code">COntology.php</a><br />
+		<b>Located at</b> <a href="source-class-COntology.html#75-4774" title="Go to source code">COntology.php</a><br />
 	</div>
 
 
@@ -1943,7 +1943,7 @@ error occurs, the method will raise an exception.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#_ExportTerm">#</a>
-		<code><a href="source-class-COntology.html#2017-2155" title="Go to source code">ExportTerm</a>( <span>reference <var>&amp; $theCollection</var></span>, <span>mixed <var>$theTerm</var></span>, <span>string <var>$theLanguage</var> = <span class="php-keyword1">NULL</span></span>, <span>array <var>$theAttributes</var> = <span class="php-keyword1">NULL</span> </span> )</code>
+		<code><a href="source-class-COntology.html#2017-2167" title="Go to source code">ExportTerm</a>( <span>reference <var>&amp; $theCollection</var></span>, <span>mixed <var>$theTerm</var></span>, <span>array <var>$theAttributes</var> = <span class="php-keyword1">NULL</span> </span> )</code>
 
 		<div class="description short">
 			
@@ -1955,33 +1955,34 @@ error occurs, the method will raise an exception.</p>
 			
 <h4>Export a term</h4>
 
-<p>The main duty of this method is to provide a common display format for the
-elements of the graph, given a term identifier or identifiers list, this method
-will resolve all its references and return a single object that merges all its
-attributes.</p>
+<p>The main duty of this method is to normalise and merge the provided term's
+attributes and place this information in the related provided collection
+container.</p>
 
 <p>The method expects the following parameters:</p>
 
 <ul>
 	<li><tt>&amp;$theCollection</tt>: This parameter is a reference to an array that
-	collects all exported objects in four elements:
+	will receive the object attributes, this collection is divided in four elements:
 		<ul>
-			<li><tt>kCONTAINER_NODE_NAME</tt>: This element is an array that holds a
-			list of exported nodes, the array indexes refer to the node kOFFSET_NID
-			and the value to the exported node.</li>
+			<li><tt>kOFFSET_EXPORT_PREDICATE</tt>: This element is an array that
+			holds the list of predicate terms, the array keys will be the term's kTAG_GID and the value will be the attributes of the term. The contents of this
+			element are fed by the <code><a href="class-COntology.html#__ExportTerm">COntology::_ExportTerm()</a></code> protected method.</li>
 
-			<li><tt>kCONTAINER_TERM_NAME</tt>: This element is an array that holds a
-			list of terms, the array keys will be the term's kTAG_GID and the value
-			will be the attributes of the term (the result of this method).</li>
+			<li><tt>kOFFSET_EXPORT_VERTEX</tt>: This element is an array that holds
+			the list of vertex nodes, the array indexes refer to the node kOFFSET_NID and the value to the node and referenced term attributes. The
+			contents of this element are fed by the <code><a href="class-COntology.html#__ExportNode">COntology::_ExportNode()</a></code> protected
+			method.</li>
 
-			<li><tt>kCONTAINER_EDGE_NAME</tt>: This element is an array that holds a
-			list of exported edges, the array keys will be the edge's kTAG_GID and
-			the value will be the edge's attributes that refer to nodes and terms. This
-			method does not handle this element.</li>
+			<li><tt>kOFFSET_EXPORT_EDGE</tt>: This element is an array that holds
+			the list of edges, the array keys will be the edge's kTAG_GID and the
+			value will be the edge's attributes. The contents of this element are fed by the
+			<code><a href="class-COntology.html#_ExportEdge">COntology::ExportEdge()</a></code> public method.</li>
 
-			<li><tt>kCONTAINER_TAG_NAME</tt>: This element is an array that holds a
-			list of exported tags, the array indexes will be the tag kOFFSET_NID and
-			the array values will be the exported nodes referred to by the tag.</li>
+			<li><tt>kOFFSET_EXPORT_TAG</tt>: This element is an array that holds the
+			list of attribute tags, the array indexes will be the tag kOFFSET_NID
+			and the array values will be the tag attributes merged with the referenced node
+			attributes fed by the <code><a href="class-COntology.html#__ExportNode">COntology::_ExportNode()</a></code> protected method.</li>
 		</ul>
 	</li>
 
@@ -1993,36 +1994,18 @@ attributes.</p>
 			<li><tt><code><a href="class-COntologyTerm.html">COntologyTerm</a></code></tt>: The term will be used as-is.</li>
 
 			<li><i>other</i>: Any other type will be interpreted as a term reference and
-			resolved with <code><a href="class-COntology.html#_ResolveTerm">COntology::ResolveTerm()</a></code>.</li>
+			resolved by <code><a href="class-COntology.html#_ResolveTerm">COntology::ResolveTerm()</a></code>.</li>
 		</ul>
 	</li>
-
-	<li><tt>$theLanguage</tt>: This optional parameter can be used to restrict the
-	attributes of type kTYPE_LSTRING, if provided, all attributes of that
-	type will only hold the string corresponding to the provided language code, or
-	the string of the first attribute's element if the language cannot be
-	found.</li>
 
 	<li><tt>$theAttributes</tt>: This optional parameter can be used to limit the
 	returned attributes to the list provided in this array.</li>
 </ul>
 
 <p>The method will generate an array containing the normalised attributes of the
-term. By default we perform the following transformations:</p>
-
-<ul>
-	<li><tt>kOFFSET_NID</tt>: This attribute will be omitted.</li>
-
-	<li><tt>kTAG_CLASS</tt>: This attribute will be omitted.</li>
-
-	<li><tt>kOFFSET_NAMESPACE</tt>: This attribute will be omitted.</li>
-
-	<li><tt>kTAG_TERM</tt>: This attribute will be omitted.</li>
-
-	<li><tt>kTAG_REFS_NODE</tt>: This attribute will be omitted.</li>
-
-	<li><tt>kTAG_REFS_NAMESPACE</tt>: This attribute will be omitted.</li>
-</ul>
+term and store the array in the provided collection kOFFSET_EXPORT_PREDICATE element indexed by the term's kTAG_GID tag.
+For more information please consult the <code><a href="class-COntology.html#__ExportTerm">COntology::_ExportTerm()</a></code> method
+reference.</p>
 
 <p>The method will raise an exception if any element cannot be resolved.</p>
 
@@ -2034,8 +2017,6 @@ term. By default we perform the following transformations:</p>
 					<dd><code>reference</code><br>&amp;$theCollection Exported collection.</dd>
 					<dt><var>$theTerm</var></dt>
 					<dd><code>mixed</code><br>$theTerm Node identifier or list.</dd>
-					<dt><var>$theLanguage</var></dt>
-					<dd><code>string</code><br>$theLanguage Language code.</dd>
 					<dt><var>$theAttributes</var></dt>
 					<dd><code>array</code><br>$theAttributes List of attribute tags.</dd>
 				</dl></div>
@@ -2062,7 +2043,7 @@ term. By default we perform the following transformations:</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#_ExportNode">#</a>
-		<code><a href="source-class-COntology.html#2162-2319" title="Go to source code">ExportNode</a>( <span>reference <var>&amp; $theCollection</var></span>, <span>mixed <var>$theNode</var></span>, <span>string <var>$theLanguage</var> = <span class="php-keyword1">NULL</span></span>, <span>array <var>$theAttributes</var> = <span class="php-keyword1">NULL</span> </span> )</code>
+		<code><a href="source-class-COntology.html#2174-2327" title="Go to source code">ExportNode</a>( <span>reference <var>&amp; $theCollection</var></span>, <span>mixed <var>$theNode</var></span>, <span>array <var>$theAttributes</var> = <span class="php-keyword1">NULL</span> </span> )</code>
 
 		<div class="description short">
 			
@@ -2083,24 +2064,27 @@ term and node attributes.</p>
 
 <ul>
 	<li><tt>&amp;$theCollection</tt>: This parameter is a reference to an array that
-	collects all exported objects in four elements:
+	will receive the object attributes, this collection is divided in four elements:
 		<ul>
-			<li><tt>kCONTAINER_NODE_NAME</tt>: This element is an array that holds a
-			list of exported nodes, the array indexes refer to the node kOFFSET_NID
-			and the value to the exported node (the result of this method).</li>
-
 			<li><tt>kCONTAINER_TERM_NAME</tt>: This element is an array that holds a
-			list of terms, this list represents all the predicate terms referred to by the
-			other elements of this parameter, the array keys will be the term's kOFFSET_GID and the value will be the attributes of the term.</li>
+			list of terms, the array keys will be the term's kTAG_GID and the value
+			will be the attributes of the term. The contents of this element are fed by the
+			<code><a href="class-COntology.html#__ExportTerm">COntology::_ExportTerm()</a></code> protected method.</li>
+
+			<li><tt>kCONTAINER_NODE_NAME</tt>: This element is an array that holds a
+			list of nodes, the array indexes refer to the node kOFFSET_NID and the
+			value to the node and referenced term attributes. The contents of this element
+			are fed by the <code><a href="class-COntology.html#__ExportNode">COntology::_ExportNode()</a></code> protected method.</li>
 
 			<li><tt>kCONTAINER_EDGE_NAME</tt>: This element is an array that holds a
-			list of exported edges, the array keys will be the edge's kTAG_GID and
-			the value will be the edge's attributes that refer to nodes and terms. This
-			method does not handle this element.</li>
+			list of edges, the array keys will be the edge's kTAG_GID and the value
+			will be the edge's attributes. The contents of this element are fed by the
+			<code><a href="class-COntology.html#_ExportEdge">COntology::ExportEdge()</a></code> public method.</li>
 
 			<li><tt>kCONTAINER_TAG_NAME</tt>: This element is an array that holds a
-			list of exported tags, the array indexes will be the tag kOFFSET_NID and
-			the array values will be the exported nodes referred to by the tag.</li>
+			list of tags, the array indexes will be the tag kOFFSET_NID and the
+			array values will be the tag attributes merged with the referenced node
+			attributes fed by the <code><a href="class-COntology.html#__ExportNode">COntology::_ExportNode()</a></code> protected method.</li>
 		</ul>
 	</li>
 
@@ -2116,40 +2100,17 @@ term and node attributes.</p>
 		</ul>
 	</li>
 
-	<li><tt>$theLanguage</tt>: This optional parameter can be used to restrict the
-	attributes of type kTYPE_LSTRING, if provided, all attributes of that
-	type will only hold the string corresponding to the provided language code, or
-	the string of the first attribute's element if the language cannot be
-	found.</li>
-
 	<li><tt>$theAttributes</tt>: This optional parameter can be used to limit the
 	returned attributes to the list provided in this array.</li>
 </ul>
 
 <p>The method will generate an array containing the merged attributes of the
-node and the referenced term, this array will be set in the kCONTAINER_NODE_NAME of the <tt>&amp;$theCollection</tt> parameter with as
+node and the referenced term, this array will be set in the kOFFSET_EXPORT_VERTEX of the <tt>&amp;$theCollection</tt> parameter with as
 index the node kOFFSET_NID. If a matching element already exists in the
 <tt>&amp;$theCollection</tt> parameter, the method will do nothing.</p>
 
-<p>By default, in case of conflict, the node attributes will overwrite the term
-attributes, except in the following cases:</p>
-
-<ul>
-	<li><tt>kOFFSET_NID</tt>: This attribute will be taken from the
-	node.</li>
-
-	<li><tt>kTAG_LID</tt>: This attribute will be taken from the term.</li>
-
-	<li><tt>kTAG_GID</tt>: This attribute will be taken from the term.</li>
-
-	<li><tt>kTAG_CLASS</tt>: This attribute will be omitted.</li>
-
-	<li><tt>kTAG_TERM</tt>: This attribute will be omitted.</li>
-
-	<li><tt>kTAG_REFS_NODE</tt>: This attribute will be omitted.</li>
-
-	<li><tt>kTAG_REFS_NAMESPACE</tt>: This attribute will be omitted.</li>
-</ul>
+<p>For more information please consult the <code><a href="class-COntology.html#__ExportNode">COntology::_ExportNode()</a></code> method
+reference.</p>
 
 <p>The method will raise an exception if any element cannot be resolved.</p>
 
@@ -2161,8 +2122,6 @@ attributes, except in the following cases:</p>
 					<dd><code>reference</code><br>&amp;$theCollection Exported collection.</dd>
 					<dt><var>$theNode</var></dt>
 					<dd><code>mixed</code><br>$theNode Node identifier or list.</dd>
-					<dt><var>$theLanguage</var></dt>
-					<dd><code>string</code><br>$theLanguage Language code.</dd>
 					<dt><var>$theAttributes</var></dt>
 					<dd><code>array</code><br>$theAttributes List of attribute tags.</dd>
 				</dl></div>
@@ -2189,7 +2148,7 @@ attributes, except in the following cases:</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#_ExportEdge">#</a>
-		<code><a href="source-class-COntology.html#2326-2490" title="Go to source code">ExportEdge</a>( <span>reference <var>&amp; $theCollection</var></span>, <span>mixed <var>$theEdge</var></span>, <span>string <var>$theLanguage</var> = <span class="php-keyword1">NULL</span></span>, <span>array <var>$theAttributes</var> = <span class="php-keyword1">NULL</span> </span> )</code>
+		<code><a href="source-class-COntology.html#2334-2515" title="Go to source code">ExportEdge</a>( <span>reference <var>&amp; $theCollection</var></span>, <span>mixed <var>$theEdge</var></span>, <span>array <var>$theAttributes</var> = <span class="php-keyword1">NULL</span> </span> )</code>
 
 		<div class="description short">
 			
@@ -2201,33 +2160,34 @@ attributes, except in the following cases:</p>
 			
 <h4>Export an edge</h4>
 
-<p>The main duty of this method is to provide a common display format for the
-elements of the graph, given an edge identifier or identifiers list, this method
-will resolve all its references and return a single object that merges all its
-term and node attributes.</p>
+<p>The main duty of this method is to normalise the edge's attributes and store
+the referenced vertex and predicates in the relative elements of the provided
+collection.</p>
 
 <p>The method expects the following parameters:</p>
 
 <ul>
 	<li><tt>&amp;$theCollection</tt>: This parameter is a reference to an array that
-	collects all exported objects in four elements:
+	will receive the object attributes, this collection is divided in four elements:
 		<ul>
-			<li><tt>kCONTAINER_NODE_NAME</tt>: This element is an array that holds a
-			list of exported nodes, the array indexes refer to the node kOFFSET_NID
-			and the value to the exported node.</li>
+			<li><tt>kOFFSET_EXPORT_PREDICATE</tt>: This element is an array that
+			holds the list of predicate terms, the array keys will be the term's kTAG_GID and the value will be the attributes of the term. The contents of this
+			element are fed by the <code><a href="class-COntology.html#__ExportTerm">COntology::_ExportTerm()</a></code> protected method.</li>
 
-			<li><tt>kCONTAINER_TERM_NAME</tt>: This element is an array that holds a
-			list of terms, this list represents all the predicate terms referred to by the
-			other elements of this parameter, the array keys will be the term's kOFFSET_GID and the value will be the attributes of the term.</li>
+			<li><tt>kOFFSET_EXPORT_VERTEX</tt>: This element is an array that holds
+			the list of vertex nodes, the array indexes refer to the node kOFFSET_NID and the value to the node and referenced term attributes. The
+			contents of this element are fed by the <code><a href="class-COntology.html#__ExportNode">COntology::_ExportNode()</a></code> protected
+			method.</li>
 
-			<li><tt>kCONTAINER_EDGE_NAME</tt>: This element is an array that holds a
-			list of exported edges, the array keys will be the edge's kTAG_GID and
-			the value will be the edge's attributes that refer to nodes and terms (the
-			result of this method).</li>
+			<li><tt>kOFFSET_EXPORT_EDGE</tt>: This element is an array that holds
+			the list of edges, the array keys will be the edge's kTAG_GID and the
+			value will be the edge's attributes. The contents of this element are fed by the
+			<code><a href="class-COntology.html#_ExportEdge">COntology::ExportEdge()</a></code> public method.</li>
 
-			<li><tt>kCONTAINER_TAG_NAME</tt>: This element is an array that holds a
-			list of exported tags, the array indexes will be the tag kOFFSET_NID and
-			the array values will be the exported nodes referred to by the tag.</li>
+			<li><tt>kOFFSET_EXPORT_TAG</tt>: This element is an array that holds the
+			list of attribute tags, the array indexes will be the tag kOFFSET_NID
+			and the array values will be the tag attributes merged with the referenced node
+			attributes fed by the <code><a href="class-COntology.html#__ExportNode">COntology::_ExportNode()</a></code> protected method.</li>
 		</ul>
 	</li>
 
@@ -2240,19 +2200,15 @@ term and node attributes.</p>
 		</ul>
 	</li>
 
-	<li><tt>$theLanguage</tt>: This optional parameter can be used to restrict the
-	attributes of type kTYPE_LSTRING, if provided, all attributes of that
-	type will only hold the string corresponding to the provided language code, or
-	the string of the first attribute's element if the language cannot be
-	found.</li>
-
 	<li><tt>$theAttributes</tt>: This optional parameter can be used to limit the
 	returned attributes to the list provided in this array.</li>
 </ul>
 
-<p>The method will only use the kTAG_VERTEX_SUBJECT, kTAG_PREDICATE and kTAG_VERTEX_OBJECT elements of the edge, it will
-replace the predicate identifier with the term kTAG_GID and export all
-the referenced objects into the provided collection.</p>
+<p>The method will omit the kTAG_UID and kTAG_CLASS attributes,
+the kTAG_PREDICATE attribute will be set to the term's kTAG_GID
+attribute and the two vertex references will be left untouched. The resulting
+array will be set into the kOFFSET_EXPORT_EDGE element of the provided
+collection.</p>
 
 <p>The method will raise an exception if any element cannot be resolved.</p>
 
@@ -2264,8 +2220,6 @@ the referenced objects into the provided collection.</p>
 					<dd><code>reference</code><br>&amp;$theCollection Exported collection.</dd>
 					<dt><var>$theEdge</var></dt>
 					<dd><code>mixed</code><br>$theEdge Edge or edges list.</dd>
-					<dt><var>$theLanguage</var></dt>
-					<dd><code>string</code><br>$theLanguage Language code.</dd>
 					<dt><var>$theAttributes</var></dt>
 					<dd><code>array</code><br>$theAttributes List of attribute tags.</dd>
 				</dl></div>
@@ -2292,7 +2246,7 @@ the referenced objects into the provided collection.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#_ExportTag">#</a>
-		<code><a href="source-class-COntology.html#2497-2686" title="Go to source code">ExportTag</a>( <span>reference <var>&amp; $theCollection</var></span>, <span>mixed <var>$theTag</var></span>, <span>string <var>$theLanguage</var> = <span class="php-keyword1">NULL</span></span>, <span>array <var>$theAttributes</var> = <span class="php-keyword1">NULL</span> </span> )</code>
+		<code><a href="source-class-COntology.html#2522-2769" title="Go to source code">ExportTag</a>( <span>reference <var>&amp; $theCollection</var></span>, <span>mixed <var>$theTag</var></span>, <span>array <var>$theAttributes</var> = <span class="php-keyword1">NULL</span> </span> )</code>
 
 		<div class="description short">
 			
@@ -2304,34 +2258,34 @@ the referenced objects into the provided collection.</p>
 			
 <h4>Export a tag</h4>
 
-<p>The main duty of this method is to provide a common display format for the
-elements of the graph, given a tag identifier or identifiers list, this method
-will resolve all its references and return a single object that merges all its
-tag, term and node attributes.</p>
+<p>The main duty of this method is to normalise the tag's attributes and store
+the referenced terms and nodes in the relative elements of the provided
+collection.</p>
 
 <p>The method expects the following parameters:</p>
 
 <ul>
 	<li><tt>&amp;$theCollection</tt>: This parameter is a reference to an array that
-	collects all exported objects in four elements:
+	will receive the object attributes, this collection is divided in four elements:
 		<ul>
-			<li><tt>kCONTAINER_NODE_NAME</tt>: This element is an array that holds a
-			list of exported nodes, the array indexes refer to the node kOFFSET_NID
-			and the value to the exported node.</li>
+			<li><tt>kOFFSET_EXPORT_PREDICATE</tt>: This element is an array that
+			holds the list of predicate terms, the array keys will be the term's kTAG_GID and the value will be the attributes of the term. The contents of this
+			element are fed by the <code><a href="class-COntology.html#__ExportTerm">COntology::_ExportTerm()</a></code> protected method.</li>
 
-			<li><tt>kCONTAINER_TAG_NAME</tt>: This element is an array that holds a
-			list of exported tags, the array indexes will be the tag kOFFSET_NID and
-			the array values will be the exported nodes referred to by the tag (the output
-			of this method).</li>
+			<li><tt>kOFFSET_EXPORT_VERTEX</tt>: This element is an array that holds
+			the list of vertex nodes, the array indexes refer to the node kOFFSET_NID and the value to the node and referenced term attributes. The
+			contents of this element are fed by the <code><a href="class-COntology.html#__ExportNode">COntology::_ExportNode()</a></code> protected
+			method.</li>
 
-			<li><tt>kCONTAINER_TERM_NAME</tt>: This element is an array that holds a
-			list of terms, this list represents all the predicate terms referred to by the
-			other elements of this parameter, the array keys will be the term's kOFFSET_GID and the value will be the attributes of the term.</li>
+			<li><tt>kOFFSET_EXPORT_EDGE</tt>: This element is an array that holds
+			the list of edges, the array keys will be the edge's kTAG_GID and the
+			value will be the edge's attributes. The contents of this element are fed by the
+			<code><a href="class-COntology.html#_ExportEdge">COntology::ExportEdge()</a></code> public method.</li>
 
-			<li><tt>kCONTAINER_EDGE_NAME</tt>: This element is an array that holds a
-			list of exported edges, the array keys will be the edge's kOFFSET_NID
-			and the value will be the edge's attributes that refer to nodes and terms. This
-			method does not handle this element.</li>
+			<li><tt>kOFFSET_EXPORT_TAG</tt>: This element is an array that holds the
+			list of attribute tags, the array indexes will be the tag kOFFSET_NID
+			and the array values will be the tag attributes merged with the referenced node
+			attributes fed by the <code><a href="class-COntology.html#__ExportNode">COntology::_ExportNode()</a></code> protected method.</li>
 		</ul>
 	</li>
 
@@ -2347,25 +2301,16 @@ tag, term and node attributes.</p>
 		</ul>
 	</li>
 
-	<li><tt>$theTag</tt>: This parameter represents the tag identifier or a list of
-	tag identifiers if the parameter is an array.</li>
-
-	<li><tt>$theLanguage</tt>: This optional parameter can be used to restrict the
-	attributes of type kTYPE_LSTRING, if provided, all attributes of that
-	type will only hold the string corresponding to the provided language code, or
-	the string of the first attribute's element if the language cannot be
-	found.</li>
-
 	<li><tt>$theAttributes</tt>: This optional parameter can be used to limit the
 	returned attributes to the list provided in this array.</li>
 </ul>
 
 <p>The method will generate an array containing the merged attributes of the tag
-and the referenced nodes and terms. The only attribute taken from the tag will
-be its kTAG_TAG_PATH, all other attributes will be resolved by providing
-the referenced node's kOFFSET_NID to the <code><a href="class-COntology.html#__ExportNode">COntology::_ExportNode()</a></code> method
-and in the <tt>&amp;$theCollection</tt> kCONTAINER_TAG_NAME element with
-the index corresponding to the tag kOFFSET_NID.</p>
+and the exported attributes of the referenced nodes, generated by the <code><a href="class-COntology.html#__ExportNode">COntology::_ExportNode()</a></code> protected method. The method will exclude the kTAG_GID,
+kTAG_UID, kTAG_CLASS and kTAG_VERTEX_TERMS from the tag,
+but append all others to the merged node and term attributes. The predicate
+elements of the KTAG_PATH attribute will be set to the referenced term's
+kTAG_GID. The resulting array will be set in the kOFFSET_EXPORT_TAG element of the provided collection using the tag's kOFFSET_NID attribute as index.</p>
 
 <p>The method will raise an exception if any element cannot be resolved.</p>
 
@@ -2377,8 +2322,6 @@ the index corresponding to the tag kOFFSET_NID.</p>
 					<dd><code>reference</code><br>&amp;$theCollection Exported collection.</dd>
 					<dt><var>$theTag</var></dt>
 					<dd><code>mixed</code><br>$theTag Tag identifier or list.</dd>
-					<dt><var>$theLanguage</var></dt>
-					<dd><code>string</code><br>$theLanguage Language code.</dd>
 					<dt><var>$theAttributes</var></dt>
 					<dd><code>array</code><br>$theAttributes List of attribute tags.</dd>
 				</dl></div>
@@ -2405,7 +2348,7 @@ the index corresponding to the tag kOFFSET_NID.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#__NewTerm">#</a>
-		<code><a href="source-class-COntology.html#2702-2815" title="Go to source code">_NewTerm</a>( <span>string <var>$theIdentifier</var></span>, <span>mixed <var>$theNamespace</var></span>, <span>string <var>$theLabel</var></span>, <span>string <var>$theDescription</var></span>, <span>string <var>$theLanguage</var></span>, <span>array <var>$theAttributes</var></span> )</code>
+		<code><a href="source-class-COntology.html#2785-2898" title="Go to source code">_NewTerm</a>( <span>string <var>$theIdentifier</var></span>, <span>mixed <var>$theNamespace</var></span>, <span>string <var>$theLabel</var></span>, <span>string <var>$theDescription</var></span>, <span>string <var>$theLanguage</var></span>, <span>array <var>$theAttributes</var></span> )</code>
 
 		<div class="description short">
 			
@@ -2502,7 +2445,7 @@ is a duplicate.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#__NewNode">#</a>
-		<code><a href="source-class-COntology.html#2822-2910" title="Go to source code">_NewNode</a>( <span>mixed <var>$theTerm</var></span>, <span>mixed <var>$theKind</var> = <span class="php-keyword1">NULL</span></span>, <span>mixed <var>$theType</var> = <span class="php-keyword1">NULL</span> </span> )</code>
+		<code><a href="source-class-COntology.html#2905-2993" title="Go to source code">_NewNode</a>( <span>mixed <var>$theTerm</var></span>, <span>mixed <var>$theKind</var> = <span class="php-keyword1">NULL</span></span>, <span>mixed <var>$theType</var> = <span class="php-keyword1">NULL</span> </span> )</code>
 
 		<div class="description short">
 			
@@ -2586,7 +2529,7 @@ is a duplicate.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#__RelateTo">#</a>
-		<code><a href="source-class-COntology.html#2926-3058" title="Go to source code">_RelateTo</a>( <span>mixed <var>$theSubject</var></span>, <span>mixed <var>$theObject</var></span>, <span>mixed <var>$thePredicate</var></span>, <span>mixed <var>$theNamespace</var> = <span class="php-keyword1">NULL</span></span>, <span>string <var>$theLabel</var> = <span class="php-keyword1">NULL</span></span>, <span>string <var>$theDescription</var> = <span class="php-keyword1">NULL</span></span>, <span>string <var>$theLanguage</var> = <span class="php-keyword1">NULL</span> </span> )</code>
+		<code><a href="source-class-COntology.html#3009-3141" title="Go to source code">_RelateTo</a>( <span>mixed <var>$theSubject</var></span>, <span>mixed <var>$theObject</var></span>, <span>mixed <var>$thePredicate</var></span>, <span>mixed <var>$theNamespace</var> = <span class="php-keyword1">NULL</span></span>, <span>string <var>$theLabel</var> = <span class="php-keyword1">NULL</span></span>, <span>string <var>$theDescription</var> = <span class="php-keyword1">NULL</span></span>, <span>string <var>$theLanguage</var> = <span class="php-keyword1">NULL</span> </span> )</code>
 
 		<div class="description short">
 			
@@ -2698,7 +2641,7 @@ error occurs, the method will raise an exception.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#__ExportTerm">#</a>
-		<code><a href="source-class-COntology.html#3074-3178" title="Go to source code">_ExportTerm</a>( <span>integer <var>$theTerm</var></span>, <span>array <var>$theAttributes</var> = <span class="php-keyword1">NULL</span> </span> )</code>
+		<code><a href="source-class-COntology.html#3157-3231" title="Go to source code">_ExportTerm</a>( <span>integer <var>$theTerm</var></span> )</code>
 
 		<div class="description short">
 			
@@ -2711,37 +2654,16 @@ error occurs, the method will raise an exception.</p>
 <h4>Export a term</h4>
 
 <p>The main duty of this method is to resolve the provided term reference and
-return a single object that holds a selection of attributes.</p>
+return a single object that holds a merged selection of attributes.</p>
 
-<p>The method expects the following parameters:</p>
+<p>By default we include the kTAG_LID, kTAG_GID and the kTAG_NAMESPACE (resolved into its kTAG_GID) from the current term.</p>
 
-<ul>
-	<li><tt>$theTerm</tt>: This parameter represents the term identifier.</li>
+<p>We omit the kOFFSET_NID, kTAG_CLASS, kOFFSET_TERM,
+kOFFSET_REFS_NAMESPACE, kOFFSET_REFS_NODE and kOFFSET_REFS_TAG.</p>
 
-	<li><tt>$theAttributes</tt>: This optional parameter can be used to limit the
-	returned attributes to the list provided in this array.</li>
-</ul>
-
-<p>The method will return an array containing the normalised attributes of the
-term. By default we perform the following transformations:</p>
-
-<ul>
-	<li><tt>kOFFSET_NID</tt>: This attribute will be omitted.</li>
-
-	<li><tt>kTAG_CLASS</tt>: This attribute will be omitted.</li>
-
-	<li><tt>kTAG_NAMESPACE</tt>: This attribute will be omitted.</li>
-
-	<li><tt>kTAG_TERM</tt>: This attribute will be omitted.</li>
-
-	<li><tt>kTAG_REFS_NODE</tt>: This attribute will be omitted.</li>
-
-	<li><tt>kTAG_REFS_NAMESPACE</tt>: This attribute will be omitted.</li>
-</ul>
-
-<p>If the term has a kTAG_TERM reference, the returned structure will
-have the kOFFSET_LID and kOFFSET_GID of the original term and
-the other attributes will come from the referenced term.</p>
+<p>All other attributes will either be included from the current term, or, if
+the term is related to another term through its kOFFSET_TERM attribute,
+from that term.</p>
 
 <p>The method will raise an exception if any element cannot be resolved.</p>
 
@@ -2750,9 +2672,7 @@ the other attributes will come from the referenced term.</p>
 				<h4>Parameters</h4>
 				<div class="list"><dl>
 					<dt><var>$theTerm</var></dt>
-					<dd><code>integer</code><br>$theTerm Term identifier.</dd>
-					<dt><var>$theAttributes</var></dt>
-					<dd><code>array</code><br>$theAttributes List of attribute tags.</dd>
+					<dd><code>integer</code><br>$theTerm Term object or reference.</dd>
 				</dl></div>
 
 				<h4>Returns</h4>
@@ -2777,7 +2697,7 @@ the other attributes will come from the referenced term.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#__ExportNode">#</a>
-		<code><a href="source-class-COntology.html#3185-3286" title="Go to source code">_ExportNode</a>( <span>integer <var>$theNode</var></span>, <span>array <var>$theAttributes</var> = <span class="php-keyword1">NULL</span> </span> )</code>
+		<code><a href="source-class-COntology.html#3238-3308" title="Go to source code">_ExportNode</a>( <span>integer <var>$theNode</var></span> )</code>
 
 		<div class="description short">
 			
@@ -2792,37 +2712,17 @@ the other attributes will come from the referenced term.</p>
 <p>The main duty of this method is to resolve the provided node reference and
 return a single object that merges all its term and node attributes.</p>
 
-<p>The method expects the following parameters:</p>
-
-<ul>
-	<li><tt>$theNode</tt>: This parameter represents the node identifier.</li>
-
-	<li><tt>$theAttributes</tt>: This optional parameter can be used to limit the
-	returned attributes to the list provided in this array.</li>
-</ul>
-
 <p>The method will return an array containing the merged attributes of the node
 and the referenced term. By default, in case of conflict, the node attributes
-will overwrite the term attributes, except in the following cases:</p>
+will overwrite the term attributes, in all cases, however, the kTAG_LID
+and kTAG_GID will be taken from the term.</p>
 
-<ul>
-	<li><tt>kOFFSET_NID</tt>: This attribute will be taken from the
-	node.</li>
+<p>We omit the kTAG_CLASS, kTAG_TERM (the term's attributes are
+merged with the node's attributes), kTAG_REFS_TAG and kTAG_REFS_EDGE.</p>
 
-	<li><tt>kTAG_LID</tt>: This attribute will be taken from the term.</li>
-
-	<li><tt>kTAG_GID</tt>: This attribute will be taken from the term.</li>
-
-	<li><tt>kTAG_CLASS</tt>: This attribute will be omitted.</li>
-
-	<li><tt>kTAG_NAMESPACE</tt>: This attribute will be omitted.</li>
-
-	<li><tt>kTAG_TERM</tt>: This attribute will be omitted.</li>
-
-	<li><tt>kTAG_REFS_NODE</tt>: This attribute will be omitted.</li>
-
-	<li><tt>kTAG_REFS_NAMESPACE</tt>: This attribute will be omitted.</li>
-</ul>
+<p>All other attributes will either be included from the referenced term, or
+will be taken by the current node; note that the node attributes will overwrite
+the term attributes.</p>
 
 <p>The method will raise an exception if any element cannot be resolved.</p>
 
@@ -2831,9 +2731,7 @@ will overwrite the term attributes, except in the following cases:</p>
 				<h4>Parameters</h4>
 				<div class="list"><dl>
 					<dt><var>$theNode</var></dt>
-					<dd><code>integer</code><br>$theNode Node identifier.</dd>
-					<dt><var>$theAttributes</var></dt>
-					<dd><code>array</code><br>$theAttributes List of attribute tags.</dd>
+					<dd><code>integer</code><br>$theNode Node object or reference.</dd>
 				</dl></div>
 
 				<h4>Returns</h4>
@@ -2858,7 +2756,7 @@ will overwrite the term attributes, except in the following cases:</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#__InitOntologyContainers">#</a>
-		<code><a href="source-class-COntology.html#3302-3417" title="Go to source code">_InitOntologyContainers</a>( )</code>
+		<code><a href="source-class-COntology.html#3324-3439" title="Go to source code">_InitOntologyContainers</a>( )</code>
 
 		<div class="description short">
 			
@@ -2907,7 +2805,7 @@ first method called by the procedure that initialises the ontology.</b></p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#__InitDefaultNamespace">#</a>
-		<code><a href="source-class-COntology.html#3424-3463" title="Go to source code">_InitDefaultNamespace</a>( )</code>
+		<code><a href="source-class-COntology.html#3446-3485" title="Go to source code">_InitDefaultNamespace</a>( )</code>
 
 		<div class="description short">
 			
@@ -2958,7 +2856,7 @@ procedure, you should not use this method outside of that scope.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#__InitDefaultTypeTerms">#</a>
-		<code><a href="source-class-COntology.html#3470-3628" title="Go to source code">_InitDefaultTypeTerms</a>( )</code>
+		<code><a href="source-class-COntology.html#3492-3650" title="Go to source code">_InitDefaultTypeTerms</a>( )</code>
 
 		<div class="description short">
 			
@@ -3000,7 +2898,7 @@ procedure, you should not use this method outside of that scope.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#__InitDefaultAttributeTerms">#</a>
-		<code><a href="source-class-COntology.html#3635-3801" title="Go to source code">_InitDefaultAttributeTerms</a>( )</code>
+		<code><a href="source-class-COntology.html#3657-3823" title="Go to source code">_InitDefaultAttributeTerms</a>( )</code>
 
 		<div class="description short">
 			
@@ -3042,7 +2940,7 @@ procedure, you should not use this method outside of that scope.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#__InitDefaultDataDictionaries">#</a>
-		<code><a href="source-class-COntology.html#3808-3861" title="Go to source code">_InitDefaultDataDictionaries</a>( )</code>
+		<code><a href="source-class-COntology.html#3830-3883" title="Go to source code">_InitDefaultDataDictionaries</a>( )</code>
 
 		<div class="description short">
 			
@@ -3081,7 +2979,7 @@ procedure, you should not use this method outside of that scope.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#__InitDefaultPredicates">#</a>
-		<code><a href="source-class-COntology.html#3868-3920" title="Go to source code">_InitDefaultPredicates</a>( )</code>
+		<code><a href="source-class-COntology.html#3890-3942" title="Go to source code">_InitDefaultPredicates</a>( )</code>
 
 		<div class="description short">
 			
@@ -3120,7 +3018,7 @@ procedure, you should not use this method outside of that scope.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#__InitDefaultNodeKinds">#</a>
-		<code><a href="source-class-COntology.html#3927-3977" title="Go to source code">_InitDefaultNodeKinds</a>( )</code>
+		<code><a href="source-class-COntology.html#3949-3999" title="Go to source code">_InitDefaultNodeKinds</a>( )</code>
 
 		<div class="description short">
 			
@@ -3159,7 +3057,7 @@ procedure, you should not use this method outside of that scope.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#__InitDefaultDataTypes">#</a>
-		<code><a href="source-class-COntology.html#3984-4037" title="Go to source code">_InitDefaultDataTypes</a>( )</code>
+		<code><a href="source-class-COntology.html#4006-4059" title="Go to source code">_InitDefaultDataTypes</a>( )</code>
 
 		<div class="description short">
 			
@@ -3198,7 +3096,7 @@ procedure, you should not use this method outside of that scope.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#__LoadTermDataDictionary">#</a>
-		<code><a href="source-class-COntology.html#4044-4227" title="Go to source code">_LoadTermDataDictionary</a>( )</code>
+		<code><a href="source-class-COntology.html#4066-4249" title="Go to source code">_LoadTermDataDictionary</a>( )</code>
 
 		<div class="description short">
 			
@@ -3234,7 +3132,7 @@ dictionary.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#__LoadNodeDataDictionary">#</a>
-		<code><a href="source-class-COntology.html#4234-4396" title="Go to source code">_LoadNodeDataDictionary</a>( )</code>
+		<code><a href="source-class-COntology.html#4256-4418" title="Go to source code">_LoadNodeDataDictionary</a>( )</code>
 
 		<div class="description short">
 			
@@ -3270,7 +3168,7 @@ dictionary.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#__LoadEdgeDataDictionary">#</a>
-		<code><a href="source-class-COntology.html#4403-4516" title="Go to source code">_LoadEdgeDataDictionary</a>( )</code>
+		<code><a href="source-class-COntology.html#4425-4538" title="Go to source code">_LoadEdgeDataDictionary</a>( )</code>
 
 		<div class="description short">
 			
@@ -3306,7 +3204,7 @@ dictionary.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#__LoadTagDataDictionary">#</a>
-		<code><a href="source-class-COntology.html#4523-4632" title="Go to source code">_LoadTagDataDictionary</a>( )</code>
+		<code><a href="source-class-COntology.html#4545-4654" title="Go to source code">_LoadTagDataDictionary</a>( )</code>
 
 		<div class="description short">
 			
@@ -3342,7 +3240,7 @@ dictionary.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#__LoadAttributesDataDictionary">#</a>
-		<code><a href="source-class-COntology.html#4639-4748" title="Go to source code">_LoadAttributesDataDictionary</a>( )</code>
+		<code><a href="source-class-COntology.html#4661-4770" title="Go to source code">_LoadAttributesDataDictionary</a>( )</code>
 
 		<div class="description short">
 			
