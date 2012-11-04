@@ -7,7 +7,7 @@
 	<title>Class CMongoContainer | MyWrapper Reference Documentation</title>
 
 	<script type="text/javascript" src="resources/combined.js?368249000"></script>
-	<script type="text/javascript" src="elementlist.js?262947992"></script>
+	<script type="text/javascript" src="elementlist.js?133380740"></script>
 	<link rel="stylesheet" type="text/css" media="all" href="resources/style.css?3505392360" />
 
 </head>
@@ -177,7 +177,7 @@
 				<b>Author:</b>
 				Milko A. Škofič &lt;<a
 href="mailto:m.skofic&#64;cgiar.org">m.skofic&#64;<!---->cgiar.org</a>&gt;<br />
-		<b>Located at</b> <a href="source-class-CMongoContainer.html#36-1129" title="Go to source code">CMongoContainer.php</a><br />
+		<b>Located at</b> <a href="source-class-CMongoContainer.html#36-1260" title="Go to source code">CMongoContainer.php</a><br />
 	</div>
 
 
@@ -754,8 +754,82 @@ for more information.</p>
 		</div>
 		</div></td>
 	</tr>
+	<tr data-order="UnserialiseData" id="_UnserialiseData">
+
+		<td class="attributes"><code>
+			 public static
+			
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_UnserialiseData">#</a>
+		<code><a href="source-class-CMongoContainer.html#1141-1256" title="Go to source code">UnserialiseData</a>( <span>reference <var>&amp; $theElement</var></span> )</code>
+
+		<div class="description short">
+			
+<p>Unserialise provided data element.</p>
+
+		</div>
+
+		<div class="description detailed hidden">
+			
+<p>Unserialise provided data element.</p>
+
+<p>We implement this method to convert all standard <code><a href="class-CDataType.html">CDataType</a></code> instances
+into custom Mongo data types.</p>
+
+<p>In this class we parse the following types and offsets:</p>
+
+<ul>
+	<li><i><code><a href="class-CDataTypeMongoId.html">CDataTypeMongoId</a></code> object or kTYPE_MongoId offset</i>: We
+	return a MongoId object.</li>
+
+	<li><i><code><a href="class-CDataTypeMongoCode.html">CDataTypeMongoCode</a></code> object or kTYPE_MongoCode offset</i>:
+	We return a MongoCode object.</li>
+
+	<li><i><code><a href="class-CDataTypeStamp.html">CDataTypeStamp</a></code> object or kTYPE_STAMP offset</i>: We
+	return a MongoDate object.</li>
+
+	<li><i><code><a href="class-CDataTypeRegex.html">CDataTypeRegex</a></code> object or kTYPE_REGEX offset</i>: We
+	return a MongoRegex object.</li>
+
+	<li><i><code><a href="class-CDataTypeInt32.html">CDataTypeInt32</a></code> object or kTYPE_INT32 offset</i>: We
+	return a MongoInt32 object.</li>
+
+	<li><i><code><a href="class-CDataTypeInt64.html">CDataTypeInt64</a></code> object or kTYPE_INT64 offset</i>: We
+	return a MongoInt64 object.</li>
+
+	<li><i><code><a href="class-CDataTypeBinary.html">CDataTypeBinary</a></code> object or kTYPE_BINARY offset</i>: We
+	return a MongoBinData object.</li>
+</ul>
+
+
+
+				<h4>Parameters</h4>
+				<div class="list"><dl>
+					<dt><var>$theElement</var></dt>
+					<dd><code>reference</code><br>&amp;$theElement Element to encode.</dd>
+				</dl></div>
+
+
+
+
+
+		</div>
+		</div></td>
+	</tr>
 	</table>
 
+	<table class="summary inherited">
+	<caption>Methods inherited from <a href="class-CContainer.html#methods">CContainer</a></caption>
+	<tr>
+		<td><code>
+			<a href="class-CContainer.html#_UnserialiseObject">UnserialiseObject()</a>
+		</code></td>
+	</tr>
+	</table>
 	<table class="summary inherited">
 	<caption>Methods inherited from <a href="class-CConnection.html#methods">CConnection</a></caption>
 	<tr>

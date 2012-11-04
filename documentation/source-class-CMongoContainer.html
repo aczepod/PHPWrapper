@@ -8,7 +8,7 @@
 	<title>File CMongoContainer.php | MyWrapper Reference Documentation</title>
 
 	<script type="text/javascript" src="resources/combined.js?368249000"></script>
-	<script type="text/javascript" src="elementlist.js?262947992"></script>
+	<script type="text/javascript" src="elementlist.js?133380740"></script>
 	<link rel="stylesheet" type="text/css" media="all" href="resources/style.css?3505392360" />
 
 </head>
@@ -1224,13 +1224,144 @@
 </span><span id="1124" class="l"><a class="l" href="#1124">1124: </a>    
 </span><span id="1125" class="l"><a class="l" href="#1125">1125: </a>    } <span class="php-comment">// ConvertValue.</span>
 </span><span id="1126" class="l"><a class="l" href="#1126">1126: </a>
-</span><span id="1127" class="l"><a class="l" href="#1127">1127: </a>     
+</span><span id="1127" class="l"><a class="l" href="#1127">1127: </a>        
 </span><span id="1128" class="l"><a class="l" href="#1128">1128: </a>
-</span><span id="1129" class="l"><a class="l" href="#1129">1129: </a>} <span class="php-comment">// class CMongoContainer.</span>
-</span><span id="1130" class="l"><a class="l" href="#1130">1130: </a>
-</span><span id="1131" class="l"><a class="l" href="#1131">1131: </a>
-</span><span id="1132" class="l"><a class="l" href="#1132">1132: </a><span class="xlang">?&gt;</span>
-</span><span id="1133" class="l"><a class="l" href="#1133">1133: </a></span></code></pre>
+</span><span id="1129" class="l"><a class="l" href="#1129">1129: </a><span class="php-comment">/*=======================================================================================
+</span></span><span id="1130" class="l"><a class="l" href="#1130">1130: </a><span class="php-comment"> *                                                                                      *
+</span></span><span id="1131" class="l"><a class="l" href="#1131">1131: </a><span class="php-comment"> *                              PUBLIC CONVERSION INTERFACE                             *
+</span></span><span id="1132" class="l"><a class="l" href="#1132">1132: </a><span class="php-comment"> *                                                                                      *
+</span></span><span id="1133" class="l"><a class="l" href="#1133">1133: </a><span class="php-comment"> *======================================================================================*/</span>
+</span><span id="1134" class="l"><a class="l" href="#1134">1134: </a>
+</span><span id="1135" class="l"><a class="l" href="#1135">1135: </a>
+</span><span id="1136" class="l"><a class="l" href="#1136">1136: </a>     
+</span><span id="1137" class="l"><a class="l" href="#1137">1137: </a>    <span class="php-comment">/*===================================================================================
+</span></span><span id="1138" class="l"><a class="l" href="#1138">1138: </a><span class="php-comment">     *  UnserialiseData                                                                 *
+</span></span><span id="1139" class="l"><a class="l" href="#1139">1139: </a><span class="php-comment">     *==================================================================================*/</span>
+</span><span id="1140" class="l"><a class="l" href="#1140">1140: </a>
+</span><span id="1141" class="l"><a class="l" href="#1141">1141: </a>    <span class="php-comment">/**
+</span></span><span id="1142" class="l"><a class="l" href="#1142">1142: </a><span class="php-comment">     * Unserialise provided data element.
+</span></span><span id="1143" class="l"><a class="l" href="#1143">1143: </a><span class="php-comment">     *
+</span></span><span id="1144" class="l"><a class="l" href="#1144">1144: </a><span class="php-comment">     * We implement this method to convert all standard {@link CDataType} instances into
+</span></span><span id="1145" class="l"><a class="l" href="#1145">1145: </a><span class="php-comment">     * custom Mongo data types.
+</span></span><span id="1146" class="l"><a class="l" href="#1146">1146: </a><span class="php-comment">     *
+</span></span><span id="1147" class="l"><a class="l" href="#1147">1147: </a><span class="php-comment">     * In this class we parse the following types and offsets:
+</span></span><span id="1148" class="l"><a class="l" href="#1148">1148: </a><span class="php-comment">     *
+</span></span><span id="1149" class="l"><a class="l" href="#1149">1149: </a><span class="php-comment">     * &lt;ul&gt;
+</span></span><span id="1150" class="l"><a class="l" href="#1150">1150: </a><span class="php-comment">     *  &lt;li&gt;&lt;i&gt;{@link CDataTypeMongoId} object or {@link kTYPE_MongoId} offset&lt;/i&gt;: We
+</span></span><span id="1151" class="l"><a class="l" href="#1151">1151: </a><span class="php-comment">     *      return a MongoId object.
+</span></span><span id="1152" class="l"><a class="l" href="#1152">1152: </a><span class="php-comment">     *  &lt;li&gt;&lt;i&gt;{@link CDataTypeMongoCode} object or {@link kTYPE_MongoCode} offset&lt;/i&gt;: We
+</span></span><span id="1153" class="l"><a class="l" href="#1153">1153: </a><span class="php-comment">     *      return a MongoCode object.
+</span></span><span id="1154" class="l"><a class="l" href="#1154">1154: </a><span class="php-comment">     *  &lt;li&gt;&lt;i&gt;{@link CDataTypeStamp} object or {@link kTYPE_STAMP} offset&lt;/i&gt;: We return a
+</span></span><span id="1155" class="l"><a class="l" href="#1155">1155: </a><span class="php-comment">     *      MongoDate object.
+</span></span><span id="1156" class="l"><a class="l" href="#1156">1156: </a><span class="php-comment">     *  &lt;li&gt;&lt;i&gt;{@link CDataTypeRegex} object or {@link kTYPE_REGEX} offset&lt;/i&gt;: We return a
+</span></span><span id="1157" class="l"><a class="l" href="#1157">1157: </a><span class="php-comment">     *      MongoRegex object.
+</span></span><span id="1158" class="l"><a class="l" href="#1158">1158: </a><span class="php-comment">     *  &lt;li&gt;&lt;i&gt;{@link CDataTypeInt32} object or {@link kTYPE_INT32} offset&lt;/i&gt;: We return a
+</span></span><span id="1159" class="l"><a class="l" href="#1159">1159: </a><span class="php-comment">     *      MongoInt32 object.
+</span></span><span id="1160" class="l"><a class="l" href="#1160">1160: </a><span class="php-comment">     *  &lt;li&gt;&lt;i&gt;{@link CDataTypeInt64} object or {@link kTYPE_INT64} offset&lt;/i&gt;: We return a
+</span></span><span id="1161" class="l"><a class="l" href="#1161">1161: </a><span class="php-comment">     *      MongoInt64 object.
+</span></span><span id="1162" class="l"><a class="l" href="#1162">1162: </a><span class="php-comment">     *  &lt;li&gt;&lt;i&gt;{@link CDataTypeBinary} object or {@link kTYPE_BINARY} offset&lt;/i&gt;: We return
+</span></span><span id="1163" class="l"><a class="l" href="#1163">1163: </a><span class="php-comment">     *      a MongoBinData object.
+</span></span><span id="1164" class="l"><a class="l" href="#1164">1164: </a><span class="php-comment">     * &lt;/ul&gt;
+</span></span><span id="1165" class="l"><a class="l" href="#1165">1165: </a><span class="php-comment">     *
+</span></span><span id="1166" class="l"><a class="l" href="#1166">1166: </a><span class="php-comment">     * @param reference            &amp;$theElement         Element to encode.
+</span></span><span id="1167" class="l"><a class="l" href="#1167">1167: </a><span class="php-comment">     *
+</span></span><span id="1168" class="l"><a class="l" href="#1168">1168: </a><span class="php-comment">     * @static
+</span></span><span id="1169" class="l"><a class="l" href="#1169">1169: </a><span class="php-comment">     */</span>
+</span><span id="1170" class="l"><a class="l" href="#1170">1170: </a>    <span class="php-keyword1">static</span> <span class="php-keyword1">function</span> <a id="_UnserialiseData" href="#_UnserialiseData">UnserialiseData</a>( &amp;<span class="php-var">$theElement</span> )
+</span><span id="1171" class="l"><a class="l" href="#1171">1171: </a>    {
+</span><span id="1172" class="l"><a class="l" href="#1172">1172: </a>        <span class="php-comment">//</span>
+</span><span id="1173" class="l"><a class="l" href="#1173">1173: </a>        <span class="php-comment">// Check type.</span>
+</span><span id="1174" class="l"><a class="l" href="#1174">1174: </a>        <span class="php-comment">//</span>
+</span><span id="1175" class="l"><a class="l" href="#1175">1175: </a>        <span class="php-keyword1">if</span>( <span class="php-keyword2">is_array</span>( <span class="php-var">$theElement</span> )
+</span><span id="1176" class="l"><a class="l" href="#1176">1176: </a>         || (<span class="php-var">$theElement</span> <span class="php-keyword1">instanceof</span> ArrayObject) )
+</span><span id="1177" class="l"><a class="l" href="#1177">1177: </a>        {
+</span><span id="1178" class="l"><a class="l" href="#1178">1178: </a>            <span class="php-comment">//</span>
+</span><span id="1179" class="l"><a class="l" href="#1179">1179: </a>            <span class="php-comment">// Parse by type.</span>
+</span><span id="1180" class="l"><a class="l" href="#1180">1180: </a>            <span class="php-comment">//</span>
+</span><span id="1181" class="l"><a class="l" href="#1181">1181: </a>            <span class="php-var">$data</span> = <span class="php-var">$theElement</span>[ kTAG_CUSTOM_DATA ];
+</span><span id="1182" class="l"><a class="l" href="#1182">1182: </a>            <span class="php-keyword1">switch</span>( <span class="php-var">$theElement</span>[ kTAG_CUSTOM_TYPE ] )
+</span><span id="1183" class="l"><a class="l" href="#1183">1183: </a>            {
+</span><span id="1184" class="l"><a class="l" href="#1184">1184: </a>                <span class="php-comment">//</span>
+</span><span id="1185" class="l"><a class="l" href="#1185">1185: </a>                <span class="php-comment">// MongoId.</span>
+</span><span id="1186" class="l"><a class="l" href="#1186">1186: </a>                <span class="php-comment">//</span>
+</span><span id="1187" class="l"><a class="l" href="#1187">1187: </a>                <span class="php-keyword1">case</span> kTYPE_MongoId:
+</span><span id="1188" class="l"><a class="l" href="#1188">1188: </a>                    <span class="php-var">$theElement</span> = <span class="php-keyword1">new</span> MongoId( (string) <span class="php-var">$data</span> );
+</span><span id="1189" class="l"><a class="l" href="#1189">1189: </a>                    <span class="php-keyword1">break</span>;
+</span><span id="1190" class="l"><a class="l" href="#1190">1190: </a>                
+</span><span id="1191" class="l"><a class="l" href="#1191">1191: </a>                <span class="php-comment">//</span>
+</span><span id="1192" class="l"><a class="l" href="#1192">1192: </a>                <span class="php-comment">// MongoCode.</span>
+</span><span id="1193" class="l"><a class="l" href="#1193">1193: </a>                <span class="php-comment">//</span>
+</span><span id="1194" class="l"><a class="l" href="#1194">1194: </a>                <span class="php-keyword1">case</span> kTYPE_MongoCode:
+</span><span id="1195" class="l"><a class="l" href="#1195">1195: </a>                    <span class="php-keyword1">if</span>( <span class="php-keyword2">is_array</span>( <span class="php-var">$data</span> )
+</span><span id="1196" class="l"><a class="l" href="#1196">1196: </a>                     || (<span class="php-var">$data</span> <span class="php-keyword1">instanceof</span> ArrayObject) )
+</span><span id="1197" class="l"><a class="l" href="#1197">1197: </a>                    {
+</span><span id="1198" class="l"><a class="l" href="#1198">1198: </a>                        <span class="php-var">$tmp1</span> = <span class="php-var">$data</span>[ kOBJ_TYPE_CODE_SRC ];
+</span><span id="1199" class="l"><a class="l" href="#1199">1199: </a>                        <span class="php-var">$tmp2</span> = ( <span class="php-keyword2">array_key_exists</span>( kOBJ_TYPE_CODE_SCOPE, (<span class="php-keyword1">array</span>) <span class="php-var">$data</span> ) )
+</span><span id="1200" class="l"><a class="l" href="#1200">1200: </a>                              ? <span class="php-var">$data</span>[ kOBJ_TYPE_CODE_SCOPE ]
+</span><span id="1201" class="l"><a class="l" href="#1201">1201: </a>                              : <span class="php-keyword1">Array</span>();
+</span><span id="1202" class="l"><a class="l" href="#1202">1202: </a>                        <span class="php-var">$theElement</span> = <span class="php-keyword1">new</span> MongoCode( <span class="php-var">$tmp1</span>, <span class="php-var">$tmp2</span> );
+</span><span id="1203" class="l"><a class="l" href="#1203">1203: </a>                    }
+</span><span id="1204" class="l"><a class="l" href="#1204">1204: </a>                    <span class="php-keyword1">break</span>;
+</span><span id="1205" class="l"><a class="l" href="#1205">1205: </a>                
+</span><span id="1206" class="l"><a class="l" href="#1206">1206: </a>                <span class="php-comment">//</span>
+</span><span id="1207" class="l"><a class="l" href="#1207">1207: </a>                <span class="php-comment">// MongoDate.</span>
+</span><span id="1208" class="l"><a class="l" href="#1208">1208: </a>                <span class="php-comment">//</span>
+</span><span id="1209" class="l"><a class="l" href="#1209">1209: </a>                <span class="php-keyword1">case</span> kTYPE_STAMP:
+</span><span id="1210" class="l"><a class="l" href="#1210">1210: </a>                    <span class="php-keyword1">if</span>( <span class="php-keyword2">is_array</span>( <span class="php-var">$data</span> )
+</span><span id="1211" class="l"><a class="l" href="#1211">1211: </a>                     || (<span class="php-var">$data</span> <span class="php-keyword1">instanceof</span> ArrayObject) )
+</span><span id="1212" class="l"><a class="l" href="#1212">1212: </a>                    {
+</span><span id="1213" class="l"><a class="l" href="#1213">1213: </a>                        <span class="php-var">$tmp1</span> = <span class="php-var">$data</span>[ kTYPE_STAMP_SEC ];
+</span><span id="1214" class="l"><a class="l" href="#1214">1214: </a>                        <span class="php-var">$tmp2</span> = ( <span class="php-keyword2">array_key_exists</span>( kTYPE_STAMP_USEC, (<span class="php-keyword1">array</span>) <span class="php-var">$data</span> ) )
+</span><span id="1215" class="l"><a class="l" href="#1215">1215: </a>                              ? <span class="php-var">$data</span>[ kTYPE_STAMP_USEC ]
+</span><span id="1216" class="l"><a class="l" href="#1216">1216: </a>                              : <span class="php-num">0</span>;
+</span><span id="1217" class="l"><a class="l" href="#1217">1217: </a>                        <span class="php-var">$theElement</span> = <span class="php-keyword1">new</span> MongoDate( <span class="php-var">$tmp1</span>, <span class="php-var">$tmp2</span> );
+</span><span id="1218" class="l"><a class="l" href="#1218">1218: </a>                    }
+</span><span id="1219" class="l"><a class="l" href="#1219">1219: </a>                    <span class="php-keyword1">break</span>;
+</span><span id="1220" class="l"><a class="l" href="#1220">1220: </a>                
+</span><span id="1221" class="l"><a class="l" href="#1221">1221: </a>                <span class="php-comment">//</span>
+</span><span id="1222" class="l"><a class="l" href="#1222">1222: </a>                <span class="php-comment">// MongoInt32.</span>
+</span><span id="1223" class="l"><a class="l" href="#1223">1223: </a>                <span class="php-comment">//</span>
+</span><span id="1224" class="l"><a class="l" href="#1224">1224: </a>                <span class="php-keyword1">case</span> kTYPE_INT32:
+</span><span id="1225" class="l"><a class="l" href="#1225">1225: </a>                    <span class="php-var">$theElement</span> = <span class="php-keyword1">new</span> MongoInt32( <span class="php-var">$data</span> );
+</span><span id="1226" class="l"><a class="l" href="#1226">1226: </a>                    <span class="php-keyword1">break</span>;
+</span><span id="1227" class="l"><a class="l" href="#1227">1227: </a>                
+</span><span id="1228" class="l"><a class="l" href="#1228">1228: </a>                <span class="php-comment">//</span>
+</span><span id="1229" class="l"><a class="l" href="#1229">1229: </a>                <span class="php-comment">// MongoInt64.</span>
+</span><span id="1230" class="l"><a class="l" href="#1230">1230: </a>                <span class="php-comment">//</span>
+</span><span id="1231" class="l"><a class="l" href="#1231">1231: </a>                <span class="php-keyword1">case</span> kTYPE_INT64:
+</span><span id="1232" class="l"><a class="l" href="#1232">1232: </a>                    <span class="php-var">$theElement</span> = <span class="php-keyword1">new</span> MongoInt64( <span class="php-var">$data</span> );
+</span><span id="1233" class="l"><a class="l" href="#1233">1233: </a>                    <span class="php-keyword1">break</span>;
+</span><span id="1234" class="l"><a class="l" href="#1234">1234: </a>    
+</span><span id="1235" class="l"><a class="l" href="#1235">1235: </a>                <span class="php-comment">//</span>
+</span><span id="1236" class="l"><a class="l" href="#1236">1236: </a>                <span class="php-comment">// MongoRegex.</span>
+</span><span id="1237" class="l"><a class="l" href="#1237">1237: </a>                <span class="php-comment">//</span>
+</span><span id="1238" class="l"><a class="l" href="#1238">1238: </a>                <span class="php-keyword1">case</span> kTYPE_REGEX:
+</span><span id="1239" class="l"><a class="l" href="#1239">1239: </a>                    <span class="php-var">$theElement</span> = <span class="php-keyword1">new</span> MongoRegex( <span class="php-var">$data</span> );
+</span><span id="1240" class="l"><a class="l" href="#1240">1240: </a>                    <span class="php-keyword1">break</span>;
+</span><span id="1241" class="l"><a class="l" href="#1241">1241: </a>    
+</span><span id="1242" class="l"><a class="l" href="#1242">1242: </a>                <span class="php-comment">//</span>
+</span><span id="1243" class="l"><a class="l" href="#1243">1243: </a>                <span class="php-comment">// MongoBinData.</span>
+</span><span id="1244" class="l"><a class="l" href="#1244">1244: </a>                <span class="php-comment">//</span>
+</span><span id="1245" class="l"><a class="l" href="#1245">1245: </a>                <span class="php-keyword1">case</span> kTYPE_BINARY:
+</span><span id="1246" class="l"><a class="l" href="#1246">1246: </a>                    <span class="php-var">$data</span> = ( <span class="php-keyword2">function_exists</span>( <span class="php-quote">'hex2bin'</span> ) )
+</span><span id="1247" class="l"><a class="l" href="#1247">1247: </a>                          ? <span class="php-keyword2">hex2bin</span>( <span class="php-var">$data</span> )
+</span><span id="1248" class="l"><a class="l" href="#1248">1248: </a>                          : <span class="php-keyword2">pack</span>( <span class="php-quote">'H*'</span>, <span class="php-var">$data</span> );
+</span><span id="1249" class="l"><a class="l" href="#1249">1249: </a>                    <span class="php-var">$theElement</span> = <span class="php-keyword1">new</span> MongoBinData( <span class="php-var">$data</span> );
+</span><span id="1250" class="l"><a class="l" href="#1250">1250: </a>                    <span class="php-keyword1">break</span>;
+</span><span id="1251" class="l"><a class="l" href="#1251">1251: </a>            
+</span><span id="1252" class="l"><a class="l" href="#1252">1252: </a>            } <span class="php-comment">// Parsing by type.</span>
+</span><span id="1253" class="l"><a class="l" href="#1253">1253: </a>        
+</span><span id="1254" class="l"><a class="l" href="#1254">1254: </a>        } <span class="php-comment">// Element is a structure.</span>
+</span><span id="1255" class="l"><a class="l" href="#1255">1255: </a>    
+</span><span id="1256" class="l"><a class="l" href="#1256">1256: </a>    } <span class="php-comment">// UnserialiseData.</span>
+</span><span id="1257" class="l"><a class="l" href="#1257">1257: </a>
+</span><span id="1258" class="l"><a class="l" href="#1258">1258: </a>     
+</span><span id="1259" class="l"><a class="l" href="#1259">1259: </a>
+</span><span id="1260" class="l"><a class="l" href="#1260">1260: </a>} <span class="php-comment">// class CMongoContainer.</span>
+</span><span id="1261" class="l"><a class="l" href="#1261">1261: </a>
+</span><span id="1262" class="l"><a class="l" href="#1262">1262: </a>
+</span><span id="1263" class="l"><a class="l" href="#1263">1263: </a><span class="xlang">?&gt;</span>
+</span><span id="1264" class="l"><a class="l" href="#1264">1264: </a></span></code></pre>
 
 	<div id="footer">
 		MyWrapper Reference Documentation API documentation generated by <a href="http://apigen.org">ApiGen 2.8.0</a>

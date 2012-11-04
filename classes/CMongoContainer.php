@@ -1124,6 +1124,137 @@ class CMongoContainer extends CContainer
 	
 	} // ConvertValue.
 
+		
+
+/*=======================================================================================
+ *																						*
+ *								PUBLIC CONVERSION INTERFACE								*
+ *																						*
+ *======================================================================================*/
+
+
+	 
+	/*===================================================================================
+	 *	UnserialiseData																	*
+	 *==================================================================================*/
+
+	/**
+	 * Unserialise provided data element.
+	 *
+	 * We implement this method to convert all standard {@link CDataType} instances into
+	 * custom Mongo data types.
+	 *
+	 * In this class we parse the following types and offsets:
+	 *
+	 * <ul>
+	 *	<li><i>{@link CDataTypeMongoId} object or {@link kTYPE_MongoId} offset</i>: We
+	 *		return a MongoId object.
+	 *	<li><i>{@link CDataTypeMongoCode} object or {@link kTYPE_MongoCode} offset</i>: We
+	 *		return a MongoCode object.
+	 *	<li><i>{@link CDataTypeStamp} object or {@link kTYPE_STAMP} offset</i>: We return a
+	 *		MongoDate object.
+	 *	<li><i>{@link CDataTypeRegex} object or {@link kTYPE_REGEX} offset</i>: We return a
+	 *		MongoRegex object.
+	 *	<li><i>{@link CDataTypeInt32} object or {@link kTYPE_INT32} offset</i>: We return a
+	 *		MongoInt32 object.
+	 *	<li><i>{@link CDataTypeInt64} object or {@link kTYPE_INT64} offset</i>: We return a
+	 *		MongoInt64 object.
+	 *	<li><i>{@link CDataTypeBinary} object or {@link kTYPE_BINARY} offset</i>: We return
+	 *		a MongoBinData object.
+	 * </ul>
+	 *
+	 * @param reference			   &$theElement			Element to encode.
+	 *
+	 * @static
+	 */
+	static function UnserialiseData( &$theElement )
+	{
+		//
+		// Check type.
+		//
+		if( is_array( $theElement )
+		 || ($theElement instanceof ArrayObject) )
+		{
+			//
+			// Parse by type.
+			//
+			$data = $theElement[ kTAG_CUSTOM_DATA ];
+			switch( $theElement[ kTAG_CUSTOM_TYPE ] )
+			{
+				//
+				// MongoId.
+				//
+				case kTYPE_MongoId:
+					$theElement = new MongoId( (string) $data );
+					break;
+				
+				//
+				// MongoCode.
+				//
+				case kTYPE_MongoCode:
+					if( is_array( $data )
+					 || ($data instanceof ArrayObject) )
+					{
+						$tmp1 = $data[ kOBJ_TYPE_CODE_SRC ];
+						$tmp2 = ( array_key_exists( kOBJ_TYPE_CODE_SCOPE, (array) $data ) )
+							  ? $data[ kOBJ_TYPE_CODE_SCOPE ]
+							  : Array();
+						$theElement = new MongoCode( $tmp1, $tmp2 );
+					}
+					break;
+				
+				//
+				// MongoDate.
+				//
+				case kTYPE_STAMP:
+					if( is_array( $data )
+					 || ($data instanceof ArrayObject) )
+					{
+						$tmp1 = $data[ kTYPE_STAMP_SEC ];
+						$tmp2 = ( array_key_exists( kTYPE_STAMP_USEC, (array) $data ) )
+							  ? $data[ kTYPE_STAMP_USEC ]
+							  : 0;
+						$theElement = new MongoDate( $tmp1, $tmp2 );
+					}
+					break;
+				
+				//
+				// MongoInt32.
+				//
+				case kTYPE_INT32:
+					$theElement = new MongoInt32( $data );
+					break;
+				
+				//
+				// MongoInt64.
+				//
+				case kTYPE_INT64:
+					$theElement = new MongoInt64( $data );
+					break;
+	
+				//
+				// MongoRegex.
+				//
+				case kTYPE_REGEX:
+					$theElement = new MongoRegex( $data );
+					break;
+	
+				//
+				// MongoBinData.
+				//
+				case kTYPE_BINARY:
+					$data = ( function_exists( 'hex2bin' ) )
+						  ? hex2bin( $data )
+						  : pack( 'H*', $data );
+					$theElement = new MongoBinData( $data );
+					break;
+			
+			} // Parsing by type.
+		
+		} // Element is a structure.
+	
+	} // UnserialiseData.
+
 	 
 
 } // class CMongoContainer.

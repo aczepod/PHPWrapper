@@ -671,7 +671,7 @@ require_once( kPATH_MYWRAPPER_LIBRARY_DEFINE."/Errors.inc.php" );
 			//
 			// Create list.
 			//
-			$theReference[ $theOffset ] = array( $theIndex => $theValue );
+			$theReference[ $theOffset ] = array( $theIndex => $theValue );
 			
 			if( $getOld )
 				return NULL;														// ==>

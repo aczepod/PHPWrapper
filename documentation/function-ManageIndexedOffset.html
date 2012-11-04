@@ -4,7 +4,7 @@
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 	<meta name="generator" content="ApiGen 2.8.0" />
 
-	<title>Function ManageBitField | MyWrapper Reference Documentation</title>
+	<title>Function ManageIndexedOffset | MyWrapper Reference Documentation</title>
 
 	<script type="text/javascript" src="resources/combined.js?368249000"></script>
 	<script type="text/javascript" src="elementlist.js?133380740"></script>
@@ -59,8 +59,8 @@
 				<li><a href="function-JsonDecode.html">JsonDecode</a></li>
 				<li><a href="function-JsonEncode.html">JsonEncode</a></li>
 				<li><a href="function-JsonError.html">JsonError</a></li>
-				<li class="active"><a href="function-ManageBitField.html">ManageBitField</a></li>
-				<li><a href="function-ManageIndexedOffset.html">ManageIndexedOffset</a></li>
+				<li><a href="function-ManageBitField.html">ManageBitField</a></li>
+				<li class="active"><a href="function-ManageIndexedOffset.html">ManageIndexedOffset</a></li>
 				<li><a href="function-ManageObjectSetOffset.html">ManageObjectSetOffset</a></li>
 				<li><a href="function-ManageOffset.html">ManageOffset</a></li>
 				<li><a href="function-ManageProperty.html">ManageProperty</a></li>
@@ -104,34 +104,53 @@
 	</div>
 
 <div id="content" class="function">
-	<h1>Function ManageBitField</h1>
+	<h1>Function ManageIndexedOffset</h1>
 
 
 	<div class="description">
 	
-<h4>Manage a bit-field property</h4>
+<p>Manage an indexed offset.</p>
 
-<p>This method can be used to manage a bitfield property, it accepts the
-following parameters:</p>
+<p>Indexed offsets are constituted by a list of elements whose key is the
+discriminant, no two element may share the same key.</p>
+
+<p>The method accepts the following parameters:</p>
 
 <ul>
-	<li><tt>&amp;$theField</tt>: Reference to the bit-field property.</li>
+	<li><tt>&amp;$theReference</tt>: Reference to the main container, it may either
+	refer to an array or an ArrayObject, any other type will trigger an
+	exception.</li>
 
-	<li><tt>$theMask</tt>: Bit-field mask.</li>
+	<li><tt>$theOffset</tt>: The offset to the attribute containing the list of
+	elements.</li>
 
-	<li><tt>$theState</tt>: State or operator:
+	<li><tt>$theIndex</tt>: The element index.</li>
+
+	<li><tt>$theValue</tt>: The value or operation:
 		<ul>
-			<li><tt>NULL</tt>: Return the masked bitfield.</li>
+			<li><tt>NULL</tt>: Return the the value at the provided index.</li>
 
-			<li><tt>FALSE</tt>: Turn <i>off</i> the masked bits.</li>
+			<li><tt>FALSE</tt>: Delete the value at the provided index.</li>
 
-			<li><i>other</i>: Turn <i>on</i> the masked bits.</li>
+			<li><i>other</i>: Any other type will replace or set the value at the provided
+			index.</li>
+		</ul>
+	</li>
+
+	<li><tt>$getOld</tt>: Determines what the method will return:
+		<ul>
+			<li><tt>TRUE</tt>: Return the value of the offset <i>before</i> it was
+			eventually modified.</li>
+
+			<li><tt>FALSE</tt>: Return the value of the offset <i>after</i> it was
+			eventually modified.</li>
 		</ul>
 	</li>
 </ul>
 
-<p>In all cases the method will return the status <i>after</i> it was eventually
-modified.</p>
+<p>The method expects each element to be a structure containing at least an
+element indexed by the <tt>$theDataOffset</tt> offset, if that is not the case,
+the method will raise an exception.</p>
 
 	</div>
 
@@ -141,41 +160,45 @@ modified.</p>
 				<b>Author:</b>
 				Milko A. Škofič &lt;<a
 href="mailto:m.skofic&#64;cgiar.org">m.skofic&#64;<!---->cgiar.org</a>&gt;<br />
-				<b>See:</b>
-				kFLAG_DEFAULT_MASK<br />
-				<b>Used by:</b>
-				<code><code><a href="class-CStatusDocument.html#__IsInited">CStatusDocument::_IsInited()</a></code></code> <br />
-				<b>Used by:</b>
-				<code><code><a href="class-CStatusDocument.html#__IsDirty">CStatusDocument::_IsDirty()</a></code></code> <br />
-				<b>Used by:</b>
-				<code><code><a href="class-CStatusDocument.html#__IsCommitted">CStatusDocument::_IsCommitted()</a></code></code> <br />
-				<b>Used by:</b>
-				<code><code><a href="class-CStatusDocument.html#__IsEncoded">CStatusDocument::_IsEncoded()</a></code></code> <br />
-		<b>Located at</b> <a href="source-function-ManageBitField.html#107-162" title="Go to source code">accessors.php</a><br />
+		<b>Located at</b> <a href="source-function-ManageIndexedOffset.html#513-687" title="Go to source code">accessors.php</a><br />
 	</div>
 
 
 	<table class="summary" id="parameters">
 	<caption>Parameters summary</caption>
-	<tr id="$theField">
+	<tr id="$theReference">
 		<td class="name"><code>reference</code></td>
-		<td class="value"><code><var>&amp; $theField</var></code></td>
+		<td class="value"><code><var>&amp; $theReference</var></code></td>
 		<td>
-			&amp;$theField Bit-field reference.
+			&amp;$theReference Array or ArrayObject reference.
 		</td>
 	</tr>
-	<tr id="$theMask">
-		<td class="name"><code>bitfield</code></td>
-		<td class="value"><code><var>$theMask</var></code></td>
+	<tr id="$theOffset">
+		<td class="name"><code>string</code></td>
+		<td class="value"><code><var>$theOffset</var></code></td>
 		<td>
-			 Bit-field mask.
+			 Offset to be managed.
 		</td>
 	</tr>
-	<tr id="$theState">
+	<tr id="$theIndex">
+		<td class="name"><code>string</code></td>
+		<td class="value"><code><var>$theIndex</var></code></td>
+		<td>
+			 Item index.
+		</td>
+	</tr>
+	<tr id="$theValue">
 		<td class="name"><code>mixed</code></td>
-		<td class="value"><code><var>$theState</var> = <span class="php-keyword1">NULL</span></code></td>
+		<td class="value"><code><var>$theValue</var> = <span class="php-keyword1">NULL</span></code></td>
 		<td>
-			 Value or operator.
+			 New value or operation.
+		</td>
+	</tr>
+	<tr id="$getOld">
+		<td class="name"><code>boolean</code></td>
+		<td class="value"><code><var>$getOld</var> = <span class="php-keyword1">FALSE</span></code></td>
+		<td>
+			 TRUE get old value.
 		</td>
 	</tr>
 	</table>
@@ -184,14 +207,25 @@ href="mailto:m.skofic&#64;cgiar.org">m.skofic&#64;<!---->cgiar.org</a>&gt;<br />
 	<caption>Return value summary</caption>
 	<tr>
 		<td class="name"><code>
-			bitfield
+			mixed
 		</code></td>
 		<td>
-			Current masked status.
+			
 		</td>
 	</tr>
 	</table>
 
+	<table class="summary" id="throws">
+	<caption>Thrown exceptions summary</caption>
+	<tr>
+		<td class="name"><code>
+			<code><a href="class-Exception.html">Exception</a></code>
+		</code></td>
+		<td>
+			
+		</td>
+	</tr>
+	</table>
 
 </div>
 

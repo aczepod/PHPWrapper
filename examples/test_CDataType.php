@@ -35,6 +35,11 @@ require_once( kPATH_MYWRAPPER_LIBRARY_CLASS."/CDataTypeMongoId.php" );
 require_once( kPATH_MYWRAPPER_LIBRARY_CLASS."/CDataTypeMongoCode.php" );
 require_once( kPATH_MYWRAPPER_LIBRARY_CLASS."/CDataTypeRegex.php" );
 
+//
+// Mongo includes.
+//
+require_once( kPATH_MYWRAPPER_LIBRARY_CLASS."/CMongoContainer.php" );
+
 
 /*=======================================================================================
  *	TEST DEFAULT EXCEPTIONS																*
@@ -262,6 +267,9 @@ try
 	echo( '<i>CDataType::SerialiseObject( $test );</i>' );
 	CDataType::SerialiseObject( $test );
 	echo( 'After:<pre>' ); print_r( $test ); echo( '</pre>' );
+	echo( '<i>CMongoContainer::UnserialiseObject( $test );</i><br>' );
+	CMongoContainer::UnserialiseObject( $test );
+	echo( 'Back:<pre>' ); print_r( $test ); echo( '</pre>' );
 	echo( '<hr>' );
 	
 	echo( '<i>Test CDataType::SerialiseElement()</i><br>' );

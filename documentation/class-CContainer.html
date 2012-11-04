@@ -7,7 +7,7 @@
 	<title>Class CContainer | MyWrapper Reference Documentation</title>
 
 	<script type="text/javascript" src="resources/combined.js?368249000"></script>
-	<script type="text/javascript" src="elementlist.js?262947992"></script>
+	<script type="text/javascript" src="elementlist.js?133380740"></script>
 	<link rel="stylesheet" type="text/css" media="all" href="resources/style.css?3505392360" />
 
 </head>
@@ -214,7 +214,7 @@ implement specific storage actions.</p>
 				<b>Author:</b>
 				Milko A. Škofič &lt;<a
 href="mailto:m.skofic&#64;cgiar.org">m.skofic&#64;<!---->cgiar.org</a>&gt;<br />
-		<b>Located at</b> <a href="source-class-CContainer.html#57-462" title="Go to source code">CContainer.php</a><br />
+		<b>Located at</b> <a href="source-class-CContainer.html#57-671" title="Go to source code">CContainer.php</a><br />
 	</div>
 
 
@@ -761,6 +761,154 @@ values according to the native container data types.</p>
 				</div>
 
 
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="UnserialiseObject" id="_UnserialiseObject">
+
+		<td class="attributes"><code>
+			 public static
+			
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_UnserialiseObject">#</a>
+		<code><a href="source-class-CContainer.html#474-628" title="Go to source code">UnserialiseObject</a>( <span>reference <var>&amp; $theObject</var></span> )</code>
+
+		<div class="description short">
+			
+<p>Unserialise provided object.</p>
+
+		</div>
+
+		<div class="description detailed hidden">
+			
+<p>Unserialise provided object.</p>
+
+<p>This method will convert concrete derived instances of <code><a href="class-CDataType.html">CDataType</a></code> or
+equivalent structures into native data types suitable to be stored in
+containers.</p>
+
+<p>This method will scan the provided object or structure and pass all instances
+derived from <code><a href="class-CDataType.html">CDataType</a></code> to another public <code><a href="class-CContainer.html#_UnserialiseData">CContainer::UnserialiseData()</a></code>
+method that will convert these objects into native data types that are
+compatible with the specific container type.</p>
+
+<p>The method will scan the provided structure and select all elements which are
+arrays, ArrayObjects or objects derived from <code><a href="class-CDataType.html">CDataType</a></code>, these elements
+will be sent to the <code><a href="class-CContainer.html#_UnserialiseData">CContainer::UnserialiseData()</a></code> method that will take care of
+converting these structures into native data types that are compatible with the
+specific container type.</p>
+
+<p>The method will perform the conversion directly into the provided reference
+and will use recursion to traverse the provided structures.</p>
+
+<p>Elements sent to the <code><a href="class-CContainer.html#_UnserialiseData">CContainer::UnserialiseData()</a></code> method are selected as
+follows:</p>
+
+<ul>
+	<li><tt><code><a href="class-CDataType.html">CDataType</a></code></tt>: All instances derived from this class are sent
+	to the <code><a href="class-CContainer.html#_UnserialiseData">CContainer::UnserialiseData()</a></code> method.</li>
+
+	<li><tt>Array</tt> or <tt>ArrayObject</tt>: If the structure is composed of
+	exactly two offsets and these elements are kTAG_CUSTOM_TYPE and kTAG_CUSTOM_DATA, it will be sent to the <code><a href="class-CContainer.html#_UnserialiseData">CContainer::UnserialiseData()</a></code> method. If
+	the above condition is not satisfied, the structure will be sent recursively to
+	this method.</li>
+</ul>
+
+
+
+				<h4>Parameters</h4>
+				<div class="list"><dl>
+					<dt><var>$theObject</var></dt>
+					<dd><code>reference</code><br>&amp;$theObject Object to encode.</dd>
+				</dl></div>
+
+
+
+				<h4>See</h4>
+				<div class="list">
+						kTAG_CUSTOM_TYPE kTAG_CUSTOM_DATA<br />
+				</div>
+				<h4>Uses</h4>
+				<div class="list">
+						<code><code><a href="class-CContainer.html#_UnserialiseData">CContainer::UnserialiseData()</a></code></code> <br />
+				</div>
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="UnserialiseData" id="_UnserialiseData">
+
+		<td class="attributes"><code>
+			abstract public static
+			
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_UnserialiseData">#</a>
+		<code><a href="source-class-CContainer.html#635-667" title="Go to source code">UnserialiseData</a>( <span>reference <var>&amp; $theElement</var></span> )</code>
+
+		<div class="description short">
+			
+<p>Unserialise provided data element.</p>
+
+		</div>
+
+		<div class="description detailed hidden">
+			
+<p>Unserialise provided data element.</p>
+
+<p>This method should convert the provided structure into a custom data type
+compatible with the current container.</p>
+
+<p>This method is called by a public <code><a href="class-CContainer.html#_UnserialiseObject">CContainer::UnserialiseObject()</a></code> interface which
+traverses an object and provides this method with all elements that satisfy the
+following conditions:</p>
+
+<ul>
+	<li><tt><code><a href="class-CDataType.html">CDataType</a></code></tt>: All instances derived from this class are sent
+	to this method.</li>
+
+	<li><tt>Array</tt> or <tt>ArrayObject</tt>: If the structure is composed of
+	exactly two offsets and these elements are kTAG_CUSTOM_TYPE and kTAG_CUSTOM_DATA, it will be sent to this method.</li>
+</ul>
+
+<p>Derived concrete classes will implement this method to intercept all
+structures that can be converted to a native data type compatible with the
+current container.</p>
+
+<p>The elements to be converted are provided by reference, which means that they
+have to be converted in place.</p>
+
+<p>This class is abstract, so we force derived classes to implement this
+method.</p>
+
+
+
+				<h4>Parameters</h4>
+				<div class="list"><dl>
+					<dt><var>$theElement</var></dt>
+					<dd><code>reference</code><br>&amp;$theElement Element to encode.</dd>
+				</dl></div>
+
+
+
+				<h4>See</h4>
+				<div class="list">
+						kTAG_CUSTOM_TYPE kTAG_CUSTOM_DATA<br />
+				</div>
+				<h4>Used by</h4>
+				<div class="list">
+						<code><code><a href="class-CContainer.html#_UnserialiseObject">CContainer::UnserialiseObject()</a></code></code> <br />
+				</div>
 
 
 		</div>
