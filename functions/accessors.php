@@ -507,6 +507,187 @@ require_once( kPATH_MYWRAPPER_LIBRARY_DEFINE."/Errors.inc.php" );
 
 	 
 	/*===================================================================================
+	 *	ManageIndexedOffset																*
+	 *==================================================================================*/
+
+	/**
+	 * Manage an indexed offset.
+	 *
+	 * Indexed offsets are constituted by a list of elements whose key is the discriminant,
+	 * no two element may share the same key.
+	 *
+	 * The method accepts the following parameters:
+	 *
+	 * <ul>
+	 *	<li><tt>&$theReference</tt>: Reference to the main container, it may either refer to
+	 *		an array or an ArrayObject, any other type will trigger an exception.
+	 *	<li><tt>$theOffset</tt>: The offset to the attribute containing the list of
+	 *		elements.
+	 *	<li><tt>$theIndex</tt>: The element index.
+	 *	<li><tt>$theValue</tt>: The value or operation:
+	 *	 <ul>
+	 *		<li><tt>NULL</tt>: Return the the value at the provided index.
+	 *		<li><tt>FALSE</tt>: Delete the value at the provided index.
+	 *		<li><i>other</i>: Any other type will replace or set the value at the provided
+	 *			index.
+	 *	 </ul>
+	 *	<li><tt>$getOld</tt>: Determines what the method will return:
+	 *	 <ul>
+	 *		<li><tt>TRUE</tt>: Return the value of the offset <i>before</i> it was eventually
+	 *			modified.
+	 *		<li><tt>FALSE</tt>: Return the value of the offset <i>after</i> it was eventually
+	 *			modified.
+	 *	 </ul>
+	 * </ul>
+	 *
+	 * The method expects each element to be a structure containing at least an element
+	 * indexed by the <tt>$theDataOffset</tt> offset, if that is not the case, the method
+	 * will raise an exception.
+	 *
+	 * @param reference			   &$theReference		Array or ArrayObject reference.
+	 * @param string				$theOffset			Offset to be managed.
+	 * @param string				$theIndex			Item index.
+	 * @param mixed					$theValue			New value or operation.
+	 * @param boolean				$getOld				TRUE get old value.
+	 *
+	 * @static
+	 * @return mixed
+	 *
+	 * @throws Exception
+	 */
+	function ManageIndexedOffset( &$theReference,
+								   $theOffset, $theIndex,
+								   $theValue = NULL, $getOld = FALSE )
+	{
+		//
+		// Check list container.
+		//
+		if( is_array( $theReference )
+		 || ($theReference instanceof ArrayObject) )
+		{
+			//
+			// Normalise offset.
+			//
+			$theOffset = (string) $theOffset;
+			
+			//
+			// Check offset.
+			//
+			if( ( is_array( $theReference )
+			   && array_key_exists( $theOffset, $theReference ) )
+			 || ( ($theReference instanceof ArrayObject)
+			   && $theReference->offsetExists( $theOffset ) ) )
+			{
+				//
+				// Check list.
+				//
+				if( is_array( $theReference[ $theOffset ] )
+				 || ($theReference[ $theOffset ] instanceof ArrayObject) )
+				{
+					//
+					// Save value.
+					//
+					$save = ( ( is_array( $theReference[ $theOffset ] )
+							 && array_key_exists( $theIndex, $theReference[ $theOffset ] ) )
+						   || ( ($theReference[ $theOffset ] instanceof ArrayObject)
+							 && $theReference[ $theOffset ]->offsetExists( $theIndex ) ) )
+						  ? $theReference[ $theOffset ][ $theIndex ]
+						  : NULL;
+					
+					//
+					// Handle retrieve.
+					//
+					if( $theValue === NULL )
+						return $save;												// ==>
+					
+					//
+					// Handle delete.
+					//
+					if( $theValue === FALSE )
+					{
+						//
+						// Handle existing value.
+						//
+						if( $save !== NULL )
+						{
+							//
+							// Delete item.
+							//
+							if( is_array( $theReference[ $theOffset ] ) )
+								unset( $theReference[ $theOffset ][ $theIndex ] );
+							else
+								$theReference[ $theOffset ]->offsetUnset( $theIndex );
+							
+							//
+							// Delete list.
+							//
+							if( ! count( $theReference[ $theOffset ] ) )
+							{
+								//
+								// Delete list.
+								//
+								if( is_array( $theReference ) )
+									unset( $theReference[ $theOffset ] );
+								else
+									offsetUnset( $theOffset, $theReference );
+							
+							} // No elements left.
+						
+						} // Has value.
+						
+						if( $getOld )
+							return $save;											// ==>
+						
+						return NULL;												// ==>
+					
+					} // Delete.
+					
+					//
+					// Set new element.
+					//
+					$theReference[ $theOffset ][ $theIndex ] = $theValue;
+					
+					if( $getOld )
+						return $save;												// ==>
+					
+					return theValue;												// ==>
+					
+				} // Element is list.
+				
+				else
+					throw new Exception
+							( "Unsupported list type",
+							  kERROR_UNSUPPORTED );								// !@! ==>
+			
+			} // List exists.
+			
+			//
+			// Handle retrieve or delete.
+			//
+			if( ($theValue === NULL)
+			 || ($theValue === FALSE) )
+				return NULL;														// ==>
+			
+			//
+			// Create list.
+			//
+			$theReference[ $theOffset ] = array( $theIndex => $theValue );
+			
+			if( $getOld )
+				return NULL;														// ==>
+			
+			return theValue;														// ==>
+		
+		} // Supported list container.
+
+		throw new Exception
+				( "Unsupported list container type",
+				  kERROR_UNSUPPORTED );											// !@! ==>
+	
+	} // ManageIndexedOffset.
+
+	 
+	/*===================================================================================
 	 *	ManageObjectSetOffset															*
 	 *==================================================================================*/
 
