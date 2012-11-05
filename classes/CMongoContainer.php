@@ -1128,7 +1128,7 @@ class CMongoContainer extends CContainer
 
 /*=======================================================================================
  *																						*
- *								PUBLIC CONVERSION INTERFACE								*
+ *								STATIC CONVERSION INTERFACE								*
  *																						*
  *======================================================================================*/
 
@@ -1178,11 +1178,16 @@ class CMongoContainer extends CContainer
 	 * The elements to be converted are provided by reference, which means that they have to
 	 * be converted in place.
 	 *
+	 * This method can also be used in a different way: you can ask the method to convert
+	 * the provided scalar to the corresponding Mongo custom type, for this you need to
+	 * provide a scalar in the first parameter and a data type in the second.
+	 *
 	 * @param reference			   &$theElement			Element to encode.
+	 * @param string				$theType			Data type.
 	 *
 	 * @static
 	 */
-	static function UnserialiseData( &$theElement )
+	static function UnserialiseData( &$theElement, $theType = NULL )
 	{
 		//
 		// Check type.
@@ -1267,6 +1272,50 @@ class CMongoContainer extends CContainer
 			} // Parsing by type.
 		
 		} // Element is a structure.
+		
+		//
+		// Handle scalar conversion.
+		//
+		elseif( $theType !== NULL )
+		{
+			//
+			// Parse by type.
+			//
+			switch( $theType )
+			{
+				case kTYPE_INT32:
+					if( ! ($theElement instanceof MongoInt32) )
+						$theElement = new MongoInt32( (string) $theElement );
+					break;
+					
+				case kTYPE_INT64:
+					if( ! ($theElement instanceof MongoInt64) )
+						$theElement = new MongoInt64( (string) $theElement );
+					break;
+					
+				case kTYPE_BINARY:
+					if( ! ($theElement instanceof MongoBinData) )
+						$theElement = new MongoBinData( (string) $theElement );
+					break;
+					
+				case kTYPE_STAMP:
+					if( ! ($theElement instanceof MongoDate) )
+					{
+						if( is_array( $theElement ) )
+							$theElement
+								= new MongoDate( array_shift( $theElement ),
+												 ( ( count( $theElement ) )
+												 ? array_shift( $theElement )
+												 : 0 ) );
+						elseif( is_integer( $theElement ) )
+							$theElement = new MongoDate( $theElement, 0 );
+						else
+							$theElement = new MongoDate( strtotime( $theElement ) );
+					}
+					break;
+			}
+		
+		} // Provided scalar and data type.
 	
 	} // UnserialiseData.
 

@@ -351,7 +351,7 @@ class CMongoQuery extends CQuery
 				switch( $theStatement[ kOFFSET_QUERY_OPERATOR ] )
 				{
 					case kOPERATOR_EQUAL:
-						$data = $theContainer->ConvertValue( $type, $data );
+						$theContainer->UnserialiseData( $data, $type );
 						switch( $theCondition )
 						{
 							case kOPERATOR_AND:
@@ -369,7 +369,7 @@ class CMongoQuery extends CQuery
 						break;
 						
 					case kOPERATOR_EQUAL_NOT:
-						$data = $theContainer->ConvertValue( $type, $data );
+						$theContainer->UnserialiseData( $data, $type );
 						switch( $theCondition )
 						{
 							case kOPERATOR_AND:
@@ -487,7 +487,7 @@ class CMongoQuery extends CQuery
 						break;
 						
 					case kOPERATOR_LESS:
-						$data = $theContainer->ConvertValue( $type, $data );
+						$theContainer->UnserialiseData( $data, $type );
 						switch( $theCondition )
 						{
 							case kOPERATOR_AND:
@@ -505,7 +505,7 @@ class CMongoQuery extends CQuery
 						break;
 						
 					case kOPERATOR_LESS_EQUAL:
-						$data = $theContainer->ConvertValue( $type, $data );
+						$theContainer->UnserialiseData( $data, $type );
 						switch( $theCondition )
 						{
 							case kOPERATOR_AND:
@@ -523,7 +523,7 @@ class CMongoQuery extends CQuery
 						break;
 						
 					case kOPERATOR_GREAT:
-						$data = $theContainer->ConvertValue( $type, $data );
+						$theContainer->UnserialiseData( $data, $type );
 						switch( $theCondition )
 						{
 							case kOPERATOR_AND:
@@ -541,7 +541,7 @@ class CMongoQuery extends CQuery
 						break;
 						
 					case kOPERATOR_GREAT_EQUAL:
-						$data = $theContainer->ConvertValue( $type, $data );
+						$theContainer->UnserialiseData( $data, $type );
 						switch( $theCondition )
 						{
 							case kOPERATOR_AND:
@@ -646,7 +646,7 @@ class CMongoQuery extends CQuery
 						$list = Array();
 						foreach( $data as $element )
 						{
-							$element = $theContainer->ConvertValue( $type, $element );
+							$theContainer->UnserialiseData( $element, $type );
 							$list[] = $element;
 						}
 						switch( $theCondition )
@@ -669,7 +669,7 @@ class CMongoQuery extends CQuery
 						$list = Array();
 						foreach( $data as $element )
 						{
-							$element = $theContainer->ConvertValue( $type, $element );
+							$theContainer->UnserialiseData( $element, $type );
 							$list[] = $element;
 						}
 						switch( $theCondition )
@@ -692,7 +692,7 @@ class CMongoQuery extends CQuery
 						$list = Array();
 						foreach( $data as $element )
 						{
-							$element = $theContainer->ConvertValue( $type, $element );
+							$theContainer->UnserialiseData( $element, $type );
 							$list[] = $element;
 						}
 						switch( $theCondition )
@@ -799,7 +799,10 @@ class CMongoQuery extends CQuery
 		// Convert range elements.
 		//
 		foreach( $list as $key => $value )
-			$list[ $key ] = $theContainer->ConvertValue( $theType, $value );
+		{
+			$theContainer->UnserialiseData( $value );
+			$list[ $key ] = $value;
+		}
 	
 		//
 		// Parse by data type.

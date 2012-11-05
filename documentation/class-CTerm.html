@@ -233,7 +233,7 @@ offsets:</p>
 				<b>Author:</b>
 				Milko A. Škofič &lt;<a
 href="mailto:m.skofic&#64;cgiar.org">m.skofic&#64;<!---->cgiar.org</a>&gt;<br />
-		<b>Located at</b> <a href="source-class-CTerm.html#36-650" title="Go to source code">CTerm.php</a><br />
+		<b>Located at</b> <a href="source-class-CTerm.html#36-630" title="Go to source code">CTerm.php</a><br />
 	</div>
 
 
@@ -399,7 +399,7 @@ will be locked and an exception will be raised.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#_Label">#</a>
-		<code><a href="source-class-CTerm.html#177-228" title="Go to source code">Label</a>( <span>mixed <var>$theLanguage</var> = <span class="php-keyword1">NULL</span></span>, <span>mixed <var>$theValue</var> = <span class="php-keyword1">NULL</span></span>, <span>boolean <var>$getOld</var> = <span class="php-keyword1">FALSE</span> </span> )</code>
+		<code><a href="source-class-CTerm.html#177-219" title="Go to source code">Label</a>( <span>mixed <var>$theLanguage</var></span>, <span>mixed <var>$theValue</var> = <span class="php-keyword1">NULL</span></span>, <span>boolean <var>$getOld</var> = <span class="php-keyword1">FALSE</span> </span> )</code>
 
 		<div class="description short">
 			
@@ -413,24 +413,15 @@ will be locked and an exception will be raised.</p>
 
 <p>The term <i>label</i>, kTAG_LABEL, represents the term's name or
 short human readable description. It is an optional attribute of the object that
-holds an array of elements structured as follows:</p>
+holds an array of elements in which the index is represented by the language
+code and the value is the string.</p>
 
-<ul>
-	<li>kTAG_LABEL_STRING: This item holds the label string, the item is
-	required.</li>
-
-	<li>kTAG_LABEL_LANGUAGE: This item holds the three character ISO 639
-	language code of the string, this element is optional.</li>
-</ul>
-
-<p>No two elements may share the same language code and only one element may
-omit the language code.</p>
+<p>No two elements may share the same language code.</p>
 
 <p>The method accepts the following parameters:</p>
 
 <ul>
-	<li><tt>$theLanguage</tt>: Language code, <tt>NULL</tt> refers to the element
-	lacking the language code.</li>
+	<li><tt>$theLanguage</tt>: Language code.</li>
 
 	<li><tt>$theValue</tt>: The label string or the operation, depending on its
 	value:
@@ -471,11 +462,11 @@ omit the language code.</p>
 
 				<h4>See</h4>
 				<div class="list">
-						kTAG_LABEL kTAG_LABEL_LANGUAGE kTAG_LABEL_STRING<br />
+						kTAG_LABEL<br />
 				</div>
 				<h4>Uses</h4>
 				<div class="list">
-						<code><code><a href="function-ManageTypedOffset.html">ManageTypedOffset()</a></code></code> <br />
+						<code><code><a href="function-ManageIndexedOffset.html">ManageIndexedOffset()</a></code></code> <br />
 				</div>
 
 
@@ -493,7 +484,7 @@ omit the language code.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#_Description">#</a>
-		<code><a href="source-class-CTerm.html#235-289" title="Go to source code">Description</a>( <span>mixed <var>$theLanguage</var> = <span class="php-keyword1">NULL</span></span>, <span>mixed <var>$theValue</var> = <span class="php-keyword1">NULL</span></span>, <span>boolean <var>$getOld</var> = <span class="php-keyword1">FALSE</span> </span> )</code>
+		<code><a href="source-class-CTerm.html#226-269" title="Go to source code">Description</a>( <span>mixed <var>$theLanguage</var></span>, <span>mixed <var>$theValue</var> = <span class="php-keyword1">NULL</span></span>, <span>boolean <var>$getOld</var> = <span class="php-keyword1">FALSE</span> </span> )</code>
 
 		<div class="description short">
 			
@@ -507,24 +498,15 @@ omit the language code.</p>
 
 <p>The term <i>description</i>, kTAG_DESCRIPTION, represents the term's
 definition or human readable description. It is an optional attribute of the
-object that holds an array of elements structured as follows:</p>
+object that holds an array of elements in which the index is represented by the
+language code and the value is the string.</p>
 
-<ul>
-	<li>kTAG_DESCRIPTION_STRING: This item holds the description string, the
-	item is required.</li>
-
-	<li>kTAG_DESCRIPTION_LANGUAGE: This item holds the three character ISO
-	639 language code of the string, this element is optional.</li>
-</ul>
-
-<p>No two elements may share the same language code and only one element may
-omit the language code.</p>
+<p>No two elements may share the same language code.</p>
 
 <p>The method accepts the following parameters:</p>
 
 <ul>
-	<li><tt>$theLanguage</tt>: Language code, <tt>NULL</tt> refers to the element
-	lacking the language code.</li>
+	<li><tt>$theLanguage</tt>: Language code.</li>
 
 	<li><tt>$theValue</tt>: The description string or the operation, depending on
 	its value:
@@ -565,11 +547,11 @@ omit the language code.</p>
 
 				<h4>See</h4>
 				<div class="list">
-						kTAG_DESCRIPTION kTAG_DESCRIPTION_LANGUAGE kTAG_DESCRIPTION_STRING<br />
+						kTAG_DESCRIPTION<br />
 				</div>
 				<h4>Uses</h4>
 				<div class="list">
-						<code><code><a href="function-ManageTypedOffset.html">ManageTypedOffset()</a></code></code> <br />
+						<code><code><a href="function-ManageIndexedOffset.html">ManageIndexedOffset()</a></code></code> <br />
 				</div>
 
 
@@ -587,7 +569,7 @@ omit the language code.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#_Synonym">#</a>
-		<code><a href="source-class-CTerm.html#296-358" title="Go to source code">Synonym</a>( <span>mixed <var>$theValue</var> = <span class="php-keyword1">NULL</span></span>, <span>mixed <var>$theOperation</var> = <span class="php-keyword1">NULL</span></span>, <span>boolean <var>$getOld</var> = <span class="php-keyword1">FALSE</span> </span> )</code>
+		<code><a href="source-class-CTerm.html#276-338" title="Go to source code">Synonym</a>( <span>mixed <var>$theValue</var> = <span class="php-keyword1">NULL</span></span>, <span>mixed <var>$theOperation</var> = <span class="php-keyword1">NULL</span></span>, <span>boolean <var>$getOld</var> = <span class="php-keyword1">FALSE</span> </span> )</code>
 
 		<div class="description short">
 			
@@ -696,7 +678,7 @@ managed with the following parameters:</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#_Term">#</a>
-		<code><a href="source-class-CTerm.html#365-402" title="Go to source code">Term</a>( <span>mixed <var>$theValue</var> = <span class="php-keyword1">NULL</span></span>, <span>boolean <var>$getOld</var> = <span class="php-keyword1">FALSE</span> </span> )</code>
+		<code><a href="source-class-CTerm.html#345-382" title="Go to source code">Term</a>( <span>mixed <var>$theValue</var> = <span class="php-keyword1">NULL</span></span>, <span>boolean <var>$getOld</var> = <span class="php-keyword1">FALSE</span> </span> )</code>
 
 		<div class="description short">
 			
@@ -772,7 +754,7 @@ the currently set value.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#_TermCode">#</a>
-		<code><a href="source-class-CTerm.html#418-444" title="Go to source code">TermCode</a>( <span>string <var>$theIdentifier</var></span>, <span>string <var>$theNamespace</var> = <span class="php-keyword1">NULL</span> </span> )</code>
+		<code><a href="source-class-CTerm.html#398-424" title="Go to source code">TermCode</a>( <span>string <var>$theIdentifier</var></span>, <span>string <var>$theNamespace</var> = <span class="php-keyword1">NULL</span> </span> )</code>
 
 		<div class="description short">
 			
@@ -824,7 +806,7 @@ the method will generate the term's global identifier.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#__index">#</a>
-		<code><a href="source-class-CTerm.html#460-495" title="Go to source code">_index</a>( <span><code><a href="class-CConnection.html">CConnection</a></code> <var>$theConnection</var></span>, <span>bitfield <var>$theModifiers</var></span> )</code>
+		<code><a href="source-class-CTerm.html#440-475" title="Go to source code">_index</a>( <span><code><a href="class-CConnection.html">CConnection</a></code> <var>$theConnection</var></span>, <span>bitfield <var>$theModifiers</var></span> )</code>
 
 		<div class="description short">
 			
@@ -883,7 +865,7 @@ compute the global identifier.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#__Preset">#</a>
-		<code><a href="source-class-CTerm.html#511-562" title="Go to source code">_Preset</a>( <span>reference <var>&amp; $theOffset</var></span>, <span>reference <var>&amp; $theValue</var></span> )</code>
+		<code><a href="source-class-CTerm.html#491-542" title="Go to source code">_Preset</a>( <span>reference <var>&amp; $theOffset</var></span>, <span>reference <var>&amp; $theValue</var></span> )</code>
 
 		<div class="description short">
 			
@@ -944,7 +926,7 @@ committed, <code><a href="class-CStatusDocument.html#__IsCommitted">CStatusDocum
 
 		<td class="name"><div>
 		<a class="anchor" href="#__Preunset">#</a>
-		<code><a href="source-class-CTerm.html#569-607" title="Go to source code">_Preunset</a>( <span>reference <var>&amp; $theOffset</var></span> )</code>
+		<code><a href="source-class-CTerm.html#549-587" title="Go to source code">_Preunset</a>( <span>reference <var>&amp; $theOffset</var></span> )</code>
 
 		<div class="description short">
 			
@@ -1003,7 +985,7 @@ committed, <code><a href="class-CStatusDocument.html#__IsCommitted">CStatusDocum
 
 		<td class="name"><div>
 		<a class="anchor" href="#__Ready">#</a>
-		<code><a href="source-class-CTerm.html#623-646" title="Go to source code">_Ready</a>( )</code>
+		<code><a href="source-class-CTerm.html#603-626" title="Go to source code">_Ready</a>( )</code>
 
 		<div class="description short">
 			

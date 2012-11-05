@@ -109,14 +109,6 @@ web-service that uses a MongoDB data store to manage objects.</p>
 <ul>
 	<li><i>kAPI_OP_GET_ONE</i>: This operation is equivalent to the kAPI_OP_GET operation, except that it will only return the first found element.
 	It is equivalent to the Mongo findOne() method.</li>
-
-	<li><i>kAPI_OP_GET_OBJECT_REF</i>: This operation will return an object
-	referenced by an identifier provided in the kAPI_OBJECT parameter. It is
-	equivalent to the kAPI_OP_GET_ONE operation, except that instead of
-	using the query provided in the kAPI_QUERY parameter, it will try to
-	extract an identifier from the object provided in the kAPI_OBJECT
-	parameter. Remember to <code><a href="class-CDataType.html#_SerialiseObject">CDataType::SerialiseObject()</a></code> the reference before
-	providing it to the wrapper.</li>
 </ul>
 
 <p>This class also implements a static interface that can be used to unserialise
@@ -193,7 +185,7 @@ data flowing to and from the service parameters and the Mongo container.</p>
 				<b>Author:</b>
 				Milko A. Škofič &lt;<a
 href="mailto:m.skofic&#64;cgiar.org">m.skofic&#64;<!---->cgiar.org</a>&gt;<br />
-		<b>Located at</b> <a href="source-class-CMongoDataWrapper.html#44-1999" title="Go to source code">CMongoDataWrapper.php</a><br />
+		<b>Located at</b> <a href="source-class-CMongoDataWrapper.html#44-1814" title="Go to source code">CMongoDataWrapper.php</a><br />
 	</div>
 
 
@@ -211,7 +203,7 @@ href="mailto:m.skofic&#64;cgiar.org">m.skofic&#64;<!---->cgiar.org</a>&gt;<br />
 
 		<td class="name"><div>
 		<a class="anchor" href="#__InitResources">#</a>
-		<code><a href="source-class-CMongoDataWrapper.html#88-108" title="Go to source code">_InitResources</a>( )</code>
+		<code><a href="source-class-CMongoDataWrapper.html#81-101" title="Go to source code">_InitResources</a>( )</code>
 
 		<div class="description short">
 			
@@ -250,7 +242,7 @@ the method will raise an exception.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#__ParseRequest">#</a>
-		<code><a href="source-class-CMongoDataWrapper.html#124-145" title="Go to source code">_ParseRequest</a>( )</code>
+		<code><a href="source-class-CMongoDataWrapper.html#117-138" title="Go to source code">_ParseRequest</a>( )</code>
 
 		<div class="description short">
 			
@@ -291,7 +283,7 @@ the method will raise an exception.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#__FormatRequest">#</a>
-		<code><a href="source-class-CMongoDataWrapper.html#152-174" title="Go to source code">_FormatRequest</a>( )</code>
+		<code><a href="source-class-CMongoDataWrapper.html#145-167" title="Go to source code">_FormatRequest</a>( )</code>
 
 		<div class="description short">
 			
@@ -331,7 +323,7 @@ handled.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#__ValidateRequest">#</a>
-		<code><a href="source-class-CMongoDataWrapper.html#181-205" title="Go to source code">_ValidateRequest</a>( )</code>
+		<code><a href="source-class-CMongoDataWrapper.html#174-198" title="Go to source code">_ValidateRequest</a>( )</code>
 
 		<div class="description short">
 			
@@ -372,7 +364,7 @@ the kTAG_REFERENCE_ID identifier when executing tree functions.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#__ParseNoResponse">#</a>
-		<code><a href="source-class-CMongoDataWrapper.html#221-242" title="Go to source code">_ParseNoResponse</a>( )</code>
+		<code><a href="source-class-CMongoDataWrapper.html#214-235" title="Go to source code">_ParseNoResponse</a>( )</code>
 
 		<div class="description short">
 			
@@ -415,7 +407,7 @@ the kTAG_REFERENCE_ID identifier when executing tree functions.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#__FormatDatabase">#</a>
-		<code><a href="source-class-CMongoDataWrapper.html#258-279" title="Go to source code">_FormatDatabase</a>( )</code>
+		<code><a href="source-class-CMongoDataWrapper.html#251-272" title="Go to source code">_FormatDatabase</a>( )</code>
 
 		<div class="description short">
 			
@@ -456,7 +448,7 @@ the kTAG_REFERENCE_ID identifier when executing tree functions.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#__FormatContainer">#</a>
-		<code><a href="source-class-CMongoDataWrapper.html#286-314" title="Go to source code">_FormatContainer</a>( )</code>
+		<code><a href="source-class-CMongoDataWrapper.html#279-307" title="Go to source code">_FormatContainer</a>( )</code>
 
 		<div class="description short">
 			
@@ -498,7 +490,7 @@ object.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#__FormatQuery">#</a>
-		<code><a href="source-class-CMongoDataWrapper.html#321-370" title="Go to source code">_FormatQuery</a>( )</code>
+		<code><a href="source-class-CMongoDataWrapper.html#314-363" title="Go to source code">_FormatQuery</a>( )</code>
 
 		<div class="description short">
 			
@@ -537,7 +529,7 @@ object.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#__FormatObject">#</a>
-		<code><a href="source-class-CMongoDataWrapper.html#377-516" title="Go to source code">_FormatObject</a>( )</code>
+		<code><a href="source-class-CMongoDataWrapper.html#370-432" title="Go to source code">_FormatObject</a>( )</code>
 
 		<div class="description short">
 			
@@ -576,7 +568,7 @@ object.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#__ValidateOperation">#</a>
-		<code><a href="source-class-CMongoDataWrapper.html#532-605" title="Go to source code">_ValidateOperation</a>( )</code>
+		<code><a href="source-class-CMongoDataWrapper.html#448-509" title="Go to source code">_ValidateOperation</a>( )</code>
 
 		<div class="description short">
 			
@@ -618,7 +610,7 @@ we compile the query with that value.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#__ValidateObject">#</a>
-		<code><a href="source-class-CMongoDataWrapper.html#612-640" title="Go to source code">_ValidateObject</a>( )</code>
+		<code><a href="source-class-CMongoDataWrapper.html#516-528" title="Go to source code">_ValidateObject</a>( )</code>
 
 		<div class="description short">
 			
@@ -655,7 +647,7 @@ functions.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#__ValidateQuery">#</a>
-		<code><a href="source-class-CMongoDataWrapper.html#647-740" title="Go to source code">_ValidateQuery</a>( )</code>
+		<code><a href="source-class-CMongoDataWrapper.html#535-628" title="Go to source code">_ValidateQuery</a>( )</code>
 
 		<div class="description short">
 			
@@ -693,7 +685,7 @@ query parameter is valid.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#__HandleRequest">#</a>
-		<code><a href="source-class-CMongoDataWrapper.html#756-819" title="Go to source code">_HandleRequest</a>( )</code>
+		<code><a href="source-class-CMongoDataWrapper.html#644-703" title="Go to source code">_HandleRequest</a>( )</code>
 
 		<div class="description short">
 			
@@ -730,7 +722,7 @@ query parameter is valid.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#__Handle_ListOp">#</a>
-		<code><a href="source-class-CMongoDataWrapper.html#826-868" title="Go to source code">_Handle_ListOp</a>( <span>reference <var>&amp; $theList</var></span> )</code>
+		<code><a href="source-class-CMongoDataWrapper.html#710-736" title="Go to source code">_Handle_ListOp</a>( <span>reference <var>&amp; $theList</var></span> )</code>
 
 		<div class="description short">
 			
@@ -762,43 +754,6 @@ should return the list of supported operations.</p>
 		</div>
 		</div></td>
 	</tr>
-	<tr data-order="_Handle_GetObjectByReference" id="__Handle_GetObjectByReference">
-
-		<td class="attributes"><code>
-			 protected 
-			
-			
-			</code>
-		</td>
-
-		<td class="name"><div>
-		<a class="anchor" href="#__Handle_GetObjectByReference">#</a>
-		<code><a href="source-class-CMongoDataWrapper.html#875-913" title="Go to source code">_Handle_GetObjectByReference</a>( )</code>
-
-		<div class="description short">
-			
-<p>Handle kAPI_OP_GET_OBJECT_REF GetObjectByReference request.</p>
-
-		</div>
-
-		<div class="description detailed hidden">
-			
-<p>Handle kAPI_OP_GET_OBJECT_REF GetObjectByReference request.</p>
-
-<p>This method will handle the kAPI_OP_GET_OBJECT_REF
-kAPI_OP_GET_OBJECT_REF request, which returns an object corresponding to the
-object CMongoObjectReference reference provided in the kAPI_OBJECT object parameter.</p>
-
-
-
-
-
-
-
-
-		</div>
-		</div></td>
-	</tr>
 	<tr data-order="_Handle_Count" id="__Handle_Count">
 
 		<td class="attributes"><code>
@@ -810,7 +765,7 @@ object CMongoObjectReference reference provided in the kAPI_OBJECT object parame
 
 		<td class="name"><div>
 		<a class="anchor" href="#__Handle_Count">#</a>
-		<code><a href="source-class-CMongoDataWrapper.html#920-943" title="Go to source code">_Handle_Count</a>( )</code>
+		<code><a href="source-class-CMongoDataWrapper.html#743-766" title="Go to source code">_Handle_Count</a>( )</code>
 
 		<div class="description short">
 			
@@ -846,7 +801,7 @@ which returns the total count of a Mongo query.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#__Handle_GetOne">#</a>
-		<code><a href="source-class-CMongoDataWrapper.html#950-1017" title="Go to source code">_Handle_GetOne</a>( )</code>
+		<code><a href="source-class-CMongoDataWrapper.html#773-838" title="Go to source code">_Handle_GetOne</a>( )</code>
 
 		<div class="description short">
 			
@@ -882,7 +837,7 @@ which corresponds to the findOne Mongo query.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#__Handle_Get">#</a>
-		<code><a href="source-class-CMongoDataWrapper.html#1024-1181" title="Go to source code">_Handle_Get</a>( )</code>
+		<code><a href="source-class-CMongoDataWrapper.html#845-1002" title="Go to source code">_Handle_Get</a>( )</code>
 
 		<div class="description short">
 			
@@ -918,7 +873,7 @@ corresponds to the find Mongo query.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#__Handle_Match">#</a>
-		<code><a href="source-class-CMongoDataWrapper.html#1188-1340" title="Go to source code">_Handle_Match</a>( )</code>
+		<code><a href="source-class-CMongoDataWrapper.html#1009-1161" title="Go to source code">_Handle_Match</a>( )</code>
 
 		<div class="description short">
 			
@@ -954,7 +909,7 @@ corresponds to the find Mongo query.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#__Handle_Set">#</a>
-		<code><a href="source-class-CMongoDataWrapper.html#1347-1421" title="Go to source code">_Handle_Set</a>( )</code>
+		<code><a href="source-class-CMongoDataWrapper.html#1168-1242" title="Go to source code">_Handle_Set</a>( )</code>
 
 		<div class="description short">
 			
@@ -990,7 +945,7 @@ will insert/update the provided object.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#__Handle_Insert">#</a>
-		<code><a href="source-class-CMongoDataWrapper.html#1428-1503" title="Go to source code">_Handle_Insert</a>( )</code>
+		<code><a href="source-class-CMongoDataWrapper.html#1249-1324" title="Go to source code">_Handle_Insert</a>( )</code>
 
 		<div class="description short">
 			
@@ -1026,7 +981,7 @@ which will insert the provided object.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#__Handle_BatchInsert">#</a>
-		<code><a href="source-class-CMongoDataWrapper.html#1510-1585" title="Go to source code">_Handle_BatchInsert</a>( )</code>
+		<code><a href="source-class-CMongoDataWrapper.html#1331-1406" title="Go to source code">_Handle_BatchInsert</a>( )</code>
 
 		<div class="description short">
 			
@@ -1062,7 +1017,7 @@ request, which will insert the provided list of objects.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#__Handle_Update">#</a>
-		<code><a href="source-class-CMongoDataWrapper.html#1592-1728" title="Go to source code">_Handle_Update</a>( )</code>
+		<code><a href="source-class-CMongoDataWrapper.html#1413-1547" title="Go to source code">_Handle_Update</a>( )</code>
 
 		<div class="description short">
 			
@@ -1098,7 +1053,7 @@ which will update the provided object.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#__Handle_Modify">#</a>
-		<code><a href="source-class-CMongoDataWrapper.html#1735-1868" title="Go to source code">_Handle_Modify</a>( )</code>
+		<code><a href="source-class-CMongoDataWrapper.html#1554-1685" title="Go to source code">_Handle_Modify</a>( )</code>
 
 		<div class="description short">
 			
@@ -1138,7 +1093,7 @@ and all <i>NULL</i> values will be set in the <i>$unset</i> array and the non
 
 		<td class="name"><div>
 		<a class="anchor" href="#__Handle_Delete">#</a>
-		<code><a href="source-class-CMongoDataWrapper.html#1875-1966" title="Go to source code">_Handle_Delete</a>( )</code>
+		<code><a href="source-class-CMongoDataWrapper.html#1692-1781" title="Go to source code">_Handle_Delete</a>( )</code>
 
 		<div class="description short">
 			
@@ -1176,7 +1131,7 @@ whichwill delete all objects matching the provided filter.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#__HandleOptions">#</a>
-		<code><a href="source-class-CMongoDataWrapper.html#1982-1995" title="Go to source code">_HandleOptions</a>( <span>reference <var>&amp; $theResult</var></span>, <span>array <var>$theOptions</var></span> )</code>
+		<code><a href="source-class-CMongoDataWrapper.html#1797-1810" title="Go to source code">_HandleOptions</a>( <span>reference <var>&amp; $theResult</var></span>, <span>array <var>$theOptions</var></span> )</code>
 
 		<div class="description short">
 			

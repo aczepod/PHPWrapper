@@ -177,7 +177,7 @@
 				<b>Author:</b>
 				Milko A. Škofič &lt;<a
 href="mailto:m.skofic&#64;cgiar.org">m.skofic&#64;<!---->cgiar.org</a>&gt;<br />
-		<b>Located at</b> <a href="source-class-CMongoContainer.html#36-1260" title="Go to source code">CMongoContainer.php</a><br />
+		<b>Located at</b> <a href="source-class-CMongoContainer.html#36-1324" title="Go to source code">CMongoContainer.php</a><br />
 	</div>
 
 
@@ -748,8 +748,6 @@ for more information.</p>
 
 
 
-				<h4>Overrides</h4>
-				<div class="list"><code><a href="class-CContainer.html#_ConvertValue">CContainer::ConvertValue()</a></code></div>
 
 		</div>
 		</div></td>
@@ -765,7 +763,7 @@ for more information.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#_UnserialiseData">#</a>
-		<code><a href="source-class-CMongoContainer.html#1141-1256" title="Go to source code">UnserialiseData</a>( <span>reference <var>&amp; $theElement</var></span> )</code>
+		<code><a href="source-class-CMongoContainer.html#1141-1320" title="Go to source code">UnserialiseData</a>( <span>reference <var>&amp; $theElement</var></span>, <span>string <var>$theType</var> = <span class="php-keyword1">NULL</span> </span> )</code>
 
 		<div class="description short">
 			
@@ -777,8 +775,20 @@ for more information.</p>
 			
 <p>Unserialise provided data element.</p>
 
-<p>We implement this method to convert all standard <code><a href="class-CDataType.html">CDataType</a></code> instances
-into custom Mongo data types.</p>
+<p>This method should convert the provided structure into a custom data type
+compatible with the current container.</p>
+
+<p>This method is called by a public <code><a href="class-CContainer.html#_UnserialiseObject">CContainer::UnserialiseObject()</a></code> interface which
+traverses an object and provides this method with all elements that satisfy the
+following conditions:</p>
+
+<ul>
+	<li><tt><code><a href="class-CDataType.html">CDataType</a></code></tt>: All instances derived from this class are sent
+	to this method.</li>
+
+	<li><tt>Array</tt> or <tt>ArrayObject</tt>: If the structure is composed of
+	exactly two offsets and these elements are kTAG_CUSTOM_TYPE and kTAG_CUSTOM_DATA, it will be sent to this method.</li>
+</ul>
 
 <p>In this class we parse the following types and offsets:</p>
 
@@ -805,12 +815,22 @@ into custom Mongo data types.</p>
 	return a MongoBinData object.</li>
 </ul>
 
+<p>The elements to be converted are provided by reference, which means that they
+have to be converted in place.</p>
+
+<p>This method can also be used in a different way: you can ask the method to
+convert the provided scalar to the corresponding Mongo custom type, for this you
+need to provide a scalar in the first parameter and a data type in the
+second.</p>
+
 
 
 				<h4>Parameters</h4>
 				<div class="list"><dl>
 					<dt><var>$theElement</var></dt>
 					<dd><code>reference</code><br>&amp;$theElement Element to encode.</dd>
+					<dt><var>$theType</var></dt>
+					<dd><code>string</code><br>$theType Data type.</dd>
 				</dl></div>
 
 

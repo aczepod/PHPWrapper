@@ -1783,6 +1783,26 @@ class CQueryStatement extends CDocument
 				case 'integer':		$theType = kTYPE_INT32;				break;
 				case 'double':		$theType = kTYPE_FLOAT;				break;
 				case 'string':		$theType = kTYPE_STRING;			break;
+				
+				case 'object':
+					switch( get_class( $theValue ) )
+					{
+						case 'CDataTypeBinary':
+							$theType = kTYPE_BINARY;					break;
+						case 'CDataTypeInt32':
+							$theType = kTYPE_INT32;						break;
+						case 'CDataTypeInt64':
+							$theType = kTYPE_INT64;						break;
+						case 'CDataTypeMongoCode':
+							$theType = kTYPE_MongoCode;					break;
+						case 'CDataTypeMongoId':
+							$theType = kTYPE_MongoId;					break;
+						case 'CDataTypeRegex':
+							$theType = kTYPE_REGEX;						break;
+						case 'CDataTypeStamp':
+							$theType = kTYPE_STAMP;						break;
+					}
+					break;
 			
 			} // Checking value.
 		
@@ -1791,15 +1811,19 @@ class CQueryStatement extends CDocument
 		//
 		// Convert according to data type.
 		//
-		switch( $theType )
+		if( ! ($theValue instanceof CDataType) )
 		{
-			case kTYPE_INT32:
-			case kTYPE_INT64:		$theValue = (integer) $theValue;	break;
-			case kTYPE_FLOAT:		$theValue = (double) $theValue;		break;
-			case kTYPE_STRING:		$theValue = (string) $theValue;		break;
-			case kTYPE_BOOLEAN:		$theValue = (boolean) $theValue;	break;
+			switch( $theType )
+			{
+				case kTYPE_INT32:
+				case kTYPE_INT64:	$theValue = (integer) $theValue;	break;
+				case kTYPE_FLOAT:	$theValue = (double) $theValue;		break;
+				case kTYPE_STRING:	$theValue = (string) $theValue;		break;
+				case kTYPE_BOOLEAN:	$theValue = (boolean) $theValue;	break;
+			
+			} // Checking data value.
 		
-		} // Checking data value.
+		} // Not a standard data type object.
 	
 	} // HandleDataType.
 

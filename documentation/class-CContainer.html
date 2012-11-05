@@ -131,18 +131,6 @@ classes should implement.</p>
 the same way as a database table. The object holds a data member that represents
 a native container from a database.</p>
 
-<p>The public interface declares the following main operations:</p>
-
-<ul>
-	<li><code><a href="class-CContainer.html#_ManageObject">CContainer::ManageObject()</a></code>: This method will <i>insert</i>, <i>update</i>,
-	<i>modify</i>, <i>delete</i> and <i>load</i> an object from the current
-	container. This method operates one object at the time and it is mainly used by
-	persistent objects for persisting in containers.</li>
-
-	<li><code><a href="class-CContainer.html#_ConvertValue">CContainer::ConvertValue()</a></code>: This method will convert a PHP value to a container
-	native value.</li>
-</ul>
-
 <p>The class does not implement a concrete data store, derived classes must
 implement specific storage actions.</p>
 
@@ -214,7 +202,7 @@ implement specific storage actions.</p>
 				<b>Author:</b>
 				Milko A. Škofič &lt;<a
 href="mailto:m.skofic&#64;cgiar.org">m.skofic&#64;<!---->cgiar.org</a>&gt;<br />
-		<b>Located at</b> <a href="source-class-CContainer.html#57-671" title="Go to source code">CContainer.php</a><br />
+		<b>Located at</b> <a href="source-class-CContainer.html#57-589" title="Go to source code">CContainer.php</a><br />
 	</div>
 
 
@@ -232,7 +220,7 @@ href="mailto:m.skofic&#64;cgiar.org">m.skofic&#64;<!---->cgiar.org</a>&gt;<br />
 
 		<td class="name"><div>
 		<a class="anchor" href="#_Drop">#</a>
-		<code><a href="source-class-CContainer.html#100-107" title="Go to source code">Drop</a>( )</code>
+		<code><a href="source-class-CContainer.html#89-96" title="Go to source code">Drop</a>( )</code>
 
 		<div class="description short">
 			
@@ -267,7 +255,7 @@ href="mailto:m.skofic&#64;cgiar.org">m.skofic&#64;<!---->cgiar.org</a>&gt;<br />
 
 		<td class="name"><div>
 		<a class="anchor" href="#_AddIndex">#</a>
-		<code><a href="source-class-CContainer.html#114-124" title="Go to source code">AddIndex</a>( <span>array <var>$theIndex</var></span>, <span>array <var>$theOptions</var> = <span class="php-keyword1">Array</span>() </span> )</code>
+		<code><a href="source-class-CContainer.html#103-113" title="Go to source code">AddIndex</a>( <span>array <var>$theIndex</var></span>, <span>array <var>$theOptions</var> = <span class="php-keyword1">Array</span>() </span> )</code>
 
 		<div class="description short">
 			
@@ -309,7 +297,7 @@ href="mailto:m.skofic&#64;cgiar.org">m.skofic&#64;<!---->cgiar.org</a>&gt;<br />
 
 		<td class="name"><div>
 		<a class="anchor" href="#_ManageObject">#</a>
-		<code><a href="source-class-CContainer.html#140-305" title="Go to source code">ManageObject</a>( <span>reference <var>&amp; $theObject</var></span>, <span>mixed <var>$theIdentifier</var> = <span class="php-keyword1">NULL</span></span>, <span>mixed <var>$theModifiers</var> = kFLAG_DEFAULT </span> )</code>
+		<code><a href="source-class-CContainer.html#129-294" title="Go to source code">ManageObject</a>( <span>reference <var>&amp; $theObject</var></span>, <span>mixed <var>$theIdentifier</var> = <span class="php-keyword1">NULL</span></span>, <span>mixed <var>$theModifiers</var> = kFLAG_DEFAULT </span> )</code>
 
 		<div class="description short">
 			
@@ -509,7 +497,7 @@ is declared abstract.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#_CheckObject">#</a>
-		<code><a href="source-class-CContainer.html#312-325" title="Go to source code">CheckObject</a>( <span>mixed <var>$theIdentifier</var></span>, <span>string <var>$theOffset</var> = <span class="php-keyword1">NULL</span> </span> )</code>
+		<code><a href="source-class-CContainer.html#301-314" title="Go to source code">CheckObject</a>( <span>mixed <var>$theIdentifier</var></span>, <span>string <var>$theOffset</var> = <span class="php-keyword1">NULL</span> </span> )</code>
 
 		<div class="description short">
 			
@@ -557,7 +545,7 @@ return <tt>TRUE</tt> if found and <tt>FALSE</tt> if not.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#_Query">#</a>
-		<code><a href="source-class-CContainer.html#332-347" title="Go to source code">Query</a>( <span><code><a href="class-CQuery.html">CQuery</a></code> <var>$theQuery</var></span>, <span>array <var>$theFields</var> = <span class="php-keyword1">NULL</span> </span> )</code>
+		<code><a href="source-class-CContainer.html#321-336" title="Go to source code">Query</a>( <span><code><a href="class-CQuery.html">CQuery</a></code> <var>$theQuery</var></span>, <span>array <var>$theFields</var> = <span class="php-keyword1">NULL</span> </span> )</code>
 
 		<div class="description short">
 			
@@ -607,7 +595,7 @@ represents the list of desired fields.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#_NextSequence">#</a>
-		<code><a href="source-class-CContainer.html#363-399" title="Go to source code">NextSequence</a>( <span>string <var>$theKey</var></span>, <span>mixed <var>$theContainer</var> = <span class="php-keyword1">NULL</span> </span> )</code>
+		<code><a href="source-class-CContainer.html#352-388" title="Go to source code">NextSequence</a>( <span>string <var>$theKey</var></span>, <span>mixed <var>$theContainer</var> = <span class="php-keyword1">NULL</span> </span> )</code>
 
 		<div class="description short">
 			
@@ -683,7 +671,7 @@ exception.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#_NewQuery">#</a>
-		<code><a href="source-class-CContainer.html#415-426" title="Go to source code">NewQuery</a>( )</code>
+		<code><a href="source-class-CContainer.html#404-415" title="Go to source code">NewQuery</a>( )</code>
 
 		<div class="description short">
 			
@@ -715,57 +703,6 @@ container.</p>
 		</div>
 		</div></td>
 	</tr>
-	<tr data-order="ConvertValue" id="_ConvertValue">
-
-		<td class="attributes"><code>
-			 public static
-			mixed
-			
-			</code>
-		</td>
-
-		<td class="name"><div>
-		<a class="anchor" href="#_ConvertValue">#</a>
-		<code><a href="source-class-CContainer.html#442-458" title="Go to source code">ConvertValue</a>( <span>string <var>$theType</var></span>, <span>mixed <var>$theValue</var></span> )</code>
-
-		<div class="description short">
-			
-<h4>Convert a value</h4>
-
-		</div>
-
-		<div class="description detailed hidden">
-			
-<h4>Convert a value</h4>
-
-<p>This method can be used to convert value to the container's native type, the
-method accepts two parameters: the data type and the value; the method will
-return the converted value.</p>
-
-<p>In this class we return the value as-is, in derived classes you should handle
-values according to the native container data types.</p>
-
-
-
-				<h4>Parameters</h4>
-				<div class="list"><dl>
-					<dt><var>$theType</var></dt>
-					<dd><code>string</code><br>$theType Data type.</dd>
-					<dt><var>$theValue</var></dt>
-					<dd><code>mixed</code><br>$theValue Data value.</dd>
-				</dl></div>
-
-				<h4>Returns</h4>
-				<div class="list">
-					<code>mixed</code><br>The encoded data value.<br />
-				</div>
-
-
-
-
-		</div>
-		</div></td>
-	</tr>
 	<tr data-order="UnserialiseObject" id="_UnserialiseObject">
 
 		<td class="attributes"><code>
@@ -777,7 +714,7 @@ values according to the native container data types.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#_UnserialiseObject">#</a>
-		<code><a href="source-class-CContainer.html#474-628" title="Go to source code">UnserialiseObject</a>( <span>reference <var>&amp; $theObject</var></span> )</code>
+		<code><a href="source-class-CContainer.html#431-585" title="Go to source code">UnserialiseObject</a>( <span>reference <var>&amp; $theObject</var></span> )</code>
 
 		<div class="description short">
 			
@@ -794,28 +731,28 @@ equivalent structures into native data types suitable to be stored in
 containers.</p>
 
 <p>This method will scan the provided object or structure and pass all instances
-derived from <code><a href="class-CDataType.html">CDataType</a></code> to another public <code><a href="class-CContainer.html#_UnserialiseData">CContainer::UnserialiseData()</a></code>
+derived from <code><a href="class-CDataType.html">CDataType</a></code> to another public UnserialiseData()
 method that will convert these objects into native data types that are
 compatible with the specific container type.</p>
 
 <p>The method will scan the provided structure and select all elements which are
 arrays, ArrayObjects or objects derived from <code><a href="class-CDataType.html">CDataType</a></code>, these elements
-will be sent to the <code><a href="class-CContainer.html#_UnserialiseData">CContainer::UnserialiseData()</a></code> method that will take care of
+will be sent to the UnserialiseData() method that will take care of
 converting these structures into native data types that are compatible with the
 specific container type.</p>
 
 <p>The method will perform the conversion directly into the provided reference
 and will use recursion to traverse the provided structures.</p>
 
-<p>Elements sent to the <code><a href="class-CContainer.html#_UnserialiseData">CContainer::UnserialiseData()</a></code> method are selected as
+<p>Elements sent to the UnserialiseData() method are selected as
 follows:</p>
 
 <ul>
 	<li><tt><code><a href="class-CDataType.html">CDataType</a></code></tt>: All instances derived from this class are sent
-	to the <code><a href="class-CContainer.html#_UnserialiseData">CContainer::UnserialiseData()</a></code> method.</li>
+	to the UnserialiseData() method.</li>
 
 	<li><tt>Array</tt> or <tt>ArrayObject</tt>: If the structure is composed of
-	exactly two offsets and these elements are kTAG_CUSTOM_TYPE and kTAG_CUSTOM_DATA, it will be sent to the <code><a href="class-CContainer.html#_UnserialiseData">CContainer::UnserialiseData()</a></code> method. If
+	exactly two offsets and these elements are kTAG_CUSTOM_TYPE and kTAG_CUSTOM_DATA, it will be sent to the UnserialiseData() method. If
 	the above condition is not satisfied, the structure will be sent recursively to
 	this method.</li>
 </ul>
@@ -836,78 +773,7 @@ follows:</p>
 				</div>
 				<h4>Uses</h4>
 				<div class="list">
-						<code><code><a href="class-CContainer.html#_UnserialiseData">CContainer::UnserialiseData()</a></code></code> <br />
-				</div>
-
-
-		</div>
-		</div></td>
-	</tr>
-	<tr data-order="UnserialiseData" id="_UnserialiseData">
-
-		<td class="attributes"><code>
-			abstract public static
-			
-			
-			</code>
-		</td>
-
-		<td class="name"><div>
-		<a class="anchor" href="#_UnserialiseData">#</a>
-		<code><a href="source-class-CContainer.html#635-667" title="Go to source code">UnserialiseData</a>( <span>reference <var>&amp; $theElement</var></span> )</code>
-
-		<div class="description short">
-			
-<p>Unserialise provided data element.</p>
-
-		</div>
-
-		<div class="description detailed hidden">
-			
-<p>Unserialise provided data element.</p>
-
-<p>This method should convert the provided structure into a custom data type
-compatible with the current container.</p>
-
-<p>This method is called by a public <code><a href="class-CContainer.html#_UnserialiseObject">CContainer::UnserialiseObject()</a></code> interface which
-traverses an object and provides this method with all elements that satisfy the
-following conditions:</p>
-
-<ul>
-	<li><tt><code><a href="class-CDataType.html">CDataType</a></code></tt>: All instances derived from this class are sent
-	to this method.</li>
-
-	<li><tt>Array</tt> or <tt>ArrayObject</tt>: If the structure is composed of
-	exactly two offsets and these elements are kTAG_CUSTOM_TYPE and kTAG_CUSTOM_DATA, it will be sent to this method.</li>
-</ul>
-
-<p>Derived concrete classes will implement this method to intercept all
-structures that can be converted to a native data type compatible with the
-current container.</p>
-
-<p>The elements to be converted are provided by reference, which means that they
-have to be converted in place.</p>
-
-<p>This class is abstract, so we force derived classes to implement this
-method.</p>
-
-
-
-				<h4>Parameters</h4>
-				<div class="list"><dl>
-					<dt><var>$theElement</var></dt>
-					<dd><code>reference</code><br>&amp;$theElement Element to encode.</dd>
-				</dl></div>
-
-
-
-				<h4>See</h4>
-				<div class="list">
-						kTAG_CUSTOM_TYPE kTAG_CUSTOM_DATA<br />
-				</div>
-				<h4>Used by</h4>
-				<div class="list">
-						<code><code><a href="class-CContainer.html#_UnserialiseObject">CContainer::UnserialiseObject()</a></code></code> <br />
+						UnserialiseData()<br />
 				</div>
 
 

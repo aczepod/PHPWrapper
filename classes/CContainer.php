@@ -64,17 +64,6 @@ require_once( kPATH_MYWRAPPER_LIBRARY_CLASS."/CConnection.php" );
  * as a database table. The object holds a data member that represents a native container
  * from a database.
  *
- * The public interface declares the following main operations:
- *
- * <ul>
- *	<li>{@link ManageObject()}: This method will <i>insert</i>, <i>update</i>,
- *		<i>modify</i>, <i>delete</i> and <i>load</i> an object from the current container.
- *		This method operates one object at the time and it is mainly used by persistent
- *		objects for persisting in containers.
- *	<li>{@link ConvertValue()}: This method will convert a PHP value to a container native
- *		value.
- * </ul>
- *
  * The class does not implement a concrete data store, derived classes must implement
  * specific storage actions.
  *
@@ -430,38 +419,6 @@ abstract class CContainer extends CConnection
 /*=======================================================================================
  *																						*
  *								STATIC CONVERSION INTERFACE								*
- *																						*
- *======================================================================================*/
-
-
-	 
-	/*===================================================================================
-	 *	ConvertValue																	*
-	 *==================================================================================*/
-
-	/**
-	 * <h4>Convert a value</h4>
-	 *
-	 * This method can be used to convert value to the container's native type, the method
-	 * accepts two parameters: the data type and the value; the method will return the
-	 * converted value.
-	 *
-	 * In this class we return the value as-is, in derived classes you should handle values
-	 * according to the native container data types.
-	 *
-	 * @param string				$theType			Data type.
-	 * @param mixed					$theValue			Data value.
-	 *
-	 * @static
-	 * @return mixed				The encoded data value.
-	 */
-	static function ConvertValue( $theType, $theValue )				{	return $theValue;	}
-
-		
-
-/*=======================================================================================
- *																						*
- *								PUBLIC CONVERSION INTERFACE								*
  *																						*
  *======================================================================================*/
 
