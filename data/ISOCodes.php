@@ -1882,7 +1882,7 @@ require_once( kPATH_MYWRAPPER_LIBRARY_FUNCTION.'/parsing.php' );
 									//
 									// Update label.
 									//
-									if( ($string = $term->Label()) !== NULL )
+									if( ($string = $term->Label( NULL )) !== NULL )
 									{
 										if( array_key_exists( $string, $keys ) )
 											$term->Label(
