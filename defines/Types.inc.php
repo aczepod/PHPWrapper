@@ -118,12 +118,8 @@ define( "kTYPE_REGEX",						':REGEX' );				// Regular expression.
  * Language strings list.
  *
  * This data type represents a string attribute that can be expressed in several languages,
- * it is implemented as an array of two elements:
- *
- * <ul>
- *	<li><tt>kTAG_STRING</tt>: This element holds the language code of the string.
- *	<li><tt>kTAG_LANGUAGE</tt>: This element holds the language code of the string.
- * </ul>
+ * it is implemented as an array of elements in which the index represents the language
+ * code in which the string, stored in the element data, is expressed in.
  */
 define( "kTYPE_LSTRING",					':LSTRING' );			// Language strings.
 

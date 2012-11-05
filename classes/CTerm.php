@@ -179,23 +179,15 @@ class CTerm extends CPersistentObject
 	 *
 	 * The term <i>label</i>, {@link kTAG_LABEL}, represents the term's name or short
 	 * human readable description. It is an optional attribute of the object that holds
-	 * an array of elements structured as follows:
+	 * an array of elements in which the index is represented by the language code and the
+	 * value is the string.
 	 *
-	 * <ul>
-	 *	<li>{@link kTAG_LABEL_STRING}: This item holds the label string, the item is
-	 *		required.
-	 *	<li>{@link kTAG_LABEL_LANGUAGE}: This item holds the three character ISO 639
-	 *		language code of the string, this element is optional.
-	 * </ul>
-	 *
-	 * No two elements may share the same language code and only one element may omit the
-	 * language code.
+	 * No two elements may share the same language code.
 	 *
 	 * The method accepts the following parameters:
 	 *
 	 * <ul>
-	 *	<li><tt>$theLanguage</tt>: Language code, <tt>NULL</tt> refers to the element
-	 *		lacking the language code.
+	 *	<li><tt>$theLanguage</tt>: Language code.
 	 *	<li><tt>$theValue</tt>: The label string or the operation, depending on its value:
 	 *	 <ul>
 	 *		<li><tt>NULL</tt>: Return the string corresponding to the provided language.
@@ -215,15 +207,14 @@ class CTerm extends CPersistentObject
 	 * @access public
 	 * @return mixed				<i>New</i> or <i>old</i> label.
 	 *
-	 * @uses ManageTypedOffset()
+	 * @uses ManageIndexedOffset()
 	 *
-	 * @see kTAG_LABEL kTAG_LABEL_LANGUAGE kTAG_LABEL_STRING
+	 * @see kTAG_LABEL
 	 */
-	public function Label( $theLanguage = NULL, $theValue = NULL, $getOld = FALSE )
+	public function Label( $theLanguage, $theValue = NULL, $getOld = FALSE )
 	{
-		return ManageTypedOffset( $this,
-								  kTAG_LABEL, kTAG_LABEL_LANGUAGE, kTAG_LABEL_STRING,
-								  $theLanguage, $theValue, $getOld );				// ==>
+		return ManageIndexedOffset
+				( $this,kTAG_LABEL, $theLanguage, $theValue, $getOld );				// ==>
 
 	} // Label.
 
@@ -237,23 +228,15 @@ class CTerm extends CPersistentObject
 	 *
 	 * The term <i>description</i>, {@link kTAG_DESCRIPTION}, represents the term's
 	 * definition or human readable description. It is an optional attribute of the object
-	 * that holds an array of elements structured as follows:
+	 * that holds an array of elements in which the index is represented by the language
+	 * code and the value is the string.
 	 *
-	 * <ul>
-	 *	<li>{@link kTAG_DESCRIPTION_STRING}: This item holds the description string, the
-	 *		item is required.
-	 *	<li>{@link kTAG_DESCRIPTION_LANGUAGE}: This item holds the three character ISO 639
-	 *		language code of the string, this element is optional.
-	 * </ul>
-	 *
-	 * No two elements may share the same language code and only one element may omit the
-	 * language code.
+	 * No two elements may share the same language code.
 	 *
 	 * The method accepts the following parameters:
 	 *
 	 * <ul>
-	 *	<li><tt>$theLanguage</tt>: Language code, <tt>NULL</tt> refers to the element
-	 *		lacking the language code.
+	 *	<li><tt>$theLanguage</tt>: Language code.
 	 *	<li><tt>$theValue</tt>: The description string or the operation, depending on its
 	 *		value:
 	 *	 <ul>
@@ -274,17 +257,14 @@ class CTerm extends CPersistentObject
 	 * @access public
 	 * @return mixed				<i>New</i> or <i>old</i> label.
 	 *
-	 * @uses ManageTypedOffset()
+	 * @uses ManageIndexedOffset()
 	 *
-	 * @see kTAG_DESCRIPTION kTAG_DESCRIPTION_LANGUAGE kTAG_DESCRIPTION_STRING
+	 * @see kTAG_DESCRIPTION
 	 */
-	public function Description( $theLanguage = NULL, $theValue = NULL, $getOld = FALSE )
+	public function Description( $theLanguage, $theValue = NULL, $getOld = FALSE )
 	{
-		return ManageTypedOffset( $this,
-								  kTAG_DESCRIPTION,
-								  kTAG_DESCRIPTION_LANGUAGE,
-								  kTAG_DESCRIPTION_STRING,
-								  $theLanguage, $theValue, $getOld );				// ==>
+		return ManageIndexedOffset
+				( $this, kTAG_DESCRIPTION, $theLanguage, $theValue, $getOld );		// ==>
 
 	} // Description.
 

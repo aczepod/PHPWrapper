@@ -137,12 +137,8 @@ require_once( kPATH_MYWRAPPER_LIBRARY_CLASS."/CWrapper.inc.php" );
  *		<li><i>{@link kOFFSET_MESSAGE}</i>: <i>Status message</i>.
  *			The response message from the operation, this element is used to return
  *			informative messages or to return error messages when the service fails. It will
- *			generally be formatted as an array structured as follows:
- *		 <ul>
- *			<li><i>{@link kOFFSET_LANGUAGE}</i>: The language ISO 639 2
- *				character code in which the message is expressed in.
- *			<li><i>{@link kOFFSET_STRING}</i>: The actual message data contents.
- *		 </ul>
+ *			generally be formatted as an array in which the index represents the language
+ *			code in which the message, stored in the element data, is expressed in.
  *		<li><i>{@link kAPI_AFFECTED_COUNT}</i>: <i>Record count</i>.
  *			The total number of elements affected by the operation. This tag will only be
  *			used by derived classes returning data elements.
@@ -1229,8 +1225,7 @@ class CWrapper extends CStatusDocument
 		//
 		if( ($tmp = $theException->getMessage()) !== NULL )
 			$status[ kOFFSET_MESSAGE ]
-				= array( array( kOFFSET_LANGUAGE => kDEFAULT_LANGUAGE,
-								kOFFSET_STRING => $tmp ) );
+				= array( kDEFAULT_LANGUAGE => $tmp );
 		
 		//
 		// Set exception trace.

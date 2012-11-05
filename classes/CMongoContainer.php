@@ -1141,8 +1141,20 @@ class CMongoContainer extends CContainer
 	/**
 	 * Unserialise provided data element.
 	 *
-	 * We implement this method to convert all standard {@link CDataType} instances into
-	 * custom Mongo data types.
+	 * This method should convert the provided structure into a custom data type compatible
+	 * with the current container.
+	 *
+	 * This method is called by a public {@link UnserialiseObject()} interface which
+	 * traverses an object and provides this method with all elements that satisfy the
+	 * following conditions:
+	 *
+	 * <ul>
+	 *	<li><tt>{@link CDataType}</tt>: All instances derived from this class are sent to
+	 *		this method.
+	 *	<li><tt>Array</tt> or <tt>ArrayObject</tt>: If the structure is composed of exactly
+	 *		two offsets and these elements are {@link kTAG_CUSTOM_TYPE} and
+	 *		{@link kTAG_CUSTOM_DATA}, it will be sent to this method.
+	 * </ul>
 	 *
 	 * In this class we parse the following types and offsets:
 	 *
@@ -1162,6 +1174,9 @@ class CMongoContainer extends CContainer
 	 *	<li><i>{@link CDataTypeBinary} object or {@link kTYPE_BINARY} offset</i>: We return
 	 *		a MongoBinData object.
 	 * </ul>
+	 *
+	 * The elements to be converted are provided by reference, which means that they have to
+	 * be converted in place.
 	 *
 	 * @param reference			   &$theElement			Element to encode.
 	 *

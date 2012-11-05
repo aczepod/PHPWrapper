@@ -300,7 +300,8 @@ require_once( kPATH_MYWRAPPER_LIBRARY_DEFINE."/Errors.inc.php" );
 	 *	<li><tt>$theTypeOffset</tt>: The offset to the type within the element.
 	 *	<li><tt>$theDataOffset</tt>: The offset to the data within the element.
 	 *	<li><tt>$theTypeValue</tt>: The value of the element's type to match, it represents
-	 *		the key to the element; we assume the value to be a string.
+	 *		the key to the element; we assume the value to be a string. A <tt>NULL</tt>
+	 *		value is used to select the element missing the <tt>$theTypeOffset</tt> offset.
 	 *	<li><tt>$theValue</tt>: The value or operation:
 	 *	 <ul>
 	 *		<li><tt>NULL</tt>: Return the offset's current value.
@@ -347,16 +348,10 @@ require_once( kPATH_MYWRAPPER_LIBRARY_DEFINE."/Errors.inc.php" );
 			//
 			// Init local storage.
 			//
-			$save = $match = $idx = NULL;
+			$offset = $save = $idx = NULL;
 			
 			//
-			// Normalise data.
-			//
-			$theOffset = (string) $theOffset;
-			$theTypeOffset = (string) $theTypeOffset;
-			
-			//
-			// Handle list.
+			// Handle existing offset.
 			//
 			if( ( is_array( $theReference )
 			   && array_key_exists( $theOffset, $theReference ) )
@@ -364,143 +359,141 @@ require_once( kPATH_MYWRAPPER_LIBRARY_DEFINE."/Errors.inc.php" );
 			   && $theReference->offsetExists( $theOffset ) ) )
 			{
 				//
-				// Save list.
+				// Check offset type.
 				//
-				$save = $theReference[ $theOffset ];
-				if( is_array( $save ) )
+				if( is_array( $theReference[ $theOffset ] ) )
 				{
 					//
-					// Scan list for type.
+					// Reference offset.
 					//
-					for( $i = 0; $i < count( $save ); $i++ )
+					$offset = $theReference[ $theOffset ];
+					
+					//
+					// Locate item.
+					//
+					for( $i = 0; $i < count( $offset ); $i++ )
 					{
 						//
-						// Check element.
+						// Match type.
 						//
-						if( is_array( $save[ $i ] ) )
+						if( ( ($theTypeValue !== NULL)
+						   && array_key_exists( $theTypeOffset, $offset[ $i ] )
+						   && ($offset[ $i ][ $theTypeOffset ] == $theTypeValue) )
+						 || ( ($theTypeValue === NULL)
+						   && (! array_key_exists( $theTypeOffset, $offset[ $i ] )) ) )
 						{
 							//
-							// Match type.
+							// Save element index.
 							//
-							if( ( ($theTypeValue !== NULL)
-							   && array_key_exists( $theTypeOffset, $save[ $i ] )
-							   && ($theTypeValue == $save[ $i ][ $theTypeOffset ]) )
-							 || ( ($theTypeValue === NULL)
-							   && (! array_key_exists( $theTypeOffset, $save[ $i ] )) ) )
-							{
-								//
-								// Save match value.
-								//
-								if( array_key_exists( $theDataOffset, $save[ $i ] ) )
-									$match = $save[ $i ][ $theDataOffset ];
-								else
-									throw new Exception
-											( "Missing [$theDataOffset] item in element",
-											  kERROR_STATE );					// !@! ==>
-								
-								//
-								// Save index.
-								//
-								$idx = $i;
-								
-								break;										// =>
-							}
-						
-						} // Element is array.
-						
-						else
-							throw new Exception
-									( "Unsupported list element type",
-									  kERROR_UNSUPPORTED );						// !@! ==>
+							$idx = $i;
+							
+							//
+							// Save element value.
+							//
+							$save = ( array_key_exists( $theDataOffset, $offset[ $i ] ) )
+								  ? $offset[ $i ][ $theDataOffset ]
+								  : NULL;
+							
+						} // Matched type offset.
 					
-					} // Scanning list.
+					} // Iterating offset.
 				
-				} // Supported list.
+				} // Valid offset type.
 				
 				else
 					throw new Exception
-							( "Unsupported list type",
+							( "The offset must be an array",
 							  kERROR_UNSUPPORTED );								// !@! ==>
 			
-			} // List exists
+			} // Main offset exists.
 			
 			//
-			// Handle retrieve.
+			// Retrieve value.
 			//
 			if( $theValue === NULL )
-				return $match;														// ==>
+				return $save;														// ==>
 			
 			//
-			// Delete offset.
+			// Delete element.
 			//
 			if( $theValue === FALSE )
 			{
 				//
-				// Handle match.
+				// Handle matched element.
 				//
 				if( $idx !== NULL )
 				{
 					//
-					// Remove element.
+					// Delete element.
 					//
-					unset( $save[ $idx ] );
+					unset( $offset[ $idx ] );
 					
 					//
-					// No elements left.
+					// Update offset.
 					//
-					if( ! count( $save ) )
+					if( count( $offset ) )
+						$theReference[ $theOffset ] = array_values( $offset );
+					
+					//
+					// Delete offset.
+					//
+					else
 					{
-						//
-						// Remove list.
-						//
 						if( is_array( $theReference ) )
 							unset( $theReference[ $theOffset ] );
 						else
 							$theReference->offsetUnset( $theOffset );
 					
-					} // Deleted last element.
+					} // Empty list.
 					
-					//
-					// Update offset.
-					//
-					else
-						$theReference[ $theOffset ] = array_values( $save );
+					if( $getOld )
+						return $save;												// ==>
 				
-				} // Matched element.
-				
-				if( $getOld )
-					return $match;													// ==>
+				} // Matched.
 				
 				return NULL;														// ==>
 			
-			} // Delete operation.
+			} // Delete.
 			
 			//
-			// Build element.
+			// Initialise offset.
+			//
+			if( ! is_array( $offset ) )
+				$offset = Array();
+			
+			//
+			// Create element.
 			//
 			$element = array( $theDataOffset => $theValue );
 			if( $theTypeValue !== NULL )
 				$element[ $theTypeOffset ] = $theTypeValue;
 			
 			//
-			// Append to list.
+			// Replace.
 			//
-			$save[] = $element;
+			if( $idx !== NULL )
+				$offset[ $idx ] = $element;
 			
 			//
-			// Update offset.
+			// Insert.
 			//
-			$theReference[ $theOffset ] = $save;
+			else
+				$offset[] = $element;
+			
+			//
+			// Update.
+			//
+			$theReference[ $theOffset ] = $offset;
 			
 			if( $getOld )
-				return $match;														// ==>
+				return $save;														// ==>
 			
 			return $theValue;														// ==>
 		
 		} // Supported list container.
 
 		throw new Exception
-				( "Unsupported list container type",
+				( "The container must either be an array or ArrayObject",
 				  kERROR_UNSUPPORTED );											// !@! ==>
 	
 	} // ManageTypedOffset.
@@ -523,7 +516,8 @@ require_once( kPATH_MYWRAPPER_LIBRARY_DEFINE."/Errors.inc.php" );
 	 *		an array or an ArrayObject, any other type will trigger an exception.
 	 *	<li><tt>$theOffset</tt>: The offset to the attribute containing the list of
 	 *		elements.
-	 *	<li><tt>$theIndex</tt>: The element index.
+	 *	<li><tt>$theIndex</tt>: The element index. If you provide <tt>NULL</tt>, the index
+	 *		will become 0 (zero) by default.
 	 *	<li><tt>$theValue</tt>: The value or operation:
 	 *	 <ul>
 	 *		<li><tt>NULL</tt>: Return the the value at the provided index.
@@ -566,9 +560,15 @@ require_once( kPATH_MYWRAPPER_LIBRARY_DEFINE."/Errors.inc.php" );
 		 || ($theReference instanceof ArrayObject) )
 		{
 			//
-			// Normalise offset.
+			// Init local storage.
 			//
-			$theOffset = (string) $theOffset;
+			$offset = $save = NULL;
+			
+			//
+			// Normalise index.
+			//
+			if( $theIndex === NULL )
+				$theIndex = 0;
 			
 			//
 			// Check offset.
@@ -579,104 +579,92 @@ require_once( kPATH_MYWRAPPER_LIBRARY_DEFINE."/Errors.inc.php" );
 			   && $theReference->offsetExists( $theOffset ) ) )
 			{
 				//
-				// Check list.
+				// Check offset.
 				//
-				if( is_array( $theReference[ $theOffset ] )
-				 || ($theReference[ $theOffset ] instanceof ArrayObject) )
+				if( is_array( $theReference[ $theOffset ] ) )
 				{
+					//
+					// Save offset.
+					//
+					$offset = $theReference[ $theOffset ];
+					
 					//
 					// Save value.
 					//
-					$save = ( ( is_array( $theReference[ $theOffset ] )
-							 && array_key_exists( $theIndex, $theReference[ $theOffset ] ) )
-						   || ( ($theReference[ $theOffset ] instanceof ArrayObject)
-							 && $theReference[ $theOffset ]->offsetExists( $theIndex ) ) )
-						  ? $theReference[ $theOffset ][ $theIndex ]
-						  : NULL;
-					
-					//
-					// Handle retrieve.
-					//
-					if( $theValue === NULL )
-						return $save;												// ==>
-					
-					//
-					// Handle delete.
-					//
-					if( $theValue === FALSE )
-					{
-						//
-						// Handle existing value.
-						//
-						if( $save !== NULL )
-						{
-							//
-							// Delete item.
-							//
-							if( is_array( $theReference[ $theOffset ] ) )
-								unset( $theReference[ $theOffset ][ $theIndex ] );
-							else
-								$theReference[ $theOffset ]->offsetUnset( $theIndex );
-							
-							//
-							// Delete list.
-							//
-							if( ! count( $theReference[ $theOffset ] ) )
-							{
-								//
-								// Delete list.
-								//
-								if( is_array( $theReference ) )
-									unset( $theReference[ $theOffset ] );
-								else
-									offsetUnset( $theOffset, $theReference );
-							
-							} // No elements left.
-						
-						} // Has value.
-						
-						if( $getOld )
-							return $save;											// ==>
-						
-						return NULL;												// ==>
-					
-					} // Delete.
-					
-					//
-					// Set new element.
-					//
-					$theReference[ $theOffset ][ $theIndex ] = $theValue;
-					
-					if( $getOld )
-						return $save;												// ==>
-					
-					return theValue;												// ==>
+					if( array_key_exists( $theIndex, $offset ) )
+						$save = $offset[ $theIndex ];
 					
 				} // Element is list.
 				
 				else
 					throw new Exception
-							( "Unsupported list type",
+							( "The offset must be an array",
 							  kERROR_UNSUPPORTED );								// !@! ==>
 			
-			} // List exists.
+			} // Offset exists.
 			
 			//
-			// Handle retrieve or delete.
+			// Retrieve.
 			//
-			if( ($theValue === NULL)
-			 || ($theValue === FALSE) )
+			if( $theValue === NULL )
+				return $save;														// ==>
+			
+			//
+			// Delete.
+			//
+			if( $theValue === FALSE )
+			{
+				//
+				// Remove.
+				//
+				if( $save !== NULL )
+				{
+					//
+					// Unset.
+					//
+					unset( $offset[ $theIndex ] );
+					
+					//
+					// Update offset.
+					//
+					if( count( $offset ) )
+						$theReference[ $theOffset ] = $offset;
+					
+					//
+					// Clear offset.
+					//
+					else
+					{
+						if( is_array( $theReference ) )
+							unset( $theReference[ $theOffset ] );
+						else
+							$theReference->offsetUnset( $theOffset );
+					
+					} // Empty list.
+					
+					if( $getOld )
+						return $save;												// ==>
+				
+				} // Matched.
+				
 				return NULL;														// ==>
 			
+			} // Delete.
+			
 			//
-			// Create list.
+			// Set/replace element.
 			//
-			$theReference[ $theOffset ] = array( $theIndex => $theValue );
+			$offset[ $theIndex ] = $theValue;
+			
+			//
+			// Update offset.
+			//
+			$theReference[ $theOffset ] = $offset;
 			
 			if( $getOld )
-				return NULL;														// ==>
+				return $save;														// ==>
 			
-			return theValue;														// ==>
+			return $theValue;														// ==>
 		
 		} // Supported list container.
 

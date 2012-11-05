@@ -50,15 +50,15 @@ try
 	if( $rs->count() )
 	{
 		//
+		// Init local storage.
+		//
+		$root_data = NULL;
+		
+		//
 		// Iterate nodes.
 		//
 		foreach( $rs as $node )
 		{
-			//
-			// Init local storage.
-			//
-			$data = NULL;
-			
 			//
 			// Get node ID.
 			//
@@ -68,15 +68,7 @@ try
 			//
 			// Export node.
 			//
-			$ontology->ExportNode( $data, $node );
-
-			//
-			// Write root json.
-			//
-			$filename = "ROOT.$root.json";
-			$json = JsonEncode( $data );
-			file_put_contents( $filename, $json );
-			echo( "$filename\n" );
+			$ontology->ExportNode( $root_data, $node, NULL, FALSE );
 			
 			//
 			// Get root relations.
@@ -110,13 +102,13 @@ try
 				//
 				// Write root relations json.
 				//
-				$filename = "ROOT.$root.RELATIONS.json";
+				$filename = "NODE.$root.RELATIONS.json";
 				$json = JsonEncode( $data );
 				file_put_contents( $filename, $json );
 				echo( "$filename\n" );
 				
 				//
-				// Iterate first level parents.
+				// Iterate first level relations.
 				//
 				if( is_array( $parents ) )
 				{
@@ -136,14 +128,6 @@ try
 						// Export node.
 						//
 						$ontology->ExportNode( $data, $id );
-			
-						//
-						// Write root json.
-						//
-						$filename = "ROOT.$root.PARENT.$id.json";
-						$json = JsonEncode( $data );
-						file_put_contents( $filename, $json );
-						echo( "$filename\n" );
 						
 						//
 						// Get node relations.
@@ -153,11 +137,6 @@ try
 						if( is_array( $parents )
 						 || is_array( $children ) )
 						{
-							//
-							// Init local storage.
-							//
-							$data = NULL;
-							
 							//
 							// Collect edges.
 							//
@@ -206,14 +185,6 @@ try
 						// Export node.
 						//
 						$ontology->ExportNode( $data, $id );
-			
-						//
-						// Write root json.
-						//
-						$filename = "ROOT.$root.CHILD.$id.json";
-						$json = JsonEncode( $data );
-						file_put_contents( $filename, $json );
-						echo( "$filename\n" );
 						
 						//
 						// Get node relations.
@@ -223,11 +194,6 @@ try
 						if( is_array( $parents )
 						 || is_array( $children ) )
 						{
-							//
-							// Init local storage.
-							//
-							$data = NULL;
-							
 							//
 							// Collect edges.
 							//
@@ -256,6 +222,14 @@ try
 				}
 			}
 		}
+
+		//
+		// Write root json.
+		//
+		$filename = "ROOTS.json";
+		$json = JsonEncode( $root_data );
+		file_put_contents( $filename, $json );
+		echo( "$filename\n" );
 	}
 }
 

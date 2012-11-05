@@ -266,18 +266,6 @@ require_once( kPATH_MYWRAPPER_LIBRARY_FUNCTION.'/parsing.php' );
 					array( kONTOLOGY_ISO,
 						   kONTOLOGY_ISO_639,
 						   kONTOLOGY_ISO_639_3_INVNAME ) );
-			$inv_name_lng_code
-				= implode(
-					kTOKEN_INDEX_SEPARATOR,
-					array( $inv_name_code,
-						   kPREDICATE_SUBCLASS_OF,
-						   kOFFSET_LANGUAGE ) );
-			$inv_name_str_code
-				= implode(
-					kTOKEN_INDEX_SEPARATOR,
-					array( $inv_name_code,
-						   kPREDICATE_SUBCLASS_OF,
-						   kOFFSET_STRING ) );
 			
 			//
 			// Load namespaces.
@@ -339,14 +327,6 @@ require_once( kPATH_MYWRAPPER_LIBRARY_FUNCTION.'/parsing.php' );
 						NULL,
 						TRUE ),
 					TRUE )[ 0 ];
-			$inv_name_lng_tag
-				= $_SESSION[ kSESSION_ONTOLOGY ]->ResolveTag(
-					$inv_name_lng_code,
-					TRUE );
-			$inv_name_str_tag
-				= $_SESSION[ kSESSION_ONTOLOGY ]->ResolveTag(
-					$inv_name_str_code,
-					TRUE );
 			$status_tag
 				= $_SESSION[ kSESSION_ONTOLOGY ]->ResolveTag(
 					$_SESSION[ kSESSION_ONTOLOGY ]->ResolveTerm(
@@ -460,10 +440,8 @@ require_once( kPATH_MYWRAPPER_LIBRARY_FUNCTION.'/parsing.php' );
 						}
 					}
 					if( $record[ 'inverted_name' ] !== NULL )
-						ManageTypedOffset( $part3_term,
+						ManageIndexedOffset( $part3_term,
 							(string) $inv_name_tag[ kOFFSET_NID ],
-							(string) $inv_name_lng_tag[ kOFFSET_NID ],
-							(string) $inv_name_str_tag[ kOFFSET_NID ],
 							kDEFAULT_LANGUAGE, (string) $record[ 'inverted_name' ] );
 					
 					//
@@ -509,16 +487,12 @@ require_once( kPATH_MYWRAPPER_LIBRARY_FUNCTION.'/parsing.php' );
 							if( $part3_term->offsetExists(
 								(string) $inv_name_tag[ kOFFSET_NID ] ) )
 							{
-								$string = ManageTypedOffset( $part3_term,
+								$string = ManageIndexedOffset( $part3_term,
 									(string) $inv_name_tag[ kOFFSET_NID ],
-									(string) $inv_name_lng_tag[ kOFFSET_NID ],
-									(string) $inv_name_str_tag[ kOFFSET_NID ],
 									kDEFAULT_LANGUAGE );
 								if( array_key_exists( $string, $keys ) )
-									ManageTypedOffset($part3_term,
+									ManageIndexedOffset($part3_term,
 										(string) $inv_name_tag[ kOFFSET_NID ],
-										(string) $inv_name_lng_tag[ kOFFSET_NID ],
-										(string) $inv_name_str_tag[ kOFFSET_NID ],
 										$language, $keys[ $string ] );
 							}
 						
@@ -1066,18 +1040,6 @@ require_once( kPATH_MYWRAPPER_LIBRARY_FUNCTION.'/parsing.php' );
 						   kONTOLOGY_ISO_3166,
 						   kONTOLOGY_ISO_3166_1,
 						   kONTOLOGY_ISO_3166_1_COMMON_NAME ) );
-			$part1_common_name_lng_code
-				= implode(
-					kTOKEN_INDEX_SEPARATOR,
-					array( $part1_common_name_code,
-						   kPREDICATE_SUBCLASS_OF,
-						   kOFFSET_LANGUAGE ) );
-			$part1_common_name_str_code
-				= implode(
-					kTOKEN_INDEX_SEPARATOR,
-					array( $part1_common_name_code,
-						   kPREDICATE_SUBCLASS_OF,
-						   kOFFSET_STRING ) );
 			
 			//
 			// Load namespaces.
@@ -1190,14 +1152,6 @@ require_once( kPATH_MYWRAPPER_LIBRARY_FUNCTION.'/parsing.php' );
 						NULL,
 						TRUE ),
 					TRUE )[ 0 ];
-			$part1_common_name_lng_tag
-				= $_SESSION[ kSESSION_ONTOLOGY ]->ResolveTag(
-					$part1_common_name_lng_code,
-					TRUE );
-			$part1_common_name_str_tag
-				= $_SESSION[ kSESSION_ONTOLOGY ]->ResolveTag(
-					$part1_common_name_str_code,
-					TRUE );
 			$part3_date_tag
 				= $_SESSION[ kSESSION_ONTOLOGY ]->ResolveTag(
 					$_SESSION[ kSESSION_ONTOLOGY ]->ResolveTerm(
@@ -1241,10 +1195,8 @@ require_once( kPATH_MYWRAPPER_LIBRARY_FUNCTION.'/parsing.php' );
 						$part1_3_term->Description( kDEFAULT_LANGUAGE,
 													(string) $record[ 'official_name' ] );
 					if( $record[ 'common_name' ] !== NULL )
-						ManageTypedOffset( $part1_3_term,
+						ManageIndexedOffset( $part1_3_term,
 							(string) $part1_common_name_tag[ kOFFSET_NID ],
-							(string) $part1_common_name_lng_tag[ kOFFSET_NID ],
-							(string) $part1_common_name_str_tag[ kOFFSET_NID ],
 							kDEFAULT_LANGUAGE, (string) $record[ 'common_name' ] );
 					
 					//
@@ -1292,17 +1244,13 @@ require_once( kPATH_MYWRAPPER_LIBRARY_FUNCTION.'/parsing.php' );
 							if( $part1_3_term->offsetExists(
 								(string) $part1_common_name_tag[ kOFFSET_NID ] ) )
 							{
-								$string = ManageTypedOffset( $part1_3_term,
+								$string = ManageIndexedOffset( $part1_3_term,
 									(string) $part1_common_name_tag[ kOFFSET_NID ],
-									(string) $part1_common_name_lng_tag[ kOFFSET_NID ],
-									(string) $part1_common_name_str_tag[ kOFFSET_NID ],
 									kDEFAULT_LANGUAGE );
 								if( array_key_exists( $string, $keys ) )
-									ManageTypedOffset($part1_3_term,
+									ManageIndexedOffset($part1_3_term,
 									(string) $part1_common_name_tag[ kOFFSET_NID ],
-									(string) $part1_common_name_lng_tag[ kOFFSET_NID ],
-									(string) $part1_common_name_str_tag[ kOFFSET_NID ],
-										$language, $keys[ $string ] );
+									$language, $keys[ $string ] );
 							}
 						
 						} // Key file exists.

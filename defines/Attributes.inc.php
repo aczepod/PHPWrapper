@@ -164,20 +164,6 @@ define( "kOFFSET_SEVERITY",						':SEVERITY' );
  */
 define( "kOFFSET_CODE",							':CODE' );
 
-/**
- * Language code.
- *
- * This tag represents a language code.
- */
-define( "kOFFSET_LANGUAGE",						':LANGUAGE' );
-
-/**
- * String.
- *
- * This tag represents a generic string.
- */
-define( "kOFFSET_STRING",						':STRING' );
-
 /*=======================================================================================
  *	ONTOLOGY ATTRIBUTES																	*
  *======================================================================================*/

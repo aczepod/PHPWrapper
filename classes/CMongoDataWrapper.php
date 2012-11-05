@@ -54,13 +54,6 @@ require_once( kPATH_LIBRARY_SOURCE."CMongoDataWrapper.inc.php" );
  *	<li><i>{@link kAPI_OP_GET_ONE}</i>: This operation is equivalent to the
  *		{@link kAPI_OP_GET} operation, except that it will only return the first found
  *		element. It is equivalent to the Mongo findOne() method.
- *	<li><i>{@link kAPI_OP_GET_OBJECT_REF}</i>: This operation will return an object
- *		referenced by an identifier provided in the {@link kAPI_OBJECT} parameter. It
- *		is equivalent to the {@link kAPI_OP_GET_ONE} operation, except that instead of using
- *		the query provided in the {@link kAPI_QUERY} parameter, it will try to extract
- *		an identifier from the object provided in the {@link kAPI_OBJECT} parameter.
- *		Remember to {@link CDataType::SerialiseObject()} the reference before providing it
- *		to the wrapper.
  * </ul>
  *
  * This class also implements a static interface that can be used to unserialise data
@@ -396,83 +389,6 @@ class CMongoDataWrapper extends CDataWrapper
 		if( array_key_exists( kAPI_OBJECT, $_REQUEST ) )
 		{
 			//
-			// Handle references.
-			//
-			switch( $parameter = $_REQUEST[ kAPI_OPERATION ] )
-			{
-				case kAPI_OP_GET_OBJECT_REF:
-					//
-					// Extract reference.
-					//
-					$reference
-						= CPersistentUnitObject::Reference
-							( $_REQUEST[ kAPI_OBJECT ], kFLAG_REFERENCE_IDENTIFIER +
-															 kFLAG_REFERENCE_CONTAINER +
-															 kFLAG_REFERENCE_DATABASE );
-					
-					//
-					// Handle reference.
-					//
-					if( $reference !== NULL )
-					{
-						//
-						// Add database reference.
-						//
-						if( array_key_exists( kAPI_DATABASE, $_REQUEST ) )
-							$reference[ kTAG_REFERENCE_DATABASE ]
-								= (string) $_REQUEST[ kAPI_DATABASE ];
-						
-						//
-						// Add container reference.
-						//
-						if( array_key_exists( kAPI_CONTAINER, $_REQUEST ) )
-							$reference[ kTAG_REFERENCE_CONTAINER ]
-								= $_REQUEST[ kAPI_CONTAINER ]->getName();
-						
-						//
-						// Copy reference.
-						//
-						$_REQUEST[ kAPI_OBJECT ] = $reference;
-						
-						//
-						// Handle database.
-						//
-						if( array_key_exists( kTAG_REFERENCE_DATABASE, $reference )
-						 && (! array_key_exists( kAPI_DATABASE, $_REQUEST )) )
-						{
-							$_REQUEST[ kAPI_DATABASE ]
-								= $reference[ kTAG_REFERENCE_DATABASE ];
-							$this->_FormatDatabase();
-						}
-						
-						//
-						// Handle container.
-						//
-						if( array_key_exists( kTAG_REFERENCE_CONTAINER, $reference )
-						 && (! array_key_exists( kAPI_CONTAINER, $_REQUEST )) )
-						{
-							$_REQUEST[ kAPI_CONTAINER ]
-								= $reference[ kTAG_REFERENCE_CONTAINER ];
-							$this->_FormatContainer();
-						}
-					
-					} // Resolved.
-					
-					//
-					// Invalid reference.
-					//
-					else
-						throw new CException
-							( "Invalid object reference",
-							  kERROR_UNSUPPORTED,
-							  kMESSAGE_TYPE_ERROR,
-							  array( 'Reference'
-								=> $_REQUEST[ kAPI_OBJECT ] ) );			// !@! ==>
-					
-					break;
-			}
-			
-			//
 			// Check if container is there.
 			//
 			if( array_key_exists( kAPI_CONTAINER, $_REQUEST ) )
@@ -548,18 +464,6 @@ class CMongoDataWrapper extends CDataWrapper
 		//
 		switch( $parameter = $_REQUEST[ kAPI_OPERATION ] )
 		{
-			case kAPI_OP_GET_OBJECT_REF:
-				
-				//
-				// Check for object.
-				//
-				if( ! array_key_exists( kAPI_OBJECT, $_REQUEST ) )
-					throw new CException
-						( "Missing object reference",
-						  kERROR_OPTION_MISSING,
-						  kMESSAGE_TYPE_ERROR,
-						  array( 'Operation' => $parameter ) );					// !@! ==>
-				
 			case kAPI_OP_GET_ONE:
 				
 				//
@@ -620,22 +524,6 @@ class CMongoDataWrapper extends CDataWrapper
 	 */
 	protected function _ValidateObject()
 	{
-		//
-		// Parse operation.
-		//
-		switch( $parameter = $_REQUEST[ kAPI_OPERATION ] )
-		{
-			case kAPI_OP_GET_OBJECT_REF:
-				if( ! array_key_exists( kAPI_OBJECT, $_REQUEST ) )
-					throw new CException
-						( "Missing object reference parameter",
-						  kERROR_OPTION_MISSING,
-						  kMESSAGE_TYPE_ERROR,
-						  array( 'Operation' => $parameter,
-						  		 'Parameter' => kAPI_OBJECT ) );			// !@! ==>
-				break;
-			
-		} // Parsing parameter.
 	
 	} // _ValidateObject.
 
@@ -767,10 +655,6 @@ class CMongoDataWrapper extends CDataWrapper
 		//
 		switch( $op = $_REQUEST[ kAPI_OPERATION ] )
 		{
-			case kAPI_OP_GET_OBJECT_REF:
-				$this->_Handle_GetObjectByReference();
-				break;
-
 			case kAPI_OP_COUNT:
 				$this->_Handle_Count();
 				break;
@@ -848,69 +732,8 @@ class CMongoDataWrapper extends CDataWrapper
 			 .kAPI_OP_GET
 			 .'] operation, except that it will only return the first found element. '
 			 .'It is equivalent to the Mongo findOne() method.';
-		
-		//
-		// Add kAPI_OP_GET_OBJECT_REF.
-		//
-		$theList[ kAPI_OP_GET_OBJECT_REF ]
-			= 'This operation will return an object referenced by an identifier '
-			 .'provided in the ['
-			 .kAPI_OBJECT
-			 .'] parameter. It is equivalent to the ['
-			 .kAPI_OP_GET_ONE
-			 .'] operation, except that instead of using the query provided in the ['
-			 .kAPI_QUERY
-			 .'] parameter, it will try to extract an identifier from the object '
-			 .'provided in the ['
-			 .kAPI_OBJECT
-			 .'] parameter.';
 	
 	} // _Handle_ListOp.
-
-		
-	/*===================================================================================
-	 *	_Handle_GetObjectByReference													*
-	 *==================================================================================*/
-
-	/**
-	 * Handle {@link kAPI_OP_GET_OBJECT_REF GetObjectByReference} request.
-	 *
-	 * This method will handle the
-	 * {@link kAPI_OP_GET_OBJECT_REF kAPI_OP_GET_OBJECT_REF} request, which returns an
-	 * object corresponding to the object {@link CMongoObjectReference reference} provided
-	 * in the {@link kAPI_OBJECT object} parameter.
-	 *
-	 * @access protected
-	 */
-	protected function _Handle_GetObjectByReference()
-	{
-		//
-		// Resolve reference.
-		//
-		$response = MongoDBRef::get( $_REQUEST[ kAPI_DATABASE ],
-									 $_REQUEST[ kAPI_OBJECT ] );
-		
-		//
-		// Set total count.
-		//
-		$count = ( $response )
-			   ? 1
-			   : 0;
-		$this->_OffsetManage( kAPI_STATUS, kAPI_AFFECTED_COUNT, $count );
-		
-		//
-		// Serialise response.
-		//
-		CDataType::SerialiseObject( $response );
-	
-		//
-		// Return response.
-		//
-		if( (! array_key_exists( kAPI_OPT_NO_RESP, $_REQUEST ))
-		 || (! $_REQUEST[ kAPI_OPT_NO_RESP ]) )
-			$this->offsetSet( kAPI_RESPONSE, $response );
-	
-	} // _Handle_GetObjectByReference.
 
 	 
 	/*===================================================================================
@@ -1009,9 +832,7 @@ class CMongoDataWrapper extends CDataWrapper
 			// Set message.
 			//
 			$this->_OffsetManage( kAPI_STATUS, kTAG_DESCRIPTION,
-								  array( kTAG_TYPE => kTYPE_STRING,
-										 kTAG_LANGUAGE => 'en',
-										 kTAG_STRING => 'Object not found.' ) );
+								  array( 'en' => 'Object not found.' ) );
 		}
 	
 	} // _Handle_GetOne.
@@ -1689,9 +1510,7 @@ class CMongoDataWrapper extends CDataWrapper
 				// Set message.
 				//
 				$this->_OffsetManage( kAPI_STATUS, kTAG_DESCRIPTION,
-									  array( kTAG_TYPE => kTYPE_STRING,
-											 kTAG_LANGUAGE => 'en',
-											 kTAG_STRING => $ok[ 'errmsg' ] ) );
+									  array( 'en' => $ok[ 'errmsg' ] ) );
 			}
 			else
 				$this->_OffsetManage( kAPI_STATUS, kAPI_AFFECTED_COUNT, $ok[ 'n' ] );
@@ -1856,9 +1675,7 @@ class CMongoDataWrapper extends CDataWrapper
 				// Set message.
 				//
 				$this->_OffsetManage( kAPI_STATUS, kTAG_DESCRIPTION,
-									  array( kTAG_TYPE => kTYPE_STRING,
-											 kTAG_LANGUAGE => 'en',
-											 kTAG_STRING => $ok[ 'errmsg' ] ) );
+									  array( 'en' => $ok[ 'errmsg' ] ) );
 			}
 			else
 				$this->_OffsetManage( kAPI_STATUS, kAPI_AFFECTED_COUNT, $ok[ 'n' ] );
@@ -1954,9 +1771,7 @@ class CMongoDataWrapper extends CDataWrapper
 				// Set message.
 				//
 				$this->_OffsetManage( kAPI_STATUS, kTAG_DESCRIPTION,
-									  array( kTAG_TYPE => kTYPE_STRING,
-											 kTAG_LANGUAGE => 'en',
-											 kTAG_STRING => $ok[ 'errmsg' ] ) );
+									  array( 'en' => $ok[ 'errmsg' ] ) );
 			}
 			else
 				$this->_OffsetManage( kAPI_STATUS, kAPI_AFFECTED_COUNT, $ok[ 'n' ] );

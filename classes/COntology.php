@@ -2055,6 +2055,8 @@ class COntology extends CConnection
 	 *	 </ul>
 	 *	<li><tt>$theAttributes</tt>: This optional parameter can be used to limit the
 	 *		returned attributes to the list provided in this array.
+	 *	<li><tt>$doTags</tt>: If this flag is <tt>TRUE</tt>, the method will load the tags;
+	 *		if <tt>FALSE</tt> no tags will be loaded.
 	 * </ul>
 	 *
 	 * The method will generate an array containing the normalised attributes of the term
@@ -2067,12 +2069,14 @@ class COntology extends CConnection
 	 * @param reference			   &$theCollection		Exported collection.
 	 * @param mixed					$theTerm			Node identifier or list.
 	 * @param array					$theAttributes		List of attribute tags.
+	 * @param boolean				$doTags				TRUE means load tags.
 	 *
 	 * @access public
 	 *
 	 * @throws Exception
 	 */
-	public function ExportTerm( &$theCollection, $theTerm, $theAttributes = NULL )
+	public function ExportTerm( &$theCollection, $theTerm, $theAttributes = NULL,
+														   $doTags = TRUE )
 	{
 		//
 		// Check if object is ready.
@@ -2149,9 +2153,10 @@ class COntology extends CConnection
 					//
 					// Get term tags.
 					//
-					$this->ExportTag( $theCollection,
-									  array_keys( $theTerm ),
-									  $theAttributes );
+					if( $doTags )
+						$this->ExportTag( $theCollection,
+										  array_keys( $theTerm ),
+										  $theAttributes );
 				
 				} // New term.
 			
@@ -2212,6 +2217,8 @@ class COntology extends CConnection
 	 *	 </ul>
 	 *	<li><tt>$theAttributes</tt>: This optional parameter can be used to limit the
 	 *		returned attributes to the list provided in this array.
+	 *	<li><tt>$doTags</tt>: If this flag is <tt>TRUE</tt>, the method will load the tags;
+	 *		if <tt>FALSE</tt> no tags will be loaded.
 	 * </ul>
 	 *
 	 * The method will generate an array containing the merged attributes of the node and
@@ -2229,12 +2236,14 @@ class COntology extends CConnection
 	 * @param reference			   &$theCollection		Exported collection.
 	 * @param mixed					$theNode			Node identifier or list.
 	 * @param array					$theAttributes		List of attribute tags.
+	 * @param boolean				$doTags				TRUE means load tags.
 	 *
 	 * @access public
 	 *
 	 * @throws Exception
 	 */
-	public function ExportNode( &$theCollection, $theNode, $theAttributes = NULL )
+	public function ExportNode( &$theCollection, $theNode, $theAttributes = NULL,
+														   $doTags = TRUE )
 	{
 		//
 		// Check if object is ready.
@@ -2316,9 +2325,10 @@ class COntology extends CConnection
 					//
 					// Get node tags.
 					//
-					$this->ExportTag( $theCollection,
-									  array_keys( $theNode ),
-									  $theAttributes );
+					if( $doTags )
+						$this->ExportTag( $theCollection,
+										  array_keys( $theNode ),
+										  $theAttributes );
 				
 				} // New node.
 			
@@ -3509,7 +3519,7 @@ class COntology extends CConnection
 				   kOFFSET_DESCRIPTION => "This tag defines a regular expression string type." ),
 			array( kOFFSET_LID => substr( kTYPE_LSTRING, 1 ),
 				   kOFFSET_LABEL => "Language strings list",
-				   kOFFSET_DESCRIPTION => "This data type represents a string attribute that can be expressed in several languages, it is implemented as an array of elements with two items in which one contains the language code and the other the string." ),
+				   kOFFSET_DESCRIPTION => "This data type represents a string attribute that can be expressed in several languages, it is implemented as an array of elements in which the index represents the language code in which the string, stored in the element data, is expressed in." ),
 			array( kOFFSET_LID => substr( kTYPE_STAMP, 1 ),
 				   kOFFSET_LABEL => "Time-stamp",
 				   kOFFSET_DESCRIPTION => "This data type should be used for native time-stamps." ),
@@ -3712,14 +3722,6 @@ class COntology extends CConnection
 				   kOFFSET_NAMESPACE => $ns,
 				   kOFFSET_LABEL => "Code",
 				   kOFFSET_DESCRIPTION => "Generic code." ),
-			array( kOFFSET_LID => substr( kOFFSET_LANGUAGE, 1 ),
-				   kOFFSET_NAMESPACE => $ns,
-				   kOFFSET_LABEL => "Language",
-				   kOFFSET_DESCRIPTION => "This tag represents a language code." ),
-			array( kOFFSET_LID => substr( kOFFSET_STRING, 1 ),
-				   kOFFSET_NAMESPACE => $ns,
-				   kOFFSET_LABEL => "String",
-				   kOFFSET_DESCRIPTION => "This tag represents a generic string." ),
 
 			array( kOFFSET_LID => substr( kOFFSET_NAMESPACE, 1 ),
 				   kOFFSET_NAMESPACE => $ns,
@@ -4146,66 +4148,6 @@ class COntology extends CConnection
 				echo( "    - ".$tmp->GID()." ["
 							  .$parent_node[ kOFFSET_NID ]."] ("
 							  .$tag[ kOFFSET_NID ].")\n" );
-
-			//
-			// Create subtag.
-			//
-			if( ($tmp[ kTAG_GID ] == kOFFSET_LABEL)
-			 || ($tmp[ kTAG_GID ] == kOFFSET_DESCRIPTION) )
-			{
-				//
-				// Load term data.
-				//
-				$list = array(
-					array( kOFFSET_LID => substr( kOFFSET_LANGUAGE, 1 ),
-						   kOFFSET_TYPE => kTYPE_STRING ),
-					array( kOFFSET_LID => substr( kOFFSET_STRING, 1 ),
-						   kOFFSET_TYPE => array( kTYPE_STRING, kTYPE_CARD_REQUIRED ) ) );
-				
-				//
-				// Create structure nodes.
-				//
-				foreach( $list as $item )
-				{
-					//
-					// Resolve node.
-					//
-					$child_node
-						= $this->NewScaleNode(
-							$tmp
-								= $this->ResolveTerm(
-									$item[ kOFFSET_LID ],	// Local identifier.
-									$ns,					// Namespace object.
-									TRUE ),					// Raise exception on fail.
-							$item[ kOFFSET_TYPE ] );		// Data type.
-					if( is_array( $child_node ) )
-						$child_node = $child_node[ 0 ];
-					
-					//
-					// Relate.
-					//
-					$this->SubclassOf( $child_node, $parent_node );
-				
-					//
-					// Create tag.
-					//
-					$tag = NULL;
-					$this->AddToTag( $tag, $parent_node );
-					$this->AddToTag( $tag, $predicate );
-					$this->AddToTag( $tag, $child_node );
-					$this->AddToTag( $tag, TRUE );
-					
-					//
-					// Inform.
-					//
-					if( kOPTION_VERBOSE )
-						echo( "    - ".$tmp->GID()." ["
-									  .$child_node[ kOFFSET_NID ]."] ("
-									  .$tag[ kOFFSET_NID ].")\n" );
-				
-				} // Iterating substructure elements.
-			
-			} // Structured tag.
 		
 		} // Iterating first level terms.
 

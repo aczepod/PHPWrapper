@@ -48,7 +48,7 @@ define( "kTAG_GID",								'2' );
  * {@link kOFFSET_NID} is not related to the {@link kTAG_GID}. This is generally used
  * when the {@link kOFFSET_NID} is a sequence number.
  */
-define( "kTAG_UID",								'22' );
+define( "kTAG_UID",								'18' );
 
 /*=======================================================================================
  *	QUALIFICATION ATTRIBUTES															*
@@ -60,7 +60,7 @@ define( "kTAG_UID",								'22' );
  * This tag identifies the class name of the object, it can be used to instantiate a class
  * rather than return an array when querying containers.
  */
-define( "kTAG_CLASS",							'3' );
+define( "kTAG_CLASS",							'4' );
 
 /**
  * Object kind.
@@ -69,7 +69,7 @@ define( "kTAG_CLASS",							'3' );
  * define the kind or specific type of an object, these enumerations will be in the form of
  * native unique identifiers, {@link kOFFSET_NID}, of the terms that define the enumeration.
  */
-define( "kTAG_KIND",							'16' );
+define( "kTAG_KIND",							'12' );
 
 /**
  * Object data type.
@@ -78,7 +78,7 @@ define( "kTAG_KIND",							'16' );
  * the specific data type of an object, this value will be in the form of the native unique
  * identifier, {@link kOFFSET_NID}, of the term that defines the enumeration.
  */
-define( "kTAG_TYPE",							'17' );
+define( "kTAG_TYPE",							'13' );
 
 /*=======================================================================================
  *	ONTOLOGY ATTRIBUTES																	*
@@ -91,7 +91,7 @@ define( "kTAG_TYPE",							'17' );
  * native unique identifier, {@link kOFFSET_NID}, of the namespace object; if you want to
  * refer to the namespace code, this is not the offset to use.
  */
-define( "kTAG_NAMESPACE",						'10' );
+define( "kTAG_NAMESPACE",						'3' );
 
 /**
  * Term.
@@ -99,7 +99,7 @@ define( "kTAG_NAMESPACE",						'10' );
  * This tag identifies a reference to a term object, its value will be the native unique
  * identifier, {@link kOFFSET_NID}, of the referenced term.
  */
-define( "kTAG_TERM",							'12' );
+define( "kTAG_TERM",							'8' );
 
 /**
  * Subject reference.
@@ -107,7 +107,7 @@ define( "kTAG_TERM",							'12' );
  * This tag identifies the reference to the subject vertex of a subject/predicate/object
  * triplet in a graph.
  */
-define( "kTAG_VERTEX_SUBJECT",					'19' );
+define( "kTAG_VERTEX_SUBJECT",					'15' );
 
 /**
  * Object reference.
@@ -115,7 +115,7 @@ define( "kTAG_VERTEX_SUBJECT",					'19' );
  * This tag identifies the reference to the object vertex of a subject/predicate/object
  * triplet in a graph.
  */
-define( "kTAG_VERTEX_OBJECT",					'21' );
+define( "kTAG_VERTEX_OBJECT",					'17' );
 
 /**
  * Predicate reference.
@@ -123,7 +123,7 @@ define( "kTAG_VERTEX_OBJECT",					'21' );
  * This tag identifies the reference to the predicate object of a subject/predicate/object
  * triplet in a graph.
  */
-define( "kTAG_PREDICATE",						'20' );
+define( "kTAG_PREDICATE",						'16' );
 
 /**
  * Synonyms.
@@ -131,7 +131,7 @@ define( "kTAG_PREDICATE",						'20' );
  * This tag identifies the synonyms offset, this attribute is a list of strings that
  * represent alternate codes or names that identify the specific term.
  */
-define( "kTAG_SYNONYMS",						'11' );
+define( "kTAG_SYNONYMS",						'7' );
 
 /**
  * Vertex terms.
@@ -139,14 +139,14 @@ define( "kTAG_SYNONYMS",						'11' );
  * This tag identifies the offset that will contain the list of identifiers of the terms
  * referenced by the tag path's vertex elements.
  */
-define( "kTAG_VERTEX_TERMS",					'24' );
+define( "kTAG_VERTEX_TERMS",					'20' );
 
 /**
  * Tag path.
  *
  * This tag identifies a list of items constituting the path or sequence of a tag.
  */
-define( "kTAG_TAG_PATH",						'23' );
+define( "kTAG_TAG_PATH",						'19' );
 
 /**
  * Namespace references.
@@ -154,7 +154,7 @@ define( "kTAG_TAG_PATH",						'23' );
  * This tag identifies namespace references, the attribute contains the count of how many
  * times the term was referenced as a namespace.
  */
-define( "kTAG_REFS_NAMESPACE",					'13' );
+define( "kTAG_REFS_NAMESPACE",					'9' );
 
 /**
  * Node references.
@@ -162,7 +162,7 @@ define( "kTAG_REFS_NAMESPACE",					'13' );
  * This tag identifies node references, the attribute contains the list of identifiers of
  * nodes that reference the current object.
  */
-define( "kTAG_REFS_NODE",						'14' );
+define( "kTAG_REFS_NODE",						'10' );
 
 /**
  * Tag references.
@@ -170,7 +170,7 @@ define( "kTAG_REFS_NODE",						'14' );
  * This tag identifies tag references, the attribute contains the list of identifiers of
  * tags that reference the current term.
  */
-define( "kTAG_REFS_TAG",						'15' );
+define( "kTAG_REFS_TAG",						'11' );
 
 /**
  * Edge references.
@@ -178,106 +178,64 @@ define( "kTAG_REFS_TAG",						'15' );
  * This tag identifies edge references, the attribute contains the list of identifiers of
  * edges that reference the current node.
  */
-define( "kTAG_REFS_EDGE",						'18' );
-
-/*=======================================================================================
- *	STRUCTURED ATTRIBUTES																*
- *======================================================================================*/
-
-/**
- * Label.
- *
- * This tag is used as the offset for the term's label, this attribute represents the term
- * name or short description structure that is an array of elements containing the following
- * items:
- *
- * <ul>
- *	<li><tt>{@link kTAG_STRING}</tt>: The string.
- *	<li><tt>{@link kTAG_LANGUAGE}</tt>: The language code of the string.
- * </ul>
- */
-define( "kTAG_LABEL",							'4' );
-
-/**
- * Label language code.
- *
- * This tag represents the label language code.
- */
-define( "kTAG_LABEL_LANGUAGE",					'5' );
-
-/**
- * Label string.
- *
- * This tag represents the label string.
- */
-define( "kTAG_LABEL_STRING",					'6' );
-
-/**
- * Description.
- *
- * This tag is used as the offset for the term's description, this attribute represents the
- * term description or definition structure that is an array of elements containing the following
- * items:
- *
- * <ul>
- *	<li><tt>{@link kTAG_STRING}</tt>: The string.
- *	<li><tt>{@link kTAG_LANGUAGE}</tt>: The language code of the string.
- * </ul>
- */
-define( "kTAG_DESCRIPTION",						'7' );
-
-/**
- * Description language code.
- *
- * This tag represents the description language code.
- */
-define( "kTAG_DESCRIPTION_LANGUAGE",			'8' );
-
-/**
- * Description string.
- *
- * This tag represents the description string.
- */
-define( "kTAG_DESCRIPTION_STRING",				'9' );
+define( "kTAG_REFS_EDGE",						'14' );
 
 /*=======================================================================================
  *	GENERIC ATTRIBUTES																	*
  *======================================================================================*/
 
 /**
+ * Label.
+ *
+ * This tag is used as the offset for the term's label, this attribute represents the term
+ * name or short description structure that is an array of elements in which the index
+ * represents the language code of the string that is stored as the element value.
+ */
+define( "kTAG_LABEL",							'5' );
+
+/**
+ * Description.
+ *
+ * This tag is used as the offset for the term's description, this attribute represents the
+ * term description or definition structure that is an array of elements in which the index
+ * represents the language code of the string that is stored as the element value.
+ */
+define( "kTAG_DESCRIPTION",						'6' );
+
+/**
  * Authors.
  *
  * This tag is used as the offset for a list of authors.
  */
-define( "kTAG_AUTHORS",							'25' );
+define( "kTAG_AUTHORS",							'21' );
 
 /**
  * Notes.
  *
  * This tag is used as the offset for generic notes.
  */
-define( "kTAG_NOTES",							'26' );
+define( "kTAG_NOTES",							'22' );
 
 /**
  * Acknowledgments.
  *
  * This tag is used as the offset for generic acknowledgments.
  */
-define( "kTAG_ACKNOWLEDGMENTS",					'27' );
+define( "kTAG_ACKNOWLEDGMENTS",					'23' );
 
 /**
  * Bibliography.
  *
  * This tag represents the offset for a bibliography list.
  */
-define( "kTAG_BIBLIOGRAPHY",					'28' );
+define( "kTAG_BIBLIOGRAPHY",					'24' );
 
 /**
  * Examples.
  *
  * This tag represents the offset for a list of examples or templates.
  */
-define( "kTAG_EXAMPLES",						'29' );
+define( "kTAG_EXAMPLES",						'25' );
 
 /*=======================================================================================
  *	CUSTOM TYPE SUB ATTRIBUTES															*

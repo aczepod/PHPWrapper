@@ -31,19 +31,6 @@
  */
 define( "kAPI_OP_GET_ONE",			'@GET-ONE' );
 
-/**
- * GET-OBJECT-REF web-service.
- *
- * This tag defines a web service that returns an object by reference. It is equivalent to
- * the {@link kAPI_OP_GET_ONE} operation, except that instead of using the query provided in
- * the {@link kAPI_QUERY} parameter, it will try to extract an identifier from the
- * object provided in the {@link kAPI_OBJECT} parameter.
- *
- * Note that as with other values in the {@link kAPI_OBJECT} parameter, you must
- * {@link CDataType::SerialiseObject()} the value.
- */
-define( "kAPI_OP_GET_OBJECT_REF",	'@GET-REF' );
-
 /*=======================================================================================
  *	DEFAULT STATUS TAGS																	*
  *======================================================================================*/

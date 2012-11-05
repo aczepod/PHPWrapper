@@ -628,45 +628,6 @@ abstract class CContainer extends CConnection
 	} // UnserialiseObject.
 
 	 
-	/*===================================================================================
-	 *	UnserialiseData																	*
-	 *==================================================================================*/
-
-	/**
-	 * Unserialise provided data element.
-	 *
-	 * This method should convert the provided structure into a custom data type compatible
-	 * with the current container.
-	 *
-	 * This method is called by a public {@link UnserialiseObject()} interface which
-	 * traverses an object and provides this method with all elements that satisfy the
-	 * following conditions:
-	 *
-	 * <ul>
-	 *	<li><tt>{@link CDataType}</tt>: All instances derived from this class are sent to
-	 *		this method.
-	 *	<li><tt>Array</tt> or <tt>ArrayObject</tt>: If the structure is composed of exactly
-	 *		two offsets and these elements are {@link kTAG_CUSTOM_TYPE} and
-	 *		{@link kTAG_CUSTOM_DATA}, it will be sent to this method.
-	 * </ul>
-	 *
-	 * Derived concrete classes will implement this method to intercept all structures that
-	 * can be converted to a native data type compatible with the current container.
-	 *
-	 * The elements to be converted are provided by reference, which means that they have to
-	 * be converted in place.
-	 *
-	 * This class is abstract, so we force derived classes to implement this method.
-	 *
-	 * @param reference			   &$theElement			Element to encode.
-	 *
-	 * @static
-	 *
-	 * @see kTAG_CUSTOM_TYPE kTAG_CUSTOM_DATA
-	 */
-	abstract static function UnserialiseData( &$theElement );
-
-	 
 
 } // class CContainer.
 
