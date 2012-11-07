@@ -1,0 +1,875 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<meta name="generator" content="ApiGen 2.8.0" />
+
+	<title>Class COntologyWrapper | MyWrapper Reference Documentation</title>
+
+	<script type="text/javascript" src="resources/combined.js?368249000"></script>
+	<script type="text/javascript" src="elementlist.js?2116948467"></script>
+	<link rel="stylesheet" type="text/css" media="all" href="resources/style.css?3505392360" />
+
+</head>
+
+<body>
+<div id="left">
+	<div id="menu">
+		<a href="index.html" title="Overview"><span>Overview</span></a>
+
+
+		<div id="groups">
+			<h3>Packages</h3>
+			<ul>
+				<li class="active main"><a href="package-MyWrapper.html">MyWrapper<span></span></a>
+						<ul>
+				<li class="main"><a href="package-MyWrapper.Data.html">Data</a>
+						</li>
+				<li class="main"><a href="package-MyWrapper.Definitions.html">Definitions</a>
+						</li>
+				<li class="main"><a href="package-MyWrapper.Framework.html">Framework</a>
+						</li>
+				<li class="main"><a href="package-MyWrapper.Functions.html">Functions</a>
+						</li>
+				<li class="main"><a href="package-MyWrapper.Ontology.html">Ontology</a>
+						</li>
+				<li class="main"><a href="package-MyWrapper.Persistence.html">Persistence</a>
+						</li>
+				<li class="active main"><a href="package-MyWrapper.Wrappers.html">Wrappers</a>
+						</li>
+							</ul></li>
+				<li><a href="package-PHP.html">PHP</a>
+						</li>
+			</ul>
+		</div>
+
+		<hr />
+
+
+		<div id="elements">
+			<h3>Classes</h3>
+			<ul>
+				<li><a href="class-CDataWrapper.html">CDataWrapper</a></li>
+				<li><a href="class-CMongoDataWrapper.html">CMongoDataWrapper</a></li>
+				<li class="active"><a href="class-COntologyWrapper.html">COntologyWrapper</a></li>
+				<li><a href="class-CWrapper.html">CWrapper</a></li>
+			</ul>
+
+
+
+
+
+		</div>
+	</div>
+</div>
+
+<div id="splitter"></div>
+
+<div id="right">
+<div id="rightInner">
+	<form id="search">
+		<input type="hidden" name="cx" value="" />
+		<input type="hidden" name="ie" value="UTF-8" />
+		<input type="text" name="q" class="text" />
+		<input type="submit" value="Search" />
+	</form>
+
+	<div id="navigation">
+		<ul>
+			<li>
+				<a href="index.html" title="Overview"><span>Overview</span></a>
+			</li>
+			<li>
+				<a href="package-MyWrapper.Wrappers.html" title="Summary of MyWrapper\Wrappers"><span>Package</span></a>
+			</li>
+			<li class="active">
+<span>Class</span>			</li>
+		</ul>
+		<ul>
+			<li>
+				<a href="tree.html" title="Tree view of classes, interfaces, traits and exceptions"><span>Tree</span></a>
+			</li>
+		</ul>
+		<ul>
+		</ul>
+	</div>
+
+<div id="content" class="class">
+	<h1>Class COntologyWrapper</h1>
+
+
+	<div class="description">
+	
+<p>Ontology wrapper.</p>
+
+<p>This class overloads its ancestor to implement the framework for providing
+services that return data from an ontology. The class does not feature a
+concrete data store engine, so it only concentrates in providing the framework
+for derived classes that implement concrete data store instances, for this
+reason this class is abstract.</p>
+
+<p>This class implements high level services, that is, it will return data that
+is an aggregation of various containers.</p>
+
+<p>These new functionalities require an additional set of parameters:</p>
+
+<ul>
+	<li><i>Category parameters</i>: These parameters refer to categories used to
+	select specific elements:
+		<ul>
+			<li><i>kAPI_KIND</i>: <i>Kind</i>, this parameter generally refers to
+			the node kind, it is an array of elements that the selected nodes must
+			match.</li>
+		</ul>
+	</li>
+
+	<li><i>Operations</i>: This class adds the following operations:
+		<ul>
+			<li><i>kAPI_OP_GetNodesByKind</i>: <i>Get nodes by kind</i>, this
+			operation will return a list of nodes that match the provided kind enumerations
+			in the kAPI_KIND parameter. The operation expects the following
+			parameters:
+				<ul>
+					<li><i>kAPI_FORMAT</i>: Format, this parameter is required, since other
+					non scalar parameters must be encoded.</li>
+
+					<li><i>kAPI_DATABASE</i>: Database, database to which the container
+					belongs.</li>
+
+					<li><i>kAPI_KIND</i>: Kinds list (optional), the selection
+					criteria.</li>
+
+					<li><i>kAPI_SELECT</i>: Select (optional), the list of fields to be
+					returned.</li>
+
+					<li><i>kAPI_PAGE_LIMIT</i>:This parameter is required or enforced, it
+					represents the maximum number of elements that the query should return, the
+					default value is kDEFAULT_LIMIT.</li>
+				</ul>
+			</li>
+		</ul>
+	</li>
+</ul>
+
+	</div>
+
+	<dl class="tree">
+		<dd style="padding-left:0px">
+			<a href="class-ArrayObject.html"><span>ArrayObject</span></a>
+			
+			 implements 
+				<a href="class-IteratorAggregate.html"><span>IteratorAggregate</span></a>, 
+			
+				<a href="class-Traversable.html"><span>Traversable</span></a>, 
+			
+				<a href="class-ArrayAccess.html"><span>ArrayAccess</span></a>, 
+			
+				<a href="class-Serializable.html"><span>Serializable</span></a>, 
+			
+				<a href="class-Countable.html"><span>Countable</span></a>
+			
+			
+		</dd>
+		<dd style="padding-left:30px">
+			<img src="resources/inherit.png" alt="Extended by" />
+			<a href="class-CDocument.html"><span>CDocument</span></a>
+			
+			
+			
+		</dd>
+		<dd style="padding-left:60px">
+			<img src="resources/inherit.png" alt="Extended by" />
+			<a href="class-CStatusDocument.html"><span>CStatusDocument</span></a>
+			
+			
+			
+		</dd>
+		<dd style="padding-left:90px">
+			<img src="resources/inherit.png" alt="Extended by" />
+			<a href="class-CWrapper.html"><span>CWrapper</span></a>
+			
+			
+			
+		</dd>
+		<dd style="padding-left:120px">
+			<img src="resources/inherit.png" alt="Extended by" />
+			<a href="class-CDataWrapper.html"><span>CDataWrapper</span></a>
+			
+			
+			
+		</dd>
+		<dd style="padding-left:150px">
+			<img src="resources/inherit.png" alt="Extended by" />
+<b><span>COntologyWrapper</span></b>			
+			
+			
+		</dd>
+	</dl>
+
+
+
+
+
+
+
+
+	<div class="info">
+		<b>Abstract</b><br />
+		
+		
+		<b>Package:</b> <a href="package-MyWrapper.html">MyWrapper</a>\<a href="package-MyWrapper.Wrappers.html">Wrappers</a><br />
+
+				<b>Author:</b>
+				Milko A. Škofič &lt;<a
+href="mailto:m.skofic&#64;cgiar.org">m.skofic&#64;<!---->cgiar.org</a>&gt;<br />
+		<b>Located at</b> <a href="source-class-COntologyWrapper.html#36-526" title="Go to source code">COntologyWrapper.php</a><br />
+	</div>
+
+
+
+	<table class="summary" id="methods">
+	<caption>Methods summary</caption>
+	<tr data-order="_ParseRequest" id="__ParseRequest">
+
+		<td class="attributes"><code>
+			 protected 
+			
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#__ParseRequest">#</a>
+		<code><a href="source-class-COntologyWrapper.html#95-129" title="Go to source code">_ParseRequest</a>( )</code>
+
+		<div class="description short">
+			
+<p>Parse request.</p>
+
+		</div>
+
+		<div class="description detailed hidden">
+			
+<p>Parse request.</p>
+
+<p>This method should be used to parse the request, check the request elements
+and make any necessary adjustments before the request is <code><a href="class-COntologyWrapper.html#__ValidateRequest">COntologyWrapper::_ValidateRequest()</a></code>.</p>
+
+<p>This is also where the relevant request elements will be logged to the
+relative response sections.</p>
+
+<p>The method is called by the constructor and should be overloaded to handle
+derived classes custom elements.</p>
+
+<p>In this class we handle the following parameters:</p>
+
+<ul>
+	<li><tt>kAPI_KIND</tt>: We copy the kinds list to the request.</li>
+</ul>
+
+
+
+
+
+
+				<h4>Uses</h4>
+				<div class="list">
+						<code><code><a href="class-COntologyWrapper.html#__ParseKinds">COntologyWrapper::_ParseKinds()</a></code></code> <br />
+				</div>
+
+				<h4>Overrides</h4>
+				<div class="list"><code><a href="class-CDataWrapper.html#__ParseRequest">CDataWrapper::_ParseRequest()</a></code></div>
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="_FormatRequest" id="__FormatRequest">
+
+		<td class="attributes"><code>
+			 protected 
+			
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#__FormatRequest">#</a>
+		<code><a href="source-class-COntologyWrapper.html#136-159" title="Go to source code">_FormatRequest</a>( )</code>
+
+		<div class="description short">
+			
+<p>Format request.</p>
+
+		</div>
+
+		<div class="description detailed hidden">
+			
+<p>Format request.</p>
+
+<p>This method should perform any needed formatting before the request will be
+handled.</p>
+
+<p>In this class we handle the parameters to be decoded</p>
+
+
+
+
+
+
+				<h4>Uses</h4>
+				<div class="list">
+						<code><code><a href="class-COntologyWrapper.html#__FormatKinds">COntologyWrapper::_FormatKinds()</a></code></code> <br />
+				</div>
+
+				<h4>Overrides</h4>
+				<div class="list"><code><a href="class-CDataWrapper.html#__FormatRequest">CDataWrapper::_FormatRequest()</a></code></div>
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="_ValidateRequest" id="__ValidateRequest">
+
+		<td class="attributes"><code>
+			 protected 
+			
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#__ValidateRequest">#</a>
+		<code><a href="source-class-COntologyWrapper.html#166-191" title="Go to source code">_ValidateRequest</a>( )</code>
+
+		<div class="description short">
+			
+<p>Validate request.</p>
+
+		</div>
+
+		<div class="description detailed hidden">
+			
+<p>Validate request.</p>
+
+<p>This method should check that the request is valid and that all required
+parameters have been sent.</p>
+
+<p>In this class we check the kAPI_FORMAT and kAPI_OPERATION
+codes (their presence is checked by the constructor.</p>
+
+
+
+
+
+
+				<h4>Uses</h4>
+				<div class="list">
+						<code><code><a href="class-COntologyWrapper.html#__ValidateKinds">COntologyWrapper::_ValidateKinds()</a></code></code> <br />
+				</div>
+
+				<h4>Overrides</h4>
+				<div class="list"><code><a href="class-CDataWrapper.html#__ValidateRequest">CDataWrapper::_ValidateRequest()</a></code></div>
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="_ParseOperation" id="__ParseOperation">
+
+		<td class="attributes"><code>
+			 protected 
+			
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#__ParseOperation">#</a>
+		<code><a href="source-class-COntologyWrapper.html#207-249" title="Go to source code">_ParseOperation</a>( )</code>
+
+		<div class="description short">
+			
+<p>Parse operation.</p>
+
+		</div>
+
+		<div class="description detailed hidden">
+			
+<p>Parse operation.</p>
+
+<p>We overload this method to remove unnecessary parameter from the request,
+depending on the current operation:</p>
+
+<ul>
+	<li><tt>kAPI_OP_GetNodesByKind</tt>: This operation requires that the
+	page limits be set, only a defined number of records should be returned by a
+	service: if the kAPI_PAGE_LIMIT parameter was not provided, this method
+	will set it to kDEFAULT_LIMIT.</li>
+</ul>
+
+
+
+
+
+
+				<h4>See</h4>
+				<div class="list">
+						kAPI_OPERATION<br />
+				</div>
+
+				<h4>Overrides</h4>
+				<div class="list"><code><a href="class-CDataWrapper.html#__ParseOperation">CDataWrapper::_ParseOperation()</a></code></div>
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="_ParseKinds" id="__ParseKinds">
+
+		<td class="attributes"><code>
+			 protected 
+			
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#__ParseKinds">#</a>
+		<code><a href="source-class-COntologyWrapper.html#256-279" title="Go to source code">_ParseKinds</a>( )</code>
+
+		<div class="description short">
+			
+<p>Parse kinds.</p>
+
+		</div>
+
+		<div class="description detailed hidden">
+			
+<p>Parse kinds.</p>
+
+<p>This method will copy the query selection to the request block.</p>
+
+
+
+
+
+
+				<h4>See</h4>
+				<div class="list">
+						kAPI_KIND kAPI_REQUEST<br />
+				</div>
+				<h4>Uses</h4>
+				<div class="list">
+						<code><code><a href="class-CWrapper.html#__OffsetManage">CWrapper::_OffsetManage()</a></code></code> <br />
+				</div>
+				<h4>Used by</h4>
+				<div class="list">
+						<code><code><a href="class-COntologyWrapper.html#__ParseRequest">COntologyWrapper::_ParseRequest()</a></code></code> <br />
+				</div>
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="_FormatKinds" id="__FormatKinds">
+
+		<td class="attributes"><code>
+			 protected 
+			
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#__FormatKinds">#</a>
+		<code><a href="source-class-COntologyWrapper.html#295-312" title="Go to source code">_FormatKinds</a>( )</code>
+
+		<div class="description short">
+			
+<p>Format selection parameters.</p>
+
+		</div>
+
+		<div class="description detailed hidden">
+			
+<p>Format selection parameters.</p>
+
+<p>This method will decode the provided selection from JSON or PHP encoding.</p>
+
+
+
+
+
+
+				<h4>See</h4>
+				<div class="list">
+						kAPI_KIND<br />
+				</div>
+				<h4>Used by</h4>
+				<div class="list">
+						<code><code><a href="class-COntologyWrapper.html#__FormatRequest">COntologyWrapper::_FormatRequest()</a></code></code> <br />
+				</div>
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="_ValidateOperation" id="__ValidateOperation">
+
+		<td class="attributes"><code>
+			 protected 
+			
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#__ValidateOperation">#</a>
+		<code><a href="source-class-COntologyWrapper.html#328-389" title="Go to source code">_ValidateOperation</a>( )</code>
+
+		<div class="description short">
+			
+<p>Validate request operation.</p>
+
+		</div>
+
+		<div class="description detailed hidden">
+			
+<p>Validate request operation.</p>
+
+<p>This method can be used to check whether the provided kAPI_OPERATION
+parameter is valid, in this class we screen and check the dependencies of the
+following operations:</p>
+
+<ul>
+	<li><tt>kAPI_OP_COUNT</tt>: Return the count of a query, this operation
+	requires the following parameters:
+		<ul>
+			<li><tt> </tt></li>
+		</ul>
+	</li>
+</ul>
+
+
+
+
+
+
+				<h4>See</h4>
+				<div class="list">
+						kAPI_OP_COUNT<br />
+				</div>
+
+				<h4>Overrides</h4>
+				<div class="list"><code><a href="class-CDataWrapper.html#__ValidateOperation">CDataWrapper::_ValidateOperation()</a></code></div>
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="_ValidateKinds" id="__ValidateKinds">
+
+		<td class="attributes"><code>
+			 protected 
+			
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#__ValidateKinds">#</a>
+		<code><a href="source-class-COntologyWrapper.html#396-436" title="Go to source code">_ValidateKinds</a>( )</code>
+
+		<div class="description short">
+			
+<p>Validate selection kinds.</p>
+
+		</div>
+
+		<div class="description detailed hidden">
+			
+<p>Validate selection kinds.</p>
+
+<p>The duty of this method is to validate the selection parameter, in this class
+we assume the value to be array, if a scalar is provided, we convert it to a
+string and create with it an array.</p>
+
+<p>If the resulting array is empty, we remove the request.</p>
+
+
+
+
+
+
+				<h4>See</h4>
+				<div class="list">
+						kAPI_KIND<br />
+				</div>
+				<h4>Used by</h4>
+				<div class="list">
+						<code><code><a href="class-COntologyWrapper.html#__ValidateRequest">COntologyWrapper::_ValidateRequest()</a></code></code> <br />
+				</div>
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="_HandleRequest" id="__HandleRequest">
+
+		<td class="attributes"><code>
+			 protected 
+			
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#__HandleRequest">#</a>
+		<code><a href="source-class-COntologyWrapper.html#452-475" title="Go to source code">_HandleRequest</a>( )</code>
+
+		<div class="description short">
+			
+<p>Handle request.</p>
+
+		</div>
+
+		<div class="description detailed hidden">
+			
+<p>Handle request.</p>
+
+<p>This method will handle the request.</p>
+
+
+
+
+
+
+
+				<h4>Overrides</h4>
+				<div class="list"><code><a href="class-CDataWrapper.html#__HandleRequest">CDataWrapper::_HandleRequest()</a></code></div>
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="_Handle_ListOp" id="__Handle_ListOp">
+
+		<td class="attributes"><code>
+			 protected 
+			
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#__Handle_ListOp">#</a>
+		<code><a href="source-class-COntologyWrapper.html#482-504" title="Go to source code">_Handle_ListOp</a>( <span>reference <var>&amp; $theList</var></span> )</code>
+
+		<div class="description short">
+			
+<p>Handle kAPI_OP_HELP operations request.</p>
+
+		</div>
+
+		<div class="description detailed hidden">
+			
+<p>Handle kAPI_OP_HELP operations request.</p>
+
+<p>This method will handle the locally supported operations.</p>
+
+
+
+				<h4>Parameters</h4>
+				<div class="list"><dl>
+					<dt><var>$theList</var></dt>
+					<dd><code>reference</code><br>$theList Receives operations list.</dd>
+				</dl></div>
+
+
+
+
+				<h4>Overrides</h4>
+				<div class="list"><code><a href="class-CDataWrapper.html#__Handle_ListOp">CDataWrapper::_Handle_ListOp()</a></code></div>
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="_Handle_GetNodesByKind" id="__Handle_GetNodesByKind">
+
+		<td class="attributes"><code>
+			abstract protected 
+			
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#__Handle_GetNodesByKind">#</a>
+		<code><a href="source-class-COntologyWrapper.html#511-522" title="Go to source code">_Handle_GetNodesByKind</a>( )</code>
+
+		<div class="description short">
+			
+<p>Handle kAPI_OP_GetNodesByKind request.</p>
+
+		</div>
+
+		<div class="description detailed hidden">
+			
+<p>Handle kAPI_OP_GetNodesByKind request.</p>
+
+<p>This method will handle the kAPI_OP_GetNodesByKind operation, which
+returns the nodes that match the provided list of node kinds.</p>
+
+<p>Since this class does not handle any specific data engine, we declare the
+method abstract and require concrete derived classes to implement it.</p>
+
+
+
+
+
+
+
+
+		</div>
+		</div></td>
+	</tr>
+	</table>
+
+	<table class="summary inherited">
+	<caption>Methods inherited from <a href="class-CDataWrapper.html#methods">CDataWrapper</a></caption>
+	<tr>
+		<td><code>
+			<a href="class-CDataWrapper.html#__DecodeParameter">_DecodeParameter()</a>, 
+			<a href="class-CDataWrapper.html#__FormatContainer">_FormatContainer()</a>, 
+			<a href="class-CDataWrapper.html#__FormatDatabase">_FormatDatabase()</a>, 
+			<a href="class-CDataWrapper.html#__FormatPaging">_FormatPaging()</a>, 
+			<a href="class-CDataWrapper.html#__FormatQuery">_FormatQuery()</a>, 
+			<a href="class-CDataWrapper.html#__FormatSelect">_FormatSelect()</a>, 
+			<a href="class-CDataWrapper.html#__FormatSort">_FormatSort()</a>, 
+			<a href="class-CDataWrapper.html#__Handle_Count">_Handle_Count()</a>, 
+			<a href="class-CDataWrapper.html#__Handle_Query">_Handle_Query()</a>, 
+			<a href="class-CDataWrapper.html#__ParseContainer">_ParseContainer()</a>, 
+			<a href="class-CDataWrapper.html#__ParseDatabase">_ParseDatabase()</a>, 
+			<a href="class-CDataWrapper.html#__ParsePaging">_ParsePaging()</a>, 
+			<a href="class-CDataWrapper.html#__ParseQuery">_ParseQuery()</a>, 
+			<a href="class-CDataWrapper.html#__ParseSelect">_ParseSelect()</a>, 
+			<a href="class-CDataWrapper.html#__ParseSort">_ParseSort()</a>, 
+			<a href="class-CDataWrapper.html#__ValidateContainer">_ValidateContainer()</a>, 
+			<a href="class-CDataWrapper.html#__ValidateDatabase">_ValidateDatabase()</a>, 
+			<a href="class-CDataWrapper.html#__ValidatePaging">_ValidatePaging()</a>, 
+			<a href="class-CDataWrapper.html#__ValidateQuery">_ValidateQuery()</a>, 
+			<a href="class-CDataWrapper.html#__ValidateSelect">_ValidateSelect()</a>, 
+			<a href="class-CDataWrapper.html#__ValidateSort">_ValidateSort()</a>
+		</code></td>
+	</tr>
+	</table>
+	<table class="summary inherited">
+	<caption>Methods inherited from <a href="class-CWrapper.html#methods">CWrapper</a></caption>
+	<tr>
+		<td><code>
+			<a href="class-CWrapper.html#_HandleRequest">HandleRequest()</a>, 
+			<a href="class-CWrapper.html#__EncodeResponse">_EncodeResponse()</a>, 
+			<a href="class-CWrapper.html#__Exception2Status">_Exception2Status()</a>, 
+			<a href="class-CWrapper.html#__Handle_Ping">_Handle_Ping()</a>, 
+			<a href="class-CWrapper.html#__InitOptions">_InitOptions()</a>, 
+			<a href="class-CWrapper.html#__InitResources">_InitResources()</a>, 
+			<a href="class-CWrapper.html#__InitStatus">_InitStatus()</a>, 
+			<a href="class-CWrapper.html#__OffsetManage">_OffsetManage()</a>, 
+			<a href="class-CWrapper.html#__ParseFormat">_ParseFormat()</a>, 
+			<a href="class-CWrapper.html#__ParseTiming">_ParseTiming()</a>, 
+			<a href="class-CWrapper.html#__ValidateFormat">_ValidateFormat()</a>, 
+			<a href="class-CWrapper.html#___construct">__construct()</a>
+		</code></td>
+	</tr>
+	</table>
+	<table class="summary inherited">
+	<caption>Methods inherited from <a href="class-CStatusDocument.html#methods">CStatusDocument</a></caption>
+	<tr>
+		<td><code>
+			<a href="class-CStatusDocument.html#__IsCommitted">_IsCommitted()</a>, 
+			<a href="class-CStatusDocument.html#__IsDirty">_IsDirty()</a>, 
+			<a href="class-CStatusDocument.html#__IsEncoded">_IsEncoded()</a>, 
+			<a href="class-CStatusDocument.html#__IsInited">_IsInited()</a>, 
+			<a href="class-CStatusDocument.html#__Postset">_Postset()</a>, 
+			<a href="class-CStatusDocument.html#__Postunset">_Postunset()</a>, 
+			<a href="class-CStatusDocument.html#__Preset">_Preset()</a>, 
+			<a href="class-CStatusDocument.html#__Preunset">_Preunset()</a>, 
+			<a href="class-CStatusDocument.html#__Ready">_Ready()</a>, 
+			<a href="class-CStatusDocument.html#_offsetSet">offsetSet()</a>, 
+			<a href="class-CStatusDocument.html#_offsetUnset">offsetUnset()</a>
+		</code></td>
+	</tr>
+	</table>
+	<table class="summary inherited">
+	<caption>Methods inherited from <a href="class-CDocument.html#methods">CDocument</a></caption>
+	<tr>
+		<td><code>
+			<a href="class-CDocument.html#_array_keys">array_keys()</a>, 
+			<a href="class-CDocument.html#_array_values">array_values()</a>, 
+			<a href="class-CDocument.html#_offsetGet">offsetGet()</a>
+		</code></td>
+	</tr>
+	</table>
+	<table class="summary inherited">
+	<caption>Methods inherited from <a href="class-ArrayObject.html#methods">ArrayObject</a></caption>
+	<tr>
+		<td><code>
+			<a href="class-ArrayObject.html#_append">append()</a>, 
+			<a href="class-ArrayObject.html#_asort">asort()</a>, 
+			<a href="class-ArrayObject.html#_count">count()</a>, 
+			<a href="class-ArrayObject.html#_exchangeArray">exchangeArray()</a>, 
+			<a href="class-ArrayObject.html#_getArrayCopy">getArrayCopy()</a>, 
+			<a href="class-ArrayObject.html#_getFlags">getFlags()</a>, 
+			<a href="class-ArrayObject.html#_getIterator">getIterator()</a>, 
+			<a href="class-ArrayObject.html#_getIteratorClass">getIteratorClass()</a>, 
+			<a href="class-ArrayObject.html#_ksort">ksort()</a>, 
+			<a href="class-ArrayObject.html#_natcasesort">natcasesort()</a>, 
+			<a href="class-ArrayObject.html#_natsort">natsort()</a>, 
+			<a href="class-ArrayObject.html#_offsetExists">offsetExists()</a>, 
+			<a href="class-ArrayObject.html#_serialize">serialize()</a>, 
+			<a href="class-ArrayObject.html#_setFlags">setFlags()</a>, 
+			<a href="class-ArrayObject.html#_setIteratorClass">setIteratorClass()</a>, 
+			<a href="class-ArrayObject.html#_uasort">uasort()</a>, 
+			<a href="class-ArrayObject.html#_uksort">uksort()</a>, 
+			<a href="class-ArrayObject.html#_unserialize">unserialize()</a>
+		</code></td>
+	</tr>
+	</table>
+
+
+
+
+
+
+
+
+	<table class="summary inherited">
+	<caption>Constants inherited from <a href="class-ArrayObject.html#constants">ArrayObject</a></caption>
+	<tr>
+		<td><code>
+			<a href="class-ArrayObject.html#ARRAY_AS_PROPS"><b>ARRAY_AS_PROPS</b></a>, 
+			<a href="class-ArrayObject.html#STD_PROP_LIST"><b>STD_PROP_LIST</b></a>
+		</code></td>
+	</tr>
+	</table>
+
+
+
+
+	<table class="summary inherited">
+	<caption>Properties inherited from <a href="class-CStatusDocument.html#properties">CStatusDocument</a></caption>
+	<tr>
+		<td><code>
+			<a href="class-CStatusDocument.html#$mStatus"><var>$mStatus</var></a>
+		</code></td>
+	</tr>
+	</table>
+
+
+
+
+
+</div>
+
+	<div id="footer">
+		MyWrapper Reference Documentation API documentation generated by <a href="http://apigen.org">ApiGen 2.8.0</a>
+	</div>
+</div>
+</div>
+</body>
+</html>
