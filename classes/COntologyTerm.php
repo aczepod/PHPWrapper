@@ -850,8 +850,14 @@ class COntologyTerm extends CTerm
 				( "The container is needed for encoding binary strings",
 				  kERROR_MISSING );												// !@! ==>
 		
-		return static::ResolveContainer( $theConnection, TRUE )
-					->ConvertValue( kTYPE_BINARY, md5( $theIdentifier, TRUE ) );	// ==>
+		//
+		// Build identifier.
+		//
+		$id = md5( $theIdentifier, TRUE );
+		static::ResolveContainer( $theConnection, TRUE )
+			->UnserialiseData( $id, kTYPE_BINARY );
+		
+		return $id;																	// ==>
 	
 	} // _id.
 		

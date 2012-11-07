@@ -10,8 +10,7 @@
  *	@subpackage	Wrappers
  *
  *	@author		Milko A. Škofič <m.skofic@cgiar.org>
- *	@version	1.00 05/06/2011
- *				2.00 22/02/2012
+ *	@version	1.00 06/11/2011
  */
 
 /*=======================================================================================
@@ -28,9 +27,9 @@
 require_once( kPATH_MYWRAPPER_LIBRARY_CLASS."/CWrapper.php" );
 
 /**
- * Query definitions.
+ * Queries.
  *
- * This include file contains the definitions of the {@link CQuery} class.
+ * This include file contains the query class definitions.
  */
 require_once( kPATH_MYWRAPPER_LIBRARY_CLASS."/CQuery.php" );
 
@@ -44,134 +43,100 @@ require_once( kPATH_MYWRAPPER_LIBRARY_CLASS."/CDataWrapper.inc.php" );
 /**
  *	Data wrapper.
  *
- * This class overloads its ancestor to implement a web service that wraps
- * a data store, it represents a framework for building concrete data store web-service
- * wrappers.
+ * This class overloads its ancestor to implement the framework for providing services that
+ * store and request data. The class does not feature a concrete data store engine, so it
+ * only concentrates in providing the framework for derived classes that implement concrete
+ * data store instances, for this reason this class is abstract.
  *
- * The class introduces a series of new operations and filter options that must be
- * implemented in derived classes which implement a specific data store.
- *
- * These new functionalities require a new set of parameters:
+ * These new functionalities require an additional set of parameters:
  *
  * <ul>
- *	<li><i>Data store parameters</i>: In order to refer to a specific data store we need
- *		two parameters:
+ *	<li><i>Request parameters</i>: These parameters refer to the parameters that the service
+ *		expects:
  *	 <ul>
- *		<li><i>{@link kAPI_DATABASE}</i>: <i>Database</i>, this parameter should indicate
- *			the database or equivalent concept where the data should be stored or retrieved.
- *			This parameter can be compared to the database part of an SQL table reference
- *			(<i>DATABASE</i>.TABLE).
- *		<li><i>{@link kAPI_CONTAINER}</i>: <i>Container</i>, this parameter should indicate
- *			which container within the database should be used to store or retrieve the
- *			data. This parameter can be compared to the table part of an SQL table reference
- *			(DATABASE.<i>TABLE</i>).
+ *		<li><i>{@link kAPI_SERVER}</i>: <i>Server</i>, this offset tag will be used to
+ *			locate the service {@link CServer} object, concrete derived classes should
+ *			instantiate this object in their {@link _InitResources()} method and store it in
+ *			the <tt>$_REQUEST</tt> global array.
+ *		<li><i>{@link kAPI_DATABASE}</i>: <i>Database</i>, this string parameter represents
+ *			the name of the database which is a concrete instance of {@link CDatabase}.
+ *		<li><i>{@link kAPI_CONTAINER}</i>: <i>Container</i>, this string parameter
+ *			represents the name of the container within the provided database,it will be a
+ *			concrete instance of {@link CContainer}.
+ *		<li><i>{@link kAPI_PAGE_START}</i>: <i>Page start</i>, this integer parameter
+ *			represents the start offset for paging, it is a zero-based index.
+ *		<li><i>{@link kAPI_PAGE_LIMIT}</i>: <i>Page limit</i>, this integer parameter
+ *			represents the maximum number of records to be returned.
+ *		<li><i>{@link kAPI_QUERY}</i>: <i>Query</i>, this array parameter represents the
+ *			data query, it should follow the rules of the {@link CQuery} class family.
+ *		<li><i>{@link kAPI_SELECT}</i>: <i>Select</i>, this array parameter represents the
+ *			query selection or fields list, it is constituted by an array of strings that
+ *			indicate which fields should be returned by the query.
+ *		<li><i>{@link kAPI_SORT}</i>: <i>Sort</i>, this array parameter represents the list
+ *			of fields upon which to sort the results, the array element indexes represent
+ *			the field references, the values are provided as numbers where negative values
+ *			represent a descending sense and zero or positive values ascending.
  *	 </ul>
- *	<li><i>Paging parameters</i>: Query results may possibly return large amounts of data,
- *		this means that a paging mechanism should be set in place:
+ *	<li><i>Response parameters</i>: These parameters refer to the parameters that the
+ *		service is expected to return:
  *	 <ul>
- *		<li><i>{@link kAPI_PAGE_START}</i>: <i>Page start</i>, this parameter indicates the
- *			starting page or record.
- *		<li><i>{@link kAPI_PAGE_LIMIT}</i>: <i>Page count</i>, this parameter indicates the
- *			maximum number of pages or records that the operation should return.
- *	 </ul>
- *	<li><i>Data parameters</i>: A query is formed by a series of sections, each of which is
- *		provided with the following parameters:
- *	 <ul>
- *		<li><i>{@link kAPI_QUERY}</i>: <i>Query</i>, this parameter is used when
- *			retrieving data, it represents the filter or selection query; it must be
- *			expressed as one of the query {@link CQuery} siblings. This parameter can
- *			be compared to the <i>WHERE</i> part of an SQL query.
- *		<li><i>{@link kAPI_SELECT}</i>: <i>Fields</i>, this parameter indicates which
- *			elements of the selected objects we want returned. This parameter can be
- *			compared to the <i>SELECT</i> part of an SQL query.
- *		<li><i>{@link kAPI_SORT}</i>: <i>Sort fields</i>, this parameter indicates the
- *			sort order, the list of data elements by which the result is to be sorted. This
- *			parameter can be compared to the {@link kAPI_SELECT} parameter or to the
- *			<i>ORDER BY</i> part of an SQL query.
- *		<li><i>{@link kAPI_OBJECT}</i>: <i>Object data</i>, this parameter represents
- *			the data to be stored in the database, the type should ideally be abstracted
- *			from the data store engine. This parameter can be compared to the <i>VALUES</i>
- *			or <i>SET</i> part of an SQL query.
- *		<li><i>{@link kAPI_OPTIONS}</i>: <i>Options</i>, this parameter represents the
- *			options governing data store and retrieve operations. In general it will cover
- *			the options when storing data and the actual implementation is the
- *			responsibility of derived classes:
+ *		<li><i>{@link kAPI_PAGING}</i>: <i>Paging</i>, this offset is constituted by the
+ *			list of parameters relating to paging:
  *		 <ul>
- *			<li><i>{@link kAPI_OPT_SAFE}</i>: Safe commit option, this is relevant only when
- *				committing data. If this option is <i>OFF</i>, it means we want to perform
- *				an asynchronous operation: the store operation will occur in the background
- *				and the program execution will not wait for it to finish; this also means
- *				that the client is responsible for checking whether the operation completed.
- *				If the option is <i>ON</i>, the operation is synchronous, which means that
- *				the program will wait for the store operation to complete.
- *			<li><i>{@link kAPI_OPT_FSYNC}</i>: File sync option, this tag is relevant only
- *				when committing data. If the option is <i>ON</i>, it means that the store
- *				operation will wait until the data is actually written to disk; which may
- *				not necessarily be the case even if the {@link kAPI_OPT_SAFE} option was on.
- *				When this option is set, it is implied that the {@link kAPI_OPT_SAFE} option
- *				is also on. If the option is <i>OFF</i>, it means that the data will be
- *				synched to disk only when the buffer is flushed.
- *			<li><i>{@link kAPI_OPT_TIMEOUT}</i>: Operation timeout, it represents the time
- *				in milliseconds beyond which the client will stop waiting for a response and
- *				expect a time out status.
- *			<li><i>{@link kAPI_OPT_SINGLE}</i>: First element, this option is used by the
- *				{@link kAPI_OP_DEL} operation: if <i>ON</i>, only the first object
- *				satisfying the {@link kAPI_QUERY} will be deleted; if <i>OFF</i> all
- *				selected elements will be deleted.
+ *			<li><i>{@link kAPI_PAGE_START}</i>: Page start (input).
+ *			<li><i>{@link kAPI_PAGE_LIMIT}</i>: Page limit (input).
+ *			<li><i>{@link kAPI_PAGE_COUNT}</i>: Page count (output), the actual number of
+ *				elements returned, which will be less or equal to the
+ *				{@link kAPI_PAGE_LIMIT} parameter.
+ *		 </ul>
+ *		<li><i>{@link kAPI_STATUS}</i>: <i>Status</i>, this block features an additional
+ *			element that is used by query requests:
+ *		 <ul>
+ *			<li><i>{@link kAPI_AFFECTED_COUNT}</i>: Affected count (output): the total
+ *				number of elements affected by the operation.
  *		 </ul>
  *	 </ul>
- * </ul>
- *
- * The new operations declared in this class are:
- *
- * <ul>
- *	<li><i>{@link kAPI_OP_COUNT}</i>: This operation requests a count, which is an integer
- *		indicating the total number of elements satisfying the provided
- *		{@link kAPI_QUERY}. This number is not to be confused with the page element
- *		{@link kAPI_RESP_PAGE_COUNT} described further.
- *	<li><i>{@link kAPI_OP_MATCH}</i>: This operation is equivalent to a read query, except
- *		that it will try to match one {@link kAPI_QUERY} clause at the time and will
- *		return a result on the first match.
- *	<li><i>{@link kAPI_OP_GET}</i>: This operation is equivalent to a read query, it
- *		requests a list of objects satisfying the provided {@link kAPI_QUERY}.
- *	<li><i>{@link kAPI_OP_SET}</i>: This operation is equivalent to an insert for new
- *		objects or an update for existing objects, the operation will replace the object in
- *		the data store with the one provided in the {@link kAPI_OBJECT} parameter.
- *	<li><i>{@link kAPI_OP_UPDATE}</i>: This operation is equivalent to an update operation,
- *		this implies that the object must already exist in the data store and that the
- *		operation will replace the object in the data store with the one provided in the
- *		{@link kAPI_OBJECT} parameter.
- *	<li><i>{@link kAPI_OP_INSERT}</i>: This operation is equivalent to an insert operation,
- *		this implies that the object must not already exist in the data store.
- *	<li><i>{@link kAPI_OP_BATCH_INSERT}</i>: This operation is equivalent to the
- *		{@link kAPI_OP_INSERT} operation, except that we provide here a list of objects to
- *		be inserted.
- *	<li><i>{@link kAPI_OP_MODIFY}</i>: This operation indicates that we want to modify the
- *		contents of an existing object and that the {@link kAPI_OBJECT} data represents
- *		only the changed elements.
- *	<li><i>{@link kAPI_OP_DEL}</i>: This operation indicates that we want to delete the
- *		elements matching the provided {@link kAPI_QUERY}: the first one only, if the
- *		provided {@link kAPI_OPT_SINGLE} option is on, or all if off or omitted.
- * </ul>
- *
- * The added functionality implies that a series of additional sections will be returned in
- * the response:
- *
- * <ul>
- *	<li><i>{@link kAPI_PAGING}</i>: Paging section, this section will return the paging
- *		information of the current operation, besides the provided {@link kAPI_PAGE_START}
- *		and {@link kAPI_PAGE_LIMIT} parameters, it will also feature:
+ *	<li><i>Operations</i>: This class adds the following operations:
  *	 <ul>
- *		<li><i>{@link kAPI_RESP_PAGE_COUNT}</i>: This element will hold the actual number of
- *			returned objects, this number will be either equal or smaller than the provided
- *			{@link kAPI_PAGE_LIMIT} parameter. 
+ *		<li><i>{@link kAPI_OP_COUNT}</i>: <i>Count</i>, this operation will return the total
+ *			number of elements that satisfy the provided {@link kAPI_QUERY}; if the latter
+ *			is omitted, it is assumed that we want the total number of elements in the
+ *			{@link kAPI_CONTAINER}. The operation expects the following parameters:
+ *		 <ul>
+ *			<li><i>{@link kAPI_FORMAT}</i>: Format, this parameter is required, since other
+ *				non scalar parameters must be encoded.
+ *			<li><i>{@link kAPI_DATABASE}</i>: Database, database to which the container
+ *				belongs.
+ *			<li><i>{@link kAPI_CONTAINER}</i>: Container, container in which to perform the
+ *				query.
+ *			<li><i>{@link kAPI_QUERY}</i>: Query (optional), the selection criteria.
+ *		 </ul>
+ *		<li><i>{@link kAPI_OP_QUERY}</i>: <i>Query</i>, this operation will return all
+ *			records that satisfy the provided query. The operation expects the following
+ *			parameters:
+ *		 <ul>
+ *			<li><i>{@link kAPI_FORMAT}</i>: Format, this parameter is required, since other
+ *				non scalar parameters must be encoded.
+ *			<li><i>{@link kAPI_DATABASE}</i>: Database, database to which the container
+ *				belongs.
+ *			<li><i>{@link kAPI_CONTAINER}</i>: Container, container in which to perform the
+ *				query.
+ *			<li><i>{@link kAPI_QUERY}</i>: Query (optional), the selection criteria.
+ *			<li><i>{@link kAPI_SELECT}</i>: Select (optional), the list of fields to be
+ *				returned.
+ *			<li><i>{@link kAPI_SORT}</i>: Sort (optional), the list of sort elements and
+ *				their sense.
+ *			<li><i>{@link kAPI_PAGE_LIMIT}</i>:This parameter is required or enforced, it
+ *				represents the maximum number of elements that the query should return, the
+ *				default value is {@link kDEFAULT_LIMIT}.
+ *		 </ul>
  *	 </ul>
  * </ul>
  *
  *	@package	MyWrapper
  *	@subpackage	Wrappers
  */
-class CDataWrapper extends CWrapper
+abstract class CDataWrapper extends CWrapper
 {
 		
 
@@ -199,19 +164,21 @@ class CDataWrapper extends CWrapper
 	 * The method is called by the constructor and should be overloaded to handle derived
 	 * classes custom elements.
 	 *
-	 * In this class we handle the paging request.
+	 * In this class we handle the following parameters:
+	 *
+	 * <ul>
+	 *	<li><tt>{@link kAPI_DATABASE}</tt>: We copy the database name to the request.
+	 *	<li><tt>{@link kAPI_CONTAINER}</tt>: We copy the container name to the request.
+	 * </ul>
 	 *
 	 * @access protected
 	 *
-	 * @uses _ParseRequest()
-	 * @uses _ParsePaging()
 	 * @uses _ParseDatabase()
 	 * @uses _ParseContainer()
+	 * @uses _ParsePaging()
 	 * @uses _ParseQuery()
-	 * @uses _ParseFields()
+	 * @uses _ParseSelect()
 	 * @uses _ParseSort()
-	 * @uses _ParseObject()
-	 * @uses _ParseOptions()
 	 */
 	protected function _ParseRequest()
 	{
@@ -223,14 +190,12 @@ class CDataWrapper extends CWrapper
 		//
 		// Handle parameters.
 		//
-		$this->_ParsePaging();
 		$this->_ParseDatabase();
 		$this->_ParseContainer();
+		$this->_ParsePaging();
 		$this->_ParseQuery();
-		$this->_ParseFields();
+		$this->_ParseSelect();
 		$this->_ParseSort();
-		$this->_ParseObject();
-		$this->_ParseOptions();
 	
 	} // _ParseRequest.
 
@@ -248,11 +213,12 @@ class CDataWrapper extends CWrapper
 	 *
 	 * @access protected
 	 *
+	 * @uses _FormatDatabase()
+	 * @uses _FormatContainer()
+	 * @uses _FormatPaging()
 	 * @uses _FormatQuery()
-	 * @uses _FormatFields()
+	 * @uses _FormatSelect()
 	 * @uses _FormatSort()
-	 * @uses _FormatObject()
-	 * @uses _FormatOptions()
 	 */
 	protected function _FormatRequest()
 	{
@@ -264,11 +230,12 @@ class CDataWrapper extends CWrapper
 		//
 		// Handle parameters.
 		//
+		$this->_FormatDatabase();
+		$this->_FormatContainer();
+		$this->_FormatPaging();
 		$this->_FormatQuery();
-		$this->_FormatFields();
+		$this->_FormatSelect();
 		$this->_FormatSort();
-		$this->_FormatObject();
-		$this->_FormatOptions();
 	
 	} // _FormatRequest.
 
@@ -288,10 +255,12 @@ class CDataWrapper extends CWrapper
 	 *
 	 * @access protected
 	 *
-	 * @uses _ValidateRequest()
-	 * @uses _ValidateFields()
+	 * @uses _ValidateDatabase()
+	 * @uses _ValidateContainer()
+	 * @uses _ValidatePaging()
+	 * @uses _ValidateQuery()
+	 * @uses _ValidateSelect()
 	 * @uses _ValidateSort()
-	 * @uses _ValidateOptions()
 	 */
 	protected function _ValidateRequest()
 	{
@@ -303,9 +272,12 @@ class CDataWrapper extends CWrapper
 		//
 		// Validate parameters.
 		//
-		$this->_ValidateFields();
+		$this->_ValidateDatabase();
+		$this->_ValidateContainer();
+		$this->_ValidatePaging();
+		$this->_ValidateQuery();
+		$this->_ValidateSelect();
 		$this->_ValidateSort();
-		$this->_ValidateOptions();
 	
 	} // _ValidateRequest.
 
@@ -320,73 +292,72 @@ class CDataWrapper extends CWrapper
 
 	 
 	/*===================================================================================
-	 *	_ParsePaging																	*
+	 *	_ParseOperation																	*
 	 *==================================================================================*/
 
 	/**
-	 * Parse paging.
+	 * Parse operation.
 	 *
-	 * This method will parse the request pager, or enforce the maximum number of returned
-	 * elements for the {@link kAPI_OP_MATCH} and {@link kAPI_OP_GET} operations, in this
-	 * last case the {@link kAPI_PAGE_LIMIT} will be set to {@link kDEFAULT_LIMIT}.
+	 * We overload this method to remove unnecessary parameter from the request, depending
+	 * on the current operation:
+	 *
+	 * <ul>
+	 *	<li><tt>{@link kAPI_OP_COUNT}</tt>: This operation does not handle fields selection
+	 *		or sort orders, so we clear {@link kAPI_SELECT} and {@link kAPI_SORT}. We could
+	 *		also clear the paging parameters, but we keep them in case clients implement an
+	 *		automatic paging management.
+	 *	<li><tt>{@link kAPI_OP_QUERY}</tt>: This operation requires that the page limits be
+	 *		set, only a defined number of records should be returned by a service: if the
+	 *		{@link kAPI_PAGE_LIMIT} parameter was not provided, this method will set it to
+	 *		{@link kDEFAULT_LIMIT}.
+	 * </ul>
 	 *
 	 * @access protected
 	 *
-	 * @uses _OffsetManage()
-	 *
-	 * @see kDEFAULT_LIMIT
-	 * @see kAPI_PAGE_START kAPI_PAGE_LIMIT kAPI_PAGING kAPI_REQUEST
+	 * @see kAPI_OPERATION
 	 */
-	protected function _ParsePaging()
+	protected function _ParseOperation()
 	{
 		//
-		// Enforce page limit.
+		// Save operation in request mirror, if necessary.
 		//
-		if( $this->offsetExists( kAPI_REQUEST )
-		 && ( ($this->offsetGet( kAPI_REQUEST ) == kAPI_OP_MATCH)
-		   || ($this->offsetGet( kAPI_REQUEST ) == kAPI_OP_GET) )
-		 && (! array_key_exists( kAPI_PAGE_LIMIT, $_REQUEST )) )
-			$_REQUEST[ kAPI_PAGE_LIMIT ] = kDEFAULT_LIMIT;
+		parent::_ParseOperation();
 		
 		//
-		// Check paging option.
+		// Handle operation.
 		//
-		if( array_key_exists( kAPI_PAGE_START, $_REQUEST )
-		 || array_key_exists( kAPI_PAGE_LIMIT, $_REQUEST ) )
+		if( array_key_exists( kAPI_OPERATION, $_REQUEST ) )
 		{
 			//
-			// Enforce page limits.
+			// Select unnecessary parameters.
 			//
-			if( ! array_key_exists( kAPI_PAGE_LIMIT, $_REQUEST ) )
-				$_REQUEST[ kAPI_PAGE_LIMIT ] = kDEFAULT_LIMIT;
-			
-			//
-			// Enforce page start.
-			//
-			elseif( ! array_key_exists( kAPI_PAGE_START, $_REQUEST ) )
-				$_REQUEST[ kAPI_PAGE_START ] = 0;
-			
-			//
-			// Create paging container.
-			//
-			$this->offsetSet( kAPI_PAGING,
-							  array( kAPI_PAGE_START => $_REQUEST[ kAPI_PAGE_START ],
-									 kAPI_PAGE_LIMIT => $_REQUEST[ kAPI_PAGE_LIMIT ] ) );
+			switch( $_REQUEST[ kAPI_OPERATION ] )
+			{
+				case kAPI_OP_COUNT:
+					$params = array( kAPI_SELECT, kAPI_SORT );
+					break;
+
+				case kAPI_OP_QUERY:
+					if( ! array_key_exists( kAPI_PAGE_LIMIT, $_REQUEST ) )
+						$_REQUEST[ kAPI_PAGE_LIMIT ] = kDEFAULT_LIMIT;
+					break;
+			}
 
 			//
-			// Handle log request.
+			// Remove unnecessary parameters.
 			//
-			if( $this->offsetExists( kAPI_REQUEST ) )
+			if( isset( $params ) )
 			{
-				$this->_OffsetManage
-					( kAPI_REQUEST, kAPI_PAGE_START, $_REQUEST[ kAPI_PAGE_START ] );
-				$this->_OffsetManage
-					( kAPI_REQUEST, kAPI_PAGE_LIMIT, $_REQUEST[ kAPI_PAGE_LIMIT ] );
+				foreach( $params as $param )
+				{
+					if( array_key_exists( $param, $_REQUEST ) )
+						unset( $_REQUEST[ $param ] );
+				}
 			}
 		
-		} // Provided paging options.
+		} // Provided operation.
 	
-	} // _ParsePaging.
+	} // _ParseOperation.
 
 	 
 	/*===================================================================================
@@ -396,7 +367,7 @@ class CDataWrapper extends CWrapper
 	/**
 	 * Parse database.
 	 *
-	 * This method will parse the request database.
+	 * This method will copy the database parameter to the request block.
 	 *
 	 * @access protected
 	 *
@@ -426,7 +397,7 @@ class CDataWrapper extends CWrapper
 	/**
 	 * Parse container.
 	 *
-	 * This method will parse the request container.
+	 * This method will copy the container parameter to the request block.
 	 *
 	 * @access protected
 	 *
@@ -450,13 +421,53 @@ class CDataWrapper extends CWrapper
 
 	 
 	/*===================================================================================
+	 *	_ParsePaging																	*
+	 *==================================================================================*/
+
+	/**
+	 * Parse paging parameters.
+	 *
+	 * This method will copy the paging parameters to the request block.
+	 *
+	 * @access protected
+	 *
+	 * @uses _OffsetManage()
+	 *
+	 * @see kAPI_PAGE_START kAPI_PAGE_LIMIT kAPI_REQUEST
+	 */
+	protected function _ParsePaging()
+	{
+		//
+		// handle request mirror.
+		//
+		if( $this->offsetExists( kAPI_REQUEST ) )
+		{
+			//
+			// Handle page start.
+			//
+			if( array_key_exists( kAPI_PAGE_START, $_REQUEST ) )
+				$this->_OffsetManage
+					( kAPI_REQUEST, kAPI_PAGE_START, $_REQUEST[ kAPI_PAGE_START ] );
+		
+			//
+			// Handle page limit.
+			//
+			if( array_key_exists( kAPI_PAGE_LIMIT, $_REQUEST ) )
+				$this->_OffsetManage
+					( kAPI_REQUEST, kAPI_PAGE_LIMIT, $_REQUEST[ kAPI_PAGE_LIMIT ] );
+		}
+	
+	} // _ParsePaging.
+
+	 
+	/*===================================================================================
 	 *	_ParseQuery																		*
 	 *==================================================================================*/
 
 	/**
 	 * Parse query.
 	 *
-	 * This method will parse the request query.
+	 * This method will copy the query to the request block.
 	 *
 	 * @access protected
 	 *
@@ -480,13 +491,13 @@ class CDataWrapper extends CWrapper
 
 	 
 	/*===================================================================================
-	 *	_ParseFields																	*
+	 *	_ParseSelect																	*
 	 *==================================================================================*/
 
 	/**
-	 * Parse fields.
+	 * Parse selection.
 	 *
-	 * This method will parse the request fields.
+	 * This method will copy the query selection to the request block.
 	 *
 	 * @access protected
 	 *
@@ -494,10 +505,10 @@ class CDataWrapper extends CWrapper
 	 *
 	 * @see kAPI_SELECT kAPI_REQUEST
 	 */
-	protected function _ParseFields()
+	protected function _ParseSelect()
 	{
 		//
-		// Handle fields.
+		// Handle query.
 		//
 		if( array_key_exists( kAPI_SELECT, $_REQUEST ) )
 		{
@@ -506,7 +517,7 @@ class CDataWrapper extends CWrapper
 					( kAPI_REQUEST, kAPI_SELECT, $_REQUEST[ kAPI_SELECT ] );
 		}
 	
-	} // _ParseFields.
+	} // _ParseSelect.
 
 	 
 	/*===================================================================================
@@ -516,7 +527,7 @@ class CDataWrapper extends CWrapper
 	/**
 	 * Parse sort.
 	 *
-	 * This method will parse the request sort.
+	 * This method will copy the query sort selection to the request block.
 	 *
 	 * @access protected
 	 *
@@ -527,7 +538,7 @@ class CDataWrapper extends CWrapper
 	protected function _ParseSort()
 	{
 		//
-		// Handle sort.
+		// Handle query.
 		//
 		if( array_key_exists( kAPI_SORT, $_REQUEST ) )
 		{
@@ -538,74 +549,169 @@ class CDataWrapper extends CWrapper
 	
 	} // _ParseSort.
 
-	 
-	/*===================================================================================
-	 *	_ParseObject																	*
-	 *==================================================================================*/
-
-	/**
-	 * Parse object.
-	 *
-	 * This method will parse the request object.
-	 *
-	 * @access protected
-	 *
-	 * @uses _OffsetManage()
-	 *
-	 * @see kAPI_OBJECT kAPI_REQUEST
-	 */
-	protected function _ParseObject()
-	{
-		//
-		// Handle object.
-		//
-		if( array_key_exists( kAPI_OBJECT, $_REQUEST ) )
-		{
-			if( $this->offsetExists( kAPI_REQUEST ) )
-				$this->_OffsetManage
-					( kAPI_REQUEST, kAPI_OBJECT, $_REQUEST[ kAPI_OBJECT ] );
-		}
-	
-	} // _ParseObject.
-
-	 
-	/*===================================================================================
-	 *	_ParseOptions																	*
-	 *==================================================================================*/
-
-	/**
-	 * Parse options.
-	 *
-	 * This method will parse the request options.
-	 *
-	 * @access protected
-	 *
-	 * @uses _OffsetManage()
-	 *
-	 * @see kAPI_OPTIONS kAPI_REQUEST
-	 */
-	protected function _ParseOptions()
-	{
-		//
-		// Handle object.
-		//
-		if( array_key_exists( kAPI_OPTIONS, $_REQUEST ) )
-		{
-			if( $this->offsetExists( kAPI_REQUEST ) )
-				$this->_OffsetManage
-					( kAPI_REQUEST, kAPI_OPTIONS, $_REQUEST[ kAPI_OPTIONS ] );
-		}
-	
-	} // _ParseOptions.
-
 		
 
 /*=======================================================================================
  *																						*
- *								PROTECTED FORMAT INTERFACE								*
+ *							PROTECTED FORMATTING UTILITIES								*
  *																						*
  *======================================================================================*/
 
+
+	 
+	/*===================================================================================
+	 *	_FormatDatabase																	*
+	 *==================================================================================*/
+
+	/**
+	 * Instantiate database.
+	 *
+	 * This method will instantiate the {@link CDatabase} instance if the name was provided
+	 * as parameter. If the {@link kAPI_SERVER} element is not set, the method will raise
+	 * an exception.
+	 *
+	 * @access protected
+	 *
+	 * @see kAPI_DATABASE
+	 */
+	protected function _FormatDatabase()
+	{
+		//
+		// Check parameter.
+		//
+		if( array_key_exists( kAPI_DATABASE, $_REQUEST ) )
+		{
+			//
+			// Check server.
+			//
+			if( array_key_exists( kAPI_SERVER, $_REQUEST ) )
+			{
+				//
+				// Check server type.
+				//
+				if( $_REQUEST[ kAPI_SERVER ] instanceof CServer )
+					$_REQUEST[ kAPI_DATABASE ]
+						= $_REQUEST[ kAPI_SERVER ]
+							->Database( $_REQUEST[ kAPI_DATABASE ] );
+				
+				else
+					throw new CException
+						( "Unable to instantiate database: invalid server type",
+						  kERROR_STATE,
+						  kMESSAGE_TYPE_ERROR );								// !@! ==>
+			
+			} // Has server.
+			
+			else
+				throw new CException
+					( "Unable to instantiate database: server is missing",
+					  kERROR_STATE,
+					  kMESSAGE_TYPE_ERROR );									// !@! ==>
+		
+		} // Provided database.
+	
+	} // _FormatDatabase.
+
+	 
+	/*===================================================================================
+	 *	_FormatContainer																	*
+	 *==================================================================================*/
+
+	/**
+	 * Instantiate container.
+	 *
+	 * This method will instantiate the {@link CContainer} instance if the name was
+	 * provided as parameter. If the {@link kAPI_DATABASE} element is not set, the method
+	 * will raise an exception.
+	 *
+	 * @access protected
+	 *
+	 * @see kAPI_CONTAINER
+	 */
+	protected function _FormatContainer()
+	{
+		//
+		// Check parameter.
+		//
+		if( array_key_exists( kAPI_CONTAINER, $_REQUEST ) )
+		{
+			//
+			// Check database.
+			//
+			if( array_key_exists( kAPI_DATABASE, $_REQUEST ) )
+			{
+				//
+				// Check server type.
+				//
+				if( $_REQUEST[ kAPI_DATABASE ] instanceof CDatabase )
+					$_REQUEST[ kAPI_CONTAINER ]
+						= $_REQUEST[ kAPI_DATABASE ]
+							->Container( $_REQUEST[ kAPI_CONTAINER ] );
+				
+				else
+					throw new CException
+						( "Unable to instantiate container: invalid database type",
+						  kERROR_STATE,
+						  kMESSAGE_TYPE_ERROR );								// !@! ==>
+			
+			} // Has database.
+			
+			else
+				throw new CException
+					( "Unable to instantiate container: database is missing",
+					  kERROR_STATE,
+					  kMESSAGE_TYPE_ERROR );									// !@! ==>
+		
+		} // Provided container.
+	
+	} // _FormatContainer.
+
+	 
+	/*===================================================================================
+	 *	_FormatPaging																	*
+	 *==================================================================================*/
+
+	/**
+	 * Format paging parameters.
+	 *
+	 * This method will complete eventual missing paging parameters and fill the response
+	 * {@link kAPI_PAGING} block with the provided paging options.
+	 *
+	 * @access protected
+	 *
+	 * @see kAPI_PAGING kAPI_PAGE_START kAPI_PAGE_LIMIT
+	 */
+	protected function _FormatPaging()
+	{
+		//
+		// Check parameter.
+		//
+		if( array_key_exists( kAPI_PAGE_START, $_REQUEST )
+		 || array_key_exists( kAPI_PAGE_LIMIT, $_REQUEST ) )
+		{
+			//
+			// Set missing page start.
+			//
+			if( ! array_key_exists( kAPI_PAGE_START, $_REQUEST ) )
+				$_REQUEST[ kAPI_PAGE_START ] = 0;
+		
+			//
+			// Set missing page limit.
+			//
+			if( ! array_key_exists( kAPI_PAGE_LIMIT, $_REQUEST ) )
+				$_REQUEST[ kAPI_PAGE_LIMIT ] = kDEFAULT_LIMIT;
+			
+			//
+			// Init response block.
+			//
+			$this->offsetSet( kAPI_PAGING,
+							  array( kAPI_PAGE_START => $_REQUEST[ kAPI_PAGE_START ],
+									 kAPI_PAGE_LIMIT => $_REQUEST[ kAPI_PAGE_LIMIT ],
+									 kAPI_PAGE_COUNT => 0 ) );
+		
+		} // Provided paging parameters.
+	
+	} // _FormatPaging.
 
 	 
 	/*===================================================================================
@@ -613,35 +719,90 @@ class CDataWrapper extends CWrapper
 	 *==================================================================================*/
 
 	/**
-	 * Format query.
+	 * Format paging parameters.
 	 *
-	 * This method will format the request query.
+	 * This method will decode the provided query from JSON or PHP encoding and unserialise
+	 * eventual query arguments encoded as {@link CDataType} derived instances.
 	 *
 	 * @access protected
-	 *
-	 * @uses _DecodeParameter()
 	 *
 	 * @see kAPI_QUERY
 	 */
-	protected function _FormatQuery()			{	$this->_DecodeParameter( kAPI_QUERY );	}
+	protected function _FormatQuery()
+	{
+		//
+		// Check parameter.
+		//
+		if( array_key_exists( kAPI_QUERY, $_REQUEST ) )
+		{
+			//
+			// Decode parameter.
+			//
+			$this->_DecodeParameter( kAPI_QUERY );
+			
+			//
+			// Check query format.
+			//
+			if( is_array( $_REQUEST[ kAPI_QUERY ] ) )
+			{
+				//
+				// Handle non-empty query.
+				//
+				if( count( $_REQUEST[ kAPI_QUERY ] ) )
+				{
+					//
+					// Check container.
+					//
+					if( array_key_exists( kAPI_CONTAINER, $_REQUEST ) )
+						$_REQUEST[ kAPI_CONTAINER ]
+							->UnserialiseObject( $_REQUEST[ kAPI_QUERY ] );
+					
+					else
+						throw new CException
+							( "Unable to format query: container is missing",
+							  kERROR_STATE,
+							  kMESSAGE_TYPE_ERROR );							// !@! ==>
+				}
+				
+				else
+					unset( $_REQUEST[ kAPI_QUERY ] );
+			}
+			
+			else
+				throw new CException
+					( ("Unable to format query: invalid type ("
+					  .gettype( $_REQUEST[ kAPI_QUERY ] )
+					  ."): expecting an array"),
+					  kERROR_PARAMETER,
+					  kMESSAGE_TYPE_ERROR );									// !@! ==>
+			
+		} // Provided query parameters.
+	
+	} // _FormatQuery.
 
 	 
 	/*===================================================================================
-	 *	_FormatFields																	*
+	 *	_FormatSelect																	*
 	 *==================================================================================*/
 
 	/**
-	 * Format fields.
+	 * Format selection parameters.
 	 *
-	 * This method will format the request fields.
+	 * This method will decode the provided selection from JSON or PHP encoding.
 	 *
 	 * @access protected
 	 *
-	 * @uses _DecodeParameter()
-	 *
 	 * @see kAPI_SELECT
 	 */
-	protected function _FormatFields()			{	$this->_DecodeParameter( kAPI_SELECT );	}
+	protected function _FormatSelect()
+	{
+		//
+		// Check parameter.
+		//
+		if( array_key_exists( kAPI_SELECT, $_REQUEST ) )
+			$this->_DecodeParameter( kAPI_SELECT );
+	
+	} // _FormatSelect.
 
 	 
 	/*===================================================================================
@@ -649,53 +810,23 @@ class CDataWrapper extends CWrapper
 	 *==================================================================================*/
 
 	/**
-	 * Format sort.
+	 * Format selection parameters.
 	 *
-	 * This method will format the request sort.
+	 * This method will decode the provided selection from JSON or PHP encoding.
 	 *
 	 * @access protected
-	 *
-	 * @uses _DecodeParameter()
 	 *
 	 * @see kAPI_SORT
 	 */
-	protected function _FormatSort()			{	$this->_DecodeParameter( kAPI_SORT );	}
-
-	 
-	/*===================================================================================
-	 *	_FormatObject																	*
-	 *==================================================================================*/
-
-	/**
-	 * Format object.
-	 *
-	 * This method will format the request object.
-	 *
-	 * @access protected
-	 *
-	 * @uses _DecodeParameter()
-	 *
-	 * @see kAPI_OBJECT
-	 */
-	protected function _FormatObject()			{	$this->_DecodeParameter( kAPI_OBJECT );	}
-
-	 
-	/*===================================================================================
-	 *	_FormatOptions																	*
-	 *==================================================================================*/
-
-	/**
-	 * Format options.
-	 *
-	 * This method will format the request options.
-	 *
-	 * @access protected
-	 *
-	 * @uses _DecodeParameter()
-	 *
-	 * @see kAPI_OPTIONS
-	 */
-	protected function _FormatOptions()		{	$this->_DecodeParameter( kAPI_OPTIONS );	}
+	protected function _FormatSort()
+	{
+		//
+		// Check parameter.
+		//
+		if( array_key_exists( kAPI_SORT, $_REQUEST ) )
+			$this->_DecodeParameter( kAPI_SORT );
+	
+	} // _FormatSort.
 
 		
 
@@ -715,163 +846,63 @@ class CDataWrapper extends CWrapper
 	 * Validate request operation.
 	 *
 	 * This method can be used to check whether the provided {@link kAPI_OPERATION}
-	 * parameter is valid.
+	 * parameter is valid, in this class we screen and check the dependencies of the
+	 * following operations:
+	 *
+	 * <ul>
+	 *	<li><tt>{@link kAPI_OP_COUNT}</tt>: Return the count of a query, this operation
+	 *		requires the following parameters:
+	 *	 <ul>
+	 *		<li><tt>
+	 *	 </ul>
+	 * </ul>
 	 *
 	 * @access protected
 	 *
-	 * @see kAPI_OPERATION kAPI_OP_SET kAPI_OP_INSERT
-	 * @see kAPI_DATABASE kAPI_CONTAINER kAPI_OBJECT kAPI_QUERY
+	 * @see kAPI_OP_COUNT
 	 */
 	protected function _ValidateOperation()
 	{
 		//
-		// Parse operation.
+		// Check parameter.
 		//
-		switch( $parameter = $_REQUEST[ kAPI_OPERATION ] )
+		switch( $_REQUEST[ kAPI_OPERATION ] )
 		{
-			case kAPI_OP_SET:
-			case kAPI_OP_INSERT:
-			case kAPI_OP_BATCH_INSERT:
-				
-				//
-				// Check for database.
-				//
-				if( (! array_key_exists( kAPI_DATABASE, $_REQUEST ))
-				 || (! strlen( $_REQUEST[ kAPI_DATABASE ] )) )
-					throw new CException
-						( "Missing database reference",
-						  kERROR_OPTION_MISSING,
-						  kMESSAGE_TYPE_ERROR,
-						  array( 'Operation' => $parameter ) );					// !@! ==>
-				
-				//
-				// Check for container.
-				//
-				if( (! array_key_exists( kAPI_CONTAINER, $_REQUEST ))
-				 || (! strlen( $_REQUEST[ kAPI_CONTAINER ] )) )
-					throw new CException
-						( "Missing container reference",
-						  kERROR_OPTION_MISSING,
-						  kMESSAGE_TYPE_ERROR,
-						  array( 'Operation' => $parameter ) );					// !@! ==>
-				
-				//
-				// Check for object.
-				//
-				if( ! array_key_exists( kAPI_OBJECT, $_REQUEST ) )
-					throw new CException
-						( "Missing object reference",
-						  kERROR_OPTION_MISSING,
-						  kMESSAGE_TYPE_ERROR,
-						  array( 'Operation' => $parameter ) );					// !@! ==>
-				break;
-
-			case kAPI_OP_GET:
-			case kAPI_OP_MATCH:
+			//
+			// Operation codes.
+			//
 			case kAPI_OP_COUNT:
+			case kAPI_OP_QUERY:
+				//
+				// Check for format.
+				//
+				if( ! array_key_exists( kAPI_FORMAT, $_REQUEST ) )
+					throw new CException
+						( "Missing format parameter",
+						  kERROR_MISSING,
+						  kMESSAGE_TYPE_ERROR,
+						  array( 'Operation' => $parameter ) );					// !@! ==>
 				
 				//
 				// Check for database.
 				//
-				if( (! array_key_exists( kAPI_DATABASE, $_REQUEST ))
-				 || (! strlen( $_REQUEST[ kAPI_DATABASE ] )) )
+				if( ! array_key_exists( kAPI_DATABASE, $_REQUEST ) )
 					throw new CException
-						( "Missing database reference",
-						  kERROR_OPTION_MISSING,
+						( "Missing database parameter",
+						  kERROR_MISSING,
 						  kMESSAGE_TYPE_ERROR,
 						  array( 'Operation' => $parameter ) );					// !@! ==>
 				
 				//
 				// Check for container.
 				//
-				if( (! array_key_exists( kAPI_CONTAINER, $_REQUEST ))
-				 || (! strlen( $_REQUEST[ kAPI_CONTAINER ] )) )
+				if( ! array_key_exists( kAPI_CONTAINER, $_REQUEST ) )
 					throw new CException
-						( "Missing container reference",
-						  kERROR_OPTION_MISSING,
+						( "Missing container parameter",
+						  kERROR_MISSING,
 						  kMESSAGE_TYPE_ERROR,
 						  array( 'Operation' => $parameter ) );					// !@! ==>
-				break;
-
-			case kAPI_OP_UPDATE:
-			case kAPI_OP_MODIFY:
-				
-				//
-				// Check for database.
-				//
-				if( (! array_key_exists( kAPI_DATABASE, $_REQUEST ))
-				 || (! strlen( $_REQUEST[ kAPI_DATABASE ] )) )
-					throw new CException
-						( "Missing database reference",
-						  kERROR_OPTION_MISSING,
-						  kMESSAGE_TYPE_ERROR,
-						  array( 'Operation' => $parameter ) );					// !@! ==>
-				
-				//
-				// Check for container.
-				//
-				if( (! array_key_exists( kAPI_CONTAINER, $_REQUEST ))
-				 || (! strlen( $_REQUEST[ kAPI_CONTAINER ] )) )
-					throw new CException
-						( "Missing container reference",
-						  kERROR_OPTION_MISSING,
-						  kMESSAGE_TYPE_ERROR,
-						  array( 'Operation' => $parameter ) );					// !@! ==>
-				
-				//
-				// Check for query.
-				//
-				if( ! array_key_exists( kAPI_QUERY, $_REQUEST ) )
-					throw new CException
-						( "Missing query reference",
-						  kERROR_OPTION_MISSING,
-						  kMESSAGE_TYPE_ERROR,
-						  array( 'Operation' => $parameter ) );					// !@! ==>
-				
-				//
-				// Check for object.
-				//
-				if( ! array_key_exists( kAPI_OBJECT, $_REQUEST ) )
-					throw new CException
-						( "Missing object reference",
-						  kERROR_OPTION_MISSING,
-						  kMESSAGE_TYPE_ERROR,
-						  array( 'Operation' => $parameter ) );					// !@! ==>
-				break;
-
-			case kAPI_OP_DEL:
-				
-				//
-				// Check for database.
-				//
-				if( (! array_key_exists( kAPI_DATABASE, $_REQUEST ))
-				 || (! strlen( $_REQUEST[ kAPI_DATABASE ] )) )
-					throw new CException
-						( "Missing database reference",
-						  kERROR_OPTION_MISSING,
-						  kMESSAGE_TYPE_ERROR,
-						  array( 'Operation' => $parameter ) );					// !@! ==>
-				
-				//
-				// Check for container.
-				//
-				if( (! array_key_exists( kAPI_CONTAINER, $_REQUEST ))
-				 || (! strlen( $_REQUEST[ kAPI_CONTAINER ] )) )
-					throw new CException
-						( "Missing container reference",
-						  kERROR_OPTION_MISSING,
-						  kMESSAGE_TYPE_ERROR,
-						  array( 'Operation' => $parameter ) );					// !@! ==>
-				
-				//
-				// Check for query.
-				//
-				if( ! array_key_exists( kAPI_QUERY, $_REQUEST ) )
-					throw new CException
-						( "Missing query reference",
-						  kERROR_OPTION_MISSING,
-						  kMESSAGE_TYPE_ERROR,
-						  array( 'Operation' => $parameter ) );					// !@! ==>
+					
 				break;
 			
 			//
@@ -885,49 +916,216 @@ class CDataWrapper extends CWrapper
 	
 	} // _ValidateOperation.
 
-	 
+		
 	/*===================================================================================
-	 *	_ValidateFields																	*
+	 *	_ValidateDatabase																*
 	 *==================================================================================*/
 
 	/**
-	 * Validate field selection reference.
+	 * Validate database.
 	 *
-	 * This method can be used to check whether the provided {@link kAPI_SELECT}
-	 * parameter is valid.
+	 * This method should check if the database is valid, in this class we check if the
+	 * database is an instance of {@link CDatabase}.
 	 *
-	 * In this class we ensure that the fields list is an array.
+	 * In derived classes that implement concrete instances of {@link CDatabase}, you
+	 * should override this method using the specific database.
+	 *
+	 * @access protected
+	 *
+	 * @see kAPI_DATABASE
+	 */
+	protected function _ValidateDatabase()
+	{
+		//
+		// Check parameter.
+		//
+		if( array_key_exists( kAPI_DATABASE, $_REQUEST ) )
+		{
+			//
+			// Check database.
+			//
+			if( ! ($_REQUEST[ kAPI_DATABASE ] instanceof CDatabase) )
+				throw new CException
+					( "Invalid database type: expecting an instance of CDatabase",
+					  kERROR_STATE,
+					  kMESSAGE_TYPE_ERROR );									// !@! ==>
+		
+		} // Provided database.
+	
+	} // _FormatDatabase.
+
+	 
+	/*===================================================================================
+	 *	_ValidateContainer																*
+	 *==================================================================================*/
+
+	/**
+	 * Validate container.
+	 *
+	 * This method should check if the container is valid, in this class we check if the
+	 * container is an instance of {@link CContainer}.
+	 *
+	 * In derived classes that implement concrete instances of {@link CContainer}, you
+	 * should override this method using the specific container.
+	 *
+	 * @access protected
+	 *
+	 * @see kAPI_CONTAINER
+	 */
+	protected function _ValidateContainer()
+	{
+		//
+		// Check parameter.
+		//
+		if( array_key_exists( kAPI_CONTAINER, $_REQUEST ) )
+		{
+			//
+			// Check container.
+			//
+			if( ! ($_REQUEST[ kAPI_CONTAINER ] instanceof CContainer) )
+				throw new CException
+					( "Invalid container type: expecting an instance of CContainer",
+					  kERROR_STATE,
+					  kMESSAGE_TYPE_ERROR );									// !@! ==>
+		
+		} // Provided container.
+	
+	} // _ValidateContainer.
+
+	 
+	/*===================================================================================
+	 *	_ValidatePaging																	*
+	 *==================================================================================*/
+
+	/**
+	 * Validate paging parameters.
+	 *
+	 * The duty of this method is to validate the paging parameters, in this class we
+	 * ensure the {@link kAPI_PAGE_LIMIT} is not greater than the maximum allowed,
+	 * {@link kDEFAULT_MAX_LIMIT}.
+	 *
+	 * @access protected
+	 *
+	 * @see kAPI_PAGING kAPI_PAGE_START kAPI_PAGE_LIMIT
+	 */
+	protected function _ValidatePaging()
+	{
+		//
+		// Check parameter.
+		//
+		if( $this->offsetExists( kAPI_PAGING ) )
+		{
+			//
+			// Check limit.
+			//
+			if( ($tmp = $this->offsetGet( kAPI_PAGING )[ kAPI_PAGE_LIMIT ])
+					> kDEFAULT_MAX_LIMIT )
+				throw new CException
+					( ("Cannot satisfy request: exceeded ("
+					  .$tmp.") maximum page limit of ".kDEFAULT_MAX_LIMIT),
+					  kERROR_PARAMETER,
+					  kMESSAGE_TYPE_ERROR );									// !@! ==>
+		
+		} // Provided paging parameters.
+	
+	} // _ValidatePaging.
+
+	 
+	/*===================================================================================
+	 *	_ValidateQuery																	*
+	 *==================================================================================*/
+
+	/**
+	 * Validate query parameters.
+	 *
+	 * The duty of this method is to validate the query parameters, in this class we
+	 * instantiate the query object and verify its consistency.
+	 *
+	 * @access protected
+	 *
+	 * @see kAPI_QUERY
+	 */
+	protected function _ValidateQuery()
+	{
+		//
+		// Check parameter.
+		//
+		if( array_key_exists( kAPI_QUERY, $_REQUEST ) )
+		{
+			//
+			// Check container.
+			//
+			if( array_key_exists( kAPI_CONTAINER, $_REQUEST ) )
+			{
+				//
+				// Instantiate query.
+				//
+				$_REQUEST[ kAPI_QUERY ]
+					= $_REQUEST[ kAPI_CONTAINER ]
+						->NewQuery( $_REQUEST[ kAPI_QUERY ] );
+				
+				//
+				// Validate query.
+				//
+				$_REQUEST[ kAPI_QUERY ]->Validate();
+			}
+			
+			else
+				throw new CException
+					( "Unable to validate query: container is missing",
+					  kERROR_STATE,
+					  kMESSAGE_TYPE_ERROR );									// !@! ==>
+		
+		} // Provided query parameters.
+	
+	} // _ValidateQuery.
+
+	 
+	/*===================================================================================
+	 *	_ValidateSelect																	*
+	 *==================================================================================*/
+
+	/**
+	 * Validate selection parameters.
+	 *
+	 * The duty of this method is to validate the selection parameter, in this class we
+	 * assume the value to be array, if a scalar is provided, we convert it to a string and
+	 * create with it an array.
+	 *
+	 * If the resulting array is empty, we remove the request.
 	 *
 	 * @access protected
 	 *
 	 * @see kAPI_SELECT
 	 */
-	protected function _ValidateFields()
+	protected function _ValidateSelect()
 	{
-		// Check fields.
+		//
+		// Check parameter.
 		//
 		if( array_key_exists( kAPI_SELECT, $_REQUEST ) )
 		{
 			//
 			// Convert to array.
 			//
-			if( $_REQUEST[ kAPI_SELECT ] instanceof ArrayObject )
-				$_REQUEST[ kAPI_SELECT ]
-					= $_REQUEST[ kAPI_SELECT ]->getArrayCopy();
-			
-			//
-			// Check type.
-			//
 			if( ! is_array( $_REQUEST[ kAPI_SELECT ] ) )
-				throw new CException
-					( "Invalid fields list data type: must be an array",
-					  kERROR_PARAMETER,
-					  kMESSAGE_TYPE_ERROR,
-					  array( 'Fields' => $_REQUEST[ kAPI_SELECT ] ) );		// !@! ==>
+			{
+				//
+				// Handle non-empty string.
+				//
+				if( strlen( $_REQUEST[ kAPI_SELECT ] ) )
+					$_REQUEST[ kAPI_SELECT ] = array( (string) $_REQUEST[ kAPI_SELECT ] );
+				
+				//
+				// Remove request.
+				//
+				else
+					unset( $_REQUEST[ kAPI_SELECT ] );
+			}
 		
-		} // Provided fields.
+		} // Provided query selection.
 	
-	} // _ValidateFields.
+	} // _ValidateSelect.
 
 	 
 	/*===================================================================================
@@ -935,12 +1133,13 @@ class CDataWrapper extends CWrapper
 	 *==================================================================================*/
 
 	/**
-	 * Validate sort selection reference.
+	 * Validate sort selection parameters.
 	 *
-	 * This method can be used to check whether the provided {@link kAPI_SORT}
-	 * parameter is valid.
+	 * The duty of this method is to validate the sort selection parameters, in this class
+	 * we assume the value to be array, if a scalar is provided, we convert it to a string
+	 * and create with it an array.
 	 *
-	 * In this class we ensure that the sort list is an array.
+	 * If the resulting array is empty, we remove the request.
 	 *
 	 * @access protected
 	 *
@@ -949,75 +1148,31 @@ class CDataWrapper extends CWrapper
 	protected function _ValidateSort()
 	{
 		//
-		// Check sort.
+		// Check parameter.
 		//
 		if( array_key_exists( kAPI_SORT, $_REQUEST ) )
 		{
 			//
 			// Convert to array.
 			//
-			if( $_REQUEST[ kAPI_SORT ] instanceof ArrayObject )
-				$_REQUEST[ kAPI_SORT ]
-					= $_REQUEST[ kAPI_SORT ]->getArrayCopy();
-			
-			//
-			// Check type.
-			//
 			if( ! is_array( $_REQUEST[ kAPI_SORT ] ) )
-				throw new CException
-					( "Invalid sort list data type: must be an array",
-					  kERROR_PARAMETER,
-					  kMESSAGE_TYPE_ERROR,
-					  array( 'Fields' => $_REQUEST[ kAPI_SORT ] ) );		// !@! ==>
+			{
+				//
+				// Handle non-empty string.
+				//
+				if( strlen( $_REQUEST[ kAPI_SORT ] ) )
+					$_REQUEST[ kAPI_SORT ] = array( (string) $_REQUEST[ kAPI_SORT ] );
+				
+				//
+				// Remove request.
+				//
+				else
+					unset( $_REQUEST[ kAPI_SORT ] );
+			}
 		
-		} // Provided sort.
+		} // Provided query selection.
 	
 	} // _ValidateSort.
-
-	 
-	/*===================================================================================
-	 *	_ValidateOptions																*
-	 *==================================================================================*/
-
-	/**
-	 * Validate sort selection reference.
-	 *
-	 * This method can be used to check whether the provided {@link kAPI_SORT}
-	 * parameter is valid.
-	 *
-	 * In this class we ensure that the sort list is an array.
-	 *
-	 * @access protected
-	 *
-	 * @see kAPI_OPTIONS
-	 */
-	protected function _ValidateOptions()
-	{
-		//
-		// Check options.
-		//
-		if( array_key_exists( kAPI_OPTIONS, $_REQUEST ) )
-		{
-			//
-			// Convert to array.
-			//
-			if( $_REQUEST[ kAPI_OPTIONS ] instanceof ArrayObject )
-				$_REQUEST[ kAPI_OPTIONS ]
-					= $_REQUEST[ kAPI_OPTIONS ]->getArrayCopy();
-			
-			//
-			// Check type.
-			//
-			if( ! is_array( $_REQUEST[ kAPI_OPTIONS ] ) )
-				throw new CException
-					( "Invalid options list data type: must be an array",
-					  kERROR_PARAMETER,
-					  kMESSAGE_TYPE_ERROR,
-					  array( 'Options' => $_REQUEST[ kAPI_OPTIONS ] ) );	// !@! ==>
-		
-		} // Provided options.
-	
-	} // _ValidateOptions.
 
 		
 
@@ -1030,14 +1185,47 @@ class CDataWrapper extends CWrapper
 
 	 
 	/*===================================================================================
+	 *	_HandleRequest																	*
+	 *==================================================================================*/
+
+	/**
+	 * Handle request.
+	 *
+	 * This method will handle the request.
+	 *
+	 * @access protected
+	 */
+	protected function _HandleRequest()
+	{
+		//
+		// Parse by operation.
+		//
+		switch( $op = $_REQUEST[ kAPI_OPERATION ] )
+		{
+			case kAPI_OP_COUNT:
+				$this->_Handle_Count();
+				break;
+
+			case kAPI_OP_QUERY:
+				$this->_Handle_Query();
+				break;
+
+			default:
+				parent::_HandleRequest();
+				break;
+		}
+	
+	} // _HandleRequest.
+
+	 
+	/*===================================================================================
 	 *	_Handle_ListOp																	*
 	 *==================================================================================*/
 
 	/**
 	 * Handle {@link kAPI_OP_HELP} operations request.
 	 *
-	 * This method will handle the {@link kAPI_OP_HELP} request, which should return the
-	 * list of supported operations.
+	 * This method will handle the locally supported operations.
 	 *
 	 * @param reference				$theList			Receives operations list.
 	 *
@@ -1049,88 +1237,56 @@ class CDataWrapper extends CWrapper
 		// Call parent method.
 		//
 		parent::_Handle_ListOp( $theList );
-		
+
 		//
 		// Add kAPI_OP_COUNT.
 		//
 		$theList[ kAPI_OP_COUNT ]
-			= 'This operation requests a count, which is an integer indicating the total '
-			 .'number of elements satisfying the provided query ['
-			.kAPI_QUERY
-			.'].';
-		
+			= 'Count query: returns the count of the provided query.';
+
 		//
-		// Add kAPI_OP_MATCH.
+		// Add kAPI_OP_QUERY.
 		//
-		$theList[ kAPI_OP_MATCH ]
-			= 'This operation is equivalent to a read query, it requests a list of objects '
-			.'satisfying the provided query ['
-			.kAPI_QUERY
-			.'], except that in this case each query clause is executed separately until '
-			.'there is the first match.';
-		
-		//
-		// Add kAPI_OP_GET.
-		//
-		$theList[ kAPI_OP_GET ]
-			= 'This operation is equivalent to a read query, it requests a list of objects '
-			.'satisfying the provided query ['
-			.kAPI_QUERY
-			.'].';
-		
-		//
-		// Add kAPI_OP_SET.
-		//
-		$theList[ kAPI_OP_SET ]
-			= 'This operation is equivalent to an insert for new objects '
-			 .'or an update for existing objects, the operation will replace the object '
-			 .'in the data store with the one provided in the ['
-			 .kAPI_OBJECT
-			 .'] parameter.';
-		
-		//
-		// Add kAPI_OP_UPDATE.
-		//
-		$theList[ kAPI_OP_UPDATE ]
-			= 'This operation is equivalent to an update operation, this implies that '
-			 .'the object must already exist in the data store and that the operation '
-			 .'will replace the object in the data store with the one provided in the ['
-			 .kAPI_OBJECT
-			 .'] parameter.';
-		
-		//
-		// Add kAPI_OP_INSERT.
-		//
-		$theList[ kAPI_OP_INSERT ]
-			= 'This operation is equivalent to an insert operation, this implies '
-			 .'that the object must not already exist in the data store.';
-		
-		//
-		// Add kAPI_OP_BATCH_INSERT.
-		//
-		$theList[ kAPI_OP_BATCH_INSERT ]
-			= 'This operation is equivalent to the ['
-			 .kAPI_OP_INSERT
-			 .'] operation, except that we provide here a list of objects to be inserted.';
-		
-		//
-		// Add kAPI_OP_MODIFY.
-		//
-		$theList[ kAPI_OP_MODIFY ]
-			= 'This operation indicates that we want to modify the contents of an '
-			 .'existing object and that the provided data represents '
-			 .'only the changed elements.';
-		
-		//
-		// Add kAPI_OP_DEL.
-		//
-		$theList[ kAPI_OP_DEL ]
-			= 'This operation indicates that we want to delete the elements matching '
-			 .'the provided query: the first one only, if the provided ['
-			 .kAPI_OPT_SINGLE
-			 .'] option is on, or all if off or omitted.';
+		$theList[ kAPI_OP_QUERY ]
+			= 'Query: returns the list of elements that are matched by the provided query.';
 	
 	} // _Handle_ListOp.
+
+	 
+	/*===================================================================================
+	 *	_Handle_Count																	*
+	 *==================================================================================*/
+
+	/**
+	 * Handle {@link kAPI_OP_COUNT} request.
+	 *
+	 * This method will handle the {@link kAPI_OP_COUNT} operation, which returns the total
+	 * count of a query in the {@link kAPI_AFFECTED_COUNT} field of the status.
+	 *
+	 * Since this class does not handle any specific data engine, we declare the method
+	 * abstract and require concrete derived classes to implement it.
+	 *
+	 * @access protected
+	 */
+	abstract protected function _Handle_Count();
+
+	 
+	/*===================================================================================
+	 *	_Handle_Query																	*
+	 *==================================================================================*/
+
+	/**
+	 * Handle {@link kAPI_OP_QUERY} request.
+	 *
+	 * This method will handle the {@link kAPI_OP_QUERY} operation, which returns the
+	 * records that match the provided query..
+	 *
+	 * Since this class does not handle any specific data engine, we declare the method
+	 * abstract and require concrete derived classes to implement it.
+	 *
+	 * @access protected
+	 */
+	abstract protected function _Handle_Query();
 
 		
 

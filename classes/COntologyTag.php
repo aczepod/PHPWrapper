@@ -1193,7 +1193,8 @@ class COntologyTag extends CTag
 					//
 					// Generate unique identifier.
 					//
-					$uid = $container->ConvertValue( kTYPE_BINARY, md5( $index, TRUE ) );
+					$uid = md5( $index, TRUE );
+					$container->UnserialiseData( $uid, kTYPE_BINARY );
 					
 					//
 					// Check unique identifier.

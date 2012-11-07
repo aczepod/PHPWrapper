@@ -206,7 +206,7 @@ define( "kAPI_STAMP_SENT",			':WS:STAMP-SENT' );
  *		encode the response.
  * </ul>
  */
-define( "kAPI_OP_HELP",				'HELP' );
+define( "kAPI_OP_HELP",				'WS:OP:HELP' );
 
 /**
  * PING web-service.
@@ -221,7 +221,7 @@ define( "kAPI_OP_HELP",				'HELP' );
  *		encode the response.
  * </ul>
  */
-define( "kAPI_OP_PING",				'PING' );
+define( "kAPI_OP_PING",				'WS:OP:PING' );
 
 
 ?>

@@ -877,10 +877,10 @@ class CMongoContainer extends CContainer
 	 * @access public
 	 * @return mixed				Native recordset.
 	 */
-	public function Query( CQuery $theQuery, $theFields = NULL, $doOne = FALSE )
+	public function Query( $theQuery = NULL, $theFields = NULL, $doOne = FALSE )
 	{
 		//
-		// Get container.
+		// Get and check container.
 		//
 		$container = $this->Connection();
 		if( ! ($container instanceof MongoCollection) )
@@ -889,9 +889,18 @@ class CMongoContainer extends CContainer
 				  kERROR_STATE );												// !@! ==>
 		
 		//
+		// Cast query.
+		//
+		if( ($theQuery !== NULL)
+		 && (! ($theQuery instanceof CMongoQuery)) )
+			$theQuery = new CMongoQuery( $theQuery );
+		
+		//
 		// Export query.
 		//
-		$query = $theQuery->Export( $this );
+		$query = ( $theQuery !== NULL )
+			   ? $theQuery->Export( $this )
+			   : Array();
 		
 		//
 		// Set fieldset.
@@ -899,6 +908,16 @@ class CMongoContainer extends CContainer
 		$fields = Array();
 		if( is_array( $theFields ) )
 		{
+			//
+			// Init fields list.
+			//
+			$fields = ( in_array( '_id', $theFields ) )
+					? Array()
+					: array( '_id' => FALSE );
+			
+			//
+			// Iterate fields.
+			//
 			foreach( $theFields as $field )
 				$fields[ $field ] = TRUE;
 		}
@@ -1036,99 +1055,18 @@ class CMongoContainer extends CContainer
 	 *
 	 * In this class we return an empty {@link CMongoQuery} instance.
 	 *
+	 * @param mixed					$theQuery			Query data.
+	 *
 	 * @static
 	 * @return CQuery				An empty query object.
 	 */
-	static function NewQuery()								{	return new CMongoQuery();	}
+	static function NewQuery( $theQuery = NULL ){	return new CMongoQuery( $theQuery );	}
 
 		
 
 /*=======================================================================================
  *																						*
  *								PUBLIC CONVERSION INTERFACE								*
- *																						*
- *======================================================================================*/
-
-
-	 
-	/*===================================================================================
-	 *	ConvertValue																	*
-	 *==================================================================================*/
-
-	/**
-	 * <h4>Convert a value</h4>
-	 *
-	 * In this class we handle custom Mongo data types:
-	 *
-	 * <ul>
-	 *	<li>{@link kTYPE_INT32}: We convert the value to a {@link MongoInt32}.
-	 *	<li>{@link kTYPE_INT64}: We convert the value to a {@link MongoInt64}.
-	 *	<li>{@link kTYPE_BINARY}: We convert the value to a {@link MongoBinData}.
-	 *	<li>{@link kTYPE_STAMP}: We convert the value to a {@link MongoDate}, depending on
-	 *		the provided value:
-	 *	 <ul>
-	 *		<li><tt>string</tt>: We convert the string using the {@link strtotime()}
-	 *			function.
-	 *		<li><tt>integer</tt>: We provide it as-is.
-	 *		<li><tt>array</tt>: We assume the array contains two elements: the first with
-	 *			the seconds and the second with the microseconds.
-	 *	 </ul>
-	 * </ul>
-	 *
-	 * @param string				$theType			Data type.
-	 * @param mixed					$theValue			Data value.
-	 *
-	 * @static
-	 * @return mixed				The encoded data value.
-	 */
-	static function ConvertValue( $theType, $theValue )
-	{
-		//
-		// Parse by type.
-		//
-		switch( $theType )
-		{
-			case kTYPE_INT32:
-				if( $theValue instanceof MongoInt32 )
-					return $theValue;												// ==>
-				return new MongoInt32( (int) $theValue );							// ==>
-				
-			case kTYPE_INT64:
-				if( $theValue instanceof MongoInt64 )
-					return $theValue;												// ==>
-				return new MongoInt64( (int) $theValue );							// ==>
-				
-			case kTYPE_BINARY:
-				if( $theValue instanceof MongoBinData )
-					return $theValue;												// ==>
-				return new MongoBinData( $theValue );								// ==>
-				
-			case kTYPE_STAMP:
-				if( $theValue instanceof MongoDate )
-					return $theValue;												// ==>
-				if( is_array( $theValue ) )
-				{
-					$sec = (int) array_shift( $theValue );
-					$usec = ( count( $theValue ) )
-						  ? (int) array_shift( $theValue )
-						  : 0;
-					
-					return new MongoDate( $sec, $usec );							// ==>
-				}
-				if( is_string( $theValue ) )
-					$theValue = strtotime( $theValue );
-				return new MongoDate( (int) $theValue );							// ==>
-		}
-		
-		return parent::ConvertValue( $theType, $theValue );							// ==>
-	
-	} // ConvertValue.
-
-		
-
-/*=======================================================================================
- *																						*
- *								STATIC CONVERSION INTERFACE								*
  *																						*
  *======================================================================================*/
 
@@ -1185,9 +1123,9 @@ class CMongoContainer extends CContainer
 	 * @param reference			   &$theElement			Element to encode.
 	 * @param string				$theType			Data type.
 	 *
-	 * @static
+	 * @access public
 	 */
-	static function UnserialiseData( &$theElement, $theType = NULL )
+	public function UnserialiseData( &$theElement, $theType = NULL )
 	{
 		//
 		// Check type.

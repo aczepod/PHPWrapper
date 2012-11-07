@@ -18,7 +18,7 @@
 
 /*=======================================================================================
  *																						*
- *								MongoDataWrapper.php									*
+ *									MongoDataWrapper.php								*
  *																						*
  *======================================================================================*/
 
@@ -39,30 +39,11 @@ require_once( 'local.inc.php' );
 require_once( '/Library/WebServer/Library/PHPWrapper/includes.inc.php' );
 
 /**
- * Session includes.
- *
- * This include file contains the definition of the session object.
- */
-require_once( kPATH_MYWRAPPER_LIBRARY_CLASS."/CMongoContainer.php" );
-
-/**
  * Class includes.
  *
  * This include file contains the working class definitions.
  */
 require_once( kPATH_MYWRAPPER_LIBRARY_CLASS."/CMongoDataWrapper.php" );
-
-/**
- * Start session.
- */
-session_start();
-
-
-/*=======================================================================================
- *	INIT SESSION																		*
- *======================================================================================*/
- 
-$_SESSION[ kAPI_SESSION_SERVER ] = new CMongoServer();
 
 
 /*=======================================================================================

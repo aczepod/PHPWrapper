@@ -15,30 +15,35 @@
  *	@subpackage	Wrappers
  *
  *	@author		Milko A. Škofič <m.skofic@cgiar.org>
- *	@version	1.00 05/06/2011
- *				2.00 22/02/2012
+ *	@version	1.00 06/11/2011
  */
+
+/*=======================================================================================
+ *	WEB-SERVICE RESOURCE OFFSETS														*
+ *======================================================================================*/
+
+/**
+ * Web-service server.
+ *
+ * This is the tag that represents the server on which we want to operate, no parameter
+ * is provided, but this {@link CServer} must be instantiated in the {@link _InitResources}
+ * method and set with this offset into the request array.
+ *
+ * Type: CServer.
+ * Cardinality: one.
+ */
+define( "kAPI_SERVER",				':WS:SERVER' );
 
 /*=======================================================================================
  *	WEB-SERVICE REQUEST PARAMETERS														*
  *======================================================================================*/
 
 /**
- * Data store filter.
- *
- * This is the tag that represents the data store filter or query, the parameter is provided
- * as an encoded {@link CQuery} object.
- *
- * Type: encoded.
- * Cardinality: one or zero.
- */
-define( "kAPI_QUERY",				':WS:QUERY' );
-
-/**
  * Web-service database.
  *
  * This is the tag that represents the database on which we want to operate, the parameter
- * is provided as a string.
+ * is provided as a string and is used as an argument to the {@link CServer::Database()}
+ * method.
  *
  * Type: string.
  * Cardinality: one.
@@ -49,65 +54,13 @@ define( "kAPI_DATABASE",			':WS:DATABASE' );
  * Web-service database container.
  *
  * This is the tag that represents the database container on which we want to operate, the
- * parameter is provided as a string.
+ * parameter is provided as a string and is used as an argument to the
+ * {@link CDatabase::Container()} method.
  *
  * Type: string.
  * Cardinality: one.
  */
 define( "kAPI_CONTAINER",			':WS:CONTAINER' );
-
-/**
- * Data store object fields.
- *
- * This is the tag that represents the data store object elements that should be returned:
- * if omitted it is assumed that the whole object is to be returned; the parameter is
- * provided as an encoded array.
- *
- * Type: encoded.
- * Cardinality: one or zero.
- */
-define( "kAPI_SELECT",				':WS:SELECT' );
-
-/**
- * Data store sort order.
- *
- * This is the tag that represents the data store sort elements that should be used for
- * sorting the results.
- *
- * Type: encoded.
- * Cardinality: one or zero.
- */
-define( "kAPI_SORT",				':WS:SORT' );
-
-/**
- * Data store object.
- *
- * This is the tag that represents the data store object, this value is used when committing
- * data back to the data store; the parameter is provided as an encoded array or object.
- *
- * Type: encoded.
- * Cardinality: one or zero.
- */
-define( "kAPI_OBJECT",				':WS:OBJECT' );
-
-/**
- * Data store options.
- *
- * This is the tag that represents the data store options, this value is used to provide
- * additional options to the operation. It is structured as a key/value pair having the
- * following default key elements:
- *
- * <ul>
- *	<li><i>{@link kAPI_OPT_SAFE}</i>: Safe commit option.
- *	<li><i>{@link kAPI_OPT_FSYNC}</i>: Safe and sync commit option.
- *	<li><i>{@link kAPI_OPT_TIMEOUT}</i>: Operation timeout.
- *	<li><i>{@link kAPI_OPT_SINGLE}</i>: Single object selection.
- * </ul>
- *
- * Type: encoded.
- * Cardinality: one or zero.
- */
-define( "kAPI_OPTIONS",				':WS:OPTIONS' );
 
 /**
  * Page start.
@@ -132,6 +85,40 @@ define( "kAPI_PAGE_START",			':WS:PAGE-START' );
  */
 define( "kAPI_PAGE_LIMIT",			':WS:PAGE-LIMIT' );
 
+/**
+ * Data filter.
+ *
+ * This is the tag that represents the data store filter or query, the parameter is provided
+ * as an encoded {@link CQuery} object.
+ *
+ * Type: encoded.
+ * Cardinality: one or zero.
+ */
+define( "kAPI_QUERY",				':WS:QUERY' );
+
+/**
+ * Data fields.
+ *
+ * This is the tag that represents the data store object elements that should be returned:
+ * if omitted it is assumed that the whole object is to be returned; the parameter is
+ * provided as an encoded array.
+ *
+ * Type: encoded.
+ * Cardinality: one or zero.
+ */
+define( "kAPI_SELECT",				':WS:SELECT' );
+
+/**
+ * Data sort order.
+ *
+ * This is the tag that represents the data store sort elements that should be used for
+ * sorting the results.
+ *
+ * Type: encoded.
+ * Cardinality: one or zero.
+ */
+define( "kAPI_SORT",				':WS:SORT' );
+
 /*=======================================================================================
  *	WEB-SERVICE RESPONSE PARAMETERS														*
  *======================================================================================*/
@@ -154,7 +141,7 @@ define( "kAPI_PAGE_LIMIT",			':WS:PAGE-LIMIT' );
 define( "kAPI_PAGING",				':WS:PAGING' );
 
 /*=======================================================================================
- *	WEB-SERVICE PAGING STRUCTURE														*
+ *	WEB-SERVICE RESPONSE ELEMENTS														*
  *======================================================================================*/
 
 /**
@@ -170,71 +157,12 @@ define( "kAPI_PAGING",				':WS:PAGING' );
  */
 define( "kAPI_PAGE_COUNT",			':WS:PAGE-COUNT' );
 
-/*=======================================================================================
- *	WEB-SERVICE OPTION ENUMERATIONS														*
- *======================================================================================*/
-
 /**
- * SAFE option.
+ * Count tag.
  *
- * Can be a boolean or integer, defaults to FALSE. If FALSE, the program continues executing
- * without waiting for a database response. If TRUE, the program will wait for the database
- * response and throw an exception if the operation did not succeed.
+ * This tag will hold the total number of elements affected by the operation.
  */
-define( "kAPI_OPT_SAFE",			'safe' );
-
-/**
- * FSYNC option.
- *
- * Boolean, defaults to FALSE. Forces the update to be synced to disk before returning
- * success. If TRUE, a safe update is implied and will override setting safe to FALSE.
- */
-define( "kAPI_OPT_FSYNC",			'fsync' );
-
-/**
- * TIMEOUT option.
- *
- * Integer, if "safe" is set, this sets how long (in milliseconds) for the client to wait
- * for a database response. If the database does not respond within the timeout period, an
- * exception will be thrown.
- */
-define( "kAPI_OPT_TIMEOUT",			'timeout' );
-
-/**
- * SINGLE option.
- *
- * Boolean, used in the {@link kAPI_OP_DEL} operation: if TRUE, only one object will be
- * deleted; if not, all matching objects will be deleted.
- */
-define( "kAPI_OPT_SINGLE",			'justOne' );
-
-/*=======================================================================================
- *	SESSION TAGS																		*
- *======================================================================================*/
-
-/**
- * Server connection.
- *
- * This tag represents the session server offset, it will hold the operations
- * {@link CServer} instance.
- */
-define( "kAPI_SESSION_SERVER",		'@S' );
-
-/**
- * Database connection.
- *
- * This tag represents the session database offset, it will hold the operations
- * {@link CDatabase} instance.
- */
-define( "kAPI_SESSION_DATABASE",	'@D' );
-
-/**
- * Container connection.
- *
- * This tag represents the session container offset, it will hold the operations
- * {@link CContainer} instance.
- */
-define( "kAPI_SESSION_CONTAINER",	'@C' );
+define( "kAPI_AFFECTED_COUNT",		':WS:AFFECTED-COUNT' );
 
 /*=======================================================================================
  *	WEB-SERVICE OPERATIONS																*
@@ -243,191 +171,54 @@ define( "kAPI_SESSION_CONTAINER",	'@C' );
 /**
  * COUNT web-service.
  *
- * This is the tag that represents the COUNT web-service operation, used to return the
- * total number of elements satisfying a query.
+ * This is the tag that represents the COUNT web-service operation, which returns the count
+ * of a provided query.
  *
  * The service expects the following parameters:
  *
  * <ul>
  *	<li><i>{@link kAPI_FORMAT}</i>: This parameter is required to indicate how to
- *		encode the request and the response.
- *	<li><i>{@link kAPI_QUERY}</i>: This parameter is required to provide a data filter.
- *	<li><i>{@link kAPI_DATABASE}</i>: This parameter is required to provide the database
- *		reference.
- *	<li><i>{@link kAPI_DATABASE}</i>: This parameter is required to provide the container
- *		reference.
+ *		encode the response.
+ *	<li><i>{@link kAPI_DATABASE}</i>: This parameter is required to indicate the working
+ *		database.
+ *	<li><i>{@link kAPI_CONTAINER}</i>: This parameter is required to indicate the working
+ *		container.
+ *	<li><i>{@link kAPI_QUERY}</i>: If this parameter is missing, we expect to get the whole
+ *		container count.
  * </ul>
  */
-define( "kAPI_OP_COUNT",			'COUNT' );
+define( "kAPI_OP_COUNT",			'WS:OP:COUNT' );
 
 /**
- * MATCH web-service.
+ * QUERY web-service.
  *
- * This is the tag that represents the MATCH web-service operation, used to retrieve objects
- * matching the first query of a list of provided queries.
+ * This is the tag that represents the QUERY web-service operation, which returns the list
+ * of records satisfying a provided query.
+ *
+ * The service expects the following parameters:
  *
  * <ul>
  *	<li><i>{@link kAPI_FORMAT}</i>: This parameter is required to indicate how to
- *		encode the request and the response.
- *	<li><i>{@link kAPI_QUERY}</i>: This parameter is required to provide a data filter.
- *	<li><i>{@link kAPI_DATABASE}</i>: This parameter is required to provide the database
- *		reference.
- *	<li><i>{@link kAPI_DATABASE}</i>: This parameter is required to provide the container
- *		reference.
- *	<li><i>{@link kAPI_PAGE_LIMIT}</i>: This parameter is required to provide the maximum
- *		number of elements to be returned; if omitted, the {@link kDEFAULT_LIMIT} value will
- *		be enforced.
- * </ul>
- *
- * Note that the {@link kAPI_QUERY} parameter,
- * in this case, is expected to be a list of individual queries, not a single query.
- */
-define( "kAPI_OP_MATCH",			'MATCH' );
-
-/**
- * GET web-service.
- *
- * This is the tag that represents the GET web-service operation, used to retrieve a list
- * of matching objects from the data store.
- *
- * <ul>
- *	<li><i>{@link kAPI_FORMAT}</i>: This parameter is required to indicate how to
- *		encode the request and the response.
- *	<li><i>{@link kAPI_QUERY}</i>: This parameter is required to provide a data filter.
- *	<li><i>{@link kAPI_DATABASE}</i>: This parameter is required to provide the database
- *		reference.
- *	<li><i>{@link kAPI_CONTAINER}</i>: This parameter is required to provide the container
- *		reference.
- *	<li><i>{@link kAPI_PAGE_LIMIT}</i>: This parameter is required to provide the maximum
- *		number of elements to be returned; if omitted, the {@link kDEFAULT_LIMIT} value will
- *		be enforced.
+ *		encode the response.
+ *	<li><i>{@link kAPI_DATABASE}</i>: This parameter is required to indicate the working
+ *		database.
+ *	<li><i>{@link kAPI_CONTAINER}</i>: This parameter is required to indicate the working
+ *		container.
+ *	<li><i>{@link kAPI_QUERY}</i>: If this parameter is missing, we expect to get the whole
+ *		container count.
+ *	<li><i>{@link kAPI_SELECT}</i>: This parameter is an array listing which fields are to
+ *		be returned by the query, all fields not included in the list will be ignored. An
+ *		empty list is equivalent to not providing the list.
+ *	<li><i>{@link kAPI_SORT}</i>: This parameter is an array listing which fields are to
+ *		be considered in the sort order, the array is indexed by the field name and the
+ *		value should be a number that represents the sense: positive or zero will be
+ *		considered <i>ascending</i> and negative values <i>descending</i>.
+ *	<li><i>{@link kAPI_PAGE_LIMIT}</i>:This parameter is required or enforced, it represents
+ *		the maximum number of elements that the query should return, the default value is
+ *		{@link kDEFAULT_LIMIT}.
  * </ul>
  */
-define( "kAPI_OP_GET",				'GET' );
-
-/**
- * SET web-service.
- *
- * This is the tag that represents the SET web-service operation, used to insert or update
- * objects in the data store.
- *
- * <ul>
- *	<li><i>{@link kAPI_FORMAT}</i>: This parameter is required to indicate how to
- *		encode the request and the response.
- *	<li><i>{@link kAPI_DATABASE}</i>: This parameter is required to provide the database
- *		reference.
- *	<li><i>{@link kAPI_CONTAINER}</i>: This parameter is required to provide the container
- *		reference.
- *	<li><i>{@link kAPI_OBJECT}</i>: This parameter is required to provide the object to be
- *		set.
- * </ul>
- */
-define( "kAPI_OP_SET",				'SET' );
-
-/**
- * UPDATE web-service.
- *
- * This is the tag that represents the UPDATE web-service operation, used to update existing
- * objects in the data store.
- *
- * <ul>
- *	<li><i>{@link kAPI_FORMAT}</i>: This parameter is required to indicate how to
- *		encode the request and the response.
- *	<li><i>{@link kAPI_DATABASE}</i>: This parameter is required to provide the database
- *		reference.
- *	<li><i>{@link kAPI_CONTAINER}</i>: This parameter is required to provide the container
- *		reference.
- *	<li><i>{@link kAPI_OBJECT}</i>: This parameter is required to provide the object to be
- *		set.
- * </ul>
- *
- * This option implies that the object already exists, or the operation should fail.
- */
-define( "kAPI_OP_UPDATE",			'UPDATE' );
-
-/**
- * INSERT web-service.
- *
- * This is the tag that represents the INSERT web-service operation, used to insert new
- * objects in the data store.
- *
- * <ul>
- *	<li><i>{@link kAPI_FORMAT}</i>: This parameter is required to indicate how to
- *		encode the request and the response.
- *	<li><i>{@link kAPI_DATABASE}</i>: This parameter is required to provide the database
- *		reference.
- *	<li><i>{@link kAPI_CONTAINER}</i>: This parameter is required to provide the container
- *		reference.
- *	<li><i>{@link kAPI_OBJECT}</i>: This parameter is required to provide the object to be
- *		set.
- * </ul>
- *
- * This option implies that the object does not exists, or the operation should fail.
- */
-define( "kAPI_OP_INSERT",			'INSERT' );
-
-/**
- * BATCH-INSERT web-service.
- *
- * This service is equivalent to the {@link kAPI_OP_INSERT} command, except that in this
- * case you provide a list of objects to be  inserted.
- *
- * <ul>
- *	<li><i>{@link kAPI_FORMAT}</i>: This parameter is required to indicate how to
- *		encode the request and the response.
- *	<li><i>{@link kAPI_DATABASE}</i>: This parameter is required to provide the database
- *		reference.
- *	<li><i>{@link kAPI_CONTAINER}</i>: This parameter is required to provide the container
- *		reference.
- *	<li><i>{@link kAPI_OBJECT}</i>: This parameter is required to provide the objects to be
- *		set; in this case this should be an array of objects.
- * </ul>
- *
- * This option implies that the objects do not exists, or the operation should fail.
- */
-define( "kAPI_OP_BATCH_INSERT",		'BINSERT' );
-
-/**
- * MODIFY web-service.
- *
- * This is the tag that represents the MODIFY web-service operation, used to modify partial
- * contents of objects in the data store.
- *
- * <ul>
- *	<li><i>{@link kAPI_FORMAT}</i>: This parameter is required to indicate how to
- *		encode the request and the response.
- *	<li><i>{@link kAPI_DATABASE}</i>: This parameter is required to provide the database
- *		reference.
- *	<li><i>{@link kAPI_CONTAINER}</i>: This parameter is required to provide the container
- *		reference.
- *	<li><i>{@link kAPI_QUERY}</i>: This parameter is required to provide a data filter to
- *		select which objects are to be modified.
- *	<li><i>{@link kAPI_OBJECT}</i>: This parameter is required to provide the modification
- *		criteria.
- * </ul>
- *
- * This option implies that the object already exists, or the operation should fail.
- */
-define( "kAPI_OP_MODIFY",			'MODIFY' );
-
-/**
- * DELETE web-service.
- *
- * This is the tag that represents the DELETE web-service operation, used to delete objects
- * from the data store.
- *
- * <ul>
- *	<li><i>{@link kAPI_FORMAT}</i>: This parameter is required to indicate how to
- *		encode the request and the response.
- *	<li><i>{@link kAPI_DATABASE}</i>: This parameter is required to provide the database
- *		reference.
- *	<li><i>{@link kAPI_CONTAINER}</i>: This parameter is required to provide the container
- *		reference.
- *	<li><i>{@link kAPI_QUERY}</i>: This parameter is required to provide a data filter to
- *		select which objects are to be deleted.
- * </ul>
- */
-define( "kAPI_OP_DEL",				'DELETE' );
+define( "kAPI_OP_QUERY",			'WS:OP:QUERY' );
 
 
 ?>

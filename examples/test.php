@@ -265,7 +265,7 @@
 	echo( '<hr />' );
 	$x->CallStatic();
 	echo( '<hr /><hr />' );
-*/
+
 	//
 	// Simplexml parsing tests.
 	//
@@ -357,5 +357,27 @@
 	echo( '<pre>' );
 	print_r( $iso );
 	echo( '</pre>' );
+*/
+	//
+	// Test the Mongo distinct PHP command.
+	//
+
+	$m = new Mongo;
+	$db = $m->selectDB("test");
+	$db->dropCollection("distinct");
+	$c = $db->distinct;
+	
+	$c->insert(array("stuff" => "bar", "zip-code" => 10010));
+	$c->insert(array("stuff" => "foo", "zip-code" => 10010));
+	$c->insert(array("stuff" => "bar", "zip-code" => 99701), array("safe" => true));
+	
+	$retval = $c->distinct("zip-code");
+	var_dump($retval);
+	
+	$retval = $c->distinct("zip-code", array("stuff" => "foo"));
+	var_dump($retval);
+	
+	$retval = $c->distinct("zip-code", array("stuff" => "bar"));
+	var_dump($retval);
 	
 ?>

@@ -25,6 +25,13 @@
  *======================================================================================*/
 
 /**
+ * Default server.
+ *
+ * This tag indicates the default server URN.
+ */
+define( "kDEFAULT_SERVER",					"mongodb://localhost:27017" );
+
+/**
  * Default database name.
  *
  * This tag indicates the default database name.
@@ -44,6 +51,13 @@ define( "kDEFAULT_LANGUAGE",				"en" );
  * This tag indicates the default page limit.
  */
 define( "kDEFAULT_LIMIT",					50 );
+
+/**
+ * Default maximum page limit.
+ *
+ * This tag indicates the default maximum page limit.
+ */
+define( "kDEFAULT_MAX_LIMIT",				10000 );
 
 /*=======================================================================================
  *	VERBOSE FLAG																		*

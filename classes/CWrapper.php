@@ -42,6 +42,13 @@ require_once( kPATH_MYWRAPPER_LIBRARY_DEFINE."/Attributes.inc.php" );
 require_once( kPATH_MYWRAPPER_LIBRARY_DEFINE."/Status.inc.php" );
 
 /**
+ * Accessors.
+ *
+ * This include file contains all accessor functions.
+ */
+require_once( kPATH_MYWRAPPER_LIBRARY_FUNCTION."/accessors.php" );
+
+/**
  * Parsers.
  *
  * This include file contains all parser functions.
@@ -207,15 +214,6 @@ require_once( kPATH_MYWRAPPER_LIBRARY_CLASS."/CWrapper.inc.php" );
  */
 class CWrapper extends CStatusDocument
 {
-	/**
-	 * Reception time-stamp.
-	 *
-	 * This data member holds the request reception time stamp.
-	 *
-	 * @var integer
-	 */
-	 protected $mReceivedStamp = NULL;
-
 		
 
 /*=======================================================================================
@@ -276,7 +274,7 @@ class CWrapper extends CStatusDocument
 			//
 			// Set reception time.
 			//
-			$this->mReceivedStamp = gettimeofday( TRUE );
+			$_REQUEST[ kAPI_STAMP_REC ] = gettimeofday( TRUE );
 			
 			//
 			// TRY BLOCK
@@ -399,9 +397,7 @@ class CWrapper extends CStatusDocument
 			// Set sent timer.
 			//
 			if( $this->offsetExists( kAPI_STAMP ) )
-				$this->_OffsetManage( kAPI_STAMP,
-									  kAPI_STAMP_SENT,
-									  gettimeofday( TRUE ) );
+				$this->_OffsetManage( kAPI_STAMP, kAPI_STAMP_SENT, gettimeofday( TRUE ) );
 			
 			//
 			// Return result.
@@ -455,7 +451,7 @@ class CWrapper extends CStatusDocument
 		//
 		// Set idle status code.
 		//
-		$status[ kOFFSET_CODE ] = 0;
+		$status[ kOFFSET_CODE ] = kERROR_OK;
 		
 		//
 		// Copy status to object.
@@ -489,8 +485,8 @@ class CWrapper extends CStatusDocument
 	 * This method is responsible for parsing and setting all default and provided options,
 	 * derived classes should overload this method to handle custom options.
 	 *
-	 * In this class we initialise the {@link kAPI_REQUEST} and
-	 * {@link kAPI_STAMP} sections if required.
+	 * In this class we initialise the {@link kAPI_REQUEST} and {@link kAPI_STAMP} sections
+	 * if required.
 	 *
 	 * @access protected
 	 *
@@ -540,7 +536,7 @@ class CWrapper extends CStatusDocument
 	 *
 	 * @access protected
 	 */
-	protected function _InitResources()														{}
+	protected function _InitResources()													   {}
 
 		
 
@@ -781,7 +777,7 @@ class CWrapper extends CStatusDocument
 			//
 			$options = Array();
 			$options[ kAPI_STAMP_REQUEST ] = $_REQUEST[ kAPI_STAMP_REQUEST ];
-			$options[ kAPI_STAMP_REC ] = $this->mReceivedStamp;
+			$options[ kAPI_STAMP_REC ] = $_REQUEST[ kAPI_STAMP_REC ];
 			$this->offsetSet( kAPI_STAMP, $options );
 		
 		} // Log timers.
@@ -914,7 +910,7 @@ class CWrapper extends CStatusDocument
 	//			break;
 	//
 	//		default:
-	//			parent::_ValidateFormat( $theParameter );
+	//			parent::_ValidateOperation( $theParameter );
 	//			break;
 	//	}
 	//
@@ -1020,7 +1016,7 @@ class CWrapper extends CStatusDocument
 	 *
 	 * @access protected
 	 */
-	protected function _Handle_Ping()	{}
+	protected function _Handle_Ping()														{}
 
 		
 
