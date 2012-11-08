@@ -35,20 +35,6 @@ require_once( kPATH_MYWRAPPER_LIBRARY_DEFINE."/Types.inc.php" );
 require_once( kPATH_MYWRAPPER_LIBRARY_DEFINE."/Attributes.inc.php" );
 
 /**
- * Status.
- *
- * This include file contains all status type definitions.
- */
-require_once( kPATH_MYWRAPPER_LIBRARY_DEFINE."/Status.inc.php" );
-
-/**
- * Accessors.
- *
- * This include file contains all accessor functions.
- */
-require_once( kPATH_MYWRAPPER_LIBRARY_FUNCTION."/accessors.php" );
-
-/**
  * Parsers.
  *
  * This include file contains all parser functions.
@@ -67,7 +53,7 @@ require_once( kPATH_MYWRAPPER_LIBRARY_CLASS."/CException.php" );
  *
  * This include file contains the parent class definitions.
  */
-require_once( kPATH_MYWRAPPER_LIBRARY_CLASS."/CStatusDocument.php" );
+require_once( kPATH_MYWRAPPER_LIBRARY_CLASS."/CConnection.php" );
 
 /**
  * Local definitions.
@@ -202,7 +188,7 @@ require_once( kPATH_MYWRAPPER_LIBRARY_CLASS."/CWrapper.inc.php" );
  * this simple code snippet:
  *
  * <code>
- * $server = new CWrapper();
+ * $server = new CWrapper( new Server() );
  * $server->HandleRequest();
  * </code>
  *
@@ -212,7 +198,7 @@ require_once( kPATH_MYWRAPPER_LIBRARY_CLASS."/CWrapper.inc.php" );
  *	@package	MyWrapper
  *	@subpackage	Wrappers
  */
-class CWrapper extends CStatusDocument
+class CWrapper extends CConnection
 {
 		
 
@@ -250,6 +236,9 @@ class CWrapper extends CStatusDocument
 	 * This protected interface should be overloaded by derived classes to implement custom
 	 * services.
 	 *
+	 * @param mixed					$theConnection		Native connection.
+	 * @param mixed					$theOptions			Connection options.
+	 *
 	 * @access public
 	 *
 	 * @uses _InitStatus()
@@ -261,8 +250,13 @@ class CWrapper extends CStatusDocument
 	 * @uses _Exception2Status()
 	 * @uses _EncodeResponse()
 	 */
-	public function __construct()
+	public function __construct( $theConnection = NULL, $theOptions = NULL )
 	{
+		//
+		// Call parent constructor.
+		//
+		parent::__construct( $theConnection, $theOptions );
+		
 		//
 		// Check dependencies.
 		//
@@ -335,6 +329,25 @@ class CWrapper extends CStatusDocument
 		} // Has required elements.
 
 	} // Constructor.
+
+	 
+	/*===================================================================================
+	 *	__toString																		*
+	 *==================================================================================*/
+
+	/**
+	 * <h4>Return wrapper name</h4>
+	 *
+	 * This method should return the current wrapper's name.
+	 *
+	 * In this class we return the current class name.
+	 *
+	 * @access public
+	 * @return string				The wrapper name.
+	 *
+	 * @uses Connection()
+	 */
+	public function __toString()							{	return get_class( $this );	}
 
 		
 

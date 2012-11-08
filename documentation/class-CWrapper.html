@@ -6,8 +6,8 @@
 
 	<title>Class CWrapper | MyWrapper Reference Documentation</title>
 
-	<script type="text/javascript" src="resources/combined.js?368249000"></script>
-	<script type="text/javascript" src="elementlist.js?2116948467"></script>
+	<script type="text/javascript" src="resources/combined.js?3680114562"></script>
+	<script type="text/javascript" src="elementlist.js?947975004"></script>
 	<link rel="stylesheet" type="text/css" media="all" href="resources/style.css?3505392360" />
 
 </head>
@@ -50,7 +50,6 @@
 			<h3>Classes</h3>
 			<ul>
 				<li><a href="class-CDataWrapper.html">CDataWrapper</a></li>
-				<li><a href="class-CMongoDataWrapper.html">CMongoDataWrapper</a></li>
 				<li><a href="class-COntologyWrapper.html">COntologyWrapper</a></li>
 				<li class="active"><a href="class-CWrapper.html">CWrapper</a></li>
 			</ul>
@@ -250,7 +249,8 @@ implemented with this simple code snippet:</p>
 
 <pre>
 <span class="php-var">$server</span> = <span
-class="php-keyword1">new</span> CWrapper();
+class="php-keyword1">new</span> CWrapper( <span
+class="php-keyword1">new</span> Server() );
 <span
 class="php-var">$server</span>-&gt;HandleRequest();
 </pre>
@@ -292,6 +292,13 @@ class="php-var">$server</span>-&gt;HandleRequest();
 		</dd>
 		<dd style="padding-left:90px">
 			<img src="resources/inherit.png" alt="Extended by" />
+			<a href="class-CConnection.html"><span>CConnection</span></a>
+			
+			
+			
+		</dd>
+		<dd style="padding-left:120px">
+			<img src="resources/inherit.png" alt="Extended by" />
 <b><span>CWrapper</span></b>			
 			
 			
@@ -306,7 +313,6 @@ class="php-var">$server</span>-&gt;HandleRequest();
 
 	<div>
 		<h4>Indirect known subclasses</h4>
-			<a href="class-CMongoDataWrapper.html">CMongoDataWrapper</a>, 
 			<a href="class-COntologyWrapper.html">COntologyWrapper</a>
 	</div>
 
@@ -323,7 +329,7 @@ class="php-var">$server</span>-&gt;HandleRequest();
 				<b>Author:</b>
 				Milko A. Škofič &lt;<a
 href="mailto:m.skofic&#64;cgiar.org">m.skofic&#64;<!---->cgiar.org</a>&gt;<br />
-		<b>Located at</b> <a href="source-class-CWrapper.html#79-1335" title="Go to source code">CWrapper.php</a><br />
+		<b>Located at</b> <a href="source-class-CWrapper.html#65-1348" title="Go to source code">CWrapper.php</a><br />
 	</div>
 
 
@@ -341,7 +347,7 @@ href="mailto:m.skofic&#64;cgiar.org">m.skofic&#64;<!---->cgiar.org</a>&gt;<br />
 
 		<td class="name"><div>
 		<a class="anchor" href="#___construct">#</a>
-		<code><a href="source-class-CWrapper.html#231-337" title="Go to source code">__construct</a>( )</code>
+		<code><a href="source-class-CWrapper.html#217-331" title="Go to source code">__construct</a>( <span>mixed <var>$theConnection</var> = <span class="php-keyword1">NULL</span></span>, <span>mixed <var>$theOptions</var> = <span class="php-keyword1">NULL</span> </span> )</code>
 
 		<div class="description short">
 			
@@ -381,6 +387,13 @@ custom services.</p>
 
 
 
+				<h4>Parameters</h4>
+				<div class="list"><dl>
+					<dt><var>$theConnection</var></dt>
+					<dd><code>mixed</code><br>$theConnection Native connection.</dd>
+					<dt><var>$theOptions</var></dt>
+					<dd><code>mixed</code><br>$theOptions Connection options.</dd>
+				</dl></div>
 
 
 
@@ -397,7 +410,52 @@ custom services.</p>
 				</div>
 
 				<h4>Overrides</h4>
-				<div class="list"><code><a href="class-CStatusDocument.html#___construct">CStatusDocument::__construct()</a></code></div>
+				<div class="list"><code><a href="class-CConnection.html#___construct">CConnection::__construct()</a></code></div>
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="__toString" id="___toString">
+
+		<td class="attributes"><code>
+			 public 
+			string
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#___toString">#</a>
+		<code><a href="source-class-CWrapper.html#338-350" title="Go to source code">__toString</a>( )</code>
+
+		<div class="description short">
+			
+<h4>Return wrapper name</h4>
+
+		</div>
+
+		<div class="description detailed hidden">
+			
+<h4>Return wrapper name</h4>
+
+<p>This method should return the current wrapper's name.</p>
+
+<p>In this class we return the current class name.</p>
+
+
+
+
+				<h4>Returns</h4>
+				<div class="list">
+					<code>string</code><br>The wrapper name.<br />
+				</div>
+
+
+				<h4>Uses</h4>
+				<div class="list">
+						<code><code><a href="class-CConnection.html#_Connection">CConnection::Connection()</a></code></code> <br />
+				</div>
+
 
 		</div>
 		</div></td>
@@ -413,7 +471,7 @@ custom services.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#_HandleRequest">#</a>
-		<code><a href="source-class-CWrapper.html#353-409" title="Go to source code">HandleRequest</a>( )</code>
+		<code><a href="source-class-CWrapper.html#366-422" title="Go to source code">HandleRequest</a>( )</code>
 
 		<div class="description short">
 			
@@ -457,7 +515,7 @@ this is not the case, the method will do nothing.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#__InitStatus">#</a>
-		<code><a href="source-class-CWrapper.html#425-475" title="Go to source code">_InitStatus</a>( )</code>
+		<code><a href="source-class-CWrapper.html#438-488" title="Go to source code">_InitStatus</a>( )</code>
 
 		<div class="description short">
 			
@@ -505,7 +563,7 @@ status kOFFSET_CODE.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#__InitOptions">#</a>
-		<code><a href="source-class-CWrapper.html#482-524" title="Go to source code">_InitOptions</a>( )</code>
+		<code><a href="source-class-CWrapper.html#495-537" title="Go to source code">_InitOptions</a>( )</code>
 
 		<div class="description short">
 			
@@ -553,7 +611,7 @@ sections if required.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#__InitResources">#</a>
-		<code><a href="source-class-CWrapper.html#531-539" title="Go to source code">_InitResources</a>( )</code>
+		<code><a href="source-class-CWrapper.html#544-552" title="Go to source code">_InitResources</a>( )</code>
 
 		<div class="description short">
 			
@@ -593,7 +651,7 @@ resources, in this class we have no resources.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#__ParseRequest">#</a>
-		<code><a href="source-class-CWrapper.html#555-599" title="Go to source code">_ParseRequest</a>( )</code>
+		<code><a href="source-class-CWrapper.html#568-612" title="Go to source code">_ParseRequest</a>( )</code>
 
 		<div class="description short">
 			
@@ -648,7 +706,7 @@ kAPI_STAMP elements.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#__FormatRequest">#</a>
-		<code><a href="source-class-CWrapper.html#606-631" title="Go to source code">_FormatRequest</a>( )</code>
+		<code><a href="source-class-CWrapper.html#619-644" title="Go to source code">_FormatRequest</a>( )</code>
 
 		<div class="description short">
 			
@@ -690,7 +748,7 @@ handled.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#__ValidateRequest">#</a>
-		<code><a href="source-class-CWrapper.html#638-674" title="Go to source code">_ValidateRequest</a>( )</code>
+		<code><a href="source-class-CWrapper.html#651-687" title="Go to source code">_ValidateRequest</a>( )</code>
 
 		<div class="description short">
 			
@@ -738,7 +796,7 @@ codes (their presence is checked by the constructor.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#__ParseFormat">#</a>
-		<code><a href="source-class-CWrapper.html#690-712" title="Go to source code">_ParseFormat</a>( )</code>
+		<code><a href="source-class-CWrapper.html#703-725" title="Go to source code">_ParseFormat</a>( )</code>
 
 		<div class="description short">
 			
@@ -781,7 +839,7 @@ codes (their presence is checked by the constructor.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#__ParseOperation">#</a>
-		<code><a href="source-class-CWrapper.html#719-741" title="Go to source code">_ParseOperation</a>( )</code>
+		<code><a href="source-class-CWrapper.html#732-754" title="Go to source code">_ParseOperation</a>( )</code>
 
 		<div class="description short">
 			
@@ -824,7 +882,7 @@ codes (their presence is checked by the constructor.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#__ParseTiming">#</a>
-		<code><a href="source-class-CWrapper.html#748-785" title="Go to source code">_ParseTiming</a>( )</code>
+		<code><a href="source-class-CWrapper.html#761-798" title="Go to source code">_ParseTiming</a>( )</code>
 
 		<div class="description short">
 			
@@ -867,7 +925,7 @@ codes (their presence is checked by the constructor.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#__ValidateFormat">#</a>
-		<code><a href="source-class-CWrapper.html#801-856" title="Go to source code">_ValidateFormat</a>( )</code>
+		<code><a href="source-class-CWrapper.html#814-869" title="Go to source code">_ValidateFormat</a>( )</code>
 
 		<div class="description short">
 			
@@ -911,7 +969,7 @@ parameter is valid.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#__ValidateOperation">#</a>
-		<code><a href="source-class-CWrapper.html#863-918" title="Go to source code">_ValidateOperation</a>( )</code>
+		<code><a href="source-class-CWrapper.html#876-931" title="Go to source code">_ValidateOperation</a>( )</code>
 
 		<div class="description short">
 			
@@ -955,7 +1013,7 @@ parameter is valid.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#__HandleRequest">#</a>
-		<code><a href="source-class-CWrapper.html#934-971" title="Go to source code">_HandleRequest</a>( )</code>
+		<code><a href="source-class-CWrapper.html#947-984" title="Go to source code">_HandleRequest</a>( )</code>
 
 		<div class="description short">
 			
@@ -1002,7 +1060,7 @@ parameter is valid.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#__Handle_ListOp">#</a>
-		<code><a href="source-class-CWrapper.html#978-1002" title="Go to source code">_Handle_ListOp</a>( <span>reference <var>&amp; $theList</var></span> )</code>
+		<code><a href="source-class-CWrapper.html#991-1015" title="Go to source code">_Handle_ListOp</a>( <span>reference <var>&amp; $theList</var></span> )</code>
 
 		<div class="description short">
 			
@@ -1047,7 +1105,7 @@ the list of supported operations.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#__Handle_Ping">#</a>
-		<code><a href="source-class-CWrapper.html#1009-1019" title="Go to source code">_Handle_Ping</a>( )</code>
+		<code><a href="source-class-CWrapper.html#1022-1032" title="Go to source code">_Handle_Ping</a>( )</code>
 
 		<div class="description short">
 			
@@ -1085,7 +1143,7 @@ to check if a service is alive.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#__OffsetManage">#</a>
-		<code><a href="source-class-CWrapper.html#1035-1164" title="Go to source code">_OffsetManage</a>( <span>string <var>$theBlock</var></span>, <span>string <var>$theElement</var></span>, <span>mixed <var>$theValue</var> = <span class="php-keyword1">NULL</span> </span> )</code>
+		<code><a href="source-class-CWrapper.html#1048-1177" title="Go to source code">_OffsetManage</a>( <span>string <var>$theBlock</var></span>, <span>string <var>$theElement</var></span>, <span>mixed <var>$theValue</var> = <span class="php-keyword1">NULL</span> </span> )</code>
 
 		<div class="description short">
 			
@@ -1146,7 +1204,7 @@ can be used to manage elements within an offset:</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#__Exception2Status">#</a>
-		<code><a href="source-class-CWrapper.html#1180-1283" title="Go to source code">_Exception2Status</a>( <span><code><a href="class-Exception.html">Exception</a></code> <var>$theException</var></span> )</code>
+		<code><a href="source-class-CWrapper.html#1193-1296" title="Go to source code">_Exception2Status</a>( <span><code><a href="class-Exception.html">Exception</a></code> <var>$theException</var></span> )</code>
 
 		<div class="description short">
 			
@@ -1215,7 +1273,7 @@ exception:</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#__EncodeResponse">#</a>
-		<code><a href="source-class-CWrapper.html#1290-1331" title="Go to source code">_EncodeResponse</a>( )</code>
+		<code><a href="source-class-CWrapper.html#1303-1344" title="Go to source code">_EncodeResponse</a>( )</code>
 
 		<div class="description short">
 			
@@ -1251,6 +1309,15 @@ exception:</p>
 	</table>
 
 	<table class="summary inherited">
+	<caption>Methods inherited from <a href="class-CConnection.html#methods">CConnection</a></caption>
+	<tr>
+		<td><code>
+			<a href="class-CConnection.html#_Connection">Connection()</a>, 
+			<a href="class-CConnection.html#__Ready">_Ready()</a>
+		</code></td>
+	</tr>
+	</table>
+	<table class="summary inherited">
 	<caption>Methods inherited from <a href="class-CStatusDocument.html#methods">CStatusDocument</a></caption>
 	<tr>
 		<td><code>
@@ -1262,7 +1329,6 @@ exception:</p>
 			<a href="class-CStatusDocument.html#__Postunset">_Postunset()</a>, 
 			<a href="class-CStatusDocument.html#__Preset">_Preset()</a>, 
 			<a href="class-CStatusDocument.html#__Preunset">_Preunset()</a>, 
-			<a href="class-CStatusDocument.html#__Ready">_Ready()</a>, 
 			<a href="class-CStatusDocument.html#_offsetSet">offsetSet()</a>, 
 			<a href="class-CStatusDocument.html#_offsetUnset">offsetUnset()</a>
 		</code></td>
@@ -1324,6 +1390,14 @@ exception:</p>
 
 
 
+	<table class="summary inherited">
+	<caption>Properties inherited from <a href="class-CConnection.html#properties">CConnection</a></caption>
+	<tr>
+		<td><code>
+			<a href="class-CConnection.html#$mConnection"><var>$mConnection</var></a>
+		</code></td>
+	</tr>
+	</table>
 	<table class="summary inherited">
 	<caption>Properties inherited from <a href="class-CStatusDocument.html#properties">CStatusDocument</a></caption>
 	<tr>

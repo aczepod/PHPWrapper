@@ -111,7 +111,7 @@ require_once( kPATH_MYWRAPPER_LIBRARY_CLASS."/CDataWrapper.inc.php" );
  *				query.
  *			<li><i>{@link kAPI_QUERY}</i>: Query (optional), the selection criteria.
  *		 </ul>
- *		<li><i>{@link kAPI_OP_QUERY}</i>: <i>Query</i>, this operation will return all
+ *		<li><i>{@link kAPI_OP_GET}</i>: <i>Query</i>, this operation will return all
  *			records that satisfy the provided query. The operation expects the following
  *			parameters:
  *		 <ul>
@@ -136,7 +136,7 @@ require_once( kPATH_MYWRAPPER_LIBRARY_CLASS."/CDataWrapper.inc.php" );
  *	@package	MyWrapper
  *	@subpackage	Wrappers
  */
-abstract class CDataWrapper extends CWrapper
+class CDataWrapper extends CWrapper
 {
 		
 
@@ -306,7 +306,7 @@ abstract class CDataWrapper extends CWrapper
 	 *		or sort orders, so we clear {@link kAPI_SELECT} and {@link kAPI_SORT}. We could
 	 *		also clear the paging parameters, but we keep them in case clients implement an
 	 *		automatic paging management.
-	 *	<li><tt>{@link kAPI_OP_QUERY}</tt>: This operation requires that the page limits be
+	 *	<li><tt>{@link kAPI_OP_GET}</tt>: This operation requires that the page limits be
 	 *		set, only a defined number of records should be returned by a service: if the
 	 *		{@link kAPI_PAGE_LIMIT} parameter was not provided, this method will set it to
 	 *		{@link kDEFAULT_LIMIT}.
@@ -337,7 +337,11 @@ abstract class CDataWrapper extends CWrapper
 					$params = array( kAPI_SELECT, kAPI_SORT );
 					break;
 
-				case kAPI_OP_QUERY:
+				case kAPI_OP_GET_ONE:
+					$params = array( kAPI_SORT );
+					break;
+
+				case kAPI_OP_GET:
 					if( ! array_key_exists( kAPI_PAGE_LIMIT, $_REQUEST ) )
 						$_REQUEST[ kAPI_PAGE_LIMIT ] = kDEFAULT_LIMIT;
 					break;
@@ -584,14 +588,14 @@ abstract class CDataWrapper extends CWrapper
 			//
 			// Check server.
 			//
-			if( array_key_exists( kAPI_SERVER, $_REQUEST ) )
+			if( $this->_IsInited() )
 			{
 				//
 				// Check server type.
 				//
-				if( $_REQUEST[ kAPI_SERVER ] instanceof CServer )
+				if( $this->Connection() instanceof CServer )
 					$_REQUEST[ kAPI_DATABASE ]
-						= $_REQUEST[ kAPI_SERVER ]
+						= $this->Connection()
 							->Database( $_REQUEST[ kAPI_DATABASE ] );
 				
 				else
@@ -604,7 +608,7 @@ abstract class CDataWrapper extends CWrapper
 			
 			else
 				throw new CException
-					( "Unable to instantiate database: server is missing",
+					( "Unable to instantiate database: wrapper not initialised",
 					  kERROR_STATE,
 					  kMESSAGE_TYPE_ERROR );									// !@! ==>
 		
@@ -872,7 +876,8 @@ abstract class CDataWrapper extends CWrapper
 			// Operation codes.
 			//
 			case kAPI_OP_COUNT:
-			case kAPI_OP_QUERY:
+			case kAPI_OP_GET:
+			case kAPI_OP_GET_ONE:
 				//
 				// Check for format.
 				//
@@ -1198,22 +1203,33 @@ abstract class CDataWrapper extends CWrapper
 	protected function _HandleRequest()
 	{
 		//
-		// Parse by operation.
+		// Check operation.
 		//
-		switch( $op = $_REQUEST[ kAPI_OPERATION ] )
+		if( array_key_exists( kAPI_OPERATION, $_REQUEST ) )
 		{
-			case kAPI_OP_COUNT:
-				$this->_Handle_Count();
-				break;
-
-			case kAPI_OP_QUERY:
-				$this->_Handle_Query();
-				break;
-
-			default:
-				parent::_HandleRequest();
-				break;
-		}
+			//
+			// Parse by operation.
+			//
+			switch( $op = $_REQUEST[ kAPI_OPERATION ] )
+			{
+				case kAPI_OP_COUNT:
+					$this->_Handle_Count();
+					break;
+	
+				case kAPI_OP_GET:
+					$this->_Handle_Get();
+					break;
+	
+				case kAPI_OP_GET_ONE:
+					$this->_Handle_GetOne();
+					break;
+	
+				default:
+					parent::_HandleRequest();
+					break;
+			}
+		
+		} // Provided the request.
 	
 	} // _HandleRequest.
 
@@ -1245,9 +1261,9 @@ abstract class CDataWrapper extends CWrapper
 			= 'Count query: returns the count of the provided query.';
 
 		//
-		// Add kAPI_OP_QUERY.
+		// Add kAPI_OP_GET.
 		//
-		$theList[ kAPI_OP_QUERY ]
+		$theList[ kAPI_OP_GET ]
 			= 'Query: returns the list of elements that are matched by the provided query.';
 	
 	} // _Handle_ListOp.
@@ -1263,30 +1279,191 @@ abstract class CDataWrapper extends CWrapper
 	 * This method will handle the {@link kAPI_OP_COUNT} operation, which returns the total
 	 * count of a query in the {@link kAPI_AFFECTED_COUNT} field of the status.
 	 *
-	 * Since this class does not handle any specific data engine, we declare the method
-	 * abstract and require concrete derived classes to implement it.
-	 *
 	 * @access protected
 	 */
-	abstract protected function _Handle_Count();
+	protected function _Handle_Count()
+	{
+		//
+		// Get query.
+		//
+		$query = ( array_key_exists( kAPI_QUERY, $_REQUEST ) )
+				? $_REQUEST[ kAPI_QUERY ]
+				: NULL;
+		
+		//
+		// Perform query.
+		//
+		$cursor = $_REQUEST[ kAPI_CONTAINER ]->Query( $query );
+		
+		//
+		// Set count.
+		//
+		$this->_OffsetManage( kAPI_STATUS, kAPI_AFFECTED_COUNT, $cursor->count( FALSE ) );
+	
+	} // _Handle_Count.
 
 	 
 	/*===================================================================================
-	 *	_Handle_Query																	*
+	 *	_Handle_Get																		*
 	 *==================================================================================*/
 
 	/**
-	 * Handle {@link kAPI_OP_QUERY} request.
+	 * Handle {@link kAPI_OP_GET} request.
 	 *
-	 * This method will handle the {@link kAPI_OP_QUERY} operation, which returns the
+	 * This method will handle the {@link kAPI_OP_GET} operation, which returns the
 	 * records that match the provided query..
-	 *
-	 * Since this class does not handle any specific data engine, we declare the method
-	 * abstract and require concrete derived classes to implement it.
 	 *
 	 * @access protected
 	 */
-	abstract protected function _Handle_Query();
+	protected function _Handle_Get()
+	{
+		//
+		// Handle query.
+		//
+		$query = ( array_key_exists( kAPI_QUERY, $_REQUEST ) )
+				? $_REQUEST[ kAPI_QUERY ]
+				: Array();
+		
+		//
+		// Handle fields.
+		//
+		$fields = ( array_key_exists( kAPI_SELECT, $_REQUEST ) )
+				? $_REQUEST[ kAPI_SELECT ]
+				: Array();
+		
+		//
+		// Handle sort.
+		//
+		$sort = ( array_key_exists( kAPI_SORT, $_REQUEST ) )
+			  ? $_REQUEST[ kAPI_SORT ]
+			  : Array();
+		
+		//
+		// Handle paging.
+		//
+		if( $this->offsetExists( kAPI_PAGING ) )
+		{
+			$start = $this->offsetGet( kAPI_PAGING )[ kAPI_PAGE_START ];
+			$limit = $this->offsetGet( kAPI_PAGING )[ kAPI_PAGE_LIMIT ];
+		}
+		else
+			$start = $limit = NULL;
+		
+		//
+		// Query.
+		//
+		$cursor
+			= $_REQUEST[ kAPI_CONTAINER ]
+				->Query( $query, $fields, $sort, $start, $limit );
+		
+		//
+		// Set affected count.
+		//
+		$this->_OffsetManage( kAPI_STATUS, kAPI_AFFECTED_COUNT, $cursor->count( FALSE ) );
+		
+		//
+		// Handle page count.
+		//
+		if( $this->offsetExists( kAPI_PAGING ) )
+			$this->offsetGet( kAPI_PAGING )[ kAPI_PAGE_COUNT ] = $cursor->count( TRUE );
+		
+		//
+		// Check count.
+		//
+		if( $cursor->count( FALSE ) )
+		{
+			//
+			// Collect results.
+			//
+			$results = Array();
+			foreach( $cursor as $object )
+			{
+				//
+				// Serialise object.
+				//
+				CDataType::SerialiseObject( $object );
+				
+				//
+				// Save object.
+				//
+				$result[] = $object;
+			
+			} // Iterating found objects
+			
+			//
+			// Set response.
+			//
+			$this->offsetSet( kAPI_RESPONSE, $result );
+		
+		} // Found something.
+	
+	} // _Handle_Get.
+
+	 
+	/*===================================================================================
+	 *	_Handle_GetOne																	*
+	 *==================================================================================*/
+
+	/**
+	 * Handle {@link kAPI_OP_GET_ONE} request.
+	 *
+	 * This method will handle the {@link kAPI_OP_GET_ONE} operation, which returns the
+	 * first record to satisfy a query.
+	 *
+	 * @access protected
+	 */
+	protected function _Handle_GetOne()
+	{
+		//
+		// Handle query.
+		//
+		$query = ( array_key_exists( kAPI_QUERY, $_REQUEST ) )
+				? $_REQUEST[ kAPI_QUERY ]
+				: Array();
+		
+		//
+		// Handle fields.
+		//
+		$fields = ( array_key_exists( kAPI_SELECT, $_REQUEST ) )
+				? $_REQUEST[ kAPI_SELECT ]
+				: Array();
+		
+		//
+		// Query.
+		//
+		$object
+			= $_REQUEST[ kAPI_CONTAINER ]
+				->Query( $query, $fields, NULL, NULL, NULL, TRUE );
+				
+		//
+		// Handle object.
+		//
+		if( $object !== NULL )
+		{
+			//
+			// Set affected count.
+			//
+			$this->_OffsetManage( kAPI_STATUS, kAPI_AFFECTED_COUNT, 1 );
+			
+			//
+			// Handle page count.
+			//
+			if( $this->offsetExists( kAPI_PAGING ) )
+				$this->offsetGet( kAPI_PAGING )[ kAPI_PAGE_COUNT ] = 1;
+			
+			//
+			// Serialise object.
+			//
+			CDataType::SerialiseObject( $object );
+			
+			//
+			// Save object in response.
+			//
+			$this->offsetSet( kAPI_RESPONSE, $object );
+		
+		} // Found object.
+	
+	} // _Handle_GetOne.
 
 		
 

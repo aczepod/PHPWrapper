@@ -6,8 +6,8 @@
 
 	<title>Class CMongoContainer | MyWrapper Reference Documentation</title>
 
-	<script type="text/javascript" src="resources/combined.js?368249000"></script>
-	<script type="text/javascript" src="elementlist.js?2116948467"></script>
+	<script type="text/javascript" src="resources/combined.js?3680114562"></script>
+	<script type="text/javascript" src="elementlist.js?947975004"></script>
 	<link rel="stylesheet" type="text/css" media="all" href="resources/style.css?3505392360" />
 
 </head>
@@ -177,7 +177,7 @@
 				<b>Author:</b>
 				Milko A. Škofič &lt;<a
 href="mailto:m.skofic&#64;cgiar.org">m.skofic&#64;<!---->cgiar.org</a>&gt;<br />
-		<b>Located at</b> <a href="source-class-CMongoContainer.html#36-1262" title="Go to source code">CMongoContainer.php</a><br />
+		<b>Located at</b> <a href="source-class-CMongoContainer.html#36-1369" title="Go to source code">CMongoContainer.php</a><br />
 	</div>
 
 
@@ -546,14 +546,14 @@ object, it will then store it in the connection data member.</p>
 
 		<td class="attributes"><code>
 			 public 
-			mixed
+			object
 			
 			</code>
 		</td>
 
 		<td class="name"><div>
 		<a class="anchor" href="#_Query">#</a>
-		<code><a href="source-class-CMongoContainer.html#868-933" title="Go to source code">Query</a>( <span><code><a href="class-CQuery.html">CQuery</a></code> <var>$theQuery</var> = <span class="php-keyword1">NULL</span></span>, <span>array <var>$theFields</var> = <span class="php-keyword1">NULL</span></span>, <span>boolean <var>$doOne</var> = <span class="php-keyword1">FALSE</span> </span> )</code>
+		<code><a href="source-class-CMongoContainer.html#868-1040" title="Go to source code">Query</a>( <span>array <var>$theQuery</var> = <span class="php-keyword1">NULL</span></span>, <span>array <var>$theFields</var> = <span class="php-keyword1">NULL</span></span>, <span>array <var>$theSort</var> = <span class="php-keyword1">NULL</span></span>, <span>integer <var>$theStart</var> = <span class="php-keyword1">NULL</span></span>, <span>integer <var>$theLimit</var> = <span class="php-keyword1">NULL</span></span>, <span>boolean <var>$getFirst</var> = <span class="php-keyword1">FALSE</span> </span> )</code>
 
 		<div class="description short">
 			
@@ -565,23 +565,30 @@ object, it will then store it in the connection data member.</p>
 			
 <h4>Perform a query</h4>
 
-<p>This method will perform the provided query on the current container.</p>
+<p>This method will perform the provided query on the current container, please
+refer to the <code><a href="class-CContainer.html#_Query">CContainer::Query()</a></code> reference for more information.</p>
 
 
 
 				<h4>Parameters</h4>
 				<div class="list"><dl>
 					<dt><var>$theQuery</var></dt>
-					<dd><code><code><a href="class-CQuery.html">CQuery</a></code></code><br>$theQuery Query.</dd>
+					<dd><code>array</code><br>$theQuery Query.</dd>
 					<dt><var>$theFields</var></dt>
-					<dd><code>array</code><br>$theFields Fieldset.</dd>
-					<dt><var>$doOne</var></dt>
-					<dd><code>boolean</code><br>$doOne If TRUE return first match or NULL.</dd>
+					<dd><code>array</code><br>$theFields Fields set.</dd>
+					<dt><var>$theSort</var></dt>
+					<dd><code>array</code><br>$theSort Sort order.</dd>
+					<dt><var>$theStart</var></dt>
+					<dd><code>integer</code><br>$theStart Page start.</dd>
+					<dt><var>$theLimit</var></dt>
+					<dd><code>integer</code><br>$theLimit Page limit.</dd>
+					<dt><var>$getFirst</var></dt>
+					<dd><code>boolean</code><br>$getFirst TRUE means return first.</dd>
 				</dl></div>
 
 				<h4>Returns</h4>
 				<div class="list">
-					<code>mixed</code><br>Native recordset.<br />
+					<code>object</code><br>Native recordset.<br />
 				</div>
 
 
@@ -601,7 +608,7 @@ object, it will then store it in the connection data member.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#_NextSequence">#</a>
-		<code><a href="source-class-CMongoContainer.html#949-1037" title="Go to source code">NextSequence</a>( <span>string <var>$theKey</var></span>, <span>mixed <var>$theContainer</var> = <span class="php-keyword1">NULL</span> </span> )</code>
+		<code><a href="source-class-CMongoContainer.html#1056-1144" title="Go to source code">NextSequence</a>( <span>string <var>$theKey</var></span>, <span>mixed <var>$theContainer</var> = <span class="php-keyword1">NULL</span> </span> )</code>
 
 		<div class="description short">
 			
@@ -655,7 +662,7 @@ for more information.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#_NewQuery">#</a>
-		<code><a href="source-class-CMongoContainer.html#1053-1063" title="Go to source code">NewQuery</a>( <span>mixed <var>$theQuery</var> = <span class="php-keyword1">NULL</span> </span> )</code>
+		<code><a href="source-class-CMongoContainer.html#1160-1170" title="Go to source code">NewQuery</a>( <span>mixed <var>$theQuery</var> = <span class="php-keyword1">NULL</span> </span> )</code>
 
 		<div class="description short">
 			
@@ -701,7 +708,7 @@ for more information.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#_UnserialiseData">#</a>
-		<code><a href="source-class-CMongoContainer.html#1079-1258" title="Go to source code">UnserialiseData</a>( <span>reference <var>&amp; $theElement</var></span>, <span>string <var>$theType</var> = <span class="php-keyword1">NULL</span> </span> )</code>
+		<code><a href="source-class-CMongoContainer.html#1186-1365" title="Go to source code">UnserialiseData</a>( <span>reference <var>&amp; $theElement</var></span>, <span>string <var>$theType</var> = <span class="php-keyword1">NULL</span> </span> )</code>
 
 		<div class="description short">
 			
@@ -792,7 +799,6 @@ second.</p>
 	<caption>Methods inherited from <a href="class-CConnection.html#methods">CConnection</a></caption>
 	<tr>
 		<td><code>
-			<a href="class-CConnection.html#__Connection">_Connection()</a>, 
 			<a href="class-CConnection.html#__Ready">_Ready()</a>
 		</code></td>
 	</tr>

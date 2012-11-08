@@ -190,10 +190,10 @@ define( "kAPI_AFFECTED_COUNT",		':WS:AFFECTED-COUNT' );
 define( "kAPI_OP_COUNT",			'WS:OP:COUNT' );
 
 /**
- * QUERY web-service.
+ * GET web-service.
  *
- * This is the tag that represents the QUERY web-service operation, which returns the list
- * of records satisfying a provided query.
+ * This is the tag that represents the GET web-service operation, which returns the records
+ * satisfying a provided query.
  *
  * The service expects the following parameters:
  *
@@ -218,7 +218,31 @@ define( "kAPI_OP_COUNT",			'WS:OP:COUNT' );
  *		{@link kDEFAULT_LIMIT}.
  * </ul>
  */
-define( "kAPI_OP_QUERY",			'WS:OP:QUERY' );
+define( "kAPI_OP_GET",				'WS:OP:GET' );
+
+/**
+ * GET-ONE web-service.
+ *
+ * This is the tag that represents the GET-ONE web-service operation, which returns the
+ * first record that satisfies a provided query.
+ *
+ * The service expects the following parameters:
+ *
+ * <ul>
+ *	<li><i>{@link kAPI_FORMAT}</i>: This parameter is required to indicate how to
+ *		encode the response.
+ *	<li><i>{@link kAPI_DATABASE}</i>: This parameter is required to indicate the working
+ *		database.
+ *	<li><i>{@link kAPI_CONTAINER}</i>: This parameter is required to indicate the working
+ *		container.
+ *	<li><i>{@link kAPI_QUERY}</i>: If this parameter is missing, we expect to get the whole
+ *		container count.
+ *	<li><i>{@link kAPI_SELECT}</i>: This parameter is an array listing which fields are to
+ *		be returned by the query, all fields not included in the list will be ignored. An
+ *		empty list is equivalent to not providing the list.
+ * </ul>
+ */
+define( "kAPI_OP_GET_ONE",			'WS:OP:GET-ONE' );
 
 
 ?>

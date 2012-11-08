@@ -43,7 +43,7 @@ require_once( '/Library/WebServer/Library/PHPWrapper/includes.inc.php' );
  *
  * This include file contains the working class definitions.
  */
-require_once( kPATH_MYWRAPPER_LIBRARY_CLASS."/CMongoDataWrapper.php" );
+require_once( kPATH_MYWRAPPER_LIBRARY_CLASS."/CDataWrapper.php" );
 
 
 /*=======================================================================================
@@ -53,7 +53,7 @@ require_once( kPATH_MYWRAPPER_LIBRARY_CLASS."/CMongoDataWrapper.php" );
 //
 // Instantiate wrapper.
 //
-$wrapper = new CMongoDataWrapper();
+$wrapper = new CDataWrapper( new CMongoServer( kDEFAULT_SERVER ) );
 
 //
 // Handle request.

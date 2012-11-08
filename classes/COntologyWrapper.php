@@ -238,7 +238,7 @@ abstract class COntologyWrapper extends CDataWrapper
 			//
 			switch( $_REQUEST[ kAPI_OPERATION ] )
 			{
-				case kAPI_OP_QUERY:
+				case kAPI_OP_GET:
 					if( ! array_key_exists( kAPI_PAGE_LIMIT, $_REQUEST ) )
 						$_REQUEST[ kAPI_PAGE_LIMIT ] = kDEFAULT_LIMIT;
 					break;

@@ -322,18 +322,47 @@ abstract class CContainer extends CConnection
 	 * <h4>Perform a query</h4>
 	 *
 	 * This method can be used to perform a query on the container, it expects an instance
-	 * of {@link CQuery} as the query, or <tt>NULL</tt>, to query the whole container and an
-	 * optional parameter that represents the list of desired fields.
+	 * of {@link CQuery} as the query, or <tt>NULL</tt>, to query the whole container and
+	 * two optional parameters that represents the list of desired fields and the list of
+	 * sort fields with sense.
 	 *
-	 * The method should return the resulting query native recordset.
+	 * <ul>
+	 *	<li><tt>$theQuery</tt>: The query expressed as an array or query object, if omitted,
+	 *		it is assumed the query should cover the whole contents of the container.
+	 *	<li><tt>$theFields</tt>: The list of fields to be returned, if omitted, it is
+	 *		assumed all fields are to be returned.
+	 *	<li><tt>$theSort</tt>: The query sort order provided as an array in which the key
+	 *		represents the field name and he value a number that represents the sense:
+	 *		negative numbers indicate descending order and positive numbers ascending order;
+	 *		a value of zero will be skipped.
+	 *	<li><tt>$theStart</tt>: The record number on which to start returning results (zero
+	 *		based).
+	 *	<li><tt>$theLimit</tt>: The maximum number of records to be returned.
+	 *	<li><tt>$getFirst</tt>: If <tt>TRUE</tt>, the method should return the first matched
+	 *		record or <tt>NULL</tt> if there were no matches.
+	 * </ul>
 	 *
-	 * @param CQuery				$theQuery			Query.
-	 * @param array					$theFields			Fieldset.
+	 * The method should return an object that represents a cursor into the query results,
+	 * the object should be iterable and feature a method, <i>count</i>, that accepts a
+	 * boolean parameter: if <tt>TRUE</tt> the method should return the actual number of
+	 * elements available takinf into consideration paging parameters; if <tt>FALSE</tt>,
+	 * the method should return the total affected elements count, that is, the total number
+	 * of elements affected by the query regardless of paging parameters.
+	 *
+	 * @param array					$theQuery			Query.
+	 * @param array					$theFields			Fields set.
+	 * @param array					$theSort			Sort order.
+	 * @param integer				$theStart			Page start.
+	 * @param integer				$theLimit			Page limit.
+	 * @param boolean				$getFirst			TRUE means return first.
 	 *
 	 * @access public
-	 * @return mixed				Native recordset.
+	 * @return object				Native recordset.
 	 */
-	abstract public function Query( $theQuery = NULL, $theFields = NULL );
+	abstract public function Query( $theQuery = NULL,
+									$theFields = NULL, $theSort = NULL,
+									$theStart = NULL, $theLimit = NULL,
+									$getFirst = NULL );
 
 		
 

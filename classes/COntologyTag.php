@@ -774,7 +774,7 @@ class COntologyTag extends CTag
 			$query->AppendStatement(
 				CQueryStatement::Equals(
 					kTAG_UID, $theIdentifier, kTYPE_BINARY ) );
-			$tag = $container->Query( $query, NULL, TRUE );
+			$tag = $container->Query( $query, NULL, NULL, NULL, NULL, TRUE );
 			if( $tag === NULL )
 			{
 				//
@@ -784,7 +784,7 @@ class COntologyTag extends CTag
 				$query->AppendStatement(
 					CQueryStatement::Equals(
 						kTAG_UID, md5( $theIdentifier, TRUE ), kTYPE_BINARY ) );
-				$tag = $container->Query( $query, NULL, TRUE );
+				$tag = $container->Query( $query, NULL, NULL, NULL, NULL, TRUE );
 			
 			} // Provided unique identifier doesn't match.
 			

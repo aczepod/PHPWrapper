@@ -6,8 +6,8 @@
 
 	<title>Class CDataWrapper | MyWrapper Reference Documentation</title>
 
-	<script type="text/javascript" src="resources/combined.js?368249000"></script>
-	<script type="text/javascript" src="elementlist.js?2116948467"></script>
+	<script type="text/javascript" src="resources/combined.js?3680114562"></script>
+	<script type="text/javascript" src="elementlist.js?947975004"></script>
 	<link rel="stylesheet" type="text/css" media="all" href="resources/style.css?3505392360" />
 
 </head>
@@ -50,7 +50,6 @@
 			<h3>Classes</h3>
 			<ul>
 				<li class="active"><a href="class-CDataWrapper.html">CDataWrapper</a></li>
-				<li><a href="class-CMongoDataWrapper.html">CMongoDataWrapper</a></li>
 				<li><a href="class-COntologyWrapper.html">COntologyWrapper</a></li>
 				<li><a href="class-CWrapper.html">CWrapper</a></li>
 			</ul>
@@ -193,7 +192,7 @@ is abstract.</p>
 				</ul>
 			</li>
 
-			<li><i>kAPI_OP_QUERY</i>: <i>Query</i>, this operation will return all
+			<li><i>kAPI_OP_GET</i>: <i>Query</i>, this operation will return all
 			records that satisfy the provided query. The operation expects the following
 			parameters:
 				<ul>
@@ -258,12 +257,19 @@ is abstract.</p>
 		</dd>
 		<dd style="padding-left:90px">
 			<img src="resources/inherit.png" alt="Extended by" />
-			<a href="class-CWrapper.html"><span>CWrapper</span></a>
+			<a href="class-CConnection.html"><span>CConnection</span></a>
 			
 			
 			
 		</dd>
 		<dd style="padding-left:120px">
+			<img src="resources/inherit.png" alt="Extended by" />
+			<a href="class-CWrapper.html"><span>CWrapper</span></a>
+			
+			
+			
+		</dd>
+		<dd style="padding-left:150px">
 			<img src="resources/inherit.png" alt="Extended by" />
 <b><span>CDataWrapper</span></b>			
 			
@@ -274,7 +280,6 @@ is abstract.</p>
 
 	<div>
 		<h4>Direct known subclasses</h4>
-			<a href="class-CMongoDataWrapper.html">CMongoDataWrapper</a>, 
 			<a href="class-COntologyWrapper.html">COntologyWrapper</a>
 	</div>
 
@@ -284,7 +289,7 @@ is abstract.</p>
 
 
 	<div class="info">
-		<b>Abstract</b><br />
+		
 		
 		
 		<b>Package:</b> <a href="package-MyWrapper.html">MyWrapper</a>\<a href="package-MyWrapper.Wrappers.html">Wrappers</a><br />
@@ -292,7 +297,7 @@ is abstract.</p>
 				<b>Author:</b>
 				Milko A. Škofič &lt;<a
 href="mailto:m.skofic&#64;cgiar.org">m.skofic&#64;<!---->cgiar.org</a>&gt;<br />
-		<b>Located at</b> <a href="source-class-CDataWrapper.html#43-1396" title="Go to source code">CDataWrapper.php</a><br />
+		<b>Located at</b> <a href="source-class-CDataWrapper.html#43-1573" title="Go to source code">CDataWrapper.php</a><br />
 	</div>
 
 
@@ -472,7 +477,7 @@ codes (their presence is checked by the constructor.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#__ParseOperation">#</a>
-		<code><a href="source-class-CDataWrapper.html#298-360" title="Go to source code">_ParseOperation</a>( )</code>
+		<code><a href="source-class-CDataWrapper.html#298-364" title="Go to source code">_ParseOperation</a>( )</code>
 
 		<div class="description short">
 			
@@ -493,7 +498,7 @@ depending on the current operation:</p>
 	We could also clear the paging parameters, but we keep them in case clients
 	implement an automatic paging management.</li>
 
-	<li><tt>kAPI_OP_QUERY</tt>: This operation requires that the page limits
+	<li><tt>kAPI_OP_GET</tt>: This operation requires that the page limits
 	be set, only a defined number of records should be returned by a service: if the
 	kAPI_PAGE_LIMIT parameter was not provided, this method will set it to
 	kDEFAULT_LIMIT.</li>
@@ -526,7 +531,7 @@ depending on the current operation:</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#__ParseDatabase">#</a>
-		<code><a href="source-class-CDataWrapper.html#367-390" title="Go to source code">_ParseDatabase</a>( )</code>
+		<code><a href="source-class-CDataWrapper.html#371-394" title="Go to source code">_ParseDatabase</a>( )</code>
 
 		<div class="description short">
 			
@@ -573,7 +578,7 @@ depending on the current operation:</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#__ParseContainer">#</a>
-		<code><a href="source-class-CDataWrapper.html#397-420" title="Go to source code">_ParseContainer</a>( )</code>
+		<code><a href="source-class-CDataWrapper.html#401-424" title="Go to source code">_ParseContainer</a>( )</code>
 
 		<div class="description short">
 			
@@ -620,7 +625,7 @@ depending on the current operation:</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#__ParsePaging">#</a>
-		<code><a href="source-class-CDataWrapper.html#427-460" title="Go to source code">_ParsePaging</a>( )</code>
+		<code><a href="source-class-CDataWrapper.html#431-464" title="Go to source code">_ParsePaging</a>( )</code>
 
 		<div class="description short">
 			
@@ -667,7 +672,7 @@ depending on the current operation:</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#__ParseQuery">#</a>
-		<code><a href="source-class-CDataWrapper.html#467-490" title="Go to source code">_ParseQuery</a>( )</code>
+		<code><a href="source-class-CDataWrapper.html#471-494" title="Go to source code">_ParseQuery</a>( )</code>
 
 		<div class="description short">
 			
@@ -714,7 +719,7 @@ depending on the current operation:</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#__ParseSelect">#</a>
-		<code><a href="source-class-CDataWrapper.html#497-520" title="Go to source code">_ParseSelect</a>( )</code>
+		<code><a href="source-class-CDataWrapper.html#501-524" title="Go to source code">_ParseSelect</a>( )</code>
 
 		<div class="description short">
 			
@@ -761,7 +766,7 @@ depending on the current operation:</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#__ParseSort">#</a>
-		<code><a href="source-class-CDataWrapper.html#527-550" title="Go to source code">_ParseSort</a>( )</code>
+		<code><a href="source-class-CDataWrapper.html#531-554" title="Go to source code">_ParseSort</a>( )</code>
 
 		<div class="description short">
 			
@@ -808,7 +813,7 @@ depending on the current operation:</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#__FormatDatabase">#</a>
-		<code><a href="source-class-CDataWrapper.html#566-613" title="Go to source code">_FormatDatabase</a>( )</code>
+		<code><a href="source-class-CDataWrapper.html#570-617" title="Go to source code">_FormatDatabase</a>( )</code>
 
 		<div class="description short">
 			
@@ -853,7 +858,7 @@ will raise an exception.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#__FormatContainer">#</a>
-		<code><a href="source-class-CDataWrapper.html#620-667" title="Go to source code">_FormatContainer</a>( )</code>
+		<code><a href="source-class-CDataWrapper.html#624-671" title="Go to source code">_FormatContainer</a>( )</code>
 
 		<div class="description short">
 			
@@ -898,7 +903,7 @@ method will raise an exception.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#__FormatPaging">#</a>
-		<code><a href="source-class-CDataWrapper.html#674-714" title="Go to source code">_FormatPaging</a>( )</code>
+		<code><a href="source-class-CDataWrapper.html#678-718" title="Go to source code">_FormatPaging</a>( )</code>
 
 		<div class="description short">
 			
@@ -942,7 +947,7 @@ response kAPI_PAGING block with the provided paging options.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#__FormatQuery">#</a>
-		<code><a href="source-class-CDataWrapper.html#721-781" title="Go to source code">_FormatQuery</a>( )</code>
+		<code><a href="source-class-CDataWrapper.html#725-785" title="Go to source code">_FormatQuery</a>( )</code>
 
 		<div class="description short">
 			
@@ -987,7 +992,7 @@ instances.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#__FormatSelect">#</a>
-		<code><a href="source-class-CDataWrapper.html#788-805" title="Go to source code">_FormatSelect</a>( )</code>
+		<code><a href="source-class-CDataWrapper.html#792-809" title="Go to source code">_FormatSelect</a>( )</code>
 
 		<div class="description short">
 			
@@ -1030,7 +1035,7 @@ instances.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#__FormatSort">#</a>
-		<code><a href="source-class-CDataWrapper.html#812-829" title="Go to source code">_FormatSort</a>( )</code>
+		<code><a href="source-class-CDataWrapper.html#816-833" title="Go to source code">_FormatSort</a>( )</code>
 
 		<div class="description short">
 			
@@ -1073,7 +1078,7 @@ instances.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#__ValidateOperation">#</a>
-		<code><a href="source-class-CDataWrapper.html#845-917" title="Go to source code">_ValidateOperation</a>( )</code>
+		<code><a href="source-class-CDataWrapper.html#849-922" title="Go to source code">_ValidateOperation</a>( )</code>
 
 		<div class="description short">
 			
@@ -1125,7 +1130,7 @@ following operations:</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#__ValidateDatabase">#</a>
-		<code><a href="source-class-CDataWrapper.html#924-955" title="Go to source code">_ValidateDatabase</a>( )</code>
+		<code><a href="source-class-CDataWrapper.html#929-960" title="Go to source code">_ValidateDatabase</a>( )</code>
 
 		<div class="description short">
 			
@@ -1172,7 +1177,7 @@ you should override this method using the specific database.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#__ValidateContainer">#</a>
-		<code><a href="source-class-CDataWrapper.html#962-993" title="Go to source code">_ValidateContainer</a>( )</code>
+		<code><a href="source-class-CDataWrapper.html#967-998" title="Go to source code">_ValidateContainer</a>( )</code>
 
 		<div class="description short">
 			
@@ -1219,7 +1224,7 @@ you should override this method using the specific container.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#__ValidatePaging">#</a>
-		<code><a href="source-class-CDataWrapper.html#1000-1031" title="Go to source code">_ValidatePaging</a>( )</code>
+		<code><a href="source-class-CDataWrapper.html#1005-1036" title="Go to source code">_ValidatePaging</a>( )</code>
 
 		<div class="description short">
 			
@@ -1264,7 +1269,7 @@ kDEFAULT_MAX_LIMIT.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#__ValidateQuery">#</a>
-		<code><a href="source-class-CDataWrapper.html#1038-1081" title="Go to source code">_ValidateQuery</a>( )</code>
+		<code><a href="source-class-CDataWrapper.html#1043-1086" title="Go to source code">_ValidateQuery</a>( )</code>
 
 		<div class="description short">
 			
@@ -1308,7 +1313,7 @@ instantiate the query object and verify its consistency.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#__ValidateSelect">#</a>
-		<code><a href="source-class-CDataWrapper.html#1088-1128" title="Go to source code">_ValidateSelect</a>( )</code>
+		<code><a href="source-class-CDataWrapper.html#1093-1133" title="Go to source code">_ValidateSelect</a>( )</code>
 
 		<div class="description short">
 			
@@ -1355,7 +1360,7 @@ string and create with it an array.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#__ValidateSort">#</a>
-		<code><a href="source-class-CDataWrapper.html#1135-1175" title="Go to source code">_ValidateSort</a>( )</code>
+		<code><a href="source-class-CDataWrapper.html#1140-1180" title="Go to source code">_ValidateSort</a>( )</code>
 
 		<div class="description short">
 			
@@ -1402,7 +1407,7 @@ a string and create with it an array.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#__HandleRequest">#</a>
-		<code><a href="source-class-CDataWrapper.html#1191-1218" title="Go to source code">_HandleRequest</a>( )</code>
+		<code><a href="source-class-CDataWrapper.html#1196-1234" title="Go to source code">_HandleRequest</a>( )</code>
 
 		<div class="description short">
 			
@@ -1439,7 +1444,7 @@ a string and create with it an array.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#__Handle_ListOp">#</a>
-		<code><a href="source-class-CDataWrapper.html#1225-1253" title="Go to source code">_Handle_ListOp</a>( <span>reference <var>&amp; $theList</var></span> )</code>
+		<code><a href="source-class-CDataWrapper.html#1241-1269" title="Go to source code">_Handle_ListOp</a>( <span>reference <var>&amp; $theList</var></span> )</code>
 
 		<div class="description short">
 			
@@ -1473,7 +1478,7 @@ a string and create with it an array.</p>
 	<tr data-order="_Handle_Count" id="__Handle_Count">
 
 		<td class="attributes"><code>
-			abstract protected 
+			 protected 
 			
 			
 			</code>
@@ -1481,7 +1486,7 @@ a string and create with it an array.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#__Handle_Count">#</a>
-		<code><a href="source-class-CDataWrapper.html#1260-1271" title="Go to source code">_Handle_Count</a>( )</code>
+		<code><a href="source-class-CDataWrapper.html#1276-1303" title="Go to source code">_Handle_Count</a>( )</code>
 
 		<div class="description short">
 			
@@ -1497,8 +1502,41 @@ a string and create with it an array.</p>
 the total count of a query in the kAPI_AFFECTED_COUNT field of the
 status.</p>
 
-<p>Since this class does not handle any specific data engine, we declare the
-method abstract and require concrete derived classes to implement it.</p>
+
+
+
+
+
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="_Handle_Get" id="__Handle_Get">
+
+		<td class="attributes"><code>
+			 protected 
+			
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#__Handle_Get">#</a>
+		<code><a href="source-class-CDataWrapper.html#1310-1400" title="Go to source code">_Handle_Get</a>( )</code>
+
+		<div class="description short">
+			
+<p>Handle kAPI_OP_GET request.</p>
+
+		</div>
+
+		<div class="description detailed hidden">
+			
+<p>Handle kAPI_OP_GET request.</p>
+
+<p>This method will handle the kAPI_OP_GET operation, which returns the
+records that match the provided query..</p>
 
 
 
@@ -1510,34 +1548,31 @@ method abstract and require concrete derived classes to implement it.</p>
 		</div>
 		</div></td>
 	</tr>
-	<tr data-order="_Handle_Query" id="__Handle_Query">
+	<tr data-order="_Handle_GetOne" id="__Handle_GetOne">
 
 		<td class="attributes"><code>
-			abstract protected 
+			 protected 
 			
 			
 			</code>
 		</td>
 
 		<td class="name"><div>
-		<a class="anchor" href="#__Handle_Query">#</a>
-		<code><a href="source-class-CDataWrapper.html#1278-1289" title="Go to source code">_Handle_Query</a>( )</code>
+		<a class="anchor" href="#__Handle_GetOne">#</a>
+		<code><a href="source-class-CDataWrapper.html#1407-1466" title="Go to source code">_Handle_GetOne</a>( )</code>
 
 		<div class="description short">
 			
-<p>Handle kAPI_OP_QUERY request.</p>
+<p>Handle kAPI_OP_GET_ONE request.</p>
 
 		</div>
 
 		<div class="description detailed hidden">
 			
-<p>Handle kAPI_OP_QUERY request.</p>
+<p>Handle kAPI_OP_GET_ONE request.</p>
 
-<p>This method will handle the kAPI_OP_QUERY operation, which returns
-the records that match the provided query..</p>
-
-<p>Since this class does not handle any specific data engine, we declare the
-method abstract and require concrete derived classes to implement it.</p>
+<p>This method will handle the kAPI_OP_GET_ONE operation, which returns
+the first record to satisfy a query.</p>
 
 
 
@@ -1560,7 +1595,7 @@ method abstract and require concrete derived classes to implement it.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#__DecodeParameter">#</a>
-		<code><a href="source-class-CDataWrapper.html#1305-1392" title="Go to source code">_DecodeParameter</a>( <span>string <var>$theParameter</var></span> )</code>
+		<code><a href="source-class-CDataWrapper.html#1482-1569" title="Go to source code">_DecodeParameter</a>( <span>string <var>$theParameter</var></span> )</code>
 
 		<div class="description short">
 			
@@ -1621,7 +1656,17 @@ format, kTYPE_JSON or kTYPE_PHP.</p>
 			<a href="class-CWrapper.html#__ParseFormat">_ParseFormat()</a>, 
 			<a href="class-CWrapper.html#__ParseTiming">_ParseTiming()</a>, 
 			<a href="class-CWrapper.html#__ValidateFormat">_ValidateFormat()</a>, 
-			<a href="class-CWrapper.html#___construct">__construct()</a>
+			<a href="class-CWrapper.html#___construct">__construct()</a>, 
+			<a href="class-CWrapper.html#___toString">__toString()</a>
+		</code></td>
+	</tr>
+	</table>
+	<table class="summary inherited">
+	<caption>Methods inherited from <a href="class-CConnection.html#methods">CConnection</a></caption>
+	<tr>
+		<td><code>
+			<a href="class-CConnection.html#_Connection">Connection()</a>, 
+			<a href="class-CConnection.html#__Ready">_Ready()</a>
 		</code></td>
 	</tr>
 	</table>
@@ -1637,7 +1682,6 @@ format, kTYPE_JSON or kTYPE_PHP.</p>
 			<a href="class-CStatusDocument.html#__Postunset">_Postunset()</a>, 
 			<a href="class-CStatusDocument.html#__Preset">_Preset()</a>, 
 			<a href="class-CStatusDocument.html#__Preunset">_Preunset()</a>, 
-			<a href="class-CStatusDocument.html#__Ready">_Ready()</a>, 
 			<a href="class-CStatusDocument.html#_offsetSet">offsetSet()</a>, 
 			<a href="class-CStatusDocument.html#_offsetUnset">offsetUnset()</a>
 		</code></td>
@@ -1699,6 +1743,14 @@ format, kTYPE_JSON or kTYPE_PHP.</p>
 
 
 
+	<table class="summary inherited">
+	<caption>Properties inherited from <a href="class-CConnection.html#properties">CConnection</a></caption>
+	<tr>
+		<td><code>
+			<a href="class-CConnection.html#$mConnection"><var>$mConnection</var></a>
+		</code></td>
+	</tr>
+	</table>
 	<table class="summary inherited">
 	<caption>Properties inherited from <a href="class-CStatusDocument.html#properties">CStatusDocument</a></caption>
 	<tr>

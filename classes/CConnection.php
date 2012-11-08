@@ -141,7 +141,7 @@ abstract class CConnection extends CStatusDocument
 	 */
 	abstract public function __toString();
 
-		
+	
 
 /*=======================================================================================
  *																						*
@@ -201,32 +201,6 @@ abstract class CConnection extends CStatusDocument
 		return $save;																// ==>
 
 	} // Connection.
-
-		
-
-/*=======================================================================================
- *																						*
- *								PROTECTED MEMBER INTERFACE								*
- *																						*
- *======================================================================================*/
-
-
-	 
-	/*===================================================================================
-	 *	&_Connection																	*
-	 *==================================================================================*/
-
-	/**
-	 * <h4>Get connection reference</h4>
-	 *
-	 * This method can be used to retrieve a reference to the native connection member, this
-	 * can be useful when the native {@link Connection()} is not an object passed by
-	 * reference.
-	 *
-	 * @access protected
-	 * @return mixed
-	 */
-	protected function &_Connection()						{	return $this->mConnection;	}
 		
 
 

@@ -868,67 +868,174 @@ class CMongoContainer extends CContainer
 	/**
 	 * <h4>Perform a query</h4>
 	 *
-	 * This method will perform the provided query on the current container.
+	 * This method will perform the provided query on the current container, please refer to
+	 * the {@link CContainer::Query()} reference for more information.
 	 *
-	 * @param CQuery				$theQuery			Query.
-	 * @param array					$theFields			Fieldset.
-	 * @param boolean				$doOne				If TRUE return first match or NULL.
+	 * @param array					$theQuery			Query.
+	 * @param array					$theFields			Fields set.
+	 * @param array					$theSort			Sort order.
+	 * @param integer				$theStart			Page start.
+	 * @param integer				$theLimit			Page limit.
+	 * @param boolean				$getFirst			TRUE means return first.
 	 *
 	 * @access public
-	 * @return mixed				Native recordset.
+	 * @return object				Native recordset.
 	 */
-	public function Query( $theQuery = NULL, $theFields = NULL, $doOne = FALSE )
+	public function Query( $theQuery = NULL,
+						   $theFields = NULL, $theSort = NULL,
+						   $theStart = NULL, $theLimit = NULL,
+						   $getFirst = FALSE )
 	{
 		//
-		// Get and check container.
+		// Check if ready.
 		//
-		$container = $this->Connection();
-		if( ! ($container instanceof MongoCollection) )
-			throw new Exception
-				( "Missing or invalid native container",
-				  kERROR_STATE );												// !@! ==>
-		
-		//
-		// Cast query.
-		//
-		if( ($theQuery !== NULL)
-		 && (! ($theQuery instanceof CMongoQuery)) )
-			$theQuery = new CMongoQuery( $theQuery );
-		
-		//
-		// Export query.
-		//
-		$query = ( $theQuery !== NULL )
-			   ? $theQuery->Export( $this )
-			   : Array();
-		
-		//
-		// Set fieldset.
-		//
-		$fields = Array();
-		if( is_array( $theFields ) )
+		if( $this->_Ready() )
 		{
 			//
-			// Init fields list.
+			// Handle query.
 			//
-			$fields = ( in_array( '_id', $theFields ) )
-					? Array()
-					: array( '_id' => FALSE );
+			if( $theQuery !== NULL )
+			{
+				//
+				// Cast query.
+				//
+				if( ! ($theQuery instanceof CMongoQuery) )
+					$theQuery = new CMongoQuery( $theQuery );
+				
+				//
+				// Convert to Mongo.
+				//
+				$theQuery = $theQuery->Export( $this );
+			}
+			else
+				$theQuery = Array();
 			
 			//
-			// Iterate fields.
+			// Handle fieldset.
 			//
-			foreach( $theFields as $field )
-				$fields[ $field ] = TRUE;
-		}
+			if( $theFields !== NULL )
+			{
+				//
+				// Handle scalar.
+				//
+				if( ! is_array( $theFields ) )
+					$theFields = array( $theFields );
+				
+				//
+				// Init local storage.
+				// Note that we are instantiating an object:
+				// this is necessary, or Mongo will sometimes interpret
+				// field names as integers if it thinks it is an array.
+				//
+				$selection = new ArrayObject();
+				
+				//
+				// Exclude ID.
+				//
+				if( ! in_array( '_id', $theFields ) )
+					$selection[ '_id' ] = FALSE;
+				
+				//
+				// Iterate fields.
+				//
+				foreach( $theFields as $field )
+					$selection[ (string) $field ] = TRUE;
+			}
+			else
+				$selection = Array();
+			
+			//
+			// Return first object.
+			//
+			if( $getFirst )
+				return $this->Connection()->findOne( $theQuery, $selection );		// ==>
+			
+			//
+			// Get cursor.
+			//
+			$cursor = $this->Connection()->find( $theQuery, $selection );
+			
+			//
+			// Handle sort order.
+			//
+			if( $theSort !== NULL )
+			{
+				//
+				// Handle scalar.
+				//
+				if( ! is_array( $theSort ) )
+					$selection = new ArrayObject( array( $theSort => 1 ) );
+				
+				//
+				// Handle list.
+				//
+				else
+				{
+					//
+					// Init local storage.
+					// Note that we are instantiating an object:
+					// this is necessary, or Mongo will sometimes interpret
+					// field names as integers if it thinks it is an array.
+					//
+					$selection = new ArrayObject();
+					
+					//
+					// Normalise list.
+					//
+					foreach( $theSort as $field => $value )
+					{
+						//
+						// Handle numerics.
+						//
+						if( is_numeric( $value ) )
+						{
+							if( $value > 0 )
+								$selection[ (string) $field ] = 1;
+							elseif( $value < 0 )
+								$selection[ (string) $field ] = -1;
+						
+						} // Numeric value.
+					}
+					
+				} // Provided an array.
+				
+				//
+				// Sort results.
+				//
+				$cursor->sort( $selection );
+			
+			} // Provided sort order.
+			
+			//
+			// Handle paging parameters.
+			//
+			if( $theLimit !== NULL )
+			{
+				//
+				// Initialise page start.
+				//
+				if( $theStart === NULL )
+					$theStart = 0;
+				
+				//
+				// Position at start.
+				//
+				$cursor->skip( $theStart );
+				
+				//
+				// Set limit.
+				//
+				$cursor->limit( $theLimit );
+			
+			} // Provided paging.
+			
+			return $cursor;															// ==>
 		
-		//
-		// Return first object.
-		//
-		if( $doOne )
-			return $container->findOne( $query, $fields );							// ==>
+		} // Object is ready.
 		
-		return $container->find( $query, $fields );									// ==>
+		throw new Exception
+			( "Unable to query: container is not ready",
+			  kERROR_STATE );													// !@! ==>
 	
 	} // Query.
 
