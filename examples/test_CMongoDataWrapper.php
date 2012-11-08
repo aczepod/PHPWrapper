@@ -582,7 +582,7 @@ try
 	echo( kSTYLE_TABLE_POS );
 	echo( '<hr>' );
 
-	echo( '<h4>Test container query in JSON</h4>' );
+	echo( '<h4>Test query in JSON</h4>' );
 	//
 	// Test container query in JSON.
 	//
@@ -637,7 +637,7 @@ try
 	echo( kSTYLE_TABLE_POS );
 	echo( '<hr>' );
 
-	echo( '<h4>Test container query in PHP</h4>' );
+	echo( '<h4>Test query in PHP</h4>' );
 	//
 	// Test container query in PHP.
 	//
@@ -692,9 +692,9 @@ try
 	echo( kSTYLE_TABLE_POS );
 	echo( '<hr>' );
 
-	echo( '<h4>Test container GetOne in JSON</h4>' );
+	echo( '<h4>Test query GetOne in JSON</h4>' );
 	//
-	// Test container GetOne in JSON.
+	// Test query GetOne in JSON.
 	//
 	$query = array
 	(
@@ -716,6 +716,90 @@ try
 	$sort_enc = JsonEncode( $sort );
 	$params = array( (kAPI_FORMAT.'='.kTYPE_JSON),
 					 (kAPI_OPERATION.'='.kAPI_OP_GET_ONE),
+					 (kAPI_LOG_REQUEST.'='.'1'),
+					 (kAPI_PAGE_START.'='.'0'),
+					 (kAPI_PAGE_LIMIT.'='.'5'),
+					 (kAPI_DATABASE.'='.'ONTOLOGY'),
+					 (kAPI_CONTAINER.'='.'_terms'),
+					 (kAPI_STAMP_REQUEST.'='.gettimeofday( true )),
+					 (kAPI_QUERY.'='.urlencode( $query_enc )),
+					 (kAPI_SELECT.'='.urlencode( $fields_enc )),
+					 (kAPI_SORT.'='.urlencode( $sort_enc )) );
+	$request = $url.'?'.implode( '&', $params );
+	$response = file_get_contents( $request );
+	$decoded = JsonDecode( $response );
+	//
+	// Display.
+	//
+	echo( kSTYLE_TABLE_PRE );
+	echo( kSTYLE_ROW_PRE );
+	echo( kSTYLE_HEAD_PRE.'URL:'.kSTYLE_HEAD_POS );
+	echo( kSTYLE_DATA_PRE.htmlspecialchars( $request ).kSTYLE_DATA_POS );
+	echo( kSTYLE_ROW_POS );
+	echo( kSTYLE_ROW_PRE );
+	echo( kSTYLE_HEAD_PRE.'Response:'.kSTYLE_HEAD_POS );
+	echo( kSTYLE_DATA_PRE.$response.kSTYLE_DATA_POS );
+	echo( kSTYLE_ROW_POS );
+	echo( kSTYLE_ROW_PRE );
+	echo( kSTYLE_HEAD_PRE.'Decoded:'.kSTYLE_HEAD_POS );
+	echo( kSTYLE_DATA_PRE.'<pre>' ); print_r( $decoded ); echo( '</pre>'.kSTYLE_DATA_POS );
+	echo( kSTYLE_ROW_POS );
+	echo( kSTYLE_TABLE_POS );
+	echo( '<hr>' );
+
+	echo( '<h4>Test query Match in JSON</h4>' );
+	//
+	// Test container Match in JSON.
+	//
+	$queries = array
+	(
+		array
+		(
+			kOPERATOR_AND => array
+			(
+				array
+				(
+					kOFFSET_QUERY_SUBJECT => '2',
+					kOFFSET_QUERY_OPERATOR => kOPERATOR_EQUAL,
+					kOFFSET_QUERY_TYPE => kTYPE_STRING,
+					kOFFSET_QUERY_DATA => 'NICODE'
+				)
+			)
+		),
+		array
+		(
+			kOPERATOR_AND => array
+			(
+				array
+				(
+					kOFFSET_QUERY_SUBJECT => '1',
+					kOFFSET_QUERY_OPERATOR => kOPERATOR_EQUAL,
+					kOFFSET_QUERY_TYPE => kTYPE_STRING,
+					kOFFSET_QUERY_DATA => 'NICODE'
+				)
+			)
+		),
+		array
+		(
+			kOPERATOR_AND => array
+			(
+				array
+				(
+					kOFFSET_QUERY_SUBJECT => '7',
+					kOFFSET_QUERY_OPERATOR => kOPERATOR_EQUAL,
+					kOFFSET_QUERY_TYPE => kTYPE_STRING,
+					kOFFSET_QUERY_DATA => 'NICODE'
+				)
+			)
+		)
+	);
+	$query_enc = JsonEncode( $queries );
+	$fields = array( '1', '2', '31' );
+	$fields_enc = JsonEncode( $fields );
+	$sort = array( '1' => -1 );
+	$sort_enc = JsonEncode( $sort );
+	$params = array( (kAPI_FORMAT.'='.kTYPE_JSON),
+					 (kAPI_OPERATION.'='.kAPI_OP_MATCH),
 					 (kAPI_LOG_REQUEST.'='.'1'),
 					 (kAPI_PAGE_START.'='.'0'),
 					 (kAPI_PAGE_LIMIT.'='.'5'),

@@ -19,34 +19,59 @@
  */
 
 /*=======================================================================================
- *	WEB-SERVICE REQUEST PARAMETERS														*
+ *	WEB-SERVICE RESPONSE PARAMETERS														*
  *======================================================================================*/
 
 /**
- * Web-service database.
+ * Identifier elements.
  *
- * This is the tag that represents the kind selector, this is implemented as an array of
- * enumerations that will be matched by <i>AND</i>, which means that if more than one item
- * is provided, it is expected that the matched elements have both of the provided items.
- *
- * The parameter can also be provided as a scalar.
- *
- * Type: string.
- * Cardinality: one or zero.
+ * This offset tags the element that holds the list of identifiers of the requested items.
  */
-define( "kAPI_KIND",				':WS:KIND' );
+define( "kAPI_COLLECTION_ID",					'_ids' );
+
+/**
+ * Predicate elements.
+ *
+ * This offset tags the element that holds the list of referenced predicate items.
+ */
+define( "kAPI_COLLECTION_PREDICATE",			'_predicate' );
+
+/**
+ * Vertex elements.
+ *
+ * This offset tags the element that holds the list of referenced vertex items.
+ */
+define( "kAPI_COLLECTION_VERTEX",				'_vertex' );
+
+/**
+ * Edge elements.
+ *
+ * This offset tags the element that holds the list of referenced edge items.
+ */
+define( "kAPI_COLLECTION_EDGE",					'_edge' );
+
+/**
+ * Tag elements.
+ *
+ * This offset tags the element that holds the list of referenced tag items.
+ */
+define( "kAPI_COLLECTION_TAG",					'_tag' );
 
 /*=======================================================================================
  *	WEB-SERVICE OPERATIONS																*
  *======================================================================================*/
 
 /**
- * GetNodesByKind web-service.
+ * GetRootsByKind web-service.
  *
- * This is the tag that represents the GetNodesByKind web-service operation, which returns
- * a list of exported nodes given a list of matching kinds.
+ * This is the tag that represents the GetRootsByKind web-service operation, which returns
+ * a list of root vertexes that match the provided kind criteria. The criteria is provided
+ * in the {@link kAPI_QUERY} parameter as an array of values, to these values the
+ * {@link kKIND_NODE_ROOT} enumeration will be added and the matching nodes will have to
+ * match <i>all</i> the entries.
  *
- * The service expects a list of node kind enumerations in the {@link 
+ * The resulting records will be constituted by a combination of the node and term
+ * attributes, where the node attributes will overwrite matching term attributes.
  *
  * The service expects the following parameters:
  *
@@ -65,11 +90,11 @@ define( "kAPI_KIND",				':WS:KIND' );
  *	<li><i>{@link kAPI_PAGE_LIMIT}</i>:This parameter is required or enforced, it represents
  *		the maximum number of elements that the query should return, the default value is
  *		{@link kDEFAULT_LIMIT}.
- *	<li><i>{@link kAPI_KIND}</i>:This optional parameter represents the kind enumerations
- *		that the selected nodes must match (<i>AND</i>).
+ *	<li><i>{@link kAPI_QUERY}</i>: This parameter will hold the list of kind entries, if
+ *		omitted, all root nodes will be selected.
  * </ul>
  */
-define( "kAPI_OP_GetNodesByKind",	'WS:OP:GetNodesByKind' );
+define( "kAPI_OP_GetRootsByKind",	'WS:OP:GetRootsByKind' );
 
 
 ?>

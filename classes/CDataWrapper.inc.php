@@ -244,5 +244,32 @@ define( "kAPI_OP_GET",				'WS:OP:GET' );
  */
 define( "kAPI_OP_GET_ONE",			'WS:OP:GET-ONE' );
 
+/**
+ * MATCH web-service.
+ *
+ * This is the tag that represents the MATCH web-service operation, which returns the
+ * the first matching record of a series of queries.
+ *
+ * The service expects the following parameters:
+ *
+ * <ul>
+ *	<li><i>{@link kAPI_FORMAT}</i>: This parameter is required to indicate how to
+ *		encode the response.
+ *	<li><i>{@link kAPI_DATABASE}</i>: This parameter is required to indicate the working
+ *		database.
+ *	<li><i>{@link kAPI_CONTAINER}</i>: This parameter is required to indicate the working
+ *		container.
+ *	<li><i>{@link kAPI_QUERY}</i>: This parameter is required and contains an array of
+ *		queries.
+ *	<li><i>{@link kAPI_SELECT}</i>: This parameter is an array listing which fields are to
+ *		be returned by the query, all fields not included in the list will be ignored. An
+ *		empty list is equivalent to not providing the list.
+ * </ul>
+ *
+ * The service will execute each provided query and the first matched record will be
+ * returned.
+ */
+define( "kAPI_OP_MATCH",				'WS:OP:MATCH' );
+
 
 ?>

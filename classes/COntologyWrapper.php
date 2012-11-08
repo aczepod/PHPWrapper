@@ -10,7 +10,7 @@
  *	@subpackage	Wrappers
  *
  *	@author		Milko A. Škofič <m.skofic@cgiar.org>
- *	@version	1.00 07/11/2011
+ *	@version	1.00 08/11/2011
  */
 
 /*=======================================================================================
@@ -37,40 +37,22 @@ require_once( kPATH_MYWRAPPER_LIBRARY_CLASS."/COntologyWrapper.inc.php" );
  *	Ontology wrapper.
  *
  * This class overloads its ancestor to implement the framework for providing services that
- * return data from an ontology. The class does not feature a concrete data store engine, so
- * it only concentrates in providing the framework for derived classes that implement
- * concrete data store instances, for this reason this class is abstract.
+ * return data from an ontology. The class concentrates on high level services that return
+ * aggregated elements taken from the term, node, edge and tag collections.
  *
- * This class implements high level services, that is, it will return data that is an
- * aggregation of various containers.
- *
- * These new functionalities require an additional set of parameters:
+ * The response parameter will always contain the following elements:
  *
  * <ul>
- *	<li><i>Category parameters</i>: These parameters refer to categories used to select
- *		specific elements:
- *	 <ul>
- *		<li><i>{@link kAPI_KIND}</i>: <i>Kind</i>, this parameter generally refers to the
- *			node kind, it is an array of elements that the selected nodes must match.
- *	 </ul>
- *	<li><i>Operations</i>: This class adds the following operations:
- *	 <ul>
- *		<li><i>{@link kAPI_OP_GetNodesByKind}</i>: <i>Get nodes by kind</i>, this operation
- *			will return a list of nodes that match the provided kind enumerations in the
- *			{@link kAPI_KIND} parameter. The operation expects the following parameters:
- *		 <ul>
- *			<li><i>{@link kAPI_FORMAT}</i>: Format, this parameter is required, since other
- *				non scalar parameters must be encoded.
- *			<li><i>{@link kAPI_DATABASE}</i>: Database, database to which the container
- *				belongs.
- *			<li><i>{@link kAPI_KIND}</i>: Kinds list (optional), the selection criteria.
- *			<li><i>{@link kAPI_SELECT}</i>: Select (optional), the list of fields to be
- *				returned.
- *			<li><i>{@link kAPI_PAGE_LIMIT}</i>:This parameter is required or enforced, it
- *				represents the maximum number of elements that the query should return, the
- *				default value is {@link kDEFAULT_LIMIT}.
- *		 </ul>
- *	 </ul>
+ *	<li><tt>kAPI_COLLECTION_ID</tt>: This offset tags the element that holds the list of
+ *		identifiers of the requested items.
+ *	<li><tt>kAPI_COLLECTION_PREDICATE</tt>: This offset tags the element that holds the list
+ *		of referenced predicate items
+ *	<li><tt>kAPI_COLLECTION_VERTEX</tt>: This offset tags the element that holds the list
+ *		of referenced vertex items
+ *	<li><tt>kAPI_COLLECTION_EDGE</tt>: This offset tags the element that holds the list
+ *		of referenced edge items
+ *	<li><tt>kAPI_COLLECTION_TAG</tt>: This offset tags the element that holds the list
+ *		of referenced tag items
  * </ul>
  *
  *	@package	MyWrapper
@@ -82,206 +64,6 @@ abstract class COntologyWrapper extends CDataWrapper
 
 /*=======================================================================================
  *																						*
- *								PROTECTED PARSING INTERFACE								*
- *																						*
- *======================================================================================*/
-
-
-	 
-	/*===================================================================================
-	 *	_ParseRequest																	*
-	 *==================================================================================*/
-
-	/**
-	 * Parse request.
-	 *
-	 * This method should be used to parse the request, check the request elements and make
-	 * any necessary adjustments before the request is {@link _ValidateRequest()}.
-	 *
-	 * This is also where the relevant request elements will be logged to the relative
-	 * response sections.
-	 *
-	 * The method is called by the constructor and should be overloaded to handle derived
-	 * classes custom elements.
-	 *
-	 * In this class we handle the following parameters:
-	 *
-	 * <ul>
-	 *	<li><tt>{@link kAPI_KIND}</tt>: We copy the kinds list to the request.
-	 * </ul>
-	 *
-	 * @access protected
-	 *
-	 * @uses _ParseKinds()
-	 */
-	protected function _ParseRequest()
-	{
-		//
-		// Call parent method.
-		//
-		parent::_ParseRequest();
-		
-		//
-		// Handle parameters.
-		//
-		$this->_ParseKinds();
-	
-	} // _ParseRequest.
-
-	 
-	/*===================================================================================
-	 *	_FormatRequest																	*
-	 *==================================================================================*/
-
-	/**
-	 * Format request.
-	 *
-	 * This method should perform any needed formatting before the request will be handled.
-	 *
-	 * In this class we handle the parameters to be decoded
-	 *
-	 * @access protected
-	 *
-	 * @uses _FormatKinds()
-	 */
-	protected function _FormatRequest()
-	{
-		//
-		// Call parent method.
-		//
-		parent::_FormatRequest();
-		
-		//
-		// Handle parameters.
-		//
-		$this->_FormatKinds();
-	
-	} // _FormatRequest.
-
-	 
-	/*===================================================================================
-	 *	_ValidateRequest																*
-	 *==================================================================================*/
-
-	/**
-	 * Validate request.
-	 *
-	 * This method should check that the request is valid and that all required parameters
-	 * have been sent.
-	 *
-	 * In this class we check the {@link kAPI_FORMAT} and {@link kAPI_OPERATION} codes
-	 * (their presence is checked by the constructor.
-	 *
-	 * @access protected
-	 *
-	 * @uses _ValidateKinds()
-	 */
-	protected function _ValidateRequest()
-	{
-		//
-		// Call parent method.
-		//
-		parent::_ValidateRequest();
-		
-		//
-		// Validate parameters.
-		//
-		$this->_ValidateKinds();
-	
-	} // _ValidateRequest.
-
-		
-
-/*=======================================================================================
- *																						*
- *								PROTECTED PARSING UTILITIES								*
- *																						*
- *======================================================================================*/
-
-
-	 
-	/*===================================================================================
-	 *	_ParseOperation																	*
-	 *==================================================================================*/
-
-	/**
-	 * Parse operation.
-	 *
-	 * We overload this method to remove unnecessary parameter from the request, depending
-	 * on the current operation:
-	 *
-	 * <ul>
-	 *	<li><tt>{@link kAPI_OP_GetNodesByKind}</tt>: This operation requires that the page
-	 *		limits be set, only a defined number of records should be returned by a service:
-	 *		if the {@link kAPI_PAGE_LIMIT} parameter was not provided, this method will set
-	 *		it to {@link kDEFAULT_LIMIT}.
-	 * </ul>
-	 *
-	 * @access protected
-	 *
-	 * @see kAPI_OPERATION
-	 */
-	protected function _ParseOperation()
-	{
-		//
-		// Save operation in request mirror, if necessary.
-		//
-		parent::_ParseOperation();
-		
-		//
-		// Handle operation.
-		//
-		if( array_key_exists( kAPI_OPERATION, $_REQUEST ) )
-		{
-			//
-			// Select unnecessary parameters.
-			//
-			switch( $_REQUEST[ kAPI_OPERATION ] )
-			{
-				case kAPI_OP_GET:
-					if( ! array_key_exists( kAPI_PAGE_LIMIT, $_REQUEST ) )
-						$_REQUEST[ kAPI_PAGE_LIMIT ] = kDEFAULT_LIMIT;
-					break;
-			}
-		
-		} // Provided operation.
-	
-	} // _ParseOperation.
-
-	 
-	/*===================================================================================
-	 *	_ParseKinds																		*
-	 *==================================================================================*/
-
-	/**
-	 * Parse kinds.
-	 *
-	 * This method will copy the query selection to the request block.
-	 *
-	 * @access protected
-	 *
-	 * @uses _OffsetManage()
-	 *
-	 * @see kAPI_KIND kAPI_REQUEST
-	 */
-	protected function _ParseKinds()
-	{
-		//
-		// Handle query.
-		//
-		if( array_key_exists( kAPI_KIND, $_REQUEST ) )
-		{
-			if( $this->offsetExists( kAPI_REQUEST ) )
-				$this->_OffsetManage
-					( kAPI_REQUEST, kAPI_KIND, $_REQUEST[ kAPI_KIND ] );
-		}
-	
-	} // _ParseKinds.
-
-		
-
-/*=======================================================================================
- *																						*
  *							PROTECTED FORMATTING UTILITIES								*
  *																						*
  *======================================================================================*/
@@ -289,27 +71,110 @@ abstract class COntologyWrapper extends CDataWrapper
 
 	 
 	/*===================================================================================
-	 *	_FormatKinds																	*
+	 *	_FormatContainer																	*
 	 *==================================================================================*/
 
 	/**
-	 * Format selection parameters.
+	 * Instantiate container.
 	 *
-	 * This method will decode the provided selection from JSON or PHP encoding.
+	 * In this class we initialise the default container for specific operations.
 	 *
 	 * @access protected
 	 *
-	 * @see kAPI_KIND
+	 * @see kAPI_CONTAINER
 	 */
-	protected function _FormatKinds()
+	protected function _FormatContainer()
 	{
 		//
-		// Check parameter.
+		// Parse by operation.
 		//
-		if( array_key_exists( kAPI_KIND, $_REQUEST ) )
-			$this->_DecodeParameter( kAPI_KIND );
+		switch( $_REQUEST[ kAPI_OPERATION ] )
+		{
+			case kAPI_OP_GetRootsByKind:
+				//
+				// Initialise container name.
+				//
+				if( ! array_key_exists( kAPI_CONTAINER, $_REQUEST ) )
+					$_REQUEST[ kAPI_CONTAINER ] = kCONTAINER_NODE_NAME;
+				break;
+		
+		} // Parsing by operation.
+		
+		//
+		// Call parent method.
+		//
+		parent::_FormatContainer();
 	
-	} // _FormatKinds.
+	} // _FormatContainer.
+
+	 
+	/*===================================================================================
+	 *	_FormatQuery																	*
+	 *==================================================================================*/
+
+	/**
+	 * Format paging parameters.
+	 *
+	 * This method will decode the provided query from JSON or PHP encoding and unserialise
+	 * eventual query arguments encoded as {@link CDataType} derived instances.
+	 *
+	 * This method will first check if the parameter is not already an array or a
+	 * {@link CQuery} derived instance, if it is, the method will do nothing.
+	 *
+	 * @access protected
+	 *
+	 * @see kAPI_QUERY
+	 */
+	protected function _FormatQuery()
+	{
+		//
+		// Parse by operation.
+		//
+		switch( $_REQUEST[ kAPI_OPERATION ] )
+		{
+			case kAPI_OP_GetRootsByKind:
+				//
+				// Decode or initialise parameter.
+				//
+				if( array_key_exists( kAPI_QUERY, $_REQUEST ) )
+					$this->_DecodeParameter( kAPI_QUERY );
+				else
+					$_REQUEST[ kAPI_QUERY ] = kKIND_NODE_ROOT;
+				
+				//
+				// Normalise parameter.
+				//
+				if( ! is_array( $_REQUEST[ kAPI_QUERY ] ) )
+					$_REQUEST[ kAPI_QUERY ] = array( $_REQUEST[ kAPI_QUERY ] );
+				
+				//
+				// Build query.
+				//
+				$query = new CQuery();
+				foreach( $_REQUEST[ kAPI_QUERY ] as $kind )
+					$query->AppendStatement(
+						new CQueryStatement(
+							kTAG_KIND, kOPERATOR_EQUAL, kTYPE_STRING, $kind ),
+						kOPERATOR_AND );
+				
+				//
+				// Save query.
+				//
+				$_REQUEST[ kAPI_QUERY ] = $query;
+					
+				break;
+				
+			default:
+				//
+				// Let parent handle it.
+				//
+				parent::_FormatQuery();
+				
+				break;
+		
+		} // Parsing by operation.
+	
+	} // _FormatQuery.
 
 		
 
@@ -336,7 +201,7 @@ abstract class COntologyWrapper extends CDataWrapper
 	 *	<li><tt>{@link kAPI_OP_COUNT}</tt>: Return the count of a query, this operation
 	 *		requires the following parameters:
 	 *	 <ul>
-	 *		<li><tt>
+	 *		<li><tt></tt>.
 	 *	 </ul>
 	 * </ul>
 	 *
@@ -354,7 +219,27 @@ abstract class COntologyWrapper extends CDataWrapper
 			//
 			// Operation codes.
 			//
-			case kAPI_OP_GetNodesByKind:
+			case kAPI_OP_GetRootsByKind:
+				//
+				// Check for database.
+				//
+				if( ! array_key_exists( kAPI_DATABASE, $_REQUEST ) )
+					throw new CException
+						( "Missing database parameter",
+						  kERROR_MISSING,
+						  kMESSAGE_TYPE_ERROR,
+						  array( 'Operation' => $parameter ) );					// !@! ==>
+				
+				//
+				// Check for container.
+				//
+				if( ! array_key_exists( kAPI_CONTAINER, $_REQUEST ) )
+					throw new CException
+						( "Missing container parameter",
+						  kERROR_MISSING,
+						  kMESSAGE_TYPE_ERROR,
+						  array( 'Operation' => $parameter ) );					// !@! ==>
+					
 				//
 				// Check for format.
 				//
@@ -366,15 +251,15 @@ abstract class COntologyWrapper extends CDataWrapper
 						  array( 'Operation' => $parameter ) );					// !@! ==>
 				
 				//
-				// Check for database.
+				// Check for query.
 				//
-				if( ! array_key_exists( kAPI_DATABASE, $_REQUEST ) )
+				if( ! array_key_exists( kAPI_QUERY, $_REQUEST ) )
 					throw new CException
-						( "Missing database parameter",
+						( "Missing query list parameter",
 						  kERROR_MISSING,
 						  kMESSAGE_TYPE_ERROR,
 						  array( 'Operation' => $parameter ) );					// !@! ==>
-					
+				
 				break;
 			
 			//
@@ -387,53 +272,6 @@ abstract class COntologyWrapper extends CDataWrapper
 		} // Parsing parameter.
 	
 	} // _ValidateOperation.
-
-		
-	/*===================================================================================
-	 *	_ValidateKinds																	*
-	 *==================================================================================*/
-
-	/**
-	 * Validate selection kinds.
-	 *
-	 * The duty of this method is to validate the selection parameter, in this class we
-	 * assume the value to be array, if a scalar is provided, we convert it to a string and
-	 * create with it an array.
-	 *
-	 * If the resulting array is empty, we remove the request.
-	 *
-	 * @access protected
-	 *
-	 * @see kAPI_KIND
-	 */
-	protected function _ValidateKinds()
-	{
-		//
-		// Check parameter.
-		//
-		if( array_key_exists( kAPI_KIND, $_REQUEST ) )
-		{
-			//
-			// Convert to array.
-			//
-			if( ! is_array( $_REQUEST[ kAPI_KIND ] ) )
-			{
-				//
-				// Handle non-empty string.
-				//
-				if( strlen( $_REQUEST[ kAPI_KIND ] ) )
-					$_REQUEST[ kAPI_KIND ] = array( (string) $_REQUEST[ kAPI_KIND ] );
-				
-				//
-				// Remove request.
-				//
-				else
-					unset( $_REQUEST[ kAPI_KIND ] );
-			}
-		
-		} // Provided query selection.
-	
-	} // _ValidateKinds.
 
 		
 
@@ -459,18 +297,25 @@ abstract class COntologyWrapper extends CDataWrapper
 	protected function _HandleRequest()
 	{
 		//
-		// Parse by operation.
+		// Check operation.
 		//
-		switch( $op = $_REQUEST[ kAPI_OPERATION ] )
+		if( array_key_exists( kAPI_OPERATION, $_REQUEST ) )
 		{
-			case kAPI_OP_GetNodesByKind:
-				$this->_Handle_GetNodesByKind();
-				break;
-
-			default:
-				parent::_HandleRequest();
-				break;
-		}
+			//
+			// Parse by operation.
+			//
+			switch( $_REQUEST[ kAPI_OPERATION ] )
+			{
+				case kAPI_OP_GetRootsByKind:
+					$this->_Handle_GetRootsByKind();
+					break;
+	
+				default:
+					parent::_HandleRequest();
+					break;
+			}
+		
+		} // Provided the request.
 	
 	} // _HandleRequest.
 
@@ -496,30 +341,221 @@ abstract class COntologyWrapper extends CDataWrapper
 		parent::_Handle_ListOp( $theList );
 
 		//
-		// Add kAPI_OP_COUNT.
+		// Add kAPI_OP_GetRootsByKind.
 		//
-		$theList[ kAPI_OP_GetNodesByKind ]
-			= 'Get nodes by kind: returns the nodes matching a list of kind enumerations.';
+		$theList[ kAPI_OP_GetRootsByKind ]
+			= 'Get root vertex by kind: returns the list of vertex nodes of the provided kind.';
 	
 	} // _Handle_ListOp.
 
 	 
 	/*===================================================================================
-	 *	_Handle_GetNodesByKind															*
+	 *	_Handle_GetRootsByKind															*
 	 *==================================================================================*/
 
 	/**
-	 * Handle {@link kAPI_OP_GetNodesByKind} request.
+	 * Handle {@link kAPI_OP_GetRootsByKind} request.
 	 *
-	 * This method will handle the {@link kAPI_OP_GetNodesByKind} operation, which returns
-	 * the nodes that match the provided list of node kinds.
-	 *
-	 * Since this class does not handle any specific data engine, we declare the method
-	 * abstract and require concrete derived classes to implement it.
+	 * This method will handle the {@link kAPI_OP_GetRootsByKind} operation, which returns
+	 * the list of vertex nodes belonging to the provided kinds.
 	 *
 	 * @access protected
 	 */
-	abstract protected function _Handle_GetNodesByKind();
+	protected function _Handle_GetRootsByKind()
+	{
+		//
+		// Handle query.
+		//
+		$query = ( array_key_exists( kAPI_QUERY, $_REQUEST ) )
+				? $_REQUEST[ kAPI_QUERY ]
+				: Array();
+		
+		//
+		// Handle fields.
+		//
+		$fields = ( array_key_exists( kAPI_SELECT, $_REQUEST ) )
+				? $_REQUEST[ kAPI_SELECT ]
+				: Array();
+		
+		//
+		// Handle sort.
+		//
+		$sort = ( array_key_exists( kAPI_SORT, $_REQUEST ) )
+			  ? $_REQUEST[ kAPI_SORT ]
+			  : Array();
+		
+		//
+		// Handle paging.
+		//
+		if( $this->offsetExists( kAPI_PAGING ) )
+		{
+			$start = $this->offsetGet( kAPI_PAGING )[ kAPI_PAGE_START ];
+			$limit = $this->offsetGet( kAPI_PAGING )[ kAPI_PAGE_LIMIT ];
+		}
+		else
+			$start = $limit = NULL;
+		
+		//
+		// Query.
+		//
+		$cursor
+			= $_REQUEST[ kAPI_CONTAINER ]
+				->Query( $query, $fields, $sort, $start, $limit );
+		
+		//
+		// Set affected count.
+		//
+		$this->_OffsetManage( kAPI_STATUS, kAPI_AFFECTED_COUNT, $cursor->count( FALSE ) );
+		
+		//
+		// Handle page count.
+		//
+		if( $this->offsetExists( kAPI_PAGING ) )
+			$this->offsetGet( kAPI_PAGING )[ kAPI_PAGE_COUNT ] = $cursor->count( TRUE );
+		
+		//
+		// Check count.
+		//
+		if( $cursor->count( FALSE ) )
+		{
+			//
+			// Init results structure.
+			//
+			$results = array( kAPI_COLLECTION_ID => Array(),
+							  kAPI_COLLECTION_PREDICATE => Array(),
+							  kAPI_COLLECTION_VERTEX => Array(),
+							  kAPI_COLLECTION_EDGE => Array(),
+							  kAPI_COLLECTION_TAG => Array() );
+			
+			//
+			// Iterate vertex.
+			//
+			foreach( $cursor as $object )
+			{
+				
+				//
+				// Serialise object.
+				//
+				CDataType::SerialiseObject( $object );
+				
+				//
+				// Save object.
+				//
+				$result[] = $object;
+			
+			} // Iterating found objects
+			
+			//
+			// Set response.
+			//
+			$this->offsetSet( kAPI_RESPONSE, $result );
+		
+		} // Found something.
+	
+	} // _Handle_GetRootsByKind.
+
+		
+
+/*=======================================================================================
+ *																						*
+ *									PROTECTED UTILITIES									*
+ *																						*
+ *======================================================================================*/
+
+
+	 
+	/*===================================================================================
+	 *	_DecodeParameter																*
+	 *==================================================================================*/
+
+	/**
+	 * Decode parameter.
+	 *
+	 * This method can be used to decode a parameter according to the provided format,
+	 * {@link kTYPE_JSON} or {@link kTYPE_PHP}.
+	 *
+	 * The method will return the decoded parameter.
+	 *
+	 * @param string				$theParameter		Parameter offset.
+	 *
+	 * @access protected
+	 * @return array
+	 *
+	 * @uses JsonDecode()
+	 *
+	 * @see kTYPE_JSON kTYPE_PHP
+	 */
+	protected function _DecodeParameter( $theParameter )
+	{
+		//
+		// Check parameter.
+		//
+		if( array_key_exists( $theParameter, $_REQUEST ) )
+		{
+			//
+			// Init local storage.
+			//
+			$encoded = $_REQUEST[ $theParameter ];
+			$format = $_REQUEST[ kAPI_FORMAT ];
+			
+			//
+			// Parse by format.
+			//
+			switch( $format )
+			{
+				case kTYPE_JSON:
+					try
+					{
+						$_REQUEST[ $theParameter ] = JsonDecode( $encoded );
+					}
+					catch( Exception $error )
+					{
+						if( $error instanceof CException )
+						{
+							$error->Reference( 'Parameter', $theParameter );
+							$error->Reference( 'Format', $format );
+							$error->Reference( 'Data', $encoded );
+						}
+						
+						throw $error;											// !@! ==>
+					}
+					
+					break;
+
+				case kTYPE_PHP:
+					$decoded = @unserialize( $encoded );
+					if( $decoded === FALSE )
+						throw new CException
+							( "Unable to handle request: invalid PHP serialised string",
+							  kERROR_INVALID_STATE,
+							  kMESSAGE_TYPE_ERROR,
+							  array( 'Parameter' => $theParameter,
+									 'Format' => $format,
+									 'Data' => $encoded ) );					// !@! ==>
+					
+					//
+					// Update request.
+					//
+					$_REQUEST[ $theParameter ] = $decoded;
+					
+					break;
+				
+				//
+				// Catch bugs.
+				//
+				default:
+					throw new CException
+						( "Unsupported format (should have been caught before)",
+						  kERROR_UNSUPPORTED,
+						  kMESSAGE_TYPE_BUG,
+						  array( 'Parameter' => kAPI_FORMAT,
+								 'Format' => $format ) );						// !@! ==>
+			
+			} // Parsed format.
+		
+		} // Provided parameter.
+	
+	} // _DecodeParameter.
 
 	 
 

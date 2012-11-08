@@ -322,44 +322,27 @@ class CDataWrapper extends CWrapper
 		// Save operation in request mirror, if necessary.
 		//
 		parent::_ParseOperation();
-		
+	
 		//
-		// Handle operation.
+		// Normalise parameters.
 		//
-		if( array_key_exists( kAPI_OPERATION, $_REQUEST ) )
+		switch( $_REQUEST[ kAPI_OPERATION ] )
 		{
-			//
-			// Select unnecessary parameters.
-			//
-			switch( $_REQUEST[ kAPI_OPERATION ] )
-			{
-				case kAPI_OP_COUNT:
-					$params = array( kAPI_SELECT, kAPI_SORT );
-					break;
+			case kAPI_OP_COUNT:
+				if( array_key_exists( kAPI_SELECT, $_REQUEST ) )
+					unset( $_REQUEST[ kAPI_SELECT ] );
 
-				case kAPI_OP_GET_ONE:
-					$params = array( kAPI_SORT );
-					break;
+			case kAPI_OP_GET_ONE:
+			case kAPI_OP_MATCH:
+				if( array_key_exists( kAPI_SORT, $_REQUEST ) )
+					unset( $_REQUEST[ kAPI_SORT ] );
+				break;
 
-				case kAPI_OP_GET:
-					if( ! array_key_exists( kAPI_PAGE_LIMIT, $_REQUEST ) )
-						$_REQUEST[ kAPI_PAGE_LIMIT ] = kDEFAULT_LIMIT;
-					break;
-			}
-
-			//
-			// Remove unnecessary parameters.
-			//
-			if( isset( $params ) )
-			{
-				foreach( $params as $param )
-				{
-					if( array_key_exists( $param, $_REQUEST ) )
-						unset( $_REQUEST[ $param ] );
-				}
-			}
-		
-		} // Provided operation.
+			case kAPI_OP_GET:
+				if( ! array_key_exists( kAPI_PAGE_LIMIT, $_REQUEST ) )
+					$_REQUEST[ kAPI_PAGE_LIMIT ] = kDEFAULT_LIMIT;
+				break;
+		}
 	
 	} // _ParseOperation.
 
@@ -728,6 +711,9 @@ class CDataWrapper extends CWrapper
 	 * This method will decode the provided query from JSON or PHP encoding and unserialise
 	 * eventual query arguments encoded as {@link CDataType} derived instances.
 	 *
+	 * This method will first check if the parameter is not already an array or a
+	 * {@link CQuery} derived instance, if it is, the method will do nothing.
+	 *
 	 * @access protected
 	 *
 	 * @see kAPI_QUERY
@@ -740,45 +726,53 @@ class CDataWrapper extends CWrapper
 		if( array_key_exists( kAPI_QUERY, $_REQUEST ) )
 		{
 			//
-			// Decode parameter.
+			// Check if the query needs to be formatted.
 			//
-			$this->_DecodeParameter( kAPI_QUERY );
-			
-			//
-			// Check query format.
-			//
-			if( is_array( $_REQUEST[ kAPI_QUERY ] ) )
+			if( (! is_array( $_REQUEST[ kAPI_QUERY ] ))
+			 && (! ($_REQUEST[ kAPI_QUERY ] instanceof CQuery)) )
 			{
 				//
-				// Handle non-empty query.
+				// Decode parameter.
 				//
-				if( count( $_REQUEST[ kAPI_QUERY ] ) )
+				$this->_DecodeParameter( kAPI_QUERY );
+				
+				//
+				// Check query format.
+				//
+				if( is_array( $_REQUEST[ kAPI_QUERY ] ) )
 				{
 					//
-					// Check container.
+					// Handle non-empty query.
 					//
-					if( array_key_exists( kAPI_CONTAINER, $_REQUEST ) )
-						$_REQUEST[ kAPI_CONTAINER ]
-							->UnserialiseObject( $_REQUEST[ kAPI_QUERY ] );
+					if( count( $_REQUEST[ kAPI_QUERY ] ) )
+					{
+						//
+						// Check container.
+						//
+						if( array_key_exists( kAPI_CONTAINER, $_REQUEST ) )
+							$_REQUEST[ kAPI_CONTAINER ]
+								->UnserialiseObject( $_REQUEST[ kAPI_QUERY ] );
+						
+						else
+							throw new CException
+								( "Unable to format query: container is missing",
+								  kERROR_STATE,
+								  kMESSAGE_TYPE_ERROR );						// !@! ==>
+					}
 					
 					else
-						throw new CException
-							( "Unable to format query: container is missing",
-							  kERROR_STATE,
-							  kMESSAGE_TYPE_ERROR );							// !@! ==>
+						unset( $_REQUEST[ kAPI_QUERY ] );
 				}
 				
 				else
-					unset( $_REQUEST[ kAPI_QUERY ] );
-			}
+					throw new CException
+						( ("Unable to format query: invalid type ("
+						  .gettype( $_REQUEST[ kAPI_QUERY ] )
+						  ."): expecting an array"),
+						  kERROR_PARAMETER,
+						  kMESSAGE_TYPE_ERROR );								// !@! ==>
 			
-			else
-				throw new CException
-					( ("Unable to format query: invalid type ("
-					  .gettype( $_REQUEST[ kAPI_QUERY ] )
-					  ."): expecting an array"),
-					  kERROR_PARAMETER,
-					  kMESSAGE_TYPE_ERROR );									// !@! ==>
+			} // Needs formatting.
 			
 		} // Provided query parameters.
 	
@@ -875,19 +869,20 @@ class CDataWrapper extends CWrapper
 			//
 			// Operation codes.
 			//
-			case kAPI_OP_COUNT:
-			case kAPI_OP_GET:
-			case kAPI_OP_GET_ONE:
+			case kAPI_OP_MATCH:
 				//
-				// Check for format.
+				// Check for query.
 				//
-				if( ! array_key_exists( kAPI_FORMAT, $_REQUEST ) )
+				if( ! array_key_exists( kAPI_QUERY, $_REQUEST ) )
 					throw new CException
-						( "Missing format parameter",
+						( "Missing query list parameter",
 						  kERROR_MISSING,
 						  kMESSAGE_TYPE_ERROR,
 						  array( 'Operation' => $parameter ) );					// !@! ==>
 				
+			case kAPI_OP_COUNT:
+			case kAPI_OP_GET:
+			case kAPI_OP_GET_ONE:
 				//
 				// Check for database.
 				//
@@ -908,6 +903,16 @@ class CDataWrapper extends CWrapper
 						  kMESSAGE_TYPE_ERROR,
 						  array( 'Operation' => $parameter ) );					// !@! ==>
 					
+				//
+				// Check for format.
+				//
+				if( ! array_key_exists( kAPI_FORMAT, $_REQUEST ) )
+					throw new CException
+						( "Missing format parameter",
+						  kERROR_MISSING,
+						  kMESSAGE_TYPE_ERROR,
+						  array( 'Operation' => $parameter ) );					// !@! ==>
+				
 				break;
 			
 			//
@@ -1063,17 +1068,57 @@ class CDataWrapper extends CWrapper
 			if( array_key_exists( kAPI_CONTAINER, $_REQUEST ) )
 			{
 				//
-				// Instantiate query.
+				// Parse by operation.
 				//
-				$_REQUEST[ kAPI_QUERY ]
-					= $_REQUEST[ kAPI_CONTAINER ]
-						->NewQuery( $_REQUEST[ kAPI_QUERY ] );
+				switch( $_REQUEST[ kAPI_OPERATION ] )
+				{
+					case kAPI_OP_MATCH:
+						//
+						// Iterate queries.
+						//
+						foreach( $_REQUEST[ kAPI_QUERY ] as $key => $query )
+						{
+							//
+							// Instantiate query.
+							//
+							if( ! ($query instanceof CQuery) )
+								$query
+									= $_REQUEST[ kAPI_CONTAINER ]
+										->NewQuery( $_REQUEST[ kAPI_QUERY ][ $key ] );
+							
+							//
+							// Validate query.
+							//
+							$query->Validate();
+							
+							//
+							// Set query.
+							//
+							$_REQUEST[ kAPI_QUERY ][ $key ] = $query;
+						
+						} // Iterating queries.
+						
+						break;
+					
+					default:
+						//
+						// Instantiate query.
+						//
+						if( ! ($_REQUEST[ kAPI_QUERY ] instanceof CQuery) )
+							$_REQUEST[ kAPI_QUERY ]
+								= $_REQUEST[ kAPI_CONTAINER ]
+									->NewQuery( $_REQUEST[ kAPI_QUERY ] );
+						
+						//
+						// Validate query.
+						//
+						$_REQUEST[ kAPI_QUERY ]->Validate();
+						
+						break;
 				
-				//
-				// Validate query.
-				//
-				$_REQUEST[ kAPI_QUERY ]->Validate();
-			}
+				} // Parsing by operation.
+			
+			} // Provided container.
 			
 			else
 				throw new CException
@@ -1210,7 +1255,7 @@ class CDataWrapper extends CWrapper
 			//
 			// Parse by operation.
 			//
-			switch( $op = $_REQUEST[ kAPI_OPERATION ] )
+			switch( $_REQUEST[ kAPI_OPERATION ] )
 			{
 				case kAPI_OP_COUNT:
 					$this->_Handle_Count();
@@ -1222,6 +1267,10 @@ class CDataWrapper extends CWrapper
 	
 				case kAPI_OP_GET_ONE:
 					$this->_Handle_GetOne();
+					break;
+	
+				case kAPI_OP_MATCH:
+					$this->_Handle_Match();
 					break;
 	
 				default:
@@ -1464,6 +1513,74 @@ class CDataWrapper extends CWrapper
 		} // Found object.
 	
 	} // _Handle_GetOne.
+
+	 
+	/*===================================================================================
+	 *	_Handle_Match																	*
+	 *==================================================================================*/
+
+	/**
+	 * Handle {@link kAPI_OP_MATCH} request.
+	 *
+	 * This method will handle the {@link kAPI_OP_MATCH} operation, which returns the first
+	 * match of a series of queries.
+	 *
+	 * @access protected
+	 */
+	protected function _Handle_Match()
+	{
+		//
+		// Handle fields.
+		//
+		$fields = ( array_key_exists( kAPI_SELECT, $_REQUEST ) )
+				? $_REQUEST[ kAPI_SELECT ]
+				: Array();
+		
+		//
+		// Iterate queries.
+		//
+		foreach( $_REQUEST[ kAPI_QUERY ] as $query )
+		{
+			//
+			// Query.
+			//
+			$object
+				= $_REQUEST[ kAPI_CONTAINER ]
+					->Query( $query, $fields, NULL, NULL, NULL, TRUE );
+			
+			//
+			// Handle object.
+			//
+			if( $object !== NULL )
+			{
+				//
+				// Set affected count.
+				//
+				$this->_OffsetManage( kAPI_STATUS, kAPI_AFFECTED_COUNT, 1 );
+				
+				//
+				// Handle page count.
+				//
+				if( $this->offsetExists( kAPI_PAGING ) )
+					$this->offsetGet( kAPI_PAGING )[ kAPI_PAGE_COUNT ] = 1;
+				
+				//
+				// Serialise object.
+				//
+				CDataType::SerialiseObject( $object );
+				
+				//
+				// Save object in response.
+				//
+				$this->offsetSet( kAPI_RESPONSE, $object );
+				
+				break;														// =>
+			
+			} // Found object.
+		
+		} // Iterating queries.
+	
+	} // _Handle_Match.
 
 		
 
