@@ -6,7 +6,7 @@
 
 	<title>Class COntologyNode | MyWrapper Reference Documentation</title>
 
-	<script type="text/javascript" src="resources/combined.js?368249000"></script>
+	<script type="text/javascript" src="resources/combined.js?3680114562"></script>
 	<script type="text/javascript" src="elementlist.js?947975004"></script>
 	<link rel="stylesheet" type="text/css" media="all" href="resources/style.css?3505392360" />
 
@@ -231,7 +231,7 @@ terms.</p>
 				<b>Author:</b>
 				Milko A. Škofič &lt;<a
 href="mailto:m.skofic&#64;cgiar.org">m.skofic&#64;<!---->cgiar.org</a>&gt;<br />
-		<b>Located at</b> <a href="source-class-COntologyNode.html#51-1325" title="Go to source code">COntologyNode.php</a><br />
+		<b>Located at</b> <a href="source-class-COntologyNode.html#51-1328" title="Go to source code">COntologyNode.php</a><br />
 	</div>
 
 
@@ -765,7 +765,7 @@ kCONTAINER_NODE_NAME name.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#_Resolve">#</a>
-		<code><a href="source-class-COntologyNode.html#674-813" title="Go to source code">Resolve</a>( <span><code><a href="class-CConnection.html">CConnection</a></code> <var>$theConnection</var></span>, <span>mixed <var>$theIdentifier</var></span>, <span>boolean <var>$doThrow</var> = <span class="php-keyword1">FALSE</span> </span> )</code>
+		<code><a href="source-class-COntologyNode.html#674-816" title="Go to source code">Resolve</a>( <span><code><a href="class-CConnection.html">CConnection</a></code> <var>$theConnection</var></span>, <span>mixed <var>$theIdentifier</var></span>, <span>boolean <var>$doThrow</var> = <span class="php-keyword1">FALSE</span> </span> )</code>
 
 		<div class="description short">
 			
@@ -814,6 +814,9 @@ of objects if provided a term reference; if there is no match the method will
 return <tt>NULL</tt>, or raise an exception if the last parameter is
 <tt>TRUE</tt>.</p>
 
+<p><b>Note: do not provide an array containing the object in the identifier
+parameter, or you will get unexpected results.</b></p>
+
 
 
 				<h4>Parameters</h4>
@@ -857,7 +860,7 @@ return <tt>NULL</tt>, or raise an exception if the last parameter is
 
 		<td class="name"><div>
 		<a class="anchor" href="#__Preset">#</a>
-		<code><a href="source-class-COntologyNode.html#829-927" title="Go to source code">_Preset</a>( <span>reference <var>&amp; $theOffset</var></span>, <span>reference <var>&amp; $theValue</var></span> )</code>
+		<code><a href="source-class-COntologyNode.html#832-930" title="Go to source code">_Preset</a>( <span>reference <var>&amp; $theOffset</var></span>, <span>reference <var>&amp; $theValue</var></span> )</code>
 
 		<div class="description short">
 			
@@ -920,7 +923,7 @@ modification.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#__Preunset">#</a>
-		<code><a href="source-class-COntologyNode.html#934-975" title="Go to source code">_Preunset</a>( <span>reference <var>&amp; $theOffset</var></span> )</code>
+		<code><a href="source-class-COntologyNode.html#937-978" title="Go to source code">_Preunset</a>( <span>reference <var>&amp; $theOffset</var></span> )</code>
 
 		<div class="description short">
 			
@@ -976,7 +979,7 @@ cases.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#__PrecommitRelated">#</a>
-		<code><a href="source-class-COntologyNode.html#991-1054" title="Go to source code">_PrecommitRelated</a>( <span>reference <var>&amp; $theConnection</var></span>, <span>reference <var>&amp; $theModifiers</var></span> )</code>
+		<code><a href="source-class-COntologyNode.html#994-1057" title="Go to source code">_PrecommitRelated</a>( <span>reference <var>&amp; $theConnection</var></span>, <span>reference <var>&amp; $theModifiers</var></span> )</code>
 
 		<div class="description short">
 			
@@ -1030,7 +1033,7 @@ provided as an identifier.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#__PrecommitIdentify">#</a>
-		<code><a href="source-class-COntologyNode.html#1061-1153" title="Go to source code">_PrecommitIdentify</a>( <span>reference <var>&amp; $theConnection</var></span>, <span>reference <var>&amp; $theModifiers</var></span> )</code>
+		<code><a href="source-class-COntologyNode.html#1064-1156" title="Go to source code">_PrecommitIdentify</a>( <span>reference <var>&amp; $theConnection</var></span>, <span>reference <var>&amp; $theModifiers</var></span> )</code>
 
 		<div class="description short">
 			
@@ -1084,7 +1087,7 @@ it will have been set here.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#__PostcommitRelated">#</a>
-		<code><a href="source-class-COntologyNode.html#1169-1213" title="Go to source code">_PostcommitRelated</a>( <span>reference <var>&amp; $theConnection</var></span>, <span>reference <var>&amp; $theModifiers</var></span> )</code>
+		<code><a href="source-class-COntologyNode.html#1172-1216" title="Go to source code">_PostcommitRelated</a>( <span>reference <var>&amp; $theConnection</var></span>, <span>reference <var>&amp; $theModifiers</var></span> )</code>
 
 		<div class="description short">
 			
@@ -1139,7 +1142,7 @@ remove the element when deleting.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#__PostcommitCleanup">#</a>
-		<code><a href="source-class-COntologyNode.html#1220-1244" title="Go to source code">_PostcommitCleanup</a>( <span>reference <var>&amp; $theConnection</var></span>, <span>reference <var>&amp; $theModifiers</var></span> )</code>
+		<code><a href="source-class-COntologyNode.html#1223-1247" title="Go to source code">_PostcommitCleanup</a>( <span>reference <var>&amp; $theConnection</var></span>, <span>reference <var>&amp; $theModifiers</var></span> )</code>
 
 		<div class="description short">
 			
@@ -1185,7 +1188,7 @@ have to be refreshed and its references actualised.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#__ReferenceInTerm">#</a>
-		<code><a href="source-class-COntologyNode.html#1260-1321" title="Go to source code">_ReferenceInTerm</a>( <span><code><a href="class-CConnection.html">CConnection</a></code> <var>$theConnection</var></span>, <span>boolean <var>$doAdd</var></span> )</code>
+		<code><a href="source-class-COntologyNode.html#1263-1324" title="Go to source code">_ReferenceInTerm</a>( <span><code><a href="class-CConnection.html">CConnection</a></code> <var>$theConnection</var></span>, <span>boolean <var>$doAdd</var></span> )</code>
 
 		<div class="description short">
 			

@@ -425,6 +425,9 @@ class COntologyEdge extends CEdge
 	 * The method will return the found edge, <tt>NULL</tt> if not found, or raise an
 	 * exception if the last parameter is <tt>TRUE</tt>.
 	 *
+	 * <b>Note: do not provide an array containing the object in the identifier parameter,
+	 * or you will get unexpected results.</b>
+	 *
 	 * @param CConnection			$theConnection		Server, database or container.
 	 * @param mixed					$theIdentifier		Edge reference.
 	 * @param boolean				$doThrow			If <tt>TRUE</tt> raise an exception.

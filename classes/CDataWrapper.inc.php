@@ -161,6 +161,9 @@ define( "kAPI_PAGE_COUNT",			':WS:PAGE-COUNT' );
  * Count tag.
  *
  * This tag will hold the total number of elements affected by the operation.
+ *
+ * Type: integer.
+ * Cardinality: one.
  */
 define( "kAPI_AFFECTED_COUNT",		':WS:AFFECTED-COUNT' );
 

@@ -705,6 +705,9 @@ class COntologyNode extends CNode
 	 * objects if provided a term reference; if there is no match the method will return
 	 * <tt>NULL</tt>, or raise an exception if the last parameter is <tt>TRUE</tt>.
 	 *
+	 * <b>Note: do not provide an array containing the object in the identifier parameter,
+	 * or you will get unexpected results.</b>
+	 *
 	 * @param CConnection			$theConnection		Server, database or container.
 	 * @param mixed					$theIdentifier		Node identifier or term reference.
 	 * @param boolean				$doThrow			If <tt>TRUE</tt> raise an exception.
@@ -721,11 +724,6 @@ class COntologyNode extends CNode
 		//
 		if( $theIdentifier !== NULL )
 		{
-			//
-			// Resolve container.
-			//
-			$container = COntologyNode::ResolveClassContainer( $theConnection, TRUE );
-			
 			//
 			// Handle node identifier.
 			//
@@ -754,7 +752,7 @@ class COntologyNode extends CNode
 				//
 				// Resolve term.
 				//
-				$theIdentifier = COntologyTerm::Resolve( $theIdentifier );
+				$theIdentifier = COntologyTerm::Resolve( $theConnection, $theIdentifier );
 				if( $theIdentifier === NULL )
 				{
 					if( ! $doThrow )
@@ -772,6 +770,11 @@ class COntologyNode extends CNode
 			// Use term native identifier.
 			//
 			$theIdentifier = $theIdentifier->offsetGet( kOFFSET_NID );
+			
+			//
+			// Resolve container.
+			//
+			$container = COntologyNode::ResolveClassContainer( $theConnection, TRUE );
 			
 			//
 			// Make query.

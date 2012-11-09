@@ -164,13 +164,6 @@ class CDataWrapper extends CWrapper
 	 * The method is called by the constructor and should be overloaded to handle derived
 	 * classes custom elements.
 	 *
-	 * In this class we handle the following parameters:
-	 *
-	 * <ul>
-	 *	<li><tt>{@link kAPI_DATABASE}</tt>: We copy the database name to the request.
-	 *	<li><tt>{@link kAPI_CONTAINER}</tt>: We copy the container name to the request.
-	 * </ul>
-	 *
 	 * @access protected
 	 *
 	 * @uses _ParseDatabase()
@@ -601,7 +594,7 @@ class CDataWrapper extends CWrapper
 
 	 
 	/*===================================================================================
-	 *	_FormatContainer																	*
+	 *	_FormatContainer																*
 	 *==================================================================================*/
 
 	/**

@@ -649,6 +649,9 @@ class COntologyTerm extends CTerm
 	 * The method will return the found term, <tt>NULL</tt> if not found, or raise an
 	 * exception if the last parameter is <tt>TRUE</tt>.
 	 *
+	 * <b>Note: do not provide an array containing the object in the identifier parameter,
+	 * or you will get unexpected results.</b>
+	 *
 	 * @param CConnection			$theConnection		Server, database or container.
 	 * @param string				$theIdentifier		Term local identifier.
 	 * @param mixed					$theNamespace		Namespace term reference.
