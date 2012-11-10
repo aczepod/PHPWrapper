@@ -413,6 +413,11 @@ class COntologyWrapper extends CDataWrapper
 				$_REQUEST[ kAPI_QUERY ] = $query;
 					
 				break;
+			
+			case kAPI_OP_GetVertex:
+				$_REQUEST[ kAPI_CONTAINER ]
+					= COntologyNode::DefaultContainer(
+						$_REQUEST[ kAPI_DATABASE ] );
 				
 			default:
 				//
@@ -787,6 +792,10 @@ class COntologyWrapper extends CDataWrapper
 					$this->_Handle_GetRootsByKind();
 					break;
 	
+				case kAPI_OP_GetVertex:
+					$this->_Handle_GetVertex();
+					break;
+	
 				default:
 					parent::_HandleRequest();
 					break;
@@ -887,7 +896,11 @@ class COntologyWrapper extends CDataWrapper
 		// Handle page count.
 		//
 		if( $this->offsetExists( kAPI_PAGING ) )
-			$this->offsetGet( kAPI_PAGING )[ kAPI_PAGE_COUNT ] = $cursor->count( TRUE );
+		{
+			$tmp = $this->offsetGet( kAPI_PAGING );
+			$tmp[ kAPI_PAGE_COUNT ] = $cursor->count( TRUE );
+			$this->offsetSet( kAPI_PAGING, $tmp );
+		}
 		
 		//
 		// Check count.
@@ -1037,8 +1050,11 @@ class COntologyWrapper extends CDataWrapper
 				// Handle page count.
 				//
 				if( $this->offsetExists( kAPI_PAGING ) )
-					$this->offsetGet( kAPI_PAGING )[ kAPI_PAGE_COUNT ]
-						= $cursor->count( TRUE );
+				{
+					$tmp = $this->offsetGet( kAPI_PAGING );
+					$tmp[ kAPI_PAGE_COUNT ] = $cursor->count( TRUE );
+					$this->offsetSet( kAPI_PAGING, $tmp );
+				}
 				
 				//
 				// Check count.
@@ -1110,8 +1126,11 @@ class COntologyWrapper extends CDataWrapper
 			// Handle page count.
 			//
 			if( $this->offsetExists( kAPI_PAGING ) )
-				$this->offsetGet( kAPI_PAGING )[ kAPI_PAGE_COUNT ]
-					= $cursor->count( TRUE );
+			{
+				$tmp = $this->offsetGet( kAPI_PAGING );
+				$tmp[ kAPI_PAGE_COUNT ] = $cursor->count( TRUE );
+				$this->offsetSet( kAPI_PAGING, $tmp );
+			}
 			
 			//
 			// Check count.
@@ -1449,7 +1468,7 @@ class COntologyWrapper extends CDataWrapper
 			//
 			// Check if term is new.
 			//
-			if( ! array_key_exists( $theTerm->offsetGet( kTAG_GID ),
+			if( ! array_key_exists( $theTerm[ kTAG_GID ],
 									$theCollection[ kAPI_COLLECTION_PREDICATE ] ) )
 			{
 				//
@@ -1593,8 +1612,8 @@ class COntologyWrapper extends CDataWrapper
 			//
 			// Check if edge is new.
 			//
-			if( ! array_key_exists( $theEdge->offsetGet( kTAG_GID ),
-									$theCollection[ kAPI_COLLECTION_EDGE ] ) )
+			$id = $theEdge->offsetGet( kTAG_GID );
+			if( ! array_key_exists( $id, $theCollection[ kAPI_COLLECTION_EDGE ] ) )
 			{
 				//
 				// Init local storage.
@@ -1656,15 +1675,16 @@ class COntologyWrapper extends CDataWrapper
 						//
 						if( (! array_key_exists( kAPI_SELECT, $_REQUEST ))
 						 || (! in_array( $key, $_REQUEST[ kAPI_SELECT ] )) ) 
-							$export[ $key ] = $theTag->offsetGet( $key );
+							$export[ $key ] = $theEdge->offsetGet( $key );
 					
 					} // Not excluded.
 				
 				} // Iterating edge attributes.
 				
 				//
-				// Save vertex.
+				// Save edge.
 				//
+				$theEdge = $theEdge->getArrayCopy();
 				CDataType::SerialiseObject( $theEdge );
 				$theCollection[ kAPI_COLLECTION_EDGE ][ $id ] = $theEdge;
 				

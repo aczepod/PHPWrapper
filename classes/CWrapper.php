@@ -416,7 +416,7 @@ class CWrapper extends CConnection
 			// Return result.
 			//
 			echo( $this->_EncodeResponse() );
-		
+	
 		} // Object is inited.
 	
 	} // HandleRequest.
