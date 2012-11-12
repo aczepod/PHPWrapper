@@ -508,7 +508,7 @@ try
 			(
 				array
 				(
-					kOFFSET_QUERY_SUBJECT => '12',
+					kOFFSET_QUERY_SUBJECT => kTAG_KIND,
 					kOFFSET_QUERY_OPERATOR => kOPERATOR_EQUAL,
 					kOFFSET_QUERY_TYPE => kTYPE_STRING,
 					kOFFSET_QUERY_DATA => ':SCALE'
@@ -591,7 +591,7 @@ try
 			(
 				array
 				(
-					kOFFSET_QUERY_SUBJECT => '2',
+					kOFFSET_QUERY_SUBJECT => kTAG_GID,
 					kOFFSET_QUERY_OPERATOR => kOPERATOR_PREFIX,
 					kOFFSET_QUERY_TYPE => kTYPE_STRING,
 					kOFFSET_QUERY_DATA => 'ISO:3166:2:'
@@ -599,13 +599,13 @@ try
 			)
 		);
 		$query_enc = JsonEncode( $query );
-		$fields = array( '1', '2', '31' );
+		$fields = array( kTAG_LID, kTAG_GID, '31' );
 		$fields_enc = JsonEncode( $fields );
-		$sort = array( '1' => -1 );
+		$sort = array( kTAG_LID => -1 );
 		$sort_enc = JsonEncode( $sort );
 		$params = array( (kAPI_FORMAT.'='.kTYPE_JSON),
 						 (kAPI_OPERATION.'='.kAPI_OP_GET),
-						 (kAPI_LOG_REQUEST.'='.'1'),
+						 (kAPI_LOG_REQUEST.'='.kTAG_LID),
 						 (kAPI_PAGE_START.'='.'0'),
 						 (kAPI_PAGE_LIMIT.'='.'5'),
 						 (kAPI_DATABASE.'='.'ONTOLOGY'),
@@ -646,7 +646,7 @@ try
 			(
 				array
 				(
-					kOFFSET_QUERY_SUBJECT => '2',
+					kOFFSET_QUERY_SUBJECT => kTAG_GID,
 					kOFFSET_QUERY_OPERATOR => kOPERATOR_PREFIX,
 					kOFFSET_QUERY_TYPE => kTYPE_STRING,
 					kOFFSET_QUERY_DATA => 'ISO:3166:2:'
@@ -654,13 +654,13 @@ try
 			)
 		);
 		$query_enc = serialize( $query );
-		$fields = array( '1', '2', '31' );
+		$fields = array( kTAG_LID, kTAG_GID, '31' );
 		$fields_enc = serialize( $fields );
-		$sort = array( '1' => -1 );
+		$sort = array( kTAG_LID => -1 );
 		$sort_enc = serialize( $sort );
 		$params = array( (kAPI_FORMAT.'='.kTYPE_PHP),
 						 (kAPI_OPERATION.'='.kAPI_OP_GET),
-						 (kAPI_LOG_REQUEST.'='.'1'),
+						 (kAPI_LOG_REQUEST.'='.kTAG_LID),
 						 (kAPI_PAGE_START.'='.'0'),
 						 (kAPI_PAGE_LIMIT.'='.'5'),
 						 (kAPI_DATABASE.'='.'ONTOLOGY'),
@@ -701,7 +701,7 @@ try
 			(
 				array
 				(
-					kOFFSET_QUERY_SUBJECT => '2',
+					kOFFSET_QUERY_SUBJECT => kTAG_GID,
 					kOFFSET_QUERY_OPERATOR => kOPERATOR_PREFIX,
 					kOFFSET_QUERY_TYPE => kTYPE_STRING,
 					kOFFSET_QUERY_DATA => 'ISO:3166:2:'
@@ -709,13 +709,13 @@ try
 			)
 		);
 		$query_enc = JsonEncode( $query );
-		$fields = array( '1', '2', '31' );
+		$fields = array( kTAG_LID, kTAG_GID, '31' );
 		$fields_enc = JsonEncode( $fields );
-		$sort = array( '1' => -1 );
+		$sort = array( kTAG_LID => -1 );
 		$sort_enc = JsonEncode( $sort );
 		$params = array( (kAPI_FORMAT.'='.kTYPE_JSON),
 						 (kAPI_OPERATION.'='.kAPI_OP_GET_ONE),
-						 (kAPI_LOG_REQUEST.'='.'1'),
+						 (kAPI_LOG_REQUEST.'='.kTAG_LID),
 						 (kAPI_PAGE_START.'='.'0'),
 						 (kAPI_PAGE_LIMIT.'='.'5'),
 						 (kAPI_DATABASE.'='.'ONTOLOGY'),
@@ -758,7 +758,7 @@ try
 				(
 					array
 					(
-						kOFFSET_QUERY_SUBJECT => '2',
+						kOFFSET_QUERY_SUBJECT => kTAG_GID,
 						kOFFSET_QUERY_OPERATOR => kOPERATOR_EQUAL,
 						kOFFSET_QUERY_TYPE => kTYPE_STRING,
 						kOFFSET_QUERY_DATA => 'NICODE'
@@ -771,7 +771,7 @@ try
 				(
 					array
 					(
-						kOFFSET_QUERY_SUBJECT => '1',
+						kOFFSET_QUERY_SUBJECT => kTAG_LID,
 						kOFFSET_QUERY_OPERATOR => kOPERATOR_EQUAL,
 						kOFFSET_QUERY_TYPE => kTYPE_STRING,
 						kOFFSET_QUERY_DATA => 'NICODE'
@@ -784,7 +784,7 @@ try
 				(
 					array
 					(
-						kOFFSET_QUERY_SUBJECT => '7',
+						kOFFSET_QUERY_SUBJECT => kTAG_SYNONYMS,
 						kOFFSET_QUERY_OPERATOR => kOPERATOR_EQUAL,
 						kOFFSET_QUERY_TYPE => kTYPE_STRING,
 						kOFFSET_QUERY_DATA => 'NICODE'
@@ -793,9 +793,9 @@ try
 			)
 		);
 		$query_enc = JsonEncode( $queries );
-		$fields = array( '1', '2', '31' );
+		$fields = array( kTAG_LID, kTAG_GID, '31' );
 		$fields_enc = JsonEncode( $fields );
-		$sort = array( '1' => -1 );
+		$sort = array( kTAG_LID => -1 );
 		$sort_enc = JsonEncode( $sort );
 		$params = array( (kAPI_FORMAT.'='.kTYPE_JSON),
 						 (kAPI_OPERATION.'='.kAPI_OP_MATCH),
@@ -837,7 +837,7 @@ try
 	//
 	$query = array( kKIND_NODE_DDICT );
 	$query_enc = JsonEncode( $query );
-	$fields = array( '2', '6', '12' );
+	$fields = array( kTAG_GID, kTAG_KIND, kTAG_TYPE, kTAG_SYNONYMS, kTAG_TAG_PATH, kTAG_LABEL, kTAG_DESCRIPTION );
 	$fields_enc = JsonEncode( $fields );
 	$params = array( (kAPI_FORMAT.'='.kTYPE_JSON),
 					 (kAPI_OPERATION.'='.kAPI_OP_GetRootsByKind),
@@ -879,22 +879,21 @@ try
 		(
 			array
 			(
-				kOFFSET_QUERY_SUBJECT => '2',
-				kOFFSET_QUERY_OPERATOR => kOPERATOR_PREFIX,
-				kOFFSET_QUERY_TYPE => kTYPE_STRING,
-				kOFFSET_QUERY_DATA => 'ISO:3166:2:'
+				kOFFSET_QUERY_SUBJECT => '_id',
+				kOFFSET_QUERY_OPERATOR => kOPERATOR_EQUAL,
+				kOFFSET_QUERY_TYPE => kTYPE_INT32,
+				kOFFSET_QUERY_DATA => 80
 			)
 		)
 	);
 	$query_enc = JsonEncode( $query );
-	$fields = array( '2', '6', '12' );
-	$fields_enc = JsonEncode( $fields );
 	$params = array( (kAPI_FORMAT.'='.kTYPE_JSON),
 					 (kAPI_OPERATION.'='.kAPI_OP_GetVertex),
 					 (kAPI_LOG_REQUEST.'='.'1'),
 					 (kAPI_PAGE_START.'='.'0'),
 					 (kAPI_PAGE_LIMIT.'='.'5'),
 					 (kAPI_DATABASE.'='.'ONTOLOGY'),
+					 (kAPI_QUERY.'='.urlencode( $query_enc )),
 					 (kAPI_SELECT.'='.urlencode( $fields_enc )),
 					 (kAPI_STAMP_REQUEST.'='.gettimeofday( true )) );
 	//
@@ -932,12 +931,12 @@ try
 				kOFFSET_QUERY_SUBJECT => '_id',
 				kOFFSET_QUERY_OPERATOR => kOPERATOR_EQUAL,
 				kOFFSET_QUERY_TYPE => kTYPE_INT32,
-				kOFFSET_QUERY_DATA => 13764
+				kOFFSET_QUERY_DATA => 80
 			)
 		)
 	);
 	$query_enc = JsonEncode( $query );
-	$fields = array( '2', '6', '12' );
+	$fields = array( kTAG_GID, kTAG_KIND, kTAG_TYPE, kTAG_SYNONYMS, kTAG_TAG_PATH, kTAG_LABEL, kTAG_DESCRIPTION );
 	$fields_enc = JsonEncode( $fields );
 	$params = array( (kAPI_FORMAT.'='.kTYPE_JSON),
 					 (kAPI_OPERATION.'='.kAPI_OP_GetVertex),
@@ -989,7 +988,7 @@ try
 		)
 	);
 	$query_enc = JsonEncode( $query );
-	$fields = array( '2', '6', '12' );
+	$fields = array( kTAG_GID, kTAG_KIND, kTAG_TYPE, kTAG_SYNONYMS, kTAG_TAG_PATH, kTAG_LABEL, kTAG_DESCRIPTION );
 	$fields_enc = JsonEncode( $fields );
 	$params = array( (kAPI_FORMAT.'='.kTYPE_JSON),
 					 (kAPI_OPERATION.'='.kAPI_OP_GetVertex),
