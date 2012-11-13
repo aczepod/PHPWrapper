@@ -33,7 +33,7 @@ require_once( '/Library/WebServer/Library/PHPWrapper/styles.inc.php' );
 //
 // Class includes.
 //
-require_once( kPATH_MYWRAPPER_LIBRARY_CLASS."/CWrapper.php" );
+require_once( test_CWrapperClient.php."/CWrapper.php" );
 
 
 /*=======================================================================================

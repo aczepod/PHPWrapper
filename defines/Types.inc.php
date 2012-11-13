@@ -170,6 +170,13 @@ define( "kTYPE_XML",							':XML' );
  */
 define( "kTYPE_SVG",							':SVG' );
 
+/**
+ * META type.
+ *
+ * This value represents the primitive meta data type, it is a generalised metadata type.
+ */
+define( "kTYPE_META",							':META' );
+
 /*=======================================================================================
  *	CARDINALITY TYPES																	*
  *======================================================================================*/

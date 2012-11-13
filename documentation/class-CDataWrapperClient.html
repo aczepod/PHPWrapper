@@ -1,0 +1,971 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<meta name="generator" content="ApiGen 2.8.0" />
+
+	<title>Class CDataWrapperClient | MyWrapper Reference Documentation</title>
+
+	<script type="text/javascript" src="resources/combined.js?368249000"></script>
+	<script type="text/javascript" src="elementlist.js?1653466708"></script>
+	<link rel="stylesheet" type="text/css" media="all" href="resources/style.css?3505392360" />
+
+</head>
+
+<body>
+<div id="left">
+	<div id="menu">
+		<a href="index.html" title="Overview"><span>Overview</span></a>
+
+
+		<div id="groups">
+			<h3>Packages</h3>
+			<ul>
+				<li class="active main"><a href="package-MyWrapper.html">MyWrapper<span></span></a>
+						<ul>
+				<li class="main"><a href="package-MyWrapper.Data.html">Data</a>
+						</li>
+				<li class="main"><a href="package-MyWrapper.Definitions.html">Definitions</a>
+						</li>
+				<li class="main"><a href="package-MyWrapper.Framework.html">Framework</a>
+						</li>
+				<li class="main"><a href="package-MyWrapper.Functions.html">Functions</a>
+						</li>
+				<li class="main"><a href="package-MyWrapper.Ontology.html">Ontology</a>
+						</li>
+				<li class="main"><a href="package-MyWrapper.Persistence.html">Persistence</a>
+						</li>
+				<li class="active main"><a href="package-MyWrapper.Wrappers.html">Wrappers</a>
+						</li>
+							</ul></li>
+				<li><a href="package-PHP.html">PHP</a>
+						</li>
+			</ul>
+		</div>
+
+		<hr />
+
+
+		<div id="elements">
+			<h3>Classes</h3>
+			<ul>
+				<li><a href="class-CDataWrapper.html">CDataWrapper</a></li>
+				<li class="active"><a href="class-CDataWrapperClient.html">CDataWrapperClient</a></li>
+				<li><a href="class-COntologyWrapper.html">COntologyWrapper</a></li>
+				<li><a href="class-CWrapper.html">CWrapper</a></li>
+				<li><a href="class-CWrapperClient.html">CWrapperClient</a></li>
+			</ul>
+
+
+
+
+
+		</div>
+	</div>
+</div>
+
+<div id="splitter"></div>
+
+<div id="right">
+<div id="rightInner">
+	<form id="search">
+		<input type="hidden" name="cx" value="" />
+		<input type="hidden" name="ie" value="UTF-8" />
+		<input type="text" name="q" class="text" />
+		<input type="submit" value="Search" />
+	</form>
+
+	<div id="navigation">
+		<ul>
+			<li>
+				<a href="index.html" title="Overview"><span>Overview</span></a>
+			</li>
+			<li>
+				<a href="package-MyWrapper.Wrappers.html" title="Summary of MyWrapper\Wrappers"><span>Package</span></a>
+			</li>
+			<li class="active">
+<span>Class</span>			</li>
+		</ul>
+		<ul>
+			<li>
+				<a href="tree.html" title="Tree view of classes, interfaces, traits and exceptions"><span>Tree</span></a>
+			</li>
+		</ul>
+		<ul>
+		</ul>
+	</div>
+
+<div id="content" class="class">
+	<h1>Class CDataWrapperClient</h1>
+
+
+	<div class="description">
+	
+<p>Wrapper client.</p>
+
+<p>This class represents a web-services wrapper client, it facilitates the job
+of requesting information from servers derived from the CWrapper
+CWrapper class.</p>
+
+<p>This class supports the following properties:</p>
+
+<ul>
+	<li><i><code><a href="class-CDataWrapperClient.html#_Database">CDataWrapperClient::Database()</a></code></i>: This element represents the web-service database
+	name, it is stored in the in the kAPI_DATABASE offset.</li>
+
+	<li><i>Container()</i>: This element represents the web-service
+	container name, it is stored in the kAPI_CONTAINER offset.</li>
+
+	<li><i>PageStart()</i>: This element represents the web-service page
+	start, it is stored in the kAPI_PAGE_START offset.</li>
+
+	<li><i>PageLimit()</i>: This element represents the web-service page
+	limit, it is stored in the kAPI_PAGE_LIMIT offset.</li>
+
+	<li><i>Query()</i>: This element represents the web-service query, it is
+	stored in the kAPI_QUERY offset.</li>
+
+	<li><i>Select()</i>: This element represents the web-service select
+	fields, it is stored in the kAPI_SELECT offset.</li>
+
+	<li><i>Sort()</i>: This element represents the web-service sort fields,
+	it is stored in the kAPI_SORT offset.</li>
+</ul>
+
+	</div>
+
+	<dl class="tree">
+		<dd style="padding-left:0px">
+			<a href="class-ArrayObject.html"><span>ArrayObject</span></a>
+			
+			 implements 
+				<a href="class-IteratorAggregate.html"><span>IteratorAggregate</span></a>, 
+			
+				<a href="class-Traversable.html"><span>Traversable</span></a>, 
+			
+				<a href="class-ArrayAccess.html"><span>ArrayAccess</span></a>, 
+			
+				<a href="class-Serializable.html"><span>Serializable</span></a>, 
+			
+				<a href="class-Countable.html"><span>Countable</span></a>
+			
+			
+		</dd>
+		<dd style="padding-left:30px">
+			<img src="resources/inherit.png" alt="Extended by" />
+			<a href="class-CDocument.html"><span>CDocument</span></a>
+			
+			
+			
+		</dd>
+		<dd style="padding-left:60px">
+			<img src="resources/inherit.png" alt="Extended by" />
+			<a href="class-CStatusDocument.html"><span>CStatusDocument</span></a>
+			
+			
+			
+		</dd>
+		<dd style="padding-left:90px">
+			<img src="resources/inherit.png" alt="Extended by" />
+			<a href="class-CWrapperClient.html"><span>CWrapperClient</span></a>
+			
+			
+			
+		</dd>
+		<dd style="padding-left:120px">
+			<img src="resources/inherit.png" alt="Extended by" />
+<b><span>CDataWrapperClient</span></b>			
+			
+			
+		</dd>
+	</dl>
+
+
+
+
+
+
+
+
+	<div class="info">
+		
+		
+		
+		<b>Package:</b> <a href="package-MyWrapper.html">MyWrapper</a>\<a href="package-MyWrapper.Wrappers.html">Wrappers</a><br />
+
+				<b>Author:</b>
+				Milko A. Škofič &lt;<a
+href="mailto:m.skofic&#64;cgiar.org">m.skofic&#64;<!---->cgiar.org</a>&gt;<br />
+		<b>Located at</b> <a href="source-class-CDataWrapperClient.html#36-757" title="Go to source code">CDataWrapperClient.php</a><br />
+	</div>
+
+
+
+	<table class="summary" id="methods">
+	<caption>Methods summary</caption>
+	<tr data-order="Operation" id="_Operation">
+
+		<td class="attributes"><code>
+			 public 
+			mixed
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_Operation">#</a>
+		<code><a href="source-class-CDataWrapperClient.html#195-260" title="Go to source code">Operation</a>( <span>string <var>$theValue</var> = <span class="php-keyword1">NULL</span></span>, <span>boolean <var>$getOld</var> = <span class="php-keyword1">FALSE</span> </span> )</code>
+
+		<div class="description short">
+			
+<p>Manage operation.</p>
+
+		</div>
+
+		<div class="description detailed hidden">
+			
+<p>Manage operation.</p>
+
+<p>This method can be used to manage the kAPI_OPERATION operation, it
+accepts a parameter which represents either the web-service operation code or
+this method operation, depending on its value:</p>
+
+<ul>
+	<li><i>NULL</i>: Return the current value.</li>
+
+	<li><i>FALSE</i>: Delete the current value.</li>
+
+	<li><i>other</i>: Set the value with the provided parameter.</li>
+</ul>
+
+<p>The second parameter is a boolean which if <i>TRUE</i> will return the
+<i>old</i> value when replacing values; if <i>FALSE</i>, it will return the
+currently set value.</p>
+
+<p>This method will check whether the provided operation is supported, if this
+is not the case, it will raise an exception. Derived classes should first check
+their specific operations, if not matched, they should pass the parameter to the
+parent method. In this class we support the following operations:</p>
+
+<ul>
+	<li><i>kAPI_OP_HELP kAPI_OP_HELP</i>: HELP web-service operation, which
+	returns the list of supported operations and options.</li>
+
+	<li><i>kAPI_OP_PING kAPI_OP_PING</i>: PING web-service operation, which
+	returns a status response.</li>
+</ul>
+
+
+
+				<h4>Parameters</h4>
+				<div class="list"><dl>
+					<dt><var>$theValue</var></dt>
+					<dd><code>string</code><br>$theValue Value or operation.</dd>
+					<dt><var>$getOld</var></dt>
+					<dd><code>boolean</code><br>$getOld TRUE get old value.</dd>
+				</dl></div>
+
+				<h4>Returns</h4>
+				<div class="list">
+					<code>mixed</code><br />
+				</div>
+
+				<h4>Throws</h4>
+				<div class="list">
+					<code>{@link</code><br>CException CException}<br />
+				</div>
+
+				<h4>See</h4>
+				<div class="list">
+						kAPI_OPERATION<br />
+						kAPI_OP_HELP kAPI_OP_PING<br />
+				</div>
+				<h4>Uses</h4>
+				<div class="list">
+						<code><code><a href="function-ManageOffset.html">ManageOffset()</a></code></code> <br />
+				</div>
+
+				<h4>Overrides</h4>
+				<div class="list"><code><a href="class-CWrapperClient.html#_Operation">CWrapperClient::Operation()</a></code></div>
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="Database" id="_Database">
+
+		<td class="attributes"><code>
+			 public 
+			mixed
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_Database">#</a>
+		<code><a href="source-class-CDataWrapperClient.html#158-188" title="Go to source code">Database</a>( <span>string <var>$theValue</var> = <span class="php-keyword1">NULL</span></span>, <span>boolean <var>$getOld</var> = <span class="php-keyword1">FALSE</span> </span> )</code>
+
+		<div class="description short">
+			
+<p>Manage database name.</p>
+
+		</div>
+
+		<div class="description detailed hidden">
+			
+<p>Manage database name.</p>
+
+<p>This method can be used to manage the kAPI_DATABASE offset, it
+accepts a parameter which represents the database name or the requested
+operation, depending on its value:</p>
+
+<ul>
+	<li><i>NULL</i>: Return the current value.</li>
+
+	<li><i>FALSE</i>: Delete the current value.</li>
+
+	<li><i>other</i>: Set the value with the provided parameter.</li>
+</ul>
+
+<p>The second parameter is a boolean which if <i>TRUE</i> will return the
+<i>old</i> value when replacing values; if <i>FALSE</i>, it will return the
+currently set value.</p>
+
+
+
+				<h4>Parameters</h4>
+				<div class="list"><dl>
+					<dt><var>$theValue</var></dt>
+					<dd><code>string</code><br>$theValue Value or operation.</dd>
+					<dt><var>$getOld</var></dt>
+					<dd><code>boolean</code><br>$getOld TRUE get old value.</dd>
+				</dl></div>
+
+				<h4>Returns</h4>
+				<div class="list">
+					<code>mixed</code><br />
+				</div>
+
+
+				<h4>See</h4>
+				<div class="list">
+						kAPI_DATABASE<br />
+				</div>
+				<h4>Uses</h4>
+				<div class="list">
+						<code><code><a href="function-ManageOffset.html">ManageOffset()</a></code></code> <br />
+				</div>
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="Format" id="_Format">
+
+		<td class="attributes"><code>
+			 public 
+			mixed
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_Format">#</a>
+		<code><a href="source-class-CDataWrapperClient.html#267-337" title="Go to source code">Format</a>( <span>string <var>$theValue</var> = <span class="php-keyword1">NULL</span></span>, <span>boolean <var>$getOld</var> = <span class="php-keyword1">FALSE</span> </span> )</code>
+
+		<div class="description short">
+			
+<p>Manage format.</p>
+
+		</div>
+
+		<div class="description detailed hidden">
+			
+<p>Manage format.</p>
+
+<p>This method can be used to manage the kAPI_FORMAT format in which
+both the parameters are sent and the response is returned from the web-service.
+It accepts a parameter which represents either the web-service format code or
+this method operation, depending on its value:</p>
+
+<ul>
+	<li><i>NULL</i>: Return the current value.</li>
+
+	<li><i>FALSE</i>: Delete the current value.</li>
+
+	<li><i>other</i>: Set the value with the provided parameter.</li>
+</ul>
+
+<p>The second parameter is a boolean which if <i>TRUE</i> will return the
+<i>old</i> value when replacing values; if <i>FALSE</i>, it will return the
+currently set value.</p>
+
+<p>This method will check whether the provided format is supported, if this is
+not the case, it will raise an exception. Derived classes should first check
+their specific operations, if not matched, they should pass the parameter to the
+parent method. In this class we support the following operations:</p>
+
+<ul>
+	<li><i>kTYPE_PHP</i>: Parameters and response will be serialized.</li>
+
+	<li><i>kTYPE_XML</i>: Parameters and response will be encoded in
+	XML.</li>
+
+	<li><i>kTYPE_JSON</i>: Parameters and response will be encoded in
+	JSON.</li>
+
+	<li><i>kTYPE_META</i>: This data type can be used to return service
+	metadata, the Execute() request will return headers metadata for
+	troubleshooting, rather than the response from the web-service.</li>
+</ul>
+
+
+
+				<h4>Parameters</h4>
+				<div class="list"><dl>
+					<dt><var>$theValue</var></dt>
+					<dd><code>string</code><br>$theValue Value or operation.</dd>
+					<dt><var>$getOld</var></dt>
+					<dd><code>boolean</code><br>$getOld TRUE get old value.</dd>
+				</dl></div>
+
+				<h4>Returns</h4>
+				<div class="list">
+					<code>mixed</code><br />
+				</div>
+
+				<h4>Throws</h4>
+				<div class="list">
+					<code>{@link</code><br>CException CException}<br />
+				</div>
+
+				<h4>See</h4>
+				<div class="list">
+						kAPI_FORMAT<br />
+						kAPI_OP_HELP kAPI_OP_PING<br />
+				</div>
+				<h4>Uses</h4>
+				<div class="list">
+						<code><code><a href="function-ManageOffset.html">ManageOffset()</a></code></code> <br />
+				</div>
+
+				<h4>Overrides</h4>
+				<div class="list"><code><a href="class-CWrapperClient.html#_Format">CWrapperClient::Format()</a></code></div>
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="Stamp" id="_Stamp">
+
+		<td class="attributes"><code>
+			 public 
+			mixed
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_Stamp">#</a>
+		<code><a href="source-class-CDataWrapperClient.html#344-368" title="Go to source code">Stamp</a>( <span>boolean <var>$theValue</var> = <span class="php-keyword1">NULL</span></span>, <span>boolean <var>$getOld</var> = <span class="php-keyword1">FALSE</span> </span> )</code>
+
+		<div class="description short">
+			
+<p>Time-stamp switch.</p>
+
+		</div>
+
+		<div class="description detailed hidden">
+			
+<p>Time-stamp switch.</p>
+
+<p>This method can be used to turn on or off the time-stamp section in the
+web-service response, the method accepts a single parameter that if resolves to
+<i>TRUE</i> it will turn on this option, if not it will turn it off.</p>
+
+<p>The second parameter is a boolean which if <i>TRUE</i> will return the
+<i>old</i> value when replacing values; if <i>FALSE</i>, it will return the
+currently set value.</p>
+
+
+
+				<h4>Parameters</h4>
+				<div class="list"><dl>
+					<dt><var>$theValue</var></dt>
+					<dd><code>boolean</code><br>$theValue TRUE or FALSE.</dd>
+					<dt><var>$getOld</var></dt>
+					<dd><code>boolean</code><br>$getOld TRUE get old value.</dd>
+				</dl></div>
+
+				<h4>Returns</h4>
+				<div class="list">
+					<code>mixed</code><br />
+				</div>
+
+
+				<h4>See</h4>
+				<div class="list">
+						kAPI_STAMP_REQUEST<br />
+				</div>
+				<h4>Uses</h4>
+				<div class="list">
+						<code><code><a href="function-ManageOffset.html">ManageOffset()</a></code></code> <br />
+				</div>
+
+				<h4>Overrides</h4>
+				<div class="list"><code><a href="class-CWrapperClient.html#_Stamp">CWrapperClient::Stamp()</a></code></div>
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="LogRequest" id="_LogRequest">
+
+		<td class="attributes"><code>
+			 public 
+			mixed
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_LogRequest">#</a>
+		<code><a href="source-class-CDataWrapperClient.html#375-404" title="Go to source code">LogRequest</a>( <span>boolean <var>$theValue</var> = <span class="php-keyword1">NULL</span></span>, <span>boolean <var>$getOld</var> = <span class="php-keyword1">FALSE</span> </span> )</code>
+
+		<div class="description short">
+			
+<p>Log request switch.</p>
+
+		</div>
+
+		<div class="description detailed hidden">
+			
+<p>Log request switch.</p>
+
+<p>This method can be used to turn on or off the request section in the
+web-service response, the method accepts a single parameter that if resolves to
+<i>TRUE</i> it will turn on this option, if not it will turn it off.</p>
+
+<p>The second parameter is a boolean which if <i>TRUE</i> will return the
+<i>old</i> value when replacing values; if <i>FALSE</i>, it will return the
+currently set value.</p>
+
+
+
+				<h4>Parameters</h4>
+				<div class="list"><dl>
+					<dt><var>$theValue</var></dt>
+					<dd><code>boolean</code><br>$theValue TRUE or FALSE.</dd>
+					<dt><var>$getOld</var></dt>
+					<dd><code>boolean</code><br>$getOld TRUE get old value.</dd>
+				</dl></div>
+
+				<h4>Returns</h4>
+				<div class="list">
+					<code>mixed</code><br />
+				</div>
+
+
+				<h4>See</h4>
+				<div class="list">
+						kAPI_LOG_REQUEST<br />
+				</div>
+				<h4>Uses</h4>
+				<div class="list">
+						<code><code><a href="function-ManageOffset.html">ManageOffset()</a></code></code> <br />
+				</div>
+
+				<h4>Overrides</h4>
+				<div class="list"><code><a href="class-CWrapperClient.html#_LogRequest">CWrapperClient::LogRequest()</a></code></div>
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="LogTrace" id="_LogTrace">
+
+		<td class="attributes"><code>
+			 public 
+			mixed
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_LogTrace">#</a>
+		<code><a href="source-class-CDataWrapperClient.html#411-440" title="Go to source code">LogTrace</a>( <span>boolean <var>$theValue</var> = <span class="php-keyword1">NULL</span></span>, <span>boolean <var>$getOld</var> = <span class="php-keyword1">FALSE</span> </span> )</code>
+
+		<div class="description short">
+			
+<p>Log trace switch.</p>
+
+		</div>
+
+		<div class="description detailed hidden">
+			
+<p>Log trace switch.</p>
+
+<p>This method can be used to turn on or off the trace in the event an exception
+is raised, the method accepts a single parameter that if resolves to <i>TRUE</i>
+it will turn on this option, if not it will turn it off.</p>
+
+<p>The second parameter is a boolean which if <i>TRUE</i> will return the
+<i>old</i> value when replacing values; if <i>FALSE</i>, it will return the
+currently set value.</p>
+
+
+
+				<h4>Parameters</h4>
+				<div class="list"><dl>
+					<dt><var>$theValue</var></dt>
+					<dd><code>boolean</code><br>$theValue TRUE or FALSE.</dd>
+					<dt><var>$getOld</var></dt>
+					<dd><code>boolean</code><br>$getOld TRUE get old value.</dd>
+				</dl></div>
+
+				<h4>Returns</h4>
+				<div class="list">
+					<code>mixed</code><br />
+				</div>
+
+
+				<h4>See</h4>
+				<div class="list">
+						kAPI_LOG_TRACE<br />
+				</div>
+				<h4>Uses</h4>
+				<div class="list">
+						<code><code><a href="function-ManageOffset.html">ManageOffset()</a></code></code> <br />
+				</div>
+
+				<h4>Overrides</h4>
+				<div class="list"><code><a href="class-CWrapperClient.html#_LogTrace">CWrapperClient::LogTrace()</a></code></div>
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="offsetSet" id="_offsetSet">
+
+		<td class="attributes"><code>
+			 public 
+			
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_offsetSet">#</a>
+		<code><a href="source-class-CDataWrapperClient.html#456-483" title="Go to source code">offsetSet</a>( <span>string <var>$theOffset</var></span>, <span>string|null <var>$theValue</var></span> )</code>
+
+		<div class="description short">
+			
+<p>Set a value for a given offset.</p>
+
+		</div>
+
+		<div class="description detailed hidden">
+			
+<p>Set a value for a given offset.</p>
+
+<p>We overload this method to manage the _IsInited() inited kFLAG_STATE_INITED status: this is set if kAPI_URL URL, kAPI_OPERATION operation and kAPI_FORMAT format are all set.</p>
+
+
+
+				<h4>Parameters</h4>
+				<div class="list"><dl>
+					<dt><var>$theOffset</var></dt>
+					<dd><code>string</code><br>$theOffset Offset.</dd>
+					<dt><var>$theValue</var></dt>
+					<dd><code>string|null</code><br>$theValue Value to set at offset.</dd>
+				</dl></div>
+
+
+
+
+				<h4>Overrides</h4>
+				<div class="list"><code><a href="class-CWrapperClient.html#_offsetSet">CWrapperClient::offsetSet()</a></code></div>
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="offsetUnset" id="_offsetUnset">
+
+		<td class="attributes"><code>
+			 public 
+			
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_offsetUnset">#</a>
+		<code><a href="source-class-CDataWrapperClient.html#490-515" title="Go to source code">offsetUnset</a>( <span>string <var>$theOffset</var></span> )</code>
+
+		<div class="description short">
+			
+<p>Reset a value for a given offset.</p>
+
+		</div>
+
+		<div class="description detailed hidden">
+			
+<p>Reset a value for a given offset.</p>
+
+<p>We overload this method to manage the _IsInited() inited kFLAG_STATE_INITED status: this is set if kAPI_URL URL, kAPI_OPERATION operation and kAPI_FORMAT format are all set.</p>
+
+
+
+				<h4>Parameters</h4>
+				<div class="list"><dl>
+					<dt><var>$theOffset</var></dt>
+					<dd><code>string</code><br>$theOffset Offset.</dd>
+				</dl></div>
+
+
+
+
+				<h4>Overrides</h4>
+				<div class="list"><code><a href="class-CWrapperClient.html#_offsetUnset">CWrapperClient::offsetUnset()</a></code></div>
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="Execute" id="_Execute">
+
+		<td class="attributes"><code>
+			 public 
+			mixed
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_Execute">#</a>
+		<code><a href="source-class-CDataWrapperClient.html#531-602" title="Go to source code">Execute</a>( <span>string <var>$theMode</var> = <span class="php-quote">'POST'</span> </span> )</code>
+
+		<div class="description short">
+			
+<p>Send an HTTP request.</p>
+
+		</div>
+
+		<div class="description detailed hidden">
+			
+<p>Send an HTTP request.</p>
+
+<p>This method can be used to sent an <i>HTTP</i> request using the current
+contents of the object and return a response.</p>
+
+
+
+				<h4>Parameters</h4>
+				<div class="list"><dl>
+					<dt><var>$theMode</var></dt>
+					<dd><code>string</code><br>$theMode Request mode, POST or GET</dd>
+				</dl></div>
+
+				<h4>Returns</h4>
+				<div class="list">
+					<code>mixed</code><br />
+				</div>
+
+				<h4>Throws</h4>
+				<div class="list">
+					<code>{@link</code><br>CException CException}<br />
+				</div>
+
+
+				<h4>Overrides</h4>
+				<div class="list"><code><a href="class-CWrapperClient.html#_Execute">CWrapperClient::Execute()</a></code></div>
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="Request" id="_Request">
+
+		<td class="attributes"><code>
+			 public static
+			mixed
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_Request">#</a>
+		<code><a href="source-class-CDataWrapperClient.html#618-753" title="Go to source code">Request</a>( <span>string <var>$theUrl</var></span>, <span>mixed <var>$theParams</var> = <span class="php-keyword1">NULL</span></span>, <span>string <var>$theMode</var> = <span class="php-quote">'POST'</span></span>, <span>string <var>$theFormat</var> = kTYPE_JSON </span> )</code>
+
+		<div class="description short">
+			
+<p>Send a HTTP request.</p>
+
+		</div>
+
+		<div class="description detailed hidden">
+			
+<p>Send a HTTP request.</p>
+
+<p>This method can be used to sent an <i>HTTP</i> request via <i>GET</i> or
+<i>POST</i>.</p>
+
+<p>The method accepts the following parameters:</p>
+
+<ul>
+	<li><b>$theUrl</b>: The request URL.</li>
+
+	<li><b>$theParams</b>: An array of key/value parameters for the request.</li>
+
+	<li><b>$theMode</b>: The request mode:
+		<ul>
+			<li><tt>GET</tt>: GET, default.</li>
+
+			<li><tt>POST</tt>: POST.</li>
+
+			<li><i>kTYPE_META</i>: Metadata: if you provide this format, the method
+			will return the metadata of the operation for troubleshooting purposes.</li>
+		</ul>
+	</li>
+
+	<li><b>$theFormat</b>: The request format:
+		<ul>
+			<li><tt>kTYPE_PHP</tt>: PHP.</li>
+
+			<li><tt>kTYPE_JSON</tt>: JSON.</li>
+
+			<li><i>other</i>: Metadata: the method will return the metadata of the operation
+			for troubleshooting purposes.</li>
+		</ul>
+	</li>
+</ul>
+
+
+
+				<h4>Parameters</h4>
+				<div class="list"><dl>
+					<dt><var>$theUrl</var></dt>
+					<dd><code>string</code><br>$theUrl Request URL.</dd>
+					<dt><var>$theParams</var></dt>
+					<dd><code>mixed</code><br>$theParams Request parameters.</dd>
+					<dt><var>$theMode</var></dt>
+					<dd><code>string</code><br>$theMode Request mode.</dd>
+					<dt><var>$theFormat</var></dt>
+					<dd><code>string</code><br>$theFormat Response format.</dd>
+				</dl></div>
+
+				<h4>Returns</h4>
+				<div class="list">
+					<code>mixed</code><br />
+				</div>
+
+				<h4>Throws</h4>
+				<div class="list">
+					<code>{@link</code><br>CException CException}<br />
+				</div>
+
+
+				<h4>Overrides</h4>
+				<div class="list"><code><a href="class-CWrapperClient.html#_Request">CWrapperClient::Request()</a></code></div>
+
+		</div>
+		</div></td>
+	</tr>
+	</table>
+
+	<table class="summary inherited">
+	<caption>Methods inherited from <a href="class-CWrapperClient.html#methods">CWrapperClient</a></caption>
+	<tr>
+		<td><code>
+			<a href="class-CWrapperClient.html#_Url">Url()</a>, 
+			<a href="class-CWrapperClient.html#___construct">__construct()</a>
+		</code></td>
+	</tr>
+	</table>
+	<table class="summary inherited">
+	<caption>Methods inherited from <a href="class-CStatusDocument.html#methods">CStatusDocument</a></caption>
+	<tr>
+		<td><code>
+			<a href="class-CStatusDocument.html#__IsCommitted">_IsCommitted()</a>, 
+			<a href="class-CStatusDocument.html#__IsDirty">_IsDirty()</a>, 
+			<a href="class-CStatusDocument.html#__IsEncoded">_IsEncoded()</a>, 
+			<a href="class-CStatusDocument.html#__IsInited">_IsInited()</a>, 
+			<a href="class-CStatusDocument.html#__Postset">_Postset()</a>, 
+			<a href="class-CStatusDocument.html#__Postunset">_Postunset()</a>, 
+			<a href="class-CStatusDocument.html#__Preset">_Preset()</a>, 
+			<a href="class-CStatusDocument.html#__Preunset">_Preunset()</a>, 
+			<a href="class-CStatusDocument.html#__Ready">_Ready()</a>
+		</code></td>
+	</tr>
+	</table>
+	<table class="summary inherited">
+	<caption>Methods inherited from <a href="class-CDocument.html#methods">CDocument</a></caption>
+	<tr>
+		<td><code>
+			<a href="class-CDocument.html#_array_keys">array_keys()</a>, 
+			<a href="class-CDocument.html#_array_values">array_values()</a>, 
+			<a href="class-CDocument.html#_offsetGet">offsetGet()</a>
+		</code></td>
+	</tr>
+	</table>
+	<table class="summary inherited">
+	<caption>Methods inherited from <a href="class-ArrayObject.html#methods">ArrayObject</a></caption>
+	<tr>
+		<td><code>
+			<a href="class-ArrayObject.html#_append">append()</a>, 
+			<a href="class-ArrayObject.html#_asort">asort()</a>, 
+			<a href="class-ArrayObject.html#_count">count()</a>, 
+			<a href="class-ArrayObject.html#_exchangeArray">exchangeArray()</a>, 
+			<a href="class-ArrayObject.html#_getArrayCopy">getArrayCopy()</a>, 
+			<a href="class-ArrayObject.html#_getFlags">getFlags()</a>, 
+			<a href="class-ArrayObject.html#_getIterator">getIterator()</a>, 
+			<a href="class-ArrayObject.html#_getIteratorClass">getIteratorClass()</a>, 
+			<a href="class-ArrayObject.html#_ksort">ksort()</a>, 
+			<a href="class-ArrayObject.html#_natcasesort">natcasesort()</a>, 
+			<a href="class-ArrayObject.html#_natsort">natsort()</a>, 
+			<a href="class-ArrayObject.html#_offsetExists">offsetExists()</a>, 
+			<a href="class-ArrayObject.html#_serialize">serialize()</a>, 
+			<a href="class-ArrayObject.html#_setFlags">setFlags()</a>, 
+			<a href="class-ArrayObject.html#_setIteratorClass">setIteratorClass()</a>, 
+			<a href="class-ArrayObject.html#_uasort">uasort()</a>, 
+			<a href="class-ArrayObject.html#_uksort">uksort()</a>, 
+			<a href="class-ArrayObject.html#_unserialize">unserialize()</a>
+		</code></td>
+	</tr>
+	</table>
+
+
+
+
+
+
+
+
+	<table class="summary inherited">
+	<caption>Constants inherited from <a href="class-ArrayObject.html#constants">ArrayObject</a></caption>
+	<tr>
+		<td><code>
+			<a href="class-ArrayObject.html#ARRAY_AS_PROPS"><b>ARRAY_AS_PROPS</b></a>, 
+			<a href="class-ArrayObject.html#STD_PROP_LIST"><b>STD_PROP_LIST</b></a>
+		</code></td>
+	</tr>
+	</table>
+
+
+
+
+	<table class="summary inherited">
+	<caption>Properties inherited from <a href="class-CStatusDocument.html#properties">CStatusDocument</a></caption>
+	<tr>
+		<td><code>
+			<a href="class-CStatusDocument.html#$mStatus"><var>$mStatus</var></a>
+		</code></td>
+	</tr>
+	</table>
+
+
+
+
+
+</div>
+
+	<div id="footer">
+		MyWrapper Reference Documentation API documentation generated by <a href="http://apigen.org">ApiGen 2.8.0</a>
+	</div>
+</div>
+</div>
+</body>
+</html>
