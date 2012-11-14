@@ -6,7 +6,7 @@
 
 	<title>Class COntologyWrapper | MyWrapper Reference Documentation</title>
 
-	<script type="text/javascript" src="resources/combined.js?3680114562"></script>
+	<script type="text/javascript" src="resources/combined.js?368249000"></script>
 	<script type="text/javascript" src="elementlist.js?1653466708"></script>
 	<link rel="stylesheet" type="text/css" media="all" href="resources/style.css?3505392360" />
 
@@ -205,7 +205,7 @@ collections.</p>
 				<b>Author:</b>
 				Milko A. Škofič &lt;<a
 href="mailto:m.skofic&#64;cgiar.org">m.skofic&#64;<!---->cgiar.org</a>&gt;<br />
-		<b>Located at</b> <a href="source-class-COntologyWrapper.html#64-2083" title="Go to source code">COntologyWrapper.php</a><br />
+		<b>Located at</b> <a href="source-class-COntologyWrapper.html#64-2105" title="Go to source code">COntologyWrapper.php</a><br />
 	</div>
 
 
@@ -1078,21 +1078,31 @@ returns the list of vertex nodes belonging to the provided kinds.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#__Handle_GetVertex">#</a>
-		<code><a href="source-class-COntologyWrapper.html#942-1167" title="Go to source code">_Handle_GetVertex</a>( )</code>
+		<code><a href="source-class-COntologyWrapper.html#942-1189" title="Go to source code">_Handle_GetVertex</a>( )</code>
 
 		<div class="description short">
 			
-<p>Handle kAPI_OP_GetRootsByKind request.</p>
+<p>Handle kAPI_OP_GetVertex request.</p>
 
 		</div>
 
 		<div class="description detailed hidden">
 			
-<p>Handle kAPI_OP_GetRootsByKind request.</p>
+<p>Handle kAPI_OP_GetVertex request.</p>
 
 <p>This method will handle the kAPI_OP_GetVertex operation, which
-returns either the list of vertex satisfying the provided query, or the vertex
-related to the vertex selected by the provided query.</p>
+returns either the list of vertex satisfying the provided query, or the related
+vertices of the vertex selected by the provided query.</p>
+
+<p>If the kAPI_RELATION parameter is provided, it is assumed that you
+want the vertices related to the vertex matched by the provided query, in that
+case the service will return a list of vertices that either point to the query
+matched vertex, or that the latter points to.</p>
+
+<p>If the kAPI_RELATION parameter is not provided, the service will
+return the vertices that match the provided query.</p>
+
+<p>If the query is omitted, the service will use the nodes container.</p>
 
 
 
@@ -1115,7 +1125,7 @@ related to the vertex selected by the provided query.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#__ExportVertex">#</a>
-		<code><a href="source-class-COntologyWrapper.html#1183-1351" title="Go to source code">_ExportVertex</a>( <span>reference <var>&amp; $theCollection</var></span>, <span>mixed <var>$theNode</var></span>, <span>boolean <var>$doTags</var> = <span class="php-keyword1">TRUE</span> </span> )</code>
+		<code><a href="source-class-COntologyWrapper.html#1205-1373" title="Go to source code">_ExportVertex</a>( <span>reference <var>&amp; $theCollection</var></span>, <span>mixed <var>$theNode</var></span>, <span>boolean <var>$doTags</var> = <span class="php-keyword1">TRUE</span> </span> )</code>
 
 		<div class="description short">
 			
@@ -1232,7 +1242,7 @@ from the node, it will only use this information to index the node.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#__ExportPredicate">#</a>
-		<code><a href="source-class-COntologyWrapper.html#1358-1514" title="Go to source code">_ExportPredicate</a>( <span>reference <var>&amp; $theCollection</var></span>, <span>mixed <var>$theTerm</var></span>, <span>boolean <var>$doTags</var> = <span class="php-keyword1">TRUE</span> </span> )</code>
+		<code><a href="source-class-COntologyWrapper.html#1380-1536" title="Go to source code">_ExportPredicate</a>( <span>reference <var>&amp; $theCollection</var></span>, <span>mixed <var>$theTerm</var></span>, <span>boolean <var>$doTags</var> = <span class="php-keyword1">TRUE</span> </span> )</code>
 
 		<div class="description short">
 			
@@ -1349,7 +1359,7 @@ from the node, it will only use this information to index the node.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#__ExportEdge">#</a>
-		<code><a href="source-class-COntologyWrapper.html#1521-1700" title="Go to source code">_ExportEdge</a>( <span>reference <var>&amp; $theCollection</var></span>, <span>mixed <var>$theEdge</var></span> )</code>
+		<code><a href="source-class-COntologyWrapper.html#1543-1722" title="Go to source code">_ExportEdge</a>( <span>reference <var>&amp; $theCollection</var></span>, <span>mixed <var>$theEdge</var></span> )</code>
 
 		<div class="description short">
 			
@@ -1452,7 +1462,7 @@ collection.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#__ExportTag">#</a>
-		<code><a href="source-class-COntologyWrapper.html#1707-1910" title="Go to source code">_ExportTag</a>( <span>reference <var>&amp; $theCollection</var></span>, <span>mixed <var>$theTag</var></span> )</code>
+		<code><a href="source-class-COntologyWrapper.html#1729-1932" title="Go to source code">_ExportTag</a>( <span>reference <var>&amp; $theCollection</var></span>, <span>mixed <var>$theTag</var></span> )</code>
 
 		<div class="description short">
 			
@@ -1561,7 +1571,7 @@ kOFFSET_NID attribute as index.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#__BuildVertex">#</a>
-		<code><a href="source-class-COntologyWrapper.html#1917-1987" title="Go to source code">_BuildVertex</a>( <span>mixed <var>$theNode</var></span> )</code>
+		<code><a href="source-class-COntologyWrapper.html#1939-2009" title="Go to source code">_BuildVertex</a>( <span>mixed <var>$theNode</var></span> )</code>
 
 		<div class="description short">
 			
@@ -1620,7 +1630,7 @@ the term attributes.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#__BuildTerm">#</a>
-		<code><a href="source-class-COntologyWrapper.html#1994-2079" title="Go to source code">_BuildTerm</a>( <span>mixed <var>$theTerm</var></span> )</code>
+		<code><a href="source-class-COntologyWrapper.html#2016-2101" title="Go to source code">_BuildTerm</a>( <span>mixed <var>$theTerm</var></span> )</code>
 
 		<div class="description short">
 			

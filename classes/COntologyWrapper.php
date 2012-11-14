@@ -940,11 +940,21 @@ class COntologyWrapper extends CDataWrapper
 	 *==================================================================================*/
 
 	/**
-	 * Handle {@link kAPI_OP_GetRootsByKind} request.
+	 * Handle {@link kAPI_OP_GetVertex} request.
 	 *
 	 * This method will handle the {@link kAPI_OP_GetVertex} operation, which returns either
-	 * the list of vertex satisfying the provided query, or the vertex related to the vertex
-	 * selected by the provided query.
+	 * the list of vertex satisfying the provided query, or the related vertices of the
+	 * vertex selected by the provided query.
+	 *
+	 * If the {@link kAPI_RELATION} parameter is provided, it is assumed that you want the
+	 * vertices related to the vertex matched by the provided query, in that case the
+	 * service will return a list of vertices that either point to the query matched
+	 * vertex, or that the latter points to.
+	 *
+	 * If the {@link kAPI_RELATION} parameter is not provided, the service will return the
+	 * vertices that match the provided query.
+	 *
+	 * If the query is omitted, the service will use the nodes container.
 	 *
 	 * @access protected
 	 */
@@ -991,6 +1001,10 @@ class COntologyWrapper extends CDataWrapper
 			$vertex
 				= $container
 					->Query( $query, array( kOFFSET_NID ), NULL, NULL, NULL, TRUE );
+			
+			//
+			// Handle reference vertex.
+			//
 			if( $vertex !== NULL )
 			{
 				//
@@ -1007,7 +1021,7 @@ class COntologyWrapper extends CDataWrapper
 				{
 					case kAPI_RELATION_IN:
 						//
-						// Search reference in object.
+						// Find incoming relationships.
 						//
 						$query->AppendStatement(
 							CQueryStatement::Equals(
@@ -1016,12 +1030,20 @@ class COntologyWrapper extends CDataWrapper
 				
 					case kAPI_RELATION_OUT:
 						//
-						// Search reference in subject.
+						// Find outgoing relationships.
 						//
 						$query->AppendStatement(
 							CQueryStatement::Equals(
 								kTAG_VERTEX_SUBJECT, $id ) );
 						break;
+					
+					default:
+						throw new CException
+							( "Invalid relation sense: should have been caught before",
+							  kERROR_STATE,
+							  kMESSAGE_TYPE_BUG,
+							  array( 'Relation'
+							  			=> $_REQUEST[ kAPI_RELATION ] ) );		// !@! ==>
 				
 				} // Parsing relationship sense.
 				

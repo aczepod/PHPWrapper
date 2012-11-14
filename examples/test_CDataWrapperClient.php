@@ -35,6 +35,11 @@ require_once( '/Library/WebServer/Library/PHPWrapper/data/local.inc.php' );
 require_once( '/Library/WebServer/Library/PHPWrapper/styles.inc.php' );
 
 //
+// Tags.
+//
+require_once( kPATH_MYWRAPPER_LIBRARY_DEFINE."/Tags.inc.php" );
+
+//
 // Class includes.
 //
 require_once( kPATH_MYWRAPPER_LIBRARY_CLASS."/CDataWrapperClient.php" );
@@ -344,16 +349,102 @@ try
 	$test->Database( "ONTOLOGY" );
 	echo( '<i>$test->Container( "_terms" );</i><br>' );
 	$test->Container( "_terms" );
-	echo( '<i>$test->AddQueryStatement( kOPERATOR_AND, "2", kOPERATOR_PREFIX_NOCASE, "ISO" );</i><br>' );
-	$test->AddQueryStatement( kOPERATOR_AND, "2", kOPERATOR_PREFIX_NOCASE, "ISO" );
-	echo( '<i>$test->AddQueryStatement( kOPERATOR_AND, "2", kOPERATOR_CONTAINS, "3166" );</i><br>' );
-	$test->AddQueryStatement( kOPERATOR_AND, "2", kOPERATOR_CONTAINS, "3166" );
-	echo( '<i>$test->Select( array( "1", "2" ) );</i><br>' );
-	$test->Select( array( "1", "2" ) );
-	echo( '<i>$test->Sort( "1", -1 );</i><br>' );
-	$test->Sort( "1", -1 );
-	echo( '<i>$test->Sort( "2", 1 );</i><br>' );
-	$test->Sort( "2", 1 );
+	echo( '<i>$test->AddQueryStatement( kOPERATOR_AND, kTAG_LID, kOPERATOR_PREFIX, "IT-" );</i><br>' );
+	$test->AddQueryStatement( kOPERATOR_AND, kTAG_LID, kOPERATOR_PREFIX, "IT-" );
+	echo( '<i>$test->AddQueryStatement( kOPERATOR_AND, "31", kOPERATOR_LIKE, "region" );</i><br>' );
+	$test->AddQueryStatement( kOPERATOR_AND, "31", kOPERATOR_LIKE, "region" );
+	echo( '<i>$test->Select( kTAG_LID );</i><br>' );
+	$test->Select( kTAG_LID );
+	echo( '<i>$test->Select( kTAG_GID );</i><br>' );
+	$test->Select( kTAG_GID );
+	echo( '<i>$test->Select( "31" );</i><br>' );
+	$test->Select( "31" );
+	echo( '<i>$test->Sort( kTAG_LID, -1 );</i><br>' );
+	$test->Sort( kTAG_LID, -1 );
+	echo( '<i>$test->Sort( kTAG_GID, 1 );</i><br>' );
+	$test->Sort( kTAG_GID, 1 );
+	echo( '<i>$test->PageLimit( 5 );</i><br>' );
+	$test->PageLimit( 5  );
+	echo( '<i>$decoded = $test->Execute( \'POST\' );</i><br>' );
+	$decoded = $test->Execute( 'POST' );
+	//
+	// Display.
+	//
+	echo( kSTYLE_TABLE_PRE );
+	echo( kSTYLE_ROW_PRE );
+	echo( kSTYLE_HEAD_PRE.'Client:'.kSTYLE_HEAD_POS );
+	echo( kSTYLE_DATA_PRE.'<pre>' ); print_r( $test ); echo( '</pre>'.kSTYLE_DATA_POS );
+	echo( kSTYLE_ROW_POS );
+	echo( kSTYLE_ROW_PRE );
+	echo( kSTYLE_HEAD_PRE.'Decoded:'.kSTYLE_HEAD_POS );
+	echo( kSTYLE_DATA_PRE.'<pre>' ); print_r( $decoded ); echo( '</pre>'.kSTYLE_DATA_POS );
+	echo( kSTYLE_ROW_POS );
+	echo( kSTYLE_TABLE_POS );
+	echo( '<hr>' );
+	
+	echo( '<h4>Test container GET ONE in JSON</h4>' );
+	//
+	// Instantiate.
+	//
+	echo( '<i>$test = new CDataWrapperClient( $url );</i><br>' );
+	$test = new CDataWrapperClient( $url );
+	echo( '<i>$test->Operation( kAPI_OP_GET_ONE );</i><br>' );
+	$test->Operation( kAPI_OP_GET_ONE );
+	echo( '<i>$test->Format( kTYPE_JSON );</i><br>' );
+	$test->Format( kTYPE_JSON );
+	echo( '<i>$test->Database( "ONTOLOGY" );</i><br>' );
+	$test->Database( "ONTOLOGY" );
+	echo( '<i>$test->Container( "_terms" );</i><br>' );
+	$test->Container( "_terms" );
+	echo( '<i>$test->AddQueryStatement( kOPERATOR_AND, kTAG_LID, kOPERATOR_EQUAL, "date_withdrawn" );</i><br>' );
+	$test->AddQueryStatement( kOPERATOR_AND, kTAG_LID, kOPERATOR_EQUAL, "date_withdrawn" );
+	echo( '<i>$test->AddQueryStatement( kOPERATOR_AND, kTAG_GID, kOPERATOR_PREFIX_NOCASE, "iso" );</i><br>' );
+	$test->AddQueryStatement( kOPERATOR_AND, kTAG_GID, kOPERATOR_PREFIX_NOCASE, "iso" );
+	echo( '<i>$test->Select( array( kTAG_LID, kTAG_GID ) );</i><br>' );
+	$test->Select( array( kTAG_LID, kTAG_GID ) );
+	echo( '<i>$test->Sort( kTAG_LID, -1 );</i><br>' );
+	$test->Sort( kTAG_LID, -1 );
+	echo( '<i>$test->Sort( kTAG_GID, 1 );</i><br>' );
+	$test->Sort( kTAG_GID, 1 );
+	echo( '<i>$test->PageLimit( 5 );</i><br>' );
+	$test->PageLimit( 5  );
+	echo( '<i>$decoded = $test->Execute( \'POST\' );</i><br>' );
+	$decoded = $test->Execute( 'POST' );
+	//
+	// Display.
+	//
+	echo( kSTYLE_TABLE_PRE );
+	echo( kSTYLE_ROW_PRE );
+	echo( kSTYLE_HEAD_PRE.'Client:'.kSTYLE_HEAD_POS );
+	echo( kSTYLE_DATA_PRE.'<pre>' ); print_r( $test ); echo( '</pre>'.kSTYLE_DATA_POS );
+	echo( kSTYLE_ROW_POS );
+	echo( kSTYLE_ROW_PRE );
+	echo( kSTYLE_HEAD_PRE.'Decoded:'.kSTYLE_HEAD_POS );
+	echo( kSTYLE_DATA_PRE.'<pre>' ); print_r( $decoded ); echo( '</pre>'.kSTYLE_DATA_POS );
+	echo( kSTYLE_ROW_POS );
+	echo( kSTYLE_TABLE_POS );
+	echo( '<hr>' );
+	
+	echo( '<h4>Test container MATCH in JSON</h4>' );
+	//
+	// Instantiate.
+	//
+	echo( '<i>$test = new CDataWrapperClient( $url );</i><br>' );
+	$test = new CDataWrapperClient( $url );
+	echo( '<i>$test->Operation( kAPI_OP_MATCH );</i><br>' );
+	$test->Operation( kAPI_OP_MATCH );
+	echo( '<i>$test->Format( kTYPE_JSON );</i><br>' );
+	$test->Format( kTYPE_JSON );
+	echo( '<i>$test->Database( "ONTOLOGY" );</i><br>' );
+	$test->Database( "ONTOLOGY" );
+	echo( '<i>$test->Container( "_terms" );</i><br>' );
+	$test->Container( "_terms" );
+	echo( '<i>$test->AddQueryListStatement( "A", kOPERATOR_AND, kTAG_LID, kOPERATOR_EQUAL, "IT-XXX" );</i><br>' );
+	$test->AddQueryListStatement( "A", kOPERATOR_AND, kTAG_LID, kOPERATOR_EQUAL, "IT-XXX" );
+	echo( '<i>$test->AddQueryListStatement( "B", kOPERATOR_AND, kTAG_LID, kOPERATOR_EQUAL, "IT-ZZZ" );</i><br>' );
+	$test->AddQueryListStatement( "B", kOPERATOR_AND, kTAG_LID, kOPERATOR_EQUAL, "IT-ZZZ" );
+	echo( '<i>$test->AddQueryListStatement( "C", kOPERATOR_AND, kTAG_LID, kOPERATOR_EQUAL, "IT-82" );</i><br>' );
+	$test->AddQueryListStatement( "C", kOPERATOR_AND, kTAG_LID, kOPERATOR_EQUAL, "IT-82" );
 	echo( '<i>$test->PageLimit( 5 );</i><br>' );
 	$test->PageLimit( 5  );
 	echo( '<i>$decoded = $test->Execute( \'POST\' );</i><br>' );

@@ -404,40 +404,24 @@ class CWrapperClient extends CConnection
 		//
 		if( ($op = $this->Operation()) !== NULL )
 			$this->_CheckDependencies( $op );
+		
+		//
+		// Normalise parameters.
+		//
+		$this->_NormaliseParameters();
 	
 		//
-		// Copy parameters.
+		// Init local storage.
 		//
 		$params = $this->getArrayCopy();
-		
-		//
-		// Extract URL.
-		//
 		$url = $this->Connection();
-		
-		//
-		// Extract format.
-		//
 		$format = $params[ kAPI_FORMAT ];
-		
-		//
-		// Set time-stamp.
-		// We overwrite the curent value to get the current time.
-		//
-		if( $this->offsetExists( kAPI_STAMP_REQUEST ) )
-			$this->offsetSet( kAPI_STAMP_REQUEST, gettimeofday( TRUE ) );
 		
 		//
 		// Format parameters.
 		//
 		foreach( $params as $key => $value )
 		{
-			//
-			// Convert ArrayObjects to arrays.
-			//
-			if( $value instanceof ArrayObject )
-				$value = $value->getArrayCopy();
-			
 			//
 			// Encode parameters.
 			//
@@ -704,6 +688,34 @@ class CWrapperClient extends CConnection
 		}
 	
 	} // _CheckDependencies.
+
+	 
+	/*===================================================================================
+	 *	_NormaliseParameters															*
+	 *==================================================================================*/
+
+	/**
+	 * Normalise parameters.
+	 *
+	 * This method can be used to normalise parameters before they get encoded.
+	 *
+	 * In this class we set the request time stamp if the current value is not an float.
+	 *
+	 * In derived classes you should call first the parent method, then handle the local
+	 * parameters.
+	 *
+	 * @access protected
+	 */
+	protected function _NormaliseParameters()
+	{
+		//
+		// Set time-stamp.
+		//
+		if( $this->offsetExists( kAPI_STAMP_REQUEST )
+		 && (! is_float( $this->offsetGet( kAPI_STAMP_REQUEST ) )) )
+			$this->offsetSet( kAPI_STAMP_REQUEST, gettimeofday( TRUE ) );
+	
+	} // _NormaliseParameters.
 
 		
 

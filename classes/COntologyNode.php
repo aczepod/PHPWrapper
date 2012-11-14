@@ -446,18 +446,7 @@ class COntologyNode extends CNode
 				//
 				$term = $this->offsetGet( kTAG_TERM );
 				if( $term instanceof COntologyTerm )
-				{
-					//
-					// Copy name to vertex.
-					//
-					if( $term->offsetExists( kTAG_LABEL ) )
-						$this->offsetSet( kTAG_LABEL,
-										  $term->offsetGet( kTAG_LABEL ) );
-					else
-						$this->offsetUnset( kTAG_LABEL );
-						
 					return $term;													// ==>
-				}
 				
 				//
 				// Load term object.
@@ -468,21 +457,6 @@ class COntologyNode extends CNode
 						$term,
 						NULL,
 						TRUE );
-			/*
-				$this->mTerm
-					= $this->NewObject
-						( COntologyTerm::ResolveClassContainer( $theConnection, TRUE ),
-						  $term );
-			*/
-						
-				//
-				// Copy name to vertex.
-				//
-				if( $this->mTerm->offsetExists( kTAG_LABEL ) )
-					$this->offsetSet( kTAG_LABEL,
-									  $this->mTerm->offsetGet( kTAG_LABEL ) );
-				else
-					$this->offsetUnset( kTAG_LABEL );
 			
 			} // Reload or empty cache.
 			
@@ -1071,15 +1045,6 @@ class COntologyNode extends CNode
 				// Set identifier in term offset.
 				//
 				$this->offsetSet( kTAG_TERM, $term->offsetGet( kOFFSET_NID ) );
-				
-				//
-				// Copy name to vertex.
-				//
-				if( $term->offsetExists( kTAG_LABEL ) )
-					$this->offsetSet( kTAG_LABEL,
-									  $term->offsetGet( kTAG_LABEL ) );
-				else
-					$this->offsetUnset( kTAG_LABEL );
 				
 			} // Term is object.
 			

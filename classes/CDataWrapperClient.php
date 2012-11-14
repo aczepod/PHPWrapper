@@ -725,6 +725,28 @@ class CDataWrapperClient extends CWrapperClient
 	 *
 	 * This method can be used to add a query statement to the current query.
 	 *
+	 * The method expects the following parameters:
+	 *
+	 * <ul>
+	 *	<li><tt>$theCondition</tt>: The {@link kOPERATOR_AND}, {@link kOPERATOR_NAND},
+	 *		{@link kOPERATOR_OR} or {@link kOPERATOR_NOR} operator (see the
+	 *		{@link Operators.inc.php} source).
+	 *	<li><tt>$theSubject</tt>: The subject or attribute of the query, it will be the
+	 *		tag {@link kOFFSET_NID} (see the {@link Operators.inc.php} source).
+	 *	<li><tt>$theOperator</tt>: The statement operator or operation.
+	 *	<li><tt>$theObject</tt>: The object or value of the statement, this parameter may be
+	 *		omitted of the operator does not require it.
+	 *	<li><tt>$theType</tt>: The data type of the statement object (see the
+	 *		{@link Types.inc.php} source).
+	 * </ul>
+	 *
+	 * The query attribute will be set as a {@link CQuery} object and converted to an
+	 * array before being sent to the server.
+	 *
+	 * Note that this method should only be used if the {@link kAPI_QUERY} property of the
+	 * object refers to a single query: if the attribute should refer to a list of
+	 * queries, you should use the {@link AddQueryListStatement()} method.
+	 *
 	 * @param string				$theCondition		Statement condition.
 	 * @param mixed					$theSubject			Statement subject.
 	 * @param string				$theOperator		Statement operator.
@@ -748,142 +770,104 @@ class CDataWrapperClient extends CWrapperClient
 			$this->offsetSet( kAPI_QUERY, new CQuery() );
 		
 		//
-		// Check object.
+		// Create statement.
 		//
-		if( $theObject === NULL )
-		{
-			switch( $theOperator )
-			{
-				case kOPERATOR_NULL:
-				case kOPERATOR_NOT_NULL:
-				case kOPERATOR_DISABLED:
-					break;
-				
-				default:
-					throw new Exception( "Missing statement object or value",
-										 kERROR_MISSING );						// !@! ==>
-			}
-		
-		} // Omitted object.
-		
-		//
-		// Parse by operator.
-		//
-		switch( $theOperator )
-		{
-			case kOPERATOR_EQUAL:
-				$statement = CQueryStatement::Equals(
-								$theSubject, $theObject, $theType );
-				break;
-			
-			case kOPERATOR_EQUAL_NOT:
-				$statement = CQueryStatement::NotEquals(
-								$theSubject, $theObject, $theType );
-				break;
-			
-			case kOPERATOR_LIKE:
-				$statement = CQueryStatement::Like( $theSubject, $theObject );
-				break;
-			
-			case kOPERATOR_LIKE_NOT:
-				$statement = CQueryStatement::NotLike( $theSubject, $theObject );
-				break;
-			
-			case kOPERATOR_PREFIX:
-				$statement = CQueryStatement::Prefix( $theSubject, $theObject );
-				break;
-			
-			case kOPERATOR_PREFIX_NOCASE:
-				$statement = CQueryStatement::PrefixNoCase( $theSubject, $theObject );
-				break;
-			
-			case kOPERATOR_CONTAINS:
-				$statement = CQueryStatement::Contains( $theSubject, $theObject );
-				break;
-			
-			case kOPERATOR_CONTAINS_NOCASE:
-				$statement = CQueryStatement::ContainsNoCase( $theSubject, $theObject );
-				break;
-			
-			case kOPERATOR_SUFFIX:
-				$statement = CQueryStatement::Suffix( $theSubject, $theObject );
-				break;
-			
-			case kOPERATOR_SUFFIX_NOCASE:
-				$statement = CQueryStatement::SuffixNoCase( $theSubject, $theObject );
-				break;
-			
-			case kOPERATOR_REGEX:
-				$statement = CQueryStatement::Regex( $theSubject, $theObject );
-				break;
-			
-			case kOPERATOR_LESS:
-				$statement = CQueryStatement::Less( $theSubject, $theObject, $theType );
-				break;
-			
-			case kOPERATOR_LESS_EQUAL:
-				$statement = CQueryStatement::LessEqual(
-								$theSubject, $theObject, $theType );
-			
-			case kOPERATOR_GREAT:
-				$statement = CQueryStatement::Great( $theSubject, $theObject, $theType );
-				break;
-			
-			case kOPERATOR_GREAT_EQUAL:
-				$statement = CQueryStatement::GreatEqual(
-								$theSubject, $theObject, $theType );
-				break;
-			
-			case kOPERATOR_IRANGE:
-				$statement = CQueryStatement::RangeInclusive(
-								$theSubject, $theObject[ 0 ], $theObject[ 1 ], $theType );
-				break;
-			
-			case kOPERATOR_ERANGE:
-				$statement = CQueryStatement::RangeExclusive(
-								$theSubject, $theObject[ 0 ], $theObject[ 1 ], $theType );
-				break;
-			
-			case kOPERATOR_NULL:
-				$statement = CQueryStatement::Missing( $theSubject );
-				break;
-			
-			case kOPERATOR_NOT_NULL:
-				$statement = CQueryStatement::Exists( $theSubject );
-				break;
-			
-			case kOPERATOR_IN:
-				$statement = CQueryStatement::Member( $theSubject, $theObject, $theType );
-				break;
-			
-			case kOPERATOR_NI:
-				$statement = CQueryStatement::NotMember(
-								$theSubject, $theObject, $theType );
-				break;
-			
-			case kOPERATOR_ALL:
-				$statement = CQueryStatement::All( $theSubject, $theObject, $theType );
-				break;
-			
-			case kOPERATOR_NALL:
-				$statement = CQueryStatement::NotAll( $theSubject, $theObject, $theType );
-				break;
-			
-			case kOPERATOR_EX:
-				$statement = CQueryStatement::Expression( $theSubject, $theObject );
-				break;
-			
-			default:
-				throw new Exception( "Unsupported operator",
-									 kERROR_PARAMETER );						// !@! ==>
-		}
+		$statement = $this-> _QueryStatement( $theSubject, $theOperator, $theObject,
+											  $theType );
 		
 		//
 		// Append statement.
 		//
 		$this->offsetGet( kAPI_QUERY )->AppendStatement( $statement, $theCondition );
 	
-	} // _CheckDependencies.
+	} // AddQueryStatement.
+
+	 
+	/*===================================================================================
+	 *	AddQueryListStatement															*
+	 *==================================================================================*/
+
+	/**
+	 * Add a query list statement.
+	 *
+	 * This method can be used to add a query statement to the current list of queries, the
+	 * method expects the following parameters:
+	 *
+	 * <ul>
+	 *	<li><tt>$theIndex</tt>: The index to the specific query, if the index does not exist
+	 *		the method will create the element.
+	 *	<li><tt>$theCondition</tt>: The {@link kOPERATOR_AND}, {@link kOPERATOR_NAND},
+	 *		{@link kOPERATOR_OR} or {@link kOPERATOR_NOR} operator (see the
+	 *		{@link Operators.inc.php} source).
+	 *	<li><tt>$theSubject</tt>: The subject or attribute of the query, it will be the
+	 *		tag {@link kOFFSET_NID} (see the {@link Operators.inc.php} source).
+	 *	<li><tt>$theOperator</tt>: The statement operator or operation.
+	 *	<li><tt>$theObject</tt>: The object or value of the statement, this parameter may be
+	 *		omitted of the operator does not require it.
+	 *	<li><tt>$theType</tt>: The data type of the statement object (see the
+	 *		{@link Types.inc.php} source).
+	 * </ul>
+	 *
+	 * Each element of the queries list will be a {@link CQuery} object and converted to an
+	 * array before being sent to the server.
+	 *
+	 * Note that this method should only be used if the {@link kAPI_QUERY} property of the
+	 * object refers to a list of queries: if the attribute should refer to a single query,
+	 * you should use the {@link AddQueryStatement()} method.
+	 *
+	 * @param string				$theIndex			Query index.
+	 * @param string				$theCondition		Statement condition.
+	 * @param mixed					$theSubject			Statement subject.
+	 * @param string				$theOperator		Statement operator.
+	 * @param mixed					$theObject			Statement object.
+	 * @param string				$theType			Statement object data type.
+	 *
+	 * @access public
+	 *
+	 * @throws Exception
+	 *
+	 * @see kAPI_QUERY
+	 */
+	public function AddQueryListStatement( $theIndex,
+										   $theCondition,
+										   $theSubject, $theOperator, $theObject = NULL,
+																	  $theType = NULL )
+	{
+		//
+		// Normalise index.
+		//
+		$theIndex = (string) $theIndex;
+		
+		//
+		// Create query list.
+		//
+		if( ! $this->offsetExists( kAPI_QUERY ) )
+			$this->offsetSet( kAPI_QUERY, Array() );
+		
+		//
+		// Create statement.
+		//
+		$statement = $this-> _QueryStatement( $theSubject, $theOperator, $theObject,
+											  $theType );
+		
+		//
+		// Create query.
+		//
+		$list = $this->offsetGet( kAPI_QUERY );
+		if( ! array_key_exists( $theIndex, $list ) )
+			$list[ $theIndex ] = new CQuery();
+		
+		//
+		// Append statement.
+		//
+		$list[ $theIndex ]->AppendStatement( $statement, $theCondition );
+		
+		//
+		// Update offset.
+		//
+		$this->offsetSet( kAPI_QUERY, $list );
+	
+	} // AddQueryListStatement.
 
 		
 
@@ -945,6 +929,194 @@ class CDataWrapperClient extends CWrapperClient
 		}
 	
 	} // _CheckDependencies.
+
+	 
+	/*===================================================================================
+	 *	_NormaliseParameters															*
+	 *==================================================================================*/
+
+	/**
+	 * Normalise parameters.
+	 *
+	 * This method can be used to normalise parameters before they get encoded.
+	 *
+	 * In this class we set the request time stamp if the current value is not an float.
+	 *
+	 * In derived classes you should call first the parent method, then handle the local
+	 * parameters.
+	 *
+	 * @access protected
+	 */
+	protected function _NormaliseParameters()
+	{
+		//
+		// Call parent method.
+		//
+		parent::_NormaliseParameters();
+		
+		//
+		// Convert query to array.
+		//
+		if( $this->offsetExists( kAPI_QUERY ) )
+		{
+			$query = $this->Query();
+			switch( $this->Operation() )
+			{
+				case kAPI_OP_MATCH:
+					foreach( $query as $key => $value )
+					{
+						if( $value instanceof ArrayObject )
+							$query[ $key ] = $value->getArrayCopy();
+					}
+					$this->offsetSet( kAPI_QUERY, array_values( $query ) );
+					break;
+					
+				default:
+					if( $query instanceof ArrayObject )
+						$this->offsetSet( kAPI_QUERY, $query->getArrayCopy() );
+					break;
+			}
+		}
+	
+	} // _NormaliseParameters.
+
+	 
+	/*===================================================================================
+	 *	_QueryStatement																	*
+	 *==================================================================================*/
+
+	/**
+	 * Return a query statement.
+	 *
+	 * This method can be used to retrieve a query statement given the provided parameters,
+	 * see the {@link AddQueryStatement()} method for an explanation of the parameters.
+	 *
+	 * @param mixed					$theSubject			Statement subject.
+	 * @param string				$theOperator		Statement operator.
+	 * @param mixed					$theObject			Statement object.
+	 * @param string				$theType			Statement object data type.
+	 *
+	 * @access protected
+	 * @return array
+	 */
+	protected function _QueryStatement( $theSubject, $theOperator, $theObject = NULL,
+																   $theType = NULL )
+	{
+		//
+		// Check object.
+		//
+		if( $theObject === NULL )
+		{
+			switch( $theOperator )
+			{
+				case kOPERATOR_NULL:
+				case kOPERATOR_NOT_NULL:
+				case kOPERATOR_DISABLED:
+					break;
+				
+				default:
+					throw new Exception( "Missing statement object or value",
+										 kERROR_MISSING );						// !@! ==>
+			}
+		
+		} // Omitted object.
+		
+		//
+		// Parse by operator.
+		//
+		switch( $theOperator )
+		{
+			case kOPERATOR_EQUAL:
+				return CQueryStatement::Equals
+							( $theSubject, $theObject, $theType );					// ==>
+			
+			case kOPERATOR_EQUAL_NOT:
+				return CQueryStatement::NotEquals
+							( $theSubject, $theObject, $theType );					// ==>
+			
+			case kOPERATOR_LIKE:
+				return CQueryStatement::Like( $theSubject, $theObject );			// ==>
+			
+			case kOPERATOR_LIKE_NOT:
+				return CQueryStatement::NotLike( $theSubject, $theObject );			// ==>
+			
+			case kOPERATOR_PREFIX:
+				return CQueryStatement::Prefix( $theSubject, $theObject );			// ==>
+			
+			case kOPERATOR_PREFIX_NOCASE:
+				return CQueryStatement::PrefixNoCase( $theSubject, $theObject );	// ==>
+			
+			case kOPERATOR_CONTAINS:
+				return CQueryStatement::Contains( $theSubject, $theObject );		// ==>
+			
+			case kOPERATOR_CONTAINS_NOCASE:
+				return CQueryStatement::ContainsNoCase( $theSubject, $theObject );	// ==>
+			
+			case kOPERATOR_SUFFIX:
+				return CQueryStatement::Suffix( $theSubject, $theObject );			// ==>
+			
+			case kOPERATOR_SUFFIX_NOCASE:
+				return CQueryStatement::SuffixNoCase( $theSubject, $theObject );	// ==>
+			
+			case kOPERATOR_REGEX:
+				return CQueryStatement::Regex( $theSubject, $theObject );			// ==>
+			
+			case kOPERATOR_LESS:
+				return CQueryStatement::Less( $theSubject, $theObject, $theType );	// ==>
+			
+			case kOPERATOR_LESS_EQUAL:
+				return CQueryStatement::LessEqual
+							( $theSubject, $theObject, $theType );					// ==>
+			
+			case kOPERATOR_GREAT:
+				return CQueryStatement::Great( $theSubject, $theObject, $theType );	// ==>
+			
+			case kOPERATOR_GREAT_EQUAL:
+				return CQueryStatement::GreatEqual
+							( $theSubject, $theObject, $theType );					// ==>
+			
+			case kOPERATOR_IRANGE:
+				return CQueryStatement::RangeInclusive
+							( $theSubject,
+							  $theObject[ 0 ], $theObject[ 1 ],
+							  $theType );											// ==>
+			
+			case kOPERATOR_ERANGE:
+				return CQueryStatement::RangeExclusive
+							( $theSubject,
+							  $theObject[ 0 ], $theObject[ 1 ],
+							  $theType );											// ==>
+			
+			case kOPERATOR_NULL:
+				return CQueryStatement::Missing( $theSubject );						// ==>
+			
+			case kOPERATOR_NOT_NULL:
+				return CQueryStatement::Exists( $theSubject );						// ==>
+			
+			case kOPERATOR_IN:
+				return CQueryStatement::Member
+							( $theSubject, $theObject, $theType );					// ==>
+			
+			case kOPERATOR_NI:
+				return CQueryStatement::NotMember
+							( $theSubject, $theObject, $theType );					// ==>
+			
+			case kOPERATOR_ALL:
+				return CQueryStatement::All( $theSubject, $theObject, $theType );	// ==>
+			
+			case kOPERATOR_NALL:
+				return CQueryStatement::NotAll
+							( $theSubject, $theObject, $theType );					// ==>
+			
+			case kOPERATOR_EX:
+				return CQueryStatement::Expression( $theSubject, $theObject );		// ==>
+			
+			default:
+				throw new Exception( "Unsupported operator",
+									 kERROR_PARAMETER );						// !@! ==>
+		}
+	
+	} // _QueryStatement.
 
 	 
 

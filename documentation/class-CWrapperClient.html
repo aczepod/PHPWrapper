@@ -6,7 +6,7 @@
 
 	<title>Class CWrapperClient | MyWrapper Reference Documentation</title>
 
-	<script type="text/javascript" src="resources/combined.js?3680114562"></script>
+	<script type="text/javascript" src="resources/combined.js?368249000"></script>
 	<script type="text/javascript" src="elementlist.js?1653466708"></script>
 	<link rel="stylesheet" type="text/css" media="all" href="resources/style.css?3505392360" />
 
@@ -216,7 +216,7 @@ class.</p>
 				<b>Author:</b>
 				Milko A. Škofič &lt;<a
 href="mailto:m.skofic&#64;cgiar.org">m.skofic&#64;<!---->cgiar.org</a>&gt;<br />
-		<b>Located at</b> <a href="source-class-CWrapperClient.html#29-801" title="Go to source code">CWrapperClient.php</a><br />
+		<b>Located at</b> <a href="source-class-CWrapperClient.html#29-813" title="Go to source code">CWrapperClient.php</a><br />
 	</div>
 
 
@@ -633,7 +633,7 @@ currently set value.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#_Execute">#</a>
-		<code><a href="source-class-CWrapperClient.html#377-473" title="Go to source code">Execute</a>( <span>string <var>$theMode</var> = <span class="php-quote">'POST'</span> </span> )</code>
+		<code><a href="source-class-CWrapperClient.html#377-457" title="Go to source code">Execute</a>( <span>string <var>$theMode</var> = <span class="php-quote">'POST'</span> </span> )</code>
 
 		<div class="description short">
 			
@@ -682,7 +682,7 @@ contents of the object and return a response.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#_Request">#</a>
-		<code><a href="source-class-CWrapperClient.html#489-624" title="Go to source code">Request</a>( <span>string <var>$theUrl</var></span>, <span>mixed <var>$theParams</var> = <span class="php-keyword1">NULL</span></span>, <span>string <var>$theMode</var> = <span class="php-quote">'POST'</span></span>, <span>string <var>$theFormat</var> = kTYPE_JSON </span> )</code>
+		<code><a href="source-class-CWrapperClient.html#473-608" title="Go to source code">Request</a>( <span>string <var>$theUrl</var></span>, <span>mixed <var>$theParams</var> = <span class="php-keyword1">NULL</span></span>, <span>string <var>$theMode</var> = <span class="php-quote">'POST'</span></span>, <span>string <var>$theFormat</var> = kTYPE_JSON </span> )</code>
 
 		<div class="description short">
 			
@@ -767,7 +767,7 @@ contents of the object and return a response.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#__Ready">#</a>
-		<code><a href="source-class-CWrapperClient.html#640-662" title="Go to source code">_Ready</a>( )</code>
+		<code><a href="source-class-CWrapperClient.html#624-646" title="Go to source code">_Ready</a>( )</code>
 
 		<div class="description short">
 			
@@ -817,7 +817,7 @@ absence of the kAPI_OPERATION and kAPI_FORMAT parameters.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#__CheckDependencies">#</a>
-		<code><a href="source-class-CWrapperClient.html#678-706" title="Go to source code">_CheckDependencies</a>( <span>string <var>$theOperation</var></span> )</code>
+		<code><a href="source-class-CWrapperClient.html#662-690" title="Go to source code">_CheckDependencies</a>( <span>string <var>$theOperation</var></span> )</code>
 
 		<div class="description short">
 			
@@ -851,6 +851,47 @@ depending on the requested operation.</p>
 		</div>
 		</div></td>
 	</tr>
+	<tr data-order="_NormaliseParameters" id="__NormaliseParameters">
+
+		<td class="attributes"><code>
+			 protected 
+			
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#__NormaliseParameters">#</a>
+		<code><a href="source-class-CWrapperClient.html#697-718" title="Go to source code">_NormaliseParameters</a>( )</code>
+
+		<div class="description short">
+			
+<p>Normalise parameters.</p>
+
+		</div>
+
+		<div class="description detailed hidden">
+			
+<p>Normalise parameters.</p>
+
+<p>This method can be used to normalise parameters before they get encoded.</p>
+
+<p>In this class we set the request time stamp if the current value is not an
+float.</p>
+
+<p>In derived classes you should call first the parent method, then handle the
+local parameters.</p>
+
+
+
+
+
+
+
+
+		</div>
+		</div></td>
+	</tr>
 	<tr data-order="_ManageListOffset" id="__ManageListOffset">
 
 		<td class="attributes"><code>
@@ -862,7 +903,7 @@ depending on the requested operation.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#__ManageListOffset">#</a>
-		<code><a href="source-class-CWrapperClient.html#722-797" title="Go to source code">_ManageListOffset</a>( <span>string <var>$theOffset</var></span>, <span>mixed <var>$theValue</var> = <span class="php-keyword1">NULL</span></span>, <span>boolean <var>$getOld</var> = <span class="php-keyword1">FALSE</span> </span> )</code>
+		<code><a href="source-class-CWrapperClient.html#734-809" title="Go to source code">_ManageListOffset</a>( <span>string <var>$theOffset</var></span>, <span>mixed <var>$theValue</var> = <span class="php-keyword1">NULL</span></span>, <span>boolean <var>$getOld</var> = <span class="php-keyword1">FALSE</span> </span> )</code>
 
 		<div class="description short">
 			
