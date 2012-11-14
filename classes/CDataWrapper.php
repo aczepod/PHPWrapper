@@ -278,6 +278,48 @@ class CDataWrapper extends CWrapper
 
 /*=======================================================================================
  *																						*
+ *							PROTECTED INITIALISATION INTERFACE							*
+ *																						*
+ *======================================================================================*/
+
+
+	 
+	/*===================================================================================
+	 *	_InitParameters																	*
+	 *==================================================================================*/
+
+	/**
+	 * Initialise parameters.
+	 *
+	 * This method is responsible for initialising the parameters of the request, in this
+	 * class we decode all local parameters.
+	 *
+	 * @access protected
+	 *
+	 * @see kAPI_STAMP_REQUEST kAPI_LOG_REQUEST kAPI_LOG_TRACE
+	 */
+	protected function _InitParameters()
+	{
+		//
+		// Call parent method.
+		//
+		parent::_InitParameters();
+		
+		//
+		// Handle known parameters.
+		//
+		$params = array( kAPI_DATABASE, kAPI_CONTAINER,
+						 kAPI_PAGE_START, kAPI_PAGE_LIMIT,
+						 kAPI_QUERY, kAPI_SELECT, kAPI_SORT );
+		foreach( $params as $param )
+			$this->_DecodeParameter( $param );
+	
+	} // _InitParameters.
+
+		
+
+/*=======================================================================================
+ *																						*
  *								PROTECTED PARSING UTILITIES								*
  *																						*
  *======================================================================================*/
@@ -725,11 +767,6 @@ class CDataWrapper extends CWrapper
 			 && (! ($_REQUEST[ kAPI_QUERY ] instanceof CQuery)) )
 			{
 				//
-				// Decode parameter.
-				//
-				$this->_DecodeParameter( kAPI_QUERY );
-				
-				//
 				// Check query format.
 				//
 				if( is_array( $_REQUEST[ kAPI_QUERY ] ) )
@@ -779,7 +816,7 @@ class CDataWrapper extends CWrapper
 	/**
 	 * Format selection parameters.
 	 *
-	 * This method will decode the provided selection from JSON or PHP encoding.
+	 * This method will create an array from a scalar, if necessary.
 	 *
 	 * @access protected
 	 *
@@ -788,10 +825,11 @@ class CDataWrapper extends CWrapper
 	protected function _FormatSelect()
 	{
 		//
-		// Check parameter.
+		// Handle scalars.
 		//
-		if( array_key_exists( kAPI_SELECT, $_REQUEST ) )
-			$this->_DecodeParameter( kAPI_SELECT );
+		if( array_key_exists( kAPI_SELECT, $_REQUEST )
+		 && (! is_array( $_REQUEST[ kAPI_SELECT ] )) )
+			$_REQUEST[ kAPI_SELECT ] = array( $_REQUEST[ kAPI_SELECT ] );
 	
 	} // _FormatSelect.
 
@@ -803,7 +841,7 @@ class CDataWrapper extends CWrapper
 	/**
 	 * Format selection parameters.
 	 *
-	 * This method will decode the provided selection from JSON or PHP encoding.
+	 * This method will create an array from a scalar, if necessary.
 	 *
 	 * @access protected
 	 *
@@ -812,10 +850,11 @@ class CDataWrapper extends CWrapper
 	protected function _FormatSort()
 	{
 		//
-		// Check parameter.
+		// Handle scalars.
 		//
-		if( array_key_exists( kAPI_SORT, $_REQUEST ) )
-			$this->_DecodeParameter( kAPI_SORT );
+		if( array_key_exists( kAPI_SORT, $_REQUEST )
+		 && (! is_array( $_REQUEST[ kAPI_SORT ] )) )
+			$_REQUEST[ kAPI_SORT ] = array( $_REQUEST[ kAPI_SORT ] );
 	
 	} // _FormatSort.
 
@@ -1407,7 +1446,11 @@ class CDataWrapper extends CWrapper
 		// Handle page count.
 		//
 		if( $this->offsetExists( kAPI_PAGING ) )
-			$this->offsetGet( kAPI_PAGING )[ kAPI_PAGE_COUNT ] = $cursor->count( TRUE );
+		{
+			$tmp = $this->offsetGet( kAPI_PAGING );
+			$tmp[ kAPI_PAGE_COUNT ] = $cursor->count( TRUE );
+			$this->offsetSet( kAPI_PAGING, $tmp );
+		}
 		
 		//
 		// Check count.
@@ -1491,7 +1534,11 @@ class CDataWrapper extends CWrapper
 			// Handle page count.
 			//
 			if( $this->offsetExists( kAPI_PAGING ) )
-				$this->offsetGet( kAPI_PAGING )[ kAPI_PAGE_COUNT ] = 1;
+			{
+				$tmp = $this->offsetGet( kAPI_PAGING );
+				$tmp[ kAPI_PAGE_COUNT ] = 1;
+				$this->offsetSet( kAPI_PAGING, $tmp );
+			}
 			
 			//
 			// Serialise object.
@@ -1555,7 +1602,11 @@ class CDataWrapper extends CWrapper
 				// Handle page count.
 				//
 				if( $this->offsetExists( kAPI_PAGING ) )
-					$this->offsetGet( kAPI_PAGING )[ kAPI_PAGE_COUNT ] = 1;
+				{
+					$tmp = $this->offsetGet( kAPI_PAGING );
+					$tmp[ kAPI_PAGE_COUNT ] = 1;
+					$this->offsetSet( kAPI_PAGING, $tmp );
+				}
 				
 				//
 				// Serialise object.
@@ -1574,109 +1625,6 @@ class CDataWrapper extends CWrapper
 		} // Iterating queries.
 	
 	} // _Handle_Match.
-
-		
-
-/*=======================================================================================
- *																						*
- *									PROTECTED UTILITIES									*
- *																						*
- *======================================================================================*/
-
-
-	 
-	/*===================================================================================
-	 *	_DecodeParameter																*
-	 *==================================================================================*/
-
-	/**
-	 * Decode parameter.
-	 *
-	 * This method can be used to decode a parameter according to the provided format,
-	 * {@link kTYPE_JSON} or {@link kTYPE_PHP}.
-	 *
-	 * The method will return the decoded parameter.
-	 *
-	 * @param string				$theParameter		Parameter offset.
-	 *
-	 * @access protected
-	 * @return array
-	 *
-	 * @uses JsonDecode()
-	 *
-	 * @see kTYPE_JSON kTYPE_PHP
-	 */
-	protected function _DecodeParameter( $theParameter )
-	{
-		//
-		// Check parameter.
-		//
-		if( array_key_exists( $theParameter, $_REQUEST ) )
-		{
-			//
-			// Init local storage.
-			//
-			$encoded = $_REQUEST[ $theParameter ];
-			$format = $_REQUEST[ kAPI_FORMAT ];
-			
-			//
-			// Parse by format.
-			//
-			switch( $format )
-			{
-				case kTYPE_JSON:
-					try
-					{
-						$_REQUEST[ $theParameter ] = JsonDecode( $encoded );
-					}
-					catch( Exception $error )
-					{
-						if( $error instanceof CException )
-						{
-							$error->Reference( 'Parameter', $theParameter );
-							$error->Reference( 'Format', $format );
-							$error->Reference( 'Data', $encoded );
-						}
-						
-						throw $error;											// !@! ==>
-					}
-					
-					break;
-
-				case kTYPE_PHP:
-					$decoded = @unserialize( $encoded );
-					if( $decoded === FALSE )
-						throw new CException
-							( "Unable to handle request: invalid PHP serialised string",
-							  kERROR_INVALID_STATE,
-							  kMESSAGE_TYPE_ERROR,
-							  array( 'Parameter' => $theParameter,
-									 'Format' => $format,
-									 'Data' => $encoded ) );					// !@! ==>
-					
-					//
-					// Update request.
-					//
-					$_REQUEST[ $theParameter ] = $decoded;
-					
-					break;
-				
-				//
-				// Catch bugs.
-				//
-				default:
-					throw new CException
-						( "Unsupported format (should have been caught before)",
-						  kERROR_UNSUPPORTED,
-						  kMESSAGE_TYPE_BUG,
-						  array( 'Parameter' => kAPI_FORMAT,
-								 'Format' => $format ) );						// !@! ==>
-			
-			} // Parsed format.
-		
-		} // Provided parameter.
-	
-	} // _DecodeParameter.
 
 	 
 

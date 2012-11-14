@@ -58,6 +58,66 @@ require_once( kPATH_MYWRAPPER_LIBRARY_CLASS."/CDataWrapper.php" );
  *		is stored in the {@link kAPI_SORT} offset.
  * </ul>
  *
+ * The class recognises the following operations ({@link Operation()}):
+ *
+ * <ul>
+ *	<li><tt>{@link kAPI_OP_COUNT}</tt>: This service returns the total number of elements
+ *		affected by the provided query. The service expects the following parameters:
+ *	 <ul>
+ *		<li><tt>{@link Format()}</tt>: The data encoding type ({@link kAPI_FORMAT}).
+ *		<li><tt>{@link Database()}</tt>: The data encoding type ({@link kAPI_DATABASE}).
+ *		<li><tt>{@link Container()}</tt>: The data encoding type ({@link kAPI_CONTAINER}).
+ *		<li><tt>{@link Query()}</tt>: The query ({@link kAPI_QUERY}).
+ *			<i>If this parameter is omitted, it is assumed that the operation will involve
+ *			all container elements</i>.
+ *	 </ul>
+ *	<li><tt>{@link kAPI_OP_GET}</tt>: This service returns the elements that match the
+ *		provided query. The service expects the following parameters:
+ *	 <ul>
+ *		<li><tt>{@link Format()}</tt>: The data encoding type ({@link kAPI_FORMAT}).
+ *		<li><tt>{@link Database()}</tt>: The data encoding type ({@link kAPI_DATABASE}).
+ *		<li><tt>{@link Container()}</tt>: The data encoding type ({@link kAPI_CONTAINER}).
+ *		<li><tt>{@link Query()}</tt>: The query ({@link kAPI_QUERY}).
+ *			<i>If this parameter is omitted, it is assumed that the operation will involve
+ *			all container elements</i>.
+ *		<li><tt>{@link Select()}</tt>: The list of requested attributes
+ *			({@link kAPI_SELECT}). <i>If this parameter is omitted, it is assumed that all
+ *			attributes are returned</i>.
+ *		<li><tt>{@link Sort()}</tt>: The list of requested sort attributes
+ *			({@link kAPI_SORT}). <i>If this parameter is omitted, it is assumed that the
+ *			elements are returned in the order they were found</i>.
+ *		<li><tt>{@link PageLimit()}</tt>: The maximum number of elements to be returned
+ *			({@link kAPI_PAGE_LIMIT}). <i>If this parameter is not provided, the service
+ *			will enforce the {@link kDEFAULT_LIMIT} value.
+ *	 </ul>
+ *	<li><tt>{@link kAPI_OP_GET_ONE}</tt>: This service returns the first element that matches
+ *		the provided query. The service expects the following parameters:
+ *	 <ul>
+ *		<li><tt>{@link Format()}</tt>: The data encoding type ({@link kAPI_FORMAT}).
+ *		<li><tt>{@link Database()}</tt>: The data encoding type ({@link kAPI_DATABASE}).
+ *		<li><tt>{@link Container()}</tt>: The data encoding type ({@link kAPI_CONTAINER}).
+ *		<li><tt>{@link Query()}</tt>: The query ({@link kAPI_QUERY}).
+ *			<i>If this parameter is omitted, it is assumed that the operation will involve
+ *			all container elements</i>.
+ *		<li><tt>{@link Select()}</tt>: The list of requested attributes
+ *			({@link kAPI_SELECT}). <i>If this parameter is omitted, it is assumed that all
+ *			attributes are returned</i>.
+ *	 </ul>
+ *	<li><tt>{@link kAPI_OP_MATCH}</tt>: This service returns the first element that matches
+ *		the provided list of queries. The service expects the following parameters:
+ *	 <ul>
+ *		<li><tt>{@link Format()}</tt>: The data encoding type ({@link kAPI_FORMAT}).
+ *		<li><tt>{@link Database()}</tt>: The data encoding type ({@link kAPI_DATABASE}).
+ *		<li><tt>{@link Container()}</tt>: The data encoding type ({@link kAPI_CONTAINER}).
+ *		<li><tt>{@link Query()}</tt>: The query ({@link kAPI_QUERY}).
+ *			<i>If this parameter is omitted, it is assumed that the operation will involve
+ *			all container elements</i>.
+ *		<li><tt>{@link Select()}</tt>: The list of requested attributes
+ *			({@link kAPI_SELECT}). <i>If this parameter is omitted, it is assumed that all
+ *			attributes are returned</i>.
+ *	 </ul>
+ * </ul>
+ *
  *	@package	MyWrapper
  *	@subpackage	Wrappers
  */
@@ -130,23 +190,15 @@ class CDataWrapperClient extends CWrapperClient
 			switch( $theValue )
 			{
 				case kAPI_OP_COUNT:
-				case kAPI_OP_MATCH:
 				case kAPI_OP_GET:
-				case kAPI_OP_SET:
-				case kAPI_OP_UPDATE:
-				case kAPI_OP_INSERT:
-				case kAPI_OP_BATCH_INSERT:
-				case kAPI_OP_MODIFY:
-				case kAPI_OP_DEL:
-					break;
-				
-				default:
-					return parent::Operation( $theValue, $getOld );					// ==>
+				case kAPI_OP_GET_ONE:
+				case kAPI_OP_MATCH:
+					return ManageOffset(
+						$this, kAPI_OPERATION, $theValue, $getOld );				// ==>
 			}
 		}
 		
-		return CAttribute::ManageOffset
-				( $this, kAPI_OPERATION, $theValue, $getOld );						// ==>
+		return parent::Operation( $theValue, $getOld );								// ==>
 
 	} // Operation.
 
@@ -189,15 +241,15 @@ class CDataWrapperClient extends CWrapperClient
 
 	 
 	/*===================================================================================
-	 *	Operation																		*
+	 *	Container																		*
 	 *==================================================================================*/
 
 	/**
-	 * Manage operation.
+	 * Manage container name.
 	 *
-	 * This method can be used to manage the {@link kAPI_OPERATION operation}, it accepts a
-	 * parameter which represents either the web-service operation code or this method
-	 * operation, depending on its value:
+	 * This method can be used to manage the {@link kAPI_CONTAINER} offset, it accepts a
+	 * parameter which represents the container name or the requested operation, depending on
+	 * its value:
 	 *
 	 * <ul>
 	 *	<li><i>NULL</i>: Return the current value.
@@ -208,17 +260,43 @@ class CDataWrapperClient extends CWrapperClient
 	 * The second parameter is a boolean which if <i>TRUE</i> will return the <i>old</i>
 	 * value when replacing values; if <i>FALSE</i>, it will return the currently set value.
 	 *
-	 * This method will check whether the provided operation is supported, if this is not
-	 * the case, it will raise an exception. Derived classes should first check their
-	 * specific operations, if not matched, they should pass the parameter to the parent
-	 * method. In this class we support the following operations:
+	 * @param string				$theValue			Value or operation.
+	 * @param boolean				$getOld				TRUE get old value.
+	 *
+	 * @access public
+	 * @return mixed
+	 *
+	 * @uses ManageOffset()
+	 *
+	 * @see kAPI_CONTAINER
+	 */
+	public function Container( $theValue = NULL, $getOld = FALSE )
+	{
+		return ManageOffset( $this, kAPI_CONTAINER, $theValue, $getOld );			// ==>
+
+	} // Container.
+
+	 
+	/*===================================================================================
+	 *	PageStart																		*
+	 *==================================================================================*/
+
+	/**
+	 * Manage page start.
+	 *
+	 * This method can be used to manage the {@link kAPI_PAGE_START} offset, it accepts a
+	 * parameter which represents the starting page from which the service should return
+	 * data, or the requested operation, depending on its value:
 	 *
 	 * <ul>
-	 *	<li><i>{@link kAPI_OP_HELP kAPI_OP_HELP}</i>: HELP web-service operation, which
-	 *		returns the list of supported operations and options.
-	 *	<li><i>{@link kAPI_OP_PING kAPI_OP_PING}</i>: PING web-service operation, which
-	 *		returns a status response.
+	 *	<li><i>NULL</i>: Return the current value.
+	 *	<li><i>FALSE</i>: Delete the current value.
+	 *	<li><i>other</i>: Set the value with the provided parameter, in this case the value
+	 *		is expected to be and will be casted to an integer.
 	 * </ul>
+	 *
+	 * The second parameter is a boolean which if <i>TRUE</i> will return the <i>old</i>
+	 * value when replacing values; if <i>FALSE</i>, it will return the currently set value.
 	 *
 	 * @param string				$theValue			Value or operation.
 	 * @param boolean				$getOld				TRUE get old value.
@@ -226,14 +304,109 @@ class CDataWrapperClient extends CWrapperClient
 	 * @access public
 	 * @return mixed
 	 *
-	 * @throws {@link CException CException}
+	 * @uses ManageOffset()
+	 *
+	 * @see kAPI_PAGE_START
+	 */
+	public function PageStart( $theValue = NULL, $getOld = FALSE )
+	{
+		//
+		// Check operation.
+		//
+		if( ($theValue !== NULL)
+		 && ($theValue !== FALSE) )
+			$theValue = (integer) $theValue;
+		
+		return ManageOffset( $this, kAPI_PAGE_START, $theValue, $getOld );			// ==>
+
+	} // PageStart.
+
+	 
+	/*===================================================================================
+	 *	PageLimit																		*
+	 *==================================================================================*/
+
+	/**
+	 * Manage page limit.
+	 *
+	 * This method can be used to manage the {@link kAPI_PAGE_LIMIT} offset, it accepts a
+	 * parameter which represents the maximum number of elements to be returned by the
+	 * service, or the requested operation, depending on its value:
+	 *
+	 * <ul>
+	 *	<li><i>NULL</i>: Return the current value.
+	 *	<li><i>FALSE</i>: Delete the current value.
+	 *	<li><i>other</i>: Set the value with the provided parameter, in this case the value
+	 *		is expected to be and will be casted to an integer.
+	 * </ul>
+	 *
+	 * The second parameter is a boolean which if <i>TRUE</i> will return the <i>old</i>
+	 * value when replacing values; if <i>FALSE</i>, it will return the currently set value.
+	 *
+	 * @param string				$theValue			Value or operation.
+	 * @param boolean				$getOld				TRUE get old value.
+	 *
+	 * @access public
+	 * @return mixed
 	 *
 	 * @uses ManageOffset()
 	 *
-	 * @see kAPI_OPERATION
-	 * @see kAPI_OP_HELP kAPI_OP_PING
+	 * @see kAPI_PAGE_LIMIT
 	 */
-	public function Operation( $theValue = NULL, $getOld = FALSE )
+	public function PageLimit( $theValue = NULL, $getOld = FALSE )
+	{
+		//
+		// Check operation.
+		//
+		if( ($theValue !== NULL)
+		 && ($theValue !== FALSE) )
+			$theValue = (integer) $theValue;
+		
+		return ManageOffset( $this, kAPI_PAGE_LIMIT, $theValue, $getOld );			// ==>
+
+	} // PageLimit.
+
+	 
+	/*===================================================================================
+	 *	Query																			*
+	 *==================================================================================*/
+
+	/**
+	 * Manage query.
+	 *
+	 * This method can be used to manage the {@link kAPI_QUERY} offset, it accepts a
+	 * parameter which represents the service requested query, or the requested operation,
+	 * depending on its value:
+	 *
+	 * <ul>
+	 *	<li><i>NULL</i>: Return the current value.
+	 *	<li><i>FALSE</i>: Delete the current value.
+	 *	<li><i>other</i>: Set the value with the provided parameter, in this case the value
+	 *		is expected to be:
+	 *	 <ul>
+	 *		<li><tt>array</tt> or <tt>ArrayObject<tt>: The provided array will be cast to a
+	 *			{@link CQuery} object and verified.
+	 *		<li><tt>{@link CQuery}</tt>: The provided array will be verified.
+	 *		<li><i>other</i>: The method will raise an exception.
+	 *	 </ul>
+	 * </ul>
+	 *
+	 * The second parameter is a boolean which if <i>TRUE</i> will return the <i>old</i>
+	 * value when replacing values; if <i>FALSE</i>, it will return the currently set value.
+	 *
+	 * @param string				$theValue			Value or operation.
+	 * @param boolean				$getOld				TRUE get old value.
+	 *
+	 * @access public
+	 * @return mixed
+	 *
+	 * @throws Exception
+	 *
+	 * @uses ManageOffset()
+	 *
+	 * @see kAPI_QUERY
+	 */
+	public function Query( $theValue = NULL, $getOld = FALSE )
 	{
 		//
 		// Check operation.
@@ -241,59 +414,112 @@ class CDataWrapperClient extends CWrapperClient
 		if( ($theValue !== NULL)
 		 && ($theValue !== FALSE) )
 		{
-			switch( $theValue )
+			//
+			// Parse by operation.
+			//
+			switch( $this->Operation() )
 			{
-				case kAPI_OP_HELP:
-				case kAPI_OP_PING:
+				case kAPI_OP_MATCH:
+					//
+					// Cast to array.
+					//
+					if( $theValue instanceof ArrayObject )
+						$theValue = $theValue->getArrayCopy();
+					elseif( ! is_array( $theValue ) )
+					{
+						$type = ( is_object( $theValue ) )
+							  ? get_class( $theValue )
+							  : gettype( $theValue );
+						throw new Exception( "Unsupported query list type [$type]",
+											 kERROR_PARAMETER );				// !@! ==>
+					}
+					
+					//
+					// Cast to queries.
+					//
+					foreach( $theValue as $key => $query )
+					{
+						//
+						// Cast to query.
+						//
+						if( ! ($query instanceof CQuery) )
+						{
+							if( is_array( $query ) )
+								$query = new CQuery( $query );
+							elseif( $query instanceof ArrayObject )
+								$query = new CQuery( $query->getArrayCopy() );
+							else
+							{
+								$type = ( is_object( $query ) )
+									  ? get_class( $query )
+									  : gettype( $query );
+								throw new Exception( "Unsupported query type [$type]",
+													 kERROR_PARAMETER );		// !@! ==>
+							}
+						}
+						
+						//
+						// Update query.
+						//
+						$theValue[ $key ] = $query;
+					}
 					break;
 				
 				default:
-					throw new CException( "Unsupported operation",
-										  kERROR_UNSUPPORTED,
-										  kMESSAGE_TYPE_ERROR,
-										  array( 'Operation' => $theValue ) );	// !@! ==>
+					//
+					// Cast to query.
+					//
+					if( ! ($theValue instanceof CQuery) )
+					{
+						if( is_array( $theValue ) )
+							$theValue = new CQuery( $theValue );
+						elseif( $theValue instanceof ArrayObject )
+							$theValue = new CQuery( $theValue->getArrayCopy() );
+						
+						else
+						{
+							$type = ( is_object( $theValue ) )
+								  ? get_class( $theValue )
+								  : gettype( $theValue );
+							throw new Exception( "Unsupported query type [$type]",
+												 kERROR_PARAMETER );			// !@! ==>
+						}
+					}
+					break;
 			}
 		}
 		
-		return ManageOffset( $this, kAPI_OPERATION, $theValue, $getOld );			// ==>
+		return ManageOffset( $this, kAPI_QUERY, $theValue, $getOld );				// ==>
 
-	} // Operation.
+	} // Query.
 
 	 
 	/*===================================================================================
-	 *	Format																			*
+	 *	Select																			*
 	 *==================================================================================*/
 
 	/**
-	 * Manage format.
+	 * Manage select fields.
 	 *
-	 * This method can be used to manage the {@link kAPI_FORMAT format} in which both the
-	 * parameters are sent and the response is returned from the web-service. It accepts a
-	 * parameter which represents either the web-service format code or this method
+	 * This method can be used to manage the {@link kAPI_SELECT} offset, it accepts a
+	 * parameter which represents the list of requested attributes, or the requested
 	 * operation, depending on its value:
 	 *
 	 * <ul>
 	 *	<li><i>NULL</i>: Return the current value.
 	 *	<li><i>FALSE</i>: Delete the current value.
-	 *	<li><i>other</i>: Set the value with the provided parameter.
+	 *	<li><i>other</i>: Set the value with the provided parameter, in this case the value
+	 *		is expected to be:
+	 *	 <ul>
+	 *		<li><tt>array</tt> or <tt>ArrayObject<tt>: The provided parameter will become
+	 *			the new list.
+	 *		<li><i>other</i>: The method will assume the parameter is a string and it will
+	 *			add it to the current list or create a list if it doesn't exist.
+	 *	 </ul>
 	 * </ul>
 	 *
 	 * The second parameter is a boolean which if <i>TRUE</i> will return the <i>old</i>
 	 * value when replacing values; if <i>FALSE</i>, it will return the currently set value.
-	 *
-	 * This method will check whether the provided format is supported, if this is not
-	 * the case, it will raise an exception. Derived classes should first check their
-	 * specific operations, if not matched, they should pass the parameter to the parent
-	 * method. In this class we support the following operations:
-	 *
-	 * <ul>
-	 *	<li><i>{@link kTYPE_PHP}</i>: Parameters and response will be serialized.
-	 *	<li><i>{@link kTYPE_XML}</i>: Parameters and response will be encoded in XML.
-	 *	<li><i>{@link kTYPE_JSON}</i>: Parameters and response will be encoded in JSON.
-	 *	<li><i>{@link kTYPE_META}</i>: This data type can be used to
-	 *		return service metadata, the {@link Execute() request} will return headers
-	 *		metadata for troubleshooting, rather than the response from the web-service.
-	 * </ul>
 	 *
 	 * @param string				$theValue			Value or operation.
 	 * @param boolean				$getOld				TRUE get old value.
@@ -301,456 +527,424 @@ class CDataWrapperClient extends CWrapperClient
 	 * @access public
 	 * @return mixed
 	 *
-	 * @throws {@link CException CException}
+	 * @uses _ManageListOffset()
 	 *
-	 * @uses ManageOffset()
-	 *
-	 * @see kAPI_FORMAT
-	 * @see kAPI_OP_HELP kAPI_OP_PING
+	 * @see kAPI_SELECT
 	 */
-	public function Format( $theValue = NULL, $getOld = FALSE )
+	public function Select( $theValue = NULL, $getOld = FALSE )
 	{
-		//
-		// Check operation.
-		//
-		if( ($theValue !== NULL)
-		 && ($theValue !== FALSE) )
-		{
-			switch( $theValue )
-			{
-				case kTYPE_PHP:
-				case kTYPE_JSON:
-				case kTYPE_META:
-					break;
-				
-				case kTYPE_XML:
-				default:
-					throw new CException( "Unsupported format",
-										  kERROR_UNSUPPORTED,
-										  kMESSAGE_TYPE_ERROR,
-										  array( 'Format' => $theValue ) );		// !@! ==>
-			}
-		}
-		
-		return ManageOffset( $this, kAPI_FORMAT, $theValue, $getOld );				// ==>
+		return $this->_ManageListOffset( kAPI_SELECT, $theValue, $getOld );			// ==>
 
-	} // Format.
+	} // Select.
 
 	 
 	/*===================================================================================
-	 *	Stamp																			*
+	 *	Sort																			*
 	 *==================================================================================*/
 
 	/**
-	 * Time-stamp switch.
+	 * Manage sort fields.
 	 *
-	 * This method can be used to turn on or off the time-stamp section in the web-service
-	 * response, the method accepts a single parameter that if resolves to <i>TRUE</i> it
-	 * will turn on this option, if not it will turn it off.
-	 *
-	 * The second parameter is a boolean which if <i>TRUE</i> will return the <i>old</i>
-	 * value when replacing values; if <i>FALSE</i>, it will return the currently set value.
-	 *
-	 * @param boolean				$theValue			TRUE or FALSE.
-	 * @param boolean				$getOld				TRUE get old value.
-	 *
-	 * @access public
-	 * @return mixed
-	 *
-	 * @uses ManageOffset()
-	 *
-	 * @see kAPI_STAMP_REQUEST
-	 */
-	public function Stamp( $theValue = NULL, $getOld = FALSE )
-	{
-		return ManageOffset( $this, kAPI_STAMP_REQUEST, $theValue, $getOld );		// ==>
-
-	} // Stamp.
-
-	 
-	/*===================================================================================
-	 *	LogRequest																		*
-	 *==================================================================================*/
-
-	/**
-	 * Log request switch.
-	 *
-	 * This method can be used to turn on or off the request section in the web-service
-	 * response, the method accepts a single parameter that if resolves to <i>TRUE</i> it
-	 * will turn on this option, if not it will turn it off.
-	 *
-	 * The second parameter is a boolean which if <i>TRUE</i> will return the <i>old</i>
-	 * value when replacing values; if <i>FALSE</i>, it will return the currently set value.
-	 *
-	 * @param boolean				$theValue			TRUE or FALSE.
-	 * @param boolean				$getOld				TRUE get old value.
-	 *
-	 * @access public
-	 * @return mixed
-	 *
-	 * @uses ManageOffset()
-	 *
-	 * @see kAPI_LOG_REQUEST
-	 */
-	public function LogRequest( $theValue = NULL, $getOld = FALSE )
-	{
-		//
-		// Normalise value.
-		//
-		$theValue = ( $theValue ) ? TRUE : FALSE;
-		
-		return ManageOffset( $this, kAPI_LOG_REQUEST, $theValue, $getOld );			// ==>
-
-	} // LogRequest.
-
-	 
-	/*===================================================================================
-	 *	LogTrace																		*
-	 *==================================================================================*/
-
-	/**
-	 * Log trace switch.
-	 *
-	 * This method can be used to turn on or off the trace in the event an exception is
-	 * raised, the method accepts a single parameter that if resolves to <i>TRUE</i> it will
-	 * turn on this option, if not it will turn it off.
-	 *
-	 * The second parameter is a boolean which if <i>TRUE</i> will return the <i>old</i>
-	 * value when replacing values; if <i>FALSE</i>, it will return the currently set value.
-	 *
-	 * @param boolean				$theValue			TRUE or FALSE.
-	 * @param boolean				$getOld				TRUE get old value.
-	 *
-	 * @access public
-	 * @return mixed
-	 *
-	 * @uses ManageOffset()
-	 *
-	 * @see kAPI_LOG_TRACE
-	 */
-	public function LogTrace( $theValue = NULL, $getOld = FALSE )
-	{
-		//
-		// Normalise value.
-		//
-		$theValue = ( $theValue ) ? TRUE : FALSE;
-		
-		return ManageOffset( $this, kAPI_LOG_TRACE, $theValue, $getOld );			// ==>
-
-	} // LogTrace.
-
-		
-
-/*=======================================================================================
- *																						*
- *								PUBLIC ARRAY ACCESS INTERFACE							*
- *																						*
- *======================================================================================*/
-
-
-	 
-	/*===================================================================================
-	 *	offsetSet																		*
-	 *==================================================================================*/
-
-	/**
-	 * Set a value for a given offset.
-	 *
-	 * We overload this method to manage the {@link _IsInited() inited}
-	 * {@link kFLAG_STATE_INITED status}: this is set if {@link kAPI_URL URL},
-	 * {@link kAPI_OPERATION operation} and {@link kAPI_FORMAT format} are all set.
-	 *
-	 * @param string				$theOffset			Offset.
-	 * @param string|NULL			$theValue			Value to set at offset.
-	 *
-	 * @access public
-	 */
-	public function offsetSet( $theOffset, $theValue )
-	{
-		//
-		// Call parent method.
-		//
-		parent::offsetSet( $theOffset, $theValue );
-		
-		//
-		// Set inited flag.
-		//
-		if( $theValue !== NULL )
-			$this->_IsInited( $this->offsetExists( kAPI_URL ) &&
-							  $this->offsetExists( kAPI_FORMAT ) &&
-							  $this->offsetExists( kAPI_OPERATION ) );
-	
-	} // offsetSet.
-
-	 
-	/*===================================================================================
-	 *	offsetUnset																		*
-	 *==================================================================================*/
-
-	/**
-	 * Reset a value for a given offset.
-	 *
-	 * We overload this method to manage the {@link _IsInited() inited}
-	 * {@link kFLAG_STATE_INITED status}: this is set if {@link kAPI_URL URL},
-	 * {@link kAPI_OPERATION operation} and {@link kAPI_FORMAT format} are all set.
-	 *
-	 * @param string				$theOffset			Offset.
-	 *
-	 * @access public
-	 */
-	public function offsetUnset( $theOffset )
-	{
-		//
-		// Call parent method.
-		//
-		parent::offsetUnset( $theOffset );
-		
-		//
-		// Set inited flag.
-		//
-		$this->_IsInited( $this->offsetExists( kAPI_URL ) &&
-						  $this->offsetExists( kAPI_FORMAT ) &&
-						  $this->offsetExists( kAPI_OPERATION ) );
-	
-	} // offsetUnset.
-
-		
-
-/*=======================================================================================
- *																						*
- *								PUBLIC REQUEST INTERFACE								*
- *																						*
- *======================================================================================*/
-
-
-	 
-	/*===================================================================================
-	 *	Execute																			*
-	 *==================================================================================*/
-
-	/**
-	 * Send an HTTP request.
-	 *
-	 * This method can be used to sent an <i>HTTP</i> request using the current contents of
-	 * the object and return a response.
-	 *
-	 * @param string				$theMode			Request mode, POST or GET
-	 *
-	 * @access public
-	 * @return mixed
-	 *
-	 * @throws {@link CException CException}
-	 */
-	public function Execute( $theMode = 'POST' )
-	{
-		//
-		// Check if inited.
-		//
-		if( ! $this->_IsInited() )
-			throw new CException
-					( "Unable to execute request: object not initialised",
-					  kERROR_STATE,
-					  kMESSAGE_TYPE_ERROR,
-					  array( 'Object' => $this ) );								// !@! ==>
-	
-		//
-		// Copy parameters.
-		//
-		$params = $this->getArrayCopy();
-		
-		//
-		// Extract URL.
-		//
-		$url = $params[ kAPI_URL ];
-		unset( $params[ kAPI_URL ] );
-		
-		//
-		// Extract format.
-		//
-		$format = $params[ kAPI_FORMAT ];
-		
-		//
-		// Set time-stamp.
-		// We overwrite the curent value to get the current time.
-		//
-		if( $this->offsetExists( kAPI_STAMP_REQUEST ) )
-			$this->offsetSet( kAPI_STAMP_REQUEST, gettimeofday( TRUE ) );
-		
-		//
-		// Format parameters.
-		//
-		foreach( $params as $key => $value )
-		{
-			if( is_array( $value )
-			 || ($value instanceof ArrayObject) )
-			{
-				switch( $this->Format() )
-				{
-					case kTYPE_PHP:
-						$params[ $key ] = serialize( $value );
-						break;
-
-					case kTYPE_JSON:
-						$params[ $key ] = JsonEncode( $value );
-						break;
-				}
-			}
-		}
-		
-		return self::Request( $url, $params, $theMode, $format );					// ==>
-	
-	} // Execute.
-
-		
-
-/*=======================================================================================
- *																						*
- *								STATIC REQUEST INTERFACE								*
- *																						*
- *======================================================================================*/
-
-
-	 
-	/*===================================================================================
-	 *	Request																			*
-	 *==================================================================================*/
-
-	/**
-	 * Send a HTTP request.
-	 *
-	 * This method can be used to sent an <i>HTTP</i> request via <i>GET</i> or <i>POST</i>.
-	 *
-	 * The method accepts the following parameters:
+	 * This method can be used to manage the {@link kAPI_SORT} offset, the managed value is
+	 * an array in which the key represents the attribute name and the value is an integer
+	 * which determines the sort order: positive means ascending, negative means descending;
+	 * zero is ignored.
 	 *
 	 * <ul>
-	 *	<li><b>$theUrl</b>: The request URL.
-	 *	<li><b>$theParams</b>: An array of key/value parameters for the request.
-	 *	<li><b>$theMode</b>: The request mode:
+	 *	<li><tt>$theField</tt>: The field name or list:
 	 *	 <ul>
-	 *		<li><tt>GET</tt>: GET, default.
-	 *		<li><tt>POST</tt>: POST.
-	 *		<li><i>{@link kTYPE_META}</i>: Metadata: if you provide this format, the method
-	 *			will return the metadata of the operation for troubleshooting purposes.
+	 *		<li><tt>array</tt>: If you provide an array in this field, the method will
+	 *			assume you are providing a full list, in this case the method will set the
+	 *			offset with that value, <i>without checking its contents</i>.
+	 *		<li><tt>NULL</tt>: Selects all fields.
+	 *		<li><i>other</i>: Any other value will be interpreted as the field name.
 	 *	 </ul>
-	 *	<li><b>$theFormat</b>: The request format:
+	 *	<li><tt>$theOrder</tt>: The the sort order:
 	 *	 <ul>
-	 *		<li><tt>{@link kTYPE_PHP}</tt>: PHP.
-	 *		<li><tt>{@link kTYPE_JSON}</tt>: JSON.
-	 *		<li><i>other</i>: Metadata: the method will return the metadata of the operation
-	 *			for troubleshooting purposes.
+	 *		<li><tt>NULL</tt>: Return the sort order of the provided field. If the provided
+	 *			field is an array, this parameter will be ignored; if the provided field is
+	 *			a scalar, the method will return the element matching the provided field; if
+	 *			the provided field is <tt>NULL</tt>, the method will return the full list.
+	 *		<li><tt>FALSE</tt>: Delete the element matching the provided field: if the
+	 *			provided field is an array, this parameter will be ignored; if the provided
+	 *			field is a scalar, the method will delete the element matching the provided
+	 *			field; if the provided field is <tt>NULL</tt>, the method will return the
+	 *			full list.
+	 *		<li><tt>integer</tt>: Set the sort order, negative values mean descending;
+	 *			positive values mean ascending. If the provided field is an array, this
+	 *			parameter will be ignored; if the provided field is a scalar, the method
+	 *			will set the element matching the provided field; if the provided field is
+	 *			<tt>NULL</tt>, the method will set all the elements of the list to the
+	 *			provided sort order.
+	 *		<li><tt>zero</tt>: If the parameter evaluates to zero, the operation will do
+	 *			nothing.
+	 *		<li><i>other</i>: Any other type will be cast to an integer.
 	 *	 </ul>
+	 *	<li><tt>$getOld</tt>: This parameter is a boolean which if <i>TRUE</i> will return
+	 *		the <i>old</i> value when replacing values; if <i>FALSE</i>, it will return the
+	 *		currently set value.
 	 * </ul>
 	 *
-	 * @param string				$theUrl				Request URL.
-	 * @param mixed					$theParams			Request parameters.
-	 * @param string				$theMode			Request mode.
-	 * @param string				$theFormat			Response format.
+	 * @param string				$theField			Field name or fields list.
+	 * @param mixed					$theOrder			Sort order or operation.
+	 * @param boolean				$getOld				TRUE get old value.
 	 *
-	 * @static
+	 * @access public
 	 * @return mixed
 	 *
-	 * @throws {@link CException CException}
+	 * @uses ManageOffset()
+	 *
+	 * @see kAPI_SORT
 	 */
-	static function Request( $theUrl, $theParams = NULL,
-									  $theMode = 'POST',
-									  $theFormat = kTYPE_JSON )
+	public function Sort( $theField = NULL, $theOrder = NULL, $getOld = FALSE )
 	{
 		//
-		// Check mode.
+		// Handle arrays.
 		//
-		switch( $tmp = strtoupper( $theMode ) )
+		if( is_array( $theField ) )
+			return ManageOffset( $this, kAPI_SORT, $theField, $getOld );			// ==>
+		
+		//
+		// Get current list.
+		//
+		$save = $this->offsetGet( kAPI_SORT );
+		
+		//
+		// Normalise target field.
+		//
+		if( $theField !== NULL )
+			$theField = (string) $theField;
+		
+		//
+		// Handle retrieve.
+		//
+		if( $theOrder === NULL )
 		{
-			case 'GET':
-			case 'POST':
-				$theMode = $tmp;
+			//
+			// Return full list or handle empty list.
+			//
+			if( ($save === NULL)
+			 || ($theField === NULL) )
+				return NULL;														// ==>
+			
+			//
+			// Match field.
+			//
+			if( array_key_exists( $theField, $save ) )
+				return $save[ $theField ];											// ==>
+			
+			return NULL;															// ==>
+		
+		} // Retrieve.
+		
+		//
+		// Handle delete.
+		//
+		if( $theOrder === FALSE )
+		{
+			//
+			// Handle empty list.
+			//
+			if( $save === NULL )
+				return NULL;														// ==>
+			
+			//
+			// Delete whole list.
+			//
+			if( $theField === NULL )
+				return ManageOffset( $this, kAPI_SORT, FALSE, $getOld );			// ==>
+			
+			//
+			// Match field.
+			//
+			if( array_key_exists( $theField, $save ) )
+			{
+				//
+				// Save order.
+				//
+				$tmp = $save[ $theField ];
+				
+				//
+				// Delete order.
+				//
+				unset( $save[ $theField ] );
+				if( ! count( $save ) )
+					$this->offsetUnset( kAPI_SORT );
+				
+				if( $getOld )
+					return $tmp;													// ==>
+			
+			} // Matched field.
+			
+			return NULL;															// ==>
+		
+		} // Delete.
+		
+		//
+		// Cast order.
+		//
+		$theOrder = (integer) $theOrder;
+		if( ! $theOrder )
+			return $save;															// ==>
+		
+		//
+		// Set all fields to provided sort order.
+		//
+		if( $theField === NULL )
+		{
+			//
+			// Set new value.
+			//
+			$new = array_fill_keys( array_keys( $save ), $theOrder );
+			
+			ManageOffset( $this, kAPI_SORT, $new, $getOld );						// ==>
+		
+		} // Set all fields.
+		
+		return ManageIndexedOffset(
+					$this, kAPI_SORT, $theField, $theOrder, $getOld );				// ==>
+
+	} // Sort.
+
+		
+
+/*=======================================================================================
+ *																						*
+ *									PUBLID QUERY INTERFACE								*
+ *																						*
+ *======================================================================================*/
+
+
+	 
+	/*===================================================================================
+	 *	AddQueryStatement																*
+	 *==================================================================================*/
+
+	/**
+	 * Add a query statement.
+	 *
+	 * This method can be used to add a query statement to the current query.
+	 *
+	 * @param string				$theCondition		Statement condition.
+	 * @param mixed					$theSubject			Statement subject.
+	 * @param string				$theOperator		Statement operator.
+	 * @param mixed					$theObject			Statement object.
+	 * @param string				$theType			Statement object data type.
+	 *
+	 * @access public
+	 *
+	 * @throws Exception
+	 *
+	 * @see kAPI_QUERY
+	 */
+	public function AddQueryStatement( $theCondition,
+									   $theSubject, $theOperator, $theObject = NULL,
+																  $theType = NULL )
+	{
+		//
+		// Create query.
+		//
+		if( ! $this->offsetExists( kAPI_QUERY ) )
+			$this->offsetSet( kAPI_QUERY, new CQuery() );
+		
+		//
+		// Check object.
+		//
+		if( $theObject === NULL )
+		{
+			switch( $theOperator )
+			{
+				case kOPERATOR_NULL:
+				case kOPERATOR_NOT_NULL:
+				case kOPERATOR_DISABLED:
+					break;
+				
+				default:
+					throw new Exception( "Missing statement object or value",
+										 kERROR_MISSING );						// !@! ==>
+			}
+		
+		} // Omitted object.
+		
+		//
+		// Parse by operator.
+		//
+		switch( $theOperator )
+		{
+			case kOPERATOR_EQUAL:
+				$statement = CQueryStatement::Equals(
+								$theSubject, $theObject, $theType );
+				break;
+			
+			case kOPERATOR_EQUAL_NOT:
+				$statement = CQueryStatement::NotEquals(
+								$theSubject, $theObject, $theType );
+				break;
+			
+			case kOPERATOR_LIKE:
+				$statement = CQueryStatement::Like( $theSubject, $theObject );
+				break;
+			
+			case kOPERATOR_LIKE_NOT:
+				$statement = CQueryStatement::NotLike( $theSubject, $theObject );
+				break;
+			
+			case kOPERATOR_PREFIX:
+				$statement = CQueryStatement::Prefix( $theSubject, $theObject );
+				break;
+			
+			case kOPERATOR_PREFIX_NOCASE:
+				$statement = CQueryStatement::PrefixNoCase( $theSubject, $theObject );
+				break;
+			
+			case kOPERATOR_CONTAINS:
+				$statement = CQueryStatement::Contains( $theSubject, $theObject );
+				break;
+			
+			case kOPERATOR_CONTAINS_NOCASE:
+				$statement = CQueryStatement::ContainsNoCase( $theSubject, $theObject );
+				break;
+			
+			case kOPERATOR_SUFFIX:
+				$statement = CQueryStatement::Suffix( $theSubject, $theObject );
+				break;
+			
+			case kOPERATOR_SUFFIX_NOCASE:
+				$statement = CQueryStatement::SuffixNoCase( $theSubject, $theObject );
+				break;
+			
+			case kOPERATOR_REGEX:
+				$statement = CQueryStatement::Regex( $theSubject, $theObject );
+				break;
+			
+			case kOPERATOR_LESS:
+				$statement = CQueryStatement::Less( $theSubject, $theObject, $theType );
+				break;
+			
+			case kOPERATOR_LESS_EQUAL:
+				$statement = CQueryStatement::LessEqual(
+								$theSubject, $theObject, $theType );
+			
+			case kOPERATOR_GREAT:
+				$statement = CQueryStatement::Great( $theSubject, $theObject, $theType );
+				break;
+			
+			case kOPERATOR_GREAT_EQUAL:
+				$statement = CQueryStatement::GreatEqual(
+								$theSubject, $theObject, $theType );
+				break;
+			
+			case kOPERATOR_IRANGE:
+				$statement = CQueryStatement::RangeInclusive(
+								$theSubject, $theObject[ 0 ], $theObject[ 1 ], $theType );
+				break;
+			
+			case kOPERATOR_ERANGE:
+				$statement = CQueryStatement::RangeExclusive(
+								$theSubject, $theObject[ 0 ], $theObject[ 1 ], $theType );
+				break;
+			
+			case kOPERATOR_NULL:
+				$statement = CQueryStatement::Missing( $theSubject );
+				break;
+			
+			case kOPERATOR_NOT_NULL:
+				$statement = CQueryStatement::Exists( $theSubject );
+				break;
+			
+			case kOPERATOR_IN:
+				$statement = CQueryStatement::Member( $theSubject, $theObject, $theType );
+				break;
+			
+			case kOPERATOR_NI:
+				$statement = CQueryStatement::NotMember(
+								$theSubject, $theObject, $theType );
+				break;
+			
+			case kOPERATOR_ALL:
+				$statement = CQueryStatement::All( $theSubject, $theObject, $theType );
+				break;
+			
+			case kOPERATOR_NALL:
+				$statement = CQueryStatement::NotAll( $theSubject, $theObject, $theType );
+				break;
+			
+			case kOPERATOR_EX:
+				$statement = CQueryStatement::Expression( $theSubject, $theObject );
 				break;
 			
 			default:
-				throw new CException( "Unsupported HTTP mode",
-									  kERROR_UNSUPPORTED,
-									  kMESSAGE_TYPE_ERROR,
-									  array( 'Mode' => $theMode ) );			// !@! ==>
+				throw new Exception( "Unsupported operator",
+									 kERROR_PARAMETER );						// !@! ==>
 		}
 		
 		//
-		// Build context parameters.
+		// Append statement.
 		//
-		$cxp = array( 'http' => array( 'method' => $theMode,
-									   'ignore_errors' => TRUE ) );
-		
-		//
-		// Set parameters.
-		//
-		if( $theParams !== NULL )
-		{
-			//
-			// Format parameters.
-			//
-			$theParams = http_build_query( $theParams );
-			
-			//
-			// Handle mode.
-			//
-			if( $theMode == 'POST' )
-				$cxp[ 'http' ][ 'content' ] = $theParams;
-			else
-				$theUrl .= ('?'.$theParams);
-		}
-		
-		//
-		// Create context.
-		//
-		$context = stream_context_create( $cxp );
-		
-		//
-		// Open stream.
-		//
-		$fp = @fopen( $theUrl, 'rb', FALSE, $context );
-		if( ! $fp )
-			throw new CException( "Unable to open [$theMode] [$theUrl]",
-								  kERROR_STATE,
-								  kMESSAGE_TYPE_ERROR,
-								  array( 'Mode' => $theMode,
-								  		 'URL' => $theUrl ) );					// !@! ==>
-		
-		//
-		// Get stream metadata.
-		// This can be used to troubleshoot the operation:
-		// by displating the metadata you can see the HTTP response header
-		// across all redirects.
-		//
-		if( $theFormat == kTYPE_META )
-		{
-			$meta = stream_get_meta_data( $fp );
-			fclose( $fp );
-			return $meta;															// ==>
-		}
-		
-		//
-		// Read stream.
-		//
-		$result = stream_get_contents( $fp );
-		
-		//
-		// Close stream.
-		//
-		fclose( $fp );
-		
-		//
-		// Format response.
-		//
-		switch( $theFormat )
-		{
-			case kTYPE_JSON:
-				return JsonDecode( $result );								// ==>
-			
-			case kTYPE_PHP:
-				return unserialize( $result );										// ==>
-		}
-		
-		return $result;																// ==>
+		$this->offsetGet( kAPI_QUERY )->AppendStatement( $statement, $theCondition );
 	
-	} // Request.
+	} // _CheckDependencies.
+
+		
+
+/*=======================================================================================
+ *																						*
+ *									PROTECTED INTERFACE									*
+ *																						*
+ *======================================================================================*/
+
+
+	 
+	/*===================================================================================
+	 *	_CheckDependencies																*
+	 *==================================================================================*/
+
+	/**
+	 * Check operation dependencies.
+	 *
+	 * This method can be used to assert whether the required parameters are present
+	 * depending on the requested operation.
+	 *
+	 * @param string				$theOperation		Requested operation.
+	 *
+	 * @access protected
+	 *
+	 * @throws Exception
+	 */
+	protected function _CheckDependencies( $theOperation )
+	{
+		//
+		// Parse by operation.
+		//
+		switch( $theOperation )
+		{
+			case kAPI_OP_COUNT:
+			case kAPI_OP_GET_ONE:
+			case kAPI_OP_MATCH:
+				if( ! $this->offsetExists( kAPI_FORMAT ) )
+					throw new Exception
+							( "Unable to run service: missing format parameter",
+							  kERROR_STATE );									// !@! ==>
+				if( ! $this->offsetExists( kAPI_DATABASE ) )
+					throw new Exception
+							( "Unable to run service: missing database parameter",
+							  kERROR_STATE );									// !@! ==>
+				if( ! $this->offsetExists( kAPI_CONTAINER ) )
+					throw new Exception
+							( "Unable to run service: missing container parameter",
+							  kERROR_STATE );									// !@! ==>
+			
+			case kAPI_OP_GET:
+				if( ! $this->offsetExists( kAPI_PAGE_LIMIT ) )
+					$this->PageLimit( kDEFAULT_LIMIT );
+				break;
+			
+			default:
+				parent::_CheckDependencies( $theOperation );
+				break;
+		}
+	
+	} // _CheckDependencies.
 
 	 
 

@@ -76,8 +76,8 @@ try
 	// Ping wrapper.
 	//
 	$params = array( kAPI_FORMAT => kTYPE_JSON, kAPI_OPERATION => kAPI_OP_PING );
-	echo( '<i>$decoded = CWrapperClient::Request( $url, $params, \'POST\', kTYPE_JSON );</i><br>' );
-	$decoded = CWrapperClient::Request( $url, $params, 'POST', kTYPE_JSON );
+	echo( '<i>$decoded = CWrapperClient::Request( $url, $params, "POST", kTYPE_JSON );</i><br>' );
+	$decoded = CWrapperClient::Request( $url, $params, "POST", kTYPE_JSON );
 	//
 	// Display.
 	//
@@ -104,8 +104,8 @@ try
 	$test->Operation( kAPI_OP_PING );
 	echo( '<i>$test->Format( kTYPE_JSON );</i><br>' );
 	$test->Format( kTYPE_JSON );
-	echo( '<i>$decoded = $test->Execute( \'GET\' );</i><br>' );
-	$decoded = $test->Execute( 'GET' );
+	echo( '<i>$decoded = $test->Execute( "GET" );</i><br>' );
+	$decoded = $test->Execute( "GET" );
 	//
 	// Display.
 	//
@@ -127,8 +127,8 @@ try
 	//
 	echo( '<i>$test = new CWrapperClient();</i><br>' );
 	$test = new CWrapperClient();
-	echo( '<i>$test->Url( $url );</i><br>' );
-	$test->Url( $url );
+	echo( '<i>$test->Connection( $url );</i><br>' );
+	$test->Connection( $url );
 	echo( '<i>$test->Operation( kAPI_OP_HELP );</i><br>' );
 	$test->Operation( kAPI_OP_HELP );
 	echo( '<i>$test->Format( kTYPE_PHP );</i><br>' );
@@ -156,8 +156,8 @@ try
 	//
 	echo( '<i>$test = new CWrapperClient();</i><br>' );
 	$test = new CWrapperClient();
-	echo( '<i>$test->Url( $url );</i><br>' );
-	$test->Url( $url );
+	echo( '<i>$test->Connection( $url );</i><br>' );
+	$test->Connection( $url );
 	echo( '<i>$test->Operation( kAPI_OP_PING );</i><br>' );
 	$test->Operation( kAPI_OP_PING );
 	echo( '<i>$test->Format( kTYPE_JSON );</i><br>' );
@@ -187,8 +187,8 @@ try
 	//
 	try
 	{
-		echo( '<i>$test->Operation( 20 );</i><br>' );
-		$test->Operation( 20 );
+		echo( '<i>$test->Operation( "XXX" );</i><br>' );
+		$test->Operation( "XXX" );
 	}
 	catch( Exception $error )
 	{
@@ -202,8 +202,8 @@ try
 	//
 	try
 	{
-		echo( '<i>$test->Format( 20 );</i><br>' );
-		$test->Format( 20 );
+		echo( '<i>$test->Format( "XXX" );</i><br>' );
+		$test->Format( "XXX" );
 	}
 	catch( Exception $error )
 	{
@@ -217,8 +217,8 @@ try
 	//
 	try
 	{
-		echo( '<i>$test->Url( FALSE );</i><br>' );
-		$test->Url( FALSE );
+		echo( '<i>$test->Format( FALSE );</i><br>' );
+		$test->Format( FALSE );
 		//
 		// Display.
 		//
@@ -246,8 +246,8 @@ try
 	//
 	try
 	{
-		echo( '<i>$test->Url( $url );</i><br>' );
-		$test->Url( $url );
+		echo( '<i>$test->Connection( $url );</i><br>' );
+		$test->Connection( $url );
 		//
 		// Execute.
 		//

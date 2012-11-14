@@ -284,6 +284,7 @@ class CWrapper extends CConnection
 				// Initialise service.
 				//
 				$this->_InitStatus();
+				$this->_InitParameters();
 				$this->_InitOptions();
 				$this->_InitResources();
 				
@@ -489,6 +490,47 @@ class CWrapper extends CConnection
 
 	 
 	/*===================================================================================
+	 *	_InitParameters																	*
+	 *==================================================================================*/
+
+	/**
+	 * Initialise parameters.
+	 *
+	 * This method is responsible for initialising the parameters of the request, in this
+	 * class we decode all known parameters, except for {@link kAPI_OPERATION} and
+	 * {@link kAPI_FORMAT}.
+	 *
+	 * @access protected
+	 *
+	 * @see kAPI_STAMP_REQUEST kAPI_LOG_REQUEST kAPI_LOG_TRACE
+	 */
+	protected function _InitParameters()
+	{
+		//
+		// Handle known parameters.
+		//
+		$params = array( kAPI_STAMP_REQUEST, kAPI_LOG_REQUEST, kAPI_LOG_TRACE );
+		foreach( $params as $param )
+			$this->_DecodeParameter( $param );
+	
+	//
+	// In derived classes.
+	//
+	//	//
+	//	// Init parent parameters.
+	//	//
+	//	parent::_InitParameters();
+	//
+	//	//
+	//	// Init local parameters.
+	//	//
+	//	...
+	//
+	
+	} // _InitParameters.
+
+	 
+	/*===================================================================================
 	 *	_InitOptions																	*
 	 *==================================================================================*/
 
@@ -621,7 +663,9 @@ class CWrapper extends CConnection
 	 *
 	 * This method should perform any needed formatting before the request will be handled.
 	 *
-	 * In this class we do nothing.
+	 * In this class we handle the known parameters, although more cumbersome, this allows
+	 * us to mix parameters from different sources. The method will cycle all known
+	 * parameters and decode the values according to the provided format.
 	 *
 	 * @access protected
 	 */
@@ -643,7 +687,7 @@ class CWrapper extends CConnection
 	
 	} // _FormatRequest.
 
-	 
+	
 	/*===================================================================================
 	 *	_ValidateRequest																*
 	 *==================================================================================*/
@@ -1342,6 +1386,109 @@ class CWrapper extends CConnection
 		return NULL;																// ==>
 	
 	} // _EncodeResponse.
+
+		
+
+/*=======================================================================================
+ *																						*
+ *									PROTECTED UTILITIES									*
+ *																						*
+ *======================================================================================*/
+
+
+	 
+	/*===================================================================================
+	 *	_DecodeParameter																*
+	 *==================================================================================*/
+
+	/**
+	 * Decode parameter.
+	 *
+	 * This method can be used to decode a parameter according to the provided format,
+	 * {@link kTYPE_JSON} or {@link kTYPE_PHP}.
+	 *
+	 * The method will return the decoded parameter.
+	 *
+	 * @param string				$theParameter		Parameter offset.
+	 *
+	 * @access protected
+	 * @return array
+	 *
+	 * @uses JsonDecode()
+	 *
+	 * @see kTYPE_JSON kTYPE_PHP
+	 */
+	protected function _DecodeParameter( $theParameter )
+	{
+		//
+		// Check parameter.
+		//
+		if( array_key_exists( $theParameter, $_REQUEST ) )
+		{
+			//
+			// Init local storage.
+			//
+			$encoded = $_REQUEST[ $theParameter ];
+			$format = $_REQUEST[ kAPI_FORMAT ];
+			
+			//
+			// Parse by format.
+			//
+			switch( $format )
+			{
+				case kTYPE_JSON:
+					try
+					{
+						$_REQUEST[ $theParameter ] = JsonDecode( $encoded );
+					}
+					catch( Exception $error )
+					{
+						if( $error instanceof CException )
+						{
+							$error->Reference( 'Parameter', $theParameter );
+							$error->Reference( 'Format', $format );
+							$error->Reference( 'Data', $encoded );
+						}
+						
+						throw $error;											// !@! ==>
+					}
+					
+					break;
+
+				case kTYPE_PHP:
+					$decoded = @unserialize( $encoded );
+					if( $decoded === FALSE )
+						throw new CException
+							( "Unable to handle request: invalid PHP serialised string",
+							  kERROR_STATE,
+							  kMESSAGE_TYPE_ERROR,
+							  array( 'Parameter' => $theParameter,
+									 'Format' => $format,
+									 'Data' => $encoded ) );					// !@! ==>
+					
+					//
+					// Update request.
+					//
+					$_REQUEST[ $theParameter ] = $decoded;
+					
+					break;
+				
+				//
+				// Catch bugs.
+				//
+				default:
+					throw new CException
+						( "Unsupported format (should have been caught before)",
+						  kERROR_UNSUPPORTED,
+						  kMESSAGE_TYPE_BUG,
+						  array( 'Parameter' => kAPI_FORMAT,
+								 'Format' => $format ) );						// !@! ==>
+			
+			} // Parsed format.
+		
+		} // Provided parameter.
+	
+	} // _DecodeParameter.
 
 	 
 

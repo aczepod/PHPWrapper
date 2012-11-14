@@ -33,7 +33,7 @@ require_once( '/Library/WebServer/Library/PHPWrapper/styles.inc.php' );
 //
 // Class includes.
 //
-require_once( test_CWrapperClient.php."/CWrapper.php" );
+require_once( kPATH_MYWRAPPER_LIBRARY_CLASS."/CWrapper.php" );
 
 
 /*=======================================================================================
@@ -107,14 +107,14 @@ try
 	echo( kSTYLE_ROW_POS );
 	echo( kSTYLE_TABLE_POS );
 	echo( '<hr>' );
-	
+
 	echo( '<h4>Test ping with log request</h4>' );
 	//
 	// Ping wrapper.
 	//
 	$params = array( (kAPI_FORMAT.'='.kTYPE_JSON),
 					 (kAPI_OPERATION.'='.kAPI_OP_PING),
-					 (kAPI_LOG_REQUEST.'='.'1') );
+					 (kAPI_LOG_REQUEST.'='.urlencode(JsonEncode(1))) );
 	$request = implode( '&', $params );
 	$request = "$url?$request";
 	$response = file_get_contents( $request );
@@ -148,8 +148,8 @@ try
 	//
 	$params = array( (kAPI_FORMAT.'='.kTYPE_JSON),
 					 (kAPI_OPERATION.'='.kAPI_OP_PING),
-					 (kAPI_STAMP_REQUEST.'='.gettimeofday( true )),
-					 (kAPI_LOG_REQUEST.'='.'1') );
+					 (kAPI_STAMP_REQUEST.'='.urlencode(JsonEncode(gettimeofday( true )))),
+					 (kAPI_LOG_REQUEST.'='.urlencode(JsonEncode(1))) );
 	$request = implode( '&', $params );
 	$request = "$url?$request";
 	$response = file_get_contents( $request );
@@ -216,8 +216,8 @@ try
 	//
 	$params = array( (kAPI_FORMAT.'='.kTYPE_JSON),
 					 (kAPI_OPERATION.'='.'XXX'),
-					 (kAPI_STAMP_REQUEST.'='.gettimeofday( true )),
-					 (kAPI_LOG_REQUEST.'='.'1') );
+					 (kAPI_STAMP_REQUEST.'='.urlencode(JsonEncode(gettimeofday( true )))),
+					 (kAPI_LOG_REQUEST.'='.urlencode(JsonEncode(1))) );
 	$request = implode( '&', $params );
 	$request = "$url?$request";
 	$response = file_get_contents( $request );
@@ -250,8 +250,8 @@ try
 	// Missing operator.
 	//
 	$params = array( (kAPI_FORMAT.'='.kTYPE_JSON),
-					 (kAPI_STAMP_REQUEST.'='.gettimeofday( true )),
-					 (kAPI_LOG_REQUEST.'='.'1') );
+					 (kAPI_STAMP_REQUEST.'='.urlencode(JsonEncode(gettimeofday( true )))),
+					 (kAPI_LOG_REQUEST.'='.urlencode(JsonEncode(1))) );
 	$request = implode( '&', $params );
 	$request = "$url?$request";
 	$response = file_get_contents( $request );

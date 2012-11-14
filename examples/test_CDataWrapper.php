@@ -1,10 +1,10 @@
 <?php
 	
 /**
- * {@link CMongoDataWrapper.php Data} wrapper object test suite.
+ * {@link CDataWrapper.php Data} wrapper object test suite.
  *
  * This file contains routines to test and demonstrate the behaviour of the
- * base object {@link CMongoDataWrapper class}.
+ * base object {@link CDataWrapper class}.
  *
  *	@package	Test
  *	@subpackage	Wrappers
@@ -16,7 +16,7 @@
 
 /*=======================================================================================
  *																						*
- *								test_CMongoDataWrapper.php								*
+ *									test_CDataWrapper.php								*
  *																						*
  *======================================================================================*/
 
@@ -132,14 +132,14 @@ try
 		echo( kSTYLE_ROW_POS );
 		echo( kSTYLE_TABLE_POS );
 		echo( '<hr>' );
-		
+	
 		echo( '<h4>Test ping with log request</h4>' );
 		//
 		// Ping wrapper.
 		//
 		$params = array( (kAPI_FORMAT.'='.kTYPE_JSON),
 						 (kAPI_OPERATION.'='.kAPI_OP_PING),
-						 (kAPI_LOG_REQUEST.'='.'1') );
+						 (kAPI_LOG_REQUEST.'='.urlencode(JsonEncode(1))) );
 		$request = implode( '&', $params );
 		$request = "$url?$request";
 		$response = file_get_contents( $request );
@@ -173,8 +173,8 @@ try
 		//
 		$params = array( (kAPI_FORMAT.'='.kTYPE_JSON),
 						 (kAPI_OPERATION.'='.kAPI_OP_PING),
-						 (kAPI_STAMP_REQUEST.'='.gettimeofday( true )),
-						 (kAPI_LOG_REQUEST.'='.'1') );
+						 (kAPI_STAMP_REQUEST.'='.urlencode(JsonEncode(gettimeofday( true )))),
+						 (kAPI_LOG_REQUEST.'='.urlencode(JsonEncode(1))) );
 		$request = implode( '&', $params );
 		$request = "$url?$request";
 		$response = file_get_contents( $request );
@@ -241,8 +241,8 @@ try
 		//
 		$params = array( (kAPI_FORMAT.'='.kTYPE_JSON),
 						 (kAPI_OPERATION.'='.'XXX'),
-						 (kAPI_STAMP_REQUEST.'='.gettimeofday( true )),
-						 (kAPI_LOG_REQUEST.'='.'1') );
+						 (kAPI_STAMP_REQUEST.'='.urlencode(JsonEncode(gettimeofday( true )))),
+						 (kAPI_LOG_REQUEST.'='.urlencode(JsonEncode(1))) );
 		$request = implode( '&', $params );
 		$request = "$url?$request";
 		$response = file_get_contents( $request );
@@ -275,8 +275,8 @@ try
 		// Missing operator.
 		//
 		$params = array( (kAPI_FORMAT.'='.kTYPE_JSON),
-						 (kAPI_STAMP_REQUEST.'='.gettimeofday( true )),
-						 (kAPI_LOG_REQUEST.'='.'1') );
+						 (kAPI_STAMP_REQUEST.'='.urlencode(JsonEncode(gettimeofday( true )))),
+						 (kAPI_LOG_REQUEST.'='.urlencode(JsonEncode(1))) );
 		$request = implode( '&', $params );
 		$request = "$url?$request";
 		$response = file_get_contents( $request );
@@ -311,10 +311,10 @@ try
 	//
 	$params = array( (kAPI_FORMAT.'='.kTYPE_JSON),
 					 (kAPI_OPERATION.'='.kAPI_OP_PING),
-					 (kAPI_STAMP_REQUEST.'='.gettimeofday( true )),
-					 (kAPI_LOG_REQUEST.'='.'1'),
-					 (kAPI_DATABASE.'='."TEST"),
-					 (kAPI_CONTAINER.'='."TEST-CNT") );
+					 (kAPI_STAMP_REQUEST.'='.urlencode(JsonEncode(gettimeofday( true )))),
+					 (kAPI_LOG_REQUEST.'='.urlencode(JsonEncode(1))),
+					 (kAPI_DATABASE.'='.urlencode(JsonEncode("TEST"))),
+					 (kAPI_CONTAINER.'='.urlencode(JsonEncode("TEST-CNT"))) );
 	$request = implode( '&', $params );
 	$request = "$url?$request";
 	$response = file_get_contents( $request );
@@ -348,9 +348,9 @@ try
 	//
 	$params = array( (kAPI_FORMAT.'='.kTYPE_JSON),
 					 (kAPI_OPERATION.'='.kAPI_OP_PING),
-					 (kAPI_STAMP_REQUEST.'='.gettimeofday( true )),
-					 (kAPI_LOG_REQUEST.'='.'1'),
-					 (kAPI_PAGE_START.'='."0") );
+					 (kAPI_STAMP_REQUEST.'='.urlencode(JsonEncode(gettimeofday( true )))),
+					 (kAPI_LOG_REQUEST.'='.urlencode(JsonEncode(1))),
+					 (kAPI_PAGE_START.'='.urlencode(JsonEncode(0))) );
 	$request = implode( '&', $params );
 	$request = "$url?$request";
 	$response = file_get_contents( $request );
@@ -384,9 +384,9 @@ try
 	//
 	$params = array( (kAPI_FORMAT.'='.kTYPE_JSON),
 					 (kAPI_OPERATION.'='.kAPI_OP_PING),
-					 (kAPI_STAMP_REQUEST.'='.gettimeofday( true )),
-					 (kAPI_LOG_REQUEST.'='.'1'),
-					 (kAPI_PAGE_LIMIT.'='."120") );
+					 (kAPI_STAMP_REQUEST.'='.urlencode(JsonEncode(gettimeofday( true )))),
+					 (kAPI_LOG_REQUEST.'='.urlencode(JsonEncode(1))),
+					 (kAPI_PAGE_LIMIT.'='.urlencode(JsonEncode(120))) );
 	$request = implode( '&', $params );
 	$request = "$url?$request";
 	$response = file_get_contents( $request );
@@ -420,9 +420,9 @@ try
 	//
 	$params = array( (kAPI_FORMAT.'='.kTYPE_JSON),
 					 (kAPI_OPERATION.'='.kAPI_OP_PING),
-					 (kAPI_STAMP_REQUEST.'='.gettimeofday( true )),
-					 (kAPI_LOG_REQUEST.'='.'1'),
-					 (kAPI_PAGE_LIMIT.'='."1000000") );
+					 (kAPI_STAMP_REQUEST.'='.urlencode(JsonEncode(gettimeofday( true )))),
+					 (kAPI_LOG_REQUEST.'='.urlencode(JsonEncode(TRUE))),
+					 (kAPI_PAGE_LIMIT.'='.urlencode(JsonEncode(1000000))) );
 	$request = implode( '&', $params );
 	$request = "$url?$request";
 	$response = file_get_contents( $request );
@@ -467,16 +467,15 @@ try
 			)
 		)
 	);
-	$query_enc = JsonEncode( $query );
 	$params = array( (kAPI_FORMAT.'='.kTYPE_JSON),
 					 (kAPI_OPERATION.'='.kAPI_OP_COUNT),
-					 (kAPI_LOG_REQUEST.'='.'1'),
-					 (kAPI_PAGE_START.'='.'0'),
-					 (kAPI_PAGE_LIMIT.'='.'10'),
-					 (kAPI_DATABASE.'='.'ONTOLOGY'),
-					 (kAPI_CONTAINER.'='.'_terms'),
-					 (kAPI_STAMP_REQUEST.'='.gettimeofday( true )),
-					 (kAPI_QUERY.'='.urlencode( $query_enc )) );
+					 (kAPI_LOG_REQUEST.'='.urlencode(JsonEncode(TRUE))),
+					 (kAPI_PAGE_START.'='.urlencode(JsonEncode(0))),
+					 (kAPI_PAGE_LIMIT.'='.urlencode(JsonEncode(10))),
+					 (kAPI_DATABASE.'='.urlencode(JsonEncode('ONTOLOGY'))),
+					 (kAPI_CONTAINER.'='.urlencode(JsonEncode('_terms'))),
+					 (kAPI_STAMP_REQUEST.'='.urlencode(JsonEncode(gettimeofday( true )))),
+					 (kAPI_QUERY.'='.urlencode(JsonEncode($query))) );
 	$request = $url.'?'.implode( '&', $params );
 	$response = file_get_contents( $request );
 	$decoded = JsonDecode( $response );
@@ -509,23 +508,22 @@ try
 		(
 			array
 			(
-				kOFFSET_QUERY_SUBJECT => '12',
+				kOFFSET_QUERY_SUBJECT => '_id',
 				kOFFSET_QUERY_OPERATOR => kOPERATOR_EQUAL,
-				kOFFSET_QUERY_TYPE => kTYPE_STRING,
-				kOFFSET_QUERY_DATA => ':SCALE'
+				kOFFSET_QUERY_TYPE => kTYPE_BINARY,
+				kOFFSET_QUERY_DATA => new CDataTypeBinary( hex2bin( '80B196896559FEA57DAE4360FF46BF59' ) )
 			)
 		)
 	);
-	$query_enc = serialize( $query );
 	$params = array( (kAPI_FORMAT.'='.kTYPE_PHP),
 					 (kAPI_OPERATION.'='.kAPI_OP_COUNT),
-					 (kAPI_LOG_REQUEST.'='.'1'),
-					 (kAPI_PAGE_START.'='.'0'),
-					 (kAPI_PAGE_LIMIT.'='.'10'),
-					 (kAPI_DATABASE.'='.'ONTOLOGY'),
-					 (kAPI_CONTAINER.'='.'_nodes'),
-					 (kAPI_STAMP_REQUEST.'='.gettimeofday( true )),
-					 (kAPI_QUERY.'='.urlencode( $query_enc )) );
+					 (kAPI_LOG_REQUEST.'='.urlencode(serialize(TRUE))),
+					 (kAPI_PAGE_START.'='.urlencode(serialize(0))),
+					 (kAPI_PAGE_LIMIT.'='.urlencode(serialize(10))),
+					 (kAPI_DATABASE.'='.urlencode(serialize('ONTOLOGY'))),
+					 (kAPI_CONTAINER.'='.urlencode(serialize('_terms'))),
+					 (kAPI_STAMP_REQUEST.'='.urlencode(serialize(gettimeofday( true )))),
+					 (kAPI_QUERY.'='.urlencode(serialize($query))) );
 	$request = $url.'?'.implode( '&', $params );
 	$response = file_get_contents( $request );
 	$decoded = unserialize( $response );
@@ -554,12 +552,12 @@ try
 	//
 	$params = array( (kAPI_FORMAT.'='.kTYPE_JSON),
 					 (kAPI_OPERATION.'='.kAPI_OP_COUNT),
-					 (kAPI_STAMP_REQUEST.'='.gettimeofday( true )),
-					 (kAPI_LOG_REQUEST.'='.'1'),
-					 (kAPI_PAGE_START.'='.'0'),
-					 (kAPI_PAGE_LIMIT.'='.'10'),
-					 (kAPI_DATABASE.'='.'ONTOLOGY'),
-					 (kAPI_CONTAINER.'='.'_terms') );
+					 (kAPI_STAMP_REQUEST.'='.urlencode(JsonEncode(gettimeofday( true )))),
+					 (kAPI_LOG_REQUEST.'='.urlencode(JsonEncode(TRUE))),
+					 (kAPI_PAGE_START.'='.urlencode(JsonEncode(0))),
+					 (kAPI_PAGE_LIMIT.'='.urlencode(JsonEncode(10))),
+					 (kAPI_DATABASE.'='.urlencode(JsonEncode('ONTOLOGY'))),
+					 (kAPI_CONTAINER.'='.urlencode(JsonEncode('_terms'))) );
 	$request = $url.'?'.implode( '&', $params );
 	$response = file_get_contents( $request );
 	$decoded = JsonDecode( $response );
@@ -599,22 +597,19 @@ try
 			)
 		)
 	);
-	$query_enc = JsonEncode( $query );
 	$fields = array( '1', '2', '31' );
-	$fields_enc = JsonEncode( $fields );
 	$sort = array( '1' => -1 );
-	$sort_enc = JsonEncode( $sort );
 	$params = array( (kAPI_FORMAT.'='.kTYPE_JSON),
 					 (kAPI_OPERATION.'='.kAPI_OP_GET),
-					 (kAPI_LOG_REQUEST.'='.'1'),
-					 (kAPI_PAGE_START.'='.'0'),
-					 (kAPI_PAGE_LIMIT.'='.'5'),
-					 (kAPI_DATABASE.'='.'ONTOLOGY'),
-					 (kAPI_CONTAINER.'='.'_terms'),
-					 (kAPI_STAMP_REQUEST.'='.gettimeofday( true )),
-					 (kAPI_QUERY.'='.urlencode( $query_enc )),
-					 (kAPI_SELECT.'='.urlencode( $fields_enc )),
-					 (kAPI_SORT.'='.urlencode( $sort_enc )) );
+					 (kAPI_LOG_REQUEST.'='.urlencode(JsonEncode(TRUE))),
+					 (kAPI_PAGE_START.'='.urlencode(JsonEncode(0))),
+					 (kAPI_PAGE_LIMIT.'='.urlencode(JsonEncode(5))),
+					 (kAPI_DATABASE.'='.urlencode(JsonEncode('ONTOLOGY'))),
+					 (kAPI_CONTAINER.'='.urlencode(JsonEncode('_terms'))),
+					 (kAPI_STAMP_REQUEST.'='.urlencode(JsonEncode(gettimeofday( TRUE )))),
+					 (kAPI_QUERY.'='.urlencode(JsonEncode($query))),
+					 (kAPI_SELECT.'='.urlencode(JsonEncode($fields))),
+					 (kAPI_SORT.'='.urlencode(JsonEncode($sort))) );
 	$request = $url.'?'.implode( '&', $params );
 	$response = file_get_contents( $request );
 	$decoded = JsonDecode( $response );
@@ -654,22 +649,19 @@ try
 			)
 		)
 	);
-	$query_enc = serialize( $query );
 	$fields = array( '1', '2', '31' );
-	$fields_enc = serialize( $fields );
 	$sort = array( '1' => -1 );
-	$sort_enc = serialize( $sort );
 	$params = array( (kAPI_FORMAT.'='.kTYPE_PHP),
 					 (kAPI_OPERATION.'='.kAPI_OP_GET),
-					 (kAPI_LOG_REQUEST.'='.'1'),
-					 (kAPI_PAGE_START.'='.'0'),
-					 (kAPI_PAGE_LIMIT.'='.'5'),
-					 (kAPI_DATABASE.'='.'ONTOLOGY'),
-					 (kAPI_CONTAINER.'='.'_terms'),
-					 (kAPI_STAMP_REQUEST.'='.gettimeofday( true )),
-					 (kAPI_QUERY.'='.urlencode( $query_enc )),
-					 (kAPI_SELECT.'='.urlencode( $fields_enc )),
-					 (kAPI_SORT.'='.urlencode( $sort_enc )) );
+					 (kAPI_LOG_REQUEST.'='.urlencode(serialize(TRUE))),
+					 (kAPI_PAGE_START.'='.urlencode(serialize(0))),
+					 (kAPI_PAGE_LIMIT.'='.urlencode(serialize(5))),
+					 (kAPI_DATABASE.'='.urlencode(serialize('ONTOLOGY'))),
+					 (kAPI_CONTAINER.'='.urlencode(serialize('_terms'))),
+					 (kAPI_STAMP_REQUEST.'='.urlencode(serialize(gettimeofday( TRUE )))),
+					 (kAPI_QUERY.'='.urlencode(serialize($query))),
+					 (kAPI_SELECT.'='.urlencode(serialize($fields))),
+					 (kAPI_SORT.'='.urlencode(serialize($sort))) );
 	$request = $url.'?'.implode( '&', $params );
 	$response = file_get_contents( $request );
 	$decoded = unserialize( $response );
@@ -709,22 +701,19 @@ try
 			)
 		)
 	);
-	$query_enc = JsonEncode( $query );
 	$fields = array( '1', '2', '31' );
-	$fields_enc = JsonEncode( $fields );
 	$sort = array( '1' => -1 );
-	$sort_enc = JsonEncode( $sort );
 	$params = array( (kAPI_FORMAT.'='.kTYPE_JSON),
 					 (kAPI_OPERATION.'='.kAPI_OP_GET_ONE),
-					 (kAPI_LOG_REQUEST.'='.'1'),
-					 (kAPI_PAGE_START.'='.'0'),
-					 (kAPI_PAGE_LIMIT.'='.'5'),
-					 (kAPI_DATABASE.'='.'ONTOLOGY'),
-					 (kAPI_CONTAINER.'='.'_terms'),
-					 (kAPI_STAMP_REQUEST.'='.gettimeofday( true )),
-					 (kAPI_QUERY.'='.urlencode( $query_enc )),
-					 (kAPI_SELECT.'='.urlencode( $fields_enc )),
-					 (kAPI_SORT.'='.urlencode( $sort_enc )) );
+					 (kAPI_LOG_REQUEST.'='.urlencode(JsonEncode(TRUE))),
+					 (kAPI_PAGE_START.'='.urlencode(JsonEncode(0))),
+					 (kAPI_PAGE_LIMIT.'='.urlencode(JsonEncode(5))),
+					 (kAPI_DATABASE.'='.urlencode(JsonEncode('ONTOLOGY'))),
+					 (kAPI_CONTAINER.'='.urlencode(JsonEncode('_terms'))),
+					 (kAPI_STAMP_REQUEST.'='.urlencode(JsonEncode(gettimeofday( true )))),
+					 (kAPI_QUERY.'='.urlencode(JsonEncode($query))),
+					 (kAPI_SELECT.'='.urlencode(JsonEncode($fields))),
+					 (kAPI_SORT.'='.urlencode(JsonEncode($sort))) );
 	$request = $url.'?'.implode( '&', $params );
 	$response = file_get_contents( $request );
 	$decoded = JsonDecode( $response );
@@ -793,22 +782,19 @@ try
 			)
 		)
 	);
-	$query_enc = JsonEncode( $queries );
 	$fields = array( '1', '2', '31' );
-	$fields_enc = JsonEncode( $fields );
 	$sort = array( '1' => -1 );
-	$sort_enc = JsonEncode( $sort );
 	$params = array( (kAPI_FORMAT.'='.kTYPE_JSON),
 					 (kAPI_OPERATION.'='.kAPI_OP_MATCH),
-					 (kAPI_LOG_REQUEST.'='.'1'),
-					 (kAPI_PAGE_START.'='.'0'),
-					 (kAPI_PAGE_LIMIT.'='.'5'),
-					 (kAPI_DATABASE.'='.'ONTOLOGY'),
-					 (kAPI_CONTAINER.'='.'_terms'),
-					 (kAPI_STAMP_REQUEST.'='.gettimeofday( true )),
-					 (kAPI_QUERY.'='.urlencode( $query_enc )),
-					 (kAPI_SELECT.'='.urlencode( $fields_enc )),
-					 (kAPI_SORT.'='.urlencode( $sort_enc )) );
+					 (kAPI_LOG_REQUEST.'='.urlencode(JsonEncode(TRUE))),
+					 (kAPI_PAGE_START.'='.urlencode(JsonEncode(0))),
+					 (kAPI_PAGE_LIMIT.'='.urlencode(JsonEncode(5))),
+					 (kAPI_DATABASE.'='.urlencode(JsonEncode('ONTOLOGY'))),
+					 (kAPI_CONTAINER.'='.urlencode(JsonEncode('_terms'))),
+					 (kAPI_STAMP_REQUEST.'='.urlencode(JsonEncode(gettimeofday( true )))),
+					 (kAPI_QUERY.'='.urlencode(JsonEncode($queries))),
+					 (kAPI_SELECT.'='.urlencode(JsonEncode($fields))),
+					 (kAPI_SORT.'='.urlencode(JsonEncode($sort))) );
 	$request = $url.'?'.implode( '&', $params );
 	$response = file_get_contents( $request );
 	$decoded = JsonDecode( $response );

@@ -27,23 +27,14 @@
 require_once( kPATH_MYWRAPPER_LIBRARY_CLASS."/CWrapper.php" );
 
 /**
- * Local definitions.
- *
- * This include file contains all local definitions to this class.
- */
-require_once( kPATH_MYWRAPPER_LIBRARY_CLASS."/CWrapperClient.inc.php" );
-
-/**
  *	Wrapper client.
  *
  * This class represents a web-services wrapper client, it facilitates the job of requesting
- * information from servers derived from the {@link CWrapper CWrapper} class.
+ * information from servers derived from the {@link CWrapper} class.
  *
  * This class supports the following properties:
  *
  * <ul>
- *	<li><i>{@link Url()}</i>: This element represents the web-service URL, and it is stored
- *		in the {@link kAPI_URL} offset.
  *	<li><i>{@link Operation()}</i>: This element represents the web-service requested
  *		operation, it is stored in the {@link kAPI_OPERATION} offset.
  *	<li><i>{@link Format()}</i>: This element represents the web-service parameters and
@@ -59,14 +50,29 @@ require_once( kPATH_MYWRAPPER_LIBRARY_CLASS."/CWrapperClient.inc.php" );
  *		{@link kAPI_LOG_TRACE} offset.
  * </ul>
  *
- * Objects of this class require at least the {@link Url()}, {@link Operation()} and the
+ * The class recognises the following operations ({@link Operation()}):
+ *
+ * <ul>
+ *	<li><tt>{@link kAPI_OP_HELP}</tt>: This service returns the list of supported operations
+ *		and options. The service expects the following parameters:
+ *	 <ul>
+ *		<li><tt>{@link Format()}</tt>: The data encoding type ({@link kAPI_FORMAT}).
+ *	 </ul>
+ *	<li><tt>{@link kAPI_OP_PING}</tt>: This service returns a status response. The service
+ *		expects the following parameters:
+ *	 <ul>
+ *		<li><tt>{@link Format()}</tt>: The data encoding type ({@link kAPI_FORMAT}).
+ *	 </ul>
+ * </ul>
+ *
+ * Objects of this class require at least the {@link Connection()}, {@link Operation()} and
  * {@link Format()} to be set if they expect to have an {@link _IsInited()} status, which is
  * necessary to send requests to web-services.
  *
  *	@package	MyWrapper
  *	@subpackage	Wrappers
  */
-class CWrapperClient extends CStatusDocument
+class CWrapperClient extends CConnection
 {
 		
 
@@ -79,52 +85,19 @@ class CWrapperClient extends CStatusDocument
 
 	 
 	/*===================================================================================
-	 *	__construct																		*
+	 *	__toString																		*
 	 *==================================================================================*/
 
 	/**
-	 * Instantiate class.
+	 * <h4>Return connection name</h4>
 	 *
-	 * The constructor will initialise the object depending on the provided parameter:
-	 *
-	 * <ul>
-	 *	<li><i>NULL</i>: An empty object.
-	 *	<li><i>array</i>: The array elements will become the object properties.
-	 *	<li><i>string</i>: Any other value will be converted to string and will represent
-	 *		the web-service URL.
-	 * </ul>
-	 *
-	 * @param string				$theData			Web-service URL or object data.
+	 * This method should return the current client's name, in this class we return the
+	 * client's URL ({@link Connection()}.
 	 *
 	 * @access public
+	 * @return string				The client name.
 	 */
-	public function __construct( $theData = NULL )
-	{
-		//
-		// Handle data.
-		//
-		if( is_array( $theData )
-		 || ($theData instanceof ArrayObject) )
-			parent::__construct( $theData );
-		
-		//
-		// Handle other.
-		//
-		else
-		{
-			//
-			// Initialise object.
-			//
-			parent::__construct();
-			
-			//
-			// Handle URL.
-			//
-			if( $theData !== NULL )
-				$this->Url( $theData );
-		}
-
-	} // Constructor.
+	public function __toString()							{	return $this->Connection();	}
 
 		
 
@@ -134,42 +107,6 @@ class CWrapperClient extends CStatusDocument
  *																						*
  *======================================================================================*/
 
-
-	 
-	/*===================================================================================
-	 *	Url																				*
-	 *==================================================================================*/
-
-	/**
-	 * Manage URL.
-	 *
-	 * This method can be used to manage the {@link kAPI_URL URL}, it accepts a parameter
-	 * which represents either the URL or the requested operation, depending on its value:
-	 *
-	 * <ul>
-	 *	<li><i>NULL</i>: Return the current value.
-	 *	<li><i>FALSE</i>: Delete the current value.
-	 *	<li><i>other</i>: Set the value with the provided parameter.
-	 * </ul>
-	 *
-	 * The second parameter is a boolean which if <i>TRUE</i> will return the <i>old</i>
-	 * value when replacing values; if <i>FALSE</i>, it will return the currently set value.
-	 *
-	 * @param string				$theValue			Value or operation.
-	 * @param boolean				$getOld				TRUE get old value.
-	 *
-	 * @access public
-	 * @return mixed
-	 *
-	 * @uses ManageOffset()
-	 *
-	 * @see kAPI_URL
-	 */
-	public function Url( $theValue = NULL, $getOld = FALSE )
-	{
-		return ManageOffset( $this, kAPI_URL, $theValue, $getOld );					// ==>
-
-	} // Url.
 
 	 
 	/*===================================================================================
@@ -427,81 +364,6 @@ class CWrapperClient extends CStatusDocument
 
 /*=======================================================================================
  *																						*
- *								PUBLIC ARRAY ACCESS INTERFACE							*
- *																						*
- *======================================================================================*/
-
-
-	 
-	/*===================================================================================
-	 *	offsetSet																		*
-	 *==================================================================================*/
-
-	/**
-	 * Set a value for a given offset.
-	 *
-	 * We overload this method to manage the {@link _IsInited() inited}
-	 * {@link kFLAG_STATE_INITED status}: this is set if {@link kAPI_URL URL},
-	 * {@link kAPI_OPERATION operation} and {@link kAPI_FORMAT format} are all set.
-	 *
-	 * @param string				$theOffset			Offset.
-	 * @param string|NULL			$theValue			Value to set at offset.
-	 *
-	 * @access public
-	 */
-	public function offsetSet( $theOffset, $theValue )
-	{
-		//
-		// Call parent method.
-		//
-		parent::offsetSet( $theOffset, $theValue );
-		
-		//
-		// Set inited flag.
-		//
-		if( $theValue !== NULL )
-			$this->_IsInited( $this->offsetExists( kAPI_URL ) &&
-							  $this->offsetExists( kAPI_FORMAT ) &&
-							  $this->offsetExists( kAPI_OPERATION ) );
-	
-	} // offsetSet.
-
-	 
-	/*===================================================================================
-	 *	offsetUnset																		*
-	 *==================================================================================*/
-
-	/**
-	 * Reset a value for a given offset.
-	 *
-	 * We overload this method to manage the {@link _IsInited() inited}
-	 * {@link kFLAG_STATE_INITED status}: this is set if {@link kAPI_URL URL},
-	 * {@link kAPI_OPERATION operation} and {@link kAPI_FORMAT format} are all set.
-	 *
-	 * @param string				$theOffset			Offset.
-	 *
-	 * @access public
-	 */
-	public function offsetUnset( $theOffset )
-	{
-		//
-		// Call parent method.
-		//
-		parent::offsetUnset( $theOffset );
-		
-		//
-		// Set inited flag.
-		//
-		$this->_IsInited( $this->offsetExists( kAPI_URL ) &&
-						  $this->offsetExists( kAPI_FORMAT ) &&
-						  $this->offsetExists( kAPI_OPERATION ) );
-	
-	} // offsetUnset.
-
-		
-
-/*=======================================================================================
- *																						*
  *								PUBLIC REQUEST INTERFACE								*
  *																						*
  *======================================================================================*/
@@ -536,6 +398,12 @@ class CWrapperClient extends CStatusDocument
 					  kERROR_STATE,
 					  kMESSAGE_TYPE_ERROR,
 					  array( 'Object' => $this ) );								// !@! ==>
+		
+		//
+		// Check dependencies.
+		//
+		if( ($op = $this->Operation()) !== NULL )
+			$this->_CheckDependencies( $op );
 	
 		//
 		// Copy parameters.
@@ -545,8 +413,7 @@ class CWrapperClient extends CStatusDocument
 		//
 		// Extract URL.
 		//
-		$url = $params[ kAPI_URL ];
-		unset( $params[ kAPI_URL ] );
+		$url = $this->Connection();
 		
 		//
 		// Extract format.
@@ -565,23 +432,43 @@ class CWrapperClient extends CStatusDocument
 		//
 		foreach( $params as $key => $value )
 		{
-			if( is_array( $value )
-			 || ($value instanceof ArrayObject) )
+			//
+			// Convert ArrayObjects to arrays.
+			//
+			if( $value instanceof ArrayObject )
+				$value = $value->getArrayCopy();
+			
+			//
+			// Encode parameters.
+			//
+			switch( $key )
 			{
-				switch( $this->Format() )
-				{
-					case kTYPE_PHP:
-						$params[ $key ] = serialize( $value );
-						break;
-
-					case kTYPE_JSON:
-						$params[ $key ] = JsonEncode( $value );
-						break;
-				}
+				//
+				// Skip format and operation.
+				//
+				case kAPI_FORMAT:
+				case kAPI_OPERATION:
+					break;
+				
+				//
+				// Parse by format.
+				//
+				default:
+					switch( $this->Format() )
+					{
+						case kTYPE_PHP:
+							$params[ $key ] = serialize( $value );
+							break;
+	
+						case kTYPE_JSON:
+							$params[ $key ] = JsonEncode( $value );
+							break;
+					}
+					break;
 			}
 		}
 		
-		return self::Request( $url, $params, $theMode, $format );					// ==>
+		return static::Request( $url, $params, $theMode, $format );					// ==>
 	
 	} // Execute.
 
@@ -735,6 +622,179 @@ class CWrapperClient extends CStatusDocument
 		return $result;																// ==>
 	
 	} // Request.
+		
+
+
+/*=======================================================================================
+ *																						*
+ *								PROTECTED STATUS INTERFACE								*
+ *																						*
+ *======================================================================================*/
+
+
+	 
+	/*===================================================================================
+	 *	_Ready																			*
+	 *==================================================================================*/
+
+	/**
+	 * <h4>Determine if the object is ready</h4>
+	 *
+	 * In this class we tie the {@link _IsInited()} status to the presence or absence of the
+	 * {@link kAPI_OPERATION} and {@link kAPI_FORMAT} parameters.
+	 *
+	 * @access protected
+	 * @return boolean				<tt>TRUE</tt> means {@link _IsInited( <tt>TRUE</tt> ).
+	 *
+	 * @uses _Ready()
+	 */
+	protected function _Ready()
+	{
+		//
+		// Check parent.
+		//
+		if( parent::_Ready() )
+			return ( $this->offsetExists( kAPI_FORMAT )
+				  && $this->offsetExists( kAPI_OPERATION ) );						// ==>
+		
+		return FALSE;																// ==>
+	
+	} // _Ready.
+
+		
+
+/*=======================================================================================
+ *																						*
+ *									PROTECTED INTERFACE									*
+ *																						*
+ *======================================================================================*/
+
+
+	 
+	/*===================================================================================
+	 *	_CheckDependencies																*
+	 *==================================================================================*/
+
+	/**
+	 * Check operation dependencies.
+	 *
+	 * This method can be used to assert whether the required parameters are present
+	 * depending on the requested operation.
+	 *
+	 * @param string				$theOperation		Requested operation.
+	 *
+	 * @access protected
+	 *
+	 * @throws Exception
+	 */
+	protected function _CheckDependencies( $theOperation )
+	{
+		//
+		// Parse by operation.
+		//
+		switch( $theOperation )
+		{
+			case kAPI_OP_HELP:
+			case kAPI_OP_PING:
+				if( ! $this->offsetExists( kAPI_FORMAT ) )
+					throw new Exception
+							( "Unable to run service: missing format parameter",
+							  kERROR_STATE );									// !@! ==>
+				break;
+		}
+	
+	} // _CheckDependencies.
+
+		
+
+/*=======================================================================================
+ *																						*
+ *									PROTECTED UTILITIES									*
+ *																						*
+ *======================================================================================*/
+
+
+	 
+	/*===================================================================================
+	 *	_ManageListOffset																*
+	 *==================================================================================*/
+
+	/**
+	 * Manage a list offset.
+	 *
+	 * This method is similar to the {@link ManageOffset()} function, except that it is
+	 * assumed that the offset must contain an array: if you provide an array as the
+	 * value, the method will behave as {@link ManageOffset()}; if you provide a scalar,
+	 * the method will convert it to a string and add it to the existing array if it doesn't
+	 * exist already, or create a new list with it. It is not possible to retrieve or delete
+	 * single elements of the list, only add.
+	 *
+	 * @param string				$theOffset			Offset to be managed.
+	 * @param mixed					$theValue			New value or operation.
+	 * @param boolean				$getOld				TRUE get old value.
+	 *
+	 * @access protected
+	 * @return array
+	 *
+	 * @throws Exception
+	 */
+	protected function _ManageListOffset( $theOffset, $theValue = NULL, $getOld = FALSE )
+	{
+		//
+		// Check operation.
+		//
+		if( ($theValue !== NULL)
+		 && ($theValue !== FALSE) )
+		{
+			//
+			// Cast parameter.
+			//
+			if( $theValue instanceof ArrayObject )
+				$theValue = $theValue->getArrayCopy();
+			
+			//
+			// Add to list.
+			//
+			if( ! is_array( $theValue ) )
+			{
+				//
+				// Convert to string.
+				//
+				$theValue = (string) $theValue;
+				
+				//
+				// Handle existing list.
+				//
+				if( $this->offsetExists( $theOffset ) )
+				{
+					//
+					// Handle new element.
+					//
+					$list = $this->offsetGet( $theOffset );
+					if( ! in_array( $theValue, $list ) )
+					{
+						$list[] = $theValue;
+						$theValue = $list;
+					}
+					
+					//
+					// Handle existing element.
+					//
+					else
+						$theValue = NULL;
+				}
+				
+				//
+				// Create new list.
+				//
+				else
+					$theValue = array( $theValue );
+			}
+		}
+		
+		return ManageOffset( $this, $theOffset, $theValue, $getOld );				// ==>
+	
+	} // _ManageListOffset.
 
 	 
 
