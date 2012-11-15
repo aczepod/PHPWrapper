@@ -73,7 +73,7 @@ require_once( kPATH_MYWRAPPER_LIBRARY_CLASS."/COntologyTag.php" );
 require_once( kPATH_MYWRAPPER_LIBRARY_CLASS."/CConnection.php" );
 
 /**
- * <h3>Ontology object</h3>
+ * <h4>Ontology object</h4>
  *
  * This class represents an object whose duty is to provide a high level interface for
  * managing an ontology.

@@ -34,7 +34,7 @@ require_once( "CConnection.inc.php" );
 require_once( kPATH_MYWRAPPER_LIBRARY_CLASS."/CStatusDocument.php" );
 
 /**
- * <h3>Connection object ancestor</h3>
+ * <h4>Connection object ancestor</h4>
  *
  * This <i>abstract</i> class is the ancestor of all connection and container classes in
  * this library, it implements the the common interface shared by derived concrete

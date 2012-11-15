@@ -27,7 +27,7 @@
 require_once( kPATH_MYWRAPPER_LIBRARY_CLASS."/CDataType.php" );
 
 /**
- * Binary string.
+ * <h4><i>MongoBinData</i> type wrapper</h4>
  *
  * This class represents a MongoId object:
  *

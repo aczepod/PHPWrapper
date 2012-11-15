@@ -42,7 +42,7 @@ require_once( kPATH_LIBRARY_SOURCE."CDataWrapper.php" );
 require_once( kPATH_LIBRARY_SOURCE."CMongoDataWrapper.inc.php" );
 
 /**
- *	Mongo data wrapper.
+ * <h4>Mongo data wrapper</h4>
  *
  * This class overloads its {@link CDataWrapper ancestor} to implement a web-service that
  * uses a MongoDB data store to manage objects.

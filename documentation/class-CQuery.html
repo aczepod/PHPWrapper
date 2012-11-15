@@ -6,8 +6,8 @@
 
 	<title>Class CQuery | MyWrapper Reference Documentation</title>
 
-	<script type="text/javascript" src="resources/combined.js?368249000"></script>
-	<script type="text/javascript" src="elementlist.js?1653466708"></script>
+	<script type="text/javascript" src="resources/combined.js?3680114562"></script>
+	<script type="text/javascript" src="elementlist.js?895580329"></script>
 	<link rel="stylesheet" type="text/css" media="all" href="resources/style.css?3505392360" />
 
 </head>
@@ -62,7 +62,6 @@
 				<li><a href="class-CDataTypeStamp.html">CDataTypeStamp</a></li>
 				<li><a href="class-CDocument.html">CDocument</a></li>
 				<li><a href="class-CEdge.html">CEdge</a></li>
-				<li><a href="class-CGraphContainer.html">CGraphContainer</a></li>
 				<li><a href="class-CNode.html">CNode</a></li>
 				<li class="active"><a href="class-CQuery.html">CQuery</a></li>
 				<li><a href="class-CQueryStatement.html">CQueryStatement</a></li>
@@ -121,7 +120,7 @@
 
 	<div class="description">
 	
-<h3>Query</h3>
+<h4>Query</h4>
 
 <p>This class implements a query.</p>
 
@@ -301,7 +300,7 @@ exchange data store queries or filters.</p>
 				<b>Author:</b>
 				Milko A. Škofič &lt;<a
 href="mailto:m.skofic&#64;cgiar.org">m.skofic&#64;<!---->cgiar.org</a>&gt;<br />
-		<b>Located at</b> <a href="source-class-CQuery.html#49-779" title="Go to source code">CQuery.php</a><br />
+		<b>Located at</b> <a href="source-class-CQuery.html#49-785" title="Go to source code">CQuery.php</a><br />
 	</div>
 
 
@@ -368,7 +367,7 @@ type will raise an exception.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#_AppendStatement">#</a>
-		<code><a href="source-class-CQuery.html#208-319" title="Go to source code">AppendStatement</a>( <span>array <var>$theStatement</var></span>, <span>string <var>$theCondition</var> = kOPERATOR_AND </span> )</code>
+		<code><a href="source-class-CQuery.html#208-325" title="Go to source code">AppendStatement</a>( <span>array <var>$theStatement</var></span>, <span>string <var>$theCondition</var> = kOPERATOR_AND </span> )</code>
 
 		<div class="description short">
 			
@@ -420,7 +419,7 @@ current object.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#_Validate">#</a>
-		<code><a href="source-class-CQuery.html#335-352" title="Go to source code">Validate</a>( )</code>
+		<code><a href="source-class-CQuery.html#341-358" title="Go to source code">Validate</a>( )</code>
 
 		<div class="description short">
 			
@@ -459,7 +458,7 @@ current object.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#_Export">#</a>
-		<code><a href="source-class-CQuery.html#368-384" title="Go to source code">Export</a>( <span><code><a href="class-CConnection.html">CConnection</a></code> <var>$theContainer</var></span> )</code>
+		<code><a href="source-class-CQuery.html#374-390" title="Go to source code">Export</a>( <span><code><a href="class-CConnection.html">CConnection</a></code> <var>$theContainer</var></span> )</code>
 
 		<div class="description short">
 			
@@ -511,7 +510,7 @@ arguments to native data types.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#__AppendStatement">#</a>
-		<code><a href="source-class-CQuery.html#400-558" title="Go to source code">_AppendStatement</a>( <span>reference <var>&amp; $theQuery</var></span>, <span>array <var>$theCondition</var></span>, <span>string <var>$theStatement</var></span> )</code>
+		<code><a href="source-class-CQuery.html#406-564" title="Go to source code">_AppendStatement</a>( <span>reference <var>&amp; $theQuery</var></span>, <span>array <var>$theCondition</var></span>, <span>string <var>$theStatement</var></span> )</code>
 
 		<div class="description short">
 			
@@ -568,7 +567,7 @@ added at the same level. If the top level is an kOPERATOR_OR or kOPERATOR_NOR an
 
 		<td class="name"><div>
 		<a class="anchor" href="#__ValidateCondition">#</a>
-		<code><a href="source-class-CQuery.html#574-630" title="Go to source code">_ValidateCondition</a>( <span>string <var>$theCondition</var></span>, <span>array <var>$theStatements</var></span>, <span>integer <var>$theLevel</var></span> )</code>
+		<code><a href="source-class-CQuery.html#580-636" title="Go to source code">_ValidateCondition</a>( <span>string <var>$theCondition</var></span>, <span>array <var>$theStatements</var></span>, <span>integer <var>$theLevel</var></span> )</code>
 
 		<div class="description short">
 			
@@ -626,7 +625,7 @@ valid condition, then it will validate all condition statements.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#__ValidateStatement">#</a>
-		<code><a href="source-class-CQuery.html#637-750" title="Go to source code">_ValidateStatement</a>( <span>array <var>$theStatement</var></span>, <span>integer <var>$theLevel</var></span> )</code>
+		<code><a href="source-class-CQuery.html#643-756" title="Go to source code">_ValidateStatement</a>( <span>array <var>$theStatement</var></span>, <span>integer <var>$theLevel</var></span> )</code>
 
 		<div class="description short">
 			
@@ -681,7 +680,7 @@ valid statement and check if all required elements are there.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#__Ready">#</a>
-		<code><a href="source-class-CQuery.html#766-775" title="Go to source code">_Ready</a>( )</code>
+		<code><a href="source-class-CQuery.html#772-781" title="Go to source code">_Ready</a>( )</code>
 
 		<div class="description short">
 			

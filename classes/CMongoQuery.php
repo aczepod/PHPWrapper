@@ -34,7 +34,7 @@ require_once( kPATH_MYWRAPPER_LIBRARY_CLASS."/CMongoContainer.php" );
 require_once( kPATH_MYWRAPPER_LIBRARY_CLASS."/CQuery.php" );
 
 /**
- * <h3>Mongo query</h3>
+ * <h4>Mongo query</h4>
  *
  * This class extends its ancestor to implement a public method that will convert the
  * current object's query into a query suitable to be submitted to a Mongo database.

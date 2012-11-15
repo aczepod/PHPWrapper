@@ -460,10 +460,11 @@ try
 		(
 			array
 			(
-				kOFFSET_QUERY_SUBJECT => '_id',
+				kOFFSET_QUERY_SUBJECT => kOFFSET_NID,
 				kOFFSET_QUERY_OPERATOR => kOPERATOR_EQUAL,
 				kOFFSET_QUERY_TYPE => kTYPE_BINARY,
-				kOFFSET_QUERY_DATA => new CDataTypeBinary( hex2bin( '80B196896559FEA57DAE4360FF46BF59' ) )
+				kOFFSET_QUERY_DATA
+					=> new CDataTypeBinary( hex2bin( '80B196896559FEA57DAE4360FF46BF59' ) )
 			)
 		)
 	);
@@ -508,7 +509,7 @@ try
 		(
 			array
 			(
-				kOFFSET_QUERY_SUBJECT => '_id',
+				kOFFSET_QUERY_SUBJECT => kOFFSET_NID,
 				kOFFSET_QUERY_OPERATOR => kOPERATOR_EQUAL,
 				kOFFSET_QUERY_TYPE => kTYPE_BINARY,
 				kOFFSET_QUERY_DATA => new CDataTypeBinary( hex2bin( '80B196896559FEA57DAE4360FF46BF59' ) )
@@ -590,15 +591,15 @@ try
 		(
 			array
 			(
-				kOFFSET_QUERY_SUBJECT => '2',
+				kOFFSET_QUERY_SUBJECT => kTAG_GID,
 				kOFFSET_QUERY_OPERATOR => kOPERATOR_PREFIX,
 				kOFFSET_QUERY_TYPE => kTYPE_STRING,
 				kOFFSET_QUERY_DATA => 'ISO:3166:2:'
 			)
 		)
 	);
-	$fields = array( '1', '2', '31' );
-	$sort = array( '1' => -1 );
+	$fields = array( kTAG_LID, kTAG_GID, '31' );
+	$sort = array( kTAG_LID => -1 );
 	$params = array( (kAPI_FORMAT.'='.kTYPE_JSON),
 					 (kAPI_OPERATION.'='.kAPI_OP_GET),
 					 (kAPI_LOG_REQUEST.'='.urlencode(JsonEncode(TRUE))),
@@ -642,15 +643,15 @@ try
 		(
 			array
 			(
-				kOFFSET_QUERY_SUBJECT => '2',
+				kOFFSET_QUERY_SUBJECT => kTAG_GID,
 				kOFFSET_QUERY_OPERATOR => kOPERATOR_PREFIX,
 				kOFFSET_QUERY_TYPE => kTYPE_STRING,
 				kOFFSET_QUERY_DATA => 'ISO:3166:2:'
 			)
 		)
 	);
-	$fields = array( '1', '2', '31' );
-	$sort = array( '1' => -1 );
+	$fields = array( kTAG_LID, kTAG_GID, '31' );
+	$sort = array( kTAG_LID => -1 );
 	$params = array( (kAPI_FORMAT.'='.kTYPE_PHP),
 					 (kAPI_OPERATION.'='.kAPI_OP_GET),
 					 (kAPI_LOG_REQUEST.'='.urlencode(serialize(TRUE))),
@@ -694,15 +695,15 @@ try
 		(
 			array
 			(
-				kOFFSET_QUERY_SUBJECT => '2',
+				kOFFSET_QUERY_SUBJECT => kTAG_GID,
 				kOFFSET_QUERY_OPERATOR => kOPERATOR_PREFIX,
 				kOFFSET_QUERY_TYPE => kTYPE_STRING,
 				kOFFSET_QUERY_DATA => 'ISO:3166:2:'
 			)
 		)
 	);
-	$fields = array( '1', '2', '31' );
-	$sort = array( '1' => -1 );
+	$fields = array( kTAG_LID, kTAG_GID, '31' );
+	$sort = array( kTAG_LID => -1 );
 	$params = array( (kAPI_FORMAT.'='.kTYPE_JSON),
 					 (kAPI_OPERATION.'='.kAPI_OP_GET_ONE),
 					 (kAPI_LOG_REQUEST.'='.urlencode(JsonEncode(TRUE))),
@@ -748,7 +749,7 @@ try
 			(
 				array
 				(
-					kOFFSET_QUERY_SUBJECT => '2',
+					kOFFSET_QUERY_SUBJECT => kTAG_GID,
 					kOFFSET_QUERY_OPERATOR => kOPERATOR_EQUAL,
 					kOFFSET_QUERY_TYPE => kTYPE_STRING,
 					kOFFSET_QUERY_DATA => 'NICODE'
@@ -761,7 +762,7 @@ try
 			(
 				array
 				(
-					kOFFSET_QUERY_SUBJECT => '1',
+					kOFFSET_QUERY_SUBJECT => kTAG_LID,
 					kOFFSET_QUERY_OPERATOR => kOPERATOR_EQUAL,
 					kOFFSET_QUERY_TYPE => kTYPE_STRING,
 					kOFFSET_QUERY_DATA => 'NICODE'
@@ -774,7 +775,7 @@ try
 			(
 				array
 				(
-					kOFFSET_QUERY_SUBJECT => '7',
+					kOFFSET_QUERY_SUBJECT => kTAG_SYNONYMS,
 					kOFFSET_QUERY_OPERATOR => kOPERATOR_EQUAL,
 					kOFFSET_QUERY_TYPE => kTYPE_STRING,
 					kOFFSET_QUERY_DATA => 'NICODE'
@@ -782,8 +783,8 @@ try
 			)
 		)
 	);
-	$fields = array( '1', '2', '31' );
-	$sort = array( '1' => -1 );
+	$fields = array( kTAG_LID, kTAG_GID, '31' );
+	$sort = array( kTAG_LID => -1 );
 	$params = array( (kAPI_FORMAT.'='.kTYPE_JSON),
 					 (kAPI_OPERATION.'='.kAPI_OP_MATCH),
 					 (kAPI_LOG_REQUEST.'='.urlencode(JsonEncode(TRUE))),

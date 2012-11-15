@@ -34,7 +34,7 @@ require_once( "COntologyTerm.inc.php" );
 require_once( kPATH_MYWRAPPER_LIBRARY_CLASS."/CTerm.php" );
 
 /**
- * <h3>Ontology term object ancestor</h3>
+ * <h4>Ontology term object ancestor</h4>
  *
  * This class extends its ancestor, {@link CTerm}, by adding new rules and reference
  * management.

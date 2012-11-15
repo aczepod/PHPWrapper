@@ -27,7 +27,7 @@
 require_once( kPATH_MYWRAPPER_LIBRARY_CLASS."/CDataType.php" );
 
 /**
- * 64 bit signed integer.
+ * <h4>64 bit signed integer</h4>
  *
  * This class represents a 64 bit signed integer, the object is structured as follows:
  *

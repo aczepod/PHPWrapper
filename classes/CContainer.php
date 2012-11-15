@@ -55,7 +55,7 @@ require_once( kPATH_MYWRAPPER_LIBRARY_CLASS."/CPersistentDocument.php" );
 require_once( kPATH_MYWRAPPER_LIBRARY_CLASS."/CConnection.php" );
 
 /**
- * <h3>Persistent objects data store ancestor</h3>
+ * <h4>Persistent objects data store ancestor</h4>
  *
  * This <i>abstract</i> class is the ancestor of all container classes in this library, it
  * implements the interface and workflow that all concrete derived classes should implement.

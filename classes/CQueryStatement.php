@@ -41,7 +41,7 @@ require_once( kPATH_MYWRAPPER_LIBRARY_CLASS."/CQuery.php" );
 require_once( kPATH_MYWRAPPER_LIBRARY_CLASS."/CDocument.php" );
 
 /**
- * <h3>Query statement</h3>
+ * <h4>Query statement</h4>
  *
  * This class implements a query statement, such as those that populate the
  * {@link CQuery query} class. This class concentrates on building and managing these

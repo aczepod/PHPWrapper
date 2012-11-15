@@ -27,7 +27,7 @@
 require_once( kPATH_MYWRAPPER_LIBRARY_CLASS."/CServer.php" );
 
 /**
- * <h3>Server object ancestor</h3>
+ * <h4>Server object ancestor</h4>
  *
  * This class implements a server object that represents a {@link Mongo} instance. This
  * object can be used to generate Mongo database objects.

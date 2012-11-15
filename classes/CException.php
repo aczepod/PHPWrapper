@@ -40,7 +40,7 @@ require_once( kPATH_MYWRAPPER_LIBRARY_DEFINE."/Errors.inc.php" );
 require_once( kPATH_MYWRAPPER_LIBRARY_DEFINE."/Status.inc.php" );
 
 /**
- *	Exception class.
+ * <h4>Exception class</h4>
  *
  * This class extends the built-in <i>Exception</i> class by adding a series of additional
  * members and functionality.

@@ -34,7 +34,7 @@ require_once( kPATH_MYWRAPPER_LIBRARY_CLASS."/CMongoQuery.php" );
 require_once( kPATH_MYWRAPPER_LIBRARY_CLASS."/CContainer.php" );
 
 /**
- * <h3>Mongo persistent objects data store</h3>
+ * <h4>Mongo persistent objects data store</h4>
  *
  * This <i>concrete</i> class implements a container that uses a {@link MongoCollection} to
  * store objects.

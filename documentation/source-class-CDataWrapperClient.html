@@ -7,8 +7,8 @@
 
 	<title>File CDataWrapperClient.php | MyWrapper Reference Documentation</title>
 
-	<script type="text/javascript" src="resources/combined.js?368249000"></script>
-	<script type="text/javascript" src="elementlist.js?1653466708"></script>
+	<script type="text/javascript" src="resources/combined.js?3680114562"></script>
+	<script type="text/javascript" src="elementlist.js?895580329"></script>
 	<link rel="stylesheet" type="text/css" media="all" href="resources/style.css?3505392360" />
 
 </head>
@@ -53,6 +53,7 @@
 				<li><a href="class-CDataWrapper.html">CDataWrapper</a></li>
 				<li class="active"><a href="class-CDataWrapperClient.html">CDataWrapperClient</a></li>
 				<li><a href="class-COntologyWrapper.html">COntologyWrapper</a></li>
+				<li><a href="class-COntologyWrapperClient.html">COntologyWrapperClient</a></li>
 				<li><a href="class-CWrapper.html">CWrapper</a></li>
 				<li><a href="class-CWrapperClient.html">CWrapperClient</a></li>
 			</ul>
@@ -103,7 +104,7 @@
 </span></span><span id="4" class="l"><a class="l" href="#4">   4: </a><span class="php-comment"> * &lt;i&gt;CDataWrapperClient&lt;/i&gt; class definition.
 </span></span><span id="5" class="l"><a class="l" href="#5">   5: </a><span class="php-comment"> *
 </span></span><span id="6" class="l"><a class="l" href="#6">   6: </a><span class="php-comment"> * This file contains the class definition of &lt;b&gt;CDataWrapperClient&lt;/b&gt; which represents a
-</span></span><span id="7" class="l"><a class="l" href="#7">   7: </a><span class="php-comment"> * web-service wrapper client.
+</span></span><span id="7" class="l"><a class="l" href="#7">   7: </a><span class="php-comment"> * web-service data wrapper client.
 </span></span><span id="8" class="l"><a class="l" href="#8">   8: </a><span class="php-comment"> *
 </span></span><span id="9" class="l"><a class="l" href="#9">   9: </a><span class="php-comment"> *  @package    MyWrapper
 </span></span><span id="10" class="l"><a class="l" href="#10">  10: </a><span class="php-comment"> *  @subpackage Wrappers
@@ -133,10 +134,10 @@
 </span><span id="34" class="l"><a class="l" href="#34">  34: </a><span class="php-keyword1">require_once</span>( kPATH_MYWRAPPER_LIBRARY_CLASS.<span class="php-quote">&quot;/CDataWrapper.php&quot;</span> );
 </span><span id="35" class="l"><a class="l" href="#35">  35: </a>
 </span><span id="36" class="l"><a class="l" href="#36">  36: </a><span class="php-comment">/**
-</span></span><span id="37" class="l"><a class="l" href="#37">  37: </a><span class="php-comment"> *  Wrapper client.
+</span></span><span id="37" class="l"><a class="l" href="#37">  37: </a><span class="php-comment"> * &lt;h4&gt;Wrapper client&lt;/h4&gt;
 </span></span><span id="38" class="l"><a class="l" href="#38">  38: </a><span class="php-comment"> *
 </span></span><span id="39" class="l"><a class="l" href="#39">  39: </a><span class="php-comment"> * This class represents a web-services wrapper client, it facilitates the job of requesting
-</span></span><span id="40" class="l"><a class="l" href="#40">  40: </a><span class="php-comment"> * information from servers derived from the {@link CWrapper CWrapper} class.
+</span></span><span id="40" class="l"><a class="l" href="#40">  40: </a><span class="php-comment"> * information from servers derived from the {@link CDataWrapper} class.
 </span></span><span id="41" class="l"><a class="l" href="#41">  41: </a><span class="php-comment"> *
 </span></span><span id="42" class="l"><a class="l" href="#42">  42: </a><span class="php-comment"> * This class supports the following properties:
 </span></span><span id="43" class="l"><a class="l" href="#43">  43: </a><span class="php-comment"> *
@@ -1004,22 +1005,22 @@
 </span><span id="905" class="l"><a class="l" href="#905"> 905: </a>            <span class="php-keyword1">case</span> kAPI_OP_COUNT:
 </span><span id="906" class="l"><a class="l" href="#906"> 906: </a>            <span class="php-keyword1">case</span> kAPI_OP_GET_ONE:
 </span><span id="907" class="l"><a class="l" href="#907"> 907: </a>            <span class="php-keyword1">case</span> kAPI_OP_MATCH:
-</span><span id="908" class="l"><a class="l" href="#908"> 908: </a>                <span class="php-keyword1">if</span>( ! <span class="php-var">$this</span>-&gt;offsetExists( kAPI_FORMAT ) )
+</span><span id="908" class="l"><a class="l" href="#908"> 908: </a>                <span class="php-keyword1">if</span>( ! <span class="php-var">$this</span>-&gt;offsetExists( kAPI_DATABASE ) )
 </span><span id="909" class="l"><a class="l" href="#909"> 909: </a>                    <span class="php-keyword1">throw</span> <span class="php-keyword1">new</span> Exception
-</span><span id="910" class="l"><a class="l" href="#910"> 910: </a>                            ( <span class="php-quote">&quot;Unable to run service: missing format parameter&quot;</span>,
+</span><span id="910" class="l"><a class="l" href="#910"> 910: </a>                            ( <span class="php-quote">&quot;Unable to run service: missing database parameter&quot;</span>,
 </span><span id="911" class="l"><a class="l" href="#911"> 911: </a>                              kERROR_STATE );                                   <span class="php-comment">// !@! ==&gt;</span>
-</span><span id="912" class="l"><a class="l" href="#912"> 912: </a>                <span class="php-keyword1">if</span>( ! <span class="php-var">$this</span>-&gt;offsetExists( kAPI_DATABASE ) )
+</span><span id="912" class="l"><a class="l" href="#912"> 912: </a>                <span class="php-keyword1">if</span>( ! <span class="php-var">$this</span>-&gt;offsetExists( kAPI_CONTAINER ) )
 </span><span id="913" class="l"><a class="l" href="#913"> 913: </a>                    <span class="php-keyword1">throw</span> <span class="php-keyword1">new</span> Exception
-</span><span id="914" class="l"><a class="l" href="#914"> 914: </a>                            ( <span class="php-quote">&quot;Unable to run service: missing database parameter&quot;</span>,
+</span><span id="914" class="l"><a class="l" href="#914"> 914: </a>                            ( <span class="php-quote">&quot;Unable to run service: missing container parameter&quot;</span>,
 </span><span id="915" class="l"><a class="l" href="#915"> 915: </a>                              kERROR_STATE );                                   <span class="php-comment">// !@! ==&gt;</span>
-</span><span id="916" class="l"><a class="l" href="#916"> 916: </a>                <span class="php-keyword1">if</span>( ! <span class="php-var">$this</span>-&gt;offsetExists( kAPI_CONTAINER ) )
-</span><span id="917" class="l"><a class="l" href="#917"> 917: </a>                    <span class="php-keyword1">throw</span> <span class="php-keyword1">new</span> Exception
-</span><span id="918" class="l"><a class="l" href="#918"> 918: </a>                            ( <span class="php-quote">&quot;Unable to run service: missing container parameter&quot;</span>,
-</span><span id="919" class="l"><a class="l" href="#919"> 919: </a>                              kERROR_STATE );                                   <span class="php-comment">// !@! ==&gt;</span>
-</span><span id="920" class="l"><a class="l" href="#920"> 920: </a>            
-</span><span id="921" class="l"><a class="l" href="#921"> 921: </a>            <span class="php-keyword1">case</span> kAPI_OP_GET:
-</span><span id="922" class="l"><a class="l" href="#922"> 922: </a>                <span class="php-keyword1">if</span>( ! <span class="php-var">$this</span>-&gt;offsetExists( kAPI_PAGE_LIMIT ) )
-</span><span id="923" class="l"><a class="l" href="#923"> 923: </a>                    <span class="php-var">$this</span>-&gt;PageLimit( kDEFAULT_LIMIT );
+</span><span id="916" class="l"><a class="l" href="#916"> 916: </a>            
+</span><span id="917" class="l"><a class="l" href="#917"> 917: </a>            <span class="php-keyword1">case</span> kAPI_OP_GET:
+</span><span id="918" class="l"><a class="l" href="#918"> 918: </a>                <span class="php-keyword1">if</span>( ! <span class="php-var">$this</span>-&gt;offsetExists( kAPI_PAGE_LIMIT ) )
+</span><span id="919" class="l"><a class="l" href="#919"> 919: </a>                    <span class="php-var">$this</span>-&gt;PageLimit( kDEFAULT_LIMIT );
+</span><span id="920" class="l"><a class="l" href="#920"> 920: </a>                <span class="php-keyword1">if</span>( ! <span class="php-var">$this</span>-&gt;offsetExists( kAPI_FORMAT ) )
+</span><span id="921" class="l"><a class="l" href="#921"> 921: </a>                    <span class="php-keyword1">throw</span> <span class="php-keyword1">new</span> Exception
+</span><span id="922" class="l"><a class="l" href="#922"> 922: </a>                            ( <span class="php-quote">&quot;Unable to run service: missing format parameter&quot;</span>,
+</span><span id="923" class="l"><a class="l" href="#923"> 923: </a>                              kERROR_STATE );                                   <span class="php-comment">// !@! ==&gt;</span>
 </span><span id="924" class="l"><a class="l" href="#924"> 924: </a>                <span class="php-keyword1">break</span>;
 </span><span id="925" class="l"><a class="l" href="#925"> 925: </a>            
 </span><span id="926" class="l"><a class="l" href="#926"> 926: </a>            <span class="php-keyword1">default</span>:
@@ -1067,7 +1068,7 @@
 </span><span id="968" class="l"><a class="l" href="#968"> 968: </a>                        <span class="php-keyword1">if</span>( <span class="php-var">$value</span> <span class="php-keyword1">instanceof</span> ArrayObject )
 </span><span id="969" class="l"><a class="l" href="#969"> 969: </a>                            <span class="php-var">$query</span>[ <span class="php-var">$key</span> ] = <span class="php-var">$value</span>-&gt;getArrayCopy();
 </span><span id="970" class="l"><a class="l" href="#970"> 970: </a>                    }
-</span><span id="971" class="l"><a class="l" href="#971"> 971: </a>                    <span class="php-var">$this</span>-&gt;offsetSet( kAPI_QUERY, <span class="php-keyword2">array_values</span>( <span class="php-var">$query</span> ) );
+</span><span id="971" class="l"><a class="l" href="#971"> 971: </a>                    <span class="php-var">$this</span>-&gt;offsetSet( kAPI_QUERY, <span class="php-var">$query</span> );
 </span><span id="972" class="l"><a class="l" href="#972"> 972: </a>                    <span class="php-keyword1">break</span>;
 </span><span id="973" class="l"><a class="l" href="#973"> 973: </a>                    
 </span><span id="974" class="l"><a class="l" href="#974"> 974: </a>                <span class="php-keyword1">default</span>:
@@ -1081,149 +1082,199 @@
 </span><span id="982" class="l"><a class="l" href="#982"> 982: </a>
 </span><span id="983" class="l"><a class="l" href="#983"> 983: </a>     
 </span><span id="984" class="l"><a class="l" href="#984"> 984: </a>    <span class="php-comment">/*===================================================================================
-</span></span><span id="985" class="l"><a class="l" href="#985"> 985: </a><span class="php-comment">     *  _QueryStatement                                                                 *
+</span></span><span id="985" class="l"><a class="l" href="#985"> 985: </a><span class="php-comment">     *  _EncodeParameters                                                               *
 </span></span><span id="986" class="l"><a class="l" href="#986"> 986: </a><span class="php-comment">     *==================================================================================*/</span>
 </span><span id="987" class="l"><a class="l" href="#987"> 987: </a>
 </span><span id="988" class="l"><a class="l" href="#988"> 988: </a>    <span class="php-comment">/**
-</span></span><span id="989" class="l"><a class="l" href="#989"> 989: </a><span class="php-comment">     * Return a query statement.
+</span></span><span id="989" class="l"><a class="l" href="#989"> 989: </a><span class="php-comment">     * Encode parameters.
 </span></span><span id="990" class="l"><a class="l" href="#990"> 990: </a><span class="php-comment">     *
-</span></span><span id="991" class="l"><a class="l" href="#991"> 991: </a><span class="php-comment">     * This method can be used to retrieve a query statement given the provided parameters,
-</span></span><span id="992" class="l"><a class="l" href="#992"> 992: </a><span class="php-comment">     * see the {@link AddQueryStatement()} method for an explanation of the parameters.
-</span></span><span id="993" class="l"><a class="l" href="#993"> 993: </a><span class="php-comment">     *
-</span></span><span id="994" class="l"><a class="l" href="#994"> 994: </a><span class="php-comment">     * @param mixed                 $theSubject         Statement subject.
-</span></span><span id="995" class="l"><a class="l" href="#995"> 995: </a><span class="php-comment">     * @param string                $theOperator        Statement operator.
-</span></span><span id="996" class="l"><a class="l" href="#996"> 996: </a><span class="php-comment">     * @param mixed                 $theObject          Statement object.
-</span></span><span id="997" class="l"><a class="l" href="#997"> 997: </a><span class="php-comment">     * @param string                $theType            Statement object data type.
-</span></span><span id="998" class="l"><a class="l" href="#998"> 998: </a><span class="php-comment">     *
-</span></span><span id="999" class="l"><a class="l" href="#999"> 999: </a><span class="php-comment">     * @access protected
-</span></span><span id="1000" class="l"><a class="l" href="#1000">1000: </a><span class="php-comment">     * @return array
-</span></span><span id="1001" class="l"><a class="l" href="#1001">1001: </a><span class="php-comment">     */</span>
-</span><span id="1002" class="l"><a class="l" href="#1002">1002: </a>    <span class="php-keyword1">protected</span> <span class="php-keyword1">function</span> <a id="__QueryStatement" href="#__QueryStatement">_QueryStatement</a>( <span class="php-var">$theSubject</span>, <span class="php-var">$theOperator</span>, <span class="php-var">$theObject</span> = <span class="php-keyword1">NULL</span>,
-</span><span id="1003" class="l"><a class="l" href="#1003">1003: </a>                                                                   <span class="php-var">$theType</span> = <span class="php-keyword1">NULL</span> )
-</span><span id="1004" class="l"><a class="l" href="#1004">1004: </a>    {
-</span><span id="1005" class="l"><a class="l" href="#1005">1005: </a>        <span class="php-comment">//</span>
-</span><span id="1006" class="l"><a class="l" href="#1006">1006: </a>        <span class="php-comment">// Check object.</span>
+</span></span><span id="991" class="l"><a class="l" href="#991"> 991: </a><span class="php-comment">     * This method can be used to encode parameters before they get sent to the service.
+</span></span><span id="992" class="l"><a class="l" href="#992"> 992: </a><span class="php-comment">     *
+</span></span><span id="993" class="l"><a class="l" href="#993"> 993: </a><span class="php-comment">     * We overload this method to handle the local parameters.
+</span></span><span id="994" class="l"><a class="l" href="#994"> 994: </a><span class="php-comment">     *
+</span></span><span id="995" class="l"><a class="l" href="#995"> 995: </a><span class="php-comment">     * @param reference            &amp;$theParameters      List of parameters.
+</span></span><span id="996" class="l"><a class="l" href="#996"> 996: </a><span class="php-comment">     * @param string                $theEncoding        Encoding code.
+</span></span><span id="997" class="l"><a class="l" href="#997"> 997: </a><span class="php-comment">     *
+</span></span><span id="998" class="l"><a class="l" href="#998"> 998: </a><span class="php-comment">     * @access protected
+</span></span><span id="999" class="l"><a class="l" href="#999"> 999: </a><span class="php-comment">     */</span>
+</span><span id="1000" class="l"><a class="l" href="#1000">1000: </a>    <span class="php-keyword1">protected</span> <span class="php-keyword1">function</span> <a id="__EncodeParameters" href="#__EncodeParameters">_EncodeParameters</a>( &amp;<span class="php-var">$theParameters</span>, <span class="php-var">$theEncoding</span> )
+</span><span id="1001" class="l"><a class="l" href="#1001">1001: </a>    {
+</span><span id="1002" class="l"><a class="l" href="#1002">1002: </a>        <span class="php-comment">//</span>
+</span><span id="1003" class="l"><a class="l" href="#1003">1003: </a>        <span class="php-comment">// Call parent method.</span>
+</span><span id="1004" class="l"><a class="l" href="#1004">1004: </a>        <span class="php-comment">//</span>
+</span><span id="1005" class="l"><a class="l" href="#1005">1005: </a>        parent::_EncodeParameters( <span class="php-var">$theParameters</span>, <span class="php-var">$theEncoding</span> );
+</span><span id="1006" class="l"><a class="l" href="#1006">1006: </a>        
 </span><span id="1007" class="l"><a class="l" href="#1007">1007: </a>        <span class="php-comment">//</span>
-</span><span id="1008" class="l"><a class="l" href="#1008">1008: </a>        <span class="php-keyword1">if</span>( <span class="php-var">$theObject</span> === <span class="php-keyword1">NULL</span> )
-</span><span id="1009" class="l"><a class="l" href="#1009">1009: </a>        {
-</span><span id="1010" class="l"><a class="l" href="#1010">1010: </a>            <span class="php-keyword1">switch</span>( <span class="php-var">$theOperator</span> )
-</span><span id="1011" class="l"><a class="l" href="#1011">1011: </a>            {
-</span><span id="1012" class="l"><a class="l" href="#1012">1012: </a>                <span class="php-keyword1">case</span> kOPERATOR_NULL:
-</span><span id="1013" class="l"><a class="l" href="#1013">1013: </a>                <span class="php-keyword1">case</span> kOPERATOR_NOT_NULL:
-</span><span id="1014" class="l"><a class="l" href="#1014">1014: </a>                <span class="php-keyword1">case</span> kOPERATOR_DISABLED:
-</span><span id="1015" class="l"><a class="l" href="#1015">1015: </a>                    <span class="php-keyword1">break</span>;
-</span><span id="1016" class="l"><a class="l" href="#1016">1016: </a>                
-</span><span id="1017" class="l"><a class="l" href="#1017">1017: </a>                <span class="php-keyword1">default</span>:
-</span><span id="1018" class="l"><a class="l" href="#1018">1018: </a>                    <span class="php-keyword1">throw</span> <span class="php-keyword1">new</span> Exception( <span class="php-quote">&quot;Missing statement object or value&quot;</span>,
-</span><span id="1019" class="l"><a class="l" href="#1019">1019: </a>                                         kERROR_MISSING );                      <span class="php-comment">// !@! ==&gt;</span>
-</span><span id="1020" class="l"><a class="l" href="#1020">1020: </a>            }
-</span><span id="1021" class="l"><a class="l" href="#1021">1021: </a>        
-</span><span id="1022" class="l"><a class="l" href="#1022">1022: </a>        } <span class="php-comment">// Omitted object.</span>
-</span><span id="1023" class="l"><a class="l" href="#1023">1023: </a>        
-</span><span id="1024" class="l"><a class="l" href="#1024">1024: </a>        <span class="php-comment">//</span>
-</span><span id="1025" class="l"><a class="l" href="#1025">1025: </a>        <span class="php-comment">// Parse by operator.</span>
-</span><span id="1026" class="l"><a class="l" href="#1026">1026: </a>        <span class="php-comment">//</span>
-</span><span id="1027" class="l"><a class="l" href="#1027">1027: </a>        <span class="php-keyword1">switch</span>( <span class="php-var">$theOperator</span> )
-</span><span id="1028" class="l"><a class="l" href="#1028">1028: </a>        {
-</span><span id="1029" class="l"><a class="l" href="#1029">1029: </a>            <span class="php-keyword1">case</span> kOPERATOR_EQUAL:
-</span><span id="1030" class="l"><a class="l" href="#1030">1030: </a>                <span class="php-keyword1">return</span> CQueryStatement::Equals
-</span><span id="1031" class="l"><a class="l" href="#1031">1031: </a>                            ( <span class="php-var">$theSubject</span>, <span class="php-var">$theObject</span>, <span class="php-var">$theType</span> );                  <span class="php-comment">// ==&gt;</span>
-</span><span id="1032" class="l"><a class="l" href="#1032">1032: </a>            
-</span><span id="1033" class="l"><a class="l" href="#1033">1033: </a>            <span class="php-keyword1">case</span> kOPERATOR_EQUAL_NOT:
-</span><span id="1034" class="l"><a class="l" href="#1034">1034: </a>                <span class="php-keyword1">return</span> CQueryStatement::NotEquals
-</span><span id="1035" class="l"><a class="l" href="#1035">1035: </a>                            ( <span class="php-var">$theSubject</span>, <span class="php-var">$theObject</span>, <span class="php-var">$theType</span> );                  <span class="php-comment">// ==&gt;</span>
-</span><span id="1036" class="l"><a class="l" href="#1036">1036: </a>            
-</span><span id="1037" class="l"><a class="l" href="#1037">1037: </a>            <span class="php-keyword1">case</span> kOPERATOR_LIKE:
-</span><span id="1038" class="l"><a class="l" href="#1038">1038: </a>                <span class="php-keyword1">return</span> CQueryStatement::Like( <span class="php-var">$theSubject</span>, <span class="php-var">$theObject</span> );            <span class="php-comment">// ==&gt;</span>
-</span><span id="1039" class="l"><a class="l" href="#1039">1039: </a>            
-</span><span id="1040" class="l"><a class="l" href="#1040">1040: </a>            <span class="php-keyword1">case</span> kOPERATOR_LIKE_NOT:
-</span><span id="1041" class="l"><a class="l" href="#1041">1041: </a>                <span class="php-keyword1">return</span> CQueryStatement::NotLike( <span class="php-var">$theSubject</span>, <span class="php-var">$theObject</span> );         <span class="php-comment">// ==&gt;</span>
-</span><span id="1042" class="l"><a class="l" href="#1042">1042: </a>            
-</span><span id="1043" class="l"><a class="l" href="#1043">1043: </a>            <span class="php-keyword1">case</span> kOPERATOR_PREFIX:
-</span><span id="1044" class="l"><a class="l" href="#1044">1044: </a>                <span class="php-keyword1">return</span> CQueryStatement::Prefix( <span class="php-var">$theSubject</span>, <span class="php-var">$theObject</span> );          <span class="php-comment">// ==&gt;</span>
-</span><span id="1045" class="l"><a class="l" href="#1045">1045: </a>            
-</span><span id="1046" class="l"><a class="l" href="#1046">1046: </a>            <span class="php-keyword1">case</span> kOPERATOR_PREFIX_NOCASE:
-</span><span id="1047" class="l"><a class="l" href="#1047">1047: </a>                <span class="php-keyword1">return</span> CQueryStatement::PrefixNoCase( <span class="php-var">$theSubject</span>, <span class="php-var">$theObject</span> );    <span class="php-comment">// ==&gt;</span>
-</span><span id="1048" class="l"><a class="l" href="#1048">1048: </a>            
-</span><span id="1049" class="l"><a class="l" href="#1049">1049: </a>            <span class="php-keyword1">case</span> kOPERATOR_CONTAINS:
-</span><span id="1050" class="l"><a class="l" href="#1050">1050: </a>                <span class="php-keyword1">return</span> CQueryStatement::Contains( <span class="php-var">$theSubject</span>, <span class="php-var">$theObject</span> );        <span class="php-comment">// ==&gt;</span>
-</span><span id="1051" class="l"><a class="l" href="#1051">1051: </a>            
-</span><span id="1052" class="l"><a class="l" href="#1052">1052: </a>            <span class="php-keyword1">case</span> kOPERATOR_CONTAINS_NOCASE:
-</span><span id="1053" class="l"><a class="l" href="#1053">1053: </a>                <span class="php-keyword1">return</span> CQueryStatement::ContainsNoCase( <span class="php-var">$theSubject</span>, <span class="php-var">$theObject</span> );  <span class="php-comment">// ==&gt;</span>
-</span><span id="1054" class="l"><a class="l" href="#1054">1054: </a>            
-</span><span id="1055" class="l"><a class="l" href="#1055">1055: </a>            <span class="php-keyword1">case</span> kOPERATOR_SUFFIX:
-</span><span id="1056" class="l"><a class="l" href="#1056">1056: </a>                <span class="php-keyword1">return</span> CQueryStatement::Suffix( <span class="php-var">$theSubject</span>, <span class="php-var">$theObject</span> );          <span class="php-comment">// ==&gt;</span>
-</span><span id="1057" class="l"><a class="l" href="#1057">1057: </a>            
-</span><span id="1058" class="l"><a class="l" href="#1058">1058: </a>            <span class="php-keyword1">case</span> kOPERATOR_SUFFIX_NOCASE:
-</span><span id="1059" class="l"><a class="l" href="#1059">1059: </a>                <span class="php-keyword1">return</span> CQueryStatement::SuffixNoCase( <span class="php-var">$theSubject</span>, <span class="php-var">$theObject</span> );    <span class="php-comment">// ==&gt;</span>
-</span><span id="1060" class="l"><a class="l" href="#1060">1060: </a>            
-</span><span id="1061" class="l"><a class="l" href="#1061">1061: </a>            <span class="php-keyword1">case</span> kOPERATOR_REGEX:
-</span><span id="1062" class="l"><a class="l" href="#1062">1062: </a>                <span class="php-keyword1">return</span> CQueryStatement::Regex( <span class="php-var">$theSubject</span>, <span class="php-var">$theObject</span> );           <span class="php-comment">// ==&gt;</span>
-</span><span id="1063" class="l"><a class="l" href="#1063">1063: </a>            
-</span><span id="1064" class="l"><a class="l" href="#1064">1064: </a>            <span class="php-keyword1">case</span> kOPERATOR_LESS:
-</span><span id="1065" class="l"><a class="l" href="#1065">1065: </a>                <span class="php-keyword1">return</span> CQueryStatement::Less( <span class="php-var">$theSubject</span>, <span class="php-var">$theObject</span>, <span class="php-var">$theType</span> );  <span class="php-comment">// ==&gt;</span>
-</span><span id="1066" class="l"><a class="l" href="#1066">1066: </a>            
-</span><span id="1067" class="l"><a class="l" href="#1067">1067: </a>            <span class="php-keyword1">case</span> kOPERATOR_LESS_EQUAL:
-</span><span id="1068" class="l"><a class="l" href="#1068">1068: </a>                <span class="php-keyword1">return</span> CQueryStatement::LessEqual
-</span><span id="1069" class="l"><a class="l" href="#1069">1069: </a>                            ( <span class="php-var">$theSubject</span>, <span class="php-var">$theObject</span>, <span class="php-var">$theType</span> );                  <span class="php-comment">// ==&gt;</span>
-</span><span id="1070" class="l"><a class="l" href="#1070">1070: </a>            
-</span><span id="1071" class="l"><a class="l" href="#1071">1071: </a>            <span class="php-keyword1">case</span> kOPERATOR_GREAT:
-</span><span id="1072" class="l"><a class="l" href="#1072">1072: </a>                <span class="php-keyword1">return</span> CQueryStatement::Great( <span class="php-var">$theSubject</span>, <span class="php-var">$theObject</span>, <span class="php-var">$theType</span> ); <span class="php-comment">// ==&gt;</span>
-</span><span id="1073" class="l"><a class="l" href="#1073">1073: </a>            
-</span><span id="1074" class="l"><a class="l" href="#1074">1074: </a>            <span class="php-keyword1">case</span> kOPERATOR_GREAT_EQUAL:
-</span><span id="1075" class="l"><a class="l" href="#1075">1075: </a>                <span class="php-keyword1">return</span> CQueryStatement::GreatEqual
-</span><span id="1076" class="l"><a class="l" href="#1076">1076: </a>                            ( <span class="php-var">$theSubject</span>, <span class="php-var">$theObject</span>, <span class="php-var">$theType</span> );                  <span class="php-comment">// ==&gt;</span>
-</span><span id="1077" class="l"><a class="l" href="#1077">1077: </a>            
-</span><span id="1078" class="l"><a class="l" href="#1078">1078: </a>            <span class="php-keyword1">case</span> kOPERATOR_IRANGE:
-</span><span id="1079" class="l"><a class="l" href="#1079">1079: </a>                <span class="php-keyword1">return</span> CQueryStatement::RangeInclusive
-</span><span id="1080" class="l"><a class="l" href="#1080">1080: </a>                            ( <span class="php-var">$theSubject</span>,
-</span><span id="1081" class="l"><a class="l" href="#1081">1081: </a>                              <span class="php-var">$theObject</span>[ <span class="php-num">0</span> ], <span class="php-var">$theObject</span>[ <span class="php-num">1</span> ],
-</span><span id="1082" class="l"><a class="l" href="#1082">1082: </a>                              <span class="php-var">$theType</span> );                                           <span class="php-comment">// ==&gt;</span>
-</span><span id="1083" class="l"><a class="l" href="#1083">1083: </a>            
-</span><span id="1084" class="l"><a class="l" href="#1084">1084: </a>            <span class="php-keyword1">case</span> kOPERATOR_ERANGE:
-</span><span id="1085" class="l"><a class="l" href="#1085">1085: </a>                <span class="php-keyword1">return</span> CQueryStatement::RangeExclusive
-</span><span id="1086" class="l"><a class="l" href="#1086">1086: </a>                            ( <span class="php-var">$theSubject</span>,
-</span><span id="1087" class="l"><a class="l" href="#1087">1087: </a>                              <span class="php-var">$theObject</span>[ <span class="php-num">0</span> ], <span class="php-var">$theObject</span>[ <span class="php-num">1</span> ],
-</span><span id="1088" class="l"><a class="l" href="#1088">1088: </a>                              <span class="php-var">$theType</span> );                                           <span class="php-comment">// ==&gt;</span>
+</span><span id="1008" class="l"><a class="l" href="#1008">1008: </a>        <span class="php-comment">// Parse by encoding.</span>
+</span><span id="1009" class="l"><a class="l" href="#1009">1009: </a>        <span class="php-comment">//</span>
+</span><span id="1010" class="l"><a class="l" href="#1010">1010: </a>        <span class="php-keyword1">switch</span>( <span class="php-var">$theEncoding</span> )
+</span><span id="1011" class="l"><a class="l" href="#1011">1011: </a>        {
+</span><span id="1012" class="l"><a class="l" href="#1012">1012: </a>            <span class="php-keyword1">case</span> kTYPE_PHP:
+</span><span id="1013" class="l"><a class="l" href="#1013">1013: </a>                <span class="php-keyword1">foreach</span>( CDataWrapper::<span class="php-var">$sParameterList</span> <span class="php-keyword1">as</span> <span class="php-var">$key</span> )
+</span><span id="1014" class="l"><a class="l" href="#1014">1014: </a>                {
+</span><span id="1015" class="l"><a class="l" href="#1015">1015: </a>                    <span class="php-keyword1">if</span>( <span class="php-keyword2">array_key_exists</span>( <span class="php-var">$key</span>, <span class="php-var">$theParameters</span> ) )
+</span><span id="1016" class="l"><a class="l" href="#1016">1016: </a>                        <span class="php-var">$theParameters</span>[ <span class="php-var">$key</span> ]
+</span><span id="1017" class="l"><a class="l" href="#1017">1017: </a>                            = <span class="php-keyword2">serialize</span>( <span class="php-var">$theParameters</span>[ <span class="php-var">$key</span> ] );
+</span><span id="1018" class="l"><a class="l" href="#1018">1018: </a>                }
+</span><span id="1019" class="l"><a class="l" href="#1019">1019: </a>                <span class="php-keyword1">break</span>;
+</span><span id="1020" class="l"><a class="l" href="#1020">1020: </a>
+</span><span id="1021" class="l"><a class="l" href="#1021">1021: </a>            <span class="php-keyword1">case</span> kTYPE_JSON:
+</span><span id="1022" class="l"><a class="l" href="#1022">1022: </a>                <span class="php-keyword1">foreach</span>( CDataWrapper::<span class="php-var">$sParameterList</span> <span class="php-keyword1">as</span> <span class="php-var">$key</span> )
+</span><span id="1023" class="l"><a class="l" href="#1023">1023: </a>                {
+</span><span id="1024" class="l"><a class="l" href="#1024">1024: </a>                    <span class="php-keyword1">if</span>( <span class="php-keyword2">array_key_exists</span>( <span class="php-var">$key</span>, <span class="php-var">$theParameters</span> ) )
+</span><span id="1025" class="l"><a class="l" href="#1025">1025: </a>                        <span class="php-var">$theParameters</span>[ <span class="php-var">$key</span> ]
+</span><span id="1026" class="l"><a class="l" href="#1026">1026: </a>                            = JsonEncode( <span class="php-var">$theParameters</span>[ <span class="php-var">$key</span> ] );
+</span><span id="1027" class="l"><a class="l" href="#1027">1027: </a>                }
+</span><span id="1028" class="l"><a class="l" href="#1028">1028: </a>                <span class="php-keyword1">break</span>;
+</span><span id="1029" class="l"><a class="l" href="#1029">1029: </a>        }
+</span><span id="1030" class="l"><a class="l" href="#1030">1030: </a>    
+</span><span id="1031" class="l"><a class="l" href="#1031">1031: </a>    } <span class="php-comment">// _EncodeParameters.</span>
+</span><span id="1032" class="l"><a class="l" href="#1032">1032: </a>
+</span><span id="1033" class="l"><a class="l" href="#1033">1033: </a>     
+</span><span id="1034" class="l"><a class="l" href="#1034">1034: </a>    <span class="php-comment">/*===================================================================================
+</span></span><span id="1035" class="l"><a class="l" href="#1035">1035: </a><span class="php-comment">     *  _QueryStatement                                                                 *
+</span></span><span id="1036" class="l"><a class="l" href="#1036">1036: </a><span class="php-comment">     *==================================================================================*/</span>
+</span><span id="1037" class="l"><a class="l" href="#1037">1037: </a>
+</span><span id="1038" class="l"><a class="l" href="#1038">1038: </a>    <span class="php-comment">/**
+</span></span><span id="1039" class="l"><a class="l" href="#1039">1039: </a><span class="php-comment">     * Return a query statement.
+</span></span><span id="1040" class="l"><a class="l" href="#1040">1040: </a><span class="php-comment">     *
+</span></span><span id="1041" class="l"><a class="l" href="#1041">1041: </a><span class="php-comment">     * This method can be used to retrieve a query statement given the provided parameters,
+</span></span><span id="1042" class="l"><a class="l" href="#1042">1042: </a><span class="php-comment">     * see the {@link AddQueryStatement()} method for an explanation of the parameters.
+</span></span><span id="1043" class="l"><a class="l" href="#1043">1043: </a><span class="php-comment">     *
+</span></span><span id="1044" class="l"><a class="l" href="#1044">1044: </a><span class="php-comment">     * @param mixed                 $theSubject         Statement subject.
+</span></span><span id="1045" class="l"><a class="l" href="#1045">1045: </a><span class="php-comment">     * @param string                $theOperator        Statement operator.
+</span></span><span id="1046" class="l"><a class="l" href="#1046">1046: </a><span class="php-comment">     * @param mixed                 $theObject          Statement object.
+</span></span><span id="1047" class="l"><a class="l" href="#1047">1047: </a><span class="php-comment">     * @param string                $theType            Statement object data type.
+</span></span><span id="1048" class="l"><a class="l" href="#1048">1048: </a><span class="php-comment">     *
+</span></span><span id="1049" class="l"><a class="l" href="#1049">1049: </a><span class="php-comment">     * @access protected
+</span></span><span id="1050" class="l"><a class="l" href="#1050">1050: </a><span class="php-comment">     * @return array
+</span></span><span id="1051" class="l"><a class="l" href="#1051">1051: </a><span class="php-comment">     */</span>
+</span><span id="1052" class="l"><a class="l" href="#1052">1052: </a>    <span class="php-keyword1">protected</span> <span class="php-keyword1">function</span> <a id="__QueryStatement" href="#__QueryStatement">_QueryStatement</a>( <span class="php-var">$theSubject</span>, <span class="php-var">$theOperator</span>, <span class="php-var">$theObject</span> = <span class="php-keyword1">NULL</span>,
+</span><span id="1053" class="l"><a class="l" href="#1053">1053: </a>                                                                   <span class="php-var">$theType</span> = <span class="php-keyword1">NULL</span> )
+</span><span id="1054" class="l"><a class="l" href="#1054">1054: </a>    {
+</span><span id="1055" class="l"><a class="l" href="#1055">1055: </a>        <span class="php-comment">//</span>
+</span><span id="1056" class="l"><a class="l" href="#1056">1056: </a>        <span class="php-comment">// Check object.</span>
+</span><span id="1057" class="l"><a class="l" href="#1057">1057: </a>        <span class="php-comment">//</span>
+</span><span id="1058" class="l"><a class="l" href="#1058">1058: </a>        <span class="php-keyword1">if</span>( <span class="php-var">$theObject</span> === <span class="php-keyword1">NULL</span> )
+</span><span id="1059" class="l"><a class="l" href="#1059">1059: </a>        {
+</span><span id="1060" class="l"><a class="l" href="#1060">1060: </a>            <span class="php-keyword1">switch</span>( <span class="php-var">$theOperator</span> )
+</span><span id="1061" class="l"><a class="l" href="#1061">1061: </a>            {
+</span><span id="1062" class="l"><a class="l" href="#1062">1062: </a>                <span class="php-keyword1">case</span> kOPERATOR_NULL:
+</span><span id="1063" class="l"><a class="l" href="#1063">1063: </a>                <span class="php-keyword1">case</span> kOPERATOR_NOT_NULL:
+</span><span id="1064" class="l"><a class="l" href="#1064">1064: </a>                <span class="php-keyword1">case</span> kOPERATOR_DISABLED:
+</span><span id="1065" class="l"><a class="l" href="#1065">1065: </a>                    <span class="php-keyword1">break</span>;
+</span><span id="1066" class="l"><a class="l" href="#1066">1066: </a>                
+</span><span id="1067" class="l"><a class="l" href="#1067">1067: </a>                <span class="php-keyword1">default</span>:
+</span><span id="1068" class="l"><a class="l" href="#1068">1068: </a>                    <span class="php-keyword1">throw</span> <span class="php-keyword1">new</span> Exception( <span class="php-quote">&quot;Missing statement object or value&quot;</span>,
+</span><span id="1069" class="l"><a class="l" href="#1069">1069: </a>                                         kERROR_MISSING );                      <span class="php-comment">// !@! ==&gt;</span>
+</span><span id="1070" class="l"><a class="l" href="#1070">1070: </a>            }
+</span><span id="1071" class="l"><a class="l" href="#1071">1071: </a>        
+</span><span id="1072" class="l"><a class="l" href="#1072">1072: </a>        } <span class="php-comment">// Omitted object.</span>
+</span><span id="1073" class="l"><a class="l" href="#1073">1073: </a>        
+</span><span id="1074" class="l"><a class="l" href="#1074">1074: </a>        <span class="php-comment">//</span>
+</span><span id="1075" class="l"><a class="l" href="#1075">1075: </a>        <span class="php-comment">// Parse by operator.</span>
+</span><span id="1076" class="l"><a class="l" href="#1076">1076: </a>        <span class="php-comment">//</span>
+</span><span id="1077" class="l"><a class="l" href="#1077">1077: </a>        <span class="php-keyword1">switch</span>( <span class="php-var">$theOperator</span> )
+</span><span id="1078" class="l"><a class="l" href="#1078">1078: </a>        {
+</span><span id="1079" class="l"><a class="l" href="#1079">1079: </a>            <span class="php-keyword1">case</span> kOPERATOR_EQUAL:
+</span><span id="1080" class="l"><a class="l" href="#1080">1080: </a>                <span class="php-keyword1">return</span> CQueryStatement::Equals
+</span><span id="1081" class="l"><a class="l" href="#1081">1081: </a>                            ( <span class="php-var">$theSubject</span>, <span class="php-var">$theObject</span>, <span class="php-var">$theType</span> );                  <span class="php-comment">// ==&gt;</span>
+</span><span id="1082" class="l"><a class="l" href="#1082">1082: </a>            
+</span><span id="1083" class="l"><a class="l" href="#1083">1083: </a>            <span class="php-keyword1">case</span> kOPERATOR_EQUAL_NOT:
+</span><span id="1084" class="l"><a class="l" href="#1084">1084: </a>                <span class="php-keyword1">return</span> CQueryStatement::NotEquals
+</span><span id="1085" class="l"><a class="l" href="#1085">1085: </a>                            ( <span class="php-var">$theSubject</span>, <span class="php-var">$theObject</span>, <span class="php-var">$theType</span> );                  <span class="php-comment">// ==&gt;</span>
+</span><span id="1086" class="l"><a class="l" href="#1086">1086: </a>            
+</span><span id="1087" class="l"><a class="l" href="#1087">1087: </a>            <span class="php-keyword1">case</span> kOPERATOR_LIKE:
+</span><span id="1088" class="l"><a class="l" href="#1088">1088: </a>                <span class="php-keyword1">return</span> CQueryStatement::Like( <span class="php-var">$theSubject</span>, <span class="php-var">$theObject</span> );            <span class="php-comment">// ==&gt;</span>
 </span><span id="1089" class="l"><a class="l" href="#1089">1089: </a>            
-</span><span id="1090" class="l"><a class="l" href="#1090">1090: </a>            <span class="php-keyword1">case</span> kOPERATOR_NULL:
-</span><span id="1091" class="l"><a class="l" href="#1091">1091: </a>                <span class="php-keyword1">return</span> CQueryStatement::Missing( <span class="php-var">$theSubject</span> );                     <span class="php-comment">// ==&gt;</span>
+</span><span id="1090" class="l"><a class="l" href="#1090">1090: </a>            <span class="php-keyword1">case</span> kOPERATOR_LIKE_NOT:
+</span><span id="1091" class="l"><a class="l" href="#1091">1091: </a>                <span class="php-keyword1">return</span> CQueryStatement::NotLike( <span class="php-var">$theSubject</span>, <span class="php-var">$theObject</span> );         <span class="php-comment">// ==&gt;</span>
 </span><span id="1092" class="l"><a class="l" href="#1092">1092: </a>            
-</span><span id="1093" class="l"><a class="l" href="#1093">1093: </a>            <span class="php-keyword1">case</span> kOPERATOR_NOT_NULL:
-</span><span id="1094" class="l"><a class="l" href="#1094">1094: </a>                <span class="php-keyword1">return</span> CQueryStatement::Exists( <span class="php-var">$theSubject</span> );                      <span class="php-comment">// ==&gt;</span>
+</span><span id="1093" class="l"><a class="l" href="#1093">1093: </a>            <span class="php-keyword1">case</span> kOPERATOR_PREFIX:
+</span><span id="1094" class="l"><a class="l" href="#1094">1094: </a>                <span class="php-keyword1">return</span> CQueryStatement::Prefix( <span class="php-var">$theSubject</span>, <span class="php-var">$theObject</span> );          <span class="php-comment">// ==&gt;</span>
 </span><span id="1095" class="l"><a class="l" href="#1095">1095: </a>            
-</span><span id="1096" class="l"><a class="l" href="#1096">1096: </a>            <span class="php-keyword1">case</span> kOPERATOR_IN:
-</span><span id="1097" class="l"><a class="l" href="#1097">1097: </a>                <span class="php-keyword1">return</span> CQueryStatement::Member
-</span><span id="1098" class="l"><a class="l" href="#1098">1098: </a>                            ( <span class="php-var">$theSubject</span>, <span class="php-var">$theObject</span>, <span class="php-var">$theType</span> );                  <span class="php-comment">// ==&gt;</span>
-</span><span id="1099" class="l"><a class="l" href="#1099">1099: </a>            
-</span><span id="1100" class="l"><a class="l" href="#1100">1100: </a>            <span class="php-keyword1">case</span> kOPERATOR_NI:
-</span><span id="1101" class="l"><a class="l" href="#1101">1101: </a>                <span class="php-keyword1">return</span> CQueryStatement::NotMember
-</span><span id="1102" class="l"><a class="l" href="#1102">1102: </a>                            ( <span class="php-var">$theSubject</span>, <span class="php-var">$theObject</span>, <span class="php-var">$theType</span> );                  <span class="php-comment">// ==&gt;</span>
-</span><span id="1103" class="l"><a class="l" href="#1103">1103: </a>            
-</span><span id="1104" class="l"><a class="l" href="#1104">1104: </a>            <span class="php-keyword1">case</span> kOPERATOR_ALL:
-</span><span id="1105" class="l"><a class="l" href="#1105">1105: </a>                <span class="php-keyword1">return</span> CQueryStatement::All( <span class="php-var">$theSubject</span>, <span class="php-var">$theObject</span>, <span class="php-var">$theType</span> );   <span class="php-comment">// ==&gt;</span>
-</span><span id="1106" class="l"><a class="l" href="#1106">1106: </a>            
-</span><span id="1107" class="l"><a class="l" href="#1107">1107: </a>            <span class="php-keyword1">case</span> kOPERATOR_NALL:
-</span><span id="1108" class="l"><a class="l" href="#1108">1108: </a>                <span class="php-keyword1">return</span> CQueryStatement::NotAll
-</span><span id="1109" class="l"><a class="l" href="#1109">1109: </a>                            ( <span class="php-var">$theSubject</span>, <span class="php-var">$theObject</span>, <span class="php-var">$theType</span> );                  <span class="php-comment">// ==&gt;</span>
+</span><span id="1096" class="l"><a class="l" href="#1096">1096: </a>            <span class="php-keyword1">case</span> kOPERATOR_PREFIX_NOCASE:
+</span><span id="1097" class="l"><a class="l" href="#1097">1097: </a>                <span class="php-keyword1">return</span> CQueryStatement::PrefixNoCase( <span class="php-var">$theSubject</span>, <span class="php-var">$theObject</span> );    <span class="php-comment">// ==&gt;</span>
+</span><span id="1098" class="l"><a class="l" href="#1098">1098: </a>            
+</span><span id="1099" class="l"><a class="l" href="#1099">1099: </a>            <span class="php-keyword1">case</span> kOPERATOR_CONTAINS:
+</span><span id="1100" class="l"><a class="l" href="#1100">1100: </a>                <span class="php-keyword1">return</span> CQueryStatement::Contains( <span class="php-var">$theSubject</span>, <span class="php-var">$theObject</span> );        <span class="php-comment">// ==&gt;</span>
+</span><span id="1101" class="l"><a class="l" href="#1101">1101: </a>            
+</span><span id="1102" class="l"><a class="l" href="#1102">1102: </a>            <span class="php-keyword1">case</span> kOPERATOR_CONTAINS_NOCASE:
+</span><span id="1103" class="l"><a class="l" href="#1103">1103: </a>                <span class="php-keyword1">return</span> CQueryStatement::ContainsNoCase( <span class="php-var">$theSubject</span>, <span class="php-var">$theObject</span> );  <span class="php-comment">// ==&gt;</span>
+</span><span id="1104" class="l"><a class="l" href="#1104">1104: </a>            
+</span><span id="1105" class="l"><a class="l" href="#1105">1105: </a>            <span class="php-keyword1">case</span> kOPERATOR_SUFFIX:
+</span><span id="1106" class="l"><a class="l" href="#1106">1106: </a>                <span class="php-keyword1">return</span> CQueryStatement::Suffix( <span class="php-var">$theSubject</span>, <span class="php-var">$theObject</span> );          <span class="php-comment">// ==&gt;</span>
+</span><span id="1107" class="l"><a class="l" href="#1107">1107: </a>            
+</span><span id="1108" class="l"><a class="l" href="#1108">1108: </a>            <span class="php-keyword1">case</span> kOPERATOR_SUFFIX_NOCASE:
+</span><span id="1109" class="l"><a class="l" href="#1109">1109: </a>                <span class="php-keyword1">return</span> CQueryStatement::SuffixNoCase( <span class="php-var">$theSubject</span>, <span class="php-var">$theObject</span> );    <span class="php-comment">// ==&gt;</span>
 </span><span id="1110" class="l"><a class="l" href="#1110">1110: </a>            
-</span><span id="1111" class="l"><a class="l" href="#1111">1111: </a>            <span class="php-keyword1">case</span> kOPERATOR_EX:
-</span><span id="1112" class="l"><a class="l" href="#1112">1112: </a>                <span class="php-keyword1">return</span> CQueryStatement::Expression( <span class="php-var">$theSubject</span>, <span class="php-var">$theObject</span> );      <span class="php-comment">// ==&gt;</span>
+</span><span id="1111" class="l"><a class="l" href="#1111">1111: </a>            <span class="php-keyword1">case</span> kOPERATOR_REGEX:
+</span><span id="1112" class="l"><a class="l" href="#1112">1112: </a>                <span class="php-keyword1">return</span> CQueryStatement::Regex( <span class="php-var">$theSubject</span>, <span class="php-var">$theObject</span> );           <span class="php-comment">// ==&gt;</span>
 </span><span id="1113" class="l"><a class="l" href="#1113">1113: </a>            
-</span><span id="1114" class="l"><a class="l" href="#1114">1114: </a>            <span class="php-keyword1">default</span>:
-</span><span id="1115" class="l"><a class="l" href="#1115">1115: </a>                <span class="php-keyword1">throw</span> <span class="php-keyword1">new</span> Exception( <span class="php-quote">&quot;Unsupported operator&quot;</span>,
-</span><span id="1116" class="l"><a class="l" href="#1116">1116: </a>                                     kERROR_PARAMETER );                        <span class="php-comment">// !@! ==&gt;</span>
-</span><span id="1117" class="l"><a class="l" href="#1117">1117: </a>        }
-</span><span id="1118" class="l"><a class="l" href="#1118">1118: </a>    
-</span><span id="1119" class="l"><a class="l" href="#1119">1119: </a>    } <span class="php-comment">// _QueryStatement.</span>
-</span><span id="1120" class="l"><a class="l" href="#1120">1120: </a>
-</span><span id="1121" class="l"><a class="l" href="#1121">1121: </a>     
-</span><span id="1122" class="l"><a class="l" href="#1122">1122: </a>
-</span><span id="1123" class="l"><a class="l" href="#1123">1123: </a>} <span class="php-comment">// class CDataWrapperClient.</span>
-</span><span id="1124" class="l"><a class="l" href="#1124">1124: </a>
-</span><span id="1125" class="l"><a class="l" href="#1125">1125: </a>
-</span><span id="1126" class="l"><a class="l" href="#1126">1126: </a><span class="xlang">?&gt;</span>
-</span><span id="1127" class="l"><a class="l" href="#1127">1127: </a></span></code></pre>
+</span><span id="1114" class="l"><a class="l" href="#1114">1114: </a>            <span class="php-keyword1">case</span> kOPERATOR_LESS:
+</span><span id="1115" class="l"><a class="l" href="#1115">1115: </a>                <span class="php-keyword1">return</span> CQueryStatement::Less( <span class="php-var">$theSubject</span>, <span class="php-var">$theObject</span>, <span class="php-var">$theType</span> );  <span class="php-comment">// ==&gt;</span>
+</span><span id="1116" class="l"><a class="l" href="#1116">1116: </a>            
+</span><span id="1117" class="l"><a class="l" href="#1117">1117: </a>            <span class="php-keyword1">case</span> kOPERATOR_LESS_EQUAL:
+</span><span id="1118" class="l"><a class="l" href="#1118">1118: </a>                <span class="php-keyword1">return</span> CQueryStatement::LessEqual
+</span><span id="1119" class="l"><a class="l" href="#1119">1119: </a>                            ( <span class="php-var">$theSubject</span>, <span class="php-var">$theObject</span>, <span class="php-var">$theType</span> );                  <span class="php-comment">// ==&gt;</span>
+</span><span id="1120" class="l"><a class="l" href="#1120">1120: </a>            
+</span><span id="1121" class="l"><a class="l" href="#1121">1121: </a>            <span class="php-keyword1">case</span> kOPERATOR_GREAT:
+</span><span id="1122" class="l"><a class="l" href="#1122">1122: </a>                <span class="php-keyword1">return</span> CQueryStatement::Great( <span class="php-var">$theSubject</span>, <span class="php-var">$theObject</span>, <span class="php-var">$theType</span> ); <span class="php-comment">// ==&gt;</span>
+</span><span id="1123" class="l"><a class="l" href="#1123">1123: </a>            
+</span><span id="1124" class="l"><a class="l" href="#1124">1124: </a>            <span class="php-keyword1">case</span> kOPERATOR_GREAT_EQUAL:
+</span><span id="1125" class="l"><a class="l" href="#1125">1125: </a>                <span class="php-keyword1">return</span> CQueryStatement::GreatEqual
+</span><span id="1126" class="l"><a class="l" href="#1126">1126: </a>                            ( <span class="php-var">$theSubject</span>, <span class="php-var">$theObject</span>, <span class="php-var">$theType</span> );                  <span class="php-comment">// ==&gt;</span>
+</span><span id="1127" class="l"><a class="l" href="#1127">1127: </a>            
+</span><span id="1128" class="l"><a class="l" href="#1128">1128: </a>            <span class="php-keyword1">case</span> kOPERATOR_IRANGE:
+</span><span id="1129" class="l"><a class="l" href="#1129">1129: </a>                <span class="php-keyword1">return</span> CQueryStatement::RangeInclusive
+</span><span id="1130" class="l"><a class="l" href="#1130">1130: </a>                            ( <span class="php-var">$theSubject</span>,
+</span><span id="1131" class="l"><a class="l" href="#1131">1131: </a>                              <span class="php-var">$theObject</span>[ <span class="php-num">0</span> ], <span class="php-var">$theObject</span>[ <span class="php-num">1</span> ],
+</span><span id="1132" class="l"><a class="l" href="#1132">1132: </a>                              <span class="php-var">$theType</span> );                                           <span class="php-comment">// ==&gt;</span>
+</span><span id="1133" class="l"><a class="l" href="#1133">1133: </a>            
+</span><span id="1134" class="l"><a class="l" href="#1134">1134: </a>            <span class="php-keyword1">case</span> kOPERATOR_ERANGE:
+</span><span id="1135" class="l"><a class="l" href="#1135">1135: </a>                <span class="php-keyword1">return</span> CQueryStatement::RangeExclusive
+</span><span id="1136" class="l"><a class="l" href="#1136">1136: </a>                            ( <span class="php-var">$theSubject</span>,
+</span><span id="1137" class="l"><a class="l" href="#1137">1137: </a>                              <span class="php-var">$theObject</span>[ <span class="php-num">0</span> ], <span class="php-var">$theObject</span>[ <span class="php-num">1</span> ],
+</span><span id="1138" class="l"><a class="l" href="#1138">1138: </a>                              <span class="php-var">$theType</span> );                                           <span class="php-comment">// ==&gt;</span>
+</span><span id="1139" class="l"><a class="l" href="#1139">1139: </a>            
+</span><span id="1140" class="l"><a class="l" href="#1140">1140: </a>            <span class="php-keyword1">case</span> kOPERATOR_NULL:
+</span><span id="1141" class="l"><a class="l" href="#1141">1141: </a>                <span class="php-keyword1">return</span> CQueryStatement::Missing( <span class="php-var">$theSubject</span> );                     <span class="php-comment">// ==&gt;</span>
+</span><span id="1142" class="l"><a class="l" href="#1142">1142: </a>            
+</span><span id="1143" class="l"><a class="l" href="#1143">1143: </a>            <span class="php-keyword1">case</span> kOPERATOR_NOT_NULL:
+</span><span id="1144" class="l"><a class="l" href="#1144">1144: </a>                <span class="php-keyword1">return</span> CQueryStatement::Exists( <span class="php-var">$theSubject</span> );                      <span class="php-comment">// ==&gt;</span>
+</span><span id="1145" class="l"><a class="l" href="#1145">1145: </a>            
+</span><span id="1146" class="l"><a class="l" href="#1146">1146: </a>            <span class="php-keyword1">case</span> kOPERATOR_IN:
+</span><span id="1147" class="l"><a class="l" href="#1147">1147: </a>                <span class="php-keyword1">return</span> CQueryStatement::Member
+</span><span id="1148" class="l"><a class="l" href="#1148">1148: </a>                            ( <span class="php-var">$theSubject</span>, <span class="php-var">$theObject</span>, <span class="php-var">$theType</span> );                  <span class="php-comment">// ==&gt;</span>
+</span><span id="1149" class="l"><a class="l" href="#1149">1149: </a>            
+</span><span id="1150" class="l"><a class="l" href="#1150">1150: </a>            <span class="php-keyword1">case</span> kOPERATOR_NI:
+</span><span id="1151" class="l"><a class="l" href="#1151">1151: </a>                <span class="php-keyword1">return</span> CQueryStatement::NotMember
+</span><span id="1152" class="l"><a class="l" href="#1152">1152: </a>                            ( <span class="php-var">$theSubject</span>, <span class="php-var">$theObject</span>, <span class="php-var">$theType</span> );                  <span class="php-comment">// ==&gt;</span>
+</span><span id="1153" class="l"><a class="l" href="#1153">1153: </a>            
+</span><span id="1154" class="l"><a class="l" href="#1154">1154: </a>            <span class="php-keyword1">case</span> kOPERATOR_ALL:
+</span><span id="1155" class="l"><a class="l" href="#1155">1155: </a>                <span class="php-keyword1">return</span> CQueryStatement::All( <span class="php-var">$theSubject</span>, <span class="php-var">$theObject</span>, <span class="php-var">$theType</span> );   <span class="php-comment">// ==&gt;</span>
+</span><span id="1156" class="l"><a class="l" href="#1156">1156: </a>            
+</span><span id="1157" class="l"><a class="l" href="#1157">1157: </a>            <span class="php-keyword1">case</span> kOPERATOR_NALL:
+</span><span id="1158" class="l"><a class="l" href="#1158">1158: </a>                <span class="php-keyword1">return</span> CQueryStatement::NotAll
+</span><span id="1159" class="l"><a class="l" href="#1159">1159: </a>                            ( <span class="php-var">$theSubject</span>, <span class="php-var">$theObject</span>, <span class="php-var">$theType</span> );                  <span class="php-comment">// ==&gt;</span>
+</span><span id="1160" class="l"><a class="l" href="#1160">1160: </a>            
+</span><span id="1161" class="l"><a class="l" href="#1161">1161: </a>            <span class="php-keyword1">case</span> kOPERATOR_EX:
+</span><span id="1162" class="l"><a class="l" href="#1162">1162: </a>                <span class="php-keyword1">return</span> CQueryStatement::Expression( <span class="php-var">$theSubject</span>, <span class="php-var">$theObject</span> );      <span class="php-comment">// ==&gt;</span>
+</span><span id="1163" class="l"><a class="l" href="#1163">1163: </a>            
+</span><span id="1164" class="l"><a class="l" href="#1164">1164: </a>            <span class="php-keyword1">default</span>:
+</span><span id="1165" class="l"><a class="l" href="#1165">1165: </a>                <span class="php-keyword1">throw</span> <span class="php-keyword1">new</span> Exception( <span class="php-quote">&quot;Unsupported operator&quot;</span>,
+</span><span id="1166" class="l"><a class="l" href="#1166">1166: </a>                                     kERROR_PARAMETER );                        <span class="php-comment">// !@! ==&gt;</span>
+</span><span id="1167" class="l"><a class="l" href="#1167">1167: </a>        }
+</span><span id="1168" class="l"><a class="l" href="#1168">1168: </a>    
+</span><span id="1169" class="l"><a class="l" href="#1169">1169: </a>    } <span class="php-comment">// _QueryStatement.</span>
+</span><span id="1170" class="l"><a class="l" href="#1170">1170: </a>
+</span><span id="1171" class="l"><a class="l" href="#1171">1171: </a>     
+</span><span id="1172" class="l"><a class="l" href="#1172">1172: </a>
+</span><span id="1173" class="l"><a class="l" href="#1173">1173: </a>} <span class="php-comment">// class CDataWrapperClient.</span>
+</span><span id="1174" class="l"><a class="l" href="#1174">1174: </a>
+</span><span id="1175" class="l"><a class="l" href="#1175">1175: </a>
+</span><span id="1176" class="l"><a class="l" href="#1176">1176: </a><span class="xlang">?&gt;</span>
+</span><span id="1177" class="l"><a class="l" href="#1177">1177: </a></span></code></pre>
 
 	<div id="footer">
 		MyWrapper Reference Documentation API documentation generated by <a href="http://apigen.org">ApiGen 2.8.0</a>

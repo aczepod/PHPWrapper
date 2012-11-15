@@ -7,8 +7,8 @@
 
 	<title>File CGraphContainer.php | MyWrapper Reference Documentation</title>
 
-	<script type="text/javascript" src="resources/combined.js?368249000"></script>
-	<script type="text/javascript" src="elementlist.js?1653466708"></script>
+	<script type="text/javascript" src="resources/combined.js?3680114562"></script>
+	<script type="text/javascript" src="elementlist.js?895580329"></script>
 	<link rel="stylesheet" type="text/css" media="all" href="resources/style.css?3505392360" />
 
 </head>
@@ -28,13 +28,13 @@
 						</li>
 				<li class="main"><a href="package-MyWrapper.Definitions.html">Definitions</a>
 						</li>
-				<li class="active main"><a href="package-MyWrapper.Framework.html">Framework</a>
+				<li class="main"><a href="package-MyWrapper.Framework.html">Framework</a>
 						</li>
 				<li class="main"><a href="package-MyWrapper.Functions.html">Functions</a>
 						</li>
 				<li class="main"><a href="package-MyWrapper.Ontology.html">Ontology</a>
 						</li>
-				<li class="main"><a href="package-MyWrapper.Persistence.html">Persistence</a>
+				<li class="active main"><a href="package-MyWrapper.Persistence.html">Persistence</a>
 						</li>
 				<li class="main"><a href="package-MyWrapper.Wrappers.html">Wrappers</a>
 						</li>
@@ -50,35 +50,17 @@
 		<div id="elements">
 			<h3>Classes</h3>
 			<ul>
-				<li><a href="class-CConnection.html">CConnection</a></li>
-				<li><a href="class-CContainer.html">CContainer</a></li>
-				<li><a href="class-CDatabase.html">CDatabase</a></li>
-				<li><a href="class-CDataType.html">CDataType</a></li>
-				<li><a href="class-CDataTypeBinary.html">CDataTypeBinary</a></li>
-				<li><a href="class-CDataTypeInt32.html">CDataTypeInt32</a></li>
-				<li><a href="class-CDataTypeInt64.html">CDataTypeInt64</a></li>
-				<li><a href="class-CDataTypeMongoCode.html">CDataTypeMongoCode</a></li>
-				<li><a href="class-CDataTypeMongoId.html">CDataTypeMongoId</a></li>
-				<li><a href="class-CDataTypeRegex.html">CDataTypeRegex</a></li>
-				<li><a href="class-CDataTypeStamp.html">CDataTypeStamp</a></li>
-				<li><a href="class-CDocument.html">CDocument</a></li>
-				<li><a href="class-CEdge.html">CEdge</a></li>
 				<li class="active"><a href="class-CGraphContainer.html">CGraphContainer</a></li>
-				<li><a href="class-CNode.html">CNode</a></li>
-				<li><a href="class-CQuery.html">CQuery</a></li>
-				<li><a href="class-CQueryStatement.html">CQueryStatement</a></li>
-				<li><a href="class-CServer.html">CServer</a></li>
-				<li><a href="class-CStatusDocument.html">CStatusDocument</a></li>
-				<li><a href="class-CTag.html">CTag</a></li>
-				<li><a href="class-CTerm.html">CTerm</a></li>
+				<li><a href="class-CMongoContainer.html">CMongoContainer</a></li>
+				<li><a href="class-CMongoDatabase.html">CMongoDatabase</a></li>
+				<li><a href="class-CMongoQuery.html">CMongoQuery</a></li>
+				<li><a href="class-CMongoServer.html">CMongoServer</a></li>
+				<li><a href="class-CPersistentDocument.html">CPersistentDocument</a></li>
+				<li><a href="class-CPersistentObject.html">CPersistentObject</a></li>
 			</ul>
 
 
 
-			<h3>Exceptions</h3>
-			<ul>
-				<li><a href="class-CException.html">CException</a></li>
-			</ul>
 
 
 		</div>
@@ -102,7 +84,7 @@
 				<a href="index.html" title="Overview"><span>Overview</span></a>
 			</li>
 			<li>
-				<a href="package-MyWrapper.Framework.html" title="Summary of MyWrapper\Framework"><span>Package</span></a>
+				<a href="package-MyWrapper.Persistence.html" title="Summary of MyWrapper\Persistence"><span>Package</span></a>
 			</li>
 			<li>
 				<a href="class-CGraphContainer.html" title="Summary of CGraphContainer"><span>Class</span></a>
@@ -153,7 +135,7 @@
 </span><span id="34" class="l"><a class="l" href="#34"> 34: </a><span class="php-keyword1">require_once</span>( kPATH_MYWRAPPER_LIBRARY_CLASS.<span class="php-quote">&quot;/CConnection.php&quot;</span> );
 </span><span id="35" class="l"><a class="l" href="#35"> 35: </a>
 </span><span id="36" class="l"><a class="l" href="#36"> 36: </a><span class="php-comment">/**
-</span></span><span id="37" class="l"><a class="l" href="#37"> 37: </a><span class="php-comment"> * &lt;h3&gt;Connection object ancestor&lt;/h3&gt;
+</span></span><span id="37" class="l"><a class="l" href="#37"> 37: </a><span class="php-comment"> * &lt;h4&gt;Connection object ancestor&lt;/h4&gt;
 </span></span><span id="38" class="l"><a class="l" href="#38"> 38: </a><span class="php-comment"> *
 </span></span><span id="39" class="l"><a class="l" href="#39"> 39: </a><span class="php-comment"> * This &lt;i&gt;abstract&lt;/i&gt; class is the ancestor of all connection and container classes in
 </span></span><span id="40" class="l"><a class="l" href="#40"> 40: </a><span class="php-comment"> * this library, it implements the the common interface shared by derived concrete
@@ -188,7 +170,7 @@
 </span></span><span id="69" class="l"><a class="l" href="#69"> 69: </a><span class="php-comment"> * if we need, for instance, the database, given the container.
 </span></span><span id="70" class="l"><a class="l" href="#70"> 70: </a><span class="php-comment"> *
 </span></span><span id="71" class="l"><a class="l" href="#71"> 71: </a><span class="php-comment"> *  @package    MyWrapper
-</span></span><span id="72" class="l"><a class="l" href="#72"> 72: </a><span class="php-comment"> *  @subpackage Framework
+</span></span><span id="72" class="l"><a class="l" href="#72"> 72: </a><span class="php-comment"> *  @subpackage Persistence
 </span></span><span id="73" class="l"><a class="l" href="#73"> 73: </a><span class="php-comment"> */</span>
 </span><span id="74" class="l"><a class="l" href="#74"> 74: </a><span class="php-keyword1">class</span> <a id="CGraphContainer" href="#CGraphContainer">CGraphContainer</a> <span class="php-keyword1">extends</span> CConnection
 </span><span id="75" class="l"><a class="l" href="#75"> 75: </a>{

@@ -41,7 +41,7 @@ require_once( kPATH_MYWRAPPER_LIBRARY_DEFINE."/Types.inc.php" );
 require_once( kPATH_MYWRAPPER_LIBRARY_DEFINE."/Tags.inc.php" );
 
 /**
- * Data types ancestor.
+ * <h4>Data types ancestor</h4>
  *
  * This abstract class implements the interface of a generic data type object. Concrete
  * instances derived from this class can be used to convert custom data types into an

@@ -34,7 +34,7 @@ require_once( kPATH_MYWRAPPER_LIBRARY_DEFINE."/Tokens.inc.php" );
 require_once( kPATH_MYWRAPPER_LIBRARY_CLASS."/CPersistentObject.php" );
 
 /**
- * <h3>Tag object ancestor</h3>
+ * <h4>Tag object ancestor</h4>
  *
  * A tag object can be used to record the path starting from one node of a graph and ending
  * on another node. This class will assign a unique identifier to this path which can be

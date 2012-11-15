@@ -27,7 +27,7 @@
 require_once( kPATH_MYWRAPPER_LIBRARY_CLASS."/CDataType.php" );
 
 /**
- * Binary string.
+ * <h4>Binary string</h4>
  *
  * This class represents a binary string, the object records the following information in
  * its offsets:

@@ -27,7 +27,7 @@
 require_once( kPATH_MYWRAPPER_LIBRARY_CLASS."/CDatabase.php" );
 
 /**
- * <h3>Database object ancestor</h3>
+ * <h4>Database object ancestor</h4>
  *
  * This class implements a database object that represents a {@link MongoDB} instance. This
  * object can be used to generate Mongo container objects.

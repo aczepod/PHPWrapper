@@ -20,7 +20,7 @@
  *======================================================================================*/
 
 /**
- * <h3>Document object</h3>
+ * <h4>Document object</h4>
  *
  * This class is the ancestor common to most classes in this library, it extends
  * {@link ArrayObject} to implement an object which represents a collection of key/value

@@ -1,7 +1,7 @@
 <?php
 
 /**
- * <h3>File utilities</h3>
+ * <h4>File utilities</h4>
  *
  * This file contains common file utilities used by the library.
  *

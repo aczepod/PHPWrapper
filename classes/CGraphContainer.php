@@ -34,7 +34,7 @@ require_once( "CGraphContainer.inc.php" );
 require_once( kPATH_MYWRAPPER_LIBRARY_CLASS."/CConnection.php" );
 
 /**
- * <h3>Connection object ancestor</h3>
+ * <h4>Connection object ancestor</h4>
  *
  * This <i>abstract</i> class is the ancestor of all connection and container classes in
  * this library, it implements the the common interface shared by derived concrete
@@ -69,7 +69,7 @@ require_once( kPATH_MYWRAPPER_LIBRARY_CLASS."/CConnection.php" );
  * if we need, for instance, the database, given the container.
  *
  *	@package	MyWrapper
- *	@subpackage	Framework
+ *	@subpackage	Persistence
  */
 class CGraphContainer extends CConnection
 {

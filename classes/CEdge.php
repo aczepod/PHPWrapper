@@ -27,7 +27,7 @@
 require_once( kPATH_MYWRAPPER_LIBRARY_CLASS."/CPersistentObject.php" );
 
 /**
- * <h3>Edge object ancestor</h3>
+ * <h4>Edge object ancestor</h4>
  *
  * An edge is an element of a tree or graph that connects two vertices through a predicate,
  * it represents a subject/predicate/object triplet in which the direction of the relation

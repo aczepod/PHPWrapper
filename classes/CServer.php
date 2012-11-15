@@ -27,7 +27,7 @@
 require_once( kPATH_MYWRAPPER_LIBRARY_CLASS."/CConnection.php" );
 
 /**
- * <h3>Server object ancestor</h3>
+ * <h4>Server object ancestor</h4>
  *
  * This <i>abstract</i> class is the ancestor of all server classes in this library, it
  * implements the interface and workflow that all concrete derived classes should implement.

@@ -41,7 +41,7 @@ require_once( kPATH_MYWRAPPER_LIBRARY_CLASS."/CContainer.php" );
 require_once( kPATH_MYWRAPPER_LIBRARY_CLASS."/CStatusDocument.php" );
 
 /**
- * <h3>Persistent document ancestor</h3>
+ * <h4>Persistent document ancestor</h4>
  *
  * A persistent document object is a document object that knows how to persist in derived
  * concrete instances of the {@link CContainer} class. This class features a default offset,

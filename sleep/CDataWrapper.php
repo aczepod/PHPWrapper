@@ -42,7 +42,7 @@ require_once( kPATH_MYWRAPPER_LIBRARY_CLASS."/CQuery.php" );
 require_once( kPATH_MYWRAPPER_LIBRARY_CLASS."/CDataWrapper.inc.php" );
 
 /**
- *	Data wrapper.
+ * <h4>Data wrapper</h4>
  *
  * This class overloads its ancestor to implement a web service that wraps
  * a data store, it represents a framework for building concrete data store web-service

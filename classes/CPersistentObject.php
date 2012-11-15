@@ -34,7 +34,7 @@ require_once( kPATH_MYWRAPPER_LIBRARY_DEFINE."/Tags.inc.php" );
 require_once( kPATH_MYWRAPPER_LIBRARY_CLASS."/CPersistentDocument.php" );
 
 /**
- * <h3>Persistent object ancestor</h3>
+ * <h4>Persistent object ancestor</h4>
  *
  * This <i>abstract</i> class extends its {@link CPersistentDocument} ancestor to implement
  * an identification interface that governs how objects derived from this class are

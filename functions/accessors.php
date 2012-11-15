@@ -1,7 +1,7 @@
 <?php
 
 /**
- * <h3>Attribute utilities</h3>
+ * <h4>Attribute utilities</h4>
  *
  * This file contains common functions used by classes in this library to implement
  * interfaces to object properties and offsets.
@@ -176,7 +176,7 @@ require_once( kPATH_MYWRAPPER_LIBRARY_DEFINE."/Errors.inc.php" );
 	 *==================================================================================*/
 
 	/**
-	 * Manage a scalar offset.
+	 * <h4>Manage a scalar offset</h4>
 	 *
 	 * This method can be used to manage a scalar offset, its options involve setting,
 	 * retrieving and deleting an offset of the provided array or ArrayObject.
@@ -281,7 +281,7 @@ require_once( kPATH_MYWRAPPER_LIBRARY_DEFINE."/Errors.inc.php" );
 	 *==================================================================================*/
 
 	/**
-	 * Manage a typed offset.
+	 * <h4>Manage a typed offset</h4>
 	 *
 	 * Typed offsets are constituted by a list of structures, each containing two elements:
 	 * a type code and a the string data.
@@ -504,7 +504,7 @@ require_once( kPATH_MYWRAPPER_LIBRARY_DEFINE."/Errors.inc.php" );
 	 *==================================================================================*/
 
 	/**
-	 * Manage an indexed offset.
+	 * <h4>Manage an indexed offset</h4>
 	 *
 	 * Indexed offsets are constituted by a list of elements whose key is the discriminant,
 	 * no two element may share the same key.
@@ -680,7 +680,7 @@ require_once( kPATH_MYWRAPPER_LIBRARY_DEFINE."/Errors.inc.php" );
 	 *==================================================================================*/
 
 	/**
-	 * Manage an object set offset.
+	 * <h4>Manage an object set offset</h4>
 	 *
 	 * An object set is a list of unique objects, this method manages such an offset by
 	 * handling add, retrieve and delete of its elements, rather than of the offset itself

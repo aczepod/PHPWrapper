@@ -214,8 +214,8 @@ define( "kAPI_OP_COUNT",			'WS:OP:COUNT' );
  *		empty list is equivalent to not providing the list.
  *	<li><i>{@link kAPI_SORT}</i>: This parameter is an array listing which fields are to
  *		be considered in the sort order, the array is indexed by the field name and the
- *		value should be a number that represents the sense: positive or zero will be
- *		considered <i>ascending</i> and negative values <i>descending</i>.
+ *		value should be a number that represents the sense: positive will be considered
+ *		<i>ascending</i> and negative values <i>descending</i>; zero values will be ignored.
  *	<li><i>{@link kAPI_PAGE_LIMIT}</i>:This parameter is required or enforced, it represents
  *		the maximum number of elements that the query should return, the default value is
  *		{@link kDEFAULT_LIMIT}.

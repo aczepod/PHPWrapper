@@ -48,7 +48,7 @@ require_once( kPATH_MYWRAPPER_LIBRARY_FUNCTION."/accessors.php" );
 require_once( kPATH_MYWRAPPER_LIBRARY_CLASS."/CDocument.php" );
 
 /**
- * <h3>Document with status object</h3>
+ * <h4>Document with status object</h4>
  *
  * This class manages a data member which can be used to track the state of the object.
  *

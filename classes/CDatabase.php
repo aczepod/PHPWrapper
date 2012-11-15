@@ -27,7 +27,7 @@
 require_once( kPATH_MYWRAPPER_LIBRARY_CLASS."/CConnection.php" );
 
 /**
- * <h3>Database object ancestor</h3>
+ * <h4>Database object ancestor</h4>
  *
  * This <i>abstract</i> class is the ancestor of all database classes in this library, it
  * implements the interface and workflow that all concrete derived classes should implement.

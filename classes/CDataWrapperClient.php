@@ -4,7 +4,7 @@
  * <i>CDataWrapperClient</i> class definition.
  *
  * This file contains the class definition of <b>CDataWrapperClient</b> which represents a
- * web-service wrapper client.
+ * web-service data wrapper client.
  *
  *	@package	MyWrapper
  *	@subpackage	Wrappers
@@ -34,10 +34,10 @@ require_once( kPATH_MYWRAPPER_LIBRARY_CLASS."/CWrapperClient.php" );
 require_once( kPATH_MYWRAPPER_LIBRARY_CLASS."/CDataWrapper.php" );
 
 /**
- *	Wrapper client.
+ * <h4>Wrapper client</h4>
  *
  * This class represents a web-services wrapper client, it facilitates the job of requesting
- * information from servers derived from the {@link CWrapper CWrapper} class.
+ * information from servers derived from the {@link CDataWrapper} class.
  *
  * This class supports the following properties:
  *
@@ -905,10 +905,6 @@ class CDataWrapperClient extends CWrapperClient
 			case kAPI_OP_COUNT:
 			case kAPI_OP_GET_ONE:
 			case kAPI_OP_MATCH:
-				if( ! $this->offsetExists( kAPI_FORMAT ) )
-					throw new Exception
-							( "Unable to run service: missing format parameter",
-							  kERROR_STATE );									// !@! ==>
 				if( ! $this->offsetExists( kAPI_DATABASE ) )
 					throw new Exception
 							( "Unable to run service: missing database parameter",
@@ -921,6 +917,10 @@ class CDataWrapperClient extends CWrapperClient
 			case kAPI_OP_GET:
 				if( ! $this->offsetExists( kAPI_PAGE_LIMIT ) )
 					$this->PageLimit( kDEFAULT_LIMIT );
+				if( ! $this->offsetExists( kAPI_FORMAT ) )
+					throw new Exception
+							( "Unable to run service: missing format parameter",
+							  kERROR_STATE );									// !@! ==>
 				break;
 			
 			default:
@@ -968,7 +968,7 @@ class CDataWrapperClient extends CWrapperClient
 						if( $value instanceof ArrayObject )
 							$query[ $key ] = $value->getArrayCopy();
 					}
-					$this->offsetSet( kAPI_QUERY, array_values( $query ) );
+					$this->offsetSet( kAPI_QUERY, $query );
 					break;
 					
 				default:
@@ -979,6 +979,56 @@ class CDataWrapperClient extends CWrapperClient
 		}
 	
 	} // _NormaliseParameters.
+
+	 
+	/*===================================================================================
+	 *	_EncodeParameters																*
+	 *==================================================================================*/
+
+	/**
+	 * Encode parameters.
+	 *
+	 * This method can be used to encode parameters before they get sent to the service.
+	 *
+	 * We overload this method to handle the local parameters.
+	 *
+	 * @param reference			   &$theParameters		List of parameters.
+	 * @param string				$theEncoding		Encoding code.
+	 *
+	 * @access protected
+	 */
+	protected function _EncodeParameters( &$theParameters, $theEncoding )
+	{
+		//
+		// Call parent method.
+		//
+		parent::_EncodeParameters( $theParameters, $theEncoding );
+		
+		//
+		// Parse by encoding.
+		//
+		switch( $theEncoding )
+		{
+			case kTYPE_PHP:
+				foreach( CDataWrapper::$sParameterList as $key )
+				{
+					if( array_key_exists( $key, $theParameters ) )
+						$theParameters[ $key ]
+							= serialize( $theParameters[ $key ] );
+				}
+				break;
+
+			case kTYPE_JSON:
+				foreach( CDataWrapper::$sParameterList as $key )
+				{
+					if( array_key_exists( $key, $theParameters ) )
+						$theParameters[ $key ]
+							= JsonEncode( $theParameters[ $key ] );
+				}
+				break;
+		}
+	
+	} // _EncodeParameters.
 
 	 
 	/*===================================================================================

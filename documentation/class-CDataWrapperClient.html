@@ -6,8 +6,8 @@
 
 	<title>Class CDataWrapperClient | MyWrapper Reference Documentation</title>
 
-	<script type="text/javascript" src="resources/combined.js?368249000"></script>
-	<script type="text/javascript" src="elementlist.js?1653466708"></script>
+	<script type="text/javascript" src="resources/combined.js?3680114562"></script>
+	<script type="text/javascript" src="elementlist.js?895580329"></script>
 	<link rel="stylesheet" type="text/css" media="all" href="resources/style.css?3505392360" />
 
 </head>
@@ -52,6 +52,7 @@
 				<li><a href="class-CDataWrapper.html">CDataWrapper</a></li>
 				<li class="active"><a href="class-CDataWrapperClient.html">CDataWrapperClient</a></li>
 				<li><a href="class-COntologyWrapper.html">COntologyWrapper</a></li>
+				<li><a href="class-COntologyWrapperClient.html">COntologyWrapperClient</a></li>
 				<li><a href="class-CWrapper.html">CWrapper</a></li>
 				<li><a href="class-CWrapperClient.html">CWrapperClient</a></li>
 			</ul>
@@ -101,11 +102,11 @@
 
 	<div class="description">
 	
-<p>Wrapper client.</p>
+<h4>Wrapper client</h4>
 
 <p>This class represents a web-services wrapper client, it facilitates the job
-of requesting information from servers derived from the CWrapper
-CWrapper class.</p>
+of requesting information from servers derived from the <code><a href="class-CDataWrapper.html">CDataWrapper</a></code>
+class.</p>
 
 <p>This class supports the following properties:</p>
 
@@ -270,6 +271,10 @@ CWrapper class.</p>
 	</dl>
 
 
+	<div>
+		<h4>Direct known subclasses</h4>
+			<a href="class-COntologyWrapperClient.html">COntologyWrapperClient</a>
+	</div>
 
 
 
@@ -285,7 +290,7 @@ CWrapper class.</p>
 				<b>Author:</b>
 				Milko A. Škofič &lt;<a
 href="mailto:m.skofic&#64;cgiar.org">m.skofic&#64;<!---->cgiar.org</a>&gt;<br />
-		<b>Located at</b> <a href="source-class-CDataWrapperClient.html#36-1123" title="Go to source code">CDataWrapperClient.php</a><br />
+		<b>Located at</b> <a href="source-class-CDataWrapperClient.html#36-1173" title="Go to source code">CDataWrapperClient.php</a><br />
 	</div>
 
 
@@ -1176,6 +1181,53 @@ local parameters.</p>
 		</div>
 		</div></td>
 	</tr>
+	<tr data-order="_EncodeParameters" id="__EncodeParameters">
+
+		<td class="attributes"><code>
+			 protected 
+			
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#__EncodeParameters">#</a>
+		<code><a href="source-class-CDataWrapperClient.html#988-1031" title="Go to source code">_EncodeParameters</a>( <span>reference <var>&amp; $theParameters</var></span>, <span>string <var>$theEncoding</var></span> )</code>
+
+		<div class="description short">
+			
+<p>Encode parameters.</p>
+
+		</div>
+
+		<div class="description detailed hidden">
+			
+<p>Encode parameters.</p>
+
+<p>This method can be used to encode parameters before they get sent to the
+service.</p>
+
+<p>We overload this method to handle the local parameters.</p>
+
+
+
+				<h4>Parameters</h4>
+				<div class="list"><dl>
+					<dt><var>$theParameters</var></dt>
+					<dd><code>reference</code><br>&amp;$theParameters List of parameters.</dd>
+					<dt><var>$theEncoding</var></dt>
+					<dd><code>string</code><br>$theEncoding Encoding code.</dd>
+				</dl></div>
+
+
+
+
+				<h4>Overrides</h4>
+				<div class="list"><code><a href="class-CWrapperClient.html#__EncodeParameters">CWrapperClient::_EncodeParameters()</a></code></div>
+
+		</div>
+		</div></td>
+	</tr>
 	<tr data-order="_QueryStatement" id="__QueryStatement">
 
 		<td class="attributes"><code>
@@ -1187,7 +1239,7 @@ local parameters.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#__QueryStatement">#</a>
-		<code><a href="source-class-CDataWrapperClient.html#988-1119" title="Go to source code">_QueryStatement</a>( <span>mixed <var>$theSubject</var></span>, <span>string <var>$theOperator</var></span>, <span>mixed <var>$theObject</var> = <span class="php-keyword1">NULL</span></span>, <span>string <var>$theType</var> = <span class="php-keyword1">NULL</span> </span> )</code>
+		<code><a href="source-class-CDataWrapperClient.html#1038-1169" title="Go to source code">_QueryStatement</a>( <span>mixed <var>$theSubject</var></span>, <span>string <var>$theOperator</var></span>, <span>mixed <var>$theObject</var> = <span class="php-keyword1">NULL</span></span>, <span>string <var>$theType</var> = <span class="php-keyword1">NULL</span> </span> )</code>
 
 		<div class="description short">
 			

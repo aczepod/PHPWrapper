@@ -41,7 +41,7 @@ require_once( kPATH_MYWRAPPER_LIBRARY_CLASS."/CQuery.php" );
 require_once( kPATH_MYWRAPPER_LIBRARY_CLASS."/CDataWrapper.inc.php" );
 
 /**
- *	Data wrapper.
+ * <h4>Data wrapper</h4>
  *
  * This class overloads its ancestor to implement the framework for providing services that
  * store and request data. The class does not feature a concrete data store engine, so it
@@ -138,6 +138,18 @@ require_once( kPATH_MYWRAPPER_LIBRARY_CLASS."/CDataWrapper.inc.php" );
  */
 class CDataWrapper extends CWrapper
 {
+	/**
+	 * <b>Parameters list</b>
+	 *
+	 * This static data member holds the list of parameters known by the service, these will
+	 * be decoded before the service will handle them.
+	 *
+	 * @var array
+	 */
+	 static $sParameterList = array( kAPI_DATABASE, kAPI_CONTAINER,
+	 								 kAPI_PAGE_START, kAPI_PAGE_LIMIT,
+	 								 kAPI_QUERY, kAPI_SELECT, kAPI_SORT );
+
 		
 
 /*=======================================================================================
@@ -295,8 +307,6 @@ class CDataWrapper extends CWrapper
 	 * class we decode all local parameters.
 	 *
 	 * @access protected
-	 *
-	 * @see kAPI_STAMP_REQUEST kAPI_LOG_REQUEST kAPI_LOG_TRACE
 	 */
 	protected function _InitParameters()
 	{
@@ -306,12 +316,9 @@ class CDataWrapper extends CWrapper
 		parent::_InitParameters();
 		
 		//
-		// Handle known parameters.
+		// Init local parameters.
 		//
-		$params = array( kAPI_DATABASE, kAPI_CONTAINER,
-						 kAPI_PAGE_START, kAPI_PAGE_LIMIT,
-						 kAPI_QUERY, kAPI_SELECT, kAPI_SORT );
-		foreach( $params as $param )
+		foreach( self::$sParameterList as $param )
 			$this->_DecodeParameter( $param );
 	
 	} // _InitParameters.
@@ -741,7 +748,7 @@ class CDataWrapper extends CWrapper
 	 *==================================================================================*/
 
 	/**
-	 * Format paging parameters.
+	 * Format query.
 	 *
 	 * This method will decode the provided query from JSON or PHP encoding and unserialise
 	 * eventual query arguments encoded as {@link CDataType} derived instances.

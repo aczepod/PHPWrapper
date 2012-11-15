@@ -27,7 +27,7 @@
 require_once( kPATH_MYWRAPPER_LIBRARY_CLASS."/CDataType.php" );
 
 /**
- * Regular expression.
+ * <h4>Regular expression</h4>
  *
  * This class is a wrapper around a regular expression string, its function is only to
  * indicate that the string is to be considered a regular expression pattern; its structure

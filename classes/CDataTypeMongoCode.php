@@ -27,7 +27,7 @@
 require_once( kPATH_MYWRAPPER_LIBRARY_CLASS."/CDataType.php" );
 
 /**
- * Time-stamp.
+ * <h4><i>MongoCode</i> type wrapper</h4>
  *
  * This class represents a MongoCode object, it is structured as follows:
  *

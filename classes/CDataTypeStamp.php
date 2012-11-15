@@ -27,7 +27,7 @@
 require_once( kPATH_MYWRAPPER_LIBRARY_CLASS."/CDataType.php" );
 
 /**
- * Time-stamp.
+ * <h4>Time-stamp</h4>
  *
  * This class represents a time-stamp which is equivalent to a unix timestamp, the object
  * records the following information in its offsets:

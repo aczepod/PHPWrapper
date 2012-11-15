@@ -63,7 +63,7 @@ require_once( kPATH_MYWRAPPER_LIBRARY_CLASS."/CConnection.php" );
 require_once( kPATH_MYWRAPPER_LIBRARY_CLASS."/CWrapper.inc.php" );
 
 /**
- *	Wrapper.
+ * <h4>Wrapper</h4>
  *
  * This class represents a web-services wrapper server, it is the ancestor of web-service
  * classes in this library.
@@ -200,6 +200,18 @@ require_once( kPATH_MYWRAPPER_LIBRARY_CLASS."/CWrapper.inc.php" );
  */
 class CWrapper extends CConnection
 {
+	/**
+	 * <b>Parameters list</b>
+	 *
+	 * This static data member holds the list of parameters known by the service, these will
+	 * be decoded before the service will handle them.
+	 *
+	 * Note that {@link kAPI_FORMAT} and {@link kAPI_OPERATION} are not encoded.
+	 *
+	 * @var array
+	 */
+	 static $sParameterList = array( kAPI_STAMP_REQUEST, kAPI_LOG_REQUEST, kAPI_LOG_TRACE );
+
 		
 
 /*=======================================================================================
@@ -501,16 +513,13 @@ class CWrapper extends CConnection
 	 * {@link kAPI_FORMAT}.
 	 *
 	 * @access protected
-	 *
-	 * @see kAPI_STAMP_REQUEST kAPI_LOG_REQUEST kAPI_LOG_TRACE
 	 */
 	protected function _InitParameters()
 	{
 		//
-		// Handle known parameters.
+		// Init local parameters.
 		//
-		$params = array( kAPI_STAMP_REQUEST, kAPI_LOG_REQUEST, kAPI_LOG_TRACE );
-		foreach( $params as $param )
+		foreach( self::$sParameterList as $param )
 			$this->_DecodeParameter( $param );
 	
 	//
@@ -524,7 +533,8 @@ class CWrapper extends CConnection
 	//	//
 	//	// Init local parameters.
 	//	//
-	//	...
+	//	foreach( self::$sParameterList as $param )
+	//		$this->_DecodeParameter( $param );
 	//
 	
 	} // _InitParameters.

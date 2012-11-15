@@ -1,7 +1,7 @@
 <?php
 
 /**
- * <h3>String utilities</h3>
+ * <h4>String utilities</h4>
  *
  * This file contains common string functions used by the library.
  *

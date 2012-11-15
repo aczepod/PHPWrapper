@@ -59,6 +59,8 @@ define( "kAPI_PREDICATE",						':WS:PREDICATE' );
  *		vertex.
  *	<li><tt>{@link kAPI_RELATION_OUT}</tt>: Output, all elements to which the current vertex
  *		points to.
+ *	<li><tt>{@link kAPI_RELATION_ALL}</tt>: All, all elements with which the current vertex
+ *		is related.
  *	<li><i>missing</i>: If the parameter is missing, it is assumed you only want the vertex.
  * </ul>
  *
@@ -113,77 +115,46 @@ define( "kAPI_COLLECTION_TAG",					'_tag' );
  *======================================================================================*/
 
 /**
- * GetRootsByKind web-service.
- *
- * This is the tag that represents the GetRootsByKind web-service operation, which returns
- * a list of root vertexes that match the provided kind criteria. The criteria is provided
- * in the {@link kAPI_QUERY} parameter as an array of values, to these values the
- * {@link kKIND_NODE_ROOT} enumeration will be added and the matching nodes will have to
- * match <i>all</i> the entries.
- *
- * The resulting records will be constituted by a combination of the node and term
- * attributes, where the node attributes will overwrite matching term attributes.
- *
- * The service expects the following parameters:
- *
- * <ul>
- *	<li><i>{@link kAPI_FORMAT}</i>: This parameter is required to indicate how to
- *		encode the response.
- *	<li><i>{@link kAPI_DATABASE}</i>: This parameter is required to indicate the working
- *		database.
- *	<li><i>{@link kAPI_SELECT}</i>: This parameter is an array listing which fields are to
- *		be returned by the query, all fields not included in the list will be ignored. An
- *		empty list is equivalent to requesting all attributes.
- *	<li><i>{@link kAPI_SORT}</i>: This parameter is an array listing which fields are to
- *		be considered in the sort order, the array is indexed by the field name and the
- *		value should be a number that represents the sense: positive or zero will be
- *		considered <i>ascending</i> and negative values <i>descending</i>.
- *	<li><i>{@link kAPI_PAGE_LIMIT}</i>:This parameter is required or enforced, it represents
- *		the maximum number of elements that the query should return, the default value is
- *		{@link kDEFAULT_LIMIT}.
- *	<li><i>{@link kAPI_QUERY}</i>: This parameter will hold the list of kind entries, if
- *		omitted, all root nodes will be selected.
- * </ul>
- */
-define( "kAPI_OP_GetRootsByKind",	'WS:OP:GetRootsByKind' );
-
-/**
  * GetVertex web-service.
  *
  * This is the tag that represents the GetVertex web-service operation, which will return a
  * list of vertices according to the provided parameters:
  *
  * <ul>
- *	<li><tt>{@link kAPI_RELATION}</tt>: If this parameter is provided, it is assumed you
- *		want the relationships of the first vertex selected by the provided query.
  *	<li><tt>{@link kAPI_RELATION}</tt> omitted: If this parameter is omitted, it is assumed
  *		you want the vertices selected by the provided query.
+ *	<li><tt>{@link kAPI_RELATION} provided</tt>: If this parameter is provided, it is
+ *		assumed you want the relationships of the first vertex selected by the provided
+ *		query.
  * </ul>
  *
  * The service expects the following parameters:
  *
  * <ul>
- *	<li><i>{@link kAPI_FORMAT}</i>: This parameter is required to indicate how to
- *		encode the response.
+ *	<li><i>{@link kAPI_FORMAT}</i>: This parameter is required to indicate how to encode the
+ *		response.
  *	<li><i>{@link kAPI_DATABASE}</i>: This parameter is required to indicate the working
  *		database.
  *	<li><i>{@link kAPI_SELECT}</i>: This parameter is an array listing which fields are to
  *		be returned by the query, all fields not included in the list will be ignored. An
- *		empty list is equivalent to requesting all attributes.
+ *		empty list is equivalent to requesting all fields.
  *	<li><i>{@link kAPI_SORT}</i>: This parameter is an array listing which fields are to
  *		be considered in the sort order, the array is indexed by the field name and the
- *		value should be a number that represents the sense: positive or zero will be
- *		considered <i>ascending</i> and negative values <i>descending</i>.
+ *		value should be a number that represents the sense: positive will be considered
+ *		<i>ascending</i> and negative values <i>descending</i>; zero values will be ignored.
  *	<li><i>{@link kAPI_PAGE_LIMIT}</i>:This parameter is required or enforced, it represents
  *		the maximum number of elements that the query should return, the default value is
  *		{@link kDEFAULT_LIMIT}.
- *	<li><i>{@link kAPI_QUERY}</i>: This parameter will hold the query on the nodes table.
+ *	<li><i>{@link kAPI_QUERY}</i>: This parameter will hold the selection criteria of the
+ *		reference vertex, the nodes container will be searched.
  *	<li><i>{@link kAPI_RELATION}</i>: Depending on whether the parameter is provided:
  *	 <ul>
  *		<li><tt>{@link kAPI_RELATION_IN}</tt>: Return all vertices that point to the first
  *			vertex selected by the provided query.
  *		<li><tt>{@link kAPI_RELATION_OUT}</tt>: Return all vertices to which the first
  *			vertex selected by the provided query point to.
+ *		<li><tt>{@link kAPI_RELATION_ALL}</tt>: Return all vertices related to the first
+ *			vertex selected by the provided query.
  *		<li><i>missing</i>: If the parameter is missing, it is assumed you only want the
  *			vertices selected by the provided query.
  *	 </ul>
@@ -210,6 +181,14 @@ define( "kAPI_RELATION_IN",			'WS:RELATION:IN' );
  * which the current vertex points.
  */
 define( "kAPI_RELATION_OUT",		'WS:RELATION:OUT' );
+
+/**
+ * All relationships.
+ *
+ * This enumeration represents both input and output relationships, or the collection of
+ * vertices related to the current vertex.
+ */
+define( "kAPI_RELATION_ALL",		'WS:RELATION:ALL' );
 
 
 ?>

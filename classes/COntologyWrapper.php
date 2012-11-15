@@ -62,7 +62,7 @@ require_once( kPATH_MYWRAPPER_LIBRARY_CLASS."/CDataWrapper.php" );
 require_once( kPATH_MYWRAPPER_LIBRARY_CLASS."/COntologyWrapper.inc.php" );
 
 /**
- *	Ontology wrapper.
+ * <h4>Ontology wrapper</h4>
  *
  * This class overloads its ancestor to implement the framework for providing services that
  * return data from an ontology. The class concentrates on high level services that return
@@ -88,6 +88,16 @@ require_once( kPATH_MYWRAPPER_LIBRARY_CLASS."/COntologyWrapper.inc.php" );
  */
 class COntologyWrapper extends CDataWrapper
 {
+	/**
+	 * <b>Parameters list</b>
+	 *
+	 * This static data member holds the list of parameters known by the service, these will
+	 * be decoded before the service will handle them.
+	 *
+	 * @var array
+	 */
+	 static $sParameterList = array( kAPI_LANGUAGE, kAPI_PREDICATE, kAPI_RELATION );
+
 		
 
 /*=======================================================================================
@@ -210,6 +220,43 @@ class COntologyWrapper extends CDataWrapper
 
 /*=======================================================================================
  *																						*
+ *							PROTECTED INITIALISATION INTERFACE							*
+ *																						*
+ *======================================================================================*/
+
+
+	 
+	/*===================================================================================
+	 *	_InitParameters																	*
+	 *==================================================================================*/
+
+	/**
+	 * Initialise parameters.
+	 *
+	 * This method is responsible for initialising the parameters of the request, in this
+	 * class we decode all local parameters.
+	 *
+	 * @access protected
+	 */
+	protected function _InitParameters()
+	{
+		//
+		// Call parent method.
+		//
+		parent::_InitParameters();
+		
+		//
+		// Init local parameters.
+		//
+		foreach( self::$sParameterList as $param )
+			$this->_DecodeParameter( $param );
+	
+	} // _InitParameters.
+
+		
+
+/*=======================================================================================
+ *																						*
  *								PROTECTED PARSING UTILITIES								*
  *																						*
  *======================================================================================*/
@@ -249,7 +296,6 @@ class COntologyWrapper extends CDataWrapper
 		//
 		switch( $_REQUEST[ kAPI_OPERATION ] )
 		{
-			case kAPI_OP_GetRootsByKind:
 			case kAPI_OP_GetVertex:
 				if( ! array_key_exists( kAPI_PAGE_LIMIT, $_REQUEST ) )
 					$_REQUEST[ kAPI_PAGE_LIMIT ] = kDEFAULT_LIMIT;
@@ -363,7 +409,7 @@ class COntologyWrapper extends CDataWrapper
 	 *==================================================================================*/
 
 	/**
-	 * Format paging parameters.
+	 * Format query.
 	 *
 	 * This method will decode the provided query from JSON or PHP encoding and unserialise
 	 * eventual query arguments encoded as {@link CDataType} derived instances.
@@ -382,42 +428,19 @@ class COntologyWrapper extends CDataWrapper
 		//
 		switch( $_REQUEST[ kAPI_OPERATION ] )
 		{
-			case kAPI_OP_GetRootsByKind:
-				//
-				// Decode or initialise parameter.
-				//
-				if( array_key_exists( kAPI_QUERY, $_REQUEST ) )
-					$this->_DecodeParameter( kAPI_QUERY );
-				else
-					$_REQUEST[ kAPI_QUERY ] = kKIND_NODE_ROOT;
-				
-				//
-				// Normalise parameter.
-				//
-				if( ! is_array( $_REQUEST[ kAPI_QUERY ] ) )
-					$_REQUEST[ kAPI_QUERY ] = array( $_REQUEST[ kAPI_QUERY ] );
-				
-				//
-				// Build query.
-				//
-				$query = new CQuery();
-				foreach( $_REQUEST[ kAPI_QUERY ] as $kind )
-					$query->AppendStatement(
-						new CQueryStatement(
-							kTAG_KIND, kOPERATOR_EQUAL, kTYPE_STRING, $kind ),
-						kOPERATOR_AND );
-				
-				//
-				// Save query.
-				//
-				$_REQUEST[ kAPI_QUERY ] = $query;
-					
-				break;
-			
 			case kAPI_OP_GetVertex:
-				$_REQUEST[ kAPI_CONTAINER ]
-					= COntologyNode::DefaultContainer(
-						$_REQUEST[ kAPI_DATABASE ] );
+				//
+				// Set the default nodes container
+				// to prevent parent method from complaining.
+				// In the future this should be handled here,
+				// since we will be searching on both terms and nodes.
+				//
+				// Note that if we provide a container, that will be used.
+				//
+				if( ! array_key_exists( kAPI_CONTAINER, $_REQUEST ) )
+					$_REQUEST[ kAPI_CONTAINER ]
+						= COntologyNode::DefaultContainer(
+							$_REQUEST[ kAPI_DATABASE ] );
 				
 			default:
 				//
@@ -439,7 +462,8 @@ class COntologyWrapper extends CDataWrapper
 	/**
 	 * Format language parameters.
 	 *
-	 * This method will decode the provided language codes from JSON or PHP encoding.
+	 * This method will format the provided language codes, if the language was provided as
+	 * a scalar, it will be converted to an array.
 	 *
 	 * @access protected
 	 *
@@ -451,7 +475,10 @@ class COntologyWrapper extends CDataWrapper
 		// Check parameter.
 		//
 		if( array_key_exists( kAPI_LANGUAGE, $_REQUEST ) )
-			$this->_DecodeParameter( kAPI_LANGUAGE );
+		{
+			if( ! is_array( $_REQUEST[ kAPI_LANGUAGE ] ) )
+				$_REQUEST[ kAPI_LANGUAGE ] = array( $_REQUEST[ kAPI_LANGUAGE ] );
+		}
 	
 	} // _FormatLanguage.
 
@@ -463,7 +490,8 @@ class COntologyWrapper extends CDataWrapper
 	/**
 	 * Format language parameters.
 	 *
-	 * This method will decode the provided predicate references from JSON or PHP encoding.
+	 * This method will format the provided predicate references, if the predicate was
+	 * provided as a scalar, it will be converted to an array.
 	 *
 	 * @access protected
 	 *
@@ -475,7 +503,10 @@ class COntologyWrapper extends CDataWrapper
 		// Check parameter.
 		//
 		if( array_key_exists( kAPI_PREDICATE, $_REQUEST ) )
-			$this->_DecodeParameter( kAPI_PREDICATE );
+		{
+			if( ! is_array( $_REQUEST[ kAPI_PREDICATE ] ) )
+				$_REQUEST[ kAPI_PREDICATE ] = array( $_REQUEST[ kAPI_PREDICATE ] );
+		}
 	
 	} // _FormatPredicate.
 
@@ -487,8 +518,8 @@ class COntologyWrapper extends CDataWrapper
 	/**
 	 * Format language parameters.
 	 *
-	 * This method should format the provided relation sense code, in this class we don't
-	 * know what to do, but you might come up with some good ideas, so we declare the method.
+	 * This method should format the provided relation sense code, in this class we do
+	 * nothing.
 	 *
 	 * @access protected
 	 *
@@ -536,18 +567,6 @@ class COntologyWrapper extends CDataWrapper
 		//
 		switch( $parameter = $_REQUEST[ kAPI_OPERATION ] )
 		{
-			case kAPI_OP_GetRootsByKind:
-				//
-				// Check for query.
-				// Note that it has been initialised in _FormatQuery().
-				//
-				if( ! array_key_exists( kAPI_QUERY, $_REQUEST ) )
-					throw new CException
-						( "Missing query parameter",
-						  kERROR_MISSING,
-						  kMESSAGE_TYPE_ERROR,
-						  array( 'Operation' => $parameter ) );					// !@! ==>
-				
 			case kAPI_OP_GetVertex:
 				//
 				// Check for database.
@@ -584,66 +603,6 @@ class COntologyWrapper extends CDataWrapper
 
 	 
 	/*===================================================================================
-	 *	_ValidateQuery																	*
-	 *==================================================================================*/
-
-	/**
-	 * Validate query parameters.
-	 *
-	 * The duty of this method is to validate the query parameters, in this class we
-	 * instantiate the query object and verify its consistency.
-	 *
-	 * @access protected
-	 *
-	 * @see kAPI_QUERY
-	 */
-	protected function _ValidateQuery()
-	{
-		//
-		// Check parameter.
-		//
-		if( array_key_exists( kAPI_QUERY, $_REQUEST ) )
-		{
-			//
-			// Parse by operation.
-			//
-			switch( $_REQUEST[ kAPI_OPERATION ] )
-			{
-				case kAPI_OP_GetRootsByKind:
-					//
-					// Instantiate container.
-					//
-					$_REQUEST[ kAPI_CONTAINER ]
-						= COntologyNode::DefaultContainer(
-							$_REQUEST[ kAPI_DATABASE ] );
-					
-					//
-					// Instantiate query.
-					//
-					if( ! ($_REQUEST[ kAPI_QUERY ] instanceof CQuery) )
-						$_REQUEST[ kAPI_QUERY ]
-							= $_REQUEST[ kAPI_CONTAINER ]
-								->NewQuery( $_REQUEST[ kAPI_QUERY ] );
-					
-					//
-					// Validate query.
-					//
-					$_REQUEST[ kAPI_QUERY ]->Validate();
-					
-					break;
-				
-				default:
-					parent::_ValidateQuery();
-					break;
-			
-			} // Parsing by operation.
-		
-		} // Provided query parameters.
-	
-	} // _ValidateQuery.
-
-	 
-	/*===================================================================================
 	 *	_ValidateLanguage																*
 	 *==================================================================================*/
 
@@ -668,7 +627,8 @@ class COntologyWrapper extends CDataWrapper
 	 * Validate predicate parameters.
 	 *
 	 * The duty of this method is to validate the predicate parameters, in this class we
-	 * resolve the predicate and replace the provided references with the .
+	 * resolve the predicate and replace the provided references with their native
+	 * identifiers.
 	 *
 	 * @access protected
 	 *
@@ -701,8 +661,7 @@ class COntologyWrapper extends CDataWrapper
 				//
 				$predicate = COntologyTerm::Resolve( $container, $value );
 				if( $predicate !== NULL )
-					$_REQUEST[ kAPI_PREDICATE ][ $key ]
-						= $predicate[ kOFFSET_NID ];
+					$_REQUEST[ kAPI_PREDICATE ][ $key ] = $predicate[ kOFFSET_NID ];
 				else
 					unset( $_REQUEST[ kAPI_PREDICATE ][ $key ] );
 			
@@ -743,8 +702,9 @@ class COntologyWrapper extends CDataWrapper
 			//
 			// Check relationship code.
 			//
-			if( ! in_array( $_REQUEST[ kAPI_RELATION ],
-							array( kAPI_RELATION_IN, kAPI_RELATION_OUT ) ) )
+			if( ! in_array
+					( $_REQUEST[ kAPI_RELATION ],
+					  array( kAPI_RELATION_IN, kAPI_RELATION_OUT, kAPI_RELATION_ALL ) ) )
 				throw new CException
 					( ("Unsupported relationship sense code ("
 					  .$_REQUEST[ kAPI_RELATION ].")"),
@@ -788,10 +748,6 @@ class COntologyWrapper extends CDataWrapper
 			//
 			switch( $_REQUEST[ kAPI_OPERATION ] )
 			{
-				case kAPI_OP_GetRootsByKind:
-					$this->_Handle_GetRootsByKind();
-					break;
-	
 				case kAPI_OP_GetVertex:
 					$this->_Handle_GetVertex();
 					break;
@@ -827,112 +783,12 @@ class COntologyWrapper extends CDataWrapper
 		parent::_Handle_ListOp( $theList );
 
 		//
-		// Add kAPI_OP_GetRootsByKind.
-		//
-		$theList[ kAPI_OP_GetRootsByKind ]
-			= 'Get root vertex by kind: returns the list of vertex nodes of the provided kind.';
-
-		//
 		// Add kAPI_OP_GetVertex.
 		//
 		$theList[ kAPI_OP_GetVertex ]
 			= 'Get vertex or related vertex by query: returns either the list of vertex that satisfy the provided query, or the list of vertex pointing to or pointed to by the vertex selected by the provided query.';
 	
 	} // _Handle_ListOp.
-
-	 
-	/*===================================================================================
-	 *	_Handle_GetRootsByKind															*
-	 *==================================================================================*/
-
-	/**
-	 * Handle {@link kAPI_OP_GetRootsByKind} request.
-	 *
-	 * This method will handle the {@link kAPI_OP_GetRootsByKind} operation, which returns
-	 * the list of vertex nodes belonging to the provided kinds.
-	 *
-	 * @access protected
-	 */
-	protected function _Handle_GetRootsByKind()
-	{
-		//
-		// Handle query.
-		//
-		$query = ( array_key_exists( kAPI_QUERY, $_REQUEST ) )
-				? $_REQUEST[ kAPI_QUERY ]
-				: Array();
-		
-		//
-		// Handle sort.
-		//
-		$sort = ( array_key_exists( kAPI_SORT, $_REQUEST ) )
-			  ? $_REQUEST[ kAPI_SORT ]
-			  : Array();
-		
-		//
-		// Handle paging.
-		//
-		if( $this->offsetExists( kAPI_PAGING ) )
-		{
-			$start = $this->offsetGet( kAPI_PAGING )[ kAPI_PAGE_START ];
-			$limit = $this->offsetGet( kAPI_PAGING )[ kAPI_PAGE_LIMIT ];
-		}
-		else
-			$start = $limit = NULL;
-		
-		//
-		// Query.
-		//
-		$cursor
-			= $_REQUEST[ kAPI_CONTAINER ]
-				->Query( $query, NULL, $sort, $start, $limit );
-		
-		//
-		// Set affected count.
-		//
-		$this->_OffsetManage( kAPI_STATUS, kAPI_AFFECTED_COUNT, $cursor->count( FALSE ) );
-		
-		//
-		// Handle page count.
-		//
-		if( $this->offsetExists( kAPI_PAGING ) )
-		{
-			$tmp = $this->offsetGet( kAPI_PAGING );
-			$tmp[ kAPI_PAGE_COUNT ] = $cursor->count( TRUE );
-			$this->offsetSet( kAPI_PAGING, $tmp );
-		}
-		
-		//
-		// Check count.
-		//
-		if( $cursor->count( FALSE ) )
-		{
-			//
-			// Iterate vertex.
-			//
-			foreach( $cursor as $object )
-			{
-				//
-				// Instantiate object.
-				//
-				$object = CPersistentObject::DocumentObject( $object );
-				$id = $object->offsetGet( kOFFSET_NID );
-				
-				//
-				// Build and store vertex identifier.
-				//
-				$this->_ExportVertex( $results, $object );
-				$results[ kAPI_COLLECTION_ID ][] = $id;
-			}
-			
-			//
-			// Set response.
-			//
-			$this->offsetSet( kAPI_RESPONSE, $results );
-		
-		} // Found something.
-	
-	} // _Handle_GetRootsByKind.
 
 	 
 	/*===================================================================================
@@ -947,32 +803,44 @@ class COntologyWrapper extends CDataWrapper
 	 * vertex selected by the provided query.
 	 *
 	 * If the {@link kAPI_RELATION} parameter is provided, it is assumed that you want the
-	 * vertices related to the vertex matched by the provided query, in that case the
-	 * service will return a list of vertices that either point to the query matched
-	 * vertex, or that the latter points to.
+	 * vertices related to the first vertex matched by the provided query, in that case the
+	 * service will return a list of vertices that either point to the matched vertex, or
+	 * are pointed to by the reference vertex.
 	 *
 	 * If the {@link kAPI_RELATION} parameter is not provided, the service will return the
 	 * vertices that match the provided query.
 	 *
-	 * If the query is omitted, the service will use the nodes container.
+	 * If the query is omitted, the service will use the provided or default nodes
+	 * container.
 	 *
 	 * @access protected
 	 */
 	protected function _Handle_GetVertex()
 	{
 		//
+		// Init local storage.
+		//
+		$query = $select = $sort = $start = $limit = NULL;
+		
+		//
 		// Handle query.
 		//
-		$query = ( array_key_exists( kAPI_QUERY, $_REQUEST ) )
-				? $_REQUEST[ kAPI_QUERY ]
-				: Array();
+		if( array_key_exists( kAPI_QUERY, $_REQUEST ) )
+			$query = $_REQUEST[ kAPI_QUERY ];
+		
+		//
+		// Handle select.
+		//
+		if( array_key_exists( kAPI_RELATION, $_REQUEST ) )
+			$select = array( kOFFSET_NID );
 		
 		//
 		// Handle sort.
 		//
-		$sort = ( array_key_exists( kAPI_SORT, $_REQUEST ) )
-			  ? $_REQUEST[ kAPI_SORT ]
-			  : Array();
+		if( array_key_exists( kAPI_RELATION, $_REQUEST ) )
+			$sort = NULL;
+		elseif( array_key_exists( kAPI_SORT, $_REQUEST ) )
+			$sort = $_REQUEST[ kAPI_SORT ];
 		
 		//
 		// Handle paging.
@@ -982,13 +850,14 @@ class COntologyWrapper extends CDataWrapper
 			$start = $this->offsetGet( kAPI_PAGING )[ kAPI_PAGE_START ];
 			$limit = $this->offsetGet( kAPI_PAGING )[ kAPI_PAGE_LIMIT ];
 		}
-		else
-			$start = $limit = NULL;
 		
 		//
-		// Set node container.
+		// Get reference vertex(ices).
 		//
-		$container = COntologyNode::DefaultContainer( $_REQUEST[ kAPI_DATABASE ] );
+		$vertex
+			= $_REQUEST[ kAPI_CONTAINER ]
+				->Query( $query, $select, $sort, $start, $limit,
+						 array_key_exists( kAPI_RELATION, $_REQUEST ) );
 		
 		//
 		// Handle vertex relationships.
@@ -996,131 +865,16 @@ class COntologyWrapper extends CDataWrapper
 		if( array_key_exists( kAPI_RELATION, $_REQUEST ) )
 		{
 			//
-			// Find reference vertex.
-			//
-			$vertex
-				= $container
-					->Query( $query, array( kOFFSET_NID ), NULL, NULL, NULL, TRUE );
-			
-			//
 			// Handle reference vertex.
 			//
 			if( $vertex !== NULL )
 			{
 				//
-				// Init local storage.
+				// Get related.
 				//
-				$id = $vertex[ kOFFSET_NID ];
-				$container = COntologyEdge::DefaultContainer( $_REQUEST[ kAPI_DATABASE ] );
-				$query = $container->NewQuery();
-
-				//
-				// Build query by sense.
-				//
-				switch( $_REQUEST[ kAPI_RELATION ] )
-				{
-					case kAPI_RELATION_IN:
-						//
-						// Find incoming relationships.
-						//
-						$query->AppendStatement(
-							CQueryStatement::Equals(
-								kTAG_VERTEX_OBJECT, $id ) );
-						break;
-				
-					case kAPI_RELATION_OUT:
-						//
-						// Find outgoing relationships.
-						//
-						$query->AppendStatement(
-							CQueryStatement::Equals(
-								kTAG_VERTEX_SUBJECT, $id ) );
-						break;
-					
-					default:
-						throw new CException
-							( "Invalid relation sense: should have been caught before",
-							  kERROR_STATE,
-							  kMESSAGE_TYPE_BUG,
-							  array( 'Relation'
-							  			=> $_REQUEST[ kAPI_RELATION ] ) );		// !@! ==>
-				
-				} // Parsing relationship sense.
-				
-				//
-				// Filter by predicate.
-				//
-				if( array_key_exists( kAPI_PREDICATE, $_REQUEST ) )
-					$query->AppendStatement(
-						CQueryStatement::Equals(
-							kTAG_PREDICATE, $_REQUEST[ kAPI_PREDICATE ], kTYPE_BINARY ) );
-				
-				//
-				// Find related edges.
-				//
-				$cursor
-					= $container
-						->Query( $query, NULL, $sort, $start, $limit );
-	
-				//
-				// Set affected count.
-				//
-				$this->_OffsetManage(
-					kAPI_STATUS, kAPI_AFFECTED_COUNT, $cursor->count( FALSE ) );
-				
-				//
-				// Handle page count.
-				//
-				if( $this->offsetExists( kAPI_PAGING ) )
-				{
-					$tmp = $this->offsetGet( kAPI_PAGING );
-					$tmp[ kAPI_PAGE_COUNT ] = $cursor->count( TRUE );
-					$this->offsetSet( kAPI_PAGING, $tmp );
-				}
-				
-				//
-				// Check count.
-				//
-				if( $cursor->count( FALSE ) )
-				{
-					//
-					// Iterate edges.
-					//
-					foreach( $cursor as $object )
-					{
-						//
-						// Instantiate object.
-						//
-						$object = CPersistentObject::DocumentObject( $object );
-						
-						//
-						// Save vertex identifier.
-						//
-						switch( $_REQUEST[ kAPI_RELATION ] )
-						{
-							case kAPI_RELATION_IN:
-								$id = $object[ kTAG_VERTEX_SUBJECT ];
-								break;
-						
-							case kAPI_RELATION_OUT:
-								$id = $object[ kTAG_VERTEX_OBJECT ];
-								break;
-						
-						} // Parsing relationship sense.
-						
-						//
-						// Build and store vertex identifier.
-						//
-						$this->_ExportEdge( $results, $object );
-						$results[ kAPI_COLLECTION_ID ][] = $id;
-					}
-					
-					//
-					// Set response.
-					//
+				$results = $this->_GetVertexRelations( $vertex[ kOFFSET_NID ] );
+				if( $results !== NULL )
 					$this->offsetSet( kAPI_RESPONSE, $results );
-				
-				} // Found edges.
 			
 			} // Found reference vertex.
 		
@@ -1132,57 +886,11 @@ class COntologyWrapper extends CDataWrapper
 		else
 		{
 			//
-			// Find reference vertex.
+			// Get vertex list.
 			//
-			$cursor
-				= $container
-					->Query( $query, NULL, $sort, $start, $limit );
-
-			//
-			// Set affected count.
-			//
-			$this->_OffsetManage(
-				kAPI_STATUS, kAPI_AFFECTED_COUNT, $cursor->count( FALSE ) );
-			
-			//
-			// Handle page count.
-			//
-			if( $this->offsetExists( kAPI_PAGING ) )
-			{
-				$tmp = $this->offsetGet( kAPI_PAGING );
-				$tmp[ kAPI_PAGE_COUNT ] = $cursor->count( TRUE );
-				$this->offsetSet( kAPI_PAGING, $tmp );
-			}
-			
-			//
-			// Check count.
-			//
-			if( $cursor->count( FALSE ) )
-			{
-				//
-				// Iterate vertex.
-				//
-				foreach( $cursor as $object )
-				{
-					//
-					// Instantiate object.
-					//
-					$object = CPersistentObject::DocumentObject( $object );
-					$id = $object->offsetGet( kOFFSET_NID );
-					
-					//
-					// Build and store vertex identifier.
-					//
-					$this->_ExportVertex( $results, $object );
-					$results[ kAPI_COLLECTION_ID ][] = $id;
-				}
-				
-				//
-				// Set response.
-				//
+			$results = $this->_GetVertexFromNodes( $vertex );
+			if( $results !== NULL )
 				$this->offsetSet( kAPI_RESPONSE, $results );
-			
-			} // Found something.
 		
 		} // Handle vertex.
 	
@@ -2099,6 +1807,265 @@ class COntologyWrapper extends CDataWrapper
 		return $export;																// ==>
 
 	} // _BuildTerm.
+
+		
+
+/*=======================================================================================
+ *																						*
+ *								PROTECTED HANDLER UTILITIES								*
+ *																						*
+ *======================================================================================*/
+
+
+	 
+	/*===================================================================================
+	 *	_GetVertexFromNodes																*
+	 *==================================================================================*/
+
+	/**
+	 * Get vertices from nodes.
+	 *
+	 * This method will return the list of vertices corresponding to the provided node
+	 * container cursor. The method is called by {@link _Handle_GetVertex()} to perform the
+	 * vertex list selection.
+	 *
+	 * The method expects a single parameter that represents the recordset of a query
+	 * performed on the nodes container. The recordset elements should be complete.
+	 *
+	 * The method will return the results structure or <tt>NULL</tt> if the provided
+	 * recordset is empty.
+	 *
+	 * <i>Note: the parameter is expected to be iterable and have a method,
+	 * <tt>count()</tt>, that if provided <tt>FALSE</tt> should return the total number of
+	 * affected elements and if provided <tt>TRUE</tt> should return the actual number of
+	 * returned elements.</i>
+	 *
+	 * @param mixed				$theNodes			Nodes recordset.
+	 *
+	 * @access protected
+	 * @return array|NULL
+	 */
+	protected function _GetVertexFromNodes( $theNodes )
+	{
+		//
+		// Set affected count.
+		//
+		$this->_OffsetManage(
+			kAPI_STATUS, kAPI_AFFECTED_COUNT, $theNodes->count( FALSE ) );
+		
+		//
+		// Handle page count.
+		//
+		if( $this->offsetExists( kAPI_PAGING ) )
+		{
+			$tmp = $this->offsetGet( kAPI_PAGING );
+			$tmp[ kAPI_PAGE_COUNT ] = $theNodes->count( TRUE );
+			$this->offsetSet( kAPI_PAGING, $tmp );
+		}
+		
+		//
+		// Check count.
+		//
+		if( $theNodes->count( FALSE ) )
+		{
+			//
+			// Iterate recordset.
+			//
+			foreach( $theNodes as $object )
+			{
+				//
+				// Instantiate object.
+				//
+				$object = CPersistentObject::DocumentObject( $object );
+				$id = $object->offsetGet( kOFFSET_NID );
+				
+				//
+				// Build and store vertex identifier.
+				//
+				$this->_ExportVertex( $results, $object );
+				$results[ kAPI_COLLECTION_ID ][] = $id;
+			}
+			
+			return $results;														// ==>
+		
+		} // Found edges.
+		
+		return NULL;																// ==>
+	
+	} // _GetVertexFromNodes.
+
+	 
+	/*===================================================================================
+	 *	_GetVertexRelations																*
+	 *==================================================================================*/
+
+	/**
+	 * Get vertex relationships.
+	 *
+	 * This method will return the list of relationships of the provided reference vertex.
+	 * The method is called by {@link _Handle_GetVertex()} to perform the relationships
+	 * selection.
+	 *
+	 * The method expects a single parameter that represents the reference vertex native
+	 * identifier.
+	 *
+	 * The method will return the results structure or <tt>NULL</tt> if no relationships
+	 * were found.
+	 *
+	 * @param integer				$theVertex			Reference vertex identifier.
+	 *
+	 * @access protected
+	 * @return array|NULL
+	 */
+	protected function _GetVertexRelations( $theVertex )
+	{
+		//
+		// Init local storage.
+		//
+		$container = COntologyEdge::DefaultContainer( $_REQUEST[ kAPI_DATABASE ] );
+		$query = $container->NewQuery();
+
+		//
+		// Build query by sense.
+		//
+		switch( $_REQUEST[ kAPI_RELATION ] )
+		{
+			case kAPI_RELATION_IN:
+				//
+				// Find incoming relationships.
+				//
+				$query->AppendStatement(
+					CQueryStatement::Equals(
+						kTAG_VERTEX_OBJECT, $theVertex ),
+					kOPERATOR_AND );
+				break;
+		
+			case kAPI_RELATION_OUT:
+				//
+				// Find outgoing relationships.
+				//
+				$query->AppendStatement(
+					CQueryStatement::Equals(
+						kTAG_VERTEX_SUBJECT, $theVertex ),
+					kOPERATOR_AND );
+				break;
+		
+			case kAPI_RELATION_ALL:
+				//
+				// Find all relationships.
+				//
+				$query->AppendStatement(
+					CQueryStatement::Equals(
+						kTAG_VERTEX_SUBJECT, $theVertex ),
+					kOPERATOR_OR );
+				$query->AppendStatement(
+					CQueryStatement::Equals(
+						kTAG_VERTEX_OBJECT, $theVertex ),
+					kOPERATOR_OR );
+				break;
+			
+			default:
+				throw new CException
+					( "Invalid relation sense: should have been caught before",
+					  kERROR_STATE,
+					  kMESSAGE_TYPE_BUG,
+					  array( 'Relation'
+								=> $_REQUEST[ kAPI_RELATION ] ) );		// !@! ==>
+		
+		} // Parsing relationship sense.
+		
+		//
+		// Filter by predicate.
+		//
+		if( array_key_exists( kAPI_PREDICATE, $_REQUEST ) )
+			$query->AppendStatement(
+				CQueryStatement::Member(
+					kTAG_PREDICATE, $_REQUEST[ kAPI_PREDICATE ], kTYPE_BINARY ) );
+		
+		//
+		// Handle paging.
+		//
+		if( $this->offsetExists( kAPI_PAGING ) )
+		{
+			$start = $this->offsetGet( kAPI_PAGING )[ kAPI_PAGE_START ];
+			$limit = $this->offsetGet( kAPI_PAGING )[ kAPI_PAGE_LIMIT ];
+		}
+		else
+			$start = $limit = NULL;
+		
+		//
+		// Find related edges.
+		//
+		$cursor
+			= $container
+				->Query( $query, NULL, NULL, $start, $limit );
+
+		//
+		// Set affected count.
+		//
+		$this->_OffsetManage(
+			kAPI_STATUS, kAPI_AFFECTED_COUNT, $cursor->count( FALSE ) );
+		
+		//
+		// Handle page count.
+		//
+		if( $this->offsetExists( kAPI_PAGING ) )
+		{
+			$tmp = $this->offsetGet( kAPI_PAGING );
+			$tmp[ kAPI_PAGE_COUNT ] = $cursor->count( TRUE );
+			$this->offsetSet( kAPI_PAGING, $tmp );
+		}
+		
+		//
+		// Check count.
+		//
+		if( $cursor->count( FALSE ) )
+		{
+			//
+			// Iterate edges.
+			//
+			foreach( $cursor as $object )
+			{
+				//
+				// Instantiate object.
+				//
+				$object = CPersistentObject::DocumentObject( $object );
+				
+				//
+				// Save vertex identifier.
+				//
+				switch( $_REQUEST[ kAPI_RELATION ] )
+				{
+					case kAPI_RELATION_IN:
+						$vid = $object[ kTAG_VERTEX_SUBJECT ];
+						break;
+				
+					case kAPI_RELATION_OUT:
+						$vid = $object[ kTAG_VERTEX_OBJECT ];
+						break;
+				
+					case kAPI_RELATION_ALL:
+						$vid = ( $object[ kTAG_VERTEX_SUBJECT ] == $theVertex )
+							 ? $object[ kTAG_VERTEX_OBJECT ]
+							 : $object[ kTAG_VERTEX_SUBJECT ];
+						break;
+				
+				} // Parsing relationship sense.
+				
+				//
+				// Build and store vertex identifier.
+				//
+				$this->_ExportEdge( $results, $object );
+				$results[ kAPI_COLLECTION_ID ][] = $vid;
+			}
+			
+			return $results;														// ==>
+		
+		} // Found edges.
+		
+		return NULL;																// ==>
+	
+	} // _GetVertexRelations.
 
 	 
 

@@ -27,7 +27,7 @@
 require_once( kPATH_MYWRAPPER_LIBRARY_CLASS."/CWrapper.php" );
 
 /**
- *	Wrapper client.
+ * <h4>Wrapper client</h4>
  *
  * This class represents a web-services wrapper client, it facilitates the job of requesting
  * information from servers derived from the {@link CWrapper} class.
@@ -147,7 +147,7 @@ class CWrapperClient extends CConnection
 	 * @access public
 	 * @return mixed
 	 *
-	 * @throws {@link CException CException}
+	 * @throws {@link CException}
 	 *
 	 * @uses ManageOffset()
 	 *
@@ -418,39 +418,9 @@ class CWrapperClient extends CConnection
 		$format = $params[ kAPI_FORMAT ];
 		
 		//
-		// Format parameters.
+		// Encode parameters.
 		//
-		foreach( $params as $key => $value )
-		{
-			//
-			// Encode parameters.
-			//
-			switch( $key )
-			{
-				//
-				// Skip format and operation.
-				//
-				case kAPI_FORMAT:
-				case kAPI_OPERATION:
-					break;
-				
-				//
-				// Parse by format.
-				//
-				default:
-					switch( $this->Format() )
-					{
-						case kTYPE_PHP:
-							$params[ $key ] = serialize( $value );
-							break;
-	
-						case kTYPE_JSON:
-							$params[ $key ] = JsonEncode( $value );
-							break;
-					}
-					break;
-			}
-		}
+		$this->_EncodeParameters( $params, $this->Format() );
 		
 		return static::Request( $url, $params, $theMode, $format );					// ==>
 	
@@ -716,6 +686,57 @@ class CWrapperClient extends CConnection
 			$this->offsetSet( kAPI_STAMP_REQUEST, gettimeofday( TRUE ) );
 	
 	} // _NormaliseParameters.
+
+	 
+	/*===================================================================================
+	 *	_EncodeParameters																*
+	 *==================================================================================*/
+
+	/**
+	 * Encode parameters.
+	 *
+	 * This method can be used to encode parameters before they get sent to the service.
+	 *
+	 * The method expects one parameter to be a reference to the list of parameter that will
+	 * be sent and the other to be the format in which the parameters myst be encoded. This
+	 * value is assumed to be an array.
+	 *
+	 * If the provided encoding is not recognised by the method, the parameters will be left
+	 * untouched; in derived classes you should first call the parent method and then handle
+	 * the local parameters.
+	 *
+	 * @param reference			   &$theParameters		List of parameters.
+	 * @param string				$theEncoding		Encoding code.
+	 *
+	 * @access protected
+	 */
+	protected function _EncodeParameters( &$theParameters, $theEncoding )
+	{
+		//
+		// Parse by encoding.
+		//
+		switch( $theEncoding )
+		{
+			case kTYPE_PHP:
+				foreach( CWrapper::$sParameterList as $key )
+				{
+					if( array_key_exists( $key, $theParameters ) )
+						$theParameters[ $key ]
+							= serialize( $theParameters[ $key ] );
+				}
+				break;
+
+			case kTYPE_JSON:
+				foreach( CWrapper::$sParameterList as $key )
+				{
+					if( array_key_exists( $key, $theParameters ) )
+						$theParameters[ $key ]
+							= JsonEncode( $theParameters[ $key ] );
+				}
+				break;
+		}
+	
+	} // _EncodeParameters.
 
 		
 

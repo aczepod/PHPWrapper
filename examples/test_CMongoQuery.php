@@ -419,7 +419,7 @@ try
 	echo( '<h4>Test data conversions</h4>' );
 	echo( '<h5>$query = new CMongoQuery();</h5>' );
 	$query = new CMongoQuery();
-	echo( '<h5>$stmt = CQueryStatement::Equals( "BINARY", new CDataTypeBinary( md5( "test", TRUE ) ) );</h5>' );
+	echo( '<h5>$stmt = CQueryStatement::Equals( "SUBJECT", new CDataTypeBinary( md5( "test", TRUE ) ) );</h5>' );
 	$stmt = CQueryStatement::Equals( "SUBJECT", new CDataTypeBinary( md5( "test", TRUE ) ) );
 	echo( '<h5>$query->AppendStatement( $stmt, kOPERATOR_OR );</h5>' );
 	$query->AppendStatement( $stmt, kOPERATOR_OR );
@@ -431,6 +431,30 @@ try
 	$stmt = CQueryStatement::Equals( "BIGINT", new CDataTypeStamp( "12/07/2012" ) );
 	echo( '<h5>$query->AppendStatement( $stmt, kOPERATOR_OR );</h5>' );
 	$query->AppendStatement( $stmt, kOPERATOR_OR );
+	echo( '<h5>$converted = $query->Export( $container );</h5>' );
+	$converted = $query->Export( $container );
+	echo( '<b>Query</b>: <pre>' ); print_r( $query ); echo( '</pre>' );
+	echo( '<b>Converted</b>: <pre>' ); print_r( $converted ); echo( '</pre>' );
+	echo( '<hr />' );
+	
+	//
+	// Test conditions queue.
+	//
+	echo( '<h4>Test conditions queue</h4>' );
+	echo( '<h5>$query = new CMongoQuery();</h5>' );
+	$query = new CMongoQuery();
+	echo( '<h5>$stmt = CQueryStatement::Equals( "SUBJECT", new CDataTypeBinary( md5( "test", TRUE ) ) );</h5>' );
+	$stmt = CQueryStatement::Equals( "SUBJECT", new CDataTypeBinary( md5( "test", TRUE ) ) );
+	echo( '<h5>$query->AppendStatement( $stmt, kOPERATOR_AND );</h5>' );
+	$query->AppendStatement( $stmt, kOPERATOR_AND );
+	echo( '<h5>$stmt = CQueryStatement::Equals( "SUBJECT", new CDataTypeInt64( 120 ), kTYPE_INT64 );</h5>' );
+	$stmt = CQueryStatement::Equals( "SUBJECT", new CDataTypeInt64( 120 ), kTYPE_INT64 );
+	echo( '<h5>$query->AppendStatement( $stmt, kOPERATOR_AND );</h5>' );
+	$query->AppendStatement( $stmt, kOPERATOR_AND );
+	echo( '<h5>$stmt = CQueryStatement::Equals( "SUBJECT", new CDataTypeStamp( "12/07/2012" ) );</h5>' );
+	$stmt = CQueryStatement::Equals( "SUBJECT", new CDataTypeStamp( "12/07/2012" ) );
+	echo( '<h5>$query->AppendStatement( $stmt, kOPERATOR_AND );</h5>' );
+	$query->AppendStatement( $stmt, kOPERATOR_AND );
 	echo( '<h5>$converted = $query->Export( $container );</h5>' );
 	$converted = $query->Export( $container );
 	echo( '<b>Query</b>: <pre>' ); print_r( $query ); echo( '</pre>' );

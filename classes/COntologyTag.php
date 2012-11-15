@@ -41,7 +41,7 @@ require_once( kPATH_MYWRAPPER_LIBRARY_CLASS."/COntologyEdge.php" );
 require_once( kPATH_MYWRAPPER_LIBRARY_CLASS."/CTag.php" );
 
 /**
- * <h3>Ontology tag object ancestor</h3>
+ * <h4>Ontology tag object ancestor</h4>
  *
  * This class extends its ancestor, {@link CTag}, by asserting the type of objects passed to
  * the path, {@link kTAG_TAG_PATH}, and by using the native identifiers,

@@ -1,0 +1,869 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<meta name="generator" content="ApiGen 2.8.0" />
+
+	<title>Class COntologyWrapperClient | MyWrapper Reference Documentation</title>
+
+	<script type="text/javascript" src="resources/combined.js?3680114562"></script>
+	<script type="text/javascript" src="elementlist.js?895580329"></script>
+	<link rel="stylesheet" type="text/css" media="all" href="resources/style.css?3505392360" />
+
+</head>
+
+<body>
+<div id="left">
+	<div id="menu">
+		<a href="index.html" title="Overview"><span>Overview</span></a>
+
+
+		<div id="groups">
+			<h3>Packages</h3>
+			<ul>
+				<li class="active main"><a href="package-MyWrapper.html">MyWrapper<span></span></a>
+						<ul>
+				<li class="main"><a href="package-MyWrapper.Data.html">Data</a>
+						</li>
+				<li class="main"><a href="package-MyWrapper.Definitions.html">Definitions</a>
+						</li>
+				<li class="main"><a href="package-MyWrapper.Framework.html">Framework</a>
+						</li>
+				<li class="main"><a href="package-MyWrapper.Functions.html">Functions</a>
+						</li>
+				<li class="main"><a href="package-MyWrapper.Ontology.html">Ontology</a>
+						</li>
+				<li class="main"><a href="package-MyWrapper.Persistence.html">Persistence</a>
+						</li>
+				<li class="active main"><a href="package-MyWrapper.Wrappers.html">Wrappers</a>
+						</li>
+							</ul></li>
+				<li><a href="package-PHP.html">PHP</a>
+						</li>
+			</ul>
+		</div>
+
+		<hr />
+
+
+		<div id="elements">
+			<h3>Classes</h3>
+			<ul>
+				<li><a href="class-CDataWrapper.html">CDataWrapper</a></li>
+				<li><a href="class-CDataWrapperClient.html">CDataWrapperClient</a></li>
+				<li><a href="class-COntologyWrapper.html">COntologyWrapper</a></li>
+				<li class="active"><a href="class-COntologyWrapperClient.html">COntologyWrapperClient</a></li>
+				<li><a href="class-CWrapper.html">CWrapper</a></li>
+				<li><a href="class-CWrapperClient.html">CWrapperClient</a></li>
+			</ul>
+
+
+
+
+
+		</div>
+	</div>
+</div>
+
+<div id="splitter"></div>
+
+<div id="right">
+<div id="rightInner">
+	<form id="search">
+		<input type="hidden" name="cx" value="" />
+		<input type="hidden" name="ie" value="UTF-8" />
+		<input type="text" name="q" class="text" />
+		<input type="submit" value="Search" />
+	</form>
+
+	<div id="navigation">
+		<ul>
+			<li>
+				<a href="index.html" title="Overview"><span>Overview</span></a>
+			</li>
+			<li>
+				<a href="package-MyWrapper.Wrappers.html" title="Summary of MyWrapper\Wrappers"><span>Package</span></a>
+			</li>
+			<li class="active">
+<span>Class</span>			</li>
+		</ul>
+		<ul>
+			<li>
+				<a href="tree.html" title="Tree view of classes, interfaces, traits and exceptions"><span>Tree</span></a>
+			</li>
+		</ul>
+		<ul>
+		</ul>
+	</div>
+
+<div id="content" class="class">
+	<h1>Class COntologyWrapperClient</h1>
+
+
+	<div class="description">
+	
+<h4>Ontology wrapper client</h4>
+
+<p>This class represents a web-services ontology wrapper client, it facilitates
+the job of requesting information from servers derived from the <code><a href="class-COntologyWrapper.html">COntologyWrapper</a></code> class.</p>
+
+<p>This class supports the following properties:</p>
+
+<ul>
+	<li><i><code><a href="class-COntologyWrapperClient.html#_Language">COntologyWrapperClient::Language()</a></code></i>: This element represents the web-service language
+	code, it is stored in the in the kAPI_LANGUAGE offset.</li>
+
+	<li><i><code><a href="class-COntologyWrapperClient.html#_Predicate">COntologyWrapperClient::Predicate()</a></code></i>: This element represents the web-service
+	predicate reference, it is stored in the kAPI_PREDICATE offset.</li>
+
+	<li><i><code><a href="class-COntologyWrapperClient.html#_Relations">COntologyWrapperClient::Relations()</a></code></i>: This element represents the web-service
+	relations sense code, it is stored in the kAPI_RELATION offset.</li>
+</ul>
+
+<p>The class recognises the following operations (<code><a href="class-COntologyWrapperClient.html#_Operation">COntologyWrapperClient::Operation()</a></code>):</p>
+
+<ul>
+	<li><tt>kAPI_OP_GetVertex</tt>: This service will first select the list
+	of vertices matching the provided query, if the kAPI_RELATION parameter
+	is provided, the service will use the first found vertex and return the list of
+	vertices related to that vertex, depending on the value of the kAPI_RELATION parameter:
+		<ul>
+			<li><tt>kAPI_RELATION_IN</tt>: Return all vertices that point to the
+			vertex.</li>
+
+			<li><tt>kAPI_RELATION_OUT</tt>: Return all vertices to which the vertex
+			points to.</li>
+
+			<li><tt>kAPI_RELATION_ALL</tt>: Return all vertices related to the
+			vertex.</li>
+		</ul>
+		 If the kAPI_RELATION parameter is missing, the service will return the
+		matched list of vertices.</li>
+</ul>
+
+	</div>
+
+	<dl class="tree">
+		<dd style="padding-left:0px">
+			<a href="class-ArrayObject.html"><span>ArrayObject</span></a>
+			
+			 implements 
+				<a href="class-IteratorAggregate.html"><span>IteratorAggregate</span></a>, 
+			
+				<a href="class-Traversable.html"><span>Traversable</span></a>, 
+			
+				<a href="class-ArrayAccess.html"><span>ArrayAccess</span></a>, 
+			
+				<a href="class-Serializable.html"><span>Serializable</span></a>, 
+			
+				<a href="class-Countable.html"><span>Countable</span></a>
+			
+			
+		</dd>
+		<dd style="padding-left:30px">
+			<img src="resources/inherit.png" alt="Extended by" />
+			<a href="class-CDocument.html"><span>CDocument</span></a>
+			
+			
+			
+		</dd>
+		<dd style="padding-left:60px">
+			<img src="resources/inherit.png" alt="Extended by" />
+			<a href="class-CStatusDocument.html"><span>CStatusDocument</span></a>
+			
+			
+			
+		</dd>
+		<dd style="padding-left:90px">
+			<img src="resources/inherit.png" alt="Extended by" />
+			<a href="class-CConnection.html"><span>CConnection</span></a>
+			
+			
+			
+		</dd>
+		<dd style="padding-left:120px">
+			<img src="resources/inherit.png" alt="Extended by" />
+			<a href="class-CWrapperClient.html"><span>CWrapperClient</span></a>
+			
+			
+			
+		</dd>
+		<dd style="padding-left:150px">
+			<img src="resources/inherit.png" alt="Extended by" />
+			<a href="class-CDataWrapperClient.html"><span>CDataWrapperClient</span></a>
+			
+			
+			
+		</dd>
+		<dd style="padding-left:180px">
+			<img src="resources/inherit.png" alt="Extended by" />
+<b><span>COntologyWrapperClient</span></b>			
+			
+			
+		</dd>
+	</dl>
+
+
+
+
+
+
+
+
+	<div class="info">
+		
+		
+		
+		<b>Package:</b> <a href="package-MyWrapper.html">MyWrapper</a>\<a href="package-MyWrapper.Wrappers.html">Wrappers</a><br />
+
+				<b>Author:</b>
+				Milko A. Škofič &lt;<a
+href="mailto:m.skofic&#64;cgiar.org">m.skofic&#64;<!---->cgiar.org</a>&gt;<br />
+		<b>Located at</b> <a href="source-class-COntologyWrapperClient.html#36-505" title="Go to source code">COntologyWrapperClient.php</a><br />
+	</div>
+
+
+
+	<table class="summary" id="methods">
+	<caption>Methods summary</caption>
+	<tr data-order="Operation" id="_Operation">
+
+		<td class="attributes"><code>
+			 public 
+			mixed
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_Operation">#</a>
+		<code><a href="source-class-COntologyWrapperClient.html#90-132" title="Go to source code">Operation</a>( <span>string <var>$theValue</var> = <span class="php-keyword1">NULL</span></span>, <span>boolean <var>$getOld</var> = <span class="php-keyword1">FALSE</span> </span> )</code>
+
+		<div class="description short">
+			
+<p>Manage operation.</p>
+
+		</div>
+
+		<div class="description detailed hidden">
+			
+<p>Manage operation.</p>
+
+<p>We CWrapperClient::Operation() overload this method to add the
+following allowed operations:</p>
+
+<ul>
+	<li><i>kAPI_OP_GetVertex</i>: Return a selection of vertices, or the
+	related vertices of the selected vertex.</li>
+</ul>
+
+
+
+				<h4>Parameters</h4>
+				<div class="list"><dl>
+					<dt><var>$theValue</var></dt>
+					<dd><code>string</code><br>$theValue Value or operation.</dd>
+					<dt><var>$getOld</var></dt>
+					<dd><code>boolean</code><br>$getOld TRUE get old value.</dd>
+				</dl></div>
+
+				<h4>Returns</h4>
+				<div class="list">
+					<code>mixed</code><br />
+				</div>
+
+				<h4>Throws</h4>
+				<div class="list">
+					<code>{@link</code><br>CException CException}<br />
+				</div>
+
+				<h4>See</h4>
+				<div class="list">
+						kAPI_OPERATION<br />
+						kAPI_OP_GetVertex<br />
+				</div>
+				<h4>Uses</h4>
+				<div class="list">
+						CAttribute::ManageOffset()<br />
+				</div>
+
+				<h4>Overrides</h4>
+				<div class="list"><code><a href="class-CDataWrapperClient.html#_Operation">CDataWrapperClient::Operation()</a></code></div>
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="Query" id="_Query">
+
+		<td class="attributes"><code>
+			 public 
+			mixed
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_Query">#</a>
+		<code><a href="source-class-COntologyWrapperClient.html#139-205" title="Go to source code">Query</a>( <span>string <var>$theValue</var> = <span class="php-keyword1">NULL</span></span>, <span>boolean <var>$getOld</var> = <span class="php-keyword1">FALSE</span> </span> )</code>
+
+		<div class="description short">
+			
+<p>Manage query.</p>
+
+		</div>
+
+		<div class="description detailed hidden">
+			
+<p>Manage query.</p>
+
+<p>We overload this method to allow setting the query directly with the vertex
+identifier, if the method argument is an integer, we assume the value is a node
+native identifier and we set the query to match it.</p>
+
+
+
+				<h4>Parameters</h4>
+				<div class="list"><dl>
+					<dt><var>$theValue</var></dt>
+					<dd><code>string</code><br>$theValue Value or operation.</dd>
+					<dt><var>$getOld</var></dt>
+					<dd><code>boolean</code><br>$getOld TRUE get old value.</dd>
+				</dl></div>
+
+				<h4>Returns</h4>
+				<div class="list">
+					<code>mixed</code><br />
+				</div>
+
+				<h4>Throws</h4>
+				<div class="list">
+					<code><code><a href="class-Exception.html">Exception</a></code></code><br />
+				</div>
+
+				<h4>See</h4>
+				<div class="list">
+						kAPI_QUERY<br />
+				</div>
+				<h4>Uses</h4>
+				<div class="list">
+						<code><code><a href="function-ManageOffset.html">ManageOffset()</a></code></code> <br />
+				</div>
+
+				<h4>Overrides</h4>
+				<div class="list"><code><a href="class-CDataWrapperClient.html#_Query">CDataWrapperClient::Query()</a></code></div>
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="Language" id="_Language">
+
+		<td class="attributes"><code>
+			 public 
+			mixed
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_Language">#</a>
+		<code><a href="source-class-COntologyWrapperClient.html#212-249" title="Go to source code">Language</a>( <span>string <var>$theValue</var> = <span class="php-keyword1">NULL</span></span>, <span>boolean <var>$getOld</var> = <span class="php-keyword1">FALSE</span> </span> )</code>
+
+		<div class="description short">
+			
+<p>Manage language code(s).</p>
+
+		</div>
+
+		<div class="description detailed hidden">
+			
+<p>Manage language code(s).</p>
+
+<p>This method can be used to manage the kAPI_LANGUAGE offset, it
+accepts a parameter which represents the list of language codes in which kTYPE_LSTRING attributes are set, or the requested operation, depending on its
+value:</p>
+
+<ul>
+	<li><i>NULL</i>: Return the current value.</li>
+
+	<li><i>FALSE</i>: Delete the current value.</li>
+
+	<li><i>other</i>: Set the value with the provided parameter, in this case the
+	value is expected to be:
+		<ul>
+			<li><tt>array</tt> or <tt>ArrayObject<tt>: The provided parameter will become
+			the new list. </tt></tt></li>
+
+			<li><i>other</i>: The method will assume the parameter is a string and it will
+			add it to the current list or create a list if it doesn't exist.</li>
+		</ul>
+	</li>
+</ul>
+
+<p>The second parameter is a boolean which if <i>TRUE</i> will return the
+<i>old</i> value when replacing values; if <i>FALSE</i>, it will return the
+currently set value.</p>
+
+
+
+				<h4>Parameters</h4>
+				<div class="list"><dl>
+					<dt><var>$theValue</var></dt>
+					<dd><code>string</code><br>$theValue Value or operation.</dd>
+					<dt><var>$getOld</var></dt>
+					<dd><code>boolean</code><br>$getOld TRUE get old value.</dd>
+				</dl></div>
+
+				<h4>Returns</h4>
+				<div class="list">
+					<code>mixed</code><br />
+				</div>
+
+
+				<h4>See</h4>
+				<div class="list">
+						kAPI_LANGUAGE<br />
+				</div>
+				<h4>Uses</h4>
+				<div class="list">
+						<code><code><a href="class-CWrapperClient.html#__ManageListOffset">CWrapperClient::_ManageListOffset()</a></code></code> <br />
+				</div>
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="Predicate" id="_Predicate">
+
+		<td class="attributes"><code>
+			 public 
+			mixed
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_Predicate">#</a>
+		<code><a href="source-class-COntologyWrapperClient.html#256-293" title="Go to source code">Predicate</a>( <span>string <var>$theValue</var> = <span class="php-keyword1">NULL</span></span>, <span>boolean <var>$getOld</var> = <span class="php-keyword1">FALSE</span> </span> )</code>
+
+		<div class="description short">
+			
+<p>Manage predicate(s) selector.</p>
+
+		</div>
+
+		<div class="description detailed hidden">
+			
+<p>Manage predicate(s) selector.</p>
+
+<p>This method can be used to manage the kAPI_PREDICATE offset, it
+accepts a parameter which represents the list of predicate references, or the
+requested operation, depending on its value:</p>
+
+<ul>
+	<li><i>NULL</i>: Return the current value.</li>
+
+	<li><i>FALSE</i>: Delete the current value.</li>
+
+	<li><i>other</i>: Set the value with the provided parameter, in this case the
+	value is expected to be:
+		<ul>
+			<li><tt>array</tt> or <tt>ArrayObject<tt>: The provided parameter will become
+			the new list. </tt></tt></li>
+
+			<li><i>other</i>: The method will assume the parameter is a string and it will
+			add it to the current list or create a list if it doesn't exist.</li>
+		</ul>
+	</li>
+</ul>
+
+<p>The second parameter is a boolean which if <i>TRUE</i> will return the
+<i>old</i> value when replacing values; if <i>FALSE</i>, it will return the
+currently set value.</p>
+
+
+
+				<h4>Parameters</h4>
+				<div class="list"><dl>
+					<dt><var>$theValue</var></dt>
+					<dd><code>string</code><br>$theValue Value or operation.</dd>
+					<dt><var>$getOld</var></dt>
+					<dd><code>boolean</code><br>$getOld TRUE get old value.</dd>
+				</dl></div>
+
+				<h4>Returns</h4>
+				<div class="list">
+					<code>mixed</code><br />
+				</div>
+
+
+				<h4>See</h4>
+				<div class="list">
+						kAPI_PREDICATE<br />
+				</div>
+				<h4>Uses</h4>
+				<div class="list">
+						<code><code><a href="class-CWrapperClient.html#__ManageListOffset">CWrapperClient::_ManageListOffset()</a></code></code> <br />
+				</div>
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="Relations" id="_Relations">
+
+		<td class="attributes"><code>
+			 public 
+			mixed
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_Relations">#</a>
+		<code><a href="source-class-COntologyWrapperClient.html#300-354" title="Go to source code">Relations</a>( <span>string <var>$theValue</var> = <span class="php-keyword1">NULL</span></span>, <span>boolean <var>$getOld</var> = <span class="php-keyword1">FALSE</span> </span> )</code>
+
+		<div class="description short">
+			
+<p>Manage relationships sense.</p>
+
+		</div>
+
+		<div class="description detailed hidden">
+			
+<p>Manage relationships sense.</p>
+
+<p>This method can be used to manage the kAPI_RELATION offset, it
+accepts a parameter which represents the relationships sense, or the requested
+operation, depending on its value:</p>
+
+<ul>
+	<li><tt>NULL</tt>: Return the current value.</li>
+
+	<li><tt>FALSE</tt>: Delete the current value.</li>
+
+	<li><tt>kAPI_RELATION_IN</tt>: Incoming relationships.</li>
+
+	<li><tt>kAPI_RELATION_OUT</tt>: Outgoing relationships.</li>
+
+	<li><tt>kAPI_RELATION_ALL</tt>: Incoming and outgoing
+	relationships.</li>
+
+	<li><i>other</i>: The method will raise an exception.</li>
+</ul>
+
+<p>The second parameter is a boolean which if <i>TRUE</i> will return the
+<i>old</i> value when replacing values; if <i>FALSE</i>, it will return the
+currently set value.</p>
+
+
+
+				<h4>Parameters</h4>
+				<div class="list"><dl>
+					<dt><var>$theValue</var></dt>
+					<dd><code>string</code><br>$theValue Value or operation.</dd>
+					<dt><var>$getOld</var></dt>
+					<dd><code>boolean</code><br>$getOld TRUE get old value.</dd>
+				</dl></div>
+
+				<h4>Returns</h4>
+				<div class="list">
+					<code>mixed</code><br />
+				</div>
+
+
+				<h4>See</h4>
+				<div class="list">
+						kAPI_RELATION<br />
+				</div>
+				<h4>Uses</h4>
+				<div class="list">
+						<code><code><a href="function-ManageOffset.html">ManageOffset()</a></code></code> <br />
+				</div>
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="_CheckDependencies" id="__CheckDependencies">
+
+		<td class="attributes"><code>
+			 protected 
+			
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#__CheckDependencies">#</a>
+		<code><a href="source-class-COntologyWrapperClient.html#370-407" title="Go to source code">_CheckDependencies</a>( <span>string <var>$theOperation</var></span> )</code>
+
+		<div class="description short">
+			
+<p>Check operation dependencies.</p>
+
+		</div>
+
+		<div class="description detailed hidden">
+			
+<p>Check operation dependencies.</p>
+
+<p>This method can be used to assert whether the required parameters are present
+depending on the requested operation.</p>
+
+
+
+				<h4>Parameters</h4>
+				<div class="list"><dl>
+					<dt><var>$theOperation</var></dt>
+					<dd><code>string</code><br>$theOperation Requested operation.</dd>
+				</dl></div>
+
+
+				<h4>Throws</h4>
+				<div class="list">
+					<code><code><a href="class-Exception.html">Exception</a></code></code><br />
+				</div>
+
+
+				<h4>Overrides</h4>
+				<div class="list"><code><a href="class-CDataWrapperClient.html#__CheckDependencies">CDataWrapperClient::_CheckDependencies()</a></code></div>
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="_NormaliseParameters" id="__NormaliseParameters">
+
+		<td class="attributes"><code>
+			 protected 
+			
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#__NormaliseParameters">#</a>
+		<code><a href="source-class-COntologyWrapperClient.html#414-451" title="Go to source code">_NormaliseParameters</a>( )</code>
+
+		<div class="description short">
+			
+<p>Normalise parameters.</p>
+
+		</div>
+
+		<div class="description detailed hidden">
+			
+<p>Normalise parameters.</p>
+
+<p>This method can be used to normalise parameters before they get encoded.</p>
+
+<p>In this class we set the request time stamp if the current value is not an
+float.</p>
+
+<p>In derived classes you should call first the parent method, then handle the
+local parameters.</p>
+
+
+
+
+
+
+
+				<h4>Overrides</h4>
+				<div class="list"><code><a href="class-CDataWrapperClient.html#__NormaliseParameters">CDataWrapperClient::_NormaliseParameters()</a></code></div>
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="_EncodeParameters" id="__EncodeParameters">
+
+		<td class="attributes"><code>
+			 protected 
+			
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#__EncodeParameters">#</a>
+		<code><a href="source-class-COntologyWrapperClient.html#458-501" title="Go to source code">_EncodeParameters</a>( <span>reference <var>&amp; $theParameters</var></span>, <span>string <var>$theEncoding</var></span> )</code>
+
+		<div class="description short">
+			
+<p>Encode parameters.</p>
+
+		</div>
+
+		<div class="description detailed hidden">
+			
+<p>Encode parameters.</p>
+
+<p>This method can be used to encode parameters before they get sent to the
+service.</p>
+
+<p>We overload this method to handle the local parameters.</p>
+
+
+
+				<h4>Parameters</h4>
+				<div class="list"><dl>
+					<dt><var>$theParameters</var></dt>
+					<dd><code>reference</code><br>&amp;$theParameters List of parameters.</dd>
+					<dt><var>$theEncoding</var></dt>
+					<dd><code>string</code><br>$theEncoding Encoding code.</dd>
+				</dl></div>
+
+
+
+
+				<h4>Overrides</h4>
+				<div class="list"><code><a href="class-CDataWrapperClient.html#__EncodeParameters">CDataWrapperClient::_EncodeParameters()</a></code></div>
+
+		</div>
+		</div></td>
+	</tr>
+	</table>
+
+	<table class="summary inherited">
+	<caption>Methods inherited from <a href="class-CDataWrapperClient.html#methods">CDataWrapperClient</a></caption>
+	<tr>
+		<td><code>
+			<a href="class-CDataWrapperClient.html#_AddQueryListStatement">AddQueryListStatement()</a>, 
+			<a href="class-CDataWrapperClient.html#_AddQueryStatement">AddQueryStatement()</a>, 
+			<a href="class-CDataWrapperClient.html#_Container">Container()</a>, 
+			<a href="class-CDataWrapperClient.html#_Database">Database()</a>, 
+			<a href="class-CDataWrapperClient.html#_PageLimit">PageLimit()</a>, 
+			<a href="class-CDataWrapperClient.html#_PageStart">PageStart()</a>, 
+			<a href="class-CDataWrapperClient.html#_Select">Select()</a>, 
+			<a href="class-CDataWrapperClient.html#_Sort">Sort()</a>, 
+			<a href="class-CDataWrapperClient.html#__QueryStatement">_QueryStatement()</a>
+		</code></td>
+	</tr>
+	</table>
+	<table class="summary inherited">
+	<caption>Methods inherited from <a href="class-CWrapperClient.html#methods">CWrapperClient</a></caption>
+	<tr>
+		<td><code>
+			<a href="class-CWrapperClient.html#_Execute">Execute()</a>, 
+			<a href="class-CWrapperClient.html#_Format">Format()</a>, 
+			<a href="class-CWrapperClient.html#_LogRequest">LogRequest()</a>, 
+			<a href="class-CWrapperClient.html#_LogTrace">LogTrace()</a>, 
+			<a href="class-CWrapperClient.html#_Request">Request()</a>, 
+			<a href="class-CWrapperClient.html#_Stamp">Stamp()</a>, 
+			<a href="class-CWrapperClient.html#__ManageListOffset">_ManageListOffset()</a>, 
+			<a href="class-CWrapperClient.html#__Ready">_Ready()</a>, 
+			<a href="class-CWrapperClient.html#___toString">__toString()</a>
+		</code></td>
+	</tr>
+	</table>
+	<table class="summary inherited">
+	<caption>Methods inherited from <a href="class-CConnection.html#methods">CConnection</a></caption>
+	<tr>
+		<td><code>
+			<a href="class-CConnection.html#_Connection">Connection()</a>, 
+			<a href="class-CConnection.html#___construct">__construct()</a>
+		</code></td>
+	</tr>
+	</table>
+	<table class="summary inherited">
+	<caption>Methods inherited from <a href="class-CStatusDocument.html#methods">CStatusDocument</a></caption>
+	<tr>
+		<td><code>
+			<a href="class-CStatusDocument.html#__IsCommitted">_IsCommitted()</a>, 
+			<a href="class-CStatusDocument.html#__IsDirty">_IsDirty()</a>, 
+			<a href="class-CStatusDocument.html#__IsEncoded">_IsEncoded()</a>, 
+			<a href="class-CStatusDocument.html#__IsInited">_IsInited()</a>, 
+			<a href="class-CStatusDocument.html#__Postset">_Postset()</a>, 
+			<a href="class-CStatusDocument.html#__Postunset">_Postunset()</a>, 
+			<a href="class-CStatusDocument.html#__Preset">_Preset()</a>, 
+			<a href="class-CStatusDocument.html#__Preunset">_Preunset()</a>, 
+			<a href="class-CStatusDocument.html#_offsetSet">offsetSet()</a>, 
+			<a href="class-CStatusDocument.html#_offsetUnset">offsetUnset()</a>
+		</code></td>
+	</tr>
+	</table>
+	<table class="summary inherited">
+	<caption>Methods inherited from <a href="class-CDocument.html#methods">CDocument</a></caption>
+	<tr>
+		<td><code>
+			<a href="class-CDocument.html#_array_keys">array_keys()</a>, 
+			<a href="class-CDocument.html#_array_values">array_values()</a>, 
+			<a href="class-CDocument.html#_offsetGet">offsetGet()</a>
+		</code></td>
+	</tr>
+	</table>
+	<table class="summary inherited">
+	<caption>Methods inherited from <a href="class-ArrayObject.html#methods">ArrayObject</a></caption>
+	<tr>
+		<td><code>
+			<a href="class-ArrayObject.html#_append">append()</a>, 
+			<a href="class-ArrayObject.html#_asort">asort()</a>, 
+			<a href="class-ArrayObject.html#_count">count()</a>, 
+			<a href="class-ArrayObject.html#_exchangeArray">exchangeArray()</a>, 
+			<a href="class-ArrayObject.html#_getArrayCopy">getArrayCopy()</a>, 
+			<a href="class-ArrayObject.html#_getFlags">getFlags()</a>, 
+			<a href="class-ArrayObject.html#_getIterator">getIterator()</a>, 
+			<a href="class-ArrayObject.html#_getIteratorClass">getIteratorClass()</a>, 
+			<a href="class-ArrayObject.html#_ksort">ksort()</a>, 
+			<a href="class-ArrayObject.html#_natcasesort">natcasesort()</a>, 
+			<a href="class-ArrayObject.html#_natsort">natsort()</a>, 
+			<a href="class-ArrayObject.html#_offsetExists">offsetExists()</a>, 
+			<a href="class-ArrayObject.html#_serialize">serialize()</a>, 
+			<a href="class-ArrayObject.html#_setFlags">setFlags()</a>, 
+			<a href="class-ArrayObject.html#_setIteratorClass">setIteratorClass()</a>, 
+			<a href="class-ArrayObject.html#_uasort">uasort()</a>, 
+			<a href="class-ArrayObject.html#_uksort">uksort()</a>, 
+			<a href="class-ArrayObject.html#_unserialize">unserialize()</a>
+		</code></td>
+	</tr>
+	</table>
+
+
+
+
+
+
+
+
+	<table class="summary inherited">
+	<caption>Constants inherited from <a href="class-ArrayObject.html#constants">ArrayObject</a></caption>
+	<tr>
+		<td><code>
+			<a href="class-ArrayObject.html#ARRAY_AS_PROPS"><b>ARRAY_AS_PROPS</b></a>, 
+			<a href="class-ArrayObject.html#STD_PROP_LIST"><b>STD_PROP_LIST</b></a>
+		</code></td>
+	</tr>
+	</table>
+
+
+
+
+	<table class="summary inherited">
+	<caption>Properties inherited from <a href="class-CConnection.html#properties">CConnection</a></caption>
+	<tr>
+		<td><code>
+			<a href="class-CConnection.html#$mConnection"><var>$mConnection</var></a>
+		</code></td>
+	</tr>
+	</table>
+	<table class="summary inherited">
+	<caption>Properties inherited from <a href="class-CStatusDocument.html#properties">CStatusDocument</a></caption>
+	<tr>
+		<td><code>
+			<a href="class-CStatusDocument.html#$mStatus"><var>$mStatus</var></a>
+		</code></td>
+	</tr>
+	</table>
+
+
+
+
+
+</div>
+
+	<div id="footer">
+		MyWrapper Reference Documentation API documentation generated by <a href="http://apigen.org">ApiGen 2.8.0</a>
+	</div>
+</div>
+</div>
+</body>
+</html>

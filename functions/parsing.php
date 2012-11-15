@@ -1,7 +1,7 @@
 <?php
 
 /**
- * <h3>Parsing utilities</h3>
+ * <h4>Parsing utilities</h4>
  *
  * This file contains common parsing functions used by the library.
  *

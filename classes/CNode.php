@@ -27,7 +27,7 @@
 require_once( kPATH_MYWRAPPER_LIBRARY_CLASS."/CPersistentObject.php" );
 
 /**
- * <h3>Node object ancestor</h3>
+ * <h4>Node object ancestor</h4>
  *
  * A node is an element of a tree or graph which is connected to other nodes through
  * edges, a node is a vertex of a relationship. This class concentrates in the core

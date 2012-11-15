@@ -41,7 +41,7 @@ require_once( kPATH_MYWRAPPER_LIBRARY_CLASS."/COntologyNode.php" );
 require_once( kPATH_MYWRAPPER_LIBRARY_CLASS."/CEdge.php" );
 
 /**
- * <h3>Ontology edge object ancestor</h3>
+ * <h4>Ontology edge object ancestor</h4>
  *
  * This class extends its ancestor, {@link CEdge}, by asserting the {@link Subject()} and
  * {@link Object()} to be instances of {@link COntologyNode}, and the {@link Predicate} to

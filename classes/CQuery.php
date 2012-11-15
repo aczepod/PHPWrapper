@@ -47,7 +47,7 @@ require_once( kPATH_MYWRAPPER_LIBRARY_DEFINE."/Operators.inc.php" );
 require_once( kPATH_MYWRAPPER_LIBRARY_CLASS."/CStatusDocument.php" );
 
 /**
- * <h3>Query</h3>
+ * <h4>Query</h4>
  *
  * This class implements a query.
  *
@@ -227,6 +227,12 @@ class CQuery extends CStatusDocument
 	 */
 	public function AppendStatement( $theStatement, $theCondition = kOPERATOR_AND )
 	{
+		//
+		// Normalise statement.
+		//
+		if( $theStatement instanceof ArrayObject )
+			$theStatement = $theStatement->getArrayCopy();
+		
 		//
 		// Get statement key.
 		//
