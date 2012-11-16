@@ -1329,7 +1329,7 @@ class COntologyWrapper extends CDataWrapper
 			// Iterate list.
 			//
 			foreach( $theEdge as $item )
-				$this->_ExportTag( $theCollection, $item );
+				$this->_ExportEdge( $theCollection, $item );
 		
 		} // Provided list.
 		
@@ -1414,14 +1414,13 @@ class COntologyWrapper extends CDataWrapper
 				//
 				// Save edge.
 				//
-				$theEdge = $theEdge->getArrayCopy();
-				CDataType::SerialiseObject( $theEdge );
-				$theCollection[ kAPI_COLLECTION_EDGE ][ $id ] = $theEdge;
+				CDataType::SerialiseObject( $export );
+				$theCollection[ kAPI_COLLECTION_EDGE ][ $id ] = $export;
 				
 				//
 				// Get vertex tags.
 				//
-				$this->_ExportTag( $theCollection, array_keys( $theEdge ) );
+				$this->_ExportTag( $theCollection, array_keys( $export ) );
 			
 			} // New edge.
 		
