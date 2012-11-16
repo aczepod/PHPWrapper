@@ -22,7 +22,7 @@
 //
 // Global includes.
 //
-require_once( '/Library/WebServer/Library/PHPWrapper/includes.inc.php' );
+require_once( 'includes.inc.php' );
 
 //
 // Local includes.
@@ -464,6 +464,37 @@ try
 		echo( '<hr>' );
 		echo( '<hr>' );
 	}
+	
+	echo( '<h4>Test root GetVertex list</h4>' );
+	//
+	// Instantiate.
+	//
+	echo( '<i>$test = new COntologyWrapperClient( $url );</i><br>' );
+	$test = new COntologyWrapperClient( $url );
+	echo( '<i>$test->Operation( kAPI_OP_GetVertex );</i><br>' );
+	$test->Operation( kAPI_OP_GetVertex );
+	echo( '<i>$test->Format( kTYPE_JSON );</i><br>' );
+	$test->Format( kTYPE_JSON );
+	echo( '<i>$test->Database( "ONTOLOGY" );</i><br>' );
+	$test->Database( "ONTOLOGY" );
+	echo( '<i>$test->AddQueryStatement( kOPERATOR_AND, kTAG_KIND, kOPERATOR_EQUAL, kKIND_NODE_ROOT );</i><br>' );
+	$test->AddQueryStatement( kOPERATOR_AND, kTAG_KIND, kOPERATOR_EQUAL, kKIND_NODE_ROOT );
+	echo( '<i>$decoded = $test->Execute( "POST" );</i><br>' );
+	$decoded = $test->Execute( "POST" );
+	//
+	// Display.
+	//
+	echo( kSTYLE_TABLE_PRE );
+	echo( kSTYLE_ROW_PRE );
+	echo( kSTYLE_HEAD_PRE.'Client:'.kSTYLE_HEAD_POS );
+	echo( kSTYLE_DATA_PRE.'<pre>' ); print_r( $test ); echo( '</pre>'.kSTYLE_DATA_POS );
+	echo( kSTYLE_ROW_POS );
+	echo( kSTYLE_ROW_PRE );
+	echo( kSTYLE_HEAD_PRE.'Decoded:'.kSTYLE_HEAD_POS );
+	echo( kSTYLE_DATA_PRE.'<pre>' ); print_r( $decoded ); echo( '</pre>'.kSTYLE_DATA_POS );
+	echo( kSTYLE_ROW_POS );
+	echo( kSTYLE_TABLE_POS );
+	echo( '<hr>' );
 	
 	echo( '<h4>Test GetVertex by ID</h4>' );
 	//

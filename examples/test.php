@@ -3,7 +3,7 @@
 	//
 	// Test namespaces.
 	//
-	require_once( '/Library/WebServer/Library/PHPWrapper/includes.inc.php' );
+	require_once( 'includes.inc.php' );
 	
 /*
 	//
