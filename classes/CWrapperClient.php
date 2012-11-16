@@ -380,14 +380,18 @@ class CWrapperClient extends CConnection
 	 * This method can be used to sent an <i>HTTP</i> request using the current contents of
 	 * the object and return a response.
 	 *
+	 * If the second parameter is <tt>TRUE</tt>, the response will be encoded, if
+	 * <tt>FALSE</tt>, the reqponse will be returned in its original encoding.
+	 *
 	 * @param string				$theMode			Request mode, POST or GET
+	 * @param boolean				$doEncode			TRUE means encode result.
 	 *
 	 * @access public
 	 * @return mixed
 	 *
 	 * @throws {@link CException CException}
 	 */
-	public function Execute( $theMode = 'POST' )
+	public function Execute( $theMode = 'POST', $doEncode = TRUE )
 	{
 		//
 		// Check if inited.
@@ -420,7 +424,13 @@ class CWrapperClient extends CConnection
 		//
 		// Encode parameters.
 		//
-		$this->_EncodeParameters( $params, $this->Format() );
+		$this->_EncodeParameters( $params, $format );
+		
+		//
+		// Set decode format.
+		//
+		if( ! $doEncode )
+			$format = NULL;
 		
 		return static::Request( $url, $params, $theMode, $format );					// ==>
 	
@@ -461,8 +471,9 @@ class CWrapperClient extends CConnection
 	 *	 <ul>
 	 *		<li><tt>{@link kTYPE_PHP}</tt>: PHP.
 	 *		<li><tt>{@link kTYPE_JSON}</tt>: JSON.
-	 *		<li><i>other</i>: Metadata: the method will return the metadata of the operation
-	 *			for troubleshooting purposes.
+	 *		<li><tt>{@link kTYPE_META}</tt>: Metadata: the method will return the metadata
+	 *			of the operation for troubleshooting purposes.
+	 *		<li><i>other</i>: The service will return the data as it was received.
 	 *	 </ul>
 	 * </ul>
 	 *
@@ -567,7 +578,7 @@ class CWrapperClient extends CConnection
 		switch( $theFormat )
 		{
 			case kTYPE_JSON:
-				return JsonDecode( $result );								// ==>
+				return JsonDecode( $result );										// ==>
 			
 			case kTYPE_PHP:
 				return unserialize( $result );										// ==>
