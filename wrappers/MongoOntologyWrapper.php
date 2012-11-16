@@ -22,20 +22,20 @@
  *======================================================================================*/
 
 /**
- * Local includes.
- *
- * This include file contains local definitions.
- */
-require_once( 'local.inc.php' );
-
-/**
  * Global includes.
  *
  * This include file contains default path definitions and an
  * {@link __autoload() autoloader} used to automatically include referenced classes in this
  * library.
  */
-require_once( '/Library/WebServer/Library/PHPWrapper/includes.inc.php' );
+require_once( 'includes.inc.php' );
+
+/**
+ * Local includes.
+ *
+ * This include file contains local definitions.
+ */
+require_once( 'local.inc.php' );
 
 /**
  * Class includes.

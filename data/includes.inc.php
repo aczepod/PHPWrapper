@@ -55,12 +55,23 @@ define( "kPATH_MYWRAPPER_NAMESPACE_ROOT",	"MyWrapper" );
 define( "kPATH_MYWRAPPER_LIBRARY_ROOT",		"/Library/WebServer/Library/PHPWrapper" );
 
 /**
+ * Neo4j library root.
+ *
+ * This value defines the <b><i>absolute</i></b> path to the Neo4j library directory.
+ */
+define( "kPATH_LIBRARY_NEO4J",				"/Library/WebServer/Library/Neo4jphp/" );
+
+/*=======================================================================================
+ *	LIBRARY SUB-PATHS																		*
+ *======================================================================================*/
+
+/**
  * MyWrapper class library definitions.
  *
  * This value defines the <b><i>absolute</i></b> path to the MyWrapper class library
  * definitions directory.
  */
-define( "kPATH_MYWRAPPER_LIBRARY_DEFINE",	"/Library/WebServer/Library/PHPWrapper/defines" );
+define( "kPATH_MYWRAPPER_LIBRARY_DEFINE",	kPATH_MYWRAPPER_LIBRARY_ROOT."/defines" );
 
 /**
  * MyWrapper class library sources.
@@ -68,7 +79,7 @@ define( "kPATH_MYWRAPPER_LIBRARY_DEFINE",	"/Library/WebServer/Library/PHPWrapper
  * This value defines the <b><i>absolute</i></b> path to the MyWrapper class library sources
  * directory.
  */
-define( "kPATH_MYWRAPPER_LIBRARY_CLASS",	"/Library/WebServer/Library/PHPWrapper/classes" );
+define( "kPATH_MYWRAPPER_LIBRARY_CLASS",	kPATH_MYWRAPPER_LIBRARY_ROOT."/classes" );
 
 /**
  * MyWrapper function library sources.
@@ -76,18 +87,7 @@ define( "kPATH_MYWRAPPER_LIBRARY_CLASS",	"/Library/WebServer/Library/PHPWrapper/
  * This value defines the <b><i>absolute</i></b> path to the MyWrapper function library
  * sources directory.
  */
-define( "kPATH_MYWRAPPER_LIBRARY_FUNCTION",	"/Library/WebServer/Library/PHPWrapper/functions" );
-
-/*=======================================================================================
- *	NEO4J LIBRARY PATHS																	*
- *======================================================================================*/
-
-/**
- * Neo4j library root.
- *
- * This value defines the <b><i>absolute</i></b> path to the Neo4j library directory.
- */
-define( "kPATH_LIBRARY_NEO4J",				"/Library/WebServer/Library/Neo4jphp/" );
+define( "kPATH_MYWRAPPER_LIBRARY_FUNCTION",	kPATH_MYWRAPPER_LIBRARY_ROOT."/functions" );
 
 /*=======================================================================================
  *	SESSION GLOBALS																		*
