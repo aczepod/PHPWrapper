@@ -1105,60 +1105,8 @@ class CDataWrapper extends CWrapper
 			// Check container.
 			//
 			if( array_key_exists( kAPI_CONTAINER, $_REQUEST ) )
-			{
-				//
-				// Parse by operation.
-				//
-				switch( $_REQUEST[ kAPI_OPERATION ] )
-				{
-					case kAPI_OP_MATCH:
-						//
-						// Iterate queries.
-						//
-						foreach( $_REQUEST[ kAPI_QUERY ] as $key => $query )
-						{
-							//
-							// Instantiate query.
-							//
-							if( ! ($query instanceof CQuery) )
-								$query
-									= $_REQUEST[ kAPI_CONTAINER ]
-										->NewQuery( $_REQUEST[ kAPI_QUERY ][ $key ] );
-							
-							//
-							// Validate query.
-							//
-							$query->Validate();
-							
-							//
-							// Set query.
-							//
-							$_REQUEST[ kAPI_QUERY ][ $key ] = $query;
-						
-						} // Iterating queries.
-						
-						break;
-					
-					default:
-						//
-						// Instantiate query.
-						//
-						if( ! ($_REQUEST[ kAPI_QUERY ] instanceof CQuery) )
-							$_REQUEST[ kAPI_QUERY ]
-								= $_REQUEST[ kAPI_CONTAINER ]
-									->NewQuery( $_REQUEST[ kAPI_QUERY ] );
-						
-						//
-						// Validate query.
-						//
-						$_REQUEST[ kAPI_QUERY ]->Validate();
-						
-						break;
-				
-				} // Parsing by operation.
-			
-			} // Provided container.
-			
+				$this->_VerifyQuery( $_REQUEST[ kAPI_QUERY ] );
+
 			else
 				throw new CException
 					( "Unable to validate query: container is missing",
@@ -1632,6 +1580,84 @@ class CDataWrapper extends CWrapper
 		} // Iterating queries.
 	
 	} // _Handle_Match.
+
+		
+
+/*=======================================================================================
+ *																						*
+ *									PROTECTED UTILITIES									*
+ *																						*
+ *======================================================================================*/
+
+
+	 
+	/*===================================================================================
+	 *	_VerifyQuery																	*
+	 *==================================================================================*/
+
+	/**
+	 * Check and verify query.
+	 *
+	 * This method can ve used to verify a query, it will traverse the provided array until
+	 * it finds a condition operator, in that case it will convert the array, if necessary,
+	 * to a {@link CQuery} object and {@link CQuery::Validate()}.
+	 *
+	 * The method expects the {@link kAPI_CONTAINER} parameter to have been set.
+	 *
+	 * @param reference			   &$theQuery			Query structure.
+	 *
+	 * @access protected
+	 */
+	protected function _VerifyQuery( &$theQuery )
+	{
+		//
+		// Check query.
+		//
+		if( ! ($theQuery instanceof CQuery) )
+		{
+			//
+			// Handle arrays.
+			//
+			if( is_array( $theQuery ) )
+			{
+				//
+				// Check if it is a query.
+				//
+				if( in_array( key( $theQuery ),
+							  array( kOPERATOR_AND, kOPERATOR_NAND,
+							  		 kOPERATOR_OR, kOPERATOR_NOR ) ) )
+				{
+					//
+					// Convert to query.
+					//
+					$theQuery = $_REQUEST[ kAPI_CONTAINER ]->NewQuery( $theQuery );
+					
+					//
+					// Validate query.
+					//
+					$theQuery->Validate();
+					
+				} // Found query.
+				
+				//
+				// Handle query list.
+				//
+				else
+				{
+					//
+					// Recurse array elements.
+					//
+					$keys = array_keys( $theQuery );
+					foreach( $keys as $key )
+						$this->_VerifyQuery( $theQuery[ $key ] );
+				
+				} // Query list.
+			
+			} // Is array.
+		
+		} // Not yet a query.
+	
+	} // _VerifyQuery.
 
 	 
 
