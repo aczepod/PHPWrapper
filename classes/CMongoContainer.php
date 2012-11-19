@@ -1018,9 +1018,16 @@ class CMongoContainer extends CContainer
 					$theStart = 0;
 				
 				//
+				// Initialise record start.
+				//
+				$start = ( $theStart )
+					   ? ($theStart * $theLimit)
+					   : 0;
+				
+				//
 				// Position at start.
 				//
-				$cursor->skip( $theStart );
+				$cursor->skip( $start );
 				
 				//
 				// Set limit.

@@ -213,6 +213,8 @@ class CDataTypeStamp extends CDataType
 	 * This method will return a floating point number equivalent to the result of the
 	 * <i>microtime( TRUE )</i> function.
 	 *
+	 * @param reference				$theStruct			Query structure.
+	 *
 	 * @access public
 	 * @return float
 	 *
