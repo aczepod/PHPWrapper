@@ -750,70 +750,28 @@ class CDataWrapper extends CWrapper
 	/**
 	 * Format query.
 	 *
-	 * This method will decode the provided query from JSON or PHP encoding and unserialise
-	 * eventual query arguments encoded as {@link CDataType} derived instances.
+	 * The main duty of this method is to format the provided query. This parameter will be
+	 * provided as an array in which the first level element indexes can take the following
+	 * values:
 	 *
-	 * This method will first check if the parameter is not already an array or a
-	 * {@link CQuery} derived instance, if it is, the method will do nothing.
+	 * <ul>
+	 *	<li><i>Conditional Operator</i>: If any of {@link kOPERATOR_AND},
+	 *		{@link kOPERATOR_OR}, {@link kOPERATOR_NAND} or {@link kOPERATOR_NOR} is found
+	 *		as index, it means that the query is applied to the provided container.
+	 *	<li><tt>integer</tt>: An integer index indicates that the provided query is a list
+	 *		of queries for the container provided to the service.
+	 *	<li><i>other</i>: Any other kind of data will be cast to a string and interpreted as
+	 *		the container name.
+	 * </ul>
+	 *
+	 * In this class we do nothing, derived classes may overload this method to customise
+	 * the structure before it gets validated.
 	 *
 	 * @access protected
 	 *
 	 * @see kAPI_QUERY
 	 */
-	protected function _FormatQuery()
-	{
-		//
-		// Check parameter.
-		//
-		if( array_key_exists( kAPI_QUERY, $_REQUEST ) )
-		{
-			//
-			// Check if the query needs to be formatted.
-			//
-			if( (! is_array( $_REQUEST[ kAPI_QUERY ] ))
-			 && (! ($_REQUEST[ kAPI_QUERY ] instanceof CQuery)) )
-			{
-				//
-				// Check query format.
-				//
-				if( is_array( $_REQUEST[ kAPI_QUERY ] ) )
-				{
-					//
-					// Handle non-empty query.
-					//
-					if( count( $_REQUEST[ kAPI_QUERY ] ) )
-					{
-						//
-						// Check container.
-						//
-						if( array_key_exists( kAPI_CONTAINER, $_REQUEST ) )
-							$_REQUEST[ kAPI_CONTAINER ]
-								->UnserialiseObject( $_REQUEST[ kAPI_QUERY ] );
-						
-						else
-							throw new CException
-								( "Unable to format query: container is missing",
-								  kERROR_STATE,
-								  kMESSAGE_TYPE_ERROR );						// !@! ==>
-					}
-					
-					else
-						unset( $_REQUEST[ kAPI_QUERY ] );
-				}
-				
-				else
-					throw new CException
-						( ("Unable to format query: invalid type ("
-						  .gettype( $_REQUEST[ kAPI_QUERY ] )
-						  ."): expecting an array"),
-						  kERROR_PARAMETER,
-						  kMESSAGE_TYPE_ERROR );								// !@! ==>
-			
-			} // Needs formatting.
-			
-		} // Provided query parameters.
-	
-	} // _FormatQuery.
+	protected function _FormatQuery()													   {}
 
 	 
 	/*===================================================================================
@@ -1087,8 +1045,22 @@ class CDataWrapper extends CWrapper
 	/**
 	 * Validate query parameters.
 	 *
-	 * The duty of this method is to validate the query parameters, in this class we
-	 * instantiate the query object and verify its consistency.
+	 * The duty of this method is to validate the query parameter, in this class we will
+	 * unserialise eventual serialised data types and convert the query or the queries into
+	 * {@link CQuery} instances, this will be done by a container determined by the
+	 * index data types of the provided query parameter array:
+	 *
+	 * <ul>
+	 *	<li><i>Conditional Operator</i>: If any of {@link kOPERATOR_AND},
+	 *		{@link kOPERATOR_OR}, {@link kOPERATOR_NAND} or {@link kOPERATOR_NOR} is found
+	 *		as index, it means that the query is scalar and the provided container parameter
+	 *		will be used to instantiate the {@link CQuery} instance.
+	 *	<li><tt>integer</tt>: An integer index indicates that the query parameter is a list
+	 *		of queries, each query will be cast to a {@link CQuery} instance by the provided
+	 *		container parameter.
+	 *	<li><i>other</i>: Any other kind of data will be cast to a string and interpreted as
+	 *		the container name.
+	 * </ul>
 	 *
 	 * @access protected
 	 *
@@ -1102,18 +1074,148 @@ class CDataWrapper extends CWrapper
 		if( array_key_exists( kAPI_QUERY, $_REQUEST ) )
 		{
 			//
-			// Check container.
+			// Check query type.
 			//
-			if( array_key_exists( kAPI_CONTAINER, $_REQUEST ) )
-				$this->_VerifyQuery( $_REQUEST[ kAPI_QUERY ] );
-
+			if( is_array( $_REQUEST[ kAPI_QUERY ] ) )
+			{
+				//
+				// Reset array pointers.
+				//
+				reset( $_REQUEST[ kAPI_QUERY ] );
+				
+				//
+				// Handle scalar query.
+				//
+				if( in_array( key( $_REQUEST[ kAPI_QUERY ] ),
+							  array( kOPERATOR_AND, kOPERATOR_NAND,
+									 kOPERATOR_OR, kOPERATOR_NOR ) ) )
+				{
+					//
+					// Check container.
+					// If there it should already be a CContainer instance.
+					//
+					if( array_key_exists( kAPI_CONTAINER, $_REQUEST ) )
+					{
+						//
+						// Unserialise standard data types.
+						//
+						$_REQUEST[ kAPI_CONTAINER ]
+							->UnserialiseObject( $_REQUEST[ kAPI_QUERY ] );
+						
+						//
+						// Format and verify query.
+						//
+						$this->_VerifyQuery( $_REQUEST[ kAPI_QUERY ],
+											 $_REQUEST[ kAPI_CONTAINER ] );
+					
+					} // Provided container.
+					
+					else
+						throw new CException
+							( "Unable to format query: missing container",
+							  kERROR_MISSING,
+							  kMESSAGE_TYPE_ERROR );							// !@! ==>
+				
+				} // Scalar query.
+				
+				//
+				// Handle query lists.
+				//
+				else
+				{
+					//
+					// Iterate queries.
+					//
+					$keys = array_keys( $_REQUEST[ kAPI_QUERY ] );
+					foreach( $keys as $key )
+					{
+						//
+						// Handle scalar query.
+						//
+						if( is_integer( $key ) )
+						{
+							//
+							// Check container.
+							// If there it should already be a CContainer instance.
+							//
+							if( array_key_exists( kAPI_CONTAINER, $_REQUEST ) )
+							{
+								//
+								// Unserialise standard data types.
+								//
+								$_REQUEST[ kAPI_CONTAINER ]
+									->UnserialiseObject( $_REQUEST[ kAPI_QUERY ][ $key ] );
+								
+								//
+								// Format and verify query.
+								//
+								$this->_VerifyQuery( $_REQUEST[ kAPI_QUERY ][ $key ],
+													 $_REQUEST[ kAPI_CONTAINER ] );
+							
+							} // Provided container.
+							
+							else
+								throw new CException
+									( "Unable to format query: missing container",
+									  kERROR_MISSING,
+									  kMESSAGE_TYPE_ERROR );					// !@! ==>
+						
+						} // Scalar query.
+						
+						//
+						// Handle container list.
+						//
+						else
+						{
+							//
+							// Check database.
+							// If there it should already be a CContainer instance.
+							//
+							if( array_key_exists( kAPI_DATABASE, $_REQUEST ) )
+							{
+								//
+								// Instantiate container.
+								//
+								$container = $_REQUEST[ kAPI_DATABASE ]->Container( $key );
+							
+								//
+								// Unserialise standard data types.
+								//
+								$container
+									->UnserialiseObject( 
+										$_REQUEST[ kAPI_QUERY ][ $key ] );
+								
+								//
+								// Format and verify query.
+								//
+								$this->_VerifyQuery( $_REQUEST[ kAPI_QUERY ][ $key ],
+													 $_REQUEST[ kAPI_DATABASE ]
+														->Container( $container ) );
+							
+							} // Provided database.
+							
+							else
+								throw new CException
+									( "Unable to format query: missing database",
+									  kERROR_MISSING,
+									  kMESSAGE_TYPE_ERROR );					// !@! ==>
+						
+						} // Container query.
+					
+					} // Iterating queries.
+				
+				} // Queries list.
+			
+			} // Query is an array.
+			
 			else
 				throw new CException
-					( "Unable to validate query: container is missing",
-					  kERROR_STATE,
-					  kMESSAGE_TYPE_ERROR );									// !@! ==>
+					( "Unable to format query: invalid query data type",
+					  kERROR_PARAMETER,
+					  kMESSAGE_TYPE_ERROR,
+					  array( 'Type' => gettype( $_REQUEST[ kAPI_QUERY ] ) ) );	// !@! ==>
 		
-		} // Provided query parameters.
+		} // Provided query parameter.
 	
 	} // _ValidateQuery.
 
@@ -1605,10 +1707,11 @@ class CDataWrapper extends CWrapper
 	 * The method expects the {@link kAPI_CONTAINER} parameter to have been set.
 	 *
 	 * @param reference			   &$theQuery			Query structure.
+	 * @param CContainer			$theContainer		Container object.
 	 *
 	 * @access protected
 	 */
-	protected function _VerifyQuery( &$theQuery )
+	protected function _VerifyQuery( &$theQuery, CContainer $theContainer )
 	{
 		//
 		// Check query.
@@ -1630,7 +1733,7 @@ class CDataWrapper extends CWrapper
 					//
 					// Convert to query.
 					//
-					$theQuery = $_REQUEST[ kAPI_CONTAINER ]->NewQuery( $theQuery );
+					$theQuery = $theContainer->NewQuery( $theQuery );
 					
 					//
 					// Validate query.
@@ -1649,7 +1752,7 @@ class CDataWrapper extends CWrapper
 					//
 					$keys = array_keys( $theQuery );
 					foreach( $keys as $key )
-						$this->_VerifyQuery( $theQuery[ $key ] );
+						$this->_VerifyQuery( $theQuery[ $key ], $theContainer );
 				
 				} // Query list.
 			

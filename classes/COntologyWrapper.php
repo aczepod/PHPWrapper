@@ -411,11 +411,17 @@ class COntologyWrapper extends CDataWrapper
 	/**
 	 * Format query.
 	 *
-	 * This method will decode the provided query from JSON or PHP encoding and unserialise
-	 * eventual query arguments encoded as {@link CDataType} derived instances.
+	 * We overload this method to perform default formatting according to the operation:
 	 *
-	 * This method will first check if the parameter is not already an array or a
-	 * {@link CQuery} derived instance, if it is, the method will do nothing.
+	 * <ul>
+	 *	<li><tt>{@link kAPI_OP_GetVertex}</tt>: This operation involves searching for
+	 *		vertices, which are a combination of two different objects, this means that one
+	 *		could reach a vertex both from a node or from a term. This method will force all
+	 *		queries to be a list of queries with the element index representing the
+	 *		container name. If the provided query is a scalar query, the method will
+	 *		transform it into a query list with the container name set to the default
+	 *		{@link kCONTAINER_NODE_NAME}, or to the service provided container name.
+	 * </ul>
 	 *
 	 * @access protected
 	 *
@@ -424,33 +430,51 @@ class COntologyWrapper extends CDataWrapper
 	protected function _FormatQuery()
 	{
 		//
-		// Parse by operation.
+		// Check if query was provided.
 		//
-		switch( $_REQUEST[ kAPI_OPERATION ] )
+		if( array_key_exists( kAPI_QUERY, $_REQUEST ) )
 		{
-			case kAPI_OP_GetVertex:
-				//
-				// Set the default nodes container
-				// to prevent parent method from complaining.
-				// In the future this should be handled here,
-				// since we will be searching on both terms and nodes.
-				//
-				// Note that if we provide a container, that will be used.
-				//
-				if( ! array_key_exists( kAPI_CONTAINER, $_REQUEST ) )
-					$_REQUEST[ kAPI_CONTAINER ]
-						= COntologyNode::DefaultContainer(
-							$_REQUEST[ kAPI_DATABASE ] );
-				
-			default:
-				//
-				// Let parent handle it.
-				//
-				parent::_FormatQuery();
-				
-				break;
+			//
+			// Parse by operation.
+			//
+			switch( $_REQUEST[ kAPI_OPERATION ] )
+			{
+				case kAPI_OP_GetVertex:
+				/*
+					//
+					// Handle scalar queries.
+					//
+					if( in_array( key( $_REQUEST[ kAPI_QUERY ] ),
+								  array( kOPERATOR_AND, kOPERATOR_NAND,
+										 kOPERATOR_OR, kOPERATOR_NOR ) ) )
+					{
+						//
+						// Get container name.
+						//
+						$container = ( array_key_exists( kAPI_CONTAINER, $_REQUEST ) )
+								   ? (string) $_REQUEST[ kAPI_CONTAINER ]
+								   : kCONTAINER_NODE_NAME;
+						
+						//
+						// Set to queries list.
+						//
+						$_REQUEST[ kAPI_QUERY ]
+							= array( $container => $_REQUEST[ kAPI_QUERY ] );
+					
+					} // Scalar query.
+				*/
+					
+				default:
+					//
+					// Let parent handle it.
+					//
+					parent::_FormatQuery();
+					
+					break;
+			
+			} // Parsing by operation.
 		
-		} // Parsing by operation.
+		} // Provided query.
 	
 	} // _FormatQuery.
 

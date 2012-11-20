@@ -7,7 +7,7 @@
 	<title>Class CDataWrapper | MyWrapper Reference Documentation</title>
 
 	<script type="text/javascript" src="resources/combined.js?3680114562"></script>
-	<script type="text/javascript" src="elementlist.js?895580329"></script>
+	<script type="text/javascript" src="elementlist.js?1970556120"></script>
 	<link rel="stylesheet" type="text/css" media="all" href="resources/style.css?3505392360" />
 
 </head>
@@ -300,7 +300,7 @@ is abstract.</p>
 				<b>Author:</b>
 				Milko A. Škofič &lt;<a
 href="mailto:m.skofic&#64;cgiar.org">m.skofic&#64;<!---->cgiar.org</a>&gt;<br />
-		<b>Located at</b> <a href="source-class-CDataWrapper.html#43-1664" title="Go to source code">CDataWrapper.php</a><br />
+		<b>Located at</b> <a href="source-class-CDataWrapper.html#43-1767" title="Go to source code">CDataWrapper.php</a><br />
 	</div>
 
 
@@ -978,7 +978,7 @@ response kAPI_PAGING block with the provided paging options.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#__FormatQuery">#</a>
-		<code><a href="source-class-CDataWrapper.html#750-816" title="Go to source code">_FormatQuery</a>( )</code>
+		<code><a href="source-class-CDataWrapper.html#750-774" title="Go to source code">_FormatQuery</a>( )</code>
 
 		<div class="description short">
 			
@@ -990,12 +990,23 @@ response kAPI_PAGING block with the provided paging options.</p>
 			
 <p>Format query.</p>
 
-<p>This method will decode the provided query from JSON or PHP encoding and
-unserialise eventual query arguments encoded as <code><a href="class-CDataType.html">CDataType</a></code> derived
-instances.</p>
+<p>The main duty of this method is to format the provided query. This parameter
+will be provided as an array in which the first level element indexes can take
+the following values:</p>
 
-<p>This method will first check if the parameter is not already an array or a
-<code><a href="class-CQuery.html">CQuery</a></code> derived instance, if it is, the method will do nothing.</p>
+<ul>
+	<li><i>Conditional Operator</i>: If any of kOPERATOR_AND, kOPERATOR_OR, kOPERATOR_NAND or kOPERATOR_NOR is found as
+	index, it means that the query is applied to the provided container.</li>
+
+	<li><tt>integer</tt>: An integer index indicates that the provided query is a
+	list of queries for the container provided to the service.</li>
+
+	<li><i>other</i>: Any other kind of data will be cast to a string and
+	interpreted as the container name.</li>
+</ul>
+
+<p>In this class we do nothing, derived classes may overload this method to
+customise the structure before it gets validated.</p>
 
 
 
@@ -1026,7 +1037,7 @@ instances.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#__FormatSelect">#</a>
-		<code><a href="source-class-CDataWrapper.html#823-841" title="Go to source code">_FormatSelect</a>( )</code>
+		<code><a href="source-class-CDataWrapper.html#781-799" title="Go to source code">_FormatSelect</a>( )</code>
 
 		<div class="description short">
 			
@@ -1069,7 +1080,7 @@ instances.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#__FormatSort">#</a>
-		<code><a href="source-class-CDataWrapper.html#848-866" title="Go to source code">_FormatSort</a>( )</code>
+		<code><a href="source-class-CDataWrapper.html#806-824" title="Go to source code">_FormatSort</a>( )</code>
 
 		<div class="description short">
 			
@@ -1112,7 +1123,7 @@ instances.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#__ValidateOperation">#</a>
-		<code><a href="source-class-CDataWrapper.html#882-966" title="Go to source code">_ValidateOperation</a>( )</code>
+		<code><a href="source-class-CDataWrapper.html#840-924" title="Go to source code">_ValidateOperation</a>( )</code>
 
 		<div class="description short">
 			
@@ -1164,7 +1175,7 @@ following operations:</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#__ValidateDatabase">#</a>
-		<code><a href="source-class-CDataWrapper.html#973-1004" title="Go to source code">_ValidateDatabase</a>( )</code>
+		<code><a href="source-class-CDataWrapper.html#931-962" title="Go to source code">_ValidateDatabase</a>( )</code>
 
 		<div class="description short">
 			
@@ -1211,7 +1222,7 @@ you should override this method using the specific database.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#__ValidateContainer">#</a>
-		<code><a href="source-class-CDataWrapper.html#1011-1042" title="Go to source code">_ValidateContainer</a>( )</code>
+		<code><a href="source-class-CDataWrapper.html#969-1000" title="Go to source code">_ValidateContainer</a>( )</code>
 
 		<div class="description short">
 			
@@ -1258,7 +1269,7 @@ you should override this method using the specific container.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#__ValidatePaging">#</a>
-		<code><a href="source-class-CDataWrapper.html#1049-1080" title="Go to source code">_ValidatePaging</a>( )</code>
+		<code><a href="source-class-CDataWrapper.html#1007-1038" title="Go to source code">_ValidatePaging</a>( )</code>
 
 		<div class="description short">
 			
@@ -1303,7 +1314,7 @@ kDEFAULT_MAX_LIMIT.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#__ValidateQuery">#</a>
-		<code><a href="source-class-CDataWrapper.html#1087-1118" title="Go to source code">_ValidateQuery</a>( )</code>
+		<code><a href="source-class-CDataWrapper.html#1045-1220" title="Go to source code">_ValidateQuery</a>( )</code>
 
 		<div class="description short">
 			
@@ -1315,8 +1326,23 @@ kDEFAULT_MAX_LIMIT.</p>
 			
 <p>Validate query parameters.</p>
 
-<p>The duty of this method is to validate the query parameters, in this class we
-instantiate the query object and verify its consistency.</p>
+<p>The duty of this method is to validate the query parameter, in this class we
+will unserialise eventual serialised data types and convert the query or the
+queries into <code><a href="class-CQuery.html">CQuery</a></code> instances, this will be done by a container
+determined by the index data types of the provided query parameter array:</p>
+
+<ul>
+	<li><i>Conditional Operator</i>: If any of kOPERATOR_AND, kOPERATOR_OR, kOPERATOR_NAND or kOPERATOR_NOR is found as
+	index, it means that the query is scalar and the provided container parameter
+	will be used to instantiate the <code><a href="class-CQuery.html">CQuery</a></code> instance.</li>
+
+	<li><tt>integer</tt>: An integer index indicates that the query parameter is a
+	list of queries, each query will be cast to a <code><a href="class-CQuery.html">CQuery</a></code> instance by the
+	provided container parameter.</li>
+
+	<li><i>other</i>: Any other kind of data will be cast to a string and
+	interpreted as the container name.</li>
+</ul>
 
 
 
@@ -1347,7 +1373,7 @@ instantiate the query object and verify its consistency.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#__ValidateSelect">#</a>
-		<code><a href="source-class-CDataWrapper.html#1125-1165" title="Go to source code">_ValidateSelect</a>( )</code>
+		<code><a href="source-class-CDataWrapper.html#1227-1267" title="Go to source code">_ValidateSelect</a>( )</code>
 
 		<div class="description short">
 			
@@ -1394,7 +1420,7 @@ string and create with it an array.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#__ValidateSort">#</a>
-		<code><a href="source-class-CDataWrapper.html#1172-1212" title="Go to source code">_ValidateSort</a>( )</code>
+		<code><a href="source-class-CDataWrapper.html#1274-1314" title="Go to source code">_ValidateSort</a>( )</code>
 
 		<div class="description short">
 			
@@ -1441,7 +1467,7 @@ a string and create with it an array.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#__HandleRequest">#</a>
-		<code><a href="source-class-CDataWrapper.html#1228-1270" title="Go to source code">_HandleRequest</a>( )</code>
+		<code><a href="source-class-CDataWrapper.html#1330-1372" title="Go to source code">_HandleRequest</a>( )</code>
 
 		<div class="description short">
 			
@@ -1478,7 +1504,7 @@ a string and create with it an array.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#__Handle_ListOp">#</a>
-		<code><a href="source-class-CDataWrapper.html#1277-1305" title="Go to source code">_Handle_ListOp</a>( <span>reference <var>&amp; $theList</var></span> )</code>
+		<code><a href="source-class-CDataWrapper.html#1379-1407" title="Go to source code">_Handle_ListOp</a>( <span>reference <var>&amp; $theList</var></span> )</code>
 
 		<div class="description short">
 			
@@ -1520,7 +1546,7 @@ a string and create with it an array.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#__Handle_Count">#</a>
-		<code><a href="source-class-CDataWrapper.html#1312-1339" title="Go to source code">_Handle_Count</a>( )</code>
+		<code><a href="source-class-CDataWrapper.html#1414-1441" title="Go to source code">_Handle_Count</a>( )</code>
 
 		<div class="description short">
 			
@@ -1557,7 +1583,7 @@ status.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#__Handle_Get">#</a>
-		<code><a href="source-class-CDataWrapper.html#1346-1440" title="Go to source code">_Handle_Get</a>( )</code>
+		<code><a href="source-class-CDataWrapper.html#1448-1542" title="Go to source code">_Handle_Get</a>( )</code>
 
 		<div class="description short">
 			
@@ -1593,7 +1619,7 @@ records that match the provided query..</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#__Handle_GetOne">#</a>
-		<code><a href="source-class-CDataWrapper.html#1447-1510" title="Go to source code">_Handle_GetOne</a>( )</code>
+		<code><a href="source-class-CDataWrapper.html#1549-1612" title="Go to source code">_Handle_GetOne</a>( )</code>
 
 		<div class="description short">
 			
@@ -1629,7 +1655,7 @@ the first record to satisfy a query.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#__Handle_Match">#</a>
-		<code><a href="source-class-CDataWrapper.html#1517-1582" title="Go to source code">_Handle_Match</a>( )</code>
+		<code><a href="source-class-CDataWrapper.html#1619-1684" title="Go to source code">_Handle_Match</a>( )</code>
 
 		<div class="description short">
 			
@@ -1665,7 +1691,7 @@ the first match of a series of queries.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#__VerifyQuery">#</a>
-		<code><a href="source-class-CDataWrapper.html#1598-1660" title="Go to source code">_VerifyQuery</a>( <span>reference <var>&amp; $theQuery</var></span> )</code>
+		<code><a href="source-class-CDataWrapper.html#1700-1763" title="Go to source code">_VerifyQuery</a>( <span>reference <var>&amp; $theQuery</var></span>, <span><code><a href="class-CContainer.html">CContainer</a></code> <var>$theContainer</var></span> )</code>
 
 		<div class="description short">
 			
@@ -1689,6 +1715,8 @@ array, if necessary, to a <code><a href="class-CQuery.html">CQuery</a></code> ob
 				<div class="list"><dl>
 					<dt><var>$theQuery</var></dt>
 					<dd><code>reference</code><br>&amp;$theQuery Query structure.</dd>
+					<dt><var>$theContainer</var></dt>
+					<dd><code><code><a href="class-CContainer.html">CContainer</a></code></code><br>$theContainer Container object.</dd>
 				</dl></div>
 
 

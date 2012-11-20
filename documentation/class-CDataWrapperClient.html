@@ -7,7 +7,7 @@
 	<title>Class CDataWrapperClient | MyWrapper Reference Documentation</title>
 
 	<script type="text/javascript" src="resources/combined.js?3680114562"></script>
-	<script type="text/javascript" src="elementlist.js?895580329"></script>
+	<script type="text/javascript" src="elementlist.js?1970556120"></script>
 	<link rel="stylesheet" type="text/css" media="all" href="resources/style.css?3505392360" />
 
 </head>
@@ -290,7 +290,7 @@ class.</p>
 				<b>Author:</b>
 				Milko A. Škofič &lt;<a
 href="mailto:m.skofic&#64;cgiar.org">m.skofic&#64;<!---->cgiar.org</a>&gt;<br />
-		<b>Located at</b> <a href="source-class-CDataWrapperClient.html#36-1173" title="Go to source code">CDataWrapperClient.php</a><br />
+		<b>Located at</b> <a href="source-class-CDataWrapperClient.html#36-1181" title="Go to source code">CDataWrapperClient.php</a><br />
 	</div>
 
 
@@ -938,7 +938,7 @@ negative means descending; zero is ignored.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#_AddQueryStatement">#</a>
-		<code><a href="source-class-CDataWrapperClient.html#723-783" title="Go to source code">AddQueryStatement</a>( <span>string <var>$theCondition</var></span>, <span>mixed <var>$theSubject</var></span>, <span>string <var>$theOperator</var></span>, <span>mixed <var>$theObject</var> = <span class="php-keyword1">NULL</span></span>, <span>string <var>$theType</var> = <span class="php-keyword1">NULL</span> </span> )</code>
+		<code><a href="source-class-CDataWrapperClient.html#723-784" title="Go to source code">AddQueryStatement</a>( <span>string <var>$theCondition</var></span>, <span>mixed <var>$theSubject</var></span>, <span>string <var>$theOperator</var></span>, <span>mixed <var>$theObject</var> = <span class="php-keyword1">NULL</span></span>, <span>string <var>$theType</var> = <span class="php-keyword1">NULL</span> </span> )</code>
 
 		<div class="description short">
 			
@@ -950,7 +950,9 @@ negative means descending; zero is ignored.</p>
 			
 <p>Add a query statement.</p>
 
-<p>This method can be used to add a query statement to the current query.</p>
+<p>This method can be used to add a query statement to the current query, it
+expects the query to be a scalar query with thew container provided in the
+service parameters.</p>
 
 <p>The method expects the following parameters:</p>
 
@@ -1018,7 +1020,7 @@ of queries, you should use the <code><a href="class-CDataWrapperClient.html#_Add
 
 		<td class="name"><div>
 		<a class="anchor" href="#_AddQueryListStatement">#</a>
-		<code><a href="source-class-CDataWrapperClient.html#790-870" title="Go to source code">AddQueryListStatement</a>( <span>string <var>$theIndex</var></span>, <span>string <var>$theCondition</var></span>, <span>mixed <var>$theSubject</var></span>, <span>string <var>$theOperator</var></span>, <span>mixed <var>$theObject</var> = <span class="php-keyword1">NULL</span></span>, <span>string <var>$theType</var> = <span class="php-keyword1">NULL</span> </span> )</code>
+		<code><a href="source-class-CDataWrapperClient.html#791-878" title="Go to source code">AddQueryListStatement</a>( <span>string <var>$theIndex</var></span>, <span>string <var>$theCondition</var></span>, <span>mixed <var>$theSubject</var></span>, <span>string <var>$theOperator</var></span>, <span>mixed <var>$theObject</var> = <span class="php-keyword1">NULL</span></span>, <span>string <var>$theType</var> = <span class="php-keyword1">NULL</span> </span> )</code>
 
 		<div class="description short">
 			
@@ -1030,12 +1032,19 @@ of queries, you should use the <code><a href="class-CDataWrapperClient.html#_Add
 			
 <p>Add a query list statement.</p>
 
-<p>This method can be used to add a query statement to the current list of
-queries, the method expects the following parameters:</p>
+<p>This method is similar to the <code><a href="class-CDataWrapperClient.html#_AddQueryStatement">CDataWrapperClient::AddQueryStatement()</a></code> method as it adds a
+query statement to a query, except that the current <code><a href="class-CDataWrapperClient.html#_Query">CDataWrapperClient::Query()</a></code> is a list of
+<code><a href="class-CQuery.html">CQuery</a></code> objects. This kind of structure is used by the kAPI_OP_MATCH operation to return the first match of a series of queries and by
+other operations in which the array element index represents the container name
+(<code><a href="class-CDataWrapperClient.html#_Container">CDataWrapperClient::Container()</a></code>).</p>
+
+<p>The method expects the following parameters:</p>
 
 <ul>
-	<li><tt>$theIndex</tt>: The index to the specific query, if the index does not
-	exist the method will create the element.</li>
+	<li><tt>$theIndex</tt>: This parameter represents the list index to the query to
+	which the statement is to be appended. This parameter may either represent a
+	generic index, or it may represent the container name to which the query
+	applies.</li>
 
 	<li><tt>$theCondition</tt>: The kOPERATOR_AND, kOPERATOR_NAND,
 	kOPERATOR_OR or kOPERATOR_NOR operator (see the Operators.inc.php source).</li>
@@ -1056,7 +1065,7 @@ converted to an array before being sent to the server.</p>
 
 <p>Note that this method should only be used if the kAPI_QUERY property
 of the object refers to a list of queries: if the attribute should refer to a
-single query, you should use the <code><a href="class-CDataWrapperClient.html#_AddQueryStatement">CDataWrapperClient::AddQueryStatement()</a></code> method.</p>
+scalar query, you should use the <code><a href="class-CDataWrapperClient.html#_AddQueryStatement">CDataWrapperClient::AddQueryStatement()</a></code> method.</p>
 
 
 
@@ -1102,7 +1111,7 @@ single query, you should use the <code><a href="class-CDataWrapperClient.html#_A
 
 		<td class="name"><div>
 		<a class="anchor" href="#__CheckDependencies">#</a>
-		<code><a href="source-class-CDataWrapperClient.html#886-931" title="Go to source code">_CheckDependencies</a>( <span>string <var>$theOperation</var></span> )</code>
+		<code><a href="source-class-CDataWrapperClient.html#894-939" title="Go to source code">_CheckDependencies</a>( <span>string <var>$theOperation</var></span> )</code>
 
 		<div class="description short">
 			
@@ -1149,7 +1158,7 @@ depending on the requested operation.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#__NormaliseParameters">#</a>
-		<code><a href="source-class-CDataWrapperClient.html#938-981" title="Go to source code">_NormaliseParameters</a>( )</code>
+		<code><a href="source-class-CDataWrapperClient.html#946-989" title="Go to source code">_NormaliseParameters</a>( )</code>
 
 		<div class="description short">
 			
@@ -1192,7 +1201,7 @@ local parameters.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#__EncodeParameters">#</a>
-		<code><a href="source-class-CDataWrapperClient.html#988-1031" title="Go to source code">_EncodeParameters</a>( <span>reference <var>&amp; $theParameters</var></span>, <span>string <var>$theEncoding</var></span> )</code>
+		<code><a href="source-class-CDataWrapperClient.html#996-1039" title="Go to source code">_EncodeParameters</a>( <span>reference <var>&amp; $theParameters</var></span>, <span>string <var>$theEncoding</var></span> )</code>
 
 		<div class="description short">
 			
@@ -1239,7 +1248,7 @@ service.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#__QueryStatement">#</a>
-		<code><a href="source-class-CDataWrapperClient.html#1038-1169" title="Go to source code">_QueryStatement</a>( <span>mixed <var>$theSubject</var></span>, <span>string <var>$theOperator</var></span>, <span>mixed <var>$theObject</var> = <span class="php-keyword1">NULL</span></span>, <span>string <var>$theType</var> = <span class="php-keyword1">NULL</span> </span> )</code>
+		<code><a href="source-class-CDataWrapperClient.html#1046-1177" title="Go to source code">_QueryStatement</a>( <span>mixed <var>$theSubject</var></span>, <span>string <var>$theOperator</var></span>, <span>mixed <var>$theObject</var> = <span class="php-keyword1">NULL</span></span>, <span>string <var>$theType</var> = <span class="php-keyword1">NULL</span> </span> )</code>
 
 		<div class="description short">
 			

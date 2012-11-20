@@ -7,7 +7,7 @@
 	<title>Class COntologyWrapper | MyWrapper Reference Documentation</title>
 
 	<script type="text/javascript" src="resources/combined.js?3680114562"></script>
-	<script type="text/javascript" src="elementlist.js?895580329"></script>
+	<script type="text/javascript" src="elementlist.js?1970556120"></script>
 	<link rel="stylesheet" type="text/css" media="all" href="resources/style.css?3505392360" />
 
 </head>
@@ -206,7 +206,7 @@ collections.</p>
 				<b>Author:</b>
 				Milko A. Škofič &lt;<a
 href="mailto:m.skofic&#64;cgiar.org">m.skofic&#64;<!---->cgiar.org</a>&gt;<br />
-		<b>Located at</b> <a href="source-class-COntologyWrapper.html#64-2071" title="Go to source code">COntologyWrapper.php</a><br />
+		<b>Located at</b> <a href="source-class-COntologyWrapper.html#64-2095" title="Go to source code">COntologyWrapper.php</a><br />
 	</div>
 
 
@@ -596,7 +596,7 @@ this class we decode all local parameters.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#__FormatQuery">#</a>
-		<code><a href="source-class-COntologyWrapper.html#411-455" title="Go to source code">_FormatQuery</a>( )</code>
+		<code><a href="source-class-COntologyWrapper.html#411-479" title="Go to source code">_FormatQuery</a>( )</code>
 
 		<div class="description short">
 			
@@ -608,12 +608,17 @@ this class we decode all local parameters.</p>
 			
 <p>Format query.</p>
 
-<p>This method will decode the provided query from JSON or PHP encoding and
-unserialise eventual query arguments encoded as <code><a href="class-CDataType.html">CDataType</a></code> derived
-instances.</p>
+<p>We overload this method to perform default formatting according to the
+operation:</p>
 
-<p>This method will first check if the parameter is not already an array or a
-<code><a href="class-CQuery.html">CQuery</a></code> derived instance, if it is, the method will do nothing.</p>
+<ul>
+	<li><tt>kAPI_OP_GetVertex</tt>: This operation involves searching for
+	vertices, which are a combination of two different objects, this means that one
+	could reach a vertex both from a node or from a term. This method will force all
+	queries to be a list of queries with the element index representing the
+	container name. If the provided query is a scalar query, the method will
+	transform it into a query list with the container name set to the default kCONTAINER_NODE_NAME, or to the service provided container name.</li>
+</ul>
 
 
 
@@ -642,7 +647,7 @@ instances.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#__FormatLanguage">#</a>
-		<code><a href="source-class-COntologyWrapper.html#462-483" title="Go to source code">_FormatLanguage</a>( )</code>
+		<code><a href="source-class-COntologyWrapper.html#486-507" title="Go to source code">_FormatLanguage</a>( )</code>
 
 		<div class="description short">
 			
@@ -686,7 +691,7 @@ provided as a scalar, it will be converted to an array.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#__FormatPredicate">#</a>
-		<code><a href="source-class-COntologyWrapper.html#490-511" title="Go to source code">_FormatPredicate</a>( )</code>
+		<code><a href="source-class-COntologyWrapper.html#514-535" title="Go to source code">_FormatPredicate</a>( )</code>
 
 		<div class="description short">
 			
@@ -730,7 +735,7 @@ was provided as a scalar, it will be converted to an array.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#__FormatRelation">#</a>
-		<code><a href="source-class-COntologyWrapper.html#518-528" title="Go to source code">_FormatRelation</a>( )</code>
+		<code><a href="source-class-COntologyWrapper.html#542-552" title="Go to source code">_FormatRelation</a>( )</code>
 
 		<div class="description short">
 			
@@ -774,7 +779,7 @@ do nothing.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#__ValidateOperation">#</a>
-		<code><a href="source-class-COntologyWrapper.html#544-602" title="Go to source code">_ValidateOperation</a>( )</code>
+		<code><a href="source-class-COntologyWrapper.html#568-626" title="Go to source code">_ValidateOperation</a>( )</code>
 
 		<div class="description short">
 			
@@ -826,7 +831,7 @@ following operations:</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#__ValidateLanguage">#</a>
-		<code><a href="source-class-COntologyWrapper.html#609-619" title="Go to source code">_ValidateLanguage</a>( )</code>
+		<code><a href="source-class-COntologyWrapper.html#633-643" title="Go to source code">_ValidateLanguage</a>( )</code>
 
 		<div class="description short">
 			
@@ -870,7 +875,7 @@ will validate language codes, in this class we do nothing.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#__ValidatePredicate">#</a>
-		<code><a href="source-class-COntologyWrapper.html#626-678" title="Go to source code">_ValidatePredicate</a>( )</code>
+		<code><a href="source-class-COntologyWrapper.html#650-702" title="Go to source code">_ValidatePredicate</a>( )</code>
 
 		<div class="description short">
 			
@@ -915,7 +920,7 @@ native identifiers.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#__ValidateRelation">#</a>
-		<code><a href="source-class-COntologyWrapper.html#685-716" title="Go to source code">_ValidateRelation</a>( )</code>
+		<code><a href="source-class-COntologyWrapper.html#709-740" title="Go to source code">_ValidateRelation</a>( )</code>
 
 		<div class="description short">
 			
@@ -959,7 +964,7 @@ this class we raise an exception if the relationship code is not recognised.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#__HandleRequest">#</a>
-		<code><a href="source-class-COntologyWrapper.html#732-762" title="Go to source code">_HandleRequest</a>( )</code>
+		<code><a href="source-class-COntologyWrapper.html#756-786" title="Go to source code">_HandleRequest</a>( )</code>
 
 		<div class="description short">
 			
@@ -996,7 +1001,7 @@ this class we raise an exception if the relationship code is not recognised.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#__Handle_ListOp">#</a>
-		<code><a href="source-class-COntologyWrapper.html#769-791" title="Go to source code">_Handle_ListOp</a>( <span>reference <var>&amp; $theList</var></span> )</code>
+		<code><a href="source-class-COntologyWrapper.html#793-815" title="Go to source code">_Handle_ListOp</a>( <span>reference <var>&amp; $theList</var></span> )</code>
 
 		<div class="description short">
 			
@@ -1038,7 +1043,7 @@ this class we raise an exception if the relationship code is not recognised.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#__Handle_GetVertex">#</a>
-		<code><a href="source-class-COntologyWrapper.html#798-897" title="Go to source code">_Handle_GetVertex</a>( )</code>
+		<code><a href="source-class-COntologyWrapper.html#822-921" title="Go to source code">_Handle_GetVertex</a>( )</code>
 
 		<div class="description short">
 			
@@ -1086,7 +1091,7 @@ container.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#__ExportVertex">#</a>
-		<code><a href="source-class-COntologyWrapper.html#913-1081" title="Go to source code">_ExportVertex</a>( <span>reference <var>&amp; $theCollection</var></span>, <span>mixed <var>$theNode</var></span>, <span>boolean <var>$doTags</var> = <span class="php-keyword1">TRUE</span> </span> )</code>
+		<code><a href="source-class-COntologyWrapper.html#937-1105" title="Go to source code">_ExportVertex</a>( <span>reference <var>&amp; $theCollection</var></span>, <span>mixed <var>$theNode</var></span>, <span>boolean <var>$doTags</var> = <span class="php-keyword1">TRUE</span> </span> )</code>
 
 		<div class="description short">
 			
@@ -1203,7 +1208,7 @@ from the node, it will only use this information to index the node.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#__ExportPredicate">#</a>
-		<code><a href="source-class-COntologyWrapper.html#1088-1244" title="Go to source code">_ExportPredicate</a>( <span>reference <var>&amp; $theCollection</var></span>, <span>mixed <var>$theTerm</var></span>, <span>boolean <var>$doTags</var> = <span class="php-keyword1">TRUE</span> </span> )</code>
+		<code><a href="source-class-COntologyWrapper.html#1112-1268" title="Go to source code">_ExportPredicate</a>( <span>reference <var>&amp; $theCollection</var></span>, <span>mixed <var>$theTerm</var></span>, <span>boolean <var>$doTags</var> = <span class="php-keyword1">TRUE</span> </span> )</code>
 
 		<div class="description short">
 			
@@ -1320,7 +1325,7 @@ from the node, it will only use this information to index the node.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#__ExportEdge">#</a>
-		<code><a href="source-class-COntologyWrapper.html#1251-1429" title="Go to source code">_ExportEdge</a>( <span>reference <var>&amp; $theCollection</var></span>, <span>mixed <var>$theEdge</var></span> )</code>
+		<code><a href="source-class-COntologyWrapper.html#1275-1453" title="Go to source code">_ExportEdge</a>( <span>reference <var>&amp; $theCollection</var></span>, <span>mixed <var>$theEdge</var></span> )</code>
 
 		<div class="description short">
 			
@@ -1423,7 +1428,7 @@ collection.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#__ExportTag">#</a>
-		<code><a href="source-class-COntologyWrapper.html#1436-1639" title="Go to source code">_ExportTag</a>( <span>reference <var>&amp; $theCollection</var></span>, <span>mixed <var>$theTag</var></span> )</code>
+		<code><a href="source-class-COntologyWrapper.html#1460-1663" title="Go to source code">_ExportTag</a>( <span>reference <var>&amp; $theCollection</var></span>, <span>mixed <var>$theTag</var></span> )</code>
 
 		<div class="description short">
 			
@@ -1532,7 +1537,7 @@ kOFFSET_NID attribute as index.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#__BuildVertex">#</a>
-		<code><a href="source-class-COntologyWrapper.html#1646-1716" title="Go to source code">_BuildVertex</a>( <span>mixed <var>$theNode</var></span> )</code>
+		<code><a href="source-class-COntologyWrapper.html#1670-1740" title="Go to source code">_BuildVertex</a>( <span>mixed <var>$theNode</var></span> )</code>
 
 		<div class="description short">
 			
@@ -1591,7 +1596,7 @@ the term attributes.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#__BuildTerm">#</a>
-		<code><a href="source-class-COntologyWrapper.html#1723-1808" title="Go to source code">_BuildTerm</a>( <span>mixed <var>$theTerm</var></span> )</code>
+		<code><a href="source-class-COntologyWrapper.html#1747-1832" title="Go to source code">_BuildTerm</a>( <span>mixed <var>$theTerm</var></span> )</code>
 
 		<div class="description short">
 			
@@ -1648,7 +1653,7 @@ from that term.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#__GetVertexFromNodes">#</a>
-		<code><a href="source-class-COntologyWrapper.html#1824-1894" title="Go to source code">_GetVertexFromNodes</a>( <span>mixed <var>$theNodes</var></span> )</code>
+		<code><a href="source-class-COntologyWrapper.html#1848-1918" title="Go to source code">_GetVertexFromNodes</a>( <span>mixed <var>$theNodes</var></span> )</code>
 
 		<div class="description short">
 			
@@ -1706,7 +1711,7 @@ number of returned elements.</i></p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#__GetVertexRelations">#</a>
-		<code><a href="source-class-COntologyWrapper.html#1901-2067" title="Go to source code">_GetVertexRelations</a>( <span>integer <var>$theVertex</var></span> )</code>
+		<code><a href="source-class-COntologyWrapper.html#1925-2091" title="Go to source code">_GetVertexRelations</a>( <span>integer <var>$theVertex</var></span> )</code>
 
 		<div class="description short">
 			

@@ -4,10 +4,10 @@
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 	<meta name="generator" content="ApiGen 2.8.0" />
 
-	<title>Class CGraphContainer | MyWrapper Reference Documentation</title>
+	<title>Class CNeo4jContainer | MyWrapper Reference Documentation</title>
 
 	<script type="text/javascript" src="resources/combined.js?3680114562"></script>
-	<script type="text/javascript" src="elementlist.js?895580329"></script>
+	<script type="text/javascript" src="elementlist.js?1970556120"></script>
 	<link rel="stylesheet" type="text/css" media="all" href="resources/style.css?3505392360" />
 
 </head>
@@ -49,11 +49,11 @@
 		<div id="elements">
 			<h3>Classes</h3>
 			<ul>
-				<li class="active"><a href="class-CGraphContainer.html">CGraphContainer</a></li>
 				<li><a href="class-CMongoContainer.html">CMongoContainer</a></li>
 				<li><a href="class-CMongoDatabase.html">CMongoDatabase</a></li>
 				<li><a href="class-CMongoQuery.html">CMongoQuery</a></li>
 				<li><a href="class-CMongoServer.html">CMongoServer</a></li>
+				<li class="active"><a href="class-CNeo4jContainer.html">CNeo4jContainer</a></li>
 				<li><a href="class-CPersistentDocument.html">CPersistentDocument</a></li>
 				<li><a href="class-CPersistentObject.html">CPersistentObject</a></li>
 			</ul>
@@ -98,45 +98,17 @@
 	</div>
 
 <div id="content" class="class">
-	<h1>Class CGraphContainer</h1>
+	<h1>Class CNeo4jContainer</h1>
 
 
 	<div class="description">
 	
-<h4>Connection object ancestor</h4>
+<h4>Graph container</h4>
 
-<p>This <i>abstract</i> class is the ancestor of all connection and container
-classes in this library, it implements the the common interface shared by
-derived concrete instances.</p>
+<p>This class wraps the <code><a href="class-CConnection.html">CConnection</a></code> class family around a Neo4j graph
+database client.</p>
 
-<p>A connection object holds a reference to a native connection which can be
-that to a server, database or container. The class server as a proxy to native
-implementations, offering a single interface to client objects which will use
-native derived concrete classes.</p>
-
-<p>The object is instantiated by providing the native connection which is stored
-in a data member of the object, the array part of the object can be used to
-store specific attributes of the native connection.</p>
-
-<p>All objects derived from this class must implement the <code><a href="class-CGraphContainer.html#___toString">CGraphContainer::__toString()</a></code>
-method that will return the specific name of the current connection.</p>
-
-<p>The <code><a href="class-CGraphContainer.html#_Connection">CGraphContainer::Connection()</a></code> accessor method can be used to manage the native
-connection and the inherited offset management methods can be used to manage the
-connection attributes.</p>
-
-<p>The object has its <code><a href="class-CStatusDocument.html#__IsInited">CStatusDocument::_IsInited()</a></code> status set when the native connection
-has been set in the object.</p>
-
-<p>The class acts as an ancestor of other specialised abstract classes which
-declare the common interfaces of specific connection types.</p>
-
-<p>The class declares two constants: kOFFSET_NAME and kOFFSET_PARENT. The first one corresponds to the internal name of the object,
-which could also be the public one. The second offset corresponds to the parent
-connection object: if the current object was instantiated by a parent class
-instance, such as a database by a server, or a container by a database, this
-offset will contain the creator object. This can be useful if we need, for
-instance, the database, given the container.</p>
+<p>The connection property will hold a Neo4j client.</p>
 
 	</div>
 
@@ -180,7 +152,7 @@ instance, the database, given the container.</p>
 		</dd>
 		<dd style="padding-left:120px">
 			<img src="resources/inherit.png" alt="Extended by" />
-<b><span>CGraphContainer</span></b>			
+<b><span>CNeo4jContainer</span></b>			
 			
 			
 		</dd>
@@ -202,7 +174,7 @@ instance, the database, given the container.</p>
 				<b>Author:</b>
 				Milko A. Škofič &lt;<a
 href="mailto:m.skofic&#64;cgiar.org">m.skofic&#64;<!---->cgiar.org</a>&gt;<br />
-		<b>Located at</b> <a href="source-class-CGraphContainer.html#36-270" title="Go to source code">CGraphContainer.php</a><br />
+		<b>Located at</b> <a href="source-class-CNeo4jContainer.html#36-136" title="Go to source code">CNeo4jContainer.php</a><br />
 	</div>
 
 
@@ -220,7 +192,7 @@ href="mailto:m.skofic&#64;cgiar.org">m.skofic&#64;<!---->cgiar.org</a>&gt;<br />
 
 		<td class="name"><div>
 		<a class="anchor" href="#___construct">#</a>
-		<code><a href="source-class-CGraphContainer.html#99-124" title="Go to source code">__construct</a>( <span>mixed <var>$theConnection</var> = <span class="php-keyword1">NULL</span></span>, <span>mixed <var>$theOptions</var> = <span class="php-keyword1">NULL</span> </span> )</code>
+		<code><a href="source-class-CNeo4jContainer.html#63-115" title="Go to source code">__construct</a>( <span>mixed <var>$theConnection</var> = <span class="php-keyword1">NULL</span></span>, <span>mixed <var>$theOptions</var> = <span class="php-keyword1">NULL</span> </span> )</code>
 
 		<div class="description short">
 			
@@ -232,13 +204,12 @@ href="mailto:m.skofic&#64;cgiar.org">m.skofic&#64;<!---->cgiar.org</a>&gt;<br />
 			
 <h4>Instantiate class</h4>
 
-<p>You instantiate the class with a native connection, the method expects a
-parameter that will be stored in the <code><a href="class-CConnection.html#$mConnection">CConnection::<var>$mConnection</var></a></code> data member and
-another parameter that can be used to pass instantiation options.</p>
+<p>You instantiate the class by providing a native connection, or the host and
+port. In the latter case the first parameter represents the host and the second
+the port.</p>
 
-<p>Derived classes should overload this method if a default value is possible;
-to check for specific connection types they should rather overload the member
-accessor method.</p>
+<p>If you do not provide any parameter the default kGRAPH_DEF_HOST host
+and kGRAPH_DEF_PORT port.</p>
 
 
 
@@ -254,7 +225,7 @@ accessor method.</p>
 
 				<h4>Uses</h4>
 				<div class="list">
-						<code><code><a href="class-CGraphContainer.html#_Connection">CGraphContainer::Connection()</a></code></code> <br />
+						<code><code><a href="class-CConnection.html#_Connection">CConnection::Connection()</a></code></code> <br />
 				</div>
 
 				<h4>Overrides</h4>
@@ -266,7 +237,7 @@ accessor method.</p>
 	<tr data-order="__toString" id="___toString">
 
 		<td class="attributes"><code>
-			abstract public 
+			 public 
 			string
 			
 			</code>
@@ -274,7 +245,7 @@ accessor method.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#___toString">#</a>
-		<code><a href="source-class-CGraphContainer.html#131-142" title="Go to source code">__toString</a>( )</code>
+		<code><a href="source-class-CNeo4jContainer.html#122-132" title="Go to source code">__toString</a>( )</code>
 
 		<div class="description short">
 			
@@ -288,8 +259,7 @@ accessor method.</p>
 
 <p>This method should return the current connection's name.</p>
 
-<p>All derived concrete classes should implement this method, all connections
-must be able to return a name.</p>
+<p>In this class we return the host and port names.</p>
 
 
 
@@ -305,176 +275,17 @@ must be able to return a name.</p>
 		</div>
 		</div></td>
 	</tr>
-	<tr data-order="Connection" id="_Connection">
-
-		<td class="attributes"><code>
-			 public 
-			mixed
-			
-			</code>
-		</td>
-
-		<td class="name"><div>
-		<a class="anchor" href="#_Connection">#</a>
-		<code><a href="source-class-CGraphContainer.html#158-203" title="Go to source code">Connection</a>( <span>mixed <var>$theValue</var> = <span class="php-keyword1">NULL</span></span>, <span>boolean <var>$getOld</var> = <span class="php-keyword1">FALSE</span> </span> )</code>
-
-		<div class="description short">
-			
-<h4>Manage native connection</h4>
-
-		</div>
-
-		<div class="description detailed hidden">
-			
-<h4>Manage native connection</h4>
-
-<p>This method can be used to manage the connection, it accepts a parameter
-which represents either the container or the requested operation, depending on
-its value:</p>
-
-<ul>
-	<li><tt>NULL</tt>: Return the current value.</li>
-
-	<li><tt>FALSE</tt>: Delete the current value.</li>
-
-	<li><i>other</i>: Set the value with the provided parameter.</li>
-</ul>
-
-<p>The second parameter is a boolean which if <tt>TRUE</tt> will return the
-<i>old</i> value when replacing containers; if <tt>FALSE</tt>, it will return
-the currently set value.</p>
-
-<p>In derived classes you should overload this method to check if the provided
-connection is of the correct type, in this class we accept anything.</p>
-
-<p>This class is considered initialised (<code><a href="class-CStatusDocument.html#__IsInited">CStatusDocument::_IsInited()</a></code>) when this member
-has been set.</p>
-
-
-
-				<h4>Parameters</h4>
-				<div class="list"><dl>
-					<dt><var>$theValue</var></dt>
-					<dd><code>mixed</code><br>$theValue Native connection or operation.</dd>
-					<dt><var>$getOld</var></dt>
-					<dd><code>boolean</code><br>$getOld <tt>TRUE</tt> get old value.</dd>
-				</dl></div>
-
-				<h4>Returns</h4>
-				<div class="list">
-					<code>mixed</code><br><i>New</i> or <i>old</i> native connection.<br />
-				</div>
-
-
-				<h4>Uses</h4>
-				<div class="list">
-						_isInited()<br />
-						<code><code><a href="function-ManageProperty.html">ManageProperty()</a></code></code> <br />
-				</div>
-				<h4>Used by</h4>
-				<div class="list">
-						<code><code><a href="class-CGraphContainer.html#___construct">CGraphContainer::__construct()</a></code></code> <br />
-				</div>
-
-				<h4>Overrides</h4>
-				<div class="list"><code><a href="class-CConnection.html#_Connection">CConnection::Connection()</a></code></div>
-
-		</div>
-		</div></td>
-	</tr>
-	<tr data-order="_Connection" id="__Connection">
-
-		<td class="attributes"><code>
-			 protected 
-			mixed
-			&amp;
-			</code>
-		</td>
-
-		<td class="name"><div>
-		<a class="anchor" href="#__Connection">#</a>
-		<code><a href="source-class-CGraphContainer.html#219-229" title="Go to source code">_Connection</a>( )</code>
-
-		<div class="description short">
-			
-<h4>Get connection reference</h4>
-
-		</div>
-
-		<div class="description detailed hidden">
-			
-<h4>Get connection reference</h4>
-
-<p>This method can be used to retrieve a reference to the native connection
-member, this can be useful when the native <code><a href="class-CGraphContainer.html#_Connection">CGraphContainer::Connection()</a></code> is not an object
-passed by reference.</p>
-
-
-
-
-				<h4>Returns</h4>
-				<div class="list">
-					<code>mixed</code><br />
-				</div>
-
-
-
-
-		</div>
-		</div></td>
-	</tr>
-	<tr data-order="_Ready" id="__Ready">
-
-		<td class="attributes"><code>
-			 protected 
-			boolean
-			
-			</code>
-		</td>
-
-		<td class="name"><div>
-		<a class="anchor" href="#__Ready">#</a>
-		<code><a href="source-class-CGraphContainer.html#245-266" title="Go to source code">_Ready</a>( )</code>
-
-		<div class="description short">
-			
-<h4>Determine if the object is ready</h4>
-
-		</div>
-
-		<div class="description detailed hidden">
-			
-<h4>Determine if the object is ready</h4>
-
-<p>In this class we tie the <code><a href="class-CStatusDocument.html#__IsInited">CStatusDocument::_IsInited()</a></code> status to the presence or
-absence of the connection.</p>
-
-
-
-
-				<h4>Returns</h4>
-				<div class="list">
-					<code>boolean</code><br><tt>TRUE</tt> means {@link _IsInited( <tt>TRUE</tt> ).<br />
-				</div>
-
-
-				<h4>Uses</h4>
-				<div class="list">
-						<code><code><a href="class-CGraphContainer.html#__Ready">CGraphContainer::_Ready()</a></code></code> <br />
-				</div>
-				<h4>Used by</h4>
-				<div class="list">
-						<code><code><a href="class-CGraphContainer.html#__Ready">CGraphContainer::_Ready()</a></code></code> <br />
-				</div>
-
-				<h4>Overrides</h4>
-				<div class="list"><code><a href="class-CConnection.html#__Ready">CConnection::_Ready()</a></code></div>
-
-		</div>
-		</div></td>
-	</tr>
 	</table>
 
+	<table class="summary inherited">
+	<caption>Methods inherited from <a href="class-CConnection.html#methods">CConnection</a></caption>
+	<tr>
+		<td><code>
+			<a href="class-CConnection.html#_Connection">Connection()</a>, 
+			<a href="class-CConnection.html#__Ready">_Ready()</a>
+		</code></td>
+	</tr>
+	</table>
 	<table class="summary inherited">
 	<caption>Methods inherited from <a href="class-CStatusDocument.html#methods">CStatusDocument</a></caption>
 	<tr>
@@ -547,38 +358,6 @@ absence of the connection.</p>
 
 
 
-	<table class="summary" id="properties">
-	<caption>Properties summary</caption>
-	<tr data-order="mGraphClient" id="$mGraphClient">
-		<td class="attributes"><code>
-			protected static 
-			mixed
-		</code></td>
-
-		<td class="name">
-				<a href="source-class-CGraphContainer.html#76-83" title="Go to source code"><var>$mGraphClient</var></a>
-		</td>
-		<td class="value"><code><span class="php-keyword1">NULL</span></code></td>
-		<td class="description"><div>
-			<a href="#$mGraphClient" class="anchor">#</a>
-
-			<div class="description short">
-				
-<p>Persistent data store.</p>
-
-			</div>
-
-			<div class="description detailed hidden">
-				
-<p>Persistent data store.</p>
-
-<p>This data member holds the native graph client connection.</p>
-
-
-			</div>
-		</div></td>
-	</tr>
-	</table>
 
 	<table class="summary inherited">
 	<caption>Properties inherited from <a href="class-CConnection.html#properties">CConnection</a></caption>

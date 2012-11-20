@@ -723,7 +723,8 @@ class CDataWrapperClient extends CWrapperClient
 	/**
 	 * Add a query statement.
 	 *
-	 * This method can be used to add a query statement to the current query.
+	 * This method can be used to add a query statement to the current query, it expects the
+	 * query to be a scalar query with thew container provided in the service parameters.
 	 *
 	 * The method expects the following parameters:
 	 *
@@ -790,12 +791,19 @@ class CDataWrapperClient extends CWrapperClient
 	/**
 	 * Add a query list statement.
 	 *
-	 * This method can be used to add a query statement to the current list of queries, the
-	 * method expects the following parameters:
+	 * This method is similar to the {@link AddQueryStatement()} method as it adds a query
+	 * statement to a query, except that the current {@link Query()} is a list of
+	 * {@link CQuery} objects. This kind of structure is used by the {@link kAPI_OP_MATCH}
+	 * operation to return the first match of a series of queries and by other operations in
+	 * which the array element index represents the container name ({@link Container()}).
+	 *
+	 * The method expects the following parameters:
 	 *
 	 * <ul>
-	 *	<li><tt>$theIndex</tt>: The index to the specific query, if the index does not exist
-	 *		the method will create the element.
+	 *	<li><tt>$theIndex</tt>: This parameter represents the list index to the query to
+	 *		which the statement is to be appended. This parameter may either represent a
+	 *		generic index, or it may represent the container name to which the query
+	 *		applies.
 	 *	<li><tt>$theCondition</tt>: The {@link kOPERATOR_AND}, {@link kOPERATOR_NAND},
 	 *		{@link kOPERATOR_OR} or {@link kOPERATOR_NOR} operator (see the
 	 *		{@link Operators.inc.php} source).
@@ -812,7 +820,7 @@ class CDataWrapperClient extends CWrapperClient
 	 * array before being sent to the server.
 	 *
 	 * Note that this method should only be used if the {@link kAPI_QUERY} property of the
-	 * object refers to a list of queries: if the attribute should refer to a single query,
+	 * object refers to a list of queries: if the attribute should refer to a scalar query,
 	 * you should use the {@link AddQueryStatement()} method.
 	 *
 	 * @param string				$theIndex			Query index.
