@@ -4,7 +4,7 @@
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 	<meta name="generator" content="ApiGen 2.8.0" />
 
-	<title>Class CNeo4jContainer | MyWrapper Reference Documentation</title>
+	<title>Class CGraphContainer | MyWrapper Reference Documentation</title>
 
 	<script type="text/javascript" src="resources/combined.js?368249000"></script>
 	<script type="text/javascript" src="elementlist.js?410024381"></script>
@@ -49,12 +49,12 @@
 		<div id="elements">
 			<h3>Classes</h3>
 			<ul>
-				<li><a href="class-CGraphContainer.html">CGraphContainer</a></li>
+				<li class="active"><a href="class-CGraphContainer.html">CGraphContainer</a></li>
 				<li><a href="class-CMongoContainer.html">CMongoContainer</a></li>
 				<li><a href="class-CMongoDatabase.html">CMongoDatabase</a></li>
 				<li><a href="class-CMongoQuery.html">CMongoQuery</a></li>
 				<li><a href="class-CMongoServer.html">CMongoServer</a></li>
-				<li class="active"><a href="class-CNeo4jContainer.html">CNeo4jContainer</a></li>
+				<li><a href="class-CNeo4jContainer.html">CNeo4jContainer</a></li>
 				<li><a href="class-CPersistentDocument.html">CPersistentDocument</a></li>
 				<li><a href="class-CPersistentObject.html">CPersistentObject</a></li>
 			</ul>
@@ -99,17 +99,22 @@
 	</div>
 
 <div id="content" class="class">
-	<h1>Class CNeo4jContainer</h1>
+	<h1>Class CGraphContainer</h1>
 
 
 	<div class="description">
 	
-<h4>Neo4j container</h4>
+<h4>Graph container</h4>
 
-<p>This class wraps the <code><a href="class-CGraphContainer.html">CGraphContainer</a></code> class around a Neo4j graph
-database client.</p>
+<p>This class wraps the <code><a href="class-CConnection.html">CConnection</a></code> class family around a graph database
+connection.</p>
 
-<p>The connection property will hold a Neo4j client.</p>
+<p>Since in graph databases there is not really the concept of database and
+container, we derive this class from <code><a href="class-CContainer.html">CContainer</a></code> and declare a bare
+minimum set of commands that can be used to create graph nodes, relate them
+among each other and make basic path operations. Concrete classes will implement
+a specific graph database engine and class users can use the native connection
+to perform more custom operations.</p>
 
 	</div>
 
@@ -153,20 +158,17 @@ database client.</p>
 		</dd>
 		<dd style="padding-left:120px">
 			<img src="resources/inherit.png" alt="Extended by" />
-			<a href="class-CGraphContainer.html"><span>CGraphContainer</span></a>
-			
-			
-			
-		</dd>
-		<dd style="padding-left:150px">
-			<img src="resources/inherit.png" alt="Extended by" />
-<b><span>CNeo4jContainer</span></b>			
+<b><span>CGraphContainer</span></b>			
 			
 			
 		</dd>
 	</dl>
 
 
+	<div>
+		<h4>Direct known subclasses</h4>
+			<a href="class-CNeo4jContainer.html">CNeo4jContainer</a>
+	</div>
 
 
 
@@ -174,7 +176,7 @@ database client.</p>
 
 
 	<div class="info">
-		
+		<b>Abstract</b><br />
 		
 		
 		<b>Package:</b> <a href="package-MyWrapper.html">MyWrapper</a>\<a href="package-MyWrapper.Persistence.html">Persistence</a><br />
@@ -182,168 +184,17 @@ database client.</p>
 				<b>Author:</b>
 				Milko A. Škofič &lt;<a
 href="mailto:m.skofic&#64;cgiar.org">m.skofic&#64;<!---->cgiar.org</a>&gt;<br />
-		<b>Located at</b> <a href="source-class-CNeo4jContainer.html#36-739" title="Go to source code">CNeo4jContainer.php</a><br />
+		<b>Located at</b> <a href="source-class-CGraphContainer.html#36-276" title="Go to source code">CGraphContainer.php</a><br />
 	</div>
 
 
 
 	<table class="summary" id="methods">
 	<caption>Methods summary</caption>
-	<tr data-order="__construct" id="___construct">
-
-		<td class="attributes"><code>
-			 public 
-			
-			
-			</code>
-		</td>
-
-		<td class="name"><div>
-		<a class="anchor" href="#___construct">#</a>
-		<code><a href="source-class-CNeo4jContainer.html#62-114" title="Go to source code">__construct</a>( <span>mixed <var>$theConnection</var> = <span class="php-keyword1">NULL</span></span>, <span>mixed <var>$theOptions</var> = <span class="php-keyword1">NULL</span> </span> )</code>
-
-		<div class="description short">
-			
-<h4>Instantiate class</h4>
-
-		</div>
-
-		<div class="description detailed hidden">
-			
-<h4>Instantiate class</h4>
-
-<p>You instantiate the class by providing a native connection, or the host and
-port. In the latter case the first parameter represents the host and the second
-the port.</p>
-
-<p>If you do not provide any parameter the default kGRAPH_DEF_HOST host
-and kGRAPH_DEF_PORT port.</p>
-
-
-
-				<h4>Parameters</h4>
-				<div class="list"><dl>
-					<dt><var>$theConnection</var></dt>
-					<dd><code>mixed</code><br>$theConnection Native connection.</dd>
-					<dt><var>$theOptions</var></dt>
-					<dd><code>mixed</code><br>$theOptions Connection options.</dd>
-				</dl></div>
-
-
-
-				<h4>Uses</h4>
-				<div class="list">
-						<code><code><a href="class-CNeo4jContainer.html#_Connection">CNeo4jContainer::Connection()</a></code></code> <br />
-				</div>
-
-				<h4>Overrides</h4>
-				<div class="list"><code><a href="class-CConnection.html#___construct">CConnection::__construct()</a></code></div>
-
-		</div>
-		</div></td>
-	</tr>
-	<tr data-order="__toString" id="___toString">
-
-		<td class="attributes"><code>
-			 public 
-			string
-			
-			</code>
-		</td>
-
-		<td class="name"><div>
-		<a class="anchor" href="#___toString">#</a>
-		<code><a href="source-class-CNeo4jContainer.html#121-131" title="Go to source code">__toString</a>( )</code>
-
-		<div class="description short">
-			
-<h4>Return connection name</h4>
-
-		</div>
-
-		<div class="description detailed hidden">
-			
-<h4>Return connection name</h4>
-
-<p>This method should return the current connection's name.</p>
-
-<p>In this class we return the host and port names.</p>
-
-
-
-
-				<h4>Returns</h4>
-				<div class="list">
-					<code>string</code><br>The connection name.<br />
-				</div>
-
-
-
-
-		</div>
-		</div></td>
-	</tr>
-	<tr data-order="Connection" id="_Connection">
-
-		<td class="attributes"><code>
-			 public 
-			mixed
-			
-			</code>
-		</td>
-
-		<td class="name"><div>
-		<a class="anchor" href="#_Connection">#</a>
-		<code><a href="source-class-CNeo4jContainer.html#147-180" title="Go to source code">Connection</a>( <span>mixed <var>$theValue</var> = <span class="php-keyword1">NULL</span></span>, <span>boolean <var>$getOld</var> = <span class="php-keyword1">FALSE</span> </span> )</code>
-
-		<div class="description short">
-			
-<h4>Manage native connection</h4>
-
-		</div>
-
-		<div class="description detailed hidden">
-			
-<h4>Manage native connection</h4>
-
-<p>We overload this method to ensure that the provided container is a Neo4j
-client.</p>
-
-
-
-				<h4>Parameters</h4>
-				<div class="list"><dl>
-					<dt><var>$theValue</var></dt>
-					<dd><code>mixed</code><br>$theValue Persistent container or operation.</dd>
-					<dt><var>$getOld</var></dt>
-					<dd><code>boolean</code><br>$getOld <tt>TRUE</tt> get old value.</dd>
-				</dl></div>
-
-				<h4>Returns</h4>
-				<div class="list">
-					<code>mixed</code><br><i>New</i> or <i>old</i> native container.<br />
-				</div>
-
-				<h4>Throws</h4>
-				<div class="list">
-					<code><code><a href="class-Exception.html">Exception</a></code></code><br />
-				</div>
-
-				<h4>Used by</h4>
-				<div class="list">
-						<code><code><a href="class-CNeo4jContainer.html#___construct">CNeo4jContainer::__construct()</a></code></code> <br />
-				</div>
-
-				<h4>Overrides</h4>
-				<div class="list"><code><a href="class-CConnection.html#_Connection">CConnection::Connection()</a></code></div>
-
-		</div>
-		</div></td>
-	</tr>
 	<tr data-order="NewNode" id="_NewNode">
 
 		<td class="attributes"><code>
-			 public 
+			abstract public 
 			mixed
 			
 			</code>
@@ -351,7 +202,7 @@ client.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#_NewNode">#</a>
-		<code><a href="source-class-CNeo4jContainer.html#196-227" title="Go to source code">NewNode</a>( <span>array <var>$theProperties</var> = <span class="php-keyword1">NULL</span> </span> )</code>
+		<code><a href="source-class-CGraphContainer.html#66-78" title="Go to source code">NewNode</a>( <span>array <var>$theProperties</var> = <span class="php-keyword1">NULL</span> </span> )</code>
 
 		<div class="description short">
 			
@@ -363,7 +214,10 @@ client.</p>
 			
 <h4>Create a new node</h4>
 
-<p>In this class we return a new Neo4j Node instance.</p>
+<p>This method should return a new node optionally filled with the provided
+attributes.</p>
+
+<p>The returned node is not supposed to be saved yet.</p>
 
 
 
@@ -387,7 +241,7 @@ client.</p>
 	<tr data-order="SetNode" id="_SetNode">
 
 		<td class="attributes"><code>
-			 public 
+			abstract public 
 			mixed
 			
 			</code>
@@ -395,7 +249,7 @@ client.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#_SetNode">#</a>
-		<code><a href="source-class-CNeo4jContainer.html#234-274" title="Go to source code">SetNode</a>( <span>mixed <var>$theNode</var></span> )</code>
+		<code><a href="source-class-CGraphContainer.html#85-97" title="Go to source code">SetNode</a>( <span>mixed <var>$theNode</var></span> )</code>
 
 		<div class="description short">
 			
@@ -407,8 +261,11 @@ client.</p>
 			
 <h4>Save a node</h4>
 
-<p>In this class we check if the provided node is of the correct type, save it
-and return its identifier.</p>
+<p>This method should insert or update the provided node in the current
+graph.</p>
+
+<p>The method should return the node identifier if the operation was
+successful.</p>
 
 
 
@@ -432,7 +289,7 @@ and return its identifier.</p>
 	<tr data-order="GetNode" id="_GetNode">
 
 		<td class="attributes"><code>
-			 public 
+			abstract public 
 			mixed
 			
 			</code>
@@ -440,7 +297,7 @@ and return its identifier.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#_GetNode">#</a>
-		<code><a href="source-class-CNeo4jContainer.html#281-304" title="Go to source code">GetNode</a>( <span>mixed <var>$theIdentifier</var></span> )</code>
+		<code><a href="source-class-CGraphContainer.html#104-114" title="Go to source code">GetNode</a>( <span>mixed <var>$theIdentifier</var></span> )</code>
 
 		<div class="description short">
 			
@@ -452,8 +309,8 @@ and return its identifier.</p>
 			
 <h4>Get an existing node</h4>
 
-<p>In this class we return the node corresponding to the provided identifier or
-<tt>NULL</tt>.</p>
+<p>This method should return a node corresponding to the provided
+identifier.</p>
 
 
 
@@ -477,7 +334,7 @@ and return its identifier.</p>
 	<tr data-order="DelNode" id="_DelNode">
 
 		<td class="attributes"><code>
-			 public 
+			abstract public 
 			mixed
 			
 			</code>
@@ -485,7 +342,7 @@ and return its identifier.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#_DelNode">#</a>
-		<code><a href="source-class-CNeo4jContainer.html#311-349" title="Go to source code">DelNode</a>( <span>mixed <var>$theIdentifier</var></span> )</code>
+		<code><a href="source-class-CGraphContainer.html#121-134" title="Go to source code">DelNode</a>( <span>mixed <var>$theIdentifier</var></span> )</code>
 
 		<div class="description short">
 			
@@ -497,7 +354,10 @@ and return its identifier.</p>
 			
 <h4>Delete an existing node</h4>
 
-<p>In this class we accept either the actual node, or the node identifier.</p>
+<p>This method should delete the provided node from the current graph.</p>
+
+<p>The method should return <tt>TRUE</tt> if the operation was successful and
+<tt>NULL</tt> if the provided identifier is not resolved.</p>
 
 
 
@@ -521,7 +381,7 @@ and return its identifier.</p>
 	<tr data-order="NewEdge" id="_NewEdge">
 
 		<td class="attributes"><code>
-			 public 
+			abstract public 
 			mixed
 			
 			</code>
@@ -529,7 +389,7 @@ and return its identifier.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#_NewEdge">#</a>
-		<code><a href="source-class-CNeo4jContainer.html#365-477" title="Go to source code">NewEdge</a>( <span>mixed <var>$theSubject</var></span>, <span>array <var>$thePredicate</var></span>, <span>mixed <var>$theObject</var></span>, <span>array <var>$theProperties</var> = <span class="php-keyword1">NULL</span> </span> )</code>
+		<code><a href="source-class-CGraphContainer.html#150-167" title="Go to source code">NewEdge</a>( <span>mixed <var>$theSubject</var></span>, <span>array <var>$thePredicate</var></span>, <span>mixed <var>$theObject</var></span>, <span>array <var>$theProperties</var> = <span class="php-keyword1">NULL</span> </span> )</code>
 
 		<div class="description short">
 			
@@ -541,13 +401,11 @@ and return its identifier.</p>
 			
 <h4>Create a new edge</h4>
 
-<p>In this class we instantiate the relationship and set the subject and object
-nodes, we finally convert the provided predicate to a string.</p>
+<p>This method should return a new edge connecting the provided subject and
+object nodes via the provided predicate, holding the eventual provided
+properties.</p>
 
-<p>Both the subject and object nodes can be provided either as a node object or
-as a node identifier, the method will take care of fetching the referenced
-nodes. If any node is neither a node object or identifier, or if the referenced
-node cannot be found, the method will raise an exception.</p>
+<p>The returned edge is not supposed to be saved yet.</p>
 
 
 
@@ -577,7 +435,7 @@ node cannot be found, the method will raise an exception.</p>
 	<tr data-order="SetEdge" id="_SetEdge">
 
 		<td class="attributes"><code>
-			 public 
+			abstract public 
 			mixed
 			
 			</code>
@@ -585,7 +443,7 @@ node cannot be found, the method will raise an exception.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#_SetEdge">#</a>
-		<code><a href="source-class-CNeo4jContainer.html#484-523" title="Go to source code">SetEdge</a>( <span>mixed <var>$theEdge</var></span> )</code>
+		<code><a href="source-class-CGraphContainer.html#174-186" title="Go to source code">SetEdge</a>( <span>mixed <var>$theEdge</var></span> )</code>
 
 		<div class="description short">
 			
@@ -597,7 +455,11 @@ node cannot be found, the method will raise an exception.</p>
 			
 <h4>Save an edge</h4>
 
-<p>In this class we save the provided edge.</p>
+<p>This method should insert or update the provided edge in the current
+graph.</p>
+
+<p>The method should return the edge identifier if the operation was
+successful.</p>
 
 
 
@@ -621,7 +483,7 @@ node cannot be found, the method will raise an exception.</p>
 	<tr data-order="GetEdge" id="_GetEdge">
 
 		<td class="attributes"><code>
-			 public 
+			abstract public 
 			mixed
 			
 			</code>
@@ -629,7 +491,7 @@ node cannot be found, the method will raise an exception.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#_GetEdge">#</a>
-		<code><a href="source-class-CNeo4jContainer.html#530-553" title="Go to source code">GetEdge</a>( <span>mixed <var>$theIdentifier</var></span> )</code>
+		<code><a href="source-class-CGraphContainer.html#193-203" title="Go to source code">GetEdge</a>( <span>mixed <var>$theIdentifier</var></span> )</code>
 
 		<div class="description short">
 			
@@ -641,8 +503,8 @@ node cannot be found, the method will raise an exception.</p>
 			
 <h4>Get an existing edge</h4>
 
-<p>In this class we return the edge corresponding to the provided ID, or
-<tt>NULL</tt>.</p>
+<p>This method should return an edge corresponding to the provided
+identifier.</p>
 
 
 
@@ -666,7 +528,7 @@ node cannot be found, the method will raise an exception.</p>
 	<tr data-order="DelEdge" id="_DelEdge">
 
 		<td class="attributes"><code>
-			 public 
+			abstract public 
 			mixed
 			
 			</code>
@@ -674,7 +536,7 @@ node cannot be found, the method will raise an exception.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#_DelEdge">#</a>
-		<code><a href="source-class-CNeo4jContainer.html#560-601" title="Go to source code">DelEdge</a>( <span>mixed <var>$theIdentifier</var></span> )</code>
+		<code><a href="source-class-CGraphContainer.html#210-223" title="Go to source code">DelEdge</a>( <span>mixed <var>$theIdentifier</var></span> )</code>
 
 		<div class="description short">
 			
@@ -713,7 +575,7 @@ node cannot be found, the method will raise an exception.</p>
 	<tr data-order="GetNodeEdges" id="_GetNodeEdges">
 
 		<td class="attributes"><code>
-			 public 
+			abstract public 
 			mixed
 			
 			</code>
@@ -721,7 +583,7 @@ node cannot be found, the method will raise an exception.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#_GetNodeEdges">#</a>
-		<code><a href="source-class-CNeo4jContainer.html#617-735" title="Go to source code">GetNodeEdges</a>( <span>mixed <var>$theNode</var></span>, <span>mixed <var>$thePredicate</var> = <span class="php-keyword1">NULL</span></span>, <span>string <var>$theSense</var> = <span class="php-keyword1">NULL</span> </span> )</code>
+		<code><a href="source-class-CGraphContainer.html#239-272" title="Go to source code">GetNodeEdges</a>( <span>mixed <var>$theNode</var></span>, <span>mixed <var>$thePredicate</var> = <span class="php-keyword1">NULL</span></span>, <span>string <var>$theSense</var> = <span class="php-keyword1">NULL</span> </span> )</code>
 
 		<div class="description short">
 			
@@ -733,16 +595,32 @@ node cannot be found, the method will raise an exception.</p>
 			
 <h4>Get node edges</h4>
 
-<p>In this class we accept the following values:</p>
+<p>This method can be used to retrieve the provided node's edges according to
+the provided sense.</p>
+
+<p>The method accepts the following parameters:</p>
 
 <ul>
-	<li><tt>$theNode</tt>: Either the node identifier or the node object.</li>
+	<li><tt>$theNode</tt>: The node of which we want the relationships.</li>
 
-	<li><tt>$thePredicate</tt>: Either a predicate or a predicates list, the
-	elements can be of any type, provided they can be cast to a string.</li>
+	<li><tt>$thePredicate</tt>: The eventual predicate or predicates references that
+	must be present in the relationships.</li>
 
-	<li><tt>$theSense</tt>: If this parameter is omitted, we set kTYPE_RELATION_ALL as default.</li>
+	<li><tt>$theSense</tt>: The relationship direction:
+		<ul>
+			<li><tt>kTYPE_RELATION_IN</tt>: Incoming relationships, or all edges
+			that point to the provided node.</li>
+
+			<li><tt>kTYPE_RELATION_OUT</tt>: Outgoing relationships, or all edges to
+			which the current node points to.</li>
+
+			<li><tt>kTYPE_RELATION_ALL</tt>: All relationships, or all edges that
+			point or to which the provided node points to.</li>
+		</ul>
+	</li>
 </ul>
+
+<p>The method should return an array of edges.</p>
 
 
 
@@ -773,7 +651,10 @@ node cannot be found, the method will raise an exception.</p>
 	<caption>Methods inherited from <a href="class-CConnection.html#methods">CConnection</a></caption>
 	<tr>
 		<td><code>
-			<a href="class-CConnection.html#__Ready">_Ready()</a>
+			<a href="class-CConnection.html#_Connection">Connection()</a>, 
+			<a href="class-CConnection.html#__Ready">_Ready()</a>, 
+			<a href="class-CConnection.html#___construct">__construct()</a>, 
+			<a href="class-CConnection.html#___toString">__toString()</a>
 		</code></td>
 	</tr>
 	</table>

@@ -147,35 +147,35 @@ define( "kTYPE_STRUCT",						':STRUCT' );			// Structure.
  *
  * This tag represents the PHP serialised data format.
  */
-define( "kTYPE_PHP",							':PHP' );
+define( "kTYPE_PHP",						':PHP' );
 
 /**
  * JSON-encoded.
  *
  * This tag represents the JSON serialised data format.
  */
-define( "kTYPE_JSON",							':JSON' );
+define( "kTYPE_JSON",						':JSON' );
 
 /**
  * XML-encoded.
  *
  * This tag represents the generic XML serialised data format.
  */
-define( "kTYPE_XML",							':XML' );
+define( "kTYPE_XML",						':XML' );
 
 /**
  * SVG-encoded.
  *
  * This tag represents the SVG image serialised data format.
  */
-define( "kTYPE_SVG",							':SVG' );
+define( "kTYPE_SVG",						':SVG' );
 
 /**
  * META type.
  *
  * This value represents the primitive meta data type, it is a generalised metadata type.
  */
-define( "kTYPE_META",							':META' );
+define( "kTYPE_META",						':META' );
 
 /*=======================================================================================
  *	CARDINALITY TYPES																	*
@@ -187,7 +187,7 @@ define( "kTYPE_META",							':META' );
  * This tag indicates that the element is required, which means that the offset must be
  * present in the object.
  */
-define( "kTYPE_CARD_REQUIRED",					':REQUIRED' );
+define( "kTYPE_CARD_REQUIRED",				':REQUIRED' );
 
 /**
  * Array.
@@ -195,7 +195,33 @@ define( "kTYPE_CARD_REQUIRED",					':REQUIRED' );
  * This tag indicates that the element represents an array and that the data type applies
  * to the elements of the array.
  */
-define( "kTYPE_CARD_ARRAY",						':ARRAY' );
+define( "kTYPE_CARD_ARRAY",					':ARRAY' );
+
+/*=======================================================================================
+ *	RELATIONSHIP TYPES																	*
+ *======================================================================================*/
+
+/**
+ * Input relationships.
+ *
+ * This tag represents the input relationship sense.
+ */
+define( "kTYPE_RELATION_IN",				':RELATION-IN' );
+
+/**
+ * Output relationships.
+ *
+ * This tag represents the output relationship sense.
+ */
+define( "kTYPE_RELATION_OUT",				':RELATION-OUT' );
+
+/**
+ * All relationships.
+ *
+ * This tag represents both the input and output relationship senses, it is equivalent to
+ * the selection of all relationships.
+ */
+define( "kTYPE_RELATION_ALL",				':RELATION-ALL' );
 
 /*=======================================================================================
  *	MONGODB DATA TYPES																	*

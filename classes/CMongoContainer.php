@@ -208,7 +208,7 @@ class CMongoContainer extends CContainer
 			//
 			// Check value type.
 			//
-			if( ! $theValue instanceof MongoCollection )
+			if( ! ($theValue instanceof MongoCollection) )
 				throw new Exception
 					( "Invalid container type",
 					  kERROR_PARAMETER );										// !@! ==>
