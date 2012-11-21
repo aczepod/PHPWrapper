@@ -8,7 +8,7 @@
 	<title>File LoadOntologies.php | MyWrapper Reference Documentation</title>
 
 	<script type="text/javascript" src="resources/combined.js?3680114562"></script>
-	<script type="text/javascript" src="elementlist.js?1482796827"></script>
+	<script type="text/javascript" src="elementlist.js?539813953"></script>
 	<link rel="stylesheet" type="text/css" media="all" href="resources/style.css?3505392360" />
 
 </head>
@@ -282,27 +282,38 @@
 </span><span id="157" class="l"><a class="l" href="#157">157: </a>        <span class="php-comment">//</span>
 </span><span id="158" class="l"><a class="l" href="#158">158: </a>        <span class="php-keyword1">echo</span>( <span class="php-quote">&quot;  • Opening connections.\n&quot;</span> );
 </span><span id="159" class="l"><a class="l" href="#159">159: </a>        <span class="php-var">$_SESSION</span>[ kSESSION_SERVER ] = <span class="php-keyword1">New</span> CMongoServer();
-</span><span id="160" class="l"><a class="l" href="#160">160: </a>        <span class="php-var">$_SESSION</span>[ kSESSION_DATABASE ]
-</span><span id="161" class="l"><a class="l" href="#161">161: </a>            = <span class="php-var">$_SESSION</span>[ kSESSION_SERVER ]
-</span><span id="162" class="l"><a class="l" href="#162">162: </a>                -&gt;Database( kDEFAULT_DATABASE );
-</span><span id="163" class="l"><a class="l" href="#163">163: </a>        
-</span><span id="164" class="l"><a class="l" href="#164">164: </a>        <span class="php-comment">//</span>
-</span><span id="165" class="l"><a class="l" href="#165">165: </a>        <span class="php-comment">// Instantiate ontology.</span>
-</span><span id="166" class="l"><a class="l" href="#166">166: </a>        <span class="php-comment">//</span>
-</span><span id="167" class="l"><a class="l" href="#167">167: </a>        <span class="php-keyword1">echo</span>( <span class="php-quote">&quot;  • Instantiating ontology.\n&quot;</span> );
-</span><span id="168" class="l"><a class="l" href="#168">168: </a>        <span class="php-var">$_SESSION</span>[ kSESSION_ONTOLOGY ]
-</span><span id="169" class="l"><a class="l" href="#169">169: </a>            = <span class="php-keyword1">new</span> COntology( <span class="php-var">$_SESSION</span>[ kSESSION_DATABASE ] );
-</span><span id="170" class="l"><a class="l" href="#170">170: </a>        
-</span><span id="171" class="l"><a class="l" href="#171">171: </a>        <span class="php-comment">//</span>
-</span><span id="172" class="l"><a class="l" href="#172">172: </a>        <span class="php-comment">// Initialising ontology.</span>
-</span><span id="173" class="l"><a class="l" href="#173">173: </a>        <span class="php-comment">//</span>
-</span><span id="174" class="l"><a class="l" href="#174">174: </a>        <span class="php-keyword1">echo</span>( <span class="php-quote">&quot;  • Initialising ontology.\n&quot;</span> );
-</span><span id="175" class="l"><a class="l" href="#175">175: </a>        <span class="php-var">$_SESSION</span>[ kSESSION_ONTOLOGY ]-&gt;InitOntology();
-</span><span id="176" class="l"><a class="l" href="#176">176: </a>
-</span><span id="177" class="l"><a class="l" href="#177">177: </a>    } <span class="php-comment">// Init.</span>
-</span><span id="178" class="l"><a class="l" href="#178">178: </a>
-</span><span id="179" class="l"><a class="l" href="#179">179: </a><span class="xlang">?&gt;</span>
-</span><span id="180" class="l"><a class="l" href="#180">180: </a></span></code></pre>
+</span><span id="160" class="l"><a class="l" href="#160">160: </a>        
+</span><span id="161" class="l"><a class="l" href="#161">161: </a>        <span class="php-comment">//</span>
+</span><span id="162" class="l"><a class="l" href="#162">162: </a>        <span class="php-comment">// Set graph reference.</span>
+</span><span id="163" class="l"><a class="l" href="#163">163: </a>        <span class="php-comment">//</span>
+</span><span id="164" class="l"><a class="l" href="#164">164: </a>        <span class="php-var">$tmp</span> = <span class="php-keyword2">explode</span>( <span class="php-quote">':'</span>, kDEFAULT_GRAPH );
+</span><span id="165" class="l"><a class="l" href="#165">165: </a>        <span class="php-var">$graph</span> = <span class="php-keyword1">new</span> CNeo4jGraph( <span class="php-var">$tmp</span>[ <span class="php-num">0</span> ], <span class="php-var">$tmp</span>[ <span class="php-num">1</span> ] );
+</span><span id="166" class="l"><a class="l" href="#166">166: </a>        <span class="php-var">$_SESSION</span>[ kSESSION_SERVER ]-&gt;Graph( <span class="php-var">$graph</span> );
+</span><span id="167" class="l"><a class="l" href="#167">167: </a>        
+</span><span id="168" class="l"><a class="l" href="#168">168: </a>        <span class="php-comment">//</span>
+</span><span id="169" class="l"><a class="l" href="#169">169: </a>        <span class="php-comment">// Set database reference.</span>
+</span><span id="170" class="l"><a class="l" href="#170">170: </a>        <span class="php-comment">//</span>
+</span><span id="171" class="l"><a class="l" href="#171">171: </a>        <span class="php-var">$_SESSION</span>[ kSESSION_DATABASE ]
+</span><span id="172" class="l"><a class="l" href="#172">172: </a>            = <span class="php-var">$_SESSION</span>[ kSESSION_SERVER ]
+</span><span id="173" class="l"><a class="l" href="#173">173: </a>                -&gt;Database( kDEFAULT_DATABASE );
+</span><span id="174" class="l"><a class="l" href="#174">174: </a>        
+</span><span id="175" class="l"><a class="l" href="#175">175: </a>        <span class="php-comment">//</span>
+</span><span id="176" class="l"><a class="l" href="#176">176: </a>        <span class="php-comment">// Instantiate ontology.</span>
+</span><span id="177" class="l"><a class="l" href="#177">177: </a>        <span class="php-comment">//</span>
+</span><span id="178" class="l"><a class="l" href="#178">178: </a>        <span class="php-keyword1">echo</span>( <span class="php-quote">&quot;  • Instantiating ontology.\n&quot;</span> );
+</span><span id="179" class="l"><a class="l" href="#179">179: </a>        <span class="php-var">$_SESSION</span>[ kSESSION_ONTOLOGY ]
+</span><span id="180" class="l"><a class="l" href="#180">180: </a>            = <span class="php-keyword1">new</span> COntology( <span class="php-var">$_SESSION</span>[ kSESSION_DATABASE ] );
+</span><span id="181" class="l"><a class="l" href="#181">181: </a>        
+</span><span id="182" class="l"><a class="l" href="#182">182: </a>        <span class="php-comment">//</span>
+</span><span id="183" class="l"><a class="l" href="#183">183: </a>        <span class="php-comment">// Initialising ontology.</span>
+</span><span id="184" class="l"><a class="l" href="#184">184: </a>        <span class="php-comment">//</span>
+</span><span id="185" class="l"><a class="l" href="#185">185: </a>        <span class="php-keyword1">echo</span>( <span class="php-quote">&quot;  • Initialising ontology.\n&quot;</span> );
+</span><span id="186" class="l"><a class="l" href="#186">186: </a>        <span class="php-var">$_SESSION</span>[ kSESSION_ONTOLOGY ]-&gt;InitOntology();
+</span><span id="187" class="l"><a class="l" href="#187">187: </a>
+</span><span id="188" class="l"><a class="l" href="#188">188: </a>    } <span class="php-comment">// Init.</span>
+</span><span id="189" class="l"><a class="l" href="#189">189: </a>
+</span><span id="190" class="l"><a class="l" href="#190">190: </a><span class="xlang">?&gt;</span>
+</span><span id="191" class="l"><a class="l" href="#191">191: </a></span></code></pre>
 
 	<div id="footer">
 		MyWrapper Reference Documentation API documentation generated by <a href="http://apigen.org">ApiGen 2.8.0</a>

@@ -56,6 +56,39 @@ abstract class CDatabase extends CConnection
 
 /*=======================================================================================
  *																						*
+ *											MAGIC										*
+ *																						*
+ *======================================================================================*/
+
+
+	 
+	/*===================================================================================
+	 *	__destruct																		*
+	 *==================================================================================*/
+
+	/**
+	 * <h4>Destructor</h4>
+	 *
+	 * We implement the destructor to get rid of the graph: the Neo4j PHP interface, for
+	 * instance, has closures that cannot be serialised, so we need to reset the graph
+	 * {@link kOFFSET_GRAPH} offset before destroying the object.
+	 *
+	 * @access public
+	 */
+	public function __destruct()
+	{
+		//
+		// Reset graph.
+		//
+		if( $this->offsetExists( kOFFSET_GRAPH ) )
+			$this->offsetUnset( kOFFSET_GRAPH );
+		
+	} // Destructor.
+
+	
+
+/*=======================================================================================
+ *																						*
  *								PUBLIC CONNECTION INTERFACE								*
  *																						*
  *======================================================================================*/

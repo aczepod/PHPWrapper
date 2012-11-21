@@ -157,6 +157,17 @@ echo( "\nDone!\n" );
 		//
 		echo( "  • Opening connections.\n" );
 		$_SESSION[ kSESSION_SERVER ] = New CMongoServer();
+		
+		//
+		// Set graph reference.
+		//
+		$tmp = explode( ':', kDEFAULT_GRAPH );
+		$graph = new CNeo4jGraph( $tmp[ 0 ], $tmp[ 1 ] );
+		$_SESSION[ kSESSION_SERVER ]->Graph( $graph );
+		
+		//
+		// Set database reference.
+		//
 		$_SESSION[ kSESSION_DATABASE ]
 			= $_SESSION[ kSESSION_SERVER ]
 				->Database( kDEFAULT_DATABASE );

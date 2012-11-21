@@ -7,7 +7,7 @@
 	<title>Class CServer | MyWrapper Reference Documentation</title>
 
 	<script type="text/javascript" src="resources/combined.js?3680114562"></script>
-	<script type="text/javascript" src="elementlist.js?1482796827"></script>
+	<script type="text/javascript" src="elementlist.js?539813953"></script>
 	<link rel="stylesheet" type="text/css" media="all" href="resources/style.css?3505392360" />
 
 </head>
@@ -209,13 +209,50 @@ native server object.</p>
 				<b>Author:</b>
 				Milko A. Škofič &lt;<a
 href="mailto:m.skofic&#64;cgiar.org">m.skofic&#64;<!---->cgiar.org</a>&gt;<br />
-		<b>Located at</b> <a href="source-class-CServer.html#36-159" title="Go to source code">CServer.php</a><br />
+		<b>Located at</b> <a href="source-class-CServer.html#36-192" title="Go to source code">CServer.php</a><br />
 	</div>
 
 
 
 	<table class="summary" id="methods">
 	<caption>Methods summary</caption>
+	<tr data-order="__destruct" id="___destruct">
+
+		<td class="attributes"><code>
+			 public 
+			
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#___destruct">#</a>
+		<code><a href="source-class-CServer.html#86-103" title="Go to source code">__destruct</a>( )</code>
+
+		<div class="description short">
+			
+<h4>Destructor</h4>
+
+		</div>
+
+		<div class="description detailed hidden">
+			
+<h4>Destructor</h4>
+
+<p>We implement the destructor to get rid of the graph: the Neo4j PHP interface,
+for instance, has closures that cannot be serialised, so we need to reset the
+graph before destroying the object.</p>
+
+
+
+
+
+
+
+
+		</div>
+		</div></td>
+	</tr>
 	<tr data-order="Database" id="_Database">
 
 		<td class="attributes"><code>
@@ -227,7 +264,7 @@ href="mailto:m.skofic&#64;cgiar.org">m.skofic&#64;<!---->cgiar.org</a>&gt;<br />
 
 		<td class="name"><div>
 		<a class="anchor" href="#_Database">#</a>
-		<code><a href="source-class-CServer.html#86-105" title="Go to source code">Database</a>( <span>mixed <var>$theDatabase</var> = <span class="php-keyword1">NULL</span> </span> )</code>
+		<code><a href="source-class-CServer.html#119-138" title="Go to source code">Database</a>( <span>mixed <var>$theDatabase</var> = <span class="php-keyword1">NULL</span> </span> )</code>
 
 		<div class="description short">
 			
@@ -283,7 +320,7 @@ generated object.</i></p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#_Graph">#</a>
-		<code><a href="source-class-CServer.html#112-155" title="Go to source code">Graph</a>( <span><code><a href="class-CGraphContainer.html">CGraphContainer</a></code> <var>$theValue</var> = <span class="php-keyword1">NULL</span></span>, <span>mixed <var>$getOld</var> = <span class="php-keyword1">FALSE</span> </span> )</code>
+		<code><a href="source-class-CServer.html#145-188" title="Go to source code">Graph</a>( <span><code><a href="class-CGraphContainer.html">CGraphContainer</a></code> <var>$theValue</var> = <span class="php-keyword1">NULL</span></span>, <span>mixed <var>$getOld</var> = <span class="php-keyword1">FALSE</span> </span> )</code>
 
 		<div class="description short">
 			

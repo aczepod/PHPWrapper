@@ -41,7 +41,7 @@ require_once( kPATH_MYWRAPPER_LIBRARY_CLASS."/COntologyTerm.php" );
 require_once( kPATH_MYWRAPPER_LIBRARY_CLASS."/CNode.php" );
 
 /**
- * <h4>Ontology node object ancestor</h4>
+ * <h4>Ontology node object</h4>
  *
  * This class extends its ancestor, {@link CNode}, by asserting the {@link Term()} to be an
  * instance of {@link COntologyTerm} and by managing the {@link kTAG_REFS_NODE} offset

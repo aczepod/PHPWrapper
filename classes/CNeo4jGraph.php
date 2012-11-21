@@ -115,6 +115,30 @@ class CNeo4jGraph extends CGraphContainer
 
 	 
 	/*===================================================================================
+	 *	__destruct																		*
+	 *==================================================================================*/
+
+	/**
+	 * <h4>Destructor</h4>
+	 *
+	 * We implement the destructor to get rid of the graph: the Neo4j PHP interface, for
+	 * instance, has closures that cannot be serialised, so we need to reset the graph
+	 * {@link Connection()} before destroying the object.
+	 *
+	 * @access public
+	 */
+	public function __destruct()
+	{
+		//
+		// Reset graph.
+		//
+		if( $this->Connection() !== NULL )
+			$this->Connection( FALSE );
+		
+	} // Destructor.
+
+	 
+	/*===================================================================================
 	 *	__toString																		*
 	 *==================================================================================*/
 

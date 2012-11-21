@@ -7,7 +7,7 @@
 	<title>Class CContainer | MyWrapper Reference Documentation</title>
 
 	<script type="text/javascript" src="resources/combined.js?3680114562"></script>
-	<script type="text/javascript" src="elementlist.js?1482796827"></script>
+	<script type="text/javascript" src="elementlist.js?539813953"></script>
 	<link rel="stylesheet" type="text/css" media="all" href="resources/style.css?3505392360" />
 
 </head>
@@ -201,13 +201,50 @@ implement specific storage actions.</p>
 				<b>Author:</b>
 				Milko A. Škofič &lt;<a
 href="mailto:m.skofic&#64;cgiar.org">m.skofic&#64;<!---->cgiar.org</a>&gt;<br />
-		<b>Located at</b> <a href="source-class-CContainer.html#57-660" title="Go to source code">CContainer.php</a><br />
+		<b>Located at</b> <a href="source-class-CContainer.html#57-693" title="Go to source code">CContainer.php</a><br />
 	</div>
 
 
 
 	<table class="summary" id="methods">
 	<caption>Methods summary</caption>
+	<tr data-order="__destruct" id="___destruct">
+
+		<td class="attributes"><code>
+			 public 
+			
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#___destruct">#</a>
+		<code><a href="source-class-CContainer.html#89-106" title="Go to source code">__destruct</a>( )</code>
+
+		<div class="description short">
+			
+<h4>Destructor</h4>
+
+		</div>
+
+		<div class="description detailed hidden">
+			
+<h4>Destructor</h4>
+
+<p>We implement the destructor to get rid of the graph: the Neo4j PHP interface,
+for instance, has closures that cannot be serialised, so we need to reset the
+graph kOFFSET_GRAPH offset before destroying the object.</p>
+
+
+
+
+
+
+
+
+		</div>
+		</div></td>
+	</tr>
 	<tr data-order="Drop" id="_Drop">
 
 		<td class="attributes"><code>
@@ -219,7 +256,7 @@ href="mailto:m.skofic&#64;cgiar.org">m.skofic&#64;<!---->cgiar.org</a>&gt;<br />
 
 		<td class="name"><div>
 		<a class="anchor" href="#_Drop">#</a>
-		<code><a href="source-class-CContainer.html#89-96" title="Go to source code">Drop</a>( )</code>
+		<code><a href="source-class-CContainer.html#122-129" title="Go to source code">Drop</a>( )</code>
 
 		<div class="description short">
 			
@@ -254,7 +291,7 @@ href="mailto:m.skofic&#64;cgiar.org">m.skofic&#64;<!---->cgiar.org</a>&gt;<br />
 
 		<td class="name"><div>
 		<a class="anchor" href="#_AddIndex">#</a>
-		<code><a href="source-class-CContainer.html#103-113" title="Go to source code">AddIndex</a>( <span>array <var>$theIndex</var></span>, <span>array <var>$theOptions</var> = <span class="php-keyword1">Array</span>() </span> )</code>
+		<code><a href="source-class-CContainer.html#136-146" title="Go to source code">AddIndex</a>( <span>array <var>$theIndex</var></span>, <span>array <var>$theOptions</var> = <span class="php-keyword1">Array</span>() </span> )</code>
 
 		<div class="description short">
 			
@@ -296,7 +333,7 @@ href="mailto:m.skofic&#64;cgiar.org">m.skofic&#64;<!---->cgiar.org</a>&gt;<br />
 
 		<td class="name"><div>
 		<a class="anchor" href="#_ManageObject">#</a>
-		<code><a href="source-class-CContainer.html#129-294" title="Go to source code">ManageObject</a>( <span>reference <var>&amp; $theObject</var></span>, <span>mixed <var>$theIdentifier</var> = <span class="php-keyword1">NULL</span></span>, <span>mixed <var>$theModifiers</var> = kFLAG_DEFAULT </span> )</code>
+		<code><a href="source-class-CContainer.html#162-327" title="Go to source code">ManageObject</a>( <span>reference <var>&amp; $theObject</var></span>, <span>mixed <var>$theIdentifier</var> = <span class="php-keyword1">NULL</span></span>, <span>mixed <var>$theModifiers</var> = kFLAG_DEFAULT </span> )</code>
 
 		<div class="description short">
 			
@@ -496,7 +533,7 @@ is declared abstract.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#_CheckObject">#</a>
-		<code><a href="source-class-CContainer.html#301-314" title="Go to source code">CheckObject</a>( <span>mixed <var>$theIdentifier</var></span>, <span>string <var>$theOffset</var> = <span class="php-keyword1">NULL</span> </span> )</code>
+		<code><a href="source-class-CContainer.html#334-347" title="Go to source code">CheckObject</a>( <span>mixed <var>$theIdentifier</var></span>, <span>string <var>$theOffset</var> = <span class="php-keyword1">NULL</span> </span> )</code>
 
 		<div class="description short">
 			
@@ -544,7 +581,7 @@ return <tt>TRUE</tt> if found and <tt>FALSE</tt> if not.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#_Query">#</a>
-		<code><a href="source-class-CContainer.html#321-365" title="Go to source code">Query</a>( <span>array <var>$theQuery</var> = <span class="php-keyword1">NULL</span></span>, <span>array <var>$theFields</var> = <span class="php-keyword1">NULL</span></span>, <span>array <var>$theSort</var> = <span class="php-keyword1">NULL</span></span>, <span>integer <var>$theStart</var> = <span class="php-keyword1">NULL</span></span>, <span>integer <var>$theLimit</var> = <span class="php-keyword1">NULL</span></span>, <span>boolean <var>$getFirst</var> = <span class="php-keyword1">NULL</span> </span> )</code>
+		<code><a href="source-class-CContainer.html#354-398" title="Go to source code">Query</a>( <span>array <var>$theQuery</var> = <span class="php-keyword1">NULL</span></span>, <span>array <var>$theFields</var> = <span class="php-keyword1">NULL</span></span>, <span>array <var>$theSort</var> = <span class="php-keyword1">NULL</span></span>, <span>integer <var>$theStart</var> = <span class="php-keyword1">NULL</span></span>, <span>integer <var>$theLimit</var> = <span class="php-keyword1">NULL</span></span>, <span>boolean <var>$getFirst</var> = <span class="php-keyword1">NULL</span> </span> )</code>
 
 		<div class="description short">
 			
@@ -631,7 +668,7 @@ parameters.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#_UnserialiseObject">#</a>
-		<code><a href="source-class-CContainer.html#381-535" title="Go to source code">UnserialiseObject</a>( <span>reference <var>&amp; $theObject</var></span> )</code>
+		<code><a href="source-class-CContainer.html#414-568" title="Go to source code">UnserialiseObject</a>( <span>reference <var>&amp; $theObject</var></span> )</code>
 
 		<div class="description short">
 			
@@ -708,7 +745,7 @@ follows:</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#_UnserialiseData">#</a>
-		<code><a href="source-class-CContainer.html#542-575" title="Go to source code">UnserialiseData</a>( <span>reference <var>&amp; $theElement</var></span>, <span>string <var>$theType</var> = <span class="php-keyword1">NULL</span> </span> )</code>
+		<code><a href="source-class-CContainer.html#575-608" title="Go to source code">UnserialiseData</a>( <span>reference <var>&amp; $theElement</var></span>, <span>string <var>$theType</var> = <span class="php-keyword1">NULL</span> </span> )</code>
 
 		<div class="description short">
 			
@@ -777,7 +814,7 @@ implement it.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#_NextSequence">#</a>
-		<code><a href="source-class-CContainer.html#591-627" title="Go to source code">NextSequence</a>( <span>string <var>$theKey</var></span>, <span>mixed <var>$theContainer</var> = <span class="php-keyword1">NULL</span> </span> )</code>
+		<code><a href="source-class-CContainer.html#624-660" title="Go to source code">NextSequence</a>( <span>string <var>$theKey</var></span>, <span>mixed <var>$theContainer</var> = <span class="php-keyword1">NULL</span> </span> )</code>
 
 		<div class="description short">
 			
@@ -853,7 +890,7 @@ exception.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#_NewQuery">#</a>
-		<code><a href="source-class-CContainer.html#643-656" title="Go to source code">NewQuery</a>( <span>mixed <var>$theQuery</var> = <span class="php-keyword1">NULL</span> </span> )</code>
+		<code><a href="source-class-CContainer.html#676-689" title="Go to source code">NewQuery</a>( <span>mixed <var>$theQuery</var> = <span class="php-keyword1">NULL</span> </span> )</code>
 
 		<div class="description short">
 			

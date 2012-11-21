@@ -7,7 +7,7 @@
 	<title>Class CNeo4jGraph | MyWrapper Reference Documentation</title>
 
 	<script type="text/javascript" src="resources/combined.js?3680114562"></script>
-	<script type="text/javascript" src="elementlist.js?1482796827"></script>
+	<script type="text/javascript" src="elementlist.js?539813953"></script>
 	<link rel="stylesheet" type="text/css" media="all" href="resources/style.css?3505392360" />
 
 </head>
@@ -182,7 +182,7 @@ database client.</p>
 				<b>Author:</b>
 				Milko A. Škofič &lt;<a
 href="mailto:m.skofic&#64;cgiar.org">m.skofic&#64;<!---->cgiar.org</a>&gt;<br />
-		<b>Located at</b> <a href="source-class-CNeo4jGraph.html#36-739" title="Go to source code">CNeo4jGraph.php</a><br />
+		<b>Located at</b> <a href="source-class-CNeo4jGraph.html#36-763" title="Go to source code">CNeo4jGraph.php</a><br />
 	</div>
 
 
@@ -242,6 +242,43 @@ and kGRAPH_DEF_PORT port.</p>
 		</div>
 		</div></td>
 	</tr>
+	<tr data-order="__destruct" id="___destruct">
+
+		<td class="attributes"><code>
+			 public 
+			
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#___destruct">#</a>
+		<code><a href="source-class-CNeo4jGraph.html#121-138" title="Go to source code">__destruct</a>( )</code>
+
+		<div class="description short">
+			
+<h4>Destructor</h4>
+
+		</div>
+
+		<div class="description detailed hidden">
+			
+<h4>Destructor</h4>
+
+<p>We implement the destructor to get rid of the graph: the Neo4j PHP interface,
+for instance, has closures that cannot be serialised, so we need to reset the
+graph <code><a href="class-CNeo4jGraph.html#_Connection">CNeo4jGraph::Connection()</a></code> before destroying the object.</p>
+
+
+
+
+
+
+
+
+		</div>
+		</div></td>
+	</tr>
 	<tr data-order="__toString" id="___toString">
 
 		<td class="attributes"><code>
@@ -253,7 +290,7 @@ and kGRAPH_DEF_PORT port.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#___toString">#</a>
-		<code><a href="source-class-CNeo4jGraph.html#121-131" title="Go to source code">__toString</a>( )</code>
+		<code><a href="source-class-CNeo4jGraph.html#145-155" title="Go to source code">__toString</a>( )</code>
 
 		<div class="description short">
 			
@@ -294,7 +331,7 @@ and kGRAPH_DEF_PORT port.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#_Connection">#</a>
-		<code><a href="source-class-CNeo4jGraph.html#147-180" title="Go to source code">Connection</a>( <span>mixed <var>$theValue</var> = <span class="php-keyword1">NULL</span></span>, <span>boolean <var>$getOld</var> = <span class="php-keyword1">FALSE</span> </span> )</code>
+		<code><a href="source-class-CNeo4jGraph.html#171-204" title="Go to source code">Connection</a>( <span>mixed <var>$theValue</var> = <span class="php-keyword1">NULL</span></span>, <span>boolean <var>$getOld</var> = <span class="php-keyword1">FALSE</span> </span> )</code>
 
 		<div class="description short">
 			
@@ -351,7 +388,7 @@ client.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#_NewNode">#</a>
-		<code><a href="source-class-CNeo4jGraph.html#196-227" title="Go to source code">NewNode</a>( <span>array <var>$theProperties</var> = <span class="php-keyword1">NULL</span> </span> )</code>
+		<code><a href="source-class-CNeo4jGraph.html#220-251" title="Go to source code">NewNode</a>( <span>array <var>$theProperties</var> = <span class="php-keyword1">NULL</span> </span> )</code>
 
 		<div class="description short">
 			
@@ -395,7 +432,7 @@ client.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#_SetNode">#</a>
-		<code><a href="source-class-CNeo4jGraph.html#234-274" title="Go to source code">SetNode</a>( <span>mixed <var>$theNode</var></span> )</code>
+		<code><a href="source-class-CNeo4jGraph.html#258-298" title="Go to source code">SetNode</a>( <span>mixed <var>$theNode</var></span> )</code>
 
 		<div class="description short">
 			
@@ -440,7 +477,7 @@ and return its identifier.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#_GetNode">#</a>
-		<code><a href="source-class-CNeo4jGraph.html#281-304" title="Go to source code">GetNode</a>( <span>mixed <var>$theIdentifier</var></span> )</code>
+		<code><a href="source-class-CNeo4jGraph.html#305-328" title="Go to source code">GetNode</a>( <span>mixed <var>$theIdentifier</var></span> )</code>
 
 		<div class="description short">
 			
@@ -485,7 +522,7 @@ and return its identifier.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#_DelNode">#</a>
-		<code><a href="source-class-CNeo4jGraph.html#311-349" title="Go to source code">DelNode</a>( <span>mixed <var>$theIdentifier</var></span> )</code>
+		<code><a href="source-class-CNeo4jGraph.html#335-373" title="Go to source code">DelNode</a>( <span>mixed <var>$theIdentifier</var></span> )</code>
 
 		<div class="description short">
 			
@@ -529,7 +566,7 @@ and return its identifier.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#_NewEdge">#</a>
-		<code><a href="source-class-CNeo4jGraph.html#365-477" title="Go to source code">NewEdge</a>( <span>mixed <var>$theSubject</var></span>, <span>array <var>$thePredicate</var></span>, <span>mixed <var>$theObject</var></span>, <span>array <var>$theProperties</var> = <span class="php-keyword1">NULL</span> </span> )</code>
+		<code><a href="source-class-CNeo4jGraph.html#389-501" title="Go to source code">NewEdge</a>( <span>mixed <var>$theSubject</var></span>, <span>array <var>$thePredicate</var></span>, <span>mixed <var>$theObject</var></span>, <span>array <var>$theProperties</var> = <span class="php-keyword1">NULL</span> </span> )</code>
 
 		<div class="description short">
 			
@@ -585,7 +622,7 @@ node cannot be found, the method will raise an exception.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#_SetEdge">#</a>
-		<code><a href="source-class-CNeo4jGraph.html#484-523" title="Go to source code">SetEdge</a>( <span>mixed <var>$theEdge</var></span> )</code>
+		<code><a href="source-class-CNeo4jGraph.html#508-547" title="Go to source code">SetEdge</a>( <span>mixed <var>$theEdge</var></span> )</code>
 
 		<div class="description short">
 			
@@ -629,7 +666,7 @@ node cannot be found, the method will raise an exception.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#_GetEdge">#</a>
-		<code><a href="source-class-CNeo4jGraph.html#530-553" title="Go to source code">GetEdge</a>( <span>mixed <var>$theIdentifier</var></span> )</code>
+		<code><a href="source-class-CNeo4jGraph.html#554-577" title="Go to source code">GetEdge</a>( <span>mixed <var>$theIdentifier</var></span> )</code>
 
 		<div class="description short">
 			
@@ -674,7 +711,7 @@ node cannot be found, the method will raise an exception.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#_DelEdge">#</a>
-		<code><a href="source-class-CNeo4jGraph.html#560-601" title="Go to source code">DelEdge</a>( <span>mixed <var>$theIdentifier</var></span> )</code>
+		<code><a href="source-class-CNeo4jGraph.html#584-625" title="Go to source code">DelEdge</a>( <span>mixed <var>$theIdentifier</var></span> )</code>
 
 		<div class="description short">
 			
@@ -721,7 +758,7 @@ node cannot be found, the method will raise an exception.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#_GetNodeEdges">#</a>
-		<code><a href="source-class-CNeo4jGraph.html#617-735" title="Go to source code">GetNodeEdges</a>( <span>mixed <var>$theNode</var></span>, <span>mixed <var>$thePredicate</var> = <span class="php-keyword1">NULL</span></span>, <span>string <var>$theSense</var> = <span class="php-keyword1">NULL</span> </span> )</code>
+		<code><a href="source-class-CNeo4jGraph.html#641-759" title="Go to source code">GetNodeEdges</a>( <span>mixed <var>$theNode</var></span>, <span>mixed <var>$thePredicate</var> = <span class="php-keyword1">NULL</span></span>, <span>string <var>$theSense</var> = <span class="php-keyword1">NULL</span> </span> )</code>
 
 		<div class="description short">
 			

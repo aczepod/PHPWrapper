@@ -45,11 +45,11 @@ require_once( kPATH_MYWRAPPER_LIBRARY_DEFINE."/Attributes.inc.php" );
 require_once( kPATH_MYWRAPPER_LIBRARY_CLASS."/COntologyTerm.php" );
 
 /**
- * Nodes.
+ * Vertices.
  *
  * This includes the node class definitions.
  */
-require_once( kPATH_MYWRAPPER_LIBRARY_CLASS."/COntologyNode.php" );
+require_once( kPATH_MYWRAPPER_LIBRARY_CLASS."/COntologyVertex.php" );
 
 /**
  * Edges.
@@ -585,7 +585,8 @@ class COntology extends CConnection
 					//
 					// Resolve node.
 					//
-					$node = COntologyNode::NewObject( $this->Connection(), $theIdentifier );
+					$node = COntologyVertex::NewObject( $this->Connection(),
+														$theIdentifier );
 					if( $node !== NULL )
 					{
 						//
@@ -658,7 +659,7 @@ class COntology extends CConnection
 					//
 					// Resolve container.
 					//
-					$container = COntologyNode::ResolveClassContainer
+					$container = COntologyVertex::ResolveClassContainer
 									( $this->Connection(), TRUE );
 					
 					//
@@ -748,7 +749,7 @@ class COntology extends CConnection
 	 * node by identifier, or retrieve the list of root nodes matching a term.
 	 *
 	 * A root node distinguishes itself from a <i>standard</i> node by having the
-	 * {@link kKIND_NODE_ROOT} enumeration set in its kind ({@link COntologyNode::Kind()})
+	 * {@link kKIND_NODE_ROOT} enumeration set in its kind ({@link COntologyVertex::Kind()})
 	 * list.
 	 *
 	 * The method uses the same parameters as the {@link NewNode()} method, except that it
@@ -797,9 +798,10 @@ class COntology extends CConnection
 	 * node by identifier, or retrieve the list of trait nodes matching a term.
 	 *
 	 * A trait node distinguishes itself from a <i>standard</i> node by having the
-	 * {@link kKIND_NODE_TRAIT} enumeration set in its kind ({@link COntologyNode::Kind()})
-	 * list. Also, trait nodes represent the beginning of the path used to annotate data,
-	 * trait nodes always represent the first term reference in a tag path.
+	 * {@link kKIND_NODE_TRAIT} enumeration set in its kind
+	 * ({@link COntologyVertex::Kind()}) list. Also, trait nodes represent the beginning of
+	 * the path used to annotate data, trait nodes always represent the first term reference
+	 * in a tag path.
 	 *
 	 * The method uses the same parameters as the {@link NewNode()} method, except that it
 	 * forces the {@link kKIND_NODE_TRAIT} enumeration as the kind, <tt>NULL</tt> as the
@@ -847,10 +849,10 @@ class COntology extends CConnection
 	 * node by identifier, or retrieve the list of method nodes matching a term.
 	 *
 	 * A method node distinguishes itself from a <i>standard</i> node by having the
-	 * {@link kKIND_NODE_METHOD} enumeration set in its kind ({@link COntologyNode::Kind()})
-	 * list. Also, method nodes represent the intermediary elements of the path used to
-	 * annotate data: method nodes will always be found after trait nodes and before scale
-	 * nodes in a tag path.
+	 * {@link kKIND_NODE_METHOD} enumeration set in its kind
+	 * ({@link COntologyVertex::Kind()}) list. Also, method nodes represent the intermediary
+	 * elements of the path used to annotate data: method nodes will always be found after
+	 * trait nodes and before scale nodes in a tag path.
 	 *
 	 * The method uses the same parameters as the {@link NewNode()} method, except that it
 	 * forces the {@link kKIND_NODE_METHOD} enumeration as the kind, <tt>NULL</tt> as the
@@ -898,9 +900,10 @@ class COntology extends CConnection
 	 * node by identifier, or retrieve the list of scale nodes matching a term.
 	 *
 	 * A scale node distinguishes itself from a <i>standard</i> node by having the
-	 * {@link kKIND_NODE_SCALE} enumeration set in its kind ({@link COntologyNode::Kind()})
-	 * list. Also, scale nodes represent the last element of the path used to annotate data:
-	 * scale nodes will always have a data type, {@link CNode::Type()}, attribute.
+	 * {@link kKIND_NODE_SCALE} enumeration set in its kind
+	 * ({@link COntologyVertex::Kind()}) list. Also, scale nodes represent the last element
+	 * of the path used to annotate data: scale nodes will always have a data type,
+	 * {@link CNode::Type()}, attribute.
 	 *
 	 * The method uses the same parameters as the {@link NewNode()} method, except that it
 	 * forces the {@link kKIND_NODE_SCALE} enumeration as the kind and expects the type
@@ -951,7 +954,8 @@ class COntology extends CConnection
 					//
 					// Resolve node.
 					//
-					$node = COntologyNode::NewObject( $this->Connection(), $theIdentifier );
+					$node = COntologyVertex::NewObject( $this->Connection(),
+														$theIdentifier );
 					if( $node !== NULL )
 					{
 						//
@@ -1008,7 +1012,7 @@ class COntology extends CConnection
 				//
 				// Resolve container.
 				//
-				$container = COntologyNode::ResolveClassContainer
+				$container = COntologyVertex::ResolveClassContainer
 								( $this->Connection(), TRUE );
 				
 				//
@@ -1097,7 +1101,7 @@ class COntology extends CConnection
 	 *
 	 * An enumeration node distinguishes itself from a <i>standard</i> node by having the
 	 * {@link kKIND_NODE_INSTANCE} enumeration set in its kind
-	 * ({@link COntologyNode::Kind()}) list. Also, enumeration nodes represent elements of
+	 * ({@link COntologyVertex::Kind()}) list. Also, enumeration nodes represent elements of
 	 * an enumerated set and have by default the {@link kTYPE_STRING} data type.
 	 *
 	 * The method uses the same parameters as the {@link NewNode()} method, except that it
@@ -1164,7 +1168,7 @@ class COntology extends CConnection
 	 *	<li><tt>$theItem</tt>: This parameter represents either the item to be appended or
 	 *		the operation:
 	 *	 <ul>
-	 *		<li><tt>{@link COntologyNode}</tt>: This type will be interpreted as a node to
+	 *		<li><tt>{@link COntologyVertex}</tt>: This type will be interpreted as a node to
 	 *			be added.
 	 *		<li><tt>{@link COntologyTerm}</tt>: This type will be interpreted as a predicate
 	 *			term to be added.
@@ -1220,7 +1224,7 @@ class COntology extends CConnection
 			//
 			// Resolve objects.
 			//
-			if( (! ($theItem instanceof COntologyNode))
+			if( (! ($theItem instanceof COntologyVertex))
 			 && (! ($theItem instanceof COntologyTerm)) )
 			{
 				//
@@ -1374,7 +1378,7 @@ class COntology extends CConnection
 	 * The method will raise an exception if the object is not {@link _IsInited()} and if
 	 * the provided parameter is <tt>NULL</tt>.
 	 *
-	 * This class takes advantage of the static method {@link COntologyNode::Resolve()}.
+	 * This class takes advantage of the static method {@link COntologyVertex::Resolve()}.
 	 *
 	 * @param mixed					$theIdentifier		Node identifier or term reference.
 	 * @param boolean				$doThrow			If <tt>TRUE</tt> raise an exception.
@@ -1385,7 +1389,7 @@ class COntology extends CConnection
 	 * @throws Exception
 	 *
 	 * @uses Connection()
-	 * @uses COntologyNode::Resolve()
+	 * @uses COntologyVertex::Resolve()
 	 */
 	public function ResolveNode( $theIdentifier, $doThrow = FALSE )
 	{
@@ -1394,7 +1398,7 @@ class COntology extends CConnection
 		//
 		if( $this->_IsInited() )
 		{
-			return COntologyNode::Resolve(
+			return COntologyVertex::Resolve(
 				$this->Connection(), $theIdentifier, $doThrow );					// ==>
 		
 		} // Object is ready.
@@ -1422,7 +1426,7 @@ class COntology extends CConnection
 	 *	<li><tt>$theSubject</tt>: This parameter is interpreted as the edge subject vertex
 	 *		node reference:
 	 *	 <ul>
-	 *		<li><tt>{@link COntologyNode}</tt>: It will be interpreted as the node object.
+	 *		<li><tt>{@link COntologyVertex}</tt>: It will be interpreted as the node object.
 	 *		<li><tt>integer</tt>: It will be interpreted as the node native identifier.
 	 *		<li><i>other</i>: The method will assume the value to be a term reference: in
 	 *			this case the method will use the list of nodes that reference the eventual
@@ -1438,7 +1442,7 @@ class COntology extends CConnection
 	 *	<li><tt>$theObject</tt>: This parameter is interpreted as the edge object vertex
 	 *		node reference:
 	 *	 <ul>
-	 *		<li><tt>{@link COntologyNode}</tt>: It will be interpreted as the node object.
+	 *		<li><tt>{@link COntologyVertex}</tt>: It will be interpreted as the node object.
 	 *		<li><tt>integer</tt>: It will be interpreted as the node native identifier.
 	 *		<li><i>other</i>: The method will assume the value to be a term reference: in
 	 *			this case the method will use the list of nodes that reference the eventual
@@ -1467,7 +1471,7 @@ class COntology extends CConnection
 	 * @throws Exception
 	 *
 	 * @uses Connection()
-	 * @uses COntologyNode::Resolve()
+	 * @uses COntologyVertex::Resolve()
 	 */
 	public function ResolveEdge( $theSubject = NULL,
 								 $thePredicate = NULL,
@@ -1492,7 +1496,7 @@ class COntology extends CConnection
 				//
 				// Handle object.
 				//
-				if( $theSubject instanceof COntologyNode )
+				if( $theSubject instanceof COntologyVertex )
 					$theSubject = $theSubject[ kOFFSET_NID ];
 				
 				//
@@ -1573,7 +1577,7 @@ class COntology extends CConnection
 				//
 				// Handle object.
 				//
-				if( $theObject instanceof COntologyNode )
+				if( $theObject instanceof COntologyVertex )
 					$theObject = $theObject[ kOFFSET_NID ];
 				
 				//
@@ -2211,7 +2215,7 @@ class COntology extends CConnection
 	 *		list of node identifiers:
 	 *	 <ul>
 	 *		<li><tt>array</tt>: A list of nodes or node identifiers.
-	 *		<li><tt>{@link COntologyNode}</tt>: The node will be used as-is.
+	 *		<li><tt>{@link COntologyVertex}</tt>: The node will be used as-is.
 	 *		<li><i>other</i>: Any other type will be interpreted as a node reference and
 	 *			resolved with {@link ResolveNode()}.
 	 *	 </ul>
@@ -2904,7 +2908,7 @@ class COntology extends CConnection
 	 * @param mixed					$theType			Node type value.
 	 *
 	 * @access protected
-	 * @return COntologyNode		New committed node.
+	 * @return COntologyVertex		New committed node.
 	 *
 	 * @throws Exception
 	 *
@@ -2925,7 +2929,7 @@ class COntology extends CConnection
 				//
 				// Create node.
 				//
-				$node = new COntologyNode();
+				$node = new COntologyVertex();
 				
 				//
 				// Set term reference.
@@ -3043,7 +3047,7 @@ class COntology extends CConnection
 			//
 			// Resolve subject.
 			//
-			if( ! ($theSubject instanceof COntologyNode) )
+			if( ! ($theSubject instanceof COntologyVertex) )
 			{
 				//
 				// Resolve node.
@@ -3071,7 +3075,7 @@ class COntology extends CConnection
 			//
 			// Resolve object.
 			//
-			if( ! ($theObject instanceof COntologyNode) )
+			if( ! ($theObject instanceof COntologyVertex) )
 			{
 				//
 				// Resolve node.
@@ -3245,7 +3249,7 @@ class COntology extends CConnection
 		//
 		// Resolve node.
 		//
-		if( ! ($theNode instanceof COntologyNode) )
+		if( ! ($theNode instanceof COntologyVertex) )
 			$theNode = $this->ResolveNode( $theNode, TRUE );
 		
 		//
@@ -3345,7 +3349,7 @@ class COntology extends CConnection
 		//
 		// Get nodes container.
 		//
-		$container = COntologyNode::DefaultContainer( $db );
+		$container = COntologyVertex::DefaultContainer( $db );
 		if( ! ($container instanceof CContainer) )
 			throw new Exception
 				( "Unable to retrieve nodes container",
@@ -4161,7 +4165,7 @@ class COntology extends CConnection
 	/**
 	 * <h4>Load node data dictionary</h4>
 	 *
-	 * This method will load the ontology node, {@link COntologyNode}, data dictionary.
+	 * This method will load the ontology node, {@link COntologyVertex}, data dictionary.
 	 *
 	 * @access protected
 	 */

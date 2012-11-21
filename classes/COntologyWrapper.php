@@ -31,7 +31,7 @@ require_once( kPATH_MYWRAPPER_LIBRARY_CLASS."/COntologyTerm.php" );
  *
  * This includes the node class definitions.
  */
-require_once( kPATH_MYWRAPPER_LIBRARY_CLASS."/COntologyNode.php" );
+require_once( kPATH_MYWRAPPER_LIBRARY_CLASS."/COntologyVertex.php" );
 
 /**
  * Edges.
@@ -297,8 +297,17 @@ class COntologyWrapper extends CDataWrapper
 		switch( $_REQUEST[ kAPI_OPERATION ] )
 		{
 			case kAPI_OP_GetVertex:
+				//
+				// Set page limit.
+				//
 				if( ! array_key_exists( kAPI_PAGE_LIMIT, $_REQUEST ) )
 					$_REQUEST[ kAPI_PAGE_LIMIT ] = kDEFAULT_LIMIT;
+				//
+				// Set vertex container.
+				//
+				if( ! array_key_exists( kAPI_CONTAINER, $_REQUEST ) )
+					$_REQUEST[ kAPI_CONTAINER ] = kCONTAINER_NODE_NAME;
+
 				break;
 		}
 	
@@ -402,81 +411,6 @@ class COntologyWrapper extends CDataWrapper
  *																						*
  *======================================================================================*/
 
-
-	 
-	/*===================================================================================
-	 *	_FormatQuery																	*
-	 *==================================================================================*/
-
-	/**
-	 * Format query.
-	 *
-	 * We overload this method to perform default formatting according to the operation:
-	 *
-	 * <ul>
-	 *	<li><tt>{@link kAPI_OP_GetVertex}</tt>: This operation involves searching for
-	 *		vertices, which are a combination of two different objects, this means that one
-	 *		could reach a vertex both from a node or from a term. This method will force all
-	 *		queries to be a list of queries with the element index representing the
-	 *		container name. If the provided query is a scalar query, the method will
-	 *		transform it into a query list with the container name set to the default
-	 *		{@link kCONTAINER_NODE_NAME}, or to the service provided container name.
-	 * </ul>
-	 *
-	 * @access protected
-	 *
-	 * @see kAPI_QUERY
-	 */
-	protected function _FormatQuery()
-	{
-		//
-		// Check if query was provided.
-		//
-		if( array_key_exists( kAPI_QUERY, $_REQUEST ) )
-		{
-			//
-			// Parse by operation.
-			//
-			switch( $_REQUEST[ kAPI_OPERATION ] )
-			{
-				case kAPI_OP_GetVertex:
-				/*
-					//
-					// Handle scalar queries.
-					//
-					if( in_array( key( $_REQUEST[ kAPI_QUERY ] ),
-								  array( kOPERATOR_AND, kOPERATOR_NAND,
-										 kOPERATOR_OR, kOPERATOR_NOR ) ) )
-					{
-						//
-						// Get container name.
-						//
-						$container = ( array_key_exists( kAPI_CONTAINER, $_REQUEST ) )
-								   ? (string) $_REQUEST[ kAPI_CONTAINER ]
-								   : kCONTAINER_NODE_NAME;
-						
-						//
-						// Set to queries list.
-						//
-						$_REQUEST[ kAPI_QUERY ]
-							= array( $container => $_REQUEST[ kAPI_QUERY ] );
-					
-					} // Scalar query.
-				*/
-					
-				default:
-					//
-					// Let parent handle it.
-					//
-					parent::_FormatQuery();
-					
-					break;
-			
-			} // Parsing by operation.
-		
-		} // Provided query.
-	
-	} // _FormatQuery.
 
 	 
 	/*===================================================================================
@@ -1697,7 +1631,6 @@ class COntologyWrapper extends CDataWrapper
 		//
 		// Init local storage.
 		//
-		$export = Array();
 		$exclude = array( kOFFSET_NID, kTAG_LID, kTAG_GID, kTAG_CLASS,
 						  kTAG_TERM, kTAG_REFS_TAG, kTAG_REFS_EDGE );
 		
@@ -1705,13 +1638,25 @@ class COntologyWrapper extends CDataWrapper
 		// Resolve node.
 		//
 		if( ! ($theNode instanceof COntologyNode) )
-			$theNode = COntologyNode::Resolve( $_REQUEST[ kAPI_DATABASE ], $theNode, TRUE );
+			$theNode = COntologyVertex::Resolve( $_REQUEST[ kAPI_DATABASE ],
+												 $theNode, TRUE );
+		
+		//
+		// Handle vertex object.
+		//
+		if( $theNode[ kTAG_CLASS ] == 'COntologyVertex' )
+			return $theNode->getArrayCopy();										// ==>
+		
+		//
+		// Init local storage.
+		//
+		$export = Array();
 		
 		//
 		// Set node identifier.
 		//
 		$export[ kOFFSET_NID ] = $theNode[ kOFFSET_NID ];
-		
+
 		//
 		// Export node term.
 		//
