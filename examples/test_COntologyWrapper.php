@@ -53,7 +53,7 @@ require_once( kPATH_MYWRAPPER_LIBRARY_CLASS."/COntologyWrapper.php" );
 //
 // Debug switches.
 //
-define( 'kDEBUG_PARENT', FALSE );
+define( 'kDEBUG_PARENT', TRUE );
 
 
 /*=======================================================================================
@@ -693,10 +693,10 @@ try
 			(
 				array
 				(
-					kOFFSET_QUERY_SUBJECT => kTAG_GID,
-					kOFFSET_QUERY_OPERATOR => kOPERATOR_PREFIX,
+					kOFFSET_QUERY_SUBJECT => kTAG_LABEL.'.en',
+					kOFFSET_QUERY_OPERATOR => kOPERATOR_EQUAL,
 					kOFFSET_QUERY_TYPE => kTYPE_STRING,
-					kOFFSET_QUERY_DATA => 'ISO:3166:2:'
+					kOFFSET_QUERY_DATA => 'Italy'
 				)
 			)
 		);

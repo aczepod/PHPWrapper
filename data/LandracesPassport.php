@@ -298,6 +298,7 @@ require_once( 'LandracesPassport.inc.php' );
 								// Additional attributes.
 								array( kTAG_SYNONYMS => array( $param[ 'code' ], $param[ 'syn' ] ),
 									   kTAG_EXAMPLES => $param[ 'examp' ] ) ),
+						NULL,
 						$param[ 'type' ] ),				// Node data type.
 				$category );
 			
@@ -420,6 +421,7 @@ require_once( 'LandracesPassport.inc.php' );
 								// Additional attributes.
 								array( kTAG_SYNONYMS => array( $param[ 'code' ], $param[ 'syn' ] ),
 									   kTAG_EXAMPLES => $param[ 'examp' ] ) ),
+						NULL,
 						$param[ 'type' ] ),				// Node data type.
 				$category );
 			
@@ -524,6 +526,7 @@ require_once( 'LandracesPassport.inc.php' );
 								// Additional attributes.
 								array( kTAG_SYNONYMS => array( $param[ 'code' ], $param[ 'syn' ] ),
 									   kTAG_EXAMPLES => $param[ 'examp' ] ) ),
+						NULL,
 						$param[ 'type' ] ),				// Node data type.
 				$category );
 			
@@ -758,6 +761,7 @@ require_once( 'LandracesPassport.inc.php' );
 								// Additional attributes.
 								array( kTAG_SYNONYMS => array( $param[ 'code' ], $param[ 'syn' ] ),
 									   kTAG_EXAMPLES => $param[ 'examp' ] ) ),
+						NULL,
 						$param[ 'type' ] ),				// Node data type.
 				$category );
 			
@@ -938,6 +942,7 @@ require_once( 'LandracesPassport.inc.php' );
 								// Additional attributes.
 								array( kTAG_SYNONYMS => array( $param[ 'code' ], $param[ 'syn' ] ),
 									   kTAG_EXAMPLES => $param[ 'examp' ] ) ),
+						NULL,
 						$param[ 'type' ] ),				// Node data type.
 				$category );
 			
@@ -1203,6 +1208,7 @@ require_once( 'LandracesPassport.inc.php' );
 								// Additional attributes.
 								array( kTAG_SYNONYMS => array( $param[ 'code' ], $param[ 'syn' ] ),
 									   kTAG_EXAMPLES => $param[ 'examp' ] ) ),
+						NULL,
 						$param[ 'type' ] ),				// Node data type.
 				$category );
 			
@@ -2141,6 +2147,7 @@ require_once( 'LandracesPassport.inc.php' );
 								// Additional attributes.
 								array( kTAG_SYNONYMS => array( $param[ 'code' ], $param[ 'syn' ] ),
 									   kTAG_EXAMPLES => $param[ 'examp' ] ) ),
+						NULL,
 						$param[ 'type' ] ),				// Node data type.
 				$category );
 			
@@ -2342,6 +2349,7 @@ require_once( 'LandracesPassport.inc.php' );
 								// Additional attributes.
 								array( kTAG_SYNONYMS => array( $param[ 'code' ], $param[ 'syn' ] ),
 									   kTAG_EXAMPLES => $param[ 'examp' ] ) ),
+						NULL,
 						$param[ 'type' ] ),				// Node data type.
 				$root );
 			
