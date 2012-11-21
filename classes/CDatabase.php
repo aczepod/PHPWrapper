@@ -40,7 +40,7 @@ require_once( kPATH_MYWRAPPER_LIBRARY_CLASS."/CConnection.php" );
  * a data member of the object, the array part of the object can be used to store specific
  * attributes of the native database connection.
  *
- * The class also features an offset, {@link kOFFSET_PARENT}, that can be used to store the
+ * The class features an offset, {@link kOFFSET_PARENT}, that can be used to store the
  * parent object, in this case the server object. This member gets set when the object is
  * instantiated by a server object.
  *
@@ -93,10 +93,15 @@ abstract class CDatabase extends CConnection
 	 * the goal of this class is only to declare the public interface, which must be
 	 * implemented by specialised derived classes.
 	 *
+	 * <i>Note: This method should also take care of setting the {@link kOFFSET_NAME},
+	 * {@link kOFFSET_GRAPH} and {@link kOFFSET_PARENT} offsets of the generated object.</i>
+	 *
 	 * @param mixed					$theContainer		Container selector.
 	 *
 	 * @access public
 	 * @return mixed				The container object.
+	 *
+	 * @see kOFFSET_NAME kOFFSET_GRAPH kOFFSET_PARENT
 	 */
 	abstract public function Container( $theContainer = NULL );
 

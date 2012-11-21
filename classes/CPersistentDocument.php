@@ -514,6 +514,11 @@ class CPersistentDocument extends CStatusDocument
 		$op = kFLAG_PERSIST_DELETE;
 		
 		//
+		// Pre-commit.
+		//
+		$this->_Precommit( $theConnection, $op );
+		
+		//
 		// Delete object.
 		//
 		if( $this

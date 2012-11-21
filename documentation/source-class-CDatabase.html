@@ -7,8 +7,8 @@
 
 	<title>File CDatabase.php | MyWrapper Reference Documentation</title>
 
-	<script type="text/javascript" src="resources/combined.js?368249000"></script>
-	<script type="text/javascript" src="elementlist.js?410024381"></script>
+	<script type="text/javascript" src="resources/combined.js?3680114562"></script>
+	<script type="text/javascript" src="elementlist.js?1482796827"></script>
 	<link rel="stylesheet" type="text/css" media="all" href="resources/style.css?3505392360" />
 
 </head>
@@ -158,7 +158,7 @@
 </span></span><span id="40" class="l"><a class="l" href="#40"> 40: </a><span class="php-comment"> * a data member of the object, the array part of the object can be used to store specific
 </span></span><span id="41" class="l"><a class="l" href="#41"> 41: </a><span class="php-comment"> * attributes of the native database connection.
 </span></span><span id="42" class="l"><a class="l" href="#42"> 42: </a><span class="php-comment"> *
-</span></span><span id="43" class="l"><a class="l" href="#43"> 43: </a><span class="php-comment"> * The class also features an offset, {@link kOFFSET_PARENT}, that can be used to store the
+</span></span><span id="43" class="l"><a class="l" href="#43"> 43: </a><span class="php-comment"> * The class features an offset, {@link kOFFSET_PARENT}, that can be used to store the
 </span></span><span id="44" class="l"><a class="l" href="#44"> 44: </a><span class="php-comment"> * parent object, in this case the server object. This member gets set when the object is
 </span></span><span id="45" class="l"><a class="l" href="#45"> 45: </a><span class="php-comment"> * instantiated by a server object.
 </span></span><span id="46" class="l"><a class="l" href="#46"> 46: </a><span class="php-comment"> *
@@ -211,20 +211,25 @@
 </span></span><span id="93" class="l"><a class="l" href="#93"> 93: </a><span class="php-comment">     * the goal of this class is only to declare the public interface, which must be
 </span></span><span id="94" class="l"><a class="l" href="#94"> 94: </a><span class="php-comment">     * implemented by specialised derived classes.
 </span></span><span id="95" class="l"><a class="l" href="#95"> 95: </a><span class="php-comment">     *
-</span></span><span id="96" class="l"><a class="l" href="#96"> 96: </a><span class="php-comment">     * @param mixed                 $theContainer       Container selector.
-</span></span><span id="97" class="l"><a class="l" href="#97"> 97: </a><span class="php-comment">     *
-</span></span><span id="98" class="l"><a class="l" href="#98"> 98: </a><span class="php-comment">     * @access public
-</span></span><span id="99" class="l"><a class="l" href="#99"> 99: </a><span class="php-comment">     * @return mixed                The container object.
-</span></span><span id="100" class="l"><a class="l" href="#100">100: </a><span class="php-comment">     */</span>
-</span><span id="101" class="l"><a class="l" href="#101">101: </a>    <span class="php-keyword1">abstract</span> <span class="php-keyword1">public</span> <span class="php-keyword1">function</span> <a id="_Container" href="#_Container">Container</a>( <span class="php-var">$theContainer</span> = <span class="php-keyword1">NULL</span> );
-</span><span id="102" class="l"><a class="l" href="#102">102: </a>
-</span><span id="103" class="l"><a class="l" href="#103">103: </a>     
-</span><span id="104" class="l"><a class="l" href="#104">104: </a>
-</span><span id="105" class="l"><a class="l" href="#105">105: </a>} <span class="php-comment">// class CDatabase.</span>
-</span><span id="106" class="l"><a class="l" href="#106">106: </a>
+</span></span><span id="96" class="l"><a class="l" href="#96"> 96: </a><span class="php-comment">     * &lt;i&gt;Note: This method should also take care of setting the {@link kOFFSET_NAME},
+</span></span><span id="97" class="l"><a class="l" href="#97"> 97: </a><span class="php-comment">     * {@link kOFFSET_GRAPH} and {@link kOFFSET_PARENT} offsets of the generated object.&lt;/i&gt;
+</span></span><span id="98" class="l"><a class="l" href="#98"> 98: </a><span class="php-comment">     *
+</span></span><span id="99" class="l"><a class="l" href="#99"> 99: </a><span class="php-comment">     * @param mixed                 $theContainer       Container selector.
+</span></span><span id="100" class="l"><a class="l" href="#100">100: </a><span class="php-comment">     *
+</span></span><span id="101" class="l"><a class="l" href="#101">101: </a><span class="php-comment">     * @access public
+</span></span><span id="102" class="l"><a class="l" href="#102">102: </a><span class="php-comment">     * @return mixed                The container object.
+</span></span><span id="103" class="l"><a class="l" href="#103">103: </a><span class="php-comment">     *
+</span></span><span id="104" class="l"><a class="l" href="#104">104: </a><span class="php-comment">     * @see kOFFSET_NAME kOFFSET_GRAPH kOFFSET_PARENT
+</span></span><span id="105" class="l"><a class="l" href="#105">105: </a><span class="php-comment">     */</span>
+</span><span id="106" class="l"><a class="l" href="#106">106: </a>    <span class="php-keyword1">abstract</span> <span class="php-keyword1">public</span> <span class="php-keyword1">function</span> <a id="_Container" href="#_Container">Container</a>( <span class="php-var">$theContainer</span> = <span class="php-keyword1">NULL</span> );
 </span><span id="107" class="l"><a class="l" href="#107">107: </a>
-</span><span id="108" class="l"><a class="l" href="#108">108: </a><span class="xlang">?&gt;</span>
-</span><span id="109" class="l"><a class="l" href="#109">109: </a></span></code></pre>
+</span><span id="108" class="l"><a class="l" href="#108">108: </a>     
+</span><span id="109" class="l"><a class="l" href="#109">109: </a>
+</span><span id="110" class="l"><a class="l" href="#110">110: </a>} <span class="php-comment">// class CDatabase.</span>
+</span><span id="111" class="l"><a class="l" href="#111">111: </a>
+</span><span id="112" class="l"><a class="l" href="#112">112: </a>
+</span><span id="113" class="l"><a class="l" href="#113">113: </a><span class="xlang">?&gt;</span>
+</span><span id="114" class="l"><a class="l" href="#114">114: </a></span></code></pre>
 
 	<div id="footer">
 		MyWrapper Reference Documentation API documentation generated by <a href="http://apigen.org">ApiGen 2.8.0</a>

@@ -6,8 +6,8 @@
 
 	<title>Class COntologyEdge | MyWrapper Reference Documentation</title>
 
-	<script type="text/javascript" src="resources/combined.js?368249000"></script>
-	<script type="text/javascript" src="elementlist.js?410024381"></script>
+	<script type="text/javascript" src="resources/combined.js?3680114562"></script>
+	<script type="text/javascript" src="elementlist.js?1482796827"></script>
 	<link rel="stylesheet" type="text/css" media="all" href="resources/style.css?3505392360" />
 
 </head>
@@ -223,7 +223,7 @@ terms.</p>
 				<b>Author:</b>
 				Milko A. Škofič &lt;<a
 href="mailto:m.skofic&#64;cgiar.org">m.skofic&#64;<!---->cgiar.org</a>&gt;<br />
-		<b>Located at</b> <a href="source-class-COntologyEdge.html#43-1461" title="Go to source code">COntologyEdge.php</a><br />
+		<b>Located at</b> <a href="source-class-COntologyEdge.html#43-1535" title="Go to source code">COntologyEdge.php</a><br />
 	</div>
 
 
@@ -838,7 +838,7 @@ provided as an identifier.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#__PrecommitIdentify">#</a>
-		<code><a href="source-class-COntologyEdge.html#1057-1196" title="Go to source code">_PrecommitIdentify</a>( <span>reference <var>&amp; $theConnection</var></span>, <span>reference <var>&amp; $theModifiers</var></span> )</code>
+		<code><a href="source-class-COntologyEdge.html#1057-1205" title="Go to source code">_PrecommitIdentify</a>( <span>reference <var>&amp; $theConnection</var></span>, <span>reference <var>&amp; $theModifiers</var></span> )</code>
 
 		<div class="description short">
 			
@@ -854,7 +854,24 @@ provided as an identifier.</p>
 global identifier, kTAG_GID; the same value will be hashed and
 constitute the unique identifier, kTAG_UID.</p>
 
-<p>Objects of this class are identified by a sequence number tagged kSEQUENCE_KEY_EDGE, this method will set the native identifier, kOFFSET_NID, with this value.</p>
+<p>This method will also take care of generating the sequence number that
+represents the object's native identifier, kOFFSET_NID, this value can
+be generated in two ways:</p>
+
+<ul>
+	<li><i>The container has the graph reference, kOFFSET_GRAPH</i>: If the
+	provided container contains a reference to a graph container, it means that the
+	edge must also be stored in the graph, this will be taken care by the <code><a href="class-COntologyEdge.html#__AddGraphEdge">COntologyEdge::_AddGraphEdge()</a></code> method that will return the graph edge's ID, which in turn will
+	become the current object's kOFFSET_NID.</li>
+
+	<li><i>The container lacks the graph reference, kOFFSET_GRAPH</i>: If
+	the provided container does not hold a reference to a graph container, the
+	object identifier will be generated with a sequence number tagged kSEQUENCE_KEY_EDGE, this method will set the native identifier, kOFFSET_NID, with this value.</li>
+</ul>
+
+<p>When deleting the object, if the provided container contains a reference to a
+graph container, this method will also delete the relative edge from the
+graph.</p>
 
 <p>The parent method will then be called, which will ignore the global and
 native identifiers, since they will have been set here.</p>
@@ -899,7 +916,7 @@ native identifiers, since they will have been set here.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#__PostcommitRelated">#</a>
-		<code><a href="source-class-COntologyEdge.html#1212-1279" title="Go to source code">_PostcommitRelated</a>( <span>reference <var>&amp; $theConnection</var></span>, <span>reference <var>&amp; $theModifiers</var></span> )</code>
+		<code><a href="source-class-COntologyEdge.html#1221-1288" title="Go to source code">_PostcommitRelated</a>( <span>reference <var>&amp; $theConnection</var></span>, <span>reference <var>&amp; $theModifiers</var></span> )</code>
 
 		<div class="description short">
 			
@@ -955,7 +972,7 @@ when inserting; we remove the element when deleting.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#__PostcommitCleanup">#</a>
-		<code><a href="source-class-COntologyEdge.html#1286-1310" title="Go to source code">_PostcommitCleanup</a>( <span>reference <var>&amp; $theConnection</var></span>, <span>reference <var>&amp; $theModifiers</var></span> )</code>
+		<code><a href="source-class-COntologyEdge.html#1295-1319" title="Go to source code">_PostcommitCleanup</a>( <span>reference <var>&amp; $theConnection</var></span>, <span>reference <var>&amp; $theModifiers</var></span> )</code>
 
 		<div class="description short">
 			
@@ -1001,7 +1018,7 @@ will have to be refreshed.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#__ReferenceInSubject">#</a>
-		<code><a href="source-class-COntologyEdge.html#1326-1388" title="Go to source code">_ReferenceInSubject</a>( <span><code><a href="class-CConnection.html">CConnection</a></code> <var>$theConnection</var></span>, <span>boolean <var>$doAdd</var></span> )</code>
+		<code><a href="source-class-COntologyEdge.html#1335-1397" title="Go to source code">_ReferenceInSubject</a>( <span><code><a href="class-CConnection.html">CConnection</a></code> <var>$theConnection</var></span>, <span>boolean <var>$doAdd</var></span> )</code>
 
 		<div class="description short">
 			
@@ -1063,7 +1080,7 @@ and raise an exception if the operation failed.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#__ReferenceInObject">#</a>
-		<code><a href="source-class-COntologyEdge.html#1395-1457" title="Go to source code">_ReferenceInObject</a>( <span><code><a href="class-CConnection.html">CConnection</a></code> <var>$theConnection</var></span>, <span>boolean <var>$doAdd</var></span> )</code>
+		<code><a href="source-class-COntologyEdge.html#1404-1466" title="Go to source code">_ReferenceInObject</a>( <span><code><a href="class-CConnection.html">CConnection</a></code> <var>$theConnection</var></span>, <span>boolean <var>$doAdd</var></span> )</code>
 
 		<div class="description short">
 			
@@ -1109,6 +1126,63 @@ raise an exception if the operation failed.</p>
 						kTAG_VERTEX_OBJECT kTAG_REFS_EDGE<br />
 						kFLAG_PERSIST_MODIFY kFLAG_MODIFY_ADDSET kFLAG_MODIFY_PULL<br />
 				</div>
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="_AddGraphEdge" id="__AddGraphEdge">
+
+		<td class="attributes"><code>
+			 protected 
+			integer
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#__AddGraphEdge">#</a>
+		<code><a href="source-class-COntologyEdge.html#1482-1531" title="Go to source code">_AddGraphEdge</a>( <span><code><a href="class-CGraphContainer.html">CGraphContainer</a></code> <var>$theGraph</var></span> )</code>
+
+		<div class="description short">
+			
+<h4>Create graph edge</h4>
+
+		</div>
+
+		<div class="description detailed hidden">
+			
+<h4>Create graph edge</h4>
+
+<p>This method will create and save a new graph edge in the provided graph
+container and return its newly created identifier.</p>
+
+<p>This method is called by <code><a href="class-COntologyEdge.html#__PrecommitIdentify">COntologyEdge::_PrecommitIdentify()</a></code> to set the new edge
+kOFFSET_NID and the method makes no assumption whether the edge exists
+already or not, in all cases it will create a new edge.</p>
+
+<p>This method will set the node identifiers in the kTAG_VERTEX_SUBJECT
+and kTAG_VERTEX_OBJECT properties and the predicate term kTAG_GID as the predicate identifier.</p>
+
+<p>following attributes to the graph edge: kTAG_KIND and kTAG_TYPE, derived classes may override this method to add other
+properties.</p>
+
+<p>The method should raise an exception if the node was not created.</p>
+
+
+
+				<h4>Parameters</h4>
+				<div class="list"><dl>
+					<dt><var>$theGraph</var></dt>
+					<dd><code><code><a href="class-CGraphContainer.html">CGraphContainer</a></code></code><br>$theGraph Graph container.</dd>
+				</dl></div>
+
+				<h4>Returns</h4>
+				<div class="list">
+					<code>integer</code><br>Newly created edge ID.<br />
+				</div>
+
+
 
 
 		</div>

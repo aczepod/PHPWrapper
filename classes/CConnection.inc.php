@@ -32,6 +32,14 @@
 define( "kOFFSET_NAME",							'_name' );
 
 /**
+ * Graph.
+ *
+ * This tag identifies the graph reference, the eventual object that holds the graph
+ * container.
+ */
+define( "kOFFSET_GRAPH",						'_graph' );
+
+/**
  * Parent.
  *
  * This tag identifies the parent reference, the eventual object that created the current

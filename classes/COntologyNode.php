@@ -19,14 +19,6 @@
  *																						*
  *======================================================================================*/
 
-//
-// Class includes.
-//
-use	Everyman\Neo4j\Client,
-	Everyman\Neo4j\Transport,
-	Everyman\Neo4j\Node,
-	Everyman\Neo4j\Relationship;
-
 /**
  * Local definitions.
  *
@@ -104,7 +96,7 @@ require_once( kPATH_MYWRAPPER_LIBRARY_CLASS."/CNode.php" );
 class COntologyNode extends CNode
 {
 	/**
-	 * <b>Term object</b>
+	 * Term object
 	 *
 	 * This data member holds the eventual term object when requested.
 	 *
@@ -1066,9 +1058,26 @@ class COntologyNode extends CNode
 	/**
 	 * <h4>Determine the identifiers before committing</h4>
 	 *
-	 * Objects of this class are identified by a sequence number tagged
-	 * {@link kSEQUENCE_KEY_NODE}, this method will set the native identifier,
-	 * {@link kOFFSET_NID}, with this value.
+	 * This method will take care of generating the sequence number that represents the
+	 * object's native identifier, {@link kOFFSET_NID}.
+	 *
+	 * This value can be generated in two ways:
+	 *
+	 * <ul>
+	 *	<li><i>The container has the graph reference, {@link kOFFSET_GRAPH}</i>: If the
+	 *		provided container contains a reference to a graph container, it means that the
+	 *		node must also be stored in the graph, this will be taken care by the
+	 *		{@link _AddGraphNode()} method that will return the graph node's ID, which in
+	 *		turn will become the current object's {@link kOFFSET_NID}.
+	 *	<li><i>The container lacks the graph reference, {@link kOFFSET_GRAPH}</i>: If the
+	 *		provided container does not hold a reference to a graph container, the object
+	 *		identifier will be generated with a sequence number tagged
+	 *		{@link kSEQUENCE_KEY_NODE}, this method will set the native identifier,
+	 *		{@link kOFFSET_NID}, with this value.
+	 * </ul>
+	 *
+	 * When deleting the object, if the provided container contains a reference to a graph
+	 * container, this method will also delete the relative node from the graph.
 	 *
 	 * The parent method will then be called, which will ignore the global identifier,
 	 * {@link kTAG_GID}, since the {@link _index()} method returns <tt>NULL</tt> and
@@ -1097,49 +1106,21 @@ class COntologyNode extends CNode
 			if( ! $this->offsetExists( kOFFSET_NID ) )
 			{
 				//
-				// Create graph node.
+				// Resolve container.
 				//
-				if( kGRAPH_DB )
-				{
-					//
-					// Connect.
-					//
-					if( (! isset( $_SESSION ))
-					 || (! array_key_exists( 'neo4j', $_SESSION )) )
-						$client = $_SESSION[ 'neo4j' ]
-							= new Everyman\Neo4j\Client( 'localhost', 7474 );
-					else
-						$client = $_SESSION[ 'neo4j' ];
-					
-					//
-					// Build node.
-					//
-					$node = new Node( $client );
-					$node->setProperty( kTAG_TERM, $this->mTerm->GID() );
-					if( $this->mTerm->offsetExists( kTAG_KIND ) )
-						$node->setProperty( kTAG_KIND, $this->mTerm->Kind() );
-					if( $this->mTerm->offsetExists( kTAG_TYPE ) )
-						$node->setProperty( kTAG_TYPE, $this->mTerm->Type() );
-					
-					//
-					// Save node.
-					//
-					$node->save();
-					
-					//
-					// Use its ID.
-					//
-					$id = $node->getId();
-				
-				} // Use graph database.
+				$container = static::ResolveClassContainer( $theConnection, TRUE );
 				
 				//
-				// Get sequence number.
+				// Handle graph.
+				//
+				if( $container->offsetExists( kOFFSET_GRAPH ) )
+					$id = $this->_AddGraphNode( $container->offsetGet( kOFFSET_GRAPH ) );
+				
+				//
+				// Handle sequence number.
 				//
 				else
-					$id = static::ResolveClassContainer(
-							$theConnection, TRUE )
-								->NextSequence( kSEQUENCE_KEY_NODE, TRUE );
+					$id = $container->NextSequence( kSEQUENCE_KEY_NODE, TRUE );
 				
 				//
 				// Set identifier.
@@ -1149,6 +1130,25 @@ class COntologyNode extends CNode
 			} // Missing native identifier.
 		
 		} // Insert or replace.
+		
+		//
+		// Handle delete.
+		//
+		elseif( $theModifiers & kFLAG_PERSIST_DELETE )
+		{
+			//
+			// Resolve container.
+			//
+			$container = static::ResolveClassContainer( $theConnection, TRUE );
+			
+			//
+			// Handle graph.
+			//
+			if( $container->offsetExists( kOFFSET_GRAPH ) )
+				$container->offsetGet( kOFFSET_GRAPH )
+					->DelNode( $this->offsetGet( kOFFSET_NID ) );
+		
+		} // Delete.
 	
 		//
 		// Call parent method.
@@ -1324,6 +1324,81 @@ class COntologyNode extends CNode
 		return NULL;																// ==>
 	
 	} // _ReferenceInTerm.
+
+		
+
+/*=======================================================================================
+ *																						*
+ *								PROTECTED GRAPH INTERFACE								*
+ *																						*
+ *======================================================================================*/
+
+
+	 
+	/*===================================================================================
+	 *	_AddGraphNode																	*
+	 *==================================================================================*/
+
+	/**
+	 * <h4>Create graph node</h4>
+	 *
+	 * This method will create and save a new graph node in the provided graph container and
+	 * return its newly created identifier.
+	 *
+	 * This method is called by {@link _PrecommitIdentify()} to set the new node
+	 * {@link kOFFSET_NID} and the method makes no assumption whether the node exists
+	 * already or not, in all cases it will create a new node.
+	 *
+	 * This method will add the following attributes to the graph node: {@link kTAG_KIND}
+	 * and {@link kTAG_TYPE}, derived classes may override this method to add other
+	 * properties.
+	 *
+	 * The method should raise an exception if the node was not created.
+	 *
+	 * @param CGraphContainer		$theGraph			Graph container.
+	 *
+	 * @access protected
+	 * @return integer				Newly created node ID.
+	 */
+	protected function _AddGraphNode( CGraphContainer $theGraph )
+	{
+		//
+		// Init local storage.
+		//
+		$offsets = array( kTAG_KIND, kTAG_TYPE );
+		
+		//
+		// Collect current node properties.
+		//
+		$properties = Array();
+		$properties[ kTAG_TERM ] = $this->mTerm->GID();
+		foreach( $offsets as $offset )
+		{
+			if( $this->offsetExists( $offset ) )
+				$properties[ $offset ] = $this->offsetGet( $offset );
+		}
+	
+		//
+		// Create node.
+		//
+		$node = $theGraph->NewNode( $properties );
+		
+		//
+		// Save node.
+		//
+		$id = $theGraph->SetNode( $node );
+		
+		//
+		// Return identifier.
+		//
+		if( is_integer( $id ) )
+			return $id;																// ==>
+		
+		throw new Exception
+			( "Unable to create graph node",
+			  kERROR_STATE );													// !@! ==>
+	
+	} // _AddGraphNode.
 
 	 
 

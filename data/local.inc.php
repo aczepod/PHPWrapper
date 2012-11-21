@@ -25,6 +25,13 @@
  *======================================================================================*/
 
 /**
+ * Default graph.
+ *
+ * This tag indicates the default graph URN.
+ */
+define( "kDEFAULT_GRAPH",					"localhost:7474" );
+
+/**
  * Default server.
  *
  * This tag indicates the default server URN.
@@ -36,7 +43,7 @@ define( "kDEFAULT_SERVER",					"mongodb://localhost:27017" );
  *
  * This tag indicates the default database name.
  */
-define( "kDEFAULT_DATABASE",				"ONTOLOGY" );
+define( "kDEFAULT_DATABASE",				"TEST" );
 
 /**
  * Default language.

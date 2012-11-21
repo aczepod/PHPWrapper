@@ -5,10 +5,10 @@
 	<meta name="generator" content="ApiGen 2.8.0" />
 	<meta name="robots" content="noindex" />
 
-	<title>File CNeo4jContainer.php | MyWrapper Reference Documentation</title>
+	<title>File CNeo4jGraph.php | MyWrapper Reference Documentation</title>
 
-	<script type="text/javascript" src="resources/combined.js?368249000"></script>
-	<script type="text/javascript" src="elementlist.js?410024381"></script>
+	<script type="text/javascript" src="resources/combined.js?3680114562"></script>
+	<script type="text/javascript" src="elementlist.js?1482796827"></script>
 	<link rel="stylesheet" type="text/css" media="all" href="resources/style.css?3505392360" />
 
 </head>
@@ -55,7 +55,7 @@
 				<li><a href="class-CMongoDatabase.html">CMongoDatabase</a></li>
 				<li><a href="class-CMongoQuery.html">CMongoQuery</a></li>
 				<li><a href="class-CMongoServer.html">CMongoServer</a></li>
-				<li class="active"><a href="class-CNeo4jContainer.html">CNeo4jContainer</a></li>
+				<li class="active"><a href="class-CNeo4jGraph.html">CNeo4jGraph</a></li>
 				<li><a href="class-CPersistentDocument.html">CPersistentDocument</a></li>
 				<li><a href="class-CPersistentObject.html">CPersistentObject</a></li>
 			</ul>
@@ -88,7 +88,7 @@
 				<a href="package-MyWrapper.Persistence.html" title="Summary of MyWrapper\Persistence"><span>Package</span></a>
 			</li>
 			<li>
-				<a href="class-CNeo4jContainer.html" title="Summary of CNeo4jContainer"><span>Class</span></a>
+				<a href="class-CNeo4jGraph.html" title="Summary of CNeo4jGraph"><span>Class</span></a>
 			</li>
 		</ul>
 		<ul>
@@ -103,9 +103,9 @@
 <pre><code><span id="1" class="l"><a class="l" href="#1">  1: </a><span class="xlang">&lt;?php</span>
 </span><span id="2" class="l"><a class="l" href="#2">  2: </a>
 </span><span id="3" class="l"><a class="l" href="#3">  3: </a><span class="php-comment">/**
-</span></span><span id="4" class="l"><a class="l" href="#4">  4: </a><span class="php-comment"> * &lt;i&gt;CNeo4jContainer&lt;/i&gt; class definition.
+</span></span><span id="4" class="l"><a class="l" href="#4">  4: </a><span class="php-comment"> * &lt;i&gt;CNeo4jGraph&lt;/i&gt; class definition.
 </span></span><span id="5" class="l"><a class="l" href="#5">  5: </a><span class="php-comment"> *
-</span></span><span id="6" class="l"><a class="l" href="#6">  6: </a><span class="php-comment"> * This file contains the class definition of &lt;b&gt;CNeo4jContainer&lt;/b&gt; which is a concrete
+</span></span><span id="6" class="l"><a class="l" href="#6">  6: </a><span class="php-comment"> * This file contains the class definition of &lt;b&gt;CNeo4jGraph&lt;/b&gt; which is a concrete
 </span></span><span id="7" class="l"><a class="l" href="#7">  7: </a><span class="php-comment"> * instance of the {@link CGraphContainer} class.
 </span></span><span id="8" class="l"><a class="l" href="#8">  8: </a><span class="php-comment"> *
 </span></span><span id="9" class="l"><a class="l" href="#9">  9: </a><span class="php-comment"> *  @package    MyWrapper
@@ -117,7 +117,7 @@
 </span><span id="15" class="l"><a class="l" href="#15"> 15: </a>
 </span><span id="16" class="l"><a class="l" href="#16"> 16: </a><span class="php-comment">/*=======================================================================================
 </span></span><span id="17" class="l"><a class="l" href="#17"> 17: </a><span class="php-comment"> *                                                                                      *
-</span></span><span id="18" class="l"><a class="l" href="#18"> 18: </a><span class="php-comment"> *                                  CNeo4jContainer.php                                 *
+</span></span><span id="18" class="l"><a class="l" href="#18"> 18: </a><span class="php-comment"> *                                  CNeo4jGraph.php                                     *
 </span></span><span id="19" class="l"><a class="l" href="#19"> 19: </a><span class="php-comment"> *                                                                                      *
 </span></span><span id="20" class="l"><a class="l" href="#20"> 20: </a><span class="php-comment"> *======================================================================================*/</span>
 </span><span id="21" class="l"><a class="l" href="#21"> 21: </a>
@@ -126,7 +126,7 @@
 </span></span><span id="24" class="l"><a class="l" href="#24"> 24: </a><span class="php-comment"> *
 </span></span><span id="25" class="l"><a class="l" href="#25"> 25: </a><span class="php-comment"> * This include file contains common offset definitions.
 </span></span><span id="26" class="l"><a class="l" href="#26"> 26: </a><span class="php-comment"> */</span>
-</span><span id="27" class="l"><a class="l" href="#27"> 27: </a><span class="php-keyword1">require_once</span>( <span class="php-quote">&quot;CNeo4jContainer.inc.php&quot;</span> );
+</span><span id="27" class="l"><a class="l" href="#27"> 27: </a><span class="php-keyword1">require_once</span>( <span class="php-quote">&quot;CNeo4jGraph.inc.php&quot;</span> );
 </span><span id="28" class="l"><a class="l" href="#28"> 28: </a>
 </span><span id="29" class="l"><a class="l" href="#29"> 29: </a><span class="php-comment">/**
 </span></span><span id="30" class="l"><a class="l" href="#30"> 30: </a><span class="php-comment"> * Ancestor.
@@ -145,7 +145,7 @@
 </span></span><span id="43" class="l"><a class="l" href="#43"> 43: </a><span class="php-comment"> *  @package    MyWrapper
 </span></span><span id="44" class="l"><a class="l" href="#44"> 44: </a><span class="php-comment"> *  @subpackage Persistence
 </span></span><span id="45" class="l"><a class="l" href="#45"> 45: </a><span class="php-comment"> */</span>
-</span><span id="46" class="l"><a class="l" href="#46"> 46: </a><span class="php-keyword1">class</span> <a id="CNeo4jContainer" href="#CNeo4jContainer">CNeo4jContainer</a> <span class="php-keyword1">extends</span> CGraphContainer
+</span><span id="46" class="l"><a class="l" href="#46"> 46: </a><span class="php-keyword1">class</span> <a id="CNeo4jGraph" href="#CNeo4jGraph">CNeo4jGraph</a> <span class="php-keyword1">extends</span> CGraphContainer
 </span><span id="47" class="l"><a class="l" href="#47"> 47: </a>{
 </span><span id="48" class="l"><a class="l" href="#48"> 48: </a>        
 </span><span id="49" class="l"><a class="l" href="#49"> 49: </a>
@@ -199,7 +199,7 @@
 </span><span id="97" class="l"><a class="l" href="#97"> 97: </a>            <span class="php-comment">//</span>
 </span><span id="98" class="l"><a class="l" href="#98"> 98: </a>            <span class="php-comment">// Set connection name.</span>
 </span><span id="99" class="l"><a class="l" href="#99"> 99: </a>            <span class="php-comment">//</span>
-</span><span id="100" class="l"><a class="l" href="#100">100: </a>            <span class="php-var">$this</span>-&gt;offsetSet( kOFFSET_NAME, <span class="php-quote">&quot;</span><span class="php-var">$theConnection</span><span class="php-quote">:</span><span class="php-var">$theOptions</span><span class="php-quote">&quot;</span> );
+</span><span id="100" class="l"><a class="l" href="#100">100: </a>            <span class="php-var">$this</span>-&gt;offsetSet( kOFFSET_NAME, <span class="php-quote">&quot;neo4j://</span><span class="php-var">$theConnection</span><span class="php-quote">:</span><span class="php-var">$theOptions</span><span class="php-quote">&quot;</span> );
 </span><span id="101" class="l"><a class="l" href="#101">101: </a>            
 </span><span id="102" class="l"><a class="l" href="#102">102: </a>            <span class="php-comment">//</span>
 </span><span id="103" class="l"><a class="l" href="#103">103: </a>            <span class="php-comment">// Instantiate client.</span>
@@ -838,7 +838,7 @@
 </span><span id="736" class="l"><a class="l" href="#736">736: </a>
 </span><span id="737" class="l"><a class="l" href="#737">737: </a>     
 </span><span id="738" class="l"><a class="l" href="#738">738: </a>
-</span><span id="739" class="l"><a class="l" href="#739">739: </a>} <span class="php-comment">// class CNeo4jContainer.</span>
+</span><span id="739" class="l"><a class="l" href="#739">739: </a>} <span class="php-comment">// class CNeo4jGraph.</span>
 </span><span id="740" class="l"><a class="l" href="#740">740: </a>
 </span><span id="741" class="l"><a class="l" href="#741">741: </a>
 </span><span id="742" class="l"><a class="l" href="#742">742: </a><span class="xlang">?&gt;</span>

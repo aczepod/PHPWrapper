@@ -6,8 +6,8 @@
 
 	<title>Class CServer | MyWrapper Reference Documentation</title>
 
-	<script type="text/javascript" src="resources/combined.js?368249000"></script>
-	<script type="text/javascript" src="elementlist.js?410024381"></script>
+	<script type="text/javascript" src="resources/combined.js?3680114562"></script>
+	<script type="text/javascript" src="elementlist.js?1482796827"></script>
 	<link rel="stylesheet" type="text/css" media="all" href="resources/style.css?3505392360" />
 
 </head>
@@ -134,6 +134,10 @@ derived objects that have specific functionality, such as databases.</p>
 stored in a data member of the object, the array part of the object can be used
 to store specific attributes of the native server connection.</p>
 
+<p>The class also features a second property that can be used to store a
+concrete instance of the <code><a href="class-CGraphContainer.html">CGraphContainer</a></code> class using the <code><a href="class-CServer.html#_Graph">CServer::Graph()</a></code>
+member accessor method. This property will be used by generated <code><a href="class-CContainer.html">CContainer</a></code> instances to write both to data containers and graphs.</p>
+
 <p>The abstract class must be overloaded by concrete classes that implement a
 native server object.</p>
 
@@ -205,7 +209,7 @@ native server object.</p>
 				<b>Author:</b>
 				Milko A. Škofič &lt;<a
 href="mailto:m.skofic&#64;cgiar.org">m.skofic&#64;<!---->cgiar.org</a>&gt;<br />
-		<b>Located at</b> <a href="source-class-CServer.html#29-86" title="Go to source code">CServer.php</a><br />
+		<b>Located at</b> <a href="source-class-CServer.html#36-159" title="Go to source code">CServer.php</a><br />
 	</div>
 
 
@@ -223,7 +227,7 @@ href="mailto:m.skofic&#64;cgiar.org">m.skofic&#64;<!---->cgiar.org</a>&gt;<br />
 
 		<td class="name"><div>
 		<a class="anchor" href="#_Database">#</a>
-		<code><a href="source-class-CServer.html#65-82" title="Go to source code">Database</a>( <span>mixed <var>$theDatabase</var> = <span class="php-keyword1">NULL</span> </span> )</code>
+		<code><a href="source-class-CServer.html#86-105" title="Go to source code">Database</a>( <span>mixed <var>$theDatabase</var> = <span class="php-keyword1">NULL</span> </span> )</code>
 
 		<div class="description short">
 			
@@ -242,8 +246,8 @@ server.</p>
 return, the goal of this class is only to declare the public interface, which
 must be implemented by specialised derived classes.</p>
 
-<p>The second parameter of the method should be set with the caller, this will
-represent the server relationship for the database.</p>
+<p><i>Note: This method should also take care of setting the kOFFSET_NAME, kOFFSET_GRAPH and kOFFSET_PARENT offsets of the
+generated object.</i></p>
 
 
 
@@ -259,6 +263,77 @@ represent the server relationship for the database.</p>
 				</div>
 
 
+				<h4>See</h4>
+				<div class="list">
+						kOFFSET_NAME kOFFSET_GRAPH kOFFSET_PARENT<br />
+				</div>
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="Graph" id="_Graph">
+
+		<td class="attributes"><code>
+			 public 
+			mixed
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_Graph">#</a>
+		<code><a href="source-class-CServer.html#112-155" title="Go to source code">Graph</a>( <span><code><a href="class-CGraphContainer.html">CGraphContainer</a></code> <var>$theValue</var> = <span class="php-keyword1">NULL</span></span>, <span>mixed <var>$getOld</var> = <span class="php-keyword1">FALSE</span> </span> )</code>
+
+		<div class="description short">
+			
+<h4>Set, retrieve or delete a graph container instance</h4>
+
+		</div>
+
+		<div class="description detailed hidden">
+			
+<h4>Set, retrieve or delete a graph container instance</h4>
+
+<p>The first parameter can take the following values:</p>
+
+<ul>
+	<li><tt>NULL</tt>: Return the current value.</li>
+
+	<li><tt>FALSE</tt>: Delete the current value.</li>
+
+	<li><i><code><a href="class-CGraphContainer.html">CGraphContainer</a></code></i>: Set the value with the provided
+	parameter.</li>
+</ul>
+
+<p>The second parameter is a boolean which if <tt>TRUE</tt> will return the
+<i>old</i> value when replacing containers; if <tt>FALSE</tt>, it will return
+the currently set value.</p>
+
+<p><i>Note: If you generate databases from the server and containers from these
+databases, the graph will be passed on to those objects: if you afterwards
+change the graph, this will not be reflected in those objects.</i></p>
+
+
+
+				<h4>Parameters</h4>
+				<div class="list"><dl>
+					<dt><var>$theValue</var></dt>
+					<dd><code><code><a href="class-CGraphContainer.html">CGraphContainer</a></code></code><br>$theValue Graph container.</dd>
+					<dt><var>$getOld</var></dt>
+					<dd></dd>
+				</dl></div>
+
+				<h4>Returns</h4>
+				<div class="list">
+					<code>mixed</code><br><i>New</i> or <i>old</i> graph container.<br />
+				</div>
+
+
+				<h4>Uses</h4>
+				<div class="list">
+						<code><code><a href="function-ManageProperty.html">ManageProperty()</a></code></code> <br />
+				</div>
 
 
 		</div>
@@ -349,6 +424,38 @@ represent the server relationship for the database.</p>
 
 
 
+	<table class="summary" id="properties">
+	<caption>Properties summary</caption>
+	<tr data-order="mGraph" id="$mGraph">
+		<td class="attributes"><code>
+			protected  
+			<code><a href="class-CGraphContainer.html">CGraphContainer</a></code>
+		</code></td>
+
+		<td class="name">
+				<a href="source-class-CServer.html#63-70" title="Go to source code"><var>$mGraph</var></a>
+		</td>
+		<td class="value"><code><span class="php-keyword1">NULL</span></code></td>
+		<td class="description"><div>
+			<a href="#$mGraph" class="anchor">#</a>
+
+			<div class="description short">
+				
+<p>Graph container.</p>
+
+			</div>
+
+			<div class="description detailed hidden">
+				
+<p>Graph container.</p>
+
+<p>This data member holds the graph container.</p>
+
+
+			</div>
+		</div></td>
+	</tr>
+	</table>
 
 	<table class="summary inherited">
 	<caption>Properties inherited from <a href="class-CConnection.html#properties">CConnection</a></caption>

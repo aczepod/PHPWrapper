@@ -1,10 +1,10 @@
 <?php
 
 /**
- * {@link CNeo4jContainer.php Base} object test suite.
+ * {@link CNeo4jGraph.php Base} object test suite.
  *
  * This file contains routines to test and demonstrate the behaviour of the
- * base object {@link CNeo4jContainer class}.
+ * base object {@link CNeo4jGraph class}.
  *
  *	@package	Test
  *	@subpackage	Framework
@@ -27,7 +27,7 @@ require_once( 'includes.inc.php' );
 //
 // Class includes.
 //
-require_once( kPATH_MYWRAPPER_LIBRARY_CLASS."/CNeo4jContainer.php" );
+require_once( kPATH_MYWRAPPER_LIBRARY_CLASS."/CNeo4jGraph.php" );
 
 
 /*=======================================================================================
@@ -44,8 +44,8 @@ try
 	//
 	echo( '<hr />' );
 	echo( '<h4>Create test container</h4>' );
-	echo( '$graph = new CNeo4jContainer();<br />' );
-	$graph = new CNeo4jContainer();
+	echo( '$graph = new CNeo4jGraph();<br />' );
+	$graph = new CNeo4jGraph();
 	echo( '<pre>' ); print_r( $graph ); echo( '</pre>' );
 	echo( '<hr />' );
 

@@ -25,6 +25,13 @@
  *======================================================================================*/
 
 /**
+ * Default graph.
+ *
+ * This tag indicates the default graph URN.
+ */
+define( "kDEFAULT_GRAPH",					"localhost:7474" );
+
+/**
  * Default server.
  *
  * This tag indicates the default server URN.

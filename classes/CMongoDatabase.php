@@ -322,6 +322,12 @@ class CMongoDatabase extends CDatabase
 			//
 			$cn[ kOFFSET_PARENT ] = $this;
 			
+			//
+			// Set graph reference.
+			//
+			if( $this->offsetExists( kOFFSET_GRAPH ) )
+				$cn[ kOFFSET_GRAPH ] = $this->offsetGet( kOFFSET_GRAPH );
+			
 			return $cn;																// ==>
 		
 		} // Object not initialised.

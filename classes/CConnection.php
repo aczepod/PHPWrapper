@@ -74,7 +74,7 @@ require_once( kPATH_MYWRAPPER_LIBRARY_CLASS."/CStatusDocument.php" );
 abstract class CConnection extends CStatusDocument
 {
 	/**
-	 * Persistent data store.
+	 * Connection data store.
 	 *
 	 * This data member holds the native persistent store.
 	 *

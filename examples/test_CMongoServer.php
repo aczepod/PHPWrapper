@@ -29,6 +29,11 @@ require_once( 'includes.inc.php' );
 //
 require_once( kPATH_MYWRAPPER_LIBRARY_CLASS."/CMongoServer.php" );
 
+//
+// Graph includes.
+//
+require_once( kPATH_MYWRAPPER_LIBRARY_CLASS."/CNeo4jGraph.php" );
+
 
 /*=======================================================================================
  *	RUNTIME SETTINGS																	*
@@ -198,6 +203,25 @@ try
 	echo( '<h4>Remove connection</h4>' );
 	echo( '<h5>$test->Connection( FALSE );</h5>' );
 	$test->Connection( FALSE );
+	echo( '<pre>' ); print_r( $test ); echo( '</pre>' );
+	echo( '<hr />' );
+	echo( '<hr />' );
+	
+	//
+	// Set graph.
+	//
+	echo( '<h4>Set graph</h4>' );
+	echo( '<h5>$test->Graph( new CNeo4jGraph() );</h5>' );
+	$test->Graph( new CNeo4jGraph() );
+	echo( '<pre>' ); print_r( $test ); echo( '</pre>' );
+	echo( '<hr />' );
+	
+	//
+	// Remove graph.
+	//
+	echo( '<h4>Remove graph</h4>' );
+	echo( '<h5>$test->Graph( FALSE );</h5>' );
+	$test->Graph( FALSE );
 	echo( '<pre>' ); print_r( $test ); echo( '</pre>' );
 	echo( '<hr />' );
 	echo( '<hr />' );

@@ -2,14 +2,14 @@
 
 /*=======================================================================================
  *																						*
- *								CNeo4jContainer.inc.php									*
+ *									CNeo4jGraph.inc.php									*
  *																						*
  *======================================================================================*/
  
 /**
- *	{@link CNeo4jContainer} definitions.
+ *	{@link CNeo4jGraph} definitions.
  *
- *	This file contains common definitions used by the {@link CNeo4jContainer} class.
+ *	This file contains common definitions used by the {@link CNeo4jGraph} class.
  *
  *	@package	MyWrapper
  *	@subpackage	Persistence

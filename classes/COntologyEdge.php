@@ -1061,9 +1061,25 @@ class COntologyEdge extends CEdge
 	 * identifier, {@link kTAG_GID}; the same value will be hashed and constitute the
 	 * unique identifier, {@link kTAG_UID}.
 	 *
-	 * Objects of this class are identified by a sequence number tagged
-	 * {@link kSEQUENCE_KEY_EDGE}, this method will set the native identifier,
-	 * {@link kOFFSET_NID}, with this value.
+	 * This method will also take care of generating the sequence number that represents the
+	 * object's native identifier, {@link kOFFSET_NID}, this value can be generated in two
+	 * ways:
+	 *
+	 * <ul>
+	 *	<li><i>The container has the graph reference, {@link kOFFSET_GRAPH}</i>: If the
+	 *		provided container contains a reference to a graph container, it means that the
+	 *		edge must also be stored in the graph, this will be taken care by the
+	 *		{@link _AddGraphEdge()} method that will return the graph edge's ID, which in
+	 *		turn will become the current object's {@link kOFFSET_NID}.
+	 *	<li><i>The container lacks the graph reference, {@link kOFFSET_GRAPH}</i>: If the
+	 *		provided container does not hold a reference to a graph container, the object
+	 *		identifier will be generated with a sequence number tagged
+	 *		{@link kSEQUENCE_KEY_EDGE}, this method will set the native identifier,
+	 *		{@link kOFFSET_NID}, with this value.
+	 * </ul>
+	 *
+	 * When deleting the object, if the provided container contains a reference to a graph
+	 * container, this method will also delete the relative edge from the graph.
 	 *
 	 * The parent method will then be called, which will ignore the global and native
 	 * identifiers, since they will have been set here.
@@ -1120,7 +1136,7 @@ class COntologyEdge extends CEdge
 					if( $container->CheckObject( $uid, kTAG_UID ) )
 						throw new Exception
 							( "Duplicate object",
-							  kERROR_COMMIT );												// !@! ==>
+							  kERROR_COMMIT );									// !@! ==>
 					
 					//
 					// Set unique identifier.
@@ -1137,47 +1153,21 @@ class COntologyEdge extends CEdge
 			if( ! $this->offsetExists( kOFFSET_NID ) )
 			{
 				//
-				// Create graph edge.
+				// Resolve container.
 				//
-				if( kGRAPH_DB )
-				{
-					//
-					// Connect.
-					//
-					if( (! isset( $_SESSION ))
-					 || (! array_key_exists( 'neo4j', $_SESSION )) )
-						$client = $_SESSION[ 'neo4j' ]
-							= new Everyman\Neo4j\Client( 'localhost', 7474 );
-					else
-						$client = $_SESSION[ 'neo4j' ];
-					
-					//
-					// Build node.
-					//
-					$edge = $client->makeRelationship();
-					$edge->setStartNode( $client->getNode( $this->Subject() ) );
-					$edge->setEndNode( $client->getNode( $this->Object() ) );
-					$edge->setType( $this->mPredicate->GID() );
-					
-					//
-					// Save node.
-					//
-					$edge->save();
-					
-					//
-					// Use its ID.
-					//
-					$id = $edge->getId();
-				
-				} // Use graph DB.
+				$container = static::ResolveContainer( $theConnection, TRUE );
 				
 				//
-				// Use sequence number.
+				// Handle graph.
+				//
+				if( $container->offsetExists( kOFFSET_GRAPH ) )
+					$id = $this->_AddGraphEdge( $container->offsetGet( kOFFSET_GRAPH ) );
+				
+				//
+				// Handle sequence number.
 				//
 				else
-					$id = static::ResolveContainer(
-							$theConnection, TRUE )
-								->NextSequence( kSEQUENCE_KEY_EDGE, TRUE );
+					$id = $container->NextSequence( kSEQUENCE_KEY_EDGE, TRUE );
 				
 				//
 				// Set identifier.
@@ -1187,6 +1177,25 @@ class COntologyEdge extends CEdge
 			} // Missing native identifier.
 		
 		} // Insert or replace.
+		
+		//
+		// Handle delete.
+		//
+		elseif( $theModifiers & kFLAG_PERSIST_DELETE )
+		{
+			//
+			// Resolve container.
+			//
+			$container = static::ResolveContainer( $theConnection, TRUE );
+			
+			//
+			// Handle graph.
+			//
+			if( $container->offsetExists( kOFFSET_GRAPH ) )
+				$container->offsetGet( kOFFSET_GRAPH )
+					->DelEdge( $this->offsetGet( kOFFSET_NID ) );
+		
+		} // Delete.
 	
 		//
 		// Call parent method.
@@ -1455,6 +1464,71 @@ class COntologyEdge extends CEdge
 		return NULL;																// ==>
 	
 	} // _ReferenceInObject.
+
+		
+
+/*=======================================================================================
+ *																						*
+ *								PROTECTED GRAPH INTERFACE								*
+ *																						*
+ *======================================================================================*/
+
+
+	 
+	/*===================================================================================
+	 *	_AddGraphEdge																	*
+	 *==================================================================================*/
+
+	/**
+	 * <h4>Create graph edge</h4>
+	 *
+	 * This method will create and save a new graph edge in the provided graph container and
+	 * return its newly created identifier.
+	 *
+	 * This method is called by {@link _PrecommitIdentify()} to set the new edge
+	 * {@link kOFFSET_NID} and the method makes no assumption whether the edge exists
+	 * already or not, in all cases it will create a new edge.
+	 *
+	 * This method will set the node identifiers in the {@link kTAG_VERTEX_SUBJECT} and
+	 * {@link kTAG_VERTEX_OBJECT} properties and the predicate term {@link kTAG_GID} as the
+	 * predicate identifier.
+	 * 
+	 following attributes to the graph edge: {@link kTAG_KIND}
+	 * and {@link kTAG_TYPE}, derived classes may override this method to add other
+	 * properties.
+	 *
+	 * The method should raise an exception if the node was not created.
+	 *
+	 * @param CGraphContainer		$theGraph			Graph container.
+	 *
+	 * @access protected
+	 * @return integer				Newly created edge ID.
+	 */
+	protected function _AddGraphEdge( CGraphContainer $theGraph )
+	{
+		//
+		// Create edge.
+		//
+		$edge = $theGraph->NewEdge( $this->Subject(),
+									$this->mPredicate->GID(),
+									$this->Object() );
+		
+		//
+		// Save edge.
+		//
+		$id = $theGraph->SetEdge( $edge );
+		
+		//
+		// Return identifier.
+		//
+		if( is_integer( $id ) )
+			return $id;																// ==>
+		
+		throw new Exception
+			( "Unable to create graph edge",
+			  kERROR_STATE );													// !@! ==>
+	
+	} // _AddGraphEdge.
 
 	 
 

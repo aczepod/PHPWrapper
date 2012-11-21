@@ -27,6 +27,13 @@
 require_once( kPATH_MYWRAPPER_LIBRARY_CLASS."/CConnection.php" );
 
 /**
+ * Graph.
+ *
+ * This includes the graph class definitions.
+ */
+require_once( kPATH_MYWRAPPER_LIBRARY_CLASS."/CGraphContainer.php" );
+
+/**
  * <h4>Server object ancestor</h4>
  *
  * This <i>abstract</i> class is the ancestor of all server classes in this library, it
@@ -40,6 +47,11 @@ require_once( kPATH_MYWRAPPER_LIBRARY_CLASS."/CConnection.php" );
  * data member of the object, the array part of the object can be used to store specific
  * attributes of the native server connection.
  *
+ * The class also features a second property that can be used to store a concrete instance
+ * of the {@link CGraphContainer} class using the {@link Graph()} member accessor method.
+ * This property will be used by generated {@link CContainer} instances to write both to
+ * data containers and graphs.
+ *
  * The abstract class must be overloaded by concrete classes that implement a native server
  * object.
  *
@@ -48,6 +60,15 @@ require_once( kPATH_MYWRAPPER_LIBRARY_CLASS."/CConnection.php" );
  */
 abstract class CServer extends CConnection
 {
+	/**
+	 * Graph container.
+	 *
+	 * This data member holds the graph container.
+	 *
+	 * @var CGraphContainer
+	 */
+	 protected $mGraph = NULL;
+
 		
 
 /*=======================================================================================
@@ -71,15 +92,67 @@ abstract class CServer extends CConnection
 	 * the goal of this class is only to declare the public interface, which must be
 	 * implemented by specialised derived classes.
 	 *
-	 * The second parameter of the method should be set with the caller, this will represent
-	 * the server relationship for the database.
+	 * <i>Note: This method should also take care of setting the {@link kOFFSET_NAME},
+	 * {@link kOFFSET_GRAPH} and {@link kOFFSET_PARENT} offsets of the generated object.</i>
 	 *
 	 * @param mixed					$theDatabase		Database selector.
 	 *
 	 * @access public
 	 * @return mixed				The database object.
+	 *
+	 * @see kOFFSET_NAME kOFFSET_GRAPH kOFFSET_PARENT
 	 */
 	abstract public function Database( $theDatabase = NULL );
+
+	 
+	/*===================================================================================
+	 *	Graph																			*
+	 *==================================================================================*/
+
+	/**
+	 * <h4>Set, retrieve or delete a graph container instance</h4>
+	 *
+	 * The first parameter can take the following values:
+	 *
+	 * <ul>
+	 *	<li><tt>NULL</tt>: Return the current value.
+	 *	<li><tt>FALSE</tt>: Delete the current value.
+	 *	<li><i>{@link CGraphContainer}</i>: Set the value with the provided parameter.
+	 * </ul>
+	 *
+	 * The second parameter is a boolean which if <tt>TRUE</tt> will return the <i>old</i>
+	 * value when replacing containers; if <tt>FALSE</tt>, it will return the currently set
+	 * value.
+	 *
+	 * <i>Note: If you generate databases from the server and containers from these
+	 * databases, the graph will be passed on to those objects: if you afterwards change the
+	 * graph, this will not be reflected in those objects.</i>
+	 *
+	 * @param CGraphContainer		$theValue			Graph container.
+	 *
+	 * @access public
+	 * @return mixed				<i>New</i> or <i>old</i> graph container.
+	 *
+	 * @uses ManageProperty()
+	 */
+	public function Graph( $theValue = NULL, $getOld = FALSE )
+	{
+		//
+		// Check graph type.
+		//
+		if( ($theValue !== NULL)
+		 && ($theValue !== FALSE) )
+		{
+			if( ! ($theValue instanceof CGraphContainer) )
+				throw new Exception
+					( "Invalid graph container type",
+					  kERROR_PARAMETER );										// !@! ==>
+		
+		} // New graph.
+		
+		return ManageProperty( $this->mGraph, $theValue, $getOld );					// ==>
+	
+	} // Graph.
 
 	 
 

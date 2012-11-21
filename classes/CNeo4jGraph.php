@@ -1,9 +1,9 @@
 <?php
 
 /**
- * <i>CNeo4jContainer</i> class definition.
+ * <i>CNeo4jGraph</i> class definition.
  *
- * This file contains the class definition of <b>CNeo4jContainer</b> which is a concrete
+ * This file contains the class definition of <b>CNeo4jGraph</b> which is a concrete
  * instance of the {@link CGraphContainer} class.
  *
  *	@package	MyWrapper
@@ -15,7 +15,7 @@
 
 /*=======================================================================================
  *																						*
- *									CNeo4jContainer.php									*
+ *									CNeo4jGraph.php										*
  *																						*
  *======================================================================================*/
 
@@ -24,7 +24,7 @@
  *
  * This include file contains common offset definitions.
  */
-require_once( "CNeo4jContainer.inc.php" );
+require_once( "CNeo4jGraph.inc.php" );
 
 /**
  * Ancestor.
@@ -43,7 +43,7 @@ require_once( kPATH_MYWRAPPER_LIBRARY_CLASS."/CGraphContainer.php" );
  *	@package	MyWrapper
  *	@subpackage	Persistence
  */
-class CNeo4jContainer extends CGraphContainer
+class CNeo4jGraph extends CGraphContainer
 {
 		
 
@@ -97,7 +97,7 @@ class CNeo4jContainer extends CGraphContainer
 			//
 			// Set connection name.
 			//
-			$this->offsetSet( kOFFSET_NAME, "$theConnection:$theOptions" );
+			$this->offsetSet( kOFFSET_NAME, "neo4j://$theConnection:$theOptions" );
 			
 			//
 			// Instantiate client.
@@ -736,7 +736,7 @@ class CNeo4jContainer extends CGraphContainer
 
 	 
 
-} // class CNeo4jContainer.
+} // class CNeo4jGraph.
 
 
 ?>

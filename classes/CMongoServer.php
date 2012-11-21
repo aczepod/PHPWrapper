@@ -295,6 +295,12 @@ class CMongoServer extends CServer
 			//
 			$db[ kOFFSET_PARENT ] = $this;
 			
+			//
+			// Set graph reference.
+			//
+			if( ($tmp = $this->Graph()) !== NULL )
+				$db[ kOFFSET_GRAPH ] = $tmp;
+			
 			return $db;																// ==>
 		
 		} // Object not initialised.

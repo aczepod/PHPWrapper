@@ -75,6 +75,8 @@ try
 	echo( '<h4>Create test container</h4>' );
 	echo( '$server = new CMongoServer();<br />' );
 	$server = New CMongoServer();
+//	echo( '$server->Graph( new CNeo4jGraph() );<br />' );
+//	$server->Graph( new CNeo4jGraph() );
 	echo( '$database = $server->Database( "TEST" );<br />' );
 	$database = $server->Database( "TEST" );
 	echo( '$database->Drop();<br />' );
