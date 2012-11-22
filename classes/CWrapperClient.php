@@ -436,6 +436,21 @@ class CWrapperClient extends CConnection
 	
 	} // Execute.
 
+	 
+	/*===================================================================================
+	 *	Dump																			*
+	 *==================================================================================*/
+
+	/**
+	 * Return the request dump.
+	 *
+	 * This method can be used to retrieve the object as an array for debugging purposes.
+	 *
+	 * @access public
+	 * @return array
+	 */
+	public function Dump()								{	return $this->getArrayCopy();	}
+
 		
 
 /*=======================================================================================
