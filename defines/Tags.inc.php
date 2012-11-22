@@ -48,7 +48,7 @@ define( "kTAG_GID",								'2' );
  * {@link kOFFSET_NID} is not related to the {@link kTAG_GID}. This is generally used
  * when the {@link kOFFSET_NID} is a sequence number.
  */
-define( "kTAG_UID",								'18' );
+define( "kTAG_UID",								'20' );
 
 /*=======================================================================================
  *	QUALIFICATION ATTRIBUTES															*
@@ -107,7 +107,7 @@ define( "kTAG_TERM",							'8' );
  * This tag identifies the reference to the subject vertex of a subject/predicate/object
  * triplet in a graph.
  */
-define( "kTAG_VERTEX_SUBJECT",					'15' );
+define( "kTAG_VERTEX_SUBJECT",					'17' );
 
 /**
  * Object reference.
@@ -115,7 +115,7 @@ define( "kTAG_VERTEX_SUBJECT",					'15' );
  * This tag identifies the reference to the object vertex of a subject/predicate/object
  * triplet in a graph.
  */
-define( "kTAG_VERTEX_OBJECT",					'17' );
+define( "kTAG_VERTEX_OBJECT",					'19' );
 
 /**
  * Predicate reference.
@@ -123,7 +123,7 @@ define( "kTAG_VERTEX_OBJECT",					'17' );
  * This tag identifies the reference to the predicate object of a subject/predicate/object
  * triplet in a graph.
  */
-define( "kTAG_PREDICATE",						'16' );
+define( "kTAG_PREDICATE",						'18' );
 
 /**
  * Synonyms.
@@ -133,20 +133,24 @@ define( "kTAG_PREDICATE",						'16' );
  */
 define( "kTAG_SYNONYMS",						'7' );
 
+/*=======================================================================================
+ *	REFERENCE ATTRIBUTES																*
+ *======================================================================================*/
+
 /**
  * Vertex terms.
  *
  * This tag identifies the offset that will contain the list of identifiers of the terms
  * referenced by the tag path's vertex elements.
  */
-define( "kTAG_VERTEX_TERMS",					'20' );
+define( "kTAG_VERTEX_TERMS",					'22' );
 
 /**
  * Tag path.
  *
  * This tag identifies a list of items constituting the path or sequence of a tag.
  */
-define( "kTAG_TAG_PATH",						'19' );
+define( "kTAG_TAG_PATH",						'21' );
 
 /**
  * Namespace references.
@@ -173,12 +177,28 @@ define( "kTAG_REFS_NODE",						'10' );
 define( "kTAG_REFS_TAG",						'11' );
 
 /**
+ * Feature tag references.
+ *
+ * This tag identifies feature tag references, the attribute contains the list of
+ * identifiers of tags that reference the current node as a feature.
+ */
+define( "kTAG_REFS_TAG_FEATURE",				'14' );
+
+/**
+ * Scale tag references.
+ *
+ * This tag identifies scale tag references, the attribute contains the list of identifiers
+ * of tags that reference the current node as a scale.
+ */
+define( "kTAG_REFS_TAG_SCALE",					'15' );
+
+/**
  * Edge references.
  *
  * This tag identifies edge references, the attribute contains the list of identifiers of
  * edges that reference the current node.
  */
-define( "kTAG_REFS_EDGE",						'14' );
+define( "kTAG_REFS_EDGE",						'16' );
 
 /*=======================================================================================
  *	GENERIC ATTRIBUTES																	*
@@ -207,35 +227,35 @@ define( "kTAG_DESCRIPTION",						'6' );
  *
  * This tag is used as the offset for a list of authors.
  */
-define( "kTAG_AUTHORS",							'21' );
+define( "kTAG_AUTHORS",							'23' );
 
 /**
  * Notes.
  *
  * This tag is used as the offset for generic notes.
  */
-define( "kTAG_NOTES",							'22' );
+define( "kTAG_NOTES",							'24' );
 
 /**
  * Acknowledgments.
  *
  * This tag is used as the offset for generic acknowledgments.
  */
-define( "kTAG_ACKNOWLEDGMENTS",					'23' );
+define( "kTAG_ACKNOWLEDGMENTS",					'25' );
 
 /**
  * Bibliography.
  *
  * This tag represents the offset for a bibliography list.
  */
-define( "kTAG_BIBLIOGRAPHY",					'24' );
+define( "kTAG_BIBLIOGRAPHY",					'26' );
 
 /**
  * Examples.
  *
  * This tag represents the offset for a list of examples or templates.
  */
-define( "kTAG_EXAMPLES",						'25' );
+define( "kTAG_EXAMPLES",						'27' );
 
 /*=======================================================================================
  *	CUSTOM TYPE SUB ATTRIBUTES															*

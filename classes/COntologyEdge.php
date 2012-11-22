@@ -56,12 +56,6 @@ require_once( kPATH_MYWRAPPER_LIBRARY_CLASS."/CEdge.php" );
  * if these objects are not {@link _IsCommitted}, they will be stored before the current
  * edge object is committed.
  *
- * The class features an offset, {@link kTAG_REFS_TAG}, which represents the list of tags
- * that reference the current node. This offset is a set of tag identifiers implemented as
- * an array. The offset definition is borrowed from the {@link COntologyTerm} class, which
- * is required by this class because of its {@link kTAG_PREDICATE} offset. This offset is
- * managed by the tag class, this class locks the offset.
- *
  * The class also adds two enumerated sets that represent respectively the subject and the
  * object vertex kind. These attributes are used to determine the nature of the subject and
  * vertex nodes in terms of the current graph connection.
@@ -666,8 +660,6 @@ class COntologyEdge extends CEdge
 	 * We also ensure that the provided objects are instances of the correct classes by
 	 * asserting {@link CDocument} descendants.
 	 *
-	 * This method will lock the {@link kTAG_REFS_TAG} offset from any modification.
-	 *
 	 * @param reference			   &$theOffset			Offset.
 	 * @param reference			   &$theValue			Value to set at offset.
 	 *
@@ -678,19 +670,10 @@ class COntologyEdge extends CEdge
 	 * @uses _IsCommitted()
 	 * @uses _AssertClass()
 	 *
-	 * @see kTAG_REFS_TAG
 	 * @see kTAG_PREDICATE kTAG_VERTEX_OBJECT kTAG_VERTEX_SUBJECT
 	 */
 	protected function _Preset( &$theOffset, &$theValue )
 	{
-		//
-		// Intercept reference offsets.
-		//
-		if( $theOffset == kTAG_REFS_TAG )
-			throw new Exception
-				( "The [$theOffset] offset cannot be modified",
-				  kERROR_LOCKED );												// !@! ==>
-		
 		//
 		// Parse by offset.
 		//
@@ -852,8 +835,7 @@ class COntologyEdge extends CEdge
 	 * <h4>Handle offset before unsetting it</h4>
 	 *
 	 * In this class we prevent the modification of the subject, predicate and object
-	 * offsets if the object is committed and of the {@link kTAG_REFS_TAG} offset in all
-	 * cases.
+	 * offsets if the object is committed.
 	 *
 	 * @param reference			   &$theOffset			Offset.
 	 *
@@ -863,19 +845,10 @@ class COntologyEdge extends CEdge
 	 *
 	 * @uses _IsCommitted()
 	 *
-	 * @see kTAG_REFS_TAG
 	 * @see kTAG_PREDICATE kTAG_VERTEX_OBJECT kTAG_VERTEX_SUBJECT
 	 */
 	protected function _Preunset( &$theOffset )
 	{
-		//
-		// Intercept reference offsets.
-		//
-		if( $theOffset == kTAG_REFS_TAG )
-			throw new Exception
-				( "The [$theOffset] offset cannot be modified",
-				  kERROR_LOCKED );												// !@! ==>
-		
 		//
 		// Lock subject, predicate and object vertices if object is committed.
 		//

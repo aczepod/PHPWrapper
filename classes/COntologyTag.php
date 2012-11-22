@@ -942,14 +942,8 @@ class COntologyTag extends CTag
 	/**
 	 * <h4>Handle offset before setting it</h4>
 	 *
-	 * In this class we handle the subject, predicate and object offsets, if provided as
-	 * objects we leave them unchanged only if not yet committed, if not, we convert them to
-	 * their native identifiers.
-	 *
-	 * We also ensure that the provided objects are instances of the correct classes by
-	 * asserting {@link CDocument} descendants.
-	 *
-	 * This method will lock the {@link kTAG_REFS_TAG} offset from any modification.
+	 * In this class we lock the {@link kTAG_TAG_PATH} attribute if the object is
+	 * committed.
 	 *
 	 * @param reference			   &$theOffset			Offset.
 	 * @param reference			   &$theValue			Value to set at offset.
@@ -989,9 +983,8 @@ class COntologyTag extends CTag
 	/**
 	 * <h4>Handle offset before unsetting it</h4>
 	 *
-	 * In this class we prevent the modification of the subject, predicate and object
-	 * offsets if the object is committed and of the {@link kTAG_REFS_TAG} offset in all
-	 * cases.
+	 * In this class we lock the {@link kTAG_TAG_PATH} attribute if the object is
+	 * committed.
 	 *
 	 * @param reference			   &$theOffset			Offset.
 	 *
@@ -1252,9 +1245,10 @@ class COntologyTag extends CTag
 	/**
 	 * <h4>Update related objects after committing</h4>
 	 *
-	 * The current tag will update related vertex object, {@link COntologyNode} instances
-	 * and their relative {@link COntologyTerm} instances, both with the
-	 * {@link kTAG_REFS_TAG} offset.
+	 * Once committed, the referenced feature and scale vertices will be updated with the
+	 * current tag's identifier in the respective {@link kTAG_REFS_TAG_FEATURE} and
+	 * {@link kTAG_REFS_TAG_SCALE} attributes. Predicate terms will receive the current tag
+	 * identifier in their {@link kTAG_REFS_TAG} attribute.
 	 *
 	 * When inserting a new tag, we add the tag reference, when deleting the tag we remove
 	 * it.
@@ -1293,11 +1287,6 @@ class COntologyTag extends CTag
 		 || ($theModifiers & kFLAG_PERSIST_DELETE) )
 		{
 			//
-			// Set modification criteria.
-			//
-			$mod = array( kTAG_REFS_TAG => $this->offsetGet( kOFFSET_NID ) );
-			
-			//
 			// Iterate path elements.
 			//
 			$path = $this->offsetGet( kTAG_TAG_PATH );
@@ -1316,10 +1305,22 @@ class COntologyTag extends CTag
 							$theConnection, TRUE ), $path[ $i ] );
 				
 				//
-				// Set node trait kind.
+				// Handle feature node.
 				//
 				if( $i == 0 )
+				{
+					//
+					// Set node feature kind.
+					//
 					$this->_SetTraitNode( $theConnection, $path[ $i ] );
+					
+					//
+					// Reference in node.
+					//
+					$this->_ReferenceInNode(
+						$theConnection, $path[ $i ], kTAG_REFS_TAG_FEATURE, $operation );
+				
+				} // First node in path.
 				
 				//
 				// Set node nethod kind.
@@ -1329,15 +1330,22 @@ class COntologyTag extends CTag
 					$this->_SetMethodNode( $theConnection, $path[ $i ] );
 				
 				//
-				// Set node scale kind.
+				// Handle scale node.
 				//
 				if( $i == (count( $path ) - 1) )
+				{
+					//
+					// Set node feature kind.
+					//
 					$this->_SetScaleNode( $theConnection, $path[ $i ] );
+					
+					//
+					// Reference in node.
+					//
+					$this->_ReferenceInNode(
+						$theConnection, $path[ $i ], kTAG_REFS_TAG_SCALE, $operation );
 				
-				//
-				// Reference in node.
-				//
-				$this->_ReferenceInNode( $theConnection, $path[ $i ], $operation );
+				} // Last node in path.
 				
 				//
 				// Reference in term.
@@ -1367,34 +1375,43 @@ class COntologyTag extends CTag
 	/**
 	 * <h4>Add tag reference to node</h4>
 	 *
-	 * This method can be used to add or remove the current tag's reference,
-	 * {@link kTAG_REFS_TAG}, from the provided node. This method should be used whenever
-	 * committing a new tag or when deleting one: it will add the current tag's native
-	 * identifier to the set of tag references of the provided node when committing a new
-	 * tag; it will remove it when deleting the tag.
+	 * This method can be used to add or remove the current tag's reference to and from the
+	 * provided node. This method should be used whenever committing a new tag or when
+	 * deleting one: it will add the current tag's native identifier to the set of tag
+	 * references of the provided node when committing a new tag; it will remove it when
+	 * deleting the tag.
 	 *
-	 * The last parameter is a boolean: if <tt>TRUE</tt> the method will add to the set; if
-	 * <tt>FALSE</tt>, it will remove from the set.
+	 * <ul>
+	 *	<li><tt>$theConnection</tt>: Server, database or container in which the nodes
+	 *		reside.
+	 *	<li><tt>$theNode</tt>: Node object or identifier to which the current tag reference
+	 *		is to be added or removed.
+	 *	<li><tt>$theTag</tt>: Attribute tag of the node to which the current tag reference
+	 *		is to be added or removed.
+	 *	<li><tt>$doAdd</tt>: If <tt>TRUE</tt> add to set; if <tt>FALSE</tt> remove from set.
+	 * </ul>
 	 *
 	 * The method will return <tt>TRUE</tt> if the operation affected at least one object,
 	 * <tt>FALSE</tt> if not and raise an exception if the operation failed.
 	 *
 	 * @param CConnection			$theConnection		Server, database or container.
 	 * @param mixed					$theNode			Node object or identifier.
+	 * @param string				$theTag				Attribute tag to update.
 	 * @param boolean				$doAdd				<tt>TRUE</tt> add reference.
 	 *
 	 * @access protected
 	 * @return boolean				<tt>TRUE</tt> operation affected at least one object.
 	 *
-	 * @see kOFFSET_NID kTAG_REFS_TAG
+	 * @see kOFFSET_NID kTAG_REFS_TAG_FEATURE kTAG_REFS_TAG_SCALE
 	 * @see kFLAG_PERSIST_MODIFY kFLAG_MODIFY_ADDSET kFLAG_MODIFY_PULL
 	 */
-	protected function _ReferenceInNode( CConnection $theConnection, $theNode, $doAdd )
+	protected function _ReferenceInNode( CConnection $theConnection,
+													 $theNode, $theTag, $doAdd )
 	{
 		//
 		// Set modification criteria.
 		//
-		$criteria = array( kTAG_REFS_TAG => $this->offsetGet( kOFFSET_NID ) );
+		$criteria = array( $theTag => $this->offsetGet( kOFFSET_NID ) );
 		
 		//
 		// Handle add to set.

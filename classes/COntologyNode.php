@@ -66,11 +66,9 @@ require_once( kPATH_MYWRAPPER_LIBRARY_CLASS."/CNode.php" );
  * reference to the current node in its {@link kTAG_REFS_NODE} offset, this means that
  * once a node is committed, one cannot change its term reference.
  *
- * The class features an offset, {@link kTAG_REFS_TAG}, which represents the list of tags
- * that reference the current node. This offset is a set of tag identifiers implemented as
- * an array. The offset definition is borrowed from the {@link COntologyTerm} class, which
- * is required by this class because of its {@link kTAG_TERM} offset. This offset is
- * managed by the tag class, this class locks the offset.
+ * The class features two attributes, {@link kTAG_REFS_TAG_FEATURE} and
+ * {@link kTAG_REFS_TAG_SCALE}, that collect the identifiers of {@link COntologyTag}
+ * instances that reference the current node respectively as a feature or scale.
  *
  * This class prevents updating the full object once it has been inserted for the first
  * time. This behaviour is necessary because nodes are referenced by many other objects, so
@@ -85,8 +83,10 @@ require_once( kPATH_MYWRAPPER_LIBRARY_CLASS."/CNode.php" );
  * The class features member accessor methods for the default offsets:
  *
  * <ul>
- *	<li>{@link TagRefs()}: This method returns the node's tag references,
- *		{@link kTAG_REFS_TAG}.
+ *	<li>{@link TagRFeatureTagRefsefs()}: This method returns the node's feature tag
+ *		references, {@link kTAG_REFS_TAG_FEATURE}.
+ *	<li>{@link ScaleTagRefs()}: This method returns the node's scale tag references,
+ *		{@link kTAG_REFS_TAG_SCALE}.
  *	<li>{@link LoadTerm()}: This method will return the referenced term object.
  * </ul>
  *
@@ -319,36 +319,63 @@ class COntologyNode extends CNode
 
 	 
 	/*===================================================================================
-	 *	TagRefs																			*
+	 *	FeatureTagRefs																	*
 	 *==================================================================================*/
 
 	/**
-	 * <h4>Manage tag references</h4>
+	 * <h4>Manage feature tag references</h4>
 	 *
-	 * The <i>tag references</i>, {@link kTAG_REFS_TAG}, holds a list of identifiers of
-	 * tags that reference the node.
+	 * The <i>feature tag references</i>, {@link kTAG_REFS_TAG_FEATURE}, holds a list of
+	 * identifiers of tags that reference the node as a feature.
 	 *
 	 * The method is read-only, because this value must be managed externally.
-	 *
-	 * The {@link kTAG_REFS_TAG} offset tag is defined by the {@link COntologyTerm} class
-	 * which is included in this class by default.
 	 *
 	 * @access public
 	 * @return array				Tags reference list.
 	 *
-	 * @see kTAG_REFS_TAG
+	 * @see kTAG_REFS_TAG_FEATURE
 	 */
-	public function TagRefs()
+	public function FeatureTagRefs()
 	{
 		//
 		// Handle reference count.
 		//
-		if( $this->offsetExists( kTAG_REFS_TAG ) )
-			return $this->offsetGet( kTAG_REFS_TAG );								// ==>
+		if( $this->offsetExists( kTAG_REFS_TAG_FEATURE ) )
+			return $this->offsetGet( kTAG_REFS_TAG_FEATURE );						// ==>
 		
 		return Array();																// ==>
 
-	} // TagRefs.
+	} // FeatureTagRefs.
+
+	 
+	/*===================================================================================
+	 *	ScaleTagRefs																	*
+	 *==================================================================================*/
+
+	/**
+	 * <h4>Manage scale tag references</h4>
+	 *
+	 * The <i>tag references</i>, {@link kTAG_REFS_TAG_SCALE}, holds a list of identifiers
+	 * of tags that reference the node as a scale.
+	 *
+	 * The method is read-only, because this value must be managed externally.
+	 *
+	 * @access public
+	 * @return array				Tags reference list.
+	 *
+	 * @see kTAG_REFS_TAG_SCALE
+	 */
+	public function ScaleTagRefs()
+	{
+		//
+		// Handle reference count.
+		//
+		if( $this->offsetExists( kTAG_REFS_TAG_SCALE ) )
+			return $this->offsetGet( kTAG_REFS_TAG_SCALE );							// ==>
+		
+		return Array();																// ==>
+
+	} // ScaleTagRefs.
 
 		
 	/*===================================================================================
@@ -831,7 +858,8 @@ class COntologyNode extends CNode
 	 * We also ensure the provided term object to be an instance of {@link COntologyTerm} by
 	 * asserting {@link CDocument} descendants to be of that class.
 	 *
-	 * This method will lock the {@link kTAG_REFS_TAG} offset from any modification.
+	 * This method will lock the {@link kTAG_REFS_TAG_FEATURE} and
+	 * {@link kTAG_REFS_TAG_SCALE} offsets from any modification.
 	 *
 	 * @param reference			   &$theOffset			Offset.
 	 * @param reference			   &$theValue			Value to set at offset.
@@ -843,14 +871,15 @@ class COntologyNode extends CNode
 	 * @uses _IsCommitted()
 	 * @uses _AssertClass()
 	 *
-	 * @see kTAG_TERM kTAG_REFS_TAG
+	 * @see kTAG_TERM kTAG_REFS_TAG_FEATURE kTAG_REFS_TAG_SCALE
 	 */
 	protected function _Preset( &$theOffset, &$theValue )
 	{
 		//
 		// Intercept reference offsets.
 		//
-		if( $theOffset == kTAG_REFS_TAG )
+		if( ($theOffset == kTAG_REFS_TAG_FEATURE)
+		 || ($theOffset == kTAG_REFS_TAG_SCALE) )
 			throw new Exception
 				( "The [$theOffset] offset cannot be modified",
 				  kERROR_LOCKED );												// !@! ==>
@@ -932,7 +961,8 @@ class COntologyNode extends CNode
 	 * <h4>Handle offset before unsetting it</h4>
 	 *
 	 * In this class we prevent the modification of the {@link kTAG_TERM} offset if the
-	 * object is committed and of the {@link kTAG_REFS_TAG} offset in all cases.
+	 * object is committed and of the {@link kTAG_REFS_TAG_FEATURE} and
+	 * {@link kTAG_REFS_TAG_SCALE} offsets in all cases.
 	 *
 	 * @param reference			   &$theOffset			Offset.
 	 *
@@ -942,14 +972,15 @@ class COntologyNode extends CNode
 	 *
 	 * @uses _IsCommitted()
 	 *
-	 * @see kTAG_REFS_TAG kTAG_TERM
+	 * @see kTAG_REFS_TAG_FEATURE kTAG_REFS_TAG_SCALE kTAG_TERM
 	 */
 	protected function _Preunset( &$theOffset )
 	{
 		//
 		// Intercept reference offsets.
 		//
-		if( $theOffset == kTAG_REFS_TAG )
+		if( ($theOffset == kTAG_REFS_TAG_FEATURE)
+		 || ($theOffset == kTAG_REFS_TAG_SCALE) )
 			throw new Exception
 				( "The [$theOffset] offset cannot be modified",
 				  kERROR_LOCKED );												// !@! ==>

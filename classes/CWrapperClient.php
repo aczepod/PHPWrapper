@@ -451,7 +451,7 @@ class CWrapperClient extends CConnection
 	 */
 	public function Dump()								{	return $this->getArrayCopy();	}
 
-		
+
 
 /*=======================================================================================
  *																						*

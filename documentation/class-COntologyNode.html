@@ -128,12 +128,9 @@ term gets a reference to the current node in its kTAG_REFS_NODE offset,
 this means that once a node is committed, one cannot change its term
 reference.</p>
 
-<p>The class features an offset, kTAG_REFS_TAG, which represents the
-list of tags that reference the current node. This offset is a set of tag
-identifiers implemented as an array. The offset definition is borrowed from the
-<code><a href="class-COntologyTerm.html">COntologyTerm</a></code> class, which is required by this class because of its
-kTAG_TERM offset. This offset is managed by the tag class, this class
-locks the offset.</p>
+<p>The class features two attributes, kTAG_REFS_TAG_FEATURE and kTAG_REFS_TAG_SCALE, that collect the identifiers of <code><a href="class-COntologyTag.html">COntologyTag</a></code>
+instances that reference the current node respectively as a feature or
+scale.</p>
 
 <p>This class prevents updating the full object once it has been inserted for
 the first time. This behaviour is necessary because nodes are referenced by many
@@ -149,7 +146,11 @@ terms.</p>
 <p>The class features member accessor methods for the default offsets:</p>
 
 <ul>
-	<li><code><a href="class-COntologyNode.html#_TagRefs">COntologyNode::TagRefs()</a></code>: This method returns the node's tag references, kTAG_REFS_TAG.</li>
+	<li>TagRFeatureTagRefsefs(): This method returns the node's feature tag
+	references, kTAG_REFS_TAG_FEATURE.</li>
+
+	<li><code><a href="class-COntologyNode.html#_ScaleTagRefs">COntologyNode::ScaleTagRefs()</a></code>: This method returns the node's scale tag references,
+	kTAG_REFS_TAG_SCALE.</li>
 
 	<li><code><a href="class-COntologyNode.html#_LoadTerm">COntologyNode::LoadTerm()</a></code>: This method will return the referenced term object.</li>
 </ul>
@@ -236,7 +237,7 @@ terms.</p>
 				<b>Author:</b>
 				Milko A. Škofič &lt;<a
 href="mailto:m.skofic&#64;cgiar.org">m.skofic&#64;<!---->cgiar.org</a>&gt;<br />
-		<b>Located at</b> <a href="source-class-COntologyNode.html#43-1405" title="Go to source code">COntologyNode.php</a><br />
+		<b>Located at</b> <a href="source-class-COntologyNode.html#43-1436" title="Go to source code">COntologyNode.php</a><br />
 	</div>
 
 
@@ -388,7 +389,7 @@ that can be set in the offset. The offset accepts two types of elements:</p>
 		</div>
 		</div></td>
 	</tr>
-	<tr data-order="TagRefs" id="_TagRefs">
+	<tr data-order="FeatureTagRefs" id="_FeatureTagRefs">
 
 		<td class="attributes"><code>
 			 public 
@@ -398,26 +399,23 @@ that can be set in the offset. The offset accepts two types of elements:</p>
 		</td>
 
 		<td class="name"><div>
-		<a class="anchor" href="#_TagRefs">#</a>
-		<code><a href="source-class-COntologyNode.html#325-351" title="Go to source code">TagRefs</a>( )</code>
+		<a class="anchor" href="#_FeatureTagRefs">#</a>
+		<code><a href="source-class-COntologyNode.html#325-348" title="Go to source code">FeatureTagRefs</a>( )</code>
 
 		<div class="description short">
 			
-<h4>Manage tag references</h4>
+<h4>Manage feature tag references</h4>
 
 		</div>
 
 		<div class="description detailed hidden">
 			
-<h4>Manage tag references</h4>
+<h4>Manage feature tag references</h4>
 
-<p>The <i>tag references</i>, kTAG_REFS_TAG, holds a list of identifiers
-of tags that reference the node.</p>
+<p>The <i>feature tag references</i>, kTAG_REFS_TAG_FEATURE, holds a
+list of identifiers of tags that reference the node as a feature.</p>
 
 <p>The method is read-only, because this value must be managed externally.</p>
-
-<p>The kTAG_REFS_TAG offset tag is defined by the <code><a href="class-COntologyTerm.html">COntologyTerm</a></code>
-class which is included in this class by default.</p>
 
 
 
@@ -430,7 +428,53 @@ class which is included in this class by default.</p>
 
 				<h4>See</h4>
 				<div class="list">
-						kTAG_REFS_TAG<br />
+						kTAG_REFS_TAG_FEATURE<br />
+				</div>
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="ScaleTagRefs" id="_ScaleTagRefs">
+
+		<td class="attributes"><code>
+			 public 
+			array
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_ScaleTagRefs">#</a>
+		<code><a href="source-class-COntologyNode.html#355-378" title="Go to source code">ScaleTagRefs</a>( )</code>
+
+		<div class="description short">
+			
+<h4>Manage scale tag references</h4>
+
+		</div>
+
+		<div class="description detailed hidden">
+			
+<h4>Manage scale tag references</h4>
+
+<p>The <i>tag references</i>, kTAG_REFS_TAG_SCALE, holds a list of
+identifiers of tags that reference the node as a scale.</p>
+
+<p>The method is read-only, because this value must be managed externally.</p>
+
+
+
+
+				<h4>Returns</h4>
+				<div class="list">
+					<code>array</code><br>Tags reference list.<br />
+				</div>
+
+
+				<h4>See</h4>
+				<div class="list">
+						kTAG_REFS_TAG_SCALE<br />
 				</div>
 
 
@@ -448,7 +492,7 @@ class which is included in this class by default.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#_EdgeRefs">#</a>
-		<code><a href="source-class-COntologyNode.html#358-381" title="Go to source code">EdgeRefs</a>( )</code>
+		<code><a href="source-class-COntologyNode.html#385-408" title="Go to source code">EdgeRefs</a>( )</code>
 
 		<div class="description short">
 			
@@ -494,7 +538,7 @@ identifiers of edges that reference the node.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#_LoadTerm">#</a>
-		<code><a href="source-class-COntologyNode.html#397-467" title="Go to source code">LoadTerm</a>( <span><code><a href="class-CConnection.html">CConnection</a></code> <var>$theConnection</var></span>, <span>boolean <var>$doReload</var> = <span class="php-keyword1">FALSE</span> </span> )</code>
+		<code><a href="source-class-COntologyNode.html#424-494" title="Go to source code">LoadTerm</a>( <span><code><a href="class-CConnection.html">CConnection</a></code> <var>$theConnection</var></span>, <span>boolean <var>$doReload</var> = <span class="php-keyword1">FALSE</span> </span> )</code>
 
 		<div class="description short">
 			
@@ -565,7 +609,7 @@ the object is to be read, or if the cached copy can be used.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#_RelateTo">#</a>
-		<code><a href="source-class-COntologyNode.html#483-526" title="Go to source code">RelateTo</a>( <span>mixed <var>$thePredicate</var></span>, <span>mixed <var>$theObject</var></span> )</code>
+		<code><a href="source-class-COntologyNode.html#510-553" title="Go to source code">RelateTo</a>( <span>mixed <var>$thePredicate</var></span>, <span>mixed <var>$theObject</var></span> )</code>
 
 		<div class="description short">
 			
@@ -620,7 +664,7 @@ caller to do so.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#_Update">#</a>
-		<code><a href="source-class-COntologyNode.html#542-572" title="Go to source code">Update</a>( <span><code><a href="class-CConnection.html">CConnection</a></code> <var>$theConnection</var></span> )</code>
+		<code><a href="source-class-COntologyNode.html#569-599" title="Go to source code">Update</a>( <span><code><a href="class-CConnection.html">CConnection</a></code> <var>$theConnection</var></span> )</code>
 
 		<div class="description short">
 			
@@ -668,7 +712,7 @@ modification interface provided by container objects.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#_Replace">#</a>
-		<code><a href="source-class-COntologyNode.html#579-619" title="Go to source code">Replace</a>( <span><code><a href="class-CConnection.html">CConnection</a></code> <var>$theConnection</var></span> )</code>
+		<code><a href="source-class-COntologyNode.html#606-646" title="Go to source code">Replace</a>( <span><code><a href="class-CConnection.html">CConnection</a></code> <var>$theConnection</var></span> )</code>
 
 		<div class="description short">
 			
@@ -719,7 +763,7 @@ non committed object.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#_DefaultContainer">#</a>
-		<code><a href="source-class-COntologyNode.html#635-652" title="Go to source code">DefaultContainer</a>( <span><code><a href="class-CDatabase.html">CDatabase</a></code> <var>$theDatabase</var></span> )</code>
+		<code><a href="source-class-COntologyNode.html#662-679" title="Go to source code">DefaultContainer</a>( <span><code><a href="class-CDatabase.html">CDatabase</a></code> <var>$theDatabase</var></span> )</code>
 
 		<div class="description short">
 			
@@ -770,7 +814,7 @@ kCONTAINER_NODE_NAME name.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#_Resolve">#</a>
-		<code><a href="source-class-COntologyNode.html#668-810" title="Go to source code">Resolve</a>( <span><code><a href="class-CConnection.html">CConnection</a></code> <var>$theConnection</var></span>, <span>mixed <var>$theIdentifier</var></span>, <span>boolean <var>$doThrow</var> = <span class="php-keyword1">FALSE</span> </span> )</code>
+		<code><a href="source-class-COntologyNode.html#695-837" title="Go to source code">Resolve</a>( <span><code><a href="class-CConnection.html">CConnection</a></code> <var>$theConnection</var></span>, <span>mixed <var>$theIdentifier</var></span>, <span>boolean <var>$doThrow</var> = <span class="php-keyword1">FALSE</span> </span> )</code>
 
 		<div class="description short">
 			
@@ -860,7 +904,7 @@ parameter, or you will get unexpected results.</b></p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#__Preset">#</a>
-		<code><a href="source-class-COntologyNode.html#826-924" title="Go to source code">_Preset</a>( <span>reference <var>&amp; $theOffset</var></span>, <span>reference <var>&amp; $theValue</var></span> )</code>
+		<code><a href="source-class-COntologyNode.html#853-953" title="Go to source code">_Preset</a>( <span>reference <var>&amp; $theOffset</var></span>, <span>reference <var>&amp; $theValue</var></span> )</code>
 
 		<div class="description short">
 			
@@ -877,8 +921,7 @@ unchanged only if not yet committed, if not, we convert it to its native
 identifier. We also ensure the provided term object to be an instance of <code><a href="class-COntologyTerm.html">COntologyTerm</a></code> by asserting <code><a href="class-CDocument.html">CDocument</a></code> descendants to be of that
 class.</p>
 
-<p>This method will lock the kTAG_REFS_TAG offset from any
-modification.</p>
+<p>This method will lock the kTAG_REFS_TAG_FEATURE and kTAG_REFS_TAG_SCALE offsets from any modification.</p>
 
 
 
@@ -898,7 +941,7 @@ modification.</p>
 
 				<h4>See</h4>
 				<div class="list">
-						kTAG_TERM kTAG_REFS_TAG<br />
+						kTAG_TERM kTAG_REFS_TAG_FEATURE kTAG_REFS_TAG_SCALE<br />
 				</div>
 				<h4>Uses</h4>
 				<div class="list">
@@ -923,7 +966,7 @@ modification.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#__Preunset">#</a>
-		<code><a href="source-class-COntologyNode.html#931-972" title="Go to source code">_Preunset</a>( <span>reference <var>&amp; $theOffset</var></span> )</code>
+		<code><a href="source-class-COntologyNode.html#960-1003" title="Go to source code">_Preunset</a>( <span>reference <var>&amp; $theOffset</var></span> )</code>
 
 		<div class="description short">
 			
@@ -936,8 +979,7 @@ modification.</p>
 <h4>Handle offset before unsetting it</h4>
 
 <p>In this class we prevent the modification of the kTAG_TERM offset if
-the object is committed and of the kTAG_REFS_TAG offset in all
-cases.</p>
+the object is committed and of the kTAG_REFS_TAG_FEATURE and kTAG_REFS_TAG_SCALE offsets in all cases.</p>
 
 
 
@@ -955,7 +997,7 @@ cases.</p>
 
 				<h4>See</h4>
 				<div class="list">
-						kTAG_REFS_TAG kTAG_TERM<br />
+						kTAG_REFS_TAG_FEATURE kTAG_REFS_TAG_SCALE kTAG_TERM<br />
 				</div>
 				<h4>Uses</h4>
 				<div class="list">
@@ -979,7 +1021,7 @@ cases.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#__PrecommitRelated">#</a>
-		<code><a href="source-class-COntologyNode.html#988-1051" title="Go to source code">_PrecommitRelated</a>( <span>reference <var>&amp; $theConnection</var></span>, <span>reference <var>&amp; $theModifiers</var></span> )</code>
+		<code><a href="source-class-COntologyNode.html#1019-1082" title="Go to source code">_PrecommitRelated</a>( <span>reference <var>&amp; $theConnection</var></span>, <span>reference <var>&amp; $theModifiers</var></span> )</code>
 
 		<div class="description short">
 			
@@ -1033,7 +1075,7 @@ provided as an identifier.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#__PrecommitIdentify">#</a>
-		<code><a href="source-class-COntologyNode.html#1058-1158" title="Go to source code">_PrecommitIdentify</a>( <span>reference <var>&amp; $theConnection</var></span>, <span>reference <var>&amp; $theModifiers</var></span> )</code>
+		<code><a href="source-class-COntologyNode.html#1089-1189" title="Go to source code">_PrecommitIdentify</a>( <span>reference <var>&amp; $theConnection</var></span>, <span>reference <var>&amp; $theModifiers</var></span> )</code>
 
 		<div class="description short">
 			
@@ -1105,7 +1147,7 @@ it will have been set here.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#__PostcommitRelated">#</a>
-		<code><a href="source-class-COntologyNode.html#1174-1218" title="Go to source code">_PostcommitRelated</a>( <span>reference <var>&amp; $theConnection</var></span>, <span>reference <var>&amp; $theModifiers</var></span> )</code>
+		<code><a href="source-class-COntologyNode.html#1205-1249" title="Go to source code">_PostcommitRelated</a>( <span>reference <var>&amp; $theConnection</var></span>, <span>reference <var>&amp; $theModifiers</var></span> )</code>
 
 		<div class="description short">
 			
@@ -1160,7 +1202,7 @@ remove the element when deleting.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#__PostcommitCleanup">#</a>
-		<code><a href="source-class-COntologyNode.html#1225-1249" title="Go to source code">_PostcommitCleanup</a>( <span>reference <var>&amp; $theConnection</var></span>, <span>reference <var>&amp; $theModifiers</var></span> )</code>
+		<code><a href="source-class-COntologyNode.html#1256-1280" title="Go to source code">_PostcommitCleanup</a>( <span>reference <var>&amp; $theConnection</var></span>, <span>reference <var>&amp; $theModifiers</var></span> )</code>
 
 		<div class="description short">
 			
@@ -1206,7 +1248,7 @@ have to be refreshed and its references actualised.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#__ReferenceInTerm">#</a>
-		<code><a href="source-class-COntologyNode.html#1265-1326" title="Go to source code">_ReferenceInTerm</a>( <span><code><a href="class-CConnection.html">CConnection</a></code> <var>$theConnection</var></span>, <span>boolean <var>$doAdd</var></span> )</code>
+		<code><a href="source-class-COntologyNode.html#1296-1357" title="Go to source code">_ReferenceInTerm</a>( <span><code><a href="class-CConnection.html">CConnection</a></code> <var>$theConnection</var></span>, <span>boolean <var>$doAdd</var></span> )</code>
 
 		<div class="description short">
 			
@@ -1272,7 +1314,7 @@ exception if the operation failed.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#__AddGraphNode">#</a>
-		<code><a href="source-class-COntologyNode.html#1342-1401" title="Go to source code">_AddGraphNode</a>( <span><code><a href="class-CGraphContainer.html">CGraphContainer</a></code> <var>$theGraph</var></span> )</code>
+		<code><a href="source-class-COntologyNode.html#1373-1432" title="Go to source code">_AddGraphNode</a>( <span><code><a href="class-CGraphContainer.html">CGraphContainer</a></code> <var>$theGraph</var></span> )</code>
 
 		<div class="description short">
 			

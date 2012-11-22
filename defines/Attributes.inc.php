@@ -232,6 +232,10 @@ define( "kOFFSET_VERTEX_TERMS",					':VERTEX-TERMS' );
  */
 define( "kOFFSET_TAG_PATH",						':TAG-PATH' );
 
+/*=======================================================================================
+ *	ONTOLOGY REFERENCE ATTRIBUTES															*
+ *======================================================================================*/
+
 /**
  * Namespace references.
  *
@@ -255,6 +259,22 @@ define( "kOFFSET_REFS_NODE",					':REF-NODE' );
  * tags that reference the current term.
  */
 define( "kOFFSET_REFS_TAG",						':REF-TAG' );
+
+/**
+ * Feature tag references.
+ *
+ * This offset identifies tag references, the attribute contains the list of tag identifiers
+ * that reference the hosting object as a feature.
+ */
+define( "kOFFSET_REFS_TAG_FEATURE",				':REF-TAG-FEATURE' );
+
+/**
+ * Scale tag references.
+ *
+ * This offset identifies tag references, the attribute contains the list of tag identifiers
+ * that reference the hosting object as a scale.
+ */
+define( "kOFFSET_REFS_TAG_SCALE",				':REF-TAG-SCALE' );
 
 /**
  * Edge references.
