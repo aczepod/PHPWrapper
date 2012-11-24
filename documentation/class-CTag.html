@@ -6,7 +6,7 @@
 
 	<title>Class CTag | MyWrapper Reference Documentation</title>
 
-	<script type="text/javascript" src="resources/combined.js?3680114562"></script>
+	<script type="text/javascript" src="resources/combined.js?1742645618"></script>
 	<script type="text/javascript" src="elementlist.js?539813953"></script>
 	<link rel="stylesheet" type="text/css" media="all" href="resources/style.css?3505392360" />
 
@@ -122,32 +122,26 @@
 	
 <h4>Tag object ancestor</h4>
 
-<p>A tag object can be used to record the path starting from one node of a graph
-and ending on another node. This class will assign a unique identifier to this
-path which can be used externally to refer to the path.</p>
+<p>A tag object represents a path between two vertices of a graph, it can be
+used as a reference to that path.</p>
 
-<p>The paths that tag objects record are a sequence of <i>subject</i>,
-<i>predicate</i> and <i>object</i>, these paths, therefore, should always have
-an odd number of elements in which odd items represent <i>vertex elements</i>
-and even items represent <i>predicates</i>.</p>
+<p>This class features the following default properties:</p>
+
+<ul>
+	<li><i>Path</i>: The tag path, or the <tt>kTAG_TAG_PATH</tt> tag,
+	represents a sequence of <i>vertex</i>/<i>predicate</i>/<i>vertex</i> elements
+	in which the odd elements represent relationship vertices and the even elements
+	the predicates that connect these vertices. The class offers two methods, <code><a href="class-CTag.html#_PushItem">CTag::PushItem()</a></code> and <code><a href="class-CTag.html#_PopItem">CTag::PopItem()</a></code> which respectively allow to append and remove
+	items from the top of the list.</li>
+
+	<li><i>Global identifier</i>: The global identifier, <tt><code><a href="class-CPersistentObject.html#_GID">CPersistentObject::GID()</a></code></tt> or
+	the <tt>kTAG_GID</tt> tag, is constituted by concatenating all the
+	elements of the path attribute, separated by the kTOKEN_INDEX_SEPARATOR
+	token.</li>
+</ul>
 
 <p>A tag can be considered <code><a href="class-CStatusDocument.html#__IsInited">CStatusDocument::_IsInited()</a></code> when it has at least one element
 in the path, which represents the minimum legal number of path items.</p>
-
-<p>The class features member accessor methods for the default offsets:</p>
-
-<ul>
-	<li><code><a href="class-CTag.html#_PushItem">CTag::PushItem()</a></code>: This method can be used to add items to the tag path,
-	kTAG_TAG_PATH, it will append the provided item to the end of the
-	list.</li>
-
-	<li><code><a href="class-CTag.html#_PopItem">CTag::PopItem()</a></code>: This method can be used to remove items from the tag
-	path, kTAG_TAG_PATH, it will remove the last item of the list.</li>
-</ul>
-
-<p>The object features an offset, kTAG_TAG_PATH, which is an array
-holding the elements of the path, the object's global identifier, kTAG_GID, is a string representing the elements of the path separated by the
-kTOKEN_INDEX_SEPARATOR token.</p>
 
 <p>This class implements the logic to manage these paths without assuming the
 nature or type of their elements: this will be the responsibility of derived
@@ -229,7 +223,7 @@ strings</p>
 				<b>Author:</b>
 				Milko A. Škofič &lt;<a
 href="mailto:m.skofic&#64;cgiar.org">m.skofic&#64;<!---->cgiar.org</a>&gt;<br />
-		<b>Located at</b> <a href="source-class-CTag.html#36-381" title="Go to source code">CTag.php</a><br />
+		<b>Located at</b> <a href="source-class-CTag.html#36-375" title="Go to source code">CTag.php</a><br />
 	</div>
 
 
@@ -247,7 +241,7 @@ href="mailto:m.skofic&#64;cgiar.org">m.skofic&#64;<!---->cgiar.org</a>&gt;<br />
 
 		<td class="name"><div>
 		<a class="anchor" href="#_PushItem">#</a>
-		<code><a href="source-class-CTag.html#88-149" title="Go to source code">PushItem</a>( <span>mixed <var>$theValue</var></span> )</code>
+		<code><a href="source-class-CTag.html#82-143" title="Go to source code">PushItem</a>( <span>mixed <var>$theValue</var></span> )</code>
 
 		<div class="description short">
 			
@@ -302,7 +296,7 @@ ignored and the method will return <tt>FALSE</tt>.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#_PopItem">#</a>
-		<code><a href="source-class-CTag.html#156-204" title="Go to source code">PopItem</a>( )</code>
+		<code><a href="source-class-CTag.html#150-198" title="Go to source code">PopItem</a>( )</code>
 
 		<div class="description short">
 			
@@ -349,7 +343,7 @@ is missing, the method will return <tt>NULL</tt>.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#__index">#</a>
-		<code><a href="source-class-CTag.html#220-241" title="Go to source code">_index</a>( <span><code><a href="class-CConnection.html">CConnection</a></code> <var>$theConnection</var></span>, <span>bitfield <var>$theModifiers</var></span> )</code>
+		<code><a href="source-class-CTag.html#214-235" title="Go to source code">_index</a>( <span><code><a href="class-CConnection.html">CConnection</a></code> <var>$theConnection</var></span>, <span>bitfield <var>$theModifiers</var></span> )</code>
 
 		<div class="description short">
 			
@@ -405,7 +399,7 @@ string.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#__Preset">#</a>
-		<code><a href="source-class-CTag.html#257-290" title="Go to source code">_Preset</a>( <span>reference <var>&amp; $theOffset</var></span>, <span>reference <var>&amp; $theValue</var></span> )</code>
+		<code><a href="source-class-CTag.html#251-284" title="Go to source code">_Preset</a>( <span>reference <var>&amp; $theOffset</var></span>, <span>reference <var>&amp; $theValue</var></span> )</code>
 
 		<div class="description short">
 			
@@ -458,7 +452,7 @@ ArrayObject instances are not counted as an array.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#__PrecommitValidate">#</a>
-		<code><a href="source-class-CTag.html#306-338" title="Go to source code">_PrecommitValidate</a>( <span>reference <var>&amp; $theConnection</var></span>, <span>reference <var>&amp; $theModifiers</var></span> )</code>
+		<code><a href="source-class-CTag.html#300-332" title="Go to source code">_PrecommitValidate</a>( <span>reference <var>&amp; $theConnection</var></span>, <span>reference <var>&amp; $theModifiers</var></span> )</code>
 
 		<div class="description short">
 			
@@ -511,7 +505,7 @@ that is not the case, the method will raise an exception.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#__Ready">#</a>
-		<code><a href="source-class-CTag.html#354-377" title="Go to source code">_Ready</a>( )</code>
+		<code><a href="source-class-CTag.html#348-371" title="Go to source code">_Ready</a>( )</code>
 
 		<div class="description short">
 			

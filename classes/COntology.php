@@ -537,7 +537,7 @@ class COntology extends CConnection
 	 *
 	 * @param mixed					$theIdentifier		Node identifier or term reference.
 	 * @param mixed					$theKind			Node kind set.
-	 * @param string				$theType			Node type.
+	 * @param mixed					$theType			Node data type.
 	 * @param mixed					$theNamespace		Term namespace reference.
 	 * @param string				$theLabel			Term label.
 	 * @param string				$theDescription		Term description.
@@ -694,9 +694,28 @@ class COntology extends CConnection
 					// Filter by type.
 					//
 					if( $theType !== NULL )
-						$query->AppendStatement(
-							CQueryStatement::Equals(
-								kTAG_TYPE, $theType, kTYPE_STRING ) );
+					{
+						//
+						// Handle types list.
+						//
+						if( is_array( $theType ) )
+						{
+							foreach( $theType as $type )
+								$query->AppendStatement(
+									CQueryStatement::Member(
+										kTAG_TYPE, $type, kTYPE_STRING ) );
+						
+						} // List of types.
+						
+						//
+						// Handle scalar type.
+						//
+						else
+							$query->AppendStatement(
+								CQueryStatement::Equals(
+									kTAG_TYPE, $theType, kTYPE_STRING ) );
+					
+					} // Provided type.
 							
 					//
 					// Perform query.
@@ -3162,7 +3181,7 @@ class COntology extends CConnection
 		//
 		$export = Array();
 		$exclude = array( kOFFSET_NID, kTAG_CLASS, kTAG_TERM,
-						  kTAG_REFS_NAMESPACE, kTAG_REFS_NODE, kTAG_REFS_TAG,
+						  kTAG_REFS_NAMESPACE, kTAG_REFS_NODE,
 						  kTAG_GID, kTAG_LID, kTAG_NAMESPACE, kTAG_TERM );
 		
 		//
@@ -3224,7 +3243,7 @@ class COntology extends CConnection
 	 * {@link kTAG_GID} will be taken from the term.
 	 *
 	 * We omit the {@link kTAG_CLASS}, {@link kTAG_TERM} (the term's attributes are merged
-	 * with the node's attributes), {@link kTAG_REFS_TAG} and {@link kTAG_REFS_EDGE}.
+	 * with the node's attributes) and {@link kTAG_REFS_EDGE}.
 	 *
 	 * All other attributes will either be included from the referenced term, or will be
 	 * taken by the current node; note that the node attributes will overwrite the term
@@ -3244,7 +3263,7 @@ class COntology extends CConnection
 		//
 		$export = Array();
 		$exclude = array( kOFFSET_NID, kTAG_LID, kTAG_GID, kTAG_CLASS,
-						  kTAG_TERM, kTAG_REFS_TAG, kTAG_REFS_EDGE );
+						  kTAG_TERM, kTAG_REFS_EDGE );
 		
 		//
 		// Resolve node.
@@ -3344,7 +3363,6 @@ class COntology extends CConnection
 		$container->AddIndex( array( kTAG_NAMESPACE => 1 ), array( 'sparse' => TRUE ) );
 	//	$container->AddIndex( array( kTAG_REFS_NODE => 1 ), array( 'sparse' => TRUE ) );
 	//	$container->AddIndex( array( kTAG_REFS_EDGE => 1 ), array( 'sparse' => TRUE ) );
-	//	$container->AddIndex( array( kTAG_REFS_TAG => 1 ), array( 'sparse' => TRUE ) );
 		
 		//
 		// Get nodes container.
@@ -3677,6 +3695,10 @@ class COntology extends CConnection
 				   kOFFSET_NAMESPACE => $ns,
 				   kOFFSET_LABEL => "Class name",
 				   kOFFSET_DESCRIPTION => "This tag identifies the class name of the object, it can be used to instantiate a class rather than using an array when retrieving from containers." ),
+			array( kOFFSET_LID => substr( kOFFSET_CATEGORY, 1 ),
+				   kOFFSET_NAMESPACE => $ns,
+				   kOFFSET_LABEL => "Object category",
+				   kOFFSET_DESCRIPTION => "This tag identifies the object category or classification, the offset is a set of enumerations whose combination represents the classification to which the object belomngs." ),
 			array( kOFFSET_LID => substr( kOFFSET_KIND, 1 ),
 				   kOFFSET_NAMESPACE => $ns,
 				   kOFFSET_LABEL => "Object kind",
@@ -4220,6 +4242,10 @@ class COntology extends CConnection
 				   kOFFSET_GID => kOFFSET_TERM,
 				   kOFFSET_NAMESPACE => $ns,
 				   kOFFSET_TYPE => array( kTYPE_BINARY, kTYPE_CARD_REQUIRED ) ),
+			array( kOFFSET_LID => substr( kOFFSET_CATEGORY, 1 ),
+				   kOFFSET_GID => kOFFSET_CATEGORY,
+				   kOFFSET_NAMESPACE => $ns,
+				   kOFFSET_TYPE => kTYPE_ENUM_SET ),
 			array( kOFFSET_LID => substr( kOFFSET_KIND, 1 ),
 				   kOFFSET_GID => kOFFSET_KIND,
 				   kOFFSET_NAMESPACE => $ns,

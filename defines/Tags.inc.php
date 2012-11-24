@@ -48,7 +48,7 @@ define( "kTAG_GID",								'2' );
  * {@link kOFFSET_NID} is not related to the {@link kTAG_GID}. This is generally used
  * when the {@link kOFFSET_NID} is a sequence number.
  */
-define( "kTAG_UID",								'20' );
+define( "kTAG_UID",								'21' );
 
 /*=======================================================================================
  *	QUALIFICATION ATTRIBUTES															*
@@ -63,13 +63,21 @@ define( "kTAG_UID",								'20' );
 define( "kTAG_CLASS",							'4' );
 
 /**
+ * Object category.
+ *
+ * This tag identifies the object category or classification, the offset is a set of
+ * enumerations that define the category or classification to which the object belongs to.
+ */
+define( "kTAG_CATEGORY",						'12' );
+
+/**
  * Object kind.
  *
  * This tag identifies the object kind or type, the offset is a set of enumerations that
  * define the kind or specific type of an object, these enumerations will be in the form of
  * native unique identifiers, {@link kOFFSET_NID}, of the terms that define the enumeration.
  */
-define( "kTAG_KIND",							'12' );
+define( "kTAG_KIND",							'13' );
 
 /**
  * Object data type.
@@ -78,7 +86,7 @@ define( "kTAG_KIND",							'12' );
  * the specific data type of an object, this value will be in the form of the native unique
  * identifier, {@link kOFFSET_NID}, of the term that defines the enumeration.
  */
-define( "kTAG_TYPE",							'13' );
+define( "kTAG_TYPE",							'14' );
 
 /*=======================================================================================
  *	ONTOLOGY ATTRIBUTES																	*
@@ -107,7 +115,7 @@ define( "kTAG_TERM",							'8' );
  * This tag identifies the reference to the subject vertex of a subject/predicate/object
  * triplet in a graph.
  */
-define( "kTAG_VERTEX_SUBJECT",					'17' );
+define( "kTAG_VERTEX_SUBJECT",					'18' );
 
 /**
  * Object reference.
@@ -115,7 +123,7 @@ define( "kTAG_VERTEX_SUBJECT",					'17' );
  * This tag identifies the reference to the object vertex of a subject/predicate/object
  * triplet in a graph.
  */
-define( "kTAG_VERTEX_OBJECT",					'19' );
+define( "kTAG_VERTEX_OBJECT",					'20' );
 
 /**
  * Predicate reference.
@@ -123,7 +131,7 @@ define( "kTAG_VERTEX_OBJECT",					'19' );
  * This tag identifies the reference to the predicate object of a subject/predicate/object
  * triplet in a graph.
  */
-define( "kTAG_PREDICATE",						'18' );
+define( "kTAG_PREDICATE",						'19' );
 
 /**
  * Synonyms.
@@ -143,14 +151,14 @@ define( "kTAG_SYNONYMS",						'7' );
  * This tag identifies the offset that will contain the list of identifiers of the terms
  * referenced by the tag path's vertex elements.
  */
-define( "kTAG_VERTEX_TERMS",					'22' );
+define( "kTAG_VERTEX_TERMS",					'23' );
 
 /**
  * Tag path.
  *
  * This tag identifies a list of items constituting the path or sequence of a tag.
  */
-define( "kTAG_TAG_PATH",						'21' );
+define( "kTAG_TAG_PATH",						'22' );
 
 /**
  * Namespace references.
@@ -180,17 +188,25 @@ define( "kTAG_REFS_TAG",						'11' );
  * Feature tag references.
  *
  * This tag identifies feature tag references, the attribute contains the list of
- * identifiers of tags that reference the current node as a feature.
+ * identifiers of tags that reference the current term as a feature.
  */
-define( "kTAG_REFS_TAG_FEATURE",				'14' );
+define( "kTAG_REFS_TAG_FEATURE",				'15' );
+
+/**
+ * Method tag references.
+ *
+ * This tag identifies method tag references, the attribute contains the list of
+ * identifiers of tags that reference the current term as a method.
+ */
+define( "kTAG_REFS_TAG_METHOD",					'??' );
 
 /**
  * Scale tag references.
  *
  * This tag identifies scale tag references, the attribute contains the list of identifiers
- * of tags that reference the current node as a scale.
+ * of tags that reference the current term as a scale.
  */
-define( "kTAG_REFS_TAG_SCALE",					'15' );
+define( "kTAG_REFS_TAG_SCALE",					'16' );
 
 /**
  * Edge references.
@@ -198,7 +214,7 @@ define( "kTAG_REFS_TAG_SCALE",					'15' );
  * This tag identifies edge references, the attribute contains the list of identifiers of
  * edges that reference the current node.
  */
-define( "kTAG_REFS_EDGE",						'16' );
+define( "kTAG_REFS_EDGE",						'17' );
 
 /*=======================================================================================
  *	GENERIC ATTRIBUTES																	*
@@ -227,35 +243,35 @@ define( "kTAG_DESCRIPTION",						'6' );
  *
  * This tag is used as the offset for a list of authors.
  */
-define( "kTAG_AUTHORS",							'23' );
+define( "kTAG_AUTHORS",							'24' );
 
 /**
  * Notes.
  *
  * This tag is used as the offset for generic notes.
  */
-define( "kTAG_NOTES",							'24' );
+define( "kTAG_NOTES",							'25' );
 
 /**
  * Acknowledgments.
  *
  * This tag is used as the offset for generic acknowledgments.
  */
-define( "kTAG_ACKNOWLEDGMENTS",					'25' );
+define( "kTAG_ACKNOWLEDGMENTS",					'26' );
 
 /**
  * Bibliography.
  *
  * This tag represents the offset for a bibliography list.
  */
-define( "kTAG_BIBLIOGRAPHY",					'26' );
+define( "kTAG_BIBLIOGRAPHY",					'27' );
 
 /**
  * Examples.
  *
  * This tag represents the offset for a list of examples or templates.
  */
-define( "kTAG_EXAMPLES",						'27' );
+define( "kTAG_EXAMPLES",						'28' );
 
 /*=======================================================================================
  *	CUSTOM TYPE SUB ATTRIBUTES															*

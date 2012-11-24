@@ -36,31 +36,25 @@ require_once( kPATH_MYWRAPPER_LIBRARY_CLASS."/CPersistentObject.php" );
 /**
  * <h4>Tag object ancestor</h4>
  *
- * A tag object can be used to record the path starting from one node of a graph and ending
- * on another node. This class will assign a unique identifier to this path which can be
- * used externally to refer to the path.
+ * A tag object represents a path between two vertices of a graph, it can be used as a
+ * reference to that path.
  *
- * The paths that tag objects record are a sequence of <i>subject</i>, <i>predicate</i> and
- * <i>object</i>, these paths, therefore, should always have an odd number of elements in
- * which odd items represent <i>vertex elements</i> and even items represent
- * <i>predicates</i>.
+ * This class features the following default properties:
+ *
+ * <ul>
+ *	<li><i>Path</i>: The tag path, or the <tt>{@link kTAG_TAG_PATH}</tt> tag, represents a
+ *		sequence of <i>vertex</i>/<i>predicate</i>/<i>vertex</i> elements in which the odd
+ *		elements represent relationship vertices and the even elements the predicates that
+ *		connect these vertices. The class offers two methods, {@link PushItem()} and
+ *		{@link PopItem()} which respectively allow to append and remove items from the top
+ *		of the list.
+ *	<li><i>Global identifier</i>: The global identifier, <tt>{@link GID()}</tt> or the
+ *		<tt>{@link kTAG_GID}</tt> tag, is constituted by concatenating all the elements of
+ *		the path attribute, separated by the {@link kTOKEN_INDEX_SEPARATOR} token.
+ * </ul>
  *
  * A tag can be considered {@link _IsInited()} when it has at least one element in the path,
  * which represents the minimum legal number of path items.
- *
- * The class features member accessor methods for the default offsets:
- *
- * <ul>
- *	<li>{@link PushItem()}: This method can be used to add items to the tag path,
- *		{@link kTAG_TAG_PATH}, it will append the provided item to the end of the list.
- *	<li>{@link PopItem()}: This method can be used to remove items from the tag path,
- *		{@link kTAG_TAG_PATH}, it will remove the last item of the list.
- * </ul>
- *
- * The object features an offset, {@link kTAG_TAG_PATH}, which is an array holding the
- * elements of the path, the object's global identifier, {@link kTAG_GID}, is a string
- * representing the elements of the path separated by the {@link kTOKEN_INDEX_SEPARATOR}
- * token.
  *
  * This class implements the logic to manage these paths without assuming the nature or
  * type of their elements: this will be the responsibility of derived classes. In this

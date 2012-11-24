@@ -46,7 +46,11 @@ require_once( kPATH_MYWRAPPER_LIBRARY_CLASS."/CStatusDocument.php" );
  * A persistent document object is a document object that knows how to persist in derived
  * concrete instances of the {@link CContainer} class. This class features a default offset,
  * {@link kOFFSET_NID}, which represents the database native unique identifier, or primary
- * key. All objects derived from this class are uniquely identified by this offset.
+ * key, all objects derived from this class are uniquely identified by this offset.
+ *
+ * The object can have any number of attributes, it is up to the user to decide what
+ * structure the object should have, these attributes are stored in the array part of the
+ * object and tagged by the array index.
  *
  * This class implements a series of persistence methods:
  *

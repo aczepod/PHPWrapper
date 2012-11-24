@@ -6,7 +6,7 @@
 
 	<title>Class COntologyTag | MyWrapper Reference Documentation</title>
 
-	<script type="text/javascript" src="resources/combined.js?3680114562"></script>
+	<script type="text/javascript" src="resources/combined.js?1742645618"></script>
 	<script type="text/javascript" src="elementlist.js?539813953"></script>
 	<link rel="stylesheet" type="text/css" media="all" href="resources/style.css?3505392360" />
 
@@ -105,49 +105,49 @@
 <h4>Ontology tag object ancestor</h4>
 
 <p>This class extends its ancestor, <code><a href="class-CTag.html">CTag</a></code>, by asserting the type of
-objects passed to the path, kTAG_TAG_PATH, and by using the native
-identifiers, kOFFSET_NID, of the elements of the path in the <code><a href="class-COntologyTag.html#__index">COntologyTag::_index()</a></code> method.</p>
-
-<p>Odd elements of the path must refer to vertex elements of the graph, in this
-case <code><a href="class-COntologyNode.html">COntologyNode</a></code> objects; even elements of the path must refer to
-predicates of the graph, in this case <code><a href="class-COntologyTerm.html">COntologyTerm</a></code> objects.</p>
-
-<p>The elements of the path offset, kTAG_TAG_PATH, will be the native
-identifier of the path elements, while the global identifier, kTAG_GID,
-will receive the global identifiers of the path element related <code><a href="class-COntologyTerm.html">COntologyTerm</a></code> instances. This last behaviour means that once a tag is saved,
-related terms, nodes and edges should not be deleted.</p>
-
-<p>The class adds an offset, kTAG_UID, which stores the hashed version
-of the global identifier and can be used to identify duplicate objects.</p>
-
-<p>Elements of the path can be provided as objects and those that are not yet
-committed will be saved when the current tag is saved.</p>
-
-<p>Another action tags perform over nodes is the setting of the node <code><a href="class-CNode.html#_Kind">CNode::Kind()</a></code>: the first element of the path is a trait node, kKIND_NODE_TRAIT, the last element of the path is a scale node, kKIND_NODE_SCALE, and the eventual middle elements are method nodes, kKIND_NODE_METHOD. Once the tag is committed, the node's kind will be updated
-accordingly.</p>
-
-<p>When adding elements to the tag's path you must consistently follow these
-rules:</p>
+objects passed to the path, kTAG_TAG_PATH, and by using term references
+as the elements of the object's path and global identifier.</p>
 
 <ul>
-	<li>The first vertex of the path must represent the descriptor or main category
-	of the tag, it will be qualified as kKIND_NODE_TRAIT.</li>
+	<li><i>Path</i>: As in the parent class, this attribute collects graph vertices
+	and the predicates that connect them. The odd elements are expected to be vertex
+	nodes of graph and the even elements the predicate terms that connect them. In
+	this class the vertices are represented by the kTAG_TERM reference of
+	the vertex <code><a href="class-COntologyNode.html">COntologyNode</a></code> instances, while the predicates are represented
+	by the <code><a href="class-COntologyTerm.html">COntologyTerm</a></code> kOFFSET_NID of the predicate terms.</li>
 
-	<li>The last vertex of the path must represent the data type of the tag and must
-	have a <code><a href="class-COntologyNode.html#_Type">COntologyNode::Type()</a></code>, it will be qualified as kKIND_NODE_SCALE.</li>
+	<li><i>Global identifier</i>: The global identifier, <code><a href="class-CPersistentObject.html#_GID">CPersistentObject::GID()</a></code>, in this
+	class is represented by the concatenation of the kTAG_GID attributes of
+	all the <code><a href="class-COntologyTerm.html">COntologyTerm</a></code> instance references of the object's path, kTAG_TAG_PATH, separated by the kTOKEN_INDEX_SEPARATOR token.</li>
 
-	<li>The eventual vertices between the first and the last one should represent
-	variations or subclasses of the first vertex and will be marked as kKIND_NODE_METHOD.</li>
+	<li><i>Unique identifier</i>: The unique identifier, kTAG_UID, in this
+	class is represented by the hash of the global identifier.</li>
 </ul>
 
-<p>Because of this rule, it is not guaranteed that tag paths are in sync with
-graph paths, the predicate term glue is used as a discriminant to differentiate
-paths holding the same vertices.</p>
+<p>Elements of the path can be provided as committed objects, they must have
+their kOFFSET_NID set. <code><a href="class-COntologyNode.html">COntologyNode</a></code> instances or references can
+only be provided as odd elements, while <code><a href="class-COntologyTerm.html">COntologyTerm</a></code> instances or
+references can be provided as both odd or even elements. Note that nodes will
+always be resolved into the terms they refer to, so <i>there there is no direct
+relationship between nodes and tags</i>.</p>
 
-<p>The other effect of this is that it is not easy to match the path of a tag
-with the original path in the graph that was used to constitute the tag, the
-only thing one can do is ensure tags are constituted from elements following the
-ontology graph paths.</p>
+<p>This particular behaviour allows for different graph paths to share the same
+tag, which allows duplicating ontologies for use as templates, or preventing
+duplicate data types from being tagged differently. It also allows the same
+vertex elements to be treated differently if their predicates differ.</p>
+
+<p>Objects of this class will almost always be created by providing a sequence
+of node vertices and predicate terms, the <code><a href="class-COntologyTag.html#_PushItem">COntologyTag::PushItem()</a></code> method will follow
+these rules: the first element of the path is the feature vertex, if provided as
+an <code><a href="class-COntologyNode.html">COntologyNode</a></code> instance, it must have its <code><a href="class-CNode.html#_Kind">CNode::Kind()</a></code> set to kKIND_NODE_TRAIT; the last element of the
+path is the scale vertex, if provided as an <code><a href="class-COntologyNode.html">COntologyNode</a></code> instance, it
+must have its <code><a href="class-CNode.html#_Kind">CNode::Kind()</a></code> set to kKIND_NODE_SCALE.</p>
+
+<p>Whenever a tag is committed, the referenced terms will receive the tag kOFFSET_NID in an attribute, depending on their position in the path: the first
+path term will receive the tag reference in the kTAG_REFS_TAG_FEATURE
+attribute, the terms which are neither the first nor the last in the path
+receive the reference in kTAG_REFS_TAG_METHOD and the last term in
+kTAG_REFS_TAG_SCALE.</p>
 
 <p>This class prevents updating the full object once it has been inserted for
 the first time. This behaviour is necessary because tags are referenced by many
@@ -155,8 +155,11 @@ other objects, so updating a full tag object is risky, since it may have been
 updated elsewhere: for this reason the <code><a href="class-COntologyTag.html#_Update">COntologyTag::Update()</a></code> and <code><a href="class-COntologyTag.html#_Replace">COntologyTag::Replace()</a></code>
 methods will raise an exception.</p>
 
-<p>Objects of this class use a sequence number as their native identifier tagged
-as kSEQUENCE_KEY_TAG and feature a default container name kCONTAINER_TAG_NAME.</p>
+<p>Objects of this class use a sequence number as their native identifier,
+kOFFSET_NID, tagged as kSEQUENCE_KEY_TAG.</p>
+
+<p>The class implements the static method, <code><a href="class-COntologyTag.html#_DefaultContainer">COntologyTag::DefaultContainer()</a></code>, which,
+given a database, will return the default tag container; it will use the kCONTAINER_TAG_NAME constant as the container name.</p>
 
 	</div>
 
@@ -236,7 +239,7 @@ as kSEQUENCE_KEY_TAG and feature a default container name kCONTAINER_TAG_NAME.</
 				<b>Author:</b>
 				Milko A. Škofič &lt;<a
 href="mailto:m.skofic&#64;cgiar.org">m.skofic&#64;<!---->cgiar.org</a>&gt;<br />
-		<b>Located at</b> <a href="source-class-COntologyTag.html#43-1634" title="Go to source code">COntologyTag.php</a><br />
+		<b>Located at</b> <a href="source-class-COntologyTag.html#43-1151" title="Go to source code">COntologyTag.php</a><br />
 	</div>
 
 
@@ -254,7 +257,7 @@ href="mailto:m.skofic&#64;cgiar.org">m.skofic&#64;<!---->cgiar.org</a>&gt;<br />
 
 		<td class="name"><div>
 		<a class="anchor" href="#_PushItem">#</a>
-		<code><a href="source-class-COntologyTag.html#119-230" title="Go to source code">PushItem</a>( <span>mixed <var>$theValue</var></span> )</code>
+		<code><a href="source-class-COntologyTag.html#121-290" title="Go to source code">PushItem</a>( <span>mixed <var>$theValue</var></span> )</code>
 
 		<div class="description short">
 			
@@ -266,12 +269,34 @@ href="mailto:m.skofic&#64;cgiar.org">m.skofic&#64;<!---->cgiar.org</a>&gt;<br />
 			
 <h4>Append to path</h4>
 
-<p>We overload the parent method to assert the provided elements:</p>
+<p>We overload the parent method to implement the following rules:</p>
 
 <ul>
-	<li><code><a href="class-COntologyNode.html">COntologyNode</a></code>: Nodes must be provided as odd elements.</li>
+	<li>All elements of the path must be <code><a href="class-COntologyTerm.html">COntologyTerm</a></code> instance
+	references.</li>
 
-	<li><code><a href="class-COntologyTerm.html">COntologyTerm</a></code>: Terms must be provided as even elements.</li>
+	<li>Odd elements of the path are graph vertices and can be provided as <code><a href="class-COntologyNode.html">COntologyNode</a></code> instances:
+		<ul>
+			<li><code><a href="class-COntologyNode.html">COntologyNode</a></code> instances will be converted into their kTAG_TERM property.</li>
+
+			<li><tt>Integer</tt> values will <i>not</i> be interpreted as node references,
+			since there is no way to resolve them.</li>
+
+			<li>If the first element of the path is an <code><a href="class-COntologyNode.html">COntologyNode</a></code> instance, the
+			latter must have its kTAG_KIND attribute set to kKIND_NODE_TRAIT.</li>
+
+			<li>If the last element of the path is an <code><a href="class-COntologyNode.html">COntologyNode</a></code> instance, the
+			latter must have its kTAG_KIND attribute set to kKIND_NODE_SCALE.</li>
+		</ul>
+	</li>
+
+	<li>{link COntologyTerm} instances will be accepted in any position.</li>
+
+	<li>{link COntologyTerm} instances must have their kOFFSET_NID
+	attribute.</li>
+
+	<li>Any other data type will be interpreted as the term's kOFFSET_NID
+	and no verification will be performed.</li>
 </ul>
 
 
@@ -303,7 +328,7 @@ href="mailto:m.skofic&#64;cgiar.org">m.skofic&#64;<!---->cgiar.org</a>&gt;<br />
 		</div>
 		</div></td>
 	</tr>
-	<tr data-order="GetTraitNode" id="_GetTraitNode">
+	<tr data-order="GetFeatureVertex" id="_GetFeatureVertex">
 
 		<td class="attributes"><code>
 			 public 
@@ -313,57 +338,8 @@ href="mailto:m.skofic&#64;cgiar.org">m.skofic&#64;<!---->cgiar.org</a>&gt;<br />
 		</td>
 
 		<td class="name"><div>
-		<a class="anchor" href="#_GetTraitNode">#</a>
-		<code><a href="source-class-COntologyTag.html#237-261" title="Go to source code">GetTraitNode</a>( )</code>
-
-		<div class="description short">
-			
-<h4>Return trait node</h4>
-
-		</div>
-
-		<div class="description detailed hidden">
-			
-<h4>Return trait node</h4>
-
-<p>This method will return the current tag's trait node, if present, or
-<tt>NULL</tt>.</p>
-
-<p>The trait node refers the ontology node that represents the type of
-descriptor the current tag annotates, by default it is the first vertex of the
-path.</p>
-
-
-
-
-				<h4>Returns</h4>
-				<div class="list">
-					<code>mixed</code><br>First element of the path, or <tt>NULL</tt>.<br />
-				</div>
-
-
-				<h4>See</h4>
-				<div class="list">
-						kTAG_TAG_PATH<br />
-						kKIND_NODE_TRAIT<br />
-				</div>
-
-
-		</div>
-		</div></td>
-	</tr>
-	<tr data-order="GetTraitTerm" id="_GetTraitTerm">
-
-		<td class="attributes"><code>
-			 public 
-			mixed
-			
-			</code>
-		</td>
-
-		<td class="name"><div>
-		<a class="anchor" href="#_GetTraitTerm">#</a>
-		<code><a href="source-class-COntologyTag.html#268-293" title="Go to source code">GetTraitTerm</a>( )</code>
+		<a class="anchor" href="#_GetFeatureVertex">#</a>
+		<code><a href="source-class-COntologyTag.html#297-320" title="Go to source code">GetFeatureVertex</a>( )</code>
 
 		<div class="description short">
 			
@@ -375,12 +351,11 @@ path.</p>
 			
 <h4>Return trait term</h4>
 
-<p>This method will return the current tag's trait term, if present, or
+<p>This method will return the current tag's feature term, if present, or
 <tt>NULL</tt>.</p>
 
-<p>The trait term refers the ontology term that represents the type of
-descriptor the current tag annotates, by default it is the term referred to by
-the first vertex of the path.</p>
+<p>The feature vertex is the first element of the path, it refers the ontology
+term that represents the feature or trait the current object is tagging.</p>
 
 
 
@@ -393,67 +368,14 @@ the first vertex of the path.</p>
 
 				<h4>See</h4>
 				<div class="list">
-						kTAG_VERTEX_TERMS<br />
-						kKIND_NODE_TRAIT<br />
-				</div>
-
-
-		</div>
-		</div></td>
-	</tr>
-	<tr data-order="GetScaleNode" id="_GetScaleNode">
-
-		<td class="attributes"><code>
-			 public 
-			mixed
-			
-			</code>
-		</td>
-
-		<td class="name"><div>
-		<a class="anchor" href="#_GetScaleNode">#</a>
-		<code><a href="source-class-COntologyTag.html#300-327" title="Go to source code">GetScaleNode</a>( )</code>
-
-		<div class="description short">
-			
-<h4>Return scale node</h4>
-
-		</div>
-
-		<div class="description detailed hidden">
-			
-<h4>Return scale node</h4>
-
-<p>This method will return the current tag's scale node, if present, or
-<tt>NULL</tt>.</p>
-
-<p>The scale node refers the ontology node that represents the data type of the
-item the current tag annotates, by default it is the last vertex of the
-path.</p>
-
-<p>Note that if the tag contains only one vertex, that will be both a trait and
-a scale.</p>
-
-
-
-
-				<h4>Returns</h4>
-				<div class="list">
-					<code>mixed</code><br>Last element of the path, or <tt>NULL</tt>.<br />
-				</div>
-
-
-				<h4>See</h4>
-				<div class="list">
 						kTAG_TAG_PATH<br />
-						kKIND_NODE_SCALE<br />
 				</div>
 
 
 		</div>
 		</div></td>
 	</tr>
-	<tr data-order="GetScaleTerm" id="_GetScaleTerm">
+	<tr data-order="GetMethodVertex" id="_GetMethodVertex">
 
 		<td class="attributes"><code>
 			 public 
@@ -463,112 +385,8 @@ a scale.</p>
 		</td>
 
 		<td class="name"><div>
-		<a class="anchor" href="#_GetScaleTerm">#</a>
-		<code><a href="source-class-COntologyTag.html#334-362" title="Go to source code">GetScaleTerm</a>( )</code>
-
-		<div class="description short">
-			
-<h4>Return scale term</h4>
-
-		</div>
-
-		<div class="description detailed hidden">
-			
-<h4>Return scale term</h4>
-
-<p>This method will return the current tag's scale term, if present, or
-<tt>NULL</tt>.</p>
-
-<p>The scale term refers the ontology term that represents the data type of the
-item the current tag annotates, by default it is the term referred to by last
-vertex of the path.</p>
-
-<p>Note that if the tag contains only one vertex, that will be both a trait and
-a scale.</p>
-
-
-
-
-				<h4>Returns</h4>
-				<div class="list">
-					<code>mixed</code><br>Last element of the terms list, or <tt>NULL</tt>.<br />
-				</div>
-
-
-				<h4>See</h4>
-				<div class="list">
-						kTAG_VERTEX_TERMS<br />
-						kKIND_NODE_SCALE<br />
-				</div>
-
-
-		</div>
-		</div></td>
-	</tr>
-	<tr data-order="GetMethodNodes" id="_GetMethodNodes">
-
-		<td class="attributes"><code>
-			 public 
-			mixed
-			
-			</code>
-		</td>
-
-		<td class="name"><div>
-		<a class="anchor" href="#_GetMethodNodes">#</a>
-		<code><a href="source-class-COntologyTag.html#369-420" title="Go to source code">GetMethodNodes</a>( )</code>
-
-		<div class="description short">
-			
-<h4>Return method nodes</h4>
-
-		</div>
-
-		<div class="description detailed hidden">
-			
-<h4>Return method nodes</h4>
-
-<p>This method will return the current tag's list of method nodes, if present,
-or <tt>NULL</tt>.</p>
-
-<p>The method node refers the ontology node that represents a subclass or
-variation of the tag trait, it can be considered a pipeline of modifiers applied
-to the trait vertex. This kind of elements cannot be neither the first nor the
-last element of the path and can be found between the trait node, <code><a href="class-COntologyTag.html#_GetTraitNode">COntologyTag::GetTraitNode()</a></code>, an the scale node, <code><a href="class-COntologyTag.html#_GetScaleNode">COntologyTag::GetScaleNode()</a></code>.</p>
-
-<p>The method will return an array if at least one method is present.</p>
-
-
-
-
-				<h4>Returns</h4>
-				<div class="list">
-					<code>mixed</code><br>List of method nodes, or <tt>NULL</tt>.<br />
-				</div>
-
-
-				<h4>See</h4>
-				<div class="list">
-						kTAG_TAG_PATH<br />
-						kKIND_NODE_METHOD<br />
-				</div>
-
-
-		</div>
-		</div></td>
-	</tr>
-	<tr data-order="GetMethodTerms" id="_GetMethodTerms">
-
-		<td class="attributes"><code>
-			 public 
-			mixed
-			
-			</code>
-		</td>
-
-		<td class="name"><div>
-		<a class="anchor" href="#_GetMethodTerms">#</a>
-		<code><a href="source-class-COntologyTag.html#427-482" title="Go to source code">GetMethodTerms</a>( )</code>
+		<a class="anchor" href="#_GetMethodVertex">#</a>
+		<code><a href="source-class-COntologyTag.html#327-376" title="Go to source code">GetMethodVertex</a>( )</code>
 
 		<div class="description short">
 			
@@ -583,16 +401,14 @@ last element of the path and can be found between the trait node, <code><a href=
 <p>This method will return the current tag's list of method terms, if present,
 or <tt>NULL</tt>.</p>
 
-<p>The scale term refers the ontology term that represents the data type of the
-item the current tag annotates, by default it is the term referred to by last
-vertex of the path.</p>
-
-<p>The method term refers the ontology term that represents a subclass or
-variation of the tag trait, it can be considered a pipeline of modifiers applied
-to the trait vertex. This kind of elements cannot be neither the first nor the
-last element of the path and can be found between the trait term, <code><a href="class-COntologyTag.html#_GetTraitTerm">COntologyTag::GetTraitTerm()</a></code>, an the scale term, <code><a href="class-COntologyTag.html#_GetScaleTerm">COntologyTag::GetScaleTerm()</a></code>.</p>
+<p>The method vertex is the any odd element of the path that is neither the
+first nor the last, it represents the pipeline of modifiers applied to the
+feature vertex.</p>
 
 <p>The method will return an array if at least one method is present.</p>
+
+<p>Note that there must be at least 5 elements in the path to have one
+method.</p>
 
 
 
@@ -605,8 +421,57 @@ last element of the path and can be found between the trait term, <code><a href=
 
 				<h4>See</h4>
 				<div class="list">
-						kTAG_VERTEX_TERMS<br />
-						kKIND_NODE_METHOD<br />
+						kTAG_TAG_PATH<br />
+				</div>
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="GetScaleVertex" id="_GetScaleVertex">
+
+		<td class="attributes"><code>
+			 public 
+			mixed
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_GetScaleVertex">#</a>
+		<code><a href="source-class-COntologyTag.html#383-410" title="Go to source code">GetScaleVertex</a>( )</code>
+
+		<div class="description short">
+			
+<h4>Return scale term</h4>
+
+		</div>
+
+		<div class="description detailed hidden">
+			
+<h4>Return scale term</h4>
+
+<p>This method will return the current tag's scale term, if present, or
+<tt>NULL</tt>.</p>
+
+<p>The scale vertex is the last element of the path, it refers the ontology term
+that represents the scale or unit the current object is tagging.</p>
+
+<p>Note that if the tag contains only one vertex, that will be both a feature
+and a scale.</p>
+
+
+
+
+				<h4>Returns</h4>
+				<div class="list">
+					<code>mixed</code><br>Last element of the terms list, or <tt>NULL</tt>.<br />
+				</div>
+
+
+				<h4>See</h4>
+				<div class="list">
+						kTAG_TAG_PATH<br />
 				</div>
 
 
@@ -624,7 +489,7 @@ last element of the path and can be found between the trait term, <code><a href=
 
 		<td class="name"><div>
 		<a class="anchor" href="#_Update">#</a>
-		<code><a href="source-class-COntologyTag.html#498-528" title="Go to source code">Update</a>( <span><code><a href="class-CConnection.html">CConnection</a></code> <var>$theConnection</var></span> )</code>
+		<code><a href="source-class-COntologyTag.html#426-456" title="Go to source code">Update</a>( <span><code><a href="class-CConnection.html">CConnection</a></code> <var>$theConnection</var></span> )</code>
 
 		<div class="description short">
 			
@@ -672,7 +537,7 @@ modification interface provided by container objects.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#_Replace">#</a>
-		<code><a href="source-class-COntologyTag.html#535-575" title="Go to source code">Replace</a>( <span><code><a href="class-CConnection.html">CConnection</a></code> <var>$theConnection</var></span> )</code>
+		<code><a href="source-class-COntologyTag.html#463-503" title="Go to source code">Replace</a>( <span><code><a href="class-CConnection.html">CConnection</a></code> <var>$theConnection</var></span> )</code>
 
 		<div class="description short">
 			
@@ -723,7 +588,7 @@ non committed object.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#_DefaultContainer">#</a>
-		<code><a href="source-class-COntologyTag.html#591-608" title="Go to source code">DefaultContainer</a>( <span><code><a href="class-CDatabase.html">CDatabase</a></code> <var>$theDatabase</var></span> )</code>
+		<code><a href="source-class-COntologyTag.html#519-536" title="Go to source code">DefaultContainer</a>( <span><code><a href="class-CDatabase.html">CDatabase</a></code> <var>$theDatabase</var></span> )</code>
 
 		<div class="description short">
 			
@@ -774,7 +639,7 @@ kCONTAINER_TAG_NAME name.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#_Resolve">#</a>
-		<code><a href="source-class-COntologyTag.html#624-811" title="Go to source code">Resolve</a>( <span><code><a href="class-CConnection.html">CConnection</a></code> <var>$theConnection</var></span>, <span>mixed <var>$theIdentifier</var></span>, <span>boolean <var>$doThrow</var> = <span class="php-keyword1">FALSE</span> </span> )</code>
+		<code><a href="source-class-COntologyTag.html#552-702" title="Go to source code">Resolve</a>( <span><code><a href="class-CConnection.html">CConnection</a></code> <var>$theConnection</var></span>, <span>mixed <var>$theIdentifier</var></span>, <span>boolean <var>$doThrow</var> = <span class="php-keyword1">FALSE</span> </span> )</code>
 
 		<div class="description short">
 			
@@ -793,22 +658,23 @@ retrieve all tags matching a term.</p>
 
 <ul>
 	<li><tt>$theConnection</tt>: This parameter represents the connection from which
-	the tags container must be resolved. If this parameter cannot be correctly
-	determined, the method will raise an exception.</li>
+	the tags container must be resolved. Note that this method might need to resolve
+	the terms container, so provide at least a database.</li>
 
-	<li><tt>$theIdentifier</tt>: This parameter represents either the tag identifier
-	or a vertex term reference, depending on its type:
+	<li><tt>$theIdentifier</tt>: This parameter represents the identifier to be
+	resolved:
 		<ul>
 			<li><tt>integer</tt>: In this case the method assumes that the parameter
 			represents the tag identifier: it will attempt to retrieve the tag, if it is not
 			found, the method will return <tt>NULL</tt>.</li>
 
-			<li><tt><code><a href="class-COntologyTerm.html">COntologyTerm</a></code></tt>: In this case the method locate all tags
-			whose vertex nodes refer to the provided term. If the term is not <code><a href="class-CStatusDocument.html#__IsCommitted">CStatusDocument::_IsCommitted()</a></code>, the method will attempt to resolve it.</li>
+			<li><tt>array</tt>: In this case the method assumes the array is the tag path,
+			kTAG_PATH, it will attempt to convert it into the tag kTAG_UID
+			and locate it.</li>
 
 			<li><i>other</i>: Any other type will be interpreted either the tag's unique
 			identifier, or as the tag's global identifier: the method will return the
-			matching tag.</li>
+			matching tag or <tt>NULL</tt>.</li>
 		</ul>
 	</li>
 
@@ -816,17 +682,8 @@ retrieve all tags matching a term.</p>
 	raise an exception.</li>
 </ul>
 
-<p>It is important to note that when using term references we are only
-interested in those terms that are referred by nodes, predicate terms are not
-considered by this method.</p>
-
-<p>If the provided parameter is a <code><a href="class-COntologyTerm.html">COntologyTerm</a></code> instance, the method
-will return an array, in all other cases it will return a scalar; if there was
-no match it will either return <tt>NULL</tt> or raise an exception if the third
-parameter is <tt>TRUE</tt>.</p>
-
-<p><b>Note: do not provide an array containing the object in the identifier
-parameter, or you will get unexpected results.</b></p>
+<p>The method will return an instance of this class, or <tt>NULL</tt>, if the
+identifier was not resolved.</p>
 
 
 
@@ -835,14 +692,14 @@ parameter, or you will get unexpected results.</b></p>
 					<dt><var>$theConnection</var></dt>
 					<dd><code><code><a href="class-CConnection.html">CConnection</a></code></code><br>$theConnection Server, database or container.</dd>
 					<dt><var>$theIdentifier</var></dt>
-					<dd><code>mixed</code><br>$theIdentifier Node identifier or term reference.</dd>
+					<dd><code>mixed</code><br>$theIdentifier Identifier to be resolved.</dd>
 					<dt><var>$doThrow</var></dt>
 					<dd><code>boolean</code><br>$doThrow If <tt>TRUE</tt> raise an exception.</dd>
 				</dl></div>
 
 				<h4>Returns</h4>
 				<div class="list">
-					<code><code><a href="class-COntologyTerm.html">COntologyTerm</a></code></code><br>Found tag, tags or <tt>NULL</tt>.<br />
+					<code><code><a href="class-COntologyTerm.html">COntologyTerm</a></code></code><br>Found tag or <tt>NULL</tt>.<br />
 				</div>
 
 				<h4>Throws</h4>
@@ -870,7 +727,7 @@ parameter, or you will get unexpected results.</b></p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#__index">#</a>
-		<code><a href="source-class-COntologyTag.html#827-926" title="Go to source code">_index</a>( <span><code><a href="class-CConnection.html">CConnection</a></code> <var>$theConnection</var></span>, <span>bitfield <var>$theModifiers</var></span> )</code>
+		<code><a href="source-class-COntologyTag.html#718-770" title="Go to source code">_index</a>( <span><code><a href="class-CConnection.html">CConnection</a></code> <var>$theConnection</var></span>, <span>bitfield <var>$theModifiers</var></span> )</code>
 
 		<div class="description short">
 			
@@ -888,12 +745,7 @@ tag path, this method will take care of instantiating the necessary objects and
 building the global identifier.</p>
 
 <p>This method is called by the <code><a href="class-COntologyTag.html#__PrecommitIdentify">COntologyTag::_PrecommitIdentify()</a></code> and expects all
-elements of the path to be object native identifiers, so the method will resolve
-each element without checking if it is in the form of an object.</p>
-
-<p>This method is also responsible for loading the kTAG_VERTEX_TERMS
-offset: it will contain all the term native identifiers referred to by the tag's
-path vertex elements.</p>
+elements of the path to be object native identifiers.</p>
 
 
 
@@ -918,7 +770,6 @@ path vertex elements.</p>
 
 				<h4>See</h4>
 				<div class="list">
-						kTAG_VERTEX_TERMS<br />
 						kTAG_TAG_PATH kTOKEN_INDEX_SEPARATOR<br />
 				</div>
 				<h4>Used by</h4>
@@ -943,7 +794,7 @@ path vertex elements.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#__Preset">#</a>
-		<code><a href="source-class-COntologyTag.html#942-976" title="Go to source code">_Preset</a>( <span>reference <var>&amp; $theOffset</var></span>, <span>reference <var>&amp; $theValue</var></span> )</code>
+		<code><a href="source-class-COntologyTag.html#786-820" title="Go to source code">_Preset</a>( <span>reference <var>&amp; $theOffset</var></span>, <span>reference <var>&amp; $theValue</var></span> )</code>
 
 		<div class="description short">
 			
@@ -1000,7 +851,7 @@ committed.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#__Preunset">#</a>
-		<code><a href="source-class-COntologyTag.html#983-1016" title="Go to source code">_Preunset</a>( <span>reference <var>&amp; $theOffset</var></span> )</code>
+		<code><a href="source-class-COntologyTag.html#827-860" title="Go to source code">_Preunset</a>( <span>reference <var>&amp; $theOffset</var></span> )</code>
 
 		<div class="description short">
 			
@@ -1013,7 +864,7 @@ committed.</p>
 <h4>Handle offset before unsetting it</h4>
 
 <p>In this class we lock the kTAG_TAG_PATH attribute if the object is
-committed.</p>
+committed and the kTAG_UID in all cases.</p>
 
 
 
@@ -1044,68 +895,6 @@ committed.</p>
 		</div>
 		</div></td>
 	</tr>
-	<tr data-order="_PrecommitRelated" id="__PrecommitRelated">
-
-		<td class="attributes"><code>
-			 protected 
-			
-			
-			</code>
-		</td>
-
-		<td class="name"><div>
-		<a class="anchor" href="#__PrecommitRelated">#</a>
-		<code><a href="source-class-COntologyTag.html#1032-1127" title="Go to source code">_PrecommitRelated</a>( <span>reference <var>&amp; $theConnection</var></span>, <span>reference <var>&amp; $theModifiers</var></span> )</code>
-
-		<div class="description short">
-			
-<h4>Handle embedded or related objects before committing</h4>
-
-		</div>
-
-		<div class="description detailed hidden">
-			
-<h4>Handle embedded or related objects before committing</h4>
-
-<p>In this class we commit the eventual nodes and terms provided as an
-uncommitted objects and replace them with their native identifier.</p>
-
-<p>The method will also assert that the last node element of the path has a
-<code><a href="class-CNode.html#_Type">CNode::Type()</a></code>, if that is not the case, the method will raise an
-exception.</p>
-
-
-
-				<h4>Parameters</h4>
-				<div class="list"><dl>
-					<dt><var>$theConnection</var></dt>
-					<dd><code>reference</code><br>&amp;$theConnection Server, database or container.</dd>
-					<dt><var>$theModifiers</var></dt>
-					<dd><code>reference</code><br>&amp;$theModifiers Commit options.</dd>
-				</dl></div>
-
-
-				<h4>Throws</h4>
-				<div class="list">
-					<code><code><a href="class-Exception.html">Exception</a></code></code><br />
-				</div>
-
-				<h4>See</h4>
-				<div class="list">
-						kTAG_TAG_PATH<br />
-						kFLAG_PERSIST_INSERT kFLAG_PERSIST_REPLACE<br />
-				</div>
-				<h4>Uses</h4>
-				<div class="list">
-						<code><code><a href="class-CStatusDocument.html#__IsCommitted">CStatusDocument::_IsCommitted()</a></code></code> <br />
-				</div>
-
-				<h4>Overrides</h4>
-				<div class="list"><code><a href="class-CPersistentObject.html#__PrecommitRelated">CPersistentObject::_PrecommitRelated()</a></code></div>
-
-		</div>
-		</div></td>
-	</tr>
 	<tr data-order="_PrecommitIdentify" id="__PrecommitIdentify">
 
 		<td class="attributes"><code>
@@ -1117,7 +906,7 @@ exception.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#__PrecommitIdentify">#</a>
-		<code><a href="source-class-COntologyTag.html#1134-1229" title="Go to source code">_PrecommitIdentify</a>( <span>reference <var>&amp; $theConnection</var></span>, <span>reference <var>&amp; $theModifiers</var></span> )</code>
+		<code><a href="source-class-COntologyTag.html#876-975" title="Go to source code">_PrecommitIdentify</a>( <span>reference <var>&amp; $theConnection</var></span>, <span>reference <var>&amp; $theModifiers</var></span> )</code>
 
 		<div class="description short">
 			
@@ -1182,7 +971,7 @@ native identifiers, since they will have been set here.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#__PostcommitRelated">#</a>
-		<code><a href="source-class-COntologyTag.html#1245-1359" title="Go to source code">_PostcommitRelated</a>( <span>reference <var>&amp; $theConnection</var></span>, <span>reference <var>&amp; $theModifiers</var></span> )</code>
+		<code><a href="source-class-COntologyTag.html#991-1066" title="Go to source code">_PostcommitRelated</a>( <span>reference <var>&amp; $theConnection</var></span>, <span>reference <var>&amp; $theModifiers</var></span> )</code>
 
 		<div class="description short">
 			
@@ -1194,17 +983,11 @@ native identifiers, since they will have been set here.</p>
 			
 <h4>Update related objects after committing</h4>
 
-<p>Once committed, the referenced feature and scale vertices will be updated
-with the current tag's identifier in the respective kTAG_REFS_TAG_FEATURE and kTAG_REFS_TAG_SCALE attributes. Predicate
-terms will receive the current tag identifier in their kTAG_REFS_TAG
-attribute.</p>
+<p>Once committed, the referenced feature, method and scale vertices will be
+updated with the current tag's identifier in the respective kTAG_REFS_TAG_FEATURE, kTAG_REFS_TAG_METHOD and kTAG_REFS_TAG_SCALE attributes.</p>
 
 <p>When inserting a new tag, we add the tag reference, when deleting the tag we
 remove it.</p>
-
-<p>The method will also set the node <code><a href="class-CNode.html#_Kind">CNode::Kind()</a></code>s to kKIND_NODE_TRAIT for the first element of the path, to kKIND_NODE_SCALE
-for the last element and to kKIND_NODE_METHOD for the eventual
-in-between node elements.</p>
 
 <p>We only handle vertex elements, we do not refer predicate terms.</p>
 
@@ -1222,10 +1005,8 @@ in-between node elements.</p>
 
 				<h4>See</h4>
 				<div class="list">
-						kTAG_REFS_TAG<br />
+						kTAG_REFS_TAG_FEATURE, kTAG_REFS_TAG_METHOD, kTAG_REFS_TAG_SCALE<br />
 						kFLAG_PERSIST_INSERT kFLAG_PERSIST_REPLACE kFLAG_PERSIST_DELETE<br />
-						kFLAG_PERSIST_MODIFY kFLAG_MODIFY_ADDSET kFLAG_MODIFY_PULL<br />
-						kKIND_NODE_TRAIT kKIND_NODE_METHOD kKIND_NODE_SCALE<br />
 				</div>
 				<h4>Uses</h4>
 				<div class="list">
@@ -1238,7 +1019,7 @@ in-between node elements.</p>
 		</div>
 		</div></td>
 	</tr>
-	<tr data-order="_ReferenceInNode" id="__ReferenceInNode">
+	<tr data-order="_ReferenceInTerm" id="__ReferenceInTerm">
 
 		<td class="attributes"><code>
 			 protected 
@@ -1248,33 +1029,36 @@ in-between node elements.</p>
 		</td>
 
 		<td class="name"><div>
-		<a class="anchor" href="#__ReferenceInNode">#</a>
-		<code><a href="source-class-COntologyTag.html#1375-1436" title="Go to source code">_ReferenceInNode</a>( <span><code><a href="class-CConnection.html">CConnection</a></code> <var>$theConnection</var></span>, <span>mixed <var>$theNode</var></span>, <span>string <var>$theTag</var></span>, <span>boolean <var>$doAdd</var></span> )</code>
+		<a class="anchor" href="#__ReferenceInTerm">#</a>
+		<code><a href="source-class-COntologyTag.html#1082-1147" title="Go to source code">_ReferenceInTerm</a>( <span><code><a href="class-CConnection.html">CConnection</a></code> <var>$theConnection</var></span>, <span>mixed <var>$theTerm</var></span>, <span>string <var>$theTag</var></span>, <span>boolean <var>$doAdd</var></span> )</code>
 
 		<div class="description short">
 			
-<h4>Add tag reference to node</h4>
+<h4>Add tag reference to term</h4>
 
 		</div>
 
 		<div class="description detailed hidden">
 			
-<h4>Add tag reference to node</h4>
+<h4>Add tag reference to term</h4>
 
-<p>This method can be used to add or remove the current tag's reference to and
-from the provided node. This method should be used whenever committing a new tag
-or when deleting one: it will add the current tag's native identifier to the set
-of tag references of the provided node when committing a new tag; it will remove
-it when deleting the tag.</p>
+<p>This method can be used to add or remove the current tag's reference from the
+provided term. This method should be used whenever committing a new tag or when
+deleting one: it will update the term's kTAG_REFS_TAG for terms used as
+predicates, the kTAG_REFS_TAG_FEATURE for terms used as features or
+traits, the kTAG_REFS_TAG_METHOD for terms used as methods and the
+kTAG_REFS_TAG_SCALE for terms used as scales or units, the method will
+add the corresponding reference when inserting a new tag and remove it when
+deleting the tag.</p>
 
 <ul>
-	<li><tt>$theConnection</tt>: Server, database or container in which the nodes
+	<li><tt>$theConnection</tt>: Server, database or container in which the terms
 	reside.</li>
 
-	<li><tt>$theNode</tt>: Node object or identifier to which the current tag
+	<li><tt>$theTerm</tt>: Term object or identifier to which the current tag
 	reference is to be added or removed.</li>
 
-	<li><tt>$theTag</tt>: Attribute tag of the node to which the current tag
+	<li><tt>$theTag</tt>: Attribute tag of the terem to which the current tag
 	reference is to be added or removed.</li>
 
 	<li><tt>$doAdd</tt>: If <tt>TRUE</tt> add to set; if <tt>FALSE</tt> remove from
@@ -1291,8 +1075,8 @@ failed.</p>
 				<div class="list"><dl>
 					<dt><var>$theConnection</var></dt>
 					<dd><code><code><a href="class-CConnection.html">CConnection</a></code></code><br>$theConnection Server, database or container.</dd>
-					<dt><var>$theNode</var></dt>
-					<dd><code>mixed</code><br>$theNode Node object or identifier.</dd>
+					<dt><var>$theTerm</var></dt>
+					<dd><code>mixed</code><br>$theTerm Term object or identifier.</dd>
 					<dt><var>$theTag</var></dt>
 					<dd><code>string</code><br>$theTag Attribute tag to update.</dd>
 					<dt><var>$doAdd</var></dt>
@@ -1307,236 +1091,9 @@ failed.</p>
 
 				<h4>See</h4>
 				<div class="list">
-						kOFFSET_NID kTAG_REFS_TAG_FEATURE kTAG_REFS_TAG_SCALE<br />
-						kFLAG_PERSIST_MODIFY kFLAG_MODIFY_ADDSET kFLAG_MODIFY_PULL<br />
-				</div>
-
-
-		</div>
-		</div></td>
-	</tr>
-	<tr data-order="_ReferenceInTerm" id="__ReferenceInTerm">
-
-		<td class="attributes"><code>
-			 protected 
-			boolean
-			
-			</code>
-		</td>
-
-		<td class="name"><div>
-		<a class="anchor" href="#__ReferenceInTerm">#</a>
-		<code><a href="source-class-COntologyTag.html#1443-1495" title="Go to source code">_ReferenceInTerm</a>( <span><code><a href="class-CConnection.html">CConnection</a></code> <var>$theConnection</var></span>, <span>mixed <var>$theTerm</var></span>, <span>boolean <var>$doAdd</var></span> )</code>
-
-		<div class="description short">
-			
-<h4>Add tag reference to term</h4>
-
-		</div>
-
-		<div class="description detailed hidden">
-			
-<h4>Add tag reference to term</h4>
-
-<p>This method can be used to add or remove the current tag's reference, kTAG_REFS_TAG, from the provided term. This method should be used whenever
-committing a new tag or when deleting one: it will add the current tag's native
-identifier to the set of tag references of the provided term when committing a
-new tag; it will remove it when deleting the tag.</p>
-
-<p>The last parameter is a boolean: if <tt>TRUE</tt> the method will add to the
-set; if <tt>FALSE</tt>, it will remove from the set.</p>
-
-<p>The method will return <tt>TRUE</tt> if the operation affected at least one
-object, <tt>FALSE</tt> if not and raise an exception if the operation
-failed.</p>
-
-
-
-				<h4>Parameters</h4>
-				<div class="list"><dl>
-					<dt><var>$theConnection</var></dt>
-					<dd><code><code><a href="class-CConnection.html">CConnection</a></code></code><br>$theConnection Server, database or container.</dd>
-					<dt><var>$theTerm</var></dt>
-					<dd><code>mixed</code><br>$theTerm Term object or identifier.</dd>
-					<dt><var>$doAdd</var></dt>
-					<dd><code>boolean</code><br>$doAdd <tt>TRUE</tt> add reference.</dd>
-				</dl></div>
-
-				<h4>Returns</h4>
-				<div class="list">
-					<code>boolean</code><br><tt>TRUE</tt> operation affected at least one object.<br />
-				</div>
-
-
-				<h4>See</h4>
-				<div class="list">
 						kOFFSET_NID kTAG_REFS_TAG<br />
+						kTAG_REFS_TAG_FEATURE kTAG_REFS_TAG_METHOD kTAG_REFS_TAG_SCALE<br />
 						kFLAG_PERSIST_MODIFY kFLAG_MODIFY_ADDSET kFLAG_MODIFY_PULL<br />
-				</div>
-
-
-		</div>
-		</div></td>
-	</tr>
-	<tr data-order="_SetTraitNode" id="__SetTraitNode">
-
-		<td class="attributes"><code>
-			 protected 
-			boolean
-			
-			</code>
-		</td>
-
-		<td class="name"><div>
-		<a class="anchor" href="#__SetTraitNode">#</a>
-		<code><a href="source-class-COntologyTag.html#1511-1546" title="Go to source code">_SetTraitNode</a>( <span><code><a href="class-CConnection.html">CConnection</a></code> <var>$theConnection</var></span>, <span>mixed <var>$theNode</var></span> )</code>
-
-		<div class="description short">
-			
-<h4>Set node's kind to trait</h4>
-
-		</div>
-
-		<div class="description detailed hidden">
-			
-<h4>Set node's kind to trait</h4>
-
-<p>This method will set the provided node's kind to kKIND_NODE_TRAIT.</p>
-
-<p>The method will return <tt>TRUE</tt> if the operation affected at least one
-object, <tt>FALSE</tt> if not and raise an exception if the operation
-failed.</p>
-
-
-
-				<h4>Parameters</h4>
-				<div class="list"><dl>
-					<dt><var>$theConnection</var></dt>
-					<dd><code><code><a href="class-CConnection.html">CConnection</a></code></code><br>$theConnection Server, database or container.</dd>
-					<dt><var>$theNode</var></dt>
-					<dd><code>mixed</code><br>$theNode Node object or identifier.</dd>
-				</dl></div>
-
-				<h4>Returns</h4>
-				<div class="list">
-					<code>boolean</code><br><tt>TRUE</tt> operation affected at least one object.<br />
-				</div>
-
-
-				<h4>See</h4>
-				<div class="list">
-						kTAG_KIND kKIND_NODE_TRAIT<br />
-						kFLAG_PERSIST_MODIFY kFLAG_MODIFY_ADDSET<br />
-				</div>
-
-
-		</div>
-		</div></td>
-	</tr>
-	<tr data-order="_SetMethodNode" id="__SetMethodNode">
-
-		<td class="attributes"><code>
-			 protected 
-			boolean
-			
-			</code>
-		</td>
-
-		<td class="name"><div>
-		<a class="anchor" href="#__SetMethodNode">#</a>
-		<code><a href="source-class-COntologyTag.html#1553-1588" title="Go to source code">_SetMethodNode</a>( <span><code><a href="class-CConnection.html">CConnection</a></code> <var>$theConnection</var></span>, <span>mixed <var>$theNode</var></span> )</code>
-
-		<div class="description short">
-			
-<h4>Set node's kind to method</h4>
-
-		</div>
-
-		<div class="description detailed hidden">
-			
-<h4>Set node's kind to method</h4>
-
-<p>This method will set the provided node's kind to kKIND_NODE_METHOD.</p>
-
-<p>The method will return <tt>TRUE</tt> if the operation affected at least one
-object, <tt>FALSE</tt> if not and raise an exception if the operation
-failed.</p>
-
-
-
-				<h4>Parameters</h4>
-				<div class="list"><dl>
-					<dt><var>$theConnection</var></dt>
-					<dd><code><code><a href="class-CConnection.html">CConnection</a></code></code><br>$theConnection Server, database or container.</dd>
-					<dt><var>$theNode</var></dt>
-					<dd><code>mixed</code><br>$theNode Node object or identifier.</dd>
-				</dl></div>
-
-				<h4>Returns</h4>
-				<div class="list">
-					<code>boolean</code><br><tt>TRUE</tt> operation affected at least one object.<br />
-				</div>
-
-
-				<h4>See</h4>
-				<div class="list">
-						kTAG_KIND kKIND_NODE_METHOD<br />
-						kFLAG_PERSIST_MODIFY kFLAG_MODIFY_ADDSET<br />
-				</div>
-
-
-		</div>
-		</div></td>
-	</tr>
-	<tr data-order="_SetScaleNode" id="__SetScaleNode">
-
-		<td class="attributes"><code>
-			 protected 
-			boolean
-			
-			</code>
-		</td>
-
-		<td class="name"><div>
-		<a class="anchor" href="#__SetScaleNode">#</a>
-		<code><a href="source-class-COntologyTag.html#1595-1630" title="Go to source code">_SetScaleNode</a>( <span><code><a href="class-CConnection.html">CConnection</a></code> <var>$theConnection</var></span>, <span>mixed <var>$theNode</var></span> )</code>
-
-		<div class="description short">
-			
-<h4>Set node's kind to scale</h4>
-
-		</div>
-
-		<div class="description detailed hidden">
-			
-<h4>Set node's kind to scale</h4>
-
-<p>This method will set the provided node's kind to kKIND_NODE_SCALE.</p>
-
-<p>The method will return <tt>TRUE</tt> if the operation affected at least one
-object, <tt>FALSE</tt> if not and raise an exception if the operation
-failed.</p>
-
-
-
-				<h4>Parameters</h4>
-				<div class="list"><dl>
-					<dt><var>$theConnection</var></dt>
-					<dd><code><code><a href="class-CConnection.html">CConnection</a></code></code><br>$theConnection Server, database or container.</dd>
-					<dt><var>$theNode</var></dt>
-					<dd><code>mixed</code><br>$theNode Node object or identifier.</dd>
-				</dl></div>
-
-				<h4>Returns</h4>
-				<div class="list">
-					<code>boolean</code><br><tt>TRUE</tt> operation affected at least one object.<br />
-				</div>
-
-
-				<h4>See</h4>
-				<div class="list">
-						kTAG_KIND kKIND_NODE_SCALE<br />
-						kFLAG_PERSIST_MODIFY kFLAG_MODIFY_ADDSET<br />
 				</div>
 
 
@@ -1564,6 +1121,7 @@ failed.</p>
 			<a href="class-CPersistentObject.html#_GID">GID()</a>, 
 			<a href="class-CPersistentObject.html#_NewObject">NewObject()</a>, 
 			<a href="class-CPersistentObject.html#__AssertClass">_AssertClass()</a>, 
+			<a href="class-CPersistentObject.html#__PrecommitRelated">_PrecommitRelated()</a>, 
 			<a href="class-CPersistentObject.html#___toString">__toString()</a>, 
 			<a href="class-CPersistentObject.html#__id">_id()</a>
 		</code></td>

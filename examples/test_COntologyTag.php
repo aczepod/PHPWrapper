@@ -163,6 +163,7 @@ try
 	echo( '<h4>Create namespace term</h4>' );
 	$namespace = new COntologyTerm();
 	$namespace[ kTAG_LID ] = "NAMESPACE";
+	$namespace->Insert( $database );
 	echo( '<pre>' ); print_r( $namespace ); echo( '</pre>' );
 	
 	//
@@ -172,6 +173,7 @@ try
 	$termPredicate = new COntologyTerm();
 	$termPredicate[ kTAG_NAMESPACE ] = $namespace;
 	$termPredicate[ kTAG_LID ] = "PREDICATE";
+	$termPredicate->Insert( $database );
 	echo( '<pre>' ); print_r( $termPredicate ); echo( '</pre>' );
 	
 	//
@@ -181,6 +183,7 @@ try
 	$termTrait = new COntologyTerm();
 	$termTrait[ kTAG_NAMESPACE ] = $namespace;
 	$termTrait[ kTAG_LID ] = "TRAIT";
+	$termTrait->Insert( $database );
 	echo( '<pre>' ); print_r( $termTrait ); echo( '</pre>' );
 	
 	//
@@ -190,6 +193,7 @@ try
 	$termMethod = new COntologyTerm();
 	$termMethod[ kTAG_NAMESPACE ] = $namespace;
 	$termMethod[ kTAG_LID ] = "METHOD";
+	$termMethod->Insert( $database );
 	echo( '<pre>' ); print_r( $termMethod ); echo( '</pre>' );
 	
 	//
@@ -199,6 +203,7 @@ try
 	$termScale = new COntologyTerm();
 	$termScale[ kTAG_NAMESPACE ] = $namespace;
 	$termScale[ kTAG_LID ] = "SCALE";
+	$termScale->Insert( $database );
 	echo( '<pre>' ); print_r( $termScale ); echo( '</pre>' );
 	
 	//
@@ -207,6 +212,8 @@ try
 	echo( '<h4>Create trait node</h4>' );
 	$nodeTrait = new COntologyNode();
 	$nodeTrait->Term( $termTrait );
+	$nodeTrait->Kind( kKIND_NODE_TRAIT, TRUE );
+//	$nodeTrait->Insert( $database );
 	echo( '<pre>' ); print_r( $nodeTrait ); echo( '</pre>' );
 	
 	//
@@ -215,6 +222,7 @@ try
 	echo( '<h4>Create method node</h4>' );
 	$nodeMethod = new COntologyNode();
 	$nodeMethod->Term( $termMethod );
+	$nodeMethod->Insert( $database );
 	echo( '<pre>' ); print_r( $nodeMethod ); echo( '</pre>' );
 	
 	//
@@ -224,6 +232,7 @@ try
 	$nodeScale = new COntologyNode();
 	$nodeScale->Term( $termScale );
 	$nodeScale->Type( kTYPE_ENUM, TRUE );
+	$nodeScale->Insert( $database );
 	echo( '<pre>' ); print_r( $nodeScale ); echo( '</pre>' );
 	echo( '<hr />' );
 	echo( '<hr />' );
@@ -251,9 +260,33 @@ try
 	echo( '<hr>' );
 	
 	//
-	// Instantiate tag with trait node.
+	// Instantiate tag with uncommitted feature node.
 	//
-	echo( '<h4>Instantiate tag with trait node</h4>' );
+	try
+	{
+		echo( '<h4>Instantiate tag with uncommitted feature node</h4>' );
+		echo( '<h5>$tag = new MyClass();</h5>' );
+		$tag = new MyClass();
+		echo( '<h5>$tag->PushItem( $nodeTrait );</h5>' );
+		$tag->PushItem( $nodeTrait );
+		echo( '<h3><font color="red">Should have raised an exception</font></h3>' );
+		echo( '<pre>' ); print_r( $tag ); echo( '</pre>' );
+		echo( '<hr />' );
+	}
+	catch( Exception $error )
+	{
+		echo( '<h5>Expected exception</h5>' );
+		echo( '<pre>'.(string) $error.'</pre>' );
+		echo( '<hr>' );
+	}
+	echo( '<hr>' );
+	
+	//
+	// Instantiate tag with feature node.
+	//
+	echo( '<h4>Instantiate tag with feature node</h4>' );
+	echo( '<h5>$nodeTrait->Insert( $database );</h5>' );
+	$nodeTrait->Insert( $database );
 	echo( '<h5>$tag = new MyClass();</h5>' );
 	$tag = new MyClass();
 	echo( '<h5>$tag->PushItem( $nodeTrait );</h5>' );
@@ -343,67 +376,37 @@ try
 	echo( '<h5>$nodeScale->Restore( $database );</h5>' );
 	$nodeScale->Restore( $database );
 	echo( 'Tag<pre>' ); print_r( $tag ); echo( '</pre>' );
-	echo( 'Trait node<pre>' ); print_r( (array) $nodeTrait ); echo( '</pre>' );
 	echo( 'Trait term<pre>' ); print_r( $nodeTrait->LoadTerm( $database ) ); echo( '</pre>' );
-	echo( 'Method node<pre>' ); print_r( (array) $nodeMethod ); echo( '</pre>' );
 	echo( 'Method term<pre>' ); print_r( $nodeMethod->LoadTerm( $database ) ); echo( '</pre>' );
-	echo( 'Scale node<pre>' ); print_r( (array) $nodeScale ); echo( '</pre>' );
 	echo( 'Scale term<pre>' ); print_r( $nodeScale->LoadTerm( $database ) ); echo( '</pre>' );
 	echo( '<hr />' );
-	echo( '<hr />' );
-	
-	//
-	// Get trait node.
-	//
-	echo( '<h4>Get trait node</h4>' );
-	echo( '<h5>$node = $tag->GetTraitNode();</h5>' );
-	$node = $tag->GetTraitNode();
-	echo( '<pre>' ); print_r( $node ); echo( '</pre>' );
 	echo( '<hr />' );
 	
 	//
 	// Get trait term.
 	//
 	echo( '<h4>Get trait term</h4>' );
-	echo( '<h5>$node = $tag->GetTraitTerm();</h5>' );
-	$term = $tag->GetTraitTerm();
+	echo( '<h5>$node = $tag->GetFeatureVertex();</h5>' );
+	$term = $tag->GetFeatureVertex();
 	echo( '<pre>' ); print_r( $term ); echo( '</pre>' );
 	echo( '<hr />' );
-	
-	//
-	// Get scale node.
-	//
-	echo( '<h4>Get scale node</h4>' );
-	echo( '<h5>$node = $tag->GetScaleNode();</h5>' );
-	$node = $tag->GetScaleNode();
-	echo( '<pre>' ); print_r( $node ); echo( '</pre>' );
-	echo( '<hr />' );
-	
-	//
-	// Get scale term.
-	//
-	echo( '<h4>Get scale term</h4>' );
-	echo( '<h5>$term = $tag->GetScaleTerm();</h5>' );
-	$term = $tag->GetScaleTerm();
-	echo( '<pre>' ); print_r( $term ); echo( '</pre>' );
-	echo( '<hr />' );
-	
-	//
-	// Get method nodes.
-	//
-	echo( '<h4>Get method nodes</h4>' );
-	echo( '<h5>$nodes = $tag->GetMethodNodes();</h5>' );
-	$nodes = $tag->GetMethodNodes();
-	echo( '<pre>' ); print_r( $nodes ); echo( '</pre>' );
-	echo( '<hr />' );
-	
+		
 	//
 	// Get method terms.
 	//
 	echo( '<h4>Get method terms</h4>' );
-	echo( '<h5>$terms = $tag->GetMethodTerms();</h5>' );
-	$terms = $tag->GetMethodTerms();
+	echo( '<h5>$terms = $tag->GetMethodVertex();</h5>' );
+	$terms = $tag->GetMethodVertex();
 	echo( '<pre>' ); print_r( $terms ); echo( '</pre>' );
+	echo( '<hr />' );
+
+	//
+	// Get scale term.
+	//
+	echo( '<h4>Get scale term</h4>' );
+	echo( '<h5>$term = $tag->GetScaleVertex();</h5>' );
+	$term = $tag->GetScaleVertex();
+	echo( '<pre>' ); print_r( $term ); echo( '</pre>' );
 	echo( '<hr />' );
 	echo( '<hr />' );
 	
@@ -424,11 +427,8 @@ try
 	echo( '<h5>$nodeScale->Restore( $database );</h5>' );
 	$nodeScale->Restore( $database );
 	echo( 'Tag<pre>' ); print_r( $tag ); echo( '</pre>' );
-	echo( 'Trait node<pre>' ); print_r( (array) $nodeTrait ); echo( '</pre>' );
 	echo( 'Trait term<pre>' ); print_r( $nodeTrait->LoadTerm( $database ) ); echo( '</pre>' );
-	echo( 'Method node<pre>' ); print_r( (array) $nodeMethod ); echo( '</pre>' );
 	echo( 'Method term<pre>' ); print_r( $nodeMethod->LoadTerm( $database ) ); echo( '</pre>' );
-	echo( 'Scale node<pre>' ); print_r( (array) $nodeScale ); echo( '</pre>' );
 	echo( 'Scale term<pre>' ); print_r( $nodeScale->LoadTerm( $database ) ); echo( '</pre>' );
 	echo( '<hr />' );
 	echo( '<hr />' );

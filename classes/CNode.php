@@ -33,6 +33,27 @@ require_once( kPATH_MYWRAPPER_LIBRARY_CLASS."/CPersistentObject.php" );
  * edges, a node is a vertex of a relationship. This class concentrates in the core
  * features of the node, without taking into consideration the connections to other nodes.
  *
+ * The class features the following default properties:
+ *
+ * <ul>
+ *	<li><i>Term</i>: The term, <tt>{@link Term()}</tt> or the <tt>{@link kTAG_TERM}</tt>
+ *		tag, is a reference to a {@link CTerm} instance which holds the static attributes
+ *		of the current node. This attribute is constituted by the {@link kOFFSET_NID} of the
+ *		referenced term and is required.
+ *	<li><i>Category</i>: The category, <tt>{@link Category()}</tt> or the
+ *		<tt>{@link kTAG_CATEGORY}</tt> tag, is an enumerated set of values that constitute
+ *		the category or classification to which the object referred by the current node
+ *		belongs to. This attribute is optional.
+ *	<li><i>Kind</i>: The kind, <tt>{@link Kind()}</tt> or the <tt>{@link kTAG_KIND}</tt>
+ *		tag, is an enumerated set of values that define the function of the node. This
+ *		attribute is optional.
+ *	<li><i>Type</i>: The type, <tt>{@link Type()}</tt> or the <tt>{@link kTAG_TYPE}</tt>
+ *		tag, is an enumerated set of values that represent the type of the object defined by
+ *		the current node. This attribute will be in general a combination of elements
+ *		describing two main attribute categories: the data type and the cardinality. This
+ *		attribute is optional.
+ * </ul>
+ *
  * The node's main property is the term, {@link kTAG_TERM}, which defines the abstract
  * concept that the node represents: a term taken by itself is an abstract concept, when it
  * is referenced from a node which is related to other nodes through predicates, this term
@@ -162,6 +183,74 @@ class CNode extends CPersistentObject
 		return ManageOffset( $this, kTAG_TERM, $theValue, $getOld );				// ==>
 
 	} // Term.
+
+		
+	/*===================================================================================
+	 *	Category																		*
+	 *==================================================================================*/
+
+	/**
+	 * <h4>Manage node category set</h4>
+	 *
+	 * This method can be used to manage the node's category, {@link kTAG_CATEGORY}, which
+	 * is an enumerated set that represents the category or classification to which the
+	 * object defined by the node belongs to.
+	 *
+	 * This enumerated set is managed with the following parameters:
+	 *
+	 * <ul>
+	 *	<li><tt>$theValue</tt>: Depending on the next parameter, this may either refer to
+	 *		the value to be set or to the index of the element to be retrieved or deleted:
+	 *	 <ul>
+	 *		<li><tt>NULL</tt>: This value indicates that we want to operate on all elements,
+	 *			which means, in practical terms, that we either want to retrieve or delete
+	 *			the full list. If the operation parameter resolves to <tt>TRUE</tt>, the
+	 *			method will default to retrieving the current list and no new element will
+	 *			be added.
+	 *		<li><tt>array</tt>: An array indicates that we want to operate on a list of
+	 *			values and that other parameters may also be provided as lists. Note that
+	 *			{@link ArrayObject} instances are not considered here as arrays.
+	 *		<li><i>other</i>: Any other type represents either the new value to be added or
+	 *			the index to the value to be returned or deleted.
+	 *	 </ul>
+	 *	<li><tt>$theOperation</tt>: This parameter represents the operation to be performed
+	 *		whose scope depends on the value of the previous parameter:
+	 *	 <ul>
+	 *		<li><tt>NULL</tt>: Return the element or full list.
+	 *		<li><tt>FALSE</tt>: Delete the element or full list.
+	 *		<li><tt>array</tt>: This type is only considered if the <tt>$theValue</tt>
+	 *			parameter is provided as an array: the method will be called for each
+	 *			element of the <tt>$theValue</tt> parameter matched with the corresponding
+	 *			element of this parameter, which also means that both both parameters must
+	 *			share the same count.
+	 *		<li><i>other</i>: Add the <tt>$theValue</tt> value to the list. If you provided
+	 *			<tt>NULL</tt> in the previous parameter, the operation will be reset to
+	 *			<tt>NULL</tt>.
+	 *	 </ul>
+	 *	<li><tt>$getOld</tt>: Determines what the method will return:
+	 *	 <ul>
+	 *		<li><tt>TRUE</tt>: Return the value <i>before</i> it was eventually modified.
+	 *		<li><tt>FALSE</tt>: Return the value <i>after</i> it was eventually modified.
+	 *	 </ul>
+	 * </ul>
+	 *
+	 * @param mixed					$theValue			Value or index.
+	 * @param mixed					$theOperation		Operation.
+	 * @param boolean				$getOld				TRUE get old value.
+	 *
+	 * @access public
+	 * @return mixed				<i>New</i> or <i>old</i> type.
+	 *
+	 * @uses ManageObjectSetOffset()
+	 *
+	 * @see kTAG_CATEGORY
+	 */
+	public function Category( $theValue = NULL, $theOperation = NULL, $getOld = FALSE )
+	{
+		return ManageObjectSetOffset
+			( $this, kTAG_CATEGORY, $theValue, $theOperation, $getOld );			// ==>
+
+	} // Category.
 
 		
 	/*===================================================================================
@@ -302,7 +391,7 @@ class CNode extends CPersistentObject
 
 	} // Type.
 
-		
+	 
 
 /*=======================================================================================
  *																						*

@@ -6,7 +6,7 @@
 
 	<title>Class CPersistentDocument | MyWrapper Reference Documentation</title>
 
-	<script type="text/javascript" src="resources/combined.js?3680114562"></script>
+	<script type="text/javascript" src="resources/combined.js?1742645618"></script>
 	<script type="text/javascript" src="elementlist.js?539813953"></script>
 	<link rel="stylesheet" type="text/css" media="all" href="resources/style.css?3505392360" />
 
@@ -109,8 +109,12 @@
 <p>A persistent document object is a document object that knows how to persist
 in derived concrete instances of the <code><a href="class-CContainer.html">CContainer</a></code> class. This class
 features a default offset, kOFFSET_NID, which represents the database
-native unique identifier, or primary key. All objects derived from this class
+native unique identifier, or primary key, all objects derived from this class
 are uniquely identified by this offset.</p>
+
+<p>The object can have any number of attributes, it is up to the user to decide
+what structure the object should have, these attributes are stored in the array
+part of the object and tagged by the array index.</p>
 
 <p>This class implements a series of persistence methods:</p>
 
@@ -218,7 +222,7 @@ is deleted.</p>
 				<b>Author:</b>
 				Milko A. Škofič &lt;<a
 href="mailto:m.skofic&#64;cgiar.org">m.skofic&#64;<!---->cgiar.org</a>&gt;<br />
-		<b>Located at</b> <a href="source-class-CPersistentDocument.html#43-1342" title="Go to source code">CPersistentDocument.php</a><br />
+		<b>Located at</b> <a href="source-class-CPersistentDocument.html#43-1346" title="Go to source code">CPersistentDocument.php</a><br />
 	</div>
 
 
@@ -236,7 +240,7 @@ href="mailto:m.skofic&#64;cgiar.org">m.skofic&#64;<!---->cgiar.org</a>&gt;<br />
 
 		<td class="name"><div>
 		<a class="anchor" href="#_NID">#</a>
-		<code><a href="source-class-CPersistentDocument.html#97-137" title="Go to source code">NID</a>( <span>mixed <var>$theValue</var> = <span class="php-keyword1">NULL</span></span>, <span>boolean <var>$getOld</var> = <span class="php-keyword1">FALSE</span> </span> )</code>
+		<code><a href="source-class-CPersistentDocument.html#101-141" title="Go to source code">NID</a>( <span>mixed <var>$theValue</var> = <span class="php-keyword1">NULL</span></span>, <span>boolean <var>$getOld</var> = <span class="php-keyword1">FALSE</span> </span> )</code>
 
 		<div class="description short">
 			
@@ -314,7 +318,7 @@ will be locked and an exception will be raised.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#_Insert">#</a>
-		<code><a href="source-class-CPersistentDocument.html#153-227" title="Go to source code">Insert</a>( <span><code><a href="class-CConnection.html">CConnection</a></code> <var>$theConnection</var></span> )</code>
+		<code><a href="source-class-CPersistentDocument.html#157-231" title="Go to source code">Insert</a>( <span><code><a href="class-CConnection.html">CConnection</a></code> <var>$theConnection</var></span> )</code>
 
 		<div class="description short">
 			
@@ -389,7 +393,7 @@ event the method will return <tt>NULL</tt>.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#_Update">#</a>
-		<code><a href="source-class-CPersistentDocument.html#234-304" title="Go to source code">Update</a>( <span><code><a href="class-CConnection.html">CConnection</a></code> <var>$theConnection</var></span> )</code>
+		<code><a href="source-class-CPersistentDocument.html#238-308" title="Go to source code">Update</a>( <span><code><a href="class-CConnection.html">CConnection</a></code> <var>$theConnection</var></span> )</code>
 
 		<div class="description short">
 			
@@ -460,7 +464,7 @@ status set and its <code><a href="class-CStatusDocument.html#__IsDirty">CStatusD
 
 		<td class="name"><div>
 		<a class="anchor" href="#_Replace">#</a>
-		<code><a href="source-class-CPersistentDocument.html#311-388" title="Go to source code">Replace</a>( <span><code><a href="class-CConnection.html">CConnection</a></code> <var>$theConnection</var></span> )</code>
+		<code><a href="source-class-CPersistentDocument.html#315-392" title="Go to source code">Replace</a>( <span><code><a href="class-CConnection.html">CConnection</a></code> <var>$theConnection</var></span> )</code>
 
 		<div class="description short">
 			
@@ -537,7 +541,7 @@ status set and its <code><a href="class-CStatusDocument.html#__IsDirty">CStatusD
 
 		<td class="name"><div>
 		<a class="anchor" href="#_Restore">#</a>
-		<code><a href="source-class-CPersistentDocument.html#395-474" title="Go to source code">Restore</a>( <span><code><a href="class-CConnection.html">CConnection</a></code> <var>$theConnection</var></span> )</code>
+		<code><a href="source-class-CPersistentDocument.html#399-478" title="Go to source code">Restore</a>( <span><code><a href="class-CConnection.html">CConnection</a></code> <var>$theConnection</var></span> )</code>
 
 		<div class="description short">
 			
@@ -615,7 +619,7 @@ is obviously not called here.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#_Delete">#</a>
-		<code><a href="source-class-CPersistentDocument.html#481-539" title="Go to source code">Delete</a>( <span><code><a href="class-CConnection.html">CConnection</a></code> <var>$theConnection</var></span> )</code>
+		<code><a href="source-class-CPersistentDocument.html#485-543" title="Go to source code">Delete</a>( <span><code><a href="class-CConnection.html">CConnection</a></code> <var>$theConnection</var></span> )</code>
 
 		<div class="description short">
 			
@@ -678,7 +682,7 @@ status and its <code><a href="class-CStatusDocument.html#__IsDirty">CStatusDocum
 
 		<td class="name"><div>
 		<a class="anchor" href="#_NewObject">#</a>
-		<code><a href="source-class-CPersistentDocument.html#555-622" title="Go to source code">NewObject</a>( <span><code><a href="class-CConnection.html">CConnection</a></code> <var>$theConnection</var></span>, <span>mixed <var>$theIdentifier</var></span> )</code>
+		<code><a href="source-class-CPersistentDocument.html#559-626" title="Go to source code">NewObject</a>( <span><code><a href="class-CConnection.html">CConnection</a></code> <var>$theConnection</var></span>, <span>mixed <var>$theIdentifier</var></span> )</code>
 
 		<div class="description short">
 			
@@ -750,7 +754,7 @@ method was called.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#_DefaultDatabase">#</a>
-		<code><a href="source-class-CPersistentDocument.html#638-655" title="Go to source code">DefaultDatabase</a>( <span><code><a href="class-CServer.html">CServer</a></code> <var>$theServer</var></span> )</code>
+		<code><a href="source-class-CPersistentDocument.html#642-659" title="Go to source code">DefaultDatabase</a>( <span><code><a href="class-CServer.html">CServer</a></code> <var>$theServer</var></span> )</code>
 
 		<div class="description short">
 			
@@ -800,7 +804,7 @@ a server. It expects a <code><a href="class-CServer.html">CServer</a></code> der
 
 		<td class="name"><div>
 		<a class="anchor" href="#_DefaultContainer">#</a>
-		<code><a href="source-class-CPersistentDocument.html#662-679" title="Go to source code">DefaultContainer</a>( <span><code><a href="class-CDatabase.html">CDatabase</a></code> <var>$theDatabase</var></span> )</code>
+		<code><a href="source-class-CPersistentDocument.html#666-683" title="Go to source code">DefaultContainer</a>( <span><code><a href="class-CDatabase.html">CDatabase</a></code> <var>$theDatabase</var></span> )</code>
 
 		<div class="description short">
 			
@@ -851,7 +855,7 @@ return a <code><a href="class-CContainer.html">CContainer</a></code> derived obj
 
 		<td class="name"><div>
 		<a class="anchor" href="#_ResolveContainer">#</a>
-		<code><a href="source-class-CPersistentDocument.html#686-780" title="Go to source code">ResolveContainer</a>( <span><code><a href="class-CConnection.html">CConnection</a></code> <var>$theConnection</var></span>, <span>boolean <var>$doException</var></span> )</code>
+		<code><a href="source-class-CPersistentDocument.html#690-784" title="Go to source code">ResolveContainer</a>( <span><code><a href="class-CConnection.html">CConnection</a></code> <var>$theConnection</var></span>, <span>boolean <var>$doException</var></span> )</code>
 
 		<div class="description short">
 			
@@ -919,7 +923,7 @@ parameter if the first parameter is neither a <code><a href="class-CServer.html"
 
 		<td class="name"><div>
 		<a class="anchor" href="#_ResolveClassContainer">#</a>
-		<code><a href="source-class-CPersistentDocument.html#787-841" title="Go to source code">ResolveClassContainer</a>( <span><code><a href="class-CConnection.html">CConnection</a></code> <var>$theConnection</var></span>, <span>boolean <var>$doException</var></span> )</code>
+		<code><a href="source-class-CPersistentDocument.html#791-845" title="Go to source code">ResolveClassContainer</a>( <span><code><a href="class-CConnection.html">CConnection</a></code> <var>$theConnection</var></span>, <span>boolean <var>$doException</var></span> )</code>
 
 		<div class="description short">
 			
@@ -981,7 +985,7 @@ parameter if the first parameter is neither a <code><a href="class-CServer.html"
 
 		<td class="name"><div>
 		<a class="anchor" href="#__Precommit">#</a>
-		<code><a href="source-class-CPersistentDocument.html#857-926" title="Go to source code">_Precommit</a>( <span><code><a href="class-CConnection.html">CConnection</a></code> <var>$theConnection</var></span>, <span>bitfield <var>$theModifiers</var> = kFLAG_DEFAULT </span> )</code>
+		<code><a href="source-class-CPersistentDocument.html#861-930" title="Go to source code">_Precommit</a>( <span><code><a href="class-CConnection.html">CConnection</a></code> <var>$theConnection</var></span>, <span>bitfield <var>$theModifiers</var> = kFLAG_DEFAULT </span> )</code>
 
 		<div class="description short">
 			
@@ -1081,7 +1085,7 @@ be raised.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#__Postcommit">#</a>
-		<code><a href="source-class-CPersistentDocument.html#933-997" title="Go to source code">_Postcommit</a>( <span><code><a href="class-CConnection.html">CConnection</a></code> <var>$theConnection</var></span>, <span>bitfield <var>$theModifiers</var> = kFLAG_DEFAULT </span> )</code>
+		<code><a href="source-class-CPersistentDocument.html#937-1001" title="Go to source code">_Postcommit</a>( <span><code><a href="class-CConnection.html">CConnection</a></code> <var>$theConnection</var></span>, <span>bitfield <var>$theModifiers</var> = kFLAG_DEFAULT </span> )</code>
 
 		<div class="description short">
 			
@@ -1179,7 +1183,7 @@ this one.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#__PrecommitValidate">#</a>
-		<code><a href="source-class-CPersistentDocument.html#1013-1075" title="Go to source code">_PrecommitValidate</a>( <span>reference <var>&amp; $theConnection</var></span>, <span>reference <var>&amp; $theModifiers</var></span> )</code>
+		<code><a href="source-class-CPersistentDocument.html#1017-1079" title="Go to source code">_PrecommitValidate</a>( <span>reference <var>&amp; $theConnection</var></span>, <span>reference <var>&amp; $theModifiers</var></span> )</code>
 
 		<div class="description short">
 			
@@ -1269,7 +1273,7 @@ method should raise an exception.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#__PrecommitRelated">#</a>
-		<code><a href="source-class-CPersistentDocument.html#1082-1120" title="Go to source code">_PrecommitRelated</a>( <span>reference <var>&amp; $theConnection</var></span>, <span>reference <var>&amp; $theModifiers</var></span> )</code>
+		<code><a href="source-class-CPersistentDocument.html#1086-1124" title="Go to source code">_PrecommitRelated</a>( <span>reference <var>&amp; $theConnection</var></span>, <span>reference <var>&amp; $theModifiers</var></span> )</code>
 
 		<div class="description short">
 			
@@ -1348,7 +1352,7 @@ exception.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#__PrecommitIdentify">#</a>
-		<code><a href="source-class-CPersistentDocument.html#1127-1167" title="Go to source code">_PrecommitIdentify</a>( <span>reference <var>&amp; $theConnection</var></span>, <span>reference <var>&amp; $theModifiers</var></span> )</code>
+		<code><a href="source-class-CPersistentDocument.html#1131-1171" title="Go to source code">_PrecommitIdentify</a>( <span>reference <var>&amp; $theConnection</var></span>, <span>reference <var>&amp; $theModifiers</var></span> )</code>
 
 		<div class="description short">
 			
@@ -1429,7 +1433,7 @@ exception.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#__PostcommitRelated">#</a>
-		<code><a href="source-class-CPersistentDocument.html#1183-1216" title="Go to source code">_PostcommitRelated</a>( <span>reference <var>&amp; $theConnection</var></span>, <span>reference <var>&amp; $theModifiers</var></span> )</code>
+		<code><a href="source-class-CPersistentDocument.html#1187-1220" title="Go to source code">_PostcommitRelated</a>( <span>reference <var>&amp; $theConnection</var></span>, <span>reference <var>&amp; $theModifiers</var></span> )</code>
 
 		<div class="description short">
 			
@@ -1503,7 +1507,7 @@ status gets reset.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#__PostcommitStatus">#</a>
-		<code><a href="source-class-CPersistentDocument.html#1223-1292" title="Go to source code">_PostcommitStatus</a>( <span>reference <var>&amp; $theConnection</var></span>, <span>reference <var>&amp; $theModifiers</var></span> )</code>
+		<code><a href="source-class-CPersistentDocument.html#1227-1296" title="Go to source code">_PostcommitStatus</a>( <span>reference <var>&amp; $theConnection</var></span>, <span>reference <var>&amp; $theModifiers</var></span> )</code>
 
 		<div class="description short">
 			
@@ -1590,7 +1594,7 @@ resetting it after deleting.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#__PostcommitCleanup">#</a>
-		<code><a href="source-class-CPersistentDocument.html#1299-1338" title="Go to source code">_PostcommitCleanup</a>( <span>reference <var>&amp; $theConnection</var></span>, <span>reference <var>&amp; $theModifiers</var></span> )</code>
+		<code><a href="source-class-CPersistentDocument.html#1303-1342" title="Go to source code">_PostcommitCleanup</a>( <span>reference <var>&amp; $theConnection</var></span>, <span>reference <var>&amp; $theModifiers</var></span> )</code>
 
 		<div class="description short">
 			
