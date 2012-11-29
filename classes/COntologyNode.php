@@ -213,6 +213,9 @@ class COntologyNode extends CNode
 	 *		<li><i>{@link kTYPE_REQUIRED}</i>: Required, the element referred by the
 	 *			current node is required and cannot be omitted; if this tag is missing, it
 	 *			means that the element is optional.
+	 *		<li><i>{@link kTYPE_RESTRICTED}</i>: Restricted, the element referred by the
+	 *			current node is restricted to an enumerated set; if this tag is missing, it
+	 *			means that the element may take values not belonging to the enumerated set.
 	 *		<li><i>{@link kTYPE_ARRAY}</i>: Array, the element referred by the current
 	 *			node is a list in which each element is of the data type indicated by the
 	 *			previous set; if this tag is missing, it means that the element is a scalar.
@@ -323,6 +326,7 @@ class COntologyNode extends CNode
 								  FALSE );
 			
 				case kTYPE_REQUIRED:
+				case kTYPE_RESTICTED:
 				case kTYPE_ARRAY:
 					break;
 				

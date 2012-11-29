@@ -100,7 +100,7 @@ class COntologyMasterVertex extends COntologyMasterNode
 		//
 		if( ! ($theModifiers & kFLAG_PERSIST_DELETE) )
 			$this->_LoadTermAttributes(
-				array( kTAG_LID, kTAG_GID,
+				array( kTAG_LID, kTAG_GID, kTAG_KIND,
 					   kTAG_LABEL, kTAG_DESCRIPTION,
 					   kTAG_FEATURES, kTAG_SCALES ) );
 		

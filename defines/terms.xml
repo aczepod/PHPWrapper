@@ -1,0 +1,217 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<terms>
+    <!-- NAMESPACES -->
+    
+    <!-- Default namespace -->
+    <term kTAG_LID="">
+        <kTAG_KIND>
+            <item>:TERM-KIND-NAMESPACE</item>
+        </kTAG_KIND>
+        <kTAG_LABEL language="en">Default namespace</kTAG_LABEL>
+        <kTAG_DESCRIPTION language="en">This namespace groups all default terms of the ontology, these are the
+            elements that will be used to build the ontology itself.
+        </kTAG_DESCRIPTION>
+     </term>
+    
+    <!-- IDENTIFICATION ATTRIBUTES -->
+    
+    <!-- kTERM_LID -->
+    <term kTAG_LID="LID" kTAG_NAMESPACE="">
+        <kTAG_LABEL language="en">Local identifier</kTAG_LABEL>
+        <kTAG_DESCRIPTION language="en">This attribute contains the local unique identifier. This value represents
+            the value that uniquely identifies an object within a specific domain or namespace. It is by definition
+            a string constituting the suffix of the global identifier.
+        </kTAG_DESCRIPTION>
+        <kTAG_SYNONYMS>
+            <item>kTERM_LID</item>
+        </kTAG_SYNONYMS>
+    </term>
+    
+    <!-- kTERM_GID -->
+    <term kTAG_LID="GID" kTAG_NAMESPACE="">
+        <kTAG_LABEL language="en">Global identifier</kTAG_LABEL>
+        <kTAG_DESCRIPTION language="en">This attribute contains the global unique identifier. This value represents
+            the value that uniquely identifies the object across domains and namespaces. This value is by definition
+            a string and will generally constitute the object's primary key in full or hashed form.
+        </kTAG_DESCRIPTION>
+        <kTAG_SYNONYMS>
+            <item>kTERM_GID</item>
+        </kTAG_SYNONYMS>
+    </term>
+    
+    <!-- kTERM_UID -->
+    <term kTAG_LID="UID" kTAG_NAMESPACE="">
+        <kTAG_LABEL language="en">Unique identifier</kTAG_LABEL>
+        <kTAG_DESCRIPTION language="en">This attribute contains the hashed unique identifier of an object in which
+            its native identifier is not related to the global identifier. This is generally used when the
+            native identifier is a sequence number.
+        </kTAG_DESCRIPTION>
+        <kTAG_SYNONYMS>
+            <item>kTERM_UID</item>
+        </kTAG_SYNONYMS>
+    </term>
+    
+    <!-- kTERM_SYNONYMS -->
+    <term kTAG_LID="UID" kTAG_NAMESPACE="">
+        <kTAG_LABEL language="en">Synonyms</kTAG_LABEL>
+        <kTAG_DESCRIPTION language="en">This attribute contains a list of strings that represent alternate
+            identifiers for the hosting object. Synonyms do not have any relation to the namespace.
+        </kTAG_DESCRIPTION>
+        <kTAG_SYNONYMS>
+            <item>kTERM_SYNONYMS</item>
+        </kTAG_SYNONYMS>
+    </term>
+    
+    <!-- CLASSIFICATION ATTRIBUTES -->
+    
+    <!-- kTERM_CATEGORY -->
+    <term kTAG_LID="CATEGORY" kTAG_NAMESPACE="">
+        <kTAG_LABEL language="en">Category</kTAG_LABEL>
+        <kTAG_DESCRIPTION language="en">This attribute is an enumerated set that contains all the categories to
+            which the hosting object belongs to.
+        </kTAG_DESCRIPTION>
+        <kTAG_SYNONYMS>
+            <item>kTERM_CATEGORY</item>
+        </kTAG_SYNONYMS>
+    </term>
+    
+    <!-- kTERM_KIND -->
+    <term kTAG_LID="KIND" kTAG_NAMESPACE="">
+        <kTAG_LABEL language="en">Kind</kTAG_LABEL>
+        <kTAG_DESCRIPTION language="en">This attribute is an enumerated set that defines the kind of the hosting
+            object.
+        </kTAG_DESCRIPTION>
+        <kTAG_SYNONYMS>
+            <item>kTERM_KIND</item>
+        </kTAG_SYNONYMS>
+    </term>
+    
+    <!-- kTERM_TYPE -->
+    <term kTAG_LID="TYPE" kTAG_NAMESPACE="">
+        <kTAG_LABEL language="en">Type</kTAG_LABEL>
+        <kTAG_DESCRIPTION language="en">This attribute is an enumerated set that contains a combination of data
+            type and cardinality indicators which, combined, represet the data type of the hosting object.
+        </kTAG_DESCRIPTION>
+        <kTAG_SYNONYMS>
+            <item>kTERM_TYPE</item>
+        </kTAG_SYNONYMS>
+    </term>
+    
+    <!-- kTERM_CLASS -->
+    <term kTAG_LID="CLASS" kTAG_NAMESPACE="">
+        <kTAG_LABEL language="en">Class</kTAG_LABEL>
+        <kTAG_DESCRIPTION language="en">This attribute is a string that represets the referenced object's class.
+            This attribute is used to instantiate the correct class once an object has been retrieved from its
+            container.
+        </kTAG_DESCRIPTION>
+        <kTAG_SYNONYMS>
+            <item>kTERM_CLASS</item>
+        </kTAG_SYNONYMS>
+    </term>
+    
+    <!-- kTERM_NAMESPACE -->
+    <term kTAG_LID="NAMESPACE" kTAG_NAMESPACE="">
+        <kTAG_LABEL language="en">namespace</kTAG_LABEL>
+        <kTAG_DESCRIPTION language="en">This attribute is a reference to a term which represents the namespace
+            of the current object. The object local identifiers must be unique within the scope of the namespace.
+        </kTAG_DESCRIPTION>
+        <kTAG_SYNONYMS>
+            <item>kTERM_NAMESPACE</item>
+        </kTAG_SYNONYMS>
+    </term>
+    
+    <!-- DESCRIPTION ATTRIBUTES -->
+    
+    <!-- kTERM_LABEL -->
+    <term kTAG_LID="LABEL" kTAG_NAMESPACE="">
+        <kTAG_LABEL language="en">Label</kTAG_LABEL>
+        <kTAG_DESCRIPTION language="en">This attribute represents the label, name or short description of the
+            referenced object. It is a structure of type kTYPE_LSTRING in which the label can be expressed in
+            several languages.
+        </kTAG_DESCRIPTION>
+        <kTAG_SYNONYMS>
+            <item>kTERM_LABEL</item>
+        </kTAG_SYNONYMS>
+    </term>
+    
+    <!-- kTERM_DESCRIPTION -->
+    <term kTAG_LID="LABEL" kTAG_NAMESPACE="">
+        <kTAG_LABEL language="en">Description</kTAG_LABEL>
+        <kTAG_DESCRIPTION language="en">This attribute represents the description or definition of the referenced
+            object. It is a structure of type kTYPE_LSTRING in which the description can be expressed in
+            several languages.
+        </kTAG_DESCRIPTION>
+        <kTAG_SYNONYMS>
+            <item>kTERM_DESCRIPTION</item>
+        </kTAG_SYNONYMS>
+    </term>
+    
+    <!-- kTERM_NOTES -->
+    <term kTAG_LID="NOTES" kTAG_NAMESPACE="">
+        <kTAG_LABEL language="en">Notes</kTAG_LABEL>
+        <kTAG_DESCRIPTION language="en">This attribute represents the notes or comments of the referenced object.
+            It is a structure of type kTYPE_LSTRING in which the description can be expressed in several languages.
+        </kTAG_DESCRIPTION>
+        <kTAG_SYNONYMS>
+            <item>kTERM_NOTES</item>
+        </kTAG_SYNONYMS>
+    </term>
+    
+    <!-- kTERM_EXAMPLES -->
+    <term kTAG_LID="EXAMPLES" kTAG_NAMESPACE="">
+        <kTAG_LABEL language="en">Examples</kTAG_LABEL>
+        <kTAG_DESCRIPTION language="en">This attribute represents the examples or templates of the referenced
+            object. It is a list of strings where each string represents an example or template.
+        </kTAG_DESCRIPTION>
+        <kTAG_SYNONYMS>
+            <item>kTERM_EXAMPLES</item>
+        </kTAG_SYNONYMS>
+    </term>
+    
+    <!-- STATUS ATTRIBUTES -->
+    
+    <!-- kTERM_SEVERITY -->
+    <term kTAG_LID="SEVERITY" kTAG_NAMESPACE="">
+        <kTAG_LABEL language="en">Severity</kTAG_LABEL>
+        <kTAG_DESCRIPTION language="en">
+            <![CDATA[This attribute represents the severity or status level,
+            it is an element of the following enumerated set:<ul>
+            <li><tt>kSTATUS_IDLE</tt>: This code indicates no errors, this state can be equated to an idle state.
+            <li><tt>kSTATUS_NOTICE</tt>: This code indicates a notice. A notice is an informative message that
+            does not imply an error, nor a situation that should be handled; it can be considered as statistical
+            data.
+            <li><tt>kSTATUS_MESSAGE</tt>: This code indicates a message. A message is an informative message that
+            is addressed to somebody, although it does not imply an error or warning, it was issued to a receiving
+            party.
+            <li><tt>kSTATUS_WARNING</tt>: This code indicates a warning. Warnings are informative data that
+            indicate a potential problem, although they do not imply an error, they indicate a potential problem
+            or an issue that should be addressed at least at a later stage.
+            <li><tt>kSTATUS_ERROR</tt>: This code indicates an error. Errors indicate that something prevented
+            an operation from being performed, this does not necessarily mean that the whole process is halted,
+            but that the results of an operation will not be as expected.
+            <li><tt>kSTATUS_FATAL</tt>: This code indicates a fatal error. Fatal errors are errors that result
+            in stopping the whole process: in this case the error will prevent other operations from being
+            performed and the whole process should be halted.
+            <li><tt>kSTATUS_BUG</tt>: This code indicates a bug. Bugs, as opposed to errors, result from internal
+            causes independant from external factors. A bug indicates that an operation will never execute
+            as stated, it does not necessarily mean that it is fatal, but rather that the behaviour of an
+            operation does not correspond to its declaration.
+            ]]>
+        </kTAG_DESCRIPTION>
+        <kTAG_SYNONYMS>
+            <item>kTERM_SEVERITY</item>
+        </kTAG_SYNONYMS>
+    </term>
+    
+    <!-- kTERM_CODE -->
+    <term kTAG_LID="CODE" kTAG_NAMESPACE="">
+        <kTAG_LABEL language="en">Code</kTAG_LABEL>
+        <kTAG_DESCRIPTION language="en">
+            This attribute represents the status code, it is a string or number that identifies the
+            specific status or state.
+        </kTAG_DESCRIPTION>
+        <kTAG_SYNONYMS>
+            <item>kTERM_CODE</item>
+        </kTAG_SYNONYMS>
+    </term>
+</terms>

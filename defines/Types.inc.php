@@ -483,6 +483,21 @@ define( "kTYPE_ENUM_SET",						':SET' );
 define( "kTYPE_REQUIRED",						':REQUIRED' );
 
 /**
+ * RESTRICTED.
+ *
+ * Restricted.
+ *
+ * This type applies mostly to enumerated sets, it indicates that the attribute is
+ * restricted to an enumerated set.
+ *
+ * If this type is missing, it means that the attribute may take values not belonging to the
+ * enumerated set.
+ *
+ * Version 1: (kTYPE_CARD_RESTRICTED)[:RESTRICTED]
+ */
+define( "kTYPE_RESTRICTED",						':RESTRICTED' );
+
+/**
  * ARRAY.
  *
  * Array.

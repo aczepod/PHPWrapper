@@ -36,6 +36,8 @@
  *			Synonyms do not have any relation to the namespace.
  *		<li><tt>{@link kTAG_TERM}</tt>: <i>Term</i>. This attribute contains a reference to
  *			an object that represents the term of the attribute host.
+ *		<li><tt>{@link kTAG_KIND}</tt>: <i>Kind</i>. This attribute is an enumerated set
+ *			that defines the kind of the hosting object. 
  *		<li><tt>{@link kTAG_LABEL}</tt>: <i>Label</i>. This attribute represents the label,
  *			name or short description of the referenced object. It is a
  *			{@link kTYPE_LSTRING} structure in which the label can be expressed in several
@@ -512,6 +514,7 @@ class COntology extends CConnection
 	//	$container->AddIndex( array( kTAG_NAMESPACE => 1 ), array( 'sparse' => TRUE ) );
 		$container->AddIndex( array( kTAG_SYNONYMS => 1 ), array( 'sparse' => TRUE ) );
 	//	$container->AddIndex( array( kTAG_TERM => 1 ), array( 'sparse' => TRUE ) );
+		$container->AddIndex( array( kTAG_KIND => 1 ), array( 'sparse' => TRUE ) );
 		$container->AddIndex( array( kTAG_LABEL => 1 ), array( 'sparse' => TRUE ) );
 	//	$container->AddIndex( array( kTAG_DESCRIPTION => 1 ), array( 'sparse' => TRUE ) );
 		$container->AddIndex( array( kTAG_NODES => 1 ), array( 'sparse' => TRUE ) );

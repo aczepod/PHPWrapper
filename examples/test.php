@@ -357,7 +357,7 @@
 	echo( '<pre>' );
 	print_r( $iso );
 	echo( '</pre>' );
-*/
+
 	//
 	// Test the Mongo distinct PHP command.
 	//
@@ -379,5 +379,20 @@
 	
 	$retval = $c->distinct("zip-code", array("stuff" => "bar"));
 	var_dump($retval);
+*/
+	
+	//
+	// Test parsing term XML files.
+	//
+	$xml = simplexml_load_file( '/Library/WebServer/Library/PHPWrapper/defines/terms.xml' );
+	foreach( $xml->term as $term )
+	{
+		echo( '<hr>' );
+		if( $term->{'kTAG_DESCRIPTION'}->count() )
+		{
+			foreach( $term->{'kTAG_DESCRIPTION'} as $desc )
+				echo( (string) $desc );
+		}
+	}
 	
 ?>
