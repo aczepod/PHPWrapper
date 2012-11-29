@@ -96,7 +96,7 @@ class CDataTypeInt64 extends CDataType
 		else
 			throw new CException( "Invalid data",
 								  kERROR_PARAMETER,
-								  kMESSAGE_TYPE_ERROR,
+								  kSTATUS_ERROR,
 								  array( 'Data' => $theData ) );				// !@! ==>
 	
 	} // Constructor.

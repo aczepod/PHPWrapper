@@ -7,8 +7,8 @@
 
 	<title>File CException.php | MyWrapper Reference Documentation</title>
 
-	<script type="text/javascript" src="resources/combined.js?1742645618"></script>
-	<script type="text/javascript" src="elementlist.js?539813953"></script>
+	<script type="text/javascript" src="resources/combined.js?3680114562"></script>
+	<script type="text/javascript" src="elementlist.js?2861350629"></script>
 	<link rel="stylesheet" type="text/css" media="all" href="resources/style.css?3505392360" />
 
 </head>
@@ -39,6 +39,8 @@
 				<li class="main"><a href="package-MyWrapper.Wrappers.html">Wrappers</a>
 						</li>
 							</ul></li>
+				<li><a href="package-None.html">None</a>
+						</li>
 				<li><a href="package-PHP.html">PHP</a>
 						</li>
 			</ul>
@@ -167,13 +169,13 @@
 </span></span><span id="49" class="l"><a class="l" href="#49">  49: </a><span class="php-comment"> * &lt;i&gt;error&lt;/i&gt;, &lt;i&gt;warning&lt;/i&gt;, etc. You are free to set any value, but in this library we
 </span></span><span id="50" class="l"><a class="l" href="#50">  50: </a><span class="php-comment"> * support the following standard:
 </span></span><span id="51" class="l"><a class="l" href="#51">  51: </a><span class="php-comment"> * &lt;ul&gt;
-</span></span><span id="52" class="l"><a class="l" href="#52">  52: </a><span class="php-comment"> *  &lt;li&gt;&lt;b&gt;{@link kMESSAGE_TYPE_IDLE Idle}&lt;/b&gt;: Idle state.
-</span></span><span id="53" class="l"><a class="l" href="#53">  53: </a><span class="php-comment"> *  &lt;li&gt;&lt;b&gt;{@link kMESSAGE_TYPE_NOTICE Notice}&lt;/b&gt;: Statistical information or message.
-</span></span><span id="54" class="l"><a class="l" href="#54">  54: </a><span class="php-comment"> *  &lt;li&gt;&lt;b&gt;{@link kMESSAGE_TYPE_MESSAGE Message}&lt;/b&gt;: A message.
-</span></span><span id="55" class="l"><a class="l" href="#55">  55: </a><span class="php-comment"> *  &lt;li&gt;&lt;b&gt;{@link kMESSAGE_TYPE_WARNING Warning}&lt;/b&gt;: A warning.
-</span></span><span id="56" class="l"><a class="l" href="#56">  56: </a><span class="php-comment"> *  &lt;li&gt;&lt;b&gt;{@link kMESSAGE_TYPE_ERROR Error}&lt;/b&gt;: An error.
-</span></span><span id="57" class="l"><a class="l" href="#57">  57: </a><span class="php-comment"> *  &lt;li&gt;&lt;b&gt;{@link kMESSAGE_TYPE_FATAL Fatal}&lt;/b&gt;: A fatal error.
-</span></span><span id="58" class="l"><a class="l" href="#58">  58: </a><span class="php-comment"> *  &lt;li&gt;&lt;b&gt;{@link kMESSAGE_TYPE_BUG Bug}&lt;/b&gt;: A bug.
+</span></span><span id="52" class="l"><a class="l" href="#52">  52: </a><span class="php-comment"> *  &lt;li&gt;&lt;b&gt;{@link kSTATUS_IDLE Idle}&lt;/b&gt;: Idle state.
+</span></span><span id="53" class="l"><a class="l" href="#53">  53: </a><span class="php-comment"> *  &lt;li&gt;&lt;b&gt;{@link kSTATUS_NOTICE Notice}&lt;/b&gt;: Statistical information or message.
+</span></span><span id="54" class="l"><a class="l" href="#54">  54: </a><span class="php-comment"> *  &lt;li&gt;&lt;b&gt;{@link kSTATUS_MESSAGE Message}&lt;/b&gt;: A message.
+</span></span><span id="55" class="l"><a class="l" href="#55">  55: </a><span class="php-comment"> *  &lt;li&gt;&lt;b&gt;{@link kSTATUS_WARNING Warning}&lt;/b&gt;: A warning.
+</span></span><span id="56" class="l"><a class="l" href="#56">  56: </a><span class="php-comment"> *  &lt;li&gt;&lt;b&gt;{@link kSTATUS_ERROR Error}&lt;/b&gt;: An error.
+</span></span><span id="57" class="l"><a class="l" href="#57">  57: </a><span class="php-comment"> *  &lt;li&gt;&lt;b&gt;{@link kSTATUS_FATAL Fatal}&lt;/b&gt;: A fatal error.
+</span></span><span id="58" class="l"><a class="l" href="#58">  58: </a><span class="php-comment"> *  &lt;li&gt;&lt;b&gt;{@link kSTATUS_BUG Bug}&lt;/b&gt;: A bug.
 </span></span><span id="59" class="l"><a class="l" href="#59">  59: </a><span class="php-comment"> * &lt;/ul&gt;
 </span></span><span id="60" class="l"><a class="l" href="#60">  60: </a><span class="php-comment"> *
 </span></span><span id="61" class="l"><a class="l" href="#61">  61: </a><span class="php-comment"> * {@link References() References} represent a list of reference values structured as an
@@ -232,14 +234,14 @@
 </span></span><span id="114" class="l"><a class="l" href="#114"> 114: </a><span class="php-comment">     *  &lt;li&gt;&lt;b&gt;$theSeverity&lt;/b&gt;: This parameter holds {@link Severity() the} exception
 </span></span><span id="115" class="l"><a class="l" href="#115"> 115: </a><span class="php-comment">     *      type, level or severity:
 </span></span><span id="116" class="l"><a class="l" href="#116"> 116: </a><span class="php-comment">     *   &lt;ul&gt;
-</span></span><span id="117" class="l"><a class="l" href="#117"> 117: </a><span class="php-comment">     *      &lt;li&gt;&lt;i&gt;{@link kMESSAGE_TYPE_IDLE}&lt;/i&gt;: This indicates an idle state.
-</span></span><span id="118" class="l"><a class="l" href="#118"> 118: </a><span class="php-comment">     *      &lt;li&gt;&lt;i&gt;{@link kMESSAGE_TYPE_NOTICE}&lt;/i&gt;: This indicates an informative note or
+</span></span><span id="117" class="l"><a class="l" href="#117"> 117: </a><span class="php-comment">     *      &lt;li&gt;&lt;i&gt;{@link kSTATUS_IDLE}&lt;/i&gt;: This indicates an idle state.
+</span></span><span id="118" class="l"><a class="l" href="#118"> 118: </a><span class="php-comment">     *      &lt;li&gt;&lt;i&gt;{@link kSTATUS_NOTICE}&lt;/i&gt;: This indicates an informative note or
 </span></span><span id="119" class="l"><a class="l" href="#119"> 119: </a><span class="php-comment">     *          message.
-</span></span><span id="120" class="l"><a class="l" href="#120"> 120: </a><span class="php-comment">     *      &lt;li&gt;&lt;i&gt;{@link kMESSAGE_TYPE_WARNING}&lt;/i&gt;: This indicates a warning.
-</span></span><span id="121" class="l"><a class="l" href="#121"> 121: </a><span class="php-comment">     *      &lt;li&gt;&lt;i&gt;{@link kMESSAGE_TYPE_ERROR}&lt;/i&gt;: This indicates an error.
-</span></span><span id="122" class="l"><a class="l" href="#122"> 122: </a><span class="php-comment">     *      &lt;li&gt;&lt;i&gt;{@link kMESSAGE_TYPE_FATAL}&lt;/i&gt;: This indicates a fatal error, in general
+</span></span><span id="120" class="l"><a class="l" href="#120"> 120: </a><span class="php-comment">     *      &lt;li&gt;&lt;i&gt;{@link kSTATUS_WARNING}&lt;/i&gt;: This indicates a warning.
+</span></span><span id="121" class="l"><a class="l" href="#121"> 121: </a><span class="php-comment">     *      &lt;li&gt;&lt;i&gt;{@link kSTATUS_ERROR}&lt;/i&gt;: This indicates an error.
+</span></span><span id="122" class="l"><a class="l" href="#122"> 122: </a><span class="php-comment">     *      &lt;li&gt;&lt;i&gt;{@link kSTATUS_FATAL}&lt;/i&gt;: This indicates a fatal error, in general
 </span></span><span id="123" class="l"><a class="l" href="#123"> 123: </a><span class="php-comment">     *          this should halt program execution.
-</span></span><span id="124" class="l"><a class="l" href="#124"> 124: </a><span class="php-comment">     *      &lt;li&gt;&lt;i&gt;{@link kMESSAGE_TYPE_BUG}&lt;/i&gt;: This indicates a bug, such exceptions
+</span></span><span id="124" class="l"><a class="l" href="#124"> 124: </a><span class="php-comment">     *      &lt;li&gt;&lt;i&gt;{@link kSTATUS_BUG}&lt;/i&gt;: This indicates a bug, such exceptions
 </span></span><span id="125" class="l"><a class="l" href="#125"> 125: </a><span class="php-comment">     *          should be logged and forwarded to developers.
 </span></span><span id="126" class="l"><a class="l" href="#126"> 126: </a><span class="php-comment">     *   &lt;/ul&gt;
 </span></span><span id="127" class="l"><a class="l" href="#127"> 127: </a><span class="php-comment">     *  &lt;li&gt;&lt;b&gt;$theReferences&lt;/b&gt;: This parameter holds the exception's references
@@ -356,22 +358,22 @@
 </span><span id="238" class="l"><a class="l" href="#238"> 238: </a>                    {
 </span><span id="239" class="l"><a class="l" href="#239"> 239: </a>                        <span class="php-keyword1">switch</span>( <span class="php-var">$tmp</span> )
 </span><span id="240" class="l"><a class="l" href="#240"> 240: </a>                        {
-</span><span id="241" class="l"><a class="l" href="#241"> 241: </a>                            <span class="php-keyword1">case</span> kMESSAGE_TYPE_NOTICE:
+</span><span id="241" class="l"><a class="l" href="#241"> 241: </a>                            <span class="php-keyword1">case</span> kSTATUS_NOTICE:
 </span><span id="242" class="l"><a class="l" href="#242"> 242: </a>                                <span class="php-var">$tmp</span> = <span class="php-quote">'NOTICE'</span>;
 </span><span id="243" class="l"><a class="l" href="#243"> 243: </a>                                <span class="php-keyword1">break</span>;
-</span><span id="244" class="l"><a class="l" href="#244"> 244: </a>                            <span class="php-keyword1">case</span> kMESSAGE_TYPE_MESSAGE:
+</span><span id="244" class="l"><a class="l" href="#244"> 244: </a>                            <span class="php-keyword1">case</span> kSTATUS_MESSAGE:
 </span><span id="245" class="l"><a class="l" href="#245"> 245: </a>                                <span class="php-var">$tmp</span> = <span class="php-quote">'MESSAGE'</span>;
 </span><span id="246" class="l"><a class="l" href="#246"> 246: </a>                                <span class="php-keyword1">break</span>;
-</span><span id="247" class="l"><a class="l" href="#247"> 247: </a>                            <span class="php-keyword1">case</span> kMESSAGE_TYPE_WARNING:
+</span><span id="247" class="l"><a class="l" href="#247"> 247: </a>                            <span class="php-keyword1">case</span> kSTATUS_WARNING:
 </span><span id="248" class="l"><a class="l" href="#248"> 248: </a>                                <span class="php-var">$tmp</span> = <span class="php-quote">'WARNING'</span>;
 </span><span id="249" class="l"><a class="l" href="#249"> 249: </a>                                <span class="php-keyword1">break</span>;
-</span><span id="250" class="l"><a class="l" href="#250"> 250: </a>                            <span class="php-keyword1">case</span> kMESSAGE_TYPE_ERROR:
+</span><span id="250" class="l"><a class="l" href="#250"> 250: </a>                            <span class="php-keyword1">case</span> kSTATUS_ERROR:
 </span><span id="251" class="l"><a class="l" href="#251"> 251: </a>                                <span class="php-var">$tmp</span> = <span class="php-quote">'ERROR'</span>;
 </span><span id="252" class="l"><a class="l" href="#252"> 252: </a>                                <span class="php-keyword1">break</span>;
-</span><span id="253" class="l"><a class="l" href="#253"> 253: </a>                            <span class="php-keyword1">case</span> kMESSAGE_TYPE_FATAL:
+</span><span id="253" class="l"><a class="l" href="#253"> 253: </a>                            <span class="php-keyword1">case</span> kSTATUS_FATAL:
 </span><span id="254" class="l"><a class="l" href="#254"> 254: </a>                                <span class="php-var">$tmp</span> = <span class="php-quote">'FATAL'</span>;
 </span><span id="255" class="l"><a class="l" href="#255"> 255: </a>                                <span class="php-keyword1">break</span>;
-</span><span id="256" class="l"><a class="l" href="#256"> 256: </a>                            <span class="php-keyword1">case</span> kMESSAGE_TYPE_BUG:
+</span><span id="256" class="l"><a class="l" href="#256"> 256: </a>                            <span class="php-keyword1">case</span> kSTATUS_BUG:
 </span><span id="257" class="l"><a class="l" href="#257"> 257: </a>                                <span class="php-var">$tmp</span> = <span class="php-quote">'BUG'</span>;
 </span><span id="258" class="l"><a class="l" href="#258"> 258: </a>                                <span class="php-keyword1">break</span>;
 </span><span id="259" class="l"><a class="l" href="#259"> 259: </a>                        }
@@ -500,29 +502,29 @@
 </span></span><span id="382" class="l"><a class="l" href="#382"> 382: </a><span class="php-comment">     *  &lt;li&gt;&lt;i&gt;FALSE&lt;/i&gt;: Reset the value to &lt;i&gt;NULL&lt;/i&gt;.
 </span></span><span id="383" class="l"><a class="l" href="#383"> 383: </a><span class="php-comment">     *  &lt;li&gt;&lt;i&gt;Integer&lt;/i&gt;: Set the member to the provided value:
 </span></span><span id="384" class="l"><a class="l" href="#384"> 384: </a><span class="php-comment">     *   &lt;ul&gt;
-</span></span><span id="385" class="l"><a class="l" href="#385"> 385: </a><span class="php-comment">     *      &lt;li&gt;&lt;i&gt;{@link kMESSAGE_TYPE_IDLE}&lt;/i&gt;: Idle state.
-</span></span><span id="386" class="l"><a class="l" href="#386"> 386: </a><span class="php-comment">     *      &lt;li&gt;&lt;i&gt;{@link kMESSAGE_TYPE_NOTICE}&lt;/i&gt;: A notice is an informative message that
+</span></span><span id="385" class="l"><a class="l" href="#385"> 385: </a><span class="php-comment">     *      &lt;li&gt;&lt;i&gt;{@link kSTATUS_IDLE}&lt;/i&gt;: Idle state.
+</span></span><span id="386" class="l"><a class="l" href="#386"> 386: </a><span class="php-comment">     *      &lt;li&gt;&lt;i&gt;{@link kSTATUS_NOTICE}&lt;/i&gt;: A notice is an informative message that
 </span></span><span id="387" class="l"><a class="l" href="#387"> 387: </a><span class="php-comment">     *          does not imply an error, nor a situation that should be handled; it can be
 </span></span><span id="388" class="l"><a class="l" href="#388"> 388: </a><span class="php-comment">     *          considered as statistical data.
-</span></span><span id="389" class="l"><a class="l" href="#389"> 389: </a><span class="php-comment">     *      &lt;li&gt;&lt;i&gt;{@link kMESSAGE_TYPE_MESSAGE}&lt;/i&gt;: A message is an informative message
+</span></span><span id="389" class="l"><a class="l" href="#389"> 389: </a><span class="php-comment">     *      &lt;li&gt;&lt;i&gt;{@link kSTATUS_MESSAGE}&lt;/i&gt;: A message is an informative message
 </span></span><span id="390" class="l"><a class="l" href="#390"> 390: </a><span class="php-comment">     *          that is addressed to somebody, although it does not imply an error or
 </span></span><span id="391" class="l"><a class="l" href="#391"> 391: </a><span class="php-comment">     *          warning, it was issued to a receiving party.
-</span></span><span id="392" class="l"><a class="l" href="#392"> 392: </a><span class="php-comment">     *      &lt;li&gt;&lt;i&gt;{@link kMESSAGE_TYPE_WARNING}&lt;/i&gt;: Warnings are informative data that
+</span></span><span id="392" class="l"><a class="l" href="#392"> 392: </a><span class="php-comment">     *      &lt;li&gt;&lt;i&gt;{@link kSTATUS_WARNING}&lt;/i&gt;: Warnings are informative data that
 </span></span><span id="393" class="l"><a class="l" href="#393"> 393: </a><span class="php-comment">     *          indicate a potential problem, although they do not imply an error, they
 </span></span><span id="394" class="l"><a class="l" href="#394"> 394: </a><span class="php-comment">     *          indicate a potential problem or an issue that should be addressed at least at a later stage.
-</span></span><span id="395" class="l"><a class="l" href="#395"> 395: </a><span class="php-comment">     *      &lt;li&gt;&lt;i&gt;{@link kMESSAGE_TYPE_ERROR}&lt;/i&gt;: Errors indicate that something prevented
+</span></span><span id="395" class="l"><a class="l" href="#395"> 395: </a><span class="php-comment">     *      &lt;li&gt;&lt;i&gt;{@link kSTATUS_ERROR}&lt;/i&gt;: Errors indicate that something prevented
 </span></span><span id="396" class="l"><a class="l" href="#396"> 396: </a><span class="php-comment">     *          an operation from being performed, this does not necessarily mean that the
 </span></span><span id="397" class="l"><a class="l" href="#397"> 397: </a><span class="php-comment">     *          whole process is halted, but that the results of an operation will not be as
 </span></span><span id="398" class="l"><a class="l" href="#398"> 398: </a><span class="php-comment">     *          expected.
-</span></span><span id="399" class="l"><a class="l" href="#399"> 399: </a><span class="php-comment">     *      &lt;li&gt;&lt;i&gt;{@link kMESSAGE_TYPE_FATAL}&lt;/i&gt;: Fatal errors are
-</span></span><span id="400" class="l"><a class="l" href="#400"> 400: </a><span class="php-comment">     *          {@link kMESSAGE_TYPE_ERROR errors} that result in stopping the whole
+</span></span><span id="399" class="l"><a class="l" href="#399"> 399: </a><span class="php-comment">     *      &lt;li&gt;&lt;i&gt;{@link kSTATUS_FATAL}&lt;/i&gt;: Fatal errors are
+</span></span><span id="400" class="l"><a class="l" href="#400"> 400: </a><span class="php-comment">     *          {@link kSTATUS_ERROR errors} that result in stopping the whole
 </span></span><span id="401" class="l"><a class="l" href="#401"> 401: </a><span class="php-comment">     *          process: in this case the error will prevent other operations from being
 </span></span><span id="402" class="l"><a class="l" href="#402"> 402: </a><span class="php-comment">     *          performed and the whole process should be halted.
-</span></span><span id="403" class="l"><a class="l" href="#403"> 403: </a><span class="php-comment">     *      &lt;li&gt;&lt;i&gt;{@link kMESSAGE_TYPE_BUG}&lt;/i&gt;: Bugs, as opposed to
-</span></span><span id="404" class="l"><a class="l" href="#404"> 404: </a><span class="php-comment">     *          {@link kMESSAGE_TYPE_ERROR errors}, result from internal causes independant
+</span></span><span id="403" class="l"><a class="l" href="#403"> 403: </a><span class="php-comment">     *      &lt;li&gt;&lt;i&gt;{@link kSTATUS_BUG}&lt;/i&gt;: Bugs, as opposed to
+</span></span><span id="404" class="l"><a class="l" href="#404"> 404: </a><span class="php-comment">     *          {@link kSTATUS_ERROR errors}, result from internal causes independant
 </span></span><span id="405" class="l"><a class="l" href="#405"> 405: </a><span class="php-comment">     *          from external factors. A bug indicates that an operation will never execute
 </span></span><span id="406" class="l"><a class="l" href="#406"> 406: </a><span class="php-comment">     *          as stated, it does not necessarily mean that it is
-</span></span><span id="407" class="l"><a class="l" href="#407"> 407: </a><span class="php-comment">     *          {@link kMESSAGE_TYPE_FATAL fatal}, but rather that the behaviour of an
+</span></span><span id="407" class="l"><a class="l" href="#407"> 407: </a><span class="php-comment">     *          {@link kSTATUS_FATAL fatal}, but rather that the behaviour of an
 </span></span><span id="408" class="l"><a class="l" href="#408"> 408: </a><span class="php-comment">     *          operation does not correspond to its declaration.
 </span></span><span id="409" class="l"><a class="l" href="#409"> 409: </a><span class="php-comment">     *   &lt;/ul&gt;
 </span></span><span id="410" class="l"><a class="l" href="#410"> 410: </a><span class="php-comment">     * &lt;/ul&gt;
@@ -1178,34 +1180,34 @@
 </span><span id="1060" class="l"><a class="l" href="#1060">1060: </a>                
 </span><span id="1061" class="l"><a class="l" href="#1061">1061: </a>                <span class="php-keyword1">switch</span>( <span class="php-var">$severity</span> )
 </span><span id="1062" class="l"><a class="l" href="#1062">1062: </a>                {
-</span><span id="1063" class="l"><a class="l" href="#1063">1063: </a>                    <span class="php-keyword1">case</span> kMESSAGE_TYPE_NOTICE:
+</span><span id="1063" class="l"><a class="l" href="#1063">1063: </a>                    <span class="php-keyword1">case</span> kSTATUS_NOTICE:
 </span><span id="1064" class="l"><a class="l" href="#1064">1064: </a>                        <span class="php-var">$val</span>-&gt;setAttribute( <span class="php-quote">'color'</span>, <span class="php-quote">'grey'</span> );
 </span><span id="1065" class="l"><a class="l" href="#1065">1065: </a>                        <span class="php-var">$tmp</span> = <span class="php-var">$document</span>-&gt;createElement( <span class="php-quote">'strong'</span>, <span class="php-quote">'NOTICE'</span> );
 </span><span id="1066" class="l"><a class="l" href="#1066">1066: </a>                        <span class="php-var">$val</span>-&gt;appendChild( <span class="php-var">$tmp</span> );
 </span><span id="1067" class="l"><a class="l" href="#1067">1067: </a>                        <span class="php-keyword1">break</span>;
-</span><span id="1068" class="l"><a class="l" href="#1068">1068: </a>                    <span class="php-keyword1">case</span> kMESSAGE_TYPE_MESSAGE:
+</span><span id="1068" class="l"><a class="l" href="#1068">1068: </a>                    <span class="php-keyword1">case</span> kSTATUS_MESSAGE:
 </span><span id="1069" class="l"><a class="l" href="#1069">1069: </a>                        <span class="php-var">$val</span>-&gt;setAttribute( <span class="php-quote">'color'</span>, <span class="php-quote">'blue'</span> );
 </span><span id="1070" class="l"><a class="l" href="#1070">1070: </a>                        <span class="php-var">$tmp</span> = <span class="php-var">$document</span>-&gt;createElement( <span class="php-quote">'strong'</span>, <span class="php-quote">'MESSAGE'</span> );
 </span><span id="1071" class="l"><a class="l" href="#1071">1071: </a>                        <span class="php-var">$val</span>-&gt;appendChild( <span class="php-var">$tmp</span> );
 </span><span id="1072" class="l"><a class="l" href="#1072">1072: </a>                        <span class="php-keyword1">break</span>;
-</span><span id="1073" class="l"><a class="l" href="#1073">1073: </a>                    <span class="php-keyword1">case</span> kMESSAGE_TYPE_WARNING:
+</span><span id="1073" class="l"><a class="l" href="#1073">1073: </a>                    <span class="php-keyword1">case</span> kSTATUS_WARNING:
 </span><span id="1074" class="l"><a class="l" href="#1074">1074: </a>                        <span class="php-var">$val</span>-&gt;setAttribute( <span class="php-quote">'color'</span>, <span class="php-quote">'#FF6600'</span> );
 </span><span id="1075" class="l"><a class="l" href="#1075">1075: </a>                        <span class="php-var">$tmp</span> = <span class="php-var">$document</span>-&gt;createElement( <span class="php-quote">'strong'</span>, <span class="php-quote">'WARNING'</span> );
 </span><span id="1076" class="l"><a class="l" href="#1076">1076: </a>                        <span class="php-var">$val</span>-&gt;appendChild( <span class="php-var">$tmp</span> );
 </span><span id="1077" class="l"><a class="l" href="#1077">1077: </a>                        <span class="php-keyword1">break</span>;
-</span><span id="1078" class="l"><a class="l" href="#1078">1078: </a>                    <span class="php-keyword1">case</span> kMESSAGE_TYPE_ERROR:
+</span><span id="1078" class="l"><a class="l" href="#1078">1078: </a>                    <span class="php-keyword1">case</span> kSTATUS_ERROR:
 </span><span id="1079" class="l"><a class="l" href="#1079">1079: </a>                        <span class="php-var">$val</span>-&gt;setAttribute( <span class="php-quote">'color'</span>, <span class="php-quote">'red'</span> );
 </span><span id="1080" class="l"><a class="l" href="#1080">1080: </a>                        <span class="php-var">$tmp</span> = <span class="php-var">$document</span>-&gt;createElement( <span class="php-quote">'strong'</span>, <span class="php-quote">'ERROR'</span> );
 </span><span id="1081" class="l"><a class="l" href="#1081">1081: </a>                        <span class="php-var">$val</span>-&gt;appendChild( <span class="php-var">$tmp</span> );
 </span><span id="1082" class="l"><a class="l" href="#1082">1082: </a>                        <span class="php-keyword1">break</span>;
-</span><span id="1083" class="l"><a class="l" href="#1083">1083: </a>                    <span class="php-keyword1">case</span> kMESSAGE_TYPE_FATAL:
+</span><span id="1083" class="l"><a class="l" href="#1083">1083: </a>                    <span class="php-keyword1">case</span> kSTATUS_FATAL:
 </span><span id="1084" class="l"><a class="l" href="#1084">1084: </a>                        <span class="php-var">$val</span>-&gt;setAttribute( <span class="php-quote">'color'</span>, <span class="php-quote">'red'</span> );
 </span><span id="1085" class="l"><a class="l" href="#1085">1085: </a>                        <span class="php-var">$tmp</span> = <span class="php-var">$document</span>-&gt;createElement( <span class="php-quote">'strong'</span> );
 </span><span id="1086" class="l"><a class="l" href="#1086">1086: </a>                        <span class="php-var">$tmp1</span> = <span class="php-var">$val</span>-&gt;appendChild( <span class="php-var">$tmp</span> );
 </span><span id="1087" class="l"><a class="l" href="#1087">1087: </a>                        <span class="php-var">$tmp</span> = <span class="php-var">$document</span>-&gt;createElement( <span class="php-quote">'blink'</span>, <span class="php-quote">'FATAL'</span> );
 </span><span id="1088" class="l"><a class="l" href="#1088">1088: </a>                        <span class="php-var">$tmp1</span>-&gt;appendChild( <span class="php-var">$tmp</span> );
 </span><span id="1089" class="l"><a class="l" href="#1089">1089: </a>                        <span class="php-keyword1">break</span>;
-</span><span id="1090" class="l"><a class="l" href="#1090">1090: </a>                    <span class="php-keyword1">case</span> kMESSAGE_TYPE_BUG:
+</span><span id="1090" class="l"><a class="l" href="#1090">1090: </a>                    <span class="php-keyword1">case</span> kSTATUS_BUG:
 </span><span id="1091" class="l"><a class="l" href="#1091">1091: </a>                        <span class="php-var">$val</span>-&gt;setAttribute( <span class="php-quote">'color'</span>, <span class="php-quote">'red'</span> );
 </span><span id="1092" class="l"><a class="l" href="#1092">1092: </a>                        <span class="php-var">$tmp</span> = <span class="php-var">$document</span>-&gt;createElement( <span class="php-quote">'strong'</span> );
 </span><span id="1093" class="l"><a class="l" href="#1093">1093: </a>                        <span class="php-var">$tmp1</span> = <span class="php-var">$val</span>-&gt;appendChild( <span class="php-var">$tmp</span> );

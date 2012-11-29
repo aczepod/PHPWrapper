@@ -239,6 +239,9 @@ try
 	echo( '<h5>$status = $node->Insert( $database );</h5>' );
 	$status = $node->Insert( $database );
 	echo( 'After insert<pre>' ); print_r( $node ); echo( '</pre>' );
+	echo( '<h5>$graph = $node->GetGraphNodeProperties( $database, $status );</h5>' );
+	$graph = $node->GetGraphNodeProperties( $database, $status );
+	echo( 'Graph<pre>' ); print_r( $graph ); echo( '</pre>' );
 	echo( '<h5>$term = $node->LoadTerm( $database, TRUE ); // Notice node reference.</h5>' );
 	$term = $node->LoadTerm( $database, TRUE );
 	echo( 'Term<pre>' ); print_r( $term ); echo( '</pre>' );
@@ -307,8 +310,8 @@ try
 	// Add required cardinality.
 	//
 	echo( '<h4>Add required cardinality</h4>' );
-	echo( '<h5>$node->Type( kTYPE_CARD_REQUIRED, TRUE );</h5>' );
-	$node->Type( kTYPE_CARD_REQUIRED, TRUE );
+	echo( '<h5>$node->Type( kTYPE_REQUIRED, TRUE );</h5>' );
+	$node->Type( kTYPE_REQUIRED, TRUE );
 	echo( '<pre>' ); print_r( $node ); echo( '</pre>' );
 	echo( '<hr />' );
 	
@@ -316,8 +319,8 @@ try
 	// Add array cardinality.
 	//
 	echo( '<h4>Add array cardinality</h4>' );
-	echo( '<h5>$node->Type( kTYPE_CARD_ARRAY, TRUE );</h5>' );
-	$node->Type( kTYPE_CARD_ARRAY, TRUE );
+	echo( '<h5>$node->Type( kTYPE_ARRAY, TRUE );</h5>' );
+	$node->Type( kTYPE_ARRAY, TRUE );
 	echo( '<pre>' ); print_r( $node ); echo( '</pre>' );
 	echo( '<hr />' );
 	
@@ -421,6 +424,9 @@ try
 	echo( '<h5>$status = $node->Insert( $container );</h5>' );
 	$status = $node->Insert( $container );
 	echo( 'Node<pre>' ); print_r( $node ); echo( '</pre>' );
+	echo( '<h5>$graph = $node->GetGraphNodeProperties( $database, $status );</h5>' );
+	$graph = $node->GetGraphNodeProperties( $database, $status );
+	echo( 'Graph<pre>' ); print_r( $graph ); echo( '</pre>' );
 	echo( '<h5>$term = $node->LoadTerm( $database, TRUE ); // Notice node reference.</h5>' );
 	$term = $node->LoadTerm( $database, TRUE );
 	echo( 'Term<pre>' ); print_r( $term ); echo( '</pre>' );
@@ -441,6 +447,40 @@ try
 	echo( '<h5>$status = $node->Insert( $container );</h5>' );
 	$status = $node->Insert( $container );
 	echo( 'Node<pre>' ); print_r( $node ); echo( '</pre>' );
+	echo( '<h5>$graph = $node->GetGraphNodeProperties( $database, $status );</h5>' );
+	$graph = $node->GetGraphNodeProperties( $database, $status );
+	echo( 'Graph<pre>' ); print_r( $graph ); echo( '</pre>' );
+	echo( '<h5>$term = $node->LoadTerm( $database, TRUE ); // Notice node reference.</h5>' );
+	$term = $node->LoadTerm( $database, TRUE );
+	echo( 'Term<pre>' ); print_r( $term ); echo( '</pre>' );
+	echo( '<hr />' );
+	
+	//
+	// Insert another node with properties.
+	//
+	echo( '<h4>Insert another node with properties</h4>' );
+	echo( '<h5>$node = new MyClass();</h5>' );
+	$node = new MyClass();
+	echo( '<h5>$node->Term( $termB );</h5>' );
+	$node->Term( $termB );
+	echo( '<h5>$node->Category( "Category 1", TRUE );</h5>' );
+	$node->Category( "Category 1", TRUE );
+	echo( '<h5>$node->Kind( ":ROOT", TRUE );</h5>' );
+	$node->Kind( ":ROOT", TRUE );
+	echo( '<h5>$node->Type( kTYPE_STRING, TRUE );</h5>' );
+	$node->Type( kTYPE_STRING, TRUE );
+	echo( '<h5>$node[ kTAG_GID ] = $termB->GID();</h5>' );
+	$node[ kTAG_GID ] = $termB->GID();
+	echo( 'Inited['.$node->inited()
+				   .'] Dirty['.$node->dirty()
+				   .'] Saved['.$node->committed()
+				   .'] Encoded['.$node->encoded().']<br />' );
+	echo( '<h5>$status = $node->Insert( $container );</h5>' );
+	$status = $node->Insert( $container );
+	echo( 'Node<pre>' ); print_r( $node ); echo( '</pre>' );
+	echo( '<h5>$graph = $node->GetGraphNodeProperties( $database, $status );</h5>' );
+	$graph = $node->GetGraphNodeProperties( $database, $status );
+	echo( 'Graph<pre>' ); print_r( $graph ); echo( '</pre>' );
 	echo( '<h5>$term = $node->LoadTerm( $database, TRUE ); // Notice node reference.</h5>' );
 	$term = $node->LoadTerm( $database, TRUE );
 	echo( 'Term<pre>' ); print_r( $term ); echo( '</pre>' );

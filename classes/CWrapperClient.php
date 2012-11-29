@@ -171,7 +171,7 @@ class CWrapperClient extends CConnection
 				default:
 					throw new CException( "Unsupported operation",
 										  kERROR_UNSUPPORTED,
-										  kMESSAGE_TYPE_ERROR,
+										  kSTATUS_ERROR,
 										  array( 'Operation' => $theValue ) );	// !@! ==>
 			}
 		}
@@ -248,7 +248,7 @@ class CWrapperClient extends CConnection
 				default:
 					throw new CException( "Unsupported format",
 										  kERROR_UNSUPPORTED,
-										  kMESSAGE_TYPE_ERROR,
+										  kSTATUS_ERROR,
 										  array( 'Format' => $theValue ) );		// !@! ==>
 			}
 		}
@@ -400,7 +400,7 @@ class CWrapperClient extends CConnection
 			throw new CException
 					( "Unable to execute request: object not initialised",
 					  kERROR_STATE,
-					  kMESSAGE_TYPE_ERROR,
+					  kSTATUS_ERROR,
 					  array( 'Object' => $this ) );								// !@! ==>
 		
 		//
@@ -519,7 +519,7 @@ class CWrapperClient extends CConnection
 			default:
 				throw new CException( "Unsupported HTTP mode",
 									  kERROR_UNSUPPORTED,
-									  kMESSAGE_TYPE_ERROR,
+									  kSTATUS_ERROR,
 									  array( 'Mode' => $theMode ) );			// !@! ==>
 		}
 		
@@ -560,7 +560,7 @@ class CWrapperClient extends CConnection
 		if( ! $fp )
 			throw new CException( "Unable to open [$theMode] [$theUrl]",
 								  kERROR_STATE,
-								  kMESSAGE_TYPE_ERROR,
+								  kSTATUS_ERROR,
 								  array( 'Mode' => $theMode,
 								  		 'URL' => $theUrl ) );					// !@! ==>
 		

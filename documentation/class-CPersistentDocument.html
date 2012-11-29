@@ -6,8 +6,8 @@
 
 	<title>Class CPersistentDocument | MyWrapper Reference Documentation</title>
 
-	<script type="text/javascript" src="resources/combined.js?1742645618"></script>
-	<script type="text/javascript" src="elementlist.js?539813953"></script>
+	<script type="text/javascript" src="resources/combined.js?3680114562"></script>
+	<script type="text/javascript" src="elementlist.js?2861350629"></script>
 	<link rel="stylesheet" type="text/css" media="all" href="resources/style.css?3505392360" />
 
 </head>
@@ -38,6 +38,8 @@
 				<li class="main"><a href="package-MyWrapper.Wrappers.html">Wrappers</a>
 						</li>
 							</ul></li>
+				<li><a href="package-None.html">None</a>
+						</li>
 				<li><a href="package-PHP.html">PHP</a>
 						</li>
 			</ul>
@@ -108,7 +110,7 @@
 
 <p>A persistent document object is a document object that knows how to persist
 in derived concrete instances of the <code><a href="class-CContainer.html">CContainer</a></code> class. This class
-features a default offset, kOFFSET_NID, which represents the database
+features a default offset, kTAG_NID, which represents the database
 native unique identifier, or primary key, all objects derived from this class
 are uniquely identified by this offset.</p>
 
@@ -130,7 +132,7 @@ part of the object and tagged by the array index.</p>
 
 	<li><code><a href="class-CPersistentDocument.html#_Restore">CPersistentDocument::Restore()</a></code>: This method will load the object from the container and
 	restore its data, the method expects the object to have its native unique
-	identifier, kOFFSET_NID, set, or it will raise an exception.</li>
+	identifier, kTAG_NID, set, or it will raise an exception.</li>
 
 	<li><code><a href="class-CPersistentDocument.html#_Delete">CPersistentDocument::Delete()</a></code>: This method will delete the object from a container.</li>
 
@@ -200,13 +202,17 @@ is deleted.</p>
 		<h4>Indirect known subclasses</h4>
 			<a href="class-CEdge.html">CEdge</a>, 
 			<a href="class-CNode.html">CNode</a>, 
-			<a href="class-COntologyEdge.html">COntologyEdge</a>, 
-			<a href="class-COntologyNode.html">COntologyNode</a>, 
-			<a href="class-COntologyTag.html">COntologyTag</a>, 
-			<a href="class-COntologyTerm.html">COntologyTerm</a>, 
 			<a href="class-COntologyVertex.html">COntologyVertex</a>, 
 			<a href="class-CTag.html">CTag</a>, 
-			<a href="class-CTerm.html">CTerm</a>
+			<a href="class-CTerm.html">CTerm</a>, 
+			<a href="class-COntologyAliasNode.html">COntologyAliasNode</a>, 
+			<a href="class-COntologyAliasVertex.html">COntologyAliasVertex</a>, 
+			<a href="class-COntologyEdge.html">COntologyEdge</a>, 
+			<a href="class-COntologyMasterNode.html">COntologyMasterNode</a>, 
+			<a href="class-COntologyMasterVertex.html">COntologyMasterVertex</a>, 
+			<a href="class-COntologyNode.html">COntologyNode</a>, 
+			<a href="class-COntologyTag.html">COntologyTag</a>, 
+			<a href="class-COntologyTerm.html">COntologyTerm</a>
 	</div>
 
 
@@ -222,7 +228,7 @@ is deleted.</p>
 				<b>Author:</b>
 				Milko A. Škofič &lt;<a
 href="mailto:m.skofic&#64;cgiar.org">m.skofic&#64;<!---->cgiar.org</a>&gt;<br />
-		<b>Located at</b> <a href="source-class-CPersistentDocument.html#43-1346" title="Go to source code">CPersistentDocument.php</a><br />
+		<b>Located at</b> <a href="source-class-CPersistentDocument.html#43-1389" title="Go to source code">CPersistentDocument.php</a><br />
 	</div>
 
 
@@ -252,13 +258,13 @@ href="mailto:m.skofic&#64;cgiar.org">m.skofic&#64;<!---->cgiar.org</a>&gt;<br />
 			
 <h4>Manage native unique identifier</h4>
 
-<p>The <i>native unique identifier</i>, kOFFSET_NID, represents the
-primary key of the object in the native format of the container in which the
-object is stored.</p>
+<p>The <i>native unique identifier</i>, kTAG_NID, represents the primary
+key of the object in the native format of the container in which the object is
+stored.</p>
 
 <p>This is the only attribute tag that will not be a <code><a href="class-COntologyTag.html">COntologyTag</a></code>
 reference: all other object attributes will be a <code><a href="class-COntologyTag.html">COntologyTag</a></code> native
-identifier, kOFFSET_NID.</p>
+identifier, kTAG_NID.</p>
 
 <p>The method accepts a parameter which represents either the identifier or the
 requested operation, depending on its value:</p>
@@ -296,7 +302,7 @@ will be locked and an exception will be raised.</p>
 
 				<h4>See</h4>
 				<div class="list">
-						kOFFSET_NID<br />
+						kTAG_NID<br />
 				</div>
 				<h4>Uses</h4>
 				<div class="list">
@@ -318,7 +324,7 @@ will be locked and an exception will be raised.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#_Insert">#</a>
-		<code><a href="source-class-CPersistentDocument.html#157-231" title="Go to source code">Insert</a>( <span><code><a href="class-CConnection.html">CConnection</a></code> <var>$theConnection</var></span> )</code>
+		<code><a href="source-class-CPersistentDocument.html#157-233" title="Go to source code">Insert</a>( <span><code><a href="class-CConnection.html">CConnection</a></code> <var>$theConnection</var></span> )</code>
 
 		<div class="description short">
 			
@@ -340,14 +346,15 @@ should be a concrete instance of of <code><a href="class-CContainer.html">CConta
 of <code><a href="class-CServer.html">CServer</a></code> or <code><a href="class-CDatabase.html">CDatabase</a></code>, if the current class has implemented
 the container resolve interface with <code><a href="class-CPersistentDocument.html#_DefaultDatabase">CPersistentDocument::DefaultDatabase()</a></code> and <code><a href="class-CPersistentDocument.html#_DefaultContainer">CPersistentDocument::DefaultContainer()</a></code>.</p>
 
-<p>The method may set the native unique identifier attribute (kOFFSET_NID) if not provided.</p>
+<p>The method may set the native unique identifier attribute (kTAG_NID)
+if not provided.</p>
 
 <p>The operation will only be performed if the object has the <code><a href="class-CStatusDocument.html#__IsDirty">CStatusDocument::_IsDirty()</a></code>
 status set or if it does not have its <code><a href="class-CStatusDocument.html#__IsCommitted">CStatusDocument::_IsCommitted()</a></code> status set, in this
 event the method will return <tt>NULL</tt>.</p>
 
 <p>The method will return the object's native unique identifier attribute
-(kOFFSET_NID), or raise an exception if an error occurs.</p>
+(kTAG_NID), or raise an exception if an error occurs.</p>
 
 <p>Note that derived classes should overload the <code><a href="class-CPersistentDocument.html#__Precommit">CPersistentDocument::_Precommit()</a></code> and <code><a href="class-CPersistentDocument.html#__Postcommit">CPersistentDocument::_Postcommit()</a></code> methods, rather than overloading this one.</p>
 
@@ -393,7 +400,7 @@ event the method will return <tt>NULL</tt>.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#_Update">#</a>
-		<code><a href="source-class-CPersistentDocument.html#238-308" title="Go to source code">Update</a>( <span><code><a href="class-CConnection.html">CConnection</a></code> <var>$theConnection</var></span> )</code>
+		<code><a href="source-class-CPersistentDocument.html#240-312" title="Go to source code">Update</a>( <span><code><a href="class-CConnection.html">CConnection</a></code> <var>$theConnection</var></span> )</code>
 
 		<div class="description short">
 			
@@ -464,7 +471,7 @@ status set and its <code><a href="class-CStatusDocument.html#__IsDirty">CStatusD
 
 		<td class="name"><div>
 		<a class="anchor" href="#_Replace">#</a>
-		<code><a href="source-class-CPersistentDocument.html#315-392" title="Go to source code">Replace</a>( <span><code><a href="class-CConnection.html">CConnection</a></code> <var>$theConnection</var></span> )</code>
+		<code><a href="source-class-CPersistentDocument.html#319-398" title="Go to source code">Replace</a>( <span><code><a href="class-CConnection.html">CConnection</a></code> <var>$theConnection</var></span> )</code>
 
 		<div class="description short">
 			
@@ -492,10 +499,11 @@ do nothing.</p>
 <p>Once the object has been stored, it will have its <code><a href="class-CStatusDocument.html#__IsCommitted">CStatusDocument::_IsCommitted()</a></code>
 status set and its <code><a href="class-CStatusDocument.html#__IsDirty">CStatusDocument::_IsDirty()</a></code> status reset.</p>
 
-<p>The method may set the native unique identifier attribute (kOFFSET_NID) if not provided.</p>
+<p>The method may set the native unique identifier attribute (kTAG_NID)
+if not provided.</p>
 
 <p>The method will return the object's native unique identifier attribute
-(kOFFSET_NID) or <tt>NULL</tt> if the operation was not necessary.</p>
+(kTAG_NID) or <tt>NULL</tt> if the operation was not necessary.</p>
 
 <p>Note that derived classes should overload the <code><a href="class-CPersistentDocument.html#__Precommit">CPersistentDocument::_Precommit()</a></code> and <code><a href="class-CPersistentDocument.html#__Postcommit">CPersistentDocument::_Postcommit()</a></code> methods, rather than overloading this one.</p>
 
@@ -541,7 +549,7 @@ status set and its <code><a href="class-CStatusDocument.html#__IsDirty">CStatusD
 
 		<td class="name"><div>
 		<a class="anchor" href="#_Restore">#</a>
-		<code><a href="source-class-CPersistentDocument.html#399-478" title="Go to source code">Restore</a>( <span><code><a href="class-CConnection.html">CConnection</a></code> <var>$theConnection</var></span> )</code>
+		<code><a href="source-class-CPersistentDocument.html#405-484" title="Go to source code">Restore</a>( <span><code><a href="class-CConnection.html">CConnection</a></code> <var>$theConnection</var></span> )</code>
 
 		<div class="description short">
 			
@@ -562,8 +570,8 @@ should be a concrete instance of of <code><a href="class-CContainer.html">CConta
 of <code><a href="class-CServer.html">CServer</a></code> or <code><a href="class-CDatabase.html">CDatabase</a></code>, if the current class has implemented
 the container resolve interface with <code><a href="class-CPersistentDocument.html#_DefaultDatabase">CPersistentDocument::DefaultDatabase()</a></code> and <code><a href="class-CPersistentDocument.html#_DefaultContainer">CPersistentDocument::DefaultContainer()</a></code>.</p>
 
-<p>The current object must have its native unique identifier offset, kOFFSET_NID, set, or it must have all the necessary elements in order to
-generate this identifier.</p>
+<p>The current object must have its native unique identifier offset, kTAG_NID, set, or it must have all the necessary elements in order to generate
+this identifier.</p>
 
 <p>The method will return <tt>TRUE</tt> if the operation was successful,
 <tt>NULL</tt> if the object is not present in the container, or raise an
@@ -596,7 +604,7 @@ is obviously not called here.</p>
 
 				<h4>See</h4>
 				<div class="list">
-						kOFFSET_NID<br />
+						kTAG_NID<br />
 				</div>
 				<h4>Uses</h4>
 				<div class="list">
@@ -619,7 +627,7 @@ is obviously not called here.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#_Delete">#</a>
-		<code><a href="source-class-CPersistentDocument.html#485-543" title="Go to source code">Delete</a>( <span><code><a href="class-CConnection.html">CConnection</a></code> <var>$theConnection</var></span> )</code>
+		<code><a href="source-class-CPersistentDocument.html#491-551" title="Go to source code">Delete</a>( <span><code><a href="class-CConnection.html">CConnection</a></code> <var>$theConnection</var></span> )</code>
 
 		<div class="description short">
 			
@@ -682,7 +690,7 @@ status and its <code><a href="class-CStatusDocument.html#__IsDirty">CStatusDocum
 
 		<td class="name"><div>
 		<a class="anchor" href="#_NewObject">#</a>
-		<code><a href="source-class-CPersistentDocument.html#559-626" title="Go to source code">NewObject</a>( <span><code><a href="class-CConnection.html">CConnection</a></code> <var>$theConnection</var></span>, <span>mixed <var>$theIdentifier</var></span> )</code>
+		<code><a href="source-class-CPersistentDocument.html#567-634" title="Go to source code">NewObject</a>( <span><code><a href="class-CConnection.html">CConnection</a></code> <var>$theConnection</var></span>, <span>mixed <var>$theIdentifier</var></span> )</code>
 
 		<div class="description short">
 			
@@ -714,7 +722,7 @@ the container resolve interface with <code><a href="class-CPersistentDocument.ht
 	<code><a href="class-CPersistentDocument.html#_DefaultContainer">CPersistentDocument::DefaultContainer()</a></code>.</li>
 
 	<li><tt>$theIdentifier</tt>: The key of the object in the container, by default
-	the kOFFSET_NID offset.</li>
+	the kTAG_NID offset.</li>
 </ul>
 
 <p>If the object could not be located, the method will return <tt>NULL</tt>.</p>
@@ -754,7 +762,7 @@ method was called.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#_DefaultDatabase">#</a>
-		<code><a href="source-class-CPersistentDocument.html#642-659" title="Go to source code">DefaultDatabase</a>( <span><code><a href="class-CServer.html">CServer</a></code> <var>$theServer</var></span> )</code>
+		<code><a href="source-class-CPersistentDocument.html#650-667" title="Go to source code">DefaultDatabase</a>( <span><code><a href="class-CServer.html">CServer</a></code> <var>$theServer</var></span> )</code>
 
 		<div class="description short">
 			
@@ -804,7 +812,7 @@ a server. It expects a <code><a href="class-CServer.html">CServer</a></code> der
 
 		<td class="name"><div>
 		<a class="anchor" href="#_DefaultContainer">#</a>
-		<code><a href="source-class-CPersistentDocument.html#666-683" title="Go to source code">DefaultContainer</a>( <span><code><a href="class-CDatabase.html">CDatabase</a></code> <var>$theDatabase</var></span> )</code>
+		<code><a href="source-class-CPersistentDocument.html#674-691" title="Go to source code">DefaultContainer</a>( <span><code><a href="class-CDatabase.html">CDatabase</a></code> <var>$theDatabase</var></span> )</code>
 
 		<div class="description short">
 			
@@ -855,7 +863,7 @@ return a <code><a href="class-CContainer.html">CContainer</a></code> derived obj
 
 		<td class="name"><div>
 		<a class="anchor" href="#_ResolveContainer">#</a>
-		<code><a href="source-class-CPersistentDocument.html#690-784" title="Go to source code">ResolveContainer</a>( <span><code><a href="class-CConnection.html">CConnection</a></code> <var>$theConnection</var></span>, <span>boolean <var>$doException</var></span> )</code>
+		<code><a href="source-class-CPersistentDocument.html#698-792" title="Go to source code">ResolveContainer</a>( <span><code><a href="class-CConnection.html">CConnection</a></code> <var>$theConnection</var></span>, <span>boolean <var>$doException</var></span> )</code>
 
 		<div class="description short">
 			
@@ -923,7 +931,7 @@ parameter if the first parameter is neither a <code><a href="class-CServer.html"
 
 		<td class="name"><div>
 		<a class="anchor" href="#_ResolveClassContainer">#</a>
-		<code><a href="source-class-CPersistentDocument.html#791-845" title="Go to source code">ResolveClassContainer</a>( <span><code><a href="class-CConnection.html">CConnection</a></code> <var>$theConnection</var></span>, <span>boolean <var>$doException</var></span> )</code>
+		<code><a href="source-class-CPersistentDocument.html#799-853" title="Go to source code">ResolveClassContainer</a>( <span><code><a href="class-CConnection.html">CConnection</a></code> <var>$theConnection</var></span>, <span>boolean <var>$doException</var></span> )</code>
 
 		<div class="description short">
 			
@@ -978,14 +986,14 @@ parameter if the first parameter is neither a <code><a href="class-CServer.html"
 
 		<td class="attributes"><code>
 			 protected 
-			
+			mixed
 			
 			</code>
 		</td>
 
 		<td class="name"><div>
 		<a class="anchor" href="#__Precommit">#</a>
-		<code><a href="source-class-CPersistentDocument.html#861-930" title="Go to source code">_Precommit</a>( <span><code><a href="class-CConnection.html">CConnection</a></code> <var>$theConnection</var></span>, <span>bitfield <var>$theModifiers</var> = kFLAG_DEFAULT </span> )</code>
+		<code><a href="source-class-CPersistentDocument.html#869-950" title="Go to source code">_Precommit</a>( <span><code><a href="class-CConnection.html">CConnection</a></code> <var>$theConnection</var></span>, <span>bitfield <var>$theModifiers</var> = kFLAG_DEFAULT </span> )</code>
 
 		<div class="description short">
 			
@@ -1016,8 +1024,17 @@ functions:</p>
 </ul>
 
 <p>These three methods are called in the above order, they take the same
-arguments as the current method and do not return a value: errors must raise
-exceptions.</p>
+arguments as the current method. These methods may return two kind of
+values:</p>
+
+<ul>
+	<li><tt>NULL</tt>: This value indicates that everything should continue as
+	planned.</li>
+
+	<li><i>other</i>: Any other value is interpreted as the object's native
+	identifier, this is an indication that the object was committed and that the
+	calling method can directly return this value.</li>
+</ul>
 
 <p>When deriving from this class you should overload the above methods and not
 this one.</p>
@@ -1055,6 +1072,10 @@ be raised.</p>
 					<dd><code>bitfield</code><br>$theModifiers Commit options.</dd>
 				</dl></div>
 
+				<h4>Returns</h4>
+				<div class="list">
+					<code>mixed</code><br />
+				</div>
 
 
 				<h4>Uses</h4>
@@ -1085,7 +1106,7 @@ be raised.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#__Postcommit">#</a>
-		<code><a href="source-class-CPersistentDocument.html#937-1001" title="Go to source code">_Postcommit</a>( <span><code><a href="class-CConnection.html">CConnection</a></code> <var>$theConnection</var></span>, <span>bitfield <var>$theModifiers</var> = kFLAG_DEFAULT </span> )</code>
+		<code><a href="source-class-CPersistentDocument.html#957-1021" title="Go to source code">_Postcommit</a>( <span><code><a href="class-CConnection.html">CConnection</a></code> <var>$theConnection</var></span>, <span>bitfield <var>$theModifiers</var> = kFLAG_DEFAULT </span> )</code>
 
 		<div class="description short">
 			
@@ -1176,14 +1197,14 @@ this one.</p>
 
 		<td class="attributes"><code>
 			 protected 
-			
+			mixed
 			
 			</code>
 		</td>
 
 		<td class="name"><div>
 		<a class="anchor" href="#__PrecommitValidate">#</a>
-		<code><a href="source-class-CPersistentDocument.html#1017-1079" title="Go to source code">_PrecommitValidate</a>( <span>reference <var>&amp; $theConnection</var></span>, <span>reference <var>&amp; $theModifiers</var></span> )</code>
+		<code><a href="source-class-CPersistentDocument.html#1037-1106" title="Go to source code">_PrecommitValidate</a>( <span>reference <var>&amp; $theConnection</var></span>, <span>reference <var>&amp; $theModifiers</var></span> )</code>
 
 		<div class="description short">
 			
@@ -1201,6 +1222,10 @@ inserted, updated, replaced or deleted.</p>
 <p>This method is the first one called by <code><a href="class-CPersistentDocument.html#__Precommit">CPersistentDocument::_Precommit()</a></code>, it should
 validate the object elements specific to the current class and let the inherited
 method handle the inherited ones.</p>
+
+<p>If this method returns <tt>NULL</tt>, the caller will continue as usual; if
+the method returns another type of value, the caller should return that
+value.</p>
 
 <p>If the object does not meet the requirements for the desired operation, this
 method should raise an exception.</p>
@@ -1239,6 +1264,11 @@ method should raise an exception.</p>
 					<dd><code>reference</code><br>&amp;$theModifiers Commit options.</dd>
 				</dl></div>
 
+				<h4>Returns</h4>
+				<div class="list">
+					<code>mixed</code><br />
+					<code>mixed</code><br />
+				</div>
 
 				<h4>Throws</h4>
 				<div class="list">
@@ -1266,14 +1296,14 @@ method should raise an exception.</p>
 
 		<td class="attributes"><code>
 			 protected 
-			
+			mixed
 			
 			</code>
 		</td>
 
 		<td class="name"><div>
 		<a class="anchor" href="#__PrecommitRelated">#</a>
-		<code><a href="source-class-CPersistentDocument.html#1086-1124" title="Go to source code">_PrecommitRelated</a>( <span>reference <var>&amp; $theConnection</var></span>, <span>reference <var>&amp; $theModifiers</var></span> )</code>
+		<code><a href="source-class-CPersistentDocument.html#1113-1159" title="Go to source code">_PrecommitRelated</a>( <span>reference <var>&amp; $theConnection</var></span>, <span>reference <var>&amp; $theModifiers</var></span> )</code>
 
 		<div class="description short">
 			
@@ -1292,6 +1322,10 @@ objects and convert them to references.</p>
 <p>This method is the second one called by <code><a href="class-CPersistentDocument.html#__Precommit">CPersistentDocument::_Precommit()</a></code>, it should
 handle the object elements specific to the current class and let the inherited
 method handle the inherited ones.</p>
+
+<p>If this method returns <tt>NULL</tt>, the caller will continue as usual; if
+the method returns another type of value, the caller should return that
+value.</p>
 
 <p>If any error occurs during the process, this method should raise an
 exception.</p>
@@ -1330,6 +1364,10 @@ exception.</p>
 					<dd><code>reference</code><br>&amp;$theModifiers Commit options.</dd>
 				</dl></div>
 
+				<h4>Returns</h4>
+				<div class="list">
+					<code>mixed</code><br />
+				</div>
 
 
 				<h4>Used by</h4>
@@ -1345,14 +1383,14 @@ exception.</p>
 
 		<td class="attributes"><code>
 			 protected 
-			
+			mixed
 			
 			</code>
 		</td>
 
 		<td class="name"><div>
 		<a class="anchor" href="#__PrecommitIdentify">#</a>
-		<code><a href="source-class-CPersistentDocument.html#1131-1171" title="Go to source code">_PrecommitIdentify</a>( <span>reference <var>&amp; $theConnection</var></span>, <span>reference <var>&amp; $theModifiers</var></span> )</code>
+		<code><a href="source-class-CPersistentDocument.html#1166-1214" title="Go to source code">_PrecommitIdentify</a>( <span>reference <var>&amp; $theConnection</var></span>, <span>reference <var>&amp; $theModifiers</var></span> )</code>
 
 		<div class="description short">
 			
@@ -1373,6 +1411,10 @@ should not fail if the first method called by <code><a href="class-CPersistentDo
 necessary validations. The reason this method is the last in the chain is
 because often the object identifier may depend on related or embedded objects
 which have been committed in the previous method.</p>
+
+<p>If this method returns <tt>NULL</tt>, the caller will continue as usual; if
+the method returns another type of value, the caller should return that
+value.</p>
 
 <p>If any error occurs during the process, this method should still raise an
 exception.</p>
@@ -1411,6 +1453,10 @@ exception.</p>
 					<dd><code>reference</code><br>&amp;$theModifiers Commit options.</dd>
 				</dl></div>
 
+				<h4>Returns</h4>
+				<div class="list">
+					<code>mixed</code><br />
+				</div>
 
 
 				<h4>Used by</h4>
@@ -1433,7 +1479,7 @@ exception.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#__PostcommitRelated">#</a>
-		<code><a href="source-class-CPersistentDocument.html#1187-1220" title="Go to source code">_PostcommitRelated</a>( <span>reference <var>&amp; $theConnection</var></span>, <span>reference <var>&amp; $theModifiers</var></span> )</code>
+		<code><a href="source-class-CPersistentDocument.html#1230-1263" title="Go to source code">_PostcommitRelated</a>( <span>reference <var>&amp; $theConnection</var></span>, <span>reference <var>&amp; $theModifiers</var></span> )</code>
 
 		<div class="description short">
 			
@@ -1507,7 +1553,7 @@ status gets reset.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#__PostcommitStatus">#</a>
-		<code><a href="source-class-CPersistentDocument.html#1227-1296" title="Go to source code">_PostcommitStatus</a>( <span>reference <var>&amp; $theConnection</var></span>, <span>reference <var>&amp; $theModifiers</var></span> )</code>
+		<code><a href="source-class-CPersistentDocument.html#1270-1339" title="Go to source code">_PostcommitStatus</a>( <span>reference <var>&amp; $theConnection</var></span>, <span>reference <var>&amp; $theModifiers</var></span> )</code>
 
 		<div class="description short">
 			
@@ -1594,7 +1640,7 @@ resetting it after deleting.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#__PostcommitCleanup">#</a>
-		<code><a href="source-class-CPersistentDocument.html#1303-1342" title="Go to source code">_PostcommitCleanup</a>( <span>reference <var>&amp; $theConnection</var></span>, <span>reference <var>&amp; $theModifiers</var></span> )</code>
+		<code><a href="source-class-CPersistentDocument.html#1346-1385" title="Go to source code">_PostcommitCleanup</a>( <span>reference <var>&amp; $theConnection</var></span>, <span>reference <var>&amp; $theModifiers</var></span> )</code>
 
 		<div class="description short">
 			

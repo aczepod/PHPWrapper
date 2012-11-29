@@ -335,8 +335,8 @@ try
 	// Add required flag.
 	//
 	echo( '<h4>Add required flag</h4>' );
-	echo( '<h5>$node->Type( kTYPE_CARD_REQUIRED, TRUE );</h5>' );
-	$node->Type( kTYPE_CARD_REQUIRED, TRUE );
+	echo( '<h5>$node->Type( kTYPE_REQUIRED, TRUE );</h5>' );
+	$node->Type( kTYPE_REQUIRED, TRUE );
 	echo( 'Inited['.$node->inited()
 				   .'] Dirty['.$node->dirty()
 				   .'] Saved['.$node->committed()
@@ -350,8 +350,8 @@ try
 	// Add list flag.
 	//
 	echo( '<h4>Add list flag</h4>' );
-	echo( '<h5>$node->Type( kTYPE_CARD_ARRAY, TRUE );</h5>' );
-	$node->Type( kTYPE_CARD_ARRAY, TRUE );
+	echo( '<h5>$node->Type( kTYPE_ARRAY, TRUE );</h5>' );
+	$node->Type( kTYPE_ARRAY, TRUE );
 	echo( 'Inited['.$node->inited()
 				   .'] Dirty['.$node->dirty()
 				   .'] Saved['.$node->committed()
@@ -431,8 +431,8 @@ try
 	// Create edge.
 	//
 	echo( '<h4>Create edge</h4>' );
-	echo( '<h5>$edge = $node0->RelateTo( $node, $termA );</h5>' );
-	$edge = $node0->RelateTo( $node, $termA );
+	echo( '<h5>$edge = $node0->RelateTo( $termA, $node );</h5>' );
+	$edge = $node0->RelateTo( $termA, $node );
 	echo( '<pre>' ); print_r( $edge ); echo( '</pre>' );
 	echo( '<hr />' );
 	echo( '<hr>' );

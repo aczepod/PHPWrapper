@@ -62,7 +62,7 @@ try
 			//
 			// Get node ID.
 			//
-			$root = $node[ kOFFSET_NID ];
+			$root = $node[ kTAG_NID ];
 			$node = CPersistentObject::DocumentObject( $node );
 			
 			//
@@ -122,7 +122,7 @@ try
 						//
 						// Get parent ID.
 						//
-						$id = $parent->offsetGet( kTAG_VERTEX_SUBJECT );
+						$id = $parent->offsetGet( kTAG_SUBJECT );
 						
 						//
 						// Export node.
@@ -179,7 +179,7 @@ try
 						//
 						// Get child ID.
 						//
-						$id = $child->offsetGet( kTAG_VERTEX_OBJECT );
+						$id = $child->offsetGet( kTAG_OBJECT );
 						
 						//
 						// Export node.

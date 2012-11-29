@@ -7,8 +7,8 @@
 
 	<title>File COntologyTag.php | MyWrapper Reference Documentation</title>
 
-	<script type="text/javascript" src="resources/combined.js?1742645618"></script>
-	<script type="text/javascript" src="elementlist.js?539813953"></script>
+	<script type="text/javascript" src="resources/combined.js?3680114562"></script>
+	<script type="text/javascript" src="elementlist.js?2861350629"></script>
 	<link rel="stylesheet" type="text/css" media="all" href="resources/style.css?3505392360" />
 
 </head>
@@ -39,6 +39,8 @@
 				<li class="main"><a href="package-MyWrapper.Wrappers.html">Wrappers</a>
 						</li>
 							</ul></li>
+				<li><a href="package-None.html">None</a>
+						</li>
 				<li><a href="package-PHP.html">PHP</a>
 						</li>
 			</ul>
@@ -50,8 +52,11 @@
 		<div id="elements">
 			<h3>Classes</h3>
 			<ul>
-				<li><a href="class-COntology.html">COntology</a></li>
+				<li><a href="class-COntologyAliasNode.html">COntologyAliasNode</a></li>
+				<li><a href="class-COntologyAliasVertex.html">COntologyAliasVertex</a></li>
 				<li><a href="class-COntologyEdge.html">COntologyEdge</a></li>
+				<li><a href="class-COntologyMasterNode.html">COntologyMasterNode</a></li>
+				<li><a href="class-COntologyMasterVertex.html">COntologyMasterVertex</a></li>
 				<li><a href="class-COntologyNode.html">COntologyNode</a></li>
 				<li class="active"><a href="class-COntologyTag.html">COntologyTag</a></li>
 				<li><a href="class-COntologyTerm.html">COntologyTerm</a></li>
@@ -144,7 +149,7 @@
 </span></span><span id="44" class="l"><a class="l" href="#44">  44: </a><span class="php-comment"> * &lt;h4&gt;Ontology tag object ancestor&lt;/h4&gt;
 </span></span><span id="45" class="l"><a class="l" href="#45">  45: </a><span class="php-comment"> *
 </span></span><span id="46" class="l"><a class="l" href="#46">  46: </a><span class="php-comment"> * This class extends its ancestor, {@link CTag}, by asserting the type of objects passed to
-</span></span><span id="47" class="l"><a class="l" href="#47">  47: </a><span class="php-comment"> * the path, {@link kTAG_TAG_PATH}, and by using term references as the elements of the
+</span></span><span id="47" class="l"><a class="l" href="#47">  47: </a><span class="php-comment"> * the path, {@link kTAG_PATH}, and by using term references as the elements of the
 </span></span><span id="48" class="l"><a class="l" href="#48">  48: </a><span class="php-comment"> * object's path and global identifier.
 </span></span><span id="49" class="l"><a class="l" href="#49">  49: </a><span class="php-comment"> *
 </span></span><span id="50" class="l"><a class="l" href="#50">  50: </a><span class="php-comment"> * &lt;ul&gt;
@@ -153,17 +158,17 @@
 </span></span><span id="53" class="l"><a class="l" href="#53">  53: </a><span class="php-comment"> *      graph and the even elements the predicate terms that connect them. In this class
 </span></span><span id="54" class="l"><a class="l" href="#54">  54: </a><span class="php-comment"> *      the vertices are represented by the {@link kTAG_TERM} reference of the vertex
 </span></span><span id="55" class="l"><a class="l" href="#55">  55: </a><span class="php-comment"> *      {@link COntologyNode} instances, while the predicates are represented by the
-</span></span><span id="56" class="l"><a class="l" href="#56">  56: </a><span class="php-comment"> *      {@link COntologyTerm} {@link kOFFSET_NID} of the predicate terms.
+</span></span><span id="56" class="l"><a class="l" href="#56">  56: </a><span class="php-comment"> *      {@link COntologyTerm} {@link kTAG_NID} of the predicate terms.
 </span></span><span id="57" class="l"><a class="l" href="#57">  57: </a><span class="php-comment"> *  &lt;li&gt;&lt;i&gt;Global identifier&lt;/i&gt;: The global identifier, {@link GID()}, in this class is
 </span></span><span id="58" class="l"><a class="l" href="#58">  58: </a><span class="php-comment"> *      represented by the concatenation of the {@link kTAG_GID} attributes of all the
 </span></span><span id="59" class="l"><a class="l" href="#59">  59: </a><span class="php-comment"> *      {@link COntologyTerm} instance references of the object's path,
-</span></span><span id="60" class="l"><a class="l" href="#60">  60: </a><span class="php-comment"> *      {@link kTAG_TAG_PATH}, separated by the {@link kTOKEN_INDEX_SEPARATOR} token.
+</span></span><span id="60" class="l"><a class="l" href="#60">  60: </a><span class="php-comment"> *      {@link kTAG_PATH}, separated by the {@link kTOKEN_INDEX_SEPARATOR} token.
 </span></span><span id="61" class="l"><a class="l" href="#61">  61: </a><span class="php-comment"> *  &lt;li&gt;&lt;i&gt;Unique identifier&lt;/i&gt;: The unique identifier, {@link kTAG_UID}, in this class is
 </span></span><span id="62" class="l"><a class="l" href="#62">  62: </a><span class="php-comment"> *      represented by the hash of the global identifier.
 </span></span><span id="63" class="l"><a class="l" href="#63">  63: </a><span class="php-comment"> * &lt;/ul&gt;
 </span></span><span id="64" class="l"><a class="l" href="#64">  64: </a><span class="php-comment"> *
 </span></span><span id="65" class="l"><a class="l" href="#65">  65: </a><span class="php-comment"> * Elements of the path can be provided as committed objects, they must have their
-</span></span><span id="66" class="l"><a class="l" href="#66">  66: </a><span class="php-comment"> * {@link kOFFSET_NID} set. {@link COntologyNode} instances or references can only be
+</span></span><span id="66" class="l"><a class="l" href="#66">  66: </a><span class="php-comment"> * {@link kTAG_NID} set. {@link COntologyNode} instances or references can only be
 </span></span><span id="67" class="l"><a class="l" href="#67">  67: </a><span class="php-comment"> * provided as odd elements, while {@link COntologyTerm} instances or references can be
 </span></span><span id="68" class="l"><a class="l" href="#68">  68: </a><span class="php-comment"> * provided as both odd or even elements. Note that nodes will always be resolved into the
 </span></span><span id="69" class="l"><a class="l" href="#69">  69: </a><span class="php-comment"> * terms they refer to, so &lt;i&gt;there there is no direct relationship between nodes and
@@ -177,15 +182,15 @@
 </span></span><span id="77" class="l"><a class="l" href="#77">  77: </a><span class="php-comment"> * Objects of this class will almost always be created by providing a sequence of node
 </span></span><span id="78" class="l"><a class="l" href="#78">  78: </a><span class="php-comment"> * vertices and predicate terms, the {@link PushItem()} method will follow these rules: the
 </span></span><span id="79" class="l"><a class="l" href="#79">  79: </a><span class="php-comment"> * first element of the path is the feature vertex, if provided as an {@link COntologyNode}
-</span></span><span id="80" class="l"><a class="l" href="#80">  80: </a><span class="php-comment"> * instance, it must have its {@link COntologyNode::Kind()} set to {@link kKIND_NODE_TRAIT};
+</span></span><span id="80" class="l"><a class="l" href="#80">  80: </a><span class="php-comment"> * instance, it must have its {@link COntologyNode::Kind()} set to {@link kKIND_NODE_FEATURE};
 </span></span><span id="81" class="l"><a class="l" href="#81">  81: </a><span class="php-comment"> * the last element of the path is the scale vertex, if provided as an {@link COntologyNode}
 </span></span><span id="82" class="l"><a class="l" href="#82">  82: </a><span class="php-comment"> * instance, it must have its {@link COntologyNode::Kind()} set to {@link kKIND_NODE_SCALE}.
 </span></span><span id="83" class="l"><a class="l" href="#83">  83: </a><span class="php-comment"> *
 </span></span><span id="84" class="l"><a class="l" href="#84">  84: </a><span class="php-comment"> * Whenever a tag is committed, the referenced terms will receive the tag
-</span></span><span id="85" class="l"><a class="l" href="#85">  85: </a><span class="php-comment"> * {@link kOFFSET_NID} in an attribute, depending on their position in the path: the first
-</span></span><span id="86" class="l"><a class="l" href="#86">  86: </a><span class="php-comment"> * path term will receive the tag reference in the {@link kTAG_REFS_TAG_FEATURE} attribute,
+</span></span><span id="85" class="l"><a class="l" href="#85">  85: </a><span class="php-comment"> * {@link kTAG_NID} in an attribute, depending on their position in the path: the first
+</span></span><span id="86" class="l"><a class="l" href="#86">  86: </a><span class="php-comment"> * path term will receive the tag reference in the {@link kTAG_FEATURES} attribute,
 </span></span><span id="87" class="l"><a class="l" href="#87">  87: </a><span class="php-comment"> * the terms which are neither the first nor the last in the path receive the reference in
-</span></span><span id="88" class="l"><a class="l" href="#88">  88: </a><span class="php-comment"> * {@link kTAG_REFS_TAG_METHOD} and the last term in {@link kTAG_REFS_TAG_SCALE}.
+</span></span><span id="88" class="l"><a class="l" href="#88">  88: </a><span class="php-comment"> * {@link kTAG_METHODS} and the last term in {@link kTAG_SCALES}.
 </span></span><span id="89" class="l"><a class="l" href="#89">  89: </a><span class="php-comment"> *
 </span></span><span id="90" class="l"><a class="l" href="#90">  90: </a><span class="php-comment"> * This class prevents updating the full object once it has been inserted for the first
 </span></span><span id="91" class="l"><a class="l" href="#91">  91: </a><span class="php-comment"> * time. This behaviour is necessary because tags are referenced by many other objects, so
@@ -193,7 +198,7 @@
 </span></span><span id="93" class="l"><a class="l" href="#93">  93: </a><span class="php-comment"> * reason the {@link Update()} and {@link Replace()} methods will raise an exception.
 </span></span><span id="94" class="l"><a class="l" href="#94">  94: </a><span class="php-comment"> *
 </span></span><span id="95" class="l"><a class="l" href="#95">  95: </a><span class="php-comment"> * Objects of this class use a sequence number as their native identifier,
-</span></span><span id="96" class="l"><a class="l" href="#96">  96: </a><span class="php-comment"> * {@link kOFFSET_NID}, tagged as {@link kSEQUENCE_KEY_TAG}.
+</span></span><span id="96" class="l"><a class="l" href="#96">  96: </a><span class="php-comment"> * {@link kTAG_NID}, tagged as {@link kSEQUENCE_KEY_TAG}.
 </span></span><span id="97" class="l"><a class="l" href="#97">  97: </a><span class="php-comment"> *
 </span></span><span id="98" class="l"><a class="l" href="#98">  98: </a><span class="php-comment"> * The class implements the static method, {@link DefaultContainer()}, which, given a
 </span></span><span id="99" class="l"><a class="l" href="#99">  99: </a><span class="php-comment"> * database, will return the default tag container; it will use the
@@ -234,14 +239,14 @@
 </span></span><span id="134" class="l"><a class="l" href="#134"> 134: </a><span class="php-comment">     *          since there is no way to resolve them.
 </span></span><span id="135" class="l"><a class="l" href="#135"> 135: </a><span class="php-comment">     *      &lt;li&gt;If the first element of the path is an {@link COntologyNode} instance, the
 </span></span><span id="136" class="l"><a class="l" href="#136"> 136: </a><span class="php-comment">     *          latter must have its {@link kTAG_KIND} attribute set to
-</span></span><span id="137" class="l"><a class="l" href="#137"> 137: </a><span class="php-comment">     *          {@link kKIND_NODE_TRAIT}.
+</span></span><span id="137" class="l"><a class="l" href="#137"> 137: </a><span class="php-comment">     *          {@link kKIND_NODE_FEATURE}.
 </span></span><span id="138" class="l"><a class="l" href="#138"> 138: </a><span class="php-comment">     *      &lt;li&gt;If the last element of the path is an {@link COntologyNode} instance, the
 </span></span><span id="139" class="l"><a class="l" href="#139"> 139: </a><span class="php-comment">     *          latter must have its {@link kTAG_KIND} attribute set to
 </span></span><span id="140" class="l"><a class="l" href="#140"> 140: </a><span class="php-comment">     *          {@link kKIND_NODE_SCALE}.
 </span></span><span id="141" class="l"><a class="l" href="#141"> 141: </a><span class="php-comment">     *   &lt;/ul&gt;
 </span></span><span id="142" class="l"><a class="l" href="#142"> 142: </a><span class="php-comment">     *  &lt;li&gt;{link COntologyTerm} instances will be accepted in any position.
-</span></span><span id="143" class="l"><a class="l" href="#143"> 143: </a><span class="php-comment">     *  &lt;li&gt;{link COntologyTerm} instances must have their {@link kOFFSET_NID} attribute.
-</span></span><span id="144" class="l"><a class="l" href="#144"> 144: </a><span class="php-comment">     *  &lt;li&gt;Any other data type will be interpreted as the term's {@link kOFFSET_NID} and
+</span></span><span id="143" class="l"><a class="l" href="#143"> 143: </a><span class="php-comment">     *  &lt;li&gt;{link COntologyTerm} instances must have their {@link kTAG_NID} attribute.
+</span></span><span id="144" class="l"><a class="l" href="#144"> 144: </a><span class="php-comment">     *  &lt;li&gt;Any other data type will be interpreted as the term's {@link kTAG_NID} and
 </span></span><span id="145" class="l"><a class="l" href="#145"> 145: </a><span class="php-comment">     *      no verification will be performed.
 </span></span><span id="146" class="l"><a class="l" href="#146"> 146: </a><span class="php-comment">     * &lt;/ul&gt;
 </span></span><span id="147" class="l"><a class="l" href="#147"> 147: </a><span class="php-comment">     *
@@ -252,7 +257,7 @@
 </span></span><span id="152" class="l"><a class="l" href="#152"> 152: </a><span class="php-comment">     *
 </span></span><span id="153" class="l"><a class="l" href="#153"> 153: </a><span class="php-comment">     * @uses _AssertClass()
 </span></span><span id="154" class="l"><a class="l" href="#154"> 154: </a><span class="php-comment">     *
-</span></span><span id="155" class="l"><a class="l" href="#155"> 155: </a><span class="php-comment">     * @see kTAG_TAG_PATH
+</span></span><span id="155" class="l"><a class="l" href="#155"> 155: </a><span class="php-comment">     * @see kTAG_PATH
 </span></span><span id="156" class="l"><a class="l" href="#156"> 156: </a><span class="php-comment">     */</span>
 </span><span id="157" class="l"><a class="l" href="#157"> 157: </a>    <span class="php-keyword1">public</span> <span class="php-keyword1">function</span> <a id="_PushItem" href="#_PushItem">PushItem</a>( <span class="php-var">$theValue</span> )
 </span><span id="158" class="l"><a class="l" href="#158"> 158: </a>    {
@@ -274,9 +279,9 @@
 </span><span id="174" class="l"><a class="l" href="#174"> 174: </a>                    <span class="php-comment">//</span>
 </span><span id="175" class="l"><a class="l" href="#175"> 175: </a>                    <span class="php-comment">// Check native identifier.</span>
 </span><span id="176" class="l"><a class="l" href="#176"> 176: </a>                    <span class="php-comment">//</span>
-</span><span id="177" class="l"><a class="l" href="#177"> 177: </a>                    <span class="php-keyword1">if</span>( <span class="php-var">$theValue</span>-&gt;offsetExists( kOFFSET_NID ) )
+</span><span id="177" class="l"><a class="l" href="#177"> 177: </a>                    <span class="php-keyword1">if</span>( <span class="php-var">$theValue</span>-&gt;offsetExists( kTAG_NID ) )
 </span><span id="178" class="l"><a class="l" href="#178"> 178: </a>                        <span class="php-keyword1">return</span> parent::PushItem(
-</span><span id="179" class="l"><a class="l" href="#179"> 179: </a>                            <span class="php-var">$theValue</span>-&gt;offsetGet( kOFFSET_NID ) );                  <span class="php-comment">// ==&gt;</span>
+</span><span id="179" class="l"><a class="l" href="#179"> 179: </a>                            <span class="php-var">$theValue</span>-&gt;offsetGet( kTAG_NID ) );                 <span class="php-comment">// ==&gt;</span>
 </span><span id="180" class="l"><a class="l" href="#180"> 180: </a>                    
 </span><span id="181" class="l"><a class="l" href="#181"> 181: </a>                    <span class="php-keyword1">throw</span> <span class="php-keyword1">new</span> Exception
 </span><span id="182" class="l"><a class="l" href="#182"> 182: </a>                        ( <span class="php-quote">&quot;Cannot set path element: &quot;</span>
@@ -295,8 +300,8 @@
 </span><span id="195" class="l"><a class="l" href="#195"> 195: </a>            <span class="php-comment">//</span>
 </span><span id="196" class="l"><a class="l" href="#196"> 196: </a>            <span class="php-comment">// Get element count.</span>
 </span><span id="197" class="l"><a class="l" href="#197"> 197: </a>            <span class="php-comment">//</span>
-</span><span id="198" class="l"><a class="l" href="#198"> 198: </a>            <span class="php-var">$count</span> = ( <span class="php-var">$this</span>-&gt;offsetExists( kTAG_TAG_PATH ) )
-</span><span id="199" class="l"><a class="l" href="#199"> 199: </a>                   ? <span class="php-keyword2">count</span>( <span class="php-var">$this</span>-&gt;offsetGet( kTAG_TAG_PATH ) )
+</span><span id="198" class="l"><a class="l" href="#198"> 198: </a>            <span class="php-var">$count</span> = ( <span class="php-var">$this</span>-&gt;offsetExists( kTAG_PATH ) )
+</span><span id="199" class="l"><a class="l" href="#199"> 199: </a>                   ? <span class="php-keyword2">count</span>( <span class="php-var">$this</span>-&gt;offsetGet( kTAG_PATH ) )
 </span><span id="200" class="l"><a class="l" href="#200"> 200: </a>                   : <span class="php-num">0</span>;
 </span><span id="201" class="l"><a class="l" href="#201"> 201: </a>            
 </span><span id="202" class="l"><a class="l" href="#202"> 202: </a>            <span class="php-comment">//</span>
@@ -327,7 +332,7 @@
 </span><span id="227" class="l"><a class="l" href="#227"> 227: </a>                                <span class="php-comment">//</span>
 </span><span id="228" class="l"><a class="l" href="#228"> 228: </a>                                <span class="php-comment">// Check feature.</span>
 </span><span id="229" class="l"><a class="l" href="#229"> 229: </a>                                <span class="php-comment">//</span>
-</span><span id="230" class="l"><a class="l" href="#230"> 230: </a>                                <span class="php-keyword1">if</span>( <span class="php-var">$theValue</span>-&gt;Kind( kKIND_NODE_TRAIT ) !== <span class="php-keyword1">NULL</span> )
+</span><span id="230" class="l"><a class="l" href="#230"> 230: </a>                                <span class="php-keyword1">if</span>( <span class="php-var">$theValue</span>-&gt;Kind( kKIND_NODE_FEATURE ) !== <span class="php-keyword1">NULL</span> )
 </span><span id="231" class="l"><a class="l" href="#231"> 231: </a>                                    <span class="php-keyword1">return</span> parent::PushItem(
 </span><span id="232" class="l"><a class="l" href="#232"> 232: </a>                                        <span class="php-var">$theValue</span>-&gt;offsetGet( kTAG_TERM ) );        <span class="php-comment">// ==&gt;</span>
 </span><span id="233" class="l"><a class="l" href="#233"> 233: </a>                                
@@ -341,7 +346,7 @@
 </span><span id="241" class="l"><a class="l" href="#241"> 241: </a>                            <span class="php-comment">//</span>
 </span><span id="242" class="l"><a class="l" href="#242"> 242: </a>                            <span class="php-comment">// Check last.</span>
 </span><span id="243" class="l"><a class="l" href="#243"> 243: </a>                            <span class="php-comment">//</span>
-</span><span id="244" class="l"><a class="l" href="#244"> 244: </a>                            <span class="php-keyword1">if</span>( <span class="php-var">$count</span> == (<span class="php-keyword2">count</span>( <span class="php-var">$this</span>-&gt;offsetGet( kTAG_TAG_PATH ) ) - <span class="php-num">1</span>) )
+</span><span id="244" class="l"><a class="l" href="#244"> 244: </a>                            <span class="php-keyword1">if</span>( <span class="php-var">$count</span> == (<span class="php-keyword2">count</span>( <span class="php-var">$this</span>-&gt;offsetGet( kTAG_PATH ) ) - <span class="php-num">1</span>) )
 </span><span id="245" class="l"><a class="l" href="#245"> 245: </a>                            {
 </span><span id="246" class="l"><a class="l" href="#246"> 246: </a>                                <span class="php-comment">//</span>
 </span><span id="247" class="l"><a class="l" href="#247"> 247: </a>                                <span class="php-comment">// Check scale.</span>
@@ -405,15 +410,15 @@
 </span></span><span id="305" class="l"><a class="l" href="#305"> 305: </a><span class="php-comment">     * @access public
 </span></span><span id="306" class="l"><a class="l" href="#306"> 306: </a><span class="php-comment">     * @return mixed                First element of the terms list, or &lt;tt&gt;NULL&lt;/tt&gt;.
 </span></span><span id="307" class="l"><a class="l" href="#307"> 307: </a><span class="php-comment">     *
-</span></span><span id="308" class="l"><a class="l" href="#308"> 308: </a><span class="php-comment">     * @see kTAG_TAG_PATH
+</span></span><span id="308" class="l"><a class="l" href="#308"> 308: </a><span class="php-comment">     * @see kTAG_PATH
 </span></span><span id="309" class="l"><a class="l" href="#309"> 309: </a><span class="php-comment">     */</span>
 </span><span id="310" class="l"><a class="l" href="#310"> 310: </a>    <span class="php-keyword1">public</span> <span class="php-keyword1">function</span> <a id="_GetFeatureVertex" href="#_GetFeatureVertex">GetFeatureVertex</a>()
 </span><span id="311" class="l"><a class="l" href="#311"> 311: </a>    {
 </span><span id="312" class="l"><a class="l" href="#312"> 312: </a>        <span class="php-comment">//</span>
 </span><span id="313" class="l"><a class="l" href="#313"> 313: </a>        <span class="php-comment">// Check path.</span>
 </span><span id="314" class="l"><a class="l" href="#314"> 314: </a>        <span class="php-comment">//</span>
-</span><span id="315" class="l"><a class="l" href="#315"> 315: </a>        <span class="php-keyword1">if</span>( <span class="php-var">$this</span>-&gt;offsetExists( kTAG_TAG_PATH ) )
-</span><span id="316" class="l"><a class="l" href="#316"> 316: </a>            <span class="php-keyword1">return</span> <span class="php-var">$this</span>[ kTAG_TAG_PATH ][ <span class="php-num">0</span> ];                                     <span class="php-comment">// ==&gt;</span>
+</span><span id="315" class="l"><a class="l" href="#315"> 315: </a>        <span class="php-keyword1">if</span>( <span class="php-var">$this</span>-&gt;offsetExists( kTAG_PATH ) )
+</span><span id="316" class="l"><a class="l" href="#316"> 316: </a>            <span class="php-keyword1">return</span> <span class="php-var">$this</span>[ kTAG_PATH ][ <span class="php-num">0</span> ];                                     <span class="php-comment">// ==&gt;</span>
 </span><span id="317" class="l"><a class="l" href="#317"> 317: </a>        
 </span><span id="318" class="l"><a class="l" href="#318"> 318: </a>        <span class="php-keyword1">return</span> <span class="php-keyword1">NULL</span>;                                                                <span class="php-comment">// ==&gt;</span>
 </span><span id="319" class="l"><a class="l" href="#319"> 319: </a>
@@ -440,19 +445,19 @@
 </span></span><span id="340" class="l"><a class="l" href="#340"> 340: </a><span class="php-comment">     * @access public
 </span></span><span id="341" class="l"><a class="l" href="#341"> 341: </a><span class="php-comment">     * @return mixed                List of method nodes, or &lt;tt&gt;NULL&lt;/tt&gt;.
 </span></span><span id="342" class="l"><a class="l" href="#342"> 342: </a><span class="php-comment">     *
-</span></span><span id="343" class="l"><a class="l" href="#343"> 343: </a><span class="php-comment">     * @see kTAG_TAG_PATH
+</span></span><span id="343" class="l"><a class="l" href="#343"> 343: </a><span class="php-comment">     * @see kTAG_PATH
 </span></span><span id="344" class="l"><a class="l" href="#344"> 344: </a><span class="php-comment">     */</span>
 </span><span id="345" class="l"><a class="l" href="#345"> 345: </a>    <span class="php-keyword1">public</span> <span class="php-keyword1">function</span> <a id="_GetMethodVertex" href="#_GetMethodVertex">GetMethodVertex</a>()
 </span><span id="346" class="l"><a class="l" href="#346"> 346: </a>    {
 </span><span id="347" class="l"><a class="l" href="#347"> 347: </a>        <span class="php-comment">//</span>
 </span><span id="348" class="l"><a class="l" href="#348"> 348: </a>        <span class="php-comment">// Check path.</span>
 </span><span id="349" class="l"><a class="l" href="#349"> 349: </a>        <span class="php-comment">//</span>
-</span><span id="350" class="l"><a class="l" href="#350"> 350: </a>        <span class="php-keyword1">if</span>( <span class="php-var">$this</span>-&gt;offsetExists( kTAG_TAG_PATH ) )
+</span><span id="350" class="l"><a class="l" href="#350"> 350: </a>        <span class="php-keyword1">if</span>( <span class="php-var">$this</span>-&gt;offsetExists( kTAG_PATH ) )
 </span><span id="351" class="l"><a class="l" href="#351"> 351: </a>        {
 </span><span id="352" class="l"><a class="l" href="#352"> 352: </a>            <span class="php-comment">//</span>
 </span><span id="353" class="l"><a class="l" href="#353"> 353: </a>            <span class="php-comment">// Check for methods.</span>
 </span><span id="354" class="l"><a class="l" href="#354"> 354: </a>            <span class="php-comment">//</span>
-</span><span id="355" class="l"><a class="l" href="#355"> 355: </a>            <span class="php-keyword1">if</span>( (<span class="php-var">$count</span> = <span class="php-keyword2">count</span>( <span class="php-var">$path</span> = <span class="php-var">$this</span>-&gt;offsetGet( kTAG_TAG_PATH ) )) &gt;= <span class="php-num">5</span> )
+</span><span id="355" class="l"><a class="l" href="#355"> 355: </a>            <span class="php-keyword1">if</span>( (<span class="php-var">$count</span> = <span class="php-keyword2">count</span>( <span class="php-var">$path</span> = <span class="php-var">$this</span>-&gt;offsetGet( kTAG_PATH ) )) &gt;= <span class="php-num">5</span> )
 </span><span id="356" class="l"><a class="l" href="#356"> 356: </a>            {
 </span><span id="357" class="l"><a class="l" href="#357"> 357: </a>                <span class="php-comment">//</span>
 </span><span id="358" class="l"><a class="l" href="#358"> 358: </a>                <span class="php-comment">// Init local storage.</span>
@@ -494,16 +499,16 @@
 </span></span><span id="394" class="l"><a class="l" href="#394"> 394: </a><span class="php-comment">     * @access public
 </span></span><span id="395" class="l"><a class="l" href="#395"> 395: </a><span class="php-comment">     * @return mixed                Last element of the terms list, or &lt;tt&gt;NULL&lt;/tt&gt;.
 </span></span><span id="396" class="l"><a class="l" href="#396"> 396: </a><span class="php-comment">     *
-</span></span><span id="397" class="l"><a class="l" href="#397"> 397: </a><span class="php-comment">     * @see kTAG_TAG_PATH
+</span></span><span id="397" class="l"><a class="l" href="#397"> 397: </a><span class="php-comment">     * @see kTAG_PATH
 </span></span><span id="398" class="l"><a class="l" href="#398"> 398: </a><span class="php-comment">     */</span>
 </span><span id="399" class="l"><a class="l" href="#399"> 399: </a>    <span class="php-keyword1">public</span> <span class="php-keyword1">function</span> <a id="_GetScaleVertex" href="#_GetScaleVertex">GetScaleVertex</a>()
 </span><span id="400" class="l"><a class="l" href="#400"> 400: </a>    {
 </span><span id="401" class="l"><a class="l" href="#401"> 401: </a>        <span class="php-comment">//</span>
 </span><span id="402" class="l"><a class="l" href="#402"> 402: </a>        <span class="php-comment">// Check path.</span>
 </span><span id="403" class="l"><a class="l" href="#403"> 403: </a>        <span class="php-comment">//</span>
-</span><span id="404" class="l"><a class="l" href="#404"> 404: </a>        <span class="php-keyword1">if</span>( <span class="php-var">$this</span>-&gt;offsetExists( kTAG_TAG_PATH ) )
-</span><span id="405" class="l"><a class="l" href="#405"> 405: </a>            <span class="php-keyword1">return</span> <span class="php-var">$this</span>[ kTAG_TAG_PATH ]
-</span><span id="406" class="l"><a class="l" href="#406"> 406: </a>                        [<span class="php-keyword2">count</span>( <span class="php-var">$this</span>[ kTAG_TAG_PATH ] ) - <span class="php-num">1</span> ];                     <span class="php-comment">// ==&gt;</span>
+</span><span id="404" class="l"><a class="l" href="#404"> 404: </a>        <span class="php-keyword1">if</span>( <span class="php-var">$this</span>-&gt;offsetExists( kTAG_PATH ) )
+</span><span id="405" class="l"><a class="l" href="#405"> 405: </a>            <span class="php-keyword1">return</span> <span class="php-var">$this</span>[ kTAG_PATH ]
+</span><span id="406" class="l"><a class="l" href="#406"> 406: </a>                        [<span class="php-keyword2">count</span>( <span class="php-var">$this</span>[ kTAG_PATH ] ) - <span class="php-num">1</span> ];                     <span class="php-comment">// ==&gt;</span>
 </span><span id="407" class="l"><a class="l" href="#407"> 407: </a>        
 </span><span id="408" class="l"><a class="l" href="#408"> 408: </a>        <span class="php-keyword1">return</span> <span class="php-keyword1">NULL</span>;                                                                <span class="php-comment">// ==&gt;</span>
 </span><span id="409" class="l"><a class="l" href="#409"> 409: </a>
@@ -767,7 +772,7 @@
 </span><span id="667" class="l"><a class="l" href="#667"> 667: </a>            <span class="php-var">$query</span> = <span class="php-var">$container</span>-&gt;NewQuery();
 </span><span id="668" class="l"><a class="l" href="#668"> 668: </a>            <span class="php-var">$query</span>-&gt;AppendStatement(
 </span><span id="669" class="l"><a class="l" href="#669"> 669: </a>                CQueryStatement::Equals(
-</span><span id="670" class="l"><a class="l" href="#670"> 670: </a>                    kTAG_UID, <span class="php-var">$theIdentifier</span>, kTYPE_BINARY ) );
+</span><span id="670" class="l"><a class="l" href="#670"> 670: </a>                    kTAG_UID, <span class="php-var">$theIdentifier</span>, kTYPE_BINARY_STRING ) );
 </span><span id="671" class="l"><a class="l" href="#671"> 671: </a>            <span class="php-var">$tag</span> = <span class="php-var">$container</span>-&gt;Query( <span class="php-var">$query</span>, <span class="php-keyword1">NULL</span>, <span class="php-keyword1">NULL</span>, <span class="php-keyword1">NULL</span>, <span class="php-keyword1">NULL</span>, <span class="php-keyword1">TRUE</span> );
 </span><span id="672" class="l"><a class="l" href="#672"> 672: </a>            <span class="php-keyword1">if</span>( <span class="php-var">$tag</span> === <span class="php-keyword1">NULL</span> )
 </span><span id="673" class="l"><a class="l" href="#673"> 673: </a>            {
@@ -777,7 +782,7 @@
 </span><span id="677" class="l"><a class="l" href="#677"> 677: </a>                <span class="php-var">$query</span> = <span class="php-var">$container</span>-&gt;NewQuery();
 </span><span id="678" class="l"><a class="l" href="#678"> 678: </a>                <span class="php-var">$query</span>-&gt;AppendStatement(
 </span><span id="679" class="l"><a class="l" href="#679"> 679: </a>                    CQueryStatement::Equals(
-</span><span id="680" class="l"><a class="l" href="#680"> 680: </a>                        kTAG_UID, <span class="php-keyword2">md5</span>( <span class="php-var">$theIdentifier</span>, <span class="php-keyword1">TRUE</span> ), kTYPE_BINARY ) );
+</span><span id="680" class="l"><a class="l" href="#680"> 680: </a>                        kTAG_UID, <span class="php-keyword2">md5</span>( <span class="php-var">$theIdentifier</span>, <span class="php-keyword1">TRUE</span> ), kTYPE_BINARY_STRING ) );
 </span><span id="681" class="l"><a class="l" href="#681"> 681: </a>                <span class="php-var">$tag</span> = <span class="php-var">$container</span>-&gt;Query( <span class="php-var">$query</span>, <span class="php-keyword1">NULL</span>, <span class="php-keyword1">NULL</span>, <span class="php-keyword1">NULL</span>, <span class="php-keyword1">NULL</span>, <span class="php-keyword1">TRUE</span> );
 </span><span id="682" class="l"><a class="l" href="#682"> 682: </a>            
 </span><span id="683" class="l"><a class="l" href="#683"> 683: </a>            } <span class="php-comment">// Provided unique identifier doesn't match.</span>
@@ -836,7 +841,7 @@
 </span></span><span id="736" class="l"><a class="l" href="#736"> 736: </a><span class="php-comment">     *
 </span></span><span id="737" class="l"><a class="l" href="#737"> 737: </a><span class="php-comment">     * @throws Exception
 </span></span><span id="738" class="l"><a class="l" href="#738"> 738: </a><span class="php-comment">     *
-</span></span><span id="739" class="l"><a class="l" href="#739"> 739: </a><span class="php-comment">     * @see kTAG_TAG_PATH kTOKEN_INDEX_SEPARATOR
+</span></span><span id="739" class="l"><a class="l" href="#739"> 739: </a><span class="php-comment">     * @see kTAG_PATH kTOKEN_INDEX_SEPARATOR
 </span></span><span id="740" class="l"><a class="l" href="#740"> 740: </a><span class="php-comment">     */</span>
 </span><span id="741" class="l"><a class="l" href="#741"> 741: </a>    <span class="php-keyword1">protected</span> <span class="php-keyword1">function</span> <a id="__index" href="#__index">_index</a>( CConnection <span class="php-var">$theConnection</span>, <span class="php-var">$theModifiers</span> )
 </span><span id="742" class="l"><a class="l" href="#742"> 742: </a>    {
@@ -844,7 +849,7 @@
 </span><span id="744" class="l"><a class="l" href="#744"> 744: </a>        <span class="php-comment">// Init local storage.</span>
 </span><span id="745" class="l"><a class="l" href="#745"> 745: </a>        <span class="php-comment">//</span>
 </span><span id="746" class="l"><a class="l" href="#746"> 746: </a>        <span class="php-var">$identifier</span>  = <span class="php-keyword1">Array</span>();
-</span><span id="747" class="l"><a class="l" href="#747"> 747: </a>        <span class="php-var">$path</span> = <span class="php-var">$this</span>-&gt;offsetGet( kTAG_TAG_PATH );
+</span><span id="747" class="l"><a class="l" href="#747"> 747: </a>        <span class="php-var">$path</span> = <span class="php-var">$this</span>-&gt;offsetGet( kTAG_PATH );
 </span><span id="748" class="l"><a class="l" href="#748"> 748: </a>        
 </span><span id="749" class="l"><a class="l" href="#749"> 749: </a>        <span class="php-comment">//</span>
 </span><span id="750" class="l"><a class="l" href="#750"> 750: </a>        <span class="php-comment">// Iterate path elements.</span>
@@ -886,7 +891,7 @@
 </span><span id="786" class="l"><a class="l" href="#786"> 786: </a>    <span class="php-comment">/**
 </span></span><span id="787" class="l"><a class="l" href="#787"> 787: </a><span class="php-comment">     * &lt;h4&gt;Handle offset before setting it&lt;/h4&gt;
 </span></span><span id="788" class="l"><a class="l" href="#788"> 788: </a><span class="php-comment">     *
-</span></span><span id="789" class="l"><a class="l" href="#789"> 789: </a><span class="php-comment">     * In this class we lock the {@link kTAG_TAG_PATH} attribute if the object is
+</span></span><span id="789" class="l"><a class="l" href="#789"> 789: </a><span class="php-comment">     * In this class we lock the {@link kTAG_PATH} attribute if the object is
 </span></span><span id="790" class="l"><a class="l" href="#790"> 790: </a><span class="php-comment">     * committed.
 </span></span><span id="791" class="l"><a class="l" href="#791"> 791: </a><span class="php-comment">     *
 </span></span><span id="792" class="l"><a class="l" href="#792"> 792: </a><span class="php-comment">     * @param reference            &amp;$theOffset          Offset.
@@ -898,14 +903,14 @@
 </span></span><span id="798" class="l"><a class="l" href="#798"> 798: </a><span class="php-comment">     *
 </span></span><span id="799" class="l"><a class="l" href="#799"> 799: </a><span class="php-comment">     * @uses _IsCommitted()
 </span></span><span id="800" class="l"><a class="l" href="#800"> 800: </a><span class="php-comment">     *
-</span></span><span id="801" class="l"><a class="l" href="#801"> 801: </a><span class="php-comment">     * @see kTAG_TAG_PATH
+</span></span><span id="801" class="l"><a class="l" href="#801"> 801: </a><span class="php-comment">     * @see kTAG_PATH
 </span></span><span id="802" class="l"><a class="l" href="#802"> 802: </a><span class="php-comment">     */</span>
 </span><span id="803" class="l"><a class="l" href="#803"> 803: </a>    <span class="php-keyword1">protected</span> <span class="php-keyword1">function</span> <a id="__Preset" href="#__Preset">_Preset</a>( &amp;<span class="php-var">$theOffset</span>, &amp;<span class="php-var">$theValue</span> )
 </span><span id="804" class="l"><a class="l" href="#804"> 804: </a>    {
 </span><span id="805" class="l"><a class="l" href="#805"> 805: </a>        <span class="php-comment">//</span>
 </span><span id="806" class="l"><a class="l" href="#806"> 806: </a>        <span class="php-comment">// Lock path.</span>
 </span><span id="807" class="l"><a class="l" href="#807"> 807: </a>        <span class="php-comment">//</span>
-</span><span id="808" class="l"><a class="l" href="#808"> 808: </a>        <span class="php-keyword1">if</span>( (<span class="php-var">$theOffset</span> == kTAG_TAG_PATH)
+</span><span id="808" class="l"><a class="l" href="#808"> 808: </a>        <span class="php-keyword1">if</span>( (<span class="php-var">$theOffset</span> == kTAG_PATH)
 </span><span id="809" class="l"><a class="l" href="#809"> 809: </a>         &amp;&amp; <span class="php-var">$this</span>-&gt;_IsCommitted() )
 </span><span id="810" class="l"><a class="l" href="#810"> 810: </a>            <span class="php-keyword1">throw</span> <span class="php-keyword1">new</span> Exception
 </span><span id="811" class="l"><a class="l" href="#811"> 811: </a>                ( <span class="php-quote">&quot;You cannot modify the [</span><span class="php-var">$theOffset</span><span class="php-quote">] offset: &quot;</span>
@@ -927,7 +932,7 @@
 </span><span id="827" class="l"><a class="l" href="#827"> 827: </a>    <span class="php-comment">/**
 </span></span><span id="828" class="l"><a class="l" href="#828"> 828: </a><span class="php-comment">     * &lt;h4&gt;Handle offset before unsetting it&lt;/h4&gt;
 </span></span><span id="829" class="l"><a class="l" href="#829"> 829: </a><span class="php-comment">     *
-</span></span><span id="830" class="l"><a class="l" href="#830"> 830: </a><span class="php-comment">     * In this class we lock the {@link kTAG_TAG_PATH} attribute if the object is
+</span></span><span id="830" class="l"><a class="l" href="#830"> 830: </a><span class="php-comment">     * In this class we lock the {@link kTAG_PATH} attribute if the object is
 </span></span><span id="831" class="l"><a class="l" href="#831"> 831: </a><span class="php-comment">     * committed and the {@link kTAG_UID} in all cases.
 </span></span><span id="832" class="l"><a class="l" href="#832"> 832: </a><span class="php-comment">     *
 </span></span><span id="833" class="l"><a class="l" href="#833"> 833: </a><span class="php-comment">     * @param reference            &amp;$theOffset          Offset.
@@ -938,14 +943,14 @@
 </span></span><span id="838" class="l"><a class="l" href="#838"> 838: </a><span class="php-comment">     *
 </span></span><span id="839" class="l"><a class="l" href="#839"> 839: </a><span class="php-comment">     * @uses _IsCommitted()
 </span></span><span id="840" class="l"><a class="l" href="#840"> 840: </a><span class="php-comment">     *
-</span></span><span id="841" class="l"><a class="l" href="#841"> 841: </a><span class="php-comment">     * @see kTAG_TAG_PATH
+</span></span><span id="841" class="l"><a class="l" href="#841"> 841: </a><span class="php-comment">     * @see kTAG_PATH
 </span></span><span id="842" class="l"><a class="l" href="#842"> 842: </a><span class="php-comment">     */</span>
 </span><span id="843" class="l"><a class="l" href="#843"> 843: </a>    <span class="php-keyword1">protected</span> <span class="php-keyword1">function</span> <a id="__Preunset" href="#__Preunset">_Preunset</a>( &amp;<span class="php-var">$theOffset</span> )
 </span><span id="844" class="l"><a class="l" href="#844"> 844: </a>    {
 </span><span id="845" class="l"><a class="l" href="#845"> 845: </a>        <span class="php-comment">//</span>
 </span><span id="846" class="l"><a class="l" href="#846"> 846: </a>        <span class="php-comment">// Lock path.</span>
 </span><span id="847" class="l"><a class="l" href="#847"> 847: </a>        <span class="php-comment">//</span>
-</span><span id="848" class="l"><a class="l" href="#848"> 848: </a>        <span class="php-keyword1">if</span>( (<span class="php-var">$theOffset</span> == kTAG_TAG_PATH)
+</span><span id="848" class="l"><a class="l" href="#848"> 848: </a>        <span class="php-keyword1">if</span>( (<span class="php-var">$theOffset</span> == kTAG_PATH)
 </span><span id="849" class="l"><a class="l" href="#849"> 849: </a>         &amp;&amp; <span class="php-var">$this</span>-&gt;_IsCommitted() )
 </span><span id="850" class="l"><a class="l" href="#850"> 850: </a>            <span class="php-keyword1">throw</span> <span class="php-keyword1">new</span> Exception
 </span><span id="851" class="l"><a class="l" href="#851"> 851: </a>                ( <span class="php-quote">&quot;You cannot modify the [</span><span class="php-var">$theOffset</span><span class="php-quote">] offset: &quot;</span>
@@ -979,7 +984,7 @@
 </span></span><span id="879" class="l"><a class="l" href="#879"> 879: </a><span class="php-comment">     * This method will use the result of the {@link _index()} method to set the global
 </span></span><span id="880" class="l"><a class="l" href="#880"> 880: </a><span class="php-comment">     * identifier, {@link kTAG_GID}; the same value will be hashed and constitute the
 </span></span><span id="881" class="l"><a class="l" href="#881"> 881: </a><span class="php-comment">     * unique identifier, {@link kTAG_UID}, while the native identifier,
-</span></span><span id="882" class="l"><a class="l" href="#882"> 882: </a><span class="php-comment">     * {@link kOFFSET_NID}, will be set by the sequence number {@link kSEQUENCE_KEY_TAG}.
+</span></span><span id="882" class="l"><a class="l" href="#882"> 882: </a><span class="php-comment">     * {@link kTAG_NID}, will be set by the sequence number {@link kSEQUENCE_KEY_TAG}.
 </span></span><span id="883" class="l"><a class="l" href="#883"> 883: </a><span class="php-comment">     *
 </span></span><span id="884" class="l"><a class="l" href="#884"> 884: </a><span class="php-comment">     * The parent method will then be called, which will ignore the global and native
 </span></span><span id="885" class="l"><a class="l" href="#885"> 885: </a><span class="php-comment">     * identifiers, since they will have been set here.
@@ -988,271 +993,272 @@
 </span></span><span id="888" class="l"><a class="l" href="#888"> 888: </a><span class="php-comment">     * @param reference            &amp;$theModifiers       Commit options.
 </span></span><span id="889" class="l"><a class="l" href="#889"> 889: </a><span class="php-comment">     *
 </span></span><span id="890" class="l"><a class="l" href="#890"> 890: </a><span class="php-comment">     * @access protected
-</span></span><span id="891" class="l"><a class="l" href="#891"> 891: </a><span class="php-comment">     *
-</span></span><span id="892" class="l"><a class="l" href="#892"> 892: </a><span class="php-comment">     * @throws Exception
-</span></span><span id="893" class="l"><a class="l" href="#893"> 893: </a><span class="php-comment">     *
-</span></span><span id="894" class="l"><a class="l" href="#894"> 894: </a><span class="php-comment">     * @uses _IsCommitted()
-</span></span><span id="895" class="l"><a class="l" href="#895"> 895: </a><span class="php-comment">     * @uses _index()
-</span></span><span id="896" class="l"><a class="l" href="#896"> 896: </a><span class="php-comment">     *
-</span></span><span id="897" class="l"><a class="l" href="#897"> 897: </a><span class="php-comment">     * @see kSEQUENCE_KEY_TAG
-</span></span><span id="898" class="l"><a class="l" href="#898"> 898: </a><span class="php-comment">     * @see kOFFSET_NID kTAG_GID kTAG_UID
-</span></span><span id="899" class="l"><a class="l" href="#899"> 899: </a><span class="php-comment">     * @see kFLAG_PERSIST_INSERT kFLAG_PERSIST_REPLACE
-</span></span><span id="900" class="l"><a class="l" href="#900"> 900: </a><span class="php-comment">     */</span>
-</span><span id="901" class="l"><a class="l" href="#901"> 901: </a>    <span class="php-keyword1">protected</span> <span class="php-keyword1">function</span> <a id="__PrecommitIdentify" href="#__PrecommitIdentify">_PrecommitIdentify</a>( &amp;<span class="php-var">$theConnection</span>, &amp;<span class="php-var">$theModifiers</span> )
-</span><span id="902" class="l"><a class="l" href="#902"> 902: </a>    {
-</span><span id="903" class="l"><a class="l" href="#903"> 903: </a>        <span class="php-comment">//</span>
-</span><span id="904" class="l"><a class="l" href="#904"> 904: </a>        <span class="php-comment">// Handle new object.</span>
-</span><span id="905" class="l"><a class="l" href="#905"> 905: </a>        <span class="php-comment">//</span>
-</span><span id="906" class="l"><a class="l" href="#906"> 906: </a>        <span class="php-keyword1">if</span>( ( ((<span class="php-var">$theModifiers</span> &amp; kFLAG_PERSIST_MASK) == kFLAG_PERSIST_INSERT)
-</span><span id="907" class="l"><a class="l" href="#907"> 907: </a>           || ((<span class="php-var">$theModifiers</span> &amp; kFLAG_PERSIST_MASK) == kFLAG_PERSIST_REPLACE) )
-</span><span id="908" class="l"><a class="l" href="#908"> 908: </a>         &amp;&amp; (! <span class="php-var">$this</span>-&gt;_IsCommitted()) )
-</span><span id="909" class="l"><a class="l" href="#909"> 909: </a>        {
-</span><span id="910" class="l"><a class="l" href="#910"> 910: </a>            <span class="php-comment">//</span>
-</span><span id="911" class="l"><a class="l" href="#911"> 911: </a>            <span class="php-comment">// Set global identifier.</span>
-</span><span id="912" class="l"><a class="l" href="#912"> 912: </a>            <span class="php-comment">//</span>
-</span><span id="913" class="l"><a class="l" href="#913"> 913: </a>            <span class="php-keyword1">if</span>( ! <span class="php-var">$this</span>-&gt;offsetExists( kTAG_GID ) )
-</span><span id="914" class="l"><a class="l" href="#914"> 914: </a>            {
-</span><span id="915" class="l"><a class="l" href="#915"> 915: </a>                <span class="php-comment">//</span>
-</span><span id="916" class="l"><a class="l" href="#916"> 916: </a>                <span class="php-comment">// Generate global identifier.</span>
-</span><span id="917" class="l"><a class="l" href="#917"> 917: </a>                <span class="php-comment">//</span>
-</span><span id="918" class="l"><a class="l" href="#918"> 918: </a>                <span class="php-var">$index</span> = <span class="php-var">$this</span>-&gt;_index( <span class="php-var">$theConnection</span>, <span class="php-var">$theModifiers</span> );
-</span><span id="919" class="l"><a class="l" href="#919"> 919: </a>                <span class="php-keyword1">if</span>( <span class="php-var">$index</span> !== <span class="php-keyword1">NULL</span> )
-</span><span id="920" class="l"><a class="l" href="#920"> 920: </a>                {
-</span><span id="921" class="l"><a class="l" href="#921"> 921: </a>                    <span class="php-comment">//</span>
-</span><span id="922" class="l"><a class="l" href="#922"> 922: </a>                    <span class="php-comment">// Set global identifier.</span>
-</span><span id="923" class="l"><a class="l" href="#923"> 923: </a>                    <span class="php-comment">//</span>
-</span><span id="924" class="l"><a class="l" href="#924"> 924: </a>                    <span class="php-var">$this</span>-&gt;offsetSet( kTAG_GID, <span class="php-var">$index</span> );
-</span><span id="925" class="l"><a class="l" href="#925"> 925: </a>                    
-</span><span id="926" class="l"><a class="l" href="#926"> 926: </a>                    <span class="php-comment">//</span>
-</span><span id="927" class="l"><a class="l" href="#927"> 927: </a>                    <span class="php-comment">// Resolve container.</span>
-</span><span id="928" class="l"><a class="l" href="#928"> 928: </a>                    <span class="php-comment">//</span>
-</span><span id="929" class="l"><a class="l" href="#929"> 929: </a>                    <span class="php-var">$container</span> = <span class="php-keyword1">static</span>::ResolveContainer( <span class="php-var">$theConnection</span>, <span class="php-keyword1">TRUE</span> );
-</span><span id="930" class="l"><a class="l" href="#930"> 930: </a>                    
-</span><span id="931" class="l"><a class="l" href="#931"> 931: </a>                    <span class="php-comment">//</span>
-</span><span id="932" class="l"><a class="l" href="#932"> 932: </a>                    <span class="php-comment">// Generate unique identifier.</span>
-</span><span id="933" class="l"><a class="l" href="#933"> 933: </a>                    <span class="php-comment">//</span>
-</span><span id="934" class="l"><a class="l" href="#934"> 934: </a>                    <span class="php-var">$uid</span> = <span class="php-keyword2">md5</span>( <span class="php-var">$index</span>, <span class="php-keyword1">TRUE</span> );
-</span><span id="935" class="l"><a class="l" href="#935"> 935: </a>                    
-</span><span id="936" class="l"><a class="l" href="#936"> 936: </a>                    <span class="php-comment">//</span>
-</span><span id="937" class="l"><a class="l" href="#937"> 937: </a>                    <span class="php-comment">// Convert binary string to container native format.</span>
-</span><span id="938" class="l"><a class="l" href="#938"> 938: </a>                    <span class="php-comment">//</span>
-</span><span id="939" class="l"><a class="l" href="#939"> 939: </a>                    <span class="php-var">$container</span>-&gt;UnserialiseData( <span class="php-var">$uid</span>, kTYPE_BINARY );
-</span><span id="940" class="l"><a class="l" href="#940"> 940: </a>                    
-</span><span id="941" class="l"><a class="l" href="#941"> 941: </a>                    <span class="php-comment">//</span>
-</span><span id="942" class="l"><a class="l" href="#942"> 942: </a>                    <span class="php-comment">// Check unique identifier.</span>
-</span><span id="943" class="l"><a class="l" href="#943"> 943: </a>                    <span class="php-comment">//</span>
-</span><span id="944" class="l"><a class="l" href="#944"> 944: </a>                    <span class="php-keyword1">if</span>( <span class="php-var">$container</span>-&gt;CheckObject( <span class="php-var">$uid</span>, kTAG_UID ) )
-</span><span id="945" class="l"><a class="l" href="#945"> 945: </a>                        <span class="php-keyword1">throw</span> <span class="php-keyword1">new</span> Exception
-</span><span id="946" class="l"><a class="l" href="#946"> 946: </a>                            ( <span class="php-quote">&quot;Duplicate object&quot;</span>,
-</span><span id="947" class="l"><a class="l" href="#947"> 947: </a>                              kERROR_COMMIT );                                  <span class="php-comment">// !@! ==&gt;</span>
-</span><span id="948" class="l"><a class="l" href="#948"> 948: </a>                    
-</span><span id="949" class="l"><a class="l" href="#949"> 949: </a>                    <span class="php-comment">//</span>
-</span><span id="950" class="l"><a class="l" href="#950"> 950: </a>                    <span class="php-comment">// Set unique identifier.</span>
-</span><span id="951" class="l"><a class="l" href="#951"> 951: </a>                    <span class="php-comment">//</span>
-</span><span id="952" class="l"><a class="l" href="#952"> 952: </a>                    <span class="php-var">$this</span>-&gt;offsetSet( kTAG_UID, <span class="php-var">$uid</span> );
-</span><span id="953" class="l"><a class="l" href="#953"> 953: </a>                
-</span><span id="954" class="l"><a class="l" href="#954"> 954: </a>                } <span class="php-comment">// Supports global identifier.</span>
-</span><span id="955" class="l"><a class="l" href="#955"> 955: </a>            
-</span><span id="956" class="l"><a class="l" href="#956"> 956: </a>            } <span class="php-comment">// Missing global identifier.</span>
-</span><span id="957" class="l"><a class="l" href="#957"> 957: </a>        
-</span><span id="958" class="l"><a class="l" href="#958"> 958: </a>            <span class="php-comment">//</span>
-</span><span id="959" class="l"><a class="l" href="#959"> 959: </a>            <span class="php-comment">// Set native identifier.</span>
-</span><span id="960" class="l"><a class="l" href="#960"> 960: </a>            <span class="php-comment">//</span>
-</span><span id="961" class="l"><a class="l" href="#961"> 961: </a>            <span class="php-keyword1">if</span>( ! <span class="php-var">$this</span>-&gt;offsetExists( kOFFSET_NID ) )
-</span><span id="962" class="l"><a class="l" href="#962"> 962: </a>                <span class="php-var">$this</span>-&gt;offsetSet(
-</span><span id="963" class="l"><a class="l" href="#963"> 963: </a>                    kOFFSET_NID,
-</span><span id="964" class="l"><a class="l" href="#964"> 964: </a>                    <span class="php-keyword1">static</span>::ResolveContainer(
-</span><span id="965" class="l"><a class="l" href="#965"> 965: </a>                        <span class="php-var">$theConnection</span>, <span class="php-keyword1">TRUE</span> )
-</span><span id="966" class="l"><a class="l" href="#966"> 966: </a>                            -&gt;NextSequence( kSEQUENCE_KEY_TAG, <span class="php-keyword1">TRUE</span> ) );
-</span><span id="967" class="l"><a class="l" href="#967"> 967: </a>        
-</span><span id="968" class="l"><a class="l" href="#968"> 968: </a>        } <span class="php-comment">// Insert or replace and not committed.</span>
-</span><span id="969" class="l"><a class="l" href="#969"> 969: </a>    
-</span><span id="970" class="l"><a class="l" href="#970"> 970: </a>        <span class="php-comment">//</span>
-</span><span id="971" class="l"><a class="l" href="#971"> 971: </a>        <span class="php-comment">// Call parent method.</span>
-</span><span id="972" class="l"><a class="l" href="#972"> 972: </a>        <span class="php-comment">//</span>
-</span><span id="973" class="l"><a class="l" href="#973"> 973: </a>        parent::_PrecommitIdentify( <span class="php-var">$theConnection</span>, <span class="php-var">$theModifiers</span> );
-</span><span id="974" class="l"><a class="l" href="#974"> 974: </a>        
-</span><span id="975" class="l"><a class="l" href="#975"> 975: </a>    } <span class="php-comment">// _PrecommitIdentify.</span>
-</span><span id="976" class="l"><a class="l" href="#976"> 976: </a>        
-</span><span id="977" class="l"><a class="l" href="#977"> 977: </a>
+</span></span><span id="891" class="l"><a class="l" href="#891"> 891: </a><span class="php-comment">     * @return mixed
+</span></span><span id="892" class="l"><a class="l" href="#892"> 892: </a><span class="php-comment">     *
+</span></span><span id="893" class="l"><a class="l" href="#893"> 893: </a><span class="php-comment">     * @throws Exception
+</span></span><span id="894" class="l"><a class="l" href="#894"> 894: </a><span class="php-comment">     *
+</span></span><span id="895" class="l"><a class="l" href="#895"> 895: </a><span class="php-comment">     * @uses _IsCommitted()
+</span></span><span id="896" class="l"><a class="l" href="#896"> 896: </a><span class="php-comment">     * @uses _index()
+</span></span><span id="897" class="l"><a class="l" href="#897"> 897: </a><span class="php-comment">     *
+</span></span><span id="898" class="l"><a class="l" href="#898"> 898: </a><span class="php-comment">     * @see kSEQUENCE_KEY_TAG
+</span></span><span id="899" class="l"><a class="l" href="#899"> 899: </a><span class="php-comment">     * @see kTAG_NID kTAG_GID kTAG_UID
+</span></span><span id="900" class="l"><a class="l" href="#900"> 900: </a><span class="php-comment">     * @see kFLAG_PERSIST_INSERT kFLAG_PERSIST_REPLACE
+</span></span><span id="901" class="l"><a class="l" href="#901"> 901: </a><span class="php-comment">     */</span>
+</span><span id="902" class="l"><a class="l" href="#902"> 902: </a>    <span class="php-keyword1">protected</span> <span class="php-keyword1">function</span> <a id="__PrecommitIdentify" href="#__PrecommitIdentify">_PrecommitIdentify</a>( &amp;<span class="php-var">$theConnection</span>, &amp;<span class="php-var">$theModifiers</span> )
+</span><span id="903" class="l"><a class="l" href="#903"> 903: </a>    {
+</span><span id="904" class="l"><a class="l" href="#904"> 904: </a>        <span class="php-comment">//</span>
+</span><span id="905" class="l"><a class="l" href="#905"> 905: </a>        <span class="php-comment">// Handle new object.</span>
+</span><span id="906" class="l"><a class="l" href="#906"> 906: </a>        <span class="php-comment">//</span>
+</span><span id="907" class="l"><a class="l" href="#907"> 907: </a>        <span class="php-keyword1">if</span>( ( ((<span class="php-var">$theModifiers</span> &amp; kFLAG_PERSIST_MASK) == kFLAG_PERSIST_INSERT)
+</span><span id="908" class="l"><a class="l" href="#908"> 908: </a>           || ((<span class="php-var">$theModifiers</span> &amp; kFLAG_PERSIST_MASK) == kFLAG_PERSIST_REPLACE) )
+</span><span id="909" class="l"><a class="l" href="#909"> 909: </a>         &amp;&amp; (! <span class="php-var">$this</span>-&gt;_IsCommitted()) )
+</span><span id="910" class="l"><a class="l" href="#910"> 910: </a>        {
+</span><span id="911" class="l"><a class="l" href="#911"> 911: </a>            <span class="php-comment">//</span>
+</span><span id="912" class="l"><a class="l" href="#912"> 912: </a>            <span class="php-comment">// Set global identifier.</span>
+</span><span id="913" class="l"><a class="l" href="#913"> 913: </a>            <span class="php-comment">//</span>
+</span><span id="914" class="l"><a class="l" href="#914"> 914: </a>            <span class="php-keyword1">if</span>( ! <span class="php-var">$this</span>-&gt;offsetExists( kTAG_GID ) )
+</span><span id="915" class="l"><a class="l" href="#915"> 915: </a>            {
+</span><span id="916" class="l"><a class="l" href="#916"> 916: </a>                <span class="php-comment">//</span>
+</span><span id="917" class="l"><a class="l" href="#917"> 917: </a>                <span class="php-comment">// Generate global identifier.</span>
+</span><span id="918" class="l"><a class="l" href="#918"> 918: </a>                <span class="php-comment">//</span>
+</span><span id="919" class="l"><a class="l" href="#919"> 919: </a>                <span class="php-var">$index</span> = <span class="php-var">$this</span>-&gt;_index( <span class="php-var">$theConnection</span>, <span class="php-var">$theModifiers</span> );
+</span><span id="920" class="l"><a class="l" href="#920"> 920: </a>                <span class="php-keyword1">if</span>( <span class="php-var">$index</span> !== <span class="php-keyword1">NULL</span> )
+</span><span id="921" class="l"><a class="l" href="#921"> 921: </a>                {
+</span><span id="922" class="l"><a class="l" href="#922"> 922: </a>                    <span class="php-comment">//</span>
+</span><span id="923" class="l"><a class="l" href="#923"> 923: </a>                    <span class="php-comment">// Set global identifier.</span>
+</span><span id="924" class="l"><a class="l" href="#924"> 924: </a>                    <span class="php-comment">//</span>
+</span><span id="925" class="l"><a class="l" href="#925"> 925: </a>                    <span class="php-var">$this</span>-&gt;offsetSet( kTAG_GID, <span class="php-var">$index</span> );
+</span><span id="926" class="l"><a class="l" href="#926"> 926: </a>                    
+</span><span id="927" class="l"><a class="l" href="#927"> 927: </a>                    <span class="php-comment">//</span>
+</span><span id="928" class="l"><a class="l" href="#928"> 928: </a>                    <span class="php-comment">// Resolve container.</span>
+</span><span id="929" class="l"><a class="l" href="#929"> 929: </a>                    <span class="php-comment">//</span>
+</span><span id="930" class="l"><a class="l" href="#930"> 930: </a>                    <span class="php-var">$container</span> = <span class="php-keyword1">static</span>::ResolveContainer( <span class="php-var">$theConnection</span>, <span class="php-keyword1">TRUE</span> );
+</span><span id="931" class="l"><a class="l" href="#931"> 931: </a>                    
+</span><span id="932" class="l"><a class="l" href="#932"> 932: </a>                    <span class="php-comment">//</span>
+</span><span id="933" class="l"><a class="l" href="#933"> 933: </a>                    <span class="php-comment">// Generate unique identifier.</span>
+</span><span id="934" class="l"><a class="l" href="#934"> 934: </a>                    <span class="php-comment">//</span>
+</span><span id="935" class="l"><a class="l" href="#935"> 935: </a>                    <span class="php-var">$uid</span> = <span class="php-keyword2">md5</span>( <span class="php-var">$index</span>, <span class="php-keyword1">TRUE</span> );
+</span><span id="936" class="l"><a class="l" href="#936"> 936: </a>                    
+</span><span id="937" class="l"><a class="l" href="#937"> 937: </a>                    <span class="php-comment">//</span>
+</span><span id="938" class="l"><a class="l" href="#938"> 938: </a>                    <span class="php-comment">// Convert binary string to container native format.</span>
+</span><span id="939" class="l"><a class="l" href="#939"> 939: </a>                    <span class="php-comment">//</span>
+</span><span id="940" class="l"><a class="l" href="#940"> 940: </a>                    <span class="php-var">$container</span>-&gt;UnserialiseData( <span class="php-var">$uid</span>, kTYPE_BINARY_STRING );
+</span><span id="941" class="l"><a class="l" href="#941"> 941: </a>                    
+</span><span id="942" class="l"><a class="l" href="#942"> 942: </a>                    <span class="php-comment">//</span>
+</span><span id="943" class="l"><a class="l" href="#943"> 943: </a>                    <span class="php-comment">// Check unique identifier.</span>
+</span><span id="944" class="l"><a class="l" href="#944"> 944: </a>                    <span class="php-comment">//</span>
+</span><span id="945" class="l"><a class="l" href="#945"> 945: </a>                    <span class="php-keyword1">if</span>( <span class="php-var">$container</span>-&gt;CheckObject( <span class="php-var">$uid</span>, kTAG_UID ) )
+</span><span id="946" class="l"><a class="l" href="#946"> 946: </a>                        <span class="php-keyword1">throw</span> <span class="php-keyword1">new</span> Exception
+</span><span id="947" class="l"><a class="l" href="#947"> 947: </a>                            ( <span class="php-quote">&quot;Duplicate object&quot;</span>,
+</span><span id="948" class="l"><a class="l" href="#948"> 948: </a>                              kERROR_COMMIT );                                  <span class="php-comment">// !@! ==&gt;</span>
+</span><span id="949" class="l"><a class="l" href="#949"> 949: </a>                    
+</span><span id="950" class="l"><a class="l" href="#950"> 950: </a>                    <span class="php-comment">//</span>
+</span><span id="951" class="l"><a class="l" href="#951"> 951: </a>                    <span class="php-comment">// Set unique identifier.</span>
+</span><span id="952" class="l"><a class="l" href="#952"> 952: </a>                    <span class="php-comment">//</span>
+</span><span id="953" class="l"><a class="l" href="#953"> 953: </a>                    <span class="php-var">$this</span>-&gt;offsetSet( kTAG_UID, <span class="php-var">$uid</span> );
+</span><span id="954" class="l"><a class="l" href="#954"> 954: </a>                
+</span><span id="955" class="l"><a class="l" href="#955"> 955: </a>                } <span class="php-comment">// Supports global identifier.</span>
+</span><span id="956" class="l"><a class="l" href="#956"> 956: </a>            
+</span><span id="957" class="l"><a class="l" href="#957"> 957: </a>            } <span class="php-comment">// Missing global identifier.</span>
+</span><span id="958" class="l"><a class="l" href="#958"> 958: </a>        
+</span><span id="959" class="l"><a class="l" href="#959"> 959: </a>            <span class="php-comment">//</span>
+</span><span id="960" class="l"><a class="l" href="#960"> 960: </a>            <span class="php-comment">// Set native identifier.</span>
+</span><span id="961" class="l"><a class="l" href="#961"> 961: </a>            <span class="php-comment">//</span>
+</span><span id="962" class="l"><a class="l" href="#962"> 962: </a>            <span class="php-keyword1">if</span>( ! <span class="php-var">$this</span>-&gt;offsetExists( kTAG_NID ) )
+</span><span id="963" class="l"><a class="l" href="#963"> 963: </a>                <span class="php-var">$this</span>-&gt;offsetSet(
+</span><span id="964" class="l"><a class="l" href="#964"> 964: </a>                    kTAG_NID,
+</span><span id="965" class="l"><a class="l" href="#965"> 965: </a>                    <span class="php-keyword1">static</span>::ResolveContainer(
+</span><span id="966" class="l"><a class="l" href="#966"> 966: </a>                        <span class="php-var">$theConnection</span>, <span class="php-keyword1">TRUE</span> )
+</span><span id="967" class="l"><a class="l" href="#967"> 967: </a>                            -&gt;NextSequence( kSEQUENCE_KEY_TAG, <span class="php-keyword1">TRUE</span> ) );
+</span><span id="968" class="l"><a class="l" href="#968"> 968: </a>        
+</span><span id="969" class="l"><a class="l" href="#969"> 969: </a>        } <span class="php-comment">// Insert or replace and not committed.</span>
+</span><span id="970" class="l"><a class="l" href="#970"> 970: </a>    
+</span><span id="971" class="l"><a class="l" href="#971"> 971: </a>        <span class="php-comment">//</span>
+</span><span id="972" class="l"><a class="l" href="#972"> 972: </a>        <span class="php-comment">// Call parent method.</span>
+</span><span id="973" class="l"><a class="l" href="#973"> 973: </a>        <span class="php-comment">//</span>
+</span><span id="974" class="l"><a class="l" href="#974"> 974: </a>        <span class="php-keyword1">return</span> parent::_PrecommitIdentify( <span class="php-var">$theConnection</span>, <span class="php-var">$theModifiers</span> );         <span class="php-comment">// ==&gt;</span>
+</span><span id="975" class="l"><a class="l" href="#975"> 975: </a>        
+</span><span id="976" class="l"><a class="l" href="#976"> 976: </a>    } <span class="php-comment">// _PrecommitIdentify.</span>
+</span><span id="977" class="l"><a class="l" href="#977"> 977: </a>        
 </span><span id="978" class="l"><a class="l" href="#978"> 978: </a>
-</span><span id="979" class="l"><a class="l" href="#979"> 979: </a><span class="php-comment">/*=======================================================================================
-</span></span><span id="980" class="l"><a class="l" href="#980"> 980: </a><span class="php-comment"> *                                                                                      *
-</span></span><span id="981" class="l"><a class="l" href="#981"> 981: </a><span class="php-comment"> *                          PROTECTED POST-COMMIT INTERFACE                             *
-</span></span><span id="982" class="l"><a class="l" href="#982"> 982: </a><span class="php-comment"> *                                                                                      *
-</span></span><span id="983" class="l"><a class="l" href="#983"> 983: </a><span class="php-comment"> *======================================================================================*/</span>
-</span><span id="984" class="l"><a class="l" href="#984"> 984: </a>
+</span><span id="979" class="l"><a class="l" href="#979"> 979: </a>
+</span><span id="980" class="l"><a class="l" href="#980"> 980: </a><span class="php-comment">/*=======================================================================================
+</span></span><span id="981" class="l"><a class="l" href="#981"> 981: </a><span class="php-comment"> *                                                                                      *
+</span></span><span id="982" class="l"><a class="l" href="#982"> 982: </a><span class="php-comment"> *                          PROTECTED POST-COMMIT INTERFACE                             *
+</span></span><span id="983" class="l"><a class="l" href="#983"> 983: </a><span class="php-comment"> *                                                                                      *
+</span></span><span id="984" class="l"><a class="l" href="#984"> 984: </a><span class="php-comment"> *======================================================================================*/</span>
 </span><span id="985" class="l"><a class="l" href="#985"> 985: </a>
-</span><span id="986" class="l"><a class="l" href="#986"> 986: </a>     
-</span><span id="987" class="l"><a class="l" href="#987"> 987: </a>    <span class="php-comment">/*===================================================================================
-</span></span><span id="988" class="l"><a class="l" href="#988"> 988: </a><span class="php-comment">     *  _PostcommitRelated                                                              *
-</span></span><span id="989" class="l"><a class="l" href="#989"> 989: </a><span class="php-comment">     *==================================================================================*/</span>
-</span><span id="990" class="l"><a class="l" href="#990"> 990: </a>
-</span><span id="991" class="l"><a class="l" href="#991"> 991: </a>    <span class="php-comment">/**
-</span></span><span id="992" class="l"><a class="l" href="#992"> 992: </a><span class="php-comment">     * &lt;h4&gt;Update related objects after committing&lt;/h4&gt;
-</span></span><span id="993" class="l"><a class="l" href="#993"> 993: </a><span class="php-comment">     *
-</span></span><span id="994" class="l"><a class="l" href="#994"> 994: </a><span class="php-comment">     * Once committed, the referenced feature, method and scale vertices will be updated
-</span></span><span id="995" class="l"><a class="l" href="#995"> 995: </a><span class="php-comment">     * with the current tag's identifier in the respective {@link kTAG_REFS_TAG_FEATURE},
-</span></span><span id="996" class="l"><a class="l" href="#996"> 996: </a><span class="php-comment">     * {@link kTAG_REFS_TAG_METHOD} and {@link kTAG_REFS_TAG_SCALE} attributes.
-</span></span><span id="997" class="l"><a class="l" href="#997"> 997: </a><span class="php-comment">     *
-</span></span><span id="998" class="l"><a class="l" href="#998"> 998: </a><span class="php-comment">     * When inserting a new tag, we add the tag reference, when deleting the tag we remove
-</span></span><span id="999" class="l"><a class="l" href="#999"> 999: </a><span class="php-comment">     * it.
-</span></span><span id="1000" class="l"><a class="l" href="#1000">1000: </a><span class="php-comment">     *
-</span></span><span id="1001" class="l"><a class="l" href="#1001">1001: </a><span class="php-comment">     * We only handle vertex elements, we do not refer predicate terms.
-</span></span><span id="1002" class="l"><a class="l" href="#1002">1002: </a><span class="php-comment">     *
-</span></span><span id="1003" class="l"><a class="l" href="#1003">1003: </a><span class="php-comment">     * @param reference            &amp;$theConnection      Server, database or container.
-</span></span><span id="1004" class="l"><a class="l" href="#1004">1004: </a><span class="php-comment">     * @param reference            &amp;$theModifiers       Commit options.
-</span></span><span id="1005" class="l"><a class="l" href="#1005">1005: </a><span class="php-comment">     *
-</span></span><span id="1006" class="l"><a class="l" href="#1006">1006: </a><span class="php-comment">     * @access protected
-</span></span><span id="1007" class="l"><a class="l" href="#1007">1007: </a><span class="php-comment">     *
-</span></span><span id="1008" class="l"><a class="l" href="#1008">1008: </a><span class="php-comment">     * @uses _IsCommitted()
-</span></span><span id="1009" class="l"><a class="l" href="#1009">1009: </a><span class="php-comment">     *
-</span></span><span id="1010" class="l"><a class="l" href="#1010">1010: </a><span class="php-comment">     * @see kTAG_REFS_TAG_FEATURE, kTAG_REFS_TAG_METHOD, kTAG_REFS_TAG_SCALE
-</span></span><span id="1011" class="l"><a class="l" href="#1011">1011: </a><span class="php-comment">     * @see kFLAG_PERSIST_INSERT kFLAG_PERSIST_REPLACE kFLAG_PERSIST_DELETE
-</span></span><span id="1012" class="l"><a class="l" href="#1012">1012: </a><span class="php-comment">     */</span>
-</span><span id="1013" class="l"><a class="l" href="#1013">1013: </a>    <span class="php-keyword1">protected</span> <span class="php-keyword1">function</span> <a id="__PostcommitRelated" href="#__PostcommitRelated">_PostcommitRelated</a>( &amp;<span class="php-var">$theConnection</span>, &amp;<span class="php-var">$theModifiers</span> )
-</span><span id="1014" class="l"><a class="l" href="#1014">1014: </a>    {
-</span><span id="1015" class="l"><a class="l" href="#1015">1015: </a>        <span class="php-comment">//</span>
-</span><span id="1016" class="l"><a class="l" href="#1016">1016: </a>        <span class="php-comment">// Call parent method.</span>
-</span><span id="1017" class="l"><a class="l" href="#1017">1017: </a>        <span class="php-comment">//</span>
-</span><span id="1018" class="l"><a class="l" href="#1018">1018: </a>        parent::_PostcommitRelated( <span class="php-var">$theConnection</span>, <span class="php-var">$theModifiers</span> );
-</span><span id="1019" class="l"><a class="l" href="#1019">1019: </a>    
-</span><span id="1020" class="l"><a class="l" href="#1020">1020: </a>        <span class="php-comment">//</span>
-</span><span id="1021" class="l"><a class="l" href="#1021">1021: </a>        <span class="php-comment">// Set operation.</span>
-</span><span id="1022" class="l"><a class="l" href="#1022">1022: </a>        <span class="php-comment">//</span>
-</span><span id="1023" class="l"><a class="l" href="#1023">1023: </a>        <span class="php-var">$operation</span> = ! (<span class="php-var">$theModifiers</span> &amp; kFLAG_PERSIST_DELETE);
-</span><span id="1024" class="l"><a class="l" href="#1024">1024: </a>        
-</span><span id="1025" class="l"><a class="l" href="#1025">1025: </a>        <span class="php-comment">//</span>
-</span><span id="1026" class="l"><a class="l" href="#1026">1026: </a>        <span class="php-comment">// Handle new object.</span>
-</span><span id="1027" class="l"><a class="l" href="#1027">1027: </a>        <span class="php-comment">//</span>
-</span><span id="1028" class="l"><a class="l" href="#1028">1028: </a>        <span class="php-keyword1">if</span>( ( ( ((<span class="php-var">$theModifiers</span> &amp; kFLAG_PERSIST_MASK) == kFLAG_PERSIST_INSERT)
-</span><span id="1029" class="l"><a class="l" href="#1029">1029: </a>             || ((<span class="php-var">$theModifiers</span> &amp; kFLAG_PERSIST_MASK) == kFLAG_PERSIST_REPLACE) )
-</span><span id="1030" class="l"><a class="l" href="#1030">1030: </a>           &amp;&amp; (! <span class="php-var">$this</span>-&gt;_IsCommitted()) )
-</span><span id="1031" class="l"><a class="l" href="#1031">1031: </a>         || (<span class="php-var">$theModifiers</span> &amp; kFLAG_PERSIST_DELETE) )
-</span><span id="1032" class="l"><a class="l" href="#1032">1032: </a>        {
-</span><span id="1033" class="l"><a class="l" href="#1033">1033: </a>            <span class="php-comment">//</span>
-</span><span id="1034" class="l"><a class="l" href="#1034">1034: </a>            <span class="php-comment">// Iterate path elements.</span>
-</span><span id="1035" class="l"><a class="l" href="#1035">1035: </a>            <span class="php-comment">//</span>
-</span><span id="1036" class="l"><a class="l" href="#1036">1036: </a>            <span class="php-var">$path</span> = <span class="php-var">$this</span>-&gt;offsetGet( kTAG_TAG_PATH );
-</span><span id="1037" class="l"><a class="l" href="#1037">1037: </a>            <span class="php-keyword1">for</span>( <span class="php-var">$i</span> = <span class="php-num">0</span>; <span class="php-var">$i</span> &lt; <span class="php-keyword2">count</span>( <span class="php-var">$path</span> ); <span class="php-var">$i</span> += <span class="php-num">2</span> )
-</span><span id="1038" class="l"><a class="l" href="#1038">1038: </a>            {
-</span><span id="1039" class="l"><a class="l" href="#1039">1039: </a>                <span class="php-comment">//</span>
-</span><span id="1040" class="l"><a class="l" href="#1040">1040: </a>                <span class="php-comment">// Handle feature vertex.</span>
-</span><span id="1041" class="l"><a class="l" href="#1041">1041: </a>                <span class="php-comment">//</span>
-</span><span id="1042" class="l"><a class="l" href="#1042">1042: </a>                <span class="php-keyword1">if</span>( <span class="php-var">$i</span> == <span class="php-num">0</span> )
-</span><span id="1043" class="l"><a class="l" href="#1043">1043: </a>                    <span class="php-var">$tag</span> = kTAG_REFS_TAG_FEATURE;
-</span><span id="1044" class="l"><a class="l" href="#1044">1044: </a>                
-</span><span id="1045" class="l"><a class="l" href="#1045">1045: </a>                <span class="php-comment">//</span>
-</span><span id="1046" class="l"><a class="l" href="#1046">1046: </a>                <span class="php-comment">// Handle scale vertex.</span>
-</span><span id="1047" class="l"><a class="l" href="#1047">1047: </a>                <span class="php-comment">//</span>
-</span><span id="1048" class="l"><a class="l" href="#1048">1048: </a>                <span class="php-keyword1">elseif</span>( <span class="php-var">$i</span> == (<span class="php-keyword2">count</span>( <span class="php-var">$path</span> ) - <span class="php-num">1</span>) )
-</span><span id="1049" class="l"><a class="l" href="#1049">1049: </a>                    <span class="php-var">$tag</span> = kTAG_REFS_TAG_SCALE;
-</span><span id="1050" class="l"><a class="l" href="#1050">1050: </a>                
-</span><span id="1051" class="l"><a class="l" href="#1051">1051: </a>                <span class="php-comment">//</span>
-</span><span id="1052" class="l"><a class="l" href="#1052">1052: </a>                <span class="php-comment">// Handle method vertex.</span>
-</span><span id="1053" class="l"><a class="l" href="#1053">1053: </a>                <span class="php-comment">//</span>
-</span><span id="1054" class="l"><a class="l" href="#1054">1054: </a>                <span class="php-keyword1">else</span>
-</span><span id="1055" class="l"><a class="l" href="#1055">1055: </a>                    <span class="php-var">$tag</span> = kTAG_REFS_TAG_METHOD;
-</span><span id="1056" class="l"><a class="l" href="#1056">1056: </a>                
-</span><span id="1057" class="l"><a class="l" href="#1057">1057: </a>                <span class="php-comment">//</span>
-</span><span id="1058" class="l"><a class="l" href="#1058">1058: </a>                <span class="php-comment">// Set tag reference.</span>
-</span><span id="1059" class="l"><a class="l" href="#1059">1059: </a>                <span class="php-comment">//</span>
-</span><span id="1060" class="l"><a class="l" href="#1060">1060: </a>                <span class="php-var">$this</span>-&gt;_ReferenceInTerm( <span class="php-var">$theConnection</span>, <span class="php-var">$path</span>[ <span class="php-var">$i</span> ], <span class="php-var">$tag</span>, <span class="php-var">$operation</span> );
-</span><span id="1061" class="l"><a class="l" href="#1061">1061: </a>            
-</span><span id="1062" class="l"><a class="l" href="#1062">1062: </a>            } <span class="php-comment">// Iterating path elements.</span>
-</span><span id="1063" class="l"><a class="l" href="#1063">1063: </a>        
-</span><span id="1064" class="l"><a class="l" href="#1064">1064: </a>        } <span class="php-comment">// Insert or replace and not committed, or deleting.</span>
-</span><span id="1065" class="l"><a class="l" href="#1065">1065: </a>        
-</span><span id="1066" class="l"><a class="l" href="#1066">1066: </a>    } <span class="php-comment">// _PostcommitRelated.</span>
-</span><span id="1067" class="l"><a class="l" href="#1067">1067: </a>
-</span><span id="1068" class="l"><a class="l" href="#1068">1068: </a>        
-</span><span id="1069" class="l"><a class="l" href="#1069">1069: </a>
-</span><span id="1070" class="l"><a class="l" href="#1070">1070: </a><span class="php-comment">/*=======================================================================================
-</span></span><span id="1071" class="l"><a class="l" href="#1071">1071: </a><span class="php-comment"> *                                                                                      *
-</span></span><span id="1072" class="l"><a class="l" href="#1072">1072: </a><span class="php-comment"> *                              PROTECTED REFERENCE INTERFACE                           *
-</span></span><span id="1073" class="l"><a class="l" href="#1073">1073: </a><span class="php-comment"> *                                                                                      *
-</span></span><span id="1074" class="l"><a class="l" href="#1074">1074: </a><span class="php-comment"> *======================================================================================*/</span>
-</span><span id="1075" class="l"><a class="l" href="#1075">1075: </a>
+</span><span id="986" class="l"><a class="l" href="#986"> 986: </a>
+</span><span id="987" class="l"><a class="l" href="#987"> 987: </a>     
+</span><span id="988" class="l"><a class="l" href="#988"> 988: </a>    <span class="php-comment">/*===================================================================================
+</span></span><span id="989" class="l"><a class="l" href="#989"> 989: </a><span class="php-comment">     *  _PostcommitRelated                                                              *
+</span></span><span id="990" class="l"><a class="l" href="#990"> 990: </a><span class="php-comment">     *==================================================================================*/</span>
+</span><span id="991" class="l"><a class="l" href="#991"> 991: </a>
+</span><span id="992" class="l"><a class="l" href="#992"> 992: </a>    <span class="php-comment">/**
+</span></span><span id="993" class="l"><a class="l" href="#993"> 993: </a><span class="php-comment">     * &lt;h4&gt;Update related objects after committing&lt;/h4&gt;
+</span></span><span id="994" class="l"><a class="l" href="#994"> 994: </a><span class="php-comment">     *
+</span></span><span id="995" class="l"><a class="l" href="#995"> 995: </a><span class="php-comment">     * Once committed, the referenced feature, method and scale vertices will be updated
+</span></span><span id="996" class="l"><a class="l" href="#996"> 996: </a><span class="php-comment">     * with the current tag's identifier in the respective {@link kTAG_FEATURES},
+</span></span><span id="997" class="l"><a class="l" href="#997"> 997: </a><span class="php-comment">     * {@link kTAG_METHODS} and {@link kTAG_SCALES} attributes.
+</span></span><span id="998" class="l"><a class="l" href="#998"> 998: </a><span class="php-comment">     *
+</span></span><span id="999" class="l"><a class="l" href="#999"> 999: </a><span class="php-comment">     * When inserting a new tag, we add the tag reference, when deleting the tag we remove
+</span></span><span id="1000" class="l"><a class="l" href="#1000">1000: </a><span class="php-comment">     * it.
+</span></span><span id="1001" class="l"><a class="l" href="#1001">1001: </a><span class="php-comment">     *
+</span></span><span id="1002" class="l"><a class="l" href="#1002">1002: </a><span class="php-comment">     * We only handle vertex elements, we do not refer predicate terms.
+</span></span><span id="1003" class="l"><a class="l" href="#1003">1003: </a><span class="php-comment">     *
+</span></span><span id="1004" class="l"><a class="l" href="#1004">1004: </a><span class="php-comment">     * @param reference            &amp;$theConnection      Server, database or container.
+</span></span><span id="1005" class="l"><a class="l" href="#1005">1005: </a><span class="php-comment">     * @param reference            &amp;$theModifiers       Commit options.
+</span></span><span id="1006" class="l"><a class="l" href="#1006">1006: </a><span class="php-comment">     *
+</span></span><span id="1007" class="l"><a class="l" href="#1007">1007: </a><span class="php-comment">     * @access protected
+</span></span><span id="1008" class="l"><a class="l" href="#1008">1008: </a><span class="php-comment">     *
+</span></span><span id="1009" class="l"><a class="l" href="#1009">1009: </a><span class="php-comment">     * @uses _IsCommitted()
+</span></span><span id="1010" class="l"><a class="l" href="#1010">1010: </a><span class="php-comment">     *
+</span></span><span id="1011" class="l"><a class="l" href="#1011">1011: </a><span class="php-comment">     * @see kTAG_FEATURES, kTAG_METHODS, kTAG_SCALES
+</span></span><span id="1012" class="l"><a class="l" href="#1012">1012: </a><span class="php-comment">     * @see kFLAG_PERSIST_INSERT kFLAG_PERSIST_REPLACE kFLAG_PERSIST_DELETE
+</span></span><span id="1013" class="l"><a class="l" href="#1013">1013: </a><span class="php-comment">     */</span>
+</span><span id="1014" class="l"><a class="l" href="#1014">1014: </a>    <span class="php-keyword1">protected</span> <span class="php-keyword1">function</span> <a id="__PostcommitRelated" href="#__PostcommitRelated">_PostcommitRelated</a>( &amp;<span class="php-var">$theConnection</span>, &amp;<span class="php-var">$theModifiers</span> )
+</span><span id="1015" class="l"><a class="l" href="#1015">1015: </a>    {
+</span><span id="1016" class="l"><a class="l" href="#1016">1016: </a>        <span class="php-comment">//</span>
+</span><span id="1017" class="l"><a class="l" href="#1017">1017: </a>        <span class="php-comment">// Call parent method.</span>
+</span><span id="1018" class="l"><a class="l" href="#1018">1018: </a>        <span class="php-comment">//</span>
+</span><span id="1019" class="l"><a class="l" href="#1019">1019: </a>        parent::_PostcommitRelated( <span class="php-var">$theConnection</span>, <span class="php-var">$theModifiers</span> );
+</span><span id="1020" class="l"><a class="l" href="#1020">1020: </a>    
+</span><span id="1021" class="l"><a class="l" href="#1021">1021: </a>        <span class="php-comment">//</span>
+</span><span id="1022" class="l"><a class="l" href="#1022">1022: </a>        <span class="php-comment">// Set operation.</span>
+</span><span id="1023" class="l"><a class="l" href="#1023">1023: </a>        <span class="php-comment">//</span>
+</span><span id="1024" class="l"><a class="l" href="#1024">1024: </a>        <span class="php-var">$operation</span> = ! (<span class="php-var">$theModifiers</span> &amp; kFLAG_PERSIST_DELETE);
+</span><span id="1025" class="l"><a class="l" href="#1025">1025: </a>        
+</span><span id="1026" class="l"><a class="l" href="#1026">1026: </a>        <span class="php-comment">//</span>
+</span><span id="1027" class="l"><a class="l" href="#1027">1027: </a>        <span class="php-comment">// Handle new object.</span>
+</span><span id="1028" class="l"><a class="l" href="#1028">1028: </a>        <span class="php-comment">//</span>
+</span><span id="1029" class="l"><a class="l" href="#1029">1029: </a>        <span class="php-keyword1">if</span>( ( ( ((<span class="php-var">$theModifiers</span> &amp; kFLAG_PERSIST_MASK) == kFLAG_PERSIST_INSERT)
+</span><span id="1030" class="l"><a class="l" href="#1030">1030: </a>             || ((<span class="php-var">$theModifiers</span> &amp; kFLAG_PERSIST_MASK) == kFLAG_PERSIST_REPLACE) )
+</span><span id="1031" class="l"><a class="l" href="#1031">1031: </a>           &amp;&amp; (! <span class="php-var">$this</span>-&gt;_IsCommitted()) )
+</span><span id="1032" class="l"><a class="l" href="#1032">1032: </a>         || (<span class="php-var">$theModifiers</span> &amp; kFLAG_PERSIST_DELETE) )
+</span><span id="1033" class="l"><a class="l" href="#1033">1033: </a>        {
+</span><span id="1034" class="l"><a class="l" href="#1034">1034: </a>            <span class="php-comment">//</span>
+</span><span id="1035" class="l"><a class="l" href="#1035">1035: </a>            <span class="php-comment">// Iterate path elements.</span>
+</span><span id="1036" class="l"><a class="l" href="#1036">1036: </a>            <span class="php-comment">//</span>
+</span><span id="1037" class="l"><a class="l" href="#1037">1037: </a>            <span class="php-var">$path</span> = <span class="php-var">$this</span>-&gt;offsetGet( kTAG_PATH );
+</span><span id="1038" class="l"><a class="l" href="#1038">1038: </a>            <span class="php-keyword1">for</span>( <span class="php-var">$i</span> = <span class="php-num">0</span>; <span class="php-var">$i</span> &lt; <span class="php-keyword2">count</span>( <span class="php-var">$path</span> ); <span class="php-var">$i</span> += <span class="php-num">2</span> )
+</span><span id="1039" class="l"><a class="l" href="#1039">1039: </a>            {
+</span><span id="1040" class="l"><a class="l" href="#1040">1040: </a>                <span class="php-comment">//</span>
+</span><span id="1041" class="l"><a class="l" href="#1041">1041: </a>                <span class="php-comment">// Handle feature vertex.</span>
+</span><span id="1042" class="l"><a class="l" href="#1042">1042: </a>                <span class="php-comment">//</span>
+</span><span id="1043" class="l"><a class="l" href="#1043">1043: </a>                <span class="php-keyword1">if</span>( <span class="php-var">$i</span> == <span class="php-num">0</span> )
+</span><span id="1044" class="l"><a class="l" href="#1044">1044: </a>                    <span class="php-var">$tag</span> = kTAG_FEATURES;
+</span><span id="1045" class="l"><a class="l" href="#1045">1045: </a>                
+</span><span id="1046" class="l"><a class="l" href="#1046">1046: </a>                <span class="php-comment">//</span>
+</span><span id="1047" class="l"><a class="l" href="#1047">1047: </a>                <span class="php-comment">// Handle scale vertex.</span>
+</span><span id="1048" class="l"><a class="l" href="#1048">1048: </a>                <span class="php-comment">//</span>
+</span><span id="1049" class="l"><a class="l" href="#1049">1049: </a>                <span class="php-keyword1">elseif</span>( <span class="php-var">$i</span> == (<span class="php-keyword2">count</span>( <span class="php-var">$path</span> ) - <span class="php-num">1</span>) )
+</span><span id="1050" class="l"><a class="l" href="#1050">1050: </a>                    <span class="php-var">$tag</span> = kTAG_SCALES;
+</span><span id="1051" class="l"><a class="l" href="#1051">1051: </a>                
+</span><span id="1052" class="l"><a class="l" href="#1052">1052: </a>                <span class="php-comment">//</span>
+</span><span id="1053" class="l"><a class="l" href="#1053">1053: </a>                <span class="php-comment">// Handle method vertex.</span>
+</span><span id="1054" class="l"><a class="l" href="#1054">1054: </a>                <span class="php-comment">//</span>
+</span><span id="1055" class="l"><a class="l" href="#1055">1055: </a>                <span class="php-keyword1">else</span>
+</span><span id="1056" class="l"><a class="l" href="#1056">1056: </a>                    <span class="php-var">$tag</span> = kTAG_METHODS;
+</span><span id="1057" class="l"><a class="l" href="#1057">1057: </a>                
+</span><span id="1058" class="l"><a class="l" href="#1058">1058: </a>                <span class="php-comment">//</span>
+</span><span id="1059" class="l"><a class="l" href="#1059">1059: </a>                <span class="php-comment">// Set tag reference.</span>
+</span><span id="1060" class="l"><a class="l" href="#1060">1060: </a>                <span class="php-comment">//</span>
+</span><span id="1061" class="l"><a class="l" href="#1061">1061: </a>                <span class="php-var">$this</span>-&gt;_ReferenceInTerm( <span class="php-var">$theConnection</span>, <span class="php-var">$path</span>[ <span class="php-var">$i</span> ], <span class="php-var">$tag</span>, <span class="php-var">$operation</span> );
+</span><span id="1062" class="l"><a class="l" href="#1062">1062: </a>            
+</span><span id="1063" class="l"><a class="l" href="#1063">1063: </a>            } <span class="php-comment">// Iterating path elements.</span>
+</span><span id="1064" class="l"><a class="l" href="#1064">1064: </a>        
+</span><span id="1065" class="l"><a class="l" href="#1065">1065: </a>        } <span class="php-comment">// Insert or replace and not committed, or deleting.</span>
+</span><span id="1066" class="l"><a class="l" href="#1066">1066: </a>        
+</span><span id="1067" class="l"><a class="l" href="#1067">1067: </a>    } <span class="php-comment">// _PostcommitRelated.</span>
+</span><span id="1068" class="l"><a class="l" href="#1068">1068: </a>
+</span><span id="1069" class="l"><a class="l" href="#1069">1069: </a>        
+</span><span id="1070" class="l"><a class="l" href="#1070">1070: </a>
+</span><span id="1071" class="l"><a class="l" href="#1071">1071: </a><span class="php-comment">/*=======================================================================================
+</span></span><span id="1072" class="l"><a class="l" href="#1072">1072: </a><span class="php-comment"> *                                                                                      *
+</span></span><span id="1073" class="l"><a class="l" href="#1073">1073: </a><span class="php-comment"> *                              PROTECTED REFERENCE INTERFACE                           *
+</span></span><span id="1074" class="l"><a class="l" href="#1074">1074: </a><span class="php-comment"> *                                                                                      *
+</span></span><span id="1075" class="l"><a class="l" href="#1075">1075: </a><span class="php-comment"> *======================================================================================*/</span>
 </span><span id="1076" class="l"><a class="l" href="#1076">1076: </a>
-</span><span id="1077" class="l"><a class="l" href="#1077">1077: </a>     
-</span><span id="1078" class="l"><a class="l" href="#1078">1078: </a>    <span class="php-comment">/*===================================================================================
-</span></span><span id="1079" class="l"><a class="l" href="#1079">1079: </a><span class="php-comment">     *  _ReferenceInTerm                                                                *
-</span></span><span id="1080" class="l"><a class="l" href="#1080">1080: </a><span class="php-comment">     *==================================================================================*/</span>
-</span><span id="1081" class="l"><a class="l" href="#1081">1081: </a>
-</span><span id="1082" class="l"><a class="l" href="#1082">1082: </a>    <span class="php-comment">/**
-</span></span><span id="1083" class="l"><a class="l" href="#1083">1083: </a><span class="php-comment">     * &lt;h4&gt;Add tag reference to term&lt;/h4&gt;
-</span></span><span id="1084" class="l"><a class="l" href="#1084">1084: </a><span class="php-comment">     *
-</span></span><span id="1085" class="l"><a class="l" href="#1085">1085: </a><span class="php-comment">     * This method can be used to add or remove the current tag's reference from the
-</span></span><span id="1086" class="l"><a class="l" href="#1086">1086: </a><span class="php-comment">     * provided term. This method should be used whenever committing a new tag or when
-</span></span><span id="1087" class="l"><a class="l" href="#1087">1087: </a><span class="php-comment">     * deleting one: it will update the term's {@link kTAG_REFS_TAG} for terms used as
-</span></span><span id="1088" class="l"><a class="l" href="#1088">1088: </a><span class="php-comment">     * predicates, the {@link kTAG_REFS_TAG_FEATURE} for terms used as features or traits,
-</span></span><span id="1089" class="l"><a class="l" href="#1089">1089: </a><span class="php-comment">     * the {@link kTAG_REFS_TAG_METHOD} for terms used as methods and the
-</span></span><span id="1090" class="l"><a class="l" href="#1090">1090: </a><span class="php-comment">     * {@link kTAG_REFS_TAG_SCALE} for terms used as scales or units, the method will add
-</span></span><span id="1091" class="l"><a class="l" href="#1091">1091: </a><span class="php-comment">     * the corresponding reference when inserting a new tag and remove it when deleting the
-</span></span><span id="1092" class="l"><a class="l" href="#1092">1092: </a><span class="php-comment">     * tag.
-</span></span><span id="1093" class="l"><a class="l" href="#1093">1093: </a><span class="php-comment">     *
-</span></span><span id="1094" class="l"><a class="l" href="#1094">1094: </a><span class="php-comment">     * &lt;ul&gt;
-</span></span><span id="1095" class="l"><a class="l" href="#1095">1095: </a><span class="php-comment">     *  &lt;li&gt;&lt;tt&gt;$theConnection&lt;/tt&gt;: Server, database or container in which the terms
-</span></span><span id="1096" class="l"><a class="l" href="#1096">1096: </a><span class="php-comment">     *      reside.
-</span></span><span id="1097" class="l"><a class="l" href="#1097">1097: </a><span class="php-comment">     *  &lt;li&gt;&lt;tt&gt;$theTerm&lt;/tt&gt;: Term object or identifier to which the current tag reference
-</span></span><span id="1098" class="l"><a class="l" href="#1098">1098: </a><span class="php-comment">     *      is to be added or removed.
-</span></span><span id="1099" class="l"><a class="l" href="#1099">1099: </a><span class="php-comment">     *  &lt;li&gt;&lt;tt&gt;$theTag&lt;/tt&gt;: Attribute tag of the terem to which the current tag reference
-</span></span><span id="1100" class="l"><a class="l" href="#1100">1100: </a><span class="php-comment">     *      is to be added or removed.
-</span></span><span id="1101" class="l"><a class="l" href="#1101">1101: </a><span class="php-comment">     *  &lt;li&gt;&lt;tt&gt;$doAdd&lt;/tt&gt;: If &lt;tt&gt;TRUE&lt;/tt&gt; add to set; if &lt;tt&gt;FALSE&lt;/tt&gt; remove from set.
-</span></span><span id="1102" class="l"><a class="l" href="#1102">1102: </a><span class="php-comment">     * &lt;/ul&gt;
-</span></span><span id="1103" class="l"><a class="l" href="#1103">1103: </a><span class="php-comment">     *
-</span></span><span id="1104" class="l"><a class="l" href="#1104">1104: </a><span class="php-comment">     * The method will return &lt;tt&gt;TRUE&lt;/tt&gt; if the operation affected at least one object,
-</span></span><span id="1105" class="l"><a class="l" href="#1105">1105: </a><span class="php-comment">     * &lt;tt&gt;FALSE&lt;/tt&gt; if not and raise an exception if the operation failed.
-</span></span><span id="1106" class="l"><a class="l" href="#1106">1106: </a><span class="php-comment">     *
-</span></span><span id="1107" class="l"><a class="l" href="#1107">1107: </a><span class="php-comment">     * @param CConnection           $theConnection      Server, database or container.
-</span></span><span id="1108" class="l"><a class="l" href="#1108">1108: </a><span class="php-comment">     * @param mixed                 $theTerm            Term object or identifier.
-</span></span><span id="1109" class="l"><a class="l" href="#1109">1109: </a><span class="php-comment">     * @param string                $theTag             Attribute tag to update.
-</span></span><span id="1110" class="l"><a class="l" href="#1110">1110: </a><span class="php-comment">     * @param boolean               $doAdd              &lt;tt&gt;TRUE&lt;/tt&gt; add reference.
-</span></span><span id="1111" class="l"><a class="l" href="#1111">1111: </a><span class="php-comment">     *
-</span></span><span id="1112" class="l"><a class="l" href="#1112">1112: </a><span class="php-comment">     * @access protected
-</span></span><span id="1113" class="l"><a class="l" href="#1113">1113: </a><span class="php-comment">     * @return boolean              &lt;tt&gt;TRUE&lt;/tt&gt; operation affected at least one object.
-</span></span><span id="1114" class="l"><a class="l" href="#1114">1114: </a><span class="php-comment">     *
-</span></span><span id="1115" class="l"><a class="l" href="#1115">1115: </a><span class="php-comment">     * @see kOFFSET_NID kTAG_REFS_TAG
-</span></span><span id="1116" class="l"><a class="l" href="#1116">1116: </a><span class="php-comment">     * @see kTAG_REFS_TAG_FEATURE kTAG_REFS_TAG_METHOD kTAG_REFS_TAG_SCALE
-</span></span><span id="1117" class="l"><a class="l" href="#1117">1117: </a><span class="php-comment">     * @see kFLAG_PERSIST_MODIFY kFLAG_MODIFY_ADDSET kFLAG_MODIFY_PULL
-</span></span><span id="1118" class="l"><a class="l" href="#1118">1118: </a><span class="php-comment">     */</span>
-</span><span id="1119" class="l"><a class="l" href="#1119">1119: </a>    <span class="php-keyword1">protected</span> <span class="php-keyword1">function</span> <a id="__ReferenceInTerm" href="#__ReferenceInTerm">_ReferenceInTerm</a>( CConnection <span class="php-var">$theConnection</span>,
-</span><span id="1120" class="l"><a class="l" href="#1120">1120: </a>                                                     <span class="php-var">$theTerm</span>, <span class="php-var">$theTag</span>, <span class="php-var">$doAdd</span> )
-</span><span id="1121" class="l"><a class="l" href="#1121">1121: </a>    {
-</span><span id="1122" class="l"><a class="l" href="#1122">1122: </a>        <span class="php-comment">//</span>
-</span><span id="1123" class="l"><a class="l" href="#1123">1123: </a>        <span class="php-comment">// Set modification criteria.</span>
-</span><span id="1124" class="l"><a class="l" href="#1124">1124: </a>        <span class="php-comment">//</span>
-</span><span id="1125" class="l"><a class="l" href="#1125">1125: </a>        <span class="php-var">$criteria</span> = <span class="php-keyword1">array</span>( <span class="php-var">$theTag</span> =&gt; <span class="php-var">$this</span>-&gt;offsetGet( kOFFSET_NID ) );
-</span><span id="1126" class="l"><a class="l" href="#1126">1126: </a>        
-</span><span id="1127" class="l"><a class="l" href="#1127">1127: </a>        <span class="php-comment">//</span>
-</span><span id="1128" class="l"><a class="l" href="#1128">1128: </a>        <span class="php-comment">// Handle add to set.</span>
-</span><span id="1129" class="l"><a class="l" href="#1129">1129: </a>        <span class="php-comment">//</span>
-</span><span id="1130" class="l"><a class="l" href="#1130">1130: </a>        <span class="php-keyword1">if</span>( <span class="php-var">$doAdd</span> )
-</span><span id="1131" class="l"><a class="l" href="#1131">1131: </a>            <span class="php-keyword1">return</span> COntologyTerm::ResolveClassContainer( <span class="php-var">$theConnection</span>, <span class="php-keyword1">TRUE</span> )
-</span><span id="1132" class="l"><a class="l" href="#1132">1132: </a>                    -&gt;ManageObject
-</span><span id="1133" class="l"><a class="l" href="#1133">1133: </a>                        (
-</span><span id="1134" class="l"><a class="l" href="#1134">1134: </a>                            <span class="php-var">$criteria</span>,
-</span><span id="1135" class="l"><a class="l" href="#1135">1135: </a>                            <span class="php-var">$theTerm</span>,
-</span><span id="1136" class="l"><a class="l" href="#1136">1136: </a>                            kFLAG_PERSIST_MODIFY + kFLAG_MODIFY_ADDSET
-</span><span id="1137" class="l"><a class="l" href="#1137">1137: </a>                        );                                                      <span class="php-comment">// ==&gt;</span>
-</span><span id="1138" class="l"><a class="l" href="#1138">1138: </a>        
-</span><span id="1139" class="l"><a class="l" href="#1139">1139: </a>        <span class="php-keyword1">return</span> COntologyTerm::ResolveClassContainer( <span class="php-var">$theConnection</span>, <span class="php-keyword1">TRUE</span> )
-</span><span id="1140" class="l"><a class="l" href="#1140">1140: </a>                -&gt;ManageObject
-</span><span id="1141" class="l"><a class="l" href="#1141">1141: </a>                    (
-</span><span id="1142" class="l"><a class="l" href="#1142">1142: </a>                        <span class="php-var">$criteria</span>,
-</span><span id="1143" class="l"><a class="l" href="#1143">1143: </a>                        <span class="php-var">$theTerm</span>,
-</span><span id="1144" class="l"><a class="l" href="#1144">1144: </a>                        kFLAG_PERSIST_MODIFY + kFLAG_MODIFY_PULL
-</span><span id="1145" class="l"><a class="l" href="#1145">1145: </a>                    );                                                          <span class="php-comment">// ==&gt;</span>
-</span><span id="1146" class="l"><a class="l" href="#1146">1146: </a>    
-</span><span id="1147" class="l"><a class="l" href="#1147">1147: </a>    } <span class="php-comment">// _ReferenceInTerm.</span>
-</span><span id="1148" class="l"><a class="l" href="#1148">1148: </a>
-</span><span id="1149" class="l"><a class="l" href="#1149">1149: </a>     
-</span><span id="1150" class="l"><a class="l" href="#1150">1150: </a>
-</span><span id="1151" class="l"><a class="l" href="#1151">1151: </a>} <span class="php-comment">// class COntologyTag.</span>
-</span><span id="1152" class="l"><a class="l" href="#1152">1152: </a>
+</span><span id="1077" class="l"><a class="l" href="#1077">1077: </a>
+</span><span id="1078" class="l"><a class="l" href="#1078">1078: </a>     
+</span><span id="1079" class="l"><a class="l" href="#1079">1079: </a>    <span class="php-comment">/*===================================================================================
+</span></span><span id="1080" class="l"><a class="l" href="#1080">1080: </a><span class="php-comment">     *  _ReferenceInTerm                                                                *
+</span></span><span id="1081" class="l"><a class="l" href="#1081">1081: </a><span class="php-comment">     *==================================================================================*/</span>
+</span><span id="1082" class="l"><a class="l" href="#1082">1082: </a>
+</span><span id="1083" class="l"><a class="l" href="#1083">1083: </a>    <span class="php-comment">/**
+</span></span><span id="1084" class="l"><a class="l" href="#1084">1084: </a><span class="php-comment">     * &lt;h4&gt;Add tag reference to term&lt;/h4&gt;
+</span></span><span id="1085" class="l"><a class="l" href="#1085">1085: </a><span class="php-comment">     *
+</span></span><span id="1086" class="l"><a class="l" href="#1086">1086: </a><span class="php-comment">     * This method can be used to add or remove the current tag's reference from the
+</span></span><span id="1087" class="l"><a class="l" href="#1087">1087: </a><span class="php-comment">     * provided term. This method should be used whenever committing a new tag or when
+</span></span><span id="1088" class="l"><a class="l" href="#1088">1088: </a><span class="php-comment">     * deleting one: it will update the term's {@link kTAG_REFS_TAG} for terms used as
+</span></span><span id="1089" class="l"><a class="l" href="#1089">1089: </a><span class="php-comment">     * predicates, the {@link kTAG_FEATURES} for terms used as features or traits,
+</span></span><span id="1090" class="l"><a class="l" href="#1090">1090: </a><span class="php-comment">     * the {@link kTAG_METHODS} for terms used as methods and the
+</span></span><span id="1091" class="l"><a class="l" href="#1091">1091: </a><span class="php-comment">     * {@link kTAG_SCALES} for terms used as scales or units, the method will add
+</span></span><span id="1092" class="l"><a class="l" href="#1092">1092: </a><span class="php-comment">     * the corresponding reference when inserting a new tag and remove it when deleting the
+</span></span><span id="1093" class="l"><a class="l" href="#1093">1093: </a><span class="php-comment">     * tag.
+</span></span><span id="1094" class="l"><a class="l" href="#1094">1094: </a><span class="php-comment">     *
+</span></span><span id="1095" class="l"><a class="l" href="#1095">1095: </a><span class="php-comment">     * &lt;ul&gt;
+</span></span><span id="1096" class="l"><a class="l" href="#1096">1096: </a><span class="php-comment">     *  &lt;li&gt;&lt;tt&gt;$theConnection&lt;/tt&gt;: Server, database or container in which the terms
+</span></span><span id="1097" class="l"><a class="l" href="#1097">1097: </a><span class="php-comment">     *      reside.
+</span></span><span id="1098" class="l"><a class="l" href="#1098">1098: </a><span class="php-comment">     *  &lt;li&gt;&lt;tt&gt;$theTerm&lt;/tt&gt;: Term object or identifier to which the current tag reference
+</span></span><span id="1099" class="l"><a class="l" href="#1099">1099: </a><span class="php-comment">     *      is to be added or removed.
+</span></span><span id="1100" class="l"><a class="l" href="#1100">1100: </a><span class="php-comment">     *  &lt;li&gt;&lt;tt&gt;$theTag&lt;/tt&gt;: Attribute tag of the terem to which the current tag reference
+</span></span><span id="1101" class="l"><a class="l" href="#1101">1101: </a><span class="php-comment">     *      is to be added or removed.
+</span></span><span id="1102" class="l"><a class="l" href="#1102">1102: </a><span class="php-comment">     *  &lt;li&gt;&lt;tt&gt;$doAdd&lt;/tt&gt;: If &lt;tt&gt;TRUE&lt;/tt&gt; add to set; if &lt;tt&gt;FALSE&lt;/tt&gt; remove from set.
+</span></span><span id="1103" class="l"><a class="l" href="#1103">1103: </a><span class="php-comment">     * &lt;/ul&gt;
+</span></span><span id="1104" class="l"><a class="l" href="#1104">1104: </a><span class="php-comment">     *
+</span></span><span id="1105" class="l"><a class="l" href="#1105">1105: </a><span class="php-comment">     * The method will return &lt;tt&gt;TRUE&lt;/tt&gt; if the operation affected at least one object,
+</span></span><span id="1106" class="l"><a class="l" href="#1106">1106: </a><span class="php-comment">     * &lt;tt&gt;FALSE&lt;/tt&gt; if not and raise an exception if the operation failed.
+</span></span><span id="1107" class="l"><a class="l" href="#1107">1107: </a><span class="php-comment">     *
+</span></span><span id="1108" class="l"><a class="l" href="#1108">1108: </a><span class="php-comment">     * @param CConnection           $theConnection      Server, database or container.
+</span></span><span id="1109" class="l"><a class="l" href="#1109">1109: </a><span class="php-comment">     * @param mixed                 $theTerm            Term object or identifier.
+</span></span><span id="1110" class="l"><a class="l" href="#1110">1110: </a><span class="php-comment">     * @param string                $theTag             Attribute tag to update.
+</span></span><span id="1111" class="l"><a class="l" href="#1111">1111: </a><span class="php-comment">     * @param boolean               $doAdd              &lt;tt&gt;TRUE&lt;/tt&gt; add reference.
+</span></span><span id="1112" class="l"><a class="l" href="#1112">1112: </a><span class="php-comment">     *
+</span></span><span id="1113" class="l"><a class="l" href="#1113">1113: </a><span class="php-comment">     * @access protected
+</span></span><span id="1114" class="l"><a class="l" href="#1114">1114: </a><span class="php-comment">     * @return boolean              &lt;tt&gt;TRUE&lt;/tt&gt; operation affected at least one object.
+</span></span><span id="1115" class="l"><a class="l" href="#1115">1115: </a><span class="php-comment">     *
+</span></span><span id="1116" class="l"><a class="l" href="#1116">1116: </a><span class="php-comment">     * @see kTAG_NID kTAG_REFS_TAG
+</span></span><span id="1117" class="l"><a class="l" href="#1117">1117: </a><span class="php-comment">     * @see kTAG_FEATURES kTAG_METHODS kTAG_SCALES
+</span></span><span id="1118" class="l"><a class="l" href="#1118">1118: </a><span class="php-comment">     * @see kFLAG_PERSIST_MODIFY kFLAG_MODIFY_ADDSET kFLAG_MODIFY_PULL
+</span></span><span id="1119" class="l"><a class="l" href="#1119">1119: </a><span class="php-comment">     */</span>
+</span><span id="1120" class="l"><a class="l" href="#1120">1120: </a>    <span class="php-keyword1">protected</span> <span class="php-keyword1">function</span> <a id="__ReferenceInTerm" href="#__ReferenceInTerm">_ReferenceInTerm</a>( CConnection <span class="php-var">$theConnection</span>,
+</span><span id="1121" class="l"><a class="l" href="#1121">1121: </a>                                                     <span class="php-var">$theTerm</span>, <span class="php-var">$theTag</span>, <span class="php-var">$doAdd</span> )
+</span><span id="1122" class="l"><a class="l" href="#1122">1122: </a>    {
+</span><span id="1123" class="l"><a class="l" href="#1123">1123: </a>        <span class="php-comment">//</span>
+</span><span id="1124" class="l"><a class="l" href="#1124">1124: </a>        <span class="php-comment">// Set modification criteria.</span>
+</span><span id="1125" class="l"><a class="l" href="#1125">1125: </a>        <span class="php-comment">//</span>
+</span><span id="1126" class="l"><a class="l" href="#1126">1126: </a>        <span class="php-var">$criteria</span> = <span class="php-keyword1">array</span>( <span class="php-var">$theTag</span> =&gt; <span class="php-var">$this</span>-&gt;offsetGet( kTAG_NID ) );
+</span><span id="1127" class="l"><a class="l" href="#1127">1127: </a>        
+</span><span id="1128" class="l"><a class="l" href="#1128">1128: </a>        <span class="php-comment">//</span>
+</span><span id="1129" class="l"><a class="l" href="#1129">1129: </a>        <span class="php-comment">// Handle add to set.</span>
+</span><span id="1130" class="l"><a class="l" href="#1130">1130: </a>        <span class="php-comment">//</span>
+</span><span id="1131" class="l"><a class="l" href="#1131">1131: </a>        <span class="php-keyword1">if</span>( <span class="php-var">$doAdd</span> )
+</span><span id="1132" class="l"><a class="l" href="#1132">1132: </a>            <span class="php-keyword1">return</span> COntologyTerm::ResolveClassContainer( <span class="php-var">$theConnection</span>, <span class="php-keyword1">TRUE</span> )
+</span><span id="1133" class="l"><a class="l" href="#1133">1133: </a>                    -&gt;ManageObject
+</span><span id="1134" class="l"><a class="l" href="#1134">1134: </a>                        (
+</span><span id="1135" class="l"><a class="l" href="#1135">1135: </a>                            <span class="php-var">$criteria</span>,
+</span><span id="1136" class="l"><a class="l" href="#1136">1136: </a>                            <span class="php-var">$theTerm</span>,
+</span><span id="1137" class="l"><a class="l" href="#1137">1137: </a>                            kFLAG_PERSIST_MODIFY + kFLAG_MODIFY_ADDSET
+</span><span id="1138" class="l"><a class="l" href="#1138">1138: </a>                        );                                                      <span class="php-comment">// ==&gt;</span>
+</span><span id="1139" class="l"><a class="l" href="#1139">1139: </a>        
+</span><span id="1140" class="l"><a class="l" href="#1140">1140: </a>        <span class="php-keyword1">return</span> COntologyTerm::ResolveClassContainer( <span class="php-var">$theConnection</span>, <span class="php-keyword1">TRUE</span> )
+</span><span id="1141" class="l"><a class="l" href="#1141">1141: </a>                -&gt;ManageObject
+</span><span id="1142" class="l"><a class="l" href="#1142">1142: </a>                    (
+</span><span id="1143" class="l"><a class="l" href="#1143">1143: </a>                        <span class="php-var">$criteria</span>,
+</span><span id="1144" class="l"><a class="l" href="#1144">1144: </a>                        <span class="php-var">$theTerm</span>,
+</span><span id="1145" class="l"><a class="l" href="#1145">1145: </a>                        kFLAG_PERSIST_MODIFY + kFLAG_MODIFY_PULL
+</span><span id="1146" class="l"><a class="l" href="#1146">1146: </a>                    );                                                          <span class="php-comment">// ==&gt;</span>
+</span><span id="1147" class="l"><a class="l" href="#1147">1147: </a>    
+</span><span id="1148" class="l"><a class="l" href="#1148">1148: </a>    } <span class="php-comment">// _ReferenceInTerm.</span>
+</span><span id="1149" class="l"><a class="l" href="#1149">1149: </a>
+</span><span id="1150" class="l"><a class="l" href="#1150">1150: </a>     
+</span><span id="1151" class="l"><a class="l" href="#1151">1151: </a>
+</span><span id="1152" class="l"><a class="l" href="#1152">1152: </a>} <span class="php-comment">// class COntologyTag.</span>
 </span><span id="1153" class="l"><a class="l" href="#1153">1153: </a>
-</span><span id="1154" class="l"><a class="l" href="#1154">1154: </a><span class="xlang">?&gt;</span>
-</span><span id="1155" class="l"><a class="l" href="#1155">1155: </a></span></code></pre>
+</span><span id="1154" class="l"><a class="l" href="#1154">1154: </a>
+</span><span id="1155" class="l"><a class="l" href="#1155">1155: </a><span class="xlang">?&gt;</span>
+</span><span id="1156" class="l"><a class="l" href="#1156">1156: </a></span></code></pre>
 
 	<div id="footer">
 		MyWrapper Reference Documentation API documentation generated by <a href="http://apigen.org">ApiGen 2.8.0</a>

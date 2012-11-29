@@ -6,8 +6,8 @@
 
 	<title>Class CContainer | MyWrapper Reference Documentation</title>
 
-	<script type="text/javascript" src="resources/combined.js?1742645618"></script>
-	<script type="text/javascript" src="elementlist.js?539813953"></script>
+	<script type="text/javascript" src="resources/combined.js?3680114562"></script>
+	<script type="text/javascript" src="elementlist.js?2861350629"></script>
 	<link rel="stylesheet" type="text/css" media="all" href="resources/style.css?3505392360" />
 
 </head>
@@ -38,6 +38,8 @@
 				<li class="main"><a href="package-MyWrapper.Wrappers.html">Wrappers</a>
 						</li>
 							</ul></li>
+				<li><a href="package-None.html">None</a>
+						</li>
 				<li><a href="package-PHP.html">PHP</a>
 						</li>
 			</ul>
@@ -348,15 +350,15 @@ graph kOFFSET_GRAPH offset before destroying the object.</p>
 <p>This method can be used to manage a single object in the container, it can
 <i>insert</i>, <i>update</i>, <i>replace</i>, <i>modify</i>, <i>retrieve</i> and
 <i>delete</i> an object from the current container by providing the object
-and/or its native unique identifier (kOFFSET_NID).</p>
+and/or its native unique identifier (kTAG_NID).</p>
 
 <p>This method expects three parameters:</p>
 
 <ul>
 	<li><tt>$theObject</tt>: The object or the data to be modified.</li>
 
-	<li><tt>$theIdentifier</tt>: The native unique identifier (kOFFSET_NID)
-	of the object. If the value is <i>NULL</i>, it means that it is the duty of the
+	<li><tt>$theIdentifier</tt>: The native unique identifier (kTAG_NID) of
+	the object. If the value is <i>NULL</i>, it means that it is the duty of the
 	current container to set the value, this will generally be the case when
 	inserting objects; in all other cases the parameter is required.</li>
 
@@ -372,7 +374,7 @@ and/or its native unique identifier (kOFFSET_NID).</p>
 			the container to create the identifier. If the identifier was created by the
 			container, it is the duty of this method to set it into the provided object. In
 			this case the method should return the inserted object's native identifier
-			(kOFFSET_NID).</li>
+			(kTAG_NID).</li>
 
 			<li>kFLAG_PERSIST_UPDATE: The provided object will replace an object
 			existing in the container. In this case the <tt>$theObject</tt> represents the
@@ -388,7 +390,7 @@ and/or its native unique identifier (kOFFSET_NID).</p>
 			unique identifier, or <tt>NULL</tt>, if it is the duty of the container to
 			create the identifier. If the identifier was created by the container, it is the
 			duty of this method to set it into the provided object. In this case the method
-			should return the inserted object's native identifier (kOFFSET_NID).</li>
+			should return the inserted object's native identifier (kTAG_NID).</li>
 
 			<li>kFLAG_PERSIST_MODIFY: This option can be used to apply modifications
 			to a subset of the object. In this case the parameters of this method have the
@@ -466,19 +468,19 @@ and/or its native unique identifier (kOFFSET_NID).</p>
 			<li>kFLAG_PERSIST_DELETE: This option assumes you want to remove the
 			object from the container. In this case the <tt>$theObject</tt> represents the
 			full object and <tt>$theIdentifier</tt> represents the object unique identifier,
-			what counts is that the object's unique identifier (kOFFSET_NID) is
+			what counts is that the object's unique identifier (kTAG_NID) is
 			provided. If the object is not found in the container, the method should not
 			fail. In this case the method should return <tt>TRUE</tt> if the object was
 			deleted and <tt>FALSE</tt> if the object was not found.</li>
 		</ul>
 		 If none of the above flags are set, it means that the caller wants to retrieve
-		the object identified by the kOFFSET_NID offset from the provided object
-		or from the provided identifier. If found, the provided object will receive the
+		the object identified by the kTAG_NID offset from the provided object or
+		from the provided identifier. If found, the provided object will receive the
 		located object and the method will return <tt>TRUE</tt>; if not found, the
 		method will set the provided object to <tt>NULL</tt> and return <tt>FALSE</tt>.
 		If the parameter is an array, it implies that the requested operation is to
 		retrieve the object, the array will be interpreted as the list of object offsets
-		to be returned, the kOFFSET_NID offset is returned by default.</li>
+		to be returned, the kTAG_NID offset is returned by default.</li>
 </ul>
 
 <p>The method should raise an exception if the operation was not successful and
@@ -831,7 +833,7 @@ Each time this method is called, the sequence number is incremented, which means
 that you should only call it when you intend to use this number.</p>
 
 <p>The first parameter, <tt>$theKey</tt>, represents the key to the sequence, it
-will be the kOFFSET_NID of the record holding the sequence and the field
+will be the kTAG_NID of the record holding the sequence and the field
 holding the current number has the kOFFSET_SEQUENCE offset.</p>
 
 <p>The second parameter represents the container in which the sequence is

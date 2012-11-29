@@ -627,7 +627,7 @@ class CDataWrapper extends CWrapper
 					throw new CException
 						( "Unable to instantiate database: invalid server type",
 						  kERROR_STATE,
-						  kMESSAGE_TYPE_ERROR );								// !@! ==>
+						  kSTATUS_ERROR );								// !@! ==>
 			
 			} // Has server.
 			
@@ -635,7 +635,7 @@ class CDataWrapper extends CWrapper
 				throw new CException
 					( "Unable to instantiate database: wrapper not initialised",
 					  kERROR_STATE,
-					  kMESSAGE_TYPE_ERROR );									// !@! ==>
+					  kSTATUS_ERROR );									// !@! ==>
 		
 		} // Provided database.
 	
@@ -681,7 +681,7 @@ class CDataWrapper extends CWrapper
 					throw new CException
 						( "Unable to instantiate container: invalid database type",
 						  kERROR_STATE,
-						  kMESSAGE_TYPE_ERROR );								// !@! ==>
+						  kSTATUS_ERROR );								// !@! ==>
 			
 			} // Has database.
 			
@@ -689,7 +689,7 @@ class CDataWrapper extends CWrapper
 				throw new CException
 					( "Unable to instantiate container: database is missing",
 					  kERROR_STATE,
-					  kMESSAGE_TYPE_ERROR );									// !@! ==>
+					  kSTATUS_ERROR );									// !@! ==>
 		
 		} // Provided container.
 	
@@ -874,7 +874,7 @@ class CDataWrapper extends CWrapper
 					throw new CException
 						( "Missing query list parameter",
 						  kERROR_MISSING,
-						  kMESSAGE_TYPE_ERROR,
+						  kSTATUS_ERROR,
 						  array( 'Operation' => $parameter ) );					// !@! ==>
 				
 			case kAPI_OP_COUNT:
@@ -887,7 +887,7 @@ class CDataWrapper extends CWrapper
 					throw new CException
 						( "Missing database parameter",
 						  kERROR_MISSING,
-						  kMESSAGE_TYPE_ERROR,
+						  kSTATUS_ERROR,
 						  array( 'Operation' => $parameter ) );					// !@! ==>
 				
 				//
@@ -897,7 +897,7 @@ class CDataWrapper extends CWrapper
 					throw new CException
 						( "Missing container parameter",
 						  kERROR_MISSING,
-						  kMESSAGE_TYPE_ERROR,
+						  kSTATUS_ERROR,
 						  array( 'Operation' => $parameter ) );					// !@! ==>
 					
 				//
@@ -907,7 +907,7 @@ class CDataWrapper extends CWrapper
 					throw new CException
 						( "Missing format parameter",
 						  kERROR_MISSING,
-						  kMESSAGE_TYPE_ERROR,
+						  kSTATUS_ERROR,
 						  array( 'Operation' => $parameter ) );					// !@! ==>
 				
 				break;
@@ -955,7 +955,7 @@ class CDataWrapper extends CWrapper
 				throw new CException
 					( "Invalid database type: expecting an instance of CDatabase",
 					  kERROR_STATE,
-					  kMESSAGE_TYPE_ERROR );									// !@! ==>
+					  kSTATUS_ERROR );									// !@! ==>
 		
 		} // Provided database.
 	
@@ -993,7 +993,7 @@ class CDataWrapper extends CWrapper
 				throw new CException
 					( "Invalid container type: expecting an instance of CContainer",
 					  kERROR_STATE,
-					  kMESSAGE_TYPE_ERROR );									// !@! ==>
+					  kSTATUS_ERROR );									// !@! ==>
 		
 		} // Provided container.
 	
@@ -1031,7 +1031,7 @@ class CDataWrapper extends CWrapper
 					( ("Cannot satisfy request: exceeded ("
 					  .$tmp.") maximum page limit of ".kDEFAULT_MAX_LIMIT),
 					  kERROR_PARAMETER,
-					  kMESSAGE_TYPE_ERROR );									// !@! ==>
+					  kSTATUS_ERROR );									// !@! ==>
 		
 		} // Provided paging parameters.
 	
@@ -1114,7 +1114,7 @@ class CDataWrapper extends CWrapper
 						throw new CException
 							( "Unable to format query: missing container",
 							  kERROR_MISSING,
-							  kMESSAGE_TYPE_ERROR );							// !@! ==>
+							  kSTATUS_ERROR );							// !@! ==>
 				
 				} // Scalar query.
 				
@@ -1158,7 +1158,7 @@ class CDataWrapper extends CWrapper
 								throw new CException
 									( "Unable to format query: missing container",
 									  kERROR_MISSING,
-									  kMESSAGE_TYPE_ERROR );					// !@! ==>
+									  kSTATUS_ERROR );					// !@! ==>
 						
 						} // Scalar query.
 						
@@ -1198,7 +1198,7 @@ class CDataWrapper extends CWrapper
 								throw new CException
 									( "Unable to format query: missing database",
 									  kERROR_MISSING,
-									  kMESSAGE_TYPE_ERROR );					// !@! ==>
+									  kSTATUS_ERROR );					// !@! ==>
 						
 						} // Container query.
 					
@@ -1212,7 +1212,7 @@ class CDataWrapper extends CWrapper
 				throw new CException
 					( "Unable to format query: invalid query data type",
 					  kERROR_PARAMETER,
-					  kMESSAGE_TYPE_ERROR,
+					  kSTATUS_ERROR,
 					  array( 'Type' => gettype( $_REQUEST[ kAPI_QUERY ] ) ) );	// !@! ==>
 		
 		} // Provided query parameter.

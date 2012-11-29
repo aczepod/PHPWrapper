@@ -7,8 +7,8 @@
 
 	<title>File CDataWrapper.php | MyWrapper Reference Documentation</title>
 
-	<script type="text/javascript" src="resources/combined.js?1742645618"></script>
-	<script type="text/javascript" src="elementlist.js?539813953"></script>
+	<script type="text/javascript" src="resources/combined.js?3680114562"></script>
+	<script type="text/javascript" src="elementlist.js?2861350629"></script>
 	<link rel="stylesheet" type="text/css" media="all" href="resources/style.css?3505392360" />
 
 </head>
@@ -39,6 +39,8 @@
 				<li class="active main"><a href="package-MyWrapper.Wrappers.html">Wrappers</a>
 						</li>
 							</ul></li>
+				<li><a href="package-None.html">None</a>
+						</li>
 				<li><a href="package-PHP.html">PHP</a>
 						</li>
 			</ul>
@@ -727,7 +729,7 @@
 </span><span id="627" class="l"><a class="l" href="#627"> 627: </a>                    <span class="php-keyword1">throw</span> <span class="php-keyword1">new</span> CException
 </span><span id="628" class="l"><a class="l" href="#628"> 628: </a>                        ( <span class="php-quote">&quot;Unable to instantiate database: invalid server type&quot;</span>,
 </span><span id="629" class="l"><a class="l" href="#629"> 629: </a>                          kERROR_STATE,
-</span><span id="630" class="l"><a class="l" href="#630"> 630: </a>                          kMESSAGE_TYPE_ERROR );                                <span class="php-comment">// !@! ==&gt;</span>
+</span><span id="630" class="l"><a class="l" href="#630"> 630: </a>                          kSTATUS_ERROR );                              <span class="php-comment">// !@! ==&gt;</span>
 </span><span id="631" class="l"><a class="l" href="#631"> 631: </a>            
 </span><span id="632" class="l"><a class="l" href="#632"> 632: </a>            } <span class="php-comment">// Has server.</span>
 </span><span id="633" class="l"><a class="l" href="#633"> 633: </a>            
@@ -735,7 +737,7 @@
 </span><span id="635" class="l"><a class="l" href="#635"> 635: </a>                <span class="php-keyword1">throw</span> <span class="php-keyword1">new</span> CException
 </span><span id="636" class="l"><a class="l" href="#636"> 636: </a>                    ( <span class="php-quote">&quot;Unable to instantiate database: wrapper not initialised&quot;</span>,
 </span><span id="637" class="l"><a class="l" href="#637"> 637: </a>                      kERROR_STATE,
-</span><span id="638" class="l"><a class="l" href="#638"> 638: </a>                      kMESSAGE_TYPE_ERROR );                                    <span class="php-comment">// !@! ==&gt;</span>
+</span><span id="638" class="l"><a class="l" href="#638"> 638: </a>                      kSTATUS_ERROR );                                  <span class="php-comment">// !@! ==&gt;</span>
 </span><span id="639" class="l"><a class="l" href="#639"> 639: </a>        
 </span><span id="640" class="l"><a class="l" href="#640"> 640: </a>        } <span class="php-comment">// Provided database.</span>
 </span><span id="641" class="l"><a class="l" href="#641"> 641: </a>    
@@ -781,7 +783,7 @@
 </span><span id="681" class="l"><a class="l" href="#681"> 681: </a>                    <span class="php-keyword1">throw</span> <span class="php-keyword1">new</span> CException
 </span><span id="682" class="l"><a class="l" href="#682"> 682: </a>                        ( <span class="php-quote">&quot;Unable to instantiate container: invalid database type&quot;</span>,
 </span><span id="683" class="l"><a class="l" href="#683"> 683: </a>                          kERROR_STATE,
-</span><span id="684" class="l"><a class="l" href="#684"> 684: </a>                          kMESSAGE_TYPE_ERROR );                                <span class="php-comment">// !@! ==&gt;</span>
+</span><span id="684" class="l"><a class="l" href="#684"> 684: </a>                          kSTATUS_ERROR );                              <span class="php-comment">// !@! ==&gt;</span>
 </span><span id="685" class="l"><a class="l" href="#685"> 685: </a>            
 </span><span id="686" class="l"><a class="l" href="#686"> 686: </a>            } <span class="php-comment">// Has database.</span>
 </span><span id="687" class="l"><a class="l" href="#687"> 687: </a>            
@@ -789,7 +791,7 @@
 </span><span id="689" class="l"><a class="l" href="#689"> 689: </a>                <span class="php-keyword1">throw</span> <span class="php-keyword1">new</span> CException
 </span><span id="690" class="l"><a class="l" href="#690"> 690: </a>                    ( <span class="php-quote">&quot;Unable to instantiate container: database is missing&quot;</span>,
 </span><span id="691" class="l"><a class="l" href="#691"> 691: </a>                      kERROR_STATE,
-</span><span id="692" class="l"><a class="l" href="#692"> 692: </a>                      kMESSAGE_TYPE_ERROR );                                    <span class="php-comment">// !@! ==&gt;</span>
+</span><span id="692" class="l"><a class="l" href="#692"> 692: </a>                      kSTATUS_ERROR );                                  <span class="php-comment">// !@! ==&gt;</span>
 </span><span id="693" class="l"><a class="l" href="#693"> 693: </a>        
 </span><span id="694" class="l"><a class="l" href="#694"> 694: </a>        } <span class="php-comment">// Provided container.</span>
 </span><span id="695" class="l"><a class="l" href="#695"> 695: </a>    
@@ -974,7 +976,7 @@
 </span><span id="874" class="l"><a class="l" href="#874"> 874: </a>                    <span class="php-keyword1">throw</span> <span class="php-keyword1">new</span> CException
 </span><span id="875" class="l"><a class="l" href="#875"> 875: </a>                        ( <span class="php-quote">&quot;Missing query list parameter&quot;</span>,
 </span><span id="876" class="l"><a class="l" href="#876"> 876: </a>                          kERROR_MISSING,
-</span><span id="877" class="l"><a class="l" href="#877"> 877: </a>                          kMESSAGE_TYPE_ERROR,
+</span><span id="877" class="l"><a class="l" href="#877"> 877: </a>                          kSTATUS_ERROR,
 </span><span id="878" class="l"><a class="l" href="#878"> 878: </a>                          <span class="php-keyword1">array</span>( <span class="php-quote">'Operation'</span> =&gt; <span class="php-var">$parameter</span> ) );                 <span class="php-comment">// !@! ==&gt;</span>
 </span><span id="879" class="l"><a class="l" href="#879"> 879: </a>                
 </span><span id="880" class="l"><a class="l" href="#880"> 880: </a>            <span class="php-keyword1">case</span> kAPI_OP_COUNT:
@@ -987,7 +989,7 @@
 </span><span id="887" class="l"><a class="l" href="#887"> 887: </a>                    <span class="php-keyword1">throw</span> <span class="php-keyword1">new</span> CException
 </span><span id="888" class="l"><a class="l" href="#888"> 888: </a>                        ( <span class="php-quote">&quot;Missing database parameter&quot;</span>,
 </span><span id="889" class="l"><a class="l" href="#889"> 889: </a>                          kERROR_MISSING,
-</span><span id="890" class="l"><a class="l" href="#890"> 890: </a>                          kMESSAGE_TYPE_ERROR,
+</span><span id="890" class="l"><a class="l" href="#890"> 890: </a>                          kSTATUS_ERROR,
 </span><span id="891" class="l"><a class="l" href="#891"> 891: </a>                          <span class="php-keyword1">array</span>( <span class="php-quote">'Operation'</span> =&gt; <span class="php-var">$parameter</span> ) );                 <span class="php-comment">// !@! ==&gt;</span>
 </span><span id="892" class="l"><a class="l" href="#892"> 892: </a>                
 </span><span id="893" class="l"><a class="l" href="#893"> 893: </a>                <span class="php-comment">//</span>
@@ -997,7 +999,7 @@
 </span><span id="897" class="l"><a class="l" href="#897"> 897: </a>                    <span class="php-keyword1">throw</span> <span class="php-keyword1">new</span> CException
 </span><span id="898" class="l"><a class="l" href="#898"> 898: </a>                        ( <span class="php-quote">&quot;Missing container parameter&quot;</span>,
 </span><span id="899" class="l"><a class="l" href="#899"> 899: </a>                          kERROR_MISSING,
-</span><span id="900" class="l"><a class="l" href="#900"> 900: </a>                          kMESSAGE_TYPE_ERROR,
+</span><span id="900" class="l"><a class="l" href="#900"> 900: </a>                          kSTATUS_ERROR,
 </span><span id="901" class="l"><a class="l" href="#901"> 901: </a>                          <span class="php-keyword1">array</span>( <span class="php-quote">'Operation'</span> =&gt; <span class="php-var">$parameter</span> ) );                 <span class="php-comment">// !@! ==&gt;</span>
 </span><span id="902" class="l"><a class="l" href="#902"> 902: </a>                    
 </span><span id="903" class="l"><a class="l" href="#903"> 903: </a>                <span class="php-comment">//</span>
@@ -1007,7 +1009,7 @@
 </span><span id="907" class="l"><a class="l" href="#907"> 907: </a>                    <span class="php-keyword1">throw</span> <span class="php-keyword1">new</span> CException
 </span><span id="908" class="l"><a class="l" href="#908"> 908: </a>                        ( <span class="php-quote">&quot;Missing format parameter&quot;</span>,
 </span><span id="909" class="l"><a class="l" href="#909"> 909: </a>                          kERROR_MISSING,
-</span><span id="910" class="l"><a class="l" href="#910"> 910: </a>                          kMESSAGE_TYPE_ERROR,
+</span><span id="910" class="l"><a class="l" href="#910"> 910: </a>                          kSTATUS_ERROR,
 </span><span id="911" class="l"><a class="l" href="#911"> 911: </a>                          <span class="php-keyword1">array</span>( <span class="php-quote">'Operation'</span> =&gt; <span class="php-var">$parameter</span> ) );                 <span class="php-comment">// !@! ==&gt;</span>
 </span><span id="912" class="l"><a class="l" href="#912"> 912: </a>                
 </span><span id="913" class="l"><a class="l" href="#913"> 913: </a>                <span class="php-keyword1">break</span>;
@@ -1055,7 +1057,7 @@
 </span><span id="955" class="l"><a class="l" href="#955"> 955: </a>                <span class="php-keyword1">throw</span> <span class="php-keyword1">new</span> CException
 </span><span id="956" class="l"><a class="l" href="#956"> 956: </a>                    ( <span class="php-quote">&quot;Invalid database type: expecting an instance of CDatabase&quot;</span>,
 </span><span id="957" class="l"><a class="l" href="#957"> 957: </a>                      kERROR_STATE,
-</span><span id="958" class="l"><a class="l" href="#958"> 958: </a>                      kMESSAGE_TYPE_ERROR );                                    <span class="php-comment">// !@! ==&gt;</span>
+</span><span id="958" class="l"><a class="l" href="#958"> 958: </a>                      kSTATUS_ERROR );                                  <span class="php-comment">// !@! ==&gt;</span>
 </span><span id="959" class="l"><a class="l" href="#959"> 959: </a>        
 </span><span id="960" class="l"><a class="l" href="#960"> 960: </a>        } <span class="php-comment">// Provided database.</span>
 </span><span id="961" class="l"><a class="l" href="#961"> 961: </a>    
@@ -1093,7 +1095,7 @@
 </span><span id="993" class="l"><a class="l" href="#993"> 993: </a>                <span class="php-keyword1">throw</span> <span class="php-keyword1">new</span> CException
 </span><span id="994" class="l"><a class="l" href="#994"> 994: </a>                    ( <span class="php-quote">&quot;Invalid container type: expecting an instance of CContainer&quot;</span>,
 </span><span id="995" class="l"><a class="l" href="#995"> 995: </a>                      kERROR_STATE,
-</span><span id="996" class="l"><a class="l" href="#996"> 996: </a>                      kMESSAGE_TYPE_ERROR );                                    <span class="php-comment">// !@! ==&gt;</span>
+</span><span id="996" class="l"><a class="l" href="#996"> 996: </a>                      kSTATUS_ERROR );                                  <span class="php-comment">// !@! ==&gt;</span>
 </span><span id="997" class="l"><a class="l" href="#997"> 997: </a>        
 </span><span id="998" class="l"><a class="l" href="#998"> 998: </a>        } <span class="php-comment">// Provided container.</span>
 </span><span id="999" class="l"><a class="l" href="#999"> 999: </a>    
@@ -1131,7 +1133,7 @@
 </span><span id="1031" class="l"><a class="l" href="#1031">1031: </a>                    ( (<span class="php-quote">&quot;Cannot satisfy request: exceeded (&quot;</span>
 </span><span id="1032" class="l"><a class="l" href="#1032">1032: </a>                      .<span class="php-var">$tmp</span>.<span class="php-quote">&quot;) maximum page limit of &quot;</span>.kDEFAULT_MAX_LIMIT),
 </span><span id="1033" class="l"><a class="l" href="#1033">1033: </a>                      kERROR_PARAMETER,
-</span><span id="1034" class="l"><a class="l" href="#1034">1034: </a>                      kMESSAGE_TYPE_ERROR );                                    <span class="php-comment">// !@! ==&gt;</span>
+</span><span id="1034" class="l"><a class="l" href="#1034">1034: </a>                      kSTATUS_ERROR );                                  <span class="php-comment">// !@! ==&gt;</span>
 </span><span id="1035" class="l"><a class="l" href="#1035">1035: </a>        
 </span><span id="1036" class="l"><a class="l" href="#1036">1036: </a>        } <span class="php-comment">// Provided paging parameters.</span>
 </span><span id="1037" class="l"><a class="l" href="#1037">1037: </a>    
@@ -1214,7 +1216,7 @@
 </span><span id="1114" class="l"><a class="l" href="#1114">1114: </a>                        <span class="php-keyword1">throw</span> <span class="php-keyword1">new</span> CException
 </span><span id="1115" class="l"><a class="l" href="#1115">1115: </a>                            ( <span class="php-quote">&quot;Unable to format query: missing container&quot;</span>,
 </span><span id="1116" class="l"><a class="l" href="#1116">1116: </a>                              kERROR_MISSING,
-</span><span id="1117" class="l"><a class="l" href="#1117">1117: </a>                              kMESSAGE_TYPE_ERROR );                            <span class="php-comment">// !@! ==&gt;</span>
+</span><span id="1117" class="l"><a class="l" href="#1117">1117: </a>                              kSTATUS_ERROR );                          <span class="php-comment">// !@! ==&gt;</span>
 </span><span id="1118" class="l"><a class="l" href="#1118">1118: </a>                
 </span><span id="1119" class="l"><a class="l" href="#1119">1119: </a>                } <span class="php-comment">// Scalar query.</span>
 </span><span id="1120" class="l"><a class="l" href="#1120">1120: </a>                
@@ -1258,7 +1260,7 @@
 </span><span id="1158" class="l"><a class="l" href="#1158">1158: </a>                                <span class="php-keyword1">throw</span> <span class="php-keyword1">new</span> CException
 </span><span id="1159" class="l"><a class="l" href="#1159">1159: </a>                                    ( <span class="php-quote">&quot;Unable to format query: missing container&quot;</span>,
 </span><span id="1160" class="l"><a class="l" href="#1160">1160: </a>                                      kERROR_MISSING,
-</span><span id="1161" class="l"><a class="l" href="#1161">1161: </a>                                      kMESSAGE_TYPE_ERROR );                    <span class="php-comment">// !@! ==&gt;</span>
+</span><span id="1161" class="l"><a class="l" href="#1161">1161: </a>                                      kSTATUS_ERROR );                  <span class="php-comment">// !@! ==&gt;</span>
 </span><span id="1162" class="l"><a class="l" href="#1162">1162: </a>                        
 </span><span id="1163" class="l"><a class="l" href="#1163">1163: </a>                        } <span class="php-comment">// Scalar query.</span>
 </span><span id="1164" class="l"><a class="l" href="#1164">1164: </a>                        
@@ -1298,7 +1300,7 @@
 </span><span id="1198" class="l"><a class="l" href="#1198">1198: </a>                                <span class="php-keyword1">throw</span> <span class="php-keyword1">new</span> CException
 </span><span id="1199" class="l"><a class="l" href="#1199">1199: </a>                                    ( <span class="php-quote">&quot;Unable to format query: missing database&quot;</span>,
 </span><span id="1200" class="l"><a class="l" href="#1200">1200: </a>                                      kERROR_MISSING,
-</span><span id="1201" class="l"><a class="l" href="#1201">1201: </a>                                      kMESSAGE_TYPE_ERROR );                    <span class="php-comment">// !@! ==&gt;</span>
+</span><span id="1201" class="l"><a class="l" href="#1201">1201: </a>                                      kSTATUS_ERROR );                  <span class="php-comment">// !@! ==&gt;</span>
 </span><span id="1202" class="l"><a class="l" href="#1202">1202: </a>                        
 </span><span id="1203" class="l"><a class="l" href="#1203">1203: </a>                        } <span class="php-comment">// Container query.</span>
 </span><span id="1204" class="l"><a class="l" href="#1204">1204: </a>                    
@@ -1312,7 +1314,7 @@
 </span><span id="1212" class="l"><a class="l" href="#1212">1212: </a>                <span class="php-keyword1">throw</span> <span class="php-keyword1">new</span> CException
 </span><span id="1213" class="l"><a class="l" href="#1213">1213: </a>                    ( <span class="php-quote">&quot;Unable to format query: invalid query data type&quot;</span>,
 </span><span id="1214" class="l"><a class="l" href="#1214">1214: </a>                      kERROR_PARAMETER,
-</span><span id="1215" class="l"><a class="l" href="#1215">1215: </a>                      kMESSAGE_TYPE_ERROR,
+</span><span id="1215" class="l"><a class="l" href="#1215">1215: </a>                      kSTATUS_ERROR,
 </span><span id="1216" class="l"><a class="l" href="#1216">1216: </a>                      <span class="php-keyword1">array</span>( <span class="php-quote">'Type'</span> =&gt; <span class="php-keyword2">gettype</span>( <span class="php-var">$_REQUEST</span>[ kAPI_QUERY ] ) ) );  <span class="php-comment">// !@! ==&gt;</span>
 </span><span id="1217" class="l"><a class="l" href="#1217">1217: </a>        
 </span><span id="1218" class="l"><a class="l" href="#1218">1218: </a>        } <span class="php-comment">// Provided query parameter.</span>

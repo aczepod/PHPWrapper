@@ -733,7 +733,7 @@ class CDataWrapperClient extends CWrapperClient
 	 *		{@link kOPERATOR_OR} or {@link kOPERATOR_NOR} operator (see the
 	 *		{@link Operators.inc.php} source).
 	 *	<li><tt>$theSubject</tt>: The subject or attribute of the query, it will be the
-	 *		tag {@link kOFFSET_NID} (see the {@link Operators.inc.php} source).
+	 *		tag {@link kTAG_NID} (see the {@link Operators.inc.php} source).
 	 *	<li><tt>$theOperator</tt>: The statement operator or operation.
 	 *	<li><tt>$theObject</tt>: The object or value of the statement, this parameter may be
 	 *		omitted of the operator does not require it.
@@ -808,7 +808,7 @@ class CDataWrapperClient extends CWrapperClient
 	 *		{@link kOPERATOR_OR} or {@link kOPERATOR_NOR} operator (see the
 	 *		{@link Operators.inc.php} source).
 	 *	<li><tt>$theSubject</tt>: The subject or attribute of the query, it will be the
-	 *		tag {@link kOFFSET_NID} (see the {@link Operators.inc.php} source).
+	 *		tag {@link kTAG_NID} (see the {@link Operators.inc.php} source).
 	 *	<li><tt>$theOperator</tt>: The statement operator or operation.
 	 *	<li><tt>$theObject</tt>: The object or value of the statement, this parameter may be
 	 *		omitted of the operator does not require it.

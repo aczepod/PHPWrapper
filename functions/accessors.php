@@ -687,10 +687,10 @@ require_once( kPATH_MYWRAPPER_LIBRARY_DEFINE."/Errors.inc.php" );
 	 * as in {@link ManageOffset}.
 	 *
 	 * The elements of the list are expected to be object references in the form of their
-	 * native unique identifier, @link kOFFSET_NID}.
+	 * native unique identifier, @link kTAG_NID}.
 	 *
 	 * When adding new elements, the method will check if the object already exists in the
-	 * set by comparing the hashed identifiers, thus using the {@link kOFFSET_NID} of
+	 * set by comparing the hashed identifiers, thus using the {@link kTAG_NID} of
 	 * eventual full objects.
 	 *
 	 * When deleting elements, if the list becomes empty, the whole offset will be deleted.

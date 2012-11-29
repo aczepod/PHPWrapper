@@ -379,7 +379,7 @@ require_once( kPATH_MYWRAPPER_LIBRARY_FUNCTION.'/parsing.php' );
 						$part3_term->Description( kDEFAULT_LANGUAGE,
 												  (string) $record[ 'reference_name' ] );
 					if( $record[ 'status' ] !== NULL )
-						$part3_term[ $status_tag[ kOFFSET_NID ] ]
+						$part3_term[ $status_tag[ kTAG_NID ] ]
 							= (string) $record[ 'status' ];
 					if( $record[ 'scope' ] !== NULL )
 					{
@@ -395,12 +395,12 @@ require_once( kPATH_MYWRAPPER_LIBRARY_FUNCTION.'/parsing.php' );
 								case 'D':
 								case 'R':
 								case 'S':
-									$part3_term[ $scope_tag[ kOFFSET_NID ] ]
+									$part3_term[ $scope_tag[ kTAG_NID ] ]
 										= implode( kTOKEN_NAMESPACE_SEPARATOR,
 												   array( $scope_code, $tmp ) );
 									break;
 								case 'L':
-									$part3_term[ $scope_tag[ kOFFSET_NID ] ]
+									$part3_term[ $scope_tag[ kTAG_NID ] ]
 										= implode( kTOKEN_NAMESPACE_SEPARATOR,
 												   array( $scope_code, 'R' ) );
 									break;
@@ -424,12 +424,12 @@ require_once( kPATH_MYWRAPPER_LIBRARY_FUNCTION.'/parsing.php' );
 								case 'Genetic':
 								case 'Genetic-like':
 								case 'Geographic':
-									$part3_term[ $type_tag[ kOFFSET_NID ] ]
+									$part3_term[ $type_tag[ kTAG_NID ] ]
 										= implode( kTOKEN_NAMESPACE_SEPARATOR,
 												   array( $type_code, $tmp ) );
 									break;
 								case 'Genetic, Ancient':
-									$part3_term[ $type_tag[ kOFFSET_NID ] ]
+									$part3_term[ $type_tag[ kTAG_NID ] ]
 										= array(
 											implode( kTOKEN_NAMESPACE_SEPARATOR,
 													 array( $type_code, 'Genetic' ) ),
@@ -441,7 +441,7 @@ require_once( kPATH_MYWRAPPER_LIBRARY_FUNCTION.'/parsing.php' );
 					}
 					if( $record[ 'inverted_name' ] !== NULL )
 						ManageIndexedOffset( $part3_term,
-							(string) $inv_name_tag[ kOFFSET_NID ],
+							(string) $inv_name_tag[ kTAG_NID ],
 							kDEFAULT_LANGUAGE, (string) $record[ 'inverted_name' ] );
 					
 					//
@@ -485,14 +485,14 @@ require_once( kPATH_MYWRAPPER_LIBRARY_FUNCTION.'/parsing.php' );
 							// Update inverted name.
 							//
 							if( $part3_term->offsetExists(
-								(string) $inv_name_tag[ kOFFSET_NID ] ) )
+								(string) $inv_name_tag[ kTAG_NID ] ) )
 							{
 								$string = ManageIndexedOffset( $part3_term,
-									(string) $inv_name_tag[ kOFFSET_NID ],
+									(string) $inv_name_tag[ kTAG_NID ],
 									kDEFAULT_LANGUAGE );
 								if( array_key_exists( $string, $keys ) )
 									ManageIndexedOffset($part3_term,
-										(string) $inv_name_tag[ kOFFSET_NID ],
+										(string) $inv_name_tag[ kTAG_NID ],
 										$language, $keys[ $string ] );
 							}
 						
@@ -1196,7 +1196,7 @@ require_once( kPATH_MYWRAPPER_LIBRARY_FUNCTION.'/parsing.php' );
 													(string) $record[ 'official_name' ] );
 					if( $record[ 'common_name' ] !== NULL )
 						ManageIndexedOffset( $part1_3_term,
-							(string) $part1_common_name_tag[ kOFFSET_NID ],
+							(string) $part1_common_name_tag[ kTAG_NID ],
 							kDEFAULT_LANGUAGE, (string) $record[ 'common_name' ] );
 					
 					//
@@ -1242,14 +1242,14 @@ require_once( kPATH_MYWRAPPER_LIBRARY_FUNCTION.'/parsing.php' );
 							// Update common name.
 							//
 							if( $part1_3_term->offsetExists(
-								(string) $part1_common_name_tag[ kOFFSET_NID ] ) )
+								(string) $part1_common_name_tag[ kTAG_NID ] ) )
 							{
 								$string = ManageIndexedOffset( $part1_3_term,
-									(string) $part1_common_name_tag[ kOFFSET_NID ],
+									(string) $part1_common_name_tag[ kTAG_NID ],
 									kDEFAULT_LANGUAGE );
 								if( array_key_exists( $string, $keys ) )
 									ManageIndexedOffset($part1_3_term,
-									(string) $part1_common_name_tag[ kOFFSET_NID ],
+									(string) $part1_common_name_tag[ kTAG_NID ],
 									$language, $keys[ $string ] );
 							}
 						
@@ -1444,7 +1444,7 @@ require_once( kPATH_MYWRAPPER_LIBRARY_FUNCTION.'/parsing.php' );
 						$part3_3_term->Description( kDEFAULT_LANGUAGE,
 													(string) $record[ 'comment' ] );
 					if( $record[ 'date_withdrawn' ] !== NULL )
-						$part3_3_term[ (string) $part3_date_tag[ kOFFSET_NID ] ]
+						$part3_3_term[ (string) $part3_date_tag[ kTAG_NID ] ]
 							= (string) $record[ 'date_withdrawn' ];
 					
 					//
@@ -1860,7 +1860,7 @@ require_once( kPATH_MYWRAPPER_LIBRARY_FUNCTION.'/parsing.php' );
 							$term->NS( $part2_ns );
 							if( $rec_element[ 'name' ] !== NULL )
 								$term->Label( NULL, (string) $rec_element[ 'name' ] );
-							$term[ $part2_type_tag[ kOFFSET_NID ] ] = $type;
+							$term[ $part2_type_tag[ kTAG_NID ] ] = $type;
 							
 							//
 							// Iterate languages.
@@ -2209,7 +2209,7 @@ require_once( kPATH_MYWRAPPER_LIBRARY_FUNCTION.'/parsing.php' );
 						$letter_term->Label( kDEFAULT_LANGUAGE,
 											 (string) $record[ 'currency_name' ] );
 					if( $record[ 'date_withdrawn' ] !== NULL )
-						$letter_term[ (string) $h_date_tag[ kOFFSET_NID ] ]
+						$letter_term[ (string) $h_date_tag[ kTAG_NID ] ]
 							= (string) $record[ 'date_withdrawn' ];
 					
 					//

@@ -441,7 +441,7 @@ class CMongoDataWrapper extends CDataWrapper
 					throw new CException
 						( "Unsupported container type",
 						  kERROR_UNSUPPORTED,
-						  kMESSAGE_TYPE_ERROR,
+						  kSTATUS_ERROR,
 						  array( 'Container'
 							=> $_REQUEST[ kAPI_CONTAINER ] ) );				// !@! ==>
 			
@@ -451,7 +451,7 @@ class CMongoDataWrapper extends CDataWrapper
 				throw new CException
 					( "Missing container reference",
 					  kERROR_OPTION_MISSING,
-					  kMESSAGE_TYPE_ERROR,
+					  kSTATUS_ERROR,
 					  array( 'Parameter' => kAPI_CONTAINER ) );				// !@! ==>
 		
 		} // Provided object.
@@ -501,7 +501,7 @@ class CMongoDataWrapper extends CDataWrapper
 					throw new CException
 						( "Missing database reference",
 						  kERROR_OPTION_MISSING,
-						  kMESSAGE_TYPE_ERROR,
+						  kSTATUS_ERROR,
 						  array( 'Operation' => $parameter ) );					// !@! ==>
 				
 				//
@@ -512,7 +512,7 @@ class CMongoDataWrapper extends CDataWrapper
 					throw new CException
 						( "Missing container reference",
 						  kERROR_OPTION_MISSING,
-						  kMESSAGE_TYPE_ERROR,
+						  kSTATUS_ERROR,
 						  array( 'Operation' => $parameter ) );					// !@! ==>
 				
 				//
@@ -618,7 +618,7 @@ class CMongoDataWrapper extends CDataWrapper
 					throw new CException
 						( "Unsupported container type",
 						  kERROR_UNSUPPORTED,
-						  kMESSAGE_TYPE_ERROR,
+						  kSTATUS_ERROR,
 						  array( 'Container'
 							=> $_REQUEST[ kAPI_CONTAINER ] ) );					// !@! ==>
 			
@@ -628,7 +628,7 @@ class CMongoDataWrapper extends CDataWrapper
 				throw new CException
 					( "Missing container reference",
 					  kERROR_OPTION_MISSING,
-					  kMESSAGE_TYPE_ERROR,
+					  kSTATUS_ERROR,
 					  array( 'Parameter' => kAPI_CONTAINER ) );					// !@! ==>
 		
 		} // Provided query.
@@ -827,13 +827,13 @@ class CMongoDataWrapper extends CDataWrapper
 			//
 			// Set severity.
 			//
-			$this->_OffsetManage( kAPI_STATUS, kTAG_STATUS,
-								  kMESSAGE_TYPE_WARNING );
+			$this->_OffsetManage( kAPI_STATUS, kTERM_SEVERITY,
+								  kSTATUS_WARNING );
 			
 			//
 			// Set code.
 			//
-			$this->_OffsetManage( kAPI_STATUS, kTAG_CODE,
+			$this->_OffsetManage( kAPI_STATUS, kTERM_CODE,
 								  kERROR_NOT_FOUND );
 			
 			//
@@ -1507,12 +1507,12 @@ class CMongoDataWrapper extends CDataWrapper
 				//
 				// Set severity.
 				//
-				$this->_OffsetManage( kAPI_STATUS, kTAG_STATUS, kMESSAGE_TYPE_ERROR );
+				$this->_OffsetManage( kAPI_STATUS, kTERM_SEVERITY, kSTATUS_ERROR );
 				
 				//
 				// Set code.
 				//
-				$this->_OffsetManage( kAPI_STATUS, kTAG_CODE, $ok[ 'code' ] );
+				$this->_OffsetManage( kAPI_STATUS, kTERM_CODE, $ok[ 'code' ] );
 				
 				//
 				// Set message.
@@ -1672,12 +1672,12 @@ class CMongoDataWrapper extends CDataWrapper
 				//
 				// Set severity.
 				//
-				$this->_OffsetManage( kAPI_STATUS, kTAG_STATUS, kMESSAGE_TYPE_ERROR );
+				$this->_OffsetManage( kAPI_STATUS, kTERM_SEVERITY, kSTATUS_ERROR );
 				
 				//
 				// Set code.
 				//
-				$this->_OffsetManage( kAPI_STATUS, kTAG_CODE, $ok[ 'code' ] );
+				$this->_OffsetManage( kAPI_STATUS, kTERM_CODE, $ok[ 'code' ] );
 				
 				//
 				// Set message.
@@ -1768,12 +1768,12 @@ class CMongoDataWrapper extends CDataWrapper
 				//
 				// Set severity.
 				//
-				$this->_OffsetManage( kAPI_STATUS, kTAG_STATUS, kMESSAGE_TYPE_ERROR );
+				$this->_OffsetManage( kAPI_STATUS, kTERM_SEVERITY, kSTATUS_ERROR );
 				
 				//
 				// Set code.
 				//
-				$this->_OffsetManage( kAPI_STATUS, kTAG_CODE, $ok[ 'code' ] );
+				$this->_OffsetManage( kAPI_STATUS, kTERM_CODE, $ok[ 'code' ] );
 				
 				//
 				// Set message.

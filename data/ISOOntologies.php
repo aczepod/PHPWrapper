@@ -331,7 +331,7 @@ require_once( 'ISOOntologies.inc.php' );
 				echo( "    - $id ["
 					 .$_SESSION[ 'NODES' ][ $id ]
 					 ."] ("
-					 .$_SESSION[ 'TAGS' ][ $id ][ kOFFSET_NID ]
+					 .$_SESSION[ 'TAGS' ][ $id ][ kTAG_NID ]
 					 .")\n" );
 		
 		} // Iterating first level parameters.
@@ -606,7 +606,7 @@ require_once( 'ISOOntologies.inc.php' );
 					echo( "    - $id ["
 						 .$_SESSION[ 'NODES' ][ $id ]
 						 ."] ("
-						 .$_SESSION[ 'TAGS' ][ $id ][ kOFFSET_NID ]
+						 .$_SESSION[ 'TAGS' ][ $id ][ kTAG_NID ]
 						 .")\n" );
 			
 			} // Taggable term.
@@ -723,7 +723,7 @@ require_once( 'ISOOntologies.inc.php' );
 					echo( "    - $id ["
 						 .$_SESSION[ 'NODES' ][ $id ]
 						 ."] ("
-						 .$_SESSION[ 'TAGS' ][ $id ][ kOFFSET_NID ]
+						 .$_SESSION[ 'TAGS' ][ $id ][ kTAG_NID ]
 						 .")\n" );
 			
 			} // Taggable term.
@@ -856,7 +856,7 @@ require_once( 'ISOOntologies.inc.php' );
 					echo( "    - $id ["
 						 .$_SESSION[ 'NODES' ][ $id ]
 						 ."] ("
-						 .$_SESSION[ 'TAGS' ][ $id ][ kOFFSET_NID ]
+						 .$_SESSION[ 'TAGS' ][ $id ][ kTAG_NID ]
 						 .")\n" );
 			
 			} // Taggable term.
@@ -1018,7 +1018,7 @@ require_once( 'ISOOntologies.inc.php' );
 					echo( "    - $id ["
 						 .$_SESSION[ 'NODES' ][ $id ]
 						 ."] ("
-						 .$_SESSION[ 'TAGS' ][ $id ][ kOFFSET_NID ]
+						 .$_SESSION[ 'TAGS' ][ $id ][ kTAG_NID ]
 						 .")\n" );
 			
 			} // Taggable term.

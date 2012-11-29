@@ -6,8 +6,8 @@
 
 	<title>Class CWrapper | MyWrapper Reference Documentation</title>
 
-	<script type="text/javascript" src="resources/combined.js?1742645618"></script>
-	<script type="text/javascript" src="elementlist.js?539813953"></script>
+	<script type="text/javascript" src="resources/combined.js?3680114562"></script>
+	<script type="text/javascript" src="elementlist.js?2861350629"></script>
 	<link rel="stylesheet" type="text/css" media="all" href="resources/style.css?3505392360" />
 
 </head>
@@ -38,6 +38,8 @@
 				<li class="active main"><a href="package-MyWrapper.Wrappers.html">Wrappers</a>
 						</li>
 							</ul></li>
+				<li><a href="package-None.html">None</a>
+						</li>
 				<li><a href="package-PHP.html">PHP</a>
 						</li>
 			</ul>
@@ -149,39 +151,38 @@ constituted by the following three sections:</p>
 	returned by default and will inform on the status of the requested operation. It
 	consists of an array containing the following elements:
 		<ul>
-			<li><i>kOFFSET_SEVERITY</i>: <i>Response status</i>. This element will
-			be returned by default regardless of the operation outcome. This corresponds to
-			the severity of the response and it can take the following values:
+			<li><i>kTERM_SEVERITY</i>: <i>Response status</i>. This element will be
+			returned by default regardless of the operation outcome. This corresponds to the
+			severity of the response and it can take the following values:
 				<ul>
-					<li><i>kMESSAGE_TYPE_IDLE</i>: This is the status of the web-service
-					before any operation has been executed, or when the operation was successful;
-					this is the response of a successful kAPI_OP_PING request.</li>
+					<li><i>kSTATUS_IDLE</i>: This is the status of the web-service before
+					any operation has been executed, or when the operation was successful; this is
+					the response of a successful kAPI_OP_PING request.</li>
 
-					<li><i>kMESSAGE_TYPE_NOTICE</i>: The operation was successful and a
-					notice message was returned.</li>
-
-					<li><i>kMESSAGE_TYPE_MESSAGE</i>: The operation was successful and a
+					<li><i>kSTATUS_NOTICE</i>: The operation was successful and a notice
 					message was returned.</li>
 
-					<li><i>kMESSAGE_TYPE_WARNING</i>: The operation was successful but a
-					warning was raised.</li>
+					<li><i>kSTATUS_MESSAGE</i>: The operation was successful and a message
+					was returned.</li>
 
-					<li><i>kMESSAGE_TYPE_ERROR</i>: The operation failed because of an
-					error.</li>
+					<li><i>kSTATUS_WARNING</i>: The operation was successful but a warning
+					was raised.</li>
 
-					<li><i>kMESSAGE_TYPE_FATAL</i>: The operation failed because of a fatal
-					error, this will generally mean that the web-service is not operational.</li>
+					<li><i>kSTATUS_ERROR</i>: The operation failed because of an error.</li>
 
-					<li><i>kMESSAGE_TYPE_BUG</i>: The operation failed because of a bug, the
+					<li><i>kSTATUS_FATAL</i>: The operation failed because of a fatal error,
+					this will generally mean that the web-service is not operational.</li>
+
+					<li><i>kSTATUS_BUG</i>: The operation failed because of a bug, the
 					developers should be informed of this kind of errors.</li>
 				</ul>
 			</li>
 
-			<li><i>kOFFSET_CODE</i>: <i>Status code</i>. This element will be
-			returned by default regardless of the operation outcome. It corresponds to the
-			error code; kERROR_OK means no error.</li>
+			<li><i>kTERM_CODE</i>: <i>Status code</i>. This element will be returned
+			by default regardless of the operation outcome. It corresponds to the error
+			code; kERROR_OK means no error.</li>
 
-			<li><i>kOFFSET_MESSAGE</i>: <i>Status message</i>. The response message
+			<li><i>kTERM_MESSAGE</i>: <i>Status message</i>. The response message
 			from the operation, this element is used to return informative messages or to
 			return error messages when the service fails. It will generally be formatted as
 			an array in which the index represents the language code in which the message,
@@ -191,7 +192,7 @@ constituted by the following three sections:</p>
 			elements affected by the operation. This tag will only be used by derived
 			classes returning data elements.</li>
 
-			<li><i>kOFFSET_NOTES</i>: <i>Attachments</i>. A list of key/value pairs
+			<li><i>kTERM_NOTES</i>: <i>Attachments</i>. A list of key/value pairs
 			containing information relevant to the operation response. For instance, if a
 			series of parameters are required and were not provided, this could list
 			them.</li>
@@ -371,7 +372,7 @@ workflow is as follows:</p>
 	init the service.</li>
 
 	<li><i><code><a href="class-CWrapper.html#__InitStatus">CWrapper::_InitStatus()</a></code></i>: The response status will be initialised to the
-	kMESSAGE_TYPE_IDLE state.</li>
+	kSTATUS_IDLE state.</li>
 
 	<li><i><code><a href="class-CWrapper.html#__InitOptions">CWrapper::_InitOptions()</a></code></i>: Service options will be initialised.</li>
 
@@ -534,8 +535,8 @@ this is not the case, the method will do nothing.</p>
 derived classes may overload this method if they need to handle other
 states.</p>
 
-<p>In this class we set the status to kMESSAGE_TYPE_IDLE and reset the
-status kOFFSET_CODE.</p>
+<p>In this class we set the status to kSTATUS_IDLE and reset the status
+kTERM_CODE.</p>
 
 
 
@@ -1263,25 +1264,25 @@ exception:</p>
 
 <ul>
 	<li><i><code><a href="class-CException.html#_Severity">CException::Severity()</a></code></i>: This value will be set as the status
-	kOFFSET_SEVERITY.</li>
+	kTERM_SEVERITY.</li>
 
 	<li><i><code><a href="class-Exception.html#_getCode">Exception::getCode()</a></code></i>: This value will be set as the status
-	kOFFSET_CODE.</li>
+	kTERM_CODE.</li>
 
 	<li><i><code><a href="class-Exception.html#_getMessage">Exception::getMessage()</a></code></i>: This value will be set in the status
-	kOFFSET_MESSAGE field as a language block.</li>
+	kTERM_MESSAGE field as a language block.</li>
 
 	<li><i><code><a href="class-Exception.html#_getFile">Exception::getFile()</a></code></i>: This value will be set in the status
-	kOFFSET_NOTES.</li>
+	kTERM_NOTES.</li>
 
 	<li><i><code><a href="class-Exception.html#_getLine">Exception::getLine()</a></code></i>: This value will be set in the status
-	kOFFSET_NOTES.</li>
+	kTERM_NOTES.</li>
 
 	<li><i><code><a href="class-Exception.html#_getTrace">Exception::getTrace()</a></code></i>: This value will be set in the status
-	kOFFSET_NOTES.</li>
+	kTERM_NOTES.</li>
 
 	<li><i><code><a href="class-CException.html#_Reference">CException::Reference()</a></code></i>: These valuew will be set in the
-	status kOFFSET_NOTES.</li>
+	status kTERM_NOTES.</li>
 </ul>
 
 

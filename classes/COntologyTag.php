@@ -44,7 +44,7 @@ require_once( kPATH_MYWRAPPER_LIBRARY_CLASS."/CTag.php" );
  * <h4>Ontology tag object ancestor</h4>
  *
  * This class extends its ancestor, {@link CTag}, by asserting the type of objects passed to
- * the path, {@link kTAG_TAG_PATH}, and by using term references as the elements of the
+ * the path, {@link kTAG_PATH}, and by using term references as the elements of the
  * object's path and global identifier.
  *
  * <ul>
@@ -53,17 +53,17 @@ require_once( kPATH_MYWRAPPER_LIBRARY_CLASS."/CTag.php" );
  *		graph and the even elements the predicate terms that connect them. In this class
  *		the vertices are represented by the {@link kTAG_TERM} reference of the vertex
  *		{@link COntologyNode} instances, while the predicates are represented by the
- *		{@link COntologyTerm} {@link kOFFSET_NID} of the predicate terms.
+ *		{@link COntologyTerm} {@link kTAG_NID} of the predicate terms.
  *	<li><i>Global identifier</i>: The global identifier, {@link GID()}, in this class is
  *		represented by the concatenation of the {@link kTAG_GID} attributes of all the
  *		{@link COntologyTerm} instance references of the object's path,
- *		{@link kTAG_TAG_PATH}, separated by the {@link kTOKEN_INDEX_SEPARATOR} token.
+ *		{@link kTAG_PATH}, separated by the {@link kTOKEN_INDEX_SEPARATOR} token.
  *	<li><i>Unique identifier</i>: The unique identifier, {@link kTAG_UID}, in this class is
  *		represented by the hash of the global identifier.
  * </ul>
  *
  * Elements of the path can be provided as committed objects, they must have their
- * {@link kOFFSET_NID} set. {@link COntologyNode} instances or references can only be
+ * {@link kTAG_NID} set. {@link COntologyNode} instances or references can only be
  * provided as odd elements, while {@link COntologyTerm} instances or references can be
  * provided as both odd or even elements. Note that nodes will always be resolved into the
  * terms they refer to, so <i>there there is no direct relationship between nodes and
@@ -77,15 +77,15 @@ require_once( kPATH_MYWRAPPER_LIBRARY_CLASS."/CTag.php" );
  * Objects of this class will almost always be created by providing a sequence of node
  * vertices and predicate terms, the {@link PushItem()} method will follow these rules: the
  * first element of the path is the feature vertex, if provided as an {@link COntologyNode}
- * instance, it must have its {@link COntologyNode::Kind()} set to {@link kKIND_NODE_TRAIT};
+ * instance, it must have its {@link COntologyNode::Kind()} set to {@link kKIND_NODE_FEATURE};
  * the last element of the path is the scale vertex, if provided as an {@link COntologyNode}
  * instance, it must have its {@link COntologyNode::Kind()} set to {@link kKIND_NODE_SCALE}.
  *
  * Whenever a tag is committed, the referenced terms will receive the tag
- * {@link kOFFSET_NID} in an attribute, depending on their position in the path: the first
- * path term will receive the tag reference in the {@link kTAG_REFS_TAG_FEATURE} attribute,
+ * {@link kTAG_NID} in an attribute, depending on their position in the path: the first
+ * path term will receive the tag reference in the {@link kTAG_FEATURES} attribute,
  * the terms which are neither the first nor the last in the path receive the reference in
- * {@link kTAG_REFS_TAG_METHOD} and the last term in {@link kTAG_REFS_TAG_SCALE}.
+ * {@link kTAG_METHODS} and the last term in {@link kTAG_SCALES}.
  *
  * This class prevents updating the full object once it has been inserted for the first
  * time. This behaviour is necessary because tags are referenced by many other objects, so
@@ -93,7 +93,7 @@ require_once( kPATH_MYWRAPPER_LIBRARY_CLASS."/CTag.php" );
  * reason the {@link Update()} and {@link Replace()} methods will raise an exception.
  *
  * Objects of this class use a sequence number as their native identifier,
- * {@link kOFFSET_NID}, tagged as {@link kSEQUENCE_KEY_TAG}.
+ * {@link kTAG_NID}, tagged as {@link kSEQUENCE_KEY_TAG}.
  *
  * The class implements the static method, {@link DefaultContainer()}, which, given a
  * database, will return the default tag container; it will use the
@@ -134,14 +134,14 @@ class COntologyTag extends CTag
 	 *			since there is no way to resolve them.
 	 *		<li>If the first element of the path is an {@link COntologyNode} instance, the
 	 *			latter must have its {@link kTAG_KIND} attribute set to
-	 *			{@link kKIND_NODE_TRAIT}.
+	 *			{@link kKIND_NODE_FEATURE}.
 	 *		<li>If the last element of the path is an {@link COntologyNode} instance, the
 	 *			latter must have its {@link kTAG_KIND} attribute set to
 	 *			{@link kKIND_NODE_SCALE}.
 	 *	 </ul>
 	 *	<li>{link COntologyTerm} instances will be accepted in any position.
-	 *	<li>{link COntologyTerm} instances must have their {@link kOFFSET_NID} attribute.
-	 *	<li>Any other data type will be interpreted as the term's {@link kOFFSET_NID} and
+	 *	<li>{link COntologyTerm} instances must have their {@link kTAG_NID} attribute.
+	 *	<li>Any other data type will be interpreted as the term's {@link kTAG_NID} and
 	 *		no verification will be performed.
 	 * </ul>
 	 *
@@ -152,7 +152,7 @@ class COntologyTag extends CTag
 	 *
 	 * @uses _AssertClass()
 	 *
-	 * @see kTAG_TAG_PATH
+	 * @see kTAG_PATH
 	 */
 	public function PushItem( $theValue )
 	{
@@ -174,9 +174,9 @@ class COntologyTag extends CTag
 					//
 					// Check native identifier.
 					//
-					if( $theValue->offsetExists( kOFFSET_NID ) )
+					if( $theValue->offsetExists( kTAG_NID ) )
 						return parent::PushItem(
-							$theValue->offsetGet( kOFFSET_NID ) );					// ==>
+							$theValue->offsetGet( kTAG_NID ) );					// ==>
 					
 					throw new Exception
 						( "Cannot set path element: "
@@ -195,8 +195,8 @@ class COntologyTag extends CTag
 			//
 			// Get element count.
 			//
-			$count = ( $this->offsetExists( kTAG_TAG_PATH ) )
-				   ? count( $this->offsetGet( kTAG_TAG_PATH ) )
+			$count = ( $this->offsetExists( kTAG_PATH ) )
+				   ? count( $this->offsetGet( kTAG_PATH ) )
 				   : 0;
 			
 			//
@@ -227,7 +227,7 @@ class COntologyTag extends CTag
 								//
 								// Check feature.
 								//
-								if( $theValue->Kind( kKIND_NODE_TRAIT ) !== NULL )
+								if( $theValue->Kind( kKIND_NODE_FEATURE ) !== NULL )
 									return parent::PushItem(
 										$theValue->offsetGet( kTAG_TERM ) );		// ==>
 								
@@ -241,7 +241,7 @@ class COntologyTag extends CTag
 							//
 							// Check last.
 							//
-							if( $count == (count( $this->offsetGet( kTAG_TAG_PATH ) ) - 1) )
+							if( $count == (count( $this->offsetGet( kTAG_PATH ) ) - 1) )
 							{
 								//
 								// Check scale.
@@ -305,15 +305,15 @@ class COntologyTag extends CTag
 	 * @access public
 	 * @return mixed				First element of the terms list, or <tt>NULL</tt>.
 	 *
-	 * @see kTAG_TAG_PATH
+	 * @see kTAG_PATH
 	 */
 	public function GetFeatureVertex()
 	{
 		//
 		// Check path.
 		//
-		if( $this->offsetExists( kTAG_TAG_PATH ) )
-			return $this[ kTAG_TAG_PATH ][ 0 ];										// ==>
+		if( $this->offsetExists( kTAG_PATH ) )
+			return $this[ kTAG_PATH ][ 0 ];										// ==>
 		
 		return NULL;																// ==>
 
@@ -340,19 +340,19 @@ class COntologyTag extends CTag
 	 * @access public
 	 * @return mixed				List of method nodes, or <tt>NULL</tt>.
 	 *
-	 * @see kTAG_TAG_PATH
+	 * @see kTAG_PATH
 	 */
 	public function GetMethodVertex()
 	{
 		//
 		// Check path.
 		//
-		if( $this->offsetExists( kTAG_TAG_PATH ) )
+		if( $this->offsetExists( kTAG_PATH ) )
 		{
 			//
 			// Check for methods.
 			//
-			if( ($count = count( $path = $this->offsetGet( kTAG_TAG_PATH ) )) >= 5 )
+			if( ($count = count( $path = $this->offsetGet( kTAG_PATH ) )) >= 5 )
 			{
 				//
 				// Init local storage.
@@ -394,16 +394,16 @@ class COntologyTag extends CTag
 	 * @access public
 	 * @return mixed				Last element of the terms list, or <tt>NULL</tt>.
 	 *
-	 * @see kTAG_TAG_PATH
+	 * @see kTAG_PATH
 	 */
 	public function GetScaleVertex()
 	{
 		//
 		// Check path.
 		//
-		if( $this->offsetExists( kTAG_TAG_PATH ) )
-			return $this[ kTAG_TAG_PATH ]
-						[count( $this[ kTAG_TAG_PATH ] ) - 1 ];						// ==>
+		if( $this->offsetExists( kTAG_PATH ) )
+			return $this[ kTAG_PATH ]
+						[count( $this[ kTAG_PATH ] ) - 1 ];						// ==>
 		
 		return NULL;																// ==>
 
@@ -667,7 +667,7 @@ class COntologyTag extends CTag
 			$query = $container->NewQuery();
 			$query->AppendStatement(
 				CQueryStatement::Equals(
-					kTAG_UID, $theIdentifier, kTYPE_BINARY ) );
+					kTAG_UID, $theIdentifier, kTYPE_BINARY_STRING ) );
 			$tag = $container->Query( $query, NULL, NULL, NULL, NULL, TRUE );
 			if( $tag === NULL )
 			{
@@ -677,7 +677,7 @@ class COntologyTag extends CTag
 				$query = $container->NewQuery();
 				$query->AppendStatement(
 					CQueryStatement::Equals(
-						kTAG_UID, md5( $theIdentifier, TRUE ), kTYPE_BINARY ) );
+						kTAG_UID, md5( $theIdentifier, TRUE ), kTYPE_BINARY_STRING ) );
 				$tag = $container->Query( $query, NULL, NULL, NULL, NULL, TRUE );
 			
 			} // Provided unique identifier doesn't match.
@@ -736,7 +736,7 @@ class COntologyTag extends CTag
 	 *
 	 * @throws Exception
 	 *
-	 * @see kTAG_TAG_PATH kTOKEN_INDEX_SEPARATOR
+	 * @see kTAG_PATH kTOKEN_INDEX_SEPARATOR
 	 */
 	protected function _index( CConnection $theConnection, $theModifiers )
 	{
@@ -744,7 +744,7 @@ class COntologyTag extends CTag
 		// Init local storage.
 		//
 		$identifier  = Array();
-		$path = $this->offsetGet( kTAG_TAG_PATH );
+		$path = $this->offsetGet( kTAG_PATH );
 		
 		//
 		// Iterate path elements.
@@ -786,7 +786,7 @@ class COntologyTag extends CTag
 	/**
 	 * <h4>Handle offset before setting it</h4>
 	 *
-	 * In this class we lock the {@link kTAG_TAG_PATH} attribute if the object is
+	 * In this class we lock the {@link kTAG_PATH} attribute if the object is
 	 * committed.
 	 *
 	 * @param reference			   &$theOffset			Offset.
@@ -798,14 +798,14 @@ class COntologyTag extends CTag
 	 *
 	 * @uses _IsCommitted()
 	 *
-	 * @see kTAG_TAG_PATH
+	 * @see kTAG_PATH
 	 */
 	protected function _Preset( &$theOffset, &$theValue )
 	{
 		//
 		// Lock path.
 		//
-		if( ($theOffset == kTAG_TAG_PATH)
+		if( ($theOffset == kTAG_PATH)
 		 && $this->_IsCommitted() )
 			throw new Exception
 				( "You cannot modify the [$theOffset] offset: "
@@ -827,7 +827,7 @@ class COntologyTag extends CTag
 	/**
 	 * <h4>Handle offset before unsetting it</h4>
 	 *
-	 * In this class we lock the {@link kTAG_TAG_PATH} attribute if the object is
+	 * In this class we lock the {@link kTAG_PATH} attribute if the object is
 	 * committed and the {@link kTAG_UID} in all cases.
 	 *
 	 * @param reference			   &$theOffset			Offset.
@@ -838,14 +838,14 @@ class COntologyTag extends CTag
 	 *
 	 * @uses _IsCommitted()
 	 *
-	 * @see kTAG_TAG_PATH
+	 * @see kTAG_PATH
 	 */
 	protected function _Preunset( &$theOffset )
 	{
 		//
 		// Lock path.
 		//
-		if( ($theOffset == kTAG_TAG_PATH)
+		if( ($theOffset == kTAG_PATH)
 		 && $this->_IsCommitted() )
 			throw new Exception
 				( "You cannot modify the [$theOffset] offset: "
@@ -879,7 +879,7 @@ class COntologyTag extends CTag
 	 * This method will use the result of the {@link _index()} method to set the global
 	 * identifier, {@link kTAG_GID}; the same value will be hashed and constitute the
 	 * unique identifier, {@link kTAG_UID}, while the native identifier,
-	 * {@link kOFFSET_NID}, will be set by the sequence number {@link kSEQUENCE_KEY_TAG}.
+	 * {@link kTAG_NID}, will be set by the sequence number {@link kSEQUENCE_KEY_TAG}.
 	 *
 	 * The parent method will then be called, which will ignore the global and native
 	 * identifiers, since they will have been set here.
@@ -888,6 +888,7 @@ class COntologyTag extends CTag
 	 * @param reference			   &$theModifiers		Commit options.
 	 *
 	 * @access protected
+	 * @return mixed
 	 *
 	 * @throws Exception
 	 *
@@ -895,7 +896,7 @@ class COntologyTag extends CTag
 	 * @uses _index()
 	 *
 	 * @see kSEQUENCE_KEY_TAG
-	 * @see kOFFSET_NID kTAG_GID kTAG_UID
+	 * @see kTAG_NID kTAG_GID kTAG_UID
 	 * @see kFLAG_PERSIST_INSERT kFLAG_PERSIST_REPLACE
 	 */
 	protected function _PrecommitIdentify( &$theConnection, &$theModifiers )
@@ -936,7 +937,7 @@ class COntologyTag extends CTag
 					//
 					// Convert binary string to container native format.
 					//
-					$container->UnserialiseData( $uid, kTYPE_BINARY );
+					$container->UnserialiseData( $uid, kTYPE_BINARY_STRING );
 					
 					//
 					// Check unique identifier.
@@ -958,9 +959,9 @@ class COntologyTag extends CTag
 			//
 			// Set native identifier.
 			//
-			if( ! $this->offsetExists( kOFFSET_NID ) )
+			if( ! $this->offsetExists( kTAG_NID ) )
 				$this->offsetSet(
-					kOFFSET_NID,
+					kTAG_NID,
 					static::ResolveContainer(
 						$theConnection, TRUE )
 							->NextSequence( kSEQUENCE_KEY_TAG, TRUE ) );
@@ -970,7 +971,7 @@ class COntologyTag extends CTag
 		//
 		// Call parent method.
 		//
-		parent::_PrecommitIdentify( $theConnection, $theModifiers );
+		return parent::_PrecommitIdentify( $theConnection, $theModifiers );			// ==>
 		
 	} // _PrecommitIdentify.
 		
@@ -992,8 +993,8 @@ class COntologyTag extends CTag
 	 * <h4>Update related objects after committing</h4>
 	 *
 	 * Once committed, the referenced feature, method and scale vertices will be updated
-	 * with the current tag's identifier in the respective {@link kTAG_REFS_TAG_FEATURE},
-	 * {@link kTAG_REFS_TAG_METHOD} and {@link kTAG_REFS_TAG_SCALE} attributes.
+	 * with the current tag's identifier in the respective {@link kTAG_FEATURES},
+	 * {@link kTAG_METHODS} and {@link kTAG_SCALES} attributes.
 	 *
 	 * When inserting a new tag, we add the tag reference, when deleting the tag we remove
 	 * it.
@@ -1007,7 +1008,7 @@ class COntologyTag extends CTag
 	 *
 	 * @uses _IsCommitted()
 	 *
-	 * @see kTAG_REFS_TAG_FEATURE, kTAG_REFS_TAG_METHOD, kTAG_REFS_TAG_SCALE
+	 * @see kTAG_FEATURES, kTAG_METHODS, kTAG_SCALES
 	 * @see kFLAG_PERSIST_INSERT kFLAG_PERSIST_REPLACE kFLAG_PERSIST_DELETE
 	 */
 	protected function _PostcommitRelated( &$theConnection, &$theModifiers )
@@ -1033,26 +1034,26 @@ class COntologyTag extends CTag
 			//
 			// Iterate path elements.
 			//
-			$path = $this->offsetGet( kTAG_TAG_PATH );
+			$path = $this->offsetGet( kTAG_PATH );
 			for( $i = 0; $i < count( $path ); $i += 2 )
 			{
 				//
 				// Handle feature vertex.
 				//
 				if( $i == 0 )
-					$tag = kTAG_REFS_TAG_FEATURE;
+					$tag = kTAG_FEATURES;
 				
 				//
 				// Handle scale vertex.
 				//
 				elseif( $i == (count( $path ) - 1) )
-					$tag = kTAG_REFS_TAG_SCALE;
+					$tag = kTAG_SCALES;
 				
 				//
 				// Handle method vertex.
 				//
 				else
-					$tag = kTAG_REFS_TAG_METHOD;
+					$tag = kTAG_METHODS;
 				
 				//
 				// Set tag reference.
@@ -1085,9 +1086,9 @@ class COntologyTag extends CTag
 	 * This method can be used to add or remove the current tag's reference from the
 	 * provided term. This method should be used whenever committing a new tag or when
 	 * deleting one: it will update the term's {@link kTAG_REFS_TAG} for terms used as
-	 * predicates, the {@link kTAG_REFS_TAG_FEATURE} for terms used as features or traits,
-	 * the {@link kTAG_REFS_TAG_METHOD} for terms used as methods and the
-	 * {@link kTAG_REFS_TAG_SCALE} for terms used as scales or units, the method will add
+	 * predicates, the {@link kTAG_FEATURES} for terms used as features or traits,
+	 * the {@link kTAG_METHODS} for terms used as methods and the
+	 * {@link kTAG_SCALES} for terms used as scales or units, the method will add
 	 * the corresponding reference when inserting a new tag and remove it when deleting the
 	 * tag.
 	 *
@@ -1112,8 +1113,8 @@ class COntologyTag extends CTag
 	 * @access protected
 	 * @return boolean				<tt>TRUE</tt> operation affected at least one object.
 	 *
-	 * @see kOFFSET_NID kTAG_REFS_TAG
-	 * @see kTAG_REFS_TAG_FEATURE kTAG_REFS_TAG_METHOD kTAG_REFS_TAG_SCALE
+	 * @see kTAG_NID kTAG_REFS_TAG
+	 * @see kTAG_FEATURES kTAG_METHODS kTAG_SCALES
 	 * @see kFLAG_PERSIST_MODIFY kFLAG_MODIFY_ADDSET kFLAG_MODIFY_PULL
 	 */
 	protected function _ReferenceInTerm( CConnection $theConnection,
@@ -1122,7 +1123,7 @@ class COntologyTag extends CTag
 		//
 		// Set modification criteria.
 		//
-		$criteria = array( $theTag => $this->offsetGet( kOFFSET_NID ) );
+		$criteria = array( $theTag => $this->offsetGet( kTAG_NID ) );
 		
 		//
 		// Handle add to set.

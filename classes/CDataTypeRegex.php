@@ -34,7 +34,7 @@ require_once( kPATH_MYWRAPPER_LIBRARY_CLASS."/CDataType.php" );
  * is as follows:
  *
  * <ul>
- *	<li><i>{@link kTAG_CUSTOM_TYPE}</i>: The constant {@link kTYPE_REGEX}.
+ *	<li><i>{@link kTAG_CUSTOM_TYPE}</i>: The constant {@link kTYPE_REGEX_STRING}.
  *	<li><i>{@link kTAG_CUSTOM_DATA}</i>: The regular expression string.
  * </ul>
  *
@@ -79,7 +79,7 @@ class CDataTypeRegex extends CDataType
 		//
 		// Load object.
 		//
-		$this->offsetSet( kTAG_CUSTOM_TYPE, kTYPE_REGEX );
+		$this->offsetSet( kTAG_CUSTOM_TYPE, kTYPE_REGEX_STRING );
 		$this->offsetSet( kTAG_CUSTOM_DATA, (string) $theData );
 	
 	} // Constructor.

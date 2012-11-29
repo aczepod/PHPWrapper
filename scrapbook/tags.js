@@ -34,7 +34,7 @@ var kTAG_LID							= '1';
  * Global unique identifier.
  *
  * This tag identifies the attribute that contains the global or full unique identifier.
- * This value will constitute the object's native key ({@link kOFFSET_NID}) in full or
+ * This value will constitute the object's native key ({@link kTAG_NID}) in full or
  * hashed format.
  */
 var kTAG_GID							= '2';
@@ -43,8 +43,8 @@ var kTAG_GID							= '2';
  * Unique identifier.
  *
  * This tag represents the hashed unique identifier of an object in which its
- * {@link kOFFSET_NID} is not related to the {@link kTAG_GID}. This is generally used
- * when the {@link kOFFSET_NID} is a sequence number.
+ * {@link kTAG_NID} is not related to the {@link kTAG_GID}. This is generally used
+ * when the {@link kTAG_NID} is a sequence number.
  */
 var kTAG_UID							= '21';
 
@@ -73,7 +73,7 @@ var kTAG_CATEGORY						= '12';
  *
  * This tag identifies the object kind or type, the offset is a set of enumerations that
  * define the kind or specific type of an object, these enumerations will be in the form of
- * native unique identifiers, {@link kOFFSET_NID}, of the terms that define the enumeration.
+ * native unique identifiers, {@link kTAG_NID}, of the terms that define the enumeration.
  */
 var kTAG_KIND							= '13';
 
@@ -82,7 +82,7 @@ var kTAG_KIND							= '13';
  *
  * This tag identifies the object data type, the offset is an enumerated scalar that defines
  * the specific data type of an object, this value will be in the form of the native unique
- * identifier, {@link kOFFSET_NID}, of the term that defines the enumeration.
+ * identifier, {@link kTAG_NID}, of the term that defines the enumeration.
  */
 var kTAG_TYPE							= '14';
 
@@ -94,7 +94,7 @@ var kTAG_TYPE							= '14';
  * Namespace.
  *
  * This tag is used as the offset for a namespace. By default this attribute contains the
- * native unique identifier, {@link kOFFSET_NID}, of the namespace object; if you want to
+ * native unique identifier, {@link kTAG_NID}, of the namespace object; if you want to
  * refer to the namespace code, this is not the offset to use.
  */
 var kTAG_NAMESPACE						= '3';
@@ -103,7 +103,7 @@ var kTAG_NAMESPACE						= '3';
  * Term.
  *
  * This tag identifies a reference to a term object, its value will be the native unique
- * identifier, {@link kOFFSET_NID}, of the referenced term.
+ * identifier, {@link kTAG_NID}, of the referenced term.
  */
 var kTAG_TERM							= '8';
 
@@ -113,7 +113,7 @@ var kTAG_TERM							= '8';
  * This tag identifies the reference to the subject vertex of a subject/predicate/object
  * triplet in a graph.
  */
-var kTAG_VERTEX_SUBJECT					= '18';
+var kTAG_SUBJECT					= '18';
 
 /**
  * Object reference.
@@ -121,7 +121,7 @@ var kTAG_VERTEX_SUBJECT					= '18';
  * This tag identifies the reference to the object vertex of a subject/predicate/object
  * triplet in a graph.
  */
-var kTAG_VERTEX_OBJECT					= '20';
+var kTAG_OBJECT					= '20';
 
 /**
  * Predicate reference.
@@ -144,19 +144,11 @@ var kTAG_SYNONYMS						= '7';
  *======================================================================================*/
 
 /**
- * Vertex terms.
- *
- * This tag identifies the offset that will contain the list of identifiers of the terms
- * referenced by the tag path's vertex elements.
- */
-var kTAG_VERTEX_TERMS					= '23';
-
-/**
  * Tag path.
  *
  * This tag identifies a list of items constituting the path or sequence of a tag.
  */
-var kTAG_TAG_PATH						= '22';
+var kTAG_PATH						= '22';
 
 /**
  * Namespace references.
@@ -164,7 +156,7 @@ var kTAG_TAG_PATH						= '22';
  * This tag identifies namespace references, the attribute contains the count of how many
  * times the term was referenced as a namespace.
  */
-var kTAG_REFS_NAMESPACE					= '9';
+var kTAG_NAMESPACE_REFS					= '9';
 
 /**
  * Node references.
@@ -172,7 +164,7 @@ var kTAG_REFS_NAMESPACE					= '9';
  * This tag identifies node references, the attribute contains the list of identifiers of
  * nodes that reference the current object.
  */
-var kTAG_REFS_NODE						= '10';
+var kTAG_NODES						= '10';
 
 /**
  * Tag references.
@@ -188,7 +180,7 @@ var kTAG_REFS_TAG						= '11';
  * This tag identifies feature tag references, the attribute contains the list of
  * identifiers of tags that reference the current node as a feature.
  */
-var kTAG_REFS_TAG_FEATURE				= '15';
+var kTAG_FEATURES				= '15';
 
 /**
  * Scale tag references.
@@ -196,7 +188,7 @@ var kTAG_REFS_TAG_FEATURE				= '15';
  * This tag identifies scale tag references, the attribute contains the list of identifiers
  * of tags that reference the current node as a scale.
  */
-var kTAG_REFS_TAG_SCALE					= '16';
+var kTAG_SCALES					= '16';
 
 /**
  * Edge references.
@@ -204,7 +196,7 @@ var kTAG_REFS_TAG_SCALE					= '16';
  * This tag identifies edge references, the attribute contains the list of identifiers of
  * edges that reference the current node.
  */
-var kTAG_REFS_EDGE						= '17';
+var kTAG_EDGES						= '17';
 
 /*=======================================================================================
  *	GENERIC ATTRIBUTES																	*

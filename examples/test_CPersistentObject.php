@@ -77,7 +77,7 @@ class MyClass extends CPersistentObject
 		{
 			$id = md5( $theIdentifier, TRUE );
 			self::ResolveContainer( $theConnection, TRUE )
-				->UnserialiseData( $id, kTYPE_BINARY );
+				->UnserialiseData( $id, kTYPE_BINARY_STRING );
 			
 			return $id;
 		}
@@ -237,7 +237,7 @@ try
 		echo( '<h4>Insert document</h4>' );
 		echo( '<h5>$status = $test->Insert( $server );</h5>' );
 		$status = $test->Insert( $server );
-		$id = $test[ kOFFSET_NID ];
+		$id = $test[ kTAG_NID ];
 		echo( 'Inited['.$test->inited().'] Dirty['.$test->dirty().'] Saved['.$test->committed().'] Encoded['.$test->encoded().']<br />' );
 		echo( 'Object<pre>' ); print_r( $test ); echo( '</pre>' );
 		echo( 'Status<pre>' ); print_r( $status ); echo( '</pre>' );
@@ -287,8 +287,8 @@ try
 		try
 		{
 			echo( '<h4>Update missing document</h4>' );
-			echo( '<h5>$test[ kOFFSET_NID ] = 99;</h5>' );
-			$test[ kOFFSET_NID ] = 99;
+			echo( '<h5>$test[ kTAG_NID ] = 99;</h5>' );
+			$test[ kTAG_NID ] = 99;
 			echo( '<h5>$test->Update( $server ); // Should raise an exception.</h5>' );
 			$test->Update( $server );
 			echo( '<h3><font color="red">Should have raised an exception</font></h3>' );
@@ -342,8 +342,8 @@ try
 		$test[ "B" ] = NULL;
 		echo( '<h5>$test[ "C" ] = NULL;</h5>' );
 		$test[ "C" ] = NULL;
-		echo( '<h5>$test[ kOFFSET_NID ] = "pippo";</h5>' );
-		$test[ kOFFSET_NID ] = "pippo";
+		echo( '<h5>$test[ kTAG_NID ] = "pippo";</h5>' );
+		$test[ kTAG_NID ] = "pippo";
 		echo( '<pre>' ); print_r( $test ); echo( '</pre>' );
 		echo( '<h5>$status = $test->Restore( $server );</h5>' );
 		$status = $test->Restore( $server );
@@ -356,8 +356,8 @@ try
 		// Restore existing document.
 		//
 		echo( '<h4>Reset existing document</h4>' );
-		echo( '<h5>$test[ kOFFSET_NID ] = 99;</h5>' );
-		$test[ kOFFSET_NID ] = 99;
+		echo( '<h5>$test[ kTAG_NID ] = 99;</h5>' );
+		$test[ kTAG_NID ] = 99;
 		echo( '<pre>' ); print_r( $test ); echo( '</pre>' );
 		echo( '<h5>$status = $test->Restore( $server );</h5>' );
 		$status = $test->Restore( $server );

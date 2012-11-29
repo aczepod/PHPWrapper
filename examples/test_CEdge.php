@@ -277,12 +277,12 @@ try
 	{
 		echo( '<h4>Insert edge with identifiers</h4>' );
 		echo( '<h4>Insert edge with identifiers</h4>' );
-		echo( '<h5>$edge->Subject( $nodeS[ kOFFSET_NID ] );</h5>' );
-		$edge->Subject( $nodeS[ kOFFSET_NID ] );
-		echo( '<h5>$edge->Predicate( $termC[ kOFFSET_NID ] );</h5>' );
-		$edge->Predicate( $termC[ kOFFSET_NID ] );
-		echo( '<h5>$edge->Object( $nodeO[ kOFFSET_NID ] );</h5>' );
-		$edge->Object( $nodeO[ kOFFSET_NID ] );
+		echo( '<h5>$edge->Subject( $nodeS[ kTAG_NID ] );</h5>' );
+		$edge->Subject( $nodeS[ kTAG_NID ] );
+		echo( '<h5>$edge->Predicate( $termC[ kTAG_NID ] );</h5>' );
+		$edge->Predicate( $termC[ kTAG_NID ] );
+		echo( '<h5>$edge->Object( $nodeO[ kTAG_NID ] );</h5>' );
+		$edge->Object( $nodeO[ kTAG_NID ] );
 		echo( '<h5>$status = $edge->Insert( $edge_container );</h5>' );
 		$status = $edge->Insert( $edge_container );
 		echo( '<h3><font color="red">Should have raised an exception</font></h3>' );

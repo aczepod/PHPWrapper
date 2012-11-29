@@ -29,7 +29,7 @@
  *
  * This state can be equated to an idle state.
  */
-define( "kMESSAGE_TYPE_IDLE",							0 );		// Idle.
+define( "kSTATUS_IDLE",									0 );		// Idle.
 
 /**
  * Notice.
@@ -39,7 +39,7 @@ define( "kMESSAGE_TYPE_IDLE",							0 );		// Idle.
  * A notice is an informative message that does not imply an error, nor a situation that
  * should be handled; it can be considered as statistical data.
  */
-define( "kMESSAGE_TYPE_NOTICE",							10 );		// Notice.
+define( "kSTATUS_NOTICE",								10 );		// Notice.
 
 /**
  * Message.
@@ -49,7 +49,7 @@ define( "kMESSAGE_TYPE_NOTICE",							10 );		// Notice.
  * A message is an informative message that is addressed to somebody, although it does not
  * imply an error or warning, it was issued to a receiving party.
  */
-define( "kMESSAGE_TYPE_MESSAGE",						20 );		// Message.
+define( "kSTATUS_MESSAGE",								20 );		// Message.
 
 /**
  * Warning.
@@ -60,7 +60,7 @@ define( "kMESSAGE_TYPE_MESSAGE",						20 );		// Message.
  * imply an error, they indicate a potential problem or an issue that should be addressed
  * at least at a later stage.
  */
-define( "kMESSAGE_TYPE_WARNING",						30 );		// Warning.
+define( "kSTATUS_WARNING",								30 );		// Warning.
 
 /**
  * Error.
@@ -71,30 +71,30 @@ define( "kMESSAGE_TYPE_WARNING",						30 );		// Warning.
  * not necessarily mean that the whole process is halted, but that the results of an
  * operation will not be as expected.
  */
-define( "kMESSAGE_TYPE_ERROR",							40 );		// Error.
+define( "kSTATUS_ERROR",								40 );		// Error.
 
 /**
  * Fatal.
  *
  * This code indicates a fatal error.
  *
- * Fatal errors are {@link kMESSAGE_TYPE_ERROR errors} that result in stopping the whole
+ * Fatal errors are {@link kSTATUS_ERROR errors} that result in stopping the whole
  * process: in this case the error will prevent other operations from being performed and
  * the whole process should be halted.
  */
-define( "kMESSAGE_TYPE_FATAL",							50 );		// Fatal.
+define( "kSTATUS_FATAL",								50 );		// Fatal.
 
 /**
  * Bug.
  *
  * This code indicates a bug.
  *
- * Bugs, as opposed to {@link kMESSAGE_TYPE_ERROR errors}, result from internal causes
+ * Bugs, as opposed to {@link kSTATUS_ERROR errors}, result from internal causes
  * independant from external factors. A bug indicates that an operation will never execute
- * as stated, it does not necessarily mean that it is {@link kMESSAGE_TYPE_FATAL fatal}, but
+ * as stated, it does not necessarily mean that it is {@link kSTATUS_FATAL fatal}, but
  * rather that the behaviour of an operation does not correspond to its declaration.
  */
-define( "kMESSAGE_TYPE_BUG",							60 );		// Bug.
+define( "kSTATUS_BUG",									60 );		// Bug.
 
 
 ?>

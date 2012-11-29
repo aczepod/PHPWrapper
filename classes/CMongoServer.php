@@ -87,7 +87,9 @@ class CMongoServer extends CServer
 		//
 		// Instantiate connection.
 		//
-		$connection = new Mongo( $theConnection, $theOptions );
+		$connection = ( class_exists( 'MongoClient' ) )
+					? new MongoClient( $theConnection, $theOptions )
+					: new Mongo( $theConnection, $theOptions );
 
 		//
 		// Parse and store URL components.
@@ -187,7 +189,8 @@ class CMongoServer extends CServer
 			//
 			// Check value type.
 			//
-			if( ! $theValue instanceof Mongo )
+			if( (! ($theValue instanceof Mongo))
+			 && (! ($theValue instanceof MongoClient)) )
 				throw new Exception
 					( "Invalid connection type",
 					  kERROR_PARAMETER );										// !@! ==>

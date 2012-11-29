@@ -307,8 +307,8 @@ try
 	// Add required cardinality.
 	//
 	echo( '<h4>Add required cardinality</h4>' );
-	echo( '<h5>$node->Type( kTYPE_CARD_REQUIRED, TRUE );</h5>' );
-	$node->Type( kTYPE_CARD_REQUIRED, TRUE );
+	echo( '<h5>$node->Type( kTYPE_REQUIRED, TRUE );</h5>' );
+	$node->Type( kTYPE_REQUIRED, TRUE );
 	echo( '<pre>' ); print_r( $node ); echo( '</pre>' );
 	echo( '<hr />' );
 	
@@ -316,8 +316,8 @@ try
 	// Add array cardinality.
 	//
 	echo( '<h4>Add array cardinality</h4>' );
-	echo( '<h5>$node->Type( kTYPE_CARD_ARRAY, TRUE );</h5>' );
-	$node->Type( kTYPE_CARD_ARRAY, TRUE );
+	echo( '<h5>$node->Type( kTYPE_ARRAY, TRUE );</h5>' );
+	$node->Type( kTYPE_ARRAY, TRUE );
 	echo( '<pre>' ); print_r( $node ); echo( '</pre>' );
 	echo( '<hr />' );
 	

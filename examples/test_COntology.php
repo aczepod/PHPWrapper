@@ -349,8 +349,8 @@ try
 	// Get ontology term with namespace identifier.
 	//
 	echo( '<h4>Get ontology term with namespace identifier</h4>' );
-	echo( '<h5>$term = $test->NewTerm( "ONTOLOGY", $namespace[ kOFFSET_NID ] );</h5>' );
-	$term = $test->NewTerm( "ONTOLOGY", $namespace[ kOFFSET_NID ] );
+	echo( '<h5>$term = $test->NewTerm( "ONTOLOGY", $namespace[ kTAG_NID ] );</h5>' );
+	$term = $test->NewTerm( "ONTOLOGY", $namespace[ kTAG_NID ] );
 	echo( '<pre>' ); print_r( $term ); echo( '</pre>' );
 	echo( '<hr />' );
 	echo( '<hr />' );
@@ -415,8 +415,8 @@ try
 	// Create method node 1.
 	//
 	echo( '<h4>Create method node 1</h4>' );
-	echo( '<h5>$node = $test->NewMethodNode( "METHOD1", $namespace[ kOFFSET_NID ], "Method 1", "This is the method term 1", "en" );</h5>' );
-	$method_node1 = $test->NewMethodNode( "METHOD1", $namespace[ kOFFSET_NID ], "Method 1", "This is the method term 1", "en" );
+	echo( '<h5>$node = $test->NewMethodNode( "METHOD1", $namespace[ kTAG_NID ], "Method 1", "This is the method term 1", "en" );</h5>' );
+	$method_node1 = $test->NewMethodNode( "METHOD1", $namespace[ kTAG_NID ], "Method 1", "This is the method term 1", "en" );
 	echo( '<pre>' ); print_r( $method_node1 ); echo( '</pre>' );
 	echo( '<hr />' );
 	
@@ -424,8 +424,8 @@ try
 	// Create method node 2.
 	//
 	echo( '<h4>Create method node 2</h4>' );
-	echo( '<h5>$node = $test->NewMethodNode( "METHOD2", $namespace[ kOFFSET_NID ], "Method 2", "This is the method term 2", "en" );</h5>' );
-	$method_node2 = $test->NewMethodNode( "METHOD2", $namespace[ kOFFSET_NID ], "Method 2", "This is the method term 2", "en" );
+	echo( '<h5>$node = $test->NewMethodNode( "METHOD2", $namespace[ kTAG_NID ], "Method 2", "This is the method term 2", "en" );</h5>' );
+	$method_node2 = $test->NewMethodNode( "METHOD2", $namespace[ kTAG_NID ], "Method 2", "This is the method term 2", "en" );
 	echo( '<pre>' ); print_r( $method_node2 ); echo( '</pre>' );
 	echo( '<hr />' );
 	
@@ -635,8 +635,8 @@ try
 	// Instantiate default term.
 	//
 	echo( '<h4>Instantiate default term</h4>' );
-	echo( '<h5>$term = $test->ResolveTerm( kOFFSET_TERM, NULL, TRUE );</h5>' );
-	$term = $test->ResolveTerm( kOFFSET_TERM, NULL, TRUE );
+	echo( '<h5>$term = $test->ResolveTerm( kTERM_TERM, NULL, TRUE );</h5>' );
+	$term = $test->ResolveTerm( kTERM_TERM, NULL, TRUE );
 	echo( '<pre>' ); print_r( $term ); echo( '</pre>' );
 	echo( '<hr />' );
 
@@ -678,8 +678,8 @@ try
 	// Resolve all edges whose subject is any type node.
 	//
 	echo( '<h4>Resolve all edges whose subject is any type node</h4>' );
-	echo( '<h5>$found = $test->ResolveEdge( $record[ kTAG_REFS_NODE ][ 0 ], NULL, NULL, TRUE );</h5>' );
-	$found = $test->ResolveEdge( $record[ kTAG_REFS_NODE ][ 0 ], NULL, NULL, TRUE );
+	echo( '<h5>$found = $test->ResolveEdge( $record[ kTAG_NODES ][ 0 ], NULL, NULL, TRUE );</h5>' );
+	$found = $test->ResolveEdge( $record[ kTAG_NODES ][ 0 ], NULL, NULL, TRUE );
 	echo( '<pre>' ); print_r( $found ); echo( '</pre>' );
 	echo( '<hr />' );
 	echo( '<hr />' );

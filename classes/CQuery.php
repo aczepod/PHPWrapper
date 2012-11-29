@@ -116,11 +116,11 @@ require_once( kPATH_MYWRAPPER_LIBRARY_CLASS."/CStatusDocument.php" );
  *				<li><i>{@link kTYPE_INT32}</i>: 32 bit signed integer.
  *				<li><i>{@link kTYPE_INT64}</i>: 64 bit signed integer.
  *				<li><i>{@link kTYPE_FLOAT}</i>: Floating point number.
- *				<li><i>{@link kTYPE_DATE}</i>: A date.
- *				<li><i>{@link kTYPE_TIME}</i>: A date and time.
+ *				<li><i>{@link kTYPE_DATE_STRING}</i>: A date.
+ *				<li><i>{@link kTYPE_TIME_STRING}</i>: A date and time.
  *				<li><i>{@link kTYPE_STAMP}</i>: A native timestamp.
  *				<li><i>{@link kTYPE_BOOLEAN}</i>: An <tt>on</tt>/<tt>off</tt> switch.
- *				<li><i>{@link kTYPE_BINARY}</i>: A binary string.
+ *				<li><i>{@link kTYPE_BINARY_STRING}</i>: A binary string.
  *			 </ul>
  *			<li><i>{@link kOFFSET_QUERY_DATA}</i>: The statement test data.
  *		 </ul>

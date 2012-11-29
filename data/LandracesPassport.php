@@ -67,7 +67,7 @@ require_once( 'LandracesPassport.inc.php' );
 		// Inform.
 		//
 		if( kOPTION_VERBOSE )
-			echo( "    - ".$term->GID()." [".$node[ kOFFSET_NID ]."]\n" );
+			echo( "    - ".$term->GID()." [".$node[ kTAG_NID ]."]\n" );
 
 	} // LoadLandraceOntology.
 
@@ -167,7 +167,7 @@ require_once( 'LandracesPassport.inc.php' );
 			// Inform.
 			//
 			if( kOPTION_VERBOSE )
-				echo( "    - ".$term->GID()." [".$node[ kOFFSET_NID ]."]\n" );
+				echo( "    - ".$term->GID()." [".$node[ kTAG_NID ]."]\n" );
 		}
 
 		//
@@ -216,7 +216,7 @@ require_once( 'LandracesPassport.inc.php' );
 			// Inform.
 			//
 			if( kOPTION_VERBOSE )
-				echo( "    - ".$term->GID()." [".$node[ kOFFSET_NID ]."]\n" );
+				echo( "    - ".$term->GID()." [".$node[ kTAG_NID ]."]\n" );
 		}
 
 	} // LoadLandraceCategories.
@@ -260,19 +260,19 @@ require_once( 'LandracesPassport.inc.php' );
 		$params = array(
 			array( 'code' => 'NICODE',
 				   'syn' => '1.1',
-				   'type' => array( kTYPE_STRING, kTYPE_CARD_REQUIRED ),
+				   'type' => array( kTYPE_STRING, kTYPE_REQUIRED ),
 				   'label' => "National Inventory code",
 				   'descr' => "Country code identifying the National in situ LR Inventory; the code of the country preparing the National Inventory. For country codes use the three-letter ISO 3166-1 (see: http://unstats.un.org/unsd/methods/m49/m49alpha.htm).",
 				   'examp' => array( 'NLD' ) ),
 			array( 'code' => 'NIENUMB',
 				   'syn' => '1.2',
-				   'type' => array( kTYPE_STRING, kTYPE_CARD_REQUIRED ),
+				   'type' => array( kTYPE_STRING, kTYPE_REQUIRED ),
 				   'label' => "National Inventory edition number",
 				   'descr' => "Code identifying the edition of the National in situ LR Inventory made up of the edition number and the year of publication.",
 				   'examp' => array( 'the first edition that is compiled in 2012 will be coded as 001/2012', 'the second edition that is compiled in 2014 will be coded 002/2014' ) ),
 			array( 'code' => 'INSTCODE',
 				   'syn' => '1.3',
-				   'type' => array( kTYPE_STRING, kTYPE_CARD_REQUIRED ),
+				   'type' => array( kTYPE_STRING, kTYPE_REQUIRED ),
 				   'label' => "Institute code",
 				   'descr' => "FAO WIEWS code of the institute (see: http://apps3.fao.org/wiews/institute_query.htm?i_l=EN) who is responsible at the national level for the production of the National in situ LR Inventory.",
 				   'examp' => array( 'NLD037' ) ) );
@@ -298,7 +298,7 @@ require_once( 'LandracesPassport.inc.php' );
 								// Additional attributes.
 								array( kTAG_SYNONYMS => array( $param[ 'code' ], $param[ 'syn' ] ),
 									   kTAG_EXAMPLES => $param[ 'examp' ] ) ),
-						array( kKIND_NODE_TRAIT, kKIND_NODE_SCALE ),
+						array( kKIND_NODE_FEATURE, kKIND_NODE_SCALE ),
 						$param[ 'type' ] ),				// Node data type.
 				$category );
 			
@@ -314,8 +314,8 @@ require_once( 'LandracesPassport.inc.php' );
 			//
 			if( kOPTION_VERBOSE )
 				echo( "    - ".$term->GID()." ["
-							  .$node[ kOFFSET_NID ]."] ("
-							  .$tag[ kOFFSET_NID ].")\n" );
+							  .$node[ kTAG_NID ]."] ("
+							  .$tag[ kTAG_NID ].")\n" );
 		}
 
 	} // LoadLandraceInventoryTraits.
@@ -359,19 +359,19 @@ require_once( 'LandracesPassport.inc.php' );
 		$params = array(
 			array( 'code' => 'GENUS',
 				   'syn' => '2.1',
-				   'type' => array( kTYPE_STRING, kTYPE_CARD_REQUIRED ),
+				   'type' => array( kTYPE_STRING, kTYPE_REQUIRED ),
 				   'label' => "Genus",
 				   'descr' => "Genus name for taxon, in Latin. Initial uppercase letter required.",
 				   'examp' => array( 'Vigna', 'Vicia' ) ),
 			array( 'code' => 'SPECIES',
 				   'syn' => '2.2',
-				   'type' => array( kTYPE_STRING, kTYPE_CARD_REQUIRED ),
+				   'type' => array( kTYPE_STRING, kTYPE_REQUIRED ),
 				   'label' => "Species",
 				   'descr' => "Specific epithet portion of the scientific name, in Latin, in lower case letters.",
 				   'examp' => array( 'unguiculata', 'faba' ) ),
 			array( 'code' => 'SPAUTHOR',
 				   'syn' => '2.3',
-				   'type' => array( kTYPE_STRING, kTYPE_CARD_REQUIRED ),
+				   'type' => array( kTYPE_STRING, kTYPE_REQUIRED ),
 				   'label' => "Species authority",
 				   'descr' => "The authority for the species name.",
 				   'examp' => array( '(L.) Wald.', 'L.' ) ),
@@ -389,13 +389,13 @@ require_once( 'LandracesPassport.inc.php' );
 				   'examp' => array( '(L.) Verdc.', '(hort. ex Alef.) Mansf.' ) ),
 			array( 'code' => 'TAXREF',
 				   'syn' => '2.6',
-				   'type' => array( kTYPE_STRING, kTYPE_CARD_ARRAY ),
+				   'type' => array( kTYPE_STRING, kTYPE_ARRAY ),
 				   'label' => "Taxonomic references",
 				   'descr' => "Taxonomy used by Inventory compiler to identify the material (e.g.. The Plant List, Euro+Med PlantBase, GRIN taxonomy, etc).",
 				   'examp' => array( 'The Plant List', 'GRIN Taxonomy' ) ),
 			array( 'code' => 'CROPNAME)',
 				   'syn' => '2.7',
-				   'type' => array( kTYPE_STRING, kTYPE_CARD_ARRAY ),
+				   'type' => array( kTYPE_STRING, kTYPE_ARRAY ),
 				   'label' => "Common crop name",
 				   'descr' => "Name of the crop in colloquial language, preferably English if any.",
 				   'examp' => array( 'yard–long-bean', 'tick-bean' ) ) );
@@ -421,7 +421,7 @@ require_once( 'LandracesPassport.inc.php' );
 								// Additional attributes.
 								array( kTAG_SYNONYMS => array( $param[ 'code' ], $param[ 'syn' ] ),
 									   kTAG_EXAMPLES => $param[ 'examp' ] ) ),
-						array( kKIND_NODE_TRAIT, kKIND_NODE_SCALE ),
+						array( kKIND_NODE_FEATURE, kKIND_NODE_SCALE ),
 						$param[ 'type' ] ),				// Node data type.
 				$category );
 			
@@ -437,8 +437,8 @@ require_once( 'LandracesPassport.inc.php' );
 			//
 			if( kOPTION_VERBOSE )
 				echo( "    - ".$term->GID()." ["
-							  .$node[ kOFFSET_NID ]."] ("
-							  .$tag[ kOFFSET_NID ].")\n" );
+							  .$node[ kTAG_NID ]."] ("
+							  .$tag[ kTAG_NID ].")\n" );
 		}
 
 	} // LoadLandraceTaxonomyTraits.
@@ -482,19 +482,19 @@ require_once( 'LandracesPassport.inc.php' );
 		$params = array(
 			array( 'code' => 'LRRECDATE',
 				   'syn' => '3.1',
-				   'type' => kTYPE_DATE,
+				   'type' => kTYPE_DATE_STRING,
 				   'label' => "Landrace in situ recording date",
 				   'descr' => "Date on which the LR was recorded in the current in situ Inventory, as YYYYMMDD. Missing data (MM or DD) should be indicated with zeros. Leading zeros are required.",
 				   'examp' => array( '19980000', '20020620' ) ),
 			array( 'code' => 'LRNUMB',
 				   'syn' => '3.2',
-				   'type' => array( kTYPE_STRING, kTYPE_CARD_REQUIRED ),
+				   'type' => array( kTYPE_STRING, kTYPE_REQUIRED ),
 				   'label' => "Landrace number",
 				   'descr' => "Unique progressive number which identifies the in situ LR in the Inventory, not to be duplicated (i.e. reassigned) for other LRs or the same LR that is cultivated by other farmers in the current Inventory. To be assigned by the institute which is responsible at the national level for the production of the National LR in situ Inventory.",
 				   'examp' => array( '00010' ) ),
 			array( 'code' => 'LRNAME',
 				   'syn' => '3.3',
-				   'type' => array( kTYPE_STRING, kTYPE_CARD_REQUIRED ),
+				   'type' => array( kTYPE_STRING, kTYPE_REQUIRED ),
 				   'label' => "Landrace local names",
 				   'descr' => "Local name/s of the LR in the colloquial language of the farm. Free text.",
 				   'examp' => array( 'fagiolina, cornetti, fagiolino dall’occhio' ) ),
@@ -526,7 +526,7 @@ require_once( 'LandracesPassport.inc.php' );
 								// Additional attributes.
 								array( kTAG_SYNONYMS => array( $param[ 'code' ], $param[ 'syn' ] ),
 									   kTAG_EXAMPLES => $param[ 'examp' ] ) ),
-						array( kKIND_NODE_TRAIT, kKIND_NODE_SCALE ),
+						array( kKIND_NODE_FEATURE, kKIND_NODE_SCALE ),
 						$param[ 'type' ] ),				// Node data type.
 				$category );
 			
@@ -542,8 +542,8 @@ require_once( 'LandracesPassport.inc.php' );
 			//
 			if( kOPTION_VERBOSE )
 				echo( "    - ".$term->GID()." ["
-							  .$node[ kOFFSET_NID ]."] ("
-							  .$tag[ kOFFSET_NID ].")\n" );
+							  .$node[ kTAG_NID ]."] ("
+							  .$tag[ kTAG_NID ].")\n" );
 		}
 
 	} // LoadLandraceIdentificationTraits.
@@ -606,7 +606,7 @@ require_once( 'LandracesPassport.inc.php' );
 				   'parent' => implode( kTOKEN_NAMESPACE_SEPARATOR,
 				   						array( KLR_SITE, 'COORD-FARM' ) ),
 				   'syn' => '4.5.1',
-				   'type' => array( kTYPE_STRING, kTYPE_CARD_REQUIRED ),
+				   'type' => array( kTYPE_STRING, kTYPE_REQUIRED ),
 				   'label' => "Latitude of farm site",
 				   'descr' => "Degrees (2 digits) minutes (2 digits), and seconds (2 digits) followed by N (North) or S (South). Every missing digit (minutes or seconds) should be indicated with a zero. Leading zeros are also required for figures that are lower than ten.",
 				   'examp' => array( '45° (i.e. 45 degrees), 4’ (i.e. 4 minutes) and unknown seconds North (Turin latitude) is coded as 450400N', '45°, 4’ and 8’’ (i.e. 8 seconds) North (Turin_Mole Antonelliana latitude) is coded as 450408N', '40° 25’ 6" N (Madrid) is coded as 402506N', '00° 13’ 23’’ S (Quito) is coded as 001323S' ) ),
@@ -614,7 +614,7 @@ require_once( 'LandracesPassport.inc.php' );
 				   'parent' => implode( kTOKEN_NAMESPACE_SEPARATOR,
 				   						array( KLR_SITE, 'COORD-FARM' ) ),
 				   'syn' => '4.5.1bis',
-				   'type' => array( kTYPE_FLOAT, kTYPE_CARD_REQUIRED ),
+				   'type' => array( kTYPE_FLOAT, kTYPE_REQUIRED ),
 				   'label' => "Latitude of farm site",
 				   'descr' => "Latitude expressed in decimal degrees. Degree measurements should be written with decimal places like 45.069031° with the degree symbol behind the decimals. Every missing digit should be indicated with a zero. Positive values are North of the Equator; negative values are South of the Equator.",
 				   'examp' => array( 'the same latitude of Turin_Mole Antonelliana reported above is coded as 45.069031°', 'the Madrid latitude reported above is coded as 40.418446°', 'the Quito latitude reported above is coded as -0.222900°' ) ),
@@ -622,7 +622,7 @@ require_once( 'LandracesPassport.inc.php' );
 				   'parent' => implode( kTOKEN_NAMESPACE_SEPARATOR,
 				   						array( KLR_SITE, 'COORD-FARM' ) ),
 				   'syn' => '4.5.2',
-				   'type' => array( kTYPE_STRING, kTYPE_CARD_REQUIRED ),
+				   'type' => array( kTYPE_STRING, kTYPE_REQUIRED ),
 				   'label' => "Longitude of farm site",
 				   'descr' => "Degrees (3 digits), minutes (2 digits), and seconds (2 digits) followed by E (East) or W (West). Every missing digit (minutes or seconds) should be indicated with a zero. Leading zeros are also required for figures lower than ten.",
 				   'examp' => array( '7° 41’ and unknown seconds E (Turin) is coded as 0074100E (2 zeros before the 7 degrees because longitude varies from 0 and 180 degrees and needs 3 digits)', '7° 41’ 36" E (Turin_Mole Antonelliana longitude) is coded as 0074135E', '3°42’ 51" W (Madrid) is coded as 0034251W', '78° 30’ 19’’ W (Quito) is coded as 0783019W' ) ),
@@ -630,7 +630,7 @@ require_once( 'LandracesPassport.inc.php' );
 				   'parent' => implode( kTOKEN_NAMESPACE_SEPARATOR,
 				   						array( KLR_SITE, 'COORD-FARM' ) ),
 				   'syn' => '4.5.2bis',
-				   'type' => array( kTYPE_FLOAT, kTYPE_CARD_REQUIRED ),
+				   'type' => array( kTYPE_FLOAT, kTYPE_REQUIRED ),
 				   'label' => "Longitude of farm site",
 				   'descr' => "Longitude expressed in decimal degrees. Degree measurements should be written with decimal places like 74.044636° with the degree symbol behind the decimals. Every missing digit should be indicated with a zero. Positive values are East of the Greenwich Meridian; negative values are West of the Greenwich Meridian.",
 				   'examp' => array( 'the same longitude of Turin_Mole Antonelliana reported above is coded as 7.693154°', 'the same longitude of Madrid reported above is coded as -3.714277°', 'the same longitude of Quito reported above is coded as -78.505386°' ) ),
@@ -661,7 +661,7 @@ require_once( 'LandracesPassport.inc.php' );
 			array( 'code' => 'FELEVATION',
 				   'parent' => KLR_SITE,
 				   'syn' => '4.6',
-				   'type' => array( kTYPE_INT32, kTYPE_CARD_REQUIRED ),
+				   'type' => array( kTYPE_INT32, kTYPE_REQUIRED ),
 				   'label' => "Elevation of farm site",
 				   'descr' => "Elevation of farm site expressed in meters above sea level. Negative values are allowed.",
 				   'examp' => array( '763', '-35' ) ),
@@ -669,7 +669,7 @@ require_once( 'LandracesPassport.inc.php' );
 				   'parent' => implode( kTOKEN_NAMESPACE_SEPARATOR,
 				   						array( KLR_SITE, 'COORD-LR' ) ),
 				   'syn' => '4.7.1',
-				   'type' => array( kTYPE_STRING, kTYPE_CARD_REQUIRED ),
+				   'type' => array( kTYPE_STRING, kTYPE_REQUIRED ),
 				   'label' => "Latitude of LR site",
 				   'descr' => "Degrees (2 digits) minutes (2 digits), and seconds (2 digits) followed by N (North) or S (South).",
 				   'examp' => array( '45° (i.e. 45 degrees), 4’ (i.e. 4 minutes) and unknown seconds North (Turin latitude) is coded as 450400N', '45°, 4’ and 8’’ (i.e. 8 seconds) North (Turin_Mole Antonelliana latitude) is coded as 450408N', '40° 25’ 6" N (Madrid) is coded as 402506N', '00° 13’ 23’’ S (Quito) is coded as 001323S' ) ),
@@ -677,7 +677,7 @@ require_once( 'LandracesPassport.inc.php' );
 				   'parent' => implode( kTOKEN_NAMESPACE_SEPARATOR,
 				   						array( KLR_SITE, 'COORD-LR' ) ),
 				   'syn' => '4.7.1bis',
-				   'type' => array( kTYPE_FLOAT, kTYPE_CARD_REQUIRED ),
+				   'type' => array( kTYPE_FLOAT, kTYPE_REQUIRED ),
 				   'label' => "Latitude of LR site",
 				   'descr' => "Latitude expressed in decimal degrees.",
 				   'examp' => array( 'the same latitude of Turin_Mole Antonelliana reported above is coded as 45.069031°', 'the Madrid latitude reported above is coded as 40.418446°', 'the Quito latitude reported above is coded as -0.222900°' ) ),
@@ -685,7 +685,7 @@ require_once( 'LandracesPassport.inc.php' );
 				   'parent' => implode( kTOKEN_NAMESPACE_SEPARATOR,
 				   						array( KLR_SITE, 'COORD-LR' ) ),
 				   'syn' => '4.7.2',
-				   'type' => array( kTYPE_STRING, kTYPE_CARD_REQUIRED ),
+				   'type' => array( kTYPE_STRING, kTYPE_REQUIRED ),
 				   'label' => "Longitude of LR site",
 				   'descr' => "Degrees (3 digits), minutes (2 digits), and seconds (2 digits) followed by E (East) or W (West).",
 				   'examp' => array( '7° 41’ and unknown seconds E (Turin) is coded as 0074100E (2 zeros before the 7 degrees because longitude varies from 0 and 180 degrees and needs 3 digits)', '7° 41’ 36" E (Turin_Mole Antonelliana longitude) is coded as 0074135E', '3°42’ 51" W (Madrid) is coded as 0034251W', '78° 30’ 19’’ W (Quito) is coded as 0783019W' ) ),
@@ -693,7 +693,7 @@ require_once( 'LandracesPassport.inc.php' );
 				   'parent' => implode( kTOKEN_NAMESPACE_SEPARATOR,
 				   						array( KLR_SITE, 'COORD-LR' ) ),
 				   'syn' => '4.7.2bis',
-				   'type' => array( kTYPE_FLOAT, kTYPE_CARD_REQUIRED ),
+				   'type' => array( kTYPE_FLOAT, kTYPE_REQUIRED ),
 				   'label' => "Longitude of LR site",
 				   'descr' => "Longitude expressed in decimal degrees.",
 				   'examp' => array( 'the same longitude of Turin_Mole Antonelliana reported above is coded as 7.693154°', 'the same longitude of Madrid reported above is coded as -3.714277°', 'the same longitude of Quito reported above is coded as -78.505386°' ) ),
@@ -724,7 +724,7 @@ require_once( 'LandracesPassport.inc.php' );
 			array( 'code' => 'LRSELEVATION',
 				   'parent' => KLR_SITE,
 				   'syn' => '4.8',
-				   'type' => array( kTYPE_INT32, kTYPE_CARD_REQUIRED ),
+				   'type' => array( kTYPE_INT32, kTYPE_REQUIRED ),
 				   'label' => "Elevation of LR site",
 				   'descr' => "Elevation of LR site expressed in meters above sea level. Negative values are allowed.",
 				   'examp' => array( '763', '-35' ) ) );
@@ -761,7 +761,7 @@ require_once( 'LandracesPassport.inc.php' );
 								// Additional attributes.
 								array( kTAG_SYNONYMS => array( $param[ 'code' ], $param[ 'syn' ] ),
 									   kTAG_EXAMPLES => $param[ 'examp' ] ) ),
-						array( kKIND_NODE_TRAIT, kKIND_NODE_SCALE ),
+						array( kKIND_NODE_FEATURE, kKIND_NODE_SCALE ),
 						$param[ 'type' ] ),				// Node data type.
 				$category );
 			
@@ -777,8 +777,8 @@ require_once( 'LandracesPassport.inc.php' );
 			//
 			if( kOPTION_VERBOSE )
 				echo( "    - ".$term->GID()." ["
-							  .$node[ kOFFSET_NID ]."] ("
-							  .$tag[ kOFFSET_NID ].")\n" );
+							  .$node[ kTAG_NID ]."] ("
+							  .$tag[ kTAG_NID ].")\n" );
 		}
 
 		//
@@ -850,7 +850,7 @@ require_once( 'LandracesPassport.inc.php' );
 			// Inform.
 			//
 			if( kOPTION_VERBOSE )
-				echo( "    - ".$term->GID()." [".$node[ kOFFSET_NID ]."]\n" );
+				echo( "    - ".$term->GID()." [".$node[ kTAG_NID ]."]\n" );
 		}
 
 	} // LoadLandraceSiteTraits.
@@ -942,7 +942,7 @@ require_once( 'LandracesPassport.inc.php' );
 								// Additional attributes.
 								array( kTAG_SYNONYMS => array( $param[ 'code' ], $param[ 'syn' ] ),
 									   kTAG_EXAMPLES => $param[ 'examp' ] ) ),
-						array( kKIND_NODE_TRAIT, kKIND_NODE_SCALE ),
+						array( kKIND_NODE_FEATURE, kKIND_NODE_SCALE ),
 						$param[ 'type' ] ),				// Node data type.
 				$category );
 			
@@ -958,8 +958,8 @@ require_once( 'LandracesPassport.inc.php' );
 			//
 			if( kOPTION_VERBOSE )
 				echo( "    - ".$term->GID()." ["
-							  .$node[ kOFFSET_NID ]."] ("
-							  .$tag[ kOFFSET_NID ].")\n" );
+							  .$node[ kTAG_NID ]."] ("
+							  .$tag[ kTAG_NID ].")\n" );
 		}
 
 		//
@@ -1046,7 +1046,7 @@ require_once( 'LandracesPassport.inc.php' );
 			// Inform.
 			//
 			if( kOPTION_VERBOSE )
-				echo( "    - ".$term->GID()." [".$node[ kOFFSET_NID ]."]\n" );
+				echo( "    - ".$term->GID()." [".$node[ kTAG_NID ]."]\n" );
 		}
 
 	} // LoadLandraceMaintainerTraits.
@@ -1087,7 +1087,7 @@ require_once( 'LandracesPassport.inc.php' );
 			array( 'code' => 'LRCULTPER',
 				   'parent' => KLR_LANDRACE,
 				   'syn' => '6.2',
-				   'type' => array( kTYPE_ENUM, kTYPE_CARD_REQUIRED ),
+				   'type' => array( kTYPE_ENUM, kTYPE_REQUIRED ),
 				   'label' => "Landrace cultivation period",
 				   'descr' => "The length of time the LR was cultivated on that farm as from farmer memory, i.e. cultivated for an unknown number of years, over 50 years, less than 50 years; in the latter case it can be specified the time.",
 				   'examp' => array( '20' ) ),
@@ -1101,7 +1101,7 @@ require_once( 'LandracesPassport.inc.php' );
 			array( 'code' => 'LRSSS',
 				   'parent' => KLR_LANDRACE,
 				   'syn' => '6.4',
-				   'type' => array( kTYPE_ENUM, kTYPE_CARD_REQUIRED ),
+				   'type' => array( kTYPE_ENUM, kTYPE_REQUIRED ),
 				   'label' => "Landrace seed/propagation material supply system",
 				   'descr' => "From where the seed (or propagation material in general) initially came, as from farmer statement.",
 				   'examp' => array( '20' ) ),
@@ -1208,7 +1208,7 @@ require_once( 'LandracesPassport.inc.php' );
 								// Additional attributes.
 								array( kTAG_SYNONYMS => array( $param[ 'code' ], $param[ 'syn' ] ),
 									   kTAG_EXAMPLES => $param[ 'examp' ] ) ),
-						array( kKIND_NODE_TRAIT, kKIND_NODE_SCALE ),
+						array( kKIND_NODE_FEATURE, kKIND_NODE_SCALE ),
 						$param[ 'type' ] ),				// Node data type.
 				$category );
 			
@@ -1224,8 +1224,8 @@ require_once( 'LandracesPassport.inc.php' );
 			//
 			if( kOPTION_VERBOSE )
 				echo( "    - ".$term->GID()." ["
-							  .$node[ kOFFSET_NID ]."] ("
-							  .$tag[ kOFFSET_NID ].")\n" );
+							  .$node[ kTAG_NID ]."] ("
+							  .$tag[ kTAG_NID ].")\n" );
 		}
 
 		//
@@ -2034,7 +2034,7 @@ require_once( 'LandracesPassport.inc.php' );
 			// Inform.
 			//
 			if( kOPTION_VERBOSE )
-				echo( "    - ".$term->GID()." [".$node[ kOFFSET_NID ]."]\n" );
+				echo( "    - ".$term->GID()." [".$node[ kTAG_NID ]."]\n" );
 		}
 
 	} // LoadLandraceLandraceTraits.
@@ -2147,7 +2147,7 @@ require_once( 'LandracesPassport.inc.php' );
 								// Additional attributes.
 								array( kTAG_SYNONYMS => array( $param[ 'code' ], $param[ 'syn' ] ),
 									   kTAG_EXAMPLES => $param[ 'examp' ] ) ),
-						array( kKIND_NODE_TRAIT, kKIND_NODE_SCALE ),
+						array( kKIND_NODE_FEATURE, kKIND_NODE_SCALE ),
 						$param[ 'type' ] ),				// Node data type.
 				$category );
 			
@@ -2163,8 +2163,8 @@ require_once( 'LandracesPassport.inc.php' );
 			//
 			if( kOPTION_VERBOSE )
 				echo( "    - ".$term->GID()." ["
-							  .$node[ kOFFSET_NID ]."] ("
-							  .$tag[ kOFFSET_NID ].")\n" );
+							  .$node[ kTAG_NID ]."] ("
+							  .$tag[ kTAG_NID ].")\n" );
 		}
 
 		//
@@ -2279,7 +2279,7 @@ require_once( 'LandracesPassport.inc.php' );
 			// Inform.
 			//
 			if( kOPTION_VERBOSE )
-				echo( "    - ".$term->GID()." [".$node[ kOFFSET_NID ]."]\n" );
+				echo( "    - ".$term->GID()." [".$node[ kTAG_NID ]."]\n" );
 		}
 
 	} // LoadLandraceMonitoringTraits.
@@ -2349,7 +2349,7 @@ require_once( 'LandracesPassport.inc.php' );
 								// Additional attributes.
 								array( kTAG_SYNONYMS => array( $param[ 'code' ], $param[ 'syn' ] ),
 									   kTAG_EXAMPLES => $param[ 'examp' ] ) ),
-						array( kKIND_NODE_TRAIT, kKIND_NODE_SCALE ),
+						array( kKIND_NODE_FEATURE, kKIND_NODE_SCALE ),
 						$param[ 'type' ] ),				// Node data type.
 				$root );
 			
@@ -2365,8 +2365,8 @@ require_once( 'LandracesPassport.inc.php' );
 			//
 			if( kOPTION_VERBOSE )
 				echo( "    - ".$term->GID()." ["
-							  .$node[ kOFFSET_NID ]."] ("
-							  .$tag[ kOFFSET_NID ].")\n" );
+							  .$node[ kTAG_NID ]."] ("
+							  .$tag[ kTAG_NID ].")\n" );
 		}
 
 	} // LoadLandraceRemarkTraits.

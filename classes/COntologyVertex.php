@@ -3,8 +3,8 @@
 /**
  * <i>COntologyVertex</i> class definition.
  *
- * This file contains the class definition of <b>COntologyVertex</b> which represents the
- * ancestor of ontology node classes.
+ * This file contains the class definition of <b>COntologyVertex</b> which extends its
+ * parent class to include attributes from the referenced term.
  *
  *	@package	MyWrapper
  *	@subpackage	Ontology
@@ -29,22 +29,20 @@ require_once( kPATH_MYWRAPPER_LIBRARY_CLASS."/COntologyNode.php" );
 /**
  * <h4>Ontology vertex object</h4>
  *
- * This class collects the {@link COntologyNode} attributes and the referenced
- * {@link COntologyTerm} attributes into a single object that has the same functionality as
- * this class ancestor, {@link COntologyNode}.
+ * This class extends the {@link COntologyNode} class by including attributes of the
+ * referenced {@link COntologyTerm} in the object. This will allow searching for nodes
+ * using term attributes without needing to do indirections.
  *
- * When inserting a new object, this class will first load all the attributes of the
- * referenced {@link COntologyTerm}, then it will load the current node's attributes,
- * overwriting eventual matching attributes.
+ * When inserting a new object, a selection of term attributes will first be copied to the
+ * current object, then the node attributes will be copied, in case of conflicting
+ * attributes it will be the node attribute that will overwrite the term attribute.
  *
- * The reason to have this class is be able to search nodes using term attributes without
- * needing to join the two containers.
- *
- * Because of this behaviour one should not update the object once it has been inserted,
- * rather, one should modify its attributes, since once the term and node properties are
- * mixed, it becomes difficult to discern to which term or node they belong.
+ * We use the following term attributes: {@link kTAG_LID}, {@link kTAG_GID},
+ * {@link kTAG_LABEL} and {@link kTAG_DESCRIPTION}.
  *
  * All other functionalities are identical to the parent class.
+ *
+ * Note that this class should be implemented using PHP traits, this is a to-do.
  *
  *	@package	MyWrapper
  *	@subpackage	Ontology
@@ -62,70 +60,48 @@ class COntologyVertex extends COntologyNode
 
 	 
 	/*===================================================================================
-	 *	_PrecommitIdentify																*
+	 *	_PrecommitRelated																*
 	 *==================================================================================*/
 
 	/**
-	 * <h4>Determine the identifier before committing</h4>
+	 * <h4>Handle embedded or related objects before committing</h4>
 	 *
 	 * We overload this method to compile the object's attributes, we first load the related
-	 * term attributes, then we load the current node's attributes.
+	 * term attributes, then we load the current node's attributes using the
+	 * {@link _LoadTermAttributes()} method.
 	 *
-	 * We do not load the term's {@link kTAG_NAMESPACE} attribute.
-	 *
-	 * This operation is done before calling the parent method and this method will do
+	 * This operation is done after calling the parent method and this method will do
 	 * nothing when deleting.
 	 *
 	 * @param reference			   &$theConnection		Server, database or container.
 	 * @param reference			   &$theModifiers		Commit options.
 	 *
 	 * @access protected
+	 * @return mixed
 	 *
-	 * @see kOFFSET_NID kSEQUENCE_KEY_NODE
-	 * @see kFLAG_PERSIST_INSERT kFLAG_PERSIST_REPLACE
+	 * @uses LoadTerm()
+	 *
+	 * @see kTAG_TERM
 	 */
-	protected function _PrecommitIdentify( &$theConnection, &$theModifiers )
+	protected function _PrecommitRelated( &$theConnection, &$theModifiers )
 	{
-		//
-		// Handle insert or replace.
-		//
-		if( (($theModifiers & kFLAG_PERSIST_MASK) == kFLAG_PERSIST_INSERT)
-		 || (($theModifiers & kFLAG_PERSIST_MASK) == kFLAG_PERSIST_REPLACE) )
-		{
-			//
-			// Init local storage.
-			//
-			$properties = Array();
-			$excluded = array( kOFFSET_NID, kTAG_NAMESPACE );
-			
-			//
-			// Iterate term attributes.
-			//
-			foreach( $this->mTerm as $key => $value )
-			{
-				if( ! in_array( $key, $excluded ) )
-					$properties[ $key ] = $value;
-			}
-			
-			//
-			// Iterate node attributes.
-			//
-			foreach( $this as $key => $value )
-				$properties[ $key ] = $value;
-			
-			//
-			// Replace attributes.
-			//
-			$this->exchangeArray( $properties );
-		
-		} // Insert or replace.
-	
 		//
 		// Call parent method.
 		//
-		parent::_PrecommitIdentify( $theConnection, $theModifiers );
+		$status = parent::_PrecommitRelated( $theConnection, $theModifiers );
+		if( $status !== NULL )
+			return $status;															// ==>
 		
-	} // _PrecommitIdentify.
+		//
+		// Not deleting.
+		//
+		if( ! ($theModifiers & kFLAG_PERSIST_DELETE) )
+			$this->_LoadTermAttributes(
+				array( kTAG_LID, kTAG_GID, kTAG_LABEL, kTAG_DESCRIPTION ) );
+		
+		return NULL;																// ==>
+	
+	} // _PrecommitRelated.
 
 	 
 

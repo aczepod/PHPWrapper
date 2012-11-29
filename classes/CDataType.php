@@ -57,9 +57,9 @@ require_once( kPATH_MYWRAPPER_LIBRARY_DEFINE."/Tags.inc.php" );
  *		but for MongoDB databases it will be converted into their native data type.
  *	<li><i>{@link kTYPE_STAMP}</i>: Time stamp, we create this type to have a standard way
  *		of representing a time-stamp.
- *	<li><i>{@link kTYPE_BINARY}</i>: Binary string, binary strings are supported by PHP, but
+ *	<li><i>{@link kTYPE_BINARY_STRING}</i>: Binary string, binary strings are supported by PHP, but
  *		they must be encoded for transport over the network or for storing in databases.
- *	<li><i>{@link kTYPE_REGEX}</i>: Regular expression query.
+ *	<li><i>{@link kTYPE_REGEX_STRING}</i>: Regular expression query.
  * </ul>
  *
  * Other specialised data types are:
@@ -328,12 +328,12 @@ abstract class CDataType extends CDocument
 							break;
 					
 						case 'MongoRegex':
-							$theType = kTYPE_REGEX;
+							$theType = kTYPE_REGEX_STRING;
 							$theElement = new CDataTypeRegex( $theElement );
 							break;
 					
 						case 'MongoBinData':
-							$theType = kTYPE_BINARY;
+							$theType = kTYPE_BINARY_STRING;
 							$theElement = new CDataTypeBinary( $theElement->bin );
 							break;
 					
@@ -356,7 +356,7 @@ abstract class CDataType extends CDocument
 							break;
 						
 						case 'CDataTypeBinary':
-							$theType = kTYPE_BINARY;
+							$theType = kTYPE_BINARY_STRING;
 							break;
 						
 						case 'CDataTypeMongoCode':
@@ -368,11 +368,11 @@ abstract class CDataType extends CDocument
 							break;
 						
 						case 'CDataTypeRegex':
-							$theType = kTYPE_REGEX;
+							$theType = kTYPE_REGEX_STRING;
 							break;
 						
 						case 'CDataTypeBinary':
-							$theType = kTYPE_BINARY;
+							$theType = kTYPE_BINARY_STRING;
 							break;
 						
 						default:
@@ -438,11 +438,11 @@ abstract class CDataType extends CDocument
 						$theElement = (double) $theElement;
 						break;
 					
-					case kTYPE_DATE:
+					case kTYPE_DATE_STRING:
 						$theElement = (string) $theElement;
 						break;
 					
-					case kTYPE_TIME:
+					case kTYPE_TIME_STRING:
 						$theType = kTYPE_STAMP;
 						$theElement = new CDataTypeStamp( $theElement );
 						break;
@@ -455,11 +455,11 @@ abstract class CDataType extends CDocument
 						$theElement = ( $theElement ) ? 1 : 0;
 						break;
 					
-					case kTYPE_BINARY:
+					case kTYPE_BINARY_STRING:
 						$theElement = new CDataTypeBinary( $theElement );
 						break;
 					
-					case kTYPE_REGEX:
+					case kTYPE_REGEX_STRING:
 						$theElement = new CDataTypeRegex( $theElement );
 						break;
 					
@@ -474,7 +474,7 @@ abstract class CDataType extends CDocument
 					default:
 						throw new CException( "Unsupported data type",
 											  kERROR_UNSUPPORTED,
-											  kMESSAGE_TYPE_ERROR,
+											  kSTATUS_ERROR,
 											  array( 'Type' => $theType ) );		// !@! ==>
 
 				} // Parsing data type.

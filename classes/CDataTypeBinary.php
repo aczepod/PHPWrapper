@@ -33,7 +33,7 @@ require_once( kPATH_MYWRAPPER_LIBRARY_CLASS."/CDataType.php" );
  * its offsets:
  *
  * <ul>
- *	<li><i>{@link kTAG_CUSTOM_TYPE}</i>: The constant {@link kTYPE_BINARY}.
+ *	<li><i>{@link kTAG_CUSTOM_TYPE}</i>: The constant {@link kTYPE_BINARY_STRING}.
  *	<li><i>{@link kTAG_CUSTOM_DATA}</i>: The following structure:
  *	 <ul>
  *		<li><i>{@link kTYPE_BINARY_STRING}</i>: The binary string in hexadecimal.
@@ -70,7 +70,7 @@ class CDataTypeBinary extends CDataType
 	/**
 	 * Instantiate class.
 	 *
-	 * We overload the parent constructor to set the default {@link kTYPE_BINARY} and to set
+	 * We overload the parent constructor to set the default {@link kTYPE_BINARY_STRING} and to set
 	 * the binary string into the {@link kTAG_CUSTOM_DATA} offset.
 	 *
 	 * @param mixed					$theData			Custom data.
@@ -89,7 +89,7 @@ class CDataTypeBinary extends CDataType
 		//
 		// Load object.
 		//
-		$this->offsetSet( kTAG_CUSTOM_TYPE, kTYPE_BINARY );
+		$this->offsetSet( kTAG_CUSTOM_TYPE, kTYPE_BINARY_STRING );
 		$this->offsetSet( kTAG_CUSTOM_DATA, bin2hex( (string) $theData ) );
 	
 	} // Constructor.

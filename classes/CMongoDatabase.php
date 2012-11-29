@@ -112,7 +112,8 @@ class CMongoDatabase extends CDatabase
 				//
 				// Check Mongo server class.
 				//
-				if( $theConnection instanceof Mongo )
+				if( ($theConnection instanceof Mongo)
+				 || ($theConnection instanceof MongoClient) )
 					parent::__construct
 						( $theConnection->selectDB( (string) $theOptions ) );
 				

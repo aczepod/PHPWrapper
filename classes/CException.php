@@ -49,13 +49,13 @@ require_once( kPATH_MYWRAPPER_LIBRARY_DEFINE."/Status.inc.php" );
  * <i>error</i>, <i>warning</i>, etc. You are free to set any value, but in this library we
  * support the following standard:
  * <ul>
- *	<li><b>{@link kMESSAGE_TYPE_IDLE Idle}</b>: Idle state.
- *	<li><b>{@link kMESSAGE_TYPE_NOTICE Notice}</b>: Statistical information or message.
- *	<li><b>{@link kMESSAGE_TYPE_MESSAGE Message}</b>: A message.
- *	<li><b>{@link kMESSAGE_TYPE_WARNING Warning}</b>: A warning.
- *	<li><b>{@link kMESSAGE_TYPE_ERROR Error}</b>: An error.
- *	<li><b>{@link kMESSAGE_TYPE_FATAL Fatal}</b>: A fatal error.
- *	<li><b>{@link kMESSAGE_TYPE_BUG Bug}</b>: A bug.
+ *	<li><b>{@link kSTATUS_IDLE Idle}</b>: Idle state.
+ *	<li><b>{@link kSTATUS_NOTICE Notice}</b>: Statistical information or message.
+ *	<li><b>{@link kSTATUS_MESSAGE Message}</b>: A message.
+ *	<li><b>{@link kSTATUS_WARNING Warning}</b>: A warning.
+ *	<li><b>{@link kSTATUS_ERROR Error}</b>: An error.
+ *	<li><b>{@link kSTATUS_FATAL Fatal}</b>: A fatal error.
+ *	<li><b>{@link kSTATUS_BUG Bug}</b>: A bug.
  * </ul>
  *
  * {@link References() References} represent a list of reference values structured as an
@@ -114,14 +114,14 @@ class CException extends Exception
 	 *	<li><b>$theSeverity</b>: This parameter holds {@link Severity() the} exception
 	 *		type, level or severity:
 	 *	 <ul>
-	 *		<li><i>{@link kMESSAGE_TYPE_IDLE}</i>: This indicates an idle state.
-	 *		<li><i>{@link kMESSAGE_TYPE_NOTICE}</i>: This indicates an informative note or
+	 *		<li><i>{@link kSTATUS_IDLE}</i>: This indicates an idle state.
+	 *		<li><i>{@link kSTATUS_NOTICE}</i>: This indicates an informative note or
 	 *			message.
-	 *		<li><i>{@link kMESSAGE_TYPE_WARNING}</i>: This indicates a warning.
-	 *		<li><i>{@link kMESSAGE_TYPE_ERROR}</i>: This indicates an error.
-	 *		<li><i>{@link kMESSAGE_TYPE_FATAL}</i>: This indicates a fatal error, in general
+	 *		<li><i>{@link kSTATUS_WARNING}</i>: This indicates a warning.
+	 *		<li><i>{@link kSTATUS_ERROR}</i>: This indicates an error.
+	 *		<li><i>{@link kSTATUS_FATAL}</i>: This indicates a fatal error, in general
 	 *			this should halt program execution.
-	 *		<li><i>{@link kMESSAGE_TYPE_BUG}</i>: This indicates a bug, such exceptions
+	 *		<li><i>{@link kSTATUS_BUG}</i>: This indicates a bug, such exceptions
 	 *			should be logged and forwarded to developers.
 	 *	 </ul>
 	 *	<li><b>$theReferences</b>: This parameter holds the exception's references
@@ -238,22 +238,22 @@ class CException extends Exception
 					{
 						switch( $tmp )
 						{
-							case kMESSAGE_TYPE_NOTICE:
+							case kSTATUS_NOTICE:
 								$tmp = 'NOTICE';
 								break;
-							case kMESSAGE_TYPE_MESSAGE:
+							case kSTATUS_MESSAGE:
 								$tmp = 'MESSAGE';
 								break;
-							case kMESSAGE_TYPE_WARNING:
+							case kSTATUS_WARNING:
 								$tmp = 'WARNING';
 								break;
-							case kMESSAGE_TYPE_ERROR:
+							case kSTATUS_ERROR:
 								$tmp = 'ERROR';
 								break;
-							case kMESSAGE_TYPE_FATAL:
+							case kSTATUS_FATAL:
 								$tmp = 'FATAL';
 								break;
-							case kMESSAGE_TYPE_BUG:
+							case kSTATUS_BUG:
 								$tmp = 'BUG';
 								break;
 						}
@@ -382,29 +382,29 @@ class CException extends Exception
 	 *	<li><i>FALSE</i>: Reset the value to <i>NULL</i>.
 	 *	<li><i>Integer</i>: Set the member to the provided value:
 	 *	 <ul>
-	 *		<li><i>{@link kMESSAGE_TYPE_IDLE}</i>: Idle state.
-	 *		<li><i>{@link kMESSAGE_TYPE_NOTICE}</i>: A notice is an informative message that
+	 *		<li><i>{@link kSTATUS_IDLE}</i>: Idle state.
+	 *		<li><i>{@link kSTATUS_NOTICE}</i>: A notice is an informative message that
 	 *			does not imply an error, nor a situation that should be handled; it can be
 	 *			considered as statistical data.
-	 *		<li><i>{@link kMESSAGE_TYPE_MESSAGE}</i>: A message is an informative message
+	 *		<li><i>{@link kSTATUS_MESSAGE}</i>: A message is an informative message
 	 *			that is addressed to somebody, although it does not imply an error or
 	 *			warning, it was issued to a receiving party.
-	 *		<li><i>{@link kMESSAGE_TYPE_WARNING}</i>: Warnings are informative data that
+	 *		<li><i>{@link kSTATUS_WARNING}</i>: Warnings are informative data that
 	 *			indicate a potential problem, although they do not imply an error, they
 	 *			indicate a potential problem or an issue that should be addressed at least at a later stage.
-	 *		<li><i>{@link kMESSAGE_TYPE_ERROR}</i>: Errors indicate that something prevented
+	 *		<li><i>{@link kSTATUS_ERROR}</i>: Errors indicate that something prevented
 	 *			an operation from being performed, this does not necessarily mean that the
 	 *			whole process is halted, but that the results of an operation will not be as
 	 *			expected.
-	 *		<li><i>{@link kMESSAGE_TYPE_FATAL}</i>: Fatal errors are
-	 *			{@link kMESSAGE_TYPE_ERROR errors} that result in stopping the whole
+	 *		<li><i>{@link kSTATUS_FATAL}</i>: Fatal errors are
+	 *			{@link kSTATUS_ERROR errors} that result in stopping the whole
 	 *			process: in this case the error will prevent other operations from being
 	 *			performed and the whole process should be halted.
-	 *		<li><i>{@link kMESSAGE_TYPE_BUG}</i>: Bugs, as opposed to
-	 *			{@link kMESSAGE_TYPE_ERROR errors}, result from internal causes independant
+	 *		<li><i>{@link kSTATUS_BUG}</i>: Bugs, as opposed to
+	 *			{@link kSTATUS_ERROR errors}, result from internal causes independant
 	 *			from external factors. A bug indicates that an operation will never execute
 	 *			as stated, it does not necessarily mean that it is
-	 *			{@link kMESSAGE_TYPE_FATAL fatal}, but rather that the behaviour of an
+	 *			{@link kSTATUS_FATAL fatal}, but rather that the behaviour of an
 	 *			operation does not correspond to its declaration.
 	 *	 </ul>
 	 * </ul>
@@ -1060,34 +1060,34 @@ class CException extends Exception
 				
 				switch( $severity )
 				{
-					case kMESSAGE_TYPE_NOTICE:
+					case kSTATUS_NOTICE:
 						$val->setAttribute( 'color', 'grey' );
 						$tmp = $document->createElement( 'strong', 'NOTICE' );
 						$val->appendChild( $tmp );
 						break;
-					case kMESSAGE_TYPE_MESSAGE:
+					case kSTATUS_MESSAGE:
 						$val->setAttribute( 'color', 'blue' );
 						$tmp = $document->createElement( 'strong', 'MESSAGE' );
 						$val->appendChild( $tmp );
 						break;
-					case kMESSAGE_TYPE_WARNING:
+					case kSTATUS_WARNING:
 						$val->setAttribute( 'color', '#FF6600' );
 						$tmp = $document->createElement( 'strong', 'WARNING' );
 						$val->appendChild( $tmp );
 						break;
-					case kMESSAGE_TYPE_ERROR:
+					case kSTATUS_ERROR:
 						$val->setAttribute( 'color', 'red' );
 						$tmp = $document->createElement( 'strong', 'ERROR' );
 						$val->appendChild( $tmp );
 						break;
-					case kMESSAGE_TYPE_FATAL:
+					case kSTATUS_FATAL:
 						$val->setAttribute( 'color', 'red' );
 						$tmp = $document->createElement( 'strong' );
 						$tmp1 = $val->appendChild( $tmp );
 						$tmp = $document->createElement( 'blink', 'FATAL' );
 						$tmp1->appendChild( $tmp );
 						break;
-					case kMESSAGE_TYPE_BUG:
+					case kSTATUS_BUG:
 						$val->setAttribute( 'color', 'red' );
 						$tmp = $document->createElement( 'strong' );
 						$tmp1 = $val->appendChild( $tmp );

@@ -7,8 +7,8 @@
 
 	<title>File CContainer.php | MyWrapper Reference Documentation</title>
 
-	<script type="text/javascript" src="resources/combined.js?1742645618"></script>
-	<script type="text/javascript" src="elementlist.js?539813953"></script>
+	<script type="text/javascript" src="resources/combined.js?3680114562"></script>
+	<script type="text/javascript" src="elementlist.js?2861350629"></script>
 	<link rel="stylesheet" type="text/css" media="all" href="resources/style.css?3505392360" />
 
 </head>
@@ -39,6 +39,8 @@
 				<li class="main"><a href="package-MyWrapper.Wrappers.html">Wrappers</a>
 						</li>
 							</ul></li>
+				<li><a href="package-None.html">None</a>
+						</li>
 				<li><a href="package-PHP.html">PHP</a>
 						</li>
 			</ul>
@@ -283,13 +285,13 @@
 </span></span><span id="165" class="l"><a class="l" href="#165">165: </a><span class="php-comment">     * This method can be used to manage a single object in the container, it can
 </span></span><span id="166" class="l"><a class="l" href="#166">166: </a><span class="php-comment">     * &lt;i&gt;insert&lt;/i&gt;, &lt;i&gt;update&lt;/i&gt;, &lt;i&gt;replace&lt;/i&gt;, &lt;i&gt;modify&lt;/i&gt;, &lt;i&gt;retrieve&lt;/i&gt; and
 </span></span><span id="167" class="l"><a class="l" href="#167">167: </a><span class="php-comment">     * &lt;i&gt;delete&lt;/i&gt; an object from the current container by providing the object and/or
-</span></span><span id="168" class="l"><a class="l" href="#168">168: </a><span class="php-comment">     * its native unique identifier ({@link kOFFSET_NID}).
+</span></span><span id="168" class="l"><a class="l" href="#168">168: </a><span class="php-comment">     * its native unique identifier ({@link kTAG_NID}).
 </span></span><span id="169" class="l"><a class="l" href="#169">169: </a><span class="php-comment">     *
 </span></span><span id="170" class="l"><a class="l" href="#170">170: </a><span class="php-comment">     * This method expects three parameters:
 </span></span><span id="171" class="l"><a class="l" href="#171">171: </a><span class="php-comment">     *
 </span></span><span id="172" class="l"><a class="l" href="#172">172: </a><span class="php-comment">     * &lt;ul&gt;
 </span></span><span id="173" class="l"><a class="l" href="#173">173: </a><span class="php-comment">     *  &lt;li&gt;&lt;tt&gt;$theObject&lt;/tt&gt;: The object or the data to be modified.
-</span></span><span id="174" class="l"><a class="l" href="#174">174: </a><span class="php-comment">     *  &lt;li&gt;&lt;tt&gt;$theIdentifier&lt;/tt&gt;: The native unique identifier ({@link kOFFSET_NID}) of
+</span></span><span id="174" class="l"><a class="l" href="#174">174: </a><span class="php-comment">     *  &lt;li&gt;&lt;tt&gt;$theIdentifier&lt;/tt&gt;: The native unique identifier ({@link kTAG_NID}) of
 </span></span><span id="175" class="l"><a class="l" href="#175">175: </a><span class="php-comment">     *      the object. If the value is &lt;i&gt;NULL&lt;/i&gt;, it means that it is the duty of the
 </span></span><span id="176" class="l"><a class="l" href="#176">176: </a><span class="php-comment">     *      current container to set the value, this will generally be the case when
 </span></span><span id="177" class="l"><a class="l" href="#177">177: </a><span class="php-comment">     *      inserting objects; in all other cases the parameter is required.
@@ -306,7 +308,7 @@
 </span></span><span id="188" class="l"><a class="l" href="#188">188: </a><span class="php-comment">     *          If the identifier was created by the container, it is the duty of this
 </span></span><span id="189" class="l"><a class="l" href="#189">189: </a><span class="php-comment">     *          method to set it into the provided object.
 </span></span><span id="190" class="l"><a class="l" href="#190">190: </a><span class="php-comment">     *          In this case the method should return the inserted object's native
-</span></span><span id="191" class="l"><a class="l" href="#191">191: </a><span class="php-comment">     *          identifier ({@link kOFFSET_NID}).
+</span></span><span id="191" class="l"><a class="l" href="#191">191: </a><span class="php-comment">     *          identifier ({@link kTAG_NID}).
 </span></span><span id="192" class="l"><a class="l" href="#192">192: </a><span class="php-comment">     *      &lt;li&gt;{@link kFLAG_PERSIST_UPDATE}: The provided object will replace an
 </span></span><span id="193" class="l"><a class="l" href="#193">193: </a><span class="php-comment">     *          object existing in the container.
 </span></span><span id="194" class="l"><a class="l" href="#194">194: </a><span class="php-comment">     *          In this case the &lt;tt&gt;$theObject&lt;/tt&gt; represents the full object and
@@ -324,7 +326,7 @@
 </span></span><span id="206" class="l"><a class="l" href="#206">206: </a><span class="php-comment">     *          If the identifier was created by the container, it is the duty of this
 </span></span><span id="207" class="l"><a class="l" href="#207">207: </a><span class="php-comment">     *          method to set it into the provided object.
 </span></span><span id="208" class="l"><a class="l" href="#208">208: </a><span class="php-comment">     *          In this case the method should return the inserted object's native
-</span></span><span id="209" class="l"><a class="l" href="#209">209: </a><span class="php-comment">     *          identifier ({@link kOFFSET_NID}).
+</span></span><span id="209" class="l"><a class="l" href="#209">209: </a><span class="php-comment">     *          identifier ({@link kTAG_NID}).
 </span></span><span id="210" class="l"><a class="l" href="#210">210: </a><span class="php-comment">     *      &lt;li&gt;{@link kFLAG_PERSIST_MODIFY}: This option can be used to apply modifications
 </span></span><span id="211" class="l"><a class="l" href="#211">211: </a><span class="php-comment">     *          to a subset of the object.
 </span></span><span id="212" class="l"><a class="l" href="#212">212: </a><span class="php-comment">     *          In this case the parameters of this method have the following functions:
@@ -402,20 +404,20 @@
 </span></span><span id="284" class="l"><a class="l" href="#284">284: </a><span class="php-comment">     *          object from the container.
 </span></span><span id="285" class="l"><a class="l" href="#285">285: </a><span class="php-comment">     *          In this case the &lt;tt&gt;$theObject&lt;/tt&gt; represents the full object and
 </span></span><span id="286" class="l"><a class="l" href="#286">286: </a><span class="php-comment">     *          &lt;tt&gt;$theIdentifier&lt;/tt&gt; represents the object unique identifier, what
-</span></span><span id="287" class="l"><a class="l" href="#287">287: </a><span class="php-comment">     *          counts is that the object's unique identifier ({@link kOFFSET_NID}) is
+</span></span><span id="287" class="l"><a class="l" href="#287">287: </a><span class="php-comment">     *          counts is that the object's unique identifier ({@link kTAG_NID}) is
 </span></span><span id="288" class="l"><a class="l" href="#288">288: </a><span class="php-comment">     *          provided. If the object is not found in the container, the method should
 </span></span><span id="289" class="l"><a class="l" href="#289">289: </a><span class="php-comment">     *          not fail.
 </span></span><span id="290" class="l"><a class="l" href="#290">290: </a><span class="php-comment">     *          In this case the method should return &lt;tt&gt;TRUE&lt;/tt&gt; if the object was
 </span></span><span id="291" class="l"><a class="l" href="#291">291: </a><span class="php-comment">     *          deleted and &lt;tt&gt;FALSE&lt;/tt&gt; if the object was not found.
 </span></span><span id="292" class="l"><a class="l" href="#292">292: </a><span class="php-comment">     *   &lt;/ul&gt;
 </span></span><span id="293" class="l"><a class="l" href="#293">293: </a><span class="php-comment">     *      If none of the above flags are set, it means that the caller wants to retrieve
-</span></span><span id="294" class="l"><a class="l" href="#294">294: </a><span class="php-comment">     *      the object identified by the {@link kOFFSET_NID} offset from the provided object
+</span></span><span id="294" class="l"><a class="l" href="#294">294: </a><span class="php-comment">     *      the object identified by the {@link kTAG_NID} offset from the provided object
 </span></span><span id="295" class="l"><a class="l" href="#295">295: </a><span class="php-comment">     *      or from the provided identifier. If found, the provided object will receive the
 </span></span><span id="296" class="l"><a class="l" href="#296">296: </a><span class="php-comment">     *      located object and the method will return &lt;tt&gt;TRUE&lt;/tt&gt;; if not found, the
 </span></span><span id="297" class="l"><a class="l" href="#297">297: </a><span class="php-comment">     *      method will set the provided object to &lt;tt&gt;NULL&lt;/tt&gt; and return &lt;tt&gt;FALSE&lt;/tt&gt;.
 </span></span><span id="298" class="l"><a class="l" href="#298">298: </a><span class="php-comment">     *      If the parameter is an array, it implies that the requested operation is to
 </span></span><span id="299" class="l"><a class="l" href="#299">299: </a><span class="php-comment">     *      retrieve the object, the array will be interpreted as the list of object offsets
-</span></span><span id="300" class="l"><a class="l" href="#300">300: </a><span class="php-comment">     *      to be returned, the {@link kOFFSET_NID} offset is returned by default.
+</span></span><span id="300" class="l"><a class="l" href="#300">300: </a><span class="php-comment">     *      to be returned, the {@link kTAG_NID} offset is returned by default.
 </span></span><span id="301" class="l"><a class="l" href="#301">301: </a><span class="php-comment">     * &lt;/ul&gt;
 </span></span><span id="302" class="l"><a class="l" href="#302">302: </a><span class="php-comment">     *
 </span></span><span id="303" class="l"><a class="l" href="#303">303: </a><span class="php-comment">     * The method should raise an exception if the operation was not successful and update
@@ -747,7 +749,7 @@
 </span></span><span id="629" class="l"><a class="l" href="#629">629: </a><span class="php-comment">     * should only call it when you intend to use this number.
 </span></span><span id="630" class="l"><a class="l" href="#630">630: </a><span class="php-comment">     *
 </span></span><span id="631" class="l"><a class="l" href="#631">631: </a><span class="php-comment">     * The first parameter, &lt;tt&gt;$theKey&lt;/tt&gt;, represents the key to the sequence, it will
-</span></span><span id="632" class="l"><a class="l" href="#632">632: </a><span class="php-comment">     * be the {@link kOFFSET_NID} of the record holding the sequence and the field holding
+</span></span><span id="632" class="l"><a class="l" href="#632">632: </a><span class="php-comment">     * be the {@link kTAG_NID} of the record holding the sequence and the field holding
 </span></span><span id="633" class="l"><a class="l" href="#633">633: </a><span class="php-comment">     * the current number has the {@link kOFFSET_SEQUENCE} offset.
 </span></span><span id="634" class="l"><a class="l" href="#634">634: </a><span class="php-comment">     *
 </span></span><span id="635" class="l"><a class="l" href="#635">635: </a><span class="php-comment">     * The second parameter represents the container in which the sequence is stored:

@@ -2,7 +2,7 @@
 
 /*=======================================================================================
  *																						*
- *								Enum_NodeKind.inc.php									*
+ *									NodeKinds.inc.php									*
  *																						*
  *======================================================================================*/
  
@@ -67,7 +67,7 @@
  *
  * Version 1: (kKIND_NODE_ROOT)[:ROOT]
  */
-define( "kKIND_NODE_ROOT",						':NODE-KIND:ROOT' );
+define( "kKIND_NODE_ROOT",						':NODE-KIND-ROOT' );
 
 /**
  * Feature node.
@@ -81,7 +81,7 @@ define( "kKIND_NODE_ROOT",						':NODE-KIND:ROOT' );
  *
  * Version 1: (kKIND_NODE_TRAIT)[:TRAIT]
  */
-define( "kKIND_NODE_FEATURE",					':NODE-KIND:FEATURE' );
+define( "kKIND_NODE_FEATURE",					':NODE-KIND-FEATURE' );
 
 /**
  * Method node.
@@ -95,7 +95,7 @@ define( "kKIND_NODE_FEATURE",					':NODE-KIND:FEATURE' );
  *
  * Version 1: (kKIND_NODE_METHOD)[:METHOD]
  */
-define( "kKIND_NODE_METHOD",					':NODE-KIND:METHOD' );
+define( "kKIND_NODE_METHOD",					':NODE-KIND-METHOD' );
 
 /**
  * Scale node.
@@ -108,7 +108,7 @@ define( "kKIND_NODE_METHOD",					':NODE-KIND:METHOD' );
  *
  * Version 1: (kKIND_NODE_SCALE)[:SCALE]
  */
-define( "kKIND_NODE_SCALE",						':NODE-KIND:SCALE' );
+define( "kKIND_NODE_SCALE",						':NODE-KIND-SCALE' );
 
 /**
  * Enumeration node.
@@ -121,7 +121,7 @@ define( "kKIND_NODE_SCALE",						':NODE-KIND:SCALE' );
  *
  * Version 1: (kKIND_NODE_ENUMERATION)[:ENUMERATION]
  */
-define( "kKIND_NODE_ENUM",						':NODE-KIND:ENUM' );
+define( "kKIND_NODE_ENUMERATION",				':NODE-KIND-ENUMERATION' );
 
 /**
  * Instance node.
@@ -136,7 +136,7 @@ define( "kKIND_NODE_ENUM",						':NODE-KIND:ENUM' );
  *
  * Version 1: (kKIND_NODE_INSTANCE)[:INSTANCE]
  */
-define( "kKIND_NODE_INSTANCE",					':NODE-KIND:INSTANCE' );
+define( "kKIND_NODE_INSTANCE",					':NODE-KIND-INSTANCE' );
 
 
 ?>

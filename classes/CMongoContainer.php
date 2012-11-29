@@ -360,13 +360,13 @@ class CMongoContainer extends CContainer
 			// Determine criteria.
 			//
 			if( $theIdentifier !== NULL )
-				$criteria = array( kOFFSET_NID => $theIdentifier );
+				$criteria = array( kTAG_NID => $theIdentifier );
 			elseif( is_array( $theObject )
-				 && array_key_exists( kOFFSET_NID, $theObject ) )
-				$criteria = array( kOFFSET_NID => $theObject[ kOFFSET_NID ] );
+				 && array_key_exists( kTAG_NID, $theObject ) )
+				$criteria = array( kTAG_NID => $theObject[ kTAG_NID ] );
 			elseif( ($theObject instanceof ArrayObject)
-				 && $theObject->offsetExists( kOFFSET_NID ) )
-				$criteria = array( kOFFSET_NID => $theObject->offsetGet( kOFFSET_NID ) );
+				 && $theObject->offsetExists( kTAG_NID ) )
+				$criteria = array( kTAG_NID => $theObject->offsetGet( kTAG_NID ) );
 			else
 				throw new Exception
 					( "Missing object identifier",
@@ -411,7 +411,7 @@ class CMongoContainer extends CContainer
 			// Set identifier.
 			//
 			if( $theIdentifier !== NULL )
-				$theObject[ kOFFSET_NID ] = $theIdentifier;
+				$theObject[ kTAG_NID ] = $theIdentifier;
 			
 			//
 			// Convert to object.
@@ -445,7 +445,7 @@ class CMongoContainer extends CContainer
 					( $status[ 'errmsg' ],
 					  kERROR_COMMIT );											// !@! ==>
 			
-			return $theObject[ kOFFSET_NID ];										// ==>
+			return $theObject[ kTAG_NID ];										// ==>
 		
 		} // Insert.
 		
@@ -464,13 +464,13 @@ class CMongoContainer extends CContainer
 			// Determine criteria.
 			//
 			if( $theIdentifier !== NULL )
-				$criteria = array( kOFFSET_NID => $theIdentifier );
+				$criteria = array( kTAG_NID => $theIdentifier );
 			elseif( is_array( $theObject )
-				 && array_key_exists( kOFFSET_NID, $theObject ) )
-				$criteria = array( kOFFSET_NID => $theObject[ kOFFSET_NID ] );
+				 && array_key_exists( kTAG_NID, $theObject ) )
+				$criteria = array( kTAG_NID => $theObject[ kTAG_NID ] );
 			elseif( ($theObject instanceof ArrayObject)
-				 && $theObject->offsetExists( kOFFSET_NID ) )
-				$criteria = array( kOFFSET_NID => $theObject->offsetGet( kOFFSET_NID ) );
+				 && $theObject->offsetExists( kTAG_NID ) )
+				$criteria = array( kTAG_NID => $theObject->offsetGet( kTAG_NID ) );
 			else
 				throw new Exception
 					( "Missing object identifier",
@@ -508,7 +508,7 @@ class CMongoContainer extends CContainer
 			// Determine criteria.
 			//
 			if( $theIdentifier !== NULL )
-				$criteria = array( kOFFSET_NID => $theIdentifier );
+				$criteria = array( kTAG_NID => $theIdentifier );
 			else
 				throw new Exception
 					( "Missing object identifier",
@@ -725,7 +725,7 @@ class CMongoContainer extends CContainer
 			// Set identifier.
 			//
 			if( $theIdentifier !== NULL )
-				$theObject[ kOFFSET_NID ] = $theIdentifier;
+				$theObject[ kTAG_NID ] = $theIdentifier;
 			
 			//
 			// Convert to object.
@@ -759,7 +759,7 @@ class CMongoContainer extends CContainer
 					( $status[ 'errmsg' ],
 					  kERROR_COMMIT );											// !@! ==>
 			
-			return $theObject[ kOFFSET_NID ];										// ==>
+			return $theObject[ kTAG_NID ];										// ==>
 		
 		} // Replace.
 		
@@ -772,13 +772,13 @@ class CMongoContainer extends CContainer
 			// Determine criteria.
 			//
 			if( $theIdentifier !== NULL )
-				$criteria = array( kOFFSET_NID => $theIdentifier );
+				$criteria = array( kTAG_NID => $theIdentifier );
 			elseif( is_array( $theObject )
-				 && array_key_exists( kOFFSET_NID, $theObject ) )
-				$criteria = array( kOFFSET_NID => $theObject[ kOFFSET_NID ] );
+				 && array_key_exists( kTAG_NID, $theObject ) )
+				$criteria = array( kTAG_NID => $theObject[ kTAG_NID ] );
 			elseif( ($theObject instanceof ArrayObject)
-				 && $theObject->offsetExists( kOFFSET_NID ) )
-				$criteria = array( kOFFSET_NID => $theObject->offsetGet( kOFFSET_NID ) );
+				 && $theObject->offsetExists( kTAG_NID ) )
+				$criteria = array( kTAG_NID => $theObject->offsetGet( kTAG_NID ) );
 			else
 				throw new Exception
 					( "Missing object identifier",
@@ -1217,13 +1217,13 @@ class CMongoContainer extends CContainer
 	 *		return a MongoCode object.
 	 *	<li><i>{@link CDataTypeStamp} object or {@link kTYPE_STAMP} offset</i>: We return a
 	 *		MongoDate object.
-	 *	<li><i>{@link CDataTypeRegex} object or {@link kTYPE_REGEX} offset</i>: We return a
+	 *	<li><i>{@link CDataTypeRegex} object or {@link kTYPE_REGEX_STRING} offset</i>: We return a
 	 *		MongoRegex object.
 	 *	<li><i>{@link CDataTypeInt32} object or {@link kTYPE_INT32} offset</i>: We return a
 	 *		MongoInt32 object.
 	 *	<li><i>{@link CDataTypeInt64} object or {@link kTYPE_INT64} offset</i>: We return a
 	 *		MongoInt64 object.
-	 *	<li><i>{@link CDataTypeBinary} object or {@link kTYPE_BINARY} offset</i>: We return
+	 *	<li><i>{@link CDataTypeBinary} object or {@link kTYPE_BINARY_STRING} offset</i>: We return
 	 *		a MongoBinData object.
 	 * </ul>
 	 *
@@ -1282,9 +1282,9 @@ class CMongoContainer extends CContainer
 					if( is_array( $data )
 					 || ($data instanceof ArrayObject) )
 					{
-						$tmp1 = $data[ kTYPE_STAMP_SEC ];
-						$tmp2 = ( array_key_exists( kTYPE_STAMP_USEC, (array) $data ) )
-							  ? $data[ kTYPE_STAMP_USEC ]
+						$tmp1 = $data[ kTAG_STAMP_SEC ];
+						$tmp2 = ( array_key_exists( kTAG_STAMP_USEC, (array) $data ) )
+							  ? $data[ kTAG_STAMP_USEC ]
 							  : 0;
 						$theElement = new MongoDate( $tmp1, $tmp2 );
 					}
@@ -1307,18 +1307,18 @@ class CMongoContainer extends CContainer
 				//
 				// MongoRegex.
 				//
-				case kTYPE_REGEX:
+				case kTYPE_REGEX_STRING:
 					$theElement = new MongoRegex( $data );
 					break;
 	
 				//
 				// MongoBinData.
 				//
-				case kTYPE_BINARY:
+				case kTYPE_BINARY_STRING:
 					$data = ( function_exists( 'hex2bin' ) )
 						  ? hex2bin( $data )
 						  : pack( 'H*', $data );
-					$theElement = new MongoBinData( $data );
+					$theElement = new MongoBinData( $data, 2 );
 					break;
 			
 			} // Parsing by type.
@@ -1345,9 +1345,9 @@ class CMongoContainer extends CContainer
 						$theElement = new MongoInt64( (string) $theElement );
 					break;
 					
-				case kTYPE_BINARY:
+				case kTYPE_BINARY_STRING:
 					if( ! ($theElement instanceof MongoBinData) )
-						$theElement = new MongoBinData( (string) $theElement );
+						$theElement = new MongoBinData( (string) $theElement, 2 );
 					break;
 					
 				case kTYPE_STAMP:

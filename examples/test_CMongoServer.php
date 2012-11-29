@@ -183,8 +183,8 @@ try
 	// Change server.
 	//
 	echo( '<h4>Change server</h4>' );
-	echo( '<h5>$test->Connection( new Mongo() );</h5>' );
-	$test->Connection( new Mongo() );
+	echo( '<h5>$test->Connection( ( class_exists( "MongoClient" ) ) ? new MongoClient() : new Mongo() );</h5>' );
+	$test->Connection( ( class_exists( 'MongoClient' ) ) ? new MongoClient() : new Mongo() );
 	echo( '<pre>' ); print_r( $test ); echo( '</pre>' );
 	echo( '<hr />' );
 	

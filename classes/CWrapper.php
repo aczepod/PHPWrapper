@@ -102,32 +102,32 @@ require_once( kPATH_MYWRAPPER_LIBRARY_CLASS."/CWrapper.inc.php" );
  *		This section is returned by default and will inform on the status of the requested
  *		operation. It consists of an array containing the following elements:
  *	 <ul>
- *		<li><i>{@link kOFFSET_SEVERITY}</i>: <i>Response status</i>.
+ *		<li><i>{@link kTERM_SEVERITY}</i>: <i>Response status</i>.
  *			This element will be returned by default regardless of the operation outcome.
  *			This corresponds to the severity of the response and it can take the following
  *			values:
  *		 <ul>
- *			<li><i>{@link kMESSAGE_TYPE_IDLE}</i>: This is the status of the web-service
+ *			<li><i>{@link kSTATUS_IDLE}</i>: This is the status of the web-service
  *				before any operation has been executed, or when the operation was
  *				successful; this is the response of a successful {@link kAPI_OP_PING}
  *				request.
- *			<li><i>{@link kMESSAGE_TYPE_NOTICE}</i>: The operation was successful and a
+ *			<li><i>{@link kSTATUS_NOTICE}</i>: The operation was successful and a
  *				notice message was returned.
- *			<li><i>{@link kMESSAGE_TYPE_MESSAGE}</i>: The operation was successful and a
+ *			<li><i>{@link kSTATUS_MESSAGE}</i>: The operation was successful and a
  *				message was returned.
- *			<li><i>{@link kMESSAGE_TYPE_WARNING}</i>: The operation was successful but a
+ *			<li><i>{@link kSTATUS_WARNING}</i>: The operation was successful but a
  *				warning was raised.
- *			<li><i>{@link kMESSAGE_TYPE_ERROR}</i>: The operation failed because of an
+ *			<li><i>{@link kSTATUS_ERROR}</i>: The operation failed because of an
  *				error.
- *			<li><i>{@link kMESSAGE_TYPE_FATAL}</i>: The operation failed because of a fatal
+ *			<li><i>{@link kSTATUS_FATAL}</i>: The operation failed because of a fatal
  *				error, this will generally mean that the web-service is not operational.
- *			<li><i>{@link kMESSAGE_TYPE_BUG}</i>: The operation failed because of a bug, the
+ *			<li><i>{@link kSTATUS_BUG}</i>: The operation failed because of a bug, the
  *				developers should be informed of this kind of errors.
  *		 </ul>
- *		<li><i>{@link kOFFSET_CODE}</i>: <i>Status code</i>.
+ *		<li><i>{@link kTERM_CODE}</i>: <i>Status code</i>.
  *			This element will be returned by default regardless of the operation outcome.
  *			It corresponds to the error code; {@link kERROR_OK} means no error.
- *		<li><i>{@link kOFFSET_MESSAGE}</i>: <i>Status message</i>.
+ *		<li><i>{@link kTERM_MESSAGE}</i>: <i>Status message</i>.
  *			The response message from the operation, this element is used to return
  *			informative messages or to return error messages when the service fails. It will
  *			generally be formatted as an array in which the index represents the language
@@ -135,7 +135,7 @@ require_once( kPATH_MYWRAPPER_LIBRARY_CLASS."/CWrapper.inc.php" );
  *		<li><i>{@link kAPI_AFFECTED_COUNT}</i>: <i>Record count</i>.
  *			The total number of elements affected by the operation. This tag will only be
  *			used by derived classes returning data elements.
- *		<li><i>{@link kOFFSET_NOTES}</i>: <i>Attachments</i>.
+ *		<li><i>{@link kTERM_NOTES}</i>: <i>Attachments</i>.
  *				A list of key/value pairs containing information relevant to the operation
  *				response. For instance, if a series of parameters are required and were not
  *				provided, this could list them.
@@ -237,7 +237,7 @@ class CWrapper extends CConnection
 	 *		of the request are there, only if this is the case will the constructor init the
 	 *		service.
 	 *	<li><i>{@link _InitStatus()}</i>: The response status will be initialised to the
-	 *		{@link kMESSAGE_TYPE_IDLE} state.
+	 *		{@link kSTATUS_IDLE} state.
 	 *	<li><i>{@link _InitOptions()}</i>: Service options will be initialised.
 	 *	<li><i>{@link _InitResources()}</i>: Eventual resources are initialised.
 	 *	<li><i>{@link _ParseRequest()}</i>: The request is parsed.
@@ -455,8 +455,8 @@ class CWrapper extends CConnection
 	 * section, derived classes may overload this method if they need to handle other
 	 * states.
 	 *
-	 * In this class we set the status to {@link kMESSAGE_TYPE_IDLE} and reset the
-	 * status {@link kOFFSET_CODE}.
+	 * In this class we set the status to {@link kSTATUS_IDLE} and reset the
+	 * status {@link kTERM_CODE}.
 	 *
 	 * @access protected
 	 *
@@ -472,12 +472,12 @@ class CWrapper extends CConnection
 		//
 		// Set state.
 		//
-		$status[ kOFFSET_SEVERITY ] = kMESSAGE_TYPE_IDLE;
+		$status[ kTERM_SEVERITY ] = kSTATUS_IDLE;
 		
 		//
 		// Set idle status code.
 		//
-		$status[ kOFFSET_CODE ] = kERROR_OK;
+		$status[ kTERM_CODE ] = kERROR_OK;
 		
 		//
 		// Copy status to object.
@@ -896,7 +896,7 @@ class CWrapper extends CConnection
 				throw new CException
 					( "Unsupported format",
 					  kERROR_UNSUPPORTED,
-					  kMESSAGE_TYPE_WARNING,
+					  kSTATUS_WARNING,
 					  array( 'Parameter' => kAPI_FORMAT,
 							 'Value' => $_REQUEST[ kAPI_FORMAT ] ) );			// !@! ==>
 			
@@ -958,7 +958,7 @@ class CWrapper extends CConnection
 				throw new CException
 					( "Unsupported operation",
 					  kERROR_UNSUPPORTED,
-					  kMESSAGE_TYPE_WARNING,
+					  kSTATUS_WARNING,
 					  array( 'Parameter' => kAPI_OPERATION,
 							 'Value' => $_REQUEST[ kAPI_OPERATION ] ) );		// !@! ==>
 			
@@ -1031,7 +1031,7 @@ class CWrapper extends CConnection
 				throw new CException
 					( "Unable to handle request: operation not implemented",
 					  kERROR_NOT_IMPLEMENTED,
-					  kMESSAGE_TYPE_WARNING,
+					  kSTATUS_WARNING,
 					  array( 'Operation' => $op ) );							// !@! ==>
 		}
 	
@@ -1251,19 +1251,19 @@ class CWrapper extends CConnection
 	 *
 	 * <ul>
 	 *	<li><i>{@link CException::Severity()}</i>: This value will be set as the status
-	 *		{@link kOFFSET_SEVERITY}.
+	 *		{@link kTERM_SEVERITY}.
 	 *	<li><i>{@link Exception::getCode()}</i>: This value will be set as the status
-	 *		{@link kOFFSET_CODE}.
+	 *		{@link kTERM_CODE}.
 	 *	<li><i>{@link Exception::getMessage()}</i>: This value will be set in the status
-	 *		{@link kOFFSET_MESSAGE} field as a language block.
+	 *		{@link kTERM_MESSAGE} field as a language block.
 	 *	<li><i>{@link Exception::getFile()}</i>: This value will be set in the status
-	 *		{@link kOFFSET_NOTES}.
+	 *		{@link kTERM_NOTES}.
 	 *	<li><i>{@link Exception::getLine()}</i>: This value will be set in the status
-	 *		{@link kOFFSET_NOTES}.
+	 *		{@link kTERM_NOTES}.
 	 *	<li><i>{@link Exception::getTrace()}</i>: This value will be set in the status
-	 *		{@link kOFFSET_NOTES}.
+	 *		{@link kTERM_NOTES}.
 	 *	<li><i>{@link CException::Reference()}</i>: These valuew will be set in the status
-	 *		{@link kOFFSET_NOTES}.
+	 *		{@link kTERM_NOTES}.
 	 * </ul>
 	 *
 	 * @param Exception				$theException		Exception.
@@ -1281,13 +1281,13 @@ class CWrapper extends CConnection
 		// Set exception code.
 		//
 		if( ($tmp = $theException->getCode()) !== NULL )
-			$status[ kOFFSET_CODE ] = $tmp;
+			$status[ kTERM_CODE ] = $tmp;
 		
 		//
 		// Set exception message.
 		//
 		if( ($tmp = $theException->getMessage()) !== NULL )
-			$status[ kOFFSET_MESSAGE ]
+			$status[ kTERM_MESSAGE ]
 				= array( kDEFAULT_LANGUAGE => $tmp );
 		
 		//
@@ -1310,13 +1310,13 @@ class CWrapper extends CConnection
 			 || ($line !== NULL)
 			 || ($trace !== NULL) )
 			{
-				$status[ kOFFSET_NOTES ] = Array();
+				$status[ kTERM_NOTES ] = Array();
 				if( $file !== NULL )
-					$status[ kOFFSET_NOTES ][ 'File' ] = $file;
+					$status[ kTERM_NOTES ][ 'File' ] = $file;
 				if( $line !== NULL )
-					$status[ kOFFSET_NOTES ][ 'Line' ] = $line;
+					$status[ kTERM_NOTES ][ 'Line' ] = $line;
 				if( $trace !== NULL )
-					$status[ kOFFSET_NOTES ][ 'Trace' ] = $trace;
+					$status[ kTERM_NOTES ][ 'Trace' ] = $trace;
 			
 			} // Has trace elements.
 		
@@ -1328,15 +1328,15 @@ class CWrapper extends CConnection
 		if( $theException instanceof CException )
 		{
 			if( ($tmp = $theException->Severity()) !== NULL )
-				$status[ kOFFSET_SEVERITY ] = $tmp;
+				$status[ kTERM_SEVERITY ] = $tmp;
 			if( $tmp = $theException->Reference() )
 			{
-				if( ! array_key_exists( kOFFSET_NOTES, $status ) )
-					$status[ kOFFSET_NOTES ] = Array();
+				if( ! array_key_exists( kTERM_NOTES, $status ) )
+					$status[ kTERM_NOTES ] = Array();
 				if( $references = $theException->Reference() )
 				{
 					foreach( $references as $key => $value )
-						$status[ kOFFSET_NOTES ][ $key ] = $value;
+						$status[ kTERM_NOTES ][ $key ] = $value;
 				}
 			}
 		
@@ -1471,7 +1471,7 @@ class CWrapper extends CConnection
 						throw new CException
 							( "Unable to handle request: invalid PHP serialised string",
 							  kERROR_STATE,
-							  kMESSAGE_TYPE_ERROR,
+							  kSTATUS_ERROR,
 							  array( 'Parameter' => $theParameter,
 									 'Format' => $format,
 									 'Data' => $encoded ) );					// !@! ==>
@@ -1490,7 +1490,7 @@ class CWrapper extends CConnection
 					throw new CException
 						( "Unsupported format (should have been caught before)",
 						  kERROR_UNSUPPORTED,
-						  kMESSAGE_TYPE_BUG,
+						  kSTATUS_BUG,
 						  array( 'Parameter' => kAPI_FORMAT,
 								 'Format' => $format ) );						// !@! ==>
 			

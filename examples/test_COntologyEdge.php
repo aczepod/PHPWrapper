@@ -297,12 +297,12 @@ try
 		echo( '<h4>Insert edge with identifiers</h4>' );
 		echo( '<h5>$test = new MyClass();</h5>' );
 		$test = new MyClass();
-		echo( '<h5>$test->Subject( $nodeA[ kOFFSET_NID ] );</h5>' );
-		$test->Subject( $nodeA[ kOFFSET_NID ] );
-		echo( '<h5>$test->Predicate( $termC[ kOFFSET_NID ] );</h5>' );
-		$test->Predicate( $termC[ kOFFSET_NID ] );
-		echo( '<h5>$test->Object( $nodeB[ kOFFSET_NID ] );</h5>' );
-		$test->Object( $nodeB[ kOFFSET_NID ] );
+		echo( '<h5>$test->Subject( $nodeA[ kTAG_NID ] );</h5>' );
+		$test->Subject( $nodeA[ kTAG_NID ] );
+		echo( '<h5>$test->Predicate( $termC[ kTAG_NID ] );</h5>' );
+		$test->Predicate( $termC[ kTAG_NID ] );
+		echo( '<h5>$test->Object( $nodeB[ kTAG_NID ] );</h5>' );
+		$test->Object( $nodeB[ kTAG_NID ] );
 		echo( '<h5>$status = $test->Insert( $edge_container );</h5>' );
 		$status = $test->Insert( $edge_container );
 		echo( '<h3><font color="red">Should have raised an exception</font></h3>' );
@@ -346,8 +346,8 @@ try
 	// Resolve by ID.
 	//
 	echo( '<h4>Resolve by ID</h4>' );
-	echo( '<h5>$found = COntologyEdge::Resolve( $database, $edge[ kOFFSET_NID ], TRUE );</h5>' );
-	$found = COntologyEdge::Resolve( $database, $edge[ kOFFSET_NID ], TRUE );
+	echo( '<h5>$found = COntologyEdge::Resolve( $database, $edge[ kTAG_NID ], TRUE );</h5>' );
+	$found = COntologyEdge::Resolve( $database, $edge[ kTAG_NID ], TRUE );
 	echo( '<pre>' ); print_r( $found ); echo( '</pre>' );
 	echo( '<hr />' );
 

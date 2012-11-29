@@ -7,8 +7,8 @@
 
 	<title>File ISOCodes.php | MyWrapper Reference Documentation</title>
 
-	<script type="text/javascript" src="resources/combined.js?1742645618"></script>
-	<script type="text/javascript" src="elementlist.js?539813953"></script>
+	<script type="text/javascript" src="resources/combined.js?3680114562"></script>
+	<script type="text/javascript" src="elementlist.js?2861350629"></script>
 	<link rel="stylesheet" type="text/css" media="all" href="resources/style.css?3505392360" />
 
 </head>
@@ -39,6 +39,8 @@
 				<li class="main"><a href="package-MyWrapper.Wrappers.html">Wrappers</a>
 						</li>
 							</ul></li>
+				<li><a href="package-None.html">None</a>
+						</li>
 				<li><a href="package-PHP.html">PHP</a>
 						</li>
 			</ul>
@@ -504,7 +506,7 @@
 </span><span id="379" class="l"><a class="l" href="#379"> 379: </a>                        <span class="php-var">$part3_term</span>-&gt;Description( kDEFAULT_LANGUAGE,
 </span><span id="380" class="l"><a class="l" href="#380"> 380: </a>                                                  (string) <span class="php-var">$record</span>[ <span class="php-quote">'reference_name'</span> ] );
 </span><span id="381" class="l"><a class="l" href="#381"> 381: </a>                    <span class="php-keyword1">if</span>( <span class="php-var">$record</span>[ <span class="php-quote">'status'</span> ] !== <span class="php-keyword1">NULL</span> )
-</span><span id="382" class="l"><a class="l" href="#382"> 382: </a>                        <span class="php-var">$part3_term</span>[ <span class="php-var">$status_tag</span>[ kOFFSET_NID ] ]
+</span><span id="382" class="l"><a class="l" href="#382"> 382: </a>                        <span class="php-var">$part3_term</span>[ <span class="php-var">$status_tag</span>[ kTAG_NID ] ]
 </span><span id="383" class="l"><a class="l" href="#383"> 383: </a>                            = (string) <span class="php-var">$record</span>[ <span class="php-quote">'status'</span> ];
 </span><span id="384" class="l"><a class="l" href="#384"> 384: </a>                    <span class="php-keyword1">if</span>( <span class="php-var">$record</span>[ <span class="php-quote">'scope'</span> ] !== <span class="php-keyword1">NULL</span> )
 </span><span id="385" class="l"><a class="l" href="#385"> 385: </a>                    {
@@ -520,12 +522,12 @@
 </span><span id="395" class="l"><a class="l" href="#395"> 395: </a>                                <span class="php-keyword1">case</span> <span class="php-quote">'D'</span>:
 </span><span id="396" class="l"><a class="l" href="#396"> 396: </a>                                <span class="php-keyword1">case</span> <span class="php-quote">'R'</span>:
 </span><span id="397" class="l"><a class="l" href="#397"> 397: </a>                                <span class="php-keyword1">case</span> <span class="php-quote">'S'</span>:
-</span><span id="398" class="l"><a class="l" href="#398"> 398: </a>                                    <span class="php-var">$part3_term</span>[ <span class="php-var">$scope_tag</span>[ kOFFSET_NID ] ]
+</span><span id="398" class="l"><a class="l" href="#398"> 398: </a>                                    <span class="php-var">$part3_term</span>[ <span class="php-var">$scope_tag</span>[ kTAG_NID ] ]
 </span><span id="399" class="l"><a class="l" href="#399"> 399: </a>                                        = <span class="php-keyword2">implode</span>( kTOKEN_NAMESPACE_SEPARATOR,
 </span><span id="400" class="l"><a class="l" href="#400"> 400: </a>                                                   <span class="php-keyword1">array</span>( <span class="php-var">$scope_code</span>, <span class="php-var">$tmp</span> ) );
 </span><span id="401" class="l"><a class="l" href="#401"> 401: </a>                                    <span class="php-keyword1">break</span>;
 </span><span id="402" class="l"><a class="l" href="#402"> 402: </a>                                <span class="php-keyword1">case</span> <span class="php-quote">'L'</span>:
-</span><span id="403" class="l"><a class="l" href="#403"> 403: </a>                                    <span class="php-var">$part3_term</span>[ <span class="php-var">$scope_tag</span>[ kOFFSET_NID ] ]
+</span><span id="403" class="l"><a class="l" href="#403"> 403: </a>                                    <span class="php-var">$part3_term</span>[ <span class="php-var">$scope_tag</span>[ kTAG_NID ] ]
 </span><span id="404" class="l"><a class="l" href="#404"> 404: </a>                                        = <span class="php-keyword2">implode</span>( kTOKEN_NAMESPACE_SEPARATOR,
 </span><span id="405" class="l"><a class="l" href="#405"> 405: </a>                                                   <span class="php-keyword1">array</span>( <span class="php-var">$scope_code</span>, <span class="php-quote">'R'</span> ) );
 </span><span id="406" class="l"><a class="l" href="#406"> 406: </a>                                    <span class="php-keyword1">break</span>;
@@ -549,12 +551,12 @@
 </span><span id="424" class="l"><a class="l" href="#424"> 424: </a>                                <span class="php-keyword1">case</span> <span class="php-quote">'Genetic'</span>:
 </span><span id="425" class="l"><a class="l" href="#425"> 425: </a>                                <span class="php-keyword1">case</span> <span class="php-quote">'Genetic-like'</span>:
 </span><span id="426" class="l"><a class="l" href="#426"> 426: </a>                                <span class="php-keyword1">case</span> <span class="php-quote">'Geographic'</span>:
-</span><span id="427" class="l"><a class="l" href="#427"> 427: </a>                                    <span class="php-var">$part3_term</span>[ <span class="php-var">$type_tag</span>[ kOFFSET_NID ] ]
+</span><span id="427" class="l"><a class="l" href="#427"> 427: </a>                                    <span class="php-var">$part3_term</span>[ <span class="php-var">$type_tag</span>[ kTAG_NID ] ]
 </span><span id="428" class="l"><a class="l" href="#428"> 428: </a>                                        = <span class="php-keyword2">implode</span>( kTOKEN_NAMESPACE_SEPARATOR,
 </span><span id="429" class="l"><a class="l" href="#429"> 429: </a>                                                   <span class="php-keyword1">array</span>( <span class="php-var">$type_code</span>, <span class="php-var">$tmp</span> ) );
 </span><span id="430" class="l"><a class="l" href="#430"> 430: </a>                                    <span class="php-keyword1">break</span>;
 </span><span id="431" class="l"><a class="l" href="#431"> 431: </a>                                <span class="php-keyword1">case</span> <span class="php-quote">'Genetic, Ancient'</span>:
-</span><span id="432" class="l"><a class="l" href="#432"> 432: </a>                                    <span class="php-var">$part3_term</span>[ <span class="php-var">$type_tag</span>[ kOFFSET_NID ] ]
+</span><span id="432" class="l"><a class="l" href="#432"> 432: </a>                                    <span class="php-var">$part3_term</span>[ <span class="php-var">$type_tag</span>[ kTAG_NID ] ]
 </span><span id="433" class="l"><a class="l" href="#433"> 433: </a>                                        = <span class="php-keyword1">array</span>(
 </span><span id="434" class="l"><a class="l" href="#434"> 434: </a>                                            <span class="php-keyword2">implode</span>( kTOKEN_NAMESPACE_SEPARATOR,
 </span><span id="435" class="l"><a class="l" href="#435"> 435: </a>                                                     <span class="php-keyword1">array</span>( <span class="php-var">$type_code</span>, <span class="php-quote">'Genetic'</span> ) ),
@@ -566,7 +568,7 @@
 </span><span id="441" class="l"><a class="l" href="#441"> 441: </a>                    }
 </span><span id="442" class="l"><a class="l" href="#442"> 442: </a>                    <span class="php-keyword1">if</span>( <span class="php-var">$record</span>[ <span class="php-quote">'inverted_name'</span> ] !== <span class="php-keyword1">NULL</span> )
 </span><span id="443" class="l"><a class="l" href="#443"> 443: </a>                        ManageIndexedOffset( <span class="php-var">$part3_term</span>,
-</span><span id="444" class="l"><a class="l" href="#444"> 444: </a>                            (string) <span class="php-var">$inv_name_tag</span>[ kOFFSET_NID ],
+</span><span id="444" class="l"><a class="l" href="#444"> 444: </a>                            (string) <span class="php-var">$inv_name_tag</span>[ kTAG_NID ],
 </span><span id="445" class="l"><a class="l" href="#445"> 445: </a>                            kDEFAULT_LANGUAGE, (string) <span class="php-var">$record</span>[ <span class="php-quote">'inverted_name'</span> ] );
 </span><span id="446" class="l"><a class="l" href="#446"> 446: </a>                    
 </span><span id="447" class="l"><a class="l" href="#447"> 447: </a>                    <span class="php-comment">//</span>
@@ -610,14 +612,14 @@
 </span><span id="485" class="l"><a class="l" href="#485"> 485: </a>                            <span class="php-comment">// Update inverted name.</span>
 </span><span id="486" class="l"><a class="l" href="#486"> 486: </a>                            <span class="php-comment">//</span>
 </span><span id="487" class="l"><a class="l" href="#487"> 487: </a>                            <span class="php-keyword1">if</span>( <span class="php-var">$part3_term</span>-&gt;offsetExists(
-</span><span id="488" class="l"><a class="l" href="#488"> 488: </a>                                (string) <span class="php-var">$inv_name_tag</span>[ kOFFSET_NID ] ) )
+</span><span id="488" class="l"><a class="l" href="#488"> 488: </a>                                (string) <span class="php-var">$inv_name_tag</span>[ kTAG_NID ] ) )
 </span><span id="489" class="l"><a class="l" href="#489"> 489: </a>                            {
 </span><span id="490" class="l"><a class="l" href="#490"> 490: </a>                                <span class="php-var">$string</span> = ManageIndexedOffset( <span class="php-var">$part3_term</span>,
-</span><span id="491" class="l"><a class="l" href="#491"> 491: </a>                                    (string) <span class="php-var">$inv_name_tag</span>[ kOFFSET_NID ],
+</span><span id="491" class="l"><a class="l" href="#491"> 491: </a>                                    (string) <span class="php-var">$inv_name_tag</span>[ kTAG_NID ],
 </span><span id="492" class="l"><a class="l" href="#492"> 492: </a>                                    kDEFAULT_LANGUAGE );
 </span><span id="493" class="l"><a class="l" href="#493"> 493: </a>                                <span class="php-keyword1">if</span>( <span class="php-keyword2">array_key_exists</span>( <span class="php-var">$string</span>, <span class="php-var">$keys</span> ) )
 </span><span id="494" class="l"><a class="l" href="#494"> 494: </a>                                    ManageIndexedOffset(<span class="php-var">$part3_term</span>,
-</span><span id="495" class="l"><a class="l" href="#495"> 495: </a>                                        (string) <span class="php-var">$inv_name_tag</span>[ kOFFSET_NID ],
+</span><span id="495" class="l"><a class="l" href="#495"> 495: </a>                                        (string) <span class="php-var">$inv_name_tag</span>[ kTAG_NID ],
 </span><span id="496" class="l"><a class="l" href="#496"> 496: </a>                                        <span class="php-var">$language</span>, <span class="php-var">$keys</span>[ <span class="php-var">$string</span> ] );
 </span><span id="497" class="l"><a class="l" href="#497"> 497: </a>                            }
 </span><span id="498" class="l"><a class="l" href="#498"> 498: </a>                        
@@ -1321,7 +1323,7 @@
 </span><span id="1196" class="l"><a class="l" href="#1196">1196: </a>                                                    (string) <span class="php-var">$record</span>[ <span class="php-quote">'official_name'</span> ] );
 </span><span id="1197" class="l"><a class="l" href="#1197">1197: </a>                    <span class="php-keyword1">if</span>( <span class="php-var">$record</span>[ <span class="php-quote">'common_name'</span> ] !== <span class="php-keyword1">NULL</span> )
 </span><span id="1198" class="l"><a class="l" href="#1198">1198: </a>                        ManageIndexedOffset( <span class="php-var">$part1_3_term</span>,
-</span><span id="1199" class="l"><a class="l" href="#1199">1199: </a>                            (string) <span class="php-var">$part1_common_name_tag</span>[ kOFFSET_NID ],
+</span><span id="1199" class="l"><a class="l" href="#1199">1199: </a>                            (string) <span class="php-var">$part1_common_name_tag</span>[ kTAG_NID ],
 </span><span id="1200" class="l"><a class="l" href="#1200">1200: </a>                            kDEFAULT_LANGUAGE, (string) <span class="php-var">$record</span>[ <span class="php-quote">'common_name'</span> ] );
 </span><span id="1201" class="l"><a class="l" href="#1201">1201: </a>                    
 </span><span id="1202" class="l"><a class="l" href="#1202">1202: </a>                    <span class="php-comment">//</span>
@@ -1367,14 +1369,14 @@
 </span><span id="1242" class="l"><a class="l" href="#1242">1242: </a>                            <span class="php-comment">// Update common name.</span>
 </span><span id="1243" class="l"><a class="l" href="#1243">1243: </a>                            <span class="php-comment">//</span>
 </span><span id="1244" class="l"><a class="l" href="#1244">1244: </a>                            <span class="php-keyword1">if</span>( <span class="php-var">$part1_3_term</span>-&gt;offsetExists(
-</span><span id="1245" class="l"><a class="l" href="#1245">1245: </a>                                (string) <span class="php-var">$part1_common_name_tag</span>[ kOFFSET_NID ] ) )
+</span><span id="1245" class="l"><a class="l" href="#1245">1245: </a>                                (string) <span class="php-var">$part1_common_name_tag</span>[ kTAG_NID ] ) )
 </span><span id="1246" class="l"><a class="l" href="#1246">1246: </a>                            {
 </span><span id="1247" class="l"><a class="l" href="#1247">1247: </a>                                <span class="php-var">$string</span> = ManageIndexedOffset( <span class="php-var">$part1_3_term</span>,
-</span><span id="1248" class="l"><a class="l" href="#1248">1248: </a>                                    (string) <span class="php-var">$part1_common_name_tag</span>[ kOFFSET_NID ],
+</span><span id="1248" class="l"><a class="l" href="#1248">1248: </a>                                    (string) <span class="php-var">$part1_common_name_tag</span>[ kTAG_NID ],
 </span><span id="1249" class="l"><a class="l" href="#1249">1249: </a>                                    kDEFAULT_LANGUAGE );
 </span><span id="1250" class="l"><a class="l" href="#1250">1250: </a>                                <span class="php-keyword1">if</span>( <span class="php-keyword2">array_key_exists</span>( <span class="php-var">$string</span>, <span class="php-var">$keys</span> ) )
 </span><span id="1251" class="l"><a class="l" href="#1251">1251: </a>                                    ManageIndexedOffset(<span class="php-var">$part1_3_term</span>,
-</span><span id="1252" class="l"><a class="l" href="#1252">1252: </a>                                    (string) <span class="php-var">$part1_common_name_tag</span>[ kOFFSET_NID ],
+</span><span id="1252" class="l"><a class="l" href="#1252">1252: </a>                                    (string) <span class="php-var">$part1_common_name_tag</span>[ kTAG_NID ],
 </span><span id="1253" class="l"><a class="l" href="#1253">1253: </a>                                    <span class="php-var">$language</span>, <span class="php-var">$keys</span>[ <span class="php-var">$string</span> ] );
 </span><span id="1254" class="l"><a class="l" href="#1254">1254: </a>                            }
 </span><span id="1255" class="l"><a class="l" href="#1255">1255: </a>                        
@@ -1569,7 +1571,7 @@
 </span><span id="1444" class="l"><a class="l" href="#1444">1444: </a>                        <span class="php-var">$part3_3_term</span>-&gt;Description( kDEFAULT_LANGUAGE,
 </span><span id="1445" class="l"><a class="l" href="#1445">1445: </a>                                                    (string) <span class="php-var">$record</span>[ <span class="php-quote">'comment'</span> ] );
 </span><span id="1446" class="l"><a class="l" href="#1446">1446: </a>                    <span class="php-keyword1">if</span>( <span class="php-var">$record</span>[ <span class="php-quote">'date_withdrawn'</span> ] !== <span class="php-keyword1">NULL</span> )
-</span><span id="1447" class="l"><a class="l" href="#1447">1447: </a>                        <span class="php-var">$part3_3_term</span>[ (string) <span class="php-var">$part3_date_tag</span>[ kOFFSET_NID ] ]
+</span><span id="1447" class="l"><a class="l" href="#1447">1447: </a>                        <span class="php-var">$part3_3_term</span>[ (string) <span class="php-var">$part3_date_tag</span>[ kTAG_NID ] ]
 </span><span id="1448" class="l"><a class="l" href="#1448">1448: </a>                            = (string) <span class="php-var">$record</span>[ <span class="php-quote">'date_withdrawn'</span> ];
 </span><span id="1449" class="l"><a class="l" href="#1449">1449: </a>                    
 </span><span id="1450" class="l"><a class="l" href="#1450">1450: </a>                    <span class="php-comment">//</span>
@@ -1985,7 +1987,7 @@
 </span><span id="1860" class="l"><a class="l" href="#1860">1860: </a>                            <span class="php-var">$term</span>-&gt;NS( <span class="php-var">$part2_ns</span> );
 </span><span id="1861" class="l"><a class="l" href="#1861">1861: </a>                            <span class="php-keyword1">if</span>( <span class="php-var">$rec_element</span>[ <span class="php-quote">'name'</span> ] !== <span class="php-keyword1">NULL</span> )
 </span><span id="1862" class="l"><a class="l" href="#1862">1862: </a>                                <span class="php-var">$term</span>-&gt;Label( <span class="php-keyword1">NULL</span>, (string) <span class="php-var">$rec_element</span>[ <span class="php-quote">'name'</span> ] );
-</span><span id="1863" class="l"><a class="l" href="#1863">1863: </a>                            <span class="php-var">$term</span>[ <span class="php-var">$part2_type_tag</span>[ kOFFSET_NID ] ] = <span class="php-var">$type</span>;
+</span><span id="1863" class="l"><a class="l" href="#1863">1863: </a>                            <span class="php-var">$term</span>[ <span class="php-var">$part2_type_tag</span>[ kTAG_NID ] ] = <span class="php-var">$type</span>;
 </span><span id="1864" class="l"><a class="l" href="#1864">1864: </a>                            
 </span><span id="1865" class="l"><a class="l" href="#1865">1865: </a>                            <span class="php-comment">//</span>
 </span><span id="1866" class="l"><a class="l" href="#1866">1866: </a>                            <span class="php-comment">// Iterate languages.</span>
@@ -2334,7 +2336,7 @@
 </span><span id="2209" class="l"><a class="l" href="#2209">2209: </a>                        <span class="php-var">$letter_term</span>-&gt;Label( kDEFAULT_LANGUAGE,
 </span><span id="2210" class="l"><a class="l" href="#2210">2210: </a>                                             (string) <span class="php-var">$record</span>[ <span class="php-quote">'currency_name'</span> ] );
 </span><span id="2211" class="l"><a class="l" href="#2211">2211: </a>                    <span class="php-keyword1">if</span>( <span class="php-var">$record</span>[ <span class="php-quote">'date_withdrawn'</span> ] !== <span class="php-keyword1">NULL</span> )
-</span><span id="2212" class="l"><a class="l" href="#2212">2212: </a>                        <span class="php-var">$letter_term</span>[ (string) <span class="php-var">$h_date_tag</span>[ kOFFSET_NID ] ]
+</span><span id="2212" class="l"><a class="l" href="#2212">2212: </a>                        <span class="php-var">$letter_term</span>[ (string) <span class="php-var">$h_date_tag</span>[ kTAG_NID ] ]
 </span><span id="2213" class="l"><a class="l" href="#2213">2213: </a>                            = (string) <span class="php-var">$record</span>[ <span class="php-quote">'date_withdrawn'</span> ];
 </span><span id="2214" class="l"><a class="l" href="#2214">2214: </a>                    
 </span><span id="2215" class="l"><a class="l" href="#2215">2215: </a>                    <span class="php-comment">//</span>

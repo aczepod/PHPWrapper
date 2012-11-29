@@ -6,8 +6,8 @@
 
 	<title>Class COntologyWrapper | MyWrapper Reference Documentation</title>
 
-	<script type="text/javascript" src="resources/combined.js?1742645618"></script>
-	<script type="text/javascript" src="elementlist.js?539813953"></script>
+	<script type="text/javascript" src="resources/combined.js?3680114562"></script>
+	<script type="text/javascript" src="elementlist.js?2861350629"></script>
 	<link rel="stylesheet" type="text/css" media="all" href="resources/style.css?3505392360" />
 
 </head>
@@ -38,6 +38,8 @@
 				<li class="active main"><a href="package-MyWrapper.Wrappers.html">Wrappers</a>
 						</li>
 							</ul></li>
+				<li><a href="package-None.html">None</a>
+						</li>
 				<li><a href="package-PHP.html">PHP</a>
 						</li>
 			</ul>
@@ -206,7 +208,7 @@ collections.</p>
 				<b>Author:</b>
 				Milko A. Škofič &lt;<a
 href="mailto:m.skofic&#64;cgiar.org">m.skofic&#64;<!---->cgiar.org</a>&gt;<br />
-		<b>Located at</b> <a href="source-class-COntologyWrapper.html#64-2040" title="Go to source code">COntologyWrapper.php</a><br />
+		<b>Located at</b> <a href="source-class-COntologyWrapper.html#64-2038" title="Go to source code">COntologyWrapper.php</a><br />
 	</div>
 
 
@@ -1078,8 +1080,8 @@ term and node attributes.</p>
 			<li><tt>kAPI_COLLECTION_VERTEX</tt>: This element is an array that holds
 			a list of node vertex. A vertex is the combination of the node attributes merged
 			with the referenced term attributes. The items of this list are indexed by the
-			node kOFFSET_NID and eventual term attributes are overwritten by
-			matching node attributes. The contents of this element are fed by the <code><a href="class-COntologyWrapper.html#__BuildVertex">COntologyWrapper::_BuildVertex()</a></code> protected method.</li>
+			node kTAG_NID and eventual term attributes are overwritten by matching
+			node attributes. The contents of this element are fed by the <code><a href="class-COntologyWrapper.html#__BuildVertex">COntologyWrapper::_BuildVertex()</a></code> protected method.</li>
 
 			<li><tt>kAPI_COLLECTION_EDGE</tt>: This element is an array that holds a
 			list of edges, the array keys will be the edge's kTAG_GID and the value
@@ -1087,9 +1089,8 @@ term and node attributes.</p>
 			_BuildEdge() protected method.</li>
 
 			<li><tt>kAPI_COLLECTION_TAG</tt>: This element is an array that holds a
-			list of tags, the array indexes will be the tag kOFFSET_NID and the
-			array values will be the tag kTAG_TAG_PATH and kTAG_GID, where
-			the kTAG_TAG_PATH predicate references will be set to the term kTAG_GID.</li>
+			list of tags, the array indexes will be the tag kTAG_NID and the array
+			values will be the tag kTAG_PATH and kTAG_GID, where the kTAG_PATH predicate references will be set to the term kTAG_GID.</li>
 		</ul>
 	</li>
 
@@ -1116,14 +1117,14 @@ term and node attributes.</p>
 
 <p>The method will generate an array containing the merged attributes of the
 node and the referenced term, this array will be set in the kAPI_COLLECTION_VERTEX of the <tt>&amp;$theCollection</tt> parameter with as
-index the node kOFFSET_NID that will ve added to the kAPI_COLLECTION_ID element of the collection.</p>
+index the node kTAG_NID that will ve added to the kAPI_COLLECTION_ID element of the collection.</p>
 
 <p>If a matching vertex already exists in the <tt>&amp;$theCollection</tt>
 parameter, the method will do nothing.</p>
 
 <p>For more information please consult the <code><a href="class-COntologyWrapper.html#__BuildVertex">COntologyWrapper::_BuildVertex()</a></code> method
-reference, note that this method will remove the kOFFSET_NID attribute
-from the node, it will only use this information to index the node.</p>
+reference, note that this method will remove the kTAG_NID attribute from
+the node, it will only use this information to index the node.</p>
 
 <p>The method will raise an exception if any element cannot be resolved.</p>
 
@@ -1195,8 +1196,8 @@ container.</p>
 			<li><tt>kAPI_COLLECTION_VERTEX</tt>: This element is an array that holds
 			a list of node vertex. A vertex is the combination of the node attributes merged
 			with the referenced term attributes. The items of this list are indexed by the
-			node kOFFSET_NID and eventual term attributes are overwritten by
-			matching node attributes. The contents of this element are fed by the <code><a href="class-COntologyWrapper.html#__BuildVertex">COntologyWrapper::_BuildVertex()</a></code> protected method.</li>
+			node kTAG_NID and eventual term attributes are overwritten by matching
+			node attributes. The contents of this element are fed by the <code><a href="class-COntologyWrapper.html#__BuildVertex">COntologyWrapper::_BuildVertex()</a></code> protected method.</li>
 
 			<li><tt>kAPI_COLLECTION_EDGE</tt>: This element is an array that holds a
 			list of edges, the array keys will be the edge's kTAG_GID and the value
@@ -1204,9 +1205,8 @@ container.</p>
 			_BuildEdge() protected method.</li>
 
 			<li><tt>kAPI_COLLECTION_TAG</tt>: This element is an array that holds a
-			list of tags, the array indexes will be the tag kOFFSET_NID and the
-			array values will be the tag kTAG_TAG_PATH and kTAG_GID, where
-			the kTAG_TAG_PATH predicate references will be set to the term kTAG_GID.</li>
+			list of tags, the array indexes will be the tag kTAG_NID and the array
+			values will be the tag kTAG_PATH and kTAG_GID, where the kTAG_PATH predicate references will be set to the term kTAG_GID.</li>
 		</ul>
 	</li>
 
@@ -1233,14 +1233,14 @@ container.</p>
 
 <p>The method will generate an array containing the merged attributes of the
 node and the referenced term, this array will be set in the kAPI_COLLECTION_VERTEX of the <tt>&amp;$theCollection</tt> parameter with as
-index the node kOFFSET_NID that will ve added to the kAPI_COLLECTION_ID element of the collection.</p>
+index the node kTAG_NID that will ve added to the kAPI_COLLECTION_ID element of the collection.</p>
 
 <p>If a matching vertex already exists in the <tt>&amp;$theCollection</tt>
 parameter, the method will do nothing.</p>
 
 <p>For more information please consult the <code><a href="class-COntologyWrapper.html#__BuildVertex">COntologyWrapper::_BuildVertex()</a></code> method
-reference, note that this method will remove the kOFFSET_NID attribute
-from the node, it will only use this information to index the node.</p>
+reference, note that this method will remove the kTAG_NID attribute from
+the node, it will only use this information to index the node.</p>
 
 <p>The method will raise an exception if any element cannot be resolved.</p>
 
@@ -1311,8 +1311,8 @@ collection.</p>
 			<li><tt>kAPI_COLLECTION_VERTEX</tt>: This element is an array that holds
 			a list of node vertex. A vertex is the combination of the node attributes merged
 			with the referenced term attributes. The items of this list are indexed by the
-			node kOFFSET_NID and eventual term attributes are overwritten by
-			matching node attributes. The contents of this element are fed by the <code><a href="class-COntologyWrapper.html#__BuildVertex">COntologyWrapper::_BuildVertex()</a></code> protected method to which both the object and subject vertices
+			node kTAG_NID and eventual term attributes are overwritten by matching
+			node attributes. The contents of this element are fed by the <code><a href="class-COntologyWrapper.html#__BuildVertex">COntologyWrapper::_BuildVertex()</a></code> protected method to which both the object and subject vertices
 			will be provided.</li>
 
 			<li><tt>kAPI_COLLECTION_EDGE</tt>: This element is an array that holds a
@@ -1321,9 +1321,8 @@ collection.</p>
 			_BuildEdge() protected method.</li>
 
 			<li><tt>kAPI_COLLECTION_TAG</tt>: This element is an array that holds a
-			list of tags, the array indexes will be the tag kOFFSET_NID and the
-			array values will be the tag kTAG_TAG_PATH and kTAG_GID, where
-			the kTAG_TAG_PATH predicate references will be set to the term kTAG_GID.</li>
+			list of tags, the array indexes will be the tag kTAG_NID and the array
+			values will be the tag kTAG_PATH and kTAG_GID, where the kTAG_PATH predicate references will be set to the term kTAG_GID.</li>
 		</ul>
 	</li>
 
@@ -1377,7 +1376,7 @@ collection.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#__ExportTag">#</a>
-		<code><a href="source-class-COntologyWrapper.html#1394-1597" title="Go to source code">_ExportTag</a>( <span>reference <var>&amp; $theCollection</var></span>, <span>mixed <var>$theTag</var></span> )</code>
+		<code><a href="source-class-COntologyWrapper.html#1394-1596" title="Go to source code">_ExportTag</a>( <span>reference <var>&amp; $theCollection</var></span>, <span>mixed <var>$theTag</var></span> )</code>
 
 		<div class="description short">
 			
@@ -1413,8 +1412,8 @@ collection.</p>
 			<li><tt>kAPI_COLLECTION_VERTEX</tt>: This element is an array that holds
 			a list of node vertex. A vertex is the combination of the node attributes merged
 			with the referenced term attributes. The items of this list are indexed by the
-			node kOFFSET_NID and eventual term attributes are overwritten by
-			matching node attributes. The contents of this element are fed by the <code><a href="class-COntologyWrapper.html#__BuildVertex">COntologyWrapper::_BuildVertex()</a></code> protected method.</li>
+			node kTAG_NID and eventual term attributes are overwritten by matching
+			node attributes. The contents of this element are fed by the <code><a href="class-COntologyWrapper.html#__BuildVertex">COntologyWrapper::_BuildVertex()</a></code> protected method.</li>
 
 			<li><tt>kAPI_COLLECTION_EDGE</tt>: This element is an array that holds a
 			list of edges, the array keys will be the edge's kTAG_GID and the value
@@ -1422,9 +1421,9 @@ collection.</p>
 			_BuildEdge() protected method.</li>
 
 			<li><tt>kAPI_COLLECTION_TAG</tt>: This element is an array that holds a
-			list of tags, the array indexes will be the tag kOFFSET_NID and the
-			array values will be the tag kTAG_TAG_PATH and kTAG_GID, where
-			the kTAG_TAG_PATH predicate references will be set to the term kTAG_GID. This method will fill this element.</li>
+			list of tags, the array indexes will be the tag kTAG_NID and the array
+			values will be the tag kTAG_PATH and kTAG_GID, where the kTAG_PATH predicate references will be set to the term kTAG_GID. This
+			method will fill this element.</li>
 		</ul>
 	</li>
 
@@ -1445,12 +1444,11 @@ collection.</p>
 </ul>
 
 <p>The method will generate an array containing the merged attributes of the tag
-and the exported attributes of the referenced nodes, generated by the _ExportNode() protected method. The method will exclude the kOFFSET_NID, kTAG_UID, kTAG_CLASS and kTAG_VERTEX_TERMS
-from the tag, but append all others to the merged node and term attributes. The
-predicate elements of the KTAG_PATH attribute will be set to the
-referenced term's kTAG_GID. The resulting array will be set in the
-kOFFSET_EXPORT_TAG element of the provided collection using the tag's
-kOFFSET_NID attribute as index.</p>
+and the exported attributes of the referenced nodes, generated by the _ExportNode() protected method. The method will exclude the kTAG_NID,
+kTAG_UID, and kTAG_CLASS from the tag, but append all others to
+the merged node and term attributes. The predicate elements of the KTAG_PATH attribute will be set to the referenced term's kTAG_GID. The
+resulting array will be set in the kOFFSET_EXPORT_TAG element of the
+provided collection using the tag's kTAG_NID attribute as index.</p>
 
 <p>The method will raise an exception if any element cannot be resolved.</p>
 
@@ -1486,7 +1484,7 @@ kOFFSET_NID attribute as index.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#__BuildVertex">#</a>
-		<code><a href="source-class-COntologyWrapper.html#1604-1685" title="Go to source code">_BuildVertex</a>( <span>mixed <var>$theNode</var></span> )</code>
+		<code><a href="source-class-COntologyWrapper.html#1603-1684" title="Go to source code">_BuildVertex</a>( <span>mixed <var>$theNode</var></span> )</code>
 
 		<div class="description short">
 			
@@ -1507,7 +1505,7 @@ will overwrite the term attributes; in all cases, however, the kTAG_LID
 and kTAG_GID will be taken from the term.</p>
 
 <p>We omit the kTAG_CLASS, kTAG_TERM (the term's attributes are
-merged with the node's attributes), kTAG_REFS_TAG and kTAG_REFS_EDGE.</p>
+merged with the node's attributes), kTAG_REFS_TAG and kTAG_EDGES.</p>
 
 <p>All other attributes will either be included from the referenced term, or
 will be taken by the current node; note that the node attributes will overwrite
@@ -1545,7 +1543,7 @@ the term attributes.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#__BuildTerm">#</a>
-		<code><a href="source-class-COntologyWrapper.html#1692-1777" title="Go to source code">_BuildTerm</a>( <span>mixed <var>$theTerm</var></span> )</code>
+		<code><a href="source-class-COntologyWrapper.html#1691-1775" title="Go to source code">_BuildTerm</a>( <span>mixed <var>$theTerm</var></span> )</code>
 
 		<div class="description short">
 			
@@ -1563,11 +1561,10 @@ return a single object that holds a merged selection of attributes.</p>
 <p>By default we include the kTAG_LID, kTAG_GID and the kTAG_NAMESPACE (resolved into the referenced kTAG_GID) from the current
 term.</p>
 
-<p>We omit the kOFFSET_NID, kTAG_CLASS, kOFFSET_TERM,
-kOFFSET_REFS_NAMESPACE, kOFFSET_REFS_NODE and kOFFSET_REFS_TAG.</p>
+<p>We omit the kTAG_NID, kTAG_CLASS, kTERM_TERM, kTERM_NAMESPACE_REFS and kTERM_NODES.</p>
 
 <p>All other attributes will either be included from the current term, or, if
-the term is related to another term through its kOFFSET_TERM attribute,
+the term is related to another term through its kTERM_TERM attribute,
 from that term.</p>
 
 <p>The method will raise an exception if any element cannot be resolved.</p>
@@ -1602,7 +1599,7 @@ from that term.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#__GetVertexFromNodes">#</a>
-		<code><a href="source-class-COntologyWrapper.html#1793-1863" title="Go to source code">_GetVertexFromNodes</a>( <span>mixed <var>$theNodes</var></span> )</code>
+		<code><a href="source-class-COntologyWrapper.html#1791-1861" title="Go to source code">_GetVertexFromNodes</a>( <span>mixed <var>$theNodes</var></span> )</code>
 
 		<div class="description short">
 			
@@ -1660,7 +1657,7 @@ number of returned elements.</i></p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#__GetVertexRelations">#</a>
-		<code><a href="source-class-COntologyWrapper.html#1870-2036" title="Go to source code">_GetVertexRelations</a>( <span>integer <var>$theVertex</var></span> )</code>
+		<code><a href="source-class-COntologyWrapper.html#1868-2034" title="Go to source code">_GetVertexRelations</a>( <span>integer <var>$theVertex</var></span> )</code>
 
 		<div class="description short">
 			

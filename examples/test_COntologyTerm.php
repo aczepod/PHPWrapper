@@ -367,8 +367,8 @@ try
 	$last_term = new MyClass();
 	echo( '<h5>$last_term[ kTAG_LID ] = "last_code";</h5>' );
 	$last_term[ kTAG_LID ] = "last_code";
-	echo( '<h5>$last_term[ kTAG_NAMESPACE ] = $namespace[ kOFFSET_NID ];</h5>' );
-	$last_term[ kTAG_NAMESPACE ] = $namespace[ kOFFSET_NID ];
+	echo( '<h5>$last_term[ kTAG_NAMESPACE ] = $namespace[ kTAG_NID ];</h5>' );
+	$last_term[ kTAG_NAMESPACE ] = $namespace[ kTAG_NID ];
 	echo( '<h5>$status = $last_term->Insert( $database );</h5>' );
 	$status = $last_term->Insert( $database );
 	echo( 'Inited['.$last_term->inited()
@@ -376,8 +376,8 @@ try
 				   .'] Saved['.$last_term->committed()
 				   .'] Encoded['.$last_term->encoded().']<br />' );
 	echo( '<pre>' ); print_r( $last_term ); echo( '</pre>' );
-	echo( '<h5>$namespace = COntologyTerm::NewObject( COntologyTerm::DefaultContainer( $database ), $namespace[ kOFFSET_NID ] ); // Notice the namespace reference count</h5>' );
-	$namespace = COntologyTerm::NewObject( COntologyTerm::DefaultContainer( $database ), $namespace[ kOFFSET_NID ] );
+	echo( '<h5>$namespace = COntologyTerm::NewObject( COntologyTerm::DefaultContainer( $database ), $namespace[ kTAG_NID ] ); // Notice the namespace reference count</h5>' );
+	$namespace = COntologyTerm::NewObject( COntologyTerm::DefaultContainer( $database ), $namespace[ kTAG_NID ] );
 	echo( '<pre>' ); print_r( $namespace ); echo( '</pre>' );
 	echo( '<hr />' );
 
@@ -387,8 +387,8 @@ try
 	try
 	{
 		echo( '<h4>Test modifying namespace counter</h4>' );
-		echo( '<h5>$last_term[ kTAG_REFS_NAMESPACE ] = 24;</h5>' );
-		$last_term[ kTAG_REFS_NAMESPACE ] = 24;
+		echo( '<h5>$last_term[ kTAG_NAMESPACE_REFS ] = 24;</h5>' );
+		$last_term[ kTAG_NAMESPACE_REFS ] = 24;
 		echo( '<h3><font color="red">Should have raised an exception</font></h3>' );
 		echo( 'Inited['.$namespace->inited()
 					   .'] Dirty['.$namespace->dirty()
@@ -410,8 +410,8 @@ try
 	try
 	{
 		echo( '<h4>Test modifying node list</h4>' );
-		echo( '<h5>$last_term[ kTAG_REFS_NODE ] = 24;</h5>' );
-		$last_term[ kTAG_REFS_NODE ] = 24;
+		echo( '<h5>$last_term[ kTAG_NODES ] = 24;</h5>' );
+		$last_term[ kTAG_NODES ] = 24;
 		echo( '<h3><font color="red">Should have raised an exception</font></h3>' );
 		echo( 'Inited['.$namespace->inited()
 					   .'] Dirty['.$namespace->dirty()
@@ -530,8 +530,8 @@ try
 	// Test resolving term with identifier.
 	//
 	echo( '<h4>Test resolving term with identifier</h4>' );
-	echo( '<h5>$term = COntologyTerm::Resolve( $database, $new_term[ kOFFSET_NID ], NULL, TRUE );</h5>' );
-	$term = COntologyTerm::Resolve( $database, $new_term[ kOFFSET_NID ], NULL, TRUE );
+	echo( '<h5>$term = COntologyTerm::Resolve( $database, $new_term[ kTAG_NID ], NULL, TRUE );</h5>' );
+	$term = COntologyTerm::Resolve( $database, $new_term[ kTAG_NID ], NULL, TRUE );
 	echo( '<pre>' ); print_r( $term ); echo( '</pre>' );
 	echo( '<hr />' );
 

@@ -114,11 +114,11 @@ require_once( kPATH_MYWRAPPER_LIBRARY_CLASS."/CDocument.php" );
  *		<li><i>{@link kTYPE_INT32}</i>: 32 bit signed integer.
  *		<li><i>{@link kTYPE_INT64}</i>: 64 bit signed integer.
  *		<li><i>{@link kTYPE_FLOAT}</i>: Floating point number.
- *		<li><i>{@link kTYPE_DATE}</i>: A date.
- *		<li><i>{@link kTYPE_TIME}</i>: A date and time.
+ *		<li><i>{@link kTYPE_DATE_STRING}</i>: A date.
+ *		<li><i>{@link kTYPE_TIME_STRING}</i>: A date and time.
  *		<li><i>{@link kTYPE_STAMP}</i>: A native timestamp.
  *		<li><i>{@link kTYPE_BOOLEAN}</i>: An <tt>on</tt>/<tt>off</tt> switch.
- *		<li><i>{@link kTYPE_BINARY}</i>: A binary string.
+ *		<li><i>{@link kTYPE_BINARY_STRING}</i>: A binary string.
  *	 </ul>
  *	<li><i>{@link kOFFSET_QUERY_DATA}</i>: The statement object or test data.
  * </ul>
@@ -228,15 +228,15 @@ class CQueryStatement extends CDocument
 	 *		<li><i>{@link kTYPE_FLOAT}</i>: Floating point number, the number is expected in
 	 *			the next parameter, either as an integer, float or string; once received, it
 	 *			will be converted to a <tt>float</tt>.
-	 *		<li><i>{@link kTYPE_DATE}</i>: A string date, it is treated as a string date
+	 *		<li><i>{@link kTYPE_DATE_STRING}</i>: A string date, it is treated as a string date
 	 *			with a YYYYMMDD format in which month and day may be omitted.
-	 *		<li><i>{@link kTYPE_TIME}</i>: A string time, it is treated as a string time
+	 *		<li><i>{@link kTYPE_TIME_STRING}</i>: A string time, it is treated as a string time
 	 *			with a YYYY-MM-DD HH:MM:SS format in which all elements are required; this
 	 *			element will be converted to a {@link kTYPE_STAMP} data type.
 	 *		<li><i>{@link kTYPE_STAMP}</i>: A timestamp, optionally including microseconds.
 	 *		<li><i>{@link kTYPE_BOOLEAN}</i>: An <tt>on</tt>/<tt>off</tt> switch, it will be
 	 *			converted to a <tt>1</tt>/<tt>0</tt> pair.
-	 *		<li><i>{@link kTYPE_BINARY}</i>: A binary string.
+	 *		<li><i>{@link kTYPE_BINARY_STRING}</i>: A binary string.
 	 *	 </ul>
 	 *	<li><tt>$theObject</tt>: The statement object data, it should reflect the data type
 	 *		provided in the previous parameter.
@@ -539,13 +539,13 @@ class CQueryStatement extends CDocument
 	 *		<li><i>{@link kTYPE_INT32}</i>: 32 bit signed integer.
 	 *		<li><i>{@link kTYPE_INT64}</i>: 64 bit signed integer.
 	 *		<li><i>{@link kTYPE_FLOAT}</i>: Floating point number.
-	 *		<li><i>{@link kTYPE_DATE}</i>: A string date, it means a string date with a
+	 *		<li><i>{@link kTYPE_DATE_STRING}</i>: A string date, it means a string date with a
 	 *			YYYYMMDD format in which month and day may be omitted.
-	 *		<li><i>{@link kTYPE_TIME}</i>: A string time, it is treated as a string time
+	 *		<li><i>{@link kTYPE_TIME_STRING}</i>: A string time, it is treated as a string time
 	 *			with a YYYY-MM-DD HH:MM:SS format in which all elements are required.
 	 *		<li><i>{@link kTYPE_STAMP}</i>: A timestamp, optionally including microseconds.
 	 *		<li><i>{@link kTYPE_BOOLEAN}</i>: An <tt>on</tt>/<tt>off</tt> switch.
-	 *		<li><i>{@link kTYPE_BINARY}</i>: A binary string.
+	 *		<li><i>{@link kTYPE_BINARY_STRING}</i>: A binary string.
 	 *	 </ul>
 	 *		If the provided value does not match any of the above, the method will raise an
 	 *		exception.
@@ -579,11 +579,11 @@ class CQueryStatement extends CDocument
 				case kTYPE_INT32:
 				case kTYPE_INT64:
 				case kTYPE_FLOAT:
-				case kTYPE_DATE:
-				case kTYPE_TIME:
+				case kTYPE_DATE_STRING:
+				case kTYPE_TIME_STRING:
 				case kTYPE_STAMP:
 				case kTYPE_BOOLEAN:
-				case kTYPE_BINARY:
+				case kTYPE_BINARY_STRING:
 					break;
 				
 				default:
@@ -1405,7 +1405,7 @@ class CQueryStatement extends CDocument
 	 *
 	 * @see kOPERATOR_NULL
 	 */
-	static function Missing( $theSubject)
+	static function Missing( $theSubject )
 	{
 		return new self( (string) $theSubject, kOPERATOR_NULL );					// ==>
 
@@ -1437,7 +1437,7 @@ class CQueryStatement extends CDocument
 	 *
 	 * @see kOPERATOR_NOT_NULL
 	 */
-	static function Exists( $theSubject)
+	static function Exists( $theSubject )
 	{
 		return new self( (string) $theSubject, kOPERATOR_NOT_NULL );				// ==>
 
@@ -1788,7 +1788,7 @@ class CQueryStatement extends CDocument
 					switch( get_class( $theValue ) )
 					{
 						case 'CDataTypeBinary':
-							$theType = kTYPE_BINARY;					break;
+							$theType = kTYPE_BINARY_STRING;					break;
 						case 'CDataTypeInt32':
 							$theType = kTYPE_INT32;						break;
 						case 'CDataTypeInt64':
@@ -1798,7 +1798,7 @@ class CQueryStatement extends CDocument
 						case 'CDataTypeMongoId':
 							$theType = kTYPE_MongoId;					break;
 						case 'CDataTypeRegex':
-							$theType = kTYPE_REGEX;						break;
+							$theType = kTYPE_REGEX_STRING;						break;
 						case 'CDataTypeStamp':
 							$theType = kTYPE_STAMP;						break;
 					}

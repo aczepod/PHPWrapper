@@ -6,8 +6,8 @@
 
 	<title>Class COntologyNode | MyWrapper Reference Documentation</title>
 
-	<script type="text/javascript" src="resources/combined.js?1742645618"></script>
-	<script type="text/javascript" src="elementlist.js?539813953"></script>
+	<script type="text/javascript" src="resources/combined.js?3680114562"></script>
+	<script type="text/javascript" src="elementlist.js?2861350629"></script>
 	<link rel="stylesheet" type="text/css" media="all" href="resources/style.css?3505392360" />
 
 </head>
@@ -38,6 +38,8 @@
 				<li class="main"><a href="package-MyWrapper.Wrappers.html">Wrappers</a>
 						</li>
 							</ul></li>
+				<li><a href="package-None.html">None</a>
+						</li>
 				<li><a href="package-PHP.html">PHP</a>
 						</li>
 			</ul>
@@ -49,8 +51,11 @@
 		<div id="elements">
 			<h3>Classes</h3>
 			<ul>
-				<li><a href="class-COntology.html">COntology</a></li>
+				<li><a href="class-COntologyAliasNode.html">COntologyAliasNode</a></li>
+				<li><a href="class-COntologyAliasVertex.html">COntologyAliasVertex</a></li>
 				<li><a href="class-COntologyEdge.html">COntologyEdge</a></li>
+				<li><a href="class-COntologyMasterNode.html">COntologyMasterNode</a></li>
+				<li><a href="class-COntologyMasterVertex.html">COntologyMasterVertex</a></li>
 				<li class="active"><a href="class-COntologyNode.html">COntologyNode</a></li>
 				<li><a href="class-COntologyTag.html">COntologyTag</a></li>
 				<li><a href="class-COntologyTerm.html">COntologyTerm</a></li>
@@ -108,45 +113,48 @@
 specific context of relations with other nodes, holding a series of attributes
 specific to the node.</p>
 
-<p>This class extends its ancestor, <code><a href="class-CNode.html">CNode</a></code>, by asserting the <code><a href="class-CNode.html#_Term">CNode::Term()</a></code> to be an instance of <code><a href="class-COntologyTerm.html">COntologyTerm</a></code> and by managing the kTAG_REFS_NODE offset of the related <code><a href="class-CNode.html#_Term">CNode::Term()</a></code>.</p>
+<p>This class extends its ancestor, <code><a href="class-CNode.html">CNode</a></code>, by asserting the data types
+of the object's attributes and by setting related object's references.</p>
 
 <ul>
-	<li><i>Term</i>: The term, <tt><code><a href="class-CNode.html#_Term">CNode::Term()</a></code></tt> or the inherited <tt>kTAG_TERM</tt> tag, in this class is a reference to an instance of the <code><a href="class-COntologyTerm.html">COntologyTerm</a></code> class, constituted by its native identifier, kOFFSET_NID.
-	In this class we make sure that this attribute is a valid reference and manage
-	its kTAG_REFS_NODE attribute by adding or removing the current node's
-	kOFFSET_NID from the term's kTAG_REFS_NODE list depending on
+	<li><i>Term</i>: The term, or the inherited <tt>kTAG_TERM</tt> tag, in
+	this class is a reference to an instance of the <code><a href="class-COntologyTerm.html">COntologyTerm</a></code> class,
+	constituted by its native identifier, kTAG_NID. At commit time, <code><a href="class-COntologyNode.html#__PrecommitRelated">COntologyNode::_PrecommitRelated()</a></code>, we commit the eventual term instance and check if the
+	value provided to the <code><a href="class-CNode.html#_Term">CNode::Term()</a></code> member accessor is a term reference; we
+	also manage its kTAG_NODES attribute by adding or removing the current
+	node's kTAG_NID from the term's kTAG_NODES list depending on
 	whether the term was referenced or the node deleted.</li>
 
 	<li><i>Type</i>: The type, <tt><code><a href="class-COntologyNode.html#_Type">COntologyNode::Type()</a></code></tt> or the inherited <tt>kTAG_TYPE</tt> tag, in this class is required to belong to a specific set of
 	values, the <code><a href="class-COntologyNode.html#_Type">COntologyNode::Type()</a></code> method's documentation lists them.</li>
 
 	<li><i>Edge references</i>: The edge references, <tt><code><a href="class-COntologyNode.html#_EdgeRefs">COntologyNode::EdgeRefs()</a></code></tt> or
-	the <tt>kTAG_REFS_EDGE</tt> tag, represents the list of <code><a href="class-COntologyEdge.html">COntologyEdge</a></code> object references in which the current node was referenced as the
+	the <tt>kTAG_EDGES</tt> tag, represents the list of <code><a href="class-COntologyEdge.html">COntologyEdge</a></code> object references in which the current node was referenced as the
 	subject or object of a relationship. It is an array of <code><a href="class-COntologyEdge.html">COntologyEdge</a></code>
-	kOFFSET_NID attributes in which the current node is referenced. This
+	kTAG_NID attributes in which the current node is referenced. This
 	attribute is read-only and is managed internally.</li>
 </ul>
 
 <p>Since the class represents a term in context, there is no combination of
 attributes that can be used to uniquely identify the object, for this reason the
 object does not feature the kTAG_GID attribute, so it is the duty of the
-hosting container to provide the kOFFSET_NID identifier. In this class
-we use two main strategies to identify nodes:</p>
+hosting container to provide the kTAG_NID identifier. In this class we
+use two main strategies to identify nodes:</p>
 
 <ul>
-	<li><i>Sequence numbers</i>: The kOFFSET_NID attribute is constituted by
-	an integer which is a sequence number generated by the <code><a href="class-CContainer.html#_NextSequence">CContainer::NextSequence()</a></code> method of a default container named kCONTAINER_SEQUENCE_NAME with a kSEQUENCE_KEY_NODE key.</li>
+	<li><i>Sequence numbers</i>: The kTAG_NID attribute is constituted by an
+	integer which is a sequence number generated by the <code><a href="class-CContainer.html#_NextSequence">CContainer::NextSequence()</a></code> method of a default container named kCONTAINER_SEQUENCE_NAME with a kSEQUENCE_KEY_NODE key.</li>
 
 	<li><i>Graph nodes</i>: If the node container features the kOFFSET_GRAPH
 	offset, this means that the server is also connected to a graph storage engine,
-	in that case a new node will be created in the graph container, <code><a href="class-CGraphContainer.html">CGraphContainer</a></code>, and the current object will use its identifier as the kOFFSET_NID attribute.</li>
+	in that case a new node will be created in the graph container, <code><a href="class-CGraphContainer.html">CGraphContainer</a></code>, and the current object will use its identifier as the kTAG_NID attribute.</li>
 </ul>
 
 <p>Once the node has been committed, it will not be possible to modify the term,
 kTAG_TERM.</p>
 
 <p>When inserting a new node, the class will also make sure that the referenced
-term receives the newly created node identifier in its kTAG_REFS_NODE
+term receives the newly created node identifier in its kTAG_NODES
 offset.</p>
 
 <p>This class prevents updating the full object once it has been inserted for
@@ -227,9 +235,16 @@ have to commit terms.</p>
 
 	<div>
 		<h4>Direct known subclasses</h4>
+			<a href="class-COntologyAliasNode.html">COntologyAliasNode</a>, 
+			<a href="class-COntologyMasterNode.html">COntologyMasterNode</a>, 
 			<a href="class-COntologyVertex.html">COntologyVertex</a>
 	</div>
 
+	<div>
+		<h4>Indirect known subclasses</h4>
+			<a href="class-COntologyAliasVertex.html">COntologyAliasVertex</a>, 
+			<a href="class-COntologyMasterVertex.html">COntologyMasterVertex</a>
+	</div>
 
 
 
@@ -244,7 +259,7 @@ have to commit terms.</p>
 				<b>Author:</b>
 				Milko A. Škofič &lt;<a
 href="mailto:m.skofic&#64;cgiar.org">m.skofic&#64;<!---->cgiar.org</a>&gt;<br />
-		<b>Located at</b> <a href="source-class-COntologyNode.html#43-1397" title="Go to source code">COntologyNode.php</a><br />
+		<b>Located at</b> <a href="source-class-COntologyNode.html#50-1655" title="Go to source code">COntologyNode.php</a><br />
 	</div>
 
 
@@ -262,7 +277,7 @@ href="mailto:m.skofic&#64;cgiar.org">m.skofic&#64;<!---->cgiar.org</a>&gt;<br />
 
 		<td class="name"><div>
 		<a class="anchor" href="#___toString">#</a>
-		<code><a href="source-class-COntologyNode.html#135-159" title="Go to source code">__toString</a>( )</code>
+		<code><a href="source-class-COntologyNode.html#142-166" title="Go to source code">__toString</a>( )</code>
 
 		<div class="description short">
 			
@@ -306,7 +321,7 @@ the unique identifier of the object.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#_Type">#</a>
-		<code><a href="source-class-COntologyNode.html#175-332" title="Go to source code">Type</a>( <span>mixed <var>$theValue</var> = <span class="php-keyword1">NULL</span></span>, <span>boolean <var>$theOperation</var> = <span class="php-keyword1">NULL</span></span>, <span>boolean <var>$getOld</var> = <span class="php-keyword1">FALSE</span> </span> )</code>
+		<code><a href="source-class-COntologyNode.html#182-340" title="Go to source code">Type</a>( <span>mixed <var>$theValue</var> = <span class="php-keyword1">NULL</span></span>, <span>mixed <var>$theOperation</var> = <span class="php-keyword1">NULL</span></span>, <span>boolean <var>$getOld</var> = <span class="php-keyword1">FALSE</span> </span> )</code>
 
 		<div class="description short">
 			
@@ -334,11 +349,11 @@ that can be set in the offset. The offset accepts two types of elements:</p>
 
 			<li><i>kTYPE_BOOLEAN</i>: An <tt>on</tt>/<tt>off</tt> switch.</li>
 
-			<li><i>kTYPE_BINARY</i>: A binary string.</li>
+			<li><i>kTYPE_BINARY_STRING</i>: A binary string.</li>
 
-			<li><i>kTYPE_DATE</i>: A date.</li>
+			<li><i>kTYPE_DATE_STRING</i>: A date.</li>
 
-			<li><i>kTYPE_TIME</i>: A date and time.</li>
+			<li><i>kTYPE_TIME_STRING</i>: A date and time.</li>
 
 			<li><i>kTYPE_STAMP</i>: A native timestamp.</li>
 
@@ -359,14 +374,13 @@ that can be set in the offset. The offset accepts two types of elements:</p>
 	<li><i>Cardinality</i>: The set accepts one or more cardinality indicators from
 	the following set:
 		<ul>
-			<li><i>kTYPE_CARD_REQUIRED</i>: Required, the element referred by the
-			current node is required and cannot be omitted; if this tag is missing, it means
-			that the element is optional.</li>
+			<li><i>kTYPE_REQUIRED</i>: Required, the element referred by the current
+			node is required and cannot be omitted; if this tag is missing, it means that
+			the element is optional.</li>
 
-			<li><i>kTYPE_CARD_ARRAY</i>: Array, the element referred by the current
-			node is a list in which each element is of the data type indicated by the
-			previous set; if this tag is missing, it means that the element is a
-			scalar.</li>
+			<li><i>kTYPE_ARRAY</i>: Array, the element referred by the current node
+			is a list in which each element is of the data type indicated by the previous
+			set; if this tag is missing, it means that the element is a scalar.</li>
 		</ul>
 	</li>
 </ul>
@@ -378,9 +392,9 @@ that can be set in the offset. The offset accepts two types of elements:</p>
 					<dt><var>$theValue</var></dt>
 					<dd><code>mixed</code><br>$theValue Type or operation.</dd>
 					<dt><var>$theOperation</var></dt>
-					<dd><code>boolean</code><br>$getOld <tt>TRUE</tt> get old value.</dd>
+					<dd><code>mixed</code><br>$theOperation Operation.</dd>
 					<dt><var>$getOld</var></dt>
-					<dd><code>boolean</code><br>$getOld TRUE get old value.</dd>
+					<dd><code>boolean</code><br>$getOld <tt>TRUE</tt> get old value.</dd>
 				</dl></div>
 
 				<h4>Returns</h4>
@@ -407,7 +421,7 @@ that can be set in the offset. The offset accepts two types of elements:</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#_EdgeRefs">#</a>
-		<code><a href="source-class-COntologyNode.html#339-362" title="Go to source code">EdgeRefs</a>( )</code>
+		<code><a href="source-class-COntologyNode.html#347-370" title="Go to source code">EdgeRefs</a>( )</code>
 
 		<div class="description short">
 			
@@ -419,8 +433,8 @@ that can be set in the offset. The offset accepts two types of elements:</p>
 			
 <h4>Manage edge references</h4>
 
-<p>The <i>edge references</i>, kTAG_REFS_EDGE, holds a list of
-identifiers of edges that reference the node.</p>
+<p>The <i>edge references</i>, kTAG_EDGES, holds a list of identifiers
+of edges that reference the node.</p>
 
 <p>The method is read-only, because this value must be managed externally.</p>
 
@@ -435,7 +449,7 @@ identifiers of edges that reference the node.</p>
 
 				<h4>See</h4>
 				<div class="list">
-						kTAG_REFS_EDGE<br />
+						kTAG_EDGES<br />
 				</div>
 
 
@@ -453,7 +467,7 @@ identifiers of edges that reference the node.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#_LoadTerm">#</a>
-		<code><a href="source-class-COntologyNode.html#378-448" title="Go to source code">LoadTerm</a>( <span><code><a href="class-CConnection.html">CConnection</a></code> <var>$theConnection</var></span>, <span>boolean <var>$doReload</var> = <span class="php-keyword1">FALSE</span> </span> )</code>
+		<code><a href="source-class-COntologyNode.html#386-456" title="Go to source code">LoadTerm</a>( <span><code><a href="class-CConnection.html">CConnection</a></code> <var>$theConnection</var></span>, <span>boolean <var>$doReload</var> = <span class="php-keyword1">FALSE</span> </span> )</code>
 
 		<div class="description short">
 			
@@ -513,57 +527,105 @@ the object is to be read, or if the cached copy can be used.</p>
 		</div>
 		</div></td>
 	</tr>
-	<tr data-order="RelateTo" id="_RelateTo">
+	<tr data-order="GetGraphNode" id="_GetGraphNode">
 
 		<td class="attributes"><code>
 			 public 
-			<code><a href="class-COntologyEdge.html">COntologyEdge</a></code>
+			mixed
 			
 			</code>
 		</td>
 
 		<td class="name"><div>
-		<a class="anchor" href="#_RelateTo">#</a>
-		<code><a href="source-class-COntologyNode.html#464-507" title="Go to source code">RelateTo</a>( <span>mixed <var>$thePredicate</var></span>, <span>mixed <var>$theObject</var></span> )</code>
+		<a class="anchor" href="#_GetGraphNode">#</a>
+		<code><a href="source-class-COntologyNode.html#472-516" title="Go to source code">GetGraphNode</a>( <span><code><a href="class-CConnection.html">CConnection</a></code> <var>$theConnection</var></span>, <span>integer <var>$theIdentifier</var> = <span class="php-keyword1">NULL</span> </span> )</code>
 
 		<div class="description short">
 			
-<h4>Relate to node</h4>
+<h4>Retrieve the graph node</h4>
 
 		</div>
 
 		<div class="description detailed hidden">
 			
-<h4>Relate to node</h4>
+<h4>Retrieve the graph node</h4>
 
-<p>This method will relate the current node to another and return a <code><a href="class-COntologyEdge.html">COntologyEdge</a></code> object which represents a directed graph edge where the current
-node represents the subject of the relationship.</p>
+<p>This method will retrieve the graph node associated with the current object,
+if the node is not found, the method will return <tt>NULL</tt>; if the provided
+connection does not handle graphs, the method will return <tt>FALSE</tt>.</p>
 
-<p>The predicate and object vertex can be provided both as objects or as object
-identifiers.</p>
-
-<p>Note that the edge will not be committed, it is the responsibility of the
-caller to do so.</p>
+<p>If you omit the node identifier, the method will assume you are requesting
+the current object graph node.</p>
 
 
 
 				<h4>Parameters</h4>
 				<div class="list"><dl>
-					<dt><var>$thePredicate</var></dt>
-					<dd><code>mixed</code><br>$thePredicate Predicate term object or reference.</dd>
-					<dt><var>$theObject</var></dt>
-					<dd><code>mixed</code><br>$theObject Object node object or reference.</dd>
+					<dt><var>$theConnection</var></dt>
+					<dd><code><code><a href="class-CConnection.html">CConnection</a></code></code><br>$theConnection Server, database or container.</dd>
+					<dt><var>$theIdentifier</var></dt>
+					<dd><code>integer</code><br>$theIdentifier Graph node ID.</dd>
 				</dl></div>
 
 				<h4>Returns</h4>
 				<div class="list">
-					<code><code><a href="class-COntologyEdge.html">COntologyEdge</a></code></code><br>Edge object.<br />
+					<code>mixed</code><br>Related graph node.<br />
 				</div>
 
 
 
-				<h4>Overrides</h4>
-				<div class="list"><code><a href="class-CNode.html#_RelateTo">CNode::RelateTo()</a></code></div>
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="GetGraphNodeProperties" id="_GetGraphNodeProperties">
+
+		<td class="attributes"><code>
+			 public 
+			array
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_GetGraphNodeProperties">#</a>
+		<code><a href="source-class-COntologyNode.html#523-554" title="Go to source code">GetGraphNodeProperties</a>( <span><code><a href="class-CConnection.html">CConnection</a></code> <var>$theConnection</var></span>, <span>integer <var>$theIdentifier</var> = <span class="php-keyword1">NULL</span> </span> )</code>
+
+		<div class="description short">
+			
+<h4>Retrieve the graph node properties</h4>
+
+		</div>
+
+		<div class="description detailed hidden">
+			
+<h4>Retrieve the graph node properties</h4>
+
+<p>This method will retrieve the properties of the graph node associated with
+the current object, if the node is not found, the method will return
+<tt>NULL</tt>; if the provided connection does not handle graphs, the method
+will return <tt>FALSE</tt>.</p>
+
+<p>If you omit the node identifier, the method will assume you are requesting
+the current object graph node properties.</p>
+
+
+
+				<h4>Parameters</h4>
+				<div class="list"><dl>
+					<dt><var>$theConnection</var></dt>
+					<dd><code><code><a href="class-CConnection.html">CConnection</a></code></code><br>$theConnection Server, database or container.</dd>
+					<dt><var>$theIdentifier</var></dt>
+					<dd><code>integer</code><br>$theIdentifier Graph node ID.</dd>
+				</dl></div>
+
+				<h4>Returns</h4>
+				<div class="list">
+					<code>array</code><br>Related graph node properties.<br />
+				</div>
+
+
+
 
 		</div>
 		</div></td>
@@ -579,7 +641,7 @@ caller to do so.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#_Update">#</a>
-		<code><a href="source-class-COntologyNode.html#523-553" title="Go to source code">Update</a>( <span><code><a href="class-CConnection.html">CConnection</a></code> <var>$theConnection</var></span> )</code>
+		<code><a href="source-class-COntologyNode.html#570-600" title="Go to source code">Update</a>( <span><code><a href="class-CConnection.html">CConnection</a></code> <var>$theConnection</var></span> )</code>
 
 		<div class="description short">
 			
@@ -627,7 +689,7 @@ modification interface provided by container objects.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#_Replace">#</a>
-		<code><a href="source-class-COntologyNode.html#560-600" title="Go to source code">Replace</a>( <span><code><a href="class-CConnection.html">CConnection</a></code> <var>$theConnection</var></span> )</code>
+		<code><a href="source-class-COntologyNode.html#607-647" title="Go to source code">Replace</a>( <span><code><a href="class-CConnection.html">CConnection</a></code> <var>$theConnection</var></span> )</code>
 
 		<div class="description short">
 			
@@ -678,7 +740,7 @@ non committed object.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#_DefaultContainer">#</a>
-		<code><a href="source-class-COntologyNode.html#616-633" title="Go to source code">DefaultContainer</a>( <span><code><a href="class-CDatabase.html">CDatabase</a></code> <var>$theDatabase</var></span> )</code>
+		<code><a href="source-class-COntologyNode.html#663-680" title="Go to source code">DefaultContainer</a>( <span><code><a href="class-CDatabase.html">CDatabase</a></code> <var>$theDatabase</var></span> )</code>
 
 		<div class="description short">
 			
@@ -729,7 +791,7 @@ kCONTAINER_NODE_NAME name.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#_Resolve">#</a>
-		<code><a href="source-class-COntologyNode.html#649-791" title="Go to source code">Resolve</a>( <span><code><a href="class-CConnection.html">CConnection</a></code> <var>$theConnection</var></span>, <span>mixed <var>$theIdentifier</var></span>, <span>boolean <var>$doThrow</var> = <span class="php-keyword1">FALSE</span> </span> )</code>
+		<code><a href="source-class-COntologyNode.html#696-838" title="Go to source code">Resolve</a>( <span><code><a href="class-CConnection.html">CConnection</a></code> <var>$theConnection</var></span>, <span>mixed <var>$theIdentifier</var></span>, <span>boolean <var>$doThrow</var> = <span class="php-keyword1">FALSE</span> </span> )</code>
 
 		<div class="description short">
 			
@@ -819,7 +881,7 @@ parameter, or you will get unexpected results.</b></p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#__Preset">#</a>
-		<code><a href="source-class-COntologyNode.html#807-907" title="Go to source code">_Preset</a>( <span>reference <var>&amp; $theOffset</var></span>, <span>reference <var>&amp; $theValue</var></span> )</code>
+		<code><a href="source-class-COntologyNode.html#854-954" title="Go to source code">_Preset</a>( <span>reference <var>&amp; $theOffset</var></span>, <span>reference <var>&amp; $theValue</var></span> )</code>
 
 		<div class="description short">
 			
@@ -836,7 +898,8 @@ unchanged only if not yet committed, if not, we convert it to its native
 identifier. We also ensure the provided term object to be an instance of <code><a href="class-COntologyTerm.html">COntologyTerm</a></code> by asserting <code><a href="class-CDocument.html">CDocument</a></code> descendants to be of that
 class.</p>
 
-<p>This method will lock the kTAG_REFS_TAG_FEATURE and kTAG_REFS_TAG_SCALE offsets from any modification.</p>
+<p>This method will lock the kTAG_FEATURES and kTAG_SCALES
+offsets from any modification.</p>
 
 
 
@@ -856,7 +919,7 @@ class.</p>
 
 				<h4>See</h4>
 				<div class="list">
-						kTAG_TERM kTAG_REFS_TAG_FEATURE kTAG_REFS_TAG_SCALE<br />
+						kTAG_TERM kTAG_FEATURES kTAG_SCALES<br />
 				</div>
 				<h4>Uses</h4>
 				<div class="list">
@@ -881,7 +944,7 @@ class.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#__Preunset">#</a>
-		<code><a href="source-class-COntologyNode.html#914-957" title="Go to source code">_Preunset</a>( <span>reference <var>&amp; $theOffset</var></span> )</code>
+		<code><a href="source-class-COntologyNode.html#961-1004" title="Go to source code">_Preunset</a>( <span>reference <var>&amp; $theOffset</var></span> )</code>
 
 		<div class="description short">
 			
@@ -894,7 +957,8 @@ class.</p>
 <h4>Handle offset before unsetting it</h4>
 
 <p>In this class we prevent the modification of the kTAG_TERM offset if
-the object is committed and of the kTAG_REFS_TAG_FEATURE and kTAG_REFS_TAG_SCALE offsets in all cases.</p>
+the object is committed and of the kTAG_FEATURES and kTAG_SCALES
+offsets in all cases.</p>
 
 
 
@@ -912,7 +976,7 @@ the object is committed and of the kTAG_REFS_TAG_FEATURE and kTAG_REFS_TAG_SCALE
 
 				<h4>See</h4>
 				<div class="list">
-						kTAG_REFS_TAG_FEATURE kTAG_REFS_TAG_SCALE kTAG_TERM<br />
+						kTAG_FEATURES kTAG_SCALES kTAG_TERM<br />
 				</div>
 				<h4>Uses</h4>
 				<div class="list">
@@ -929,14 +993,14 @@ the object is committed and of the kTAG_REFS_TAG_FEATURE and kTAG_REFS_TAG_SCALE
 
 		<td class="attributes"><code>
 			 protected 
-			
+			mixed
 			
 			</code>
 		</td>
 
 		<td class="name"><div>
 		<a class="anchor" href="#__PrecommitRelated">#</a>
-		<code><a href="source-class-COntologyNode.html#973-1036" title="Go to source code">_PrecommitRelated</a>( <span>reference <var>&amp; $theConnection</var></span>, <span>reference <var>&amp; $theModifiers</var></span> )</code>
+		<code><a href="source-class-COntologyNode.html#1020-1088" title="Go to source code">_PrecommitRelated</a>( <span>reference <var>&amp; $theConnection</var></span>, <span>reference <var>&amp; $theModifiers</var></span> )</code>
 
 		<div class="description short">
 			
@@ -962,6 +1026,10 @@ provided as an identifier.</p>
 					<dd><code>reference</code><br>&amp;$theModifiers Commit options.</dd>
 				</dl></div>
 
+				<h4>Returns</h4>
+				<div class="list">
+					<code>mixed</code><br />
+				</div>
 
 
 				<h4>See</h4>
@@ -983,14 +1051,14 @@ provided as an identifier.</p>
 
 		<td class="attributes"><code>
 			 protected 
-			
+			mixed
 			
 			</code>
 		</td>
 
 		<td class="name"><div>
 		<a class="anchor" href="#__PrecommitIdentify">#</a>
-		<code><a href="source-class-COntologyNode.html#1043-1145" title="Go to source code">_PrecommitIdentify</a>( <span>reference <var>&amp; $theConnection</var></span>, <span>reference <var>&amp; $theModifiers</var></span> )</code>
+		<code><a href="source-class-COntologyNode.html#1095-1198" title="Go to source code">_PrecommitIdentify</a>( <span>reference <var>&amp; $theConnection</var></span>, <span>reference <var>&amp; $theModifiers</var></span> )</code>
 
 		<div class="description short">
 			
@@ -1003,7 +1071,7 @@ provided as an identifier.</p>
 <h4>Determine the identifiers before committing</h4>
 
 <p>This method will take care of generating the sequence number that represents
-the object's native identifier, kOFFSET_NID.</p>
+the object's native identifier, kTAG_NID.</p>
 
 <p>This value can be generated in two ways:</p>
 
@@ -1011,11 +1079,11 @@ the object's native identifier, kOFFSET_NID.</p>
 	<li><i>The container has the graph reference, kOFFSET_GRAPH</i>: If the
 	provided container contains a reference to a graph container, it means that the
 	node must also be stored in the graph, this will be taken care by the <code><a href="class-COntologyNode.html#__AddGraphNode">COntologyNode::_AddGraphNode()</a></code> method that will return the graph node's ID, which in turn will
-	become the current object's kOFFSET_NID.</li>
+	become the current object's kTAG_NID.</li>
 
 	<li><i>The container lacks the graph reference, kOFFSET_GRAPH</i>: If
 	the provided container does not hold a reference to a graph container, the
-	object identifier will be generated with a sequence number tagged kSEQUENCE_KEY_NODE, this method will set the native identifier, kOFFSET_NID, with this value.</li>
+	object identifier will be generated with a sequence number tagged kSEQUENCE_KEY_NODE, this method will set the native identifier, kTAG_NID, with this value.</li>
 </ul>
 
 <p>When deleting the object, if the provided container contains a reference to a
@@ -1024,8 +1092,8 @@ graph.</p>
 
 <p>The parent method will then be called, which will ignore the global
 identifier, kTAG_GID, since the <code><a href="class-CPersistentObject.html#__index">CPersistentObject::_index()</a></code> method returns
-<tt>NULL</tt> and also ignore the native identifier, kOFFSET_NID, since
-it will have been set here.</p>
+<tt>NULL</tt> and also ignore the native identifier, kTAG_NID, since it
+will have been set here.</p>
 
 
 
@@ -1037,11 +1105,15 @@ it will have been set here.</p>
 					<dd><code>reference</code><br>&amp;$theModifiers Commit options.</dd>
 				</dl></div>
 
+				<h4>Returns</h4>
+				<div class="list">
+					<code>mixed</code><br />
+				</div>
 
 
 				<h4>See</h4>
 				<div class="list">
-						kOFFSET_NID kSEQUENCE_KEY_NODE<br />
+						kTAG_NID kSEQUENCE_KEY_NODE<br />
 						kFLAG_PERSIST_INSERT kFLAG_PERSIST_REPLACE<br />
 				</div>
 
@@ -1062,7 +1134,7 @@ it will have been set here.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#__PostcommitRelated">#</a>
-		<code><a href="source-class-COntologyNode.html#1161-1205" title="Go to source code">_PostcommitRelated</a>( <span>reference <var>&amp; $theConnection</var></span>, <span>reference <var>&amp; $theModifiers</var></span> )</code>
+		<code><a href="source-class-COntologyNode.html#1214-1258" title="Go to source code">_PostcommitRelated</a>( <span>reference <var>&amp; $theConnection</var></span>, <span>reference <var>&amp; $theModifiers</var></span> )</code>
 
 		<div class="description short">
 			
@@ -1075,8 +1147,8 @@ it will have been set here.</p>
 <h4>Update related objects after committing</h4>
 
 <p>In this class we add the current node's identifier to the list of node
-references, kTAG_REFS_NODE, in the related term when inserting; we
-remove the element when deleting.</p>
+references, kTAG_NODES, in the related term when inserting; we remove
+the element when deleting.</p>
 
 
 
@@ -1117,7 +1189,7 @@ remove the element when deleting.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#__PostcommitCleanup">#</a>
-		<code><a href="source-class-COntologyNode.html#1212-1236" title="Go to source code">_PostcommitCleanup</a>( <span>reference <var>&amp; $theConnection</var></span>, <span>reference <var>&amp; $theModifiers</var></span> )</code>
+		<code><a href="source-class-COntologyNode.html#1265-1289" title="Go to source code">_PostcommitCleanup</a>( <span>reference <var>&amp; $theConnection</var></span>, <span>reference <var>&amp; $theModifiers</var></span> )</code>
 
 		<div class="description short">
 			
@@ -1163,7 +1235,7 @@ have to be refreshed and its references actualised.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#__ReferenceInTerm">#</a>
-		<code><a href="source-class-COntologyNode.html#1252-1313" title="Go to source code">_ReferenceInTerm</a>( <span><code><a href="class-CConnection.html">CConnection</a></code> <var>$theConnection</var></span>, <span>boolean <var>$doAdd</var></span> )</code>
+		<code><a href="source-class-COntologyNode.html#1305-1366" title="Go to source code">_ReferenceInTerm</a>( <span><code><a href="class-CConnection.html">CConnection</a></code> <var>$theConnection</var></span>, <span>boolean <var>$doAdd</var></span> )</code>
 
 		<div class="description short">
 			
@@ -1176,7 +1248,7 @@ have to be refreshed and its references actualised.</p>
 <h4>Add node reference to term</h4>
 
 <p>This method can be used to add or remove the current node's reference from
-the referenced term, kTAG_REFS_NODE. This method should be used whenever
+the referenced term, kTAG_NODES. This method should be used whenever
 committing a new node or deleting one: it will add the current node's native
 identifier to the set of node references of the node's term when committing a
 new node; it will remove it when deleting the node.</p>
@@ -1206,12 +1278,73 @@ exception if the operation failed.</p>
 
 				<h4>See</h4>
 				<div class="list">
-						kTAG_TERM kTAG_REFS_NODE<br />
+						kTAG_TERM kTAG_NODES<br />
 						kFLAG_PERSIST_MODIFY kFLAG_MODIFY_ADDSET kFLAG_MODIFY_PULL<br />
 				</div>
 				<h4>Used by</h4>
 				<div class="list">
 						<code><code><a href="class-COntologyNode.html#__PostcommitRelated">COntologyNode::_PostcommitRelated()</a></code></code> <br />
+				</div>
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="_LoadTermAttributes" id="__LoadTermAttributes">
+
+		<td class="attributes"><code>
+			 protected 
+			
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#__LoadTermAttributes">#</a>
+		<code><a href="source-class-COntologyNode.html#1373-1449" title="Go to source code">_LoadTermAttributes</a>( <span>array <var>$theAttributes</var> = <span class="php-keyword1">NULL</span> </span> )</code>
+
+		<div class="description short">
+			
+<h4>Load term attributes</h4>
+
+		</div>
+
+		<div class="description detailed hidden">
+			
+<h4>Load term attributes</h4>
+
+<p>This method can be used to copy selected term attributes to the current
+object, this is used to cache searchable term attributes directly in the node,
+to prevent having to search both terms and nodes.</p>
+
+<p>The method accepts a single parameter, <tt>$theAttributes</tt>, which is the
+list of term attribute tags which should be copied to this object. If the
+parameter is omitted, the method will do nothing.</p>
+
+<p>This method will first load the term attributes, then overwrite them with the
+node attributes, this effectively makes matching node attributes overwrite term
+attributes.</p>
+
+<p>The method is called by <code><a href="class-CPersistentDocument.html#__Precommit">CPersistentDocument::_Precommit()</a></code>, in derived classes you can call
+the parent method and add custom attributes in the derived method.</p>
+
+<p>In this class this method is not called, in derived classes you should
+explicitly invoke it.</p>
+
+
+
+				<h4>Parameters</h4>
+				<div class="list"><dl>
+					<dt><var>$theAttributes</var></dt>
+					<dd><code>array</code><br>$theAttributes Term attribute tags list.</dd>
+				</dl></div>
+
+
+
+				<h4>See</h4>
+				<div class="list">
+						kTAG_TERM kTAG_NODES<br />
+						kFLAG_PERSIST_MODIFY kFLAG_MODIFY_ADDSET kFLAG_MODIFY_PULL<br />
 				</div>
 
 
@@ -1229,34 +1362,47 @@ exception if the operation failed.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#__AddGraphNode">#</a>
-		<code><a href="source-class-COntologyNode.html#1329-1393" title="Go to source code">_AddGraphNode</a>( <span><code><a href="class-CGraphContainer.html">CGraphContainer</a></code> <var>$theGraph</var></span> )</code>
+		<code><a href="source-class-COntologyNode.html#1465-1562" title="Go to source code">_AddGraphNode</a>( <span><code><a href="class-CGraphContainer.html">CGraphContainer</a></code> <var>$theGraph</var></span>, <span>integer <var>$theIdentifier</var> = <span class="php-keyword1">NULL</span></span>, <span>array <var>$theProperties</var> = <span class="php-keyword1">NULL</span> </span> )</code>
 
 		<div class="description short">
 			
-<h4>Create or update graph node</h4>
+<h4>Create or update a graph node</h4>
 
 		</div>
 
 		<div class="description detailed hidden">
 			
-<h4>Create or update graph node</h4>
+<h4>Create or update a graph node</h4>
 
 <p>This method will create and save a new graph node in the provided graph
-container and return its newly created identifier.</p>
+container and return its newly created identifier, or retrieve a graph node and
+update its properties.</p>
 
 <p>This method is called by <code><a href="class-COntologyNode.html#__PrecommitIdentify">COntologyNode::_PrecommitIdentify()</a></code> to set the new node
-kOFFSET_NID and the method makes no assumption whether the node exists
-already or not, in all cases it will create a new node.</p>
+kTAG_NID and from other methods to update the node properties.</p>
 
-<p>This method will add the following attributes to the graph node: kTAG_KIND and kTAG_TYPE, derived classes may override this method to
-add other properties.</p>
+<p>This method will use the <code><a href="class-COntologyNode.html#__GraphNodeProperties">COntologyNode::_GraphNodeProperties()</a></code> method to determine
+which attributes will be set in the graph node.</p>
 
-<p>The method should raise an exception if the node was not created.</p>
+<p>The method expects the following parameters:</p>
 
-<p><i>Note that the method was not designed to handle node updates, this is
-because objects of this class explicitly cannot be updated, any modification to
-their properties should be done through modifications to the individual
-attributes, so this method will always create a new node.</i></p>
+<ul>
+	<li><tt>$theGraph</tt>: The graph container or client.</li>
+
+	<li><tt>$theIdentifier</tt>: The graph node identifier, if provided, it means
+	that we want to update an existing graph node and the parameter is its
+	identifier. If the node cannot be located in the graph, the method should raise
+	an exception. If the parameter is not provided, it means that we want to create
+	a new graph node.</li>
+
+	<li><tt>$theProperties</tt>: The graph node properties, if provided, the new or
+	existing node will have its properties replaced with the ones in this parameter;
+	if not provided, the <code><a href="class-COntologyNode.html#__GraphNodeProperties">COntologyNode::_GraphNodeProperties()</a></code> method will be used to
+	extract the required properties from the current node and update or set the
+	graph node's.</li>
+</ul>
+
+<p>The method should raise an exception if the operation fails.</p>
 
 
 
@@ -1264,15 +1410,119 @@ attributes, so this method will always create a new node.</i></p>
 				<div class="list"><dl>
 					<dt><var>$theGraph</var></dt>
 					<dd><code><code><a href="class-CGraphContainer.html">CGraphContainer</a></code></code><br>$theGraph Graph container.</dd>
+					<dt><var>$theIdentifier</var></dt>
+					<dd><code>integer</code><br>$theIdentifier Graph node identifier.</dd>
+					<dt><var>$theProperties</var></dt>
+					<dd><code>array</code><br>$theProperties Graph node properties.</dd>
 				</dl></div>
 
 				<h4>Returns</h4>
 				<div class="list">
-					<code>integer</code><br>Newly created node ID.<br />
+					<code>integer</code><br>Newly created or existing node ID.<br />
 				</div>
 
 
 
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="_GraphNodeProperties" id="__GraphNodeProperties">
+
+		<td class="attributes"><code>
+			 protected 
+			array
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#__GraphNodeProperties">#</a>
+		<code><a href="source-class-COntologyNode.html#1569-1627" title="Go to source code">_GraphNodeProperties</a>( <span>array <var>$theProperties</var> = <span class="php-keyword1">NULL</span> </span> )</code>
+
+		<div class="description short">
+			
+<h4>Return the list of graph node tags</h4>
+
+		</div>
+
+		<div class="description detailed hidden">
+			
+<h4>Return the list of graph node tags</h4>
+
+<p>This method should return an array of attributes which represents the list of
+properties which should be transferred to the graph node.</p>
+
+<p>This method can be overloaded as more specialised node classes are developed,
+the main reason for this method is to control which properties should be copied
+to the graph and which properties are supported by the graph nodes.</p>
+
+<p>The method accepts an optional parameter, <tt>$theProperties</tt>, which
+represents an array of attributes that can be filtered by this method: only
+those elements which match the tags supported by this method will be selected.
+This parameter can be an array or ArrayObject, any other type will trigger an
+exception.</p>
+
+<p>In this class we copy the kTAG_GID, kTAG_CATEGORY, kTAG_KIND and kTAG_TYPE attributes. Note that the kTAG_GID
+attribute will only be copied in derived classes that add that term's attribute
+to the current node.</p>
+
+
+
+				<h4>Parameters</h4>
+				<div class="list"><dl>
+					<dt><var>$theProperties</var></dt>
+					<dd><code>array</code><br>$theProperties Base properties.</dd>
+				</dl></div>
+
+				<h4>Returns</h4>
+				<div class="list">
+					<code>array</code><br>List of properties.<br />
+				</div>
+
+
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="_NewEdge" id="__NewEdge">
+
+		<td class="attributes"><code>
+			 protected 
+			<code><a href="class-CEdge.html">CEdge</a></code>
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#__NewEdge">#</a>
+		<code><a href="source-class-COntologyNode.html#1643-1651" title="Go to source code">_NewEdge</a>( )</code>
+
+		<div class="description short">
+			
+<h4>Return a new edge instance</h4>
+
+		</div>
+
+		<div class="description detailed hidden">
+			
+<h4>Return a new edge instance</h4>
+
+<p>In this class we return a <code><a href="class-COntologyEdge.html">COntologyEdge</a></code> instance.</p>
+
+
+
+
+				<h4>Returns</h4>
+				<div class="list">
+					<code><code><a href="class-CEdge.html">CEdge</a></code></code><br />
+				</div>
+
+
+
+				<h4>Overrides</h4>
+				<div class="list"><code><a href="class-CNode.html#__NewEdge">CNode::_NewEdge()</a></code></div>
 
 		</div>
 		</div></td>
@@ -1285,6 +1535,7 @@ attributes, so this method will always create a new node.</i></p>
 		<td><code>
 			<a href="class-CNode.html#_Category">Category()</a>, 
 			<a href="class-CNode.html#_Kind">Kind()</a>, 
+			<a href="class-CNode.html#_RelateTo">RelateTo()</a>, 
 			<a href="class-CNode.html#_Term">Term()</a>, 
 			<a href="class-CNode.html#__Ready">_Ready()</a>
 		</code></td>
@@ -1402,7 +1653,7 @@ attributes, so this method will always create a new node.</i></p>
 		</code></td>
 
 		<td class="name">
-				<a href="source-class-COntologyNode.html#112-119" title="Go to source code"><var>$mTerm</var></a>
+				<a href="source-class-COntologyNode.html#119-126" title="Go to source code"><var>$mTerm</var></a>
 		</td>
 		<td class="value"><code><span class="php-keyword1">NULL</span></code></td>
 		<td class="description"><div>

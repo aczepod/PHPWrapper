@@ -45,7 +45,7 @@ require_once( kPATH_MYWRAPPER_LIBRARY_CLASS."/CStatusDocument.php" );
  *
  * A persistent document object is a document object that knows how to persist in derived
  * concrete instances of the {@link CContainer} class. This class features a default offset,
- * {@link kOFFSET_NID}, which represents the database native unique identifier, or primary
+ * {@link kTAG_NID}, which represents the database native unique identifier, or primary
  * key, all objects derived from this class are uniquely identified by this offset.
  *
  * The object can have any number of attributes, it is up to the user to decide what
@@ -63,7 +63,7 @@ require_once( kPATH_MYWRAPPER_LIBRARY_CLASS."/CStatusDocument.php" );
  *		container, or update, if the object exists in the container.
  *	<li>{@link Restore()}: This method will load the object from the container and restore
  *		its data, the method expects the object to have its native unique identifier,
- *		{@link kOFFSET_NID}, set, or it will raise an exception.
+ *		{@link kTAG_NID}, set, or it will raise an exception.
  *	<li>{@link Delete()}: This method will delete the object from a container.
  *	<li>{@link NewObject()}: This static method can be used to instantiate an object by
  *		retrieving it from a container. The class of the object will be set according to
@@ -101,12 +101,12 @@ class CPersistentDocument extends CStatusDocument
 	/**
 	 * <h4>Manage native unique identifier</h4>
 	 *
-	 * The <i>native unique identifier</i>, {@link kOFFSET_NID}, represents the primary key
+	 * The <i>native unique identifier</i>, {@link kTAG_NID}, represents the primary key
 	 * of the object in the native format of the container in which the object is stored.
 	 *
 	 * This is the only attribute tag that will not be a {@link COntologyTag} reference: all
 	 * other object attributes will be a {@link COntologyTag} native identifier,
-	 * {@link kOFFSET_NID}.
+	 * {@link kTAG_NID}.
 	 *
 	 * The method accepts a parameter which represents either the identifier or the
 	 * requested operation, depending on its value:
@@ -132,11 +132,11 @@ class CPersistentDocument extends CStatusDocument
 	 *
 	 * @uses ManageOffset()
 	 *
-	 * @see kOFFSET_NID
+	 * @see kTAG_NID
 	 */
 	public function NID( $theValue = NULL, $getOld = FALSE )
 	{
-		return ManageOffset( $this, kOFFSET_NID, $theValue, $getOld );				// ==>
+		return ManageOffset( $this, kTAG_NID, $theValue, $getOld );				// ==>
 
 	} // NID.
 
@@ -166,7 +166,7 @@ class CPersistentDocument extends CStatusDocument
 	 * {@link CDatabase}, if the current class has implemented the container resolve
 	 * interface with {@link DefaultDatabase} and {@link DefaultContainer()}.
 	 *
-	 * The method may set the native unique identifier attribute ({@link kOFFSET_NID}) if
+	 * The method may set the native unique identifier attribute ({@link kTAG_NID}) if
 	 * not provided.
 	 *
 	 * The operation will only be performed if the object has the {@link _IsDirty()} status
@@ -174,7 +174,7 @@ class CPersistentDocument extends CStatusDocument
 	 * method will return <tt>NULL</tt>.
 	 *
 	 * The method will return the object's native unique identifier attribute
-	 * ({@link kOFFSET_NID}), or raise an exception if an error occurs.
+	 * ({@link kTAG_NID}), or raise an exception if an error occurs.
 	 *
 	 * Note that derived classes should overload the {@link _Precommit()} and
 	 * {@link _Postcommit()} methods, rather than overloading this one.
@@ -208,7 +208,9 @@ class CPersistentDocument extends CStatusDocument
 			//
 			// Pre-commit.
 			//
-			$this->_Precommit( $theConnection, $op );
+			$status = $this->_Precommit( $theConnection, $op );
+			if( $status !== NULL )
+				return $status;														// ==>
 			
 			//
 			// Commit object.
@@ -286,7 +288,9 @@ class CPersistentDocument extends CStatusDocument
 			//
 			// Pre-commit.
 			//
-			$this->_Precommit( $theConnection, $op );
+			$status = $this->_Precommit( $theConnection, $op );
+			if( $status !== NULL )
+				return $status;														// ==>
 			
 			//
 			// Commit object.
@@ -331,11 +335,11 @@ class CPersistentDocument extends CStatusDocument
 	 * Once the object has been stored, it will have its {@link _IsCommitted()} status set
 	 * and its {@link _IsDirty()} status reset.
 	 *
-	 * The method may set the native unique identifier attribute ({@link kOFFSET_NID}) if
+	 * The method may set the native unique identifier attribute ({@link kTAG_NID}) if
 	 * not provided.
 	 *
 	 * The method will return the object's native unique identifier attribute
-	 * ({@link kOFFSET_NID}) or <tt>NULL</tt> if the operation was not necessary.
+	 * ({@link kTAG_NID}) or <tt>NULL</tt> if the operation was not necessary.
 	 *
 	 * Note that derived classes should overload the {@link _Precommit()} and
 	 * {@link _Postcommit()} methods, rather than overloading this one.
@@ -369,7 +373,9 @@ class CPersistentDocument extends CStatusDocument
 			//
 			// Pre-commit.
 			//
-			$this->_Precommit( $theConnection, $op );
+			$status = $this->_Precommit( $theConnection, $op );
+			if( $status !== NULL )
+				return $status;														// ==>
 			
 			//
 			// Commit object.
@@ -408,7 +414,7 @@ class CPersistentDocument extends CStatusDocument
 	 * interface with {@link DefaultDatabase} and {@link DefaultContainer()}.
 	 *
 	 * The current object must have its native unique identifier offset,
-	 * {@link kOFFSET_NID}, set, or it must have all the necessary elements in order to
+	 * {@link kTAG_NID}, set, or it must have all the necessary elements in order to
 	 * generate this identifier.
 	 *
 	 * The method will return <tt>TRUE</tt> if the operation was successful, <tt>NULL</tt>
@@ -432,14 +438,14 @@ class CPersistentDocument extends CStatusDocument
 	 * @uses ResolveContainer()
 	 * @uses _Postcommit()
 	 *
-	 * @see kOFFSET_NID
+	 * @see kTAG_NID
 	 */
 	public function Restore( CConnection $theConnection )
 	{
 		//
 		// Use native identifier.
 		//
-		if( $this->offsetExists( kOFFSET_NID ) )
+		if( $this->offsetExists( kTAG_NID ) )
 		{
 			//
 			// Clone.
@@ -520,7 +526,9 @@ class CPersistentDocument extends CStatusDocument
 		//
 		// Pre-commit.
 		//
-		$this->_Precommit( $theConnection, $op );
+		$status = $this->_Precommit( $theConnection, $op );
+		if( $status !== NULL )
+			return $status;															// ==>
 		
 		//
 		// Delete object.
@@ -578,7 +586,7 @@ class CPersistentDocument extends CStatusDocument
 	 *		has implemented the container resolve interface with {@link DefaultDatabase} and
 	 *		{@link DefaultContainer()}.
 	 *	<li><tt>$theIdentifier</tt>: The key of the object in the container, by default the
-	 *		{@link kOFFSET_NID} offset.
+	 *		{@link kTAG_NID} offset.
 	 * </ul>
 	 *
 	 * If the object could not be located, the method will return <tt>NULL</tt>.
@@ -597,7 +605,7 @@ class CPersistentDocument extends CStatusDocument
 		//
 		// Init local storage.
 		//
-		$object = array( kOFFSET_NID => $theIdentifier );
+		$object = array( kTAG_NID => $theIdentifier );
 		
 		//
 		// Retrieve object.
@@ -877,7 +885,14 @@ class CPersistentDocument extends CStatusDocument
 	 * </ul>
 	 *
 	 * These three methods are called in the above order, they take the same arguments as
-	 * the current method and do not return a value: errors must raise exceptions.
+	 * the current method. These methods may return two kind of values:
+	 *
+	 * <ul>
+	 *	<li><tt>NULL</tt>: This value indicates that everything should continue as planned.
+	 *	<li><i>other</i>: Any other value is interpreted as the object's native identifier,
+	 *		this is an indication that the object was committed and that the calling method
+	 *		can directly return this value.
+	 * </ul>
 	 *
 	 * When deriving from this class you should overload the above methods and not this one.
 	 * 
@@ -904,6 +919,7 @@ class CPersistentDocument extends CStatusDocument
 	 * @param bitfield				$theModifiers		Commit options.
 	 *
 	 * @access protected
+	 * @return mixed
 	 *
 	 * @uses _PrecommitValidate()
 	 * @uses _PrecommitRelated()
@@ -915,17 +931,21 @@ class CPersistentDocument extends CStatusDocument
 		//
 		// Validate object.
 		//
-		$this->_PrecommitValidate( $theConnection, $theModifiers );
+		$status = $this->_PrecommitValidate( $theConnection, $theModifiers );
+		if( $status !== NULL )
+			return $status;															// ==>
 		
 		//
 		// Handle embedded.
 		//
-		$this->_PrecommitRelated( $theConnection, $theModifiers );
+		$status = $this->_PrecommitRelated( $theConnection, $theModifiers );
+		if( $status !== NULL )
+			return $status;															// ==>
 		
 		//
 		// Identify object.
 		//
-		$this->_PrecommitIdentify( $theConnection, $theModifiers );
+		return $this->_PrecommitIdentify( $theConnection, $theModifiers );			// ==>
 		
 	} // _Precommit.
 
@@ -1024,6 +1044,9 @@ class CPersistentDocument extends CStatusDocument
 	 * object elements specific to the current class and let the inherited method handle the
 	 * inherited ones.
 	 *
+	 * If this method returns <tt>NULL</tt>, the caller will continue as usual; if the
+	 * method returns another type of value, the caller should return that value.
+	 *
 	 * If the object does not meet the requirements for the desired operation, this method
 	 * should raise an exception.
 	 * 
@@ -1051,8 +1074,10 @@ class CPersistentDocument extends CStatusDocument
 	 * @param reference			   &$theModifiers		Commit options.
 	 *
 	 * @access protected
+	 * @return mixed
 	 *
 	 * @throws Exception
+	 * @return mixed
 	 *
 	 * @uses _IsInited()
 	 *
@@ -1076,6 +1101,8 @@ class CPersistentDocument extends CStatusDocument
 		
 		} // Insert, update, replace or delete.
 		
+		return NULL;																// ==>
+		
 	} // _PrecommitValidate.
 
 	 
@@ -1093,6 +1120,9 @@ class CPersistentDocument extends CStatusDocument
 	 * This method is the second one called by {@link _Precommit()}, it should handle the
 	 * object elements specific to the current class and let the inherited method handle the
 	 * inherited ones.
+	 *
+	 * If this method returns <tt>NULL</tt>, the caller will continue as usual; if the
+	 * method returns another type of value, the caller should return that value.
 	 *
 	 * If any error occurs during the process, this method should raise an exception.
 	 * 
@@ -1120,8 +1150,13 @@ class CPersistentDocument extends CStatusDocument
 	 * @param reference			   &$theModifiers		Commit options.
 	 *
 	 * @access protected
+	 * @return mixed
 	 */
-	protected function _PrecommitRelated( &$theConnection, &$theModifiers )				   {}
+	protected function _PrecommitRelated( &$theConnection, &$theModifiers )
+	{
+		return NULL;																// ==>
+	
+	} // _PrecommitRelated.
 
 	 
 	/*===================================================================================
@@ -1140,6 +1175,9 @@ class CPersistentDocument extends CStatusDocument
 	 * validations. The reason this method is the last in the chain is because often the
 	 * object identifier may depend on related or embedded objects which have been committed
 	 * in the previous method.
+	 *
+	 * If this method returns <tt>NULL</tt>, the caller will continue as usual; if the
+	 * method returns another type of value, the caller should return that value.
 	 *
 	 * If any error occurs during the process, this method should still raise an exception.
 	 * 
@@ -1167,8 +1205,13 @@ class CPersistentDocument extends CStatusDocument
 	 * @param reference			   &$theModifiers		Commit options.
 	 *
 	 * @access protected
+	 * @return mixed
 	 */
-	protected function _PrecommitIdentify( &$theConnection, &$theModifiers )			   {}
+	protected function _PrecommitIdentify( &$theConnection, &$theModifiers )
+	{
+		return NULL;																// ==>
+	
+	} // _PrecommitIdentify.
 		
 
 

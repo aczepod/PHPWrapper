@@ -6,8 +6,8 @@
 
 	<title>Class COntologyTag | MyWrapper Reference Documentation</title>
 
-	<script type="text/javascript" src="resources/combined.js?1742645618"></script>
-	<script type="text/javascript" src="elementlist.js?539813953"></script>
+	<script type="text/javascript" src="resources/combined.js?3680114562"></script>
+	<script type="text/javascript" src="elementlist.js?2861350629"></script>
 	<link rel="stylesheet" type="text/css" media="all" href="resources/style.css?3505392360" />
 
 </head>
@@ -38,6 +38,8 @@
 				<li class="main"><a href="package-MyWrapper.Wrappers.html">Wrappers</a>
 						</li>
 							</ul></li>
+				<li><a href="package-None.html">None</a>
+						</li>
 				<li><a href="package-PHP.html">PHP</a>
 						</li>
 			</ul>
@@ -49,8 +51,11 @@
 		<div id="elements">
 			<h3>Classes</h3>
 			<ul>
-				<li><a href="class-COntology.html">COntology</a></li>
+				<li><a href="class-COntologyAliasNode.html">COntologyAliasNode</a></li>
+				<li><a href="class-COntologyAliasVertex.html">COntologyAliasVertex</a></li>
 				<li><a href="class-COntologyEdge.html">COntologyEdge</a></li>
+				<li><a href="class-COntologyMasterNode.html">COntologyMasterNode</a></li>
+				<li><a href="class-COntologyMasterVertex.html">COntologyMasterVertex</a></li>
 				<li><a href="class-COntologyNode.html">COntologyNode</a></li>
 				<li class="active"><a href="class-COntologyTag.html">COntologyTag</a></li>
 				<li><a href="class-COntologyTerm.html">COntologyTerm</a></li>
@@ -105,8 +110,8 @@
 <h4>Ontology tag object ancestor</h4>
 
 <p>This class extends its ancestor, <code><a href="class-CTag.html">CTag</a></code>, by asserting the type of
-objects passed to the path, kTAG_TAG_PATH, and by using term references
-as the elements of the object's path and global identifier.</p>
+objects passed to the path, kTAG_PATH, and by using term references as
+the elements of the object's path and global identifier.</p>
 
 <ul>
 	<li><i>Path</i>: As in the parent class, this attribute collects graph vertices
@@ -114,18 +119,18 @@ as the elements of the object's path and global identifier.</p>
 	nodes of graph and the even elements the predicate terms that connect them. In
 	this class the vertices are represented by the kTAG_TERM reference of
 	the vertex <code><a href="class-COntologyNode.html">COntologyNode</a></code> instances, while the predicates are represented
-	by the <code><a href="class-COntologyTerm.html">COntologyTerm</a></code> kOFFSET_NID of the predicate terms.</li>
+	by the <code><a href="class-COntologyTerm.html">COntologyTerm</a></code> kTAG_NID of the predicate terms.</li>
 
 	<li><i>Global identifier</i>: The global identifier, <code><a href="class-CPersistentObject.html#_GID">CPersistentObject::GID()</a></code>, in this
 	class is represented by the concatenation of the kTAG_GID attributes of
-	all the <code><a href="class-COntologyTerm.html">COntologyTerm</a></code> instance references of the object's path, kTAG_TAG_PATH, separated by the kTOKEN_INDEX_SEPARATOR token.</li>
+	all the <code><a href="class-COntologyTerm.html">COntologyTerm</a></code> instance references of the object's path, kTAG_PATH, separated by the kTOKEN_INDEX_SEPARATOR token.</li>
 
 	<li><i>Unique identifier</i>: The unique identifier, kTAG_UID, in this
 	class is represented by the hash of the global identifier.</li>
 </ul>
 
 <p>Elements of the path can be provided as committed objects, they must have
-their kOFFSET_NID set. <code><a href="class-COntologyNode.html">COntologyNode</a></code> instances or references can
+their kTAG_NID set. <code><a href="class-COntologyNode.html">COntologyNode</a></code> instances or references can
 only be provided as odd elements, while <code><a href="class-COntologyTerm.html">COntologyTerm</a></code> instances or
 references can be provided as both odd or even elements. Note that nodes will
 always be resolved into the terms they refer to, so <i>there there is no direct
@@ -139,15 +144,14 @@ vertex elements to be treated differently if their predicates differ.</p>
 <p>Objects of this class will almost always be created by providing a sequence
 of node vertices and predicate terms, the <code><a href="class-COntologyTag.html#_PushItem">COntologyTag::PushItem()</a></code> method will follow
 these rules: the first element of the path is the feature vertex, if provided as
-an <code><a href="class-COntologyNode.html">COntologyNode</a></code> instance, it must have its <code><a href="class-CNode.html#_Kind">CNode::Kind()</a></code> set to kKIND_NODE_TRAIT; the last element of the
-path is the scale vertex, if provided as an <code><a href="class-COntologyNode.html">COntologyNode</a></code> instance, it
-must have its <code><a href="class-CNode.html#_Kind">CNode::Kind()</a></code> set to kKIND_NODE_SCALE.</p>
+an <code><a href="class-COntologyNode.html">COntologyNode</a></code> instance, it must have its <code><a href="class-CNode.html#_Kind">CNode::Kind()</a></code> set to kKIND_NODE_FEATURE; the last element of
+the path is the scale vertex, if provided as an <code><a href="class-COntologyNode.html">COntologyNode</a></code> instance,
+it must have its <code><a href="class-CNode.html#_Kind">CNode::Kind()</a></code> set to kKIND_NODE_SCALE.</p>
 
-<p>Whenever a tag is committed, the referenced terms will receive the tag kOFFSET_NID in an attribute, depending on their position in the path: the first
-path term will receive the tag reference in the kTAG_REFS_TAG_FEATURE
-attribute, the terms which are neither the first nor the last in the path
-receive the reference in kTAG_REFS_TAG_METHOD and the last term in
-kTAG_REFS_TAG_SCALE.</p>
+<p>Whenever a tag is committed, the referenced terms will receive the tag kTAG_NID in an attribute, depending on their position in the path: the first
+path term will receive the tag reference in the kTAG_FEATURES attribute,
+the terms which are neither the first nor the last in the path receive the
+reference in kTAG_METHODS and the last term in kTAG_SCALES.</p>
 
 <p>This class prevents updating the full object once it has been inserted for
 the first time. This behaviour is necessary because tags are referenced by many
@@ -156,7 +160,7 @@ updated elsewhere: for this reason the <code><a href="class-COntologyTag.html#_U
 methods will raise an exception.</p>
 
 <p>Objects of this class use a sequence number as their native identifier,
-kOFFSET_NID, tagged as kSEQUENCE_KEY_TAG.</p>
+kTAG_NID, tagged as kSEQUENCE_KEY_TAG.</p>
 
 <p>The class implements the static method, <code><a href="class-COntologyTag.html#_DefaultContainer">COntologyTag::DefaultContainer()</a></code>, which,
 given a database, will return the default tag container; it will use the kCONTAINER_TAG_NAME constant as the container name.</p>
@@ -239,7 +243,7 @@ given a database, will return the default tag container; it will use the kCONTAI
 				<b>Author:</b>
 				Milko A. Škofič &lt;<a
 href="mailto:m.skofic&#64;cgiar.org">m.skofic&#64;<!---->cgiar.org</a>&gt;<br />
-		<b>Located at</b> <a href="source-class-COntologyTag.html#43-1151" title="Go to source code">COntologyTag.php</a><br />
+		<b>Located at</b> <a href="source-class-COntologyTag.html#43-1152" title="Go to source code">COntologyTag.php</a><br />
 	</div>
 
 
@@ -283,7 +287,7 @@ href="mailto:m.skofic&#64;cgiar.org">m.skofic&#64;<!---->cgiar.org</a>&gt;<br />
 			since there is no way to resolve them.</li>
 
 			<li>If the first element of the path is an <code><a href="class-COntologyNode.html">COntologyNode</a></code> instance, the
-			latter must have its kTAG_KIND attribute set to kKIND_NODE_TRAIT.</li>
+			latter must have its kTAG_KIND attribute set to kKIND_NODE_FEATURE.</li>
 
 			<li>If the last element of the path is an <code><a href="class-COntologyNode.html">COntologyNode</a></code> instance, the
 			latter must have its kTAG_KIND attribute set to kKIND_NODE_SCALE.</li>
@@ -292,11 +296,11 @@ href="mailto:m.skofic&#64;cgiar.org">m.skofic&#64;<!---->cgiar.org</a>&gt;<br />
 
 	<li>{link COntologyTerm} instances will be accepted in any position.</li>
 
-	<li>{link COntologyTerm} instances must have their kOFFSET_NID
+	<li>{link COntologyTerm} instances must have their kTAG_NID
 	attribute.</li>
 
-	<li>Any other data type will be interpreted as the term's kOFFSET_NID
-	and no verification will be performed.</li>
+	<li>Any other data type will be interpreted as the term's kTAG_NID and
+	no verification will be performed.</li>
 </ul>
 
 
@@ -315,7 +319,7 @@ href="mailto:m.skofic&#64;cgiar.org">m.skofic&#64;<!---->cgiar.org</a>&gt;<br />
 
 				<h4>See</h4>
 				<div class="list">
-						kTAG_TAG_PATH<br />
+						kTAG_PATH<br />
 				</div>
 				<h4>Uses</h4>
 				<div class="list">
@@ -368,7 +372,7 @@ term that represents the feature or trait the current object is tagging.</p>
 
 				<h4>See</h4>
 				<div class="list">
-						kTAG_TAG_PATH<br />
+						kTAG_PATH<br />
 				</div>
 
 
@@ -421,7 +425,7 @@ method.</p>
 
 				<h4>See</h4>
 				<div class="list">
-						kTAG_TAG_PATH<br />
+						kTAG_PATH<br />
 				</div>
 
 
@@ -471,7 +475,7 @@ and a scale.</p>
 
 				<h4>See</h4>
 				<div class="list">
-						kTAG_TAG_PATH<br />
+						kTAG_PATH<br />
 				</div>
 
 
@@ -707,10 +711,6 @@ identifier was not resolved.</p>
 					<code><code><a href="class-Exception.html">Exception</a></code></code><br />
 				</div>
 
-				<h4>Used by</h4>
-				<div class="list">
-						<code><code><a href="class-COntology.html#_ResolveTag">COntology::ResolveTag()</a></code></code> <br />
-				</div>
 
 
 		</div>
@@ -770,7 +770,7 @@ elements of the path to be object native identifiers.</p>
 
 				<h4>See</h4>
 				<div class="list">
-						kTAG_TAG_PATH kTOKEN_INDEX_SEPARATOR<br />
+						kTAG_PATH kTOKEN_INDEX_SEPARATOR<br />
 				</div>
 				<h4>Used by</h4>
 				<div class="list">
@@ -806,7 +806,7 @@ elements of the path to be object native identifiers.</p>
 			
 <h4>Handle offset before setting it</h4>
 
-<p>In this class we lock the kTAG_TAG_PATH attribute if the object is
+<p>In this class we lock the kTAG_PATH attribute if the object is
 committed.</p>
 
 
@@ -827,7 +827,7 @@ committed.</p>
 
 				<h4>See</h4>
 				<div class="list">
-						kTAG_TAG_PATH<br />
+						kTAG_PATH<br />
 				</div>
 				<h4>Uses</h4>
 				<div class="list">
@@ -863,7 +863,7 @@ committed.</p>
 			
 <h4>Handle offset before unsetting it</h4>
 
-<p>In this class we lock the kTAG_TAG_PATH attribute if the object is
+<p>In this class we lock the kTAG_PATH attribute if the object is
 committed and the kTAG_UID in all cases.</p>
 
 
@@ -882,7 +882,7 @@ committed and the kTAG_UID in all cases.</p>
 
 				<h4>See</h4>
 				<div class="list">
-						kTAG_TAG_PATH<br />
+						kTAG_PATH<br />
 				</div>
 				<h4>Uses</h4>
 				<div class="list">
@@ -899,14 +899,14 @@ committed and the kTAG_UID in all cases.</p>
 
 		<td class="attributes"><code>
 			 protected 
-			
+			mixed
 			
 			</code>
 		</td>
 
 		<td class="name"><div>
 		<a class="anchor" href="#__PrecommitIdentify">#</a>
-		<code><a href="source-class-COntologyTag.html#876-975" title="Go to source code">_PrecommitIdentify</a>( <span>reference <var>&amp; $theConnection</var></span>, <span>reference <var>&amp; $theModifiers</var></span> )</code>
+		<code><a href="source-class-COntologyTag.html#876-976" title="Go to source code">_PrecommitIdentify</a>( <span>reference <var>&amp; $theConnection</var></span>, <span>reference <var>&amp; $theModifiers</var></span> )</code>
 
 		<div class="description short">
 			
@@ -921,7 +921,7 @@ committed and the kTAG_UID in all cases.</p>
 <p>This method will use the result of the <code><a href="class-COntologyTag.html#__index">COntologyTag::_index()</a></code> method to set the
 global identifier, kTAG_GID; the same value will be hashed and
 constitute the unique identifier, kTAG_UID, while the native identifier,
-kOFFSET_NID, will be set by the sequence number kSEQUENCE_KEY_TAG.</p>
+kTAG_NID, will be set by the sequence number kSEQUENCE_KEY_TAG.</p>
 
 <p>The parent method will then be called, which will ignore the global and
 native identifiers, since they will have been set here.</p>
@@ -936,6 +936,10 @@ native identifiers, since they will have been set here.</p>
 					<dd><code>reference</code><br>&amp;$theModifiers Commit options.</dd>
 				</dl></div>
 
+				<h4>Returns</h4>
+				<div class="list">
+					<code>mixed</code><br />
+				</div>
 
 				<h4>Throws</h4>
 				<div class="list">
@@ -945,7 +949,7 @@ native identifiers, since they will have been set here.</p>
 				<h4>See</h4>
 				<div class="list">
 						kSEQUENCE_KEY_TAG<br />
-						kOFFSET_NID kTAG_GID kTAG_UID<br />
+						kTAG_NID kTAG_GID kTAG_UID<br />
 						kFLAG_PERSIST_INSERT kFLAG_PERSIST_REPLACE<br />
 				</div>
 				<h4>Uses</h4>
@@ -971,7 +975,7 @@ native identifiers, since they will have been set here.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#__PostcommitRelated">#</a>
-		<code><a href="source-class-COntologyTag.html#991-1066" title="Go to source code">_PostcommitRelated</a>( <span>reference <var>&amp; $theConnection</var></span>, <span>reference <var>&amp; $theModifiers</var></span> )</code>
+		<code><a href="source-class-COntologyTag.html#992-1067" title="Go to source code">_PostcommitRelated</a>( <span>reference <var>&amp; $theConnection</var></span>, <span>reference <var>&amp; $theModifiers</var></span> )</code>
 
 		<div class="description short">
 			
@@ -984,7 +988,7 @@ native identifiers, since they will have been set here.</p>
 <h4>Update related objects after committing</h4>
 
 <p>Once committed, the referenced feature, method and scale vertices will be
-updated with the current tag's identifier in the respective kTAG_REFS_TAG_FEATURE, kTAG_REFS_TAG_METHOD and kTAG_REFS_TAG_SCALE attributes.</p>
+updated with the current tag's identifier in the respective kTAG_FEATURES, kTAG_METHODS and kTAG_SCALES attributes.</p>
 
 <p>When inserting a new tag, we add the tag reference, when deleting the tag we
 remove it.</p>
@@ -1005,7 +1009,7 @@ remove it.</p>
 
 				<h4>See</h4>
 				<div class="list">
-						kTAG_REFS_TAG_FEATURE, kTAG_REFS_TAG_METHOD, kTAG_REFS_TAG_SCALE<br />
+						kTAG_FEATURES, kTAG_METHODS, kTAG_SCALES<br />
 						kFLAG_PERSIST_INSERT kFLAG_PERSIST_REPLACE kFLAG_PERSIST_DELETE<br />
 				</div>
 				<h4>Uses</h4>
@@ -1030,7 +1034,7 @@ remove it.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#__ReferenceInTerm">#</a>
-		<code><a href="source-class-COntologyTag.html#1082-1147" title="Go to source code">_ReferenceInTerm</a>( <span><code><a href="class-CConnection.html">CConnection</a></code> <var>$theConnection</var></span>, <span>mixed <var>$theTerm</var></span>, <span>string <var>$theTag</var></span>, <span>boolean <var>$doAdd</var></span> )</code>
+		<code><a href="source-class-COntologyTag.html#1083-1148" title="Go to source code">_ReferenceInTerm</a>( <span><code><a href="class-CConnection.html">CConnection</a></code> <var>$theConnection</var></span>, <span>mixed <var>$theTerm</var></span>, <span>string <var>$theTag</var></span>, <span>boolean <var>$doAdd</var></span> )</code>
 
 		<div class="description short">
 			
@@ -1045,11 +1049,10 @@ remove it.</p>
 <p>This method can be used to add or remove the current tag's reference from the
 provided term. This method should be used whenever committing a new tag or when
 deleting one: it will update the term's kTAG_REFS_TAG for terms used as
-predicates, the kTAG_REFS_TAG_FEATURE for terms used as features or
-traits, the kTAG_REFS_TAG_METHOD for terms used as methods and the
-kTAG_REFS_TAG_SCALE for terms used as scales or units, the method will
-add the corresponding reference when inserting a new tag and remove it when
-deleting the tag.</p>
+predicates, the kTAG_FEATURES for terms used as features or traits, the
+kTAG_METHODS for terms used as methods and the kTAG_SCALES for
+terms used as scales or units, the method will add the corresponding reference
+when inserting a new tag and remove it when deleting the tag.</p>
 
 <ul>
 	<li><tt>$theConnection</tt>: Server, database or container in which the terms
@@ -1091,8 +1094,8 @@ failed.</p>
 
 				<h4>See</h4>
 				<div class="list">
-						kOFFSET_NID kTAG_REFS_TAG<br />
-						kTAG_REFS_TAG_FEATURE kTAG_REFS_TAG_METHOD kTAG_REFS_TAG_SCALE<br />
+						kTAG_NID kTAG_REFS_TAG<br />
+						kTAG_FEATURES kTAG_METHODS kTAG_SCALES<br />
 						kFLAG_PERSIST_MODIFY kFLAG_MODIFY_ADDSET kFLAG_MODIFY_PULL<br />
 				</div>
 

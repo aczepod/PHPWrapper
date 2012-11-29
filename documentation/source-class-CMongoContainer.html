@@ -7,8 +7,8 @@
 
 	<title>File CMongoContainer.php | MyWrapper Reference Documentation</title>
 
-	<script type="text/javascript" src="resources/combined.js?1742645618"></script>
-	<script type="text/javascript" src="elementlist.js?539813953"></script>
+	<script type="text/javascript" src="resources/combined.js?3680114562"></script>
+	<script type="text/javascript" src="elementlist.js?2861350629"></script>
 	<link rel="stylesheet" type="text/css" media="all" href="resources/style.css?3505392360" />
 
 </head>
@@ -39,6 +39,8 @@
 				<li class="main"><a href="package-MyWrapper.Wrappers.html">Wrappers</a>
 						</li>
 							</ul></li>
+				<li><a href="package-None.html">None</a>
+						</li>
 				<li><a href="package-PHP.html">PHP</a>
 						</li>
 			</ul>
@@ -462,13 +464,13 @@
 </span><span id="360" class="l"><a class="l" href="#360"> 360: </a>            <span class="php-comment">// Determine criteria.</span>
 </span><span id="361" class="l"><a class="l" href="#361"> 361: </a>            <span class="php-comment">//</span>
 </span><span id="362" class="l"><a class="l" href="#362"> 362: </a>            <span class="php-keyword1">if</span>( <span class="php-var">$theIdentifier</span> !== <span class="php-keyword1">NULL</span> )
-</span><span id="363" class="l"><a class="l" href="#363"> 363: </a>                <span class="php-var">$criteria</span> = <span class="php-keyword1">array</span>( kOFFSET_NID =&gt; <span class="php-var">$theIdentifier</span> );
+</span><span id="363" class="l"><a class="l" href="#363"> 363: </a>                <span class="php-var">$criteria</span> = <span class="php-keyword1">array</span>( kTAG_NID =&gt; <span class="php-var">$theIdentifier</span> );
 </span><span id="364" class="l"><a class="l" href="#364"> 364: </a>            <span class="php-keyword1">elseif</span>( <span class="php-keyword2">is_array</span>( <span class="php-var">$theObject</span> )
-</span><span id="365" class="l"><a class="l" href="#365"> 365: </a>                 &amp;&amp; <span class="php-keyword2">array_key_exists</span>( kOFFSET_NID, <span class="php-var">$theObject</span> ) )
-</span><span id="366" class="l"><a class="l" href="#366"> 366: </a>                <span class="php-var">$criteria</span> = <span class="php-keyword1">array</span>( kOFFSET_NID =&gt; <span class="php-var">$theObject</span>[ kOFFSET_NID ] );
+</span><span id="365" class="l"><a class="l" href="#365"> 365: </a>                 &amp;&amp; <span class="php-keyword2">array_key_exists</span>( kTAG_NID, <span class="php-var">$theObject</span> ) )
+</span><span id="366" class="l"><a class="l" href="#366"> 366: </a>                <span class="php-var">$criteria</span> = <span class="php-keyword1">array</span>( kTAG_NID =&gt; <span class="php-var">$theObject</span>[ kTAG_NID ] );
 </span><span id="367" class="l"><a class="l" href="#367"> 367: </a>            <span class="php-keyword1">elseif</span>( (<span class="php-var">$theObject</span> <span class="php-keyword1">instanceof</span> ArrayObject)
-</span><span id="368" class="l"><a class="l" href="#368"> 368: </a>                 &amp;&amp; <span class="php-var">$theObject</span>-&gt;offsetExists( kOFFSET_NID ) )
-</span><span id="369" class="l"><a class="l" href="#369"> 369: </a>                <span class="php-var">$criteria</span> = <span class="php-keyword1">array</span>( kOFFSET_NID =&gt; <span class="php-var">$theObject</span>-&gt;offsetGet( kOFFSET_NID ) );
+</span><span id="368" class="l"><a class="l" href="#368"> 368: </a>                 &amp;&amp; <span class="php-var">$theObject</span>-&gt;offsetExists( kTAG_NID ) )
+</span><span id="369" class="l"><a class="l" href="#369"> 369: </a>                <span class="php-var">$criteria</span> = <span class="php-keyword1">array</span>( kTAG_NID =&gt; <span class="php-var">$theObject</span>-&gt;offsetGet( kTAG_NID ) );
 </span><span id="370" class="l"><a class="l" href="#370"> 370: </a>            <span class="php-keyword1">else</span>
 </span><span id="371" class="l"><a class="l" href="#371"> 371: </a>                <span class="php-keyword1">throw</span> <span class="php-keyword1">new</span> Exception
 </span><span id="372" class="l"><a class="l" href="#372"> 372: </a>                    ( <span class="php-quote">&quot;Missing object identifier&quot;</span>,
@@ -513,7 +515,7 @@
 </span><span id="411" class="l"><a class="l" href="#411"> 411: </a>            <span class="php-comment">// Set identifier.</span>
 </span><span id="412" class="l"><a class="l" href="#412"> 412: </a>            <span class="php-comment">//</span>
 </span><span id="413" class="l"><a class="l" href="#413"> 413: </a>            <span class="php-keyword1">if</span>( <span class="php-var">$theIdentifier</span> !== <span class="php-keyword1">NULL</span> )
-</span><span id="414" class="l"><a class="l" href="#414"> 414: </a>                <span class="php-var">$theObject</span>[ kOFFSET_NID ] = <span class="php-var">$theIdentifier</span>;
+</span><span id="414" class="l"><a class="l" href="#414"> 414: </a>                <span class="php-var">$theObject</span>[ kTAG_NID ] = <span class="php-var">$theIdentifier</span>;
 </span><span id="415" class="l"><a class="l" href="#415"> 415: </a>            
 </span><span id="416" class="l"><a class="l" href="#416"> 416: </a>            <span class="php-comment">//</span>
 </span><span id="417" class="l"><a class="l" href="#417"> 417: </a>            <span class="php-comment">// Convert to object.</span>
@@ -547,7 +549,7 @@
 </span><span id="445" class="l"><a class="l" href="#445"> 445: </a>                    ( <span class="php-var">$status</span>[ <span class="php-quote">'errmsg'</span> ],
 </span><span id="446" class="l"><a class="l" href="#446"> 446: </a>                      kERROR_COMMIT );                                          <span class="php-comment">// !@! ==&gt;</span>
 </span><span id="447" class="l"><a class="l" href="#447"> 447: </a>            
-</span><span id="448" class="l"><a class="l" href="#448"> 448: </a>            <span class="php-keyword1">return</span> <span class="php-var">$theObject</span>[ kOFFSET_NID ];                                       <span class="php-comment">// ==&gt;</span>
+</span><span id="448" class="l"><a class="l" href="#448"> 448: </a>            <span class="php-keyword1">return</span> <span class="php-var">$theObject</span>[ kTAG_NID ];                                      <span class="php-comment">// ==&gt;</span>
 </span><span id="449" class="l"><a class="l" href="#449"> 449: </a>        
 </span><span id="450" class="l"><a class="l" href="#450"> 450: </a>        } <span class="php-comment">// Insert.</span>
 </span><span id="451" class="l"><a class="l" href="#451"> 451: </a>        
@@ -566,13 +568,13 @@
 </span><span id="464" class="l"><a class="l" href="#464"> 464: </a>            <span class="php-comment">// Determine criteria.</span>
 </span><span id="465" class="l"><a class="l" href="#465"> 465: </a>            <span class="php-comment">//</span>
 </span><span id="466" class="l"><a class="l" href="#466"> 466: </a>            <span class="php-keyword1">if</span>( <span class="php-var">$theIdentifier</span> !== <span class="php-keyword1">NULL</span> )
-</span><span id="467" class="l"><a class="l" href="#467"> 467: </a>                <span class="php-var">$criteria</span> = <span class="php-keyword1">array</span>( kOFFSET_NID =&gt; <span class="php-var">$theIdentifier</span> );
+</span><span id="467" class="l"><a class="l" href="#467"> 467: </a>                <span class="php-var">$criteria</span> = <span class="php-keyword1">array</span>( kTAG_NID =&gt; <span class="php-var">$theIdentifier</span> );
 </span><span id="468" class="l"><a class="l" href="#468"> 468: </a>            <span class="php-keyword1">elseif</span>( <span class="php-keyword2">is_array</span>( <span class="php-var">$theObject</span> )
-</span><span id="469" class="l"><a class="l" href="#469"> 469: </a>                 &amp;&amp; <span class="php-keyword2">array_key_exists</span>( kOFFSET_NID, <span class="php-var">$theObject</span> ) )
-</span><span id="470" class="l"><a class="l" href="#470"> 470: </a>                <span class="php-var">$criteria</span> = <span class="php-keyword1">array</span>( kOFFSET_NID =&gt; <span class="php-var">$theObject</span>[ kOFFSET_NID ] );
+</span><span id="469" class="l"><a class="l" href="#469"> 469: </a>                 &amp;&amp; <span class="php-keyword2">array_key_exists</span>( kTAG_NID, <span class="php-var">$theObject</span> ) )
+</span><span id="470" class="l"><a class="l" href="#470"> 470: </a>                <span class="php-var">$criteria</span> = <span class="php-keyword1">array</span>( kTAG_NID =&gt; <span class="php-var">$theObject</span>[ kTAG_NID ] );
 </span><span id="471" class="l"><a class="l" href="#471"> 471: </a>            <span class="php-keyword1">elseif</span>( (<span class="php-var">$theObject</span> <span class="php-keyword1">instanceof</span> ArrayObject)
-</span><span id="472" class="l"><a class="l" href="#472"> 472: </a>                 &amp;&amp; <span class="php-var">$theObject</span>-&gt;offsetExists( kOFFSET_NID ) )
-</span><span id="473" class="l"><a class="l" href="#473"> 473: </a>                <span class="php-var">$criteria</span> = <span class="php-keyword1">array</span>( kOFFSET_NID =&gt; <span class="php-var">$theObject</span>-&gt;offsetGet( kOFFSET_NID ) );
+</span><span id="472" class="l"><a class="l" href="#472"> 472: </a>                 &amp;&amp; <span class="php-var">$theObject</span>-&gt;offsetExists( kTAG_NID ) )
+</span><span id="473" class="l"><a class="l" href="#473"> 473: </a>                <span class="php-var">$criteria</span> = <span class="php-keyword1">array</span>( kTAG_NID =&gt; <span class="php-var">$theObject</span>-&gt;offsetGet( kTAG_NID ) );
 </span><span id="474" class="l"><a class="l" href="#474"> 474: </a>            <span class="php-keyword1">else</span>
 </span><span id="475" class="l"><a class="l" href="#475"> 475: </a>                <span class="php-keyword1">throw</span> <span class="php-keyword1">new</span> Exception
 </span><span id="476" class="l"><a class="l" href="#476"> 476: </a>                    ( <span class="php-quote">&quot;Missing object identifier&quot;</span>,
@@ -610,7 +612,7 @@
 </span><span id="508" class="l"><a class="l" href="#508"> 508: </a>            <span class="php-comment">// Determine criteria.</span>
 </span><span id="509" class="l"><a class="l" href="#509"> 509: </a>            <span class="php-comment">//</span>
 </span><span id="510" class="l"><a class="l" href="#510"> 510: </a>            <span class="php-keyword1">if</span>( <span class="php-var">$theIdentifier</span> !== <span class="php-keyword1">NULL</span> )
-</span><span id="511" class="l"><a class="l" href="#511"> 511: </a>                <span class="php-var">$criteria</span> = <span class="php-keyword1">array</span>( kOFFSET_NID =&gt; <span class="php-var">$theIdentifier</span> );
+</span><span id="511" class="l"><a class="l" href="#511"> 511: </a>                <span class="php-var">$criteria</span> = <span class="php-keyword1">array</span>( kTAG_NID =&gt; <span class="php-var">$theIdentifier</span> );
 </span><span id="512" class="l"><a class="l" href="#512"> 512: </a>            <span class="php-keyword1">else</span>
 </span><span id="513" class="l"><a class="l" href="#513"> 513: </a>                <span class="php-keyword1">throw</span> <span class="php-keyword1">new</span> Exception
 </span><span id="514" class="l"><a class="l" href="#514"> 514: </a>                    ( <span class="php-quote">&quot;Missing object identifier&quot;</span>,
@@ -827,7 +829,7 @@
 </span><span id="725" class="l"><a class="l" href="#725"> 725: </a>            <span class="php-comment">// Set identifier.</span>
 </span><span id="726" class="l"><a class="l" href="#726"> 726: </a>            <span class="php-comment">//</span>
 </span><span id="727" class="l"><a class="l" href="#727"> 727: </a>            <span class="php-keyword1">if</span>( <span class="php-var">$theIdentifier</span> !== <span class="php-keyword1">NULL</span> )
-</span><span id="728" class="l"><a class="l" href="#728"> 728: </a>                <span class="php-var">$theObject</span>[ kOFFSET_NID ] = <span class="php-var">$theIdentifier</span>;
+</span><span id="728" class="l"><a class="l" href="#728"> 728: </a>                <span class="php-var">$theObject</span>[ kTAG_NID ] = <span class="php-var">$theIdentifier</span>;
 </span><span id="729" class="l"><a class="l" href="#729"> 729: </a>            
 </span><span id="730" class="l"><a class="l" href="#730"> 730: </a>            <span class="php-comment">//</span>
 </span><span id="731" class="l"><a class="l" href="#731"> 731: </a>            <span class="php-comment">// Convert to object.</span>
@@ -861,7 +863,7 @@
 </span><span id="759" class="l"><a class="l" href="#759"> 759: </a>                    ( <span class="php-var">$status</span>[ <span class="php-quote">'errmsg'</span> ],
 </span><span id="760" class="l"><a class="l" href="#760"> 760: </a>                      kERROR_COMMIT );                                          <span class="php-comment">// !@! ==&gt;</span>
 </span><span id="761" class="l"><a class="l" href="#761"> 761: </a>            
-</span><span id="762" class="l"><a class="l" href="#762"> 762: </a>            <span class="php-keyword1">return</span> <span class="php-var">$theObject</span>[ kOFFSET_NID ];                                       <span class="php-comment">// ==&gt;</span>
+</span><span id="762" class="l"><a class="l" href="#762"> 762: </a>            <span class="php-keyword1">return</span> <span class="php-var">$theObject</span>[ kTAG_NID ];                                      <span class="php-comment">// ==&gt;</span>
 </span><span id="763" class="l"><a class="l" href="#763"> 763: </a>        
 </span><span id="764" class="l"><a class="l" href="#764"> 764: </a>        } <span class="php-comment">// Replace.</span>
 </span><span id="765" class="l"><a class="l" href="#765"> 765: </a>        
@@ -874,13 +876,13 @@
 </span><span id="772" class="l"><a class="l" href="#772"> 772: </a>            <span class="php-comment">// Determine criteria.</span>
 </span><span id="773" class="l"><a class="l" href="#773"> 773: </a>            <span class="php-comment">//</span>
 </span><span id="774" class="l"><a class="l" href="#774"> 774: </a>            <span class="php-keyword1">if</span>( <span class="php-var">$theIdentifier</span> !== <span class="php-keyword1">NULL</span> )
-</span><span id="775" class="l"><a class="l" href="#775"> 775: </a>                <span class="php-var">$criteria</span> = <span class="php-keyword1">array</span>( kOFFSET_NID =&gt; <span class="php-var">$theIdentifier</span> );
+</span><span id="775" class="l"><a class="l" href="#775"> 775: </a>                <span class="php-var">$criteria</span> = <span class="php-keyword1">array</span>( kTAG_NID =&gt; <span class="php-var">$theIdentifier</span> );
 </span><span id="776" class="l"><a class="l" href="#776"> 776: </a>            <span class="php-keyword1">elseif</span>( <span class="php-keyword2">is_array</span>( <span class="php-var">$theObject</span> )
-</span><span id="777" class="l"><a class="l" href="#777"> 777: </a>                 &amp;&amp; <span class="php-keyword2">array_key_exists</span>( kOFFSET_NID, <span class="php-var">$theObject</span> ) )
-</span><span id="778" class="l"><a class="l" href="#778"> 778: </a>                <span class="php-var">$criteria</span> = <span class="php-keyword1">array</span>( kOFFSET_NID =&gt; <span class="php-var">$theObject</span>[ kOFFSET_NID ] );
+</span><span id="777" class="l"><a class="l" href="#777"> 777: </a>                 &amp;&amp; <span class="php-keyword2">array_key_exists</span>( kTAG_NID, <span class="php-var">$theObject</span> ) )
+</span><span id="778" class="l"><a class="l" href="#778"> 778: </a>                <span class="php-var">$criteria</span> = <span class="php-keyword1">array</span>( kTAG_NID =&gt; <span class="php-var">$theObject</span>[ kTAG_NID ] );
 </span><span id="779" class="l"><a class="l" href="#779"> 779: </a>            <span class="php-keyword1">elseif</span>( (<span class="php-var">$theObject</span> <span class="php-keyword1">instanceof</span> ArrayObject)
-</span><span id="780" class="l"><a class="l" href="#780"> 780: </a>                 &amp;&amp; <span class="php-var">$theObject</span>-&gt;offsetExists( kOFFSET_NID ) )
-</span><span id="781" class="l"><a class="l" href="#781"> 781: </a>                <span class="php-var">$criteria</span> = <span class="php-keyword1">array</span>( kOFFSET_NID =&gt; <span class="php-var">$theObject</span>-&gt;offsetGet( kOFFSET_NID ) );
+</span><span id="780" class="l"><a class="l" href="#780"> 780: </a>                 &amp;&amp; <span class="php-var">$theObject</span>-&gt;offsetExists( kTAG_NID ) )
+</span><span id="781" class="l"><a class="l" href="#781"> 781: </a>                <span class="php-var">$criteria</span> = <span class="php-keyword1">array</span>( kTAG_NID =&gt; <span class="php-var">$theObject</span>-&gt;offsetGet( kTAG_NID ) );
 </span><span id="782" class="l"><a class="l" href="#782"> 782: </a>            <span class="php-keyword1">else</span>
 </span><span id="783" class="l"><a class="l" href="#783"> 783: </a>                <span class="php-keyword1">throw</span> <span class="php-keyword1">new</span> Exception
 </span><span id="784" class="l"><a class="l" href="#784"> 784: </a>                    ( <span class="php-quote">&quot;Missing object identifier&quot;</span>,
@@ -1319,13 +1321,13 @@
 </span></span><span id="1217" class="l"><a class="l" href="#1217">1217: </a><span class="php-comment">     *      return a MongoCode object.
 </span></span><span id="1218" class="l"><a class="l" href="#1218">1218: </a><span class="php-comment">     *  &lt;li&gt;&lt;i&gt;{@link CDataTypeStamp} object or {@link kTYPE_STAMP} offset&lt;/i&gt;: We return a
 </span></span><span id="1219" class="l"><a class="l" href="#1219">1219: </a><span class="php-comment">     *      MongoDate object.
-</span></span><span id="1220" class="l"><a class="l" href="#1220">1220: </a><span class="php-comment">     *  &lt;li&gt;&lt;i&gt;{@link CDataTypeRegex} object or {@link kTYPE_REGEX} offset&lt;/i&gt;: We return a
+</span></span><span id="1220" class="l"><a class="l" href="#1220">1220: </a><span class="php-comment">     *  &lt;li&gt;&lt;i&gt;{@link CDataTypeRegex} object or {@link kTYPE_REGEX_STRING} offset&lt;/i&gt;: We return a
 </span></span><span id="1221" class="l"><a class="l" href="#1221">1221: </a><span class="php-comment">     *      MongoRegex object.
 </span></span><span id="1222" class="l"><a class="l" href="#1222">1222: </a><span class="php-comment">     *  &lt;li&gt;&lt;i&gt;{@link CDataTypeInt32} object or {@link kTYPE_INT32} offset&lt;/i&gt;: We return a
 </span></span><span id="1223" class="l"><a class="l" href="#1223">1223: </a><span class="php-comment">     *      MongoInt32 object.
 </span></span><span id="1224" class="l"><a class="l" href="#1224">1224: </a><span class="php-comment">     *  &lt;li&gt;&lt;i&gt;{@link CDataTypeInt64} object or {@link kTYPE_INT64} offset&lt;/i&gt;: We return a
 </span></span><span id="1225" class="l"><a class="l" href="#1225">1225: </a><span class="php-comment">     *      MongoInt64 object.
-</span></span><span id="1226" class="l"><a class="l" href="#1226">1226: </a><span class="php-comment">     *  &lt;li&gt;&lt;i&gt;{@link CDataTypeBinary} object or {@link kTYPE_BINARY} offset&lt;/i&gt;: We return
+</span></span><span id="1226" class="l"><a class="l" href="#1226">1226: </a><span class="php-comment">     *  &lt;li&gt;&lt;i&gt;{@link CDataTypeBinary} object or {@link kTYPE_BINARY_STRING} offset&lt;/i&gt;: We return
 </span></span><span id="1227" class="l"><a class="l" href="#1227">1227: </a><span class="php-comment">     *      a MongoBinData object.
 </span></span><span id="1228" class="l"><a class="l" href="#1228">1228: </a><span class="php-comment">     * &lt;/ul&gt;
 </span></span><span id="1229" class="l"><a class="l" href="#1229">1229: </a><span class="php-comment">     *
@@ -1384,9 +1386,9 @@
 </span><span id="1282" class="l"><a class="l" href="#1282">1282: </a>                    <span class="php-keyword1">if</span>( <span class="php-keyword2">is_array</span>( <span class="php-var">$data</span> )
 </span><span id="1283" class="l"><a class="l" href="#1283">1283: </a>                     || (<span class="php-var">$data</span> <span class="php-keyword1">instanceof</span> ArrayObject) )
 </span><span id="1284" class="l"><a class="l" href="#1284">1284: </a>                    {
-</span><span id="1285" class="l"><a class="l" href="#1285">1285: </a>                        <span class="php-var">$tmp1</span> = <span class="php-var">$data</span>[ kTYPE_STAMP_SEC ];
-</span><span id="1286" class="l"><a class="l" href="#1286">1286: </a>                        <span class="php-var">$tmp2</span> = ( <span class="php-keyword2">array_key_exists</span>( kTYPE_STAMP_USEC, (<span class="php-keyword1">array</span>) <span class="php-var">$data</span> ) )
-</span><span id="1287" class="l"><a class="l" href="#1287">1287: </a>                              ? <span class="php-var">$data</span>[ kTYPE_STAMP_USEC ]
+</span><span id="1285" class="l"><a class="l" href="#1285">1285: </a>                        <span class="php-var">$tmp1</span> = <span class="php-var">$data</span>[ kTAG_STAMP_SEC ];
+</span><span id="1286" class="l"><a class="l" href="#1286">1286: </a>                        <span class="php-var">$tmp2</span> = ( <span class="php-keyword2">array_key_exists</span>( kTAG_STAMP_USEC, (<span class="php-keyword1">array</span>) <span class="php-var">$data</span> ) )
+</span><span id="1287" class="l"><a class="l" href="#1287">1287: </a>                              ? <span class="php-var">$data</span>[ kTAG_STAMP_USEC ]
 </span><span id="1288" class="l"><a class="l" href="#1288">1288: </a>                              : <span class="php-num">0</span>;
 </span><span id="1289" class="l"><a class="l" href="#1289">1289: </a>                        <span class="php-var">$theElement</span> = <span class="php-keyword1">new</span> MongoDate( <span class="php-var">$tmp1</span>, <span class="php-var">$tmp2</span> );
 </span><span id="1290" class="l"><a class="l" href="#1290">1290: </a>                    }
@@ -1409,18 +1411,18 @@
 </span><span id="1307" class="l"><a class="l" href="#1307">1307: </a>                <span class="php-comment">//</span>
 </span><span id="1308" class="l"><a class="l" href="#1308">1308: </a>                <span class="php-comment">// MongoRegex.</span>
 </span><span id="1309" class="l"><a class="l" href="#1309">1309: </a>                <span class="php-comment">//</span>
-</span><span id="1310" class="l"><a class="l" href="#1310">1310: </a>                <span class="php-keyword1">case</span> kTYPE_REGEX:
+</span><span id="1310" class="l"><a class="l" href="#1310">1310: </a>                <span class="php-keyword1">case</span> kTYPE_REGEX_STRING:
 </span><span id="1311" class="l"><a class="l" href="#1311">1311: </a>                    <span class="php-var">$theElement</span> = <span class="php-keyword1">new</span> MongoRegex( <span class="php-var">$data</span> );
 </span><span id="1312" class="l"><a class="l" href="#1312">1312: </a>                    <span class="php-keyword1">break</span>;
 </span><span id="1313" class="l"><a class="l" href="#1313">1313: </a>    
 </span><span id="1314" class="l"><a class="l" href="#1314">1314: </a>                <span class="php-comment">//</span>
 </span><span id="1315" class="l"><a class="l" href="#1315">1315: </a>                <span class="php-comment">// MongoBinData.</span>
 </span><span id="1316" class="l"><a class="l" href="#1316">1316: </a>                <span class="php-comment">//</span>
-</span><span id="1317" class="l"><a class="l" href="#1317">1317: </a>                <span class="php-keyword1">case</span> kTYPE_BINARY:
+</span><span id="1317" class="l"><a class="l" href="#1317">1317: </a>                <span class="php-keyword1">case</span> kTYPE_BINARY_STRING:
 </span><span id="1318" class="l"><a class="l" href="#1318">1318: </a>                    <span class="php-var">$data</span> = ( <span class="php-keyword2">function_exists</span>( <span class="php-quote">'hex2bin'</span> ) )
 </span><span id="1319" class="l"><a class="l" href="#1319">1319: </a>                          ? <span class="php-keyword2">hex2bin</span>( <span class="php-var">$data</span> )
 </span><span id="1320" class="l"><a class="l" href="#1320">1320: </a>                          : <span class="php-keyword2">pack</span>( <span class="php-quote">'H*'</span>, <span class="php-var">$data</span> );
-</span><span id="1321" class="l"><a class="l" href="#1321">1321: </a>                    <span class="php-var">$theElement</span> = <span class="php-keyword1">new</span> MongoBinData( <span class="php-var">$data</span> );
+</span><span id="1321" class="l"><a class="l" href="#1321">1321: </a>                    <span class="php-var">$theElement</span> = <span class="php-keyword1">new</span> MongoBinData( <span class="php-var">$data</span>, <span class="php-num">2</span> );
 </span><span id="1322" class="l"><a class="l" href="#1322">1322: </a>                    <span class="php-keyword1">break</span>;
 </span><span id="1323" class="l"><a class="l" href="#1323">1323: </a>            
 </span><span id="1324" class="l"><a class="l" href="#1324">1324: </a>            } <span class="php-comment">// Parsing by type.</span>
@@ -1447,9 +1449,9 @@
 </span><span id="1345" class="l"><a class="l" href="#1345">1345: </a>                        <span class="php-var">$theElement</span> = <span class="php-keyword1">new</span> MongoInt64( (string) <span class="php-var">$theElement</span> );
 </span><span id="1346" class="l"><a class="l" href="#1346">1346: </a>                    <span class="php-keyword1">break</span>;
 </span><span id="1347" class="l"><a class="l" href="#1347">1347: </a>                    
-</span><span id="1348" class="l"><a class="l" href="#1348">1348: </a>                <span class="php-keyword1">case</span> kTYPE_BINARY:
+</span><span id="1348" class="l"><a class="l" href="#1348">1348: </a>                <span class="php-keyword1">case</span> kTYPE_BINARY_STRING:
 </span><span id="1349" class="l"><a class="l" href="#1349">1349: </a>                    <span class="php-keyword1">if</span>( ! (<span class="php-var">$theElement</span> <span class="php-keyword1">instanceof</span> MongoBinData) )
-</span><span id="1350" class="l"><a class="l" href="#1350">1350: </a>                        <span class="php-var">$theElement</span> = <span class="php-keyword1">new</span> MongoBinData( (string) <span class="php-var">$theElement</span> );
+</span><span id="1350" class="l"><a class="l" href="#1350">1350: </a>                        <span class="php-var">$theElement</span> = <span class="php-keyword1">new</span> MongoBinData( (string) <span class="php-var">$theElement</span>, <span class="php-num">2</span> );
 </span><span id="1351" class="l"><a class="l" href="#1351">1351: </a>                    <span class="php-keyword1">break</span>;
 </span><span id="1352" class="l"><a class="l" href="#1352">1352: </a>                    
 </span><span id="1353" class="l"><a class="l" href="#1353">1353: </a>                <span class="php-keyword1">case</span> kTYPE_STAMP:

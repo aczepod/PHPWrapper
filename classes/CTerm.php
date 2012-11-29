@@ -71,10 +71,10 @@ require_once( kPATH_MYWRAPPER_LIBRARY_CLASS."/CPersistentObject.php" );
  *		This can be used to redirect synonymous terms to a single instance that holds all
  *		the attributes common to the referencing terms. This is used to prevent duplicating
  *		attributes for synonym terms. This attribute is constituted by the
- *		{@link kOFFSET_NID} of the referenced term and is optional.
+ *		{@link kTAG_NID} of the referenced term and is optional.
  * </ul>
  *
- * The native identifier of the term, {@link kOFFSET_NID}, is equivalent to the global
+ * The native identifier of the term, {@link kTAG_NID}, is equivalent to the global
  * identifier, in derived classes the native identifier will generally be a hash of the
  * global identifier.
  *

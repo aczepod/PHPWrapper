@@ -38,7 +38,7 @@ require_once( kPATH_MYWRAPPER_LIBRARY_CLASS."/CPersistentObject.php" );
  * <ul>
  *	<li><i>Term</i>: The term, <tt>{@link Term()}</tt> or the <tt>{@link kTAG_TERM}</tt>
  *		tag, is a reference to a {@link CTerm} instance which holds the static attributes
- *		of the current node. This attribute is constituted by the {@link kOFFSET_NID} of the
+ *		of the current node. This attribute is constituted by the {@link kTAG_NID} of the
  *		referenced term and is required.
  *	<li><i>Category</i>: The category, <tt>{@link Category()}</tt> or the
  *		<tt>{@link kTAG_CATEGORY}</tt> tag, is an enumerated set of values that constitute
@@ -69,7 +69,7 @@ require_once( kPATH_MYWRAPPER_LIBRARY_CLASS."/CPersistentObject.php" );
  * Finally, the class features the {@link kTAG_TYPE} property which defines the data type
  * of the node or the data unit it represents, this offset is an enumerated set in which
  * two elements can reside: the data type or unit, which is required, and optionally one or
- * both {@link kTYPE_CARD_REQUIRED} and {@link kTYPE_CARD_ARRAY} which respectively indicate
+ * both {@link kTYPE_REQUIRED} and {@link kTYPE_ARRAY} which respectively indicate
  * whether the node represents a required attribute and whether the data type indicated in
  * the first element of the offset is a list or not.
  *
@@ -412,19 +412,24 @@ class CNode extends CPersistentObject
 	 * vertex node and edge predicate. The subject vertex is represented by the current
 	 * node.
 	 *
-	 * Both the predicate and the object vertex node can be any type, the method expects
-	 * the following parameters:
+	 * Both the predicate and the object vertex node can be any type, the last parameter
+	 * represents the connection, it is optional and if provided, will be used to commit the
+	 * edge.
+	 *
+	 * The method expects the following parameters:
 	 *
 	 * <ul>
 	 *	<li><tt>$theObject</tt>: The edge's object vertex.
 	 *	<li><tt>$thePredicate</tt>: The edge's predicate.
+	 *	<li><tt>$theConnection</tt>: Server, database or container.
 	 * </ul>
 	 *
 	 * The method will return an instance of the {@link CEdge} class, if any error occurs,
 	 * the method will raise an exception.
 	 *
-	 * @param mixed					$theObject			Object vertex.
 	 * @param mixed					$thePredicate		Relationship predicate.
+	 * @param mixed					$theObject			Object vertex.
+	 * @param CConnection			$theConnection		Server, database or container.
 	 *
 	 * @access public
 	 * @return CEdge				Relationship edge object.
@@ -433,12 +438,12 @@ class CNode extends CPersistentObject
 	 *
 	 * @see kTAG_TERM
 	 */
-	public function RelateTo( $theObject, $thePredicate )
+	public function RelateTo( $thePredicate, $theObject, $theConnection = NULL )
 	{
 		//
 		// Instantiate the edge
 		//
-		$edge = new CEdge();
+		$edge = $this->_NewEdge();
 		
 		//
 		// Set subject.
@@ -454,6 +459,12 @@ class CNode extends CPersistentObject
 		// Set object.
 		//
 		$edge->Object( $theObject );
+		
+		//
+		// Insert.
+		//
+		if( $theConnection !== NULL )
+			$edge->Insert( $theConnection );
 		
 		return $edge;																// ==>
 
@@ -507,6 +518,33 @@ class CNode extends CPersistentObject
 		parent::_Preset( $theOffset, $theValue );
 	
 	} // _Preset.
+		
+
+
+/*=======================================================================================
+ *																						*
+ *								PROTECTED EDGE INTERFACE								*
+ *																						*
+ *======================================================================================*/
+
+
+	 
+	/*===================================================================================
+	 *	_NewEdge																		*
+	 *==================================================================================*/
+
+	/**
+	 * <h4>Return a new edge instance</h4>
+	 *
+	 * This method should return a new edge instance, its goal is to instantiate the correct
+	 * edge type.
+	 *
+	 * In this class we return a {@link CEdge} instance.
+	 *
+	 * @access protected
+	 * @return CEdge
+	 */
+	protected function _NewEdge()									{	return new CEdge();	}
 		
 
 

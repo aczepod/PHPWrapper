@@ -283,11 +283,11 @@ require_once( 'DefaultOntologies.inc.php' );
 							 [ kTOKEN_NAMESPACE_SEPARATOR.kONTOLOGY_DEFAULT_ATTRIBUTES ];
 		$params = array(
 			array( 'code' => kONTOLOGY_DEFAULT_AUTHORS,
-				   'type' => array( kTYPE_STRING, kTYPE_CARD_ARRAY ),
+				   'type' => array( kTYPE_STRING, kTYPE_ARRAY ),
 				   'label' => "Authors",
 				   'descr' => "List of authors." ),
 			array( 'code' => kONTOLOGY_DEFAULT_NOTES,
-				   'type' => array( kTYPE_STRING, kTYPE_CARD_ARRAY ),
+				   'type' => array( kTYPE_STRING, kTYPE_ARRAY ),
 				   'label' => "Notes",
 				   'descr' => "General notes." ),
 			array( 'code' => kONTOLOGY_DEFAULT_ACKNOWLEDGMENTS,
@@ -295,11 +295,11 @@ require_once( 'DefaultOntologies.inc.php' );
 				   'label' => "Acknowledgments",
 				   'descr' => "General acknowledgments." ),
 			array( 'code' => kONTOLOGY_DEFAULT_BIBLIOGRAPHY,
-				   'type' => array( kTYPE_STRING, kTYPE_CARD_ARRAY ),
+				   'type' => array( kTYPE_STRING, kTYPE_ARRAY ),
 				   'label' => "Bibliography",
 				   'descr' => "List of bibliographic references." ),
 			array( 'code' => kONTOLOGY_DEFAULT_EXAMPLES,
-				   'type' => array( kTYPE_STRING, kTYPE_CARD_ARRAY ),
+				   'type' => array( kTYPE_STRING, kTYPE_ARRAY ),
 				   'label' => "Examples",
 				   'descr' => "List of examples or templates." ) );
 		
@@ -351,7 +351,7 @@ require_once( 'DefaultOntologies.inc.php' );
 				echo( "    - $id ["
 					 .$_SESSION[ 'NODES' ][ $id ]
 					 ."] ("
-					 .$_SESSION[ 'TAGS' ][ $id ][ kOFFSET_NID ]
+					 .$_SESSION[ 'TAGS' ][ $id ][ kTAG_NID ]
 					 .")\n" );
 		}
 
@@ -392,13 +392,13 @@ require_once( 'DefaultOntologies.inc.php' );
 			array( 'code' => substr( kTYPE_BOOLEAN, 1 ),
 				   'label' => "Boolean",
 				   'descr' => "The primitive boolean data type, it is assumed that it is provided as (y/n; Yes/No; 1/0; TRUE/FALSE) and will be converted to 1/0." ),
-			array( 'code' => substr( kTYPE_BINARY, 1 ),
+			array( 'code' => substr( kTYPE_BINARY_STRING, 1 ),
 				   'label' => "Binary string",
 				   'descr' => "The binary string data type, it differs from the {@link kTYPE_STRING} type only because it needs to be handled in a custom way to accomodate different databases." ),
-			array( 'code' => substr( kTYPE_DATE, 1 ),
+			array( 'code' => substr( kTYPE_DATE_STRING, 1 ),
 				   'label' => "Date",
 				   'descr' => "A date represented as a YYYYMMDD string in which missing elements should be omitted. This means that if we don't know the day we can express that date as YYYYMM." ),
-			array( 'code' => substr( kTYPE_TIME, 1 ),
+			array( 'code' => substr( kTYPE_TIME_STRING, 1 ),
 				   'label' => "Time",
 				   'descr' => "A time represented as a YYYY-MM-DD HH:MM:SS string in which you may not have missing elements." ),
 			array( 'code' => substr( kTYPE_STAMP, 1 ),

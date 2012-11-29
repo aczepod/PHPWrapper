@@ -6,8 +6,8 @@
 
 	<title>Class CTag | MyWrapper Reference Documentation</title>
 
-	<script type="text/javascript" src="resources/combined.js?1742645618"></script>
-	<script type="text/javascript" src="elementlist.js?539813953"></script>
+	<script type="text/javascript" src="resources/combined.js?3680114562"></script>
+	<script type="text/javascript" src="elementlist.js?2861350629"></script>
 	<link rel="stylesheet" type="text/css" media="all" href="resources/style.css?3505392360" />
 
 </head>
@@ -38,6 +38,8 @@
 				<li class="main"><a href="package-MyWrapper.Wrappers.html">Wrappers</a>
 						</li>
 							</ul></li>
+				<li><a href="package-None.html">None</a>
+						</li>
 				<li><a href="package-PHP.html">PHP</a>
 						</li>
 			</ul>
@@ -128,10 +130,10 @@ used as a reference to that path.</p>
 <p>This class features the following default properties:</p>
 
 <ul>
-	<li><i>Path</i>: The tag path, or the <tt>kTAG_TAG_PATH</tt> tag,
-	represents a sequence of <i>vertex</i>/<i>predicate</i>/<i>vertex</i> elements
-	in which the odd elements represent relationship vertices and the even elements
-	the predicates that connect these vertices. The class offers two methods, <code><a href="class-CTag.html#_PushItem">CTag::PushItem()</a></code> and <code><a href="class-CTag.html#_PopItem">CTag::PopItem()</a></code> which respectively allow to append and remove
+	<li><i>Path</i>: The tag path, or the <tt>kTAG_PATH</tt> tag, represents
+	a sequence of <i>vertex</i>/<i>predicate</i>/<i>vertex</i> elements in which the
+	odd elements represent relationship vertices and the even elements the
+	predicates that connect these vertices. The class offers two methods, <code><a href="class-CTag.html#_PushItem">CTag::PushItem()</a></code> and <code><a href="class-CTag.html#_PopItem">CTag::PopItem()</a></code> which respectively allow to append and remove
 	items from the top of the list.</li>
 
 	<li><i>Global identifier</i>: The global identifier, <tt><code><a href="class-CPersistentObject.html#_GID">CPersistentObject::GID()</a></code></tt> or
@@ -223,7 +225,7 @@ strings</p>
 				<b>Author:</b>
 				Milko A. Škofič &lt;<a
 href="mailto:m.skofic&#64;cgiar.org">m.skofic&#64;<!---->cgiar.org</a>&gt;<br />
-		<b>Located at</b> <a href="source-class-CTag.html#36-375" title="Go to source code">CTag.php</a><br />
+		<b>Located at</b> <a href="source-class-CTag.html#36-378" title="Go to source code">CTag.php</a><br />
 	</div>
 
 
@@ -278,7 +280,7 @@ ignored and the method will return <tt>FALSE</tt>.</p>
 
 				<h4>See</h4>
 				<div class="list">
-						kTAG_TAG_PATH<br />
+						kTAG_PATH<br />
 				</div>
 
 
@@ -325,7 +327,7 @@ is missing, the method will return <tt>NULL</tt>.</p>
 
 				<h4>See</h4>
 				<div class="list">
-						kTAG_TAG_PATH<br />
+						kTAG_PATH<br />
 				</div>
 
 
@@ -379,7 +381,7 @@ string.</p>
 
 				<h4>See</h4>
 				<div class="list">
-						kTAG_TAG_PATH kTOKEN_INDEX_SEPARATOR<br />
+						kTAG_PATH kTOKEN_INDEX_SEPARATOR<br />
 				</div>
 
 				<h4>Overrides</h4>
@@ -411,7 +413,7 @@ string.</p>
 			
 <h4>Handle offset before setting it</h4>
 
-<p>In this class we ensure that the kTAG_TAG_PATH offset is an array,
+<p>In this class we ensure that the kTAG_PATH offset is an array,
 ArrayObject instances are not counted as an array.</p>
 
 
@@ -432,7 +434,7 @@ ArrayObject instances are not counted as an array.</p>
 
 				<h4>See</h4>
 				<div class="list">
-						kTAG_TAG_PATH<br />
+						kTAG_PATH<br />
 				</div>
 
 				<h4>Overrides</h4>
@@ -445,14 +447,14 @@ ArrayObject instances are not counted as an array.</p>
 
 		<td class="attributes"><code>
 			 protected 
-			
+			mixed
 			
 			</code>
 		</td>
 
 		<td class="name"><div>
 		<a class="anchor" href="#__PrecommitValidate">#</a>
-		<code><a href="source-class-CTag.html#300-332" title="Go to source code">_PrecommitValidate</a>( <span>reference <var>&amp; $theConnection</var></span>, <span>reference <var>&amp; $theModifiers</var></span> )</code>
+		<code><a href="source-class-CTag.html#300-335" title="Go to source code">_PrecommitValidate</a>( <span>reference <var>&amp; $theConnection</var></span>, <span>reference <var>&amp; $theModifiers</var></span> )</code>
 
 		<div class="description short">
 			
@@ -477,6 +479,10 @@ that is not the case, the method will raise an exception.</p>
 					<dd><code>reference</code><br>&amp;$theModifiers Commit options.</dd>
 				</dl></div>
 
+				<h4>Returns</h4>
+				<div class="list">
+					<code>mixed</code><br />
+				</div>
 
 				<h4>Throws</h4>
 				<div class="list">
@@ -485,7 +491,7 @@ that is not the case, the method will raise an exception.</p>
 
 				<h4>See</h4>
 				<div class="list">
-						kTAG_TAG_PATH<br />
+						kTAG_PATH<br />
 				</div>
 
 				<h4>Overrides</h4>
@@ -505,7 +511,7 @@ that is not the case, the method will raise an exception.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#__Ready">#</a>
-		<code><a href="source-class-CTag.html#348-371" title="Go to source code">_Ready</a>( )</code>
+		<code><a href="source-class-CTag.html#351-374" title="Go to source code">_Ready</a>( )</code>
 
 		<div class="description short">
 			
@@ -518,7 +524,7 @@ that is not the case, the method will raise an exception.</p>
 <h4>Determine if the object is ready</h4>
 
 <p>In this class we tie the <code><a href="class-CStatusDocument.html#__IsInited">CStatusDocument::_IsInited()</a></code> status to the presence or
-absence of the kTAG_TAG_PATH offset.</p>
+absence of the kTAG_PATH offset.</p>
 
 
 
@@ -531,7 +537,7 @@ absence of the kTAG_TAG_PATH offset.</p>
 
 				<h4>See</h4>
 				<div class="list">
-						kTAG_TAG_PATH<br />
+						kTAG_PATH<br />
 				</div>
 				<h4>Uses</h4>
 				<div class="list">

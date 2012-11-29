@@ -36,6 +36,11 @@ require_once( '/Library/WebServer/Library/PHPWrapper/data/local.inc.php' );
 require_once( '/Library/WebServer/Library/PHPWrapper/styles.inc.php' );
 
 //
+// Predicates.
+//
+require_once( kPATH_MYWRAPPER_LIBRARY_DEFINE."/Predicates.inc.php" );
+
+//
 // Parsers.
 //
 require_once( kPATH_MYWRAPPER_LIBRARY_FUNCTION."/parsing.php" );
@@ -459,9 +464,9 @@ try
 			(
 				array
 				(
-					kOFFSET_QUERY_SUBJECT => kOFFSET_NID,
+					kOFFSET_QUERY_SUBJECT => kTAG_NID,
 					kOFFSET_QUERY_OPERATOR => kOPERATOR_EQUAL,
-					kOFFSET_QUERY_TYPE => kTYPE_BINARY,
+					kOFFSET_QUERY_TYPE => kTYPE_BINARY_STRING,
 					kOFFSET_QUERY_DATA => new CDataTypeBinary( hex2bin( '80B196896559FEA57DAE4360FF46BF59' ) )
 				)
 			)
@@ -507,9 +512,9 @@ try
 			(
 				array
 				(
-					kOFFSET_QUERY_SUBJECT => kOFFSET_NID,
+					kOFFSET_QUERY_SUBJECT => kTAG_NID,
 					kOFFSET_QUERY_OPERATOR => kOPERATOR_EQUAL,
-					kOFFSET_QUERY_TYPE => kTYPE_BINARY,
+					kOFFSET_QUERY_TYPE => kTYPE_BINARY_STRING,
 					kOFFSET_QUERY_DATA => new CDataTypeBinary( hex2bin( '80B196896559FEA57DAE4360FF46BF59' ) )
 				)
 			)
@@ -876,7 +881,7 @@ try
 		(
 			array
 			(
-				kOFFSET_QUERY_SUBJECT => kOFFSET_NID,
+				kOFFSET_QUERY_SUBJECT => kTAG_NID,
 				kOFFSET_QUERY_OPERATOR => kOPERATOR_EQUAL,
 				kOFFSET_QUERY_TYPE => kTYPE_INT32,
 				kOFFSET_QUERY_DATA => 13763
@@ -924,7 +929,7 @@ try
 		(
 			array
 			(
-				kOFFSET_QUERY_SUBJECT => kOFFSET_NID,
+				kOFFSET_QUERY_SUBJECT => kTAG_NID,
 				kOFFSET_QUERY_OPERATOR => kOPERATOR_EQUAL,
 				kOFFSET_QUERY_TYPE => kTYPE_INT32,
 				kOFFSET_QUERY_DATA => 13763
@@ -972,7 +977,7 @@ try
 		(
 			array
 			(
-				kOFFSET_QUERY_SUBJECT => kOFFSET_NID,
+				kOFFSET_QUERY_SUBJECT => kTAG_NID,
 				kOFFSET_QUERY_OPERATOR => kOPERATOR_EQUAL,
 				kOFFSET_QUERY_TYPE => kTYPE_INT32,
 				kOFFSET_QUERY_DATA => 13763
@@ -1020,7 +1025,7 @@ try
 		(
 			array
 			(
-				kOFFSET_QUERY_SUBJECT => kOFFSET_NID,
+				kOFFSET_QUERY_SUBJECT => kTAG_NID,
 				kOFFSET_QUERY_OPERATOR => kOPERATOR_EQUAL,
 				kOFFSET_QUERY_TYPE => kTYPE_INT32,
 				kOFFSET_QUERY_DATA => 13763
@@ -1070,7 +1075,7 @@ try
 		(
 			array
 			(
-				kOFFSET_QUERY_SUBJECT => kOFFSET_NID,
+				kOFFSET_QUERY_SUBJECT => kTAG_NID,
 				kOFFSET_QUERY_OPERATOR => kOPERATOR_EQUAL,
 				kOFFSET_QUERY_TYPE => kTYPE_INT32,
 				kOFFSET_QUERY_DATA => 13763

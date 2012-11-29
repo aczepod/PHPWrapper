@@ -6,8 +6,8 @@
 
 	<title>Class CGraphContainer | MyWrapper Reference Documentation</title>
 
-	<script type="text/javascript" src="resources/combined.js?1742645618"></script>
-	<script type="text/javascript" src="elementlist.js?539813953"></script>
+	<script type="text/javascript" src="resources/combined.js?3680114562"></script>
+	<script type="text/javascript" src="elementlist.js?2861350629"></script>
 	<link rel="stylesheet" type="text/css" media="all" href="resources/style.css?3505392360" />
 
 </head>
@@ -38,6 +38,8 @@
 				<li class="main"><a href="package-MyWrapper.Wrappers.html">Wrappers</a>
 						</li>
 							</ul></li>
+				<li><a href="package-None.html">None</a>
+						</li>
 				<li><a href="package-PHP.html">PHP</a>
 						</li>
 			</ul>
@@ -184,7 +186,7 @@ to perform more custom operations.</p>
 				<b>Author:</b>
 				Milko A. Škofič &lt;<a
 href="mailto:m.skofic&#64;cgiar.org">m.skofic&#64;<!---->cgiar.org</a>&gt;<br />
-		<b>Located at</b> <a href="source-class-CGraphContainer.html#36-276" title="Go to source code">CGraphContainer.php</a><br />
+		<b>Located at</b> <a href="source-class-CGraphContainer.html#36-318" title="Go to source code">CGraphContainer.php</a><br />
 	</div>
 
 
@@ -249,7 +251,7 @@ attributes.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#_SetNode">#</a>
-		<code><a href="source-class-CGraphContainer.html#85-97" title="Go to source code">SetNode</a>( <span>mixed <var>$theNode</var></span> )</code>
+		<code><a href="source-class-CGraphContainer.html#85-101" title="Go to source code">SetNode</a>( <span>mixed <var>$theNode</var></span>, <span>mixed <var>$theProperties</var> = <span class="php-keyword1">NULL</span> </span> )</code>
 
 		<div class="description short">
 			
@@ -267,12 +269,17 @@ graph.</p>
 <p>The method should return the node identifier if the operation was
 successful.</p>
 
+<p>If you provide the <tt>$theProperties</tt> parameter, these will be set in
+the node before it is saved.</p>
+
 
 
 				<h4>Parameters</h4>
 				<div class="list"><dl>
 					<dt><var>$theNode</var></dt>
 					<dd><code>mixed</code><br>$theNode Node to be saved.</dd>
+					<dt><var>$theProperties</var></dt>
+					<dd><code>mixed</code><br>$theProperties Node properties.</dd>
 				</dl></div>
 
 				<h4>Returns</h4>
@@ -297,7 +304,7 @@ successful.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#_GetNode">#</a>
-		<code><a href="source-class-CGraphContainer.html#104-114" title="Go to source code">GetNode</a>( <span>mixed <var>$theIdentifier</var></span> )</code>
+		<code><a href="source-class-CGraphContainer.html#108-122" title="Go to source code">GetNode</a>( <span>mixed <var>$theIdentifier</var></span>, <span>boolean <var>$doThrow</var> = <span class="php-keyword1">FALSE</span> </span> )</code>
 
 		<div class="description short">
 			
@@ -312,12 +319,17 @@ successful.</p>
 <p>This method should return a node corresponding to the provided
 identifier.</p>
 
+<p>If the second parameter is <tt>TRUE</tt> and the node was not found, the
+method should raise an exception.</p>
+
 
 
 				<h4>Parameters</h4>
 				<div class="list"><dl>
 					<dt><var>$theIdentifier</var></dt>
 					<dd><code>mixed</code><br>$theIdentifier Node identifier.</dd>
+					<dt><var>$doThrow</var></dt>
+					<dd><code>boolean</code><br>$doThrow TRUE throw exception if not found.</dd>
 				</dl></div>
 
 				<h4>Returns</h4>
@@ -342,7 +354,7 @@ identifier.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#_DelNode">#</a>
-		<code><a href="source-class-CGraphContainer.html#121-134" title="Go to source code">DelNode</a>( <span>mixed <var>$theIdentifier</var></span> )</code>
+		<code><a href="source-class-CGraphContainer.html#129-142" title="Go to source code">DelNode</a>( <span>mixed <var>$theIdentifier</var></span> )</code>
 
 		<div class="description short">
 			
@@ -389,7 +401,7 @@ identifier.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#_NewEdge">#</a>
-		<code><a href="source-class-CGraphContainer.html#150-167" title="Go to source code">NewEdge</a>( <span>mixed <var>$theSubject</var></span>, <span>array <var>$thePredicate</var></span>, <span>mixed <var>$theObject</var></span>, <span>array <var>$theProperties</var> = <span class="php-keyword1">NULL</span> </span> )</code>
+		<code><a href="source-class-CGraphContainer.html#158-175" title="Go to source code">NewEdge</a>( <span>mixed <var>$theSubject</var></span>, <span>array <var>$thePredicate</var></span>, <span>mixed <var>$theObject</var></span>, <span>array <var>$theProperties</var> = <span class="php-keyword1">NULL</span> </span> )</code>
 
 		<div class="description short">
 			
@@ -443,7 +455,7 @@ properties.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#_SetEdge">#</a>
-		<code><a href="source-class-CGraphContainer.html#174-186" title="Go to source code">SetEdge</a>( <span>mixed <var>$theEdge</var></span> )</code>
+		<code><a href="source-class-CGraphContainer.html#182-194" title="Go to source code">SetEdge</a>( <span>mixed <var>$theEdge</var></span> )</code>
 
 		<div class="description short">
 			
@@ -491,7 +503,7 @@ successful.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#_GetEdge">#</a>
-		<code><a href="source-class-CGraphContainer.html#193-203" title="Go to source code">GetEdge</a>( <span>mixed <var>$theIdentifier</var></span> )</code>
+		<code><a href="source-class-CGraphContainer.html#201-211" title="Go to source code">GetEdge</a>( <span>mixed <var>$theIdentifier</var></span> )</code>
 
 		<div class="description short">
 			
@@ -536,7 +548,7 @@ identifier.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#_DelEdge">#</a>
-		<code><a href="source-class-CGraphContainer.html#210-223" title="Go to source code">DelEdge</a>( <span>mixed <var>$theIdentifier</var></span> )</code>
+		<code><a href="source-class-CGraphContainer.html#218-231" title="Go to source code">DelEdge</a>( <span>mixed <var>$theIdentifier</var></span> )</code>
 
 		<div class="description short">
 			
@@ -572,6 +584,59 @@ identifier.</p>
 		</div>
 		</div></td>
 	</tr>
+	<tr data-order="GetNodeProperties" id="_GetNodeProperties">
+
+		<td class="attributes"><code>
+			abstract public 
+			array
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_GetNodeProperties">#</a>
+		<code><a href="source-class-CGraphContainer.html#247-265" title="Go to source code">GetNodeProperties</a>( <span>mixed <var>$theNode</var></span> )</code>
+
+		<div class="description short">
+			
+<h4>Get node properties</h4>
+
+		</div>
+
+		<div class="description detailed hidden">
+			
+<h4>Get node properties</h4>
+
+<p>This method can be used to retrieve the provided node's properties.</p>
+
+<p>The method accepts one parameter which can either be the node, or the node
+identifier for which we want the properties.</p>
+
+<p>If the node reference is not resolved, the method should return
+<tt>FALSE</tt>.</p>
+
+<p>If the provided node is not of the correct type, the method should raise an
+exception.</p>
+
+
+
+				<h4>Parameters</h4>
+				<div class="list"><dl>
+					<dt><var>$theNode</var></dt>
+					<dd><code>mixed</code><br>$theNode Node object or reference.</dd>
+				</dl></div>
+
+				<h4>Returns</h4>
+				<div class="list">
+					<code>array</code><br>The node properties<br />
+				</div>
+
+
+
+
+		</div>
+		</div></td>
+	</tr>
 	<tr data-order="GetNodeEdges" id="_GetNodeEdges">
 
 		<td class="attributes"><code>
@@ -583,7 +648,7 @@ identifier.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#_GetNodeEdges">#</a>
-		<code><a href="source-class-CGraphContainer.html#239-272" title="Go to source code">GetNodeEdges</a>( <span>mixed <var>$theNode</var></span>, <span>mixed <var>$thePredicate</var> = <span class="php-keyword1">NULL</span></span>, <span>string <var>$theSense</var> = <span class="php-keyword1">NULL</span> </span> )</code>
+		<code><a href="source-class-CGraphContainer.html#281-314" title="Go to source code">GetNodeEdges</a>( <span>mixed <var>$theNode</var></span>, <span>mixed <var>$thePredicate</var> = <span class="php-keyword1">NULL</span></span>, <span>string <var>$theSense</var> = <span class="php-keyword1">NULL</span> </span> )</code>
 
 		<div class="description short">
 			

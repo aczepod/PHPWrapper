@@ -362,7 +362,7 @@
 	// Test the Mongo distinct PHP command.
 	//
 
-	$m = new Mongo;
+	$m = new MongoClient();
 	$db = $m->selectDB("test");
 	$db->dropCollection("distinct");
 	$c = $db->distinct;

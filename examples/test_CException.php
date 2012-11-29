@@ -69,7 +69,7 @@ class CTest
 				(
 					"Level Library: Caught exception from SubFunction().",	// Message.
 					-22,													// Code.
-					kMESSAGE_TYPE_ERROR,									// Severity.
+					kSTATUS_ERROR,									// Severity.
 					array( 'Function' => 'SubLibrary()',					// References.
 						   'Level' => 'Library',
 						   'Object' => clone( $this ) ),
@@ -117,7 +117,7 @@ class CTest
 				(
 					"Level Routine: Caught exception from SubRoutine().",	// Message.
 					501,													// Code.
-					kMESSAGE_TYPE_WARNING,									// Severity.
+					kSTATUS_WARNING,									// Severity.
 					array( 'Function' => 'SubRoutine()',					// References.
 						   'Level' => 'Routine',
 						   'Object' => clone( $this ) ),

@@ -214,8 +214,8 @@ try
 	// Insert object with ID.
 	//
 	echo( '<h4>Insert object with ID</h4>' );
-	echo( '<h5>$object = new ArrayObject( array( kOFFSET_NID => 1, "DATA" => "dati" ) );</h5>' );
-	$object = new ArrayObject( array( kOFFSET_NID => 1, "DATA" => "dati" ) );
+	echo( '<h5>$object = new ArrayObject( array( kTAG_NID => 1, "DATA" => "dati" ) );</h5>' );
+	$object = new ArrayObject( array( kTAG_NID => 1, "DATA" => "dati" ) );
 	echo( '<pre>' ); print_r( $object ); echo( '</pre>' );
 	echo( '<h5>$status = $test->ManageObject( $object, NULL, kFLAG_PERSIST_INSERT );</h5>' );
 	$status = $test->ManageObject( $object, NULL, kFLAG_PERSIST_INSERT );
@@ -282,8 +282,8 @@ try
 	// Replace new object.
 	//
 	echo( '<h4>Replace new object</h4>' );
-	echo( '<h5>$object->offsetUnset( kOFFSET_NID );</h5>' );
-	$object->offsetUnset( kOFFSET_NID );
+	echo( '<h5>$object->offsetUnset( kTAG_NID );</h5>' );
+	$object->offsetUnset( kTAG_NID );
 	echo( 'Object<pre>' ); print_r( $object ); echo( '</pre>' );
 	echo( '<h5>$status = $test->ManageObject( $object, NULL, kFLAG_PERSIST_REPLACE );</h5>' );
 	$status = $test->ManageObject( $object, NULL, kFLAG_PERSIST_REPLACE );

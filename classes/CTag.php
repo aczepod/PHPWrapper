@@ -42,7 +42,7 @@ require_once( kPATH_MYWRAPPER_LIBRARY_CLASS."/CPersistentObject.php" );
  * This class features the following default properties:
  *
  * <ul>
- *	<li><i>Path</i>: The tag path, or the <tt>{@link kTAG_TAG_PATH}</tt> tag, represents a
+ *	<li><i>Path</i>: The tag path, or the <tt>{@link kTAG_PATH}</tt> tag, represents a
  *		sequence of <i>vertex</i>/<i>predicate</i>/<i>vertex</i> elements in which the odd
  *		elements represent relationship vertices and the even elements the predicates that
  *		connect these vertices. The class offers two methods, {@link PushItem()} and
@@ -96,7 +96,7 @@ class CTag extends CPersistentObject
 	 * @access public
 	 * @return integer				Number of items in the list.
 	 *
-	 * @see kTAG_TAG_PATH
+	 * @see kTAG_PATH
 	 */
 	public function PushItem( $theValue )
 	{
@@ -108,12 +108,12 @@ class CTag extends CPersistentObject
 			//
 			// Check if list exists.
 			//
-			if( $this->offsetExists( kTAG_TAG_PATH ) )
+			if( $this->offsetExists( kTAG_PATH ) )
 			{
 				//
 				// Get list.
 				//
-				$list = $this->offsetGet( kTAG_TAG_PATH );
+				$list = $this->offsetGet( kTAG_PATH );
 				
 				//
 				// Add item.
@@ -123,7 +123,7 @@ class CTag extends CPersistentObject
 				//
 				// Update list.
 				//
-				$this->offsetSet( kTAG_TAG_PATH, $list );
+				$this->offsetSet( kTAG_PATH, $list );
 				
 				return count( $list );												// ==>
 			
@@ -132,7 +132,7 @@ class CTag extends CPersistentObject
 			//
 			// Create list.
 			//
-			$this->offsetSet( kTAG_TAG_PATH, array( $theValue ) );
+			$this->offsetSet( kTAG_PATH, array( $theValue ) );
 			
 			return 1;																// ==>
 		
@@ -158,19 +158,19 @@ class CTag extends CPersistentObject
 	 * @access public
 	 * @return mixed				Last item of the list or <tt>NULL</tt>.
 	 *
-	 * @see kTAG_TAG_PATH
+	 * @see kTAG_PATH
 	 */
 	public function PopItem()
 	{
 		//
 		// Check if list exists.
 		//
-		if( $this->offsetExists( kTAG_TAG_PATH ) )
+		if( $this->offsetExists( kTAG_PATH ) )
 		{
 			//
 			// Get list.
 			//
-			$list = $this->offsetGet( kTAG_TAG_PATH );
+			$list = $this->offsetGet( kTAG_PATH );
 			
 			//
 			// Pop item.
@@ -181,13 +181,13 @@ class CTag extends CPersistentObject
 			// Update list.
 			//
 			if( count( $list ) )
-				$this->offsetSet( kTAG_TAG_PATH, $list );
+				$this->offsetSet( kTAG_PATH, $list );
 			
 			//
 			// Delete list.
 			//
 			else
-				$this->offsetUnset( kTAG_TAG_PATH );
+				$this->offsetUnset( kTAG_PATH );
 			
 			return $item;															// ==>
 		
@@ -225,12 +225,12 @@ class CTag extends CPersistentObject
 	 * @access protected
 	 * @return string|NULL			The object's global unique identifier.
 	 *
-	 * @see kTAG_TAG_PATH kTOKEN_INDEX_SEPARATOR
+	 * @see kTAG_PATH kTOKEN_INDEX_SEPARATOR
 	 */
 	protected function _index( CConnection $theConnection, $theModifiers )
 	{
 		return implode( kTOKEN_INDEX_SEPARATOR,
-						$this->offsetGet( kTAG_TAG_PATH ) );						// ==>
+						$this->offsetGet( kTAG_PATH ) );						// ==>
 	
 	} // _index.
 		
@@ -251,7 +251,7 @@ class CTag extends CPersistentObject
 	/**
 	 * <h4>Handle offset before setting it</h4>
 	 *
-	 * In this class we ensure that the {@link kTAG_TAG_PATH} offset is an array,
+	 * In this class we ensure that the {@link kTAG_PATH} offset is an array,
 	 * ArrayObject instances are not counted as an array.
 	 *
 	 * @param reference			   &$theOffset			Offset.
@@ -261,14 +261,14 @@ class CTag extends CPersistentObject
 	 *
 	 * @throws Exception
 	 *
-	 * @see kTAG_TAG_PATH
+	 * @see kTAG_PATH
 	 */
 	protected function _Preset( &$theOffset, &$theValue )
 	{
 		//
 		// Ensure path is array.
 		//
-		if( ($theOffset == kTAG_TAG_PATH)
+		if( ($theOffset == kTAG_PATH)
 		 && ($theValue !== NULL)
 		 && (! is_array( $theValue )) )
 			throw new Exception
@@ -307,10 +307,11 @@ class CTag extends CPersistentObject
 	 * @param reference			   &$theModifiers		Commit options.
 	 *
 	 * @access protected
+	 * @return mixed
 	 *
 	 * @throws Exception
 	 *
-	 * @see kTAG_TAG_PATH
+	 * @see kTAG_PATH
 	 */
 	protected function _PrecommitValidate( &$theConnection, &$theModifiers )
 	{
@@ -323,11 +324,13 @@ class CTag extends CPersistentObject
 		// Check path count.
 		// Note that the parent method will have checked the path is there.
 		//
-		if( ! (count( $this->offsetGet( kTAG_TAG_PATH ) ) % 2) )	// Even.
+		if( ! (count( $this->offsetGet( kTAG_PATH ) ) % 2) )	// Even.
 			throw new Exception
 				( "Unable to commit object: "
 				 ."the path must have an odd number of elements",
 				  kERROR_STATE );												// !@! ==>
+		
+		return NULL;																// ==>
 		
 	} // _PrecommitValidate.
 		
@@ -349,14 +352,14 @@ class CTag extends CPersistentObject
 	 * <h4>Determine if the object is ready</h4>
 	 *
 	 * In this class we tie the {@link _IsInited()} status to the presence or absence of the
-	 * {@link kTAG_TAG_PATH} offset.
+	 * {@link kTAG_PATH} offset.
 	 *
 	 * @access protected
 	 * @return boolean				<tt>TRUE</tt> means {@link _IsInited( <tt>TRUE</tt> ).
 	 *
 	 * @uses _Ready()
 	 *
-	 * @see kTAG_TAG_PATH
+	 * @see kTAG_PATH
 	 */
 	protected function _Ready()
 	{
@@ -364,7 +367,7 @@ class CTag extends CPersistentObject
 		// Check parent.
 		//
 		if( parent::_Ready() )
-			return $this->offsetExists( kTAG_TAG_PATH );							// ==>
+			return $this->offsetExists( kTAG_PATH );							// ==>
 		
 		return FALSE;																// ==>
 	

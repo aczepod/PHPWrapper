@@ -741,7 +741,7 @@ class CDataWrapper extends CWrapper
 					throw new CException
 						( "Missing database reference",
 						  kERROR_OPTION_MISSING,
-						  kMESSAGE_TYPE_ERROR,
+						  kSTATUS_ERROR,
 						  array( 'Operation' => $parameter ) );					// !@! ==>
 				
 				//
@@ -752,7 +752,7 @@ class CDataWrapper extends CWrapper
 					throw new CException
 						( "Missing container reference",
 						  kERROR_OPTION_MISSING,
-						  kMESSAGE_TYPE_ERROR,
+						  kSTATUS_ERROR,
 						  array( 'Operation' => $parameter ) );					// !@! ==>
 				
 				//
@@ -762,7 +762,7 @@ class CDataWrapper extends CWrapper
 					throw new CException
 						( "Missing object reference",
 						  kERROR_OPTION_MISSING,
-						  kMESSAGE_TYPE_ERROR,
+						  kSTATUS_ERROR,
 						  array( 'Operation' => $parameter ) );					// !@! ==>
 				break;
 
@@ -778,7 +778,7 @@ class CDataWrapper extends CWrapper
 					throw new CException
 						( "Missing database reference",
 						  kERROR_OPTION_MISSING,
-						  kMESSAGE_TYPE_ERROR,
+						  kSTATUS_ERROR,
 						  array( 'Operation' => $parameter ) );					// !@! ==>
 				
 				//
@@ -789,7 +789,7 @@ class CDataWrapper extends CWrapper
 					throw new CException
 						( "Missing container reference",
 						  kERROR_OPTION_MISSING,
-						  kMESSAGE_TYPE_ERROR,
+						  kSTATUS_ERROR,
 						  array( 'Operation' => $parameter ) );					// !@! ==>
 				break;
 
@@ -804,7 +804,7 @@ class CDataWrapper extends CWrapper
 					throw new CException
 						( "Missing database reference",
 						  kERROR_OPTION_MISSING,
-						  kMESSAGE_TYPE_ERROR,
+						  kSTATUS_ERROR,
 						  array( 'Operation' => $parameter ) );					// !@! ==>
 				
 				//
@@ -815,7 +815,7 @@ class CDataWrapper extends CWrapper
 					throw new CException
 						( "Missing container reference",
 						  kERROR_OPTION_MISSING,
-						  kMESSAGE_TYPE_ERROR,
+						  kSTATUS_ERROR,
 						  array( 'Operation' => $parameter ) );					// !@! ==>
 				
 				//
@@ -825,7 +825,7 @@ class CDataWrapper extends CWrapper
 					throw new CException
 						( "Missing query reference",
 						  kERROR_OPTION_MISSING,
-						  kMESSAGE_TYPE_ERROR,
+						  kSTATUS_ERROR,
 						  array( 'Operation' => $parameter ) );					// !@! ==>
 				
 				//
@@ -835,7 +835,7 @@ class CDataWrapper extends CWrapper
 					throw new CException
 						( "Missing object reference",
 						  kERROR_OPTION_MISSING,
-						  kMESSAGE_TYPE_ERROR,
+						  kSTATUS_ERROR,
 						  array( 'Operation' => $parameter ) );					// !@! ==>
 				break;
 
@@ -849,7 +849,7 @@ class CDataWrapper extends CWrapper
 					throw new CException
 						( "Missing database reference",
 						  kERROR_OPTION_MISSING,
-						  kMESSAGE_TYPE_ERROR,
+						  kSTATUS_ERROR,
 						  array( 'Operation' => $parameter ) );					// !@! ==>
 				
 				//
@@ -860,7 +860,7 @@ class CDataWrapper extends CWrapper
 					throw new CException
 						( "Missing container reference",
 						  kERROR_OPTION_MISSING,
-						  kMESSAGE_TYPE_ERROR,
+						  kSTATUS_ERROR,
 						  array( 'Operation' => $parameter ) );					// !@! ==>
 				
 				//
@@ -870,7 +870,7 @@ class CDataWrapper extends CWrapper
 					throw new CException
 						( "Missing query reference",
 						  kERROR_OPTION_MISSING,
-						  kMESSAGE_TYPE_ERROR,
+						  kSTATUS_ERROR,
 						  array( 'Operation' => $parameter ) );					// !@! ==>
 				break;
 			
@@ -922,7 +922,7 @@ class CDataWrapper extends CWrapper
 				throw new CException
 					( "Invalid fields list data type: must be an array",
 					  kERROR_PARAMETER,
-					  kMESSAGE_TYPE_ERROR,
+					  kSTATUS_ERROR,
 					  array( 'Fields' => $_REQUEST[ kAPI_SELECT ] ) );		// !@! ==>
 		
 		} // Provided fields.
@@ -967,7 +967,7 @@ class CDataWrapper extends CWrapper
 				throw new CException
 					( "Invalid sort list data type: must be an array",
 					  kERROR_PARAMETER,
-					  kMESSAGE_TYPE_ERROR,
+					  kSTATUS_ERROR,
 					  array( 'Fields' => $_REQUEST[ kAPI_SORT ] ) );		// !@! ==>
 		
 		} // Provided sort.
@@ -1012,7 +1012,7 @@ class CDataWrapper extends CWrapper
 				throw new CException
 					( "Invalid options list data type: must be an array",
 					  kERROR_PARAMETER,
-					  kMESSAGE_TYPE_ERROR,
+					  kSTATUS_ERROR,
 					  array( 'Options' => $_REQUEST[ kAPI_OPTIONS ] ) );	// !@! ==>
 		
 		} // Provided options.
@@ -1206,7 +1206,7 @@ class CDataWrapper extends CWrapper
 						throw new CException
 							( "Unable to handle request: invalid PHP serialised string",
 							  kERROR_INVALID_STATE,
-							  kMESSAGE_TYPE_ERROR,
+							  kSTATUS_ERROR,
 							  array( 'Parameter' => $theParameter,
 									 'Format' => $format,
 									 'Data' => $encoded ) );					// !@! ==>
@@ -1225,7 +1225,7 @@ class CDataWrapper extends CWrapper
 					throw new CException
 						( "Unsupported format (should have been caught before)",
 						  kERROR_UNSUPPORTED,
-						  kMESSAGE_TYPE_BUG,
+						  kSTATUS_BUG,
 						  array( 'Parameter' => kAPI_FORMAT,
 								 'Format' => $format ) );						// !@! ==>
 			

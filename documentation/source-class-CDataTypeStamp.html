@@ -7,8 +7,8 @@
 
 	<title>File CDataTypeStamp.php | MyWrapper Reference Documentation</title>
 
-	<script type="text/javascript" src="resources/combined.js?1742645618"></script>
-	<script type="text/javascript" src="elementlist.js?539813953"></script>
+	<script type="text/javascript" src="resources/combined.js?3680114562"></script>
+	<script type="text/javascript" src="elementlist.js?2861350629"></script>
 	<link rel="stylesheet" type="text/css" media="all" href="resources/style.css?3505392360" />
 
 </head>
@@ -39,6 +39,8 @@
 				<li class="main"><a href="package-MyWrapper.Wrappers.html">Wrappers</a>
 						</li>
 							</ul></li>
+				<li><a href="package-None.html">None</a>
+						</li>
 				<li><a href="package-PHP.html">PHP</a>
 						</li>
 			</ul>
@@ -154,9 +156,9 @@
 </span></span><span id="36" class="l"><a class="l" href="#36"> 36: </a><span class="php-comment"> *  &lt;li&gt;&lt;i&gt;{@link kTAG_CUSTOM_TYPE}&lt;/i&gt;: The constant {@link kTYPE_STAMP}.
 </span></span><span id="37" class="l"><a class="l" href="#37"> 37: </a><span class="php-comment"> *  &lt;li&gt;&lt;i&gt;{@link kTAG_CUSTOM_DATA}&lt;/i&gt;: The following structure:
 </span></span><span id="38" class="l"><a class="l" href="#38"> 38: </a><span class="php-comment"> *   &lt;ul&gt;
-</span></span><span id="39" class="l"><a class="l" href="#39"> 39: </a><span class="php-comment"> *      &lt;li&gt;&lt;i&gt;{@link kTYPE_STAMP_SEC}&lt;/i&gt;: The number of seconds since midnight January 1st
+</span></span><span id="39" class="l"><a class="l" href="#39"> 39: </a><span class="php-comment"> *      &lt;li&gt;&lt;i&gt;{@link kTAG_STAMP_SEC}&lt;/i&gt;: The number of seconds since midnight January 1st
 </span></span><span id="40" class="l"><a class="l" href="#40"> 40: </a><span class="php-comment"> *          1970 GMT, an integer.
-</span></span><span id="41" class="l"><a class="l" href="#41"> 41: </a><span class="php-comment"> *      &lt;li&gt;&lt;i&gt;{@link kTYPE_STAMP_USEC}&lt;/i&gt;: The milliseconds part of the value, or zero.
+</span></span><span id="41" class="l"><a class="l" href="#41"> 41: </a><span class="php-comment"> *      &lt;li&gt;&lt;i&gt;{@link kTAG_STAMP_USEC}&lt;/i&gt;: The milliseconds part of the value, or zero.
 </span></span><span id="42" class="l"><a class="l" href="#42"> 42: </a><span class="php-comment"> *   &lt;/ul&gt;
 </span></span><span id="43" class="l"><a class="l" href="#43"> 43: </a><span class="php-comment"> * &lt;/ul&gt;
 </span></span><span id="44" class="l"><a class="l" href="#44"> 44: </a><span class="php-comment"> *
@@ -233,13 +235,13 @@
 </span><span id="115" class="l"><a class="l" href="#115">115: </a>            {
 </span><span id="116" class="l"><a class="l" href="#116">116: </a>                <span class="php-var">$usec</span> = <span class="php-keyword2">sprintf</span>( <span class="php-quote">'%-06s'</span>, <span class="php-var">$tmp</span>[ <span class="php-num">1</span> ] );
 </span><span id="117" class="l"><a class="l" href="#117">117: </a>                <span class="php-var">$this</span>-&gt;offsetSet( kTAG_CUSTOM_DATA,
-</span><span id="118" class="l"><a class="l" href="#118">118: </a>                                  <span class="php-keyword1">array</span>( kTYPE_STAMP_SEC =&gt; (integer) <span class="php-var">$tmp</span>[ <span class="php-num">0</span> ],
-</span><span id="119" class="l"><a class="l" href="#119">119: </a>                                         kTYPE_STAMP_USEC =&gt; (integer) <span class="php-var">$usec</span> ) );
+</span><span id="118" class="l"><a class="l" href="#118">118: </a>                                  <span class="php-keyword1">array</span>( kTAG_STAMP_SEC =&gt; (integer) <span class="php-var">$tmp</span>[ <span class="php-num">0</span> ],
+</span><span id="119" class="l"><a class="l" href="#119">119: </a>                                         kTAG_STAMP_USEC =&gt; (integer) <span class="php-var">$usec</span> ) );
 </span><span id="120" class="l"><a class="l" href="#120">120: </a>            }
 </span><span id="121" class="l"><a class="l" href="#121">121: </a>            <span class="php-keyword1">else</span>
 </span><span id="122" class="l"><a class="l" href="#122">122: </a>                <span class="php-var">$this</span>-&gt;offsetSet( kTAG_CUSTOM_DATA,
-</span><span id="123" class="l"><a class="l" href="#123">123: </a>                                  <span class="php-keyword1">array</span>( kTYPE_STAMP_SEC =&gt; (integer) <span class="php-var">$theData</span>,
-</span><span id="124" class="l"><a class="l" href="#124">124: </a>                                         kTYPE_STAMP_USEC =&gt; <span class="php-num">0</span> ) );
+</span><span id="123" class="l"><a class="l" href="#123">123: </a>                                  <span class="php-keyword1">array</span>( kTAG_STAMP_SEC =&gt; (integer) <span class="php-var">$theData</span>,
+</span><span id="124" class="l"><a class="l" href="#124">124: </a>                                         kTAG_STAMP_USEC =&gt; <span class="php-num">0</span> ) );
 </span><span id="125" class="l"><a class="l" href="#125">125: </a>        }
 </span><span id="126" class="l"><a class="l" href="#126">126: </a>        
 </span><span id="127" class="l"><a class="l" href="#127">127: </a>        <span class="php-comment">//</span>
@@ -247,23 +249,23 @@
 </span><span id="129" class="l"><a class="l" href="#129">129: </a>        <span class="php-comment">//</span>
 </span><span id="130" class="l"><a class="l" href="#130">130: </a>        <span class="php-keyword1">elseif</span>( <span class="php-keyword2">is_integer</span>( <span class="php-var">$theData</span> ) )
 </span><span id="131" class="l"><a class="l" href="#131">131: </a>            <span class="php-var">$this</span>-&gt;offsetSet( kTAG_CUSTOM_DATA,
-</span><span id="132" class="l"><a class="l" href="#132">132: </a>                              <span class="php-keyword1">array</span>( kTYPE_STAMP_SEC =&gt; (integer) <span class="php-var">$theData</span>,
-</span><span id="133" class="l"><a class="l" href="#133">133: </a>                                     kTYPE_STAMP_USEC =&gt; <span class="php-num">0</span> ) );
+</span><span id="132" class="l"><a class="l" href="#132">132: </a>                              <span class="php-keyword1">array</span>( kTAG_STAMP_SEC =&gt; (integer) <span class="php-var">$theData</span>,
+</span><span id="133" class="l"><a class="l" href="#133">133: </a>                                     kTAG_STAMP_USEC =&gt; <span class="php-num">0</span> ) );
 </span><span id="134" class="l"><a class="l" href="#134">134: </a>        
 </span><span id="135" class="l"><a class="l" href="#135">135: </a>        <span class="php-comment">//</span>
 </span><span id="136" class="l"><a class="l" href="#136">136: </a>        <span class="php-comment">// Handle MongoDate.</span>
 </span><span id="137" class="l"><a class="l" href="#137">137: </a>        <span class="php-comment">//</span>
 </span><span id="138" class="l"><a class="l" href="#138">138: </a>        <span class="php-keyword1">elseif</span>( <span class="php-var">$theData</span> <span class="php-keyword1">instanceof</span> MongoDate )
-</span><span id="139" class="l"><a class="l" href="#139">139: </a>            <span class="php-var">$this</span>-&gt;offsetSet( kTAG_CUSTOM_DATA, <span class="php-keyword1">array</span>( kTYPE_STAMP_SEC =&gt; <span class="php-var">$theData</span>-&gt;sec,
-</span><span id="140" class="l"><a class="l" href="#140">140: </a>                                                kTYPE_STAMP_USEC =&gt; <span class="php-var">$theData</span>-&gt;usec ) );
+</span><span id="139" class="l"><a class="l" href="#139">139: </a>            <span class="php-var">$this</span>-&gt;offsetSet( kTAG_CUSTOM_DATA, <span class="php-keyword1">array</span>( kTAG_STAMP_SEC =&gt; <span class="php-var">$theData</span>-&gt;sec,
+</span><span id="140" class="l"><a class="l" href="#140">140: </a>                                                kTAG_STAMP_USEC =&gt; <span class="php-var">$theData</span>-&gt;usec ) );
 </span><span id="141" class="l"><a class="l" href="#141">141: </a>        
 </span><span id="142" class="l"><a class="l" href="#142">142: </a>        <span class="php-comment">//</span>
 </span><span id="143" class="l"><a class="l" href="#143">143: </a>        <span class="php-comment">// Handle DateTime.</span>
 </span><span id="144" class="l"><a class="l" href="#144">144: </a>        <span class="php-comment">//</span>
 </span><span id="145" class="l"><a class="l" href="#145">145: </a>        <span class="php-keyword1">elseif</span>( <span class="php-var">$theData</span> <span class="php-keyword1">instanceof</span> DateTime )
 </span><span id="146" class="l"><a class="l" href="#146">146: </a>            <span class="php-var">$this</span>-&gt;offsetSet( kTAG_CUSTOM_DATA,
-</span><span id="147" class="l"><a class="l" href="#147">147: </a>                              <span class="php-keyword1">array</span>( kTYPE_STAMP_SEC =&gt; <span class="php-var">$theData</span>-&gt;format( <span class="php-quote">&quot;U&quot;</span> ),
-</span><span id="148" class="l"><a class="l" href="#148">148: </a>                                     kTYPE_STAMP_USEC =&gt; <span class="php-num">0</span> ) );
+</span><span id="147" class="l"><a class="l" href="#147">147: </a>                              <span class="php-keyword1">array</span>( kTAG_STAMP_SEC =&gt; <span class="php-var">$theData</span>-&gt;format( <span class="php-quote">&quot;U&quot;</span> ),
+</span><span id="148" class="l"><a class="l" href="#148">148: </a>                                     kTAG_STAMP_USEC =&gt; <span class="php-num">0</span> ) );
 </span><span id="149" class="l"><a class="l" href="#149">149: </a>        
 </span><span id="150" class="l"><a class="l" href="#150">150: </a>        <span class="php-comment">//</span>
 </span><span id="151" class="l"><a class="l" href="#151">151: </a>        <span class="php-comment">// Handle other types.</span>
@@ -272,12 +274,12 @@
 </span><span id="154" class="l"><a class="l" href="#154">154: </a>        {
 </span><span id="155" class="l"><a class="l" href="#155">155: </a>            <span class="php-var">$sec</span> = <span class="php-keyword2">strtotime</span>( (string) <span class="php-var">$theData</span> );
 </span><span id="156" class="l"><a class="l" href="#156">156: </a>            <span class="php-keyword1">if</span>( <span class="php-var">$sec</span> !== <span class="php-keyword1">FALSE</span> )
-</span><span id="157" class="l"><a class="l" href="#157">157: </a>                <span class="php-var">$this</span>-&gt;offsetSet( kTAG_CUSTOM_DATA, <span class="php-keyword1">array</span>( kTYPE_STAMP_SEC =&gt; <span class="php-var">$sec</span>,
-</span><span id="158" class="l"><a class="l" href="#158">158: </a>                                                    kTYPE_STAMP_USEC =&gt; <span class="php-num">0</span> ) );
+</span><span id="157" class="l"><a class="l" href="#157">157: </a>                <span class="php-var">$this</span>-&gt;offsetSet( kTAG_CUSTOM_DATA, <span class="php-keyword1">array</span>( kTAG_STAMP_SEC =&gt; <span class="php-var">$sec</span>,
+</span><span id="158" class="l"><a class="l" href="#158">158: </a>                                                    kTAG_STAMP_USEC =&gt; <span class="php-num">0</span> ) );
 </span><span id="159" class="l"><a class="l" href="#159">159: </a>            <span class="php-keyword1">else</span>
 </span><span id="160" class="l"><a class="l" href="#160">160: </a>                <span class="php-keyword1">throw</span> <span class="php-keyword1">new</span> CException( <span class="php-quote">&quot;Invalid data&quot;</span>,
 </span><span id="161" class="l"><a class="l" href="#161">161: </a>                                      kERROR_PARAMETER,
-</span><span id="162" class="l"><a class="l" href="#162">162: </a>                                      kMESSAGE_TYPE_ERROR,
+</span><span id="162" class="l"><a class="l" href="#162">162: </a>                                      kSTATUS_ERROR,
 </span><span id="163" class="l"><a class="l" href="#163">163: </a>                                      <span class="php-keyword1">array</span>( <span class="php-quote">'Data'</span> =&gt; <span class="php-var">$theData</span> ) );            <span class="php-comment">// !@! ==&gt;</span>
 </span><span id="164" class="l"><a class="l" href="#164">164: </a>        }
 </span><span id="165" class="l"><a class="l" href="#165">165: </a>    
@@ -348,12 +350,12 @@
 </span><span id="230" class="l"><a class="l" href="#230">230: </a>        <span class="php-comment">//</span>
 </span><span id="231" class="l"><a class="l" href="#231">231: </a>        <span class="php-comment">// Get seconds.</span>
 </span><span id="232" class="l"><a class="l" href="#232">232: </a>        <span class="php-comment">//</span>
-</span><span id="233" class="l"><a class="l" href="#233">233: </a>        <span class="php-var">$sec</span> = (string) <span class="php-var">$str</span>[ kTYPE_STAMP_SEC ];
+</span><span id="233" class="l"><a class="l" href="#233">233: </a>        <span class="php-var">$sec</span> = (string) <span class="php-var">$str</span>[ kTAG_STAMP_SEC ];
 </span><span id="234" class="l"><a class="l" href="#234">234: </a>        
 </span><span id="235" class="l"><a class="l" href="#235">235: </a>        <span class="php-comment">//</span>
 </span><span id="236" class="l"><a class="l" href="#236">236: </a>        <span class="php-comment">// Get milliseconds.</span>
 </span><span id="237" class="l"><a class="l" href="#237">237: </a>        <span class="php-comment">//</span>
-</span><span id="238" class="l"><a class="l" href="#238">238: </a>        <span class="php-var">$sec</span> .= (<span class="php-quote">'.'</span>.<span class="php-var">$str</span>[ kTYPE_STAMP_USEC ]);
+</span><span id="238" class="l"><a class="l" href="#238">238: </a>        <span class="php-var">$sec</span> .= (<span class="php-quote">'.'</span>.<span class="php-var">$str</span>[ kTAG_STAMP_USEC ]);
 </span><span id="239" class="l"><a class="l" href="#239">239: </a>        
 </span><span id="240" class="l"><a class="l" href="#240">240: </a>        <span class="php-keyword1">return</span> (float) <span class="php-var">$sec</span>;                                                        <span class="php-comment">// ==&gt;</span>
 </span><span id="241" class="l"><a class="l" href="#241">241: </a>    

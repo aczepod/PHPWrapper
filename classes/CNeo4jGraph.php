@@ -261,12 +261,16 @@ class CNeo4jGraph extends CGraphContainer
 	 * In this class we check if the provided node is of the correct type, save it and
 	 * return its identifier.
 	 *
+	 * If provided, the second parameter must be an array or ArrayObject, or the method will
+	 * raise an exception.
+	 *
 	 * @param mixed					$theNode			Node to be saved.
+	 * @param mixed					$theProperties		Node properties.
 	 *
 	 * @access public
 	 * @return mixed
 	 */
-	public function SetNode( $theNode )
+	public function SetNode( $theNode, $theProperties = NULL )
 	{
 		//
 		// Check if object is ready.
@@ -280,6 +284,28 @@ class CNeo4jGraph extends CGraphContainer
 				throw new Exception
 					( "Invalid node type",
 					  kERROR_PARAMETER );										// !@! ==>
+			
+			//
+			// Normalise properties.
+			//
+			if( $theProperties !== NULL )
+			{
+				//
+				// Convert object.
+				//
+				if( $theProperties instanceof ArrayObject )
+					$theProperties = $theProperties->getArrayCopy();
+				
+				//
+				// Set node properties.
+				//
+				if( is_array( $theProperties ) )
+					$theNode->setProperties( $theProperties );
+				else
+					throw new Exception
+						( "Invalid node properties type",
+						  kERROR_PARAMETER );									// !@! ==>
+			}
 			
 			//
 			// Save node.
@@ -308,18 +334,47 @@ class CNeo4jGraph extends CGraphContainer
 	 * In this class we return the node corresponding to the provided identifier or
 	 * <tt>NULL</tt>.
 	 *
+	 * If the provided identifier is not an integer, we raise an exception.
+	 *
 	 * @param mixed					$theIdentifier		Node identifier.
+	 * @param boolean				$doThrow			TRUE throw exception if not found.
 	 *
 	 * @access public
 	 * @return mixed
 	 */
-	public function GetNode( $theIdentifier )
+	public function GetNode( $theIdentifier, $doThrow = FALSE )
 	{
 		//
 		// Check if object is ready.
 		//
 		if( $this->_isInited() )
-			return $this->Connection()->getNode( (integer) $theIdentifier, FALSE );	// ==>
+		{
+			//
+			// Check identifier type.
+			//
+			if( is_integer( $theIdentifier ) )
+			{
+				//
+				// Retrieve node.
+				//
+				$node = $this->Connection()->getNode( (integer) $theIdentifier, FALSE );
+				if( $node !== NULL )
+					return $node;													// ==>
+				
+				if( ! $doThrow )
+					return NULL;													// ==>
+				
+				throw new Exception
+					( "Node not found",
+					  kERROR_NOT_FOUND );										// !@! ==>
+			
+			} // Provided node identifier.
+			
+			throw new Exception
+				( "Invalid node identifier type",
+				  kERROR_PARAMETER );											// !@! ==>
+		
+		} // Object is inited.
 		
 		throw new Exception
 			( "Unable to retrieve node: the container is not ready",
@@ -623,6 +678,67 @@ class CNeo4jGraph extends CGraphContainer
 			  kERROR_STATE );													// !@! ==>
 	
 	} // DelEdge.
+
+		
+
+/*=======================================================================================
+ *																						*
+ *								PUBLIC PROPERTY INTERFACE								*
+ *																						*
+ *======================================================================================*/
+
+
+	 
+	/*===================================================================================
+	 *	GetNodeProperties																*
+	 *==================================================================================*/
+
+	/**
+	 * <h4>Get node properties</h4>
+	 *
+	 * In this class we check whether the node is a Neo4j graph node or an integer, in all
+	 * other cases we raise an exception.
+	 *
+	 * @param mixed					$theNode			Node object or reference.
+	 *
+	 * @access public
+	 * @return array				The node properties
+	 */
+	public function GetNodeProperties( $theNode )
+	{
+		//
+		// Check if object is ready.
+		//
+		if( $this->_isInited() )
+		{
+			//
+			// Get node.
+			//
+			if( is_integer( $theNode ) )
+			{
+				$theNode = $this->GetNode( $theNode );
+				if( $theNode === NULL )
+					return NULL;													// ==>
+			
+			} // Provided reference.
+			
+			//
+			// Return properties.
+			//
+			if( $theNode instanceof Everyman\Neo4j\Node )
+				return $theNode->getProperties();									// ==>
+			
+			throw new Exception
+				( "Invalid node type",
+				  kERROR_PARAMETER );											// !@! ==>
+		
+		} // Object is inited.
+		
+		throw new Exception
+			( "Unable to get node properties: the container is not ready",
+			  kERROR_STATE );													// !@! ==>
+	
+	} // GetNodeProperties.
 
 		
 

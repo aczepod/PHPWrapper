@@ -188,7 +188,7 @@ class COntologyWrapperClient extends CDataWrapperClient
 						//
 						$query->AppendStatement(
 							CQueryStatement::Equals(
-								kOFFSET_NID, $theValue ),
+								kTAG_NID, $theValue ),
 							kOPERATOR_AND );
 						
 						//
@@ -344,7 +344,7 @@ class COntologyWrapperClient extends CDataWrapperClient
 				default:
 					throw new CException( "Unsupported relationship sense",
 										  kERROR_UNSUPPORTED,
-										  kMESSAGE_TYPE_ERROR,
+										  kSTATUS_ERROR,
 										  array( 'Code' => $theValue ) );		// !@! ==>
 			}
 		}

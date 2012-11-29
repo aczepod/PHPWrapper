@@ -1,0 +1,619 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<meta name="generator" content="ApiGen 2.8.0" />
+
+	<title>Class COntologyMasterNode | MyWrapper Reference Documentation</title>
+
+	<script type="text/javascript" src="resources/combined.js?3680114562"></script>
+	<script type="text/javascript" src="elementlist.js?2861350629"></script>
+	<link rel="stylesheet" type="text/css" media="all" href="resources/style.css?3505392360" />
+
+</head>
+
+<body>
+<div id="left">
+	<div id="menu">
+		<a href="index.html" title="Overview"><span>Overview</span></a>
+
+
+		<div id="groups">
+			<h3>Packages</h3>
+			<ul>
+				<li class="active main"><a href="package-MyWrapper.html">MyWrapper<span></span></a>
+						<ul>
+				<li class="main"><a href="package-MyWrapper.Data.html">Data</a>
+						</li>
+				<li class="main"><a href="package-MyWrapper.Definitions.html">Definitions</a>
+						</li>
+				<li class="main"><a href="package-MyWrapper.Framework.html">Framework</a>
+						</li>
+				<li class="main"><a href="package-MyWrapper.Functions.html">Functions</a>
+						</li>
+				<li class="active main"><a href="package-MyWrapper.Ontology.html">Ontology</a>
+						</li>
+				<li class="main"><a href="package-MyWrapper.Persistence.html">Persistence</a>
+						</li>
+				<li class="main"><a href="package-MyWrapper.Wrappers.html">Wrappers</a>
+						</li>
+							</ul></li>
+				<li><a href="package-None.html">None</a>
+						</li>
+				<li><a href="package-PHP.html">PHP</a>
+						</li>
+			</ul>
+		</div>
+
+		<hr />
+
+
+		<div id="elements">
+			<h3>Classes</h3>
+			<ul>
+				<li><a href="class-COntologyAliasNode.html">COntologyAliasNode</a></li>
+				<li><a href="class-COntologyAliasVertex.html">COntologyAliasVertex</a></li>
+				<li><a href="class-COntologyEdge.html">COntologyEdge</a></li>
+				<li class="active"><a href="class-COntologyMasterNode.html">COntologyMasterNode</a></li>
+				<li><a href="class-COntologyMasterVertex.html">COntologyMasterVertex</a></li>
+				<li><a href="class-COntologyNode.html">COntologyNode</a></li>
+				<li><a href="class-COntologyTag.html">COntologyTag</a></li>
+				<li><a href="class-COntologyTerm.html">COntologyTerm</a></li>
+				<li><a href="class-COntologyVertex.html">COntologyVertex</a></li>
+			</ul>
+
+
+
+
+
+		</div>
+	</div>
+</div>
+
+<div id="splitter"></div>
+
+<div id="right">
+<div id="rightInner">
+	<form id="search">
+		<input type="hidden" name="cx" value="" />
+		<input type="hidden" name="ie" value="UTF-8" />
+		<input type="text" name="q" class="text" />
+		<input type="submit" value="Search" />
+	</form>
+
+	<div id="navigation">
+		<ul>
+			<li>
+				<a href="index.html" title="Overview"><span>Overview</span></a>
+			</li>
+			<li>
+				<a href="package-MyWrapper.Ontology.html" title="Summary of MyWrapper\Ontology"><span>Package</span></a>
+			</li>
+			<li class="active">
+<span>Class</span>			</li>
+		</ul>
+		<ul>
+			<li>
+				<a href="tree.html" title="Tree view of classes, interfaces, traits and exceptions"><span>Tree</span></a>
+			</li>
+		</ul>
+		<ul>
+		</ul>
+	</div>
+
+<div id="content" class="class">
+	<h1>Class COntologyMasterNode</h1>
+
+
+	<div class="description">
+	
+<h4>Ontology master node object</h4>
+
+<p>This class extends its <code><a href="class-COntologyNode.html">COntologyNode</a></code> parent by enforcing the
+following rule: <i>There cannot be two nodes that share the same term</i>.</p>
+
+<p>Whenever a new node is instantiated, at commit time the system will check
+whether another node of the same class, kTAG_CLASS, shares the same
+term, kTAG_TERM: if that is the case the kTAG_CATEGORY, kTAG_KIND and kTAG_TYPE of the current node will be appended to the
+corresponding attributes of the referenced node which will become the current
+node; if that is not the case, the class will behave as its parent and
+instantiate a new node.</p>
+
+<p>This class also overloads the <code><a href="class-COntologyMasterNode.html#_RelateTo">COntologyMasterNode::RelateTo()</a></code> method by ensuring that the
+object of the relationship is an instance of this class, or an <code><a href="class-COntologyAliasNode.html">COntologyAliasNode</a></code> which points to an instance of this class.</p>
+
+	</div>
+
+	<dl class="tree">
+		<dd style="padding-left:0px">
+			<a href="class-ArrayObject.html"><span>ArrayObject</span></a>
+			
+			 implements 
+				<a href="class-IteratorAggregate.html"><span>IteratorAggregate</span></a>, 
+			
+				<a href="class-Traversable.html"><span>Traversable</span></a>, 
+			
+				<a href="class-ArrayAccess.html"><span>ArrayAccess</span></a>, 
+			
+				<a href="class-Serializable.html"><span>Serializable</span></a>, 
+			
+				<a href="class-Countable.html"><span>Countable</span></a>
+			
+			
+		</dd>
+		<dd style="padding-left:30px">
+			<img src="resources/inherit.png" alt="Extended by" />
+			<a href="class-CDocument.html"><span>CDocument</span></a>
+			
+			
+			
+		</dd>
+		<dd style="padding-left:60px">
+			<img src="resources/inherit.png" alt="Extended by" />
+			<a href="class-CStatusDocument.html"><span>CStatusDocument</span></a>
+			
+			
+			
+		</dd>
+		<dd style="padding-left:90px">
+			<img src="resources/inherit.png" alt="Extended by" />
+			<a href="class-CPersistentDocument.html"><span>CPersistentDocument</span></a>
+			
+			
+			
+		</dd>
+		<dd style="padding-left:120px">
+			<img src="resources/inherit.png" alt="Extended by" />
+			<a href="class-CPersistentObject.html"><span>CPersistentObject</span></a>
+			
+			
+			
+		</dd>
+		<dd style="padding-left:150px">
+			<img src="resources/inherit.png" alt="Extended by" />
+			<a href="class-CNode.html"><span>CNode</span></a>
+			
+			
+			
+		</dd>
+		<dd style="padding-left:180px">
+			<img src="resources/inherit.png" alt="Extended by" />
+			<a href="class-COntologyNode.html"><span>COntologyNode</span></a>
+			
+			
+			
+		</dd>
+		<dd style="padding-left:210px">
+			<img src="resources/inherit.png" alt="Extended by" />
+<b><span>COntologyMasterNode</span></b>			
+			
+			
+		</dd>
+	</dl>
+
+
+	<div>
+		<h4>Direct known subclasses</h4>
+			<a href="class-COntologyMasterVertex.html">COntologyMasterVertex</a>
+	</div>
+
+
+
+
+
+
+	<div class="info">
+		
+		
+		
+		<b>Package:</b> <a href="package-MyWrapper.html">MyWrapper</a>\<a href="package-MyWrapper.Ontology.html">Ontology</a><br />
+
+				<b>Author:</b>
+				Milko A. Škofič &lt;<a
+href="mailto:m.skofic&#64;cgiar.org">m.skofic&#64;<!---->cgiar.org</a>&gt;<br />
+		<b>Located at</b> <a href="source-class-COntologyMasterNode.html#29-500" title="Go to source code">COntologyMasterNode.php</a><br />
+	</div>
+
+
+
+	<table class="summary" id="methods">
+	<caption>Methods summary</caption>
+	<tr data-order="NodeRefs" id="_NodeRefs">
+
+		<td class="attributes"><code>
+			 public 
+			array
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_NodeRefs">#</a>
+		<code><a href="source-class-COntologyMasterNode.html#65-88" title="Go to source code">NodeRefs</a>( )</code>
+
+		<div class="description short">
+			
+<h4>Manage node references</h4>
+
+		</div>
+
+		<div class="description detailed hidden">
+			
+<h4>Manage node references</h4>
+
+<p>The <i>node references</i>, kTAG_NODES, holds a list of identifiers
+of alias nodes that reference the current node.</p>
+
+<p>The method is read-only, because this value must be managed externally.</p>
+
+
+
+
+				<h4>Returns</h4>
+				<div class="list">
+					<code>array</code><br>Nodes reference list.<br />
+				</div>
+
+
+				<h4>See</h4>
+				<div class="list">
+						kTAG_NODES<br />
+				</div>
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="RelateTo" id="_RelateTo">
+
+		<td class="attributes"><code>
+			 public 
+			<code><a href="class-COntologyEdge.html">COntologyEdge</a></code>
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_RelateTo">#</a>
+		<code><a href="source-class-COntologyMasterNode.html#104-248" title="Go to source code">RelateTo</a>( <span>mixed <var>$thePredicate</var></span>, <span>mixed <var>$theObject</var></span>, <span><code><a href="class-CConnection.html">CConnection</a></code> <var>$theConnection</var> = <span class="php-keyword1">NULL</span> </span> )</code>
+
+		<div class="description short">
+			
+<h4>Relate to node</h4>
+
+		</div>
+
+		<div class="description detailed hidden">
+			
+<h4>Relate to node</h4>
+
+<p>We overload the inherited method to ensure that both vertices of the
+relationship do not have node references, kTAG_NODE. If any do have such
+references, we use the referenced node instead of the current one.</p>
+
+<p>Both the current node and the object node will be committed if not
+already.</p>
+
+<p>Since this operation involves searching the database, we require the
+connection which will be used to commit the edge.</p>
+
+
+
+				<h4>Parameters</h4>
+				<div class="list"><dl>
+					<dt><var>$thePredicate</var></dt>
+					<dd><code>mixed</code><br>$thePredicate Predicate term object or reference.</dd>
+					<dt><var>$theObject</var></dt>
+					<dd><code>mixed</code><br>$theObject Object node object or reference.</dd>
+					<dt><var>$theConnection</var></dt>
+					<dd><code><code><a href="class-CConnection.html">CConnection</a></code></code><br>$theConnection Server, database or container.</dd>
+				</dl></div>
+
+				<h4>Returns</h4>
+				<div class="list">
+					<code><code><a href="class-COntologyEdge.html">COntologyEdge</a></code></code><br>Edge object.<br />
+				</div>
+
+
+
+				<h4>Overrides</h4>
+				<div class="list"><code><a href="class-CNode.html#_RelateTo">CNode::RelateTo()</a></code></div>
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="Resolve" id="_Resolve">
+
+		<td class="attributes"><code>
+			 public static
+			<code><a href="class-COntologyMasterNode.html">COntologyMasterNode</a></code>
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_Resolve">#</a>
+		<code><a href="source-class-COntologyMasterNode.html#264-362" title="Go to source code">Resolve</a>( <span><code><a href="class-CConnection.html">CConnection</a></code> <var>$theConnection</var></span>, <span>mixed <var>$theIdentifier</var></span>, <span>boolean <var>$doThrow</var> = <span class="php-keyword1">FALSE</span> </span> )</code>
+
+		<div class="description short">
+			
+<h4>Resolve a node</h4>
+
+		</div>
+
+		<div class="description detailed hidden">
+			
+<h4>Resolve a node</h4>
+
+<p>We overload this method in this class by intercepting all cases in which the
+<tt>$theIdentifier</tt> is not an integer, or node reference: since no two nodes
+of this class can share the same term reference, we add a clause to the search
+query to exclude all node that have a kTAG_NODE attribute. We do this
+rather than use the object class, because we assume all nodes that have the
+kTAG_NODE attribute yo be aliases.</p>
+
+<p>Since terms become also a unique identifier, this method will return either
+an object or <tt>NULL</tt>.</p>
+
+
+
+				<h4>Parameters</h4>
+				<div class="list"><dl>
+					<dt><var>$theConnection</var></dt>
+					<dd><code><code><a href="class-CConnection.html">CConnection</a></code></code><br>$theConnection Server, database or container.</dd>
+					<dt><var>$theIdentifier</var></dt>
+					<dd><code>mixed</code><br>$theIdentifier Node identifier or term reference.</dd>
+					<dt><var>$doThrow</var></dt>
+					<dd><code>boolean</code><br>$doThrow If <tt>TRUE</tt> raise an exception.</dd>
+				</dl></div>
+
+				<h4>Returns</h4>
+				<div class="list">
+					<code><code><a href="class-COntologyMasterNode.html">COntologyMasterNode</a></code></code><br>Matched node, found nodes or <tt>NULL</tt>.<br />
+				</div>
+
+				<h4>Throws</h4>
+				<div class="list">
+					<code><code><a href="class-Exception.html">Exception</a></code></code><br />
+				</div>
+
+
+				<h4>Overrides</h4>
+				<div class="list"><code><a href="class-COntologyNode.html#_Resolve">COntologyNode::Resolve()</a></code></div>
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="_PrecommitIdentify" id="__PrecommitIdentify">
+
+		<td class="attributes"><code>
+			 protected 
+			mixed
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#__PrecommitIdentify">#</a>
+		<code><a href="source-class-COntologyMasterNode.html#378-496" title="Go to source code">_PrecommitIdentify</a>( <span>reference <var>&amp; $theConnection</var></span>, <span>reference <var>&amp; $theModifiers</var></span> )</code>
+
+		<div class="description short">
+			
+<h4>Determine the identifiers before committing</h4>
+
+		</div>
+
+		<div class="description detailed hidden">
+			
+<h4>Determine the identifiers before committing</h4>
+
+<p>We overload this method to prevent creating two nodes that refer to the same
+term. We first check if there is another node that refers to the same term and
+that does point to another node: if we find one we add the kTAG_CATEGORY, kTAG_KIND and kTAG_TYPE attributes to the found
+node and make it the current node; if no such node is found, we call the parent
+method.</p>
+
+<p>In the first case we return the found node identifier, this will stop the
+commit workflow.</p>
+
+
+
+				<h4>Parameters</h4>
+				<div class="list"><dl>
+					<dt><var>$theConnection</var></dt>
+					<dd><code>reference</code><br>&amp;$theConnection Server, database or container.</dd>
+					<dt><var>$theModifiers</var></dt>
+					<dd><code>reference</code><br>&amp;$theModifiers Commit options.</dd>
+				</dl></div>
+
+				<h4>Returns</h4>
+				<div class="list">
+					<code>mixed</code><br />
+				</div>
+
+
+				<h4>See</h4>
+				<div class="list">
+						kTAG_NID kSEQUENCE_KEY_NODE<br />
+						kFLAG_PERSIST_INSERT kFLAG_PERSIST_REPLACE<br />
+				</div>
+
+				<h4>Overrides</h4>
+				<div class="list"><code><a href="class-COntologyNode.html#__PrecommitIdentify">COntologyNode::_PrecommitIdentify()</a></code></div>
+
+		</div>
+		</div></td>
+	</tr>
+	</table>
+
+	<table class="summary inherited">
+	<caption>Methods inherited from <a href="class-COntologyNode.html#methods">COntologyNode</a></caption>
+	<tr>
+		<td><code>
+			<a href="class-COntologyNode.html#_DefaultContainer">DefaultContainer()</a>, 
+			<a href="class-COntologyNode.html#_EdgeRefs">EdgeRefs()</a>, 
+			<a href="class-COntologyNode.html#_GetGraphNode">GetGraphNode()</a>, 
+			<a href="class-COntologyNode.html#_GetGraphNodeProperties">GetGraphNodeProperties()</a>, 
+			<a href="class-COntologyNode.html#_LoadTerm">LoadTerm()</a>, 
+			<a href="class-COntologyNode.html#_Replace">Replace()</a>, 
+			<a href="class-COntologyNode.html#_Type">Type()</a>, 
+			<a href="class-COntologyNode.html#_Update">Update()</a>, 
+			<a href="class-COntologyNode.html#__AddGraphNode">_AddGraphNode()</a>, 
+			<a href="class-COntologyNode.html#__GraphNodeProperties">_GraphNodeProperties()</a>, 
+			<a href="class-COntologyNode.html#__LoadTermAttributes">_LoadTermAttributes()</a>, 
+			<a href="class-COntologyNode.html#__NewEdge">_NewEdge()</a>, 
+			<a href="class-COntologyNode.html#__PostcommitCleanup">_PostcommitCleanup()</a>, 
+			<a href="class-COntologyNode.html#__PostcommitRelated">_PostcommitRelated()</a>, 
+			<a href="class-COntologyNode.html#__PrecommitRelated">_PrecommitRelated()</a>, 
+			<a href="class-COntologyNode.html#__Preset">_Preset()</a>, 
+			<a href="class-COntologyNode.html#__Preunset">_Preunset()</a>, 
+			<a href="class-COntologyNode.html#__ReferenceInTerm">_ReferenceInTerm()</a>, 
+			<a href="class-COntologyNode.html#___toString">__toString()</a>
+		</code></td>
+	</tr>
+	</table>
+	<table class="summary inherited">
+	<caption>Methods inherited from <a href="class-CNode.html#methods">CNode</a></caption>
+	<tr>
+		<td><code>
+			<a href="class-CNode.html#_Category">Category()</a>, 
+			<a href="class-CNode.html#_Kind">Kind()</a>, 
+			<a href="class-CNode.html#_Term">Term()</a>, 
+			<a href="class-CNode.html#__Ready">_Ready()</a>
+		</code></td>
+	</tr>
+	</table>
+	<table class="summary inherited">
+	<caption>Methods inherited from <a href="class-CPersistentObject.html#methods">CPersistentObject</a></caption>
+	<tr>
+		<td><code>
+			<a href="class-CPersistentObject.html#_CLassName">CLassName()</a>, 
+			<a href="class-CPersistentObject.html#_DocumentObject">DocumentObject()</a>, 
+			<a href="class-CPersistentObject.html#_GID">GID()</a>, 
+			<a href="class-CPersistentObject.html#_NewObject">NewObject()</a>, 
+			<a href="class-CPersistentObject.html#__AssertClass">_AssertClass()</a>, 
+			<a href="class-CPersistentObject.html#__PrecommitValidate">_PrecommitValidate()</a>, 
+			<a href="class-CPersistentObject.html#__id">_id()</a>, 
+			<a href="class-CPersistentObject.html#__index">_index()</a>
+		</code></td>
+	</tr>
+	</table>
+	<table class="summary inherited">
+	<caption>Methods inherited from <a href="class-CPersistentDocument.html#methods">CPersistentDocument</a></caption>
+	<tr>
+		<td><code>
+			<a href="class-CPersistentDocument.html#_DefaultDatabase">DefaultDatabase()</a>, 
+			<a href="class-CPersistentDocument.html#_Delete">Delete()</a>, 
+			<a href="class-CPersistentDocument.html#_Insert">Insert()</a>, 
+			<a href="class-CPersistentDocument.html#_NID">NID()</a>, 
+			<a href="class-CPersistentDocument.html#_ResolveClassContainer">ResolveClassContainer()</a>, 
+			<a href="class-CPersistentDocument.html#_ResolveContainer">ResolveContainer()</a>, 
+			<a href="class-CPersistentDocument.html#_Restore">Restore()</a>, 
+			<a href="class-CPersistentDocument.html#__Postcommit">_Postcommit()</a>, 
+			<a href="class-CPersistentDocument.html#__PostcommitStatus">_PostcommitStatus()</a>, 
+			<a href="class-CPersistentDocument.html#__Precommit">_Precommit()</a>
+		</code></td>
+	</tr>
+	</table>
+	<table class="summary inherited">
+	<caption>Methods inherited from <a href="class-CStatusDocument.html#methods">CStatusDocument</a></caption>
+	<tr>
+		<td><code>
+			<a href="class-CStatusDocument.html#__IsCommitted">_IsCommitted()</a>, 
+			<a href="class-CStatusDocument.html#__IsDirty">_IsDirty()</a>, 
+			<a href="class-CStatusDocument.html#__IsEncoded">_IsEncoded()</a>, 
+			<a href="class-CStatusDocument.html#__IsInited">_IsInited()</a>, 
+			<a href="class-CStatusDocument.html#__Postset">_Postset()</a>, 
+			<a href="class-CStatusDocument.html#__Postunset">_Postunset()</a>, 
+			<a href="class-CStatusDocument.html#___construct">__construct()</a>, 
+			<a href="class-CStatusDocument.html#_offsetSet">offsetSet()</a>, 
+			<a href="class-CStatusDocument.html#_offsetUnset">offsetUnset()</a>
+		</code></td>
+	</tr>
+	</table>
+	<table class="summary inherited">
+	<caption>Methods inherited from <a href="class-CDocument.html#methods">CDocument</a></caption>
+	<tr>
+		<td><code>
+			<a href="class-CDocument.html#_array_keys">array_keys()</a>, 
+			<a href="class-CDocument.html#_array_values">array_values()</a>, 
+			<a href="class-CDocument.html#_offsetGet">offsetGet()</a>
+		</code></td>
+	</tr>
+	</table>
+	<table class="summary inherited">
+	<caption>Methods inherited from <a href="class-ArrayObject.html#methods">ArrayObject</a></caption>
+	<tr>
+		<td><code>
+			<a href="class-ArrayObject.html#_append">append()</a>, 
+			<a href="class-ArrayObject.html#_asort">asort()</a>, 
+			<a href="class-ArrayObject.html#_count">count()</a>, 
+			<a href="class-ArrayObject.html#_exchangeArray">exchangeArray()</a>, 
+			<a href="class-ArrayObject.html#_getArrayCopy">getArrayCopy()</a>, 
+			<a href="class-ArrayObject.html#_getFlags">getFlags()</a>, 
+			<a href="class-ArrayObject.html#_getIterator">getIterator()</a>, 
+			<a href="class-ArrayObject.html#_getIteratorClass">getIteratorClass()</a>, 
+			<a href="class-ArrayObject.html#_ksort">ksort()</a>, 
+			<a href="class-ArrayObject.html#_natcasesort">natcasesort()</a>, 
+			<a href="class-ArrayObject.html#_natsort">natsort()</a>, 
+			<a href="class-ArrayObject.html#_offsetExists">offsetExists()</a>, 
+			<a href="class-ArrayObject.html#_serialize">serialize()</a>, 
+			<a href="class-ArrayObject.html#_setFlags">setFlags()</a>, 
+			<a href="class-ArrayObject.html#_setIteratorClass">setIteratorClass()</a>, 
+			<a href="class-ArrayObject.html#_uasort">uasort()</a>, 
+			<a href="class-ArrayObject.html#_uksort">uksort()</a>, 
+			<a href="class-ArrayObject.html#_unserialize">unserialize()</a>
+		</code></td>
+	</tr>
+	</table>
+
+
+
+
+
+
+
+
+	<table class="summary inherited">
+	<caption>Constants inherited from <a href="class-ArrayObject.html#constants">ArrayObject</a></caption>
+	<tr>
+		<td><code>
+			<a href="class-ArrayObject.html#ARRAY_AS_PROPS"><b>ARRAY_AS_PROPS</b></a>, 
+			<a href="class-ArrayObject.html#STD_PROP_LIST"><b>STD_PROP_LIST</b></a>
+		</code></td>
+	</tr>
+	</table>
+
+
+
+
+	<table class="summary inherited">
+	<caption>Properties inherited from <a href="class-COntologyNode.html#properties">COntologyNode</a></caption>
+	<tr>
+		<td><code>
+			<a href="class-COntologyNode.html#$mTerm"><var>$mTerm</var></a>
+		</code></td>
+	</tr>
+	</table>
+	<table class="summary inherited">
+	<caption>Properties inherited from <a href="class-CStatusDocument.html#properties">CStatusDocument</a></caption>
+	<tr>
+		<td><code>
+			<a href="class-CStatusDocument.html#$mStatus"><var>$mStatus</var></a>
+		</code></td>
+	</tr>
+	</table>
+
+
+
+
+
+</div>
+
+	<div id="footer">
+		MyWrapper Reference Documentation API documentation generated by <a href="http://apigen.org">ApiGen 2.8.0</a>
+	</div>
+</div>
+</div>
+</body>
+</html>

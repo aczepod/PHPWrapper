@@ -7,8 +7,8 @@
 
 	<title>File CWrapperClient.php | MyWrapper Reference Documentation</title>
 
-	<script type="text/javascript" src="resources/combined.js?1742645618"></script>
-	<script type="text/javascript" src="elementlist.js?539813953"></script>
+	<script type="text/javascript" src="resources/combined.js?3680114562"></script>
+	<script type="text/javascript" src="elementlist.js?2861350629"></script>
 	<link rel="stylesheet" type="text/css" media="all" href="resources/style.css?3505392360" />
 
 </head>
@@ -39,6 +39,8 @@
 				<li class="active main"><a href="package-MyWrapper.Wrappers.html">Wrappers</a>
 						</li>
 							</ul></li>
+				<li><a href="package-None.html">None</a>
+						</li>
 				<li><a href="package-PHP.html">PHP</a>
 						</li>
 			</ul>
@@ -271,7 +273,7 @@
 </span><span id="171" class="l"><a class="l" href="#171">171: </a>                <span class="php-keyword1">default</span>:
 </span><span id="172" class="l"><a class="l" href="#172">172: </a>                    <span class="php-keyword1">throw</span> <span class="php-keyword1">new</span> CException( <span class="php-quote">&quot;Unsupported operation&quot;</span>,
 </span><span id="173" class="l"><a class="l" href="#173">173: </a>                                          kERROR_UNSUPPORTED,
-</span><span id="174" class="l"><a class="l" href="#174">174: </a>                                          kMESSAGE_TYPE_ERROR,
+</span><span id="174" class="l"><a class="l" href="#174">174: </a>                                          kSTATUS_ERROR,
 </span><span id="175" class="l"><a class="l" href="#175">175: </a>                                          <span class="php-keyword1">array</span>( <span class="php-quote">'Operation'</span> =&gt; <span class="php-var">$theValue</span> ) );  <span class="php-comment">// !@! ==&gt;</span>
 </span><span id="176" class="l"><a class="l" href="#176">176: </a>            }
 </span><span id="177" class="l"><a class="l" href="#177">177: </a>        }
@@ -348,7 +350,7 @@
 </span><span id="248" class="l"><a class="l" href="#248">248: </a>                <span class="php-keyword1">default</span>:
 </span><span id="249" class="l"><a class="l" href="#249">249: </a>                    <span class="php-keyword1">throw</span> <span class="php-keyword1">new</span> CException( <span class="php-quote">&quot;Unsupported format&quot;</span>,
 </span><span id="250" class="l"><a class="l" href="#250">250: </a>                                          kERROR_UNSUPPORTED,
-</span><span id="251" class="l"><a class="l" href="#251">251: </a>                                          kMESSAGE_TYPE_ERROR,
+</span><span id="251" class="l"><a class="l" href="#251">251: </a>                                          kSTATUS_ERROR,
 </span><span id="252" class="l"><a class="l" href="#252">252: </a>                                          <span class="php-keyword1">array</span>( <span class="php-quote">'Format'</span> =&gt; <span class="php-var">$theValue</span> ) );     <span class="php-comment">// !@! ==&gt;</span>
 </span><span id="253" class="l"><a class="l" href="#253">253: </a>            }
 </span><span id="254" class="l"><a class="l" href="#254">254: </a>        }
@@ -500,7 +502,7 @@
 </span><span id="400" class="l"><a class="l" href="#400">400: </a>            <span class="php-keyword1">throw</span> <span class="php-keyword1">new</span> CException
 </span><span id="401" class="l"><a class="l" href="#401">401: </a>                    ( <span class="php-quote">&quot;Unable to execute request: object not initialised&quot;</span>,
 </span><span id="402" class="l"><a class="l" href="#402">402: </a>                      kERROR_STATE,
-</span><span id="403" class="l"><a class="l" href="#403">403: </a>                      kMESSAGE_TYPE_ERROR,
+</span><span id="403" class="l"><a class="l" href="#403">403: </a>                      kSTATUS_ERROR,
 </span><span id="404" class="l"><a class="l" href="#404">404: </a>                      <span class="php-keyword1">array</span>( <span class="php-quote">'Object'</span> =&gt; <span class="php-var">$this</span> ) );                             <span class="php-comment">// !@! ==&gt;</span>
 </span><span id="405" class="l"><a class="l" href="#405">405: </a>        
 </span><span id="406" class="l"><a class="l" href="#406">406: </a>        <span class="php-comment">//</span>
@@ -619,7 +621,7 @@
 </span><span id="519" class="l"><a class="l" href="#519">519: </a>            <span class="php-keyword1">default</span>:
 </span><span id="520" class="l"><a class="l" href="#520">520: </a>                <span class="php-keyword1">throw</span> <span class="php-keyword1">new</span> CException( <span class="php-quote">&quot;Unsupported HTTP mode&quot;</span>,
 </span><span id="521" class="l"><a class="l" href="#521">521: </a>                                      kERROR_UNSUPPORTED,
-</span><span id="522" class="l"><a class="l" href="#522">522: </a>                                      kMESSAGE_TYPE_ERROR,
+</span><span id="522" class="l"><a class="l" href="#522">522: </a>                                      kSTATUS_ERROR,
 </span><span id="523" class="l"><a class="l" href="#523">523: </a>                                      <span class="php-keyword1">array</span>( <span class="php-quote">'Mode'</span> =&gt; <span class="php-var">$theMode</span> ) );            <span class="php-comment">// !@! ==&gt;</span>
 </span><span id="524" class="l"><a class="l" href="#524">524: </a>        }
 </span><span id="525" class="l"><a class="l" href="#525">525: </a>        
@@ -660,7 +662,7 @@
 </span><span id="560" class="l"><a class="l" href="#560">560: </a>        <span class="php-keyword1">if</span>( ! <span class="php-var">$fp</span> )
 </span><span id="561" class="l"><a class="l" href="#561">561: </a>            <span class="php-keyword1">throw</span> <span class="php-keyword1">new</span> CException( <span class="php-quote">&quot;Unable to open [</span><span class="php-var">$theMode</span><span class="php-quote">] [</span><span class="php-var">$theUrl</span><span class="php-quote">]&quot;</span>,
 </span><span id="562" class="l"><a class="l" href="#562">562: </a>                                  kERROR_STATE,
-</span><span id="563" class="l"><a class="l" href="#563">563: </a>                                  kMESSAGE_TYPE_ERROR,
+</span><span id="563" class="l"><a class="l" href="#563">563: </a>                                  kSTATUS_ERROR,
 </span><span id="564" class="l"><a class="l" href="#564">564: </a>                                  <span class="php-keyword1">array</span>( <span class="php-quote">'Mode'</span> =&gt; <span class="php-var">$theMode</span>,
 </span><span id="565" class="l"><a class="l" href="#565">565: </a>                                         <span class="php-quote">'URL'</span> =&gt; <span class="php-var">$theUrl</span> ) );                  <span class="php-comment">// !@! ==&gt;</span>
 </span><span id="566" class="l"><a class="l" href="#566">566: </a>        

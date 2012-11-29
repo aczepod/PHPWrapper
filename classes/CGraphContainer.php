@@ -89,12 +89,16 @@ abstract class CGraphContainer extends CConnection
 	 *
 	 * The method should return the node identifier if the operation was successful.
 	 *
+	 * If you provide the <tt>$theProperties</tt> parameter, these will be set in the node
+	 * before it is saved.
+	 *
 	 * @param mixed					$theNode			Node to be saved.
+	 * @param mixed					$theProperties		Node properties.
 	 *
 	 * @access public
 	 * @return mixed
 	 */
-	abstract public function SetNode( $theNode );
+	abstract public function SetNode( $theNode, $theProperties = NULL );
 
 	 
 	/*===================================================================================
@@ -106,12 +110,16 @@ abstract class CGraphContainer extends CConnection
 	 *
 	 * This method should return a node corresponding to the provided identifier.
 	 *
+	 * If the second parameter is <tt>TRUE</tt> and the node was not found, the method
+	 * should raise an exception.
+	 *
 	 * @param mixed					$theIdentifier		Node identifier.
+	 * @param boolean				$doThrow			TRUE throw exception if not found.
 	 *
 	 * @access public
 	 * @return mixed
 	 */
-	abstract public function GetNode( $theIdentifier );
+	abstract public function GetNode( $theIdentifier, $doThrow = FALSE );
 
 	 
 	/*===================================================================================
@@ -221,6 +229,40 @@ abstract class CGraphContainer extends CConnection
 	 * @return mixed
 	 */
 	abstract public function DelEdge( $theIdentifier );
+
+		
+
+/*=======================================================================================
+ *																						*
+ *								PUBLIC PROPERTY INTERFACE								*
+ *																						*
+ *======================================================================================*/
+
+
+	 
+	/*===================================================================================
+	 *	GetNodeProperties																*
+	 *==================================================================================*/
+
+	/**
+	 * <h4>Get node properties</h4>
+	 *
+	 * This method can be used to retrieve the provided node's properties.
+	 *
+	 * The method accepts one parameter which can either be the node, or the node identifier
+	 * for which we want the properties.
+	 *
+	 * If the node reference is not resolved, the method should return <tt>FALSE</tt>.
+	 *
+	 * If the provided node is not of the correct type, the method should raise an
+	 * exception.
+	 *
+	 * @param mixed					$theNode			Node object or reference.
+	 *
+	 * @access public
+	 * @return array				The node properties
+	 */
+	abstract public function GetNodeProperties( $theNode );
 
 		
 

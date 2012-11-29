@@ -257,7 +257,7 @@ try
 		'RegExpr' => new MongoRegEx( '/^pippo/i' ),
 		'Int32' => new MongoInt32( 123456789 ),
 		'Int64' => new MongoInt64( 123456789123456 ),
-		'Binary' => new MongoBinData( 'pippo' ),
+		'Binary' => new MongoBinData( 'pippo', 2 ),
 		'Integer' => 123456789123456,
 		'Float' => 12.35,
 		'String' => 'This is a string'
