@@ -57,11 +57,11 @@ require_once( kPATH_MYWRAPPER_LIBRARY_CLASS."/CPersistentObject.php" );
  *		the term. This attribute is constituted by an array of elements in which the value
  *		of the element represents the label string and the element key is the language code
  *		in which the label is expressed in. This attribute is optional.
- *	<li><i>Description</i>: The description or definition, <tt>{@link Description()}</tt> or
- *		the <tt>{@link kTAG_DESCRIPTION}</tt> tag, represents the description or long label
- *		of the term. This attribute is constituted by an array of elements in which the
- *		value of the element represents the description string and the element key is the
- *		language code in which the description is expressed in. This attribute is optional.
+ *	<li><i>Definition</i>: The definition, <tt>{@link Definition()}</tt> or the
+ *		<tt>{@link kTAG_DEFINITION}</tt> tag, represents the definition or long label of the
+ *		term. This attribute is constituted by an array of elements in which the value of
+ *		the element represents the definition string and the element key is the language
+ *		code in which the definition is expressed in. This attribute is optional.
  *	<li><i>Synonyms</i>: The synonym or alias, <tt>{@link Synonym()}</tt> or
  *		the <tt>{@link kTAG_SYNONYMS}</tt> tag, represents a list of strings that represent
  *		alternative names or identifiers for the term. These strings are comparable to
@@ -234,7 +234,7 @@ class CTerm extends CPersistentObject
 	 *
 	 * @see kTAG_LABEL
 	 */
-	public function Label( $theLanguage, $theValue = NULL, $getOld = FALSE )
+	public function Label( $theLanguage = NULL, $theValue = NULL, $getOld = FALSE )
 	{
 		return ManageIndexedOffset
 				( $this, kTAG_LABEL, $theLanguage, $theValue, $getOld );			// ==>
@@ -243,53 +243,56 @@ class CTerm extends CPersistentObject
 
 	 
 	/*===================================================================================
-	 *	Description																		*
+	 *	Definition																		*
 	 *==================================================================================*/
 
 	/**
-	 * <h4>Manage term description</h4>
+	 * <h4>Manage term definition</h4>
 	 *
-	 * The term <i>description</i>, {@link kTAG_DESCRIPTION}, represents the term's
-	 * definition or human readable description. It is an optional attribute of the object
-	 * that holds an array of elements in which the index is represented by the language
-	 * code and the value is the string.
+	 * The term <i>definition</i>, {@link kTAG_DEFINITION}, represents the term's
+	 * definition, or its description unrelated to the context. It is an optional attribute
+	 * of the object that holds an array of elements in which the index is represented by
+	 * the language code and the value is the string.
 	 *
 	 * No two elements may share the same language code.
+	 *
+	 * The definition does not depend on the context in which the object is, as opposed to
+	 * the description which depends on the context.
 	 *
 	 * The method accepts the following parameters:
 	 *
 	 * <ul>
 	 *	<li><tt>$theLanguage</tt>: Language code.
-	 *	<li><tt>$theValue</tt>: The description string or the operation, depending on its
+	 *	<li><tt>$theValue</tt>: The definition string or the operation, depending on its
 	 *		value:
 	 *	 <ul>
 	 *		<li><tt>NULL</tt>: Return the string corresponding to the provided language.
 	 *		<li><tt>FALSE</tt>: Delete the element corresponding to the provided language.
-	 *		<li><i>other</i>: Any other value represents the description string that will be
-	 *			set or replace the entry for the provided language.
+	 *		<li><i>other</i>: Any other value represents the definition string that will set
+	 *			or replace the entry for the provided language.
 	 *	 </ul>
-	 *	<li><tt>$getOld</tt>: If <tt>TRUE</tt>, the method will return the description
+	 *	<li><tt>$getOld</tt>: If <tt>TRUE</tt>, the method will return the definition
 	 *		string <i>before</i> it was eventually modified; if <tt>FALSE</tt>, the method
 	 *		will return the value <i>after</i> eventual modifications.
 	 * </ul>
 	 *
 	 * @param mixed					$theLanguage		Language code.
-	 * @param mixed					$theValue			Description or operation.
+	 * @param mixed					$theValue			Definition or operation.
 	 * @param boolean				$getOld				<tt>TRUE</tt> get old value.
 	 *
 	 * @access public
-	 * @return mixed				<i>New</i> or <i>old</i> label.
+	 * @return mixed				<i>New</i> or <i>old</i> definition.
 	 *
 	 * @uses ManageIndexedOffset()
 	 *
-	 * @see kTAG_DESCRIPTION
+	 * @see kTAG_DEFINITION
 	 */
-	public function Description( $theLanguage, $theValue = NULL, $getOld = FALSE )
+	public function Definition( $theLanguage = NULL, $theValue = NULL, $getOld = FALSE )
 	{
 		return ManageIndexedOffset
-				( $this, kTAG_DESCRIPTION, $theLanguage, $theValue, $getOld );		// ==>
+				( $this, kTAG_DEFINITION, $theLanguage, $theValue, $getOld );		// ==>
 
-	} // Description.
+	} // Definition.
 
 	 
 	/*===================================================================================
@@ -615,9 +618,9 @@ class CTerm extends CPersistentObject
 				  kERROR_LOCKED );												// !@! ==>
 		
 		//
-		// Check label and description types.
+		// Check label and definition types.
 		//
-		$offsets = array( kTAG_LABEL, kTAG_DESCRIPTION );
+		$offsets = array( kTAG_LABEL, kTAG_DEFINITION );
 		if( in_array( $theOffset, $offsets )
 		 && ($theValue !== NULL)
 		 && (! is_array( $theValue )) )

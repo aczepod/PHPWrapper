@@ -388,11 +388,8 @@
 	foreach( $xml->term as $term )
 	{
 		echo( '<hr>' );
-		if( $term->{'kTAG_DESCRIPTION'}->count() )
-		{
-			foreach( $term->{'kTAG_DESCRIPTION'} as $desc )
-				echo( (string) $desc );
-		}
+		echo( '<code>['.(string) $term[ 'kTAG_LID' ].'] </code>' );
+		echo( (string) $term->{'kTAG_DEFINITION'}[ 0 ] );
 	}
 	
 ?>

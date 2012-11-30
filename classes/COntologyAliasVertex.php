@@ -38,7 +38,7 @@ require_once( kPATH_MYWRAPPER_LIBRARY_CLASS."/COntologyAliasNode.php" );
  * attributes it will be the node attribute that will overwrite the term attribute.
  *
  * We use the following term attributes: {@link kTAG_LID}, {@link kTAG_GID},
- * {@link kTAG_LABEL} and {@link kTAG_DESCRIPTION}.
+ * {@link kTAG_LABEL} and {@link kTAG_DEFINITION}.
  *
  * All other functionalities are identical to the parent class.
  *
@@ -97,7 +97,7 @@ class COntologyAliasVertex extends COntologyAliasNode
 		//
 		if( ! ($theModifiers & kFLAG_PERSIST_DELETE) )
 			$this->_LoadTermAttributes(
-				array( kTAG_LID, kTAG_GID, kTAG_LABEL, kTAG_DESCRIPTION ) );
+				array( kTAG_LID, kTAG_GID, kTAG_LABEL, kTAG_DEFINITION ) );
 		
 		return NULL;																// ==>
 	

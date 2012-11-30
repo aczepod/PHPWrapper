@@ -7,7 +7,7 @@
 
 	<title>File CWrapper.php | MyWrapper Reference Documentation</title>
 
-	<script type="text/javascript" src="resources/combined.js?3680114562"></script>
+	<script type="text/javascript" src="resources/combined.js?1742645618"></script>
 	<script type="text/javascript" src="elementlist.js?2861350629"></script>
 	<link rel="stylesheet" type="text/css" media="all" href="resources/style.css?3505392360" />
 
@@ -204,7 +204,7 @@
 </span></span><span id="102" class="l"><a class="l" href="#102"> 102: </a><span class="php-comment"> *      This section is returned by default and will inform on the status of the requested
 </span></span><span id="103" class="l"><a class="l" href="#103"> 103: </a><span class="php-comment"> *      operation. It consists of an array containing the following elements:
 </span></span><span id="104" class="l"><a class="l" href="#104"> 104: </a><span class="php-comment"> *   &lt;ul&gt;
-</span></span><span id="105" class="l"><a class="l" href="#105"> 105: </a><span class="php-comment"> *      &lt;li&gt;&lt;i&gt;{@link kTERM_SEVERITY}&lt;/i&gt;: &lt;i&gt;Response status&lt;/i&gt;.
+</span></span><span id="105" class="l"><a class="l" href="#105"> 105: </a><span class="php-comment"> *      &lt;li&gt;&lt;i&gt;{@link kTERM_STATUS}&lt;/i&gt;: &lt;i&gt;Response status&lt;/i&gt;.
 </span></span><span id="106" class="l"><a class="l" href="#106"> 106: </a><span class="php-comment"> *          This element will be returned by default regardless of the operation outcome.
 </span></span><span id="107" class="l"><a class="l" href="#107"> 107: </a><span class="php-comment"> *          This corresponds to the severity of the response and it can take the following
 </span></span><span id="108" class="l"><a class="l" href="#108"> 108: </a><span class="php-comment"> *          values:
@@ -226,10 +226,10 @@
 </span></span><span id="124" class="l"><a class="l" href="#124"> 124: </a><span class="php-comment"> *          &lt;li&gt;&lt;i&gt;{@link kSTATUS_BUG}&lt;/i&gt;: The operation failed because of a bug, the
 </span></span><span id="125" class="l"><a class="l" href="#125"> 125: </a><span class="php-comment"> *              developers should be informed of this kind of errors.
 </span></span><span id="126" class="l"><a class="l" href="#126"> 126: </a><span class="php-comment"> *       &lt;/ul&gt;
-</span></span><span id="127" class="l"><a class="l" href="#127"> 127: </a><span class="php-comment"> *      &lt;li&gt;&lt;i&gt;{@link kTERM_CODE}&lt;/i&gt;: &lt;i&gt;Status code&lt;/i&gt;.
+</span></span><span id="127" class="l"><a class="l" href="#127"> 127: </a><span class="php-comment"> *      &lt;li&gt;&lt;i&gt;{@link kTERM_STATUS_CODE}&lt;/i&gt;: &lt;i&gt;Status code&lt;/i&gt;.
 </span></span><span id="128" class="l"><a class="l" href="#128"> 128: </a><span class="php-comment"> *          This element will be returned by default regardless of the operation outcome.
 </span></span><span id="129" class="l"><a class="l" href="#129"> 129: </a><span class="php-comment"> *          It corresponds to the error code; {@link kERROR_OK} means no error.
-</span></span><span id="130" class="l"><a class="l" href="#130"> 130: </a><span class="php-comment"> *      &lt;li&gt;&lt;i&gt;{@link kTERM_MESSAGE}&lt;/i&gt;: &lt;i&gt;Status message&lt;/i&gt;.
+</span></span><span id="130" class="l"><a class="l" href="#130"> 130: </a><span class="php-comment"> *      &lt;li&gt;&lt;i&gt;{@link kTERM_STATUS_MESSAGE}&lt;/i&gt;: &lt;i&gt;Status message&lt;/i&gt;.
 </span></span><span id="131" class="l"><a class="l" href="#131"> 131: </a><span class="php-comment"> *          The response message from the operation, this element is used to return
 </span></span><span id="132" class="l"><a class="l" href="#132"> 132: </a><span class="php-comment"> *          informative messages or to return error messages when the service fails. It will
 </span></span><span id="133" class="l"><a class="l" href="#133"> 133: </a><span class="php-comment"> *          generally be formatted as an array in which the index represents the language
@@ -558,7 +558,7 @@
 </span></span><span id="456" class="l"><a class="l" href="#456"> 456: </a><span class="php-comment">     * states.
 </span></span><span id="457" class="l"><a class="l" href="#457"> 457: </a><span class="php-comment">     *
 </span></span><span id="458" class="l"><a class="l" href="#458"> 458: </a><span class="php-comment">     * In this class we set the status to {@link kSTATUS_IDLE} and reset the
-</span></span><span id="459" class="l"><a class="l" href="#459"> 459: </a><span class="php-comment">     * status {@link kTERM_CODE}.
+</span></span><span id="459" class="l"><a class="l" href="#459"> 459: </a><span class="php-comment">     * status {@link kTERM_STATUS_CODE}.
 </span></span><span id="460" class="l"><a class="l" href="#460"> 460: </a><span class="php-comment">     *
 </span></span><span id="461" class="l"><a class="l" href="#461"> 461: </a><span class="php-comment">     * @access protected
 </span></span><span id="462" class="l"><a class="l" href="#462"> 462: </a><span class="php-comment">     *
@@ -574,12 +574,12 @@
 </span><span id="472" class="l"><a class="l" href="#472"> 472: </a>        <span class="php-comment">//</span>
 </span><span id="473" class="l"><a class="l" href="#473"> 473: </a>        <span class="php-comment">// Set state.</span>
 </span><span id="474" class="l"><a class="l" href="#474"> 474: </a>        <span class="php-comment">//</span>
-</span><span id="475" class="l"><a class="l" href="#475"> 475: </a>        <span class="php-var">$status</span>[ kTERM_SEVERITY ] = kSTATUS_IDLE;
+</span><span id="475" class="l"><a class="l" href="#475"> 475: </a>        <span class="php-var">$status</span>[ kTERM_STATUS ] = kSTATUS_IDLE;
 </span><span id="476" class="l"><a class="l" href="#476"> 476: </a>        
 </span><span id="477" class="l"><a class="l" href="#477"> 477: </a>        <span class="php-comment">//</span>
 </span><span id="478" class="l"><a class="l" href="#478"> 478: </a>        <span class="php-comment">// Set idle status code.</span>
 </span><span id="479" class="l"><a class="l" href="#479"> 479: </a>        <span class="php-comment">//</span>
-</span><span id="480" class="l"><a class="l" href="#480"> 480: </a>        <span class="php-var">$status</span>[ kTERM_CODE ] = kERROR_OK;
+</span><span id="480" class="l"><a class="l" href="#480"> 480: </a>        <span class="php-var">$status</span>[ kTERM_STATUS_CODE ] = kERROR_OK;
 </span><span id="481" class="l"><a class="l" href="#481"> 481: </a>        
 </span><span id="482" class="l"><a class="l" href="#482"> 482: </a>        <span class="php-comment">//</span>
 </span><span id="483" class="l"><a class="l" href="#483"> 483: </a>        <span class="php-comment">// Copy status to object.</span>
@@ -1353,11 +1353,11 @@
 </span></span><span id="1251" class="l"><a class="l" href="#1251">1251: </a><span class="php-comment">     *
 </span></span><span id="1252" class="l"><a class="l" href="#1252">1252: </a><span class="php-comment">     * &lt;ul&gt;
 </span></span><span id="1253" class="l"><a class="l" href="#1253">1253: </a><span class="php-comment">     *  &lt;li&gt;&lt;i&gt;{@link CException::Severity()}&lt;/i&gt;: This value will be set as the status
-</span></span><span id="1254" class="l"><a class="l" href="#1254">1254: </a><span class="php-comment">     *      {@link kTERM_SEVERITY}.
+</span></span><span id="1254" class="l"><a class="l" href="#1254">1254: </a><span class="php-comment">     *      {@link kTERM_STATUS}.
 </span></span><span id="1255" class="l"><a class="l" href="#1255">1255: </a><span class="php-comment">     *  &lt;li&gt;&lt;i&gt;{@link Exception::getCode()}&lt;/i&gt;: This value will be set as the status
-</span></span><span id="1256" class="l"><a class="l" href="#1256">1256: </a><span class="php-comment">     *      {@link kTERM_CODE}.
+</span></span><span id="1256" class="l"><a class="l" href="#1256">1256: </a><span class="php-comment">     *      {@link kTERM_STATUS_CODE}.
 </span></span><span id="1257" class="l"><a class="l" href="#1257">1257: </a><span class="php-comment">     *  &lt;li&gt;&lt;i&gt;{@link Exception::getMessage()}&lt;/i&gt;: This value will be set in the status
-</span></span><span id="1258" class="l"><a class="l" href="#1258">1258: </a><span class="php-comment">     *      {@link kTERM_MESSAGE} field as a language block.
+</span></span><span id="1258" class="l"><a class="l" href="#1258">1258: </a><span class="php-comment">     *      {@link kTERM_STATUS_MESSAGE} field as a language block.
 </span></span><span id="1259" class="l"><a class="l" href="#1259">1259: </a><span class="php-comment">     *  &lt;li&gt;&lt;i&gt;{@link Exception::getFile()}&lt;/i&gt;: This value will be set in the status
 </span></span><span id="1260" class="l"><a class="l" href="#1260">1260: </a><span class="php-comment">     *      {@link kTERM_NOTES}.
 </span></span><span id="1261" class="l"><a class="l" href="#1261">1261: </a><span class="php-comment">     *  &lt;li&gt;&lt;i&gt;{@link Exception::getLine()}&lt;/i&gt;: This value will be set in the status
@@ -1383,13 +1383,13 @@
 </span><span id="1281" class="l"><a class="l" href="#1281">1281: </a>        <span class="php-comment">// Set exception code.</span>
 </span><span id="1282" class="l"><a class="l" href="#1282">1282: </a>        <span class="php-comment">//</span>
 </span><span id="1283" class="l"><a class="l" href="#1283">1283: </a>        <span class="php-keyword1">if</span>( (<span class="php-var">$tmp</span> = <span class="php-var">$theException</span>-&gt;getCode()) !== <span class="php-keyword1">NULL</span> )
-</span><span id="1284" class="l"><a class="l" href="#1284">1284: </a>            <span class="php-var">$status</span>[ kTERM_CODE ] = <span class="php-var">$tmp</span>;
+</span><span id="1284" class="l"><a class="l" href="#1284">1284: </a>            <span class="php-var">$status</span>[ kTERM_STATUS_CODE ] = <span class="php-var">$tmp</span>;
 </span><span id="1285" class="l"><a class="l" href="#1285">1285: </a>        
 </span><span id="1286" class="l"><a class="l" href="#1286">1286: </a>        <span class="php-comment">//</span>
 </span><span id="1287" class="l"><a class="l" href="#1287">1287: </a>        <span class="php-comment">// Set exception message.</span>
 </span><span id="1288" class="l"><a class="l" href="#1288">1288: </a>        <span class="php-comment">//</span>
 </span><span id="1289" class="l"><a class="l" href="#1289">1289: </a>        <span class="php-keyword1">if</span>( (<span class="php-var">$tmp</span> = <span class="php-var">$theException</span>-&gt;getMessage()) !== <span class="php-keyword1">NULL</span> )
-</span><span id="1290" class="l"><a class="l" href="#1290">1290: </a>            <span class="php-var">$status</span>[ kTERM_MESSAGE ]
+</span><span id="1290" class="l"><a class="l" href="#1290">1290: </a>            <span class="php-var">$status</span>[ kTERM_STATUS_MESSAGE ]
 </span><span id="1291" class="l"><a class="l" href="#1291">1291: </a>                = <span class="php-keyword1">array</span>( kDEFAULT_LANGUAGE =&gt; <span class="php-var">$tmp</span> );
 </span><span id="1292" class="l"><a class="l" href="#1292">1292: </a>        
 </span><span id="1293" class="l"><a class="l" href="#1293">1293: </a>        <span class="php-comment">//</span>
@@ -1430,7 +1430,7 @@
 </span><span id="1328" class="l"><a class="l" href="#1328">1328: </a>        <span class="php-keyword1">if</span>( <span class="php-var">$theException</span> <span class="php-keyword1">instanceof</span> CException )
 </span><span id="1329" class="l"><a class="l" href="#1329">1329: </a>        {
 </span><span id="1330" class="l"><a class="l" href="#1330">1330: </a>            <span class="php-keyword1">if</span>( (<span class="php-var">$tmp</span> = <span class="php-var">$theException</span>-&gt;Severity()) !== <span class="php-keyword1">NULL</span> )
-</span><span id="1331" class="l"><a class="l" href="#1331">1331: </a>                <span class="php-var">$status</span>[ kTERM_SEVERITY ] = <span class="php-var">$tmp</span>;
+</span><span id="1331" class="l"><a class="l" href="#1331">1331: </a>                <span class="php-var">$status</span>[ kTERM_STATUS ] = <span class="php-var">$tmp</span>;
 </span><span id="1332" class="l"><a class="l" href="#1332">1332: </a>            <span class="php-keyword1">if</span>( <span class="php-var">$tmp</span> = <span class="php-var">$theException</span>-&gt;Reference() )
 </span><span id="1333" class="l"><a class="l" href="#1333">1333: </a>            {
 </span><span id="1334" class="l"><a class="l" href="#1334">1334: </a>                <span class="php-keyword1">if</span>( ! <span class="php-keyword2">array_key_exists</span>( kTERM_NOTES, <span class="php-var">$status</span> ) )

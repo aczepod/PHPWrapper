@@ -58,10 +58,14 @@
  *			name or short description of the referenced object. It is a
  *			{@link kTYPE_LSTRING} structure in which the label can be expressed in several
  *			languages. 
+ *		<li><tt>{@link kTAG_DEFINITION}</tt>: <i>Definition</i>. This attribute
+ *			represents the definition of the referenced object. It is an
+ *			{@link kTYPE_LSTRING} structure in which the definition can be expressed in
+ *			several languages. A definition is independent of the context.
  *		<li><tt>{@link kTAG_DESCRIPTION}</tt>: <i>Description</i>. This attribute
- *			represents the description or definition of the referenced object. It is a
+ *			represents the description of the referenced object. It is an
  *			{@link kTYPE_LSTRING} structure in which the description can be expressed in
- *			several languages. 
+ *			several languages. A description depends on the context.
  *		<li><tt>{@link kTAG_NOTES}</tt>: <i>Notes</i>. This attribute represents the notes
  *			or comments of the referenced object. It is a {@link kTYPE_LSTRING} structure in
  *			which the description can be expressed in several languages. 
@@ -304,13 +308,26 @@ define( "kTAG_NAMESPACE",						'3' );
 define( "kTAG_LABEL",							'5' );
 
 /**
+ * DEFINITION.
+ *
+ * Definition.
+ *
+ * This attribute represents the definition of the referenced object. It is an
+ * {@link kTYPE_LSTRING} structure in which the definition can be expressed in several
+ + languages. A definition is independent of the context.
+ *
+ * Version 1: (kTAG_DEFINITION)[??]
+ */
+define( "kTAG_DEFINITION",						'1009' );
+
+/**
  * DESCRIPTION.
  *
  * Description.
  *
- * This attribute represents the description or definition of the referenced object.
- * It is a {@link kTYPE_LSTRING} structure in which the description can be expressed in
- * several languages.
+ * This attribute represents the description of the referenced object. It is an
+ * {@link kTYPE_LSTRING} structure in which the description can be expressed in several
+ * languages. A description depends on the context.
  *
  * Version 1: (kTAG_DESCRIPTION)[6]
  */
@@ -340,6 +357,75 @@ define( "kTAG_NOTES",							'25' );
  * Version 1: (kTAG_EXAMPLES)[28]
  */
 define( "kTAG_EXAMPLES",						'28' );
+
+/*=======================================================================================
+ *	STATUS ATTRIBUTES																	*
+ *======================================================================================*/
+
+/**
+ * STATUS.
+ *
+ * Status.
+ *
+ * This attribute represents the severity or status level, it is an element of the following
+ * enumerated set:
+ *
+ * <ul>
+ *	<li><tt>{@link kSTATUS_IDLE}</tt>: This code indicates no errors, this state can be
+ *		equated to an idle state.
+ *	<li><tt>{@link kSTATUS_NOTICE}</tt>: This code indicates a notice. A notice is an
+ *		informative message that does not imply an error, nor a situation that should be
+ *		handled; it can be considered as statistical data.
+ *	<li><tt>{@link kSTATUS_MESSAGE}</tt>: This code indicates a message. A message is an
+ *		informative message that is addressed to somebody, although it does not imply an
+ *		error or warning, it was issued to a receiving party.
+ *	<li><tt>{@link kSTATUS_WARNING}</tt>: This code indicates a warning. Warnings are
+ *		informative data that indicate a potential problem, although they do not imply an
+ *		error, they indicate a potential problem or an issue that should be addressed at
+ *		least at a later stage.
+ *	<li><tt>{@link kSTATUS_ERROR}</tt>: This code indicates an error. Errors indicate that
+ *		something prevented an operation from being performed, this does not necessarily
+ *		mean that the whole process is halted, but that the results of an operation will not
+ *		be as expected.
+ *	<li><tt>{@link kSTATUS_FATAL}</tt>: This code indicates a fatal error. Fatal errors are
+ *		errors that result in stopping the whole process: in this case the error will
+ *		prevent other operations from being performed and the whole process should be
+ *		halted.
+ *	<li><tt>{@link kSTATUS_BUG}</tt>: This code indicates a bug. Bugs, as opposed to errors,
+ *		result from internal causes independant from external factors. A bug indicates that
+ *		an operation will never execute as stated, it does not necessarily mean that it is
+ *		fatal, but rather that the behaviour of an operation does not correspond to its
+ *		declaration.
+ * </ul>
+ *
+ * Version 1: (kTAG_STATUS)[1010]
+ */
+define( "kTAG_STATUS",							'1010' );
+
+/**
+ * STATUS-CODE.
+ *
+ * Status code.
+ *
+ * This attribute represents the status code, it is a string or number that identifies the
+ * specific status or state.
+ *
+ * Version 1: (kTAG_STATUS_CODE)[1011]
+ */
+define( "kTAG_STATUS_CODE",						'1011' );
+
+/**
+ * STATUS-MESSAGE.
+ *
+ * Status message.
+ *
+ * This attribute represents the status message, it is a string that describes the status.
+ * It is a {@link kTYPE_LSTRING} structure in which the message can be expressed in
+ * several languages.
+ *
+ * Version 1: (kTAG_STATUS_MESSAGE)[1012]
+ */
+define( "kTAG_STATUS_MESSAGE",					'1012' );
 
 /*=======================================================================================
  *	AUTHORSHIP ATTRIBUTES																*

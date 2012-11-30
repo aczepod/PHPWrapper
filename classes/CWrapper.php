@@ -102,7 +102,7 @@ require_once( kPATH_MYWRAPPER_LIBRARY_CLASS."/CWrapper.inc.php" );
  *		This section is returned by default and will inform on the status of the requested
  *		operation. It consists of an array containing the following elements:
  *	 <ul>
- *		<li><i>{@link kTERM_SEVERITY}</i>: <i>Response status</i>.
+ *		<li><i>{@link kTERM_STATUS}</i>: <i>Response status</i>.
  *			This element will be returned by default regardless of the operation outcome.
  *			This corresponds to the severity of the response and it can take the following
  *			values:
@@ -124,10 +124,10 @@ require_once( kPATH_MYWRAPPER_LIBRARY_CLASS."/CWrapper.inc.php" );
  *			<li><i>{@link kSTATUS_BUG}</i>: The operation failed because of a bug, the
  *				developers should be informed of this kind of errors.
  *		 </ul>
- *		<li><i>{@link kTERM_CODE}</i>: <i>Status code</i>.
+ *		<li><i>{@link kTERM_STATUS_CODE}</i>: <i>Status code</i>.
  *			This element will be returned by default regardless of the operation outcome.
  *			It corresponds to the error code; {@link kERROR_OK} means no error.
- *		<li><i>{@link kTERM_MESSAGE}</i>: <i>Status message</i>.
+ *		<li><i>{@link kTERM_STATUS_MESSAGE}</i>: <i>Status message</i>.
  *			The response message from the operation, this element is used to return
  *			informative messages or to return error messages when the service fails. It will
  *			generally be formatted as an array in which the index represents the language
@@ -456,7 +456,7 @@ class CWrapper extends CConnection
 	 * states.
 	 *
 	 * In this class we set the status to {@link kSTATUS_IDLE} and reset the
-	 * status {@link kTERM_CODE}.
+	 * status {@link kTERM_STATUS_CODE}.
 	 *
 	 * @access protected
 	 *
@@ -472,12 +472,12 @@ class CWrapper extends CConnection
 		//
 		// Set state.
 		//
-		$status[ kTERM_SEVERITY ] = kSTATUS_IDLE;
+		$status[ kTERM_STATUS ] = kSTATUS_IDLE;
 		
 		//
 		// Set idle status code.
 		//
-		$status[ kTERM_CODE ] = kERROR_OK;
+		$status[ kTERM_STATUS_CODE ] = kERROR_OK;
 		
 		//
 		// Copy status to object.
@@ -1251,11 +1251,11 @@ class CWrapper extends CConnection
 	 *
 	 * <ul>
 	 *	<li><i>{@link CException::Severity()}</i>: This value will be set as the status
-	 *		{@link kTERM_SEVERITY}.
+	 *		{@link kTERM_STATUS}.
 	 *	<li><i>{@link Exception::getCode()}</i>: This value will be set as the status
-	 *		{@link kTERM_CODE}.
+	 *		{@link kTERM_STATUS_CODE}.
 	 *	<li><i>{@link Exception::getMessage()}</i>: This value will be set in the status
-	 *		{@link kTERM_MESSAGE} field as a language block.
+	 *		{@link kTERM_STATUS_MESSAGE} field as a language block.
 	 *	<li><i>{@link Exception::getFile()}</i>: This value will be set in the status
 	 *		{@link kTERM_NOTES}.
 	 *	<li><i>{@link Exception::getLine()}</i>: This value will be set in the status
@@ -1281,13 +1281,13 @@ class CWrapper extends CConnection
 		// Set exception code.
 		//
 		if( ($tmp = $theException->getCode()) !== NULL )
-			$status[ kTERM_CODE ] = $tmp;
+			$status[ kTERM_STATUS_CODE ] = $tmp;
 		
 		//
 		// Set exception message.
 		//
 		if( ($tmp = $theException->getMessage()) !== NULL )
-			$status[ kTERM_MESSAGE ]
+			$status[ kTERM_STATUS_MESSAGE ]
 				= array( kDEFAULT_LANGUAGE => $tmp );
 		
 		//
@@ -1328,7 +1328,7 @@ class CWrapper extends CConnection
 		if( $theException instanceof CException )
 		{
 			if( ($tmp = $theException->Severity()) !== NULL )
-				$status[ kTERM_SEVERITY ] = $tmp;
+				$status[ kTERM_STATUS ] = $tmp;
 			if( $tmp = $theException->Reference() )
 			{
 				if( ! array_key_exists( kTERM_NOTES, $status ) )

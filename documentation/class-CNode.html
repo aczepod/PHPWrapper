@@ -6,7 +6,7 @@
 
 	<title>Class CNode | MyWrapper Reference Documentation</title>
 
-	<script type="text/javascript" src="resources/combined.js?3680114562"></script>
+	<script type="text/javascript" src="resources/combined.js?1742645618"></script>
 	<script type="text/javascript" src="elementlist.js?2861350629"></script>
 	<link rel="stylesheet" type="text/css" media="all" href="resources/style.css?3505392360" />
 
@@ -147,6 +147,13 @@ to other nodes.</p>
 	the object defined by the current node. This attribute will be in general a
 	combination of elements describing two main attribute categories: the data type
 	and the cardinality. This attribute is optional.</li>
+
+	<li><i>Description</i>: The description, <tt><code><a href="class-CNode.html#_Description">CNode::Description()</a></code></tt> or the
+	<tt>kTAG_DESCRIPTION</tt> tag, represents the description or long label
+	of the node. This attribute is constituted by an array of elements in which the
+	value of the element represents the description string and the element key is
+	the language code in which the description is expressed in. This attribute is
+	optional.</li>
 </ul>
 
 <p>The node's main property is the term, kTAG_TERM, which defines the
@@ -270,7 +277,7 @@ the caller or of derived classes to implement a locking rule.</p>
 				<b>Author:</b>
 				Milko A. Škofič &lt;<a
 href="mailto:m.skofic&#64;cgiar.org">m.skofic&#64;<!---->cgiar.org</a>&gt;<br />
-		<b>Located at</b> <a href="source-class-CNode.html#29-590" title="Go to source code">CNode.php</a><br />
+		<b>Located at</b> <a href="source-class-CNode.html#29-660" title="Go to source code">CNode.php</a><br />
 	</div>
 
 
@@ -288,7 +295,7 @@ href="mailto:m.skofic&#64;cgiar.org">m.skofic&#64;<!---->cgiar.org</a>&gt;<br />
 
 		<td class="name"><div>
 		<a class="anchor" href="#___toString">#</a>
-		<code><a href="source-class-CNode.html#112-136" title="Go to source code">__toString</a>( )</code>
+		<code><a href="source-class-CNode.html#117-141" title="Go to source code">__toString</a>( )</code>
 
 		<div class="description short">
 			
@@ -332,7 +339,7 @@ the unique identifier of the object.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#_Term">#</a>
-		<code><a href="source-class-CNode.html#152-185" title="Go to source code">Term</a>( <span>mixed <var>$theValue</var> = <span class="php-keyword1">NULL</span></span>, <span>boolean <var>$getOld</var> = <span class="php-keyword1">FALSE</span> </span> )</code>
+		<code><a href="source-class-CNode.html#157-190" title="Go to source code">Term</a>( <span>mixed <var>$theValue</var> = <span class="php-keyword1">NULL</span></span>, <span>boolean <var>$getOld</var> = <span class="php-keyword1">FALSE</span> </span> )</code>
 
 		<div class="description short">
 			
@@ -402,7 +409,7 @@ the currently set value.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#_Category">#</a>
-		<code><a href="source-class-CNode.html#192-253" title="Go to source code">Category</a>( <span>mixed <var>$theValue</var> = <span class="php-keyword1">NULL</span></span>, <span>mixed <var>$theOperation</var> = <span class="php-keyword1">NULL</span></span>, <span>boolean <var>$getOld</var> = <span class="php-keyword1">FALSE</span> </span> )</code>
+		<code><a href="source-class-CNode.html#197-258" title="Go to source code">Category</a>( <span>mixed <var>$theValue</var> = <span class="php-keyword1">NULL</span></span>, <span>mixed <var>$theOperation</var> = <span class="php-keyword1">NULL</span></span>, <span>boolean <var>$getOld</var> = <span class="php-keyword1">FALSE</span> </span> )</code>
 
 		<div class="description short">
 			
@@ -510,7 +517,7 @@ which the object defined by the node belongs to.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#_Kind">#</a>
-		<code><a href="source-class-CNode.html#260-324" title="Go to source code">Kind</a>( <span>mixed <var>$theValue</var> = <span class="php-keyword1">NULL</span></span>, <span>mixed <var>$theOperation</var> = <span class="php-keyword1">NULL</span></span>, <span>boolean <var>$getOld</var> = <span class="php-keyword1">FALSE</span> </span> )</code>
+		<code><a href="source-class-CNode.html#265-329" title="Go to source code">Kind</a>( <span>mixed <var>$theValue</var> = <span class="php-keyword1">NULL</span></span>, <span>mixed <var>$theOperation</var> = <span class="php-keyword1">NULL</span></span>, <span>boolean <var>$getOld</var> = <span class="php-keyword1">FALSE</span> </span> )</code>
 
 		<div class="description short">
 			
@@ -621,7 +628,7 @@ that can be managed with the following parameters:</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#_Type">#</a>
-		<code><a href="source-class-CNode.html#331-392" title="Go to source code">Type</a>( <span>mixed <var>$theValue</var> = <span class="php-keyword1">NULL</span></span>, <span>mixed <var>$theOperation</var> = <span class="php-keyword1">NULL</span></span>, <span>boolean <var>$getOld</var> = <span class="php-keyword1">FALSE</span> </span> )</code>
+		<code><a href="source-class-CNode.html#336-397" title="Go to source code">Type</a>( <span>mixed <var>$theValue</var> = <span class="php-keyword1">NULL</span></span>, <span>mixed <var>$theOperation</var> = <span class="php-keyword1">NULL</span></span>, <span>boolean <var>$getOld</var> = <span class="php-keyword1">FALSE</span> </span> )</code>
 
 		<div class="description short">
 			
@@ -718,6 +725,94 @@ managed with the following parameters:</p>
 		</div>
 		</div></td>
 	</tr>
+	<tr data-order="Description" id="_Description">
+
+		<td class="attributes"><code>
+			 public 
+			mixed
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_Description">#</a>
+		<code><a href="source-class-CNode.html#404-450" title="Go to source code">Description</a>( <span>mixed <var>$theLanguage</var> = <span class="php-keyword1">NULL</span></span>, <span>mixed <var>$theValue</var> = <span class="php-keyword1">NULL</span></span>, <span>boolean <var>$getOld</var> = <span class="php-keyword1">FALSE</span> </span> )</code>
+
+		<div class="description short">
+			
+<h4>Manage node description</h4>
+
+		</div>
+
+		<div class="description detailed hidden">
+			
+<h4>Manage node description</h4>
+
+<p>The node <i>description</i>, kTAG_DESCRIPTION, represents the node's
+long label or extended definition. It is an optional attribute of the object
+that holds an array of elements in which the index is represented by the
+language code and the value is the string.</p>
+
+<p>No two elements may share the same language code.</p>
+
+<p>The description depends on the context in which the object is, as opposed as
+the definition which does not depend on the context.</p>
+
+<p>The method accepts the following parameters:</p>
+
+<ul>
+	<li><tt>$theLanguage</tt>: Language code.</li>
+
+	<li><tt>$theValue</tt>: The description string or the operation, depending on
+	its value:
+		<ul>
+			<li><tt>NULL</tt>: Return the string corresponding to the provided
+			language.</li>
+
+			<li><tt>FALSE</tt>: Delete the element corresponding to the provided
+			language.</li>
+
+			<li><i>other</i>: Any other value represents the description string that will be
+			set or replace the entry for the provided language.</li>
+		</ul>
+	</li>
+
+	<li><tt>$getOld</tt>: If <tt>TRUE</tt>, the method will return the description
+	string <i>before</i> it was eventually modified; if <tt>FALSE</tt>, the method
+	will return the value <i>after</i> eventual modifications.</li>
+</ul>
+
+
+
+				<h4>Parameters</h4>
+				<div class="list"><dl>
+					<dt><var>$theLanguage</var></dt>
+					<dd><code>mixed</code><br>$theLanguage Language code.</dd>
+					<dt><var>$theValue</var></dt>
+					<dd><code>mixed</code><br>$theValue Description or operation.</dd>
+					<dt><var>$getOld</var></dt>
+					<dd><code>boolean</code><br>$getOld <tt>TRUE</tt> get old value.</dd>
+				</dl></div>
+
+				<h4>Returns</h4>
+				<div class="list">
+					<code>mixed</code><br><i>New</i> or <i>old</i> description.<br />
+				</div>
+
+
+				<h4>See</h4>
+				<div class="list">
+						kTAG_DESCRIPTION<br />
+				</div>
+				<h4>Uses</h4>
+				<div class="list">
+						<code><code><a href="function-ManageIndexedOffset.html">ManageIndexedOffset()</a></code></code> <br />
+				</div>
+
+
+		</div>
+		</div></td>
+	</tr>
 	<tr data-order="RelateTo" id="_RelateTo">
 
 		<td class="attributes"><code>
@@ -729,7 +824,7 @@ managed with the following parameters:</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#_RelateTo">#</a>
-		<code><a href="source-class-CNode.html#408-471" title="Go to source code">RelateTo</a>( <span>mixed <var>$thePredicate</var></span>, <span>mixed <var>$theObject</var></span>, <span><code><a href="class-CConnection.html">CConnection</a></code> <var>$theConnection</var> = <span class="php-keyword1">NULL</span> </span> )</code>
+		<code><a href="source-class-CNode.html#466-529" title="Go to source code">RelateTo</a>( <span>mixed <var>$thePredicate</var></span>, <span>mixed <var>$theObject</var></span>, <span><code><a href="class-CConnection.html">CConnection</a></code> <var>$theConnection</var> = <span class="php-keyword1">NULL</span> </span> )</code>
 
 		<div class="description short">
 			
@@ -804,7 +899,7 @@ occurs, the method will raise an exception.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#__Preset">#</a>
-		<code><a href="source-class-CNode.html#487-520" title="Go to source code">_Preset</a>( <span>reference <var>&amp; $theOffset</var></span>, <span>reference <var>&amp; $theValue</var></span> )</code>
+		<code><a href="source-class-CNode.html#545-590" title="Go to source code">_Preset</a>( <span>reference <var>&amp; $theOffset</var></span>, <span>reference <var>&amp; $theValue</var></span> )</code>
 
 		<div class="description short">
 			
@@ -857,7 +952,7 @@ ArrayObject instances are not counted as an array.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#__NewEdge">#</a>
-		<code><a href="source-class-CNode.html#536-547" title="Go to source code">_NewEdge</a>( )</code>
+		<code><a href="source-class-CNode.html#606-617" title="Go to source code">_NewEdge</a>( )</code>
 
 		<div class="description short">
 			
@@ -899,7 +994,7 @@ correct edge type.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#__Ready">#</a>
-		<code><a href="source-class-CNode.html#563-586" title="Go to source code">_Ready</a>( )</code>
+		<code><a href="source-class-CNode.html#633-656" title="Go to source code">_Ready</a>( )</code>
 
 		<div class="description short">
 			

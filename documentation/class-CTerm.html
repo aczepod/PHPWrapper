@@ -6,7 +6,7 @@
 
 	<title>Class CTerm | MyWrapper Reference Documentation</title>
 
-	<script type="text/javascript" src="resources/combined.js?3680114562"></script>
+	<script type="text/javascript" src="resources/combined.js?1742645618"></script>
 	<script type="text/javascript" src="elementlist.js?2861350629"></script>
 	<link rel="stylesheet" type="text/css" media="all" href="resources/style.css?3505392360" />
 
@@ -147,11 +147,12 @@
 	of the element represents the label string and the element key is the language
 	code in which the label is expressed in. This attribute is optional.</li>
 
-	<li><i>Description</i>: The description or definition, <tt><code><a href="class-CTerm.html#_Description">CTerm::Description()</a></code></tt> or the <tt>kTAG_DESCRIPTION</tt> tag, represents the
-	description or long label of the term. This attribute is constituted by an array
-	of elements in which the value of the element represents the description string
-	and the element key is the language code in which the description is expressed
-	in. This attribute is optional.</li>
+	<li><i>Definition</i>: The definition, <tt><code><a href="class-CTerm.html#_Definition">CTerm::Definition()</a></code></tt> or the
+	<tt>kTAG_DEFINITION</tt> tag, represents the definition or long label of
+	the term. This attribute is constituted by an array of elements in which the
+	value of the element represents the definition string and the element key is the
+	language code in which the definition is expressed in. This attribute is
+	optional.</li>
 
 	<li><i>Synonyms</i>: The synonym or alias, <tt><code><a href="class-CTerm.html#_Synonym">CTerm::Synonym()</a></code></tt> or the
 	<tt>kTAG_SYNONYMS</tt> tag, represents a list of strings that represent
@@ -252,7 +253,7 @@ identifier, kTAG_LID, is set.</p>
 				<b>Author:</b>
 				Milko A. Škofič &lt;<a
 href="mailto:m.skofic&#64;cgiar.org">m.skofic&#64;<!---->cgiar.org</a>&gt;<br />
-		<b>Located at</b> <a href="source-class-CTerm.html#36-653" title="Go to source code">CTerm.php</a><br />
+		<b>Located at</b> <a href="source-class-CTerm.html#36-725" title="Go to source code">CTerm.php</a><br />
 	</div>
 
 
@@ -423,7 +424,7 @@ will be locked and an exception will be raised.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#_Label">#</a>
-		<code><a href="source-class-CTerm.html#200-242" title="Go to source code">Label</a>( <span>mixed <var>$theLanguage</var></span>, <span>mixed <var>$theValue</var> = <span class="php-keyword1">NULL</span></span>, <span>boolean <var>$getOld</var> = <span class="php-keyword1">FALSE</span> </span> )</code>
+		<code><a href="source-class-CTerm.html#200-242" title="Go to source code">Label</a>( <span>mixed <var>$theLanguage</var> = <span class="php-keyword1">NULL</span></span>, <span>mixed <var>$theValue</var> = <span class="php-keyword1">NULL</span></span>, <span>boolean <var>$getOld</var> = <span class="php-keyword1">FALSE</span> </span> )</code>
 
 		<div class="description short">
 			
@@ -497,7 +498,7 @@ code and the value is the string.</p>
 		</div>
 		</div></td>
 	</tr>
-	<tr data-order="Description" id="_Description">
+	<tr data-order="Definition" id="_Definition">
 
 		<td class="attributes"><code>
 			 public 
@@ -507,33 +508,36 @@ code and the value is the string.</p>
 		</td>
 
 		<td class="name"><div>
-		<a class="anchor" href="#_Description">#</a>
-		<code><a href="source-class-CTerm.html#249-292" title="Go to source code">Description</a>( <span>mixed <var>$theLanguage</var></span>, <span>mixed <var>$theValue</var> = <span class="php-keyword1">NULL</span></span>, <span>boolean <var>$getOld</var> = <span class="php-keyword1">FALSE</span> </span> )</code>
+		<a class="anchor" href="#_Definition">#</a>
+		<code><a href="source-class-CTerm.html#249-295" title="Go to source code">Definition</a>( <span>mixed <var>$theLanguage</var> = <span class="php-keyword1">NULL</span></span>, <span>mixed <var>$theValue</var> = <span class="php-keyword1">NULL</span></span>, <span>boolean <var>$getOld</var> = <span class="php-keyword1">FALSE</span> </span> )</code>
 
 		<div class="description short">
 			
-<h4>Manage term description</h4>
+<h4>Manage term definition</h4>
 
 		</div>
 
 		<div class="description detailed hidden">
 			
-<h4>Manage term description</h4>
+<h4>Manage term definition</h4>
 
-<p>The term <i>description</i>, kTAG_DESCRIPTION, represents the term's
-definition or human readable description. It is an optional attribute of the
-object that holds an array of elements in which the index is represented by the
-language code and the value is the string.</p>
+<p>The term <i>definition</i>, kTAG_DEFINITION, represents the term's
+definition, or its description unrelated to the context. It is an optional
+attribute of the object that holds an array of elements in which the index is
+represented by the language code and the value is the string.</p>
 
 <p>No two elements may share the same language code.</p>
+
+<p>The definition does not depend on the context in which the object is, as
+opposed to the description which depends on the context.</p>
 
 <p>The method accepts the following parameters:</p>
 
 <ul>
 	<li><tt>$theLanguage</tt>: Language code.</li>
 
-	<li><tt>$theValue</tt>: The description string or the operation, depending on
-	its value:
+	<li><tt>$theValue</tt>: The definition string or the operation, depending on its
+	value:
 		<ul>
 			<li><tt>NULL</tt>: Return the string corresponding to the provided
 			language.</li>
@@ -541,12 +545,12 @@ language code and the value is the string.</p>
 			<li><tt>FALSE</tt>: Delete the element corresponding to the provided
 			language.</li>
 
-			<li><i>other</i>: Any other value represents the description string that will be
-			set or replace the entry for the provided language.</li>
+			<li><i>other</i>: Any other value represents the definition string that will set
+			or replace the entry for the provided language.</li>
 		</ul>
 	</li>
 
-	<li><tt>$getOld</tt>: If <tt>TRUE</tt>, the method will return the description
+	<li><tt>$getOld</tt>: If <tt>TRUE</tt>, the method will return the definition
 	string <i>before</i> it was eventually modified; if <tt>FALSE</tt>, the method
 	will return the value <i>after</i> eventual modifications.</li>
 </ul>
@@ -558,20 +562,20 @@ language code and the value is the string.</p>
 					<dt><var>$theLanguage</var></dt>
 					<dd><code>mixed</code><br>$theLanguage Language code.</dd>
 					<dt><var>$theValue</var></dt>
-					<dd><code>mixed</code><br>$theValue Description or operation.</dd>
+					<dd><code>mixed</code><br>$theValue Definition or operation.</dd>
 					<dt><var>$getOld</var></dt>
 					<dd><code>boolean</code><br>$getOld <tt>TRUE</tt> get old value.</dd>
 				</dl></div>
 
 				<h4>Returns</h4>
 				<div class="list">
-					<code>mixed</code><br><i>New</i> or <i>old</i> label.<br />
+					<code>mixed</code><br><i>New</i> or <i>old</i> definition.<br />
 				</div>
 
 
 				<h4>See</h4>
 				<div class="list">
-						kTAG_DESCRIPTION<br />
+						kTAG_DEFINITION<br />
 				</div>
 				<h4>Uses</h4>
 				<div class="list">
@@ -593,7 +597,7 @@ language code and the value is the string.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#_Synonym">#</a>
-		<code><a href="source-class-CTerm.html#299-361" title="Go to source code">Synonym</a>( <span>mixed <var>$theValue</var> = <span class="php-keyword1">NULL</span></span>, <span>mixed <var>$theOperation</var> = <span class="php-keyword1">NULL</span></span>, <span>boolean <var>$getOld</var> = <span class="php-keyword1">FALSE</span> </span> )</code>
+		<code><a href="source-class-CTerm.html#302-364" title="Go to source code">Synonym</a>( <span>mixed <var>$theValue</var> = <span class="php-keyword1">NULL</span></span>, <span>mixed <var>$theOperation</var> = <span class="php-keyword1">NULL</span></span>, <span>boolean <var>$getOld</var> = <span class="php-keyword1">FALSE</span> </span> )</code>
 
 		<div class="description short">
 			
@@ -702,7 +706,7 @@ managed with the following parameters:</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#_Term">#</a>
-		<code><a href="source-class-CTerm.html#368-405" title="Go to source code">Term</a>( <span>mixed <var>$theValue</var> = <span class="php-keyword1">NULL</span></span>, <span>boolean <var>$getOld</var> = <span class="php-keyword1">FALSE</span> </span> )</code>
+		<code><a href="source-class-CTerm.html#371-408" title="Go to source code">Term</a>( <span>mixed <var>$theValue</var> = <span class="php-keyword1">NULL</span></span>, <span>boolean <var>$getOld</var> = <span class="php-keyword1">FALSE</span> </span> )</code>
 
 		<div class="description short">
 			
@@ -767,6 +771,115 @@ the currently set value.</p>
 		</div>
 		</div></td>
 	</tr>
+	<tr data-order="Kind" id="_Kind">
+
+		<td class="attributes"><code>
+			 public 
+			mixed
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_Kind">#</a>
+		<code><a href="source-class-CTerm.html#415-477" title="Go to source code">Kind</a>( <span>mixed <var>$theValue</var> = <span class="php-keyword1">NULL</span></span>, <span>mixed <var>$theOperation</var> = <span class="php-keyword1">NULL</span></span>, <span>boolean <var>$getOld</var> = <span class="php-keyword1">FALSE</span> </span> )</code>
+
+		<div class="description short">
+			
+<h4>Manage term kind set</h4>
+
+		</div>
+
+		<div class="description detailed hidden">
+			
+<h4>Manage term kind set</h4>
+
+<p>The term kind set, kTAG_KIND, holds a list of unique values that
+represent the different kinds or types associated with the current term, this
+kind refers to a qualification specific to the current class of objects.</p>
+
+<p>This offset collects the list of these qualifications in an enumerated set
+that can be managed with the following parameters:</p>
+
+<ul>
+	<li><tt>$theValue</tt>: Depending on the next parameter, this may either refer
+	to the value to be set or to the index of the element to be retrieved or
+	deleted:
+		<ul>
+			<li><tt>NULL</tt>: This value indicates that we want to operate on all elements,
+			which means, in practical terms, that we either want to retrieve or delete the
+			full list. If the operation parameter resolves to <tt>TRUE</tt>, the method will
+			default to retrieving the current list and no new element will be added.</li>
+
+			<li><tt>array</tt>: An array indicates that we want to operate on a list of
+			values and that other parameters may also be provided as lists. Note that <code><a href="class-ArrayObject.html">ArrayObject</a></code> instances are not considered here as arrays.</li>
+
+			<li><i>other</i>: Any other type represents either the new value to be added or
+			the index to the value to be returned or deleted.</li>
+		</ul>
+	</li>
+
+	<li><tt>$theOperation</tt>: This parameter represents the operation to be
+	performed whose scope depends on the value of the previous parameter:
+		<ul>
+			<li><tt>NULL</tt>: Return the element or full list.</li>
+
+			<li><tt>FALSE</tt>: Delete the element or full list.</li>
+
+			<li><tt>array</tt>: This type is only considered if the <tt>$theValue</tt>
+			parameter is provided as an array: the method will be called for each element of
+			the <tt>$theValue</tt> parameter matched with the corresponding element of this
+			parameter, which also means that both both parameters must share the same
+			count.</li>
+
+			<li><i>other</i>: Add the <tt>$theValue</tt> value to the list. If you provided
+			<tt>NULL</tt> in the previous parameter, the operation will be reset to
+			<tt>NULL</tt>.</li>
+		</ul>
+	</li>
+
+	<li><tt>$getOld</tt>: Determines what the method will return:
+		<ul>
+			<li><tt>TRUE</tt>: Return the value <i>before</i> it was eventually
+			modified.</li>
+
+			<li><tt>FALSE</tt>: Return the value <i>after</i> it was eventually
+			modified.</li>
+		</ul>
+	</li>
+</ul>
+
+
+
+				<h4>Parameters</h4>
+				<div class="list"><dl>
+					<dt><var>$theValue</var></dt>
+					<dd><code>mixed</code><br>$theValue Value or index.</dd>
+					<dt><var>$theOperation</var></dt>
+					<dd><code>mixed</code><br>$theOperation Operation.</dd>
+					<dt><var>$getOld</var></dt>
+					<dd><code>boolean</code><br>$getOld TRUE get old value.</dd>
+				</dl></div>
+
+				<h4>Returns</h4>
+				<div class="list">
+					<code>mixed</code><br><i>New</i> or <i>old</i> kind.<br />
+				</div>
+
+
+				<h4>See</h4>
+				<div class="list">
+						kTAG_KIND<br />
+				</div>
+				<h4>Uses</h4>
+				<div class="list">
+						<code><code><a href="function-ManageObjectSetOffset.html">ManageObjectSetOffset()</a></code></code> <br />
+				</div>
+
+
+		</div>
+		</div></td>
+	</tr>
 	<tr data-order="TermCode" id="_TermCode">
 
 		<td class="attributes"><code>
@@ -778,7 +891,7 @@ the currently set value.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#_TermCode">#</a>
-		<code><a href="source-class-CTerm.html#421-447" title="Go to source code">TermCode</a>( <span>string <var>$theIdentifier</var></span>, <span>string <var>$theNamespace</var> = <span class="php-keyword1">NULL</span> </span> )</code>
+		<code><a href="source-class-CTerm.html#493-519" title="Go to source code">TermCode</a>( <span>string <var>$theIdentifier</var></span>, <span>string <var>$theNamespace</var> = <span class="php-keyword1">NULL</span> </span> )</code>
 
 		<div class="description short">
 			
@@ -830,7 +943,7 @@ the method will generate the term's global identifier.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#__index">#</a>
-		<code><a href="source-class-CTerm.html#463-498" title="Go to source code">_index</a>( <span><code><a href="class-CConnection.html">CConnection</a></code> <var>$theConnection</var></span>, <span>bitfield <var>$theModifiers</var></span> )</code>
+		<code><a href="source-class-CTerm.html#535-570" title="Go to source code">_index</a>( <span><code><a href="class-CConnection.html">CConnection</a></code> <var>$theConnection</var></span>, <span>bitfield <var>$theModifiers</var></span> )</code>
 
 		<div class="description short">
 			
@@ -889,7 +1002,7 @@ compute the global identifier.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#__Preset">#</a>
-		<code><a href="source-class-CTerm.html#514-565" title="Go to source code">_Preset</a>( <span>reference <var>&amp; $theOffset</var></span>, <span>reference <var>&amp; $theValue</var></span> )</code>
+		<code><a href="source-class-CTerm.html#586-637" title="Go to source code">_Preset</a>( <span>reference <var>&amp; $theOffset</var></span>, <span>reference <var>&amp; $theValue</var></span> )</code>
 
 		<div class="description short">
 			
@@ -950,7 +1063,7 @@ committed, <code><a href="class-CStatusDocument.html#__IsCommitted">CStatusDocum
 
 		<td class="name"><div>
 		<a class="anchor" href="#__Preunset">#</a>
-		<code><a href="source-class-CTerm.html#572-610" title="Go to source code">_Preunset</a>( <span>reference <var>&amp; $theOffset</var></span> )</code>
+		<code><a href="source-class-CTerm.html#644-682" title="Go to source code">_Preunset</a>( <span>reference <var>&amp; $theOffset</var></span> )</code>
 
 		<div class="description short">
 			
@@ -1009,7 +1122,7 @@ committed, <code><a href="class-CStatusDocument.html#__IsCommitted">CStatusDocum
 
 		<td class="name"><div>
 		<a class="anchor" href="#__Ready">#</a>
-		<code><a href="source-class-CTerm.html#626-649" title="Go to source code">_Ready</a>( )</code>
+		<code><a href="source-class-CTerm.html#698-721" title="Go to source code">_Ready</a>( )</code>
 
 		<div class="description short">
 			

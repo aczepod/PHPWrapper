@@ -55,13 +55,17 @@
  *	<li><i>Description attributes</i>: These attributes are used to describe objects:
  *	 <ul>
  *		<li><tt>{@link kTERM_LABEL}</tt>: <i>Label</i>. This attribute represents the label,
- *			name or short description of the referenced object. It is a
+ *			name or short description of the referenced object. It is an
  *			{@link kTYPE_LSTRING} structure in which the label can be expressed in several
- *			languages. 
+ *			languages.
+ *		<li><tt>{@link kTERM_DEFINITION}</tt>: <i>Definition</i>. This attribute
+ *			represents the definition of the referenced object. It is an
+ *			{@link kTYPE_LSTRING} structure in which the definition can be expressed in
+ *			several languages. A definition is independent of the context.
  *		<li><tt>{@link kTERM_DESCRIPTION}</tt>: <i>Description</i>. This attribute
- *			represents the description or definition of the referenced object. It is a
+ *			represents the description of the referenced object. It is an
  *			{@link kTYPE_LSTRING} structure in which the description can be expressed in
- *			several languages. 
+ *			several languages. A description depends on the context.
  *		<li><tt>{@link kTERM_NOTES}</tt>: <i>Notes</i>. This attribute represents the notes
  *			or comments of the referenced object. It is a {@link kTYPE_LSTRING} structure in
  *			which the description can be expressed in several languages. 
@@ -71,7 +75,7 @@
  *	 </ul>
  *	<li><i>Status attributes</i>: These attributes are used to describe a status:
  *	 <ul>
- *		<li><tt>{@link kTERM_SEVERITY}</tt>: <i>Severity</i>. This attribute represents the
+ *		<li><tt>{@link kTERM_STATUS}</tt>: <i>Severity</i>. This attribute represents the
  *			severity or status level, it is an element of the following enumerated set:
  *		 <ul>
  *			<li><tt>{@link kSTATUS_IDLE}</tt>: This code indicates no errors, this state can
@@ -100,10 +104,10 @@
  *				necessarily mean that it is fatal, but rather that the behaviour of an
  *				operation does not correspond to its declaration.
  *		 </ul>
- *		<li><tt>{@link kTERM_CODE}</tt>: <i>Code</i>. This attribute represents the status
+ *		<li><tt>{@link kTERM_STATUS_CODE}</tt>: <i>Code</i>. This attribute represents the status
  *			code, it is a string or number that identifies the specific status or state.
- *		<li><tt>{@link kTERM_MESSAGE}</tt>: <i>Message</i>. This attribute represents the
- *			status message, it is a string that describes the status. It is a
+ *		<li><tt>{@link kTERM_STATUS_MESSAGE}</tt>: <i>Message</i>. This attribute represents
+ *			the status message, it is a string that describes the status. It is a
  *			{@link kTYPE_LSTRING} structure in which the message can be expressed in several
  *			languages.
  *	 </ul>
@@ -307,13 +311,26 @@ define( "kTERM_NAMESPACE",						':NAMESPACE' );
 define( "kTERM_LABEL",							':LABEL' );
 
 /**
+ * DEFINITION.
+ *
+ * Definition.
+ *
+ * This attribute represents the definition of the referenced object. It is an
+ * {@link kTYPE_LSTRING} structure in which the definition can be expressed in several
+ + languages. A definition is independent of the context.
+ *
+ * Version 1: (kTERM_DEFINITION)[:DEFINITION]
+ */
+define( "kTERM_DEFINITION",						':DEFINITION' );
+
+/**
  * DESCRIPTION.
  *
  * Description.
  *
- * This attribute represents the description or definition of the referenced object.
- * It is a {@link kTYPE_LSTRING} structure in which the description can be expressed in
- * several languages.
+ * This attribute represents the description of the referenced object. It is an
+ * {@link kTYPE_LSTRING} structure in which the description can be expressed in several
+ * languages. A description depends on the context.
  *
  * Version 1: (kOFFSET_DESCRIPTION)[:DESCR]
  */
@@ -349,9 +366,9 @@ define( "kTERM_EXAMPLES",						':EXAMPLES' );
  *======================================================================================*/
 
 /**
- * SEVERITY.
+ * STATUS.
  *
- * Severity.
+ * Status.
  *
  * This attribute represents the severity or status level, it is an element of the following
  * enumerated set:
@@ -386,32 +403,34 @@ define( "kTERM_EXAMPLES",						':EXAMPLES' );
  *
  * Version 1: (kOFFSET_SEVERITY)[:SEVERITY]
  */
-define( "kTERM_SEVERITY",						':SEVERITY' );
+define( "kTERM_STATUS",							':STATUS' );
 
 /**
- * CODE.
+ * STATUS-CODE.
  *
- * Code.
+ * Status code.
  *
  * This attribute represents the status code, it is a string or number that identifies the
  * specific status or state.
  *
  * Version 1: (kOFFSET_CODE)[:CODE]
+ * Version 2: (kTERM_CODE)[:CODE]
  */
-define( "kTERM_CODE",							':CODE' );
+define( "kTERM_STATUS_CODE",					':STATUS-CODE' );
 
 /**
- * MESSAGE.
+ * STATUS-MESSAGE.
  *
- * Message.
+ * Status message.
  *
  * This attribute represents the status message, it is a string that describes the status.
  * It is a {@link kTYPE_LSTRING} structure in which the message can be expressed in
  * several languages.
  *
  * Version 1: (kOFFSET_MESSAGE)[:MESSAGE]
+ * Version 2: (kTERM_MESSAGE)[:MESSAGE]
  */
-define( "kTERM_MESSAGE",						':MESSAGE' );
+define( "kTERM_STATUS_MESSAGE",					':STATUS-MESSAGE' );
 
 /*=======================================================================================
  *	AUTHORSHIP ATTRIBUTES																*

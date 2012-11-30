@@ -52,6 +52,11 @@ require_once( kPATH_MYWRAPPER_LIBRARY_CLASS."/CPersistentObject.php" );
  *		the current node. This attribute will be in general a combination of elements
  *		describing two main attribute categories: the data type and the cardinality. This
  *		attribute is optional.
+ *	<li><i>Description</i>: The description, <tt>{@link Description()}</tt> or the
+ *		<tt>{@link kTAG_DESCRIPTION}</tt> tag, represents the description or long label
+ *		of the node. This attribute is constituted by an array of elements in which the
+ *		value of the element represents the description string and the element key is the
+ *		language code in which the description is expressed in. This attribute is optional.
  * </ul>
  *
  * The node's main property is the term, {@link kTAG_TERM}, which defines the abstract
@@ -392,6 +397,59 @@ class CNode extends CPersistentObject
 	} // Type.
 
 	 
+	/*===================================================================================
+	 *	Description																		*
+	 *==================================================================================*/
+
+	/**
+	 * <h4>Manage node description</h4>
+	 *
+	 * The node <i>description</i>, {@link kTAG_DESCRIPTION}, represents the node's
+	 * long label or extended definition. It is an optional attribute of the object that
+	 * holds an array of elements in which the index is represented by the language code and
+	 * the value is the string.
+	 *
+	 * No two elements may share the same language code.
+	 *
+	 * The description depends on the context in which the object is, as opposed as the
+	 * definition which does not depend on the context.
+	 *
+	 * The method accepts the following parameters:
+	 *
+	 * <ul>
+	 *	<li><tt>$theLanguage</tt>: Language code.
+	 *	<li><tt>$theValue</tt>: The description string or the operation, depending on its
+	 *		value:
+	 *	 <ul>
+	 *		<li><tt>NULL</tt>: Return the string corresponding to the provided language.
+	 *		<li><tt>FALSE</tt>: Delete the element corresponding to the provided language.
+	 *		<li><i>other</i>: Any other value represents the description string that will be
+	 *			set or replace the entry for the provided language.
+	 *	 </ul>
+	 *	<li><tt>$getOld</tt>: If <tt>TRUE</tt>, the method will return the description
+	 *		string <i>before</i> it was eventually modified; if <tt>FALSE</tt>, the method
+	 *		will return the value <i>after</i> eventual modifications.
+	 * </ul>
+	 *
+	 * @param mixed					$theLanguage		Language code.
+	 * @param mixed					$theValue			Description or operation.
+	 * @param boolean				$getOld				<tt>TRUE</tt> get old value.
+	 *
+	 * @access public
+	 * @return mixed				<i>New</i> or <i>old</i> description.
+	 *
+	 * @uses ManageIndexedOffset()
+	 *
+	 * @see kTAG_DESCRIPTION
+	 */
+	public function Description( $theLanguage = NULL, $theValue = NULL, $getOld = FALSE )
+	{
+		return ManageIndexedOffset
+				( $this, kTAG_DESCRIPTION, $theLanguage, $theValue, $getOld );		// ==>
+
+	} // Description.
+
+	 
 
 /*=======================================================================================
  *																						*
@@ -510,6 +568,18 @@ class CNode extends CPersistentObject
 			throw new Exception
 				( "Invalid type for the [$theOffset] offset: "
 				 ."it must be an array",
+				  kERROR_PARAMETER );											// !@! ==>
+		
+		//
+		// Check description type.
+		//
+		$offsets = array( kTAG_DESCRIPTION );
+		if( in_array( $theOffset, $offsets )
+		 && ($theValue !== NULL)
+		 && (! is_array( $theValue )) )
+			throw new Exception
+				( "You cannot set the [$theOffset] offset: "
+				 ."invalid value, expecting an array",
 				  kERROR_PARAMETER );											// !@! ==>
 		
 		//

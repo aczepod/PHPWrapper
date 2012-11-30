@@ -42,10 +42,12 @@
  *			name or short description of the referenced object. It is a
  *			{@link kTYPE_LSTRING} structure in which the label can be expressed in several
  *			languages. 
- *		<li><tt>{@link kTAG_DESCRIPTION}</tt>: <i>Description</i>. This attribute
- *			represents the description or definition of the referenced object. It is a
- *			{@link kTYPE_LSTRING} structure in which the description can be expressed in
- *			several languages. 
+ *		<li><tt>{@link kTAG_DEFINITION}</tt>: <i>Definition</i>. This attribute represents
+ *			the definition of the referenced object. It is an {@link kTYPE_LSTRING}
+ *			structure in which the definition can be expressed in several languages. This
+ *			attribute is similar to a description, except that the latter depends on the
+ *			context, which is why it belongs to nodes, while the definition does not
+ *			depend on the context, which is why it belongs to terms.
  *		<li><tt>{@link kTAG_NODES}</tt>: <i>Nodes</i>. This attribute is a collection of
  *			node references, it is an array of node object native identifiers who reference
  *			the current object.
@@ -80,6 +82,12 @@
  *		<li><tt>{@link kTAG_TYPE}</tt>: <i>Type</i>. This attribute is an enumerated set
  *			that contains a combination of data type and cardinality indicators which,
  *			combined, represet the data type of the hosting object.
+ *		<li><tt>{@link kTAG_DESCRIPTION}</tt>: <i>Description</i>. This attribute represents
+ *			the description of the referenced object. It is an {@link kTYPE_LSTRING}
+ *			structure in which the description can be expressed in several languages. This
+ *			attribute is similar to a definition, except that the latter does not depend on
+ *			the context, which is why it belongs to nodes, while the description depends on
+ *			the context, which is why it belongs to nodes.
  *		<li><tt>{@link kTAG_NODES}</tt>: <i>Nodes</i>. This attribute is a collection of
  *			node references, it is an array of node object native identifiers who reference
  *			the current object.
@@ -516,7 +524,7 @@ class COntology extends CConnection
 	//	$container->AddIndex( array( kTAG_TERM => 1 ), array( 'sparse' => TRUE ) );
 		$container->AddIndex( array( kTAG_KIND => 1 ), array( 'sparse' => TRUE ) );
 		$container->AddIndex( array( kTAG_LABEL => 1 ), array( 'sparse' => TRUE ) );
-	//	$container->AddIndex( array( kTAG_DESCRIPTION => 1 ), array( 'sparse' => TRUE ) );
+	//	$container->AddIndex( array( kTAG_DEFINITION => 1 ), array( 'sparse' => TRUE ) );
 		$container->AddIndex( array( kTAG_NODES => 1 ), array( 'sparse' => TRUE ) );
 		$container->AddIndex( array( kTAG_FEATURES => 1 ), array( 'sparse' => TRUE ) );
 	//	$container->AddIndex( array( kTAG_METHODS => 1 ), array( 'sparse' => TRUE ) );
@@ -541,6 +549,7 @@ class COntology extends CConnection
 		$container->AddIndex( array( kTAG_CATEGORY => 1 ), array( 'sparse' => TRUE ) );
 		$container->AddIndex( array( kTAG_KIND => 1 ), array( 'sparse' => TRUE ) );
 		$container->AddIndex( array( kTAG_TYPE => 1 ), array( 'sparse' => TRUE ) );
+	//	$container->AddIndex( array( kTAG_DESCRIPTION => 1 ), array( 'sparse' => TRUE ) );
 	//	$container->AddIndex( array( kTAG_EDGES => 1 ), array( 'sparse' => TRUE ) );
 	//	$container->AddIndex( array( kTAG_NODES => 1 ), array( 'sparse' => TRUE ) );
 		
@@ -899,7 +908,7 @@ class COntology extends CConnection
 				   kTERM_NAMESPACE => $ns,
 				   kTERM_LABEL => "Bibliography",
 				   kTERM_DESCRIPTION => "List of bibliographic references." ),
-			array( kTERM_LID => substr( kTERM_MESSAGE, 1 ),
+			array( kTERM_LID => substr( kTERM_STATUS_MESSAGE, 1 ),
 				   kTERM_NAMESPACE => $ns,
 				   kTERM_LABEL => "Message",
 				   kTERM_DESCRIPTION => "Generic message." ),
@@ -911,11 +920,11 @@ class COntology extends CConnection
 				   kTERM_NAMESPACE => $ns,
 				   kTERM_LABEL => "Examples",
 				   kTERM_DESCRIPTION => "List of examples or templates." ),
-			array( kTERM_LID => substr( kTERM_SEVERITY, 1 ),
+			array( kTERM_LID => substr( kTERM_STATUS, 1 ),
 				   kTERM_NAMESPACE => $ns,
 				   kTERM_LABEL => "Severity",
 				   kTERM_DESCRIPTION => "Code that characterises the importance or severity of a status." ),
-			array( kTERM_LID => substr( kTERM_CODE, 1 ),
+			array( kTERM_LID => substr( kTERM_STATUS_CODE, 1 ),
 				   kTERM_NAMESPACE => $ns,
 				   kTERM_LABEL => "Code",
 				   kTERM_DESCRIPTION => "Generic code." ),

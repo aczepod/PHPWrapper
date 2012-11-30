@@ -38,7 +38,7 @@ require_once( kPATH_MYWRAPPER_LIBRARY_CLASS."/COntologyMasterNode.php" );
  * attributes it will be the node attribute that will overwrite the term attribute.
  *
  * We use the following term attributes: {@link kTAG_LID}, {@link kTAG_GID},
- * {@link kTAG_LABEL}, {@link kTAG_DESCRIPTION}, {@link kTAG_FEATURES} and
+ * {@link kTAG_LABEL}, {@link kTAG_DEFINITION}, {@link kTAG_FEATURES} and
  * {@link kTAG_SCALES}. Compared to the {@link COntologyVertex} class, the two added
  * attributes allow referring to tags from the term, since the term is discriminating in
  * this class.
@@ -101,7 +101,7 @@ class COntologyMasterVertex extends COntologyMasterNode
 		if( ! ($theModifiers & kFLAG_PERSIST_DELETE) )
 			$this->_LoadTermAttributes(
 				array( kTAG_LID, kTAG_GID, kTAG_KIND,
-					   kTAG_LABEL, kTAG_DESCRIPTION,
+					   kTAG_LABEL, kTAG_DEFINITION,
 					   kTAG_FEATURES, kTAG_SCALES ) );
 		
 		return NULL;																// ==>

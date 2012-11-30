@@ -6,7 +6,7 @@
 
 	<title>Class CWrapper | MyWrapper Reference Documentation</title>
 
-	<script type="text/javascript" src="resources/combined.js?3680114562"></script>
+	<script type="text/javascript" src="resources/combined.js?1742645618"></script>
 	<script type="text/javascript" src="elementlist.js?2861350629"></script>
 	<link rel="stylesheet" type="text/css" media="all" href="resources/style.css?3505392360" />
 
@@ -151,7 +151,7 @@ constituted by the following three sections:</p>
 	returned by default and will inform on the status of the requested operation. It
 	consists of an array containing the following elements:
 		<ul>
-			<li><i>kTERM_SEVERITY</i>: <i>Response status</i>. This element will be
+			<li><i>kTERM_STATUS</i>: <i>Response status</i>. This element will be
 			returned by default regardless of the operation outcome. This corresponds to the
 			severity of the response and it can take the following values:
 				<ul>
@@ -178,15 +178,15 @@ constituted by the following three sections:</p>
 				</ul>
 			</li>
 
-			<li><i>kTERM_CODE</i>: <i>Status code</i>. This element will be returned
-			by default regardless of the operation outcome. It corresponds to the error
-			code; kERROR_OK means no error.</li>
+			<li><i>kTERM_STATUS_CODE</i>: <i>Status code</i>. This element will be
+			returned by default regardless of the operation outcome. It corresponds to the
+			error code; kERROR_OK means no error.</li>
 
-			<li><i>kTERM_MESSAGE</i>: <i>Status message</i>. The response message
-			from the operation, this element is used to return informative messages or to
-			return error messages when the service fails. It will generally be formatted as
-			an array in which the index represents the language code in which the message,
-			stored in the element data, is expressed in.</li>
+			<li><i>kTERM_STATUS_MESSAGE</i>: <i>Status message</i>. The response
+			message from the operation, this element is used to return informative messages
+			or to return error messages when the service fails. It will generally be
+			formatted as an array in which the index represents the language code in which
+			the message, stored in the element data, is expressed in.</li>
 
 			<li><i>kAPI_AFFECTED_COUNT</i>: <i>Record count</i>. The total number of
 			elements affected by the operation. This tag will only be used by derived
@@ -536,7 +536,7 @@ derived classes may overload this method if they need to handle other
 states.</p>
 
 <p>In this class we set the status to kSTATUS_IDLE and reset the status
-kTERM_CODE.</p>
+kTERM_STATUS_CODE.</p>
 
 
 
@@ -1264,13 +1264,13 @@ exception:</p>
 
 <ul>
 	<li><i><code><a href="class-CException.html#_Severity">CException::Severity()</a></code></i>: This value will be set as the status
-	kTERM_SEVERITY.</li>
+	kTERM_STATUS.</li>
 
 	<li><i><code><a href="class-Exception.html#_getCode">Exception::getCode()</a></code></i>: This value will be set as the status
-	kTERM_CODE.</li>
+	kTERM_STATUS_CODE.</li>
 
 	<li><i><code><a href="class-Exception.html#_getMessage">Exception::getMessage()</a></code></i>: This value will be set in the status
-	kTERM_MESSAGE field as a language block.</li>
+	kTERM_STATUS_MESSAGE field as a language block.</li>
 
 	<li><i><code><a href="class-Exception.html#_getFile">Exception::getFile()</a></code></i>: This value will be set in the status
 	kTERM_NOTES.</li>

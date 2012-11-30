@@ -23,6 +23,8 @@
  *	<li><tt>{@link kKIND_TERM_PREDICATE}</tt>: Predicate. This kind of term represents a
  *		predicate, or element which connects subject and object vertices into a
  *		relationship.
+ *	<li><tt>{@link kKIND_TERM_ENUMERATION}</tt>: Enumeration. This kind of term represents
+ *		an enumeration, or an element of a controlled vocabulary.
  *	<li><tt>{@link kKIND_TERM_SYMMETRIC}</tt>: Symmetric predicate. This kind of term
  *		represents a predicate which relates two terms in both directions. By default,
  *		relationships are directional, that is they originate from the subject towards the
@@ -64,6 +66,17 @@ define( "kKIND_TERM_NAMESPACE",					':TERM-KIND-NAMESPACE' );
  * Version 1: (kKIND_TERM_PREDICATE)[:TERM-KIND-PREDICATE]
  */
 define( "kKIND_TERM_PREDICATE",					':TERM-KIND-PREDICATE' );
+
+/**
+ * Enumeration term.
+ *
+ * Enumeration.
+ *
+ * This kind of term represents an enumeration, or an element of a controlled vocabulary.
+ *
+ * Version 1: (kKIND_TERM_ENUMERATION)[:TERM-KIND-ENUMERATION]
+ */
+define( "kKIND_TERM_ENUMERATION",				':TERM-KIND-ENUMERATION' );
 
 /**
  * Symmetric predicate term.

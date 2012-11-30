@@ -6,7 +6,7 @@
 
 	<title>Class COntologyNode | MyWrapper Reference Documentation</title>
 
-	<script type="text/javascript" src="resources/combined.js?3680114562"></script>
+	<script type="text/javascript" src="resources/combined.js?1742645618"></script>
 	<script type="text/javascript" src="elementlist.js?2861350629"></script>
 	<link rel="stylesheet" type="text/css" media="all" href="resources/style.css?3505392360" />
 
@@ -259,7 +259,7 @@ have to commit terms.</p>
 				<b>Author:</b>
 				Milko A. Škofič &lt;<a
 href="mailto:m.skofic&#64;cgiar.org">m.skofic&#64;<!---->cgiar.org</a>&gt;<br />
-		<b>Located at</b> <a href="source-class-COntologyNode.html#50-1655" title="Go to source code">COntologyNode.php</a><br />
+		<b>Located at</b> <a href="source-class-COntologyNode.html#50-1659" title="Go to source code">COntologyNode.php</a><br />
 	</div>
 
 
@@ -321,7 +321,7 @@ the unique identifier of the object.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#_Type">#</a>
-		<code><a href="source-class-COntologyNode.html#182-340" title="Go to source code">Type</a>( <span>mixed <var>$theValue</var> = <span class="php-keyword1">NULL</span></span>, <span>mixed <var>$theOperation</var> = <span class="php-keyword1">NULL</span></span>, <span>boolean <var>$getOld</var> = <span class="php-keyword1">FALSE</span> </span> )</code>
+		<code><a href="source-class-COntologyNode.html#182-344" title="Go to source code">Type</a>( <span>mixed <var>$theValue</var> = <span class="php-keyword1">NULL</span></span>, <span>mixed <var>$theOperation</var> = <span class="php-keyword1">NULL</span></span>, <span>boolean <var>$getOld</var> = <span class="php-keyword1">FALSE</span> </span> )</code>
 
 		<div class="description short">
 			
@@ -378,6 +378,10 @@ that can be set in the offset. The offset accepts two types of elements:</p>
 			node is required and cannot be omitted; if this tag is missing, it means that
 			the element is optional.</li>
 
+			<li><i>kTYPE_RESTRICTED</i>: Restricted, the element referred by the
+			current node is restricted to an enumerated set; if this tag is missing, it
+			means that the element may take values not belonging to the enumerated set.</li>
+
 			<li><i>kTYPE_ARRAY</i>: Array, the element referred by the current node
 			is a list in which each element is of the data type indicated by the previous
 			set; if this tag is missing, it means that the element is a scalar.</li>
@@ -421,7 +425,7 @@ that can be set in the offset. The offset accepts two types of elements:</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#_EdgeRefs">#</a>
-		<code><a href="source-class-COntologyNode.html#347-370" title="Go to source code">EdgeRefs</a>( )</code>
+		<code><a href="source-class-COntologyNode.html#351-374" title="Go to source code">EdgeRefs</a>( )</code>
 
 		<div class="description short">
 			
@@ -467,7 +471,7 @@ of edges that reference the node.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#_LoadTerm">#</a>
-		<code><a href="source-class-COntologyNode.html#386-456" title="Go to source code">LoadTerm</a>( <span><code><a href="class-CConnection.html">CConnection</a></code> <var>$theConnection</var></span>, <span>boolean <var>$doReload</var> = <span class="php-keyword1">FALSE</span> </span> )</code>
+		<code><a href="source-class-COntologyNode.html#390-460" title="Go to source code">LoadTerm</a>( <span><code><a href="class-CConnection.html">CConnection</a></code> <var>$theConnection</var></span>, <span>boolean <var>$doReload</var> = <span class="php-keyword1">FALSE</span> </span> )</code>
 
 		<div class="description short">
 			
@@ -538,7 +542,7 @@ the object is to be read, or if the cached copy can be used.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#_GetGraphNode">#</a>
-		<code><a href="source-class-COntologyNode.html#472-516" title="Go to source code">GetGraphNode</a>( <span><code><a href="class-CConnection.html">CConnection</a></code> <var>$theConnection</var></span>, <span>integer <var>$theIdentifier</var> = <span class="php-keyword1">NULL</span> </span> )</code>
+		<code><a href="source-class-COntologyNode.html#476-520" title="Go to source code">GetGraphNode</a>( <span><code><a href="class-CConnection.html">CConnection</a></code> <var>$theConnection</var></span>, <span>integer <var>$theIdentifier</var> = <span class="php-keyword1">NULL</span> </span> )</code>
 
 		<div class="description short">
 			
@@ -589,7 +593,7 @@ the current object graph node.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#_GetGraphNodeProperties">#</a>
-		<code><a href="source-class-COntologyNode.html#523-554" title="Go to source code">GetGraphNodeProperties</a>( <span><code><a href="class-CConnection.html">CConnection</a></code> <var>$theConnection</var></span>, <span>integer <var>$theIdentifier</var> = <span class="php-keyword1">NULL</span> </span> )</code>
+		<code><a href="source-class-COntologyNode.html#527-558" title="Go to source code">GetGraphNodeProperties</a>( <span><code><a href="class-CConnection.html">CConnection</a></code> <var>$theConnection</var></span>, <span>integer <var>$theIdentifier</var> = <span class="php-keyword1">NULL</span> </span> )</code>
 
 		<div class="description short">
 			
@@ -641,7 +645,7 @@ the current object graph node properties.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#_Update">#</a>
-		<code><a href="source-class-COntologyNode.html#570-600" title="Go to source code">Update</a>( <span><code><a href="class-CConnection.html">CConnection</a></code> <var>$theConnection</var></span> )</code>
+		<code><a href="source-class-COntologyNode.html#574-604" title="Go to source code">Update</a>( <span><code><a href="class-CConnection.html">CConnection</a></code> <var>$theConnection</var></span> )</code>
 
 		<div class="description short">
 			
@@ -689,7 +693,7 @@ modification interface provided by container objects.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#_Replace">#</a>
-		<code><a href="source-class-COntologyNode.html#607-647" title="Go to source code">Replace</a>( <span><code><a href="class-CConnection.html">CConnection</a></code> <var>$theConnection</var></span> )</code>
+		<code><a href="source-class-COntologyNode.html#611-651" title="Go to source code">Replace</a>( <span><code><a href="class-CConnection.html">CConnection</a></code> <var>$theConnection</var></span> )</code>
 
 		<div class="description short">
 			
@@ -740,7 +744,7 @@ non committed object.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#_DefaultContainer">#</a>
-		<code><a href="source-class-COntologyNode.html#663-680" title="Go to source code">DefaultContainer</a>( <span><code><a href="class-CDatabase.html">CDatabase</a></code> <var>$theDatabase</var></span> )</code>
+		<code><a href="source-class-COntologyNode.html#667-684" title="Go to source code">DefaultContainer</a>( <span><code><a href="class-CDatabase.html">CDatabase</a></code> <var>$theDatabase</var></span> )</code>
 
 		<div class="description short">
 			
@@ -791,7 +795,7 @@ kCONTAINER_NODE_NAME name.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#_Resolve">#</a>
-		<code><a href="source-class-COntologyNode.html#696-838" title="Go to source code">Resolve</a>( <span><code><a href="class-CConnection.html">CConnection</a></code> <var>$theConnection</var></span>, <span>mixed <var>$theIdentifier</var></span>, <span>boolean <var>$doThrow</var> = <span class="php-keyword1">FALSE</span> </span> )</code>
+		<code><a href="source-class-COntologyNode.html#700-842" title="Go to source code">Resolve</a>( <span><code><a href="class-CConnection.html">CConnection</a></code> <var>$theConnection</var></span>, <span>mixed <var>$theIdentifier</var></span>, <span>boolean <var>$doThrow</var> = <span class="php-keyword1">FALSE</span> </span> )</code>
 
 		<div class="description short">
 			
@@ -881,7 +885,7 @@ parameter, or you will get unexpected results.</b></p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#__Preset">#</a>
-		<code><a href="source-class-COntologyNode.html#854-954" title="Go to source code">_Preset</a>( <span>reference <var>&amp; $theOffset</var></span>, <span>reference <var>&amp; $theValue</var></span> )</code>
+		<code><a href="source-class-COntologyNode.html#858-958" title="Go to source code">_Preset</a>( <span>reference <var>&amp; $theOffset</var></span>, <span>reference <var>&amp; $theValue</var></span> )</code>
 
 		<div class="description short">
 			
@@ -944,7 +948,7 @@ offsets from any modification.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#__Preunset">#</a>
-		<code><a href="source-class-COntologyNode.html#961-1004" title="Go to source code">_Preunset</a>( <span>reference <var>&amp; $theOffset</var></span> )</code>
+		<code><a href="source-class-COntologyNode.html#965-1008" title="Go to source code">_Preunset</a>( <span>reference <var>&amp; $theOffset</var></span> )</code>
 
 		<div class="description short">
 			
@@ -1000,7 +1004,7 @@ offsets in all cases.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#__PrecommitRelated">#</a>
-		<code><a href="source-class-COntologyNode.html#1020-1088" title="Go to source code">_PrecommitRelated</a>( <span>reference <var>&amp; $theConnection</var></span>, <span>reference <var>&amp; $theModifiers</var></span> )</code>
+		<code><a href="source-class-COntologyNode.html#1024-1092" title="Go to source code">_PrecommitRelated</a>( <span>reference <var>&amp; $theConnection</var></span>, <span>reference <var>&amp; $theModifiers</var></span> )</code>
 
 		<div class="description short">
 			
@@ -1058,7 +1062,7 @@ provided as an identifier.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#__PrecommitIdentify">#</a>
-		<code><a href="source-class-COntologyNode.html#1095-1198" title="Go to source code">_PrecommitIdentify</a>( <span>reference <var>&amp; $theConnection</var></span>, <span>reference <var>&amp; $theModifiers</var></span> )</code>
+		<code><a href="source-class-COntologyNode.html#1099-1202" title="Go to source code">_PrecommitIdentify</a>( <span>reference <var>&amp; $theConnection</var></span>, <span>reference <var>&amp; $theModifiers</var></span> )</code>
 
 		<div class="description short">
 			
@@ -1134,7 +1138,7 @@ will have been set here.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#__PostcommitRelated">#</a>
-		<code><a href="source-class-COntologyNode.html#1214-1258" title="Go to source code">_PostcommitRelated</a>( <span>reference <var>&amp; $theConnection</var></span>, <span>reference <var>&amp; $theModifiers</var></span> )</code>
+		<code><a href="source-class-COntologyNode.html#1218-1262" title="Go to source code">_PostcommitRelated</a>( <span>reference <var>&amp; $theConnection</var></span>, <span>reference <var>&amp; $theModifiers</var></span> )</code>
 
 		<div class="description short">
 			
@@ -1189,7 +1193,7 @@ the element when deleting.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#__PostcommitCleanup">#</a>
-		<code><a href="source-class-COntologyNode.html#1265-1289" title="Go to source code">_PostcommitCleanup</a>( <span>reference <var>&amp; $theConnection</var></span>, <span>reference <var>&amp; $theModifiers</var></span> )</code>
+		<code><a href="source-class-COntologyNode.html#1269-1293" title="Go to source code">_PostcommitCleanup</a>( <span>reference <var>&amp; $theConnection</var></span>, <span>reference <var>&amp; $theModifiers</var></span> )</code>
 
 		<div class="description short">
 			
@@ -1235,7 +1239,7 @@ have to be refreshed and its references actualised.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#__ReferenceInTerm">#</a>
-		<code><a href="source-class-COntologyNode.html#1305-1366" title="Go to source code">_ReferenceInTerm</a>( <span><code><a href="class-CConnection.html">CConnection</a></code> <var>$theConnection</var></span>, <span>boolean <var>$doAdd</var></span> )</code>
+		<code><a href="source-class-COntologyNode.html#1309-1370" title="Go to source code">_ReferenceInTerm</a>( <span><code><a href="class-CConnection.html">CConnection</a></code> <var>$theConnection</var></span>, <span>boolean <var>$doAdd</var></span> )</code>
 
 		<div class="description short">
 			
@@ -1301,7 +1305,7 @@ exception if the operation failed.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#__LoadTermAttributes">#</a>
-		<code><a href="source-class-COntologyNode.html#1373-1449" title="Go to source code">_LoadTermAttributes</a>( <span>array <var>$theAttributes</var> = <span class="php-keyword1">NULL</span> </span> )</code>
+		<code><a href="source-class-COntologyNode.html#1377-1453" title="Go to source code">_LoadTermAttributes</a>( <span>array <var>$theAttributes</var> = <span class="php-keyword1">NULL</span> </span> )</code>
 
 		<div class="description short">
 			
@@ -1362,7 +1366,7 @@ explicitly invoke it.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#__AddGraphNode">#</a>
-		<code><a href="source-class-COntologyNode.html#1465-1562" title="Go to source code">_AddGraphNode</a>( <span><code><a href="class-CGraphContainer.html">CGraphContainer</a></code> <var>$theGraph</var></span>, <span>integer <var>$theIdentifier</var> = <span class="php-keyword1">NULL</span></span>, <span>array <var>$theProperties</var> = <span class="php-keyword1">NULL</span> </span> )</code>
+		<code><a href="source-class-COntologyNode.html#1469-1566" title="Go to source code">_AddGraphNode</a>( <span><code><a href="class-CGraphContainer.html">CGraphContainer</a></code> <var>$theGraph</var></span>, <span>integer <var>$theIdentifier</var> = <span class="php-keyword1">NULL</span></span>, <span>array <var>$theProperties</var> = <span class="php-keyword1">NULL</span> </span> )</code>
 
 		<div class="description short">
 			
@@ -1438,7 +1442,7 @@ which attributes will be set in the graph node.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#__GraphNodeProperties">#</a>
-		<code><a href="source-class-COntologyNode.html#1569-1627" title="Go to source code">_GraphNodeProperties</a>( <span>array <var>$theProperties</var> = <span class="php-keyword1">NULL</span> </span> )</code>
+		<code><a href="source-class-COntologyNode.html#1573-1631" title="Go to source code">_GraphNodeProperties</a>( <span>array <var>$theProperties</var> = <span class="php-keyword1">NULL</span> </span> )</code>
 
 		<div class="description short">
 			
@@ -1497,7 +1501,7 @@ to the current node.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#__NewEdge">#</a>
-		<code><a href="source-class-COntologyNode.html#1643-1651" title="Go to source code">_NewEdge</a>( )</code>
+		<code><a href="source-class-COntologyNode.html#1647-1655" title="Go to source code">_NewEdge</a>( )</code>
 
 		<div class="description short">
 			
@@ -1534,6 +1538,7 @@ to the current node.</p>
 	<tr>
 		<td><code>
 			<a href="class-CNode.html#_Category">Category()</a>, 
+			<a href="class-CNode.html#_Description">Description()</a>, 
 			<a href="class-CNode.html#_Kind">Kind()</a>, 
 			<a href="class-CNode.html#_RelateTo">RelateTo()</a>, 
 			<a href="class-CNode.html#_Term">Term()</a>, 

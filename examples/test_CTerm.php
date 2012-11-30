@@ -393,8 +393,8 @@ try
 	// Add default description.
 	//
 	echo( '<h4>Add default description</h4>' );
-	echo( '<h5>$termB->Description( NULL, "Default description" );</h5>' );
-	$termB->Description( NULL, "Default description" );
+	echo( '<h5>$termB->Definition( NULL, "Default description" );</h5>' );
+	$termB->Definition( NULL, "Default description" );
 	echo( '<pre>' ); print_r( $termB ); echo( '</pre>' );
 	echo( '<hr />' );
 

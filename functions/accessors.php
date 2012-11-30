@@ -549,9 +549,10 @@ require_once( kPATH_MYWRAPPER_LIBRARY_DEFINE."/Errors.inc.php" );
 	 *
 	 * @throws Exception
 	 */
-	function ManageIndexedOffset( &$theReference,
-								   $theOffset, $theIndex,
-								   $theValue = NULL, $getOld = FALSE )
+	function ManageIndexedOffset( &$theReference, $theOffset,
+								   $theIndex = NULL,
+								   $theValue = NULL,
+								   $getOld = FALSE )
 	{
 		//
 		// Check list container.
