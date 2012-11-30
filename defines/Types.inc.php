@@ -142,7 +142,7 @@
  *				MongoId data type, when serialised it will be encoded into the following
  *				structure:
  *			 <ul>
- *				<li><tt>{@link kTAG_TYPE}</tt>: Will contain this constant.
+ *				<li><tt>{@link kTAG_CUSTOM_TYPE}</tt>: Will contain this constant.
  *				<li><tt>{@link kTAG_CUSTOM_DATA}</tt>: Will contain the HEX string ID.
  *			 </ul>
  *			<li><tt>{@link kTYPE_MongoCode}</tt>: <i>MongoCode</i>. This type represents the
@@ -241,10 +241,10 @@ define( "kTYPE_BOOLEAN",						':BOOLEAN' );
  *
  * Version 1: (kTYPE_BINARY)[:BINARY]
  */
-define( "kTYPE_BINARY_STRING",					':BINARY-STRING' );
+define( "kTYPE_BINARY_STRING",					':TEXT:BINARY' );
 
 /**
- * DATE-STRING.
+ * DATE.
  *
  * Date string.
  *
@@ -258,10 +258,10 @@ define( "kTYPE_BINARY_STRING",					':BINARY-STRING' );
  *
  * Version 1: (kTYPE_DATE)[:DATE-STRING']
  */
-define( "kTYPE_DATE_STRING",					':DATE-STRING' );
+define( "kTYPE_DATE_STRING",					':TEXT:DATE' );
 
 /**
- * TIME-STRING.
+ * TIME.
  *
  * Time string.
  *
@@ -276,10 +276,10 @@ define( "kTYPE_DATE_STRING",					':DATE-STRING' );
  *
  * Version 1: (kTYPE_TIME)[:DATE-STRING']
  */
-define( "kTYPE_TIME_STRING",					':TIME-STRING' );
+define( "kTYPE_TIME_STRING",					':TEXT:TIME' );
 
 /**
- * REGEX-STRING.
+ * REGEX.
  *
  * Regular expression.
  *
@@ -288,10 +288,10 @@ define( "kTYPE_TIME_STRING",					':TIME-STRING' );
  *
  * Version 1: (kTYPE_REGEX)[:REGEX']
  */
-define( "kTYPE_REGEX_STRING",					':REGEX-STRING' );
+define( "kTYPE_REGEX_STRING",					':TEXT:REGEX' );
 
 /**
- * INT32.
+ * 32.
  *
  * 32 bit integer.
  *
@@ -300,10 +300,10 @@ define( "kTYPE_REGEX_STRING",					':REGEX-STRING' );
  *
  * Version 1: (kTYPE_INT32)[:INT32]
  */
-define( "kTYPE_INT32",							':INT32' );
+define( "kTYPE_INT32",							':INT:32' );
 
 /**
- * INT64.
+ * 64.
  *
  * 64 bit integer.
  *
@@ -312,7 +312,7 @@ define( "kTYPE_INT32",							':INT32' );
  *
  * Version 1: (kTYPE_INT64)[:INT64]
  */
-define( "kTYPE_INT64",							':INT64' );
+define( "kTYPE_INT64",							':INT:64' );
 
 /*=======================================================================================
  *	STANDARD FORMAT TYPES																*
@@ -383,7 +383,7 @@ define( "kTYPE_XML",							':XML' );
  *
  * Version 1: (kTYPE_SVG)[:SVG]
  */
-define( "kTYPE_SVG",							':SVG' );
+define( "kTYPE_SVG",							':XML:SVG' );
 
 /*=======================================================================================
  *	STRUCTURED DATA TYPES																*
@@ -560,7 +560,7 @@ define( "kTYPE_RELATION_ALL",					':RELATION-ALL' );
  * This type represents the <tt>MongoId</tt> data type, when serialised it will be encoded
  * into the following structure:
  * <ul>
- *	<li><tt>{@link kTAG_TYPE}</tt>: Will contain this constant.
+ *	<li><tt>{@link kTAG_CUSTOM_TYPE}</tt>: Will contain this constant.
  *	<li><tt>{@link kTAG_CUSTOM_DATA}</tt>: Will contain the HEX string ID.
  * </ul>
  *

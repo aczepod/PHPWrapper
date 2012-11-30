@@ -212,6 +212,20 @@ require_once( kPATH_MYWRAPPER_LIBRARY_DEFINE."/NodeKinds.inc.php" );
 require_once( kPATH_MYWRAPPER_LIBRARY_DEFINE."/Predicates.inc.php" );
 
 /**
+ * Node kinds.
+ *
+ * This include file contains the default node kind definitions.
+ */
+require_once( kPATH_MYWRAPPER_LIBRARY_DEFINE."/NodeKinds.inc.php" );
+
+/**
+ * Term kinds.
+ *
+ * This include file contains the default term kind definitions.
+ */
+require_once( kPATH_MYWRAPPER_LIBRARY_DEFINE."/TermKinds.inc.php" );
+
+/**
  * Terms.
  *
  * This includes the term class definitions.
@@ -219,11 +233,18 @@ require_once( kPATH_MYWRAPPER_LIBRARY_DEFINE."/Predicates.inc.php" );
 require_once( kPATH_MYWRAPPER_LIBRARY_CLASS."/COntologyTerm.php" );
 
 /**
- * Vertices.
+ * Master vertices.
  *
- * This includes the node class definitions.
+ * This includes the master vertex class definitions.
  */
-require_once( kPATH_MYWRAPPER_LIBRARY_CLASS."/COntologyVertex.php" );
+require_once( kPATH_MYWRAPPER_LIBRARY_CLASS."/COntologyMasterVertex.php" );
+
+/**
+ * Alias vertices.
+ *
+ * This includes the alias vertex class definitions.
+ */
+require_once( kPATH_MYWRAPPER_LIBRARY_CLASS."/COntologyAliasVertex.php" );
 
 /**
  * Edges.
@@ -417,40 +438,9 @@ class COntology extends CConnection
 			$this->_InitContainers();
 			
 			//
-			// Create namespace term.
+			// Initialise terms.
 			//
-			$this->_InitDefaultNamespace();
-			
-			//
-			// Create default type terms.
-			//
-			$this->_InitDefaultTypeTerms();
-			
-			//
-			// Create default attribute terms.
-			//
-			$this->_InitDefaultAttributeTerms();
-			
-			//
-			// Create default instances.
-			//
-			$this->_InitDefaultPredicates();
-			$this->_InitDefaultNodeKinds();
-			$this->_InitDefaultDataTypes();
-			
-			//
-			// Create default data dictionaries.
-			//
-			$this->_InitDefaultDataDictionaries();
-			
-			//
-			// Load default data dictionaries.
-			//
-			$this->_LoadTermDataDictionary();
-			$this->_LoadNodeDataDictionary();
-			$this->_LoadEdgeDataDictionary();
-			$this->_LoadTagDataDictionary();
-			$this->_LoadAttributesDataDictionary();
+			$this->_InitNamespaces();
 			
 			return;																	// ==>
 		
@@ -521,6 +511,7 @@ class COntology extends CConnection
 	//	$container->AddIndex( array( kTAG_GID => 1 ) );
 	//	$container->AddIndex( array( kTAG_NAMESPACE => 1 ), array( 'sparse' => TRUE ) );
 		$container->AddIndex( array( kTAG_SYNONYMS => 1 ), array( 'sparse' => TRUE ) );
+	//	$container->AddIndex( array( kTAG_EXAMPLES => 1 ), array( 'sparse' => TRUE ) );
 	//	$container->AddIndex( array( kTAG_TERM => 1 ), array( 'sparse' => TRUE ) );
 		$container->AddIndex( array( kTAG_KIND => 1 ), array( 'sparse' => TRUE ) );
 		$container->AddIndex( array( kTAG_LABEL => 1 ), array( 'sparse' => TRUE ) );
@@ -612,6 +603,78 @@ class COntology extends CConnection
 		$container->drop();
 
 	} // _InitContainers.
+
+	 
+	/*===================================================================================
+	 *	_InitNamespaces																	*
+	 *==================================================================================*/
+
+	/**
+	 * <h4>Initialise default namespaces</h4>
+	 *
+	 * This method will load all default namespaces, it will read the term definitions from the
+	 * <tt>namespaces.xml</tt> file placed in the library definitions directory.
+	 *
+	 * @access protected
+	 *
+	 * @throws Exception
+	 */
+	protected function _InitNamespaces()
+	{
+		//
+		// Get database.
+		//
+		$db = $this->GetDatabase();
+		if( ! ($db instanceof CDatabase) )
+			throw new Exception
+				( "Unable to retrieve database connection",
+				  kERROR_STATE );												// !@! ==>
+		
+		//
+		// Load XML file.
+		//
+		$xml = simplexml_load_file( kPATH_MYWRAPPER_LIBRARY_DEFINE.'/namespaces.xml' );
+		
+		//
+		// Iterate terms.
+		//
+		foreach( $xml->term as $element )
+		{
+			//
+			// Instantiate term.
+			//
+			$term = new COntologyTerm();
+			
+			//
+			// Load local identifier.
+			//
+			if( $element[ 'kTAG_LID' ] !== NULL )
+			{
+				//
+				// Set local identifier.
+				//
+				$term->LID( (string) $element[ 'kTAG_LID' ] );
+				
+				//
+				// Set namespace kind.
+				//
+				$term->Kind( kKIND_TERM_NAMESPACE, TRUE );
+				
+				//
+				// Parse and save term.
+				//
+				$this->_ParseTerm( $db, $element, $term );
+			
+			} // Has local identifier.
+			
+			else
+				throw new Exception
+					( "Term is missing local identifier",
+					  kERROR_STATE );											// !@! ==>
+		
+		} // Iterating terms.
+
+	} // _InitNamespaces.
 
 	 
 	/*===================================================================================
@@ -1879,6 +1942,147 @@ class COntology extends CConnection
 		} // Iterating first level terms.
 
 	} // _LoadAttributesDataDictionary.
+
+		
+
+/*=======================================================================================
+ *																						*
+ *							PROTECTED ONTOLOGY PARSING INTERFACE						*
+ *																						*
+ *======================================================================================*/
+
+
+	 
+	/*===================================================================================
+	 *	_ParseTerm																		*
+	 *==================================================================================*/
+
+	/**
+	 * <h4>Parse the provided term</h4>
+	 *
+	 * This method will parse the provided XML term and fill the provided ontology term.
+	 *
+	 * @param CDatabase				$theDatabase		Database container.
+	 * @param SimpleXMLElement		$theElement			XML element with term data.
+	 * @param COntologyTerm			$theTerm			Receives term data.
+	 *
+	 * @access protected
+	 *
+	 * @throws Exception
+	 */
+	protected function _ParseTerm( CDatabase		$theDatabase,
+								   SimpleXMLElement	$theElement,
+								   COntologyTerm	$theTerm )
+	{
+		//
+		// Load local identifier.
+		//
+		if( $theElement[ 'kTAG_LID' ] !== NULL )
+		{
+			//
+			// Set local identifier.
+			//
+			$theTerm->LID( (string) $theElement[ 'kTAG_LID' ] );
+			
+			//
+			// Handle namespace.
+			//
+			if( $theElement[ 'kTAG_NAMESPACE' ] !== NULL )
+			{
+				//
+				// Resolve namespace.
+				//
+				$ref = COntologyTerm::Resolve(
+						$theDatabase,
+						(string) $theElement[ 'kTAG_NAMESPACE' ],
+						NULL,
+						TRUE );
+				
+				//
+				// Set namespace.
+				//
+				$theTerm->NS( $ref );
+			
+			} // Has namespace.
+			
+			//
+			// Get synonyms.
+			//
+			if( $theElement->{'kTAG_SYNONYMS'}->count() )
+			{
+				foreach( $theElement->{'kTAG_SYNONYMS'}->{'item'} as $item )
+					$theTerm->Synonym( (string) $item, TRUE );
+			
+			} // Has synonyms.
+			
+			//
+			// Handle term reference.
+			//
+			if( $theElement->{'kTAG_TERM'} !== NULL )
+			{
+				//
+				// Resolve term.
+				//
+				$ref = COntologyTerm::Resolve(
+						$theDatabase,
+						(string) $theElement[ 'kTAG_TERM' ],
+						NULL,
+						TRUE );
+				
+				//
+				// Set namespace.
+				//
+				$theTerm->Term( $ref );
+			
+			} // Has term reference.
+			
+			//
+			// Get kinds.
+			//
+			if( $theElement->{'kTAG_KIND'}->count() )
+			{
+				foreach( $theElement->{'kTAG_KIND'}->{'item'} as $item )
+					$theTerm->Kind( (string) $item, TRUE );
+			
+			} // Has kind.
+			
+			//
+			// Get label.
+			//
+			if( $theElement->{'kTAG_LABEL'} !== NULL )
+				$theTerm->Label( $theElement->{'kTAG_LABEL'}[ 'language' ],
+								 (string) $theElement->{'kTAG_LABEL'} );
+			
+			//
+			// Get definition.
+			//
+			if( $theElement->{'kTAG_DEFINITION'} !== NULL )
+				$theTerm->Definition( $theElement->{'kTAG_DEFINITION'}[ 'language' ],
+									  (string) $theElement->{'kTAG_DEFINITION'} );
+			
+			//
+			// Get examples.
+			//
+			if( $theElement->{'kTAG_EXAMPLES'}->count() )
+			{
+				foreach( $theElement->{'kTAG_EXAMPLES'}->{'item'} as $item )
+					$theTerm->Example( (string) $item, TRUE );
+			
+			} // Has examples.
+			
+			//
+			// Save term.
+			//
+			$theTerm->Insert( $theDatabase );
+		
+		} // Has local identifier.
+		
+		else
+			throw new Exception
+				( "Term is missing local identifier",
+				  kERROR_STATE );											// !@! ==>
+
+	} // _ParseTerm.
 
 	 
 

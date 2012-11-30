@@ -73,6 +73,8 @@ define( "kKIND_TERM_PREDICATE",					':TERM-KIND-PREDICATE' );
  * Enumeration.
  *
  * This kind of term represents an enumeration, or an element of a controlled vocabulary.
+ * When linking a node to a term, terms of this kind should only be linked by a single node,
+ * which means that there should only be one instance of an enumeration.
  *
  * Version 1: (kKIND_TERM_ENUMERATION)[:TERM-KIND-ENUMERATION]
  */

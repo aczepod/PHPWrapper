@@ -212,7 +212,7 @@ define( "kTAG_GID",								'2' );
  *
  * Version 1: (kTAG_UID)[21]
  */
-define( "kTAG_UID",								'21' );
+define( "kTAG_UID",								'3' );
 
 /**
  * SYNONYMS.
@@ -224,7 +224,7 @@ define( "kTAG_UID",								'21' );
  *
  * Version 1: (kTAG_SYNONYMS)[7]
  */
-define( "kTAG_SYNONYMS",						'7' );
+define( "kTAG_SYNONYMS",						'4' );
 
 /*=======================================================================================
  *	CLASSIFICATION ATTRIBUTES															*
@@ -240,7 +240,7 @@ define( "kTAG_SYNONYMS",						'7' );
  *
  * Version 1: (kTAG_CATEGORY)[12]
  */
-define( "kTAG_CATEGORY",						'12' );
+define( "kTAG_CATEGORY",						'5' );
 
 /**
  * KIND.
@@ -251,7 +251,7 @@ define( "kTAG_CATEGORY",						'12' );
  *
  * Version 1: (kTAG_KIND)[13]
  */
-define( "kTAG_KIND",							'13' );
+define( "kTAG_KIND",							'6' );
 
 /**
  * TYPE.
@@ -263,7 +263,7 @@ define( "kTAG_KIND",							'13' );
  *
  * Version 1: (kTAG_TYPE)[14]
  */
-define( "kTAG_TYPE",							'14' );
+define( "kTAG_TYPE",							'7' );
 
 /**
  * CLASS.
@@ -276,7 +276,7 @@ define( "kTAG_TYPE",							'14' );
  *
  * Version 1: (kTAG_CLASS)[4]
  */
-define( "kTAG_CLASS",							'4' );
+define( "kTAG_CLASS",							'8' );
 
 /**
  * NAMESPACE.
@@ -288,7 +288,7 @@ define( "kTAG_CLASS",							'4' );
  *
  * Version 1: (kTAG_NAMESPACE)[3]
  */
-define( "kTAG_NAMESPACE",						'3' );
+define( "kTAG_NAMESPACE",						'9' );
 
 /*=======================================================================================
  *	DESCRIPTION ATTRIBUTES																*
@@ -305,7 +305,7 @@ define( "kTAG_NAMESPACE",						'3' );
  *
  * Version 1: (kTAG_LABEL)[5]
  */
-define( "kTAG_LABEL",							'5' );
+define( "kTAG_LABEL",							'10' );
 
 /**
  * DEFINITION.
@@ -318,7 +318,7 @@ define( "kTAG_LABEL",							'5' );
  *
  * Version 1: (kTAG_DEFINITION)[??]
  */
-define( "kTAG_DEFINITION",						'1009' );
+define( "kTAG_DEFINITION",						'11' );
 
 /**
  * DESCRIPTION.
@@ -331,7 +331,7 @@ define( "kTAG_DEFINITION",						'1009' );
  *
  * Version 1: (kTAG_DESCRIPTION)[6]
  */
-define( "kTAG_DESCRIPTION",						'6' );
+define( "kTAG_DESCRIPTION",						'12' );
 
 /**
  * NOTES.
@@ -344,7 +344,7 @@ define( "kTAG_DESCRIPTION",						'6' );
  *
  * Version 1: (kTAG_NOTES)[25]
  */
-define( "kTAG_NOTES",							'25' );
+define( "kTAG_NOTES",							'13' );
 
 /**
  * EXAMPLES.
@@ -356,7 +356,7 @@ define( "kTAG_NOTES",							'25' );
  *
  * Version 1: (kTAG_EXAMPLES)[28]
  */
-define( "kTAG_EXAMPLES",						'28' );
+define( "kTAG_EXAMPLES",						'14' );
 
 /*=======================================================================================
  *	STATUS ATTRIBUTES																	*
@@ -400,7 +400,7 @@ define( "kTAG_EXAMPLES",						'28' );
  *
  * Version 1: (kTAG_STATUS)[1010]
  */
-define( "kTAG_STATUS",							'1010' );
+define( "kTAG_STATUS",							'15' );
 
 /**
  * STATUS-CODE.
@@ -412,7 +412,7 @@ define( "kTAG_STATUS",							'1010' );
  *
  * Version 1: (kTAG_STATUS_CODE)[1011]
  */
-define( "kTAG_STATUS_CODE",						'1011' );
+define( "kTAG_STATUS_CODE",						'16' );
 
 /**
  * STATUS-MESSAGE.
@@ -425,7 +425,7 @@ define( "kTAG_STATUS_CODE",						'1011' );
  *
  * Version 1: (kTAG_STATUS_MESSAGE)[1012]
  */
-define( "kTAG_STATUS_MESSAGE",					'1012' );
+define( "kTAG_STATUS_MESSAGE",					'17' );
 
 /*=======================================================================================
  *	AUTHORSHIP ATTRIBUTES																*
@@ -440,7 +440,7 @@ define( "kTAG_STATUS_MESSAGE",					'1012' );
  *
  * Version 1: (kTAG_AUTHORS)[24]
  */
-define( "kTAG_AUTHORS",							'24' );
+define( "kTAG_AUTHORS",							'18' );
 
 /**
  * ACKNOWLEDGMENTS.
@@ -451,7 +451,7 @@ define( "kTAG_AUTHORS",							'24' );
  *
  * Version 1: (kTAG_ACKNOWLEDGMENTS)[26]
  */
-define( "kTAG_ACKNOWLEDGMENTS",					'26' );
+define( "kTAG_ACKNOWLEDGMENTS",					'19' );
 
 /**
  * BIBLIOGRAPHY.
@@ -462,7 +462,7 @@ define( "kTAG_ACKNOWLEDGMENTS",					'26' );
  *
  * Version 1: (kTAG_BIBLIOGRAPHY)[27]
  */
-define( "kTAG_BIBLIOGRAPHY",					'27' );
+define( "kTAG_BIBLIOGRAPHY",					'20' );
 
 /*=======================================================================================
  *	REFERENCE ATTRIBUTES																*
@@ -478,7 +478,7 @@ define( "kTAG_BIBLIOGRAPHY",					'27' );
  *
  * Version 1: (kTAG_TERM)[8]
  */
-define( "kTAG_TERM",							'8' );
+define( "kTAG_TERM",							'21' );
 
 /**
  * NODE.
@@ -490,7 +490,7 @@ define( "kTAG_TERM",							'8' );
  *
  * Version 1: (kTAG_NODE)[??]
  */
-define( "kTAG_NODE",							'1002' );
+define( "kTAG_NODE",							'22' );
 
 /**
  * SUBJECT.
@@ -502,7 +502,7 @@ define( "kTAG_NODE",							'1002' );
  *
  * Version 1: (kTAG_VERTEX_SUBJECT)[18]
  */
-define( "kTAG_SUBJECT",							'18' );
+define( "kTAG_SUBJECT",							'23' );
 
 /**
  * OBJECT.
@@ -526,7 +526,7 @@ define( "kTAG_OBJECT",							'20' );
  *
  * Version 1: (kTAG_PREDICATE)[19]
  */
-define( "kTAG_PREDICATE",						'19' );
+define( "kTAG_PREDICATE",						'24' );
 
 /**
  * PATH.
@@ -539,7 +539,7 @@ define( "kTAG_PREDICATE",						'19' );
  *
  * Version 1: (kTAG_TAG_PATH)[22]
  */
-define( "kTAG_PATH",							'22' );
+define( "kTAG_PATH",							'25' );
 
 /*=======================================================================================
  *	REFERENCE COLLECTIONS																*
@@ -555,7 +555,7 @@ define( "kTAG_PATH",							'22' );
  *
  * Version 1: (kTAG_REFS_NAMESPACE)[9]
  */
-define( "kTAG_NAMESPACE_REFS",					'9' );
+define( "kTAG_NAMESPACE_REFS",					'26' );
 
 /**
  * NODES.
@@ -567,7 +567,7 @@ define( "kTAG_NAMESPACE_REFS",					'9' );
  *
  * Version 1: (kTAG_REFS_NODE)[10]
  */
-define( "kTAG_NODES",							'10' );
+define( "kTAG_NODES",							'27' );
 
 /**
  * EDGES.
@@ -579,7 +579,7 @@ define( "kTAG_NODES",							'10' );
  *
  * Version 1: (kTAG_REFS_EDGE)[17]
  */
-define( "kTAG_EDGES",							'17' );
+define( "kTAG_EDGES",							'28' );
 
 /**
  * FEATURES.
@@ -591,7 +591,7 @@ define( "kTAG_EDGES",							'17' );
  *
  * Version 1: (kTAG_REFS_TAG_FEATURE)[15]
  */
-define( "kTAG_FEATURES",						'15' );
+define( "kTAG_FEATURES",						'29' );
 
 /**
  * METHODS.
@@ -603,7 +603,7 @@ define( "kTAG_FEATURES",						'15' );
  *
  * Version 1: (kTAG_REFS_TAG_METHOD)[??]
  */
-define( "kTAG_METHODS",							'1001' );
+define( "kTAG_METHODS",							'30' );
 
 /**
  * SCALES.
@@ -615,7 +615,7 @@ define( "kTAG_METHODS",							'1001' );
  *
  * Version 1: (kTAG_REFS_TAG_SCALE)[16]
  */
-define( "kTAG_SCALES",							'16' );
+define( "kTAG_SCALES",							'31' );
 
 /*=======================================================================================
  *	CUSTOM TYPE SUB ATTRIBUTES															*
