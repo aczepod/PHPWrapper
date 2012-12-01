@@ -440,7 +440,7 @@ class COntology extends CConnection
 			//
 			// Initialise terms.
 			//
-			$this->_InitNamespaces();
+			$this->_InitNamespaceTerms();
 			$this->_InitAttributeTerms();
 			$this->_InitEnumerationTerms();
 			$this->_InitPredicates();
@@ -609,7 +609,7 @@ class COntology extends CConnection
 
 	 
 	/*===================================================================================
-	 *	_InitNamespaces																	*
+	 *	_InitNamespaceTerms																*
 	 *==================================================================================*/
 
 	/**
@@ -622,7 +622,7 @@ class COntology extends CConnection
 	 *
 	 * @throws Exception
 	 */
-	protected function _InitNamespaces()
+	protected function _InitNamespaceTerms()
 	{
 		//
 		// Get database.
@@ -636,7 +636,7 @@ class COntology extends CConnection
 		//
 		// Load XML file.
 		//
-		$xml = simplexml_load_file( kPATH_MYWRAPPER_LIBRARY_DEFINE.'/namespaces.xml' );
+		$xml = simplexml_load_file( kPATH_MYWRAPPER_LIBRARY_DEFINE.'/NamespaceTerms.xml' );
 		
 		//
 		// Iterate terms.
@@ -672,7 +672,7 @@ class COntology extends CConnection
 		
 		} // Iterating terms.
 
-	} // _InitNamespaces.
+	} // _InitNamespaceTerms.
 
 	 
 	/*===================================================================================
@@ -703,7 +703,7 @@ class COntology extends CConnection
 		//
 		// Load XML file.
 		//
-		$xml = simplexml_load_file( kPATH_MYWRAPPER_LIBRARY_DEFINE.'/attributes.xml' );
+		$xml = simplexml_load_file( kPATH_MYWRAPPER_LIBRARY_DEFINE.'/AttributeTerms.xml' );
 		
 		//
 		// Iterate terms.
@@ -760,7 +760,8 @@ class COntology extends CConnection
 		//
 		// Load XML file.
 		//
-		$xml = simplexml_load_file( kPATH_MYWRAPPER_LIBRARY_DEFINE.'/enumerations.xml' );
+		$xml = simplexml_load_file
+					( kPATH_MYWRAPPER_LIBRARY_DEFINE.'/EnumerationTerms.xml' );
 		
 		//
 		// Iterate terms.
@@ -827,7 +828,7 @@ class COntology extends CConnection
 		//
 		// Load XML file.
 		//
-		$xml = simplexml_load_file( kPATH_MYWRAPPER_LIBRARY_DEFINE.'/predicates.xml' );
+		$xml = simplexml_load_file( kPATH_MYWRAPPER_LIBRARY_DEFINE.'/Predicates.xml' );
 		
 		//
 		// Iterate terms.
