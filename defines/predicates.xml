@@ -33,7 +33,25 @@
             <item>kPREDICATE_SUBSET_OF</item>
         </kTAG_SYNONYMS>
 	</term>
-    
+        
+    <!-- kPREDICATE_METHOD_OF -->
+    <term kTAG_LID="METHOD-OF" kTAG_NAMESPACE="">
+        <kTAG_KIND>
+            <item>:TERM-KIND-PREDICATE</item>
+        </kTAG_KIND>
+        <kTAG_LABEL language="en">Method of</kTAG_LABEL>
+        <kTAG_DEFINITION language="en"><![CDATA[This predicate relates <i>method
+        	vertices</i> with <i>feature vertices</i> or <i>other methods</i>, it indicates
+        	that the subject of the relationship is a <i>method, or workflow variation</i>
+        	of the object of the relationship. This predicate is used to connect the
+        	<i>pipeline of modifiers</i> applied to a <i>feature vertex</i>.
+            ]]>
+        </kTAG_DEFINITION>
+        <kTAG_SYNONYMS>
+            <item>kPREDICATE_METHOD_OF</item>
+        </kTAG_SYNONYMS>
+	</term>
+
     <!-- kPREDICATE_SCALE_OF -->
     <term kTAG_LID="SCALE-OF" kTAG_NAMESPACE="">
         <kTAG_KIND>
@@ -50,24 +68,6 @@
         </kTAG_DEFINITION>
         <kTAG_SYNONYMS>
             <item>kPREDICATE_SCALE_OF</item>
-        </kTAG_SYNONYMS>
-	</term>
-    
-    <!-- kPREDICATE_METHOD_OF -->
-    <term kTAG_LID="METHOD-OF" kTAG_NAMESPACE="">
-        <kTAG_KIND>
-            <item>:TERM-KIND-PREDICATE</item>
-        </kTAG_KIND>
-        <kTAG_LABEL language="en">Method of</kTAG_LABEL>
-        <kTAG_DEFINITION language="en"><![CDATA[This predicate relates <i>method
-        	vertices</i> with <i>feature vertices</i> or <i>other methods</i>, it indicates
-        	that the subject of the relationship is a <i>method, or workflow variation</i>
-        	of the object of the relationship. This predicate is used to connect the
-        	<i>pipeline of modifiers</i> applied to a <i>feature vertex</i>.
-            ]]>
-        </kTAG_DEFINITION>
-        <kTAG_SYNONYMS>
-            <item>kPREDICATE_METHOD_OF</item>
         </kTAG_SYNONYMS>
 	</term>
     

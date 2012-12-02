@@ -3737,7 +3737,7 @@ class COntology extends CConnection
 				   kTERM_NAMESPACE => $ns,
 				   kTERM_LABEL => "Examples",
 				   kTERM_DESCRIPTION => "List of examples or templates." ),
-			array( kTERM_LID => substr( kTERM_STATUS, 1 ),
+			array( kTERM_LID => substr( kTERM_STATUS_LEVEL, 1 ),
 				   kTERM_NAMESPACE => $ns,
 				   kTERM_LABEL => "Severity",
 				   kTERM_DESCRIPTION => "Code that characterises the importance or severity of a status." ),

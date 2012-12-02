@@ -19,30 +19,27 @@
  */
 
 /*=======================================================================================
- *	DEFAULT ONTOLOGY																	*
+ *	GENERIC ATTRIBUTESß																	*
  *======================================================================================*/
 
 /**
- * Ontology.
+ * Attributes.
  *
- * An ontology is a graph structure composed of nodes related by a series of directed edges,
- * each node represents a concept that can be used to illustrate a characteristic or feature
- * of an object, or to tag a set of data elements that are measurements of that feature.
+ * This tag identifies the root node for the generic attributes, it collects all generic
+ * attributes available to all other data dictionaries in this library.
  */
-define( "kTERM_ONTOLOGY",						':ONTOLOGY' );
+define( "kDDICT_ATTRIBUTES",					':DDICT-ATTR' );
 
 /*=======================================================================================
- *	MAIN ONTOLOGY CATEGORIES															*
+ *	WRAPPER WEB-SERVICE API																*
  *======================================================================================*/
 
 /**
- * Namespaces.
+ * Wrapper API.
  *
- * Namespaces are terms that are containers for a set of term identifiers or names based on
- * their functionality or semantic origin. Such terms are used to allow the disambiguation
- * of homonym identifiers residing in different namespaces.
+ * This tag identifies the root node for the wrapper web-services API.
  */
-define( "kTERM_NAMESPACES",						':NAMESPACES' );
+define( "kDDICT_WRAPPER",						':DDICT-WRAP' );
 
 /*=======================================================================================
  *	DEFAULT ONTOLOGY OBJECT DATA STRUCTURES												*

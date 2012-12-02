@@ -2,18 +2,19 @@
 
 /*=======================================================================================
  *																						*
- *										Tags.inc.php									*
+ *									Attributes.inc.php									*
  *																						*
  *======================================================================================*/
  
 /**
- * Default tags.
+ * Default attributes.
  *
- * This file contains the tag definitions for all default attributes, these tags represent
- * the attribute keys for all the default object properties.
+ * This file contains the tag definitions for all default attributes, these terms represent
+ * the concept identifiers for all the default object properties.
  *
  * <ul>
- *	<li><i>Identification tags</i>: These definitions tag the identification attributes:
+ *	<li><i>Identification attributes</i>: These definitions tag the identification
+ *		attributes:
  *	 <ul>
  *		<li><tt>{@link kTAG_NID}</tt>: <i>Native identifier</i>. This attribute contains the
  *			native unique identifier of the object. This identifier is used as the default
@@ -75,7 +76,7 @@
  *	 </ul>
  *	<li><i>Status attributes</i>: These attributes are used to describe a status:
  *	 <ul>
- *		<li><tt>{@link kTERM_STATUS}</tt>: <i>Severity</i>. This attribute represents the
+ *		<li><tt>{@link kTERM_STATUS_LEVEL}</tt>: <i>Severity</i>. This attribute represents the
  *			severity or status level, it is an element of the following enumerated set:
  *		 <ul>
  *			<li><tt>{@link kSTATUS_IDLE}</tt>: This code indicates no errors, this state can
@@ -366,9 +367,9 @@ define( "kTERM_EXAMPLES",						':EXAMPLES' );
  *======================================================================================*/
 
 /**
- * STATUS.
+ * STATUS-LEVEL.
  *
- * Status.
+ * Status level.
  *
  * This attribute represents the severity or status level, it is an element of the following
  * enumerated set:
@@ -403,7 +404,7 @@ define( "kTERM_EXAMPLES",						':EXAMPLES' );
  *
  * Version 1: (kOFFSET_SEVERITY)[:SEVERITY]
  */
-define( "kTERM_STATUS",							':STATUS' );
+define( "kTERM_STATUS_LEVEL",							':STATUS-LEVEL' );
 
 /**
  * STATUS-CODE.

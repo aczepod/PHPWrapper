@@ -204,7 +204,7 @@
 </span></span><span id="102" class="l"><a class="l" href="#102"> 102: </a><span class="php-comment"> *      This section is returned by default and will inform on the status of the requested
 </span></span><span id="103" class="l"><a class="l" href="#103"> 103: </a><span class="php-comment"> *      operation. It consists of an array containing the following elements:
 </span></span><span id="104" class="l"><a class="l" href="#104"> 104: </a><span class="php-comment"> *   &lt;ul&gt;
-</span></span><span id="105" class="l"><a class="l" href="#105"> 105: </a><span class="php-comment"> *      &lt;li&gt;&lt;i&gt;{@link kTERM_STATUS}&lt;/i&gt;: &lt;i&gt;Response status&lt;/i&gt;.
+</span></span><span id="105" class="l"><a class="l" href="#105"> 105: </a><span class="php-comment"> *      &lt;li&gt;&lt;i&gt;{@link kTERM_STATUS_LEVEL}&lt;/i&gt;: &lt;i&gt;Response status&lt;/i&gt;.
 </span></span><span id="106" class="l"><a class="l" href="#106"> 106: </a><span class="php-comment"> *          This element will be returned by default regardless of the operation outcome.
 </span></span><span id="107" class="l"><a class="l" href="#107"> 107: </a><span class="php-comment"> *          This corresponds to the severity of the response and it can take the following
 </span></span><span id="108" class="l"><a class="l" href="#108"> 108: </a><span class="php-comment"> *          values:
@@ -574,7 +574,7 @@
 </span><span id="472" class="l"><a class="l" href="#472"> 472: </a>        <span class="php-comment">//</span>
 </span><span id="473" class="l"><a class="l" href="#473"> 473: </a>        <span class="php-comment">// Set state.</span>
 </span><span id="474" class="l"><a class="l" href="#474"> 474: </a>        <span class="php-comment">//</span>
-</span><span id="475" class="l"><a class="l" href="#475"> 475: </a>        <span class="php-var">$status</span>[ kTERM_STATUS ] = kSTATUS_IDLE;
+</span><span id="475" class="l"><a class="l" href="#475"> 475: </a>        <span class="php-var">$status</span>[ kTERM_STATUS_LEVEL ] = kSTATUS_IDLE;
 </span><span id="476" class="l"><a class="l" href="#476"> 476: </a>        
 </span><span id="477" class="l"><a class="l" href="#477"> 477: </a>        <span class="php-comment">//</span>
 </span><span id="478" class="l"><a class="l" href="#478"> 478: </a>        <span class="php-comment">// Set idle status code.</span>
@@ -1353,7 +1353,7 @@
 </span></span><span id="1251" class="l"><a class="l" href="#1251">1251: </a><span class="php-comment">     *
 </span></span><span id="1252" class="l"><a class="l" href="#1252">1252: </a><span class="php-comment">     * &lt;ul&gt;
 </span></span><span id="1253" class="l"><a class="l" href="#1253">1253: </a><span class="php-comment">     *  &lt;li&gt;&lt;i&gt;{@link CException::Severity()}&lt;/i&gt;: This value will be set as the status
-</span></span><span id="1254" class="l"><a class="l" href="#1254">1254: </a><span class="php-comment">     *      {@link kTERM_STATUS}.
+</span></span><span id="1254" class="l"><a class="l" href="#1254">1254: </a><span class="php-comment">     *      {@link kTERM_STATUS_LEVEL}.
 </span></span><span id="1255" class="l"><a class="l" href="#1255">1255: </a><span class="php-comment">     *  &lt;li&gt;&lt;i&gt;{@link Exception::getCode()}&lt;/i&gt;: This value will be set as the status
 </span></span><span id="1256" class="l"><a class="l" href="#1256">1256: </a><span class="php-comment">     *      {@link kTERM_STATUS_CODE}.
 </span></span><span id="1257" class="l"><a class="l" href="#1257">1257: </a><span class="php-comment">     *  &lt;li&gt;&lt;i&gt;{@link Exception::getMessage()}&lt;/i&gt;: This value will be set in the status
@@ -1430,7 +1430,7 @@
 </span><span id="1328" class="l"><a class="l" href="#1328">1328: </a>        <span class="php-keyword1">if</span>( <span class="php-var">$theException</span> <span class="php-keyword1">instanceof</span> CException )
 </span><span id="1329" class="l"><a class="l" href="#1329">1329: </a>        {
 </span><span id="1330" class="l"><a class="l" href="#1330">1330: </a>            <span class="php-keyword1">if</span>( (<span class="php-var">$tmp</span> = <span class="php-var">$theException</span>-&gt;Severity()) !== <span class="php-keyword1">NULL</span> )
-</span><span id="1331" class="l"><a class="l" href="#1331">1331: </a>                <span class="php-var">$status</span>[ kTERM_STATUS ] = <span class="php-var">$tmp</span>;
+</span><span id="1331" class="l"><a class="l" href="#1331">1331: </a>                <span class="php-var">$status</span>[ kTERM_STATUS_LEVEL ] = <span class="php-var">$tmp</span>;
 </span><span id="1332" class="l"><a class="l" href="#1332">1332: </a>            <span class="php-keyword1">if</span>( <span class="php-var">$tmp</span> = <span class="php-var">$theException</span>-&gt;Reference() )
 </span><span id="1333" class="l"><a class="l" href="#1333">1333: </a>            {
 </span><span id="1334" class="l"><a class="l" href="#1334">1334: </a>                <span class="php-keyword1">if</span>( ! <span class="php-keyword2">array_key_exists</span>( kTERM_NOTES, <span class="php-var">$status</span> ) )

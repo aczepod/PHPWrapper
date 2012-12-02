@@ -112,7 +112,7 @@
     
     <!-- kTERM_NAMESPACE -->
     <term kTAG_LID="NAMESPACE" kTAG_NAMESPACE="">
-        <kTAG_LABEL language="en">namespace</kTAG_LABEL>
+        <kTAG_LABEL language="en">Namespace</kTAG_LABEL>
         <kTAG_DEFINITION language="en"><![CDATA[The <i>namespace</i> is a reference to a
         	term which represents a container for a set of other term identifiers.
         	Namespaces are used for grouping terms based on their functionality or to allow
@@ -193,9 +193,9 @@
     
     <!-- STATUS ATTRIBUTES -->
     
-    <!-- kTERM_STATUS -->
-    <term kTAG_LID="STATUS" kTAG_NAMESPACE="">
-        <kTAG_LABEL language="en">Status</kTAG_LABEL>
+    <!-- kTERM_STATUS_LEVEL -->
+    <term kTAG_LID="STATUS-LEVEL" kTAG_NAMESPACE="">
+        <kTAG_LABEL language="en">Status level</kTAG_LABEL>
         <kTAG_DEFINITION language="en"><![CDATA[The <i>severity</i> or <i>status level</i>,
         	is an element of an <i>enumerated set</i> which indicates the <i>importance</i>
         	or <i>severity</i> of an event. The attribute must be one of the following
@@ -229,7 +229,7 @@
             ]]>
         </kTAG_DEFINITION>
         <kTAG_SYNONYMS>
-            <item>kTERM_STATUS</item>
+            <item>kTERM_STATUS_LEVEL</item>
         </kTAG_SYNONYMS>
     </term>
     
@@ -299,7 +299,7 @@
     
     <!-- kTERM_TERM -->
     <term kTAG_LID="TERM" kTAG_NAMESPACE="">
-        <kTAG_LABEL language="en">Term reference</kTAG_LABEL>
+        <kTAG_LABEL language="en">Term</kTAG_LABEL>
         <kTAG_DEFINITION language="en"><![CDATA[It is a <i>reference to a term</i>.
             ]]>
         </kTAG_DEFINITION>
@@ -310,7 +310,7 @@
     
     <!-- kTERM_NODE -->
     <term kTAG_LID="NODE" kTAG_NAMESPACE="">
-        <kTAG_LABEL language="en">Node reference</kTAG_LABEL>
+        <kTAG_LABEL language="en">Node</kTAG_LABEL>
         <kTAG_DEFINITION language="en"><![CDATA[It is a <i>reference to a node</i>.
             ]]>
         </kTAG_DEFINITION>
@@ -323,7 +323,8 @@
     <term kTAG_LID="SUBJECT" kTAG_NAMESPACE="">
         <kTAG_LABEL language="en">Subject</kTAG_LABEL>
         <kTAG_DEFINITION language="en"><![CDATA[It is the <i>subject of a relationship</i>,
-        	or the <i>vertex from which a relationship originates</i>.
+        	or the <i>vertex from which a relationship originates</i>. This attribute is a
+        	<i>node reference</i>.
             ]]>
         </kTAG_DEFINITION>
         <kTAG_SYNONYMS>
@@ -335,7 +336,8 @@
     <term kTAG_LID="OBJECT" kTAG_NAMESPACE="">
         <kTAG_LABEL language="en">Object</kTAG_LABEL>
         <kTAG_DEFINITION language="en"><![CDATA[It is the <i>object of a relationship</i>,
-        	or the <i>vertex to which the relationship points</i>.
+        	or the <i>vertex to which the relationship points</i>. This attribute is a
+        	<i>node reference</i>.
             ]]>
         </kTAG_DEFINITION>
         <kTAG_SYNONYMS>
@@ -347,7 +349,8 @@
     <term kTAG_LID="PREDICATE" kTAG_NAMESPACE="">
         <kTAG_LABEL language="en">Predicate</kTAG_LABEL>
         <kTAG_DEFINITION language="en"><![CDATA[It is the <i>term</i> which <i>relates the
-        	subject and object of a relationship</i>.
+        	subject and object of a relationship</i>. This attribute is a <i>term
+        	reference</i>.
             ]]>
         </kTAG_DEFINITION>
         <kTAG_SYNONYMS>
@@ -368,8 +371,6 @@
         </kTAG_SYNONYMS>
     </term>
     
-    <!-- REFERENCE COLLECTIONS -->
-    
     <!-- kTERM_NAMESPACE_REFS -->
     <term kTAG_LID="NAMESPACE-REFS" kTAG_NAMESPACE="">
         <kTAG_LABEL language="en">Namespace references count</kTAG_LABEL>
@@ -381,6 +382,8 @@
             <item>kTERM_NAMESPACE_REFS</item>
         </kTAG_SYNONYMS>
     </term>
+
+    <!-- REFERENCE COLLECTIONS -->
     
     <!-- kTERM_NODES -->
     <term kTAG_LID="NODES" kTAG_NAMESPACE="">

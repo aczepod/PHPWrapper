@@ -1,0 +1,281 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<terms>
+    <!-- MAIN ONTOLOGY CATEGORY TERMS -->
+    
+    <!-- kTERM_ONTOLOGY -->
+    <term kTAG_LID="ONTOLOGY" kTAG_NAMESPACE="">
+        <kTAG_LABEL language="en">Ontology</kTAG_LABEL>
+        <kTAG_DEFINITION language="en"><![CDATA[An ontology is a <i>graph structure</i>
+        	composed of <i>nodes</i> related by a series of <i>directed edges</i>, each node
+        	represents a <i>concept</i> that can be used to illustrate a <i>feature</i>,
+        	<i>characteristic</i> or <i>category</i> of an object, or to <i>tag</i> a set of
+        	<i>data elements</i> that are <i>measurements</i> of that feature.
+        	]]>
+        </kTAG_DEFINITION>
+        <kTAG_SYNONYMS>
+            <item>kTERM_ONTOLOGY</item>
+        </kTAG_SYNONYMS>
+    </term>
+    
+    <!-- kTERM_NAMESPACES -->
+    <term kTAG_LID="NAMESPACES" kTAG_NAMESPACE="">
+        <kTAG_LABEL language="en">Namespaces</kTAG_LABEL>
+        <kTAG_DEFINITION language="en"><![CDATA[Namespaces are <i>terms</i> which are
+        	<i>containers</i> for a <i>set</i> of term <i>identifiers</i> or <i>names</i>
+        	based on their <i>functionality</i> or <i>semantic origin</i>. Such terms are
+        	used to allow the disambiguation of homonym identifiers residing in different
+        	namespaces.
+        	]]>
+        </kTAG_DEFINITION>
+        <kTAG_SYNONYMS>
+            <item>kTERM_NAMESPACES</item>
+        </kTAG_SYNONYMS>
+    </term>
+    
+    <!-- kTERM_ATTRIBUTES -->
+    <term kTAG_LID="ATTRIBUTES" kTAG_NAMESPACE="">
+        <kTAG_LABEL language="en">Attributes</kTAG_LABEL>
+        <kTAG_DEFINITION language="en"><![CDATA[<i>Attributes</i> or <i>properties</i> are
+			the elements that <i>comprise an object</i>, these may represent
+			<i>categories</i>, <i>descriptions</i> or <i>features</i>. In this ontology,
+			attributes are implemented by a <i>term</i>, which represents the attribute
+			<i>definition</i>, a <i>node</i>, which represents the attribute
+			<i>description</i> and the <i>tag</i>, which represents the attribute
+			<i>name</i>.
+        	]]>
+        </kTAG_DEFINITION>
+        <kTAG_SYNONYMS>
+            <item>kTERM_ATTRIBUTES</item>
+        </kTAG_SYNONYMS>
+    </term>
+    
+    <!-- kTERM_PREDICATES -->
+    <term kTAG_LID="ATTRIBUTES" kTAG_NAMESPACE="">
+        <kTAG_LABEL language="en">Predicates</kTAG_LABEL>
+        <kTAG_DEFINITION language="en"><![CDATA[<i>Predicates</i> are <i>terms</i> which are
+        	used to <i>link</i> a <i>subject vertex</i> to an <i>object vertex</i> into a
+			<i>relationship</i> or graph <i>directed edge</i>.
+        	]]>
+        </kTAG_DEFINITION>
+        <kTAG_SYNONYMS>
+            <item>kTERM_ATTRIBUTES</item>
+        </kTAG_SYNONYMS>
+    </term>
+    
+    <!-- kTERM_ENUMERATIONS -->
+    <term kTAG_LID="ENUMERATIONS" kTAG_NAMESPACE="">
+        <kTAG_LABEL language="en">Enumerations</kTAG_LABEL>
+        <kTAG_DEFINITION language="en"><![CDATA[Enumerations are <i>terms</i> which
+        	represent <i>elements</i> of a <i>controlled vocabulary</i> or <i>enumerated
+			set</i>. The local identifier of these terms can be used as the value of an
+			attribute typed as an enumerated set, while their global identifier can
+			unambiguously be used in any scope.
+        	]]>
+        </kTAG_DEFINITION>
+        <kTAG_SYNONYMS>
+            <item>kTERM_ENUMERATIONS</item>
+        </kTAG_SYNONYMS>
+    </term>
+    
+    <!-- ATTRIBUTE CATEGORY TERMS -->
+    
+    <!-- kTERM_IDENTIFICATION -->
+    <term kTAG_LID="IDENTIFICATION" kTAG_NAMESPACE="">
+        <kTAG_LABEL language="en">Identification</kTAG_LABEL>
+        <kTAG_DEFINITION language="en"><![CDATA[Identification attributes are those which
+        	allow the <i>identification</i>, <i>disambiguation</i> or <i>discrimination</i>
+        	of objects. These attributes are used to make an object <i>unique</i>.
+        	]]>
+        </kTAG_DEFINITION>
+        <kTAG_SYNONYMS>
+            <item>kTERM_IDENTIFICATION</item>
+        </kTAG_SYNONYMS>
+    </term>
+    
+    <!-- kTERM_REFERENCE -->
+    <term kTAG_LID="REFERENCE" kTAG_NAMESPACE="">
+        <kTAG_LABEL language="en">Reference</kTAG_LABEL>
+        <kTAG_DEFINITION language="en"><![CDATA[Reference attributes allow the
+        	<i>identification</i> and <i>retrieval</i> of <i>related objects</i>. This type
+			of <i>relationship</i> differs from the graph kind of relationships in that the
+			object <i>embeds</i> the <i>reference</i> and does not attach a predicate to the
+			link.
+        	]]>
+        </kTAG_DEFINITION>
+        <kTAG_SYNONYMS>
+            <item>kTERM_REFERENCE</item>
+        </kTAG_SYNONYMS>
+    </term>
+    
+    <!-- kTERM_CLASSIFICATION -->
+    <term kTAG_LID="CLASSIFICATION" kTAG_NAMESPACE="">
+        <kTAG_LABEL language="en">Classification</kTAG_LABEL>
+        <kTAG_DEFINITION language="en"><![CDATA[Classification attributes are
+        	<i>categorical qualifications</i> that group objects around a series of
+        	<i>indicators</i> or <i>aggregators</i>. These indicators are generally used as
+        	<i>summary keys</i>.
+        	]]>
+        </kTAG_DEFINITION>
+        <kTAG_SYNONYMS>
+            <item>kTERM_CLASSIFICATION</item>
+        </kTAG_SYNONYMS>
+    </term>
+    
+    <!-- kTERM_ILLUSTRATION -->
+    <term kTAG_LID="ILLUSTRATION" kTAG_NAMESPACE="">
+        <kTAG_LABEL language="en">Illustration</kTAG_LABEL>
+        <kTAG_DEFINITION language="en"><![CDATA[Illustration attributes are used to provide
+        	<i>definition</i>, <i>description</i> or <i>qualitative information</i> for an
+        	object.
+        	]]>
+        </kTAG_DEFINITION>
+        <kTAG_SYNONYMS>
+            <item>kTERM_ILLUSTRATION</item>
+        </kTAG_SYNONYMS>
+    </term>
+    
+    <!-- kTERM_AUTHORSHIP -->
+    <term kTAG_LID="AUTHORSHIP" kTAG_NAMESPACE="">
+        <kTAG_LABEL language="en">Authorship</kTAG_LABEL>
+        <kTAG_DEFINITION language="en"><![CDATA[Authorship attributes are used to indicate
+        	the <i>origin</i>, <i>provenance</i> or <i>authority</i> for an object.
+        	]]>
+        </kTAG_DEFINITION>
+        <kTAG_SYNONYMS>
+            <item>kTERM_AUTHORSHIP</item>
+        </kTAG_SYNONYMS>
+    </term>
+    
+    <!-- kTERM_STATUS -->
+    <term kTAG_LID="STATUS" kTAG_NAMESPACE="">
+        <kTAG_LABEL language="en">Status</kTAG_LABEL>
+        <kTAG_DEFINITION language="en"><![CDATA[Status attributes indicate the <i>state</i>,
+        	<i>level</i> or <i>outcome</i> of an <i>object</i> or an <i>event</i>. These
+			attributes are also used to provide <i>statistical information</i>.
+        	]]>
+        </kTAG_DEFINITION>
+        <kTAG_SYNONYMS>
+            <item>kTERM_STATUS</item>
+        </kTAG_SYNONYMS>
+    </term>
+    
+    <!-- ENUMERATION CATEGORY TERMS -->
+    
+    <!-- kTERM_TYPES -->
+    <term kTAG_LID="TYPES" kTAG_NAMESPACE="">
+        <kTAG_LABEL language="en">Types</kTAG_LABEL>
+        <kTAG_DEFINITION language="en"><![CDATA[A type is a <i>generalised qualification</i>
+        	applied to an object. In general this kind of terms will be used to indicate a
+        	<i>data type</i>, <i>scale</i> or <i>unit</i>.
+        	]]>
+        </kTAG_DEFINITION>
+        <kTAG_SYNONYMS>
+            <item>kTERM_TYPES</item>
+        </kTAG_SYNONYMS>
+    </term>
+    
+    <!-- kTERM_KINDS -->
+    <term kTAG_LID="KINDS" kTAG_NAMESPACE="">
+        <kTAG_LABEL language="en">Kinds</kTAG_LABEL>
+        <kTAG_DEFINITION language="en"><![CDATA[A kind is similar to a type, except that
+        	while the type is general, the kind is <i>specific to the class</i> of the
+        	object. Kinds are used to <i>cluster</i> objects of the same class.
+        	]]>
+        </kTAG_DEFINITION>
+        <kTAG_SYNONYMS>
+            <item>kTERM_KINDS</item>
+        </kTAG_SYNONYMS>
+    </term>
+    
+    <!-- kTERM_STATES -->
+    <term kTAG_LID="STATES" kTAG_NAMESPACE="">
+        <kTAG_LABEL language="en">States</kTAG_LABEL>
+        <kTAG_DEFINITION language="en"><![CDATA[State terms indicate the <i>status</i>,
+        	<i>condition</i> or <i>state</i> of an object or event. These classifications
+        	are generally used to qualify the <i>outcome of an operation</i>.
+        	]]>
+        </kTAG_DEFINITION>
+        <kTAG_SYNONYMS>
+            <item>kTERM_STATES</item>
+        </kTAG_SYNONYMS>
+    </term>
+    
+    <!-- kTERM_OPERATORS -->
+    <term kTAG_LID="OPERATORS" kTAG_NAMESPACE="">
+        <kTAG_LABEL language="en">Operators</kTAG_LABEL>
+        <kTAG_DEFINITION language="en"><![CDATA[Operators indicate an <i>operation type</i>,
+        	they relate a <i>subject</i> and <i>object</i> <i>operands</i>. Operators are
+        	similar to <i>predicates</i>, except that they always produce a result.
+        	]]>
+        </kTAG_DEFINITION>
+        <kTAG_SYNONYMS>
+            <item>kTERM_OPERATORS</item>
+        </kTAG_SYNONYMS>
+    </term>
+    
+    <!-- TYPE CATEGORY TERMS -->
+    
+    <!-- kTERM_PRIMITIVES -->
+    <term kTAG_LID="PRIMITIVES" kTAG_NAMESPACE="">
+        <kTAG_LABEL language="en">Primitives</kTAG_LABEL>
+        <kTAG_DEFINITION language="en"><![CDATA[Primitives are <i>scalar types</i> that
+        	represent the building blocks of all other composite types.
+        	]]>
+        </kTAG_DEFINITION>
+        <kTAG_SYNONYMS>
+            <item>kTERM_PRIMITIVES</item>
+        </kTAG_SYNONYMS>
+    </term>
+    
+    <!-- kTERM_STRUCTURES -->
+    <term kTAG_LID="STRUCTURES" kTAG_NAMESPACE="">
+        <kTAG_LABEL language="en">Structures</kTAG_LABEL>
+        <kTAG_DEFINITION language="en"><![CDATA[Structures are <i>nested collections of
+        	primitive data types</i>. The data type refers to the structure, not to the
+        	individual primitives.
+        	]]>
+        </kTAG_DEFINITION>
+        <kTAG_SYNONYMS>
+            <item>kTERM_STRUCTURES</item>
+        </kTAG_SYNONYMS>
+    </term>
+    
+    <!-- kTERM_ENUMERATED -->
+    <term kTAG_LID="ENUMERATED" kTAG_NAMESPACE="">
+        <kTAG_LABEL language="en">Enumerated</kTAG_LABEL>
+        <kTAG_DEFINITION language="en"><![CDATA[Enumerated type values must be selected
+        	among a <i>finite set of values</i> or from a <i>controlled vocabulary</i>.
+        	Attributes of this type are validated by the set domain.
+        	]]>
+        </kTAG_DEFINITION>
+        <kTAG_SYNONYMS>
+            <item>kTERM_ENUMERATED</item>
+        </kTAG_SYNONYMS>
+    </term>
+    
+    <!-- kTERM_CARDINALITY -->
+    <term kTAG_LID="CARDINALITY" kTAG_NAMESPACE="">
+        <kTAG_LABEL language="en">Cardinality</kTAG_LABEL>
+        <kTAG_DEFINITION language="en"><![CDATA[Cardinality types must be used <i>in
+        	conjunction with other types</i>, they indicate whether the value is required
+        	or whether the value is a list. This type acts as a <i>modifier</i> for the
+			other types.
+        	]]>
+        </kTAG_DEFINITION>
+        <kTAG_SYNONYMS>
+            <item>kTERM_CARDINALITY</item>
+        </kTAG_SYNONYMS>
+    </term>
+    
+    <!-- kTERM_RELATIONSHIP -->
+    <term kTAG_LID="RELATIONSHIP" kTAG_NAMESPACE="">
+        <kTAG_LABEL language="en">Relationship</kTAG_LABEL>
+        <kTAG_DEFINITION language="en"><![CDATA[Relationship types enumerate the different
+        	<i>kinds of relation</i>, they qualify the <i>relationship flow</i>.
+        	]]>
+        </kTAG_DEFINITION>
+        <kTAG_SYNONYMS>
+            <item>kTERM_RELATIONSHIP</item>
+        </kTAG_SYNONYMS>
+    </term>
+</terms>

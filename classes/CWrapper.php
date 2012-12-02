@@ -102,7 +102,7 @@ require_once( kPATH_MYWRAPPER_LIBRARY_CLASS."/CWrapper.inc.php" );
  *		This section is returned by default and will inform on the status of the requested
  *		operation. It consists of an array containing the following elements:
  *	 <ul>
- *		<li><i>{@link kTERM_STATUS}</i>: <i>Response status</i>.
+ *		<li><i>{@link kTERM_STATUS_LEVEL}</i>: <i>Response status</i>.
  *			This element will be returned by default regardless of the operation outcome.
  *			This corresponds to the severity of the response and it can take the following
  *			values:
@@ -472,7 +472,7 @@ class CWrapper extends CConnection
 		//
 		// Set state.
 		//
-		$status[ kTERM_STATUS ] = kSTATUS_IDLE;
+		$status[ kTERM_STATUS_LEVEL ] = kSTATUS_IDLE;
 		
 		//
 		// Set idle status code.
@@ -1251,7 +1251,7 @@ class CWrapper extends CConnection
 	 *
 	 * <ul>
 	 *	<li><i>{@link CException::Severity()}</i>: This value will be set as the status
-	 *		{@link kTERM_STATUS}.
+	 *		{@link kTERM_STATUS_LEVEL}.
 	 *	<li><i>{@link Exception::getCode()}</i>: This value will be set as the status
 	 *		{@link kTERM_STATUS_CODE}.
 	 *	<li><i>{@link Exception::getMessage()}</i>: This value will be set in the status
@@ -1328,7 +1328,7 @@ class CWrapper extends CConnection
 		if( $theException instanceof CException )
 		{
 			if( ($tmp = $theException->Severity()) !== NULL )
-				$status[ kTERM_STATUS ] = $tmp;
+				$status[ kTERM_STATUS_LEVEL ] = $tmp;
 			if( $tmp = $theException->Reference() )
 			{
 				if( ! array_key_exists( kTERM_NOTES, $status ) )

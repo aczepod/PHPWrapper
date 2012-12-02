@@ -859,7 +859,7 @@
         <kTAG_KIND>
             <item>:TERM-KIND-ENUMERATION</item>
         </kTAG_KIND>
-        <kTAG_LABEL language="en">:XML</kTAG_LABEL>
+        <kTAG_LABEL language="en">:SVG</kTAG_LABEL>
         <kTAG_DEFINITION language="en"><![CDATA[This type represents the <tt>SVG</tt>
         	encoded data format. This type is functionally identical to the XML type,
         	except that the <i>contents represent an encoded vector image file</i>.

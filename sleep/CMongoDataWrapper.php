@@ -827,7 +827,7 @@ class CMongoDataWrapper extends CDataWrapper
 			//
 			// Set severity.
 			//
-			$this->_OffsetManage( kAPI_STATUS, kTERM_STATUS,
+			$this->_OffsetManage( kAPI_STATUS, kTERM_STATUS_LEVEL,
 								  kSTATUS_WARNING );
 			
 			//
@@ -1507,7 +1507,7 @@ class CMongoDataWrapper extends CDataWrapper
 				//
 				// Set severity.
 				//
-				$this->_OffsetManage( kAPI_STATUS, kTERM_STATUS, kSTATUS_ERROR );
+				$this->_OffsetManage( kAPI_STATUS, kTERM_STATUS_LEVEL, kSTATUS_ERROR );
 				
 				//
 				// Set code.
@@ -1672,7 +1672,7 @@ class CMongoDataWrapper extends CDataWrapper
 				//
 				// Set severity.
 				//
-				$this->_OffsetManage( kAPI_STATUS, kTERM_STATUS, kSTATUS_ERROR );
+				$this->_OffsetManage( kAPI_STATUS, kTERM_STATUS_LEVEL, kSTATUS_ERROR );
 				
 				//
 				// Set code.
@@ -1768,7 +1768,7 @@ class CMongoDataWrapper extends CDataWrapper
 				//
 				// Set severity.
 				//
-				$this->_OffsetManage( kAPI_STATUS, kTERM_STATUS, kSTATUS_ERROR );
+				$this->_OffsetManage( kAPI_STATUS, kTERM_STATUS_LEVEL, kSTATUS_ERROR );
 				
 				//
 				// Set code.
