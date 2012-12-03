@@ -4,7 +4,8 @@
     
     <!-- kTERM_ONTOLOGY -->
     <node kTAG_GID=":ONTOLOGY">
-        <kTAG_DESCRIPTION language="en"><![CDATA[This represents the <i>default
+		<kTAG_CLASS>COntologyMasterVertex</kTAG_CLASS>
+        <kTAG_DESCRIPTION  language="en"><![CDATA[This represents the <i>default
         	ontology</i>, it defines all the elements that are used to build the ontology
         	itself.
         	]]>
@@ -13,7 +14,8 @@
     
     <!-- kTERM_NAMESPACES -->
     <node kTAG_GID=":NAMESPACES">
-        <kTAG_DESCRIPTION language="en"><![CDATA[This represents the <i>default
+		<kTAG_CLASS>COntologyMasterVertex</kTAG_CLASS>
+        <kTAG_DESCRIPTION  language="en"><![CDATA[This represents the <i>default
         	namespace</i>, it groups all identifiers which are used internally by the
         	ontology.
         	]]>
@@ -22,7 +24,8 @@
     
     <!-- kTERM_ATTRIBUTES -->
     <node kTAG_GID=":ATTRIBUTES">
-        <kTAG_DESCRIPTION language="en"><![CDATA[This is the collection of all <i>default
+		<kTAG_CLASS>COntologyMasterVertex</kTAG_CLASS>
+        <kTAG_DESCRIPTION  language="en"><![CDATA[This is the collection of all <i>default
         	attributes</i>, these attributes are the properties of the internal objects of
         	this ontology engine.
         	]]>
@@ -31,7 +34,8 @@
     
     <!-- kTERM_PREDICATES -->
     <node kTAG_GID=":PREDICATES">
-        <kTAG_DESCRIPTION language="en"><![CDATA[This is the collection of all <i>default
+		<kTAG_CLASS>COntologyMasterVertex</kTAG_CLASS>
+        <kTAG_DESCRIPTION  language="en"><![CDATA[This is the collection of all <i>default
         	predicates</i>, these represent the required predicates for building the
         	ontology.
         	]]>
@@ -40,7 +44,8 @@
     
     <!-- kTERM_ENUMERATIONS -->
     <node kTAG_GID=":ENUMERATIONS">
-        <kTAG_DESCRIPTION language="en"><![CDATA[This is the collection of all <i>default
+		<kTAG_CLASS>COntologyMasterVertex</kTAG_CLASS>
+        <kTAG_DESCRIPTION  language="en"><![CDATA[This is the collection of all <i>default
         	enumerated sets</i>, these represent the required controlled vocabulary that
         	manages the ontology.
         	]]>
@@ -51,7 +56,8 @@
     
     <!-- kTERM_IDENTIFICATION -->
     <node kTAG_GID=":IDENTIFICATION">
-        <kTAG_DESCRIPTION language="en"><![CDATA[This group of attributes allows <i>querying
+		<kTAG_CLASS>COntologyMasterVertex</kTAG_CLASS>
+        <kTAG_DESCRIPTION  language="en"><![CDATA[This group of attributes allows <i>querying
         	ontology component collections</i> by <i>identifier</i> or <i>synonym</i>.
         	]]>
         </kTAG_DESCRIPTION>
@@ -59,7 +65,8 @@
     
     <!-- kTERM_REFERENCE -->
     <node kTAG_GID=":REFERENCE">
-        <kTAG_DESCRIPTION language="en"><![CDATA[This group of attributes allows <i>cross
+		<kTAG_CLASS>COntologyMasterVertex</kTAG_CLASS>
+        <kTAG_DESCRIPTION  language="en"><![CDATA[This group of attributes allows <i>cross
         	referencing</i> <i>terms</i>, <i>nodes</i>, <i>edges</i> and <i>tags</i>. These
         	references are not implemented as relationships, but as object properties.
         	]]>
@@ -68,7 +75,8 @@
     
     <!-- kTERM_CLASSIFICATION -->
     <node kTAG_GID=":CLASSIFICATION">
-        <kTAG_DESCRIPTION language="en"><![CDATA[This group of attributes provide a
+		<kTAG_CLASS>COntologyMasterVertex</kTAG_CLASS>
+        <kTAG_DESCRIPTION  language="en"><![CDATA[This group of attributes provide a
         	<i>qualification</i> and <i>formal function</i> to the ontology objects, they
         	provide the rules of the behaviour of <i>terms</i>, <i>nodes</i>, <i>edges</i>
         	and <i>tags</i>.
@@ -78,7 +86,8 @@
     
     <!-- kTERM_ILLUSTRATION -->
     <node kTAG_GID=":ILLUSTRATION">
-        <kTAG_DESCRIPTION language="en"><![CDATA[This group of attributes <i>describe</i>
+		<kTAG_CLASS>COntologyMasterVertex</kTAG_CLASS>
+        <kTAG_DESCRIPTION  language="en"><![CDATA[This group of attributes <i>describe</i>
         	and <i>name</i> the hosting objects, they provide a means to <i>illustrate</i>
         	and provide further details on objects and their context.
         	]]>
@@ -87,7 +96,8 @@
     
     <!-- kTERM_AUTHORSHIP -->
     <node kTAG_GID=":AUTHORSHIP">
-        <kTAG_DESCRIPTION language="en"><![CDATA[This group of attributes are used to
+		<kTAG_CLASS>COntologyMasterVertex</kTAG_CLASS>
+        <kTAG_DESCRIPTION  language="en"><![CDATA[This group of attributes are used to
         	<i>reference</i> or <i>name</i> the <i>authors</i> or <i>origin</i> of the
         	elements of the ontology.
         	]]>
@@ -96,7 +106,8 @@
     
     <!-- kTERM_STATUS -->
     <node kTAG_GID=":STATUS">
-        <kTAG_DESCRIPTION language="en"><![CDATA[This group of attributes provide
+		<kTAG_CLASS>COntologyMasterVertex</kTAG_CLASS>
+        <kTAG_DESCRIPTION  language="en"><![CDATA[This group of attributes provide
         	<i>status</i> information about the outcome of an event or <i>state</i>
         	information on an object.
         	]]>
@@ -107,7 +118,8 @@
     
     <!-- kTERM_TYPES -->
     <node kTAG_GID=":TYPES">
-        <kTAG_DESCRIPTION language="en"><![CDATA[This group of enumerated sets covers the
+		<kTAG_CLASS>COntologyMasterVertex</kTAG_CLASS>
+        <kTAG_DESCRIPTION  language="en"><![CDATA[This group of enumerated sets covers the
         	<i>data types</i> that the ontology handles.
         	]]>
         </kTAG_DESCRIPTION>
@@ -115,7 +127,8 @@
     
     <!-- kTERM_KINDS -->
     <node kTAG_GID=":KINDS">
-        <kTAG_DESCRIPTION language="en"><![CDATA[This controlled vocabulary collects all
+		<kTAG_CLASS>COntologyMasterVertex</kTAG_CLASS>
+        <kTAG_DESCRIPTION  language="en"><![CDATA[This controlled vocabulary collects all
         	the <i>categories</i> that define the <i>kind</i> of an <i>ontology
         	component</i>.
         	]]>
@@ -124,7 +137,8 @@
     
     <!-- kTERM_STATES -->
     <node kTAG_GID=":STATES">
-        <kTAG_DESCRIPTION language="en"><![CDATA[This enumerated set describes the
+		<kTAG_CLASS>COntologyMasterVertex</kTAG_CLASS>
+        <kTAG_DESCRIPTION  language="en"><![CDATA[This enumerated set describes the
         	<i>status level</i> or <i>severity</i> of an event's outcome.
         	]]>
         </kTAG_DESCRIPTION>
@@ -135,7 +149,8 @@
     
     <!-- kTERM_OPERATORS -->
     <node kTAG_GID=":OPERATORS">
-        <kTAG_DESCRIPTION language="en"><![CDATA[This enumerated set represents the
+		<kTAG_CLASS>COntologyMasterVertex</kTAG_CLASS>
+        <kTAG_DESCRIPTION  language="en"><![CDATA[This enumerated set represents the
         	<i>standard set of operators</i> which can be used to <i>query data
         	containers</i>.
         	]]>
@@ -146,7 +161,8 @@
     
     <!-- kTERM_PRIMITIVES -->
     <node kTAG_GID=":PRIMITIVES">
-        <kTAG_DESCRIPTION language="en"><![CDATA[These represent the <i>default primitive
+		<kTAG_CLASS>COntologyMasterVertex</kTAG_CLASS>
+        <kTAG_DESCRIPTION  language="en"><![CDATA[These represent the <i>default primitive
         	data types</i>.
         	]]>
         </kTAG_DESCRIPTION>
@@ -154,7 +170,8 @@
     
     <!-- kTERM_STRUCTURES -->
     <node kTAG_GID=":STRUCTURES">
-        <kTAG_DESCRIPTION language="en"><![CDATA[These represent the <i>default structured
+		<kTAG_CLASS>COntologyMasterVertex</kTAG_CLASS>
+        <kTAG_DESCRIPTION  language="en"><![CDATA[These represent the <i>default structured
         	data types</i>.
         	]]>
         </kTAG_DESCRIPTION>
@@ -162,7 +179,8 @@
     
     <!-- kTERM_ENUMERATED -->
     <node kTAG_GID=":ENUMERATED">
-        <kTAG_DESCRIPTION language="en"><![CDATA[These represent the <i>default enumerated
+		<kTAG_CLASS>COntologyMasterVertex</kTAG_CLASS>
+        <kTAG_DESCRIPTION  language="en"><![CDATA[These represent the <i>default enumerated
         	data types</i>.
         	]]>
         </kTAG_DESCRIPTION>
@@ -170,7 +188,8 @@
     
     <!-- kTERM_CARDINALITY -->
     <node kTAG_GID=":CARDINALITY">
-        <kTAG_DESCRIPTION language="en"><![CDATA[These represent the <i>default cardinality
+		<kTAG_CLASS>COntologyMasterVertex</kTAG_CLASS>
+        <kTAG_DESCRIPTION  language="en"><![CDATA[These represent the <i>default cardinality
         	types</i>.
         	]]>
         </kTAG_DESCRIPTION>
@@ -178,8 +197,8 @@
     
     <!-- kTERM_RELATIONSHIP -->
     <node kTAG_GID=":RELATIONSHIP">
-        <kTAG_LABEL language="en">Relationship</kTAG_LABEL>
-        <kTAG_DESCRIPTION language="en"><![CDATA[These represent the <i>default relationship
+		<kTAG_CLASS>COntologyMasterVertex</kTAG_CLASS>
+        <kTAG_DESCRIPTION  language="en"><![CDATA[These represent the <i>default relationship
         	types</i>.
         	]]>
         </kTAG_DESCRIPTION>

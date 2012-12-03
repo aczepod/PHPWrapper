@@ -216,6 +216,13 @@ class COntologyNode extends CNode
 	 *		<li><i>{@link kTYPE_RESTRICTED}</i>: Restricted, the element referred by the
 	 *			current node is restricted to an enumerated set; if this tag is missing, it
 	 *			means that the element may take values not belonging to the enumerated set.
+	 *		<li><i>{@link kTYPE_COMPUTED}</i>: Computed, the element referred by the
+	 *			current node is computed or set automatically; if this tag is missing, it
+	 *			means that the element must be set explicitly.
+	 *		<li><i>{@link kTYPE_LOCKED}</i>: Locked, the element referred by the
+	 *			current node will be locked or read-only once the object has been committed;
+	 *			if this tag is missing, it means that the element may be modified after
+	 *			committing the object.
 	 *		<li><i>{@link kTYPE_ARRAY}</i>: Array, the element referred by the current
 	 *			node is a list in which each element is of the data type indicated by the
 	 *			previous set; if this tag is missing, it means that the element is a scalar.
@@ -290,6 +297,7 @@ class COntologyNode extends CNode
 				// Handle data types.
 				//
 				case kTYPE_STRING:
+				case kTYPE_INT:
 				case kTYPE_INT32:
 				case kTYPE_INT64:
 				case kTYPE_FLOAT:
@@ -326,7 +334,9 @@ class COntologyNode extends CNode
 								  FALSE );
 			
 				case kTYPE_REQUIRED:
-				case kTYPE_RESTICTED:
+				case kTYPE_RESTRICTED:
+				case kTYPE_COMPUTED:
+				case kTYPE_LOCKED:
 				case kTYPE_ARRAY:
 					break;
 				

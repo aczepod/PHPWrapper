@@ -431,6 +431,20 @@
     	<kTAG_OBJECT>:CARDINALITY</kTAG_OBJECT>
     </edge>
     
+    <!-- kTYPE_COMPUTED -->
+	<edge>
+    	<kTAG_SUBJECT>:COMPUTED</kTAG_SUBJECT>
+    	<kTAG_PREDICATE>:SUBCLASS-OF</kTAG_PREDICATE>
+    	<kTAG_OBJECT>:CARDINALITY</kTAG_OBJECT>
+    </edge>
+    
+    <!-- kTYPE_LOCKED -->
+	<edge>
+    	<kTAG_SUBJECT>:LOCKED</kTAG_SUBJECT>
+    	<kTAG_PREDICATE>:SUBCLASS-OF</kTAG_PREDICATE>
+    	<kTAG_OBJECT>:CARDINALITY</kTAG_OBJECT>
+    </edge>
+    
     <!-- kTYPE_ARRAY -->
 	<edge>
     	<kTAG_SUBJECT>:ARRAY</kTAG_SUBJECT>

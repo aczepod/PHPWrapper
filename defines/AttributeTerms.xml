@@ -2,6 +2,19 @@
 <terms>
     <!-- IDENTIFICATION ATTRIBUTES -->
     
+    <!-- kTERM_NID -->
+    <term kTAG_LID="NID" kTAG_NAMESPACE="">
+        <kTAG_LABEL language="en">Native identifier</kTAG_LABEL>
+        <kTAG_DEFINITION language="en"><![CDATA[The <i>native identifier</i> uniquely
+        	identifies an object <i>within its container</i>, this attribute is <i>specific
+        	to the storage engine</i> and will be in general a native data type.
+        	]]>
+        </kTAG_DEFINITION>
+        <kTAG_SYNONYMS>
+            <item>kTERM_NID</item>
+        </kTAG_SYNONYMS>
+    </term>
+    
     <!-- kTERM_LID -->
     <term kTAG_LID="LID" kTAG_NAMESPACE="">
         <kTAG_LABEL language="en">Local identifier</kTAG_LABEL>

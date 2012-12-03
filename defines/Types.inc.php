@@ -498,6 +498,34 @@ define( "kTYPE_REQUIRED",						':REQUIRED' );
 define( "kTYPE_RESTRICTED",						':RESTRICTED' );
 
 /**
+ * COMPUTED.
+ *
+ * Computed.
+ *
+ * This type indicates that the element is computed, which means that it is automatically
+ * filled usually when committing the object.
+ *
+ * If this type is missing, it means that the attribute must be explicitly set.
+ *
+ * Version 1: (kTYPE_COMPUTED)[:COMPUTED]
+ */
+define( "kTYPE_COMPUTED",						':COMPUTED' );
+
+/**
+ * LOCKED.
+ *
+ * Locked.
+ *
+ * This type indicates that the element is locked, which means that it is not modifiable.
+ * This means that the value cannot be changed once the object has been committed.
+ *
+ * If this type is missing, it means that the attribute can be explicitly modified.
+ *
+ * Version 1: (kTYPE_LOCKED)[:LOCKED]
+ */
+define( "kTYPE_LOCKED",							':LOCKED' );
+
+/**
  * ARRAY.
  *
  * Array.

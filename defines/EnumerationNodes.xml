@@ -4,49 +4,56 @@
     
     <!-- kSTATUS_IDLE -->
     <node kTAG_GID=":STATUS:0">
-        <kTAG_KIND>
+		<kTAG_CLASS>COntologyMasterVertex</kTAG_CLASS>
+		<kTAG_KIND>
             <item>:KIND-ENUMERATION</item>
         </kTAG_KIND>
     </node>
     
     <!-- kSTATUS_NOTICE -->
     <node kTAG_GID=":STATUS:10">
-        <kTAG_KIND>
+		<kTAG_CLASS>COntologyMasterVertex</kTAG_CLASS>
+		<kTAG_KIND>
             <item>:KIND-ENUMERATION</item>
         </kTAG_KIND>
     </node>
     
     <!-- kSTATUS_MESSAGE -->
     <node kTAG_GID=":STATUS:20">
-        <kTAG_KIND>
+		<kTAG_CLASS>COntologyMasterVertex</kTAG_CLASS>
+		<kTAG_KIND>
             <item>:KIND-ENUMERATION</item>
         </kTAG_KIND>
     </node>
     
     <!-- kSTATUS_WARNING -->
     <node kTAG_GID=":STATUS:30">
-        <kTAG_KIND>
+		<kTAG_CLASS>COntologyMasterVertex</kTAG_CLASS>
+		<kTAG_KIND>
             <item>:KIND-ENUMERATION</item>
         </kTAG_KIND>
     </node>
     
     <!-- kSTATUS_ERROR -->
     <node kTAG_GID=":STATUS:40">
-        <kTAG_KIND>
+		<kTAG_CLASS>COntologyMasterVertex</kTAG_CLASS>
+		<kTAG_KIND>
             <item>:KIND-ENUMERATION</item>
         </kTAG_KIND>
     </node>
     
     <!-- kSTATUS_FATAL -->
     <node kTAG_GID=":STATUS:50">
-        <kTAG_KIND>
+		<kTAG_CLASS>COntologyMasterVertex</kTAG_CLASS>
+		<kTAG_KIND>
             <item>:KIND-ENUMERATION</item>
         </kTAG_KIND>
     </node>
     
     <!-- kSTATUS_BUG -->
     <node kTAG_GID=":STATUS:60">
-        <kTAG_KIND>
+		<kTAG_CLASS>COntologyMasterVertex</kTAG_CLASS>
+		<kTAG_KIND>
             <item>:KIND-ENUMERATION</item>
         </kTAG_KIND>
     </node>
@@ -55,175 +62,200 @@
     
     <!-- kOPERATOR_DISABLED -->
     <node kTAG_GID=":$NO">
-        <kTAG_KIND>
+		<kTAG_CLASS>COntologyMasterVertex</kTAG_CLASS>
+		<kTAG_KIND>
             <item>:KIND-ENUMERATION</item>
         </kTAG_KIND>
     </node>
     
     <!-- kOPERATOR_EQUAL -->
     <node kTAG_GID=":$EQ">
-        <kTAG_KIND>
+		<kTAG_CLASS>COntologyMasterVertex</kTAG_CLASS>
+		<kTAG_KIND>
             <item>:KIND-ENUMERATION</item>
         </kTAG_KIND>
     </node>
     
     <!-- kOPERATOR_EQUAL_NOT -->
     <node kTAG_GID=":$NE">
-        <kTAG_KIND>
+		<kTAG_CLASS>COntologyMasterVertex</kTAG_CLASS>
+		<kTAG_KIND>
             <item>:KIND-ENUMERATION</item>
         </kTAG_KIND>
     </node>
     
     <!-- kOPERATOR_LIKE -->
     <node kTAG_GID=":$AS">
-        <kTAG_KIND>
+		<kTAG_CLASS>COntologyMasterVertex</kTAG_CLASS>
+		<kTAG_KIND>
             <item>:KIND-ENUMERATION</item>
         </kTAG_KIND>
     </node>
     
     <!-- kOPERATOR_LIKE_NOT -->
     <node kTAG_GID=":$NS">
-        <kTAG_KIND>
+		<kTAG_CLASS>COntologyMasterVertex</kTAG_CLASS>
+		<kTAG_KIND>
             <item>:KIND-ENUMERATION</item>
         </kTAG_KIND>
     </node>
     
     <!-- kOPERATOR_PREFIX -->
     <node kTAG_GID=":$PX">
-        <kTAG_KIND>
+		<kTAG_CLASS>COntologyMasterVertex</kTAG_CLASS>
+		<kTAG_KIND>
             <item>:KIND-ENUMERATION</item>
         </kTAG_KIND>
     </node>
     
     <!-- kOPERATOR_PREFIX_NOCASE -->
     <node kTAG_GID=":$PXi">
-        <kTAG_KIND>
+		<kTAG_CLASS>COntologyMasterVertex</kTAG_CLASS>
+		<kTAG_KIND>
             <item>:KIND-ENUMERATION</item>
         </kTAG_KIND>
     </node>
     
     <!-- kOPERATOR_CONTAINS -->
     <node kTAG_GID=":$CX">
-        <kTAG_KIND>
+		<kTAG_CLASS>COntologyMasterVertex</kTAG_CLASS>
+		<kTAG_KIND>
             <item>:KIND-ENUMERATION</item>
         </kTAG_KIND>
     </node>
     
     <!-- kOPERATOR_CONTAINS_NOCASE -->
     <node kTAG_GID=":$CXi">
-        <kTAG_KIND>
+		<kTAG_CLASS>COntologyMasterVertex</kTAG_CLASS>
+		<kTAG_KIND>
             <item>:KIND-ENUMERATION</item>
         </kTAG_KIND>
     </node>
     
     <!-- kOPERATOR_SUFFIX -->
     <node kTAG_GID=":$SX">
-        <kTAG_KIND>
+		<kTAG_CLASS>COntologyMasterVertex</kTAG_CLASS>
+		<kTAG_KIND>
             <item>:KIND-ENUMERATION</item>
         </kTAG_KIND>
     </node>
     
     <!-- kOPERATOR_SUFFIX_NOCASE -->
     <node kTAG_GID=":$SXi">
-        <kTAG_KIND>
+		<kTAG_CLASS>COntologyMasterVertex</kTAG_CLASS>
+		<kTAG_KIND>
             <item>:KIND-ENUMERATION</item>
         </kTAG_KIND>
     </node>
     
     <!-- kOPERATOR_REGEX -->
     <node kTAG_GID=":$RE">
-        <kTAG_KIND>
+		<kTAG_CLASS>COntologyMasterVertex</kTAG_CLASS>
+		<kTAG_KIND>
             <item>:KIND-ENUMERATION</item>
         </kTAG_KIND>
     </node>
     
     <!-- kOPERATOR_LESS -->
     <node kTAG_GID=":$LT">
-        <kTAG_KIND>
+		<kTAG_CLASS>COntologyMasterVertex</kTAG_CLASS>
+		<kTAG_KIND>
             <item>:KIND-ENUMERATION</item>
         </kTAG_KIND>
     </node>
     
     <!-- kOPERATOR_LESS_EQUAL -->
     <node kTAG_GID=":$LE">
-        <kTAG_KIND>
+		<kTAG_CLASS>COntologyMasterVertex</kTAG_CLASS>
+		<kTAG_KIND>
             <item>:KIND-ENUMERATION</item>
         </kTAG_KIND>
     </node>
     
     <!-- kOPERATOR_GREAT -->
     <node kTAG_GID=":$GT">
-        <kTAG_KIND>
+		<kTAG_CLASS>COntologyMasterVertex</kTAG_CLASS>
+		<kTAG_KIND>
             <item>:KIND-ENUMERATION</item>
         </kTAG_KIND>
     </node>
     
     <!-- kOPERATOR_GREAT_EQUAL -->
     <node kTAG_GID=":$GE">
-        <kTAG_KIND>
+		<kTAG_CLASS>COntologyMasterVertex</kTAG_CLASS>
+		<kTAG_KIND>
             <item>:KIND-ENUMERATION</item>
         </kTAG_KIND>
     </node>
     
     <!-- kOPERATOR_IRANGE -->
     <node kTAG_GID=":$IRG">
-        <kTAG_KIND>
+		<kTAG_CLASS>COntologyMasterVertex</kTAG_CLASS>
+		<kTAG_KIND>
             <item>:KIND-ENUMERATION</item>
         </kTAG_KIND>
     </node>
     
     <!-- kOPERATOR_ERANGE -->
     <node kTAG_GID=":$ERG">
-        <kTAG_KIND>
+		<kTAG_CLASS>COntologyMasterVertex</kTAG_CLASS>
+		<kTAG_KIND>
             <item>:KIND-ENUMERATION</item>
         </kTAG_KIND>
     </node>
     
     <!-- kOPERATOR_NULL -->
     <node kTAG_GID=":$NU">
-        <kTAG_KIND>
+		<kTAG_CLASS>COntologyMasterVertex</kTAG_CLASS>
+		<kTAG_KIND>
             <item>:KIND-ENUMERATION</item>
         </kTAG_KIND>
     </node>
     
     <!-- kOPERATOR_NOT_NULL -->
     <node kTAG_GID=":$NN">
-        <kTAG_KIND>
+		<kTAG_CLASS>COntologyMasterVertex</kTAG_CLASS>
+		<kTAG_KIND>
             <item>:KIND-ENUMERATION</item>
         </kTAG_KIND>
     </node>
     
     <!-- kOPERATOR_IN -->
     <node kTAG_GID=":$IN">
-        <kTAG_KIND>
+		<kTAG_CLASS>COntologyMasterVertex</kTAG_CLASS>
+		<kTAG_KIND>
             <item>:KIND-ENUMERATION</item>
         </kTAG_KIND>
     </node>
     
     <!-- kOPERATOR_NI -->
     <node kTAG_GID=":$NI">
-        <kTAG_KIND>
+		<kTAG_CLASS>COntologyMasterVertex</kTAG_CLASS>
+		<kTAG_KIND>
             <item>:KIND-ENUMERATION</item>
         </kTAG_KIND>
     </node>
     
     <!-- kOPERATOR_ALL -->
     <node kTAG_GID=":$AL">
-        <kTAG_KIND>
+		<kTAG_CLASS>COntologyMasterVertex</kTAG_CLASS>
+		<kTAG_KIND>
             <item>:KIND-ENUMERATION</item>
         </kTAG_KIND>
     </node>
     
     <!-- kOPERATOR_NALL -->
     <node kTAG_GID=":$NAL">
-        <kTAG_KIND>
+		<kTAG_CLASS>COntologyMasterVertex</kTAG_CLASS>
+		<kTAG_KIND>
             <item>:KIND-ENUMERATION</item>
         </kTAG_KIND>
     </node>
     
     <!-- kOPERATOR_EX -->
     <node kTAG_GID=":$EX">
-        <kTAG_KIND>
+		<kTAG_CLASS>COntologyMasterVertex</kTAG_CLASS>
+		<kTAG_KIND>
             <item>:KIND-ENUMERATION</item>
         </kTAG_KIND>
     </node>
@@ -232,28 +264,32 @@
     
     <!-- kOPERATOR_AND -->
     <node kTAG_GID=":$AND">
-        <kTAG_KIND>
+		<kTAG_CLASS>COntologyMasterVertex</kTAG_CLASS>
+		<kTAG_KIND>
             <item>:KIND-ENUMERATION</item>
         </kTAG_KIND>
     </node>
     
     <!-- kOPERATOR_NAND -->
     <node kTAG_GID=":$NAND">
-        <kTAG_KIND>
+		<kTAG_CLASS>COntologyMasterVertex</kTAG_CLASS>
+		<kTAG_KIND>
             <item>:KIND-ENUMERATION</item>
         </kTAG_KIND>
     </node>
     
     <!-- kOPERATOR_OR -->
     <node kTAG_GID=":$OR">
-        <kTAG_KIND>
+		<kTAG_CLASS>COntologyMasterVertex</kTAG_CLASS>
+		<kTAG_KIND>
             <item>:KIND-ENUMERATION</item>
         </kTAG_KIND>
     </node>
     
     <!-- kOPERATOR_NOR -->
     <node kTAG_GID=":$NOR">
-        <kTAG_KIND>
+		<kTAG_CLASS>COntologyMasterVertex</kTAG_CLASS>
+		<kTAG_KIND>
             <item>:KIND-ENUMERATION</item>
         </kTAG_KIND>
     </node>
@@ -262,35 +298,40 @@
     
     <!-- kTYPE_ANY -->
     <node kTAG_GID=":ANY">
-        <kTAG_KIND>
+		<kTAG_CLASS>COntologyMasterVertex</kTAG_CLASS>
+		<kTAG_KIND>
             <item>:KIND-ENUMERATION</item>
         </kTAG_KIND>
     </node>
     
     <!-- kTYPE_STRING -->
     <node kTAG_GID=":TEXT">
-        <kTAG_KIND>
+		<kTAG_CLASS>COntologyMasterVertex</kTAG_CLASS>
+		<kTAG_KIND>
             <item>:KIND-ENUMERATION</item>
         </kTAG_KIND>
     </node>
     
     <!-- kTYPE_INT -->
     <node kTAG_GID=":INT">
-        <kTAG_KIND>
+		<kTAG_CLASS>COntologyMasterVertex</kTAG_CLASS>
+		<kTAG_KIND>
             <item>:KIND-ENUMERATION</item>
         </kTAG_KIND>
     </node>
     
     <!-- kTYPE_FLOAT -->
     <node kTAG_GID=":FLOAT">
-        <kTAG_KIND>
+		<kTAG_CLASS>COntologyMasterVertex</kTAG_CLASS>
+		<kTAG_KIND>
             <item>:KIND-ENUMERATION</item>
         </kTAG_KIND>
     </node>
     
     <!-- kTYPE_BOOLEAN -->
     <node kTAG_GID=":BOOLEAN">
-        <kTAG_KIND>
+		<kTAG_CLASS>COntologyMasterVertex</kTAG_CLASS>
+		<kTAG_KIND>
             <item>:KIND-ENUMERATION</item>
         </kTAG_KIND>
     </node>
@@ -299,42 +340,48 @@
     
     <!-- kTYPE_BINARY_STRING -->
     <node kTAG_GID=":BINARY">
-        <kTAG_KIND>
+		<kTAG_CLASS>COntologyMasterVertex</kTAG_CLASS>
+		<kTAG_KIND>
             <item>:KIND-ENUMERATION</item>
         </kTAG_KIND>
 	</node>
     
     <!-- kTYPE_DATE_STRING -->
     <node kTAG_GID=":DATE">
-        <kTAG_KIND>
+		<kTAG_CLASS>COntologyMasterVertex</kTAG_CLASS>
+		<kTAG_KIND>
             <item>:KIND-ENUMERATION</item>
         </kTAG_KIND>
 	</node>
     
     <!-- kTYPE_TIME_STRING -->
     <node kTAG_GID=":TIME">
-        <kTAG_KIND>
+		<kTAG_CLASS>COntologyMasterVertex</kTAG_CLASS>
+		<kTAG_KIND>
             <item>:KIND-ENUMERATION</item>
         </kTAG_KIND>
 	</node>
     
     <!-- kTYPE_REGEX_STRING -->
     <node kTAG_GID=":REGEX">
-        <kTAG_KIND>
+		<kTAG_CLASS>COntologyMasterVertex</kTAG_CLASS>
+		<kTAG_KIND>
             <item>:KIND-ENUMERATION</item>
         </kTAG_KIND>
 	</node>
     
     <!-- kTYPE_INT32 -->
     <node kTAG_GID=":INT32">
-        <kTAG_KIND>
+		<kTAG_CLASS>COntologyMasterVertex</kTAG_CLASS>
+		<kTAG_KIND>
             <item>:KIND-ENUMERATION</item>
         </kTAG_KIND>
 	</node>
     
     <!-- kTYPE_INT64 -->
     <node kTAG_GID=":INT64">
-        <kTAG_KIND>
+		<kTAG_CLASS>COntologyMasterVertex</kTAG_CLASS>
+		<kTAG_KIND>
             <item>:KIND-ENUMERATION</item>
         </kTAG_KIND>
 	</node>
@@ -343,35 +390,40 @@
     
     <!-- kTYPE_META -->
     <node kTAG_GID=":META">
-        <kTAG_KIND>
+		<kTAG_CLASS>COntologyMasterVertex</kTAG_CLASS>
+		<kTAG_KIND>
             <item>:KIND-ENUMERATION</item>
         </kTAG_KIND>
 	</node>
     
     <!-- kTYPE_PHP -->
     <node kTAG_GID=":PHP">
-        <kTAG_KIND>
+		<kTAG_CLASS>COntologyMasterVertex</kTAG_CLASS>
+		<kTAG_KIND>
             <item>:KIND-ENUMERATION</item>
         </kTAG_KIND>
 	</node>
     
     <!-- kTYPE_JSON -->
     <node kTAG_GID=":JSON">
-        <kTAG_KIND>
+		<kTAG_CLASS>COntologyMasterVertex</kTAG_CLASS>
+		<kTAG_KIND>
             <item>:KIND-ENUMERATION</item>
         </kTAG_KIND>
 	</node>
     
     <!-- kTYPE_XML -->
     <node kTAG_GID=":XML">
-        <kTAG_KIND>
+		<kTAG_CLASS>COntologyMasterVertex</kTAG_CLASS>
+		<kTAG_KIND>
             <item>:KIND-ENUMERATION</item>
         </kTAG_KIND>
 	</node>
     
     <!-- kTYPE_SVG -->
     <node kTAG_GID=":SVG">
-        <kTAG_KIND>
+		<kTAG_CLASS>COntologyMasterVertex</kTAG_CLASS>
+		<kTAG_KIND>
             <item>:KIND-ENUMERATION</item>
         </kTAG_KIND>
 	</node>
@@ -380,21 +432,24 @@
     
     <!-- kTYPE_STRUCT -->
     <node kTAG_GID=":STRUCT">
-        <kTAG_KIND>
+		<kTAG_CLASS>COntologyMasterVertex</kTAG_CLASS>
+		<kTAG_KIND>
             <item>:KIND-ENUMERATION</item>
         </kTAG_KIND>
 	</node>
     
     <!-- kTYPE_LSTRING -->
     <node kTAG_GID=":LSTRING">
-        <kTAG_KIND>
+		<kTAG_CLASS>COntologyMasterVertex</kTAG_CLASS>
+		<kTAG_KIND>
             <item>:KIND-ENUMERATION</item>
         </kTAG_KIND>
 	</node>
     
     <!-- kTYPE_STAMP -->
     <node kTAG_GID=":STAMP">
-        <kTAG_KIND>
+		<kTAG_CLASS>COntologyMasterVertex</kTAG_CLASS>
+		<kTAG_KIND>
             <item>:KIND-ENUMERATION</item>
         </kTAG_KIND>
 	</node>
@@ -403,14 +458,16 @@
     
     <!-- kTYPE_ENUM -->
     <node kTAG_GID=":ENUM">
-        <kTAG_KIND>
+		<kTAG_CLASS>COntologyMasterVertex</kTAG_CLASS>
+		<kTAG_KIND>
             <item>:KIND-ENUMERATION</item>
         </kTAG_KIND>
 	</node>
     
     <!-- kTYPE_ENUM_SET -->
     <node kTAG_GID=":SET">
-        <kTAG_KIND>
+		<kTAG_CLASS>COntologyMasterVertex</kTAG_CLASS>
+		<kTAG_KIND>
             <item>:KIND-ENUMERATION</item>
         </kTAG_KIND>
 	</node>
@@ -419,21 +476,40 @@
     
     <!-- kTYPE_REQUIRED -->
     <node kTAG_GID=":REQUIRED">
-        <kTAG_KIND>
+		<kTAG_CLASS>COntologyMasterVertex</kTAG_CLASS>
+		<kTAG_KIND>
             <item>:KIND-ENUMERATION</item>
         </kTAG_KIND>
 	</node>
     
     <!-- kTYPE_RESTRICTED -->
     <node kTAG_GID=":RESTRICTED">
-        <kTAG_KIND>
+		<kTAG_CLASS>COntologyMasterVertex</kTAG_CLASS>
+		<kTAG_KIND>
+            <item>:KIND-ENUMERATION</item>
+        </kTAG_KIND>
+	</node>
+    
+    <!-- kTYPE_COMPUTED -->
+    <node kTAG_GID=":COMPUTED">
+		<kTAG_CLASS>COntologyMasterVertex</kTAG_CLASS>
+		<kTAG_KIND>
+            <item>:KIND-ENUMERATION</item>
+        </kTAG_KIND>
+	</node>
+    
+    <!-- kTYPE_LOCKED -->
+    <node kTAG_GID=":LOCKED">
+		<kTAG_CLASS>COntologyMasterVertex</kTAG_CLASS>
+		<kTAG_KIND>
             <item>:KIND-ENUMERATION</item>
         </kTAG_KIND>
 	</node>
     
     <!-- kTYPE_ARRAY -->
     <node kTAG_GID=":ARRAY">
-        <kTAG_KIND>
+		<kTAG_CLASS>COntologyMasterVertex</kTAG_CLASS>
+		<kTAG_KIND>
             <item>:KIND-ENUMERATION</item>
         </kTAG_KIND>
 	</node>
@@ -442,21 +518,24 @@
     
     <!-- kTYPE_RELATION_IN -->
     <node kTAG_GID=":RELATION-IN">
-        <kTAG_KIND>
+		<kTAG_CLASS>COntologyMasterVertex</kTAG_CLASS>
+		<kTAG_KIND>
             <item>:KIND-ENUMERATION</item>
         </kTAG_KIND>
 	</node>
     
     <!-- kTYPE_RELATION_OUT -->
     <node kTAG_GID=":RELATION-OUT">
-        <kTAG_KIND>
+		<kTAG_CLASS>COntologyMasterVertex</kTAG_CLASS>
+		<kTAG_KIND>
             <item>:KIND-ENUMERATION</item>
         </kTAG_KIND>
 	</node>
     
     <!-- kTYPE_RELATION_ALL -->
     <node kTAG_GID=":RELATION-ALL">
-        <kTAG_KIND>
+		<kTAG_CLASS>COntologyMasterVertex</kTAG_CLASS>
+		<kTAG_KIND>
             <item>:KIND-ENUMERATION</item>
         </kTAG_KIND>
 	</node>
@@ -465,14 +544,16 @@
     
     <!-- kTYPE_MongoId -->
     <node kTAG_GID=":MongoId">
-        <kTAG_KIND>
+		<kTAG_CLASS>COntologyMasterVertex</kTAG_CLASS>
+		<kTAG_KIND>
             <item>:KIND-ENUMERATION</item>
         </kTAG_KIND>
 	</node>
     
     <!-- kTYPE_MongoCode -->
     <node kTAG_GID=":MongoCode">
-        <kTAG_KIND>
+		<kTAG_CLASS>COntologyMasterVertex</kTAG_CLASS>
+		<kTAG_KIND>
             <item>:KIND-ENUMERATION</item>
         </kTAG_KIND>
 	</node>
@@ -481,63 +562,72 @@
     
     <!-- kKIND_ROOT -->
     <node kTAG_GID=":KIND-ROOT">
-        <kTAG_KIND>
+		<kTAG_CLASS>COntologyMasterVertex</kTAG_CLASS>
+		<kTAG_KIND>
             <item>:KIND-ENUMERATION</item>
         </kTAG_KIND>
 	</node>
     
     <!-- kKIND_FEATURE -->
     <node kTAG_GID=":KIND-FEATURE">
-        <kTAG_KIND>
+		<kTAG_CLASS>COntologyMasterVertex</kTAG_CLASS>
+		<kTAG_KIND>
             <item>:KIND-ENUMERATION</item>
         </kTAG_KIND>
 	</node>
     
     <!-- kKIND_METHOD -->
     <node kTAG_GID=":KIND-METHOD">
-        <kTAG_KIND>
+		<kTAG_CLASS>COntologyMasterVertex</kTAG_CLASS>
+		<kTAG_KIND>
             <item>:KIND-ENUMERATION</item>
         </kTAG_KIND>
 	</node>
     
     <!-- kKIND_SCALE -->
     <node kTAG_GID=":KIND-SCALE">
-        <kTAG_KIND>
+		<kTAG_CLASS>COntologyMasterVertex</kTAG_CLASS>
+		<kTAG_KIND>
             <item>:KIND-ENUMERATION</item>
         </kTAG_KIND>
 	</node>
     
     <!-- kKIND_ENUMERATION -->
     <node kTAG_GID=":KIND-ENUMERATION">
-        <kTAG_KIND>
+		<kTAG_CLASS>COntologyMasterVertex</kTAG_CLASS>
+		<kTAG_KIND>
             <item>:KIND-ENUMERATION</item>
         </kTAG_KIND>
 	</node>
     
     <!-- kKIND_INSTANCE -->
     <node kTAG_GID=":KIND-INSTANCE">
-        <kTAG_KIND>
+		<kTAG_CLASS>COntologyMasterVertex</kTAG_CLASS>
+		<kTAG_KIND>
             <item>:KIND-ENUMERATION</item>
         </kTAG_KIND>
 	</node>
     
     <!-- kKIND_NAMESPACE -->
     <node kTAG_GID=":KIND-NAMESPACE">
-        <kTAG_KIND>
+		<kTAG_CLASS>COntologyMasterVertex</kTAG_CLASS>
+		<kTAG_KIND>
             <item>:KIND-ENUMERATION</item>
         </kTAG_KIND>
 	</node>
     
     <!-- kKIND_PREDICATE -->
     <node kTAG_GID=":KIND-PREDICATE">
-        <kTAG_KIND>
+		<kTAG_CLASS>COntologyMasterVertex</kTAG_CLASS>
+		<kTAG_KIND>
             <item>:KIND-ENUMERATION</item>
         </kTAG_KIND>
 	</node>
     
     <!-- kKIND_SYMMETRIC -->
     <node kTAG_GID=":KIND-SYMMETRIC">
-        <kTAG_KIND>
+		<kTAG_CLASS>COntologyMasterVertex</kTAG_CLASS>
+		<kTAG_KIND>
             <item>:KIND-ENUMERATION</item>
         </kTAG_KIND>
 	</node>

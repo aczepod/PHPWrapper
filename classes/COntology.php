@@ -431,19 +431,22 @@ class COntology extends CConnection
 			//
 			// Initialise terms.
 			//
-			$this->_InitNamespaceTerms();
-			$this->_InitCategoryTerms();
-			$this->_InitAttributeTerms();
-			$this->_InitEnumerationTerms();
-			$this->_InitPredicateTerms();
+			$this->_InitTerms();
 			
 			//
 			// Initialise nodes.
 			//
-			$this->_InitCategoryNodes();
-			$this->_InitCategoryEdges();
-			$this->_InitEnumerationNodes();
-			$this->_InitEnumerationEdges();
+			$this->_InitNodes();
+			
+			//
+			// Initialise edges.
+			//
+			$this->_InitEdges();
+			
+			//
+			// Initialise vertices.
+			//
+			$this->_InitVertices();
 			
 			return;																	// ==>
 		
@@ -609,20 +612,20 @@ class COntology extends CConnection
 
 	 
 	/*===================================================================================
-	 *	_InitNamespaceTerms																*
+	 *	_InitTerms																		*
 	 *==================================================================================*/
 
 	/**
-	 * <h4>Initialise default namespaces</h4>
+	 * <h4>Initialise default terms</h4>
 	 *
-	 * This method will load all default namespaces, it will read the term definitions from the
-	 * <tt>namespaces.xml</tt> file placed in the library definitions directory.
+	 * This method will load all default terms, it will read the term definition files from
+	 * the library definitions directory.
 	 *
 	 * @access protected
 	 *
 	 * @throws Exception
 	 */
-	protected function _InitNamespaceTerms()
+	protected function _InitTerms()
 	{
 		//
 		// Get database.
@@ -634,62 +637,64 @@ class COntology extends CConnection
 				  kERROR_STATE );												// !@! ==>
 		
 		//
-		// Load XML file.
+		// Init local storage.
 		//
-		$xml = simplexml_load_file( kPATH_MYWRAPPER_LIBRARY_DEFINE.'/NamespaceTerms.xml' );
+		$files = array( 'NamespaceTerms', 'CategoryTerms', 'EnumerationTerms',
+						'PredicateTerms', 'AttributeTerms', 'ObjectTerms' );
 		
 		//
-		// Iterate terms.
+		// Iterate files.
 		//
-		foreach( $xml->term as $element )
+		foreach( $files as $file )
 		{
 			//
-			// Instantiate term.
+			// Load XML file.
 			//
-			$term = new COntologyTerm();
+			$xml = simplexml_load_file( kPATH_MYWRAPPER_LIBRARY_DEFINE."/$file.xml" );
 			
 			//
-			// Load local identifier.
+			// Iterate terms.
 			//
-			if( $element[ 'kTAG_LID' ] !== NULL )
+			foreach( $xml->term as $element )
 			{
 				//
-				// Set namespace kind.
+				// Instantiate term.
 				//
-				$term->Kind( kKIND_TERM_NAMESPACE, TRUE );
+				$term = new COntologyTerm();
 				
 				//
-				// Parse and save term.
+				// Load local identifier.
 				//
-				$this->_ParseTerm( $db, $element, $term );
+				if( $element[ 'kTAG_LID' ] !== NULL )
+					$this->_ParseTerm( $db, $element, $term );
+				
+				else
+					throw new Exception
+						( "Term is missing local identifier",
+						  kERROR_STATE );											// !@! ==>
 			
-			} // Has local identifier.
-			
-			else
-				throw new Exception
-					( "Term is missing local identifier",
-					  kERROR_STATE );											// !@! ==>
+			} // Iterating terms.
 		
-		} // Iterating terms.
+		} // Iterating files.
 
-	} // _InitNamespaceTerms.
+	} // _InitTerms.
 
 	 
 	/*===================================================================================
-	 *	_InitCategoryTerms																*
+	 *	_InitNodes																		*
 	 *==================================================================================*/
 
 	/**
-	 * <h4>Initialise category terms</h4>
+	 * <h4>Initialise nodes</h4>
 	 *
-	 * This method will load all default category terms, it will read the term definitions
-	 * from the <tt>CategoryTerms.xml</tt> file placed in the library definitions directory.
+	 * This method will load all default nodes, it will read the node definitions from the
+	 * files placed in the library definitions directory.
 	 *
 	 * @access protected
 	 *
 	 * @throws Exception
 	 */
-	protected function _InitCategoryTerms()
+	protected function _InitNodes()
 	{
 		//
 		// Get database.
@@ -701,244 +706,77 @@ class COntology extends CConnection
 				  kERROR_STATE );												// !@! ==>
 		
 		//
-		// Load XML file.
+		// Init local storage.
 		//
-		$xml = simplexml_load_file( kPATH_MYWRAPPER_LIBRARY_DEFINE.'/CategoryTerms.xml' );
+		$files = array( 'CategoryNodes', 'EnumerationNodes',
+						'PredicateNodes', 'AttributeNodes', 'ObjectNodes' );
 		
 		//
-		// Iterate terms.
+		// Iterate files.
 		//
-		foreach( $xml->term as $element )
+		foreach( $files as $file )
 		{
 			//
-			// Instantiate term.
+			// Load XML file.
 			//
-			$term = new COntologyTerm();
+			$xml = simplexml_load_file( kPATH_MYWRAPPER_LIBRARY_DEFINE."/$file.xml" );
 			
 			//
-			// Load local identifier.
+			// Iterate nodes.
 			//
-			if( $element[ 'kTAG_LID' ] !== NULL )
-				$this->_ParseTerm( $db, $element, $term );
-			
-			else
-				throw new Exception
-					( "Term is missing local identifier",
-					  kERROR_STATE );											// !@! ==>
-		
-		} // Iterating terms.
-
-	} // _InitCategoryTerms.
-
-	 
-	/*===================================================================================
-	 *	_InitAttributeTerms																*
-	 *==================================================================================*/
-
-	/**
-	 * <h4>Initialise attribute terms</h4>
-	 *
-	 * This method will load all default attribute terms, it will read the term definitions from the
-	 * <tt>AttributeTerms.xml</tt> file placed in the library definitions directory.
-	 *
-	 * @access protected
-	 *
-	 * @throws Exception
-	 */
-	protected function _InitAttributeTerms()
-	{
-		//
-		// Get database.
-		//
-		$db = $this->GetDatabase();
-		if( ! ($db instanceof CDatabase) )
-			throw new Exception
-				( "Unable to retrieve database connection",
-				  kERROR_STATE );												// !@! ==>
-		
-		//
-		// Load XML file.
-		//
-		$xml = simplexml_load_file( kPATH_MYWRAPPER_LIBRARY_DEFINE.'/AttributeTerms.xml' );
-		
-		//
-		// Iterate terms.
-		//
-		foreach( $xml->term as $element )
-		{
-			//
-			// Instantiate term.
-			//
-			$term = new COntologyTerm();
-			
-			//
-			// Load local identifier.
-			//
-			if( $element[ 'kTAG_LID' ] !== NULL )
-				$this->_ParseTerm( $db, $element, $term );
-			
-			else
-				throw new Exception
-					( "Term is missing local identifier",
-					  kERROR_STATE );											// !@! ==>
-		
-		} // Iterating terms.
-
-	} // _InitAttributeTerms.
-
-	 
-	/*===================================================================================
-	 *	_InitEnumerationTerms															*
-	 *==================================================================================*/
-
-	/**
-	 * <h4>Initialise enumeration terms</h4>
-	 *
-	 * This method will load all default enumeration terms, it will read the term
-	 * definitions from the <tt>attributes.xml</tt> file placed in the library definitions
-	 * directory.
-	 *
-	 * @access protected
-	 *
-	 * @throws Exception
-	 */
-	protected function _InitEnumerationTerms()
-	{
-		//
-		// Get database.
-		//
-		$db = $this->GetDatabase();
-		if( ! ($db instanceof CDatabase) )
-			throw new Exception
-				( "Unable to retrieve database connection",
-				  kERROR_STATE );												// !@! ==>
-		
-		//
-		// Load XML file.
-		//
-		$xml = simplexml_load_file
-					( kPATH_MYWRAPPER_LIBRARY_DEFINE.'/EnumerationTerms.xml' );
-		
-		//
-		// Iterate terms.
-		//
-		foreach( $xml->term as $element )
-		{
-			//
-			// Instantiate term.
-			//
-			$term = new COntologyTerm();
-			
-			//
-			// Load local identifier.
-			//
-			if( $element[ 'kTAG_LID' ] !== NULL )
+			foreach( $xml->node as $element )
 			{
 				//
-				// Set namespace kind.
+				// Instantiate node.
 				//
-				$term->Kind( kKIND_ENUMERATION, TRUE );
+				if( $element->{ 'kTAG_CLASS' } !== NULL )
+				{
+					$class = (string) $element->{ 'kTAG_CLASS' };
+					$node = new $class();
+				}
+				else
+					$node = new COntologyMasterVertex();
 				
 				//
-				// Parse and save term.
+				// Load local identifier.
 				//
-				$this->_ParseTerm( $db, $element, $term );
-			
-			} // Has local identifier.
-			
-			else
-				throw new Exception
-					( "Term is missing local identifier",
-					  kERROR_STATE );											// !@! ==>
-		
-		} // Iterating terms.
-
-	} // _InitEnumerationTerms.
-
-	 
-	/*===================================================================================
-	 *	_InitPredicateTerms																	*
-	 *==================================================================================*/
-
-	/**
-	 * <h4>Initialise predicates</h4>
-	 *
-	 * This method will load all default predicates, it will read the predicate definitions
-	 * from the <tt>PredicateTerms.xml</tt> file placed in the library definitions
-	 * directory.
-	 *
-	 * @access protected
-	 *
-	 * @throws Exception
-	 */
-	protected function _InitPredicateTerms()
-	{
-		//
-		// Get database.
-		//
-		$db = $this->GetDatabase();
-		if( ! ($db instanceof CDatabase) )
-			throw new Exception
-				( "Unable to retrieve database connection",
-				  kERROR_STATE );												// !@! ==>
-		
-		//
-		// Load XML file.
-		//
-		$xml = simplexml_load_file( kPATH_MYWRAPPER_LIBRARY_DEFINE.'/PredicateTerms.xml' );
-		
-		//
-		// Iterate terms.
-		//
-		foreach( $xml->term as $element )
-		{
-			//
-			// Instantiate term.
-			//
-			$term = new COntologyTerm();
-			
-			//
-			// Load local identifier.
-			//
-			if( $element[ 'kTAG_LID' ] !== NULL )
-			{
-				//
-				// Set namespace kind.
-				//
-				$term->Kind( kKIND_TERM_PREDICATE, TRUE );
+				if( $element[ 'kTAG_GID' ] !== NULL )
+					$this->_ParseNode( $db, $element, $node );
+				
+				else
+					throw new Exception
+						( "Node is missing term global identifier",
+						  kERROR_STATE );										// !@! ==>
 				
 				//
-				// Parse and save term.
+				// Cache node.
 				//
-				$this->_ParseTerm( $db, $element, $term );
+				$_SESSION[ kOFFSET_NODES ]
+						 [ (string) $element[ 'kTAG_GID' ] ]
+						 	= $node->NID();
 			
-			} // Has local identifier.
-			
-			else
-				throw new Exception
-					( "Term is missing local identifier",
-					  kERROR_STATE );											// !@! ==>
+			} // Iterating nodes.
 		
-		} // Iterating terms.
+		} // Iterating files.
 
-	} // _InitPredicateTerms.
+	} // _InitNodes.
 
 	 
 	/*===================================================================================
-	 *	_InitCategoryNodes																*
+	 *	_InitEdges																		*
 	 *==================================================================================*/
 
 	/**
-	 * <h4>Initialise category nodes</h4>
+	 * <h4>Initialise edges</h4>
 	 *
-	 * This method will load all default category nodes, it will read the node definitions
-	 * from the <tt>CategoryNodes.xml</tt> file placed in the library definitions directory.
+	 * This method will load all default edges, it will read the edge definitions from the
+	 * files placed in the library definitions directory.
 	 *
 	 * @access protected
 	 *
 	 * @throws Exception
 	 */
-	protected function _InitCategoryNodes()
+	protected function _InitEdges()
 	{
 		//
 		// Get database.
@@ -950,855 +788,92 @@ class COntology extends CConnection
 				  kERROR_STATE );												// !@! ==>
 		
 		//
-		// Load XML file.
+		// Init local storage.
 		//
-		$xml = simplexml_load_file( kPATH_MYWRAPPER_LIBRARY_DEFINE.'/CategoryNodes.xml' );
+		$files = array( 'CategoryEdges', 'EnumerationEdges',
+						'PredicateEdges', 'AttributeEdges', 'ObjectEdges' );
 		
 		//
-		// Iterate nodes.
+		// Iterate files.
 		//
-		foreach( $xml->node as $element )
+		foreach( $files as $file )
 		{
 			//
-			// Instantiate node.
+			// Load XML file.
 			//
-			$node = new COntologyMasterVertex();
+			$xml = simplexml_load_file( kPATH_MYWRAPPER_LIBRARY_DEFINE."/$file.xml" );
 			
 			//
-			// Load local identifier.
+			// Iterate edges.
 			//
-			if( $element[ 'kTAG_GID' ] !== NULL )
-				$this->_ParseNode( $db, $element, $node );
-			
-			else
-				throw new Exception
-					( "Node is missing term global identifier",
-					  kERROR_STATE );											// !@! ==>
-			
-			//
-			// Cache node.
-			//
-			$_SESSION[ kOFFSET_NODES ][ (string) $element[ 'kTAG_GID' ] ] = $node->NID();
-		
-		} // Iterating nodes.
-
-	} // _InitCategoryNodes.
-
-	 
-	/*===================================================================================
-	 *	_InitCategoryEdges																*
-	 *==================================================================================*/
-
-	/**
-	 * <h4>Initialise category edges</h4>
-	 *
-	 * This method will load all default category edges, it will read the edge definitions
-	 * from the <tt>CategoryEdges.xml</tt> file placed in the library definitions directory.
-	 *
-	 * @access protected
-	 *
-	 * @throws Exception
-	 */
-	protected function _InitCategoryEdges()
-	{
-		//
-		// Get database.
-		//
-		$db = $this->GetDatabase();
-		if( ! ($db instanceof CDatabase) )
-			throw new Exception
-				( "Unable to retrieve database connection",
-				  kERROR_STATE );												// !@! ==>
-		
-		//
-		// Load XML file.
-		//
-		$xml = simplexml_load_file( kPATH_MYWRAPPER_LIBRARY_DEFINE.'/CategoryEdges.xml' );
-		
-		//
-		// Iterate edges.
-		//
-		foreach( $xml->edge as $element )
-		{
-			//
-			// Instantiate node.
-			//
-			$edge = new COntologyEdge();
-			
-			//
-			// Parse edge.
-			//
-			$this->_ParseEdge( $db, $element, $edge );
-		
-		} // Iterating edges.
-
-	} // _InitCategoryEdges.
-
-	 
-	/*===================================================================================
-	 *	_InitEnumerationNodes															*
-	 *==================================================================================*/
-
-	/**
-	 * <h4>Initialise enumeration nodes</h4>
-	 *
-	 * This method will load all default enumeration nodes, it will read the node
-	 * definitions from the <tt>EnumerationNodes.xml</tt> file placed in the library
-	 * definitions directory.
-	 *
-	 * @access protected
-	 *
-	 * @throws Exception
-	 */
-	protected function _InitEnumerationNodes()
-	{
-		//
-		// Get database.
-		//
-		$db = $this->GetDatabase();
-		if( ! ($db instanceof CDatabase) )
-			throw new Exception
-				( "Unable to retrieve database connection",
-				  kERROR_STATE );												// !@! ==>
-		
-		//
-		// Load XML file.
-		//
-		$xml = simplexml_load_file( kPATH_MYWRAPPER_LIBRARY_DEFINE
-								   .'/EnumerationNodes.xml' );
-		
-		//
-		// Iterate nodes.
-		//
-		foreach( $xml->node as $element )
-		{
-			//
-			// Instantiate node.
-			//
-			$node = new COntologyMasterVertex();
-			
-			//
-			// Load local identifier.
-			//
-			if( $element[ 'kTAG_GID' ] !== NULL )
-				$this->_ParseNode( $db, $element, $node );
-			
-			else
-				throw new Exception
-					( "Node is missing term global identifier",
-					  kERROR_STATE );											// !@! ==>
-			
-			//
-			// Cache node.
-			//
-			$_SESSION[ kOFFSET_NODES ][ (string) $element[ 'kTAG_GID' ] ] = $node->NID();
-		
-		} // Iterating nodes.
-
-	} // _InitEnumerationNodes.
-
-	 
-	/*===================================================================================
-	 *	_InitEnumerationEdges																*
-	 *==================================================================================*/
-
-	/**
-	 * <h4>Initialise enumeration edges</h4>
-	 *
-	 * This method will load all default enumeration edges, it will read the edge definitions
-	 * from the <tt>EnumerationEdges.xml</tt> file placed in the library definitions
-	 * directory.
-	 *
-	 * @access protected
-	 *
-	 * @throws Exception
-	 */
-	protected function _InitEnumerationEdges()
-	{
-		//
-		// Get database.
-		//
-		$db = $this->GetDatabase();
-		if( ! ($db instanceof CDatabase) )
-			throw new Exception
-				( "Unable to retrieve database connection",
-				  kERROR_STATE );												// !@! ==>
-		
-		//
-		// Load XML file.
-		//
-		$xml = simplexml_load_file( kPATH_MYWRAPPER_LIBRARY_DEFINE
-								   .'/EnumerationEdges.xml' );
-		
-		//
-		// Iterate edges.
-		//
-		foreach( $xml->edge as $element )
-		{
-			//
-			// Instantiate node.
-			//
-			$edge = new COntologyEdge();
-			
-			//
-			// Parse edge.
-			//
-			$this->_ParseEdge( $db, $element, $edge );
-		
-		} // Iterating edges.
-
-	} // _InitEnumerationEdges.
-
-	 
-	/*===================================================================================
-	 *	_LoadTermDataDictionary															*
-	 *==================================================================================*/
-
-	/**
-	 * <h4>Load term data dictionary</h4>
-	 *
-	 * This method will load the ontology term, {@link COntologyTerm}, data dictionary.
-	 *
-	 * @access protected
-	 */
-	protected function _LoadTermDataDictionary()
-	{
-		//
-		// Inform.
-		//
-		if( kOPTION_VERBOSE )
-			echo( "  • Loading Term data dictionary.\n" );
-
-		//
-		// Load namespace term.
-		//
-		$ns = $this->ResolveTerm( '', NULL, TRUE );
-		
-		//
-		// Load predicate term.
-		//
-		$predicate
-			= $this->ResolveTerm(
-				substr( kPREDICATE_SUBCLASS_OF, 1 ),
-				$ns,
-				TRUE );
-		
-		//
-		// Load data dictionary root term.
-		//
-		$root_node
-			= $this->ResolveNode(
-				$this->ResolveTerm(
-					kDDICT_TERM, NULL, TRUE ),
-				TRUE )[ 0 ];
-
-		//
-		// Load  definitions.
-		//
-		$terms = array(
-			array( kTERM_LID => substr( kTERM_LID, 1 ),
-				   kTERM_GID => kTERM_LID,
-				   kTERM_NAMESPACE => $ns,
-				   kTERM_TYPE => array( kTYPE_STRING, kTYPE_REQUIRED ) ),
-			array( kTERM_LID => substr( kTERM_GID, 1 ),
-				   kTERM_GID => kTERM_GID,
-				   kTERM_NAMESPACE => $ns,
-				   kTERM_TYPE => array( kTYPE_STRING, kTYPE_REQUIRED ) ),
-			array( kTERM_LID => substr( kTERM_NAMESPACE, 1 ),
-				   kTERM_GID => kTERM_NAMESPACE,
-				   kTERM_NAMESPACE => $ns,
-				   kTERM_TYPE => kTYPE_BINARY_STRING ),
-			array( kTERM_LID => substr( kTERM_CLASS, 1 ),
-				   kTERM_GID => kTERM_CLASS,
-				   kTERM_NAMESPACE => $ns,
-				   kTERM_TYPE => array( kTYPE_STRING, kTYPE_REQUIRED ) ),
-			array( kTERM_LID => substr( kTERM_LABEL, 1 ),
-				   kTERM_GID => kTERM_LABEL,
-				   kTERM_NAMESPACE => $ns,
-				   kTERM_TYPE => kTYPE_LSTRING ),
-			array( kTERM_LID => substr( kTERM_DESCRIPTION, 1 ),
-				   kTERM_GID => kTERM_DESCRIPTION,
-				   kTERM_NAMESPACE => $ns,
-				   kTERM_TYPE => kTYPE_LSTRING ),
-			array( kTERM_LID => substr( kTERM_SYNONYMS, 1 ),
-				   kTERM_GID => kTERM_SYNONYMS,
-				   kTERM_NAMESPACE => $ns,
-				   kTERM_TYPE => array( kTYPE_STRING, kTYPE_ARRAY ) ),
-			array( kTERM_LID => substr( kTERM_TERM, 1 ),
-				   kTERM_GID => kTERM_TERM,
-				   kTERM_NAMESPACE => $ns,
-				   kTERM_TYPE => kTYPE_BINARY_STRING ),
-			array( kTERM_LID => substr( kTERM_NAMESPACE_REFS, 1 ),
-				   kTERM_GID => kTERM_NAMESPACE_REFS,
-				   kTERM_NAMESPACE => $ns,
-				   kTERM_TYPE => kTYPE_INT64 ),
-			array( kTERM_LID => substr( kTERM_NODES, 1 ),
-				   kTERM_GID => kTERM_NODES,
-				   kTERM_NAMESPACE => $ns,
-				   kTERM_TYPE => array( kTYPE_INT64, kTYPE_ARRAY ) ) );
-		
-		//
-		// Iterate definitions.
-		//
-		foreach( $terms as $term )
-		{
-			//
-			// Create node and relate.
-			//
-			$this->SubclassOf(
-				$parent_node
-					= $this->NewScaleNode(
-						$tmp
-							= $this->ResolveTerm(
-								$term[ kTERM_LID ],			// Local identifier.
-								$term[ kTERM_NAMESPACE ],		// Namespace object.
-								TRUE ),							// Raise exception on fail.
-						$term[ kTERM_TYPE ] ),				// Data type.
-				$root_node );
-			
-			//
-			// Create tag.
-			//
-			$tag = NULL;
-			$this->AddToTag( $tag, $parent_node );
-			$this->AddToTag( $tag, TRUE );
-			
-			//
-			// Inform.
-			//
-			if( kOPTION_VERBOSE )
-				echo( "    - ".$tmp->GID()." ["
-							  .$parent_node[ kTAG_NID ]."] ("
-							  .$tag[ kTAG_NID ].")\n" );
-		
-		} // Iterating first level terms.
-
-	} // _LoadTermDataDictionary.
-
-	 
-	/*===================================================================================
-	 *	_LoadNodeDataDictionary															*
-	 *==================================================================================*/
-
-	/**
-	 * <h4>Load node data dictionary</h4>
-	 *
-	 * This method will load the ontology node, {@link COntologyVertex}, data dictionary.
-	 *
-	 * @access protected
-	 */
-	protected function _LoadNodeDataDictionary()
-	{
-		//
-		// Inform.
-		//
-		if( kOPTION_VERBOSE )
-			echo( "  • Loading Node data dictionary.\n" );
-
-		//
-		// Load namespace term.
-		//
-		$ns = $this->ResolveTerm( '', NULL, TRUE );
-		
-		//
-		// Load predicate term.
-		//
-		$predicate
-			= $this->ResolveTerm(
-				substr( kPREDICATE_SUBCLASS_OF, 1 ),
-				$ns,
-				TRUE );
-		
-		//
-		// Load data dictionary root term.
-		//
-		$root_node
-			= $this->ResolveNode(
-				$this->ResolveTerm(
-					kDDICT_NODE, NULL, TRUE ),
-				TRUE )[ 0 ];
-
-		//
-		// Load  definitions.
-		//
-		$terms = array(
-			array( kTERM_LID => substr( kTERM_CLASS, 1 ),
-				   kTERM_GID => kTERM_CLASS,
-				   kTERM_NAMESPACE => $ns,
-				   kTERM_TYPE => array( kTYPE_STRING, kTYPE_REQUIRED ) ),
-			array( kTERM_LID => substr( kTERM_TERM, 1 ),
-				   kTERM_GID => kTERM_TERM,
-				   kTERM_NAMESPACE => $ns,
-				   kTERM_TYPE => array( kTYPE_BINARY_STRING, kTYPE_REQUIRED ) ),
-			array( kTERM_LID => substr( kTERM_CATEGORY, 1 ),
-				   kTERM_GID => kTERM_CATEGORY,
-				   kTERM_NAMESPACE => $ns,
-				   kTERM_TYPE => kTYPE_ENUM_SET ),
-			array( kTERM_LID => substr( kTERM_KIND, 1 ),
-				   kTERM_GID => kTERM_KIND,
-				   kTERM_NAMESPACE => $ns,
-				   kTERM_TYPE => kTYPE_ENUM_SET ),
-			array( kTERM_LID => substr( kTERM_TYPE, 1 ),
-				   kTERM_GID => kTERM_TYPE,
-				   kTERM_NAMESPACE => $ns,
-				   kTERM_TYPE => kTYPE_ENUM_SET ),
-			array( kTERM_LID => substr( kTERM_FEATURES, 1 ),
-				   kTERM_GID => kTERM_FEATURES,
-				   kTERM_NAMESPACE => $ns,
-				   kTERM_TYPE => array( kTYPE_INT64, kTYPE_ARRAY ) ),
-			array( kTERM_LID => substr( kTERM_SCALES, 1 ),
-				   kTERM_GID => kTERM_SCALES,
-				   kTERM_NAMESPACE => $ns,
-				   kTERM_TYPE => array( kTYPE_INT64, kTYPE_ARRAY ) ),
-			array( kTERM_LID => substr( kTERM_EDGES, 1 ),
-				   kTERM_GID => kTERM_EDGES,
-				   kTERM_NAMESPACE => $ns,
-				   kTERM_TYPE => array( kTYPE_INT64, kTYPE_ARRAY ) ) );
-		
-		//
-		// Iterate definitions.
-		//
-		foreach( $terms as $term )
-		{
-			//
-			// Create node and relate.
-			//
-			$this->SubclassOf(
-				$parent_node
-					= $this->NewScaleNode(
-						$tmp
-							= $this->ResolveTerm(
-								$term[ kTERM_LID ],			// Local identifier.
-								$term[ kTERM_NAMESPACE ],		// Namespace object.
-								TRUE ),							// Raise exception on fail.
-						$term[ kTERM_TYPE ],					// Data type.
-						NULL,									// Namespace.
-						NULL,									// Label.
-						NULL,									// Description.
-						NULL,									// Language.
-						TRUE ),									// New node flag.
-				$root_node );
-			
-			//
-			// Create tag.
-			//
-			$tag = $this->ResolveTag( $tmp );
-			if( $tag === NULL )
-			{
-				$this->AddToTag( $tag, $parent_node );
-				$this->AddToTag( $tag, TRUE );
-			
-			} if( is_array( $tag ) )
-				$tag = $tag[ 0 ];
-			
-			//
-			// Inform.
-			//
-			if( kOPTION_VERBOSE )
-				echo( "    - ".$tmp->GID()." ["
-							  .$parent_node[ kTAG_NID ]."] ("
-							  .$tag[ kTAG_NID ].")\n" );
-		
-			//
-			// Handle enumerations.
-			// Notice we know the enumerations already exist.
-			//
-			switch( $term[ kTERM_GID ] )
+			foreach( $xml->edge as $element )
 			{
 				//
-				// Node kind.
+				// Instantiate edge.
 				//
-				case kTERM_KIND:
-					// List kinds.
-					$list = array( kKIND_ROOT, kKIND_NODE_DDICT,
-								   kKIND_FEATURE, kKIND_METHOD,
-								   kKIND_SCALE, kKIND_INSTANCE );
-					// Create nodes and relate.
-					foreach( $list as $item )
-						$this->EnumOf(
-							$this->NewEnumerationNode(
-								$this->ResolveTerm(
-									substr( $item, 1 ),	// Local identifier.
-									$ns,				// Namespace object.
-									TRUE ) )[ 0 ],		// Raise exception on fail.
-							$parent_node );
-					break;
+				$edge = new COntologyEdge();
 				
 				//
-				// Node type.
+				// Parse edge.
 				//
-				case kTERM_TYPE:
-					// List types.
-					$list = array( kTYPE_STRING, kTYPE_INT32, kTYPE_INT64, kTYPE_FLOAT,
-									kTYPE_BOOLEAN, kTYPE_ANY, kTYPE_BINARY_STRING, kTYPE_DATE_STRING,
-									kTYPE_TIME_STRING, kTYPE_REGEX_STRING, kTYPE_LSTRING, kTYPE_STAMP,
-									kTYPE_STRUCT, kTYPE_ENUM, kTYPE_ENUM_SET, kTYPE_PHP,
-									kTYPE_JSON, kTYPE_XML, kTYPE_SVG,
-									kTYPE_REQUIRED, kTYPE_ARRAY );
-					// Create nodes and relate.
-					foreach( $list as $item )
-						$this->EnumOf(
-							$this->NewEnumerationNode(
-								$this->ResolveTerm(
-									substr( $item, 1 ),	// Local identifier.
-									$ns,				// Namespace object.
-									TRUE ) )[ 0 ],		// Raise exception on fail.
-							$parent_node );
-					break;
+				$this->_ParseEdge( $db, $element, $edge );
 			
-			} // Parsing current term.
+			} // Iterating edges.
 		
-		} // Iterating first level terms.
+		} // Iterating files.
 
-	} // _LoadNodeDataDictionary.
+	} // _InitEdges.
 
 	 
 	/*===================================================================================
-	 *	_LoadEdgeDataDictionary															*
+	 *	_InitVertices																	*
 	 *==================================================================================*/
 
 	/**
-	 * <h4>Load edge data dictionary</h4>
+	 * <h4>Initialise vertices</h4>
 	 *
-	 * This method will load the ontology edge, {@link COntologyEdge}, data dictionary.
-	 *
-	 * @access protected
-	 */
-	protected function _LoadEdgeDataDictionary()
-	{
-		//
-		// Inform.
-		//
-		if( kOPTION_VERBOSE )
-			echo( "  • Loading Edge data dictionary.\n" );
-
-		//
-		// Load namespace term.
-		//
-		$ns = $this->ResolveTerm( '', NULL, TRUE );
-		
-		//
-		// Load predicate term.
-		//
-		$predicate
-			= $this->ResolveTerm(
-				substr( kPREDICATE_SUBCLASS_OF, 1 ),
-				$ns,
-				TRUE );
-		
-		//
-		// Load data dictionary root term.
-		//
-		$root_node
-			= $this->ResolveNode(
-				$this->ResolveTerm(
-					kDDICT_EDGE, NULL, TRUE ),
-				TRUE )[ 0 ];
-
-		//
-		// Load  definitions.
-		//
-		$terms = array(
-			array( kTERM_LID => substr( kTERM_SUBJECT, 1 ),
-				   kTERM_GID => kTERM_SUBJECT,
-				   kTERM_NAMESPACE => $ns,
-				   kTERM_TYPE => array( kTYPE_INT64, kTYPE_REQUIRED ) ),
-			array( kTERM_LID => substr( kTERM_PREDICATE, 1 ),
-				   kTERM_GID => kTERM_PREDICATE,
-				   kTERM_NAMESPACE => $ns,
-				   kTERM_TYPE => array( kTYPE_BINARY_STRING, kTYPE_REQUIRED ) ),
-			array( kTERM_LID => substr( kTERM_OBJECT, 1 ),
-				   kTERM_GID => kTERM_OBJECT,
-				   kTERM_NAMESPACE => $ns,
-				   kTERM_TYPE => array( kTYPE_INT64, kTYPE_REQUIRED ) ),
-			array( kTERM_LID => substr( kTERM_GID, 1 ),
-				   kTERM_GID => kTERM_GID,
-				   kTERM_NAMESPACE => $ns,
-				   kTERM_TYPE => array( kTYPE_STRING, kTYPE_REQUIRED ) ),
-			array( kTERM_LID => substr( kTERM_UID, 1 ),
-				   kTERM_GID => kTERM_UID,
-				   kTERM_NAMESPACE => $ns,
-				   kTERM_TYPE => array( kTYPE_BINARY_STRING, kTYPE_REQUIRED ) ),
-			array( kTERM_LID => substr( kTERM_CLASS, 1 ),
-				   kTERM_GID => kTERM_CLASS,
-				   kTERM_NAMESPACE => $ns,
-				   kTERM_TYPE => array( kTYPE_STRING, kTYPE_REQUIRED ) ) );
-		
-		//
-		// Iterate definitions.
-		//
-		foreach( $terms as $term )
-		{
-			//
-			// Create node and relate.
-			//
-			$this->SubclassOf(
-				$parent_node
-					= $this->NewScaleNode(
-						$tmp
-							= $this->ResolveTerm(
-								$term[ kTERM_LID ],			// Local identifier.
-								$term[ kTERM_NAMESPACE ],		// Namespace object.
-								TRUE ),							// Raise exception on fail.
-						$term[ kTERM_TYPE ],					// Data type.
-						NULL,									// Namespace.
-						NULL,									// Label.
-						NULL,									// Description.
-						NULL,									// Language.
-						TRUE ),									// New node flag.
-				$root_node );
-			
-			//
-			// Create tag.
-			//
-			$tag = $this->ResolveTag( $tmp );
-			if( $tag === NULL )
-			{
-				$this->AddToTag( $tag, $parent_node );
-				$this->AddToTag( $tag, TRUE );
-			
-			} if( is_array( $tag ) )
-				$tag = $tag[ 0 ];
-			
-			//
-			// Inform.
-			//
-			if( kOPTION_VERBOSE )
-				echo( "    - ".$tmp->GID()." ["
-							  .$parent_node[ kTAG_NID ]."] ("
-							  .$tag[ kTAG_NID ].")\n" );
-		
-		} // Iterating first level terms.
-
-	} // _LoadEdgeDataDictionary.
-
-	 
-	/*===================================================================================
-	 *	_LoadTagDataDictionary															*
-	 *==================================================================================*/
-
-	/**
-	 * <h4>Load tag data dictionary</h4>
-	 *
-	 * This method will load the ontology tag, {@link COntologyTag}, data dictionary.
+	 * This method will load all default vertices, it will read the vertex definitions from the
+	 * files placed in the library definitions directory.
 	 *
 	 * @access protected
+	 *
+	 * @throws Exception
 	 */
-	protected function _LoadTagDataDictionary()
+	protected function _InitVertices()
 	{
 		//
-		// Inform.
+		// Get database.
 		//
-		if( kOPTION_VERBOSE )
-			echo( "  • Loading Tag data dictionary.\n" );
-
-		//
-		// Load namespace term.
-		//
-		$ns = $this->ResolveTerm( '', NULL, TRUE );
+		$db = $this->GetDatabase();
+		if( ! ($db instanceof CDatabase) )
+			throw new Exception
+				( "Unable to retrieve database connection",
+				  kERROR_STATE );												// !@! ==>
 		
 		//
-		// Load predicate term.
+		// Init local storage.
 		//
-		$predicate
-			= $this->ResolveTerm(
-				substr( kPREDICATE_SUBCLASS_OF, 1 ),
-				$ns,
-				TRUE );
+		$files = array( 'ObjectVertices' );
 		
 		//
-		// Load data dictionary root term.
+		// Iterate files.
 		//
-		$root_node
-			= $this->ResolveNode(
-				$this->ResolveTerm(
-					kDDICT_TAG, NULL, TRUE ),
-				TRUE )[ 0 ];
-
-		//
-		// Load  definitions.
-		//
-		$terms = array(
-			array( kTERM_LID => substr( kTERM_GID, 1 ),
-				   kTERM_GID => kTERM_GID,
-				   kTERM_NAMESPACE => $ns,
-				   kTERM_TYPE => array( kTYPE_STRING, kTYPE_REQUIRED ) ),
-			array( kTERM_LID => substr( kTERM_UID, 1 ),
-				   kTERM_GID => kTERM_UID,
-				   kTERM_NAMESPACE => $ns,
-				   kTERM_TYPE => array( kTYPE_BINARY_STRING, kTYPE_REQUIRED ) ),
-			array( kTERM_LID => substr( kTERM_CLASS, 1 ),
-				   kTERM_GID => kTERM_CLASS,
-				   kTERM_NAMESPACE => $ns,
-				   kTERM_TYPE => array( kTYPE_STRING, kTYPE_REQUIRED ) ),
-			array( kTERM_LID => substr( kTERM_PATH, 1 ),
-				   kTERM_GID => kTERM_PATH,
-				   kTERM_NAMESPACE => $ns,
-				   kTERM_TYPE => array( kTYPE_ANY, kTYPE_ARRAY ) ) );
-		
-		//
-		// Iterate definitions.
-		//
-		foreach( $terms as $term )
+		foreach( $files as $file )
 		{
 			//
-			// Create node and relate.
+			// Load XML file.
 			//
-			$this->SubclassOf(
-				$parent_node
-					= $this->NewScaleNode(
-						$tmp
-							= $this->ResolveTerm(
-								$term[ kTERM_LID ],			// Local identifier.
-								$term[ kTERM_NAMESPACE ],		// Namespace object.
-								TRUE ),							// Raise exception on fail.
-						$term[ kTERM_TYPE ],					// Data type.
-						NULL,									// Namespace.
-						NULL,									// Label.
-						NULL,									// Description.
-						NULL,									// Language.
-						TRUE ),									// New node flag.
-				$root_node );
+			$xml = simplexml_load_file( kPATH_MYWRAPPER_LIBRARY_DEFINE."/$file.xml" );
 			
 			//
-			// Create tag.
+			// Iterate edges.
 			//
-			$tag = $this->ResolveTag( $tmp );
-			if( $tag === NULL )
-			{
-				$this->AddToTag( $tag, $parent_node );
-				$this->AddToTag( $tag, TRUE );
-			
-			} if( is_array( $tag ) )
-				$tag = $tag[ 0 ];
-			
-			//
-			// Inform.
-			//
-			if( kOPTION_VERBOSE )
-				echo( "    - ".$tmp->GID()." ["
-							  .$parent_node[ kTAG_NID ]."] ("
-							  .$tag[ kTAG_NID ].")\n" );
+			foreach( $xml->vertex as $element )
+				$this->_ParseVertex( $db, $element );
 		
-		} // Iterating first level terms.
+		} // Iterating files.
 
-	} // _LoadTagDataDictionary.
-
-	 
-	/*===================================================================================
-	 *	_LoadAttributesDataDictionary													*
-	 *==================================================================================*/
-
-	/**
-	 * <h4>Load attributes data dictionary</h4>
-	 *
-	 * This method will load the ontology default attributes data dictionary.
-	 *
-	 * @access protected
-	 */
-	protected function _LoadAttributesDataDictionary()
-	{
-		//
-		// Inform.
-		//
-		if( kOPTION_VERBOSE )
-			echo( "  • Loading generic attributes data dictionary.\n" );
-
-		//
-		// Load namespace term.
-		//
-		$ns = $this->ResolveTerm( '', NULL, TRUE );
-		
-		//
-		// Load predicate term.
-		//
-		$predicate
-			= $this->ResolveTerm(
-				substr( kPREDICATE_SUBCLASS_OF, 1 ),
-				$ns,
-				TRUE );
-		
-		//
-		// Load data dictionary root term.
-		//
-		$root_node
-			= $this->ResolveNode(
-				$this->ResolveTerm(
-					kDDICT_ATTRIBUTES, NULL, TRUE ),
-				TRUE )[ 0 ];
-
-		//
-		// Load  definitions.
-		//
-		$terms = array(
-			array( kTERM_LID => substr( kTERM_AUTHORS, 1 ),
-				   kTERM_GID => kTERM_AUTHORS,
-				   kTERM_NAMESPACE => $ns,
-				   kTERM_TYPE => array( kTYPE_STRING, kTYPE_ARRAY ) ),
-			array( kTERM_LID => substr( kTERM_NOTES, 1 ),
-				   kTERM_GID => kTERM_NOTES,
-				   kTERM_NAMESPACE => $ns,
-				   kTERM_TYPE => array( kTYPE_STRING, kTYPE_ARRAY ) ),
-			array( kTERM_LID => substr( kTERM_ACKNOWLEDGMENTS, 1 ),
-				   kTERM_GID => kTERM_ACKNOWLEDGMENTS,
-				   kTERM_NAMESPACE => $ns,
-				   kTERM_TYPE => kTYPE_STRING ),
-			array( kTERM_LID => substr( kTERM_BIBLIOGRAPHY, 1 ),
-				   kTERM_GID => kTERM_BIBLIOGRAPHY,
-				   kTERM_NAMESPACE => $ns,
-				   kTERM_TYPE => array( kTYPE_STRING, kTYPE_ARRAY ) ),
-			array( kTERM_LID => substr( kTERM_EXAMPLES, 1 ),
-				   kTERM_GID => kTERM_EXAMPLES,
-				   kTERM_NAMESPACE => $ns,
-				   kTERM_TYPE => array( kTYPE_STRING, kTYPE_ARRAY ) ) );
-		
-		//
-		// Iterate definitions.
-		//
-		foreach( $terms as $term )
-		{
-			//
-			// Create node and relate.
-			//
-			$this->SubclassOf(
-				$parent_node
-					= $this->NewScaleNode(
-						$tmp
-							= $this->ResolveTerm(
-								$term[ kTERM_LID ],			// Local identifier.
-								$term[ kTERM_NAMESPACE ],		// Namespace object.
-								TRUE ),							// Raise exception on fail.
-						$term[ kTERM_TYPE ],					// Data type.
-						NULL,									// Namespace.
-						NULL,									// Label.
-						NULL,									// Description.
-						NULL,									// Language.
-						TRUE ),									// New node flag.
-				$root_node );
-			
-			//
-			// Create tag.
-			//
-			$tag = $this->ResolveTag( $tmp );
-			if( $tag === NULL )
-			{
-				$this->AddToTag( $tag, $parent_node );
-				$this->AddToTag( $tag, TRUE );
-			
-			} if( is_array( $tag ) )
-				$tag = $tag[ 0 ];
-			
-			//
-			// Inform.
-			//
-			if( kOPTION_VERBOSE )
-				echo( "    - ".$tmp->GID()." ["
-							  .$parent_node[ kTAG_NID ]."] ("
-							  .$tag[ kTAG_NID ].")\n" );
-		
-		} // Iterating first level terms.
-
-	} // _LoadAttributesDataDictionary.
+	} // _InitVertices.
 
 		
 
@@ -2059,15 +1134,18 @@ class COntology extends CConnection
 		if( $theElement->{ 'kTAG_SUBJECT' } !== NULL )
 		{
 			//
+			// Save identifier.
+			//
+			$save = (string) $theElement->{ 'kTAG_SUBJECT' };
+			
+			//
 			// Resolve subject.
 			//
-			if( array_key_exists( (string) $theElement->{ 'kTAG_SUBJECT' },
-								  $_SESSION[ kOFFSET_NODES ] ) )
-				$theEdge->Subject( $_SESSION[ kOFFSET_NODES ]
-											[ (string) $theElement->{ 'kTAG_SUBJECT' } ] );
+			if( array_key_exists( $save, $_SESSION[ kOFFSET_NODES ] ) )
+				$theEdge->Subject( $_SESSION[ kOFFSET_NODES ][ $save ] );
 			else
 				throw new Exception
-					( "Subject node not found",
+					( "Subject node not found [$save]",
 					  kERROR_STATE );											// !@! ==>
 			
 			//
@@ -2076,12 +1154,14 @@ class COntology extends CConnection
 			if( $theElement->{ 'kTAG_PREDICATE' } !== NULL )
 			{
 				//
+				// Save identifier.
+				//
+				$save = (string) $theElement->{ 'kTAG_PREDICATE' };
+				
+				//
 				// Resolve predicate.
 				//
-				$term = COntologyTerm::Resolve( $theDatabase,
-												(string) $theElement->{ 'kTAG_PREDICATE' },
-												NULL,
-												TRUE );
+				$term = COntologyTerm::Resolve( $theDatabase, $save, NULL, TRUE );
 				
 				//
 				// Set subject.
@@ -2094,17 +1174,18 @@ class COntology extends CConnection
 				if( $theElement->{ 'kTAG_OBJECT' } !== NULL )
 				{
 					//
+					// Save identifier.
+					//
+					$save = (string) $theElement->{ 'kTAG_OBJECT' };
+					
+					//
 					// Resolve object.
 					//
-					if( array_key_exists(
-						(string) $theElement->{ 'kTAG_OBJECT' },
-						$_SESSION[ kOFFSET_NODES ] ) )
-						$theEdge->Object(
-							$_SESSION[ kOFFSET_NODES ]
-									 [ (string) $theElement->{ 'kTAG_OBJECT' } ] );
+					if( array_key_exists( $save, $_SESSION[ kOFFSET_NODES ] ) )
+						$theEdge->Object( $_SESSION[ kOFFSET_NODES ] [ $save ] );
 					else
 						throw new Exception
-							( "Object node not found",
+							( "Object node not found [$save]",
 							  kERROR_STATE );											// !@! ==>
 					
 					//
@@ -2134,6 +1215,184 @@ class COntology extends CConnection
 				  kERROR_STATE );												// !@! ==>
 
 	} // _ParseEdge.
+
+	 
+	/*===================================================================================
+	 *	_ParseVertex																		*
+	 *==================================================================================*/
+
+	/**
+	 * <h4>Parse the provided edge</h4>
+	 *
+	 * This method will parse the provided XML vertex, create and fill the relative ontology
+	 * objects.
+	 *
+	 * Terms and master nodes must exist.
+	 *
+	 * @param CDatabase				$theDatabase		Database container.
+	 * @param SimpleXMLElement		$theElement			XML element with term data.
+	 *
+	 * @access protected
+	 *
+	 * @throws Exception
+	 */
+	protected function _ParseVertex( CDatabase		  $theDatabase,
+									 SimpleXMLElement $theElement )
+	{
+		//
+		// Instantiate node.
+		//
+		if( $theElement->{ 'kTAG_CLASS' } !== NULL )
+		{
+			$class = (string) $theElement->{ 'kTAG_CLASS' };
+			$node = new $class();
+		}
+		else
+			$node = new COntologyAliasVertex();
+			
+		//
+		// Resolve term.
+		//
+		$term = COntologyTerm::Resolve(
+					$theDatabase, (string) $theElement[ 'kTAG_GID' ], NULL, TRUE );
+		
+		//
+		// Set term reference.
+		//
+		$node->Term( $term );
+		
+		//
+		// Get categories.
+		//
+		if( $theElement->{'kTAG_CATEGORY'}->count() )
+		{
+			foreach( $theElement->{'kTAG_CATEGORY'}->{'item'} as $item )
+				$node->Category( (string) $item, TRUE );
+		
+		} // Has categories.
+		
+		//
+		// Get kinds.
+		//
+		if( $theElement->{'kTAG_KIND'}->count() )
+		{
+			foreach( $theElement->{'kTAG_KIND'}->{'item'} as $item )
+				$node->Kind( (string) $item, TRUE );
+		
+		} // Has kinds.
+		
+		//
+		// Get types.
+		//
+		if( $theElement->{'kTAG_TYPE'}->count() )
+		{
+			foreach( $theElement->{'kTAG_TYPE'}->{'item'} as $item )
+				$node->Type( (string) $item, TRUE );
+		
+		} // Has types.
+		
+		//
+		// Get description.
+		//
+		if( $theElement->{'kTAG_DESCRIPTION'}->count() )
+			$node->Description
+				( (string) $theElement->{'kTAG_DESCRIPTION'}[ 'language' ],
+				  (string) $theElement->{'kTAG_DESCRIPTION'} );
+		
+		//
+		// Save node.
+		//
+		$node->Insert( $theDatabase );
+		
+		//
+		// Iterate edges.
+		//
+		foreach( $theElement->{'edges'}->{'edge'} as $element )
+		{
+			//
+			// Instantiate edge.
+			//
+			$edge = new COntologyEdge();
+			
+			//
+			// Set subject.
+			//
+			if( $element->{'kTAG_SUBJECT'}->count() )
+			{
+				//
+				// Save identifier.
+				//
+				$save = (string) $element->{'kTAG_SUBJECT'}[ 0 ];
+				
+				//
+				// Resolve subject.
+				//
+				if( array_key_exists( $save, $_SESSION[ kOFFSET_NODES ] ) )
+					$edge->Subject( $_SESSION[ kOFFSET_NODES ][ $save ] );
+				else
+					throw new Exception
+						( "Subject node not found [$save]",
+						  kERROR_STATE );										// !@! ==>
+			}
+			else
+				$edge->Subject( $node );
+			
+			//
+			// Load predicate.
+			//
+			if( $element->{'kTAG_PREDICATE'}->count() )
+			{
+				//
+				// Resolve predicate.
+				//
+				$term = COntologyTerm::Resolve( $theDatabase,
+												(string) $element->{'kTAG_PREDICATE'}[ 0 ],
+												NULL,
+												TRUE );
+				
+				//
+				// Set subject.
+				//
+				$edge->Predicate( $term );
+			
+			} // Provided predicate.
+			
+			else
+				throw new Exception
+					( "Edge is missing predicate",
+					  kERROR_STATE );											// !@! ==>
+			
+			//
+			// Set object.
+			//
+			if( $element->{'kTAG_OBJECT'}->count() )
+			{
+				//
+				// Save identifier.
+				//
+				$save = (string) $element->{'kTAG_OBJECT'}[ 0 ];
+				
+				//
+				// Resolve object.
+				//
+				if( array_key_exists( $save, $_SESSION[ kOFFSET_NODES ] ) )
+					$edge->Object( $_SESSION[ kOFFSET_NODES ][ $save ] );
+				else
+					throw new Exception
+						( "Object node not found [$save]",
+						  kERROR_STATE );										// !@! ==>
+			}
+			else
+				$edge->Object( $node );
+			
+			//
+			// Insert edge.
+			//
+			$edge->Insert( $theDatabase );
+		
+		} // Iterating edges.
+
+	} // _ParseVertex.
 
 	 
 

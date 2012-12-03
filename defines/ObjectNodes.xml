@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<nodes>
+    <!-- CATEGORY -->
+    
+    <!-- OBJECTS -->
+    <node kTAG_GID=":OBJECTS">
+		<kTAG_CLASS>COntologyMasterVertex</kTAG_CLASS>
+	</node>
+	
+    <!-- OBJECTS -->
+    
+    <!-- _terms -->
+    <node kTAG_GID=":_terms">
+		<kTAG_CLASS>COntologyMasterVertex</kTAG_CLASS>
+	</node>
+    
+    <!-- _nodes -->
+    <node kTAG_GID=":_nodes">
+		<kTAG_CLASS>COntologyMasterVertex</kTAG_CLASS>
+	</node>
+    
+    <!-- _edges -->
+    <node kTAG_GID=":_edges">
+		<kTAG_CLASS>COntologyMasterVertex</kTAG_CLASS>
+	</node>
+    
+    <!-- _tags -->
+    <node kTAG_GID=":_tags">
+		<kTAG_CLASS>COntologyMasterVertex</kTAG_CLASS>
+	</node>
+</nodes>

@@ -5,7 +5,7 @@
     <!-- kPREDICATE_SUBCLASS_OF -->
     <term kTAG_LID="SUBCLASS-OF" kTAG_NAMESPACE="">
         <kTAG_KIND>
-            <item>:TERM-KIND-PREDICATE</item>
+            <item>:KIND-PREDICATE</item>
         </kTAG_KIND>
         <kTAG_LABEL language="en">Subclass of</kTAG_LABEL>
         <kTAG_DEFINITION language="en"><![CDATA[This predicate indicates that the
@@ -21,7 +21,7 @@
     <!-- kPREDICATE_SUBSET_OF -->
     <term kTAG_LID="SUBSET-OF" kTAG_NAMESPACE="">
         <kTAG_KIND>
-            <item>:TERM-KIND-PREDICATE</item>
+            <item>:KIND-PREDICATE</item>
         </kTAG_KIND>
         <kTAG_LABEL language="en">Subset of</kTAG_LABEL>
         <kTAG_DEFINITION language="en"><![CDATA[This predicate indicates that the
@@ -33,11 +33,28 @@
             <item>kPREDICATE_SUBSET_OF</item>
         </kTAG_SYNONYMS>
 	</term>
+    
+    <!-- kPREDICATE_ATTRIBUTE_OF -->
+    <term kTAG_LID="ATTRIBUTE-OF" kTAG_NAMESPACE="">
+        <kTAG_KIND>
+            <item>:KIND-PREDICATE</item>
+        </kTAG_KIND>
+        <kTAG_LABEL language="en">Attribute of</kTAG_LABEL>
+        <kTAG_DEFINITION language="en"><![CDATA[This predicate indicates that the
+        	<i>subject of the relationship is an attribute of the object of the
+        	relationship</i>, this means that the subject of the relationship is a
+        	<i>feature</i>.
+            ]]>
+        </kTAG_DEFINITION>
+        <kTAG_SYNONYMS>
+            <item>kPREDICATE_ATTRIBUTE_OF</item>
+        </kTAG_SYNONYMS>
+	</term>
         
     <!-- kPREDICATE_METHOD_OF -->
     <term kTAG_LID="METHOD-OF" kTAG_NAMESPACE="">
         <kTAG_KIND>
-            <item>:TERM-KIND-PREDICATE</item>
+            <item>:KIND-PREDICATE</item>
         </kTAG_KIND>
         <kTAG_LABEL language="en">Method of</kTAG_LABEL>
         <kTAG_DEFINITION language="en"><![CDATA[This predicate relates <i>method
@@ -55,7 +72,7 @@
     <!-- kPREDICATE_SCALE_OF -->
     <term kTAG_LID="SCALE-OF" kTAG_NAMESPACE="">
         <kTAG_KIND>
-            <item>:TERM-KIND-PREDICATE</item>
+            <item>:KIND-PREDICATE</item>
         </kTAG_KIND>
         <kTAG_LABEL language="en">Scale of</kTAG_LABEL>
         <kTAG_DEFINITION language="en"><![CDATA[This predicate is used by <i>scale
@@ -74,7 +91,7 @@
     <!-- kPREDICATE_ENUM_OF -->
     <term kTAG_LID="ENUM-OF" kTAG_NAMESPACE="">
         <kTAG_KIND>
-            <item>:TERM-KIND-PREDICATE</item>
+            <item>:KIND-PREDICATE</item>
         </kTAG_KIND>
         <kTAG_LABEL language="en">Enumeration of</kTAG_LABEL>
         <kTAG_DEFINITION language="en"><![CDATA[This predicate relates <i>vertex
@@ -92,7 +109,7 @@
     <!-- kPREDICATE_PREFERRED -->
     <term kTAG_LID="PREFERRED" kTAG_NAMESPACE="">
         <kTAG_KIND>
-            <item>:TERM-KIND-PREDICATE</item>
+            <item>:KIND-PREDICATE</item>
         </kTAG_KIND>
         <kTAG_LABEL language="en">Preferred choice</kTAG_LABEL>
         <kTAG_DEFINITION language="en"><![CDATA[This predicate indicates that the object of
@@ -112,7 +129,7 @@
     <!-- kPREDICATE_VALID -->
     <term kTAG_LID="VALID" kTAG_NAMESPACE="">
         <kTAG_KIND>
-            <item>:TERM-KIND-PREDICATE</item>
+            <item>:KIND-PREDICATE</item>
         </kTAG_KIND>
         <kTAG_LABEL language="en">Valid choice</kTAG_LABEL>
         <kTAG_DEFINITION language="en"><![CDATA[This predicate indicates that the object of
@@ -133,7 +150,7 @@
     <!-- kPREDICATE_LEGACY -->
     <term kTAG_LID="LEGACY" kTAG_NAMESPACE="">
         <kTAG_KIND>
-            <item>:TERM-KIND-PREDICATE</item>
+            <item>:KIND-PREDICATE</item>
         </kTAG_KIND>
         <kTAG_LABEL language="en">Legacy version</kTAG_LABEL>
         <kTAG_DEFINITION language="en"><![CDATA[This predicate indicates that the object of
@@ -155,7 +172,7 @@
     <!-- kPREDICATE_XREF -->
     <term kTAG_LID="XREF" kTAG_NAMESPACE="">
         <kTAG_KIND>
-            <item>:TERM-KIND-PREDICATE</item>
+            <item>:KIND-PREDICATE</item>
         </kTAG_KIND>
         <kTAG_LABEL language="en">Cross reference</kTAG_LABEL>
         <kTAG_DEFINITION language="en"><![CDATA[This predicate indicates that the subject of
@@ -175,7 +192,7 @@
     <!-- kPREDICATE_XREF_EXACT -->
     <term kTAG_LID="XREF-EXACT" kTAG_NAMESPACE="">
         <kTAG_KIND>
-            <item>:TERM-KIND-PREDICATE</item>
+            <item>:KIND-PREDICATE</item>
             <item>:kKIND_TERM_SYMMETRIC</item>
         </kTAG_KIND>
         <kTAG_LABEL language="en">Exact cross reference</kTAG_LABEL>

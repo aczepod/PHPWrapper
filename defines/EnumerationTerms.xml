@@ -992,6 +992,40 @@
         </kTAG_SYNONYMS>
 	</term>
     
+    <!-- kTYPE_COMPUTED -->
+    <term kTAG_LID="COMPUTED" kTAG_NAMESPACE="">
+        <kTAG_KIND>
+            <item>:KIND-ENUMERATION</item>
+        </kTAG_KIND>
+        <kTAG_LABEL language="en">Computed</kTAG_LABEL>
+        <kTAG_DEFINITION language="en"><![CDATA[This type indicates that the element is
+        	<i>computed</i>, which means that it is <i>automatically filled</i> usually when
+        	committing the object. If this type is missing, it means that the attribute must
+        	be explicitly set.
+            ]]>
+        </kTAG_DEFINITION>
+        <kTAG_SYNONYMS>
+            <item>kTYPE_COMPUTED</item>
+        </kTAG_SYNONYMS>
+	</term>
+    
+    <!-- kTYPE_LOCKED -->
+    <term kTAG_LID="LOCKED" kTAG_NAMESPACE="">
+        <kTAG_KIND>
+            <item>:KIND-ENUMERATION</item>
+        </kTAG_KIND>
+        <kTAG_LABEL language="en">Locked</kTAG_LABEL>
+        <kTAG_DEFINITION language="en"><![CDATA[This type indicates that the element is
+        	<i>locked</i>, which means that it is <i>not modifiable</i>. This means that the
+        	<i>value cannot be changed once the object has been committed</i>. If this type
+        	is missing, it means that the attribute can be explicitly modified.
+            ]]>
+        </kTAG_DEFINITION>
+        <kTAG_SYNONYMS>
+            <item>kTYPE_LOCKED</item>
+        </kTAG_SYNONYMS>
+	</term>
+    
     <!-- kTYPE_ARRAY -->
     <term kTAG_LID="ARRAY" kTAG_NAMESPACE="">
         <kTAG_KIND>

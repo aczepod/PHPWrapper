@@ -119,6 +119,19 @@ define( "kPREDICATE_SUBCLASS_OF",				':SUBCLASS-OF' );
 define( "kPREDICATE_SUBSET_OF",					':SUBSET-OF' );
 
 /**
+ * ATTRIBUTE-OF.
+ *
+ * Attribute of.
+ *
+ * This predicate indicates that the subject of the relationship is an attribute of the
+ * object of the relationship, this means that the subject of the relationship should be of
+ * the {@link kKIND_FEATURE}.
+ *
+ * Version 1: (kPREDICATE_SUBSET_OF)[:SUBSET-OF]
+ */
+define( "kPREDICATE_ATTRIBUTE_OF",				':ATTRIBUTE-OF' );
+
+/**
  * SCALE-OF.
  *
  * Scale of.

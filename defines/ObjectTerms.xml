@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<terms>
+    <!-- CATEGORY -->
+    
+    <!-- OBJECTS -->
+    <term kTAG_LID="OBJECTS" kTAG_NAMESPACE="">
+        <kTAG_LABEL language="en">Objects</kTAG_LABEL>
+        <kTAG_DEFINITION language="en"><![CDATA[This category groups all <i>default
+        	objects</i>, which are a collection of <i>attributes</i> and <i>properties</i>.
+            ]]>
+        </kTAG_DEFINITION>
+	</term>
+	
+    <!-- OBJECTS -->
+    
+    <!-- Terms -->
+    <term kTAG_LID="_terms" kTAG_NAMESPACE="">
+        <kTAG_LABEL language="en">Terms</kTAG_LABEL>
+        <kTAG_DEFINITION language="en"><![CDATA[An ontology term represents a <i>concept
+        	unrelated to a context</i>. As a <i>vocabulary</i> word changes its meaning
+        	depending on its position in a sentence, the same term may be used in different
+        	places in the ontology, meaning in different contexts, to represent different
+			things. Terms are organised as a <i>dictionary</i>, <i>without relationships</i>
+			between each other.
+            ]]>
+        </kTAG_DEFINITION>
+	</term>
+    
+    <!-- Nodes -->
+    <term kTAG_LID="_nodes" kTAG_NAMESPACE="">
+        <kTAG_LABEL language="en">Nodes</kTAG_LABEL>
+        <kTAG_DEFINITION language="en"><![CDATA[An ontology node is essentially an
+        	<i>ontology term in context</i>. Nodes are the <i>vertices of the ontology</i>
+        	graph and are <i>connected by relationships</i>.
+            ]]>
+        </kTAG_DEFINITION>
+	</term>
+    
+    <!-- Edges -->
+    <term kTAG_LID="_edges" kTAG_NAMESPACE="">
+        <kTAG_LABEL language="en">Nodes</kTAG_LABEL>
+        <kTAG_DEFINITION language="en"><![CDATA[An ontology edge <i>relates ontology
+        	nodes</i> via a predicate. Edges are represented by a triplet: <i>subject</i>,
+        	<i>predicate</i> and <i>object</i>, in which the subject and the object are
+        	ontology nodes and the predicate is an ontology term.
+            ]]>
+        </kTAG_DEFINITION>
+	</term>
+    
+    <!-- Tags -->
+    <term kTAG_LID="_tags" kTAG_NAMESPACE="">
+        <kTAG_LABEL language="en">Nodes</kTAG_LABEL>
+        <kTAG_DEFINITION language="en"><![CDATA[An ontology tag represents the <i>path</i>
+        	between an <i>ontology feature vertex</i> and an <i>ontology scale vertex</i>.
+        	Tags record the terms referenced by the vertices and the predicates that relate
+        	them,
+            ]]>
+        </kTAG_DEFINITION>
+	</term>
+</terms>

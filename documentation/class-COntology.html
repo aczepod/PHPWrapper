@@ -6,7 +6,7 @@
 
 	<title>Class COntology | MyWrapper Reference Documentation</title>
 
-	<script type="text/javascript" src="resources/combined.js?1742645618"></script>
+	<script type="text/javascript" src="resources/combined.js?3680114562"></script>
 	<script type="text/javascript" src="elementlist.js?571949357"></script>
 	<link rel="stylesheet" type="text/css" media="all" href="resources/style.css?3505392360" />
 
@@ -177,7 +177,7 @@ interface for managing ontologies.</p>
 				<b>Author:</b>
 				Milko A. Škofič &lt;<a
 href="mailto:m.skofic&#64;cgiar.org">m.skofic&#64;<!---->cgiar.org</a>&gt;<br />
-		<b>Located at</b> <a href="source-class-COntology.html#256-2140" title="Go to source code">COntology.php</a><br />
+		<b>Located at</b> <a href="source-class-COntology.html#256-1399" title="Go to source code">COntology.php</a><br />
 	</div>
 
 
@@ -338,7 +338,7 @@ inferred..</tt></tt></p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#_InitOntology">#</a>
-		<code><a href="source-class-COntology.html#393-456" title="Go to source code">InitOntology</a>( )</code>
+		<code><a href="source-class-COntology.html#393-459" title="Go to source code">InitOntology</a>( )</code>
 
 		<div class="description short">
 			
@@ -391,7 +391,7 @@ any value.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#__InitContainers">#</a>
-		<code><a href="source-class-COntology.html#472-608" title="Go to source code">_InitContainers</a>( )</code>
+		<code><a href="source-class-COntology.html#475-611" title="Go to source code">_InitContainers</a>( )</code>
 
 		<div class="description short">
 			
@@ -429,7 +429,7 @@ first method called by the procedure that initialises the ontology.</b></p>
 		</div>
 		</div></td>
 	</tr>
-	<tr data-order="_InitNamespaceTerms" id="__InitNamespaceTerms">
+	<tr data-order="_InitTerms" id="__InitTerms">
 
 		<td class="attributes"><code>
 			 protected 
@@ -439,22 +439,21 @@ first method called by the procedure that initialises the ontology.</b></p>
 		</td>
 
 		<td class="name"><div>
-		<a class="anchor" href="#__InitNamespaceTerms">#</a>
-		<code><a href="source-class-COntology.html#615-675" title="Go to source code">_InitNamespaceTerms</a>( )</code>
+		<a class="anchor" href="#__InitTerms">#</a>
+		<code><a href="source-class-COntology.html#618-680" title="Go to source code">_InitTerms</a>( )</code>
 
 		<div class="description short">
 			
-<h4>Initialise default namespaces</h4>
+<h4>Initialise default terms</h4>
 
 		</div>
 
 		<div class="description detailed hidden">
 			
-<h4>Initialise default namespaces</h4>
+<h4>Initialise default terms</h4>
 
-<p>This method will load all default namespaces, it will read the term
-definitions from the <tt>namespaces.xml</tt> file placed in the library
-definitions directory.</p>
+<p>This method will load all default terms, it will read the term definition
+files from the library definitions directory.</p>
 
 
 
@@ -470,7 +469,7 @@ definitions directory.</p>
 		</div>
 		</div></td>
 	</tr>
-	<tr data-order="_InitCategoryTerms" id="__InitCategoryTerms">
+	<tr data-order="_InitNodes" id="__InitNodes">
 
 		<td class="attributes"><code>
 			 protected 
@@ -480,22 +479,21 @@ definitions directory.</p>
 		</td>
 
 		<td class="name"><div>
-		<a class="anchor" href="#__InitCategoryTerms">#</a>
-		<code><a href="source-class-COntology.html#682-731" title="Go to source code">_InitCategoryTerms</a>( )</code>
+		<a class="anchor" href="#__InitNodes">#</a>
+		<code><a href="source-class-COntology.html#687-762" title="Go to source code">_InitNodes</a>( )</code>
 
 		<div class="description short">
 			
-<h4>Initialise category terms</h4>
+<h4>Initialise nodes</h4>
 
 		</div>
 
 		<div class="description detailed hidden">
 			
-<h4>Initialise category terms</h4>
+<h4>Initialise nodes</h4>
 
-<p>This method will load all default category terms, it will read the term
-definitions from the <tt>CategoryTerms.xml</tt> file placed in the library
-definitions directory.</p>
+<p>This method will load all default nodes, it will read the node definitions
+from the files placed in the library definitions directory.</p>
 
 
 
@@ -511,7 +509,7 @@ definitions directory.</p>
 		</div>
 		</div></td>
 	</tr>
-	<tr data-order="_InitAttributeTerms" id="__InitAttributeTerms">
+	<tr data-order="_InitEdges" id="__InitEdges">
 
 		<td class="attributes"><code>
 			 protected 
@@ -521,22 +519,21 @@ definitions directory.</p>
 		</td>
 
 		<td class="name"><div>
-		<a class="anchor" href="#__InitAttributeTerms">#</a>
-		<code><a href="source-class-COntology.html#738-787" title="Go to source code">_InitAttributeTerms</a>( )</code>
+		<a class="anchor" href="#__InitEdges">#</a>
+		<code><a href="source-class-COntology.html#769-825" title="Go to source code">_InitEdges</a>( )</code>
 
 		<div class="description short">
 			
-<h4>Initialise attribute terms</h4>
+<h4>Initialise edges</h4>
 
 		</div>
 
 		<div class="description detailed hidden">
 			
-<h4>Initialise attribute terms</h4>
+<h4>Initialise edges</h4>
 
-<p>This method will load all default attribute terms, it will read the term
-definitions from the <tt>AttributeTerms.xml</tt> file placed in the library
-definitions directory.</p>
+<p>This method will load all default edges, it will read the edge definitions
+from the files placed in the library definitions directory.</p>
 
 
 
@@ -552,7 +549,7 @@ definitions directory.</p>
 		</div>
 		</div></td>
 	</tr>
-	<tr data-order="_InitEnumerationTerms" id="__InitEnumerationTerms">
+	<tr data-order="_InitVertices" id="__InitVertices">
 
 		<td class="attributes"><code>
 			 protected 
@@ -562,22 +559,21 @@ definitions directory.</p>
 		</td>
 
 		<td class="name"><div>
-		<a class="anchor" href="#__InitEnumerationTerms">#</a>
-		<code><a href="source-class-COntology.html#794-856" title="Go to source code">_InitEnumerationTerms</a>( )</code>
+		<a class="anchor" href="#__InitVertices">#</a>
+		<code><a href="source-class-COntology.html#832-876" title="Go to source code">_InitVertices</a>( )</code>
 
 		<div class="description short">
 			
-<h4>Initialise enumeration terms</h4>
+<h4>Initialise vertices</h4>
 
 		</div>
 
 		<div class="description detailed hidden">
 			
-<h4>Initialise enumeration terms</h4>
+<h4>Initialise vertices</h4>
 
-<p>This method will load all default enumeration terms, it will read the term
-definitions from the <tt>attributes.xml</tt> file placed in the library
-definitions directory.</p>
+<p>This method will load all default vertices, it will read the vertex
+definitions from the files placed in the library definitions directory.</p>
 
 
 
@@ -587,390 +583,6 @@ definitions directory.</p>
 				<div class="list">
 					<code><code><a href="class-Exception.html">Exception</a></code></code><br />
 				</div>
-
-
-
-		</div>
-		</div></td>
-	</tr>
-	<tr data-order="_InitPredicateTerms" id="__InitPredicateTerms">
-
-		<td class="attributes"><code>
-			 protected 
-			
-			
-			</code>
-		</td>
-
-		<td class="name"><div>
-		<a class="anchor" href="#__InitPredicateTerms">#</a>
-		<code><a href="source-class-COntology.html#863-924" title="Go to source code">_InitPredicateTerms</a>( )</code>
-
-		<div class="description short">
-			
-<h4>Initialise predicates</h4>
-
-		</div>
-
-		<div class="description detailed hidden">
-			
-<h4>Initialise predicates</h4>
-
-<p>This method will load all default predicates, it will read the predicate
-definitions from the <tt>PredicateTerms.xml</tt> file placed in the library
-definitions directory.</p>
-
-
-
-
-
-				<h4>Throws</h4>
-				<div class="list">
-					<code><code><a href="class-Exception.html">Exception</a></code></code><br />
-				</div>
-
-
-
-		</div>
-		</div></td>
-	</tr>
-	<tr data-order="_InitCategoryNodes" id="__InitCategoryNodes">
-
-		<td class="attributes"><code>
-			 protected 
-			
-			
-			</code>
-		</td>
-
-		<td class="name"><div>
-		<a class="anchor" href="#__InitCategoryNodes">#</a>
-		<code><a href="source-class-COntology.html#931-985" title="Go to source code">_InitCategoryNodes</a>( )</code>
-
-		<div class="description short">
-			
-<h4>Initialise category nodes</h4>
-
-		</div>
-
-		<div class="description detailed hidden">
-			
-<h4>Initialise category nodes</h4>
-
-<p>This method will load all default category nodes, it will read the node
-definitions from the <tt>CategoryNodes.xml</tt> file placed in the library
-definitions directory.</p>
-
-
-
-
-
-				<h4>Throws</h4>
-				<div class="list">
-					<code><code><a href="class-Exception.html">Exception</a></code></code><br />
-				</div>
-
-
-
-		</div>
-		</div></td>
-	</tr>
-	<tr data-order="_InitCategoryEdges" id="__InitCategoryEdges">
-
-		<td class="attributes"><code>
-			 protected 
-			
-			
-			</code>
-		</td>
-
-		<td class="name"><div>
-		<a class="anchor" href="#__InitCategoryEdges">#</a>
-		<code><a href="source-class-COntology.html#992-1035" title="Go to source code">_InitCategoryEdges</a>( )</code>
-
-		<div class="description short">
-			
-<h4>Initialise category edges</h4>
-
-		</div>
-
-		<div class="description detailed hidden">
-			
-<h4>Initialise category edges</h4>
-
-<p>This method will load all default category edges, it will read the edge
-definitions from the <tt>CategoryEdges.xml</tt> file placed in the library
-definitions directory.</p>
-
-
-
-
-
-				<h4>Throws</h4>
-				<div class="list">
-					<code><code><a href="class-Exception.html">Exception</a></code></code><br />
-				</div>
-
-
-
-		</div>
-		</div></td>
-	</tr>
-	<tr data-order="_InitEnumerationNodes" id="__InitEnumerationNodes">
-
-		<td class="attributes"><code>
-			 protected 
-			
-			
-			</code>
-		</td>
-
-		<td class="name"><div>
-		<a class="anchor" href="#__InitEnumerationNodes">#</a>
-		<code><a href="source-class-COntology.html#1042-1098" title="Go to source code">_InitEnumerationNodes</a>( )</code>
-
-		<div class="description short">
-			
-<h4>Initialise enumeration nodes</h4>
-
-		</div>
-
-		<div class="description detailed hidden">
-			
-<h4>Initialise enumeration nodes</h4>
-
-<p>This method will load all default enumeration nodes, it will read the node
-definitions from the <tt>EnumerationNodes.xml</tt> file placed in the library
-definitions directory.</p>
-
-
-
-
-
-				<h4>Throws</h4>
-				<div class="list">
-					<code><code><a href="class-Exception.html">Exception</a></code></code><br />
-				</div>
-
-
-
-		</div>
-		</div></td>
-	</tr>
-	<tr data-order="_InitEnumerationEdges" id="__InitEnumerationEdges">
-
-		<td class="attributes"><code>
-			 protected 
-			
-			
-			</code>
-		</td>
-
-		<td class="name"><div>
-		<a class="anchor" href="#__InitEnumerationEdges">#</a>
-		<code><a href="source-class-COntology.html#1105-1150" title="Go to source code">_InitEnumerationEdges</a>( )</code>
-
-		<div class="description short">
-			
-<h4>Initialise enumeration edges</h4>
-
-		</div>
-
-		<div class="description detailed hidden">
-			
-<h4>Initialise enumeration edges</h4>
-
-<p>This method will load all default enumeration edges, it will read the edge
-definitions from the <tt>EnumerationEdges.xml</tt> file placed in the library
-definitions directory.</p>
-
-
-
-
-
-				<h4>Throws</h4>
-				<div class="list">
-					<code><code><a href="class-Exception.html">Exception</a></code></code><br />
-				</div>
-
-
-
-		</div>
-		</div></td>
-	</tr>
-	<tr data-order="_LoadTermDataDictionary" id="__LoadTermDataDictionary">
-
-		<td class="attributes"><code>
-			 protected 
-			
-			
-			</code>
-		</td>
-
-		<td class="name"><div>
-		<a class="anchor" href="#__LoadTermDataDictionary">#</a>
-		<code><a href="source-class-COntology.html#1157-1276" title="Go to source code">_LoadTermDataDictionary</a>( )</code>
-
-		<div class="description short">
-			
-<h4>Load term data dictionary</h4>
-
-		</div>
-
-		<div class="description detailed hidden">
-			
-<h4>Load term data dictionary</h4>
-
-<p>This method will load the ontology term, <code><a href="class-COntologyTerm.html">COntologyTerm</a></code>, data
-dictionary.</p>
-
-
-
-
-
-
-
-
-		</div>
-		</div></td>
-	</tr>
-	<tr data-order="_LoadNodeDataDictionary" id="__LoadNodeDataDictionary">
-
-		<td class="attributes"><code>
-			 protected 
-			
-			
-			</code>
-		</td>
-
-		<td class="name"><div>
-		<a class="anchor" href="#__LoadNodeDataDictionary">#</a>
-		<code><a href="source-class-COntology.html#1283-1453" title="Go to source code">_LoadNodeDataDictionary</a>( )</code>
-
-		<div class="description short">
-			
-<h4>Load node data dictionary</h4>
-
-		</div>
-
-		<div class="description detailed hidden">
-			
-<h4>Load node data dictionary</h4>
-
-<p>This method will load the ontology node, <code><a href="class-COntologyVertex.html">COntologyVertex</a></code>, data
-dictionary.</p>
-
-
-
-
-
-
-
-
-		</div>
-		</div></td>
-	</tr>
-	<tr data-order="_LoadEdgeDataDictionary" id="__LoadEdgeDataDictionary">
-
-		<td class="attributes"><code>
-			 protected 
-			
-			
-			</code>
-		</td>
-
-		<td class="name"><div>
-		<a class="anchor" href="#__LoadEdgeDataDictionary">#</a>
-		<code><a href="source-class-COntology.html#1460-1573" title="Go to source code">_LoadEdgeDataDictionary</a>( )</code>
-
-		<div class="description short">
-			
-<h4>Load edge data dictionary</h4>
-
-		</div>
-
-		<div class="description detailed hidden">
-			
-<h4>Load edge data dictionary</h4>
-
-<p>This method will load the ontology edge, <code><a href="class-COntologyEdge.html">COntologyEdge</a></code>, data
-dictionary.</p>
-
-
-
-
-
-
-
-
-		</div>
-		</div></td>
-	</tr>
-	<tr data-order="_LoadTagDataDictionary" id="__LoadTagDataDictionary">
-
-		<td class="attributes"><code>
-			 protected 
-			
-			
-			</code>
-		</td>
-
-		<td class="name"><div>
-		<a class="anchor" href="#__LoadTagDataDictionary">#</a>
-		<code><a href="source-class-COntology.html#1580-1685" title="Go to source code">_LoadTagDataDictionary</a>( )</code>
-
-		<div class="description short">
-			
-<h4>Load tag data dictionary</h4>
-
-		</div>
-
-		<div class="description detailed hidden">
-			
-<h4>Load tag data dictionary</h4>
-
-<p>This method will load the ontology tag, <code><a href="class-COntologyTag.html">COntologyTag</a></code>, data
-dictionary.</p>
-
-
-
-
-
-
-
-
-		</div>
-		</div></td>
-	</tr>
-	<tr data-order="_LoadAttributesDataDictionary" id="__LoadAttributesDataDictionary">
-
-		<td class="attributes"><code>
-			 protected 
-			
-			
-			</code>
-		</td>
-
-		<td class="name"><div>
-		<a class="anchor" href="#__LoadAttributesDataDictionary">#</a>
-		<code><a href="source-class-COntology.html#1692-1801" title="Go to source code">_LoadAttributesDataDictionary</a>( )</code>
-
-		<div class="description short">
-			
-<h4>Load attributes data dictionary</h4>
-
-		</div>
-
-		<div class="description detailed hidden">
-			
-<h4>Load attributes data dictionary</h4>
-
-<p>This method will load the ontology default attributes data dictionary.</p>
-
-
-
-
-
 
 
 
@@ -988,7 +600,7 @@ dictionary.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#__ParseTerm">#</a>
-		<code><a href="source-class-COntology.html#1817-1942" title="Go to source code">_ParseTerm</a>( <span><code><a href="class-CDatabase.html">CDatabase</a></code> <var>$theDatabase</var></span>, <span><code><a href="class-SimpleXMLElement.html">SimpleXMLElement</a></code> <var>$theElement</var></span>, <span><code><a href="class-COntologyTerm.html">COntologyTerm</a></code> <var>$theTerm</var></span> )</code>
+		<code><a href="source-class-COntology.html#892-1017" title="Go to source code">_ParseTerm</a>( <span><code><a href="class-CDatabase.html">CDatabase</a></code> <var>$theDatabase</var></span>, <span><code><a href="class-SimpleXMLElement.html">SimpleXMLElement</a></code> <var>$theElement</var></span>, <span><code><a href="class-COntologyTerm.html">COntologyTerm</a></code> <var>$theTerm</var></span> )</code>
 
 		<div class="description short">
 			
@@ -1037,7 +649,7 @@ term.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#__ParseNode">#</a>
-		<code><a href="source-class-COntology.html#1949-2032" title="Go to source code">_ParseNode</a>( <span><code><a href="class-CDatabase.html">CDatabase</a></code> <var>$theDatabase</var></span>, <span><code><a href="class-SimpleXMLElement.html">SimpleXMLElement</a></code> <var>$theElement</var></span>, <span><code><a href="class-COntologyNode.html">COntologyNode</a></code> <var>$theNode</var></span> )</code>
+		<code><a href="source-class-COntology.html#1024-1107" title="Go to source code">_ParseNode</a>( <span><code><a href="class-CDatabase.html">CDatabase</a></code> <var>$theDatabase</var></span>, <span><code><a href="class-SimpleXMLElement.html">SimpleXMLElement</a></code> <var>$theElement</var></span>, <span><code><a href="class-COntologyNode.html">COntologyNode</a></code> <var>$theNode</var></span> )</code>
 
 		<div class="description short">
 			
@@ -1086,7 +698,7 @@ node.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#__ParseEdge">#</a>
-		<code><a href="source-class-COntology.html#2039-2136" title="Go to source code">_ParseEdge</a>( <span><code><a href="class-CDatabase.html">CDatabase</a></code> <var>$theDatabase</var></span>, <span><code><a href="class-SimpleXMLElement.html">SimpleXMLElement</a></code> <var>$theElement</var></span>, <span><code><a href="class-COntologyEdge.html">COntologyEdge</a></code> <var>$theEdge</var></span> )</code>
+		<code><a href="source-class-COntology.html#1114-1217" title="Go to source code">_ParseEdge</a>( <span><code><a href="class-CDatabase.html">CDatabase</a></code> <var>$theDatabase</var></span>, <span><code><a href="class-SimpleXMLElement.html">SimpleXMLElement</a></code> <var>$theElement</var></span>, <span><code><a href="class-COntologyEdge.html">COntologyEdge</a></code> <var>$theEdge</var></span> )</code>
 
 		<div class="description short">
 			
@@ -1111,6 +723,55 @@ edge.</p>
 					<dd><code><code><a href="class-SimpleXMLElement.html">SimpleXMLElement</a></code></code><br>$theElement XML element with term data.</dd>
 					<dt><var>$theEdge</var></dt>
 					<dd><code><code><a href="class-COntologyEdge.html">COntologyEdge</a></code></code><br>$theEdge Receives edge data.</dd>
+				</dl></div>
+
+
+				<h4>Throws</h4>
+				<div class="list">
+					<code><code><a href="class-Exception.html">Exception</a></code></code><br />
+				</div>
+
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="_ParseVertex" id="__ParseVertex">
+
+		<td class="attributes"><code>
+			 protected 
+			
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#__ParseVertex">#</a>
+		<code><a href="source-class-COntology.html#1224-1395" title="Go to source code">_ParseVertex</a>( <span><code><a href="class-CDatabase.html">CDatabase</a></code> <var>$theDatabase</var></span>, <span><code><a href="class-SimpleXMLElement.html">SimpleXMLElement</a></code> <var>$theElement</var></span> )</code>
+
+		<div class="description short">
+			
+<h4>Parse the provided edge</h4>
+
+		</div>
+
+		<div class="description detailed hidden">
+			
+<h4>Parse the provided edge</h4>
+
+<p>This method will parse the provided XML vertex, create and fill the relative
+ontology objects.</p>
+
+<p>Terms and master nodes must exist.</p>
+
+
+
+				<h4>Parameters</h4>
+				<div class="list"><dl>
+					<dt><var>$theDatabase</var></dt>
+					<dd><code><code><a href="class-CDatabase.html">CDatabase</a></code></code><br>$theDatabase Database container.</dd>
+					<dt><var>$theElement</var></dt>
+					<dd><code><code><a href="class-SimpleXMLElement.html">SimpleXMLElement</a></code></code><br>$theElement XML element with term data.</dd>
 				</dl></div>
 
 

@@ -1,0 +1,286 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<nodes>
+    <!-- IDENTIFICATION ATTRIBUTES -->
+    
+    <!-- kTERM_NID -->
+    <node kTAG_GID=":NID">
+		<kTAG_CLASS>COntologyMasterVertex</kTAG_CLASS>
+		<kTAG_KIND>
+            <item>:KIND-FEATURE</item>
+        </kTAG_KIND>
+		<kTAG_TYPE>
+            <item>:REQUIRED</item>
+        </kTAG_TYPE>
+    </node>
+    
+    <!-- kTERM_LID -->
+    <node kTAG_GID=":LID">
+		<kTAG_CLASS>COntologyMasterVertex</kTAG_CLASS>
+		<kTAG_KIND>
+            <item>:KIND-FEATURE</item>
+        </kTAG_KIND>
+    </node>
+    
+    <!-- kTERM_GID -->
+    <node kTAG_GID=":GID">
+		<kTAG_CLASS>COntologyMasterVertex</kTAG_CLASS>
+		<kTAG_KIND>
+            <item>:KIND-FEATURE</item>
+        </kTAG_KIND>
+        <kTAG_TYPE>
+            <item>:TEXT</item>
+        </kTAG_TYPE>
+    </node>
+    
+    <!-- kTERM_UID -->
+    <node kTAG_GID=":UID">
+		<kTAG_CLASS>COntologyMasterVertex</kTAG_CLASS>
+		<kTAG_KIND>
+            <item>:KIND-FEATURE</item>
+        </kTAG_KIND>
+    </node>
+    
+    <!-- kTERM_SYNONYMS -->
+    <node kTAG_GID=":SYNONYMS">
+		<kTAG_CLASS>COntologyMasterVertex</kTAG_CLASS>
+		<kTAG_KIND>
+            <item>:KIND-FEATURE</item>
+        </kTAG_KIND>
+    </node>
+    
+    <!-- CLASSIFICATION ATTRIBUTES -->
+    
+    <!-- kTERM_CATEGORY -->
+    <node kTAG_GID=":CATEGORY">
+		<kTAG_CLASS>COntologyMasterVertex</kTAG_CLASS>
+		<kTAG_KIND>
+            <item>:KIND-FEATURE</item>
+        </kTAG_KIND>
+    </node>
+    
+    <!-- kTERM_KIND -->
+    <node kTAG_GID=":KIND">
+		<kTAG_CLASS>COntologyMasterVertex</kTAG_CLASS>
+		<kTAG_KIND>
+            <item>:KIND-FEATURE</item>
+        </kTAG_KIND>
+    </node>
+    
+    <!-- kTERM_TYPE -->
+    <node kTAG_GID=":TYPE">
+		<kTAG_CLASS>COntologyMasterVertex</kTAG_CLASS>
+		<kTAG_KIND>
+            <item>:KIND-FEATURE</item>
+        </kTAG_KIND>
+    </node>
+    
+    <!-- kTERM_CLASS -->
+    <node kTAG_GID=":CLASS">
+		<kTAG_CLASS>COntologyMasterVertex</kTAG_CLASS>
+		<kTAG_KIND>
+            <item>:KIND-FEATURE</item>
+        </kTAG_KIND>
+    </node>
+    
+    <!-- kTERM_NAMESPACE -->
+    <node kTAG_GID=":NAMESPACE">
+		<kTAG_CLASS>COntologyMasterVertex</kTAG_CLASS>
+		<kTAG_KIND>
+            <item>:KIND-FEATURE</item>
+        </kTAG_KIND>
+    </node>
+    
+    <!-- DESCRIPTION ATTRIBUTES -->
+    
+    <!-- kTERM_LABEL -->
+    <node kTAG_GID=":LABEL">
+		<kTAG_CLASS>COntologyMasterVertex</kTAG_CLASS>
+		<kTAG_KIND>
+            <item>:KIND-FEATURE</item>
+        </kTAG_KIND>
+    </node>
+    
+    <!-- kTERM_DEFINITION -->
+    <node kTAG_GID=":DEFINITION">
+		<kTAG_CLASS>COntologyMasterVertex</kTAG_CLASS>
+		<kTAG_KIND>
+            <item>:KIND-FEATURE</item>
+        </kTAG_KIND>
+    </node>
+    
+    <!-- kTERM_DESCRIPTION -->
+    <node kTAG_GID=":DESCRIPTION">
+		<kTAG_CLASS>COntologyMasterVertex</kTAG_CLASS>
+		<kTAG_KIND>
+            <item>:KIND-FEATURE</item>
+        </kTAG_KIND>
+    </node>
+    
+    <!-- kTERM_NOTES -->
+    <node kTAG_GID=":NOTES">
+		<kTAG_CLASS>COntologyMasterVertex</kTAG_CLASS>
+		<kTAG_KIND>
+            <item>:KIND-FEATURE</item>
+        </kTAG_KIND>
+    </node>
+    
+    <!-- kTERM_EXAMPLES -->
+    <node kTAG_GID=":EXAMPLES">
+		<kTAG_CLASS>COntologyMasterVertex</kTAG_CLASS>
+		<kTAG_KIND>
+            <item>:KIND-FEATURE</item>
+        </kTAG_KIND>
+    </node>
+    
+    <!-- STATUS ATTRIBUTES -->
+    
+    <!-- kTERM_STATUS_LEVEL -->
+    <node kTAG_GID=":STATUS-LEVEL">
+		<kTAG_CLASS>COntologyMasterVertex</kTAG_CLASS>
+		<kTAG_KIND>
+            <item>:KIND-FEATURE</item>
+        </kTAG_KIND>
+    </node>
+    
+    <!-- kTERM_STATUS_CODE -->
+    <node kTAG_GID=":STATUS-CODE">
+		<kTAG_CLASS>COntologyMasterVertex</kTAG_CLASS>
+		<kTAG_KIND>
+            <item>:KIND-FEATURE</item>
+        </kTAG_KIND>
+    </node>
+    
+    <!-- kTERM_STATUS_MESSAGE -->
+    <node kTAG_GID=":STATUS-MESSAGE">
+		<kTAG_CLASS>COntologyMasterVertex</kTAG_CLASS>
+		<kTAG_KIND>
+            <item>:KIND-FEATURE</item>
+        </kTAG_KIND>
+    </node>
+    
+    <!-- AUTHORSHIP ATTRIBUTES -->
+    
+    <!-- kTERM_AUTHORS -->
+    <node kTAG_GID=":AUTHORS">
+		<kTAG_CLASS>COntologyMasterVertex</kTAG_CLASS>
+		<kTAG_KIND>
+            <item>:KIND-FEATURE</item>
+        </kTAG_KIND>
+    </node>
+    
+    <!-- kTERM_ACKNOWLEDGMENTS -->
+    <node kTAG_GID=":ACKNOWLEDGMENTS">
+		<kTAG_CLASS>COntologyMasterVertex</kTAG_CLASS>
+		<kTAG_KIND>
+            <item>:KIND-FEATURE</item>
+        </kTAG_KIND>
+    </node>
+    
+    <!-- kTERM_BIBLIOGRAPHY -->
+    <node kTAG_GID=":BIBLIOGRAPHY">
+		<kTAG_CLASS>COntologyMasterVertex</kTAG_CLASS>
+		<kTAG_KIND>
+            <item>:KIND-FEATURE</item>
+        </kTAG_KIND>
+    </node>
+    
+    <!-- REFERENCE ATTRIBUTES -->
+    
+    <!-- kTERM_TERM -->
+    <node kTAG_GID=":TERM">
+		<kTAG_CLASS>COntologyMasterVertex</kTAG_CLASS>
+		<kTAG_KIND>
+            <item>:KIND-FEATURE</item>
+        </kTAG_KIND>
+    </node>
+    
+    <!-- kTERM_NODE -->
+    <node kTAG_GID=":NODE">
+		<kTAG_CLASS>COntologyMasterVertex</kTAG_CLASS>
+		<kTAG_KIND>
+            <item>:KIND-FEATURE</item>
+        </kTAG_KIND>
+    </node>
+    
+    <!-- kTERM_SUBJECT -->
+    <node kTAG_GID=":SUBJECT">
+		<kTAG_CLASS>COntologyMasterVertex</kTAG_CLASS>
+		<kTAG_KIND>
+            <item>:KIND-FEATURE</item>
+        </kTAG_KIND>
+    </node>
+    
+    <!-- kTERM_OBJECT -->
+    <node kTAG_GID=":OBJECT">
+		<kTAG_CLASS>COntologyMasterVertex</kTAG_CLASS>
+		<kTAG_KIND>
+            <item>:KIND-FEATURE</item>
+        </kTAG_KIND>
+    </node>
+    
+    <!-- kTERM_PREDICATE -->
+    <node kTAG_GID=":PREDICATE">
+		<kTAG_CLASS>COntologyMasterVertex</kTAG_CLASS>
+		<kTAG_KIND>
+            <item>:KIND-FEATURE</item>
+        </kTAG_KIND>
+    </node>
+    
+    <!-- kTERM_PATH -->
+    <node kTAG_GID=":PATH">
+		<kTAG_CLASS>COntologyMasterVertex</kTAG_CLASS>
+		<kTAG_KIND>
+            <item>:KIND-FEATURE</item>
+        </kTAG_KIND>
+    </node>
+    
+    <!-- kTERM_NAMESPACE_REFS -->
+    <node kTAG_GID=":NAMESPACE-REFS">
+		<kTAG_CLASS>COntologyMasterVertex</kTAG_CLASS>
+		<kTAG_KIND>
+            <item>:KIND-FEATURE</item>
+        </kTAG_KIND>
+    </node>
+
+    <!-- REFERENCE COLLECTIONS -->
+    
+    <!-- kTERM_NODES -->
+    <node kTAG_GID=":NODES">
+		<kTAG_CLASS>COntologyMasterVertex</kTAG_CLASS>
+		<kTAG_KIND>
+            <item>:KIND-FEATURE</item>
+        </kTAG_KIND>
+    </node>
+    
+    <!-- kTERM_EDGES -->
+    <node kTAG_GID=":EDGES">
+		<kTAG_CLASS>COntologyMasterVertex</kTAG_CLASS>
+		<kTAG_KIND>
+            <item>:KIND-FEATURE</item>
+        </kTAG_KIND>
+    </node>
+    
+    <!-- kTERM_FEATURES -->
+    <node kTAG_GID=":FEATURES">
+		<kTAG_CLASS>COntologyMasterVertex</kTAG_CLASS>
+		<kTAG_KIND>
+            <item>:KIND-FEATURE</item>
+        </kTAG_KIND>
+    </node>
+    
+    <!-- kTERM_METHODS -->
+    <node kTAG_GID=":METHODS">
+		<kTAG_CLASS>COntologyMasterVertex</kTAG_CLASS>
+		<kTAG_KIND>
+            <item>:KIND-FEATURE</item>
+        </kTAG_KIND>
+    </node>
+    
+    <!-- kTERM_SCALES -->
+    <node kTAG_GID=":SCALES">
+		<kTAG_CLASS>COntologyMasterVertex</kTAG_CLASS>
+		<kTAG_KIND>
+            <item>:KIND-FEATURE</item>
+        </kTAG_KIND>
+    </node>
+</nodes>
