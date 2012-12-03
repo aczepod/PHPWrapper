@@ -212,7 +212,7 @@ try
 	echo( '<h4>Create trait node</h4>' );
 	$nodeTrait = new COntologyNode();
 	$nodeTrait->Term( $termTrait );
-	$nodeTrait->Kind( kKIND_NODE_FEATURE, TRUE );
+	$nodeTrait->Kind( kKIND_FEATURE, TRUE );
 //	$nodeTrait->Insert( $database );
 	echo( '<pre>' ); print_r( $nodeTrait ); echo( '</pre>' );
 	

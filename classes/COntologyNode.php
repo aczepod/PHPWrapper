@@ -27,11 +27,11 @@
 require_once( "COntologyNode.inc.php" );
 
 /**
- * Node kinds.
+ * Kinds.
  *
- * This includes the node kind definitions.
+ * This includes the kind definitions.
  */
-require_once( kPATH_MYWRAPPER_LIBRARY_DEFINE."/NodeKinds.inc.php" );
+require_once( kPATH_MYWRAPPER_LIBRARY_DEFINE."/Kinds.inc.php" );
 
 /**
  * Terms.

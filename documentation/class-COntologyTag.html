@@ -7,7 +7,7 @@
 	<title>Class COntologyTag | MyWrapper Reference Documentation</title>
 
 	<script type="text/javascript" src="resources/combined.js?1742645618"></script>
-	<script type="text/javascript" src="elementlist.js?2861350629"></script>
+	<script type="text/javascript" src="elementlist.js?571949357"></script>
 	<link rel="stylesheet" type="text/css" media="all" href="resources/style.css?3505392360" />
 
 </head>
@@ -51,6 +51,7 @@
 		<div id="elements">
 			<h3>Classes</h3>
 			<ul>
+				<li><a href="class-COntology.html">COntology</a></li>
 				<li><a href="class-COntologyAliasNode.html">COntologyAliasNode</a></li>
 				<li><a href="class-COntologyAliasVertex.html">COntologyAliasVertex</a></li>
 				<li><a href="class-COntologyEdge.html">COntologyEdge</a></li>
@@ -144,9 +145,9 @@ vertex elements to be treated differently if their predicates differ.</p>
 <p>Objects of this class will almost always be created by providing a sequence
 of node vertices and predicate terms, the <code><a href="class-COntologyTag.html#_PushItem">COntologyTag::PushItem()</a></code> method will follow
 these rules: the first element of the path is the feature vertex, if provided as
-an <code><a href="class-COntologyNode.html">COntologyNode</a></code> instance, it must have its <code><a href="class-CNode.html#_Kind">CNode::Kind()</a></code> set to kKIND_NODE_FEATURE; the last element of
-the path is the scale vertex, if provided as an <code><a href="class-COntologyNode.html">COntologyNode</a></code> instance,
-it must have its <code><a href="class-CNode.html#_Kind">CNode::Kind()</a></code> set to kKIND_NODE_SCALE.</p>
+an <code><a href="class-COntologyNode.html">COntologyNode</a></code> instance, it must have its <code><a href="class-CNode.html#_Kind">CNode::Kind()</a></code> set to kKIND_FEATURE; the last element of the
+path is the scale vertex, if provided as an <code><a href="class-COntologyNode.html">COntologyNode</a></code> instance, it
+must have its <code><a href="class-CNode.html#_Kind">CNode::Kind()</a></code> set to kKIND_SCALE.</p>
 
 <p>Whenever a tag is committed, the referenced terms will receive the tag kTAG_NID in an attribute, depending on their position in the path: the first
 path term will receive the tag reference in the kTAG_FEATURES attribute,
@@ -287,10 +288,10 @@ href="mailto:m.skofic&#64;cgiar.org">m.skofic&#64;<!---->cgiar.org</a>&gt;<br />
 			since there is no way to resolve them.</li>
 
 			<li>If the first element of the path is an <code><a href="class-COntologyNode.html">COntologyNode</a></code> instance, the
-			latter must have its kTAG_KIND attribute set to kKIND_NODE_FEATURE.</li>
+			latter must have its kTAG_KIND attribute set to kKIND_FEATURE.</li>
 
 			<li>If the last element of the path is an <code><a href="class-COntologyNode.html">COntologyNode</a></code> instance, the
-			latter must have its kTAG_KIND attribute set to kKIND_NODE_SCALE.</li>
+			latter must have its kTAG_KIND attribute set to kKIND_SCALE.</li>
 		</ul>
 	</li>
 

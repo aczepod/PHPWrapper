@@ -19,133 +19,15 @@
  */
 
 /*=======================================================================================
- *	DEFAULT ONTOLOGY																	*
+ *	SESSION CACHE OFFSETS																*
  *======================================================================================*/
-
-/**
- * Ontology.
- *
- * An ontology is a graph structure composed of nodes related by a series of directed edges,
- * each node represents a concept that can be used to illustrate a characteristic or feature
- * of an object, or to tag a set of data elements that are measurements of that feature.
- */
-define( "kTERM_ONTOLOGY",						':ONTOLOGY' );
-
-/*=======================================================================================
- *	MAIN ONTOLOGY CATEGORIES															*
- *======================================================================================*/
-
-/**
- * Namespaces.
- *
- * Namespaces are terms that are containers for a set of term identifiers or names based on
- * their functionality or semantic origin. Such terms are used to allow the disambiguation
- * of homonym identifiers residing in different namespaces.
- */
-define( "kTERM_NAMESPACES",						':NAMESPACES' );
-
-/*=======================================================================================
- *	DEFAULT ONTOLOGY OBJECT DATA STRUCTURES												*
- *======================================================================================*/
-
-/**
- * Terms.
- *
- * This tag identifies the root data dictionary node of the terms object data structure, it
- * describes the default elements comprising the term objects in this library.
- */
-define( "kDDICT_TERM",							':DDICT-TERM' );
 
 /**
  * Nodes.
  *
- * This tag identifies the root data dictionary node of the nodes object data structure, it
- * describes the default elements comprising the node objects in this library.
+ * This tag is the offset of the nodes cache, it is an array in which the key is the term
+ * global identifier and the value is the node identifier.
  */
-define( "kDDICT_NODE",							':DDICT-NODE' );
-
-/**
- * Edges.
- *
- * This tag identifies the root data dictionary node of the edges object data structure, it
- * describes the default elements comprising the edge objects in this library.
- */
-define( "kDDICT_EDGE",							':DDICT-EDGE' );
-
-/**
- * Tags.
- *
- * This tag identifies the root data dictionary node of the tags object data structure, it
- * describes the default elements comprising the tag objects in this library.
- */
-define( "kDDICT_TAG",							':DDICT-TAG' );
-
-/*=======================================================================================
- *	DEFAULT ONTOLOGY INSTANCES															*
- *======================================================================================*/
-
-/**
- * Predicates.
- *
- * This tag collects all default predicate terms.
- */
-define( "kINSTANCE_PREDICATES",					':INSTANCE-PREDICATES' );
-
-/**
- * Node kinds.
- *
- * This tag collects all default node kind terms.
- */
-define( "kINSTANCE_NODE_KINDS",					':INSTANCE-NODE-KIND' );
-
-/**
- * Data types.
- *
- * This tag collects all default node kind terms.
- */
-define( "kINSTANCE_DATA_TYPES",					':INSTANCE-DATA-TYPE' );
-
-/*=======================================================================================
- *	DEFAULT ONTOLOGY ATTRIBUTES															*
- *======================================================================================*/
-
-/**
- * Attributes.
- *
- * This tag collects all default attributes.
- */
-define( "kDEFAULT_ATTRIBUTES",					':DEFAULT-ATTRIBUTES' );
-
-/*=======================================================================================
- *	EXPORT COLLECTION OFFSETS															*
- *======================================================================================*/
-
-/**
- * Predicate elements.
- *
- * This offset tags the export collection element that holds the predicate items.
- */
-define( "kOFFSET_EXPORT_PREDICATE",				'_predicate' );
-
-/**
- * Vertex elements.
- *
- * This offset tags the export collection element that holds the vertex items.
- */
-define( "kOFFSET_EXPORT_VERTEX",				'_vertex' );
-
-/**
- * Edge elements.
- *
- * This offset tags the export collection element that holds the edge items.
- */
-define( "kOFFSET_EXPORT_EDGE",					'_edge' );
-
-/**
- * Tag elements.
- *
- * This offset tags the export collection element that holds the tag items.
- */
-define( "kOFFSET_EXPORT_TAG",					'_tag' );
+define( "kOFFSET_NODES",						'_NODES_' );
 
 ?>

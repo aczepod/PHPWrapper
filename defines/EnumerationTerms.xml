@@ -5,7 +5,7 @@
     <!-- kSTATUS_IDLE -->
     <term kTAG_LID="0" kTAG_NAMESPACE=":STATUS">
         <kTAG_KIND>
-            <item>:TERM-KIND-ENUMERATION</item>
+            <item>:KIND-ENUMERATION</item>
         </kTAG_KIND>
         <kTAG_LABEL language="en">Idle</kTAG_LABEL>
         <kTAG_DEFINITION language="en"><![CDATA[This code indicates <i>no errors</i>, this
@@ -20,7 +20,7 @@
     <!-- kSTATUS_NOTICE -->
     <term kTAG_LID="10" kTAG_NAMESPACE=":STATUS">
         <kTAG_KIND>
-            <item>:TERM-KIND-ENUMERATION</item>
+            <item>:KIND-ENUMERATION</item>
         </kTAG_KIND>
         <kTAG_LABEL language="en">Notice</kTAG_LABEL>
         <kTAG_DEFINITION language="en"><![CDATA[This code indicates a <i>notice</i>. A
@@ -37,7 +37,7 @@
     <!-- kSTATUS_MESSAGE -->
     <term kTAG_LID="20" kTAG_NAMESPACE=":STATUS">
         <kTAG_KIND>
-            <item>:TERM-KIND-ENUMERATION</item>
+            <item>:KIND-ENUMERATION</item>
         </kTAG_KIND>
         <kTAG_LABEL language="en">Message</kTAG_LABEL>
         <kTAG_DEFINITION language="en"><![CDATA[This code indicates a <i>message</i>. A
@@ -54,7 +54,7 @@
     <!-- kSTATUS_WARNING -->
     <term kTAG_LID="30" kTAG_NAMESPACE=":STATUS">
         <kTAG_KIND>
-            <item>:TERM-KIND-ENUMERATION</item>
+            <item>:KIND-ENUMERATION</item>
         </kTAG_KIND>
         <kTAG_LABEL language="en">Warning</kTAG_LABEL>
         <kTAG_DEFINITION language="en"><![CDATA[This code indicates a <i>warning</i>
@@ -71,7 +71,7 @@
     <!-- kSTATUS_ERROR -->
     <term kTAG_LID="40" kTAG_NAMESPACE=":STATUS">
         <kTAG_KIND>
-            <item>:TERM-KIND-ENUMERATION</item>
+            <item>:KIND-ENUMERATION</item>
         </kTAG_KIND>
         <kTAG_LABEL language="en">Error</kTAG_LABEL>
         <kTAG_DEFINITION language="en"><![CDATA[This code indicates an <i>error</i>.
@@ -88,7 +88,7 @@
     <!-- kSTATUS_FATAL -->
     <term kTAG_LID="50" kTAG_NAMESPACE=":STATUS">
         <kTAG_KIND>
-            <item>:TERM-KIND-ENUMERATION</item>
+            <item>:KIND-ENUMERATION</item>
         </kTAG_KIND>
         <kTAG_LABEL language="en">Fatal</kTAG_LABEL>
         <kTAG_DEFINITION language="en"><![CDATA[This code indicates a <i>fatal error</i>.
@@ -105,7 +105,7 @@
     <!-- kSTATUS_BUG -->
     <term kTAG_LID="60" kTAG_NAMESPACE=":STATUS">
         <kTAG_KIND>
-            <item>:TERM-KIND-ENUMERATION</item>
+            <item>:KIND-ENUMERATION</item>
         </kTAG_KIND>
         <kTAG_LABEL language="en">Bug</kTAG_LABEL>
         <kTAG_DEFINITION language="en"><![CDATA[This code indicates a <i>bug</i>. Bugs,
@@ -125,7 +125,7 @@
     <!-- kOPERATOR_DISABLED -->
     <term kTAG_LID="$NO" kTAG_NAMESPACE="">
         <kTAG_KIND>
-            <item>:TERM-KIND-ENUMERATION</item>
+            <item>:KIND-ENUMERATION</item>
         </kTAG_KIND>
         <kTAG_LABEL language="en">Disabled</kTAG_LABEL>
         <kTAG_DEFINITION language="en"><![CDATA[<i>Disabled operator</i>.
@@ -139,7 +139,7 @@
     <!-- kOPERATOR_EQUAL -->
     <term kTAG_LID="$EQ" kTAG_NAMESPACE="">
         <kTAG_KIND>
-            <item>:TERM-KIND-ENUMERATION</item>
+            <item>:KIND-ENUMERATION</item>
         </kTAG_KIND>
         <kTAG_LABEL language="en">Equal</kTAG_LABEL>
         <kTAG_DEFINITION language="en"><![CDATA[<i>Equality</i> operator.
@@ -154,7 +154,7 @@
     <!-- kOPERATOR_EQUAL_NOT -->
     <term kTAG_LID="$NE" kTAG_NAMESPACE="">
         <kTAG_KIND>
-            <item>:TERM-KIND-ENUMERATION</item>
+            <item>:KIND-ENUMERATION</item>
         </kTAG_KIND>
         <kTAG_LABEL language="en">Not equal</kTAG_LABEL>
         <kTAG_DEFINITION language="en"><![CDATA[<i>Inequality</i> operator.
@@ -170,7 +170,7 @@
     <!-- kOPERATOR_LIKE -->
     <term kTAG_LID="$AS" kTAG_NAMESPACE="">
         <kTAG_KIND>
-            <item>:TERM-KIND-ENUMERATION</item>
+            <item>:KIND-ENUMERATION</item>
         </kTAG_KIND>
         <kTAG_LABEL language="en">Like</kTAG_LABEL>
         <kTAG_DEFINITION language="en"><![CDATA[<i>Case and accent matching</i> operator
@@ -186,7 +186,7 @@
     <!-- kOPERATOR_LIKE_NOT -->
     <term kTAG_LID="$NS" kTAG_NAMESPACE="">
         <kTAG_KIND>
-            <item>:TERM-KIND-ENUMERATION</item>
+            <item>:KIND-ENUMERATION</item>
         </kTAG_KIND>
         <kTAG_LABEL language="en">Not like</kTAG_LABEL>
         <kTAG_DEFINITION language="en"><![CDATA[<i>Case and accent not matching</i> operator
@@ -202,7 +202,7 @@
     <!-- kOPERATOR_PREFIX -->
     <term kTAG_LID="$PX" kTAG_NAMESPACE="">
         <kTAG_KIND>
-            <item>:TERM-KIND-ENUMERATION</item>
+            <item>:KIND-ENUMERATION</item>
         </kTAG_KIND>
         <kTAG_LABEL language="en">Starts with</kTAG_LABEL>
         <kTAG_DEFINITION language="en"><![CDATA[<i>Prefix matching</i> operator: <i>starts
@@ -217,7 +217,7 @@
     <!-- kOPERATOR_PREFIX_NOCASE -->
     <term kTAG_LID="$PXi" kTAG_NAMESPACE="">
         <kTAG_KIND>
-            <item>:TERM-KIND-ENUMERATION</item>
+            <item>:KIND-ENUMERATION</item>
         </kTAG_KIND>
         <kTAG_LABEL language="en">Case-insensitive prefix</kTAG_LABEL>
         <kTAG_DEFINITION language="en"><![CDATA[<i>Prefix matching</i> operator: <i>starts
@@ -232,7 +232,7 @@
     <!-- kOPERATOR_CONTAINS -->
     <term kTAG_LID="$CX" kTAG_NAMESPACE="">
         <kTAG_KIND>
-            <item>:TERM-KIND-ENUMERATION</item>
+            <item>:KIND-ENUMERATION</item>
         </kTAG_KIND>
         <kTAG_LABEL language="en">Contains</kTAG_LABEL>
         <kTAG_DEFINITION language="en"><![CDATA[<i>Content matching</i> operator:
@@ -247,7 +247,7 @@
     <!-- kOPERATOR_CONTAINS_NOCASE -->
     <term kTAG_LID="$CXi" kTAG_NAMESPACE="">
         <kTAG_KIND>
-            <item>:TERM-KIND-ENUMERATION</item>
+            <item>:KIND-ENUMERATION</item>
         </kTAG_KIND>
         <kTAG_LABEL language="en">Case-insensitive contains</kTAG_LABEL>
         <kTAG_DEFINITION language="en"><![CDATA[<i>Content matching</i> operator:
@@ -263,7 +263,7 @@
     <!-- kOPERATOR_SUFFIX -->
     <term kTAG_LID="$SX" kTAG_NAMESPACE="">
         <kTAG_KIND>
-            <item>:TERM-KIND-ENUMERATION</item>
+            <item>:KIND-ENUMERATION</item>
         </kTAG_KIND>
         <kTAG_LABEL language="en">Ends with</kTAG_LABEL>
         <kTAG_DEFINITION language="en"><![CDATA[<i>Suffix matching</i> operator: <i>ends
@@ -278,7 +278,7 @@
     <!-- kOPERATOR_SUFFIX_NOCASE -->
     <term kTAG_LID="$SXi" kTAG_NAMESPACE="">
         <kTAG_KIND>
-            <item>:TERM-KIND-ENUMERATION</item>
+            <item>:KIND-ENUMERATION</item>
         </kTAG_KIND>
         <kTAG_LABEL language="en">Case-insensitive ends with</kTAG_LABEL>
         <kTAG_DEFINITION language="en"><![CDATA[<i>Suffix matching</i> operator: <i>ends
@@ -293,7 +293,7 @@
     <!-- kOPERATOR_REGEX -->
     <term kTAG_LID="$RE" kTAG_NAMESPACE="">
         <kTAG_KIND>
-            <item>:TERM-KIND-ENUMERATION</item>
+            <item>:KIND-ENUMERATION</item>
         </kTAG_KIND>
         <kTAG_LABEL language="en">Regular expression</kTAG_LABEL>
         <kTAG_DEFINITION language="en"><![CDATA[<i>Regular expression</i> operator
@@ -308,7 +308,7 @@
     <!-- kOPERATOR_LESS -->
     <term kTAG_LID="$LT" kTAG_NAMESPACE="">
         <kTAG_KIND>
-            <item>:TERM-KIND-ENUMERATION</item>
+            <item>:KIND-ENUMERATION</item>
         </kTAG_KIND>
         <kTAG_LABEL language="en">Smaller</kTAG_LABEL>
         <kTAG_DEFINITION language="en"><![CDATA[<i>Less than</i> or <i>smaller than</i>
@@ -324,7 +324,7 @@
     <!-- kOPERATOR_LESS_EQUAL -->
     <term kTAG_LID="$LE" kTAG_NAMESPACE="">
         <kTAG_KIND>
-            <item>:TERM-KIND-ENUMERATION</item>
+            <item>:KIND-ENUMERATION</item>
         </kTAG_KIND>
         <kTAG_LABEL language="en">Smaller or equal</kTAG_LABEL>
         <kTAG_DEFINITION language="en"><![CDATA[<i>Less than or equal</i> or <i>smaller
@@ -340,7 +340,7 @@
     <!-- kOPERATOR_GREAT -->
     <term kTAG_LID="$GT" kTAG_NAMESPACE="">
         <kTAG_KIND>
-            <item>:TERM-KIND-ENUMERATION</item>
+            <item>:KIND-ENUMERATION</item>
         </kTAG_KIND>
         <kTAG_LABEL language="en">Greater</kTAG_LABEL>
         <kTAG_DEFINITION language="en"><![CDATA[<i>Greater than</i> or <i>larger than</i>
@@ -356,7 +356,7 @@
     <!-- kOPERATOR_GREAT_EQUAL -->
     <term kTAG_LID="$GE" kTAG_NAMESPACE="">
         <kTAG_KIND>
-            <item>:TERM-KIND-ENUMERATION</item>
+            <item>:KIND-ENUMERATION</item>
         </kTAG_KIND>
         <kTAG_LABEL language="en">Greater or equal</kTAG_LABEL>
         <kTAG_DEFINITION language="en"><![CDATA[<i>Greater or equal</i> or <i>larger or
@@ -372,7 +372,7 @@
     <!-- kOPERATOR_IRANGE -->
     <term kTAG_LID="$IRG" kTAG_NAMESPACE="">
         <kTAG_KIND>
-            <item>:TERM-KIND-ENUMERATION</item>
+            <item>:KIND-ENUMERATION</item>
         </kTAG_KIND>
         <kTAG_LABEL language="en">Range inclusive</kTAG_LABEL>
         <kTAG_DEFINITION language="en"><![CDATA[<i>Range inclusive</i> operator, the
@@ -387,7 +387,7 @@
     <!-- kOPERATOR_ERANGE -->
     <term kTAG_LID="$ERG" kTAG_NAMESPACE="">
         <kTAG_KIND>
-            <item>:TERM-KIND-ENUMERATION</item>
+            <item>:KIND-ENUMERATION</item>
         </kTAG_KIND>
         <kTAG_LABEL language="en">Range exclusive</kTAG_LABEL>
         <kTAG_DEFINITION language="en"><![CDATA[<i>Range exclusive</i> operator, the
@@ -402,7 +402,7 @@
     <!-- kOPERATOR_NULL -->
     <term kTAG_LID="$NU" kTAG_NAMESPACE="">
         <kTAG_KIND>
-            <item>:TERM-KIND-ENUMERATION</item>
+            <item>:KIND-ENUMERATION</item>
         </kTAG_KIND>
         <kTAG_LABEL language="en">Missing</kTAG_LABEL>
         <kTAG_DEFINITION language="en"><![CDATA[<i>Missing</i> or <i>null</i> operator.
@@ -416,7 +416,7 @@
     <!-- kOPERATOR_NOT_NULL -->
     <term kTAG_LID="$NN" kTAG_NAMESPACE="">
         <kTAG_KIND>
-            <item>:TERM-KIND-ENUMERATION</item>
+            <item>:KIND-ENUMERATION</item>
         </kTAG_KIND>
         <kTAG_LABEL language="en">Exists</kTAG_LABEL>
         <kTAG_DEFINITION language="en"><![CDATA[<i>Exists</i> or <i>not null</i>
@@ -431,7 +431,7 @@
     <!-- kOPERATOR_IN -->
     <term kTAG_LID="$IN" kTAG_NAMESPACE="">
         <kTAG_KIND>
-            <item>:TERM-KIND-ENUMERATION</item>
+            <item>:KIND-ENUMERATION</item>
         </kTAG_KIND>
         <kTAG_LABEL language="en">Belongs</kTAG_LABEL>
         <kTAG_DEFINITION language="en"><![CDATA[<i>Belongs to set</i> operator, the value
@@ -446,7 +446,7 @@
     <!-- kOPERATOR_NI -->
     <term kTAG_LID="$NI" kTAG_NAMESPACE="">
         <kTAG_KIND>
-            <item>:TERM-KIND-ENUMERATION</item>
+            <item>:KIND-ENUMERATION</item>
         </kTAG_KIND>
         <kTAG_LABEL language="en">Not in</kTAG_LABEL>
         <kTAG_DEFINITION language="en"><![CDATA[<i>Not in set</i> operator, the value
@@ -461,7 +461,7 @@
     <!-- kOPERATOR_ALL -->
     <term kTAG_LID="$AL" kTAG_NAMESPACE="">
         <kTAG_KIND>
-            <item>:TERM-KIND-ENUMERATION</item>
+            <item>:KIND-ENUMERATION</item>
         </kTAG_KIND>
         <kTAG_LABEL language="en">All</kTAG_LABEL>
         <kTAG_DEFINITION language="en"><![CDATA[<i>Match all</i> operator, the value
@@ -476,7 +476,7 @@
     <!-- kOPERATOR_NALL -->
     <term kTAG_LID="$NAL" kTAG_NAMESPACE="">
         <kTAG_KIND>
-            <item>:TERM-KIND-ENUMERATION</item>
+            <item>:KIND-ENUMERATION</item>
         </kTAG_KIND>
         <kTAG_LABEL language="en">Not all</kTAG_LABEL>
         <kTAG_DEFINITION language="en"><![CDATA[<i>Not all match</i> operator, the value
@@ -491,7 +491,7 @@
     <!-- kOPERATOR_EX -->
     <term kTAG_LID="$EX" kTAG_NAMESPACE="">
         <kTAG_KIND>
-            <item>:TERM-KIND-ENUMERATION</item>
+            <item>:KIND-ENUMERATION</item>
         </kTAG_KIND>
         <kTAG_LABEL language="en">Expression</kTAG_LABEL>
         <kTAG_DEFINITION language="en"><![CDATA[<i>Expression</i> operator.
@@ -507,7 +507,7 @@
     <!-- kOPERATOR_AND -->
     <term kTAG_LID="$AND" kTAG_NAMESPACE="">
         <kTAG_KIND>
-            <item>:TERM-KIND-ENUMERATION</item>
+            <item>:KIND-ENUMERATION</item>
         </kTAG_KIND>
         <kTAG_LABEL language="en">AND</kTAG_LABEL>
         <kTAG_DEFINITION language="en"><![CDATA[Operator <i>AND</i>, represents the
@@ -523,7 +523,7 @@
     <!-- kOPERATOR_NAND -->
     <term kTAG_LID="$NAND" kTAG_NAMESPACE="">
         <kTAG_KIND>
-            <item>:TERM-KIND-ENUMERATION</item>
+            <item>:KIND-ENUMERATION</item>
         </kTAG_KIND>
         <kTAG_LABEL language="en">Not AND</kTAG_LABEL>
         <kTAG_DEFINITION language="en"><![CDATA[Operator <i>not AND</i>, represents the
@@ -538,7 +538,7 @@
     <!-- kOPERATOR_OR -->
     <term kTAG_LID="$OR" kTAG_NAMESPACE="">
         <kTAG_KIND>
-            <item>:TERM-KIND-ENUMERATION</item>
+            <item>:KIND-ENUMERATION</item>
         </kTAG_KIND>
         <kTAG_LABEL language="en">OR</kTAG_LABEL>
         <kTAG_DEFINITION language="en"><![CDATA[Operator <i>OR</i>, represents the
@@ -554,7 +554,7 @@
     <!-- kOPERATOR_NOR -->
     <term kTAG_LID="$NOR" kTAG_NAMESPACE="">
         <kTAG_KIND>
-            <item>:TERM-KIND-ENUMERATION</item>
+            <item>:KIND-ENUMERATION</item>
         </kTAG_KIND>
         <kTAG_LABEL language="en">Not OR</kTAG_LABEL>
         <kTAG_DEFINITION language="en"><![CDATA[Operator <i>not OR</i>, represents the
@@ -571,7 +571,7 @@
     <!-- kTYPE_ANY -->
     <term kTAG_LID="ANY" kTAG_NAMESPACE="">
         <kTAG_KIND>
-            <item>:TERM-KIND-ENUMERATION</item>
+            <item>:KIND-ENUMERATION</item>
         </kTAG_KIND>
         <kTAG_LABEL language="en">Any</kTAG_LABEL>
         <kTAG_DEFINITION language="en"><![CDATA[This type represents a wildcard, it
@@ -586,7 +586,7 @@
     <!-- kTYPE_STRING -->
     <term kTAG_LID="TEXT" kTAG_NAMESPACE="">
         <kTAG_KIND>
-            <item>:TERM-KIND-ENUMERATION</item>
+            <item>:KIND-ENUMERATION</item>
         </kTAG_KIND>
         <kTAG_LABEL language="en">String or text</kTAG_LABEL>
         <kTAG_DEFINITION language="en"><![CDATA[This type defines <i>strings</i> or
@@ -605,7 +605,7 @@
     <!-- kTYPE_INT -->
     <term kTAG_LID="INT" kTAG_NAMESPACE="">
         <kTAG_KIND>
-            <item>:TERM-KIND-ENUMERATION</item>
+            <item>:KIND-ENUMERATION</item>
         </kTAG_KIND>
         <kTAG_LABEL language="en">Integer number</kTAG_LABEL>
         <kTAG_DEFINITION language="en"><![CDATA[This type defines an <i>integer signed
@@ -624,7 +624,7 @@
     <!-- kTYPE_FLOAT -->
     <term kTAG_LID="FLOAT" kTAG_NAMESPACE="">
         <kTAG_KIND>
-            <item>:TERM-KIND-ENUMERATION</item>
+            <item>:KIND-ENUMERATION</item>
         </kTAG_KIND>
         <kTAG_LABEL language="en">Floating point number</kTAG_LABEL>
         <kTAG_DEFINITION language="en"><![CDATA[This type defines an <i>floating point
@@ -643,7 +643,7 @@
     <!-- kTYPE_BOOLEAN -->
     <term kTAG_LID="BOOLEAN" kTAG_NAMESPACE="">
         <kTAG_KIND>
-            <item>:TERM-KIND-ENUMERATION</item>
+            <item>:KIND-ENUMERATION</item>
         </kTAG_KIND>
         <kTAG_LABEL language="en">Boolean switch</kTAG_LABEL>
         <kTAG_DEFINITION language="en"><![CDATA[This type defines a <i>switch</i> that can
@@ -665,9 +665,9 @@
     <!-- CUSTOM PRIMITIVE DATA TYPE ENUMERATIONS -->
     
     <!-- kTYPE_BINARY_STRING -->
-    <term kTAG_LID="BINARY" kTAG_NAMESPACE=":TEXT">
+    <term kTAG_LID="BINARY" kTAG_NAMESPACE="">
         <kTAG_KIND>
-            <item>:TERM-KIND-ENUMERATION</item>
+            <item>:KIND-ENUMERATION</item>
         </kTAG_KIND>
         <kTAG_LABEL language="en">Binary string</kTAG_LABEL>
         <kTAG_DEFINITION language="en"><![CDATA[This type represents a <i>sequence of
@@ -682,9 +682,9 @@
 	</term>
     
     <!-- kTYPE_DATE_STRING -->
-    <term kTAG_LID="DATE" kTAG_NAMESPACE=":TEXT">
+    <term kTAG_LID="DATE" kTAG_NAMESPACE="">
         <kTAG_KIND>
-            <item>:TERM-KIND-ENUMERATION</item>
+            <item>:KIND-ENUMERATION</item>
         </kTAG_KIND>
         <kTAG_LABEL language="en">Date string</kTAG_LABEL>
         <kTAG_DEFINITION language="en"><![CDATA[This type represents a <i>date</i> in the
@@ -707,9 +707,9 @@
 	</term>
     
     <!-- kTYPE_TIME_STRING -->
-    <term kTAG_LID="TIME" kTAG_NAMESPACE=":TEXT">
+    <term kTAG_LID="TIME" kTAG_NAMESPACE="">
         <kTAG_KIND>
-            <item>:TERM-KIND-ENUMERATION</item>
+            <item>:KIND-ENUMERATION</item>
         </kTAG_KIND>
         <kTAG_LABEL language="en">Time string</kTAG_LABEL>
         <kTAG_DEFINITION language="en"><![CDATA[This type represents a <i>date</i> and
@@ -737,9 +737,9 @@
 	</term>
     
     <!-- kTYPE_REGEX_STRING -->
-    <term kTAG_LID="REGEX" kTAG_NAMESPACE=":TEXT">
+    <term kTAG_LID="REGEX" kTAG_NAMESPACE="">
         <kTAG_KIND>
-            <item>:TERM-KIND-ENUMERATION</item>
+            <item>:KIND-ENUMERATION</item>
         </kTAG_KIND>
         <kTAG_LABEL language="en">Regular expression</kTAG_LABEL>
         <kTAG_DEFINITION language="en"><![CDATA[This type represents a <i>regular
@@ -758,9 +758,9 @@
 	</term>
     
     <!-- kTYPE_INT32 -->
-    <term kTAG_LID="32" kTAG_NAMESPACE=":INT">
+    <term kTAG_LID="INT32" kTAG_NAMESPACE="">
         <kTAG_KIND>
-            <item>:TERM-KIND-ENUMERATION</item>
+            <item>:KIND-ENUMERATION</item>
         </kTAG_KIND>
         <kTAG_LABEL language="en">32 bit integer</kTAG_LABEL>
         <kTAG_DEFINITION language="en"><![CDATA[This type defines a <i>32 bit signed
@@ -774,9 +774,9 @@
 	</term>
     
     <!-- kTYPE_INT64 -->
-    <term kTAG_LID="64" kTAG_NAMESPACE=":INT">
+    <term kTAG_LID="INT64" kTAG_NAMESPACE="">
         <kTAG_KIND>
-            <item>:TERM-KIND-ENUMERATION</item>
+            <item>:KIND-ENUMERATION</item>
         </kTAG_KIND>
         <kTAG_LABEL language="en">64 bit integer</kTAG_LABEL>
         <kTAG_DEFINITION language="en"><![CDATA[This type defines a <i>64 bit signed
@@ -794,7 +794,7 @@
     <!-- kTYPE_META -->
     <term kTAG_LID="META" kTAG_NAMESPACE="">
         <kTAG_KIND>
-            <item>:TERM-KIND-ENUMERATION</item>
+            <item>:KIND-ENUMERATION</item>
         </kTAG_KIND>
         <kTAG_LABEL language="en">Metadata</kTAG_LABEL>
         <kTAG_DEFINITION language="en"><![CDATA[This type represents the primitive <i>meta
@@ -809,7 +809,7 @@
     <!-- kTYPE_PHP -->
     <term kTAG_LID="PHP" kTAG_NAMESPACE="">
         <kTAG_KIND>
-            <item>:TERM-KIND-ENUMERATION</item>
+            <item>:KIND-ENUMERATION</item>
         </kTAG_KIND>
         <kTAG_LABEL language="en">PHP</kTAG_LABEL>
         <kTAG_DEFINITION language="en"><![CDATA[This type represents the <tt>PHP</tt>
@@ -825,7 +825,7 @@
     <!-- kTYPE_JSON -->
     <term kTAG_LID="JSON" kTAG_NAMESPACE="">
         <kTAG_KIND>
-            <item>:TERM-KIND-ENUMERATION</item>
+            <item>:KIND-ENUMERATION</item>
         </kTAG_KIND>
         <kTAG_LABEL language="en">:JSON</kTAG_LABEL>
         <kTAG_DEFINITION language="en"><![CDATA[This type represents the <tt>JSON</tt>
@@ -841,7 +841,7 @@
     <!-- kTYPE_XML -->
     <term kTAG_LID="XML" kTAG_NAMESPACE="">
         <kTAG_KIND>
-            <item>:TERM-KIND-ENUMERATION</item>
+            <item>:KIND-ENUMERATION</item>
         </kTAG_KIND>
         <kTAG_LABEL language="en">:XML</kTAG_LABEL>
         <kTAG_DEFINITION language="en"><![CDATA[This type represents the <tt>XML</tt>
@@ -855,9 +855,9 @@
 	</term>
     
     <!-- kTYPE_SVG -->
-    <term kTAG_LID="SVG" kTAG_NAMESPACE=":XML">
+    <term kTAG_LID="SVG" kTAG_NAMESPACE="">
         <kTAG_KIND>
-            <item>:TERM-KIND-ENUMERATION</item>
+            <item>:KIND-ENUMERATION</item>
         </kTAG_KIND>
         <kTAG_LABEL language="en">:SVG</kTAG_LABEL>
         <kTAG_DEFINITION language="en"><![CDATA[This type represents the <tt>SVG</tt>
@@ -875,7 +875,7 @@
     <!-- kTYPE_STRUCT -->
     <term kTAG_LID="STRUCT" kTAG_NAMESPACE="">
         <kTAG_KIND>
-            <item>:TERM-KIND-ENUMERATION</item>
+            <item>:KIND-ENUMERATION</item>
         </kTAG_KIND>
         <kTAG_LABEL language="en">Structure</kTAG_LABEL>
         <kTAG_DEFINITION language="en"><![CDATA[This data type refers to a <i>structure</i>,
@@ -891,7 +891,7 @@
     <!-- kTYPE_LSTRING -->
     <term kTAG_LID="LSTRING" kTAG_NAMESPACE="">
         <kTAG_KIND>
-            <item>:TERM-KIND-ENUMERATION</item>
+            <item>:KIND-ENUMERATION</item>
         </kTAG_KIND>
         <kTAG_LABEL language="en">Language strings</kTAG_LABEL>
         <kTAG_DEFINITION language="en"><![CDATA[This type represents a <i>string attribute
@@ -910,7 +910,7 @@
     <!-- kTYPE_STAMP -->
     <term kTAG_LID="STAMP" kTAG_NAMESPACE="">
         <kTAG_KIND>
-            <item>:TERM-KIND-ENUMERATION</item>
+            <item>:KIND-ENUMERATION</item>
         </kTAG_KIND>
         <kTAG_LABEL language="en">Time-stamp</kTAG_LABEL>
         <kTAG_DEFINITION language="en"><![CDATA[This type represents a <i>native
@@ -928,7 +928,7 @@
     <!-- kTYPE_ENUM -->
     <term kTAG_LID="ENUM" kTAG_NAMESPACE="">
         <kTAG_KIND>
-            <item>:TERM-KIND-ENUMERATION</item>
+            <item>:KIND-ENUMERATION</item>
         </kTAG_KIND>
         <kTAG_LABEL language="en">Enumeration</kTAG_LABEL>
         <kTAG_DEFINITION language="en"><![CDATA[This represents the <i>enumeration</i>
@@ -944,7 +944,7 @@
     <!-- kTYPE_ENUM_SET -->
     <term kTAG_LID="SET" kTAG_NAMESPACE="">
         <kTAG_KIND>
-            <item>:TERM-KIND-ENUMERATION</item>
+            <item>:KIND-ENUMERATION</item>
         </kTAG_KIND>
         <kTAG_LABEL language="en">Enumerated set</kTAG_LABEL>
         <kTAG_DEFINITION language="en"><![CDATA[This represents the <i>enumerated set</i>
@@ -962,7 +962,7 @@
     <!-- kTYPE_REQUIRED -->
     <term kTAG_LID="REQUIRED" kTAG_NAMESPACE="">
         <kTAG_KIND>
-            <item>:TERM-KIND-ENUMERATION</item>
+            <item>:KIND-ENUMERATION</item>
         </kTAG_KIND>
         <kTAG_LABEL language="en">Required</kTAG_LABEL>
         <kTAG_DEFINITION language="en"><![CDATA[This type indicates that the element
@@ -978,7 +978,7 @@
     <!-- kTYPE_RESTRICTED -->
     <term kTAG_LID="RESTRICTED" kTAG_NAMESPACE="">
         <kTAG_KIND>
-            <item>:TERM-KIND-ENUMERATION</item>
+            <item>:KIND-ENUMERATION</item>
         </kTAG_KIND>
         <kTAG_LABEL language="en">Restricted</kTAG_LABEL>
         <kTAG_DEFINITION language="en"><![CDATA[This type applies mostly to enumerated sets,
@@ -995,7 +995,7 @@
     <!-- kTYPE_ARRAY -->
     <term kTAG_LID="ARRAY" kTAG_NAMESPACE="">
         <kTAG_KIND>
-            <item>:TERM-KIND-ENUMERATION</item>
+            <item>:KIND-ENUMERATION</item>
         </kTAG_KIND>
         <kTAG_LABEL language="en">Array</kTAG_LABEL>
         <kTAG_DEFINITION language="en"><![CDATA[This type indicates that the attribute is a
@@ -1014,7 +1014,7 @@
     <!-- kTYPE_RELATION_IN -->
     <term kTAG_LID="RELATION-IN" kTAG_NAMESPACE="">
         <kTAG_KIND>
-            <item>:TERM-KIND-ENUMERATION</item>
+            <item>:KIND-ENUMERATION</item>
         </kTAG_KIND>
         <kTAG_LABEL language="en">Incoming relationship</kTAG_LABEL>
         <kTAG_DEFINITION language="en"><![CDATA[This type indicates an <i>incoming
@@ -1030,7 +1030,7 @@
     <!-- kTYPE_RELATION_OUT -->
     <term kTAG_LID="RELATION-OUT" kTAG_NAMESPACE="">
         <kTAG_KIND>
-            <item>:TERM-KIND-ENUMERATION</item>
+            <item>:KIND-ENUMERATION</item>
         </kTAG_KIND>
         <kTAG_LABEL language="en">Outgoing relationship</kTAG_LABEL>
         <kTAG_DEFINITION language="en"><![CDATA[This type indicates an <i>outgoing
@@ -1046,7 +1046,7 @@
     <!-- kTYPE_RELATION_ALL -->
     <term kTAG_LID="RELATION-ALL" kTAG_NAMESPACE="">
         <kTAG_KIND>
-            <item>:TERM-KIND-ENUMERATION</item>
+            <item>:KIND-ENUMERATION</item>
         </kTAG_KIND>
         <kTAG_LABEL language="en">All relationships</kTAG_LABEL>
         <kTAG_DEFINITION language="en"><![CDATA[This type indicates <i>all
@@ -1063,7 +1063,7 @@
     <!-- kTYPE_MongoId -->
     <term kTAG_LID="MongoId" kTAG_NAMESPACE="">
         <kTAG_KIND>
-            <item>:TERM-KIND-ENUMERATION</item>
+            <item>:KIND-ENUMERATION</item>
         </kTAG_KIND>
         <kTAG_LABEL language="en">MongoId</kTAG_LABEL>
         <kTAG_DEFINITION language="en"><![CDATA[This type represents the <tt>MongoId</tt>
@@ -1081,7 +1081,7 @@
     <!-- kTYPE_MongoCode -->
     <term kTAG_LID="MongoCode" kTAG_NAMESPACE="">
         <kTAG_KIND>
-            <item>:TERM-KIND-ENUMERATION</item>
+            <item>:KIND-ENUMERATION</item>
         </kTAG_KIND>
         <kTAG_LABEL language="en">MongoCode</kTAG_LABEL>
         <kTAG_DEFINITION language="en"><![CDATA[This type represents the <tt>MongoCode</tt>
@@ -1096,51 +1096,51 @@
         </kTAG_SYNONYMS>
 	</term>
     
-    <!-- NODE KIND ENUMERATIONS -->
+    <!-- KIND ENUMERATIONS -->
     
-    <!-- kKIND_NODE_ROOT -->
-    <term kTAG_LID="NODE-KIND-ROOT" kTAG_NAMESPACE="">
+    <!-- kKIND_ROOT -->
+    <term kTAG_LID="KIND-ROOT" kTAG_NAMESPACE="">
         <kTAG_KIND>
-            <item>:TERM-KIND-ENUMERATION</item>
+            <item>:KIND-ENUMERATION</item>
         </kTAG_KIND>
-        <kTAG_LABEL language="en">Root node</kTAG_LABEL>
+        <kTAG_LABEL language="en">Root</kTAG_LABEL>
         <kTAG_DEFINITION language="en"><![CDATA[<i>An entry point of an ontology</i>. This
-        	kind of node represents a door or entry point of an ontology. It can be either
-        	the node from which the whole graph or tree originates from, or a node that
-        	represents a specific thematic entry point. In general, such nodes will be used
-        	as elements of an index to an ontology.
+        	kind represents a door or entry point of an ontology. It can be either the node
+        	from which the whole graph or tree originates from, or a node that represents a
+        	specific thematic entry point. In general, such objects will be used as elements
+        	of an index to an ontology.
             ]]>
         </kTAG_DEFINITION>
         <kTAG_SYNONYMS>
-            <item>kKIND_NODE_ROOT</item>
+            <item>kKIND_ROOT</item>
         </kTAG_SYNONYMS>
 	</term>
     
-    <!-- kKIND_NODE_FEATURE -->
-    <term kTAG_LID="NODE-KIND-FEATURE" kTAG_NAMESPACE="">
+    <!-- kKIND_FEATURE -->
+    <term kTAG_LID="KIND-FEATURE" kTAG_NAMESPACE="">
         <kTAG_KIND>
-            <item>:TERM-KIND-ENUMERATION</item>
+            <item>:KIND-ENUMERATION</item>
         </kTAG_KIND>
-        <kTAG_LABEL language="en">Feature node</kTAG_LABEL>
+        <kTAG_LABEL language="en">Feature</kTAG_LABEL>
         <kTAG_DEFINITION language="en"><![CDATA[<i>A feature or attribute of an object that
-        	can be described or measured</i>. This kind of node defines a feature, property
-        	or attribute of an object that can be described or measured. This kind of node
+        	can be described or measured</i>. This kind defines a feature, property or
+        	attribute of an object that can be described or measured. This kind of node
         	will generally be found as a <i>leaf of the structure</i> describing an object.
         	Plant height is a plant characteristic that belongs to the category of
         	morphological traits: the latter is not a feature, while plant height is.
             ]]>
         </kTAG_DEFINITION>
         <kTAG_SYNONYMS>
-            <item>kKIND_NODE_FEATURE</item>
+            <item>kKIND_FEATURE</item>
         </kTAG_SYNONYMS>
 	</term>
     
-    <!-- kKIND_NODE_METHOD -->
-    <term kTAG_LID="NODE-KIND-METHOD" kTAG_NAMESPACE="">
+    <!-- kKIND_METHOD -->
+    <term kTAG_LID="KIND-METHOD" kTAG_NAMESPACE="">
         <kTAG_KIND>
-            <item>:TERM-KIND-ENUMERATION</item>
+            <item>:KIND-ENUMERATION</item>
         </kTAG_KIND>
-        <kTAG_LABEL language="en">Method node</kTAG_LABEL>
+        <kTAG_LABEL language="en">Method</kTAG_LABEL>
         <kTAG_DEFINITION language="en"><![CDATA[<i>A method or variation of an object's
         	feature measurement</i>. This kind of node is required whenever an object's
         	feature can be <i>measured in different ways</i> or with <i>different
@@ -1150,16 +1150,16 @@
             ]]>
         </kTAG_DEFINITION>
         <kTAG_SYNONYMS>
-            <item>kKIND_NODE_METHOD</item>
+            <item>kKIND_METHOD</item>
         </kTAG_SYNONYMS>
 	</term>
     
-    <!-- kKIND_NODE_SCALE -->
-    <term kTAG_LID="NODE-KIND-SCALE" kTAG_NAMESPACE="">
+    <!-- kKIND_SCALE -->
+    <term kTAG_LID="KIND-SCALE" kTAG_NAMESPACE="">
         <kTAG_KIND>
-            <item>:TERM-KIND-ENUMERATION</item>
+            <item>:KIND-ENUMERATION</item>
         </kTAG_KIND>
-        <kTAG_LABEL language="en">Scale node</kTAG_LABEL>
+        <kTAG_LABEL language="en">Scale</kTAG_LABEL>
         <kTAG_DEFINITION language="en"><![CDATA[<i>The scale or unit in which a measurement
         	is expressed in</i>. This kind of node describes in what unit or scale a
         	measurement is expressed in. Plant height may be measured in centimeters or
@@ -1167,104 +1167,83 @@
             ]]>
         </kTAG_DEFINITION>
         <kTAG_SYNONYMS>
-            <item>kKIND_NODE_SCALE</item>
+            <item>kKIND_SCALE</item>
         </kTAG_SYNONYMS>
 	</term>
     
-    <!-- kKIND_NODE_ENUMERATION -->
-    <term kTAG_LID="NODE-KIND-ENUMERATION" kTAG_NAMESPACE="">
+    <!-- kKIND_ENUMERATION -->
+    <term kTAG_LID="KIND-ENUMERATION" kTAG_NAMESPACE="">
         <kTAG_KIND>
-            <item>:TERM-KIND-ENUMERATION</item>
+            <item>:KIND-ENUMERATION</item>
         </kTAG_KIND>
-        <kTAG_LABEL language="en">Enumeration node</kTAG_LABEL>
+        <kTAG_LABEL language="en">Enumeration</kTAG_LABEL>
         <kTAG_DEFINITION language="en"><![CDATA[<i>An element of a controlled
-        	vocabulary</i>. This kind of node describes a controlled vocabulary element.
-        	These nodes derive from scale nodes and represent the valid choices of
+        	vocabulary</i>. This kind describes a controlled vocabulary element. Objects of
+        	this kind derive from scale nodes and represent the valid choices of
         	enumeration and enumerated set scale nodes. An ISO 3166 country code could be
         	considered an enumeration node.
             ]]>
         </kTAG_DEFINITION>
         <kTAG_SYNONYMS>
-            <item>kKIND_NODE_ENUMERATION</item>
+            <item>kKIND_ENUMERATION</item>
         </kTAG_SYNONYMS>
 	</term>
     
-    <!-- kKIND_NODE_INSTANCE -->
-    <term kTAG_LID="NODE-KIND-INSTANCE" kTAG_NAMESPACE="">
+    <!-- kKIND_INSTANCE -->
+    <term kTAG_LID="KIND-INSTANCE" kTAG_NAMESPACE="">
         <kTAG_KIND>
-            <item>:TERM-KIND-ENUMERATION</item>
+            <item>:KIND-ENUMERATION</item>
         </kTAG_KIND>
-        <kTAG_LABEL language="en">Instance node</kTAG_LABEL>
+        <kTAG_LABEL language="en">Instance</kTAG_LABEL>
         <kTAG_DEFINITION language="en"><![CDATA[<i>A metadata instance</i>. In general,
-        	ontology nodes represent metadata, in some cases nodes may represent actual
-        	data: an instance node is a node that represents <i>the metadata and data of an
-        	object</i>. An ISO 3166 country code can be considered an enumeration node that
-        	constitutes the metadata for the country it represents, but if you store data
-        	regarding that country in the node, this may become also an instance node,
-        	because it represents the object it defines.
+        	ontology elements represent metadata, in some cases they may represent actual
+        	data: an instance is an ontology element that represents <i>the metadata and
+        	data of an object</i>. An ISO 3166 country code can be considered an enumeration
+        	that constitutes the metadata for the country it represents, but if you store
+        	the country data in that element, this may become also an instance, because it
+        	represents the object it defines.
             ]]>
         </kTAG_DEFINITION>
         <kTAG_SYNONYMS>
-            <item>kKIND_NODE_INSTANCE</item>
+            <item>kKIND_INSTANCE</item>
         </kTAG_SYNONYMS>
 	</term>
     
-    <!-- TERM KIND ENUMERATIONS -->
-    
-    <!-- kKIND_TERM_NAMESPACE -->
-    <term kTAG_LID="TERM-KIND-NAMESPACE" kTAG_NAMESPACE="">
+    <!-- kKIND_NAMESPACE -->
+    <term kTAG_LID="KIND-NAMESPACE" kTAG_NAMESPACE="">
         <kTAG_KIND>
-            <item>:TERM-KIND-ENUMERATION</item>
+            <item>:KIND-ENUMERATION</item>
         </kTAG_KIND>
-        <kTAG_LABEL language="en">Namespace term</kTAG_LABEL>
-        <kTAG_DEFINITION language="en"><![CDATA[This kind of term represents 
-        	<i>namespace</i>, <i>semantic group</i> or <i>identifiers space</i>. Terms of
-        	this kind will generally be <i>used to group identifiers</i>.
+        <kTAG_LABEL language="en">Namespace</kTAG_LABEL>
+        <kTAG_DEFINITION language="en"><![CDATA[This kind of represents a <i>namespace</i>,
+        	<i>semantic group</i> or <i>identifiers space</i>. Objects of this kind will
+        	generally be <i>used to group identifiers</i>.
             ]]>
         </kTAG_DEFINITION>
         <kTAG_SYNONYMS>
-            <item>kKIND_TERM_NAMESPACE</item>
+            <item>kKIND_NAMESPACE</item>
         </kTAG_SYNONYMS>
 	</term>
     
-    <!-- kKIND_TERM_PREDICATE -->
-    <term kTAG_LID="TERM-KIND-PREDICATE" kTAG_NAMESPACE="">
+    <!-- kKIND_PREDICATE -->
+    <term kTAG_LID="KIND-PREDICATE" kTAG_NAMESPACE="">
         <kTAG_KIND>
-            <item>:TERM-KIND-ENUMERATION</item>
+            <item>:KIND-ENUMERATION</item>
         </kTAG_KIND>
-        <kTAG_LABEL language="en">Predicate term</kTAG_LABEL>
-        <kTAG_DEFINITION language="en"><![CDATA[This kind of term represents a
-        	<i>predicate</i>, or element which connects subject and object vertices into a
-        	relationship.
+        <kTAG_LABEL language="en">Predicate</kTAG_LABEL>
+        <kTAG_DEFINITION language="en"><![CDATA[This kind represents a <i>predicate</i>, or
+        	element which connects subject and object vertices into a relationship.
             ]]>
         </kTAG_DEFINITION>
         <kTAG_SYNONYMS>
-            <item>kKIND_TERM_PREDICATE</item>
+            <item>kKIND_PREDICATE</item>
         </kTAG_SYNONYMS>
 	</term>
     
-    <!-- kKIND_TERM_ENUMERATION -->
-    <term kTAG_LID="TERM-KIND-ENUMERATION" kTAG_NAMESPACE="">
+    <!-- kKIND_SYMMETRIC -->
+    <term kTAG_LID="KIND-SYMMETRIC" kTAG_NAMESPACE="">
         <kTAG_KIND>
-            <item>:TERM-KIND-ENUMERATION</item>
-        </kTAG_KIND>
-        <kTAG_LABEL language="en">Enumeration</kTAG_LABEL>
-        <kTAG_DEFINITION language="en"><![CDATA[This kind of term represents an
-        	<i>enumeration</i>, or an <i>element of a controlled vocabulary</i>.
-        	When linking a node to a term, terms of this kind should only be linked
-        	by a single node, which means that there should only be one instance of an
-        	enumeration.
-            ]]>
-        </kTAG_DEFINITION>
-        <kTAG_SYNONYMS>
-            <item>kKIND_TERM_ENUMERATION</item>
-        </kTAG_SYNONYMS>
-	</term>
-    
-    <!-- kKIND_TERM_SYMMETRIC -->
-    <term kTAG_LID="TERM-KIND-SYMMETRIC" kTAG_NAMESPACE="">
-        <kTAG_KIND>
-            <item>:TERM-KIND-ENUMERATION</item>
+            <item>:KIND-ENUMERATION</item>
         </kTAG_KIND>
         <kTAG_LABEL language="en">Symmetric predicate</kTAG_LABEL>
         <kTAG_DEFINITION language="en"><![CDATA[This kind of term represents a
@@ -1276,7 +1255,7 @@
             ]]>
         </kTAG_DEFINITION>
         <kTAG_SYNONYMS>
-            <item>kKIND_TERM_SYMMETRIC</item>
+            <item>kKIND_SYMMETRIC</item>
         </kTAG_SYNONYMS>
 	</term>
 </terms>

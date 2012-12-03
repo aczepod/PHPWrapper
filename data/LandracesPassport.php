@@ -298,7 +298,7 @@ require_once( 'LandracesPassport.inc.php' );
 								// Additional attributes.
 								array( kTAG_SYNONYMS => array( $param[ 'code' ], $param[ 'syn' ] ),
 									   kTAG_EXAMPLES => $param[ 'examp' ] ) ),
-						array( kKIND_NODE_FEATURE, kKIND_NODE_SCALE ),
+						array( kKIND_FEATURE, kKIND_SCALE ),
 						$param[ 'type' ] ),				// Node data type.
 				$category );
 			
@@ -421,7 +421,7 @@ require_once( 'LandracesPassport.inc.php' );
 								// Additional attributes.
 								array( kTAG_SYNONYMS => array( $param[ 'code' ], $param[ 'syn' ] ),
 									   kTAG_EXAMPLES => $param[ 'examp' ] ) ),
-						array( kKIND_NODE_FEATURE, kKIND_NODE_SCALE ),
+						array( kKIND_FEATURE, kKIND_SCALE ),
 						$param[ 'type' ] ),				// Node data type.
 				$category );
 			
@@ -526,7 +526,7 @@ require_once( 'LandracesPassport.inc.php' );
 								// Additional attributes.
 								array( kTAG_SYNONYMS => array( $param[ 'code' ], $param[ 'syn' ] ),
 									   kTAG_EXAMPLES => $param[ 'examp' ] ) ),
-						array( kKIND_NODE_FEATURE, kKIND_NODE_SCALE ),
+						array( kKIND_FEATURE, kKIND_SCALE ),
 						$param[ 'type' ] ),				// Node data type.
 				$category );
 			
@@ -761,7 +761,7 @@ require_once( 'LandracesPassport.inc.php' );
 								// Additional attributes.
 								array( kTAG_SYNONYMS => array( $param[ 'code' ], $param[ 'syn' ] ),
 									   kTAG_EXAMPLES => $param[ 'examp' ] ) ),
-						array( kKIND_NODE_FEATURE, kKIND_NODE_SCALE ),
+						array( kKIND_FEATURE, kKIND_SCALE ),
 						$param[ 'type' ] ),				// Node data type.
 				$category );
 			
@@ -942,7 +942,7 @@ require_once( 'LandracesPassport.inc.php' );
 								// Additional attributes.
 								array( kTAG_SYNONYMS => array( $param[ 'code' ], $param[ 'syn' ] ),
 									   kTAG_EXAMPLES => $param[ 'examp' ] ) ),
-						array( kKIND_NODE_FEATURE, kKIND_NODE_SCALE ),
+						array( kKIND_FEATURE, kKIND_SCALE ),
 						$param[ 'type' ] ),				// Node data type.
 				$category );
 			
@@ -1208,7 +1208,7 @@ require_once( 'LandracesPassport.inc.php' );
 								// Additional attributes.
 								array( kTAG_SYNONYMS => array( $param[ 'code' ], $param[ 'syn' ] ),
 									   kTAG_EXAMPLES => $param[ 'examp' ] ) ),
-						array( kKIND_NODE_FEATURE, kKIND_NODE_SCALE ),
+						array( kKIND_FEATURE, kKIND_SCALE ),
 						$param[ 'type' ] ),				// Node data type.
 				$category );
 			
@@ -2147,7 +2147,7 @@ require_once( 'LandracesPassport.inc.php' );
 								// Additional attributes.
 								array( kTAG_SYNONYMS => array( $param[ 'code' ], $param[ 'syn' ] ),
 									   kTAG_EXAMPLES => $param[ 'examp' ] ) ),
-						array( kKIND_NODE_FEATURE, kKIND_NODE_SCALE ),
+						array( kKIND_FEATURE, kKIND_SCALE ),
 						$param[ 'type' ] ),				// Node data type.
 				$category );
 			
@@ -2349,7 +2349,7 @@ require_once( 'LandracesPassport.inc.php' );
 								// Additional attributes.
 								array( kTAG_SYNONYMS => array( $param[ 'code' ], $param[ 'syn' ] ),
 									   kTAG_EXAMPLES => $param[ 'examp' ] ) ),
-						array( kKIND_NODE_FEATURE, kKIND_NODE_SCALE ),
+						array( kKIND_FEATURE, kKIND_SCALE ),
 						$param[ 'type' ] ),				// Node data type.
 				$root );
 			

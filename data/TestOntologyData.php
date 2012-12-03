@@ -44,7 +44,7 @@ try
 	// Select root nodes.
 	//
 	$query = CMongoContainer::NewQuery();
-	$stmt = CQueryStatement::Equals( kTAG_KIND, kKIND_NODE_ROOT, kTYPE_STRING );
+	$stmt = CQueryStatement::Equals( kTAG_KIND, kKIND_ROOT, kTYPE_STRING );
 	$query->AppendStatement( $stmt );
 	$rs = $node_cont->Query( $query );
 	if( $rs->count() )

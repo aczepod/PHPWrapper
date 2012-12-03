@@ -7,7 +7,7 @@
 	<title>Class COntologyTerm | MyWrapper Reference Documentation</title>
 
 	<script type="text/javascript" src="resources/combined.js?1742645618"></script>
-	<script type="text/javascript" src="elementlist.js?2861350629"></script>
+	<script type="text/javascript" src="elementlist.js?571949357"></script>
 	<link rel="stylesheet" type="text/css" media="all" href="resources/style.css?3505392360" />
 
 </head>
@@ -51,6 +51,7 @@
 		<div id="elements">
 			<h3>Classes</h3>
 			<ul>
+				<li><a href="class-COntology.html">COntology</a></li>
 				<li><a href="class-COntologyAliasNode.html">COntologyAliasNode</a></li>
 				<li><a href="class-COntologyAliasVertex.html">COntologyAliasVertex</a></li>
 				<li><a href="class-COntologyEdge.html">COntologyEdge</a></li>
@@ -143,24 +144,27 @@ the standards and rules that make it into an ontology term.</p>
 
 	<li><i>Feature tag references</i>: The feature tag references, <tt><code><a href="class-COntologyTerm.html#_FeatureTagRefs">COntologyTerm::FeatureTagRefs()</a></code></tt> or the <tt>kTAG_FEATURES</tt> tag, represents the
 	list of references to <code><a href="class-COntologyTag.html">COntologyTag</a></code> instances that reference the current
-	term as a kKIND_NODE_FEATURE feature. It is an array of <code><a href="class-COntologyTag.html">COntologyTag</a></code> kTAG_NID attributes of tags in which the the first vertex
-	node in their path, kTAG_PATH, attribute refers to the current term.
-	This attribute lists the tags in which the feature or trait is represented by
-	the current object. This attribute is read-only and is managed internally.</li>
+	term as a kKIND_FEATURE feature. It is an array of <code><a href="class-COntologyTag.html">COntologyTag</a></code>
+	kTAG_NID attributes of tags in which the the first vertex node in their
+	path, kTAG_PATH, attribute refers to the current term. This attribute
+	lists the tags in which the feature or trait is represented by the current
+	object. This attribute is read-only and is managed internally.</li>
 
 	<li><i>Method tag references</i>: The method tag references, <tt><code><a href="class-COntologyTerm.html#_MethodTagRefs">COntologyTerm::MethodTagRefs()</a></code></tt> or the <tt>kTAG_METHODS</tt> tag, represents the
 	list of references to <code><a href="class-COntologyTag.html">COntologyTag</a></code> instances that reference the current
-	term as a kKIND_NODE_METHOD method. It is an array of <code><a href="class-COntologyTag.html">COntologyTag</a></code> kTAG_NID attributes of tags in which the the middle vertex
-	nodes in their path, kTAG_PATH, attribute refer to the current term.
-	This attribute lists the tags in which the measure method is represented by the
+	term as a kKIND_METHOD method. It is an array of <code><a href="class-COntologyTag.html">COntologyTag</a></code>
+	kTAG_NID attributes of tags in which the the middle vertex nodes in
+	their path, kTAG_PATH, attribute refer to the current term. This
+	attribute lists the tags in which the measure method is represented by the
 	current object. This attribute is read-only and is managed internally.</li>
 
 	<li><i>Scale tag references</i>: The scale tag references, <tt><code><a href="class-COntologyTerm.html#_ScaleTagRefs">COntologyTerm::ScaleTagRefs()</a></code></tt> or the <tt>kTAG_SCALES</tt> tag, represents the
 	list of references to <code><a href="class-COntologyTag.html">COntologyTag</a></code> instances that reference the current
-	term as a kKIND_NODE_SCALE feature. It is an array of <code><a href="class-COntologyTag.html">COntologyTag</a></code> kTAG_NID attributes of tags in which the the last vertex
-	node in their path, kTAG_PATH, attribute refers to the current term.
-	This attribute lists the tags in which the scale or unit is represented by the
-	current object. This attribute is read-only and is managed internally.</li>
+	term as a kKIND_SCALE feature. It is an array of <code><a href="class-COntologyTag.html">COntologyTag</a></code>
+	kTAG_NID attributes of tags in which the the last vertex node in their
+	path, kTAG_PATH, attribute refers to the current term. This attribute
+	lists the tags in which the scale or unit is represented by the current object.
+	This attribute is read-only and is managed internally.</li>
 </ul>
 
 <p>This class prevents updating the full object once it has been inserted for
@@ -1431,6 +1435,7 @@ namespace and raise an exception if the operation failed.</p>
 	<tr>
 		<td><code>
 			<a href="class-CTerm.html#_Definition">Definition()</a>, 
+			<a href="class-CTerm.html#_Example">Example()</a>, 
 			<a href="class-CTerm.html#_Kind">Kind()</a>, 
 			<a href="class-CTerm.html#_LID">LID()</a>, 
 			<a href="class-CTerm.html#_Label">Label()</a>, 

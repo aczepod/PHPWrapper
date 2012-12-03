@@ -768,11 +768,11 @@ class COntology extends CConnection
 	 * node by identifier, or retrieve the list of root nodes matching a term.
 	 *
 	 * A root node distinguishes itself from a <i>standard</i> node by having the
-	 * {@link kKIND_NODE_ROOT} enumeration set in its kind ({@link COntologyVertex::Kind()})
+	 * {@link kKIND_ROOT} enumeration set in its kind ({@link COntologyVertex::Kind()})
 	 * list.
 	 *
 	 * The method uses the same parameters as the {@link NewNode()} method, except that it
-	 * forces the {@link kKIND_NODE_ROOT} enumeration as the kind, <tt>NULL</tt> as the
+	 * forces the {@link kKIND_ROOT} enumeration as the kind, <tt>NULL</tt> as the
 	 * type and omits both parameters.
 	 *
 	 * For more information, please consult the {@link NewNode()} method reference.
@@ -791,14 +791,14 @@ class COntology extends CConnection
 	 *
 	 * @uses NewNode()
 	 *
-	 * @see kKIND_NODE_ROOT
+	 * @see kKIND_ROOT
 	 */
 	public function NewRootNode( $theIdentifier, $theNamespace = NULL,
 												 $theLabel = NULL, $theDescription = NULL,
 												 $theLanguage = NULL, $doNew = FALSE )
 	{
 		return $this->NewNode( $theIdentifier,
-							   kKIND_NODE_ROOT, NULL,
+							   kKIND_ROOT, NULL,
 							   $theNamespace,
 							   $theLabel, $theDescription,
 							   $theLanguage, $doNew );								// ==>
@@ -817,13 +817,13 @@ class COntology extends CConnection
 	 * node by identifier, or retrieve the list of trait nodes matching a term.
 	 *
 	 * A trait node distinguishes itself from a <i>standard</i> node by having the
-	 * {@link kKIND_NODE_FEATURE} enumeration set in its kind
+	 * {@link kKIND_FEATURE} enumeration set in its kind
 	 * ({@link COntologyVertex::Kind()}) list. Also, trait nodes represent the beginning of
 	 * the path used to annotate data, trait nodes always represent the first term reference
 	 * in a tag path.
 	 *
 	 * The method uses the same parameters as the {@link NewNode()} method, except that it
-	 * forces the {@link kKIND_NODE_FEATURE} enumeration as the kind, <tt>NULL</tt> as the
+	 * forces the {@link kKIND_FEATURE} enumeration as the kind, <tt>NULL</tt> as the
 	 * type and omits both parameters.
 	 *
 	 * For more information, please consult the {@link NewNode()} method reference.
@@ -842,14 +842,14 @@ class COntology extends CConnection
 	 *
 	 * @uses NewNode()
 	 *
-	 * @see kKIND_NODE_FEATURE
+	 * @see kKIND_FEATURE
 	 */
 	public function NewTraitNode( $theIdentifier, $theNamespace = NULL,
 												  $theLabel = NULL, $theDescription = NULL,
 												  $theLanguage = NULL, $doNew = FALSE )
 	{
 		return $this->NewNode( $theIdentifier,
-							   kKIND_NODE_FEATURE, NULL,
+							   kKIND_FEATURE, NULL,
 							   $theNamespace,
 							   $theLabel, $theDescription,
 							   $theLanguage, $doNew );								// ==>
@@ -868,13 +868,13 @@ class COntology extends CConnection
 	 * node by identifier, or retrieve the list of method nodes matching a term.
 	 *
 	 * A method node distinguishes itself from a <i>standard</i> node by having the
-	 * {@link kKIND_NODE_METHOD} enumeration set in its kind
+	 * {@link kKIND_METHOD} enumeration set in its kind
 	 * ({@link COntologyVertex::Kind()}) list. Also, method nodes represent the intermediary
 	 * elements of the path used to annotate data: method nodes will always be found after
 	 * trait nodes and before scale nodes in a tag path.
 	 *
 	 * The method uses the same parameters as the {@link NewNode()} method, except that it
-	 * forces the {@link kKIND_NODE_METHOD} enumeration as the kind, <tt>NULL</tt> as the
+	 * forces the {@link kKIND_METHOD} enumeration as the kind, <tt>NULL</tt> as the
 	 * type and omits both parameters.
 	 *
 	 * For more information, please consult the {@link NewNode()} method reference.
@@ -893,14 +893,14 @@ class COntology extends CConnection
 	 *
 	 * @uses NewNode()
 	 *
-	 * @see kKIND_NODE_METHOD
+	 * @see kKIND_METHOD
 	 */
 	public function NewMethodNode( $theIdentifier, $theNamespace = NULL,
 												   $theLabel = NULL, $theDescription = NULL,
 												   $theLanguage = NULL, $doNew = FALSE )
 	{
 		return $this->NewNode( $theIdentifier,
-							   kKIND_NODE_METHOD, NULL,
+							   kKIND_METHOD, NULL,
 							   $theNamespace,
 							   $theLabel, $theDescription,
 							   $theLanguage, $doNew );								// ==>
@@ -919,13 +919,13 @@ class COntology extends CConnection
 	 * node by identifier, or retrieve the list of scale nodes matching a term.
 	 *
 	 * A scale node distinguishes itself from a <i>standard</i> node by having the
-	 * {@link kKIND_NODE_SCALE} enumeration set in its kind
+	 * {@link kKIND_SCALE} enumeration set in its kind
 	 * ({@link COntologyVertex::Kind()}) list. Also, scale nodes represent the last element
 	 * of the path used to annotate data: scale nodes will always have a data type,
 	 * {@link CNode::Type()}, attribute.
 	 *
 	 * The method uses the same parameters as the {@link NewNode()} method, except that it
-	 * forces the {@link kKIND_NODE_SCALE} enumeration as the kind and expects the type
+	 * forces the {@link kKIND_SCALE} enumeration as the kind and expects the type
 	 * attribute to either be present in the resolved node, or provided as a parameter.
 	 *
 	 * For more information, please consult the {@link NewNode()} method reference.
@@ -948,7 +948,7 @@ class COntology extends CConnection
 	 * @uses NewTerm()
 	 * @uses _NewNode()
 	 *
-	 * @see kKIND_NODE_SCALE
+	 * @see kKIND_SCALE
 	 */
 	public function NewScaleNode( $theIdentifier, $theType = NULL,
 												  $theNamespace = NULL,
@@ -987,7 +987,7 @@ class COntology extends CConnection
 						//
 						// Match kind.
 						//
-						if( ! in_array( kKIND_NODE_SCALE, $match ) )
+						if( ! in_array( kKIND_SCALE, $match ) )
 							return NULL;											// ==>
 						
 						//
@@ -1020,7 +1020,7 @@ class COntology extends CConnection
 					//
 					if( $theType !== NULL )
 						return $this->_NewNode
-								( $term, kKIND_NODE_SCALE, $theType );				// ==>
+								( $term, kKIND_SCALE, $theType );				// ==>
 					
 					throw new Exception
 						( "Missing node data type",
@@ -1051,7 +1051,7 @@ class COntology extends CConnection
 				//
 				$query->AppendStatement(
 					CQueryStatement::Member(
-						kTAG_KIND, kKIND_NODE_SCALE, kTYPE_STRING ) );
+						kTAG_KIND, kKIND_SCALE, kTYPE_STRING ) );
 				
 				//
 				// Filter by type.
@@ -1086,7 +1086,7 @@ class COntology extends CConnection
 				//
 				if( $theType !== NULL )
 					return $this->_NewNode
-							( $term, kKIND_NODE_SCALE, $theType );					// ==>
+							( $term, kKIND_SCALE, $theType );					// ==>
 				
 				throw new Exception
 					( "Missing node data type",
@@ -1119,12 +1119,12 @@ class COntology extends CConnection
 	 * term.
 	 *
 	 * An enumeration node distinguishes itself from a <i>standard</i> node by having the
-	 * {@link kKIND_NODE_INSTANCE} enumeration set in its kind
+	 * {@link kKIND_INSTANCE} enumeration set in its kind
 	 * ({@link COntologyVertex::Kind()}) list. Also, enumeration nodes represent elements of
 	 * an enumerated set and have by default the {@link kTYPE_STRING} data type.
 	 *
 	 * The method uses the same parameters as the {@link NewNode()} method, except that it
-	 * forces the {@link kKIND_NODE_INSTANCE} enumeration as the kind, {@link kTYPE_STRING}
+	 * forces the {@link kKIND_INSTANCE} enumeration as the kind, {@link kTYPE_STRING}
 	 * as the type and omits both parameters.
 	 *
 	 * For more information, please consult the {@link NewNode()} method reference.
@@ -1143,14 +1143,14 @@ class COntology extends CConnection
 	 *
 	 * @uses NewNode()
 	 *
-	 * @see kKIND_NODE_INSTANCE kTYPE_STRING
+	 * @see kKIND_INSTANCE kTYPE_STRING
 	 */
 	public function NewEnumerationNode( $theIdentifier, $theNamespace = NULL,
 										$theLabel = NULL, $theDescription = NULL,
 										$theLanguage = NULL, $doNew = FALSE )
 	{
 		return $this->NewNode( $theIdentifier,
-							   kKIND_NODE_ENUMERATION, kTYPE_STRING,
+							   kKIND_ENUMERATION, kTYPE_STRING,
 							   $theNamespace,
 							   $theLabel, $theDescription,
 							   $theLanguage, $doNew );								// ==>
@@ -3569,25 +3569,25 @@ class COntology extends CConnection
 			array( kTERM_LID => substr( kTYPE_ARRAY, 1 ),
 				   kTERM_LABEL => "Array value",
 				   kTERM_DESCRIPTION => "This tag indicates that the element represents an array and that the data type applies to the elements of the array." ),
-			array( kTERM_LID => substr( kKIND_NODE_ROOT, 1 ),
+			array( kTERM_LID => substr( kKIND_ROOT, 1 ),
 				   kTERM_LABEL => "Root node",
 				   kTERM_DESCRIPTION => "This tag identifies a root or ontology node kind." ),
 			array( kTERM_LID => substr( kKIND_NODE_DDICT, 1 ),
 				   kTERM_LABEL => "Data dictionary node",
 				   kTERM_DESCRIPTION => "This tag identifies a structure definition or data dictionary node kind, in general this will be used in conjunction to the root node kind to indicate a data structure description." ),
-			array( kTERM_LID => substr( kKIND_NODE_FEATURE, 1 ),
+			array( kTERM_LID => substr( kKIND_FEATURE, 1 ),
 				   kTERM_LABEL => "Trait node",
 				   kTERM_DESCRIPTION => "This tag identifies a trait or measurable node kind." ),
-			array( kTERM_LID => substr( kKIND_NODE_METHOD, 1 ),
+			array( kTERM_LID => substr( kKIND_METHOD, 1 ),
 				   kTERM_LABEL => "Method node",
 				   kTERM_DESCRIPTION => "This tag identifies a method node kind." ),
-			array( kTERM_LID => substr( kKIND_NODE_SCALE, 1 ),
+			array( kTERM_LID => substr( kKIND_SCALE, 1 ),
 				   kTERM_LABEL => "Scale node",
 				   kTERM_DESCRIPTION => "This tag identifies a scale or measure node kind." ),
-			array( kTERM_LID => substr( kKIND_NODE_INSTANCE, 1 ),
+			array( kTERM_LID => substr( kKIND_INSTANCE, 1 ),
 				   kTERM_LABEL => "Instance node",
 				   kTERM_DESCRIPTION => "This tag identifies an instance node kind, it represents a definition which is also its instance." ),
-			array( kTERM_LID => substr( kKIND_NODE_ENUMERATION, 1 ),
+			array( kTERM_LID => substr( kKIND_ENUMERATION, 1 ),
 				   kTERM_LABEL => "Enumeration node",
 				   kTERM_DESCRIPTION => "This tag identifies an enumerated value node kind, it represents an element of an enumerated set." ),
 			array( kTERM_LID => substr( kPREDICATE_SUBCLASS_OF, 1 ),
@@ -3866,7 +3866,7 @@ class COntology extends CConnection
 						$term[ kTERM_LABEL ],					// Label.
 						$term[ kTERM_DESCRIPTION ],			// Description.
 						kDEFAULT_LANGUAGE ),					// Language.
-				array( kKIND_NODE_ROOT, kKIND_NODE_DDICT ) );	// Node kind.
+				array( kKIND_ROOT, kKIND_NODE_DDICT ) );	// Node kind.
 
 	} // _InitDefaultDataDictionaries.
 
@@ -3903,7 +3903,7 @@ class COntology extends CConnection
 					"Default predicates",
 					"This tag collects all default predicate terms in this library.",
 					kDEFAULT_LANGUAGE ),						// Language.
-				array( kKIND_NODE_ROOT, kKIND_NODE_SCALE ),		// Node kind.
+				array( kKIND_ROOT, kKIND_SCALE ),		// Node kind.
 				kTYPE_ENUM );									// Node type.
 		
 		//
@@ -3962,15 +3962,15 @@ class COntology extends CConnection
 					"Node kinds",
 					"This tag collects all default node kind terms in this library.",
 					kDEFAULT_LANGUAGE ),						// Language.
-				array( kKIND_NODE_ROOT, kKIND_NODE_SCALE ),		// Node kind.
+				array( kKIND_ROOT, kKIND_SCALE ),		// Node kind.
 				kTYPE_ENUM );									// Node type.
 		
 		//
 		// Load instance definitions.
 		//
-		$terms = array( kKIND_NODE_ROOT, kKIND_NODE_DDICT, kKIND_NODE_FEATURE,
-						kKIND_NODE_METHOD, kKIND_NODE_SCALE, kKIND_NODE_ENUMERATION,
-						kKIND_NODE_INSTANCE );
+		$terms = array( kKIND_ROOT, kKIND_NODE_DDICT, kKIND_FEATURE,
+						kKIND_METHOD, kKIND_SCALE, kKIND_ENUMERATION,
+						kKIND_INSTANCE );
 		
 		//
 		// Load instances.
@@ -4019,7 +4019,7 @@ class COntology extends CConnection
 					"Data types",
 					"This tag collects all default data type terms in this library.",
 					kDEFAULT_LANGUAGE ),						// Language.
-				array( kKIND_NODE_ROOT, kKIND_NODE_SCALE ),		// Node kind.
+				array( kKIND_ROOT, kKIND_SCALE ),		// Node kind.
 				kTYPE_ENUM );									// Node type.
 		
 		//
@@ -4307,9 +4307,9 @@ class COntology extends CConnection
 				//
 				case kTERM_KIND:
 					// List kinds.
-					$list = array( kKIND_NODE_ROOT, kKIND_NODE_DDICT,
-								   kKIND_NODE_FEATURE, kKIND_NODE_METHOD,
-								   kKIND_NODE_SCALE, kKIND_NODE_INSTANCE );
+					$list = array( kKIND_ROOT, kKIND_NODE_DDICT,
+								   kKIND_FEATURE, kKIND_METHOD,
+								   kKIND_SCALE, kKIND_INSTANCE );
 					// Create nodes and relate.
 					foreach( $list as $item )
 						$this->EnumOf(

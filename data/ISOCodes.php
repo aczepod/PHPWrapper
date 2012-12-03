@@ -512,7 +512,7 @@ require_once( kPATH_MYWRAPPER_LIBRARY_FUNCTION.'/parsing.php' );
 						$part3_node
 							= $_SESSION[ kSESSION_ONTOLOGY ]->NewNode(
 								$part3_term,
-								array( kKIND_NODE_INSTANCE, kKIND_NODE_ENUMERATION ),
+								array( kKIND_INSTANCE, kKIND_ENUMERATION ),
 								kTYPE_STRING ),
 						$part3_parent );
 					
@@ -1270,7 +1270,7 @@ require_once( kPATH_MYWRAPPER_LIBRARY_FUNCTION.'/parsing.php' );
 						$part1_3_node
 							= $_SESSION[ kSESSION_ONTOLOGY ]->NewNode(
 								$part1_3_term,
-								array( kKIND_NODE_INSTANCE, kKIND_NODE_ENUMERATION ),
+								array( kKIND_INSTANCE, kKIND_ENUMERATION ),
 								kTYPE_STRING ),
 						$part1_3_parent );
 					
@@ -1503,7 +1503,7 @@ require_once( kPATH_MYWRAPPER_LIBRARY_FUNCTION.'/parsing.php' );
 						$part3_3_node
 							= $_SESSION[ kSESSION_ONTOLOGY ]->NewNode(
 								$part3_3_term,
-								array( kKIND_NODE_INSTANCE, kKIND_NODE_ENUMERATION ),
+								array( kKIND_INSTANCE, kKIND_ENUMERATION ),
 								kTYPE_STRING ),
 						$part3_3_parent );
 					
@@ -2119,7 +2119,7 @@ require_once( kPATH_MYWRAPPER_LIBRARY_FUNCTION.'/parsing.php' );
 						$letter_node
 							= $_SESSION[ kSESSION_ONTOLOGY ]->NewNode(
 								$letter_term,
-								array( kKIND_NODE_INSTANCE, kKIND_NODE_ENUMERATION ),
+								array( kKIND_INSTANCE, kKIND_ENUMERATION ),
 								kTYPE_STRING ),
 						$a_parent );
 					

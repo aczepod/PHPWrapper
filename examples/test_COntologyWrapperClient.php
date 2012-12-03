@@ -477,8 +477,8 @@ try
 	$test->Format( kTYPE_JSON );
 	echo( '<i>$test->Database( "ONTOLOGY" );</i><br>' );
 	$test->Database( "ONTOLOGY" );
-	echo( '<i>$test->AddQueryStatement( kOPERATOR_AND, kTAG_KIND, kOPERATOR_EQUAL, kKIND_NODE_ROOT );</i><br>' );
-	$test->AddQueryStatement( kOPERATOR_AND, kTAG_KIND, kOPERATOR_EQUAL, kKIND_NODE_ROOT );
+	echo( '<i>$test->AddQueryStatement( kOPERATOR_AND, kTAG_KIND, kOPERATOR_EQUAL, kKIND_ROOT );</i><br>' );
+	$test->AddQueryStatement( kOPERATOR_AND, kTAG_KIND, kOPERATOR_EQUAL, kKIND_ROOT );
 	echo( '<i>$decoded = $test->Execute( "POST" );</i><br>' );
 	$decoded = $test->Execute( "POST" );
 	//

@@ -50,7 +50,7 @@
     </term>
     
     <!-- kTERM_PREDICATES -->
-    <term kTAG_LID="ATTRIBUTES" kTAG_NAMESPACE="">
+    <term kTAG_LID="PREDICATES" kTAG_NAMESPACE="">
         <kTAG_LABEL language="en">Predicates</kTAG_LABEL>
         <kTAG_DEFINITION language="en"><![CDATA[<i>Predicates</i> are <i>terms</i> which are
         	used to <i>link</i> a <i>subject vertex</i> to an <i>object vertex</i> into a

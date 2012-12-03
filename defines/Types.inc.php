@@ -241,7 +241,7 @@ define( "kTYPE_BOOLEAN",						':BOOLEAN' );
  *
  * Version 1: (kTYPE_BINARY)[:BINARY]
  */
-define( "kTYPE_BINARY_STRING",					':TEXT:BINARY' );
+define( "kTYPE_BINARY_STRING",					':BINARY' );
 
 /**
  * DATE.
@@ -258,7 +258,7 @@ define( "kTYPE_BINARY_STRING",					':TEXT:BINARY' );
  *
  * Version 1: (kTYPE_DATE)[:DATE-STRING']
  */
-define( "kTYPE_DATE_STRING",					':TEXT:DATE' );
+define( "kTYPE_DATE_STRING",					':DATE' );
 
 /**
  * TIME.
@@ -266,17 +266,17 @@ define( "kTYPE_DATE_STRING",					':TEXT:DATE' );
  * Time string.
  *
  * This type is a combination of the {@link kTYPE_DATE_STRING} type followed by a structure
- * of three elements representing the hours, minutes and seconds separated by colons,
- * <tt>YYYYMMDD HHMMSS</tt>. Missing elements are omitted, this means that if you don't have
- * the minutes you would have a <tt>YYYYMMDD HH</tt> and if you don't have the time it would
- * become and act as a {@link kTYPE_DATE_STRING} type.
+ * of three elements representing the hours, minutes and seconds, <tt>YYYYMMDD HHMMSS</tt>.
+ * Missing elements are omitted, this means that if you don't have the minutes you would
+ * have a <tt>YYYYMMDD HH</tt> and if you don't have the time it would become and act as a
+ * {@link kTYPE_DATE_STRING} type.
  *
  * This type is functionally identical to a {@link kTYPE_STRING} type, except that its
  * elements can only be digits and their structure is known.
  *
  * Version 1: (kTYPE_TIME)[:DATE-STRING']
  */
-define( "kTYPE_TIME_STRING",					':TEXT:TIME' );
+define( "kTYPE_TIME_STRING",					':TIME' );
 
 /**
  * REGEX.
@@ -288,7 +288,7 @@ define( "kTYPE_TIME_STRING",					':TEXT:TIME' );
  *
  * Version 1: (kTYPE_REGEX)[:REGEX']
  */
-define( "kTYPE_REGEX_STRING",					':TEXT:REGEX' );
+define( "kTYPE_REGEX_STRING",					':REGEX' );
 
 /**
  * 32.
@@ -300,7 +300,7 @@ define( "kTYPE_REGEX_STRING",					':TEXT:REGEX' );
  *
  * Version 1: (kTYPE_INT32)[:INT32]
  */
-define( "kTYPE_INT32",							':INT:32' );
+define( "kTYPE_INT32",							':INT32' );
 
 /**
  * 64.
@@ -312,7 +312,7 @@ define( "kTYPE_INT32",							':INT:32' );
  *
  * Version 1: (kTYPE_INT64)[:INT64]
  */
-define( "kTYPE_INT64",							':INT:64' );
+define( "kTYPE_INT64",							':INT64' );
 
 /*=======================================================================================
  *	STANDARD FORMAT TYPES																*
@@ -383,7 +383,7 @@ define( "kTYPE_XML",							':XML' );
  *
  * Version 1: (kTYPE_SVG)[:SVG]
  */
-define( "kTYPE_SVG",							':XML:SVG' );
+define( "kTYPE_SVG",							':SVG' );
 
 /*=======================================================================================
  *	STRUCTURED DATA TYPES																*

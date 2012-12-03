@@ -68,7 +68,7 @@ require_once( kPATH_MYWRAPPER_LIBRARY_CLASS."/CTerm.php" );
  *	<li><i>Feature tag references</i>: The feature tag references,
  *		<tt>{@link FeatureTagRefs()}</tt> or the <tt>{@link kTAG_FEATURES}</tt> tag,
  *		represents the list of references to {@link COntologyTag} instances that reference
- *		the current term as a {@link kKIND_NODE_FEATURE} feature. It is an array of
+ *		the current term as a {@link kKIND_FEATURE} feature. It is an array of
  *		{@link COntologyTag} {@link kTAG_NID} attributes of tags in which the the first
  *		vertex node in their path, {@link kTAG_PATH}, attribute refers to the current term.
  *		This attribute lists the tags in which the feature or trait is represented by the
@@ -76,7 +76,7 @@ require_once( kPATH_MYWRAPPER_LIBRARY_CLASS."/CTerm.php" );
  *	<li><i>Method tag references</i>: The method tag references,
  *		<tt>{@link MethodTagRefs()}</tt> or the <tt>{@link kTAG_METHODS}</tt> tag,
  *		represents the list of references to {@link COntologyTag} instances that reference
- *		the current term as a {@link kKIND_NODE_METHOD} method. It is an array of
+ *		the current term as a {@link kKIND_METHOD} method. It is an array of
  *		{@link COntologyTag} {@link kTAG_NID} attributes of tags in which the the middle
  *		vertex nodes in their path, {@link kTAG_PATH}, attribute refer to the current term.
  *		This attribute lists the tags in which the measure method is represented by the
@@ -84,7 +84,7 @@ require_once( kPATH_MYWRAPPER_LIBRARY_CLASS."/CTerm.php" );
  *	<li><i>Scale tag references</i>: The scale tag references,
  *		<tt>{@link ScaleTagRefs()}</tt> or the <tt>{@link kTAG_SCALES}</tt> tag,
  *		represents the list of references to {@link COntologyTag} instances that reference
- *		the current term as a {@link kKIND_NODE_SCALE} feature. It is an array of
+ *		the current term as a {@link kKIND_SCALE} feature. It is an array of
  *		{@link COntologyTag} {@link kTAG_NID} attributes of tags in which the the last
  *		vertex node in their path, {@link kTAG_PATH}, attribute refers to the current term.
  *		This attribute lists the tags in which the scale or unit is represented by the

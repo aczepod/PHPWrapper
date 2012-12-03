@@ -77,9 +77,9 @@ require_once( kPATH_MYWRAPPER_LIBRARY_CLASS."/CTag.php" );
  * Objects of this class will almost always be created by providing a sequence of node
  * vertices and predicate terms, the {@link PushItem()} method will follow these rules: the
  * first element of the path is the feature vertex, if provided as an {@link COntologyNode}
- * instance, it must have its {@link COntologyNode::Kind()} set to {@link kKIND_NODE_FEATURE};
+ * instance, it must have its {@link COntologyNode::Kind()} set to {@link kKIND_FEATURE};
  * the last element of the path is the scale vertex, if provided as an {@link COntologyNode}
- * instance, it must have its {@link COntologyNode::Kind()} set to {@link kKIND_NODE_SCALE}.
+ * instance, it must have its {@link COntologyNode::Kind()} set to {@link kKIND_SCALE}.
  *
  * Whenever a tag is committed, the referenced terms will receive the tag
  * {@link kTAG_NID} in an attribute, depending on their position in the path: the first
@@ -134,10 +134,10 @@ class COntologyTag extends CTag
 	 *			since there is no way to resolve them.
 	 *		<li>If the first element of the path is an {@link COntologyNode} instance, the
 	 *			latter must have its {@link kTAG_KIND} attribute set to
-	 *			{@link kKIND_NODE_FEATURE}.
+	 *			{@link kKIND_FEATURE}.
 	 *		<li>If the last element of the path is an {@link COntologyNode} instance, the
 	 *			latter must have its {@link kTAG_KIND} attribute set to
-	 *			{@link kKIND_NODE_SCALE}.
+	 *			{@link kKIND_SCALE}.
 	 *	 </ul>
 	 *	<li>{link COntologyTerm} instances will be accepted in any position.
 	 *	<li>{link COntologyTerm} instances must have their {@link kTAG_NID} attribute.
@@ -227,7 +227,7 @@ class COntologyTag extends CTag
 								//
 								// Check feature.
 								//
-								if( $theValue->Kind( kKIND_NODE_FEATURE ) !== NULL )
+								if( $theValue->Kind( kKIND_FEATURE ) !== NULL )
 									return parent::PushItem(
 										$theValue->offsetGet( kTAG_TERM ) );		// ==>
 								
@@ -246,7 +246,7 @@ class COntologyTag extends CTag
 								//
 								// Check scale.
 								//
-								if( $theValue->Kind( kKIND_NODE_SCALE ) !== NULL )
+								if( $theValue->Kind( kKIND_SCALE ) !== NULL )
 									return parent::PushItem(
 										$theValue->offsetGet( kTAG_TERM ) );		// ==>
 								

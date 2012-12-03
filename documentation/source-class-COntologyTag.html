@@ -8,7 +8,7 @@
 	<title>File COntologyTag.php | MyWrapper Reference Documentation</title>
 
 	<script type="text/javascript" src="resources/combined.js?1742645618"></script>
-	<script type="text/javascript" src="elementlist.js?2861350629"></script>
+	<script type="text/javascript" src="elementlist.js?571949357"></script>
 	<link rel="stylesheet" type="text/css" media="all" href="resources/style.css?3505392360" />
 
 </head>
@@ -52,6 +52,7 @@
 		<div id="elements">
 			<h3>Classes</h3>
 			<ul>
+				<li><a href="class-COntology.html">COntology</a></li>
 				<li><a href="class-COntologyAliasNode.html">COntologyAliasNode</a></li>
 				<li><a href="class-COntologyAliasVertex.html">COntologyAliasVertex</a></li>
 				<li><a href="class-COntologyEdge.html">COntologyEdge</a></li>
@@ -182,9 +183,9 @@
 </span></span><span id="77" class="l"><a class="l" href="#77">  77: </a><span class="php-comment"> * Objects of this class will almost always be created by providing a sequence of node
 </span></span><span id="78" class="l"><a class="l" href="#78">  78: </a><span class="php-comment"> * vertices and predicate terms, the {@link PushItem()} method will follow these rules: the
 </span></span><span id="79" class="l"><a class="l" href="#79">  79: </a><span class="php-comment"> * first element of the path is the feature vertex, if provided as an {@link COntologyNode}
-</span></span><span id="80" class="l"><a class="l" href="#80">  80: </a><span class="php-comment"> * instance, it must have its {@link COntologyNode::Kind()} set to {@link kKIND_NODE_FEATURE};
+</span></span><span id="80" class="l"><a class="l" href="#80">  80: </a><span class="php-comment"> * instance, it must have its {@link COntologyNode::Kind()} set to {@link kKIND_FEATURE};
 </span></span><span id="81" class="l"><a class="l" href="#81">  81: </a><span class="php-comment"> * the last element of the path is the scale vertex, if provided as an {@link COntologyNode}
-</span></span><span id="82" class="l"><a class="l" href="#82">  82: </a><span class="php-comment"> * instance, it must have its {@link COntologyNode::Kind()} set to {@link kKIND_NODE_SCALE}.
+</span></span><span id="82" class="l"><a class="l" href="#82">  82: </a><span class="php-comment"> * instance, it must have its {@link COntologyNode::Kind()} set to {@link kKIND_SCALE}.
 </span></span><span id="83" class="l"><a class="l" href="#83">  83: </a><span class="php-comment"> *
 </span></span><span id="84" class="l"><a class="l" href="#84">  84: </a><span class="php-comment"> * Whenever a tag is committed, the referenced terms will receive the tag
 </span></span><span id="85" class="l"><a class="l" href="#85">  85: </a><span class="php-comment"> * {@link kTAG_NID} in an attribute, depending on their position in the path: the first
@@ -239,10 +240,10 @@
 </span></span><span id="134" class="l"><a class="l" href="#134"> 134: </a><span class="php-comment">     *          since there is no way to resolve them.
 </span></span><span id="135" class="l"><a class="l" href="#135"> 135: </a><span class="php-comment">     *      &lt;li&gt;If the first element of the path is an {@link COntologyNode} instance, the
 </span></span><span id="136" class="l"><a class="l" href="#136"> 136: </a><span class="php-comment">     *          latter must have its {@link kTAG_KIND} attribute set to
-</span></span><span id="137" class="l"><a class="l" href="#137"> 137: </a><span class="php-comment">     *          {@link kKIND_NODE_FEATURE}.
+</span></span><span id="137" class="l"><a class="l" href="#137"> 137: </a><span class="php-comment">     *          {@link kKIND_FEATURE}.
 </span></span><span id="138" class="l"><a class="l" href="#138"> 138: </a><span class="php-comment">     *      &lt;li&gt;If the last element of the path is an {@link COntologyNode} instance, the
 </span></span><span id="139" class="l"><a class="l" href="#139"> 139: </a><span class="php-comment">     *          latter must have its {@link kTAG_KIND} attribute set to
-</span></span><span id="140" class="l"><a class="l" href="#140"> 140: </a><span class="php-comment">     *          {@link kKIND_NODE_SCALE}.
+</span></span><span id="140" class="l"><a class="l" href="#140"> 140: </a><span class="php-comment">     *          {@link kKIND_SCALE}.
 </span></span><span id="141" class="l"><a class="l" href="#141"> 141: </a><span class="php-comment">     *   &lt;/ul&gt;
 </span></span><span id="142" class="l"><a class="l" href="#142"> 142: </a><span class="php-comment">     *  &lt;li&gt;{link COntologyTerm} instances will be accepted in any position.
 </span></span><span id="143" class="l"><a class="l" href="#143"> 143: </a><span class="php-comment">     *  &lt;li&gt;{link COntologyTerm} instances must have their {@link kTAG_NID} attribute.
@@ -332,7 +333,7 @@
 </span><span id="227" class="l"><a class="l" href="#227"> 227: </a>                                <span class="php-comment">//</span>
 </span><span id="228" class="l"><a class="l" href="#228"> 228: </a>                                <span class="php-comment">// Check feature.</span>
 </span><span id="229" class="l"><a class="l" href="#229"> 229: </a>                                <span class="php-comment">//</span>
-</span><span id="230" class="l"><a class="l" href="#230"> 230: </a>                                <span class="php-keyword1">if</span>( <span class="php-var">$theValue</span>-&gt;Kind( kKIND_NODE_FEATURE ) !== <span class="php-keyword1">NULL</span> )
+</span><span id="230" class="l"><a class="l" href="#230"> 230: </a>                                <span class="php-keyword1">if</span>( <span class="php-var">$theValue</span>-&gt;Kind( kKIND_FEATURE ) !== <span class="php-keyword1">NULL</span> )
 </span><span id="231" class="l"><a class="l" href="#231"> 231: </a>                                    <span class="php-keyword1">return</span> parent::PushItem(
 </span><span id="232" class="l"><a class="l" href="#232"> 232: </a>                                        <span class="php-var">$theValue</span>-&gt;offsetGet( kTAG_TERM ) );        <span class="php-comment">// ==&gt;</span>
 </span><span id="233" class="l"><a class="l" href="#233"> 233: </a>                                
@@ -351,7 +352,7 @@
 </span><span id="246" class="l"><a class="l" href="#246"> 246: </a>                                <span class="php-comment">//</span>
 </span><span id="247" class="l"><a class="l" href="#247"> 247: </a>                                <span class="php-comment">// Check scale.</span>
 </span><span id="248" class="l"><a class="l" href="#248"> 248: </a>                                <span class="php-comment">//</span>
-</span><span id="249" class="l"><a class="l" href="#249"> 249: </a>                                <span class="php-keyword1">if</span>( <span class="php-var">$theValue</span>-&gt;Kind( kKIND_NODE_SCALE ) !== <span class="php-keyword1">NULL</span> )
+</span><span id="249" class="l"><a class="l" href="#249"> 249: </a>                                <span class="php-keyword1">if</span>( <span class="php-var">$theValue</span>-&gt;Kind( kKIND_SCALE ) !== <span class="php-keyword1">NULL</span> )
 </span><span id="250" class="l"><a class="l" href="#250"> 250: </a>                                    <span class="php-keyword1">return</span> parent::PushItem(
 </span><span id="251" class="l"><a class="l" href="#251"> 251: </a>                                        <span class="php-var">$theValue</span>-&gt;offsetGet( kTAG_TERM ) );        <span class="php-comment">// ==&gt;</span>
 </span><span id="252" class="l"><a class="l" href="#252"> 252: </a>                                
