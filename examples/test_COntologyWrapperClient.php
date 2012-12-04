@@ -35,9 +35,14 @@ require_once( '/Library/WebServer/Library/PHPWrapper/data/local.inc.php' );
 require_once( '/Library/WebServer/Library/PHPWrapper/styles.inc.php' );
 
 //
-// Tags.
+// Predicates.
 //
-require_once( kPATH_MYWRAPPER_LIBRARY_DEFINE."/Tags.inc.php" );
+require_once( kPATH_MYWRAPPER_LIBRARY_DEFINE."/Predicates.inc.php" );
+
+//
+// Parsers.
+//
+require_once( kPATH_MYWRAPPER_LIBRARY_FUNCTION."/parsing.php" );
 
 //
 // Class includes.
@@ -52,7 +57,7 @@ require_once( kPATH_MYWRAPPER_LIBRARY_CLASS."/COntologyWrapperClient.php" );
 //
 // Debug switches.
 //
-define( 'kDEBUG_PARENT', TRUE );
+define( 'kDEBUG_PARENT', FALSE );
 
 
 /*=======================================================================================
@@ -508,8 +513,13 @@ try
 	$test->Format( kTYPE_JSON );
 	echo( '<i>$test->Database( "ONTOLOGY" );</i><br>' );
 	$test->Database( "ONTOLOGY" );
-	echo( '<i>$test->Query( 13763 );</i><br>' );
-	$test->Query( 13763 );
+	echo( '<i>$test->Query( 1 );</i><br>' );
+	$test->Query( 1 );
+	echo( '<i>$test->Select( kTAG_GID );</i><br>' );
+	$test->Select( kTAG_GID );
+	echo( '<i>$test->Select( kTAG_LABEL );</i><br>' );
+	$test->Select( kTAG_LABEL );
+	echo( '<i>$test->Relations( kAPI_RELATION_OUT );</i><br>' );
 	echo( '<i>$decoded = $test->Execute( "POST" );</i><br>' );
 	$decoded = $test->Execute( "POST" );
 	//
@@ -540,8 +550,8 @@ try
 	$test->Format( kTYPE_JSON );
 	echo( '<i>$test->Database( "ONTOLOGY" );</i><br>' );
 	$test->Database( "ONTOLOGY" );
-	echo( '<i>$test->Query( 13763 );</i><br>' );
-	$test->Query( 13763 );
+	echo( '<i>$test->Query( 5 );</i><br>' );
+	$test->Query( 5 );
 	echo( '<i>$test->Select( kTAG_GID );</i><br>' );
 	$test->Select( kTAG_GID );
 	echo( '<i>$test->Select( kTAG_KIND );</i><br>' );
@@ -579,8 +589,8 @@ try
 	$test->Format( kTYPE_JSON );
 	echo( '<i>$test->Database( "ONTOLOGY" );</i><br>' );
 	$test->Database( "ONTOLOGY" );
-	echo( '<i>$test->Query( 13763 );</i><br>' );
-	$test->Query( 13763 );
+	echo( '<i>$test->Query( 5 );</i><br>' );
+	$test->Query( 5 );
 	echo( '<i>$test->Select( kTAG_GID );</i><br>' );
 	$test->Select( kTAG_GID );
 	echo( '<i>$test->Select( kTAG_KIND );</i><br>' );
@@ -618,8 +628,8 @@ try
 	$test->Format( kTYPE_JSON );
 	echo( '<i>$test->Database( "ONTOLOGY" );</i><br>' );
 	$test->Database( "ONTOLOGY" );
-	echo( '<i>$test->Query( 13763 );</i><br>' );
-	$test->Query( 13763 );
+	echo( '<i>$test->Query( 116 );</i><br>' );
+	$test->Query( 116 );
 	echo( '<i>$test->Select( kTAG_GID );</i><br>' );
 	$test->Select( kTAG_GID );
 	echo( '<i>$test->Select( kTAG_KIND );</i><br>' );
@@ -646,7 +656,7 @@ try
 	echo( '<hr>' );
 	echo( '<hr>' );
 	
-	echo( '<h4>Test GetVertex xref relationships</h4>' );
+	echo( '<h4>Test GetVertex subclass-of relationships</h4>' );
 	//
 	// Instantiate.
 	//
@@ -658,16 +668,16 @@ try
 	$test->Format( kTYPE_JSON );
 	echo( '<i>$test->Database( "ONTOLOGY" );</i><br>' );
 	$test->Database( "ONTOLOGY" );
-	echo( '<i>$test->Query( 13763 );</i><br>' );
-	$test->Query( 13763 );
+	echo( '<i>$test->Query( 116 );</i><br>' );
+	$test->Query( 116 );
 	echo( '<i>$test->Select( kTAG_GID );</i><br>' );
 	$test->Select( kTAG_GID );
 	echo( '<i>$test->Select( kTAG_KIND );</i><br>' );
 	$test->Select( kTAG_KIND );
 	echo( '<i>$test->Select( kTAG_TYPE );</i><br>' );
 	$test->Select( kTAG_TYPE );
-	echo( '<i>$test->Predicate( kPREDICATE_XREF_EXACT );</i><br>' );
-	$test->Predicate( kPREDICATE_XREF_EXACT );
+	echo( '<i>$test->Predicate( kPREDICATE_SUBCLASS_OF );</i><br>' );
+	$test->Predicate( kPREDICATE_SUBCLASS_OF );
 	echo( '<i>$test->Relations( kAPI_RELATION_ALL );</i><br>' );
 	$test->Relations( kAPI_RELATION_ALL );
 	echo( '<i>$decoded = $test->Execute( "POST" );</i><br>' );

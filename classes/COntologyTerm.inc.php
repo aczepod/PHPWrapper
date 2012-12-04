@@ -27,7 +27,7 @@
  *
  * This tag identifies the default name for the container that will host term objects.
  */
-define( "kCONTAINER_TERM_NAME",					'_terms' );
+define( "kCONTAINER_TERM_NAME",					':_terms' );
 
 
 ?>

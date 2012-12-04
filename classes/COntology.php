@@ -1489,11 +1489,6 @@ class COntology extends CConnection
 		if( $theElement[ 'var' ] !== NULL )
 		{
 			//
-			// Display.
-			//
-			echo( (string) $theElement[ 'var' ] );
-			
-			//
 			// Iterate path.
 			//
 			foreach( $theElement->{'kTAG_PATH'}->{'item'} as $item )
@@ -1515,11 +1510,6 @@ class COntology extends CConnection
 			// Save tag.
 			//
 			$id = $theTag->Insert( $theDatabase );
-			
-			//
-			// Display.
-			//
-			echo( " = $id\n" );
 		
 		} // Has global identifier.
 		

@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<units>
+    <!-- ISO -->
+    <unit>
+    	<term kTAG_LID="ISO">
+			<kTAG_KIND>
+				<item>:KIND-NAMESPACE</item>
+			</kTAG_KIND>
+			<kTAG_LABEL language="en">International Organization for Standardization</kTAG_LABEL>
+			<kTAG_LABEL language="fr">Organisation internationale de normalisation</kTAG_LABEL>
+			<kTAG_LABEL language="ru">Международная организация по стандартизации</kTAG_LABEL>
+			<kTAG_DESCRIPTION language="en">Collection of industrial and commercial standards and codes.</kTAG_DESCRIPTION>
+    	</term>
+    	<node>
+			<kTAG_CLASS>COntologyMasterVertex</kTAG_CLASS>
+			<kTAG_KIND>
+				<item>:KIND-ROOT</item>
+			</kTAG_KIND>
+    	</node>
+    </unit>
+    
+    <!-- ISO STANDARDS -->
+    
+    <!-- 639 -->
+    <unit>
+    	<term kTAG_LID="639" kTAG_NAMESPACE="ISO">
+			<kTAG_KIND>
+				<item>:KIND-NAMESPACE</item>
+			</kTAG_KIND>
+			<kTAG_LABEL language="en">International Standard for language codes</kTAG_LABEL>
+			<kTAG_DESCRIPTION language="en">The purpose of ISO 639 is to establish internationally recognised codes (either 2, 3, or 4 letters long) for the representation of languages or language families.</kTAG_DESCRIPTION>
+    	</term>
+    	<node>
+			<kTAG_CLASS>COntologyMasterVertex</kTAG_CLASS>
+    	</node>
+        <edges>
+			<edge>
+				<kTAG_PREDICATE>:SUBCLASS-OF</kTAG_PREDICATE>
+				<kTAG_OBJECT>ISO</kTAG_OBJECT>
+			</edge>
+        </edges>
+    </unit>
+    
+    <!-- 3166 -->
+    <unit>
+    	<term kTAG_LID="3166" kTAG_NAMESPACE="ISO">
+			<kTAG_KIND>
+				<item>:KIND-NAMESPACE</item>
+			</kTAG_KIND>
+			<kTAG_LABEL language="en">International Standard of codes for the representation of names of countries and their subdivisions</kTAG_LABEL>
+			<kTAG_DESCRIPTION language="en">The purpose of ISO 3166 is to define codes for the names of countries, dependent territories, special areas of geographical interest, and their principal subdivisions (e.g., provinces or states).</kTAG_DESCRIPTION>
+    	</term>
+    	<node>
+			<kTAG_CLASS>COntologyMasterVertex</kTAG_CLASS>
+    	</node>
+        <edges>
+			<edge>
+				<kTAG_PREDICATE>:SUBCLASS-OF</kTAG_PREDICATE>
+				<kTAG_OBJECT>ISO</kTAG_OBJECT>
+			</edge>
+        </edges>
+    </unit>
+    
+    <!-- 4217 -->
+    <unit>
+    	<term kTAG_LID="4217" kTAG_NAMESPACE="ISO">
+			<kTAG_KIND>
+				<item>:KIND-NAMESPACE</item>
+			</kTAG_KIND>
+			<kTAG_LABEL language="en">International Standard for currency codes</kTAG_LABEL>
+			<kTAG_DESCRIPTION language="en">The purpose of ISO 4217 is to establish internationally recognised codes for the representation of currencies. Currencies can be represented in the code in two ways: a three-letter alphabetic code and a three-digit numeric code.</kTAG_DESCRIPTION>
+    	</term>
+    	<node>
+			<kTAG_CLASS>COntologyMasterVertex</kTAG_CLASS>
+    	</node>
+        <edges>
+			<edge>
+				<kTAG_PREDICATE>:SUBCLASS-OF</kTAG_PREDICATE>
+				<kTAG_OBJECT>ISO</kTAG_OBJECT>
+			</edge>
+        </edges>
+    </unit>
+</units>

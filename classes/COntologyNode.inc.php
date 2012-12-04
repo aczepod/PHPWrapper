@@ -27,7 +27,7 @@
  *
  * This tag identifies the default name for the container that will host node objects.
  */
-define( "kCONTAINER_NODE_NAME",					'_nodes' );
+define( "kCONTAINER_NODE_NAME",					':_nodes' );
 
 /*=======================================================================================
  *	DEFAULT SEQUENCE KEY																*

@@ -43,7 +43,7 @@ define( "kDEFAULT_SERVER",					"mongodb://localhost:27017" );
  *
  * This tag indicates the default database name.
  */
-define( "kDEFAULT_DATABASE",				"ONTOLOGY-TEST" );
+define( "kDEFAULT_DATABASE",				"ONTOLOGY" );
 
 /**
  * Default language.

@@ -5,7 +5,7 @@
     <!-- Default namespace -->
     <term kTAG_LID="">
         <kTAG_KIND>
-            <item>:TERM-KIND-NAMESPACE</item>
+            <item>:KIND-NAMESPACE</item>
         </kTAG_KIND>
         <kTAG_LABEL language="en">Default namespace</kTAG_LABEL>
         <kTAG_DEFINITION language="en"><![CDATA[This <i>namespace</i> groups all default

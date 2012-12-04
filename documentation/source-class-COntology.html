@@ -7,7 +7,7 @@
 
 	<title>File COntology.php | MyWrapper Reference Documentation</title>
 
-	<script type="text/javascript" src="resources/combined.js?1742645618"></script>
+	<script type="text/javascript" src="resources/combined.js?3680114562"></script>
 	<script type="text/javascript" src="elementlist.js?571949357"></script>
 	<link rel="stylesheet" type="text/css" media="all" href="resources/style.css?3505392360" />
 
@@ -1595,54 +1595,44 @@
 </span><span id="1489" class="l"><a class="l" href="#1489">1489: </a>        <span class="php-keyword1">if</span>( <span class="php-var">$theElement</span>[ <span class="php-quote">'var'</span> ] !== <span class="php-keyword1">NULL</span> )
 </span><span id="1490" class="l"><a class="l" href="#1490">1490: </a>        {
 </span><span id="1491" class="l"><a class="l" href="#1491">1491: </a>            <span class="php-comment">//</span>
-</span><span id="1492" class="l"><a class="l" href="#1492">1492: </a>            <span class="php-comment">// Display.</span>
+</span><span id="1492" class="l"><a class="l" href="#1492">1492: </a>            <span class="php-comment">// Iterate path.</span>
 </span><span id="1493" class="l"><a class="l" href="#1493">1493: </a>            <span class="php-comment">//</span>
-</span><span id="1494" class="l"><a class="l" href="#1494">1494: </a>            <span class="php-keyword1">echo</span>( (string) <span class="php-var">$theElement</span>[ <span class="php-quote">'var'</span> ] );
-</span><span id="1495" class="l"><a class="l" href="#1495">1495: </a>            
-</span><span id="1496" class="l"><a class="l" href="#1496">1496: </a>            <span class="php-comment">//</span>
-</span><span id="1497" class="l"><a class="l" href="#1497">1497: </a>            <span class="php-comment">// Iterate path.</span>
-</span><span id="1498" class="l"><a class="l" href="#1498">1498: </a>            <span class="php-comment">//</span>
-</span><span id="1499" class="l"><a class="l" href="#1499">1499: </a>            <span class="php-keyword1">foreach</span>( <span class="php-var">$theElement</span>-&gt;{<span class="php-quote">'kTAG_PATH'</span>}-&gt;{<span class="php-quote">'item'</span>} <span class="php-keyword1">as</span> <span class="php-var">$item</span> )
-</span><span id="1500" class="l"><a class="l" href="#1500">1500: </a>            {
-</span><span id="1501" class="l"><a class="l" href="#1501">1501: </a>                <span class="php-comment">//</span>
-</span><span id="1502" class="l"><a class="l" href="#1502">1502: </a>                <span class="php-comment">// Resolve term.</span>
-</span><span id="1503" class="l"><a class="l" href="#1503">1503: </a>                <span class="php-comment">//</span>
-</span><span id="1504" class="l"><a class="l" href="#1504">1504: </a>                <span class="php-var">$term</span> = COntologyTerm::Resolve(
-</span><span id="1505" class="l"><a class="l" href="#1505">1505: </a>                            <span class="php-var">$theDatabase</span>, (string) <span class="php-var">$item</span>, <span class="php-keyword1">NULL</span>, <span class="php-keyword1">TRUE</span> );
-</span><span id="1506" class="l"><a class="l" href="#1506">1506: </a>                
-</span><span id="1507" class="l"><a class="l" href="#1507">1507: </a>                <span class="php-comment">//</span>
-</span><span id="1508" class="l"><a class="l" href="#1508">1508: </a>                <span class="php-comment">// Add to path.</span>
-</span><span id="1509" class="l"><a class="l" href="#1509">1509: </a>                <span class="php-comment">//</span>
-</span><span id="1510" class="l"><a class="l" href="#1510">1510: </a>                <span class="php-var">$theTag</span>-&gt;PushItem( <span class="php-var">$term</span> );
-</span><span id="1511" class="l"><a class="l" href="#1511">1511: </a>            
-</span><span id="1512" class="l"><a class="l" href="#1512">1512: </a>            } <span class="php-comment">// Iterating path items.</span>
-</span><span id="1513" class="l"><a class="l" href="#1513">1513: </a>            
-</span><span id="1514" class="l"><a class="l" href="#1514">1514: </a>            <span class="php-comment">//</span>
-</span><span id="1515" class="l"><a class="l" href="#1515">1515: </a>            <span class="php-comment">// Save tag.</span>
-</span><span id="1516" class="l"><a class="l" href="#1516">1516: </a>            <span class="php-comment">//</span>
-</span><span id="1517" class="l"><a class="l" href="#1517">1517: </a>            <span class="php-var">$id</span> = <span class="php-var">$theTag</span>-&gt;Insert( <span class="php-var">$theDatabase</span> );
-</span><span id="1518" class="l"><a class="l" href="#1518">1518: </a>            
-</span><span id="1519" class="l"><a class="l" href="#1519">1519: </a>            <span class="php-comment">//</span>
-</span><span id="1520" class="l"><a class="l" href="#1520">1520: </a>            <span class="php-comment">// Display.</span>
-</span><span id="1521" class="l"><a class="l" href="#1521">1521: </a>            <span class="php-comment">//</span>
-</span><span id="1522" class="l"><a class="l" href="#1522">1522: </a>            <span class="php-keyword1">echo</span>( <span class="php-quote">&quot; = </span><span class="php-var">$id</span><span class="php-quote">\n&quot;</span> );
-</span><span id="1523" class="l"><a class="l" href="#1523">1523: </a>        
-</span><span id="1524" class="l"><a class="l" href="#1524">1524: </a>        } <span class="php-comment">// Has global identifier.</span>
-</span><span id="1525" class="l"><a class="l" href="#1525">1525: </a>        
-</span><span id="1526" class="l"><a class="l" href="#1526">1526: </a>        <span class="php-keyword1">else</span>
-</span><span id="1527" class="l"><a class="l" href="#1527">1527: </a>            <span class="php-keyword1">throw</span> <span class="php-keyword1">new</span> Exception
-</span><span id="1528" class="l"><a class="l" href="#1528">1528: </a>                ( <span class="php-quote">&quot;Tag is missing its symbol&quot;</span>,
-</span><span id="1529" class="l"><a class="l" href="#1529">1529: </a>                  kERROR_STATE );                                           <span class="php-comment">// !@! ==&gt;</span>
-</span><span id="1530" class="l"><a class="l" href="#1530">1530: </a>
-</span><span id="1531" class="l"><a class="l" href="#1531">1531: </a>    } <span class="php-comment">// _ParseTag.</span>
-</span><span id="1532" class="l"><a class="l" href="#1532">1532: </a>
-</span><span id="1533" class="l"><a class="l" href="#1533">1533: </a>     
-</span><span id="1534" class="l"><a class="l" href="#1534">1534: </a>
-</span><span id="1535" class="l"><a class="l" href="#1535">1535: </a>} <span class="php-comment">// class COntology.</span>
-</span><span id="1536" class="l"><a class="l" href="#1536">1536: </a>
-</span><span id="1537" class="l"><a class="l" href="#1537">1537: </a>
-</span><span id="1538" class="l"><a class="l" href="#1538">1538: </a><span class="xlang">?&gt;</span>
-</span><span id="1539" class="l"><a class="l" href="#1539">1539: </a></span></code></pre>
+</span><span id="1494" class="l"><a class="l" href="#1494">1494: </a>            <span class="php-keyword1">foreach</span>( <span class="php-var">$theElement</span>-&gt;{<span class="php-quote">'kTAG_PATH'</span>}-&gt;{<span class="php-quote">'item'</span>} <span class="php-keyword1">as</span> <span class="php-var">$item</span> )
+</span><span id="1495" class="l"><a class="l" href="#1495">1495: </a>            {
+</span><span id="1496" class="l"><a class="l" href="#1496">1496: </a>                <span class="php-comment">//</span>
+</span><span id="1497" class="l"><a class="l" href="#1497">1497: </a>                <span class="php-comment">// Resolve term.</span>
+</span><span id="1498" class="l"><a class="l" href="#1498">1498: </a>                <span class="php-comment">//</span>
+</span><span id="1499" class="l"><a class="l" href="#1499">1499: </a>                <span class="php-var">$term</span> = COntologyTerm::Resolve(
+</span><span id="1500" class="l"><a class="l" href="#1500">1500: </a>                            <span class="php-var">$theDatabase</span>, (string) <span class="php-var">$item</span>, <span class="php-keyword1">NULL</span>, <span class="php-keyword1">TRUE</span> );
+</span><span id="1501" class="l"><a class="l" href="#1501">1501: </a>                
+</span><span id="1502" class="l"><a class="l" href="#1502">1502: </a>                <span class="php-comment">//</span>
+</span><span id="1503" class="l"><a class="l" href="#1503">1503: </a>                <span class="php-comment">// Add to path.</span>
+</span><span id="1504" class="l"><a class="l" href="#1504">1504: </a>                <span class="php-comment">//</span>
+</span><span id="1505" class="l"><a class="l" href="#1505">1505: </a>                <span class="php-var">$theTag</span>-&gt;PushItem( <span class="php-var">$term</span> );
+</span><span id="1506" class="l"><a class="l" href="#1506">1506: </a>            
+</span><span id="1507" class="l"><a class="l" href="#1507">1507: </a>            } <span class="php-comment">// Iterating path items.</span>
+</span><span id="1508" class="l"><a class="l" href="#1508">1508: </a>            
+</span><span id="1509" class="l"><a class="l" href="#1509">1509: </a>            <span class="php-comment">//</span>
+</span><span id="1510" class="l"><a class="l" href="#1510">1510: </a>            <span class="php-comment">// Save tag.</span>
+</span><span id="1511" class="l"><a class="l" href="#1511">1511: </a>            <span class="php-comment">//</span>
+</span><span id="1512" class="l"><a class="l" href="#1512">1512: </a>            <span class="php-var">$id</span> = <span class="php-var">$theTag</span>-&gt;Insert( <span class="php-var">$theDatabase</span> );
+</span><span id="1513" class="l"><a class="l" href="#1513">1513: </a>        
+</span><span id="1514" class="l"><a class="l" href="#1514">1514: </a>        } <span class="php-comment">// Has global identifier.</span>
+</span><span id="1515" class="l"><a class="l" href="#1515">1515: </a>        
+</span><span id="1516" class="l"><a class="l" href="#1516">1516: </a>        <span class="php-keyword1">else</span>
+</span><span id="1517" class="l"><a class="l" href="#1517">1517: </a>            <span class="php-keyword1">throw</span> <span class="php-keyword1">new</span> Exception
+</span><span id="1518" class="l"><a class="l" href="#1518">1518: </a>                ( <span class="php-quote">&quot;Tag is missing its symbol&quot;</span>,
+</span><span id="1519" class="l"><a class="l" href="#1519">1519: </a>                  kERROR_STATE );                                           <span class="php-comment">// !@! ==&gt;</span>
+</span><span id="1520" class="l"><a class="l" href="#1520">1520: </a>
+</span><span id="1521" class="l"><a class="l" href="#1521">1521: </a>    } <span class="php-comment">// _ParseTag.</span>
+</span><span id="1522" class="l"><a class="l" href="#1522">1522: </a>
+</span><span id="1523" class="l"><a class="l" href="#1523">1523: </a>     
+</span><span id="1524" class="l"><a class="l" href="#1524">1524: </a>
+</span><span id="1525" class="l"><a class="l" href="#1525">1525: </a>} <span class="php-comment">// class COntology.</span>
+</span><span id="1526" class="l"><a class="l" href="#1526">1526: </a>
+</span><span id="1527" class="l"><a class="l" href="#1527">1527: </a>
+</span><span id="1528" class="l"><a class="l" href="#1528">1528: </a><span class="xlang">?&gt;</span>
+</span><span id="1529" class="l"><a class="l" href="#1529">1529: </a></span></code></pre>
 
 	<div id="footer">
 		MyWrapper Reference Documentation API documentation generated by <a href="http://apigen.org">ApiGen 2.8.0</a>

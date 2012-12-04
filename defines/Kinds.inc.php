@@ -43,13 +43,13 @@
  *		controlled vocabulary element. These nodes derive from scale nodes and represent the
  *		valid choices of enumeration and enumerated set scale nodes. An ISO 3166 country
  *		code could be considered an enumeration node.
- *	<li><tt>{@link kKIND_TERM_NAMESPACE}</tt>: Namespace. This kind of term represents a
+ *	<li><tt>{@link kKIND_NAMESPACE}</tt>: Namespace. This kind of term represents a
  *		namespace, semantic group or ID space. Terms of this kind will generally be used to
  *		group identifiers.
- *	<li><tt>{@link kKIND_TERM_PREDICATE}</tt>: Predicate. This kind of term represents a
+ *	<li><tt>{@link kKIND_PREDICATE}</tt>: Predicate. This kind of term represents a
  *		predicate, or element which connects subject and object vertices into a
  *		relationship.
- *	<li><tt>{@link kKIND_TERM_SYMMETRIC}</tt>: Symmetric predicate. This kind of term
+ *	<li><tt>{@link kKIND_SYMMETRIC}</tt>: Symmetric predicate. This kind of term
  *		represents a predicate which relates two terms in both directions. By default,
  *		relationships are directional, that is they originate from the subject towards the
  *		object, but not in the opposite direction: this kind of predicate, instead, does not
@@ -158,9 +158,9 @@ define( "kKIND_ENUMERATION",					':KIND-ENUMERATION' );
  * This kind of term represents a namespace, semantic group or ID space. Terms of this kind
  * will generally be used to group identifiers.
  *
- * Version 1: (kKIND_TERM_NAMESPACE)[:KIND-NAMESPACE]
+ * Version 1: (kKIND_NAMESPACE)[:KIND-NAMESPACE]
  */
-define( "kKIND_TERM_NAMESPACE",					':KIND-NAMESPACE' );
+define( "kKIND_NAMESPACE",						':KIND-NAMESPACE' );
 
 /**
  * Predicate.
@@ -170,9 +170,9 @@ define( "kKIND_TERM_NAMESPACE",					':KIND-NAMESPACE' );
  * This kind of term represents a predicate, or element which connects subject and object
  * vertices into a relationship.
  *
- * Version 1: (kKIND_TERM_PREDICATE)[:KIND-PREDICATE]
+ * Version 1: (kKIND_PREDICATE)[:KIND-PREDICATE]
  */
-define( "kKIND_TERM_PREDICATE",					':KIND-PREDICATE' );
+define( "kKIND_PREDICATE",						':KIND-PREDICATE' );
 
 /**
  * Symmetric predicate term.
@@ -184,9 +184,9 @@ define( "kKIND_TERM_PREDICATE",					':KIND-PREDICATE' );
  * the object, but not in the opposite direction: this kind of predicate, instead, does not
  * have the concept of direction, the relationship flows in both directions.
  *
- * Version 1: (kKIND_TERM_SYMMETRIC)[:KIND-SYMMETRIC]
+ * Version 1: (kKIND_SYMMETRIC)[:KIND-SYMMETRIC]
  */
-define( "kKIND_TERM_SYMMETRIC",					':KIND-SYMMETRIC' );
+define( "kKIND_SYMMETRIC",						':KIND-SYMMETRIC' );
 
 
 ?>

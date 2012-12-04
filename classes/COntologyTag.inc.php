@@ -27,7 +27,7 @@
  *
  * This symbol identifies the default name for the container that will host tag objects.
  */
-define( "kCONTAINER_TAG_NAME",					'_tags' );
+define( "kCONTAINER_TAG_NAME",					':_tags' );
 
 /*=======================================================================================
  *	DEFAULT SEQUENCE KEY																*

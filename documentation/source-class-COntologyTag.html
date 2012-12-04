@@ -7,7 +7,7 @@
 
 	<title>File COntologyTag.php | MyWrapper Reference Documentation</title>
 
-	<script type="text/javascript" src="resources/combined.js?1742645618"></script>
+	<script type="text/javascript" src="resources/combined.js?3680114562"></script>
 	<script type="text/javascript" src="elementlist.js?571949357"></script>
 	<link rel="stylesheet" type="text/css" media="all" href="resources/style.css?3505392360" />
 
@@ -1191,75 +1191,74 @@
 </span></span><span id="1085" class="l"><a class="l" href="#1085">1085: </a><span class="php-comment">     *
 </span></span><span id="1086" class="l"><a class="l" href="#1086">1086: </a><span class="php-comment">     * This method can be used to add or remove the current tag's reference from the
 </span></span><span id="1087" class="l"><a class="l" href="#1087">1087: </a><span class="php-comment">     * provided term. This method should be used whenever committing a new tag or when
-</span></span><span id="1088" class="l"><a class="l" href="#1088">1088: </a><span class="php-comment">     * deleting one: it will update the term's {@link kTAG_REFS_TAG} for terms used as
-</span></span><span id="1089" class="l"><a class="l" href="#1089">1089: </a><span class="php-comment">     * predicates, the {@link kTAG_FEATURES} for terms used as features or traits,
-</span></span><span id="1090" class="l"><a class="l" href="#1090">1090: </a><span class="php-comment">     * the {@link kTAG_METHODS} for terms used as methods and the
-</span></span><span id="1091" class="l"><a class="l" href="#1091">1091: </a><span class="php-comment">     * {@link kTAG_SCALES} for terms used as scales or units, the method will add
-</span></span><span id="1092" class="l"><a class="l" href="#1092">1092: </a><span class="php-comment">     * the corresponding reference when inserting a new tag and remove it when deleting the
-</span></span><span id="1093" class="l"><a class="l" href="#1093">1093: </a><span class="php-comment">     * tag.
-</span></span><span id="1094" class="l"><a class="l" href="#1094">1094: </a><span class="php-comment">     *
-</span></span><span id="1095" class="l"><a class="l" href="#1095">1095: </a><span class="php-comment">     * &lt;ul&gt;
-</span></span><span id="1096" class="l"><a class="l" href="#1096">1096: </a><span class="php-comment">     *  &lt;li&gt;&lt;tt&gt;$theConnection&lt;/tt&gt;: Server, database or container in which the terms
-</span></span><span id="1097" class="l"><a class="l" href="#1097">1097: </a><span class="php-comment">     *      reside.
-</span></span><span id="1098" class="l"><a class="l" href="#1098">1098: </a><span class="php-comment">     *  &lt;li&gt;&lt;tt&gt;$theTerm&lt;/tt&gt;: Term object or identifier to which the current tag reference
-</span></span><span id="1099" class="l"><a class="l" href="#1099">1099: </a><span class="php-comment">     *      is to be added or removed.
-</span></span><span id="1100" class="l"><a class="l" href="#1100">1100: </a><span class="php-comment">     *  &lt;li&gt;&lt;tt&gt;$theTag&lt;/tt&gt;: Attribute tag of the terem to which the current tag reference
-</span></span><span id="1101" class="l"><a class="l" href="#1101">1101: </a><span class="php-comment">     *      is to be added or removed.
-</span></span><span id="1102" class="l"><a class="l" href="#1102">1102: </a><span class="php-comment">     *  &lt;li&gt;&lt;tt&gt;$doAdd&lt;/tt&gt;: If &lt;tt&gt;TRUE&lt;/tt&gt; add to set; if &lt;tt&gt;FALSE&lt;/tt&gt; remove from set.
-</span></span><span id="1103" class="l"><a class="l" href="#1103">1103: </a><span class="php-comment">     * &lt;/ul&gt;
-</span></span><span id="1104" class="l"><a class="l" href="#1104">1104: </a><span class="php-comment">     *
-</span></span><span id="1105" class="l"><a class="l" href="#1105">1105: </a><span class="php-comment">     * The method will return &lt;tt&gt;TRUE&lt;/tt&gt; if the operation affected at least one object,
-</span></span><span id="1106" class="l"><a class="l" href="#1106">1106: </a><span class="php-comment">     * &lt;tt&gt;FALSE&lt;/tt&gt; if not and raise an exception if the operation failed.
-</span></span><span id="1107" class="l"><a class="l" href="#1107">1107: </a><span class="php-comment">     *
-</span></span><span id="1108" class="l"><a class="l" href="#1108">1108: </a><span class="php-comment">     * @param CConnection           $theConnection      Server, database or container.
-</span></span><span id="1109" class="l"><a class="l" href="#1109">1109: </a><span class="php-comment">     * @param mixed                 $theTerm            Term object or identifier.
-</span></span><span id="1110" class="l"><a class="l" href="#1110">1110: </a><span class="php-comment">     * @param string                $theTag             Attribute tag to update.
-</span></span><span id="1111" class="l"><a class="l" href="#1111">1111: </a><span class="php-comment">     * @param boolean               $doAdd              &lt;tt&gt;TRUE&lt;/tt&gt; add reference.
-</span></span><span id="1112" class="l"><a class="l" href="#1112">1112: </a><span class="php-comment">     *
-</span></span><span id="1113" class="l"><a class="l" href="#1113">1113: </a><span class="php-comment">     * @access protected
-</span></span><span id="1114" class="l"><a class="l" href="#1114">1114: </a><span class="php-comment">     * @return boolean              &lt;tt&gt;TRUE&lt;/tt&gt; operation affected at least one object.
-</span></span><span id="1115" class="l"><a class="l" href="#1115">1115: </a><span class="php-comment">     *
-</span></span><span id="1116" class="l"><a class="l" href="#1116">1116: </a><span class="php-comment">     * @see kTAG_NID kTAG_REFS_TAG
-</span></span><span id="1117" class="l"><a class="l" href="#1117">1117: </a><span class="php-comment">     * @see kTAG_FEATURES kTAG_METHODS kTAG_SCALES
-</span></span><span id="1118" class="l"><a class="l" href="#1118">1118: </a><span class="php-comment">     * @see kFLAG_PERSIST_MODIFY kFLAG_MODIFY_ADDSET kFLAG_MODIFY_PULL
-</span></span><span id="1119" class="l"><a class="l" href="#1119">1119: </a><span class="php-comment">     */</span>
-</span><span id="1120" class="l"><a class="l" href="#1120">1120: </a>    <span class="php-keyword1">protected</span> <span class="php-keyword1">function</span> <a id="__ReferenceInTerm" href="#__ReferenceInTerm">_ReferenceInTerm</a>( CConnection <span class="php-var">$theConnection</span>,
-</span><span id="1121" class="l"><a class="l" href="#1121">1121: </a>                                                     <span class="php-var">$theTerm</span>, <span class="php-var">$theTag</span>, <span class="php-var">$doAdd</span> )
-</span><span id="1122" class="l"><a class="l" href="#1122">1122: </a>    {
-</span><span id="1123" class="l"><a class="l" href="#1123">1123: </a>        <span class="php-comment">//</span>
-</span><span id="1124" class="l"><a class="l" href="#1124">1124: </a>        <span class="php-comment">// Set modification criteria.</span>
-</span><span id="1125" class="l"><a class="l" href="#1125">1125: </a>        <span class="php-comment">//</span>
-</span><span id="1126" class="l"><a class="l" href="#1126">1126: </a>        <span class="php-var">$criteria</span> = <span class="php-keyword1">array</span>( <span class="php-var">$theTag</span> =&gt; <span class="php-var">$this</span>-&gt;offsetGet( kTAG_NID ) );
-</span><span id="1127" class="l"><a class="l" href="#1127">1127: </a>        
-</span><span id="1128" class="l"><a class="l" href="#1128">1128: </a>        <span class="php-comment">//</span>
-</span><span id="1129" class="l"><a class="l" href="#1129">1129: </a>        <span class="php-comment">// Handle add to set.</span>
-</span><span id="1130" class="l"><a class="l" href="#1130">1130: </a>        <span class="php-comment">//</span>
-</span><span id="1131" class="l"><a class="l" href="#1131">1131: </a>        <span class="php-keyword1">if</span>( <span class="php-var">$doAdd</span> )
-</span><span id="1132" class="l"><a class="l" href="#1132">1132: </a>            <span class="php-keyword1">return</span> COntologyTerm::ResolveClassContainer( <span class="php-var">$theConnection</span>, <span class="php-keyword1">TRUE</span> )
-</span><span id="1133" class="l"><a class="l" href="#1133">1133: </a>                    -&gt;ManageObject
-</span><span id="1134" class="l"><a class="l" href="#1134">1134: </a>                        (
-</span><span id="1135" class="l"><a class="l" href="#1135">1135: </a>                            <span class="php-var">$criteria</span>,
-</span><span id="1136" class="l"><a class="l" href="#1136">1136: </a>                            <span class="php-var">$theTerm</span>,
-</span><span id="1137" class="l"><a class="l" href="#1137">1137: </a>                            kFLAG_PERSIST_MODIFY + kFLAG_MODIFY_ADDSET
-</span><span id="1138" class="l"><a class="l" href="#1138">1138: </a>                        );                                                      <span class="php-comment">// ==&gt;</span>
-</span><span id="1139" class="l"><a class="l" href="#1139">1139: </a>        
-</span><span id="1140" class="l"><a class="l" href="#1140">1140: </a>        <span class="php-keyword1">return</span> COntologyTerm::ResolveClassContainer( <span class="php-var">$theConnection</span>, <span class="php-keyword1">TRUE</span> )
-</span><span id="1141" class="l"><a class="l" href="#1141">1141: </a>                -&gt;ManageObject
-</span><span id="1142" class="l"><a class="l" href="#1142">1142: </a>                    (
-</span><span id="1143" class="l"><a class="l" href="#1143">1143: </a>                        <span class="php-var">$criteria</span>,
-</span><span id="1144" class="l"><a class="l" href="#1144">1144: </a>                        <span class="php-var">$theTerm</span>,
-</span><span id="1145" class="l"><a class="l" href="#1145">1145: </a>                        kFLAG_PERSIST_MODIFY + kFLAG_MODIFY_PULL
-</span><span id="1146" class="l"><a class="l" href="#1146">1146: </a>                    );                                                          <span class="php-comment">// ==&gt;</span>
-</span><span id="1147" class="l"><a class="l" href="#1147">1147: </a>    
-</span><span id="1148" class="l"><a class="l" href="#1148">1148: </a>    } <span class="php-comment">// _ReferenceInTerm.</span>
-</span><span id="1149" class="l"><a class="l" href="#1149">1149: </a>
-</span><span id="1150" class="l"><a class="l" href="#1150">1150: </a>     
-</span><span id="1151" class="l"><a class="l" href="#1151">1151: </a>
-</span><span id="1152" class="l"><a class="l" href="#1152">1152: </a>} <span class="php-comment">// class COntologyTag.</span>
+</span></span><span id="1088" class="l"><a class="l" href="#1088">1088: </a><span class="php-comment">     * deleting one: it will update the {@link kTAG_FEATURES} for terms used as features or
+</span></span><span id="1089" class="l"><a class="l" href="#1089">1089: </a><span class="php-comment">     * traits, the {@link kTAG_METHODS} for terms used as methods and the
+</span></span><span id="1090" class="l"><a class="l" href="#1090">1090: </a><span class="php-comment">     * {@link kTAG_SCALES} for terms used as scales or units, the method will add
+</span></span><span id="1091" class="l"><a class="l" href="#1091">1091: </a><span class="php-comment">     * the corresponding reference when inserting a new tag and remove it when deleting the
+</span></span><span id="1092" class="l"><a class="l" href="#1092">1092: </a><span class="php-comment">     * tag.
+</span></span><span id="1093" class="l"><a class="l" href="#1093">1093: </a><span class="php-comment">     *
+</span></span><span id="1094" class="l"><a class="l" href="#1094">1094: </a><span class="php-comment">     * &lt;ul&gt;
+</span></span><span id="1095" class="l"><a class="l" href="#1095">1095: </a><span class="php-comment">     *  &lt;li&gt;&lt;tt&gt;$theConnection&lt;/tt&gt;: Server, database or container in which the terms
+</span></span><span id="1096" class="l"><a class="l" href="#1096">1096: </a><span class="php-comment">     *      reside.
+</span></span><span id="1097" class="l"><a class="l" href="#1097">1097: </a><span class="php-comment">     *  &lt;li&gt;&lt;tt&gt;$theTerm&lt;/tt&gt;: Term object or identifier to which the current tag reference
+</span></span><span id="1098" class="l"><a class="l" href="#1098">1098: </a><span class="php-comment">     *      is to be added or removed.
+</span></span><span id="1099" class="l"><a class="l" href="#1099">1099: </a><span class="php-comment">     *  &lt;li&gt;&lt;tt&gt;$theTag&lt;/tt&gt;: Attribute tag of the terem to which the current tag reference
+</span></span><span id="1100" class="l"><a class="l" href="#1100">1100: </a><span class="php-comment">     *      is to be added or removed.
+</span></span><span id="1101" class="l"><a class="l" href="#1101">1101: </a><span class="php-comment">     *  &lt;li&gt;&lt;tt&gt;$doAdd&lt;/tt&gt;: If &lt;tt&gt;TRUE&lt;/tt&gt; add to set; if &lt;tt&gt;FALSE&lt;/tt&gt; remove from set.
+</span></span><span id="1102" class="l"><a class="l" href="#1102">1102: </a><span class="php-comment">     * &lt;/ul&gt;
+</span></span><span id="1103" class="l"><a class="l" href="#1103">1103: </a><span class="php-comment">     *
+</span></span><span id="1104" class="l"><a class="l" href="#1104">1104: </a><span class="php-comment">     * The method will return &lt;tt&gt;TRUE&lt;/tt&gt; if the operation affected at least one object,
+</span></span><span id="1105" class="l"><a class="l" href="#1105">1105: </a><span class="php-comment">     * &lt;tt&gt;FALSE&lt;/tt&gt; if not and raise an exception if the operation failed.
+</span></span><span id="1106" class="l"><a class="l" href="#1106">1106: </a><span class="php-comment">     *
+</span></span><span id="1107" class="l"><a class="l" href="#1107">1107: </a><span class="php-comment">     * @param CConnection           $theConnection      Server, database or container.
+</span></span><span id="1108" class="l"><a class="l" href="#1108">1108: </a><span class="php-comment">     * @param mixed                 $theTerm            Term object or identifier.
+</span></span><span id="1109" class="l"><a class="l" href="#1109">1109: </a><span class="php-comment">     * @param string                $theTag             Attribute tag to update.
+</span></span><span id="1110" class="l"><a class="l" href="#1110">1110: </a><span class="php-comment">     * @param boolean               $doAdd              &lt;tt&gt;TRUE&lt;/tt&gt; add reference.
+</span></span><span id="1111" class="l"><a class="l" href="#1111">1111: </a><span class="php-comment">     *
+</span></span><span id="1112" class="l"><a class="l" href="#1112">1112: </a><span class="php-comment">     * @access protected
+</span></span><span id="1113" class="l"><a class="l" href="#1113">1113: </a><span class="php-comment">     * @return boolean              &lt;tt&gt;TRUE&lt;/tt&gt; operation affected at least one object.
+</span></span><span id="1114" class="l"><a class="l" href="#1114">1114: </a><span class="php-comment">     *
+</span></span><span id="1115" class="l"><a class="l" href="#1115">1115: </a><span class="php-comment">     * @see kTAG_NID
+</span></span><span id="1116" class="l"><a class="l" href="#1116">1116: </a><span class="php-comment">     * @see kTAG_FEATURES kTAG_METHODS kTAG_SCALES
+</span></span><span id="1117" class="l"><a class="l" href="#1117">1117: </a><span class="php-comment">     * @see kFLAG_PERSIST_MODIFY kFLAG_MODIFY_ADDSET kFLAG_MODIFY_PULL
+</span></span><span id="1118" class="l"><a class="l" href="#1118">1118: </a><span class="php-comment">     */</span>
+</span><span id="1119" class="l"><a class="l" href="#1119">1119: </a>    <span class="php-keyword1">protected</span> <span class="php-keyword1">function</span> <a id="__ReferenceInTerm" href="#__ReferenceInTerm">_ReferenceInTerm</a>( CConnection <span class="php-var">$theConnection</span>,
+</span><span id="1120" class="l"><a class="l" href="#1120">1120: </a>                                                     <span class="php-var">$theTerm</span>, <span class="php-var">$theTag</span>, <span class="php-var">$doAdd</span> )
+</span><span id="1121" class="l"><a class="l" href="#1121">1121: </a>    {
+</span><span id="1122" class="l"><a class="l" href="#1122">1122: </a>        <span class="php-comment">//</span>
+</span><span id="1123" class="l"><a class="l" href="#1123">1123: </a>        <span class="php-comment">// Set modification criteria.</span>
+</span><span id="1124" class="l"><a class="l" href="#1124">1124: </a>        <span class="php-comment">//</span>
+</span><span id="1125" class="l"><a class="l" href="#1125">1125: </a>        <span class="php-var">$criteria</span> = <span class="php-keyword1">array</span>( <span class="php-var">$theTag</span> =&gt; <span class="php-var">$this</span>-&gt;offsetGet( kTAG_NID ) );
+</span><span id="1126" class="l"><a class="l" href="#1126">1126: </a>        
+</span><span id="1127" class="l"><a class="l" href="#1127">1127: </a>        <span class="php-comment">//</span>
+</span><span id="1128" class="l"><a class="l" href="#1128">1128: </a>        <span class="php-comment">// Handle add to set.</span>
+</span><span id="1129" class="l"><a class="l" href="#1129">1129: </a>        <span class="php-comment">//</span>
+</span><span id="1130" class="l"><a class="l" href="#1130">1130: </a>        <span class="php-keyword1">if</span>( <span class="php-var">$doAdd</span> )
+</span><span id="1131" class="l"><a class="l" href="#1131">1131: </a>            <span class="php-keyword1">return</span> COntologyTerm::ResolveClassContainer( <span class="php-var">$theConnection</span>, <span class="php-keyword1">TRUE</span> )
+</span><span id="1132" class="l"><a class="l" href="#1132">1132: </a>                    -&gt;ManageObject
+</span><span id="1133" class="l"><a class="l" href="#1133">1133: </a>                        (
+</span><span id="1134" class="l"><a class="l" href="#1134">1134: </a>                            <span class="php-var">$criteria</span>,
+</span><span id="1135" class="l"><a class="l" href="#1135">1135: </a>                            <span class="php-var">$theTerm</span>,
+</span><span id="1136" class="l"><a class="l" href="#1136">1136: </a>                            kFLAG_PERSIST_MODIFY + kFLAG_MODIFY_ADDSET
+</span><span id="1137" class="l"><a class="l" href="#1137">1137: </a>                        );                                                      <span class="php-comment">// ==&gt;</span>
+</span><span id="1138" class="l"><a class="l" href="#1138">1138: </a>        
+</span><span id="1139" class="l"><a class="l" href="#1139">1139: </a>        <span class="php-keyword1">return</span> COntologyTerm::ResolveClassContainer( <span class="php-var">$theConnection</span>, <span class="php-keyword1">TRUE</span> )
+</span><span id="1140" class="l"><a class="l" href="#1140">1140: </a>                -&gt;ManageObject
+</span><span id="1141" class="l"><a class="l" href="#1141">1141: </a>                    (
+</span><span id="1142" class="l"><a class="l" href="#1142">1142: </a>                        <span class="php-var">$criteria</span>,
+</span><span id="1143" class="l"><a class="l" href="#1143">1143: </a>                        <span class="php-var">$theTerm</span>,
+</span><span id="1144" class="l"><a class="l" href="#1144">1144: </a>                        kFLAG_PERSIST_MODIFY + kFLAG_MODIFY_PULL
+</span><span id="1145" class="l"><a class="l" href="#1145">1145: </a>                    );                                                          <span class="php-comment">// ==&gt;</span>
+</span><span id="1146" class="l"><a class="l" href="#1146">1146: </a>    
+</span><span id="1147" class="l"><a class="l" href="#1147">1147: </a>    } <span class="php-comment">// _ReferenceInTerm.</span>
+</span><span id="1148" class="l"><a class="l" href="#1148">1148: </a>
+</span><span id="1149" class="l"><a class="l" href="#1149">1149: </a>     
+</span><span id="1150" class="l"><a class="l" href="#1150">1150: </a>
+</span><span id="1151" class="l"><a class="l" href="#1151">1151: </a>} <span class="php-comment">// class COntologyTag.</span>
+</span><span id="1152" class="l"><a class="l" href="#1152">1152: </a>
 </span><span id="1153" class="l"><a class="l" href="#1153">1153: </a>
-</span><span id="1154" class="l"><a class="l" href="#1154">1154: </a>
-</span><span id="1155" class="l"><a class="l" href="#1155">1155: </a><span class="xlang">?&gt;</span>
-</span><span id="1156" class="l"><a class="l" href="#1156">1156: </a></span></code></pre>
+</span><span id="1154" class="l"><a class="l" href="#1154">1154: </a><span class="xlang">?&gt;</span>
+</span><span id="1155" class="l"><a class="l" href="#1155">1155: </a></span></code></pre>
 
 	<div id="footer">
 		MyWrapper Reference Documentation API documentation generated by <a href="http://apigen.org">ApiGen 2.8.0</a>

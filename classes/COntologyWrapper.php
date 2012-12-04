@@ -73,9 +73,9 @@ require_once( kPATH_MYWRAPPER_LIBRARY_CLASS."/COntologyWrapper.inc.php" );
  * <ul>
  *	<li><tt>kAPI_COLLECTION_ID</tt>: This offset tags the element that holds the list of
  *		identifiers of the requested items.
- *	<li><tt>kAPI_COLLECTION_PREDICATE</tt>: This offset tags the element that holds the list
+ *	<li><tt>kAPI_COLLECTION_TERM</tt>: This offset tags the element that holds the list
  *		of referenced predicate items
- *	<li><tt>kAPI_COLLECTION_VERTEX</tt>: This offset tags the element that holds the list
+ *	<li><tt>kAPI_COLLECTION_NODE</tt>: This offset tags the element that holds the list
  *		of referenced vertex items
  *	<li><tt>kAPI_COLLECTION_EDGE</tt>: This offset tags the element that holds the list
  *		of referenced edge items
@@ -865,182 +865,7 @@ class COntologyWrapper extends CDataWrapper
 
 	 
 	/*===================================================================================
-	 *	_ExportVertex																	*
-	 *==================================================================================*/
-
-	/**
-	 * <h4>Export a vertex</h4>
-	 *
-	 * The main duty of this method is to provide a common display format for the elements
-	 * of the graph, given a node identifier or identifiers list, this method will resolve
-	 * all its references and return a single object that merges all its term and node
-	 * attributes.
-	 *
-	 * The method expects the following parameters:
-	 *
-	 * <ul>
-	 *	<li><tt>&$theCollection</tt>: This parameter is a reference to an array that will
-	 *		receive the object attributes, the array holds four lists that collect similar
-	 *		objects, such as nodes, terms, edges and tags:
-	 *	 <ul>
-	 *		<li><tt>{@link kAPI_COLLECTION_ID}</tt>: This element is an array that holds the
-	 *			identifiers list of the requested elements. This list holds the reference to
-	 *			the object which is contained by the other elements of the collection, this
-	 *			list refers to the elements requested by the service.
-	 *		<li><tt>{@link kAPI_COLLECTION_PREDICATE}</tt>: This element is an array that
-	 *			holds the list of predicate terms referenced by all other objects in the
-	 *			collection. The array keys will be the term's {@link kTAG_GID} and the value
-	 *			will be the attributes of the term. The contents of this element are fed by
-	 *			the {@link _BuildTerm()} protected method.
-	 *		<li><tt>{@link kAPI_COLLECTION_VERTEX}</tt>: This element is an array that holds
-	 *			a list of node vertex. A vertex is the combination of the node attributes
-	 *			merged with the referenced term attributes. The items of this list are
-	 *			indexed by the node {@link kTAG_NID} and eventual term attributes are
-	 *			overwritten by matching node attributes. The contents of this element are
-	 *			fed by the {@link _BuildVertex()} protected method.
-	 *		<li><tt>{@link kAPI_COLLECTION_EDGE}</tt>: This element is an array that holds
-	 *			a list of edges, the array keys will be the edge's {@link kTAG_GID} and the
-	 *			value will be the edge's attributes. The contents of this element are fed by
-	 *			the {@link _BuildEdge()} protected method.
-	 *		<li><tt>{@link kAPI_COLLECTION_TAG}</tt>: This element is an array that holds
-	 *			a list of tags, the array indexes will be the tag {@link kTAG_NID} and
-	 *			the array values will be the tag {@link kTAG_PATH} and {@link kTAG_GID},
-	 *			where the {@link kTAG_PATH} predicate references will be set to the term
-	 *			{@link kTAG_GID}.
-	 *	 </ul>
-	 *	<li><tt>$theNode</tt>: This parameter represents the vertex node full object; this
-	 *		means that all attributes should be present, since this method will take care of
-	 *		removing unwanted attributes. The parameter may represent a list of node objects
-	 *		or references, a reference or an object:
-	 *	 <ul>
-	 *		<li><tt>array</tt>: Each element of the list will be fed to this method
-	 *			recursively.
-	 *		<li><tt>COntologyNode</tt>: The object will be used as is.
-	 *		<li><i>other</i>: Any other type will be interpreted as a node reference.
-	 *	 </ul>
-	 *	<li><tt>$theAttributes</tt>: This optional parameter can be used to limit the
-	 *		returned attributes to the list provided in this array.
-	 *	<li><tt>$doTags</tt>: If this flag is <tt>TRUE</tt>, the method will load the tags;
-	 *		if <tt>FALSE</tt> no tags will be loaded.
-	 * </ul>
-	 *
-	 * The method will generate an array containing the merged attributes of the node and
-	 * the referenced term, this array will be set in the {@link kAPI_COLLECTION_VERTEX} of
-	 * the <tt>&$theCollection</tt> parameter with as index the node {@link kTAG_NID}
-	 * that will ve added to the {@link kAPI_COLLECTION_ID} element of the collection.
-	 *
-	 * If a matching vertex already exists in the <tt>&$theCollection</tt> parameter, the
-	 * method will do nothing.
-	 *
-	 * For more information please consult the {@link _BuildVertex()} method reference, note
-	 * that this method will remove the {@link kTAG_NID} attribute from the node, it
-	 * will only use this information to index the node.
-	 *
-	 * The method will raise an exception if any element cannot be resolved.
-	 *
-	 * @param reference			   &$theCollection		Exported collection.
-	 * @param mixed					$theNode			Node identifier or list.
-	 * @param boolean				$doTags				TRUE means load tags.
-	 *
-	 * @access protected
-	 */
-	protected function _ExportVertex( &$theCollection, $theNode, $doTags = TRUE )
-	{
-		//
-		// Init results structure.
-		//
-		if( ! is_array( $theCollection ) )
-			$theCollection = array( kAPI_COLLECTION_ID => Array(),
-									kAPI_COLLECTION_PREDICATE => Array(),
-									kAPI_COLLECTION_VERTEX => Array(),
-									kAPI_COLLECTION_EDGE => Array(),
-									kAPI_COLLECTION_TAG => Array() );
-		
-		//
-		// Handle list.
-		//
-		if( is_array( $theNode ) )
-		{
-			//
-			// Iterate list.
-			//
-			foreach( $theNode as $item )
-				$this->_ExportVertex( $theCollection, $item, $doTags );
-		
-		} // Provided list.
-		
-		//
-		// Handle object or reference.
-		//
-		else
-		{
-			//
-			// Extract ID.
-			//
-			$id = ( ! ($theNode instanceof COntologyNode) )
-				? $theNode
-				: $theNode[ kTAG_NID ];
-				
-			//
-			// Check if vertex is new,.
-			//
-			if( ! array_key_exists( $id, $theCollection[ kAPI_COLLECTION_VERTEX ] ) )
-			{
-				//
-				// Build vertex.
-				//
-				$theNode = $this->_BuildVertex( $theNode );
-				
-				//
-				// Save identifier.
-				//
-				$id = $theNode[ kTAG_NID ];
-				
-				//
-				// Remove from source.
-				//
-				unset( $theNode[ kTAG_NID ] );
-				
-				//
-				// Reduce attributes.
-				//
-				if( array_key_exists( kAPI_SELECT, $_REQUEST ) )
-				{
-					//
-					// Iterate vertex attributes.
-					//
-					foreach( $theNode as $key => $value )
-					{
-						//
-						// Remove excluded.
-						//
-						if( ! in_array( $key, $_REQUEST[ kAPI_SELECT ] ) )
-							unset( $theNode[ $key ] );
-					
-					} // Iterating vertex attributes.
-				
-				} // Provided selection.
-				
-				//
-				// Save vertex.
-				//
-				CDataType::SerialiseObject( $theNode );
-				$theCollection[ kAPI_COLLECTION_VERTEX ][ $id ] = $theNode;
-				
-				//
-				// Get vertex tags.
-				//
-				$this->_ExportTag( $theCollection, array_keys( $theNode ) );
-			
-			} // New vertex.
-		
-		} // Provided object or reference. 
-		
-	} // _ExportVertex.
-
-	 
-	/*===================================================================================
-	 *	_ExportPredicate																		*
+	 *	_ExportTerm																		*
 	 *==================================================================================*/
 
 	/**
@@ -1060,18 +885,18 @@ class COntologyWrapper extends CDataWrapper
 	 *			identifiers list of the requested elements. This list holds the reference to
 	 *			the object which is contained by the other elements of the collection, this
 	 *			list refers to the elements requested by the service.
-	 *		<li><tt>{@link kAPI_COLLECTION_PREDICATE}</tt>: This element is an array that
+	 *		<li><tt>{@link kAPI_COLLECTION_TERM}</tt>: This element is an array that
 	 *			holds the list of predicate terms referenced by all other objects in the
 	 *			collection. The array keys will be the term's {@link kTAG_GID} and the value
 	 *			will be the attributes of the term. The contents of this element are fed by
 	 *			the {@link _BuildTerm()} protected method and the elements are provided by
 	 *			this method.
-	 *		<li><tt>{@link kAPI_COLLECTION_VERTEX}</tt>: This element is an array that holds
+	 *		<li><tt>{@link kAPI_COLLECTION_NODE}</tt>: This element is an array that holds
 	 *			a list of node vertex. A vertex is the combination of the node attributes
 	 *			merged with the referenced term attributes. The items of this list are
 	 *			indexed by the node {@link kTAG_NID} and eventual term attributes are
 	 *			overwritten by matching node attributes. The contents of this element are
-	 *			fed by the {@link _BuildVertex()} protected method.
+	 *			fed by the {@link _BuildNode()} protected method.
 	 *		<li><tt>{@link kAPI_COLLECTION_EDGE}</tt>: This element is an array that holds
 	 *			a list of edges, the array keys will be the edge's {@link kTAG_GID} and the
 	 *			value will be the edge's attributes. The contents of this element are fed by
@@ -1099,14 +924,14 @@ class COntologyWrapper extends CDataWrapper
 	 * </ul>
 	 *
 	 * The method will generate an array containing the merged attributes of the node and
-	 * the referenced term, this array will be set in the {@link kAPI_COLLECTION_VERTEX} of
+	 * the referenced term, this array will be set in the {@link kAPI_COLLECTION_NODE} of
 	 * the <tt>&$theCollection</tt> parameter with as index the node {@link kTAG_NID}
 	 * that will ve added to the {@link kAPI_COLLECTION_ID} element of the collection.
 	 *
 	 * If a matching vertex already exists in the <tt>&$theCollection</tt> parameter, the
 	 * method will do nothing.
 	 *
-	 * For more information please consult the {@link _BuildVertex()} method reference, note
+	 * For more information please consult the {@link _BuildNode()} method reference, note
 	 * that this method will remove the {@link kTAG_NID} attribute from the node, it
 	 * will only use this information to index the node.
 	 *
@@ -1118,15 +943,15 @@ class COntologyWrapper extends CDataWrapper
 	 *
 	 * @access protected
 	 */
-	protected function _ExportPredicate( &$theCollection, $theTerm, $doTags = TRUE )
+	protected function _ExportTerm( &$theCollection, $theTerm, $doTags = TRUE )
 	{
 		//
 		// Init results structure.
 		//
 		if( ! is_array( $theCollection ) )
 			$theCollection = array( kAPI_COLLECTION_ID => Array(),
-									kAPI_COLLECTION_PREDICATE => Array(),
-									kAPI_COLLECTION_VERTEX => Array(),
+									kAPI_COLLECTION_TERM => Array(),
+									kAPI_COLLECTION_NODE => Array(),
 									kAPI_COLLECTION_EDGE => Array(),
 									kAPI_COLLECTION_TAG => Array() );
 		
@@ -1139,7 +964,7 @@ class COntologyWrapper extends CDataWrapper
 			// Iterate list.
 			//
 			foreach( $theTerm as $item )
-				$this->_ExportPredicate( $theCollection, $item, $doTags );
+				$this->_ExportTerm( $theCollection, $item, $doTags );
 		
 		} // Provided list.
 		
@@ -1156,14 +981,9 @@ class COntologyWrapper extends CDataWrapper
 			//
 			// Check if term is new.
 			//
-			if( ! array_key_exists( $theTerm[ kTAG_GID ],
-									$theCollection[ kAPI_COLLECTION_PREDICATE ] ) )
+			$id = $theTerm[ kTAG_GID ];
+			if( ! array_key_exists( $id, $theCollection[ kAPI_COLLECTION_TERM ] ) )
 			{
-				//
-				// Save identifier.
-				//
-				$id = $theTerm[ kTAG_GID ];
-				
 				//
 				// Reduce attributes.
 				//
@@ -1188,20 +1008,190 @@ class COntologyWrapper extends CDataWrapper
 				// Save term.
 				//
 				CDataType::SerialiseObject( $theTerm );
-				$theCollection[ kAPI_COLLECTION_PREDICATE ][ $id ] = $theTerm;
+				$theCollection[ kAPI_COLLECTION_TERM ][ $id ] = $theTerm;
 				
 				//
 				// Get term tags.
 				//
-				$this->_ExportTag( $theCollection, array_keys( $theTerm ) );
+				if( $doTags )
+					$this->_ExportTag( $theCollection, array_keys( $theTerm ) );
 			
 			} // New term.
 		
 		} // Provided object or reference. 
 		
-	} // _ExportPredicate.
+	} // _ExportTerm.
 	
 	
+	/*===================================================================================
+	 *	_ExportNode																		*
+	 *==================================================================================*/
+
+	/**
+	 * <h4>Export a vertex</h4>
+	 *
+	 * The main duty of this method is to export a collection of vertex nodes into a series
+	 * of collections each holding a class of data. The method will have to resolve eventual
+	 * references and store the resolved data in their corresponding collection.
+	 *
+	 * The method expects the following parameters:
+	 *
+	 * <ul>
+	 *	<li><tt>&$theCollection</tt>: This parameter is a reference to an array that will
+	 *		receive the object attributes, the array holds four lists that collect objects
+	 *		of the same class:
+	 *	 <ul>
+	 *		<li><tt>{@link kAPI_COLLECTION_ID}</tt>: This element is an array that holds the
+	 *			identifiers list of the requested elements. Depending on what was requested,
+	 *			this list will hold term, node, edge or tag identifiers.
+	 *		<li><tt>{@link kAPI_COLLECTION_TERM}</tt>: This element is an array that holds
+	 *			the list of terms referenced by all other objects in the collection. The
+	 *			array keys will be the term's {@link kTAG_GID} and the value the term
+	 *			attributes. The contents of this element are fed by the {@link _BuildTerm()}
+	 *			protected method.
+	 *		<li><tt>{@link kAPI_COLLECTION_NODE}</tt>: This element is an array that holds
+	 *			a list of node vertex. A vertex is the combination of the node attributes
+	 *			merged with the referenced term attributes. The items of this list are
+	 *			indexed by the node {@link kTAG_NID} and eventual term attributes are
+	 *			overwritten by matching node attributes. The contents of this element are
+	 *			fed by the {@link _BuildNode()} protected method.
+	 *		<li><tt>{@link kAPI_COLLECTION_EDGE}</tt>: This element is an array that holds
+	 *			a list of edges, the array keys will be the edge's {@link kTAG_GID} and the
+	 *			value will be the edge's attributes. The contents of this element are fed by
+	 *			the {@link _BuildEdge()} protected method.
+	 *		<li><tt>{@link kAPI_COLLECTION_TAG}</tt>: This element is an array that holds
+	 *			a list of tags, the array indexes will be the tag {@link kTAG_NID} and
+	 *			the array values will be the tag {@link kTAG_PATH} and {@link kTAG_GID},
+	 *			where the {@link kTAG_PATH} predicate references will be set to the term
+	 *			{@link kTAG_GID}.
+	 *	 </ul>
+	 *	<li><tt>$theNode</tt>: This parameter represents the vertex node full object; this
+	 *		means that all attributes should be present, since this method will take care of
+	 *		removing unwanted attributes. The parameter may represent a list of node objects
+	 *		or references, a reference or an object:
+	 *	 <ul>
+	 *		<li><tt>array</tt>: Each element of the list will be fed to this method
+	 *			recursively.
+	 *		<li><tt>COntologyNode</tt>: The object will be used as is.
+	 *		<li><i>other</i>: Any other type will be interpreted as a node reference.
+	 *	 </ul>
+	 *	<li><tt>$theAttributes</tt>: This optional parameter can be used to limit the
+	 *		returned attributes to the list provided in this array.
+	 *	<li><tt>$doTags</tt>: If this flag is <tt>TRUE</tt>, the method will load the tags;
+	 *		if <tt>FALSE</tt> no tags will be loaded.
+	 * </ul>
+	 *
+	 * The method will generate an array containing the merged attributes of the node and
+	 * the referenced term, this array will be set in the {@link kAPI_COLLECTION_NODE} of
+	 * the <tt>&$theCollection</tt> parameter with as index the node {@link kTAG_NID}
+	 * that will ve added to the {@link kAPI_COLLECTION_ID} element of the collection.
+	 *
+	 * If a matching vertex already exists in the <tt>&$theCollection</tt> parameter, the
+	 * method will do nothing.
+	 *
+	 * For more information please consult the {@link _BuildNode()} method reference, note
+	 * that this method will remove the {@link kTAG_NID} attribute from the node, it
+	 * will only use this information to index the node.
+	 *
+	 * The method will raise an exception if any element cannot be resolved.
+	 *
+	 * @param reference			   &$theCollection		Exported collection.
+	 * @param mixed					$theNode			Node identifier or list.
+	 * @param boolean				$doTags				TRUE means load tags.
+	 *
+	 * @access protected
+	 */
+	protected function _ExportNode( &$theCollection, $theNode, $doTags = TRUE )
+	{
+		//
+		// Init results structure.
+		//
+		if( ! is_array( $theCollection ) )
+			$theCollection = array( kAPI_COLLECTION_ID => Array(),
+									kAPI_COLLECTION_TERM => Array(),
+									kAPI_COLLECTION_NODE => Array(),
+									kAPI_COLLECTION_EDGE => Array(),
+									kAPI_COLLECTION_TAG => Array() );
+		
+		//
+		// Handle list.
+		//
+		if( is_array( $theNode ) )
+		{
+			//
+			// Iterate list.
+			//
+			foreach( $theNode as $item )
+				$this->_ExportNode( $theCollection, $item, $doTags );
+		
+		} // Provided list.
+		
+		//
+		// Handle object or reference.
+		//
+		else
+		{
+			//
+			// Extract ID.
+			//
+			$id = ( ! ($theNode instanceof COntologyNode) )
+				? $theNode
+				: $theNode[ kTAG_NID ];
+				
+			//
+			// Check if vertex is new,.
+			//
+			if( ! array_key_exists( $id, $theCollection[ kAPI_COLLECTION_NODE ] ) )
+			{
+				//
+				// Build vertex.
+				//
+				$theNode = $this->_BuildNode( $theNode );
+				
+				//
+				// Export term.
+				//
+				$this->_ExportTerm( $theCollection, $theNode[ kTAG_TERM ], $doTags );
+				
+				//
+				// Reduce attributes.
+				//
+				if( array_key_exists( kAPI_SELECT, $_REQUEST ) )
+				{
+					//
+					// Iterate vertex attributes.
+					//
+					foreach( $theNode as $key => $value )
+					{
+						//
+						// Remove excluded.
+						//
+						if( ! in_array( $key, $_REQUEST[ kAPI_SELECT ] ) )
+							unset( $theNode[ $key ] );
+					
+					} // Iterating vertex attributes.
+				
+				} // Provided selection.
+				
+				//
+				// Save vertex.
+				//
+				CDataType::SerialiseObject( $theNode );
+				$theCollection[ kAPI_COLLECTION_NODE ][ $id ] = $theNode;
+				
+				//
+				// Get vertex tags.
+				//
+				if( $doTags )
+					$this->_ExportTag( $theCollection, array_keys( $theNode ) );
+			
+			} // New vertex.
+		
+		} // Provided object or reference. 
+		
+	} // _ExportNode.
+
+	 
 	/*===================================================================================
 	 *	_ExportEdge																		*
 	 *==================================================================================*/
@@ -1222,18 +1212,18 @@ class COntologyWrapper extends CDataWrapper
 	 *		<li><tt>{@link kAPI_COLLECTION_ID}</tt>: This element is an array that holds the
 	 *			identifiers list of the requested elements. This element should be filled by
 	 *			the caller, since its content depend on what operation is going on.
-	 *		<li><tt>{@link kAPI_COLLECTION_PREDICATE}</tt>: This element is an array that
+	 *		<li><tt>{@link kAPI_COLLECTION_TERM}</tt>: This element is an array that
 	 *			holds the list of predicate terms referenced by all other objects in the
 	 *			collection. The array keys will be the term's {@link kTAG_GID} and the value
 	 *			will be the attributes of the term. The contents of this element are fed
 	 *			with the {@link _BuildTerm()} protected method to which the edge predicates
 	 *			will be provided.
-	 *		<li><tt>{@link kAPI_COLLECTION_VERTEX}</tt>: This element is an array that holds
+	 *		<li><tt>{@link kAPI_COLLECTION_NODE}</tt>: This element is an array that holds
 	 *			a list of node vertex. A vertex is the combination of the node attributes
 	 *			merged with the referenced term attributes. The items of this list are
 	 *			indexed by the node {@link kTAG_NID} and eventual term attributes are
 	 *			overwritten by matching node attributes. The contents of this element are
-	 *			fed by the {@link _BuildVertex()} protected method to which both the object
+	 *			fed by the {@link _BuildNode()} protected method to which both the object
 	 *			and subject vertices will be provided.
 	 *		<li><tt>{@link kAPI_COLLECTION_EDGE}</tt>: This element is an array that holds
 	 *			a list of edges, the array keys will be the edge's {@link kTAG_GID} and the
@@ -1261,20 +1251,21 @@ class COntologyWrapper extends CDataWrapper
 	 *
 	 * @param reference			   &$theCollection		Exported collection.
 	 * @param mixed					$theEdge			Edge or edges list.
+	 * @param boolean				$doTags				TRUE means load tags.
 	 *
 	 * @access protected
 	 *
 	 * @throws Exception
 	 */
-	protected function _ExportEdge( &$theCollection, $theEdge )
+	protected function _ExportEdge( &$theCollection, $theEdge, $doTags = TRUE )
 	{
 		//
 		// Init results structure.
 		//
 		if( ! is_array( $theCollection ) )
 			$theCollection = array( kAPI_COLLECTION_ID => Array(),
-									kAPI_COLLECTION_PREDICATE => Array(),
-									kAPI_COLLECTION_VERTEX => Array(),
+									kAPI_COLLECTION_TERM => Array(),
+									kAPI_COLLECTION_NODE => Array(),
 									kAPI_COLLECTION_EDGE => Array(),
 									kAPI_COLLECTION_TAG => Array() );
 		
@@ -1311,14 +1302,10 @@ class COntologyWrapper extends CDataWrapper
 								  kTAG_SUBJECT, kTAG_PREDICATE, kTAG_OBJECT );
 				
 				//
-				// Save subject vertex reference.
+				// Handle subject vertex reference.
 				//
 				$export[ kTAG_SUBJECT ] = $theEdge->offsetGet( kTAG_SUBJECT );
-				
-				//
-				// Export subject vertex object.
-				//
-				$this->_ExportVertex( $theCollection, $export[ kTAG_SUBJECT ] );
+				$this->_ExportNode( $theCollection, $export[ kTAG_SUBJECT ], $doTags );
 				
 				//
 				// Resolve predicate.
@@ -1329,24 +1316,16 @@ class COntologyWrapper extends CDataWrapper
 						$theEdge->offsetGet( kTAG_PREDICATE ), NULL, TRUE );
 				
 				//
-				// Save predicate reference.
+				// Handle predicate term reference.
 				//
 				$export[ kTAG_PREDICATE ] = $predicate->offsetGet( kTAG_GID );
+				$this->_ExportTerm( $theCollection, $predicate, $doTags );
 				
 				//
-				// Export predicate object.
-				//
-				$this->_ExportPredicate( $theCollection, $predicate );
-				
-				//
-				// Save object vertex reference.
+				// Handle object vertex reference.
 				//
 				$export[ kTAG_OBJECT ] = $theEdge->offsetGet( kTAG_OBJECT );
-				
-				//
-				// Export object vertex object.
-				//
-				$this->_ExportVertex( $theCollection, $export[ kTAG_OBJECT ] );
+				$this->_ExportNode( $theCollection, $export[ kTAG_OBJECT ], $doTags );
 				
 				//
 				// Copy attributes.
@@ -1378,7 +1357,8 @@ class COntologyWrapper extends CDataWrapper
 				//
 				// Get vertex tags.
 				//
-				$this->_ExportTag( $theCollection, array_keys( $export ) );
+				if( $doTags )
+					$this->_ExportTag( $theCollection, array_keys( $export ) );
 			
 			} // New edge.
 		
@@ -1408,17 +1388,17 @@ class COntologyWrapper extends CDataWrapper
 	 *		<li><tt>{@link kAPI_COLLECTION_ID}</tt>: This element is an array that holds the
 	 *			identifiers list of the requested elements. This element is ignored by this
 	 *			method.
-	 *		<li><tt>{@link kAPI_COLLECTION_PREDICATE}</tt>: This element is an array that
+	 *		<li><tt>{@link kAPI_COLLECTION_TERM}</tt>: This element is an array that
 	 *			holds the list of predicate terms referenced by all other objects in the
 	 *			collection. The array keys will be the term's {@link kTAG_GID} and the value
 	 *			will be the attributes of the term. The contents of this element are fed by
 	 *			the {@link _BuildTerm()} protected method.
-	 *		<li><tt>{@link kAPI_COLLECTION_VERTEX}</tt>: This element is an array that holds
+	 *		<li><tt>{@link kAPI_COLLECTION_NODE}</tt>: This element is an array that holds
 	 *			a list of node vertex. A vertex is the combination of the node attributes
 	 *			merged with the referenced term attributes. The items of this list are
 	 *			indexed by the node {@link kTAG_NID} and eventual term attributes are
 	 *			overwritten by matching node attributes. The contents of this element are
-	 *			fed by the {@link _BuildVertex()} protected method.
+	 *			fed by the {@link _BuildNode()} protected method.
 	 *		<li><tt>{@link kAPI_COLLECTION_EDGE}</tt>: This element is an array that holds
 	 *			a list of edges, the array keys will be the edge's {@link kTAG_GID} and the
 	 *			value will be the edge's attributes. The contents of this element are fed by
@@ -1466,8 +1446,8 @@ class COntologyWrapper extends CDataWrapper
 		//
 		if( ! is_array( $theCollection ) )
 			$theCollection = array( kAPI_COLLECTION_ID => Array(),
-									kAPI_COLLECTION_PREDICATE => Array(),
-									kAPI_COLLECTION_VERTEX => Array(),
+									kAPI_COLLECTION_TERM => Array(),
+									kAPI_COLLECTION_NODE => Array(),
 									kAPI_COLLECTION_EDGE => Array(),
 									kAPI_COLLECTION_TAG => Array() );
 		
@@ -1503,17 +1483,17 @@ class COntologyWrapper extends CDataWrapper
 			if( ! array_key_exists( $id, $theCollection[ kAPI_COLLECTION_TAG ] ) )
 			{
 				//
-				// Init local storage.
-				//
-				$export = Array();
-				$exclude = array( kTAG_NID, kTAG_CLASS, kTAG_UID, kTAG_PATH );
-				
-				//
 				// Resolve tag.
 				//
 				if( ! ($theTag instanceof COntologyTag) )
 					$theTag = COntologyTag::Resolve(
 									$_REQUEST[ kAPI_DATABASE ], $theTag, TRUE );
+				
+				//
+				// Init local storage.
+				//
+				$export = Array();
+				$exclude = array( kTAG_PATH, kTAG_UID, kTAG_CLASS, kTAG_NID );
 				
 				//
 				// Save path.
@@ -1526,34 +1506,17 @@ class COntologyWrapper extends CDataWrapper
 				for( $i = 0; $i < count( $path ); $i++ )
 				{
 					//
-					// Handle predicate.
+					// Resolve path element.
 					//
-					if( $i % 2 )
-					{
-						//
-						// Resolve predicate.
-						//
-						$predicate
-							= COntologyTerm::Resolve(
-								$_REQUEST[ kAPI_DATABASE ], $path[ $i ], NULL, TRUE );
-						
-						//
-						// Set term reference.
-						//
-						$path[ $i ] = $predicate->offsetGet( kTAG_GID );
-						
-						//
-						// Export predicate.
-						//
-						$this->_ExportPredicate( $theCollection, $predicate );
-					
-					} // Predicate term.
+					$term
+						= COntologyTerm::Resolve(
+							$_REQUEST[ kAPI_DATABASE ], $path[ $i ], NULL, TRUE );
 					
 					//
-					// Handle vertex.
+					// Handle term reference.
 					//
-					else
-						$this->_ExportVertex( $theCollection, $path[ $i ], FALSE );
+					$path[ $i ] = $term->offsetGet( kTAG_GID );
+					$this->_ExportTerm( $theCollection, $term );
 				
 				} // Iterating path elements.
 				
@@ -1597,94 +1560,6 @@ class COntologyWrapper extends CDataWrapper
 
 	 
 	/*===================================================================================
-	 *	_BuildVertex																	*
-	 *==================================================================================*/
-
-	/**
-	 * <h4>Build a vertex</h4>
-	 *
-	 * The main duty of this method is to resolve the provided node's references and return
-	 * a single object that merges all its term and node attributes.
-	 *
-	 * The method will return an array containing the merged attributes of the node and
-	 * the referenced term. By default, in case of conflict, the node attributes will
-	 * overwrite the term attributes; in all cases, however, the {@link kTAG_LID} and
-	 * {@link kTAG_GID} will be taken from the term.
-	 *
-	 * We omit the {@link kTAG_CLASS}, {@link kTAG_TERM} (the term's attributes are merged
-	 * with the node's attributes), {@link kTAG_REFS_TAG} and {@link kTAG_EDGES}.
-	 *
-	 * All other attributes will either be included from the referenced term, or will be
-	 * taken by the current node; note that the node attributes will overwrite the term
-	 * attributes.
-	 *
-	 * The method will raise an exception if any element cannot be resolved.
-	 *
-	 * @param mixed					$theNode			Node object.
-	 *
-	 * @access public
-	 * @return array				Vertex object.
-	 */
-	public function _BuildVertex( $theNode )
-	{
-		//
-		// Init local storage.
-		//
-		$exclude = array( kTAG_NID, kTAG_LID, kTAG_GID, kTAG_CLASS,
-						  kTAG_TERM, kTAG_REFS_TAG, kTAG_EDGES );
-		
-		//
-		// Resolve node.
-		//
-		if( ! ($theNode instanceof COntologyNode) )
-			$theNode = COntologyVertex::Resolve( $_REQUEST[ kAPI_DATABASE ],
-												 $theNode, TRUE );
-		
-		//
-		// Handle vertex object.
-		//
-		if( $theNode[ kTAG_CLASS ] == 'COntologyVertex' )
-			return $theNode->getArrayCopy();										// ==>
-		
-		//
-		// Init local storage.
-		//
-		$export = Array();
-		
-		//
-		// Set node identifier.
-		//
-		$export[ kTAG_NID ] = $theNode[ kTAG_NID ];
-
-		//
-		// Export node term.
-		//
-		$term = $this->_BuildTerm( $theNode[ kTAG_TERM ] );
-		
-		//
-		// Load term attributes.
-		//
-		foreach( $term as $key => $value )
-			$export[ $key ] = $value;
-		
-		//
-		// Load node attributes.
-		//
-		foreach( $theNode as $key => $value )
-		{
-			//
-			// Skip excluded.
-			//
-			if( ! in_array( $key, $exclude ) )
-				$export[ $key ] = $value;
-		}
-		
-		return $export;																// ==>
-
-	} // _BuildVertex.
-
-	 
-	/*===================================================================================
 	 *	_BuildTerm																		*
 	 *==================================================================================*/
 
@@ -1715,19 +1590,16 @@ class COntologyWrapper extends CDataWrapper
 	public function _BuildTerm( $theTerm )
 	{
 		//
-		// Init local storage.
-		//
-		$export = Array();
-		$exclude = array( kTAG_NID, kTAG_CLASS, kTAG_TERM,
-						  kTAG_NAMESPACE_REFS, kTAG_NODES, kTAG_REFS_TAG,
-						  kTAG_GID, kTAG_LID, kTAG_NAMESPACE, kTAG_TERM );
-		
-		//
 		// Resolve term.
 		//
 		if( ! ($theTerm instanceof COntologyTerm) )
 			$theTerm = COntologyTerm::Resolve(
 							$_REQUEST[ kAPI_DATABASE ], $theTerm, NULL, TRUE );
+		
+		//
+		// Init local storage.
+		//
+		$export = Array();
 		
 		//
 		// Load default attributes.
@@ -1763,10 +1635,7 @@ class COntologyWrapper extends CDataWrapper
 		//
 		foreach( $theTerm as $key => $value )
 		{
-			//
-			// Skip excluded.
-			//
-			if( ! in_array( $key, $exclude ) )
+			if( ! in_array( $key, array( kTAG_GID, kTAG_LID ) ) )
 				$export[ $key ] = $value;
 		}
 		
@@ -1775,6 +1644,52 @@ class COntologyWrapper extends CDataWrapper
 	} // _BuildTerm.
 
 		
+	/*===================================================================================
+	 *	_BuildNode																		*
+	 *==================================================================================*/
+
+	/**
+	 * <h4>Build a vertex</h4>
+	 *
+	 * The main duty of this method is to resolve the provided node's references and return
+	 * a single object that merges all its term and node attributes.
+	 *
+	 * Since we use a document database to store the graph vertices index, it is better to
+	 * store referenced data in the vertex object, so that it is easier to search.
+	 *
+	 * In this class we therefore return the object as-is, in derived classes we can use
+	 * this method for other purposes.
+	 *
+	 * @param mixed					$theNode			Node object.
+	 *
+	 * @access public
+	 * @return array				Vertex object.
+	 */
+	public function _BuildNode( $theNode )
+	{
+		//
+		// Resolve node.
+		//
+		if( ! ($theNode instanceof COntologyNode) )
+			$theNode = COntologyVertex::Resolve( $_REQUEST[ kAPI_DATABASE ],
+												 $theNode, TRUE );
+		
+		//
+		// Init local storage.
+		//
+		$export = Array();
+		
+		//
+		// Load node attributes.
+		//
+		foreach( $theNode as $key => $value )
+			$export[ $key ] = $value;
+		
+		return $export;																// ==>
+
+	} // _BuildNode.
+
+	 
 
 /*=======================================================================================
  *																						*
@@ -1848,7 +1763,7 @@ class COntologyWrapper extends CDataWrapper
 				//
 				// Build and store vertex identifier.
 				//
-				$this->_ExportVertex( $results, $object );
+				$this->_ExportNode( $results, $object );
 				$results[ kAPI_COLLECTION_ID ][] = $id;
 			}
 			

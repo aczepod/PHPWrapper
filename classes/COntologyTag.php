@@ -1085,9 +1085,8 @@ class COntologyTag extends CTag
 	 *
 	 * This method can be used to add or remove the current tag's reference from the
 	 * provided term. This method should be used whenever committing a new tag or when
-	 * deleting one: it will update the term's {@link kTAG_REFS_TAG} for terms used as
-	 * predicates, the {@link kTAG_FEATURES} for terms used as features or traits,
-	 * the {@link kTAG_METHODS} for terms used as methods and the
+	 * deleting one: it will update the {@link kTAG_FEATURES} for terms used as features or
+	 * traits, the {@link kTAG_METHODS} for terms used as methods and the
 	 * {@link kTAG_SCALES} for terms used as scales or units, the method will add
 	 * the corresponding reference when inserting a new tag and remove it when deleting the
 	 * tag.
@@ -1113,7 +1112,7 @@ class COntologyTag extends CTag
 	 * @access protected
 	 * @return boolean				<tt>TRUE</tt> operation affected at least one object.
 	 *
-	 * @see kTAG_NID kTAG_REFS_TAG
+	 * @see kTAG_NID
 	 * @see kTAG_FEATURES kTAG_METHODS kTAG_SCALES
 	 * @see kFLAG_PERSIST_MODIFY kFLAG_MODIFY_ADDSET kFLAG_MODIFY_PULL
 	 */

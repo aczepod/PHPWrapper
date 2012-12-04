@@ -5,6 +5,9 @@
     <!-- kTERM_ONTOLOGY -->
     <node kTAG_GID=":ONTOLOGY">
 		<kTAG_CLASS>COntologyMasterVertex</kTAG_CLASS>
+		<kTAG_KIND>
+            <item>:KIND-ROOT</item>
+        </kTAG_KIND>
         <kTAG_DESCRIPTION  language="en"><![CDATA[This represents the <i>default
         	ontology</i>, it defines all the elements that are used to build the ontology
         	itself.

@@ -87,7 +87,7 @@
 		<kTAG_CLASS>COntologyMasterVertex</kTAG_CLASS>
 		<kTAG_KIND>
             <item>:KIND-ENUMERATION</item>
-            <item>:kKIND_TERM_SYMMETRIC</item>
+            <item>:kKIND_SYMMETRIC</item>
         </kTAG_KIND>
 	</node>
 </nodes>

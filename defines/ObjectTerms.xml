@@ -15,7 +15,7 @@
     
     <!-- Terms -->
     <term kTAG_LID="_terms" kTAG_NAMESPACE="">
-        <kTAG_LABEL language="en">Terms</kTAG_LABEL>
+        <kTAG_LABEL language="en">Term objects</kTAG_LABEL>
         <kTAG_DEFINITION language="en"><![CDATA[An ontology term represents a <i>concept
         	unrelated to a context</i>. As a <i>vocabulary</i> word changes its meaning
         	depending on its position in a sentence, the same term may be used in different
@@ -28,7 +28,7 @@
     
     <!-- Nodes -->
     <term kTAG_LID="_nodes" kTAG_NAMESPACE="">
-        <kTAG_LABEL language="en">Nodes</kTAG_LABEL>
+        <kTAG_LABEL language="en">Node objects</kTAG_LABEL>
         <kTAG_DEFINITION language="en"><![CDATA[An ontology node is essentially an
         	<i>ontology term in context</i>. Nodes are the <i>vertices of the ontology</i>
         	graph and are <i>connected by relationships</i>.
@@ -38,7 +38,7 @@
     
     <!-- Edges -->
     <term kTAG_LID="_edges" kTAG_NAMESPACE="">
-        <kTAG_LABEL language="en">Nodes</kTAG_LABEL>
+        <kTAG_LABEL language="en">Edge objects</kTAG_LABEL>
         <kTAG_DEFINITION language="en"><![CDATA[An ontology edge <i>relates ontology
         	nodes</i> via a predicate. Edges are represented by a triplet: <i>subject</i>,
         	<i>predicate</i> and <i>object</i>, in which the subject and the object are
@@ -49,7 +49,7 @@
     
     <!-- Tags -->
     <term kTAG_LID="_tags" kTAG_NAMESPACE="">
-        <kTAG_LABEL language="en">Nodes</kTAG_LABEL>
+        <kTAG_LABEL language="en">Tag objects</kTAG_LABEL>
         <kTAG_DEFINITION language="en"><![CDATA[An ontology tag represents the <i>path</i>
         	between an <i>ontology feature vertex</i> and an <i>ontology scale vertex</i>.
         	Tags record the terms referenced by the vertices and the predicates that relate

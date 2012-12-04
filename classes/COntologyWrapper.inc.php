@@ -87,14 +87,14 @@ define( "kAPI_COLLECTION_ID",					'_ids' );
  *
  * This offset tags the element that holds the list of referenced predicate items.
  */
-define( "kAPI_COLLECTION_PREDICATE",			'_predicate' );
+define( "kAPI_COLLECTION_TERM",					'_term' );
 
 /**
  * Vertex elements.
  *
  * This offset tags the element that holds the list of referenced vertex items.
  */
-define( "kAPI_COLLECTION_VERTEX",				'_vertex' );
+define( "kAPI_COLLECTION_NODE",					'_node' );
 
 /**
  * Edge elements.

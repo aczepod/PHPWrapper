@@ -14,7 +14,7 @@
 
 /*=======================================================================================
  *																						*
- *									LoadOntologies.php									*
+ *								LoadOntologies.test.php									*
  *																						*
  *======================================================================================*/
 
@@ -32,21 +32,6 @@ require_once( 'local.inc.php' );
 // Class includes.
 //
 require_once( kPATH_MYWRAPPER_LIBRARY_CLASS."/COntology.php" );
-
-//
-// ISO codes.
-//
-require_once( 'ISOCodes.php' );
-
-//
-// ISO ontologies.
-//
-require_once( 'ISOOntologies.php' );
-
-//
-// Landrace ontology.
-//
-require_once( 'LandracesPassport.php' );
 
 //
 // Start session.
@@ -67,9 +52,6 @@ echo( "\n==> Ontology creation procedure.\n" );
 // Init local storage.
 //
 $start = time();
-$list = array( 'TERMS', 'NODES', 'TAGS' );
-foreach( $list as $item )
-	$_SESSION[ $item ] = Array();
 
 //
 // TRY BLOCK.
@@ -77,45 +59,9 @@ foreach( $list as $item )
 try
 {
 	//
-	// Initialise connections.
+	// Initialise connections and ontology.
 	//
 	Init();
-	
-	echo( "  • Loading ISO standards.\n" );
-	
-	//
-	// Load ISO standards.
-	//
-	LoadISOOntologies();
-	LoadISOStandards();
-	LoadISO639Categories();
-	LoadISO639Enums();
-	LoadISO3166Categories();
-	LoadISO4217Categories();
-	
-	echo( "  • Loading ISO codes.\n" );
-	
-	//
-	// Load ISO codes.
-	//
-	ISODecodePOFiles();
-	ISOParseXMLFiles();
-	
-	echo( "  • Loading landraces passport ontology.\n" );
-	
-	//
-	// Load landrace passport ontology.
-	//
-	LoadLandraceOntology();
-	LoadLandraceCategories();
-	LoadLandraceInventoryTraits();
-	LoadLandraceTaxonomyTraits();
-	LoadLandraceIdentificationTraits();
-	LoadLandraceSiteTraits();
-	LoadLandraceMaintainerTraits();
-	LoadLandraceLandraceTraits();
-	LoadLandraceMonitoringTraits();
-	LoadLandraceRemarkTraits();
 
 	echo( "\nTime elapsed: ".(time() - $start)."\n" );
 }

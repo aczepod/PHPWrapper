@@ -14,7 +14,7 @@
 
 /*=======================================================================================
  *																						*
- *								LoadOntologies.test.php									*
+ *									LoadOntologies.php									*
  *																						*
  *======================================================================================*/
 
@@ -32,6 +32,21 @@ require_once( 'local.inc.php' );
 // Class includes.
 //
 require_once( kPATH_MYWRAPPER_LIBRARY_CLASS."/COntology.php" );
+
+//
+// ISO codes.
+//
+require_once( 'ISOCodes.php' );
+
+//
+// ISO ontologies.
+//
+require_once( 'ISOOntologies.php' );
+
+//
+// Landrace ontology.
+//
+require_once( 'LandracesPassport.php' );
 
 //
 // Start session.
@@ -52,6 +67,9 @@ echo( "\n==> Ontology creation procedure.\n" );
 // Init local storage.
 //
 $start = time();
+$list = array( 'TERMS', 'NODES', 'TAGS' );
+foreach( $list as $item )
+	$_SESSION[ $item ] = Array();
 
 //
 // TRY BLOCK.
@@ -59,10 +77,9 @@ $start = time();
 try
 {
 	//
-	// Initialise connections and ontology.
+	// Initialise connections.
 	//
 	Init();
-exit;
 	
 	echo( "  • Loading ISO standards.\n" );
 	

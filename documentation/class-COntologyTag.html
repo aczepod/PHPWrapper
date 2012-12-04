@@ -6,7 +6,7 @@
 
 	<title>Class COntologyTag | MyWrapper Reference Documentation</title>
 
-	<script type="text/javascript" src="resources/combined.js?1742645618"></script>
+	<script type="text/javascript" src="resources/combined.js?3680114562"></script>
 	<script type="text/javascript" src="elementlist.js?571949357"></script>
 	<link rel="stylesheet" type="text/css" media="all" href="resources/style.css?3505392360" />
 
@@ -244,7 +244,7 @@ given a database, will return the default tag container; it will use the kCONTAI
 				<b>Author:</b>
 				Milko A. Škofič &lt;<a
 href="mailto:m.skofic&#64;cgiar.org">m.skofic&#64;<!---->cgiar.org</a>&gt;<br />
-		<b>Located at</b> <a href="source-class-COntologyTag.html#43-1152" title="Go to source code">COntologyTag.php</a><br />
+		<b>Located at</b> <a href="source-class-COntologyTag.html#43-1151" title="Go to source code">COntologyTag.php</a><br />
 	</div>
 
 
@@ -1035,7 +1035,7 @@ remove it.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#__ReferenceInTerm">#</a>
-		<code><a href="source-class-COntologyTag.html#1083-1148" title="Go to source code">_ReferenceInTerm</a>( <span><code><a href="class-CConnection.html">CConnection</a></code> <var>$theConnection</var></span>, <span>mixed <var>$theTerm</var></span>, <span>string <var>$theTag</var></span>, <span>boolean <var>$doAdd</var></span> )</code>
+		<code><a href="source-class-COntologyTag.html#1083-1147" title="Go to source code">_ReferenceInTerm</a>( <span><code><a href="class-CConnection.html">CConnection</a></code> <var>$theConnection</var></span>, <span>mixed <var>$theTerm</var></span>, <span>string <var>$theTag</var></span>, <span>boolean <var>$doAdd</var></span> )</code>
 
 		<div class="description short">
 			
@@ -1049,11 +1049,11 @@ remove it.</p>
 
 <p>This method can be used to add or remove the current tag's reference from the
 provided term. This method should be used whenever committing a new tag or when
-deleting one: it will update the term's kTAG_REFS_TAG for terms used as
-predicates, the kTAG_FEATURES for terms used as features or traits, the
-kTAG_METHODS for terms used as methods and the kTAG_SCALES for
-terms used as scales or units, the method will add the corresponding reference
-when inserting a new tag and remove it when deleting the tag.</p>
+deleting one: it will update the kTAG_FEATURES for terms used as
+features or traits, the kTAG_METHODS for terms used as methods and the
+kTAG_SCALES for terms used as scales or units, the method will add the
+corresponding reference when inserting a new tag and remove it when deleting the
+tag.</p>
 
 <ul>
 	<li><tt>$theConnection</tt>: Server, database or container in which the terms
@@ -1095,7 +1095,7 @@ failed.</p>
 
 				<h4>See</h4>
 				<div class="list">
-						kTAG_NID kTAG_REFS_TAG<br />
+						kTAG_NID<br />
 						kTAG_FEATURES kTAG_METHODS kTAG_SCALES<br />
 						kFLAG_PERSIST_MODIFY kFLAG_MODIFY_ADDSET kFLAG_MODIFY_PULL<br />
 				</div>

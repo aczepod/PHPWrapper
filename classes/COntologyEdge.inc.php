@@ -27,7 +27,7 @@
  *
  * This tag identifies the default name for the container that will host edge objects.
  */
-define( "kCONTAINER_EDGE_NAME",					'_edges' );
+define( "kCONTAINER_EDGE_NAME",					':_edges' );
 
 /*=======================================================================================
  *	DEFAULT SEQUENCE KEY																*
