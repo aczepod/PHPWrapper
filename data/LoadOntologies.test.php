@@ -59,7 +59,7 @@ $start = time();
 try
 {
 	//
-	// Initialise connections.
+	// Initialise connections and ontology.
 	//
 	Init();
 exit;

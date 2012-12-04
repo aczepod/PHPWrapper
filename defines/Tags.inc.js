@@ -1,8 +1,6 @@
-<?php
-
 /*=======================================================================================
  *																						*
- *									Tags.inc.php										*
+ *									Tags.inc.js											*
  *																						*
  *======================================================================================*/
  
@@ -172,7 +170,7 @@
  *
  * Version 1: (kOFFSET_NID)[_id]
  */
-define( "kTAG_NID",								'_id' );
+var kTAG_NID								'_id';
 
 /**
  * LID.
@@ -185,7 +183,7 @@ define( "kTAG_NID",								'_id' );
  *
  * Version 1: (kTAG_LID)[1]
  */
-define( "kTAG_LID",								'1' );
+var kTAG_LID								'1';
 
 /**
  * GID.
@@ -199,7 +197,7 @@ define( "kTAG_LID",								'1' );
  *
  * Version 1: (kTAG_GID)[2]
  */
-define( "kTAG_GID",								'2' );
+var kTAG_GID								'2';
 
 /**
  * UID.
@@ -212,7 +210,7 @@ define( "kTAG_GID",								'2' );
  *
  * Version 1: (kTAG_UID)[21]
  */
-define( "kTAG_UID",								'3' );
+var kTAG_UID								'3';
 
 /**
  * SYNONYMS.
@@ -224,7 +222,7 @@ define( "kTAG_UID",								'3' );
  *
  * Version 1: (kTAG_SYNONYMS)[7]
  */
-define( "kTAG_SYNONYMS",						'4' );
+var kTAG_SYNONYMS							'4';
 
 /*=======================================================================================
  *	CLASSIFICATION ATTRIBUTES															*
@@ -240,7 +238,7 @@ define( "kTAG_SYNONYMS",						'4' );
  *
  * Version 1: (kTAG_CATEGORY)[12]
  */
-define( "kTAG_CATEGORY",						'5' );
+var kTAG_CATEGORY							'5';
 
 /**
  * KIND.
@@ -251,7 +249,7 @@ define( "kTAG_CATEGORY",						'5' );
  *
  * Version 1: (kTAG_KIND)[13]
  */
-define( "kTAG_KIND",							'6' );
+var kTAG_KIND								'6';
 
 /**
  * TYPE.
@@ -263,7 +261,7 @@ define( "kTAG_KIND",							'6' );
  *
  * Version 1: (kTAG_TYPE)[14]
  */
-define( "kTAG_TYPE",							'7' );
+var kTAG_TYPE								'7';
 
 /**
  * CLASS.
@@ -276,7 +274,7 @@ define( "kTAG_TYPE",							'7' );
  *
  * Version 1: (kTAG_CLASS)[4]
  */
-define( "kTAG_CLASS",							'8' );
+var kTAG_CLASS								'8';
 
 /**
  * NAMESPACE.
@@ -288,7 +286,7 @@ define( "kTAG_CLASS",							'8' );
  *
  * Version 1: (kTAG_NAMESPACE)[3]
  */
-define( "kTAG_NAMESPACE",						'9' );
+var kTAG_NAMESPACE							'9';
 
 /*=======================================================================================
  *	DESCRIPTION ATTRIBUTES																*
@@ -305,7 +303,7 @@ define( "kTAG_NAMESPACE",						'9' );
  *
  * Version 1: (kTAG_LABEL)[5]
  */
-define( "kTAG_LABEL",							'10' );
+var kTAG_LABEL								'10';
 
 /**
  * DEFINITION.
@@ -318,7 +316,7 @@ define( "kTAG_LABEL",							'10' );
  *
  * Version 1: (kTAG_DEFINITION)[??]
  */
-define( "kTAG_DEFINITION",						'11' );
+var kTAG_DEFINITION							'11';
 
 /**
  * DESCRIPTION.
@@ -331,7 +329,7 @@ define( "kTAG_DEFINITION",						'11' );
  *
  * Version 1: (kTAG_DESCRIPTION)[6]
  */
-define( "kTAG_DESCRIPTION",						'12' );
+var kTAG_DESCRIPTION						'12';
 
 /**
  * NOTES.
@@ -344,7 +342,7 @@ define( "kTAG_DESCRIPTION",						'12' );
  *
  * Version 1: (kTAG_NOTES)[25]
  */
-define( "kTAG_NOTES",							'13' );
+var kTAG_NOTES								'13';
 
 /**
  * EXAMPLES.
@@ -356,7 +354,7 @@ define( "kTAG_NOTES",							'13' );
  *
  * Version 1: (kTAG_EXAMPLES)[28]
  */
-define( "kTAG_EXAMPLES",						'14' );
+var kTAG_EXAMPLES							'14';
 
 /*=======================================================================================
  *	AUTHORSHIP ATTRIBUTES																*
@@ -371,7 +369,7 @@ define( "kTAG_EXAMPLES",						'14' );
  *
  * Version 1: (kTAG_AUTHORS)[24]
  */
-define( "kTAG_AUTHORS",							'15' );
+var kTAG_AUTHORS							'15';
 
 /**
  * ACKNOWLEDGMENTS.
@@ -382,7 +380,7 @@ define( "kTAG_AUTHORS",							'15' );
  *
  * Version 1: (kTAG_ACKNOWLEDGMENTS)[26]
  */
-define( "kTAG_ACKNOWLEDGMENTS",					'16' );
+var kTAG_ACKNOWLEDGMENTS					'16';
 
 /**
  * BIBLIOGRAPHY.
@@ -393,7 +391,7 @@ define( "kTAG_ACKNOWLEDGMENTS",					'16' );
  *
  * Version 1: (kTAG_BIBLIOGRAPHY)[27]
  */
-define( "kTAG_BIBLIOGRAPHY",					'17' );
+var kTAG_BIBLIOGRAPHY						'17';
 
 /*=======================================================================================
  *	REFERENCE ATTRIBUTES																*
@@ -409,7 +407,7 @@ define( "kTAG_BIBLIOGRAPHY",					'17' );
  *
  * Version 1: (kTAG_TERM)[8]
  */
-define( "kTAG_TERM",							'18' );
+var kTAG_TERM								'18';
 
 /**
  * NODE.
@@ -421,7 +419,7 @@ define( "kTAG_TERM",							'18' );
  *
  * Version 1: (kTAG_NODE)[??]
  */
-define( "kTAG_NODE",							'19' );
+var kTAG_NODE								'19';
 
 /**
  * SUBJECT.
@@ -433,7 +431,7 @@ define( "kTAG_NODE",							'19' );
  *
  * Version 1: (kTAG_VERTEX_SUBJECT)[18]
  */
-define( "kTAG_SUBJECT",							'20' );
+var kTAG_SUBJECT							'20';
 
 /**
  * kTAG_OBJECT.
@@ -445,7 +443,7 @@ define( "kTAG_SUBJECT",							'20' );
  *
  * Version 1: (kTAG_VERTEX_OBJECT)[20]
  */
-define( "kTAG_OBJECT",							'21' );
+var kTAG_OBJECT								'21';
 
 /**
  * PREDICATE.
@@ -457,7 +455,7 @@ define( "kTAG_OBJECT",							'21' );
  *
  * Version 1: (kTAG_PREDICATE)[19]
  */
-define( "kTAG_PREDICATE",						'22' );
+var kTAG_PREDICATE							'22';
 
 /**
  * PATH.
@@ -470,7 +468,7 @@ define( "kTAG_PREDICATE",						'22' );
  *
  * Version 1: (kTAG_TAG_PATH)[22]
  */
-define( "kTAG_PATH",							'23' );
+var kTAG_PATH								'23';
 
 /*=======================================================================================
  *	REFERENCE COLLECTIONS																*
@@ -486,7 +484,7 @@ define( "kTAG_PATH",							'23' );
  *
  * Version 1: (kTAG_REFS_NAMESPACE)[9]
  */
-define( "kTAG_NAMESPACE_REFS",					'24' );
+var kTAG_NAMESPACE_REFS						'24';
 
 /**
  * NODES.
@@ -498,7 +496,7 @@ define( "kTAG_NAMESPACE_REFS",					'24' );
  *
  * Version 1: (kTAG_REFS_NODE)[10]
  */
-define( "kTAG_NODES",							'25' );
+var kTAG_NODES								'25';
 
 /**
  * EDGES.
@@ -510,7 +508,7 @@ define( "kTAG_NODES",							'25' );
  *
  * Version 1: (kTAG_REFS_EDGE)[17]
  */
-define( "kTAG_EDGES",							'26' );
+var kTAG_EDGES								'26';
 
 /**
  * FEATURES.
@@ -522,7 +520,7 @@ define( "kTAG_EDGES",							'26' );
  *
  * Version 1: (kTAG_REFS_TAG_FEATURE)[15]
  */
-define( "kTAG_FEATURES",						'27' );
+var kTAG_FEATURES							'27';
 
 /**
  * METHODS.
@@ -534,7 +532,7 @@ define( "kTAG_FEATURES",						'27' );
  *
  * Version 1: (kTAG_REFS_TAG_METHOD)[??]
  */
-define( "kTAG_METHODS",							'28' );
+var kTAG_METHODS							'28';
 
 /**
  * SCALES.
@@ -546,7 +544,7 @@ define( "kTAG_METHODS",							'28' );
  *
  * Version 1: (kTAG_REFS_TAG_SCALE)[16]
  */
-define( "kTAG_SCALES",							'29' );
+var kTAG_SCALES								'29';
 
 /*=======================================================================================
  *	CUSTOM TYPE SUB ATTRIBUTES															*
@@ -563,7 +561,7 @@ define( "kTAG_SCALES",							'29' );
  *
  * Version 1: (kTAG_CUSTOM_TYPE)[type]
  */
-define( "kTAG_CUSTOM_TYPE",						'type' );
+var kTAG_CUSTOM_TYPE						'type';
 
 /**
  * data.
@@ -576,7 +574,7 @@ define( "kTAG_CUSTOM_TYPE",						'type' );
  *
  * Version 1: (kTAG_CUSTOM_DATA)[data]
  */
-define( "kTAG_CUSTOM_DATA",						'data' );
+var kTAG_CUSTOM_DATA						'data';
 
 /*=======================================================================================
  *	CUSTOM TIMESTAMP SUB-ATTRIBUTES														*
@@ -591,7 +589,7 @@ define( "kTAG_CUSTOM_DATA",						'data' );
  *
  * Version 1: (kTYPE_STAMP_SEC)[sec]
  */
-define( "kTAG_STAMP_SEC",						'sec' );
+var kTAG_STAMP_SEC							'sec';
 
 /**
  * usec.
@@ -602,7 +600,4 @@ define( "kTAG_STAMP_SEC",						'sec' );
  *
  * Version 1: (kTYPE_STAMP_USEC)[usec]
  */
-define( "kTAG_STAMP_USEC",						'usec' );
-
-
-?>
+var kTAG_STAMP_USEC							'usec';

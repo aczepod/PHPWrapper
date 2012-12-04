@@ -448,6 +448,11 @@ class COntology extends CConnection
 			//
 			$this->_InitVertices();
 			
+			//
+			// Initialise tags.
+			//
+			$this->_InitTags();
+			
 			return;																	// ==>
 		
 		} // Object is ready.
@@ -874,6 +879,68 @@ class COntology extends CConnection
 		} // Iterating files.
 
 	} // _InitVertices.
+
+	 
+	/*===================================================================================
+	 *	_InitTags																		*
+	 *==================================================================================*/
+
+	/**
+	 * <h4>Initialise tags</h4>
+	 *
+	 * This method will load all default tags, it will read the tag definitions from the
+	 * files placed in the library definitions directory.
+	 *
+	 * @access protected
+	 *
+	 * @throws Exception
+	 */
+	protected function _InitTags()
+	{
+		//
+		// Get database.
+		//
+		$db = $this->GetDatabase();
+		if( ! ($db instanceof CDatabase) )
+			throw new Exception
+				( "Unable to retrieve database connection",
+				  kERROR_STATE );												// !@! ==>
+		
+		//
+		// Init local storage.
+		//
+		$files = array( 'AttributeTags' );
+		
+		//
+		// Iterate files.
+		//
+		foreach( $files as $file )
+		{
+			//
+			// Load XML file.
+			//
+			$xml = simplexml_load_file( kPATH_MYWRAPPER_LIBRARY_DEFINE."/$file.xml" );
+			
+			//
+			// Iterate edges.
+			//
+			foreach( $xml->tag as $element )
+			{
+				//
+				// Instantiate edge.
+				//
+				$tag = new COntologyTag();
+				
+				//
+				// Parse edge.
+				//
+				$this->_ParseTag( $db, $element, $tag );
+			
+			} // Iterating edges.
+		
+		} // Iterating files.
+
+	} // _InitTags.
 
 		
 
@@ -1393,6 +1460,75 @@ class COntology extends CConnection
 		} // Iterating edges.
 
 	} // _ParseVertex.
+
+	 
+	/*===================================================================================
+	 *	_ParseTag																		*
+	 *==================================================================================*/
+
+	/**
+	 * <h4>Parse the provided tag</h4>
+	 *
+	 * This method will parse the provided XML tag and fill the provided ontology tag.
+	 *
+	 * @param CDatabase				$theDatabase		Database container.
+	 * @param SimpleXMLElement		$theElement			XML element with term data.
+	 * @param COntologyNode			$theTag				Receives tag data.
+	 *
+	 * @access protected
+	 *
+	 * @throws Exception
+	 */
+	protected function _ParseTag( CDatabase			$theDatabase,
+								  SimpleXMLElement	$theElement,
+								  COntologyTag		$theTag )
+	{
+		//
+		// Load term global identifier.
+		//
+		if( $theElement[ 'var' ] !== NULL )
+		{
+			//
+			// Display.
+			//
+			echo( (string) $theElement[ 'var' ] );
+			
+			//
+			// Iterate path.
+			//
+			foreach( $theElement->{'kTAG_PATH'}->{'item'} as $item )
+			{
+				//
+				// Resolve term.
+				//
+				$term = COntologyTerm::Resolve(
+							$theDatabase, (string) $item, NULL, TRUE );
+				
+				//
+				// Add to path.
+				//
+				$theTag->PushItem( $term );
+			
+			} // Iterating path items.
+			
+			//
+			// Save tag.
+			//
+			$id = $theTag->Insert( $theDatabase );
+			
+			//
+			// Display.
+			//
+			echo( " = $id\n" );
+		
+		} // Has global identifier.
+		
+		else
+			throw new Exception
+				( "Tag is missing its symbol",
+				  kERROR_STATE );											// !@! ==>
+
+	} // _ParseTag.
 
 	 
 
