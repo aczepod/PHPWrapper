@@ -9,7 +9,7 @@
 			<kTAG_LABEL language="en">International Organization for Standardization</kTAG_LABEL>
 			<kTAG_LABEL language="fr">Organisation internationale de normalisation</kTAG_LABEL>
 			<kTAG_LABEL language="ru">Международная организация по стандартизации</kTAG_LABEL>
-			<kTAG_DESCRIPTION language="en">Collection of industrial and commercial standards and codes.</kTAG_DESCRIPTION>
+			<kTAG_DEFINITION language="en">Collection of industrial and commercial standards and codes.</kTAG_DEFINITION>
     	</term>
     	<node>
 			<kTAG_CLASS>COntologyMasterVertex</kTAG_CLASS>
@@ -21,14 +21,14 @@
     
     <!-- ISO STANDARDS -->
     
-    <!-- 639 -->
+    <!-- ISO:639 -->
     <unit>
     	<term kTAG_LID="639" kTAG_NAMESPACE="ISO">
 			<kTAG_KIND>
 				<item>:KIND-NAMESPACE</item>
 			</kTAG_KIND>
 			<kTAG_LABEL language="en">International Standard for language codes</kTAG_LABEL>
-			<kTAG_DESCRIPTION language="en">The purpose of ISO 639 is to establish internationally recognised codes (either 2, 3, or 4 letters long) for the representation of languages or language families.</kTAG_DESCRIPTION>
+			<kTAG_DEFINITION language="en">The purpose of ISO 639 is to establish internationally recognised codes (either 2, 3, or 4 letters long) for the representation of languages or language families.</kTAG_DEFINITION>
     	</term>
     	<node>
 			<kTAG_CLASS>COntologyMasterVertex</kTAG_CLASS>
@@ -41,14 +41,14 @@
         </edges>
     </unit>
     
-    <!-- 3166 -->
+    <!-- ISO:3166 -->
     <unit>
     	<term kTAG_LID="3166" kTAG_NAMESPACE="ISO">
 			<kTAG_KIND>
 				<item>:KIND-NAMESPACE</item>
 			</kTAG_KIND>
 			<kTAG_LABEL language="en">International Standard of codes for the representation of names of countries and their subdivisions</kTAG_LABEL>
-			<kTAG_DESCRIPTION language="en">The purpose of ISO 3166 is to define codes for the names of countries, dependent territories, special areas of geographical interest, and their principal subdivisions (e.g., provinces or states).</kTAG_DESCRIPTION>
+			<kTAG_DEFINITION language="en">The purpose of ISO 3166 is to define codes for the names of countries, dependent territories, special areas of geographical interest, and their principal subdivisions (e.g., provinces or states).</kTAG_DEFINITION>
     	</term>
     	<node>
 			<kTAG_CLASS>COntologyMasterVertex</kTAG_CLASS>
@@ -61,14 +61,14 @@
         </edges>
     </unit>
     
-    <!-- 4217 -->
+    <!-- ISO:4217 -->
     <unit>
     	<term kTAG_LID="4217" kTAG_NAMESPACE="ISO">
 			<kTAG_KIND>
 				<item>:KIND-NAMESPACE</item>
 			</kTAG_KIND>
 			<kTAG_LABEL language="en">International Standard for currency codes</kTAG_LABEL>
-			<kTAG_DESCRIPTION language="en">The purpose of ISO 4217 is to establish internationally recognised codes for the representation of currencies. Currencies can be represented in the code in two ways: a three-letter alphabetic code and a three-digit numeric code.</kTAG_DESCRIPTION>
+			<kTAG_DEFINITION language="en">The purpose of ISO 4217 is to establish internationally recognised codes for the representation of currencies. Currencies can be represented in the code in two ways: a three-letter alphabetic code and a three-digit numeric code.</kTAG_DEFINITION>
     	</term>
     	<node>
 			<kTAG_CLASS>COntologyMasterVertex</kTAG_CLASS>
@@ -77,6 +77,645 @@
 			<edge>
 				<kTAG_PREDICATE>:SUBCLASS-OF</kTAG_PREDICATE>
 				<kTAG_OBJECT>ISO</kTAG_OBJECT>
+			</edge>
+        </edges>
+    </unit>
+    
+    <!-- ISO 639 CATEGORIES -->
+    
+    <!-- ISO:639:1 -->
+    <unit>
+    	<term kTAG_LID="1" kTAG_NAMESPACE="ISO:639">
+			<kTAG_LABEL language="en">Part 1</kTAG_LABEL>
+			<kTAG_DEFINITION language="en">Alpha-2 code.</kTAG_DEFINITION>
+    	</term>
+    	<node>
+			<kTAG_CLASS>COntologyMasterVertex</kTAG_CLASS>
+			<kTAG_KIND>
+				<item>:KIND-FEATURE</item>
+				<item>:KIND-SCALE</item>
+			</kTAG_KIND>
+			<kTAG_TYPE>
+				<item>:ENUM</item>
+			</kTAG_TYPE>
+    	</node>
+    	<tag />
+        <edges>
+			<edge>
+				<kTAG_PREDICATE>:SUBCLASS-OF</kTAG_PREDICATE>
+				<kTAG_OBJECT>ISO:639</kTAG_OBJECT>
+			</edge>
+        </edges>
+    </unit>
+    
+    <!-- ISO:639:2 -->
+    <unit>
+    	<term kTAG_LID="2" kTAG_NAMESPACE="ISO:639">
+			<kTAG_LABEL language="en">Part 2</kTAG_LABEL>
+			<kTAG_DEFINITION language="en">Alpha-3 code.</kTAG_DEFINITION>
+    	</term>
+    	<node>
+			<kTAG_CLASS>COntologyMasterVertex</kTAG_CLASS>
+    	</node>
+        <edges>
+			<edge>
+				<kTAG_PREDICATE>:SUBCLASS-OF</kTAG_PREDICATE>
+				<kTAG_OBJECT>ISO:639</kTAG_OBJECT>
+			</edge>
+        </edges>
+    </unit>
+    
+    <!-- ISO:639:2T -->
+    <unit>
+    	<term kTAG_LID="2T" kTAG_NAMESPACE="ISO:639">
+			<kTAG_KIND>
+				<item>:KIND-NAMESPACE</item>
+			</kTAG_KIND>
+			<kTAG_LABEL language="en">Terminological code</kTAG_LABEL>
+			<kTAG_DEFINITION language="en">While most languages are given one code by the standard, twenty of the languages described have two three-letter codes, the “terminological” code (ISO 639-2/T), is derived from the native name for the language.</kTAG_DEFINITION>
+    	</term>
+    	<node>
+			<kTAG_CLASS>COntologyMasterVertex</kTAG_CLASS>
+    	</node>
+        <edges>
+			<edge>
+				<kTAG_PREDICATE>:SUBCLASS-OF</kTAG_PREDICATE>
+				<kTAG_OBJECT>ISO:639</kTAG_OBJECT>
+			</edge>
+        </edges>
+    </unit>
+    
+    <!-- ISO:639:2B -->
+    <unit>
+    	<term kTAG_LID="2B" kTAG_NAMESPACE="ISO:639">
+			<kTAG_KIND>
+				<item>:KIND-NAMESPACE</item>
+			</kTAG_KIND>
+			<kTAG_LABEL language="en">Bibliographic code</kTAG_LABEL>
+			<kTAG_DEFINITION language="en">While most languages are given one code by the standard, twenty of the languages described have two three-letter codes, the “bibliographic” code (ISO 639-2/B), is derived from the English name for the language and was a necessary legacy feature.</kTAG_DEFINITION>
+    	</term>
+    	<node>
+			<kTAG_CLASS>COntologyMasterVertex</kTAG_CLASS>
+    	</node>
+        <edges>
+			<edge>
+				<kTAG_PREDICATE>:SUBCLASS-OF</kTAG_PREDICATE>
+				<kTAG_OBJECT>ISO:639</kTAG_OBJECT>
+			</edge>
+        </edges>
+    </unit>
+    
+    <!-- ISO:639:3 -->
+    <unit>
+    	<term kTAG_LID="3" kTAG_NAMESPACE="ISO:639">
+			<kTAG_KIND>
+				<item>:KIND-NAMESPACE</item>
+			</kTAG_KIND>
+			<kTAG_LABEL language="en">Part 3</kTAG_LABEL>
+			<kTAG_DEFINITION language="en">Alpha-3 code for comprehensive coverage of languages.</kTAG_DEFINITION>
+    	</term>
+    	<node>
+			<kTAG_CLASS>COntologyMasterVertex</kTAG_CLASS>
+    	</node>
+        <edges>
+			<edge>
+				<kTAG_PREDICATE>:SUBCLASS-OF</kTAG_PREDICATE>
+				<kTAG_OBJECT>ISO:639</kTAG_OBJECT>
+			</edge>
+        </edges>
+    </unit>
+    
+    <!-- ISO 639 ATTRIBUTES -->
+    
+    <!-- ISO:639:scope -->
+    <unit>
+    	<term kTAG_LID="scope" kTAG_NAMESPACE="ISO:639">
+			<kTAG_LABEL language="en">Scope</kTAG_LABEL>
+			<kTAG_DEFINITION language="en">Scope of denotation for language identifiers.</kTAG_DEFINITION>
+    	</term>
+    	<node>
+			<kTAG_CLASS>COntologyMasterVertex</kTAG_CLASS>
+			<kTAG_KIND>
+				<item>:KIND-FEATURE</item>
+				<item>:KIND-SCALE</item>
+			</kTAG_KIND>
+			<kTAG_TYPE>
+				<item>:ENUM</item>
+			</kTAG_TYPE>
+    	</node>
+        <tag />
+        <edges>
+			<edge>
+				<kTAG_PREDICATE>:SUBCLASS-OF</kTAG_PREDICATE>
+				<kTAG_OBJECT>ISO:639</kTAG_OBJECT>
+			</edge>
+        </edges>
+    </unit>
+    
+    <!-- ISO:639:type -->
+    <unit>
+    	<term kTAG_LID="type" kTAG_NAMESPACE="ISO:639">
+			<kTAG_LABEL language="en">Type</kTAG_LABEL>
+			<kTAG_DEFINITION language="en">Type of individual language.</kTAG_DEFINITION>
+    	</term>
+    	<node>
+			<kTAG_CLASS>COntologyMasterVertex</kTAG_CLASS>
+			<kTAG_KIND>
+				<item>:KIND-FEATURE</item>
+				<item>:KIND-SCALE</item>
+			</kTAG_KIND>
+			<kTAG_TYPE>
+				<item>:SET</item>
+			</kTAG_TYPE>
+    	</node>
+        <tag />
+        <edges>
+			<edge>
+				<kTAG_PREDICATE>:SUBCLASS-OF</kTAG_PREDICATE>
+				<kTAG_OBJECT>ISO:639</kTAG_OBJECT>
+			</edge>
+        </edges>
+    </unit>
+    
+    <!-- ISO:639:status -->
+    <unit>
+    	<term kTAG_LID="status" kTAG_NAMESPACE="ISO:639">
+			<kTAG_LABEL language="en">Status</kTAG_LABEL>
+			<kTAG_DEFINITION language="en">Status of individual language.</kTAG_DEFINITION>
+    	</term>
+    	<node>
+			<kTAG_CLASS>COntologyMasterVertex</kTAG_CLASS>
+			<kTAG_KIND>
+				<item>:KIND-FEATURE</item>
+				<item>:KIND-SCALE</item>
+			</kTAG_KIND>
+			<kTAG_TYPE>
+				<item>:TEXT</item>
+			</kTAG_TYPE>
+    	</node>
+        <tag />
+        <edges>
+			<edge>
+				<kTAG_PREDICATE>:SUBCLASS-OF</kTAG_PREDICATE>
+				<kTAG_OBJECT>ISO:639</kTAG_OBJECT>
+			</edge>
+        </edges>
+    </unit>
+    
+    <!-- ISO:639:inverted_name -->
+    <unit>
+    	<term kTAG_LID="inverted_name" kTAG_NAMESPACE="ISO:639">
+			<kTAG_LABEL language="en">Inverted name</kTAG_LABEL>
+			<kTAG_DEFINITION language="en"><![CDATA[An <i>inverted</i> name is one that is altered from the usual English-language order by moving adjectival qualifiers to the end, after the main language name and separated by a comma.]]></kTAG_DEFINITION>
+    	</term>
+    	<node>
+			<kTAG_CLASS>COntologyMasterVertex</kTAG_CLASS>
+			<kTAG_KIND>
+				<item>:KIND-FEATURE</item>
+				<item>:KIND-SCALE</item>
+			</kTAG_KIND>
+			<kTAG_TYPE>
+				<item>:LSTRING</item>
+			</kTAG_TYPE>
+    	</node>
+        <tag />
+        <edges>
+			<edge>
+				<kTAG_PREDICATE>:SUBCLASS-OF</kTAG_PREDICATE>
+				<kTAG_OBJECT>ISO:639</kTAG_OBJECT>
+			</edge>
+        </edges>
+    </unit>
+    
+    <!-- ISO 639 SCOPE ENUMERATIONS -->
+    
+    <!-- ISO:639:scope:I -->
+    <unit>
+    	<term kTAG_LID="I" kTAG_NAMESPACE="ISO:639:scope">
+			<kTAG_KIND>
+          	  <item>:KIND-ENUMERATION</item>
+			</kTAG_KIND>
+			<kTAG_LABEL language="en">Individual</kTAG_LABEL>
+			<kTAG_DEFINITION language="en">A distinct individual language.</kTAG_DEFINITION>
+    	</term>
+    	<node>
+			<kTAG_CLASS>COntologyMasterVertex</kTAG_CLASS>
+			<kTAG_KIND>
+	            <item>:KIND-ENUMERATION</item>
+			</kTAG_KIND>
+    	</node>
+        <edges>
+			<edge>
+				<kTAG_PREDICATE>:ENUM-OF</kTAG_PREDICATE>
+				<kTAG_OBJECT>ISO:639:scope</kTAG_OBJECT>
+			</edge>
+        </edges>
+    </unit>
+    
+    <!-- ISO:639:scope:M -->
+    <unit>
+    	<term kTAG_LID="M" kTAG_NAMESPACE="ISO:639:scope">
+			<kTAG_KIND>
+          	  <item>:KIND-ENUMERATION</item>
+			</kTAG_KIND>
+			<kTAG_LABEL language="en">Macrolanguage</kTAG_LABEL>
+			<kTAG_DEFINITION language="en">Language that corresponds in a one-to-many manner with several individual languages.</kTAG_DEFINITION>
+    	</term>
+    	<node>
+			<kTAG_CLASS>COntologyMasterVertex</kTAG_CLASS>
+			<kTAG_KIND>
+	            <item>:KIND-ENUMERATION</item>
+			</kTAG_KIND>
+    	</node>
+        <edges>
+			<edge>
+				<kTAG_PREDICATE>:ENUM-OF</kTAG_PREDICATE>
+				<kTAG_OBJECT>ISO:639:scope</kTAG_OBJECT>
+			</edge>
+        </edges>
+    </unit>
+    
+    <!-- ISO:639:scope:C -->
+    <unit>
+    	<term kTAG_LID="C" kTAG_NAMESPACE="ISO:639:scope">
+			<kTAG_KIND>
+          	  <item>:KIND-ENUMERATION</item>
+			</kTAG_KIND>
+			<kTAG_LABEL language="en">Collection of languages</kTAG_LABEL>
+			<kTAG_DEFINITION language="en">A collective language code element is an identifier that represents a group of individual languages that are not deemed to be one language in any usage context.</kTAG_DEFINITION>
+    	</term>
+    	<node>
+			<kTAG_CLASS>COntologyMasterVertex</kTAG_CLASS>
+			<kTAG_KIND>
+	            <item>:KIND-ENUMERATION</item>
+			</kTAG_KIND>
+    	</node>
+        <edges>
+			<edge>
+				<kTAG_PREDICATE>:ENUM-OF</kTAG_PREDICATE>
+				<kTAG_OBJECT>ISO:639:scope</kTAG_OBJECT>
+			</edge>
+        </edges>
+    </unit>
+    
+    <!-- ISO:639:scope:D -->
+    <unit>
+    	<term kTAG_LID="D" kTAG_NAMESPACE="ISO:639:scope">
+			<kTAG_KIND>
+          	  <item>:KIND-ENUMERATION</item>
+			</kTAG_KIND>
+			<kTAG_LABEL language="en">Dialect</kTAG_LABEL>
+			<kTAG_DEFINITION language="en">Sub-variety of a language such as might be based on geographic region, age, gender, social class, time period, or the like.</kTAG_DEFINITION>
+    	</term>
+    	<node>
+			<kTAG_CLASS>COntologyMasterVertex</kTAG_CLASS>
+			<kTAG_KIND>
+	            <item>:KIND-ENUMERATION</item>
+			</kTAG_KIND>
+    	</node>
+        <edges>
+			<edge>
+				<kTAG_PREDICATE>:ENUM-OF</kTAG_PREDICATE>
+				<kTAG_OBJECT>ISO:639:scope</kTAG_OBJECT>
+			</edge>
+        </edges>
+    </unit>
+    
+    <!-- ISO:639:scope:R -->
+    <unit>
+    	<term kTAG_LID="R" kTAG_NAMESPACE="ISO:639:scope">
+			<kTAG_KIND>
+          	  <item>:KIND-ENUMERATION</item>
+			</kTAG_KIND>
+			<kTAG_LABEL language="en">Reserved</kTAG_LABEL>
+			<kTAG_DEFINITION language="en">Reserved for local use.</kTAG_DEFINITION>
+    	</term>
+    	<node>
+			<kTAG_CLASS>COntologyMasterVertex</kTAG_CLASS>
+			<kTAG_KIND>
+	            <item>:KIND-ENUMERATION</item>
+			</kTAG_KIND>
+    	</node>
+        <edges>
+			<edge>
+				<kTAG_PREDICATE>:ENUM-OF</kTAG_PREDICATE>
+				<kTAG_OBJECT>ISO:639:scope</kTAG_OBJECT>
+			</edge>
+        </edges>
+    </unit>
+    
+    <!-- ISO:639:scope:S -->
+    <unit>
+    	<term kTAG_LID="S" kTAG_NAMESPACE="ISO:639:scope">
+			<kTAG_KIND>
+          	  <item>:KIND-ENUMERATION</item>
+			</kTAG_KIND>
+			<kTAG_LABEL language="en">Special</kTAG_LABEL>
+			<kTAG_DEFINITION language="en">Special situation.</kTAG_DEFINITION>
+    	</term>
+    	<node>
+			<kTAG_CLASS>COntologyMasterVertex</kTAG_CLASS>
+			<kTAG_KIND>
+	            <item>:KIND-ENUMERATION</item>
+			</kTAG_KIND>
+    	</node>
+        <edges>
+			<edge>
+				<kTAG_PREDICATE>:ENUM-OF</kTAG_PREDICATE>
+				<kTAG_OBJECT>ISO:639:scope</kTAG_OBJECT>
+			</edge>
+        </edges>
+    </unit>
+    
+    <!-- ISO 639 TYPE ENUMERATIONS -->
+    
+    <!-- ISO:639:type:L -->
+    <unit>
+    	<term kTAG_LID="L" kTAG_NAMESPACE="ISO:639:type">
+			<kTAG_KIND>
+          	  <item>:KIND-ENUMERATION</item>
+			</kTAG_KIND>
+			<kTAG_LABEL language="en">Living</kTAG_LABEL>
+			<kTAG_DEFINITION language="en">A language is listed as living when there are people still living who learned it as a first language.</kTAG_DEFINITION>
+    	</term>
+    	<node>
+			<kTAG_CLASS>COntologyMasterVertex</kTAG_CLASS>
+			<kTAG_KIND>
+	            <item>:KIND-ENUMERATION</item>
+			</kTAG_KIND>
+    	</node>
+        <edges>
+			<edge>
+				<kTAG_PREDICATE>:ENUM-OF</kTAG_PREDICATE>
+				<kTAG_OBJECT>ISO:639:type</kTAG_OBJECT>
+			</edge>
+        </edges>
+    </unit>
+    
+    <!-- ISO:639:type:E -->
+    <unit>
+    	<term kTAG_LID="E" kTAG_NAMESPACE="ISO:639:type">
+			<kTAG_KIND>
+          	  <item>:KIND-ENUMERATION</item>
+			</kTAG_KIND>
+			<kTAG_LABEL language="en">Extinct</kTAG_LABEL>
+			<kTAG_DEFINITION language="en">Language that are no longer living.</kTAG_DEFINITION>
+    	</term>
+    	<node>
+			<kTAG_CLASS>COntologyMasterVertex</kTAG_CLASS>
+			<kTAG_KIND>
+	            <item>:KIND-ENUMERATION</item>
+			</kTAG_KIND>
+    	</node>
+        <edges>
+			<edge>
+				<kTAG_PREDICATE>:ENUM-OF</kTAG_PREDICATE>
+				<kTAG_OBJECT>ISO:639:type</kTAG_OBJECT>
+			</edge>
+        </edges>
+    </unit>
+    
+    <!-- ISO:639:type:A -->
+    <unit>
+    	<term kTAG_LID="A" kTAG_NAMESPACE="ISO:639:type">
+			<kTAG_KIND>
+          	  <item>:KIND-ENUMERATION</item>
+			</kTAG_KIND>
+			<kTAG_LABEL language="en">Ancient</kTAG_LABEL>
+			<kTAG_DEFINITION language="en">A language went extinct in ancient times (e.g. more than a millennium ago).</kTAG_DEFINITION>
+    	</term>
+    	<node>
+			<kTAG_CLASS>COntologyMasterVertex</kTAG_CLASS>
+			<kTAG_KIND>
+	            <item>:KIND-ENUMERATION</item>
+			</kTAG_KIND>
+    	</node>
+        <edges>
+			<edge>
+				<kTAG_PREDICATE>:ENUM-OF</kTAG_PREDICATE>
+				<kTAG_OBJECT>ISO:639:type</kTAG_OBJECT>
+			</edge>
+        </edges>
+    </unit>
+    
+    <!-- ISO:639:type:H -->
+    <unit>
+    	<term kTAG_LID="H" kTAG_NAMESPACE="ISO:639:type">
+			<kTAG_KIND>
+          	  <item>:KIND-ENUMERATION</item>
+			</kTAG_KIND>
+			<kTAG_LABEL language="en">Historic</kTAG_LABEL>
+			<kTAG_DEFINITION language="en">A language considered to be distinct from any modern languages that are descended from it; for instance, Old English and Middle English.</kTAG_DEFINITION>
+    	</term>
+    	<node>
+			<kTAG_CLASS>COntologyMasterVertex</kTAG_CLASS>
+			<kTAG_KIND>
+	            <item>:KIND-ENUMERATION</item>
+			</kTAG_KIND>
+    	</node>
+        <edges>
+			<edge>
+				<kTAG_PREDICATE>:ENUM-OF</kTAG_PREDICATE>
+				<kTAG_OBJECT>ISO:639:type</kTAG_OBJECT>
+			</edge>
+        </edges>
+    </unit>
+    
+    <!-- ISO:639:type:C -->
+    <unit>
+    	<term kTAG_LID="C" kTAG_NAMESPACE="ISO:639:type">
+			<kTAG_KIND>
+          	  <item>:KIND-ENUMERATION</item>
+			</kTAG_KIND>
+			<kTAG_LABEL language="en">Constructed</kTAG_LABEL>
+			<kTAG_DEFINITION language="en">A constructed (or artificial) language.</kTAG_DEFINITION>
+    	</term>
+    	<node>
+			<kTAG_CLASS>COntologyMasterVertex</kTAG_CLASS>
+			<kTAG_KIND>
+	            <item>:KIND-ENUMERATION</item>
+			</kTAG_KIND>
+    	</node>
+        <edges>
+			<edge>
+				<kTAG_PREDICATE>:ENUM-OF</kTAG_PREDICATE>
+				<kTAG_OBJECT>ISO:639:type</kTAG_OBJECT>
+			</edge>
+        </edges>
+    </unit>
+    
+    <!-- ISO:639:type:S -->
+    <unit>
+    	<term kTAG_LID="S" kTAG_NAMESPACE="ISO:639:type">
+			<kTAG_KIND>
+          	  <item>:KIND-ENUMERATION</item>
+			</kTAG_KIND>
+			<kTAG_LABEL language="en">Special</kTAG_LABEL>
+			<kTAG_DEFINITION language="en">Special language.</kTAG_DEFINITION>
+    	</term>
+    	<node>
+			<kTAG_CLASS>COntologyMasterVertex</kTAG_CLASS>
+			<kTAG_KIND>
+	            <item>:KIND-ENUMERATION</item>
+			</kTAG_KIND>
+    	</node>
+        <edges>
+			<edge>
+				<kTAG_PREDICATE>:ENUM-OF</kTAG_PREDICATE>
+				<kTAG_OBJECT>ISO:639:type</kTAG_OBJECT>
+			</edge>
+        </edges>
+    </unit>
+    
+    <!-- ISO:639:type:Genetic -->
+    <unit>
+    	<term kTAG_LID="Genetic" kTAG_NAMESPACE="ISO:639:type">
+			<kTAG_KIND>
+          	  <item>:KIND-ENUMERATION</item>
+			</kTAG_KIND>
+			<kTAG_LABEL language="en">Genetic</kTAG_LABEL>
+			<kTAG_DEFINITION language="en">In linguistics, genetic relationship is the usual term for the relationship which exists between languages that are members of the same language family, mixed languages, pidgins and creole languages constitute special genetic types of languages.</kTAG_DEFINITION>
+    	</term>
+    	<node>
+			<kTAG_CLASS>COntologyMasterVertex</kTAG_CLASS>
+			<kTAG_KIND>
+	            <item>:KIND-ENUMERATION</item>
+			</kTAG_KIND>
+    	</node>
+        <edges>
+			<edge>
+				<kTAG_PREDICATE>:ENUM-OF</kTAG_PREDICATE>
+				<kTAG_OBJECT>ISO:639:type</kTAG_OBJECT>
+			</edge>
+        </edges>
+    </unit>
+    
+    <!-- ISO:639:type:Genetic-like -->
+    <unit>
+    	<term kTAG_LID="Genetic-like" kTAG_NAMESPACE="ISO:639:type">
+			<kTAG_KIND>
+          	  <item>:KIND-ENUMERATION</item>
+			</kTAG_KIND>
+			<kTAG_LABEL language="en">Genetic-like</kTAG_LABEL>
+			<kTAG_DEFINITION language="en">Genetic-like language.</kTAG_DEFINITION>
+    	</term>
+    	<node>
+			<kTAG_CLASS>COntologyMasterVertex</kTAG_CLASS>
+			<kTAG_KIND>
+	            <item>:KIND-ENUMERATION</item>
+			</kTAG_KIND>
+    	</node>
+        <edges>
+			<edge>
+				<kTAG_PREDICATE>:ENUM-OF</kTAG_PREDICATE>
+				<kTAG_OBJECT>ISO:639:type</kTAG_OBJECT>
+			</edge>
+        </edges>
+    </unit>
+    
+    <!-- ISO:639:type:Geographic -->
+    <unit>
+    	<term kTAG_LID="Geographic" kTAG_NAMESPACE="ISO:639:type">
+			<kTAG_KIND>
+          	  <item>:KIND-ENUMERATION</item>
+			</kTAG_KIND>
+			<kTAG_LABEL language="en">Geographic</kTAG_LABEL>
+			<kTAG_DEFINITION language="en">Geographic language.</kTAG_DEFINITION>
+    	</term>
+    	<node>
+			<kTAG_CLASS>COntologyMasterVertex</kTAG_CLASS>
+			<kTAG_KIND>
+	            <item>:KIND-ENUMERATION</item>
+			</kTAG_KIND>
+    	</node>
+        <edges>
+			<edge>
+				<kTAG_PREDICATE>:ENUM-OF</kTAG_PREDICATE>
+				<kTAG_OBJECT>ISO:639:type</kTAG_OBJECT>
+			</edge>
+        </edges>
+    </unit>
+    
+    <!-- ISO 3166 CATEGORIES -->
+    
+    <!-- ISO:3166:1 -->
+    <unit>
+    	<term kTAG_LID="1" kTAG_NAMESPACE="ISO:3166">
+			<kTAG_KIND>
+				<item>:KIND-NAMESPACE</item>
+			</kTAG_KIND>
+			<kTAG_LABEL language="en">Part 1</kTAG_LABEL>
+			<kTAG_DEFINITION language="en">Country codes, defines codes for the names of countries, dependent territories, and special areas of geographical interest.</kTAG_DEFINITION>
+    	</term>
+    	<node>
+			<kTAG_CLASS>COntologyMasterVertex</kTAG_CLASS>
+    	</node>
+        <edges>
+			<edge>
+				<kTAG_PREDICATE>:SUBCLASS-OF</kTAG_PREDICATE>
+				<kTAG_OBJECT>ISO:3166</kTAG_OBJECT>
+			</edge>
+        </edges>
+    </unit>
+    
+    <!-- ISO:3166:2 -->
+    <unit>
+    	<term kTAG_LID="2" kTAG_NAMESPACE="ISO:3166">
+			<kTAG_KIND>
+				<item>:KIND-NAMESPACE</item>
+			</kTAG_KIND>
+			<kTAG_LABEL language="en">Part 2</kTAG_LABEL>
+			<kTAG_DEFINITION language="en">Country subdivision code, defines codes for the names of the principal subdivisions (e.g., provinces or states) of all countries coded in ISO 3166-1.</kTAG_DEFINITION>
+    	</term>
+    	<node>
+			<kTAG_CLASS>COntologyMasterVertex</kTAG_CLASS>
+    	</node>
+        <edges>
+			<edge>
+				<kTAG_PREDICATE>:SUBCLASS-OF</kTAG_PREDICATE>
+				<kTAG_OBJECT>ISO:3166</kTAG_OBJECT>
+			</edge>
+        </edges>
+    </unit>
+    
+    <!-- ISO:3166:3 -->
+    <unit>
+    	<term kTAG_LID="3" kTAG_NAMESPACE="ISO:3166">
+			<kTAG_KIND>
+				<item>:KIND-NAMESPACE</item>
+			</kTAG_KIND>
+			<kTAG_LABEL language="en">Part 3</kTAG_LABEL>
+			<kTAG_DEFINITION language="en">Code for formerly used names of countries, defines codes for country names which have been deleted from ISO 3166-1 since its first publication in 1974.</kTAG_DEFINITION>
+    	</term>
+    	<node>
+			<kTAG_CLASS>COntologyMasterVertex</kTAG_CLASS>
+    	</node>
+        <edges>
+			<edge>
+				<kTAG_PREDICATE>:SUBCLASS-OF</kTAG_PREDICATE>
+				<kTAG_OBJECT>ISO:3166</kTAG_OBJECT>
+			</edge>
+        </edges>
+    </unit>
+    
+    <!-- ISO 3166 Part 1 ATTRIBUTES -->
+    
+    <!-- ISO:3166:1:alpha-2 -->
+    <unit>
+    	<term kTAG_LID="alpha-2" kTAG_NAMESPACE="ISO:3166:1">
+			<kTAG_KIND>
+				<item>:KIND-NAMESPACE</item>
+			</kTAG_KIND>
+			<kTAG_LABEL language="en">Part 1</kTAG_LABEL>
+			<kTAG_DEFINITION language="en">Alpha-2 code.</kTAG_DEFINITION>
+    	</term>
+    	<node>
+			<kTAG_CLASS>COntologyMasterVertex</kTAG_CLASS>
+    	</node>
+        <edges>
+			<edge>
+				<kTAG_PREDICATE>:SUBCLASS-OF</kTAG_PREDICATE>
+				<kTAG_OBJECT>ISO:639</kTAG_OBJECT>
 			</edge>
         </edges>
     </unit>

@@ -452,6 +452,16 @@ class COntology extends CConnection
 			// Initialise tags.
 			//
 			$this->_InitTags();
+
+//
+// Get database.
+//
+$db = $this->GetDatabase();
+if( ! ($db instanceof CDatabase) )
+	throw new Exception
+		( "Unable to retrieve database connection",
+		  kERROR_STATE );														// !@! ==>
+$this->_LoadUnitFile( $db, '/Library/WebServer/Library/PHPWrapper/data/ISO_UNITS.xml' );
 			
 			return;																	// ==>
 		
@@ -927,7 +937,7 @@ class COntology extends CConnection
 			foreach( $xml->tag as $element )
 			{
 				//
-				// Instantiate edge.
+				// Instantiate tag.
 				//
 				$tag = new COntologyTag();
 				
@@ -941,6 +951,216 @@ class COntology extends CConnection
 		} // Iterating files.
 
 	} // _InitTags.
+
+		
+
+/*=======================================================================================
+ *																						*
+ *							PROTECTED ONTOLOGY LOADING INTERFACE						*
+ *																						*
+ *======================================================================================*/
+
+
+	 
+	/*===================================================================================
+	 *	_LoadUnitFile																	*
+	 *==================================================================================*/
+
+	/**
+	 * <h4>Load the provided unit file</h4>
+	 *
+	 * Unit files are XML files that feature a list of units which contain data for terms,
+	 * nodes, edges and tags. This method allows loading these files into the ontology.
+	 *
+	 * Note that there is no caching performed, so if you reference an object that has not
+	 * yet been loaded the method will fail.
+	 *
+	 * The file path parameter may be either a string or a list of strings.
+	 *
+	 * @param CDatabase				$theDatabase		Database container.
+	 * @param mixed					$theFilePath		Path to the units file.
+	 *
+	 * @access protected
+	 *
+	 * @throws Exception
+	 */
+	protected function _LoadUnitFile( CDatabase $theDatabase, $theFilePath )
+	{
+		//
+		// Handle list of files.
+		//
+		if( is_array( $theFilePath ) )
+		{
+			foreach( $theFilePath as $file )
+				$this->_ParseTerm( $theDatabase, $file );
+		
+		} // Provided list of files.
+		
+		//
+		// Handle file.
+		//
+		else
+		{
+			//
+			// Load XML file.
+			//
+			$xml = simplexml_load_file( $theFilePath );
+			if( $xml instanceof SimpleXMLElement )
+			{
+				//
+				// Iterate units.
+				//
+				foreach( $xml->{'unit'} as $unit )
+				{
+					//
+					// Locate term.
+					//
+					if( $unit->{'term'}->count() )
+					{
+						//
+						// Reference term.
+						//
+						$element = $unit->{'term'}[ 0 ];
+						
+						//
+						// Instantiate term object.
+						//
+						$term = new COntologyTerm();
+						
+						//
+						// Load local identifier.
+						//
+						if( $element[ 'kTAG_LID' ] !== NULL )
+							$this->_ParseTerm( $theDatabase, $element, $term );
+						
+						else
+							throw new Exception
+								( "Term is missing local identifier",
+								  kERROR_STATE );								// !@! ==>
+						
+						//
+						// Add term reference to node.
+						//
+						if( ($unit->{'node'} != NULL)
+						 && ($unit->{'node'}[ 0 ][ 'kTAG_GID' ] === NULL) )
+							$unit->{'node'}[ 0 ][ 'kTAG_GID' ] = $term[ kTAG_GID ];
+						
+						//
+						// Add term reference to tag.
+						//
+						if( $unit->{'tag'}->count()
+						 && ($unit->{'tag'}{'kTAG_PATH'} === NULL) )
+						{
+							$tmp = $unit->{'tag'}->addChild( 'kTAG_PATH' );
+							$tmp->addChild( 'item', $term[ kTAG_GID ] );
+						}
+					
+					} // Has term.
+					
+					else
+						$term = NULL;
+					
+					//
+					// Locate node.
+					//
+					if( $unit->{'node'}->count() )
+					{
+						//
+						// Reference node.
+						//
+						$element = $unit->{'node'}[ 0 ];
+						
+						//
+						// Instantiate node.
+						//
+						if( $element->{'kTAG_CLASS'} !== NULL )
+						{
+							$class = (string) $element->{'kTAG_CLASS'};
+							$node = new $class();
+						}
+						else
+							$node = new COntologyNode();
+						
+						//
+						// Load global identifier.
+						//
+						if( $element[ 'kTAG_GID' ] === NULL )
+						{
+							//
+							// Get it from term.
+							//
+							if( $term !== NULL )
+								$element[ 'kTAG_GID' ] = $term[ kTAG_GID ];
+							else
+								throw new Exception
+									( "Node is missing term global identifier",
+									  kERROR_STATE );							// !@! ==>
+						
+						} // Missing node term reference.
+						
+						//
+						// Parse node.
+						//
+						$this->_ParseNode( $theDatabase, $element, $node );
+					
+					} // Has node.
+					
+					//
+					// Locate edge.
+					//
+					if( $unit->{'edge'}->count() )
+					{
+						//
+						// Reference edge.
+						//
+						$element = $unit->{'edge'}[ 0 ];
+						
+						//
+						// Instantiate edge.
+						//
+						$edge = new COntologyEdge();
+						
+						//
+						// Parse edge.
+						//
+						$this->_ParseEdge( $theDatabase, $element, $edge );
+					
+					} // Has edge.
+					
+					//
+					// Locate tag.
+					//
+					if( $unit->{'tag'}->count() )
+					{
+						//
+						// Reference edge.
+						//
+						$element = $unit->{'tag'}[ 0 ];
+						
+						//
+						// Instantiate tag.
+						//
+						$tag = new COntologyTag();
+						
+						//
+						// Parse edge.
+						//
+						$this->_ParseTag( $theDatabase, $element, $tag );
+					
+					} // Has edge.
+				
+				} // Iterating units.
+			
+			} // Parsed successfully the file.
+			
+			else
+				throw new Exception
+					( "Unable to parse provided XML file",
+					  kERROR_PARAMETER );										// !@! ==>
+		
+		} // Provided single file path.
+
+	} // _LoadUnitFile.
 
 		
 
@@ -1048,16 +1268,22 @@ class COntology extends CConnection
 			//
 			// Get label.
 			//
-			if( $theElement->{'kTAG_LABEL'} !== NULL )
-				$theTerm->Label( (string) $theElement->{'kTAG_LABEL'}[ 'language' ],
-								 (string) $theElement->{'kTAG_LABEL'} );
+			if( $theElement->{'kTAG_LABEL'}->count() )
+			{
+				foreach( $theElement->{'kTAG_LABEL'} as $element )
+					$theTerm->Label( (string) $element[ 'language' ],
+									 (string) $element );
+			}
 			
 			//
 			// Get definition.
 			//
-			if( $theElement->{'kTAG_DEFINITION'} !== NULL )
-				$theTerm->Definition( (string) $theElement->{'kTAG_DEFINITION'}[ 'language' ],
-									  (string) $theElement->{'kTAG_DEFINITION'} );
+			if( $theElement->{'kTAG_DEFINITION'}->count() )
+			{
+				foreach( $theElement->{'kTAG_DEFINITION'} as $element )
+					$theTerm->Definition( (string) $element[ 'language' ],
+										  (string) $element );
+			}
 			
 			//
 			// Get examples.
@@ -1152,12 +1378,14 @@ class COntology extends CConnection
 			} // Has types.
 			
 			//
-			// Get description.
+			// Get descriptions.
 			//
 			if( $theElement->{'kTAG_DESCRIPTION'}->count() )
-				$theNode->Description
-					( (string) $theElement->{'kTAG_DESCRIPTION'}[ 'language' ],
-					  (string) $theElement->{'kTAG_DESCRIPTION'} );
+			{
+				foreach( $theElement->{'kTAG_DESCRIPTION'} as $element )
+					$theNode->Description( (string) $element[ 'language' ],
+										   (string) $element );
+			}
 			
 			//
 			// Save node.
@@ -1359,12 +1587,14 @@ class COntology extends CConnection
 		} // Has types.
 		
 		//
-		// Get description.
+		// Get descriptions.
 		//
 		if( $theElement->{'kTAG_DESCRIPTION'}->count() )
-			$node->Description
-				( (string) $theElement->{'kTAG_DESCRIPTION'}[ 'language' ],
-				  (string) $theElement->{'kTAG_DESCRIPTION'} );
+		{
+			foreach( $theElement->{'kTAG_DESCRIPTION'} as $element )
+				$node->Description( (string) $element[ 'language' ],
+									(string) $element );
+		}
 		
 		//
 		// Save node.
@@ -1484,39 +1714,27 @@ class COntology extends CConnection
 								  COntologyTag		$theTag )
 	{
 		//
-		// Load term global identifier.
+		// Iterate path.
 		//
-		if( $theElement[ 'var' ] !== NULL )
+		foreach( $theElement->{'kTAG_PATH'}->{'item'} as $item )
 		{
 			//
-			// Iterate path.
+			// Resolve term.
 			//
-			foreach( $theElement->{'kTAG_PATH'}->{'item'} as $item )
-			{
-				//
-				// Resolve term.
-				//
-				$term = COntologyTerm::Resolve(
-							$theDatabase, (string) $item, NULL, TRUE );
-				
-				//
-				// Add to path.
-				//
-				$theTag->PushItem( $term );
-			
-			} // Iterating path items.
+			$term = COntologyTerm::Resolve(
+						$theDatabase, (string) $item, NULL, TRUE );
 			
 			//
-			// Save tag.
+			// Add to path.
 			//
-			$id = $theTag->Insert( $theDatabase );
+			$theTag->PushItem( $term );
 		
-		} // Has global identifier.
+		} // Iterating path items.
 		
-		else
-			throw new Exception
-				( "Tag is missing its symbol",
-				  kERROR_STATE );											// !@! ==>
+		//
+		// Save tag.
+		//
+		$id = $theTag->Insert( $theDatabase );
 
 	} // _ParseTag.
 
