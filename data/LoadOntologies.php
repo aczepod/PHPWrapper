@@ -46,7 +46,8 @@ session_start();
 //
 // Inform.
 //
-echo( "\n==> Ontology creation procedure.\n" );
+if( kOPTION_VERBOSE )
+	echo( "\n==> Ontology creation procedure.\n" );
 
 //
 // Init local storage.
@@ -62,8 +63,17 @@ try
 	// Initialise connections and ontology.
 	//
 	Init();
+	
+	//
+	// Loading ISO standards categories.
+	//
+	if( kOPTION_VERBOSE )
+		echo( "  • Loading ISO standards.\n" );
+	$_SESSION[ kSESSION_ONTOLOGY ]->LoadISOPOFiles(
+		kPATH_MYWRAPPER_LIBRARY_DATA."/ISO_UNITS.xml" );
 
-	echo( "\nTime elapsed: ".(time() - $start)."\n" );
+	if( kOPTION_VERBOSE )
+		echo( "\nTime elapsed: ".(time() - $start)."\n" );
 }
 
 //
@@ -74,7 +84,8 @@ catch( Exception $error )
 	echo( (string) $error );
 }
 
-echo( "\nDone!\n" );
+if( kOPTION_VERBOSE )
+	echo( "\nDone!\n" );
 
 		
 
@@ -101,7 +112,8 @@ echo( "\nDone!\n" );
 		//
 		// Open connections.
 		//
-		echo( "  • Opening connections.\n" );
+		if( kOPTION_VERBOSE )
+			echo( "  • Opening connections.\n" );
 		$_SESSION[ kSESSION_SERVER ] = New CMongoServer();
 		
 		//
@@ -121,14 +133,16 @@ echo( "\nDone!\n" );
 		//
 		// Instantiate ontology.
 		//
-		echo( "  • Instantiating ontology.\n" );
+		if( kOPTION_VERBOSE )
+			echo( "  • Instantiating ontology.\n" );
 		$_SESSION[ kSESSION_ONTOLOGY ]
 			= new COntology( $_SESSION[ kSESSION_DATABASE ] );
 		
 		//
 		// Initialising ontology.
 		//
-		echo( "  • Initialising ontology.\n" );
+		if( kOPTION_VERBOSE )
+			echo( "  • Initialising ontology.\n" );
 		$_SESSION[ kSESSION_ONTOLOGY ]->InitOntology();
 
 	} // Init.

@@ -40,4 +40,18 @@ define( "kCONTAINER_EDGE_NAME",					':_edges' );
  */
 define( "kSEQUENCE_KEY_EDGE",					'@edge' );
 
+/*=======================================================================================
+ *	CURRENT SWITCHES																	*
+ *======================================================================================*/
+
+/**
+ * Reference edges.
+ *
+ * This switch determines whether edges add a reference to nodes in their {@link kTAG_EDGES}
+ * attribute. The relationships between edges and nodes are recorded in the edge itself,
+ * which means that the {@link kTAG_EDGES} attribute is redundant and might become rather
+ * large, so this feature is disabled by default.
+ */
+define( "kSWITCH_kTAG_EDGES",					FALSE );
+
 ?>

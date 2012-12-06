@@ -254,6 +254,27 @@ require_once( kPATH_MYWRAPPER_LIBRARY_CLASS."/COntologyTag.php" );
 require_once( kPATH_MYWRAPPER_LIBRARY_CLASS."/CConnection.php" );
 
 /**
+ * File.
+ *
+ * This includes the file function definitions.
+ */
+require_once( kPATH_MYWRAPPER_LIBRARY_FUNCTION.'/file.php' );
+
+/**
+ * Parsers.
+ *
+ * This include file contains all parser functions.
+ */
+require_once( kPATH_MYWRAPPER_LIBRARY_FUNCTION."/parsing.php" );
+
+/**
+ * ISO standards includes.
+ *
+ * This includes the ISO standards local definitions.
+ */
+require_once( kPATH_MYWRAPPER_LIBRARY_DATA."/ISOCodes.inc.php" );
+
+/**
  * <h4>Ontology object</h4>
  *
  * This class represents an object whose duty is to provide a high level interface for
@@ -452,16 +473,6 @@ class COntology extends CConnection
 			// Initialise tags.
 			//
 			$this->_InitTags();
-
-//
-// Get database.
-//
-$db = $this->GetDatabase();
-if( ! ($db instanceof CDatabase) )
-	throw new Exception
-		( "Unable to retrieve database connection",
-		  kERROR_STATE );														// !@! ==>
-$this->_LoadUnitFile( $db, '/Library/WebServer/Library/PHPWrapper/data/ISO_UNITS.xml' );
 			
 			return;																	// ==>
 		
@@ -472,6 +483,317 @@ $this->_LoadUnitFile( $db, '/Library/WebServer/Library/PHPWrapper/data/ISO_UNITS
 			  kERROR_STATE );													// !@! ==>
 
 	} // InitOntology.
+
+		
+
+/*=======================================================================================
+ *																						*
+ *							PUBLIC ONTOLOGY LOADING INTERFACE							*
+ *																						*
+ *======================================================================================*/
+
+
+	 
+	/*===================================================================================
+	 *	LoadUnitFile																	*
+	 *==================================================================================*/
+
+	/**
+	 * <h4>Load the provided unit file</h4>
+	 *
+	 * Unit files are XML files that feature a list of units which contain data for terms,
+	 * nodes, edges and tags. This method allows loading these files into the ontology.
+	 *
+	 * Note that there is no caching performed, so if you reference an object that has not
+	 * yet been loaded the method will fail.
+	 *
+	 * The file path parameter may be either a string or a list of strings.
+	 *
+	 * Node: each unit <i>must</i> insert a term, it is not possible to reference terms.
+	 *
+	 * @param mixed					$theFilePath		Path to the units file.
+	 *
+	 * @access public
+	 *
+	 * @throws Exception
+	 */
+	public function LoadUnitFile( $theFilePath )
+	{
+		//
+		// Get database.
+		//
+		$db = $this->GetDatabase();
+		if( ! ($db instanceof CDatabase) )
+			throw new Exception
+				( "Unable to retrieve database connection",
+				  kERROR_STATE );												// !@! ==>
+		
+		//
+		// Handle list of files.
+		//
+		if( is_array( $theFilePath ) )
+		{
+			foreach( $theFilePath as $file )
+				$this->_ParseTerm( $db, $file );
+		
+		} // Provided list of files.
+		
+		//
+		// Handle file.
+		//
+		else
+		{
+			//
+			// Load XML file.
+			//
+			$xml = simplexml_load_file( $theFilePath );
+			if( $xml instanceof SimpleXMLElement )
+			{
+				//
+				// Iterate units.
+				//
+				foreach( $xml->{'unit'} as $unit )
+				{
+					//
+					// Locate term.
+					//
+					if( $unit->{'term'}->count() )
+					{
+						//
+						// Reference term.
+						//
+						$element = $unit->{'term'}[ 0 ];
+						
+						//
+						// Instantiate term object.
+						//
+						$term = new COntologyTerm();
+						
+						//
+						// Load local identifier.
+						//
+						if( $element[ 'kTAG_LID' ] !== NULL )
+							$this->_ParseTerm( $db, $element, $term );
+						
+						else
+							throw new Exception
+								( "Term is missing local identifier",
+								  kERROR_STATE );								// !@! ==>
+						
+						//
+						// Add term reference to node.
+						//
+						if( ($unit->{'node'} != NULL)
+						 && ($unit->{'node'}[ 0 ][ 'kTAG_GID' ] === NULL) )
+							$unit->{'node'}[ 0 ][ 'kTAG_GID' ] = $term[ kTAG_GID ];
+						
+						//
+						// Add term reference to tag.
+						//
+						if( $unit->{'tag'}->count()
+						 && ($unit->{'tag'}{'kTAG_PATH'} === NULL) )
+						{
+							$tmp = $unit->{'tag'}->addChild( 'kTAG_PATH' );
+							$tmp->addChild( 'item', $term[ kTAG_GID ] );
+						}
+					
+					} // Has term.
+					
+					else
+						throw new Exception
+							( "Missing term declaration",
+							  kERROR_STATE );									// !@! ==>
+					
+					//
+					// Locate node.
+					//
+					if( $unit->{'node'}->count() )
+					{
+						//
+						// Reference node.
+						//
+						$element = $unit->{'node'}[ 0 ];
+						
+						//
+						// Instantiate node.
+						//
+						if( $element->{'kTAG_CLASS'} !== NULL )
+						{
+							$class = (string) $element->{'kTAG_CLASS'};
+							$node = new $class();
+						}
+						else
+							$node = new COntologyNode();
+						
+						//
+						// Load global identifier.
+						//
+						if( $element[ 'kTAG_GID' ] === NULL )
+						{
+							//
+							// Get it from term.
+							//
+							if( $term !== NULL )
+								$element[ 'kTAG_GID' ] = $term[ kTAG_GID ];
+							else
+								throw new Exception
+									( "Node is missing term global identifier",
+									  kERROR_STATE );							// !@! ==>
+						
+						} // Missing node term reference.
+						
+						//
+						// Parse node.
+						//
+						$this->_ParseNode( $db, $element, $node );
+						
+						//
+						// Cache node.
+						//
+						$_SESSION[ kOFFSET_NODES ]
+								 [ (string) $term[ kTAG_GID ] ]
+									= $node->NID();
+					
+					} // Has node.
+					
+					//
+					// Locate edge.
+					//
+					if( $unit->{'edges'}->count() )
+					{
+						//
+						// Iterate edges.
+						//
+						$element = $unit->{'edges'}[ 0 ];
+						
+						//
+						// Iterate edges.
+						//
+						foreach( $element->{'edge'} as $item )
+						{
+							//
+							// Instantiate edge.
+							//
+							$edge = new COntologyEdge();
+							
+							//
+							// Substitute subject.
+							//
+							if( ! $item->{'kTAG_SUBJECT'}->count() )
+								$item->addChild( 'kTAG_SUBJECT', $term[ kTAG_GID ] );
+							
+							//
+							// Substitute object.
+							//
+							if( ! $item->{'kTAG_OBJECT'}->count() )
+								$item->addChild( 'kTAG_OBJECT', $term[ kTAG_GID ] );
+							
+							//
+							// Parse edge.
+							//
+							$this->_ParseEdge( $db, $item, $edge );
+						
+						} // Iterating edges.
+					
+					} // Has edge.
+					
+					//
+					// Locate tag.
+					//
+					if( $unit->{'tag'}->count() )
+					{
+						//
+						// Reference edge.
+						//
+						$element = $unit->{'tag'}[ 0 ];
+						
+						//
+						// Instantiate tag.
+						//
+						$tag = new COntologyTag();
+						
+						//
+						// Parse edge.
+						//
+						$this->_ParseTag( $db, $element, $tag );
+					
+					} // Has edge.
+				
+				} // Iterating units.
+			
+			} // Parsed successfully the file.
+			
+			else
+				throw new Exception
+					( "Unable to parse provided XML file",
+					  kERROR_PARAMETER );										// !@! ==>
+		
+		} // Provided single file path.
+
+	} // LoadUnitFile.
+
+		
+
+/*=======================================================================================
+ *																						*
+ *							PUBLIC CUSTOM ONTOLOGY INTERFACE							*
+ *																						*
+ *======================================================================================*/
+
+
+	 
+	/*===================================================================================
+	 *	LoadISOPOFiles																	*
+	 *==================================================================================*/
+
+	/**
+	 * <h4>Load the provided unit file</h4>
+	 *
+	 * Unit files are XML files that feature a list of units which contain data for terms,
+	 * nodes, edges and tags. This method allows loading these files into the ontology.
+	 *
+	 * Note that there is no caching performed, so if you reference an object that has not
+	 * yet been loaded the method will fail.
+	 *
+	 * The file path parameter may be either a string or a list of strings.
+	 *
+	 * Node: each unit <i>must</i> insert a term, it is not possible to reference terms.
+	 *
+	 * @param mixed					$theFilePath		Path to the units file.
+	 *
+	 * @access public
+	 *
+	 * @throws Exception
+	 */
+	public function LoadISOPOFiles( $theFilePath )
+	{
+		//
+		// Get database.
+		//
+		$db = $this->GetDatabase();
+		if( ! ($db instanceof CDatabase) )
+			throw new Exception
+				( "Unable to retrieve database connection",
+				  kERROR_STATE );												// !@! ==>
+		
+		//
+		// Loading ISO standards categories.
+		//
+		if( kOPTION_VERBOSE )
+			echo( "    - Instantiating ISO standards\n" );
+		$this->LoadUnitFile( $theFilePath );
+		
+		//
+		// Decode PO files.
+		//
+		$this->_ISODecodePOFiles();
+		
+		//
+		// Parse ISO XMLfiles.
+		//
+		$this->_ISOParseXMLFiles( $db );
+
+	} // LoadISOPOFiles.
 
 		
 
@@ -537,8 +859,8 @@ $this->_LoadUnitFile( $db, '/Library/WebServer/Library/PHPWrapper/data/ISO_UNITS
 		$container->AddIndex( array( kTAG_KIND => 1 ), array( 'sparse' => TRUE ) );
 		$container->AddIndex( array( kTAG_LABEL => 1 ), array( 'sparse' => TRUE ) );
 	//	$container->AddIndex( array( kTAG_DEFINITION => 1 ), array( 'sparse' => TRUE ) );
-		$container->AddIndex( array( kTAG_NODES => 1 ), array( 'sparse' => TRUE ) );
-		$container->AddIndex( array( kTAG_FEATURES => 1 ), array( 'sparse' => TRUE ) );
+	//	$container->AddIndex( array( kTAG_NODES => 1 ), array( 'sparse' => TRUE ) );
+	//	$container->AddIndex( array( kTAG_FEATURES => 1 ), array( 'sparse' => TRUE ) );
 	//	$container->AddIndex( array( kTAG_METHODS => 1 ), array( 'sparse' => TRUE ) );
 	//	$container->AddIndex( array( kTAG_SCALES => 1 ), array( 'sparse' => TRUE ) );
 	//	$container->AddIndex( array( kTAG_NAMESPACE_REFS => 1 ), array( 'sparse' => TRUE ) );
@@ -956,216 +1278,6 @@ $this->_LoadUnitFile( $db, '/Library/WebServer/Library/PHPWrapper/data/ISO_UNITS
 
 /*=======================================================================================
  *																						*
- *							PROTECTED ONTOLOGY LOADING INTERFACE						*
- *																						*
- *======================================================================================*/
-
-
-	 
-	/*===================================================================================
-	 *	_LoadUnitFile																	*
-	 *==================================================================================*/
-
-	/**
-	 * <h4>Load the provided unit file</h4>
-	 *
-	 * Unit files are XML files that feature a list of units which contain data for terms,
-	 * nodes, edges and tags. This method allows loading these files into the ontology.
-	 *
-	 * Note that there is no caching performed, so if you reference an object that has not
-	 * yet been loaded the method will fail.
-	 *
-	 * The file path parameter may be either a string or a list of strings.
-	 *
-	 * @param CDatabase				$theDatabase		Database container.
-	 * @param mixed					$theFilePath		Path to the units file.
-	 *
-	 * @access protected
-	 *
-	 * @throws Exception
-	 */
-	protected function _LoadUnitFile( CDatabase $theDatabase, $theFilePath )
-	{
-		//
-		// Handle list of files.
-		//
-		if( is_array( $theFilePath ) )
-		{
-			foreach( $theFilePath as $file )
-				$this->_ParseTerm( $theDatabase, $file );
-		
-		} // Provided list of files.
-		
-		//
-		// Handle file.
-		//
-		else
-		{
-			//
-			// Load XML file.
-			//
-			$xml = simplexml_load_file( $theFilePath );
-			if( $xml instanceof SimpleXMLElement )
-			{
-				//
-				// Iterate units.
-				//
-				foreach( $xml->{'unit'} as $unit )
-				{
-					//
-					// Locate term.
-					//
-					if( $unit->{'term'}->count() )
-					{
-						//
-						// Reference term.
-						//
-						$element = $unit->{'term'}[ 0 ];
-						
-						//
-						// Instantiate term object.
-						//
-						$term = new COntologyTerm();
-						
-						//
-						// Load local identifier.
-						//
-						if( $element[ 'kTAG_LID' ] !== NULL )
-							$this->_ParseTerm( $theDatabase, $element, $term );
-						
-						else
-							throw new Exception
-								( "Term is missing local identifier",
-								  kERROR_STATE );								// !@! ==>
-						
-						//
-						// Add term reference to node.
-						//
-						if( ($unit->{'node'} != NULL)
-						 && ($unit->{'node'}[ 0 ][ 'kTAG_GID' ] === NULL) )
-							$unit->{'node'}[ 0 ][ 'kTAG_GID' ] = $term[ kTAG_GID ];
-						
-						//
-						// Add term reference to tag.
-						//
-						if( $unit->{'tag'}->count()
-						 && ($unit->{'tag'}{'kTAG_PATH'} === NULL) )
-						{
-							$tmp = $unit->{'tag'}->addChild( 'kTAG_PATH' );
-							$tmp->addChild( 'item', $term[ kTAG_GID ] );
-						}
-					
-					} // Has term.
-					
-					else
-						$term = NULL;
-					
-					//
-					// Locate node.
-					//
-					if( $unit->{'node'}->count() )
-					{
-						//
-						// Reference node.
-						//
-						$element = $unit->{'node'}[ 0 ];
-						
-						//
-						// Instantiate node.
-						//
-						if( $element->{'kTAG_CLASS'} !== NULL )
-						{
-							$class = (string) $element->{'kTAG_CLASS'};
-							$node = new $class();
-						}
-						else
-							$node = new COntologyNode();
-						
-						//
-						// Load global identifier.
-						//
-						if( $element[ 'kTAG_GID' ] === NULL )
-						{
-							//
-							// Get it from term.
-							//
-							if( $term !== NULL )
-								$element[ 'kTAG_GID' ] = $term[ kTAG_GID ];
-							else
-								throw new Exception
-									( "Node is missing term global identifier",
-									  kERROR_STATE );							// !@! ==>
-						
-						} // Missing node term reference.
-						
-						//
-						// Parse node.
-						//
-						$this->_ParseNode( $theDatabase, $element, $node );
-					
-					} // Has node.
-					
-					//
-					// Locate edge.
-					//
-					if( $unit->{'edge'}->count() )
-					{
-						//
-						// Reference edge.
-						//
-						$element = $unit->{'edge'}[ 0 ];
-						
-						//
-						// Instantiate edge.
-						//
-						$edge = new COntologyEdge();
-						
-						//
-						// Parse edge.
-						//
-						$this->_ParseEdge( $theDatabase, $element, $edge );
-					
-					} // Has edge.
-					
-					//
-					// Locate tag.
-					//
-					if( $unit->{'tag'}->count() )
-					{
-						//
-						// Reference edge.
-						//
-						$element = $unit->{'tag'}[ 0 ];
-						
-						//
-						// Instantiate tag.
-						//
-						$tag = new COntologyTag();
-						
-						//
-						// Parse edge.
-						//
-						$this->_ParseTag( $theDatabase, $element, $tag );
-					
-					} // Has edge.
-				
-				} // Iterating units.
-			
-			} // Parsed successfully the file.
-			
-			else
-				throw new Exception
-					( "Unable to parse provided XML file",
-					  kERROR_PARAMETER );										// !@! ==>
-		
-		} // Provided single file path.
-
-	} // _LoadUnitFile.
-
-		
-
-/*=======================================================================================
- *																						*
  *							PROTECTED ONTOLOGY PARSING INTERFACE						*
  *																						*
  *======================================================================================*/
@@ -1477,11 +1589,11 @@ $this->_LoadUnitFile( $db, '/Library/WebServer/Library/PHPWrapper/data/ISO_UNITS
 					// Resolve object.
 					//
 					if( array_key_exists( $save, $_SESSION[ kOFFSET_NODES ] ) )
-						$theEdge->Object( $_SESSION[ kOFFSET_NODES ] [ $save ] );
+						$theEdge->Object( $_SESSION[ kOFFSET_NODES ][ $save ] );
 					else
 						throw new Exception
 							( "Object node not found [$save]",
-							  kERROR_STATE );											// !@! ==>
+							  kERROR_STATE );									// !@! ==>
 					
 					//
 					// Save edge.
@@ -1737,6 +1849,1220 @@ $this->_LoadUnitFile( $db, '/Library/WebServer/Library/PHPWrapper/data/ISO_UNITS
 		$id = $theTag->Insert( $theDatabase );
 
 	} // _ParseTag.
+
+		
+
+/*=======================================================================================
+ *																						*
+ *							PROTECTED ISO ONTOLOGY INTERFACE							*
+ *																						*
+ *======================================================================================*/
+
+
+	 
+	/*===================================================================================
+	 *	_ISODecodePOFiles																*
+	 *==================================================================================*/
+
+	/**
+	 * <h4>Decode PO files</h4>
+	 *
+	 * This method will parse all MO files, decode them into PO files and write to the
+	 * {@link kISO_FILE_PO_DIR} directory the PHP serialised decode array.
+	 *
+	 * @access protected
+	 *
+	 * @throws Exception
+	 */
+	protected function _ISODecodePOFiles()
+	{
+		//
+		// Init local storage.
+		//
+		$_SESSION[ kISO_LANGUAGES ] = Array();
+		
+		//
+		// Init files list.
+		// The order is important!!!
+		//
+		$_SESSION[ kISO_FILES ]
+			= array( kISO_FILE_639_3, kISO_FILE_639, kISO_FILE_3166,
+					 kISO_FILE_3166_2, kISO_FILE_4217, kISO_FILE_15924 );
+		
+		//
+		// Point to MO files.
+		//
+		$_SESSION[ kISO_FILE_MO_DIR ] = kISO_CODES_PATH.kISO_CODES_PATH_LOCALE;
+		$moditer = new DirectoryIterator( $_SESSION[ kISO_FILE_MO_DIR ] );
+
+		//
+		// Create temporary directory.
+		//
+		if( kOPTION_VERBOSE )
+			echo( "    - Decoding PO files\n" );
+		$_SESSION[ kISO_FILE_PO_DIR ] = tempnam( sys_get_temp_dir(), '' );
+		if( file_exists( $_SESSION[ kISO_FILE_PO_DIR ] ) )
+			unlink( $_SESSION[ kISO_FILE_PO_DIR ] );
+		mkdir( $_SESSION[ kISO_FILE_PO_DIR ] );
+		if( ! is_dir( $_SESSION[ kISO_FILE_PO_DIR ] ) )
+			throw new Exception
+				( "Unable to create temporary PO directory",
+				  kERROR_STATE );												// !@! ==>
+		$_SESSION[ kISO_FILE_PO_DIR ]
+			= realpath( $_SESSION[ kISO_FILE_PO_DIR ] );
+		
+		//
+		// Iterate languages.
+		//
+		foreach( $moditer as $language )
+		{
+			//
+			// Handle valid directories.
+			//
+			if( $language->isDir()
+			 && (! $language->isDot()) )
+			{
+				//
+				// Save language code.
+				//
+				$code = $language->getBasename();
+				$_SESSION[ kISO_LANGUAGES ][] = $code;
+				if( kOPTION_VERBOSE )
+					echo( "      $code\n" );
+				
+				//
+				// Create language directory.
+				//
+				$dir = $_SESSION[ kISO_FILE_PO_DIR ]."/$code";
+				DeleteFileDir( $dir );
+				mkdir( $dir );
+				if( ! is_dir( $dir ) )
+					throw new Exception
+						( "Unable to create temporary language directory",
+						  kERROR_STATE );										// !@! ==>
+				
+				//
+				// Iterate files.
+				//
+				$mofiter = new DirectoryIterator
+					( $language->getRealPath().kISO_CODES_PATH_MSG );
+				foreach( $mofiter as $file )
+				{
+					//
+					// Skip invisible files.
+					//
+					$name = $file->getBasename( '.mo' );
+					if( ! $file->isDot()
+					 && in_array( $name, $_SESSION[ kISO_FILES ] ) )
+					{
+						//
+						// Create filenames.
+						//
+						$filename_po = realpath( $dir )."/$name.po";
+						$filename_key = realpath( $dir )."/$name.serial";
+						
+						//
+						// Convert to PO.
+						//
+						$source = $file->getRealPath();
+						exec( "msgunfmt -o \"$filename_po\" \"$source\"" );
+						
+						//
+						// Convert to key.
+						//
+						file_put_contents(
+							$filename_key,
+							serialize( PO2Array( $filename_po ) ) );
+					
+					} // Workable file.
+				
+				} // Iterating files.
+			
+			} // Valid directory.
+		
+		} // Iterating languages.
+		
+	} // _ISODecodePOFiles.
+
+	 
+	/*===================================================================================
+	 *	_ISOParseXMLFiles																*
+	 *==================================================================================*/
+
+	/**
+	 * <h4>Parse XML files</h4>
+	 *
+	 * This method will parse the XML files and store the data in the database.
+	 *
+	 * @param CDatabase				$theDatabase		Database container.
+	 *
+	 * @access protected
+	 *
+	 * @throws Exception
+	 */
+	protected function _ISOParseXMLFiles( CDatabase $theDatabase )
+	{
+		//
+		// Iterate known fiels.
+		//
+		if( kOPTION_VERBOSE )
+			echo( "    - Parsing XML files\n" );
+		foreach( $_SESSION[ kISO_FILES ] as $file )
+		{
+			//
+			// Inform.
+			//
+			if( kOPTION_VERBOSE )
+				echo( "      $file\n" );
+				
+			//
+			// Parse by file.
+			//
+			switch( $file )
+			{
+				case kISO_FILE_639_3:
+					$this->_ISOParse6393XML( $theDatabase );
+					break;
+					
+				case kISO_FILE_639:
+					$this->_ISOParse639XML( $theDatabase );
+					break;
+					
+				case kISO_FILE_3166:
+					$this->_ISOParse3166XML( $theDatabase );
+					break;
+					
+				case kISO_FILE_3166_2:
+					$this->_ISOParse31662XML( $theDatabase );
+					break;
+					
+				case kISO_FILE_4217:
+					$this->_ISOParse4217XML( $theDatabase );
+					break;
+					
+				case kISO_FILE_15924:
+					$this->_ISOParse15924XML( $theDatabase );
+					break;
+			}
+		
+		} // Iterating the files.
+		
+	} // _ISOParseXMLFiles.
+
+	 
+	/*===================================================================================
+	 *	_ISOParse6393XML																*
+	 *==================================================================================*/
+
+	/**
+	 * <h4>Parse ISO 639-3 XML files</h4>
+	 *
+	 * This method will parse the XML ISO 639-3 files.
+	 *
+	 * The method will load the following attributes:
+	 *
+	 * <ul>
+	 *	<li><tt>ISO:639:1</tt>: Part 1 code [<tt>part1_code</tt>].
+	 *	<li><tt>ISO:639:2</tt>: Part 2 code [<tt>part2_code</tt>].
+	 *	<li><tt>ISO:639:3</tt>: Part 3 code [<tt>id</tt>].
+	 *	<li><tt>ISO:639:status</tt>: Status [<tt>status</tt>].
+	 *	<li><tt>ISO:639:scope</tt>: Scope [<tt>scope</tt>].
+	 *	<li><tt>ISO:639:type</tt>: Type [<tt>type</tt>].
+	 *	<li><tt>ISO:639:inverted_name</tt>: Inverted name [<tt>inverted_name</tt>].
+	 *	<li><tt>ISO:639:common_name</tt>: Common name [<tt>common_name</tt>].
+	 *	<li><tt>{@link kTAG_LABEL}/tt>: Label <tt>name</tt> [<tt>name</tt>].
+	 *	<li><tt>{@link kTAG_DEFINITION}/tt>: Definition [<tt>reference_name</tt>].
+	 * </ul>
+	 *
+	 * @param CDatabase				$theDatabase		Database container.
+	 *
+	 * @access protected
+	 *
+	 * @throws Exception
+	 */
+	protected function _ISOParse6393XML( CDatabase $theDatabase )
+	{
+		//
+		// Load XML file.
+		//
+		$file = kISO_CODES_PATH.kISO_CODES_PATH_XML.'/'.kISO_FILE_639_3.'.xml';
+		$xml = simplexml_load_file( $file  );
+		if( $xml instanceof SimpleXMLElement )
+		{
+			//
+			// Inform.
+			//
+			if( kOPTION_VERBOSE )
+				echo( "        • ISO 639 1, 2, 3\n" );
+			
+			//
+			// Resolve namespaces.
+			//
+			$ns1 = COntologyTerm::Resolve( $theDatabase, '1', 'ISO:639', TRUE );
+			$ns2 = COntologyTerm::Resolve( $theDatabase, '2', 'ISO:639', TRUE );
+			$ns3 = COntologyTerm::Resolve( $theDatabase, '3', 'ISO:639', TRUE );
+			
+			//
+			// Resolve tags.
+			//
+			$tag_status =
+				COntologyTag::Resolve( $theDatabase, 'ISO:639:status', TRUE );
+			$tag_scope =
+				COntologyTag::Resolve( $theDatabase, 'ISO:639:scope', TRUE );
+			$tag_type =
+				COntologyTag::Resolve( $theDatabase, 'ISO:639:type', TRUE );
+			$tag_inverted_name =
+				COntologyTag::Resolve( $theDatabase, 'ISO:639:inverted_name', TRUE );
+			$tag_common_name
+				= COntologyTag::Resolve( $theDatabase, 'ISO:639:common_name', TRUE );
+			
+			//
+			// Resolve Parents.
+			//
+			$par1 = COntologyMasterVertex::Resolve( $theDatabase, 'ISO:639:1', TRUE );
+			$par2 = COntologyMasterVertex::Resolve( $theDatabase, 'ISO:639:2', TRUE );
+			$par3 = COntologyMasterVertex::Resolve( $theDatabase, 'ISO:639:3', TRUE );
+			
+			//
+			// Resolve predicates.
+			//
+			$xref
+				= COntologyTerm::Resolve(
+					$theDatabase, kPREDICATE_XREF, NULL, TRUE );
+			$enum_of
+				= COntologyTerm::Resolve(
+					$theDatabase, kPREDICATE_ENUM_OF, NULL, TRUE );
+			$xref_ex
+				= COntologyTerm::Resolve(
+					$theDatabase, kPREDICATE_XREF_EXACT, NULL, TRUE );
+			
+			//
+			// Iterate XML file.
+			//
+			foreach( $xml->{'iso_639_3_entry'} as $record )
+			{
+				//
+				// Check identifier.
+				//
+				if( $record[ 'id' ] !== NULL )
+				{
+					//
+					// Save local identifier.
+					//
+					$id = (string) $record[ 'id' ];
+					
+					//
+					// Resolve term.
+					//
+					if( COntologyTerm::Resolve( $theDatabase, $id, $ns3 ) === NULL )
+					{
+						//
+						// Instantiate part 3 term.
+						//
+						$term3 = new COntologyTerm();
+						
+						//
+						// Load default attributes.
+						//
+						$term3->NS( $ns3 );
+						$term3->LID( $id );
+						$term3->Kind( kKIND_ENUMERATION, TRUE );
+						
+						//
+						// Load custom language string attributes.
+						//
+						if( $record[ 'name' ] !== NULL )
+							$term3->Label( 'en',
+										   (string) $record[ 'name' ] );
+						if( $record[ 'reference_name' ] !== NULL )
+							$term3->Definition( 'en',
+												(string) $record[ 'reference_name' ] );
+						if( $record[ 'inverted_name' ] !== NULL )
+							$term3[ $tag_inverted_name->NID() ]
+								= array( 'en' => (string) $record[ 'inverted_name' ] );
+						if( $record[ 'common_name' ] !== NULL )
+							$term3[ $tag_common_name->NID() ]
+								= array( 'en' => (string) $record[ 'common_name' ] );
+						
+						//
+						// Load status.
+						//
+						if( ($record[ 'status' ] !== NULL)
+						 && strlen( $en = trim( (string) $record[ 'status' ] ) ) )
+							$term3[ $tag_status->NID() ] = $en;
+						
+						//
+						// Load custom enumerations.
+						//
+						if( ($record[ 'scope' ] !== NULL)
+						 && strlen( $en = trim( (string) $record[ 'scope' ] ) ) )
+						{
+							//
+							// Handle the "L" scope.
+							//
+							if( $en == 'L' )
+								$en = 'R';
+							
+							//
+							// Check enumeration.
+							//
+							if( COntologyTerm::Resolve(
+									$theDatabase, $en, $tag_scope->GID() ) !== NULL )
+								$term3[ $tag_scope->NID() ]
+									= $tag_scope->GID().kTOKEN_NAMESPACE_SEPARATOR.$en;
+							elseif( kOPTION_VERBOSE )
+								echo( "          ! $id - scope - $en\n" );
+						}
+						if( ($record[ 'type' ] !== NULL)
+						 && strlen( $en = trim( (string) $record[ 'type' ] ) ) )
+						{
+							//
+							// Handle Genetic, Ancient.
+							//
+							if( $en == 'Genetic, Ancient' )
+								$term3[ $tag_type->NID() ]
+									= array( ($tag_type->GID()
+											 .kTOKEN_NAMESPACE_SEPARATOR
+											 .'Genetic'),
+											($tag_type->GID()
+											 .kTOKEN_NAMESPACE_SEPARATOR
+											 .'A') );
+							//
+							// Check enumeration.
+							//
+							else
+							{
+								if( COntologyTerm::Resolve(
+										$theDatabase, $en, $tag_type->GID() ) !== NULL )
+									$term3[ $tag_type->NID() ]
+										= $tag_type->GID().kTOKEN_NAMESPACE_SEPARATOR.$en;
+								elseif( kOPTION_VERBOSE )
+									echo( "          ! $id - type - $en\n" );
+							}
+						}
+						
+						//
+						// Collect language strings.
+						//
+						$this->_ISOCollectLanguageStrings(
+							$term3,
+							array( kTAG_LABEL, kTAG_DEFINITION,
+								   (string) $tag_inverted_name->NID(),
+								   (string) $tag_common_name->NID() ) );
+						
+						//
+						// Save term.
+						//
+						$term3->Insert( $theDatabase );
+						
+						//
+						// Create node.
+						//
+						$node3 = new COntologyMasterVertex();
+						$node3->Kind( kKIND_ENUMERATION, TRUE );
+						$node3->Term( $term3 );
+						$node3->Insert( $theDatabase );
+						
+						//
+						// Relate to parent.
+						//
+						$edge = new COntologyEdge();
+						$edge->Subject( $node3 );
+						$edge->Predicate( $enum_of );
+						$edge->Object( $par3 );
+						$edge->Insert( $theDatabase );
+						
+						//
+						// Handle part 1.
+						//
+						if( $record[ 'part1_code' ] !== NULL )
+						{
+							//
+							// Check part 1 term.
+							//
+							if( ($term1 = COntologyTerm::Resolve(
+									$theDatabase, (string) $record[ 'part1_code' ], $ns1 ))
+										=== NULL )
+							{
+								//
+								// Instantiate part 1 term.
+								//
+								$term1 = new COntologyTerm();
+								$term1->NS( $ns1 );
+								$term1->LID( (string) $record[ 'part1_code' ] );
+								$term1->Kind( kKIND_ENUMERATION, TRUE );
+								$term1->Term( $term3 );
+								$term1->Insert( $theDatabase );
+								
+								//
+								// Instantiate part 1 node.
+								//
+								$node1 = new COntologyMasterVertex();
+								$node1->Kind( kKIND_ENUMERATION, TRUE );
+								$node1->Term( $term1 );
+								$node1->Insert( $theDatabase );
+								
+								//
+								// Relate to parent.
+								//
+								$edge = new COntologyEdge();
+								$edge->Subject( $node1 );
+								$edge->Predicate( $enum_of );
+								$edge->Object( $par1 );
+								$edge->Insert( $theDatabase );
+							
+							} // New part 1.
+							
+							//
+							// Resolve part 1 node.
+							//
+							else
+								$node1
+									= COntologyMasterVertex::NewObject(
+										$theDatabase, $term1[ kTAG_NODES ][ 0 ] );
+							
+							//
+							// Relate to part 3.
+							//
+							$edge = new COntologyEdge();
+							$edge->Subject( $node1 );
+							$edge->Predicate( $xref_ex );
+							$edge->Object( $node3 );
+							$edge->Insert( $theDatabase );
+							
+						} // Provided part 1.
+						
+						else
+							$node1 = NULL;
+						
+						//
+						// Handle part 2.
+						//
+						if( $record[ 'part2_code' ] !== NULL )
+						{
+							//
+							// Check part 2 term.
+							//
+							if( ($term2 = COntologyTerm::Resolve(
+									$theDatabase, (string) $record[ 'part2_code' ], $ns2 ))
+										=== NULL )
+							{
+								//
+								// Instantiate part 1 term.
+								//
+								$term2 = new COntologyTerm();
+								$term2->NS( $ns2 );
+								$term2->LID( (string) $record[ 'part2_code' ] );
+								$term2->Kind( kKIND_ENUMERATION, TRUE );
+								$term2->Term( $term3 );
+								$term2->Insert( $theDatabase );
+								
+								//
+								// Instantiate part 1 node.
+								//
+								$node2 = new COntologyMasterVertex();
+								$node2->Kind( kKIND_ENUMERATION, TRUE );
+								$node2->Term( $term2 );
+								$node2->Insert( $theDatabase );
+								
+								//
+								// Relate to parent.
+								//
+								$edge = new COntologyEdge();
+								$edge->Subject( $node2 );
+								$edge->Predicate( $enum_of );
+								$edge->Object( $par2 );
+								$edge->Insert( $theDatabase );
+							
+							} // New part 2.
+							
+							//
+							// Resolve part 2 node.
+							//
+							else
+								$node2
+									= COntologyMasterVertex::NewObject(
+										$theDatabase, $term2[ kTAG_NODES ][ 0 ] );
+							
+							//
+							// Relate to part 3.
+							//
+							$edge = new COntologyEdge();
+							$edge->Subject( $node2 );
+							$edge->Predicate( $xref_ex );
+							$edge->Object( $node3 );
+							$edge->Insert( $theDatabase );
+							
+						} // Provided part 2.
+						
+						else
+							$node2 = NULL;
+						
+						//
+						// Handle part 1 cross references.
+						//
+						if( $node1 !== NULL )
+						{
+							//
+							// Cross reference part 1 from part 3.
+							//
+							$edge = new COntologyEdge();
+							$edge->Subject( $node3 );
+							$edge->Predicate( $xref );
+							$edge->Object( $node1 );
+							$edge->Insert( $theDatabase );
+						
+							//
+							// Cross reference part 1 from part 2.
+							//
+							if( $node2 !== NULL )
+							{
+								$edge = new COntologyEdge();
+								$edge->Subject( $node2 );
+								$edge->Predicate( $xref );
+								$edge->Object( $node1 );
+								$edge->Insert( $theDatabase );
+							
+							} // Has part 2 code.
+						
+						} // Has part 1 code.
+						
+						//
+						// Handle part 2 cross references.
+						//
+						if( $node2 !== NULL )
+						{
+							//
+							// Cross reference part 2 from part 3.
+							//
+							$edge = new COntologyEdge();
+							$edge->Subject( $node3 );
+							$edge->Predicate( $xref );
+							$edge->Object( $node2 );
+							$edge->Insert( $theDatabase );
+						
+							//
+							// Cross reference part 2 from part 1.
+							//
+							if( $node1 !== NULL )
+							{
+								$edge = new COntologyEdge();
+								$edge->Subject( $node1 );
+								$edge->Predicate( $xref );
+								$edge->Object( $node2 );
+								$edge->Insert( $theDatabase );
+							
+							} // Has part 1 code.
+						
+						} // Has part 2 code.
+					
+					} // New record.
+					
+					elseif( kOPTION_VERBOSE )
+						echo( "          ! $id\n" );
+				
+				} // Has record identifier.
+			
+			} // Iterating entries.
+		
+		} // Loaded file.
+		
+		else
+			throw new Exception
+				( "Unable to load XML file [$file]",
+				  kERROR_STATE );											// !@! ==>
+		
+	} // _ISOParse6393XML.
+
+	 
+	/*===================================================================================
+	 *	_ISOParse639XML																	*
+	 *==================================================================================*/
+
+	/**
+	 * <h4>Parse ISO 639 XML files</h4>
+	 *
+	 * This method will parse the XML ISO 639 files.
+	 *
+	 * The method will load the following attributes:
+	 *
+	 * <ul>
+	 *	<li><tt>ISO:639:1</tt>: Part 1 code [<tt>iso_639_1_code</tt>] (as reference).
+	 *	<li><tt>ISO:639:2B</tt>: Part 2B code [<tt>iso_639_2B_code</tt>].
+	 *	<li><tt>ISO:639:2T</tt>: Part 2T code [<tt>iso_639_2T_code</tt>].
+	 *	<li><tt>ISO:639:inverted_name</tt>: Inverted name [<tt>inverted_name</tt>].
+	 *	<li><tt>{@link kTAG_LABEL}/tt>: Label <tt>name</tt> [<tt>name</tt>]. This is used
+	 *		only if the part 1 code is not found.
+	 *	<li><tt>{@link kTAG_DEFINITION}/tt>: Definition [<tt>reference_name</tt>]. This is used
+	 *		only if the part 1 code is not found.
+	 * </ul>
+	 *
+	 * @param CDatabase				$theDatabase		Database container.
+	 *
+	 * @access protected
+	 *
+	 * @throws Exception
+	 */
+	protected function _ISOParse639XML( CDatabase $theDatabase )
+	{
+		//
+		// Load XML file.
+		//
+		$file = kISO_CODES_PATH.kISO_CODES_PATH_XML.'/'.kISO_FILE_639.'.xml';
+		$xml = simplexml_load_file( $file  );
+		if( $xml instanceof SimpleXMLElement )
+		{
+			//
+			// Inform.
+			//
+			if( kOPTION_VERBOSE )
+				echo( "        • ISO 639 2B, 2T\n" );
+			
+			//
+			// Resolve namespaces.
+			//
+			$ns1 = COntologyTerm::Resolve( $theDatabase, '1', 'ISO:639', TRUE );
+			$ns2b = COntologyTerm::Resolve( $theDatabase, '2B', 'ISO:639', TRUE );
+			$ns2t = COntologyTerm::Resolve( $theDatabase, '2T', 'ISO:639', TRUE );
+			
+			//
+			// Resolve Parents.
+			//
+			$par1 = COntologyMasterVertex::Resolve( $theDatabase, 'ISO:639:1', TRUE );
+			$par2b = COntologyMasterVertex::Resolve( $theDatabase, 'ISO:639:2B', TRUE );
+			$par2t = COntologyMasterVertex::Resolve( $theDatabase, 'ISO:639:2T', TRUE );
+			
+			//
+			// Resolve predicates.
+			//
+			$xref
+				= COntologyTerm::Resolve(
+					$theDatabase, kPREDICATE_XREF, NULL, TRUE );
+			$enum_of
+				= COntologyTerm::Resolve(
+					$theDatabase, kPREDICATE_ENUM_OF, NULL, TRUE );
+			$xref_ex
+				= COntologyTerm::Resolve(
+					$theDatabase, kPREDICATE_XREF_EXACT, NULL, TRUE );
+			
+			//
+			// Iterate XML file.
+			//
+			foreach( $xml->{'iso_639_entry'} as $record )
+			{
+				//
+				// Init local storage.
+				//
+				$node1 = $node2B = $node2T = $node3 = NULL;
+				
+				//
+				// Handle part 1.
+				//
+				if( $record[ 'iso_639_1_code' ] !== NULL )
+				{
+					//
+					// Check part 1 term.
+					//
+					if( ($term1 = COntologyTerm::Resolve(
+							$theDatabase, (string) $record[ 'iso_639_1_code' ], $ns1 ))
+								=== NULL )
+					{
+						//
+						// Instantiate part 1 term.
+						//
+						$term1 = new COntologyTerm();
+						$term1->NS( $ns1 );
+						$term1->LID( (string) $record[ 'iso_639_1_code' ] );
+						$term1->Kind( kKIND_ENUMERATION, TRUE );
+						if( $record[ 'name' ] !== NULL )
+							$term1->Label( 'en',
+										   (string) $record[ 'name' ] );
+						if( $record[ 'common_name' ] !== NULL )
+							$term1->Definition( 'en',
+												(string) $record[ 'common_name' ] );
+						
+						//
+						// Collect language strings.
+						//
+						$this->_ISOCollectLanguageStrings(
+							$term1,
+							array( kTAG_LABEL, kTAG_DEFINITION ) );
+						
+						//
+						// Save term.
+						//
+						$term1->Insert( $theDatabase );
+						
+						//
+						// Instantiate part 1 node.
+						//
+						$node1 = new COntologyMasterVertex();
+						$node1->Kind( kKIND_ENUMERATION, TRUE );
+						$node1->Term( $term1 );
+						$node1->Insert( $theDatabase );
+						
+						//
+						// Relate to parent.
+						//
+						$edge = new COntologyEdge();
+						$edge->Subject( $node1 );
+						$edge->Predicate( $enum_of );
+						$edge->Object( $par1 );
+						$edge->Insert( $theDatabase );
+					
+					} // New part 1.
+					
+					//
+					// Resolve part 1 node.
+					//
+					else
+					{
+						//
+						// Instantiate part 1 node.
+						//
+						$node1
+							= COntologyMasterVertex::Resolve(
+								$theDatabase, $term1->NID() );
+						
+						//
+						// Resolve eventual part 3 node.
+						//
+						if( ($ref = $term1->Term()) !== NULL )
+							$node3
+								= COntologyMasterVertex::Resolve(
+									$theDatabase, $ref, TRUE );
+					
+					} // Existing part 1.
+					
+				} // Provided part 1.
+
+				//
+				// Handle part 2B.
+				//
+				if( $record[ 'iso_639_2B_code' ] !== NULL )
+				{
+					//
+					// Check part 2B term.
+					//
+					if( ($term2b = COntologyTerm::Resolve(
+							$theDatabase, (string) $record[ 'iso_639_2B_code' ], $ns2b ))
+								=== NULL )
+					{
+						//
+						// Instantiate part 2b term.
+						//
+						$term2b = new COntologyTerm();
+						$term2b->NS( $ns2b );
+						$term2b->LID( (string) $record[ 'iso_639_2B_code' ] );
+						$term2b->Kind( kKIND_ENUMERATION, TRUE );
+						
+						//
+						// Relate term.
+						//
+						if( $node3 !== NULL )
+							$term2b->Term( $node3->Term() );
+						elseif( $node1 !== NULL )
+							$term2b->Term( $node1->Term() );
+						
+						//
+						// Complete term.
+						//
+						else
+						{
+							//
+							// Set base names.
+							//
+							if( $record[ 'name' ] !== NULL )
+								$term2b->Label( 'en',
+												(string) $record[ 'name' ] );
+							if( $record[ 'common_name' ] !== NULL )
+								$term2b->Definition( 'en',
+													 (string) $record[ 'common_name' ] );
+							
+							//
+							// Collect language strings.
+							//
+							$this->_ISOCollectLanguageStrings(
+								$term2b,
+								array( kTAG_LABEL, kTAG_DEFINITION ) );
+						
+						} // Unrelated term.
+						
+						//
+						// Save term.
+						//
+						$term2b->Insert( $theDatabase );
+						
+						//
+						// Instantiate part 2B node.
+						//
+						$node2b = new COntologyMasterVertex();
+						$node2b->Kind( kKIND_ENUMERATION, TRUE );
+						$node2b->Term( $term2b );
+						$node2b->Insert( $theDatabase );
+						
+						//
+						// Relate to parent.
+						//
+						$edge = new COntologyEdge();
+						$edge->Subject( $node2b );
+						$edge->Predicate( $enum_of );
+						$edge->Object( $par2b );
+						$edge->Insert( $theDatabase );
+					
+					} // New part 2B term.
+					
+					//
+					// Resolve part 2B node.
+					//
+					else
+						$node2b
+							= COntologyMasterVertex::Resolve(
+								$theDatabase, $term2b->NID() );
+					
+				} // Provided part 2B.
+
+				//
+				// Handle part 2T.
+				//
+				if( $record[ 'iso_639_2T_code' ] !== NULL )
+				{
+					//
+					// Check part 2T term.
+					//
+					if( ($term2t = COntologyTerm::Resolve(
+							$theDatabase, (string) $record[ 'iso_639_2T_code' ], $ns2t ))
+								=== NULL )
+					{
+						//
+						// Instantiate part 2t term.
+						//
+						$term2t = new COntologyTerm();
+						$term2t->NS( $ns2t );
+						$term2t->LID( (string) $record[ 'iso_639_2T_code' ] );
+						$term2t->Kind( kKIND_ENUMERATION, TRUE );
+						
+						//
+						// Relate term.
+						//
+						if( $node3 !== NULL )
+							$term2t->Term( $node3->Term() );
+						elseif( $node1 !== NULL )
+							$term2t->Term( $node1->Term() );
+						
+						//
+						// Complete term.
+						//
+						else
+						{
+							//
+							// Set base names.
+							//
+							if( $record[ 'name' ] !== NULL )
+								$term2t->Label( 'en',
+												(string) $record[ 'name' ] );
+							if( $record[ 'common_name' ] !== NULL )
+								$term2t->Definition( 'en',
+													 (string) $record[ 'common_name' ] );
+							
+							//
+							// Collect language strings.
+							//
+							$this->_ISOCollectLanguageStrings(
+								$term2t,
+								array( kTAG_LABEL, kTAG_DEFINITION ) );
+						
+						} // Unrelated term.
+						
+						//
+						// Save term.
+						//
+						$term2t->Insert( $theDatabase );
+						
+						//
+						// Instantiate part 2B node.
+						//
+						$node2t = new COntologyMasterVertex();
+						$node2t->Kind( kKIND_ENUMERATION, TRUE );
+						$node2t->Term( $term2b );
+						$node2t->Insert( $theDatabase );
+						
+						//
+						// Relate to parent.
+						//
+						$edge = new COntologyEdge();
+						$edge->Subject( $node2t );
+						$edge->Predicate( $enum_of );
+						$edge->Object( $par2t );
+						$edge->Insert( $theDatabase );
+					
+					} // New part 2T term.
+					
+					//
+					// Resolve part 2T node.
+					//
+					else
+						$node2t
+							= COntologyMasterVertex::Resolve(
+								$theDatabase, $term2T->NID() );
+					
+				} // Provided part 2T.
+				
+				//
+				// Handle part 2B.
+				//
+				if( $node2B !== NULL )
+				{
+					//
+					// Relate to part 3.
+					//
+					if( $node3 !== NULL )
+					{
+						$edge = new COntologyEdge();
+						$edge->Subject( $node2B );
+						$edge->Predicate( $xref_ex );
+						$edge->Object( $node3 );
+						$edge->Insert( $theDatabase );
+					}
+					
+					//
+					// Relate to part 1.
+					//
+					elseif( $node1 !== NULL )
+					{
+						$edge = new COntologyEdge();
+						$edge->Subject( $node2B );
+						$edge->Predicate( $xref_ex );
+						$edge->Object( $node1 );
+						$edge->Insert( $theDatabase );
+					}
+					
+					//
+					// Cross reference part 2T.
+					//
+					if( $node2T !== NULL )
+					{
+						$edge = new COntologyEdge();
+						$edge->Subject( $node2B );
+						$edge->Predicate( $xref );
+						$edge->Object( $node2T );
+						$edge->Insert( $theDatabase );
+					
+					} // Has part 2T.
+				
+				} // Has part 2B.
+				
+				//
+				// Handle part 2T.
+				//
+				if( $node2T !== NULL )
+				{
+					//
+					// Relate to part 3.
+					//
+					if( $node3 !== NULL )
+					{
+						$edge = new COntologyEdge();
+						$edge->Subject( $node2T );
+						$edge->Predicate( $xref_ex );
+						$edge->Object( $node3 );
+						$edge->Insert( $theDatabase );
+					}
+					
+					//
+					// Relate to part 1.
+					//
+					elseif( $node1 !== NULL )
+					{
+						$edge = new COntologyEdge();
+						$edge->Subject( $node2T );
+						$edge->Predicate( $xref_ex );
+						$edge->Object( $node1 );
+						$edge->Insert( $theDatabase );
+					}
+					
+					//
+					// Cross reference part 2B.
+					//
+					if( $node2T !== NULL )
+					{
+						$edge = new COntologyEdge();
+						$edge->Subject( $node2T );
+						$edge->Predicate( $xref );
+						$edge->Object( $node2B );
+						$edge->Insert( $theDatabase );
+					
+					} // Has part 2B.
+				
+				} // Has part 2T.
+			
+			} // Iterating entries.
+		
+		} // Loaded file.
+		
+		else
+			throw new Exception
+				( "Unable to load XML file [$file]",
+				  kERROR_STATE );											// !@! ==>
+		
+	} // _ISOParse639XML.
+
+	 
+	/*===================================================================================
+	 *	_ISOParse3166XML																*
+	 *==================================================================================*/
+
+	/**
+	 * <h4>Parse ISO 3166-1 and 3166-3 XML file</h4>
+	 *
+	 * This method will parse the XML ISO 3166-1 and 3166-3 file.
+	 *
+	 * @param CDatabase				$theDatabase		Database container.
+	 *
+	 * @access protected
+	 *
+	 * @throws Exception
+	 */
+	protected function _ISOParse3166XML( CDatabase $theDatabase )
+	{
+		
+	} // _ISOParse3166XML.
+
+	 
+	/*===================================================================================
+	 *	_ISOParse31662XML																*
+	 *==================================================================================*/
+
+	/**
+	 * <h4>Parse ISO 3166-2 XML file</h4>
+	 *
+	 * This method will parse the XML ISO 3166-2 file.
+	 *
+	 * @param CDatabase				$theDatabase		Database container.
+	 *
+	 * @access protected
+	 *
+	 * @throws Exception
+	 */
+	protected function _ISOParse31662XML( CDatabase $theDatabase )
+	{
+		
+	} // _ISOParse31662XML.
+
+	 
+	/*===================================================================================
+	 *	_ISOParse4217XML																*
+	 *==================================================================================*/
+
+	/**
+	 * <h4>Parse ISO 4217 XML file</h4>
+	 *
+	 * This method will parse the XML ISO 4217 file.
+	 *
+	 * @param CDatabase				$theDatabase		Database container.
+	 *
+	 * @access protected
+	 *
+	 * @throws Exception
+	 */
+	protected function _ISOParse4217XML( CDatabase $theDatabase )
+	{
+		
+	} // _ISOParse4217XML.
+
+	 
+	/*===================================================================================
+	 *	_ISOParse15924XML																*
+	 *==================================================================================*/
+
+	/**
+	 * <h4>Parse ISO 15924 XML file</h4>
+	 *
+	 * This method will parse the XML ISO 15924 file.
+	 *
+	 * @param CDatabase				$theDatabase		Database container.
+	 *
+	 * @access protected
+	 *
+	 * @throws Exception
+	 */
+	protected function _ISOParse15924XML( CDatabase $theDatabase )
+	{
+		
+	} // _ISOParse15924XML.
+
+	 
+	/*===================================================================================
+	 *	_ISOCollectLanguageStrings														*
+	 *==================================================================================*/
+
+	/**
+	 * <h4>Collect language strings</h4>
+	 *
+	 * This method will iterate all language files and add the corresponding language
+	 * strings to the provided object.
+	 *
+	 * The method expects two parameters: the object to be updated and an array of tags to
+	 * be checked.
+	 *
+	 * @param CPersistentObject		$theObject			Object to be updated.
+	 * @param array					$theTags			List of tags to check.
+	 *
+	 * @access protected
+	 */
+	protected function _ISOCollectLanguageStrings( CPersistentObject $theObject, $theTags )
+	{
+		//
+		// Collect attribute references.
+		//
+		$attributes = Array();
+		foreach( $theTags as $tag )
+			$attributes[ $tag ] = $theObject->offsetGet( $tag );
+		
+		//
+		// Iterate languages.
+		//
+		foreach( $_SESSION[ kISO_LANGUAGES ] as $language )
+		{
+			//
+			// Check language file.
+			//
+			$file_path = $_SESSION[ kISO_FILE_PO_DIR ]."/$language/"
+						.kISO_FILE_639_3.'.serial';
+			if( is_file( $file_path ) )
+			{
+				//
+				// Instantiate keys array.
+				//
+				$keys = unserialize( file_get_contents( $file_path ) );
+				
+				//
+				// Iterate attributes.
+				//
+				foreach( $theTags as $tag )
+				{
+					if( $attributes[ $tag ] !== NULL )
+					{
+						$key = $attributes[ $tag ][ 'en' ];
+						if( array_key_exists( $key, $keys ) )
+							$attributes[ $tag ][ $language ] = $keys[ $key ];
+					}
+				}
+			
+			} // Language file exists.
+		
+		} // Iterating languages.
+		
+		//
+		// Update object.
+		//
+		foreach( $theTags as $tag )
+		{
+			if( $attributes[ $tag ] !== NULL )
+				$theObject->offsetSet( $tag, $attributes[ $tag ] );
+		}
+		
+	} // _ISOCollectLanguageStrings.
 
 	 
 

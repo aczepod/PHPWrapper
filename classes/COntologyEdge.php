@@ -260,7 +260,7 @@ class COntologyEdge extends CEdge
 			//
 			if( $this->mSubject === NULL )
 				throw new Exception
-					( "Subject vertex node not found",
+					( "Subject vertex node [$node] not found",
 					  kERROR_STATE );											// !@! ==>
 		
 		} // Has term.
@@ -1337,14 +1337,21 @@ class COntologyEdge extends CEdge
 			if( ! $this->_IsCommitted() )
 			{
 				//
-				// Add current edge reference to subject vertex referenced.
+				// Check switch.
 				//
-				$this->_ReferenceInSubject( $theConnection, TRUE );
+				if( kSWITCH_kTAG_EDGES )
+				{
+					//
+					// Add current edge reference to subject vertex referenced.
+					//
+					$this->_ReferenceInSubject( $theConnection, TRUE );
+					
+					//
+					// Add current edge reference to object vertex referenced.
+					//
+					$this->_ReferenceInObject( $theConnection, TRUE );
 				
-				//
-				// Add current edge reference to object vertex referenced.
-				//
-				$this->_ReferenceInObject( $theConnection, TRUE );
+				} // Switch enabled.
 				
 			} // Not yet committed.
 		
@@ -1356,14 +1363,21 @@ class COntologyEdge extends CEdge
 		elseif( $theModifiers & kFLAG_PERSIST_DELETE )
 		{
 			//
-			// Remove current edge reference from subject vertex referenced.
+			// Check switch.
 			//
-			$this->_ReferenceInSubject( $theConnection, FALSE );
+			if( kSWITCH_kTAG_EDGES )
+			{
+				//
+				// Remove current edge reference from subject vertex referenced.
+				//
+				$this->_ReferenceInSubject( $theConnection, FALSE );
+				
+				//
+				// Remove current edge reference from object vertex referenced.
+				//
+				$this->_ReferenceInObject( $theConnection, FALSE );
 			
-			//
-			// Remove current edge reference from object vertex referenced.
-			//
-			$this->_ReferenceInObject( $theConnection, FALSE );
+			} // Switch enabled.
 		
 		} // Deleting.
 		

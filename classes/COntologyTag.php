@@ -687,7 +687,7 @@ class COntologyTag extends CTag
 			//
 			if( (! $doThrow)
 			 || ($tag !== NULL) )
-				return $tag;														// ==>
+				return static::DocumentObject( $tag );								// ==>
 
 			throw new Exception
 				( "Tag not found",

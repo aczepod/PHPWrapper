@@ -289,6 +289,7 @@ class CPersistentObject extends CPersistentDocument
 			//
 			else
 				$object = new static( $object );
+				
 			
 			//
 			// Post-commit.
