@@ -33,9 +33,9 @@ require_once( kPATH_MYWRAPPER_LIBRARY_CLASS."/COntologyNode.php" );
  * referenced {@link COntologyTerm} in the object. This will allow searching for nodes
  * using term attributes without needing to do indirections.
  *
- * When inserting a new object, a selection of term attributes will first be copied to the
- * current object, then the node attributes will be copied, in case of conflicting
- * attributes it will be the node attribute that will overwrite the term attribute.
+ * When inserting a new object, the term attributes will first be copied to the current
+ * object, then the node attributes will be copied, in case of conflicting attributes it
+ * will be the node attribute that will overwrite the term attribute.
  *
  * We use the following term attributes: {@link kTAG_LID}, {@link kTAG_GID},
  * {@link kTAG_LABEL} and {@link kTAG_DEFINITION}.

@@ -20,6 +20,13 @@
  *======================================================================================*/
 
 /**
+ * Local definitions.
+ *
+ * This include file contains local definitions.
+ */
+require_once( "COntologyMasterNode.inc.php" );
+
+/**
  * Ancestor.
  *
  * This includes the ancestor class definitions.
@@ -81,7 +88,7 @@ class COntologyMasterNode extends COntologyNode
 		// Handle reference count.
 		//
 		if( $this->offsetExists( kTAG_NODES ) )
-			return $this->offsetGet( kTAG_NODES );								// ==>
+			return $this->offsetGet( kTAG_NODES );									// ==>
 		
 		return Array();																// ==>
 

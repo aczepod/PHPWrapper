@@ -6,7 +6,7 @@
 
 	<title>Class COntologyAliasNode | MyWrapper Reference Documentation</title>
 
-	<script type="text/javascript" src="resources/combined.js?1742645618"></script>
+	<script type="text/javascript" src="resources/combined.js?3680114562"></script>
 	<script type="text/javascript" src="elementlist.js?800735530"></script>
 	<link rel="stylesheet" type="text/css" media="all" href="resources/style.css?3505392360" />
 
@@ -130,8 +130,23 @@ current object and set the current node's kTAG_NODE attribute to point
 to it. This means that all instances of this class refer to another node which
 represents their master node.</p>
 
-<p>When relating nodes from this class, also the related <code><a href="class-COntologyMasterVertex.html">COntologyMasterVertex</a></code> instances will be related among each other, except that
-while nodes of this class may reference the same term, master nodes may not.</p>
+<p>When an instance of this class is related to another instance of this class,
+the same relation will be automatically created between the master nodes
+referenced by the kTAG_NODE attribute; this will not occur if an
+instance of this class is related to a master node.</p>
+When inserting or deleting nodes, this class will update the kTAG_NODES
+attribute of the object referenced by the current object's kTAG_NODE
+attribute. The referenced kTAG_NODES attribute is either the count or an
+array of object kTAG_NID attributes, depending on the value of the
+kSWITCH_kTAG_ALIAS_NODES flag:
+<ul>
+	<li><tt>0x2</tt>: <i>Keep count of references</i>. This means that the kTAG_NODES attribute will be a reference count.</li>
+
+	<li><tt>0x3</tt>: <i>Keep list of references</i>. This means that the kTAG_NODES attribute will be a list of references.</li>
+
+	<li><tt>0x0</tt> <i>or other</i>: <i>Don't handle this information</i>. This
+	means that the kTAG_NODES attribute will not be handled.</li>
+</ul>
 
 	</div>
 
@@ -222,7 +237,7 @@ while nodes of this class may reference the same term, master nodes may not.</p>
 				<b>Author:</b>
 				Milko A. Škofič &lt;<a
 href="mailto:m.skofic&#64;cgiar.org">m.skofic&#64;<!---->cgiar.org</a>&gt;<br />
-		<b>Located at</b> <a href="source-class-COntologyAliasNode.html#29-456" title="Go to source code">COntologyAliasNode.php</a><br />
+		<b>Located at</b> <a href="source-class-COntologyAliasNode.html#36-431" title="Go to source code">COntologyAliasNode.php</a><br />
 	</div>
 
 
@@ -240,7 +255,7 @@ href="mailto:m.skofic&#64;cgiar.org">m.skofic&#64;<!---->cgiar.org</a>&gt;<br />
 
 		<td class="name"><div>
 		<a class="anchor" href="#_Node">#</a>
-		<code><a href="source-class-COntologyAliasNode.html#75-148" title="Go to source code">Node</a>( <span>mixed <var>$theValue</var> = <span class="php-keyword1">NULL</span></span>, <span>boolean <var>$getOld</var> = <span class="php-keyword1">FALSE</span> </span> )</code>
+		<code><a href="source-class-COntologyAliasNode.html#97-170" title="Go to source code">Node</a>( <span>mixed <var>$theValue</var> = <span class="php-keyword1">NULL</span></span>, <span>boolean <var>$getOld</var> = <span class="php-keyword1">FALSE</span> </span> )</code>
 
 		<div class="description short">
 			
@@ -316,7 +331,7 @@ the currently set value.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#_RelateTo">#</a>
-		<code><a href="source-class-COntologyAliasNode.html#164-246" title="Go to source code">RelateTo</a>( <span>mixed <var>$thePredicate</var></span>, <span>mixed <var>$theObject</var></span>, <span><code><a href="class-CConnection.html">CConnection</a></code> <var>$theConnection</var> = <span class="php-keyword1">NULL</span> </span> )</code>
+		<code><a href="source-class-COntologyAliasNode.html#186-268" title="Go to source code">RelateTo</a>( <span>mixed <var>$thePredicate</var></span>, <span>mixed <var>$theObject</var></span>, <span><code><a href="class-CConnection.html">CConnection</a></code> <var>$theConnection</var> = <span class="php-keyword1">NULL</span> </span> )</code>
 
 		<div class="description short">
 			
@@ -374,7 +389,7 @@ committed.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#__PrecommitRelated">#</a>
-		<code><a href="source-class-COntologyAliasNode.html#262-316" title="Go to source code">_PrecommitRelated</a>( <span>reference <var>&amp; $theConnection</var></span>, <span>reference <var>&amp; $theModifiers</var></span> )</code>
+		<code><a href="source-class-COntologyAliasNode.html#284-338" title="Go to source code">_PrecommitRelated</a>( <span>reference <var>&amp; $theConnection</var></span>, <span>reference <var>&amp; $theModifiers</var></span> )</code>
 
 		<div class="description short">
 			
@@ -433,7 +448,7 @@ the master node before setting its identifier in the current object's kTAG_NODE 
 
 		<td class="name"><div>
 		<a class="anchor" href="#__PostcommitRelated">#</a>
-		<code><a href="source-class-COntologyAliasNode.html#332-375" title="Go to source code">_PostcommitRelated</a>( <span>reference <var>&amp; $theConnection</var></span>, <span>reference <var>&amp; $theModifiers</var></span> )</code>
+		<code><a href="source-class-COntologyAliasNode.html#354-427" title="Go to source code">_PostcommitRelated</a>( <span>reference <var>&amp; $theConnection</var></span>, <span>reference <var>&amp; $theModifiers</var></span> )</code>
 
 		<div class="description short">
 			
@@ -445,8 +460,23 @@ the master node before setting its identifier in the current object's kTAG_NODE 
 			
 <h4>Update related objects after committing</h4>
 
-<p>In this class we add the current node's identifier to the referenced master
-node if the current object is being inserted.</p>
+<p>In this class we handle referenced master nodes, kTAG_NODE: depending
+on the value of the kSWITCH_kTAG_ALIAS_NODES flag we do the
+following:</p>
+
+<ul>
+	<li><tt>0x2</tt>: <i>Keep count of references</i>. This means that the kTAG_NODES attribute of the master node referenced by the kTAG_NODE
+	attribute will be incremented when the object is inserted, or decremented when
+	deleted.</li>
+
+	<li><tt>0x3</tt>: <i>Keep list of references</i>. This means that a reference to
+	the current object will be added to the kTAG_NODES attribute of the
+	master node referenced by kTAG_NODE attribute of the current object when
+	the latter is inserted, and removed when the object isdeleted.</li>
+
+	<li><tt>0x0</tt> <i>or other</i>: <i>Don't handle this information</i>. This
+	means that the kTAG_NODES attribute will not be handled.</li>
+</ul>
 
 
 
@@ -467,77 +497,11 @@ node if the current object is being inserted.</p>
 				<h4>Uses</h4>
 				<div class="list">
 						<code><code><a href="class-CStatusDocument.html#__IsCommitted">CStatusDocument::_IsCommitted()</a></code></code> <br />
-						<code><code><a href="class-COntologyAliasNode.html#__ReferenceInNode">COntologyAliasNode::_ReferenceInNode()</a></code></code> <br />
+						_ReferenceInNode()<br />
 				</div>
 
 				<h4>Overrides</h4>
 				<div class="list"><code><a href="class-COntologyNode.html#__PostcommitRelated">COntologyNode::_PostcommitRelated()</a></code></div>
-
-		</div>
-		</div></td>
-	</tr>
-	<tr data-order="_ReferenceInNode" id="__ReferenceInNode">
-
-		<td class="attributes"><code>
-			 protected 
-			boolean
-			
-			</code>
-		</td>
-
-		<td class="name"><div>
-		<a class="anchor" href="#__ReferenceInNode">#</a>
-		<code><a href="source-class-COntologyAliasNode.html#391-452" title="Go to source code">_ReferenceInNode</a>( <span><code><a href="class-CConnection.html">CConnection</a></code> <var>$theConnection</var></span>, <span>boolean <var>$doAdd</var></span> )</code>
-
-		<div class="description short">
-			
-<h4>Add node reference to Master</h4>
-
-		</div>
-
-		<div class="description detailed hidden">
-			
-<h4>Add node reference to Master</h4>
-
-<p>This method can be used to add or remove the current node's reference from
-the referenced master node, kTAG_NODE. This method should be used
-whenever committing a new node or deleting one: it will add the current node's
-native identifier to the set of alias node references of the node's master node
-when committing a new node; it will remove it when deleting the node.</p>
-
-<p>The last parameter is a boolean: if <tt>TRUE</tt> the method will add to the
-set; if <tt>FALSE</tt>, it will remove from the set.</p>
-
-<p>The method will return <tt>TRUE</tt> if the operation affected at least one
-object, <tt>FALSE</tt> if not, <tt>NULL</tt> if the node is not set and raise an
-exception if the operation failed.</p>
-
-
-
-				<h4>Parameters</h4>
-				<div class="list"><dl>
-					<dt><var>$theConnection</var></dt>
-					<dd><code><code><a href="class-CConnection.html">CConnection</a></code></code><br>$theConnection Server, database or container.</dd>
-					<dt><var>$doAdd</var></dt>
-					<dd><code>boolean</code><br>$doAdd <tt>TRUE</tt> add reference.</dd>
-				</dl></div>
-
-				<h4>Returns</h4>
-				<div class="list">
-					<code>boolean</code><br><tt>TRUE</tt> operation affected at least one object.<br />
-				</div>
-
-
-				<h4>See</h4>
-				<div class="list">
-						kTAG_NODE kTAG_NODES<br />
-						kFLAG_PERSIST_MODIFY kFLAG_MODIFY_ADDSET kFLAG_MODIFY_PULL<br />
-				</div>
-				<h4>Used by</h4>
-				<div class="list">
-						<code><code><a href="class-COntologyAliasNode.html#__PostcommitRelated">COntologyAliasNode::_PostcommitRelated()</a></code></code> <br />
-				</div>
-
 
 		</div>
 		</div></td>
@@ -549,7 +513,6 @@ exception if the operation failed.</p>
 	<tr>
 		<td><code>
 			<a href="class-COntologyNode.html#_DefaultContainer">DefaultContainer()</a>, 
-			<a href="class-COntologyNode.html#_EdgeRefs">EdgeRefs()</a>, 
 			<a href="class-COntologyNode.html#_GetGraphNode">GetGraphNode()</a>, 
 			<a href="class-COntologyNode.html#_GetGraphNodeProperties">GetGraphNodeProperties()</a>, 
 			<a href="class-COntologyNode.html#_LoadTerm">LoadTerm()</a>, 
@@ -565,7 +528,6 @@ exception if the operation failed.</p>
 			<a href="class-COntologyNode.html#__PrecommitIdentify">_PrecommitIdentify()</a>, 
 			<a href="class-COntologyNode.html#__Preset">_Preset()</a>, 
 			<a href="class-COntologyNode.html#__Preunset">_Preunset()</a>, 
-			<a href="class-COntologyNode.html#__ReferenceInTerm">_ReferenceInTerm()</a>, 
 			<a href="class-COntologyNode.html#___toString">__toString()</a>
 		</code></td>
 	</tr>
@@ -592,6 +554,7 @@ exception if the operation failed.</p>
 			<a href="class-CPersistentObject.html#_NewObject">NewObject()</a>, 
 			<a href="class-CPersistentObject.html#__AssertClass">_AssertClass()</a>, 
 			<a href="class-CPersistentObject.html#__PrecommitValidate">_PrecommitValidate()</a>, 
+			<a href="class-CPersistentObject.html#__ReferenceInObject">_ReferenceInObject()</a>, 
 			<a href="class-CPersistentObject.html#__id">_id()</a>, 
 			<a href="class-CPersistentObject.html#__index">_index()</a>
 		</code></td>

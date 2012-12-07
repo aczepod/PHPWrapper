@@ -444,8 +444,8 @@ try
 				   .'] Dirty['.$node->dirty()
 				   .'] Saved['.$node->committed()
 				   .'] Encoded['.$node->encoded().']<br />' );
-	echo( '<h5>$status = $node->Insert( $container );</h5>' );
-	$status = $node->Insert( $container );
+	echo( '<h5>$status = $node->Insert( $database );</h5>' );
+	$status = $node->Insert( $database );
 	echo( 'Node<pre>' ); print_r( $node ); echo( '</pre>' );
 	echo( '<h5>$graph = $node->GetGraphNodeProperties( $database, $status );</h5>' );
 	$graph = $node->GetGraphNodeProperties( $database, $status );

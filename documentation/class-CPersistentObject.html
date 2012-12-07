@@ -6,7 +6,7 @@
 
 	<title>Class CPersistentObject | MyWrapper Reference Documentation</title>
 
-	<script type="text/javascript" src="resources/combined.js?1742645618"></script>
+	<script type="text/javascript" src="resources/combined.js?3680114562"></script>
 	<script type="text/javascript" src="elementlist.js?800735530"></script>
 	<link rel="stylesheet" type="text/css" media="all" href="resources/style.css?3505392360" />
 
@@ -221,7 +221,7 @@ object to a string.</p>
 				<b>Author:</b>
 				Milko A. Škofič &lt;<a
 href="mailto:m.skofic&#64;cgiar.org">m.skofic&#64;<!---->cgiar.org</a>&gt;<br />
-		<b>Located at</b> <a href="source-class-CPersistentObject.html#36-861" title="Go to source code">CPersistentObject.php</a><br />
+		<b>Located at</b> <a href="source-class-CPersistentObject.html#36-999" title="Go to source code">CPersistentObject.php</a><br />
 	</div>
 
 
@@ -990,6 +990,97 @@ called.</p>
 		</div>
 		</div></td>
 	</tr>
+	<tr data-order="_ReferenceInObject" id="__ReferenceInObject">
+
+		<td class="attributes"><code>
+			 protected 
+			mixed
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#__ReferenceInObject">#</a>
+		<code><a href="source-class-CPersistentObject.html#775-897" title="Go to source code">_ReferenceInObject</a>( <span><code><a href="class-CContainer.html">CContainer</a></code> <var>$theContainer</var></span>, <span>byte <var>$theOperation</var></span>, <span>mixed <var>$theReference</var></span>, <span>string <var>$theOffset</var></span>, <span>integer <var>$theCount</var></span> )</code>
+
+		<div class="description short">
+			
+<h4>add, increment, remove or decrement current object's reference</h4>
+
+		</div>
+
+		<div class="description detailed hidden">
+			
+<h4>add, increment, remove or decrement current object's reference</h4>
+
+<p>This method can be used to reference the current object in another object by
+either incrementing/decrementing a counter in the target object, or
+adding/removing a reference of the current object from the target object.</p>
+
+<p>The method accepts the following parameters:</p>
+
+<ul>
+	<li><tt>$theContainer</tt>: Container in which the target object is stored.</li>
+
+	<li><tt>$theOperation</tt>: This value determines what kind of operation to
+	perform:
+		<ul>
+			<li><tt>0x2</tt>: <i>Keep reference count</i>. This means that the
+			<tt>$theOffset</tt> attribute will be an integer representing the number of
+			times the target object was referenced.</li>
+
+			<li><tt>0x3</tt>: <i>Keep references list</i>. This means that the
+			<tt>$theOffset</tt> attribute will be a list of object identifiers representing
+			the objects that reference the target object.</li>
+
+			<li><i>other</i>: <i>Ignore</i>. Any other value will disable this method.</li>
+		</ul>
+	</li>
+
+	<li><tt>$theReference</tt>: This value represents the native identifier of the
+	object that receives the reference.</li>
+
+	<li><tt>$theCount</tt>: This value represents the increment/decrement value, or
+	a value whose sign will be used to determine whether to add or remove references
+	from the list: a negative value means remove, a positive value means add; if the
+	value is <tt>0</tt>, the method will do nothing.</li>
+</ul>
+
+<p>The method will return <tt>TRUE</tt> if the operation affected at least one
+object, <tt>FALSE</tt> if not, <tt>NULL</tt> if the provided increment is
+<tt>0</tt> and raise an exception if the operation failed.</p>
+
+<p><i>Note that this method does not check if the object is committed, that must
+have been done by the caller. This method is called in general after inserting
+the object and before setting the committed status</i>.</p>
+
+
+
+				<h4>Parameters</h4>
+				<div class="list"><dl>
+					<dt><var>$theContainer</var></dt>
+					<dd><code><code><a href="class-CContainer.html">CContainer</a></code></code><br>$theContainer Server, database or container.</dd>
+					<dt><var>$theOperation</var></dt>
+					<dd><code>byte</code><br>$theOperation Operation code.</dd>
+					<dt><var>$theReference</var></dt>
+					<dd><code>mixed</code><br>$theReference Target object reference.</dd>
+					<dt><var>$theOffset</var></dt>
+					<dd><code>string</code><br>$theOffset Offset to update.</dd>
+					<dt><var>$theCount</var></dt>
+					<dd><code>integer</code><br>$theCount Increment amount.</dd>
+				</dl></div>
+
+				<h4>Returns</h4>
+				<div class="list">
+					<code>mixed</code><br><tt>TRUE</tt> operation affected at least one object.<br />
+				</div>
+
+
+
+
+		</div>
+		</div></td>
+	</tr>
 	<tr data-order="_AssertClass" id="__AssertClass">
 
 		<td class="attributes"><code>
@@ -1001,7 +1092,7 @@ called.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#__AssertClass">#</a>
-		<code><a href="source-class-CPersistentObject.html#775-857" title="Go to source code">_AssertClass</a>( <span>reference <var>&amp; $theValue</var></span>, <span>string <var>$theBaseClass</var></span>, <span>string <var>$theDerivedClass</var> = <span class="php-keyword1">NULL</span></span>, <span>boolean <var>$doThrow</var> = <span class="php-keyword1">FALSE</span> </span> )</code>
+		<code><a href="source-class-CPersistentObject.html#913-995" title="Go to source code">_AssertClass</a>( <span>reference <var>&amp; $theValue</var></span>, <span>string <var>$theBaseClass</var></span>, <span>string <var>$theDerivedClass</var> = <span class="php-keyword1">NULL</span></span>, <span>boolean <var>$doThrow</var> = <span class="php-keyword1">FALSE</span> </span> )</code>
 
 		<div class="description short">
 			

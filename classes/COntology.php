@@ -583,7 +583,7 @@ class COntology extends CConnection
 						//
 						// Add term reference to node.
 						//
-						if( ($unit->{'node'} != NULL)
+						if( ($unit->{'node'}->count())
 						 && ($unit->{'node'}[ 0 ][ 'kTAG_GID' ] === NULL) )
 							$unit->{'node'}[ 0 ][ 'kTAG_GID' ] = $term[ kTAG_GID ];
 						
@@ -619,6 +619,7 @@ class COntology extends CConnection
 						//
 						if( $element->{'kTAG_CLASS'} !== NULL )
 						{
+
 							$class = (string) $element->{'kTAG_CLASS'};
 							$node = new $class();
 						}
@@ -747,19 +748,15 @@ class COntology extends CConnection
 	 *==================================================================================*/
 
 	/**
-	 * <h4>Load the provided unit file</h4>
+	 * <h4>Load the standard ISO ontology</h4>
 	 *
-	 * Unit files are XML files that feature a list of units which contain data for terms,
-	 * nodes, edges and tags. This method allows loading these files into the ontology.
+	 * This method will load the ISO standards into the ontology, it takes the information
+	 * from the {@link http://pkg-isocodes.alioth.debian.org} web page project.
 	 *
-	 * Note that there is no caching performed, so if you reference an object that has not
-	 * yet been loaded the method will fail.
+	 * The method requires the path to the unit XML file containing the ISO categories, it
+	 * will then decode the PO files and load the information.
 	 *
-	 * The file path parameter may be either a string or a list of strings.
-	 *
-	 * Node: each unit <i>must</i> insert a term, it is not possible to reference terms.
-	 *
-	 * @param mixed					$theFilePath		Path to the units file.
+	 * @param mixed					$theFilePath		Path to the ISO categories file.
 	 *
 	 * @access public
 	 *
@@ -2029,7 +2026,8 @@ class COntology extends CConnection
 					break;
 					
 				case kISO_FILE_3166:
-					$this->_ISOParse3166XML( $theDatabase );
+					$this->_ISOParse31661XML( $theDatabase );
+					$this->_ISOParse31663XML( $theDatabase );
 					break;
 					
 				case kISO_FILE_3166_2:
@@ -2169,7 +2167,7 @@ class COntology extends CConnection
 						$term3->Kind( kKIND_ENUMERATION, TRUE );
 						
 						//
-						// Load custom language string attributes.
+						// Load language string attributes.
 						//
 						if( $record[ 'name' ] !== NULL )
 							$term3->Label( 'en',
@@ -2177,11 +2175,35 @@ class COntology extends CConnection
 						if( $record[ 'reference_name' ] !== NULL )
 							$term3->Definition( 'en',
 												(string) $record[ 'reference_name' ] );
+						
+						//
+						// Collect language strings.
+						//
+						$this->_ISOCollectLanguageStrings(
+							$term3,
+							kISO_FILE_639_3,
+							array( kTAG_LABEL, kTAG_DEFINITION ) );
+						
+						//
+						// Save term.
+						//
+						$term3->Insert( $theDatabase );
+						
+						//
+						// Create node.
+						//
+						$node3 = new COntologyMasterVertex();
+						$node3->Kind( kKIND_ENUMERATION, TRUE );
+						$node3->Term( $term3 );
+						
+						//
+						// Load custom language string attributes.
+						//
 						if( $record[ 'inverted_name' ] !== NULL )
-							$term3[ $tag_inverted_name->NID() ]
+							$node3[ $tag_inverted_name->NID() ]
 								= array( 'en' => (string) $record[ 'inverted_name' ] );
 						if( $record[ 'common_name' ] !== NULL )
-							$term3[ $tag_common_name->NID() ]
+							$node3[ $tag_common_name->NID() ]
 								= array( 'en' => (string) $record[ 'common_name' ] );
 						
 						//
@@ -2189,7 +2211,7 @@ class COntology extends CConnection
 						//
 						if( ($record[ 'status' ] !== NULL)
 						 && strlen( $en = trim( (string) $record[ 'status' ] ) ) )
-							$term3[ $tag_status->NID() ] = $en;
+							$node3[ $tag_status->NID() ] = $en;
 						
 						//
 						// Load custom enumerations.
@@ -2208,7 +2230,7 @@ class COntology extends CConnection
 							//
 							if( COntologyTerm::Resolve(
 									$theDatabase, $en, $tag_scope->GID() ) !== NULL )
-								$term3[ $tag_scope->NID() ]
+								$node3[ $tag_scope->NID() ]
 									= $tag_scope->GID().kTOKEN_NAMESPACE_SEPARATOR.$en;
 							elseif( kOPTION_VERBOSE )
 								echo( "          ! $id - scope - $en\n" );
@@ -2220,7 +2242,7 @@ class COntology extends CConnection
 							// Handle Genetic, Ancient.
 							//
 							if( $en == 'Genetic, Ancient' )
-								$term3[ $tag_type->NID() ]
+								$node3[ $tag_type->NID() ]
 									= array( ($tag_type->GID()
 											 .kTOKEN_NAMESPACE_SEPARATOR
 											 .'Genetic'),
@@ -2234,7 +2256,7 @@ class COntology extends CConnection
 							{
 								if( COntologyTerm::Resolve(
 										$theDatabase, $en, $tag_type->GID() ) !== NULL )
-									$term3[ $tag_type->NID() ]
+									$node3[ $tag_type->NID() ]
 										= $tag_type->GID().kTOKEN_NAMESPACE_SEPARATOR.$en;
 								elseif( kOPTION_VERBOSE )
 									echo( "          ! $id - type - $en\n" );
@@ -2245,22 +2267,14 @@ class COntology extends CConnection
 						// Collect language strings.
 						//
 						$this->_ISOCollectLanguageStrings(
-							$term3,
-							array( kTAG_LABEL, kTAG_DEFINITION,
-								   (string) $tag_inverted_name->NID(),
+							$node3,
+							kISO_FILE_639_3,
+							array( (string) $tag_inverted_name->NID(),
 								   (string) $tag_common_name->NID() ) );
-						
+
 						//
-						// Save term.
+						// Save node.
 						//
-						$term3->Insert( $theDatabase );
-						
-						//
-						// Create node.
-						//
-						$node3 = new COntologyMasterVertex();
-						$node3->Kind( kKIND_ENUMERATION, TRUE );
-						$node3->Term( $term3 );
 						$node3->Insert( $theDatabase );
 						
 						//
@@ -2318,8 +2332,8 @@ class COntology extends CConnection
 							//
 							else
 								$node1
-									= COntologyMasterVertex::NewObject(
-										$theDatabase, $term1[ kTAG_NODES ][ 0 ] );
+									= COntologyMasterVertex::Resolve(
+										$theDatabase, $term1->NID() );
 							
 							//
 							// Relate to part 3.
@@ -2381,8 +2395,8 @@ class COntology extends CConnection
 							//
 							else
 								$node2
-									= COntologyMasterVertex::NewObject(
-										$theDatabase, $term2[ kTAG_NODES ][ 0 ] );
+									= COntologyMasterVertex::Resolve(
+										$theDatabase, $term2->NID() );
 							
 							//
 							// Relate to part 3.
@@ -2571,9 +2585,17 @@ class COntology extends CConnection
 						// Instantiate part 1 term.
 						//
 						$term1 = new COntologyTerm();
+						
+						//
+						// Load default attributes.
+						//
 						$term1->NS( $ns1 );
 						$term1->LID( (string) $record[ 'iso_639_1_code' ] );
 						$term1->Kind( kKIND_ENUMERATION, TRUE );
+						
+						//
+						// Load language string attributes.
+						//
 						if( $record[ 'name' ] !== NULL )
 							$term1->Label( 'en',
 										   (string) $record[ 'name' ] );
@@ -2586,6 +2608,7 @@ class COntology extends CConnection
 						//
 						$this->_ISOCollectLanguageStrings(
 							$term1,
+							kISO_FILE_639,
 							array( kTAG_LABEL, kTAG_DEFINITION ) );
 						
 						//
@@ -2652,6 +2675,10 @@ class COntology extends CConnection
 						// Instantiate part 2b term.
 						//
 						$term2b = new COntologyTerm();
+						
+						//
+						// Load default attributes.
+						//
 						$term2b->NS( $ns2b );
 						$term2b->LID( (string) $record[ 'iso_639_2B_code' ] );
 						$term2b->Kind( kKIND_ENUMERATION, TRUE );
@@ -2684,6 +2711,7 @@ class COntology extends CConnection
 							//
 							$this->_ISOCollectLanguageStrings(
 								$term2b,
+								kISO_FILE_639,
 								array( kTAG_LABEL, kTAG_DEFINITION ) );
 						
 						} // Unrelated term.
@@ -2770,6 +2798,7 @@ class COntology extends CConnection
 							//
 							$this->_ISOCollectLanguageStrings(
 								$term2t,
+								kISO_FILE_639,
 								array( kTAG_LABEL, kTAG_DEFINITION ) );
 						
 						} // Unrelated term.
@@ -2909,13 +2938,24 @@ class COntology extends CConnection
 
 	 
 	/*===================================================================================
-	 *	_ISOParse3166XML																*
+	 *	_ISOParse31661XML																*
 	 *==================================================================================*/
 
 	/**
-	 * <h4>Parse ISO 3166-1 and 3166-3 XML file</h4>
+	 * <h4>Parse ISO 3166-1 XML file</h4>
 	 *
-	 * This method will parse the XML ISO 3166-1 and 3166-3 file.
+	 * This method will parse the XML ISO 3166-1 file.
+	 *
+	 * The method will load the following attributes:
+	 *
+	 * <ul>
+	 *	<li><tt>ISO:3166:alpha-3</tt>: Alpha 3 code [<tt>alpha_3_code</tt>].
+	 *	<li><tt>ISO:3166:alpha-2</tt>: Alpha 2 code [<tt>alpha_2_code</tt>].
+	 *	<li><tt>ISO:3166:numeric</tt>: Numeric code [<tt>numeric_code</tt>].
+	 *	<li><tt>{@link kTAG_LABEL}/tt>: Label <tt>name</tt> [<tt>name</tt>].
+	 *	<li><tt>{@link kTAG_DEFINITION}/tt>: Definition [<tt>official_name</tt>].
+	 *	<li><tt>ISO:3166:common_name</tt>: Common name [<tt>common_name</tt>].
+	 * </ul>
 	 *
 	 * @param CDatabase				$theDatabase		Database container.
 	 *
@@ -2923,10 +2963,702 @@ class COntology extends CConnection
 	 *
 	 * @throws Exception
 	 */
-	protected function _ISOParse3166XML( CDatabase $theDatabase )
+	protected function _ISOParse31661XML( CDatabase $theDatabase )
 	{
+		$file = kISO_CODES_PATH.kISO_CODES_PATH_XML.'/'.kISO_FILE_3166.'.xml';
+		$xml = simplexml_load_file( $file  );
+		if( $xml instanceof SimpleXMLElement )
+		{
+			//
+			// Inform.
+			//
+			if( kOPTION_VERBOSE )
+				echo( "        • ISO 3166 1\n" );
+			
+			//
+			// Resolve namespaces.
+			//
+			$ns3 = COntologyTerm::Resolve( $theDatabase, 'alpha-3', 'ISO:3166:1', TRUE );
+			$ns2 = COntologyTerm::Resolve( $theDatabase, 'alpha-2', 'ISO:3166:1', TRUE );
+			$nsN = COntologyTerm::Resolve( $theDatabase, 'numeric', 'ISO:3166:1', TRUE );
+			
+			//
+			// Resolve tags.
+			//
+			$tag_common_name
+				= COntologyTag::Resolve( $theDatabase, 'ISO:3166:common_name', TRUE );
+			
+			//
+			// Resolve Parents.
+			//
+			$par3 = COntologyMasterVertex::Resolve( $theDatabase, $ns3, TRUE );
+			$par2 = COntologyMasterVertex::Resolve( $theDatabase, $ns2, TRUE );
+			$parN = COntologyMasterVertex::Resolve( $theDatabase, $nsN, TRUE );
+			
+			//
+			// Resolve predicates.
+			//
+			$xref
+				= COntologyTerm::Resolve(
+					$theDatabase, kPREDICATE_XREF, NULL, TRUE );
+			$enum_of
+				= COntologyTerm::Resolve(
+					$theDatabase, kPREDICATE_ENUM_OF, NULL, TRUE );
+			$xref_ex
+				= COntologyTerm::Resolve(
+					$theDatabase, kPREDICATE_XREF_EXACT, NULL, TRUE );
+			
+			//
+			// Iterate XML file.
+			//
+			foreach( $xml->{'iso_3166_entry'} as $record )
+			{
+				//
+				// Check identifier.
+				//
+				if( $record[ 'alpha_3_code' ] !== NULL )
+				{
+					//
+					// Save local identifier.
+					//
+					$id = (string) $record[ 'alpha_3_code' ];
+					
+					//
+					// Resolve term.
+					//
+					if( COntologyTerm::Resolve( $theDatabase, $id, $ns3 ) === NULL )
+					{
+						//
+						// Instantiate part 3 term.
+						//
+						$term3 = new COntologyTerm();
+						
+						//
+						// Load default attributes.
+						//
+						$term3->NS( $ns3 );
+						$term3->LID( $id );
+						$term3->Kind( kKIND_ENUMERATION, TRUE );
+						
+						//
+						// Load language string attributes.
+						//
+						if( $record[ 'name' ] !== NULL )
+							$term3->Label( 'en',
+										   (string) $record[ 'name' ] );
+						if( $record[ 'official_name' ] !== NULL )
+							$term3->Definition( 'en',
+												(string) $record[ 'official_name' ] );
+						
+						//
+						// Collect language strings.
+						//
+						$this->_ISOCollectLanguageStrings(
+							$term3,
+							kISO_FILE_3166,
+							array( kTAG_LABEL, kTAG_DEFINITION,
+								   (string) $tag_common_name->NID() ) );
+						
+						//
+						// Save term.
+						//
+						$term3->Insert( $theDatabase );
+						
+						//
+						// Create node.
+						//
+						$node3 = new COntologyMasterVertex();
+						$node3->Kind( kKIND_ENUMERATION, TRUE );
+						$node3->Term( $term3 );
+
+						//
+						// Load custom language string attributes.
+						//
+						if( $record[ 'common_name' ] !== NULL )
+							$node3[ $tag_common_name->NID() ]
+								= array( 'en' => (string) $record[ 'common_name' ] );
+						
+						//
+						// Collect language strings.
+						//
+						$this->_ISOCollectLanguageStrings(
+							$node3,
+							kISO_FILE_3166,
+							array( (string) $tag_common_name->NID() ) );
+						
+						//
+						// Save node.
+						//
+						$node3->Insert( $theDatabase );
+						
+						//
+						// Relate to parent.
+						//
+						$edge = new COntologyEdge();
+						$edge->Subject( $node3 );
+						$edge->Predicate( $enum_of );
+						$edge->Object( $par3 );
+						$edge->Insert( $theDatabase );
+						
+						//
+						// Handle alpha-2.
+						//
+						if( $record[ 'alpha_2_code' ] !== NULL )
+						{
+							//
+							// Check alpha-2 term.
+							//
+							if( ($term2 = COntologyTerm::Resolve(
+									$theDatabase, (string) $record[ 'alpha_2_code' ], $ns2 ))
+										=== NULL )
+							{
+								//
+								// Instantiate alpha-2 term.
+								//
+								$term2 = new COntologyTerm();
+								$term2->NS( $ns2 );
+								$term2->LID( (string) $record[ 'alpha_2_code' ] );
+								$term2->Kind( kKIND_ENUMERATION, TRUE );
+								$term2->Term( $term3 );
+								$term2->Insert( $theDatabase );
+								
+								//
+								// Instantiate alpha-2 node.
+								//
+								$node2 = new COntologyMasterVertex();
+								$node2->Kind( kKIND_ENUMERATION, TRUE );
+								$node2->Term( $term2 );
+								$node2->Insert( $theDatabase );
+								
+								//
+								// Relate to parent.
+								//
+								$edge = new COntologyEdge();
+								$edge->Subject( $node2 );
+								$edge->Predicate( $enum_of );
+								$edge->Object( $par2 );
+								$edge->Insert( $theDatabase );
+							
+							} // New alpha-2.
+							
+							//
+							// Resolve alpha-2 node.
+							//
+							else
+								$node2
+									= COntologyMasterVertex::Resolve(
+										$theDatabase, $term2->NID() );
+							
+							//
+							// Relate to alpha-3.
+							//
+							$edge = new COntologyEdge();
+							$edge->Subject( $node2 );
+							$edge->Predicate( $xref_ex );
+							$edge->Object( $node3 );
+							$edge->Insert( $theDatabase );
+							
+						} // Provided alpha-2.
+						
+						else
+							$node2 = NULL;
+						
+						//
+						// Handle numeric.
+						//
+						if( $record[ 'numeric_code' ] !== NULL )
+						{
+							//
+							// Check numeric term.
+							//
+							if( ($termN = COntologyTerm::Resolve(
+									$theDatabase, (string) $record[ 'numeric_code' ], $nsN ))
+										=== NULL )
+							{
+								//
+								// Instantiate numeric term.
+								//
+								$termN = new COntologyTerm();
+								$termN->NS( $nsN );
+								$termN->LID( (string) $record[ 'numeric_code' ] );
+								$termN->Kind( kKIND_ENUMERATION, TRUE );
+								$termN->Term( $term3 );
+								$termN->Insert( $theDatabase );
+								
+								//
+								// Instantiate numeric node.
+								//
+								$nodeN = new COntologyMasterVertex();
+								$nodeN->Kind( kKIND_ENUMERATION, TRUE );
+								$nodeN->Term( $termN );
+								$nodeN->Insert( $theDatabase );
+								
+								//
+								// Relate to parent.
+								//
+								$edge = new COntologyEdge();
+								$edge->Subject( $nodeN );
+								$edge->Predicate( $enum_of );
+								$edge->Object( $parN );
+								$edge->Insert( $theDatabase );
+							
+							} // New numeric.
+							
+							//
+							// Resolve numeric node.
+							//
+							else
+								$nodeN
+									= COntologyMasterVertex::Resolve(
+										$theDatabase, $termN->NID() );
+							
+							//
+							// Relate to alpha-3.
+							//
+							$edge = new COntologyEdge();
+							$edge->Subject( $nodeN );
+							$edge->Predicate( $xref_ex );
+							$edge->Object( $node3 );
+							$edge->Insert( $theDatabase );
+							
+						} // Provided numeric.
+						
+						else
+							$nodeN = NULL;
+						
+						//
+						// Handle alpha-2 cross references.
+						//
+						if( $node2 !== NULL )
+						{
+							//
+							// Cross reference alpha-2 from part 3.
+							//
+							$edge = new COntologyEdge();
+							$edge->Subject( $node3 );
+							$edge->Predicate( $xref );
+							$edge->Object( $node2 );
+							$edge->Insert( $theDatabase );
+						
+							//
+							// Cross reference alpha-2 from numeric.
+							//
+							if( $nodeN !== NULL )
+							{
+								$edge = new COntologyEdge();
+								$edge->Subject( $nodeN );
+								$edge->Predicate( $xref );
+								$edge->Object( $node2 );
+								$edge->Insert( $theDatabase );
+							
+							} // Has numeric code.
+						
+						} // Has alpha-2 code.
+						
+						//
+						// Handle numeric cross references.
+						//
+						if( $nodeN !== NULL )
+						{
+							//
+							// Cross reference numeric from part 3.
+							//
+							$edge = new COntologyEdge();
+							$edge->Subject( $node3 );
+							$edge->Predicate( $xref );
+							$edge->Object( $nodeN );
+							$edge->Insert( $theDatabase );
+						
+							//
+							// Cross reference numeric from alpha-2.
+							//
+							if( $node2 !== NULL )
+							{
+								$edge = new COntologyEdge();
+								$edge->Subject( $node2 );
+								$edge->Predicate( $xref );
+								$edge->Object( $nodeN );
+								$edge->Insert( $theDatabase );
+							
+							} // Has alpha-2 code.
+						
+						} // Has numeric code.
+					
+					} // New record.
+					
+					elseif( kOPTION_VERBOSE )
+						echo( "          ! $id\n" );
+				
+				} // Has record identifier.
+			
+			} // Iterating entries.
 		
-	} // _ISOParse3166XML.
+		} // Loaded file.
+		
+		else
+			throw new Exception
+				( "Unable to load XML file [$file]",
+				  kERROR_STATE );											// !@! ==>
+		
+	} // _ISOParse31661XML.
+
+	 
+	/*===================================================================================
+	 *	_ISOParse31663XML																*
+	 *==================================================================================*/
+
+	/**
+	 * <h4>Parse ISO 3166-3 XML file</h4>
+	 *
+	 * This method will parse the XML ISO 3166-3 file.
+	 *
+	 * The method will load the following attributes:
+	 *
+	 * <ul>
+	 *	<li><tt>ISO:3166:1:alpha-3</tt>: Alpha 3 code [<tt>alpha_3_code</tt>].
+	 *	<li><tt>ISO:3166:1:alpha-4</tt>: Alpha 4 code [<tt>alpha_4_code</tt>].
+	 *	<li><tt>ISO:3166:1:numeric</tt>: Numeric code [<tt>numeric_code</tt>].
+	 *	<li><tt>{@link kTAG_LABEL}/tt>: Label <tt>name</tt> [<tt>names</tt>].
+	 *	<li><tt>{@link kTAG_DEFINITION}/tt>: Definition [<tt>comment</tt>].
+	 *	<li><tt>ISO:attributes:date_withdrawn</tt>: Date withdrawn
+	 *		[<tt>date_withdrawn</tt>].
+	 * </ul>
+	 *
+	 * @param CDatabase				$theDatabase		Database container.
+	 *
+	 * @access protected
+	 *
+	 * @throws Exception
+	 */
+	protected function _ISOParse31663XML( CDatabase $theDatabase )
+	{
+		$file = kISO_CODES_PATH.kISO_CODES_PATH_XML.'/'.kISO_FILE_3166.'.xml';
+		$xml = simplexml_load_file( $file  );
+		if( $xml instanceof SimpleXMLElement )
+		{
+			//
+			// Inform.
+			//
+			if( kOPTION_VERBOSE )
+				echo( "        • ISO 3166 3\n" );
+			
+			//
+			// Resolve namespaces.
+			//
+			$ns3 = COntologyTerm::Resolve( $theDatabase, 'alpha-3', 'ISO:3166:3', TRUE );
+			$ns4 = COntologyTerm::Resolve( $theDatabase, 'alpha-4', 'ISO:3166:3', TRUE );
+			$nsN = COntologyTerm::Resolve( $theDatabase, 'numeric', 'ISO:3166:3', TRUE );
+			
+			//
+			// Resolve Parents.
+			//
+			$par3 = COntologyMasterVertex::Resolve( $theDatabase, $ns3, TRUE );
+			$par4 = COntologyMasterVertex::Resolve( $theDatabase, $ns4, TRUE );
+			$parN = COntologyMasterVertex::Resolve( $theDatabase, $nsN, TRUE );
+			
+			//
+			// Resolve tags.
+			//
+			$tag_date_withdrawn =
+				COntologyTag::Resolve( $theDatabase, 'ISO:attributes:date_withdrawn', TRUE );
+			
+			//
+			// Resolve predicates.
+			//
+			$xref
+				= COntologyTerm::Resolve(
+					$theDatabase, kPREDICATE_XREF, NULL, TRUE );
+			$enum_of
+				= COntologyTerm::Resolve(
+					$theDatabase, kPREDICATE_ENUM_OF, NULL, TRUE );
+			$xref_ex
+				= COntologyTerm::Resolve(
+					$theDatabase, kPREDICATE_XREF_EXACT, NULL, TRUE );
+			
+			//
+			// Iterate XML file.
+			//
+			foreach( $xml->{'iso_3166_3_entry'} as $record )
+			{
+				//
+				// Check identifier.
+				//
+				if( $record[ 'alpha_3_code' ] !== NULL )
+				{
+					//
+					// Save local identifier.
+					//
+					$id = (string) $record[ 'alpha_3_code' ];
+					
+					//
+					// Resolve term.
+					//
+					if( COntologyTerm::Resolve( $theDatabase, $id, $ns3 ) === NULL )
+					{
+						//
+						// Instantiate part 3 term.
+						//
+						$term3 = new COntologyTerm();
+						
+						//
+						// Load default attributes.
+						//
+						$term3->NS( $ns3 );
+						$term3->LID( $id );
+						$term3->Kind( kKIND_ENUMERATION, TRUE );
+						
+						//
+						// Load language string attributes.
+						//
+						if( $record[ 'name' ] !== NULL )
+							$term3->Label( 'en',
+										   (string) $record[ 'name' ] );
+						if( $record[ 'comment' ] !== NULL )
+							$term3->Definition( 'en',
+												(string) $record[ 'comment' ] );
+						
+						//
+						// Collect language strings.
+						//
+						$this->_ISOCollectLanguageStrings(
+							$term3,
+							kISO_FILE_3166,
+							array( kTAG_LABEL, kTAG_DEFINITION ) );
+						
+						//
+						// Save term.
+						//
+						$term3->Insert( $theDatabase );
+						
+						//
+						// Create node.
+						//
+						$node3 = new COntologyMasterVertex();
+						$node3->Kind( kKIND_ENUMERATION, TRUE );
+						$node3->Term( $term3 );
+						
+						//
+						// Set custom tags.
+						//
+						if( $record[ 'date_withdrawn' ] !== NULL )
+							$node3[ $tag_date_withdrawn->NID() ]
+								= (string) $record[ 'date_withdrawn' ];
+						
+						//
+						// Save node.
+						//
+						$node3->Insert( $theDatabase );
+						
+						//
+						// Relate to parent.
+						//
+						$edge = new COntologyEdge();
+						$edge->Subject( $node3 );
+						$edge->Predicate( $enum_of );
+						$edge->Object( $par3 );
+						$edge->Insert( $theDatabase );
+						
+						//
+						// Handle alpha-4.
+						//
+						if( $record[ 'alpha_4_code' ] !== NULL )
+						{
+							//
+							// Check alpha-4 term.
+							//
+							if( ($term4 = COntologyTerm::Resolve(
+									$theDatabase, (string) $record[ 'alpha_4_code' ], $ns4 ))
+										=== NULL )
+							{
+								//
+								// Instantiate alpha-4 term.
+								//
+								$term4 = new COntologyTerm();
+								$term4->NS( $ns4 );
+								$term4->LID( (string) $record[ 'alpha_4_code' ] );
+								$term4->Kind( kKIND_ENUMERATION, TRUE );
+								$term4->Term( $term3 );
+								$term4->Insert( $theDatabase );
+								
+								//
+								// Instantiate alpha-4 node.
+								//
+								$node4 = new COntologyMasterVertex();
+								$node4->Kind( kKIND_ENUMERATION, TRUE );
+								$node4->Term( $term4 );
+								$node4->Insert( $theDatabase );
+								
+								//
+								// Relate to parent.
+								//
+								$edge = new COntologyEdge();
+								$edge->Subject( $node4 );
+								$edge->Predicate( $enum_of );
+								$edge->Object( $par4 );
+								$edge->Insert( $theDatabase );
+							
+							} // New alpha-4.
+							
+							//
+							// Resolve alpha-4 node.
+							//
+							else
+								$node4
+									= COntologyMasterVertex::Resolve(
+										$theDatabase, $term4->NID() );
+							
+							//
+							// Relate to alpha-3.
+							//
+							$edge = new COntologyEdge();
+							$edge->Subject( $node4 );
+							$edge->Predicate( $xref_ex );
+							$edge->Object( $node3 );
+							$edge->Insert( $theDatabase );
+							
+						} // Provided alpha-4.
+						
+						else
+							$node4 = NULL;
+						
+						//
+						// Handle numeric.
+						//
+						if( $record[ 'numeric_code' ] !== NULL )
+						{
+							//
+							// Check numeric term.
+							//
+							if( ($termN = COntologyTerm::Resolve(
+									$theDatabase, (string) $record[ 'numeric_code' ], $nsN ))
+										=== NULL )
+							{
+								//
+								// Instantiate numeric term.
+								//
+								$termN = new COntologyTerm();
+								$termN->NS( $nsN );
+								$termN->LID( (string) $record[ 'numeric_code' ] );
+								$termN->Kind( kKIND_ENUMERATION, TRUE );
+								$termN->Term( $term3 );
+								$termN->Insert( $theDatabase );
+								
+								//
+								// Instantiate numeric node.
+								//
+								$nodeN = new COntologyMasterVertex();
+								$nodeN->Kind( kKIND_ENUMERATION, TRUE );
+								$nodeN->Term( $termN );
+								$nodeN->Insert( $theDatabase );
+								
+								//
+								// Relate to parent.
+								//
+								$edge = new COntologyEdge();
+								$edge->Subject( $nodeN );
+								$edge->Predicate( $enum_of );
+								$edge->Object( $parN );
+								$edge->Insert( $theDatabase );
+							
+							} // New numeric.
+							
+							//
+							// Resolve numeric node.
+							//
+							else
+								$nodeN
+									= COntologyMasterVertex::Resolve(
+										$theDatabase, $termN->NID() );
+							
+							//
+							// Relate to alpha-3.
+							//
+							$edge = new COntologyEdge();
+							$edge->Subject( $nodeN );
+							$edge->Predicate( $xref_ex );
+							$edge->Object( $node3 );
+							$edge->Insert( $theDatabase );
+							
+						} // Provided numeric.
+						
+						else
+							$nodeN = NULL;
+						
+						//
+						// Handle alpha-4 cross references.
+						//
+						if( $node4 !== NULL )
+						{
+							//
+							// Cross reference alpha-4 from part 3.
+							//
+							$edge = new COntologyEdge();
+							$edge->Subject( $node3 );
+							$edge->Predicate( $xref );
+							$edge->Object( $node4 );
+							$edge->Insert( $theDatabase );
+						
+							//
+							// Cross reference alpha-4 from numeric.
+							//
+							if( $nodeN !== NULL )
+							{
+								$edge = new COntologyEdge();
+								$edge->Subject( $nodeN );
+								$edge->Predicate( $xref );
+								$edge->Object( $node4 );
+								$edge->Insert( $theDatabase );
+							
+							} // Has numeric code.
+						
+						} // Has alpha-4 code.
+						
+						//
+						// Handle numeric cross references.
+						//
+						if( $nodeN !== NULL )
+						{
+							//
+							// Cross reference numeric from part 3.
+							//
+							$edge = new COntologyEdge();
+							$edge->Subject( $node3 );
+							$edge->Predicate( $xref );
+							$edge->Object( $nodeN );
+							$edge->Insert( $theDatabase );
+						
+							//
+							// Cross reference numeric from alpha-4.
+							//
+							if( $node4 !== NULL )
+							{
+								$edge = new COntologyEdge();
+								$edge->Subject( $node4 );
+								$edge->Predicate( $xref );
+								$edge->Object( $nodeN );
+								$edge->Insert( $theDatabase );
+							
+							} // Has alpha-4 code.
+						
+						} // Has numeric code.
+					
+					} // New record.
+					
+					elseif( kOPTION_VERBOSE )
+						echo( "          ! $id\n" );
+				
+				} // Has record identifier.
+			
+			} // Iterating entries.
+		
+		} // Loaded file.
+		
+		else
+			throw new Exception
+				( "Unable to load XML file [$file]",
+				  kERROR_STATE );											// !@! ==>
+		
+	} // _ISOParse31663XML.
 
 	 
 	/*===================================================================================
@@ -2938,6 +3670,17 @@ class COntology extends CConnection
 	 *
 	 * This method will parse the XML ISO 3166-2 file.
 	 *
+	 * The method will load the following attributes:
+	 *
+	 * <ul>
+	 *	<li><tt>ISO:3166:1:alpha-2</tt>: Alpha 2 code [<tt>iso_3166_country[code]</tt>].
+	 *	<li><tt>ISO:3166:2:type</tt>: Type [<tt>iso_3166_subset[type]</tt>].
+	 *	<li><tt>ISO:3166:2</tt>: Type [<tt>iso_3166_subset[type]</tt>].
+	 *	<li><tt>{@link kTAG_LABEL}/tt>: Label <tt>name</tt> [<tt>name</tt>].
+	 *	<li><tt>{@link kTAG_DEFINITION}/tt>: Definition [<tt>official_name</tt>].
+	 *	<li><tt>ISO:3166:common_name</tt>: Common name [<tt>common_name</tt>].
+	 * </ul>
+	 *
 	 * @param CDatabase				$theDatabase		Database container.
 	 *
 	 * @access protected
@@ -2946,6 +3689,250 @@ class COntology extends CConnection
 	 */
 	protected function _ISOParse31662XML( CDatabase $theDatabase )
 	{
+		$file = kISO_CODES_PATH.kISO_CODES_PATH_XML.'/'.kISO_FILE_3166_2.'.xml';
+		$xml = simplexml_load_file( $file  );
+		if( $xml instanceof SimpleXMLElement )
+		{
+			//
+			// Inform.
+			//
+			if( kOPTION_VERBOSE )
+				echo( "        • ISO 3166 2\n" );
+			
+			//
+			// Resolve namespaces.
+			//
+			$ns = COntologyTerm::Resolve( $theDatabase, '2', 'ISO:3166', TRUE );
+			$ns2 = COntologyTerm::Resolve( $theDatabase, 'alpha-2', 'ISO:3166:1', TRUE );
+			
+			//
+			// Resolve tags.
+			//
+			$tag_type
+				= COntologyTag::Resolve( $theDatabase, 'ISO:3166:2:type', TRUE );
+			
+			//
+			// Resolve Parents.
+			//
+			$par = COntologyMasterVertex::Resolve( $theDatabase, 'ISO:3166:2', TRUE );
+			
+			//
+			// Resolve predicates.
+			//
+			$xref
+				= COntologyTerm::Resolve(
+					$theDatabase, kPREDICATE_XREF, NULL, TRUE );
+			$enum_of
+				= COntologyTerm::Resolve(
+					$theDatabase, kPREDICATE_ENUM_OF, NULL, TRUE );
+			$subset_of
+				= COntologyTerm::Resolve(
+					$theDatabase, kPREDICATE_SUBSET_OF, NULL, TRUE );
+			$xref_ex
+				= COntologyTerm::Resolve(
+					$theDatabase, kPREDICATE_XREF_EXACT, NULL, TRUE );
+			
+			//
+			// Iterate XML file.
+			//
+			foreach( $xml->{'iso_3166_country'} as $rec_country )
+			{
+				//
+				// Load country.
+				//
+				if( $rec_country[ 'code' ] !== NULL )
+				{
+					//
+					// Init country cache.
+					//
+					$cache = Array();
+					
+					//
+					// Save country code.
+					//
+					$country = (string) $rec_country[ 'code' ];
+					
+					//
+					// Resolve master country.
+					//
+					$term = COntologyTerm::Resolve( $theDatabase, $country, $ns2, TRUE );
+					if( $term->offsetExists( kTAG_TERM ) )
+						$term = $term->offsetGet( kTAG_TERM );
+					$country_node
+						= COntologyMasterNode::Resolve(
+							$theDatabase, $term, TRUE );
+					
+					//
+					// Iterate subset types.
+					//
+					foreach( $rec_country->{'iso_3166_subset'} as $rec_subset )
+					{
+						//
+						// Get subset type.
+						//
+						if( $rec_subset[ 'type' ] !== NULL )
+						{
+							//
+							// Save subset type.
+							//
+							$type = (string) $rec_subset[ 'type' ];
+							
+							//
+							// Iterate entries.
+							//
+							foreach( $rec_subset->{'iso_3166_2_entry'} as $rec_entry )
+							{
+								//
+								// Get entry code.
+								//
+								if( $rec_entry[ 'code' ] !== NULL )
+								{
+									//
+									// Save entry code.
+									//
+									$code = (string) $rec_entry[ 'code' ];
+									
+									//
+									// Instantiate term.
+									//
+									$term = new COntologyTerm();
+									
+									//
+									// Load default attributes.
+									//
+									$term->NS( $ns );
+									$term->LID( $code );
+									$term->Kind( kKIND_ENUMERATION, TRUE );
+									
+									//
+									// Load custom language string attributes.
+									//
+									if( $rec_entry[ 'name' ] !== NULL )
+									{
+										//
+										// Load label.
+										//
+										$term->Label( NULL, (string) $rec_entry[ 'name' ] );
+										
+										//
+										// Collect language strings.
+										//
+										$this->_ISOCollectLanguageStrings(
+											$term,
+											kISO_FILE_3166_2,
+											array( kTAG_LABEL ) );
+									
+									} // Has label.
+									
+									//
+									// Save term.
+									//
+									$term->Insert( $theDatabase );
+									
+									//
+									// Create node.
+									//
+									$node = new COntologyMasterVertex();
+									$node->Kind( kKIND_ENUMERATION, TRUE );
+									$node->Category( $type, TRUE );
+									$node->Term( $term );
+									$node->offsetSet( $tag_type->NID(), $type );
+									$node->Insert( $theDatabase );
+									
+									//
+									// Cache.
+									//
+									$cache[ substr( $code, 3 ) ] = $node;
+									
+									//
+									// Determine parent.
+									//
+									if( $rec_entry[ 'parent' ] !== NULL )
+									{
+										if( array_key_exists(
+											(string) $rec_entry[ 'parent' ],
+											$cache ) )
+										{
+											//
+											// Enumerate to parent.
+											//
+											$edge = new COntologyEdge();
+											$edge->Subject( $node );
+											$edge->Predicate( $enum_of );
+											$edge->Object(
+												$cache[ (string) $rec_entry[ 'parent' ] ] );
+											$edge->Insert( $theDatabase );
+
+											//
+											// Subset to parent.
+											//
+											$edge = new COntologyEdge();
+											$edge->Subject( $node );
+											$edge->Predicate( $subset_of );
+											$edge->Object(
+												$cache[ (string) $rec_entry[ 'parent' ] ] );
+											$edge->Insert( $theDatabase );
+										}
+										else
+											throw new Exception
+												( "Parent not found "
+												 ."[$file][$country][$type][$code]",
+												  kERROR_STATE );				// !@! ==>
+									}
+									else
+									{
+										//
+										// Enumerate to parent.
+										//
+										$edge = new COntologyEdge();
+										$edge->Subject( $node );
+										$edge->Predicate( $enum_of );
+										$edge->Object( $par );
+										$edge->Insert( $theDatabase );
+
+										//
+										// Subset to parent.
+										//
+										$edge = new COntologyEdge();
+										$edge->Subject( $node );
+										$edge->Predicate( $subset_of );
+										$edge->Object( $country_node );
+										$edge->Insert( $theDatabase );
+									}
+									
+								} // Has entry code.
+								
+								else
+									throw new Exception
+										( "Missing entry code [$file][$country][$type]",
+										  kERROR_STATE );						// !@! ==>
+							
+							} // Iterating entries.
+						
+						} // Has subset type.
+						
+						else
+							throw new Exception
+								( "Missing type code [$file][$country]",
+								  kERROR_STATE );								// !@! ==>
+					
+					} // Iterating subset types.
+				
+				} // Refers to country.
+				
+				else
+					throw new Exception
+						( "Missing country code [$file]",
+						  kERROR_STATE );										// !@! ==>
+			
+			} // Iterating entries.
+		
+		} // Loaded file.
+		
+		else
+			throw new Exception
+				( "Unable to load XML file [$file]",
+				  kERROR_STATE );											// !@! ==>
 		
 	} // _ISOParse31662XML.
 
@@ -2958,6 +3945,17 @@ class COntology extends CConnection
 	 * <h4>Parse ISO 4217 XML file</h4>
 	 *
 	 * This method will parse the XML ISO 4217 file.
+	 *
+	 * The method will load the following attributes:
+	 *
+	 * <ul>
+	 *	<li><tt>ISO:4217:A</tt>: Alpha 3 code [<tt>alpha_3_code</tt>].
+	 *	<li><tt>ISO:3166:1:alpha-2</tt>: Alpha 2 code [<tt>alpha_2_code</tt>].
+	 *	<li><tt>ISO:3166:1:numeric</tt>: Numeric code [<tt>numeric_code</tt>].
+	 *	<li><tt>{@link kTAG_LABEL}/tt>: Label <tt>name</tt> [<tt>name</tt>].
+	 *	<li><tt>{@link kTAG_DEFINITION}/tt>: Definition [<tt>official_name</tt>].
+	 *	<li><tt>ISO:3166:common_name</tt>: Common name [<tt>common_name</tt>].
+	 * </ul>
 	 *
 	 * @param CDatabase				$theDatabase		Database container.
 	 *
@@ -3006,11 +4004,14 @@ class COntology extends CConnection
 	 * be checked.
 	 *
 	 * @param CPersistentObject		$theObject			Object to be updated.
+	 * @param string				$theFile			File body name.
 	 * @param array					$theTags			List of tags to check.
 	 *
 	 * @access protected
 	 */
-	protected function _ISOCollectLanguageStrings( CPersistentObject $theObject, $theTags )
+	protected function _ISOCollectLanguageStrings( CPersistentObject $theObject,
+																	 $theFile,
+																	 $theTags )
 	{
 		//
 		// Collect attribute references.
@@ -3027,8 +4028,7 @@ class COntology extends CConnection
 			//
 			// Check language file.
 			//
-			$file_path = $_SESSION[ kISO_FILE_PO_DIR ]."/$language/"
-						.kISO_FILE_639_3.'.serial';
+			$file_path = $_SESSION[ kISO_FILE_PO_DIR ]."/$language/$theFile.serial";
 			if( is_file( $file_path ) )
 			{
 				//
@@ -3043,7 +4043,15 @@ class COntology extends CConnection
 				{
 					if( $attributes[ $tag ] !== NULL )
 					{
-						$key = $attributes[ $tag ][ 'en' ];
+						//
+						// Determine key.
+						//
+						if( array_key_exists( 'en', $attributes[ $tag ] ) )
+							$key = $attributes[ $tag ][ 'en' ];
+						elseif( array_key_exists( 0, $attributes[ $tag ] ) )
+							$key = $attributes[ $tag ][ 0 ];
+						else
+							continue;
 						if( array_key_exists( $key, $keys ) )
 							$attributes[ $tag ][ $language ] = $keys[ $key ];
 					}

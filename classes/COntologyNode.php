@@ -69,12 +69,20 @@ require_once( kPATH_MYWRAPPER_LIBRARY_CLASS."/CNode.php" );
  *	<li><i>Type</i>: The type, <tt>{@link Type()}</tt> or the inherited
  *		<tt>{@link kTAG_TYPE}</tt> tag, in this class is required to belong to a specific
  *		set of values, the {@link Type()} method's documentation lists them.
- *	<li><i>Edge references</i>: The edge references, <tt>{@link EdgeRefs()}</tt> or the
- *		<tt>{@link kTAG_EDGES}</tt> tag, represents the list of {@link COntologyEdge}
- *		object references in which the current node was referenced as the subject or object
- *		of a relationship. It is an array of {@link COntologyEdge} {@link kTAG_NID}
- *		attributes in which the current node is referenced. This attribute is read-only and
- *		is managed internally.
+ *	<li><i>Edge references</i>: The edge references, <tt>{@link kTAG_EDGES}</tt> tag,
+ *		represents the {@link COntologyEdge} object references in which the current node was
+ *		referenced as the subject or object of a relationship. It is either the count or
+ *		an array of {@link COntologyEdge} {@link kTAG_NID} attributes, depending on the
+ *		value of the {@link kSWITCH_kTAG_EDGES} flag:
+ *	 <ul>
+ *		<li><tt>0x2</tt>: <i>Keep count of edge references</i>. This means that the
+ *			{@link kTAG_EDGES} attribute will be a reference count.
+ *		<li><tt>0x3</tt>: <i>Keep list of edge references</i>. This means that the
+ *			{@link kTAG_EDGES} attribute will be a list of references.
+ *		<li><tt>0x0</tt> <i>or other</i>: <i>Don't handle this information</i>. This means
+ *			that the {@link kTAG_EDGES} attribute will not be handled.
+ *	 </ul>
+ *		This attribute is read-only and is managed internally.
  * </ul>
  *
  * Since the class represents a term in context, there is no combination of attributes that
@@ -352,36 +360,6 @@ class COntologyNode extends CNode
 		return parent::Type( $theValue, $theOperation, $getOld );					// ==>
 
 	} // Type.
-
-		
-	/*===================================================================================
-	 *	EdgeRefs																		*
-	 *==================================================================================*/
-
-	/**
-	 * <h4>Manage edge references</h4>
-	 *
-	 * The <i>edge references</i>, {@link kTAG_EDGES}, holds a list of identifiers of
-	 * edges that reference the node.
-	 *
-	 * The method is read-only, because this value must be managed externally.
-	 *
-	 * @access public
-	 * @return array				Edge reference list.
-	 *
-	 * @see kTAG_EDGES
-	 */
-	public function EdgeRefs()
-	{
-		//
-		// Handle reference count.
-		//
-		if( $this->offsetExists( kTAG_EDGES ) )
-			return $this->offsetGet( kTAG_EDGES );								// ==>
-		
-		return Array();																// ==>
-
-	} // EdgeRefs.
 
 		
 
@@ -1228,9 +1206,24 @@ class COntologyNode extends CNode
 	/**
 	 * <h4>Update related objects after committing</h4>
 	 *
-	 * In this class we add the current node's identifier to the list of node references,
-	 * {@link kTAG_NODES}, in the related term when inserting; we remove the element
-	 * when deleting.
+	 * In this class we handle referenced terms, {@link kTAG_TERM}: depending on the value
+	 * of the {@link kSWITCH_kTAG_NODES} flag we do the following:
+	 *
+	 * <ul>
+	 *	<li><tt>0x2</tt>: <i>Keep count of references</i>. This means that the
+	 *		{@link kTAG_NODES} attribute of the term referenced by the {@link kTAG_TERM}
+	 *		attribute will be incremented when the object is inserted, or decremented when
+	 *		deleted.
+	 *	<li><tt>0x3</tt>: <i>Keep list of references</i>. This means that a reference to the
+	 *		current object will be added to the {@link kTAG_NODES} attribute of the term
+	 *		referenced by {@link kTAG_TERM} attribute of the current object when the latter
+	 *		is inserted, and removed when the object is deleted.
+	 *	<li><tt>0x0</tt> <i>or other</i>: <i>Don't handle this information</i>. This means
+	 *		that the {@link kTAG_NODES} attribute will not be handled.
+	 * </ul>
+	 *
+	 * Note that you should provide either a database connection or the <i>term</i>
+	 * container to this method in order to make it work!
 	 *
 	 * @param reference			   &$theConnection		Server, database or container.
 	 * @param reference			   &$theModifiers		Commit options.
@@ -1238,7 +1231,7 @@ class COntologyNode extends CNode
 	 * @access protected
 	 *
 	 * @uses _IsCommitted()
-	 * @uses _ReferenceInTerm()
+	 * @uses _ReferenceInObject()
 	 *
 	 * @see kFLAG_PERSIST_INSERT kFLAG_PERSIST_REPLACE
 	 */
@@ -1248,26 +1241,43 @@ class COntologyNode extends CNode
 		// Call parent method.
 		//
 		parent::_PostcommitRelated( $theConnection, $theModifiers );
-	
+		
 		//
-		// Handle insert or replace.
+		// Check term reference.
 		//
-		if( (($theModifiers & kFLAG_PERSIST_MASK) == kFLAG_PERSIST_INSERT)
-		 || (($theModifiers & kFLAG_PERSIST_MASK) == kFLAG_PERSIST_REPLACE) )
+		if( $this->offsetExists( kTAG_TERM ) )
 		{
 			//
-			// Check if not yet committed.
+			// Handle insert or replace.
 			//
-			if( ! $this->_IsCommitted() )
-				$this->_ReferenceInTerm( $theConnection, TRUE );
+			if( (($theModifiers & kFLAG_PERSIST_MASK) == kFLAG_PERSIST_INSERT)
+			 || (($theModifiers & kFLAG_PERSIST_MASK) == kFLAG_PERSIST_REPLACE) )
+			{
+				//
+				// Check if not yet committed.
+				//
+				if( ! $this->_IsCommitted() )
+					$this->_ReferenceInObject(
+						COntologyTerm::ResolveContainer( $theConnection, TRUE ),
+						kSWITCH_kTAG_NODES,
+						$this->offsetGet( kTAG_TERM ),
+						kTAG_NODES,
+						1 );
+			
+			} // Insert or replace.
+			
+			//
+			// Check if deleting.
+			//
+			elseif( $theModifiers & kFLAG_PERSIST_DELETE )
+				$this->_ReferenceInObject(
+					COntologyTerm::ResolveContainer( $theConnection, TRUE ),
+					kSWITCH_kTAG_NODES,
+					$this->offsetGet( kTAG_TERM ),
+					kTAG_NODES,
+					-1 );
 		
-		} // Insert or replace.
-		
-		//
-		// Check if deleting.
-		//
-		elseif( $theModifiers & kFLAG_PERSIST_DELETE )
-			$this->_ReferenceInTerm( $theConnection, FALSE );
+		} // Has term reference.
 		
 	} // _PostcommitRelated.
 
@@ -1313,74 +1323,6 @@ class COntologyNode extends CNode
 
 	 
 	/*===================================================================================
-	 *	_ReferenceInTerm																*
-	 *==================================================================================*/
-
-	/**
-	 * <h4>Add node reference to term</h4>
-	 *
-	 * This method can be used to add or remove the current node's reference from the
-	 * referenced term, {@link kTAG_NODES}. This method should be used whenever
-	 * committing a new node or deleting one: it will add the current node's native
-	 * identifier to the set of node references of the node's term when committing a new
-	 * node; it will remove it when deleting the node.
-	 *
-	 * The last parameter is a boolean: if <tt>TRUE</tt> the method will add to the set; if
-	 * <tt>FALSE</tt>, it will remove from the set.
-	 *
-	 * The method will return <tt>TRUE</tt> if the operation affected at least one object,
-	 * <tt>FALSE</tt> if not, <tt>NULL</tt> if the term is not set and raise an exception if
-	 * the operation failed.
-	 *
-	 * @param CConnection			$theConnection		Server, database or container.
-	 * @param boolean				$doAdd				<tt>TRUE</tt> add reference.
-	 *
-	 * @access protected
-	 * @return boolean				<tt>TRUE</tt> operation affected at least one object.
-	 *
-	 * @see kTAG_TERM kTAG_NODES
-	 * @see kFLAG_PERSIST_MODIFY kFLAG_MODIFY_ADDSET kFLAG_MODIFY_PULL
-	 */
-	protected function _ReferenceInTerm( CConnection $theConnection, $doAdd )
-	{
-		//
-		// Check term.
-		//
-		if( $this->offsetExists( kTAG_TERM ) )
-		{
-			//
-			// Set modification criteria.
-			//
-			$criteria = array( kTAG_NODES => $this->offsetGet( kTAG_NID ) );
-			
-			//
-			// Handle add to set.
-			//
-			if( $doAdd )
-				return COntologyTerm::ResolveClassContainer( $theConnection, TRUE )
-						->ManageObject
-							(
-								$criteria,
-								$this->offsetGet( kTAG_TERM ),
-								kFLAG_PERSIST_MODIFY + kFLAG_MODIFY_ADDSET
-							);														// ==>
-			
-			return COntologyTerm::ResolveClassContainer( $theConnection, TRUE )
-					->ManageObject
-						(
-							$criteria,
-							$this->offsetGet( kTAG_TERM ),
-							kFLAG_PERSIST_MODIFY + kFLAG_MODIFY_PULL
-						);															// ==>
-		
-		} // Object has term.
-		
-		return NULL;																// ==>
-	
-	} // _ReferenceInTerm.
-
-	 
-	/*===================================================================================
 	 *	_LoadTermAttributes																*
 	 *==================================================================================*/
 
@@ -1393,7 +1335,7 @@ class COntologyNode extends CNode
 	 *
 	 * The method accepts a single parameter, <tt>$theAttributes</tt>, which is the list of
 	 * term attribute tags which should be copied to this object. If the parameter is
-	 * omitted, the method will do nothing.
+	 * omitted, the method will copy all attributes.
 	 *
 	 * This method will first load the term attributes, then overwrite them with the node
 	 * attributes, this effectively makes matching node attributes overwrite term

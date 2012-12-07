@@ -762,6 +762,144 @@ class CPersistentObject extends CPersistentDocument
 
 /*=======================================================================================
  *																						*
+ *							PROTECTED REFERENCING INTERFACE								*
+ *																						*
+ *======================================================================================*/
+
+
+	 
+	/*===================================================================================
+	 *	_ReferenceInObject																*
+	 *==================================================================================*/
+
+	/**
+	 * <h4>add, increment, remove or decrement current object's reference</h4>
+	 *
+	 * This method can be used to reference the current object in another object by either
+	 * incrementing/decrementing a counter in the target object, or adding/removing a
+	 * reference of the current object from the target object.
+	 *
+	 * The method accepts the following parameters:
+	 *
+	 * <ul>
+	 *	<li><tt>$theContainer</tt>: Container in which the target object is stored.
+	 *	<li><tt>$theOperation</tt>: This value determines what kind of operation to perform:
+	 *	 <ul>
+	 *		<li><tt>0x2</tt>: <i>Keep reference count</i>. This means that the
+	 *			<tt>$theOffset</tt> attribute will be an integer representing the number
+	 *			of times the target object was referenced.
+	 *		<li><tt>0x3</tt>: <i>Keep references list</i>. This means that the
+	 *			<tt>$theOffset</tt> attribute will be a list of object identifiers
+	 *			representing the objects that reference the target object.
+	 *		<li><i>other</i>: <i>Ignore</i>. Any other value will disable this method.
+	 *	 </ul>
+	 *	<li><tt>$theReference</tt>: This value represents the native identifier of the
+	 *		object that receives the reference.
+	 *	<li><tt>$theCount</tt>: This value represents the increment/decrement value, or
+	 *		a value whose sign will be used to determine whether to add or remove references
+	 *		from the list: a negative value means remove, a positive value means add; if the
+	 *		value is <tt>0</tt>, the method will do nothing.
+	 * </ul>
+	 *
+	 * The method will return <tt>TRUE</tt> if the operation affected at least one object,
+	 * <tt>FALSE</tt> if not, <tt>NULL</tt> if the provided increment is <tt>0</tt> and
+	 * raise an exception if the operation failed.
+	 *
+	 * <i>Note that this method does not check if the object is committed, that must have
+	 * been done by the caller. This method is called in general after inserting the object
+	 * and before setting the committed status</i>.
+	 *
+	 * @param CContainer			$theContainer		Server, database or container.
+	 * @param byte					$theOperation		Operation code.
+	 * @param mixed					$theReference		Target object reference.
+	 * @param string				$theOffset			Offset to update.
+	 * @param integer				$theCount			Increment amount.
+	 *
+	 * @access protected
+	 * @return mixed				<tt>TRUE</tt> operation affected at least one object.
+	 */
+	protected function _ReferenceInObject( CContainer $theContainer,
+													  $theOperation,
+													  $theReference,
+													  $theOffset,
+													  $theCount )
+	{
+		//
+		// Check operation.
+		//
+		if( $theOperation & 0x2 )
+		{
+			//
+			// Increment counter.
+			//
+			if( $theOperation == 0x2 )
+			{
+				//
+				// Set modification criteria.
+				//
+				$criteria = array( $theOffset => (int) $theCount );
+				
+				//
+				// Let container do the modification.
+				//
+				return $theContainer
+						->ManageObject
+							(
+								$criteria,
+								$theReference,
+								kFLAG_PERSIST_MODIFY + kFLAG_MODIFY_INCREMENT
+							);														// ==>
+			
+			} // Counter.
+			
+			//
+			// Add reference.
+			//
+			if( $theOperation == 0x3 )
+			{
+				//
+				// Set modification criteria.
+				//
+				$criteria = array( $theOffset => $this->NID() );
+				
+				//
+				// Add to set.
+				//
+				if( $theCount > 0 )
+					return $theContainer
+							->ManageObject
+								(
+									$criteria,
+									$theReference,
+									kFLAG_PERSIST_MODIFY + kFLAG_MODIFY_ADDSET
+								);													// ==>
+				
+				//
+				// Pull from set.
+				//
+				elseif( $theCount < 0 )
+					return $theContainer
+							->ManageObject
+								(
+									$criteria,
+									$theReference,
+									kFLAG_PERSIST_MODIFY + kFLAG_MODIFY_PULL
+								);													// ==>
+			
+			} // List.
+				
+			return FALSE;															// ==>
+		
+		} // Flag is set.
+		
+		return NULL;																// ==>
+	
+	} // _ReferenceInObject.
+		
+
+
+/*=======================================================================================
+ *																						*
  *							PROTECTED VALIDATION INTERFACE								*
  *																						*
  *======================================================================================*/

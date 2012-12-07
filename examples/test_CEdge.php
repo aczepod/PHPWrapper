@@ -265,8 +265,8 @@ try
 				   .'] Dirty['.$edge->dirty()
 				   .'] Saved['.$edge->committed()
 				   .'] Encoded['.$edge->encoded().']<br />' );
-	echo( '<h5>$status = $edge->Insert( $edge_container );</h5>' );
-	$status = $edge->Insert( $edge_container );
+	echo( '<h5>$status = $edge->Insert( $database );</h5>' );
+	$status = $edge->Insert( $database );
 	echo( '<pre>' ); print_r( $edge ); echo( '</pre>' );
 	echo( '<hr />' );
 	

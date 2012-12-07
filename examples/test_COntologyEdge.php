@@ -278,11 +278,11 @@ try
 				   .'] Dirty['.$edge->dirty()
 				   .'] Saved['.$edge->committed()
 				   .'] Encoded['.$edge->encoded().']<br />' );
-	echo( '<h5>$status = $edge->Insert( $edge_container );</h5>' );
-	$status = $edge->Insert( $edge_container );
+	echo( '<h5>$status = $edge->Insert( $database );</h5>' );
+	$status = $edge->Insert( $database );
 	echo( '<i>Edge</i><pre>' ); print_r( $edge ); echo( '</pre>' );
 	echo( '<i>Subject</i><pre>' ); print_r( $nodeA = $edge->LoadSubject( $database ) ); echo( '</pre>' );
-	echo( '<i>Predicate</i><pre>' ); print_r( $termC = $edge->LoadPredicate( $edge_container ) ); echo( '</pre>' );
+	echo( '<i>Predicate</i><pre>' ); print_r( $termC = $edge->LoadPredicate( $database ) ); echo( '</pre>' );
 	echo( '<i>Object</i><pre>' ); print_r( $nodeB = $edge->LoadObject( $database ) ); echo( '</pre>' );
 	echo( '<hr />' );
 	

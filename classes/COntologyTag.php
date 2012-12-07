@@ -992,12 +992,60 @@ class COntologyTag extends CTag
 	/**
 	 * <h4>Update related objects after committing</h4>
 	 *
-	 * Once committed, the referenced feature, method and scale vertices will be updated
-	 * with the current tag's identifier in the respective {@link kTAG_FEATURES},
-	 * {@link kTAG_METHODS} and {@link kTAG_SCALES} attributes.
+	 * In this class we reference this tag from terms related to nodes used as features,
+	 * methods or scales. Depending on the value of the following flags:
 	 *
-	 * When inserting a new tag, we add the tag reference, when deleting the tag we remove
-	 * it.
+	 * <ul>
+	 *	<li><tt>{@link kSWITCH_kTAG_FEATURES}</tt>: <i>Feature node reference</i>. This
+	 *		switch manages references to the current tag from terms referred by feature
+	 *		nodes, or the first node in the path. The reference is in the
+	 *		{@link kTAG_FEATURES} of the referenced term.
+	 *	 <ul>
+	 *		<li><tt>0x2</tt>: <i>Keep count of references</i>. This means that the
+	 *			{@link kTAG_FEATURES} attribute of the term will be incremented when the
+	 *			tag is inserted, or decremented when deleted.
+	 *		<li><tt>0x3</tt>: <i>Keep list of references</i>. This means that a reference to
+	 *			the current object will be added to the {@link kTAG_FEATURES} attribute of
+	 *			the term when the current object is inserted, and removed when the object is
+	 *			deleted.
+	 *		<li><tt>0x0</tt> <i>or other</i>: <i>Don't handle this information</i>. This
+	 *			means that the term's {@link kTAG_FEATURES} attribute will not be handled.
+	 *	 </ul>
+	 *	<li><tt>{@link kSWITCH_kTAG_METHODS}</tt>: <i>Method node reference</i>. This
+	 *		switch manages references to the current tag from terms referred by method
+	 *		nodes, or all nodes between the first and last nodes in the path. The reference
+	 *		is in the {@link kSWITCH_kTAG_METHODS} of the referenced term.
+	 *	 <ul>
+	 *		<li><tt>0x2</tt>: <i>Keep count of references</i>. This means that the
+	 *			{@link kSWITCH_kTAG_METHODS} attribute of the term will be incremented when
+	 *			the tag is inserted, or decremented when deleted.
+	 *		<li><tt>0x3</tt>: <i>Keep list of references</i>. This means that a reference to
+	 *			the current object will be added to the {@link kSWITCH_kTAG_METHODS}
+	 *			attribute of the term when the current object is inserted, and removed when
+	 *			the object is deleted.
+	 *		<li><tt>0x0</tt> <i>or other</i>: <i>Don't handle this information</i>. This
+	 *			means that the term's {@link kSWITCH_kTAG_METHODS} attribute will not be
+	 *			handled.
+	 *	 </ul>
+	 *	<li><tt>{@link kSWITCH_kTAG_SCALES}</tt>: <i>Scale node reference</i>. This
+	 *		switch manages references to the current tag from terms referred by scale
+	 *		nodes, or the last node in the path. The reference is in the
+	 *		{@link kTAG_SCALES} of the referenced term.
+	 *	 <ul>
+	 *		<li><tt>0x2</tt>: <i>Keep count of references</i>. This means that the
+	 *			{@link kTAG_SCALES} attribute of the term will be incremented when the
+	 *			tag is inserted, or decremented when deleted.
+	 *		<li><tt>0x3</tt>: <i>Keep list of references</i>. This means that a reference to
+	 *			the current object will be added to the {@link kTAG_SCALES} attribute of
+	 *			the term when the current object is inserted, and removed when the object is
+	 *			deleted.
+	 *		<li><tt>0x0</tt> <i>or other</i>: <i>Don't handle this information</i>. This
+	 *			means that the term's {@link kTAG_SCALES} attribute will not be handled.
+	 *	 </ul>
+	 * </ul>
+	 *
+	 * Note that you should provide either a database connection or the <i>term</i>
+	 * container to this method in order to make it work!
 	 *
 	 * We only handle vertex elements, we do not refer predicate terms.
 	 *
@@ -1008,6 +1056,7 @@ class COntologyTag extends CTag
 	 *
 	 * @uses _IsCommitted()
 	 *
+	 * @see kSWITCH_kTAG_FEATURES, kSWITCH_kTAG_METHODS, kSWITCH_kTAG_SCALES
 	 * @see kTAG_FEATURES, kTAG_METHODS, kTAG_SCALES
 	 * @see kFLAG_PERSIST_INSERT kFLAG_PERSIST_REPLACE kFLAG_PERSIST_DELETE
 	 */
@@ -1021,7 +1070,9 @@ class COntologyTag extends CTag
 		//
 		// Set operation.
 		//
-		$operation = ! ($theModifiers & kFLAG_PERSIST_DELETE);
+		$operation = ( ! ($theModifiers & kFLAG_PERSIST_DELETE) )
+				   ? 1
+				   : -1;
 		
 		//
 		// Handle new object.
@@ -1041,110 +1092,40 @@ class COntologyTag extends CTag
 				// Handle feature vertex.
 				//
 				if( $i == 0 )
-					$tag = kTAG_FEATURES;
+					$this->_ReferenceInObject(
+						COntologyTerm::ResolveContainer( $theConnection, TRUE ),
+						kSWITCH_kTAG_FEATURES,
+						$path[ $i ],
+						kTAG_FEATURES,
+						$operation );
 				
 				//
 				// Handle scale vertex.
 				//
 				elseif( $i == (count( $path ) - 1) )
-					$tag = kTAG_SCALES;
+					$this->_ReferenceInObject(
+						COntologyTerm::ResolveContainer( $theConnection, TRUE ),
+						kSWITCH_kTAG_SCALES,
+						$path[ $i ],
+						kTAG_SCALES,
+						$operation );
 				
 				//
 				// Handle method vertex.
 				//
 				else
-					$tag = kTAG_METHODS;
-				
-				//
-				// Set tag reference.
-				//
-				$this->_ReferenceInTerm( $theConnection, $path[ $i ], $tag, $operation );
+					$this->_ReferenceInObject(
+						COntologyTerm::ResolveContainer( $theConnection, TRUE ),
+						kSWITCH_kTAG_METHODS,
+						$path[ $i ],
+						kTAG_METHODS,
+						$operation );
 			
 			} // Iterating path elements.
 		
 		} // Insert or replace and not committed, or deleting.
 		
 	} // _PostcommitRelated.
-
-		
-
-/*=======================================================================================
- *																						*
- *								PROTECTED REFERENCE INTERFACE							*
- *																						*
- *======================================================================================*/
-
-
-	 
-	/*===================================================================================
-	 *	_ReferenceInTerm																*
-	 *==================================================================================*/
-
-	/**
-	 * <h4>Add tag reference to term</h4>
-	 *
-	 * This method can be used to add or remove the current tag's reference from the
-	 * provided term. This method should be used whenever committing a new tag or when
-	 * deleting one: it will update the {@link kTAG_FEATURES} for terms used as features or
-	 * traits, the {@link kTAG_METHODS} for terms used as methods and the
-	 * {@link kTAG_SCALES} for terms used as scales or units, the method will add
-	 * the corresponding reference when inserting a new tag and remove it when deleting the
-	 * tag.
-	 *
-	 * <ul>
-	 *	<li><tt>$theConnection</tt>: Server, database or container in which the terms
-	 *		reside.
-	 *	<li><tt>$theTerm</tt>: Term object or identifier to which the current tag reference
-	 *		is to be added or removed.
-	 *	<li><tt>$theTag</tt>: Attribute tag of the terem to which the current tag reference
-	 *		is to be added or removed.
-	 *	<li><tt>$doAdd</tt>: If <tt>TRUE</tt> add to set; if <tt>FALSE</tt> remove from set.
-	 * </ul>
-	 *
-	 * The method will return <tt>TRUE</tt> if the operation affected at least one object,
-	 * <tt>FALSE</tt> if not and raise an exception if the operation failed.
-	 *
-	 * @param CConnection			$theConnection		Server, database or container.
-	 * @param mixed					$theTerm			Term object or identifier.
-	 * @param string				$theTag				Attribute tag to update.
-	 * @param boolean				$doAdd				<tt>TRUE</tt> add reference.
-	 *
-	 * @access protected
-	 * @return boolean				<tt>TRUE</tt> operation affected at least one object.
-	 *
-	 * @see kTAG_NID
-	 * @see kTAG_FEATURES kTAG_METHODS kTAG_SCALES
-	 * @see kFLAG_PERSIST_MODIFY kFLAG_MODIFY_ADDSET kFLAG_MODIFY_PULL
-	 */
-	protected function _ReferenceInTerm( CConnection $theConnection,
-													 $theTerm, $theTag, $doAdd )
-	{
-		//
-		// Set modification criteria.
-		//
-		$criteria = array( $theTag => $this->offsetGet( kTAG_NID ) );
-		
-		//
-		// Handle add to set.
-		//
-		if( $doAdd )
-			return COntologyTerm::ResolveClassContainer( $theConnection, TRUE )
-					->ManageObject
-						(
-							$criteria,
-							$theTerm,
-							kFLAG_PERSIST_MODIFY + kFLAG_MODIFY_ADDSET
-						);														// ==>
-		
-		return COntologyTerm::ResolveClassContainer( $theConnection, TRUE )
-				->ManageObject
-					(
-						$criteria,
-						$theTerm,
-						kFLAG_PERSIST_MODIFY + kFLAG_MODIFY_PULL
-					);															// ==>
-	
-	} // _ReferenceInTerm.
 
 	 
 

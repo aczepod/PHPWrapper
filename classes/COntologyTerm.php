@@ -54,41 +54,45 @@ require_once( kPATH_MYWRAPPER_LIBRARY_CLASS."/CTerm.php" );
  *		separated by the {@link kTOKEN_NAMESPACE_SEPARATOR} token. The namespace attribute
  *		is constituted by the {@link kTAG_NID} of the referenced term and is optional.
  *	<li><i>Namespace references</i>: The namespace references,
- *		<tt>{@link NamespaceRefs()}</tt> or the <tt>{@link kTAG_NAMESPACE_REFS}</tt> tag,
- *		represents the number of instances of this class that reference the current term as
- *		a namespace, {@link kTAG_NAMESPACE}. This attribute is an integer counting the
- *		number of references and is useful to check whether a term is related or not. This
- *		attribute is read-only and is managed internally.
- *	<li><i>Node references</i>: The node references, <tt>{@link NodeRefs()}</tt> or the
- *		<tt>{@link kTAG_NODES}</tt> tag, represents the list of references to the nodes
- *		that reference the current term. It is an array of {@link COntologyNode}
- *		{@link kTAG_NID} attributes of nodes that reference the current term through
- *		their {@link kTAG_TERM} attribute. This attribute is read-only and is managed
- *		internally.
+ *		<tt>{@link kTAG_NAMESPACE_REFS}</tt> tag, represents either the number or the list
+ *		of instances of this class that reference the current term as a namespace. This
+ *		attribute is either an integer or an array, depending on the value of the
+ *		{@link kSWITCH_kTAG_NAMESPACE_REFS} flag:
+ *	 <ul>
+ *		<li><tt>0x2</tt>: <i>Keep count of namespace references</i>. This means that the
+ *			{@link kTAG_NAMESPACE_REFS} attribute will be a reference count.
+ *		<li><tt>0x3</tt>: <i>Keep list of namespace references</i>. This means that the
+ *			{@link kTAG_NAMESPACE_REFS} attribute will be a list of references.
+ *		<li><tt>0x0</tt> <i>or other</i>: <i>Don't handle this information</i>. This means
+ *			that the {@link kTAG_NAMESPACE_REFS} attribute will not be handled.
+ *	 </ul>
+ *		This attribute is read-only and is managed internally.
+ *	<li><i>Node references</i>: The node references, <tt>{@link kTAG_NODES}</tt> tag,
+ *		represents the references to this object from node objects. This attribute behaves
+ *		like the <tt>{@link kTAG_NAMESPACE_REFS}</tt> tag, and is managed by the
+ *		{@link kSWITCH_kTAG_NODES} switch.
  *	<li><i>Feature tag references</i>: The feature tag references,
- *		<tt>{@link FeatureTagRefs()}</tt> or the <tt>{@link kTAG_FEATURES}</tt> tag,
- *		represents the list of references to {@link COntologyTag} instances that reference
- *		the current term as a {@link kKIND_FEATURE} feature. It is an array of
- *		{@link COntologyTag} {@link kTAG_NID} attributes of tags in which the the first
- *		vertex node in their path, {@link kTAG_PATH}, attribute refers to the current term.
- *		This attribute lists the tags in which the feature or trait is represented by the
- *		current object. This attribute is read-only and is managed internally.
+ *		<tt>{@link kTAG_FEATURES}</tt> tag, represents references to {@link COntologyTag}
+ *		instances that reference the current term as a {@link kKIND_FEATURE} feature. It is
+ *		either the count or an array of {@link COntologyTag} {@link kTAG_NID} attributes
+ *		whose first vertex node in their {@link kTAG_PATH} attribute refers to the current
+ *		term. This attribute behaves like the <tt>{@link kTAG_NAMESPACE_REFS}</tt> tag, and
+ *		is managed by the {@link kSWITCH_kTAG_FEATURES} switch.
  *	<li><i>Method tag references</i>: The method tag references,
- *		<tt>{@link MethodTagRefs()}</tt> or the <tt>{@link kTAG_METHODS}</tt> tag,
- *		represents the list of references to {@link COntologyTag} instances that reference
- *		the current term as a {@link kKIND_METHOD} method. It is an array of
- *		{@link COntologyTag} {@link kTAG_NID} attributes of tags in which the the middle
- *		vertex nodes in their path, {@link kTAG_PATH}, attribute refer to the current term.
- *		This attribute lists the tags in which the measure method is represented by the
- *		current object. This attribute is read-only and is managed internally.
- *	<li><i>Scale tag references</i>: The scale tag references,
- *		<tt>{@link ScaleTagRefs()}</tt> or the <tt>{@link kTAG_SCALES}</tt> tag,
- *		represents the list of references to {@link COntologyTag} instances that reference
- *		the current term as a {@link kKIND_SCALE} feature. It is an array of
- *		{@link COntologyTag} {@link kTAG_NID} attributes of tags in which the the last
- *		vertex node in their path, {@link kTAG_PATH}, attribute refers to the current term.
- *		This attribute lists the tags in which the scale or unit is represented by the
- *		current object. This attribute is read-only and is managed internally.
+ *		<tt>{@link kTAG_METHODS}</tt> tag, represents references to {@link COntologyTag}
+ *		instances that reference the current term as a {@link kKIND_METHOD} method. It is
+ *		either the count or an array of {@link COntologyTag} {@link kTAG_NID} attributes
+ *		whose vertex nodes in their {@link kTAG_PATH} attribute refer to the current term
+ *		and are not the first or last in the list. This attribute behaves like the
+ *		<tt>{@link kTAG_NAMESPACE_REFS}</tt> tag, and is managed by the
+ *		{@link kSWITCH_kTAG_METHODS} switch.
+ *	<li><i>Scale tag references</i>: The scale tag references, <tt>{@link kTAG_SCALES}</tt>
+ *		tag, represents references to {@link COntologyTag} instances that reference the
+ *		current term as a {@link kKIND_SCALE} scale. It is either the count or an array of
+ *		{@link COntologyTag} {@link kTAG_NID} attributes whose last vertex node in their
+ *		{@link kTAG_PATH} attribute refers to the current term. This attribute behaves like
+ *		the <tt>{@link kTAG_NAMESPACE_REFS}</tt> tag, and is managed by the
+ *		{@link kSWITCH_kTAG_SCALES} switch.
  * </ul>
  *
  * This class prevents updating the full object once it has been inserted for the first
@@ -122,166 +126,6 @@ class COntologyTerm extends CTerm
 	 * @var COntologyTerm
 	 */
 	 protected $mTerm = NULL;
-
-		
-
-/*=======================================================================================
- *																						*
- *								PUBLIC MEMBER INTERFACE									*
- *																						*
- *======================================================================================*/
-
-
-	 
-	/*===================================================================================
-	 *	NamespaceRefs																	*
-	 *==================================================================================*/
-
-	/**
-	 * <h4>Manage namespace references</h4>
-	 *
-	 * The <i>namespace references</i>, {@link kTAG_NAMESPACE_REFS}, holds an integer
-	 * which represents the number of times the current term has been referenced as a
-	 * namespace, that is, stored in the {@link kTAG_NAMESPACE} offset of another term.
-	 *
-	 * The method is read-only, because this value must be managed externally.
-	 *
-	 * @access public
-	 * @return integer				Namespace reference count.
-	 *
-	 * @see kTAG_NAMESPACE_REFS
-	 */
-	public function NamespaceRefs()
-	{
-		//
-		// Handle reference count.
-		//
-		if( $this->offsetExists( kTAG_NAMESPACE_REFS ) )
-			return $this->offsetGet( kTAG_NAMESPACE_REFS );							// ==>
-		
-		return 0;																	// ==>
-
-	} // NamespaceRefs.
-
-	 
-	/*===================================================================================
-	 *	NodeRefs																		*
-	 *==================================================================================*/
-
-	/**
-	 * <h4>Manage node references</h4>
-	 *
-	 * The <i>node references</i>, {@link kTAG_NODES}, holds a list of identifiers of
-	 * nodes that reference the term.
-	 *
-	 * The method is read-only, because this value must be managed externally.
-	 *
-	 * @access public
-	 * @return array				Nodes reference list.
-	 *
-	 * @see kTAG_NODES
-	 */
-	public function NodeRefs()
-	{
-		//
-		// Handle reference count.
-		//
-		if( $this->offsetExists( kTAG_NODES ) )
-			return $this->offsetGet( kTAG_NODES );								// ==>
-		
-		return Array();																// ==>
-
-	} // NodeRefs.
-
-	 
-	/*===================================================================================
-	 *	FeatureTagRefs																	*
-	 *==================================================================================*/
-
-	/**
-	 * <h4>Manage feature tag references</h4>
-	 *
-	 * The <i>feature tag references</i>, {@link kTAG_FEATURES}, holds a list of
-	 * identifiers of tags that reference the current object as a feature.
-	 *
-	 * The method is read-only, because this value must be managed externally.
-	 *
-	 * @access public
-	 * @return array				Tags reference list.
-	 *
-	 * @see kTAG_FEATURES
-	 */
-	public function FeatureTagRefs()
-	{
-		//
-		// Handle reference count.
-		//
-		if( $this->offsetExists( kTAG_FEATURES ) )
-			return $this->offsetGet( kTAG_FEATURES );						// ==>
-		
-		return Array();																// ==>
-
-	} // FeatureTagRefs.
-
-	 
-	/*===================================================================================
-	 *	MethodTagRefs																	*
-	 *==================================================================================*/
-
-	/**
-	 * <h4>Manage method tag references</h4>
-	 *
-	 * The <i>method tag references</i>, {@link kTAG_METHODS}, holds a list of
-	 * identifiers of tags that reference the current object as a method.
-	 *
-	 * The method is read-only, because this value must be managed externally.
-	 *
-	 * @access public
-	 * @return array				Tags reference list.
-	 *
-	 * @see kTAG_METHODS
-	 */
-	public function MethodTagRefs()
-	{
-		//
-		// Handle reference count.
-		//
-		if( $this->offsetExists( kTAG_METHODS ) )
-			return $this->offsetGet( kTAG_METHODS );						// ==>
-		
-		return Array();																// ==>
-
-	} // MethodTagRefs.
-
-	 
-	/*===================================================================================
-	 *	ScaleTagRefs																	*
-	 *==================================================================================*/
-
-	/**
-	 * <h4>Manage scale tag references</h4>
-	 *
-	 * The <i>tag references</i>, {@link kTAG_SCALES}, holds a list of identifiers
-	 * of tags that reference the current object as a scale.
-	 *
-	 * The method is read-only, because this value must be managed externally.
-	 *
-	 * @access public
-	 * @return array				Tags reference list.
-	 *
-	 * @see kTAG_SCALES
-	 */
-	public function ScaleTagRefs()
-	{
-		//
-		// Handle reference count.
-		//
-		if( $this->offsetExists( kTAG_SCALES ) )
-			return $this->offsetGet( kTAG_SCALES );							// ==>
-		
-		return Array();																// ==>
-
-	} // ScaleTagRefs.
 
 		
 
@@ -1387,8 +1231,22 @@ class COntologyTerm extends CTerm
 	/**
 	 * <h4>Update related objects after committing</h4>
 	 *
-	 * In this class we let the container increment the {@link kTAG_NAMESPACE_REFS} of
-	 * the eventual namespace.
+	 * In this class we handle referenced namespace terms, {@link kTAG_NAMESPACE}: depending
+	 * on the value of the {@link kSWITCH_kTAG_NAMESPACE_REFS} flag we do the following:
+	 *
+	 * <ul>
+	 *	<li><tt>0x2</tt>: <i>Keep count of namespace references</i>. This means that the
+	 *		{@link kTAG_NAMESPACE_REFS} attribute of the term referenced by the
+	 *		{@link kTAG_NAMESPACE} attribute will be incremented when the object is
+	 *		inserted, or decremented when deleted.
+	 *	<li><tt>0x3</tt>: <i>Keep list of namespace references</i>. This means that a
+	 *		reference to the current object will be added to the {@link kTAG_NAMESPACE_REFS}
+	 *		attribute of the term referenced by {@link kTAG_NAMESPACE} attribute of the
+	 *		current object when the latter is inserted, and removed when the object is
+	 *		deleted.
+	 *	<li><tt>0x0</tt> <i>or other</i>: <i>Don't handle this information</i>. This means
+	 *		that the {@link kTAG_NAMESPACE_REFS} attribute will not be handled.
+	 * </ul>
 	 *
 	 * @param reference			   &$theConnection		Server, database or container.
 	 * @param reference			   &$theModifiers		Commit options.
@@ -1398,7 +1256,7 @@ class COntologyTerm extends CTerm
 	 * @throws Exception
 	 *
 	 * @uses _IsCommitted()
-	 * @uses _ReferenceNamespace()
+	 * @uses _ReferenceInObject()
 	 *
 	 * @see kTAG_NAMESPACE
 	 * @see kFLAG_PERSIST_INSERT kFLAG_PERSIST_REPLACE kFLAG_PERSIST_DELETE
@@ -1426,7 +1284,12 @@ class COntologyTerm extends CTerm
 				// Note that this status is set later.
 				//
 				if( ! $this->_IsCommitted() )
-					$this->_ReferenceNamespace( $theConnection, 1 );
+					$this->_ReferenceInObject(
+						$this->ResolveContainer( $theConnection, TRUE ),
+						kSWITCH_kTAG_NAMESPACE_REFS,
+						$this->offsetGet( kTAG_NAMESPACE ),
+						kTAG_NAMESPACE_REFS,
+						1 );
 			
 			} // Insert or replace.
 			
@@ -1434,7 +1297,12 @@ class COntologyTerm extends CTerm
 			// Check if deleting.
 			//
 			elseif( $theModifiers & kFLAG_PERSIST_DELETE )
-				$this->_ReferenceNamespace( $theConnection, -1 );
+				$this->_ReferenceInObject(
+					$this->ResolveContainer( $theConnection, TRUE ),
+					kSWITCH_kTAG_NAMESPACE_REFS,
+					$this->offsetGet( kTAG_NAMESPACE ),
+					kTAG_NAMESPACE_REFS,
+					-1 );
 		
 		} // Has namespace.
 		
@@ -1470,72 +1338,6 @@ class COntologyTerm extends CTerm
 		$this->mNamespace = NULL;
 	
 	} // _PostcommitCleanup.
-
-		
-
-/*=======================================================================================
- *																						*
- *								PROTECTED REFERENCE INTERFACE							*
- *																						*
- *======================================================================================*/
-
-
-	 
-	/*===================================================================================
-	 *	_ReferenceNamespace																*
-	 *==================================================================================*/
-
-	/**
-	 * <h4>Increment namespace term references</h4>
-	 *
-	 * This method can be used to increment the namespace reference count,
-	 * {@link kTAG_NAMESPACE_REFS}, by providing a connection object and an increment
-	 * delta.
-	 *
-	 * The method will return <tt>TRUE</tt> if the operation affected at least one object,
-	 * <tt>FALSE</tt> if not, <tt>NULL</tt> if the current object has no namespace and raise
-	 * an exception if the operation failed.
-	 *
-	 * @param CConnection			$theConnection		Server, database or container.
-	 * @param integer				$theCount			Increment amount.
-	 *
-	 * @access protected
-	 * @return mixed				<tt>TRUE</tt> operation affected at least one object.
-	 *
-	 * @uses ResolveContainer()
-	 *
-	 * @see kTAG_NAMESPACE kTAG_NAMESPACE_REFS
-	 * @see kFLAG_PERSIST_MODIFY kFLAG_MODIFY_INCREMENT
-	 */
-	protected function _ReferenceNamespace( CConnection $theConnection, $theCount )
-	{
-		//
-		// Check namespace.
-		//
-		if( $this->offsetExists( kTAG_NAMESPACE ) )
-		{
-			//
-			// Set modification criteria.
-			//
-			$criteria = array( kTAG_NAMESPACE_REFS => (int) $theCount );
-			
-			//
-			// Let container do the modification.
-			//
-			return $this
-					->ResolveContainer( $theConnection, TRUE )
-					->ManageObject
-						(
-							$criteria,
-							$this->offsetGet( kTAG_NAMESPACE ),
-							kFLAG_PERSIST_MODIFY + kFLAG_MODIFY_INCREMENT
-						);															// ==>
-		
-		} // Has namespace.
-		
-		return NULL;																// ==>
-	
-	} // _ReferenceNamespace.
 
 	 
 

@@ -1303,9 +1303,24 @@ class COntologyEdge extends CEdge
 	/**
 	 * <h4>Update related objects after committing</h4>
 	 *
-	 * In this class we add the current edge's identifier to the list of edge references,
-	 * {@link kTAG_EDGES}, in the related subject and object vertives when inserting;
-	 * we remove the element when deleting.
+	 * In this class we handle the {@link kTAG_EDGES} attribute of the nodes referenced by
+	 * this object depending on the value of the {@link kSWITCH_kTAG_EDGES} flag we do the
+	 * following:
+	 *
+	 * <ul>
+	 *	<li><tt>0x2</tt>: <i>Keep count of references</i>. This means that the
+	 *		{@link kTAG_EDGES} attribute of the subject or object nodes referenced by the
+	 *		current object will be incremented when the object is inserted, or decremented
+	 *		when deleted.
+	 *	<li><tt>0x3</tt>: <i>Keep list of references</i>. This means that a reference to the
+	 *		current object will be added to the {@link kTAG_EDGES} attribute of the
+	 *		referenced subject or object nodes and removed when the object is deleted.
+	 *	<li><tt>0x0</tt> <i>or other</i>: <i>Don't handle this information</i>. This means
+	 *		that the {@link kTAG_EDGES} attribute will not be handled.
+	 * </ul>
+	 *
+	 * Note that you should provide either a database connection or the <i>node</i>
+	 * container to this method in order to make it work!
 	 *
 	 * @param reference			   &$theConnection		Server, database or container.
 	 * @param reference			   &$theModifiers		Commit options.
@@ -1313,6 +1328,7 @@ class COntologyEdge extends CEdge
 	 * @access protected
 	 *
 	 * @uses _IsCommitted()
+	 * @uses _ReferenceInObject()
 	 *
 	 * @see kTAG_EDGES kTAG_SUBJECT kTAG_OBJECT
 	 * @see kFLAG_PERSIST_INSERT kFLAG_PERSIST_REPLACE kFLAG_PERSIST_DELETE
@@ -1337,21 +1353,24 @@ class COntologyEdge extends CEdge
 			if( ! $this->_IsCommitted() )
 			{
 				//
-				// Check switch.
+				// Add current edge reference to subject vertex referenced.
 				//
-				if( kSWITCH_kTAG_EDGES )
-				{
-					//
-					// Add current edge reference to subject vertex referenced.
-					//
-					$this->_ReferenceInSubject( $theConnection, TRUE );
-					
-					//
-					// Add current edge reference to object vertex referenced.
-					//
-					$this->_ReferenceInObject( $theConnection, TRUE );
+				$this->_ReferenceInObject(
+					COntologyNode::ResolveContainer( $theConnection, TRUE ),
+					kSWITCH_kTAG_EDGES,
+					$this->offsetGet( kTAG_SUBJECT ),
+					kTAG_EDGES,
+					1 );
 				
-				} // Switch enabled.
+				//
+				// Add current edge reference to subject vertex referenced.
+				//
+				$this->_ReferenceInObject(
+					COntologyNode::ResolveContainer( $theConnection, TRUE ),
+					kSWITCH_kTAG_EDGES,
+					$this->offsetGet( kTAG_OBJECT ),
+					kTAG_EDGES,
+					1 );
 				
 			} // Not yet committed.
 		
@@ -1363,21 +1382,24 @@ class COntologyEdge extends CEdge
 		elseif( $theModifiers & kFLAG_PERSIST_DELETE )
 		{
 			//
-			// Check switch.
+			// Remove current edge reference from subject vertex referenced.
 			//
-			if( kSWITCH_kTAG_EDGES )
-			{
-				//
-				// Remove current edge reference from subject vertex referenced.
-				//
-				$this->_ReferenceInSubject( $theConnection, FALSE );
-				
-				//
-				// Remove current edge reference from object vertex referenced.
-				//
-				$this->_ReferenceInObject( $theConnection, FALSE );
+			$this->_ReferenceInObject(
+				COntologyNode::ResolveContainer( $theConnection, TRUE ),
+				kSWITCH_kTAG_EDGES,
+				$this->offsetGet( kTAG_SUBJECT ),
+				kTAG_EDGES,
+				-1 );
 			
-			} // Switch enabled.
+			//
+			// Remove current edge reference from subject vertex referenced.
+			//
+			$this->_ReferenceInObject(
+				COntologyNode::ResolveContainer( $theConnection, TRUE ),
+				kSWITCH_kTAG_EDGES,
+				$this->offsetGet( kTAG_OBJECT ),
+				kTAG_EDGES,
+				-1 );
 		
 		} // Deleting.
 		
@@ -1413,153 +1435,6 @@ class COntologyEdge extends CEdge
 		$this->mSubject = $this->mPredicate = $this->mObject = NULL;
 	
 	} // _PostcommitCleanup.
-
-		
-
-/*=======================================================================================
- *																						*
- *								PROTECTED REFERENCE INTERFACE							*
- *																						*
- *======================================================================================*/
-
-
-	 
-	/*===================================================================================
-	 *	_ReferenceInSubject																*
-	 *==================================================================================*/
-
-	/**
-	 * <h4>Add edge reference to subject vertex</h4>
-	 *
-	 * This method can be used to add or remove the current edge's reference,
-	 * {@link kTAG_EDGES}, from the subject vertex node,
-	 * {@link kTAG_SUBJECT}. This method should be used whenever committing a new
-	 * edge or when deleting one: it will add the current edge's native identifier to the
-	 * set of edge references of the edge's subject vertex when committing a new edge; it
-	 * will remove it when deleting the edge.
-	 *
-	 * The last parameter is a boolean: if <tt>TRUE</tt> the method will add to the set; if
-	 * <tt>FALSE</tt>, it will remove from the set.
-	 *
-	 * The method will return <tt>TRUE</tt> if the operation affected at least one object,
-	 * <tt>FALSE</tt> if not, <tt>NULL</tt> if the subject vertex is not set and raise an
-	 * exception if the operation failed.
-	 *
-	 * @param CConnection			$theConnection		Server, database or container.
-	 * @param boolean				$doAdd				<tt>TRUE</tt> add reference.
-	 *
-	 * @access protected
-	 * @return boolean				<tt>TRUE</tt> operation affected at least one object.
-	 *
-	 * @see kTAG_SUBJECT kTAG_EDGES
-	 * @see kFLAG_PERSIST_MODIFY kFLAG_MODIFY_ADDSET kFLAG_MODIFY_PULL
-	 */
-	protected function _ReferenceInSubject( CConnection $theConnection, $doAdd )
-	{
-		//
-		// Check subject vertex.
-		//
-		if( $this->offsetExists( kTAG_SUBJECT ) )
-		{
-			//
-			// Set modification criteria.
-			//
-			$criteria = array( kTAG_EDGES => $this->offsetGet( kTAG_NID ) );
-			
-			//
-			// Handle add to set.
-			//
-			if( $doAdd )
-				return COntologyNode::ResolveClassContainer( $theConnection, TRUE )
-						->ManageObject
-							(
-								$criteria,
-								$this->offsetGet( kTAG_SUBJECT ),
-								kFLAG_PERSIST_MODIFY + kFLAG_MODIFY_ADDSET
-							);														// ==>
-			
-			return COntologyNode::ResolveClassContainer( $theConnection, TRUE )
-					->ManageObject
-						(
-							$criteria,
-							$this->offsetGet( kTAG_SUBJECT ),
-							kFLAG_PERSIST_MODIFY + kFLAG_MODIFY_PULL
-						);															// ==>
-		
-		} // Object has subject node.
-		
-		return NULL;																// ==>
-	
-	} // _ReferenceInSubject.
-
-	 
-	/*===================================================================================
-	 *	_ReferenceInObject																*
-	 *==================================================================================*/
-
-	/**
-	 * <h4>Add edge reference to object vertex</h4>
-	 *
-	 * This method can be used to add or remove the current edge's reference,
-	 * {@link kTAG_EDGES}, from the object vertex node,
-	 * {@link kTAG_OBJECT}. This method should be used whenever committing a new
-	 * edge or when deleting one: it will add the current edge's native identifier to the
-	 * set of edge references of the edge's object vertex when committing a new edge; it
-	 * will remove it when deleting the edge.
-	 *
-	 * The last parameter is a boolean: if <tt>TRUE</tt> the method will add to the set; if
-	 * <tt>FALSE</tt>, it will remove from the set.
-	 *
-	 * The method will return <tt>TRUE</tt> if the operation affected at least one object,
-	 * <tt>FALSE</tt> if not, <tt>NULL</tt> if the object vertex is not set and raise an
-	 * exception if the operation failed.
-	 *
-	 * @param CConnection			$theConnection		Server, database or container.
-	 * @param boolean				$doAdd				<tt>TRUE</tt> add reference.
-	 *
-	 * @access protected
-	 * @return boolean				<tt>TRUE</tt> operation affected at least one object.
-	 *
-	 * @see kTAG_OBJECT kTAG_EDGES
-	 * @see kFLAG_PERSIST_MODIFY kFLAG_MODIFY_ADDSET kFLAG_MODIFY_PULL
-	 */
-	protected function _ReferenceInObject( CConnection $theConnection, $doAdd )
-	{
-		//
-		// Check object vertex.
-		//
-		if( $this->offsetExists( kTAG_OBJECT ) )
-		{
-			//
-			// Set modification criteria.
-			//
-			$criteria = array( kTAG_EDGES => $this->offsetGet( kTAG_NID ) );
-			
-			//
-			// Handle add to set.
-			//
-			if( $doAdd )
-				return COntologyNode::ResolveClassContainer( $theConnection, TRUE )
-						->ManageObject
-							(
-								$criteria,
-								$this->offsetGet( kTAG_OBJECT ),
-								kFLAG_PERSIST_MODIFY + kFLAG_MODIFY_ADDSET
-							);														// ==>
-			
-			return COntologyNode::ResolveClassContainer( $theConnection, TRUE )
-					->ManageObject
-						(
-							$criteria,
-							$this->offsetGet( kTAG_OBJECT ),
-							kFLAG_PERSIST_MODIFY + kFLAG_MODIFY_PULL
-						);															// ==>
-		
-		} // Object has object node.
-		
-		return NULL;																// ==>
-	
-	} // _ReferenceInObject.
 
 		
 

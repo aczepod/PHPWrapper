@@ -6,7 +6,7 @@
 
 	<title>Class COntologyTerm | MyWrapper Reference Documentation</title>
 
-	<script type="text/javascript" src="resources/combined.js?1742645618"></script>
+	<script type="text/javascript" src="resources/combined.js?3680114562"></script>
 	<script type="text/javascript" src="elementlist.js?800735530"></script>
 	<link rel="stylesheet" type="text/css" media="all" href="resources/style.css?3505392360" />
 
@@ -129,42 +129,46 @@ the standards and rules that make it into an ontology term.</p>
 	attribute is constituted by the kTAG_NID of the referenced term and is
 	optional.</li>
 
-	<li><i>Namespace references</i>: The namespace references, <tt><code><a href="class-COntologyTerm.html#_NamespaceRefs">COntologyTerm::NamespaceRefs()</a></code></tt> or the <tt>kTAG_NAMESPACE_REFS</tt> tag,
-	represents the number of instances of this class that reference the current term
-	as a namespace, kTAG_NAMESPACE. This attribute is an integer counting
-	the number of references and is useful to check whether a term is related or
-	not. This attribute is read-only and is managed internally.</li>
+	<li><i>Namespace references</i>: The namespace references, <tt>kTAG_NAMESPACE_REFS</tt> tag, represents either the number or the list of
+	instances of this class that reference the current term as a namespace. This
+	attribute is either an integer or an array, depending on the value of the kSWITCH_kTAG_NAMESPACE_REFS flag:
+		<ul>
+			<li><tt>0x2</tt>: <i>Keep count of namespace references</i>. This means that the
+			kTAG_NAMESPACE_REFS attribute will be a reference count.</li>
 
-	<li><i>Node references</i>: The node references, <tt><code><a href="class-COntologyTerm.html#_NodeRefs">COntologyTerm::NodeRefs()</a></code></tt> or
-	the <tt>kTAG_NODES</tt> tag, represents the list of references to the
-	nodes that reference the current term. It is an array of <code><a href="class-COntologyNode.html">COntologyNode</a></code>
-	kTAG_NID attributes of nodes that reference the current term through
-	their kTAG_TERM attribute. This attribute is read-only and is managed
-	internally.</li>
+			<li><tt>0x3</tt>: <i>Keep list of namespace references</i>. This means that the
+			kTAG_NAMESPACE_REFS attribute will be a list of references.</li>
 
-	<li><i>Feature tag references</i>: The feature tag references, <tt><code><a href="class-COntologyTerm.html#_FeatureTagRefs">COntologyTerm::FeatureTagRefs()</a></code></tt> or the <tt>kTAG_FEATURES</tt> tag, represents the
-	list of references to <code><a href="class-COntologyTag.html">COntologyTag</a></code> instances that reference the current
-	term as a kKIND_FEATURE feature. It is an array of <code><a href="class-COntologyTag.html">COntologyTag</a></code>
-	kTAG_NID attributes of tags in which the the first vertex node in their
-	path, kTAG_PATH, attribute refers to the current term. This attribute
-	lists the tags in which the feature or trait is represented by the current
-	object. This attribute is read-only and is managed internally.</li>
+			<li><tt>0x0</tt> <i>or other</i>: <i>Don't handle this information</i>. This
+			means that the kTAG_NAMESPACE_REFS attribute will not be handled.</li>
+		</ul>
+		 This attribute is read-only and is managed internally.</li>
 
-	<li><i>Method tag references</i>: The method tag references, <tt><code><a href="class-COntologyTerm.html#_MethodTagRefs">COntologyTerm::MethodTagRefs()</a></code></tt> or the <tt>kTAG_METHODS</tt> tag, represents the
-	list of references to <code><a href="class-COntologyTag.html">COntologyTag</a></code> instances that reference the current
-	term as a kKIND_METHOD method. It is an array of <code><a href="class-COntologyTag.html">COntologyTag</a></code>
-	kTAG_NID attributes of tags in which the the middle vertex nodes in
-	their path, kTAG_PATH, attribute refer to the current term. This
-	attribute lists the tags in which the measure method is represented by the
-	current object. This attribute is read-only and is managed internally.</li>
+	<li><i>Node references</i>: The node references, <tt>kTAG_NODES</tt>
+	tag, represents the references to this object from node objects. This attribute
+	behaves like the <tt>kTAG_NAMESPACE_REFS</tt> tag, and is managed by the
+	kSWITCH_kTAG_NODES switch.</li>
 
-	<li><i>Scale tag references</i>: The scale tag references, <tt><code><a href="class-COntologyTerm.html#_ScaleTagRefs">COntologyTerm::ScaleTagRefs()</a></code></tt> or the <tt>kTAG_SCALES</tt> tag, represents the
-	list of references to <code><a href="class-COntologyTag.html">COntologyTag</a></code> instances that reference the current
-	term as a kKIND_SCALE feature. It is an array of <code><a href="class-COntologyTag.html">COntologyTag</a></code>
-	kTAG_NID attributes of tags in which the the last vertex node in their
-	path, kTAG_PATH, attribute refers to the current term. This attribute
-	lists the tags in which the scale or unit is represented by the current object.
-	This attribute is read-only and is managed internally.</li>
+	<li><i>Feature tag references</i>: The feature tag references, <tt>kTAG_FEATURES</tt> tag, represents references to <code><a href="class-COntologyTag.html">COntologyTag</a></code> instances
+	that reference the current term as a kKIND_FEATURE feature. It is either
+	the count or an array of <code><a href="class-COntologyTag.html">COntologyTag</a></code> kTAG_NID attributes whose
+	first vertex node in their kTAG_PATH attribute refers to the current
+	term. This attribute behaves like the <tt>kTAG_NAMESPACE_REFS</tt> tag,
+	and is managed by the kSWITCH_kTAG_FEATURES switch.</li>
+
+	<li><i>Method tag references</i>: The method tag references, <tt>kTAG_METHODS</tt> tag, represents references to <code><a href="class-COntologyTag.html">COntologyTag</a></code> instances
+	that reference the current term as a kKIND_METHOD method. It is either
+	the count or an array of <code><a href="class-COntologyTag.html">COntologyTag</a></code> kTAG_NID attributes whose
+	vertex nodes in their kTAG_PATH attribute refer to the current term and
+	are not the first or last in the list. This attribute behaves like the
+	<tt>kTAG_NAMESPACE_REFS</tt> tag, and is managed by the kSWITCH_kTAG_METHODS switch.</li>
+
+	<li><i>Scale tag references</i>: The scale tag references, <tt>kTAG_SCALES</tt> tag, represents references to <code><a href="class-COntologyTag.html">COntologyTag</a></code> instances
+	that reference the current term as a kKIND_SCALE scale. It is either the
+	count or an array of <code><a href="class-COntologyTag.html">COntologyTag</a></code> kTAG_NID attributes whose last
+	vertex node in their kTAG_PATH attribute refers to the current term.
+	This attribute behaves like the <tt>kTAG_NAMESPACE_REFS</tt> tag, and is
+	managed by the kSWITCH_kTAG_SCALES switch.</li>
 </ul>
 
 <p>This class prevents updating the full object once it has been inserted for
@@ -255,245 +259,13 @@ kCONTAINER_TERM_NAME constant as the container name.</p>
 				<b>Author:</b>
 				Milko A. Škofič &lt;<a
 href="mailto:m.skofic&#64;cgiar.org">m.skofic&#64;<!---->cgiar.org</a>&gt;<br />
-		<b>Located at</b> <a href="source-class-COntologyTerm.html#36-1542" title="Go to source code">COntologyTerm.php</a><br />
+		<b>Located at</b> <a href="source-class-COntologyTerm.html#36-1344" title="Go to source code">COntologyTerm.php</a><br />
 	</div>
 
 
 
 	<table class="summary" id="methods">
 	<caption>Methods summary</caption>
-	<tr data-order="NamespaceRefs" id="_NamespaceRefs">
-
-		<td class="attributes"><code>
-			 public 
-			integer
-			
-			</code>
-		</td>
-
-		<td class="name"><div>
-		<a class="anchor" href="#_NamespaceRefs">#</a>
-		<code><a href="source-class-COntologyTerm.html#140-164" title="Go to source code">NamespaceRefs</a>( )</code>
-
-		<div class="description short">
-			
-<h4>Manage namespace references</h4>
-
-		</div>
-
-		<div class="description detailed hidden">
-			
-<h4>Manage namespace references</h4>
-
-<p>The <i>namespace references</i>, kTAG_NAMESPACE_REFS, holds an
-integer which represents the number of times the current term has been
-referenced as a namespace, that is, stored in the kTAG_NAMESPACE offset
-of another term.</p>
-
-<p>The method is read-only, because this value must be managed externally.</p>
-
-
-
-
-				<h4>Returns</h4>
-				<div class="list">
-					<code>integer</code><br>Namespace reference count.<br />
-				</div>
-
-
-				<h4>See</h4>
-				<div class="list">
-						kTAG_NAMESPACE_REFS<br />
-				</div>
-
-
-		</div>
-		</div></td>
-	</tr>
-	<tr data-order="NodeRefs" id="_NodeRefs">
-
-		<td class="attributes"><code>
-			 public 
-			array
-			
-			</code>
-		</td>
-
-		<td class="name"><div>
-		<a class="anchor" href="#_NodeRefs">#</a>
-		<code><a href="source-class-COntologyTerm.html#171-194" title="Go to source code">NodeRefs</a>( )</code>
-
-		<div class="description short">
-			
-<h4>Manage node references</h4>
-
-		</div>
-
-		<div class="description detailed hidden">
-			
-<h4>Manage node references</h4>
-
-<p>The <i>node references</i>, kTAG_NODES, holds a list of identifiers
-of nodes that reference the term.</p>
-
-<p>The method is read-only, because this value must be managed externally.</p>
-
-
-
-
-				<h4>Returns</h4>
-				<div class="list">
-					<code>array</code><br>Nodes reference list.<br />
-				</div>
-
-
-				<h4>See</h4>
-				<div class="list">
-						kTAG_NODES<br />
-				</div>
-
-
-		</div>
-		</div></td>
-	</tr>
-	<tr data-order="FeatureTagRefs" id="_FeatureTagRefs">
-
-		<td class="attributes"><code>
-			 public 
-			array
-			
-			</code>
-		</td>
-
-		<td class="name"><div>
-		<a class="anchor" href="#_FeatureTagRefs">#</a>
-		<code><a href="source-class-COntologyTerm.html#201-224" title="Go to source code">FeatureTagRefs</a>( )</code>
-
-		<div class="description short">
-			
-<h4>Manage feature tag references</h4>
-
-		</div>
-
-		<div class="description detailed hidden">
-			
-<h4>Manage feature tag references</h4>
-
-<p>The <i>feature tag references</i>, kTAG_FEATURES, holds a list of
-identifiers of tags that reference the current object as a feature.</p>
-
-<p>The method is read-only, because this value must be managed externally.</p>
-
-
-
-
-				<h4>Returns</h4>
-				<div class="list">
-					<code>array</code><br>Tags reference list.<br />
-				</div>
-
-
-				<h4>See</h4>
-				<div class="list">
-						kTAG_FEATURES<br />
-				</div>
-
-
-		</div>
-		</div></td>
-	</tr>
-	<tr data-order="MethodTagRefs" id="_MethodTagRefs">
-
-		<td class="attributes"><code>
-			 public 
-			array
-			
-			</code>
-		</td>
-
-		<td class="name"><div>
-		<a class="anchor" href="#_MethodTagRefs">#</a>
-		<code><a href="source-class-COntologyTerm.html#231-254" title="Go to source code">MethodTagRefs</a>( )</code>
-
-		<div class="description short">
-			
-<h4>Manage method tag references</h4>
-
-		</div>
-
-		<div class="description detailed hidden">
-			
-<h4>Manage method tag references</h4>
-
-<p>The <i>method tag references</i>, kTAG_METHODS, holds a list of
-identifiers of tags that reference the current object as a method.</p>
-
-<p>The method is read-only, because this value must be managed externally.</p>
-
-
-
-
-				<h4>Returns</h4>
-				<div class="list">
-					<code>array</code><br>Tags reference list.<br />
-				</div>
-
-
-				<h4>See</h4>
-				<div class="list">
-						kTAG_METHODS<br />
-				</div>
-
-
-		</div>
-		</div></td>
-	</tr>
-	<tr data-order="ScaleTagRefs" id="_ScaleTagRefs">
-
-		<td class="attributes"><code>
-			 public 
-			array
-			
-			</code>
-		</td>
-
-		<td class="name"><div>
-		<a class="anchor" href="#_ScaleTagRefs">#</a>
-		<code><a href="source-class-COntologyTerm.html#261-284" title="Go to source code">ScaleTagRefs</a>( )</code>
-
-		<div class="description short">
-			
-<h4>Manage scale tag references</h4>
-
-		</div>
-
-		<div class="description detailed hidden">
-			
-<h4>Manage scale tag references</h4>
-
-<p>The <i>tag references</i>, kTAG_SCALES, holds a list of identifiers
-of tags that reference the current object as a scale.</p>
-
-<p>The method is read-only, because this value must be managed externally.</p>
-
-
-
-
-				<h4>Returns</h4>
-				<div class="list">
-					<code>array</code><br>Tags reference list.<br />
-				</div>
-
-
-				<h4>See</h4>
-				<div class="list">
-						kTAG_SCALES<br />
-				</div>
-
-
-		</div>
-		</div></td>
-	</tr>
 	<tr data-order="LoadNamespace" id="_LoadNamespace">
 
 		<td class="attributes"><code>
@@ -505,7 +277,7 @@ of tags that reference the current object as a scale.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#_LoadNamespace">#</a>
-		<code><a href="source-class-COntologyTerm.html#300-364" title="Go to source code">LoadNamespace</a>( <span><code><a href="class-CConnection.html">CConnection</a></code> <var>$theConnection</var></span>, <span>boolean <var>$doReload</var> = <span class="php-keyword1">FALSE</span> </span> )</code>
+		<code><a href="source-class-COntologyTerm.html#144-208" title="Go to source code">LoadNamespace</a>( <span><code><a href="class-CConnection.html">CConnection</a></code> <var>$theConnection</var></span>, <span>boolean <var>$doReload</var> = <span class="php-keyword1">FALSE</span> </span> )</code>
 
 		<div class="description short">
 			
@@ -564,7 +336,7 @@ whether the object is to be read, or if the cached copy can be used.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#_LoadTerm">#</a>
-		<code><a href="source-class-COntologyTerm.html#371-439" title="Go to source code">LoadTerm</a>( <span><code><a href="class-CConnection.html">CConnection</a></code> <var>$theConnection</var></span>, <span>boolean <var>$doReload</var> = <span class="php-keyword1">FALSE</span> </span> )</code>
+		<code><a href="source-class-COntologyTerm.html#215-283" title="Go to source code">LoadTerm</a>( <span><code><a href="class-CConnection.html">CConnection</a></code> <var>$theConnection</var></span>, <span>boolean <var>$doReload</var> = <span class="php-keyword1">FALSE</span> </span> )</code>
 
 		<div class="description short">
 			
@@ -631,7 +403,7 @@ the object is to be read, or if the cached copy can be used.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#_Update">#</a>
-		<code><a href="source-class-COntologyTerm.html#455-485" title="Go to source code">Update</a>( <span><code><a href="class-CConnection.html">CConnection</a></code> <var>$theConnection</var></span> )</code>
+		<code><a href="source-class-COntologyTerm.html#299-329" title="Go to source code">Update</a>( <span><code><a href="class-CConnection.html">CConnection</a></code> <var>$theConnection</var></span> )</code>
 
 		<div class="description short">
 			
@@ -679,7 +451,7 @@ modification interface provided by container objects.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#_Replace">#</a>
-		<code><a href="source-class-COntologyTerm.html#492-532" title="Go to source code">Replace</a>( <span><code><a href="class-CConnection.html">CConnection</a></code> <var>$theConnection</var></span> )</code>
+		<code><a href="source-class-COntologyTerm.html#336-376" title="Go to source code">Replace</a>( <span><code><a href="class-CConnection.html">CConnection</a></code> <var>$theConnection</var></span> )</code>
 
 		<div class="description short">
 			
@@ -730,7 +502,7 @@ non committed object.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#_HandleLabel">#</a>
-		<code><a href="source-class-COntologyTerm.html#548-632" title="Go to source code">HandleLabel</a>( <span><code><a href="class-CConnection.html">CConnection</a></code> <var>$theConnection</var></span>, <span>mixed <var>$theIdentifier</var></span>, <span>mixed <var>$theLanguage</var> = <span class="php-keyword1">NULL</span></span>, <span>mixed <var>$theValue</var> = <span class="php-keyword1">NULL</span> </span> )</code>
+		<code><a href="source-class-COntologyTerm.html#392-476" title="Go to source code">HandleLabel</a>( <span><code><a href="class-CConnection.html">CConnection</a></code> <var>$theConnection</var></span>, <span>mixed <var>$theIdentifier</var></span>, <span>mixed <var>$theLanguage</var> = <span class="php-keyword1">NULL</span></span>, <span>mixed <var>$theValue</var> = <span class="php-keyword1">NULL</span> </span> )</code>
 
 		<div class="description short">
 			
@@ -809,7 +581,7 @@ following parameters:</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#_DefaultContainer">#</a>
-		<code><a href="source-class-COntologyTerm.html#648-663" title="Go to source code">DefaultContainer</a>( <span><code><a href="class-CDatabase.html">CDatabase</a></code> <var>$theDatabase</var></span> )</code>
+		<code><a href="source-class-COntologyTerm.html#492-507" title="Go to source code">DefaultContainer</a>( <span><code><a href="class-CDatabase.html">CDatabase</a></code> <var>$theDatabase</var></span> )</code>
 
 		<div class="description short">
 			
@@ -856,7 +628,7 @@ kCONTAINER_TERM_NAME name.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#_Resolve">#</a>
-		<code><a href="source-class-COntologyTerm.html#679-887" title="Go to source code">Resolve</a>( <span><code><a href="class-CConnection.html">CConnection</a></code> <var>$theConnection</var></span>, <span>string <var>$theIdentifier</var></span>, <span>mixed <var>$theNamespace</var> = <span class="php-keyword1">NULL</span></span>, <span>boolean <var>$doThrow</var> = <span class="php-keyword1">FALSE</span> </span> )</code>
+		<code><a href="source-class-COntologyTerm.html#523-731" title="Go to source code">Resolve</a>( <span><code><a href="class-CConnection.html">CConnection</a></code> <var>$theConnection</var></span>, <span>string <var>$theIdentifier</var></span>, <span>mixed <var>$theNamespace</var> = <span class="php-keyword1">NULL</span></span>, <span>boolean <var>$doThrow</var> = <span class="php-keyword1">FALSE</span> </span> )</code>
 
 		<div class="description short">
 			
@@ -974,7 +746,7 @@ parameter, or you will get unexpected results.</b></p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#__id">#</a>
-		<code><a href="source-class-COntologyTerm.html#903-949" title="Go to source code">_id</a>( <span>string <var>$theIdentifier</var> = <span class="php-keyword1">NULL</span></span>, <span><code><a href="class-CConnection.html">CConnection</a></code> <var>$theConnection</var> = <span class="php-keyword1">NULL</span> </span> )</code>
+		<code><a href="source-class-COntologyTerm.html#747-793" title="Go to source code">_id</a>( <span>string <var>$theIdentifier</var> = <span class="php-keyword1">NULL</span></span>, <span><code><a href="class-CConnection.html">CConnection</a></code> <var>$theConnection</var> = <span class="php-keyword1">NULL</span> </span> )</code>
 
 		<div class="description short">
 			
@@ -1032,7 +804,7 @@ this object primary key depends on the content of its attributes.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#__index">#</a>
-		<code><a href="source-class-COntologyTerm.html#965-999" title="Go to source code">_index</a>( <span><code><a href="class-CConnection.html">CConnection</a></code> <var>$theConnection</var></span>, <span>bitfield <var>$theModifiers</var></span> )</code>
+		<code><a href="source-class-COntologyTerm.html#809-843" title="Go to source code">_index</a>( <span><code><a href="class-CConnection.html">CConnection</a></code> <var>$theConnection</var></span>, <span>bitfield <var>$theModifiers</var></span> )</code>
 
 		<div class="description short">
 			
@@ -1095,7 +867,7 @@ cache, so its global identifier will be available there.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#__Preset">#</a>
-		<code><a href="source-class-COntologyTerm.html#1015-1183" title="Go to source code">_Preset</a>( <span>reference <var>&amp; $theOffset</var></span>, <span>reference <var>&amp; $theValue</var></span> )</code>
+		<code><a href="source-class-COntologyTerm.html#859-1027" title="Go to source code">_Preset</a>( <span>reference <var>&amp; $theOffset</var></span>, <span>reference <var>&amp; $theValue</var></span> )</code>
 
 		<div class="description short">
 			
@@ -1164,7 +936,7 @@ method we cast the parameter to that type.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#__Preunset">#</a>
-		<code><a href="source-class-COntologyTerm.html#1190-1246" title="Go to source code">_Preunset</a>( <span>reference <var>&amp; $theOffset</var></span> )</code>
+		<code><a href="source-class-COntologyTerm.html#1034-1090" title="Go to source code">_Preunset</a>( <span>reference <var>&amp; $theOffset</var></span> )</code>
 
 		<div class="description short">
 			
@@ -1221,7 +993,7 @@ the object is committed.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#__PrecommitRelated">#</a>
-		<code><a href="source-class-COntologyTerm.html#1262-1371" title="Go to source code">_PrecommitRelated</a>( <span>reference <var>&amp; $theConnection</var></span>, <span>reference <var>&amp; $theModifiers</var></span> )</code>
+		<code><a href="source-class-COntologyTerm.html#1106-1215" title="Go to source code">_PrecommitRelated</a>( <span>reference <var>&amp; $theConnection</var></span>, <span>reference <var>&amp; $theModifiers</var></span> )</code>
 
 		<div class="description short">
 			
@@ -1270,7 +1042,7 @@ load the namespace if provided as an identifier.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#__PostcommitRelated">#</a>
-		<code><a href="source-class-COntologyTerm.html#1387-1441" title="Go to source code">_PostcommitRelated</a>( <span>reference <var>&amp; $theConnection</var></span>, <span>reference <var>&amp; $theModifiers</var></span> )</code>
+		<code><a href="source-class-COntologyTerm.html#1231-1309" title="Go to source code">_PostcommitRelated</a>( <span>reference <var>&amp; $theConnection</var></span>, <span>reference <var>&amp; $theModifiers</var></span> )</code>
 
 		<div class="description short">
 			
@@ -1282,8 +1054,24 @@ load the namespace if provided as an identifier.</p>
 			
 <h4>Update related objects after committing</h4>
 
-<p>In this class we let the container increment the kTAG_NAMESPACE_REFS
-of the eventual namespace.</p>
+<p>In this class we handle referenced namespace terms, kTAG_NAMESPACE:
+depending on the value of the kSWITCH_kTAG_NAMESPACE_REFS flag we do the
+following:</p>
+
+<ul>
+	<li><tt>0x2</tt>: <i>Keep count of namespace references</i>. This means that the
+	kTAG_NAMESPACE_REFS attribute of the term referenced by the kTAG_NAMESPACE attribute will be incremented when the object is inserted, or
+	decremented when deleted.</li>
+
+	<li><tt>0x3</tt>: <i>Keep list of namespace references</i>. This means that a
+	reference to the current object will be added to the kTAG_NAMESPACE_REFS
+	attribute of the term referenced by kTAG_NAMESPACE attribute of the
+	current object when the latter is inserted, and removed when the object is
+	deleted.</li>
+
+	<li><tt>0x0</tt> <i>or other</i>: <i>Don't handle this information</i>. This
+	means that the kTAG_NAMESPACE_REFS attribute will not be handled.</li>
+</ul>
 
 
 
@@ -1309,7 +1097,7 @@ of the eventual namespace.</p>
 				<h4>Uses</h4>
 				<div class="list">
 						<code><code><a href="class-CStatusDocument.html#__IsCommitted">CStatusDocument::_IsCommitted()</a></code></code> <br />
-						<code><code><a href="class-COntologyTerm.html#__ReferenceNamespace">COntologyTerm::_ReferenceNamespace()</a></code></code> <br />
+						<code><code><a href="class-CPersistentObject.html#__ReferenceInObject">CPersistentObject::_ReferenceInObject()</a></code></code> <br />
 				</div>
 
 				<h4>Overrides</h4>
@@ -1329,7 +1117,7 @@ of the eventual namespace.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#__PostcommitCleanup">#</a>
-		<code><a href="source-class-COntologyTerm.html#1448-1472" title="Go to source code">_PostcommitCleanup</a>( <span>reference <var>&amp; $theConnection</var></span>, <span>reference <var>&amp; $theModifiers</var></span> )</code>
+		<code><a href="source-class-COntologyTerm.html#1316-1340" title="Go to source code">_PostcommitCleanup</a>( <span>reference <var>&amp; $theConnection</var></span>, <span>reference <var>&amp; $theModifiers</var></span> )</code>
 
 		<div class="description short">
 			
@@ -1364,70 +1152,6 @@ will have to be refreshed and its references actualised.</p>
 		</div>
 		</div></td>
 	</tr>
-	<tr data-order="_ReferenceNamespace" id="__ReferenceNamespace">
-
-		<td class="attributes"><code>
-			 protected 
-			mixed
-			
-			</code>
-		</td>
-
-		<td class="name"><div>
-		<a class="anchor" href="#__ReferenceNamespace">#</a>
-		<code><a href="source-class-COntologyTerm.html#1488-1538" title="Go to source code">_ReferenceNamespace</a>( <span><code><a href="class-CConnection.html">CConnection</a></code> <var>$theConnection</var></span>, <span>integer <var>$theCount</var></span> )</code>
-
-		<div class="description short">
-			
-<h4>Increment namespace term references</h4>
-
-		</div>
-
-		<div class="description detailed hidden">
-			
-<h4>Increment namespace term references</h4>
-
-<p>This method can be used to increment the namespace reference count, kTAG_NAMESPACE_REFS, by providing a connection object and an increment
-delta.</p>
-
-<p>The method will return <tt>TRUE</tt> if the operation affected at least one
-object, <tt>FALSE</tt> if not, <tt>NULL</tt> if the current object has no
-namespace and raise an exception if the operation failed.</p>
-
-
-
-				<h4>Parameters</h4>
-				<div class="list"><dl>
-					<dt><var>$theConnection</var></dt>
-					<dd><code><code><a href="class-CConnection.html">CConnection</a></code></code><br>$theConnection Server, database or container.</dd>
-					<dt><var>$theCount</var></dt>
-					<dd><code>integer</code><br>$theCount Increment amount.</dd>
-				</dl></div>
-
-				<h4>Returns</h4>
-				<div class="list">
-					<code>mixed</code><br><tt>TRUE</tt> operation affected at least one object.<br />
-				</div>
-
-
-				<h4>See</h4>
-				<div class="list">
-						kTAG_NAMESPACE kTAG_NAMESPACE_REFS<br />
-						kFLAG_PERSIST_MODIFY kFLAG_MODIFY_INCREMENT<br />
-				</div>
-				<h4>Uses</h4>
-				<div class="list">
-						<code><code><a href="class-CPersistentDocument.html#_ResolveContainer">CPersistentDocument::ResolveContainer()</a></code></code> <br />
-				</div>
-				<h4>Used by</h4>
-				<div class="list">
-						<code><code><a href="class-COntologyTerm.html#__PostcommitRelated">COntologyTerm::_PostcommitRelated()</a></code></code> <br />
-				</div>
-
-
-		</div>
-		</div></td>
-	</tr>
 	</table>
 
 	<table class="summary inherited">
@@ -1458,6 +1182,7 @@ namespace and raise an exception if the operation failed.</p>
 			<a href="class-CPersistentObject.html#__AssertClass">_AssertClass()</a>, 
 			<a href="class-CPersistentObject.html#__PrecommitIdentify">_PrecommitIdentify()</a>, 
 			<a href="class-CPersistentObject.html#__PrecommitValidate">_PrecommitValidate()</a>, 
+			<a href="class-CPersistentObject.html#__ReferenceInObject">_ReferenceInObject()</a>, 
 			<a href="class-CPersistentObject.html#___toString">__toString()</a>
 		</code></td>
 	</tr>
@@ -1559,7 +1284,7 @@ namespace and raise an exception if the operation failed.</p>
 		</code></td>
 
 		<td class="name">
-				<a href="source-class-COntologyTerm.html#108-115" title="Go to source code"><var>$mNamespace</var></a>
+				<a href="source-class-COntologyTerm.html#112-119" title="Go to source code"><var>$mNamespace</var></a>
 		</td>
 		<td class="value"><code><span class="php-keyword1">NULL</span></code></td>
 		<td class="description"><div>
@@ -1588,7 +1313,7 @@ namespace and raise an exception if the operation failed.</p>
 		</code></td>
 
 		<td class="name">
-				<a href="source-class-COntologyTerm.html#117-124" title="Go to source code"><var>$mTerm</var></a>
+				<a href="source-class-COntologyTerm.html#121-128" title="Go to source code"><var>$mTerm</var></a>
 		</td>
 		<td class="value"><code><span class="php-keyword1">NULL</span></code></td>
 		<td class="description"><div>

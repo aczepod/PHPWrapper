@@ -6,7 +6,7 @@
 
 	<title>Class COntologyTag | MyWrapper Reference Documentation</title>
 
-	<script type="text/javascript" src="resources/combined.js?1742645618"></script>
+	<script type="text/javascript" src="resources/combined.js?3680114562"></script>
 	<script type="text/javascript" src="elementlist.js?800735530"></script>
 	<link rel="stylesheet" type="text/css" media="all" href="resources/style.css?3505392360" />
 
@@ -244,7 +244,7 @@ given a database, will return the default tag container; it will use the kCONTAI
 				<b>Author:</b>
 				Milko A. Škofič &lt;<a
 href="mailto:m.skofic&#64;cgiar.org">m.skofic&#64;<!---->cgiar.org</a>&gt;<br />
-		<b>Located at</b> <a href="source-class-COntologyTag.html#43-1151" title="Go to source code">COntologyTag.php</a><br />
+		<b>Located at</b> <a href="source-class-COntologyTag.html#43-1132" title="Go to source code">COntologyTag.php</a><br />
 	</div>
 
 
@@ -976,7 +976,7 @@ native identifiers, since they will have been set here.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#__PostcommitRelated">#</a>
-		<code><a href="source-class-COntologyTag.html#992-1067" title="Go to source code">_PostcommitRelated</a>( <span>reference <var>&amp; $theConnection</var></span>, <span>reference <var>&amp; $theModifiers</var></span> )</code>
+		<code><a href="source-class-COntologyTag.html#992-1128" title="Go to source code">_PostcommitRelated</a>( <span>reference <var>&amp; $theConnection</var></span>, <span>reference <var>&amp; $theModifiers</var></span> )</code>
 
 		<div class="description short">
 			
@@ -988,11 +988,67 @@ native identifiers, since they will have been set here.</p>
 			
 <h4>Update related objects after committing</h4>
 
-<p>Once committed, the referenced feature, method and scale vertices will be
-updated with the current tag's identifier in the respective kTAG_FEATURES, kTAG_METHODS and kTAG_SCALES attributes.</p>
+<p>In this class we reference this tag from terms related to nodes used as
+features, methods or scales. Depending on the value of the following flags:</p>
 
-<p>When inserting a new tag, we add the tag reference, when deleting the tag we
-remove it.</p>
+<ul>
+	<li><tt>kSWITCH_kTAG_FEATURES</tt>: <i>Feature node reference</i>. This
+	switch manages references to the current tag from terms referred by feature
+	nodes, or the first node in the path. The reference is in the kTAG_FEATURES of the referenced term.
+		<ul>
+			<li><tt>0x2</tt>: <i>Keep count of references</i>. This means that the kTAG_FEATURES attribute of the term will be incremented when the tag is
+			inserted, or decremented when deleted.</li>
+
+			<li><tt>0x3</tt>: <i>Keep list of references</i>. This means that a reference to
+			the current object will be added to the kTAG_FEATURES attribute of the
+			term when the current object is inserted, and removed when the object is
+			deleted.</li>
+
+			<li><tt>0x0</tt> <i>or other</i>: <i>Don't handle this information</i>. This
+			means that the term's kTAG_FEATURES attribute will not be handled.</li>
+		</ul>
+	</li>
+
+	<li><tt>kSWITCH_kTAG_METHODS</tt>: <i>Method node reference</i>. This
+	switch manages references to the current tag from terms referred by method
+	nodes, or all nodes between the first and last nodes in the path. The reference
+	is in the kSWITCH_kTAG_METHODS of the referenced term.
+		<ul>
+			<li><tt>0x2</tt>: <i>Keep count of references</i>. This means that the kSWITCH_kTAG_METHODS attribute of the term will be incremented when the tag is
+			inserted, or decremented when deleted.</li>
+
+			<li><tt>0x3</tt>: <i>Keep list of references</i>. This means that a reference to
+			the current object will be added to the kSWITCH_kTAG_METHODS attribute
+			of the term when the current object is inserted, and removed when the object is
+			deleted.</li>
+
+			<li><tt>0x0</tt> <i>or other</i>: <i>Don't handle this information</i>. This
+			means that the term's kSWITCH_kTAG_METHODS attribute will not be
+			handled.</li>
+		</ul>
+	</li>
+
+	<li><tt>kSWITCH_kTAG_SCALES</tt>: <i>Scale node reference</i>. This
+	switch manages references to the current tag from terms referred by scale nodes,
+	or the last node in the path. The reference is in the kTAG_SCALES of the
+	referenced term.
+		<ul>
+			<li><tt>0x2</tt>: <i>Keep count of references</i>. This means that the kTAG_SCALES attribute of the term will be incremented when the tag is inserted,
+			or decremented when deleted.</li>
+
+			<li><tt>0x3</tt>: <i>Keep list of references</i>. This means that a reference to
+			the current object will be added to the kTAG_SCALES attribute of the
+			term when the current object is inserted, and removed when the object is
+			deleted.</li>
+
+			<li><tt>0x0</tt> <i>or other</i>: <i>Don't handle this information</i>. This
+			means that the term's kTAG_SCALES attribute will not be handled.</li>
+		</ul>
+	</li>
+</ul>
+
+<p>Note that you should provide either a database connection or the <i>term</i>
+container to this method in order to make it work!</p>
 
 <p>We only handle vertex elements, we do not refer predicate terms.</p>
 
@@ -1010,6 +1066,7 @@ remove it.</p>
 
 				<h4>See</h4>
 				<div class="list">
+						kSWITCH_kTAG_FEATURES, kSWITCH_kTAG_METHODS, kSWITCH_kTAG_SCALES<br />
 						kTAG_FEATURES, kTAG_METHODS, kTAG_SCALES<br />
 						kFLAG_PERSIST_INSERT kFLAG_PERSIST_REPLACE kFLAG_PERSIST_DELETE<br />
 				</div>
@@ -1020,86 +1077,6 @@ remove it.</p>
 
 				<h4>Overrides</h4>
 				<div class="list"><code><a href="class-CPersistentDocument.html#__PostcommitRelated">CPersistentDocument::_PostcommitRelated()</a></code></div>
-
-		</div>
-		</div></td>
-	</tr>
-	<tr data-order="_ReferenceInTerm" id="__ReferenceInTerm">
-
-		<td class="attributes"><code>
-			 protected 
-			boolean
-			
-			</code>
-		</td>
-
-		<td class="name"><div>
-		<a class="anchor" href="#__ReferenceInTerm">#</a>
-		<code><a href="source-class-COntologyTag.html#1083-1147" title="Go to source code">_ReferenceInTerm</a>( <span><code><a href="class-CConnection.html">CConnection</a></code> <var>$theConnection</var></span>, <span>mixed <var>$theTerm</var></span>, <span>string <var>$theTag</var></span>, <span>boolean <var>$doAdd</var></span> )</code>
-
-		<div class="description short">
-			
-<h4>Add tag reference to term</h4>
-
-		</div>
-
-		<div class="description detailed hidden">
-			
-<h4>Add tag reference to term</h4>
-
-<p>This method can be used to add or remove the current tag's reference from the
-provided term. This method should be used whenever committing a new tag or when
-deleting one: it will update the kTAG_FEATURES for terms used as
-features or traits, the kTAG_METHODS for terms used as methods and the
-kTAG_SCALES for terms used as scales or units, the method will add the
-corresponding reference when inserting a new tag and remove it when deleting the
-tag.</p>
-
-<ul>
-	<li><tt>$theConnection</tt>: Server, database or container in which the terms
-	reside.</li>
-
-	<li><tt>$theTerm</tt>: Term object or identifier to which the current tag
-	reference is to be added or removed.</li>
-
-	<li><tt>$theTag</tt>: Attribute tag of the terem to which the current tag
-	reference is to be added or removed.</li>
-
-	<li><tt>$doAdd</tt>: If <tt>TRUE</tt> add to set; if <tt>FALSE</tt> remove from
-	set.</li>
-</ul>
-
-<p>The method will return <tt>TRUE</tt> if the operation affected at least one
-object, <tt>FALSE</tt> if not and raise an exception if the operation
-failed.</p>
-
-
-
-				<h4>Parameters</h4>
-				<div class="list"><dl>
-					<dt><var>$theConnection</var></dt>
-					<dd><code><code><a href="class-CConnection.html">CConnection</a></code></code><br>$theConnection Server, database or container.</dd>
-					<dt><var>$theTerm</var></dt>
-					<dd><code>mixed</code><br>$theTerm Term object or identifier.</dd>
-					<dt><var>$theTag</var></dt>
-					<dd><code>string</code><br>$theTag Attribute tag to update.</dd>
-					<dt><var>$doAdd</var></dt>
-					<dd><code>boolean</code><br>$doAdd <tt>TRUE</tt> add reference.</dd>
-				</dl></div>
-
-				<h4>Returns</h4>
-				<div class="list">
-					<code>boolean</code><br><tt>TRUE</tt> operation affected at least one object.<br />
-				</div>
-
-
-				<h4>See</h4>
-				<div class="list">
-						kTAG_NID<br />
-						kTAG_FEATURES kTAG_METHODS kTAG_SCALES<br />
-						kFLAG_PERSIST_MODIFY kFLAG_MODIFY_ADDSET kFLAG_MODIFY_PULL<br />
-				</div>
-
 
 		</div>
 		</div></td>
@@ -1126,6 +1103,7 @@ failed.</p>
 			<a href="class-CPersistentObject.html#_NewObject">NewObject()</a>, 
 			<a href="class-CPersistentObject.html#__AssertClass">_AssertClass()</a>, 
 			<a href="class-CPersistentObject.html#__PrecommitRelated">_PrecommitRelated()</a>, 
+			<a href="class-CPersistentObject.html#__ReferenceInObject">_ReferenceInObject()</a>, 
 			<a href="class-CPersistentObject.html#___toString">__toString()</a>, 
 			<a href="class-CPersistentObject.html#__id">_id()</a>
 		</code></td>

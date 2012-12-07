@@ -27,6 +27,13 @@
 require_once( kPATH_MYWRAPPER_LIBRARY_CLASS."/COntologyNode.php" );
 
 /**
+ * Master node.
+ *
+ * This includes the master node class definitions.
+ */
+require_once( kPATH_MYWRAPPER_LIBRARY_CLASS."/COntologyMasterNode.php" );
+
+/**
  * <h4>Ontology alias node object</h4>
  *
  * Instances of this class hold an attribute, {@link kTAG_NODE}, which represents a
@@ -49,9 +56,24 @@ require_once( kPATH_MYWRAPPER_LIBRARY_CLASS."/COntologyNode.php" );
  * and set the current node's {@link kTAG_NODE} attribute to point to it. This means that
  * all instances of this class refer to another node which represents their master node.
  *
- * When relating nodes from this class, also the related {@link COntologyMasterVertex}
- * instances will be related among each other, except that while nodes of this class may
- * reference the same term, master nodes may not.
+ * When an instance of this class is related to another instance of this class, the same
+ * relation will be automatically created between the master nodes referenced by the
+ * {@link kTAG_NODE} attribute; this will not occur if an instance of this class is related
+ * to a master node.
+ *
+ * When inserting or deleting nodes, this class will update the {@link kTAG_NODES} attribute
+ * of the object referenced by the current object's {@link kTAG_NODE} attribute. The
+ * referenced {@link kTAG_NODES} attribute is either the count or an array of object
+ * {@link kTAG_NID} attributes, depending on the value of the
+ * {@link kSWITCH_kTAG_ALIAS_NODES} flag:
+ *	 <ul>
+ *		<li><tt>0x2</tt>: <i>Keep count of references</i>. This means that the
+ *			{@link kTAG_NODES} attribute will be a reference count.
+ *		<li><tt>0x3</tt>: <i>Keep list of references</i>. This means that the
+ *			{@link kTAG_NODES} attribute will be a list of references.
+ *		<li><tt>0x0</tt> <i>or other</i>: <i>Don't handle this information</i>. This means
+ *			that the {@link kTAG_NODES} attribute will not be handled.
+ *	 </ul>
  *
  *	@package	MyWrapper
  *	@subpackage	Ontology
@@ -332,8 +354,21 @@ class COntologyAliasNode extends COntologyNode
 	/**
 	 * <h4>Update related objects after committing</h4>
 	 *
-	 * In this class we add the current node's identifier to the referenced master node if
-	 * the current object is being inserted.
+	 * In this class we handle referenced master nodes, {@link kTAG_NODE}: depending on the
+	 * value of the {@link kSWITCH_kTAG_ALIAS_NODES} flag we do the following:
+	 *
+	 * <ul>
+	 *	<li><tt>0x2</tt>: <i>Keep count of references</i>. This means that the
+	 *		{@link kTAG_NODES} attribute of the master node referenced by the
+	 *		{@link kTAG_NODE} attribute will be incremented when the object is inserted, or
+	 *		decremented when deleted.
+	 *	<li><tt>0x3</tt>: <i>Keep list of references</i>. This means that a reference to the
+	 *		current object will be added to the {@link kTAG_NODES} attribute of the master
+	 *		node referenced by {@link kTAG_NODE} attribute of the current object when the
+	 *		latter is inserted, and removed when the object isdeleted.
+	 *	<li><tt>0x0</tt> <i>or other</i>: <i>Don't handle this information</i>. This means
+	 *		that the {@link kTAG_NODES} attribute will not be handled.
+	 * </ul>
 	 *
 	 * @param reference			   &$theConnection		Server, database or container.
 	 * @param reference			   &$theModifiers		Commit options.
@@ -353,103 +388,43 @@ class COntologyAliasNode extends COntologyNode
 		parent::_PostcommitRelated( $theConnection, $theModifiers );
 	
 		//
-		// Handle insert or replace.
-		//
-		if( (($theModifiers & kFLAG_PERSIST_MASK) == kFLAG_PERSIST_INSERT)
-		 || (($theModifiers & kFLAG_PERSIST_MASK) == kFLAG_PERSIST_REPLACE) )
-		{
-			//
-			// Check if not yet committed.
-			//
-			if( ! $this->_IsCommitted() )
-				$this->_ReferenceInNode( $theConnection, TRUE );
-		
-		} // Insert or replace.
-		
-		//
-		// Check if deleting.
-		//
-		elseif( $theModifiers & kFLAG_PERSIST_DELETE )
-			$this->_ReferenceInNode( $theConnection, FALSE );
-		
-	} // _PostcommitRelated.
-
-		
-
-/*=======================================================================================
- *																						*
- *								PROTECTED REFERENCE INTERFACE							*
- *																						*
- *======================================================================================*/
-
-
-	 
-	/*===================================================================================
-	 *	_ReferenceInNode																*
-	 *==================================================================================*/
-
-	/**
-	 * <h4>Add node reference to Master</h4>
-	 *
-	 * This method can be used to add or remove the current node's reference from the
-	 * referenced master node, {@link kTAG_NODE}. This method should be used whenever
-	 * committing a new node or deleting one: it will add the current node's native
-	 * identifier to the set of alias node references of the node's master node when
-	 * committing a new node; it will remove it when deleting the node.
-	 *
-	 * The last parameter is a boolean: if <tt>TRUE</tt> the method will add to the set; if
-	 * <tt>FALSE</tt>, it will remove from the set.
-	 *
-	 * The method will return <tt>TRUE</tt> if the operation affected at least one object,
-	 * <tt>FALSE</tt> if not, <tt>NULL</tt> if the node is not set and raise an exception if
-	 * the operation failed.
-	 *
-	 * @param CConnection			$theConnection		Server, database or container.
-	 * @param boolean				$doAdd				<tt>TRUE</tt> add reference.
-	 *
-	 * @access protected
-	 * @return boolean				<tt>TRUE</tt> operation affected at least one object.
-	 *
-	 * @see kTAG_NODE kTAG_NODES
-	 * @see kFLAG_PERSIST_MODIFY kFLAG_MODIFY_ADDSET kFLAG_MODIFY_PULL
-	 */
-	protected function _ReferenceInNode( CConnection $theConnection, $doAdd )
-	{
-		//
-		// Check node.
+		// Check node reference.
 		//
 		if( $this->offsetExists( kTAG_NODE ) )
 		{
 			//
-			// Set modification criteria.
+			// Handle insert or replace.
 			//
-			$criteria = array( kTAG_NODES => $this->offsetGet( kTAG_NID ) );
+			if( (($theModifiers & kFLAG_PERSIST_MASK) == kFLAG_PERSIST_INSERT)
+			 || (($theModifiers & kFLAG_PERSIST_MASK) == kFLAG_PERSIST_REPLACE) )
+			{
+				//
+				// Check if not yet committed.
+				//
+				if( ! $this->_IsCommitted() )
+					$this->_ReferenceInObject(
+						COntologyTerm::ResolveContainer( $theConnection, TRUE ),
+						kSWITCH_kTAG_ALIAS_NODES,
+						$this->offsetGet( kTAG_NODE ),
+						kTAG_NODES,
+						1 );
+			
+			} // Insert or replace.
 			
 			//
-			// Handle add to set.
+			// Check if deleting.
 			//
-			if( $doAdd )
-				return COntologyNode::ResolveClassContainer( $theConnection, TRUE )
-						->ManageObject
-							(
-								$criteria,
-								$this->offsetGet( kTAG_NODE ),
-								kFLAG_PERSIST_MODIFY + kFLAG_MODIFY_ADDSET
-							);														// ==>
-			
-			return COntologyNode::ResolveClassContainer( $theConnection, TRUE )
-					->ManageObject
-						(
-							$criteria,
-							$this->offsetGet( kTAG_NODE ),
-							kFLAG_PERSIST_MODIFY + kFLAG_MODIFY_PULL
-						);															// ==>
+			elseif( $theModifiers & kFLAG_PERSIST_DELETE )
+				$this->_ReferenceInObject(
+					COntologyTerm::ResolveContainer( $theConnection, TRUE ),
+					kSWITCH_kTAG_ALIAS_NODES,
+					$this->offsetGet( kTAG_NODE ),
+					kTAG_NODES,
+					-1 );
 		
-		} // Object has node.
+		} // Has node reference.
 		
-		return NULL;																// ==>
-	
-	} // _ReferenceInNode.
+	} // _PostcommitRelated.
 
 	 
 

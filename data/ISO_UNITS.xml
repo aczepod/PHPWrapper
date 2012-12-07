@@ -723,7 +723,7 @@
     <unit>
     	<term kTAG_LID="Geographic" kTAG_NAMESPACE="ISO:639:type">
 			<kTAG_KIND>
-          	  <item>:KIND-ENUMERATION</item>
+	            <item>:KIND-ENUMERATION</item>
 			</kTAG_KIND>
 			<kTAG_LABEL language="en">Geographic</kTAG_LABEL>
 			<kTAG_DEFINITION language="en">Geographic language.</kTAG_DEFINITION>
@@ -809,6 +809,9 @@
     <!-- ISO:3166:1:alpha-2 -->
     <unit>
     	<term kTAG_LID="alpha-2" kTAG_NAMESPACE="ISO:3166:1">
+			<kTAG_KIND>
+	            <item>:KIND-ENUMERATION</item>
+			</kTAG_KIND>
 			<kTAG_LABEL language="en">Alpha-2 code</kTAG_LABEL>
 			<kTAG_DEFINITION language="en">Two-letter country codes which are the most widely used of the three ISO 3166-1 subdivisions, and used most prominently for the Internet's country code top-level domains (with a few exceptions).</kTAG_DEFINITION>
     	</term>
@@ -834,6 +837,9 @@
     <!-- ISO:3166:1:alpha-3 -->
     <unit>
     	<term kTAG_LID="alpha-3" kTAG_NAMESPACE="ISO:3166:1">
+			<kTAG_KIND>
+	            <item>:KIND-ENUMERATION</item>
+			</kTAG_KIND>
 			<kTAG_LABEL language="en">Alpha-3 code</kTAG_LABEL>
 			<kTAG_DEFINITION language="en">Three-letter country codes which allow a better visual association between the codes and the country names than the alpha-2 codes.</kTAG_DEFINITION>
     	</term>
@@ -859,6 +865,9 @@
     <!-- ISO:3166:1:numeric -->
     <unit>
     	<term kTAG_LID="numeric" kTAG_NAMESPACE="ISO:3166:1">
+			<kTAG_KIND>
+	            <item>:KIND-ENUMERATION</item>
+			</kTAG_KIND>
 			<kTAG_LABEL language="en">Numeric code</kTAG_LABEL>
 			<kTAG_DEFINITION language="en">Three-digit country codes which are identical to those developed and maintained by the United Nations Statistics Division, with the advantage of script (writing system) independence, and hence useful for people or systems using non-Latin scripts.</kTAG_DEFINITION>
     	</term>
@@ -881,9 +890,97 @@
         </edges>
     </unit>
     
-    <!-- ISO:3166:1:common_name -->
+    <!-- ISO 3166 part 3 PROPERTIES -->
+    
+    <!-- ISO:3166:3:alpha-3 -->
     <unit>
-    	<term kTAG_LID="common_name" kTAG_NAMESPACE="ISO:3166:1">
+    	<term kTAG_LID="alpha-3" kTAG_NAMESPACE="ISO:3166:3">
+			<kTAG_KIND>
+	            <item>:KIND-ENUMERATION</item>
+			</kTAG_KIND>
+			<kTAG_LABEL language="en">Alpha-3 code</kTAG_LABEL>
+			<kTAG_DEFINITION language="en">Former three-letter country code.</kTAG_DEFINITION>
+    	</term>
+    	<node>
+			<kTAG_CLASS>COntologyMasterVertex</kTAG_CLASS>
+			<kTAG_KIND>
+				<item>:KIND-FEATURE</item>
+				<item>:KIND-SCALE</item>
+			</kTAG_KIND>
+			<kTAG_TYPE>
+				<item>:ENUM</item>
+			</kTAG_TYPE>
+    	</node>
+        <tag />
+        <edges>
+			<edge>
+				<kTAG_PREDICATE>:SUBCLASS-OF</kTAG_PREDICATE>
+				<kTAG_OBJECT>ISO:3166:3</kTAG_OBJECT>
+			</edge>
+        </edges>
+    </unit>
+        
+    <!-- ISO:3166:3:alpha-4 -->
+    <unit>
+    	<term kTAG_LID="alpha-4" kTAG_NAMESPACE="ISO:3166:3">
+			<kTAG_KIND>
+	            <item>:KIND-ENUMERATION</item>
+			</kTAG_KIND>
+			<kTAG_LABEL language="en">Alpha-4 code</kTAG_LABEL>
+			<kTAG_DEFINITION language="en">Four-letter country code. Each former country name in ISO 3166-3 is assigned a four-letter alphabetic code. The first two letters are the ISO 3166-1 alpha-2 code of the former country, while the last two letters are allocated according to the following rules: 1.) If the country changed its name, the new ISO 3166-1 alpha-2 code is used (e.g., Burma changed its name to Myanmar, whose new alpha-2 code is MM), or the special code AA is used if its alpha-2 code was not changed (e.g., Byelorussian SSR changed its name to Belarus, which has kept the same alpha-2 code). 2.) If the country merged into an existing country, the ISO 3166-1 alpha-2 code of this country is used (e.g., the German Democratic Republic merged into Germany, whose alpha-2 code is DE). 3.) If the country was divided into several parts, the special code HH is used to indicate that there is no single successor country (e.g., Czechoslovakia was divided into the Czech Republic and Slovakia), with the exception of Serbia and Montenegro, for which XX is used to avoid duplicate use of the same ISO 3166-3 code, as the alpha-2 code CS had twice been deleted from ISO 3166-1, the first time due to the split of Czechoslovakia and the second time due to the split of Serbia and Montenegro.</kTAG_DEFINITION>
+    	</term>
+    	<node>
+			<kTAG_CLASS>COntologyMasterVertex</kTAG_CLASS>
+			<kTAG_KIND>
+				<item>:KIND-FEATURE</item>
+				<item>:KIND-SCALE</item>
+			</kTAG_KIND>
+			<kTAG_TYPE>
+				<item>:ENUM</item>
+			</kTAG_TYPE>
+    	</node>
+        <tag />
+        <edges>
+			<edge>
+				<kTAG_PREDICATE>:SUBCLASS-OF</kTAG_PREDICATE>
+				<kTAG_OBJECT>ISO:3166:3</kTAG_OBJECT>
+			</edge>
+        </edges>
+    </unit>
+
+    <!-- ISO:3166:3:numeric -->
+    <unit>
+    	<term kTAG_LID="numeric" kTAG_NAMESPACE="ISO:3166:3">
+			<kTAG_KIND>
+	            <item>:KIND-ENUMERATION</item>
+			</kTAG_KIND>
+			<kTAG_LABEL language="en">Numeric code</kTAG_LABEL>
+			<kTAG_DEFINITION language="en">Former three-digit country code.</kTAG_DEFINITION>
+    	</term>
+    	<node>
+			<kTAG_CLASS>COntologyMasterVertex</kTAG_CLASS>
+			<kTAG_KIND>
+				<item>:KIND-FEATURE</item>
+				<item>:KIND-SCALE</item>
+			</kTAG_KIND>
+			<kTAG_TYPE>
+				<item>:ENUM</item>
+			</kTAG_TYPE>
+    	</node>
+        <tag />
+        <edges>
+			<edge>
+				<kTAG_PREDICATE>:SUBCLASS-OF</kTAG_PREDICATE>
+				<kTAG_OBJECT>ISO:3166:3</kTAG_OBJECT>
+			</edge>
+        </edges>
+    </unit>
+    
+    <!-- ISO 3166 ATTRIBUTES -->
+    
+    <!-- ISO:3166:common_name -->
+    <unit>
+    	<term kTAG_LID="common_name" kTAG_NAMESPACE="ISO:3166">
 			<kTAG_LABEL language="en">Common name</kTAG_LABEL>
 			<kTAG_DEFINITION language="en">Country common name.</kTAG_DEFINITION>
     	</term>
@@ -901,7 +998,7 @@
         <edges>
 			<edge>
 				<kTAG_PREDICATE>:SUBCLASS-OF</kTAG_PREDICATE>
-				<kTAG_OBJECT>ISO:3166:1</kTAG_OBJECT>
+				<kTAG_OBJECT>ISO:attributes</kTAG_OBJECT>
 			</edge>
         </edges>
     </unit>
@@ -933,108 +1030,6 @@
         </edges>
     </unit>
     
-    <!-- ISO 3166 Part 3 PROPERTIES -->
-    
-    <!-- ISO:3166:3:alpha-2 -->
-    <unit>
-    	<term kTAG_LID="alpha-2" kTAG_NAMESPACE="ISO:3166:3">
-			<kTAG_LABEL language="en">Alpha-2 code</kTAG_LABEL>
-			<kTAG_DEFINITION language="en">Former ISO 3166-1 two-letter country code.</kTAG_DEFINITION>
-    	</term>
-    	<node>
-			<kTAG_CLASS>COntologyMasterVertex</kTAG_CLASS>
-			<kTAG_KIND>
-				<item>:KIND-FEATURE</item>
-				<item>:KIND-SCALE</item>
-			</kTAG_KIND>
-			<kTAG_TYPE>
-				<item>:ENUM</item>
-			</kTAG_TYPE>
-    	</node>
-        <tag />
-        <edges>
-			<edge>
-				<kTAG_PREDICATE>:SUBCLASS-OF</kTAG_PREDICATE>
-				<kTAG_OBJECT>ISO:3166:3</kTAG_OBJECT>
-			</edge>
-        </edges>
-    </unit>
-    
-    <!-- ISO:3166:3:alpha-3 -->
-    <unit>
-    	<term kTAG_LID="alpha-3" kTAG_NAMESPACE="ISO:3166:3">
-			<kTAG_LABEL language="en">Alpha-3 code</kTAG_LABEL>
-			<kTAG_DEFINITION language="en">Former ISO 3166-1 three-letter country code.</kTAG_DEFINITION>
-    	</term>
-    	<node>
-			<kTAG_CLASS>COntologyMasterVertex</kTAG_CLASS>
-			<kTAG_KIND>
-				<item>:KIND-FEATURE</item>
-				<item>:KIND-SCALE</item>
-			</kTAG_KIND>
-			<kTAG_TYPE>
-				<item>:ENUM</item>
-			</kTAG_TYPE>
-    	</node>
-        <tag />
-        <edges>
-			<edge>
-				<kTAG_PREDICATE>:SUBCLASS-OF</kTAG_PREDICATE>
-				<kTAG_OBJECT>ISO:3166:3</kTAG_OBJECT>
-			</edge>
-        </edges>
-    </unit>
-    
-    <!-- ISO:3166:3:alpha-4 -->
-    <unit>
-    	<term kTAG_LID="alpha-4" kTAG_NAMESPACE="ISO:3166:3">
-			<kTAG_LABEL language="en">Alpha-4 code</kTAG_LABEL>
-			<kTAG_DEFINITION language="en">Four-letter country code. Each former country name in ISO 3166-3 is assigned a four-letter alphabetic code. The first two letters are the ISO 3166-1 alpha-2 code of the former country, while the last two letters are allocated according to the following rules: 1.) If the country changed its name, the new ISO 3166-1 alpha-2 code is used (e.g., Burma changed its name to Myanmar, whose new alpha-2 code is MM), or the special code AA is used if its alpha-2 code was not changed (e.g., Byelorussian SSR changed its name to Belarus, which has kept the same alpha-2 code). 2.) If the country merged into an existing country, the ISO 3166-1 alpha-2 code of this country is used (e.g., the German Democratic Republic merged into Germany, whose alpha-2 code is DE). 3.) If the country was divided into several parts, the special code HH is used to indicate that there is no single successor country (e.g., Czechoslovakia was divided into the Czech Republic and Slovakia), with the exception of Serbia and Montenegro, for which XX is used to avoid duplicate use of the same ISO 3166-3 code, as the alpha-2 code CS had twice been deleted from ISO 3166-1, the first time due to the split of Czechoslovakia and the second time due to the split of Serbia and Montenegro.</kTAG_DEFINITION>
-    	</term>
-    	<node>
-			<kTAG_CLASS>COntologyMasterVertex</kTAG_CLASS>
-			<kTAG_KIND>
-				<item>:KIND-FEATURE</item>
-				<item>:KIND-SCALE</item>
-			</kTAG_KIND>
-			<kTAG_TYPE>
-				<item>:ENUM</item>
-			</kTAG_TYPE>
-    	</node>
-        <tag />
-        <edges>
-			<edge>
-				<kTAG_PREDICATE>:SUBCLASS-OF</kTAG_PREDICATE>
-				<kTAG_OBJECT>ISO:3166:3</kTAG_OBJECT>
-			</edge>
-        </edges>
-    </unit>
-    
-    <!-- ISO:3166:3:numeric -->
-    <unit>
-    	<term kTAG_LID="numeric" kTAG_NAMESPACE="ISO:3166:3">
-			<kTAG_LABEL language="en">Numeric code</kTAG_LABEL>
-			<kTAG_DEFINITION language="en">Former ISO 3166-1 three-digit country code.</kTAG_DEFINITION>
-    	</term>
-    	<node>
-			<kTAG_CLASS>COntologyMasterVertex</kTAG_CLASS>
-			<kTAG_KIND>
-				<item>:KIND-FEATURE</item>
-				<item>:KIND-SCALE</item>
-			</kTAG_KIND>
-			<kTAG_TYPE>
-				<item>:ENUM</item>
-			</kTAG_TYPE>
-    	</node>
-        <tag />
-        <edges>
-			<edge>
-				<kTAG_PREDICATE>:SUBCLASS-OF</kTAG_PREDICATE>
-				<kTAG_OBJECT>ISO:3166:3</kTAG_OBJECT>
-			</edge>
-        </edges>
-    </unit>
-    
     <!-- ISO:attributes:date_withdrawn -->
     <unit>
     	<term kTAG_LID="date_withdrawn" kTAG_NAMESPACE="ISO:attributes">
@@ -1060,7 +1055,7 @@
         </edges>
     </unit>
     
-    <!-- ISO 4217 PROPERTIES -->
+    <!-- ISO 4217 ATTRIBUTES -->
     
     <!-- ISO:4217:A -->
     <unit>
@@ -1117,7 +1112,7 @@
 			</edge>
         </edges>
     </unit>
-    
+   
     <!-- ISO 15924 PROPERTIES -->
     
     <!-- ISO:15924:alpha-4 -->
