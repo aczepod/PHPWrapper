@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<units>
+    <!-- GR -->
+    <unit>
+    	<term kTAG_LID="GR">
+			<kTAG_KIND>
+				<item>:KIND-NAMESPACE</item>
+			</kTAG_KIND>
+			<kTAG_LABEL language="en">Genetic Resources INFOrmation</kTAG_LABEL>
+			<kTAG_DEFINITION language="en">A feature or scale generic to various genetic resource descriptors.</kTAG_DEFINITION>
+    	</term>
+    	<node>
+			<kTAG_CLASS>COntologyMasterVertex</kTAG_CLASS>
+			<kTAG_KIND>
+				<item>:KIND-ROOT</item>
+			</kTAG_KIND>
+    	</node>
+    </unit>
+    
+    <!-- GR PROPERTIES -->
+    
+    <!-- GR:NICODE -->
+    <unit>
+    	<term kTAG_LID="NICODE" kTAG_NAMESPACE="GR">
+			<kTAG_LABEL language="en">National Inventory Code</kTAG_LABEL>
+			<kTAG_DEFINITION language="en">Country code identifying the National Inventory, it is represented by the 3-letter ISO 3166-1 country code ([#ISO:3166:1:alpha-3#]) of the inventory country.</kTAG_DEFINITION>
+			<kTAG_SYNONYMS>
+				<item>NICODE</item>
+			</kTAG_SYNONYMS>
+    	</term>
+    	<node>
+			<kTAG_CLASS>COntologyMasterVertex</kTAG_CLASS>
+			<kTAG_KIND>
+				<item>:KIND-FEATURE</item>
+				<item>:KIND-SCALE</item>
+			</kTAG_KIND>
+			<kTAG_TYPE>
+				<item>:ENUM</item>
+			</kTAG_TYPE>
+    	</node>
+        <edges>
+			<edge>
+				<kTAG_PREDICATE>:SUBCLASS-OF</kTAG_PREDICATE>
+				<kTAG_OBJECT>GR</kTAG_OBJECT>
+			</edge>
+        </edges>
+    </unit>
+    
+    <!-- GR:GENUS -->
+    <unit>
+    	<term kTAG_LID="GENUS" kTAG_NAMESPACE="GR">
+			<kTAG_LABEL language="en">Genus</kTAG_LABEL>
+			<kTAG_DEFINITION language="en">Generic epithet biological classification.</kTAG_DEFINITION>
+			<kTAG_SYNONYMS>
+				<item>GENUS</item>
+			</kTAG_SYNONYMS>
+    	</term>
+    	<node>
+			<kTAG_CLASS>COntologyMasterVertex</kTAG_CLASS>
+			<kTAG_KIND>
+				<item>:KIND-FEATURE</item>
+				<item>:KIND-SCALE</item>
+			</kTAG_KIND>
+			<kTAG_TYPE>
+				<item>:TEXT</item>
+			</kTAG_TYPE>
+    	</node>
+        <edges>
+			<edge>
+				<kTAG_PREDICATE>:SUBCLASS-OF</kTAG_PREDICATE>
+				<kTAG_OBJECT>GR</kTAG_OBJECT>
+			</edge>
+        </edges>
+    </unit>
+    
+    <!-- GR:SPECIES -->
+    <unit>
+    	<term kTAG_LID="SPECIES" kTAG_NAMESPACE="GR">
+			<kTAG_LABEL language="en">Species</kTAG_LABEL>
+			<kTAG_DEFINITION language="en">Specific epithet biological classification.</kTAG_DEFINITION>
+			<kTAG_SYNONYMS>
+				<item>SPECIES</item>
+			</kTAG_SYNONYMS>
+    	</term>
+    	<node>
+			<kTAG_CLASS>COntologyMasterVertex</kTAG_CLASS>
+			<kTAG_KIND>
+				<item>:KIND-FEATURE</item>
+				<item>:KIND-SCALE</item>
+			</kTAG_KIND>
+			<kTAG_TYPE>
+				<item>:TEXT</item>
+			</kTAG_TYPE>
+    	</node>
+        <edges>
+			<edge>
+				<kTAG_PREDICATE>:SUBCLASS-OF</kTAG_PREDICATE>
+				<kTAG_OBJECT>GR</kTAG_OBJECT>
+			</edge>
+        </edges>
+    </unit>
+</units>

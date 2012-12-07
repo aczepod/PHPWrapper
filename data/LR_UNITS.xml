@@ -1,0 +1,1188 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<units>
+    <!-- LR -->
+    <unit>
+    	<term kTAG_LID="LR">
+			<kTAG_KIND>
+				<item>:KIND-NAMESPACE</item>
+			</kTAG_KIND>
+			<kTAG_LABEL language="en">Descriptors for web-enabled national in situ landrace inventories</kTAG_LABEL>
+			<kTAG_DEFINITION language="en">Descriptors For Web-Enabled National In Situ Landrace (LR) Inventories.</kTAG_DEFINITION>
+    	</term>
+    	<node>
+			<kTAG_CLASS>COntologyMasterVertex</kTAG_CLASS>
+			<kTAG_KIND>
+				<item>:KIND-ROOT</item>
+			</kTAG_KIND>
+ 			<kTAG_AUTHORS>
+ 				<item>V. Negri</item>
+ 				<item>N. Maxted</item>
+ 				<item>R. Torricelli</item>
+ 				<item>M. Heinonen</item>
+ 				<item>M. Vetelainen</item>
+ 				<item>S. Dias</item>
+ 			</kTAG_AUTHORS>
+			<kTAG_ACKNOWLEDGMENTS>Thanks are due to Adriana Alercia (Bioversity International, Rome), Theo van Hintum (Centre for Genetic Resources _ Wageningen University and Research Centre, the Netherlands) and Lorenzo Maggioni (ECPGR Secretariat, Rome) for helpful suggestions and comments.</kTAG_ACKNOWLEDGMENTS>
+			<kTAG_BIBLIOGRAPHY>Bioversity and The Christensen Fund, 2009. Descriptors for farmer’s knowledge of plants. Bioversity International, Rome, Italy and The Christensen Fund, Palo Alto, California, USA.</kTAG_BIBLIOGRAPHY>
+			<kTAG_NOTES language="en">Landraces are part of agro-biodiversity in urgent need of conservation. A prerequisite of any active conservation is some form of inventory of what is conserved.\n\nIn this context, the EC Framework 7 PGR Secure project is aimed to provide help in generating National Landrace Inventories in European countries and so to begin the process of creating a European Landrace Inventory pivoted on the National Inventories.\n\nA European LR Inventory can only be based on National Inventories considered that the responsibility to conserve and sustainably use landrace diversity (as well as any other biodiversity component) lies with individual Nations and that any concerted action will be implemented at national level, even when driven by policy at European level.\n\nThis draft descriptor list was worked out to facilitate the development of National Inventories of landraces that are still maintained in situ (i.e. on farm or in garden).\n\nIt was drafted to record different types of information that were discussed at the “Crop Wild Relative and Landrace Conservation Training Workshop” held in Palanga Lithuania, 7-9 September 2011 by the in situ National Inventory Focal Points, the ECPGR Documentation and Information Network members and the PGR Secure team working on landraces.\n\nHowever, it also takes into account the contribution that the ECPGR On-farm Conservation and Management Working Group of the In Situ and On-Farm Conservation Network gave through years to the definition of descriptors for extant landraces (see draft descriptor list downloadable from http://www.ecpgr.cgiar.org/networks/in_situ_and_on_farm/on_farm_wg.html).\n\nThe draft descriptor list includes fields related to the Inventory, taxon, landrace, site and farmer identification, the landrace status, characteristics and use and finally fields concerning conservation and monitoring actions eventually taken in favour of the landrace diversity maintenance.</kTAG_NOTES>
+ 	  	</node>
+    </unit>
+    
+    <!-- LANDRACE DATA TYPES -->
+    
+    <!-- LR:DATA-TYPES -->
+    <unit>
+    	<term kTAG_LID="DATA-TYPES" kTAG_NAMESPACE="LR">
+			<kTAG_KIND>
+				<item>:KIND-NAMESPACE</item>
+			</kTAG_KIND>
+			<kTAG_LABEL language="en">Data types</kTAG_LABEL>
+			<kTAG_DEFINITION language="en">Common descriptor data types and enumerations.</kTAG_DEFINITION>
+    	</term>
+    	<node>
+			<kTAG_CLASS>COntologyMasterVertex</kTAG_CLASS>
+    	</node>
+        <edges>
+			<edge>
+				<kTAG_PREDICATE>:SUBCLASS-OF</kTAG_PREDICATE>
+				<kTAG_OBJECT>LR</kTAG_OBJECT>
+			</edge>
+        </edges>
+    </unit>
+    
+    <!-- LR:DATA-TYPES:YN -->
+    <unit>
+    	<term kTAG_LID="YN" kTAG_NAMESPACE="LR:DATA-TYPES">
+			<kTAG_LABEL language="en">Yes/no switch</kTAG_LABEL>
+			<kTAG_DEFINITION language="en">This enumeration has two values: 10 for yes and 20 for no.</kTAG_DEFINITION>
+    	</term>
+    	<node>
+			<kTAG_CLASS>COntologyMasterVertex</kTAG_CLASS>
+			<kTAG_KIND>
+				<item>:KIND-SCALE</item>
+			</kTAG_KIND>
+			<kTAG_TYPE>
+				<item>:ENUM</item>
+			</kTAG_TYPE>
+			<kTAG_EXAMPLES>
+				<item>10</item>
+				<item>20</item>
+			</kTAG_EXAMPLES>
+    	</node>
+        <edges>
+			<edge>
+				<kTAG_PREDICATE>:SUBCLASS-OF</kTAG_PREDICATE>
+				<kTAG_OBJECT>LR:DATA-TYPES</kTAG_OBJECT>
+			</edge>
+        </edges>
+    </unit>
+    
+    <!-- LANDRACE CATEGORIES -->
+    
+    <!-- LR:INVENTORY -->
+    <unit>
+    	<term kTAG_LID="INVENTORY" kTAG_NAMESPACE="LR">
+			<kTAG_KIND>
+				<item>:KIND-NAMESPACE</item>
+			</kTAG_KIND>
+			<kTAG_LABEL language="en">Inventory identification</kTAG_LABEL>
+			<kTAG_DEFINITION language="en">Descriptors identifying the inventory and origin of the landrace or population.</kTAG_DEFINITION>
+			<kTAG_SYNONYMS>
+				<item>1</item>
+			</kTAG_SYNONYMS>
+    	</term>
+    	<node>
+			<kTAG_CLASS>COntologyMasterVertex</kTAG_CLASS>
+    	</node>
+        <edges>
+			<edge>
+				<kTAG_PREDICATE>:SUBCLASS-OF</kTAG_PREDICATE>
+				<kTAG_OBJECT>LR</kTAG_OBJECT>
+			</edge>
+        </edges>
+    </unit>
+    
+    <!-- LR:TAXONOMY -->
+    <unit>
+    	<term kTAG_LID="TAXONOMY" kTAG_NAMESPACE="LR">
+			<kTAG_KIND>
+				<item>:KIND-NAMESPACE</item>
+			</kTAG_KIND>
+			<kTAG_LABEL language="en">Taxonomy identification</kTAG_LABEL>
+			<kTAG_DEFINITION language="en">Descriptors identifying the scientific nomenclature of the landrace or population.</kTAG_DEFINITION>
+			<kTAG_SYNONYMS>
+				<item>2</item>
+			</kTAG_SYNONYMS>
+    	</term>
+    	<node>
+			<kTAG_CLASS>COntologyMasterVertex</kTAG_CLASS>
+    	</node>
+        <edges>
+			<edge>
+				<kTAG_PREDICATE>:SUBCLASS-OF</kTAG_PREDICATE>
+				<kTAG_OBJECT>LR</kTAG_OBJECT>
+			</edge>
+        </edges>
+    </unit>
+    
+    <!-- LR:IDENTIFICATION -->
+    <unit>
+    	<term kTAG_LID="IDENTIFICATION" kTAG_NAMESPACE="LR">
+			<kTAG_KIND>
+				<item>:KIND-NAMESPACE</item>
+			</kTAG_KIND>
+			<kTAG_LABEL language="en">Landrace/population identification</kTAG_LABEL>
+			<kTAG_DEFINITION language="en">Descriptors identifying the specific landrace or population.</kTAG_DEFINITION>
+			<kTAG_SYNONYMS>
+				<item>3</item>
+			</kTAG_SYNONYMS>
+    	</term>
+    	<node>
+			<kTAG_CLASS>COntologyMasterVertex</kTAG_CLASS>
+    	</node>
+        <edges>
+			<edge>
+				<kTAG_PREDICATE>:SUBCLASS-OF</kTAG_PREDICATE>
+				<kTAG_OBJECT>LR</kTAG_OBJECT>
+			</edge>
+        </edges>
+    </unit>
+    
+    <!-- LR:LOCATION -->
+    <unit>
+    	<term kTAG_LID="LOCATION" kTAG_NAMESPACE="LR">
+			<kTAG_KIND>
+				<item>:KIND-NAMESPACE</item>
+			</kTAG_KIND>
+			<kTAG_LABEL language="en">Site/location identification</kTAG_LABEL>
+			<kTAG_DEFINITION language="en">Descriptors identifying the location of the landrace or population.</kTAG_DEFINITION>
+			<kTAG_SYNONYMS>
+				<item>4</item>
+			</kTAG_SYNONYMS>
+    	</term>
+    	<node>
+			<kTAG_CLASS>COntologyMasterVertex</kTAG_CLASS>
+    	</node>
+        <edges>
+			<edge>
+				<kTAG_PREDICATE>:SUBCLASS-OF</kTAG_PREDICATE>
+				<kTAG_OBJECT>LR</kTAG_OBJECT>
+			</edge>
+        </edges>
+    </unit>
+    
+    <!-- LR:MAINTAINER -->
+    <unit>
+    	<term kTAG_LID="MAINTAINER" kTAG_NAMESPACE="LR">
+			<kTAG_KIND>
+				<item>:KIND-NAMESPACE</item>
+			</kTAG_KIND>
+			<kTAG_LABEL language="en">The farmer (i.e. the maintainer)</kTAG_LABEL>
+			<kTAG_DEFINITION language="en">Descriptors identifying the maintainer of the landrace or population.</kTAG_DEFINITION>
+			<kTAG_SYNONYMS>
+				<item>5</item>
+			</kTAG_SYNONYMS>
+    	</term>
+    	<node>
+			<kTAG_CLASS>COntologyMasterVertex</kTAG_CLASS>
+    	</node>
+        <edges>
+			<edge>
+				<kTAG_PREDICATE>:SUBCLASS-OF</kTAG_PREDICATE>
+				<kTAG_OBJECT>LR</kTAG_OBJECT>
+			</edge>
+        </edges>
+    </unit>
+    
+    <!-- LR:LANDRACE -->
+    <unit>
+    	<term kTAG_LID="LANDRACE" kTAG_NAMESPACE="LR">
+			<kTAG_KIND>
+				<item>:KIND-NAMESPACE</item>
+			</kTAG_KIND>
+			<kTAG_LABEL language="en">The landrace</kTAG_LABEL>
+			<kTAG_DEFINITION language="en">Descriptors describing the landrace.</kTAG_DEFINITION>
+			<kTAG_SYNONYMS>
+				<item>6</item>
+			</kTAG_SYNONYMS>
+    	</term>
+    	<node>
+			<kTAG_CLASS>COntologyMasterVertex</kTAG_CLASS>
+    	</node>
+        <edges>
+			<edge>
+				<kTAG_PREDICATE>:SUBCLASS-OF</kTAG_PREDICATE>
+				<kTAG_OBJECT>LR</kTAG_OBJECT>
+			</edge>
+        </edges>
+    </unit>
+    
+    <!-- LR:MONITOR -->
+    <unit>
+    	<term kTAG_LID="MONITOR" kTAG_NAMESPACE="LR">
+			<kTAG_KIND>
+				<item>:KIND-NAMESPACE</item>
+			</kTAG_KIND>
+			<kTAG_LABEL language="en">Conservation and monitoring</kTAG_LABEL>
+			<kTAG_DEFINITION language="en">Descriptors covering conservation and maintenance of the landrace or population.</kTAG_DEFINITION>
+			<kTAG_SYNONYMS>
+				<item>7</item>
+			</kTAG_SYNONYMS>
+    	</term>
+    	<node>
+			<kTAG_CLASS>COntologyMasterVertex</kTAG_CLASS>
+    	</node>
+        <edges>
+			<edge>
+				<kTAG_PREDICATE>:SUBCLASS-OF</kTAG_PREDICATE>
+				<kTAG_OBJECT>LR</kTAG_OBJECT>
+			</edge>
+        </edges>
+    </unit>
+    
+    <!-- LR:REMARKS -->
+    <unit>
+    	<term kTAG_LID="REMARKS" kTAG_NAMESPACE="LR">
+			<kTAG_LABEL language="en">Remarks</kTAG_LABEL>
+			<kTAG_DEFINITION language="en">General remarks.</kTAG_DEFINITION>
+			<kTAG_SYNONYMS>
+				<item>7</item>
+			</kTAG_SYNONYMS>
+    	</term>
+    	<node>
+			<kTAG_CLASS>COntologyMasterVertex</kTAG_CLASS>
+			<kTAG_KIND>
+				<item>:KIND-FEATURE</item>
+				<item>:KIND-SCALE</item>
+			</kTAG_KIND>
+			<kTAG_TYPE>
+				<item>:TEXT</item>
+			</kTAG_TYPE>
+    	</node>
+        <edges>
+			<edge>
+				<kTAG_PREDICATE>:SUBCLASS-OF</kTAG_PREDICATE>
+				<kTAG_OBJECT>LR</kTAG_OBJECT>
+			</edge>
+        </edges>
+    </unit>
+    
+    <!-- LOCATION CATEGORIES -->
+    
+    <!-- LR:LOCATION:COORD-FARM -->
+    <unit>
+    	<term kTAG_LID="COORD-FARM" kTAG_NAMESPACE="LR:LOCATION">
+			<kTAG_KIND>
+				<item>:KIND-NAMESPACE</item>
+			</kTAG_KIND>
+			<kTAG_LABEL language="en">Farm coordinates</kTAG_LABEL>
+			<kTAG_DEFINITION language="en">Coordinates of the farm house or headquarters, to be recorded as either Degrees Minutes and Seconds-DMS or Decimal Degrees DD as specified below.</kTAG_DEFINITION>
+			<kTAG_SYNONYMS>
+				<item>4.5</item>
+			</kTAG_SYNONYMS>
+    	</term>
+    	<node>
+			<kTAG_CLASS>COntologyMasterVertex</kTAG_CLASS>
+    	</node>
+        <edges>
+			<edge>
+				<kTAG_PREDICATE>:SUBCLASS-OF</kTAG_PREDICATE>
+				<kTAG_OBJECT>LR:LOCATION</kTAG_OBJECT>
+			</edge>
+        </edges>
+    </unit>
+    
+    <!-- LR:LOCATION:COORD-LR -->
+    <unit>
+    	<term kTAG_LID="COORD-LR" kTAG_NAMESPACE="LR:LOCATION">
+			<kTAG_KIND>
+				<item>:KIND-NAMESPACE</item>
+			</kTAG_KIND>
+			<kTAG_LABEL language="en">Coordinates of the LR site</kTAG_LABEL>
+			<kTAG_DEFINITION language="en">Coordinates of the field where the LR is/has been grown in the year the Inventory is compiled; to be recorded as either Degrees Minutes and Seconds-DMS or Decimal Degrees- DD, as described above for ‘Farm coordinates’.</kTAG_DEFINITION>
+			<kTAG_SYNONYMS>
+				<item>4.7</item>
+			</kTAG_SYNONYMS>
+    	</term>
+    	<node>
+			<kTAG_CLASS>COntologyMasterVertex</kTAG_CLASS>
+    	</node>
+        <edges>
+			<edge>
+				<kTAG_PREDICATE>:SUBCLASS-OF</kTAG_PREDICATE>
+				<kTAG_OBJECT>LR:LOCATION</kTAG_OBJECT>
+			</edge>
+        </edges>
+    </unit>
+    
+    <!-- INVENTORY PROPERTIES -->
+    
+    <!-- GR:NICODE -->
+    <unit>
+    	<node>
+			<kTAG_CLASS>COntologyAliasVertex</kTAG_CLASS>
+			<kTAG_TERM>GR:NICODE</kTAG_TERM>
+			<kTAG_KIND>
+				<item>:KIND-FEATURE</item>
+				<item>:KIND-SCALE</item>
+			</kTAG_KIND>
+			<kTAG_TYPE>
+				<item>:REQUIRED</item>
+				<item>:ENUM</item>
+			</kTAG_TYPE>
+			<kTAG_DESCRIPTION language="en">Country code identifying the National in situ LR Inventory; the code of the country preparing the National Inventory. For country codes use the three-letter ISO 3166-1 [#ISO:3166:1:alpha-3#] (see: http://unstats.un.org/unsd/methods/m49/m49alpha.htm).</kTAG_DESCRIPTION>
+			<kTAG_EXAMPLES>
+				<item>NLD</item>
+			</kTAG_EXAMPLES>
+			<kTAG_SYNONYMS>
+				<item>NICODE</item>
+				<item>1.1</item>
+			</kTAG_SYNONYMS>
+    	</node>
+        <edges>
+			<edge>
+				<kTAG_PREDICATE>:SUBCLASS-OF</kTAG_PREDICATE>
+				<kTAG_OBJECT>LR:INVENTORY</kTAG_OBJECT>
+			</edge>
+        </edges>
+    </unit>
+    
+    <!-- LR:INVENTORY:NIENUMB -->
+    <unit>
+    	<term kTAG_LID="NIENUMB" kTAG_NAMESPACE="LR:INVENTORY">
+			<kTAG_LABEL language="en">National Inventory edition number</kTAG_LABEL>
+			<kTAG_DEFINITION language="en">Code identifying the edition of the National in situ LR Inventory made up of the edition number and the year of publication.</kTAG_DEFINITION>
+			<kTAG_SYNONYMS>
+				<item>NIENUMB</item>
+				<item>1.2</item>
+			</kTAG_SYNONYMS>
+    	</term>
+    	<node>
+			<kTAG_CLASS>COntologyMasterVertex</kTAG_CLASS>
+			<kTAG_KIND>
+				<item>:KIND-FEATURE</item>
+				<item>:KIND-SCALE</item>
+			</kTAG_KIND>
+			<kTAG_TYPE>
+				<item>:REQUIRED</item>
+				<item>:TEXT</item>
+			</kTAG_TYPE>
+			<kTAG_EXAMPLES>
+				<item>the first edition that is compiled in 2012 will be coded as 001/2012</item>
+				<item>the second edition that is compiled in 2014 will be coded 002/2014</item>
+			</kTAG_EXAMPLES>
+    	</node>
+        <edges>
+			<edge>
+				<kTAG_PREDICATE>:SUBCLASS-OF</kTAG_PREDICATE>
+				<kTAG_OBJECT>LR:INVENTORY</kTAG_OBJECT>
+			</edge>
+        </edges>
+    </unit>
+    
+    <!-- FAO-INSTITUTES:INSTCODE -->
+    <unit>
+    	<node>
+			<kTAG_CLASS>COntologyAliasVertex</kTAG_CLASS>
+			<kTAG_TERM>FAO-INSTITUTES:INSTCODE</kTAG_TERM>
+			<kTAG_KIND>
+				<item>:KIND-FEATURE</item>
+				<item>:KIND-SCALE</item>
+			</kTAG_KIND>
+			<kTAG_TYPE>
+				<item>:REQUIRED</item>
+				<item>:TEXT</item>
+			</kTAG_TYPE>
+			<kTAG_DESCRIPTION language="en">FAO WIEWS code of the institute (see: http://apps3.fao.org/wiews/institute_query.htm?i_l=EN) who is responsible at the national level for the production of the National in situ LR Inventory.</kTAG_DESCRIPTION>
+			<kTAG_EXAMPLES>
+				<item>NLD037</item>
+			</kTAG_EXAMPLES>
+			<kTAG_SYNONYMS>
+				<item>INSTCODE</item>
+				<item>1.3</item>
+			</kTAG_SYNONYMS>
+    	</node>
+        <edges>
+			<edge>
+				<kTAG_PREDICATE>:SUBCLASS-OF</kTAG_PREDICATE>
+				<kTAG_OBJECT>LR:INVENTORY</kTAG_OBJECT>
+			</edge>
+        </edges>
+    </unit>
+    
+    <!-- TAXONOMY PROPERTIES -->
+    
+    <!-- GR:GENUS -->
+    <unit>
+    	<node>
+			<kTAG_CLASS>COntologyAliasVertex</kTAG_CLASS>
+			<kTAG_TERM>GR:GENUS</kTAG_TERM>
+			<kTAG_KIND>
+				<item>:KIND-FEATURE</item>
+				<item>:KIND-SCALE</item>
+			</kTAG_KIND>
+			<kTAG_TYPE>
+				<item>:REQUIRED</item>
+				<item>:TEXT</item>
+			</kTAG_TYPE>
+			<kTAG_DESCRIPTION language="en">Genus name for taxon, in Latin. Initial uppercase letter required.</kTAG_DESCRIPTION>
+			<kTAG_EXAMPLES>
+				<item>Vigna</item>
+				<item>Vicia</item>
+			</kTAG_EXAMPLES>
+			<kTAG_SYNONYMS>
+				<item>2.1</item>
+			</kTAG_SYNONYMS>
+    	</node>
+        <edges>
+			<edge>
+				<kTAG_PREDICATE>:SUBCLASS-OF</kTAG_PREDICATE>
+				<kTAG_OBJECT>LR:INVENTORY</kTAG_OBJECT>
+			</edge>
+        </edges>
+    </unit>
+    
+    <!-- GR:SPECIES -->
+    <unit>
+    	<node>
+			<kTAG_CLASS>COntologyAliasVertex</kTAG_CLASS>
+			<kTAG_TERM>GR:SPECIES</kTAG_TERM>
+			<kTAG_KIND>
+				<item>:KIND-FEATURE</item>
+				<item>:KIND-SCALE</item>
+			</kTAG_KIND>
+			<kTAG_TYPE>
+				<item>:REQUIRED</item>
+				<item>:TEXT</item>
+			</kTAG_TYPE>
+			<kTAG_DESCRIPTION language="en">Specific epithet portion of the scientific name, in Latin, in lower case letters.</kTAG_DESCRIPTION>
+			<kTAG_EXAMPLES>
+				<item>unguiculata</item>
+				<item>faba</item>
+			</kTAG_EXAMPLES>
+			<kTAG_SYNONYMS>
+				<item>2.2</item>
+			</kTAG_SYNONYMS>
+    	</node>
+        <edges>
+			<edge>
+				<kTAG_PREDICATE>:SUBCLASS-OF</kTAG_PREDICATE>
+				<kTAG_OBJECT>LR:INVENTORY</kTAG_OBJECT>
+			</edge>
+        </edges>
+    </unit>
+    
+    <!-- LR:TAXONOMY:SPAUTHOR -->
+    <unit>
+    	<term kTAG_LID="SPAUTHOR" kTAG_NAMESPACE="LR:TAXONOMY">
+			<kTAG_LABEL language="en">Species authority</kTAG_LABEL>
+			<kTAG_DEFINITION language="en">The authority for the species name.</kTAG_DEFINITION>
+			<kTAG_SYNONYMS>
+				<item>SPAUTHOR</item>
+				<item>2.3</item>
+			</kTAG_SYNONYMS>
+    	</term>
+    	<node>
+			<kTAG_CLASS>COntologyMasterVertex</kTAG_CLASS>
+			<kTAG_KIND>
+				<item>:KIND-FEATURE</item>
+				<item>:KIND-SCALE</item>
+			</kTAG_KIND>
+			<kTAG_TYPE>
+				<item>:REQUIRED</item>
+				<item>:TEXT</item>
+			</kTAG_TYPE>
+			<kTAG_EXAMPLES>
+				<item>(L.) Wald.</item>
+				<item>L.</item>
+			</kTAG_EXAMPLES>
+    	</node>
+        <edges>
+			<edge>
+				<kTAG_PREDICATE>:SUBCLASS-OF</kTAG_PREDICATE>
+				<kTAG_OBJECT>LR:TAXONOMY</kTAG_OBJECT>
+			</edge>
+        </edges>
+    </unit>
+    
+    <!-- LR:TAXONOMY:SUBTAXA -->
+    <unit>
+    	<term kTAG_LID="SUBTAXA" kTAG_NAMESPACE="LR:TAXONOMY">
+			<kTAG_LABEL language="en">Subtaxa</kTAG_LABEL>
+			<kTAG_DEFINITION language="en">This field can be used to store any additional taxonomic identifier (in Latin, in lower case letters) preceded by the rank (for example: subspecies, convariety, variety, form, cultivar group). The following abbreviations are foreseen for the rank: ‘subsp.’ (for subspecies); ‘convar.’ (for convariety); ‘var.’ (for variety); ‘f.’ (for form), ‘Group’ (for cultivar group).</kTAG_DEFINITION>
+			<kTAG_SYNONYMS>
+				<item>SUBTAXA</item>
+				<item>2.4</item>
+			</kTAG_SYNONYMS>
+    	</term>
+    	<node>
+			<kTAG_CLASS>COntologyMasterVertex</kTAG_CLASS>
+			<kTAG_KIND>
+				<item>:KIND-FEATURE</item>
+				<item>:KIND-SCALE</item>
+			</kTAG_KIND>
+			<kTAG_TYPE>
+				<item>:TEXT</item>
+			</kTAG_TYPE>
+			<kTAG_EXAMPLES>
+				<item>subsp. sesquipedalis</item>
+				<item>subsp. faba var. minuta</item>
+			</kTAG_EXAMPLES>
+    	</node>
+        <edges>
+			<edge>
+				<kTAG_PREDICATE>:SUBCLASS-OF</kTAG_PREDICATE>
+				<kTAG_OBJECT>LR:TAXONOMY</kTAG_OBJECT>
+			</edge>
+        </edges>
+    </unit>
+    
+    <!-- LR:TAXONOMY:SUBTAUTHOR -->
+    <unit>
+    	<term kTAG_LID="SUBTAUTHOR" kTAG_NAMESPACE="LR:TAXONOMY">
+			<kTAG_LABEL language="en">Subtaxa authority</kTAG_LABEL>
+			<kTAG_DEFINITION language="en">The subtaxa authority at the most detailed taxonomic level.</kTAG_DEFINITION>
+			<kTAG_SYNONYMS>
+				<item>SUBTAXA</item>
+				<item>2.5</item>
+			</kTAG_SYNONYMS>
+    	</term>
+    	<node>
+			<kTAG_CLASS>COntologyMasterVertex</kTAG_CLASS>
+			<kTAG_KIND>
+				<item>:KIND-FEATURE</item>
+				<item>:KIND-SCALE</item>
+			</kTAG_KIND>
+			<kTAG_TYPE>
+				<item>:TEXT</item>
+			</kTAG_TYPE>
+			<kTAG_EXAMPLES>
+				<item>(L.) Verdc.</item>
+				<item>(hort. ex Alef.) Mansf.</item>
+			</kTAG_EXAMPLES>
+    	</node>
+        <edges>
+			<edge>
+				<kTAG_PREDICATE>:SUBCLASS-OF</kTAG_PREDICATE>
+				<kTAG_OBJECT>LR:TAXONOMY</kTAG_OBJECT>
+			</edge>
+        </edges>
+    </unit>
+    
+    <!-- LR:TAXONOMY:TAXREF -->
+    <unit>
+    	<term kTAG_LID="TAXREF" kTAG_NAMESPACE="LR:TAXONOMY">
+			<kTAG_LABEL language="en">Taxonomic references</kTAG_LABEL>
+			<kTAG_DEFINITION language="en">Taxonomy used by Inventory compiler to identify the material (e.g.. The Plant List, Euro+Med PlantBase, GRIN taxonomy, etc).</kTAG_DEFINITION>
+			<kTAG_SYNONYMS>
+				<item>TAXREF</item>
+				<item>2.6</item>
+			</kTAG_SYNONYMS>
+    	</term>
+    	<node>
+			<kTAG_CLASS>COntologyMasterVertex</kTAG_CLASS>
+			<kTAG_KIND>
+				<item>:KIND-FEATURE</item>
+				<item>:KIND-SCALE</item>
+			</kTAG_KIND>
+			<kTAG_TYPE>
+				<item>:TEXT</item>
+				<item>:ARRAY</item>
+			</kTAG_TYPE>
+			<kTAG_EXAMPLES>
+				<item>The Plant List</item>
+				<item>GRIN Taxonomy</item>
+			</kTAG_EXAMPLES>
+    	</node>
+        <edges>
+			<edge>
+				<kTAG_PREDICATE>:SUBCLASS-OF</kTAG_PREDICATE>
+				<kTAG_OBJECT>LR:TAXONOMY</kTAG_OBJECT>
+			</edge>
+        </edges>
+    </unit>
+    
+    <!-- LR:TAXONOMY:CROPNAME -->
+    <unit>
+    	<term kTAG_LID="CROPNAME" kTAG_NAMESPACE="LR:TAXONOMY">
+			<kTAG_LABEL language="en">Common crop name</kTAG_LABEL>
+			<kTAG_DEFINITION language="en">Name of the crop in colloquial language, preferably English if any.</kTAG_DEFINITION>
+			<kTAG_SYNONYMS>
+				<item>CROPNAME</item>
+				<item>2.7</item>
+			</kTAG_SYNONYMS>
+    	</term>
+    	<node>
+			<kTAG_CLASS>COntologyMasterVertex</kTAG_CLASS>
+			<kTAG_KIND>
+				<item>:KIND-FEATURE</item>
+				<item>:KIND-SCALE</item>
+			</kTAG_KIND>
+			<kTAG_TYPE>
+				<item>:TEXT</item>
+				<item>:ARRAY</item>
+			</kTAG_TYPE>
+			<kTAG_EXAMPLES>
+				<item>yard–long-bean</item>
+				<item>tick-bean</item>
+			</kTAG_EXAMPLES>
+    	</node>
+        <edges>
+			<edge>
+				<kTAG_PREDICATE>:SUBCLASS-OF</kTAG_PREDICATE>
+				<kTAG_OBJECT>LR:TAXONOMY</kTAG_OBJECT>
+			</edge>
+        </edges>
+    </unit>
+    
+    <!-- IDENTIFICATION PROPERTIES -->
+    
+    <!-- LR:IDENTIFICATION:LRRECDATE -->
+    <unit>
+    	<term kTAG_LID="LRRECDATE" kTAG_NAMESPACE="LR:IDENTIFICATION">
+			<kTAG_LABEL language="en">Landrace in situ recording date</kTAG_LABEL>
+			<kTAG_DEFINITION language="en">Date on which the LR was recorded in the current in situ Inventory, as YYYYMMDD. Missing data (MM or DD) should be indicated with zeros. Leading zeros are required.</kTAG_DEFINITION>
+			<kTAG_SYNONYMS>
+				<item>LRRECDATE</item>
+				<item>3.1</item>
+			</kTAG_SYNONYMS>
+    	</term>
+    	<node>
+			<kTAG_CLASS>COntologyMasterVertex</kTAG_CLASS>
+			<kTAG_KIND>
+				<item>:KIND-FEATURE</item>
+				<item>:KIND-SCALE</item>
+			</kTAG_KIND>
+			<kTAG_TYPE>
+				<item>:DATE</item>
+			</kTAG_TYPE>
+			<kTAG_EXAMPLES>
+				<item>1998</item>
+				<item>20020620</item>
+			</kTAG_EXAMPLES>
+    	</node>
+        <edges>
+			<edge>
+				<kTAG_PREDICATE>:SUBCLASS-OF</kTAG_PREDICATE>
+				<kTAG_OBJECT>LR:IDENTIFICATION</kTAG_OBJECT>
+			</edge>
+        </edges>
+    </unit>
+    
+    <!-- LR:IDENTIFICATION:LRNUMB -->
+    <unit>
+    	<term kTAG_LID="LRNUMB" kTAG_NAMESPACE="LR:IDENTIFICATION">
+			<kTAG_LABEL language="en">Landrace number</kTAG_LABEL>
+			<kTAG_DEFINITION language="en">Unique progressive number which identifies the in situ LR in the Inventory, not to be duplicated (i.e. reassigned) for other LRs or the same LR that is cultivated by other farmers in the current Inventory. To be assigned by the institute which is responsible at the national level for the production of the National LR in situ Inventory.</kTAG_DEFINITION>
+			<kTAG_SYNONYMS>
+				<item>LRNUMB</item>
+				<item>3.2</item>
+			</kTAG_SYNONYMS>
+    	</term>
+    	<node>
+			<kTAG_CLASS>COntologyMasterVertex</kTAG_CLASS>
+			<kTAG_KIND>
+				<item>:KIND-FEATURE</item>
+				<item>:KIND-SCALE</item>
+			</kTAG_KIND>
+			<kTAG_TYPE>
+				<item>:REQUIRED</item>
+				<item>:TEXT</item>
+			</kTAG_TYPE>
+			<kTAG_EXAMPLES>
+				<item>00010</item>
+			</kTAG_EXAMPLES>
+    	</node>
+        <edges>
+			<edge>
+				<kTAG_PREDICATE>:SUBCLASS-OF</kTAG_PREDICATE>
+				<kTAG_OBJECT>LR:IDENTIFICATION</kTAG_OBJECT>
+			</edge>
+        </edges>
+    </unit>
+    
+    <!-- LR:IDENTIFICATION:LRNAME -->
+    <unit>
+    	<term kTAG_LID="LRNAME" kTAG_NAMESPACE="LR:IDENTIFICATION">
+			<kTAG_LABEL language="en">Landrace local names</kTAG_LABEL>
+			<kTAG_DEFINITION language="en">Local name/s of the LR in the colloquial language of the farm. Free text.</kTAG_DEFINITION>
+			<kTAG_SYNONYMS>
+				<item>LRNAME</item>
+				<item>3.3</item>
+			</kTAG_SYNONYMS>
+    	</term>
+    	<node>
+			<kTAG_CLASS>COntologyMasterVertex</kTAG_CLASS>
+			<kTAG_KIND>
+				<item>:KIND-FEATURE</item>
+				<item>:KIND-SCALE</item>
+			</kTAG_KIND>
+			<kTAG_TYPE>
+				<item>:REQUIRED</item>
+				<item>:TEXT</item>
+			</kTAG_TYPE>
+			<kTAG_EXAMPLES>
+				<item>fagiolina, cornetti, fagiolino dall’occhio</item>
+			</kTAG_EXAMPLES>
+    	</node>
+        <edges>
+			<edge>
+				<kTAG_PREDICATE>:SUBCLASS-OF</kTAG_PREDICATE>
+				<kTAG_OBJECT>LR:IDENTIFICATION</kTAG_OBJECT>
+			</edge>
+        </edges>
+    </unit>
+    
+    <!-- LR:IDENTIFICATION:LRLANG -->
+    <unit>
+    	<term kTAG_LID="LRLANG" kTAG_NAMESPACE="LR:IDENTIFICATION">
+			<kTAG_LABEL language="en">Landrace language codes</kTAG_LABEL>
+			<kTAG_DEFINITION language="en">The language code of the LR local name. Use ISO 639-2 is the alpha-3 code in Codes for the representation of names of languages (see: http://www.loc.gov/standards/iso639- 2/php/code_list.php).</kTAG_DEFINITION>
+			<kTAG_SYNONYMS>
+				<item>LRLANG</item>
+				<item>3.4</item>
+			</kTAG_SYNONYMS>
+    	</term>
+    	<node>
+			<kTAG_CLASS>COntologyMasterVertex</kTAG_CLASS>
+			<kTAG_KIND>
+				<item>:KIND-FEATURE</item>
+			</kTAG_KIND>
+			<kTAG_TYPE>
+				<item>:ENUM</item>
+			</kTAG_TYPE>
+			<kTAG_EXAMPLES>
+				<item>fra</item>
+				<item>ita</item>
+			</kTAG_EXAMPLES>
+    	</node>
+        <edges>ISO:639:2
+			<edge>
+				<kTAG_PREDICATE>:SUBCLASS-OF</kTAG_PREDICATE>
+				<kTAG_OBJECT>LR:IDENTIFICATION</kTAG_OBJECT>
+			</edge>
+			<edge>
+				<kTAG_SUBJECT>ISO:639:2</kTAG_SUBJECT>
+				<kTAG_PREDICATE>:SUBCLASS-OF</kTAG_PREDICATE>
+			</edge>
+        </edges>
+    </unit>
+    
+    <!-- LOCATION PROPERTIES -->
+    
+    <!-- LR:LOCATION:FARMFIRSTADMIN -->
+    <unit>
+    	<term kTAG_LID="FARMFIRSTADMIN" kTAG_NAMESPACE="LR:LOCATION">
+			<kTAG_LABEL language="en">Farm location: primary administrative subdivision of the country where farm is located</kTAG_LABEL>
+			<kTAG_DEFINITION language="en">Name of the primary administrative subdivision of the country where the farm is located for the most part of its extension. Free text.</kTAG_DEFINITION>
+			<kTAG_SYNONYMS>
+				<item>FARMFIRSTADMIN</item>
+				<item>4.1</item>
+			</kTAG_SYNONYMS>
+    	</term>
+    	<node>
+			<kTAG_CLASS>COntologyMasterVertex</kTAG_CLASS>
+			<kTAG_KIND>
+				<item>:KIND-FEATURE</item>
+				<item>:KIND-SCALE</item>
+			</kTAG_KIND>
+			<kTAG_TYPE>
+				<item>:TEXT</item>
+			</kTAG_TYPE>
+			<kTAG_EXAMPLES>
+				<item>Umbria Region</item>
+			</kTAG_EXAMPLES>
+    	</node>
+        <edges>
+			<edge>
+				<kTAG_PREDICATE>:SUBCLASS-OF</kTAG_PREDICATE>
+				<kTAG_OBJECT>LR:LOCATION</kTAG_OBJECT>
+			</edge>
+        </edges>
+    </unit>
+    
+    <!-- LR:LOCATION:FARMSECONDADMIN -->
+    <unit>
+    	<term kTAG_LID="FARMSECONDADMIN" kTAG_NAMESPACE="LR:LOCATION">
+			<kTAG_LABEL language="en">Farm location: secondary administrative subdivision</kTAG_LABEL>
+			<kTAG_DEFINITION language="en">Name of the secondary administrative subdivision (within the primary administrative subdivision) of the country where the farm is located. Free text.</kTAG_DEFINITION>
+			<kTAG_SYNONYMS>
+				<item>FARMSECONDADMIN</item>
+				<item>4.2</item>
+			</kTAG_SYNONYMS>
+    	</term>
+    	<node>
+			<kTAG_CLASS>COntologyMasterVertex</kTAG_CLASS>
+			<kTAG_KIND>
+				<item>:KIND-FEATURE</item>
+				<item>:KIND-SCALE</item>
+			</kTAG_KIND>
+			<kTAG_TYPE>
+				<item>:TEXT</item>
+			</kTAG_TYPE>
+			<kTAG_EXAMPLES>
+				<item>Perugia Province</item>
+			</kTAG_EXAMPLES>
+    	</node>
+        <edges>
+			<edge>
+				<kTAG_PREDICATE>:SUBCLASS-OF</kTAG_PREDICATE>
+				<kTAG_OBJECT>LR:LOCATION</kTAG_OBJECT>
+			</edge>
+        </edges>
+    </unit>
+    
+    <!-- LR:LOCATION:FARMLOWESTADMIN -->
+    <unit>
+    	<term kTAG_LID="FARMLOWESTADMIN" kTAG_NAMESPACE="LR:LOCATION">
+			<kTAG_LABEL language="en">Farm location: lowest administrative subdivision</kTAG_LABEL>
+			<kTAG_DEFINITION language="en">Name of the lowest administrative subdivision (i.e. municipality). Free text.</kTAG_DEFINITION>
+			<kTAG_SYNONYMS>
+				<item>FARMLOWESTADMIN</item>
+				<item>4.3</item>
+			</kTAG_SYNONYMS>
+    	</term>
+    	<node>
+			<kTAG_CLASS>COntologyMasterVertex</kTAG_CLASS>
+			<kTAG_KIND>
+				<item>:KIND-FEATURE</item>
+				<item>:KIND-SCALE</item>
+			</kTAG_KIND>
+			<kTAG_TYPE>
+				<item>:TEXT</item>
+			</kTAG_TYPE>
+			<kTAG_EXAMPLES>
+				<item>Panicale municipality</item>
+			</kTAG_EXAMPLES>
+    	</node>
+        <edges>
+			<edge>
+				<kTAG_PREDICATE>:SUBCLASS-OF</kTAG_PREDICATE>
+				<kTAG_OBJECT>LR:LOCATION</kTAG_OBJECT>
+			</edge>
+        </edges>
+    </unit>
+    
+    <!-- LR:LOCATION:LOCATION -->
+    <unit>
+    	<term kTAG_LID="LOCATION" kTAG_NAMESPACE="LR:LOCATION">
+			<kTAG_LABEL language="en">Location of the nearest known place</kTAG_LABEL>
+			<kTAG_DEFINITION language="en">Information relevant to the nearest known place, distance from nearest named place, and directions from the nearest named place. Descriptive field as detailed as possible. Free text.</kTAG_DEFINITION>
+			<kTAG_SYNONYMS>
+				<item>LOCATION</item>
+				<item>4.4</item>
+			</kTAG_SYNONYMS>
+    	</term>
+    	<node>
+			<kTAG_CLASS>COntologyMasterVertex</kTAG_CLASS>
+			<kTAG_KIND>
+				<item>:KIND-FEATURE</item>
+				<item>:KIND-SCALE</item>
+			</kTAG_KIND>
+			<kTAG_TYPE>
+				<item>:TEXT</item>
+			</kTAG_TYPE>
+			<kTAG_EXAMPLES>
+				<item>7 km south of Panicale towards Perugia on SS.74</item>
+			</kTAG_EXAMPLES>
+    	</node>
+        <edges>
+			<edge>
+				<kTAG_PREDICATE>:SUBCLASS-OF</kTAG_PREDICATE>
+				<kTAG_OBJECT>LR:LOCATION</kTAG_OBJECT>
+			</edge>
+        </edges>
+    </unit>
+    
+    <!-- LR:LOCATION:COORD-FARM:FLATDMS -->
+    <unit>
+    	<term kTAG_LID="FLATDMS" kTAG_NAMESPACE="LR:LOCATION:COORD-FARM">
+			<kTAG_LABEL language="en">Latitude of farm site</kTAG_LABEL>
+			<kTAG_DEFINITION language="en">Degrees (2 digits) minutes (2 digits), and seconds (2 digits) followed by N (North) or S (South). Every missing digit (minutes or seconds) should be indicated with a zero. Leading zeros are also required for figures that are lower than ten.</kTAG_DEFINITION>
+			<kTAG_SYNONYMS>
+				<item>FLATDMS</item>
+				<item>4.5.1</item>
+			</kTAG_SYNONYMS>
+    	</term>
+    	<node>
+			<kTAG_CLASS>COntologyMasterVertex</kTAG_CLASS>
+			<kTAG_KIND>
+				<item>:KIND-FEATURE</item>
+				<item>:KIND-SCALE</item>
+			</kTAG_KIND>
+			<kTAG_TYPE>
+				<item>:REQUIRED</item>
+				<item>:TEXT</item>
+			</kTAG_TYPE>
+			<kTAG_EXAMPLES>
+				<item>45° (i.e. 45 degrees), 4’ (i.e. 4 minutes) and unknown seconds North (Turin latitude) is coded as 450400N</item>
+				<item>45°, 4’ and 8’’ (i.e. 8 seconds) North (Turin_Mole Antonelliana latitude) is coded as 450408N', '40° 25’ 6" N (Madrid) is coded as 402506N', '00° 13’ 23’’ S (Quito) is coded as 001323S</item>
+			</kTAG_EXAMPLES>
+    	</node>
+        <edges>
+			<edge>
+				<kTAG_PREDICATE>:SUBCLASS-OF</kTAG_PREDICATE>
+				<kTAG_OBJECT>LR:LOCATION:COORD-FARM</kTAG_OBJECT>
+			</edge>
+        </edges>
+    </unit>
+    
+    <!-- LR:LOCATION:COORD-FARM:FLATDD -->
+    <unit>
+    	<term kTAG_LID="FLATDD" kTAG_NAMESPACE="LR:LOCATION:COORD-FARM">
+			<kTAG_LABEL language="en">Latitude of farm site</kTAG_LABEL>
+			<kTAG_DEFINITION language="en">Latitude expressed in decimal degrees. Degree measurements should be written with decimal places like 45.069031° with the degree symbol behind the decimals. Every missing digit should be indicated with a zero. Positive values are North of the Equator; negative values are South of the Equator.</kTAG_DEFINITION>
+			<kTAG_SYNONYMS>
+				<item>FLATDD</item>
+				<item>4.5.1bis</item>
+			</kTAG_SYNONYMS>
+    	</term>
+    	<node>
+			<kTAG_CLASS>COntologyMasterVertex</kTAG_CLASS>
+			<kTAG_KIND>
+				<item>:KIND-FEATURE</item>
+				<item>:KIND-SCALE</item>
+			</kTAG_KIND>
+			<kTAG_TYPE>
+				<item>:REQUIRED</item>
+				<item>:FLOAT</item>
+			</kTAG_TYPE>
+			<kTAG_EXAMPLES>
+				<item>the same latitude of Turin_Mole Antonelliana reported above is coded as 45.069031°</item>
+			</kTAG_EXAMPLES>
+    	</node>
+        <edges>
+			<edge>
+				<kTAG_PREDICATE>:SUBCLASS-OF</kTAG_PREDICATE>
+				<kTAG_OBJECT>LR:LOCATION:COORD-FARM</kTAG_OBJECT>
+			</edge>
+        </edges>
+    </unit>
+    
+    <!-- LR:LOCATION:COORD-FARM:FLONGDMS -->
+    <unit>
+    	<term kTAG_LID="FLONGDMS" kTAG_NAMESPACE="LR:LOCATION:COORD-FARM">
+			<kTAG_LABEL language="en">Longitude of farm site</kTAG_LABEL>
+			<kTAG_DEFINITION language="en">Degrees (3 digits), minutes (2 digits), and seconds (2 digits) followed by E (East) or W (West). Every missing digit (minutes or seconds) should be indicated with a zero. Leading zeros are also required for figures lower than ten.</kTAG_DEFINITION>
+			<kTAG_SYNONYMS>
+				<item>FLONGDMS</item>
+				<item>4.5.2</item>
+			</kTAG_SYNONYMS>
+    	</term>
+    	<node>
+			<kTAG_CLASS>COntologyMasterVertex</kTAG_CLASS>
+			<kTAG_KIND>
+				<item>:KIND-FEATURE</item>
+				<item>:KIND-SCALE</item>
+			</kTAG_KIND>
+			<kTAG_TYPE>
+				<item>:REQUIRED</item>
+				<item>:TEXT</item>
+			</kTAG_TYPE>
+			<kTAG_EXAMPLES>
+				<item>7° 41’ and unknown seconds E (Turin) is coded as 0074100E (2 zeros before the 7 degrees because longitude varies from 0 and 180 degrees and needs 3 digits)</item>
+			</kTAG_EXAMPLES>
+    	</node>
+        <edges>
+			<edge>
+				<kTAG_PREDICATE>:SUBCLASS-OF</kTAG_PREDICATE>
+				<kTAG_OBJECT>LR:LOCATION:COORD-FARM</kTAG_OBJECT>
+			</edge>
+        </edges>
+    </unit>
+    
+    <!-- LR:LOCATION:COORD-FARM:FLONGDD -->
+    <unit>
+    	<term kTAG_LID="FLONGDD" kTAG_NAMESPACE="LR:LOCATION:COORD-FARM">
+			<kTAG_LABEL language="en">Longitude of farm site</kTAG_LABEL>
+			<kTAG_DEFINITION language="en">Longitude expressed in decimal degrees. Degree measurements should be written with decimal places like 74.044636° with the degree symbol behind the decimals. Every missing digit should be indicated with a zero. Positive values are East of the Greenwich Meridian; negative values are West of the Greenwich Meridian.</kTAG_DEFINITION>
+			<kTAG_SYNONYMS>
+				<item>FLONGDD</item>
+				<item>4.5.2bis</item>
+			</kTAG_SYNONYMS>
+    	</term>
+    	<node>
+			<kTAG_CLASS>COntologyMasterVertex</kTAG_CLASS>
+			<kTAG_KIND>
+				<item>:KIND-FEATURE</item>
+				<item>:KIND-SCALE</item>
+			</kTAG_KIND>
+			<kTAG_TYPE>
+				<item>:REQUIRED</item>
+				<item>:FLOAT</item>
+			</kTAG_TYPE>
+			<kTAG_EXAMPLES>
+				<item>the same longitude of Turin_Mole Antonelliana reported above is coded as 7.693154°</item>
+				<item>the same longitude of Madrid reported above is coded as -3.714277°</item>
+				<item>the same longitude of Quito reported above is coded as -78.505386°</item>
+			</kTAG_EXAMPLES>
+    	</node>
+        <edges>
+			<edge>
+				<kTAG_PREDICATE>:SUBCLASS-OF</kTAG_PREDICATE>
+				<kTAG_OBJECT>LR:LOCATION:COORD-FARM</kTAG_OBJECT>
+			</edge>
+        </edges>
+    </unit>
+    
+    <!-- LR:LOCATION:COORD-FARM:FEPSGCODE -->
+    <unit>
+    	<term kTAG_LID="FEPSGCODE" kTAG_NAMESPACE="LR:LOCATION:COORD-FARM">
+			<kTAG_LABEL language="en">Geodetic datum</kTAG_LABEL>
+			<kTAG_DEFINITION language="en">The geodetic datum or spatial reference system upon which the coordinates given in decimal latitude and decimal longitude are based. If not known, use ‘not recorded’, when not known the default WGS 1984 Datum will be used.</kTAG_DEFINITION>
+			<kTAG_SYNONYMS>
+				<item>FEPSGCODE</item>
+				<item>4.5.3</item>
+			</kTAG_SYNONYMS>
+    	</term>
+    	<node>
+			<kTAG_CLASS>COntologyMasterVertex</kTAG_CLASS>
+			<kTAG_KIND>
+				<item>:KIND-FEATURE</item>
+				<item>:KIND-SCALE</item>
+			</kTAG_KIND>
+			<kTAG_TYPE>
+				<item>:FLOAT</item>
+			</kTAG_TYPE>
+			<kTAG_EXAMPLES>
+				<item>WGS84 (for World Geodetic System 1984 – EPSG 4326)</item>
+			</kTAG_EXAMPLES>
+    	</node>
+        <edges>
+			<edge>
+				<kTAG_PREDICATE>:SUBCLASS-OF</kTAG_PREDICATE>
+				<kTAG_OBJECT>LR:LOCATION:COORD-FARM</kTAG_OBJECT>
+			</edge>
+        </edges>
+    </unit>
+    
+    <!-- LR:LOCATION:COORD-FARM:FGPS -->
+    <unit>
+    	<term kTAG_LID="FGPS" kTAG_NAMESPACE="LR:LOCATION:COORD-FARM">
+			<kTAG_LABEL language="en">Geographic data recording system</kTAG_LABEL>
+			<kTAG_DEFINITION language="en">Data recorded by GPS: Yes or No.</kTAG_DEFINITION>
+			<kTAG_SYNONYMS>
+				<item>FGPS</item>
+				<item>4.5.4</item>
+			</kTAG_SYNONYMS>
+    	</term>
+    	<node>
+			<kTAG_CLASS>COntologyMasterVertex</kTAG_CLASS>
+			<kTAG_KIND>
+				<item>:KIND-FEATURE</item>
+			</kTAG_KIND>
+			<kTAG_EXAMPLES>
+				<item>WGS84 (for World Geodetic System 1984 – EPSG 4326)</item>
+			</kTAG_EXAMPLES>
+    	</node>
+        <edges>
+			<edge>
+				<kTAG_PREDICATE>:SUBCLASS-OF</kTAG_PREDICATE>
+				<kTAG_OBJECT>LR:LOCATION:COORD-FARM</kTAG_OBJECT>
+			</edge>
+			<edge>
+				<kTAG_SUBJECT>LR:DATA-TYPES:YN</kTAG_SUBJECT>
+				<kTAG_PREDICATE>:SUBCLASS-OF</kTAG_PREDICATE>
+			</edge>
+        </edges>
+    </unit>
+    
+    <!-- LR:LOCATION:COORD-FARM:FRADIALED -->
+    <unit>
+    	<term kTAG_LID="FRADIALED" kTAG_NAMESPACE="LR:LOCATION:COORD-FARM">
+			<kTAG_LABEL language="en">Maximum error distance</kTAG_LABEL>
+			<kTAG_DEFINITION language="en">To be compiled if the field GPS is ‘No’. The upper limit of the distance (in meters) from the given latitude and longitude describing a circle within which the whole of the described locality must lie.</kTAG_DEFINITION>
+			<kTAG_SYNONYMS>
+				<item>FRADIALED</item>
+				<item>4.5.5</item>
+			</kTAG_SYNONYMS>
+    	</term>
+    	<node>
+			<kTAG_CLASS>COntologyMasterVertex</kTAG_CLASS>
+			<kTAG_KIND>
+				<item>:KIND-FEATURE</item>
+				<item>:KIND-SCALE</item>
+			</kTAG_KIND>
+			<kTAG_TYPE>
+				<item>:INT</item>
+			</kTAG_TYPE>
+			<kTAG_EXAMPLES>
+				<item>1000</item>
+				<item>100000</item>
+			</kTAG_EXAMPLES>
+    	</node>
+        <edges>
+			<edge>
+				<kTAG_PREDICATE>:SUBCLASS-OF</kTAG_PREDICATE>
+				<kTAG_OBJECT>LR:LOCATION:COORD-FARM</kTAG_OBJECT>
+			</edge>
+        </edges>
+    </unit>
+    
+    <!-- LR:LOCATION:FELEVATION -->
+    <unit>
+    	<term kTAG_LID="FELEVATION" kTAG_NAMESPACE="LR:LOCATION">
+			<kTAG_LABEL language="en">Elevation of farm site</kTAG_LABEL>
+			<kTAG_DEFINITION language="en">Elevation of farm site expressed in meters above sea level. Negative values are allowed.</kTAG_DEFINITION>
+			<kTAG_SYNONYMS>
+				<item>FELEVATION</item>
+				<item>4.6</item>
+			</kTAG_SYNONYMS>
+    	</term>
+    	<node>
+			<kTAG_CLASS>COntologyMasterVertex</kTAG_CLASS>
+			<kTAG_KIND>
+				<item>:KIND-FEATURE</item>
+				<item>:KIND-SCALE</item>
+			</kTAG_KIND>
+			<kTAG_TYPE>
+				<item>:REQUIRED</item>
+				<item>:INT</item>
+			</kTAG_TYPE>
+			<kTAG_EXAMPLES>
+				<item>763</item>
+				<item>-35</item>
+			</kTAG_EXAMPLES>
+    	</node>
+        <edges>
+			<edge>
+				<kTAG_PREDICATE>:SUBCLASS-OF</kTAG_PREDICATE>
+				<kTAG_OBJECT>LR:LOCATION</kTAG_OBJECT>
+			</edge>
+        </edges>
+    </unit>
+    
+    <!-- LR:LOCATION:COORD-LR:LRSLATDMS -->
+    <unit>
+    	<term kTAG_LID="LRSLATDMS" kTAG_NAMESPACE="LR:LOCATION:COORD-LR">
+			<kTAG_LABEL language="en">Latitude of LR site</kTAG_LABEL>
+			<kTAG_DEFINITION language="en">Degrees (2 digits) minutes (2 digits), and seconds (2 digits) followed by N (North) or S (South).</kTAG_DEFINITION>
+			<kTAG_SYNONYMS>
+				<item>LRSLATDMS</item>
+				<item>4.7.1</item>
+			</kTAG_SYNONYMS>
+    	</term>
+    	<node>
+			<kTAG_CLASS>COntologyMasterVertex</kTAG_CLASS>
+			<kTAG_KIND>
+				<item>:KIND-FEATURE</item>
+				<item>:KIND-SCALE</item>
+			</kTAG_KIND>
+			<kTAG_TYPE>
+				<item>:REQUIRED</item>
+				<item>:TEXT</item>
+			</kTAG_TYPE>
+			<kTAG_EXAMPLES>
+				<item>45° (i.e. 45 degrees), 4’ (i.e. 4 minutes) and unknown seconds North (Turin latitude) is coded as 450400N</item>
+				<item>45°, 4’ and 8’’ (i.e. 8 seconds) North (Turin_Mole Antonelliana latitude) is coded as 450408N</item>
+				<item>00° 13’ 23’’ S (Quito) is coded as 001323S</item>
+			</kTAG_EXAMPLES>
+    	</node>
+        <edges>
+			<edge>
+				<kTAG_PREDICATE>:SUBCLASS-OF</kTAG_PREDICATE>
+				<kTAG_OBJECT>LR:LOCATION:COORD-LR</kTAG_OBJECT>
+			</edge>
+        </edges>
+    </unit>
+</units>

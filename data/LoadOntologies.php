@@ -71,6 +71,30 @@ try
 		echo( "  • Loading ISO standards.\n" );
 	$_SESSION[ kSESSION_ONTOLOGY ]->LoadISOPOFiles(
 		kPATH_MYWRAPPER_LIBRARY_DATA."/ISO_UNITS.xml" );
+	
+	//
+	// Loading GR descriptors.
+	//
+	if( kOPTION_VERBOSE )
+		echo( "  • Loading GRINFO descriptors.\n" );
+	$_SESSION[ kSESSION_ONTOLOGY ]->LoadUnitFile(
+		kPATH_MYWRAPPER_LIBRARY_DATA."/GR_UNITS.xml" );
+
+	//
+	// Loading FAO institute descriptors.
+	//
+	if( kOPTION_VERBOSE )
+		echo( "  • Loading FAO institutes.\n" );
+	$_SESSION[ kSESSION_ONTOLOGY ]->LoadUnitFile(
+		kPATH_MYWRAPPER_LIBRARY_DATA."/FAO_INSTITUTES.xml" );
+
+	//
+	// Loading landrace descriptors.
+	//
+	if( kOPTION_VERBOSE )
+		echo( "  • Loading landrace descriptors.\n" );
+	$_SESSION[ kSESSION_ONTOLOGY ]->LoadUnitFile(
+		kPATH_MYWRAPPER_LIBRARY_DATA."/LR_UNITS.xml" );
 
 	if( kOPTION_VERBOSE )
 		echo( "\nTime elapsed: ".(time() - $start)."\n" );

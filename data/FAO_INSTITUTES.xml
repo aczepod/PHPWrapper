@@ -1,0 +1,568 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<units>
+    <!-- FAO-INSTITUTES -->
+    <unit>
+    	<term kTAG_LID="FAO-INSTITUTES">
+			<kTAG_KIND>
+				<item>:KIND-NAMESPACE</item>
+			</kTAG_KIND>
+			<kTAG_LABEL language="en">FAO/WIEWS Institutes</kTAG_LABEL>
+			<kTAG_DEFINITION language="en">The WIEWS Institute table contains all the institutions recorded under the System as well as their codes. WIEWS Institution codes are part of the FAO/IPGRI Multicrop descriptor list, which have been internationally agreed to harmonize PGR databases worldwide and simplify data exchange.</kTAG_DEFINITION>
+    	</term>
+    	<node>
+			<kTAG_CLASS>COntologyMasterVertex</kTAG_CLASS>
+ 	  	</node>
+    </unit>
+    
+    <!-- INSTITUTES PROPERTIES -->
+    
+    <!-- FAO-INSTITUTES:INSTCODE -->
+    <unit>
+    	<term kTAG_LID="INSTCODE" kTAG_NAMESPACE="FAO-INSTITUTES">
+			<kTAG_LABEL language="en">Institute code</kTAG_LABEL>
+			<kTAG_DEFINITION language="en">Institute code consisting of the 3-letter ISO 3166 country code ([#ISO:3166:1:alpha-3#]) of the country where the institute is located plus a number. The current set of Institute Codes is available from the FAO website (http://apps3.fao.org/wiews/). Note that although you usually see three digits following the country code, there are actually seven characters in the code, allowing four digits.</kTAG_DEFINITION>
+    	</term>
+    	<node>
+			<kTAG_CLASS>COntologyMasterVertex</kTAG_CLASS>
+			<kTAG_KIND>
+				<item>:KIND-FEATURE</item>
+				<item>:KIND-SCALE</item>
+			</kTAG_KIND>
+			<kTAG_TYPE>
+				<item>:TEXT</item>
+			</kTAG_TYPE>
+			<kTAG_EXAMPLES>
+				<item>ZWE063</item>
+				<item>ITA303</item>
+				<item>USA999</item>
+			</kTAG_EXAMPLES>
+    	</node>
+    	<tag />
+        <edges>
+			<edge>
+				<kTAG_PREDICATE>:SUBCLASS-OF</kTAG_PREDICATE>
+				<kTAG_OBJECT>FAO-INSTITUTES</kTAG_OBJECT>
+			</edge>
+        </edges>
+    </unit>
+    
+    <!-- FAO-INSTITUTES:ACRONYM -->
+    <unit>
+    	<term kTAG_LID="ACRONYM" kTAG_NAMESPACE="FAO-INSTITUTES">
+			<kTAG_LABEL language="en">Institute acronym</kTAG_LABEL>
+    	</term>
+    	<node>
+			<kTAG_CLASS>COntologyMasterVertex</kTAG_CLASS>
+			<kTAG_KIND>
+				<item>:KIND-FEATURE</item>
+				<item>:KIND-SCALE</item>
+			</kTAG_KIND>
+			<kTAG_TYPE>
+				<item>:TEXT</item>
+			</kTAG_TYPE>
+			<kTAG_EXAMPLES>
+				<item>ACFD</item>
+				<item>CIDA</item>
+				<item>ICRISAT</item>
+			</kTAG_EXAMPLES>
+    	</node>
+    	<tag />
+        <edges>
+			<edge>
+				<kTAG_PREDICATE>:SUBCLASS-OF</kTAG_PREDICATE>
+				<kTAG_OBJECT>FAO-INSTITUTES</kTAG_OBJECT>
+			</edge>
+        </edges>
+    </unit>
+    
+    <!-- FAO-INSTITUTES:ECPACRONYM -->
+    <unit>
+    	<term kTAG_LID="ECPACRONYM" kTAG_NAMESPACE="FAO-INSTITUTES">
+			<kTAG_LABEL language="en">ECPGR institute acronym</kTAG_LABEL>
+    	</term>
+    	<node>
+			<kTAG_CLASS>COntologyMasterVertex</kTAG_CLASS>
+			<kTAG_KIND>
+				<item>:KIND-FEATURE</item>
+				<item>:KIND-SCALE</item>
+			</kTAG_KIND>
+			<kTAG_TYPE>
+				<item>:TEXT</item>
+			</kTAG_TYPE>
+			<kTAG_EXAMPLES>
+				<item>ZWEIITA</item>
+				<item>ARGEEAELCO</item>
+				<item>BENDRA</item>
+			</kTAG_EXAMPLES>
+    	</node>
+    	<tag />
+        <edges>
+			<edge>
+				<kTAG_PREDICATE>:SUBCLASS-OF</kTAG_PREDICATE>
+				<kTAG_OBJECT>FAO-INSTITUTES</kTAG_OBJECT>
+			</edge>
+        </edges>
+    </unit>
+    
+    <!-- FAO-INSTITUTES:FULL_NAME -->
+    <unit>
+    	<term kTAG_LID="FULL_NAME" kTAG_NAMESPACE="FAO-INSTITUTES">
+			<kTAG_LABEL language="en">Full institute name</kTAG_LABEL>
+    	</term>
+    	<node>
+			<kTAG_CLASS>COntologyMasterVertex</kTAG_CLASS>
+			<kTAG_KIND>
+				<item>:KIND-FEATURE</item>
+				<item>:KIND-SCALE</item>
+			</kTAG_KIND>
+			<kTAG_TYPE>
+				<item>:TEXT</item>
+			</kTAG_TYPE>
+			<kTAG_EXAMPLES>
+				<item>International Crop Research Institute for the Semi-Arid Tropics</item>
+				<item>Centre de Recherches Agronomiques</item>
+				<item>Chaire d'Horticulture, Faculté des Sciences Agronomiques</item>
+			</kTAG_EXAMPLES>
+    	</node>
+    	<tag />
+        <edges>
+			<edge>
+				<kTAG_PREDICATE>:SUBCLASS-OF</kTAG_PREDICATE>
+				<kTAG_OBJECT>FAO-INSTITUTES</kTAG_OBJECT>
+			</edge>
+        </edges>
+    </unit>
+    
+    <!-- FAO-INSTITUTES:TYPE -->
+    <unit>
+    	<term kTAG_LID="TYPE" kTAG_NAMESPACE="FAO-INSTITUTES">
+			<kTAG_LABEL language="en">Institute type</kTAG_LABEL>
+    	</term>
+    	<node>
+			<kTAG_CLASS>COntologyMasterVertex</kTAG_CLASS>
+			<kTAG_KIND>
+				<item>:KIND-FEATURE</item>
+				<item>:KIND-SCALE</item>
+			</kTAG_KIND>
+			<kTAG_TYPE>
+				<item>:TEXT</item>
+			</kTAG_TYPE>
+			<kTAG_EXAMPLES>
+				<item>CGIAR</item>
+				<item>GOV/FRA/MDG</item>
+				<item>EEC</item>
+			</kTAG_EXAMPLES>
+    	</node>
+    	<tag />
+        <edges>
+			<edge>
+				<kTAG_PREDICATE>:SUBCLASS-OF</kTAG_PREDICATE>
+				<kTAG_OBJECT>FAO-INSTITUTES</kTAG_OBJECT>
+			</edge>
+        </edges>
+    </unit>
+    
+    <!-- FAO-INSTITUTES:PGR_ACTIVITY -->
+    <unit>
+    	<term kTAG_LID="PGR_ACTIVITY" kTAG_NAMESPACE="FAO-INSTITUTES">
+			<kTAG_LABEL language="en">Plant genetic resources activity</kTAG_LABEL>
+    	</term>
+    	<node>
+			<kTAG_CLASS>COntologyMasterVertex</kTAG_CLASS>
+			<kTAG_DESCRIPTION language="en">Plant genetic resources activity flag implemented as a Y/N switch.</kTAG_DESCRIPTION>
+			<kTAG_KIND>
+				<item>:KIND-FEATURE</item>
+				<item>:KIND-SCALE</item>
+			</kTAG_KIND>
+			<kTAG_TYPE>
+				<item>:TEXT</item>
+			</kTAG_TYPE>
+			<kTAG_EXAMPLES>
+				<item>Y</item>
+				<item>N</item>
+			</kTAG_EXAMPLES>
+    	</node>
+    	<tag />
+        <edges>
+			<edge>
+				<kTAG_PREDICATE>:SUBCLASS-OF</kTAG_PREDICATE>
+				<kTAG_OBJECT>FAO-INSTITUTES</kTAG_OBJECT>
+			</edge>
+        </edges>
+    </unit>
+    
+    <!-- FAO-INSTITUTES:MAINTCOLL -->
+    <unit>
+    	<term kTAG_LID="MAINTCOLL" kTAG_NAMESPACE="FAO-INSTITUTES">
+			<kTAG_LABEL language="en">Maintains a collection</kTAG_LABEL>
+    	</term>
+    	<node>
+			<kTAG_CLASS>COntologyMasterVertex</kTAG_CLASS>
+			<kTAG_DESCRIPTION language="en">Collection maintenance flag implemented as a Y/N switch, indicates whether the institute maintains a collection.</kTAG_DESCRIPTION>
+			<kTAG_KIND>
+				<item>:KIND-FEATURE</item>
+				<item>:KIND-SCALE</item>
+			</kTAG_KIND>
+			<kTAG_TYPE>
+				<item>:TEXT</item>
+			</kTAG_TYPE>
+			<kTAG_EXAMPLES>
+				<item>Y</item>
+				<item>N</item>
+			</kTAG_EXAMPLES>
+    	</node>
+    	<tag />
+        <edges>
+			<edge>
+				<kTAG_PREDICATE>:SUBCLASS-OF</kTAG_PREDICATE>
+				<kTAG_OBJECT>FAO-INSTITUTES</kTAG_OBJECT>
+			</edge>
+        </edges>
+    </unit>
+    
+    <!-- FAO-INSTITUTES:STREET_POB -->
+    <unit>
+    	<term kTAG_LID="STREET_POB" kTAG_NAMESPACE="FAO-INSTITUTES">
+			<kTAG_LABEL language="en">Street or P.O.Box</kTAG_LABEL>
+			<kTAG_DEFINITION language="en">Institute address street or P.O. Box.</kTAG_DEFINITION>
+    	</term>
+    	<node>
+			<kTAG_CLASS>COntologyMasterVertex</kTAG_CLASS>
+			<kTAG_KIND>
+				<item>:KIND-FEATURE</item>
+				<item>:KIND-SCALE</item>
+			</kTAG_KIND>
+			<kTAG_TYPE>
+				<item>:TEXT</item>
+			</kTAG_TYPE>
+			<kTAG_EXAMPLES>
+				<item>16, rue Claude Bernard</item>
+				<item>PO Box- 6766</item>
+			</kTAG_EXAMPLES>
+    	</node>
+    	<tag />
+        <edges>
+			<edge>
+				<kTAG_PREDICATE>:SUBCLASS-OF</kTAG_PREDICATE>
+				<kTAG_OBJECT>FAO-INSTITUTES</kTAG_OBJECT>
+			</edge>
+        </edges>
+    </unit>
+    
+    <!-- FAO-INSTITUTES:CITY_STATE -->
+    <unit>
+    	<term kTAG_LID="CITY_STATE" kTAG_NAMESPACE="FAO-INSTITUTES">
+			<kTAG_LABEL language="en">City and state</kTAG_LABEL>
+			<kTAG_DEFINITION language="en">Institute address city and state.</kTAG_DEFINITION>
+    	</term>
+    	<node>
+			<kTAG_CLASS>COntologyMasterVertex</kTAG_CLASS>
+			<kTAG_KIND>
+				<item>:KIND-FEATURE</item>
+				<item>:KIND-SCALE</item>
+			</kTAG_KIND>
+			<kTAG_TYPE>
+				<item>:TEXT</item>
+			</kTAG_TYPE>
+			<kTAG_EXAMPLES>
+				<item>Harare</item>
+				<item>Abohar, Punjab</item>
+			</kTAG_EXAMPLES>
+    	</node>
+    	<tag />
+        <edges>
+			<edge>
+				<kTAG_PREDICATE>:SUBCLASS-OF</kTAG_PREDICATE>
+				<kTAG_OBJECT>FAO-INSTITUTES</kTAG_OBJECT>
+			</edge>
+        </edges>
+    </unit>
+    
+    <!-- FAO-INSTITUTES:ZIP_CODE -->
+    <unit>
+    	<term kTAG_LID="ZIP_CODE" kTAG_NAMESPACE="FAO-INSTITUTES">
+			<kTAG_LABEL language="en">Zip code</kTAG_LABEL>
+			<kTAG_DEFINITION language="en">Institute address zip code.</kTAG_DEFINITION>
+    	</term>
+    	<node>
+			<kTAG_CLASS>COntologyMasterVertex</kTAG_CLASS>
+			<kTAG_KIND>
+				<item>:KIND-FEATURE</item>
+				<item>:KIND-SCALE</item>
+			</kTAG_KIND>
+			<kTAG_TYPE>
+				<item>:TEXT</item>
+			</kTAG_TYPE>
+			<kTAG_EXAMPLES>
+				<item>00057</item>
+				<item>1018DH</item>
+			</kTAG_EXAMPLES>
+    	</node>
+    	<tag />
+        <edges>
+			<edge>
+				<kTAG_PREDICATE>:SUBCLASS-OF</kTAG_PREDICATE>
+				<kTAG_OBJECT>FAO-INSTITUTES</kTAG_OBJECT>
+			</edge>
+        </edges>
+    </unit>
+    
+    <!-- FAO-INSTITUTES:PHONE -->
+    <unit>
+    	<term kTAG_LID="PHONE" kTAG_NAMESPACE="FAO-INSTITUTES">
+			<kTAG_LABEL language="en">Phone</kTAG_LABEL>
+			<kTAG_DEFINITION language="en">Institute address telephone number.</kTAG_DEFINITION>
+    	</term>
+    	<node>
+			<kTAG_CLASS>COntologyMasterVertex</kTAG_CLASS>
+			<kTAG_KIND>
+				<item>:KIND-FEATURE</item>
+				<item>:KIND-SCALE</item>
+			</kTAG_KIND>
+			<kTAG_TYPE>
+				<item>:TEXT</item>
+			</kTAG_TYPE>
+			<kTAG_EXAMPLES>
+				<item>+39 06 61181</item>
+				<item>(+ 3741) 527952</item>
+			</kTAG_EXAMPLES>
+    	</node>
+    	<tag />
+        <edges>
+			<edge>
+				<kTAG_PREDICATE>:SUBCLASS-OF</kTAG_PREDICATE>
+				<kTAG_OBJECT>FAO-INSTITUTES</kTAG_OBJECT>
+			</edge>
+        </edges>
+    </unit>
+    
+    <!-- FAO-INSTITUTES:FAX -->
+    <unit>
+    	<term kTAG_LID="FAX" kTAG_NAMESPACE="FAO-INSTITUTES">
+			<kTAG_LABEL language="en">Fax</kTAG_LABEL>
+			<kTAG_DEFINITION language="en">Institute address telefax number.</kTAG_DEFINITION>
+    	</term>
+    	<node>
+			<kTAG_CLASS>COntologyMasterVertex</kTAG_CLASS>
+			<kTAG_KIND>
+				<item>:KIND-FEATURE</item>
+				<item>:KIND-SCALE</item>
+			</kTAG_KIND>
+			<kTAG_TYPE>
+				<item>:TEXT</item>
+			</kTAG_TYPE>
+			<kTAG_EXAMPLES>
+				<item>(+ 223) 226 25 04</item>
+				<item>(+33) 4955937</item>
+			</kTAG_EXAMPLES>
+    	</node>
+    	<tag />
+        <edges>
+			<edge>
+				<kTAG_PREDICATE>:SUBCLASS-OF</kTAG_PREDICATE>
+				<kTAG_OBJECT>FAO-INSTITUTES</kTAG_OBJECT>
+			</edge>
+        </edges>
+    </unit>
+    
+    <!-- FAO-INSTITUTES:EMAIL -->
+    <unit>
+    	<term kTAG_LID="EMAIL" kTAG_NAMESPACE="FAO-INSTITUTES">
+			<kTAG_LABEL language="en">Email</kTAG_LABEL>
+			<kTAG_DEFINITION language="en">Institute electronic mail address.</kTAG_DEFINITION>
+    	</term>
+    	<node>
+			<kTAG_CLASS>COntologyMasterVertex</kTAG_CLASS>
+			<kTAG_KIND>
+				<item>:KIND-FEATURE</item>
+				<item>:KIND-SCALE</item>
+			</kTAG_KIND>
+			<kTAG_TYPE>
+				<item>:TEXT</item>
+			</kTAG_TYPE>
+			<kTAG_EXAMPLES>
+				<item>aberterreche@mgap.gub.uy</item>
+				<item>academy@sci.am</item>
+			</kTAG_EXAMPLES>
+    	</node>
+    	<tag />
+        <edges>
+			<edge>
+				<kTAG_PREDICATE>:SUBCLASS-OF</kTAG_PREDICATE>
+				<kTAG_OBJECT>FAO-INSTITUTES</kTAG_OBJECT>
+			</edge>
+        </edges>
+    </unit>
+    
+    <!-- FAO-INSTITUTES:URL -->
+    <unit>
+    	<term kTAG_LID="URL" kTAG_NAMESPACE="FAO-INSTITUTES">
+			<kTAG_LABEL language="en">URL</kTAG_LABEL>
+			<kTAG_DEFINITION language="en">Institute web page address.</kTAG_DEFINITION>
+    	</term>
+    	<node>
+			<kTAG_CLASS>COntologyMasterVertex</kTAG_CLASS>
+			<kTAG_KIND>
+				<item>:KIND-FEATURE</item>
+				<item>:KIND-SCALE</item>
+			</kTAG_KIND>
+			<kTAG_TYPE>
+				<item>:TEXT</item>
+			</kTAG_TYPE>
+			<kTAG_EXAMPLES>
+				<item>http://arm.agrowebcac.org/asrc/index.php</item>
+				<item>http://arinet.ari.gov.cy</item>
+			</kTAG_EXAMPLES>
+    	</node>
+    	<tag />
+        <edges>
+			<edge>
+				<kTAG_PREDICATE>:SUBCLASS-OF</kTAG_PREDICATE>
+				<kTAG_OBJECT>FAO-INSTITUTES</kTAG_OBJECT>
+			</edge>
+        </edges>
+    </unit>
+    
+    <!-- FAO-INSTITUTES:LATITUDE -->
+    <unit>
+    	<term kTAG_LID="LATITUDE" kTAG_NAMESPACE="FAO-INSTITUTES">
+			<kTAG_LABEL language="en">Latitude</kTAG_LABEL>
+			<kTAG_DEFINITION language="en">Institute location latitude.</kTAG_DEFINITION>
+    	</term>
+    	<node>
+			<kTAG_CLASS>COntologyMasterVertex</kTAG_CLASS>
+			<kTAG_KIND>
+				<item>:KIND-FEATURE</item>
+				<item>:KIND-SCALE</item>
+			</kTAG_KIND>
+			<kTAG_TYPE>
+				<item>:INT</item>
+			</kTAG_TYPE>
+			<kTAG_EXAMPLES>
+				<item>-3841</item>
+				<item>6017</item>
+			</kTAG_EXAMPLES>
+    	</node>
+    	<tag />
+        <edges>
+			<edge>
+				<kTAG_PREDICATE>:SUBCLASS-OF</kTAG_PREDICATE>
+				<kTAG_OBJECT>FAO-INSTITUTES</kTAG_OBJECT>
+			</edge>
+        </edges>
+    </unit>
+    
+    <!-- FAO-INSTITUTES:LONGITUDE -->
+    <unit>
+    	<term kTAG_LID="LONGITUDE" kTAG_NAMESPACE="FAO-INSTITUTES">
+			<kTAG_LABEL language="en">Longitude</kTAG_LABEL>
+			<kTAG_DEFINITION language="en">Institute location longitude.</kTAG_DEFINITION>
+    	</term>
+    	<node>
+			<kTAG_CLASS>COntologyMasterVertex</kTAG_CLASS>
+			<kTAG_KIND>
+				<item>:KIND-FEATURE</item>
+				<item>:KIND-SCALE</item>
+			</kTAG_KIND>
+			<kTAG_TYPE>
+				<item>:INT</item>
+			</kTAG_TYPE>
+			<kTAG_EXAMPLES>
+				<item>-17514</item>
+				<item>17841</item>
+			</kTAG_EXAMPLES>
+    	</node>
+    	<tag />
+        <edges>
+			<edge>
+				<kTAG_PREDICATE>:SUBCLASS-OF</kTAG_PREDICATE>
+				<kTAG_OBJECT>FAO-INSTITUTES</kTAG_OBJECT>
+			</edge>
+        </edges>
+    </unit>
+    
+    <!-- FAO-INSTITUTES:ALTITUDE -->
+    <unit>
+    	<term kTAG_LID="ALTITUDE" kTAG_NAMESPACE="FAO-INSTITUTES">
+			<kTAG_LABEL language="en">Altitude</kTAG_LABEL>
+			<kTAG_DEFINITION language="en">Institute location elevation.</kTAG_DEFINITION>
+    	</term>
+    	<node>
+			<kTAG_CLASS>COntologyMasterVertex</kTAG_CLASS>
+			<kTAG_KIND>
+				<item>:KIND-FEATURE</item>
+				<item>:KIND-SCALE</item>
+			</kTAG_KIND>
+			<kTAG_TYPE>
+				<item>:INT</item>
+			</kTAG_TYPE>
+			<kTAG_EXAMPLES>
+				<item>0</item>
+				<item>3815</item>
+			</kTAG_EXAMPLES>
+    	</node>
+    	<tag />
+        <edges>
+			<edge>
+				<kTAG_PREDICATE>:SUBCLASS-OF</kTAG_PREDICATE>
+				<kTAG_OBJECT>FAO-INSTITUTES</kTAG_OBJECT>
+			</edge>
+        </edges>
+    </unit>
+    
+    <!-- FAO-INSTITUTES:UPDATED_ON -->
+    <unit>
+    	<term kTAG_LID="UPDATED_ON" kTAG_NAMESPACE="FAO-INSTITUTES">
+			<kTAG_LABEL language="en">Last updated</kTAG_LABEL>
+			<kTAG_DEFINITION language="en">Date of last update.</kTAG_DEFINITION>
+    	</term>
+    	<node>
+			<kTAG_CLASS>COntologyMasterVertex</kTAG_CLASS>
+			<kTAG_KIND>
+				<item>:KIND-FEATURE</item>
+				<item>:KIND-SCALE</item>
+			</kTAG_KIND>
+			<kTAG_TYPE>
+				<item>:TEXT</item>
+			</kTAG_TYPE>
+			<kTAG_DESCRIPTION language="en">The date is a string in YYY-MM-DD format.</kTAG_DESCRIPTION>
+			<kTAG_EXAMPLES>
+				<item>1990-12-19</item>
+				<item>2012-11-20</item>
+			</kTAG_EXAMPLES>
+    	</node>
+    	<tag />
+        <edges>
+			<edge>
+				<kTAG_PREDICATE>:SUBCLASS-OF</kTAG_PREDICATE>
+				<kTAG_OBJECT>FAO-INSTITUTES</kTAG_OBJECT>
+			</edge>
+        </edges>
+    </unit>
+    
+    <!-- FAO-INSTITUTES:V_INSTCODE -->
+    <unit>
+    	<term kTAG_LID="V_INSTCODE" kTAG_NAMESPACE="FAO-INSTITUTES">
+			<kTAG_LABEL language="en">Valid institute code</kTAG_LABEL>
+			<kTAG_DEFINITION language="en">Currently valid institute code.</kTAG_DEFINITION>
+    	</term>
+    	<node>
+			<kTAG_CLASS>COntologyMasterVertex</kTAG_CLASS>
+			<kTAG_KIND>
+				<item>:KIND-FEATURE</item>
+				<item>:KIND-SCALE</item>
+			</kTAG_KIND>
+			<kTAG_TYPE>
+				<item>:TEXT</item>
+			</kTAG_TYPE>
+			<kTAG_DESCRIPTION language="en">This attribute corresponds to the institute code (INSTCODE) of the institute that is currently valid. Institute records cannot be deleted, they can only be set as obsolete by indicating in this field which is the new institution that takes the place of the obsolete one</kTAG_DESCRIPTION>
+    	</node>
+    	<tag />
+        <edges>
+			<edge>
+				<kTAG_PREDICATE>:SUBCLASS-OF</kTAG_PREDICATE>
+				<kTAG_OBJECT>FAO-INSTITUTES</kTAG_OBJECT>
+			</edge>
+        </edges>
+    </unit>
+</units>

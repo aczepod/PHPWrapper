@@ -600,9 +600,7 @@ class COntology extends CConnection
 					} // Has term.
 					
 					else
-						throw new Exception
-							( "Missing term declaration",
-							  kERROR_STATE );									// !@! ==>
+						$term = NULL;
 					
 					//
 					// Locate node.
@@ -613,6 +611,26 @@ class COntology extends CConnection
 						// Reference node.
 						//
 						$element = $unit->{'node'}[ 0 ];
+						
+						//
+						// Check term.
+						//
+						if( $term === NULL )
+						{
+							//
+							// Get term from node.
+							//
+							if( $element->{'kTAG_TERM'} !== NULL )
+								$term
+									= COntologyTerm::Resolve(
+										$db, (string) $element->{'kTAG_TERM'}, NULL, TRUE );
+							
+							else
+								throw new Exception
+									( "Term is not declared",
+									  kERROR_STATE );							// !@! ==>
+						
+						} // Term not declared.
 						
 						//
 						// Instantiate node.
@@ -1282,6 +1300,142 @@ class COntology extends CConnection
 
 	 
 	/*===================================================================================
+	 *	_ParseXMLUnit																	*
+	 *==================================================================================*/
+
+	/**
+	 * <h4>Parse the provided XML unit</h4>
+	 *
+	 * This method will parse the provided XML unit by cycling the following structure:
+	 *
+	 * <ul>
+	 *	<li><tt>units</tt>: This tag contains a collection of <tt>unit</tt> elements that
+	 *		represent a group of related <tt>term</tt>, <tt>node</tt>, <tt>edges</tt> and
+	 *		<tt>tag</tt> object definitions.
+	 *	<li><tt>term</tt>: The term element may contain two attributes:
+	 *	 <ul>
+	 *		<li><tt>ns</tt>: Namespace, it must be the global identifier of the namespace
+	 *			term.
+	 *		<li><tt>lid</tt>: Local identifier, this attribute is required.
+	 *	 </ul>
+	 *	<li><tt>node</tt>: The node element may contain two attributes:
+	 *	 <ul>
+	 *		<li><tt>id</tt>: Identifier, it must be the native identifier of the node.
+	 *		<li><tt>gid</tt>: Term global identifier, this attribute makes sense only if
+	 *			the node is a master.
+	 *		<li><tt>class</tt>: Node class name.
+	 *	 </ul>
+	 *	<li><tt>edges</tt>: This element contains the following elements:
+	 *	 <ul>
+	 *		<li><tt>edge</tt>: The edge element may contain one:
+	 *		 <ul>
+	 *			<li><tt>id</tt>: Identifier, it must be the native identifier of the edge.
+	 *		 </ul>
+	 *	 </ul>
+	 *	<li><tt>tag</tt>: The node element may contain two attributes:
+	 *	 <ul>
+	 *		<li><tt>id</tt>: Identifier, it must be the native identifier of the tag.
+	 *		<li><tt>gid</tt>: Tag global identifier.
+	 *	 </ul>
+	 *	<li><tt>element</tt>: Each element of the above elements represents an object
+	 *		property:
+	 *	 <ul>
+	 *		<li><tt>id</tt>: Tag identifier, this value represents the tag native
+	 *			identifier.
+	 *		<li><tt>gid</tt>: Tag global identifier.
+	 *		<li><tt>variable</tt>: Tag variable, this value represents the PHP definition
+	 *			name.
+	 *		<li><tt>key</tt>: If this attribute is present, it means that the attribute
+	 *			represents the key of the element, thus it will become an array in which
+	 *			<tt>key</tt> will become the key.
+	 *			
+	 *	 </ul>
+	 *	<li><tt>item</tt>: Any element that contains one or more of these elements is an
+	 *		array.
+	 * </ul>
+	 *
+	 * This method will parse the provided <tt>unit</tt> element.
+	 *
+	 * @param CDatabase				$theDatabase		Database container.
+	 * @param SimpleXMLElement		$theElement			XML element with term data.
+	 *
+	 * @access protected
+	 *
+	 * @throws Exception
+	 */
+	protected function _ParseXMLUnit( CDatabase		   $theDatabase,
+									  SimpleXMLElement $theElement )
+	{
+		//
+		// Handle term.
+		//
+		if( $theElement->{'term'} !== NULL )
+		{
+			//
+			// Instantiate term.
+			//
+			$object = new COntologyTerm();
+echo( get_class( $object ) . "\n" );
+		
+		} // Provided term.
+		
+		//
+		// Handle node.
+		//
+		if( $theElement->{'node'} !== NULL )
+		{
+			//
+			// Instantiate node.
+			//
+			$class = ( $theElement->{'node'}[ 'class' ] !== NULL )
+				   ? (string) $theElement->{'node'}[ 'class' ]
+				   : 'COntologyNode';
+			
+			//
+			// Instantiate node.
+			//
+			$object = new $class();
+echo( get_class( $object ) . "\n" );
+		
+		} // Provided term.
+		
+		//
+		// Handle edge.
+		//
+		if( $theElement->{'edges'} !== NULL )
+		{
+			//
+			// Iterate edges.
+			//
+			foreach( $theElement->{'edges'}->{'edge'} as $element )
+			{
+				//
+				// Instantiate edge.
+				//
+				$object = new COntologyEdge();
+echo( get_class( $object ) . "\n" );
+			
+			} // Iterating edge elements.
+		
+		} // Provided term.
+		
+		//
+		// Handle tag.
+		//
+		if( $theElement->{'tag'} !== NULL )
+		{
+			//
+			// Instantiate term.
+			//
+			$object = new COntologyTag();
+echo( get_class( $object ) . "\n" );
+		
+		} // Provided term.
+
+	} // _ParseXMLUnit.
+
+	 
+	/*===================================================================================
 	 *	_ParseTerm																		*
 	 *==================================================================================*/
 
@@ -1334,16 +1488,6 @@ class COntology extends CConnection
 			} // Has namespace.
 			
 			//
-			// Get synonyms.
-			//
-			if( $theElement->{'kTAG_SYNONYMS'}->count() )
-			{
-				foreach( $theElement->{'kTAG_SYNONYMS'}->{'item'} as $item )
-					$theTerm->Synonym( (string) $item, TRUE );
-			
-			} // Has synonyms.
-			
-			//
 			// Handle term reference.
 			//
 			if( $theElement->{'kTAG_TERM'} )
@@ -1393,6 +1537,16 @@ class COntology extends CConnection
 					$theTerm->Definition( (string) $element[ 'language' ],
 										  (string) $element );
 			}
+			
+			//
+			// Get synonyms.
+			//
+			if( $theElement->{'kTAG_SYNONYMS'}->count() )
+			{
+				foreach( $theElement->{'kTAG_SYNONYMS'}->{'item'} as $item )
+					$theTerm->Synonym( (string) $item, TRUE );
+			
+			} // Has synonyms.
 			
 			//
 			// Get examples.
@@ -1495,6 +1649,28 @@ class COntology extends CConnection
 					$theNode->Description( (string) $element[ 'language' ],
 										   (string) $element );
 			}
+			
+			//
+			// Get notes.
+			//
+			if( $theElement->{'kTAG_NOTES'}->count() )
+			{
+				$tmp = Array();
+				foreach( $theElement->{'kTAG_NOTES'} as $element )
+					$tmp[ kTAG_NOTES ][ (string) $element[ 'language' ] ]
+						= (string) $element;
+				$theNode[ kTAG_NOTES ] = $tmp;
+			}
+			
+			//
+			// Get examples.
+			//
+			if( $theElement->{'kTAG_EXAMPLES'}->count() )
+			{
+				foreach( $theElement->{'kTAG_EXAMPLES'}->{'item'} as $item )
+					$theNode->Example( (string) $item, TRUE );
+			
+			} // Has examples.
 			
 			//
 			// Save node.

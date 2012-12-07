@@ -169,6 +169,7 @@
 				<item>:ENUM</item>
 			</kTAG_TYPE>
     	</node>
+    	<tag />
         <edges>
 			<edge>
 				<kTAG_PREDICATE>:SUBCLASS-OF</kTAG_PREDICATE>
@@ -196,6 +197,7 @@
 				<item>:ENUM</item>
 			</kTAG_TYPE>
     	</node>
+    	<tag />
         <edges>
 			<edge>
 				<kTAG_PREDICATE>:SUBCLASS-OF</kTAG_PREDICATE>
@@ -223,6 +225,7 @@
 				<item>:ENUM</item>
 			</kTAG_TYPE>
     	</node>
+    	<tag />
         <edges>
 			<edge>
 				<kTAG_PREDICATE>:SUBCLASS-OF</kTAG_PREDICATE>
@@ -250,6 +253,7 @@
 				<item>:ENUM</item>
 			</kTAG_TYPE>
     	</node>
+    	<tag />
         <edges>
 			<edge>
 				<kTAG_PREDICATE>:SUBCLASS-OF</kTAG_PREDICATE>
