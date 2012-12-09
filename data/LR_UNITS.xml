@@ -6,8 +6,8 @@
 			<kTAG_KIND>
 				<item>:KIND-NAMESPACE</item>
 			</kTAG_KIND>
-			<kTAG_LABEL language="en">Descriptors for web-enabled national in situ landrace inventories</kTAG_LABEL>
-			<kTAG_DEFINITION language="en">Descriptors For Web-Enabled National In Situ Landrace (LR) Inventories.</kTAG_DEFINITION>
+			<kTAG_LABEL language="en"><![CDATA[Descriptors for web-enabled national in situ landrace inventories]]></kTAG_LABEL>
+			<kTAG_DEFINITION language="en"><![CDATA[Descriptors For Web-Enabled National In Situ Landrace (LR) Inventories.]]></kTAG_DEFINITION>
     	</term>
     	<node>
 			<kTAG_CLASS>COntologyMasterVertex</kTAG_CLASS>
@@ -36,8 +36,8 @@
 			<kTAG_KIND>
 				<item>:KIND-NAMESPACE</item>
 			</kTAG_KIND>
-			<kTAG_LABEL language="en">Data types</kTAG_LABEL>
-			<kTAG_DEFINITION language="en">Common descriptor data types and enumerations.</kTAG_DEFINITION>
+			<kTAG_LABEL language="en"><![CDATA[Data types]]></kTAG_LABEL>
+			<kTAG_DEFINITION language="en"><![CDATA[Common descriptor data types and enumerations.]]></kTAG_DEFINITION>
     	</term>
     	<node>
 			<kTAG_CLASS>COntologyMasterVertex</kTAG_CLASS>
@@ -50,11 +50,151 @@
         </edges>
     </unit>
     
+    <!-- LR:DATA-TYPES:LATDMS -->
+    <unit>
+    	<term kTAG_LID="LATDMS" kTAG_NAMESPACE="LR:DATA-TYPES">
+			<kTAG_LABEL language="en"><![CDATA[Latitude in degrees, minutes and seconds]]></kTAG_LABEL>
+			<kTAG_DEFINITION language="en"><![CDATA[Degrees (2 digits) minutes (2 digits), and seconds (2 digits) followed by N (North) or S (South).]]></kTAG_DEFINITION>
+    	</term>
+    	<node>
+			<kTAG_CLASS>COntologyMasterVertex</kTAG_CLASS>
+			<kTAG_KIND>
+				<item>:KIND-SCALE</item>
+			</kTAG_KIND>
+			<kTAG_TYPE>
+				<item>:TEXT</item>
+			</kTAG_TYPE>
+			<kTAG_EXAMPLES>
+				<item>45° (i.e. 45 degrees), 4’ (i.e. 4 minutes) and unknown seconds North (Turin latitude) is coded as 450400N</item>
+				<item>45°, 4’ and 8’’ (i.e. 8 seconds) North (Turin_Mole Antonelliana latitude) is coded as 450408N</item>
+				<item>00° 13’ 23’’ S (Quito) is coded as 001323S</item>
+			</kTAG_EXAMPLES>
+    	</node>
+        <edges>
+			<edge>
+				<kTAG_PREDICATE>:SUBCLASS-OF</kTAG_PREDICATE>
+				<kTAG_OBJECT>LR:DATA-TYPES</kTAG_OBJECT>
+			</edge>
+        </edges>
+    </unit>
+    
+    <!-- LR:DATA-TYPES:LATDEC -->
+    <unit>
+    	<term kTAG_LID="LATDEC" kTAG_NAMESPACE="LR:DATA-TYPES">
+			<kTAG_LABEL language="en"><![CDATA[Latitude in decimal degrees]]></kTAG_LABEL>
+			<kTAG_DEFINITION language="en"><![CDATA[Latitude expressed in decimal degrees.]]></kTAG_DEFINITION>
+    	</term>
+    	<node>
+			<kTAG_CLASS>COntologyMasterVertex</kTAG_CLASS>
+			<kTAG_KIND>
+				<item>:KIND-SCALE</item>
+			</kTAG_KIND>
+			<kTAG_TYPE>
+				<item>:FLOAT</item>
+			</kTAG_TYPE>
+			<kTAG_EXAMPLES>
+				<item>the same latitude of Turin_Mole Antonelliana reported above is coded as 45.069031°</item>
+				<item>the Madrid latitude reported above is coded as 40.418446°</item>
+				<item>the Quito latitude reported above is coded as -0.222900°</item>
+			</kTAG_EXAMPLES>
+    	</node>
+        <edges>
+			<edge>
+				<kTAG_PREDICATE>:SUBCLASS-OF</kTAG_PREDICATE>
+				<kTAG_OBJECT>LR:DATA-TYPES</kTAG_OBJECT>
+			</edge>
+        </edges>
+    </unit>
+    
+    <!-- LR:DATA-TYPES:LONDMS -->
+    <unit>
+    	<term kTAG_LID="LONDMS" kTAG_NAMESPACE="LR:DATA-TYPES">
+			<kTAG_LABEL language="en"><![CDATA[Longitude in degrees, minutes and seconds]]></kTAG_LABEL>
+			<kTAG_DEFINITION language="en"><![CDATA[Degrees (3 digits), minutes (2 digits), and seconds (2 digits) followed by E (East) or W (West).]]></kTAG_DEFINITION>
+    	</term>
+    	<node>
+			<kTAG_CLASS>COntologyMasterVertex</kTAG_CLASS>
+			<kTAG_KIND>
+				<item>:KIND-SCALE</item>
+			</kTAG_KIND>
+			<kTAG_TYPE>
+				<item>:TEXT</item>
+			</kTAG_TYPE>
+			<kTAG_EXAMPLES>
+				<item>7° 41’ and unknown seconds E (Turin) is coded as 0074100E (2 zeros before the 7 degrees because longitude varies from 0 and 180 degrees and needs 3 digits)</item>
+				<item>7° 41’ 36" E (Turin_Mole Antonelliana longitude) is coded as 0074135E</item>
+				<item>3°42’ 51" W (Madrid) is coded as 0034251W</item>
+				<item>78° 30’ 19’’ W (Quito) is coded as 0783019W</item>
+			</kTAG_EXAMPLES>
+    	</node>
+        <edges>
+			<edge>
+				<kTAG_PREDICATE>:SUBCLASS-OF</kTAG_PREDICATE>
+				<kTAG_OBJECT>LR:DATA-TYPES</kTAG_OBJECT>
+			</edge>
+        </edges>
+    </unit>
+    
+    <!-- LR:DATA-TYPES:LONDEC -->
+    <unit>
+    	<term kTAG_LID="LONDEC" kTAG_NAMESPACE="LR:DATA-TYPES">
+			<kTAG_LABEL language="en"><![CDATA[Longitude in decimal degrees]]></kTAG_LABEL>
+			<kTAG_DEFINITION language="en"><![CDATA[Longitude expressed in decimal degrees.]]></kTAG_DEFINITION>
+    	</term>
+    	<node>
+			<kTAG_CLASS>COntologyMasterVertex</kTAG_CLASS>
+			<kTAG_KIND>
+				<item>:KIND-SCALE</item>
+			</kTAG_KIND>
+			<kTAG_TYPE>
+				<item>:FLOAT</item>
+			</kTAG_TYPE>
+			<kTAG_EXAMPLES>
+				<item>the same longitude of Turin_Mole Antonelliana reported above is coded as 7.693154°</item>
+				<item>the same longitude of Madrid reported above is coded as -3.714277°</item>
+				<item>the same longitude of Quito reported above is coded as -78.505386°°</item>
+			</kTAG_EXAMPLES>
+    	</node>
+        <edges>
+			<edge>
+				<kTAG_PREDICATE>:SUBCLASS-OF</kTAG_PREDICATE>
+				<kTAG_OBJECT>LR:DATA-TYPES</kTAG_OBJECT>
+			</edge>
+        </edges>
+    </unit>
+    
+    <!-- LR:DATA-TYPES:ELEVATION -->
+    <unit>
+    	<term kTAG_LID="ELEVATION" kTAG_NAMESPACE="LR:DATA-TYPES">
+			<kTAG_LABEL language="en"><![CDATA[Elevation of site]]></kTAG_LABEL>
+			<kTAG_DEFINITION language="en"><![CDATA[Elevation of site expressed in meters above sea level. Negative values are allowed.]]></kTAG_DEFINITION>
+    	</term>
+    	<node>
+			<kTAG_CLASS>COntologyMasterVertex</kTAG_CLASS>
+			<kTAG_KIND>
+				<item>:KIND-SCALE</item>
+			</kTAG_KIND>
+			<kTAG_TYPE>
+				<item>:INT</item>
+			</kTAG_TYPE>
+			<kTAG_EXAMPLES>
+				<item>763</item>
+				<item>-35</item>
+			</kTAG_EXAMPLES>
+    	</node>
+        <edges>
+			<edge>
+				<kTAG_PREDICATE>:SUBCLASS-OF</kTAG_PREDICATE>
+				<kTAG_OBJECT>LR:DATA-TYPES</kTAG_OBJECT>
+			</edge>
+        </edges>
+    </unit>
+    
     <!-- LR:DATA-TYPES:YN -->
     <unit>
     	<term kTAG_LID="YN" kTAG_NAMESPACE="LR:DATA-TYPES">
-			<kTAG_LABEL language="en">Yes/no switch</kTAG_LABEL>
-			<kTAG_DEFINITION language="en">This enumeration has two values: 10 for yes and 20 for no.</kTAG_DEFINITION>
+			<kTAG_LABEL language="en"><![CDATA[Yes/no switch]]></kTAG_LABEL>
+			<kTAG_DEFINITION language="en"><![CDATA[This enumeration has two values: 10 for yes and 20 for no.]]></kTAG_DEFINITION>
     	</term>
     	<node>
 			<kTAG_CLASS>COntologyMasterVertex</kTAG_CLASS>
@@ -76,7 +216,41 @@
 			</edge>
         </edges>
     </unit>
-    
+    <unit>
+    	<term kTAG_LID="10" kTAG_NAMESPACE="LR:DATA-TYPES:YN">
+			<kTAG_LABEL language="en"><![CDATA[Yes]]></kTAG_LABEL>
+    	</term>
+    	<node>
+			<kTAG_CLASS>COntologyMasterVertex</kTAG_CLASS>
+			<kTAG_KIND>
+				<item>:KIND-ENUMERATION</item>
+			</kTAG_KIND>
+    	</node>
+        <edges>
+			<edge>
+				<kTAG_PREDICATE>:ENUM-OF</kTAG_PREDICATE>
+				<kTAG_OBJECT>LR:DATA-TYPES:YN</kTAG_OBJECT>
+			</edge>
+        </edges>
+    </unit>
+    <unit>
+    	<term kTAG_LID="20" kTAG_NAMESPACE="LR:DATA-TYPES:YN">
+			<kTAG_LABEL language="en"><![CDATA[No]]></kTAG_LABEL>
+    	</term>
+    	<node>
+			<kTAG_CLASS>COntologyMasterVertex</kTAG_CLASS>
+			<kTAG_KIND>
+				<item>:KIND-ENUMERATION</item>
+			</kTAG_KIND>
+    	</node>
+        <edges>
+			<edge>
+				<kTAG_PREDICATE>:ENUM-OF</kTAG_PREDICATE>
+				<kTAG_OBJECT>LR:DATA-TYPES:YN</kTAG_OBJECT>
+			</edge>
+        </edges>
+    </unit>
+   
     <!-- LANDRACE CATEGORIES -->
     
     <!-- LR:INVENTORY -->
@@ -85,8 +259,8 @@
 			<kTAG_KIND>
 				<item>:KIND-NAMESPACE</item>
 			</kTAG_KIND>
-			<kTAG_LABEL language="en">Inventory identification</kTAG_LABEL>
-			<kTAG_DEFINITION language="en">Descriptors identifying the inventory and origin of the landrace or population.</kTAG_DEFINITION>
+			<kTAG_LABEL language="en"><![CDATA[Inventory identification]]></kTAG_LABEL>
+			<kTAG_DEFINITION language="en"><![CDATA[Descriptors identifying the inventory and origin of the landrace or population.]]></kTAG_DEFINITION>
 			<kTAG_SYNONYMS>
 				<item>1</item>
 			</kTAG_SYNONYMS>
@@ -108,8 +282,8 @@
 			<kTAG_KIND>
 				<item>:KIND-NAMESPACE</item>
 			</kTAG_KIND>
-			<kTAG_LABEL language="en">Taxonomy identification</kTAG_LABEL>
-			<kTAG_DEFINITION language="en">Descriptors identifying the scientific nomenclature of the landrace or population.</kTAG_DEFINITION>
+			<kTAG_LABEL language="en"><![CDATA[Taxonomy identification]]></kTAG_LABEL>
+			<kTAG_DEFINITION language="en"><![CDATA[Descriptors identifying the scientific nomenclature of the landrace or population.]]></kTAG_DEFINITION>
 			<kTAG_SYNONYMS>
 				<item>2</item>
 			</kTAG_SYNONYMS>
@@ -131,8 +305,8 @@
 			<kTAG_KIND>
 				<item>:KIND-NAMESPACE</item>
 			</kTAG_KIND>
-			<kTAG_LABEL language="en">Landrace/population identification</kTAG_LABEL>
-			<kTAG_DEFINITION language="en">Descriptors identifying the specific landrace or population.</kTAG_DEFINITION>
+			<kTAG_LABEL language="en"><![CDATA[Landrace/population identification]]></kTAG_LABEL>
+			<kTAG_DEFINITION language="en"><![CDATA[Descriptors identifying the specific landrace or population.]]></kTAG_DEFINITION>
 			<kTAG_SYNONYMS>
 				<item>3</item>
 			</kTAG_SYNONYMS>
@@ -148,14 +322,14 @@
         </edges>
     </unit>
     
-    <!-- LR:LOCATION -->
+    <!-- LR:SITE -->
     <unit>
-    	<term kTAG_LID="LOCATION" kTAG_NAMESPACE="LR">
+    	<term kTAG_LID="SITE" kTAG_NAMESPACE="LR">
 			<kTAG_KIND>
 				<item>:KIND-NAMESPACE</item>
 			</kTAG_KIND>
-			<kTAG_LABEL language="en">Site/location identification</kTAG_LABEL>
-			<kTAG_DEFINITION language="en">Descriptors identifying the location of the landrace or population.</kTAG_DEFINITION>
+			<kTAG_LABEL language="en"><![CDATA[Site/location identification]]></kTAG_LABEL>
+			<kTAG_DEFINITION language="en"><![CDATA[Descriptors identifying the location of the landrace or population.]]></kTAG_DEFINITION>
 			<kTAG_SYNONYMS>
 				<item>4</item>
 			</kTAG_SYNONYMS>
@@ -177,8 +351,8 @@
 			<kTAG_KIND>
 				<item>:KIND-NAMESPACE</item>
 			</kTAG_KIND>
-			<kTAG_LABEL language="en">The farmer (i.e. the maintainer)</kTAG_LABEL>
-			<kTAG_DEFINITION language="en">Descriptors identifying the maintainer of the landrace or population.</kTAG_DEFINITION>
+			<kTAG_LABEL language="en"><![CDATA[The farmer (i.e. the maintainer)]]></kTAG_LABEL>
+			<kTAG_DEFINITION language="en"><![CDATA[Descriptors identifying the maintainer of the landrace or population.]]></kTAG_DEFINITION>
 			<kTAG_SYNONYMS>
 				<item>5</item>
 			</kTAG_SYNONYMS>
@@ -200,8 +374,8 @@
 			<kTAG_KIND>
 				<item>:KIND-NAMESPACE</item>
 			</kTAG_KIND>
-			<kTAG_LABEL language="en">The landrace</kTAG_LABEL>
-			<kTAG_DEFINITION language="en">Descriptors describing the landrace.</kTAG_DEFINITION>
+			<kTAG_LABEL language="en"><![CDATA[The landrace]]></kTAG_LABEL>
+			<kTAG_DEFINITION language="en"><![CDATA[Descriptors describing the landrace.]]></kTAG_DEFINITION>
 			<kTAG_SYNONYMS>
 				<item>6</item>
 			</kTAG_SYNONYMS>
@@ -223,8 +397,8 @@
 			<kTAG_KIND>
 				<item>:KIND-NAMESPACE</item>
 			</kTAG_KIND>
-			<kTAG_LABEL language="en">Conservation and monitoring</kTAG_LABEL>
-			<kTAG_DEFINITION language="en">Descriptors covering conservation and maintenance of the landrace or population.</kTAG_DEFINITION>
+			<kTAG_LABEL language="en"><![CDATA[Conservation and monitoring]]></kTAG_LABEL>
+			<kTAG_DEFINITION language="en"><![CDATA[Descriptors covering conservation and maintenance of the landrace or population.]]></kTAG_DEFINITION>
 			<kTAG_SYNONYMS>
 				<item>7</item>
 			</kTAG_SYNONYMS>
@@ -243,10 +417,10 @@
     <!-- LR:REMARKS -->
     <unit>
     	<term kTAG_LID="REMARKS" kTAG_NAMESPACE="LR">
-			<kTAG_LABEL language="en">Remarks</kTAG_LABEL>
-			<kTAG_DEFINITION language="en">General remarks.</kTAG_DEFINITION>
+			<kTAG_LABEL language="en"><![CDATA[Remarks]]></kTAG_LABEL>
+			<kTAG_DEFINITION language="en"><![CDATA[The remarks field is used to add notes or to elaborate on descriptors with value 99 or 999 (=Other). Prefix remarks with the field name they refer to and make them follow by a colon (:). Distinct remarks referring to different fields are separated by semicolons (;) without space.]]></kTAG_DEFINITION>
 			<kTAG_SYNONYMS>
-				<item>7</item>
+				<item>8</item>
 			</kTAG_SYNONYMS>
     	</term>
     	<node>
@@ -258,6 +432,9 @@
 			<kTAG_TYPE>
 				<item>:TEXT</item>
 			</kTAG_TYPE>
+			<kTAG_EXAMPLES>
+				<item>The farmer often observes flower colour instability; PRODUCTUSE: chaff also used for fuel pellet and pillow filling; LRMARKTDEMAND: falling locally but growing in the district nearby.</item>
+			</kTAG_EXAMPLES>
     	</node>
         <edges>
 			<edge>
@@ -269,14 +446,14 @@
     
     <!-- LOCATION CATEGORIES -->
     
-    <!-- LR:LOCATION:COORD-FARM -->
+    <!-- LR:COORD-FARM -->
     <unit>
-    	<term kTAG_LID="COORD-FARM" kTAG_NAMESPACE="LR:LOCATION">
+    	<term kTAG_LID="COORD-FARM" kTAG_NAMESPACE="LR">
 			<kTAG_KIND>
 				<item>:KIND-NAMESPACE</item>
 			</kTAG_KIND>
-			<kTAG_LABEL language="en">Farm coordinates</kTAG_LABEL>
-			<kTAG_DEFINITION language="en">Coordinates of the farm house or headquarters, to be recorded as either Degrees Minutes and Seconds-DMS or Decimal Degrees DD as specified below.</kTAG_DEFINITION>
+			<kTAG_LABEL language="en"><![CDATA[Farm coordinates]]></kTAG_LABEL>
+			<kTAG_DEFINITION language="en"><![CDATA[Coordinates of the farm house or headquarters, to be recorded as either Degrees Minutes and Seconds-DMS or Decimal Degrees DD as specified below.]]></kTAG_DEFINITION>
 			<kTAG_SYNONYMS>
 				<item>4.5</item>
 			</kTAG_SYNONYMS>
@@ -287,19 +464,19 @@
         <edges>
 			<edge>
 				<kTAG_PREDICATE>:SUBCLASS-OF</kTAG_PREDICATE>
-				<kTAG_OBJECT>LR:LOCATION</kTAG_OBJECT>
+				<kTAG_OBJECT>LR:SITE</kTAG_OBJECT>
 			</edge>
         </edges>
     </unit>
     
-    <!-- LR:LOCATION:COORD-LR -->
+    <!-- LR:COORD-LR -->
     <unit>
-    	<term kTAG_LID="COORD-LR" kTAG_NAMESPACE="LR:LOCATION">
+    	<term kTAG_LID="COORD-LR" kTAG_NAMESPACE="LR">
 			<kTAG_KIND>
 				<item>:KIND-NAMESPACE</item>
 			</kTAG_KIND>
-			<kTAG_LABEL language="en">Coordinates of the LR site</kTAG_LABEL>
-			<kTAG_DEFINITION language="en">Coordinates of the field where the LR is/has been grown in the year the Inventory is compiled; to be recorded as either Degrees Minutes and Seconds-DMS or Decimal Degrees- DD, as described above for ‘Farm coordinates’.</kTAG_DEFINITION>
+			<kTAG_LABEL language="en"><![CDATA[Coordinates of the LR site]]></kTAG_LABEL>
+			<kTAG_DEFINITION language="en"><![CDATA[Coordinates of the field where the LR is/has been grown in the year the Inventory is compiled; to be recorded as either Degrees Minutes and Seconds-DMS or Decimal Degrees- DD, as described above for ‘Farm coordinates’.]]></kTAG_DEFINITION>
 			<kTAG_SYNONYMS>
 				<item>4.7</item>
 			</kTAG_SYNONYMS>
@@ -310,7 +487,7 @@
         <edges>
 			<edge>
 				<kTAG_PREDICATE>:SUBCLASS-OF</kTAG_PREDICATE>
-				<kTAG_OBJECT>LR:LOCATION</kTAG_OBJECT>
+				<kTAG_OBJECT>LR:SITE</kTAG_OBJECT>
 			</edge>
         </edges>
     </unit>
@@ -347,11 +524,11 @@
         </edges>
     </unit>
     
-    <!-- LR:INVENTORY:NIENUMB -->
+    <!-- LR:NIENUMB -->
     <unit>
-    	<term kTAG_LID="NIENUMB" kTAG_NAMESPACE="LR:INVENTORY">
-			<kTAG_LABEL language="en">National Inventory edition number</kTAG_LABEL>
-			<kTAG_DEFINITION language="en">Code identifying the edition of the National in situ LR Inventory made up of the edition number and the year of publication.</kTAG_DEFINITION>
+    	<term kTAG_LID="NIENUMB" kTAG_NAMESPACE="LR">
+			<kTAG_LABEL language="en"><![CDATA[National Inventory edition number]]></kTAG_LABEL>
+			<kTAG_DEFINITION language="en"><![CDATA[Code identifying the edition of the National in situ LR Inventory made up of the edition number and the year of publication.]]></kTAG_DEFINITION>
 			<kTAG_SYNONYMS>
 				<item>NIENUMB</item>
 				<item>1.2</item>
@@ -380,32 +557,33 @@
         </edges>
     </unit>
     
-    <!-- FAO-INSTITUTES:INSTCODE -->
+    <!-- LR:INSTCODE -->
     <unit>
-    	<node>
-			<kTAG_CLASS>COntologyAliasVertex</kTAG_CLASS>
-			<kTAG_TERM>FAO-INSTITUTES:INSTCODE</kTAG_TERM>
-			<kTAG_KIND>
-				<item>:KIND-FEATURE</item>
-				<item>:KIND-SCALE</item>
-			</kTAG_KIND>
-			<kTAG_TYPE>
-				<item>:REQUIRED</item>
-				<item>:TEXT</item>
-			</kTAG_TYPE>
-			<kTAG_DESCRIPTION language="en">FAO WIEWS code of the institute (see: http://apps3.fao.org/wiews/institute_query.htm?i_l=EN) who is responsible at the national level for the production of the National in situ LR Inventory.</kTAG_DESCRIPTION>
-			<kTAG_EXAMPLES>
-				<item>NLD037</item>
-			</kTAG_EXAMPLES>
+    	<term kTAG_LID="INSTCODE" kTAG_NAMESPACE="LR">
+			<kTAG_LABEL language="en"><![CDATA[Institute code]]></kTAG_LABEL>
+			<kTAG_DEFINITION language="en"><![CDATA[FAO WIEWS code of the institute (see: http://apps3.fao.org/wiews/institute_query.htm?i_l=EN) who is responsible at the national level for the production of the National in situ LR Inventory.]]></kTAG_DEFINITION>
 			<kTAG_SYNONYMS>
 				<item>INSTCODE</item>
 				<item>1.3</item>
 			</kTAG_SYNONYMS>
+    	</term>
+    	<node>
+			<kTAG_CLASS>COntologyMasterVertex</kTAG_CLASS>
+			<kTAG_KIND>
+				<item>:KIND-FEATURE</item>
+			</kTAG_KIND>
+			<kTAG_TYPE>
+				<item>:REQUIRED</item>
+			</kTAG_TYPE>
     	</node>
         <edges>
 			<edge>
 				<kTAG_PREDICATE>:SUBCLASS-OF</kTAG_PREDICATE>
 				<kTAG_OBJECT>LR:INVENTORY</kTAG_OBJECT>
+			</edge>
+			<edge>
+				<kTAG_SUBJECT>FAO-INSTITUTES:INSTCODE</kTAG_SUBJECT>
+				<kTAG_PREDICATE>:SCALE-OF</kTAG_PREDICATE>
 			</edge>
         </edges>
     </unit>
@@ -437,7 +615,7 @@
         <edges>
 			<edge>
 				<kTAG_PREDICATE>:SUBCLASS-OF</kTAG_PREDICATE>
-				<kTAG_OBJECT>LR:INVENTORY</kTAG_OBJECT>
+				<kTAG_OBJECT>LR:TAXONOMY</kTAG_OBJECT>
 			</edge>
         </edges>
     </unit>
@@ -467,16 +645,16 @@
         <edges>
 			<edge>
 				<kTAG_PREDICATE>:SUBCLASS-OF</kTAG_PREDICATE>
-				<kTAG_OBJECT>LR:INVENTORY</kTAG_OBJECT>
+				<kTAG_OBJECT>LR:TAXONOMY</kTAG_OBJECT>
 			</edge>
         </edges>
     </unit>
     
-    <!-- LR:TAXONOMY:SPAUTHOR -->
+    <!-- LR:SPAUTHOR -->
     <unit>
-    	<term kTAG_LID="SPAUTHOR" kTAG_NAMESPACE="LR:TAXONOMY">
-			<kTAG_LABEL language="en">Species authority</kTAG_LABEL>
-			<kTAG_DEFINITION language="en">The authority for the species name.</kTAG_DEFINITION>
+    	<term kTAG_LID="SPAUTHOR" kTAG_NAMESPACE="LR">
+			<kTAG_LABEL language="en"><![CDATA[Species authority]]></kTAG_LABEL>
+			<kTAG_DEFINITION language="en"><![CDATA[The authority for the species name.]]></kTAG_DEFINITION>
 			<kTAG_SYNONYMS>
 				<item>SPAUTHOR</item>
 				<item>2.3</item>
@@ -505,11 +683,11 @@
         </edges>
     </unit>
     
-    <!-- LR:TAXONOMY:SUBTAXA -->
+    <!-- LR:SUBTAXA -->
     <unit>
-    	<term kTAG_LID="SUBTAXA" kTAG_NAMESPACE="LR:TAXONOMY">
-			<kTAG_LABEL language="en">Subtaxa</kTAG_LABEL>
-			<kTAG_DEFINITION language="en">This field can be used to store any additional taxonomic identifier (in Latin, in lower case letters) preceded by the rank (for example: subspecies, convariety, variety, form, cultivar group). The following abbreviations are foreseen for the rank: ‘subsp.’ (for subspecies); ‘convar.’ (for convariety); ‘var.’ (for variety); ‘f.’ (for form), ‘Group’ (for cultivar group).</kTAG_DEFINITION>
+    	<term kTAG_LID="SUBTAXA" kTAG_NAMESPACE="LR">
+			<kTAG_LABEL language="en"><![CDATA[Subtaxa]]></kTAG_LABEL>
+			<kTAG_DEFINITION language="en"><![CDATA[This field can be used to store any additional taxonomic identifier (in Latin, in lower case letters) preceded by the rank (for example: subspecies, convariety, variety, form, cultivar group). The following abbreviations are foreseen for the rank: ‘subsp.’ (for subspecies); ‘convar.’ (for convariety); ‘var.’ (for variety); ‘f.’ (for form), ‘Group’ (for cultivar group).]]></kTAG_DEFINITION>
 			<kTAG_SYNONYMS>
 				<item>SUBTAXA</item>
 				<item>2.4</item>
@@ -537,11 +715,11 @@
         </edges>
     </unit>
     
-    <!-- LR:TAXONOMY:SUBTAUTHOR -->
+    <!-- LR:SUBTAUTHOR -->
     <unit>
-    	<term kTAG_LID="SUBTAUTHOR" kTAG_NAMESPACE="LR:TAXONOMY">
-			<kTAG_LABEL language="en">Subtaxa authority</kTAG_LABEL>
-			<kTAG_DEFINITION language="en">The subtaxa authority at the most detailed taxonomic level.</kTAG_DEFINITION>
+    	<term kTAG_LID="SUBTAUTHOR" kTAG_NAMESPACE="LR">
+			<kTAG_LABEL language="en"><![CDATA[Subtaxa authority]]></kTAG_LABEL>
+			<kTAG_DEFINITION language="en"><![CDATA[The subtaxa authority at the most detailed taxonomic level.]]></kTAG_DEFINITION>
 			<kTAG_SYNONYMS>
 				<item>SUBTAXA</item>
 				<item>2.5</item>
@@ -569,11 +747,11 @@
         </edges>
     </unit>
     
-    <!-- LR:TAXONOMY:TAXREF -->
+    <!-- LR:TAXREF -->
     <unit>
-    	<term kTAG_LID="TAXREF" kTAG_NAMESPACE="LR:TAXONOMY">
-			<kTAG_LABEL language="en">Taxonomic references</kTAG_LABEL>
-			<kTAG_DEFINITION language="en">Taxonomy used by Inventory compiler to identify the material (e.g.. The Plant List, Euro+Med PlantBase, GRIN taxonomy, etc).</kTAG_DEFINITION>
+    	<term kTAG_LID="TAXREF" kTAG_NAMESPACE="LR">
+			<kTAG_LABEL language="en"><![CDATA[Taxonomic references]]></kTAG_LABEL>
+			<kTAG_DEFINITION language="en"><![CDATA[Taxonomy used by Inventory compiler to identify the material (e.g.. The Plant List, Euro+Med PlantBase, GRIN taxonomy, etc).]]></kTAG_DEFINITION>
 			<kTAG_SYNONYMS>
 				<item>TAXREF</item>
 				<item>2.6</item>
@@ -602,11 +780,11 @@
         </edges>
     </unit>
     
-    <!-- LR:TAXONOMY:CROPNAME -->
+    <!-- LR:CROPNAME -->
     <unit>
-    	<term kTAG_LID="CROPNAME" kTAG_NAMESPACE="LR:TAXONOMY">
-			<kTAG_LABEL language="en">Common crop name</kTAG_LABEL>
-			<kTAG_DEFINITION language="en">Name of the crop in colloquial language, preferably English if any.</kTAG_DEFINITION>
+    	<term kTAG_LID="CROPNAME" kTAG_NAMESPACE="LR">
+			<kTAG_LABEL language="en"><![CDATA[Common crop name]]></kTAG_LABEL>
+			<kTAG_DEFINITION language="en"><![CDATA[Name of the crop in colloquial language, preferably English if any.]]></kTAG_DEFINITION>
 			<kTAG_SYNONYMS>
 				<item>CROPNAME</item>
 				<item>2.7</item>
@@ -637,11 +815,11 @@
     
     <!-- IDENTIFICATION PROPERTIES -->
     
-    <!-- LR:IDENTIFICATION:LRRECDATE -->
+    <!-- LR:LRRECDATE -->
     <unit>
-    	<term kTAG_LID="LRRECDATE" kTAG_NAMESPACE="LR:IDENTIFICATION">
-			<kTAG_LABEL language="en">Landrace in situ recording date</kTAG_LABEL>
-			<kTAG_DEFINITION language="en">Date on which the LR was recorded in the current in situ Inventory, as YYYYMMDD. Missing data (MM or DD) should be indicated with zeros. Leading zeros are required.</kTAG_DEFINITION>
+    	<term kTAG_LID="LRRECDATE" kTAG_NAMESPACE="LR">
+			<kTAG_LABEL language="en"><![CDATA[Landrace in situ recording date]]></kTAG_LABEL>
+			<kTAG_DEFINITION language="en"><![CDATA[Date on which the LR was recorded in the current in situ Inventory, as YYYYMMDD. Missing data (MM or DD) should be indicated with zeros. Leading zeros are required.]]></kTAG_DEFINITION>
 			<kTAG_SYNONYMS>
 				<item>LRRECDATE</item>
 				<item>3.1</item>
@@ -669,11 +847,11 @@
         </edges>
     </unit>
     
-    <!-- LR:IDENTIFICATION:LRNUMB -->
+    <!-- LR:LRNUMB -->
     <unit>
-    	<term kTAG_LID="LRNUMB" kTAG_NAMESPACE="LR:IDENTIFICATION">
-			<kTAG_LABEL language="en">Landrace number</kTAG_LABEL>
-			<kTAG_DEFINITION language="en">Unique progressive number which identifies the in situ LR in the Inventory, not to be duplicated (i.e. reassigned) for other LRs or the same LR that is cultivated by other farmers in the current Inventory. To be assigned by the institute which is responsible at the national level for the production of the National LR in situ Inventory.</kTAG_DEFINITION>
+    	<term kTAG_LID="LRNUMB" kTAG_NAMESPACE="LR">
+			<kTAG_LABEL language="en"><![CDATA[Landrace number]]></kTAG_LABEL>
+			<kTAG_DEFINITION language="en"><![CDATA[Unique progressive number which identifies the in situ LR in the Inventory, not to be duplicated (i.e. reassigned) for other LRs or the same LR that is cultivated by other farmers in the current Inventory. To be assigned by the institute which is responsible at the national level for the production of the National LR in situ Inventory.]]></kTAG_DEFINITION>
 			<kTAG_SYNONYMS>
 				<item>LRNUMB</item>
 				<item>3.2</item>
@@ -701,11 +879,11 @@
         </edges>
     </unit>
     
-    <!-- LR:IDENTIFICATION:LRNAME -->
+    <!-- LR:LRNAME -->
     <unit>
-    	<term kTAG_LID="LRNAME" kTAG_NAMESPACE="LR:IDENTIFICATION">
-			<kTAG_LABEL language="en">Landrace local names</kTAG_LABEL>
-			<kTAG_DEFINITION language="en">Local name/s of the LR in the colloquial language of the farm. Free text.</kTAG_DEFINITION>
+    	<term kTAG_LID="LRNAME" kTAG_NAMESPACE="LR">
+			<kTAG_LABEL language="en"><![CDATA[Landrace local names]]></kTAG_LABEL>
+			<kTAG_DEFINITION language="en"><![CDATA[Local name/s of the LR in the colloquial language of the farm. Free text.]]></kTAG_DEFINITION>
 			<kTAG_SYNONYMS>
 				<item>LRNAME</item>
 				<item>3.3</item>
@@ -733,11 +911,11 @@
         </edges>
     </unit>
     
-    <!-- LR:IDENTIFICATION:LRLANG -->
+    <!-- LR:LRLANG -->
     <unit>
-    	<term kTAG_LID="LRLANG" kTAG_NAMESPACE="LR:IDENTIFICATION">
-			<kTAG_LABEL language="en">Landrace language codes</kTAG_LABEL>
-			<kTAG_DEFINITION language="en">The language code of the LR local name. Use ISO 639-2 is the alpha-3 code in Codes for the representation of names of languages (see: http://www.loc.gov/standards/iso639- 2/php/code_list.php).</kTAG_DEFINITION>
+    	<term kTAG_LID="LRLANG" kTAG_NAMESPACE="LR">
+			<kTAG_LABEL language="en"><![CDATA[Landrace language codes]]></kTAG_LABEL>
+			<kTAG_DEFINITION language="en"><![CDATA[The language code of the LR local name. Use ISO 639-2 is the alpha-3 code in Codes for the representation of names of languages (see: http://www.loc.gov/standards/iso639- 2/php/code_list.php).]]></kTAG_DEFINITION>
 			<kTAG_SYNONYMS>
 				<item>LRLANG</item>
 				<item>3.4</item>
@@ -756,7 +934,7 @@
 				<item>ita</item>
 			</kTAG_EXAMPLES>
     	</node>
-        <edges>ISO:639:2
+        <edges>
 			<edge>
 				<kTAG_PREDICATE>:SUBCLASS-OF</kTAG_PREDICATE>
 				<kTAG_OBJECT>LR:IDENTIFICATION</kTAG_OBJECT>
@@ -770,11 +948,11 @@
     
     <!-- LOCATION PROPERTIES -->
     
-    <!-- LR:LOCATION:FARMFIRSTADMIN -->
+    <!-- LR:FARMFIRSTADMIN -->
     <unit>
-    	<term kTAG_LID="FARMFIRSTADMIN" kTAG_NAMESPACE="LR:LOCATION">
-			<kTAG_LABEL language="en">Farm location: primary administrative subdivision of the country where farm is located</kTAG_LABEL>
-			<kTAG_DEFINITION language="en">Name of the primary administrative subdivision of the country where the farm is located for the most part of its extension. Free text.</kTAG_DEFINITION>
+    	<term kTAG_LID="FARMFIRSTADMIN" kTAG_NAMESPACE="LR">
+			<kTAG_LABEL language="en"><![CDATA[Farm location: primary administrative subdivision of the country where farm is located]]></kTAG_LABEL>
+			<kTAG_DEFINITION language="en"><![CDATA[Name of the primary administrative subdivision of the country where the farm is located for the most part of its extension. Free text.]]></kTAG_DEFINITION>
 			<kTAG_SYNONYMS>
 				<item>FARMFIRSTADMIN</item>
 				<item>4.1</item>
@@ -796,16 +974,16 @@
         <edges>
 			<edge>
 				<kTAG_PREDICATE>:SUBCLASS-OF</kTAG_PREDICATE>
-				<kTAG_OBJECT>LR:LOCATION</kTAG_OBJECT>
+				<kTAG_OBJECT>LR:SITE</kTAG_OBJECT>
 			</edge>
         </edges>
     </unit>
     
-    <!-- LR:LOCATION:FARMSECONDADMIN -->
+    <!-- LR:FARMSECONDADMIN -->
     <unit>
-    	<term kTAG_LID="FARMSECONDADMIN" kTAG_NAMESPACE="LR:LOCATION">
-			<kTAG_LABEL language="en">Farm location: secondary administrative subdivision</kTAG_LABEL>
-			<kTAG_DEFINITION language="en">Name of the secondary administrative subdivision (within the primary administrative subdivision) of the country where the farm is located. Free text.</kTAG_DEFINITION>
+    	<term kTAG_LID="FARMSECONDADMIN" kTAG_NAMESPACE="LR">
+			<kTAG_LABEL language="en"><![CDATA[Farm location: secondary administrative subdivision]]></kTAG_LABEL>
+			<kTAG_DEFINITION language="en"><![CDATA[Name of the secondary administrative subdivision (within the primary administrative subdivision) of the country where the farm is located. Free text.]]></kTAG_DEFINITION>
 			<kTAG_SYNONYMS>
 				<item>FARMSECONDADMIN</item>
 				<item>4.2</item>
@@ -827,16 +1005,16 @@
         <edges>
 			<edge>
 				<kTAG_PREDICATE>:SUBCLASS-OF</kTAG_PREDICATE>
-				<kTAG_OBJECT>LR:LOCATION</kTAG_OBJECT>
+				<kTAG_OBJECT>LR:SITE</kTAG_OBJECT>
 			</edge>
         </edges>
     </unit>
     
-    <!-- LR:LOCATION:FARMLOWESTADMIN -->
+    <!-- LR:FARMLOWESTADMIN -->
     <unit>
-    	<term kTAG_LID="FARMLOWESTADMIN" kTAG_NAMESPACE="LR:LOCATION">
-			<kTAG_LABEL language="en">Farm location: lowest administrative subdivision</kTAG_LABEL>
-			<kTAG_DEFINITION language="en">Name of the lowest administrative subdivision (i.e. municipality). Free text.</kTAG_DEFINITION>
+    	<term kTAG_LID="FARMLOWESTADMIN" kTAG_NAMESPACE="LR">
+			<kTAG_LABEL language="en"><![CDATA[Farm location: lowest administrative subdivision]]></kTAG_LABEL>
+			<kTAG_DEFINITION language="en"><![CDATA[Name of the lowest administrative subdivision (i.e. municipality). Free text.]]></kTAG_DEFINITION>
 			<kTAG_SYNONYMS>
 				<item>FARMLOWESTADMIN</item>
 				<item>4.3</item>
@@ -858,16 +1036,16 @@
         <edges>
 			<edge>
 				<kTAG_PREDICATE>:SUBCLASS-OF</kTAG_PREDICATE>
-				<kTAG_OBJECT>LR:LOCATION</kTAG_OBJECT>
+				<kTAG_OBJECT>LR:SITE</kTAG_OBJECT>
 			</edge>
         </edges>
     </unit>
     
-    <!-- LR:LOCATION:LOCATION -->
+    <!-- LR:LOCATION -->
     <unit>
-    	<term kTAG_LID="LOCATION" kTAG_NAMESPACE="LR:LOCATION">
-			<kTAG_LABEL language="en">Location of the nearest known place</kTAG_LABEL>
-			<kTAG_DEFINITION language="en">Information relevant to the nearest known place, distance from nearest named place, and directions from the nearest named place. Descriptive field as detailed as possible. Free text.</kTAG_DEFINITION>
+    	<term kTAG_LID="LOCATION" kTAG_NAMESPACE="LR">
+			<kTAG_LABEL language="en"><![CDATA[Location of the nearest known place]]></kTAG_LABEL>
+			<kTAG_DEFINITION language="en"><![CDATA[Information relevant to the nearest known place, distance from nearest named place, and directions from the nearest named place. Descriptive field as detailed as possible. Free text.]]></kTAG_DEFINITION>
 			<kTAG_SYNONYMS>
 				<item>LOCATION</item>
 				<item>4.4</item>
@@ -889,16 +1067,15 @@
         <edges>
 			<edge>
 				<kTAG_PREDICATE>:SUBCLASS-OF</kTAG_PREDICATE>
-				<kTAG_OBJECT>LR:LOCATION</kTAG_OBJECT>
+				<kTAG_OBJECT>LR:SITE</kTAG_OBJECT>
 			</edge>
         </edges>
     </unit>
     
-    <!-- LR:LOCATION:COORD-FARM:FLATDMS -->
+    <!-- LR:FLATDMS -->
     <unit>
-    	<term kTAG_LID="FLATDMS" kTAG_NAMESPACE="LR:LOCATION:COORD-FARM">
-			<kTAG_LABEL language="en">Latitude of farm site</kTAG_LABEL>
-			<kTAG_DEFINITION language="en">Degrees (2 digits) minutes (2 digits), and seconds (2 digits) followed by N (North) or S (South). Every missing digit (minutes or seconds) should be indicated with a zero. Leading zeros are also required for figures that are lower than ten.</kTAG_DEFINITION>
+    	<term kTAG_LID="FLATDMS" kTAG_NAMESPACE="LR">
+			<kTAG_LABEL language="en"><![CDATA[Latitude of farm site]]></kTAG_LABEL>
 			<kTAG_SYNONYMS>
 				<item>FLATDMS</item>
 				<item>4.5.1</item>
@@ -908,30 +1085,27 @@
 			<kTAG_CLASS>COntologyMasterVertex</kTAG_CLASS>
 			<kTAG_KIND>
 				<item>:KIND-FEATURE</item>
-				<item>:KIND-SCALE</item>
 			</kTAG_KIND>
 			<kTAG_TYPE>
 				<item>:REQUIRED</item>
-				<item>:TEXT</item>
 			</kTAG_TYPE>
-			<kTAG_EXAMPLES>
-				<item>45° (i.e. 45 degrees), 4’ (i.e. 4 minutes) and unknown seconds North (Turin latitude) is coded as 450400N</item>
-				<item>45°, 4’ and 8’’ (i.e. 8 seconds) North (Turin_Mole Antonelliana latitude) is coded as 450408N', '40° 25’ 6" N (Madrid) is coded as 402506N', '00° 13’ 23’’ S (Quito) is coded as 001323S</item>
-			</kTAG_EXAMPLES>
     	</node>
         <edges>
 			<edge>
 				<kTAG_PREDICATE>:SUBCLASS-OF</kTAG_PREDICATE>
-				<kTAG_OBJECT>LR:LOCATION:COORD-FARM</kTAG_OBJECT>
+				<kTAG_OBJECT>LR:COORD-FARM</kTAG_OBJECT>
+			</edge>
+			<edge>
+				<kTAG_SUBJECT>LR:DATA-TYPES:LATDMS</kTAG_SUBJECT>
+				<kTAG_PREDICATE>:SCALE-OF</kTAG_PREDICATE>
 			</edge>
         </edges>
     </unit>
     
-    <!-- LR:LOCATION:COORD-FARM:FLATDD -->
+    <!-- LR:FLATDD -->
     <unit>
-    	<term kTAG_LID="FLATDD" kTAG_NAMESPACE="LR:LOCATION:COORD-FARM">
-			<kTAG_LABEL language="en">Latitude of farm site</kTAG_LABEL>
-			<kTAG_DEFINITION language="en">Latitude expressed in decimal degrees. Degree measurements should be written with decimal places like 45.069031° with the degree symbol behind the decimals. Every missing digit should be indicated with a zero. Positive values are North of the Equator; negative values are South of the Equator.</kTAG_DEFINITION>
+    	<term kTAG_LID="FLATDD" kTAG_NAMESPACE="LR">
+			<kTAG_LABEL language="en"><![CDATA[Latitude of farm site]]></kTAG_LABEL>
 			<kTAG_SYNONYMS>
 				<item>FLATDD</item>
 				<item>4.5.1bis</item>
@@ -941,29 +1115,27 @@
 			<kTAG_CLASS>COntologyMasterVertex</kTAG_CLASS>
 			<kTAG_KIND>
 				<item>:KIND-FEATURE</item>
-				<item>:KIND-SCALE</item>
 			</kTAG_KIND>
 			<kTAG_TYPE>
 				<item>:REQUIRED</item>
-				<item>:FLOAT</item>
 			</kTAG_TYPE>
-			<kTAG_EXAMPLES>
-				<item>the same latitude of Turin_Mole Antonelliana reported above is coded as 45.069031°</item>
-			</kTAG_EXAMPLES>
     	</node>
         <edges>
 			<edge>
 				<kTAG_PREDICATE>:SUBCLASS-OF</kTAG_PREDICATE>
-				<kTAG_OBJECT>LR:LOCATION:COORD-FARM</kTAG_OBJECT>
+				<kTAG_OBJECT>LR:COORD-FARM</kTAG_OBJECT>
+			</edge>
+			<edge>
+				<kTAG_SUBJECT>LR:DATA-TYPES:LATDEC</kTAG_SUBJECT>
+				<kTAG_PREDICATE>:SCALE-OF</kTAG_PREDICATE>
 			</edge>
         </edges>
     </unit>
     
-    <!-- LR:LOCATION:COORD-FARM:FLONGDMS -->
+    <!-- LR:FLONGDMS -->
     <unit>
-    	<term kTAG_LID="FLONGDMS" kTAG_NAMESPACE="LR:LOCATION:COORD-FARM">
-			<kTAG_LABEL language="en">Longitude of farm site</kTAG_LABEL>
-			<kTAG_DEFINITION language="en">Degrees (3 digits), minutes (2 digits), and seconds (2 digits) followed by E (East) or W (West). Every missing digit (minutes or seconds) should be indicated with a zero. Leading zeros are also required for figures lower than ten.</kTAG_DEFINITION>
+    	<term kTAG_LID="FLONGDMS" kTAG_NAMESPACE="LR">
+			<kTAG_LABEL language="en"><![CDATA[Longitude of farm site]]></kTAG_LABEL>
 			<kTAG_SYNONYMS>
 				<item>FLONGDMS</item>
 				<item>4.5.2</item>
@@ -973,29 +1145,27 @@
 			<kTAG_CLASS>COntologyMasterVertex</kTAG_CLASS>
 			<kTAG_KIND>
 				<item>:KIND-FEATURE</item>
-				<item>:KIND-SCALE</item>
 			</kTAG_KIND>
 			<kTAG_TYPE>
 				<item>:REQUIRED</item>
-				<item>:TEXT</item>
 			</kTAG_TYPE>
-			<kTAG_EXAMPLES>
-				<item>7° 41’ and unknown seconds E (Turin) is coded as 0074100E (2 zeros before the 7 degrees because longitude varies from 0 and 180 degrees and needs 3 digits)</item>
-			</kTAG_EXAMPLES>
     	</node>
         <edges>
 			<edge>
 				<kTAG_PREDICATE>:SUBCLASS-OF</kTAG_PREDICATE>
-				<kTAG_OBJECT>LR:LOCATION:COORD-FARM</kTAG_OBJECT>
+				<kTAG_OBJECT>LR:COORD-FARM</kTAG_OBJECT>
+			</edge>
+			<edge>
+				<kTAG_SUBJECT>LR:DATA-TYPES:LONDMS</kTAG_SUBJECT>
+				<kTAG_PREDICATE>:SCALE-OF</kTAG_PREDICATE>
 			</edge>
         </edges>
     </unit>
     
-    <!-- LR:LOCATION:COORD-FARM:FLONGDD -->
+    <!-- LR:FLONGDD -->
     <unit>
-    	<term kTAG_LID="FLONGDD" kTAG_NAMESPACE="LR:LOCATION:COORD-FARM">
-			<kTAG_LABEL language="en">Longitude of farm site</kTAG_LABEL>
-			<kTAG_DEFINITION language="en">Longitude expressed in decimal degrees. Degree measurements should be written with decimal places like 74.044636° with the degree symbol behind the decimals. Every missing digit should be indicated with a zero. Positive values are East of the Greenwich Meridian; negative values are West of the Greenwich Meridian.</kTAG_DEFINITION>
+    	<term kTAG_LID="FLONGDD" kTAG_NAMESPACE="LR">
+			<kTAG_LABEL language="en"><![CDATA[Longitude of farm site]]></kTAG_LABEL>
 			<kTAG_SYNONYMS>
 				<item>FLONGDD</item>
 				<item>4.5.2bis</item>
@@ -1005,31 +1175,28 @@
 			<kTAG_CLASS>COntologyMasterVertex</kTAG_CLASS>
 			<kTAG_KIND>
 				<item>:KIND-FEATURE</item>
-				<item>:KIND-SCALE</item>
 			</kTAG_KIND>
 			<kTAG_TYPE>
 				<item>:REQUIRED</item>
-				<item>:FLOAT</item>
 			</kTAG_TYPE>
-			<kTAG_EXAMPLES>
-				<item>the same longitude of Turin_Mole Antonelliana reported above is coded as 7.693154°</item>
-				<item>the same longitude of Madrid reported above is coded as -3.714277°</item>
-				<item>the same longitude of Quito reported above is coded as -78.505386°</item>
-			</kTAG_EXAMPLES>
     	</node>
         <edges>
 			<edge>
 				<kTAG_PREDICATE>:SUBCLASS-OF</kTAG_PREDICATE>
-				<kTAG_OBJECT>LR:LOCATION:COORD-FARM</kTAG_OBJECT>
+				<kTAG_OBJECT>LR:COORD-FARM</kTAG_OBJECT>
+			</edge>
+			<edge>
+				<kTAG_SUBJECT>LR:DATA-TYPES:LONDEC</kTAG_SUBJECT>
+				<kTAG_PREDICATE>:SCALE-OF</kTAG_PREDICATE>
 			</edge>
         </edges>
     </unit>
     
-    <!-- LR:LOCATION:COORD-FARM:FEPSGCODE -->
+    <!-- LR:FEPSGCODE -->
     <unit>
-    	<term kTAG_LID="FEPSGCODE" kTAG_NAMESPACE="LR:LOCATION:COORD-FARM">
-			<kTAG_LABEL language="en">Geodetic datum</kTAG_LABEL>
-			<kTAG_DEFINITION language="en">The geodetic datum or spatial reference system upon which the coordinates given in decimal latitude and decimal longitude are based. If not known, use ‘not recorded’, when not known the default WGS 1984 Datum will be used.</kTAG_DEFINITION>
+    	<term kTAG_LID="FEPSGCODE" kTAG_NAMESPACE="LR">
+			<kTAG_LABEL language="en"><![CDATA[Geodetic datum]]></kTAG_LABEL>
+			<kTAG_DEFINITION language="en"><![CDATA[The geodetic datum or spatial reference system upon which the coordinates given in decimal latitude and decimal longitude are based. If not known, use ‘not recorded’, when not known the default WGS 1984 Datum will be used.]]></kTAG_DEFINITION>
 			<kTAG_SYNONYMS>
 				<item>FEPSGCODE</item>
 				<item>4.5.3</item>
@@ -1051,16 +1218,16 @@
         <edges>
 			<edge>
 				<kTAG_PREDICATE>:SUBCLASS-OF</kTAG_PREDICATE>
-				<kTAG_OBJECT>LR:LOCATION:COORD-FARM</kTAG_OBJECT>
+				<kTAG_OBJECT>LR:COORD-FARM</kTAG_OBJECT>
 			</edge>
         </edges>
     </unit>
     
-    <!-- LR:LOCATION:COORD-FARM:FGPS -->
+    <!-- LR:FGPS -->
     <unit>
-    	<term kTAG_LID="FGPS" kTAG_NAMESPACE="LR:LOCATION:COORD-FARM">
-			<kTAG_LABEL language="en">Geographic data recording system</kTAG_LABEL>
-			<kTAG_DEFINITION language="en">Data recorded by GPS: Yes or No.</kTAG_DEFINITION>
+    	<term kTAG_LID="FGPS" kTAG_NAMESPACE="LR">
+			<kTAG_LABEL language="en"><![CDATA[Geographic data recording system]]></kTAG_LABEL>
+			<kTAG_DEFINITION language="en"><![CDATA[Data recorded by GPS: Yes or No.]]></kTAG_DEFINITION>
 			<kTAG_SYNONYMS>
 				<item>FGPS</item>
 				<item>4.5.4</item>
@@ -1071,27 +1238,24 @@
 			<kTAG_KIND>
 				<item>:KIND-FEATURE</item>
 			</kTAG_KIND>
-			<kTAG_EXAMPLES>
-				<item>WGS84 (for World Geodetic System 1984 – EPSG 4326)</item>
-			</kTAG_EXAMPLES>
     	</node>
         <edges>
 			<edge>
 				<kTAG_PREDICATE>:SUBCLASS-OF</kTAG_PREDICATE>
-				<kTAG_OBJECT>LR:LOCATION:COORD-FARM</kTAG_OBJECT>
+				<kTAG_OBJECT>LR:COORD-FARM</kTAG_OBJECT>
 			</edge>
 			<edge>
 				<kTAG_SUBJECT>LR:DATA-TYPES:YN</kTAG_SUBJECT>
-				<kTAG_PREDICATE>:SUBCLASS-OF</kTAG_PREDICATE>
+				<kTAG_PREDICATE>:SCALE-OF</kTAG_PREDICATE>
 			</edge>
         </edges>
     </unit>
     
-    <!-- LR:LOCATION:COORD-FARM:FRADIALED -->
+    <!-- LR:FRADIALED -->
     <unit>
-    	<term kTAG_LID="FRADIALED" kTAG_NAMESPACE="LR:LOCATION:COORD-FARM">
-			<kTAG_LABEL language="en">Maximum error distance</kTAG_LABEL>
-			<kTAG_DEFINITION language="en">To be compiled if the field GPS is ‘No’. The upper limit of the distance (in meters) from the given latitude and longitude describing a circle within which the whole of the described locality must lie.</kTAG_DEFINITION>
+    	<term kTAG_LID="FRADIALED" kTAG_NAMESPACE="LR">
+			<kTAG_LABEL language="en"><![CDATA[Maximum error distance]]></kTAG_LABEL>
+			<kTAG_DEFINITION language="en"><![CDATA[To be compiled if the field GPS is ‘No’. The upper limit of the distance (in meters) from the given latitude and longitude describing a circle within which the whole of the described locality must lie.]]></kTAG_DEFINITION>
 			<kTAG_SYNONYMS>
 				<item>FRADIALED</item>
 				<item>4.5.5</item>
@@ -1114,16 +1278,15 @@
         <edges>
 			<edge>
 				<kTAG_PREDICATE>:SUBCLASS-OF</kTAG_PREDICATE>
-				<kTAG_OBJECT>LR:LOCATION:COORD-FARM</kTAG_OBJECT>
+				<kTAG_OBJECT>LR:COORD-FARM</kTAG_OBJECT>
 			</edge>
         </edges>
     </unit>
     
-    <!-- LR:LOCATION:FELEVATION -->
+    <!-- LR:FELEVATION -->
     <unit>
-    	<term kTAG_LID="FELEVATION" kTAG_NAMESPACE="LR:LOCATION">
-			<kTAG_LABEL language="en">Elevation of farm site</kTAG_LABEL>
-			<kTAG_DEFINITION language="en">Elevation of farm site expressed in meters above sea level. Negative values are allowed.</kTAG_DEFINITION>
+    	<term kTAG_LID="FELEVATION" kTAG_NAMESPACE="LR">
+			<kTAG_LABEL language="en"><![CDATA[Elevation of farm site]]></kTAG_LABEL>
 			<kTAG_SYNONYMS>
 				<item>FELEVATION</item>
 				<item>4.6</item>
@@ -1133,33 +1296,90 @@
 			<kTAG_CLASS>COntologyMasterVertex</kTAG_CLASS>
 			<kTAG_KIND>
 				<item>:KIND-FEATURE</item>
-				<item>:KIND-SCALE</item>
 			</kTAG_KIND>
 			<kTAG_TYPE>
 				<item>:REQUIRED</item>
-				<item>:INT</item>
 			</kTAG_TYPE>
-			<kTAG_EXAMPLES>
-				<item>763</item>
-				<item>-35</item>
-			</kTAG_EXAMPLES>
     	</node>
         <edges>
 			<edge>
 				<kTAG_PREDICATE>:SUBCLASS-OF</kTAG_PREDICATE>
-				<kTAG_OBJECT>LR:LOCATION</kTAG_OBJECT>
+				<kTAG_OBJECT>LR:SITE</kTAG_OBJECT>
+			</edge>
+			<edge>
+				<kTAG_SUBJECT>LR:DATA-TYPES:ELEVATION</kTAG_SUBJECT>
+				<kTAG_PREDICATE>:SCALE-OF</kTAG_PREDICATE>
 			</edge>
         </edges>
     </unit>
     
-    <!-- LR:LOCATION:COORD-LR:LRSLATDMS -->
+    <!-- LR:LRSLATDMS -->
     <unit>
-    	<term kTAG_LID="LRSLATDMS" kTAG_NAMESPACE="LR:LOCATION:COORD-LR">
-			<kTAG_LABEL language="en">Latitude of LR site</kTAG_LABEL>
-			<kTAG_DEFINITION language="en">Degrees (2 digits) minutes (2 digits), and seconds (2 digits) followed by N (North) or S (South).</kTAG_DEFINITION>
+    	<term kTAG_LID="LRSLATDMS" kTAG_NAMESPACE="LR">
+			<kTAG_LABEL language="en"><![CDATA[Latitude of LR site]]></kTAG_LABEL>
 			<kTAG_SYNONYMS>
 				<item>LRSLATDMS</item>
 				<item>4.7.1</item>
+			</kTAG_SYNONYMS>
+    	</term>
+    	<node>
+			<kTAG_CLASS>COntologyMasterVertex</kTAG_CLASS>
+			<kTAG_KIND>
+				<item>:KIND-FEATURE</item>
+			</kTAG_KIND>
+			<kTAG_TYPE>
+				<item>:REQUIRED</item>
+			</kTAG_TYPE>
+    	</node>
+        <edges>
+			<edge>
+				<kTAG_PREDICATE>:SUBCLASS-OF</kTAG_PREDICATE>
+				<kTAG_OBJECT>LR:COORD-LR</kTAG_OBJECT>
+			</edge>
+			<edge>
+				<kTAG_SUBJECT>LR:DATA-TYPES:LATDMS</kTAG_SUBJECT>
+				<kTAG_PREDICATE>:SCALE-OF</kTAG_PREDICATE>
+			</edge>
+        </edges>
+    </unit>
+    
+    <!-- LR:LRSLATDD -->
+    <unit>
+    	<term kTAG_LID="LRSLATDD" kTAG_NAMESPACE="LR">
+			<kTAG_LABEL language="en"><![CDATA[Latitude of LR site]]></kTAG_LABEL>
+			<kTAG_SYNONYMS>
+				<item>LRSLATDD</item>
+				<item>4.7.1bis</item>
+			</kTAG_SYNONYMS>
+    	</term>
+    	<node>
+			<kTAG_CLASS>COntologyMasterVertex</kTAG_CLASS>
+			<kTAG_KIND>
+				<item>:KIND-FEATURE</item>
+			</kTAG_KIND>
+			<kTAG_TYPE>
+				<item>:REQUIRED</item>
+			</kTAG_TYPE>
+    	</node>
+        <edges>
+			<edge>
+				<kTAG_PREDICATE>:SUBCLASS-OF</kTAG_PREDICATE>
+				<kTAG_OBJECT>LR:COORD-LR</kTAG_OBJECT>
+			</edge>
+			<edge>
+				<kTAG_SUBJECT>LR:DATA-TYPES:LATDEC</kTAG_SUBJECT>
+				<kTAG_PREDICATE>:SCALE-OF</kTAG_PREDICATE>
+			</edge>
+        </edges>
+    </unit>
+    
+    <!-- LR:LRSLONGDMS -->
+    <unit>
+    	<term kTAG_LID="LRSLONGDMS" kTAG_NAMESPACE="LR">
+			<kTAG_LABEL language="en"><![CDATA[Longitude of LR site]]></kTAG_LABEL>
+			<kTAG_SYNONYMS>
+				<item>LRSLONGDMS</item>
+				<item>4.7.2</item>
 			</kTAG_SYNONYMS>
     	</term>
     	<node>
@@ -1170,18 +1390,3275 @@
 			</kTAG_KIND>
 			<kTAG_TYPE>
 				<item>:REQUIRED</item>
+			</kTAG_TYPE>
+    	</node>
+        <edges>
+			<edge>
+				<kTAG_PREDICATE>:SUBCLASS-OF</kTAG_PREDICATE>
+				<kTAG_OBJECT>LR:COORD-LR</kTAG_OBJECT>
+			</edge>
+			<edge>
+				<kTAG_SUBJECT>LR:DATA-TYPES:LONDMS</kTAG_SUBJECT>
+				<kTAG_PREDICATE>:SCALE-OF</kTAG_PREDICATE>
+			</edge>
+        </edges>
+    </unit>
+    
+    <!-- LR:LRSLONGITUDEDD -->
+    <unit>
+    	<term kTAG_LID="LRSLONGITUDEDD" kTAG_NAMESPACE="LR">
+			<kTAG_LABEL language="en"><![CDATA[Longitude of LR site]]></kTAG_LABEL>
+			<kTAG_SYNONYMS>
+				<item>LRSLONGITUDEDD</item>
+				<item>4.7.2bis</item>
+			</kTAG_SYNONYMS>
+    	</term>
+    	<node>
+			<kTAG_CLASS>COntologyMasterVertex</kTAG_CLASS>
+			<kTAG_KIND>
+				<item>:KIND-FEATURE</item>
+			</kTAG_KIND>
+			<kTAG_TYPE>
+				<item>:REQUIRED</item>
+			</kTAG_TYPE>
+    	</node>
+        <edges>
+			<edge>
+				<kTAG_PREDICATE>:SUBCLASS-OF</kTAG_PREDICATE>
+				<kTAG_OBJECT>LR:COORD-LR</kTAG_OBJECT>
+			</edge>
+ 			<edge>
+				<kTAG_SUBJECT>LR:DATA-TYPES:LONDEC</kTAG_SUBJECT>
+				<kTAG_PREDICATE>:SCALE-OF</kTAG_PREDICATE>
+			</edge>
+       </edges>
+    </unit>
+    
+    <!-- LR:LRSEPSGCODE -->
+    <unit>
+    	<term kTAG_LID="LRSEPSGCODE" kTAG_NAMESPACE="LR">
+			<kTAG_LABEL language="en"><![CDATA[Geodetic datum]]></kTAG_LABEL>
+			<kTAG_DEFINITION language="en"><![CDATA[The geodetic datum or spatial reference system upon which the coordinates given in decimal latitude and decimal longitude are based. If not known, use ‘not recorded’, when not known the default WGS 1984 Datum will be used.]]></kTAG_DEFINITION>
+			<kTAG_SYNONYMS>
+				<item>LRSEPSGCODE</item>
+				<item>4.7.3</item>
+			</kTAG_SYNONYMS>
+    	</term>
+    	<node>
+			<kTAG_CLASS>COntologyMasterVertex</kTAG_CLASS>
+			<kTAG_KIND>
+				<item>:KIND-FEATURE</item>
+				<item>:KIND-SCALE</item>
+			</kTAG_KIND>
+			<kTAG_TYPE>
 				<item>:TEXT</item>
 			</kTAG_TYPE>
 			<kTAG_EXAMPLES>
-				<item>45° (i.e. 45 degrees), 4’ (i.e. 4 minutes) and unknown seconds North (Turin latitude) is coded as 450400N</item>
-				<item>45°, 4’ and 8’’ (i.e. 8 seconds) North (Turin_Mole Antonelliana latitude) is coded as 450408N</item>
-				<item>00° 13’ 23’’ S (Quito) is coded as 001323S</item>
+				<item>WGS84 (for World Geodetic System 1984 – EPSG 4326)</item>
 			</kTAG_EXAMPLES>
     	</node>
         <edges>
 			<edge>
 				<kTAG_PREDICATE>:SUBCLASS-OF</kTAG_PREDICATE>
-				<kTAG_OBJECT>LR:LOCATION:COORD-LR</kTAG_OBJECT>
+				<kTAG_OBJECT>LR:COORD-LR</kTAG_OBJECT>
+			</edge>
+        </edges>
+    </unit>
+    
+    <!-- LR:LRSGPS -->
+    <unit>
+    	<term kTAG_LID="LRSGPS" kTAG_NAMESPACE="LR">
+			<kTAG_LABEL language="en"><![CDATA[Geodetic datum]]></kTAG_LABEL>
+			<kTAG_DEFINITION language="en"><![CDATA[Data recorded by GPS: Yes or No.]]></kTAG_DEFINITION>
+			<kTAG_SYNONYMS>
+				<item>LRSEPSGCODE</item>
+				<item>4.7.4</item>
+			</kTAG_SYNONYMS>
+    	</term>
+    	<node>
+			<kTAG_CLASS>COntologyMasterVertex</kTAG_CLASS>
+			<kTAG_KIND>
+				<item>:KIND-FEATURE</item>
+			</kTAG_KIND>
+    	</node>
+        <edges>
+			<edge>
+				<kTAG_PREDICATE>:SUBCLASS-OF</kTAG_PREDICATE>
+				<kTAG_OBJECT>LR:COORD-LR</kTAG_OBJECT>
+			</edge>
+			<edge>
+				<kTAG_SUBJECT>LR:DATA-TYPES:YN</kTAG_SUBJECT>
+				<kTAG_PREDICATE>:SCALE-OF</kTAG_PREDICATE>
+			</edge>
+        </edges>
+    </unit>
+    
+    <!-- LR:LRSRADIALED -->
+    <unit>
+    	<term kTAG_LID="LRSRADIALED" kTAG_NAMESPACE="LR">
+			<kTAG_LABEL language="en"><![CDATA[Maximum error distance]]></kTAG_LABEL>
+			<kTAG_DEFINITION language="en"><![CDATA[To be compiled if the field GPS is ‘No’. The upper limit of the distance (in meters) from the given latitude and longitude describing a circle within which the whole of the described locality must lie.]]></kTAG_DEFINITION>
+			<kTAG_SYNONYMS>
+				<item>LRSRADIALED</item>
+				<item>4.7.5</item>
+			</kTAG_SYNONYMS>
+    	</term>
+    	<node>
+			<kTAG_CLASS>COntologyMasterVertex</kTAG_CLASS>
+			<kTAG_KIND>
+				<item>:KIND-FEATURE</item>
+				<item>:KIND-SCALE</item>
+			</kTAG_KIND>
+			<kTAG_TYPE>
+				<item>:INT</item>
+			</kTAG_TYPE>
+			<kTAG_EXAMPLES>
+				<item>1000</item>
+				<item>100000</item>
+			</kTAG_EXAMPLES>
+    	</node>
+        <edges>
+			<edge>
+				<kTAG_PREDICATE>:SUBCLASS-OF</kTAG_PREDICATE>
+				<kTAG_OBJECT>LR:COORD-LR</kTAG_OBJECT>
+			</edge>
+        </edges>
+    </unit>
+    
+    <!-- LR:LRSELEVATION -->
+    <unit>
+    	<term kTAG_LID="LRSELEVATION" kTAG_NAMESPACE="LR">
+			<kTAG_LABEL language="en"><![CDATA[Elevation of LR site]]></kTAG_LABEL>
+			<kTAG_SYNONYMS>
+				<item>LRSELEVATION</item>
+				<item>4.8</item>
+			</kTAG_SYNONYMS>
+    	</term>
+    	<node>
+			<kTAG_CLASS>COntologyMasterVertex</kTAG_CLASS>
+			<kTAG_KIND>
+				<item>:KIND-FEATURE</item>
+			</kTAG_KIND>
+			<kTAG_TYPE>
+				<item>:REQUIRED</item>
+			</kTAG_TYPE>
+    	</node>
+        <edges>
+			<edge>
+				<kTAG_PREDICATE>:SUBCLASS-OF</kTAG_PREDICATE>
+				<kTAG_OBJECT>LR:SITE</kTAG_OBJECT>
+			</edge>
+			<edge>
+				<kTAG_SUBJECT>LR:DATA-TYPES:ELEVATION</kTAG_SUBJECT>
+				<kTAG_PREDICATE>:SCALE-OF</kTAG_PREDICATE>
+			</edge>
+        </edges>
+    </unit>
+    
+    <!-- MAINTAINER PROPERTIES -->
+    
+    <!-- LR:FARMERID -->
+    <unit>
+    	<term kTAG_LID="FARMERID" kTAG_NAMESPACE="LR">
+			<kTAG_LABEL language="en"><![CDATA[Farmer identification number]]></kTAG_LABEL>
+			<kTAG_DEFINITION language="en"><![CDATA[Unique number identifier of the farmer who maintains the LR and provides information (Landrace maintainer unique ID to be held in database). It is assigned by the institute that is responsible at the national level for the production of the National LR in situ Inventory. This number should not be duplicated or reassigned to other unit. This number should be composed of the ‘National Inventory Code (NICODE 1.1.)’ + ’National Inventory Edition Number (1.2.NIENUMB)’ + ’Landrace number (3.2. LRNUMB)’.]]></kTAG_DEFINITION>
+			<kTAG_SYNONYMS>
+				<item>FARMERID</item>
+				<item>5.1</item>
+			</kTAG_SYNONYMS>
+    	</term>
+    	<node>
+			<kTAG_CLASS>COntologyMasterVertex</kTAG_CLASS>
+			<kTAG_KIND>
+				<item>:KIND-FEATURE</item>
+				<item>:KIND-SCALE</item>
+			</kTAG_KIND>
+			<kTAG_TYPE>
+				<item>:TEXT</item>
+			</kTAG_TYPE>
+			<kTAG_EXAMPLES>
+				<item>NLD001/201200010</item>
+			</kTAG_EXAMPLES>
+    	</node>
+        <edges>
+			<edge>
+				<kTAG_PREDICATE>:SUBCLASS-OF</kTAG_PREDICATE>
+				<kTAG_OBJECT>LR:MAINTAINER</kTAG_OBJECT>
+			</edge>
+        </edges>
+    </unit>
+    
+    <!-- LR:FARMERYB -->
+    <unit>
+    	<term kTAG_LID="FARMERYB" kTAG_NAMESPACE="LR">
+			<kTAG_LABEL language="en"><![CDATA[Farmer year of birth]]></kTAG_LABEL>
+			<kTAG_DEFINITION language="en"><![CDATA[Recorded as YYYY. If not certain, indicate that this is an estimate in REMARKS.]]></kTAG_DEFINITION>
+			<kTAG_SYNONYMS>
+				<item>FARMERYB</item>
+				<item>5.2</item>
+			</kTAG_SYNONYMS>
+    	</term>
+    	<node>
+			<kTAG_CLASS>COntologyMasterVertex</kTAG_CLASS>
+			<kTAG_KIND>
+				<item>:KIND-FEATURE</item>
+				<item>:KIND-SCALE</item>
+			</kTAG_KIND>
+			<kTAG_TYPE>
+				<item>:INT</item>
+			</kTAG_TYPE>
+			<kTAG_EXAMPLES>
+				<item>1957</item>
+			</kTAG_EXAMPLES>
+    	</node>
+        <edges>
+			<edge>
+				<kTAG_PREDICATE>:SUBCLASS-OF</kTAG_PREDICATE>
+				<kTAG_OBJECT>LR:MAINTAINER</kTAG_OBJECT>
+			</edge>
+        </edges>
+    </unit>
+    
+    <!-- LR:FARMHT -->
+    <unit>
+    	<term kTAG_LID="FARMHT" kTAG_NAMESPACE="LR">
+			<kTAG_LABEL language="en"><![CDATA[Holding/tenancy of the farm/estate]]></kTAG_LABEL>
+			<kTAG_DEFINITION language="en"><![CDATA[Multiple choices are allowed since the farm can be made of several types of holdings. Multiple choices are allowed separated by a semicolon (;) without space.]]></kTAG_DEFINITION>
+			<kTAG_SYNONYMS>
+				<item>FARMHT</item>
+				<item>5.3</item>
+			</kTAG_SYNONYMS>
+    	</term>
+    	<node>
+			<kTAG_CLASS>COntologyMasterVertex</kTAG_CLASS>
+			<kTAG_KIND>
+				<item>:KIND-FEATURE</item>
+				<item>:KIND-SCALE</item>
+			</kTAG_KIND>
+			<kTAG_TYPE>
+				<item>:SET</item>
+			</kTAG_TYPE>
+			<kTAG_EXAMPLES>
+				<item>10;30</item>
+			</kTAG_EXAMPLES>
+    	</node>
+        <edges>
+			<edge>
+				<kTAG_PREDICATE>:SUBCLASS-OF</kTAG_PREDICATE>
+				<kTAG_OBJECT>LR:MAINTAINER</kTAG_OBJECT>
+			</edge>
+        </edges>
+    </unit>
+    <unit>
+    	<term kTAG_LID="10" kTAG_NAMESPACE="LR:FARMHT">
+			<kTAG_LABEL language="en"><![CDATA[Owner]]></kTAG_LABEL>
+    	</term>
+    	<node>
+			<kTAG_CLASS>COntologyMasterVertex</kTAG_CLASS>
+			<kTAG_KIND>
+				<item>:KIND-ENUMERATION</item>
+			</kTAG_KIND>
+    	</node>
+        <edges>
+			<edge>
+				<kTAG_PREDICATE>:ENUM-OF</kTAG_PREDICATE>
+				<kTAG_OBJECT>LR:FARMHT</kTAG_OBJECT>
+			</edge>
+        </edges>
+    </unit>
+    <unit>
+    	<term kTAG_LID="20" kTAG_NAMESPACE="LR:FARMHT">
+			<kTAG_LABEL language="en"><![CDATA[Tenant]]></kTAG_LABEL>
+    	</term>
+    	<node>
+			<kTAG_CLASS>COntologyMasterVertex</kTAG_CLASS>
+			<kTAG_KIND>
+				<item>:KIND-ENUMERATION</item>
+			</kTAG_KIND>
+    	</node>
+        <edges>
+			<edge>
+				<kTAG_PREDICATE>:ENUM-OF</kTAG_PREDICATE>
+				<kTAG_OBJECT>LR:FARMHT</kTAG_OBJECT>
+			</edge>
+        </edges>
+    </unit>
+    <unit>
+    	<term kTAG_LID="30" kTAG_NAMESPACE="LR:FARMHT">
+			<kTAG_LABEL language="en"><![CDATA[Life tenant]]></kTAG_LABEL>
+    	</term>
+    	<node>
+			<kTAG_CLASS>COntologyMasterVertex</kTAG_CLASS>
+			<kTAG_KIND>
+				<item>:KIND-ENUMERATION</item>
+			</kTAG_KIND>
+    	</node>
+        <edges>
+			<edge>
+				<kTAG_PREDICATE>:ENUM-OF</kTAG_PREDICATE>
+				<kTAG_OBJECT>LR:FARMHT</kTAG_OBJECT>
+			</edge>
+        </edges>
+    </unit>
+    <unit>
+    	<term kTAG_LID="40" kTAG_NAMESPACE="LR:FARMHT">
+			<kTAG_LABEL language="en"><![CDATA[Cultivating public land]]></kTAG_LABEL>
+    	</term>
+    	<node>
+			<kTAG_CLASS>COntologyMasterVertex</kTAG_CLASS>
+			<kTAG_KIND>
+				<item>:KIND-ENUMERATION</item>
+			</kTAG_KIND>
+    	</node>
+        <edges>
+			<edge>
+				<kTAG_PREDICATE>:ENUM-OF</kTAG_PREDICATE>
+				<kTAG_OBJECT>LR:FARMHT</kTAG_OBJECT>
+			</edge>
+        </edges>
+    </unit>
+    <unit>
+    	<term kTAG_LID="99" kTAG_NAMESPACE="LR:FARMHT">
+			<kTAG_LABEL language="en"><![CDATA[Other]]></kTAG_LABEL>
+			<kTAG_DEFINITION language="en"><![CDATA[Other (elaborate in REMARKS).]]></kTAG_DEFINITION>
+    	</term>
+    	<node>
+			<kTAG_CLASS>COntologyMasterVertex</kTAG_CLASS>
+			<kTAG_KIND>
+				<item>:KIND-ENUMERATION</item>
+			</kTAG_KIND>
+    	</node>
+        <edges>
+			<edge>
+				<kTAG_PREDICATE>:ENUM-OF</kTAG_PREDICATE>
+				<kTAG_OBJECT>LR:FARMHT</kTAG_OBJECT>
+			</edge>
+        </edges>
+    </unit>
+    
+    <!-- LR:FIR -->
+    <unit>
+    	<term kTAG_LID="FIR" kTAG_NAMESPACE="LR">
+			<kTAG_LABEL language="en"><![CDATA[Farmer identification restrictions]]></kTAG_LABEL>
+			<kTAG_DEFINITION language="en"><![CDATA["Restriction in making the above mentioned (i.e. 5.2. and 5.3.) farmer data publicly available: ‘Yes’ or ‘No’. If ‘No’ only FARMERID (5.1) will be public.]]></kTAG_DEFINITION>
+			<kTAG_SYNONYMS>
+				<item>FARMHT</item>
+				<item>5.4</item>
+			</kTAG_SYNONYMS>
+    	</term>
+    	<node>
+			<kTAG_CLASS>COntologyMasterVertex</kTAG_CLASS>
+			<kTAG_KIND>
+				<item>:KIND-FEATURE</item>
+			</kTAG_KIND>
+    	</node>
+        <edges>
+			<edge>
+				<kTAG_PREDICATE>:SUBCLASS-OF</kTAG_PREDICATE>
+				<kTAG_OBJECT>LR:MAINTAINER</kTAG_OBJECT>
+			</edge>
+			<edge>
+				<kTAG_SUBJECT>LR:DATA-TYPES:YN</kTAG_SUBJECT>
+				<kTAG_PREDICATE>:SCALE-OF</kTAG_PREDICATE>
+			</edge>
+        </edges>
+    </unit>
+    
+    <!-- LR:LANDRACE -->
+    
+    <!-- LR:LRTOTAREA -->
+    <unit>
+    	<term kTAG_LID="LRTOTAREA" kTAG_NAMESPACE="LR">
+			<kTAG_LABEL language="en"><![CDATA[Landrace total area]]></kTAG_LABEL>
+			<kTAG_DEFINITION language="en"><![CDATA[The total area (ha) cultivated under the inventoried LR on that farm as from farmer statement.]]></kTAG_DEFINITION>
+			<kTAG_SYNONYMS>
+				<item>LRTOTAREA</item>
+				<item>6.1</item>
+			</kTAG_SYNONYMS>
+    	</term>
+    	<node>
+			<kTAG_CLASS>COntologyMasterVertex</kTAG_CLASS>
+			<kTAG_KIND>
+				<item>:KIND-FEATURE</item>
+				<item>:KIND-SCALE</item>
+			</kTAG_KIND>
+			<kTAG_TYPE>
+				<item>:FLOAT</item>
+			</kTAG_TYPE>
+			<kTAG_EXAMPLES>
+				<item>125.7</item>
+			</kTAG_EXAMPLES>
+    	</node>
+        <edges>
+			<edge>
+				<kTAG_PREDICATE>:SUBCLASS-OF</kTAG_PREDICATE>
+				<kTAG_OBJECT>LR:LANDRACE</kTAG_OBJECT>
+			</edge>
+        </edges>
+    </unit>
+    
+    <!-- LR:LRCULTPER -->
+    <unit>
+    	<term kTAG_LID="LRCULTPER" kTAG_NAMESPACE="LR">
+			<kTAG_LABEL language="en"><![CDATA[Landrace cultivation period]]></kTAG_LABEL>
+			<kTAG_DEFINITION language="en"><![CDATA[The length of time the LR was cultivated on that farm as from farmer memory, i.e. cultivated for an unknown number of years, over 50 years, less than 50 years; in the latter case it can be specified the time.]]></kTAG_DEFINITION>
+			<kTAG_SYNONYMS>
+				<item>LRCULTPER</item>
+				<item>6.2</item>
+			</kTAG_SYNONYMS>
+    	</term>
+    	<node>
+			<kTAG_CLASS>COntologyMasterVertex</kTAG_CLASS>
+			<kTAG_KIND>
+				<item>:KIND-FEATURE</item>
+				<item>:KIND-SCALE</item>
+			</kTAG_KIND>
+			<kTAG_TYPE>
+				<item>:REQUIRED</item>
+				<item>:ENUM</item>
+			</kTAG_TYPE>
+			<kTAG_EXAMPLES>
+				<item>10</item>
+				<item>33</item>
+			</kTAG_EXAMPLES>
+    	</node>
+        <edges>
+			<edge>
+				<kTAG_PREDICATE>:SUBCLASS-OF</kTAG_PREDICATE>
+				<kTAG_OBJECT>LR:LANDRACE</kTAG_OBJECT>
+			</edge>
+        </edges>
+    </unit>
+    <unit>
+    	<term kTAG_LID="10" kTAG_NAMESPACE="LR:LRCULTPER">
+			<kTAG_LABEL language="en"><![CDATA[Does not answer]]></kTAG_LABEL>
+    	</term>
+    	<node>
+			<kTAG_CLASS>COntologyMasterVertex</kTAG_CLASS>
+			<kTAG_KIND>
+				<item>:KIND-ENUMERATION</item>
+			</kTAG_KIND>
+    	</node>
+        <edges>
+			<edge>
+				<kTAG_PREDICATE>:ENUM-OF</kTAG_PREDICATE>
+				<kTAG_OBJECT>LR:LRCULTPER</kTAG_OBJECT>
+			</edge>
+        </edges>
+    </unit>
+    <unit>
+    	<term kTAG_LID="20" kTAG_NAMESPACE="LR:LRCULTPER">
+			<kTAG_LABEL language="en"><![CDATA[Over 50 years]]></kTAG_LABEL>
+    	</term>
+    	<node>
+			<kTAG_CLASS>COntologyMasterVertex</kTAG_CLASS>
+			<kTAG_KIND>
+				<item>:KIND-ENUMERATION</item>
+			</kTAG_KIND>
+    	</node>
+        <edges>
+			<edge>
+				<kTAG_PREDICATE>:ENUM-OF</kTAG_PREDICATE>
+				<kTAG_OBJECT>LR:LRCULTPER</kTAG_OBJECT>
+			</edge>
+        </edges>
+    </unit>
+    <unit>
+    	<term kTAG_LID="30" kTAG_NAMESPACE="LR:LRCULTPER">
+			<kTAG_LABEL language="en"><![CDATA[Under 50 years]]></kTAG_LABEL>
+    	</term>
+    	<node>
+			<kTAG_CLASS>COntologyMasterVertex</kTAG_CLASS>
+			<kTAG_KIND>
+				<item>:KIND-ENUMERATION</item>
+			</kTAG_KIND>
+    	</node>
+        <edges>
+			<edge>
+				<kTAG_PREDICATE>:ENUM-OF</kTAG_PREDICATE>
+				<kTAG_OBJECT>LR:LRCULTPER</kTAG_OBJECT>
+			</edge>
+        </edges>
+    </unit>
+    <unit>
+    	<term kTAG_LID="31" kTAG_NAMESPACE="LR:LRCULTPER">
+			<kTAG_LABEL language="en"><![CDATA[Less than 10 years ago]]></kTAG_LABEL>
+    	</term>
+    	<node>
+			<kTAG_CLASS>COntologyMasterVertex</kTAG_CLASS>
+			<kTAG_KIND>
+				<item>:KIND-ENUMERATION</item>
+			</kTAG_KIND>
+    	</node>
+        <edges>
+			<edge>
+				<kTAG_PREDICATE>:ENUM-OF</kTAG_PREDICATE>
+				<kTAG_OBJECT>LR:LRCULTPER:30</kTAG_OBJECT>
+			</edge>
+        </edges>
+    </unit>
+    <unit>
+    	<term kTAG_LID="32" kTAG_NAMESPACE="LR:LRCULTPER">
+			<kTAG_LABEL language="en"><![CDATA[11-25 years ago]]></kTAG_LABEL>
+    	</term>
+    	<node>
+			<kTAG_CLASS>COntologyMasterVertex</kTAG_CLASS>
+			<kTAG_KIND>
+				<item>:KIND-ENUMERATION</item>
+			</kTAG_KIND>
+    	</node>
+        <edges>
+			<edge>
+				<kTAG_PREDICATE>:ENUM-OF</kTAG_PREDICATE>
+				<kTAG_OBJECT>LR:LRCULTPER:30</kTAG_OBJECT>
+			</edge>
+        </edges>
+    </unit>
+    <unit>
+    	<term kTAG_LID="33" kTAG_NAMESPACE="LR:LRCULTPER">
+			<kTAG_LABEL language="en"><![CDATA[26-50 years ago]]></kTAG_LABEL>
+    	</term>
+    	<node>
+			<kTAG_CLASS>COntologyMasterVertex</kTAG_CLASS>
+			<kTAG_KIND>
+				<item>:KIND-ENUMERATION</item>
+			</kTAG_KIND>
+    	</node>
+        <edges>
+			<edge>
+				<kTAG_PREDICATE>:ENUM-OF</kTAG_PREDICATE>
+				<kTAG_OBJECT>LR:LRCULTPER:30</kTAG_OBJECT>
+			</edge>
+        </edges>
+    </unit>
+    
+    <!-- LR:LRSTATUS -->
+    <unit>
+    	<term kTAG_LID="LRSTATUS" kTAG_NAMESPACE="LR">
+			<kTAG_LABEL language="en"><![CDATA[Landrace status]]></kTAG_LABEL>
+			<kTAG_DEFINITION language="en"><![CDATA[The status of the LR on that farm, i.e. whether inherent the farm or reintroduced in the farm as from farmer statement. For ‘inherent the farm’ a cultivation period over 25 years in that farm should be intended. If introduced/reintroduced from other farms it can be specified from where. To be eventually elaborated in REMARKS.]]></kTAG_DEFINITION>
+			<kTAG_SYNONYMS>
+				<item>LRSTATUS</item>
+				<item>6.3</item>
+			</kTAG_SYNONYMS>
+    	</term>
+    	<node>
+			<kTAG_CLASS>COntologyMasterVertex</kTAG_CLASS>
+			<kTAG_KIND>
+				<item>:KIND-FEATURE</item>
+				<item>:KIND-SCALE</item>
+			</kTAG_KIND>
+			<kTAG_TYPE>
+				<item>:ENUM</item>
+			</kTAG_TYPE>
+			<kTAG_EXAMPLES>
+				<item>30</item>
+			</kTAG_EXAMPLES>
+    	</node>
+        <edges>
+			<edge>
+				<kTAG_PREDICATE>:SUBCLASS-OF</kTAG_PREDICATE>
+				<kTAG_OBJECT>LR:LANDRACE</kTAG_OBJECT>
+			</edge>
+        </edges>
+    </unit>
+    <unit>
+    	<term kTAG_LID="10" kTAG_NAMESPACE="LR:LRSTATUS">
+			<kTAG_LABEL language="en"><![CDATA[Does not answer]]></kTAG_LABEL>
+    	</term>
+    	<node>
+			<kTAG_CLASS>COntologyMasterVertex</kTAG_CLASS>
+			<kTAG_KIND>
+				<item>:KIND-ENUMERATION</item>
+			</kTAG_KIND>
+    	</node>
+        <edges>
+			<edge>
+				<kTAG_PREDICATE>:ENUM-OF</kTAG_PREDICATE>
+				<kTAG_OBJECT>LR:LRSTATUS</kTAG_OBJECT>
+			</edge>
+        </edges>
+    </unit>
+    <unit>
+    	<term kTAG_LID="20" kTAG_NAMESPACE="LR:LRSTATUS">
+			<kTAG_LABEL language="en"><![CDATA[Inherent]]></kTAG_LABEL>
+ 			<kTAG_DEFINITION language="en"><![CDATA[Should match with LRCULTPER 20 or 33, at least.]]></kTAG_DEFINITION>
+		</term>
+    	<node>
+			<kTAG_CLASS>COntologyMasterVertex</kTAG_CLASS>
+			<kTAG_KIND>
+				<item>:KIND-ENUMERATION</item>
+			</kTAG_KIND>
+    	</node>
+        <edges>
+			<edge>
+				<kTAG_PREDICATE>:ENUM-OF</kTAG_PREDICATE>
+				<kTAG_OBJECT>LR:LRSTATUS</kTAG_OBJECT>
+			</edge>
+        </edges>
+    </unit>
+    <unit>
+    	<term kTAG_LID="30" kTAG_NAMESPACE="LR:LRSTATUS">
+			<kTAG_LABEL language="en"><![CDATA[Reintroduced by the family which presently cultivates the LR from a different estate belonging to the same family]]></kTAG_LABEL>
+ 			<kTAG_DEFINITION language="en"><![CDATA[For example: the very same LR has been grown for several decades and generations in the same family at the same farm/garden, but now it is grown at the summer cottage in different district/neighboring house belonging to the same family. Provide details under REMARKS.]]></kTAG_DEFINITION>
+		</term>
+    	<node>
+			<kTAG_CLASS>COntologyMasterVertex</kTAG_CLASS>
+			<kTAG_KIND>
+				<item>:KIND-ENUMERATION</item>
+			</kTAG_KIND>
+    	</node>
+        <edges>
+			<edge>
+				<kTAG_PREDICATE>:ENUM-OF</kTAG_PREDICATE>
+				<kTAG_OBJECT>LR:LRSTATUS</kTAG_OBJECT>
+			</edge>
+        </edges>
+    </unit>
+    <unit>
+    	<term kTAG_LID="40" kTAG_NAMESPACE="LR:LRSTATUS">
+			<kTAG_LABEL language="en"><![CDATA[Introduced/Reintroduced from gene bank]]></kTAG_LABEL>
+ 			<kTAG_DEFINITION language="en"><![CDATA[Provide Gene Bank name in REMARKS.]]></kTAG_DEFINITION>
+		</term>
+    	<node>
+			<kTAG_CLASS>COntologyMasterVertex</kTAG_CLASS>
+			<kTAG_KIND>
+				<item>:KIND-ENUMERATION</item>
+			</kTAG_KIND>
+    	</node>
+        <edges>
+			<edge>
+				<kTAG_PREDICATE>:ENUM-OF</kTAG_PREDICATE>
+				<kTAG_OBJECT>LR:LRSTATUS</kTAG_OBJECT>
+			</edge>
+        </edges>
+    </unit>
+    <unit>
+    	<term kTAG_LID="50" kTAG_NAMESPACE="LR:LRSTATUS">
+			<kTAG_LABEL language="en"><![CDATA[Introduced/Reintroduced from other farms]]></kTAG_LABEL>
+		</term>
+    	<node>
+			<kTAG_CLASS>COntologyMasterVertex</kTAG_CLASS>
+			<kTAG_KIND>
+				<item>:KIND-ENUMERATION</item>
+			</kTAG_KIND>
+    	</node>
+        <edges>
+			<edge>
+				<kTAG_PREDICATE>:ENUM-OF</kTAG_PREDICATE>
+				<kTAG_OBJECT>LR:LRSTATUS</kTAG_OBJECT>
+			</edge>
+        </edges>
+    </unit>
+    <unit>
+    	<term kTAG_LID="51" kTAG_NAMESPACE="LR:LRSTATUS">
+			<kTAG_LABEL language="en"><![CDATA[Introduced/Reintroduced from neighbouring farm]]></kTAG_LABEL>
+ 			<kTAG_DEFINITION language="en"><![CDATA[Introduced/Reintroduced from other farms: neighbouring farm.]]></kTAG_DEFINITION>
+		</term>
+    	<node>
+			<kTAG_CLASS>COntologyMasterVertex</kTAG_CLASS>
+			<kTAG_KIND>
+				<item>:KIND-ENUMERATION</item>
+			</kTAG_KIND>
+    	</node>
+        <edges>
+			<edge>
+				<kTAG_PREDICATE>:ENUM-OF</kTAG_PREDICATE>
+				<kTAG_OBJECT>LR:LRSTATUS:50</kTAG_OBJECT>
+			</edge>
+        </edges>
+    </unit>
+    <unit>
+    	<term kTAG_LID="52" kTAG_NAMESPACE="LR:LRSTATUS">
+			<kTAG_LABEL language="en"><![CDATA[Introduced/Reintroduced from farm in the same district]]></kTAG_LABEL>
+ 			<kTAG_DEFINITION language="en"><![CDATA[Introduced/Reintroduced from other farms: farm in the same district.]]></kTAG_DEFINITION>
+		</term>
+    	<node>
+			<kTAG_CLASS>COntologyMasterVertex</kTAG_CLASS>
+			<kTAG_KIND>
+				<item>:KIND-ENUMERATION</item>
+			</kTAG_KIND>
+    	</node>
+        <edges>
+			<edge>
+				<kTAG_PREDICATE>:ENUM-OF</kTAG_PREDICATE>
+				<kTAG_OBJECT>LR:LRSTATUS:50</kTAG_OBJECT>
+			</edge>
+        </edges>
+    </unit>
+    <unit>
+    	<term kTAG_LID="53" kTAG_NAMESPACE="LR:LRSTATUS">
+			<kTAG_LABEL language="en"><![CDATA[Introduced/Reintroduced from farm in different district/country]]></kTAG_LABEL>
+ 			<kTAG_DEFINITION language="en"><![CDATA[Introduced/Reintroduced from other farms: farm in different district/country.]]></kTAG_DEFINITION>
+		</term>
+    	<node>
+			<kTAG_CLASS>COntologyMasterVertex</kTAG_CLASS>
+			<kTAG_KIND>
+				<item>:KIND-ENUMERATION</item>
+			</kTAG_KIND>
+    	</node>
+        <edges>
+			<edge>
+				<kTAG_PREDICATE>:ENUM-OF</kTAG_PREDICATE>
+				<kTAG_OBJECT>LR:LRSTATUS:50</kTAG_OBJECT>
+			</edge>
+        </edges>
+    </unit>
+    <unit>
+    	<term kTAG_LID="60" kTAG_NAMESPACE="LR:LRSTATUS">
+			<kTAG_LABEL language="en"><![CDATA[Introduced/Reintroduced from the seed market]]></kTAG_LABEL>
+		</term>
+    	<node>
+			<kTAG_CLASS>COntologyMasterVertex</kTAG_CLASS>
+			<kTAG_KIND>
+				<item>:KIND-ENUMERATION</item>
+			</kTAG_KIND>
+    	</node>
+        <edges>
+			<edge>
+				<kTAG_PREDICATE>:ENUM-OF</kTAG_PREDICATE>
+				<kTAG_OBJECT>LR:LRSTATUS</kTAG_OBJECT>
+			</edge>
+        </edges>
+    </unit>
+    <unit>
+    	<term kTAG_LID="99" kTAG_NAMESPACE="LR:LRSTATUS">
+			<kTAG_LABEL language="en"><![CDATA[Other]]></kTAG_LABEL>
+ 			<kTAG_DEFINITION language="en"><![CDATA[Other (elaborate in REMARKS).]]></kTAG_DEFINITION>
+		</term>
+    	<node>
+			<kTAG_CLASS>COntologyMasterVertex</kTAG_CLASS>
+			<kTAG_KIND>
+				<item>:KIND-ENUMERATION</item>
+			</kTAG_KIND>
+    	</node>
+        <edges>
+			<edge>
+				<kTAG_PREDICATE>:ENUM-OF</kTAG_PREDICATE>
+				<kTAG_OBJECT>LR:LRSTATUS</kTAG_OBJECT>
+			</edge>
+        </edges>
+    </unit>
+    
+    <!-- LR:LRSSS -->
+    <unit>
+    	<term kTAG_LID="LRSSS" kTAG_NAMESPACE="LR">
+			<kTAG_LABEL language="en"><![CDATA[Landrace seed/propagation material supply system]]></kTAG_LABEL>
+			<kTAG_DEFINITION language="en"><![CDATA[From where the seed (or propagation material in general) initially came, as from farmer statement.]]></kTAG_DEFINITION>
+			<kTAG_SYNONYMS>
+				<item>LRSSS</item>
+				<item>6.4</item>
+			</kTAG_SYNONYMS>
+    	</term>
+    	<node>
+			<kTAG_CLASS>COntologyMasterVertex</kTAG_CLASS>
+			<kTAG_KIND>
+				<item>:KIND-FEATURE</item>
+				<item>:KIND-SCALE</item>
+			</kTAG_KIND>
+			<kTAG_TYPE>
+				<item>:REQUIRED</item>
+				<item>:ENUM</item>
+			</kTAG_TYPE>
+			<kTAG_EXAMPLES>
+				<item>20</item>
+			</kTAG_EXAMPLES>
+    	</node>
+        <edges>
+			<edge>
+				<kTAG_PREDICATE>:SUBCLASS-OF</kTAG_PREDICATE>
+				<kTAG_OBJECT>LR:LANDRACE</kTAG_OBJECT>
+			</edge>
+        </edges>
+    </unit>
+    <unit>
+    	<term kTAG_LID="10" kTAG_NAMESPACE="LR:LRSSS">
+			<kTAG_LABEL language="en"><![CDATA[Informal sector]]></kTAG_LABEL>
+    	</term>
+    	<node>
+			<kTAG_CLASS>COntologyMasterVertex</kTAG_CLASS>
+			<kTAG_KIND>
+				<item>:KIND-ENUMERATION</item>
+			</kTAG_KIND>
+    	</node>
+        <edges>
+			<edge>
+				<kTAG_PREDICATE>:ENUM-OF</kTAG_PREDICATE>
+				<kTAG_OBJECT>LR:LRSSS</kTAG_OBJECT>
+			</edge>
+        </edges>
+    </unit>
+    <unit>
+    	<term kTAG_LID="11" kTAG_NAMESPACE="LR:LRSSS">
+			<kTAG_LABEL language="en"><![CDATA[Own family harvest]]></kTAG_LABEL>
+    	</term>
+    	<node>
+			<kTAG_CLASS>COntologyMasterVertex</kTAG_CLASS>
+			<kTAG_KIND>
+				<item>:KIND-ENUMERATION</item>
+			</kTAG_KIND>
+    	</node>
+        <edges>
+			<edge>
+				<kTAG_PREDICATE>:ENUM-OF</kTAG_PREDICATE>
+				<kTAG_OBJECT>LR:LRSSS:10</kTAG_OBJECT>
+			</edge>
+        </edges>
+    </unit>
+    <unit>
+    	<term kTAG_LID="12" kTAG_NAMESPACE="LR:LRSSS">
+			<kTAG_LABEL language="en"><![CDATA[Exchanges with relatives, neighbours]]></kTAG_LABEL>
+    	</term>
+    	<node>
+			<kTAG_CLASS>COntologyMasterVertex</kTAG_CLASS>
+			<kTAG_KIND>
+				<item>:KIND-ENUMERATION</item>
+			</kTAG_KIND>
+    	</node>
+        <edges>
+			<edge>
+				<kTAG_PREDICATE>:ENUM-OF</kTAG_PREDICATE>
+				<kTAG_OBJECT>LR:LRSSS:10</kTAG_OBJECT>
+			</edge>
+        </edges>
+    </unit>
+    <unit>
+    	<term kTAG_LID="13" kTAG_NAMESPACE="LR:LRSSS">
+			<kTAG_LABEL language="en"><![CDATA[Exchanges between close villages via barter system]]></kTAG_LABEL>
+    	</term>
+    	<node>
+			<kTAG_CLASS>COntologyMasterVertex</kTAG_CLASS>
+			<kTAG_KIND>
+				<item>:KIND-ENUMERATION</item>
+			</kTAG_KIND>
+    	</node>
+        <edges>
+			<edge>
+				<kTAG_PREDICATE>:ENUM-OF</kTAG_PREDICATE>
+				<kTAG_OBJECT>LR:LRSSS:10</kTAG_OBJECT>
+			</edge>
+        </edges>
+    </unit>
+    <unit>
+    	<term kTAG_LID="14" kTAG_NAMESPACE="LR:LRSSS">
+			<kTAG_LABEL language="en"><![CDATA[Local / regional market]]></kTAG_LABEL>
+    	</term>
+    	<node>
+			<kTAG_CLASS>COntologyMasterVertex</kTAG_CLASS>
+			<kTAG_KIND>
+				<item>:KIND-ENUMERATION</item>
+			</kTAG_KIND>
+    	</node>
+        <edges>
+			<edge>
+				<kTAG_PREDICATE>:ENUM-OF</kTAG_PREDICATE>
+				<kTAG_OBJECT>LR:LRSSS:10</kTAG_OBJECT>
+			</edge>
+        </edges>
+    </unit>
+    <unit>
+    	<term kTAG_LID="20" kTAG_NAMESPACE="LR:LRSSS">
+			<kTAG_LABEL language="en"><![CDATA[Formal sector]]></kTAG_LABEL>
+    	</term>
+    	<node>
+			<kTAG_CLASS>COntologyMasterVertex</kTAG_CLASS>
+			<kTAG_KIND>
+				<item>:KIND-ENUMERATION</item>
+			</kTAG_KIND>
+    	</node>
+        <edges>
+			<edge>
+				<kTAG_PREDICATE>:ENUM-OF</kTAG_PREDICATE>
+				<kTAG_OBJECT>LR:LRSSS</kTAG_OBJECT>
+			</edge>
+        </edges>
+    </unit>
+    <unit>
+    	<term kTAG_LID="21" kTAG_NAMESPACE="LR:LRSSS">
+			<kTAG_LABEL language="en"><![CDATA[Certified material from the seed market]]></kTAG_LABEL>
+    	</term>
+    	<node>
+			<kTAG_CLASS>COntologyMasterVertex</kTAG_CLASS>
+			<kTAG_KIND>
+				<item>:KIND-ENUMERATION</item>
+			</kTAG_KIND>
+    	</node>
+        <edges>
+			<edge>
+				<kTAG_PREDICATE>:ENUM-OF</kTAG_PREDICATE>
+				<kTAG_OBJECT>LR:LRSSS:20</kTAG_OBJECT>
+			</edge>
+        </edges>
+    </unit>
+    <unit>
+    	<term kTAG_LID="22" kTAG_NAMESPACE="LR:LRSSS">
+			<kTAG_LABEL language="en"><![CDATA[Genebank]]></kTAG_LABEL>
+ 			<kTAG_DEFINITION language="en"><![CDATA[Genebank (to be specified from which genebank in REMARKS).]]></kTAG_DEFINITION>
+   	</term>
+    	<node>
+			<kTAG_CLASS>COntologyMasterVertex</kTAG_CLASS>
+			<kTAG_KIND>
+				<item>:KIND-ENUMERATION</item>
+			</kTAG_KIND>
+    	</node>
+        <edges>
+			<edge>
+				<kTAG_PREDICATE>:ENUM-OF</kTAG_PREDICATE>
+				<kTAG_OBJECT>LR:LRSSS:20</kTAG_OBJECT>
+			</edge>
+        </edges>
+    </unit>
+    <unit>
+    	<term kTAG_LID="30" kTAG_NAMESPACE="LR:LRSSS">
+			<kTAG_LABEL language="en"><![CDATA[Does not answer]]></kTAG_LABEL>
+    	</term>
+    	<node>
+			<kTAG_CLASS>COntologyMasterVertex</kTAG_CLASS>
+			<kTAG_KIND>
+				<item>:KIND-ENUMERATION</item>
+			</kTAG_KIND>
+    	</node>
+        <edges>
+			<edge>
+				<kTAG_PREDICATE>:ENUM-OF</kTAG_PREDICATE>
+				<kTAG_OBJECT>LR:LRSSS</kTAG_OBJECT>
+			</edge>
+        </edges>
+    </unit>
+    <unit>
+    	<term kTAG_LID="99" kTAG_NAMESPACE="LR:LRSSS">
+			<kTAG_LABEL language="en"><![CDATA[Other]]></kTAG_LABEL>
+ 			<kTAG_DEFINITION language="en"><![CDATA[Other (elaborate in REMARKS).]]></kTAG_DEFINITION>
+	   	</term>
+    	<node>
+			<kTAG_CLASS>COntologyMasterVertex</kTAG_CLASS>
+			<kTAG_KIND>
+				<item>:KIND-ENUMERATION</item>
+			</kTAG_KIND>
+    	</node>
+        <edges>
+			<edge>
+				<kTAG_PREDICATE>:ENUM-OF</kTAG_PREDICATE>
+				<kTAG_OBJECT>LR:LRSSS</kTAG_OBJECT>
+			</edge>
+        </edges>
+    </unit>
+    
+    <!-- LR:LRCONT -->
+    <unit>
+    	<term kTAG_LID="LRCONT" kTAG_NAMESPACE="LR">
+			<kTAG_LABEL language="en"><![CDATA[Landrace continuity]]></kTAG_LABEL>
+			<kTAG_DEFINITION language="en"><![CDATA[Whether the LR maintainer plans to continue to grow LR for the foreseeable future.]]></kTAG_DEFINITION>
+			<kTAG_SYNONYMS>
+				<item>LRCONT</item>
+				<item>6.5</item>
+			</kTAG_SYNONYMS>
+    	</term>
+    	<node>
+			<kTAG_CLASS>COntologyMasterVertex</kTAG_CLASS>
+			<kTAG_KIND>
+				<item>:KIND-FEATURE</item>
+				<item>:KIND-SCALE</item>
+			</kTAG_KIND>
+			<kTAG_TYPE>
+				<item>:ENUM</item>
+			</kTAG_TYPE>
+			<kTAG_EXAMPLES>
+				<item>20</item>
+			</kTAG_EXAMPLES>
+    	</node>
+        <edges>
+			<edge>
+				<kTAG_PREDICATE>:SUBCLASS-OF</kTAG_PREDICATE>
+				<kTAG_OBJECT>LR:LANDRACE</kTAG_OBJECT>
+			</edge>
+        </edges>
+    </unit>
+    <unit>
+    	<term kTAG_LID="10" kTAG_NAMESPACE="LR:LRCONT">
+			<kTAG_LABEL language="en"><![CDATA[Undecided]]></kTAG_LABEL>
+    	</term>
+    	<node>
+			<kTAG_CLASS>COntologyMasterVertex</kTAG_CLASS>
+			<kTAG_KIND>
+				<item>:KIND-ENUMERATION</item>
+			</kTAG_KIND>
+    	</node>
+        <edges>
+			<edge>
+				<kTAG_PREDICATE>:ENUM-OF</kTAG_PREDICATE>
+				<kTAG_OBJECT>LR:LRCONT</kTAG_OBJECT>
+			</edge>
+        </edges>
+    </unit>
+    <unit>
+    	<term kTAG_LID="20" kTAG_NAMESPACE="LR:LRCONT">
+			<kTAG_LABEL language="en"><![CDATA[Will stop next year]]></kTAG_LABEL>
+    	</term>
+    	<node>
+			<kTAG_CLASS>COntologyMasterVertex</kTAG_CLASS>
+			<kTAG_KIND>
+				<item>:KIND-ENUMERATION</item>
+			</kTAG_KIND>
+    	</node>
+        <edges>
+			<edge>
+				<kTAG_PREDICATE>:ENUM-OF</kTAG_PREDICATE>
+				<kTAG_OBJECT>LR:LRCONT</kTAG_OBJECT>
+			</edge>
+        </edges>
+    </unit>
+    <unit>
+    	<term kTAG_LID="30" kTAG_NAMESPACE="LR:LRCONT">
+			<kTAG_LABEL language="en"><![CDATA[Will continue, but considers changing within a few years]]></kTAG_LABEL>
+    	</term>
+    	<node>
+			<kTAG_CLASS>COntologyMasterVertex</kTAG_CLASS>
+			<kTAG_KIND>
+				<item>:KIND-ENUMERATION</item>
+			</kTAG_KIND>
+    	</node>
+        <edges>
+			<edge>
+				<kTAG_PREDICATE>:ENUM-OF</kTAG_PREDICATE>
+				<kTAG_OBJECT>LR:LRCONT</kTAG_OBJECT>
+			</edge>
+        </edges>
+    </unit>
+    <unit>
+    	<term kTAG_LID="40" kTAG_NAMESPACE="LR:LRCONT">
+			<kTAG_LABEL language="en"><![CDATA[Will continue as long as possible]]></kTAG_LABEL>
+    	</term>
+    	<node>
+			<kTAG_CLASS>COntologyMasterVertex</kTAG_CLASS>
+			<kTAG_KIND>
+				<item>:KIND-ENUMERATION</item>
+			</kTAG_KIND>
+    	</node>
+        <edges>
+			<edge>
+				<kTAG_PREDICATE>:ENUM-OF</kTAG_PREDICATE>
+				<kTAG_OBJECT>LR:LRCONT</kTAG_OBJECT>
+			</edge>
+        </edges>
+    </unit>
+    <unit>
+    	<term kTAG_LID="99" kTAG_NAMESPACE="LR:LRCONT">
+			<kTAG_LABEL language="en"><![CDATA[Other]]></kTAG_LABEL>
+ 			<kTAG_DEFINITION language="en"><![CDATA[Other (elaborate in REMARKS).]]></kTAG_DEFINITION>
+    	</term>
+    	<node>
+			<kTAG_CLASS>COntologyMasterVertex</kTAG_CLASS>
+			<kTAG_KIND>
+				<item>:KIND-ENUMERATION</item>
+			</kTAG_KIND>
+    	</node>
+        <edges>
+			<edge>
+				<kTAG_PREDICATE>:ENUM-OF</kTAG_PREDICATE>
+				<kTAG_OBJECT>LR:LRCONT</kTAG_OBJECT>
+			</edge>
+        </edges>
+    </unit>
+    
+    <!-- LR:LRDISTR -->
+    <unit>
+    	<term kTAG_LID="LRDISTR" kTAG_NAMESPACE="LR">
+			<kTAG_LABEL language="en"><![CDATA[Landrace distribution]]></kTAG_LABEL>
+			<kTAG_DEFINITION language="en"><![CDATA[Whether the LR maintainer plans to give/exchange the LR to/with other growers.]]></kTAG_DEFINITION>
+			<kTAG_SYNONYMS>
+				<item>LRDISTR</item>
+				<item>6.6</item>
+			</kTAG_SYNONYMS>
+    	</term>
+    	<node>
+			<kTAG_CLASS>COntologyMasterVertex</kTAG_CLASS>
+			<kTAG_KIND>
+				<item>:KIND-FEATURE</item>
+				<item>:KIND-SCALE</item>
+			</kTAG_KIND>
+			<kTAG_TYPE>
+				<item>:ENUM</item>
+			</kTAG_TYPE>
+			<kTAG_EXAMPLES>
+				<item>12</item>
+			</kTAG_EXAMPLES>
+    	</node>
+        <edges>
+			<edge>
+				<kTAG_PREDICATE>:SUBCLASS-OF</kTAG_PREDICATE>
+				<kTAG_OBJECT>LR:LANDRACE</kTAG_OBJECT>
+			</edge>
+        </edges>
+    </unit>
+    <unit>
+    	<term kTAG_LID="10" kTAG_NAMESPACE="LR:LRDISTR">
+			<kTAG_LABEL language="en"><![CDATA[Yes]]></kTAG_LABEL>
+    	</term>
+    	<node>
+			<kTAG_CLASS>COntologyMasterVertex</kTAG_CLASS>
+			<kTAG_KIND>
+				<item>:KIND-ENUMERATION</item>
+			</kTAG_KIND>
+    	</node>
+        <edges>
+			<edge>
+				<kTAG_PREDICATE>:ENUM-OF</kTAG_PREDICATE>
+				<kTAG_OBJECT>LR:LRDISTR</kTAG_OBJECT>
+			</edge>
+        </edges>
+    </unit>
+    <unit>
+    	<term kTAG_LID="11" kTAG_NAMESPACE="LR:LRDISTR">
+			<kTAG_LABEL language="en"><![CDATA[To relative]]></kTAG_LABEL>
+ 			<kTAG_DEFINITION language="en"><![CDATA[Yes, to relative.]]></kTAG_DEFINITION>
+   	</term>
+    	<node>
+			<kTAG_CLASS>COntologyMasterVertex</kTAG_CLASS>
+			<kTAG_KIND>
+				<item>:KIND-ENUMERATION</item>
+			</kTAG_KIND>
+    	</node>
+        <edges>
+			<edge>
+				<kTAG_PREDICATE>:ENUM-OF</kTAG_PREDICATE>
+				<kTAG_OBJECT>LR:LRDISTR:10</kTAG_OBJECT>
+			</edge>
+        </edges>
+    </unit>
+    <unit>
+    	<term kTAG_LID="12" kTAG_NAMESPACE="LR:LRDISTR">
+			<kTAG_LABEL language="en"><![CDATA[To friend or neighbour]]></kTAG_LABEL>
+  			<kTAG_DEFINITION language="en"><![CDATA[Yes, to friend or neighbour.]]></kTAG_DEFINITION>
+	   	</term>
+    	<node>
+			<kTAG_CLASS>COntologyMasterVertex</kTAG_CLASS>
+			<kTAG_KIND>
+				<item>:KIND-ENUMERATION</item>
+			</kTAG_KIND>
+    	</node>
+        <edges>
+			<edge>
+				<kTAG_PREDICATE>:ENUM-OF</kTAG_PREDICATE>
+				<kTAG_OBJECT>LR:LRDISTR:10</kTAG_OBJECT>
+			</edge>
+        </edges>
+    </unit>
+    <unit>
+    	<term kTAG_LID="13" kTAG_NAMESPACE="LR:LRDISTR">
+			<kTAG_LABEL language="en"><![CDATA[To another grower]]></kTAG_LABEL>
+  			<kTAG_DEFINITION language="en"><![CDATA[Yes, to another grower.]]></kTAG_DEFINITION>
+	   	</term>
+    	<node>
+			<kTAG_CLASS>COntologyMasterVertex</kTAG_CLASS>
+			<kTAG_KIND>
+				<item>:KIND-ENUMERATION</item>
+			</kTAG_KIND>
+    	</node>
+        <edges>
+			<edge>
+				<kTAG_PREDICATE>:ENUM-OF</kTAG_PREDICATE>
+				<kTAG_OBJECT>LR:LRDISTR:10</kTAG_OBJECT>
+			</edge>
+        </edges>
+    </unit>
+    <unit>
+    	<term kTAG_LID="14" kTAG_NAMESPACE="LR:LRDISTR">
+			<kTAG_LABEL language="en"><![CDATA[To seed/seedlings-swap event]]></kTAG_LABEL>
+  			<kTAG_DEFINITION language="en"><![CDATA[Yes, to seed/seedlings-swap event.]]></kTAG_DEFINITION>
+	   	</term>
+    	<node>
+			<kTAG_CLASS>COntologyMasterVertex</kTAG_CLASS>
+			<kTAG_KIND>
+				<item>:KIND-ENUMERATION</item>
+			</kTAG_KIND>
+    	</node>
+        <edges>
+			<edge>
+				<kTAG_PREDICATE>:ENUM-OF</kTAG_PREDICATE>
+				<kTAG_OBJECT>LR:LRDISTR:10</kTAG_OBJECT>
+			</edge>
+        </edges>
+    </unit>
+    <unit>
+    	<term kTAG_LID="15" kTAG_NAMESPACE="LR:LRDISTR">
+			<kTAG_LABEL language="en"><![CDATA[To plant genebank]]></kTAG_LABEL>
+  			<kTAG_DEFINITION language="en"><![CDATA[Yes, to plant genebank.]]></kTAG_DEFINITION>
+	   	</term>
+    	<node>
+			<kTAG_CLASS>COntologyMasterVertex</kTAG_CLASS>
+			<kTAG_KIND>
+				<item>:KIND-ENUMERATION</item>
+			</kTAG_KIND>
+    	</node>
+        <edges>
+			<edge>
+				<kTAG_PREDICATE>:ENUM-OF</kTAG_PREDICATE>
+				<kTAG_OBJECT>LR:LRDISTR:10</kTAG_OBJECT>
+			</edge>
+        </edges>
+    </unit>
+    <unit>
+    	<term kTAG_LID="20" kTAG_NAMESPACE="LR:LRDISTR">
+			<kTAG_LABEL language="en"><![CDATA[No]]></kTAG_LABEL>
+	   	</term>
+    	<node>
+			<kTAG_CLASS>COntologyMasterVertex</kTAG_CLASS>
+			<kTAG_KIND>
+				<item>:KIND-ENUMERATION</item>
+			</kTAG_KIND>
+    	</node>
+        <edges>
+			<edge>
+				<kTAG_PREDICATE>:ENUM-OF</kTAG_PREDICATE>
+				<kTAG_OBJECT>LR:LRDISTR</kTAG_OBJECT>
+			</edge>
+        </edges>
+    </unit>
+    <unit>
+    	<term kTAG_LID="30" kTAG_NAMESPACE="LR:LRDISTR">
+			<kTAG_LABEL language="en"><![CDATA[Undecided]]></kTAG_LABEL>
+	   	</term>
+    	<node>
+			<kTAG_CLASS>COntologyMasterVertex</kTAG_CLASS>
+			<kTAG_KIND>
+				<item>:KIND-ENUMERATION</item>
+			</kTAG_KIND>
+    	</node>
+        <edges>
+			<edge>
+				<kTAG_PREDICATE>:ENUM-OF</kTAG_PREDICATE>
+				<kTAG_OBJECT>LR:LRDISTR</kTAG_OBJECT>
+			</edge>
+        </edges>
+    </unit>
+    
+    <!-- LR:LRFARMERMOT -->
+    <unit>
+    	<term kTAG_LID="LRFARMERMOT" kTAG_NAMESPACE="LR">
+			<kTAG_LABEL language="en"><![CDATA[Farmer motivations for growing the landrace]]></kTAG_LABEL>
+			<kTAG_DEFINITION language="en"><![CDATA[Taken from farmer statement. See codes in the table below. Multiple choices are allowed separated by a semicolon (;) without space.]]></kTAG_DEFINITION>
+			<kTAG_SYNONYMS>
+				<item>LRFARMERMOT</item>
+				<item>6.7</item>
+			</kTAG_SYNONYMS>
+    	</term>
+    	<node>
+			<kTAG_CLASS>COntologyMasterVertex</kTAG_CLASS>
+			<kTAG_KIND>
+				<item>:KIND-FEATURE</item>
+				<item>:KIND-SCALE</item>
+			</kTAG_KIND>
+			<kTAG_TYPE>
+				<item>:SET</item>
+			</kTAG_TYPE>
+			<kTAG_EXAMPLES>
+				<item>12;21</item>
+			</kTAG_EXAMPLES>
+    	</node>
+        <edges>
+			<edge>
+				<kTAG_PREDICATE>:SUBCLASS-OF</kTAG_PREDICATE>
+				<kTAG_OBJECT>LR:LANDRACE</kTAG_OBJECT>
+			</edge>
+        </edges>
+    </unit>
+    <unit>
+    	<term kTAG_LID="10" kTAG_NAMESPACE="LR:LRFARMERMOT">
+			<kTAG_LABEL language="en"><![CDATA[Agronomical traits]]></kTAG_LABEL>
+    	</term>
+    	<node>
+			<kTAG_CLASS>COntologyMasterVertex</kTAG_CLASS>
+			<kTAG_KIND>
+				<item>:KIND-ENUMERATION</item>
+			</kTAG_KIND>
+    	</node>
+        <edges>
+			<edge>
+				<kTAG_PREDICATE>:ENUM-OF</kTAG_PREDICATE>
+				<kTAG_OBJECT>LR:LRFARMERMOT</kTAG_OBJECT>
+			</edge>
+        </edges>
+    </unit>
+    <unit>
+    	<term kTAG_LID="11" kTAG_NAMESPACE="LR:LRFARMERMOT">
+			<kTAG_LABEL language="en"><![CDATA[Easy/simple cultivation required]]></kTAG_LABEL>
+    	</term>
+    	<node>
+			<kTAG_CLASS>COntologyMasterVertex</kTAG_CLASS>
+			<kTAG_KIND>
+				<item>:KIND-ENUMERATION</item>
+			</kTAG_KIND>
+    	</node>
+        <edges>
+			<edge>
+				<kTAG_PREDICATE>:ENUM-OF</kTAG_PREDICATE>
+				<kTAG_OBJECT>LR:LRFARMERMOT:10</kTAG_OBJECT>
+			</edge>
+        </edges>
+    </unit>
+    <unit>
+    	<term kTAG_LID="12" kTAG_NAMESPACE="LR:LRFARMERMOT">
+			<kTAG_LABEL language="en"><![CDATA[Precocity]]></kTAG_LABEL>
+ 			<kTAG_DEFINITION language="en"><![CDATA[Precocity (early development or maturity).]]></kTAG_DEFINITION>
+   	</term>
+    	<node>
+			<kTAG_CLASS>COntologyMasterVertex</kTAG_CLASS>
+			<kTAG_KIND>
+				<item>:KIND-ENUMERATION</item>
+			</kTAG_KIND>
+    	</node>
+        <edges>
+			<edge>
+				<kTAG_PREDICATE>:ENUM-OF</kTAG_PREDICATE>
+				<kTAG_OBJECT>LR:LRFARMERMOT:10</kTAG_OBJECT>
+			</edge>
+        </edges>
+    </unit>
+    <unit>
+    	<term kTAG_LID="13" kTAG_NAMESPACE="LR:LRFARMERMOT">
+			<kTAG_LABEL language="en"><![CDATA[Lateness]]></kTAG_LABEL>
+    	</term>
+    	<node>
+			<kTAG_CLASS>COntologyMasterVertex</kTAG_CLASS>
+			<kTAG_KIND>
+				<item>:KIND-ENUMERATION</item>
+			</kTAG_KIND>
+    	</node>
+        <edges>
+			<edge>
+				<kTAG_PREDICATE>:ENUM-OF</kTAG_PREDICATE>
+				<kTAG_OBJECT>LR:LRFARMERMOT:10</kTAG_OBJECT>
+			</edge>
+        </edges>
+    </unit>
+    <unit>
+    	<term kTAG_LID="14" kTAG_NAMESPACE="LR:LRFARMERMOT">
+			<kTAG_LABEL language="en"><![CDATA[Lodging resistance]]></kTAG_LABEL>
+    	</term>
+    	<node>
+			<kTAG_CLASS>COntologyMasterVertex</kTAG_CLASS>
+			<kTAG_KIND>
+				<item>:KIND-ENUMERATION</item>
+			</kTAG_KIND>
+    	</node>
+        <edges>
+			<edge>
+				<kTAG_PREDICATE>:ENUM-OF</kTAG_PREDICATE>
+				<kTAG_OBJECT>LR:LRFARMERMOT:10</kTAG_OBJECT>
+			</edge>
+        </edges>
+    </unit>
+    <unit>
+    	<term kTAG_LID="15" kTAG_NAMESPACE="LR:LRFARMERMOT">
+			<kTAG_LABEL language="en"><![CDATA[High yield]]></kTAG_LABEL>
+    	</term>
+    	<node>
+			<kTAG_CLASS>COntologyMasterVertex</kTAG_CLASS>
+			<kTAG_KIND>
+				<item>:KIND-ENUMERATION</item>
+			</kTAG_KIND>
+    	</node>
+        <edges>
+			<edge>
+				<kTAG_PREDICATE>:ENUM-OF</kTAG_PREDICATE>
+				<kTAG_OBJECT>LR:LRFARMERMOT:10</kTAG_OBJECT>
+			</edge>
+        </edges>
+    </unit>
+    <unit>
+    	<term kTAG_LID="16" kTAG_NAMESPACE="LR:LRFARMERMOT">
+			<kTAG_LABEL language="en"><![CDATA[Stable yield]]></kTAG_LABEL>
+    	</term>
+    	<node>
+			<kTAG_CLASS>COntologyMasterVertex</kTAG_CLASS>
+			<kTAG_KIND>
+				<item>:KIND-ENUMERATION</item>
+			</kTAG_KIND>
+    	</node>
+        <edges>
+			<edge>
+				<kTAG_PREDICATE>:ENUM-OF</kTAG_PREDICATE>
+				<kTAG_OBJECT>LR:LRFARMERMOT:10</kTAG_OBJECT>
+			</edge>
+        </edges>
+    </unit>
+    <unit>
+    	<term kTAG_LID="20" kTAG_NAMESPACE="LR:LRFARMERMOT">
+			<kTAG_LABEL language="en"><![CDATA[Resistance to stresses]]></kTAG_LABEL>
+    	</term>
+    	<node>
+			<kTAG_CLASS>COntologyMasterVertex</kTAG_CLASS>
+			<kTAG_KIND>
+				<item>:KIND-ENUMERATION</item>
+			</kTAG_KIND>
+    	</node>
+        <edges>
+			<edge>
+				<kTAG_PREDICATE>:ENUM-OF</kTAG_PREDICATE>
+				<kTAG_OBJECT>LR:LRFARMERMOT</kTAG_OBJECT>
+			</edge>
+        </edges>
+    </unit>
+    <unit>
+    	<term kTAG_LID="21" kTAG_NAMESPACE="LR:LRFARMERMOT">
+			<kTAG_LABEL language="en"><![CDATA[Abiotic factors]]></kTAG_LABEL>
+    	</term>
+    	<node>
+			<kTAG_CLASS>COntologyMasterVertex</kTAG_CLASS>
+			<kTAG_KIND>
+				<item>:KIND-ENUMERATION</item>
+			</kTAG_KIND>
+    	</node>
+        <edges>
+			<edge>
+				<kTAG_PREDICATE>:ENUM-OF</kTAG_PREDICATE>
+				<kTAG_OBJECT>LR:LRFARMERMOT:20</kTAG_OBJECT>
+			</edge>
+        </edges>
+    </unit>
+    <unit>
+    	<term kTAG_LID="211" kTAG_NAMESPACE="LR:LRFARMERMOT">
+			<kTAG_LABEL language="en"><![CDATA[Cold]]></kTAG_LABEL>
+ 			<kTAG_DEFINITION language="en"><![CDATA[Abiotic factors: cold.]]></kTAG_DEFINITION>
+    	</term>
+    	<node>
+			<kTAG_CLASS>COntologyMasterVertex</kTAG_CLASS>
+			<kTAG_KIND>
+				<item>:KIND-ENUMERATION</item>
+			</kTAG_KIND>
+    	</node>
+        <edges>
+			<edge>
+				<kTAG_PREDICATE>:ENUM-OF</kTAG_PREDICATE>
+				<kTAG_OBJECT>LR:LRFARMERMOT:21</kTAG_OBJECT>
+			</edge>
+        </edges>
+    </unit>
+    <unit>
+    	<term kTAG_LID="212" kTAG_NAMESPACE="LR:LRFARMERMOT">
+			<kTAG_LABEL language="en"><![CDATA[Drought]]></kTAG_LABEL>
+ 			<kTAG_DEFINITION language="en"><![CDATA[Abiotic factors: drought.]]></kTAG_DEFINITION>
+    	</term>
+    	<node>
+			<kTAG_CLASS>COntologyMasterVertex</kTAG_CLASS>
+			<kTAG_KIND>
+				<item>:KIND-ENUMERATION</item>
+			</kTAG_KIND>
+    	</node>
+        <edges>
+			<edge>
+				<kTAG_PREDICATE>:ENUM-OF</kTAG_PREDICATE>
+				<kTAG_OBJECT>LR:LRFARMERMOT:21</kTAG_OBJECT>
+			</edge>
+        </edges>
+    </unit>
+    <unit>
+    	<term kTAG_LID="213" kTAG_NAMESPACE="LR:LRFARMERMOT">
+			<kTAG_LABEL language="en"><![CDATA[High humidity]]></kTAG_LABEL>
+ 			<kTAG_DEFINITION language="en"><![CDATA[Abiotic factors: high humidity.]]></kTAG_DEFINITION>
+    	</term>
+    	<node>
+			<kTAG_CLASS>COntologyMasterVertex</kTAG_CLASS>
+			<kTAG_KIND>
+				<item>:KIND-ENUMERATION</item>
+			</kTAG_KIND>
+    	</node>
+        <edges>
+			<edge>
+				<kTAG_PREDICATE>:ENUM-OF</kTAG_PREDICATE>
+				<kTAG_OBJECT>LR:LRFARMERMOT:21</kTAG_OBJECT>
+			</edge>
+        </edges>
+    </unit>
+    <unit>
+    	<term kTAG_LID="214" kTAG_NAMESPACE="LR:LRFARMERMOT">
+			<kTAG_LABEL language="en"><![CDATA[Salinity]]></kTAG_LABEL>
+ 			<kTAG_DEFINITION language="en"><![CDATA[Abiotic factors: salinity.]]></kTAG_DEFINITION>
+    	</term>
+    	<node>
+			<kTAG_CLASS>COntologyMasterVertex</kTAG_CLASS>
+			<kTAG_KIND>
+				<item>:KIND-ENUMERATION</item>
+			</kTAG_KIND>
+    	</node>
+        <edges>
+			<edge>
+				<kTAG_PREDICATE>:ENUM-OF</kTAG_PREDICATE>
+				<kTAG_OBJECT>LR:LRFARMERMOT:21</kTAG_OBJECT>
+			</edge>
+        </edges>
+    </unit>
+    <unit>
+    	<term kTAG_LID="22" kTAG_NAMESPACE="LR:LRFARMERMOT">
+			<kTAG_LABEL language="en"><![CDATA[Biotic factors]]></kTAG_LABEL>
+    	</term>
+    	<node>
+			<kTAG_CLASS>COntologyMasterVertex</kTAG_CLASS>
+			<kTAG_KIND>
+				<item>:KIND-ENUMERATION</item>
+			</kTAG_KIND>
+    	</node>
+        <edges>
+			<edge>
+				<kTAG_PREDICATE>:ENUM-OF</kTAG_PREDICATE>
+				<kTAG_OBJECT>LR:LRFARMERMOT:20</kTAG_OBJECT>
+			</edge>
+        </edges>
+    </unit>
+    <unit>
+    	<term kTAG_LID="221" kTAG_NAMESPACE="LR:LRFARMERMOT">
+			<kTAG_LABEL language="en"><![CDATA[Fungal/bacterial/virus]]></kTAG_LABEL>
+ 			<kTAG_DEFINITION language="en"><![CDATA[Biotic factors: fungal/bacterial/virus.]]></kTAG_DEFINITION>
+    	</term>
+    	<node>
+			<kTAG_CLASS>COntologyMasterVertex</kTAG_CLASS>
+			<kTAG_KIND>
+				<item>:KIND-ENUMERATION</item>
+			</kTAG_KIND>
+    	</node>
+        <edges>
+			<edge>
+				<kTAG_PREDICATE>:ENUM-OF</kTAG_PREDICATE>
+				<kTAG_OBJECT>LR:LRFARMERMOT:22</kTAG_OBJECT>
+			</edge>
+        </edges>
+    </unit>
+    <unit>
+    	<term kTAG_LID="222" kTAG_NAMESPACE="LR:LRFARMERMOT">
+			<kTAG_LABEL language="en"><![CDATA[Insect/nematode/etc]]></kTAG_LABEL>
+ 			<kTAG_DEFINITION language="en"><![CDATA[Biotic factors: insect/nematode/etc.]]></kTAG_DEFINITION>
+    	</term>
+    	<node>
+			<kTAG_CLASS>COntologyMasterVertex</kTAG_CLASS>
+			<kTAG_KIND>
+				<item>:KIND-ENUMERATION</item>
+			</kTAG_KIND>
+    	</node>
+        <edges>
+			<edge>
+				<kTAG_PREDICATE>:ENUM-OF</kTAG_PREDICATE>
+				<kTAG_OBJECT>LR:LRFARMERMOT:22</kTAG_OBJECT>
+			</edge>
+        </edges>
+    </unit>
+    <unit>
+    	<term kTAG_LID="30" kTAG_NAMESPACE="LR:LRFARMERMOT">
+			<kTAG_LABEL language="en"><![CDATA[Cultural and religious motivations]]></kTAG_LABEL>
+    	</term>
+    	<node>
+			<kTAG_CLASS>COntologyMasterVertex</kTAG_CLASS>
+			<kTAG_KIND>
+				<item>:KIND-ENUMERATION</item>
+			</kTAG_KIND>
+    	</node>
+        <edges>
+			<edge>
+				<kTAG_PREDICATE>:ENUM-OF</kTAG_PREDICATE>
+				<kTAG_OBJECT>LR:LRFARMERMOT</kTAG_OBJECT>
+			</edge>
+        </edges>
+    </unit>
+    <unit>
+    	<term kTAG_LID="31" kTAG_NAMESPACE="LR:LRFARMERMOT">
+			<kTAG_LABEL language="en"><![CDATA[Personal affection]]></kTAG_LABEL>
+    	</term>
+    	<node>
+			<kTAG_CLASS>COntologyMasterVertex</kTAG_CLASS>
+			<kTAG_KIND>
+				<item>:KIND-ENUMERATION</item>
+			</kTAG_KIND>
+    	</node>
+        <edges>
+			<edge>
+				<kTAG_PREDICATE>:ENUM-OF</kTAG_PREDICATE>
+				<kTAG_OBJECT>LR:LRFARMERMOT:30</kTAG_OBJECT>
+			</edge>
+        </edges>
+    </unit>
+    <unit>
+    	<term kTAG_LID="32" kTAG_NAMESPACE="LR:LRFARMERMOT">
+			<kTAG_LABEL language="en"><![CDATA[Special family food preparations]]></kTAG_LABEL>
+    	</term>
+    	<node>
+			<kTAG_CLASS>COntologyMasterVertex</kTAG_CLASS>
+			<kTAG_KIND>
+				<item>:KIND-ENUMERATION</item>
+			</kTAG_KIND>
+    	</node>
+        <edges>
+			<edge>
+				<kTAG_PREDICATE>:ENUM-OF</kTAG_PREDICATE>
+				<kTAG_OBJECT>LR:LRFARMERMOT:30</kTAG_OBJECT>
+			</edge>
+        </edges>
+    </unit>
+    <unit>
+    	<term kTAG_LID="33" kTAG_NAMESPACE="LR:LRFARMERMOT">
+			<kTAG_LABEL language="en"><![CDATA[Special family ceremonies]]></kTAG_LABEL>
+    	</term>
+    	<node>
+			<kTAG_CLASS>COntologyMasterVertex</kTAG_CLASS>
+			<kTAG_KIND>
+				<item>:KIND-ENUMERATION</item>
+			</kTAG_KIND>
+    	</node>
+        <edges>
+			<edge>
+				<kTAG_PREDICATE>:ENUM-OF</kTAG_PREDICATE>
+				<kTAG_OBJECT>LR:LRFARMERMOT:30</kTAG_OBJECT>
+			</edge>
+        </edges>
+    </unit>
+    <unit>
+    	<term kTAG_LID="34" kTAG_NAMESPACE="LR:LRFARMERMOT">
+			<kTAG_LABEL language="en"><![CDATA[Ritual or religious use of the community]]></kTAG_LABEL>
+    	</term>
+    	<node>
+			<kTAG_CLASS>COntologyMasterVertex</kTAG_CLASS>
+			<kTAG_KIND>
+				<item>:KIND-ENUMERATION</item>
+			</kTAG_KIND>
+    	</node>
+        <edges>
+			<edge>
+				<kTAG_PREDICATE>:ENUM-OF</kTAG_PREDICATE>
+				<kTAG_OBJECT>LR:LRFARMERMOT:30</kTAG_OBJECT>
+			</edge>
+        </edges>
+    </unit>
+    <unit>
+    	<term kTAG_LID="35" kTAG_NAMESPACE="LR:LRFARMERMOT">
+			<kTAG_LABEL language="en"><![CDATA[Local fairs/festivals]]></kTAG_LABEL>
+    	</term>
+    	<node>
+			<kTAG_CLASS>COntologyMasterVertex</kTAG_CLASS>
+			<kTAG_KIND>
+				<item>:KIND-ENUMERATION</item>
+			</kTAG_KIND>
+    	</node>
+        <edges>
+			<edge>
+				<kTAG_PREDICATE>:ENUM-OF</kTAG_PREDICATE>
+				<kTAG_OBJECT>LR:LRFARMERMOT:30</kTAG_OBJECT>
+			</edge>
+        </edges>
+    </unit>
+    <unit>
+    	<term kTAG_LID="36" kTAG_NAMESPACE="LR:LRFARMERMOT">
+			<kTAG_LABEL language="en"><![CDATA[Historical/collector/ amateur interest]]></kTAG_LABEL>
+    	</term>
+    	<node>
+			<kTAG_CLASS>COntologyMasterVertex</kTAG_CLASS>
+			<kTAG_KIND>
+				<item>:KIND-ENUMERATION</item>
+			</kTAG_KIND>
+    	</node>
+        <edges>
+			<edge>
+				<kTAG_PREDICATE>:ENUM-OF</kTAG_PREDICATE>
+				<kTAG_OBJECT>LR:LRFARMERMOT:30</kTAG_OBJECT>
+			</edge>
+        </edges>
+    </unit>
+    <unit>
+    	<term kTAG_LID="40" kTAG_NAMESPACE="LR:LRFARMERMOT">
+			<kTAG_LABEL language="en"><![CDATA[Quality traits]]></kTAG_LABEL>
+ 			<kTAG_DEFINITION language="en"><![CDATA[Quality traits (taste, fragrance, colour, etc.).]]></kTAG_DEFINITION>
+    	</term>
+    	<node>
+			<kTAG_CLASS>COntologyMasterVertex</kTAG_CLASS>
+			<kTAG_KIND>
+				<item>:KIND-ENUMERATION</item>
+			</kTAG_KIND>
+    	</node>
+        <edges>
+			<edge>
+				<kTAG_PREDICATE>:ENUM-OF</kTAG_PREDICATE>
+				<kTAG_OBJECT>LR:LRFARMERMOT</kTAG_OBJECT>
+			</edge>
+        </edges>
+    </unit>
+    <unit>
+    	<term kTAG_LID="50" kTAG_NAMESPACE="LR:LRFARMERMOT">
+			<kTAG_LABEL language="en"><![CDATA[Market traits]]></kTAG_LABEL>
+ 			<kTAG_DEFINITION language="en"><![CDATA[Market traits (good storability, easy transformation etc.).]]></kTAG_DEFINITION>
+    	</term>
+    	<node>
+			<kTAG_CLASS>COntologyMasterVertex</kTAG_CLASS>
+			<kTAG_KIND>
+				<item>:KIND-ENUMERATION</item>
+			</kTAG_KIND>
+    	</node>
+        <edges>
+			<edge>
+				<kTAG_PREDICATE>:ENUM-OF</kTAG_PREDICATE>
+				<kTAG_OBJECT>LR:LRFARMERMOT</kTAG_OBJECT>
+			</edge>
+        </edges>
+    </unit>
+    <unit>
+    	<term kTAG_LID="99" kTAG_NAMESPACE="LR:LRFARMERMOT">
+			<kTAG_LABEL language="en"><![CDATA[Other]]></kTAG_LABEL>
+			<kTAG_DEFINITION language="en"><![CDATA[Other (elaborate in REMARKS).]]></kTAG_DEFINITION>
+    	</term>
+    	<node>
+			<kTAG_CLASS>COntologyMasterVertex</kTAG_CLASS>
+			<kTAG_KIND>
+				<item>:KIND-ENUMERATION</item>
+			</kTAG_KIND>
+    	</node>
+        <edges>
+			<edge>
+				<kTAG_PREDICATE>:ENUM-OF</kTAG_PREDICATE>
+				<kTAG_OBJECT>LR:LRFARMERMOT</kTAG_OBJECT>
+			</edge>
+        </edges>
+    </unit>
+    
+    <!-- LR:LRFARMERSELCRI -->
+    <unit>
+    	<term kTAG_LID="LRFARMERSELCRI" kTAG_NAMESPACE="LR">
+			<kTAG_LABEL language="en"><![CDATA[Farmer LR selection criteria]]></kTAG_LABEL>
+			<kTAG_DEFINITION language="en"><![CDATA[The main criteria farmer uses when selecting material for propagation.]]></kTAG_DEFINITION>
+			<kTAG_SYNONYMS>
+				<item>LRFARMERSELCRI</item>
+				<item>6.8</item>
+			</kTAG_SYNONYMS>
+    	</term>
+    	<node>
+			<kTAG_CLASS>COntologyMasterVertex</kTAG_CLASS>
+			<kTAG_KIND>
+				<item>:KIND-FEATURE</item>
+				<item>:KIND-SCALE</item>
+			</kTAG_KIND>
+			<kTAG_TYPE>
+				<item>:ENUM</item>
+			</kTAG_TYPE>
+			<kTAG_EXAMPLES>
+				<item>12</item>
+			</kTAG_EXAMPLES>
+    	</node>
+        <edges>
+			<edge>
+				<kTAG_PREDICATE>:SUBCLASS-OF</kTAG_PREDICATE>
+				<kTAG_OBJECT>LR:LANDRACE</kTAG_OBJECT>
+			</edge>
+        </edges>
+    </unit>
+    <unit>
+    	<term kTAG_LID="10" kTAG_NAMESPACE="LR:LRFARMERSELCRI">
+			<kTAG_LABEL language="en"><![CDATA[Yield]]></kTAG_LABEL>
+    	</term>
+    	<node>
+			<kTAG_CLASS>COntologyMasterVertex</kTAG_CLASS>
+			<kTAG_KIND>
+				<item>:KIND-ENUMERATION</item>
+			</kTAG_KIND>
+    	</node>
+        <edges>
+			<edge>
+				<kTAG_PREDICATE>:ENUM-OF</kTAG_PREDICATE>
+				<kTAG_OBJECT>LR:LRFARMERSELCRI</kTAG_OBJECT>
+			</edge>
+        </edges>
+    </unit>
+    <unit>
+    	<term kTAG_LID="20" kTAG_NAMESPACE="LR:LRFARMERSELCRI">
+			<kTAG_LABEL language="en"><![CDATA[Organ size]]></kTAG_LABEL>
+    	</term>
+    	<node>
+			<kTAG_CLASS>COntologyMasterVertex</kTAG_CLASS>
+			<kTAG_KIND>
+				<item>:KIND-ENUMERATION</item>
+			</kTAG_KIND>
+    	</node>
+        <edges>
+			<edge>
+				<kTAG_PREDICATE>:ENUM-OF</kTAG_PREDICATE>
+				<kTAG_OBJECT>LR:LRFARMERSELCRI</kTAG_OBJECT>
+			</edge>
+        </edges>
+    </unit>
+    <unit>
+    	<term kTAG_LID="30" kTAG_NAMESPACE="LR:LRFARMERSELCRI">
+			<kTAG_LABEL language="en"><![CDATA[Taste]]></kTAG_LABEL>
+    	</term>
+    	<node>
+			<kTAG_CLASS>COntologyMasterVertex</kTAG_CLASS>
+			<kTAG_KIND>
+				<item>:KIND-ENUMERATION</item>
+			</kTAG_KIND>
+    	</node>
+        <edges>
+			<edge>
+				<kTAG_PREDICATE>:ENUM-OF</kTAG_PREDICATE>
+				<kTAG_OBJECT>LR:LRFARMERSELCRI</kTAG_OBJECT>
+			</edge>
+        </edges>
+    </unit>
+    <unit>
+    	<term kTAG_LID="40" kTAG_NAMESPACE="LR:LRFARMERSELCRI">
+			<kTAG_LABEL language="en"><![CDATA[Colour]]></kTAG_LABEL>
+    	</term>
+    	<node>
+			<kTAG_CLASS>COntologyMasterVertex</kTAG_CLASS>
+			<kTAG_KIND>
+				<item>:KIND-ENUMERATION</item>
+			</kTAG_KIND>
+    	</node>
+        <edges>
+			<edge>
+				<kTAG_PREDICATE>:ENUM-OF</kTAG_PREDICATE>
+				<kTAG_OBJECT>LR:LRFARMERSELCRI</kTAG_OBJECT>
+			</edge>
+        </edges>
+    </unit>
+    <unit>
+    	<term kTAG_LID="50" kTAG_NAMESPACE="LR:LRFARMERSELCRI">
+			<kTAG_LABEL language="en"><![CDATA[Shape]]></kTAG_LABEL>
+    	</term>
+    	<node>
+			<kTAG_CLASS>COntologyMasterVertex</kTAG_CLASS>
+			<kTAG_KIND>
+				<item>:KIND-ENUMERATION</item>
+			</kTAG_KIND>
+    	</node>
+        <edges>
+			<edge>
+				<kTAG_PREDICATE>:ENUM-OF</kTAG_PREDICATE>
+				<kTAG_OBJECT>LR:LRFARMERSELCRI</kTAG_OBJECT>
+			</edge>
+        </edges>
+    </unit>
+    <unit>
+    	<term kTAG_LID="60" kTAG_NAMESPACE="LR:LRFARMERSELCRI">
+			<kTAG_LABEL language="en"><![CDATA[Uniformity]]></kTAG_LABEL>
+    	</term>
+    	<node>
+			<kTAG_CLASS>COntologyMasterVertex</kTAG_CLASS>
+			<kTAG_KIND>
+				<item>:KIND-ENUMERATION</item>
+			</kTAG_KIND>
+    	</node>
+        <edges>
+			<edge>
+				<kTAG_PREDICATE>:ENUM-OF</kTAG_PREDICATE>
+				<kTAG_OBJECT>LR:LRFARMERSELCRI</kTAG_OBJECT>
+			</edge>
+        </edges>
+    </unit>
+    <unit>
+    	<term kTAG_LID="99" kTAG_NAMESPACE="LR:LRFARMERSELCRI">
+			<kTAG_LABEL language="en"><![CDATA[Other]]></kTAG_LABEL>
+			<kTAG_DEFINITION language="en"><![CDATA[Other (elaborate in REMARKS).]]></kTAG_DEFINITION>
+    	</term>
+    	<node>
+			<kTAG_CLASS>COntologyMasterVertex</kTAG_CLASS>
+			<kTAG_KIND>
+				<item>:KIND-ENUMERATION</item>
+			</kTAG_KIND>
+    	</node>
+        <edges>
+			<edge>
+				<kTAG_PREDICATE>:ENUM-OF</kTAG_PREDICATE>
+				<kTAG_OBJECT>LR:LRFARMERSELCRI</kTAG_OBJECT>
+			</edge>
+        </edges>
+    </unit>
+    
+    <!-- LR:PPU -->
+    <unit>
+    	<term kTAG_LID="PPU" kTAG_NAMESPACE="LR">
+			<kTAG_LABEL language="en"><![CDATA[Part of the plant used]]></kTAG_LABEL>
+			<kTAG_DEFINITION language="en"><![CDATA[Part/s of the plant used by the farmer, as from farmer statement. Multiple choices are allowed separated by a semicolon (;) without space.]]></kTAG_DEFINITION>
+			<kTAG_SYNONYMS>
+				<item>PPU</item>
+				<item>6.9</item>
+			</kTAG_SYNONYMS>
+    	</term>
+    	<node>
+			<kTAG_CLASS>COntologyMasterVertex</kTAG_CLASS>
+			<kTAG_KIND>
+				<item>:KIND-FEATURE</item>
+				<item>:KIND-SCALE</item>
+			</kTAG_KIND>
+			<kTAG_TYPE>
+				<item>:SET</item>
+			</kTAG_TYPE>
+			<kTAG_EXAMPLES>
+				<item>110;70</item>
+			</kTAG_EXAMPLES>
+    	</node>
+        <edges>
+			<edge>
+				<kTAG_PREDICATE>:SUBCLASS-OF</kTAG_PREDICATE>
+				<kTAG_OBJECT>LR:LANDRACE</kTAG_OBJECT>
+			</edge>
+        </edges>
+    </unit>
+    <unit>
+    	<term kTAG_LID="10" kTAG_NAMESPACE="LR:PPU">
+			<kTAG_LABEL language="en"><![CDATA[Entire plant]]></kTAG_LABEL>
+    	</term>
+    	<node>
+			<kTAG_CLASS>COntologyMasterVertex</kTAG_CLASS>
+			<kTAG_KIND>
+				<item>:KIND-ENUMERATION</item>
+			</kTAG_KIND>
+    	</node>
+        <edges>
+			<edge>
+				<kTAG_PREDICATE>:ENUM-OF</kTAG_PREDICATE>
+				<kTAG_OBJECT>LR:PPU</kTAG_OBJECT>
+			</edge>
+        </edges>
+    </unit>
+    <unit>
+    	<term kTAG_LID="20" kTAG_NAMESPACE="LR:PPU">
+			<kTAG_LABEL language="en"><![CDATA[Branch]]></kTAG_LABEL>
+    	</term>
+    	<node>
+			<kTAG_CLASS>COntologyMasterVertex</kTAG_CLASS>
+			<kTAG_KIND>
+				<item>:KIND-ENUMERATION</item>
+			</kTAG_KIND>
+    	</node>
+        <edges>
+			<edge>
+				<kTAG_PREDICATE>:ENUM-OF</kTAG_PREDICATE>
+				<kTAG_OBJECT>LR:PPU</kTAG_OBJECT>
+			</edge>
+        </edges>
+    </unit>
+    <unit>
+    	<term kTAG_LID="30" kTAG_NAMESPACE="LR:PPU">
+			<kTAG_LABEL language="en"><![CDATA[Seedling/germinated seed]]></kTAG_LABEL>
+    	</term>
+    	<node>
+			<kTAG_CLASS>COntologyMasterVertex</kTAG_CLASS>
+			<kTAG_KIND>
+				<item>:KIND-ENUMERATION</item>
+			</kTAG_KIND>
+    	</node>
+        <edges>
+			<edge>
+				<kTAG_PREDICATE>:ENUM-OF</kTAG_PREDICATE>
+				<kTAG_OBJECT>LR:PPU</kTAG_OBJECT>
+			</edge>
+        </edges>
+    </unit>
+    <unit>
+    	<term kTAG_LID="40" kTAG_NAMESPACE="LR:PPU">
+			<kTAG_LABEL language="en"><![CDATA[Gall]]></kTAG_LABEL>
+    	</term>
+    	<node>
+			<kTAG_CLASS>COntologyMasterVertex</kTAG_CLASS>
+			<kTAG_KIND>
+				<item>:KIND-ENUMERATION</item>
+			</kTAG_KIND>
+    	</node>
+        <edges>
+			<edge>
+				<kTAG_PREDICATE>:ENUM-OF</kTAG_PREDICATE>
+				<kTAG_OBJECT>LR:PPU</kTAG_OBJECT>
+			</edge>
+        </edges>
+    </unit>
+    <unit>
+    	<term kTAG_LID="50" kTAG_NAMESPACE="LR:PPU">
+			<kTAG_LABEL language="en"><![CDATA[Stem/trunk]]></kTAG_LABEL>
+    	</term>
+    	<node>
+			<kTAG_CLASS>COntologyMasterVertex</kTAG_CLASS>
+			<kTAG_KIND>
+				<item>:KIND-ENUMERATION</item>
+			</kTAG_KIND>
+    	</node>
+        <edges>
+			<edge>
+				<kTAG_PREDICATE>:ENUM-OF</kTAG_PREDICATE>
+				<kTAG_OBJECT>LR:PPU</kTAG_OBJECT>
+			</edge>
+        </edges>
+    </unit>
+    <unit>
+    	<term kTAG_LID="60" kTAG_NAMESPACE="LR:PPU">
+			<kTAG_LABEL language="en"><![CDATA[Bark]]></kTAG_LABEL>
+    	</term>
+    	<node>
+			<kTAG_CLASS>COntologyMasterVertex</kTAG_CLASS>
+			<kTAG_KIND>
+				<item>:KIND-ENUMERATION</item>
+			</kTAG_KIND>
+    	</node>
+        <edges>
+			<edge>
+				<kTAG_PREDICATE>:ENUM-OF</kTAG_PREDICATE>
+				<kTAG_OBJECT>LR:PPU</kTAG_OBJECT>
+			</edge>
+        </edges>
+    </unit>
+    <unit>
+    	<term kTAG_LID="70" kTAG_NAMESPACE="LR:PPU">
+			<kTAG_LABEL language="en"><![CDATA[Leaf]]></kTAG_LABEL>
+    	</term>
+    	<node>
+			<kTAG_CLASS>COntologyMasterVertex</kTAG_CLASS>
+			<kTAG_KIND>
+				<item>:KIND-ENUMERATION</item>
+			</kTAG_KIND>
+    	</node>
+        <edges>
+			<edge>
+				<kTAG_PREDICATE>:ENUM-OF</kTAG_PREDICATE>
+				<kTAG_OBJECT>LR:PPU</kTAG_OBJECT>
+			</edge>
+        </edges>
+    </unit>
+    <unit>
+    	<term kTAG_LID="80" kTAG_NAMESPACE="LR:PPU">
+			<kTAG_LABEL language="en"><![CDATA[Flower/inflorescence]]></kTAG_LABEL>
+    	</term>
+    	<node>
+			<kTAG_CLASS>COntologyMasterVertex</kTAG_CLASS>
+			<kTAG_KIND>
+				<item>:KIND-ENUMERATION</item>
+			</kTAG_KIND>
+    	</node>
+        <edges>
+			<edge>
+				<kTAG_PREDICATE>:ENUM-OF</kTAG_PREDICATE>
+				<kTAG_OBJECT>LR:PPU</kTAG_OBJECT>
+			</edge>
+        </edges>
+    </unit>
+    <unit>
+    	<term kTAG_LID="90" kTAG_NAMESPACE="LR:PPU">
+			<kTAG_LABEL language="en"><![CDATA[Fruit/infructescence]]></kTAG_LABEL>
+    	</term>
+    	<node>
+			<kTAG_CLASS>COntologyMasterVertex</kTAG_CLASS>
+			<kTAG_KIND>
+				<item>:KIND-ENUMERATION</item>
+			</kTAG_KIND>
+    	</node>
+        <edges>
+			<edge>
+				<kTAG_PREDICATE>:ENUM-OF</kTAG_PREDICATE>
+				<kTAG_OBJECT>LR:PPU</kTAG_OBJECT>
+			</edge>
+        </edges>
+    </unit>
+    <unit>
+    	<term kTAG_LID="100" kTAG_NAMESPACE="LR:PPU">
+			<kTAG_LABEL language="en"><![CDATA[Seed]]></kTAG_LABEL>
+    	</term>
+    	<node>
+			<kTAG_CLASS>COntologyMasterVertex</kTAG_CLASS>
+			<kTAG_KIND>
+				<item>:KIND-ENUMERATION</item>
+			</kTAG_KIND>
+    	</node>
+        <edges>
+			<edge>
+				<kTAG_PREDICATE>:ENUM-OF</kTAG_PREDICATE>
+				<kTAG_OBJECT>LR:PPU</kTAG_OBJECT>
+			</edge>
+        </edges>
+    </unit>
+    <unit>
+    	<term kTAG_LID="110" kTAG_NAMESPACE="LR:PPU">
+			<kTAG_LABEL language="en"><![CDATA[Root/corm]]></kTAG_LABEL>
+    	</term>
+    	<node>
+			<kTAG_CLASS>COntologyMasterVertex</kTAG_CLASS>
+			<kTAG_KIND>
+				<item>:KIND-ENUMERATION</item>
+			</kTAG_KIND>
+    	</node>
+        <edges>
+			<edge>
+				<kTAG_PREDICATE>:ENUM-OF</kTAG_PREDICATE>
+				<kTAG_OBJECT>LR:PPU</kTAG_OBJECT>
+			</edge>
+        </edges>
+    </unit>
+    <unit>
+    	<term kTAG_LID="120" kTAG_NAMESPACE="LR:PPU">
+			<kTAG_LABEL language="en"><![CDATA[Exudate]]></kTAG_LABEL>
+    	</term>
+    	<node>
+			<kTAG_CLASS>COntologyMasterVertex</kTAG_CLASS>
+			<kTAG_KIND>
+				<item>:KIND-ENUMERATION</item>
+			</kTAG_KIND>
+    	</node>
+        <edges>
+			<edge>
+				<kTAG_PREDICATE>:ENUM-OF</kTAG_PREDICATE>
+				<kTAG_OBJECT>LR:PPU</kTAG_OBJECT>
+			</edge>
+        </edges>
+    </unit>
+    <unit>
+    	<term kTAG_LID="999" kTAG_NAMESPACE="LR:PPU">
+			<kTAG_LABEL language="en"><![CDATA[Other]]></kTAG_LABEL>
+			<kTAG_DEFINITION language="en"><![CDATA[Other (elaborate in REMARKS).]]></kTAG_DEFINITION>
+    	</term>
+    	<node>
+			<kTAG_CLASS>COntologyMasterVertex</kTAG_CLASS>
+			<kTAG_KIND>
+				<item>:KIND-ENUMERATION</item>
+			</kTAG_KIND>
+    	</node>
+        <edges>
+			<edge>
+				<kTAG_PREDICATE>:ENUM-OF</kTAG_PREDICATE>
+				<kTAG_OBJECT>LR:PPU</kTAG_OBJECT>
+			</edge>
+        </edges>
+    </unit>
+    
+    <!-- LR:LRPRODUSE -->
+    <unit>
+    	<term kTAG_LID="LRPRODUSE" kTAG_NAMESPACE="LR">
+			<kTAG_LABEL language="en"><![CDATA[Product use]]></kTAG_LABEL>
+			<kTAG_DEFINITION language="en"><![CDATA[Type of use of the product obtained from the LR: if as direct product or as processed product for larger use, as from farmer statement. Multiple choices are allowed separated by a semicolon (;) without space.]]></kTAG_DEFINITION>
+			<kTAG_SYNONYMS>
+				<item>LRPRODUSE</item>
+				<item>6.10</item>
+			</kTAG_SYNONYMS>
+    	</term>
+    	<node>
+			<kTAG_CLASS>COntologyMasterVertex</kTAG_CLASS>
+			<kTAG_KIND>
+				<item>:KIND-FEATURE</item>
+				<item>:KIND-SCALE</item>
+			</kTAG_KIND>
+			<kTAG_TYPE>
+				<item>:SET</item>
+			</kTAG_TYPE>
+			<kTAG_EXAMPLES>
+				<item>13;16</item>
+			</kTAG_EXAMPLES>
+    	</node>
+        <edges>
+			<edge>
+				<kTAG_PREDICATE>:SUBCLASS-OF</kTAG_PREDICATE>
+				<kTAG_OBJECT>LR:LANDRACE</kTAG_OBJECT>
+			</edge>
+        </edges>
+    </unit>
+    <unit>
+    	<term kTAG_LID="10" kTAG_NAMESPACE="LR:LRPRODUSE">
+			<kTAG_LABEL language="en"><![CDATA[As direct product]]></kTAG_LABEL>
+    	</term>
+    	<node>
+			<kTAG_CLASS>COntologyMasterVertex</kTAG_CLASS>
+			<kTAG_KIND>
+				<item>:KIND-ENUMERATION</item>
+			</kTAG_KIND>
+    	</node>
+        <edges>
+			<edge>
+				<kTAG_PREDICATE>:ENUM-OF</kTAG_PREDICATE>
+				<kTAG_OBJECT>LR:LRPRODUSE</kTAG_OBJECT>
+			</edge>
+        </edges>
+    </unit>
+    <unit>
+    	<term kTAG_LID="11" kTAG_NAMESPACE="LR:LRPRODUSE">
+			<kTAG_LABEL language="en"><![CDATA[Food]]></kTAG_LABEL>
+ 			<kTAG_DEFINITION language="en"><![CDATA[Food (e.g. vegetable, soups).]]></kTAG_DEFINITION>
+		</term>
+    	<node>
+			<kTAG_CLASS>COntologyMasterVertex</kTAG_CLASS>
+			<kTAG_KIND>
+				<item>:KIND-ENUMERATION</item>
+			</kTAG_KIND>
+    	</node>
+        <edges>
+			<edge>
+				<kTAG_PREDICATE>:ENUM-OF</kTAG_PREDICATE>
+				<kTAG_OBJECT>LR:LRPRODUSE:10</kTAG_OBJECT>
+			</edge>
+        </edges>
+    </unit>
+    <unit>
+    	<term kTAG_LID="12" kTAG_NAMESPACE="LR:LRPRODUSE">
+			<kTAG_LABEL language="en"><![CDATA[Fodder]]></kTAG_LABEL>
+		</term>
+    	<node>
+			<kTAG_CLASS>COntologyMasterVertex</kTAG_CLASS>
+			<kTAG_KIND>
+				<item>:KIND-ENUMERATION</item>
+			</kTAG_KIND>
+    	</node>
+        <edges>
+			<edge>
+				<kTAG_PREDICATE>:ENUM-OF</kTAG_PREDICATE>
+				<kTAG_OBJECT>LR:LRPRODUSE:10</kTAG_OBJECT>
+			</edge>
+        </edges>
+    </unit>
+    <unit>
+    	<term kTAG_LID="13" kTAG_NAMESPACE="LR:LRPRODUSE">
+			<kTAG_LABEL language="en"><![CDATA[Spice - aromatic]]></kTAG_LABEL>
+		</term>
+    	<node>
+			<kTAG_CLASS>COntologyMasterVertex</kTAG_CLASS>
+			<kTAG_KIND>
+				<item>:KIND-ENUMERATION</item>
+			</kTAG_KIND>
+    	</node>
+        <edges>
+			<edge>
+				<kTAG_PREDICATE>:ENUM-OF</kTAG_PREDICATE>
+				<kTAG_OBJECT>LR:LRPRODUSE:10</kTAG_OBJECT>
+			</edge>
+        </edges>
+    </unit>
+    <unit>
+    	<term kTAG_LID="14" kTAG_NAMESPACE="LR:LRPRODUSE">
+			<kTAG_LABEL language="en"><![CDATA[Medicinal purpose]]></kTAG_LABEL>
+		</term>
+    	<node>
+			<kTAG_CLASS>COntologyMasterVertex</kTAG_CLASS>
+			<kTAG_KIND>
+				<item>:KIND-ENUMERATION</item>
+			</kTAG_KIND>
+    	</node>
+        <edges>
+			<edge>
+				<kTAG_PREDICATE>:ENUM-OF</kTAG_PREDICATE>
+				<kTAG_OBJECT>LR:LRPRODUSE:10</kTAG_OBJECT>
+			</edge>
+        </edges>
+    </unit>
+    <unit>
+    	<term kTAG_LID="15" kTAG_NAMESPACE="LR:LRPRODUSE">
+			<kTAG_LABEL language="en"><![CDATA[Odoriferous purpose]]></kTAG_LABEL>
+		</term>
+    	<node>
+			<kTAG_CLASS>COntologyMasterVertex</kTAG_CLASS>
+			<kTAG_KIND>
+				<item>:KIND-ENUMERATION</item>
+			</kTAG_KIND>
+    	</node>
+        <edges>
+			<edge>
+				<kTAG_PREDICATE>:ENUM-OF</kTAG_PREDICATE>
+				<kTAG_OBJECT>LR:LRPRODUSE:10</kTAG_OBJECT>
+			</edge>
+        </edges>
+    </unit>
+    <unit>
+    	<term kTAG_LID="16" kTAG_NAMESPACE="LR:LRPRODUSE">
+			<kTAG_LABEL language="en"><![CDATA[Ornamental purpose]]></kTAG_LABEL>
+		</term>
+    	<node>
+			<kTAG_CLASS>COntologyMasterVertex</kTAG_CLASS>
+			<kTAG_KIND>
+				<item>:KIND-ENUMERATION</item>
+			</kTAG_KIND>
+    	</node>
+        <edges>
+			<edge>
+				<kTAG_PREDICATE>:ENUM-OF</kTAG_PREDICATE>
+				<kTAG_OBJECT>LR:LRPRODUSE:10</kTAG_OBJECT>
+			</edge>
+        </edges>
+    </unit>
+    <unit>
+    	<term kTAG_LID="20" kTAG_NAMESPACE="LR:LRPRODUSE">
+			<kTAG_LABEL language="en"><![CDATA[As processed product]]></kTAG_LABEL>
+		</term>
+    	<node>
+			<kTAG_CLASS>COntologyMasterVertex</kTAG_CLASS>
+			<kTAG_KIND>
+				<item>:KIND-ENUMERATION</item>
+			</kTAG_KIND>
+    	</node>
+        <edges>
+			<edge>
+				<kTAG_PREDICATE>:ENUM-OF</kTAG_PREDICATE>
+				<kTAG_OBJECT>LR:LRPRODUSE</kTAG_OBJECT>
+			</edge>
+        </edges>
+    </unit>
+    <unit>
+    	<term kTAG_LID="21" kTAG_NAMESPACE="LR:LRPRODUSE">
+			<kTAG_LABEL language="en"><![CDATA[Bakery product]]></kTAG_LABEL>
+		</term>
+    	<node>
+			<kTAG_CLASS>COntologyMasterVertex</kTAG_CLASS>
+			<kTAG_KIND>
+				<item>:KIND-ENUMERATION</item>
+			</kTAG_KIND>
+    	</node>
+        <edges>
+			<edge>
+				<kTAG_PREDICATE>:ENUM-OF</kTAG_PREDICATE>
+				<kTAG_OBJECT>LR:LRPRODUSE:20</kTAG_OBJECT>
+			</edge>
+        </edges>
+    </unit>
+    <unit>
+    	<term kTAG_LID="22" kTAG_NAMESPACE="LR:LRPRODUSE">
+			<kTAG_LABEL language="en"><![CDATA[Long term storage culinary product]]></kTAG_LABEL>
+ 			<kTAG_DEFINITION language="en"><![CDATA[Long term storage culinary product (e.g. canned food).]]></kTAG_DEFINITION>
+		</term>
+    	<node>
+			<kTAG_CLASS>COntologyMasterVertex</kTAG_CLASS>
+			<kTAG_KIND>
+				<item>:KIND-ENUMERATION</item>
+			</kTAG_KIND>
+    	</node>
+        <edges>
+			<edge>
+				<kTAG_PREDICATE>:ENUM-OF</kTAG_PREDICATE>
+				<kTAG_OBJECT>LR:LRPRODUSE:20</kTAG_OBJECT>
+			</edge>
+        </edges>
+    </unit>
+    <unit>
+    	<term kTAG_LID="23" kTAG_NAMESPACE="LR:LRPRODUSE">
+			<kTAG_LABEL language="en"><![CDATA[Distillery product]]></kTAG_LABEL>
+		</term>
+    	<node>
+			<kTAG_CLASS>COntologyMasterVertex</kTAG_CLASS>
+			<kTAG_KIND>
+				<item>:KIND-ENUMERATION</item>
+			</kTAG_KIND>
+    	</node>
+        <edges>
+			<edge>
+				<kTAG_PREDICATE>:ENUM-OF</kTAG_PREDICATE>
+				<kTAG_OBJECT>LR:LRPRODUSE:20</kTAG_OBJECT>
+			</edge>
+        </edges>
+    </unit>
+    <unit>
+    	<term kTAG_LID="24" kTAG_NAMESPACE="LR:LRPRODUSE">
+			<kTAG_LABEL language="en"><![CDATA[For oil extraction]]></kTAG_LABEL>
+		</term>
+    	<node>
+			<kTAG_CLASS>COntologyMasterVertex</kTAG_CLASS>
+			<kTAG_KIND>
+				<item>:KIND-ENUMERATION</item>
+			</kTAG_KIND>
+    	</node>
+        <edges>
+			<edge>
+				<kTAG_PREDICATE>:ENUM-OF</kTAG_PREDICATE>
+				<kTAG_OBJECT>LR:LRPRODUSE:20</kTAG_OBJECT>
+			</edge>
+        </edges>
+    </unit>
+    <unit>
+    	<term kTAG_LID="25" kTAG_NAMESPACE="LR:LRPRODUSE">
+			<kTAG_LABEL language="en"><![CDATA[For textile fibers production]]></kTAG_LABEL>
+		</term>
+    	<node>
+			<kTAG_CLASS>COntologyMasterVertex</kTAG_CLASS>
+			<kTAG_KIND>
+				<item>:KIND-ENUMERATION</item>
+			</kTAG_KIND>
+    	</node>
+        <edges>
+			<edge>
+				<kTAG_PREDICATE>:ENUM-OF</kTAG_PREDICATE>
+				<kTAG_OBJECT>LR:LRPRODUSE:20</kTAG_OBJECT>
+			</edge>
+        </edges>
+    </unit>
+    <unit>
+    	<term kTAG_LID="99" kTAG_NAMESPACE="LR:LRPRODUSE">
+			<kTAG_LABEL language="en"><![CDATA[Other]]></kTAG_LABEL>
+			<kTAG_DEFINITION language="en"><![CDATA[Other (elaborate in REMARKS).]]></kTAG_DEFINITION>
+    	</term>
+    	<node>
+			<kTAG_CLASS>COntologyMasterVertex</kTAG_CLASS>
+			<kTAG_KIND>
+				<item>:KIND-ENUMERATION</item>
+			</kTAG_KIND>
+    	</node>
+        <edges>
+			<edge>
+				<kTAG_PREDICATE>:ENUM-OF</kTAG_PREDICATE>
+				<kTAG_OBJECT>LR:LRPRODUSE</kTAG_OBJECT>
+			</edge>
+        </edges>
+    </unit>
+    
+    <!-- LR:LRPRODEST -->
+    <unit>
+    	<term kTAG_LID="LRPRODEST" kTAG_NAMESPACE="LR">
+			<kTAG_LABEL language="en"><![CDATA[Main destination of the product]]></kTAG_LABEL>
+			<kTAG_DEFINITION language="en"><![CDATA[Where the product from the LR is mainly destined for use, as from farmer statement.]]></kTAG_DEFINITION>
+			<kTAG_SYNONYMS>
+				<item>LRPRODEST</item>
+				<item>6.11</item>
+			</kTAG_SYNONYMS>
+    	</term>
+    	<node>
+			<kTAG_CLASS>COntologyMasterVertex</kTAG_CLASS>
+			<kTAG_KIND>
+				<item>:KIND-FEATURE</item>
+				<item>:KIND-SCALE</item>
+			</kTAG_KIND>
+			<kTAG_TYPE>
+				<item>:ENUM</item>
+			</kTAG_TYPE>
+			<kTAG_EXAMPLES>
+				<item>21</item>
+			</kTAG_EXAMPLES>
+    	</node>
+        <edges>
+			<edge>
+				<kTAG_PREDICATE>:SUBCLASS-OF</kTAG_PREDICATE>
+				<kTAG_OBJECT>LR:LANDRACE</kTAG_OBJECT>
+			</edge>
+        </edges>
+    </unit>
+    <unit>
+    	<term kTAG_LID="10" kTAG_NAMESPACE="LR:LRPRODEST">
+			<kTAG_LABEL language="en"><![CDATA[Owner's household]]></kTAG_LABEL>
+    	</term>
+    	<node>
+			<kTAG_CLASS>COntologyMasterVertex</kTAG_CLASS>
+			<kTAG_KIND>
+				<item>:KIND-ENUMERATION</item>
+			</kTAG_KIND>
+    	</node>
+        <edges>
+			<edge>
+				<kTAG_PREDICATE>:ENUM-OF</kTAG_PREDICATE>
+				<kTAG_OBJECT>LR:LRPRODEST</kTAG_OBJECT>
+			</edge>
+        </edges>
+    </unit>
+    <unit>
+    	<term kTAG_LID="20" kTAG_NAMESPACE="LR:LRPRODEST">
+			<kTAG_LABEL language="en"><![CDATA[Market]]></kTAG_LABEL>
+    	</term>
+    	<node>
+			<kTAG_CLASS>COntologyMasterVertex</kTAG_CLASS>
+			<kTAG_KIND>
+				<item>:KIND-ENUMERATION</item>
+			</kTAG_KIND>
+    	</node>
+        <edges>
+			<edge>
+				<kTAG_PREDICATE>:ENUM-OF</kTAG_PREDICATE>
+				<kTAG_OBJECT>LR:LRPRODEST</kTAG_OBJECT>
+			</edge>
+        </edges>
+    </unit>
+    <unit>
+    	<term kTAG_LID="21" kTAG_NAMESPACE="LR:LRPRODEST">
+			<kTAG_LABEL language="en"><![CDATA[Local market]]></kTAG_LABEL>
+ 			<kTAG_DEFINITION language="en"><![CDATA[In local market.]]></kTAG_DEFINITION>
+   		</term>
+    	<node>
+			<kTAG_CLASS>COntologyMasterVertex</kTAG_CLASS>
+			<kTAG_KIND>
+				<item>:KIND-ENUMERATION</item>
+			</kTAG_KIND>
+    	</node>
+        <edges>
+			<edge>
+				<kTAG_PREDICATE>:ENUM-OF</kTAG_PREDICATE>
+				<kTAG_OBJECT>LR:LRPRODEST:20</kTAG_OBJECT>
+			</edge>
+        </edges>
+    </unit>
+    <unit>
+    	<term kTAG_LID="22" kTAG_NAMESPACE="LR:LRPRODEST">
+			<kTAG_LABEL language="en"><![CDATA[District / regional markets]]></kTAG_LABEL>
+ 			<kTAG_DEFINITION language="en"><![CDATA[In district / regional markets.]]></kTAG_DEFINITION>
+   		</term>
+    	<node>
+			<kTAG_CLASS>COntologyMasterVertex</kTAG_CLASS>
+			<kTAG_KIND>
+				<item>:KIND-ENUMERATION</item>
+			</kTAG_KIND>
+    	</node>
+        <edges>
+			<edge>
+				<kTAG_PREDICATE>:ENUM-OF</kTAG_PREDICATE>
+				<kTAG_OBJECT>LR:LRPRODEST:20</kTAG_OBJECT>
+			</edge>
+        </edges>
+    </unit>
+    <unit>
+    	<term kTAG_LID="23" kTAG_NAMESPACE="LR:LRPRODEST">
+			<kTAG_LABEL language="en"><![CDATA[National markets]]></kTAG_LABEL>
+ 			<kTAG_DEFINITION language="en"><![CDATA[In national markets.]]></kTAG_DEFINITION>
+   		</term>
+    	<node>
+			<kTAG_CLASS>COntologyMasterVertex</kTAG_CLASS>
+			<kTAG_KIND>
+				<item>:KIND-ENUMERATION</item>
+			</kTAG_KIND>
+    	</node>
+        <edges>
+			<edge>
+				<kTAG_PREDICATE>:ENUM-OF</kTAG_PREDICATE>
+				<kTAG_OBJECT>LR:LRPRODEST:20</kTAG_OBJECT>
+			</edge>
+        </edges>
+    </unit>
+    <unit>
+    	<term kTAG_LID="24" kTAG_NAMESPACE="LR:LRPRODEST">
+			<kTAG_LABEL language="en"><![CDATA[International sale]]></kTAG_LABEL>
+ 			<kTAG_DEFINITION language="en"><![CDATA[In international sale.]]></kTAG_DEFINITION>
+   		</term>
+    	<node>
+			<kTAG_CLASS>COntologyMasterVertex</kTAG_CLASS>
+			<kTAG_KIND>
+				<item>:KIND-ENUMERATION</item>
+			</kTAG_KIND>
+    	</node>
+        <edges>
+			<edge>
+				<kTAG_PREDICATE>:ENUM-OF</kTAG_PREDICATE>
+				<kTAG_OBJECT>LR:LRPRODEST:20</kTAG_OBJECT>
+			</edge>
+        </edges>
+    </unit>
+    <unit>
+    	<term kTAG_LID="99" kTAG_NAMESPACE="LR:LRPRODEST">
+			<kTAG_LABEL language="en"><![CDATA[Other]]></kTAG_LABEL>
+			<kTAG_DEFINITION language="en"><![CDATA[Other (elaborate in REMARKS).]]></kTAG_DEFINITION>
+    	</term>
+    	<node>
+			<kTAG_CLASS>COntologyMasterVertex</kTAG_CLASS>
+			<kTAG_KIND>
+				<item>:KIND-ENUMERATION</item>
+			</kTAG_KIND>
+    	</node>
+        <edges>
+			<edge>
+				<kTAG_PREDICATE>:ENUM-OF</kTAG_PREDICATE>
+				<kTAG_OBJECT>LR:LRPRODEST</kTAG_OBJECT>
+			</edge>
+        </edges>
+    </unit>
+    
+    <!-- LR:LRMARKTDEMAND -->
+    <unit>
+    	<term kTAG_LID="LRMARKTDEMAND" kTAG_NAMESPACE="LR">
+			<kTAG_LABEL language="en"><![CDATA[Market landrace demand]]></kTAG_LABEL>
+			<kTAG_DEFINITION language="en"><![CDATA[Demand for LR / LR product as from farmer statement.]]></kTAG_DEFINITION>
+			<kTAG_SYNONYMS>
+				<item>LRMARKTDEMAND</item>
+				<item>6.12</item>
+			</kTAG_SYNONYMS>
+    	</term>
+    	<node>
+			<kTAG_CLASS>COntologyMasterVertex</kTAG_CLASS>
+			<kTAG_KIND>
+				<item>:KIND-FEATURE</item>
+				<item>:KIND-SCALE</item>
+			</kTAG_KIND>
+			<kTAG_TYPE>
+				<item>:ENUM</item>
+			</kTAG_TYPE>
+			<kTAG_EXAMPLES>
+				<item>30</item>
+			</kTAG_EXAMPLES>
+    	</node>
+        <edges>
+			<edge>
+				<kTAG_PREDICATE>:SUBCLASS-OF</kTAG_PREDICATE>
+				<kTAG_OBJECT>LR:LANDRACE</kTAG_OBJECT>
+			</edge>
+        </edges>
+    </unit>
+    <unit>
+    	<term kTAG_LID="10" kTAG_NAMESPACE="LR:LRMARKTDEMAND">
+			<kTAG_LABEL language="en"><![CDATA[Does not answer]]></kTAG_LABEL>
+    	</term>
+    	<node>
+			<kTAG_CLASS>COntologyMasterVertex</kTAG_CLASS>
+			<kTAG_KIND>
+				<item>:KIND-ENUMERATION</item>
+			</kTAG_KIND>
+    	</node>
+        <edges>
+			<edge>
+				<kTAG_PREDICATE>:ENUM-OF</kTAG_PREDICATE>
+				<kTAG_OBJECT>LR:LRMARKTDEMAND</kTAG_OBJECT>
+			</edge>
+        </edges>
+    </unit>
+    <unit>
+    	<term kTAG_LID="20" kTAG_NAMESPACE="LR:LRMARKTDEMAND">
+			<kTAG_LABEL language="en"><![CDATA[Strong existing market demand]]></kTAG_LABEL>
+    	</term>
+    	<node>
+			<kTAG_CLASS>COntologyMasterVertex</kTAG_CLASS>
+			<kTAG_KIND>
+				<item>:KIND-ENUMERATION</item>
+			</kTAG_KIND>
+    	</node>
+        <edges>
+			<edge>
+				<kTAG_PREDICATE>:ENUM-OF</kTAG_PREDICATE>
+				<kTAG_OBJECT>LR:LRMARKTDEMAND</kTAG_OBJECT>
+			</edge>
+        </edges>
+    </unit>
+    <unit>
+    	<term kTAG_LID="30" kTAG_NAMESPACE="LR:LRMARKTDEMAND">
+			<kTAG_LABEL language="en"><![CDATA[Growing market demand]]></kTAG_LABEL>
+    	</term>
+    	<node>
+			<kTAG_CLASS>COntologyMasterVertex</kTAG_CLASS>
+			<kTAG_KIND>
+				<item>:KIND-ENUMERATION</item>
+			</kTAG_KIND>
+    	</node>
+        <edges>
+			<edge>
+				<kTAG_PREDICATE>:ENUM-OF</kTAG_PREDICATE>
+				<kTAG_OBJECT>LR:LRMARKTDEMAND</kTAG_OBJECT>
+			</edge>
+        </edges>
+    </unit>
+    <unit>
+    	<term kTAG_LID="40" kTAG_NAMESPACE="LR:LRMARKTDEMAND">
+			<kTAG_LABEL language="en"><![CDATA[Stable market demand]]></kTAG_LABEL>
+    	</term>
+    	<node>
+			<kTAG_CLASS>COntologyMasterVertex</kTAG_CLASS>
+			<kTAG_KIND>
+				<item>:KIND-ENUMERATION</item>
+			</kTAG_KIND>
+    	</node>
+        <edges>
+			<edge>
+				<kTAG_PREDICATE>:ENUM-OF</kTAG_PREDICATE>
+				<kTAG_OBJECT>LR:LRMARKTDEMAND</kTAG_OBJECT>
+			</edge>
+        </edges>
+    </unit>
+    <unit>
+    	<term kTAG_LID="50" kTAG_NAMESPACE="LR:LRMARKTDEMAND">
+			<kTAG_LABEL language="en"><![CDATA[Falling market demand]]></kTAG_LABEL>
+    	</term>
+    	<node>
+			<kTAG_CLASS>COntologyMasterVertex</kTAG_CLASS>
+			<kTAG_KIND>
+				<item>:KIND-ENUMERATION</item>
+			</kTAG_KIND>
+    	</node>
+        <edges>
+			<edge>
+				<kTAG_PREDICATE>:ENUM-OF</kTAG_PREDICATE>
+				<kTAG_OBJECT>LR:LRMARKTDEMAND</kTAG_OBJECT>
+			</edge>
+        </edges>
+    </unit>
+    <unit>
+    	<term kTAG_LID="99" kTAG_NAMESPACE="LR:LRMARKTDEMAND">
+			<kTAG_LABEL language="en"><![CDATA[Other]]></kTAG_LABEL>
+			<kTAG_DEFINITION language="en"><![CDATA[Other (elaborate in REMARKS).]]></kTAG_DEFINITION>
+    	</term>
+    	<node>
+			<kTAG_CLASS>COntologyMasterVertex</kTAG_CLASS>
+			<kTAG_KIND>
+				<item>:KIND-ENUMERATION</item>
+			</kTAG_KIND>
+    	</node>
+        <edges>
+			<edge>
+				<kTAG_PREDICATE>:ENUM-OF</kTAG_PREDICATE>
+				<kTAG_OBJECT>LR:LRMARKTDEMAND</kTAG_OBJECT>
+			</edge>
+        </edges>
+    </unit>
+    
+    <!-- LR:LRTHREATF -->
+    <unit>
+    	<term kTAG_LID="LRTHREATF" kTAG_NAMESPACE="LR">
+			<kTAG_LABEL language="en"><![CDATA[Loss risk as for the farmer]]></kTAG_LABEL>
+			<kTAG_DEFINITION language="en"><![CDATA[Risk of losing this LR as perceived by the interviewed farmer. It helps to decide if conservation is needed and plan monitoring actions.]]></kTAG_DEFINITION>
+			<kTAG_SYNONYMS>
+				<item>LRTHREATF</item>
+				<item>6.13</item>
+			</kTAG_SYNONYMS>
+    	</term>
+    	<node>
+			<kTAG_CLASS>COntologyMasterVertex</kTAG_CLASS>
+			<kTAG_KIND>
+				<item>:KIND-FEATURE</item>
+				<item>:KIND-SCALE</item>
+			</kTAG_KIND>
+			<kTAG_TYPE>
+				<item>:ENUM</item>
+			</kTAG_TYPE>
+			<kTAG_EXAMPLES>
+				<item>40</item>
+			</kTAG_EXAMPLES>
+    	</node>
+        <edges>
+			<edge>
+				<kTAG_PREDICATE>:SUBCLASS-OF</kTAG_PREDICATE>
+				<kTAG_OBJECT>LR:LANDRACE</kTAG_OBJECT>
+			</edge>
+        </edges>
+    </unit>
+    <unit>
+    	<term kTAG_LID="10" kTAG_NAMESPACE="LR:LRTHREATF">
+			<kTAG_LABEL language="en"><![CDATA[Does not answer/know]]></kTAG_LABEL>
+    	</term>
+    	<node>
+			<kTAG_CLASS>COntologyMasterVertex</kTAG_CLASS>
+			<kTAG_KIND>
+				<item>:KIND-ENUMERATION</item>
+			</kTAG_KIND>
+    	</node>
+        <edges>
+			<edge>
+				<kTAG_PREDICATE>:ENUM-OF</kTAG_PREDICATE>
+				<kTAG_OBJECT>LR:LRTHREATF</kTAG_OBJECT>
+			</edge>
+        </edges>
+    </unit>
+    <unit>
+    	<term kTAG_LID="20" kTAG_NAMESPACE="LR:LRTHREATF">
+			<kTAG_LABEL language="en"><![CDATA[Null / scarce]]></kTAG_LABEL>
+    	</term>
+    	<node>
+			<kTAG_CLASS>COntologyMasterVertex</kTAG_CLASS>
+			<kTAG_KIND>
+				<item>:KIND-ENUMERATION</item>
+			</kTAG_KIND>
+    	</node>
+        <edges>
+			<edge>
+				<kTAG_PREDICATE>:ENUM-OF</kTAG_PREDICATE>
+				<kTAG_OBJECT>LR:LRTHREATF</kTAG_OBJECT>
+			</edge>
+        </edges>
+    </unit>
+    <unit>
+    	<term kTAG_LID="30" kTAG_NAMESPACE="LR:LRTHREATF">
+			<kTAG_LABEL language="en"><![CDATA[Low]]></kTAG_LABEL>
+    	</term>
+    	<node>
+			<kTAG_CLASS>COntologyMasterVertex</kTAG_CLASS>
+			<kTAG_KIND>
+				<item>:KIND-ENUMERATION</item>
+			</kTAG_KIND>
+    	</node>
+        <edges>
+			<edge>
+				<kTAG_PREDICATE>:ENUM-OF</kTAG_PREDICATE>
+				<kTAG_OBJECT>LR:LRTHREATF</kTAG_OBJECT>
+			</edge>
+        </edges>
+    </unit>
+    <unit>
+    	<term kTAG_LID="40" kTAG_NAMESPACE="LR:LRTHREATF">
+			<kTAG_LABEL language="en"><![CDATA[Medium]]></kTAG_LABEL>
+    	</term>
+    	<node>
+			<kTAG_CLASS>COntologyMasterVertex</kTAG_CLASS>
+			<kTAG_KIND>
+				<item>:KIND-ENUMERATION</item>
+			</kTAG_KIND>
+    	</node>
+        <edges>
+			<edge>
+				<kTAG_PREDICATE>:ENUM-OF</kTAG_PREDICATE>
+				<kTAG_OBJECT>LR:LRTHREATF</kTAG_OBJECT>
+			</edge>
+        </edges>
+    </unit>
+    <unit>
+    	<term kTAG_LID="50" kTAG_NAMESPACE="LR:LRTHREATF">
+			<kTAG_LABEL language="en"><![CDATA[High]]></kTAG_LABEL>
+    	</term>
+    	<node>
+			<kTAG_CLASS>COntologyMasterVertex</kTAG_CLASS>
+			<kTAG_KIND>
+				<item>:KIND-ENUMERATION</item>
+			</kTAG_KIND>
+    	</node>
+        <edges>
+			<edge>
+				<kTAG_PREDICATE>:ENUM-OF</kTAG_PREDICATE>
+				<kTAG_OBJECT>LR:LRTHREATF</kTAG_OBJECT>
+			</edge>
+        </edges>
+    </unit>
+    <unit>
+    	<term kTAG_LID="99" kTAG_NAMESPACE="LR:LRTHREATF">
+			<kTAG_LABEL language="en"><![CDATA[Other]]></kTAG_LABEL>
+			<kTAG_DEFINITION language="en"><![CDATA[Other (elaborate in REMARKS).]]></kTAG_DEFINITION>
+    	</term>
+    	<node>
+			<kTAG_CLASS>COntologyMasterVertex</kTAG_CLASS>
+			<kTAG_KIND>
+				<item>:KIND-ENUMERATION</item>
+			</kTAG_KIND>
+    	</node>
+        <edges>
+			<edge>
+				<kTAG_PREDICATE>:ENUM-OF</kTAG_PREDICATE>
+				<kTAG_OBJECT>LR:LRTHREATF</kTAG_OBJECT>
+			</edge>
+        </edges>
+    </unit>
+    
+    <!-- LR:LRTHREATCT -->
+    <unit>
+    	<term kTAG_LID="LRTHREATCT" kTAG_NAMESPACE="LR">
+			<kTAG_LABEL language="en"><![CDATA[Loss risk as assessed by the collecting team]]></kTAG_LABEL>
+			<kTAG_DEFINITION language="en"><![CDATA[Risk of losing this LR as perceived by the team recording data. It helps to decide if conservation is needed and plan monitoring actions.]]></kTAG_DEFINITION>
+			<kTAG_SYNONYMS>
+				<item>LRTHREATCT</item>
+				<item>6.14</item>
+			</kTAG_SYNONYMS>
+    	</term>
+    	<node>
+			<kTAG_CLASS>COntologyMasterVertex</kTAG_CLASS>
+			<kTAG_KIND>
+				<item>:KIND-FEATURE</item>
+				<item>:KIND-SCALE</item>
+			</kTAG_KIND>
+			<kTAG_TYPE>
+				<item>:ENUM</item>
+			</kTAG_TYPE>
+			<kTAG_EXAMPLES>
+				<item>40</item>
+			</kTAG_EXAMPLES>
+    	</node>
+        <edges>
+			<edge>
+				<kTAG_PREDICATE>:SUBCLASS-OF</kTAG_PREDICATE>
+				<kTAG_OBJECT>LR:LANDRACE</kTAG_OBJECT>
+			</edge>
+        </edges>
+    </unit>
+    <unit>
+    	<term kTAG_LID="10" kTAG_NAMESPACE="LR:LRTHREATCT">
+			<kTAG_LABEL language="en"><![CDATA[Unable to judge/assess]]></kTAG_LABEL>
+    	</term>
+    	<node>
+			<kTAG_CLASS>COntologyMasterVertex</kTAG_CLASS>
+			<kTAG_KIND>
+				<item>:KIND-ENUMERATION</item>
+			</kTAG_KIND>
+    	</node>
+        <edges>
+			<edge>
+				<kTAG_PREDICATE>:ENUM-OF</kTAG_PREDICATE>
+				<kTAG_OBJECT>LR:LRTHREATCT</kTAG_OBJECT>
+			</edge>
+        </edges>
+    </unit>
+    <unit>
+    	<term kTAG_LID="20" kTAG_NAMESPACE="LR:LRTHREATCT">
+			<kTAG_LABEL language="en"><![CDATA[Null / scarce]]></kTAG_LABEL>
+    	</term>
+    	<node>
+			<kTAG_CLASS>COntologyMasterVertex</kTAG_CLASS>
+			<kTAG_KIND>
+				<item>:KIND-ENUMERATION</item>
+			</kTAG_KIND>
+    	</node>
+        <edges>
+			<edge>
+				<kTAG_PREDICATE>:ENUM-OF</kTAG_PREDICATE>
+				<kTAG_OBJECT>LR:LRTHREATCT</kTAG_OBJECT>
+			</edge>
+        </edges>
+    </unit>
+    <unit>
+    	<term kTAG_LID="30" kTAG_NAMESPACE="LR:LRTHREATCT">
+			<kTAG_LABEL language="en"><![CDATA[Low]]></kTAG_LABEL>
+    	</term>
+    	<node>
+			<kTAG_CLASS>COntologyMasterVertex</kTAG_CLASS>
+			<kTAG_KIND>
+				<item>:KIND-ENUMERATION</item>
+			</kTAG_KIND>
+    	</node>
+        <edges>
+			<edge>
+				<kTAG_PREDICATE>:ENUM-OF</kTAG_PREDICATE>
+				<kTAG_OBJECT>LR:LRTHREATCT</kTAG_OBJECT>
+			</edge>
+        </edges>
+    </unit>
+    <unit>
+    	<term kTAG_LID="40" kTAG_NAMESPACE="LR:LRTHREATCT">
+			<kTAG_LABEL language="en"><![CDATA[Medium]]></kTAG_LABEL>
+    	</term>
+    	<node>
+			<kTAG_CLASS>COntologyMasterVertex</kTAG_CLASS>
+			<kTAG_KIND>
+				<item>:KIND-ENUMERATION</item>
+			</kTAG_KIND>
+    	</node>
+        <edges>
+			<edge>
+				<kTAG_PREDICATE>:ENUM-OF</kTAG_PREDICATE>
+				<kTAG_OBJECT>LR:LRTHREATCT</kTAG_OBJECT>
+			</edge>
+        </edges>
+    </unit>
+    <unit>
+    	<term kTAG_LID="50" kTAG_NAMESPACE="LR:LRTHREATCT">
+			<kTAG_LABEL language="en"><![CDATA[High]]></kTAG_LABEL>
+    	</term>
+    	<node>
+			<kTAG_CLASS>COntologyMasterVertex</kTAG_CLASS>
+			<kTAG_KIND>
+				<item>:KIND-ENUMERATION</item>
+			</kTAG_KIND>
+    	</node>
+        <edges>
+			<edge>
+				<kTAG_PREDICATE>:ENUM-OF</kTAG_PREDICATE>
+				<kTAG_OBJECT>LR:LRTHREATCT</kTAG_OBJECT>
+			</edge>
+        </edges>
+    </unit>
+    <unit>
+    	<term kTAG_LID="99" kTAG_NAMESPACE="LR:LRTHREATCT">
+			<kTAG_LABEL language="en"><![CDATA[Other]]></kTAG_LABEL>
+			<kTAG_DEFINITION language="en"><![CDATA[Other (elaborate in REMARKS).]]></kTAG_DEFINITION>
+    	</term>
+    	<node>
+			<kTAG_CLASS>COntologyMasterVertex</kTAG_CLASS>
+			<kTAG_KIND>
+				<item>:KIND-ENUMERATION</item>
+			</kTAG_KIND>
+    	</node>
+        <edges>
+			<edge>
+				<kTAG_PREDICATE>:ENUM-OF</kTAG_PREDICATE>
+				<kTAG_OBJECT>LR:LRTHREATCT</kTAG_OBJECT>
+			</edge>
+        </edges>
+    </unit>
+    
+    <!-- MONITORING PROPERTIES -->
+    
+    <!-- LR:CONSERVACTIONS -->
+    <unit>
+    	<term kTAG_LID="CONSERVACTIONS" kTAG_NAMESPACE="LR">
+			<kTAG_LABEL language="en"><![CDATA[Conservation actions]]></kTAG_LABEL>
+			<kTAG_DEFINITION language="en"><![CDATA[Whether any structured and funded in situ conservation action related to the LR is in place at the moment of the Inventory compilation.]]></kTAG_DEFINITION>
+			<kTAG_SYNONYMS>
+				<item>FARMERID</item>
+				<item>7.1</item>
+			</kTAG_SYNONYMS>
+    	</term>
+    	<node>
+			<kTAG_CLASS>COntologyMasterVertex</kTAG_CLASS>
+			<kTAG_KIND>
+				<item>:KIND-FEATURE</item>
+				<item>:KIND-SCALE</item>
+			</kTAG_KIND>
+			<kTAG_TYPE>
+				<item>:ENUM</item>
+			</kTAG_TYPE>
+			<kTAG_EXAMPLES>
+				<item>11</item>
+			</kTAG_EXAMPLES>
+    	</node>
+        <edges>
+			<edge>
+				<kTAG_PREDICATE>:SUBCLASS-OF</kTAG_PREDICATE>
+				<kTAG_OBJECT>LR:MONITOR</kTAG_OBJECT>
+			</edge>
+        </edges>
+    </unit>
+    <unit>
+    	<term kTAG_LID="10" kTAG_NAMESPACE="LR:CONSERVACTIONS">
+			<kTAG_LABEL language="en"><![CDATA[Yes]]></kTAG_LABEL>
+    	</term>
+    	<node>
+			<kTAG_CLASS>COntologyMasterVertex</kTAG_CLASS>
+			<kTAG_KIND>
+				<item>:KIND-ENUMERATION</item>
+			</kTAG_KIND>
+    	</node>
+        <edges>
+			<edge>
+				<kTAG_PREDICATE>:ENUM-OF</kTAG_PREDICATE>
+				<kTAG_OBJECT>LR:CONSERVACTIONS</kTAG_OBJECT>
+			</edge>
+        </edges>
+    </unit>
+    <unit>
+    	<term kTAG_LID="11" kTAG_NAMESPACE="LR:CONSERVACTIONS">
+			<kTAG_LABEL language="en"><![CDATA[Policy-based actions]]></kTAG_LABEL>
+    	</term>
+    	<node>
+			<kTAG_CLASS>COntologyMasterVertex</kTAG_CLASS>
+			<kTAG_KIND>
+				<item>:KIND-ENUMERATION</item>
+			</kTAG_KIND>
+    	</node>
+        <edges>
+			<edge>
+				<kTAG_PREDICATE>:ENUM-OF</kTAG_PREDICATE>
+				<kTAG_OBJECT>LR:CONSERVACTIONS:10</kTAG_OBJECT>
+			</edge>
+        </edges>
+    </unit>
+    <unit>
+    	<term kTAG_LID="12" kTAG_NAMESPACE="LR:CONSERVACTIONS">
+			<kTAG_LABEL language="en"><![CDATA[Educational actions]]></kTAG_LABEL>
+			<kTAG_DEFINITION language="en"><![CDATA[Educational actions (didactic gardens, living museum etc.).]]></kTAG_DEFINITION>
+    	</term>
+    	<node>
+			<kTAG_CLASS>COntologyMasterVertex</kTAG_CLASS>
+			<kTAG_KIND>
+				<item>:KIND-ENUMERATION</item>
+			</kTAG_KIND>
+    	</node>
+        <edges>
+			<edge>
+				<kTAG_PREDICATE>:ENUM-OF</kTAG_PREDICATE>
+				<kTAG_OBJECT>LR:CONSERVACTIONS:10</kTAG_OBJECT>
+			</edge>
+        </edges>
+    </unit>
+    <unit>
+    	<term kTAG_LID="13" kTAG_NAMESPACE="LR:CONSERVACTIONS">
+			<kTAG_LABEL language="en"><![CDATA[Other]]></kTAG_LABEL>
+			<kTAG_DEFINITION language="en"><![CDATA[Other (To be specified in REMARKS).).]]></kTAG_DEFINITION>
+    	</term>
+    	<node>
+			<kTAG_CLASS>COntologyMasterVertex</kTAG_CLASS>
+			<kTAG_KIND>
+				<item>:KIND-ENUMERATION</item>
+			</kTAG_KIND>
+    	</node>
+        <edges>
+			<edge>
+				<kTAG_PREDICATE>:ENUM-OF</kTAG_PREDICATE>
+				<kTAG_OBJECT>LR:CONSERVACTIONS:10</kTAG_OBJECT>
+			</edge>
+        </edges>
+    </unit>
+    <unit>
+    	<term kTAG_LID="20" kTAG_NAMESPACE="LR:CONSERVACTIONS">
+			<kTAG_LABEL language="en"><![CDATA[No]]></kTAG_LABEL>
+    	</term>
+    	<node>
+			<kTAG_CLASS>COntologyMasterVertex</kTAG_CLASS>
+			<kTAG_KIND>
+				<item>:KIND-ENUMERATION</item>
+			</kTAG_KIND>
+    	</node>
+        <edges>
+			<edge>
+				<kTAG_PREDICATE>:ENUM-OF</kTAG_PREDICATE>
+				<kTAG_OBJECT>LR:CONSERVACTIONS</kTAG_OBJECT>
+			</edge>
+        </edges>
+    </unit>
+    <unit>
+    	<term kTAG_LID="30" kTAG_NAMESPACE="LR:CONSERVACTIONS">
+			<kTAG_LABEL language="en"><![CDATA[Unknown]]></kTAG_LABEL>
+    	</term>
+    	<node>
+			<kTAG_CLASS>COntologyMasterVertex</kTAG_CLASS>
+			<kTAG_KIND>
+				<item>:KIND-ENUMERATION</item>
+			</kTAG_KIND>
+    	</node>
+        <edges>
+			<edge>
+				<kTAG_PREDICATE>:ENUM-OF</kTAG_PREDICATE>
+				<kTAG_OBJECT>LR:CONSERVACTIONS</kTAG_OBJECT>
+			</edge>
+        </edges>
+    </unit>
+    
+    <!-- LR:CONORG -->
+    <unit>
+    	<term kTAG_LID="CONORG" kTAG_NAMESPACE="LR">
+			<kTAG_LABEL language="en"><![CDATA[Conservation organiser]]></kTAG_LABEL>
+			<kTAG_DEFINITION language="en"><![CDATA[To be compiled if CONSERVACTIONS is ‘Yes’. Name of the Authority/Public subject/Farmer organisation/Foundation that has organised the conservation action. Free text.]]></kTAG_DEFINITION>
+			<kTAG_SYNONYMS>
+				<item>CONORG</item>
+				<item>7.2</item>
+			</kTAG_SYNONYMS>
+    	</term>
+    	<node>
+			<kTAG_CLASS>COntologyMasterVertex</kTAG_CLASS>
+			<kTAG_KIND>
+				<item>:KIND-FEATURE</item>
+				<item>:KIND-SCALE</item>
+			</kTAG_KIND>
+			<kTAG_TYPE>
+				<item>:TEXT</item>
+			</kTAG_TYPE>
+			<kTAG_EXAMPLES>
+				<item>FNR</item>
+			</kTAG_EXAMPLES>
+    	</node>
+        <edges>
+			<edge>
+				<kTAG_PREDICATE>:SUBCLASS-OF</kTAG_PREDICATE>
+				<kTAG_OBJECT>LR:MONITOR</kTAG_OBJECT>
+			</edge>
+        </edges>
+    </unit>
+    
+    <!-- LR:MONIT -->
+    <unit>
+    	<term kTAG_LID="MONIT" kTAG_NAMESPACE="LR">
+			<kTAG_LABEL language="en"><![CDATA[Monitoring]]></kTAG_LABEL>
+			<kTAG_DEFINITION language="en"><![CDATA[Whether any monitoring of the in situ maintenance of LR is foreseen across years. Yes or No.]]></kTAG_DEFINITION>
+			<kTAG_SYNONYMS>
+				<item>MONIT</item>
+				<item>7.3</item>
+			</kTAG_SYNONYMS>
+    	</term>
+    	<node>
+			<kTAG_CLASS>COntologyMasterVertex</kTAG_CLASS>
+			<kTAG_KIND>
+				<item>:KIND-FEATURE</item>
+			</kTAG_KIND>
+    	</node>
+        <edges>
+			<edge>
+				<kTAG_PREDICATE>:SUBCLASS-OF</kTAG_PREDICATE>
+				<kTAG_OBJECT>LR:MONITOR</kTAG_OBJECT>
+			</edge>
+			<edge>
+				<kTAG_SUBJECT>LR:DATA-TYPES:YN</kTAG_SUBJECT>
+				<kTAG_PREDICATE>:SCALE-OF</kTAG_PREDICATE>
+			</edge>
+        </edges>
+    </unit>
+    
+    <!-- LR:MONITRESP -->
+    <unit>
+    	<term kTAG_LID="MONITRESP" kTAG_NAMESPACE="LR">
+			<kTAG_LABEL language="en"><![CDATA[Monitoring responsible]]></kTAG_LABEL>
+			<kTAG_DEFINITION language="en"><![CDATA[To be compiled if MONIT is ‘Yes’. Indicate who is in charge of monitoring. Free text.]]></kTAG_DEFINITION>
+			<kTAG_SYNONYMS>
+				<item>MONITRESP</item>
+				<item>7.4</item>
+			</kTAG_SYNONYMS>
+    	</term>
+    	<node>
+			<kTAG_CLASS>COntologyMasterVertex</kTAG_CLASS>
+			<kTAG_KIND>
+				<item>:KIND-FEATURE</item>
+				<item>:KIND-SCALE</item>
+			</kTAG_KIND>
+			<kTAG_TYPE>
+				<item>:TEXT</item>
+			</kTAG_TYPE>
+			<kTAG_EXAMPLES>
+				<item>Raul Sanchez</item>
+			</kTAG_EXAMPLES>
+    	</node>
+        <edges>
+			<edge>
+				<kTAG_PREDICATE>:SUBCLASS-OF</kTAG_PREDICATE>
+				<kTAG_OBJECT>LR:MONITOR</kTAG_OBJECT>
+			</edge>
+        </edges>
+    </unit>
+    
+    <!-- LR:MONINT -->
+    <unit>
+    	<term kTAG_LID="MONINT" kTAG_NAMESPACE="LR">
+			<kTAG_LABEL language="en"><![CDATA[Monitoring interval]]></kTAG_LABEL>
+			<kTAG_DEFINITION language="en"><![CDATA[To be compiled if MONIT is ‘Yes’. Indicate the monitoring interval in years.]]></kTAG_DEFINITION>
+			<kTAG_SYNONYMS>
+				<item>MONINT</item>
+				<item>7.5</item>
+			</kTAG_SYNONYMS>
+    	</term>
+    	<node>
+			<kTAG_CLASS>COntologyMasterVertex</kTAG_CLASS>
+			<kTAG_KIND>
+				<item>:KIND-FEATURE</item>
+				<item>:KIND-SCALE</item>
+			</kTAG_KIND>
+			<kTAG_TYPE>
+				<item>:INT</item>
+			</kTAG_TYPE>
+			<kTAG_EXAMPLES>
+				<item>2</item>
+			</kTAG_EXAMPLES>
+    	</node>
+        <edges>
+			<edge>
+				<kTAG_PREDICATE>:SUBCLASS-OF</kTAG_PREDICATE>
+				<kTAG_OBJECT>LR:MONITOR</kTAG_OBJECT>
+			</edge>
+        </edges>
+    </unit>
+    
+    <!-- LR:EXSECURE -->
+    <unit>
+    	<term kTAG_LID="EXSECURE" kTAG_NAMESPACE="LR">
+			<kTAG_LABEL language="en"><![CDATA[Safety duplication ex situ]]></kTAG_LABEL>
+			<kTAG_DEFINITION language="en"><![CDATA[State if a sample was collected for safety duplication in gene bank. Yes or No.]]></kTAG_DEFINITION>
+			<kTAG_SYNONYMS>
+				<item>EXSECURE</item>
+				<item>7.6</item>
+			</kTAG_SYNONYMS>
+    	</term>
+    	<node>
+			<kTAG_CLASS>COntologyMasterVertex</kTAG_CLASS>
+			<kTAG_KIND>
+				<item>:KIND-FEATURE</item>
+			</kTAG_KIND>
+    	</node>
+        <edges>
+			<edge>
+				<kTAG_PREDICATE>:SUBCLASS-OF</kTAG_PREDICATE>
+				<kTAG_OBJECT>LR:MONITOR</kTAG_OBJECT>
+			</edge>
+			<edge>
+				<kTAG_SUBJECT>LR:DATA-TYPES:YN</kTAG_SUBJECT>
+				<kTAG_PREDICATE>:SCALE-OF</kTAG_PREDICATE>
+			</edge>
+        </edges>
+    </unit>
+    
+    <!-- LR:EXDUPL -->
+    <unit>
+    	<term kTAG_LID="EXDUPL" kTAG_NAMESPACE="LR">
+			<kTAG_LABEL language="en"><![CDATA[Location of ex situ duplicate]]></kTAG_LABEL>
+			<kTAG_DEFINITION language="en"><![CDATA[To be filled in if the answer of EXSECURE (7.6) is ‘Yes’. FAO WIEWS institute code/s of the institute/s where an ex situ safety duplicate of the landrace has been eventually deposited. The codes consist of the 3-letter ISO 3166 country code of the country where the institute is located plus a number. Multiple codes are separated by a semicolon (;) without space.]]></kTAG_DEFINITION>
+			<kTAG_SYNONYMS>
+				<item>EXDUPL</item>
+				<item>7.7</item>
+			</kTAG_SYNONYMS>
+    	</term>
+    	<node>
+			<kTAG_CLASS>COntologyMasterVertex</kTAG_CLASS>
+			<kTAG_KIND>
+				<item>:KIND-FEATURE</item>
+			</kTAG_KIND>
+    	</node>
+        <edges>
+			<edge>
+				<kTAG_PREDICATE>:SUBCLASS-OF</kTAG_PREDICATE>
+				<kTAG_OBJECT>LR:MONITOR</kTAG_OBJECT>
+			</edge>
+			<edge>
+				<kTAG_SUBJECT>FAO-INSTITUTES:INSTCODE</kTAG_SUBJECT>
+				<kTAG_PREDICATE>:SCALE-OF</kTAG_PREDICATE>
 			</edge>
         </edges>
     </unit>
