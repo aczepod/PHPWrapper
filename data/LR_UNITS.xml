@@ -494,32 +494,41 @@
     
     <!-- INVENTORY PROPERTIES -->
     
-    <!-- GR:NICODE -->
+    <!-- LR:NICODE -->
     <unit>
-    	<node>
-			<kTAG_CLASS>COntologyAliasVertex</kTAG_CLASS>
-			<kTAG_TERM>GR:NICODE</kTAG_TERM>
-			<kTAG_KIND>
-				<item>:KIND-FEATURE</item>
-				<item>:KIND-SCALE</item>
-			</kTAG_KIND>
-			<kTAG_TYPE>
-				<item>:REQUIRED</item>
-				<item>:ENUM</item>
-			</kTAG_TYPE>
-			<kTAG_DESCRIPTION language="en">Country code identifying the National in situ LR Inventory; the code of the country preparing the National Inventory. For country codes use the three-letter ISO 3166-1 [#ISO:3166:1:alpha-3#] (see: http://unstats.un.org/unsd/methods/m49/m49alpha.htm).</kTAG_DESCRIPTION>
-			<kTAG_EXAMPLES>
-				<item>NLD</item>
-			</kTAG_EXAMPLES>
+    	<term kTAG_LID="NICODE" kTAG_NAMESPACE="LR">
+			<kTAG_LABEL language="en"><![CDATA[National Inventory]]></kTAG_LABEL>
+			<kTAG_DEFINITION language="en"><![CDATA[National inventory code identifying the National in situ LR Inventory.]]></kTAG_DEFINITION>
 			<kTAG_SYNONYMS>
 				<item>NICODE</item>
 				<item>1.1</item>
 			</kTAG_SYNONYMS>
+    	</term>
+    	<node>
+			<kTAG_CLASS>COntologyAliasVertex</kTAG_CLASS>
+			<kTAG_KIND>
+				<item>:KIND-FEATURE</item>
+			</kTAG_KIND>
+			<kTAG_TYPE>
+				<item>:REQUIRED</item>
+			</kTAG_TYPE>
+			<kTAG_EXAMPLES>
+				<item>NLD</item>
+			</kTAG_EXAMPLES>
     	</node>
+    	<tag>
+    		<item>LR:NICODE</item>
+    		<item>:SCALE-OF</item>
+    		<item>GR:NICODE</item>
+    	</tag>
         <edges>
 			<edge>
 				<kTAG_PREDICATE>:SUBCLASS-OF</kTAG_PREDICATE>
 				<kTAG_OBJECT>LR:INVENTORY</kTAG_OBJECT>
+			</edge>
+			<edge>
+				<kTAG_SUBJECT>GR:NICODE</kTAG_SUBJECT>
+				<kTAG_PREDICATE>:SCALE-OF</kTAG_PREDICATE>
 			</edge>
         </edges>
     </unit>
@@ -549,6 +558,9 @@
 				<item>the second edition that is compiled in 2014 will be coded 002/2014</item>
 			</kTAG_EXAMPLES>
     	</node>
+    	<tag>
+    		<item>LR:NIENUMB</item>
+    	</tag>
         <edges>
 			<edge>
 				<kTAG_PREDICATE>:SUBCLASS-OF</kTAG_PREDICATE>
@@ -576,6 +588,11 @@
 				<item>:REQUIRED</item>
 			</kTAG_TYPE>
     	</node>
+    	<tag>
+    		<item>LR:INSTCODE</item>
+    		<item>:SCALE-OF</item>
+    		<item>FAO-INSTITUTES:INSTCODE</item>
+    	</tag>
         <edges>
 			<edge>
 				<kTAG_PREDICATE>:SUBCLASS-OF</kTAG_PREDICATE>
@@ -590,62 +607,82 @@
     
     <!-- TAXONOMY PROPERTIES -->
     
-    <!-- GR:GENUS -->
+    <!-- LR:GENUS -->
     <unit>
+    	<term kTAG_LID="GENUS" kTAG_NAMESPACE="LR">
+			<kTAG_LABEL language="en"><![CDATA[Landrace genus]]></kTAG_LABEL>
+			<kTAG_DEFINITION language="en"><![CDATA[Genus name of the landrace.]]></kTAG_DEFINITION>
+			<kTAG_SYNONYMS>
+				<item>GENUS</item>
+				<item>2.1</item>
+			</kTAG_SYNONYMS>
+    	</term>
     	<node>
-			<kTAG_CLASS>COntologyAliasVertex</kTAG_CLASS>
-			<kTAG_TERM>GR:GENUS</kTAG_TERM>
+			<kTAG_CLASS>COntologyMasterVertex</kTAG_CLASS>
 			<kTAG_KIND>
 				<item>:KIND-FEATURE</item>
-				<item>:KIND-SCALE</item>
 			</kTAG_KIND>
 			<kTAG_TYPE>
 				<item>:REQUIRED</item>
-				<item>:TEXT</item>
 			</kTAG_TYPE>
-			<kTAG_DESCRIPTION language="en">Genus name for taxon, in Latin. Initial uppercase letter required.</kTAG_DESCRIPTION>
 			<kTAG_EXAMPLES>
 				<item>Vigna</item>
 				<item>Vicia</item>
 			</kTAG_EXAMPLES>
-			<kTAG_SYNONYMS>
-				<item>2.1</item>
-			</kTAG_SYNONYMS>
     	</node>
+    	<tag>
+    		<item>LR:GENUS</item>
+    		<item>:SCALE-OF</item>
+    		<item>GR:GENUS</item>
+    	</tag>
         <edges>
 			<edge>
 				<kTAG_PREDICATE>:SUBCLASS-OF</kTAG_PREDICATE>
 				<kTAG_OBJECT>LR:TAXONOMY</kTAG_OBJECT>
 			</edge>
+			<edge>
+				<kTAG_SUBJECT>GR:GENUS</kTAG_SUBJECT>
+				<kTAG_PREDICATE>:SCALE-OF</kTAG_PREDICATE>
+			</edge>
         </edges>
     </unit>
     
-    <!-- GR:SPECIES -->
+    <!-- LR:SPECIES -->
     <unit>
+    	<term kTAG_LID="SPECIES" kTAG_NAMESPACE="LR">
+			<kTAG_LABEL language="en"><![CDATA[Landrace species]]></kTAG_LABEL>
+			<kTAG_DEFINITION language="en"><![CDATA[Species name of the landrace.]]></kTAG_DEFINITION>
+			<kTAG_SYNONYMS>
+				<item>SPECIES</item>
+				<item>2.2</item>
+			</kTAG_SYNONYMS>
+    	</term>
     	<node>
-			<kTAG_CLASS>COntologyAliasVertex</kTAG_CLASS>
-			<kTAG_TERM>GR:SPECIES</kTAG_TERM>
+			<kTAG_CLASS>COntologyMasterVertex</kTAG_CLASS>
 			<kTAG_KIND>
 				<item>:KIND-FEATURE</item>
-				<item>:KIND-SCALE</item>
 			</kTAG_KIND>
 			<kTAG_TYPE>
 				<item>:REQUIRED</item>
-				<item>:TEXT</item>
 			</kTAG_TYPE>
-			<kTAG_DESCRIPTION language="en">Specific epithet portion of the scientific name, in Latin, in lower case letters.</kTAG_DESCRIPTION>
 			<kTAG_EXAMPLES>
 				<item>unguiculata</item>
 				<item>faba</item>
 			</kTAG_EXAMPLES>
-			<kTAG_SYNONYMS>
-				<item>2.2</item>
-			</kTAG_SYNONYMS>
     	</node>
+    	<tag>
+    		<item>LR:SPECIES</item>
+    		<item>:SCALE-OF</item>
+    		<item>GR:SPECIES</item>
+    	</tag>
         <edges>
 			<edge>
 				<kTAG_PREDICATE>:SUBCLASS-OF</kTAG_PREDICATE>
 				<kTAG_OBJECT>LR:TAXONOMY</kTAG_OBJECT>
+			</edge>
+			<edge>
+				<kTAG_SUBJECT>GR:SPECIES</kTAG_SUBJECT>
+				<kTAG_PREDICATE>:SCALE-OF</kTAG_PREDICATE>
 			</edge>
         </edges>
     </unit>
@@ -653,8 +690,8 @@
     <!-- LR:SPAUTHOR -->
     <unit>
     	<term kTAG_LID="SPAUTHOR" kTAG_NAMESPACE="LR">
-			<kTAG_LABEL language="en"><![CDATA[Species authority]]></kTAG_LABEL>
-			<kTAG_DEFINITION language="en"><![CDATA[The authority for the species name.]]></kTAG_DEFINITION>
+			<kTAG_LABEL language="en"><![CDATA[Landrace species authority]]></kTAG_LABEL>
+			<kTAG_DEFINITION language="en"><![CDATA[Species authority for the landrace.]]></kTAG_DEFINITION>
 			<kTAG_SYNONYMS>
 				<item>SPAUTHOR</item>
 				<item>2.3</item>
@@ -664,21 +701,28 @@
 			<kTAG_CLASS>COntologyMasterVertex</kTAG_CLASS>
 			<kTAG_KIND>
 				<item>:KIND-FEATURE</item>
-				<item>:KIND-SCALE</item>
 			</kTAG_KIND>
 			<kTAG_TYPE>
 				<item>:REQUIRED</item>
-				<item>:TEXT</item>
 			</kTAG_TYPE>
 			<kTAG_EXAMPLES>
 				<item>(L.) Wald.</item>
 				<item>L.</item>
 			</kTAG_EXAMPLES>
     	</node>
+    	<tag>
+    		<item>LR:SPAUTHOR</item>
+    		<item>:SCALE-OF</item>
+    		<item>GR:SPAUTHOR</item>
+    	</tag>
         <edges>
 			<edge>
 				<kTAG_PREDICATE>:SUBCLASS-OF</kTAG_PREDICATE>
 				<kTAG_OBJECT>LR:TAXONOMY</kTAG_OBJECT>
+			</edge>
+			<edge>
+				<kTAG_SUBJECT>GR:SPAUTHOR</kTAG_SUBJECT>
+				<kTAG_PREDICATE>:SCALE-OF</kTAG_PREDICATE>
 			</edge>
         </edges>
     </unit>
@@ -697,20 +741,25 @@
 			<kTAG_CLASS>COntologyMasterVertex</kTAG_CLASS>
 			<kTAG_KIND>
 				<item>:KIND-FEATURE</item>
-				<item>:KIND-SCALE</item>
 			</kTAG_KIND>
-			<kTAG_TYPE>
-				<item>:TEXT</item>
-			</kTAG_TYPE>
 			<kTAG_EXAMPLES>
 				<item>subsp. sesquipedalis</item>
 				<item>subsp. faba var. minuta</item>
 			</kTAG_EXAMPLES>
     	</node>
+    	<tag>
+    		<item>LR:SUBTAXA</item>
+    		<item>:SCALE-OF</item>
+    		<item>GR:SUBTAXA</item>
+    	</tag>
         <edges>
 			<edge>
 				<kTAG_PREDICATE>:SUBCLASS-OF</kTAG_PREDICATE>
 				<kTAG_OBJECT>LR:TAXONOMY</kTAG_OBJECT>
+			</edge>
+			<edge>
+				<kTAG_SUBJECT>GR:SUBTAXA</kTAG_SUBJECT>
+				<kTAG_PREDICATE>:SCALE-OF</kTAG_PREDICATE>
 			</edge>
         </edges>
     </unit>
@@ -721,7 +770,7 @@
 			<kTAG_LABEL language="en"><![CDATA[Subtaxa authority]]></kTAG_LABEL>
 			<kTAG_DEFINITION language="en"><![CDATA[The subtaxa authority at the most detailed taxonomic level.]]></kTAG_DEFINITION>
 			<kTAG_SYNONYMS>
-				<item>SUBTAXA</item>
+				<item>SUBTAUTHOR</item>
 				<item>2.5</item>
 			</kTAG_SYNONYMS>
     	</term>
@@ -729,20 +778,25 @@
 			<kTAG_CLASS>COntologyMasterVertex</kTAG_CLASS>
 			<kTAG_KIND>
 				<item>:KIND-FEATURE</item>
-				<item>:KIND-SCALE</item>
 			</kTAG_KIND>
-			<kTAG_TYPE>
-				<item>:TEXT</item>
-			</kTAG_TYPE>
 			<kTAG_EXAMPLES>
 				<item>(L.) Verdc.</item>
 				<item>(hort. ex Alef.) Mansf.</item>
 			</kTAG_EXAMPLES>
     	</node>
+    	<tag>
+    		<item>LR:SUBTAUTHOR</item>
+    		<item>:SCALE-OF</item>
+    		<item>GR:SUBTAUTHOR</item>
+    	</tag>
         <edges>
 			<edge>
 				<kTAG_PREDICATE>:SUBCLASS-OF</kTAG_PREDICATE>
 				<kTAG_OBJECT>LR:TAXONOMY</kTAG_OBJECT>
+			</edge>
+			<edge>
+				<kTAG_SUBJECT>GR:SUBTAUTHOR</kTAG_SUBJECT>
+				<kTAG_PREDICATE>:SCALE-OF</kTAG_PREDICATE>
 			</edge>
         </edges>
     </unit>
@@ -772,6 +826,9 @@
 				<item>GRIN Taxonomy</item>
 			</kTAG_EXAMPLES>
     	</node>
+    	<tag>
+    		<item>LR:TAXREF</item>
+    	</tag>
         <edges>
 			<edge>
 				<kTAG_PREDICATE>:SUBCLASS-OF</kTAG_PREDICATE>
@@ -805,6 +862,9 @@
 				<item>tick-bean</item>
 			</kTAG_EXAMPLES>
     	</node>
+    	<tag>
+    		<item>LR:CROPNAME</item>
+    	</tag>
         <edges>
 			<edge>
 				<kTAG_PREDICATE>:SUBCLASS-OF</kTAG_PREDICATE>
@@ -839,6 +899,9 @@
 				<item>20020620</item>
 			</kTAG_EXAMPLES>
     	</node>
+    	<tag>
+    		<item>LR:LRRECDATE</item>
+    	</tag>
         <edges>
 			<edge>
 				<kTAG_PREDICATE>:SUBCLASS-OF</kTAG_PREDICATE>
@@ -871,6 +934,9 @@
 				<item>00010</item>
 			</kTAG_EXAMPLES>
     	</node>
+    	<tag>
+    		<item>LR:LRNUMB</item>
+    	</tag>
         <edges>
 			<edge>
 				<kTAG_PREDICATE>:SUBCLASS-OF</kTAG_PREDICATE>
@@ -903,6 +969,9 @@
 				<item>fagiolina, cornetti, fagiolino dall’occhio</item>
 			</kTAG_EXAMPLES>
     	</node>
+    	<tag>
+    		<item>LR:LRNAME</item>
+    	</tag>
         <edges>
 			<edge>
 				<kTAG_PREDICATE>:SUBCLASS-OF</kTAG_PREDICATE>
@@ -934,6 +1003,11 @@
 				<item>ita</item>
 			</kTAG_EXAMPLES>
     	</node>
+    	<tag>
+    		<item>LR:LRLANG</item>
+    		<item>:SCALE-OF</item>
+    		<item>ISO:639:2</item>
+    	</tag>
         <edges>
 			<edge>
 				<kTAG_PREDICATE>:SUBCLASS-OF</kTAG_PREDICATE>
@@ -941,7 +1015,7 @@
 			</edge>
 			<edge>
 				<kTAG_SUBJECT>ISO:639:2</kTAG_SUBJECT>
-				<kTAG_PREDICATE>:SUBCLASS-OF</kTAG_PREDICATE>
+				<kTAG_PREDICATE>:SCALE-OF</kTAG_PREDICATE>
 			</edge>
         </edges>
     </unit>
@@ -971,6 +1045,9 @@
 				<item>Umbria Region</item>
 			</kTAG_EXAMPLES>
     	</node>
+    	<tag>
+    		<item>LR:FARMFIRSTADMIN</item>
+    	</tag>
         <edges>
 			<edge>
 				<kTAG_PREDICATE>:SUBCLASS-OF</kTAG_PREDICATE>
@@ -1002,6 +1079,9 @@
 				<item>Perugia Province</item>
 			</kTAG_EXAMPLES>
     	</node>
+    	<tag>
+    		<item>LR:FARMSECONDADMIN</item>
+    	</tag>
         <edges>
 			<edge>
 				<kTAG_PREDICATE>:SUBCLASS-OF</kTAG_PREDICATE>
@@ -1033,6 +1113,9 @@
 				<item>Panicale municipality</item>
 			</kTAG_EXAMPLES>
     	</node>
+    	<tag>
+    		<item>LR:FARMLOWESTADMIN</item>
+    	</tag>
         <edges>
 			<edge>
 				<kTAG_PREDICATE>:SUBCLASS-OF</kTAG_PREDICATE>
@@ -1064,6 +1147,9 @@
 				<item>7 km south of Panicale towards Perugia on SS.74</item>
 			</kTAG_EXAMPLES>
     	</node>
+    	<tag>
+    		<item>LR:LOCATION</item>
+    	</tag>
         <edges>
 			<edge>
 				<kTAG_PREDICATE>:SUBCLASS-OF</kTAG_PREDICATE>
@@ -1090,6 +1176,11 @@
 				<item>:REQUIRED</item>
 			</kTAG_TYPE>
     	</node>
+    	<tag>
+    		<item>LR:FLATDMS</item>
+    		<item>:SCALE-OF</item>
+    		<item>LR:DATA-TYPES:LATDMS</item>
+    	</tag>
         <edges>
 			<edge>
 				<kTAG_PREDICATE>:SUBCLASS-OF</kTAG_PREDICATE>
@@ -1120,6 +1211,11 @@
 				<item>:REQUIRED</item>
 			</kTAG_TYPE>
     	</node>
+    	<tag>
+    		<item>LR:FLATDD</item>
+    		<item>:SCALE-OF</item>
+    		<item>LR:DATA-TYPES:LATDEC</item>
+    	</tag>
         <edges>
 			<edge>
 				<kTAG_PREDICATE>:SUBCLASS-OF</kTAG_PREDICATE>
@@ -1150,6 +1246,11 @@
 				<item>:REQUIRED</item>
 			</kTAG_TYPE>
     	</node>
+    	<tag>
+    		<item>LR:FLONGDMS</item>
+    		<item>:SCALE-OF</item>
+    		<item>LR:DATA-TYPES:LONDMS</item>
+    	</tag>
         <edges>
 			<edge>
 				<kTAG_PREDICATE>:SUBCLASS-OF</kTAG_PREDICATE>
@@ -1180,6 +1281,11 @@
 				<item>:REQUIRED</item>
 			</kTAG_TYPE>
     	</node>
+    	<tag>
+    		<item>LR:FLONGDD</item>
+    		<item>:SCALE-OF</item>
+    		<item>LR:DATA-TYPES:LONDEC</item>
+    	</tag>
         <edges>
 			<edge>
 				<kTAG_PREDICATE>:SUBCLASS-OF</kTAG_PREDICATE>
@@ -1215,6 +1321,9 @@
 				<item>WGS84 (for World Geodetic System 1984 – EPSG 4326)</item>
 			</kTAG_EXAMPLES>
     	</node>
+    	<tag>
+    		<item>LR:FEPSGCODE</item>
+    	</tag>
         <edges>
 			<edge>
 				<kTAG_PREDICATE>:SUBCLASS-OF</kTAG_PREDICATE>
@@ -1239,6 +1348,11 @@
 				<item>:KIND-FEATURE</item>
 			</kTAG_KIND>
     	</node>
+    	<tag>
+    		<item>LR:FGPS</item>
+    		<item>:SCALE-OF</item>
+    		<item>LR:DATA-TYPES:YN</item>
+    	</tag>
         <edges>
 			<edge>
 				<kTAG_PREDICATE>:SUBCLASS-OF</kTAG_PREDICATE>
@@ -1275,6 +1389,9 @@
 				<item>100000</item>
 			</kTAG_EXAMPLES>
     	</node>
+    	<tag>
+    		<item>LR:FRADIALED</item>
+    	</tag>
         <edges>
 			<edge>
 				<kTAG_PREDICATE>:SUBCLASS-OF</kTAG_PREDICATE>
@@ -1301,6 +1418,11 @@
 				<item>:REQUIRED</item>
 			</kTAG_TYPE>
     	</node>
+    	<tag>
+    		<item>LR:FELEVATION</item>
+    		<item>:SCALE-OF</item>
+    		<item>LR:DATA-TYPES:ELEVATION</item>
+    	</tag>
         <edges>
 			<edge>
 				<kTAG_PREDICATE>:SUBCLASS-OF</kTAG_PREDICATE>
@@ -1331,6 +1453,11 @@
 				<item>:REQUIRED</item>
 			</kTAG_TYPE>
     	</node>
+    	<tag>
+    		<item>LR:LRSLATDMS</item>
+    		<item>:SCALE-OF</item>
+    		<item>LR:DATA-TYPES:LATDMS</item>
+    	</tag>
         <edges>
 			<edge>
 				<kTAG_PREDICATE>:SUBCLASS-OF</kTAG_PREDICATE>
@@ -1361,6 +1488,11 @@
 				<item>:REQUIRED</item>
 			</kTAG_TYPE>
     	</node>
+    	<tag>
+    		<item>LR:LRSLATDD</item>
+    		<item>:SCALE-OF</item>
+    		<item>LR:DATA-TYPES:LATDEC</item>
+    	</tag>
         <edges>
 			<edge>
 				<kTAG_PREDICATE>:SUBCLASS-OF</kTAG_PREDICATE>
@@ -1386,12 +1518,16 @@
 			<kTAG_CLASS>COntologyMasterVertex</kTAG_CLASS>
 			<kTAG_KIND>
 				<item>:KIND-FEATURE</item>
-				<item>:KIND-SCALE</item>
 			</kTAG_KIND>
 			<kTAG_TYPE>
 				<item>:REQUIRED</item>
 			</kTAG_TYPE>
     	</node>
+    	<tag>
+    		<item>LR:LRSLONGDMS</item>
+    		<item>:SCALE-OF</item>
+    		<item>LR:DATA-TYPES:LONDMS</item>
+    	</tag>
         <edges>
 			<edge>
 				<kTAG_PREDICATE>:SUBCLASS-OF</kTAG_PREDICATE>
@@ -1422,6 +1558,11 @@
 				<item>:REQUIRED</item>
 			</kTAG_TYPE>
     	</node>
+    	<tag>
+    		<item>LR:LRSLONGITUDEDD</item>
+    		<item>:SCALE-OFS</item>
+    		<item>LR:DATA-TYPES:LONDEC</item>
+    	</tag>
         <edges>
 			<edge>
 				<kTAG_PREDICATE>:SUBCLASS-OF</kTAG_PREDICATE>
@@ -1457,6 +1598,9 @@
 				<item>WGS84 (for World Geodetic System 1984 – EPSG 4326)</item>
 			</kTAG_EXAMPLES>
     	</node>
+    	<tag>
+    		<item>LR:LRSEPSGCODE</item>
+    	</tag>
         <edges>
 			<edge>
 				<kTAG_PREDICATE>:SUBCLASS-OF</kTAG_PREDICATE>
@@ -1481,6 +1625,11 @@
 				<item>:KIND-FEATURE</item>
 			</kTAG_KIND>
     	</node>
+    	<tag>
+    		<item>LR:LRSGPS</item>
+    		<item>:SCALE-OF</item>
+    		<item>LR:DATA-TYPES:YN</item>
+    	</tag>
         <edges>
 			<edge>
 				<kTAG_PREDICATE>:SUBCLASS-OF</kTAG_PREDICATE>
@@ -1517,6 +1666,9 @@
 				<item>100000</item>
 			</kTAG_EXAMPLES>
     	</node>
+    	<tag>
+    		<item>LR:LRSRADIALED</item>
+    	</tag>
         <edges>
 			<edge>
 				<kTAG_PREDICATE>:SUBCLASS-OF</kTAG_PREDICATE>
@@ -1543,6 +1695,11 @@
 				<item>:REQUIRED</item>
 			</kTAG_TYPE>
     	</node>
+    	<tag>
+    		<item>LR:LRSELEVATION</item>
+    		<item>:SCALE-OF</item>
+    		<item>LR:DATA-TYPES:ELEVATION</item>
+    	</tag>
         <edges>
 			<edge>
 				<kTAG_PREDICATE>:SUBCLASS-OF</kTAG_PREDICATE>
@@ -1580,6 +1737,9 @@
 				<item>NLD001/201200010</item>
 			</kTAG_EXAMPLES>
     	</node>
+    	<tag>
+    		<item>LR:FARMERID</item>
+    	</tag>
         <edges>
 			<edge>
 				<kTAG_PREDICATE>:SUBCLASS-OF</kTAG_PREDICATE>
@@ -1611,6 +1771,9 @@
 				<item>1957</item>
 			</kTAG_EXAMPLES>
     	</node>
+    	<tag>
+    		<item>LR:FARMERYB</item>
+    	</tag>
         <edges>
 			<edge>
 				<kTAG_PREDICATE>:SUBCLASS-OF</kTAG_PREDICATE>
@@ -1642,6 +1805,9 @@
 				<item>10;30</item>
 			</kTAG_EXAMPLES>
     	</node>
+    	<tag>
+    		<item>LR:FARMHT</item>
+    	</tag>
         <edges>
 			<edge>
 				<kTAG_PREDICATE>:SUBCLASS-OF</kTAG_PREDICATE>
@@ -1752,6 +1918,11 @@
 				<item>:KIND-FEATURE</item>
 			</kTAG_KIND>
     	</node>
+    	<tag>
+    		<item>LR:FIR</item>
+    		<item>:SCALE-OF</item>
+    		<item>LR:DATA-TYPES:YN</item>
+    	</tag>
         <edges>
 			<edge>
 				<kTAG_PREDICATE>:SUBCLASS-OF</kTAG_PREDICATE>
@@ -1789,6 +1960,9 @@
 				<item>125.7</item>
 			</kTAG_EXAMPLES>
     	</node>
+    	<tag>
+    		<item>LR:LRTOTAREA</item>
+    	</tag>
         <edges>
 			<edge>
 				<kTAG_PREDICATE>:SUBCLASS-OF</kTAG_PREDICATE>
@@ -1822,6 +1996,9 @@
 				<item>33</item>
 			</kTAG_EXAMPLES>
     	</node>
+    	<tag>
+    		<item>LR:LRCULTPER</item>
+    	</tag>
         <edges>
 			<edge>
 				<kTAG_PREDICATE>:SUBCLASS-OF</kTAG_PREDICATE>
@@ -2164,6 +2341,9 @@
 				<item>20</item>
 			</kTAG_EXAMPLES>
     	</node>
+    	<tag>
+    		<item>LR:LRSSS</item>
+    	</tag>
         <edges>
 			<edge>
 				<kTAG_PREDICATE>:SUBCLASS-OF</kTAG_PREDICATE>
@@ -2294,7 +2474,7 @@
     	<term kTAG_LID="22" kTAG_NAMESPACE="LR:LRSSS">
 			<kTAG_LABEL language="en"><![CDATA[Genebank]]></kTAG_LABEL>
  			<kTAG_DEFINITION language="en"><![CDATA[Genebank (to be specified from which genebank in REMARKS).]]></kTAG_DEFINITION>
-   	</term>
+	   	</term>
     	<node>
 			<kTAG_CLASS>COntologyMasterVertex</kTAG_CLASS>
 			<kTAG_KIND>
@@ -2367,6 +2547,9 @@
 				<item>20</item>
 			</kTAG_EXAMPLES>
     	</node>
+    	<tag>
+    		<item>LR:LRCONT</item>
+    	</tag>
         <edges>
 			<edge>
 				<kTAG_PREDICATE>:SUBCLASS-OF</kTAG_PREDICATE>
@@ -2484,6 +2667,9 @@
 				<item>12</item>
 			</kTAG_EXAMPLES>
     	</node>
+    	<tag>
+    		<item>LR:LRDISTR</item>
+    	</tag>
         <edges>
 			<edge>
 				<kTAG_PREDICATE>:SUBCLASS-OF</kTAG_PREDICATE>
@@ -2512,7 +2698,7 @@
     	<term kTAG_LID="11" kTAG_NAMESPACE="LR:LRDISTR">
 			<kTAG_LABEL language="en"><![CDATA[To relative]]></kTAG_LABEL>
  			<kTAG_DEFINITION language="en"><![CDATA[Yes, to relative.]]></kTAG_DEFINITION>
-   	</term>
+	   	</term>
     	<node>
 			<kTAG_CLASS>COntologyMasterVertex</kTAG_CLASS>
 			<kTAG_KIND>
@@ -2656,6 +2842,9 @@
 				<item>12;21</item>
 			</kTAG_EXAMPLES>
     	</node>
+    	<tag>
+    		<item>LR:LRFARMERMOT</item>
+    	</tag>
         <edges>
 			<edge>
 				<kTAG_PREDICATE>:SUBCLASS-OF</kTAG_PREDICATE>
@@ -2701,7 +2890,7 @@
     	<term kTAG_LID="12" kTAG_NAMESPACE="LR:LRFARMERMOT">
 			<kTAG_LABEL language="en"><![CDATA[Precocity]]></kTAG_LABEL>
  			<kTAG_DEFINITION language="en"><![CDATA[Precocity (early development or maturity).]]></kTAG_DEFINITION>
-   	</term>
+	   	</term>
     	<node>
 			<kTAG_CLASS>COntologyMasterVertex</kTAG_CLASS>
 			<kTAG_KIND>
@@ -3139,6 +3328,9 @@
 				<item>12</item>
 			</kTAG_EXAMPLES>
     	</node>
+    	<tag>
+    		<item>LR:LRFARMERSELCRI</item>
+    	</tag>
         <edges>
 			<edge>
 				<kTAG_PREDICATE>:SUBCLASS-OF</kTAG_PREDICATE>
@@ -3290,6 +3482,9 @@
 				<item>110;70</item>
 			</kTAG_EXAMPLES>
     	</node>
+    	<tag>
+    		<item>LR:PPU</item>
+    	</tag>
         <edges>
 			<edge>
 				<kTAG_PREDICATE>:SUBCLASS-OF</kTAG_PREDICATE>
@@ -3543,6 +3738,9 @@
 				<item>13;16</item>
 			</kTAG_EXAMPLES>
     	</node>
+    	<tag>
+    		<item>LR:LRPRODUSE</item>
+    	</tag>
         <edges>
 			<edge>
 				<kTAG_PREDICATE>:SUBCLASS-OF</kTAG_PREDICATE>
@@ -3815,6 +4013,9 @@
 				<item>21</item>
 			</kTAG_EXAMPLES>
     	</node>
+    	<tag>
+    		<item>LR:LRPRODEST</item>
+    	</tag>
         <edges>
 			<edge>
 				<kTAG_PREDICATE>:SUBCLASS-OF</kTAG_PREDICATE>
@@ -3970,6 +4171,9 @@
 				<item>30</item>
 			</kTAG_EXAMPLES>
     	</node>
+    	<tag>
+    		<item>LR:LRMARKTDEMAND</item>
+    	</tag>
         <edges>
 			<edge>
 				<kTAG_PREDICATE>:SUBCLASS-OF</kTAG_PREDICATE>
@@ -4104,6 +4308,9 @@
 				<item>40</item>
 			</kTAG_EXAMPLES>
     	</node>
+    	<tag>
+    		<item>LR:LRTHREATF</item>
+    	</tag>
         <edges>
 			<edge>
 				<kTAG_PREDICATE>:SUBCLASS-OF</kTAG_PREDICATE>
@@ -4238,6 +4445,9 @@
 				<item>40</item>
 			</kTAG_EXAMPLES>
     	</node>
+    	<tag>
+    		<item>LR:LRTHREATCT</item>
+    	</tag>
         <edges>
 			<edge>
 				<kTAG_PREDICATE>:SUBCLASS-OF</kTAG_PREDICATE>
@@ -4374,6 +4584,9 @@
 				<item>11</item>
 			</kTAG_EXAMPLES>
     	</node>
+    	<tag>
+    		<item>LR:CONSERVACTIONS</item>
+    	</tag>
         <edges>
 			<edge>
 				<kTAG_PREDICATE>:SUBCLASS-OF</kTAG_PREDICATE>
@@ -4509,6 +4722,9 @@
 				<item>FNR</item>
 			</kTAG_EXAMPLES>
     	</node>
+    	<tag>
+    		<item>LR:CONORG</item>
+    	</tag>
         <edges>
 			<edge>
 				<kTAG_PREDICATE>:SUBCLASS-OF</kTAG_PREDICATE>
@@ -4533,6 +4749,11 @@
 				<item>:KIND-FEATURE</item>
 			</kTAG_KIND>
     	</node>
+    	<tag>
+    		<item>LR:MONIT</item>
+    		<item>:SCALE-OF</item>
+    		<item>LR:DATA-TYPES:YN</item>
+    	</tag>
         <edges>
 			<edge>
 				<kTAG_PREDICATE>:SUBCLASS-OF</kTAG_PREDICATE>
@@ -4568,6 +4789,9 @@
 				<item>Raul Sanchez</item>
 			</kTAG_EXAMPLES>
     	</node>
+    	<tag>
+    		<item>LR:MONITRESP</item>
+    	</tag>
         <edges>
 			<edge>
 				<kTAG_PREDICATE>:SUBCLASS-OF</kTAG_PREDICATE>
@@ -4599,6 +4823,9 @@
 				<item>2</item>
 			</kTAG_EXAMPLES>
     	</node>
+    	<tag>
+    		<item>LR:MONINT</item>
+    	</tag>
         <edges>
 			<edge>
 				<kTAG_PREDICATE>:SUBCLASS-OF</kTAG_PREDICATE>
@@ -4623,6 +4850,11 @@
 				<item>:KIND-FEATURE</item>
 			</kTAG_KIND>
     	</node>
+    	<tag>
+    		<item>LR:EXSECURE</item>
+    		<item>:SCALE-OF</item>
+    		<item>LR:DATA-TYPES:YN</item>
+    	</tag>
         <edges>
 			<edge>
 				<kTAG_PREDICATE>:SUBCLASS-OF</kTAG_PREDICATE>
@@ -4651,6 +4883,11 @@
 				<item>:KIND-FEATURE</item>
 			</kTAG_KIND>
     	</node>
+    	<tag>
+    		<item>LR:EXDUPL</item>
+    		<item>:SCALE-OF</item>
+    		<item>FAO-INSTITUTES:INSTCODE</item>
+    	</tag>
         <edges>
 			<edge>
 				<kTAG_PREDICATE>:SUBCLASS-OF</kTAG_PREDICATE>

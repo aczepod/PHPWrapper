@@ -1,0 +1,517 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<units>
+    <!-- MCPD -->
+    <unit>
+        <term kTAG_LID="MCPD">
+			<kTAG_KIND>
+				<item>:KIND-NAMESPACE</item>
+			</kTAG_KIND>
+			<kTAG_LABEL language="en"><![CDATA[Multicrop Passport Descriptors]]></kTAG_LABEL>
+            <kTAG_DEFINITION language="en"><![CDATA[This descriptor list is used for uploading information from the National Inventories to EURISCO, and thus purely a format of data exchange. The list is an extension of the FAO/IPGRI multi-crop passport descriptors (MCPD) which were published December 2001, developed jointly by IPGRI and FAO, with input from many documentation specialists worldwide, to provide international standards to facilitate germplasm passport information exchange. All MCPD are included, without change and with the same format rules, in the current list. Six descriptors (0, 29- 33) were added for the specific purposes of EURISCO: the first descriptor, identifying the National Inventory and the final five allowing the incorporation of information relevant to EURISCO, which otherwise would not fit in the MCPD and most recently other fourteen were added (MLS, AEGIS and SMTA).]]></kTAG_DEFINITION>
+    	</term>
+    	<node>
+			<kTAG_CLASS>COntologyMasterVertex</kTAG_CLASS>
+			<kTAG_KIND>
+				<item>:KIND-ROOT</item>
+			</kTAG_KIND>
+ 	  	</node>
+    </unit>
+    
+    <!-- MCPD DATA TYPES -->
+    
+    <!-- MCPD:DATA-TYPES -->
+    <unit>
+    	<term kTAG_LID="DATA-TYPES" kTAG_NAMESPACE="MCPD">
+			<kTAG_KIND>
+				<item>:KIND-NAMESPACE</item>
+			</kTAG_KIND>
+			<kTAG_LABEL language="en"><![CDATA[Data types]]></kTAG_LABEL>
+			<kTAG_DEFINITION language="en"><![CDATA[Common descriptor data types and enumerations.]]></kTAG_DEFINITION>
+    	</term>
+    	<node>
+			<kTAG_CLASS>COntologyMasterVertex</kTAG_CLASS>
+    	</node>
+        <edges>
+			<edge>
+				<kTAG_PREDICATE>:SUBCLASS-OF</kTAG_PREDICATE>
+				<kTAG_OBJECT>MCPD</kTAG_OBJECT>
+			</edge>
+        </edges>
+    </unit>
+    
+    <!-- MCPD PROPERTIES -->
+    
+    <!-- MCPD:NICODE -->
+    <unit>
+    	<term kTAG_LID="NICODE" kTAG_NAMESPACE="MCPD">
+			<kTAG_LABEL language="en"><![CDATA[National Inventory code]]></kTAG_LABEL>
+			<kTAG_DEFINITION language="en"><![CDATA[Code identifying the National Inventory; the code of the country preparing the National Inventory. Exceptions are possible, if agreed with EURISCO such as NGB.]]></kTAG_DEFINITION>
+			<kTAG_SYNONYMS>
+				<item>NICODE</item>
+				<item>0</item>
+			</kTAG_SYNONYMS>
+    	</term>
+    	<node>
+			<kTAG_CLASS>COntologyAliasVertex</kTAG_CLASS>
+			<kTAG_KIND>
+				<item>:KIND-FEATURE</item>
+			</kTAG_KIND>
+			<kTAG_TYPE>
+				<item>:REQUIRED</item>
+			</kTAG_TYPE>
+			<kTAG_EXAMPLES>
+				<item>NLD</item>
+			</kTAG_EXAMPLES>
+    	</node>
+    	<tag>
+    		<item>MCPD:NICODE</item>
+    		<item>:SCALE-OF</item>
+    		<item>GR:NICODE</item>
+    	</tag>
+        <edges>
+			<edge>
+				<kTAG_PREDICATE>:SUBCLASS-OF</kTAG_PREDICATE>
+				<kTAG_OBJECT>MCPD</kTAG_OBJECT>
+			</edge>
+			<edge>
+				<kTAG_SUBJECT>GR:NICODE</kTAG_SUBJECT>
+				<kTAG_PREDICATE>:SCALE-OF</kTAG_PREDICATE>
+			</edge>
+        </edges>
+    </unit>
+    
+    <!-- MCPD:INSTCODE -->
+    <unit>
+    	<term kTAG_LID="INSTCODE" kTAG_NAMESPACE="MCPD">
+			<kTAG_LABEL language="en"><![CDATA[Holding institute code]]></kTAG_LABEL>
+			<kTAG_DEFINITION language="en"><![CDATA[FAO Institute Code of the institute where the accession is maintained.]]></kTAG_DEFINITION>
+			<kTAG_SYNONYMS>
+				<item>INSTCODE</item>
+				<item>1</item>
+			</kTAG_SYNONYMS>
+    	</term>
+    	<node>
+			<kTAG_CLASS>COntologyMasterVertex</kTAG_CLASS>
+			<kTAG_KIND>
+				<item>:KIND-FEATURE</item>
+			</kTAG_KIND>
+			<kTAG_TYPE>
+				<item>:REQUIRED</item>
+			</kTAG_TYPE>
+    	</node>
+    	<tag>
+    		<item>MCPD:INSTCODE</item>
+    		<item>:SCALE-OF</item>
+    		<item>FAO-INSTITUTES:INSTCODE</item>
+    	</tag>
+        <edges>
+			<edge>
+				<kTAG_PREDICATE>:SUBCLASS-OF</kTAG_PREDICATE>
+				<kTAG_OBJECT>MCPD</kTAG_OBJECT>
+			</edge>
+			<edge>
+				<kTAG_SUBJECT>FAO-INSTITUTES:INSTCODE</kTAG_SUBJECT>
+				<kTAG_PREDICATE>:SCALE-OF</kTAG_PREDICATE>
+			</edge>
+        </edges>
+    </unit>
+    
+    <!-- MCPD:ACCENUMB -->
+    <unit>
+        <term kTAG_LID="ACCENUMB" kTAG_NAMESPACE="MCPD">
+            <kTAG_LABEL language="en"><![CDATA[Accession number]]></kTAG_LABEL>
+            <kTAG_DEFINITION language="en"><![CDATA[This number serves as a unique identifier for accessions within a genebank collection, and is assigned when a sample is entered into the genebank collection.]]></kTAG_DEFINITION>
+			<kTAG_SYNONYMS>
+				<item>ACCENUMB</item>
+				<item>2</item>
+			</kTAG_SYNONYMS>
+    	</term>
+    	<node>
+			<kTAG_CLASS>COntologyMasterVertex</kTAG_CLASS>
+			<kTAG_KIND>
+			    <item>:KIND-FEATURE</item>
+			    <item>:KIND-SCALE</item>
+			</kTAG_KIND>
+			<kTAG_TYPE>
+				<item>:REQUIRED</item>
+				<item>:TEXT</item>
+			</kTAG_TYPE>
+			<kTAG_EXAMPLES>
+			    <item>CGN00254</item>
+			</kTAG_EXAMPLES>
+    	</node>
+    	<tag>
+    		<item>MCPD:ACCENUMB</item>
+    	</tag>
+        <edges>
+			<edge>
+				<kTAG_PREDICATE>:SUBCLASS-OF</kTAG_PREDICATE>
+			    <kTAG_OBJECT>MCPD</kTAG_OBJECT>
+			</edge>
+        </edges>
+    </unit>
+    
+    <!-- MCPD:COLLNUMB -->
+    <unit>
+        <term kTAG_LID="COLLNUMB" kTAG_NAMESPACE="MCPD">
+            <kTAG_LABEL language="en"><![CDATA[Collecting number]]></kTAG_LABEL>
+            <kTAG_DEFINITION language="en"><![CDATA[Original number assigned by the collector(s) of the sample, normally composed of the name or initials of the collector(s) followed by a number. This number is essential for identifying duplicates held in different collections.]]></kTAG_DEFINITION>
+			<kTAG_SYNONYMS>
+				<item>COLLNUMB</item>
+				<item>3</item>
+			</kTAG_SYNONYMS>
+    	</term>
+    	<node>
+			<kTAG_CLASS>COntologyMasterVertex</kTAG_CLASS>
+			<kTAG_KIND>
+			    <item>:KIND-FEATURE</item>
+			    <item>:KIND-SCALE</item>
+			</kTAG_KIND>
+			<kTAG_TYPE>
+				<item>:TEXT</item>
+			</kTAG_TYPE>
+			<kTAG_EXAMPLES>
+			    <item>FA90-110</item>
+			</kTAG_EXAMPLES>
+    	</node>
+    	<tag>
+    		<item>MCPD:COLLNUMB</item>
+    	</tag>
+        <edges>
+			<edge>
+				<kTAG_PREDICATE>:SUBCLASS-OF</kTAG_PREDICATE>
+			    <kTAG_OBJECT>MCPD</kTAG_OBJECT>
+			</edge>
+        </edges>
+    </unit>
+    
+    <!-- MCPD:COLLCODE -->
+    <unit>
+    	<term kTAG_LID="COLLCODE" kTAG_NAMESPACE="MCPD">
+			<kTAG_LABEL language="en"><![CDATA[Collecting institute code]]></kTAG_LABEL>
+			<kTAG_DEFINITION language="en"><![CDATA[Code of the Institute collecting the sample. If the holding institute has collected the material, the collecting institute code (COLLCODE) should be the same as the holding institute code (INSTCODE).]]></kTAG_DEFINITION>
+			<kTAG_SYNONYMS>
+				<item>COLLCODE</item>
+				<item>4</item>
+			</kTAG_SYNONYMS>
+    	</term>
+    	<node>
+			<kTAG_CLASS>COntologyMasterVertex</kTAG_CLASS>
+			<kTAG_KIND>
+				<item>:KIND-FEATURE</item>
+			</kTAG_KIND>
+			<kTAG_EXAMPLES>
+			    <item>NLD037</item>
+			</kTAG_EXAMPLES>
+    	</node>
+    	<tag>
+    		<item>MCPD:COLLCODE</item>
+    		<item>:SCALE-OF</item>
+    		<item>FAO-INSTITUTES:INSTCODE</item>
+    	</tag>
+        <edges>
+			<edge>
+				<kTAG_PREDICATE>:SUBCLASS-OF</kTAG_PREDICATE>
+				<kTAG_OBJECT>MCPD</kTAG_OBJECT>
+			</edge>
+			<edge>
+				<kTAG_SUBJECT>FAO-INSTITUTES:INSTCODE</kTAG_SUBJECT>
+				<kTAG_PREDICATE>:SCALE-OF</kTAG_PREDICATE>
+			</edge>
+        </edges>
+    </unit>
+    
+    <!-- MCPD:GENUS -->
+    <unit>
+    	<term kTAG_LID="GENUS" kTAG_NAMESPACE="MCPD">
+			<kTAG_LABEL language="en"><![CDATA[Genus]]></kTAG_LABEL>
+			<kTAG_DEFINITION language="en"><![CDATA[Genus name for taxon, in latin. Initial uppercase letter required.]]></kTAG_DEFINITION>
+			<kTAG_SYNONYMS>
+				<item>GENUS</item>
+				<item>5</item>
+			</kTAG_SYNONYMS>
+    	</term>
+    	<node>
+			<kTAG_CLASS>COntologyMasterVertex</kTAG_CLASS>
+			<kTAG_KIND>
+				<item>:KIND-FEATURE</item>
+			</kTAG_KIND>
+			<kTAG_TYPE>
+				<item>:REQUIRED</item>
+			</kTAG_TYPE>
+			<kTAG_EXAMPLES>
+				<item>Allium</item>
+			</kTAG_EXAMPLES>
+    	</node>
+    	<tag>
+    		<item>MCPD:GENUS</item>
+    		<item>:SCALE-OF</item>
+    		<item>GR:GENUS</item>
+    	</tag>
+        <edges>
+			<edge>
+				<kTAG_PREDICATE>:SUBCLASS-OF</kTAG_PREDICATE>
+				<kTAG_OBJECT>MCPD</kTAG_OBJECT>
+			</edge>
+			<edge>
+				<kTAG_SUBJECT>GR:GENUS</kTAG_SUBJECT>
+				<kTAG_PREDICATE>:SCALE-OF</kTAG_PREDICATE>
+			</edge>
+        </edges>
+    </unit>
+    
+    <!-- MCPD:SPECIES -->
+    <unit>
+    	<term kTAG_LID="SPECIES" kTAG_NAMESPACE="MCPD">
+			<kTAG_LABEL language="en"><![CDATA[Species]]></kTAG_LABEL>
+			<kTAG_DEFINITION language="en"><![CDATA[Specific epithet portion of the scientific name, in latin, in lowercase letters. Following abbreviation is allowed: ‘sp.’.]]></kTAG_DEFINITION>
+			<kTAG_SYNONYMS>
+				<item>SPECIES</item>
+				<item>6</item>
+			</kTAG_SYNONYMS>
+    	</term>
+    	<node>
+			<kTAG_CLASS>COntologyMasterVertex</kTAG_CLASS>
+			<kTAG_KIND>
+				<item>:KIND-FEATURE</item>
+			</kTAG_KIND>
+			<kTAG_EXAMPLES>
+				<item>paniculatum</item>
+			</kTAG_EXAMPLES>
+    	</node>
+    	<tag>
+    		<item>MCPD:SPECIES</item>
+    		<item>:SCALE-OF</item>
+    		<item>GR:SPECIES</item>
+    	</tag>
+        <edges>
+			<edge>
+				<kTAG_PREDICATE>:SUBCLASS-OF</kTAG_PREDICATE>
+				<kTAG_OBJECT>MCPD</kTAG_OBJECT>
+			</edge>
+			<edge>
+				<kTAG_SUBJECT>GR:SPECIES</kTAG_SUBJECT>
+				<kTAG_PREDICATE>:SCALE-OF</kTAG_PREDICATE>
+			</edge>
+        </edges>
+    </unit>
+    
+    <!-- MCPD:SPAUTHOR -->
+    <unit>
+    	<term kTAG_LID="SPAUTHOR" kTAG_NAMESPACE="MCPD">
+			<kTAG_LABEL language="en"><![CDATA[Species authority]]></kTAG_LABEL>
+			<kTAG_DEFINITION language="en"><![CDATA[The authority for the species name.]]></kTAG_DEFINITION>
+			<kTAG_SYNONYMS>
+				<item>SPAUTHOR</item>
+				<item>7</item>
+			</kTAG_SYNONYMS>
+    	</term>
+    	<node>
+			<kTAG_CLASS>COntologyMasterVertex</kTAG_CLASS>
+			<kTAG_KIND>
+				<item>:KIND-FEATURE</item>
+			</kTAG_KIND>
+			<kTAG_TYPE>
+				<item>:REQUIRED</item>
+			</kTAG_TYPE>
+			<kTAG_EXAMPLES>
+				<item>L.</item>
+			</kTAG_EXAMPLES>
+    	</node>
+    	<tag>
+    		<item>MCPD:SPAUTHOR</item>
+    		<item>:SCALE-OF</item>
+    		<item>GR:SPAUTHOR</item>
+    	</tag>
+        <edges>
+			<edge>
+				<kTAG_PREDICATE>:SUBCLASS-OF</kTAG_PREDICATE>
+				<kTAG_OBJECT>MCPD</kTAG_OBJECT>
+			</edge>
+			<edge>
+				<kTAG_SUBJECT>GR:SPAUTHOR</kTAG_SUBJECT>
+				<kTAG_PREDICATE>:SCALE-OF</kTAG_PREDICATE>
+			</edge>
+        </edges>
+    </unit>
+    
+    <!-- MCPD:SUBTAXA -->
+    <unit>
+    	<term kTAG_LID="SUBTAXA" kTAG_NAMESPACE="MCPD">
+			<kTAG_LABEL language="en"><![CDATA[Subtaxa]]></kTAG_LABEL>
+			<kTAG_DEFINITION language="en"><![CDATA[Subtaxa can be used to store any additional taxonomic identifier, in latin. Following abbreviations are allowed: ‘subsp.’ (for subspecies); ‘convar.’ (for convariety); ‘var.’ (for variety); ‘f.’ (for form).]]></kTAG_DEFINITION>
+			<kTAG_SYNONYMS>
+				<item>SUBTAXA</item>
+				<item>8</item>
+			</kTAG_SYNONYMS>
+    	</term>
+    	<node>
+			<kTAG_CLASS>COntologyMasterVertex</kTAG_CLASS>
+			<kTAG_KIND>
+				<item>:KIND-FEATURE</item>
+			</kTAG_KIND>
+			<kTAG_EXAMPLES>
+				<item>subsp. fuscum</item>
+			</kTAG_EXAMPLES>
+    	</node>
+    	<tag>
+    		<item>MCPD:SUBTAXA</item>
+    		<item>:SCALE-OF</item>
+    		<item>GR:SUBTAXA</item>
+    	</tag>
+        <edges>
+			<edge>
+				<kTAG_PREDICATE>:SUBCLASS-OF</kTAG_PREDICATE>
+				<kTAG_OBJECT>MCPD</kTAG_OBJECT>
+			</edge>
+			<edge>
+				<kTAG_SUBJECT>GR:SUBTAXA</kTAG_SUBJECT>
+				<kTAG_PREDICATE>:SCALE-OF</kTAG_PREDICATE>
+			</edge>
+        </edges>
+    </unit>
+    
+    <!-- MCPD:SUBTAUTHOR -->
+    <unit>
+    	<term kTAG_LID="SUBTAUTHOR" kTAG_NAMESPACE="MCPD">
+			<kTAG_LABEL language="en"><![CDATA[Subtaxa authority]]></kTAG_LABEL>
+			<kTAG_DEFINITION language="en"><![CDATA[The subtaxa authority at the most detailed taxonomic level.]]></kTAG_DEFINITION>
+			<kTAG_SYNONYMS>
+				<item>SUBTAUTHOR</item>
+				<item>9</item>
+			</kTAG_SYNONYMS>
+    	</term>
+    	<node>
+			<kTAG_CLASS>COntologyMasterVertex</kTAG_CLASS>
+			<kTAG_KIND>
+				<item>:KIND-FEATURE</item>
+			</kTAG_KIND>
+			<kTAG_EXAMPLES>
+				<item>(Waldst. et Kit.) Arc.</item>
+			</kTAG_EXAMPLES>
+    	</node>
+    	<tag>
+    		<item>MCPD:SUBTAUTHOR</item>
+    		<item>:SCALE-OF</item>
+    		<item>GR:SUBTAUTHOR</item>
+    	</tag>
+        <edges>
+			<edge>
+				<kTAG_PREDICATE>:SUBCLASS-OF</kTAG_PREDICATE>
+				<kTAG_OBJECT>MCPD</kTAG_OBJECT>
+			</edge>
+			<edge>
+				<kTAG_SUBJECT>GR:SUBTAUTHOR</kTAG_SUBJECT>
+				<kTAG_PREDICATE>:SCALE-OF</kTAG_PREDICATE>
+			</edge>
+        </edges>
+    </unit>
+    
+    <!-- MCPD:CROPNAME -->
+    <unit>
+        <term kTAG_LID="CROPNAME" kTAG_NAMESPACE="MCPD">
+            <kTAG_LABEL language="en"><![CDATA[Common crop name]]></kTAG_LABEL>
+            <kTAG_DEFINITION language="en"><![CDATA[Name of the crop in colloquial language, preferably English.]]></kTAG_DEFINITION>
+			<kTAG_SYNONYMS>
+				<item>CROPNAME</item>
+				<item>10</item>
+			</kTAG_SYNONYMS>
+    	</term>
+    	<node>
+			<kTAG_CLASS>COntologyMasterVertex</kTAG_CLASS>
+			<kTAG_KIND>
+			    <item>:KIND-FEATURE</item>
+			    <item>:KIND-SCALE</item>
+			</kTAG_KIND>
+			<kTAG_TYPE>
+				<item>:ARRAY</item>
+				<item>:TEXT</item>
+			</kTAG_TYPE>
+			<kTAG_EXAMPLES>
+			    <item>malting barley</item>
+			    <item>cauliflower</item>
+			</kTAG_EXAMPLES>
+    	</node>
+    	<tag>
+    		<item>MCPD:CROPNAME</item>
+    	</tag>
+        <edges>
+			<edge>
+				<kTAG_PREDICATE>:SUBCLASS-OF</kTAG_PREDICATE>
+			    <kTAG_OBJECT>MCPD</kTAG_OBJECT>
+			</edge>
+        </edges>
+    </unit>
+    
+    <!-- MCPD:ACCENAME -->
+    <unit>
+        <term kTAG_LID="ACCENAME" kTAG_NAMESPACE="MCPD">
+            <kTAG_LABEL language="en"><![CDATA[Accession name]]></kTAG_LABEL>
+            <kTAG_DEFINITION language="en"><![CDATA[Either a registered or other formal designation given to the accession. First letter uppercase. Multiple names separated with semicolon without space.]]></kTAG_DEFINITION>
+			<kTAG_SYNONYMS>
+				<item>ACCENAME</item>
+				<item>11</item>
+			</kTAG_SYNONYMS>
+    	</term>
+    	<node>
+			<kTAG_CLASS>COntologyMasterVertex</kTAG_CLASS>
+			<kTAG_KIND>
+			    <item>:KIND-FEATURE</item>
+			    <item>:KIND-SCALE</item>
+			</kTAG_KIND>
+			<kTAG_TYPE>
+				<item>:ARRAY</item>
+				<item>:TEXT</item>
+			</kTAG_TYPE>
+			<kTAG_EXAMPLES>
+			    <item>Rheinische Vorgebirgstrauben;Emma;Avlon</item>
+			</kTAG_EXAMPLES>
+    	</node>
+    	<tag>
+    		<item>MCPD:ACCENAME</item>
+    	</tag>
+        <edges>
+			<edge>
+				<kTAG_PREDICATE>:SUBCLASS-OF</kTAG_PREDICATE>
+			    <kTAG_OBJECT>MCPD</kTAG_OBJECT>
+			</edge>
+        </edges>
+    </unit>
+    
+    <!-- MCPD:ACQDATE -->
+   <unit>
+    	<term kTAG_LID="ACQDATE" kTAG_NAMESPACE="MCPD">
+			<kTAG_LABEL language="en"><![CDATA[Acquisition date]]></kTAG_LABEL>
+			<kTAG_DEFINITION language="en"><![CDATA[Date on which the accession entered the collection.]]></kTAG_DEFINITION>
+			<kTAG_SYNONYMS>
+				<item>ACQDATE</item>
+				<item>12</item>
+			</kTAG_SYNONYMS>
+    	</term>
+    	<node>
+			<kTAG_CLASS>COntologyAliasVertex</kTAG_CLASS>
+			<kTAG_KIND>
+				<item>:KIND-FEATURE</item>
+			</kTAG_KIND>
+			<kTAG_EXAMPLES>
+				<item>1968----</item>
+				<item>20020620</item>
+			</kTAG_EXAMPLES>
+    	</node>
+    	<tag>
+    		<item>MCPD:ACQDATE</item>
+    		<item>:SCALE-OF</item>
+    		<item>GR:DATE</item>
+    	</tag>
+        <edges>
+			<edge>
+				<kTAG_PREDICATE>:SUBCLASS-OF</kTAG_PREDICATE>
+				<kTAG_OBJECT>MCPD</kTAG_OBJECT>
+			</edge>
+			<edge>
+				<kTAG_SUBJECT>GR:DATE</kTAG_SUBJECT>
+				<kTAG_PREDICATE>:SCALE-OF</kTAG_PREDICATE>
+			</edge>
+        </edges>
+    </unit>
+</units>

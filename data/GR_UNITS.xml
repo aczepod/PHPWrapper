@@ -11,13 +11,8 @@
     	</term>
     	<node>
 			<kTAG_CLASS>COntologyMasterVertex</kTAG_CLASS>
-			<kTAG_KIND>
-				<item>:KIND-ROOT</item>
-			</kTAG_KIND>
     	</node>
     </unit>
-    
-    <!-- GR PROPERTIES -->
     
     <!-- GR:NICODE -->
     <unit>
@@ -31,7 +26,6 @@
     	<node>
 			<kTAG_CLASS>COntologyMasterVertex</kTAG_CLASS>
 			<kTAG_KIND>
-				<item>:KIND-FEATURE</item>
 				<item>:KIND-SCALE</item>
 			</kTAG_KIND>
 			<kTAG_TYPE>
@@ -58,7 +52,6 @@
     	<node>
 			<kTAG_CLASS>COntologyMasterVertex</kTAG_CLASS>
 			<kTAG_KIND>
-				<item>:KIND-FEATURE</item>
 				<item>:KIND-SCALE</item>
 			</kTAG_KIND>
 			<kTAG_TYPE>
@@ -85,12 +78,120 @@
     	<node>
 			<kTAG_CLASS>COntologyMasterVertex</kTAG_CLASS>
 			<kTAG_KIND>
-				<item>:KIND-FEATURE</item>
 				<item>:KIND-SCALE</item>
 			</kTAG_KIND>
 			<kTAG_TYPE>
 				<item>:TEXT</item>
 			</kTAG_TYPE>
+    	</node>
+        <edges>
+			<edge>
+				<kTAG_PREDICATE>:SUBCLASS-OF</kTAG_PREDICATE>
+				<kTAG_OBJECT>GR</kTAG_OBJECT>
+			</edge>
+        </edges>
+    </unit>
+    
+    <!-- GR:SPAUTHOR -->
+    <unit>
+    	<term kTAG_LID="SPAUTHOR" kTAG_NAMESPACE="GR">
+			<kTAG_LABEL language="en">Species authority</kTAG_LABEL>
+			<kTAG_DEFINITION language="en">Name or abbreviation of the author of the specific epithet biological classification.</kTAG_DEFINITION>
+			<kTAG_SYNONYMS>.</kTAG_DEFINITION>
+			<kTAG_SYNONYMS>
+				<item>SPAUTHOR</item>
+			</kTAG_SYNONYMS>
+    	</term>
+    	<node>
+			<kTAG_CLASS>COntologyMasterVertex</kTAG_CLASS>
+			<kTAG_KIND>
+				<item>:KIND-SCALE</item>
+			</kTAG_KIND>
+			<kTAG_TYPE>
+				<item>:TEXT</item>
+			</kTAG_TYPE>
+    	</node>
+        <edges>
+			<edge>
+				<kTAG_PREDICATE>:SUBCLASS-OF</kTAG_PREDICATE>
+				<kTAG_OBJECT>GR</kTAG_OBJECT>
+			</edge>
+        </edges>
+    </unit>
+    
+    <!-- GR:SUBTAXA -->
+    <unit>
+    	<term kTAG_LID="SUBTAXA" kTAG_NAMESPACE="GR">
+			<kTAG_LABEL language="en">Infraspecific epithet</kTAG_LABEL>
+			<kTAG_DEFINITION language="en">The third word in the scientific name of an infraspecific taxon, following the name of the species.</kTAG_DEFINITION>
+			<kTAG_SYNONYMS>.</kTAG_DEFINITION>
+			<kTAG_SYNONYMS>
+				<item>SUBTAXA</item>
+			</kTAG_SYNONYMS>
+    	</term>
+    	<node>
+			<kTAG_CLASS>COntologyMasterVertex</kTAG_CLASS>
+			<kTAG_KIND>
+				<item>:KIND-SCALE</item>
+			</kTAG_KIND>
+			<kTAG_TYPE>
+				<item>:TEXT</item>
+			</kTAG_TYPE>
+    	</node>
+        <edges>
+			<edge>
+				<kTAG_PREDICATE>:SUBCLASS-OF</kTAG_PREDICATE>
+				<kTAG_OBJECT>GR</kTAG_OBJECT>
+			</edge>
+        </edges>
+    </unit>
+    
+    <!-- GR:SUBTAUTHOR -->
+    <unit>
+    	<term kTAG_LID="SUBTAUTHOR" kTAG_NAMESPACE="GR">
+			<kTAG_LABEL language="en">Infraspecific epithet authority</kTAG_LABEL>
+			<kTAG_DEFINITION language="en">Name or abbreviation of the author of the third word in the scientific name of an infraspecific taxon which follows the name of the species.</kTAG_DEFINITION>
+			<kTAG_SYNONYMS>.</kTAG_DEFINITION>
+			<kTAG_SYNONYMS>
+				<item>SUBTAXA</item>
+			</kTAG_SYNONYMS>
+    	</term>
+    	<node>
+			<kTAG_CLASS>COntologyMasterVertex</kTAG_CLASS>
+			<kTAG_KIND>
+				<item>:KIND-SCALE</item>
+			</kTAG_KIND>
+			<kTAG_TYPE>
+				<item>:TEXT</item>
+			</kTAG_TYPE>
+    	</node>
+        <edges>
+			<edge>
+				<kTAG_PREDICATE>:SUBCLASS-OF</kTAG_PREDICATE>
+				<kTAG_OBJECT>GR</kTAG_OBJECT>
+			</edge>
+        </edges>
+    </unit>
+    
+    <!-- GR:DATE -->
+    <unit>
+    	<term kTAG_LID="DATE" kTAG_NAMESPACE="GR">
+			<kTAG_LABEL language="en"><![CDATA[Date string]]></kTAG_LABEL>
+			<kTAG_DEFINITION language="en"><![CDATA[A date expressed as a YYYYMMDD string in which the days and months may be omitted. Missing elements are omitted from the storewd value, while missing elements may be provided by replacing them with hyphens, <tt>--</tt>, or zeros, <tt>00</tt>.]]></kTAG_DEFINITION>
+    	</term>
+    	<node>
+			<kTAG_CLASS>COntologyMasterVertex</kTAG_CLASS>
+			<kTAG_KIND>
+				<item>:KIND-SCALE</item>
+			</kTAG_KIND>
+			<kTAG_TYPE>
+				<item>:TEXT</item>
+			</kTAG_TYPE>
+			<kTAG_EXAMPLES>
+				<item><![CDATA[Full date: <tt>19781207</tt>]]></item>
+				<item><![CDATA[Missing days: <tt>197812</tt> or <tt>197812--</tt> or <tt>19781200</tt>]]></item>
+				<item><![CDATA[Missing months: <tt>1978</tt> or <tt>1978----</tt> or <tt>19780000</tt>]]></item>
+			</kTAG_EXAMPLES>
     	</node>
         <edges>
 			<edge>
