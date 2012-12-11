@@ -96,6 +96,14 @@ try
 	$_SESSION[ kSESSION_ONTOLOGY ]->LoadUnitFile(
 		kPATH_MYWRAPPER_LIBRARY_DATA."/LR_UNITS.xml" );
 
+	//
+	// Loading multicrop descriptors.
+	//
+	if( kOPTION_VERBOSE )
+		echo( "  • Loading multicrop descriptors.\n" );
+	$_SESSION[ kSESSION_ONTOLOGY ]->LoadUnitFile(
+		kPATH_MYWRAPPER_LIBRARY_DATA."MCPD_UNITS.xml" );
+
 	if( kOPTION_VERBOSE )
 		echo( "\nTime elapsed: ".(time() - $start)."\n" );
 }

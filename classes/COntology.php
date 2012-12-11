@@ -1375,7 +1375,32 @@ class COntology extends CConnection
 			// Instantiate term.
 			//
 			$object = new COntologyTerm();
-echo( get_class( $object ) . "\n" );
+			if( $theElement->{'term'}[ 'ns' ] !== NULL )
+				$object->NS( (string) $theElement->{'term'}[ 'ns' ] );
+			if( $theElement->{'term'}[ 'lid' ] !== NULL )
+				$object->LID( (string) $theElement->{'term'}[ 'lid' ] );
+			
+			//
+			// Check term elements.
+			//
+			if( $theElement->{'term'}->{'element'} !== NULL )
+			{
+				//
+				// Iterate term elements.
+				//
+				foreach( $theElement->{'term'}->{'element'} as $element )
+				{
+					//
+					// Get attribute by variable.
+					//
+					if( $element[ 'variable' ] !== NULL )
+					{
+						$attribute = (string) $element[ 'variable' ];
+						$attribute = $$attribute;
+					}
+				}
+			
+			} // Term has attributes.
 		
 		} // Provided term.
 		
@@ -1433,6 +1458,141 @@ echo( get_class( $object ) . "\n" );
 		} // Provided term.
 
 	} // _ParseXMLUnit.
+
+	 
+	/*===================================================================================
+	 *	_ParseXMLElement																*
+	 *==================================================================================*/
+
+	/**
+	 * <h4>Parse the provided XML element</h4>
+	 *
+	 * This method will parse the provided XML element by cycling the following structure:
+	 *
+	 * <ul>
+	 *	<li><tt>element</tt>: Each element represents an object property:
+	 *	 <ul>
+	 *		<li><tt>id</tt>: Tag identifier, this value represents the tag native
+	 *			identifier.
+	 *		<li><tt>gid</tt>: Tag global identifier.
+	 *		<li><tt>variable</tt>: Tag variable, this value represents the PHP definition
+	 *			name.
+	 *		<li><tt>key</tt>: If this attribute is present, it means that the attribute
+	 *			represents the key of the element, thus it will become an array in which
+	 *			<tt>key</tt> will become the key.
+	 *			
+	 *	 </ul>
+	 *	<li><tt>item</tt>: Any element that contains one or more of these elements is an
+	 *		array.
+	 * </ul>
+	 *
+	 * This method will parse the provided element and set the corresponding properties
+	 * into the provided object.
+	 *
+	 * @param CDatabase				$theDatabase		Database container.
+	 * @param SimpleXMLElement		$theElement			XML element.
+	 * @param CPersistentObject		$theObject			Object receiving attributes.
+	 *
+	 * @access protected
+	 *
+	 * @throws Exception
+	 */
+	protected function _ParseXMLElement( CDatabase			$theDatabase,
+										 SimpleXMLElement	$theElement,
+										 CPersistentObject	$theObject )
+	{
+		//
+		// Get attribute by ID.
+		//
+		if( $theElement[ 'id' ] !== NULL )
+			$attribute = (string) $theElement[ 'id' ];
+
+		//
+		// Get attribute by variable.
+		//
+		elseif( $theElement[ 'variable' ] !== NULL )
+		{
+			$attribute = (string) $theElement[ 'variable' ];
+			$attribute = $$attribute;
+		}
+
+		//
+		// Get attribute by GID.
+		//
+		elseif( $theElement[ 'gid' ] !== NULL )
+			$attribute
+				= COntologyTag::Resolve(
+					$theDatabase, (string) $theElement[ 'gid' ], TRUE )
+						->NID();
+		
+		//
+		// Handle array attribute.
+		//
+		if( ($theElement[ 'key' ] !== NULL)
+		 || $theElement->{'item'}->count() )
+		{
+			//
+			// Handle existing attribute.
+			//
+			if( $theObject->offsetExists( $attribute ) )
+			{
+				//
+				// Get attribute.
+				//
+				$value = $theObject->offsetGet( $attribute );
+			
+				//
+				// Check attribute.
+				//
+				if( ! is_array( $value ) )
+					throw new Exception
+						( "Property [$attribute] should be an array",
+						  kERROR_STATE );										// !@! ==>
+			
+			} // Get existing attribute.
+			
+			//
+			// Create new attribute.
+			//
+			else
+				$value = Array();
+			
+			//
+			// Keyed array.
+			//
+			if( $theElement[ 'key' ] !== NULL )
+				$value[ (string) $theElement[ 'key' ] ] (string) $element;
+			
+			//
+			// Iterate array elements.
+			//
+			else
+			{
+				//
+				// Iterate items.
+				//
+				foreach( $theElement->{'item'} as $item )
+				{
+					if( ! in_array( (string) $item, $value ) )
+						$value[] = (string) $item;
+				}
+			
+			} // Simple array.
+		
+		} // Array attribute.
+		
+		//
+		// Handle scalar attribute.
+		//
+		else
+			$value = (string) $theElement;
+		
+		//
+		// Set attribute.
+		//
+		$theObject->offsetSet( $attribute, $value );
+
+	} // _ParseXMLElement.
 
 	 
 	/*===================================================================================
@@ -1568,7 +1728,7 @@ echo( get_class( $object ) . "\n" );
 		else
 			throw new Exception
 				( "Term is missing local identifier",
-				  kERROR_STATE );											// !@! ==>
+				  kERROR_STATE );												// !@! ==>
 
 	} // _ParseTerm.
 
