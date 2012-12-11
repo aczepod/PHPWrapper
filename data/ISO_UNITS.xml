@@ -13,9 +13,6 @@
     	</term>
     	<node>
 			<kTAG_CLASS>COntologyMasterVertex</kTAG_CLASS>
-			<kTAG_KIND>
-				<item>:KIND-ROOT</item>
-			</kTAG_KIND>
     	</node>
     </unit>
     

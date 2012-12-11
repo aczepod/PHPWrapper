@@ -97,7 +97,6 @@
     	<term kTAG_LID="SPAUTHOR" kTAG_NAMESPACE="GR">
 			<kTAG_LABEL language="en">Species authority</kTAG_LABEL>
 			<kTAG_DEFINITION language="en">Name or abbreviation of the author of the specific epithet biological classification.</kTAG_DEFINITION>
-			<kTAG_SYNONYMS>.</kTAG_DEFINITION>
 			<kTAG_SYNONYMS>
 				<item>SPAUTHOR</item>
 			</kTAG_SYNONYMS>
@@ -124,7 +123,6 @@
     	<term kTAG_LID="SUBTAXA" kTAG_NAMESPACE="GR">
 			<kTAG_LABEL language="en">Infraspecific epithet</kTAG_LABEL>
 			<kTAG_DEFINITION language="en">The third word in the scientific name of an infraspecific taxon, following the name of the species.</kTAG_DEFINITION>
-			<kTAG_SYNONYMS>.</kTAG_DEFINITION>
 			<kTAG_SYNONYMS>
 				<item>SUBTAXA</item>
 			</kTAG_SYNONYMS>
@@ -151,7 +149,6 @@
     	<term kTAG_LID="SUBTAUTHOR" kTAG_NAMESPACE="GR">
 			<kTAG_LABEL language="en">Infraspecific epithet authority</kTAG_LABEL>
 			<kTAG_DEFINITION language="en">Name or abbreviation of the author of the third word in the scientific name of an infraspecific taxon which follows the name of the species.</kTAG_DEFINITION>
-			<kTAG_SYNONYMS>.</kTAG_DEFINITION>
 			<kTAG_SYNONYMS>
 				<item>SUBTAXA</item>
 			</kTAG_SYNONYMS>
@@ -192,6 +189,64 @@
 				<item><![CDATA[Missing days: <tt>197812</tt> or <tt>197812--</tt> or <tt>19781200</tt>]]></item>
 				<item><![CDATA[Missing months: <tt>1978</tt> or <tt>1978----</tt> or <tt>19780000</tt>]]></item>
 			</kTAG_EXAMPLES>
+    	</node>
+        <edges>
+			<edge>
+				<kTAG_PREDICATE>:SUBCLASS-OF</kTAG_PREDICATE>
+				<kTAG_OBJECT>GR</kTAG_OBJECT>
+			</edge>
+        </edges>
+    </unit>
+    
+    <!-- GR:LATITUDE -->
+    <unit>
+    	<term kTAG_LID="LATITUDE" kTAG_NAMESPACE="GR">
+			<kTAG_LABEL language="en"><![CDATA[Latitude]]></kTAG_LABEL>
+			<kTAG_DEFINITION language="en"><![CDATA[Latitude expressed in degrees, minutes and seconds in a <tt>DDMMSSH</tt> string, in which <tt>DD</tt> expresses the degrees ±90, <tt>MM</tt> expresses the minutes ± 60, <tt>SS</tt> expresses the seconds ± 60 and <tt>HH</tt> expresses the hemisphere <tt>N</TT> or <tt>S</tt>. The coordinate may lack the seconds and the minutes, in that case the missing elements are not recorded, while they can be provided as hyphens, <tt>--</tt>.]]></kTAG_DEFINITION>
+    	</term>
+    	<node>
+			<kTAG_CLASS>COntologyMasterVertex</kTAG_CLASS>
+			<kTAG_KIND>
+				<item>:KIND-SCALE</item>
+			</kTAG_KIND>
+			<kTAG_TYPE>
+				<item>:TEXT</item>
+			</kTAG_TYPE>
+			<kTAG_EXAMPLES>
+				<item><![CDATA[Full latitude: <tt>011539N</tt>]]></item>
+				<item><![CDATA[Missing seconds: <tt>0115N</tt> or <tt>0115--N</tt>]]></item>
+				<item><![CDATA[Missing minutes: <tt>01N</tt> or <tt>01----N</tt>]]></item>
+			</kTAG_EXAMPLES>
+			<kTAG_DESCRIPTION language="en"><![CDATA[To convert from longitude and latitude in degrees (o), minutes ('), seconds (''), and a hemisphere (North or South and East or West) to decimal degrees, the following formula should be used: do m' s''=h *(d+m/ 60+s/3600) where h=1 for the Northern and Eastern hemispheres and –1 for the Southern and Western hemispheres i.e. 30o30'0'' S= –30.5 and 30o15'55'' N=30.265.]]></kTAG_DESCRIPTION>
+    	</node>
+        <edges>
+			<edge>
+				<kTAG_PREDICATE>:SUBCLASS-OF</kTAG_PREDICATE>
+				<kTAG_OBJECT>GR</kTAG_OBJECT>
+			</edge>
+        </edges>
+    </unit>
+    
+    <!-- GR:LONGITUDE -->
+    <unit>
+    	<term kTAG_LID="LONGITUDE" kTAG_NAMESPACE="GR">
+			<kTAG_LABEL language="en"><![CDATA[Longitude]]></kTAG_LABEL>
+			<kTAG_DEFINITION language="en"><![CDATA[Longitude expressed in degrees, minutes and seconds in a <tt>DDDMMSSH</tt> string, in which <tt>DD</tt> expresses the degrees ±180, <tt>MM</tt> expresses the minutes ± 60, <tt>SS</tt> expresses the seconds ± 60 and <tt>HH</tt> expresses the hemisphere <tt>E</TT> or <tt>W</tt>. The coordinate may lack the seconds and the minutes, in that case the missing elements are not recorded, while they can be provided as hyphens, <tt>--</tt>.]]></kTAG_DEFINITION>
+    	</term>
+    	<node>
+			<kTAG_CLASS>COntologyMasterVertex</kTAG_CLASS>
+			<kTAG_KIND>
+				<item>:KIND-SCALE</item>
+			</kTAG_KIND>
+			<kTAG_TYPE>
+				<item>:TEXT</item>
+			</kTAG_TYPE>
+			<kTAG_EXAMPLES>
+				<item><![CDATA[Full longitude: <tt>0762510W</tt>]]></item>
+				<item><![CDATA[Missing seconds: <tt>07625W</tt> or <tt>07625--W</tt>]]></item>
+				<item><![CDATA[Missing minutes: <tt>076W</tt> or <tt>076----W</tt>]]></item>
+			</kTAG_EXAMPLES>
+			<kTAG_DESCRIPTION language="en"><![CDATA[To convert from longitude and latitude in degrees (o), minutes ('), seconds (''), and a hemisphere (North or South and East or West) to decimal degrees, the following formula should be used: do m' s''=h *(d+m/ 60+s/3600) where h=1 for the Northern and Eastern hemispheres and –1 for the Southern and Western hemispheres i.e. 30o30'0'' S= –30.5 and 30o15'55'' N=30.265.]]></kTAG_DESCRIPTION>
     	</node>
         <edges>
 			<edge>

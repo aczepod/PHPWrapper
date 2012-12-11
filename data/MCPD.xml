@@ -514,4 +514,1948 @@
 			</edge>
         </edges>
     </unit>
+    
+    <!-- MCPD:ORIGCTY -->
+    <!-- Remember to load country codes, we do this separately -->
+   <unit>
+    	<term kTAG_LID="ORIGCTY" kTAG_NAMESPACE="MCPD">
+			<kTAG_LABEL language="en"><![CDATA[Country of origin]]></kTAG_LABEL>
+			<kTAG_DEFINITION language="en"><![CDATA[Code of the country in which the sample was originally collected.]]></kTAG_DEFINITION>
+			<kTAG_SYNONYMS>
+				<item>ORIGCTY</item>
+				<item>13</item>
+			</kTAG_SYNONYMS>
+    	</term>
+    	<node>
+			<kTAG_CLASS>COntologyAliasVertex</kTAG_CLASS>
+			<kTAG_KIND>
+				<item>:KIND-FEATURE</item>
+				<item>:KIND-SCALE</item>
+			</kTAG_KIND>
+			<kTAG_TYPE>
+				<item>:ENUM</item>
+			</kTAG_TYPE>
+			<kTAG_EXAMPLES>
+				<item>NLD</item>
+			</kTAG_EXAMPLES>
+    	</node>
+    	<tag>
+    		<item>MCPD:ORIGCTY</item>
+    	</tag>
+        <edges>
+			<edge>
+				<kTAG_PREDICATE>:SUBCLASS-OF</kTAG_PREDICATE>
+				<kTAG_OBJECT>MCPD</kTAG_OBJECT>
+			</edge>
+        </edges>
+    </unit>
+    
+    <!-- MCPD:COLLSITE -->
+    <unit>
+        <term kTAG_LID="COLLSITE" kTAG_NAMESPACE="MCPD">
+            <kTAG_LABEL language="en"><![CDATA[Location of collecting site]]></kTAG_LABEL>
+            <kTAG_DEFINITION language="en"><![CDATA[Location information below the country level that describes where the accession was collected. This might include the distance in kilometres and direction from the nearest town, village or map grid reference point.]]></kTAG_DEFINITION>
+			<kTAG_SYNONYMS>
+				<item>COLLSITE</item>
+				<item>14</item>
+			</kTAG_SYNONYMS>
+    	</term>
+    	<node>
+			<kTAG_CLASS>COntologyMasterVertex</kTAG_CLASS>
+			<kTAG_KIND>
+			    <item>:KIND-FEATURE</item>
+			    <item>:KIND-SCALE</item>
+			</kTAG_KIND>
+			<kTAG_TYPE>
+				<item>:TEXT</item>
+			</kTAG_TYPE>
+			<kTAG_EXAMPLES>
+			    <item>7 km south of Curitiba in the state of Parana</item>
+			</kTAG_EXAMPLES>
+    	</node>
+    	<tag>
+    		<item>MCPD:COLLSITE</item>
+    	</tag>
+        <edges>
+			<edge>
+				<kTAG_PREDICATE>:SUBCLASS-OF</kTAG_PREDICATE>
+			    <kTAG_OBJECT>MCPD</kTAG_OBJECT>
+			</edge>
+        </edges>
+    </unit>
+    
+    <!-- MCPD:LATITUDE -->
+   <unit>
+    	<term kTAG_LID="LATITUDE" kTAG_NAMESPACE="MCPD">
+			<kTAG_LABEL language="en"><![CDATA[Latitude of collecting site]]></kTAG_LABEL>
+			<kTAG_DEFINITION language="en"><![CDATA[Degree (2 digits) minutes (2 digits), and seconds (2 digits) followed by N (North) or S (South). Every missing digit (minutes or seconds) should be indicated with a hyphen. Leading zeros are required.]]></kTAG_DEFINITION>
+			<kTAG_SYNONYMS>
+				<item>LATITUDE</item>
+				<item>15</item>
+			</kTAG_SYNONYMS>
+    	</term>
+    	<node>
+			<kTAG_CLASS>COntologyAliasVertex</kTAG_CLASS>
+			<kTAG_KIND>
+				<item>:KIND-FEATURE</item>
+			</kTAG_KIND>
+			<kTAG_EXAMPLES>
+				<item>10----S</item>
+				<item>011530N</item>
+				<item>4531--S</item>
+			</kTAG_EXAMPLES>
+    	</node>
+    	<tag>
+    		<item>MCPD:LATITUDE</item>
+    		<item>:SCALE-OF</item>
+    		<item>GR:LATITUDE</item>
+    	</tag>
+        <edges>
+			<edge>
+				<kTAG_PREDICATE>:SUBCLASS-OF</kTAG_PREDICATE>
+				<kTAG_OBJECT>MCPD</kTAG_OBJECT>
+			</edge>
+			<edge>
+				<kTAG_SUBJECT>GR:LATITUDE</kTAG_SUBJECT>
+				<kTAG_PREDICATE>:SCALE-OF</kTAG_PREDICATE>
+			</edge>
+        </edges>
+    </unit>
+    
+    <!-- MCPD:LONGITUDE -->
+   <unit>
+    	<term kTAG_LID="LONGITUDE" kTAG_NAMESPACE="MCPD">
+			<kTAG_LABEL language="en"><![CDATA[Longitude of collecting site]]></kTAG_LABEL>
+			<kTAG_DEFINITION language="en"><![CDATA[Degree (3 digits), minutes (2 digits), and seconds (2 digits) followed by E (East) or W (West). Every missing digit (minutes or seconds) should be indicated with a hyphen. Leading zeros are required.]]></kTAG_DEFINITION>
+			<kTAG_SYNONYMS>
+				<item>LONGITUDE</item>
+				<item>16</item>
+			</kTAG_SYNONYMS>
+    	</term>
+    	<node>
+			<kTAG_CLASS>COntologyAliasVertex</kTAG_CLASS>
+			<kTAG_KIND>
+				<item>:KIND-FEATURE</item>
+			</kTAG_KIND>
+			<kTAG_EXAMPLES>
+				<item>0762510W</item>
+				<item>076----W</item>
+			</kTAG_EXAMPLES>
+    	</node>
+    	<tag>
+    		<item>MCPD:LONGITUDE</item>
+    		<item>:SCALE-OF</item>
+    		<item>GR:LONGITUDE</item>
+    	</tag>
+        <edges>
+			<edge>
+				<kTAG_PREDICATE>:SUBCLASS-OF</kTAG_PREDICATE>
+				<kTAG_OBJECT>MCPD</kTAG_OBJECT>
+			</edge>
+			<edge>
+				<kTAG_SUBJECT>GR:LONGITUDE</kTAG_SUBJECT>
+				<kTAG_PREDICATE>:SCALE-OF</kTAG_PREDICATE>
+			</edge>
+        </edges>
+    </unit>
+    
+    <!-- MCPD:ELEVATION -->
+    <unit>
+        <term kTAG_LID="ELEVATION" kTAG_NAMESPACE="MCPD">
+            <kTAG_LABEL language="en"><![CDATA[Elevation of collecting site]]></kTAG_LABEL>
+            <kTAG_DEFINITION language="en"><![CDATA[Elevation of collecting site expressed in meters above sea level. Negative values are allowed.]]></kTAG_DEFINITION>
+			<kTAG_SYNONYMS>
+				<item>ELEVATION</item>
+				<item>17</item>
+			</kTAG_SYNONYMS>
+    	</term>
+    	<node>
+			<kTAG_CLASS>COntologyMasterVertex</kTAG_CLASS>
+			<kTAG_KIND>
+			    <item>:KIND-FEATURE</item>
+			    <item>:KIND-SCALE</item>
+			</kTAG_KIND>
+			<kTAG_TYPE>
+				<item>:INT</item>
+			</kTAG_TYPE>
+			<kTAG_EXAMPLES>
+			    <item>763</item>
+			</kTAG_EXAMPLES>
+    	</node>
+    	<tag>
+    		<item>MCPD:ELEVATION</item>
+    	</tag>
+        <edges>
+			<edge>
+				<kTAG_PREDICATE>:SUBCLASS-OF</kTAG_PREDICATE>
+			    <kTAG_OBJECT>MCPD</kTAG_OBJECT>
+			</edge>
+        </edges>
+    </unit>
+    
+    <!-- MCPD:COLLDATE -->
+   <unit>
+    	<term kTAG_LID="COLLDATE" kTAG_NAMESPACE="MCPD">
+			<kTAG_LABEL language="en"><![CDATA[Collecting date of sample]]></kTAG_LABEL>
+			<kTAG_DEFINITION language="en"><![CDATA[Collecting date of the sample as YYYYMMDD. Missing data (MM or DD) should be indicated with hyphens. Leading zeros are required.]]></kTAG_DEFINITION>
+			<kTAG_SYNONYMS>
+				<item>COLLDATE</item>
+				<item>18</item>
+			</kTAG_SYNONYMS>
+    	</term>
+    	<node>
+			<kTAG_CLASS>COntologyAliasVertex</kTAG_CLASS>
+			<kTAG_KIND>
+				<item>:KIND-FEATURE</item>
+			</kTAG_KIND>
+			<kTAG_EXAMPLES>
+				<item>1968----</item>
+				<item>20020620</item>
+			</kTAG_EXAMPLES>
+    	</node>
+    	<tag>
+    		<item>MCPD:COLLDATE</item>
+    		<item>:SCALE-OF</item>
+    		<item>GR:DATE</item>
+    	</tag>
+        <edges>
+			<edge>
+				<kTAG_PREDICATE>:SUBCLASS-OF</kTAG_PREDICATE>
+				<kTAG_OBJECT>MCPD</kTAG_OBJECT>
+			</edge>
+			<edge>
+				<kTAG_SUBJECT>GR:DATE</kTAG_SUBJECT>
+				<kTAG_PREDICATE>:SCALE-OF</kTAG_PREDICATE>
+			</edge>
+        </edges>
+    </unit>
+    
+    <!-- MCPD:BREDCODE -->
+    <unit>
+    	<term kTAG_LID="BREDCODE" kTAG_NAMESPACE="MCPD">
+			<kTAG_LABEL language="en"><![CDATA[Breeding institute code]]></kTAG_LABEL>
+			<kTAG_DEFINITION language="en"><![CDATA[FAO Institute Code of the institute that has bred the material.]]></kTAG_DEFINITION>
+			<kTAG_SYNONYMS>
+				<item>BREDCODE</item>
+				<item>19</item>
+			</kTAG_SYNONYMS>
+    	</term>
+    	<node>
+			<kTAG_CLASS>COntologyMasterVertex</kTAG_CLASS>
+			<kTAG_KIND>
+				<item>:KIND-FEATURE</item>
+			</kTAG_KIND>
+			<kTAG_EXAMPLES>
+			    <item>NLD037</item>
+			</kTAG_EXAMPLES>
+    	</node>
+    	<tag>
+    		<item>MCPD:BREDCODE</item>
+    		<item>:SCALE-OF</item>
+    		<item>FAO-INSTITUTES:INSTCODE</item>
+    	</tag>
+        <edges>
+			<edge>
+				<kTAG_PREDICATE>:SUBCLASS-OF</kTAG_PREDICATE>
+				<kTAG_OBJECT>MCPD</kTAG_OBJECT>
+			</edge>
+			<edge>
+				<kTAG_SUBJECT>FAO-INSTITUTES:INSTCODE</kTAG_SUBJECT>
+				<kTAG_PREDICATE>:SCALE-OF</kTAG_PREDICATE>
+			</edge>
+        </edges>
+    </unit>
+    
+    <!-- MCPD:SAMPSTAT -->
+    <unit>
+        <term kTAG_LID="SAMPSTAT" kTAG_NAMESPACE="MCPD">
+            <kTAG_LABEL language="en"><![CDATA[Biological status of accession]]></kTAG_LABEL>
+            <kTAG_DEFINITION language="en"><![CDATA[The coding scheme proposed can be used at 3 different levels of detail: either by using the general codes (in boldface) such as 100, 200, 300, 400 or by using the more specific codes such as 110, 120 etc.]]></kTAG_DEFINITION>
+			<kTAG_SYNONYMS>
+				<item>SAMPSTAT</item>
+				<item>20</item>
+			</kTAG_SYNONYMS>
+    	</term>
+    	<node>
+			<kTAG_CLASS>COntologyMasterVertex</kTAG_CLASS>
+			<kTAG_KIND>
+			    <item>:KIND-FEATURE</item>
+			    <item>:KIND-SCALE</item>
+			</kTAG_KIND>
+			<kTAG_TYPE>
+				<item>:ENUM</item>
+			</kTAG_TYPE>
+    	</node>
+    	<tag>
+    		<item>MCPD:SAMPSTAT</item>
+    	</tag>
+        <edges>
+			<edge>
+				<kTAG_PREDICATE>:SUBCLASS-OF</kTAG_PREDICATE>
+			    <kTAG_OBJECT>MCPD</kTAG_OBJECT>
+			</edge>
+        </edges>
+    </unit>
+    <unit>
+    	<term kTAG_LID="100" kTAG_NAMESPACE="MCPD:SAMPSTAT">
+			<kTAG_LABEL language="en"><![CDATA[Wild]]></kTAG_LABEL>
+    	</term>
+    	<node>
+			<kTAG_CLASS>COntologyMasterVertex</kTAG_CLASS>
+			<kTAG_KIND>
+				<item>:KIND-ENUMERATION</item>
+			</kTAG_KIND>
+    	</node>
+        <edges>
+			<edge>
+				<kTAG_PREDICATE>:ENUM-OF</kTAG_PREDICATE>
+				<kTAG_OBJECT>MCPD:SAMPSTAT</kTAG_OBJECT>
+			</edge>
+        </edges>
+    </unit>
+    <unit>
+    	<term kTAG_LID="110" kTAG_NAMESPACE="MCPD:SAMPSTAT">
+			<kTAG_LABEL language="en"><![CDATA[Natural]]></kTAG_LABEL>
+            <kTAG_DEFINITION language="en"><![CDATA[Wild: natural.]]></kTAG_DEFINITION>
+    	</term>
+    	<node>
+			<kTAG_CLASS>COntologyMasterVertex</kTAG_CLASS>
+			<kTAG_KIND>
+				<item>:KIND-ENUMERATION</item>
+			</kTAG_KIND>
+    	</node>
+        <edges>
+			<edge>
+				<kTAG_PREDICATE>:ENUM-OF</kTAG_PREDICATE>
+				<kTAG_OBJECT>MCPD:SAMPSTAT:100</kTAG_OBJECT>
+			</edge>
+        </edges>
+    </unit>
+    <unit>
+    	<term kTAG_LID="120" kTAG_NAMESPACE="MCPD:SAMPSTAT">
+			<kTAG_LABEL language="en"><![CDATA[Semi-natural/wild]]></kTAG_LABEL>
+            <kTAG_DEFINITION language="en"><![CDATA[Wild: semi-natural/wild.]]></kTAG_DEFINITION>
+    	</term>
+    	<node>
+			<kTAG_CLASS>COntologyMasterVertex</kTAG_CLASS>
+			<kTAG_KIND>
+				<item>:KIND-ENUMERATION</item>
+			</kTAG_KIND>
+    	</node>
+        <edges>
+			<edge>
+				<kTAG_PREDICATE>:ENUM-OF</kTAG_PREDICATE>
+				<kTAG_OBJECT>MCPD:SAMPSTAT:100</kTAG_OBJECT>
+			</edge>
+        </edges>
+    </unit>
+    <unit>
+    	<term kTAG_LID="200" kTAG_NAMESPACE="MCPD:SAMPSTAT">
+			<kTAG_LABEL language="en"><![CDATA[Weedy]]></kTAG_LABEL>
+    	</term>
+    	<node>
+			<kTAG_CLASS>COntologyMasterVertex</kTAG_CLASS>
+			<kTAG_KIND>
+				<item>:KIND-ENUMERATION</item>
+			</kTAG_KIND>
+    	</node>
+        <edges>
+			<edge>
+				<kTAG_PREDICATE>:ENUM-OF</kTAG_PREDICATE>
+				<kTAG_OBJECT>MCPD:SAMPSTAT</kTAG_OBJECT>
+			</edge>
+        </edges>
+    </unit>
+    <unit>
+    	<term kTAG_LID="300" kTAG_NAMESPACE="MCPD:SAMPSTAT">
+			<kTAG_LABEL language="en"><![CDATA[Traditional cultivar/landrace]]></kTAG_LABEL>
+    	</term>
+    	<node>
+			<kTAG_CLASS>COntologyMasterVertex</kTAG_CLASS>
+			<kTAG_KIND>
+				<item>:KIND-ENUMERATION</item>
+			</kTAG_KIND>
+    	</node>
+        <edges>
+			<edge>
+				<kTAG_PREDICATE>:ENUM-OF</kTAG_PREDICATE>
+				<kTAG_OBJECT>MCPD:SAMPSTAT</kTAG_OBJECT>
+			</edge>
+        </edges>
+    </unit>
+    <unit>
+    	<term kTAG_LID="400" kTAG_NAMESPACE="MCPD:SAMPSTAT">
+			<kTAG_LABEL language="en"><![CDATA[Breeding/research material]]></kTAG_LABEL>
+    	</term>
+    	<node>
+			<kTAG_CLASS>COntologyMasterVertex</kTAG_CLASS>
+			<kTAG_KIND>
+				<item>:KIND-ENUMERATION</item>
+			</kTAG_KIND>
+    	</node>
+        <edges>
+			<edge>
+				<kTAG_PREDICATE>:ENUM-OF</kTAG_PREDICATE>
+				<kTAG_OBJECT>MCPD:SAMPSTAT</kTAG_OBJECT>
+			</edge>
+        </edges>
+    </unit>
+    <unit>
+    	<term kTAG_LID="410" kTAG_NAMESPACE="MCPD:SAMPSTAT">
+			<kTAG_LABEL language="en"><![CDATA[Breeder's line]]></kTAG_LABEL>
+            <kTAG_DEFINITION language="en"><![CDATA[Breeding/research material: breeder's line.]]></kTAG_DEFINITION>
+    	</term>
+    	<node>
+			<kTAG_CLASS>COntologyMasterVertex</kTAG_CLASS>
+			<kTAG_KIND>
+				<item>:KIND-ENUMERATION</item>
+			</kTAG_KIND>
+    	</node>
+        <edges>
+			<edge>
+				<kTAG_PREDICATE>:ENUM-OF</kTAG_PREDICATE>
+				<kTAG_OBJECT>MCPD:SAMPSTAT:400</kTAG_OBJECT>
+			</edge>
+        </edges>
+    </unit>
+    <unit>
+    	<term kTAG_LID="411" kTAG_NAMESPACE="MCPD:SAMPSTAT">
+			<kTAG_LABEL language="en"><![CDATA[Synthetic population]]></kTAG_LABEL>
+            <kTAG_DEFINITION language="en"><![CDATA[Breeding/research material: breeder's line - synthetic population.]]></kTAG_DEFINITION>
+    	</term>
+    	<node>
+			<kTAG_CLASS>COntologyMasterVertex</kTAG_CLASS>
+			<kTAG_KIND>
+				<item>:KIND-ENUMERATION</item>
+			</kTAG_KIND>
+    	</node>
+        <edges>
+			<edge>
+				<kTAG_PREDICATE>:ENUM-OF</kTAG_PREDICATE>
+				<kTAG_OBJECT>MCPD:SAMPSTAT:410</kTAG_OBJECT>
+			</edge>
+        </edges>
+    </unit>
+    <unit>
+    	<term kTAG_LID="412" kTAG_NAMESPACE="MCPD:SAMPSTAT">
+			<kTAG_LABEL language="en"><![CDATA[Hybrid]]></kTAG_LABEL>
+            <kTAG_DEFINITION language="en"><![CDATA[Breeding/research material: breeder's line - Hybrid.]]></kTAG_DEFINITION>
+    	</term>
+    	<node>
+			<kTAG_CLASS>COntologyMasterVertex</kTAG_CLASS>
+			<kTAG_KIND>
+				<item>:KIND-ENUMERATION</item>
+			</kTAG_KIND>
+    	</node>
+        <edges>
+			<edge>
+				<kTAG_PREDICATE>:ENUM-OF</kTAG_PREDICATE>
+				<kTAG_OBJECT>MCPD:SAMPSTAT:410</kTAG_OBJECT>
+			</edge>
+        </edges>
+    </unit>
+    <unit>
+    	<term kTAG_LID="413" kTAG_NAMESPACE="MCPD:SAMPSTAT">
+			<kTAG_LABEL language="en"><![CDATA[Founder stock/base population]]></kTAG_LABEL>
+            <kTAG_DEFINITION language="en"><![CDATA[Breeding/research material: breeder's line - Founder stock/base population.]]></kTAG_DEFINITION>
+    	</term>
+    	<node>
+			<kTAG_CLASS>COntologyMasterVertex</kTAG_CLASS>
+			<kTAG_KIND>
+				<item>:KIND-ENUMERATION</item>
+			</kTAG_KIND>
+    	</node>
+        <edges>
+			<edge>
+				<kTAG_PREDICATE>:ENUM-OF</kTAG_PREDICATE>
+				<kTAG_OBJECT>MCPD:SAMPSTAT:410</kTAG_OBJECT>
+			</edge>
+        </edges>
+    </unit>
+    <unit>
+    	<term kTAG_LID="414" kTAG_NAMESPACE="MCPD:SAMPSTAT">
+			<kTAG_LABEL language="en"><![CDATA[Inbred line (parent of hybrid cultivar)]]></kTAG_LABEL>
+            <kTAG_DEFINITION language="en"><![CDATA[Breeding/research material: breeder's line - inbred line.]]></kTAG_DEFINITION>
+    	</term>
+    	<node>
+			<kTAG_CLASS>COntologyMasterVertex</kTAG_CLASS>
+			<kTAG_KIND>
+				<item>:KIND-ENUMERATION</item>
+			</kTAG_KIND>
+    	</node>
+        <edges>
+			<edge>
+				<kTAG_PREDICATE>:ENUM-OF</kTAG_PREDICATE>
+				<kTAG_OBJECT>MCPD:SAMPSTAT:410</kTAG_OBJECT>
+			</edge>
+        </edges>
+    </unit>
+    <unit>
+    	<term kTAG_LID="415" kTAG_NAMESPACE="MCPD:SAMPSTAT">
+			<kTAG_LABEL language="en"><![CDATA[Segregating population]]></kTAG_LABEL>
+            <kTAG_DEFINITION language="en"><![CDATA[Breeding/research material: breeder's line - segregating population.]]></kTAG_DEFINITION>
+    	</term>
+    	<node>
+			<kTAG_CLASS>COntologyMasterVertex</kTAG_CLASS>
+			<kTAG_KIND>
+				<item>:KIND-ENUMERATION</item>
+			</kTAG_KIND>
+    	</node>
+        <edges>
+			<edge>
+				<kTAG_PREDICATE>:ENUM-OF</kTAG_PREDICATE>
+				<kTAG_OBJECT>MCPD:SAMPSTAT:410</kTAG_OBJECT>
+			</edge>
+        </edges>
+    </unit>
+    <unit>
+    	<term kTAG_LID="420" kTAG_NAMESPACE="MCPD:SAMPSTAT">
+			<kTAG_LABEL language="en"><![CDATA[Mutant/genetic stock]]></kTAG_LABEL>
+            <kTAG_DEFINITION language="en"><![CDATA[Breeding/research material: mutant/genetic stock.]]></kTAG_DEFINITION>
+    	</term>
+    	<node>
+			<kTAG_CLASS>COntologyMasterVertex</kTAG_CLASS>
+			<kTAG_KIND>
+				<item>:KIND-ENUMERATION</item>
+			</kTAG_KIND>
+    	</node>
+        <edges>
+			<edge>
+				<kTAG_PREDICATE>:ENUM-OF</kTAG_PREDICATE>
+				<kTAG_OBJECT>MCPD:SAMPSTAT:400</kTAG_OBJECT>
+			</edge>
+        </edges>
+    </unit>
+    <unit>
+    	<term kTAG_LID="500" kTAG_NAMESPACE="MCPD:SAMPSTAT">
+			<kTAG_LABEL language="en"><![CDATA[Advanced/improved cultivar]]></kTAG_LABEL>
+    	</term>
+    	<node>
+			<kTAG_CLASS>COntologyMasterVertex</kTAG_CLASS>
+			<kTAG_KIND>
+				<item>:KIND-ENUMERATION</item>
+			</kTAG_KIND>
+    	</node>
+        <edges>
+			<edge>
+				<kTAG_PREDICATE>:ENUM-OF</kTAG_PREDICATE>
+				<kTAG_OBJECT>MCPD:SAMPSTAT</kTAG_OBJECT>
+			</edge>
+        </edges>
+    </unit>
+    <unit>
+    	<term kTAG_LID="999" kTAG_NAMESPACE="MCPD:SAMPSTAT">
+			<kTAG_LABEL language="en"><![CDATA[Other]]></kTAG_LABEL>
+            <kTAG_DEFINITION language="en"><![CDATA[Other (Elaborate in REMARKS field).]]></kTAG_DEFINITION>
+    	</term>
+    	<node>
+			<kTAG_CLASS>COntologyMasterVertex</kTAG_CLASS>
+			<kTAG_KIND>
+				<item>:KIND-ENUMERATION</item>
+			</kTAG_KIND>
+    	</node>
+        <edges>
+			<edge>
+				<kTAG_PREDICATE>:ENUM-OF</kTAG_PREDICATE>
+				<kTAG_OBJECT>MCPD:SAMPSTAT</kTAG_OBJECT>
+			</edge>
+        </edges>
+    </unit>
+    
+    <!-- MCPD:ANCEST -->
+    <unit>
+        <term kTAG_LID="ANCEST" kTAG_NAMESPACE="MCPD">
+            <kTAG_LABEL language="en"><![CDATA[Ancestral data]]></kTAG_LABEL>
+            <kTAG_DEFINITION language="en"><![CDATA[Information about either pedigree or other description of ancestral information (i.e. parent variety in case of mutant or selection).]]></kTAG_DEFINITION>
+			<kTAG_SYNONYMS>
+				<item>ANCEST</item>
+				<item>21</item>
+			</kTAG_SYNONYMS>
+    	</term>
+    	<node>
+			<kTAG_CLASS>COntologyMasterVertex</kTAG_CLASS>
+			<kTAG_KIND>
+			    <item>:KIND-FEATURE</item>
+			    <item>:KIND-SCALE</item>
+			</kTAG_KIND>
+			<kTAG_TYPE>
+				<item>:TEXT</item>
+			</kTAG_TYPE>
+			<kTAG_EXAMPLES>
+				<item>Hanna/7*Atlas//Turk/8*Atlas</item>
+				<item>mutation found in Hanna</item>
+				<item>selection from Irene</item>
+				<item>cross involving amongst others Hanna and Irene</item>
+			</kTAG_EXAMPLES>
+    	</node>
+    	<tag>
+    		<item>MCPD:ANCEST</item>
+    	</tag>
+        <edges>
+			<edge>
+				<kTAG_PREDICATE>:SUBCLASS-OF</kTAG_PREDICATE>
+			    <kTAG_OBJECT>MCPD</kTAG_OBJECT>
+			</edge>
+        </edges>
+    </unit>
+    
+    <!-- MCPD:COLLSRC -->
+    <unit>
+        <term kTAG_LID="COLLSRC" kTAG_NAMESPACE="MCPD">
+            <kTAG_LABEL language="en"><![CDATA[Collecting/acquisition source]]></kTAG_LABEL>
+            <kTAG_DEFINITION language="en"><![CDATA[The coding scheme proposed can be used at 2 different levels of detail: either by using the general codes (in boldface) such as 10, 20, 30, 40 or by using the more specific codes such as 11, 12 etc.]]></kTAG_DEFINITION>
+			<kTAG_SYNONYMS>
+				<item>COLLSRC</item>
+				<item>22</item>
+			</kTAG_SYNONYMS>
+    	</term>
+    	<node>
+			<kTAG_CLASS>COntologyMasterVertex</kTAG_CLASS>
+			<kTAG_KIND>
+			    <item>:KIND-FEATURE</item>
+			    <item>:KIND-SCALE</item>
+			</kTAG_KIND>
+			<kTAG_TYPE>
+				<item>:ENUM</item>
+			</kTAG_TYPE>
+    	</node>
+    	<tag>
+    		<item>MCPD:COLLSRC</item>
+    	</tag>
+        <edges>
+			<edge>
+				<kTAG_PREDICATE>:SUBCLASS-OF</kTAG_PREDICATE>
+			    <kTAG_OBJECT>MCPD</kTAG_OBJECT>
+			</edge>
+        </edges>
+    </unit>
+    <unit>
+    	<term kTAG_LID="10" kTAG_NAMESPACE="MCPD:COLLSRC">
+			<kTAG_LABEL language="en"><![CDATA[Wild habitat]]></kTAG_LABEL>
+    	</term>
+    	<node>
+			<kTAG_CLASS>COntologyMasterVertex</kTAG_CLASS>
+			<kTAG_KIND>
+				<item>:KIND-ENUMERATION</item>
+			</kTAG_KIND>
+    	</node>
+        <edges>
+			<edge>
+				<kTAG_PREDICATE>:ENUM-OF</kTAG_PREDICATE>
+				<kTAG_OBJECT>MCPD:COLLSRC</kTAG_OBJECT>
+			</edge>
+        </edges>
+    </unit>
+    <unit>
+    	<term kTAG_LID="11" kTAG_NAMESPACE="MCPD:COLLSRC">
+			<kTAG_LABEL language="en"><![CDATA[Forest/woodland]]></kTAG_LABEL>
+            <kTAG_DEFINITION language="en"><![CDATA[Wild habitat: forest/woodland.]]></kTAG_DEFINITION>
+    	</term>
+    	<node>
+			<kTAG_CLASS>COntologyMasterVertex</kTAG_CLASS>
+			<kTAG_KIND>
+				<item>:KIND-ENUMERATION</item>
+			</kTAG_KIND>
+    	</node>
+        <edges>
+			<edge>
+				<kTAG_PREDICATE>:ENUM-OF</kTAG_PREDICATE>
+				<kTAG_OBJECT>MCPD:COLLSRC:10</kTAG_OBJECT>
+			</edge>
+        </edges>
+    </unit>
+    <unit>
+    	<term kTAG_LID="12" kTAG_NAMESPACE="MCPD:COLLSRC">
+			<kTAG_LABEL language="en"><![CDATA[Shrubland]]></kTAG_LABEL>
+            <kTAG_DEFINITION language="en"><![CDATA[Wild habitat: shrubland.]]></kTAG_DEFINITION>
+    	</term>
+    	<node>
+			<kTAG_CLASS>COntologyMasterVertex</kTAG_CLASS>
+			<kTAG_KIND>
+				<item>:KIND-ENUMERATION</item>
+			</kTAG_KIND>
+    	</node>
+        <edges>
+			<edge>
+				<kTAG_PREDICATE>:ENUM-OF</kTAG_PREDICATE>
+				<kTAG_OBJECT>MCPD:COLLSRC:10</kTAG_OBJECT>
+			</edge>
+        </edges>
+    </unit>
+    <unit>
+    	<term kTAG_LID="13" kTAG_NAMESPACE="MCPD:COLLSRC">
+			<kTAG_LABEL language="en"><![CDATA[Grassland]]></kTAG_LABEL>
+            <kTAG_DEFINITION language="en"><![CDATA[Wild habitat: grassland.]]></kTAG_DEFINITION>
+    	</term>
+    	<node>
+			<kTAG_CLASS>COntologyMasterVertex</kTAG_CLASS>
+			<kTAG_KIND>
+				<item>:KIND-ENUMERATION</item>
+			</kTAG_KIND>
+    	</node>
+        <edges>
+			<edge>
+				<kTAG_PREDICATE>:ENUM-OF</kTAG_PREDICATE>
+				<kTAG_OBJECT>MCPD:COLLSRC:10</kTAG_OBJECT>
+			</edge>
+        </edges>
+    </unit>
+    <unit>
+    	<term kTAG_LID="14" kTAG_NAMESPACE="MCPD:COLLSRC">
+			<kTAG_LABEL language="en"><![CDATA[Desert/tundra]]></kTAG_LABEL>
+            <kTAG_DEFINITION language="en"><![CDATA[Wild habitat: desert/tundra.]]></kTAG_DEFINITION>
+    	</term>
+    	<node>
+			<kTAG_CLASS>COntologyMasterVertex</kTAG_CLASS>
+			<kTAG_KIND>
+				<item>:KIND-ENUMERATION</item>
+			</kTAG_KIND>
+    	</node>
+        <edges>
+			<edge>
+				<kTAG_PREDICATE>:ENUM-OF</kTAG_PREDICATE>
+				<kTAG_OBJECT>MCPD:COLLSRC:10</kTAG_OBJECT>
+			</edge>
+        </edges>
+    </unit>
+    <unit>
+    	<term kTAG_LID="15" kTAG_NAMESPACE="MCPD:COLLSRC">
+			<kTAG_LABEL language="en"><![CDATA[Aquatic habitat]]></kTAG_LABEL>
+            <kTAG_DEFINITION language="en"><![CDATA[Wild habitat: aquatic habitat.]]></kTAG_DEFINITION>
+    	</term>
+    	<node>
+			<kTAG_CLASS>COntologyMasterVertex</kTAG_CLASS>
+			<kTAG_KIND>
+				<item>:KIND-ENUMERATION</item>
+			</kTAG_KIND>
+    	</node>
+        <edges>
+			<edge>
+				<kTAG_PREDICATE>:ENUM-OF</kTAG_PREDICATE>
+				<kTAG_OBJECT>MCPD:COLLSRC:10</kTAG_OBJECT>
+			</edge>
+        </edges>
+    </unit>
+    <unit>
+    	<term kTAG_LID="20" kTAG_NAMESPACE="MCPD:COLLSRC">
+			<kTAG_LABEL language="en"><![CDATA[Farm or cultivated habitat]]></kTAG_LABEL>
+    	</term>
+    	<node>
+			<kTAG_CLASS>COntologyMasterVertex</kTAG_CLASS>
+			<kTAG_KIND>
+				<item>:KIND-ENUMERATION</item>
+			</kTAG_KIND>
+    	</node>
+        <edges>
+			<edge>
+				<kTAG_PREDICATE>:ENUM-OF</kTAG_PREDICATE>
+				<kTAG_OBJECT>MCPD:COLLSRC</kTAG_OBJECT>
+			</edge>
+        </edges>
+    </unit>
+    <unit>
+    	<term kTAG_LID="21" kTAG_NAMESPACE="MCPD:COLLSRC">
+			<kTAG_LABEL language="en"><![CDATA[Field]]></kTAG_LABEL>
+            <kTAG_DEFINITION language="en"><![CDATA[Farm or cultivated habitat: field.]]></kTAG_DEFINITION>
+    	</term>
+    	<node>
+			<kTAG_CLASS>COntologyMasterVertex</kTAG_CLASS>
+			<kTAG_KIND>
+				<item>:KIND-ENUMERATION</item>
+			</kTAG_KIND>
+    	</node>
+        <edges>
+			<edge>
+				<kTAG_PREDICATE>:ENUM-OF</kTAG_PREDICATE>
+				<kTAG_OBJECT>MCPD:COLLSRC:20</kTAG_OBJECT>
+			</edge>
+        </edges>
+    </unit>
+    <unit>
+    	<term kTAG_LID="22" kTAG_NAMESPACE="MCPD:COLLSRC">
+			<kTAG_LABEL language="en"><![CDATA[Orchard]]></kTAG_LABEL>
+            <kTAG_DEFINITION language="en"><![CDATA[Farm or cultivated habitat: orchard.]]></kTAG_DEFINITION>
+    	</term>
+    	<node>
+			<kTAG_CLASS>COntologyMasterVertex</kTAG_CLASS>
+			<kTAG_KIND>
+				<item>:KIND-ENUMERATION</item>
+			</kTAG_KIND>
+    	</node>
+        <edges>
+			<edge>
+				<kTAG_PREDICATE>:ENUM-OF</kTAG_PREDICATE>
+				<kTAG_OBJECT>MCPD:COLLSRC:20</kTAG_OBJECT>
+			</edge>
+        </edges>
+    </unit>
+    <unit>
+    	<term kTAG_LID="23" kTAG_NAMESPACE="MCPD:COLLSRC">
+			<kTAG_LABEL language="en"><![CDATA[Backyard, kitchen or home garden (urban, peri-urban or rural)]]></kTAG_LABEL>
+            <kTAG_DEFINITION language="en"><![CDATA[Farm or cultivated habitat: backyard, kitchen or home garden (urban, peri-urban or rural).]]></kTAG_DEFINITION>
+    	</term>
+    	<node>
+			<kTAG_CLASS>COntologyMasterVertex</kTAG_CLASS>
+			<kTAG_KIND>
+				<item>:KIND-ENUMERATION</item>
+			</kTAG_KIND>
+    	</node>
+        <edges>
+			<edge>
+				<kTAG_PREDICATE>:ENUM-OF</kTAG_PREDICATE>
+				<kTAG_OBJECT>MCPD:COLLSRC:20</kTAG_OBJECT>
+			</edge>
+        </edges>
+    </unit>
+    <unit>
+    	<term kTAG_LID="24" kTAG_NAMESPACE="MCPD:COLLSRC">
+			<kTAG_LABEL language="en"><![CDATA[Fallow land]]></kTAG_LABEL>
+            <kTAG_DEFINITION language="en"><![CDATA[Farm or cultivated habitat: fallow land.]]></kTAG_DEFINITION>
+    	</term>
+    	<node>
+			<kTAG_CLASS>COntologyMasterVertex</kTAG_CLASS>
+			<kTAG_KIND>
+				<item>:KIND-ENUMERATION</item>
+			</kTAG_KIND>
+    	</node>
+        <edges>
+			<edge>
+				<kTAG_PREDICATE>:ENUM-OF</kTAG_PREDICATE>
+				<kTAG_OBJECT>MCPD:COLLSRC:20</kTAG_OBJECT>
+			</edge>
+        </edges>
+    </unit>
+    <unit>
+    	<term kTAG_LID="25" kTAG_NAMESPACE="MCPD:COLLSRC">
+			<kTAG_LABEL language="en"><![CDATA[Pasture]]></kTAG_LABEL>
+            <kTAG_DEFINITION language="en"><![CDATA[Farm or cultivated habitat: pasture.]]></kTAG_DEFINITION>
+    	</term>
+    	<node>
+			<kTAG_CLASS>COntologyMasterVertex</kTAG_CLASS>
+			<kTAG_KIND>
+				<item>:KIND-ENUMERATION</item>
+			</kTAG_KIND>
+    	</node>
+        <edges>
+			<edge>
+				<kTAG_PREDICATE>:ENUM-OF</kTAG_PREDICATE>
+				<kTAG_OBJECT>MCPD:COLLSRC:20</kTAG_OBJECT>
+			</edge>
+        </edges>
+    </unit>
+    <unit>
+    	<term kTAG_LID="26" kTAG_NAMESPACE="MCPD:COLLSRC">
+			<kTAG_LABEL language="en"><![CDATA[Farm store]]></kTAG_LABEL>
+            <kTAG_DEFINITION language="en"><![CDATA[Farm or cultivated habitat: farm store.]]></kTAG_DEFINITION>
+    	</term>
+    	<node>
+			<kTAG_CLASS>COntologyMasterVertex</kTAG_CLASS>
+			<kTAG_KIND>
+				<item>:KIND-ENUMERATION</item>
+			</kTAG_KIND>
+    	</node>
+        <edges>
+			<edge>
+				<kTAG_PREDICATE>:ENUM-OF</kTAG_PREDICATE>
+				<kTAG_OBJECT>MCPD:COLLSRC:20</kTAG_OBJECT>
+			</edge>
+        </edges>
+    </unit>
+    <unit>
+    	<term kTAG_LID="27" kTAG_NAMESPACE="MCPD:COLLSRC">
+			<kTAG_LABEL language="en"><![CDATA[Threshing floor]]></kTAG_LABEL>
+            <kTAG_DEFINITION language="en"><![CDATA[Farm or cultivated habitat: threshing floor.]]></kTAG_DEFINITION>
+    	</term>
+    	<node>
+			<kTAG_CLASS>COntologyMasterVertex</kTAG_CLASS>
+			<kTAG_KIND>
+				<item>:KIND-ENUMERATION</item>
+			</kTAG_KIND>
+    	</node>
+        <edges>
+			<edge>
+				<kTAG_PREDICATE>:ENUM-OF</kTAG_PREDICATE>
+				<kTAG_OBJECT>MCPD:COLLSRC:20</kTAG_OBJECT>
+			</edge>
+        </edges>
+    </unit>
+    <unit>
+    	<term kTAG_LID="28" kTAG_NAMESPACE="MCPD:COLLSRC">
+			<kTAG_LABEL language="en"><![CDATA[Park]]></kTAG_LABEL>
+            <kTAG_DEFINITION language="en"><![CDATA[Farm or cultivated habitat: park.]]></kTAG_DEFINITION>
+    	</term>
+    	<node>
+			<kTAG_CLASS>COntologyMasterVertex</kTAG_CLASS>
+			<kTAG_KIND>
+				<item>:KIND-ENUMERATION</item>
+			</kTAG_KIND>
+    	</node>
+        <edges>
+			<edge>
+				<kTAG_PREDICATE>:ENUM-OF</kTAG_PREDICATE>
+				<kTAG_OBJECT>MCPD:COLLSRC:20</kTAG_OBJECT>
+			</edge>
+        </edges>
+    </unit>
+    <unit>
+    	<term kTAG_LID="30" kTAG_NAMESPACE="MCPD:COLLSRC">
+			<kTAG_LABEL language="en"><![CDATA[Market or shop]]></kTAG_LABEL>
+    	</term>
+    	<node>
+			<kTAG_CLASS>COntologyMasterVertex</kTAG_CLASS>
+			<kTAG_KIND>
+				<item>:KIND-ENUMERATION</item>
+			</kTAG_KIND>
+    	</node>
+        <edges>
+			<edge>
+				<kTAG_PREDICATE>:ENUM-OF</kTAG_PREDICATE>
+				<kTAG_OBJECT>MCPD:COLLSRC</kTAG_OBJECT>
+			</edge>
+        </edges>
+    </unit>
+    <unit>
+    	<term kTAG_LID="40" kTAG_NAMESPACE="MCPD:COLLSRC">
+			<kTAG_LABEL language="en"><![CDATA[Institute, Experimental station, Research organization, Genebank]]></kTAG_LABEL>
+    	</term>
+    	<node>
+			<kTAG_CLASS>COntologyMasterVertex</kTAG_CLASS>
+			<kTAG_KIND>
+				<item>:KIND-ENUMERATION</item>
+			</kTAG_KIND>
+    	</node>
+        <edges>
+			<edge>
+				<kTAG_PREDICATE>:ENUM-OF</kTAG_PREDICATE>
+				<kTAG_OBJECT>MCPD:COLLSRC</kTAG_OBJECT>
+			</edge>
+        </edges>
+    </unit>
+    <unit>
+    	<term kTAG_LID="50" kTAG_NAMESPACE="MCPD:COLLSRC">
+			<kTAG_LABEL language="en"><![CDATA[Seed company]]></kTAG_LABEL>
+    	</term>
+    	<node>
+			<kTAG_CLASS>COntologyMasterVertex</kTAG_CLASS>
+			<kTAG_KIND>
+				<item>:KIND-ENUMERATION</item>
+			</kTAG_KIND>
+    	</node>
+        <edges>
+			<edge>
+				<kTAG_PREDICATE>:ENUM-OF</kTAG_PREDICATE>
+				<kTAG_OBJECT>MCPD:COLLSRC</kTAG_OBJECT>
+			</edge>
+        </edges>
+    </unit>
+    <unit>
+    	<term kTAG_LID="60" kTAG_NAMESPACE="MCPD:COLLSRC">
+			<kTAG_LABEL language="en"><![CDATA[Weedy, disturbed or ruderal habitat]]></kTAG_LABEL>
+    	</term>
+    	<node>
+			<kTAG_CLASS>COntologyMasterVertex</kTAG_CLASS>
+			<kTAG_KIND>
+				<item>:KIND-ENUMERATION</item>
+			</kTAG_KIND>
+    	</node>
+        <edges>
+			<edge>
+				<kTAG_PREDICATE>:ENUM-OF</kTAG_PREDICATE>
+				<kTAG_OBJECT>MCPD:COLLSRC</kTAG_OBJECT>
+			</edge>
+        </edges>
+    </unit>
+    <unit>
+    	<term kTAG_LID="61" kTAG_NAMESPACE="MCPD:COLLSRC">
+			<kTAG_LABEL language="en"><![CDATA[Roadside]]></kTAG_LABEL>
+            <kTAG_DEFINITION language="en"><![CDATA[Weedy, disturbed or ruderal habitat: roadside.]]></kTAG_DEFINITION>
+    	</term>
+    	<node>
+			<kTAG_CLASS>COntologyMasterVertex</kTAG_CLASS>
+			<kTAG_KIND>
+				<item>:KIND-ENUMERATION</item>
+			</kTAG_KIND>
+    	</node>
+        <edges>
+			<edge>
+				<kTAG_PREDICATE>:ENUM-OF</kTAG_PREDICATE>
+				<kTAG_OBJECT>MCPD:COLLSRC</kTAG_OBJECT>
+			</edge>
+        </edges>
+    </unit>
+    <unit>
+    	<term kTAG_LID="62" kTAG_NAMESPACE="MCPD:COLLSRC">
+			<kTAG_LABEL language="en"><![CDATA[Field margin]]></kTAG_LABEL>
+            <kTAG_DEFINITION language="en"><![CDATA[Weedy, disturbed or ruderal habitat: field margin.]]></kTAG_DEFINITION>
+    	</term>
+    	<node>
+			<kTAG_CLASS>COntologyMasterVertex</kTAG_CLASS>
+			<kTAG_KIND>
+				<item>:KIND-ENUMERATION</item>
+			</kTAG_KIND>
+    	</node>
+        <edges>
+			<edge>
+				<kTAG_PREDICATE>:ENUM-OF</kTAG_PREDICATE>
+				<kTAG_OBJECT>MCPD:COLLSRC</kTAG_OBJECT>
+			</edge>
+        </edges>
+    </unit>
+    <unit>
+    	<term kTAG_LID="99" kTAG_NAMESPACE="MCPD:COLLSRC">
+			<kTAG_LABEL language="en"><![CDATA[Other]]></kTAG_LABEL>
+            <kTAG_DEFINITION language="en"><![CDATA[Other (Elaborate in REMARKS field).]]></kTAG_DEFINITION>
+    	</term>
+    	<node>
+			<kTAG_CLASS>COntologyMasterVertex</kTAG_CLASS>
+			<kTAG_KIND>
+				<item>:KIND-ENUMERATION</item>
+			</kTAG_KIND>
+    	</node>
+        <edges>
+			<edge>
+				<kTAG_PREDICATE>:ENUM-OF</kTAG_PREDICATE>
+				<kTAG_OBJECT>MCPD:COLLSRC</kTAG_OBJECT>
+			</edge>
+        </edges>
+    </unit>
+    
+    <!-- MCPD:DONORCODE -->
+    <unit>
+    	<term kTAG_LID="DONORCODE" kTAG_NAMESPACE="MCPD">
+			<kTAG_LABEL language="en"><![CDATA[Breeding institute code]]></kTAG_LABEL>
+			<kTAG_DEFINITION language="en"><![CDATA[FAO Institute Code of the institute that has bred the material.]]></kTAG_DEFINITION>
+			<kTAG_SYNONYMS>
+				<item>DONORCODE</item>
+				<item>23</item>
+			</kTAG_SYNONYMS>
+    	</term>
+    	<node>
+			<kTAG_CLASS>COntologyMasterVertex</kTAG_CLASS>
+			<kTAG_KIND>
+				<item>:KIND-FEATURE</item>
+			</kTAG_KIND>
+			<kTAG_EXAMPLES>
+			    <item>NLD037</item>
+			</kTAG_EXAMPLES>
+    	</node>
+    	<tag>
+    		<item>MCPD:DONORCODE</item>
+    		<item>:SCALE-OF</item>
+    		<item>FAO-INSTITUTES:INSTCODE</item>
+    	</tag>
+        <edges>
+			<edge>
+				<kTAG_PREDICATE>:SUBCLASS-OF</kTAG_PREDICATE>
+				<kTAG_OBJECT>MCPD</kTAG_OBJECT>
+			</edge>
+			<edge>
+				<kTAG_SUBJECT>FAO-INSTITUTES:INSTCODE</kTAG_SUBJECT>
+				<kTAG_PREDICATE>:SCALE-OF</kTAG_PREDICATE>
+			</edge>
+        </edges>
+    </unit>
+    
+    <!-- MCPD:DONORNUMB -->
+    <unit>
+        <term kTAG_LID="DONORNUMB" kTAG_NAMESPACE="MCPD">
+            <kTAG_LABEL language="en"><![CDATA[Donor accession number]]></kTAG_LABEL>
+            <kTAG_DEFINITION language="en"><![CDATA[Number assigned to an accession by the donor.]]></kTAG_DEFINITION>
+			<kTAG_SYNONYMS>
+				<item>DONORNUMB</item>
+				<item>24</item>
+			</kTAG_SYNONYMS>
+    	</term>
+    	<node>
+			<kTAG_CLASS>COntologyMasterVertex</kTAG_CLASS>
+			<kTAG_KIND>
+			    <item>:KIND-FEATURE</item>
+			    <item>:KIND-SCALE</item>
+			</kTAG_KIND>
+			<kTAG_TYPE>
+				<item>:TEXT</item>
+			</kTAG_TYPE>
+			<kTAG_EXAMPLES>
+			    <item>NGB1912</item>
+			</kTAG_EXAMPLES>
+    	</node>
+    	<tag>
+    		<item>MCPD:DONORNUMB</item>
+    	</tag>
+        <edges>
+			<edge>
+				<kTAG_PREDICATE>:SUBCLASS-OF</kTAG_PREDICATE>
+			    <kTAG_OBJECT>MCPD</kTAG_OBJECT>
+			</edge>
+        </edges>
+    </unit>
+    
+    <!-- MCPD:OTHERNUMB -->
+    <unit>
+        <term kTAG_LID="OTHERNUMB" kTAG_NAMESPACE="MCPD">
+            <kTAG_LABEL language="en"><![CDATA[Other identification (numbers) associated with the accession]]></kTAG_LABEL>
+            <kTAG_DEFINITION language="en"><![CDATA[Any other identification (numbers) known to exist in other collections for this accession. Use the following system: INSTCODE:ACCENUMB;INSTCODE:ACCENUMB;... INSTCODE and ACCENUMB follow the standard described above and are separated by a colon. Pairs of INSTCODE and ACCENUMB are separated by a semicolon without space. When the institute is not known, the number should be preceded by a colon.]]></kTAG_DEFINITION>
+			<kTAG_SYNONYMS>
+				<item>OTHERNUMB</item>
+				<item>25</item>
+			</kTAG_SYNONYMS>
+    	</term>
+    	<node>
+			<kTAG_CLASS>COntologyMasterVertex</kTAG_CLASS>
+			<kTAG_KIND>
+			    <item>:KIND-FEATURE</item>
+			    <item>:KIND-SCALE</item>
+			</kTAG_KIND>
+			<kTAG_TYPE>
+				<item>:ARRAY</item>
+				<item>:TEXT</item>
+			</kTAG_TYPE>
+			<kTAG_EXAMPLES>
+			    <item>NLD037:CGN00254</item>
+			    <item>SWE002:NGB1912;:Bra2343</item>
+			</kTAG_EXAMPLES>
+    	</node>
+    	<tag>
+    		<item>MCPD:OTHERNUMB</item>
+    	</tag>
+        <edges>
+			<edge>
+				<kTAG_PREDICATE>:SUBCLASS-OF</kTAG_PREDICATE>
+			    <kTAG_OBJECT>MCPD</kTAG_OBJECT>
+			</edge>
+        </edges>
+    </unit>
+    
+    <!-- MCPD:DUPLSITE -->
+    <unit>
+    	<term kTAG_LID="DUPLSITE" kTAG_NAMESPACE="MCPD">
+			<kTAG_LABEL language="en"><![CDATA[Location of safety duplicates]]></kTAG_LABEL>
+			<kTAG_DEFINITION language="en"><![CDATA[FAO Institute Code of the institute where a safety duplicate of the accession is maintained. The codes consist of the 3- letter ISO 3166 country code of the country where the institute is located plus a number.]]></kTAG_DEFINITION>
+			<kTAG_SYNONYMS>
+				<item>DUPLSITE</item>
+				<item>26</item>
+			</kTAG_SYNONYMS>
+    	</term>
+    	<node>
+			<kTAG_CLASS>COntologyMasterVertex</kTAG_CLASS>
+			<kTAG_KIND>
+				<item>:KIND-FEATURE</item>
+			</kTAG_KIND>
+			<kTAG_EXAMPLES>
+			    <item>NLD037</item>
+			</kTAG_EXAMPLES>
+    	</node>
+    	<tag>
+    		<item>MCPD:DUPLSITE</item>
+    		<item>:SCALE-OF</item>
+    		<item>FAO-INSTITUTES:INSTCODE</item>
+    	</tag>
+        <edges>
+			<edge>
+				<kTAG_PREDICATE>:SUBCLASS-OF</kTAG_PREDICATE>
+				<kTAG_OBJECT>MCPD</kTAG_OBJECT>
+			</edge>
+			<edge>
+				<kTAG_SUBJECT>FAO-INSTITUTES:INSTCODE</kTAG_SUBJECT>
+				<kTAG_PREDICATE>:SCALE-OF</kTAG_PREDICATE>
+			</edge>
+        </edges>
+    </unit>
+    
+    <!-- MCPD:STORAGE -->
+    <unit>
+    	<term kTAG_LID="STORAGE" kTAG_NAMESPACE="MCPD">
+			<kTAG_LABEL language="en"><![CDATA[Location of safety duplicates]]></kTAG_LABEL>
+			<kTAG_DEFINITION language="en"><![CDATA[FAO Institute Code of the institute where a safety duplicate of the accession is maintained. The codes consist of the 3- letter ISO 3166 country code of the country where the institute is located plus a number.]]></kTAG_DEFINITION>
+			<kTAG_SYNONYMS>
+				<item>STORAGE</item>
+				<item>27</item>
+			</kTAG_SYNONYMS>
+    	</term>
+    	<node>
+			<kTAG_CLASS>COntologyMasterVertex</kTAG_CLASS>
+			<kTAG_KIND>
+				<item>:KIND-FEATURE</item>
+			    <item>:KIND-SCALE</item>
+			</kTAG_KIND>
+			<kTAG_TYPE>
+				<item>:ENUM</item>
+			</kTAG_TYPE>
+			<kTAG_EXAMPLES>
+			    <item>NLD037</item>
+			</kTAG_EXAMPLES>
+    	</node>
+    	<tag>
+    		<item>MCPD:STORAGE</item>
+    	</tag>
+        <edges>
+			<edge>
+				<kTAG_PREDICATE>:SUBCLASS-OF</kTAG_PREDICATE>
+				<kTAG_OBJECT>MCPD</kTAG_OBJECT>
+			</edge>
+        </edges>
+    </unit>
+    <unit>
+    	<term kTAG_LID="10" kTAG_NAMESPACE="MCPD:STORAGE">
+			<kTAG_LABEL language="en"><![CDATA[Seed collection]]></kTAG_LABEL>
+    	</term>
+    	<node>
+			<kTAG_CLASS>COntologyMasterVertex</kTAG_CLASS>
+			<kTAG_KIND>
+				<item>:KIND-ENUMERATION</item>
+			</kTAG_KIND>
+    	</node>
+        <edges>
+			<edge>
+				<kTAG_PREDICATE>:ENUM-OF</kTAG_PREDICATE>
+				<kTAG_OBJECT>MCPD:STORAGE</kTAG_OBJECT>
+			</edge>
+        </edges>
+    </unit>
+    <unit>
+    	<term kTAG_LID="11" kTAG_NAMESPACE="MCPD:STORAGE">
+			<kTAG_LABEL language="en"><![CDATA[Short term]]></kTAG_LABEL>
+			<kTAG_DEFINITION language="en"><![CDATA[Seed collection: short term.]]></kTAG_DEFINITION>
+    	</term>
+    	<node>
+			<kTAG_CLASS>COntologyMasterVertex</kTAG_CLASS>
+			<kTAG_KIND>
+				<item>:KIND-ENUMERATION</item>
+			</kTAG_KIND>
+    	</node>
+        <edges>
+			<edge>
+				<kTAG_PREDICATE>:ENUM-OF</kTAG_PREDICATE>
+				<kTAG_OBJECT>MCPD:STORAGE:10</kTAG_OBJECT>
+			</edge>
+        </edges>
+    </unit>
+    <unit>
+    	<term kTAG_LID="12" kTAG_NAMESPACE="MCPD:STORAGE">
+			<kTAG_LABEL language="en"><![CDATA[Medium term]]></kTAG_LABEL>
+			<kTAG_DEFINITION language="en"><![CDATA[Seed collection: medium term.]]></kTAG_DEFINITION>
+    	</term>
+    	<node>
+			<kTAG_CLASS>COntologyMasterVertex</kTAG_CLASS>
+			<kTAG_KIND>
+				<item>:KIND-ENUMERATION</item>
+			</kTAG_KIND>
+    	</node>
+        <edges>
+			<edge>
+				<kTAG_PREDICATE>:ENUM-OF</kTAG_PREDICATE>
+				<kTAG_OBJECT>MCPD:STORAGE:10</kTAG_OBJECT>
+			</edge>
+        </edges>
+    </unit>
+    <unit>
+    	<term kTAG_LID="13" kTAG_NAMESPACE="MCPD:STORAGE">
+			<kTAG_LABEL language="en"><![CDATA[Long term]]></kTAG_LABEL>
+			<kTAG_DEFINITION language="en"><![CDATA[Seed collection: long term.]]></kTAG_DEFINITION>
+    	</term>
+    	<node>
+			<kTAG_CLASS>COntologyMasterVertex</kTAG_CLASS>
+			<kTAG_KIND>
+				<item>:KIND-ENUMERATION</item>
+			</kTAG_KIND>
+    	</node>
+        <edges>
+			<edge>
+				<kTAG_PREDICATE>:ENUM-OF</kTAG_PREDICATE>
+				<kTAG_OBJECT>MCPD:STORAGE:10</kTAG_OBJECT>
+			</edge>
+        </edges>
+    </unit>
+    <unit>
+    	<term kTAG_LID="20" kTAG_NAMESPACE="MCPD:STORAGE">
+			<kTAG_LABEL language="en"><![CDATA[Field collection]]></kTAG_LABEL>
+    	</term>
+    	<node>
+			<kTAG_CLASS>COntologyMasterVertex</kTAG_CLASS>
+			<kTAG_KIND>
+				<item>:KIND-ENUMERATION</item>
+			</kTAG_KIND>
+    	</node>
+        <edges>
+			<edge>
+				<kTAG_PREDICATE>:ENUM-OF</kTAG_PREDICATE>
+				<kTAG_OBJECT>MCPD:STORAGE</kTAG_OBJECT>
+			</edge>
+        </edges>
+    </unit>
+    <unit>
+    	<term kTAG_LID="30" kTAG_NAMESPACE="MCPD:STORAGE">
+			<kTAG_LABEL language="en"><![CDATA[In vitro collection (Slow growth)]]></kTAG_LABEL>
+    	</term>
+    	<node>
+			<kTAG_CLASS>COntologyMasterVertex</kTAG_CLASS>
+			<kTAG_KIND>
+				<item>:KIND-ENUMERATION</item>
+			</kTAG_KIND>
+    	</node>
+        <edges>
+			<edge>
+				<kTAG_PREDICATE>:ENUM-OF</kTAG_PREDICATE>
+				<kTAG_OBJECT>MCPD:STORAGE</kTAG_OBJECT>
+			</edge>
+        </edges>
+    </unit>
+    <unit>
+    	<term kTAG_LID="40" kTAG_NAMESPACE="MCPD:STORAGE">
+			<kTAG_LABEL language="en"><![CDATA[Cryopreserved collection]]></kTAG_LABEL>
+    	</term>
+    	<node>
+			<kTAG_CLASS>COntologyMasterVertex</kTAG_CLASS>
+			<kTAG_KIND>
+				<item>:KIND-ENUMERATION</item>
+			</kTAG_KIND>
+    	</node>
+        <edges>
+			<edge>
+				<kTAG_PREDICATE>:ENUM-OF</kTAG_PREDICATE>
+				<kTAG_OBJECT>MCPD:STORAGE</kTAG_OBJECT>
+			</edge>
+        </edges>
+    </unit>
+    <unit>
+    	<term kTAG_LID="99" kTAG_NAMESPACE="MCPD:STORAGE">
+			<kTAG_LABEL language="en"><![CDATA[Other]]></kTAG_LABEL>
+			<kTAG_DEFINITION language="en"><![CDATA[Other (elaborate in REMARKS field).]]></kTAG_DEFINITION>
+    	</term>
+    	<node>
+			<kTAG_CLASS>COntologyMasterVertex</kTAG_CLASS>
+			<kTAG_KIND>
+				<item>:KIND-ENUMERATION</item>
+			</kTAG_KIND>
+    	</node>
+        <edges>
+			<edge>
+				<kTAG_PREDICATE>:ENUM-OF</kTAG_PREDICATE>
+				<kTAG_OBJECT>MCPD:STORAGE</kTAG_OBJECT>
+			</edge>
+        </edges>
+    </unit>
+    
+    <!-- MCPD:REMARKS -->
+    <unit>
+        <term kTAG_LID="REMARKS" kTAG_NAMESPACE="MCPD">
+            <kTAG_LABEL language="en"><![CDATA[Remarks]]></kTAG_LABEL>
+            <kTAG_DEFINITION language="en"><![CDATA[The remarks field is used to add notes or to elaborate on descriptors with value 99 or 999 (=Other). Prefix remarks with the field name they refer to and a colon. Separate remarks referring to different fields are separated by semicolons without space.]]></kTAG_DEFINITION>
+			<kTAG_SYNONYMS>
+				<item>REMARKS</item>
+				<item>28</item>
+			</kTAG_SYNONYMS>
+    	</term>
+    	<node>
+			<kTAG_CLASS>COntologyMasterVertex</kTAG_CLASS>
+			<kTAG_KIND>
+			    <item>:KIND-FEATURE</item>
+			    <item>:KIND-SCALE</item>
+			</kTAG_KIND>
+			<kTAG_TYPE>
+				<item>:TEXT</item>
+			</kTAG_TYPE>
+			<kTAG_EXAMPLES>
+			    <item>COLLSRC:roadside</item>
+			</kTAG_EXAMPLES>
+    	</node>
+    	<tag>
+    		<item>MCPD:REMARKS</item>
+    	</tag>
+        <edges>
+			<edge>
+				<kTAG_PREDICATE>:SUBCLASS-OF</kTAG_PREDICATE>
+			    <kTAG_OBJECT>MCPD</kTAG_OBJECT>
+			</edge>
+        </edges>
+    </unit>
+    
+    <!-- MCPD:COLLDESCR -->
+    <unit>
+        <term kTAG_LID="COLLDESCR" kTAG_NAMESPACE="MCPD">
+            <kTAG_LABEL language="en"><![CDATA[Decoded collecting institute]]></kTAG_LABEL>
+            <kTAG_DEFINITION language="en"><![CDATA[Brief name and location of the collecting institute. Only to be used if COLLCODE can not be used since the FAO Institution Code for this institute is not (yet) available.]]></kTAG_DEFINITION>
+			<kTAG_SYNONYMS>
+				<item>COLLDESCR</item>
+				<item>29</item>
+			</kTAG_SYNONYMS>
+    	</term>
+    	<node>
+			<kTAG_CLASS>COntologyMasterVertex</kTAG_CLASS>
+			<kTAG_KIND>
+			    <item>:KIND-FEATURE</item>
+			    <item>:KIND-SCALE</item>
+			</kTAG_KIND>
+			<kTAG_TYPE>
+				<item>:TEXT</item>
+			</kTAG_TYPE>
+			<kTAG_EXAMPLES>
+			    <item>Tuinartikelen Jan van Zomeren, Arnhem, The Netherlands</item>
+			</kTAG_EXAMPLES>
+    	</node>
+    	<tag>
+    		<item>MCPD:COLLDESCR</item>
+    	</tag>
+        <edges>
+			<edge>
+				<kTAG_PREDICATE>:SUBCLASS-OF</kTAG_PREDICATE>
+			    <kTAG_OBJECT>MCPD</kTAG_OBJECT>
+			</edge>
+        </edges>
+    </unit>
+    
+    <!-- MCPD:BREDDESCR -->
+    <unit>
+        <term kTAG_LID="BREDDESCR" kTAG_NAMESPACE="MCPD">
+            <kTAG_LABEL language="en"><![CDATA[Decoded breeding institute]]></kTAG_LABEL>
+            <kTAG_DEFINITION language="en"><![CDATA[Brief name and location of the breeding institute. Only to be used if BREDCODE can not be used since the FAO Institution Code for this institute is not (yet) available.]]></kTAG_DEFINITION>
+			<kTAG_SYNONYMS>
+				<item>BREDDESCR</item>
+				<item>30</item>
+			</kTAG_SYNONYMS>
+    	</term>
+    	<node>
+			<kTAG_CLASS>COntologyMasterVertex</kTAG_CLASS>
+			<kTAG_KIND>
+			    <item>:KIND-FEATURE</item>
+			    <item>:KIND-SCALE</item>
+			</kTAG_KIND>
+			<kTAG_TYPE>
+				<item>:TEXT</item>
+			</kTAG_TYPE>
+			<kTAG_EXAMPLES>
+			    <item>CFFR from Chile</item>
+			</kTAG_EXAMPLES>
+    	</node>
+    	<tag>
+    		<item>MCPD:BREDDESCR</item>
+    	</tag>
+        <edges>
+			<edge>
+				<kTAG_PREDICATE>:SUBCLASS-OF</kTAG_PREDICATE>
+			    <kTAG_OBJECT>MCPD</kTAG_OBJECT>
+			</edge>
+        </edges>
+    </unit>
+    
+    <!-- MCPD:DONORDESC -->
+    <unit>
+        <term kTAG_LID="DONORDESC" kTAG_NAMESPACE="MCPD">
+            <kTAG_LABEL language="en"><![CDATA[Decoded donor institute]]></kTAG_LABEL>
+            <kTAG_DEFINITION language="en"><![CDATA[Brief name and location of the donor institute. Only to be used if DONORCODE can not be used since the FAO Institution Code for this institute is not (yet) available.]]></kTAG_DEFINITION>
+			<kTAG_SYNONYMS>
+				<item>DONORDESC</item>
+				<item>31</item>
+			</kTAG_SYNONYMS>
+    	</term>
+    	<node>
+			<kTAG_CLASS>COntologyMasterVertex</kTAG_CLASS>
+			<kTAG_KIND>
+			    <item>:KIND-FEATURE</item>
+			    <item>:KIND-SCALE</item>
+			</kTAG_KIND>
+			<kTAG_TYPE>
+				<item>:TEXT</item>
+			</kTAG_TYPE>
+			<kTAG_EXAMPLES>
+			    <item>Nelly Goudwaard, Groningen, The Netherlands</item>
+			</kTAG_EXAMPLES>
+    	</node>
+    	<tag>
+    		<item>MCPD:DONORDESC</item>
+    	</tag>
+        <edges>
+			<edge>
+				<kTAG_PREDICATE>:SUBCLASS-OF</kTAG_PREDICATE>
+			    <kTAG_OBJECT>MCPD</kTAG_OBJECT>
+			</edge>
+        </edges>
+    </unit>
+    
+    <!-- MCPD:DUPLDESCR -->
+    <unit>
+        <term kTAG_LID="DUPLDESCR" kTAG_NAMESPACE="MCPD">
+            <kTAG_LABEL language="en"><![CDATA[Decoded safety duplication location]]></kTAG_LABEL>
+            <kTAG_DEFINITION language="en"><![CDATA[Brief name and location of the institute maintaining the safety duplicate. Only to be used if DUPLSITE can not be used since the FAO Institution Code for this institute is not (yet) available.]]></kTAG_DEFINITION>
+			<kTAG_SYNONYMS>
+				<item>DUPLDESCR</item>
+				<item>32</item>
+			</kTAG_SYNONYMS>
+    	</term>
+    	<node>
+			<kTAG_CLASS>COntologyMasterVertex</kTAG_CLASS>
+			<kTAG_KIND>
+			    <item>:KIND-FEATURE</item>
+			    <item>:KIND-SCALE</item>
+			</kTAG_KIND>
+			<kTAG_TYPE>
+				<item>:TEXT</item>
+			</kTAG_TYPE>
+			<kTAG_EXAMPLES>
+			    <item>Pakhoed Freezers inc., Paramaribo, Surinam</item>
+			</kTAG_EXAMPLES>
+    	</node>
+    	<tag>
+    		<item>MCPD:DUPLDESCR</item>
+    	</tag>
+        <edges>
+			<edge>
+				<kTAG_PREDICATE>:SUBCLASS-OF</kTAG_PREDICATE>
+			    <kTAG_OBJECT>MCPD</kTAG_OBJECT>
+			</edge>
+        </edges>
+    </unit>
+    
+    <!-- MCPD:ACCEURL -->
+    <unit>
+        <term kTAG_LID="ACCEURL" kTAG_NAMESPACE="MCPD">
+            <kTAG_LABEL language="en"><![CDATA[Accession URL]]></kTAG_LABEL>
+            <kTAG_DEFINITION language="en"><![CDATA[URL linking to additional data about the accession either in the holding genebank or from another source.]]></kTAG_DEFINITION>
+			<kTAG_SYNONYMS>
+				<item>ACCEURL</item>
+				<item>33</item>
+			</kTAG_SYNONYMS>
+    	</term>
+    	<node>
+			<kTAG_CLASS>COntologyMasterVertex</kTAG_CLASS>
+			<kTAG_KIND>
+			    <item>:KIND-FEATURE</item>
+			    <item>:KIND-SCALE</item>
+			</kTAG_KIND>
+			<kTAG_TYPE>
+				<item>:TEXT</item>
+			</kTAG_TYPE>
+			<kTAG_EXAMPLES>
+			    <item>http://www.cgn.wageningen-ur.nl/pgr/collections/passdeta.asp?accenumb=CGN04848</item>
+			</kTAG_EXAMPLES>
+    	</node>
+    	<tag>
+    		<item>MCPD:ACCEURL</item>
+    	</tag>
+        <edges>
+			<edge>
+				<kTAG_PREDICATE>:SUBCLASS-OF</kTAG_PREDICATE>
+			    <kTAG_OBJECT>MCPD</kTAG_OBJECT>
+			</edge>
+        </edges>
+    </unit>
+    
+    <!-- MCPD:MLSSTAT -->
+    <unit>
+        <term kTAG_LID="MLSSTAT" kTAG_NAMESPACE="MCPD">
+            <kTAG_LABEL language="en"><![CDATA[MLS Status]]></kTAG_LABEL>
+            <kTAG_DEFINITION language="en"><![CDATA[The coded status of an accession with regards to the Multilateral System (MLS) of the International Treaty on Plant Genetic Resources for Food and Agriculture. Provides the information, whether the accession is included in the MLS. If the MLS status is unknown, the field stays empty. <tt>0</tt> not part of the MLS; <tt>1</tt> part of the MLS.]]></kTAG_DEFINITION>
+			<kTAG_SYNONYMS>
+				<item>MLSSTAT</item>
+				<item>34</item>
+			</kTAG_SYNONYMS>
+    	</term>
+    	<node>
+			<kTAG_CLASS>COntologyMasterVertex</kTAG_CLASS>
+			<kTAG_KIND>
+			    <item>:KIND-FEATURE</item>
+			    <item>:KIND-SCALE</item>
+			</kTAG_KIND>
+			<kTAG_TYPE>
+				<item>:BOOLEAN</item>
+			</kTAG_TYPE>
+    	</node>
+    	<tag>
+    		<item>MCPD:MLSSTAT</item>
+    	</tag>
+        <edges>
+			<edge>
+				<kTAG_PREDICATE>:SUBCLASS-OF</kTAG_PREDICATE>
+			    <kTAG_OBJECT>MCPD</kTAG_OBJECT>
+			</edge>
+        </edges>
+    </unit>
+    
+    <!-- MCPD:AEGISSTAT -->
+    <unit>
+        <term kTAG_LID="AEGISSTAT" kTAG_NAMESPACE="MCPD">
+            <kTAG_LABEL language="en"><![CDATA[AEGIS Status]]></kTAG_LABEL>
+            <kTAG_DEFINITION language="en"><![CDATA[The coded status of an accession with regards to the European Genebank Integrated System (AEGIS). Provides the information, whether the accession is conserved for AEGIS. Provides the information, whether the accession is is conserved for AEGIS. If the AEGIS status is unknown, the field stays empty. <tt>0</tt> not part of the AEGIS; <tt>1</tt> part of the AEGIS.]]></kTAG_DEFINITION>
+			<kTAG_SYNONYMS>
+				<item>AEGISSTAT</item>
+				<item>35</item>
+			</kTAG_SYNONYMS>
+    	</term>
+    	<node>
+			<kTAG_CLASS>COntologyMasterVertex</kTAG_CLASS>
+			<kTAG_KIND>
+			    <item>:KIND-FEATURE</item>
+			    <item>:KIND-SCALE</item>
+			</kTAG_KIND>
+			<kTAG_TYPE>
+				<item>:BOOLEAN</item>
+			</kTAG_TYPE>
+    	</node>
+    	<tag>
+    		<item>MCPD:AEGISSTAT</item>
+    	</tag>
+        <edges>
+			<edge>
+				<kTAG_PREDICATE>:SUBCLASS-OF</kTAG_PREDICATE>
+			    <kTAG_OBJECT>MCPD</kTAG_OBJECT>
+			</edge>
+        </edges>
+    </unit>
+    
+    <!-- MCPD:SMTAINST -->
+    <unit>
+    	<term kTAG_LID="SMTAINST" kTAG_NAMESPACE="MCPD">
+			<kTAG_LABEL language="en"><![CDATA[SMTA Institute Code]]></kTAG_LABEL>
+			<kTAG_DEFINITION language="en"><![CDATA[FAO Institute Code [or another official code] for the institute acting as Provider.]]></kTAG_DEFINITION>
+			<kTAG_SYNONYMS>
+				<item>SMTAINST</item>
+				<item>36</item>
+			</kTAG_SYNONYMS>
+    	</term>
+    	<node>
+			<kTAG_CLASS>COntologyMasterVertex</kTAG_CLASS>
+			<kTAG_KIND>
+				<item>:KIND-FEATURE</item>
+			</kTAG_KIND>
+			<kTAG_EXAMPLES>
+			    <item>NLD037</item>
+			</kTAG_EXAMPLES>
+    	</node>
+    	<tag>
+    		<item>MCPD:SMTAINST</item>
+    		<item>:SCALE-OF</item>
+    		<item>FAO-INSTITUTES:INSTCODE</item>
+    	</tag>
+        <edges>
+			<edge>
+				<kTAG_PREDICATE>:SUBCLASS-OF</kTAG_PREDICATE>
+				<kTAG_OBJECT>MCPD</kTAG_OBJECT>
+			</edge>
+			<edge>
+				<kTAG_SUBJECT>FAO-INSTITUTES:INSTCODE</kTAG_SUBJECT>
+				<kTAG_PREDICATE>:SCALE-OF</kTAG_PREDICATE>
+			</edge>
+        </edges>
+    </unit>
+    
+    <!-- MCPD:SMTANUMB -->
+    <unit>
+        <term kTAG_LID="SMTANUMB" kTAG_NAMESPACE="MCPD">
+            <kTAG_LABEL language="en"><![CDATA[SMTA Number]]></kTAG_LABEL>
+            <kTAG_DEFINITION language="en"><![CDATA[This number serves as a unique identifier for the SMTA contarct within an institute, and is assigned by the institute acting as Providers.]]></kTAG_DEFINITION>
+			<kTAG_SYNONYMS>
+				<item>SMTANUMB</item>
+				<item>37</item>
+			</kTAG_SYNONYMS>
+    	</term>
+    	<node>
+			<kTAG_CLASS>COntologyMasterVertex</kTAG_CLASS>
+			<kTAG_KIND>
+			    <item>:KIND-FEATURE</item>
+			    <item>:KIND-SCALE</item>
+			</kTAG_KIND>
+			<kTAG_TYPE>
+				<item>:TEXT</item>
+			</kTAG_TYPE>
+			<kTAG_EXAMPLES>
+			    <item>IPK00724</item>
+			</kTAG_EXAMPLES>
+    	</node>
+    	<tag>
+    		<item>MCPD:SMTANUMB</item>
+    	</tag>
+        <edges>
+			<edge>
+				<kTAG_PREDICATE>:SUBCLASS-OF</kTAG_PREDICATE>
+			    <kTAG_OBJECT>MCPD</kTAG_OBJECT>
+			</edge>
+        </edges>
+    </unit>
+    
+    <!-- MCPD:SMTADATE -->
+    <unit>
+        <term kTAG_LID="SMTADATE" kTAG_NAMESPACE="MCPD">
+            <kTAG_LABEL language="en"><![CDATA[SMTA Date]]></kTAG_LABEL>
+            <kTAG_DEFINITION language="en"><![CDATA[Exact date on which the SMTA contract was concluded as YYYYMMDD. No missing data (YYYY, MM or DD) allowed. Leading zeros are required.]]></kTAG_DEFINITION>
+			<kTAG_SYNONYMS>
+				<item>SMTADATE</item>
+				<item>38</item>
+			</kTAG_SYNONYMS>
+    	</term>
+    	<node>
+			<kTAG_CLASS>COntologyMasterVertex</kTAG_CLASS>
+			<kTAG_KIND>
+			    <item>:KIND-FEATURE</item>
+			    <item>:KIND-SCALE</item>
+			</kTAG_KIND>
+			<kTAG_TYPE>
+				<item>:TEXT</item>
+			</kTAG_TYPE>
+			<kTAG_EXAMPLES>
+			    <item>20020620</item>
+			</kTAG_EXAMPLES>
+    	</node>
+    	<tag>
+    		<item>MCPD:SMTADATE</item>
+    	</tag>
+        <edges>
+			<edge>
+				<kTAG_PREDICATE>:SUBCLASS-OF</kTAG_PREDICATE>
+			    <kTAG_OBJECT>MCPD</kTAG_OBJECT>
+			</edge>
+        </edges>
+    </unit>
+    
+    <!-- MCPD:SMTACCE -->
+    <unit>
+        <term kTAG_LID="SMTACCE" kTAG_NAMESPACE="MCPD">
+            <kTAG_LABEL language="en"><![CDATA[SMTA Total Quantity of Accessions]]></kTAG_LABEL>
+            <kTAG_DEFINITION language="en"><![CDATA[Total quantity of accessions transferred by the SMTA.]]></kTAG_DEFINITION>
+			<kTAG_SYNONYMS>
+				<item>SMTACCE</item>
+				<item>39</item>
+			</kTAG_SYNONYMS>
+    	</term>
+    	<node>
+			<kTAG_CLASS>COntologyMasterVertex</kTAG_CLASS>
+			<kTAG_KIND>
+			    <item>:KIND-FEATURE</item>
+			    <item>:KIND-SCALE</item>
+			</kTAG_KIND>
+			<kTAG_TYPE>
+				<item>:INT</item>
+			</kTAG_TYPE>
+			<kTAG_EXAMPLES>
+			    <item>345</item>
+			</kTAG_EXAMPLES>
+    	</node>
+    	<tag>
+    		<item>MCPD:SMTACCE</item>
+    	</tag>
+        <edges>
+			<edge>
+				<kTAG_PREDICATE>:SUBCLASS-OF</kTAG_PREDICATE>
+			    <kTAG_OBJECT>MCPD</kTAG_OBJECT>
+			</edge>
+        </edges>
+    </unit>
+    
+    <!-- MCPD:SMTAGENUS -->
+    <unit>
+    	<term kTAG_LID="SMTAGENUS" kTAG_NAMESPACE="MCPD">
+			<kTAG_LABEL language="en"><![CDATA[SMTA Quantity of Accessions per Genus]]></kTAG_LABEL>
+			<kTAG_DEFINITION language="en"><![CDATA[The field is used to elaborate on the number of accession per genus transferred by the SMTA. Prefix genus name in Latin, initial uppercase letter required, and a colon followed by the number of transferred accessions for the genus without space. Separate entries referring to different genera by semicolons without space.]]></kTAG_DEFINITION>
+			<kTAG_SYNONYMS>
+				<item>SMTAGENUS</item>
+				<item>40</item>
+			</kTAG_SYNONYMS>
+    	</term>
+    	<node>
+			<kTAG_CLASS>COntologyMasterVertex</kTAG_CLASS>
+			<kTAG_KIND>
+			    <item>:KIND-FEATURE</item>
+			    <item>:KIND-SCALE</item>
+			</kTAG_KIND>
+			<kTAG_TYPE>
+				<item>:TEXT</item>
+			</kTAG_TYPE>
+			<kTAG_EXAMPLES>
+			    <item>Allium:120;Beta:25;Hordeum:200</item>
+			</kTAG_EXAMPLES>
+    	</node>
+    	<tag>
+    		<item>MCPD:SMTAGENUS</item>
+    	</tag>
+        <edges>
+			<edge>
+				<kTAG_PREDICATE>:SUBCLASS-OF</kTAG_PREDICATE>
+				<kTAG_OBJECT>MCPD</kTAG_OBJECT>
+			</edge>
+        </edges>
+    </unit>
+    
+    <!-- MCPD:SMTARECIP -->
+    <unit>
+    	<term kTAG_LID="SMTARECIP" kTAG_NAMESPACE="MCPD">
+			<kTAG_LABEL language="en"><![CDATA[SMTA Category of recipient]]></kTAG_LABEL>
+			<kTAG_DEFINITION language="en"><![CDATA[The coded category of the Recipient of the accessions transferred by the SMTA.]]></kTAG_DEFINITION>
+			<kTAG_SYNONYMS>
+				<item>SMTARECIP</item>
+				<item>41</item>
+			</kTAG_SYNONYMS>
+    	</term>
+    	<node>
+			<kTAG_CLASS>COntologyMasterVertex</kTAG_CLASS>
+			<kTAG_KIND>
+			    <item>:KIND-FEATURE</item>
+			    <item>:KIND-SCALE</item>
+			</kTAG_KIND>
+			<kTAG_TYPE>
+				<item>:ENUM</item>
+			</kTAG_TYPE>
+    	</node>
+    	<tag>
+    		<item>MCPD:SMTARECIP</item>
+    	</tag>
+        <edges>
+			<edge>
+				<kTAG_PREDICATE>:SUBCLASS-OF</kTAG_PREDICATE>
+				<kTAG_OBJECT>MCPD</kTAG_OBJECT>
+			</edge>
+        </edges>
+    </unit>
+    <unit>
+    	<term kTAG_LID="1" kTAG_NAMESPACE="MCPD:SMTARECIP">
+			<kTAG_LABEL language="en"><![CDATA[Gene bank]]></kTAG_LABEL>
+    	</term>
+    	<node>
+			<kTAG_CLASS>COntologyMasterVertex</kTAG_CLASS>
+			<kTAG_KIND>
+				<item>:KIND-ENUMERATION</item>
+			</kTAG_KIND>
+    	</node>
+        <edges>
+			<edge>
+				<kTAG_PREDICATE>:ENUM-OF</kTAG_PREDICATE>
+				<kTAG_OBJECT>MCPD:SMTARECIP</kTAG_OBJECT>
+			</edge>
+        </edges>
+    </unit>
+    <unit>
+    	<term kTAG_LID="2" kTAG_NAMESPACE="MCPD:SMTARECIP">
+			<kTAG_LABEL language="en"><![CDATA[Botanical garden]]></kTAG_LABEL>
+    	</term>
+    	<node>
+			<kTAG_CLASS>COntologyMasterVertex</kTAG_CLASS>
+			<kTAG_KIND>
+				<item>:KIND-ENUMERATION</item>
+			</kTAG_KIND>
+    	</node>
+        <edges>
+			<edge>
+				<kTAG_PREDICATE>:ENUM-OF</kTAG_PREDICATE>
+				<kTAG_OBJECT>MCPD:SMTARECIP</kTAG_OBJECT>
+			</edge>
+        </edges>
+    </unit>
+    <unit>
+    	<term kTAG_LID="3" kTAG_NAMESPACE="MCPD:SMTARECIP">
+			<kTAG_LABEL language="en"><![CDATA[Public research institute]]></kTAG_LABEL>
+    	</term>
+    	<node>
+			<kTAG_CLASS>COntologyMasterVertex</kTAG_CLASS>
+			<kTAG_KIND>
+				<item>:KIND-ENUMERATION</item>
+			</kTAG_KIND>
+    	</node>
+        <edges>
+			<edge>
+				<kTAG_PREDICATE>:ENUM-OF</kTAG_PREDICATE>
+				<kTAG_OBJECT>MCPD:SMTARECIP</kTAG_OBJECT>
+			</edge>
+        </edges>
+    </unit>
+    <unit>
+    	<term kTAG_LID="4" kTAG_NAMESPACE="MCPD:SMTARECIP">
+			<kTAG_LABEL language="en"><![CDATA[Private breeder]]></kTAG_LABEL>
+    	</term>
+    	<node>
+			<kTAG_CLASS>COntologyMasterVertex</kTAG_CLASS>
+			<kTAG_KIND>
+				<item>:KIND-ENUMERATION</item>
+			</kTAG_KIND>
+    	</node>
+        <edges>
+			<edge>
+				<kTAG_PREDICATE>:ENUM-OF</kTAG_PREDICATE>
+				<kTAG_OBJECT>MCPD:SMTARECIP</kTAG_OBJECT>
+			</edge>
+        </edges>
+    </unit>
+    <unit>
+    	<term kTAG_LID="5" kTAG_NAMESPACE="MCPD:SMTARECIP">
+			<kTAG_LABEL language="en"><![CDATA[Private individual, non-profit association]]></kTAG_LABEL>
+    	</term>
+    	<node>
+			<kTAG_CLASS>COntologyMasterVertex</kTAG_CLASS>
+			<kTAG_KIND>
+				<item>:KIND-ENUMERATION</item>
+			</kTAG_KIND>
+    	</node>
+        <edges>
+			<edge>
+				<kTAG_PREDICATE>:ENUM-OF</kTAG_PREDICATE>
+				<kTAG_OBJECT>MCPD:SMTARECIP</kTAG_OBJECT>
+			</edge>
+        </edges>
+    </unit>
+    <unit>
+    	<term kTAG_LID="6" kTAG_NAMESPACE="MCPD:SMTARECIP">
+			<kTAG_LABEL language="en"><![CDATA[Education]]></kTAG_LABEL>
+    	</term>
+    	<node>
+			<kTAG_CLASS>COntologyMasterVertex</kTAG_CLASS>
+			<kTAG_KIND>
+				<item>:KIND-ENUMERATION</item>
+			</kTAG_KIND>
+    	</node>
+        <edges>
+			<edge>
+				<kTAG_PREDICATE>:ENUM-OF</kTAG_PREDICATE>
+				<kTAG_OBJECT>MCPD:SMTARECIP</kTAG_OBJECT>
+			</edge>
+        </edges>
+    </unit>
+    <unit>
+    	<term kTAG_LID="9" kTAG_NAMESPACE="MCPD:SMTARECIP">
+			<kTAG_LABEL language="en"><![CDATA[Other]]></kTAG_LABEL>
+			<kTAG_DEFINITION language="en"><![CDATA[Other (Elaborate in REMARK field).]]></kTAG_DEFINITION>
+    	</term>
+    	<node>
+			<kTAG_CLASS>COntologyMasterVertex</kTAG_CLASS>
+			<kTAG_KIND>
+				<item>:KIND-ENUMERATION</item>
+			</kTAG_KIND>
+    	</node>
+        <edges>
+			<edge>
+				<kTAG_PREDICATE>:ENUM-OF</kTAG_PREDICATE>
+				<kTAG_OBJECT>MCPD:SMTARECIP</kTAG_OBJECT>
+			</edge>
+        </edges>
+    </unit>
+    
+    <!-- MCPD:SMTAREMARK -->
+    <unit>
+        <term kTAG_LID="SMTAREMARK" kTAG_NAMESPACE="MCPD">
+            <kTAG_LABEL language="en"><![CDATA[SMTA Remarks]]></kTAG_LABEL>
+            <kTAG_DEFINITION language="en"><![CDATA[The remarks field is used to add notes or to elaborate on descriptor(s) with value 9 (=Other). Prefix remarks with the field name they refer to and a colon. Separate remarks are separated by semicolons without space.]]></kTAG_DEFINITION>
+			<kTAG_SYNONYMS>
+				<item>SMTAREMARK</item>
+				<item>42</item>
+			</kTAG_SYNONYMS>
+    	</term>
+    	<node>
+			<kTAG_CLASS>COntologyMasterVertex</kTAG_CLASS>
+			<kTAG_KIND>
+			    <item>:KIND-FEATURE</item>
+			    <item>:KIND-SCALE</item>
+			</kTAG_KIND>
+			<kTAG_TYPE>
+				<item>:TEXT</item>
+			</kTAG_TYPE>
+			<kTAG_EXAMPLES>
+			    <item>SMTARECIP:museum</item>
+			</kTAG_EXAMPLES>
+    	</node>
+    	<tag>
+    		<item>MCPD:SMTAREMARK</item>
+    	</tag>
+        <edges>
+			<edge>
+				<kTAG_PREDICATE>:SUBCLASS-OF</kTAG_PREDICATE>
+			    <kTAG_OBJECT>MCPD</kTAG_OBJECT>
+			</edge>
+        </edges>
+    </unit>
 </units>
