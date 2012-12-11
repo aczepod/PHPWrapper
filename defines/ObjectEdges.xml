@@ -4,38 +4,38 @@
      
 	<!-- OBJECTS -->
 	<edge>
-    	<kTAG_SUBJECT>:OBJECTS</kTAG_SUBJECT>
-    	<kTAG_PREDICATE>:SUBCLASS-OF</kTAG_PREDICATE>
-    	<kTAG_OBJECT>:ONTOLOGY</kTAG_OBJECT>
+    	<element variable="kTAG_SUBJECT">:OBJECTS</element>
+    	<element variable="kTAG_PREDICATE">:SUBCLASS-OF</element>
+    	<element variable="kTAG_OBJECT">:ONTOLOGY</element>
     </edge>
     
     <!-- OBJECTS -->
      
 	<!-- _terms -->
 	<edge>
-    	<kTAG_SUBJECT>:_terms</kTAG_SUBJECT>
-    	<kTAG_PREDICATE>:SUBCLASS-OF</kTAG_PREDICATE>
-    	<kTAG_OBJECT>:OBJECTS</kTAG_OBJECT>
+    	<element variable="kTAG_SUBJECT">:_terms</element>
+    	<element variable="kTAG_PREDICATE">:SUBCLASS-OF</element>
+    	<element variable="kTAG_OBJECT">:OBJECTS</element>
     </edge>
      
 	<!-- _nodes -->
 	<edge>
-    	<kTAG_SUBJECT>:_nodes</kTAG_SUBJECT>
-    	<kTAG_PREDICATE>:SUBCLASS-OF</kTAG_PREDICATE>
-    	<kTAG_OBJECT>:OBJECTS</kTAG_OBJECT>
+    	<element variable="kTAG_SUBJECT">:_nodes</element>
+    	<element variable="kTAG_PREDICATE">:SUBCLASS-OF</element>
+    	<element variable="kTAG_OBJECT">:OBJECTS</element>
     </edge>
      
 	<!-- _edges -->
 	<edge>
-    	<kTAG_SUBJECT>:_edges</kTAG_SUBJECT>
-    	<kTAG_PREDICATE>:SUBCLASS-OF</kTAG_PREDICATE>
-    	<kTAG_OBJECT>:OBJECTS</kTAG_OBJECT>
+    	<element variable="kTAG_SUBJECT">:_edges</element>
+    	<element variable="kTAG_PREDICATE">:SUBCLASS-OF</element>
+    	<element variable="kTAG_OBJECT">:OBJECTS</element>
     </edge>
      
 	<!-- _tags -->
 	<edge>
-    	<kTAG_SUBJECT>:_tags</kTAG_SUBJECT>
-    	<kTAG_PREDICATE>:SUBCLASS-OF</kTAG_PREDICATE>
-    	<kTAG_OBJECT>:OBJECTS</kTAG_OBJECT>
+    	<element variable="kTAG_SUBJECT">:_tags</element>
+    	<element variable="kTAG_PREDICATE">:SUBCLASS-OF</element>
+    	<element variable="kTAG_OBJECT">:OBJECTS</element>
     </edge>
 </edges>

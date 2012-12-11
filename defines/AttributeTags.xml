@@ -4,214 +4,214 @@
      
     <!-- kTERM_LID -->
 	<tag>
-    	<kTAG_PATH>
+    	<element variable="kTAG_PATH">
     		<item>:LID</item>
-    	</kTAG_PATH>
+    	</element>
     </tag>
      
     <!-- kTERM_GID -->
 	<tag>
-    	<kTAG_PATH>
+    	<element variable="kTAG_PATH">
     		<item>:GID</item>
-    	</kTAG_PATH>
+    	</element>
     </tag>
      
     <!-- kTERM_UID -->
 	<tag>
-    	<kTAG_PATH>
+    	<element variable="kTAG_PATH">
     		<item>:UID</item>
-    	</kTAG_PATH>
+    	</element>
     </tag>
      
     <!-- kTERM_SYNONYMS -->
 	<tag>
-    	<kTAG_PATH>
+    	<element variable="kTAG_PATH">
     		<item>:SYNONYMS</item>
-    	</kTAG_PATH>
+    	</element>
     </tag>
      
     <!-- CLASSIFICATION TAGS -->
      
     <!-- kTERM_CATEGORY -->
 	<tag>
-    	<kTAG_PATH>
+    	<element variable="kTAG_PATH">
     		<item>:CATEGORY</item>
-    	</kTAG_PATH>
+    	</element>
     </tag>
      
     <!-- kTERM_KIND -->
 	<tag>
-    	<kTAG_PATH>
+    	<element variable="kTAG_PATH">
     		<item>:KIND</item>
-    	</kTAG_PATH>
+    	</element>
     </tag>
      
     <!-- kTERM_TYPE -->
 	<tag>
-    	<kTAG_PATH>
+    	<element variable="kTAG_PATH">
     		<item>:TYPE</item>
-    	</kTAG_PATH>
+    	</element>
     </tag>
      
     <!-- kTERM_CLASS -->
 	<tag>
-    	<kTAG_PATH>
+    	<element variable="kTAG_PATH">
     		<item>:CLASS</item>
-    	</kTAG_PATH>
+    	</element>
     </tag>
      
     <!-- kTERM_NAMESPACE -->
 	<tag>
-    	<kTAG_PATH>
+    	<element variable="kTAG_PATH">
     		<item>:NAMESPACE</item>
-    	</kTAG_PATH>
+    	</element>
     </tag>
      
     <!-- DESCRIPTION TAGS -->
      
     <!-- kTERM_LABEL -->
 	<tag>
-    	<kTAG_PATH>
+    	<element variable="kTAG_PATH">
     		<item>:LABEL</item>
-    	</kTAG_PATH>
+    	</element>
     </tag>
      
     <!-- kTERM_DEFINITION -->
 	<tag>
-    	<kTAG_PATH>
+    	<element variable="kTAG_PATH">
     		<item>:DEFINITION</item>
-    	</kTAG_PATH>
+    	</element>
     </tag>
      
     <!-- kTERM_DESCRIPTION -->
 	<tag>
-    	<kTAG_PATH>
+    	<element variable="kTAG_PATH">
     		<item>:DESCRIPTION</item>
-    	</kTAG_PATH>
+    	</element>
     </tag>
      
     <!-- kTERM_NOTES -->
 	<tag>
-    	<kTAG_PATH>
+    	<element variable="kTAG_PATH">
     		<item>:NOTES</item>
-    	</kTAG_PATH>
+    	</element>
     </tag>
      
     <!-- kTERM_EXAMPLES -->
 	<tag>
-    	<kTAG_PATH>
+    	<element variable="kTAG_PATH">
     		<item>:EXAMPLES</item>
-    	</kTAG_PATH>
+    	</element>
     </tag>
      
     <!-- AUTHORSHIP TAGS -->
      
     <!-- kTERM_AUTHORS-->
 	<tag>
-    	<kTAG_PATH>
+    	<element variable="kTAG_PATH">
     		<item>:AUTHORS</item>
-    	</kTAG_PATH>
+    	</element>
     </tag>
      
     <!-- kTERM_ACKNOWLEDGMENTS-->
 	<tag>
-    	<kTAG_PATH>
+    	<element variable="kTAG_PATH">
     		<item>:ACKNOWLEDGMENTS</item>
-    	</kTAG_PATH>
+    	</element>
     </tag>
      
     <!-- kTERM_BIBLIOGRAPHY-->
 	<tag>
-    	<kTAG_PATH>
+    	<element variable="kTAG_PATH">
     		<item>:BIBLIOGRAPHY</item>
-    	</kTAG_PATH>
+    	</element>
     </tag>
      
     <!-- REFERENCE TAGS -->
      
     <!-- kTERM_TERM-->
 	<tag>
-    	<kTAG_PATH>
+    	<element variable="kTAG_PATH">
     		<item>:TERM</item>
-    	</kTAG_PATH>
+    	</element>
     </tag>
      
     <!-- kTERM_NODE-->
 	<tag>
-    	<kTAG_PATH>
+    	<element variable="kTAG_PATH">
     		<item>:NODE</item>
-    	</kTAG_PATH>
+    	</element>
     </tag>
      
     <!-- kTERM_SUBJECT-->
 	<tag>
-    	<kTAG_PATH>
+    	<element variable="kTAG_PATH">
     		<item>:SUBJECT</item>
-    	</kTAG_PATH>
+    	</element>
     </tag>
      
     <!-- kTERM_OBJECT-->
 	<tag>
-    	<kTAG_PATH>
+    	<element variable="kTAG_PATH">
     		<item>:OBJECT</item>
-    	</kTAG_PATH>
+    	</element>
     </tag>
      
     <!-- kTERM_PREDICATE-->
 	<tag>
-    	<kTAG_PATH>
+    	<element variable="kTAG_PATH">
     		<item>:PREDICATE</item>
-    	</kTAG_PATH>
+    	</element>
     </tag>
      
     <!-- kTERM_PATH-->
 	<tag>
-    	<kTAG_PATH>
+    	<element variable="kTAG_PATH">
     		<item>:PATH</item>
-    	</kTAG_PATH>
+    	</element>
     </tag>
      
     <!-- REFERENCE COLLECTION TAGS -->
      
     <!-- kTERM_NAMESPACE_REFS -->
 	<tag>
-    	<kTAG_PATH>
+    	<element variable="kTAG_PATH">
     		<item>:NAMESPACE-REFS</item>
-    	</kTAG_PATH>
+    	</element>
     </tag>
      
     <!-- kTERM_NODES -->
 	<tag>
-    	<kTAG_PATH>
+    	<element variable="kTAG_PATH">
     		<item>:NODES</item>
-    	</kTAG_PATH>
+    	</element>
     </tag>
      
     <!-- kTERM_EDGES -->
 	<tag>
-    	<kTAG_PATH>
+    	<element variable="kTAG_PATH">
     		<item>:EDGES</item>
-    	</kTAG_PATH>
+    	</element>
     </tag>
      
     <!-- kTERM_FEATURES -->
 	<tag>
-    	<kTAG_PATH>
+    	<element variable="kTAG_PATH">
     		<item>:FEATURES</item>
-    	</kTAG_PATH>
+    	</element>
     </tag>
      
     <!-- kTERM_METHODS -->
 	<tag>
-    	<kTAG_PATH>
+    	<element variable="kTAG_PATH">
     		<item>:METHODS</item>
-    	</kTAG_PATH>
+    	</element>
     </tag>
      
     <!-- kTERM_SCALES -->
 	<tag>
-    	<kTAG_PATH>
+    	<element variable="kTAG_PATH">
     		<item>:SCALES</item>
-    	</kTAG_PATH>
+    	</element>
     </tag>
 </tags>

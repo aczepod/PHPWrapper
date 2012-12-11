@@ -3,632 +3,708 @@
     <!-- STATUS ENUMERATIONS -->
     
     <!-- kSTATUS_IDLE -->
-    <node kTAG_GID=":STATUS:0">
-		<kTAG_CLASS>COntologyMasterVertex</kTAG_CLASS>
-		<kTAG_KIND>
+	<node class="COntologyMasterVertex">
+		<element variable="kTAG_TERM">:STATUS:0</element>
+		<element variable="kTAG_CLASS">COntologyMasterVertex</element>
+		<element variable="kTAG_KIND">
             <item>:KIND-ENUMERATION</item>
-        </kTAG_KIND>
+        </element>
     </node>
     
     <!-- kSTATUS_NOTICE -->
-    <node kTAG_GID=":STATUS:10">
-		<kTAG_CLASS>COntologyMasterVertex</kTAG_CLASS>
-		<kTAG_KIND>
+	<node class="COntologyMasterVertex">
+		<element variable="kTAG_TERM">:STATUS:10</element>
+		<element variable="kTAG_CLASS">COntologyMasterVertex</element>
+		<element variable="kTAG_KIND">
             <item>:KIND-ENUMERATION</item>
-        </kTAG_KIND>
+        </element>
     </node>
     
     <!-- kSTATUS_MESSAGE -->
-    <node kTAG_GID=":STATUS:20">
-		<kTAG_CLASS>COntologyMasterVertex</kTAG_CLASS>
-		<kTAG_KIND>
+	<node class="COntologyMasterVertex">
+		<element variable="kTAG_TERM">:STATUS:20</element>
+		<element variable="kTAG_CLASS">COntologyMasterVertex</element>
+		<element variable="kTAG_KIND">
             <item>:KIND-ENUMERATION</item>
-        </kTAG_KIND>
+        </element>
     </node>
     
     <!-- kSTATUS_WARNING -->
-    <node kTAG_GID=":STATUS:30">
-		<kTAG_CLASS>COntologyMasterVertex</kTAG_CLASS>
-		<kTAG_KIND>
+	<node class="COntologyMasterVertex">
+		<element variable="kTAG_TERM">:STATUS:30</element>
+		<element variable="kTAG_CLASS">COntologyMasterVertex</element>
+		<element variable="kTAG_KIND">
             <item>:KIND-ENUMERATION</item>
-        </kTAG_KIND>
+        </element>
     </node>
     
     <!-- kSTATUS_ERROR -->
-    <node kTAG_GID=":STATUS:40">
-		<kTAG_CLASS>COntologyMasterVertex</kTAG_CLASS>
-		<kTAG_KIND>
+	<node class="COntologyMasterVertex">
+		<element variable="kTAG_TERM">:STATUS:40</element>
+		<element variable="kTAG_CLASS">COntologyMasterVertex</element>
+		<element variable="kTAG_KIND">
             <item>:KIND-ENUMERATION</item>
-        </kTAG_KIND>
+        </element>
     </node>
     
     <!-- kSTATUS_FATAL -->
-    <node kTAG_GID=":STATUS:50">
-		<kTAG_CLASS>COntologyMasterVertex</kTAG_CLASS>
-		<kTAG_KIND>
+	<node class="COntologyMasterVertex">
+		<element variable="kTAG_TERM">:STATUS:50</element>
+		<element variable="kTAG_CLASS">COntologyMasterVertex</element>
+		<element variable="kTAG_KIND">
             <item>:KIND-ENUMERATION</item>
-        </kTAG_KIND>
+        </element>
     </node>
     
     <!-- kSTATUS_BUG -->
-    <node kTAG_GID=":STATUS:60">
-		<kTAG_CLASS>COntologyMasterVertex</kTAG_CLASS>
-		<kTAG_KIND>
+	<node class="COntologyMasterVertex">
+		<element variable="kTAG_TERM">:STATUS:60</element>
+		<element variable="kTAG_CLASS">COntologyMasterVertex</element>
+		<element variable="kTAG_KIND">
             <item>:KIND-ENUMERATION</item>
-        </kTAG_KIND>
+        </element>
     </node>
     
     <!-- OPERATIONAL OPERATOR ENUMERATIONS -->
     
     <!-- kOPERATOR_DISABLED -->
-    <node kTAG_GID=":$NO">
-		<kTAG_CLASS>COntologyMasterVertex</kTAG_CLASS>
-		<kTAG_KIND>
+	<node class="COntologyMasterVertex">
+		<element variable="kTAG_TERM">:$NO</element>
+		<element variable="kTAG_CLASS">COntologyMasterVertex</element>
+		<element variable="kTAG_KIND">
             <item>:KIND-ENUMERATION</item>
-        </kTAG_KIND>
+        </element>
     </node>
     
     <!-- kOPERATOR_EQUAL -->
-    <node kTAG_GID=":$EQ">
-		<kTAG_CLASS>COntologyMasterVertex</kTAG_CLASS>
-		<kTAG_KIND>
+	<node class="COntologyMasterVertex">
+		<element variable="kTAG_TERM">:$EQ</element>
+		<element variable="kTAG_CLASS">COntologyMasterVertex</element>
+		<element variable="kTAG_KIND">
             <item>:KIND-ENUMERATION</item>
-        </kTAG_KIND>
+        </element>
     </node>
     
     <!-- kOPERATOR_EQUAL_NOT -->
-    <node kTAG_GID=":$NE">
-		<kTAG_CLASS>COntologyMasterVertex</kTAG_CLASS>
-		<kTAG_KIND>
+	<node class="COntologyMasterVertex">
+		<element variable="kTAG_TERM">:$NE</element>
+		<element variable="kTAG_CLASS">COntologyMasterVertex</element>
+		<element variable="kTAG_KIND">
             <item>:KIND-ENUMERATION</item>
-        </kTAG_KIND>
+        </element>
     </node>
     
     <!-- kOPERATOR_LIKE -->
-    <node kTAG_GID=":$AS">
-		<kTAG_CLASS>COntologyMasterVertex</kTAG_CLASS>
-		<kTAG_KIND>
+	<node class="COntologyMasterVertex">
+		<element variable="kTAG_TERM">:$AS</element>
+		<element variable="kTAG_CLASS">COntologyMasterVertex</element>
+		<element variable="kTAG_KIND">
             <item>:KIND-ENUMERATION</item>
-        </kTAG_KIND>
+        </element>
     </node>
     
     <!-- kOPERATOR_LIKE_NOT -->
-    <node kTAG_GID=":$NS">
-		<kTAG_CLASS>COntologyMasterVertex</kTAG_CLASS>
-		<kTAG_KIND>
+	<node class="COntologyMasterVertex">
+		<element variable="kTAG_TERM">:$NS</element>
+		<element variable="kTAG_CLASS">COntologyMasterVertex</element>
+		<element variable="kTAG_KIND">
             <item>:KIND-ENUMERATION</item>
-        </kTAG_KIND>
+        </element>
     </node>
     
     <!-- kOPERATOR_PREFIX -->
-    <node kTAG_GID=":$PX">
-		<kTAG_CLASS>COntologyMasterVertex</kTAG_CLASS>
-		<kTAG_KIND>
+	<node class="COntologyMasterVertex">
+		<element variable="kTAG_TERM">:$PX</element>
+		<element variable="kTAG_CLASS">COntologyMasterVertex</element>
+		<element variable="kTAG_KIND">
             <item>:KIND-ENUMERATION</item>
-        </kTAG_KIND>
+        </element>
     </node>
     
     <!-- kOPERATOR_PREFIX_NOCASE -->
-    <node kTAG_GID=":$PXi">
-		<kTAG_CLASS>COntologyMasterVertex</kTAG_CLASS>
-		<kTAG_KIND>
+	<node class="COntologyMasterVertex">
+		<element variable="kTAG_TERM">:$PXi</element>
+		<element variable="kTAG_CLASS">COntologyMasterVertex</element>
+		<element variable="kTAG_KIND">
             <item>:KIND-ENUMERATION</item>
-        </kTAG_KIND>
+        </element>
     </node>
     
     <!-- kOPERATOR_CONTAINS -->
-    <node kTAG_GID=":$CX">
-		<kTAG_CLASS>COntologyMasterVertex</kTAG_CLASS>
-		<kTAG_KIND>
+	<node class="COntologyMasterVertex">
+		<element variable="kTAG_TERM">:$CX</element>
+		<element variable="kTAG_CLASS">COntologyMasterVertex</element>
+		<element variable="kTAG_KIND">
             <item>:KIND-ENUMERATION</item>
-        </kTAG_KIND>
+        </element>
     </node>
     
     <!-- kOPERATOR_CONTAINS_NOCASE -->
-    <node kTAG_GID=":$CXi">
-		<kTAG_CLASS>COntologyMasterVertex</kTAG_CLASS>
-		<kTAG_KIND>
+	<node class="COntologyMasterVertex">
+		<element variable="kTAG_TERM">:$CXi</element>
+		<element variable="kTAG_CLASS">COntologyMasterVertex</element>
+		<element variable="kTAG_KIND">
             <item>:KIND-ENUMERATION</item>
-        </kTAG_KIND>
+        </element>
     </node>
     
     <!-- kOPERATOR_SUFFIX -->
-    <node kTAG_GID=":$SX">
-		<kTAG_CLASS>COntologyMasterVertex</kTAG_CLASS>
-		<kTAG_KIND>
+	<node class="COntologyMasterVertex">
+		<element variable="kTAG_TERM">:$SX</element>
+		<element variable="kTAG_CLASS">COntologyMasterVertex</element>
+		<element variable="kTAG_KIND">
             <item>:KIND-ENUMERATION</item>
-        </kTAG_KIND>
+        </element>
     </node>
     
     <!-- kOPERATOR_SUFFIX_NOCASE -->
-    <node kTAG_GID=":$SXi">
-		<kTAG_CLASS>COntologyMasterVertex</kTAG_CLASS>
-		<kTAG_KIND>
+	<node class="COntologyMasterVertex">
+		<element variable="kTAG_TERM">:$SXi</element>
+		<element variable="kTAG_CLASS">COntologyMasterVertex</element>
+		<element variable="kTAG_KIND">
             <item>:KIND-ENUMERATION</item>
-        </kTAG_KIND>
+        </element>
     </node>
     
     <!-- kOPERATOR_REGEX -->
-    <node kTAG_GID=":$RE">
-		<kTAG_CLASS>COntologyMasterVertex</kTAG_CLASS>
-		<kTAG_KIND>
+	<node class="COntologyMasterVertex">
+		<element variable="kTAG_TERM">:$RE</element>
+		<element variable="kTAG_CLASS">COntologyMasterVertex</element>
+		<element variable="kTAG_KIND">
             <item>:KIND-ENUMERATION</item>
-        </kTAG_KIND>
+        </element>
     </node>
     
     <!-- kOPERATOR_LESS -->
-    <node kTAG_GID=":$LT">
-		<kTAG_CLASS>COntologyMasterVertex</kTAG_CLASS>
-		<kTAG_KIND>
+	<node class="COntologyMasterVertex">
+		<element variable="kTAG_TERM">:$LT</element>
+		<element variable="kTAG_CLASS">COntologyMasterVertex</element>
+		<element variable="kTAG_KIND">
             <item>:KIND-ENUMERATION</item>
-        </kTAG_KIND>
+        </element>
     </node>
     
     <!-- kOPERATOR_LESS_EQUAL -->
-    <node kTAG_GID=":$LE">
-		<kTAG_CLASS>COntologyMasterVertex</kTAG_CLASS>
-		<kTAG_KIND>
+	<node class="COntologyMasterVertex">
+		<element variable="kTAG_TERM">:$LE</element>
+		<element variable="kTAG_CLASS">COntologyMasterVertex</element>
+		<element variable="kTAG_KIND">
             <item>:KIND-ENUMERATION</item>
-        </kTAG_KIND>
+        </element>
     </node>
     
     <!-- kOPERATOR_GREAT -->
-    <node kTAG_GID=":$GT">
-		<kTAG_CLASS>COntologyMasterVertex</kTAG_CLASS>
-		<kTAG_KIND>
+	<node class="COntologyMasterVertex">
+		<element variable="kTAG_TERM">:$GT</element>
+		<element variable="kTAG_CLASS">COntologyMasterVertex</element>
+		<element variable="kTAG_KIND">
             <item>:KIND-ENUMERATION</item>
-        </kTAG_KIND>
+        </element>
     </node>
     
     <!-- kOPERATOR_GREAT_EQUAL -->
-    <node kTAG_GID=":$GE">
-		<kTAG_CLASS>COntologyMasterVertex</kTAG_CLASS>
-		<kTAG_KIND>
+	<node class="COntologyMasterVertex">
+		<element variable="kTAG_TERM">:$GE</element>
+		<element variable="kTAG_CLASS">COntologyMasterVertex</element>
+		<element variable="kTAG_KIND">
             <item>:KIND-ENUMERATION</item>
-        </kTAG_KIND>
+        </element>
     </node>
     
     <!-- kOPERATOR_IRANGE -->
-    <node kTAG_GID=":$IRG">
-		<kTAG_CLASS>COntologyMasterVertex</kTAG_CLASS>
-		<kTAG_KIND>
+	<node class="COntologyMasterVertex">
+		<element variable="kTAG_TERM">:$IRG</element>
+		<element variable="kTAG_CLASS">COntologyMasterVertex</element>
+		<element variable="kTAG_KIND">
             <item>:KIND-ENUMERATION</item>
-        </kTAG_KIND>
+        </element>
     </node>
     
     <!-- kOPERATOR_ERANGE -->
-    <node kTAG_GID=":$ERG">
-		<kTAG_CLASS>COntologyMasterVertex</kTAG_CLASS>
-		<kTAG_KIND>
+	<node class="COntologyMasterVertex">
+		<element variable="kTAG_TERM">:$ERG</element>
+		<element variable="kTAG_CLASS">COntologyMasterVertex</element>
+		<element variable="kTAG_KIND">
             <item>:KIND-ENUMERATION</item>
-        </kTAG_KIND>
+        </element>
     </node>
     
     <!-- kOPERATOR_NULL -->
-    <node kTAG_GID=":$NU">
-		<kTAG_CLASS>COntologyMasterVertex</kTAG_CLASS>
-		<kTAG_KIND>
+	<node class="COntologyMasterVertex">
+		<element variable="kTAG_TERM">:$NU</element>
+		<element variable="kTAG_CLASS">COntologyMasterVertex</element>
+		<element variable="kTAG_KIND">
             <item>:KIND-ENUMERATION</item>
-        </kTAG_KIND>
+        </element>
     </node>
     
     <!-- kOPERATOR_NOT_NULL -->
-    <node kTAG_GID=":$NN">
-		<kTAG_CLASS>COntologyMasterVertex</kTAG_CLASS>
-		<kTAG_KIND>
+	<node class="COntologyMasterVertex">
+		<element variable="kTAG_TERM">:$NN</element>
+		<element variable="kTAG_CLASS">COntologyMasterVertex</element>
+		<element variable="kTAG_KIND">
             <item>:KIND-ENUMERATION</item>
-        </kTAG_KIND>
+        </element>
     </node>
     
     <!-- kOPERATOR_IN -->
-    <node kTAG_GID=":$IN">
-		<kTAG_CLASS>COntologyMasterVertex</kTAG_CLASS>
-		<kTAG_KIND>
+	<node class="COntologyMasterVertex">
+		<element variable="kTAG_TERM">:$IN</element>
+		<element variable="kTAG_CLASS">COntologyMasterVertex</element>
+		<element variable="kTAG_KIND">
             <item>:KIND-ENUMERATION</item>
-        </kTAG_KIND>
+        </element>
     </node>
     
     <!-- kOPERATOR_NI -->
-    <node kTAG_GID=":$NI">
-		<kTAG_CLASS>COntologyMasterVertex</kTAG_CLASS>
-		<kTAG_KIND>
+	<node class="COntologyMasterVertex">
+		<element variable="kTAG_TERM">:$NI</element>
+		<element variable="kTAG_CLASS">COntologyMasterVertex</element>
+		<element variable="kTAG_KIND">
             <item>:KIND-ENUMERATION</item>
-        </kTAG_KIND>
+        </element>
     </node>
     
     <!-- kOPERATOR_ALL -->
-    <node kTAG_GID=":$AL">
-		<kTAG_CLASS>COntologyMasterVertex</kTAG_CLASS>
-		<kTAG_KIND>
+	<node class="COntologyMasterVertex">
+		<element variable="kTAG_TERM">:$AL</element>
+		<element variable="kTAG_CLASS">COntologyMasterVertex</element>
+		<element variable="kTAG_KIND">
             <item>:KIND-ENUMERATION</item>
-        </kTAG_KIND>
+        </element>
     </node>
     
     <!-- kOPERATOR_NALL -->
-    <node kTAG_GID=":$NAL">
-		<kTAG_CLASS>COntologyMasterVertex</kTAG_CLASS>
-		<kTAG_KIND>
+	<node class="COntologyMasterVertex">
+		<element variable="kTAG_TERM">:$NAL</element>
+		<element variable="kTAG_CLASS">COntologyMasterVertex</element>
+		<element variable="kTAG_KIND">
             <item>:KIND-ENUMERATION</item>
-        </kTAG_KIND>
+        </element>
     </node>
     
     <!-- kOPERATOR_EX -->
-    <node kTAG_GID=":$EX">
-		<kTAG_CLASS>COntologyMasterVertex</kTAG_CLASS>
-		<kTAG_KIND>
+	<node class="COntologyMasterVertex">
+		<element variable="kTAG_TERM">:$EX</element>
+		<element variable="kTAG_CLASS">COntologyMasterVertex</element>
+		<element variable="kTAG_KIND">
             <item>:KIND-ENUMERATION</item>
-        </kTAG_KIND>
+        </element>
     </node>
     
     <!-- BOOLEAN OPERATOR ENUMERATIONS -->
     
     <!-- kOPERATOR_AND -->
-    <node kTAG_GID=":$AND">
-		<kTAG_CLASS>COntologyMasterVertex</kTAG_CLASS>
-		<kTAG_KIND>
+	<node class="COntologyMasterVertex">
+		<element variable="kTAG_TERM">:$AND</element>
+		<element variable="kTAG_CLASS">COntologyMasterVertex</element>
+		<element variable="kTAG_KIND">
             <item>:KIND-ENUMERATION</item>
-        </kTAG_KIND>
+        </element>
     </node>
     
     <!-- kOPERATOR_NAND -->
-    <node kTAG_GID=":$NAND">
-		<kTAG_CLASS>COntologyMasterVertex</kTAG_CLASS>
-		<kTAG_KIND>
+	<node class="COntologyMasterVertex">
+		<element variable="kTAG_TERM">:$NAND</element>
+		<element variable="kTAG_CLASS">COntologyMasterVertex</element>
+		<element variable="kTAG_KIND">
             <item>:KIND-ENUMERATION</item>
-        </kTAG_KIND>
+        </element>
     </node>
     
     <!-- kOPERATOR_OR -->
-    <node kTAG_GID=":$OR">
-		<kTAG_CLASS>COntologyMasterVertex</kTAG_CLASS>
-		<kTAG_KIND>
+	<node class="COntologyMasterVertex">
+		<element variable="kTAG_TERM">:$OR</element>
+		<element variable="kTAG_CLASS">COntologyMasterVertex</element>
+		<element variable="kTAG_KIND">
             <item>:KIND-ENUMERATION</item>
-        </kTAG_KIND>
+        </element>
     </node>
     
     <!-- kOPERATOR_NOR -->
-    <node kTAG_GID=":$NOR">
-		<kTAG_CLASS>COntologyMasterVertex</kTAG_CLASS>
-		<kTAG_KIND>
+	<node class="COntologyMasterVertex">
+		<element variable="kTAG_TERM">:$NOR</element>
+		<element variable="kTAG_CLASS">COntologyMasterVertex</element>
+		<element variable="kTAG_KIND">
             <item>:KIND-ENUMERATION</item>
-        </kTAG_KIND>
+        </element>
     </node>
     
     <!-- PRIMITIVE DATA TYPE ENUMERATIONS -->
     
     <!-- kTYPE_ANY -->
-    <node kTAG_GID=":ANY">
-		<kTAG_CLASS>COntologyMasterVertex</kTAG_CLASS>
-		<kTAG_KIND>
+	<node class="COntologyMasterVertex">
+		<element variable="kTAG_TERM">:ANY</element>
+		<element variable="kTAG_CLASS">COntologyMasterVertex</element>
+		<element variable="kTAG_KIND">
             <item>:KIND-ENUMERATION</item>
-        </kTAG_KIND>
+        </element>
     </node>
     
     <!-- kTYPE_STRING -->
-    <node kTAG_GID=":TEXT">
-		<kTAG_CLASS>COntologyMasterVertex</kTAG_CLASS>
-		<kTAG_KIND>
+	<node class="COntologyMasterVertex">
+		<element variable="kTAG_TERM">:TEXT</element>
+		<element variable="kTAG_CLASS">COntologyMasterVertex</element>
+		<element variable="kTAG_KIND">
             <item>:KIND-ENUMERATION</item>
-        </kTAG_KIND>
+        </element>
     </node>
     
     <!-- kTYPE_INT -->
-    <node kTAG_GID=":INT">
-		<kTAG_CLASS>COntologyMasterVertex</kTAG_CLASS>
-		<kTAG_KIND>
+	<node class="COntologyMasterVertex">
+		<element variable="kTAG_TERM">:INT</element>
+		<element variable="kTAG_CLASS">COntologyMasterVertex</element>
+		<element variable="kTAG_KIND">
             <item>:KIND-ENUMERATION</item>
-        </kTAG_KIND>
+        </element>
     </node>
     
     <!-- kTYPE_FLOAT -->
-    <node kTAG_GID=":FLOAT">
-		<kTAG_CLASS>COntologyMasterVertex</kTAG_CLASS>
-		<kTAG_KIND>
+	<node class="COntologyMasterVertex">
+		<element variable="kTAG_TERM">:FLOAT</element>
+		<element variable="kTAG_CLASS">COntologyMasterVertex</element>
+		<element variable="kTAG_KIND">
             <item>:KIND-ENUMERATION</item>
-        </kTAG_KIND>
+        </element>
     </node>
     
     <!-- kTYPE_BOOLEAN -->
-    <node kTAG_GID=":BOOLEAN">
-		<kTAG_CLASS>COntologyMasterVertex</kTAG_CLASS>
-		<kTAG_KIND>
+	<node class="COntologyMasterVertex">
+		<element variable="kTAG_TERM">:BOOLEAN</element>
+		<element variable="kTAG_CLASS">COntologyMasterVertex</element>
+		<element variable="kTAG_KIND">
             <item>:KIND-ENUMERATION</item>
-        </kTAG_KIND>
+        </element>
     </node>
     
     <!-- CUSTOM PRIMITIVE DATA TYPE ENUMERATIONS -->
     
     <!-- kTYPE_BINARY_STRING -->
-    <node kTAG_GID=":BINARY">
-		<kTAG_CLASS>COntologyMasterVertex</kTAG_CLASS>
-		<kTAG_KIND>
+	<node class="COntologyMasterVertex">
+		<element variable="kTAG_TERM">:BINARY</element>
+		<element variable="kTAG_CLASS">COntologyMasterVertex</element>
+		<element variable="kTAG_KIND">
             <item>:KIND-ENUMERATION</item>
-        </kTAG_KIND>
+        </element>
 	</node>
     
     <!-- kTYPE_DATE_STRING -->
-    <node kTAG_GID=":DATE">
-		<kTAG_CLASS>COntologyMasterVertex</kTAG_CLASS>
-		<kTAG_KIND>
+	<node class="COntologyMasterVertex">
+		<element variable="kTAG_TERM">:DATE</element>
+		<element variable="kTAG_CLASS">COntologyMasterVertex</element>
+		<element variable="kTAG_KIND">
             <item>:KIND-ENUMERATION</item>
-        </kTAG_KIND>
+        </element>
 	</node>
     
     <!-- kTYPE_TIME_STRING -->
-    <node kTAG_GID=":TIME">
-		<kTAG_CLASS>COntologyMasterVertex</kTAG_CLASS>
-		<kTAG_KIND>
+	<node class="COntologyMasterVertex">
+		<element variable="kTAG_TERM">:TIME</element>
+		<element variable="kTAG_CLASS">COntologyMasterVertex</element>
+		<element variable="kTAG_KIND">
             <item>:KIND-ENUMERATION</item>
-        </kTAG_KIND>
+        </element>
 	</node>
     
     <!-- kTYPE_REGEX_STRING -->
-    <node kTAG_GID=":REGEX">
-		<kTAG_CLASS>COntologyMasterVertex</kTAG_CLASS>
-		<kTAG_KIND>
+	<node class="COntologyMasterVertex">
+		<element variable="kTAG_TERM">:REGEX</element>
+		<element variable="kTAG_CLASS">COntologyMasterVertex</element>
+		<element variable="kTAG_KIND">
             <item>:KIND-ENUMERATION</item>
-        </kTAG_KIND>
+        </element>
 	</node>
     
     <!-- kTYPE_INT32 -->
-    <node kTAG_GID=":INT32">
-		<kTAG_CLASS>COntologyMasterVertex</kTAG_CLASS>
-		<kTAG_KIND>
+	<node class="COntologyMasterVertex">
+		<element variable="kTAG_TERM">:INT32</element>
+		<element variable="kTAG_CLASS">COntologyMasterVertex</element>
+		<element variable="kTAG_KIND">
             <item>:KIND-ENUMERATION</item>
-        </kTAG_KIND>
+        </element>
 	</node>
     
     <!-- kTYPE_INT64 -->
-    <node kTAG_GID=":INT64">
-		<kTAG_CLASS>COntologyMasterVertex</kTAG_CLASS>
-		<kTAG_KIND>
+	<node class="COntologyMasterVertex">
+		<element variable="kTAG_TERM">:INT64</element>
+		<element variable="kTAG_CLASS">COntologyMasterVertex</element>
+		<element variable="kTAG_KIND">
             <item>:KIND-ENUMERATION</item>
-        </kTAG_KIND>
+        </element>
 	</node>
     
     <!-- STANDARD FORMAT TYPE ENUMERATIONS -->
     
     <!-- kTYPE_META -->
-    <node kTAG_GID=":META">
-		<kTAG_CLASS>COntologyMasterVertex</kTAG_CLASS>
-		<kTAG_KIND>
+	<node class="COntologyMasterVertex">
+		<element variable="kTAG_TERM">:META</element>
+		<element variable="kTAG_CLASS">COntologyMasterVertex</element>
+		<element variable="kTAG_KIND">
             <item>:KIND-ENUMERATION</item>
-        </kTAG_KIND>
+        </element>
 	</node>
     
     <!-- kTYPE_PHP -->
-    <node kTAG_GID=":PHP">
-		<kTAG_CLASS>COntologyMasterVertex</kTAG_CLASS>
-		<kTAG_KIND>
+	<node class="COntologyMasterVertex">
+		<element variable="kTAG_TERM">:PHP</element>
+		<element variable="kTAG_CLASS">COntologyMasterVertex</element>
+		<element variable="kTAG_KIND">
             <item>:KIND-ENUMERATION</item>
-        </kTAG_KIND>
+        </element>
 	</node>
     
     <!-- kTYPE_JSON -->
-    <node kTAG_GID=":JSON">
-		<kTAG_CLASS>COntologyMasterVertex</kTAG_CLASS>
-		<kTAG_KIND>
+	<node class="COntologyMasterVertex">
+		<element variable="kTAG_TERM">:JSON</element>
+		<element variable="kTAG_CLASS">COntologyMasterVertex</element>
+		<element variable="kTAG_KIND">
             <item>:KIND-ENUMERATION</item>
-        </kTAG_KIND>
+        </element>
 	</node>
     
     <!-- kTYPE_XML -->
-    <node kTAG_GID=":XML">
-		<kTAG_CLASS>COntologyMasterVertex</kTAG_CLASS>
-		<kTAG_KIND>
+	<node class="COntologyMasterVertex">
+		<element variable="kTAG_TERM">:XML</element>
+		<element variable="kTAG_CLASS">COntologyMasterVertex</element>
+		<element variable="kTAG_KIND">
             <item>:KIND-ENUMERATION</item>
-        </kTAG_KIND>
+        </element>
 	</node>
     
     <!-- kTYPE_SVG -->
-    <node kTAG_GID=":SVG">
-		<kTAG_CLASS>COntologyMasterVertex</kTAG_CLASS>
-		<kTAG_KIND>
+	<node class="COntologyMasterVertex">
+		<element variable="kTAG_TERM">:SVG</element>
+		<element variable="kTAG_CLASS">COntologyMasterVertex</element>
+		<element variable="kTAG_KIND">
             <item>:KIND-ENUMERATION</item>
-        </kTAG_KIND>
+        </element>
 	</node>
     
     <!-- STRUCTURED TYPE ENUMERATIONS -->
     
     <!-- kTYPE_STRUCT -->
-    <node kTAG_GID=":STRUCT">
-		<kTAG_CLASS>COntologyMasterVertex</kTAG_CLASS>
-		<kTAG_KIND>
+	<node class="COntologyMasterVertex">
+		<element variable="kTAG_TERM">:STRUCT</element>
+		<element variable="kTAG_CLASS">COntologyMasterVertex</element>
+		<element variable="kTAG_KIND">
             <item>:KIND-ENUMERATION</item>
-        </kTAG_KIND>
+        </element>
 	</node>
     
     <!-- kTYPE_LSTRING -->
-    <node kTAG_GID=":LSTRING">
-		<kTAG_CLASS>COntologyMasterVertex</kTAG_CLASS>
-		<kTAG_KIND>
+	<node class="COntologyMasterVertex">
+		<element variable="kTAG_TERM">:LSTRING</element>
+		<element variable="kTAG_CLASS">COntologyMasterVertex</element>
+		<element variable="kTAG_KIND">
             <item>:KIND-ENUMERATION</item>
-        </kTAG_KIND>
+        </element>
 	</node>
     
     <!-- kTYPE_STAMP -->
-    <node kTAG_GID=":STAMP">
-		<kTAG_CLASS>COntologyMasterVertex</kTAG_CLASS>
-		<kTAG_KIND>
+	<node class="COntologyMasterVertex">
+		<element variable="kTAG_TERM">:STAMP</element>
+		<element variable="kTAG_CLASS">COntologyMasterVertex</element>
+		<element variable="kTAG_KIND">
             <item>:KIND-ENUMERATION</item>
-        </kTAG_KIND>
+        </element>
 	</node>
     
     <!-- ENUMERATED TYPE ENUMERATIONS -->
     
     <!-- kTYPE_ENUM -->
-    <node kTAG_GID=":ENUM">
-		<kTAG_CLASS>COntologyMasterVertex</kTAG_CLASS>
-		<kTAG_KIND>
+	<node class="COntologyMasterVertex">
+		<element variable="kTAG_TERM">:ENUM</element>
+		<element variable="kTAG_CLASS">COntologyMasterVertex</element>
+		<element variable="kTAG_KIND">
             <item>:KIND-ENUMERATION</item>
-        </kTAG_KIND>
+        </element>
 	</node>
     
     <!-- kTYPE_ENUM_SET -->
-    <node kTAG_GID=":SET">
-		<kTAG_CLASS>COntologyMasterVertex</kTAG_CLASS>
-		<kTAG_KIND>
+	<node class="COntologyMasterVertex">
+		<element variable="kTAG_TERM">:SET</element>
+		<element variable="kTAG_CLASS">COntologyMasterVertex</element>
+		<element variable="kTAG_KIND">
             <item>:KIND-ENUMERATION</item>
-        </kTAG_KIND>
+        </element>
 	</node>
     
     <!-- CARDINALITY TYPE ENUMERATIONS -->
     
     <!-- kTYPE_REQUIRED -->
-    <node kTAG_GID=":REQUIRED">
-		<kTAG_CLASS>COntologyMasterVertex</kTAG_CLASS>
-		<kTAG_KIND>
+	<node class="COntologyMasterVertex">
+		<element variable="kTAG_TERM">:REQUIRED</element>
+		<element variable="kTAG_CLASS">COntologyMasterVertex</element>
+		<element variable="kTAG_KIND">
             <item>:KIND-ENUMERATION</item>
-        </kTAG_KIND>
+        </element>
 	</node>
     
     <!-- kTYPE_RESTRICTED -->
-    <node kTAG_GID=":RESTRICTED">
-		<kTAG_CLASS>COntologyMasterVertex</kTAG_CLASS>
-		<kTAG_KIND>
+	<node class="COntologyMasterVertex">
+		<element variable="kTAG_TERM">:RESTRICTED</element>
+		<element variable="kTAG_CLASS">COntologyMasterVertex</element>
+		<element variable="kTAG_KIND">
             <item>:KIND-ENUMERATION</item>
-        </kTAG_KIND>
+        </element>
 	</node>
     
     <!-- kTYPE_COMPUTED -->
-    <node kTAG_GID=":COMPUTED">
-		<kTAG_CLASS>COntologyMasterVertex</kTAG_CLASS>
-		<kTAG_KIND>
+	<node class="COntologyMasterVertex">
+		<element variable="kTAG_TERM">:COMPUTED</element>
+		<element variable="kTAG_CLASS">COntologyMasterVertex</element>
+		<element variable="kTAG_KIND">
             <item>:KIND-ENUMERATION</item>
-        </kTAG_KIND>
+        </element>
 	</node>
     
     <!-- kTYPE_LOCKED -->
-    <node kTAG_GID=":LOCKED">
-		<kTAG_CLASS>COntologyMasterVertex</kTAG_CLASS>
-		<kTAG_KIND>
+	<node class="COntologyMasterVertex">
+		<element variable="kTAG_TERM">:LOCKED</element>
+		<element variable="kTAG_CLASS">COntologyMasterVertex</element>
+		<element variable="kTAG_KIND">
             <item>:KIND-ENUMERATION</item>
-        </kTAG_KIND>
+        </element>
 	</node>
     
     <!-- kTYPE_ARRAY -->
-    <node kTAG_GID=":ARRAY">
-		<kTAG_CLASS>COntologyMasterVertex</kTAG_CLASS>
-		<kTAG_KIND>
+	<node class="COntologyMasterVertex">
+		<element variable="kTAG_TERM">:ARRAY</element>
+		<element variable="kTAG_CLASS">COntologyMasterVertex</element>
+		<element variable="kTAG_KIND">
             <item>:KIND-ENUMERATION</item>
-        </kTAG_KIND>
+        </element>
 	</node>
     
     <!-- RELATIONSHIP TYPE ENUMERATIONS -->
     
     <!-- kTYPE_RELATION_IN -->
-    <node kTAG_GID=":RELATION-IN">
-		<kTAG_CLASS>COntologyMasterVertex</kTAG_CLASS>
-		<kTAG_KIND>
+	<node class="COntologyMasterVertex">
+		<element variable="kTAG_TERM">:RELATION-IN</element>
+		<element variable="kTAG_CLASS">COntologyMasterVertex</element>
+		<element variable="kTAG_KIND">
             <item>:KIND-ENUMERATION</item>
-        </kTAG_KIND>
+        </element>
 	</node>
     
     <!-- kTYPE_RELATION_OUT -->
-    <node kTAG_GID=":RELATION-OUT">
-		<kTAG_CLASS>COntologyMasterVertex</kTAG_CLASS>
-		<kTAG_KIND>
+	<node class="COntologyMasterVertex">
+		<element variable="kTAG_TERM">:RELATION-OUT</element>
+		<element variable="kTAG_CLASS">COntologyMasterVertex</element>
+		<element variable="kTAG_KIND">
             <item>:KIND-ENUMERATION</item>
-        </kTAG_KIND>
+        </element>
 	</node>
     
     <!-- kTYPE_RELATION_ALL -->
-    <node kTAG_GID=":RELATION-ALL">
-		<kTAG_CLASS>COntologyMasterVertex</kTAG_CLASS>
-		<kTAG_KIND>
+	<node class="COntologyMasterVertex">
+		<element variable="kTAG_TERM">:RELATION-ALL</element>
+		<element variable="kTAG_CLASS">COntologyMasterVertex</element>
+		<element variable="kTAG_KIND">
             <item>:KIND-ENUMERATION</item>
-        </kTAG_KIND>
+        </element>
 	</node>
     
     <!-- MONGO TYPE ENUMERATIONS -->
     
     <!-- kTYPE_MongoId -->
-    <node kTAG_GID=":MongoId">
-		<kTAG_CLASS>COntologyMasterVertex</kTAG_CLASS>
-		<kTAG_KIND>
+	<node class="COntologyMasterVertex">
+		<element variable="kTAG_TERM">:MongoId</element>
+		<element variable="kTAG_CLASS">COntologyMasterVertex</element>
+		<element variable="kTAG_KIND">
             <item>:KIND-ENUMERATION</item>
-        </kTAG_KIND>
+        </element>
 	</node>
     
     <!-- kTYPE_MongoCode -->
-    <node kTAG_GID=":MongoCode">
-		<kTAG_CLASS>COntologyMasterVertex</kTAG_CLASS>
-		<kTAG_KIND>
+	<node class="COntologyMasterVertex">
+		<element variable="kTAG_TERM">:MongoCode</element>
+		<element variable="kTAG_CLASS">COntologyMasterVertex</element>
+		<element variable="kTAG_KIND">
             <item>:KIND-ENUMERATION</item>
-        </kTAG_KIND>
+        </element>
 	</node>
     
     <!-- KIND ENUMERATIONS -->
     
     <!-- kKIND_ROOT -->
-    <node kTAG_GID=":KIND-ROOT">
-		<kTAG_CLASS>COntologyMasterVertex</kTAG_CLASS>
-		<kTAG_KIND>
+	<node class="COntologyMasterVertex">
+		<element variable="kTAG_TERM">:KIND-ROOT</element>
+		<element variable="kTAG_CLASS">COntologyMasterVertex</element>
+		<element variable="kTAG_KIND">
             <item>:KIND-ENUMERATION</item>
-        </kTAG_KIND>
+        </element>
 	</node>
     
     <!-- kKIND_FEATURE -->
-    <node kTAG_GID=":KIND-FEATURE">
-		<kTAG_CLASS>COntologyMasterVertex</kTAG_CLASS>
-		<kTAG_KIND>
+	<node class="COntologyMasterVertex">
+		<element variable="kTAG_TERM">:KIND-FEATURE</element>
+		<element variable="kTAG_CLASS">COntologyMasterVertex</element>
+		<element variable="kTAG_KIND">
             <item>:KIND-ENUMERATION</item>
-        </kTAG_KIND>
+        </element>
 	</node>
     
     <!-- kKIND_METHOD -->
-    <node kTAG_GID=":KIND-METHOD">
-		<kTAG_CLASS>COntologyMasterVertex</kTAG_CLASS>
-		<kTAG_KIND>
+	<node class="COntologyMasterVertex">
+		<element variable="kTAG_TERM">:KIND-METHOD</element>
+		<element variable="kTAG_CLASS">COntologyMasterVertex</element>
+		<element variable="kTAG_KIND">
             <item>:KIND-ENUMERATION</item>
-        </kTAG_KIND>
+        </element>
 	</node>
     
     <!-- kKIND_SCALE -->
-    <node kTAG_GID=":KIND-SCALE">
-		<kTAG_CLASS>COntologyMasterVertex</kTAG_CLASS>
-		<kTAG_KIND>
+	<node class="COntologyMasterVertex">
+		<element variable="kTAG_TERM">:KIND-SCALE</element>
+		<element variable="kTAG_CLASS">COntologyMasterVertex</element>
+		<element variable="kTAG_KIND">
             <item>:KIND-ENUMERATION</item>
-        </kTAG_KIND>
+        </element>
 	</node>
     
     <!-- kKIND_ENUMERATION -->
-    <node kTAG_GID=":KIND-ENUMERATION">
-		<kTAG_CLASS>COntologyMasterVertex</kTAG_CLASS>
-		<kTAG_KIND>
+	<node class="COntologyMasterVertex">
+		<element variable="kTAG_TERM">:KIND-ENUMERATION</element>
+		<element variable="kTAG_CLASS">COntologyMasterVertex</element>
+		<element variable="kTAG_KIND">
             <item>:KIND-ENUMERATION</item>
-        </kTAG_KIND>
+        </element>
 	</node>
     
     <!-- kKIND_INSTANCE -->
-    <node kTAG_GID=":KIND-INSTANCE">
-		<kTAG_CLASS>COntologyMasterVertex</kTAG_CLASS>
-		<kTAG_KIND>
+	<node class="COntologyMasterVertex">
+		<element variable="kTAG_TERM">:KIND-INSTANCE</element>
+		<element variable="kTAG_CLASS">COntologyMasterVertex</element>
+		<element variable="kTAG_KIND">
             <item>:KIND-ENUMERATION</item>
-        </kTAG_KIND>
+        </element>
 	</node>
     
     <!-- kKIND_NAMESPACE -->
-    <node kTAG_GID=":KIND-NAMESPACE">
-		<kTAG_CLASS>COntologyMasterVertex</kTAG_CLASS>
-		<kTAG_KIND>
+	<node class="COntologyMasterVertex">
+		<element variable="kTAG_TERM">:KIND-NAMESPACE</element>
+		<element variable="kTAG_CLASS">COntologyMasterVertex</element>
+		<element variable="kTAG_KIND">
             <item>:KIND-ENUMERATION</item>
-        </kTAG_KIND>
+        </element>
 	</node>
     
     <!-- kKIND_PREDICATE -->
-    <node kTAG_GID=":KIND-PREDICATE">
-		<kTAG_CLASS>COntologyMasterVertex</kTAG_CLASS>
-		<kTAG_KIND>
+	<node class="COntologyMasterVertex">
+		<element variable="kTAG_TERM">:KIND-PREDICATE</element>
+		<element variable="kTAG_CLASS">COntologyMasterVertex</element>
+		<element variable="kTAG_KIND">
             <item>:KIND-ENUMERATION</item>
-        </kTAG_KIND>
+        </element>
 	</node>
     
     <!-- kKIND_SYMMETRIC -->
-    <node kTAG_GID=":KIND-SYMMETRIC">
-		<kTAG_CLASS>COntologyMasterVertex</kTAG_CLASS>
-		<kTAG_KIND>
+	<node class="COntologyMasterVertex">
+		<element variable="kTAG_TERM">:KIND-SYMMETRIC</element>
+		<element variable="kTAG_CLASS">COntologyMasterVertex</element>
+		<element variable="kTAG_KIND">
             <item>:KIND-ENUMERATION</item>
-        </kTAG_KIND>
+        </element>
 	</node>
 </nodes>

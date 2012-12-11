@@ -1,650 +1,695 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<vertices>
+<units>
     <!-- TERM -->
-    
+
     <!-- kTERM_NID -->
-    <vertex kTAG_GID=":NID">
-		<kTAG_CLASS>COntologyAliasVertex</kTAG_CLASS>
-		<kTAG_KIND>
-            <item>:KIND-FEATURE</item>
-            <item>:KIND-SCALE</item>
-        </kTAG_KIND>
-		<kTAG_TYPE>
-            <item>:BINARY</item>
-        </kTAG_TYPE>
-        <kTAG_DESCRIPTION language="en"><![CDATA[The <i>native identifier</i> of a term is
-        	its <i>global identifier hashed</i> into a binary string.
-            ]]>
-        </kTAG_DESCRIPTION>
+    <unit>
+        <node class="COntologyAliasVertex">
+            <element variable="kTAG_TERM">:NID</element>
+            <element variable="kTAG_KIND">
+                <item>:KIND-FEATURE</item>
+                <item>:KIND-SCALE</item>
+            </element>
+            <element variable="kTAG_TYPE">
+                <item>:BINARY</item>
+            </element>
+            <element variable="kTAG_DESCRIPTION" key="en"><![CDATA[The <i>native identifier</i> of a term is
+				its <i>global identifier hashed</i> into a binary string.
+				]]>
+            </element>
+        </node>
         <edges>
-			<edge>
-				<kTAG_PREDICATE>:ATTRIBUTE-OF</kTAG_PREDICATE>
-				<kTAG_OBJECT>:_terms</kTAG_OBJECT>
-			</edge>
+            <edge>
+                <element variable="kTAG_PREDICATE">:ATTRIBUTE-OF</element>
+                <element variable="kTAG_OBJECT">:_terms</element>
+            </edge>
         </edges>
-    </vertex>
-    
+    </unit>
+
     <!-- kTERM_CLASS -->
-    <vertex kTAG_GID=":CLASS">
-		<kTAG_CLASS>COntologyMasterVertex</kTAG_CLASS>
-		<kTAG_KIND>
-            <item>:KIND-FEATURE</item>
-            <item>:KIND-SCALE</item>
-        </kTAG_KIND>
-		<kTAG_TYPE>
-            <item>:TEXT</item>
-            <item>:LOCKED</item>
-            <item>:COMPUTED</item>
-        </kTAG_TYPE>
+    <unit>
+        <node class="COntologyMasterVertex">
+            <element variable="kTAG_TERM">:CLASS</element>
+            <element variable="kTAG_KIND">
+                <item>:KIND-FEATURE</item>
+                <item>:KIND-SCALE</item>
+            </element>
+            <element variable="kTAG_TYPE">
+                <item>:TEXT</item>
+                <item>:LOCKED</item>
+                <item>:COMPUTED</item>
+            </element>
+        </node>
         <edges>
-			<edge>
-				<kTAG_PREDICATE>:ATTRIBUTE-OF</kTAG_PREDICATE>
-				<kTAG_OBJECT>:_terms</kTAG_OBJECT>
-			</edge>
+            <edge>
+                <element variable="kTAG_PREDICATE">:ATTRIBUTE-OF</element>
+                <element variable="kTAG_OBJECT">:_terms</element>
+            </edge>
         </edges>
-    </vertex>
-    
+    </unit>
+
     <!-- kTERM_LID -->
-    <vertex kTAG_GID=":LID">
-		<kTAG_CLASS>COntologyAliasVertex</kTAG_CLASS>
-		<kTAG_KIND>
-            <item>:KIND-FEATURE</item>
-            <item>:KIND-SCALE</item>
-        </kTAG_KIND>
-		<kTAG_TYPE>
-            <item>:TEXT</item>
-            <item>:REQUIRED</item>
-        </kTAG_TYPE>
-        <kTAG_DESCRIPTION language="en"><![CDATA[The <i>local identifier</i> of a term must
-        	be <i>unique within its namespace</i>, it is by definition a <i>string</i> and
-        	it is <i>required</i>.
-            ]]>
-        </kTAG_DESCRIPTION>
+    <unit>
+        <node class="COntologyAliasVertex">
+            <element variable="kTAG_TERM">:LID</element>
+            <element variable="kTAG_KIND">
+                <item>:KIND-FEATURE</item>
+                <item>:KIND-SCALE</item>
+            </element>
+            <element variable="kTAG_TYPE">
+                <item>:TEXT</item>
+                <item>:REQUIRED</item>
+            </element>
+            <element variable="kTAG_DESCRIPTION" key="en"><![CDATA[The <i>local identifier</i> of a term must
+				be <i>unique within its namespace</i>, it is by definition a <i>string</i> and
+				it is <i>required</i>.
+				]]>
+            </element>
+        </node>
         <edges>
-			<edge>
-				<kTAG_PREDICATE>:ATTRIBUTE-OF</kTAG_PREDICATE>
-				<kTAG_OBJECT>:_terms</kTAG_OBJECT>
-			</edge>
+            <edge>
+                <element variable="kTAG_PREDICATE">:ATTRIBUTE-OF</element>
+                <element variable="kTAG_OBJECT">:_terms</element>
+            </edge>
         </edges>
-    </vertex>
-    
+    </unit>
+
     <!-- kTERM_GID -->
-    <vertex kTAG_GID=":GID">
-		<kTAG_CLASS>COntologyAliasVertex</kTAG_CLASS>
-		<kTAG_KIND>
-            <item>:KIND-FEATURE</item>
-            <item>:KIND-SCALE</item>
-        </kTAG_KIND>
-		<kTAG_TYPE>
-            <item>:TEXT</item>
-            <item>:LOCKED</item>
-            <item>:COMPUTED</item>
-            <item>:REQUIRED</item>
-        </kTAG_TYPE>
-        <kTAG_DESCRIPTION language="en"><![CDATA[The <i>global identifier</i> of a term is
-        	computed by <i>concatenating</i> the eventual <i>namespace</i> term's <i>global
-        	identifier</i> to the current object's <i>local identifier</i>, separated by a
-        	<i>colon</i>. If the namespace is missing, the global identifier will be the
-        	local identifier.
-            ]]>
-        </kTAG_DESCRIPTION>
+    <unit>
+        <node class="COntologyAliasVertex">
+            <element variable="kTAG_TERM">:GID</element>
+            <element variable="kTAG_KIND">
+                <item>:KIND-FEATURE</item>
+                <item>:KIND-SCALE</item>
+            </element>
+            <element variable="kTAG_TYPE">
+                <item>:TEXT</item>
+                <item>:LOCKED</item>
+                <item>:COMPUTED</item>
+                <item>:REQUIRED</item>
+            </element>
+            <element variable="kTAG_DESCRIPTION" key="en"><![CDATA[The <i>global identifier</i> of a term is
+				computed by <i>concatenating</i> the eventual <i>namespace</i> term's <i>global
+				identifier</i> to the current object's <i>local identifier</i>, separated by a
+				<i>colon</i>. If the namespace is missing, the global identifier will be the
+				local identifier.
+				]]>
+            </element>
+        </node>
         <edges>
-			<edge>
-				<kTAG_PREDICATE>:ATTRIBUTE-OF</kTAG_PREDICATE>
-				<kTAG_OBJECT>:_terms</kTAG_OBJECT>
-			</edge>
+            <edge>
+                <element variable="kTAG_PREDICATE">:ATTRIBUTE-OF</element>
+                <element variable="kTAG_OBJECT">:_terms</element>
+            </edge>
         </edges>
-    </vertex>
-    
+    </unit>
+
     <!-- kTERM_NAMESPACE -->
-    <vertex kTAG_GID=":NAMESPACE">
-		<kTAG_CLASS>COntologyAliasVertex</kTAG_CLASS>
-		<kTAG_KIND>
-            <item>:KIND-FEATURE</item>
-            <item>:KIND-SCALE</item>
-        </kTAG_KIND>
-		<kTAG_TYPE>
-            <item>:BINARY</item>
-        </kTAG_TYPE>
-        <kTAG_DESCRIPTION language="en"><![CDATA[The <i>namespace</i> of a term is a
-        	<i>reference</i> to another <i>term object</i> which acts as the namespace.
-            ]]>
-        </kTAG_DESCRIPTION>
+    <unit>
+        <node class="COntologyAliasVertex">
+            <element variable="kTAG_TERM">:NAMESPACE</element>
+            <element variable="kTAG_KIND">
+                <item>:KIND-FEATURE</item>
+                <item>:KIND-SCALE</item>
+            </element>
+            <element variable="kTAG_TYPE">
+                <item>:BINARY</item>
+            </element>
+            <element variable="kTAG_DESCRIPTION" key="en"><![CDATA[The <i>namespace</i> of a term is a
+				<i>reference</i> to another <i>term object</i> which acts as the namespace.
+				]]>
+            </element>
+        </node>
         <edges>
-			<edge>
-				<kTAG_PREDICATE>:ATTRIBUTE-OF</kTAG_PREDICATE>
-				<kTAG_OBJECT>:_terms</kTAG_OBJECT>
-			</edge>
+            <edge>
+                <element variable="kTAG_PREDICATE">:ATTRIBUTE-OF</element>
+                <element variable="kTAG_OBJECT">:_terms</element>
+            </edge>
         </edges>
-    </vertex>
-    
+    </unit>
+
     <!-- kTERM_SYNONYMS -->
-    <vertex kTAG_GID=":SYNONYMS">
-		<kTAG_CLASS>COntologyAliasVertex</kTAG_CLASS>
-		<kTAG_KIND>
-            <item>:KIND-FEATURE</item>
-            <item>:KIND-SCALE</item>
-        </kTAG_KIND>
-		<kTAG_TYPE>
-            <item>:TEXT</item>
-            <item>:ARRAY</item>
-        </kTAG_TYPE>
-        <kTAG_DESCRIPTION language="en"><![CDATA[The <i>synonyms</i> are any other <i>formal
-        	identification</i> the object can take which is <i>not recorded as a term of the
-        	ontology</i>.
-            ]]>
-        </kTAG_DESCRIPTION>
+    <unit>
+        <node class="COntologyAliasVertex">
+            <element variable="kTAG_TERM">:SYNONYMS</element>
+            <element variable="kTAG_KIND">
+                <item>:KIND-FEATURE</item>
+                <item>:KIND-SCALE</item>
+            </element>
+            <element variable="kTAG_TYPE">
+                <item>:TEXT</item>
+                <item>:ARRAY</item>
+            </element>
+            <element variable="kTAG_DESCRIPTION" key="en"><![CDATA[The <i>synonyms</i> are any other <i>formal
+				identification</i> the object can take which is <i>not recorded as a term of the
+				ontology</i>.
+				]]>
+            </element>
+        </node>
         <edges>
-			<edge>
-				<kTAG_PREDICATE>:ATTRIBUTE-OF</kTAG_PREDICATE>
-				<kTAG_OBJECT>:_terms</kTAG_OBJECT>
-			</edge>
+            <edge>
+                <element variable="kTAG_PREDICATE">:ATTRIBUTE-OF</element>
+                <element variable="kTAG_OBJECT">:_terms</element>
+            </edge>
         </edges>
-    </vertex>
-    
+    </unit>
+
     <!-- kTERM_TERM -->
-    <vertex kTAG_GID=":TERM">
-		<kTAG_CLASS>COntologyAliasVertex</kTAG_CLASS>
-		<kTAG_KIND>
-            <item>:KIND-FEATURE</item>
-            <item>:KIND-SCALE</item>
-        </kTAG_KIND>
-		<kTAG_TYPE>
-            <item>:BINARY</item>
-        </kTAG_TYPE>
-        <kTAG_DESCRIPTION language="en"><![CDATA[The <i>term</i> is a <i>reference</i> to
-        	the <i>term object</i> which <i>holds the current term's attributes</i>. This
-        	is used by enumerated terms when there are several versions which resolve to
-        	the same object, in that case, to prevent duplicating these attributes, the
-        	<i>alias term</i> will <i>point to the master term<(i> through this property.
-            ]]>
-        </kTAG_DESCRIPTION>
+    <unit>
+        <node class="COntologyAliasVertex">
+            <element variable="kTAG_TERM">:TERM</element>
+            <element variable="kTAG_KIND">
+                <item>:KIND-FEATURE</item>
+                <item>:KIND-SCALE</item>
+            </element>
+            <element variable="kTAG_TYPE">
+                <item>:BINARY</item>
+            </element>
+            <element variable="kTAG_DESCRIPTION" key="en"><![CDATA[The <i>term</i> is a <i>reference</i> to
+				the <i>term object</i> which <i>holds the current term's attributes</i>. This
+				is used by enumerated terms when there are several versions which resolve to
+				the same object, in that case, to prevent duplicating these attributes, the
+				<i>alias term</i> will <i>point to the master term<(i> through this property.
+				]]>
+            </element>
+        </node>
         <edges>
-			<edge>
-				<kTAG_PREDICATE>:ATTRIBUTE-OF</kTAG_PREDICATE>
-				<kTAG_OBJECT>:_terms</kTAG_OBJECT>
-			</edge>
+            <edge>
+                <element variable="kTAG_PREDICATE">:ATTRIBUTE-OF</element>
+                <element variable="kTAG_OBJECT">:_terms</element>
+            </edge>
         </edges>
-    </vertex>
-    
+    </unit>
+
     <!-- kTERM_KIND -->
-    <vertex kTAG_GID=":KIND">
-		<kTAG_CLASS>COntologyAliasVertex</kTAG_CLASS>
-		<kTAG_KIND>
-            <item>:KIND-FEATURE</item>
-            <item>:KIND-SCALE</item>
-        </kTAG_KIND>
-		<kTAG_TYPE>
-            <item>:SET</item>
-        </kTAG_TYPE>
-        <kTAG_DESCRIPTION language="en"><![CDATA[The <i>kind</i> is a <i>set of
-        	qualifiers</i> that determine the <i>kind of the current term</i>.
-            ]]>
-        </kTAG_DESCRIPTION>
+    <unit>
+        <node class="COntologyAliasVertex">
+            <element variable="kTAG_TERM">:KIND</element>
+            <element variable="kTAG_KIND">
+                <item>:KIND-FEATURE</item>
+                <item>:KIND-SCALE</item>
+            </element>
+            <element variable="kTAG_TYPE">
+                <item>:SET</item>
+            </element>
+            <element variable="kTAG_DESCRIPTION" key="en"><![CDATA[The <i>kind</i> is a <i>set of
+				qualifiers</i> that determine the <i>kind of the current term</i>.
+				]]>
+            </element>
+        </node>
         <edges>
-			<edge>
-				<kTAG_PREDICATE>:ATTRIBUTE-OF</kTAG_PREDICATE>
-				<kTAG_OBJECT>:_terms</kTAG_OBJECT>
-			</edge>
-			<edge>
-				<kTAG_SUBJECT>:KIND-INSTANCE</kTAG_SUBJECT>
-				<kTAG_PREDICATE>:ENUM-OF</kTAG_PREDICATE>
-			</edge>
-			<edge>
-				<kTAG_SUBJECT>:KIND-NAMESPACE</kTAG_SUBJECT>
-				<kTAG_PREDICATE>:ENUM-OF</kTAG_PREDICATE>
-			</edge>
-			<edge>
-				<kTAG_SUBJECT>:KIND-PREDICATE</kTAG_SUBJECT>
-				<kTAG_PREDICATE>:ENUM-OF</kTAG_PREDICATE>
-			</edge>
-			<edge>
-				<kTAG_SUBJECT>:KIND-SYMMETRIC</kTAG_SUBJECT>
-				<kTAG_PREDICATE>:ENUM-OF</kTAG_PREDICATE>
-			</edge>
+            <edge>
+                <element variable="kTAG_PREDICATE">:ATTRIBUTE-OF</element>
+                <element variable="kTAG_OBJECT">:_terms</element>
+            </edge>
+            <edge>
+                <element variable="kTAG_SUBJECT">:KIND-INSTANCE</element>
+                <element variable="kTAG_PREDICATE">:ENUM-OF</element>
+            </edge>
+            <edge>
+                <element variable="kTAG_SUBJECT">:KIND-NAMESPACE</element>
+                <element variable="kTAG_PREDICATE">:ENUM-OF</element>
+            </edge>
+            <edge>
+                <element variable="kTAG_SUBJECT">:KIND-PREDICATE</element>
+                <element variable="kTAG_PREDICATE">:ENUM-OF</element>
+            </edge>
+            <edge>
+                <element variable="kTAG_SUBJECT">:KIND-SYMMETRIC</element>
+                <element variable="kTAG_PREDICATE">:ENUM-OF</element>
+            </edge>
         </edges>
-    </vertex>
-    
+    </unit>
+
     <!-- kTERM_LABEL -->
-    <vertex kTAG_GID=":LABEL">
-		<kTAG_CLASS>COntologyAliasVertex</kTAG_CLASS>
-		<kTAG_KIND>
-            <item>:KIND-FEATURE</item>
-            <item>:KIND-SCALE</item>
-        </kTAG_KIND>
-		<kTAG_TYPE>
-            <item>:LSTRING</item>
-        </kTAG_TYPE>
-        <kTAG_DESCRIPTION language="en"><![CDATA[The <i>label</i> of a term represents a
-        	<i>common name</i> or <i>short description</i>. This attribute is a <i>list of
-        	strings</i>, each representing the label in a <i>different language</i>. The
-        	structure is an array in which the <i>key is the language code</i> and the
-        	<i>value is the label</i>. This will be generally the <i>human readable name</i>
-        	of the concept represented by the term.
-            ]]>
-        </kTAG_DESCRIPTION>
+    <unit>
+        <node class="COntologyAliasVertex">
+            <element variable="kTAG_TERM">:LABEL</element>
+            <element variable="kTAG_KIND">
+                <item>:KIND-FEATURE</item>
+                <item>:KIND-SCALE</item>
+            </element>
+            <element variable="kTAG_TYPE">
+                <item>:LSTRING</item>
+            </element>
+            <element variable="kTAG_DESCRIPTION" key="en"><![CDATA[The <i>label</i> of a term represents a
+				<i>common name</i> or <i>short description</i>. This attribute is a <i>list of
+				strings</i>, each representing the label in a <i>different language</i>. The
+				structure is an array in which the <i>key is the language code</i> and the
+				<i>value is the label</i>. This will be generally the <i>human readable name</i>
+				of the concept represented by the term.
+				]]>
+            </element>
+        </node>
         <edges>
-			<edge>
-				<kTAG_PREDICATE>:ATTRIBUTE-OF</kTAG_PREDICATE>
-				<kTAG_OBJECT>:_terms</kTAG_OBJECT>
-			</edge>
+            <edge>
+                <element variable="kTAG_PREDICATE">:ATTRIBUTE-OF</element>
+                <element variable="kTAG_OBJECT">:_terms</element>
+            </edge>
         </edges>
-    </vertex>
-    
+    </unit>
+
     <!-- kTERM_DEFINITION -->
-    <vertex kTAG_GID=":DEFINITION">
-		<kTAG_CLASS>COntologyAliasVertex</kTAG_CLASS>
-		<kTAG_KIND>
-            <item>:KIND-FEATURE</item>
-            <item>:KIND-SCALE</item>
-        </kTAG_KIND>
-		<kTAG_TYPE>
-            <item>:LSTRING</item>
-        </kTAG_TYPE>
-        <kTAG_DESCRIPTION language="en"><![CDATA[The <i>definition</i> of a term represents
-        	a <i>description of an object</i> that <i>does not change with the context</i>.
-        	It is similar to the definition of a vocabulary term, but not to its meaning,
-        	This attribute is a <i>list of strings</i>, each representing the definition in
-        	a <i>different language</i>. The structure is an array in which the <i>key is
-        	the language code</i> and the <i>value is the definition</i>.
-            ]]>
-        </kTAG_DESCRIPTION>
+    <unit>
+        <node class="COntologyAliasVertex">
+            <element variable="kTAG_TERM">:DEFINITION</element>
+            <element variable="kTAG_KIND">
+                <item>:KIND-FEATURE</item>
+                <item>:KIND-SCALE</item>
+            </element>
+            <element variable="kTAG_TYPE">
+                <item>:LSTRING</item>
+            </element>
+            <element variable="kTAG_DESCRIPTION" key="en"><![CDATA[The <i>definition</i> of a term represents
+				a <i>description of an object</i> that <i>does not change with the context</i>.
+				It is similar to the definition of a vocabulary term, but not to its meaning,
+				This attribute is a <i>list of strings</i>, each representing the definition in
+				a <i>different language</i>. The structure is an array in which the <i>key is
+				the language code</i> and the <i>value is the definition</i>.
+				]]>
+            </element>
+        </node>
         <edges>
-			<edge>
-				<kTAG_PREDICATE>:ATTRIBUTE-OF</kTAG_PREDICATE>
-				<kTAG_OBJECT>:_terms</kTAG_OBJECT>
-			</edge>
+            <edge>
+                <element variable="kTAG_PREDICATE">:ATTRIBUTE-OF</element>
+                <element variable="kTAG_OBJECT">:_terms</element>
+            </edge>
         </edges>
-    </vertex>
-    
+    </unit>
+
     <!-- kTERM_EXAMPLES -->
-    <vertex kTAG_GID=":EXAMPLES">
-		<kTAG_CLASS>COntologyAliasVertex</kTAG_CLASS>
-		<kTAG_KIND>
-            <item>:KIND-FEATURE</item>
-            <item>:KIND-SCALE</item>
-        </kTAG_KIND>
-		<kTAG_TYPE>
-            <item>:TEXT</item>
-            <item>:ARRAY</item>
-        </kTAG_TYPE>
-        <kTAG_DESCRIPTION language="en"><![CDATA[The <i>examples</i> of a term represent
-        	a <i>list</i> of <i>use-cases</i> or <i>examples</i> that illustrate the
-        	<i>usage</i> of the <i>object defined by the term</i>. It is a list of strings
-        	in which there is no language information.
-            ]]>
-        </kTAG_DESCRIPTION>
+    <unit>
+        <node class="COntologyAliasVertex">
+            <element variable="kTAG_TERM">:EXAMPLES</element>
+            <element variable="kTAG_KIND">
+                <item>:KIND-FEATURE</item>
+                <item>:KIND-SCALE</item>
+            </element>
+            <element variable="kTAG_TYPE">
+                <item>:TEXT</item>
+                <item>:ARRAY</item>
+            </element>
+            <element variable="kTAG_DESCRIPTION" key="en"><![CDATA[The <i>examples</i> of a term represent
+				a <i>list</i> of <i>use-cases</i> or <i>examples</i> that illustrate the
+				<i>usage</i> of the <i>object defined by the term</i>. It is a list of strings
+				in which there is no language information.
+				]]>
+            </element>
+        </node>
         <edges>
-			<edge>
-				<kTAG_PREDICATE>:ATTRIBUTE-OF</kTAG_PREDICATE>
-				<kTAG_OBJECT>:_terms</kTAG_OBJECT>
-			</edge>
+            <edge>
+                <element variable="kTAG_PREDICATE">:ATTRIBUTE-OF</element>
+                <element variable="kTAG_OBJECT">:_terms</element>
+            </edge>
         </edges>
-    </vertex>
-    
+    </unit>
+
     <!-- kTERM_NODES -->
-    <vertex kTAG_GID=":NODES">
-		<kTAG_CLASS>COntologyAliasVertex</kTAG_CLASS>
-		<kTAG_KIND>
-            <item>:KIND-FEATURE</item>
-            <item>:KIND-SCALE</item>
-        </kTAG_KIND>
-		<kTAG_TYPE>
-            <item>:INT</item>
-            <item>:ARRAY</item>
-        </kTAG_TYPE>
-        <kTAG_DESCRIPTION language="en"><![CDATA[This attribute represents the <i>list of
-        	node objects</i> that <i>refer to the current term</i>. It is structured as an
-        	</>array of node identifiers</i>.
-            ]]>
-        </kTAG_DESCRIPTION>
+    <unit>
+        <node class="COntologyAliasVertex">
+            <element variable="kTAG_TERM">:NODES</element>
+            <element variable="kTAG_KIND">
+                <item>:KIND-FEATURE</item>
+                <item>:KIND-SCALE</item>
+            </element>
+            <element variable="kTAG_TYPE">
+                <item>:INT</item>
+                <item>:ARRAY</item>
+            </element>
+            <element variable="kTAG_DESCRIPTION" key="en"><![CDATA[This attribute represents the <i>list of
+				node objects</i> that <i>refer to the current term</i>. It is structured as an
+				</>array of node identifiers</i>.
+				]]>
+            </element>
+        </node>
         <edges>
-			<edge>
-				<kTAG_PREDICATE>:ATTRIBUTE-OF</kTAG_PREDICATE>
-				<kTAG_OBJECT>:_terms</kTAG_OBJECT>
-			</edge>
+            <edge>
+                <element variable="kTAG_PREDICATE">:ATTRIBUTE-OF</element>
+                <element variable="kTAG_OBJECT">:_terms</element>
+            </edge>
         </edges>
-    </vertex>
-    
+    </unit>
+
     <!-- kTERM_FEATURES -->
-    <vertex kTAG_GID=":FEATURES">
-		<kTAG_CLASS>COntologyAliasVertex</kTAG_CLASS>
-		<kTAG_KIND>
-            <item>:KIND-FEATURE</item>
-            <item>:KIND-SCALE</item>
-        </kTAG_KIND>
-		<kTAG_TYPE>
-            <item>:INT</item>
-            <item>:ARRAY</item>
-        </kTAG_TYPE>
-        <kTAG_DESCRIPTION language="en"><![CDATA[This attribute represents the <i>list of
+    <unit>
+        <node class="COntologyAliasVertex">
+            <element variable="kTAG_TERM">:FEATURES</element>
+            <element variable="kTAG_KIND">
+                <item>:KIND-FEATURE</item>
+                <item>:KIND-SCALE</item>
+            </element>
+            <element variable="kTAG_TYPE">
+                <item>:INT</item>
+                <item>:ARRAY</item>
+            </element>
+            <element variable="kTAG_DESCRIPTION" key="en"><![CDATA[This attribute represents the <i>list of
         	tag objects</i> that <i>refer to the current term</i> as a <i>feature</i>. It is
         	structured as an <i>array of tag identifiers</i>.
             ]]>
-        </kTAG_DESCRIPTION>
+            </element>
+        </node>
         <edges>
-			<edge>
-				<kTAG_PREDICATE>:ATTRIBUTE-OF</kTAG_PREDICATE>
-				<kTAG_OBJECT>:_terms</kTAG_OBJECT>
-			</edge>
+            <edge>
+                <element variable="kTAG_PREDICATE">:ATTRIBUTE-OF</element>
+                <element variable="kTAG_OBJECT">:_terms</element>
+            </edge>
         </edges>
-    </vertex>
-    
+    </unit>
+
     <!-- kTERM_METHODS -->
-    <vertex kTAG_GID=":METHODS">
-		<kTAG_CLASS>COntologyAliasVertex</kTAG_CLASS>
-		<kTAG_KIND>
-            <item>:KIND-FEATURE</item>
-            <item>:KIND-SCALE</item>
-        </kTAG_KIND>
-		<kTAG_TYPE>
-            <item>:INT</item>
-            <item>:ARRAY</item>
-        </kTAG_TYPE>
-        <kTAG_DESCRIPTION language="en"><![CDATA[This attribute represents the <i>list of
+    <unit>
+        <node class="COntologyAliasVertex">
+            <element variable="kTAG_TERM">:METHODS</element>
+            <element variable="kTAG_KIND">
+                <item>:KIND-FEATURE</item>
+                <item>:KIND-SCALE</item>
+            </element>
+            <element variable="kTAG_TYPE">
+                <item>:INT</item>
+                <item>:ARRAY</item>
+            </element>
+            <element variable="kTAG_DESCRIPTION" key="en"><![CDATA[This attribute represents the <i>list of
         	tag objects</i> that <i>refer to the current term</i> as a <i>method</i> or
         	<i>feature modifier</i>. It is structured as an <i>array of tag identifiers</i>.
             ]]>
-        </kTAG_DESCRIPTION>
+            </element>
+        </node>
         <edges>
-			<edge>
-				<kTAG_PREDICATE>:ATTRIBUTE-OF</kTAG_PREDICATE>
-				<kTAG_OBJECT>:_terms</kTAG_OBJECT>
-			</edge>
+            <edge>
+                <element variable="kTAG_PREDICATE">:ATTRIBUTE-OF</element>
+                <element variable="kTAG_OBJECT">:_terms</element>
+            </edge>
         </edges>
-    </vertex>
-    
+    </unit>
+
     <!-- kTERM_SCALES -->
-    <vertex kTAG_GID=":SCALES">
-		<kTAG_CLASS>COntologyAliasVertex</kTAG_CLASS>
-		<kTAG_KIND>
-            <item>:KIND-FEATURE</item>
-            <item>:KIND-SCALE</item>
-        </kTAG_KIND>
-		<kTAG_TYPE>
-            <item>:INT</item>
-            <item>:ARRAY</item>
-        </kTAG_TYPE>
-        <kTAG_DESCRIPTION language="en"><![CDATA[This attribute represents the <i>list of
+    <unit>
+        <node class="COntologyAliasVertex">
+            <element variable="kTAG_TERM">:SCALES</element>
+            <element variable="kTAG_KIND">
+                <item>:KIND-FEATURE</item>
+                <item>:KIND-SCALE</item>
+            </element>
+            <element variable="kTAG_TYPE">
+                <item>:INT</item>
+                <item>:ARRAY</item>
+            </element>
+            <element variable="kTAG_DESCRIPTION" key="en"><![CDATA[This attribute represents the <i>list of
         	tag objects</i> that <i>refer to the current term</i> as a <i>scale</i> or
         	<i>unit</i>. It is structured as an <i>array of tag identifiers</i>.
             ]]>
-        </kTAG_DESCRIPTION>
+            </element>
+        </node>
         <edges>
-			<edge>
-				<kTAG_PREDICATE>:ATTRIBUTE-OF</kTAG_PREDICATE>
-				<kTAG_OBJECT>:_terms</kTAG_OBJECT>
-			</edge>
+            <edge>
+                <element variable="kTAG_PREDICATE">:ATTRIBUTE-OF</element>
+                <element variable="kTAG_OBJECT">:_terms</element>
+            </edge>
         </edges>
-    </vertex>
-    
+    </unit>
+
     <!-- kTERM_NAMESPACE_REFS -->
-    <vertex kTAG_GID=":NAMESPACE-REFS">
-		<kTAG_CLASS>COntologyAliasVertex</kTAG_CLASS>
-		<kTAG_KIND>
-            <item>:KIND-FEATURE</item>
-            <item>:KIND-SCALE</item>
-        </kTAG_KIND>
-		<kTAG_TYPE>
-            <item>:INT</item>
-        </kTAG_TYPE>
-        <kTAG_DESCRIPTION language="en"><![CDATA[This attribute <i>counts</i> the <i>number
+    <unit>
+        <node class="COntologyAliasVertex">
+            <element variable="kTAG_TERM">:NAMESPACE-REFS</element>
+            <element variable="kTAG_KIND">
+                <item>:KIND-FEATURE</item>
+                <item>:KIND-SCALE</item>
+            </element>
+            <element variable="kTAG_TYPE">
+                <item>:INT</item>
+            </element>
+            <element variable="kTAG_DESCRIPTION" key="en"><![CDATA[This attribute <i>counts</i> the <i>number
         	of times</i> the <i>current object</i> was <i>referenced as a namespace</i>.
             ]]>
-        </kTAG_DESCRIPTION>
+            </element>
+        </node>
         <edges>
-			<edge>
-				<kTAG_PREDICATE>:ATTRIBUTE-OF</kTAG_PREDICATE>
-				<kTAG_OBJECT>:_terms</kTAG_OBJECT>
-			</edge>
+            <edge>
+                <element variable="kTAG_PREDICATE">:ATTRIBUTE-OF</element>
+                <element variable="kTAG_OBJECT">:_terms</element>
+            </edge>
         </edges>
-    </vertex>
-    
+    </unit>
+
     <!-- NODE -->
-    
+
     <!-- kTERM_NID -->
-    <vertex kTAG_GID=":NID">
-		<kTAG_CLASS>COntologyAliasVertex</kTAG_CLASS>
-		<kTAG_KIND>
-            <item>:KIND-FEATURE</item>
-            <item>:KIND-SCALE</item>
-        </kTAG_KIND>
-		<kTAG_TYPE>
-            <item>:BINARY</item>
-        </kTAG_TYPE>
-        <kTAG_DESCRIPTION language="en"><![CDATA[The <i>native identifier</i> of a node is
+    <unit>
+        <node class="COntologyAliasVertex">
+            <element variable="kTAG_TERM">:NID</element>
+            <element variable="kTAG_KIND">
+                <item>:KIND-FEATURE</item>
+                <item>:KIND-SCALE</item>
+            </element>
+            <element variable="kTAG_TYPE">
+                <item>:BINARY</item>
+            </element>
+            <element variable="kTAG_DESCRIPTION" key="en"><![CDATA[The <i>native identifier</i> of a node is
         	an <i>integer</i>, either <i>generated by a sequence</i> or <i>taken from a
         	created graph node identifier</i>.
             ]]>
-        </kTAG_DESCRIPTION>
+            </element>
+        </node>
         <edges>
-			<edge>
-				<kTAG_PREDICATE>:ATTRIBUTE-OF</kTAG_PREDICATE>
-				<kTAG_OBJECT>:_nodes</kTAG_OBJECT>
-			</edge>
+            <edge>
+                <element variable="kTAG_PREDICATE">:ATTRIBUTE-OF</element>
+                <element variable="kTAG_OBJECT">:_nodes</element>
+            </edge>
         </edges>
-    </vertex>
-    
+    </unit>
+
     <!-- kTERM_CLASS -->
-    <vertex kTAG_GID=":CLASS">
-		<kTAG_CLASS>COntologyMasterVertex</kTAG_CLASS>
-		<kTAG_KIND>
-            <item>:KIND-FEATURE</item>
-            <item>:KIND-SCALE</item>
-        </kTAG_KIND>
-		<kTAG_TYPE>
-            <item>:TEXT</item>
-            <item>:LOCKED</item>
-            <item>:COMPUTED</item>
-        </kTAG_TYPE>
+    <unit>
+        <node class="COntologyMasterVertex">
+            <element variable="kTAG_TERM">:CLASS</element>
+            <element variable="kTAG_KIND">
+                <item>:KIND-FEATURE</item>
+                <item>:KIND-SCALE</item>
+            </element>
+            <element variable="kTAG_TYPE">
+                <item>:TEXT</item>
+                <item>:LOCKED</item>
+                <item>:COMPUTED</item>
+            </element>
+        </node>
         <edges>
-			<edge>
-				<kTAG_PREDICATE>:ATTRIBUTE-OF</kTAG_PREDICATE>
-				<kTAG_OBJECT>:_nodes</kTAG_OBJECT>
-			</edge>
+            <edge>
+                <element variable="kTAG_PREDICATE">:ATTRIBUTE-OF</element>
+                <element variable="kTAG_OBJECT">:_nodes</element>
+            </edge>
         </edges>
-    </vertex>
-    
+    </unit>
+
     <!-- kTERM_TERM -->
-    <vertex kTAG_GID=":TERM">
-		<kTAG_CLASS>COntologyAliasVertex</kTAG_CLASS>
-		<kTAG_KIND>
-            <item>:KIND-FEATURE</item>
-            <item>:KIND-SCALE</item>
-        </kTAG_KIND>
-		<kTAG_TYPE>
-            <item>:BINARY</item>
-            <item>:REQUIRED</item>
-        </kTAG_TYPE>
-        <kTAG_DESCRIPTION language="en"><![CDATA[The <i>term</i> is a <i>reference</i> to
+    <unit>
+        <node class="COntologyAliasVertex">
+            <element variable="kTAG_TERM">:TERM</element>
+            <element variable="kTAG_KIND">
+                <item>:KIND-FEATURE</item>
+                <item>:KIND-SCALE</item>
+            </element>
+            <element variable="kTAG_TYPE">
+                <item>:BINARY</item>
+                <item>:REQUIRED</item>
+            </element>
+            <element variable="kTAG_DESCRIPTION" key="en"><![CDATA[The <i>term</i> is a <i>reference</i> to
         	the <i>term object</i> which <i>defines</i> the current node. Nodes take their
         	<i>name</i> and <i>definition</i> from a term object, this attribute holds a
         	reference to that object and it is required.
             ]]>
-        </kTAG_DESCRIPTION>
+            </element>
+        </node>
         <edges>
-			<edge>
-				<kTAG_PREDICATE>:ATTRIBUTE-OF</kTAG_PREDICATE>
-				<kTAG_OBJECT>:_nodes</kTAG_OBJECT>
-			</edge>
+            <edge>
+                <element variable="kTAG_PREDICATE">:ATTRIBUTE-OF</element>
+                <element variable="kTAG_OBJECT">:_nodes</element>
+            </edge>
         </edges>
-    </vertex>
-    
+    </unit>
+
     <!-- kTERM_CATEGORY -->
-    <vertex kTAG_GID=":CATEGORY">
-		<kTAG_CLASS>COntologyAliasVertex</kTAG_CLASS>
-		<kTAG_KIND>
-            <item>:KIND-FEATURE</item>
-            <item>:KIND-SCALE</item>
-        </kTAG_KIND>
-		<kTAG_TYPE>
-            <item>:SET</item>
-        </kTAG_TYPE>
-        <kTAG_DESCRIPTION language="en"><![CDATA[The <i>category</i> is a <i>set of
+    <unit>
+        <node class="COntologyAliasVertex">
+            <element variable="kTAG_TERM">:CATEGORY</element>
+            <element variable="kTAG_KIND">
+                <item>:KIND-FEATURE</item>
+                <item>:KIND-SCALE</item>
+            </element>
+            <element variable="kTAG_TYPE">
+                <item>:SET</item>
+            </element>
+            <element variable="kTAG_DESCRIPTION" key="en"><![CDATA[The <i>category</i> is a <i>set of
         	qualifiers</i> that determine the <i>category of the current node</i>.
             ]]>
-        </kTAG_DESCRIPTION>
+            </element>
+        </node>
         <edges>
-			<edge>
-				<kTAG_PREDICATE>:ATTRIBUTE-OF</kTAG_PREDICATE>
-				<kTAG_OBJECT>:_nodes</kTAG_OBJECT>
-			</edge>
+            <edge>
+                <element variable="kTAG_PREDICATE">:ATTRIBUTE-OF</element>
+                <element variable="kTAG_OBJECT">:_nodes</element>
+            </edge>
         </edges>
-    </vertex>
-    
+    </unit>
+
     <!-- kTERM_KIND -->
-    <vertex kTAG_GID=":KIND">
-		<kTAG_CLASS>COntologyAliasVertex</kTAG_CLASS>
-		<kTAG_KIND>
-            <item>:KIND-FEATURE</item>
-            <item>:KIND-SCALE</item>
-        </kTAG_KIND>
-		<kTAG_TYPE>
-            <item>:SET</item>
-        </kTAG_TYPE>
-        <kTAG_DESCRIPTION language="en"><![CDATA[The <i>kind</i> is a <i>set of
+    <unit>
+        <node class="COntologyAliasVertex">
+            <element variable="kTAG_TERM">:KIND</element>
+            <element variable="kTAG_KIND">
+                <item>:KIND-FEATURE</item>
+                <item>:KIND-SCALE</item>
+            </element>
+            <element variable="kTAG_TYPE">
+                <item>:SET</item>
+            </element>
+            <element variable="kTAG_DESCRIPTION" key="en"><![CDATA[The <i>kind</i> is a <i>set of
         	qualifiers</i> that determine the <i>kind of the current node</i>.
             ]]>
-        </kTAG_DESCRIPTION>
+            </element>
+        </node>
         <edges>
-			<edge>
-				<kTAG_PREDICATE>:ATTRIBUTE-OF</kTAG_PREDICATE>
-				<kTAG_OBJECT>:_nodes</kTAG_OBJECT>
-			</edge>
-			<edge>
-				<kTAG_SUBJECT>:KIND-ROOT</kTAG_SUBJECT>
-				<kTAG_PREDICATE>:ENUM-OF</kTAG_PREDICATE>
-			</edge>
-			<edge>
-				<kTAG_SUBJECT>:KIND-FEATURE</kTAG_SUBJECT>
-				<kTAG_PREDICATE>:ENUM-OF</kTAG_PREDICATE>
-			</edge>
-			<edge>
-				<kTAG_SUBJECT>:KIND-METHOD</kTAG_SUBJECT>
-				<kTAG_PREDICATE>:ENUM-OF</kTAG_PREDICATE>
-			</edge>
-			<edge>
-				<kTAG_SUBJECT>:KIND-SCALE</kTAG_SUBJECT>
-				<kTAG_PREDICATE>:ENUM-OF</kTAG_PREDICATE>
-			</edge>
-			<edge>
-				<kTAG_SUBJECT>:KIND-ENUMERATION</kTAG_SUBJECT>
-				<kTAG_PREDICATE>:ENUM-OF</kTAG_PREDICATE>
-			</edge>
-			<edge>
-				<kTAG_SUBJECT>:KIND-INSTANCE</kTAG_SUBJECT>
-				<kTAG_PREDICATE>:ENUM-OF</kTAG_PREDICATE>
-			</edge>
+            <edge>
+                <element variable="kTAG_PREDICATE">:ATTRIBUTE-OF</element>
+                <element variable="kTAG_OBJECT">:_nodes</element>
+            </edge>
+            <edge>
+                <element variable="kTAG_SUBJECT">:KIND-ROOT</element>
+                <element variable="kTAG_PREDICATE">:ENUM-OF</element>
+            </edge>
+            <edge>
+                <element variable="kTAG_SUBJECT">:KIND-FEATURE</element>
+                <element variable="kTAG_PREDICATE">:ENUM-OF</element>
+            </edge>
+            <edge>
+                <element variable="kTAG_SUBJECT">:KIND-METHOD</element>
+                <element variable="kTAG_PREDICATE">:ENUM-OF</element>
+            </edge>
+            <edge>
+                <element variable="kTAG_SUBJECT">:KIND-SCALE</element>
+                <element variable="kTAG_PREDICATE">:ENUM-OF</element>
+            </edge>
+            <edge>
+                <element variable="kTAG_SUBJECT">:KIND-ENUMERATION</element>
+                <element variable="kTAG_PREDICATE">:ENUM-OF</element>
+            </edge>
+            <edge>
+                <element variable="kTAG_SUBJECT">:KIND-INSTANCE</element>
+                <element variable="kTAG_PREDICATE">:ENUM-OF</element>
+            </edge>
         </edges>
-    </vertex>
-    
+    </unit>
+
     <!-- kTERM_TYPE -->
-    <vertex kTAG_GID=":TYPE">
-		<kTAG_CLASS>COntologyAliasVertex</kTAG_CLASS>
-		<kTAG_KIND>
-            <item>:KIND-FEATURE</item>
-            <item>:KIND-SCALE</item>
-        </kTAG_KIND>
-		<kTAG_TYPE>
-            <item>:SET</item>
-        </kTAG_TYPE>
-        <kTAG_DESCRIPTION language="en"><![CDATA[The <i>type</i> is a <i>set of
+    <unit>
+        <node class="COntologyAliasVertex">
+            <element variable="kTAG_TERM">:TYPE</element>
+            <element variable="kTAG_KIND">
+                <item>:KIND-FEATURE</item>
+                <item>:KIND-SCALE</item>
+            </element>
+            <element variable="kTAG_TYPE">
+                <item>:SET</item>
+            </element>
+            <element variable="kTAG_DESCRIPTION" key="en"><![CDATA[The <i>type</i> is a <i>set of
         	qualifiers</i> that determine the <i>data type</i> of the <i>property that the
         	current node defines</i>. This attribute is used to provide the <i>data type of
         	a tag</i>.
             ]]>
-        </kTAG_DESCRIPTION>
+            </element>
+        </node>
         <edges>
-			<edge>
-				<kTAG_PREDICATE>:ATTRIBUTE-OF</kTAG_PREDICATE>
-				<kTAG_OBJECT>:_nodes</kTAG_OBJECT>
-			</edge>
-			<edge>
-				<kTAG_SUBJECT>:ANY</kTAG_SUBJECT>
-				<kTAG_PREDICATE>:ENUM-OF</kTAG_PREDICATE>
-			</edge>
-			<edge>
-				<kTAG_SUBJECT>:TEXT</kTAG_SUBJECT>
-				<kTAG_PREDICATE>:ENUM-OF</kTAG_PREDICATE>
-			</edge>
-			<edge>
-				<kTAG_SUBJECT>:INT</kTAG_SUBJECT>
-				<kTAG_PREDICATE>:ENUM-OF</kTAG_PREDICATE>
-			</edge>
-			<edge>
-				<kTAG_SUBJECT>:FLOAT</kTAG_SUBJECT>
-				<kTAG_PREDICATE>:ENUM-OF</kTAG_PREDICATE>
-			</edge>
-			<edge>
-				<kTAG_SUBJECT>:BOOLEAN</kTAG_SUBJECT>
-				<kTAG_PREDICATE>:ENUM-OF</kTAG_PREDICATE>
-			</edge>
-			<edge>
-				<kTAG_SUBJECT>:META</kTAG_SUBJECT>
-				<kTAG_PREDICATE>:ENUM-OF</kTAG_PREDICATE>
-			</edge>
-			<edge>
-				<kTAG_SUBJECT>:STRUCT</kTAG_SUBJECT>
-				<kTAG_PREDICATE>:ENUM-OF</kTAG_PREDICATE>
-			</edge>
-			<edge>
-				<kTAG_SUBJECT>:LSTRING</kTAG_SUBJECT>
-				<kTAG_PREDICATE>:ENUM-OF</kTAG_PREDICATE>
-			</edge>
-			<edge>
-				<kTAG_SUBJECT>:STAMP</kTAG_SUBJECT>
-				<kTAG_PREDICATE>:ENUM-OF</kTAG_PREDICATE>
-			</edge>
-			<edge>
-				<kTAG_SUBJECT>:ENUM</kTAG_SUBJECT>
-				<kTAG_PREDICATE>:ENUM-OF</kTAG_PREDICATE>
-			</edge>
-			<edge>
-				<kTAG_SUBJECT>:SET</kTAG_SUBJECT>
-				<kTAG_PREDICATE>:ENUM-OF</kTAG_PREDICATE>
-			</edge>
-			<edge>
-				<kTAG_SUBJECT>:REQUIRED</kTAG_SUBJECT>
-				<kTAG_PREDICATE>:ENUM-OF</kTAG_PREDICATE>
-			</edge>
-			<edge>
-				<kTAG_SUBJECT>:RESTRICTED</kTAG_SUBJECT>
-				<kTAG_PREDICATE>:ENUM-OF</kTAG_PREDICATE>
-			</edge>
-			<edge>
-				<kTAG_SUBJECT>:COMPUTED</kTAG_SUBJECT>
-				<kTAG_PREDICATE>:ENUM-OF</kTAG_PREDICATE>
-			</edge>
-			<edge>
-				<kTAG_SUBJECT>:LOCKED</kTAG_SUBJECT>
-				<kTAG_PREDICATE>:ENUM-OF</kTAG_PREDICATE>
-			</edge>
-			<edge>
-				<kTAG_SUBJECT>:ARRAY</kTAG_SUBJECT>
-				<kTAG_PREDICATE>:ENUM-OF</kTAG_PREDICATE>
-			</edge>
-			<edge>
-				<kTAG_SUBJECT>:MongoId</kTAG_SUBJECT>
-				<kTAG_PREDICATE>:ENUM-OF</kTAG_PREDICATE>
-			</edge>
-			<edge>
-				<kTAG_SUBJECT>:MongoCode</kTAG_SUBJECT>
-				<kTAG_PREDICATE>:ENUM-OF</kTAG_PREDICATE>
-			</edge>
+            <edge>
+                <element variable="kTAG_PREDICATE">:ATTRIBUTE-OF</element>
+                <element variable="kTAG_OBJECT">:_nodes</element>
+            </edge>
+            <edge>
+                <element variable="kTAG_SUBJECT">:ANY</element>
+                <element variable="kTAG_PREDICATE">:ENUM-OF</element>
+            </edge>
+            <edge>
+                <element variable="kTAG_SUBJECT">:TEXT</element>
+                <element variable="kTAG_PREDICATE">:ENUM-OF</element>
+            </edge>
+            <edge>
+                <element variable="kTAG_SUBJECT">:INT</element>
+                <element variable="kTAG_PREDICATE">:ENUM-OF</element>
+            </edge>
+            <edge>
+                <element variable="kTAG_SUBJECT">:FLOAT</element>
+                <element variable="kTAG_PREDICATE">:ENUM-OF</element>
+            </edge>
+            <edge>
+                <element variable="kTAG_SUBJECT">:BOOLEAN</element>
+                <element variable="kTAG_PREDICATE">:ENUM-OF</element>
+            </edge>
+            <edge>
+                <element variable="kTAG_SUBJECT">:META</element>
+                <element variable="kTAG_PREDICATE">:ENUM-OF</element>
+            </edge>
+            <edge>
+                <element variable="kTAG_SUBJECT">:STRUCT</element>
+                <element variable="kTAG_PREDICATE">:ENUM-OF</element>
+            </edge>
+            <edge>
+                <element variable="kTAG_SUBJECT">:LSTRING</element>
+                <element variable="kTAG_PREDICATE">:ENUM-OF</element>
+            </edge>
+            <edge>
+                <element variable="kTAG_SUBJECT">:STAMP</element>
+                <element variable="kTAG_PREDICATE">:ENUM-OF</element>
+            </edge>
+            <edge>
+                <element variable="kTAG_SUBJECT">:ENUM</element>
+                <element variable="kTAG_PREDICATE">:ENUM-OF</element>
+            </edge>
+            <edge>
+                <element variable="kTAG_SUBJECT">:SET</element>
+                <element variable="kTAG_PREDICATE">:ENUM-OF</element>
+            </edge>
+            <edge>
+                <element variable="kTAG_SUBJECT">:REQUIRED</element>
+                <element variable="kTAG_PREDICATE">:ENUM-OF</element>
+            </edge>
+            <edge>
+                <element variable="kTAG_SUBJECT">:RESTRICTED</element>
+                <element variable="kTAG_PREDICATE">:ENUM-OF</element>
+            </edge>
+            <edge>
+                <element variable="kTAG_SUBJECT">:COMPUTED</element>
+                <element variable="kTAG_PREDICATE">:ENUM-OF</element>
+            </edge>
+            <edge>
+                <element variable="kTAG_SUBJECT">:LOCKED</element>
+                <element variable="kTAG_PREDICATE">:ENUM-OF</element>
+            </edge>
+            <edge>
+                <element variable="kTAG_SUBJECT">:ARRAY</element>
+                <element variable="kTAG_PREDICATE">:ENUM-OF</element>
+            </edge>
+            <edge>
+                <element variable="kTAG_SUBJECT">:MongoId</element>
+                <element variable="kTAG_PREDICATE">:ENUM-OF</element>
+            </edge>
+            <edge>
+                <element variable="kTAG_SUBJECT">:MongoCode</element>
+                <element variable="kTAG_PREDICATE">:ENUM-OF</element>
+            </edge>
         </edges>
-    </vertex>
-    
+    </unit>
+
     <!-- kTERM_DESCRIPTION -->
-    <vertex kTAG_GID=":DESCRIPTION">
-		<kTAG_CLASS>COntologyAliasVertex</kTAG_CLASS>
-		<kTAG_KIND>
-            <item>:KIND-FEATURE</item>
-            <item>:KIND-SCALE</item>
-        </kTAG_KIND>
-		<kTAG_TYPE>
-            <item>:LSTRING</item>
-        </kTAG_TYPE>
-        <kTAG_DESCRIPTION language="en"><![CDATA[The <i>description</i> of a node represents
+    <unit>
+        <node class="COntologyAliasVertex">
+            <element variable="kTAG_TERM">:DESCRIPTION</element>
+            <element variable="kTAG_KIND">
+                <item>:KIND-FEATURE</item>
+                <item>:KIND-SCALE</item>
+            </element>
+            <element variable="kTAG_TYPE">
+                <item>:LSTRING</item>
+            </element>
+            <element variable="kTAG_DESCRIPTION" key="en"><![CDATA[The <i>description</i> of a node represents
         	a <i>description of an object</i> that <i>changes with the context</i>. It is
         	similar to the definition of a term, escept that the term may take several
         	descriptions depending on its context. This attribute is a <i>list of
@@ -652,358 +697,388 @@
         	The structure is an array in which the <i>key is the language code</i> and the
         	<i>value is the description</i>.
             ]]>
-        </kTAG_DESCRIPTION>
+            </element>
+        </node>
         <edges>
-			<edge>
-				<kTAG_PREDICATE>:ATTRIBUTE-OF</kTAG_PREDICATE>
-				<kTAG_OBJECT>:_nodes</kTAG_OBJECT>
-			</edge>
+            <edge>
+                <element variable="kTAG_PREDICATE">:ATTRIBUTE-OF</element>
+                <element variable="kTAG_OBJECT">:_nodes</element>
+            </edge>
         </edges>
-    </vertex>
-    
+    </unit>
+
     <!-- kTERM_EDGES -->
-    <vertex kTAG_GID=":EDGES">
-		<kTAG_CLASS>COntologyAliasVertex</kTAG_CLASS>
-		<kTAG_KIND>
-            <item>:KIND-FEATURE</item>
-            <item>:KIND-SCALE</item>
-        </kTAG_KIND>
-		<kTAG_TYPE>
-            <item>:INT</item>
-            <item>:ARRAY</item>
-        </kTAG_TYPE>
-        <kTAG_DESCRIPTION language="en"><![CDATA[This attribute represents the <i>list of
+    <unit>
+        <node class="COntologyAliasVertex">
+            <element variable="kTAG_TERM">:EDGES</element>
+            <element variable="kTAG_KIND">
+                <item>:KIND-FEATURE</item>
+                <item>:KIND-SCALE</item>
+            </element>
+            <element variable="kTAG_TYPE">
+                <item>:INT</item>
+                <item>:ARRAY</item>
+            </element>
+            <element variable="kTAG_DESCRIPTION" key="en"><![CDATA[This attribute represents the <i>list of
         	edge objects</i> that <i>refer to the current node</i>. It is structured as an
         	</>array of edge identifiers</i>.
             ]]>
-        </kTAG_DESCRIPTION>
+            </element>
+        </node>
         <edges>
-			<edge>
-				<kTAG_PREDICATE>:ATTRIBUTE-OF</kTAG_PREDICATE>
-				<kTAG_OBJECT>:_nodes</kTAG_OBJECT>
-			</edge>
+            <edge>
+                <element variable="kTAG_PREDICATE">:ATTRIBUTE-OF</element>
+                <element variable="kTAG_OBJECT">:_nodes</element>
+            </edge>
         </edges>
-    </vertex>
-    
+    </unit>
+
     <!-- kTERM_NODES -->
-    <vertex kTAG_GID=":NODES">
-		<kTAG_CLASS>COntologyAliasVertex</kTAG_CLASS>
-		<kTAG_KIND>
-            <item>:KIND-FEATURE</item>
-            <item>:KIND-SCALE</item>
-        </kTAG_KIND>
-		<kTAG_TYPE>
-            <item>:INT</item>
-            <item>:ARRAY</item>
-        </kTAG_TYPE>
-        <kTAG_DESCRIPTION language="en"><![CDATA[This attribute represents the <i>list of
+    <unit>
+        <node class="COntologyAliasVertex">
+            <element variable="kTAG_TERM">:NODES</element>
+            <element variable="kTAG_KIND">
+                <item>:KIND-FEATURE</item>
+                <item>:KIND-SCALE</item>
+            </element>
+            <element variable="kTAG_TYPE">
+                <item>:INT</item>
+                <item>:ARRAY</item>
+            </element>
+            <element variable="kTAG_DESCRIPTION" key="en"><![CDATA[This attribute represents the <i>list of
         	node objects</i> that <i>refer to the current node as a master node</i>. It is
         	structured as an </>array of node identifiers</i>.
             ]]>
-        </kTAG_DESCRIPTION>
+            </element>
+        </node>
         <edges>
-			<edge>
-				<kTAG_PREDICATE>:ATTRIBUTE-OF</kTAG_PREDICATE>
-				<kTAG_OBJECT>:_nodes</kTAG_OBJECT>
-			</edge>
+            <edge>
+                <element variable="kTAG_PREDICATE">:ATTRIBUTE-OF</element>
+                <element variable="kTAG_OBJECT">:_nodes</element>
+            </edge>
         </edges>
-    </vertex>
-    
+    </unit>
+
     <!-- EDGE -->
-    
+
     <!-- kTERM_NID -->
-    <vertex kTAG_GID=":NID">
-		<kTAG_CLASS>COntologyAliasVertex</kTAG_CLASS>
-		<kTAG_KIND>
-            <item>:KIND-FEATURE</item>
-            <item>:KIND-SCALE</item>
-        </kTAG_KIND>
-		<kTAG_TYPE>
-            <item>:BINARY</item>
-        </kTAG_TYPE>
-        <kTAG_DESCRIPTION language="en"><![CDATA[The <i>native identifier</i> of an edge is
+    <unit>
+        <node class="COntologyAliasVertex">
+            <element variable="kTAG_TERM">:NID</element>
+            <element variable="kTAG_KIND">
+                <item>:KIND-FEATURE</item>
+                <item>:KIND-SCALE</item>
+            </element>
+            <element variable="kTAG_TYPE">
+                <item>:BINARY</item>
+            </element>
+            <element variable="kTAG_DESCRIPTION" key="en"><![CDATA[The <i>native identifier</i> of an edge is
         	an <i>integer</i> <i>generated by a sequence</i> or <i>taken from a created
         	graph edge identifier</i>.
             ]]>
-        </kTAG_DESCRIPTION>
+            </element>
+        </node>
         <edges>
-			<edge>
-				<kTAG_PREDICATE>:ATTRIBUTE-OF</kTAG_PREDICATE>
-				<kTAG_OBJECT>:_edges</kTAG_OBJECT>
-			</edge>
+            <edge>
+                <element variable="kTAG_PREDICATE">:ATTRIBUTE-OF</element>
+                <element variable="kTAG_OBJECT">:_edges</element>
+            </edge>
         </edges>
-    </vertex>
-    
+    </unit>
+
     <!-- kTERM_CLASS -->
-    <vertex kTAG_GID=":CLASS">
-		<kTAG_CLASS>COntologyMasterVertex</kTAG_CLASS>
-		<kTAG_KIND>
-            <item>:KIND-FEATURE</item>
-            <item>:KIND-SCALE</item>
-        </kTAG_KIND>
-		<kTAG_TYPE>
-            <item>:TEXT</item>
-            <item>:LOCKED</item>
-            <item>:COMPUTED</item>
-        </kTAG_TYPE>
+    <unit>
+        <node class="COntologyMasterVertex">
+            <element variable="kTAG_TERM">:CLASS</element>
+            <element variable="kTAG_KIND">
+                <item>:KIND-FEATURE</item>
+                <item>:KIND-SCALE</item>
+            </element>
+            <element variable="kTAG_TYPE">
+                <item>:TEXT</item>
+                <item>:LOCKED</item>
+                <item>:COMPUTED</item>
+            </element>
+        </node>
         <edges>
-			<edge>
-				<kTAG_PREDICATE>:ATTRIBUTE-OF</kTAG_PREDICATE>
-				<kTAG_OBJECT>:_edges</kTAG_OBJECT>
-			</edge>
+            <edge>
+                <element variable="kTAG_PREDICATE">:ATTRIBUTE-OF</element>
+                <element variable="kTAG_OBJECT">:_edges</element>
+            </edge>
         </edges>
-    </vertex>
-    
+    </unit>
+
     <!-- kTERM_GID -->
-    <vertex kTAG_GID=":GID">
-		<kTAG_CLASS>COntologyAliasVertex</kTAG_CLASS>
-		<kTAG_KIND>
-            <item>:KIND-FEATURE</item>
-            <item>:KIND-SCALE</item>
-        </kTAG_KIND>
-		<kTAG_TYPE>
-            <item>:TEXT</item>
-            <item>:LOCKED</item>
-            <item>:COMPUTED</item>
-            <item>:REQUIRED</item>
-        </kTAG_TYPE>
-        <kTAG_DESCRIPTION language="en"><![CDATA[The <i>global identifier</i> of an edge is
+    <unit>
+        <node class="COntologyAliasVertex">
+            <element variable="kTAG_TERM">:GID</element>
+            <element variable="kTAG_KIND">
+                <item>:KIND-FEATURE</item>
+                <item>:KIND-SCALE</item>
+            </element>
+            <element variable="kTAG_TYPE">
+                <item>:TEXT</item>
+                <item>:LOCKED</item>
+                <item>:COMPUTED</item>
+                <item>:REQUIRED</item>
+            </element>
+            <element variable="kTAG_DESCRIPTION" key="en"><![CDATA[The <i>global identifier</i> of an edge is
         	computed by <i>concatenating</i> the <i>subject vertex native identifier</i>,
         	the <i>predicate global identifier</i> and the <i>object vertex native
         	identifier</i> separated by a slash.
             ]]>
-        </kTAG_DESCRIPTION>
+            </element>
+        </node>
         <edges>
-			<edge>
-				<kTAG_PREDICATE>:ATTRIBUTE-OF</kTAG_PREDICATE>
-				<kTAG_OBJECT>:_edges</kTAG_OBJECT>
-			</edge>
+            <edge>
+                <element variable="kTAG_PREDICATE">:ATTRIBUTE-OF</element>
+                <element variable="kTAG_OBJECT">:_edges</element>
+            </edge>
         </edges>
-    </vertex>
-    
+    </unit>
+
     <!-- kTERM_UID -->
-    <vertex kTAG_GID=":UID">
-		<kTAG_CLASS>COntologyAliasVertex</kTAG_CLASS>
-		<kTAG_KIND>
-            <item>:KIND-FEATURE</item>
-            <item>:KIND-SCALE</item>
-        </kTAG_KIND>
-		<kTAG_TYPE>
-            <item>:BINARY</item>
-            <item>:LOCKED</item>
-            <item>:COMPUTED</item>
-            <item>:REQUIRED</item>
-        </kTAG_TYPE>
-        <kTAG_DESCRIPTION language="en"><![CDATA[The <i>unique identifier</i> of an edge is
+    <unit>
+        <node class="COntologyAliasVertex">
+            <element variable="kTAG_TERM">:UID</element>
+            <element variable="kTAG_KIND">
+                <item>:KIND-FEATURE</item>
+                <item>:KIND-SCALE</item>
+            </element>
+            <element variable="kTAG_TYPE">
+                <item>:BINARY</item>
+                <item>:LOCKED</item>
+                <item>:COMPUTED</item>
+                <item>:REQUIRED</item>
+            </element>
+            <element variable="kTAG_DESCRIPTION" key="en"><![CDATA[The <i>unique identifier</i> of an edge is
         	the <i>hash</i> of the <i>global identifier</i>. This value is needed to prevent
         	duplicate edges, since the native identifier is not related to the object
         	contents.
             ]]>
-        </kTAG_DESCRIPTION>
+            </element>
+        </node>
         <edges>
-			<edge>
-				<kTAG_PREDICATE>:ATTRIBUTE-OF</kTAG_PREDICATE>
-				<kTAG_OBJECT>:_edges</kTAG_OBJECT>
-			</edge>
+            <edge>
+                <element variable="kTAG_PREDICATE">:ATTRIBUTE-OF</element>
+                <element variable="kTAG_OBJECT">:_edges</element>
+            </edge>
         </edges>
-    </vertex>
-    
+    </unit>
+
     <!-- kTERM_SUBJECT -->
-    <vertex kTAG_GID=":SUBJECT">
-		<kTAG_CLASS>COntologyAliasVertex</kTAG_CLASS>
-		<kTAG_KIND>
-            <item>:KIND-FEATURE</item>
-            <item>:KIND-SCALE</item>
-        </kTAG_KIND>
-		<kTAG_TYPE>
-            <item>:INT</item>
-            <item>:REQUIRED</item>
-        </kTAG_TYPE>
-        <kTAG_DESCRIPTION language="en"><![CDATA[The edge <i>subject</i> is the
+    <unit>
+        <node class="COntologyAliasVertex">
+            <element variable="kTAG_TERM">:SUBJECT</element>
+            <element variable="kTAG_KIND">
+                <item>:KIND-FEATURE</item>
+                <item>:KIND-SCALE</item>
+            </element>
+            <element variable="kTAG_TYPE">
+                <item>:INT</item>
+                <item>:REQUIRED</item>
+            </element>
+            <element variable="kTAG_DESCRIPTION" key="en"><![CDATA[The edge <i>subject</i> is the
         	<i>relationship start vertex</i>, it is a <i>node reference</i> and is
         	constituted by the <i>node's native identifier</i>.
             ]]>
-        </kTAG_DESCRIPTION>
+            </element>
+        </node>
         <edges>
-			<edge>
-				<kTAG_PREDICATE>:ATTRIBUTE-OF</kTAG_PREDICATE>
-				<kTAG_OBJECT>:_edges</kTAG_OBJECT>
-			</edge>
+            <edge>
+                <element variable="kTAG_PREDICATE">:ATTRIBUTE-OF</element>
+                <element variable="kTAG_OBJECT">:_edges</element>
+            </edge>
         </edges>
-    </vertex>
-    
+    </unit>
+
     <!-- kTERM_PREDICATE -->
-    <vertex kTAG_GID=":PREDICATE">
-		<kTAG_CLASS>COntologyAliasVertex</kTAG_CLASS>
-		<kTAG_KIND>
-            <item>:KIND-FEATURE</item>
-            <item>:KIND-SCALE</item>
-        </kTAG_KIND>
-		<kTAG_TYPE>
-            <item>:BINARY</item>
-            <item>:REQUIRED</item>
-        </kTAG_TYPE>
-        <kTAG_DESCRIPTION language="en"><![CDATA[The edge <i>predicate</i> is the property
+    <unit>
+        <node class="COntologyAliasVertex">
+            <element variable="kTAG_TERM">:PREDICATE</element>
+            <element variable="kTAG_KIND">
+                <item>:KIND-FEATURE</item>
+                <item>:KIND-SCALE</item>
+            </element>
+            <element variable="kTAG_TYPE">
+                <item>:BINARY</item>
+                <item>:REQUIRED</item>
+            </element>
+            <element variable="kTAG_DESCRIPTION" key="en"><![CDATA[The edge <i>predicate</i> is the property
         	that <i>connects the subject to the object</i>. it is a <i>term reference</i>
         	and is constituted by the <i>term's native identifier</i>.
             ]]>
-        </kTAG_DESCRIPTION>
+            </element>
+        </node>
         <edges>
-			<edge>
-				<kTAG_PREDICATE>:ATTRIBUTE-OF</kTAG_PREDICATE>
-				<kTAG_OBJECT>:_edges</kTAG_OBJECT>
-			</edge>
+            <edge>
+                <element variable="kTAG_PREDICATE">:ATTRIBUTE-OF</element>
+                <element variable="kTAG_OBJECT">:_edges</element>
+            </edge>
         </edges>
-    </vertex>
-    
+    </unit>
+
     <!-- kTERM_OBJECT -->
-    <vertex kTAG_GID=":OBJECT">
-		<kTAG_CLASS>COntologyAliasVertex</kTAG_CLASS>
-		<kTAG_KIND>
-            <item>:KIND-FEATURE</item>
-            <item>:KIND-SCALE</item>
-        </kTAG_KIND>
-		<kTAG_TYPE>
-            <item>:INT</item>
-            <item>:REQUIRED</item>
-        </kTAG_TYPE>
-        <kTAG_DESCRIPTION language="en"><![CDATA[The edge <i>object</i> is the
+    <unit>
+        <node class="COntologyAliasVertex">
+            <element variable="kTAG_TERM">:OBJECT</element>
+            <element variable="kTAG_KIND">
+                <item>:KIND-FEATURE</item>
+                <item>:KIND-SCALE</item>
+            </element>
+            <element variable="kTAG_TYPE">
+                <item>:INT</item>
+                <item>:REQUIRED</item>
+            </element>
+            <element variable="kTAG_DESCRIPTION" key="en"><![CDATA[The edge <i>object</i> is the
         	<i>relationship destination vertex</i>, it is a <i>node reference</i> and is
         	constituted by the <i>node's native identifier</i>.
             ]]>
-        </kTAG_DESCRIPTION>
+            </element>
+        </node>
         <edges>
-			<edge>
-				<kTAG_PREDICATE>:ATTRIBUTE-OF</kTAG_PREDICATE>
-				<kTAG_OBJECT>:_edges</kTAG_OBJECT>
-			</edge>
+            <edge>
+                <element variable="kTAG_PREDICATE">:ATTRIBUTE-OF</element>
+                <element variable="kTAG_OBJECT">:_edges</element>
+            </edge>
         </edges>
-    </vertex>
-    
+    </unit>
+
     <!-- TAG -->
-    
+
     <!-- kTERM_NID -->
-    <vertex kTAG_GID=":NID">
-		<kTAG_CLASS>COntologyAliasVertex</kTAG_CLASS>
-		<kTAG_KIND>
-            <item>:KIND-FEATURE</item>
-            <item>:KIND-SCALE</item>
-        </kTAG_KIND>
-		<kTAG_TYPE>
-            <item>:INT</item>
-        </kTAG_TYPE>
-        <kTAG_DESCRIPTION language="en"><![CDATA[The <i>native identifier</i> of a tag is
+    <unit>
+        <node class="COntologyAliasVertex">
+            <element variable="kTAG_TERM">:NID</element>
+            <element variable="kTAG_KIND">
+                <item>:KIND-FEATURE</item>
+                <item>:KIND-SCALE</item>
+            </element>
+            <element variable="kTAG_TYPE">
+                <item>:INT</item>
+            </element>
+            <element variable="kTAG_DESCRIPTION" key="en"><![CDATA[The <i>native identifier</i> of a tag is
         	an <i>integer</i> <i>generated by a sequence</i>. <i>All the attributes in this
         	system are tagged with this attribute</i>, this is why it must be short.
             ]]>
-        </kTAG_DESCRIPTION>
+            </element>
+        </node>
         <edges>
-			<edge>
-				<kTAG_PREDICATE>:ATTRIBUTE-OF</kTAG_PREDICATE>
-				<kTAG_OBJECT>:_tags</kTAG_OBJECT>
-			</edge>
+            <edge>
+                <element variable="kTAG_PREDICATE">:ATTRIBUTE-OF</element>
+                <element variable="kTAG_OBJECT">:_tags</element>
+            </edge>
         </edges>
-    </vertex>
-    
+    </unit>
+
     <!-- kTERM_CLASS -->
-    <vertex kTAG_GID=":CLASS">
-		<kTAG_CLASS>COntologyMasterVertex</kTAG_CLASS>
-		<kTAG_KIND>
-            <item>:KIND-FEATURE</item>
-            <item>:KIND-SCALE</item>
-        </kTAG_KIND>
-		<kTAG_TYPE>
-            <item>:TEXT</item>
-            <item>:LOCKED</item>
-            <item>:COMPUTED</item>
-        </kTAG_TYPE>
+    <unit>
+        <node class="COntologyMasterVertex">
+            <element variable="kTAG_TERM">:CLASS</element>
+            <element variable="kTAG_KIND">
+                <item>:KIND-FEATURE</item>
+                <item>:KIND-SCALE</item>
+            </element>
+            <element variable="kTAG_TYPE">
+                <item>:TEXT</item>
+                <item>:LOCKED</item>
+                <item>:COMPUTED</item>
+            </element>
+        </node>
         <edges>
-			<edge>
-				<kTAG_PREDICATE>:ATTRIBUTE-OF</kTAG_PREDICATE>
-				<kTAG_OBJECT>:_tags</kTAG_OBJECT>
-			</edge>
+            <edge>
+                <element variable="kTAG_PREDICATE">:ATTRIBUTE-OF</element>
+                <element variable="kTAG_OBJECT">:_tags</element>
+            </edge>
         </edges>
-    </vertex>
-    
+    </unit>
+
     <!-- kTERM_GID -->
-    <vertex kTAG_GID=":GID">
-		<kTAG_CLASS>COntologyAliasVertex</kTAG_CLASS>
-		<kTAG_KIND>
-            <item>:KIND-FEATURE</item>
-            <item>:KIND-SCALE</item>
-        </kTAG_KIND>
-		<kTAG_TYPE>
-            <item>:TEXT</item>
-            <item>:LOCKED</item>
-            <item>:COMPUTED</item>
-            <item>:REQUIRED</item>
-        </kTAG_TYPE>
-        <kTAG_DESCRIPTION language="en"><![CDATA[The <i>global identifier</i> of a tag is
+    <unit>
+        <node class="COntologyAliasVertex">
+            <element variable="kTAG_TERM">:GID</element>
+            <element variable="kTAG_KIND">
+                <item>:KIND-FEATURE</item>
+                <item>:KIND-SCALE</item>
+            </element>
+            <element variable="kTAG_TYPE">
+                <item>:TEXT</item>
+                <item>:LOCKED</item>
+                <item>:COMPUTED</item>
+                <item>:REQUIRED</item>
+            </element>
+            <element variable="kTAG_DESCRIPTION" key="en"><![CDATA[The <i>global identifier</i> of a tag is
         	computed by <i>concatenating</i> the <i>term global identifiers</i> of all the
         	<i>elements of the tag's path</i>, <i>separated by a slash</i>.
             ]]>
-        </kTAG_DESCRIPTION>
+            </element>
+        </node>
         <edges>
-			<edge>
-				<kTAG_PREDICATE>:ATTRIBUTE-OF</kTAG_PREDICATE>
-				<kTAG_OBJECT>:_tags</kTAG_OBJECT>
-			</edge>
+            <edge>
+                <element variable="kTAG_PREDICATE">:ATTRIBUTE-OF</element>
+                <element variable="kTAG_OBJECT">:_tags</element>
+            </edge>
         </edges>
-    </vertex>
-    
+    </unit>
+
     <!-- kTERM_UID -->
-    <vertex kTAG_GID=":UID">
-		<kTAG_CLASS>COntologyAliasVertex</kTAG_CLASS>
-		<kTAG_KIND>
-            <item>:KIND-FEATURE</item>
-            <item>:KIND-SCALE</item>
-        </kTAG_KIND>
-		<kTAG_TYPE>
-            <item>:BINARY</item>
-            <item>:LOCKED</item>
-            <item>:COMPUTED</item>
-            <item>:REQUIRED</item>
-        </kTAG_TYPE>
-        <kTAG_DESCRIPTION language="en"><![CDATA[The <i>unique identifier</i> of a tag is
+    <unit>
+        <node class="COntologyAliasVertex">
+            <element variable="kTAG_TERM">:UID</element>
+            <element variable="kTAG_KIND">
+                <item>:KIND-FEATURE</item>
+                <item>:KIND-SCALE</item>
+            </element>
+            <element variable="kTAG_TYPE">
+                <item>:BINARY</item>
+                <item>:LOCKED</item>
+                <item>:COMPUTED</item>
+                <item>:REQUIRED</item>
+            </element>
+            <element variable="kTAG_DESCRIPTION" key="en"><![CDATA[The <i>unique identifier</i> of a tag is
         	the <i>hash</i> of the <i>global identifier</i>. This value is needed to prevent
         	duplicate tags, since the native identifier is not related to the object
         	contents.
             ]]>
-        </kTAG_DESCRIPTION>
+            </element>
+        </node>
         <edges>
-			<edge>
-				<kTAG_PREDICATE>:ATTRIBUTE-OF</kTAG_PREDICATE>
-				<kTAG_OBJECT>:_tags</kTAG_OBJECT>
-			</edge>
+            <edge>
+                <element variable="kTAG_PREDICATE">:ATTRIBUTE-OF</element>
+                <element variable="kTAG_OBJECT">:_tags</element>
+            </edge>
         </edges>
-    </vertex>
-    
+    </unit>
+
     <!-- kTERM_PATH -->
-    <vertex kTAG_PATH=":UID">
-		<kTAG_CLASS>COntologyAliasVertex</kTAG_CLASS>
-		<kTAG_KIND>
-            <item>:KIND-FEATURE</item>
-            <item>:KIND-SCALE</item>
-        </kTAG_KIND>
-		<kTAG_TYPE>
-            <item>:BINARY</item>
-            <item>:LOCKED</item>
-            <item>:REQUIRED</item>
-            <item>:ARRAY</item>
-        </kTAG_TYPE>
-        <kTAG_DESCRIPTION language="en"><![CDATA[The <i>path</i> of a tag is the <i>sequence
+    <unit>
+        <node class="COntologyAliasVertex">
+            <element variable="kTAG_TERM">:UID</element>
+            <element variable="kTAG_CLASS">COntologyAliasVertex</element>
+            <element variable="kTAG_KIND">
+                <item>:KIND-FEATURE</item>
+                <item>:KIND-SCALE</item>
+            </element>
+            <element variable="kTAG_TYPE">
+                <item>:BINARY</item>
+                <item>:LOCKED</item>
+                <item>:REQUIRED</item>
+                <item>:ARRAY</item>
+            </element>
+            <element variable="kTAG_DESCRIPTION" key="en"><![CDATA[The <i>path</i> of a tag is the <i>sequence
         	of term references</i> corresponding to the <i>path</i> that <i>starts from a
         	feature node</i> and <i>ends with a scale node</i>, <i>including the connecting
-        	predicates</i>. The odd elements are graph vertices, while the even elements are
+        	predicates</i>. The odd elements are graph units, while the even elements are
         	predicates. The reason to use term references rather than node references is to
         	allow alias nodes, that is, to allow two paths to refer to the same tag.
             ]]>
-        </kTAG_DESCRIPTION>
+            </element>
+        </node>
         <edges>
-			<edge>
-				<kTAG_PREDICATE>:ATTRIBUTE-OF</kTAG_PREDICATE>
-				<kTAG_OBJECT>:_tags</kTAG_OBJECT>
-			</edge>
+            <edge>
+                <element variable="kTAG_PREDICATE">:ATTRIBUTE-OF</element>
+                <element variable="kTAG_OBJECT">:_tags</element>
+            </edge>
         </edges>
-    </vertex>
-</vertices>
+    </unit>
+</units>

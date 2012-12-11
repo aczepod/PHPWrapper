@@ -820,34 +820,23 @@ class COntology extends CConnection
 			//
 			// Iterate terms.
 			//
-			foreach( $xml->{'term'} as $item )
+			foreach( $xml->term as $element )
 			{
 				//
 				// Instantiate term.
 				//
 				$term = new COntologyTerm();
-				if( $item[ 'ns' ] !== NULL )
-				{
-					$tmp = (string) $item[ 'ns' ];
-					$tmp = COntologyTerm::Resolve( $db, $tmp, NULL, TRUE );
-					$term->NS( $tmp );
-				}
-				if( $item[ 'lid' ] !== NULL )
-					$term->LID( (string) $item[ 'lid' ] );
-			
+				
 				//
-				// Load attributes.
+				// Load local identifier.
 				//
-				if( $item->children()->count() )
-				{
-					foreach( $item->{'element'} as $attribute )
-						$this->_ParseXMLElement( $db, $attribute, $term );
-				}
-			
-				//
-				// Save object.
-				//
-				$term->Insert( $db );
+				if( $element[ 'kTAG_LID' ] !== NULL )
+					$this->_ParseTerm( $db, $element, $term );
+				
+				else
+					throw new Exception
+						( "Term is missing local identifier",
+						  kERROR_STATE );											// !@! ==>
 			
 			} // Iterating terms.
 		
@@ -900,40 +889,35 @@ class COntology extends CConnection
 			//
 			// Iterate nodes.
 			//
-			foreach( $xml->{'node'} as $item )
+			foreach( $xml->node as $element )
 			{
 				//
 				// Instantiate node.
 				//
-				$class = ( $item[ 'class' ] !== NULL )
-					   ? (string) $item[ 'class' ]
-					   : 'COntologyNode';
-			
-				//
-				// Instantiate node.
-				//
-				$node = new $class();
-			
-				//
-				// Load attributes.
-				//
-				$attributes = $item->children();
-				foreach( $attributes as $attribute )
+				if( $element->{ 'kTAG_CLASS' } !== NULL )
 				{
-					if( $attribute->getName() == 'element' )
-						$this->_ParseXMLElement( $db, $attribute, $node );
+					$class = (string) $element->{ 'kTAG_CLASS' };
+					$node = new $class();
 				}
-			
+				else
+					$node = new COntologyMasterVertex();
+				
 				//
-				// Save object.
+				// Load local identifier.
 				//
-				$node->Insert( $db );
+				if( $element[ 'kTAG_GID' ] !== NULL )
+					$this->_ParseNode( $db, $element, $node );
+				
+				else
+					throw new Exception
+						( "Node is missing term global identifier",
+						  kERROR_STATE );										// !@! ==>
 				
 				//
 				// Cache node.
 				//
 				$_SESSION[ kOFFSET_NODES ]
-						 [ (string) $item[ 'kTAG_GID' ] ]
+						 [ (string) $element[ 'kTAG_GID' ] ]
 						 	= $node->NID();
 			
 			} // Iterating nodes.
@@ -987,27 +971,17 @@ class COntology extends CConnection
 			//
 			// Iterate edges.
 			//
-			foreach( $xml->{'edge'} as $item )
+			foreach( $xml->edge as $element )
 			{
 				//
 				// Instantiate edge.
 				//
 				$edge = new COntologyEdge();
-			
+				
 				//
-				// Load attributes.
+				// Parse edge.
 				//
-				$attributes = $item->children();
-				foreach( $attributes as $attribute )
-				{
-					if( $attribute->getName() == 'element' )
-						$this->_ParseXMLElement( $db, $attribute, $edge );
-				}
-			
-				//
-				// Save object.
-				//
-				$edge->Insert( $db );
+				$this->_ParseEdge( $db, $element, $edge );
 			
 			} // Iterating edges.
 		
@@ -1057,10 +1031,10 @@ class COntology extends CConnection
 			$xml = simplexml_load_file( kPATH_MYWRAPPER_LIBRARY_DEFINE."/$file.xml" );
 			
 			//
-			// Iterate terms.
+			// Iterate edges.
 			//
-			foreach( $xml->{'unit'} as $item )
-				$this->_ParseXMLUnit( $db, $item );
+			foreach( $xml->vertex as $element )
+				$this->_ParseVertex( $db, $element );
 		
 		} // Iterating files.
 
@@ -1110,29 +1084,17 @@ class COntology extends CConnection
 			//
 			// Iterate edges.
 			//
-			foreach( $xml->{'tag'} as $item )
+			foreach( $xml->tag as $element )
 			{
 				//
 				// Instantiate tag.
 				//
 				$tag = new COntologyTag();
-			
+				
 				//
-				// Load path elements.
+				// Parse edge.
 				//
-				if( $item->{'element'}->count() )
-				{
-					//
-					// Iterate path items.
-					//
-					foreach( $item->{'element'} as $attribute )
-						$this->_ParseXMLElement( $db, $attribute, $tag );
-			
-					//
-					// Save object.
-					//
-					$tag->Insert( $db );
-				}
+				$this->_ParseTag( $db, $element, $tag );
 			
 			} // Iterating edges.
 		
@@ -1217,7 +1179,7 @@ class COntology extends CConnection
 		//
 		// Handle term.
 		//
-		if( $theElement->{'term'}->count() )
+		if( $theElement->{'term'} !== NULL )
 		{
 			//
 			// Instantiate term.
@@ -1252,7 +1214,7 @@ class COntology extends CConnection
 		//
 		// Handle node.
 		//
-		if( $theElement->{'node'}->count() )
+		if( $theElement->{'node'} !== NULL )
 		{
 			//
 			// Instantiate node.
@@ -1278,7 +1240,7 @@ class COntology extends CConnection
 			//
 			// Set term.
 			//
-			if( ! $node->offsetExists( kTAG_TERM ) )
+			if( ! $term->offsetExists( kTAG_TERM ) )
 				$node->Term( $term );
 			
 			//
@@ -1530,69 +1492,13 @@ class COntology extends CConnection
 			else
 			{
 				//
-				// Handle tag path items.
+				// Iterate items.
 				//
-				if( ($attribute == kTAG_PATH)
-				 && ($theObject instanceof COntologyTag) )
+				foreach( $theElement->{'item'} as $item )
 				{
-					//
-					// Iterate items.
-					//
-					$i = 0;
-					foreach( $theElement->{'item'} as $item )
-					{
-						//
-						// Vertex.
-						//
-						if( ! ($i++ % 2) )
-						{
-							//
-							// Node.
-							//
-							if( ctype_digit( (string) $item ) )
-								$theObject->PushItem(
-									COntologyNode::Resolve(
-										$theDatabase, (string) $item, TRUE )
-											->Term() );
-							
-							//
-							// Term.
-							//
-							else
-								$theObject->PushItem(
-									COntologyTerm::Resolve(
-										$theDatabase, (string) $item, NULL, TRUE ) );
-						}
-						
-						//
-						// Predicate.
-						//
-						else
-							$theObject->PushItem(
-								COntologyTerm::Resolve(
-									$theDatabase, (string) $item, NULL, TRUE ) );
-					}
-				
-				} // Tag path.
-				
-				//
-				// Handle set.
-				//
-				else
-				{
-					//
-					// Iterate items.
-					//
-					foreach( $theElement->{'item'} as $item )
-					{
-						//
-						// Handle set.
-						//
-						if( ! in_array( (string) $item, $value ) )
-							$value[] = (string) $item;
-					}
-				
-				} // Set.
+					if( ! in_array( (string) $item, $value ) )
+						$value[] = (string) $item;
+				}
 			
 			} // Simple array.
 		
@@ -1614,18 +1520,12 @@ class COntology extends CConnection
 			switch( $attribute )
 			{
 				case kTAG_TERM:
-				case kTAG_PREDICATE:
 				case kTAG_NAMESPACE:
 					$value = COntologyTerm::Resolve( $theDatabase, $value, NULL, TRUE );
 					break;
 
 				case kTAG_NODE:
 					$value = COntologyNode::Resolve( $theDatabase, $value, TRUE );
-					break;
-
-				case kTAG_SUBJECT:
-				case kTAG_OBJECT:
-					$value = COntologyMasterNode::Resolve( $theDatabase, $value, TRUE );
 					break;
 			}
 		
@@ -1634,10 +1534,598 @@ class COntology extends CConnection
 		//
 		// Set attribute.
 		//
-		if( $attribute != kTAG_PATH )
-			$theObject->offsetSet( $attribute, $value );
+		$theObject->offsetSet( $attribute, $value );
 
 	} // _ParseXMLElement.
+
+	 
+	/*===================================================================================
+	 *	_ParseTerm																		*
+	 *==================================================================================*/
+
+	/**
+	 * <h4>Parse the provided term</h4>
+	 *
+	 * This method will parse the provided XML term and fill the provided ontology term.
+	 *
+	 * @param CDatabase				$theDatabase		Database container.
+	 * @param SimpleXMLElement		$theElement			XML element with term data.
+	 * @param COntologyTerm			$theTerm			Receives term data.
+	 *
+	 * @access protected
+	 *
+	 * @throws Exception
+	 */
+	protected function _ParseTerm( CDatabase		$theDatabase,
+								   SimpleXMLElement	$theElement,
+								   COntologyTerm	$theTerm )
+	{
+		//
+		// Load local identifier.
+		//
+		if( $theElement[ 'kTAG_LID' ] !== NULL )
+		{
+			//
+			// Set local identifier.
+			//
+			$theTerm->LID( (string) $theElement[ 'kTAG_LID' ] );
+			
+			//
+			// Handle namespace.
+			//
+			if( $theElement[ 'kTAG_NAMESPACE' ] )
+			{
+				//
+				// Resolve namespace.
+				//
+				$ref = COntologyTerm::Resolve(
+						$theDatabase,
+						(string) $theElement[ 'kTAG_NAMESPACE' ],
+						NULL,
+						TRUE );
+				
+				//
+				// Set namespace.
+				//
+				$theTerm->NS( $ref );
+			
+			} // Has namespace.
+			
+			//
+			// Handle term reference.
+			//
+			if( $theElement->{'kTAG_TERM'} )
+			{
+				//
+				// Resolve term.
+				//
+				$ref = COntologyTerm::Resolve(
+						$theDatabase,
+						(string) $theElement[ 'kTAG_TERM' ],
+						NULL,
+						TRUE );
+				
+				//
+				// Set namespace.
+				//
+				$theTerm->Term( $ref );
+			
+			} // Has term reference.
+			
+			//
+			// Get kinds.
+			//
+			if( $theElement->{'kTAG_KIND'}->count() )
+			{
+				foreach( $theElement->{'kTAG_KIND'}->{'item'} as $item )
+					$theTerm->Kind( (string) $item, TRUE );
+			
+			} // Has kind.
+			
+			//
+			// Get label.
+			//
+			if( $theElement->{'kTAG_LABEL'}->count() )
+			{
+				foreach( $theElement->{'kTAG_LABEL'} as $element )
+					$theTerm->Label( (string) $element[ 'language' ],
+									 (string) $element );
+			}
+			
+			//
+			// Get definition.
+			//
+			if( $theElement->{'kTAG_DEFINITION'}->count() )
+			{
+				foreach( $theElement->{'kTAG_DEFINITION'} as $element )
+					$theTerm->Definition( (string) $element[ 'language' ],
+										  (string) $element );
+			}
+			
+			//
+			// Get synonyms.
+			//
+			if( $theElement->{'kTAG_SYNONYMS'}->count() )
+			{
+				foreach( $theElement->{'kTAG_SYNONYMS'}->{'item'} as $item )
+					$theTerm->Synonym( (string) $item, TRUE );
+			
+			} // Has synonyms.
+			
+			//
+			// Get examples.
+			//
+			if( $theElement->{'kTAG_EXAMPLES'}->count() )
+			{
+				foreach( $theElement->{'kTAG_EXAMPLES'}->{'item'} as $item )
+					$theTerm->Example( (string) $item, TRUE );
+			
+			} // Has examples.
+			
+			//
+			// Save term.
+			//
+			$theTerm->Insert( $theDatabase );
+		
+		} // Has local identifier.
+		
+		else
+			throw new Exception
+				( "Term is missing local identifier",
+				  kERROR_STATE );												// !@! ==>
+
+	} // _ParseTerm.
+
+	 
+	/*===================================================================================
+	 *	_ParseNode																		*
+	 *==================================================================================*/
+
+	/**
+	 * <h4>Parse the provided node</h4>
+	 *
+	 * This method will parse the provided XML node and fill the provided ontology node.
+	 *
+	 * @param CDatabase				$theDatabase		Database container.
+	 * @param SimpleXMLElement		$theElement			XML element with term data.
+	 * @param COntologyNode			$theNode			Receives node data.
+	 *
+	 * @access protected
+	 *
+	 * @throws Exception
+	 */
+	protected function _ParseNode( CDatabase		$theDatabase,
+								   SimpleXMLElement	$theElement,
+								   COntologyNode	$theNode )
+	{
+		//
+		// Load term global identifier.
+		//
+		if( $theElement[ 'kTAG_GID' ] !== NULL )
+		{
+			//
+			// Resolve term.
+			//
+			$term = COntologyTerm::Resolve(
+						$theDatabase, (string) $theElement[ 'kTAG_GID' ], NULL, TRUE );
+			
+			//
+			// Set term reference.
+			//
+			$theNode->Term( $term );
+			
+			//
+			// Get categories.
+			//
+			if( $theElement->{'kTAG_CATEGORY'}->count() )
+			{
+				foreach( $theElement->{'kTAG_CATEGORY'}->{'item'} as $item )
+					$theNode->Category( (string) $item, TRUE );
+			
+			} // Has categories.
+			
+			//
+			// Get kinds.
+			//
+			if( $theElement->{'kTAG_KIND'}->count() )
+			{
+				foreach( $theElement->{'kTAG_KIND'}->{'item'} as $item )
+					$theNode->Kind( (string) $item, TRUE );
+			
+			} // Has kinds.
+			
+			//
+			// Get types.
+			//
+			if( $theElement->{'kTAG_TYPE'}->count() )
+			{
+				foreach( $theElement->{'kTAG_TYPE'}->{'item'} as $item )
+					$theNode->Type( (string) $item, TRUE );
+			
+			} // Has types.
+			
+			//
+			// Get descriptions.
+			//
+			if( $theElement->{'kTAG_DESCRIPTION'}->count() )
+			{
+				foreach( $theElement->{'kTAG_DESCRIPTION'} as $element )
+					$theNode->Description( (string) $element[ 'language' ],
+										   (string) $element );
+			}
+			
+			//
+			// Get notes.
+			//
+			if( $theElement->{'kTAG_NOTES'}->count() )
+			{
+				$tmp = Array();
+				foreach( $theElement->{'kTAG_NOTES'} as $element )
+					$tmp[ kTAG_NOTES ][ (string) $element[ 'language' ] ]
+						= (string) $element;
+				$theNode[ kTAG_NOTES ] = $tmp;
+			}
+			
+			//
+			// Get examples.
+			//
+			if( $theElement->{'kTAG_EXAMPLES'}->count() )
+			{
+				foreach( $theElement->{'kTAG_EXAMPLES'}->{'item'} as $item )
+					$theNode->Example( (string) $item, TRUE );
+			
+			} // Has examples.
+			
+			//
+			// Save node.
+			//
+			$theNode->Insert( $theDatabase );
+		
+		} // Has global identifier.
+		
+		else
+			throw new Exception
+				( "Node is missing term global identifier",
+				  kERROR_STATE );											// !@! ==>
+
+	} // _ParseNode.
+
+	 
+	/*===================================================================================
+	 *	_ParseEdge																		*
+	 *==================================================================================*/
+
+	/**
+	 * <h4>Parse the provided edge</h4>
+	 *
+	 * This method will parse the provided XML edge and fill the provided ontology edge.
+	 *
+	 * @param CDatabase				$theDatabase		Database container.
+	 * @param SimpleXMLElement		$theElement			XML element with term data.
+	 * @param COntologyEdge			$theEdge			Receives edge data.
+	 *
+	 * @access protected
+	 *
+	 * @throws Exception
+	 */
+	protected function _ParseEdge( CDatabase		$theDatabase,
+								   SimpleXMLElement	$theElement,
+								   COntologyEdge	$theEdge )
+	{
+		//
+		// Load subject.
+		//
+		if( $theElement->{ 'kTAG_SUBJECT' } !== NULL )
+		{
+			//
+			// Save identifier.
+			//
+			$save = (string) $theElement->{ 'kTAG_SUBJECT' };
+			
+			//
+			// Resolve subject.
+			//
+			if( array_key_exists( $save, $_SESSION[ kOFFSET_NODES ] ) )
+				$theEdge->Subject( $_SESSION[ kOFFSET_NODES ][ $save ] );
+			else
+				throw new Exception
+					( "Subject node not found [$save]",
+					  kERROR_STATE );											// !@! ==>
+			
+			//
+			// Load predicate.
+			//
+			if( $theElement->{ 'kTAG_PREDICATE' } !== NULL )
+			{
+				//
+				// Save identifier.
+				//
+				$save = (string) $theElement->{ 'kTAG_PREDICATE' };
+				
+				//
+				// Resolve predicate.
+				//
+				$term = COntologyTerm::Resolve( $theDatabase, $save, NULL, TRUE );
+				
+				//
+				// Set subject.
+				//
+				$theEdge->Predicate( $term );
+				
+				//
+				// Load object.
+				//
+				if( $theElement->{ 'kTAG_OBJECT' } !== NULL )
+				{
+					//
+					// Save identifier.
+					//
+					$save = (string) $theElement->{ 'kTAG_OBJECT' };
+					
+					//
+					// Resolve object.
+					//
+					if( array_key_exists( $save, $_SESSION[ kOFFSET_NODES ] ) )
+						$theEdge->Object( $_SESSION[ kOFFSET_NODES ][ $save ] );
+					else
+						throw new Exception
+							( "Object node not found [$save]",
+							  kERROR_STATE );									// !@! ==>
+					
+					//
+					// Save edge.
+					//
+					$theEdge->Insert( $theDatabase );
+				
+				} // Provided object.
+				
+				else
+					throw new Exception
+						( "Edge is missing object",
+						  kERROR_STATE );										// !@! ==>
+			
+			} // Provided predicate.
+			
+			else
+				throw new Exception
+					( "Edge is missing predicate",
+					  kERROR_STATE );											// !@! ==>
+		
+		} // Provided subject.
+		
+		else
+			throw new Exception
+				( "Edge is missing subject",
+				  kERROR_STATE );												// !@! ==>
+
+	} // _ParseEdge.
+
+	 
+	/*===================================================================================
+	 *	_ParseVertex																		*
+	 *==================================================================================*/
+
+	/**
+	 * <h4>Parse the provided edge</h4>
+	 *
+	 * This method will parse the provided XML vertex, create and fill the relative ontology
+	 * objects.
+	 *
+	 * Terms and master nodes must exist.
+	 *
+	 * @param CDatabase				$theDatabase		Database container.
+	 * @param SimpleXMLElement		$theElement			XML element with term data.
+	 *
+	 * @access protected
+	 *
+	 * @throws Exception
+	 */
+	protected function _ParseVertex( CDatabase		  $theDatabase,
+									 SimpleXMLElement $theElement )
+	{
+		//
+		// Instantiate node.
+		//
+		if( $theElement->{ 'kTAG_CLASS' } !== NULL )
+		{
+			$class = (string) $theElement->{ 'kTAG_CLASS' };
+			$node = new $class();
+		}
+		else
+			$node = new COntologyAliasVertex();
+			
+		//
+		// Resolve term.
+		//
+		$term = COntologyTerm::Resolve(
+					$theDatabase, (string) $theElement[ 'kTAG_GID' ], NULL, TRUE );
+		
+		//
+		// Set term reference.
+		//
+		$node->Term( $term );
+		
+		//
+		// Get categories.
+		//
+		if( $theElement->{'kTAG_CATEGORY'}->count() )
+		{
+			foreach( $theElement->{'kTAG_CATEGORY'}->{'item'} as $item )
+				$node->Category( (string) $item, TRUE );
+		
+		} // Has categories.
+		
+		//
+		// Get kinds.
+		//
+		if( $theElement->{'kTAG_KIND'}->count() )
+		{
+			foreach( $theElement->{'kTAG_KIND'}->{'item'} as $item )
+				$node->Kind( (string) $item, TRUE );
+		
+		} // Has kinds.
+		
+		//
+		// Get types.
+		//
+		if( $theElement->{'kTAG_TYPE'}->count() )
+		{
+			foreach( $theElement->{'kTAG_TYPE'}->{'item'} as $item )
+				$node->Type( (string) $item, TRUE );
+		
+		} // Has types.
+		
+		//
+		// Get descriptions.
+		//
+		if( $theElement->{'kTAG_DESCRIPTION'}->count() )
+		{
+			foreach( $theElement->{'kTAG_DESCRIPTION'} as $element )
+				$node->Description( (string) $element[ 'language' ],
+									(string) $element );
+		}
+		
+		//
+		// Save node.
+		//
+		$node->Insert( $theDatabase );
+		
+		//
+		// Iterate edges.
+		//
+		foreach( $theElement->{'edges'}->{'edge'} as $element )
+		{
+			//
+			// Instantiate edge.
+			//
+			$edge = new COntologyEdge();
+			
+			//
+			// Set subject.
+			//
+			if( $element->{'kTAG_SUBJECT'}->count() )
+			{
+				//
+				// Save identifier.
+				//
+				$save = (string) $element->{'kTAG_SUBJECT'}[ 0 ];
+				
+				//
+				// Resolve subject.
+				//
+				if( array_key_exists( $save, $_SESSION[ kOFFSET_NODES ] ) )
+					$edge->Subject( $_SESSION[ kOFFSET_NODES ][ $save ] );
+				else
+					throw new Exception
+						( "Subject node not found [$save]",
+						  kERROR_STATE );										// !@! ==>
+			}
+			else
+				$edge->Subject( $node );
+			
+			//
+			// Load predicate.
+			//
+			if( $element->{'kTAG_PREDICATE'}->count() )
+			{
+				//
+				// Resolve predicate.
+				//
+				$term = COntologyTerm::Resolve( $theDatabase,
+												(string) $element->{'kTAG_PREDICATE'}[ 0 ],
+												NULL,
+												TRUE );
+				
+				//
+				// Set subject.
+				//
+				$edge->Predicate( $term );
+			
+			} // Provided predicate.
+			
+			else
+				throw new Exception
+					( "Edge is missing predicate",
+					  kERROR_STATE );											// !@! ==>
+			
+			//
+			// Set object.
+			//
+			if( $element->{'kTAG_OBJECT'}->count() )
+			{
+				//
+				// Save identifier.
+				//
+				$save = (string) $element->{'kTAG_OBJECT'}[ 0 ];
+				
+				//
+				// Resolve object.
+				//
+				if( array_key_exists( $save, $_SESSION[ kOFFSET_NODES ] ) )
+					$edge->Object( $_SESSION[ kOFFSET_NODES ][ $save ] );
+				else
+					throw new Exception
+						( "Object node not found [$save]",
+						  kERROR_STATE );										// !@! ==>
+			}
+			else
+				$edge->Object( $node );
+			
+			//
+			// Insert edge.
+			//
+			$edge->Insert( $theDatabase );
+		
+		} // Iterating edges.
+
+	} // _ParseVertex.
+
+	 
+	/*===================================================================================
+	 *	_ParseTag																		*
+	 *==================================================================================*/
+
+	/**
+	 * <h4>Parse the provided tag</h4>
+	 *
+	 * This method will parse the provided XML tag and fill the provided ontology tag.
+	 *
+	 * @param CDatabase				$theDatabase		Database container.
+	 * @param SimpleXMLElement		$theElement			XML element with term data.
+	 * @param COntologyNode			$theTag				Receives tag data.
+	 *
+	 * @access protected
+	 *
+	 * @throws Exception
+	 */
+	protected function _ParseTag( CDatabase			$theDatabase,
+								  SimpleXMLElement	$theElement,
+								  COntologyTag		$theTag )
+	{
+		//
+		// Iterate path.
+		//
+		foreach( $theElement->{'kTAG_PATH'}->{'item'} as $item )
+		{
+			//
+			// Resolve term.
+			//
+			$term = COntologyTerm::Resolve(
+						$theDatabase, (string) $item, NULL, TRUE );
+			
+			//
+			// Add to path.
+			//
+			$theTag->PushItem( $term );
+		
+		} // Iterating path items.
+		
+		//
+		// Save tag.
+		//
+		$id = $theTag->Insert( $theDatabase );
+
+	} // _ParseTag.
 
 		
 

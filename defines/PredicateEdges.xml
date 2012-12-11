@@ -4,78 +4,78 @@
      
 	<!-- kPREDICATE_SUBCLASS_OF -->
 	<edge>
-    	<kTAG_SUBJECT>:SUBCLASS-OF</kTAG_SUBJECT>
-    	<kTAG_PREDICATE>:SUBCLASS-OF</kTAG_PREDICATE>
-    	<kTAG_OBJECT>:PREDICATES</kTAG_OBJECT>
+    	<element variable="kTAG_SUBJECT">:SUBCLASS-OF</element>
+    	<element variable="kTAG_PREDICATE">:SUBCLASS-OF</element>
+    	<element variable="kTAG_OBJECT">:PREDICATES</element>
     </edge>
      
 	<!-- kPREDICATE_SUBSET_OF -->
 	<edge>
-    	<kTAG_SUBJECT>:SUBSET-OF</kTAG_SUBJECT>
-    	<kTAG_PREDICATE>:SUBCLASS-OF</kTAG_PREDICATE>
-    	<kTAG_OBJECT>:PREDICATES</kTAG_OBJECT>
+    	<element variable="kTAG_SUBJECT">:SUBSET-OF</element>
+    	<element variable="kTAG_PREDICATE">:SUBCLASS-OF</element>
+    	<element variable="kTAG_OBJECT">:PREDICATES</element>
     </edge>
      
 	<!-- kPREDICATE_ATTRIBUTE_OF -->
 	<edge>
-    	<kTAG_SUBJECT>:ATTRIBUTE-OF</kTAG_SUBJECT>
-    	<kTAG_PREDICATE>:SUBCLASS-OF</kTAG_PREDICATE>
-    	<kTAG_OBJECT>:PREDICATES</kTAG_OBJECT>
+    	<element variable="kTAG_SUBJECT">:ATTRIBUTE-OF</element>
+    	<element variable="kTAG_PREDICATE">:SUBCLASS-OF</element>
+    	<element variable="kTAG_OBJECT">:PREDICATES</element>
     </edge>
      
 	<!-- kPREDICATE_METHOD_OF -->
 	<edge>
-    	<kTAG_SUBJECT>:METHOD-OF</kTAG_SUBJECT>
-    	<kTAG_PREDICATE>:SUBCLASS-OF</kTAG_PREDICATE>
-    	<kTAG_OBJECT>:PREDICATES</kTAG_OBJECT>
+    	<element variable="kTAG_SUBJECT">:METHOD-OF</element>
+    	<element variable="kTAG_PREDICATE">:SUBCLASS-OF</element>
+    	<element variable="kTAG_OBJECT">:PREDICATES</element>
     </edge>
      
 	<!-- kPREDICATE_SCALE_OF -->
 	<edge>
-    	<kTAG_SUBJECT>:SCALE-OF</kTAG_SUBJECT>
-    	<kTAG_PREDICATE>:SUBCLASS-OF</kTAG_PREDICATE>
-    	<kTAG_OBJECT>:PREDICATES</kTAG_OBJECT>
+    	<element variable="kTAG_SUBJECT">:SCALE-OF</element>
+    	<element variable="kTAG_PREDICATE">:SUBCLASS-OF</element>
+    	<element variable="kTAG_OBJECT">:PREDICATES</element>
     </edge>
      
 	<!-- kPREDICATE_ENUM_OF -->
 	<edge>
-    	<kTAG_SUBJECT>:ENUM-OF</kTAG_SUBJECT>
-    	<kTAG_PREDICATE>:SUBCLASS-OF</kTAG_PREDICATE>
-    	<kTAG_OBJECT>:PREDICATES</kTAG_OBJECT>
+    	<element variable="kTAG_SUBJECT">:ENUM-OF</element>
+    	<element variable="kTAG_PREDICATE">:SUBCLASS-OF</element>
+    	<element variable="kTAG_OBJECT">:PREDICATES</element>
     </edge>
      
 	<!-- kPREDICATE_PREFERRED -->
 	<edge>
-    	<kTAG_SUBJECT>:PREFERRED</kTAG_SUBJECT>
-    	<kTAG_PREDICATE>:SUBCLASS-OF</kTAG_PREDICATE>
-    	<kTAG_OBJECT>:PREDICATES</kTAG_OBJECT>
+    	<element variable="kTAG_SUBJECT">:PREFERRED</element>
+    	<element variable="kTAG_PREDICATE">:SUBCLASS-OF</element>
+    	<element variable="kTAG_OBJECT">:PREDICATES</element>
     </edge>
      
 	<!-- kPREDICATE_VALID -->
 	<edge>
-    	<kTAG_SUBJECT>:VALID</kTAG_SUBJECT>
-    	<kTAG_PREDICATE>:SUBCLASS-OF</kTAG_PREDICATE>
-    	<kTAG_OBJECT>:PREDICATES</kTAG_OBJECT>
+    	<element variable="kTAG_SUBJECT">:VALID</element>
+    	<element variable="kTAG_PREDICATE">:SUBCLASS-OF</element>
+    	<element variable="kTAG_OBJECT">:PREDICATES</element>
     </edge>
      
 	<!-- kPREDICATE_LEGACY -->
 	<edge>
-    	<kTAG_SUBJECT>:LEGACY</kTAG_SUBJECT>
-    	<kTAG_PREDICATE>:SUBCLASS-OF</kTAG_PREDICATE>
-    	<kTAG_OBJECT>:PREDICATES</kTAG_OBJECT>
+    	<element variable="kTAG_SUBJECT">:LEGACY</element>
+    	<element variable="kTAG_PREDICATE">:SUBCLASS-OF</element>
+    	<element variable="kTAG_OBJECT">:PREDICATES</element>
     </edge>
      
 	<!-- kPREDICATE_XREF -->
 	<edge>
-    	<kTAG_SUBJECT>:XREF</kTAG_SUBJECT>
-    	<kTAG_PREDICATE>:SUBCLASS-OF</kTAG_PREDICATE>
-    	<kTAG_OBJECT>:PREDICATES</kTAG_OBJECT>
+    	<element variable="kTAG_SUBJECT">:XREF</element>
+    	<element variable="kTAG_PREDICATE">:SUBCLASS-OF</element>
+    	<element variable="kTAG_OBJECT">:PREDICATES</element>
     </edge>
      
 	<!-- kPREDICATE_XREF_EXACT -->
 	<edge>
-    	<kTAG_SUBJECT>:XREF-EXACT</kTAG_SUBJECT>
-    	<kTAG_PREDICATE>:SUBCLASS-OF</kTAG_PREDICATE>
-    	<kTAG_OBJECT>:PREDICATES</kTAG_OBJECT>
+    	<element variable="kTAG_SUBJECT">:XREF-EXACT</element>
+    	<element variable="kTAG_PREDICATE">:SUBCLASS-OF</element>
+    	<element variable="kTAG_OBJECT">:PREDICATES</element>
     </edge>
 </edges>

@@ -3,691 +3,691 @@
     <!-- STATUS ENUMERATIONS -->
     
     <!-- kSTATUS_IDLE -->
-    <term kTAG_LID="0" kTAG_NAMESPACE=":STATUS">
-        <kTAG_KIND>
+    <term lid="0" ns=":STATUS">
+        <element variable="kTAG_KIND">
             <item>:KIND-ENUMERATION</item>
-        </kTAG_KIND>
-        <kTAG_LABEL language="en">Idle</kTAG_LABEL>
-        <kTAG_DEFINITION language="en"><![CDATA[This code indicates <i>no errors</i>, this
+        </element>
+        <element variable="kTAG_LABEL" key="en">Idle</element>
+        <element variable="kTAG_DEFINITION" key="en"><![CDATA[This code indicates <i>no errors</i>, this
         	state can be equated to an <i>idle state</i>.
             ]]>
-        </kTAG_DEFINITION>
-        <kTAG_SYNONYMS>
+        </element>
+        <element variable="kTAG_SYNONYMS">
             <item>kSTATUS_IDLE</item>
-        </kTAG_SYNONYMS>
+        </element>
     </term>
     
     <!-- kSTATUS_NOTICE -->
-    <term kTAG_LID="10" kTAG_NAMESPACE=":STATUS">
-        <kTAG_KIND>
+    <term lid="10" ns=":STATUS">
+        <element variable="kTAG_KIND">
             <item>:KIND-ENUMERATION</item>
-        </kTAG_KIND>
-        <kTAG_LABEL language="en">Notice</kTAG_LABEL>
-        <kTAG_DEFINITION language="en"><![CDATA[This code indicates a <i>notice</i>. A
+        </element>
+        <element variable="kTAG_LABEL" key="en">Notice</element>
+        <element variable="kTAG_DEFINITION" key="en"><![CDATA[This code indicates a <i>notice</i>. A
         	notice is an <i>informative</i> message that <i>does not imply an error or
         	warning</i>, nor a situation that should be handled; it can be considered as
         	statistical data.
             ]]>
-        </kTAG_DEFINITION>
-        <kTAG_SYNONYMS>
+        </element>
+        <element variable="kTAG_SYNONYMS">
             <item>kSTATUS_NOTICE</item>
-        </kTAG_SYNONYMS>
+        </element>
     </term>
     
     <!-- kSTATUS_MESSAGE -->
-    <term kTAG_LID="20" kTAG_NAMESPACE=":STATUS">
-        <kTAG_KIND>
+    <term lid="20" ns=":STATUS">
+        <element variable="kTAG_KIND">
             <item>:KIND-ENUMERATION</item>
-        </kTAG_KIND>
-        <kTAG_LABEL language="en">Message</kTAG_LABEL>
-        <kTAG_DEFINITION language="en"><![CDATA[This code indicates a <i>message</i>. A
+        </element>
+        <element variable="kTAG_LABEL" key="en">Message</element>
+        <element variable="kTAG_DEFINITION" key="en"><![CDATA[This code indicates a <i>message</i>. A
         	message is an <i>informative</i> message that is addressed to somebody,
         	although it <i>does not imply an error or warning</i>, it was <i>issued to a
         	receiving party</i>.
             ]]>
-        </kTAG_DEFINITION>
-        <kTAG_SYNONYMS>
+        </element>
+        <element variable="kTAG_SYNONYMS">
             <item>kSTATUS_MESSAGE</item>
-        </kTAG_SYNONYMS>
+        </element>
     </term>
     
     <!-- kSTATUS_WARNING -->
-    <term kTAG_LID="30" kTAG_NAMESPACE=":STATUS">
-        <kTAG_KIND>
+    <term lid="30" ns=":STATUS">
+        <element variable="kTAG_KIND">
             <item>:KIND-ENUMERATION</item>
-        </kTAG_KIND>
-        <kTAG_LABEL language="en">Warning</kTAG_LABEL>
-        <kTAG_DEFINITION language="en"><![CDATA[This code indicates a <i>warning</i>
+        </element>
+        <element variable="kTAG_LABEL" key="en">Warning</element>
+        <element variable="kTAG_DEFINITION" key="en"><![CDATA[This code indicates a <i>warning</i>
         	Warnings are <i>informative</i> data that indicate a <i>potential problem</i>,
         	although they <i>do not imply an error</i>, they indicate a potential problem
         	or an <i>issue that should be addressed</i> at least at a later stage.
             ]]>
-        </kTAG_DEFINITION>
-        <kTAG_SYNONYMS>
+        </element>
+        <element variable="kTAG_SYNONYMS">
             <item>kSTATUS_WARNING</item>
-        </kTAG_SYNONYMS>
+        </element>
     </term>
     
     <!-- kSTATUS_ERROR -->
-    <term kTAG_LID="40" kTAG_NAMESPACE=":STATUS">
-        <kTAG_KIND>
+    <term lid="40" ns=":STATUS">
+        <element variable="kTAG_KIND">
             <item>:KIND-ENUMERATION</item>
-        </kTAG_KIND>
-        <kTAG_LABEL language="en">Error</kTAG_LABEL>
-        <kTAG_DEFINITION language="en"><![CDATA[This code indicates an <i>error</i>.
+        </element>
+        <element variable="kTAG_LABEL" key="en">Error</element>
+        <element variable="kTAG_DEFINITION" key="en"><![CDATA[This code indicates an <i>error</i>.
         	Errors indicate that something <i>prevented an operation from being
         	performed</i>, this does not necessarily mean that the whole process is
         	halted, but that the <i>results of an operation were not be as expected</i>.
             ]]>
-        </kTAG_DEFINITION>
-        <kTAG_SYNONYMS>
+        </element>
+        <element variable="kTAG_SYNONYMS">
             <item>kSTATUS_ERROR</item>
-        </kTAG_SYNONYMS>
+        </element>
     </term>
     
     <!-- kSTATUS_FATAL -->
-    <term kTAG_LID="50" kTAG_NAMESPACE=":STATUS">
-        <kTAG_KIND>
+    <term lid="50" ns=":STATUS">
+        <element variable="kTAG_KIND">
             <item>:KIND-ENUMERATION</item>
-        </kTAG_KIND>
-        <kTAG_LABEL language="en">Fatal</kTAG_LABEL>
-        <kTAG_DEFINITION language="en"><![CDATA[This code indicates a <i>fatal error</i>.
+        </element>
+        <element variable="kTAG_LABEL" key="en">Fatal</element>
+        <element variable="kTAG_DEFINITION" key="en"><![CDATA[This code indicates a <i>fatal error</i>.
         	Fatal errors result in <i>stopping the whole process</i>: in this case the
 				error will prevent other operations from being performed and the <i>whole
 				process should be halted</i>.
             ]]>
-        </kTAG_DEFINITION>
-        <kTAG_SYNONYMS>
+        </element>
+        <element variable="kTAG_SYNONYMS">
             <item>kSTATUS_FATAL</item>
-        </kTAG_SYNONYMS>
+        </element>
     </term>
     
     <!-- kSTATUS_BUG -->
-    <term kTAG_LID="60" kTAG_NAMESPACE=":STATUS">
-        <kTAG_KIND>
+    <term lid="60" ns=":STATUS">
+        <element variable="kTAG_KIND">
             <item>:KIND-ENUMERATION</item>
-        </kTAG_KIND>
-        <kTAG_LABEL language="en">Bug</kTAG_LABEL>
-        <kTAG_DEFINITION language="en"><![CDATA[This code indicates a <i>bug</i>. Bugs,
+        </element>
+        <element variable="kTAG_LABEL" key="en">Bug</element>
+        <element variable="kTAG_DEFINITION" key="en"><![CDATA[This code indicates a <i>bug</i>. Bugs,
         	as opposed to errors, result from <i>internal causes independant from external
         	factors</i>. A bug indicates that an <i>operation will never execute as
         	stated</i>, it does not necessarily mean that it is fatal, but rather that the
         	<i>behaviour of an operation does not correspond to its declaration</i>.
             ]]>
-        </kTAG_DEFINITION>
-        <kTAG_SYNONYMS>
+        </element>
+        <element variable="kTAG_SYNONYMS">
             <item>kSTATUS_BUG</item>
-        </kTAG_SYNONYMS>
+        </element>
     </term>
     
     <!-- OPERATOR ENUMERATIONS -->
     
     <!-- kOPERATOR_DISABLED -->
-    <term kTAG_LID="$NO" kTAG_NAMESPACE="">
-        <kTAG_KIND>
+    <term lid="$NO" ns="">
+        <element variable="kTAG_KIND">
             <item>:KIND-ENUMERATION</item>
-        </kTAG_KIND>
-        <kTAG_LABEL language="en">Disabled</kTAG_LABEL>
-        <kTAG_DEFINITION language="en"><![CDATA[<i>Disabled operator</i>.
+        </element>
+        <element variable="kTAG_LABEL" key="en">Disabled</element>
+        <element variable="kTAG_DEFINITION" key="en"><![CDATA[<i>Disabled operator</i>.
             ]]>
-        </kTAG_DEFINITION>
-        <kTAG_SYNONYMS>
+        </element>
+        <element variable="kTAG_SYNONYMS">
             <item>kOPERATOR_DISABLED</item>
-        </kTAG_SYNONYMS>
+        </element>
     </term>
     
     <!-- kOPERATOR_EQUAL -->
-    <term kTAG_LID="$EQ" kTAG_NAMESPACE="">
-        <kTAG_KIND>
+    <term lid="$EQ" ns="">
+        <element variable="kTAG_KIND">
             <item>:KIND-ENUMERATION</item>
-        </kTAG_KIND>
-        <kTAG_LABEL language="en">Equal</kTAG_LABEL>
-        <kTAG_DEFINITION language="en"><![CDATA[<i>Equality</i> operator.
+        </element>
+        <element variable="kTAG_LABEL" key="en">Equal</element>
+        <element variable="kTAG_DEFINITION" key="en"><![CDATA[<i>Equality</i> operator.
             ]]>
-        </kTAG_DEFINITION>
-        <kTAG_SYNONYMS>
+        </element>
+        <element variable="kTAG_SYNONYMS">
             <item>=</item>
             <item>kOPERATOR_EQUAL</item>
-        </kTAG_SYNONYMS>
+        </element>
     </term>
     
     <!-- kOPERATOR_EQUAL_NOT -->
-    <term kTAG_LID="$NE" kTAG_NAMESPACE="">
-        <kTAG_KIND>
+    <term lid="$NE" ns="">
+        <element variable="kTAG_KIND">
             <item>:KIND-ENUMERATION</item>
-        </kTAG_KIND>
-        <kTAG_LABEL language="en">Not equal</kTAG_LABEL>
-        <kTAG_DEFINITION language="en"><![CDATA[<i>Inequality</i> operator.
+        </element>
+        <element variable="kTAG_LABEL" key="en">Not equal</element>
+        <element variable="kTAG_DEFINITION" key="en"><![CDATA[<i>Inequality</i> operator.
             ]]>
-        </kTAG_DEFINITION>
-        <kTAG_SYNONYMS>
+        </element>
+        <element variable="kTAG_SYNONYMS">
             <item>≠</item>
             <item>!=</item>
             <item>kOPERATOR_EQUAL_NOT</item>
-        </kTAG_SYNONYMS>
+        </element>
     </term>
     
     <!-- kOPERATOR_LIKE -->
-    <term kTAG_LID="$AS" kTAG_NAMESPACE="">
-        <kTAG_KIND>
+    <term lid="$AS" ns="">
+        <element variable="kTAG_KIND">
             <item>:KIND-ENUMERATION</item>
-        </kTAG_KIND>
-        <kTAG_LABEL language="en">Like</kTAG_LABEL>
-        <kTAG_DEFINITION language="en"><![CDATA[<i>Case and accent matching</i> operator
+        </element>
+        <element variable="kTAG_LABEL" key="en">Like</element>
+        <element variable="kTAG_DEFINITION" key="en"><![CDATA[<i>Case and accent matching</i> operator
         	(for strings).
             ]]>
-        </kTAG_DEFINITION>
-        <kTAG_SYNONYMS>
+        </element>
+        <element variable="kTAG_SYNONYMS">
             <item>≈</item>
             <item>kOPERATOR_LIKE</item>
-        </kTAG_SYNONYMS>
+        </element>
     </term>
     
     <!-- kOPERATOR_LIKE_NOT -->
-    <term kTAG_LID="$NS" kTAG_NAMESPACE="">
-        <kTAG_KIND>
+    <term lid="$NS" ns="">
+        <element variable="kTAG_KIND">
             <item>:KIND-ENUMERATION</item>
-        </kTAG_KIND>
-        <kTAG_LABEL language="en">Not like</kTAG_LABEL>
-        <kTAG_DEFINITION language="en"><![CDATA[<i>Case and accent not matching</i> operator
+        </element>
+        <element variable="kTAG_LABEL" key="en">Not like</element>
+        <element variable="kTAG_DEFINITION" key="en"><![CDATA[<i>Case and accent not matching</i> operator
         	(for strings).
             ]]>
-        </kTAG_DEFINITION>
-        <kTAG_SYNONYMS>
+        </element>
+        <element variable="kTAG_SYNONYMS">
             <item>!≈</item>
             <item>kOPERATOR_LIKE_NOT</item>
-        </kTAG_SYNONYMS>
+        </element>
     </term>
     
     <!-- kOPERATOR_PREFIX -->
-    <term kTAG_LID="$PX" kTAG_NAMESPACE="">
-        <kTAG_KIND>
+    <term lid="$PX" ns="">
+        <element variable="kTAG_KIND">
             <item>:KIND-ENUMERATION</item>
-        </kTAG_KIND>
-        <kTAG_LABEL language="en">Starts with</kTAG_LABEL>
-        <kTAG_DEFINITION language="en"><![CDATA[<i>Prefix matching</i> operator: <i>starts
+        </element>
+        <element variable="kTAG_LABEL" key="en">Starts with</element>
+        <element variable="kTAG_DEFINITION" key="en"><![CDATA[<i>Prefix matching</i> operator: <i>starts
         	with</i> (for strings).
             ]]>
-        </kTAG_DEFINITION>
-        <kTAG_SYNONYMS>
+        </element>
+        <element variable="kTAG_SYNONYMS">
             <item>kOPERATOR_PREFIX</item>
-        </kTAG_SYNONYMS>
+        </element>
     </term>
     
     <!-- kOPERATOR_PREFIX_NOCASE -->
-    <term kTAG_LID="$PXi" kTAG_NAMESPACE="">
-        <kTAG_KIND>
+    <term lid="$PXi" ns="">
+        <element variable="kTAG_KIND">
             <item>:KIND-ENUMERATION</item>
-        </kTAG_KIND>
-        <kTAG_LABEL language="en">Case-insensitive prefix</kTAG_LABEL>
-        <kTAG_DEFINITION language="en"><![CDATA[<i>Prefix matching</i> operator: <i>starts
+        </element>
+        <element variable="kTAG_LABEL" key="en">Case-insensitive prefix</element>
+        <element variable="kTAG_DEFINITION" key="en"><![CDATA[<i>Prefix matching</i> operator: <i>starts
         	with</i> (for strings) with <i>case and accent insensitive</i> comparaison.
             ]]>
-        </kTAG_DEFINITION>
-        <kTAG_SYNONYMS>
+        </element>
+        <element variable="kTAG_SYNONYMS">
             <item>kOPERATOR_PREFIX_NOCASE</item>
-        </kTAG_SYNONYMS>
+        </element>
     </term>
     
     <!-- kOPERATOR_CONTAINS -->
-    <term kTAG_LID="$CX" kTAG_NAMESPACE="">
-        <kTAG_KIND>
+    <term lid="$CX" ns="">
+        <element variable="kTAG_KIND">
             <item>:KIND-ENUMERATION</item>
-        </kTAG_KIND>
-        <kTAG_LABEL language="en">Contains</kTAG_LABEL>
-        <kTAG_DEFINITION language="en"><![CDATA[<i>Content matching</i> operator:
+        </element>
+        <element variable="kTAG_LABEL" key="en">Contains</element>
+        <element variable="kTAG_DEFINITION" key="en"><![CDATA[<i>Content matching</i> operator:
         	<i>contains</i> (for strings).
             ]]>
-        </kTAG_DEFINITION>
-        <kTAG_SYNONYMS>
+        </element>
+        <element variable="kTAG_SYNONYMS">
             <item>kOPERATOR_CONTAINS</item>
-        </kTAG_SYNONYMS>
+        </element>
     </term>
     
     <!-- kOPERATOR_CONTAINS_NOCASE -->
-    <term kTAG_LID="$CXi" kTAG_NAMESPACE="">
-        <kTAG_KIND>
+    <term lid="$CXi" ns="">
+        <element variable="kTAG_KIND">
             <item>:KIND-ENUMERATION</item>
-        </kTAG_KIND>
-        <kTAG_LABEL language="en">Case-insensitive contains</kTAG_LABEL>
-        <kTAG_DEFINITION language="en"><![CDATA[<i>Content matching</i> operator:
+        </element>
+        <element variable="kTAG_LABEL" key="en">Case-insensitive contains</element>
+        <element variable="kTAG_DEFINITION" key="en"><![CDATA[<i>Content matching</i> operator:
         	<i>contains</i> (for strings) with <i>case and accent insensitive</i>
         	comparaison.
             ]]>
-        </kTAG_DEFINITION>
-        <kTAG_SYNONYMS>
+        </element>
+        <element variable="kTAG_SYNONYMS">
             <item>kOPERATOR_CONTAINS_NOCASE</item>
-        </kTAG_SYNONYMS>
+        </element>
     </term>
     
     <!-- kOPERATOR_SUFFIX -->
-    <term kTAG_LID="$SX" kTAG_NAMESPACE="">
-        <kTAG_KIND>
+    <term lid="$SX" ns="">
+        <element variable="kTAG_KIND">
             <item>:KIND-ENUMERATION</item>
-        </kTAG_KIND>
-        <kTAG_LABEL language="en">Ends with</kTAG_LABEL>
-        <kTAG_DEFINITION language="en"><![CDATA[<i>Suffix matching</i> operator: <i>ends
+        </element>
+        <element variable="kTAG_LABEL" key="en">Ends with</element>
+        <element variable="kTAG_DEFINITION" key="en"><![CDATA[<i>Suffix matching</i> operator: <i>ends
         	with</i> (for strings).
             ]]>
-        </kTAG_DEFINITION>
-        <kTAG_SYNONYMS>
+        </element>
+        <element variable="kTAG_SYNONYMS">
             <item>kOPERATOR_SUFFIX</item>
-        </kTAG_SYNONYMS>
+        </element>
     </term>
     
     <!-- kOPERATOR_SUFFIX_NOCASE -->
-    <term kTAG_LID="$SXi" kTAG_NAMESPACE="">
-        <kTAG_KIND>
+    <term lid="$SXi" ns="">
+        <element variable="kTAG_KIND">
             <item>:KIND-ENUMERATION</item>
-        </kTAG_KIND>
-        <kTAG_LABEL language="en">Case-insensitive ends with</kTAG_LABEL>
-        <kTAG_DEFINITION language="en"><![CDATA[<i>Suffix matching</i> operator: <i>ends
+        </element>
+        <element variable="kTAG_LABEL" key="en">Case-insensitive ends with</element>
+        <element variable="kTAG_DEFINITION" key="en"><![CDATA[<i>Suffix matching</i> operator: <i>ends
         	with</i> (for strings) with <i>case and accent insensitive</i> comparaison.
             ]]>
-        </kTAG_DEFINITION>
-        <kTAG_SYNONYMS>
+        </element>
+        <element variable="kTAG_SYNONYMS">
             <item>kOPERATOR_SUFFIX_NOCASE</item>
-        </kTAG_SYNONYMS>
+        </element>
     </term>
     
     <!-- kOPERATOR_REGEX -->
-    <term kTAG_LID="$RE" kTAG_NAMESPACE="">
-        <kTAG_KIND>
+    <term lid="$RE" ns="">
+        <element variable="kTAG_KIND">
             <item>:KIND-ENUMERATION</item>
-        </kTAG_KIND>
-        <kTAG_LABEL language="en">Regular expression</kTAG_LABEL>
-        <kTAG_DEFINITION language="en"><![CDATA[<i>Regular expression</i> operator
+        </element>
+        <element variable="kTAG_LABEL" key="en">Regular expression</element>
+        <element variable="kTAG_DEFINITION" key="en"><![CDATA[<i>Regular expression</i> operator
         	(for strings).
             ]]>
-        </kTAG_DEFINITION>
-        <kTAG_SYNONYMS>
+        </element>
+        <element variable="kTAG_SYNONYMS">
             <item>kOPERATOR_REGEX</item>
-        </kTAG_SYNONYMS>
+        </element>
     </term>
     
     <!-- kOPERATOR_LESS -->
-    <term kTAG_LID="$LT" kTAG_NAMESPACE="">
-        <kTAG_KIND>
+    <term lid="$LT" ns="">
+        <element variable="kTAG_KIND">
             <item>:KIND-ENUMERATION</item>
-        </kTAG_KIND>
-        <kTAG_LABEL language="en">Smaller</kTAG_LABEL>
-        <kTAG_DEFINITION language="en"><![CDATA[<i>Less than</i> or <i>smaller than</i>
+        </element>
+        <element variable="kTAG_LABEL" key="en">Smaller</element>
+        <element variable="kTAG_DEFINITION" key="en"><![CDATA[<i>Less than</i> or <i>smaller than</i>
         	operator.
             ]]>
-        </kTAG_DEFINITION>
-        <kTAG_SYNONYMS>
+        </element>
+        <element variable="kTAG_SYNONYMS">
             <item><![CDATA[<]]></item>
             <item>kOPERATOR_LESS</item>
-        </kTAG_SYNONYMS>
+        </element>
     </term>
     
     <!-- kOPERATOR_LESS_EQUAL -->
-    <term kTAG_LID="$LE" kTAG_NAMESPACE="">
-        <kTAG_KIND>
+    <term lid="$LE" ns="">
+        <element variable="kTAG_KIND">
             <item>:KIND-ENUMERATION</item>
-        </kTAG_KIND>
-        <kTAG_LABEL language="en">Smaller or equal</kTAG_LABEL>
-        <kTAG_DEFINITION language="en"><![CDATA[<i>Less than or equal</i> or <i>smaller
+        </element>
+        <element variable="kTAG_LABEL" key="en">Smaller or equal</element>
+        <element variable="kTAG_DEFINITION" key="en"><![CDATA[<i>Less than or equal</i> or <i>smaller
         	than or equal</i> operator.
             ]]>
-        </kTAG_DEFINITION>
-        <kTAG_SYNONYMS>
+        </element>
+        <element variable="kTAG_SYNONYMS">
             <item><![CDATA[<=]]></item>
             <item>kOPERATOR_LESS_EQUAL</item>
-        </kTAG_SYNONYMS>
+        </element>
     </term>
     
     <!-- kOPERATOR_GREAT -->
-    <term kTAG_LID="$GT" kTAG_NAMESPACE="">
-        <kTAG_KIND>
+    <term lid="$GT" ns="">
+        <element variable="kTAG_KIND">
             <item>:KIND-ENUMERATION</item>
-        </kTAG_KIND>
-        <kTAG_LABEL language="en">Greater</kTAG_LABEL>
-        <kTAG_DEFINITION language="en"><![CDATA[<i>Greater than</i> or <i>larger than</i>
+        </element>
+        <element variable="kTAG_LABEL" key="en">Greater</element>
+        <element variable="kTAG_DEFINITION" key="en"><![CDATA[<i>Greater than</i> or <i>larger than</i>
         	operator.
             ]]>
-        </kTAG_DEFINITION>
-        <kTAG_SYNONYMS>
+        </element>
+        <element variable="kTAG_SYNONYMS">
             <item><![CDATA[>]]></item>
             <item>kOPERATOR_GREAT</item>
-        </kTAG_SYNONYMS>
+        </element>
     </term>
     
     <!-- kOPERATOR_GREAT_EQUAL -->
-    <term kTAG_LID="$GE" kTAG_NAMESPACE="">
-        <kTAG_KIND>
+    <term lid="$GE" ns="">
+        <element variable="kTAG_KIND">
             <item>:KIND-ENUMERATION</item>
-        </kTAG_KIND>
-        <kTAG_LABEL language="en">Greater or equal</kTAG_LABEL>
-        <kTAG_DEFINITION language="en"><![CDATA[<i>Greater or equal</i> or <i>larger or
+        </element>
+        <element variable="kTAG_LABEL" key="en">Greater or equal</element>
+        <element variable="kTAG_DEFINITION" key="en"><![CDATA[<i>Greater or equal</i> or <i>larger or
         	equal</i> operator.
             ]]>
-        </kTAG_DEFINITION>
-        <kTAG_SYNONYMS>
+        </element>
+        <element variable="kTAG_SYNONYMS">
             <item><![CDATA[>=]]></item>
             <item>kOPERATOR_GREAT_EQUAL</item>
-        </kTAG_SYNONYMS>
+        </element>
     </term>
     
     <!-- kOPERATOR_IRANGE -->
-    <term kTAG_LID="$IRG" kTAG_NAMESPACE="">
-        <kTAG_KIND>
+    <term lid="$IRG" ns="">
+        <element variable="kTAG_KIND">
             <item>:KIND-ENUMERATION</item>
-        </kTAG_KIND>
-        <kTAG_LABEL language="en">Range inclusive</kTAG_LABEL>
-        <kTAG_DEFINITION language="en"><![CDATA[<i>Range inclusive</i> operator, the
+        </element>
+        <element variable="kTAG_LABEL" key="en">Range inclusive</element>
+        <element variable="kTAG_DEFINITION" key="en"><![CDATA[<i>Range inclusive</i> operator, the
         	<i>valid range includes the limits</i>.
             ]]>
-        </kTAG_DEFINITION>
-        <kTAG_SYNONYMS>
+        </element>
+        <element variable="kTAG_SYNONYMS">
             <item>kOPERATOR_IRANGE</item>
-        </kTAG_SYNONYMS>
+        </element>
     </term>
     
     <!-- kOPERATOR_ERANGE -->
-    <term kTAG_LID="$ERG" kTAG_NAMESPACE="">
-        <kTAG_KIND>
+    <term lid="$ERG" ns="">
+        <element variable="kTAG_KIND">
             <item>:KIND-ENUMERATION</item>
-        </kTAG_KIND>
-        <kTAG_LABEL language="en">Range exclusive</kTAG_LABEL>
-        <kTAG_DEFINITION language="en"><![CDATA[<i>Range exclusive</i> operator, the
+        </element>
+        <element variable="kTAG_LABEL" key="en">Range exclusive</element>
+        <element variable="kTAG_DEFINITION" key="en"><![CDATA[<i>Range exclusive</i> operator, the
         	<i>valid range excludes the limits</i>.
             ]]>
-        </kTAG_DEFINITION>
-        <kTAG_SYNONYMS>
+        </element>
+        <element variable="kTAG_SYNONYMS">
             <item>kOPERATOR_ERANGE</item>
-        </kTAG_SYNONYMS>
+        </element>
     </term>
     
     <!-- kOPERATOR_NULL -->
-    <term kTAG_LID="$NU" kTAG_NAMESPACE="">
-        <kTAG_KIND>
+    <term lid="$NU" ns="">
+        <element variable="kTAG_KIND">
             <item>:KIND-ENUMERATION</item>
-        </kTAG_KIND>
-        <kTAG_LABEL language="en">Missing</kTAG_LABEL>
-        <kTAG_DEFINITION language="en"><![CDATA[<i>Missing</i> or <i>null</i> operator.
+        </element>
+        <element variable="kTAG_LABEL" key="en">Missing</element>
+        <element variable="kTAG_DEFINITION" key="en"><![CDATA[<i>Missing</i> or <i>null</i> operator.
             ]]>
-        </kTAG_DEFINITION>
-        <kTAG_SYNONYMS>
+        </element>
+        <element variable="kTAG_SYNONYMS">
             <item>kOPERATOR_NULL</item>
-        </kTAG_SYNONYMS>
+        </element>
     </term>
     
     <!-- kOPERATOR_NOT_NULL -->
-    <term kTAG_LID="$NN" kTAG_NAMESPACE="">
-        <kTAG_KIND>
+    <term lid="$NN" ns="">
+        <element variable="kTAG_KIND">
             <item>:KIND-ENUMERATION</item>
-        </kTAG_KIND>
-        <kTAG_LABEL language="en">Exists</kTAG_LABEL>
-        <kTAG_DEFINITION language="en"><![CDATA[<i>Exists</i> or <i>not null</i>
+        </element>
+        <element variable="kTAG_LABEL" key="en">Exists</element>
+        <element variable="kTAG_DEFINITION" key="en"><![CDATA[<i>Exists</i> or <i>not null</i>
         	operator.
             ]]>
-        </kTAG_DEFINITION>
-        <kTAG_SYNONYMS>
+        </element>
+        <element variable="kTAG_SYNONYMS">
             <item>kOPERATOR_NOT_NULL</item>
-        </kTAG_SYNONYMS>
+        </element>
     </term>
     
     <!-- kOPERATOR_IN -->
-    <term kTAG_LID="$IN" kTAG_NAMESPACE="">
-        <kTAG_KIND>
+    <term lid="$IN" ns="">
+        <element variable="kTAG_KIND">
             <item>:KIND-ENUMERATION</item>
-        </kTAG_KIND>
-        <kTAG_LABEL language="en">Belongs</kTAG_LABEL>
-        <kTAG_DEFINITION language="en"><![CDATA[<i>Belongs to set</i> operator, the value
+        </element>
+        <element variable="kTAG_LABEL" key="en">Belongs</element>
+        <element variable="kTAG_DEFINITION" key="en"><![CDATA[<i>Belongs to set</i> operator, the value
         	must <i>match at least one</i> of the list of options.
             ]]>
-        </kTAG_DEFINITION>
-        <kTAG_SYNONYMS>
+        </element>
+        <element variable="kTAG_SYNONYMS">
             <item>kOPERATOR_IN</item>
-        </kTAG_SYNONYMS>
+        </element>
     </term>
     
     <!-- kOPERATOR_NI -->
-    <term kTAG_LID="$NI" kTAG_NAMESPACE="">
-        <kTAG_KIND>
+    <term lid="$NI" ns="">
+        <element variable="kTAG_KIND">
             <item>:KIND-ENUMERATION</item>
-        </kTAG_KIND>
-        <kTAG_LABEL language="en">Not in</kTAG_LABEL>
-        <kTAG_DEFINITION language="en"><![CDATA[<i>Not in set</i> operator, the value
+        </element>
+        <element variable="kTAG_LABEL" key="en">Not in</element>
+        <element variable="kTAG_DEFINITION" key="en"><![CDATA[<i>Not in set</i> operator, the value
         	must <i>not match any</i> of the list of options.
             ]]>
-        </kTAG_DEFINITION>
-        <kTAG_SYNONYMS>
+        </element>
+        <element variable="kTAG_SYNONYMS">
             <item>kOPERATOR_NI</item>
-        </kTAG_SYNONYMS>
+        </element>
     </term>
     
     <!-- kOPERATOR_ALL -->
-    <term kTAG_LID="$AL" kTAG_NAMESPACE="">
-        <kTAG_KIND>
+    <term lid="$AL" ns="">
+        <element variable="kTAG_KIND">
             <item>:KIND-ENUMERATION</item>
-        </kTAG_KIND>
-        <kTAG_LABEL language="en">All</kTAG_LABEL>
-        <kTAG_DEFINITION language="en"><![CDATA[<i>Match all</i> operator, the value
+        </element>
+        <element variable="kTAG_LABEL" key="en">All</element>
+        <element variable="kTAG_DEFINITION" key="en"><![CDATA[<i>Match all</i> operator, the value
         	must <i>match all</i> of the list of options.
             ]]>
-        </kTAG_DEFINITION>
-        <kTAG_SYNONYMS>
+        </element>
+        <element variable="kTAG_SYNONYMS">
             <item>kOPERATOR_ALL</item>
-        </kTAG_SYNONYMS>
+        </element>
     </term>
     
     <!-- kOPERATOR_NALL -->
-    <term kTAG_LID="$NAL" kTAG_NAMESPACE="">
-        <kTAG_KIND>
+    <term lid="$NAL" ns="">
+        <element variable="kTAG_KIND">
             <item>:KIND-ENUMERATION</item>
-        </kTAG_KIND>
-        <kTAG_LABEL language="en">Not all</kTAG_LABEL>
-        <kTAG_DEFINITION language="en"><![CDATA[<i>Not all match</i> operator, the value
+        </element>
+        <element variable="kTAG_LABEL" key="en">Not all</element>
+        <element variable="kTAG_DEFINITION" key="en"><![CDATA[<i>Not all match</i> operator, the value
         	must <i>not match all</i> of the list of options.
             ]]>
-        </kTAG_DEFINITION>
-        <kTAG_SYNONYMS>
+        </element>
+        <element variable="kTAG_SYNONYMS">
             <item>kOPERATOR_NALL</item>
-        </kTAG_SYNONYMS>
+        </element>
     </term>
     
     <!-- kOPERATOR_EX -->
-    <term kTAG_LID="$EX" kTAG_NAMESPACE="">
-        <kTAG_KIND>
+    <term lid="$EX" ns="">
+        <element variable="kTAG_KIND">
             <item>:KIND-ENUMERATION</item>
-        </kTAG_KIND>
-        <kTAG_LABEL language="en">Expression</kTAG_LABEL>
-        <kTAG_DEFINITION language="en"><![CDATA[<i>Expression</i> operator.
+        </element>
+        <element variable="kTAG_LABEL" key="en">Expression</element>
+        <element variable="kTAG_DEFINITION" key="en"><![CDATA[<i>Expression</i> operator.
             ]]>
-        </kTAG_DEFINITION>
-        <kTAG_SYNONYMS>
+        </element>
+        <element variable="kTAG_SYNONYMS">
             <item>kOPERATOR_EX</item>
-        </kTAG_SYNONYMS>
+        </element>
     </term>
     
     <!-- BOOLEAN OPERATOR ENUMERATIONS -->
     
     <!-- kOPERATOR_AND -->
-    <term kTAG_LID="$AND" kTAG_NAMESPACE="">
-        <kTAG_KIND>
+    <term lid="$AND" ns="">
+        <element variable="kTAG_KIND">
             <item>:KIND-ENUMERATION</item>
-        </kTAG_KIND>
-        <kTAG_LABEL language="en">AND</kTAG_LABEL>
-        <kTAG_DEFINITION language="en"><![CDATA[Operator <i>AND</i>, represents the
+        </element>
+        <element variable="kTAG_LABEL" key="en">AND</element>
+        <element variable="kTAG_DEFINITION" key="en"><![CDATA[Operator <i>AND</i>, represents the
         	(A && B) operator.
             ]]>
-        </kTAG_DEFINITION>
-        <kTAG_SYNONYMS>
+        </element>
+        <element variable="kTAG_SYNONYMS">
             <item><![CDATA[&&]]></item>
             <item>kOPERATOR_AND</item>
-        </kTAG_SYNONYMS>
+        </element>
     </term>
     
     <!-- kOPERATOR_NAND -->
-    <term kTAG_LID="$NAND" kTAG_NAMESPACE="">
-        <kTAG_KIND>
+    <term lid="$NAND" ns="">
+        <element variable="kTAG_KIND">
             <item>:KIND-ENUMERATION</item>
-        </kTAG_KIND>
-        <kTAG_LABEL language="en">Not AND</kTAG_LABEL>
-        <kTAG_DEFINITION language="en"><![CDATA[Operator <i>not AND</i>, represents the
+        </element>
+        <element variable="kTAG_LABEL" key="en">Not AND</element>
+        <element variable="kTAG_DEFINITION" key="en"><![CDATA[Operator <i>not AND</i>, represents the
         	! (A && B) operator.
             ]]>
-        </kTAG_DEFINITION>
-        <kTAG_SYNONYMS>
+        </element>
+        <element variable="kTAG_SYNONYMS">
             <item>kOPERATOR_NAND</item>
-        </kTAG_SYNONYMS>
+        </element>
     </term>
     
     <!-- kOPERATOR_OR -->
-    <term kTAG_LID="$OR" kTAG_NAMESPACE="">
-        <kTAG_KIND>
+    <term lid="$OR" ns="">
+        <element variable="kTAG_KIND">
             <item>:KIND-ENUMERATION</item>
-        </kTAG_KIND>
-        <kTAG_LABEL language="en">OR</kTAG_LABEL>
-        <kTAG_DEFINITION language="en"><![CDATA[Operator <i>OR</i>, represents the
+        </element>
+        <element variable="kTAG_LABEL" key="en">OR</element>
+        <element variable="kTAG_DEFINITION" key="en"><![CDATA[Operator <i>OR</i>, represents the
         	(A || B) operator.
             ]]>
-        </kTAG_DEFINITION>
-        <kTAG_SYNONYMS>
+        </element>
+        <element variable="kTAG_SYNONYMS">
             <item><![CDATA[||]]></item>
             <item>kOPERATOR_OR</item>
-        </kTAG_SYNONYMS>
+        </element>
     </term>
     
     <!-- kOPERATOR_NOR -->
-    <term kTAG_LID="$NOR" kTAG_NAMESPACE="">
-        <kTAG_KIND>
+    <term lid="$NOR" ns="">
+        <element variable="kTAG_KIND">
             <item>:KIND-ENUMERATION</item>
-        </kTAG_KIND>
-        <kTAG_LABEL language="en">Not OR</kTAG_LABEL>
-        <kTAG_DEFINITION language="en"><![CDATA[Operator <i>not OR</i>, represents the
+        </element>
+        <element variable="kTAG_LABEL" key="en">Not OR</element>
+        <element variable="kTAG_DEFINITION" key="en"><![CDATA[Operator <i>not OR</i>, represents the
         	! (A || B) operator.
             ]]>
-        </kTAG_DEFINITION>
-        <kTAG_SYNONYMS>
+        </element>
+        <element variable="kTAG_SYNONYMS">
             <item>kOPERATOR_NOR</item>
-        </kTAG_SYNONYMS>
+        </element>
     </term>
     
     <!-- PRIMITIVE DATA TYPE ENUMERATIONS -->
     
     <!-- kTYPE_ANY -->
-    <term kTAG_LID="ANY" kTAG_NAMESPACE="">
-        <kTAG_KIND>
+    <term lid="ANY" ns="">
+        <element variable="kTAG_KIND">
             <item>:KIND-ENUMERATION</item>
-        </kTAG_KIND>
-        <kTAG_LABEL language="en">Any</kTAG_LABEL>
-        <kTAG_DEFINITION language="en"><![CDATA[This type represents a wildcard, it
+        </element>
+        <element variable="kTAG_LABEL" key="en">Any</element>
+        <element variable="kTAG_DEFINITION" key="en"><![CDATA[This type represents a wildcard, it
         	qualifies an attribute that can take <i>any type</i> of value.
             ]]>
-        </kTAG_DEFINITION>
-        <kTAG_SYNONYMS>
+        </element>
+        <element variable="kTAG_SYNONYMS">
             <item>kTYPE_ANY</item>
-        </kTAG_SYNONYMS>
+        </element>
     </term>
     
     <!-- kTYPE_STRING -->
-    <term kTAG_LID="TEXT" kTAG_NAMESPACE="">
-        <kTAG_KIND>
+    <term lid="TEXT" ns="">
+        <element variable="kTAG_KIND">
             <item>:KIND-ENUMERATION</item>
-        </kTAG_KIND>
-        <kTAG_LABEL language="en">String or text</kTAG_LABEL>
-        <kTAG_DEFINITION language="en"><![CDATA[This type defines <i>strings</i> or
+        </element>
+        <element variable="kTAG_LABEL" key="en">String or text</element>
+        <element variable="kTAG_DEFINITION" key="en"><![CDATA[This type defines <i>strings</i> or
         	<i>text</i>.
             ]]>
-        </kTAG_DEFINITION>
-        <kTAG_SYNONYMS>
+        </element>
+        <element variable="kTAG_SYNONYMS">
             <item>kTYPE_STRING</item>
-        </kTAG_SYNONYMS>
-        <kTAG_EXAMPLES>
+        </element>
+        <element variable="kTAG_EXAMPLES">
         	<item>STRING</item>
         	<item>This is some text</item>
-        </kTAG_EXAMPLES>
+        </element>
     </term>
     
     <!-- kTYPE_INT -->
-    <term kTAG_LID="INT" kTAG_NAMESPACE="">
-        <kTAG_KIND>
+    <term lid="INT" ns="">
+        <element variable="kTAG_KIND">
             <item>:KIND-ENUMERATION</item>
-        </kTAG_KIND>
-        <kTAG_LABEL language="en">Integer number</kTAG_LABEL>
-        <kTAG_DEFINITION language="en"><![CDATA[This type defines an <i>integer signed
+        </element>
+        <element variable="kTAG_LABEL" key="en">Integer number</element>
+        <element variable="kTAG_DEFINITION" key="en"><![CDATA[This type defines an <i>integer signed
         	numeric value</i> of an <i>indeterminate precision</i>.
             ]]>
-        </kTAG_DEFINITION>
-        <kTAG_SYNONYMS>
+        </element>
+        <element variable="kTAG_SYNONYMS">
             <item>kTYPE_INT</item>
-        </kTAG_SYNONYMS>
-        <kTAG_EXAMPLES>
+        </element>
+        <element variable="kTAG_EXAMPLES">
         	<item>-121</item>
         	<item>2187</item>
-        </kTAG_EXAMPLES>
+        </element>
     </term>
     
     <!-- kTYPE_FLOAT -->
-    <term kTAG_LID="FLOAT" kTAG_NAMESPACE="">
-        <kTAG_KIND>
+    <term lid="FLOAT" ns="">
+        <element variable="kTAG_KIND">
             <item>:KIND-ENUMERATION</item>
-        </kTAG_KIND>
-        <kTAG_LABEL language="en">Floating point number</kTAG_LABEL>
-        <kTAG_DEFINITION language="en"><![CDATA[This type defines an <i>floating point
+        </element>
+        <element variable="kTAG_LABEL" key="en">Floating point number</element>
+        <element variable="kTAG_DEFINITION" key="en"><![CDATA[This type defines an <i>floating point
         	signed numeric value</i> of an <i>indeterminate precision</i>.
             ]]>
-        </kTAG_DEFINITION>
-        <kTAG_SYNONYMS>
+        </element>
+        <element variable="kTAG_SYNONYMS">
             <item>kTYPE_FLOAT</item>
-        </kTAG_SYNONYMS>
-        <kTAG_EXAMPLES>
+        </element>
+        <element variable="kTAG_EXAMPLES">
         	<item>-121.27</item>
         	<item>2187.0</item>
-        </kTAG_EXAMPLES>
+        </element>
     </term>
     
     <!-- kTYPE_BOOLEAN -->
-    <term kTAG_LID="BOOLEAN" kTAG_NAMESPACE="">
-        <kTAG_KIND>
+    <term lid="BOOLEAN" ns="">
+        <element variable="kTAG_KIND">
             <item>:KIND-ENUMERATION</item>
-        </kTAG_KIND>
-        <kTAG_LABEL language="en">Boolean switch</kTAG_LABEL>
-        <kTAG_DEFINITION language="en"><![CDATA[This type defines a <i>switch</i> that can
+        </element>
+        <element variable="kTAG_LABEL" key="en">Boolean switch</element>
+        <element variable="kTAG_DEFINITION" key="en"><![CDATA[This type defines a <i>switch</i> that can
         	take two values: <tt>ON</tt> and <tt>OFF</tt>. By default we assume it to to be
         	represented by a number in which <i><tt>0</tt> is <tt>OFF</tt></i> and <i>any
         	other value is <tt>ON</tt></i>. Other valid representations may be
         	<tt>yes</tt>/<tt>no</tt>, <tt>true</tt>/<tt>false</tt>.
             ]]>
-        </kTAG_DEFINITION>
-        <kTAG_SYNONYMS>
+        </element>
+        <element variable="kTAG_SYNONYMS">
             <item>kTYPE_FLOAT</item>
-        </kTAG_SYNONYMS>
-        <kTAG_EXAMPLES>
+        </element>
+        <element variable="kTAG_EXAMPLES">
         	<item>1</item>
         	<item>0</item>
-        </kTAG_EXAMPLES>
+        </element>
     </term>
     
     <!-- CUSTOM PRIMITIVE DATA TYPE ENUMERATIONS -->
     
     <!-- kTYPE_BINARY_STRING -->
-    <term kTAG_LID="BINARY" kTAG_NAMESPACE="">
-        <kTAG_KIND>
+    <term lid="BINARY" ns="">
+        <element variable="kTAG_KIND">
             <item>:KIND-ENUMERATION</item>
-        </kTAG_KIND>
-        <kTAG_LABEL language="en">Binary string</kTAG_LABEL>
-        <kTAG_DEFINITION language="en"><![CDATA[This type represents a <i>sequence of
+        </element>
+        <element variable="kTAG_LABEL" key="en">Binary string</element>
+        <element variable="kTAG_DEFINITION" key="en"><![CDATA[This type represents a <i>sequence of
         	bytes</i>. It is equivalent to the string type, except that the string can
         	hold <i>elements of any value</i>, while the string type holds only text
         	elements.
             ]]>
-        </kTAG_DEFINITION>
-        <kTAG_SYNONYMS>
+        </element>
+        <element variable="kTAG_SYNONYMS">
             <item>kTYPE_BINARY_STRING</item>
-        </kTAG_SYNONYMS>
+        </element>
 	</term>
     
     <!-- kTYPE_DATE_STRING -->
-    <term kTAG_LID="DATE" kTAG_NAMESPACE="">
-        <kTAG_KIND>
+    <term lid="DATE" ns="">
+        <element variable="kTAG_KIND">
             <item>:KIND-ENUMERATION</item>
-        </kTAG_KIND>
-        <kTAG_LABEL language="en">Date string</kTAG_LABEL>
-        <kTAG_DEFINITION language="en"><![CDATA[This type represents a <i>date</i> in the
+        </element>
+        <element variable="kTAG_LABEL" key="en">Date string</element>
+        <element variable="kTAG_DEFINITION" key="en"><![CDATA[This type represents a <i>date</i> in the
         	form of a <i>hours</i>, <i>minutes</i> and <i>seconds</i> <tt>YYYYMMDD</tt>
         	<i>string</i> in which missing elements should be omitted. This means that if
         	we don't know the day we can express that date as <tt>YYYYMM</tt> and if we
@@ -695,24 +695,24 @@
         	functionally identical to the string type, except that its elements can
         	<i>only be digits</i> and their structure is known.
             ]]>
-        </kTAG_DEFINITION>
-        <kTAG_SYNONYMS>
+        </element>
+        <element variable="kTAG_SYNONYMS">
             <item>kTYPE_DATE_STRING</item>
-        </kTAG_SYNONYMS>
-        <kTAG_EXAMPLES>
+        </element>
+        <element variable="kTAG_EXAMPLES">
         	<item>19840728</item>
         	<item>198407</item>
         	<item>1984</item>
-        </kTAG_EXAMPLES>
+        </element>
 	</term>
     
     <!-- kTYPE_TIME_STRING -->
-    <term kTAG_LID="TIME" kTAG_NAMESPACE="">
-        <kTAG_KIND>
+    <term lid="TIME" ns="">
+        <element variable="kTAG_KIND">
             <item>:KIND-ENUMERATION</item>
-        </kTAG_KIND>
-        <kTAG_LABEL language="en">Time string</kTAG_LABEL>
-        <kTAG_DEFINITION language="en"><![CDATA[This type represents a <i>date</i> and
+        </element>
+        <element variable="kTAG_LABEL" key="en">Time string</element>
+        <element variable="kTAG_DEFINITION" key="en"><![CDATA[This type represents a <i>date</i> and
         	<i>time</i> which is a combination of the date string type followed by a
         	structure of three elements representing the <i>hours</i>, <i>minutes</i> and
         	<i>seconds</i> separated by colons, <tt>YYYYMMDD HHMMSS</tt>. <i>Missing
@@ -722,514 +722,514 @@
         	string type, except that its elements can <i>only be digits</i> and their
         	structure is known.
             ]]>
-        </kTAG_DEFINITION>
-        <kTAG_SYNONYMS>
+        </element>
+        <element variable="kTAG_SYNONYMS">
             <item>kTYPE_TIME_STRING</item>
-        </kTAG_SYNONYMS>
-        <kTAG_EXAMPLES>
+        </element>
+        <element variable="kTAG_EXAMPLES">
         	<item>19840728 132247</item>
         	<item>19840728 1322</item>
         	<item>19840728 13</item>
         	<item>19840728</item>
         	<item>198407</item>
         	<item>1984</item>
-        </kTAG_EXAMPLES>
+        </element>
 	</term>
     
     <!-- kTYPE_REGEX_STRING -->
-    <term kTAG_LID="REGEX" kTAG_NAMESPACE="">
-        <kTAG_KIND>
+    <term lid="REGEX" ns="">
+        <element variable="kTAG_KIND">
             <item>:KIND-ENUMERATION</item>
-        </kTAG_KIND>
-        <kTAG_LABEL language="en">Regular expression</kTAG_LABEL>
-        <kTAG_DEFINITION language="en"><![CDATA[This type represents a <i>regular
+        </element>
+        <element variable="kTAG_LABEL" key="en">Regular expression</element>
+        <element variable="kTAG_DEFINITION" key="en"><![CDATA[This type represents a <i>regular
         	expression</i> or <i>grep pattern</i> string, it is used to perform complex
         	<i>pattern selections</i> in strings.
             ]]>
-        </kTAG_DEFINITION>
-        <kTAG_SYNONYMS>
+        </element>
+        <element variable="kTAG_SYNONYMS">
             <item>kTYPE_REGEX_STRING</item>
-        </kTAG_SYNONYMS>
-        <kTAG_EXAMPLES>
+        </element>
+        <element variable="kTAG_EXAMPLES">
         	<item><![CDATA[[\w:/]+[.][\w%-/]+]]></item>
         	<item><![CDATA[[\w-.]+@[\w-.]+]]></item>
         	<item><![CDATA[[\w:/]+[.@]+[\w%-/]+]]></item>
-        </kTAG_EXAMPLES>
+        </element>
 	</term>
     
     <!-- kTYPE_INT32 -->
-    <term kTAG_LID="INT32" kTAG_NAMESPACE="">
-        <kTAG_KIND>
+    <term lid="INT32" ns="">
+        <element variable="kTAG_KIND">
             <item>:KIND-ENUMERATION</item>
-        </kTAG_KIND>
-        <kTAG_LABEL language="en">32 bit integer</kTAG_LABEL>
-        <kTAG_DEFINITION language="en"><![CDATA[This type defines a <i>32 bit signed
+        </element>
+        <element variable="kTAG_LABEL" key="en">32 bit integer</element>
+        <element variable="kTAG_DEFINITION" key="en"><![CDATA[This type defines a <i>32 bit signed
         	integer</i>, this number ranges from <tt>−2,147,483,648</tt> to
 			<tt>2,147,483,647</tt>.
             ]]>
-        </kTAG_DEFINITION>
-        <kTAG_SYNONYMS>
+        </element>
+        <element variable="kTAG_SYNONYMS">
             <item>kTYPE_INT32</item>
-        </kTAG_SYNONYMS>
+        </element>
 	</term>
     
     <!-- kTYPE_INT64 -->
-    <term kTAG_LID="INT64" kTAG_NAMESPACE="">
-        <kTAG_KIND>
+    <term lid="INT64" ns="">
+        <element variable="kTAG_KIND">
             <item>:KIND-ENUMERATION</item>
-        </kTAG_KIND>
-        <kTAG_LABEL language="en">64 bit integer</kTAG_LABEL>
-        <kTAG_DEFINITION language="en"><![CDATA[This type defines a <i>64 bit signed
+        </element>
+        <element variable="kTAG_LABEL" key="en">64 bit integer</element>
+        <element variable="kTAG_DEFINITION" key="en"><![CDATA[This type defines a <i>64 bit signed
         	integer</i>, this number ranges from <tt>−9,223,372,036,854,775,808</tt> to
 			<tt>9,223,372,036,854,775,807</tt>.
             ]]>
-        </kTAG_DEFINITION>
-        <kTAG_SYNONYMS>
+        </element>
+        <element variable="kTAG_SYNONYMS">
             <item>kTYPE_INT64</item>
-        </kTAG_SYNONYMS>
+        </element>
 	</term>
     
     <!-- STANDARD FORMAT TYPE ENUMERATIONS -->
     
     <!-- kTYPE_META -->
-    <term kTAG_LID="META" kTAG_NAMESPACE="">
-        <kTAG_KIND>
+    <term lid="META" ns="">
+        <element variable="kTAG_KIND">
             <item>:KIND-ENUMERATION</item>
-        </kTAG_KIND>
-        <kTAG_LABEL language="en">Metadata</kTAG_LABEL>
-        <kTAG_DEFINITION language="en"><![CDATA[This type represents the primitive <i>meta
+        </element>
+        <element variable="kTAG_LABEL" key="en">Metadata</element>
+        <element variable="kTAG_DEFINITION" key="en"><![CDATA[This type represents the primitive <i>meta
         	data</i> type, it is a <i>generalised</i> metadata type.
             ]]>
-        </kTAG_DEFINITION>
-        <kTAG_SYNONYMS>
+        </element>
+        <element variable="kTAG_SYNONYMS">
             <item>kTYPE_META</item>
-        </kTAG_SYNONYMS>
+        </element>
 	</term>
     
     <!-- kTYPE_PHP -->
-    <term kTAG_LID="PHP" kTAG_NAMESPACE="">
-        <kTAG_KIND>
+    <term lid="PHP" ns="">
+        <element variable="kTAG_KIND">
             <item>:KIND-ENUMERATION</item>
-        </kTAG_KIND>
-        <kTAG_LABEL language="en">PHP</kTAG_LABEL>
-        <kTAG_DEFINITION language="en"><![CDATA[This type represents the <tt>PHP</tt>
+        </element>
+        <element variable="kTAG_LABEL" key="en">PHP</element>
+        <element variable="kTAG_DEFINITION" key="en"><![CDATA[This type represents the <tt>PHP</tt>
         	serialised data format. This type is functionally identical to the string type,
         	except that the <i>contents are encoded</i>.
             ]]>
-        </kTAG_DEFINITION>
-        <kTAG_SYNONYMS>
+        </element>
+        <element variable="kTAG_SYNONYMS">
             <item>kTYPE_PHP</item>
-        </kTAG_SYNONYMS>
+        </element>
 	</term>
     
     <!-- kTYPE_JSON -->
-    <term kTAG_LID="JSON" kTAG_NAMESPACE="">
-        <kTAG_KIND>
+    <term lid="JSON" ns="">
+        <element variable="kTAG_KIND">
             <item>:KIND-ENUMERATION</item>
-        </kTAG_KIND>
-        <kTAG_LABEL language="en">:JSON</kTAG_LABEL>
-        <kTAG_DEFINITION language="en"><![CDATA[This type represents the <tt>JSON</tt>
+        </element>
+        <element variable="kTAG_LABEL" key="en">:JSON</element>
+        <element variable="kTAG_DEFINITION" key="en"><![CDATA[This type represents the <tt>JSON</tt>
         	encoded data format. This type is functionally identical to the string type,
         	except that the <i>contents are encoded</i>.
             ]]>
-        </kTAG_DEFINITION>
-        <kTAG_SYNONYMS>
+        </element>
+        <element variable="kTAG_SYNONYMS">
             <item>kTYPE_JSON</item>
-        </kTAG_SYNONYMS>
+        </element>
 	</term>
     
     <!-- kTYPE_XML -->
-    <term kTAG_LID="XML" kTAG_NAMESPACE="">
-        <kTAG_KIND>
+    <term lid="XML" ns="">
+        <element variable="kTAG_KIND">
             <item>:KIND-ENUMERATION</item>
-        </kTAG_KIND>
-        <kTAG_LABEL language="en">:XML</kTAG_LABEL>
-        <kTAG_DEFINITION language="en"><![CDATA[This type represents the <tt>XML</tt>
+        </element>
+        <element variable="kTAG_LABEL" key="en">:XML</element>
+        <element variable="kTAG_DEFINITION" key="en"><![CDATA[This type represents the <tt>XML</tt>
         	encoded data format. This type is functionally identical to the string type,
         	except that the <i>contents are encoded</i>.
             ]]>
-        </kTAG_DEFINITION>
-        <kTAG_SYNONYMS>
+        </element>
+        <element variable="kTAG_SYNONYMS">
             <item>kTYPE_XML</item>
-        </kTAG_SYNONYMS>
+        </element>
 	</term>
     
     <!-- kTYPE_SVG -->
-    <term kTAG_LID="SVG" kTAG_NAMESPACE="">
-        <kTAG_KIND>
+    <term lid="SVG" ns="">
+        <element variable="kTAG_KIND">
             <item>:KIND-ENUMERATION</item>
-        </kTAG_KIND>
-        <kTAG_LABEL language="en">:SVG</kTAG_LABEL>
-        <kTAG_DEFINITION language="en"><![CDATA[This type represents the <tt>SVG</tt>
+        </element>
+        <element variable="kTAG_LABEL" key="en">:SVG</element>
+        <element variable="kTAG_DEFINITION" key="en"><![CDATA[This type represents the <tt>SVG</tt>
         	encoded data format. This type is functionally identical to the XML type,
         	except that the <i>contents represent an encoded vector image file</i>.
             ]]>
-        </kTAG_DEFINITION>
-        <kTAG_SYNONYMS>
+        </element>
+        <element variable="kTAG_SYNONYMS">
             <item>kTYPE_SVG</item>
-        </kTAG_SYNONYMS>
+        </element>
 	</term>
     
     <!-- STRUCTURED TYPE ENUMERATIONS -->
     
     <!-- kTYPE_STRUCT -->
-    <term kTAG_LID="STRUCT" kTAG_NAMESPACE="">
-        <kTAG_KIND>
+    <term lid="STRUCT" ns="">
+        <element variable="kTAG_KIND">
             <item>:KIND-ENUMERATION</item>
-        </kTAG_KIND>
-        <kTAG_LABEL language="en">Structure</kTAG_LABEL>
-        <kTAG_DEFINITION language="en"><![CDATA[This data type refers to a <i>structure</i>,
+        </element>
+        <element variable="kTAG_LABEL" key="en">Structure</element>
+        <element variable="kTAG_DEFINITION" key="en"><![CDATA[This data type refers to a <i>structure</i>,
         	it implies that the attribute to which it refers to is a <i>container of other
         	attributes</i> that will hold the actual data.
             ]]>
-        </kTAG_DEFINITION>
-        <kTAG_SYNONYMS>
+        </element>
+        <element variable="kTAG_SYNONYMS">
             <item>kTYPE_STRUCT</item>
-        </kTAG_SYNONYMS>
+        </element>
 	</term>
     
     <!-- kTYPE_LSTRING -->
-    <term kTAG_LID="LSTRING" kTAG_NAMESPACE="">
-        <kTAG_KIND>
+    <term lid="LSTRING" ns="">
+        <element variable="kTAG_KIND">
             <item>:KIND-ENUMERATION</item>
-        </kTAG_KIND>
-        <kTAG_LABEL language="en">Language strings</kTAG_LABEL>
-        <kTAG_DEFINITION language="en"><![CDATA[This type represents a <i>string attribute
+        </element>
+        <element variable="kTAG_LABEL" key="en">Language strings</element>
+        <element variable="kTAG_DEFINITION" key="en"><![CDATA[This type represents a <i>string attribute
         	that can be expressed in several languages</i>. It is implemented as a <i>list
         	of elements</i> in which the <i>index represents the language code</i> and the
         	<i>value represents the string</i> in that language. There cannot be two
         	elements with the same language code and the element which is not related to
         	any language has the <tt>0</tt> index.
             ]]>
-        </kTAG_DEFINITION>
-        <kTAG_SYNONYMS>
+        </element>
+        <element variable="kTAG_SYNONYMS">
             <item>kTYPE_LSTRING</item>
-        </kTAG_SYNONYMS>
+        </element>
 	</term>
     
     <!-- kTYPE_STAMP -->
-    <term kTAG_LID="STAMP" kTAG_NAMESPACE="">
-        <kTAG_KIND>
+    <term lid="STAMP" ns="">
+        <element variable="kTAG_KIND">
             <item>:KIND-ENUMERATION</item>
-        </kTAG_KIND>
-        <kTAG_LABEL language="en">Time-stamp</kTAG_LABEL>
-        <kTAG_DEFINITION language="en"><![CDATA[This type represents a <i>native
+        </element>
+        <element variable="kTAG_LABEL" key="en">Time-stamp</element>
+        <element variable="kTAG_DEFINITION" key="en"><![CDATA[This type represents a <i>native
         	time-stamp</i> data type, it holds the <i>date</i>, <i>time</i> and
 			<i>milliseconds</i>.
             ]]>
-        </kTAG_DEFINITION>
-        <kTAG_SYNONYMS>
+        </element>
+        <element variable="kTAG_SYNONYMS">
             <item>kTYPE_STAMP</item>
-        </kTAG_SYNONYMS>
+        </element>
 	</term>
     
     <!-- ENUMERATED TYPE ENUMERATIONS -->
     
     <!-- kTYPE_ENUM -->
-    <term kTAG_LID="ENUM" kTAG_NAMESPACE="">
-        <kTAG_KIND>
+    <term lid="ENUM" ns="">
+        <element variable="kTAG_KIND">
             <item>:KIND-ENUMERATION</item>
-        </kTAG_KIND>
-        <kTAG_LABEL language="en">Enumeration</kTAG_LABEL>
-        <kTAG_DEFINITION language="en"><![CDATA[This represents the <i>enumeration</i>
+        </element>
+        <element variable="kTAG_LABEL" key="en">Enumeration</element>
+        <element variable="kTAG_DEFINITION" key="en"><![CDATA[This represents the <i>enumeration</i>
         	data type, or a <i>single string element</i> of an <i>enumerated set</i> or
         	<i>controlled vocabulary</i>.
             ]]>
-        </kTAG_DEFINITION>
-        <kTAG_SYNONYMS>
+        </element>
+        <element variable="kTAG_SYNONYMS">
             <item>kTYPE_ENUM</item>
-        </kTAG_SYNONYMS>
+        </element>
 	</term>
     
     <!-- kTYPE_ENUM_SET -->
-    <term kTAG_LID="SET" kTAG_NAMESPACE="">
-        <kTAG_KIND>
+    <term lid="SET" ns="">
+        <element variable="kTAG_KIND">
             <item>:KIND-ENUMERATION</item>
-        </kTAG_KIND>
-        <kTAG_LABEL language="en">Enumerated set</kTAG_LABEL>
-        <kTAG_DEFINITION language="en"><![CDATA[This represents the <i>enumerated set</i>
+        </element>
+        <element variable="kTAG_LABEL" key="en">Enumerated set</element>
+        <element variable="kTAG_DEFINITION" key="en"><![CDATA[This represents the <i>enumerated set</i>
         	data type, or a <i>list of string elements</i> of an <i>enumerated set</i> or
         	<i>controlled vocabulary</i>.
             ]]>
-        </kTAG_DEFINITION>
-        <kTAG_SYNONYMS>
+        </element>
+        <element variable="kTAG_SYNONYMS">
             <item>kTYPE_ENUM_SET</item>
-        </kTAG_SYNONYMS>
+        </element>
 	</term>
     
     <!-- CARDINALITY TYPE ENUMERATIONS -->
     
     <!-- kTYPE_REQUIRED -->
-    <term kTAG_LID="REQUIRED" kTAG_NAMESPACE="">
-        <kTAG_KIND>
+    <term lid="REQUIRED" ns="">
+        <element variable="kTAG_KIND">
             <item>:KIND-ENUMERATION</item>
-        </kTAG_KIND>
-        <kTAG_LABEL language="en">Required</kTAG_LABEL>
-        <kTAG_DEFINITION language="en"><![CDATA[This type indicates that the element
+        </element>
+        <element variable="kTAG_LABEL" key="en">Required</element>
+        <element variable="kTAG_DEFINITION" key="en"><![CDATA[This type indicates that the element
         	<i>is required</i>, which means that it <i>must be present in the object</i>.
         	If this type is missing, it means that the element is optional.
             ]]>
-        </kTAG_DEFINITION>
-        <kTAG_SYNONYMS>
+        </element>
+        <element variable="kTAG_SYNONYMS">
             <item>kTYPE_REQUIRED</item>
-        </kTAG_SYNONYMS>
+        </element>
 	</term>
     
     <!-- kTYPE_RESTRICTED -->
-    <term kTAG_LID="RESTRICTED" kTAG_NAMESPACE="">
-        <kTAG_KIND>
+    <term lid="RESTRICTED" ns="">
+        <element variable="kTAG_KIND">
             <item>:KIND-ENUMERATION</item>
-        </kTAG_KIND>
-        <kTAG_LABEL language="en">Restricted</kTAG_LABEL>
-        <kTAG_DEFINITION language="en"><![CDATA[This type applies mostly to enumerated sets,
+        </element>
+        <element variable="kTAG_LABEL" key="en">Restricted</element>
+        <element variable="kTAG_DEFINITION" key="en"><![CDATA[This type applies mostly to enumerated sets,
         	it indicates that the attribute is <i>restricted to an enumerated set</i>. If
         	this type is missing, it means that the attribute may take values not belonging
         	to the enumerated set.
             ]]>
-        </kTAG_DEFINITION>
-        <kTAG_SYNONYMS>
+        </element>
+        <element variable="kTAG_SYNONYMS">
             <item>kTYPE_RESTRICTED</item>
-        </kTAG_SYNONYMS>
+        </element>
 	</term>
     
     <!-- kTYPE_COMPUTED -->
-    <term kTAG_LID="COMPUTED" kTAG_NAMESPACE="">
-        <kTAG_KIND>
+    <term lid="COMPUTED" ns="">
+        <element variable="kTAG_KIND">
             <item>:KIND-ENUMERATION</item>
-        </kTAG_KIND>
-        <kTAG_LABEL language="en">Computed</kTAG_LABEL>
-        <kTAG_DEFINITION language="en"><![CDATA[This type indicates that the element is
+        </element>
+        <element variable="kTAG_LABEL" key="en">Computed</element>
+        <element variable="kTAG_DEFINITION" key="en"><![CDATA[This type indicates that the element is
         	<i>computed</i>, which means that it is <i>automatically filled</i> usually when
         	committing the object. If this type is missing, it means that the attribute must
         	be explicitly set.
             ]]>
-        </kTAG_DEFINITION>
-        <kTAG_SYNONYMS>
+        </element>
+        <element variable="kTAG_SYNONYMS">
             <item>kTYPE_COMPUTED</item>
-        </kTAG_SYNONYMS>
+        </element>
 	</term>
     
     <!-- kTYPE_LOCKED -->
-    <term kTAG_LID="LOCKED" kTAG_NAMESPACE="">
-        <kTAG_KIND>
+    <term lid="LOCKED" ns="">
+        <element variable="kTAG_KIND">
             <item>:KIND-ENUMERATION</item>
-        </kTAG_KIND>
-        <kTAG_LABEL language="en">Locked</kTAG_LABEL>
-        <kTAG_DEFINITION language="en"><![CDATA[This type indicates that the element is
+        </element>
+        <element variable="kTAG_LABEL" key="en">Locked</element>
+        <element variable="kTAG_DEFINITION" key="en"><![CDATA[This type indicates that the element is
         	<i>locked</i>, which means that it is <i>not modifiable</i>. This means that the
         	<i>value cannot be changed once the object has been committed</i>. If this type
         	is missing, it means that the attribute can be explicitly modified.
             ]]>
-        </kTAG_DEFINITION>
-        <kTAG_SYNONYMS>
+        </element>
+        <element variable="kTAG_SYNONYMS">
             <item>kTYPE_LOCKED</item>
-        </kTAG_SYNONYMS>
+        </element>
 	</term>
     
     <!-- kTYPE_ARRAY -->
-    <term kTAG_LID="ARRAY" kTAG_NAMESPACE="">
-        <kTAG_KIND>
+    <term lid="ARRAY" ns="">
+        <element variable="kTAG_KIND">
             <item>:KIND-ENUMERATION</item>
-        </kTAG_KIND>
-        <kTAG_LABEL language="en">Array</kTAG_LABEL>
-        <kTAG_DEFINITION language="en"><![CDATA[This type indicates that the attribute is a
+        </element>
+        <element variable="kTAG_LABEL" key="en">Array</element>
+        <element variable="kTAG_DEFINITION" key="en"><![CDATA[This type indicates that the attribute is a
         	<i>list of values</i>, which means that the attribute is an <i>array of
         	elements</i> of the provided data type. If this type is missing, it means that
         	the attribute is a scalar element.
             ]]>
-        </kTAG_DEFINITION>
-        <kTAG_SYNONYMS>
+        </element>
+        <element variable="kTAG_SYNONYMS">
             <item>kTYPE_ARRAY</item>
-        </kTAG_SYNONYMS>
+        </element>
 	</term>
     
     <!-- RELATIONSHIP TYPE ENUMERATIONS -->
     
     <!-- kTYPE_RELATION_IN -->
-    <term kTAG_LID="RELATION-IN" kTAG_NAMESPACE="">
-        <kTAG_KIND>
+    <term lid="RELATION-IN" ns="">
+        <element variable="kTAG_KIND">
             <item>:KIND-ENUMERATION</item>
-        </kTAG_KIND>
-        <kTAG_LABEL language="en">Incoming relationship</kTAG_LABEL>
-        <kTAG_DEFINITION language="en"><![CDATA[This type indicates an <i>incoming
+        </element>
+        <element variable="kTAG_LABEL" key="en">Incoming relationship</element>
+        <element variable="kTAG_DEFINITION" key="en"><![CDATA[This type indicates an <i>incoming
         	relationship</i>, in other words, <i>all the relationships that point to the
         	current object</i>.
             ]]>
-        </kTAG_DEFINITION>
-        <kTAG_SYNONYMS>
+        </element>
+        <element variable="kTAG_SYNONYMS">
             <item>kTYPE_RELATION_IN</item>
-        </kTAG_SYNONYMS>
+        </element>
 	</term>
     
     <!-- kTYPE_RELATION_OUT -->
-    <term kTAG_LID="RELATION-OUT" kTAG_NAMESPACE="">
-        <kTAG_KIND>
+    <term lid="RELATION-OUT" ns="">
+        <element variable="kTAG_KIND">
             <item>:KIND-ENUMERATION</item>
-        </kTAG_KIND>
-        <kTAG_LABEL language="en">Outgoing relationship</kTAG_LABEL>
-        <kTAG_DEFINITION language="en"><![CDATA[This type indicates an <i>outgoing
+        </element>
+        <element variable="kTAG_LABEL" key="en">Outgoing relationship</element>
+        <element variable="kTAG_DEFINITION" key="en"><![CDATA[This type indicates an <i>outgoing
         	relationship</i>, in other words, <i>all the relationships that originate from
         	the current object</i>.
             ]]>
-        </kTAG_DEFINITION>
-        <kTAG_SYNONYMS>
+        </element>
+        <element variable="kTAG_SYNONYMS">
             <item>kTYPE_RELATION_OUT</item>
-        </kTAG_SYNONYMS>
+        </element>
 	</term>
     
     <!-- kTYPE_RELATION_ALL -->
-    <term kTAG_LID="RELATION-ALL" kTAG_NAMESPACE="">
-        <kTAG_KIND>
+    <term lid="RELATION-ALL" ns="">
+        <element variable="kTAG_KIND">
             <item>:KIND-ENUMERATION</item>
-        </kTAG_KIND>
-        <kTAG_LABEL language="en">All relationships</kTAG_LABEL>
-        <kTAG_DEFINITION language="en"><![CDATA[This type indicates <i>all
+        </element>
+        <element variable="kTAG_LABEL" key="en">All relationships</element>
+        <element variable="kTAG_DEFINITION" key="en"><![CDATA[This type indicates <i>all
         	relationships</i>, both <i>incoming and outgoing</i>.
             ]]>
-        </kTAG_DEFINITION>
-        <kTAG_SYNONYMS>
+        </element>
+        <element variable="kTAG_SYNONYMS">
             <item>kTYPE_RELATION_ALL</item>
-        </kTAG_SYNONYMS>
+        </element>
 	</term>
     
     <!-- MONGO TYPE ENUMERATIONS -->
     
     <!-- kTYPE_MongoId -->
-    <term kTAG_LID="MongoId" kTAG_NAMESPACE="">
-        <kTAG_KIND>
+    <term lid="MongoId" ns="">
+        <element variable="kTAG_KIND">
             <item>:KIND-ENUMERATION</item>
-        </kTAG_KIND>
-        <kTAG_LABEL language="en">MongoId</kTAG_LABEL>
-        <kTAG_DEFINITION language="en"><![CDATA[This type represents the <tt>MongoId</tt>
+        </element>
+        <element variable="kTAG_LABEL" key="en">MongoId</element>
+        <element variable="kTAG_DEFINITION" key="en"><![CDATA[This type represents the <tt>MongoId</tt>
         	data type, when serialised it will be encoded into the following structure:
         	<ul><li><tt>type</tt>: Will contain this constant.
 			<li><tt>data</tt>: Will contain the HEX string ID.
 			</ul>
             ]]>
-        </kTAG_DEFINITION>
-        <kTAG_SYNONYMS>
+        </element>
+        <element variable="kTAG_SYNONYMS">
             <item>kTYPE_MongoId</item>
-        </kTAG_SYNONYMS>
+        </element>
 	</term>
     
     <!-- kTYPE_MongoCode -->
-    <term kTAG_LID="MongoCode" kTAG_NAMESPACE="">
-        <kTAG_KIND>
+    <term lid="MongoCode" ns="">
+        <element variable="kTAG_KIND">
             <item>:KIND-ENUMERATION</item>
-        </kTAG_KIND>
-        <kTAG_LABEL language="en">MongoCode</kTAG_LABEL>
-        <kTAG_DEFINITION language="en"><![CDATA[This type represents the <tt>MongoCode</tt>
+        </element>
+        <element variable="kTAG_LABEL" key="en">MongoCode</element>
+        <element variable="kTAG_DEFINITION" key="en"><![CDATA[This type represents the <tt>MongoCode</tt>
         	data type, when serialised it will be encoded into the following structure:<ul>
         	<li><tt>code</tt>: The javascript code string.
 			<li><tt>scope</tt>: The list of key/value pairs.
 			</ul>
             ]]>
-        </kTAG_DEFINITION>
-        <kTAG_SYNONYMS>
+        </element>
+        <element variable="kTAG_SYNONYMS">
             <item>kTYPE_MongoCode</item>
-        </kTAG_SYNONYMS>
+        </element>
 	</term>
     
     <!-- KIND ENUMERATIONS -->
     
     <!-- kKIND_ROOT -->
-    <term kTAG_LID="KIND-ROOT" kTAG_NAMESPACE="">
-        <kTAG_KIND>
+    <term lid="KIND-ROOT" ns="">
+        <element variable="kTAG_KIND">
             <item>:KIND-ENUMERATION</item>
-        </kTAG_KIND>
-        <kTAG_LABEL language="en">Root</kTAG_LABEL>
-        <kTAG_DEFINITION language="en"><![CDATA[<i>An entry point of an ontology</i>. This
+        </element>
+        <element variable="kTAG_LABEL" key="en">Root</element>
+        <element variable="kTAG_DEFINITION" key="en"><![CDATA[<i>An entry point of an ontology</i>. This
         	kind represents a door or entry point of an ontology. It can be either the node
         	from which the whole graph or tree originates from, or a node that represents a
         	specific thematic entry point. In general, such objects will be used as elements
         	of an index to an ontology.
             ]]>
-        </kTAG_DEFINITION>
-        <kTAG_SYNONYMS>
+        </element>
+        <element variable="kTAG_SYNONYMS">
             <item>kKIND_ROOT</item>
-        </kTAG_SYNONYMS>
+        </element>
 	</term>
     
     <!-- kKIND_FEATURE -->
-    <term kTAG_LID="KIND-FEATURE" kTAG_NAMESPACE="">
-        <kTAG_KIND>
+    <term lid="KIND-FEATURE" ns="">
+        <element variable="kTAG_KIND">
             <item>:KIND-ENUMERATION</item>
-        </kTAG_KIND>
-        <kTAG_LABEL language="en">Feature</kTAG_LABEL>
-        <kTAG_DEFINITION language="en"><![CDATA[<i>A feature or attribute of an object that
+        </element>
+        <element variable="kTAG_LABEL" key="en">Feature</element>
+        <element variable="kTAG_DEFINITION" key="en"><![CDATA[<i>A feature or attribute of an object that
         	can be described or measured</i>. This kind defines a feature, property or
         	attribute of an object that can be described or measured. This kind of node
         	will generally be found as a <i>leaf of the structure</i> describing an object.
         	Plant height is a plant characteristic that belongs to the category of
         	morphological traits: the latter is not a feature, while plant height is.
             ]]>
-        </kTAG_DEFINITION>
-        <kTAG_SYNONYMS>
+        </element>
+        <element variable="kTAG_SYNONYMS">
             <item>kKIND_FEATURE</item>
-        </kTAG_SYNONYMS>
+        </element>
 	</term>
     
     <!-- kKIND_METHOD -->
-    <term kTAG_LID="KIND-METHOD" kTAG_NAMESPACE="">
-        <kTAG_KIND>
+    <term lid="KIND-METHOD" ns="">
+        <element variable="kTAG_KIND">
             <item>:KIND-ENUMERATION</item>
-        </kTAG_KIND>
-        <kTAG_LABEL language="en">Method</kTAG_LABEL>
-        <kTAG_DEFINITION language="en"><![CDATA[<i>A method or variation of an object's
+        </element>
+        <element variable="kTAG_LABEL" key="en">Method</element>
+        <element variable="kTAG_DEFINITION" key="en"><![CDATA[<i>A method or variation of an object's
         	feature measurement</i>. This kind of node is required whenever an object's
         	feature can be <i>measured in different ways</i> or with <i>different
         	workflows</i>, <i>without becoming a different feature</i>. Plant height is an
 			attribute of a plant which can be measured after a month or at flowering time;
 			the attribute is the same, but the method is different.
             ]]>
-        </kTAG_DEFINITION>
-        <kTAG_SYNONYMS>
+        </element>
+        <element variable="kTAG_SYNONYMS">
             <item>kKIND_METHOD</item>
-        </kTAG_SYNONYMS>
+        </element>
 	</term>
     
     <!-- kKIND_SCALE -->
-    <term kTAG_LID="KIND-SCALE" kTAG_NAMESPACE="">
-        <kTAG_KIND>
+    <term lid="KIND-SCALE" ns="">
+        <element variable="kTAG_KIND">
             <item>:KIND-ENUMERATION</item>
-        </kTAG_KIND>
-        <kTAG_LABEL language="en">Scale</kTAG_LABEL>
-        <kTAG_DEFINITION language="en"><![CDATA[<i>The scale or unit in which a measurement
+        </element>
+        <element variable="kTAG_LABEL" key="en">Scale</element>
+        <element variable="kTAG_DEFINITION" key="en"><![CDATA[<i>The scale or unit in which a measurement
         	is expressed in</i>. This kind of node describes in what unit or scale a
         	measurement is expressed in. Plant height may be measured in centimeters or
         	inches, as well as in intervals or finite categories.
             ]]>
-        </kTAG_DEFINITION>
-        <kTAG_SYNONYMS>
+        </element>
+        <element variable="kTAG_SYNONYMS">
             <item>kKIND_SCALE</item>
-        </kTAG_SYNONYMS>
+        </element>
 	</term>
     
     <!-- kKIND_ENUMERATION -->
-    <term kTAG_LID="KIND-ENUMERATION" kTAG_NAMESPACE="">
-        <kTAG_KIND>
+    <term lid="KIND-ENUMERATION" ns="">
+        <element variable="kTAG_KIND">
             <item>:KIND-ENUMERATION</item>
-        </kTAG_KIND>
-        <kTAG_LABEL language="en">Enumeration</kTAG_LABEL>
-        <kTAG_DEFINITION language="en"><![CDATA[<i>An element of a controlled
+        </element>
+        <element variable="kTAG_LABEL" key="en">Enumeration</element>
+        <element variable="kTAG_DEFINITION" key="en"><![CDATA[<i>An element of a controlled
         	vocabulary</i>. This kind describes a controlled vocabulary element. Objects of
         	this kind derive from scale nodes and represent the valid choices of
         	enumeration and enumerated set scale nodes. An ISO 3166 country code could be
         	considered an enumeration node.
             ]]>
-        </kTAG_DEFINITION>
-        <kTAG_SYNONYMS>
+        </element>
+        <element variable="kTAG_SYNONYMS">
             <item>kKIND_ENUMERATION</item>
-        </kTAG_SYNONYMS>
+        </element>
 	</term>
     
     <!-- kKIND_INSTANCE -->
-    <term kTAG_LID="KIND-INSTANCE" kTAG_NAMESPACE="">
-        <kTAG_KIND>
+    <term lid="KIND-INSTANCE" ns="">
+        <element variable="kTAG_KIND">
             <item>:KIND-ENUMERATION</item>
-        </kTAG_KIND>
-        <kTAG_LABEL language="en">Instance</kTAG_LABEL>
-        <kTAG_DEFINITION language="en"><![CDATA[<i>A metadata instance</i>. In general,
+        </element>
+        <element variable="kTAG_LABEL" key="en">Instance</element>
+        <element variable="kTAG_DEFINITION" key="en"><![CDATA[<i>A metadata instance</i>. In general,
         	ontology elements represent metadata, in some cases they may represent actual
         	data: an instance is an ontology element that represents <i>the metadata and
         	data of an object</i>. An ISO 3166 country code can be considered an enumeration
@@ -1237,59 +1237,59 @@
         	the country data in that element, this may become also an instance, because it
         	represents the object it defines.
             ]]>
-        </kTAG_DEFINITION>
-        <kTAG_SYNONYMS>
+        </element>
+        <element variable="kTAG_SYNONYMS">
             <item>kKIND_INSTANCE</item>
-        </kTAG_SYNONYMS>
+        </element>
 	</term>
     
     <!-- kKIND_NAMESPACE -->
-    <term kTAG_LID="KIND-NAMESPACE" kTAG_NAMESPACE="">
-        <kTAG_KIND>
+    <term lid="KIND-NAMESPACE" ns="">
+        <element variable="kTAG_KIND">
             <item>:KIND-ENUMERATION</item>
-        </kTAG_KIND>
-        <kTAG_LABEL language="en">Namespace</kTAG_LABEL>
-        <kTAG_DEFINITION language="en"><![CDATA[This kind of represents a <i>namespace</i>,
+        </element>
+        <element variable="kTAG_LABEL" key="en">Namespace</element>
+        <element variable="kTAG_DEFINITION" key="en"><![CDATA[This kind of represents a <i>namespace</i>,
         	<i>semantic group</i> or <i>identifiers space</i>. Objects of this kind will
         	generally be <i>used to group identifiers</i>.
             ]]>
-        </kTAG_DEFINITION>
-        <kTAG_SYNONYMS>
+        </element>
+        <element variable="kTAG_SYNONYMS">
             <item>kKIND_NAMESPACE</item>
-        </kTAG_SYNONYMS>
+        </element>
 	</term>
     
     <!-- kKIND_PREDICATE -->
-    <term kTAG_LID="KIND-PREDICATE" kTAG_NAMESPACE="">
-        <kTAG_KIND>
+    <term lid="KIND-PREDICATE" ns="">
+        <element variable="kTAG_KIND">
             <item>:KIND-ENUMERATION</item>
-        </kTAG_KIND>
-        <kTAG_LABEL language="en">Predicate</kTAG_LABEL>
-        <kTAG_DEFINITION language="en"><![CDATA[This kind represents a <i>predicate</i>, or
+        </element>
+        <element variable="kTAG_LABEL" key="en">Predicate</element>
+        <element variable="kTAG_DEFINITION" key="en"><![CDATA[This kind represents a <i>predicate</i>, or
         	element which connects subject and object vertices into a relationship.
             ]]>
-        </kTAG_DEFINITION>
-        <kTAG_SYNONYMS>
+        </element>
+        <element variable="kTAG_SYNONYMS">
             <item>kKIND_PREDICATE</item>
-        </kTAG_SYNONYMS>
+        </element>
 	</term>
     
     <!-- kKIND_SYMMETRIC -->
-    <term kTAG_LID="KIND-SYMMETRIC" kTAG_NAMESPACE="">
-        <kTAG_KIND>
+    <term lid="KIND-SYMMETRIC" ns="">
+        <element variable="kTAG_KIND">
             <item>:KIND-ENUMERATION</item>
-        </kTAG_KIND>
-        <kTAG_LABEL language="en">Symmetric predicate</kTAG_LABEL>
-        <kTAG_DEFINITION language="en"><![CDATA[This kind of term represents a
+        </element>
+        <element variable="kTAG_LABEL" key="en">Symmetric predicate</element>
+        <element variable="kTAG_DEFINITION" key="en"><![CDATA[This kind of term represents a
         	<i>predicate which relates two terms in both directions</i>. By default,
         	relationships are directional, that is they originate from the subject towards
         	the object, but not in the opposite direction: this kind of predicate, instead,
         	does not have the concept of direction, the <i>relationship flows in both
         	directions</i>.
             ]]>
-        </kTAG_DEFINITION>
-        <kTAG_SYNONYMS>
+        </element>
+        <element variable="kTAG_SYNONYMS">
             <item>kKIND_SYMMETRIC</item>
-        </kTAG_SYNONYMS>
+        </element>
 	</term>
 </terms>

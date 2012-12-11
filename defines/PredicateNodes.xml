@@ -3,91 +3,102 @@
     <!-- PREDICATES -->
     
     <!-- kPREDICATE_SUBCLASS_OF -->
-    <node kTAG_GID=":SUBCLASS-OF">
-		<kTAG_CLASS>COntologyMasterVertex</kTAG_CLASS>
-		<kTAG_KIND>
+	<node class="COntologyMasterVertex">
+		<element variable="kTAG_TERM">:SUBCLASS-OF</element>
+		<element variable="kTAG_CLASS">COntologyMasterVertex</element>
+		<element variable="kTAG_KIND">
             <item>:KIND-ENUMERATION</item>
-        </kTAG_KIND>
+        </element>
 	</node>
     
     <!-- kPREDICATE_SUBSET_OF -->
-    <node kTAG_GID=":SUBSET-OF">
-		<kTAG_CLASS>COntologyMasterVertex</kTAG_CLASS>
-		<kTAG_KIND>
+	<node class="COntologyMasterVertex">
+		<element variable="kTAG_TERM">:SUBSET-OF</element>
+		<element variable="kTAG_CLASS">COntologyMasterVertex</element>
+		<element variable="kTAG_KIND">
             <item>:KIND-ENUMERATION</item>
-        </kTAG_KIND>
+        </element>
 	</node>
     
     <!-- kPREDICATE_ATTRIBUTE_OF -->
-    <node kTAG_GID=":ATTRIBUTE-OF">
-		<kTAG_CLASS>COntologyMasterVertex</kTAG_CLASS>
-		<kTAG_KIND>
+	<node class="COntologyMasterVertex">
+		<element variable="kTAG_TERM">:ATTRIBUTE-OF</element>
+		<element variable="kTAG_CLASS">COntologyMasterVertex</element>
+		<element variable="kTAG_KIND">
             <item>:KIND-ENUMERATION</item>
-        </kTAG_KIND>
+        </element>
 	</node>
         
     <!-- kPREDICATE_METHOD_OF -->
-    <node kTAG_GID=":METHOD-OF">
-		<kTAG_CLASS>COntologyMasterVertex</kTAG_CLASS>
-		<kTAG_KIND>
+	<node class="COntologyMasterVertex">
+		<element variable="kTAG_TERM">:METHOD-OF</element>
+		<element variable="kTAG_CLASS">COntologyMasterVertex</element>
+		<element variable="kTAG_KIND">
             <item>:KIND-ENUMERATION</item>
-        </kTAG_KIND>
+        </element>
 	</node>
 
     <!-- kPREDICATE_SCALE_OF -->
-    <node kTAG_GID=":SCALE-OF">
-		<kTAG_CLASS>COntologyMasterVertex</kTAG_CLASS>
-		<kTAG_KIND>
+	<node class="COntologyMasterVertex">
+		<element variable="kTAG_TERM">:SCALE-OF</element>
+		<element variable="kTAG_CLASS">COntologyMasterVertex</element>
+		<element variable="kTAG_KIND">
             <item>:KIND-ENUMERATION</item>
-        </kTAG_KIND>
+        </element>
 	</node>
     
     <!-- kPREDICATE_ENUM_OF -->
-    <node kTAG_GID=":ENUM-OF">
-		<kTAG_CLASS>COntologyMasterVertex</kTAG_CLASS>
-		<kTAG_KIND>
+	<node class="COntologyMasterVertex">
+		<element variable="kTAG_TERM">:ENUM-OF</element>
+		<element variable="kTAG_CLASS">COntologyMasterVertex</element>
+		<element variable="kTAG_KIND">
             <item>:KIND-ENUMERATION</item>
-        </kTAG_KIND>
+        </element>
 	</node>
     
     <!-- kPREDICATE_PREFERRED -->
-    <node kTAG_GID=":PREFERRED">
-		<kTAG_CLASS>COntologyMasterVertex</kTAG_CLASS>
-		<kTAG_KIND>
+	<node class="COntologyMasterVertex">
+		<element variable="kTAG_TERM">:PREFERRED</element>
+		<element variable="kTAG_CLASS">COntologyMasterVertex</element>
+		<element variable="kTAG_KIND">
             <item>:KIND-ENUMERATION</item>
-        </kTAG_KIND>
+        </element>
 	</node>
     
     <!-- kPREDICATE_VALID -->
-    <node kTAG_GID=":VALID">
-		<kTAG_CLASS>COntologyMasterVertex</kTAG_CLASS>
-		<kTAG_KIND>
+	<node class="COntologyMasterVertex">
+		<element variable="kTAG_TERM">:VALID</element>
+		<element variable="kTAG_CLASS">COntologyMasterVertex</element>
+		<element variable="kTAG_KIND">
             <item>:KIND-ENUMERATION</item>
-        </kTAG_KIND>
+        </element>
 	</node>
     
     <!-- kPREDICATE_LEGACY -->
-    <node kTAG_GID=":LEGACY">
-		<kTAG_CLASS>COntologyMasterVertex</kTAG_CLASS>
-		<kTAG_KIND>
+	<node class="COntologyMasterVertex">
+		<element variable="kTAG_TERM">:LEGACY</element>
+		<element variable="kTAG_CLASS">COntologyMasterVertex</element>
+		<element variable="kTAG_KIND">
             <item>:KIND-ENUMERATION</item>
-        </kTAG_KIND>
+        </element>
 	</node>
     
     <!-- kPREDICATE_XREF -->
-    <node kTAG_GID=":XREF">
-		<kTAG_CLASS>COntologyMasterVertex</kTAG_CLASS>
-		<kTAG_KIND>
+	<node class="COntologyMasterVertex">
+		<element variable="kTAG_TERM">:XREF</element>
+		<element variable="kTAG_CLASS">COntologyMasterVertex</element>
+		<element variable="kTAG_KIND">
             <item>:KIND-ENUMERATION</item>
-        </kTAG_KIND>
+        </element>
 	</node>
     
     <!-- kPREDICATE_XREF_EXACT -->
-    <node kTAG_GID=":XREF-EXACT">
-		<kTAG_CLASS>COntologyMasterVertex</kTAG_CLASS>
-		<kTAG_KIND>
+	<node class="COntologyMasterVertex">
+		<element variable="kTAG_TERM">:XREF-EXACT</element>
+		<element variable="kTAG_CLASS">COntologyMasterVertex</element>
+		<element variable="kTAG_KIND">
             <item>:KIND-ENUMERATION</item>
             <item>:kKIND_SYMMETRIC</item>
-        </kTAG_KIND>
+        </element>
 	</node>
 </nodes>

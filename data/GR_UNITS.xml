@@ -2,256 +2,243 @@
 <units>
     <!-- GR -->
     <unit>
-    	<term kTAG_LID="GR">
-			<kTAG_KIND>
+    	<term lid="GR">
+			<element variable="kTAG_KIND">
 				<item>:KIND-NAMESPACE</item>
-			</kTAG_KIND>
-			<kTAG_LABEL language="en">Genetic Resources INFOrmation</kTAG_LABEL>
-			<kTAG_DEFINITION language="en">A feature or scale generic to various genetic resource descriptors.</kTAG_DEFINITION>
+			</element>
+			<element variable="kTAG_LABEL" key="en">Genetic Resources INFOrmation</element>
+			<element variable="kTAG_DEFINITION" key="en">A feature or scale generic to various genetic resource descriptors.</element>
     	</term>
-    	<node>
-			<kTAG_CLASS>COntologyMasterVertex</kTAG_CLASS>
+    	<node class="COntologyMasterVertex">
     	</node>
     </unit>
     
     <!-- GR:NICODE -->
     <unit>
-    	<term kTAG_LID="NICODE" kTAG_NAMESPACE="GR">
-			<kTAG_LABEL language="en">National Inventory Code</kTAG_LABEL>
-			<kTAG_DEFINITION language="en">Country code identifying the National Inventory, it is represented by the 3-letter ISO 3166-1 country code ([#ISO:3166:1:alpha-3#]) of the inventory country.</kTAG_DEFINITION>
-			<kTAG_SYNONYMS>
-				<item>NICODE</item>
-			</kTAG_SYNONYMS>
+    	<term lid="NICODE" ns="GR">
+			<element variable="kTAG_LABEL" key="en">National Inventory Code</element>
+			<element variable="kTAG_DEFINITION" key="en">Country code identifying the National Inventory, it is represented by the 3-letter ISO 3166-1 country code ([#ISO:3166:1:alpha-3#]) of the inventory country.</element>
     	</term>
-    	<node>
-			<kTAG_CLASS>COntologyMasterVertex</kTAG_CLASS>
-			<kTAG_KIND>
+    	<node class="COntologyMasterVertex">
+			<element variable="kTAG_KIND">
 				<item>:KIND-SCALE</item>
-			</kTAG_KIND>
-			<kTAG_TYPE>
+			</element>
+			<element variable="kTAG_TYPE">
 				<item>:ENUM</item>
-			</kTAG_TYPE>
+			</element>
     	</node>
         <edges>
 			<edge>
-				<kTAG_PREDICATE>:SUBCLASS-OF</kTAG_PREDICATE>
-				<kTAG_OBJECT>GR</kTAG_OBJECT>
+				<element variable="kTAG_PREDICATE">:SUBCLASS-OF</element>
+				<element variable="kTAG_OBJECT">GR</element>
 			</edge>
         </edges>
     </unit>
     
     <!-- GR:GENUS -->
     <unit>
-    	<term kTAG_LID="GENUS" kTAG_NAMESPACE="GR">
-			<kTAG_LABEL language="en">Genus</kTAG_LABEL>
-			<kTAG_DEFINITION language="en">Generic epithet biological classification.</kTAG_DEFINITION>
-			<kTAG_SYNONYMS>
+    	<term lid="GENUS" ns="GR">
+			<element variable="kTAG_LABEL" key="en">Genus</element>
+			<element variable="kTAG_DEFINITION" key="en">Generic epithet biological classification.</element>
+			<element variable="kTAG_SYNONYMS">
 				<item>GENUS</item>
-			</kTAG_SYNONYMS>
+			</element>
     	</term>
-    	<node>
-			<kTAG_CLASS>COntologyMasterVertex</kTAG_CLASS>
-			<kTAG_KIND>
+    	<node class="COntologyMasterVertex">
+			<element variable="kTAG_KIND">
 				<item>:KIND-SCALE</item>
-			</kTAG_KIND>
-			<kTAG_TYPE>
+			</element>
+			<element variable="kTAG_TYPE">
 				<item>:TEXT</item>
-			</kTAG_TYPE>
+			</element>
     	</node>
         <edges>
 			<edge>
-				<kTAG_PREDICATE>:SUBCLASS-OF</kTAG_PREDICATE>
-				<kTAG_OBJECT>GR</kTAG_OBJECT>
+				<element variable="kTAG_PREDICATE">:SUBCLASS-OF</element>
+				<element variable="kTAG_OBJECT">GR</element>
 			</edge>
         </edges>
     </unit>
     
     <!-- GR:SPECIES -->
     <unit>
-    	<term kTAG_LID="SPECIES" kTAG_NAMESPACE="GR">
-			<kTAG_LABEL language="en">Species</kTAG_LABEL>
-			<kTAG_DEFINITION language="en">Specific epithet biological classification.</kTAG_DEFINITION>
-			<kTAG_SYNONYMS>
+    	<term lid="SPECIES" ns="GR">
+			<element variable="kTAG_LABEL" key="en">Species</element>
+			<element variable="kTAG_DEFINITION" key="en">Specific epithet biological classification.</element>
+			<element variable="kTAG_SYNONYMS">
 				<item>SPECIES</item>
-			</kTAG_SYNONYMS>
+			</element>
     	</term>
-    	<node>
-			<kTAG_CLASS>COntologyMasterVertex</kTAG_CLASS>
-			<kTAG_KIND>
+    	<node class="COntologyMasterVertex">
+			<element variable="kTAG_KIND">
 				<item>:KIND-SCALE</item>
-			</kTAG_KIND>
-			<kTAG_TYPE>
+			</element>
+			<element variable="kTAG_TYPE">
 				<item>:TEXT</item>
-			</kTAG_TYPE>
+			</element>
     	</node>
         <edges>
 			<edge>
-				<kTAG_PREDICATE>:SUBCLASS-OF</kTAG_PREDICATE>
-				<kTAG_OBJECT>GR</kTAG_OBJECT>
+				<element variable="kTAG_PREDICATE">:SUBCLASS-OF</element>
+				<element variable="kTAG_OBJECT">GR</element>
 			</edge>
         </edges>
     </unit>
     
     <!-- GR:SPAUTHOR -->
     <unit>
-    	<term kTAG_LID="SPAUTHOR" kTAG_NAMESPACE="GR">
-			<kTAG_LABEL language="en">Species authority</kTAG_LABEL>
-			<kTAG_DEFINITION language="en">Name or abbreviation of the author of the specific epithet biological classification.</kTAG_DEFINITION>
-			<kTAG_SYNONYMS>
+    	<term lid="SPAUTHOR" ns="GR">
+			<element variable="kTAG_LABEL" key="en">Species authority</element>
+			<element variable="kTAG_DEFINITION" key="en">Name or abbreviation of the author of the specific epithet biological classification.</element>
+			<element variable="kTAG_SYNONYMS">
 				<item>SPAUTHOR</item>
-			</kTAG_SYNONYMS>
+			</element>
     	</term>
-    	<node>
-			<kTAG_CLASS>COntologyMasterVertex</kTAG_CLASS>
-			<kTAG_KIND>
+    	<node class="COntologyMasterVertex">
+			<element variable="kTAG_KIND">
 				<item>:KIND-SCALE</item>
-			</kTAG_KIND>
-			<kTAG_TYPE>
+			</element>
+			<element variable="kTAG_TYPE">
 				<item>:TEXT</item>
-			</kTAG_TYPE>
+			</element>
     	</node>
         <edges>
 			<edge>
-				<kTAG_PREDICATE>:SUBCLASS-OF</kTAG_PREDICATE>
-				<kTAG_OBJECT>GR</kTAG_OBJECT>
+				<element variable="kTAG_PREDICATE">:SUBCLASS-OF</element>
+				<element variable="kTAG_OBJECT">GR</element>
 			</edge>
         </edges>
     </unit>
     
     <!-- GR:SUBTAXA -->
     <unit>
-    	<term kTAG_LID="SUBTAXA" kTAG_NAMESPACE="GR">
-			<kTAG_LABEL language="en">Infraspecific epithet</kTAG_LABEL>
-			<kTAG_DEFINITION language="en">The third word in the scientific name of an infraspecific taxon, following the name of the species.</kTAG_DEFINITION>
-			<kTAG_SYNONYMS>
+    	<term lid="SUBTAXA" ns="GR">
+			<element variable="kTAG_LABEL" key="en">Infraspecific epithet</element>
+			<element variable="kTAG_DEFINITION" key="en">The third word in the scientific name of an infraspecific taxon, following the name of the species.</element>
+			<element variable="kTAG_SYNONYMS">
 				<item>SUBTAXA</item>
-			</kTAG_SYNONYMS>
+			</element>
     	</term>
-    	<node>
-			<kTAG_CLASS>COntologyMasterVertex</kTAG_CLASS>
-			<kTAG_KIND>
+    	<node class="COntologyMasterVertex">
+			<element variable="kTAG_KIND">
 				<item>:KIND-SCALE</item>
-			</kTAG_KIND>
-			<kTAG_TYPE>
+			</element>
+			<element variable="kTAG_TYPE">
 				<item>:TEXT</item>
-			</kTAG_TYPE>
+			</element>
     	</node>
         <edges>
 			<edge>
-				<kTAG_PREDICATE>:SUBCLASS-OF</kTAG_PREDICATE>
-				<kTAG_OBJECT>GR</kTAG_OBJECT>
+				<element variable="kTAG_PREDICATE">:SUBCLASS-OF</element>
+				<element variable="kTAG_OBJECT">GR</element>
 			</edge>
         </edges>
     </unit>
     
     <!-- GR:SUBTAUTHOR -->
     <unit>
-    	<term kTAG_LID="SUBTAUTHOR" kTAG_NAMESPACE="GR">
-			<kTAG_LABEL language="en">Infraspecific epithet authority</kTAG_LABEL>
-			<kTAG_DEFINITION language="en">Name or abbreviation of the author of the third word in the scientific name of an infraspecific taxon which follows the name of the species.</kTAG_DEFINITION>
-			<kTAG_SYNONYMS>
+    	<term lid="SUBTAUTHOR" ns="GR">
+			<element variable="kTAG_LABEL" key="en">Infraspecific epithet authority</element>
+			<element variable="kTAG_DEFINITION" key="en">Name or abbreviation of the author of the third word in the scientific name of an infraspecific taxon which follows the name of the species.</element>
+			<element variable="kTAG_SYNONYMS">
 				<item>SUBTAXA</item>
-			</kTAG_SYNONYMS>
+			</element>
     	</term>
-    	<node>
-			<kTAG_CLASS>COntologyMasterVertex</kTAG_CLASS>
-			<kTAG_KIND>
+    	<node class="COntologyMasterVertex">
+			<element variable="kTAG_KIND">
 				<item>:KIND-SCALE</item>
-			</kTAG_KIND>
-			<kTAG_TYPE>
+			</element>
+			<element variable="kTAG_TYPE">
 				<item>:TEXT</item>
-			</kTAG_TYPE>
+			</element>
     	</node>
         <edges>
 			<edge>
-				<kTAG_PREDICATE>:SUBCLASS-OF</kTAG_PREDICATE>
-				<kTAG_OBJECT>GR</kTAG_OBJECT>
+				<element variable="kTAG_PREDICATE">:SUBCLASS-OF</element>
+				<element variable="kTAG_OBJECT">GR</element>
 			</edge>
         </edges>
     </unit>
     
     <!-- GR:DATE -->
     <unit>
-    	<term kTAG_LID="DATE" kTAG_NAMESPACE="GR">
-			<kTAG_LABEL language="en"><![CDATA[Date string]]></kTAG_LABEL>
-			<kTAG_DEFINITION language="en"><![CDATA[A date expressed as a YYYYMMDD string in which the days and months may be omitted. Missing elements are omitted from the storewd value, while missing elements may be provided by replacing them with hyphens, <tt>--</tt>, or zeros, <tt>00</tt>.]]></kTAG_DEFINITION>
+    	<term lid="DATE" ns="GR">
+			<element variable="kTAG_LABEL" key="en"><![CDATA[Date string]]></element>
+			<element variable="kTAG_DEFINITION" key="en"><![CDATA[A date expressed as a YYYYMMDD string in which the days and months may be omitted. Missing elements are omitted from the storewd value, while missing elements may be provided by replacing them with hyphens, <tt>--</tt>, or zeros, <tt>00</tt>.]]></element>
     	</term>
-    	<node>
-			<kTAG_CLASS>COntologyMasterVertex</kTAG_CLASS>
-			<kTAG_KIND>
+    	<node class="COntologyMasterVertex">
+			<element variable="kTAG_KIND">
 				<item>:KIND-SCALE</item>
-			</kTAG_KIND>
-			<kTAG_TYPE>
+			</element>
+			<element variable="kTAG_TYPE">
 				<item>:TEXT</item>
-			</kTAG_TYPE>
-			<kTAG_EXAMPLES>
+			</element>
+			<element variable="kTAG_EXAMPLES">
 				<item><![CDATA[Full date: <tt>19781207</tt>]]></item>
 				<item><![CDATA[Missing days: <tt>197812</tt> or <tt>197812--</tt> or <tt>19781200</tt>]]></item>
 				<item><![CDATA[Missing months: <tt>1978</tt> or <tt>1978----</tt> or <tt>19780000</tt>]]></item>
-			</kTAG_EXAMPLES>
+			</element>
     	</node>
         <edges>
 			<edge>
-				<kTAG_PREDICATE>:SUBCLASS-OF</kTAG_PREDICATE>
-				<kTAG_OBJECT>GR</kTAG_OBJECT>
+				<element variable="kTAG_PREDICATE">:SUBCLASS-OF</element>
+				<element variable="kTAG_OBJECT">GR</element>
 			</edge>
         </edges>
     </unit>
     
     <!-- GR:LATITUDE -->
     <unit>
-    	<term kTAG_LID="LATITUDE" kTAG_NAMESPACE="GR">
-			<kTAG_LABEL language="en"><![CDATA[Latitude]]></kTAG_LABEL>
-			<kTAG_DEFINITION language="en"><![CDATA[Latitude expressed in degrees, minutes and seconds in a <tt>DDMMSSH</tt> string, in which <tt>DD</tt> expresses the degrees ±90, <tt>MM</tt> expresses the minutes ± 60, <tt>SS</tt> expresses the seconds ± 60 and <tt>HH</tt> expresses the hemisphere <tt>N</TT> or <tt>S</tt>. The coordinate may lack the seconds and the minutes, in that case the missing elements are not recorded, while they can be provided as hyphens, <tt>--</tt>.]]></kTAG_DEFINITION>
+    	<term lid="LATITUDE" ns="GR">
+			<element variable="kTAG_LABEL" key="en"><![CDATA[Latitude]]></element>
+			<element variable="kTAG_DEFINITION" key="en"><![CDATA[Latitude expressed in degrees, minutes and seconds in a <tt>DDMMSSH</tt> string, in which <tt>DD</tt> expresses the degrees ±90, <tt>MM</tt> expresses the minutes ± 60, <tt>SS</tt> expresses the seconds ± 60 and <tt>HH</tt> expresses the hemisphere <tt>N</TT> or <tt>S</tt>. The coordinate may lack the seconds and the minutes, in that case the missing elements are not recorded, while they can be provided as hyphens, <tt>--</tt>.]]></element>
     	</term>
-    	<node>
-			<kTAG_CLASS>COntologyMasterVertex</kTAG_CLASS>
-			<kTAG_KIND>
+    	<node class="COntologyMasterVertex">
+			<element variable="kTAG_KIND">
 				<item>:KIND-SCALE</item>
-			</kTAG_KIND>
-			<kTAG_TYPE>
+			</element>
+			<element variable="kTAG_TYPE">
 				<item>:TEXT</item>
-			</kTAG_TYPE>
-			<kTAG_EXAMPLES>
+			</element>
+			<element variable="kTAG_EXAMPLES">
 				<item><![CDATA[Full latitude: <tt>011539N</tt>]]></item>
 				<item><![CDATA[Missing seconds: <tt>0115N</tt> or <tt>0115--N</tt>]]></item>
 				<item><![CDATA[Missing minutes: <tt>01N</tt> or <tt>01----N</tt>]]></item>
-			</kTAG_EXAMPLES>
-			<kTAG_DESCRIPTION language="en"><![CDATA[To convert from longitude and latitude in degrees (o), minutes ('), seconds (''), and a hemisphere (North or South and East or West) to decimal degrees, the following formula should be used: do m' s''=h *(d+m/ 60+s/3600) where h=1 for the Northern and Eastern hemispheres and –1 for the Southern and Western hemispheres i.e. 30o30'0'' S= –30.5 and 30o15'55'' N=30.265.]]></kTAG_DESCRIPTION>
+			</element>
+			<element variable="kTAG_DESCRIPTION" key="en"><![CDATA[To convert from longitude and latitude in degrees (o), minutes ('), seconds (''), and a hemisphere (North or South and East or West) to decimal degrees, the following formula should be used: do m' s''=h *(d+m/ 60+s/3600) where h=1 for the Northern and Eastern hemispheres and –1 for the Southern and Western hemispheres i.e. 30o30'0'' S= –30.5 and 30o15'55'' N=30.265.]]></element>
     	</node>
         <edges>
 			<edge>
-				<kTAG_PREDICATE>:SUBCLASS-OF</kTAG_PREDICATE>
-				<kTAG_OBJECT>GR</kTAG_OBJECT>
+				<element variable="kTAG_PREDICATE">:SUBCLASS-OF</element>
+				<element variable="kTAG_OBJECT">GR</element>
 			</edge>
         </edges>
     </unit>
     
     <!-- GR:LONGITUDE -->
     <unit>
-    	<term kTAG_LID="LONGITUDE" kTAG_NAMESPACE="GR">
-			<kTAG_LABEL language="en"><![CDATA[Longitude]]></kTAG_LABEL>
-			<kTAG_DEFINITION language="en"><![CDATA[Longitude expressed in degrees, minutes and seconds in a <tt>DDDMMSSH</tt> string, in which <tt>DD</tt> expresses the degrees ±180, <tt>MM</tt> expresses the minutes ± 60, <tt>SS</tt> expresses the seconds ± 60 and <tt>HH</tt> expresses the hemisphere <tt>E</TT> or <tt>W</tt>. The coordinate may lack the seconds and the minutes, in that case the missing elements are not recorded, while they can be provided as hyphens, <tt>--</tt>.]]></kTAG_DEFINITION>
+    	<term lid="LONGITUDE" ns="GR">
+			<element variable="kTAG_LABEL" key="en"><![CDATA[Longitude]]></element>
+			<element variable="kTAG_DEFINITION" key="en"><![CDATA[Longitude expressed in degrees, minutes and seconds in a <tt>DDDMMSSH</tt> string, in which <tt>DD</tt> expresses the degrees ±180, <tt>MM</tt> expresses the minutes ± 60, <tt>SS</tt> expresses the seconds ± 60 and <tt>HH</tt> expresses the hemisphere <tt>E</TT> or <tt>W</tt>. The coordinate may lack the seconds and the minutes, in that case the missing elements are not recorded, while they can be provided as hyphens, <tt>--</tt>.]]></element>
     	</term>
-    	<node>
-			<kTAG_CLASS>COntologyMasterVertex</kTAG_CLASS>
-			<kTAG_KIND>
+    	<node class="COntologyMasterVertex">
+			<element variable="kTAG_KIND">
 				<item>:KIND-SCALE</item>
-			</kTAG_KIND>
-			<kTAG_TYPE>
+			</element>
+			<element variable="kTAG_TYPE">
 				<item>:TEXT</item>
-			</kTAG_TYPE>
-			<kTAG_EXAMPLES>
+			</element>
+			<element variable="kTAG_EXAMPLES">
 				<item><![CDATA[Full longitude: <tt>0762510W</tt>]]></item>
 				<item><![CDATA[Missing seconds: <tt>07625W</tt> or <tt>07625--W</tt>]]></item>
 				<item><![CDATA[Missing minutes: <tt>076W</tt> or <tt>076----W</tt>]]></item>
-			</kTAG_EXAMPLES>
-			<kTAG_DESCRIPTION language="en"><![CDATA[To convert from longitude and latitude in degrees (o), minutes ('), seconds (''), and a hemisphere (North or South and East or West) to decimal degrees, the following formula should be used: do m' s''=h *(d+m/ 60+s/3600) where h=1 for the Northern and Eastern hemispheres and –1 for the Southern and Western hemispheres i.e. 30o30'0'' S= –30.5 and 30o15'55'' N=30.265.]]></kTAG_DESCRIPTION>
+			</element>
+			<element variable="kTAG_DESCRIPTION" key="en"><![CDATA[To convert from longitude and latitude in degrees (o), minutes ('), seconds (''), and a hemisphere (North or South and East or West) to decimal degrees, the following formula should be used: do m' s''=h *(d+m/ 60+s/3600) where h=1 for the Northern and Eastern hemispheres and –1 for the Southern and Western hemispheres i.e. 30o30'0'' S= –30.5 and 30o15'55'' N=30.265.]]></element>
     	</node>
         <edges>
 			<edge>
-				<kTAG_PREDICATE>:SUBCLASS-OF</kTAG_PREDICATE>
-				<kTAG_OBJECT>GR</kTAG_OBJECT>
+				<element variable="kTAG_PREDICATE">:SUBCLASS-OF</element>
+				<element variable="kTAG_OBJECT">GR</element>
 			</edge>
         </edges>
     </unit>

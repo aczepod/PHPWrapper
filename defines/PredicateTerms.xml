@@ -3,116 +3,116 @@
     <!-- PREDICATES -->
     
     <!-- kPREDICATE_SUBCLASS_OF -->
-    <term kTAG_LID="SUBCLASS-OF" kTAG_NAMESPACE="">
-        <kTAG_KIND>
+    <term lid="SUBCLASS-OF" ns="">
+        <element variable="kTAG_KIND">
             <item>:KIND-PREDICATE</item>
-        </kTAG_KIND>
-        <kTAG_LABEL language="en">Subclass of</kTAG_LABEL>
-        <kTAG_DEFINITION language="en"><![CDATA[This predicate indicates that the
+        </element>
+        <element variable="kTAG_LABEL" key="en">Subclass of</element>
+        <element variable="kTAG_DEFINITION" key="en"><![CDATA[This predicate indicates that the
         	<i>subject of the relationship</i> is a <i>subclass of the object of the
         	relationship</i>, in other words, the <i>subject is derived from the object</i>.
             ]]>
-        </kTAG_DEFINITION>
-        <kTAG_SYNONYMS>
+        </element>
+        <element variable="kTAG_SYNONYMS">
             <item>kPREDICATE_SUBCLASS_OF</item>
-        </kTAG_SYNONYMS>
+        </element>
 	</term>
     
     <!-- kPREDICATE_SUBSET_OF -->
-    <term kTAG_LID="SUBSET-OF" kTAG_NAMESPACE="">
-        <kTAG_KIND>
+    <term lid="SUBSET-OF" ns="">
+        <element variable="kTAG_KIND">
             <item>:KIND-PREDICATE</item>
-        </kTAG_KIND>
-        <kTAG_LABEL language="en">Subset of</kTAG_LABEL>
-        <kTAG_DEFINITION language="en"><![CDATA[This predicate indicates that the
+        </element>
+        <element variable="kTAG_LABEL" key="en">Subset of</element>
+        <element variable="kTAG_DEFINITION" key="en"><![CDATA[This predicate indicates that the
         	<i>subject of the relationship</i> represents a <i>subset of the object of the
         	relationship</i>, in other words, the <i>subject is contained by the object</i>.
             ]]>
-        </kTAG_DEFINITION>
-        <kTAG_SYNONYMS>
+        </element>
+        <element variable="kTAG_SYNONYMS">
             <item>kPREDICATE_SUBSET_OF</item>
-        </kTAG_SYNONYMS>
+        </element>
 	</term>
     
     <!-- kPREDICATE_ATTRIBUTE_OF -->
-    <term kTAG_LID="ATTRIBUTE-OF" kTAG_NAMESPACE="">
-        <kTAG_KIND>
+    <term lid="ATTRIBUTE-OF" ns="">
+        <element variable="kTAG_KIND">
             <item>:KIND-PREDICATE</item>
-        </kTAG_KIND>
-        <kTAG_LABEL language="en">Attribute of</kTAG_LABEL>
-        <kTAG_DEFINITION language="en"><![CDATA[This predicate indicates that the
+        </element>
+        <element variable="kTAG_LABEL" key="en">Attribute of</element>
+        <element variable="kTAG_DEFINITION" key="en"><![CDATA[This predicate indicates that the
         	<i>subject of the relationship is an attribute of the object of the
         	relationship</i>, this means that the subject of the relationship is a
         	<i>feature</i>.
             ]]>
-        </kTAG_DEFINITION>
-        <kTAG_SYNONYMS>
+        </element>
+        <element variable="kTAG_SYNONYMS">
             <item>kPREDICATE_ATTRIBUTE_OF</item>
-        </kTAG_SYNONYMS>
+        </element>
 	</term>
         
     <!-- kPREDICATE_METHOD_OF -->
-    <term kTAG_LID="METHOD-OF" kTAG_NAMESPACE="">
-        <kTAG_KIND>
+    <term lid="METHOD-OF" ns="">
+        <element variable="kTAG_KIND">
             <item>:KIND-PREDICATE</item>
-        </kTAG_KIND>
-        <kTAG_LABEL language="en">Method of</kTAG_LABEL>
-        <kTAG_DEFINITION language="en"><![CDATA[This predicate relates <i>method
+        </element>
+        <element variable="kTAG_LABEL" key="en">Method of</element>
+        <element variable="kTAG_DEFINITION" key="en"><![CDATA[This predicate relates <i>method
         	vertices</i> with <i>feature vertices</i> or <i>other methods</i>, it indicates
         	that the subject of the relationship is a <i>method, or workflow variation</i>
         	of the object of the relationship. This predicate is used to connect the
         	<i>pipeline of modifiers</i> applied to a <i>feature vertex</i>.
             ]]>
-        </kTAG_DEFINITION>
-        <kTAG_SYNONYMS>
+        </element>
+        <element variable="kTAG_SYNONYMS">
             <item>kPREDICATE_METHOD_OF</item>
-        </kTAG_SYNONYMS>
+        </element>
 	</term>
 
     <!-- kPREDICATE_SCALE_OF -->
-    <term kTAG_LID="SCALE-OF" kTAG_NAMESPACE="">
-        <kTAG_KIND>
+    <term lid="SCALE-OF" ns="">
+        <element variable="kTAG_KIND">
             <item>:KIND-PREDICATE</item>
-        </kTAG_KIND>
-        <kTAG_LABEL language="en">Scale of</kTAG_LABEL>
-        <kTAG_DEFINITION language="en"><![CDATA[This predicate is used by <i>scale
+        </element>
+        <element variable="kTAG_LABEL" key="en">Scale of</element>
+        <element variable="kTAG_DEFINITION" key="en"><![CDATA[This predicate is used by <i>scale
         	vertices</i> to <i>connect feature or trait vertices</i>, the subject of the
         	relationship represents a <i>scale or unit</i> and the predicate indicates that
         	the object of the relationship uses that scale or unit. This predicate is
         	specifically used to indicate the different scales in which a feature or trait
         	vertex can be expressed in.
             ]]>
-        </kTAG_DEFINITION>
-        <kTAG_SYNONYMS>
+        </element>
+        <element variable="kTAG_SYNONYMS">
             <item>kPREDICATE_SCALE_OF</item>
-        </kTAG_SYNONYMS>
+        </element>
 	</term>
     
     <!-- kPREDICATE_ENUM_OF -->
-    <term kTAG_LID="ENUM-OF" kTAG_NAMESPACE="">
-        <kTAG_KIND>
+    <term lid="ENUM-OF" ns="">
+        <element variable="kTAG_KIND">
             <item>:KIND-PREDICATE</item>
-        </kTAG_KIND>
-        <kTAG_LABEL language="en">Enumeration of</kTAG_LABEL>
-        <kTAG_DEFINITION language="en"><![CDATA[This predicate relates <i>vertex
+        </element>
+        <element variable="kTAG_LABEL" key="en">Enumeration of</element>
+        <element variable="kTAG_DEFINITION" key="en"><![CDATA[This predicate relates <i>vertex
         	elements</i> of an <i>enumerated set</i>, it indicates that the subject of the
         	relationship is an <i>enumerated set element instance</i>. If the object of the
 			relationship is also an enumerated set element instance, this means that the
 			subject is a subset of the object.
             ]]>
-        </kTAG_DEFINITION>
-        <kTAG_SYNONYMS>
+        </element>
+        <element variable="kTAG_SYNONYMS">
             <item>kPREDICATE_ENUM_OF</item>
-        </kTAG_SYNONYMS>
+        </element>
 	</term>
     
     <!-- kPREDICATE_PREFERRED -->
-    <term kTAG_LID="PREFERRED" kTAG_NAMESPACE="">
-        <kTAG_KIND>
+    <term lid="PREFERRED" ns="">
+        <element variable="kTAG_KIND">
             <item>:KIND-PREDICATE</item>
-        </kTAG_KIND>
-        <kTAG_LABEL language="en">Preferred choice</kTAG_LABEL>
-        <kTAG_DEFINITION language="en"><![CDATA[This predicate indicates that the object of
+        </element>
+        <element variable="kTAG_LABEL" key="en">Preferred choice</element>
+        <element variable="kTAG_DEFINITION" key="en"><![CDATA[This predicate indicates that the object of
         	the relationship is the <i>preferred choice</i>, in other words, if possible,
         	one should use the object of the relationship in place of the subject. This
         	predicate will be used in general by <i>obsolete or deprecated items</i>.
@@ -120,19 +120,19 @@
         	that in this case the <i>use</i> of the subject of the relationship is <i>only
         	deprecated</i>, while in the <tt>VALID</tt> predicate it is not valid.
             ]]>
-        </kTAG_DEFINITION>
-        <kTAG_SYNONYMS>
+        </element>
+        <element variable="kTAG_SYNONYMS">
             <item>kPREDICATE_PREFERRED</item>
-        </kTAG_SYNONYMS>
+        </element>
 	</term>
     
     <!-- kPREDICATE_VALID -->
-    <term kTAG_LID="VALID" kTAG_NAMESPACE="">
-        <kTAG_KIND>
+    <term lid="VALID" ns="">
+        <element variable="kTAG_KIND">
             <item>:KIND-PREDICATE</item>
-        </kTAG_KIND>
-        <kTAG_LABEL language="en">Valid choice</kTAG_LABEL>
-        <kTAG_DEFINITION language="en"><![CDATA[This predicate indicates that the object of
+        </element>
+        <element variable="kTAG_LABEL" key="en">Valid choice</element>
+        <element variable="kTAG_DEFINITION" key="en"><![CDATA[This predicate indicates that the object of
         	the relationship is the <i>valid choice</i>, in other words, the <i>subject of
         	the relationship is obsolete or not valid</i>, and one should use the object of
         	the relationship in its place. This predicate will be used in general to store
@@ -141,19 +141,19 @@
         	<i>subject of the relationship is invalid</i>, while in the <tt>PREFERRED</tt>
 			predicate it is only deprecated.
             ]]>
-        </kTAG_DEFINITION>
-        <kTAG_SYNONYMS>
+        </element>
+        <element variable="kTAG_SYNONYMS">
             <item>kPREDICATE_VALID</item>
-        </kTAG_SYNONYMS>
+        </element>
 	</term>
     
     <!-- kPREDICATE_LEGACY -->
-    <term kTAG_LID="LEGACY" kTAG_NAMESPACE="">
-        <kTAG_KIND>
+    <term lid="LEGACY" ns="">
+        <element variable="kTAG_KIND">
             <item>:KIND-PREDICATE</item>
-        </kTAG_KIND>
-        <kTAG_LABEL language="en">Legacy version</kTAG_LABEL>
-        <kTAG_DEFINITION language="en"><![CDATA[This predicate indicates that the object of
+        </element>
+        <element variable="kTAG_LABEL" key="en">Legacy version</element>
+        <element variable="kTAG_DEFINITION" key="en"><![CDATA[This predicate indicates that the object of
         	the relationship is the <i>former or legacy</i> choice, in other words, the
         	object of the relationship is <i>obsolete</i> or <i>not in use</i>. This
         	predicate will be used in general to <i>record historical information</i>. The
@@ -163,19 +163,19 @@
         	<i>was used in the past</i> and the subject of the relationship is currently
         	used in its place.
             ]]>
-        </kTAG_DEFINITION>
-        <kTAG_SYNONYMS>
+        </element>
+        <element variable="kTAG_SYNONYMS">
             <item>kPREDICATE_LEGACY</item>
-        </kTAG_SYNONYMS>
+        </element>
 	</term>
     
     <!-- kPREDICATE_XREF -->
-    <term kTAG_LID="XREF" kTAG_NAMESPACE="">
-        <kTAG_KIND>
+    <term lid="XREF" ns="">
+        <element variable="kTAG_KIND">
             <item>:KIND-PREDICATE</item>
-        </kTAG_KIND>
-        <kTAG_LABEL language="en">Cross reference</kTAG_LABEL>
-        <kTAG_DEFINITION language="en"><![CDATA[This predicate indicates that the subject of
+        </element>
+        <element variable="kTAG_LABEL" key="en">Cross reference</element>
+        <element variable="kTAG_DEFINITION" key="en"><![CDATA[This predicate indicates that the subject of
         	the relationship is <i>related</i> to the object of the relationship. This
         	predicate does not represent any specific type of relationship, other than what
         	the edge object attributes may indicate. The scope of this predicate is similar
@@ -183,20 +183,20 @@
         	object of the relationship can be used in place of the subject, while in this
         	predicate this is not necessarily true.
             ]]>
-        </kTAG_DEFINITION>
-        <kTAG_SYNONYMS>
+        </element>
+        <element variable="kTAG_SYNONYMS">
             <item>kPREDICATE_XREF</item>
-        </kTAG_SYNONYMS>
+        </element>
 	</term>
     
     <!-- kPREDICATE_XREF_EXACT -->
-    <term kTAG_LID="XREF-EXACT" kTAG_NAMESPACE="">
-        <kTAG_KIND>
+    <term lid="XREF-EXACT" ns="">
+        <element variable="kTAG_KIND">
             <item>:KIND-PREDICATE</item>
             <item>:kKIND_SYMMETRIC</item>
-        </kTAG_KIND>
-        <kTAG_LABEL language="en">Exact cross reference</kTAG_LABEL>
-        <kTAG_DEFINITION language="en"><![CDATA[This predicate indicates that the object of
+        </element>
+        <element variable="kTAG_LABEL" key="en">Exact cross reference</element>
+        <element variable="kTAG_DEFINITION" key="en"><![CDATA[This predicate indicates that the object of
         	the relationship <i>can be used in place of</i> the subject of the relationship.
         	If the predicate is found in both directions, one could say that the two
         	<i>vertices are identical</i>, except for their formal representation.
@@ -204,9 +204,9 @@
         	that the latter only indicates that both vertices are related, this predicate
         	indicates that they are <i>interchangeable</i>.
             ]]>
-        </kTAG_DEFINITION>
-        <kTAG_SYNONYMS>
+        </element>
+        <element variable="kTAG_SYNONYMS">
             <item>kPREDICATE_XREF_EXACT</item>
-        </kTAG_SYNONYMS>
+        </element>
 	</term>
 </terms>

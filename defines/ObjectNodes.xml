@@ -3,29 +3,34 @@
     <!-- CATEGORY -->
     
     <!-- OBJECTS -->
-    <node kTAG_GID=":OBJECTS">
-		<kTAG_CLASS>COntologyMasterVertex</kTAG_CLASS>
+	<node class="COntologyMasterVertex">
+		<element variable="kTAG_TERM">:OBJECTS</element>
+		<element variable="kTAG_CLASS">COntologyMasterVertex</element>
 	</node>
 	
     <!-- OBJECTS -->
     
     <!-- _terms -->
-    <node kTAG_GID=":_terms">
-		<kTAG_CLASS>COntologyMasterVertex</kTAG_CLASS>
+	<node class="COntologyMasterVertex">
+		<element variable="kTAG_TERM">:_terms</element>
+		<element variable="kTAG_CLASS">COntologyMasterVertex</element>
 	</node>
     
     <!-- _nodes -->
-    <node kTAG_GID=":_nodes">
-		<kTAG_CLASS>COntologyMasterVertex</kTAG_CLASS>
+	<node class="COntologyMasterVertex">
+		<element variable="kTAG_TERM">:_nodes</element>
+		<element variable="kTAG_CLASS">COntologyMasterVertex</element>
 	</node>
     
     <!-- _edges -->
-    <node kTAG_GID=":_edges">
-		<kTAG_CLASS>COntologyMasterVertex</kTAG_CLASS>
+	<node class="COntologyMasterVertex">
+		<element variable="kTAG_TERM">:_edges</element>
+		<element variable="kTAG_CLASS">COntologyMasterVertex</element>
 	</node>
     
     <!-- _tags -->
-    <node kTAG_GID=":_tags">
-		<kTAG_CLASS>COntologyMasterVertex</kTAG_CLASS>
+	<node class="COntologyMasterVertex">
+		<element variable="kTAG_TERM">:_tags</element>
+		<element variable="kTAG_CLASS">COntologyMasterVertex</element>
 	</node>
 </nodes>

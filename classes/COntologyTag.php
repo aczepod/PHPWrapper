@@ -176,7 +176,7 @@ class COntologyTag extends CTag
 					//
 					if( $theValue->offsetExists( kTAG_NID ) )
 						return parent::PushItem(
-							$theValue->offsetGet( kTAG_NID ) );					// ==>
+							$theValue->offsetGet( kTAG_NID ) );						// ==>
 					
 					throw new Exception
 						( "Cannot set path element: "
@@ -282,6 +282,12 @@ class COntologyTag extends CTag
 					  kERROR_PARAMETER );										// !@! ==>
 			
 			} // Provided vertex object.
+			
+			else
+				throw new Exception
+					( "Cannot set path element: "
+					 ."expecting a term or node object or a term reference",
+					  kERROR_PARAMETER );										// !@! ==>
 		
 		} // Provided non-null value.
 		

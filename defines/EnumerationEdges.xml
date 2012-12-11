@@ -4,555 +4,555 @@
      
 	<!-- kSTATUS_IDLE -->
 	<edge>
-    	<kTAG_SUBJECT>:STATUS:0</kTAG_SUBJECT>
-    	<kTAG_PREDICATE>:SUBCLASS-OF</kTAG_PREDICATE>
-    	<kTAG_OBJECT>:STATES</kTAG_OBJECT>
+    	<element variable="kTAG_SUBJECT">:STATUS:0</element>
+    	<element variable="kTAG_PREDICATE">:SUBCLASS-OF</element>
+    	<element variable="kTAG_OBJECT">:STATES</element>
     </edge>
      
 	<!-- kSTATUS_NOTICE -->
 	<edge>
-    	<kTAG_SUBJECT>:STATUS:10</kTAG_SUBJECT>
-    	<kTAG_PREDICATE>:SUBCLASS-OF</kTAG_PREDICATE>
-    	<kTAG_OBJECT>:STATES</kTAG_OBJECT>
+    	<element variable="kTAG_SUBJECT">:STATUS:10</element>
+    	<element variable="kTAG_PREDICATE">:SUBCLASS-OF</element>
+    	<element variable="kTAG_OBJECT">:STATES</element>
     </edge>
      
 	<!-- kSTATUS_MESSAGE -->
 	<edge>
-    	<kTAG_SUBJECT>:STATUS:20</kTAG_SUBJECT>
-    	<kTAG_PREDICATE>:SUBCLASS-OF</kTAG_PREDICATE>
-    	<kTAG_OBJECT>:STATES</kTAG_OBJECT>
+    	<element variable="kTAG_SUBJECT">:STATUS:20</element>
+    	<element variable="kTAG_PREDICATE">:SUBCLASS-OF</element>
+    	<element variable="kTAG_OBJECT">:STATES</element>
     </edge>
      
 	<!-- kSTATUS_WARNING -->
 	<edge>
-    	<kTAG_SUBJECT>:STATUS:30</kTAG_SUBJECT>
-    	<kTAG_PREDICATE>:SUBCLASS-OF</kTAG_PREDICATE>
-    	<kTAG_OBJECT>:STATES</kTAG_OBJECT>
+    	<element variable="kTAG_SUBJECT">:STATUS:30</element>
+    	<element variable="kTAG_PREDICATE">:SUBCLASS-OF</element>
+    	<element variable="kTAG_OBJECT">:STATES</element>
     </edge>
      
 	<!-- kSTATUS_ERROR -->
 	<edge>
-    	<kTAG_SUBJECT>:STATUS:40</kTAG_SUBJECT>
-    	<kTAG_PREDICATE>:SUBCLASS-OF</kTAG_PREDICATE>
-    	<kTAG_OBJECT>:STATES</kTAG_OBJECT>
+    	<element variable="kTAG_SUBJECT">:STATUS:40</element>
+    	<element variable="kTAG_PREDICATE">:SUBCLASS-OF</element>
+    	<element variable="kTAG_OBJECT">:STATES</element>
     </edge>
      
 	<!-- kSTATUS_FATAL -->
 	<edge>
-    	<kTAG_SUBJECT>:STATUS:50</kTAG_SUBJECT>
-    	<kTAG_PREDICATE>:SUBCLASS-OF</kTAG_PREDICATE>
-    	<kTAG_OBJECT>:STATES</kTAG_OBJECT>
+    	<element variable="kTAG_SUBJECT">:STATUS:50</element>
+    	<element variable="kTAG_PREDICATE">:SUBCLASS-OF</element>
+    	<element variable="kTAG_OBJECT">:STATES</element>
     </edge>
      
 	<!-- kSTATUS_BUG -->
 	<edge>
-    	<kTAG_SUBJECT>:STATUS:60</kTAG_SUBJECT>
-    	<kTAG_PREDICATE>:SUBCLASS-OF</kTAG_PREDICATE>
-    	<kTAG_OBJECT>:STATES</kTAG_OBJECT>
+    	<element variable="kTAG_SUBJECT">:STATUS:60</element>
+    	<element variable="kTAG_PREDICATE">:SUBCLASS-OF</element>
+    	<element variable="kTAG_OBJECT">:STATES</element>
     </edge>
     
     <!-- OPERATIONAL OPERATOR ENUMERATIONS -->
     
 	<!-- kOPERATOR_DISABLED -->
 	<edge>
-    	<kTAG_SUBJECT>:$NO</kTAG_SUBJECT>
-    	<kTAG_PREDICATE>:SUBCLASS-OF</kTAG_PREDICATE>
-    	<kTAG_OBJECT>:OPERATORS</kTAG_OBJECT>
+    	<element variable="kTAG_SUBJECT">:$NO</element>
+    	<element variable="kTAG_PREDICATE">:SUBCLASS-OF</element>
+    	<element variable="kTAG_OBJECT">:OPERATORS</element>
     </edge>
     
 	<!-- kOPERATOR_EQUAL -->
 	<edge>
-    	<kTAG_SUBJECT>:$EQ</kTAG_SUBJECT>
-    	<kTAG_PREDICATE>:SUBCLASS-OF</kTAG_PREDICATE>
-    	<kTAG_OBJECT>:OPERATORS</kTAG_OBJECT>
+    	<element variable="kTAG_SUBJECT">:$EQ</element>
+    	<element variable="kTAG_PREDICATE">:SUBCLASS-OF</element>
+    	<element variable="kTAG_OBJECT">:OPERATORS</element>
     </edge>
     
 	<!-- kOPERATOR_EQUAL_NOT -->
 	<edge>
-    	<kTAG_SUBJECT>:$NE</kTAG_SUBJECT>
-    	<kTAG_PREDICATE>:SUBCLASS-OF</kTAG_PREDICATE>
-    	<kTAG_OBJECT>:OPERATORS</kTAG_OBJECT>
+    	<element variable="kTAG_SUBJECT">:$NE</element>
+    	<element variable="kTAG_PREDICATE">:SUBCLASS-OF</element>
+    	<element variable="kTAG_OBJECT">:OPERATORS</element>
     </edge>
     
 	<!-- kOPERATOR_LIKE -->
 	<edge>
-    	<kTAG_SUBJECT>:$AS</kTAG_SUBJECT>
-    	<kTAG_PREDICATE>:SUBCLASS-OF</kTAG_PREDICATE>
-    	<kTAG_OBJECT>:OPERATORS</kTAG_OBJECT>
+    	<element variable="kTAG_SUBJECT">:$AS</element>
+    	<element variable="kTAG_PREDICATE">:SUBCLASS-OF</element>
+    	<element variable="kTAG_OBJECT">:OPERATORS</element>
     </edge>
     
 	<!-- kOPERATOR_LIKE_NOT -->
 	<edge>
-    	<kTAG_SUBJECT>:$NS</kTAG_SUBJECT>
-    	<kTAG_PREDICATE>:SUBCLASS-OF</kTAG_PREDICATE>
-    	<kTAG_OBJECT>:OPERATORS</kTAG_OBJECT>
+    	<element variable="kTAG_SUBJECT">:$NS</element>
+    	<element variable="kTAG_PREDICATE">:SUBCLASS-OF</element>
+    	<element variable="kTAG_OBJECT">:OPERATORS</element>
     </edge>
     
 	<!-- kOPERATOR_PREFIX -->
 	<edge>
-    	<kTAG_SUBJECT>:$PX</kTAG_SUBJECT>
-    	<kTAG_PREDICATE>:SUBCLASS-OF</kTAG_PREDICATE>
-    	<kTAG_OBJECT>:OPERATORS</kTAG_OBJECT>
+    	<element variable="kTAG_SUBJECT">:$PX</element>
+    	<element variable="kTAG_PREDICATE">:SUBCLASS-OF</element>
+    	<element variable="kTAG_OBJECT">:OPERATORS</element>
     </edge>
     
 	<!-- kOPERATOR_PREFIX_NOCASE -->
 	<edge>
-    	<kTAG_SUBJECT>:$PXi</kTAG_SUBJECT>
-    	<kTAG_PREDICATE>:SUBCLASS-OF</kTAG_PREDICATE>
-    	<kTAG_OBJECT>:OPERATORS</kTAG_OBJECT>
+    	<element variable="kTAG_SUBJECT">:$PXi</element>
+    	<element variable="kTAG_PREDICATE">:SUBCLASS-OF</element>
+    	<element variable="kTAG_OBJECT">:OPERATORS</element>
     </edge>
     
 	<!-- kOPERATOR_CONTAINS -->
 	<edge>
-    	<kTAG_SUBJECT>:$CX</kTAG_SUBJECT>
-    	<kTAG_PREDICATE>:SUBCLASS-OF</kTAG_PREDICATE>
-    	<kTAG_OBJECT>:OPERATORS</kTAG_OBJECT>
+    	<element variable="kTAG_SUBJECT">:$CX</element>
+    	<element variable="kTAG_PREDICATE">:SUBCLASS-OF</element>
+    	<element variable="kTAG_OBJECT">:OPERATORS</element>
     </edge>
     
 	<!-- kOPERATOR_CONTAINS_NOCASE -->
 	<edge>
-    	<kTAG_SUBJECT>:$CXi</kTAG_SUBJECT>
-    	<kTAG_PREDICATE>:SUBCLASS-OF</kTAG_PREDICATE>
-    	<kTAG_OBJECT>:OPERATORS</kTAG_OBJECT>
+    	<element variable="kTAG_SUBJECT">:$CXi</element>
+    	<element variable="kTAG_PREDICATE">:SUBCLASS-OF</element>
+    	<element variable="kTAG_OBJECT">:OPERATORS</element>
     </edge>
     
 	<!-- kOPERATOR_SUFFIX -->
 	<edge>
-    	<kTAG_SUBJECT>:$SX</kTAG_SUBJECT>
-    	<kTAG_PREDICATE>:SUBCLASS-OF</kTAG_PREDICATE>
-    	<kTAG_OBJECT>:OPERATORS</kTAG_OBJECT>
+    	<element variable="kTAG_SUBJECT">:$SX</element>
+    	<element variable="kTAG_PREDICATE">:SUBCLASS-OF</element>
+    	<element variable="kTAG_OBJECT">:OPERATORS</element>
     </edge>
     
 	<!-- kOPERATOR_SUFFIX_NOCASE -->
 	<edge>
-    	<kTAG_SUBJECT>:$SXi</kTAG_SUBJECT>
-    	<kTAG_PREDICATE>:SUBCLASS-OF</kTAG_PREDICATE>
-    	<kTAG_OBJECT>:OPERATORS</kTAG_OBJECT>
+    	<element variable="kTAG_SUBJECT">:$SXi</element>
+    	<element variable="kTAG_PREDICATE">:SUBCLASS-OF</element>
+    	<element variable="kTAG_OBJECT">:OPERATORS</element>
     </edge>
     
 	<!-- kOPERATOR_REGEX -->
 	<edge>
-    	<kTAG_SUBJECT>:$RE</kTAG_SUBJECT>
-    	<kTAG_PREDICATE>:SUBCLASS-OF</kTAG_PREDICATE>
-    	<kTAG_OBJECT>:OPERATORS</kTAG_OBJECT>
+    	<element variable="kTAG_SUBJECT">:$RE</element>
+    	<element variable="kTAG_PREDICATE">:SUBCLASS-OF</element>
+    	<element variable="kTAG_OBJECT">:OPERATORS</element>
     </edge>
     
 	<!-- kOPERATOR_LESS -->
 	<edge>
-    	<kTAG_SUBJECT>:$LT</kTAG_SUBJECT>
-    	<kTAG_PREDICATE>:SUBCLASS-OF</kTAG_PREDICATE>
-    	<kTAG_OBJECT>:OPERATORS</kTAG_OBJECT>
+    	<element variable="kTAG_SUBJECT">:$LT</element>
+    	<element variable="kTAG_PREDICATE">:SUBCLASS-OF</element>
+    	<element variable="kTAG_OBJECT">:OPERATORS</element>
     </edge>
     
 	<!-- kOPERATOR_LESS_EQUAL -->
 	<edge>
-    	<kTAG_SUBJECT>:$LE</kTAG_SUBJECT>
-    	<kTAG_PREDICATE>:SUBCLASS-OF</kTAG_PREDICATE>
-    	<kTAG_OBJECT>:OPERATORS</kTAG_OBJECT>
+    	<element variable="kTAG_SUBJECT">:$LE</element>
+    	<element variable="kTAG_PREDICATE">:SUBCLASS-OF</element>
+    	<element variable="kTAG_OBJECT">:OPERATORS</element>
     </edge>
     
 	<!-- kOPERATOR_GREAT -->
 	<edge>
-    	<kTAG_SUBJECT>:$GT</kTAG_SUBJECT>
-    	<kTAG_PREDICATE>:SUBCLASS-OF</kTAG_PREDICATE>
-    	<kTAG_OBJECT>:OPERATORS</kTAG_OBJECT>
+    	<element variable="kTAG_SUBJECT">:$GT</element>
+    	<element variable="kTAG_PREDICATE">:SUBCLASS-OF</element>
+    	<element variable="kTAG_OBJECT">:OPERATORS</element>
     </edge>
     
 	<!-- kOPERATOR_GREAT_EQUAL -->
 	<edge>
-    	<kTAG_SUBJECT>:$GE</kTAG_SUBJECT>
-    	<kTAG_PREDICATE>:SUBCLASS-OF</kTAG_PREDICATE>
-    	<kTAG_OBJECT>:OPERATORS</kTAG_OBJECT>
+    	<element variable="kTAG_SUBJECT">:$GE</element>
+    	<element variable="kTAG_PREDICATE">:SUBCLASS-OF</element>
+    	<element variable="kTAG_OBJECT">:OPERATORS</element>
     </edge>
     
 	<!-- kOPERATOR_IRANGE -->
 	<edge>
-    	<kTAG_SUBJECT>:$IRG</kTAG_SUBJECT>
-    	<kTAG_PREDICATE>:SUBCLASS-OF</kTAG_PREDICATE>
-    	<kTAG_OBJECT>:OPERATORS</kTAG_OBJECT>
+    	<element variable="kTAG_SUBJECT">:$IRG</element>
+    	<element variable="kTAG_PREDICATE">:SUBCLASS-OF</element>
+    	<element variable="kTAG_OBJECT">:OPERATORS</element>
     </edge>
     
 	<!-- kOPERATOR_ERANGE -->
 	<edge>
-    	<kTAG_SUBJECT>:$ERG</kTAG_SUBJECT>
-    	<kTAG_PREDICATE>:SUBCLASS-OF</kTAG_PREDICATE>
-    	<kTAG_OBJECT>:OPERATORS</kTAG_OBJECT>
+    	<element variable="kTAG_SUBJECT">:$ERG</element>
+    	<element variable="kTAG_PREDICATE">:SUBCLASS-OF</element>
+    	<element variable="kTAG_OBJECT">:OPERATORS</element>
     </edge>
     
 	<!-- kOPERATOR_NULL -->
 	<edge>
-    	<kTAG_SUBJECT>:$NU</kTAG_SUBJECT>
-    	<kTAG_PREDICATE>:SUBCLASS-OF</kTAG_PREDICATE>
-    	<kTAG_OBJECT>:OPERATORS</kTAG_OBJECT>
+    	<element variable="kTAG_SUBJECT">:$NU</element>
+    	<element variable="kTAG_PREDICATE">:SUBCLASS-OF</element>
+    	<element variable="kTAG_OBJECT">:OPERATORS</element>
     </edge>
     
 	<!-- kOPERATOR_NOT_NULL -->
 	<edge>
-    	<kTAG_SUBJECT>:$NN</kTAG_SUBJECT>
-    	<kTAG_PREDICATE>:SUBCLASS-OF</kTAG_PREDICATE>
-    	<kTAG_OBJECT>:OPERATORS</kTAG_OBJECT>
+    	<element variable="kTAG_SUBJECT">:$NN</element>
+    	<element variable="kTAG_PREDICATE">:SUBCLASS-OF</element>
+    	<element variable="kTAG_OBJECT">:OPERATORS</element>
     </edge>
     
 	<!-- kOPERATOR_IN -->
 	<edge>
-    	<kTAG_SUBJECT>:$IN</kTAG_SUBJECT>
-    	<kTAG_PREDICATE>:SUBCLASS-OF</kTAG_PREDICATE>
-    	<kTAG_OBJECT>:OPERATORS</kTAG_OBJECT>
+    	<element variable="kTAG_SUBJECT">:$IN</element>
+    	<element variable="kTAG_PREDICATE">:SUBCLASS-OF</element>
+    	<element variable="kTAG_OBJECT">:OPERATORS</element>
     </edge>
     
 	<!-- kOPERATOR_NI -->
 	<edge>
-    	<kTAG_SUBJECT>:$NI</kTAG_SUBJECT>
-    	<kTAG_PREDICATE>:SUBCLASS-OF</kTAG_PREDICATE>
-    	<kTAG_OBJECT>:OPERATORS</kTAG_OBJECT>
+    	<element variable="kTAG_SUBJECT">:$NI</element>
+    	<element variable="kTAG_PREDICATE">:SUBCLASS-OF</element>
+    	<element variable="kTAG_OBJECT">:OPERATORS</element>
     </edge>
     
 	<!-- kOPERATOR_ALL -->
 	<edge>
-    	<kTAG_SUBJECT>:$AL</kTAG_SUBJECT>
-    	<kTAG_PREDICATE>:SUBCLASS-OF</kTAG_PREDICATE>
-    	<kTAG_OBJECT>:OPERATORS</kTAG_OBJECT>
+    	<element variable="kTAG_SUBJECT">:$AL</element>
+    	<element variable="kTAG_PREDICATE">:SUBCLASS-OF</element>
+    	<element variable="kTAG_OBJECT">:OPERATORS</element>
     </edge>
     
 	<!-- kOPERATOR_NALL -->
 	<edge>
-    	<kTAG_SUBJECT>:$NAL</kTAG_SUBJECT>
-    	<kTAG_PREDICATE>:SUBCLASS-OF</kTAG_PREDICATE>
-    	<kTAG_OBJECT>:OPERATORS</kTAG_OBJECT>
+    	<element variable="kTAG_SUBJECT">:$NAL</element>
+    	<element variable="kTAG_PREDICATE">:SUBCLASS-OF</element>
+    	<element variable="kTAG_OBJECT">:OPERATORS</element>
     </edge>
     
 	<!-- kOPERATOR_EX -->
 	<edge>
-    	<kTAG_SUBJECT>:$EX</kTAG_SUBJECT>
-    	<kTAG_PREDICATE>:SUBCLASS-OF</kTAG_PREDICATE>
-    	<kTAG_OBJECT>:OPERATORS</kTAG_OBJECT>
+    	<element variable="kTAG_SUBJECT">:$EX</element>
+    	<element variable="kTAG_PREDICATE">:SUBCLASS-OF</element>
+    	<element variable="kTAG_OBJECT">:OPERATORS</element>
     </edge>
     
     <!-- BOOLEAN OPERATOR ENUMERATIONS -->
     
 	<!-- kOPERATOR_AND -->
 	<edge>
-    	<kTAG_SUBJECT>:$AND</kTAG_SUBJECT>
-    	<kTAG_PREDICATE>:SUBCLASS-OF</kTAG_PREDICATE>
-    	<kTAG_OBJECT>:OPERATORS</kTAG_OBJECT>
+    	<element variable="kTAG_SUBJECT">:$AND</element>
+    	<element variable="kTAG_PREDICATE">:SUBCLASS-OF</element>
+    	<element variable="kTAG_OBJECT">:OPERATORS</element>
     </edge>
     
 	<!-- kOPERATOR_NAND -->
 	<edge>
-    	<kTAG_SUBJECT>:$NAND</kTAG_SUBJECT>
-    	<kTAG_PREDICATE>:SUBCLASS-OF</kTAG_PREDICATE>
-    	<kTAG_OBJECT>:OPERATORS</kTAG_OBJECT>
+    	<element variable="kTAG_SUBJECT">:$NAND</element>
+    	<element variable="kTAG_PREDICATE">:SUBCLASS-OF</element>
+    	<element variable="kTAG_OBJECT">:OPERATORS</element>
     </edge>
     
 	<!-- kOPERATOR_OR -->
 	<edge>
-    	<kTAG_SUBJECT>:$OR</kTAG_SUBJECT>
-    	<kTAG_PREDICATE>:SUBCLASS-OF</kTAG_PREDICATE>
-    	<kTAG_OBJECT>:OPERATORS</kTAG_OBJECT>
+    	<element variable="kTAG_SUBJECT">:$OR</element>
+    	<element variable="kTAG_PREDICATE">:SUBCLASS-OF</element>
+    	<element variable="kTAG_OBJECT">:OPERATORS</element>
     </edge>
     
 	<!-- kOPERATOR_NOR -->
 	<edge>
-    	<kTAG_SUBJECT>:$NOR</kTAG_SUBJECT>
-    	<kTAG_PREDICATE>:SUBCLASS-OF</kTAG_PREDICATE>
-    	<kTAG_OBJECT>:OPERATORS</kTAG_OBJECT>
+    	<element variable="kTAG_SUBJECT">:$NOR</element>
+    	<element variable="kTAG_PREDICATE">:SUBCLASS-OF</element>
+    	<element variable="kTAG_OBJECT">:OPERATORS</element>
     </edge>
     
     <!-- PRIMITIVE DATA TYPE ENUMERATIONS -->
     
 	<!-- kTYPE_ANY -->
 	<edge>
-    	<kTAG_SUBJECT>:ANY</kTAG_SUBJECT>
-    	<kTAG_PREDICATE>:SUBCLASS-OF</kTAG_PREDICATE>
-    	<kTAG_OBJECT>:PRIMITIVES</kTAG_OBJECT>
+    	<element variable="kTAG_SUBJECT">:ANY</element>
+    	<element variable="kTAG_PREDICATE">:SUBCLASS-OF</element>
+    	<element variable="kTAG_OBJECT">:PRIMITIVES</element>
     </edge>
     
 	<!-- kTYPE_STRING -->
 	<edge>
-    	<kTAG_SUBJECT>:TEXT</kTAG_SUBJECT>
-    	<kTAG_PREDICATE>:SUBCLASS-OF</kTAG_PREDICATE>
-    	<kTAG_OBJECT>:PRIMITIVES</kTAG_OBJECT>
+    	<element variable="kTAG_SUBJECT">:TEXT</element>
+    	<element variable="kTAG_PREDICATE">:SUBCLASS-OF</element>
+    	<element variable="kTAG_OBJECT">:PRIMITIVES</element>
     </edge>
     
 	<!-- kTYPE_INT -->
 	<edge>
-    	<kTAG_SUBJECT>:INT</kTAG_SUBJECT>
-    	<kTAG_PREDICATE>:SUBCLASS-OF</kTAG_PREDICATE>
-    	<kTAG_OBJECT>:PRIMITIVES</kTAG_OBJECT>
+    	<element variable="kTAG_SUBJECT">:INT</element>
+    	<element variable="kTAG_PREDICATE">:SUBCLASS-OF</element>
+    	<element variable="kTAG_OBJECT">:PRIMITIVES</element>
     </edge>
     
 	<!-- kTYPE_FLOAT -->
 	<edge>
-    	<kTAG_SUBJECT>:FLOAT</kTAG_SUBJECT>
-    	<kTAG_PREDICATE>:SUBCLASS-OF</kTAG_PREDICATE>
-    	<kTAG_OBJECT>:PRIMITIVES</kTAG_OBJECT>
+    	<element variable="kTAG_SUBJECT">:FLOAT</element>
+    	<element variable="kTAG_PREDICATE">:SUBCLASS-OF</element>
+    	<element variable="kTAG_OBJECT">:PRIMITIVES</element>
     </edge>
     
 	<!-- kTYPE_BOOLEAN -->
 	<edge>
-    	<kTAG_SUBJECT>:BOOLEAN</kTAG_SUBJECT>
-    	<kTAG_PREDICATE>:SUBCLASS-OF</kTAG_PREDICATE>
-    	<kTAG_OBJECT>:PRIMITIVES</kTAG_OBJECT>
+    	<element variable="kTAG_SUBJECT">:BOOLEAN</element>
+    	<element variable="kTAG_PREDICATE">:SUBCLASS-OF</element>
+    	<element variable="kTAG_OBJECT">:PRIMITIVES</element>
     </edge>
     
     <!-- CUSTOM PRIMITIVE DATA TYPE ENUMERATIONS -->
     
 	<!-- kTYPE_BINARY_STRING -->
 	<edge>
-    	<kTAG_SUBJECT>:BINARY</kTAG_SUBJECT>
-    	<kTAG_PREDICATE>:ENUM-OF</kTAG_PREDICATE>
-    	<kTAG_OBJECT>:TEXT</kTAG_OBJECT>
+    	<element variable="kTAG_SUBJECT">:BINARY</element>
+    	<element variable="kTAG_PREDICATE">:ENUM-OF</element>
+    	<element variable="kTAG_OBJECT">:TEXT</element>
     </edge>
     
 	<!-- kTYPE_DATE_STRING -->
 	<edge>
-    	<kTAG_SUBJECT>:DATE</kTAG_SUBJECT>
-    	<kTAG_PREDICATE>:ENUM-OF</kTAG_PREDICATE>
-    	<kTAG_OBJECT>:TEXT</kTAG_OBJECT>
+    	<element variable="kTAG_SUBJECT">:DATE</element>
+    	<element variable="kTAG_PREDICATE">:ENUM-OF</element>
+    	<element variable="kTAG_OBJECT">:TEXT</element>
     </edge>
     
 	<!-- kTYPE_TIME_STRING -->
 	<edge>
-    	<kTAG_SUBJECT>:TIME</kTAG_SUBJECT>
-    	<kTAG_PREDICATE>:ENUM-OF</kTAG_PREDICATE>
-    	<kTAG_OBJECT>:TEXT</kTAG_OBJECT>
+    	<element variable="kTAG_SUBJECT">:TIME</element>
+    	<element variable="kTAG_PREDICATE">:ENUM-OF</element>
+    	<element variable="kTAG_OBJECT">:TEXT</element>
     </edge>
     
 	<!-- kTYPE_REGEX_STRING -->
 	<edge>
-    	<kTAG_SUBJECT>:REGEX</kTAG_SUBJECT>
-    	<kTAG_PREDICATE>:ENUM-OF</kTAG_PREDICATE>
-    	<kTAG_OBJECT>:TEXT</kTAG_OBJECT>
+    	<element variable="kTAG_SUBJECT">:REGEX</element>
+    	<element variable="kTAG_PREDICATE">:ENUM-OF</element>
+    	<element variable="kTAG_OBJECT">:TEXT</element>
     </edge>
     
 	<!-- kTYPE_INT32 -->
 	<edge>
-    	<kTAG_SUBJECT>:INT32</kTAG_SUBJECT>
-    	<kTAG_PREDICATE>:ENUM-OF</kTAG_PREDICATE>
-    	<kTAG_OBJECT>:INT</kTAG_OBJECT>
+    	<element variable="kTAG_SUBJECT">:INT32</element>
+    	<element variable="kTAG_PREDICATE">:ENUM-OF</element>
+    	<element variable="kTAG_OBJECT">:INT</element>
     </edge>
     
 	<!-- kTYPE_INT64 -->
 	<edge>
-    	<kTAG_SUBJECT>:INT64</kTAG_SUBJECT>
-    	<kTAG_PREDICATE>:ENUM-OF</kTAG_PREDICATE>
-    	<kTAG_OBJECT>:INT</kTAG_OBJECT>
+    	<element variable="kTAG_SUBJECT">:INT64</element>
+    	<element variable="kTAG_PREDICATE">:ENUM-OF</element>
+    	<element variable="kTAG_OBJECT">:INT</element>
     </edge>
     
     <!-- STANDARD FORMAT TYPE ENUMERATIONS -->
     
 	<!-- kTYPE_META -->
 	<edge>
-    	<kTAG_SUBJECT>:META</kTAG_SUBJECT>
-    	<kTAG_PREDICATE>:SUBCLASS-OF</kTAG_PREDICATE>
-    	<kTAG_OBJECT>:TYPES</kTAG_OBJECT>
+    	<element variable="kTAG_SUBJECT">:META</element>
+    	<element variable="kTAG_PREDICATE">:SUBCLASS-OF</element>
+    	<element variable="kTAG_OBJECT">:TYPES</element>
     </edge>
     
 	<!-- kTYPE_PHP -->
 	<edge>
-    	<kTAG_SUBJECT>:PHP</kTAG_SUBJECT>
-    	<kTAG_PREDICATE>:ENUM-OF</kTAG_PREDICATE>
-    	<kTAG_OBJECT>:TEXT</kTAG_OBJECT>
+    	<element variable="kTAG_SUBJECT">:PHP</element>
+    	<element variable="kTAG_PREDICATE">:ENUM-OF</element>
+    	<element variable="kTAG_OBJECT">:TEXT</element>
     </edge>
     
 	<!-- kTYPE_JSON -->
 	<edge>
-    	<kTAG_SUBJECT>:JSON</kTAG_SUBJECT>
-    	<kTAG_PREDICATE>:ENUM-OF</kTAG_PREDICATE>
-    	<kTAG_OBJECT>:TEXT</kTAG_OBJECT>
+    	<element variable="kTAG_SUBJECT">:JSON</element>
+    	<element variable="kTAG_PREDICATE">:ENUM-OF</element>
+    	<element variable="kTAG_OBJECT">:TEXT</element>
     </edge>
     
 	<!-- kTYPE_XML -->
 	<edge>
-    	<kTAG_SUBJECT>:XML</kTAG_SUBJECT>
-    	<kTAG_PREDICATE>:ENUM-OF</kTAG_PREDICATE>
-    	<kTAG_OBJECT>:TEXT</kTAG_OBJECT>
+    	<element variable="kTAG_SUBJECT">:XML</element>
+    	<element variable="kTAG_PREDICATE">:ENUM-OF</element>
+    	<element variable="kTAG_OBJECT">:TEXT</element>
     </edge>
     
 	<!-- kTYPE_SVG -->
 	<edge>
-    	<kTAG_SUBJECT>:SVG</kTAG_SUBJECT>
-    	<kTAG_PREDICATE>:ENUM-OF</kTAG_PREDICATE>
-    	<kTAG_OBJECT>:XML</kTAG_OBJECT>
+    	<element variable="kTAG_SUBJECT">:SVG</element>
+    	<element variable="kTAG_PREDICATE">:ENUM-OF</element>
+    	<element variable="kTAG_OBJECT">:XML</element>
     </edge>
     
     <!-- STRUCTURED TYPE ENUMERATIONS -->
     
 	<!-- kTYPE_STRUCT -->
 	<edge>
-    	<kTAG_SUBJECT>:STRUCT</kTAG_SUBJECT>
-    	<kTAG_PREDICATE>:SUBCLASS-OF</kTAG_PREDICATE>
-    	<kTAG_OBJECT>:STRUCTURES</kTAG_OBJECT>
+    	<element variable="kTAG_SUBJECT">:STRUCT</element>
+    	<element variable="kTAG_PREDICATE">:SUBCLASS-OF</element>
+    	<element variable="kTAG_OBJECT">:STRUCTURES</element>
     </edge>
     
 	<!-- kTYPE_LSTRING -->
 	<edge>
-    	<kTAG_SUBJECT>:LSTRING</kTAG_SUBJECT>
-    	<kTAG_PREDICATE>:SUBCLASS-OF</kTAG_PREDICATE>
-    	<kTAG_OBJECT>:STRUCTURES</kTAG_OBJECT>
+    	<element variable="kTAG_SUBJECT">:LSTRING</element>
+    	<element variable="kTAG_PREDICATE">:SUBCLASS-OF</element>
+    	<element variable="kTAG_OBJECT">:STRUCTURES</element>
     </edge>
     
 	<!-- kTYPE_STAMP -->
 	<edge>
-    	<kTAG_SUBJECT>:STAMP</kTAG_SUBJECT>
-    	<kTAG_PREDICATE>:SUBCLASS-OF</kTAG_PREDICATE>
-    	<kTAG_OBJECT>:STRUCTURES</kTAG_OBJECT>
+    	<element variable="kTAG_SUBJECT">:STAMP</element>
+    	<element variable="kTAG_PREDICATE">:SUBCLASS-OF</element>
+    	<element variable="kTAG_OBJECT">:STRUCTURES</element>
     </edge>
     
     <!-- ENUMERATED TYPE ENUMERATIONS -->
     
 	<!-- kTYPE_ENUM -->
 	<edge>
-    	<kTAG_SUBJECT>:ENUM</kTAG_SUBJECT>
-    	<kTAG_PREDICATE>:SUBCLASS-OF</kTAG_PREDICATE>
-    	<kTAG_OBJECT>:ENUMERATED</kTAG_OBJECT>
+    	<element variable="kTAG_SUBJECT">:ENUM</element>
+    	<element variable="kTAG_PREDICATE">:SUBCLASS-OF</element>
+    	<element variable="kTAG_OBJECT">:ENUMERATED</element>
     </edge>
     
 	<!-- kTYPE_ENUM_SET -->
 	<edge>
-    	<kTAG_SUBJECT>:SET</kTAG_SUBJECT>
-    	<kTAG_PREDICATE>:SUBCLASS-OF</kTAG_PREDICATE>
-    	<kTAG_OBJECT>:ENUMERATED</kTAG_OBJECT>
+    	<element variable="kTAG_SUBJECT">:SET</element>
+    	<element variable="kTAG_PREDICATE">:SUBCLASS-OF</element>
+    	<element variable="kTAG_OBJECT">:ENUMERATED</element>
     </edge>
     
     <!-- CARDINALITY TYPE ENUMERATIONS -->
     
     <!-- kTYPE_REQUIRED -->
 	<edge>
-    	<kTAG_SUBJECT>:REQUIRED</kTAG_SUBJECT>
-    	<kTAG_PREDICATE>:SUBCLASS-OF</kTAG_PREDICATE>
-    	<kTAG_OBJECT>:CARDINALITY</kTAG_OBJECT>
+    	<element variable="kTAG_SUBJECT">:REQUIRED</element>
+    	<element variable="kTAG_PREDICATE">:SUBCLASS-OF</element>
+    	<element variable="kTAG_OBJECT">:CARDINALITY</element>
     </edge>
     
     <!-- kTYPE_RESTRICTED -->
 	<edge>
-    	<kTAG_SUBJECT>:RESTRICTED</kTAG_SUBJECT>
-    	<kTAG_PREDICATE>:SUBCLASS-OF</kTAG_PREDICATE>
-    	<kTAG_OBJECT>:CARDINALITY</kTAG_OBJECT>
+    	<element variable="kTAG_SUBJECT">:RESTRICTED</element>
+    	<element variable="kTAG_PREDICATE">:SUBCLASS-OF</element>
+    	<element variable="kTAG_OBJECT">:CARDINALITY</element>
     </edge>
     
     <!-- kTYPE_COMPUTED -->
 	<edge>
-    	<kTAG_SUBJECT>:COMPUTED</kTAG_SUBJECT>
-    	<kTAG_PREDICATE>:SUBCLASS-OF</kTAG_PREDICATE>
-    	<kTAG_OBJECT>:CARDINALITY</kTAG_OBJECT>
+    	<element variable="kTAG_SUBJECT">:COMPUTED</element>
+    	<element variable="kTAG_PREDICATE">:SUBCLASS-OF</element>
+    	<element variable="kTAG_OBJECT">:CARDINALITY</element>
     </edge>
     
     <!-- kTYPE_LOCKED -->
 	<edge>
-    	<kTAG_SUBJECT>:LOCKED</kTAG_SUBJECT>
-    	<kTAG_PREDICATE>:SUBCLASS-OF</kTAG_PREDICATE>
-    	<kTAG_OBJECT>:CARDINALITY</kTAG_OBJECT>
+    	<element variable="kTAG_SUBJECT">:LOCKED</element>
+    	<element variable="kTAG_PREDICATE">:SUBCLASS-OF</element>
+    	<element variable="kTAG_OBJECT">:CARDINALITY</element>
     </edge>
     
     <!-- kTYPE_ARRAY -->
 	<edge>
-    	<kTAG_SUBJECT>:ARRAY</kTAG_SUBJECT>
-    	<kTAG_PREDICATE>:SUBCLASS-OF</kTAG_PREDICATE>
-    	<kTAG_OBJECT>:CARDINALITY</kTAG_OBJECT>
+    	<element variable="kTAG_SUBJECT">:ARRAY</element>
+    	<element variable="kTAG_PREDICATE">:SUBCLASS-OF</element>
+    	<element variable="kTAG_OBJECT">:CARDINALITY</element>
     </edge>
     
     <!-- RELATIONSHIP TYPE ENUMERATIONS -->
     
     <!-- kTYPE_RELATION_IN -->
 	<edge>
-    	<kTAG_SUBJECT>:RELATION-IN</kTAG_SUBJECT>
-    	<kTAG_PREDICATE>:SUBCLASS-OF</kTAG_PREDICATE>
-    	<kTAG_OBJECT>:RELATIONSHIP</kTAG_OBJECT>
+    	<element variable="kTAG_SUBJECT">:RELATION-IN</element>
+    	<element variable="kTAG_PREDICATE">:SUBCLASS-OF</element>
+    	<element variable="kTAG_OBJECT">:RELATIONSHIP</element>
     </edge>
     
     <!-- kTYPE_RELATION_OUT -->
 	<edge>
-    	<kTAG_SUBJECT>:RELATION-OUT</kTAG_SUBJECT>
-    	<kTAG_PREDICATE>:SUBCLASS-OF</kTAG_PREDICATE>
-    	<kTAG_OBJECT>:RELATIONSHIP</kTAG_OBJECT>
+    	<element variable="kTAG_SUBJECT">:RELATION-OUT</element>
+    	<element variable="kTAG_PREDICATE">:SUBCLASS-OF</element>
+    	<element variable="kTAG_OBJECT">:RELATIONSHIP</element>
     </edge>
     
     <!-- kTYPE_RELATION_ALL -->
 	<edge>
-    	<kTAG_SUBJECT>:RELATION-ALL</kTAG_SUBJECT>
-    	<kTAG_PREDICATE>:SUBCLASS-OF</kTAG_PREDICATE>
-    	<kTAG_OBJECT>:RELATIONSHIP</kTAG_OBJECT>
+    	<element variable="kTAG_SUBJECT">:RELATION-ALL</element>
+    	<element variable="kTAG_PREDICATE">:SUBCLASS-OF</element>
+    	<element variable="kTAG_OBJECT">:RELATIONSHIP</element>
     </edge>
     
     <!-- MONGO TYPE ENUMERATIONS -->
     
     <!-- kTYPE_MongoId -->
 	<edge>
-    	<kTAG_SUBJECT>:MongoId</kTAG_SUBJECT>
-    	<kTAG_PREDICATE>:SUBCLASS-OF</kTAG_PREDICATE>
-    	<kTAG_OBJECT>:STRUCTURES</kTAG_OBJECT>
+    	<element variable="kTAG_SUBJECT">:MongoId</element>
+    	<element variable="kTAG_PREDICATE">:SUBCLASS-OF</element>
+    	<element variable="kTAG_OBJECT">:STRUCTURES</element>
     </edge>
     
     <!-- kTYPE_MongoCode -->
 	<edge>
-    	<kTAG_SUBJECT>:MongoCode</kTAG_SUBJECT>
-    	<kTAG_PREDICATE>:SUBCLASS-OF</kTAG_PREDICATE>
-    	<kTAG_OBJECT>:STRUCTURES</kTAG_OBJECT>
+    	<element variable="kTAG_SUBJECT">:MongoCode</element>
+    	<element variable="kTAG_PREDICATE">:SUBCLASS-OF</element>
+    	<element variable="kTAG_OBJECT">:STRUCTURES</element>
     </edge>
     
     <!-- KIND ENUMERATIONS -->
     
     <!-- kKIND_ROOT -->
 	<edge>
-    	<kTAG_SUBJECT>:KIND-ROOT</kTAG_SUBJECT>
-    	<kTAG_PREDICATE>:SUBCLASS-OF</kTAG_PREDICATE>
-    	<kTAG_OBJECT>:KINDS</kTAG_OBJECT>
+    	<element variable="kTAG_SUBJECT">:KIND-ROOT</element>
+    	<element variable="kTAG_PREDICATE">:SUBCLASS-OF</element>
+    	<element variable="kTAG_OBJECT">:KINDS</element>
     </edge>
     
     <!-- kKIND_FEATURE -->
 	<edge>
-    	<kTAG_SUBJECT>:KIND-FEATURE</kTAG_SUBJECT>
-    	<kTAG_PREDICATE>:SUBCLASS-OF</kTAG_PREDICATE>
-    	<kTAG_OBJECT>:KINDS</kTAG_OBJECT>
+    	<element variable="kTAG_SUBJECT">:KIND-FEATURE</element>
+    	<element variable="kTAG_PREDICATE">:SUBCLASS-OF</element>
+    	<element variable="kTAG_OBJECT">:KINDS</element>
     </edge>
     
     <!-- kKIND_METHOD -->
 	<edge>
-    	<kTAG_SUBJECT>:KIND-METHOD</kTAG_SUBJECT>
-    	<kTAG_PREDICATE>:SUBCLASS-OF</kTAG_PREDICATE>
-    	<kTAG_OBJECT>:KINDS</kTAG_OBJECT>
+    	<element variable="kTAG_SUBJECT">:KIND-METHOD</element>
+    	<element variable="kTAG_PREDICATE">:SUBCLASS-OF</element>
+    	<element variable="kTAG_OBJECT">:KINDS</element>
     </edge>
     
     <!-- kKIND_SCALE -->
 	<edge>
-    	<kTAG_SUBJECT>:KIND-SCALE</kTAG_SUBJECT>
-    	<kTAG_PREDICATE>:SUBCLASS-OF</kTAG_PREDICATE>
-    	<kTAG_OBJECT>:KINDS</kTAG_OBJECT>
+    	<element variable="kTAG_SUBJECT">:KIND-SCALE</element>
+    	<element variable="kTAG_PREDICATE">:SUBCLASS-OF</element>
+    	<element variable="kTAG_OBJECT">:KINDS</element>
     </edge>
     
     <!-- kKIND_ENUMERATION -->
 	<edge>
-    	<kTAG_SUBJECT>:KIND-ENUMERATION</kTAG_SUBJECT>
-    	<kTAG_PREDICATE>:SUBCLASS-OF</kTAG_PREDICATE>
-    	<kTAG_OBJECT>:KINDS</kTAG_OBJECT>
+    	<element variable="kTAG_SUBJECT">:KIND-ENUMERATION</element>
+    	<element variable="kTAG_PREDICATE">:SUBCLASS-OF</element>
+    	<element variable="kTAG_OBJECT">:KINDS</element>
     </edge>
     
     <!-- kKIND_INSTANCE -->
 	<edge>
-    	<kTAG_SUBJECT>:KIND-INSTANCE</kTAG_SUBJECT>
-    	<kTAG_PREDICATE>:SUBCLASS-OF</kTAG_PREDICATE>
-    	<kTAG_OBJECT>:KINDS</kTAG_OBJECT>
+    	<element variable="kTAG_SUBJECT">:KIND-INSTANCE</element>
+    	<element variable="kTAG_PREDICATE">:SUBCLASS-OF</element>
+    	<element variable="kTAG_OBJECT">:KINDS</element>
     </edge>
     
     <!-- kKIND_NAMESPACE -->
 	<edge>
-    	<kTAG_SUBJECT>:KIND-NAMESPACE</kTAG_SUBJECT>
-    	<kTAG_PREDICATE>:SUBCLASS-OF</kTAG_PREDICATE>
-    	<kTAG_OBJECT>:KINDS</kTAG_OBJECT>
+    	<element variable="kTAG_SUBJECT">:KIND-NAMESPACE</element>
+    	<element variable="kTAG_PREDICATE">:SUBCLASS-OF</element>
+    	<element variable="kTAG_OBJECT">:KINDS</element>
     </edge>
     
     <!-- kKIND_PREDICATE -->
 	<edge>
-    	<kTAG_SUBJECT>:KIND-PREDICATE</kTAG_SUBJECT>
-    	<kTAG_PREDICATE>:SUBCLASS-OF</kTAG_PREDICATE>
-    	<kTAG_OBJECT>:KINDS</kTAG_OBJECT>
+    	<element variable="kTAG_SUBJECT">:KIND-PREDICATE</element>
+    	<element variable="kTAG_PREDICATE">:SUBCLASS-OF</element>
+    	<element variable="kTAG_OBJECT">:KINDS</element>
     </edge>
     
     <!-- kKIND_SYMMETRIC -->
 	<edge>
-    	<kTAG_SUBJECT>:KIND-SYMMETRIC</kTAG_SUBJECT>
-    	<kTAG_PREDICATE>:ENUM-OF</kTAG_PREDICATE>
-    	<kTAG_OBJECT>:KIND-PREDICATE</kTAG_OBJECT>
+    	<element variable="kTAG_SUBJECT">:KIND-SYMMETRIC</element>
+    	<element variable="kTAG_PREDICATE">:ENUM-OF</element>
+    	<element variable="kTAG_OBJECT">:KIND-PREDICATE</element>
     </edge>
 </edges>

@@ -3,15 +3,15 @@
     <!-- NAMESPACES -->
     
     <!-- Default namespace -->
-    <term kTAG_LID="">
-        <kTAG_KIND>
+    <term lid="">
+        <element variable="kTAG_KIND">
             <item>:KIND-NAMESPACE</item>
-        </kTAG_KIND>
-        <kTAG_LABEL language="en">Default namespace</kTAG_LABEL>
-        <kTAG_DEFINITION language="en"><![CDATA[This <i>namespace</i> groups all default
+        </element>
+        <element variable="kTAG_LABEL" key="en">Default namespace</element>
+        <element variable="kTAG_DEFINITION" key="en"><![CDATA[This <i>namespace</i> groups all default
         	terms of the ontology, these are the elements that will be used to build the
         	ontology itself.
         	]]>
-        </kTAG_DEFINITION>
+        </element>
      </term>
 </terms>

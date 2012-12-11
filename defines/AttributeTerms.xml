@@ -3,213 +3,213 @@
     <!-- IDENTIFICATION ATTRIBUTES -->
     
     <!-- kTERM_NID -->
-    <term kTAG_LID="NID" kTAG_NAMESPACE="">
-        <kTAG_LABEL language="en">Native identifier</kTAG_LABEL>
-        <kTAG_DEFINITION language="en"><![CDATA[The <i>native identifier</i> uniquely
+    <term lid="NID" ns="">
+        <element variable="kTAG_LABEL" key="en">Native identifier</element>
+        <element variable="kTAG_DEFINITION" key="en"><![CDATA[The <i>native identifier</i> uniquely
         	identifies an object <i>within its container</i>, this attribute is <i>specific
         	to the storage engine</i> and will be in general a native data type.
         	]]>
-        </kTAG_DEFINITION>
-        <kTAG_SYNONYMS>
+        </element>
+        <element variable="kTAG_SYNONYMS">
             <item>kTERM_NID</item>
-        </kTAG_SYNONYMS>
+        </element>
     </term>
     
     <!-- kTERM_LID -->
-    <term kTAG_LID="LID" kTAG_NAMESPACE="">
-        <kTAG_LABEL language="en">Local identifier</kTAG_LABEL>
-        <kTAG_DEFINITION language="en"><![CDATA[The <i>local identifier</i> uniquely
+    <term lid="LID" ns="">
+        <element variable="kTAG_LABEL" key="en">Local identifier</element>
+        <element variable="kTAG_DEFINITION" key="en"><![CDATA[The <i>local identifier</i> uniquely
         	identifies an object <i>within a specific domain or namespace</i>. The value is
         	by definition a <i>string</i>.
         	]]>
-        </kTAG_DEFINITION>
-        <kTAG_SYNONYMS>
+        </element>
+        <element variable="kTAG_SYNONYMS">
             <item>kTERM_LID</item>
-        </kTAG_SYNONYMS>
+        </element>
     </term>
     
     <!-- kTERM_GID -->
-    <term kTAG_LID="GID" kTAG_NAMESPACE="">
-        <kTAG_LABEL language="en">Global identifier</kTAG_LABEL>
-        <kTAG_DEFINITION language="en"><![CDATA[The <i>global identifier</i> uniquely
+    <term lid="GID" ns="">
+        <element variable="kTAG_LABEL" key="en">Global identifier</element>
+        <element variable="kTAG_DEFINITION" key="en"><![CDATA[The <i>global identifier</i> uniquely
         	identifies the object <i>across domains and namespaces</i>. The value is by
         	definition a <i>string</i>.
         	]]>
-        </kTAG_DEFINITION>
-        <kTAG_SYNONYMS>
+        </element>
+        <element variable="kTAG_SYNONYMS">
             <item>kTERM_GID</item>
-        </kTAG_SYNONYMS>
+        </element>
     </term>
     
     <!-- kTERM_UID -->
-    <term kTAG_LID="UID" kTAG_NAMESPACE="">
-        <kTAG_LABEL language="en">Unique identifier</kTAG_LABEL>
-        <kTAG_DEFINITION language="en"><![CDATA[The <i>unique identifier</i> is a coded
+    <term lid="UID" ns="">
+        <element variable="kTAG_LABEL" key="en">Unique identifier</element>
+        <element variable="kTAG_DEFINITION" key="en"><![CDATA[The <i>unique identifier</i> is a coded
         	value that <i>uniquely identifies</i> an object in a container. This value will
         	generally be a hashed string.
         	]]>
-        </kTAG_DEFINITION>
-        <kTAG_SYNONYMS>
+        </element>
+        <element variable="kTAG_SYNONYMS">
             <item>kTERM_UID</item>
-        </kTAG_SYNONYMS>
+        </element>
     </term>
     
     <!-- kTERM_SYNONYMS -->
-    <term kTAG_LID="SYNONYMS" kTAG_NAMESPACE="">
-        <kTAG_LABEL language="en">Synonyms</kTAG_LABEL>
-        <kTAG_DEFINITION language="en"><![CDATA[The <i>synonyms</i> or <i>alternate
+    <term lid="SYNONYMS" ns="">
+        <element variable="kTAG_LABEL" key="en">Synonyms</element>
+        <element variable="kTAG_DEFINITION" key="en"><![CDATA[The <i>synonyms</i> or <i>alternate
         	identifiers</i> are a list of strings by which an object is referenced. This
         	attribute is used to record all the identifiers which are not present in the
         	ontology; these strings <i>are not related to languages</i>.
         	]]>
-        </kTAG_DEFINITION>
-        <kTAG_SYNONYMS>
+        </element>
+        <element variable="kTAG_SYNONYMS">
             <item>kTERM_SYNONYMS</item>
-        </kTAG_SYNONYMS>
+        </element>
     </term>
     
     <!-- CLASSIFICATION ATTRIBUTES -->
     
     <!-- kTERM_CATEGORY -->
-    <term kTAG_LID="CATEGORY" kTAG_NAMESPACE="">
-        <kTAG_LABEL language="en">Category</kTAG_LABEL>
-        <kTAG_DEFINITION language="en"><![CDATA[The <i>category</i> is an <i>enumerated
+    <term lid="CATEGORY" ns="">
+        <element variable="kTAG_LABEL" key="en">Category</element>
+        <element variable="kTAG_DEFINITION" key="en"><![CDATA[The <i>category</i> is an <i>enumerated
         	set</i> of values which represent the <i>various categories</i> to which an
         	object belongs. The category is unrelated to the <i>class</i> of the object.
         	]]>
-        </kTAG_DEFINITION>
-        <kTAG_SYNONYMS>
+        </element>
+        <element variable="kTAG_SYNONYMS">
             <item>kTERM_CATEGORY</item>
-        </kTAG_SYNONYMS>
+        </element>
     </term>
     
     <!-- kTERM_KIND -->
-    <term kTAG_LID="KIND" kTAG_NAMESPACE="">
-        <kTAG_LABEL language="en">Kind</kTAG_LABEL>
-        <kTAG_DEFINITION language="en"><![CDATA[The <i>kind</i> is an <i>enumerated set</i>
+    <term lid="KIND" ns="">
+        <element variable="kTAG_LABEL" key="en">Kind</element>
+        <element variable="kTAG_DEFINITION" key="en"><![CDATA[The <i>kind</i> is an <i>enumerated set</i>
         	of values which represent the <i>various types</i> of the referencing object.
         	The kind is specific to the <i>class</i> of the object.
         	]]>
-        </kTAG_DEFINITION>
-        <kTAG_SYNONYMS>
+        </element>
+        <element variable="kTAG_SYNONYMS">
             <item>kTERM_KIND</item>
-        </kTAG_SYNONYMS>
+        </element>
     </term>
     
     <!-- kTERM_TYPE -->
-    <term kTAG_LID="TYPE" kTAG_NAMESPACE="">
-        <kTAG_LABEL language="en">Type</kTAG_LABEL>
-        <kTAG_DEFINITION language="en"><![CDATA[The <i>type</i> is an <i>enumerated set</i>
+    <term lid="TYPE" ns="">
+        <element variable="kTAG_LABEL" key="en">Type</element>
+        <element variable="kTAG_DEFINITION" key="en"><![CDATA[The <i>type</i> is an <i>enumerated set</i>
         	of values which represent the <i>various types</i> of the referenced object.
         	The type applies to the referenced object and is used almost wxclusively to
         	indicate the <i>data type</i>.
         	]]>
-        </kTAG_DEFINITION>
-        <kTAG_SYNONYMS>
+        </element>
+        <element variable="kTAG_SYNONYMS">
             <item>kTERM_TYPE</item>
-        </kTAG_SYNONYMS>
+        </element>
     </term>
     
     <!-- kTERM_CLASS -->
-    <term kTAG_LID="CLASS" kTAG_NAMESPACE="">
-        <kTAG_LABEL language="en">Class</kTAG_LABEL>
-        <kTAG_DEFINITION language="en"><![CDATA[The <i>class</i> represents the object's
+    <term lid="CLASS" ns="">
+        <element variable="kTAG_LABEL" key="en">Class</element>
+        <element variable="kTAG_DEFINITION" key="en"><![CDATA[The <i>class</i> represents the object's
         	<i>class name</i>, it is generally used for instantiating the correct class once
 			an object has been retrieved from its container.
         	]]>
-        </kTAG_DEFINITION>
-        <kTAG_SYNONYMS>
+        </element>
+        <element variable="kTAG_SYNONYMS">
             <item>kTERM_CLASS</item>
-        </kTAG_SYNONYMS>
+        </element>
     </term>
     
     <!-- kTERM_NAMESPACE -->
-    <term kTAG_LID="NAMESPACE" kTAG_NAMESPACE="">
-        <kTAG_LABEL language="en">Namespace</kTAG_LABEL>
-        <kTAG_DEFINITION language="en"><![CDATA[The <i>namespace</i> is a reference to a
+    <term lid="NAMESPACE" ns="">
+        <element variable="kTAG_LABEL" key="en">Namespace</element>
+        <element variable="kTAG_DEFINITION" key="en"><![CDATA[The <i>namespace</i> is a reference to a
         	term which represents a container for a set of other term identifiers.
         	Namespaces are used for grouping terms based on their functionality or to allow
         	homonym identifiers.
         	]]>
-        </kTAG_DEFINITION>
-        <kTAG_SYNONYMS>
+        </element>
+        <element variable="kTAG_SYNONYMS">
             <item>kTERM_NAMESPACE</item>
-        </kTAG_SYNONYMS>
+        </element>
     </term>
     
     <!-- DESCRIPTION ATTRIBUTES -->
     
     <!-- kTERM_LABEL -->
-    <term kTAG_LID="LABEL" kTAG_NAMESPACE="">
-        <kTAG_LABEL language="en">Label</kTAG_LABEL>
-        <kTAG_DEFINITION language="en"><![CDATA[The <i>label</i> is a string which
+    <term lid="LABEL" ns="">
+        <element variable="kTAG_LABEL" key="en">Label</element>
+        <element variable="kTAG_DEFINITION" key="en"><![CDATA[The <i>label</i> is a string which
         	represents the <i>name</i> or <i>short description</i> of an object. It is a
         	structure which stores labels <i>expressed in different languages</i>.
         	]]>
-        </kTAG_DEFINITION>
-        <kTAG_SYNONYMS>
+        </element>
+        <element variable="kTAG_SYNONYMS">
             <item>kTERM_LABEL</item>
-        </kTAG_SYNONYMS>
+        </element>
     </term>
     
     <!-- kTERM_DEFINITION -->
-    <term kTAG_LID="DEFINITION" kTAG_NAMESPACE="">
-        <kTAG_LABEL language="en">Definition</kTAG_LABEL>
-        <kTAG_DEFINITION language="en"><![CDATA[The <i>definition</i> is the description
+    <term lid="DEFINITION" ns="">
+        <element variable="kTAG_LABEL" key="en">Definition</element>
+        <element variable="kTAG_DEFINITION" key="en"><![CDATA[The <i>definition</i> is the description
         	of an object <i>independent from its context</i>. It is a structure which stores
         	definitions <i>expressed in different languages</i>.
         	]]>
-        </kTAG_DEFINITION>
-        <kTAG_SYNONYMS>
+        </element>
+        <element variable="kTAG_SYNONYMS">
             <item>kTERM_DEFINITION</item>
-        </kTAG_SYNONYMS>
+        </element>
     </term>
     
     <!-- kTERM_DESCRIPTION -->
-    <term kTAG_LID="DESCRIPTION" kTAG_NAMESPACE="">
-        <kTAG_LABEL language="en">Description</kTAG_LABEL>
-        <kTAG_DEFINITION language="en"><![CDATA[The <i>description</i> is the definition
+    <term lid="DESCRIPTION" ns="">
+        <element variable="kTAG_LABEL" key="en">Description</element>
+        <element variable="kTAG_DEFINITION" key="en"><![CDATA[The <i>description</i> is the definition
         	of an object <i>dependent on its context</i>. It is a structure which stores
         	descriptions <i>expressed in different languages</i>.
         	]]>
-        </kTAG_DEFINITION>
-        <kTAG_SYNONYMS>
+        </element>
+        <element variable="kTAG_SYNONYMS">
             <item>kTERM_DESCRIPTION</item>
-        </kTAG_SYNONYMS>
+        </element>
     </term>
     
     <!-- kTERM_NOTES -->
-    <term kTAG_LID="NOTES" kTAG_NAMESPACE="">
-        <kTAG_LABEL language="en">Notes</kTAG_LABEL>
-        <kTAG_DEFINITION language="en"><![CDATA[The <i>notes</i> or <i>comments</i> provide
+    <term lid="NOTES" ns="">
+        <element variable="kTAG_LABEL" key="en">Notes</element>
+        <element variable="kTAG_DEFINITION" key="en"><![CDATA[The <i>notes</i> or <i>comments</i> provide
         	additional information unrelated to the definition or description. It is a
         	structure which stores notes <i>expressed in different languages</i>.
         	]]>
-        </kTAG_DEFINITION>
-        <kTAG_SYNONYMS>
+        </element>
+        <element variable="kTAG_SYNONYMS">
             <item>kTERM_NOTES</item>
-        </kTAG_SYNONYMS>
+        </element>
     </term>
     
     <!-- kTERM_EXAMPLES -->
-    <term kTAG_LID="EXAMPLES" kTAG_NAMESPACE="">
-        <kTAG_LABEL language="en">Examples</kTAG_LABEL>
-        <kTAG_DEFINITION language="en"><![CDATA[The <i>examples</i> or <i>templates</i> are
+    <term lid="EXAMPLES" ns="">
+        <element variable="kTAG_LABEL" key="en">Examples</element>
+        <element variable="kTAG_DEFINITION" key="en"><![CDATA[The <i>examples</i> or <i>templates</i> are
         	a list of strings which represent use-cases. These strings <i>are not in any
         	specific language</i>.
         	]]>
-        </kTAG_DEFINITION>
-        <kTAG_SYNONYMS>
+        </element>
+        <element variable="kTAG_SYNONYMS">
             <item>kTERM_EXAMPLES</item>
-        </kTAG_SYNONYMS>
+        </element>
     </term>
     
     <!-- STATUS ATTRIBUTES -->
     
     <!-- kTERM_STATUS_LEVEL -->
-    <term kTAG_LID="STATUS-LEVEL" kTAG_NAMESPACE="">
-        <kTAG_LABEL language="en">Status level</kTAG_LABEL>
-        <kTAG_DEFINITION language="en"><![CDATA[The <i>severity</i> or <i>status level</i>,
+    <term lid="STATUS-LEVEL" ns="">
+        <element variable="kTAG_LABEL" key="en">Status level</element>
+        <element variable="kTAG_DEFINITION" key="en"><![CDATA[The <i>severity</i> or <i>status level</i>,
         	is an element of an <i>enumerated set</i> which indicates the <i>importance</i>
         	or <i>severity</i> of an event. The attribute must be one of the following
         	values:<ul>
@@ -240,224 +240,224 @@
 				operation does not correspond to its declaration.
 			</ul>
             ]]>
-        </kTAG_DEFINITION>
-        <kTAG_SYNONYMS>
+        </element>
+        <element variable="kTAG_SYNONYMS">
             <item>kTERM_STATUS_LEVEL</item>
-        </kTAG_SYNONYMS>
+        </element>
     </term>
     
     <!-- kTERM_STATUS_CODE -->
-    <term kTAG_LID="STATUS-CODE" kTAG_NAMESPACE="">
-        <kTAG_LABEL language="en">Status code</kTAG_LABEL>
-        <kTAG_DEFINITION language="en"><![CDATA[The <i>status code</i> is an element of an
+    <term lid="STATUS-CODE" ns="">
+        <element variable="kTAG_LABEL" key="en">Status code</element>
+        <element variable="kTAG_DEFINITION" key="en"><![CDATA[The <i>status code</i> is an element of an
         	<i>enumerated set</i> which indicates the specific <i>state</i> of the event.
             ]]>
-        </kTAG_DEFINITION>
-        <kTAG_SYNONYMS>
+        </element>
+        <element variable="kTAG_SYNONYMS">
             <item>kTERM_STATUS_CODE</item>
-        </kTAG_SYNONYMS>
+        </element>
     </term>
     
     <!-- kTERM_STATUS_MESSAGE -->
-    <term kTAG_LID="STATUS-MESSAGE" kTAG_NAMESPACE="">
-        <kTAG_LABEL language="en">Status message</kTAG_LABEL>
-        <kTAG_DEFINITION language="en"><![CDATA[The <i>status message</i> is a string that
+    <term lid="STATUS-MESSAGE" ns="">
+        <element variable="kTAG_LABEL" key="en">Status message</element>
+        <element variable="kTAG_DEFINITION" key="en"><![CDATA[The <i>status message</i> is a string that
         	<i>describes the status of an event</i>. It is a structure which stores messages
         	<i>expressed in different languages</i>.
             ]]>
-        </kTAG_DEFINITION>
-        <kTAG_SYNONYMS>
+        </element>
+        <element variable="kTAG_SYNONYMS">
             <item>kTERM_STATUS_MESSAGE</item>
-        </kTAG_SYNONYMS>
+        </element>
     </term>
     
     <!-- AUTHORSHIP ATTRIBUTES -->
     
     <!-- kTERM_AUTHORS -->
-    <term kTAG_LID="AUTHORS" kTAG_NAMESPACE="">
-        <kTAG_LABEL language="en">Authors</kTAG_LABEL>
-        <kTAG_DEFINITION language="en"><![CDATA[It is a <i>list of author names</i>.
+    <term lid="AUTHORS" ns="">
+        <element variable="kTAG_LABEL" key="en">Authors</element>
+        <element variable="kTAG_DEFINITION" key="en"><![CDATA[It is a <i>list of author names</i>.
             ]]>
-        </kTAG_DEFINITION>
-        <kTAG_SYNONYMS>
+        </element>
+        <element variable="kTAG_SYNONYMS">
             <item>kTERM_AUTHORS</item>
-        </kTAG_SYNONYMS>
+        </element>
     </term>
     
     <!-- kTERM_ACKNOWLEDGMENTS -->
-    <term kTAG_LID="ACKNOWLEDGMENTS" kTAG_NAMESPACE="">
-        <kTAG_LABEL language="en">Acknowledgments</kTAG_LABEL>
-        <kTAG_DEFINITION language="en"><![CDATA[It is a <i>list of generic
+    <term lid="ACKNOWLEDGMENTS" ns="">
+        <element variable="kTAG_LABEL" key="en">Acknowledgments</element>
+        <element variable="kTAG_DEFINITION" key="en"><![CDATA[It is a <i>list of generic
         	acknowledgments</i>.
             ]]>
-        </kTAG_DEFINITION>
-        <kTAG_SYNONYMS>
+        </element>
+        <element variable="kTAG_SYNONYMS">
             <item>kTERM_ACKNOWLEDGMENTS</item>
-        </kTAG_SYNONYMS>
+        </element>
     </term>
     
     <!-- kTERM_BIBLIOGRAPHY -->
-    <term kTAG_LID="BIBLIOGRAPHY" kTAG_NAMESPACE="">
-        <kTAG_LABEL language="en">Bibliography</kTAG_LABEL>
-        <kTAG_DEFINITION language="en"><![CDATA[It is a <i>list of bibliographic
+    <term lid="BIBLIOGRAPHY" ns="">
+        <element variable="kTAG_LABEL" key="en">Bibliography</element>
+        <element variable="kTAG_DEFINITION" key="en"><![CDATA[It is a <i>list of bibliographic
         	references</i>.
             ]]>
-        </kTAG_DEFINITION>
-        <kTAG_SYNONYMS>
+        </element>
+        <element variable="kTAG_SYNONYMS">
             <item>kTERM_BIBLIOGRAPHY</item>
-        </kTAG_SYNONYMS>
+        </element>
     </term>
     
     <!-- REFERENCE ATTRIBUTES -->
     
     <!-- kTERM_TERM -->
-    <term kTAG_LID="TERM" kTAG_NAMESPACE="">
-        <kTAG_LABEL language="en">Term</kTAG_LABEL>
-        <kTAG_DEFINITION language="en"><![CDATA[It is a <i>reference to a term</i>.
+    <term lid="TERM" ns="">
+        <element variable="kTAG_LABEL" key="en">Term</element>
+        <element variable="kTAG_DEFINITION" key="en"><![CDATA[It is a <i>reference to a term</i>.
             ]]>
-        </kTAG_DEFINITION>
-        <kTAG_SYNONYMS>
+        </element>
+        <element variable="kTAG_SYNONYMS">
             <item>kTERM_TERM</item>
-        </kTAG_SYNONYMS>
+        </element>
     </term>
     
     <!-- kTERM_NODE -->
-    <term kTAG_LID="NODE" kTAG_NAMESPACE="">
-        <kTAG_LABEL language="en">Node</kTAG_LABEL>
-        <kTAG_DEFINITION language="en"><![CDATA[It is a <i>reference to a node</i>.
+    <term lid="NODE" ns="">
+        <element variable="kTAG_LABEL" key="en">Node</element>
+        <element variable="kTAG_DEFINITION" key="en"><![CDATA[It is a <i>reference to a node</i>.
             ]]>
-        </kTAG_DEFINITION>
-        <kTAG_SYNONYMS>
+        </element>
+        <element variable="kTAG_SYNONYMS">
             <item>kTERM_NODE</item>
-        </kTAG_SYNONYMS>
+        </element>
     </term>
     
     <!-- kTERM_SUBJECT -->
-    <term kTAG_LID="SUBJECT" kTAG_NAMESPACE="">
-        <kTAG_LABEL language="en">Subject</kTAG_LABEL>
-        <kTAG_DEFINITION language="en"><![CDATA[It is the <i>subject of a relationship</i>,
+    <term lid="SUBJECT" ns="">
+        <element variable="kTAG_LABEL" key="en">Subject</element>
+        <element variable="kTAG_DEFINITION" key="en"><![CDATA[It is the <i>subject of a relationship</i>,
         	or the <i>vertex from which a relationship originates</i>. This attribute is a
         	<i>node reference</i>.
             ]]>
-        </kTAG_DEFINITION>
-        <kTAG_SYNONYMS>
+        </element>
+        <element variable="kTAG_SYNONYMS">
             <item>kTERM_SUBJECT</item>
-        </kTAG_SYNONYMS>
+        </element>
     </term>
     
     <!-- kTERM_OBJECT -->
-    <term kTAG_LID="OBJECT" kTAG_NAMESPACE="">
-        <kTAG_LABEL language="en">Object</kTAG_LABEL>
-        <kTAG_DEFINITION language="en"><![CDATA[It is the <i>object of a relationship</i>,
+    <term lid="OBJECT" ns="">
+        <element variable="kTAG_LABEL" key="en">Object</element>
+        <element variable="kTAG_DEFINITION" key="en"><![CDATA[It is the <i>object of a relationship</i>,
         	or the <i>vertex to which the relationship points</i>. This attribute is a
         	<i>node reference</i>.
             ]]>
-        </kTAG_DEFINITION>
-        <kTAG_SYNONYMS>
+        </element>
+        <element variable="kTAG_SYNONYMS">
             <item>kTERM_OBJECT</item>
-        </kTAG_SYNONYMS>
+        </element>
     </term>
     
     <!-- kTERM_PREDICATE -->
-    <term kTAG_LID="PREDICATE" kTAG_NAMESPACE="">
-        <kTAG_LABEL language="en">Predicate</kTAG_LABEL>
-        <kTAG_DEFINITION language="en"><![CDATA[It is the <i>term</i> which <i>relates the
+    <term lid="PREDICATE" ns="">
+        <element variable="kTAG_LABEL" key="en">Predicate</element>
+        <element variable="kTAG_DEFINITION" key="en"><![CDATA[It is the <i>term</i> which <i>relates the
         	subject and object of a relationship</i>. This attribute is a <i>term
         	reference</i>.
             ]]>
-        </kTAG_DEFINITION>
-        <kTAG_SYNONYMS>
+        </element>
+        <element variable="kTAG_SYNONYMS">
             <item>kTERM_PREDICATE</item>
-        </kTAG_SYNONYMS>
+        </element>
     </term>
     
     <!-- kTERM_PATH -->
-    <term kTAG_LID="PATH" kTAG_NAMESPACE="">
-        <kTAG_LABEL language="en">Path</kTAG_LABEL>
-        <kTAG_DEFINITION language="en"><![CDATA[It is the <i>sequence</i> of <i>vertex</i>,
+    <term lid="PATH" ns="">
+        <element variable="kTAG_LABEL" key="en">Path</element>
+        <element variable="kTAG_DEFINITION" key="en"><![CDATA[It is the <i>sequence</i> of <i>vertex</i>,
         	<i>predicate</i> and <i>vertex</i> elements which <i>connect</i> an
         	<i>origin vertex</i> to a <i>destination vertex</i>.
             ]]>
-        </kTAG_DEFINITION>
-        <kTAG_SYNONYMS>
+        </element>
+        <element variable="kTAG_SYNONYMS">
             <item>kTERM_PATH</item>
-        </kTAG_SYNONYMS>
+        </element>
     </term>
     
     <!-- kTERM_NAMESPACE_REFS -->
-    <term kTAG_LID="NAMESPACE-REFS" kTAG_NAMESPACE="">
-        <kTAG_LABEL language="en">Namespace references count</kTAG_LABEL>
-        <kTAG_DEFINITION language="en"><![CDATA[It is an <i>integer attribute</i> which
+    <term lid="NAMESPACE-REFS" ns="">
+        <element variable="kTAG_LABEL" key="en">Namespace references count</element>
+        <element variable="kTAG_DEFINITION" key="en"><![CDATA[It is an <i>integer attribute</i> which
         	<i>counts</i> how many times a term was <i>referenced as a namespace</i>.
             ]]>
-        </kTAG_DEFINITION>
-        <kTAG_SYNONYMS>
+        </element>
+        <element variable="kTAG_SYNONYMS">
             <item>kTERM_NAMESPACE_REFS</item>
-        </kTAG_SYNONYMS>
+        </element>
     </term>
 
     <!-- REFERENCE COLLECTIONS -->
     
     <!-- kTERM_NODES -->
-    <term kTAG_LID="NODES" kTAG_NAMESPACE="">
-        <kTAG_LABEL language="en">Nodes</kTAG_LABEL>
-        <kTAG_DEFINITION language="en"><![CDATA[It is an <i>collection of node
+    <term lid="NODES" ns="">
+        <element variable="kTAG_LABEL" key="en">Nodes</element>
+        <element variable="kTAG_DEFINITION" key="en"><![CDATA[It is an <i>collection of node
         	references</i>.
             ]]>
-        </kTAG_DEFINITION>
-        <kTAG_SYNONYMS>
+        </element>
+        <element variable="kTAG_SYNONYMS">
             <item>kTERM_NODES</item>
-        </kTAG_SYNONYMS>
+        </element>
     </term>
     
     <!-- kTERM_EDGES -->
-    <term kTAG_LID="EDGES" kTAG_NAMESPACE="">
-        <kTAG_LABEL language="en">Edges</kTAG_LABEL>
-        <kTAG_DEFINITION language="en"><![CDATA[It is an <i>collection of edge
+    <term lid="EDGES" ns="">
+        <element variable="kTAG_LABEL" key="en">Edges</element>
+        <element variable="kTAG_DEFINITION" key="en"><![CDATA[It is an <i>collection of edge
         	references</i>.
             ]]>
-        </kTAG_DEFINITION>
-        <kTAG_SYNONYMS>
+        </element>
+        <element variable="kTAG_SYNONYMS">
             <item>kTERM_EDGES</item>
-        </kTAG_SYNONYMS>
+        </element>
     </term>
     
     <!-- kTERM_FEATURES -->
-    <term kTAG_LID="FEATURES" kTAG_NAMESPACE="">
-        <kTAG_LABEL language="en">Features</kTAG_LABEL>
-        <kTAG_DEFINITION language="en"><![CDATA[It is an <i>collection of feature
+    <term lid="FEATURES" ns="">
+        <element variable="kTAG_LABEL" key="en">Features</element>
+        <element variable="kTAG_DEFINITION" key="en"><![CDATA[It is an <i>collection of feature
         	references</i>, references to objects that have <i>referenced the current
         	object</i> as a <i>feature</i> or <i>trait</i>.
             ]]>
-        </kTAG_DEFINITION>
-        <kTAG_SYNONYMS>
+        </element>
+        <element variable="kTAG_SYNONYMS">
             <item>kTERM_FEATURES</item>
-        </kTAG_SYNONYMS>
+        </element>
     </term>
     
     <!-- kTERM_METHODS -->
-    <term kTAG_LID="METHODS" kTAG_NAMESPACE="">
-        <kTAG_LABEL language="en">Methods</kTAG_LABEL>
-        <kTAG_DEFINITION language="en"><![CDATA[It is an <i>collection of method
+    <term lid="METHODS" ns="">
+        <element variable="kTAG_LABEL" key="en">Methods</element>
+        <element variable="kTAG_DEFINITION" key="en"><![CDATA[It is an <i>collection of method
         	references</i>, references to objects that have <i>referenced the current
         	object</i> as a <i>method</i> or <i>modifier</i>.
             ]]>
-        </kTAG_DEFINITION>
-        <kTAG_SYNONYMS>
+        </element>
+        <element variable="kTAG_SYNONYMS">
             <item>kTERM_METHODS</item>
-        </kTAG_SYNONYMS>
+        </element>
     </term>
     
     <!-- kTERM_SCALES -->
-    <term kTAG_LID="SCALES" kTAG_NAMESPACE="">
-        <kTAG_LABEL language="en">Scales</kTAG_LABEL>
-        <kTAG_DEFINITION language="en"><![CDATA[It is an <i>collection of scale
+    <term lid="SCALES" ns="">
+        <element variable="kTAG_LABEL" key="en">Scales</element>
+        <element variable="kTAG_DEFINITION" key="en"><![CDATA[It is an <i>collection of scale
         	references</i>, references to objects that have <i>referenced the current
         	object</i> as a <i>scale</i> or <i>unit</i>.
             ]]>
-        </kTAG_DEFINITION>
-        <kTAG_SYNONYMS>
+        </element>
+        <element variable="kTAG_SYNONYMS">
             <item>kTERM_SCALES</item>
-        </kTAG_SYNONYMS>
+        </element>
     </term>
 </terms>

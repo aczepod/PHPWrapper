@@ -4,281 +4,281 @@
      
     <!-- kTERM_NID -->
 	<edge>
-    	<kTAG_SUBJECT>:NID</kTAG_SUBJECT>
-    	<kTAG_PREDICATE>:SUBCLASS-OF</kTAG_PREDICATE>
-    	<kTAG_OBJECT>:IDENTIFICATION</kTAG_OBJECT>
+    	<element variable="kTAG_SUBJECT">:NID</element>
+    	<element variable="kTAG_PREDICATE">:SUBCLASS-OF</element>
+    	<element variable="kTAG_OBJECT">:IDENTIFICATION</element>
     </edge>
      
     <!-- kTERM_LID -->
 	<edge>
-    	<kTAG_SUBJECT>:LID</kTAG_SUBJECT>
-    	<kTAG_PREDICATE>:SUBCLASS-OF</kTAG_PREDICATE>
-    	<kTAG_OBJECT>:IDENTIFICATION</kTAG_OBJECT>
+    	<element variable="kTAG_SUBJECT">:LID</element>
+    	<element variable="kTAG_PREDICATE">:SUBCLASS-OF</element>
+    	<element variable="kTAG_OBJECT">:IDENTIFICATION</element>
     </edge>
      
     <!-- kTERM_GID -->
 	<edge>
-    	<kTAG_SUBJECT>:GID</kTAG_SUBJECT>
-    	<kTAG_PREDICATE>:SUBCLASS-OF</kTAG_PREDICATE>
-    	<kTAG_OBJECT>:IDENTIFICATION</kTAG_OBJECT>
+    	<element variable="kTAG_SUBJECT">:GID</element>
+    	<element variable="kTAG_PREDICATE">:SUBCLASS-OF</element>
+    	<element variable="kTAG_OBJECT">:IDENTIFICATION</element>
     </edge>
      
     <!-- kTERM_UID -->
 	<edge>
-    	<kTAG_SUBJECT>:UID</kTAG_SUBJECT>
-    	<kTAG_PREDICATE>:SUBCLASS-OF</kTAG_PREDICATE>
-    	<kTAG_OBJECT>:IDENTIFICATION</kTAG_OBJECT>
+    	<element variable="kTAG_SUBJECT">:UID</element>
+    	<element variable="kTAG_PREDICATE">:SUBCLASS-OF</element>
+    	<element variable="kTAG_OBJECT">:IDENTIFICATION</element>
     </edge>
      
     <!-- kTERM_UID -->
 	<edge>
-    	<kTAG_SUBJECT>:SYNONYMS</kTAG_SUBJECT>
-    	<kTAG_PREDICATE>:SUBCLASS-OF</kTAG_PREDICATE>
-    	<kTAG_OBJECT>:IDENTIFICATION</kTAG_OBJECT>
+    	<element variable="kTAG_SUBJECT">:SYNONYMS</element>
+    	<element variable="kTAG_PREDICATE">:SUBCLASS-OF</element>
+    	<element variable="kTAG_OBJECT">:IDENTIFICATION</element>
     </edge>
     
     <!-- CLASSIFICATION ATTRIBUTES -->
      
     <!-- kTERM_CATEGORY -->
 	<edge>
-    	<kTAG_SUBJECT>:CATEGORY</kTAG_SUBJECT>
-    	<kTAG_PREDICATE>:SUBCLASS-OF</kTAG_PREDICATE>
-    	<kTAG_OBJECT>:CLASSIFICATION</kTAG_OBJECT>
+    	<element variable="kTAG_SUBJECT">:CATEGORY</element>
+    	<element variable="kTAG_PREDICATE">:SUBCLASS-OF</element>
+    	<element variable="kTAG_OBJECT">:CLASSIFICATION</element>
     </edge>
      
     <!-- kTERM_KIND -->
 	<edge>
-    	<kTAG_SUBJECT>:KIND</kTAG_SUBJECT>
-    	<kTAG_PREDICATE>:SUBCLASS-OF</kTAG_PREDICATE>
-    	<kTAG_OBJECT>:CLASSIFICATION</kTAG_OBJECT>
+    	<element variable="kTAG_SUBJECT">:KIND</element>
+    	<element variable="kTAG_PREDICATE">:SUBCLASS-OF</element>
+    	<element variable="kTAG_OBJECT">:CLASSIFICATION</element>
     </edge>
      
     <!-- kTERM_TYPE -->
 	<edge>
-    	<kTAG_SUBJECT>:TYPE</kTAG_SUBJECT>
-    	<kTAG_PREDICATE>:SUBCLASS-OF</kTAG_PREDICATE>
-    	<kTAG_OBJECT>:CLASSIFICATION</kTAG_OBJECT>
+    	<element variable="kTAG_SUBJECT">:TYPE</element>
+    	<element variable="kTAG_PREDICATE">:SUBCLASS-OF</element>
+    	<element variable="kTAG_OBJECT">:CLASSIFICATION</element>
     </edge>
      
     <!-- kTERM_CLASS -->
 	<edge>
-    	<kTAG_SUBJECT>:CLASS</kTAG_SUBJECT>
-    	<kTAG_PREDICATE>:SUBCLASS-OF</kTAG_PREDICATE>
-    	<kTAG_OBJECT>:CLASSIFICATION</kTAG_OBJECT>
+    	<element variable="kTAG_SUBJECT">:CLASS</element>
+    	<element variable="kTAG_PREDICATE">:SUBCLASS-OF</element>
+    	<element variable="kTAG_OBJECT">:CLASSIFICATION</element>
     </edge>
      
     <!-- kTERM_NAMESPACE -->
 	<edge>
-    	<kTAG_SUBJECT>:NAMESPACE</kTAG_SUBJECT>
-    	<kTAG_PREDICATE>:SUBCLASS-OF</kTAG_PREDICATE>
-    	<kTAG_OBJECT>:CLASSIFICATION</kTAG_OBJECT>
+    	<element variable="kTAG_SUBJECT">:NAMESPACE</element>
+    	<element variable="kTAG_PREDICATE">:SUBCLASS-OF</element>
+    	<element variable="kTAG_OBJECT">:CLASSIFICATION</element>
     </edge>
     
     <!-- DESCRIPTION ATTRIBUTES -->
      
     <!-- kTERM_LABEL -->
 	<edge>
-    	<kTAG_SUBJECT>:LABEL</kTAG_SUBJECT>
-    	<kTAG_PREDICATE>:SUBCLASS-OF</kTAG_PREDICATE>
-    	<kTAG_OBJECT>:ILLUSTRATION</kTAG_OBJECT>
+    	<element variable="kTAG_SUBJECT">:LABEL</element>
+    	<element variable="kTAG_PREDICATE">:SUBCLASS-OF</element>
+    	<element variable="kTAG_OBJECT">:ILLUSTRATION</element>
     </edge>
      
     <!-- kTERM_DEFINITION -->
 	<edge>
-    	<kTAG_SUBJECT>:DEFINITION</kTAG_SUBJECT>
-    	<kTAG_PREDICATE>:SUBCLASS-OF</kTAG_PREDICATE>
-    	<kTAG_OBJECT>:ILLUSTRATION</kTAG_OBJECT>
+    	<element variable="kTAG_SUBJECT">:DEFINITION</element>
+    	<element variable="kTAG_PREDICATE">:SUBCLASS-OF</element>
+    	<element variable="kTAG_OBJECT">:ILLUSTRATION</element>
     </edge>
      
     <!-- kTERM_DESCRIPTION -->
 	<edge>
-    	<kTAG_SUBJECT>:DESCRIPTION</kTAG_SUBJECT>
-    	<kTAG_PREDICATE>:SUBCLASS-OF</kTAG_PREDICATE>
-    	<kTAG_OBJECT>:ILLUSTRATION</kTAG_OBJECT>
+    	<element variable="kTAG_SUBJECT">:DESCRIPTION</element>
+    	<element variable="kTAG_PREDICATE">:SUBCLASS-OF</element>
+    	<element variable="kTAG_OBJECT">:ILLUSTRATION</element>
     </edge>
      
     <!-- kTERM_NOTES -->
 	<edge>
-    	<kTAG_SUBJECT>:NOTES</kTAG_SUBJECT>
-    	<kTAG_PREDICATE>:SUBCLASS-OF</kTAG_PREDICATE>
-    	<kTAG_OBJECT>:ILLUSTRATION</kTAG_OBJECT>
+    	<element variable="kTAG_SUBJECT">:NOTES</element>
+    	<element variable="kTAG_PREDICATE">:SUBCLASS-OF</element>
+    	<element variable="kTAG_OBJECT">:ILLUSTRATION</element>
     </edge>
      
     <!-- kTERM_EXAMPLES -->
 	<edge>
-    	<kTAG_SUBJECT>:EXAMPLES</kTAG_SUBJECT>
-    	<kTAG_PREDICATE>:SUBCLASS-OF</kTAG_PREDICATE>
-    	<kTAG_OBJECT>:ILLUSTRATION</kTAG_OBJECT>
+    	<element variable="kTAG_SUBJECT">:EXAMPLES</element>
+    	<element variable="kTAG_PREDICATE">:SUBCLASS-OF</element>
+    	<element variable="kTAG_OBJECT">:ILLUSTRATION</element>
     </edge>
     
     <!-- STATUS ATTRIBUTES -->
      
     <!-- kTERM_STATUS_LEVEL -->
 	<edge>
-    	<kTAG_SUBJECT>:STATUS-LEVEL</kTAG_SUBJECT>
-    	<kTAG_PREDICATE>:SUBCLASS-OF</kTAG_PREDICATE>
-    	<kTAG_OBJECT>:STATUS</kTAG_OBJECT>
+    	<element variable="kTAG_SUBJECT">:STATUS-LEVEL</element>
+    	<element variable="kTAG_PREDICATE">:SUBCLASS-OF</element>
+    	<element variable="kTAG_OBJECT">:STATUS</element>
     </edge>
      
     <!-- kTERM_STATUS_CODE -->
 	<edge>
-    	<kTAG_SUBJECT>:STATUS-CODE</kTAG_SUBJECT>
-    	<kTAG_PREDICATE>:SUBCLASS-OF</kTAG_PREDICATE>
-    	<kTAG_OBJECT>:STATUS</kTAG_OBJECT>
+    	<element variable="kTAG_SUBJECT">:STATUS-CODE</element>
+    	<element variable="kTAG_PREDICATE">:SUBCLASS-OF</element>
+    	<element variable="kTAG_OBJECT">:STATUS</element>
     </edge>
      
     <!-- kTERM_STATUS_MESSAGE -->
 	<edge>
-    	<kTAG_SUBJECT>:STATUS-MESSAGE</kTAG_SUBJECT>
-    	<kTAG_PREDICATE>:SUBCLASS-OF</kTAG_PREDICATE>
-    	<kTAG_OBJECT>:STATUS</kTAG_OBJECT>
+    	<element variable="kTAG_SUBJECT">:STATUS-MESSAGE</element>
+    	<element variable="kTAG_PREDICATE">:SUBCLASS-OF</element>
+    	<element variable="kTAG_OBJECT">:STATUS</element>
     </edge>
     
     <!-- AUTHORSHIP ATTRIBUTES -->
      
     <!-- kTERM_AUTHORS -->
 	<edge>
-    	<kTAG_SUBJECT>:AUTHORS</kTAG_SUBJECT>
-    	<kTAG_PREDICATE>:SUBCLASS-OF</kTAG_PREDICATE>
-    	<kTAG_OBJECT>:AUTHORSHIP</kTAG_OBJECT>
+    	<element variable="kTAG_SUBJECT">:AUTHORS</element>
+    	<element variable="kTAG_PREDICATE">:SUBCLASS-OF</element>
+    	<element variable="kTAG_OBJECT">:AUTHORSHIP</element>
     </edge>
      
     <!-- kTERM_ACKNOWLEDGMENTS -->
 	<edge>
-    	<kTAG_SUBJECT>:ACKNOWLEDGMENTS</kTAG_SUBJECT>
-    	<kTAG_PREDICATE>:SUBCLASS-OF</kTAG_PREDICATE>
-    	<kTAG_OBJECT>:AUTHORSHIP</kTAG_OBJECT>
+    	<element variable="kTAG_SUBJECT">:ACKNOWLEDGMENTS</element>
+    	<element variable="kTAG_PREDICATE">:SUBCLASS-OF</element>
+    	<element variable="kTAG_OBJECT">:AUTHORSHIP</element>
     </edge>
      
     <!-- kTERM_BIBLIOGRAPHY -->
 	<edge>
-    	<kTAG_SUBJECT>:BIBLIOGRAPHY</kTAG_SUBJECT>
-    	<kTAG_PREDICATE>:SUBCLASS-OF</kTAG_PREDICATE>
-    	<kTAG_OBJECT>:AUTHORSHIP</kTAG_OBJECT>
+    	<element variable="kTAG_SUBJECT">:BIBLIOGRAPHY</element>
+    	<element variable="kTAG_PREDICATE">:SUBCLASS-OF</element>
+    	<element variable="kTAG_OBJECT">:AUTHORSHIP</element>
     </edge>
     
     <!-- REFERENCE ATTRIBUTES -->
      
     <!-- kTERM_TERM -->
 	<edge>
-    	<kTAG_SUBJECT>:TERM</kTAG_SUBJECT>
-    	<kTAG_PREDICATE>:SUBCLASS-OF</kTAG_PREDICATE>
-    	<kTAG_OBJECT>:REFERENCE</kTAG_OBJECT>
+    	<element variable="kTAG_SUBJECT">:TERM</element>
+    	<element variable="kTAG_PREDICATE">:SUBCLASS-OF</element>
+    	<element variable="kTAG_OBJECT">:REFERENCE</element>
     </edge>
      
     <!-- kTERM_NODE -->
 	<edge>
-    	<kTAG_SUBJECT>:NODE</kTAG_SUBJECT>
-    	<kTAG_PREDICATE>:SUBCLASS-OF</kTAG_PREDICATE>
-    	<kTAG_OBJECT>:REFERENCE</kTAG_OBJECT>
+    	<element variable="kTAG_SUBJECT">:NODE</element>
+    	<element variable="kTAG_PREDICATE">:SUBCLASS-OF</element>
+    	<element variable="kTAG_OBJECT">:REFERENCE</element>
     </edge>
      
     <!-- kTERM_SUBJECT -->
 	<edge>
-    	<kTAG_SUBJECT>:SUBJECT</kTAG_SUBJECT>
-    	<kTAG_PREDICATE>:SUBCLASS-OF</kTAG_PREDICATE>
-    	<kTAG_OBJECT>:REFERENCE</kTAG_OBJECT>
+    	<element variable="kTAG_SUBJECT">:SUBJECT</element>
+    	<element variable="kTAG_PREDICATE">:SUBCLASS-OF</element>
+    	<element variable="kTAG_OBJECT">:REFERENCE</element>
     </edge>
      
     <!-- kTERM_OBJECT -->
 	<edge>
-    	<kTAG_SUBJECT>:OBJECT</kTAG_SUBJECT>
-    	<kTAG_PREDICATE>:SUBCLASS-OF</kTAG_PREDICATE>
-    	<kTAG_OBJECT>:REFERENCE</kTAG_OBJECT>
+    	<element variable="kTAG_SUBJECT">:OBJECT</element>
+    	<element variable="kTAG_PREDICATE">:SUBCLASS-OF</element>
+    	<element variable="kTAG_OBJECT">:REFERENCE</element>
     </edge>
      
     <!-- kTERM_PREDICATE -->
 	<edge>
-    	<kTAG_SUBJECT>:PREDICATE</kTAG_SUBJECT>
-    	<kTAG_PREDICATE>:SUBCLASS-OF</kTAG_PREDICATE>
-    	<kTAG_OBJECT>:REFERENCE</kTAG_OBJECT>
+    	<element variable="kTAG_SUBJECT">:PREDICATE</element>
+    	<element variable="kTAG_PREDICATE">:SUBCLASS-OF</element>
+    	<element variable="kTAG_OBJECT">:REFERENCE</element>
     </edge>
      
     <!-- kTERM_PATH -->
 	<edge>
-    	<kTAG_SUBJECT>:PATH</kTAG_SUBJECT>
-    	<kTAG_PREDICATE>:SUBCLASS-OF</kTAG_PREDICATE>
-    	<kTAG_OBJECT>:REFERENCE</kTAG_OBJECT>
+    	<element variable="kTAG_SUBJECT">:PATH</element>
+    	<element variable="kTAG_PREDICATE">:SUBCLASS-OF</element>
+    	<element variable="kTAG_OBJECT">:REFERENCE</element>
     </edge>
      
     <!-- kTERM_NAMESPACE_REFS -->
 	<edge>
-    	<kTAG_SUBJECT>:NAMESPACE-REFS</kTAG_SUBJECT>
-    	<kTAG_PREDICATE>:SUBCLASS-OF</kTAG_PREDICATE>
-    	<kTAG_OBJECT>:REFERENCE</kTAG_OBJECT>
+    	<element variable="kTAG_SUBJECT">:NAMESPACE-REFS</element>
+    	<element variable="kTAG_PREDICATE">:SUBCLASS-OF</element>
+    	<element variable="kTAG_OBJECT">:REFERENCE</element>
     </edge>
      
     <!-- kTERM_NODES -->
 	<edge>
-    	<kTAG_SUBJECT>:NODES</kTAG_SUBJECT>
-    	<kTAG_PREDICATE>:SUBCLASS-OF</kTAG_PREDICATE>
-    	<kTAG_OBJECT>:REFERENCE</kTAG_OBJECT>
+    	<element variable="kTAG_SUBJECT">:NODES</element>
+    	<element variable="kTAG_PREDICATE">:SUBCLASS-OF</element>
+    	<element variable="kTAG_OBJECT">:REFERENCE</element>
     </edge>
      
     <!-- kTERM_EDGES -->
 	<edge>
-    	<kTAG_SUBJECT>:EDGES</kTAG_SUBJECT>
-    	<kTAG_PREDICATE>:SUBCLASS-OF</kTAG_PREDICATE>
-    	<kTAG_OBJECT>:REFERENCE</kTAG_OBJECT>
+    	<element variable="kTAG_SUBJECT">:EDGES</element>
+    	<element variable="kTAG_PREDICATE">:SUBCLASS-OF</element>
+    	<element variable="kTAG_OBJECT">:REFERENCE</element>
     </edge>
      
     <!-- kTERM_FEATURES -->
 	<edge>
-    	<kTAG_SUBJECT>:FEATURES</kTAG_SUBJECT>
-    	<kTAG_PREDICATE>:SUBCLASS-OF</kTAG_PREDICATE>
-    	<kTAG_OBJECT>:REFERENCE</kTAG_OBJECT>
+    	<element variable="kTAG_SUBJECT">:FEATURES</element>
+    	<element variable="kTAG_PREDICATE">:SUBCLASS-OF</element>
+    	<element variable="kTAG_OBJECT">:REFERENCE</element>
     </edge>
      
     <!-- kTERM_METHODS -->
 	<edge>
-    	<kTAG_SUBJECT>:METHODS</kTAG_SUBJECT>
-    	<kTAG_PREDICATE>:SUBCLASS-OF</kTAG_PREDICATE>
-    	<kTAG_OBJECT>:REFERENCE</kTAG_OBJECT>
+    	<element variable="kTAG_SUBJECT">:METHODS</element>
+    	<element variable="kTAG_PREDICATE">:SUBCLASS-OF</element>
+    	<element variable="kTAG_OBJECT">:REFERENCE</element>
     </edge>
      
     <!-- kTERM_SCALES -->
 	<edge>
-    	<kTAG_SUBJECT>:SCALES</kTAG_SUBJECT>
-    	<kTAG_PREDICATE>:SUBCLASS-OF</kTAG_PREDICATE>
-    	<kTAG_OBJECT>:REFERENCE</kTAG_OBJECT>
+    	<element variable="kTAG_SUBJECT">:SCALES</element>
+    	<element variable="kTAG_PREDICATE">:SUBCLASS-OF</element>
+    	<element variable="kTAG_OBJECT">:REFERENCE</element>
     </edge>
     
     <!-- ATTRIBUTE ENUMERATIONS -->
      
     <!-- kTERM_STATUS_LEVEL -->
 	<edge>
-    	<kTAG_SUBJECT>:STATUS:0</kTAG_SUBJECT>
-    	<kTAG_PREDICATE>:ENUM-OF</kTAG_PREDICATE>
-    	<kTAG_OBJECT>:STATUS-LEVEL</kTAG_OBJECT>
+    	<element variable="kTAG_SUBJECT">:STATUS:0</element>
+    	<element variable="kTAG_PREDICATE">:ENUM-OF</element>
+    	<element variable="kTAG_OBJECT">:STATUS-LEVEL</element>
     </edge>
 	<edge>
-    	<kTAG_SUBJECT>:STATUS:10</kTAG_SUBJECT>
-    	<kTAG_PREDICATE>:ENUM-OF</kTAG_PREDICATE>
-    	<kTAG_OBJECT>:STATUS-LEVEL</kTAG_OBJECT>
+    	<element variable="kTAG_SUBJECT">:STATUS:10</element>
+    	<element variable="kTAG_PREDICATE">:ENUM-OF</element>
+    	<element variable="kTAG_OBJECT">:STATUS-LEVEL</element>
     </edge>
 	<edge>
-    	<kTAG_SUBJECT>:STATUS:20</kTAG_SUBJECT>
-    	<kTAG_PREDICATE>:ENUM-OF</kTAG_PREDICATE>
-    	<kTAG_OBJECT>:STATUS-LEVEL</kTAG_OBJECT>
+    	<element variable="kTAG_SUBJECT">:STATUS:20</element>
+    	<element variable="kTAG_PREDICATE">:ENUM-OF</element>
+    	<element variable="kTAG_OBJECT">:STATUS-LEVEL</element>
     </edge>
 	<edge>
-    	<kTAG_SUBJECT>:STATUS:30</kTAG_SUBJECT>
-    	<kTAG_PREDICATE>:ENUM-OF</kTAG_PREDICATE>
-    	<kTAG_OBJECT>:STATUS-LEVEL</kTAG_OBJECT>
+    	<element variable="kTAG_SUBJECT">:STATUS:30</element>
+    	<element variable="kTAG_PREDICATE">:ENUM-OF</element>
+    	<element variable="kTAG_OBJECT">:STATUS-LEVEL</element>
     </edge>
 	<edge>
-    	<kTAG_SUBJECT>:STATUS:40</kTAG_SUBJECT>
-    	<kTAG_PREDICATE>:ENUM-OF</kTAG_PREDICATE>
-    	<kTAG_OBJECT>:STATUS-LEVEL</kTAG_OBJECT>
+    	<element variable="kTAG_SUBJECT">:STATUS:40</element>
+    	<element variable="kTAG_PREDICATE">:ENUM-OF</element>
+    	<element variable="kTAG_OBJECT">:STATUS-LEVEL</element>
     </edge>
 	<edge>
-    	<kTAG_SUBJECT>:STATUS:50</kTAG_SUBJECT>
-    	<kTAG_PREDICATE>:ENUM-OF</kTAG_PREDICATE>
-    	<kTAG_OBJECT>:STATUS-LEVEL</kTAG_OBJECT>
+    	<element variable="kTAG_SUBJECT">:STATUS:50</element>
+    	<element variable="kTAG_PREDICATE">:ENUM-OF</element>
+    	<element variable="kTAG_OBJECT">:STATUS-LEVEL</element>
     </edge>
 	<edge>
-    	<kTAG_SUBJECT>:STATUS:60</kTAG_SUBJECT>
-    	<kTAG_PREDICATE>:ENUM-OF</kTAG_PREDICATE>
-    	<kTAG_OBJECT>:STATUS-LEVEL</kTAG_OBJECT>
+    	<element variable="kTAG_SUBJECT">:STATUS:60</element>
+    	<element variable="kTAG_PREDICATE">:ENUM-OF</element>
+    	<element variable="kTAG_OBJECT">:STATUS-LEVEL</element>
     </edge>
 </edges>

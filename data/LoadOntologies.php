@@ -77,7 +77,7 @@ try
 	//
 	if( kOPTION_VERBOSE )
 		echo( "  • Loading GRINFO descriptors.\n" );
-	$_SESSION[ kSESSION_ONTOLOGY ]->LoadUnitFile(
+	$_SESSION[ kSESSION_ONTOLOGY ]->LoadXMLFile(
 		kPATH_MYWRAPPER_LIBRARY_DATA."/GR_UNITS.xml" );
 
 	//
@@ -85,7 +85,7 @@ try
 	//
 	if( kOPTION_VERBOSE )
 		echo( "  • Loading FAO institutes.\n" );
-	$_SESSION[ kSESSION_ONTOLOGY ]->LoadUnitFile(
+	$_SESSION[ kSESSION_ONTOLOGY ]->LoadXMLFile(
 		kPATH_MYWRAPPER_LIBRARY_DATA."/FAO_INSTITUTES.xml" );
 
 	//
@@ -93,7 +93,7 @@ try
 	//
 	if( kOPTION_VERBOSE )
 		echo( "  • Loading landrace descriptors.\n" );
-	$_SESSION[ kSESSION_ONTOLOGY ]->LoadUnitFile(
+	$_SESSION[ kSESSION_ONTOLOGY ]->LoadXMLFile(
 		kPATH_MYWRAPPER_LIBRARY_DATA."/LR_UNITS.xml" );
 
 	//
@@ -101,8 +101,8 @@ try
 	//
 	if( kOPTION_VERBOSE )
 		echo( "  • Loading multicrop descriptors.\n" );
-	$_SESSION[ kSESSION_ONTOLOGY ]->LoadUnitFile(
-		kPATH_MYWRAPPER_LIBRARY_DATA."MCPD_UNITS.xml" );
+	$_SESSION[ kSESSION_ONTOLOGY ]->LoadXMLFile(
+		kPATH_MYWRAPPER_LIBRARY_DATA."/MCPD_UNITS.xml" );
 
 	if( kOPTION_VERBOSE )
 		echo( "\nTime elapsed: ".(time() - $start)."\n" );
