@@ -623,6 +623,105 @@ class COntology extends CConnection
 
 	} // LoadISOPOFiles.
 
+	 
+	/*===================================================================================
+	 *	SetAllCountries																	*
+	 *==================================================================================*/
+
+	/**
+	 * <h4>Set all countries to provided element</h4>
+	 *
+	 * This method will connect all ISO 3166-1 and ISO 3166-3 countries to the provided
+	 * enumeration.
+	 *
+	 * @param string				$theEnumeration		GID of enumeration.
+	 * @param string				$theEnumeration		GID of enumeration.
+	 *
+	 * @access public
+	 *
+	 * @throws Exception
+	 */
+	public function SetAllCountries( $theEnumeration )
+	{
+		//
+		// Handle enumerations list.
+		//
+		if( is_array( $theEnumeration ) )
+		{
+			foreach( $theEnumeration as $enum )
+				$this->SetAllCountries( $enum );
+		}
+		
+		//
+		// Handle single enumeration.
+		//
+		else
+		{
+			//
+			// Get database.
+			//
+			$db = $this->GetDatabase();
+			if( ! ($db instanceof CDatabase) )
+				throw new Exception
+					( "Unable to retrieve database connection",
+					  kERROR_STATE );											// !@! ==>
+			
+			//
+			// Get container.
+			//
+			$container = COntologyEdge::DefaultContainer( $db );
+		
+			//
+			// Resolve references.
+			//
+			$node = COntologyMasterNode::Resolve( $db, $theEnumeration, TRUE );
+			$actual = COntologyMasterNode::Resolve( $db, 'ISO:3166:1:alpha-3', TRUE );
+			$obsolete = COntologyMasterNode::Resolve( $db, 'ISO:3166:3:alpha-3', TRUE );
+			$predicate = COntologyTerm::Resolve( $db, kPREDICATE_ENUM_OF, NULL, TRUE );
+			
+			//
+			// Load actual elements.
+			//
+			$query = $container->NewQuery();
+			$query->AppendStatement(
+				CQueryStatement::Equals(
+					kTAG_OBJECT, $actual->NID() ) );
+			$query->AppendStatement(
+				CQueryStatement::Equals(
+					kTAG_PREDICATE, $predicate->NID(), kTYPE_BINARY_STRING ) );
+			$rs = $container-> Query( $query, array( kTAG_SUBJECT ) );
+			foreach( $rs as $object )
+			{
+				$edge = new COntologyEdge();
+				$edge->Subject( $object[ kTAG_SUBJECT ] );
+				$edge->Predicate( $predicate );
+				$edge->Object( $node );
+				$edge->Insert( $container );
+			}
+			
+			//
+			// Load obsolete elements.
+			//
+			$query = $container->NewQuery();
+			$query->AppendStatement(
+				CQueryStatement::Equals(
+					kTAG_OBJECT, $obsolete->NID() ) );
+			$query->AppendStatement(
+				CQueryStatement::Equals(
+					kTAG_PREDICATE, $predicate->NID(), kTYPE_BINARY_STRING ) );
+			$rs = $container-> Query( $query, array( kTAG_SUBJECT ) );
+			foreach( $rs as $object )
+			{
+				$edge = new COntologyEdge();
+				$edge->Subject( $object[ kTAG_SUBJECT ] );
+				$edge->Predicate( $predicate );
+				$edge->Object( $node );
+				$edge->Insert( $container );
+			}
+		}
+
+	} // SetAllCountries.
+
 		
 
 /*=======================================================================================

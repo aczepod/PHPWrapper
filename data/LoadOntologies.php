@@ -79,6 +79,12 @@ try
 		echo( "  • Loading GRINFO descriptors.\n" );
 	$_SESSION[ kSESSION_ONTOLOGY ]->LoadXMLFile(
 		kPATH_MYWRAPPER_LIBRARY_DATA."/GR_UNITS.xml" );
+	
+	//
+	// Load all countries.
+	//
+	$_SESSION[ kSESSION_ONTOLOGY ]->SetAllCountries( 'GR:COUNTRIES' );
+
 
 	//
 	// Loading FAO institute descriptors.
@@ -103,7 +109,7 @@ try
 		echo( "  • Loading multicrop descriptors.\n" );
 	$_SESSION[ kSESSION_ONTOLOGY ]->LoadXMLFile(
 		kPATH_MYWRAPPER_LIBRARY_DATA."/MCPD_UNITS.xml" );
-
+	
 	if( kOPTION_VERBOSE )
 		echo( "\nTime elapsed: ".(time() - $start)."\n" );
 }

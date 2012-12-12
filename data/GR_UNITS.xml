@@ -242,4 +242,26 @@
 			</edge>
         </edges>
     </unit>
+    
+    <!-- GR:COUNTRIES -->
+    <unit>
+    	<term lid="COUNTRIES" ns="GR">
+			<element variable="kTAG_LABEL" key="en"><![CDATA[Countries]]></element>
+			<element variable="kTAG_DEFINITION" key="en"><![CDATA[Full country list. This list includes both the current and obsolete countries, this list should be used whenever historic information is important, in other words, whenevee the originally recorded country must be conserved>.]]></element>
+    	</term>
+    	<node class="COntologyMasterVertex">
+			<element variable="kTAG_KIND">
+				<item>:KIND-SCALE</item>
+			</element>
+			<element variable="kTAG_TYPE">
+				<item>:ENUM</item>
+			</element>
+    	</node>
+        <edges>
+			<edge>
+				<element variable="kTAG_PREDICATE">:SUBCLASS-OF</element>
+				<element variable="kTAG_OBJECT">GR</element>
+			</edge>
+        </edges>
+    </unit>
 </units>
