@@ -119,6 +119,30 @@ define( "kAPI_SELECT",				':WS:SELECT' );
  */
 define( "kAPI_SORT",				':WS:SORT' );
 
+/**
+ * Data store object class.
+ *
+ * This is the tag that represents the data store object class, this value is used when
+ * committing objects to the data store, if provided, the object will be committed as an
+ * instance of the class provided in this parameter, if the class is unavailable, the
+ * service will fail.
+ *
+ * Type: encoded.
+ * Cardinality: one or zero.
+ */
+define( "kAPI_CLASS",				':WS:CLASS' );
+
+/**
+ * Data store object.
+ *
+ * This is the tag that represents the data store object, this value is used when committing
+ * data back to the data store; the parameter is provided as an encoded array or object.
+ *
+ * Type: encoded.
+ * Cardinality: one or zero.
+ */
+define( "kAPI_OBJECT",				':WS:OBJECT' );
+
 /*=======================================================================================
  *	WEB-SERVICE RESPONSE PARAMETERS														*
  *======================================================================================*/
@@ -272,7 +296,95 @@ define( "kAPI_OP_GET_ONE",			'WS:OP:GET-ONE' );
  * The service will execute each provided query and the first matched record will be
  * returned.
  */
-define( "kAPI_OP_MATCH",				'WS:OP:MATCH' );
+define( "kAPI_OP_MATCH",			'WS:OP:MATCH' );
+
+/**
+ * RESOLVE web-service.
+ *
+ * This is the tag that represents the RESOLVE web-service operation, which matches the
+ * object corresponding to the provided value.
+ *
+ * The service expects the following parameters:
+ *
+ * <ul>
+ *	<li><i>{@link kAPI_FORMAT}</i>: This parameter is required to indicate how to
+ *		encode the response.
+ *	<li><i>{@link kAPI_DATABASE}</i>: This parameter is required to indicate the working
+ *		database.
+ *	<li><i>{@link kAPI_CONTAINER}</i>: This parameter is required to indicate the working
+ *		container. Note that in some cases this parameter is not required, in particular,
+ *		when providing the {@link kAPI_CLASS} parameter, the container might be implicit.
+ *	<li><i>{@link kAPI_OBJECT}</i>: This parameter is required and contains the value to be
+ *		matched.
+ *	<li><i>{@link kAPI_CLASS}</i>: This parameter is required, it represents the class from
+ *		which the <tt>Resolve()</tt> static method will be used.
+ * </ul>
+ *
+ * The service will attempt to <i>resolve</i> the provided object by calling the static
+ * <tt>Resolve()</tt> method of the provided {@link kAPI_CLASS} parameter with the value
+ * provided in the {@link kAPI_OBJECT} parameter.
+ */
+define( "kAPI_OP_RESOLVE",			'WS:OP:RESOLVE' );
+
+/**
+ * INSERT web-service.
+ *
+ * This is the tag that represents the INSERT web-service operation, which inserts the
+ * provided object in the provided database or container.
+ *
+ * The service expects the following parameters:
+ *
+ * <ul>
+ *	<li><i>{@link kAPI_FORMAT}</i>: This parameter is required to indicate how to
+ *		encode the response.
+ *	<li><i>{@link kAPI_DATABASE}</i>: This parameter is required to indicate the working
+ *		database.
+ *	<li><i>{@link kAPI_CONTAINER}</i>: This parameter is required to indicate the working
+ *		container. Note that in some cases this parameter is not required, in particular,
+ *		when providing the {@link kAPI_CLASS} parameter, the container might be implicit.
+ *	<li><i>{@link kAPI_OBJECT}</i>: This parameter is required and contains an array
+ *		corresponding to the new record.
+ *	<li><i>{@link kAPI_CLASS}</i>: If provided, this parameter indicates which instance the
+ *		object should be; if not provided, the {@link kAPI_CONTAINER} parameter is required
+ *		and the object will simply be added to the container.
+ * </ul>
+ *
+ * The service will attempt to <i>insert</i> the provided object, if successful, it will
+ * return the newly created {@link kTAG_NID} identifier in the
+ * {@link kTERM_STATUS_IDENTIFIER} return parameter.
+ */
+define( "kAPI_OP_INSERT",			'WS:OP:INSERT' );
+
+/**
+ * DEL web-service.
+ *
+ * This is the tag that represents the DEL web-service operation, which deletes either a
+ * selection of objects matching a query or one object matching a value.
+ *
+ * The service expects the following parameters:
+ *
+ * <ul>
+ *	<li><i>{@link kAPI_FORMAT}</i>: This parameter is required to indicate how to
+ *		encode the response.
+ *	<li><i>{@link kAPI_DATABASE}</i>: This parameter is required to indicate the working
+ *		database.
+ *	<li><i>{@link kAPI_CONTAINER}</i>: This parameter is required to indicate the working
+ *		container. Note that in some cases this parameter is not required, in particular,
+ *		when providing the {@link kAPI_CLASS} parameter, the container might be implicit.
+ *	<li><i>{@link kAPI_QUERY}</i>: This parameter contains the query that selects the items
+ *		to be deleted.
+ *	<li><i>{@link kAPI_OBJECT}</i>: This parameter is required and contains the value by
+ *		which the object will be identified, some classes feature a <i>Resolve()</i> method,
+ *		in that case  this value will be handled by that method, if not, the value is
+ *		assumed to be the object0s {@link kTAG_NID}. If this parameter is provided, the
+ *		{@link kAPI_QUERY} parameter will be ignored.
+ *	<li><i>{@link kAPI_CLASS}</i>: If provided, this parameter indicates to which class the
+ *		object to be deleted belongs to; if not provided, the {@link kAPI_CONTAINER}
+ *		parameter is required and the object is assumed to be the object's {@link kTAG_NID}.
+ *		This parameter is ignored if the {@link kAPI_OBJECT} parameter is missing.
+ * </ul>
+ */
+define( "kAPI_OP_DELETE",			'WS:OP:DEL' );
 
 
 ?>

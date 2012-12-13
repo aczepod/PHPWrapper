@@ -30,7 +30,7 @@
     	<element variable="kTAG_OBJECT">:IDENTIFICATION</element>
     </edge>
      
-    <!-- kTERM_UID -->
+    <!-- kTERM_SYNONYMS -->
 	<edge>
     	<element variable="kTAG_SUBJECT">:SYNONYMS</element>
     	<element variable="kTAG_PREDICATE">:SUBCLASS-OF</element>
@@ -121,6 +121,13 @@
     </edge>
      
     <!-- kTERM_STATUS_CODE -->
+	<edge>
+    	<element variable="kTAG_SUBJECT">:STATUS-IDENTIFIER</element>
+    	<element variable="kTAG_PREDICATE">:SUBCLASS-OF</element>
+    	<element variable="kTAG_OBJECT">:STATUS</element>
+    </edge>
+     
+    <!-- kTERM_STATUS_IDENTIFIER -->
 	<edge>
     	<element variable="kTAG_SUBJECT">:STATUS-CODE</element>
     	<element variable="kTAG_PREDICATE">:SUBCLASS-OF</element>

@@ -119,6 +119,8 @@ require_once( kPATH_MYWRAPPER_LIBRARY_CLASS."/CDocument.php" );
  *		<li><i>{@link kTYPE_STAMP}</i>: A native timestamp.
  *		<li><i>{@link kTYPE_BOOLEAN}</i>: An <tt>on</tt>/<tt>off</tt> switch.
  *		<li><i>{@link kTYPE_BINARY_STRING}</i>: A binary string.
+ *		<li><i>{@link kTYPE_MongoId}</i>: A MongoId object.
+ *		<li><i>{@link kTYPE_MongoCode}</i>: A MongoCode object.
  *	 </ul>
  *	<li><i>{@link kOFFSET_QUERY_DATA}</i>: The statement object or test data.
  * </ul>
@@ -546,6 +548,8 @@ class CQueryStatement extends CDocument
 	 *		<li><i>{@link kTYPE_STAMP}</i>: A timestamp, optionally including microseconds.
 	 *		<li><i>{@link kTYPE_BOOLEAN}</i>: An <tt>on</tt>/<tt>off</tt> switch.
 	 *		<li><i>{@link kTYPE_BINARY_STRING}</i>: A binary string.
+	 *		<li><i>{@link kTYPE_MongoId}</i>: A MongoId object.
+	 *		<li><i>{@link kTYPE_MongoCode}</i>: A MongoCode object.
 	 *	 </ul>
 	 *		If the provided value does not match any of the above, the method will raise an
 	 *		exception.
@@ -584,6 +588,8 @@ class CQueryStatement extends CDocument
 				case kTYPE_STAMP:
 				case kTYPE_BOOLEAN:
 				case kTYPE_BINARY_STRING:
+				case kTYPE_MongoId:
+				case kTYPE_MongoCode:
 					break;
 				
 				default:

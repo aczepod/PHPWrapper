@@ -38,4 +38,11 @@
     	<element variable="kTAG_PREDICATE">:SUBCLASS-OF</element>
     	<element variable="kTAG_OBJECT">:OBJECTS</element>
     </edge>
+     
+	<!-- _users -->
+	<edge>
+    	<element variable="kTAG_SUBJECT">:_users</element>
+    	<element variable="kTAG_PREDICATE">:SUBCLASS-OF</element>
+    	<element variable="kTAG_OBJECT">:OBJECTS</element>
+    </edge>
 </edges>

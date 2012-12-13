@@ -586,6 +586,31 @@ try
 		{ 	echo( '<pre>' ); print_r( $record ); echo( '</pre>' );	}
 	echo( '<hr />' );
 	echo( '<hr />' );
+	
+	//
+	// Test remove query.
+	//
+	echo( '<h4>Test remove query</h4>' );
+	echo( '<h5>$query = new CMongoQuery();</h5>' );
+	$query = new CMongoQuery();
+	echo( '<h5>$stmt = CQueryStatement::Exists( "DATA" );</h5>' );
+	$stmt = CQueryStatement::Exists( "DATA" );
+	echo( '<h5>$query->AppendStatement( $stmt );</h5>' );
+	$query->AppendStatement( $stmt );
+	echo( '<h5>$count = $test->Remove( $query );</h5>' );
+	$count = $test->Remove( $query );
+	echo( "$count<br>" );
+	echo( '<hr />' );
+	
+	//
+	// Test remove container query.
+	//
+	echo( '<h4>Test remove container query</h4>' );
+	echo( '<h5>$count = $test->Remove();</h5>' );
+	$count = $test->Remove();
+	echo( "$count<br>" );
+	echo( '<hr />' );
+	echo( '<hr />' );
 }
 
 //

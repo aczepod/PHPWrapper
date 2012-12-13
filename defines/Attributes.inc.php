@@ -404,7 +404,7 @@ define( "kTERM_EXAMPLES",						':EXAMPLES' );
  *
  * Version 1: (kOFFSET_SEVERITY)[:SEVERITY]
  */
-define( "kTERM_STATUS_LEVEL",							':STATUS-LEVEL' );
+define( "kTERM_STATUS_LEVEL",					':STATUS-LEVEL' );
 
 /**
  * STATUS-CODE.
@@ -418,6 +418,19 @@ define( "kTERM_STATUS_LEVEL",							':STATUS-LEVEL' );
  * Version 2: (kTERM_CODE)[:CODE]
  */
 define( "kTERM_STATUS_CODE",					':STATUS-CODE' );
+
+/**
+ * STATUS-IDENTIFIER.
+ *
+ * Status identifier.
+ *
+ * This attribute represents the status identifier, it is a value that is the identifier of
+ * a newly inserted object. This value is returned when an object is inserted using the
+ * wrappers.
+ *
+ * Version 1: (kTERM_STATUS_IDENTIFIER)[:STATUS-IDENTIFIER]
+ */
+define( "kTERM_STATUS_IDENTIFIER",				':STATUS-IDENTIFIER' );
 
 /**
  * STATUS-MESSAGE.
@@ -622,6 +635,87 @@ define( "kTERM_METHODS",						':METHODS' );
  * Version 1: (kOFFSET_REFS_TAG_SCALE)[:REF-TAG-SCALE]
  */
 define( "kTERM_SCALES",							':SCALES' );
+
+/*=======================================================================================
+ *	USER OBJECT																			*
+ *======================================================================================*/
+
+/**
+ * USER-NAME.
+ *
+ * User name.
+ *
+ * The full user name.
+ *
+ * Version 1: (kTERM_USER_NAME)[:USER-NAME]
+ */
+define( "kTERM_USER_NAME",						':USER-NAME' );
+
+/**
+ * USER-CODE.
+ *
+ * User code.
+ *
+ * The code with which the user is known to the system.
+ *
+ * Version 1: (kTERM_USER_CODE)[:USER-CODE]
+ */
+define( "kTERM_USER_CODE",						':USER-CODE' );
+
+/**
+ * USER-PASS.
+ *
+ * User password.
+ *
+ * The password with which the user is known to the system.
+ *
+ * Version 1: (kTERM_USER_PASS)[:USER-PASS]
+ */
+define( "kTERM_USER_PASS",						':USER-PASS' );
+
+/**
+ * USER-EMAIL.
+ *
+ * User e-mail.
+ *
+ * The e-mail address of the user.
+ *
+ * Version 1: (kTERM_USER_MAIL)[:USER-MAIL]
+ */
+define( "kTERM_USER_MAIL",						':USER-MAIL' );
+
+/**
+ * USER-ROLE.
+ *
+ * User roles.
+ *
+ * The roles assigned to the user.
+ *
+ * Version 1: (kTERM_USER_ROLE)[:USER-ROLE]
+ */
+define( "kTERM_USER_ROLE",						':USER-ROLE' );
+
+/**
+ * USER-PROFILE.
+ *
+ * User profile.
+ *
+ * The profile role name assigned to the user.
+ *
+ * Version 1: (kTERM_USER_PROFILE)[:USER-PROFILE]
+ */
+define( "kTERM_USER_PROFILE",					':USER-PROFILE' );
+
+/**
+ * USER-MANAGER.
+ *
+ * User manager.
+ *
+ * Reference to the user that manages the current user.
+ *
+ * Version 1: (kTERM_USER_MANAGER)[:USER-MANAGER]
+ */
+define( "kTERM_USER_MANAGER",					':USER-MANAGER' );
 
 
 ?>

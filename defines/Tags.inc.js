@@ -1,6 +1,6 @@
 /*=======================================================================================
  *																						*
- *									Tags.inc.js											*
+ *										Tags.inc.js										*
  *																						*
  *======================================================================================*/
  
@@ -170,7 +170,7 @@
  *
  * Version 1: (kOFFSET_NID)[_id]
  */
-var kTAG_NID								'_id';
+var kTAG_NID = '_id';
 
 /**
  * LID.
@@ -183,7 +183,7 @@ var kTAG_NID								'_id';
  *
  * Version 1: (kTAG_LID)[1]
  */
-var kTAG_LID								'1';
+var kTAG_LID = '1';
 
 /**
  * GID.
@@ -197,7 +197,7 @@ var kTAG_LID								'1';
  *
  * Version 1: (kTAG_GID)[2]
  */
-var kTAG_GID								'2';
+var kTAG_GID = '2';
 
 /**
  * UID.
@@ -210,7 +210,7 @@ var kTAG_GID								'2';
  *
  * Version 1: (kTAG_UID)[21]
  */
-var kTAG_UID								'3';
+var kTAG_UID = '3';
 
 /**
  * SYNONYMS.
@@ -222,7 +222,7 @@ var kTAG_UID								'3';
  *
  * Version 1: (kTAG_SYNONYMS)[7]
  */
-var kTAG_SYNONYMS							'4';
+var kTAG_SYNONYMS = '4';
 
 /*=======================================================================================
  *	CLASSIFICATION ATTRIBUTES															*
@@ -238,7 +238,7 @@ var kTAG_SYNONYMS							'4';
  *
  * Version 1: (kTAG_CATEGORY)[12]
  */
-var kTAG_CATEGORY							'5';
+var kTAG_CATEGORY = '5';
 
 /**
  * KIND.
@@ -249,7 +249,7 @@ var kTAG_CATEGORY							'5';
  *
  * Version 1: (kTAG_KIND)[13]
  */
-var kTAG_KIND								'6';
+var kTAG_KIND = '6';
 
 /**
  * TYPE.
@@ -261,7 +261,7 @@ var kTAG_KIND								'6';
  *
  * Version 1: (kTAG_TYPE)[14]
  */
-var kTAG_TYPE								'7';
+var kTAG_TYPE = '7';
 
 /**
  * CLASS.
@@ -274,7 +274,7 @@ var kTAG_TYPE								'7';
  *
  * Version 1: (kTAG_CLASS)[4]
  */
-var kTAG_CLASS								'8';
+var kTAG_CLASS = '8';
 
 /**
  * NAMESPACE.
@@ -286,7 +286,7 @@ var kTAG_CLASS								'8';
  *
  * Version 1: (kTAG_NAMESPACE)[3]
  */
-var kTAG_NAMESPACE							'9';
+var kTAG_NAMESPACE = '9';
 
 /*=======================================================================================
  *	DESCRIPTION ATTRIBUTES																*
@@ -303,7 +303,7 @@ var kTAG_NAMESPACE							'9';
  *
  * Version 1: (kTAG_LABEL)[5]
  */
-var kTAG_LABEL								'10';
+var kTAG_LABEL = '10';
 
 /**
  * DEFINITION.
@@ -316,7 +316,7 @@ var kTAG_LABEL								'10';
  *
  * Version 1: (kTAG_DEFINITION)[??]
  */
-var kTAG_DEFINITION							'11';
+var kTAG_DEFINITION = '11';
 
 /**
  * DESCRIPTION.
@@ -329,7 +329,7 @@ var kTAG_DEFINITION							'11';
  *
  * Version 1: (kTAG_DESCRIPTION)[6]
  */
-var kTAG_DESCRIPTION						'12';
+var kTAG_DESCRIPTION = '12';
 
 /**
  * NOTES.
@@ -342,7 +342,7 @@ var kTAG_DESCRIPTION						'12';
  *
  * Version 1: (kTAG_NOTES)[25]
  */
-var kTAG_NOTES								'13';
+var kTAG_NOTES = '13';
 
 /**
  * EXAMPLES.
@@ -354,7 +354,7 @@ var kTAG_NOTES								'13';
  *
  * Version 1: (kTAG_EXAMPLES)[28]
  */
-var kTAG_EXAMPLES							'14';
+var kTAG_EXAMPLES = '14';
 
 /*=======================================================================================
  *	AUTHORSHIP ATTRIBUTES																*
@@ -369,7 +369,7 @@ var kTAG_EXAMPLES							'14';
  *
  * Version 1: (kTAG_AUTHORS)[24]
  */
-var kTAG_AUTHORS							'15';
+var kTAG_AUTHORS = '15';
 
 /**
  * ACKNOWLEDGMENTS.
@@ -380,7 +380,7 @@ var kTAG_AUTHORS							'15';
  *
  * Version 1: (kTAG_ACKNOWLEDGMENTS)[26]
  */
-var kTAG_ACKNOWLEDGMENTS					'16';
+var kTAG_ACKNOWLEDGMENTS = '16';
 
 /**
  * BIBLIOGRAPHY.
@@ -391,7 +391,7 @@ var kTAG_ACKNOWLEDGMENTS					'16';
  *
  * Version 1: (kTAG_BIBLIOGRAPHY)[27]
  */
-var kTAG_BIBLIOGRAPHY						'17';
+var kTAG_BIBLIOGRAPHY = '17';
 
 /*=======================================================================================
  *	REFERENCE ATTRIBUTES																*
@@ -407,7 +407,7 @@ var kTAG_BIBLIOGRAPHY						'17';
  *
  * Version 1: (kTAG_TERM)[8]
  */
-var kTAG_TERM								'18';
+var kTAG_TERM = '18';
 
 /**
  * NODE.
@@ -419,7 +419,7 @@ var kTAG_TERM								'18';
  *
  * Version 1: (kTAG_NODE)[??]
  */
-var kTAG_NODE								'19';
+var kTAG_NODE = '19';
 
 /**
  * SUBJECT.
@@ -431,7 +431,7 @@ var kTAG_NODE								'19';
  *
  * Version 1: (kTAG_VERTEX_SUBJECT)[18]
  */
-var kTAG_SUBJECT							'20';
+var kTAG_SUBJECT = '20';
 
 /**
  * kTAG_OBJECT.
@@ -443,7 +443,7 @@ var kTAG_SUBJECT							'20';
  *
  * Version 1: (kTAG_VERTEX_OBJECT)[20]
  */
-var kTAG_OBJECT								'21';
+var kTAG_OBJECT = '21';
 
 /**
  * PREDICATE.
@@ -455,7 +455,7 @@ var kTAG_OBJECT								'21';
  *
  * Version 1: (kTAG_PREDICATE)[19]
  */
-var kTAG_PREDICATE							'22';
+var kTAG_PREDICATE = '22';
 
 /**
  * PATH.
@@ -468,7 +468,7 @@ var kTAG_PREDICATE							'22';
  *
  * Version 1: (kTAG_TAG_PATH)[22]
  */
-var kTAG_PATH								'23';
+var kTAG_PATH = '23';
 
 /*=======================================================================================
  *	REFERENCE COLLECTIONS																*
@@ -484,7 +484,7 @@ var kTAG_PATH								'23';
  *
  * Version 1: (kTAG_REFS_NAMESPACE)[9]
  */
-var kTAG_NAMESPACE_REFS						'24';
+var kTAG_NAMESPACE_REFS = '24';
 
 /**
  * NODES.
@@ -496,7 +496,7 @@ var kTAG_NAMESPACE_REFS						'24';
  *
  * Version 1: (kTAG_REFS_NODE)[10]
  */
-var kTAG_NODES								'25';
+var kTAG_NODES = '25';
 
 /**
  * EDGES.
@@ -508,7 +508,7 @@ var kTAG_NODES								'25';
  *
  * Version 1: (kTAG_REFS_EDGE)[17]
  */
-var kTAG_EDGES								'26';
+var kTAG_EDGES = '26';
 
 /**
  * FEATURES.
@@ -520,7 +520,7 @@ var kTAG_EDGES								'26';
  *
  * Version 1: (kTAG_REFS_TAG_FEATURE)[15]
  */
-var kTAG_FEATURES							'27';
+var kTAG_FEATURES = '27';
 
 /**
  * METHODS.
@@ -532,7 +532,7 @@ var kTAG_FEATURES							'27';
  *
  * Version 1: (kTAG_REFS_TAG_METHOD)[??]
  */
-var kTAG_METHODS							'28';
+var kTAG_METHODS = '28';
 
 /**
  * SCALES.
@@ -544,60 +544,85 @@ var kTAG_METHODS							'28';
  *
  * Version 1: (kTAG_REFS_TAG_SCALE)[16]
  */
-var kTAG_SCALES								'29';
+var kTAG_SCALES = '29';
 
 /*=======================================================================================
- *	CUSTOM TYPE SUB ATTRIBUTES															*
+ *	USER OBJECT																			*
  *======================================================================================*/
 
 /**
- * type.
+ * USER-NAME.
  *
- * Custom data object type.
+ * User name.
  *
- * This tag is used as the default offset for indicating a custom data type, in general it
- * is used in a structure in conjunction with the {@link kTAG_CUSTOM_DATA} offset to indicate the
- * data type of the item.
+ * The full user name.
  *
- * Version 1: (kTAG_CUSTOM_TYPE)[type]
+ * Version 1: (kTAG_USER_NAME)[30]
  */
-var kTAG_CUSTOM_TYPE						'type';
+var kTAG_USER_NAME = '30';
 
 /**
- * data.
+ * USER-CODE.
  *
- * Custom data object data.
+ * User code.
  *
- * This tag is used as the default offset for indicating a custom data type content, in
- * general this tag is used in conjunction with the {@link kTAG_CUSTOM_TYPE} to wrap a custom data
- * type in a standard structure.
+ * The code with which the user is known to the system.
  *
- * Version 1: (kTAG_CUSTOM_DATA)[data]
+ * Version 1: (kTAG_USER_CODE)[31]
  */
-var kTAG_CUSTOM_DATA						'data';
-
-/*=======================================================================================
- *	CUSTOM TIMESTAMP SUB-ATTRIBUTES														*
- *======================================================================================*/
+var kTAG_USER_CODE = '31';
 
 /**
- * sec.
+ * USER-PASS.
  *
- * Seconds.
+ * User password.
  *
- * This tag defines the number of seconds since January 1st, 1970.
+ * The password with which the user is known to the system.
  *
- * Version 1: (kTYPE_STAMP_SEC)[sec]
+ * Version 1: (kTAG_USER_PASS)[32]
  */
-var kTAG_STAMP_SEC							'sec';
+var kTAG_USER_PASS = '32';
 
 /**
- * usec.
+ * USER-MAIL.
  *
- * Microseconds.
+ * User e-mail.
  *
- * This tag defines microseconds.
+ * The e-mail address of the user.
  *
- * Version 1: (kTYPE_STAMP_USEC)[usec]
+ * Version 1: (kTAG_USER_MAIL)[33]
  */
-var kTAG_STAMP_USEC							'usec';
+var kTAG_USER_MAIL = '33';
+
+/**
+ * USER-ROLE.
+ *
+ * User roles.
+ *
+ * The roles assigned to the user.
+ *
+ * Version 1: (kTAG_USER_ROLE)[34]
+ */
+var kTAG_USER_ROLE = '34';
+
+/**
+ * USER-PROFILE.
+ *
+ * User profile.
+ *
+ * The profile role name assigned to the user.
+ *
+ * Version 1: (kTAG_USER_PROFILE)[35]
+ */
+var kTAG_USER_PROFILE = '35';
+
+/**
+ * USER-MANAGER.
+ *
+ * User manager.
+ *
+ * Reference to the user that manages the current user.
+ *
+ * Version 1: (kTAG_USER_MANAGER)[36]
+ */
+var kTAG_USER_MANAGER = '36';

@@ -33,4 +33,10 @@
 		<element variable="kTAG_TERM">:_tags</element>
 		<element variable="kTAG_CLASS">COntologyMasterVertex</element>
 	</node>
+    
+    <!-- _users -->
+	<node class="COntologyMasterVertex">
+		<element variable="kTAG_TERM">:_users</element>
+		<element variable="kTAG_CLASS">COntologyMasterVertex</element>
+	</node>
 </nodes>

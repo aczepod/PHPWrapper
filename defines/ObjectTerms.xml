@@ -53,7 +53,15 @@
         <element variable="kTAG_DEFINITION" key="en"><![CDATA[An ontology tag represents the <i>path</i>
         	between an <i>ontology feature vertex</i> and an <i>ontology scale vertex</i>.
         	Tags record the terms referenced by the vertices and the predicates that relate
-        	them,
+        	them.
+            ]]>
+        </element>
+	</term>
+    
+    <!-- Users -->
+    <term lid="_users" ns="">
+        <element variable="kTAG_LABEL" key="en">User objects</element>
+        <element variable="kTAG_DEFINITION" key="en"><![CDATA[Users collect all information specific to the system users.
             ]]>
         </element>
 	</term>

@@ -258,6 +258,19 @@
         </element>
     </term>
     
+    <!-- kTERM_STATUS_IDENTIFIER -->
+    <term lid="STATUS-IDENTIFIER" ns="">
+        <element variable="kTAG_LABEL" key="en">Status identifier</element>
+        <element variable="kTAG_DEFINITION" key="en"><![CDATA[The <i>status identifier</i>
+        	is returned by services that insert objects, it represents the newly created
+        	object's native identifier.
+            ]]>
+        </element>
+        <element variable="kTAG_SYNONYMS">
+            <item>kTERM_STATUS_IDENTIFIER</item>
+        </element>
+    </term>
+    
     <!-- kTERM_STATUS_MESSAGE -->
     <term lid="STATUS-MESSAGE" ns="">
         <element variable="kTAG_LABEL" key="en">Status message</element>
@@ -458,6 +471,78 @@
         </element>
         <element variable="kTAG_SYNONYMS">
             <item>kTERM_SCALES</item>
+        </element>
+    </term>
+    
+    <!-- USER ATTRIBUTES -->
+    
+    <!-- kTERM_USER_NAME -->
+    <term lid="USER-NAME" ns="">
+        <element variable="kTAG_LABEL" key="en">User name</element>
+        <element variable="kTAG_DEFINITION" key="en"><![CDATA[The full user name.]]>
+        </element>
+        <element variable="kTAG_SYNONYMS">
+            <item>kTERM_USER_NAME</item>
+        </element>
+    </term>
+    
+    <!-- kTERM_USER_CODE -->
+    <term lid="USER-CODE" ns="">
+        <element variable="kTAG_LABEL" key="en">User code</element>
+        <element variable="kTAG_DEFINITION" key="en"><![CDATA[The code with which the user is known to the system.]]>
+        </element>
+        <element variable="kTAG_SYNONYMS">
+            <item>kTERM_USER_CODE</item>
+        </element>
+    </term>
+    
+    <!-- kTERM_USER_PASS -->
+    <term lid="USER-PASS" ns="">
+        <element variable="kTAG_LABEL" key="en">User password</element>
+        <element variable="kTAG_DEFINITION" key="en"><![CDATA[The password with which the user is known to the system.]]>
+        </element>
+        <element variable="kTAG_SYNONYMS">
+            <item>kTERM_USER_PASS</item>
+        </element>
+    </term>
+    
+    <!-- kTERM_USER_MAIL -->
+    <term lid="USER-MAIL" ns="">
+        <element variable="kTAG_LABEL" key="en">User e-mail</element>
+        <element variable="kTAG_DEFINITION" key="en"><![CDATA[The e-mail address of the user.]]>
+        </element>
+        <element variable="kTAG_SYNONYMS">
+            <item>kTERM_USER_MAIL</item>
+        </element>
+    </term>
+    
+    <!-- kTERM_USER_ROLE -->
+    <term lid="USER-ROLE" ns="">
+        <element variable="kTAG_LABEL" key="en">User roles</element>
+        <element variable="kTAG_DEFINITION" key="en"><![CDATA[The roles assigned to the user.]]>
+        </element>
+        <element variable="kTAG_SYNONYMS">
+            <item>kTERM_USER_ROLE</item>
+        </element>
+    </term>
+    
+    <!-- kTERM_USER_PROFILE -->
+    <term lid="USER-PROFILE" ns="">
+        <element variable="kTAG_LABEL" key="en">User profile</element>
+        <element variable="kTAG_DEFINITION" key="en"><![CDATA[The profile role name assigned to the user.]]>
+        </element>
+        <element variable="kTAG_SYNONYMS">
+            <item>kTERM_USER_PROFILE</item>
+        </element>
+    </term>
+    
+    <!-- kTERM_USER_MANAGER -->
+    <term lid="USER-MANAGER" ns="">
+        <element variable="kTAG_LABEL" key="en">User manager</element>
+        <element variable="kTAG_DEFINITION" key="en"><![CDATA[Reference to the user that manages the current user.]]>
+        </element>
+        <element variable="kTAG_SYNONYMS">
+            <item>kTERM_USER_MANAGER</item>
         </element>
     </term>
 </terms>

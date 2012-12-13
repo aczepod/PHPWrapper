@@ -827,7 +827,7 @@
         <element variable="kTAG_KIND">
             <item>:KIND-ENUMERATION</item>
         </element>
-        <element variable="kTAG_LABEL" key="en">:JSON</element>
+        <element variable="kTAG_LABEL" key="en">JSON</element>
         <element variable="kTAG_DEFINITION" key="en"><![CDATA[This type represents the <tt>JSON</tt>
         	encoded data format. This type is functionally identical to the string type,
         	except that the <i>contents are encoded</i>.
@@ -843,7 +843,7 @@
         <element variable="kTAG_KIND">
             <item>:KIND-ENUMERATION</item>
         </element>
-        <element variable="kTAG_LABEL" key="en">:XML</element>
+        <element variable="kTAG_LABEL" key="en">XML</element>
         <element variable="kTAG_DEFINITION" key="en"><![CDATA[This type represents the <tt>XML</tt>
         	encoded data format. This type is functionally identical to the string type,
         	except that the <i>contents are encoded</i>.

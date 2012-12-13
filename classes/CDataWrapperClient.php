@@ -56,6 +56,12 @@ require_once( kPATH_MYWRAPPER_LIBRARY_CLASS."/CDataWrapper.php" );
  *		is stored in the {@link kAPI_SELECT} offset.
  *	<li><i>{@link Sort()}</i>: This element represents the web-service sort fields, it
  *		is stored in the {@link kAPI_SORT} offset.
+ *	<li><i>{@link Classname()}</i>: This element represents the web-service class name
+ *		field, it represents the class name of the provided object and is stored in the
+ *		{@link kAPI_CLASS} offset.
+ *	<li><i>{@link Object()}</i>: This element represents the web-service object, it is an
+ *		array representing the object to be managed and is stored in the {@link kAPI_OBJECT}
+ *		offset.
  * </ul>
  *
  * The class recognises the following operations ({@link Operation()}):
@@ -116,6 +122,19 @@ require_once( kPATH_MYWRAPPER_LIBRARY_CLASS."/CDataWrapper.php" );
  *			({@link kAPI_SELECT}). <i>If this parameter is omitted, it is assumed that all
  *			attributes are returned</i>.
  *	 </ul>
+ *	<li><tt>{@link kAPI_OP_INSERT}</tt>: This service will insert the provided object into
+ *		the provided database or container. The service expects the following parameters:
+ *	 <ul>
+ *		<li><tt>{@link Format()}</tt>: The data encoding type ({@link kAPI_FORMAT}).
+ *		<li><tt>{@link Database()}</tt>: The data encoding type ({@link kAPI_DATABASE}).
+ *		<li><tt>{@link Container()}</tt>: The data encoding type ({@link kAPI_CONTAINER}),
+ *			this parameter may be omitted if the provided object class can resolve a
+ *			default container from the provided database.
+ *		<li><tt>{@link Object()}</tt>: The object, ({@link kAPI_OBJECT}).
+ *		<li><tt>{@link Classname()}</tt>: The object class name, ({@link kAPI_CLASS}). This
+ *			parameter is optional, if provided it will handle the persistence operation to
+ *			the class.
+ *	 </ul>
  * </ul>
  *
  *	@package	MyWrapper
@@ -157,13 +176,6 @@ class CDataWrapperClient extends CWrapperClient
 	 *		to update existing objects in the data store.
 	 *	<li><i>{@link kAPI_OP_INSERT kAPI_OP_INSERT}</i>: INSERT web-service operation, used
 	 *		to insert new objects in the data store.
-	 *	<li><i>{@link kAPI_OP_BATCH_INSERT kAPI_OP_BATCH_INSERT}</i>: This service is
-	 *		equivalent to the {@link kAPI_OP_INSERT kAPI_OP_INSERT} command, except that in
-	 *		this case you provide a list ov objects to insert.
-	 *	<li><i>{@link kAPI_OP_MODIFY kAPI_OP_MODIFY}</i>: MODIFY web-service operation, used
-	 *		to modify partial contents of objects in the data store.
-	 *	<li><i>{@link kAPI_OP_DEL kAPI_OP_DEL}</i>: DELETE web-service operation, used to
-	 *		delete objects from the data store.
 	 * </ul>
 	 *
 	 * @param string				$theValue			Value or operation.
@@ -193,6 +205,9 @@ class CDataWrapperClient extends CWrapperClient
 				case kAPI_OP_GET:
 				case kAPI_OP_GET_ONE:
 				case kAPI_OP_MATCH:
+				case kAPI_OP_RESOLVE:
+				case kAPI_OP_INSERT:
+				case kAPI_OP_DELETE:
 					return ManageOffset(
 						$this, kAPI_OPERATION, $theValue, $getOld );				// ==>
 			}
@@ -705,6 +720,113 @@ class CDataWrapperClient extends CWrapperClient
 					$this, kAPI_SORT, $theField, $theOrder, $getOld );				// ==>
 
 	} // Sort.
+
+	 
+	/*===================================================================================
+	 *	Classname																		*
+	 *==================================================================================*/
+
+	/**
+	 * Manage object class.
+	 *
+	 * This method can be used to manage the {@link kAPI_CLASS} offset, it accepts a string
+	 * parameter which represents the class name of the object provided in {@link Object()}
+	 * or the requested operation, depending on its value:
+	 *
+	 * <ul>
+	 *	<li><i>NULL</i>: Return the current value.
+	 *	<li><i>FALSE</i>: Delete the current value.
+	 *	<li><i>other</i>: Set the value with the provided parameter, in this case the value
+	 *		is expected to be and will be casted to an integer.
+	 * </ul>
+	 *
+	 * The second parameter is a boolean which if <i>TRUE</i> will return the <i>old</i>
+	 * value when replacing values; if <i>FALSE</i>, it will return the currently set value.
+	 *
+	 * @param string				$theValue			Value or operation.
+	 * @param boolean				$getOld				TRUE get old value.
+	 *
+	 * @access public
+	 * @return mixed
+	 *
+	 * @uses ManageOffset()
+	 *
+	 * @see kAPI_CLASS
+	 */
+	public function Classname( $theValue = NULL, $getOld = FALSE )
+	{
+		//
+		// Check operation.
+		//
+		if( ($theValue !== NULL)
+		 && ($theValue !== FALSE) )
+			$theValue = ( is_object( $theValue ) )
+					  ? get_class( $theValue )
+					  : (string) $theValue;
+		
+		return ManageOffset( $this, kAPI_CLASS, $theValue, $getOld );				// ==>
+
+	} // Classname.
+
+	 
+	/*===================================================================================
+	 *	Object																			*
+	 *==================================================================================*/
+
+	/**
+	 * Manage object.
+	 *
+	 * This method can be used to manage the {@link kAPI_OBJECT} offset, it accepts a
+	 * parameter which represents either the object to be inserted or the value used to
+	 * resolve the object to be deleted, or the requested operation, depending on its value:
+	 *
+	 * <ul>
+	 *	<li><i>NULL</i>: Return the current value.
+	 *	<li><i>FALSE</i>: Delete the current value.
+	 *	<li><i>other</i>: Set the value with the provided parameter, in this case the value
+	 *		is expected to be and will be casted to an integer.
+	 * </ul>
+	 *
+	 * The second parameter is a boolean which if <i>TRUE</i> will return the <i>old</i>
+	 * value when replacing values; if <i>FALSE</i>, it will return the currently set value.
+	 *
+	 * <i>Note that if you provide an object derived from {@link CPersistentObject}, this
+	 * method will also set automatically the {@link Classname()} parameter.</i>
+	 *
+	 * @param string				$theValue			Value or operation.
+	 * @param boolean				$getOld				TRUE get old value.
+	 *
+	 * @access public
+	 * @return mixed
+	 *
+	 * @uses ManageOffset()
+	 *
+	 * @see kAPI_OBJECT
+	 */
+	public function Object( $theValue = NULL, $getOld = FALSE )
+	{
+		//
+		// Check operation.
+		//
+		if( ($theValue !== NULL)
+		 && ($theValue !== FALSE) )
+		{
+			//
+			// Handle persistent objects.
+			//
+			if( $theValue instanceof CPersistentObject )
+				$this->Classname( get_class( $theValue ) );
+			
+			//
+			// Handle ArrayObjects.
+			//
+			if( $theValue instanceof ArrayObject )
+				$theValue = $theValue->getArrayCopy(); 
+		}
+		
+		return ManageOffset( $this, kAPI_OBJECT, $theValue, $getOld );				// ==>
+
+	} // Object.
 
 		
 

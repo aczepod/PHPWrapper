@@ -549,6 +549,87 @@ define( "kTAG_METHODS",							'28' );
 define( "kTAG_SCALES",							'29' );
 
 /*=======================================================================================
+ *	USER OBJECT																			*
+ *======================================================================================*/
+
+/**
+ * USER-NAME.
+ *
+ * User name.
+ *
+ * The full user name.
+ *
+ * Version 1: (kTAG_USER_NAME)[30]
+ */
+define( "kTAG_USER_NAME",						'30' );
+
+/**
+ * USER-CODE.
+ *
+ * User code.
+ *
+ * The code with which the user is known to the system.
+ *
+ * Version 1: (kTAG_USER_CODE)[31]
+ */
+define( "kTAG_USER_CODE",						'31' );
+
+/**
+ * USER-PASS.
+ *
+ * User password.
+ *
+ * The password with which the user is known to the system.
+ *
+ * Version 1: (kTAG_USER_PASS)[32]
+ */
+define( "kTAG_USER_PASS",						'32' );
+
+/**
+ * USER-MAIL.
+ *
+ * User e-mail.
+ *
+ * The e-mail address of the user.
+ *
+ * Version 1: (kTAG_USER_MAIL)[33]
+ */
+define( "kTAG_USER_MAIL",						'33' );
+
+/**
+ * USER-ROLE.
+ *
+ * User roles.
+ *
+ * The roles assigned to the user.
+ *
+ * Version 1: (kTAG_USER_ROLE)[34]
+ */
+define( "kTAG_USER_ROLE",						'34' );
+
+/**
+ * USER-PROFILE.
+ *
+ * User profile.
+ *
+ * The profile role name assigned to the user.
+ *
+ * Version 1: (kTAG_USER_PROFILE)[35]
+ */
+define( "kTAG_USER_PROFILE",					'35' );
+
+/**
+ * USER-MANAGER.
+ *
+ * User manager.
+ *
+ * Reference to the user that manages the current user.
+ *
+ * Version 1: (kTAG_USER_MANAGER)[36]
+ */
+define( "kTAG_USER_MANAGER",					'36' );
+
+/*=======================================================================================
  *	CUSTOM TYPE SUB ATTRIBUTES															*
  *======================================================================================*/
 

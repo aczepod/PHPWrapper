@@ -170,7 +170,7 @@ abstract class CContainer extends CConnection
 	 * This method expects three parameters:
 	 *
 	 * <ul>
-	 *	<li><tt>$theObject</tt>: The object or the data to be modified.
+	 *	<li><tt>$theObject</tt>: The object or the data to be handled.
 	 *	<li><tt>$theIdentifier</tt>: The native unique identifier ({@link kTAG_NID}) of
 	 *		the object. If the value is <i>NULL</i>, it means that it is the duty of the
 	 *		current container to set the value, this will generally be the case when
@@ -396,6 +396,33 @@ abstract class CContainer extends CConnection
 									$theFields = NULL, $theSort = NULL,
 									$theStart = NULL, $theLimit = NULL,
 									$getFirst = NULL );
+
+	 
+	/*===================================================================================
+	 *	Remove																			*
+	 *==================================================================================*/
+
+	/**
+	 * <h4>Perform a deletion</h4>
+	 *
+	 * This method can be used to delete elements of a container, it expects an instance
+	 * of {@link CQuery} as the query, or <tt>NULL</tt>, to delete the whole container.
+	 *
+	 * <ul>
+	 *	<li><tt>$theQuery</tt>: The query expressed as an array or query object, if omitted,
+	 *		it is assumed the query should cover the whole contents of the container.
+	 * </ul>
+	 *
+	 * If the query selected no object, the method should return <tt>NULL</tt>, if the
+	 * operation succeeded the method should return an integer containing the number of
+	 * affected objects; on errors the method should raise an exception.
+	 *
+	 * @param array					$theQuery			Query.
+	 *
+	 * @access public
+	 * @return integer				Number of affected elements.
+	 */
+	abstract public function Remove( $theQuery = NULL );
 
 		
 

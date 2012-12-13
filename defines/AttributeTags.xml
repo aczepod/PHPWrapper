@@ -214,4 +214,55 @@
     		<item>:SCALES</item>
     	</element>
     </tag>
+    
+    <!-- USER ATTRIBUTES -->
+    
+    <!-- kTERM_USER_NAME -->
+	<tag>
+    	<element variable="kTAG_PATH">
+    		<item>:USER-NAME</item>
+    	</element>
+    </tag>
+    
+    <!-- kTERM_USER_CODE -->
+	<tag>
+    	<element variable="kTAG_PATH">
+    		<item>:USER-CODE</item>
+    	</element>
+    </tag>
+    
+    <!-- kTERM_USER_PASS -->
+	<tag>
+    	<element variable="kTAG_PATH">
+    		<item>:USER-PASS</item>
+    	</element>
+    </tag>
+    
+    <!-- kTERM_USER_MAIL -->
+	<tag>
+    	<element variable="kTAG_PATH">
+    		<item>:USER-MAIL</item>
+    	</element>
+    </tag>
+    
+    <!-- kTERM_USER_ROLE -->
+	<tag>
+    	<element variable="kTAG_PATH">
+    		<item>:USER-ROLE</item>
+    	</element>
+    </tag>
+    
+    <!-- kTERM_USER_PROFILE -->
+	<tag>
+    	<element variable="kTAG_PATH">
+    		<item>:USER-PROFILE</item>
+    	</element>
+    </tag>
+    
+    <!-- kTERM_USER_MANAGER -->
+	<tag>
+    	<element variable="kTAG_PATH">
+    		<item>:USER-MANAGER</item>
+    	</element>
+    </tag>
 </tags>

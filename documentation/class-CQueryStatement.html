@@ -6,8 +6,8 @@
 
 	<title>Class CQueryStatement | MyWrapper Reference Documentation</title>
 
-	<script type="text/javascript" src="resources/combined.js?1742645618"></script>
-	<script type="text/javascript" src="elementlist.js?329385576"></script>
+	<script type="text/javascript" src="resources/combined.js?3680114562"></script>
+	<script type="text/javascript" src="elementlist.js?1535324545"></script>
 	<link rel="stylesheet" type="text/css" media="all" href="resources/style.css?3505392360" />
 
 </head>
@@ -30,6 +30,8 @@
 				<li class="active main"><a href="package-MyWrapper.Framework.html">Framework</a>
 						</li>
 				<li class="main"><a href="package-MyWrapper.Functions.html">Functions</a>
+						</li>
+				<li class="main"><a href="package-MyWrapper.Objects.html">Objects</a>
 						</li>
 				<li class="main"><a href="package-MyWrapper.Ontology.html">Ontology</a>
 						</li>
@@ -229,6 +231,10 @@ these statements, which are structured as follows:</p>
 			<li><i>kTYPE_BOOLEAN</i>: An <tt>on</tt>/<tt>off</tt> switch.</li>
 
 			<li><i>kTYPE_BINARY_STRING</i>: A binary string.</li>
+
+			<li><i>kTYPE_MongoId</i>: A MongoId object.</li>
+
+			<li><i>kTYPE_MongoCode</i>: A MongoCode object.</li>
 		</ul>
 	</li>
 
@@ -289,7 +295,7 @@ for building statements that can then safely be appended, <code><a href="class-C
 				<b>Author:</b>
 				Milko A. Škofič &lt;<a
 href="mailto:m.skofic&#64;cgiar.org">m.skofic&#64;<!---->cgiar.org</a>&gt;<br />
-		<b>Located at</b> <a href="source-class-CQueryStatement.html#43-1832" title="Go to source code">CQueryStatement.php</a><br />
+		<b>Located at</b> <a href="source-class-CQueryStatement.html#43-1838" title="Go to source code">CQueryStatement.php</a><br />
 	</div>
 
 
@@ -307,7 +313,7 @@ href="mailto:m.skofic&#64;cgiar.org">m.skofic&#64;<!---->cgiar.org</a>&gt;<br />
 
 		<td class="name"><div>
 		<a class="anchor" href="#___construct">#</a>
-		<code><a href="source-class-CQueryStatement.html#150-318" title="Go to source code">__construct</a>( <span>mixed <var>$theSubject</var> = <span class="php-keyword1">NULL</span></span>, <span>string <var>$thePredicate</var> = <span class="php-keyword1">NULL</span></span>, <span>string <var>$theType</var> = <span class="php-keyword1">NULL</span></span>, <span>mixed <var>$theObject</var> = <span class="php-keyword1">NULL</span></span>, <span>mixed <var>$theRange</var> = <span class="php-keyword1">NULL</span> </span> )</code>
+		<code><a href="source-class-CQueryStatement.html#152-320" title="Go to source code">__construct</a>( <span>mixed <var>$theSubject</var> = <span class="php-keyword1">NULL</span></span>, <span>string <var>$thePredicate</var> = <span class="php-keyword1">NULL</span></span>, <span>string <var>$theType</var> = <span class="php-keyword1">NULL</span></span>, <span>mixed <var>$theObject</var> = <span class="php-keyword1">NULL</span></span>, <span>mixed <var>$theRange</var> = <span class="php-keyword1">NULL</span> </span> )</code>
 
 		<div class="description short">
 			
@@ -495,7 +501,7 @@ existing statement structure, or by providing the statement elements:</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#_Subject">#</a>
-		<code><a href="source-class-CQueryStatement.html#334-365" title="Go to source code">Subject</a>( <span>string <var>$theValue</var> = <span class="php-keyword1">NULL</span></span>, <span>boolean <var>$getOld</var> = <span class="php-keyword1">FALSE</span> </span> )</code>
+		<code><a href="source-class-CQueryStatement.html#336-367" title="Go to source code">Subject</a>( <span>string <var>$theValue</var> = <span class="php-keyword1">NULL</span></span>, <span>boolean <var>$getOld</var> = <span class="php-keyword1">FALSE</span> </span> )</code>
 
 		<div class="description short">
 			
@@ -567,7 +573,7 @@ currently set value.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#_Object">#</a>
-		<code><a href="source-class-CQueryStatement.html#372-403" title="Go to source code">Object</a>( <span>string <var>$theValue</var> = <span class="php-keyword1">NULL</span></span>, <span>boolean <var>$getOld</var> = <span class="php-keyword1">FALSE</span> </span> )</code>
+		<code><a href="source-class-CQueryStatement.html#374-405" title="Go to source code">Object</a>( <span>string <var>$theValue</var> = <span class="php-keyword1">NULL</span></span>, <span>boolean <var>$getOld</var> = <span class="php-keyword1">FALSE</span> </span> )</code>
 
 		<div class="description short">
 			
@@ -640,7 +646,7 @@ currently set value.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#_Predicate">#</a>
-		<code><a href="source-class-CQueryStatement.html#410-519" title="Go to source code">Predicate</a>( <span>string <var>$theValue</var> = <span class="php-keyword1">NULL</span></span>, <span>boolean <var>$getOld</var> = <span class="php-keyword1">FALSE</span> </span> )</code>
+		<code><a href="source-class-CQueryStatement.html#412-521" title="Go to source code">Predicate</a>( <span>string <var>$theValue</var> = <span class="php-keyword1">NULL</span></span>, <span>boolean <var>$getOld</var> = <span class="php-keyword1">FALSE</span> </span> )</code>
 
 		<div class="description short">
 			
@@ -772,7 +778,7 @@ currently set value.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#_Type">#</a>
-		<code><a href="source-class-CQueryStatement.html#526-598" title="Go to source code">Type</a>( <span>string <var>$theValue</var> = <span class="php-keyword1">NULL</span></span>, <span>boolean <var>$getOld</var> = <span class="php-keyword1">FALSE</span> </span> )</code>
+		<code><a href="source-class-CQueryStatement.html#528-604" title="Go to source code">Type</a>( <span>string <var>$theValue</var> = <span class="php-keyword1">NULL</span></span>, <span>boolean <var>$getOld</var> = <span class="php-keyword1">FALSE</span> </span> )</code>
 
 		<div class="description short">
 			
@@ -815,6 +821,10 @@ expressed, or the requested operation, depending on its value:</p>
 			<li><i>kTYPE_BOOLEAN</i>: An <tt>on</tt>/<tt>off</tt> switch.</li>
 
 			<li><i>kTYPE_BINARY_STRING</i>: A binary string.</li>
+
+			<li><i>kTYPE_MongoId</i>: A MongoId object.</li>
+
+			<li><i>kTYPE_MongoCode</i>: A MongoCode object.</li>
 		</ul>
 		 If the provided value does not match any of the above, the method will raise an
 		exception.</li>
@@ -868,7 +878,7 @@ currently set value.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#_Range">#</a>
-		<code><a href="source-class-CQueryStatement.html#605-636" title="Go to source code">Range</a>( <span>mixed <var>$theBound1</var></span>, <span>mixed <var>$theBound2</var></span>, <span>boolean <var>$getOld</var> = <span class="php-keyword1">FALSE</span> </span> )</code>
+		<code><a href="source-class-CQueryStatement.html#611-642" title="Go to source code">Range</a>( <span>mixed <var>$theBound1</var></span>, <span>mixed <var>$theBound2</var></span>, <span>boolean <var>$getOld</var> = <span class="php-keyword1">FALSE</span> </span> )</code>
 
 		<div class="description short">
 			
@@ -942,7 +952,7 @@ the range you must use the <code><a href="class-CQueryStatement.html#_Object">CQ
 
 		<td class="name"><div>
 		<a class="anchor" href="#_Disabled">#</a>
-		<code><a href="source-class-CQueryStatement.html#652-687" title="Go to source code">Disabled</a>( <span>mixed <var>$theSubject</var></span>, <span>mixed <var>$theObject</var> = <span class="php-keyword1">NULL</span></span>, <span>string <var>$theType</var> = <span class="php-keyword1">NULL</span></span>, <span>mixed <var>$theRange</var> = <span class="php-keyword1">NULL</span> </span> )</code>
+		<code><a href="source-class-CQueryStatement.html#658-693" title="Go to source code">Disabled</a>( <span>mixed <var>$theSubject</var></span>, <span>mixed <var>$theObject</var> = <span class="php-keyword1">NULL</span></span>, <span>string <var>$theType</var> = <span class="php-keyword1">NULL</span></span>, <span>mixed <var>$theRange</var> = <span class="php-keyword1">NULL</span> </span> )</code>
 
 		<div class="description short">
 			
@@ -1010,7 +1020,7 @@ errors.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#_Equals">#</a>
-		<code><a href="source-class-CQueryStatement.html#694-729" title="Go to source code">Equals</a>( <span>mixed <var>$theSubject</var></span>, <span>mixed <var>$theObject</var></span>, <span>string <var>$theType</var> = <span class="php-keyword1">NULL</span> </span> )</code>
+		<code><a href="source-class-CQueryStatement.html#700-735" title="Go to source code">Equals</a>( <span>mixed <var>$theSubject</var></span>, <span>mixed <var>$theObject</var></span>, <span>string <var>$theType</var> = <span class="php-keyword1">NULL</span> </span> )</code>
 
 		<div class="description short">
 			
@@ -1072,7 +1082,7 @@ errors.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#_NotEquals">#</a>
-		<code><a href="source-class-CQueryStatement.html#736-771" title="Go to source code">NotEquals</a>( <span>mixed <var>$theSubject</var></span>, <span>mixed <var>$theObject</var></span>, <span>string <var>$theType</var> = <span class="php-keyword1">NULL</span> </span> )</code>
+		<code><a href="source-class-CQueryStatement.html#742-777" title="Go to source code">NotEquals</a>( <span>mixed <var>$theSubject</var></span>, <span>mixed <var>$theObject</var></span>, <span>string <var>$theType</var> = <span class="php-keyword1">NULL</span> </span> )</code>
 
 		<div class="description short">
 			
@@ -1135,7 +1145,7 @@ errors.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#_Like">#</a>
-		<code><a href="source-class-CQueryStatement.html#778-811" title="Go to source code">Like</a>( <span>mixed <var>$theSubject</var></span>, <span>mixed <var>$theObject</var></span> )</code>
+		<code><a href="source-class-CQueryStatement.html#784-817" title="Go to source code">Like</a>( <span>mixed <var>$theSubject</var></span>, <span>mixed <var>$theObject</var></span> )</code>
 
 		<div class="description short">
 			
@@ -1197,7 +1207,7 @@ errors.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#_NotLike">#</a>
-		<code><a href="source-class-CQueryStatement.html#818-848" title="Go to source code">NotLike</a>( <span>mixed <var>$theSubject</var></span>, <span>mixed <var>$theObject</var></span> )</code>
+		<code><a href="source-class-CQueryStatement.html#824-854" title="Go to source code">NotLike</a>( <span>mixed <var>$theSubject</var></span>, <span>mixed <var>$theObject</var></span> )</code>
 
 		<div class="description short">
 			
@@ -1256,7 +1266,7 @@ errors.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#_Prefix">#</a>
-		<code><a href="source-class-CQueryStatement.html#855-887" title="Go to source code">Prefix</a>( <span>mixed <var>$theSubject</var></span>, <span>mixed <var>$theObject</var></span> )</code>
+		<code><a href="source-class-CQueryStatement.html#861-893" title="Go to source code">Prefix</a>( <span>mixed <var>$theSubject</var></span>, <span>mixed <var>$theObject</var></span> )</code>
 
 		<div class="description short">
 			
@@ -1317,7 +1327,7 @@ errors.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#_PrefixNoCase">#</a>
-		<code><a href="source-class-CQueryStatement.html#894-927" title="Go to source code">PrefixNoCase</a>( <span>mixed <var>$theSubject</var></span>, <span>mixed <var>$theObject</var></span> )</code>
+		<code><a href="source-class-CQueryStatement.html#900-933" title="Go to source code">PrefixNoCase</a>( <span>mixed <var>$theSubject</var></span>, <span>mixed <var>$theObject</var></span> )</code>
 
 		<div class="description short">
 			
@@ -1379,7 +1389,7 @@ errors.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#_Contains">#</a>
-		<code><a href="source-class-CQueryStatement.html#934-966" title="Go to source code">Contains</a>( <span>mixed <var>$theSubject</var></span>, <span>mixed <var>$theObject</var></span> )</code>
+		<code><a href="source-class-CQueryStatement.html#940-972" title="Go to source code">Contains</a>( <span>mixed <var>$theSubject</var></span>, <span>mixed <var>$theObject</var></span> )</code>
 
 		<div class="description short">
 			
@@ -1440,7 +1450,7 @@ errors.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#_ContainsNoCase">#</a>
-		<code><a href="source-class-CQueryStatement.html#973-1006" title="Go to source code">ContainsNoCase</a>( <span>mixed <var>$theSubject</var></span>, <span>mixed <var>$theObject</var></span> )</code>
+		<code><a href="source-class-CQueryStatement.html#979-1012" title="Go to source code">ContainsNoCase</a>( <span>mixed <var>$theSubject</var></span>, <span>mixed <var>$theObject</var></span> )</code>
 
 		<div class="description short">
 			
@@ -1502,7 +1512,7 @@ errors.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#_Suffix">#</a>
-		<code><a href="source-class-CQueryStatement.html#1013-1045" title="Go to source code">Suffix</a>( <span>mixed <var>$theSubject</var></span>, <span>mixed <var>$theObject</var></span> )</code>
+		<code><a href="source-class-CQueryStatement.html#1019-1051" title="Go to source code">Suffix</a>( <span>mixed <var>$theSubject</var></span>, <span>mixed <var>$theObject</var></span> )</code>
 
 		<div class="description short">
 			
@@ -1563,7 +1573,7 @@ errors.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#_SuffixNoCase">#</a>
-		<code><a href="source-class-CQueryStatement.html#1052-1085" title="Go to source code">SuffixNoCase</a>( <span>mixed <var>$theSubject</var></span>, <span>mixed <var>$theObject</var></span> )</code>
+		<code><a href="source-class-CQueryStatement.html#1058-1091" title="Go to source code">SuffixNoCase</a>( <span>mixed <var>$theSubject</var></span>, <span>mixed <var>$theObject</var></span> )</code>
 
 		<div class="description short">
 			
@@ -1625,7 +1635,7 @@ errors.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#_Regex">#</a>
-		<code><a href="source-class-CQueryStatement.html#1092-1124" title="Go to source code">Regex</a>( <span>mixed <var>$theSubject</var></span>, <span>mixed <var>$theObject</var></span> )</code>
+		<code><a href="source-class-CQueryStatement.html#1098-1130" title="Go to source code">Regex</a>( <span>mixed <var>$theSubject</var></span>, <span>mixed <var>$theObject</var></span> )</code>
 
 		<div class="description short">
 			
@@ -1686,7 +1696,7 @@ errors.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#_Less">#</a>
-		<code><a href="source-class-CQueryStatement.html#1131-1165" title="Go to source code">Less</a>( <span>mixed <var>$theSubject</var></span>, <span>mixed <var>$theObject</var></span>, <span>string <var>$theType</var> = <span class="php-keyword1">NULL</span> </span> )</code>
+		<code><a href="source-class-CQueryStatement.html#1137-1171" title="Go to source code">Less</a>( <span>mixed <var>$theSubject</var></span>, <span>mixed <var>$theObject</var></span>, <span>string <var>$theType</var> = <span class="php-keyword1">NULL</span> </span> )</code>
 
 		<div class="description short">
 			
@@ -1748,7 +1758,7 @@ errors.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#_LessEqual">#</a>
-		<code><a href="source-class-CQueryStatement.html#1172-1206" title="Go to source code">LessEqual</a>( <span>mixed <var>$theSubject</var></span>, <span>mixed <var>$theObject</var></span>, <span>string <var>$theType</var> = <span class="php-keyword1">NULL</span> </span> )</code>
+		<code><a href="source-class-CQueryStatement.html#1178-1212" title="Go to source code">LessEqual</a>( <span>mixed <var>$theSubject</var></span>, <span>mixed <var>$theObject</var></span>, <span>string <var>$theType</var> = <span class="php-keyword1">NULL</span> </span> )</code>
 
 		<div class="description short">
 			
@@ -1810,7 +1820,7 @@ errors.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#_Great">#</a>
-		<code><a href="source-class-CQueryStatement.html#1213-1247" title="Go to source code">Great</a>( <span>mixed <var>$theSubject</var></span>, <span>mixed <var>$theObject</var></span>, <span>string <var>$theType</var> = <span class="php-keyword1">NULL</span> </span> )</code>
+		<code><a href="source-class-CQueryStatement.html#1219-1253" title="Go to source code">Great</a>( <span>mixed <var>$theSubject</var></span>, <span>mixed <var>$theObject</var></span>, <span>string <var>$theType</var> = <span class="php-keyword1">NULL</span> </span> )</code>
 
 		<div class="description short">
 			
@@ -1872,7 +1882,7 @@ errors.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#_GreatEqual">#</a>
-		<code><a href="source-class-CQueryStatement.html#1254-1288" title="Go to source code">GreatEqual</a>( <span>mixed <var>$theSubject</var></span>, <span>mixed <var>$theObject</var></span>, <span>string <var>$theType</var> = <span class="php-keyword1">NULL</span> </span> )</code>
+		<code><a href="source-class-CQueryStatement.html#1260-1294" title="Go to source code">GreatEqual</a>( <span>mixed <var>$theSubject</var></span>, <span>mixed <var>$theObject</var></span>, <span>string <var>$theType</var> = <span class="php-keyword1">NULL</span> </span> )</code>
 
 		<div class="description short">
 			
@@ -1934,7 +1944,7 @@ errors.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#_RangeInclusive">#</a>
-		<code><a href="source-class-CQueryStatement.html#1295-1334" title="Go to source code">RangeInclusive</a>( <span>mixed <var>$theSubject</var></span>, <span>mixed <var>$theBound1</var></span>, <span>mixed <var>$theBound2</var></span>, <span>string <var>$theType</var> = <span class="php-keyword1">NULL</span> </span> )</code>
+		<code><a href="source-class-CQueryStatement.html#1301-1340" title="Go to source code">RangeInclusive</a>( <span>mixed <var>$theSubject</var></span>, <span>mixed <var>$theBound1</var></span>, <span>mixed <var>$theBound2</var></span>, <span>string <var>$theType</var> = <span class="php-keyword1">NULL</span> </span> )</code>
 
 		<div class="description short">
 			
@@ -2002,7 +2012,7 @@ errors.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#_RangeExclusive">#</a>
-		<code><a href="source-class-CQueryStatement.html#1341-1380" title="Go to source code">RangeExclusive</a>( <span>mixed <var>$theSubject</var></span>, <span>mixed <var>$theBound1</var></span>, <span>mixed <var>$theBound2</var></span>, <span>string <var>$theType</var> = <span class="php-keyword1">NULL</span> </span> )</code>
+		<code><a href="source-class-CQueryStatement.html#1347-1386" title="Go to source code">RangeExclusive</a>( <span>mixed <var>$theSubject</var></span>, <span>mixed <var>$theBound1</var></span>, <span>mixed <var>$theBound2</var></span>, <span>string <var>$theType</var> = <span class="php-keyword1">NULL</span> </span> )</code>
 
 		<div class="description short">
 			
@@ -2070,7 +2080,7 @@ errors.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#_Missing">#</a>
-		<code><a href="source-class-CQueryStatement.html#1387-1412" title="Go to source code">Missing</a>( <span>mixed <var>$theSubject</var></span> )</code>
+		<code><a href="source-class-CQueryStatement.html#1393-1418" title="Go to source code">Missing</a>( <span>mixed <var>$theSubject</var></span> )</code>
 
 		<div class="description short">
 			
@@ -2125,7 +2135,7 @@ errors.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#_Exists">#</a>
-		<code><a href="source-class-CQueryStatement.html#1419-1444" title="Go to source code">Exists</a>( <span>mixed <var>$theSubject</var></span> )</code>
+		<code><a href="source-class-CQueryStatement.html#1425-1450" title="Go to source code">Exists</a>( <span>mixed <var>$theSubject</var></span> )</code>
 
 		<div class="description short">
 			
@@ -2180,7 +2190,7 @@ errors.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#_Member">#</a>
-		<code><a href="source-class-CQueryStatement.html#1451-1506" title="Go to source code">Member</a>( <span>mixed <var>$theSubject</var></span>, <span>mixed <var>$theObject</var></span>, <span>string <var>$theType</var> = <span class="php-keyword1">NULL</span> </span> )</code>
+		<code><a href="source-class-CQueryStatement.html#1457-1512" title="Go to source code">Member</a>( <span>mixed <var>$theSubject</var></span>, <span>mixed <var>$theObject</var></span>, <span>string <var>$theType</var> = <span class="php-keyword1">NULL</span> </span> )</code>
 
 		<div class="description short">
 			h4&gt;Create a membership statement
@@ -2245,7 +2255,7 @@ element data type.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#_NotMember">#</a>
-		<code><a href="source-class-CQueryStatement.html#1513-1568" title="Go to source code">NotMember</a>( <span>mixed <var>$theSubject</var></span>, <span>mixed <var>$theObject</var></span>, <span>string <var>$theType</var> = <span class="php-keyword1">NULL</span> </span> )</code>
+		<code><a href="source-class-CQueryStatement.html#1519-1574" title="Go to source code">NotMember</a>( <span>mixed <var>$theSubject</var></span>, <span>mixed <var>$theObject</var></span>, <span>string <var>$theType</var> = <span class="php-keyword1">NULL</span> </span> )</code>
 
 		<div class="description short">
 			
@@ -2314,7 +2324,7 @@ element data type.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#_All">#</a>
-		<code><a href="source-class-CQueryStatement.html#1575-1630" title="Go to source code">All</a>( <span>mixed <var>$theSubject</var></span>, <span>mixed <var>$theObject</var></span>, <span>string <var>$theType</var> = <span class="php-keyword1">NULL</span> </span> )</code>
+		<code><a href="source-class-CQueryStatement.html#1581-1636" title="Go to source code">All</a>( <span>mixed <var>$theSubject</var></span>, <span>mixed <var>$theObject</var></span>, <span>string <var>$theType</var> = <span class="php-keyword1">NULL</span> </span> )</code>
 
 		<div class="description short">
 			
@@ -2383,7 +2393,7 @@ element data type.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#_NotAll">#</a>
-		<code><a href="source-class-CQueryStatement.html#1637-1693" title="Go to source code">NotAll</a>( <span>mixed <var>$theSubject</var></span>, <span>mixed <var>$theObject</var></span>, <span>string <var>$theType</var> = <span class="php-keyword1">NULL</span> </span> )</code>
+		<code><a href="source-class-CQueryStatement.html#1643-1699" title="Go to source code">NotAll</a>( <span>mixed <var>$theSubject</var></span>, <span>mixed <var>$theObject</var></span>, <span>string <var>$theType</var> = <span class="php-keyword1">NULL</span> </span> )</code>
 
 		<div class="description short">
 			
@@ -2453,7 +2463,7 @@ element data type.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#_Expression">#</a>
-		<code><a href="source-class-CQueryStatement.html#1700-1732" title="Go to source code">Expression</a>( <span>mixed <var>$theSubject</var></span>, <span>mixed <var>$theObject</var></span> )</code>
+		<code><a href="source-class-CQueryStatement.html#1706-1738" title="Go to source code">Expression</a>( <span>mixed <var>$theSubject</var></span>, <span>mixed <var>$theObject</var></span> )</code>
 
 		<div class="description short">
 			
@@ -2517,7 +2527,7 @@ errors.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#_HandleDataType">#</a>
-		<code><a href="source-class-CQueryStatement.html#1748-1828" title="Go to source code">HandleDataType</a>( <span>reference <var>&amp; $theType</var></span>, <span>reference <var>&amp; $theValue</var></span> )</code>
+		<code><a href="source-class-CQueryStatement.html#1754-1834" title="Go to source code">HandleDataType</a>( <span>reference <var>&amp; $theType</var></span>, <span>reference <var>&amp; $theValue</var></span> )</code>
 
 		<div class="description short">
 			

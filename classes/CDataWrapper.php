@@ -76,6 +76,12 @@ require_once( kPATH_MYWRAPPER_LIBRARY_CLASS."/CDataWrapper.inc.php" );
  *			of fields upon which to sort the results, the array element indexes represent
  *			the field references, the values are provided as numbers where negative values
  *			represent a descending sense and zero or positive values ascending.
+ *		<li><i>{@link kAPI_OBJECT}</i>: <i>Object</i>, this array parameter represents the
+ *			object that is to be inserted or updated in a container.
+ *		<li><i>{@link kAPI_CLASS}</i>: <i>Class</i>, this string parameter represents the
+ *			class of the {@link kAPI_OBJECT} object parameter, if provided, it is assumed
+ *			that the object provided in the {@link kAPI_OBJECT} parameter is an instance of
+ *			that class.
  *	 </ul>
  *	<li><i>Response parameters</i>: These parameters refer to the parameters that the
  *		service is expected to return:
@@ -94,6 +100,11 @@ require_once( kPATH_MYWRAPPER_LIBRARY_CLASS."/CDataWrapper.inc.php" );
  *		 <ul>
  *			<li><i>{@link kAPI_AFFECTED_COUNT}</i>: Affected count (output): the total
  *				number of elements affected by the operation.
+ *			<li><i>{@link kTERM_STATUS_IDENTIFIER}</i>: Object identifier (output): this
+ *				parameter will contain the native identifier, {@link kTAG_NID}, of the newly
+ *				created object when calling a {@link kAPI_OP_INSERT} operation. This is
+ *				especially useful when that attribute is computed, rather than explicitly
+ *				set beforehand.
  *		 </ul>
  *	 </ul>
  *	<li><i>Operations</i>: This class adds the following operations:
@@ -129,6 +140,83 @@ require_once( kPATH_MYWRAPPER_LIBRARY_CLASS."/CDataWrapper.inc.php" );
  *			<li><i>{@link kAPI_PAGE_LIMIT}</i>:This parameter is required or enforced, it
  *				represents the maximum number of elements that the query should return, the
  *				default value is {@link kDEFAULT_LIMIT}.
+ *			<li><i>{@link kAPI_PAGE_LIMIT}</i>:This parameter is required or enforced, it
+ *		 </ul>
+ *		<li><i>{@link kAPI_OP_MATCH}</i>: <i>Match</i>, this operation will return the first
+ *			record that matches the provided list of queries. The operation expects the
+ *			following parameters:
+ *		 <ul>
+ *			<li><i>{@link kAPI_FORMAT}</i>: This parameter is required to indicate how to
+ *				encode the response.
+ *			<li><i>{@link kAPI_DATABASE}</i>: This parameter is required to indicate the
+ *				working database.
+ *			<li><i>{@link kAPI_CONTAINER}</i>: This parameter is required to indicate the
+ *				working container.
+ *			<li><i>{@link kAPI_QUERY}</i>: This parameter is required and contains an array
+ *				of queries.
+ *			<li><i>{@link kAPI_SELECT}</i>: Select (optional), the list of fields to be
+ *				returned.
+ *		 </ul>
+ *		<li><i>{@link kAPI_OP_RESOLVE}</i>: <i>Resolve</i>, this operation will return the
+ *			object that matches the provided value. The operation expects the following
+ *			parameters:
+ *		 <ul>
+ *			<li><i>{@link kAPI_FORMAT}</i>: This parameter is required to indicate how to
+ *				encode the response.
+ *			<li><i>{@link kAPI_DATABASE}</i>: This parameter is required to indicate the
+ *				working database.
+ *			<li><i>{@link kAPI_CONTAINER}</i>: This parameter is required to indicate the
+ *				working container. Note that in some cases this parameter is not required,
+ *				in particular, when providing the {@link kAPI_CLASS} parameter, the
+ *				container might be implicit.
+ *			<li><i>{@link kAPI_OBJECT}</i>: This parameter is required and contains the
+ *				value to be matched.
+ *			<li><i>{@link kAPI_CLASS}</i>: This parameter is required, it represents the
+ *				class from which the <tt>Resolve()</tt> static method will be used.
+ *		 </ul>
+ *		<li><i>{@link kAPI_OP_INSERT}</i>: <i>Insert</i>, this operation will insert the
+ *			provided object into the database or container. The operation expects the
+ *			following parameters:
+ *		 <ul>
+ *			<li><i>{@link kAPI_FORMAT}</i>: This parameter is required to indicate how to
+ *				encode the response.
+ *			<li><i>{@link kAPI_DATABASE}</i>: This parameter is required to indicate the
+ *				working database.
+ *			<li><i>{@link kAPI_CONTAINER}</i>: This parameter is required to indicate the
+ *				working container. Note that in some cases this parameter is not required,
+ *				in particular, when providing the {@link kAPI_CLASS} parameter, the
+ *				container might be implicit.
+ *			<li><i>{@link kAPI_OBJECT}</i>: This parameter is required and contains an array
+ *				or corresponding to the new record.
+ *			<li><i>{@link kAPI_CLASS}</i>: If provided, this parameter indicates which
+ *				instance the object should be; if not provided, the {@link kAPI_CONTAINER}
+ *				parameter is required and the object will simply be added to the container.
+ *		 </ul>
+ *		<li><i>{@link kAPI_OP_DELETE}</i>: <i>Delete</i>, this operation will delete either
+ *			a selection of objects matching a query or one object matching a value. The
+ *			operation expects the following parameters:
+ *		 <ul>
+ *			<li><i>{@link kAPI_FORMAT}</i>: This parameter is required to indicate how to
+ *				encode the response.
+ *			<li><i>{@link kAPI_DATABASE}</i>: This parameter is required to indicate the
+ *				working database.
+ *			<li><i>{@link kAPI_CONTAINER}</i>: This parameter is required to indicate the
+ *				working container. Note that in some cases this parameter is not required,
+ *				in particular, when providing the {@link kAPI_CLASS} parameter, the
+ *				container might be implicit.
+ *			<li><i>{@link kAPI_QUERY}</i>: This parameter contains the query that selects
+ *				the items to be deleted.
+ *			<li><i>{@link kAPI_OBJECT}</i>: This parameter is required and contains the
+ *				value by which the object will be identified, some classes feature a
+ *				<i>Resolve()</i> method, in that case  this value will be handled by that
+ *				method, if not, the value is assumed to be the object0s {@link kTAG_NID}. If
+ *				this parameter is provided, the {@link kAPI_QUERY} parameter will be
+ *				ignored.
+ *			<li><i>{@link kAPI_CLASS}</i>: If provided, this parameter indicates to which
+ *				class the object to be deleted belongs to; if not provided, the
+ *				{@link kAPI_CONTAINER} parameter is required and the object is assumed to be
+ *				the object's {@link kTAG_NID}. This parameter is ignored if the
+ *				{@link kAPI_OBJECT} parameter is missing.
  *		 </ul>
  *	 </ul>
  * </ul>
@@ -148,7 +236,8 @@ class CDataWrapper extends CWrapper
 	 */
 	 static $sParameterList = array( kAPI_DATABASE, kAPI_CONTAINER,
 	 								 kAPI_PAGE_START, kAPI_PAGE_LIMIT,
-	 								 kAPI_QUERY, kAPI_SELECT, kAPI_SORT );
+	 								 kAPI_QUERY, kAPI_SELECT, kAPI_SORT,
+	 								 kAPI_CLASS, kAPI_OBJECT );
 
 		
 
@@ -184,6 +273,8 @@ class CDataWrapper extends CWrapper
 	 * @uses _ParseQuery()
 	 * @uses _ParseSelect()
 	 * @uses _ParseSort()
+	 * @uses _ParseClass()
+	 * @uses _ParseObject()
 	 */
 	protected function _ParseRequest()
 	{
@@ -201,6 +292,8 @@ class CDataWrapper extends CWrapper
 		$this->_ParseQuery();
 		$this->_ParseSelect();
 		$this->_ParseSort();
+		$this->_ParseClass();
+		$this->_ParseObject();
 	
 	} // _ParseRequest.
 
@@ -224,6 +317,8 @@ class CDataWrapper extends CWrapper
 	 * @uses _FormatQuery()
 	 * @uses _FormatSelect()
 	 * @uses _FormatSort()
+	 * @uses _FormatClass()
+	 * @uses _FormatObject()
 	 */
 	protected function _FormatRequest()
 	{
@@ -241,6 +336,8 @@ class CDataWrapper extends CWrapper
 		$this->_FormatQuery();
 		$this->_FormatSelect();
 		$this->_FormatSort();
+		$this->_FormatClass();
+		$this->_FormatObject();
 	
 	} // _FormatRequest.
 
@@ -266,6 +363,8 @@ class CDataWrapper extends CWrapper
 	 * @uses _ValidateQuery()
 	 * @uses _ValidateSelect()
 	 * @uses _ValidateSort()
+	 * @uses _ValidateClass()
+	 * @uses _ValidateObject()
 	 */
 	protected function _ValidateRequest()
 	{
@@ -283,6 +382,8 @@ class CDataWrapper extends CWrapper
 		$this->_ValidateQuery();
 		$this->_ValidateSelect();
 		$this->_ValidateSort();
+		$this->_ValidateClass();
+		$this->_ValidateObject();
 	
 	} // _ValidateRequest.
 
@@ -578,6 +679,66 @@ class CDataWrapper extends CWrapper
 	
 	} // _ParseSort.
 
+	 
+	/*===================================================================================
+	 *	_ParseClass																		*
+	 *==================================================================================*/
+
+	/**
+	 * Parse object.
+	 *
+	 * This method will copy the class to the request block.
+	 *
+	 * @access protected
+	 *
+	 * @uses _OffsetManage()
+	 *
+	 * @see kAPI_CLASS kAPI_REQUEST
+	 */
+	protected function _ParseClass()
+	{
+		//
+		// Handle query.
+		//
+		if( array_key_exists( kAPI_CLASS, $_REQUEST ) )
+		{
+			if( $this->offsetExists( kAPI_REQUEST ) )
+				$this->_OffsetManage
+					( kAPI_REQUEST, kAPI_CLASS, $_REQUEST[ kAPI_CLASS ] );
+		}
+	
+	} // _ParseClass.
+
+	 
+	/*===================================================================================
+	 *	_ParseObject																	*
+	 *==================================================================================*/
+
+	/**
+	 * Parse object.
+	 *
+	 * This method will copy the object to the request block.
+	 *
+	 * @access protected
+	 *
+	 * @uses _OffsetManage()
+	 *
+	 * @see kAPI_OBJECT kAPI_REQUEST
+	 */
+	protected function _ParseObject()
+	{
+		//
+		// Handle query.
+		//
+		if( array_key_exists( kAPI_OBJECT, $_REQUEST ) )
+		{
+			if( $this->offsetExists( kAPI_REQUEST ) )
+				$this->_OffsetManage
+					( kAPI_REQUEST, kAPI_OBJECT, $_REQUEST[ kAPI_OBJECT ] );
+		}
+	
+	} // _ParseObject.
+
 		
 
 /*=======================================================================================
@@ -823,6 +984,38 @@ class CDataWrapper extends CWrapper
 	
 	} // _FormatSort.
 
+	 
+	/*===================================================================================
+	 *	_FormatClass																	*
+	 *==================================================================================*/
+
+	/**
+	 * Format class parameter.
+	 *
+	 * This method does nothing in this class.
+	 *
+	 * @access protected
+	 *
+	 * @see kAPI_CLASS
+	 */
+	protected function _FormatClass()													   {}
+
+	 
+	/*===================================================================================
+	 *	_FormatObject																	*
+	 *==================================================================================*/
+
+	/**
+	 * Format object parameter.
+	 *
+	 * This method does nothing in this class.
+	 *
+	 * @access protected
+	 *
+	 * @see kAPI_OBJECT
+	 */
+	protected function _FormatObject()													   {}
+
 		
 
 /*=======================================================================================
@@ -902,6 +1095,192 @@ class CDataWrapper extends CWrapper
 					
 				//
 				// Check for format.
+				//
+				if( ! array_key_exists( kAPI_FORMAT, $_REQUEST ) )
+					throw new CException
+						( "Missing format parameter",
+						  kERROR_MISSING,
+						  kSTATUS_ERROR,
+						  array( 'Operation' => $parameter ) );					// !@! ==>
+				
+				break;
+			
+			//
+			// Insert operations.
+			//
+			case kAPI_OP_INSERT:
+				//
+				// Check for object.
+				//
+				if( ! array_key_exists( kAPI_OBJECT, $_REQUEST ) )
+					throw new CException
+						( "Missing object parameter",
+						  kERROR_MISSING,
+						  kSTATUS_ERROR,
+						  array( 'Operation' => $parameter ) );					// !@! ==>
+				
+				//
+				// Check for database.
+				//
+				if( ! array_key_exists( kAPI_DATABASE, $_REQUEST ) )
+					throw new CException
+						( "Missing database parameter",
+						  kERROR_MISSING,
+						  kSTATUS_ERROR,
+						  array( 'Operation' => $parameter ) );					// !@! ==>
+					
+				//
+				// Check for format.
+				//
+				if( ! array_key_exists( kAPI_FORMAT, $_REQUEST ) )
+					throw new CException
+						( "Missing format parameter",
+						  kERROR_MISSING,
+						  kSTATUS_ERROR,
+						  array( 'Operation' => $parameter ) );					// !@! ==>
+				
+				break;
+			
+			//
+			// Delete operations.
+			//
+			case kAPI_OP_DELETE:
+				//
+				// Handle query.
+				//
+				if( array_key_exists( kAPI_QUERY, $_REQUEST ) )
+				{
+					//
+					// Remove class.
+					//
+					if( array_key_exists( kAPI_CLASS, $_REQUEST ) )
+						unset( $_REQUEST[ kAPI_CLASS ] );
+				
+					//
+					// Remove object.
+					//
+					if( array_key_exists( kAPI_OBJECT, $_REQUEST ) )
+						unset( $_REQUEST[ kAPI_OBJECT ] );
+				
+				} // Delete selection.
+				
+				//
+				// Delete object.
+				//
+				else
+				{
+					//
+					// Handle delete container.
+					//
+					if( (! array_key_exists( kAPI_CLASS, $_REQUEST ))
+					 && (! array_key_exists( kAPI_OBJECT, $_REQUEST )) )
+					{
+						//
+						// Check for container.
+						//
+						if( ! array_key_exists( kAPI_CONTAINER, $_REQUEST ) )
+							throw new CException
+								( "Missing container parameter",
+								  kERROR_MISSING,
+								  kSTATUS_ERROR,
+								  array( 'Operation' => $parameter ) );			// !@! ==>
+					
+					} // Clear container.
+					
+					//
+					// Check object.
+					//
+					elseif( array_key_exists( kAPI_CLASS, $_REQUEST ) )
+					{
+						//
+						// Check class.
+						//
+						if( ! array_key_exists( kAPI_OBJECT, $_REQUEST ) )
+							throw new CException
+								( "Missing object parameter",
+								  kERROR_MISSING,
+								  kSTATUS_ERROR,
+								  array( 'Operation' => $parameter ) );			// !@! ==>
+					
+					} // Provided class.
+					
+					//
+					// Check class.
+					//
+					elseif( array_key_exists( kAPI_OBJECT, $_REQUEST ) )
+					{
+						//
+						// Check class.
+						//
+						if( ! array_key_exists( kAPI_CLASS, $_REQUEST ) )
+							throw new CException
+								( "Missing class parameter",
+								  kERROR_MISSING,
+								  kSTATUS_ERROR,
+								  array( 'Operation' => $parameter ) );			// !@! ==>
+					
+					} // Provided object.
+				
+				} // Delete object.
+				
+				//
+				// Check for database.
+				//
+				if( ! array_key_exists( kAPI_DATABASE, $_REQUEST ) )
+					throw new CException
+						( "Missing database parameter",
+						  kERROR_MISSING,
+						  kSTATUS_ERROR,
+						  array( 'Operation' => $parameter ) );					// !@! ==>
+					
+				//
+				// Check for format.
+				//
+				if( ! array_key_exists( kAPI_FORMAT, $_REQUEST ) )
+					throw new CException
+						( "Missing format parameter",
+						  kERROR_MISSING,
+						  kSTATUS_ERROR,
+						  array( 'Operation' => $parameter ) );					// !@! ==>
+				
+				break;
+			
+			//
+			// Resolve operations.
+			//
+			case kAPI_OP_RESOLVE:
+				//
+				// Check class.
+				//
+				if( ! array_key_exists( kAPI_CLASS, $_REQUEST ) )
+					throw new CException
+						( "Missing class parameter",
+						  kERROR_MISSING,
+						  kSTATUS_ERROR,
+						  array( 'Operation' => $parameter ) );			// !@! ==>
+				
+				//
+				// Check object.
+				//
+				if( ! array_key_exists( kAPI_OBJECT, $_REQUEST ) )
+					throw new CException
+						( "Missing object parameter",
+						  kERROR_MISSING,
+						  kSTATUS_ERROR,
+						  array( 'Operation' => $parameter ) );			// !@! ==>
+			
+				//
+				// Check database.
+				//
+				if( ! array_key_exists( kAPI_DATABASE, $_REQUEST ) )
+					throw new CException
+						( "Missing database parameter",
+						  kERROR_MISSING,
+						  kSTATUS_ERROR,
+						  array( 'Operation' => $parameter ) );					// !@! ==>
+					
+				//
+				// Check format.
 				//
 				if( ! array_key_exists( kAPI_FORMAT, $_REQUEST ) )
 					throw new CException
@@ -1313,6 +1692,197 @@ class CDataWrapper extends CWrapper
 	
 	} // _ValidateSort.
 
+	 
+	/*===================================================================================
+	 *	_ValidateClass																	*
+	 *==================================================================================*/
+
+	/**
+	 * Validate class parameter.
+	 *
+	 * The duty of this method is to validate the class parameter, in this class we check
+	 * whether the class exists, then we check if the class derives from
+	 * {@link CPersistentObject} and, finally, in the event that the {@link kAPI_CONTAINER}
+	 * parameter was not provided, we check if the class supports the
+	 * <tt>DefaultContainer</tt> static method.
+	 *
+	 * @access protected
+	 *
+	 * @see kAPI_CLASS
+	 */
+	protected function _ValidateClass()
+	{
+		//
+		// Check parameter.
+		//
+		if( array_key_exists( kAPI_CLASS, $_REQUEST ) )
+		{
+			//
+			// Check if class exists.
+			//
+			if( class_exists( $_REQUEST[ kAPI_CLASS ] ) )
+			{
+				//
+				// Check if class is persistent.
+				//
+				if( ! is_subclass_of( $_REQUEST[ kAPI_CLASS ], 'CPersistentObject' ) )
+					throw new CException
+						( "Invalid class, it does not support persistence",
+						  kERROR_PARAMETER,
+						  kSTATUS_ERROR,
+						  array( 'Class'
+						  			=> gettype( $_REQUEST[ kAPI_CLASS ] ) ) );	// !@! ==>
+				
+				//
+				// Check if container was provided.
+				//
+				if( ! array_key_exists( kAPI_CONTAINER, $_REQUEST ) )
+				{
+					//
+					// Check if default container exists.
+					//
+					if( ! method_exists( $_REQUEST[ kAPI_CLASS ], 'DefaultContainer' ) )
+						throw new CException
+							( "Class requires container to be provided",
+							  kERROR_PARAMETER,
+							  kSTATUS_ERROR,
+							  array( 'Class'
+							  	=> gettype( $_REQUEST[ kAPI_CLASS ] ) ) );		// !@! ==>
+					
+					//
+					// Set container.
+					//
+					$_REQUEST[ kAPI_CONTAINER ]
+						= $_REQUEST[ kAPI_CLASS ]::DefaultContainer(
+							$_REQUEST[ kAPI_DATABASE ] );
+				
+				} // Container not provided.
+				
+				//
+				// Perform custom checks.
+				//
+				switch( $_REQUEST[ kAPI_OPERATION ] )
+				{
+					//
+					// Check if object can be resolved.
+					//
+					case kAPI_OP_RESOLVE:
+					case kAPI_OP_DELETE:
+						if( ! method_exists( $_REQUEST[ kAPI_CLASS ], 'Resolve' ) )
+							throw new CException
+								( "Object cannot be resolved by class",
+								  kERROR_PARAMETER,
+								  kSTATUS_ERROR,
+								  array( 'Class'
+									=> gettype( $_REQUEST[ kAPI_CLASS ] ) ) );	// !@! ==>
+						break;
+				}
+			
+			} // Class exists.
+			
+			else
+				throw new CException
+					( "Unsupported class",
+					  kERROR_PARAMETER,
+					  kSTATUS_ERROR,
+					  array( 'Class' => gettype( $_REQUEST[ kAPI_CLASS ] ) ) );	// !@! ==>
+		
+		} // Provided query selection.
+	
+	} // _ValidateClass.
+
+	 
+	/*===================================================================================
+	 *	_ValidateObject																	*
+	 *==================================================================================*/
+
+	/**
+	 * Validate object parameter.
+	 *
+	 * The duty of this method is to validate the object parameter, in this class we assert
+	 * the value to be an array, and we instantiate the correct class if the provided.
+	 *
+	 * @access protected
+	 *
+	 * @see kAPI_OBJECT kAPI_CLASS
+	 */
+	protected function _ValidateObject()
+	{
+		//
+		// Check parameter.
+		//
+		if( array_key_exists( kAPI_OBJECT, $_REQUEST ) )
+		{
+			//
+			// Parse by operation.
+			//
+			switch( $_REQUEST[ kAPI_OPERATION ] )
+			{
+				//
+				// Writing requires an object:
+				// we assume an array does it.
+				//
+				case kAPI_OP_INSERT:
+					//
+					// Check object type.
+					//
+					if( ! is_array( $_REQUEST[ kAPI_OBJECT ] ) )
+						throw new CException
+							( "Unable to format object: "
+							."invalid object data type for current operation",
+							  kERROR_PARAMETER,
+							  kSTATUS_ERROR,
+							  array( 'Operation' => $_REQUEST[ kAPI_OPERATION ],
+									 'Type' => gettype(
+									 			$_REQUEST[ kAPI_OBJECT ] ) ) );	// !@! ==>
+					//
+					// Unserialise standard data types.
+					//
+					$_REQUEST[ kAPI_CONTAINER ]
+						->UnserialiseObject( $_REQUEST[ kAPI_OBJECT ] );
+		
+					//
+					// Instantiate correct object.
+					//
+					if( array_key_exists( kAPI_CLASS, $_REQUEST ) )
+						$_REQUEST[ kAPI_OBJECT ]
+							= new $_REQUEST[ kAPI_CLASS ](
+								$_REQUEST[ kAPI_OBJECT ] );
+								
+					break;
+					
+				//
+				// Resolve object.
+				//
+				case kAPI_OP_RESOLVE:
+				case kAPI_OP_DELETE:
+					//
+					// Handle object delete.
+					//
+					if( array_key_exists( kAPI_OBJECT, $_REQUEST ) )
+					{
+						//
+						// Unserialise standard data types.
+						//
+						$_REQUEST[ kAPI_CONTAINER ]
+							->UnserialiseData( $_REQUEST[ kAPI_OBJECT ] );
+					
+						//
+						// Resolve object.
+						//
+						$_REQUEST[ kAPI_OBJECT ]
+							= $_REQUEST[ kAPI_CLASS ]::Resolve(
+								$_REQUEST[ kAPI_CONTAINER ], $_REQUEST[ kAPI_OBJECT ] );
+					
+					} // Object delete.
+								
+					break;
+			}
+		
+		} // Provided object.
+	
+	} // _ValidateObject.
+
 		
 
 /*=======================================================================================
@@ -1362,6 +1932,18 @@ class CDataWrapper extends CWrapper
 					$this->_Handle_Match();
 					break;
 	
+				case kAPI_OP_RESOLVE:
+					$this->_Handle_Resolve();
+					break;
+	
+				case kAPI_OP_INSERT:
+					$this->_Handle_Insert();
+					break;
+	
+				case kAPI_OP_DELETE:
+					$this->_Handle_Delete();
+					break;
+	
 				default:
 					parent::_HandleRequest();
 					break;
@@ -1403,6 +1985,24 @@ class CDataWrapper extends CWrapper
 		//
 		$theList[ kAPI_OP_GET ]
 			= 'Query: returns the list of elements that are matched by the provided query.';
+
+		//
+		// Add kAPI_OP_GET_ONE.
+		//
+		$theList[ kAPI_OP_GET_ONE ]
+			= 'Query: returns the first element that matches the provided query.';
+
+		//
+		// Add kAPI_OP_MATCH.
+		//
+		$theList[ kAPI_OP_MATCH ]
+			= 'Match: returns the first element that matches the provided list of queries.';
+
+		//
+		// Add kAPI_OP_INSERT.
+		//
+		$theList[ kAPI_OP_INSERT ]
+			= 'New user: inserts the provided user into the provided database';
 	
 	} // _Handle_ListOp.
 
@@ -1568,7 +2168,7 @@ class CDataWrapper extends CWrapper
 		//
 		$fields = ( array_key_exists( kAPI_SELECT, $_REQUEST ) )
 				? $_REQUEST[ kAPI_SELECT ]
-				: Array();
+				: NULL;
 		
 		//
 		// Query.
@@ -1682,6 +2282,169 @@ class CDataWrapper extends CWrapper
 		} // Iterating queries.
 	
 	} // _Handle_Match.
+
+	 
+	/*===================================================================================
+	 *	_Handle_Resolve																	*
+	 *==================================================================================*/
+
+	/**
+	 * Handle {@link kAPI_OP_RESOLVE} request.
+	 *
+	 * This method will handle the {@link kAPI_OP_RESOLVE} operation, which resolves an
+	 * object provided a reference value.
+	 *
+	 * @access protected
+	 */
+	protected function _Handle_Resolve()
+	{
+		//
+		// Handle found.
+		//
+		if( $_REQUEST[ kAPI_OBJECT ] instanceof CPersistentObject )
+		{
+			//
+			// Set affected count.
+			//
+			$this->_OffsetManage( kAPI_STATUS, kAPI_AFFECTED_COUNT, 1 );
+			
+			//
+			// Save object in response.
+			//
+			$this->offsetSet( kAPI_RESPONSE, $_REQUEST[ kAPI_OBJECT ] );
+		
+		} // Found.
+		
+		//
+		// Handle not found.
+		//
+		else
+			$this->_OffsetManage( kAPI_STATUS, kAPI_AFFECTED_COUNT, 0 );
+	
+	} // _Handle_Resolve.
+
+	 
+	/*===================================================================================
+	 *	_Handle_Insert																	*
+	 *==================================================================================*/
+
+	/**
+	 * Handle {@link kAPI_OP_INSERT} request.
+	 *
+	 * This method will handle the {@link kAPI_OP_INSERT} operation, which inserts the
+	 * provided object as an instance of the provided class into the provided database or
+	 * container.
+	 *
+	 * This service works in two different modes:
+	 *
+	 * <ul>
+	 *	<li><i>{@link kAPI_CLASS} provided</i>: In this case we let the object handle the
+	 *		operation, which will trigger all automatic procedures for that specific class.
+	 *	<li><i>{@link kAPI_CLASS} not provided</i>: In this case we simply add the provided
+	 *		document to the provided container as-is.
+	 * </ul>
+	 *
+	 * @access protected
+	 */
+	protected function _Handle_Insert()
+	{
+		//
+		// Handle object.
+		//
+		if( $_REQUEST[ kAPI_OBJECT ] instanceof CPersistentObject )
+			$identifier = ( array_key_exists( kAPI_CONTAINER, $_REQUEST ) )
+						? $_REQUEST[ kAPI_OBJECT ]->Insert( $_REQUEST[ kAPI_CONTAINER ] )
+						: $_REQUEST[ kAPI_OBJECT ]->Insert( $_REQUEST[ kAPI_DATABASE ] );
+		
+		//
+		// Handle document.
+		//
+		else
+			$identifier
+				= $_REQUEST[ kAPI_CONTAINER ]
+					->ManageObject(
+						$_REQUEST[ kAPI_OBJECT ], NULL, kFLAG_PERSIST_INSERT );
+		
+		//
+		// Serialise object.
+		//
+		CDataType::SerialiseObject( $identifier );
+		
+		//
+		// Set object identifier.
+		//
+		$this->_OffsetManage( kAPI_STATUS, kTERM_STATUS_IDENTIFIER, $identifier );
+	
+	} // _Handle_Insert.
+
+	 
+	/*===================================================================================
+	 *	_Handle_Delete																	*
+	 *==================================================================================*/
+
+	/**
+	 * Handle {@link kAPI_OP_DELETE} request.
+	 *
+	 * This method will handle the {@link kAPI_OP_DELETE} operation, which deletes objects
+	 * matching the provided query or value.
+	 *
+	 * @access protected
+	 */
+	protected function _Handle_Delete()
+	{
+		//
+		// Handle object delete.
+		//
+		if( array_key_exists( kAPI_OBJECT, $_REQUEST ) )
+		{
+			//
+			// Perform delete.
+			//
+			if( $_REQUEST[ kAPI_OBJECT ] instanceof CPersistentObject )
+				$status = ( array_key_exists( kAPI_CONTAINER, $_REQUEST ) )
+						? $_REQUEST[ kAPI_OBJECT ]->Delete( $_REQUEST[ kAPI_CONTAINER ] )
+						: $_REQUEST[ kAPI_OBJECT ]->Delete( $_REQUEST[ kAPI_DATABASE ] );
+			else
+				$status = FALSE;
+			
+			//
+			// Set result.
+			//
+			$count = ( $status )
+				   ? 1
+				   : 0;
+		
+		} // Provided matching value.
+		
+		//
+		// Handle selection delete.
+		//
+		else
+		{
+			//
+			// Handle query.
+			//
+			$query = ( array_key_exists( kAPI_QUERY, $_REQUEST ) )
+					? $_REQUEST[ kAPI_QUERY ]
+					: NULL;
+		
+			//
+			// Query.
+			//
+			$count
+				= $_REQUEST[ kAPI_CONTAINER ]
+					->Remove( $query );
+			if( $count === NULL )
+				$count = 0;
+		
+		} // Provided matching query.
+	
+		//
+		// Set affected count.
+		//
+		$this->_OffsetManage( kAPI_STATUS, kAPI_AFFECTED_COUNT, $count );
+	
+	} // _Handle_Delete.
 
 		
 

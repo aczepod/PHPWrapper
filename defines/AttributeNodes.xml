@@ -167,6 +167,15 @@
         </element>
     </node>
     
+    <!-- kTERM_STATUS_IDENTIFIER -->
+	<node class="COntologyMasterVertex">
+		<element variable="kTAG_TERM">:STATUS-IDENTIFIER</element>
+		<element variable="kTAG_CLASS">COntologyMasterVertex</element>
+		<element variable="kTAG_KIND">
+            <item>:KIND-FEATURE</item>
+        </element>
+    </node>
+    
     <!-- kTERM_STATUS_MESSAGE -->
 	<node class="COntologyMasterVertex">
 		<element variable="kTAG_TERM">:STATUS-MESSAGE</element>

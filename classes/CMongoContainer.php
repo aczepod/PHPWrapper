@@ -1046,6 +1046,64 @@ class CMongoContainer extends CContainer
 	
 	} // Query.
 
+	 
+	/*===================================================================================
+	 *	Remove																			*
+	 *==================================================================================*/
+
+	/**
+	 * <h4>Perform a deletion</h4>
+	 *
+	 * In this class we use the default Mongo WriteConcerns.
+	 *
+	 * @param array					$theQuery			Query.
+	 *
+	 * @access public
+	 * @return integer				Number of affected elements.
+	 */
+	public function Remove( $theQuery = NULL )
+	{
+		//
+		// Check if ready.
+		//
+		if( $this->_Ready() )
+		{
+			//
+			// Handle query.
+			//
+			if( $theQuery !== NULL )
+			{
+				//
+				// Cast query.
+				//
+				if( ! ($theQuery instanceof CMongoQuery) )
+					$theQuery = new CMongoQuery( $theQuery );
+				
+				//
+				// Convert to Mongo.
+				//
+				$theQuery = $theQuery->Export( $this );
+			}
+			else
+				$theQuery = Array();
+			
+			//
+			// Do it.
+			//
+			$status = $this->Connection()->remove( $theQuery );
+			
+			return ( $status[ 'n' ] )
+				 ? $status[ 'n' ]													// ==>
+				 : NULL;															// ==>
+		
+		} // Object is ready.
+		
+		throw new Exception
+			( "Unable to remove: container is not ready",
+			  kERROR_STATE );													// !@! ==>
+	
+	} // Remove.
+
 		
 
 /*=======================================================================================
