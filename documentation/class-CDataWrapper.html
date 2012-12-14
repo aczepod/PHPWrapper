@@ -7,7 +7,7 @@
 	<title>Class CDataWrapper | MyWrapper Reference Documentation</title>
 
 	<script type="text/javascript" src="resources/combined.js?3680114562"></script>
-	<script type="text/javascript" src="elementlist.js?1535324545"></script>
+	<script type="text/javascript" src="elementlist.js?1324799474"></script>
 	<link rel="stylesheet" type="text/css" media="all" href="resources/style.css?3505392360" />
 
 </head>
@@ -57,6 +57,8 @@
 				<li><a href="class-CDataWrapperClient.html">CDataWrapperClient</a></li>
 				<li><a href="class-COntologyWrapper.html">COntologyWrapper</a></li>
 				<li><a href="class-COntologyWrapperClient.html">COntologyWrapperClient</a></li>
+				<li><a href="class-CPortalWrapper.html">CPortalWrapper</a></li>
+				<li><a href="class-CPortalWrapperClient.html">CPortalWrapperClient</a></li>
 				<li><a href="class-CWrapper.html">CWrapper</a></li>
 				<li><a href="class-CWrapperClient.html">CWrapperClient</a></li>
 			</ul>
@@ -406,6 +408,10 @@ is abstract.</p>
 			<a href="class-COntologyWrapper.html">COntologyWrapper</a>
 	</div>
 
+	<div>
+		<h4>Indirect known subclasses</h4>
+			<a href="class-CPortalWrapper.html">CPortalWrapper</a>
+	</div>
 
 
 
@@ -420,7 +426,7 @@ is abstract.</p>
 				<b>Author:</b>
 				Milko A. Škofič &lt;<a
 href="mailto:m.skofic&#64;cgiar.org">m.skofic&#64;<!---->cgiar.org</a>&gt;<br />
-		<b>Located at</b> <a href="source-class-CDataWrapper.html#43-2530" title="Go to source code">CDataWrapper.php</a><br />
+		<b>Located at</b> <a href="source-class-CDataWrapper.html#43-2497" title="Go to source code">CDataWrapper.php</a><br />
 	</div>
 
 
@@ -466,13 +472,13 @@ derived classes custom elements.</p>
 
 				<h4>Uses</h4>
 				<div class="list">
+						<code><code><a href="class-CDataWrapper.html#__ParseClass">CDataWrapper::_ParseClass()</a></code></code> <br />
 						<code><code><a href="class-CDataWrapper.html#__ParseDatabase">CDataWrapper::_ParseDatabase()</a></code></code> <br />
 						<code><code><a href="class-CDataWrapper.html#__ParseContainer">CDataWrapper::_ParseContainer()</a></code></code> <br />
 						<code><code><a href="class-CDataWrapper.html#__ParsePaging">CDataWrapper::_ParsePaging()</a></code></code> <br />
 						<code><code><a href="class-CDataWrapper.html#__ParseQuery">CDataWrapper::_ParseQuery()</a></code></code> <br />
 						<code><code><a href="class-CDataWrapper.html#__ParseSelect">CDataWrapper::_ParseSelect()</a></code></code> <br />
 						<code><code><a href="class-CDataWrapper.html#__ParseSort">CDataWrapper::_ParseSort()</a></code></code> <br />
-						<code><code><a href="class-CDataWrapper.html#__ParseClass">CDataWrapper::_ParseClass()</a></code></code> <br />
 						<code><code><a href="class-CDataWrapper.html#__ParseObject">CDataWrapper::_ParseObject()</a></code></code> <br />
 				</div>
 
@@ -517,13 +523,13 @@ handled.</p>
 
 				<h4>Uses</h4>
 				<div class="list">
+						<code><code><a href="class-CDataWrapper.html#__FormatClass">CDataWrapper::_FormatClass()</a></code></code> <br />
 						<code><code><a href="class-CDataWrapper.html#__FormatDatabase">CDataWrapper::_FormatDatabase()</a></code></code> <br />
 						<code><code><a href="class-CDataWrapper.html#__FormatContainer">CDataWrapper::_FormatContainer()</a></code></code> <br />
 						<code><code><a href="class-CDataWrapper.html#__FormatPaging">CDataWrapper::_FormatPaging()</a></code></code> <br />
 						<code><code><a href="class-CDataWrapper.html#__FormatQuery">CDataWrapper::_FormatQuery()</a></code></code> <br />
 						<code><code><a href="class-CDataWrapper.html#__FormatSelect">CDataWrapper::_FormatSelect()</a></code></code> <br />
 						<code><code><a href="class-CDataWrapper.html#__FormatSort">CDataWrapper::_FormatSort()</a></code></code> <br />
-						<code><code><a href="class-CDataWrapper.html#__FormatClass">CDataWrapper::_FormatClass()</a></code></code> <br />
 						<code><code><a href="class-CDataWrapper.html#__FormatObject">CDataWrapper::_FormatObject()</a></code></code> <br />
 				</div>
 
@@ -569,13 +575,13 @@ codes (their presence is checked by the constructor.</p>
 
 				<h4>Uses</h4>
 				<div class="list">
+						<code><code><a href="class-CDataWrapper.html#__ValidateClass">CDataWrapper::_ValidateClass()</a></code></code> <br />
 						<code><code><a href="class-CDataWrapper.html#__ValidateDatabase">CDataWrapper::_ValidateDatabase()</a></code></code> <br />
 						<code><code><a href="class-CDataWrapper.html#__ValidateContainer">CDataWrapper::_ValidateContainer()</a></code></code> <br />
 						<code><code><a href="class-CDataWrapper.html#__ValidatePaging">CDataWrapper::_ValidatePaging()</a></code></code> <br />
 						<code><code><a href="class-CDataWrapper.html#__ValidateQuery">CDataWrapper::_ValidateQuery()</a></code></code> <br />
 						<code><code><a href="class-CDataWrapper.html#__ValidateSelect">CDataWrapper::_ValidateSelect()</a></code></code> <br />
 						<code><code><a href="class-CDataWrapper.html#__ValidateSort">CDataWrapper::_ValidateSort()</a></code></code> <br />
-						<code><code><a href="class-CDataWrapper.html#__ValidateClass">CDataWrapper::_ValidateClass()</a></code></code> <br />
 						<code><code><a href="class-CDataWrapper.html#__ValidateObject">CDataWrapper::_ValidateObject()</a></code></code> <br />
 				</div>
 
@@ -677,6 +683,53 @@ depending on the current operation:</p>
 		</div>
 		</div></td>
 	</tr>
+	<tr data-order="_ParseClass" id="__ParseClass">
+
+		<td class="attributes"><code>
+			 protected 
+			
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#__ParseClass">#</a>
+		<code><a href="source-class-CDataWrapper.html#497-520" title="Go to source code">_ParseClass</a>( )</code>
+
+		<div class="description short">
+			
+<p>Parse object.</p>
+
+		</div>
+
+		<div class="description detailed hidden">
+			
+<p>Parse object.</p>
+
+<p>This method will copy the class to the request block.</p>
+
+
+
+
+
+
+				<h4>See</h4>
+				<div class="list">
+						kAPI_CLASS kAPI_REQUEST<br />
+				</div>
+				<h4>Uses</h4>
+				<div class="list">
+						<code><code><a href="class-CWrapper.html#__OffsetManage">CWrapper::_OffsetManage()</a></code></code> <br />
+				</div>
+				<h4>Used by</h4>
+				<div class="list">
+						<code><code><a href="class-CDataWrapper.html#__ParseRequest">CDataWrapper::_ParseRequest()</a></code></code> <br />
+				</div>
+
+
+		</div>
+		</div></td>
+	</tr>
 	<tr data-order="_ParseDatabase" id="__ParseDatabase">
 
 		<td class="attributes"><code>
@@ -688,7 +741,7 @@ depending on the current operation:</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#__ParseDatabase">#</a>
-		<code><a href="source-class-CDataWrapper.html#497-520" title="Go to source code">_ParseDatabase</a>( )</code>
+		<code><a href="source-class-CDataWrapper.html#527-550" title="Go to source code">_ParseDatabase</a>( )</code>
 
 		<div class="description short">
 			
@@ -735,7 +788,7 @@ depending on the current operation:</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#__ParseContainer">#</a>
-		<code><a href="source-class-CDataWrapper.html#527-550" title="Go to source code">_ParseContainer</a>( )</code>
+		<code><a href="source-class-CDataWrapper.html#557-580" title="Go to source code">_ParseContainer</a>( )</code>
 
 		<div class="description short">
 			
@@ -782,7 +835,7 @@ depending on the current operation:</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#__ParsePaging">#</a>
-		<code><a href="source-class-CDataWrapper.html#557-590" title="Go to source code">_ParsePaging</a>( )</code>
+		<code><a href="source-class-CDataWrapper.html#587-620" title="Go to source code">_ParsePaging</a>( )</code>
 
 		<div class="description short">
 			
@@ -829,7 +882,7 @@ depending on the current operation:</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#__ParseQuery">#</a>
-		<code><a href="source-class-CDataWrapper.html#597-620" title="Go to source code">_ParseQuery</a>( )</code>
+		<code><a href="source-class-CDataWrapper.html#627-650" title="Go to source code">_ParseQuery</a>( )</code>
 
 		<div class="description short">
 			
@@ -876,7 +929,7 @@ depending on the current operation:</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#__ParseSelect">#</a>
-		<code><a href="source-class-CDataWrapper.html#627-650" title="Go to source code">_ParseSelect</a>( )</code>
+		<code><a href="source-class-CDataWrapper.html#657-680" title="Go to source code">_ParseSelect</a>( )</code>
 
 		<div class="description short">
 			
@@ -923,7 +976,7 @@ depending on the current operation:</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#__ParseSort">#</a>
-		<code><a href="source-class-CDataWrapper.html#657-680" title="Go to source code">_ParseSort</a>( )</code>
+		<code><a href="source-class-CDataWrapper.html#687-710" title="Go to source code">_ParseSort</a>( )</code>
 
 		<div class="description short">
 			
@@ -945,53 +998,6 @@ depending on the current operation:</p>
 				<h4>See</h4>
 				<div class="list">
 						kAPI_SORT kAPI_REQUEST<br />
-				</div>
-				<h4>Uses</h4>
-				<div class="list">
-						<code><code><a href="class-CWrapper.html#__OffsetManage">CWrapper::_OffsetManage()</a></code></code> <br />
-				</div>
-				<h4>Used by</h4>
-				<div class="list">
-						<code><code><a href="class-CDataWrapper.html#__ParseRequest">CDataWrapper::_ParseRequest()</a></code></code> <br />
-				</div>
-
-
-		</div>
-		</div></td>
-	</tr>
-	<tr data-order="_ParseClass" id="__ParseClass">
-
-		<td class="attributes"><code>
-			 protected 
-			
-			
-			</code>
-		</td>
-
-		<td class="name"><div>
-		<a class="anchor" href="#__ParseClass">#</a>
-		<code><a href="source-class-CDataWrapper.html#687-710" title="Go to source code">_ParseClass</a>( )</code>
-
-		<div class="description short">
-			
-<p>Parse object.</p>
-
-		</div>
-
-		<div class="description detailed hidden">
-			
-<p>Parse object.</p>
-
-<p>This method will copy the class to the request block.</p>
-
-
-
-
-
-
-				<h4>See</h4>
-				<div class="list">
-						kAPI_CLASS kAPI_REQUEST<br />
 				</div>
 				<h4>Uses</h4>
 				<div class="list">
@@ -1053,6 +1059,50 @@ depending on the current operation:</p>
 		</div>
 		</div></td>
 	</tr>
+	<tr data-order="_FormatClass" id="__FormatClass">
+
+		<td class="attributes"><code>
+			 protected 
+			
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#__FormatClass">#</a>
+		<code><a href="source-class-CDataWrapper.html#756-811" title="Go to source code">_FormatClass</a>( )</code>
+
+		<div class="description short">
+			
+<p>Format class parameter.</p>
+
+		</div>
+
+		<div class="description detailed hidden">
+			
+<p>Format class parameter.</p>
+
+<p>This method will first check if the class is available, then, if the
+container is missing, it will set its name with the eventual <code><a href="class-CPersistentDocument.html#_DefaultContainerName">CPersistentDocument::DefaultContainerName()</a></code> method.</p>
+
+
+
+
+
+
+				<h4>See</h4>
+				<div class="list">
+						kAPI_CLASS<br />
+				</div>
+				<h4>Used by</h4>
+				<div class="list">
+						<code><code><a href="class-CDataWrapper.html#__FormatRequest">CDataWrapper::_FormatRequest()</a></code></code> <br />
+				</div>
+
+
+		</div>
+		</div></td>
+	</tr>
 	<tr data-order="_FormatDatabase" id="__FormatDatabase">
 
 		<td class="attributes"><code>
@@ -1064,7 +1114,7 @@ depending on the current operation:</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#__FormatDatabase">#</a>
-		<code><a href="source-class-CDataWrapper.html#756-803" title="Go to source code">_FormatDatabase</a>( )</code>
+		<code><a href="source-class-CDataWrapper.html#818-865" title="Go to source code">_FormatDatabase</a>( )</code>
 
 		<div class="description short">
 			
@@ -1109,7 +1159,7 @@ will raise an exception.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#__FormatContainer">#</a>
-		<code><a href="source-class-CDataWrapper.html#810-857" title="Go to source code">_FormatContainer</a>( )</code>
+		<code><a href="source-class-CDataWrapper.html#872-919" title="Go to source code">_FormatContainer</a>( )</code>
 
 		<div class="description short">
 			
@@ -1154,7 +1204,7 @@ method will raise an exception.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#__FormatPaging">#</a>
-		<code><a href="source-class-CDataWrapper.html#864-904" title="Go to source code">_FormatPaging</a>( )</code>
+		<code><a href="source-class-CDataWrapper.html#926-966" title="Go to source code">_FormatPaging</a>( )</code>
 
 		<div class="description short">
 			
@@ -1198,7 +1248,7 @@ response kAPI_PAGING block with the provided paging options.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#__FormatQuery">#</a>
-		<code><a href="source-class-CDataWrapper.html#911-935" title="Go to source code">_FormatQuery</a>( )</code>
+		<code><a href="source-class-CDataWrapper.html#973-997" title="Go to source code">_FormatQuery</a>( )</code>
 
 		<div class="description short">
 			
@@ -1257,7 +1307,7 @@ customise the structure before it gets validated.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#__FormatSelect">#</a>
-		<code><a href="source-class-CDataWrapper.html#942-960" title="Go to source code">_FormatSelect</a>( )</code>
+		<code><a href="source-class-CDataWrapper.html#1004-1022" title="Go to source code">_FormatSelect</a>( )</code>
 
 		<div class="description short">
 			
@@ -1300,7 +1350,7 @@ customise the structure before it gets validated.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#__FormatSort">#</a>
-		<code><a href="source-class-CDataWrapper.html#967-985" title="Go to source code">_FormatSort</a>( )</code>
+		<code><a href="source-class-CDataWrapper.html#1029-1047" title="Go to source code">_FormatSort</a>( )</code>
 
 		<div class="description short">
 			
@@ -1332,49 +1382,6 @@ customise the structure before it gets validated.</p>
 		</div>
 		</div></td>
 	</tr>
-	<tr data-order="_FormatClass" id="__FormatClass">
-
-		<td class="attributes"><code>
-			 protected 
-			
-			
-			</code>
-		</td>
-
-		<td class="name"><div>
-		<a class="anchor" href="#__FormatClass">#</a>
-		<code><a href="source-class-CDataWrapper.html#992-1001" title="Go to source code">_FormatClass</a>( )</code>
-
-		<div class="description short">
-			
-<p>Format class parameter.</p>
-
-		</div>
-
-		<div class="description detailed hidden">
-			
-<p>Format class parameter.</p>
-
-<p>This method does nothing in this class.</p>
-
-
-
-
-
-
-				<h4>See</h4>
-				<div class="list">
-						kAPI_CLASS<br />
-				</div>
-				<h4>Used by</h4>
-				<div class="list">
-						<code><code><a href="class-CDataWrapper.html#__FormatRequest">CDataWrapper::_FormatRequest()</a></code></code> <br />
-				</div>
-
-
-		</div>
-		</div></td>
-	</tr>
 	<tr data-order="_FormatObject" id="__FormatObject">
 
 		<td class="attributes"><code>
@@ -1386,7 +1393,7 @@ customise the structure before it gets validated.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#__FormatObject">#</a>
-		<code><a href="source-class-CDataWrapper.html#1008-1017" title="Go to source code">_FormatObject</a>( )</code>
+		<code><a href="source-class-CDataWrapper.html#1054-1063" title="Go to source code">_FormatObject</a>( )</code>
 
 		<div class="description short">
 			
@@ -1429,7 +1436,7 @@ customise the structure before it gets validated.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#__ValidateOperation">#</a>
-		<code><a href="source-class-CDataWrapper.html#1033-1303" title="Go to source code">_ValidateOperation</a>( )</code>
+		<code><a href="source-class-CDataWrapper.html#1079-1349" title="Go to source code">_ValidateOperation</a>( )</code>
 
 		<div class="description short">
 			
@@ -1470,6 +1477,52 @@ following operations:</p>
 		</div>
 		</div></td>
 	</tr>
+	<tr data-order="_ValidateClass" id="__ValidateClass">
+
+		<td class="attributes"><code>
+			 protected 
+			
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#__ValidateClass">#</a>
+		<code><a href="source-class-CDataWrapper.html#1356-1368" title="Go to source code">_ValidateClass</a>( )</code>
+
+		<div class="description short">
+			
+<p>Validate class parameter.</p>
+
+		</div>
+
+		<div class="description detailed hidden">
+			
+<p>Validate class parameter.</p>
+
+<p>The duty of this method is to validate the class parameter, in this class we
+have already checked if the class is known to the system and set the eventual
+missing container, in derived classes this method could be used to check whether
+the class is of the correct type.</p>
+
+
+
+
+
+
+				<h4>See</h4>
+				<div class="list">
+						kAPI_CLASS<br />
+				</div>
+				<h4>Used by</h4>
+				<div class="list">
+						<code><code><a href="class-CDataWrapper.html#__ValidateRequest">CDataWrapper::_ValidateRequest()</a></code></code> <br />
+				</div>
+
+
+		</div>
+		</div></td>
+	</tr>
 	<tr data-order="_ValidateDatabase" id="__ValidateDatabase">
 
 		<td class="attributes"><code>
@@ -1481,7 +1534,7 @@ following operations:</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#__ValidateDatabase">#</a>
-		<code><a href="source-class-CDataWrapper.html#1310-1341" title="Go to source code">_ValidateDatabase</a>( )</code>
+		<code><a href="source-class-CDataWrapper.html#1375-1406" title="Go to source code">_ValidateDatabase</a>( )</code>
 
 		<div class="description short">
 			
@@ -1528,7 +1581,7 @@ you should override this method using the specific database.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#__ValidateContainer">#</a>
-		<code><a href="source-class-CDataWrapper.html#1348-1379" title="Go to source code">_ValidateContainer</a>( )</code>
+		<code><a href="source-class-CDataWrapper.html#1413-1444" title="Go to source code">_ValidateContainer</a>( )</code>
 
 		<div class="description short">
 			
@@ -1575,7 +1628,7 @@ you should override this method using the specific container.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#__ValidatePaging">#</a>
-		<code><a href="source-class-CDataWrapper.html#1386-1417" title="Go to source code">_ValidatePaging</a>( )</code>
+		<code><a href="source-class-CDataWrapper.html#1451-1482" title="Go to source code">_ValidatePaging</a>( )</code>
 
 		<div class="description short">
 			
@@ -1620,7 +1673,7 @@ kDEFAULT_MAX_LIMIT.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#__ValidateQuery">#</a>
-		<code><a href="source-class-CDataWrapper.html#1424-1599" title="Go to source code">_ValidateQuery</a>( )</code>
+		<code><a href="source-class-CDataWrapper.html#1489-1664" title="Go to source code">_ValidateQuery</a>( )</code>
 
 		<div class="description short">
 			
@@ -1679,7 +1732,7 @@ determined by the index data types of the provided query parameter array:</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#__ValidateSelect">#</a>
-		<code><a href="source-class-CDataWrapper.html#1606-1646" title="Go to source code">_ValidateSelect</a>( )</code>
+		<code><a href="source-class-CDataWrapper.html#1671-1711" title="Go to source code">_ValidateSelect</a>( )</code>
 
 		<div class="description short">
 			
@@ -1726,7 +1779,7 @@ string and create with it an array.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#__ValidateSort">#</a>
-		<code><a href="source-class-CDataWrapper.html#1653-1693" title="Go to source code">_ValidateSort</a>( )</code>
+		<code><a href="source-class-CDataWrapper.html#1718-1758" title="Go to source code">_ValidateSort</a>( )</code>
 
 		<div class="description short">
 			
@@ -1762,52 +1815,6 @@ a string and create with it an array.</p>
 		</div>
 		</div></td>
 	</tr>
-	<tr data-order="_ValidateClass" id="__ValidateClass">
-
-		<td class="attributes"><code>
-			 protected 
-			
-			
-			</code>
-		</td>
-
-		<td class="name"><div>
-		<a class="anchor" href="#__ValidateClass">#</a>
-		<code><a href="source-class-CDataWrapper.html#1700-1792" title="Go to source code">_ValidateClass</a>( )</code>
-
-		<div class="description short">
-			
-<p>Validate class parameter.</p>
-
-		</div>
-
-		<div class="description detailed hidden">
-			
-<p>Validate class parameter.</p>
-
-<p>The duty of this method is to validate the class parameter, in this class we
-check whether the class exists, then we check if the class derives from <code><a href="class-CPersistentObject.html">CPersistentObject</a></code> and, finally, in the event that the kAPI_CONTAINER
-parameter was not provided, we check if the class supports the
-<tt>DefaultContainer</tt> static method.</p>
-
-
-
-
-
-
-				<h4>See</h4>
-				<div class="list">
-						kAPI_CLASS<br />
-				</div>
-				<h4>Used by</h4>
-				<div class="list">
-						<code><code><a href="class-CDataWrapper.html#__ValidateRequest">CDataWrapper::_ValidateRequest()</a></code></code> <br />
-				</div>
-
-
-		</div>
-		</div></td>
-	</tr>
 	<tr data-order="_ValidateObject" id="__ValidateObject">
 
 		<td class="attributes"><code>
@@ -1819,7 +1826,7 @@ parameter was not provided, we check if the class supports the
 
 		<td class="name"><div>
 		<a class="anchor" href="#__ValidateObject">#</a>
-		<code><a href="source-class-CDataWrapper.html#1799-1884" title="Go to source code">_ValidateObject</a>( )</code>
+		<code><a href="source-class-CDataWrapper.html#1765-1851" title="Go to source code">_ValidateObject</a>( )</code>
 
 		<div class="description short">
 			
@@ -1864,7 +1871,7 @@ provided.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#__HandleRequest">#</a>
-		<code><a href="source-class-CDataWrapper.html#1900-1954" title="Go to source code">_HandleRequest</a>( )</code>
+		<code><a href="source-class-CDataWrapper.html#1867-1921" title="Go to source code">_HandleRequest</a>( )</code>
 
 		<div class="description short">
 			
@@ -1901,7 +1908,7 @@ provided.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#__Handle_ListOp">#</a>
-		<code><a href="source-class-CDataWrapper.html#1961-2007" title="Go to source code">_Handle_ListOp</a>( <span>reference <var>&amp; $theList</var></span> )</code>
+		<code><a href="source-class-CDataWrapper.html#1928-1974" title="Go to source code">_Handle_ListOp</a>( <span>reference <var>&amp; $theList</var></span> )</code>
 
 		<div class="description short">
 			
@@ -1943,7 +1950,7 @@ provided.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#__Handle_Count">#</a>
-		<code><a href="source-class-CDataWrapper.html#2014-2041" title="Go to source code">_Handle_Count</a>( )</code>
+		<code><a href="source-class-CDataWrapper.html#1981-2008" title="Go to source code">_Handle_Count</a>( )</code>
 
 		<div class="description short">
 			
@@ -1980,7 +1987,7 @@ status.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#__Handle_Get">#</a>
-		<code><a href="source-class-CDataWrapper.html#2048-2142" title="Go to source code">_Handle_Get</a>( )</code>
+		<code><a href="source-class-CDataWrapper.html#2015-2109" title="Go to source code">_Handle_Get</a>( )</code>
 
 		<div class="description short">
 			
@@ -2016,7 +2023,7 @@ records that match the provided query..</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#__Handle_GetOne">#</a>
-		<code><a href="source-class-CDataWrapper.html#2149-2212" title="Go to source code">_Handle_GetOne</a>( )</code>
+		<code><a href="source-class-CDataWrapper.html#2116-2179" title="Go to source code">_Handle_GetOne</a>( )</code>
 
 		<div class="description short">
 			
@@ -2052,7 +2059,7 @@ the first record to satisfy a query.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#__Handle_Match">#</a>
-		<code><a href="source-class-CDataWrapper.html#2219-2284" title="Go to source code">_Handle_Match</a>( )</code>
+		<code><a href="source-class-CDataWrapper.html#2186-2251" title="Go to source code">_Handle_Match</a>( )</code>
 
 		<div class="description short">
 			
@@ -2088,7 +2095,7 @@ the first match of a series of queries.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#__Handle_Resolve">#</a>
-		<code><a href="source-class-CDataWrapper.html#2291-2324" title="Go to source code">_Handle_Resolve</a>( )</code>
+		<code><a href="source-class-CDataWrapper.html#2258-2291" title="Go to source code">_Handle_Resolve</a>( )</code>
 
 		<div class="description short">
 			
@@ -2124,7 +2131,7 @@ an object provided a reference value.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#__Handle_Insert">#</a>
-		<code><a href="source-class-CDataWrapper.html#2331-2378" title="Go to source code">_Handle_Insert</a>( )</code>
+		<code><a href="source-class-CDataWrapper.html#2298-2345" title="Go to source code">_Handle_Insert</a>( )</code>
 
 		<div class="description short">
 			
@@ -2172,7 +2179,7 @@ database or container.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#__Handle_Delete">#</a>
-		<code><a href="source-class-CDataWrapper.html#2385-2447" title="Go to source code">_Handle_Delete</a>( )</code>
+		<code><a href="source-class-CDataWrapper.html#2352-2414" title="Go to source code">_Handle_Delete</a>( )</code>
 
 		<div class="description short">
 			
@@ -2208,7 +2215,7 @@ objects matching the provided query or value.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#__VerifyQuery">#</a>
-		<code><a href="source-class-CDataWrapper.html#2463-2526" title="Go to source code">_VerifyQuery</a>( <span>reference <var>&amp; $theQuery</var></span>, <span><code><a href="class-CContainer.html">CContainer</a></code> <var>$theContainer</var></span> )</code>
+		<code><a href="source-class-CDataWrapper.html#2430-2493" title="Go to source code">_VerifyQuery</a>( <span>reference <var>&amp; $theQuery</var></span>, <span><code><a href="class-CContainer.html">CContainer</a></code> <var>$theContainer</var></span> )</code>
 
 		<div class="description short">
 			

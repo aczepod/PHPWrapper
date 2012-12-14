@@ -7,7 +7,7 @@
 	<title>Class COntologyTag | MyWrapper Reference Documentation</title>
 
 	<script type="text/javascript" src="resources/combined.js?3680114562"></script>
-	<script type="text/javascript" src="elementlist.js?1535324545"></script>
+	<script type="text/javascript" src="elementlist.js?1324799474"></script>
 	<link rel="stylesheet" type="text/css" media="all" href="resources/style.css?3505392360" />
 
 </head>
@@ -164,7 +164,7 @@ methods will raise an exception.</p>
 <p>Objects of this class use a sequence number as their native identifier,
 kTAG_NID, tagged as kSEQUENCE_KEY_TAG.</p>
 
-<p>The class implements the static method, <code><a href="class-COntologyTag.html#_DefaultContainer">COntologyTag::DefaultContainer()</a></code>, which,
+<p>The class implements the static method, <code><a href="class-CPersistentDocument.html#_DefaultContainer">CPersistentDocument::DefaultContainer()</a></code>, which,
 given a database, will return the default tag container; it will use the kCONTAINER_TAG_NAME constant as the container name.</p>
 
 	</div>
@@ -245,7 +245,7 @@ given a database, will return the default tag container; it will use the kCONTAI
 				<b>Author:</b>
 				Milko A. Škofič &lt;<a
 href="mailto:m.skofic&#64;cgiar.org">m.skofic&#64;<!---->cgiar.org</a>&gt;<br />
-		<b>Located at</b> <a href="source-class-COntologyTag.html#43-1138" title="Go to source code">COntologyTag.php</a><br />
+		<b>Located at</b> <a href="source-class-COntologyTag.html#43-1133" title="Go to source code">COntologyTag.php</a><br />
 	</div>
 
 
@@ -583,45 +583,43 @@ non committed object.</p>
 		</div>
 		</div></td>
 	</tr>
-	<tr data-order="DefaultContainer" id="_DefaultContainer">
+	<tr data-order="DefaultContainerName" id="_DefaultContainerName">
 
 		<td class="attributes"><code>
 			 public static
-			<code><a href="class-CContainer.html">CContainer</a></code>
+			string
 			
 			</code>
 		</td>
 
 		<td class="name"><div>
-		<a class="anchor" href="#_DefaultContainer">#</a>
-		<code><a href="source-class-COntologyTag.html#525-542" title="Go to source code">DefaultContainer</a>( <span><code><a href="class-CDatabase.html">CDatabase</a></code> <var>$theDatabase</var></span> )</code>
+		<a class="anchor" href="#_DefaultContainerName">#</a>
+		<code><a href="source-class-COntologyTag.html#525-537" title="Go to source code">DefaultContainerName</a>( )</code>
 
 		<div class="description short">
 			
-<h4>Return the tags container</h4>
+<h4>Return the default nodes container name</h4>
 
 		</div>
 
 		<div class="description detailed hidden">
 			
-<h4>Return the tags container</h4>
+<h4>Return the default nodes container name</h4>
 
-<p>The container will be created or fetched from the provided database using the
-kCONTAINER_TAG_NAME name.</p>
-
+<p>This class uses the kCONTAINER_TAG_NAME default name.</p>
 
 
-				<h4>Parameters</h4>
-				<div class="list"><dl>
-					<dt><var>$theDatabase</var></dt>
-					<dd><code><code><a href="class-CDatabase.html">CDatabase</a></code></code><br>$theDatabase Database object.</dd>
-				</dl></div>
+
 
 				<h4>Returns</h4>
 				<div class="list">
-					<code><code><a href="class-CContainer.html">CContainer</a></code></code><br>The tags container.<br />
+					<code>string</code><br>The default container name.<br />
 				</div>
 
+				<h4>Throws</h4>
+				<div class="list">
+					<code><code><a href="class-Exception.html">Exception</a></code></code><br />
+				</div>
 
 				<h4>See</h4>
 				<div class="list">
@@ -629,7 +627,7 @@ kCONTAINER_TAG_NAME name.</p>
 				</div>
 
 				<h4>Overrides</h4>
-				<div class="list"><code><a href="class-CPersistentDocument.html#_DefaultContainer">CPersistentDocument::DefaultContainer()</a></code></div>
+				<div class="list"><code><a href="class-CPersistentDocument.html#_DefaultContainerName">CPersistentDocument::DefaultContainerName()</a></code></div>
 
 		</div>
 		</div></td>
@@ -645,7 +643,7 @@ kCONTAINER_TAG_NAME name.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#_Resolve">#</a>
-		<code><a href="source-class-COntologyTag.html#558-708" title="Go to source code">Resolve</a>( <span><code><a href="class-CConnection.html">CConnection</a></code> <var>$theConnection</var></span>, <span>mixed <var>$theIdentifier</var></span>, <span>boolean <var>$doThrow</var> = <span class="php-keyword1">FALSE</span> </span> )</code>
+		<code><a href="source-class-COntologyTag.html#553-703" title="Go to source code">Resolve</a>( <span><code><a href="class-CConnection.html">CConnection</a></code> <var>$theConnection</var></span>, <span>mixed <var>$theIdentifier</var></span>, <span>boolean <var>$doThrow</var> = <span class="php-keyword1">FALSE</span> </span> )</code>
 
 		<div class="description short">
 			
@@ -729,7 +727,7 @@ identifier was not resolved.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#__index">#</a>
-		<code><a href="source-class-COntologyTag.html#724-776" title="Go to source code">_index</a>( <span><code><a href="class-CConnection.html">CConnection</a></code> <var>$theConnection</var></span>, <span>bitfield <var>$theModifiers</var></span> )</code>
+		<code><a href="source-class-COntologyTag.html#719-771" title="Go to source code">_index</a>( <span><code><a href="class-CConnection.html">CConnection</a></code> <var>$theConnection</var></span>, <span>bitfield <var>$theModifiers</var></span> )</code>
 
 		<div class="description short">
 			
@@ -796,7 +794,7 @@ elements of the path to be object native identifiers.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#__Preset">#</a>
-		<code><a href="source-class-COntologyTag.html#792-826" title="Go to source code">_Preset</a>( <span>reference <var>&amp; $theOffset</var></span>, <span>reference <var>&amp; $theValue</var></span> )</code>
+		<code><a href="source-class-COntologyTag.html#787-821" title="Go to source code">_Preset</a>( <span>reference <var>&amp; $theOffset</var></span>, <span>reference <var>&amp; $theValue</var></span> )</code>
 
 		<div class="description short">
 			
@@ -853,7 +851,7 @@ committed.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#__Preunset">#</a>
-		<code><a href="source-class-COntologyTag.html#833-866" title="Go to source code">_Preunset</a>( <span>reference <var>&amp; $theOffset</var></span> )</code>
+		<code><a href="source-class-COntologyTag.html#828-861" title="Go to source code">_Preunset</a>( <span>reference <var>&amp; $theOffset</var></span> )</code>
 
 		<div class="description short">
 			
@@ -908,7 +906,7 @@ committed and the kTAG_UID in all cases.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#__PrecommitIdentify">#</a>
-		<code><a href="source-class-COntologyTag.html#882-982" title="Go to source code">_PrecommitIdentify</a>( <span>reference <var>&amp; $theConnection</var></span>, <span>reference <var>&amp; $theModifiers</var></span> )</code>
+		<code><a href="source-class-COntologyTag.html#877-977" title="Go to source code">_PrecommitIdentify</a>( <span>reference <var>&amp; $theConnection</var></span>, <span>reference <var>&amp; $theModifiers</var></span> )</code>
 
 		<div class="description short">
 			
@@ -977,7 +975,7 @@ native identifiers, since they will have been set here.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#__PostcommitRelated">#</a>
-		<code><a href="source-class-COntologyTag.html#998-1134" title="Go to source code">_PostcommitRelated</a>( <span>reference <var>&amp; $theConnection</var></span>, <span>reference <var>&amp; $theModifiers</var></span> )</code>
+		<code><a href="source-class-COntologyTag.html#993-1129" title="Go to source code">_PostcommitRelated</a>( <span>reference <var>&amp; $theConnection</var></span>, <span>reference <var>&amp; $theModifiers</var></span> )</code>
 
 		<div class="description short">
 			
@@ -1114,7 +1112,9 @@ container to this method in order to make it work!</p>
 	<caption>Methods inherited from <a href="class-CPersistentDocument.html#methods">CPersistentDocument</a></caption>
 	<tr>
 		<td><code>
+			<a href="class-CPersistentDocument.html#_DefaultContainer">DefaultContainer()</a>, 
 			<a href="class-CPersistentDocument.html#_DefaultDatabase">DefaultDatabase()</a>, 
+			<a href="class-CPersistentDocument.html#_DefaultDatabaseName">DefaultDatabaseName()</a>, 
 			<a href="class-CPersistentDocument.html#_Delete">Delete()</a>, 
 			<a href="class-CPersistentDocument.html#_Insert">Insert()</a>, 
 			<a href="class-CPersistentDocument.html#_NID">NID()</a>, 

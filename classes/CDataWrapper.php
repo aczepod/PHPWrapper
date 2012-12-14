@@ -267,13 +267,13 @@ class CDataWrapper extends CWrapper
 	 *
 	 * @access protected
 	 *
+	 * @uses _ParseClass()
 	 * @uses _ParseDatabase()
 	 * @uses _ParseContainer()
 	 * @uses _ParsePaging()
 	 * @uses _ParseQuery()
 	 * @uses _ParseSelect()
 	 * @uses _ParseSort()
-	 * @uses _ParseClass()
 	 * @uses _ParseObject()
 	 */
 	protected function _ParseRequest()
@@ -286,13 +286,13 @@ class CDataWrapper extends CWrapper
 		//
 		// Handle parameters.
 		//
+		$this->_ParseClass();
 		$this->_ParseDatabase();
 		$this->_ParseContainer();
 		$this->_ParsePaging();
 		$this->_ParseQuery();
 		$this->_ParseSelect();
 		$this->_ParseSort();
-		$this->_ParseClass();
 		$this->_ParseObject();
 	
 	} // _ParseRequest.
@@ -311,13 +311,13 @@ class CDataWrapper extends CWrapper
 	 *
 	 * @access protected
 	 *
+	 * @uses _FormatClass()
 	 * @uses _FormatDatabase()
 	 * @uses _FormatContainer()
 	 * @uses _FormatPaging()
 	 * @uses _FormatQuery()
 	 * @uses _FormatSelect()
 	 * @uses _FormatSort()
-	 * @uses _FormatClass()
 	 * @uses _FormatObject()
 	 */
 	protected function _FormatRequest()
@@ -330,13 +330,13 @@ class CDataWrapper extends CWrapper
 		//
 		// Handle parameters.
 		//
+		$this->_FormatClass();
 		$this->_FormatDatabase();
 		$this->_FormatContainer();
 		$this->_FormatPaging();
 		$this->_FormatQuery();
 		$this->_FormatSelect();
 		$this->_FormatSort();
-		$this->_FormatClass();
 		$this->_FormatObject();
 	
 	} // _FormatRequest.
@@ -357,13 +357,13 @@ class CDataWrapper extends CWrapper
 	 *
 	 * @access protected
 	 *
+	 * @uses _ValidateClass()
 	 * @uses _ValidateDatabase()
 	 * @uses _ValidateContainer()
 	 * @uses _ValidatePaging()
 	 * @uses _ValidateQuery()
 	 * @uses _ValidateSelect()
 	 * @uses _ValidateSort()
-	 * @uses _ValidateClass()
 	 * @uses _ValidateObject()
 	 */
 	protected function _ValidateRequest()
@@ -376,13 +376,13 @@ class CDataWrapper extends CWrapper
 		//
 		// Validate parameters.
 		//
+		$this->_ValidateClass();
 		$this->_ValidateDatabase();
 		$this->_ValidateContainer();
 		$this->_ValidatePaging();
 		$this->_ValidateQuery();
 		$this->_ValidateSelect();
 		$this->_ValidateSort();
-		$this->_ValidateClass();
 		$this->_ValidateObject();
 	
 	} // _ValidateRequest.
@@ -488,6 +488,36 @@ class CDataWrapper extends CWrapper
 		}
 	
 	} // _ParseOperation.
+
+	 
+	/*===================================================================================
+	 *	_ParseClass																		*
+	 *==================================================================================*/
+
+	/**
+	 * Parse object.
+	 *
+	 * This method will copy the class to the request block.
+	 *
+	 * @access protected
+	 *
+	 * @uses _OffsetManage()
+	 *
+	 * @see kAPI_CLASS kAPI_REQUEST
+	 */
+	protected function _ParseClass()
+	{
+		//
+		// Handle query.
+		//
+		if( array_key_exists( kAPI_CLASS, $_REQUEST ) )
+		{
+			if( $this->offsetExists( kAPI_REQUEST ) )
+				$this->_OffsetManage
+					( kAPI_REQUEST, kAPI_CLASS, $_REQUEST[ kAPI_CLASS ] );
+		}
+	
+	} // _ParseClass.
 
 	 
 	/*===================================================================================
@@ -681,36 +711,6 @@ class CDataWrapper extends CWrapper
 
 	 
 	/*===================================================================================
-	 *	_ParseClass																		*
-	 *==================================================================================*/
-
-	/**
-	 * Parse object.
-	 *
-	 * This method will copy the class to the request block.
-	 *
-	 * @access protected
-	 *
-	 * @uses _OffsetManage()
-	 *
-	 * @see kAPI_CLASS kAPI_REQUEST
-	 */
-	protected function _ParseClass()
-	{
-		//
-		// Handle query.
-		//
-		if( array_key_exists( kAPI_CLASS, $_REQUEST ) )
-		{
-			if( $this->offsetExists( kAPI_REQUEST ) )
-				$this->_OffsetManage
-					( kAPI_REQUEST, kAPI_CLASS, $_REQUEST[ kAPI_CLASS ] );
-		}
-	
-	} // _ParseClass.
-
-	 
-	/*===================================================================================
 	 *	_ParseObject																	*
 	 *==================================================================================*/
 
@@ -747,6 +747,68 @@ class CDataWrapper extends CWrapper
  *																						*
  *======================================================================================*/
 
+
+	 
+	/*===================================================================================
+	 *	_FormatClass																	*
+	 *==================================================================================*/
+
+	/**
+	 * Format class parameter.
+	 *
+	 * This method will first check if the class is available, then, if the container is
+	 * missing, it will set its name with the eventual
+	 * {@link CPersistentDocument::DefaultContainerName()} method.
+	 *
+	 * @access protected
+	 *
+	 * @see kAPI_CLASS
+	 */
+	protected function _FormatClass()
+	{
+		//
+		// Check parameter.
+		//
+		if( array_key_exists( kAPI_CLASS, $_REQUEST ) )
+		{
+			//
+			// Check if class exists.
+			//
+			if( class_exists( $_REQUEST[ kAPI_CLASS ] ) )
+			{
+				//
+				// Check if class is persistent.
+				//
+				if( is_subclass_of( $_REQUEST[ kAPI_CLASS ], 'CPersistentDocument' ) )
+				{
+					//
+					// Handle default container.
+					//
+					if( ! array_key_exists( kAPI_CONTAINER, $_REQUEST ) )
+					{
+						//
+						// Get name.
+						//
+						$name = $_REQUEST[ kAPI_CLASS ]::DefaultContainerName();
+						if( $name !== NULL )
+							$_REQUEST[ kAPI_CONTAINER ] = $name;
+					
+					} // Missing container.
+				
+				} // Supports default container names.
+			
+			} // Valid class.
+			
+			else
+				throw new CException
+					( "Unsupported class",
+					  kERROR_PARAMETER,
+					  kSTATUS_ERROR,
+					  array( 'Class' => gettype( $_REQUEST[ kAPI_CLASS ] ) ) );	// !@! ==>
+		
+		} // Provided query selection.
+	
+	} // _FormatClass.
 
 	 
 	/*===================================================================================
@@ -983,22 +1045,6 @@ class CDataWrapper extends CWrapper
 			$_REQUEST[ kAPI_SORT ] = array( $_REQUEST[ kAPI_SORT ] );
 	
 	} // _FormatSort.
-
-	 
-	/*===================================================================================
-	 *	_FormatClass																	*
-	 *==================================================================================*/
-
-	/**
-	 * Format class parameter.
-	 *
-	 * This method does nothing in this class.
-	 *
-	 * @access protected
-	 *
-	 * @see kAPI_CLASS
-	 */
-	protected function _FormatClass()													   {}
 
 	 
 	/*===================================================================================
@@ -1303,6 +1349,25 @@ class CDataWrapper extends CWrapper
 	} // _ValidateOperation.
 
 		
+	/*===================================================================================
+	 *	_ValidateClass																	*
+	 *==================================================================================*/
+
+	/**
+	 * Validate class parameter.
+	 *
+	 * The duty of this method is to validate the class parameter, in this class we have
+	 * already checked if the class is known to the system and set the eventual missing
+	 * container, in derived classes this method could be used to check whether the class
+	 * is of the correct type.
+	 *
+	 * @access protected
+	 *
+	 * @see kAPI_CLASS
+	 */
+	protected function _ValidateClass()													   {}
+
+	 
 	/*===================================================================================
 	 *	_ValidateDatabase																*
 	 *==================================================================================*/
@@ -1694,105 +1759,6 @@ class CDataWrapper extends CWrapper
 
 	 
 	/*===================================================================================
-	 *	_ValidateClass																	*
-	 *==================================================================================*/
-
-	/**
-	 * Validate class parameter.
-	 *
-	 * The duty of this method is to validate the class parameter, in this class we check
-	 * whether the class exists, then we check if the class derives from
-	 * {@link CPersistentObject} and, finally, in the event that the {@link kAPI_CONTAINER}
-	 * parameter was not provided, we check if the class supports the
-	 * <tt>DefaultContainer</tt> static method.
-	 *
-	 * @access protected
-	 *
-	 * @see kAPI_CLASS
-	 */
-	protected function _ValidateClass()
-	{
-		//
-		// Check parameter.
-		//
-		if( array_key_exists( kAPI_CLASS, $_REQUEST ) )
-		{
-			//
-			// Check if class exists.
-			//
-			if( class_exists( $_REQUEST[ kAPI_CLASS ] ) )
-			{
-				//
-				// Check if class is persistent.
-				//
-				if( ! is_subclass_of( $_REQUEST[ kAPI_CLASS ], 'CPersistentObject' ) )
-					throw new CException
-						( "Invalid class, it does not support persistence",
-						  kERROR_PARAMETER,
-						  kSTATUS_ERROR,
-						  array( 'Class'
-						  			=> gettype( $_REQUEST[ kAPI_CLASS ] ) ) );	// !@! ==>
-				
-				//
-				// Check if container was provided.
-				//
-				if( ! array_key_exists( kAPI_CONTAINER, $_REQUEST ) )
-				{
-					//
-					// Check if default container exists.
-					//
-					if( ! method_exists( $_REQUEST[ kAPI_CLASS ], 'DefaultContainer' ) )
-						throw new CException
-							( "Class requires container to be provided",
-							  kERROR_PARAMETER,
-							  kSTATUS_ERROR,
-							  array( 'Class'
-							  	=> gettype( $_REQUEST[ kAPI_CLASS ] ) ) );		// !@! ==>
-					
-					//
-					// Set container.
-					//
-					$_REQUEST[ kAPI_CONTAINER ]
-						= $_REQUEST[ kAPI_CLASS ]::DefaultContainer(
-							$_REQUEST[ kAPI_DATABASE ] );
-				
-				} // Container not provided.
-				
-				//
-				// Perform custom checks.
-				//
-				switch( $_REQUEST[ kAPI_OPERATION ] )
-				{
-					//
-					// Check if object can be resolved.
-					//
-					case kAPI_OP_RESOLVE:
-					case kAPI_OP_DELETE:
-						if( ! method_exists( $_REQUEST[ kAPI_CLASS ], 'Resolve' ) )
-							throw new CException
-								( "Object cannot be resolved by class",
-								  kERROR_PARAMETER,
-								  kSTATUS_ERROR,
-								  array( 'Class'
-									=> gettype( $_REQUEST[ kAPI_CLASS ] ) ) );	// !@! ==>
-						break;
-				}
-			
-			} // Class exists.
-			
-			else
-				throw new CException
-					( "Unsupported class",
-					  kERROR_PARAMETER,
-					  kSTATUS_ERROR,
-					  array( 'Class' => gettype( $_REQUEST[ kAPI_CLASS ] ) ) );	// !@! ==>
-		
-		} // Provided query selection.
-	
-	} // _ValidateClass.
-
-	 
-	/*===================================================================================
 	 *	_ValidateObject																	*
 	 *==================================================================================*/
 
@@ -1835,6 +1801,7 @@ class CDataWrapper extends CWrapper
 							  array( 'Operation' => $_REQUEST[ kAPI_OPERATION ],
 									 'Type' => gettype(
 									 			$_REQUEST[ kAPI_OBJECT ] ) ) );	// !@! ==>
+					
 					//
 					// Unserialise standard data types.
 					//

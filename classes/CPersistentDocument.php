@@ -664,7 +664,38 @@ class CPersistentDocument extends CStatusDocument
 	 * @static
 	 * @return CDatabase			The default database.
 	 */
-	static function DefaultDatabase( CServer $theServer )				{	return NULL;	}
+	static function DefaultDatabase( CServer $theServer )
+	{
+		//
+		// Get container name.
+		//
+		$name = static::DefaultDatabaseName();
+		if( $name !== NULL )
+			return $theServer->Database( $name );									// ==>
+		
+		return NULL;																// ==>
+	
+	} // DefaultDatabase.
+
+	 
+	/*===================================================================================
+	 *	DefaultDatabaseName																*
+	 *==================================================================================*/
+
+	/**
+	 * <h4>Return the default database name</h4>
+	 *
+	 * This method should return the default database name used by instances of the class,
+	 * this will be used to resolve databases from servers.
+	 *
+	 * This class does not have a default database name, so it will return <tt>NULL</tt>.
+	 *
+	 * @static
+	 * @return string				The default database name.
+	 *
+	 * @throws Exception
+	 */
+	static function DefaultDatabaseName()								{	return NULL;	}
 
 	 
 	/*===================================================================================
@@ -672,25 +703,56 @@ class CPersistentDocument extends CStatusDocument
 	 *==================================================================================*/
 
 	/**
-	 * <h4>Return the object default container</h4>
+	 * <h4>Return the default container</h4>
 	 *
-	 * This static method should be used to get the the class default container given a
-	 * database. It expects a {@link CDatabase} derived object and should return a
-	 * {@link CContainer} derived object.
+	 * The container will be created or fetched from the provided database using the
+	 * static {@link DefaultContainerName()} name.
 	 *
-	 * If the class does not feature a default container, this method should return
-	 * <tt>NULL</tt>.
-	 *
-	 * By default we assume no default containers.
+	 * If the class features a container name, this method will return a corresponding
+	 * container object; if the class does not feature a container name, the method will
+	 * return <tt>NULL</tt>.
 	 *
 	 * @param CDatabase				$theDatabase		Database object.
 	 *
 	 * @static
-	 * @return CContainer			The default container.
+	 * @return CContainer			The default container or <tt>NULL</tt>.
+	 *
+	 * @uses DefaultContainerName()
 	 */
-	static function DefaultContainer( CDatabase $theDatabase )			{	return NULL;	}
+	static function DefaultContainer( CDatabase $theDatabase )
+	{
+		//
+		// Get container name.
+		//
+		$name = static::DefaultContainerName();
+		if( $name !== NULL )
+			return $theDatabase->Container( $name );								// ==>
+		
+		return NULL;																// ==>
+	
+	} // DefaultContainer.
 
 	 
+	/*===================================================================================
+	 *	DefaultContainerName															*
+	 *==================================================================================*/
+
+	/**
+	 * <h4>Return the default container name</h4>
+	 *
+	 * This method should return the default container name used by instances of the class,
+	 * this will be used to resolve containers from databases.
+	 *
+	 * This class does not have a default container name, so it will return <tt>NULL</tt>.
+	 *
+	 * @static
+	 * @return string				The default container name.
+	 *
+	 * @throws Exception
+	 */
+	static function DefaultContainerName()								{	return NULL;	}
+		
+
 	/*===================================================================================
 	 *	ResolveContainer																*
 	 *==================================================================================*/

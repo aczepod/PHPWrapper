@@ -1,0 +1,1018 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<meta name="generator" content="ApiGen 2.8.0" />
+
+	<title>Class CPortalWrapper | MyWrapper Reference Documentation</title>
+
+	<script type="text/javascript" src="resources/combined.js?3680114562"></script>
+	<script type="text/javascript" src="elementlist.js?1324799474"></script>
+	<link rel="stylesheet" type="text/css" media="all" href="resources/style.css?3505392360" />
+
+</head>
+
+<body>
+<div id="left">
+	<div id="menu">
+		<a href="index.html" title="Overview"><span>Overview</span></a>
+
+
+		<div id="groups">
+			<h3>Packages</h3>
+			<ul>
+				<li class="active main"><a href="package-MyWrapper.html">MyWrapper<span></span></a>
+						<ul>
+				<li class="main"><a href="package-MyWrapper.Data.html">Data</a>
+						</li>
+				<li class="main"><a href="package-MyWrapper.Definitions.html">Definitions</a>
+						</li>
+				<li class="main"><a href="package-MyWrapper.Framework.html">Framework</a>
+						</li>
+				<li class="main"><a href="package-MyWrapper.Functions.html">Functions</a>
+						</li>
+				<li class="main"><a href="package-MyWrapper.Objects.html">Objects</a>
+						</li>
+				<li class="main"><a href="package-MyWrapper.Ontology.html">Ontology</a>
+						</li>
+				<li class="main"><a href="package-MyWrapper.Persistence.html">Persistence</a>
+						</li>
+				<li class="active main"><a href="package-MyWrapper.Wrappers.html">Wrappers</a>
+						</li>
+							</ul></li>
+				<li><a href="package-None.html">None</a>
+						</li>
+				<li><a href="package-PHP.html">PHP</a>
+						</li>
+			</ul>
+		</div>
+
+		<hr />
+
+
+		<div id="elements">
+			<h3>Classes</h3>
+			<ul>
+				<li><a href="class-CDataWrapper.html">CDataWrapper</a></li>
+				<li><a href="class-CDataWrapperClient.html">CDataWrapperClient</a></li>
+				<li><a href="class-COntologyWrapper.html">COntologyWrapper</a></li>
+				<li><a href="class-COntologyWrapperClient.html">COntologyWrapperClient</a></li>
+				<li class="active"><a href="class-CPortalWrapper.html">CPortalWrapper</a></li>
+				<li><a href="class-CPortalWrapperClient.html">CPortalWrapperClient</a></li>
+				<li><a href="class-CWrapper.html">CWrapper</a></li>
+				<li><a href="class-CWrapperClient.html">CWrapperClient</a></li>
+			</ul>
+
+
+
+
+
+		</div>
+	</div>
+</div>
+
+<div id="splitter"></div>
+
+<div id="right">
+<div id="rightInner">
+	<form id="search">
+		<input type="hidden" name="cx" value="" />
+		<input type="hidden" name="ie" value="UTF-8" />
+		<input type="text" name="q" class="text" />
+		<input type="submit" value="Search" />
+	</form>
+
+	<div id="navigation">
+		<ul>
+			<li>
+				<a href="index.html" title="Overview"><span>Overview</span></a>
+			</li>
+			<li>
+				<a href="package-MyWrapper.Wrappers.html" title="Summary of MyWrapper\Wrappers"><span>Package</span></a>
+			</li>
+			<li class="active">
+<span>Class</span>			</li>
+		</ul>
+		<ul>
+			<li>
+				<a href="tree.html" title="Tree view of classes, interfaces, traits and exceptions"><span>Tree</span></a>
+			</li>
+		</ul>
+		<ul>
+		</ul>
+	</div>
+
+<div id="content" class="class">
+	<h1>Class CPortalWrapper</h1>
+
+
+	<div class="description">
+	
+<h4>Portal wrapper</h4>
+
+<p>This class overloads its ancestor to implement a series of general purpose
+frameworks.</p>
+
+<p>The class adds the following set of parameters:</p>
+
+<ul>
+	<li><i>Request parameters</i>: These parameters refer to the parameters that the
+	service expects:
+		<ul>
+			<li><i>kAPI_CREDENTIALS</i>: <i>Credentials</i>, this offset tag will be
+			used to provide login or operation credentials, the parameter is expected to be
+			an array whose structure depends on the operation.</li>
+		</ul>
+	</li>
+
+	<li><i>Operations</i>: This class adds the following operations:
+		<ul>
+			<li><i>kAPI_OP_Login</i>: <i>Login</i>, this operation will return the
+			user record corresponding to the provided kAPI_CREDENTIALS credentials
+			parameter. The operation expects the following parameters:
+				<ul>
+					<li><i>kAPI_FORMAT</i>: This parameter is required to indicate how to
+					encode the response.</li>
+
+					<li><i>kAPI_DATABASE</i>: This parameter is required to indicate the
+					working database.</li>
+
+					<li><i>kAPI_CONTAINER</i>: This optional parameter is used to indicate
+					the working container in case of a non-standard configuration.</li>
+
+					<li><i>kAPI_CREDENTIALS</i>: This parameter is required for validating
+					the user:
+						<ul>
+							<li><tt>kAPI_CREDENTIALS_CODE</tt>: User code.</li>
+
+							<li><tt>kAPI_CREDENTIALS_PASS</tt>: User password.</li>
+						</ul>
+						 Note that these parameters may grow in derived classes, this represents the
+						bare minimum.</li>
+				</ul>
+			</li>
+		</ul>
+	</li>
+</ul>
+
+	</div>
+
+	<dl class="tree">
+		<dd style="padding-left:0px">
+			<a href="class-ArrayObject.html"><span>ArrayObject</span></a>
+			
+			 implements 
+				<a href="class-IteratorAggregate.html"><span>IteratorAggregate</span></a>, 
+			
+				<a href="class-Traversable.html"><span>Traversable</span></a>, 
+			
+				<a href="class-ArrayAccess.html"><span>ArrayAccess</span></a>, 
+			
+				<a href="class-Serializable.html"><span>Serializable</span></a>, 
+			
+				<a href="class-Countable.html"><span>Countable</span></a>
+			
+			
+		</dd>
+		<dd style="padding-left:30px">
+			<img src="resources/inherit.png" alt="Extended by" />
+			<a href="class-CDocument.html"><span>CDocument</span></a>
+			
+			
+			
+		</dd>
+		<dd style="padding-left:60px">
+			<img src="resources/inherit.png" alt="Extended by" />
+			<a href="class-CStatusDocument.html"><span>CStatusDocument</span></a>
+			
+			
+			
+		</dd>
+		<dd style="padding-left:90px">
+			<img src="resources/inherit.png" alt="Extended by" />
+			<a href="class-CConnection.html"><span>CConnection</span></a>
+			
+			
+			
+		</dd>
+		<dd style="padding-left:120px">
+			<img src="resources/inherit.png" alt="Extended by" />
+			<a href="class-CWrapper.html"><span>CWrapper</span></a>
+			
+			
+			
+		</dd>
+		<dd style="padding-left:150px">
+			<img src="resources/inherit.png" alt="Extended by" />
+			<a href="class-CDataWrapper.html"><span>CDataWrapper</span></a>
+			
+			
+			
+		</dd>
+		<dd style="padding-left:180px">
+			<img src="resources/inherit.png" alt="Extended by" />
+			<a href="class-COntologyWrapper.html"><span>COntologyWrapper</span></a>
+			
+			
+			
+		</dd>
+		<dd style="padding-left:210px">
+			<img src="resources/inherit.png" alt="Extended by" />
+<b><span>CPortalWrapper</span></b>			
+			
+			
+		</dd>
+	</dl>
+
+
+
+
+
+
+
+
+	<div class="info">
+		
+		
+		
+		<b>Package:</b> <a href="package-MyWrapper.html">MyWrapper</a>\<a href="package-MyWrapper.Wrappers.html">Wrappers</a><br />
+
+				<b>Author:</b>
+				Milko A. Škofič &lt;<a
+href="mailto:m.skofic&#64;cgiar.org">m.skofic&#64;<!---->cgiar.org</a>&gt;<br />
+		<b>Located at</b> <a href="source-class-CPortalWrapper.html#36-680" title="Go to source code">CPortalWrapper.php</a><br />
+	</div>
+
+
+
+	<table class="summary" id="methods">
+	<caption>Methods summary</caption>
+	<tr data-order="_ParseRequest" id="__ParseRequest">
+
+		<td class="attributes"><code>
+			 protected 
+			
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#__ParseRequest">#</a>
+		<code><a href="source-class-CPortalWrapper.html#104-132" title="Go to source code">_ParseRequest</a>( )</code>
+
+		<div class="description short">
+			
+<p>Parse request.</p>
+
+		</div>
+
+		<div class="description detailed hidden">
+			
+<p>Parse request.</p>
+
+<p>This method should be used to parse the request, check the request elements
+and make any necessary adjustments before the request is <code><a href="class-CPortalWrapper.html#__ValidateRequest">CPortalWrapper::_ValidateRequest()</a></code>.</p>
+
+<p>This is also where the relevant request elements will be logged to the
+relative response sections.</p>
+
+<p>The method is called by the constructor and should be overloaded to handle
+derived classes custom elements.</p>
+
+
+
+
+
+
+				<h4>Uses</h4>
+				<div class="list">
+						<code><code><a href="class-CPortalWrapper.html#__ParseCredentials">CPortalWrapper::_ParseCredentials()</a></code></code> <br />
+				</div>
+
+				<h4>Overrides</h4>
+				<div class="list"><code><a href="class-COntologyWrapper.html#__ParseRequest">COntologyWrapper::_ParseRequest()</a></code></div>
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="_FormatRequest" id="__FormatRequest">
+
+		<td class="attributes"><code>
+			 protected 
+			
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#__FormatRequest">#</a>
+		<code><a href="source-class-CPortalWrapper.html#139-162" title="Go to source code">_FormatRequest</a>( )</code>
+
+		<div class="description short">
+			
+<p>Format request.</p>
+
+		</div>
+
+		<div class="description detailed hidden">
+			
+<p>Format request.</p>
+
+<p>This method should perform any needed formatting before the request will be
+handled.</p>
+
+<p>In this class we handle the parameters to be decoded</p>
+
+
+
+
+
+
+				<h4>Uses</h4>
+				<div class="list">
+						<code><code><a href="class-CPortalWrapper.html#__FormatCredentials">CPortalWrapper::_FormatCredentials()</a></code></code> <br />
+				</div>
+
+				<h4>Overrides</h4>
+				<div class="list"><code><a href="class-COntologyWrapper.html#__FormatRequest">COntologyWrapper::_FormatRequest()</a></code></div>
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="_ValidateRequest" id="__ValidateRequest">
+
+		<td class="attributes"><code>
+			 protected 
+			
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#__ValidateRequest">#</a>
+		<code><a href="source-class-CPortalWrapper.html#169-194" title="Go to source code">_ValidateRequest</a>( )</code>
+
+		<div class="description short">
+			
+<p>Validate request.</p>
+
+		</div>
+
+		<div class="description detailed hidden">
+			
+<p>Validate request.</p>
+
+<p>This method should check that the request is valid and that all required
+parameters have been sent.</p>
+
+<p>In this class we check the kAPI_FORMAT and kAPI_OPERATION
+codes (their presence is checked by the constructor.</p>
+
+
+
+
+
+
+				<h4>Uses</h4>
+				<div class="list">
+						<code><code><a href="class-CPortalWrapper.html#__ValidateCredentials">CPortalWrapper::_ValidateCredentials()</a></code></code> <br />
+				</div>
+
+				<h4>Overrides</h4>
+				<div class="list"><code><a href="class-COntologyWrapper.html#__ValidateRequest">COntologyWrapper::_ValidateRequest()</a></code></div>
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="_InitParameters" id="__InitParameters">
+
+		<td class="attributes"><code>
+			 protected 
+			
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#__InitParameters">#</a>
+		<code><a href="source-class-CPortalWrapper.html#210-231" title="Go to source code">_InitParameters</a>( )</code>
+
+		<div class="description short">
+			
+<p>Initialise parameters.</p>
+
+		</div>
+
+		<div class="description detailed hidden">
+			
+<p>Initialise parameters.</p>
+
+<p>This method is responsible for initialising the parameters of the request, in
+this class we decode all local parameters.</p>
+
+
+
+
+
+
+
+				<h4>Overrides</h4>
+				<div class="list"><code><a href="class-COntologyWrapper.html#__InitParameters">COntologyWrapper::_InitParameters()</a></code></div>
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="_ParseOperation" id="__ParseOperation">
+
+		<td class="attributes"><code>
+			 protected 
+			
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#__ParseOperation">#</a>
+		<code><a href="source-class-CPortalWrapper.html#247-286" title="Go to source code">_ParseOperation</a>( )</code>
+
+		<div class="description short">
+			
+<p>Parse operation.</p>
+
+		</div>
+
+		<div class="description detailed hidden">
+			
+<p>Parse operation.</p>
+
+<p>We overload this method to perform the following customisations:</p>
+
+<ul>
+	<li><tt>kAPI_OP_GetRootsByKind</tt>: This operation requires that the
+	page limits be set, only a defined number of records should be returned by a
+	service: if the kAPI_PAGE_LIMIT parameter was not provided, this method
+	will set it to kDEFAULT_LIMIT.</li>
+
+	<li><tt>kAPI_OP_GetVertex</tt>: Same as above.</li>
+</ul>
+
+
+
+
+
+
+				<h4>See</h4>
+				<div class="list">
+						kAPI_OPERATION<br />
+				</div>
+
+				<h4>Overrides</h4>
+				<div class="list"><code><a href="class-COntologyWrapper.html#__ParseOperation">COntologyWrapper::_ParseOperation()</a></code></div>
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="_ParseCredentials" id="__ParseCredentials">
+
+		<td class="attributes"><code>
+			 protected 
+			
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#__ParseCredentials">#</a>
+		<code><a href="source-class-CPortalWrapper.html#293-316" title="Go to source code">_ParseCredentials</a>( )</code>
+
+		<div class="description short">
+			
+<p>Parse credentials.</p>
+
+		</div>
+
+		<div class="description detailed hidden">
+			
+<p>Parse credentials.</p>
+
+<p>This method will copy the credentials parameter to the request block.</p>
+
+
+
+
+
+
+				<h4>See</h4>
+				<div class="list">
+						kAPI_CREDENTIALS kAPI_REQUEST<br />
+				</div>
+				<h4>Uses</h4>
+				<div class="list">
+						<code><code><a href="class-CWrapper.html#__OffsetManage">CWrapper::_OffsetManage()</a></code></code> <br />
+				</div>
+				<h4>Used by</h4>
+				<div class="list">
+						<code><code><a href="class-CPortalWrapper.html#__ParseRequest">CPortalWrapper::_ParseRequest()</a></code></code> <br />
+				</div>
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="_FormatCredentials" id="__FormatCredentials">
+
+		<td class="attributes"><code>
+			 protected 
+			
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#__FormatCredentials">#</a>
+		<code><a href="source-class-CPortalWrapper.html#332-341" title="Go to source code">_FormatCredentials</a>( )</code>
+
+		<div class="description short">
+			
+<p>Format credentials parameters.</p>
+
+		</div>
+
+		<div class="description detailed hidden">
+			
+<p>Format credentials parameters.</p>
+
+<p>This method should format the provided credentials, in this class we do
+nothing.</p>
+
+
+
+
+
+
+				<h4>See</h4>
+				<div class="list">
+						kAPI_CREDENTIALS<br />
+				</div>
+				<h4>Used by</h4>
+				<div class="list">
+						<code><code><a href="class-CPortalWrapper.html#__FormatRequest">CPortalWrapper::_FormatRequest()</a></code></code> <br />
+				</div>
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="_ValidateOperation" id="__ValidateOperation">
+
+		<td class="attributes"><code>
+			 protected 
+			
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#__ValidateOperation">#</a>
+		<code><a href="source-class-CPortalWrapper.html#357-435" title="Go to source code">_ValidateOperation</a>( )</code>
+
+		<div class="description short">
+			
+<p>Validate request operation.</p>
+
+		</div>
+
+		<div class="description detailed hidden">
+			
+<p>Validate request operation.</p>
+
+<p>This method can be used to check whether the provided kAPI_OPERATION
+parameter is valid, in this class we screen and check the dependencies of the
+following operations:</p>
+
+<ul>
+	<li><tt>kAPI_OP_COUNT</tt>: Return the count of a query, this operation
+	requires the following parameters:
+		<ul>
+			<li><tt></tt>.</li>
+		</ul>
+	</li>
+</ul>
+
+
+
+
+
+
+				<h4>See</h4>
+				<div class="list">
+						kAPI_OP_COUNT<br />
+				</div>
+
+				<h4>Overrides</h4>
+				<div class="list"><code><a href="class-COntologyWrapper.html#__ValidateOperation">COntologyWrapper::_ValidateOperation()</a></code></div>
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="_ValidateCredentials" id="__ValidateCredentials">
+
+		<td class="attributes"><code>
+			 protected 
+			
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#__ValidateCredentials">#</a>
+		<code><a href="source-class-CPortalWrapper.html#442-502" title="Go to source code">_ValidateCredentials</a>( )</code>
+
+		<div class="description short">
+			
+<p>Validate credentials parameters.</p>
+
+		</div>
+
+		<div class="description detailed hidden">
+			
+<p>Validate credentials parameters.</p>
+
+<p>The duty of this method is to validate the credentials parameter, in this
+class we perform checks according to the operation:</p>
+
+<ul>
+	<li><tt>kAPI_OP_Login</tt>: We ensure that the <tt>code</tt> and
+	<tt>pass</tt> elements are in the array.</li>
+</ul>
+
+
+
+
+
+
+				<h4>See</h4>
+				<div class="list">
+						kAPI_CREDENTIALS<br />
+				</div>
+				<h4>Used by</h4>
+				<div class="list">
+						<code><code><a href="class-CPortalWrapper.html#__ValidateRequest">CPortalWrapper::_ValidateRequest()</a></code></code> <br />
+				</div>
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="_HandleRequest" id="__HandleRequest">
+
+		<td class="attributes"><code>
+			 protected 
+			
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#__HandleRequest">#</a>
+		<code><a href="source-class-CPortalWrapper.html#518-548" title="Go to source code">_HandleRequest</a>( )</code>
+
+		<div class="description short">
+			
+<p>Handle request.</p>
+
+		</div>
+
+		<div class="description detailed hidden">
+			
+<p>Handle request.</p>
+
+<p>This method will handle the request.</p>
+
+
+
+
+
+
+
+				<h4>Overrides</h4>
+				<div class="list"><code><a href="class-COntologyWrapper.html#__HandleRequest">COntologyWrapper::_HandleRequest()</a></code></div>
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="_Handle_ListOp" id="__Handle_ListOp">
+
+		<td class="attributes"><code>
+			 protected 
+			
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#__Handle_ListOp">#</a>
+		<code><a href="source-class-CPortalWrapper.html#555-577" title="Go to source code">_Handle_ListOp</a>( <span>reference <var>&amp; $theList</var></span> )</code>
+
+		<div class="description short">
+			
+<p>Handle kAPI_OP_HELP operations request.</p>
+
+		</div>
+
+		<div class="description detailed hidden">
+			
+<p>Handle kAPI_OP_HELP operations request.</p>
+
+<p>This method will handle the locally supported operations.</p>
+
+
+
+				<h4>Parameters</h4>
+				<div class="list"><dl>
+					<dt><var>$theList</var></dt>
+					<dd><code>reference</code><br>$theList Receives operations list.</dd>
+				</dl></div>
+
+
+
+
+				<h4>Overrides</h4>
+				<div class="list"><code><a href="class-COntologyWrapper.html#__Handle_ListOp">COntologyWrapper::_Handle_ListOp()</a></code></div>
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="_Handle_Login" id="__Handle_Login">
+
+		<td class="attributes"><code>
+			 protected 
+			
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#__Handle_Login">#</a>
+		<code><a href="source-class-CPortalWrapper.html#584-676" title="Go to source code">_Handle_Login</a>( )</code>
+
+		<div class="description short">
+			
+<p>Handle kAPI_OP_Login request.</p>
+
+		</div>
+
+		<div class="description detailed hidden">
+			
+<p>Handle kAPI_OP_Login request.</p>
+
+<p>This method will handle the kAPI_OP_Login operation, which returns
+the user record upon successful login.</p>
+
+<p>The method will use the kAPI_CREDENTIALS parameter kAPI_CREDENTIALS_CODE element as the user ID and the kAPI_CREDENTIALS_PASS element as the password.</p>
+
+<p>If the the operation succeeds, the method will return the found user in the
+response.</p>
+
+
+
+
+
+
+
+
+		</div>
+		</div></td>
+	</tr>
+	</table>
+
+	<table class="summary inherited">
+	<caption>Methods inherited from <a href="class-COntologyWrapper.html#methods">COntologyWrapper</a></caption>
+	<tr>
+		<td><code>
+			<a href="class-COntologyWrapper.html#__BuildNode">_BuildNode()</a>, 
+			<a href="class-COntologyWrapper.html#__BuildTerm">_BuildTerm()</a>, 
+			<a href="class-COntologyWrapper.html#__ExportEdge">_ExportEdge()</a>, 
+			<a href="class-COntologyWrapper.html#__ExportNode">_ExportNode()</a>, 
+			<a href="class-COntologyWrapper.html#__ExportTag">_ExportTag()</a>, 
+			<a href="class-COntologyWrapper.html#__ExportTerm">_ExportTerm()</a>, 
+			<a href="class-COntologyWrapper.html#__FormatLanguage">_FormatLanguage()</a>, 
+			<a href="class-COntologyWrapper.html#__FormatPredicate">_FormatPredicate()</a>, 
+			<a href="class-COntologyWrapper.html#__FormatRelation">_FormatRelation()</a>, 
+			<a href="class-COntologyWrapper.html#__GetVertexFromNodes">_GetVertexFromNodes()</a>, 
+			<a href="class-COntologyWrapper.html#__GetVertexRelations">_GetVertexRelations()</a>, 
+			<a href="class-COntologyWrapper.html#__Handle_GetVertex">_Handle_GetVertex()</a>, 
+			<a href="class-COntologyWrapper.html#__ParseLanguage">_ParseLanguage()</a>, 
+			<a href="class-COntologyWrapper.html#__ParsePredicate">_ParsePredicate()</a>, 
+			<a href="class-COntologyWrapper.html#__ParseRelation">_ParseRelation()</a>, 
+			<a href="class-COntologyWrapper.html#__ValidateLanguage">_ValidateLanguage()</a>, 
+			<a href="class-COntologyWrapper.html#__ValidatePredicate">_ValidatePredicate()</a>, 
+			<a href="class-COntologyWrapper.html#__ValidateRelation">_ValidateRelation()</a>
+		</code></td>
+	</tr>
+	</table>
+	<table class="summary inherited">
+	<caption>Methods inherited from <a href="class-CDataWrapper.html#methods">CDataWrapper</a></caption>
+	<tr>
+		<td><code>
+			<a href="class-CDataWrapper.html#__FormatClass">_FormatClass()</a>, 
+			<a href="class-CDataWrapper.html#__FormatContainer">_FormatContainer()</a>, 
+			<a href="class-CDataWrapper.html#__FormatDatabase">_FormatDatabase()</a>, 
+			<a href="class-CDataWrapper.html#__FormatObject">_FormatObject()</a>, 
+			<a href="class-CDataWrapper.html#__FormatPaging">_FormatPaging()</a>, 
+			<a href="class-CDataWrapper.html#__FormatQuery">_FormatQuery()</a>, 
+			<a href="class-CDataWrapper.html#__FormatSelect">_FormatSelect()</a>, 
+			<a href="class-CDataWrapper.html#__FormatSort">_FormatSort()</a>, 
+			<a href="class-CDataWrapper.html#__Handle_Count">_Handle_Count()</a>, 
+			<a href="class-CDataWrapper.html#__Handle_Delete">_Handle_Delete()</a>, 
+			<a href="class-CDataWrapper.html#__Handle_Get">_Handle_Get()</a>, 
+			<a href="class-CDataWrapper.html#__Handle_GetOne">_Handle_GetOne()</a>, 
+			<a href="class-CDataWrapper.html#__Handle_Insert">_Handle_Insert()</a>, 
+			<a href="class-CDataWrapper.html#__Handle_Match">_Handle_Match()</a>, 
+			<a href="class-CDataWrapper.html#__Handle_Resolve">_Handle_Resolve()</a>, 
+			<a href="class-CDataWrapper.html#__ParseClass">_ParseClass()</a>, 
+			<a href="class-CDataWrapper.html#__ParseContainer">_ParseContainer()</a>, 
+			<a href="class-CDataWrapper.html#__ParseDatabase">_ParseDatabase()</a>, 
+			<a href="class-CDataWrapper.html#__ParseObject">_ParseObject()</a>, 
+			<a href="class-CDataWrapper.html#__ParsePaging">_ParsePaging()</a>, 
+			<a href="class-CDataWrapper.html#__ParseQuery">_ParseQuery()</a>, 
+			<a href="class-CDataWrapper.html#__ParseSelect">_ParseSelect()</a>, 
+			<a href="class-CDataWrapper.html#__ParseSort">_ParseSort()</a>, 
+			<a href="class-CDataWrapper.html#__ValidateClass">_ValidateClass()</a>, 
+			<a href="class-CDataWrapper.html#__ValidateContainer">_ValidateContainer()</a>, 
+			<a href="class-CDataWrapper.html#__ValidateDatabase">_ValidateDatabase()</a>, 
+			<a href="class-CDataWrapper.html#__ValidateObject">_ValidateObject()</a>, 
+			<a href="class-CDataWrapper.html#__ValidatePaging">_ValidatePaging()</a>, 
+			<a href="class-CDataWrapper.html#__ValidateQuery">_ValidateQuery()</a>, 
+			<a href="class-CDataWrapper.html#__ValidateSelect">_ValidateSelect()</a>, 
+			<a href="class-CDataWrapper.html#__ValidateSort">_ValidateSort()</a>, 
+			<a href="class-CDataWrapper.html#__VerifyQuery">_VerifyQuery()</a>
+		</code></td>
+	</tr>
+	</table>
+	<table class="summary inherited">
+	<caption>Methods inherited from <a href="class-CWrapper.html#methods">CWrapper</a></caption>
+	<tr>
+		<td><code>
+			<a href="class-CWrapper.html#_HandleRequest">HandleRequest()</a>, 
+			<a href="class-CWrapper.html#__DecodeParameter">_DecodeParameter()</a>, 
+			<a href="class-CWrapper.html#__EncodeResponse">_EncodeResponse()</a>, 
+			<a href="class-CWrapper.html#__Exception2Status">_Exception2Status()</a>, 
+			<a href="class-CWrapper.html#__Handle_Ping">_Handle_Ping()</a>, 
+			<a href="class-CWrapper.html#__InitOptions">_InitOptions()</a>, 
+			<a href="class-CWrapper.html#__InitResources">_InitResources()</a>, 
+			<a href="class-CWrapper.html#__InitStatus">_InitStatus()</a>, 
+			<a href="class-CWrapper.html#__OffsetManage">_OffsetManage()</a>, 
+			<a href="class-CWrapper.html#__ParseFormat">_ParseFormat()</a>, 
+			<a href="class-CWrapper.html#__ParseTiming">_ParseTiming()</a>, 
+			<a href="class-CWrapper.html#__ValidateFormat">_ValidateFormat()</a>, 
+			<a href="class-CWrapper.html#___construct">__construct()</a>, 
+			<a href="class-CWrapper.html#___toString">__toString()</a>
+		</code></td>
+	</tr>
+	</table>
+	<table class="summary inherited">
+	<caption>Methods inherited from <a href="class-CConnection.html#methods">CConnection</a></caption>
+	<tr>
+		<td><code>
+			<a href="class-CConnection.html#_Connection">Connection()</a>, 
+			<a href="class-CConnection.html#__Ready">_Ready()</a>
+		</code></td>
+	</tr>
+	</table>
+	<table class="summary inherited">
+	<caption>Methods inherited from <a href="class-CStatusDocument.html#methods">CStatusDocument</a></caption>
+	<tr>
+		<td><code>
+			<a href="class-CStatusDocument.html#__IsCommitted">_IsCommitted()</a>, 
+			<a href="class-CStatusDocument.html#__IsDirty">_IsDirty()</a>, 
+			<a href="class-CStatusDocument.html#__IsEncoded">_IsEncoded()</a>, 
+			<a href="class-CStatusDocument.html#__IsInited">_IsInited()</a>, 
+			<a href="class-CStatusDocument.html#__Postset">_Postset()</a>, 
+			<a href="class-CStatusDocument.html#__Postunset">_Postunset()</a>, 
+			<a href="class-CStatusDocument.html#__Preset">_Preset()</a>, 
+			<a href="class-CStatusDocument.html#__Preunset">_Preunset()</a>, 
+			<a href="class-CStatusDocument.html#_offsetSet">offsetSet()</a>, 
+			<a href="class-CStatusDocument.html#_offsetUnset">offsetUnset()</a>
+		</code></td>
+	</tr>
+	</table>
+	<table class="summary inherited">
+	<caption>Methods inherited from <a href="class-CDocument.html#methods">CDocument</a></caption>
+	<tr>
+		<td><code>
+			<a href="class-CDocument.html#_array_keys">array_keys()</a>, 
+			<a href="class-CDocument.html#_array_values">array_values()</a>, 
+			<a href="class-CDocument.html#_offsetGet">offsetGet()</a>
+		</code></td>
+	</tr>
+	</table>
+	<table class="summary inherited">
+	<caption>Methods inherited from <a href="class-ArrayObject.html#methods">ArrayObject</a></caption>
+	<tr>
+		<td><code>
+			<a href="class-ArrayObject.html#_append">append()</a>, 
+			<a href="class-ArrayObject.html#_asort">asort()</a>, 
+			<a href="class-ArrayObject.html#_count">count()</a>, 
+			<a href="class-ArrayObject.html#_exchangeArray">exchangeArray()</a>, 
+			<a href="class-ArrayObject.html#_getArrayCopy">getArrayCopy()</a>, 
+			<a href="class-ArrayObject.html#_getFlags">getFlags()</a>, 
+			<a href="class-ArrayObject.html#_getIterator">getIterator()</a>, 
+			<a href="class-ArrayObject.html#_getIteratorClass">getIteratorClass()</a>, 
+			<a href="class-ArrayObject.html#_ksort">ksort()</a>, 
+			<a href="class-ArrayObject.html#_natcasesort">natcasesort()</a>, 
+			<a href="class-ArrayObject.html#_natsort">natsort()</a>, 
+			<a href="class-ArrayObject.html#_offsetExists">offsetExists()</a>, 
+			<a href="class-ArrayObject.html#_serialize">serialize()</a>, 
+			<a href="class-ArrayObject.html#_setFlags">setFlags()</a>, 
+			<a href="class-ArrayObject.html#_setIteratorClass">setIteratorClass()</a>, 
+			<a href="class-ArrayObject.html#_uasort">uasort()</a>, 
+			<a href="class-ArrayObject.html#_uksort">uksort()</a>, 
+			<a href="class-ArrayObject.html#_unserialize">unserialize()</a>
+		</code></td>
+	</tr>
+	</table>
+
+
+
+
+
+
+
+
+	<table class="summary inherited">
+	<caption>Constants inherited from <a href="class-ArrayObject.html#constants">ArrayObject</a></caption>
+	<tr>
+		<td><code>
+			<a href="class-ArrayObject.html#ARRAY_AS_PROPS"><b>ARRAY_AS_PROPS</b></a>, 
+			<a href="class-ArrayObject.html#STD_PROP_LIST"><b>STD_PROP_LIST</b></a>
+		</code></td>
+	</tr>
+	</table>
+
+
+
+	<table class="summary" id="properties">
+	<caption>Properties summary</caption>
+	<tr data-order="sParameterList" id="$sParameterList">
+		<td class="attributes"><code>
+			public static 
+			array
+		</code></td>
+
+		<td class="name">
+				<a href="source-class-CPortalWrapper.html#80-88" title="Go to source code"><var>$sParameterList</var></a>
+		</td>
+		<td class="value"><code><span class="php-keyword1">array</span>( kAPI_CREDENTIALS )</code></td>
+		<td class="description"><div>
+			<a href="#$sParameterList" class="anchor">#</a>
+
+			<div class="description short">
+				
+<p><b>Parameters list</b></p>
+
+			</div>
+
+			<div class="description detailed hidden">
+				
+<p><b>Parameters list</b></p>
+
+<p>This static data member holds the list of parameters known by the service,
+these will be decoded before the service will handle them.</p>
+
+
+			</div>
+		</div></td>
+	</tr>
+	</table>
+
+	<table class="summary inherited">
+	<caption>Properties inherited from <a href="class-CConnection.html#properties">CConnection</a></caption>
+	<tr>
+		<td><code>
+			<a href="class-CConnection.html#$mConnection"><var>$mConnection</var></a>
+		</code></td>
+	</tr>
+	</table>
+	<table class="summary inherited">
+	<caption>Properties inherited from <a href="class-CStatusDocument.html#properties">CStatusDocument</a></caption>
+	<tr>
+		<td><code>
+			<a href="class-CStatusDocument.html#$mStatus"><var>$mStatus</var></a>
+		</code></td>
+	</tr>
+	</table>
+
+
+
+
+
+</div>
+
+	<div id="footer">
+		MyWrapper Reference Documentation API documentation generated by <a href="http://apigen.org">ApiGen 2.8.0</a>
+	</div>
+</div>
+</div>
+</body>
+</html>

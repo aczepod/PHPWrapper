@@ -75,6 +75,20 @@ $url = 'http://localhost/mywrapper/MongoOntologyWrapper.php';
 try
 {
 	//
+	// Create container.
+	//
+	echo( '<hr />' );
+	echo( '<h4>Create test container</h4>' );
+	echo( '$server = new CMongoServer();<br />' );
+	$server = New CMongoServer();
+	echo( '$database = $server->Database( "TEST" );<br />' );
+	$database = $server->Database( "TEST" );
+	echo( '$database->Drop();<br />' );
+	$database->Drop();
+	echo( '<hr />' );
+	echo( '<hr />' );
+	
+	//
 	// Parent debug.
 	//
 	if( kDEBUG_PARENT )
@@ -83,7 +97,7 @@ try
 		//
 		// Build object.
 		//
-		$test = new COntologyWrapperClient( $url );
+		$test = new CDataWrapperClient( $url );
 		//
 		// Display.
 		//
@@ -105,8 +119,8 @@ try
 		// Ping wrapper.
 		//
 		$params = array( kAPI_FORMAT => kTYPE_JSON, kAPI_OPERATION => kAPI_OP_PING );
-		echo( '<i>$decoded = COntologyWrapperClient::Request( $url, $params, \'POST\', kTYPE_JSON );</i><br>' );
-		$decoded = COntologyWrapperClient::Request( $url, $params, 'POST', kTYPE_JSON );
+		echo( '<i>$decoded = CDataWrapperClient::Request( $url, $params, \'POST\', kTYPE_JSON );</i><br>' );
+		$decoded = CDataWrapperClient::Request( $url, $params, 'POST', kTYPE_JSON );
 		//
 		// Display.
 		//
@@ -127,8 +141,8 @@ try
 		//
 		// Instantiate.
 		//
-		echo( '<i>$test = new COntologyWrapperClient( $url );</i><br>' );
-		$test = new COntologyWrapperClient( $url );
+		echo( '<i>$test = new CDataWrapperClient( $url );</i><br>' );
+		$test = new CDataWrapperClient( $url );
 		echo( '<i>$test->Operation( kAPI_OP_PING );</i><br>' );
 		$test->Operation( kAPI_OP_PING );
 		echo( '<i>$test->Format( kTYPE_JSON );</i><br>' );
@@ -154,8 +168,8 @@ try
 		//
 		// Instantiate.
 		//
-		echo( '<i>$test = new COntologyWrapperClient();</i><br>' );
-		$test = new COntologyWrapperClient();
+		echo( '<i>$test = new CDataWrapperClient();</i><br>' );
+		$test = new CDataWrapperClient();
 		echo( '<i>$test->Connection( $url );</i><br>' );
 		$test->Connection( $url );
 		echo( '<i>$test->Operation( kAPI_OP_HELP );</i><br>' );
@@ -183,8 +197,8 @@ try
 		//
 		// Instantiate.
 		//
-		echo( '<i>$test = new COntologyWrapperClient();</i><br>' );
-		$test = new COntologyWrapperClient();
+		echo( '<i>$test = new CDataWrapperClient();</i><br>' );
+		$test = new CDataWrapperClient();
 		echo( '<i>$test->Connection( $url );</i><br>' );
 		$test->Connection( $url );
 		echo( '<i>$test->Operation( kAPI_OP_PING );</i><br>' );
@@ -307,13 +321,13 @@ try
 		}
 		echo( '<hr>' );
 		echo( '<hr>' );
-		
+	
 		echo( '<h4>Test container count in JSON</h4>' );
 		//
 		// Instantiate.
 		//
-		echo( '<i>$test = new COntologyWrapperClient( $url );</i><br>' );
-		$test = new COntologyWrapperClient( $url );
+		echo( '<i>$test = new CDataWrapperClient( $url );</i><br>' );
+		$test = new CDataWrapperClient( $url );
 		echo( '<i>$test->Operation( kAPI_OP_COUNT );</i><br>' );
 		$test->Operation( kAPI_OP_COUNT );
 		echo( '<i>$test->Format( kTYPE_JSON );</i><br>' );
@@ -338,13 +352,13 @@ try
 		echo( kSTYLE_ROW_POS );
 		echo( kSTYLE_TABLE_POS );
 		echo( '<hr>' );
-		
+	
 		echo( '<h4>Test container GET in JSON</h4>' );
 		//
 		// Instantiate.
 		//
-		echo( '<i>$test = new COntologyWrapperClient( $url );</i><br>' );
-		$test = new COntologyWrapperClient( $url );
+		echo( '<i>$test = new CDataWrapperClient( $url );</i><br>' );
+		$test = new CDataWrapperClient( $url );
 		echo( '<i>$test->Operation( kAPI_OP_GET );</i><br>' );
 		$test->Operation( kAPI_OP_GET );
 		echo( '<i>$test->Format( kTYPE_JSON );</i><br>' );
@@ -385,13 +399,13 @@ try
 		echo( kSTYLE_ROW_POS );
 		echo( kSTYLE_TABLE_POS );
 		echo( '<hr>' );
-		
+	
 		echo( '<h4>Test container GET ONE in JSON</h4>' );
 		//
 		// Instantiate.
 		//
-		echo( '<i>$test = new COntologyWrapperClient( $url );</i><br>' );
-		$test = new COntologyWrapperClient( $url );
+		echo( '<i>$test = new CDataWrapperClient( $url );</i><br>' );
+		$test = new CDataWrapperClient( $url );
 		echo( '<i>$test->Operation( kAPI_OP_GET_ONE );</i><br>' );
 		$test->Operation( kAPI_OP_GET_ONE );
 		echo( '<i>$test->Format( kTYPE_JSON );</i><br>' );
@@ -428,13 +442,13 @@ try
 		echo( kSTYLE_ROW_POS );
 		echo( kSTYLE_TABLE_POS );
 		echo( '<hr>' );
-		
+	
 		echo( '<h4>Test container MATCH in JSON</h4>' );
 		//
 		// Instantiate.
 		//
-		echo( '<i>$test = new COntologyWrapperClient( $url );</i><br>' );
-		$test = new COntologyWrapperClient( $url );
+		echo( '<i>$test = new CDataWrapperClient( $url );</i><br>' );
+		$test = new CDataWrapperClient( $url );
 		echo( '<i>$test->Operation( kAPI_OP_MATCH );</i><br>' );
 		$test->Operation( kAPI_OP_MATCH );
 		echo( '<i>$test->Format( kTYPE_JSON );</i><br>' );
@@ -467,6 +481,229 @@ try
 		echo( kSTYLE_ROW_POS );
 		echo( kSTYLE_TABLE_POS );
 		echo( '<hr>' );
+	
+		echo( '<h4>Test INSERT array in JSON</h4>' );
+		//
+		// Instantiate.
+		//
+		echo( '<i>$test = new CDataWrapperClient( $url );</i><br>' );
+		$test = new CDataWrapperClient( $url );
+		echo( '<i>$test->Operation( kAPI_OP_INSERT );</i><br>' );
+		$test->Operation( kAPI_OP_INSERT );
+		echo( '<i>$test->Format( kTYPE_JSON );</i><br>' );
+		$test->Format( kTYPE_JSON );
+		echo( '<i>$test->Database( "TEST" );</i><br>' );
+		$test->Database( "TEST" );
+		echo( '<i>$test->Container( "test" );</i><br>' );
+		$test->Container( "test" );
+		echo( '<i>$test->Stamp( TRUE );</i><br>' );
+		$test->Stamp( TRUE );
+		echo( '<i>$test->LogRequest( TRUE );</i><br>' );
+		$test->LogRequest( TRUE );
+		echo( '<i>$test->Object( array( "Name" => "Milko", "Surname" => "Skofic" ) );</i><br>' );
+		$test->Object( array( "Name" => "Milko", "Surname" => "Skofic" ) );
+		echo( '<i>$decoded = $test->Execute( \'POST\' );</i><br>' );
+		$decoded = $test->Execute( 'POST' );
+		//
+		// Display.
+		//
+		echo( kSTYLE_TABLE_PRE );
+		echo( kSTYLE_ROW_PRE );
+		echo( kSTYLE_HEAD_PRE.'Client:'.kSTYLE_HEAD_POS );
+		echo( kSTYLE_DATA_PRE.'<pre>' ); print_r( $test ); echo( '</pre>'.kSTYLE_DATA_POS );
+		echo( kSTYLE_ROW_POS );
+		echo( kSTYLE_ROW_PRE );
+		echo( kSTYLE_HEAD_PRE.'Decoded:'.kSTYLE_HEAD_POS );
+		echo( kSTYLE_DATA_PRE.'<pre>' ); print_r( $decoded ); echo( '</pre>'.kSTYLE_DATA_POS );
+		echo( kSTYLE_ROW_POS );
+		echo( kSTYLE_TABLE_POS );
+		echo( '<hr>' );
+	
+		//
+		// Save ID.
+		//
+		$id1 = $decoded[ ':WS:STATUS' ][ ':STATUS-IDENTIFIER' ];
+	
+		echo( '<h4>Check if object was written</h4>' );
+		//
+		// Instantiate.
+		//
+		echo( '<i>$test = new CDataWrapperClient( $url );</i><br>' );
+		$test = new CDataWrapperClient( $url );
+		echo( '<i>$test->Operation( kAPI_OP_GET_ONE );</i><br>' );
+		$test->Operation( kAPI_OP_GET_ONE );
+		echo( '<i>$test->Format( kTYPE_JSON );</i><br>' );
+		$test->Format( kTYPE_JSON );
+		echo( '<i>$test->Database( "TEST" );</i><br>' );
+		$test->Database( "TEST" );
+		echo( '<i>$test->Container( "test" );</i><br>' );
+		$test->Container( "test" );
+		echo( '<i>$test->AddQueryStatement( kOPERATOR_AND, kTAG_NID, kOPERATOR_EQUAL, $id1, kTYPE_MongoId );</i><br>' );
+		$test->AddQueryStatement( kOPERATOR_AND, kTAG_NID, kOPERATOR_EQUAL, $id1, kTYPE_MongoId );
+		echo( '<i>$decoded = $test->Execute( \'POST\' );</i><br>' );
+		$decoded = $test->Execute( 'POST' );
+		//
+		// Display.
+		//
+		echo( kSTYLE_TABLE_PRE );
+		echo( kSTYLE_ROW_PRE );
+		echo( kSTYLE_HEAD_PRE.'Client:'.kSTYLE_HEAD_POS );
+		echo( kSTYLE_DATA_PRE.'<pre>' ); print_r( $test ); echo( '</pre>'.kSTYLE_DATA_POS );
+		echo( kSTYLE_ROW_POS );
+		echo( kSTYLE_ROW_PRE );
+		echo( kSTYLE_HEAD_PRE.'Decoded:'.kSTYLE_HEAD_POS );
+		echo( kSTYLE_DATA_PRE.'<pre>' ); print_r( $decoded ); echo( '</pre>'.kSTYLE_DATA_POS );
+		echo( kSTYLE_ROW_POS );
+		echo( kSTYLE_TABLE_POS );
+		echo( '<hr>' );
+	
+		echo( '<h4>Test INSERT object in JSON</h4>' );
+		//
+		// Instantiate.
+		//
+		echo( '<i>$object = new CUser();</i><br>' );
+		$object = new CUser();
+		echo( '<i>$object->Code( "code" );</i><br>' );
+		$object->Code( "code" );
+		echo( '<i>$object->Pass( "pass" );</i><br>' );
+		$object->Pass( "pass" );
+		echo( '<i>$object->Name( "Name" );</i><br>' );
+		$object->Name( "Name" );
+		echo( '<i>$object->Mail( "me@me.com" );</i><br>' );
+		$object->Mail( "me@me.com" );
+		echo( '<i>$test = new CDataWrapperClient( $url );</i><br>' );
+		$test = new CDataWrapperClient( $url );
+		echo( '<i>$test->Operation( kAPI_OP_INSERT );</i><br>' );
+		$test->Operation( kAPI_OP_INSERT );
+		echo( '<i>$test->Format( kTYPE_JSON );</i><br>' );
+		$test->Format( kTYPE_JSON );
+		echo( '<i>$test->Database( "TEST" );</i><br>' );
+		$test->Database( "TEST" );
+		echo( '<i>$test->Stamp( TRUE );</i><br>' );
+		$test->Stamp( TRUE );
+		echo( '<i>$test->LogRequest( TRUE );</i><br>' );
+		$test->LogRequest( TRUE );
+		echo( '<i>$test->Object( $object );</i><br>' );
+		$test->Object( $object );
+		echo( '<i>$decoded = $test->Execute( \'POST\' );</i><br>' );
+		$decoded = $test->Execute( 'POST' );
+		//
+		// Display.
+		//
+		echo( kSTYLE_TABLE_PRE );
+		echo( kSTYLE_ROW_PRE );
+		echo( kSTYLE_HEAD_PRE.'Client:'.kSTYLE_HEAD_POS );
+		echo( kSTYLE_DATA_PRE.'<pre>' ); print_r( $test ); echo( '</pre>'.kSTYLE_DATA_POS );
+		echo( kSTYLE_ROW_POS );
+		echo( kSTYLE_ROW_PRE );
+		echo( kSTYLE_HEAD_PRE.'Decoded:'.kSTYLE_HEAD_POS );
+		echo( kSTYLE_DATA_PRE.'<pre>' ); print_r( $decoded ); echo( '</pre>'.kSTYLE_DATA_POS );
+		echo( kSTYLE_ROW_POS );
+		echo( kSTYLE_TABLE_POS );
+		echo( '<hr>' );
+	
+		//
+		// Save ID.
+		//
+		$id2 = $decoded[ ':WS:STATUS' ][ ':STATUS-IDENTIFIER' ];
+	
+		echo( '<h4>Check if object was written</h4>' );
+		//
+		// Instantiate.
+		//
+		echo( '<i>$test = new CDataWrapperClient( $url );</i><br>' );
+		$test = new CDataWrapperClient( $url );
+		echo( '<i>$test->Operation( kAPI_OP_GET_ONE );</i><br>' );
+		$test->Operation( kAPI_OP_GET_ONE );
+		echo( '<i>$test->Format( kTYPE_JSON );</i><br>' );
+		$test->Format( kTYPE_JSON );
+		echo( '<i>$test->Database( "TEST" );</i><br>' );
+		$test->Database( "TEST" );
+		echo( '<i>$test->Container( ":_users" );</i><br>' );
+		$test->Container( ":_users" );
+		echo( '<i>$test->AddQueryStatement( kOPERATOR_AND, kTAG_NID, kOPERATOR_EQUAL, $id2, kTYPE_STRING );</i><br>' );
+		$test->AddQueryStatement( kOPERATOR_AND, kTAG_NID, kOPERATOR_EQUAL, $id2, kTYPE_STRING );
+		echo( '<i>$decoded = $test->Execute( \'POST\' );</i><br>' );
+		$decoded = $test->Execute( 'POST' );
+		//
+		// Display.
+		//
+		echo( kSTYLE_TABLE_PRE );
+		echo( kSTYLE_ROW_PRE );
+		echo( kSTYLE_HEAD_PRE.'Client:'.kSTYLE_HEAD_POS );
+		echo( kSTYLE_DATA_PRE.'<pre>' ); print_r( $test ); echo( '</pre>'.kSTYLE_DATA_POS );
+		echo( kSTYLE_ROW_POS );
+		echo( kSTYLE_ROW_PRE );
+		echo( kSTYLE_HEAD_PRE.'Decoded:'.kSTYLE_HEAD_POS );
+		echo( kSTYLE_DATA_PRE.'<pre>' ); print_r( $decoded ); echo( '</pre>'.kSTYLE_DATA_POS );
+		echo( kSTYLE_ROW_POS );
+		echo( kSTYLE_TABLE_POS );
+		echo( '<hr>' );
+	
+		echo( '<h4>Test delete selection</h4>' );
+		//
+		// Instantiate.
+		//
+		echo( '<i>$test = new CDataWrapperClient( $url );</i><br>' );
+		$test = new CDataWrapperClient( $url );
+		echo( '<i>$test->Operation( kAPI_OP_DELETE );</i><br>' );
+		$test->Operation( kAPI_OP_DELETE );
+		echo( '<i>$test->Format( kTYPE_JSON );</i><br>' );
+		$test->Format( kTYPE_JSON );
+		echo( '<i>$test->Database( "TEST" );</i><br>' );
+		$test->Database( "TEST" );
+		echo( '<i>$test->Container( "test" );</i><br>' );
+		$test->Container( "test" );
+		echo( '<i>$test->AddQueryStatement( kOPERATOR_AND, kTAG_NID, kOPERATOR_EQUAL, $id1, kTYPE_MongoId );</i><br>' );
+		$test->AddQueryStatement( kOPERATOR_AND, kTAG_NID, kOPERATOR_EQUAL, $id1, kTYPE_MongoId );
+		echo( '<i>$decoded = $test->Execute( \'POST\' );</i><br>' );
+		$decoded = $test->Execute( 'POST' );
+		//
+		// Display.
+		//
+		echo( kSTYLE_TABLE_PRE );
+		echo( kSTYLE_ROW_PRE );
+		echo( kSTYLE_HEAD_PRE.'Client:'.kSTYLE_HEAD_POS );
+		echo( kSTYLE_DATA_PRE.'<pre>' ); print_r( $test ); echo( '</pre>'.kSTYLE_DATA_POS );
+		echo( kSTYLE_ROW_POS );
+		echo( kSTYLE_ROW_PRE );
+		echo( kSTYLE_HEAD_PRE.'Decoded:'.kSTYLE_HEAD_POS );
+		echo( kSTYLE_DATA_PRE.'<pre>' ); print_r( $decoded ); echo( '</pre>'.kSTYLE_DATA_POS );
+		echo( kSTYLE_ROW_POS );
+		echo( kSTYLE_TABLE_POS );
+		echo( '<hr>' );
+	
+		echo( '<h4>Test delete object</h4>' );
+		//
+		// Instantiate.
+		//
+		echo( '<i>$test = new CDataWrapperClient( $url );</i><br>' );
+		$test = new CDataWrapperClient( $url );
+		echo( '<i>$test->Operation( kAPI_OP_DELETE );</i><br>' );
+		$test->Operation( kAPI_OP_DELETE );
+		echo( '<i>$test->Format( kTYPE_JSON );</i><br>' );
+		$test->Format( kTYPE_JSON );
+		echo( '<i>$test->Database( "TEST" );</i><br>' );
+		$test->Database( "TEST" );
+		echo( '<i>$test->Classname( "CUser" );</i><br>' );
+		$test->Classname( "CUser" );
+		echo( '<i>$test->Object( $id2 );</i><br>' );
+		$test->Object( $id2 );
+		echo( '<i>$decoded = $test->Execute( \'POST\' );</i><br>' );
+		$decoded = $test->Execute( 'POST' );
+		//
+		// Display.
+		//
+		echo( kSTYLE_TABLE_PRE );
+		echo( kSTYLE_ROW_PRE );
+		echo( kSTYLE_HEAD_PRE.'Client:'.kSTYLE_HEAD_POS );
+		echo( kSTYLE_DATA_PRE.'<pre>' ); print_r( $test ); echo( '</pre>'.kSTYLE_DATA_POS );
+		echo( kSTYLE_ROW_POS );
+		echo( kSTYLE_ROW_PRE );
+		echo( kSTYLE_HEAD_PRE.'Decoded:'.kSTYLE_HEAD_POS );
+		echo( kSTYLE_DATA_PRE.'<pre>' ); print_r( $decoded ); echo( '</pre>'.kSTYLE_DATA_POS );
+		echo( kSTYLE_ROW_POS );
+		echo( kSTYLE_TABLE_POS );
 		echo( '<hr>' );
 	}
 	

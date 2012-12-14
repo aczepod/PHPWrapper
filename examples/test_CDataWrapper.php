@@ -99,7 +99,6 @@ try
 		// Empty request.
 		//
 		$response = file_get_contents( $url );
-		$decoded = JsonDecode( $response );
 		//
 		// Display.
 		//
@@ -114,7 +113,7 @@ try
 		echo( kSTYLE_ROW_POS );
 		echo( kSTYLE_ROW_PRE );
 		echo( kSTYLE_HEAD_PRE.'Decoded:'.kSTYLE_HEAD_POS );
-		echo( kSTYLE_DATA_PRE.'<pre>' ); print_r( $decoded ); echo( '</pre>'.kSTYLE_DATA_POS );
+		echo( kSTYLE_DATA_PRE.'<pre>' ); print_r( JsonDecode( $response ) ); echo( '</pre>'.kSTYLE_DATA_POS );
 		echo( kSTYLE_ROW_POS );
 		echo( kSTYLE_TABLE_POS );
 		echo( '<hr>' );
@@ -128,7 +127,6 @@ try
 		$request = implode( '&', $params );
 		$request = "$url?$request";
 		$response = file_get_contents( $request );
-		$decoded = JsonDecode( $response );
 		//
 		// Display.
 		//
@@ -147,7 +145,7 @@ try
 		echo( kSTYLE_ROW_POS );
 		echo( kSTYLE_ROW_PRE );
 		echo( kSTYLE_HEAD_PRE.'Decoded:'.kSTYLE_HEAD_POS );
-		echo( kSTYLE_DATA_PRE.'<pre>' ); print_r( $decoded ); echo( '</pre>'.kSTYLE_DATA_POS );
+		echo( kSTYLE_DATA_PRE.'<pre>' ); print_r( JsonDecode( $response ) ); echo( '</pre>'.kSTYLE_DATA_POS );
 		echo( kSTYLE_ROW_POS );
 		echo( kSTYLE_TABLE_POS );
 		echo( '<hr>' );
@@ -162,7 +160,6 @@ try
 		$request = implode( '&', $params );
 		$request = "$url?$request";
 		$response = file_get_contents( $request );
-		$decoded = JsonDecode( $response );
 		//
 		// Display.
 		//
@@ -181,7 +178,7 @@ try
 		echo( kSTYLE_ROW_POS );
 		echo( kSTYLE_ROW_PRE );
 		echo( kSTYLE_HEAD_PRE.'Decoded:'.kSTYLE_HEAD_POS );
-		echo( kSTYLE_DATA_PRE.'<pre>' ); print_r( $decoded ); echo( '</pre>'.kSTYLE_DATA_POS );
+		echo( kSTYLE_DATA_PRE.'<pre>' ); print_r( JsonDecode( $response ) ); echo( '</pre>'.kSTYLE_DATA_POS );
 		echo( kSTYLE_ROW_POS );
 		echo( kSTYLE_TABLE_POS );
 		echo( '<hr>' );
@@ -197,7 +194,6 @@ try
 		$request = implode( '&', $params );
 		$request = "$url?$request";
 		$response = file_get_contents( $request );
-		$decoded = JsonDecode( $response );
 		//
 		// Display.
 		//
@@ -216,7 +212,7 @@ try
 		echo( kSTYLE_ROW_POS );
 		echo( kSTYLE_ROW_PRE );
 		echo( kSTYLE_HEAD_PRE.'Decoded:'.kSTYLE_HEAD_POS );
-		echo( kSTYLE_DATA_PRE.'<pre>' ); print_r( $decoded ); echo( '</pre>'.kSTYLE_DATA_POS );
+		echo( kSTYLE_DATA_PRE.'<pre>' ); print_r( JsonDecode( $response ) ); echo( '</pre>'.kSTYLE_DATA_POS );
 		echo( kSTYLE_ROW_POS );
 		echo( kSTYLE_TABLE_POS );
 		echo( '<hr>' );
@@ -230,7 +226,6 @@ try
 		$request = implode( '&', $params );
 		$request = "$url?$request";
 		$response = file_get_contents( $request );
-		$decoded = JsonDecode( $response );
 		//
 		// Display.
 		//
@@ -249,7 +244,7 @@ try
 		echo( kSTYLE_ROW_POS );
 		echo( kSTYLE_ROW_PRE );
 		echo( kSTYLE_HEAD_PRE.'Decoded:'.kSTYLE_HEAD_POS );
-		echo( kSTYLE_DATA_PRE.'<pre>' ); print_r( $decoded ); echo( '</pre>'.kSTYLE_DATA_POS );
+		echo( kSTYLE_DATA_PRE.'<pre>' ); print_r( JsonDecode( $response ) ); echo( '</pre>'.kSTYLE_DATA_POS );
 		echo( kSTYLE_ROW_POS );
 		echo( kSTYLE_TABLE_POS );
 		echo( '<hr>' );
@@ -265,7 +260,6 @@ try
 		$request = implode( '&', $params );
 		$request = "$url?$request";
 		$response = file_get_contents( $request );
-		$decoded = JsonDecode( $response );
 		//
 		// Display.
 		//
@@ -284,7 +278,7 @@ try
 		echo( kSTYLE_ROW_POS );
 		echo( kSTYLE_ROW_PRE );
 		echo( kSTYLE_HEAD_PRE.'Decoded:'.kSTYLE_HEAD_POS );
-		echo( kSTYLE_DATA_PRE.'<pre>' ); print_r( $decoded ); echo( '</pre>'.kSTYLE_DATA_POS );
+		echo( kSTYLE_DATA_PRE.'<pre>' ); print_r( JsonDecode( $response ) ); echo( '</pre>'.kSTYLE_DATA_POS );
 		echo( kSTYLE_ROW_POS );
 		echo( kSTYLE_TABLE_POS );
 		echo( '<hr>' );
@@ -299,7 +293,6 @@ try
 		$request = implode( '&', $params );
 		$request = "$url?$request";
 		$response = file_get_contents( $request );
-		$decoded = JsonDecode( $response );
 		//
 		// Display.
 		//
@@ -318,7 +311,7 @@ try
 		echo( kSTYLE_ROW_POS );
 		echo( kSTYLE_ROW_PRE );
 		echo( kSTYLE_HEAD_PRE.'Decoded:'.kSTYLE_HEAD_POS );
-		echo( kSTYLE_DATA_PRE.'<pre>' ); print_r( $decoded ); echo( '</pre>'.kSTYLE_DATA_POS );
+		echo( kSTYLE_DATA_PRE.'<pre>' ); print_r( JsonDecode( $response ) ); echo( '</pre>'.kSTYLE_DATA_POS );
 		echo( kSTYLE_ROW_POS );
 		echo( kSTYLE_TABLE_POS );
 		echo( '<hr>' );
@@ -337,7 +330,6 @@ try
 	$request = implode( '&', $params );
 	$request = "$url?$request";
 	$response = file_get_contents( $request );
-	$decoded = JsonDecode( $response );
 	//
 	// Display.
 	//
@@ -356,7 +348,7 @@ try
 	echo( kSTYLE_ROW_POS );
 	echo( kSTYLE_ROW_PRE );
 	echo( kSTYLE_HEAD_PRE.'Decoded:'.kSTYLE_HEAD_POS );
-	echo( kSTYLE_DATA_PRE.'<pre>' ); print_r( $decoded ); echo( '</pre>'.kSTYLE_DATA_POS );
+	echo( kSTYLE_DATA_PRE.'<pre>' ); print_r( JsonDecode( $response ) ); echo( '</pre>'.kSTYLE_DATA_POS );
 	echo( kSTYLE_ROW_POS );
 	echo( kSTYLE_TABLE_POS );
 	echo( '<hr>' );
@@ -373,7 +365,6 @@ try
 	$request = implode( '&', $params );
 	$request = "$url?$request";
 	$response = file_get_contents( $request );
-	$decoded = JsonDecode( $response );
 	//
 	// Display.
 	//
@@ -392,7 +383,7 @@ try
 	echo( kSTYLE_ROW_POS );
 	echo( kSTYLE_ROW_PRE );
 	echo( kSTYLE_HEAD_PRE.'Decoded:'.kSTYLE_HEAD_POS );
-	echo( kSTYLE_DATA_PRE.'<pre>' ); print_r( $decoded ); echo( '</pre>'.kSTYLE_DATA_POS );
+	echo( kSTYLE_DATA_PRE.'<pre>' ); print_r( JsonDecode( $response ) ); echo( '</pre>'.kSTYLE_DATA_POS );
 	echo( kSTYLE_ROW_POS );
 	echo( kSTYLE_TABLE_POS );
 	echo( '<hr>' );
@@ -409,7 +400,6 @@ try
 	$request = implode( '&', $params );
 	$request = "$url?$request";
 	$response = file_get_contents( $request );
-	$decoded = JsonDecode( $response );
 	//
 	// Display.
 	//
@@ -428,7 +418,7 @@ try
 	echo( kSTYLE_ROW_POS );
 	echo( kSTYLE_ROW_PRE );
 	echo( kSTYLE_HEAD_PRE.'Decoded:'.kSTYLE_HEAD_POS );
-	echo( kSTYLE_DATA_PRE.'<pre>' ); print_r( $decoded ); echo( '</pre>'.kSTYLE_DATA_POS );
+	echo( kSTYLE_DATA_PRE.'<pre>' ); print_r( JsonDecode( $response ) ); echo( '</pre>'.kSTYLE_DATA_POS );
 	echo( kSTYLE_ROW_POS );
 	echo( kSTYLE_TABLE_POS );
 	echo( '<hr>' );
@@ -445,7 +435,6 @@ try
 	$request = implode( '&', $params );
 	$request = "$url?$request";
 	$response = file_get_contents( $request );
-	$decoded = JsonDecode( $response );
 	//
 	// Display.
 	//
@@ -464,7 +453,7 @@ try
 	echo( kSTYLE_ROW_POS );
 	echo( kSTYLE_ROW_PRE );
 	echo( kSTYLE_HEAD_PRE.'Decoded:'.kSTYLE_HEAD_POS );
-	echo( kSTYLE_DATA_PRE.'<pre>' ); print_r( $decoded ); echo( '</pre>'.kSTYLE_DATA_POS );
+	echo( kSTYLE_DATA_PRE.'<pre>' ); print_r( JsonDecode( $response ) ); echo( '</pre>'.kSTYLE_DATA_POS );
 	echo( kSTYLE_ROW_POS );
 	echo( kSTYLE_TABLE_POS );
 	echo( '<hr>' );
@@ -497,7 +486,6 @@ try
 					 (kAPI_QUERY.'='.urlencode(JsonEncode($query))) );
 	$request = $url.'?'.implode( '&', $params );
 	$response = file_get_contents( $request );
-	$decoded = JsonDecode( $response );
 	//
 	// Display.
 	//
@@ -512,7 +500,7 @@ try
 	echo( kSTYLE_ROW_POS );
 	echo( kSTYLE_ROW_PRE );
 	echo( kSTYLE_HEAD_PRE.'Decoded:'.kSTYLE_HEAD_POS );
-	echo( kSTYLE_DATA_PRE.'<pre>' ); print_r( $decoded ); echo( '</pre>'.kSTYLE_DATA_POS );
+	echo( kSTYLE_DATA_PRE.'<pre>' ); print_r( JsonDecode( $response ) ); echo( '</pre>'.kSTYLE_DATA_POS );
 	echo( kSTYLE_ROW_POS );
 	echo( kSTYLE_TABLE_POS );
 	echo( '<hr>' );
@@ -545,7 +533,6 @@ try
 					 (kAPI_QUERY.'='.urlencode(serialize($query))) );
 	$request = $url.'?'.implode( '&', $params );
 	$response = file_get_contents( $request );
-	$decoded = unserialize( $response );
 	//
 	// Display.
 	//
@@ -560,7 +547,7 @@ try
 	echo( kSTYLE_ROW_POS );
 	echo( kSTYLE_ROW_PRE );
 	echo( kSTYLE_HEAD_PRE.'Decoded:'.kSTYLE_HEAD_POS );
-	echo( kSTYLE_DATA_PRE.'<pre>' ); print_r( $decoded ); echo( '</pre>'.kSTYLE_DATA_POS );
+	echo( kSTYLE_DATA_PRE.'<pre>' ); print_r( unserialize( $response ) ); echo( '</pre>'.kSTYLE_DATA_POS );
 	echo( kSTYLE_ROW_POS );
 	echo( kSTYLE_TABLE_POS );
 	echo( '<hr>' );
@@ -579,7 +566,6 @@ try
 					 (kAPI_CONTAINER.'='.urlencode(JsonEncode(':_terms'))) );
 	$request = $url.'?'.implode( '&', $params );
 	$response = file_get_contents( $request );
-	$decoded = JsonDecode( $response );
 	//
 	// Display.
 	//
@@ -594,7 +580,7 @@ try
 	echo( kSTYLE_ROW_POS );
 	echo( kSTYLE_ROW_PRE );
 	echo( kSTYLE_HEAD_PRE.'Decoded:'.kSTYLE_HEAD_POS );
-	echo( kSTYLE_DATA_PRE.'<pre>' ); print_r( $decoded ); echo( '</pre>'.kSTYLE_DATA_POS );
+	echo( kSTYLE_DATA_PRE.'<pre>' ); print_r( JsonDecode( $response ) ); echo( '</pre>'.kSTYLE_DATA_POS );
 	echo( kSTYLE_ROW_POS );
 	echo( kSTYLE_TABLE_POS );
 	echo( '<hr>' );
@@ -631,7 +617,6 @@ try
 					 (kAPI_SORT.'='.urlencode(JsonEncode($sort))) );
 	$request = $url.'?'.implode( '&', $params );
 	$response = file_get_contents( $request );
-	$decoded = JsonDecode( $response );
 	//
 	// Display.
 	//
@@ -646,7 +631,7 @@ try
 	echo( kSTYLE_ROW_POS );
 	echo( kSTYLE_ROW_PRE );
 	echo( kSTYLE_HEAD_PRE.'Decoded:'.kSTYLE_HEAD_POS );
-	echo( kSTYLE_DATA_PRE.'<pre>' ); print_r( $decoded ); echo( '</pre>'.kSTYLE_DATA_POS );
+	echo( kSTYLE_DATA_PRE.'<pre>' ); print_r( JsonDecode( $response ) ); echo( '</pre>'.kSTYLE_DATA_POS );
 	echo( kSTYLE_ROW_POS );
 	echo( kSTYLE_TABLE_POS );
 	echo( '<hr>' );
@@ -683,7 +668,6 @@ try
 					 (kAPI_SORT.'='.urlencode(serialize($sort))) );
 	$request = $url.'?'.implode( '&', $params );
 	$response = file_get_contents( $request );
-	$decoded = unserialize( $response );
 	//
 	// Display.
 	//
@@ -698,7 +682,7 @@ try
 	echo( kSTYLE_ROW_POS );
 	echo( kSTYLE_ROW_PRE );
 	echo( kSTYLE_HEAD_PRE.'Decoded:'.kSTYLE_HEAD_POS );
-	echo( kSTYLE_DATA_PRE.'<pre>' ); print_r( $decoded ); echo( '</pre>'.kSTYLE_DATA_POS );
+	echo( kSTYLE_DATA_PRE.'<pre>' ); print_r( unserialize( $response ) ); echo( '</pre>'.kSTYLE_DATA_POS );
 	echo( kSTYLE_ROW_POS );
 	echo( kSTYLE_TABLE_POS );
 	echo( '<hr>' );
@@ -735,7 +719,6 @@ try
 					 (kAPI_SORT.'='.urlencode(JsonEncode($sort))) );
 	$request = $url.'?'.implode( '&', $params );
 	$response = file_get_contents( $request );
-	$decoded = JsonDecode( $response );
 	//
 	// Display.
 	//
@@ -750,7 +733,7 @@ try
 	echo( kSTYLE_ROW_POS );
 	echo( kSTYLE_ROW_PRE );
 	echo( kSTYLE_HEAD_PRE.'Decoded:'.kSTYLE_HEAD_POS );
-	echo( kSTYLE_DATA_PRE.'<pre>' ); print_r( $decoded ); echo( '</pre>'.kSTYLE_DATA_POS );
+	echo( kSTYLE_DATA_PRE.'<pre>' ); print_r( JsonDecode( $response ) ); echo( '</pre>'.kSTYLE_DATA_POS );
 	echo( kSTYLE_ROW_POS );
 	echo( kSTYLE_TABLE_POS );
 	echo( '<hr>' );
@@ -816,7 +799,6 @@ try
 					 (kAPI_SORT.'='.urlencode(JsonEncode($sort))) );
 	$request = $url.'?'.implode( '&', $params );
 	$response = file_get_contents( $request );
-	$decoded = JsonDecode( $response );
 	//
 	// Display.
 	//
@@ -831,7 +813,7 @@ try
 	echo( kSTYLE_ROW_POS );
 	echo( kSTYLE_ROW_PRE );
 	echo( kSTYLE_HEAD_PRE.'Decoded:'.kSTYLE_HEAD_POS );
-	echo( kSTYLE_DATA_PRE.'<pre>' ); print_r( $decoded ); echo( '</pre>'.kSTYLE_DATA_POS );
+	echo( kSTYLE_DATA_PRE.'<pre>' ); print_r( JsonDecode( $response ) ); echo( '</pre>'.kSTYLE_DATA_POS );
 	echo( kSTYLE_ROW_POS );
 	echo( kSTYLE_TABLE_POS );
 	echo( '<hr>' );
@@ -854,7 +836,6 @@ try
 					 (kAPI_OBJECT.'='.urlencode(JsonEncode($object))) );
 	$request = $url.'?'.implode( '&', $params );
 	$response = file_get_contents( $request );
-	$decoded = JsonDecode( $response );
 	//
 	// Display.
 	//
@@ -869,7 +850,7 @@ try
 	echo( kSTYLE_ROW_POS );
 	echo( kSTYLE_ROW_PRE );
 	echo( kSTYLE_HEAD_PRE.'Decoded:'.kSTYLE_HEAD_POS );
-	echo( kSTYLE_DATA_PRE.'<pre>' ); print_r( $decoded ); echo( '</pre>'.kSTYLE_DATA_POS );
+	echo( kSTYLE_DATA_PRE.'<pre>' ); print_r( JsonDecode( $response ) ); echo( '</pre>'.kSTYLE_DATA_POS );
 	echo( kSTYLE_ROW_POS );
 	echo( kSTYLE_TABLE_POS );
 	echo( '<hr>' );
@@ -877,7 +858,7 @@ try
 	//
 	// Save ID.
 	//
-	$id1 = $decoded[ ':WS:STATUS' ][ ':STATUS-IDENTIFIER' ];
+	$id1 = JsonDecode( $response )[ ':WS:STATUS' ][ ':STATUS-IDENTIFIER' ];
 
 	echo( '<h4>Check if object was written</h4>' );
 	//
@@ -905,7 +886,6 @@ try
 					 (kAPI_QUERY.'='.urlencode(JsonEncode($query))) );
 	$request = $url.'?'.implode( '&', $params );
 	$response = file_get_contents( $request );
-	$decoded = JsonDecode( $response );
 	//
 	// Display.
 	//
@@ -920,7 +900,7 @@ try
 	echo( kSTYLE_ROW_POS );
 	echo( kSTYLE_ROW_PRE );
 	echo( kSTYLE_HEAD_PRE.'Decoded:'.kSTYLE_HEAD_POS );
-	echo( kSTYLE_DATA_PRE.'<pre>' ); print_r( $decoded ); echo( '</pre>'.kSTYLE_DATA_POS );
+	echo( kSTYLE_DATA_PRE.'<pre>' ); print_r( JsonDecode( $response ) ); echo( '</pre>'.kSTYLE_DATA_POS );
 	echo( kSTYLE_ROW_POS );
 	echo( kSTYLE_TABLE_POS );
 	echo( '<hr>' );
@@ -943,7 +923,6 @@ try
 					 (kAPI_OBJECT.'='.urlencode(JsonEncode($object))) );
 	$request = $url.'?'.implode( '&', $params );
 	$response = file_get_contents( $request );
-	$decoded = JsonDecode( $response );
 	//
 	// Display.
 	//
@@ -958,7 +937,7 @@ try
 	echo( kSTYLE_ROW_POS );
 	echo( kSTYLE_ROW_PRE );
 	echo( kSTYLE_HEAD_PRE.'Decoded:'.kSTYLE_HEAD_POS );
-	echo( kSTYLE_DATA_PRE.'<pre>' ); print_r( $decoded ); echo( '</pre>'.kSTYLE_DATA_POS );
+	echo( kSTYLE_DATA_PRE.'<pre>' ); print_r( JsonDecode( $response ) ); echo( '</pre>'.kSTYLE_DATA_POS );
 	echo( kSTYLE_ROW_POS );
 	echo( kSTYLE_TABLE_POS );
 	echo( '<hr>' );
@@ -966,7 +945,7 @@ try
 	//
 	// Save ID.
 	//
-	$id2 = $decoded[ ':WS:STATUS' ][ ':STATUS-IDENTIFIER' ];
+	$id2 = JsonDecode( $response )[ ':WS:STATUS' ][ ':STATUS-IDENTIFIER' ];
 
 	echo( '<h4>Check if object was written</h4>' );
 	//
@@ -994,7 +973,6 @@ try
 					 (kAPI_QUERY.'='.urlencode(JsonEncode($query))) );
 	$request = $url.'?'.implode( '&', $params );
 	$response = file_get_contents( $request );
-	$decoded = JsonDecode( $response );
 	//
 	// Display.
 	//
@@ -1009,7 +987,7 @@ try
 	echo( kSTYLE_ROW_POS );
 	echo( kSTYLE_ROW_PRE );
 	echo( kSTYLE_HEAD_PRE.'Decoded:'.kSTYLE_HEAD_POS );
-	echo( kSTYLE_DATA_PRE.'<pre>' ); print_r( $decoded ); echo( '</pre>'.kSTYLE_DATA_POS );
+	echo( kSTYLE_DATA_PRE.'<pre>' ); print_r( JsonDecode( $response ) ); echo( '</pre>'.kSTYLE_DATA_POS );
 	echo( kSTYLE_ROW_POS );
 	echo( kSTYLE_TABLE_POS );
 	echo( '<hr>' );
@@ -1040,7 +1018,6 @@ try
 					 (kAPI_QUERY.'='.urlencode(JsonEncode($query))) );
 	$request = $url.'?'.implode( '&', $params );
 	$response = file_get_contents( $request );
-	$decoded = JsonDecode( $response );
 	//
 	// Display.
 	//
@@ -1055,7 +1032,7 @@ try
 	echo( kSTYLE_ROW_POS );
 	echo( kSTYLE_ROW_PRE );
 	echo( kSTYLE_HEAD_PRE.'Decoded:'.kSTYLE_HEAD_POS );
-	echo( kSTYLE_DATA_PRE.'<pre>' ); print_r( $decoded ); echo( '</pre>'.kSTYLE_DATA_POS );
+	echo( kSTYLE_DATA_PRE.'<pre>' ); print_r( JsonDecode( $response ) ); echo( '</pre>'.kSTYLE_DATA_POS );
 	echo( kSTYLE_ROW_POS );
 	echo( kSTYLE_TABLE_POS );
 	echo( '<hr>' );

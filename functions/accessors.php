@@ -527,10 +527,10 @@ require_once( kPATH_MYWRAPPER_LIBRARY_DEFINE."/Errors.inc.php" );
 	 *	 </ul>
 	 *	<li><tt>$getOld</tt>: Determines what the method will return:
 	 *	 <ul>
-	 *		<li><tt>TRUE</tt>: Return the value of the offset <i>before</i> it was eventually
-	 *			modified.
-	 *		<li><tt>FALSE</tt>: Return the value of the offset <i>after</i> it was eventually
-	 *			modified.
+	 *		<li><tt>TRUE</tt>: Return the value of the offset <i>before</i> it was
+	 *			eventually modified.
+	 *		<li><tt>FALSE</tt>: Return the value of the offset <i>after</i> it was
+	 *			eventually modified.
 	 *	 </ul>
 	 * </ul>
 	 *

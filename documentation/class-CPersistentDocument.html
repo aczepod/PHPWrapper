@@ -7,7 +7,7 @@
 	<title>Class CPersistentDocument | MyWrapper Reference Documentation</title>
 
 	<script type="text/javascript" src="resources/combined.js?3680114562"></script>
-	<script type="text/javascript" src="elementlist.js?1535324545"></script>
+	<script type="text/javascript" src="elementlist.js?1324799474"></script>
 	<link rel="stylesheet" type="text/css" media="all" href="resources/style.css?3505392360" />
 
 </head>
@@ -231,7 +231,7 @@ is deleted.</p>
 				<b>Author:</b>
 				Milko A. Škofič &lt;<a
 href="mailto:m.skofic&#64;cgiar.org">m.skofic&#64;<!---->cgiar.org</a>&gt;<br />
-		<b>Located at</b> <a href="source-class-CPersistentDocument.html#43-1389" title="Go to source code">CPersistentDocument.php</a><br />
+		<b>Located at</b> <a href="source-class-CPersistentDocument.html#43-1451" title="Go to source code">CPersistentDocument.php</a><br />
 	</div>
 
 
@@ -765,7 +765,7 @@ method was called.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#_DefaultDatabase">#</a>
-		<code><a href="source-class-CPersistentDocument.html#650-667" title="Go to source code">DefaultDatabase</a>( <span><code><a href="class-CServer.html">CServer</a></code> <var>$theServer</var></span> )</code>
+		<code><a href="source-class-CPersistentDocument.html#650-678" title="Go to source code">DefaultDatabase</a>( <span><code><a href="class-CServer.html">CServer</a></code> <var>$theServer</var></span> )</code>
 
 		<div class="description short">
 			
@@ -804,6 +804,53 @@ a server. It expects a <code><a href="class-CServer.html">CServer</a></code> der
 		</div>
 		</div></td>
 	</tr>
+	<tr data-order="DefaultDatabaseName" id="_DefaultDatabaseName">
+
+		<td class="attributes"><code>
+			 public static
+			string
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_DefaultDatabaseName">#</a>
+		<code><a href="source-class-CPersistentDocument.html#685-698" title="Go to source code">DefaultDatabaseName</a>( )</code>
+
+		<div class="description short">
+			
+<h4>Return the default database name</h4>
+
+		</div>
+
+		<div class="description detailed hidden">
+			
+<h4>Return the default database name</h4>
+
+<p>This method should return the default database name used by instances of the
+class, this will be used to resolve databases from servers.</p>
+
+<p>This class does not have a default database name, so it will return
+<tt>NULL</tt>.</p>
+
+
+
+
+				<h4>Returns</h4>
+				<div class="list">
+					<code>string</code><br>The default database name.<br />
+				</div>
+
+				<h4>Throws</h4>
+				<div class="list">
+					<code><code><a href="class-Exception.html">Exception</a></code></code><br />
+				</div>
+
+
+
+		</div>
+		</div></td>
+	</tr>
 	<tr data-order="DefaultContainer" id="_DefaultContainer">
 
 		<td class="attributes"><code>
@@ -815,26 +862,24 @@ a server. It expects a <code><a href="class-CServer.html">CServer</a></code> der
 
 		<td class="name"><div>
 		<a class="anchor" href="#_DefaultContainer">#</a>
-		<code><a href="source-class-CPersistentDocument.html#674-691" title="Go to source code">DefaultContainer</a>( <span><code><a href="class-CDatabase.html">CDatabase</a></code> <var>$theDatabase</var></span> )</code>
+		<code><a href="source-class-CPersistentDocument.html#705-733" title="Go to source code">DefaultContainer</a>( <span><code><a href="class-CDatabase.html">CDatabase</a></code> <var>$theDatabase</var></span> )</code>
 
 		<div class="description short">
 			
-<h4>Return the object default container</h4>
+<h4>Return the default container</h4>
 
 		</div>
 
 		<div class="description detailed hidden">
 			
-<h4>Return the object default container</h4>
+<h4>Return the default container</h4>
 
-<p>This static method should be used to get the the class default container
-given a database. It expects a <code><a href="class-CDatabase.html">CDatabase</a></code> derived object and should
-return a <code><a href="class-CContainer.html">CContainer</a></code> derived object.</p>
+<p>The container will be created or fetched from the provided database using the
+static <code><a href="class-CPersistentDocument.html#_DefaultContainerName">CPersistentDocument::DefaultContainerName()</a></code> name.</p>
 
-<p>If the class does not feature a default container, this method should return
-<tt>NULL</tt>.</p>
-
-<p>By default we assume no default containers.</p>
+<p>If the class features a container name, this method will return a
+corresponding container object; if the class does not feature a container name,
+the method will return <tt>NULL</tt>.</p>
 
 
 
@@ -846,10 +891,65 @@ return a <code><a href="class-CContainer.html">CContainer</a></code> derived obj
 
 				<h4>Returns</h4>
 				<div class="list">
-					<code><code><a href="class-CContainer.html">CContainer</a></code></code><br>The default container.<br />
+					<code><code><a href="class-CContainer.html">CContainer</a></code></code><br>The default container or <tt>NULL</tt>.<br />
 				</div>
 
 
+				<h4>Uses</h4>
+				<div class="list">
+						<code><code><a href="class-CPersistentDocument.html#_DefaultContainerName">CPersistentDocument::DefaultContainerName()</a></code></code> <br />
+				</div>
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="DefaultContainerName" id="_DefaultContainerName">
+
+		<td class="attributes"><code>
+			 public static
+			string
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_DefaultContainerName">#</a>
+		<code><a href="source-class-CPersistentDocument.html#740-753" title="Go to source code">DefaultContainerName</a>( )</code>
+
+		<div class="description short">
+			
+<h4>Return the default container name</h4>
+
+		</div>
+
+		<div class="description detailed hidden">
+			
+<h4>Return the default container name</h4>
+
+<p>This method should return the default container name used by instances of the
+class, this will be used to resolve containers from databases.</p>
+
+<p>This class does not have a default container name, so it will return
+<tt>NULL</tt>.</p>
+
+
+
+
+				<h4>Returns</h4>
+				<div class="list">
+					<code>string</code><br>The default container name.<br />
+				</div>
+
+				<h4>Throws</h4>
+				<div class="list">
+					<code><code><a href="class-Exception.html">Exception</a></code></code><br />
+				</div>
+
+				<h4>Used by</h4>
+				<div class="list">
+						<code><code><a href="class-CPersistentDocument.html#_DefaultContainer">CPersistentDocument::DefaultContainer()</a></code></code> <br />
+				</div>
 
 
 		</div>
@@ -866,7 +966,7 @@ return a <code><a href="class-CContainer.html">CContainer</a></code> derived obj
 
 		<td class="name"><div>
 		<a class="anchor" href="#_ResolveContainer">#</a>
-		<code><a href="source-class-CPersistentDocument.html#698-792" title="Go to source code">ResolveContainer</a>( <span><code><a href="class-CConnection.html">CConnection</a></code> <var>$theConnection</var></span>, <span>boolean <var>$doException</var></span> )</code>
+		<code><a href="source-class-CPersistentDocument.html#760-854" title="Go to source code">ResolveContainer</a>( <span><code><a href="class-CConnection.html">CConnection</a></code> <var>$theConnection</var></span>, <span>boolean <var>$doException</var></span> )</code>
 
 		<div class="description short">
 			
@@ -934,7 +1034,7 @@ parameter if the first parameter is neither a <code><a href="class-CServer.html"
 
 		<td class="name"><div>
 		<a class="anchor" href="#_ResolveClassContainer">#</a>
-		<code><a href="source-class-CPersistentDocument.html#799-853" title="Go to source code">ResolveClassContainer</a>( <span><code><a href="class-CConnection.html">CConnection</a></code> <var>$theConnection</var></span>, <span>boolean <var>$doException</var></span> )</code>
+		<code><a href="source-class-CPersistentDocument.html#861-915" title="Go to source code">ResolveClassContainer</a>( <span><code><a href="class-CConnection.html">CConnection</a></code> <var>$theConnection</var></span>, <span>boolean <var>$doException</var></span> )</code>
 
 		<div class="description short">
 			
@@ -996,7 +1096,7 @@ parameter if the first parameter is neither a <code><a href="class-CServer.html"
 
 		<td class="name"><div>
 		<a class="anchor" href="#__Precommit">#</a>
-		<code><a href="source-class-CPersistentDocument.html#869-950" title="Go to source code">_Precommit</a>( <span><code><a href="class-CConnection.html">CConnection</a></code> <var>$theConnection</var></span>, <span>bitfield <var>$theModifiers</var> = kFLAG_DEFAULT </span> )</code>
+		<code><a href="source-class-CPersistentDocument.html#931-1012" title="Go to source code">_Precommit</a>( <span><code><a href="class-CConnection.html">CConnection</a></code> <var>$theConnection</var></span>, <span>bitfield <var>$theModifiers</var> = kFLAG_DEFAULT </span> )</code>
 
 		<div class="description short">
 			
@@ -1109,7 +1209,7 @@ be raised.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#__Postcommit">#</a>
-		<code><a href="source-class-CPersistentDocument.html#957-1021" title="Go to source code">_Postcommit</a>( <span><code><a href="class-CConnection.html">CConnection</a></code> <var>$theConnection</var></span>, <span>bitfield <var>$theModifiers</var> = kFLAG_DEFAULT </span> )</code>
+		<code><a href="source-class-CPersistentDocument.html#1019-1083" title="Go to source code">_Postcommit</a>( <span><code><a href="class-CConnection.html">CConnection</a></code> <var>$theConnection</var></span>, <span>bitfield <var>$theModifiers</var> = kFLAG_DEFAULT </span> )</code>
 
 		<div class="description short">
 			
@@ -1207,7 +1307,7 @@ this one.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#__PrecommitValidate">#</a>
-		<code><a href="source-class-CPersistentDocument.html#1037-1106" title="Go to source code">_PrecommitValidate</a>( <span>reference <var>&amp; $theConnection</var></span>, <span>reference <var>&amp; $theModifiers</var></span> )</code>
+		<code><a href="source-class-CPersistentDocument.html#1099-1168" title="Go to source code">_PrecommitValidate</a>( <span>reference <var>&amp; $theConnection</var></span>, <span>reference <var>&amp; $theModifiers</var></span> )</code>
 
 		<div class="description short">
 			
@@ -1306,7 +1406,7 @@ method should raise an exception.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#__PrecommitRelated">#</a>
-		<code><a href="source-class-CPersistentDocument.html#1113-1159" title="Go to source code">_PrecommitRelated</a>( <span>reference <var>&amp; $theConnection</var></span>, <span>reference <var>&amp; $theModifiers</var></span> )</code>
+		<code><a href="source-class-CPersistentDocument.html#1175-1221" title="Go to source code">_PrecommitRelated</a>( <span>reference <var>&amp; $theConnection</var></span>, <span>reference <var>&amp; $theModifiers</var></span> )</code>
 
 		<div class="description short">
 			
@@ -1393,7 +1493,7 @@ exception.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#__PrecommitIdentify">#</a>
-		<code><a href="source-class-CPersistentDocument.html#1166-1214" title="Go to source code">_PrecommitIdentify</a>( <span>reference <var>&amp; $theConnection</var></span>, <span>reference <var>&amp; $theModifiers</var></span> )</code>
+		<code><a href="source-class-CPersistentDocument.html#1228-1276" title="Go to source code">_PrecommitIdentify</a>( <span>reference <var>&amp; $theConnection</var></span>, <span>reference <var>&amp; $theModifiers</var></span> )</code>
 
 		<div class="description short">
 			
@@ -1482,7 +1582,7 @@ exception.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#__PostcommitRelated">#</a>
-		<code><a href="source-class-CPersistentDocument.html#1230-1263" title="Go to source code">_PostcommitRelated</a>( <span>reference <var>&amp; $theConnection</var></span>, <span>reference <var>&amp; $theModifiers</var></span> )</code>
+		<code><a href="source-class-CPersistentDocument.html#1292-1325" title="Go to source code">_PostcommitRelated</a>( <span>reference <var>&amp; $theConnection</var></span>, <span>reference <var>&amp; $theModifiers</var></span> )</code>
 
 		<div class="description short">
 			
@@ -1556,7 +1656,7 @@ status gets reset.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#__PostcommitStatus">#</a>
-		<code><a href="source-class-CPersistentDocument.html#1270-1339" title="Go to source code">_PostcommitStatus</a>( <span>reference <var>&amp; $theConnection</var></span>, <span>reference <var>&amp; $theModifiers</var></span> )</code>
+		<code><a href="source-class-CPersistentDocument.html#1332-1401" title="Go to source code">_PostcommitStatus</a>( <span>reference <var>&amp; $theConnection</var></span>, <span>reference <var>&amp; $theModifiers</var></span> )</code>
 
 		<div class="description short">
 			
@@ -1643,7 +1743,7 @@ resetting it after deleting.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#__PostcommitCleanup">#</a>
-		<code><a href="source-class-CPersistentDocument.html#1346-1385" title="Go to source code">_PostcommitCleanup</a>( <span>reference <var>&amp; $theConnection</var></span>, <span>reference <var>&amp; $theModifiers</var></span> )</code>
+		<code><a href="source-class-CPersistentDocument.html#1408-1447" title="Go to source code">_PostcommitCleanup</a>( <span>reference <var>&amp; $theConnection</var></span>, <span>reference <var>&amp; $theModifiers</var></span> )</code>
 
 		<div class="description short">
 			

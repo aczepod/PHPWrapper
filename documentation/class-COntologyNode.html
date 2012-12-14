@@ -7,7 +7,7 @@
 	<title>Class COntologyNode | MyWrapper Reference Documentation</title>
 
 	<script type="text/javascript" src="resources/combined.js?3680114562"></script>
-	<script type="text/javascript" src="elementlist.js?1535324545"></script>
+	<script type="text/javascript" src="elementlist.js?1324799474"></script>
 	<link rel="stylesheet" type="text/css" media="all" href="resources/style.css?3505392360" />
 
 </head>
@@ -176,7 +176,7 @@ other objects, so updating a full node object is risky, since it may have been
 updated elsewhere: for this reason the <code><a href="class-COntologyNode.html#_Update">COntologyNode::Update()</a></code> and <code><a href="class-COntologyNode.html#_Replace">COntologyNode::Replace()</a></code>
 methods will raise an exception.</p>
 
-<p>The class implements the static method, <code><a href="class-COntologyNode.html#_DefaultContainer">COntologyNode::DefaultContainer()</a></code>, which,
+<p>The class implements the static method, <code><a href="class-CPersistentDocument.html#_DefaultContainer">CPersistentDocument::DefaultContainer()</a></code>, which,
 given a database, will return the default nodes container; it will use the
 kCONTAINER_NODE_NAME constant as the container name. Note that when
 passing <code><a href="class-CConnection.html">CConnection</a></code> based objects to the persisting methods of this
@@ -272,7 +272,7 @@ have to commit terms.</p>
 				<b>Author:</b>
 				Milko A. Škofič &lt;<a
 href="mailto:m.skofic&#64;cgiar.org">m.skofic&#64;<!---->cgiar.org</a>&gt;<br />
-		<b>Located at</b> <a href="source-class-COntologyNode.html#50-1611" title="Go to source code">COntologyNode.php</a><br />
+		<b>Located at</b> <a href="source-class-COntologyNode.html#50-1606" title="Go to source code">COntologyNode.php</a><br />
 	</div>
 
 
@@ -709,45 +709,43 @@ non committed object.</p>
 		</div>
 		</div></td>
 	</tr>
-	<tr data-order="DefaultContainer" id="_DefaultContainer">
+	<tr data-order="DefaultContainerName" id="_DefaultContainerName">
 
 		<td class="attributes"><code>
 			 public static
-			<code><a href="class-CContainer.html">CContainer</a></code>
+			string
 			
 			</code>
 		</td>
 
 		<td class="name"><div>
-		<a class="anchor" href="#_DefaultContainer">#</a>
-		<code><a href="source-class-COntologyNode.html#655-672" title="Go to source code">DefaultContainer</a>( <span><code><a href="class-CDatabase.html">CDatabase</a></code> <var>$theDatabase</var></span> )</code>
+		<a class="anchor" href="#_DefaultContainerName">#</a>
+		<code><a href="source-class-COntologyNode.html#655-667" title="Go to source code">DefaultContainerName</a>( )</code>
 
 		<div class="description short">
 			
-<h4>Return the nodes container</h4>
+<h4>Return the default nodes container name</h4>
 
 		</div>
 
 		<div class="description detailed hidden">
 			
-<h4>Return the nodes container</h4>
+<h4>Return the default nodes container name</h4>
 
-<p>The container will be created or fetched from the provided database using the
-kCONTAINER_NODE_NAME name.</p>
-
+<p>This class uses the kCONTAINER_NODE_NAME default name.</p>
 
 
-				<h4>Parameters</h4>
-				<div class="list"><dl>
-					<dt><var>$theDatabase</var></dt>
-					<dd><code><code><a href="class-CDatabase.html">CDatabase</a></code></code><br>$theDatabase Database object.</dd>
-				</dl></div>
+
 
 				<h4>Returns</h4>
 				<div class="list">
-					<code><code><a href="class-CContainer.html">CContainer</a></code></code><br>The nodes container.<br />
+					<code>string</code><br>The default container name.<br />
 				</div>
 
+				<h4>Throws</h4>
+				<div class="list">
+					<code><code><a href="class-Exception.html">Exception</a></code></code><br />
+				</div>
 
 				<h4>See</h4>
 				<div class="list">
@@ -755,7 +753,7 @@ kCONTAINER_NODE_NAME name.</p>
 				</div>
 
 				<h4>Overrides</h4>
-				<div class="list"><code><a href="class-CPersistentDocument.html#_DefaultContainer">CPersistentDocument::DefaultContainer()</a></code></div>
+				<div class="list"><code><a href="class-CPersistentDocument.html#_DefaultContainerName">CPersistentDocument::DefaultContainerName()</a></code></div>
 
 		</div>
 		</div></td>
@@ -771,7 +769,7 @@ kCONTAINER_NODE_NAME name.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#_Resolve">#</a>
-		<code><a href="source-class-COntologyNode.html#688-830" title="Go to source code">Resolve</a>( <span><code><a href="class-CConnection.html">CConnection</a></code> <var>$theConnection</var></span>, <span>mixed <var>$theIdentifier</var></span>, <span>boolean <var>$doThrow</var> = <span class="php-keyword1">FALSE</span> </span> )</code>
+		<code><a href="source-class-COntologyNode.html#683-825" title="Go to source code">Resolve</a>( <span><code><a href="class-CConnection.html">CConnection</a></code> <var>$theConnection</var></span>, <span>mixed <var>$theIdentifier</var></span>, <span>boolean <var>$doThrow</var> = <span class="php-keyword1">FALSE</span> </span> )</code>
 
 		<div class="description short">
 			
@@ -861,7 +859,7 @@ parameter, or you will get unexpected results.</b></p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#__Preset">#</a>
-		<code><a href="source-class-COntologyNode.html#846-946" title="Go to source code">_Preset</a>( <span>reference <var>&amp; $theOffset</var></span>, <span>reference <var>&amp; $theValue</var></span> )</code>
+		<code><a href="source-class-COntologyNode.html#841-941" title="Go to source code">_Preset</a>( <span>reference <var>&amp; $theOffset</var></span>, <span>reference <var>&amp; $theValue</var></span> )</code>
 
 		<div class="description short">
 			
@@ -924,7 +922,7 @@ offsets from any modification.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#__Preunset">#</a>
-		<code><a href="source-class-COntologyNode.html#953-996" title="Go to source code">_Preunset</a>( <span>reference <var>&amp; $theOffset</var></span> )</code>
+		<code><a href="source-class-COntologyNode.html#948-991" title="Go to source code">_Preunset</a>( <span>reference <var>&amp; $theOffset</var></span> )</code>
 
 		<div class="description short">
 			
@@ -980,7 +978,7 @@ offsets in all cases.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#__PrecommitRelated">#</a>
-		<code><a href="source-class-COntologyNode.html#1012-1080" title="Go to source code">_PrecommitRelated</a>( <span>reference <var>&amp; $theConnection</var></span>, <span>reference <var>&amp; $theModifiers</var></span> )</code>
+		<code><a href="source-class-COntologyNode.html#1007-1075" title="Go to source code">_PrecommitRelated</a>( <span>reference <var>&amp; $theConnection</var></span>, <span>reference <var>&amp; $theModifiers</var></span> )</code>
 
 		<div class="description short">
 			
@@ -1038,7 +1036,7 @@ provided as an identifier.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#__PrecommitIdentify">#</a>
-		<code><a href="source-class-COntologyNode.html#1087-1190" title="Go to source code">_PrecommitIdentify</a>( <span>reference <var>&amp; $theConnection</var></span>, <span>reference <var>&amp; $theModifiers</var></span> )</code>
+		<code><a href="source-class-COntologyNode.html#1082-1185" title="Go to source code">_PrecommitIdentify</a>( <span>reference <var>&amp; $theConnection</var></span>, <span>reference <var>&amp; $theModifiers</var></span> )</code>
 
 		<div class="description short">
 			
@@ -1114,7 +1112,7 @@ will have been set here.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#__PostcommitRelated">#</a>
-		<code><a href="source-class-COntologyNode.html#1206-1282" title="Go to source code">_PostcommitRelated</a>( <span>reference <var>&amp; $theConnection</var></span>, <span>reference <var>&amp; $theModifiers</var></span> )</code>
+		<code><a href="source-class-COntologyNode.html#1201-1277" title="Go to source code">_PostcommitRelated</a>( <span>reference <var>&amp; $theConnection</var></span>, <span>reference <var>&amp; $theModifiers</var></span> )</code>
 
 		<div class="description short">
 			
@@ -1185,7 +1183,7 @@ container to this method in order to make it work!</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#__PostcommitCleanup">#</a>
-		<code><a href="source-class-COntologyNode.html#1289-1313" title="Go to source code">_PostcommitCleanup</a>( <span>reference <var>&amp; $theConnection</var></span>, <span>reference <var>&amp; $theModifiers</var></span> )</code>
+		<code><a href="source-class-COntologyNode.html#1284-1308" title="Go to source code">_PostcommitCleanup</a>( <span>reference <var>&amp; $theConnection</var></span>, <span>reference <var>&amp; $theModifiers</var></span> )</code>
 
 		<div class="description short">
 			
@@ -1231,7 +1229,7 @@ have to be refreshed and its references actualised.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#__LoadTermAttributes">#</a>
-		<code><a href="source-class-COntologyNode.html#1329-1405" title="Go to source code">_LoadTermAttributes</a>( <span>array <var>$theAttributes</var> = <span class="php-keyword1">NULL</span> </span> )</code>
+		<code><a href="source-class-COntologyNode.html#1324-1400" title="Go to source code">_LoadTermAttributes</a>( <span>array <var>$theAttributes</var> = <span class="php-keyword1">NULL</span> </span> )</code>
 
 		<div class="description short">
 			
@@ -1292,7 +1290,7 @@ explicitly invoke it.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#__AddGraphNode">#</a>
-		<code><a href="source-class-COntologyNode.html#1421-1518" title="Go to source code">_AddGraphNode</a>( <span><code><a href="class-CGraphContainer.html">CGraphContainer</a></code> <var>$theGraph</var></span>, <span>integer <var>$theIdentifier</var> = <span class="php-keyword1">NULL</span></span>, <span>array <var>$theProperties</var> = <span class="php-keyword1">NULL</span> </span> )</code>
+		<code><a href="source-class-COntologyNode.html#1416-1513" title="Go to source code">_AddGraphNode</a>( <span><code><a href="class-CGraphContainer.html">CGraphContainer</a></code> <var>$theGraph</var></span>, <span>integer <var>$theIdentifier</var> = <span class="php-keyword1">NULL</span></span>, <span>array <var>$theProperties</var> = <span class="php-keyword1">NULL</span> </span> )</code>
 
 		<div class="description short">
 			
@@ -1368,7 +1366,7 @@ which attributes will be set in the graph node.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#__GraphNodeProperties">#</a>
-		<code><a href="source-class-COntologyNode.html#1525-1583" title="Go to source code">_GraphNodeProperties</a>( <span>array <var>$theProperties</var> = <span class="php-keyword1">NULL</span> </span> )</code>
+		<code><a href="source-class-COntologyNode.html#1520-1578" title="Go to source code">_GraphNodeProperties</a>( <span>array <var>$theProperties</var> = <span class="php-keyword1">NULL</span> </span> )</code>
 
 		<div class="description short">
 			
@@ -1427,7 +1425,7 @@ to the current node.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#__NewEdge">#</a>
-		<code><a href="source-class-COntologyNode.html#1599-1607" title="Go to source code">_NewEdge</a>( )</code>
+		<code><a href="source-class-COntologyNode.html#1594-1602" title="Go to source code">_NewEdge</a>( )</code>
 
 		<div class="description short">
 			
@@ -1493,7 +1491,9 @@ to the current node.</p>
 	<caption>Methods inherited from <a href="class-CPersistentDocument.html#methods">CPersistentDocument</a></caption>
 	<tr>
 		<td><code>
+			<a href="class-CPersistentDocument.html#_DefaultContainer">DefaultContainer()</a>, 
 			<a href="class-CPersistentDocument.html#_DefaultDatabase">DefaultDatabase()</a>, 
+			<a href="class-CPersistentDocument.html#_DefaultDatabaseName">DefaultDatabaseName()</a>, 
 			<a href="class-CPersistentDocument.html#_Delete">Delete()</a>, 
 			<a href="class-CPersistentDocument.html#_Insert">Insert()</a>, 
 			<a href="class-CPersistentDocument.html#_NID">NID()</a>, 

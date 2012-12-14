@@ -430,27 +430,22 @@ class COntologyEdge extends CEdge
 
 	 
 	/*===================================================================================
-	 *	DefaultContainer																*
+	 *	DefaultContainerName															*
 	 *==================================================================================*/
 
 	/**
-	 * <h4>Return the edges container</h4>
+	 * <h4>Return the default edges container name</h4>
 	 *
-	 * The container will be created or fetched from the provided database using the
-	 * {@link kCONTAINER_EDGE_NAME} name.
-	 *
-	 * @param CDatabase				$theDatabase		Database object.
+	 * This class uses the {@link kCONTAINER_EDGE_NAME} default name.
 	 *
 	 * @static
-	 * @return CContainer			The edges container.
+	 * @return string				The default container name.
+	 *
+	 * @throws Exception
 	 *
 	 * @see kCONTAINER_EDGE_NAME
 	 */
-	static function DefaultContainer( CDatabase $theDatabase )
-	{
-		return $theDatabase->Container( kCONTAINER_EDGE_NAME );						// ==>
-	
-	} // DefaultContainer.
+	static function DefaultContainerName()				{	return kCONTAINER_EDGE_NAME;	}
 
 		
 

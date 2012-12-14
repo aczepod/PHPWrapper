@@ -127,6 +127,9 @@ define( "kAPI_SORT",				':WS:SORT' );
  * instance of the class provided in this parameter, if the class is unavailable, the
  * service will fail.
  *
+ * This parameter may also be used to resolve the container name: if provided, the service will
+ * attempt to set the default container name.
+ *
  * Type: encoded.
  * Cardinality: one or zero.
  */

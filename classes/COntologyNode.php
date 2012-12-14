@@ -649,27 +649,22 @@ class COntologyNode extends CNode
 
 	 
 	/*===================================================================================
-	 *	DefaultContainer																*
+	 *	DefaultContainerName															*
 	 *==================================================================================*/
 
 	/**
-	 * <h4>Return the nodes container</h4>
+	 * <h4>Return the default nodes container name</h4>
 	 *
-	 * The container will be created or fetched from the provided database using the
-	 * {@link kCONTAINER_NODE_NAME} name.
-	 *
-	 * @param CDatabase				$theDatabase		Database object.
+	 * This class uses the {@link kCONTAINER_NODE_NAME} default name.
 	 *
 	 * @static
-	 * @return CContainer			The nodes container.
+	 * @return string				The default container name.
+	 *
+	 * @throws Exception
 	 *
 	 * @see kCONTAINER_NODE_NAME
 	 */
-	static function DefaultContainer( CDatabase $theDatabase )
-	{
-		return $theDatabase->Container( kCONTAINER_NODE_NAME );						// ==>
-	
-	} // DefaultContainer.
+	static function DefaultContainerName()				{	return kCONTAINER_NODE_NAME;	}
 
 		
 

@@ -519,27 +519,22 @@ class COntologyTag extends CTag
 
 	 
 	/*===================================================================================
-	 *	DefaultContainer																*
+	 *	DefaultContainerName															*
 	 *==================================================================================*/
 
 	/**
-	 * <h4>Return the tags container</h4>
+	 * <h4>Return the default nodes container name</h4>
 	 *
-	 * The container will be created or fetched from the provided database using the
-	 * {@link kCONTAINER_TAG_NAME} name.
-	 *
-	 * @param CDatabase				$theDatabase		Database object.
+	 * This class uses the {@link kCONTAINER_TAG_NAME} default name.
 	 *
 	 * @static
-	 * @return CContainer			The tags container.
+	 * @return string				The default container name.
+	 *
+	 * @throws Exception
 	 *
 	 * @see kCONTAINER_TAG_NAME
 	 */
-	static function DefaultContainer( CDatabase $theDatabase )
-	{
-		return $theDatabase->Container( kCONTAINER_TAG_NAME );						// ==>
-	
-	} // DefaultContainer.
+	static function DefaultContainerName()				{	return kCONTAINER_TAG_NAME;		}
 
 		
 
