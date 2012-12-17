@@ -1100,7 +1100,7 @@ class CDataWrapper extends CWrapper
 		//
 		// Check parameter.
 		//
-		switch( $_REQUEST[ kAPI_OPERATION ] )
+		switch( $parameter = $_REQUEST[ kAPI_OPERATION ] )
 		{
 			//
 			// Operation codes.

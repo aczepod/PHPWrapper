@@ -67,7 +67,8 @@ define( 'kDEBUG_PARENT', FALSE );
 //
 // Init local storage.
 //
-$url = 'http://localhost/mywrapper/MongoPortalWrapper.php';
+//$url = 'http://localhost/mywrapper/MongoPortalWrapper.php';
+$url = 'http://wrappers.grinfo.net/TIP/Wrapper.php';
 
 //
 // TRY BLOCK.
