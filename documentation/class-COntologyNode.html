@@ -272,7 +272,7 @@ have to commit terms.</p>
 				<b>Author:</b>
 				Milko A. Škofič &lt;<a
 href="mailto:m.skofic&#64;cgiar.org">m.skofic&#64;<!---->cgiar.org</a>&gt;<br />
-		<b>Located at</b> <a href="source-class-COntologyNode.html#50-1606" title="Go to source code">COntologyNode.php</a><br />
+		<b>Located at</b> <a href="source-class-COntologyNode.html#50-1631" title="Go to source code">COntologyNode.php</a><br />
 	</div>
 
 
@@ -978,7 +978,7 @@ offsets in all cases.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#__PrecommitRelated">#</a>
-		<code><a href="source-class-COntologyNode.html#1007-1075" title="Go to source code">_PrecommitRelated</a>( <span>reference <var>&amp; $theConnection</var></span>, <span>reference <var>&amp; $theModifiers</var></span> )</code>
+		<code><a href="source-class-COntologyNode.html#1007-1080" title="Go to source code">_PrecommitRelated</a>( <span>reference <var>&amp; $theConnection</var></span>, <span>reference <var>&amp; $theModifiers</var></span> )</code>
 
 		<div class="description short">
 			
@@ -1036,7 +1036,7 @@ provided as an identifier.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#__PrecommitIdentify">#</a>
-		<code><a href="source-class-COntologyNode.html#1082-1185" title="Go to source code">_PrecommitIdentify</a>( <span>reference <var>&amp; $theConnection</var></span>, <span>reference <var>&amp; $theModifiers</var></span> )</code>
+		<code><a href="source-class-COntologyNode.html#1087-1190" title="Go to source code">_PrecommitIdentify</a>( <span>reference <var>&amp; $theConnection</var></span>, <span>reference <var>&amp; $theModifiers</var></span> )</code>
 
 		<div class="description short">
 			
@@ -1112,7 +1112,7 @@ will have been set here.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#__PostcommitRelated">#</a>
-		<code><a href="source-class-COntologyNode.html#1201-1277" title="Go to source code">_PostcommitRelated</a>( <span>reference <var>&amp; $theConnection</var></span>, <span>reference <var>&amp; $theModifiers</var></span> )</code>
+		<code><a href="source-class-COntologyNode.html#1206-1282" title="Go to source code">_PostcommitRelated</a>( <span>reference <var>&amp; $theConnection</var></span>, <span>reference <var>&amp; $theModifiers</var></span> )</code>
 
 		<div class="description short">
 			
@@ -1183,7 +1183,7 @@ container to this method in order to make it work!</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#__PostcommitCleanup">#</a>
-		<code><a href="source-class-COntologyNode.html#1284-1308" title="Go to source code">_PostcommitCleanup</a>( <span>reference <var>&amp; $theConnection</var></span>, <span>reference <var>&amp; $theModifiers</var></span> )</code>
+		<code><a href="source-class-COntologyNode.html#1289-1313" title="Go to source code">_PostcommitCleanup</a>( <span>reference <var>&amp; $theConnection</var></span>, <span>reference <var>&amp; $theModifiers</var></span> )</code>
 
 		<div class="description short">
 			
@@ -1229,7 +1229,7 @@ have to be refreshed and its references actualised.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#__LoadTermAttributes">#</a>
-		<code><a href="source-class-COntologyNode.html#1324-1400" title="Go to source code">_LoadTermAttributes</a>( <span>array <var>$theAttributes</var> = <span class="php-keyword1">NULL</span> </span> )</code>
+		<code><a href="source-class-COntologyNode.html#1329-1405" title="Go to source code">_LoadTermAttributes</a>( <span>array <var>$theAttributes</var> = <span class="php-keyword1">NULL</span> </span> )</code>
 
 		<div class="description short">
 			
@@ -1279,6 +1279,50 @@ explicitly invoke it.</p>
 		</div>
 		</div></td>
 	</tr>
+	<tr data-order="_TermAttributes" id="__TermAttributes">
+
+		<td class="attributes"><code>
+			 protected 
+			array
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#__TermAttributes">#</a>
+		<code><a href="source-class-COntologyNode.html#1412-1425" title="Go to source code">_TermAttributes</a>( )</code>
+
+		<div class="description short">
+			
+<h4>List term attributes</h4>
+
+		</div>
+
+		<div class="description detailed hidden">
+			
+<h4>List term attributes</h4>
+
+<p>This method can be used to return the list of term attributes that will be
+copied into the node, it should return a list of tag identifiers that will be
+used to select attributes from the node's term.</p>
+
+<p>In this class we copy no term attributes to the node, so we return
+<tt>NULL</tt>, in derived classes you can return an array.</p>
+
+
+
+
+				<h4>Returns</h4>
+				<div class="list">
+					<code>array</code><br />
+				</div>
+
+
+
+
+		</div>
+		</div></td>
+	</tr>
 	<tr data-order="_AddGraphNode" id="__AddGraphNode">
 
 		<td class="attributes"><code>
@@ -1290,7 +1334,7 @@ explicitly invoke it.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#__AddGraphNode">#</a>
-		<code><a href="source-class-COntologyNode.html#1416-1513" title="Go to source code">_AddGraphNode</a>( <span><code><a href="class-CGraphContainer.html">CGraphContainer</a></code> <var>$theGraph</var></span>, <span>integer <var>$theIdentifier</var> = <span class="php-keyword1">NULL</span></span>, <span>array <var>$theProperties</var> = <span class="php-keyword1">NULL</span> </span> )</code>
+		<code><a href="source-class-COntologyNode.html#1441-1538" title="Go to source code">_AddGraphNode</a>( <span><code><a href="class-CGraphContainer.html">CGraphContainer</a></code> <var>$theGraph</var></span>, <span>integer <var>$theIdentifier</var> = <span class="php-keyword1">NULL</span></span>, <span>array <var>$theProperties</var> = <span class="php-keyword1">NULL</span> </span> )</code>
 
 		<div class="description short">
 			
@@ -1366,7 +1410,7 @@ which attributes will be set in the graph node.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#__GraphNodeProperties">#</a>
-		<code><a href="source-class-COntologyNode.html#1520-1578" title="Go to source code">_GraphNodeProperties</a>( <span>array <var>$theProperties</var> = <span class="php-keyword1">NULL</span> </span> )</code>
+		<code><a href="source-class-COntologyNode.html#1545-1603" title="Go to source code">_GraphNodeProperties</a>( <span>array <var>$theProperties</var> = <span class="php-keyword1">NULL</span> </span> )</code>
 
 		<div class="description short">
 			
@@ -1425,7 +1469,7 @@ to the current node.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#__NewEdge">#</a>
-		<code><a href="source-class-COntologyNode.html#1594-1602" title="Go to source code">_NewEdge</a>( )</code>
+		<code><a href="source-class-COntologyNode.html#1619-1627" title="Go to source code">_NewEdge</a>( )</code>
 
 		<div class="description short">
 			

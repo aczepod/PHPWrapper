@@ -464,42 +464,31 @@
 	
 	<!-- INVENTORY PROPERTIES -->
 	
-	<!-- LR:NICODE -->
+	<!-- GR:NICODE -->
 	<unit>
-		<term lid="NICODE" ns="LR">
-			<element variable="kTAG_LABEL" key="en"><![CDATA[National Inventory]]></element>
-			<element variable="kTAG_DEFINITION" key="en"><![CDATA[National inventory code identifying the National in situ LR Inventory.]]></element>
-			<element variable="kTAG_SYNONYMS">
-				<item>NICODE</item>
-				<item>1.1</item>
-			</element>
-		</term>
 		<node class="COntologyAliasVertex">
+			<element variable="kTAG_TERM">GR:NICODE</element>
+			<element variable="kTAG_DESCRIPTION" key="en"><![CDATA[National inventory code identifying the National in situ LR Inventory.]]></element>
 			<element variable="kTAG_KIND">
 				<item>:KIND-FEATURE</item>
+				<item>:KIND-SCALE</item>
 			</element>
 			<element variable="kTAG_TYPE">
 				<item>:REQUIRED</item>
+				<item>:ENUM</item>
+			</element>
+			<element variable="kTAG_SYNONYMS">
+				<item>NICODE</item>
+				<item>1.1</item>
 			</element>
 			<element variable="kTAG_EXAMPLES">
 				<item>NLD</item>
 			</element>
 		</node>
-		<tag>
-			<element variable="kTAG_PATH">
-				<item>LR:NICODE</item>
-				<item>:SCALE-OF</item>
-				<item>GR:NICODE</item>
-			</element>
-		</tag>
 		<edges>
 			<edge>
 				<element variable="kTAG_PREDICATE">:SUBCLASS-OF</element>
 				<element variable="kTAG_OBJECT">LR:INVENTORY</element>
-			</edge>
-			<edge>
-				<element variable="kTAG_SUBJECT">GR:NICODE</element>
-				<element variable="kTAG_PREDICATE">:SCALE-OF</element>
 			</edge>
 		</edges>
 	</unit>
@@ -580,201 +569,150 @@
 	
 	<!-- TAXONOMY PROPERTIES -->
 	
-	<!-- LR:GENUS -->
+	<!-- GR:GENUS -->
 	<unit>
-		<term lid="GENUS" ns="LR">
-			<element variable="kTAG_LABEL" key="en"><![CDATA[Landrace genus]]></element>
-			<element variable="kTAG_DEFINITION" key="en"><![CDATA[Genus name of the landrace.]]></element>
-			<element variable="kTAG_SYNONYMS">
-				<item>GENUS</item>
-				<item>2.1</item>
-			</element>
-		</term>
-		<node class="COntologyMasterVertex">
+		<node class="COntologyAliasVertex">
+			<element variable="kTAG_TERM">GR:GENUS</element>
+			<element variable="kTAG_DESCRIPTION" key="en"><![CDATA[Genus name of the landrace.]]></element>
 			<element variable="kTAG_KIND">
+				<item>:KIND-FEATURE</item>
 				<item>:KIND-FEATURE</item>
 			</element>
 			<element variable="kTAG_TYPE">
 				<item>:REQUIRED</item>
+				<item>:TEXT</item>
+			</element>
+			<element variable="kTAG_SYNONYMS">
+				<item>GENUS</item>
+				<item>2.1</item>
 			</element>
 			<element variable="kTAG_EXAMPLES">
 				<item>Vigna</item>
 				<item>Vicia</item>
 			</element>
 		</node>
-		<tag>
-			<element variable="kTAG_PATH">
-				<item>LR:GENUS</item>
-				<item>:SCALE-OF</item>
-				<item>GR:GENUS</item>
-			</element>
-		</tag>
 		<edges>
 			<edge>
 				<element variable="kTAG_PREDICATE">:SUBCLASS-OF</element>
 				<element variable="kTAG_OBJECT">LR:TAXONOMY</element>
 			</edge>
-			<edge>
-				<element variable="kTAG_SUBJECT">GR:GENUS</element>
-				<element variable="kTAG_PREDICATE">:SCALE-OF</element>
-			</edge>
 		</edges>
 	</unit>
 	
-	<!-- LR:SPECIES -->
+	<!-- GR:SPECIES -->
 	<unit>
-		<term lid="SPECIES" ns="LR">
-			<element variable="kTAG_LABEL" key="en"><![CDATA[Landrace species]]></element>
-			<element variable="kTAG_DEFINITION" key="en"><![CDATA[Species name of the landrace.]]></element>
-			<element variable="kTAG_SYNONYMS">
-				<item>SPECIES</item>
-				<item>2.2</item>
-			</element>
-		</term>
 		<node class="COntologyMasterVertex">
+			<element variable="kTAG_TERM">GR:SPECIES</element>
+			<element variable="kTAG_DESCRIPTION" key="en"><![CDATA[Species name of the landrace.]]></element>
 			<element variable="kTAG_KIND">
 				<item>:KIND-FEATURE</item>
+				<item>:KIND-SCALE</item>
 			</element>
 			<element variable="kTAG_TYPE">
 				<item>:REQUIRED</item>
+				<item>:TEXT</item>
+			</element>
+			<element variable="kTAG_SYNONYMS">
+				<item>SPECIES</item>
+				<item>2.2</item>
 			</element>
 			<element variable="kTAG_EXAMPLES">
 				<item>unguiculata</item>
 				<item>faba</item>
 			</element>
 		</node>
-		<tag>
-			<element variable="kTAG_PATH">
-				<item>LR:SPECIES</item>
-				<item>:SCALE-OF</item>
-				<item>GR:SPECIES</item>
-			</element>
-		</tag>
 		<edges>
 			<edge>
 				<element variable="kTAG_PREDICATE">:SUBCLASS-OF</element>
 				<element variable="kTAG_OBJECT">LR:TAXONOMY</element>
-			</edge>
-			<edge>
-				<element variable="kTAG_SUBJECT">GR:SPECIES</element>
-				<element variable="kTAG_PREDICATE">:SCALE-OF</element>
 			</edge>
 		</edges>
 	</unit>
 	
 	<!-- LR:SPAUTHOR -->
 	<unit>
-		<term lid="SPAUTHOR" ns="LR">
-			<element variable="kTAG_LABEL" key="en"><![CDATA[Landrace species authority]]></element>
-			<element variable="kTAG_DEFINITION" key="en"><![CDATA[Species authority for the landrace.]]></element>
-			<element variable="kTAG_SYNONYMS">
-				<item>SPAUTHOR</item>
-				<item>2.3</item>
-			</element>
-		</term>
 		<node class="COntologyMasterVertex">
+			<element variable="kTAG_TERM">GR:SPAUTHOR</element>
+			<element variable="kTAG_DESCRIPTION" key="en">Name or abbreviation of the author of the specific epithet biological classification.</element>
 			<element variable="kTAG_KIND">
 				<item>:KIND-FEATURE</item>
+				<item>:KIND-SCALE</item>
 			</element>
 			<element variable="kTAG_TYPE">
 				<item>:REQUIRED</item>
+				<item>:TEXT</item>
+			</element>
+			<element variable="kTAG_SYNONYMS">
+				<item>SPAUTHOR</item>
+				<item>2.3</item>
 			</element>
 			<element variable="kTAG_EXAMPLES">
 				<item>(L.) Wald.</item>
 				<item>L.</item>
 			</element>
 		</node>
-		<tag>
-			<element variable="kTAG_PATH">
-				<item>LR:SPAUTHOR</item>
-				<item>:SCALE-OF</item>
-				<item>GR:SPAUTHOR</item>
-			</element>
-		</tag>
 		<edges>
 			<edge>
 				<element variable="kTAG_PREDICATE">:SUBCLASS-OF</element>
 				<element variable="kTAG_OBJECT">LR:TAXONOMY</element>
 			</edge>
-			<edge>
-				<element variable="kTAG_SUBJECT">GR:SPAUTHOR</element>
-				<element variable="kTAG_PREDICATE">:SCALE-OF</element>
-			</edge>
 		</edges>
 	</unit>
 	
-	<!-- LR:SUBTAXA -->
+	<!-- GR:SUBTAXA -->
 	<unit>
-		<term lid="SUBTAXA" ns="LR">
-			<element variable="kTAG_LABEL" key="en"><![CDATA[Subtaxa]]></element>
-			<element variable="kTAG_DEFINITION" key="en"><![CDATA[This field can be used to store any additional taxonomic identifier (in Latin, in lower case letters) preceded by the rank (for example: subspecies, convariety, variety, form, cultivar group). The following abbreviations are foreseen for the rank: ‘subsp.’ (for subspecies); ‘convar.’ (for convariety); ‘var.’ (for variety); ‘f.’ (for form), ‘Group’ (for cultivar group).]]></element>
+		<node class="COntologyMasterVertex">
+			<element variable="kTAG_TERM">GR:SUBTAXA</element>
+			<element variable="kTAG_DESCRIPTION" key="en"><![CDATA[This field can be used to store any additional taxonomic identifier (in Latin, in lower case letters) preceded by the rank (for example: subspecies, convariety, variety, form, cultivar group). The following abbreviations are foreseen for the rank: ‘subsp.’ (for subspecies); ‘convar.’ (for convariety); ‘var.’ (for variety); ‘f.’ (for form), ‘Group’ (for cultivar group).]]></element>
+			<element variable="kTAG_KIND">
+				<item>:KIND-FEATURE</item>
+				<item>:KIND-SCALE</item>
+			</element>
+			<element variable="kTAG_TYPE">
+				<item>:TEXT</item>
+			</element>
 			<element variable="kTAG_SYNONYMS">
 				<item>SUBTAXA</item>
 				<item>2.4</item>
-			</element>
-		</term>
-		<node class="COntologyMasterVertex">
-			<element variable="kTAG_KIND">
-				<item>:KIND-FEATURE</item>
 			</element>
 			<element variable="kTAG_EXAMPLES">
 				<item>subsp. sesquipedalis</item>
 				<item>subsp. faba var. minuta</item>
 			</element>
 		</node>
-		<tag>
-			<element variable="kTAG_PATH">
-				<item>LR:SUBTAXA</item>
-				<item>:SCALE-OF</item>
-				<item>GR:SUBTAXA</item>
-			</element>
-		</tag>
 		<edges>
 			<edge>
 				<element variable="kTAG_PREDICATE">:SUBCLASS-OF</element>
 				<element variable="kTAG_OBJECT">LR:TAXONOMY</element>
 			</edge>
-			<edge>
-				<element variable="kTAG_SUBJECT">GR:SUBTAXA</element>
-				<element variable="kTAG_PREDICATE">:SCALE-OF</element>
-			</edge>
 		</edges>
 	</unit>
 	
-	<!-- LR:SUBTAUTHOR -->
+	<!-- GR:SUBTAUTHOR -->
 	<unit>
-		<term lid="SUBTAUTHOR" ns="LR">
-			<element variable="kTAG_LABEL" key="en"><![CDATA[Subtaxa authority]]></element>
-			<element variable="kTAG_DEFINITION" key="en"><![CDATA[The subtaxa authority at the most detailed taxonomic level.]]></element>
+		<node class="COntologyMasterVertex">
+			<element variable="kTAG_TERM">GR:SUBTAUTHOR</element>
+			<element variable="kTAG_DESCRIPTION" key="en"><![CDATA[The subtaxa authority at the most detailed taxonomic level.]]></element>
+			<element variable="kTAG_KIND">
+				<item>:KIND-FEATURE</item>
+				<item>:KIND-SCALE</item>
+			</element>
+			<element variable="kTAG_TYPE">
+				<item>:TEXT</item>
+			</element>
 			<element variable="kTAG_SYNONYMS">
 				<item>SUBTAUTHOR</item>
 				<item>2.5</item>
-			</element>
-		</term>
-		<node class="COntologyMasterVertex">
-			<element variable="kTAG_KIND">
-				<item>:KIND-FEATURE</item>
 			</element>
 			<element variable="kTAG_EXAMPLES">
 				<item>(L.) Verdc.</item>
 				<item>(hort. ex Alef.) Mansf.</item>
 			</element>
 		</node>
-		<tag>
-			<element variable="kTAG_PATH">
-				<item>LR:SUBTAUTHOR</item>
-				<item>:SCALE-OF</item>
-				<item>GR:SUBTAUTHOR</item>
-			</element>
-		</tag>
 		<edges>
 			<edge>
 				<element variable="kTAG_PREDICATE">:SUBCLASS-OF</element>
 				<element variable="kTAG_OBJECT">LR:TAXONOMY</element>
-			</edge>
-			<edge>
-				<element variable="kTAG_SUBJECT">GR:SUBTAUTHOR</element>
-				<element variable="kTAG_PREDICATE">:SCALE-OF</element>
 			</edge>
 		</edges>
 	</unit>

@@ -121,7 +121,7 @@ attributes it will be the node attribute that will overwrite the term
 attribute.</p>
 
 <p>We use the following term attributes: kTAG_LID, kTAG_GID,
-kTAG_LABEL and kTAG_DEFINITION.</p>
+kTAG_LABEL, kTAG_DEFINITION, kTAG_SYNONYMS, kTAG_FEATURES and kTAG_SCALES.</p>
 
 <p>All other functionalities are identical to the parent class.</p>
 
@@ -213,70 +213,64 @@ to-do.</p>
 				<b>Author:</b>
 				Milko A. Škofič &lt;<a
 href="mailto:m.skofic&#64;cgiar.org">m.skofic&#64;<!---->cgiar.org</a>&gt;<br />
-		<b>Located at</b> <a href="source-class-COntologyVertex.html#29-108" title="Go to source code">COntologyVertex.php</a><br />
+		<b>Located at</b> <a href="source-class-COntologyVertex.html#29-94" title="Go to source code">COntologyVertex.php</a><br />
 	</div>
 
 
 
 	<table class="summary" id="methods">
 	<caption>Methods summary</caption>
-	<tr data-order="_PrecommitRelated" id="__PrecommitRelated">
+	<tr data-order="_TermAttributes" id="__TermAttributes">
 
 		<td class="attributes"><code>
 			 protected 
-			mixed
+			array
 			
 			</code>
 		</td>
 
 		<td class="name"><div>
-		<a class="anchor" href="#__PrecommitRelated">#</a>
-		<code><a href="source-class-COntologyVertex.html#66-104" title="Go to source code">_PrecommitRelated</a>( <span>reference <var>&amp; $theConnection</var></span>, <span>reference <var>&amp; $theModifiers</var></span> )</code>
+		<a class="anchor" href="#__TermAttributes">#</a>
+		<code><a href="source-class-COntologyVertex.html#67-90" title="Go to source code">_TermAttributes</a>( )</code>
 
 		<div class="description short">
 			
-<h4>Handle embedded or related objects before committing</h4>
+<h4>List term attributes</h4>
 
 		</div>
 
 		<div class="description detailed hidden">
 			
-<h4>Handle embedded or related objects before committing</h4>
+<h4>List term attributes</h4>
 
-<p>We overload this method to compile the object's attributes, we first load the
-related term attributes, then we load the current node's attributes using the
-<code><a href="class-COntologyNode.html#__LoadTermAttributes">COntologyNode::_LoadTermAttributes()</a></code> method.</p>
+<p>In this class we return:</p>
 
-<p>This operation is done after calling the parent method and this method will
-do nothing when deleting.</p>
+<ul>
+	<li><tt>kTAG_LID</tt>: The local identifier.</li>
+
+	<li><tt>kTAG_GID</tt>: The global identifier.</li>
+
+	<li><tt>kTAG_LABEL</tt>: The label.</li>
+
+	<li><tt>kTAG_DEFINITION</tt>: The definition.</li>
+
+	<li><tt>kTAG_FEATURES</tt>: The feature tag references.</li>
+
+	<li><tt>kTAG_SCALES</tt>: The scale tag references.</li>
+</ul>
 
 
 
-				<h4>Parameters</h4>
-				<div class="list"><dl>
-					<dt><var>$theConnection</var></dt>
-					<dd><code>reference</code><br>&amp;$theConnection Server, database or container.</dd>
-					<dt><var>$theModifiers</var></dt>
-					<dd><code>reference</code><br>&amp;$theModifiers Commit options.</dd>
-				</dl></div>
 
 				<h4>Returns</h4>
 				<div class="list">
-					<code>mixed</code><br />
+					<code>array</code><br />
 				</div>
 
 
-				<h4>See</h4>
-				<div class="list">
-						kTAG_TERM<br />
-				</div>
-				<h4>Uses</h4>
-				<div class="list">
-						<code><code><a href="class-COntologyNode.html#_LoadTerm">COntologyNode::LoadTerm()</a></code></code> <br />
-				</div>
 
 				<h4>Overrides</h4>
-				<div class="list"><code><a href="class-COntologyNode.html#__PrecommitRelated">COntologyNode::_PrecommitRelated()</a></code></div>
+				<div class="list"><code><a href="class-COntologyNode.html#__TermAttributes">COntologyNode::_TermAttributes()</a></code></div>
 
 		</div>
 		</div></td>
@@ -302,6 +296,7 @@ do nothing when deleting.</p>
 			<a href="class-COntologyNode.html#__PostcommitCleanup">_PostcommitCleanup()</a>, 
 			<a href="class-COntologyNode.html#__PostcommitRelated">_PostcommitRelated()</a>, 
 			<a href="class-COntologyNode.html#__PrecommitIdentify">_PrecommitIdentify()</a>, 
+			<a href="class-COntologyNode.html#__PrecommitRelated">_PrecommitRelated()</a>, 
 			<a href="class-COntologyNode.html#__Preset">_Preset()</a>, 
 			<a href="class-COntologyNode.html#__Preunset">_Preunset()</a>, 
 			<a href="class-COntologyNode.html#___toString">__toString()</a>

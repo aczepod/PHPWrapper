@@ -38,42 +38,31 @@
     
     <!-- MCPD PROPERTIES -->
     
-    <!-- MCPD:NICODE -->
+    <!-- GR:NICODE -->
     <unit>
-    	<term lid="NICODE" ns="MCPD">
-			<element variable="kTAG_LABEL" key="en"><![CDATA[National Inventory code]]></element>
-			<element variable="kTAG_DEFINITION" key="en"><![CDATA[Code identifying the National Inventory; the code of the country preparing the National Inventory. Exceptions are possible, if agreed with EURISCO such as NGB.]]></element>
-			<element variable="kTAG_SYNONYMS">
-				<item>NICODE</item>
-				<item>0</item>
-			</element>
-    	</term>
     	<node class="COntologyAliasVertex">
+			<element variable="kTAG_TERM">GR:NICODE</element>
+			<element variable="kTAG_DESCRIPTION" key="en"><![CDATA[Code identifying the National Inventory; the code of the country preparing the National Inventory. Exceptions are possible, if agreed with EURISCO such as NGB.]]></element>
 			<element variable="kTAG_KIND">
 				<item>:KIND-FEATURE</item>
+				<item>:KIND-SCALE</item>
 			</element>
 			<element variable="kTAG_TYPE">
 				<item>:REQUIRED</item>
+				<item>:ENUM</item>
+			</element>
+			<element variable="kTAG_SYNONYMS">
+				<item>NICODE</item>
+				<item>0</item>
 			</element>
 			<element variable="kTAG_EXAMPLES">
 				<item>NLD</item>
 			</element>
     	</node>
-    	<tag>
-			<element variable="kTAG_PATH">
-				<item>MCPD:NICODE</item>
-				<item>:SCALE-OF</item>
-				<item>GR:NICODE</item>
-			</element>
-    	</tag>
         <edges>
 			<edge>
 				<element variable="kTAG_PREDICATE">:SUBCLASS-OF</element>
 				<element variable="kTAG_OBJECT">MCPD</element>
-			</edge>
-			<edge>
-				<element variable="kTAG_SUBJECT">GR:NICODE</element>
-				<element variable="kTAG_PREDICATE">:SCALE-OF</element>
 			</edge>
         </edges>
     </unit>
@@ -223,193 +212,140 @@
         </edges>
     </unit>
     
-    <!-- MCPD:GENUS -->
-    <unit>
-    	<term lid="GENUS" ns="MCPD">
-			<element variable="kTAG_LABEL" key="en"><![CDATA[Genus]]></element>
-			<element variable="kTAG_DEFINITION" key="en"><![CDATA[Genus name for taxon, in latin. Initial uppercase letter required.]]></element>
-			<element variable="kTAG_SYNONYMS">
-				<item>GENUS</item>
-				<item>5</item>
-			</element>
-    	</term>
-    	<node class="COntologyMasterVertex">
+    <!-- GR:GENUS -->
+	<unit>
+		<node class="COntologyAliasVertex">
+			<element variable="kTAG_TERM">GR:GENUS</element>
+			<element variable="kTAG_DESCRIPTION" key="en"><![CDATA[Genus name for taxon, in latin. Initial uppercase letter required.]]></element>
 			<element variable="kTAG_KIND">
+				<item>:KIND-FEATURE</item>
 				<item>:KIND-FEATURE</item>
 			</element>
 			<element variable="kTAG_TYPE">
 				<item>:REQUIRED</item>
+				<item>:TEXT</item>
+			</element>
+			<element variable="kTAG_SYNONYMS">
+				<item>GENUS</item>
+				<item>5</item>
 			</element>
 			<element variable="kTAG_EXAMPLES">
 				<item>Allium</item>
 			</element>
-    	</node>
-    	<tag>
-			<element variable="kTAG_PATH">
-				<item>MCPD:GENUS</item>
-				<item>:SCALE-OF</item>
-				<item>GR:GENUS</item>
-			</element>
-    	</tag>
-        <edges>
+		</node>
+		<edges>
 			<edge>
 				<element variable="kTAG_PREDICATE">:SUBCLASS-OF</element>
 				<element variable="kTAG_OBJECT">MCPD</element>
 			</edge>
-			<edge>
-				<element variable="kTAG_SUBJECT">GR:GENUS</element>
-				<element variable="kTAG_PREDICATE">:SCALE-OF</element>
-			</edge>
-        </edges>
-    </unit>
+		</edges>
+	</unit>
     
-    <!-- MCPD:SPECIES -->
+    <!-- GR:SPECIES -->
     <unit>
-    	<term lid="SPECIES" ns="MCPD">
-			<element variable="kTAG_LABEL" key="en"><![CDATA[Species]]></element>
-			<element variable="kTAG_DEFINITION" key="en"><![CDATA[Specific epithet portion of the scientific name, in latin, in lowercase letters. Following abbreviation is allowed: ‘sp.’.]]></element>
-			<element variable="kTAG_SYNONYMS">
-				<item>SPECIES</item>
-				<item>6</item>
-			</element>
-    	</term>
     	<node class="COntologyMasterVertex">
+			<element variable="kTAG_TERM">GR:SPECIES</element>
+			<element variable="kTAG_DESCRIPTION" key="en"><![CDATA[Specific epithet portion of the scientific name, in latin, in lowercase letters. Following abbreviation is allowed: ‘sp.’.]]></element>
 			<element variable="kTAG_KIND">
 				<item>:KIND-FEATURE</item>
+				<item>:KIND-SCALE</item>
+			</element>
+			<element variable="kTAG_TYPE">
+				<item>:TEXT</item>
 			</element>
 			<element variable="kTAG_EXAMPLES">
 				<item>paniculatum</item>
 			</element>
     	</node>
-    	<tag>
-			<element variable="kTAG_PATH">
-				<item>MCPD:SPECIES</item>
-				<item>:SCALE-OF</item>
-				<item>GR:SPECIES</item>
-			</element>
-    	</tag>
         <edges>
 			<edge>
 				<element variable="kTAG_PREDICATE">:SUBCLASS-OF</element>
 				<element variable="kTAG_OBJECT">MCPD</element>
-			</edge>
-			<edge>
-				<element variable="kTAG_SUBJECT">GR:SPECIES</element>
-				<element variable="kTAG_PREDICATE">:SCALE-OF</element>
 			</edge>
         </edges>
     </unit>
     
     <!-- MCPD:SPAUTHOR -->
     <unit>
-    	<term lid="SPAUTHOR" ns="MCPD">
-			<element variable="kTAG_LABEL" key="en"><![CDATA[Species authority]]></element>
-			<element variable="kTAG_DEFINITION" key="en"><![CDATA[The authority for the species name.]]></element>
-			<element variable="kTAG_SYNONYMS">
-				<item>SPAUTHOR</item>
-				<item>7</item>
-			</element>
-    	</term>
     	<node class="COntologyMasterVertex">
+			<element variable="kTAG_TERM">GR:SPAUTHOR</element>
+			<element variable="kTAG_DESCRIPTION" key="en"><![CDATA[The authority for the species name.]]></element>
 			<element variable="kTAG_KIND">
 				<item>:KIND-FEATURE</item>
+				<item>:KIND-SCALE</item>
 			</element>
 			<element variable="kTAG_TYPE">
 				<item>:REQUIRED</item>
+				<item>:TEXT</item>
+			</element>
+			<element variable="kTAG_SYNONYMS">
+				<item>SPAUTHOR</item>
+				<item>7</item>
 			</element>
 			<element variable="kTAG_EXAMPLES">
 				<item>L.</item>
 			</element>
     	</node>
-    	<tag>
-			<element variable="kTAG_PATH">
-				<item>MCPD:SPAUTHOR</item>
-				<item>:SCALE-OF</item>
-				<item>GR:SPAUTHOR</item>
-			</element>
-    	</tag>
         <edges>
 			<edge>
 				<element variable="kTAG_PREDICATE">:SUBCLASS-OF</element>
 				<element variable="kTAG_OBJECT">MCPD</element>
-			</edge>
-			<edge>
-				<element variable="kTAG_SUBJECT">GR:SPAUTHOR</element>
-				<element variable="kTAG_PREDICATE">:SCALE-OF</element>
 			</edge>
         </edges>
     </unit>
     
     <!-- MCPD:SUBTAXA -->
     <unit>
-    	<term lid="SUBTAXA" ns="MCPD">
-			<element variable="kTAG_LABEL" key="en"><![CDATA[Subtaxa]]></element>
-			<element variable="kTAG_DEFINITION" key="en"><![CDATA[Subtaxa can be used to store any additional taxonomic identifier, in latin. Following abbreviations are allowed: ‘subsp.’ (for subspecies); ‘convar.’ (for convariety); ‘var.’ (for variety); ‘f.’ (for form).]]></element>
+    	<node class="COntologyMasterVertex">
+			<element variable="kTAG_TERM">GR:SUBTAXA</element>
+			<element variable="kTAG_DESCRIPTION" key="en"><![CDATA[Subtaxa can be used to store any additional taxonomic identifier, in latin. Following abbreviations are allowed: ‘subsp.’ (for subspecies); ‘convar.’ (for convariety); ‘var.’ (for variety); ‘f.’ (for form).]]></element>
+			<element variable="kTAG_KIND">
+				<item>:KIND-FEATURE</item>
+				<item>:KIND-SCALE</item>
+			</element>
+			<element variable="kTAG_TYPE">
+				<item>:TEXT</item>
+			</element>
 			<element variable="kTAG_SYNONYMS">
 				<item>SUBTAXA</item>
 				<item>8</item>
-			</element>
-    	</term>
-    	<node class="COntologyMasterVertex">
-			<element variable="kTAG_KIND">
-				<item>:KIND-FEATURE</item>
 			</element>
 			<element variable="kTAG_EXAMPLES">
 				<item>subsp. fuscum</item>
 			</element>
     	</node>
-    	<tag>
-			<element variable="kTAG_PATH">
-				<item>MCPD:SUBTAXA</item>
-				<item>:SCALE-OF</item>
-				<item>GR:SUBTAXA</item>
-			</element>
-    	</tag>
         <edges>
 			<edge>
 				<element variable="kTAG_PREDICATE">:SUBCLASS-OF</element>
 				<element variable="kTAG_OBJECT">MCPD</element>
 			</edge>
-			<edge>
-				<element variable="kTAG_SUBJECT">GR:SUBTAXA</element>
-				<element variable="kTAG_PREDICATE">:SCALE-OF</element>
-			</edge>
         </edges>
     </unit>
     
-    <!-- MCPD:SUBTAUTHOR -->
+    <!-- GR:SUBTAUTHOR -->
     <unit>
-    	<term lid="SUBTAUTHOR" ns="MCPD">
-			<element variable="kTAG_LABEL" key="en"><![CDATA[Subtaxa authority]]></element>
+    	<node class="COntologyMasterVertex">
+			<element variable="kTAG_TERM">GR:SUBTAUTHOR</element>
 			<element variable="kTAG_DEFINITION" key="en"><![CDATA[The subtaxa authority at the most detailed taxonomic level.]]></element>
+			<element variable="kTAG_KIND">
+				<item>:KIND-FEATURE</item>
+				<item>:KIND-SCALE</item>
+			</element>
+			<element variable="kTAG_TYPE">
+				<item>:TEXT</item>
+			</element>
 			<element variable="kTAG_SYNONYMS">
 				<item>SUBTAUTHOR</item>
 				<item>9</item>
-			</element>
-    	</term>
-    	<node class="COntologyMasterVertex">
-			<element variable="kTAG_KIND">
-				<item>:KIND-FEATURE</item>
 			</element>
 			<element variable="kTAG_EXAMPLES">
 				<item>(Waldst. et Kit.) Arc.</item>
 			</element>
     	</node>
-    	<tag>
-			<element variable="kTAG_PATH">
-				<item>MCPD:SUBTAUTHOR</item>
-				<item>:SCALE-OF</item>
-				<item>GR:SUBTAUTHOR</item>
-			</element>
-    	</tag>
         <edges>
 			<edge>
 				<element variable="kTAG_PREDICATE">:SUBCLASS-OF</element>
 				<element variable="kTAG_OBJECT">MCPD</element>
-			</edge>
-			<edge>
-				<element variable="kTAG_SUBJECT">GR:SUBTAUTHOR</element>
-				<element variable="kTAG_PREDICATE">:SCALE-OF</element>
 			</edge>
         </edges>
     </unit>

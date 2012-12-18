@@ -38,7 +38,8 @@ require_once( kPATH_MYWRAPPER_LIBRARY_CLASS."/COntologyNode.php" );
  * will be the node attribute that will overwrite the term attribute.
  *
  * We use the following term attributes: {@link kTAG_LID}, {@link kTAG_GID},
- * {@link kTAG_LABEL} and {@link kTAG_DEFINITION}.
+ * {@link kTAG_LABEL}, {@link kTAG_DEFINITION}, {@link kTAG_SYNONYMS}, {@link kTAG_FEATURES}
+ * and {@link kTAG_SCALES}.
  *
  * All other functionalities are identical to the parent class.
  *
@@ -53,55 +54,40 @@ class COntologyVertex extends COntologyNode
 
 /*=======================================================================================
  *																						*
- *							PROTECTED PRE-COMMIT INTERFACE								*
+ *								PROTECTED REFERENCE INTERFACE							*
  *																						*
  *======================================================================================*/
 
 
 	 
 	/*===================================================================================
-	 *	_PrecommitRelated																*
+	 *	_TermAttributes																	*
 	 *==================================================================================*/
 
 	/**
-	 * <h4>Handle embedded or related objects before committing</h4>
+	 * <h4>List term attributes</h4>
 	 *
-	 * We overload this method to compile the object's attributes, we first load the related
-	 * term attributes, then we load the current node's attributes using the
-	 * {@link _LoadTermAttributes()} method.
+	 * In this class we return:
 	 *
-	 * This operation is done after calling the parent method and this method will do
-	 * nothing when deleting.
-	 *
-	 * @param reference			   &$theConnection		Server, database or container.
-	 * @param reference			   &$theModifiers		Commit options.
+	 * <ul>
+	 *	<li><tt>{@link kTAG_LID}</tt>: The local identifier.
+	 *	<li><tt>{@link kTAG_GID}</tt>: The global identifier.
+	 *	<li><tt>{@link kTAG_LABEL}</tt>: The label.
+	 *	<li><tt>{@link kTAG_DEFINITION}</tt>: The definition.
+	 *	<li><tt>{@link kTAG_FEATURES}</tt>: The feature tag references.
+	 *	<li><tt>{@link kTAG_SCALES}</tt>: The scale tag references.
+	 * </ul>
 	 *
 	 * @access protected
-	 * @return mixed
-	 *
-	 * @uses LoadTerm()
-	 *
-	 * @see kTAG_TERM
+	 * @return array
 	 */
-	protected function _PrecommitRelated( &$theConnection, &$theModifiers )
+	protected function _TermAttributes()
 	{
-		//
-		// Call parent method.
-		//
-		$status = parent::_PrecommitRelated( $theConnection, $theModifiers );
-		if( $status !== NULL )
-			return $status;															// ==>
-		
-		//
-		// Not deleting.
-		//
-		if( ! ($theModifiers & kFLAG_PERSIST_DELETE) )
-			$this->_LoadTermAttributes(
-				array( kTAG_LID, kTAG_GID, kTAG_LABEL, kTAG_DEFINITION ) );
-		
-		return NULL;																// ==>
+		return array( kTAG_LID, kTAG_GID,
+					  kTAG_LABEL, kTAG_DEFINITION, kTAG_SYNONYMS,
+					  kTAG_FEATURES, kTAG_SCALES );									// ==>
 	
-	} // _PrecommitRelated.
+	} // _TermAttributes.
 
 	 
 

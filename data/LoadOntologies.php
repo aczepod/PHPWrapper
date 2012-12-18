@@ -65,6 +65,14 @@ try
 	Init();
 	
 	//
+	// Loading UN stats categories.
+	//
+	if( kOPTION_VERBOSE )
+		echo( "  • Loading UN regions.\n" );
+	$_SESSION[ kSESSION_ONTOLOGY ]->LoadXMLFile(
+		kPATH_MYWRAPPER_LIBRARY_DATA."/UNSTAT_REGIONS.xml" );
+	
+	//
 	// Loading ISO standards categories.
 	//
 	if( kOPTION_VERBOSE )

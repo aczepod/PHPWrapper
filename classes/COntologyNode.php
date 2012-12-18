@@ -1068,6 +1068,11 @@ class COntologyNode extends CNode
 			else
 				$this->LoadTerm( $theConnection, TRUE );
 		
+			//
+			// Load term attributes.
+			//
+			$this->_LoadTermAttributes( $this->_TermAttributes() );
+		
 		} // Not deleting.
 		
 		return NULL;																// ==>
@@ -1398,6 +1403,26 @@ class COntologyNode extends CNode
 		} // Object has term.
 	
 	} // _LoadTermAttributes.
+
+	 
+	/*===================================================================================
+	 *	_TermAttributes																	*
+	 *==================================================================================*/
+
+	/**
+	 * <h4>List term attributes</h4>
+	 *
+	 * This method can be used to return the list of term attributes that will be copied
+	 * into the node, it should return a list of tag identifiers that will be used to select
+	 * attributes from the node's term.
+	 *
+	 * In this class we copy no term attributes to the node, so we return <tt>NULL</tt>, in
+	 * derived classes you can return an array.
+	 *
+	 * @access protected
+	 * @return array
+	 */
+	protected function _TermAttributes()								{	return NULL;	}
 
 		
 

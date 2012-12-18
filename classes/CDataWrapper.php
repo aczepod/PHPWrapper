@@ -2034,7 +2034,7 @@ class CDataWrapper extends CWrapper
 		//
 		$fields = ( array_key_exists( kAPI_SELECT, $_REQUEST ) )
 				? $_REQUEST[ kAPI_SELECT ]
-				: Array();
+				: NULL;
 		
 		//
 		// Handle sort.
@@ -2198,7 +2198,7 @@ class CDataWrapper extends CWrapper
 		//
 		$fields = ( array_key_exists( kAPI_SELECT, $_REQUEST ) )
 				? $_REQUEST[ kAPI_SELECT ]
-				: Array();
+				: NULL;
 		
 		//
 		// Iterate queries.

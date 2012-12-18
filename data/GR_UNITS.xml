@@ -7,10 +7,8 @@
 				<item>:KIND-NAMESPACE</item>
 			</element>
 			<element variable="kTAG_LABEL" key="en">Genetic Resources INFOrmation</element>
-			<element variable="kTAG_DEFINITION" key="en">A feature or scale generic to various genetic resource descriptors.</element>
+			<element variable="kTAG_DEFINITION" key="en">Features and scales generic to various genetic resource descriptors.</element>
     	</term>
-    	<node class="COntologyMasterVertex">
-    	</node>
     </unit>
     
     <!-- GR:NICODE -->
@@ -21,18 +19,14 @@
     	</term>
     	<node class="COntologyMasterVertex">
 			<element variable="kTAG_KIND">
+				<item>:KIND-FEATURE</item>
 				<item>:KIND-SCALE</item>
 			</element>
 			<element variable="kTAG_TYPE">
 				<item>:ENUM</item>
 			</element>
     	</node>
-        <edges>
-			<edge>
-				<element variable="kTAG_PREDICATE">:SUBCLASS-OF</element>
-				<element variable="kTAG_OBJECT">GR</element>
-			</edge>
-        </edges>
+    	<tag />
     </unit>
     
     <!-- GR:GENUS -->
@@ -46,18 +40,14 @@
     	</term>
     	<node class="COntologyMasterVertex">
 			<element variable="kTAG_KIND">
+				<item>:KIND-FEATURE</item>
 				<item>:KIND-SCALE</item>
 			</element>
 			<element variable="kTAG_TYPE">
 				<item>:TEXT</item>
 			</element>
     	</node>
-        <edges>
-			<edge>
-				<element variable="kTAG_PREDICATE">:SUBCLASS-OF</element>
-				<element variable="kTAG_OBJECT">GR</element>
-			</edge>
-        </edges>
+    	<tag />
     </unit>
     
     <!-- GR:SPECIES -->
@@ -71,18 +61,14 @@
     	</term>
     	<node class="COntologyMasterVertex">
 			<element variable="kTAG_KIND">
+				<item>:KIND-FEATURE</item>
 				<item>:KIND-SCALE</item>
 			</element>
 			<element variable="kTAG_TYPE">
 				<item>:TEXT</item>
 			</element>
     	</node>
-        <edges>
-			<edge>
-				<element variable="kTAG_PREDICATE">:SUBCLASS-OF</element>
-				<element variable="kTAG_OBJECT">GR</element>
-			</edge>
-        </edges>
+    	<tag />
     </unit>
     
     <!-- GR:SPAUTHOR -->
@@ -96,18 +82,14 @@
     	</term>
     	<node class="COntologyMasterVertex">
 			<element variable="kTAG_KIND">
+				<item>:KIND-FEATURE</item>
 				<item>:KIND-SCALE</item>
 			</element>
 			<element variable="kTAG_TYPE">
 				<item>:TEXT</item>
 			</element>
     	</node>
-        <edges>
-			<edge>
-				<element variable="kTAG_PREDICATE">:SUBCLASS-OF</element>
-				<element variable="kTAG_OBJECT">GR</element>
-			</edge>
-        </edges>
+    	<tag />
     </unit>
     
     <!-- GR:SUBTAXA -->
@@ -121,18 +103,14 @@
     	</term>
     	<node class="COntologyMasterVertex">
 			<element variable="kTAG_KIND">
+				<item>:KIND-FEATURE</item>
 				<item>:KIND-SCALE</item>
 			</element>
 			<element variable="kTAG_TYPE">
 				<item>:TEXT</item>
 			</element>
     	</node>
-        <edges>
-			<edge>
-				<element variable="kTAG_PREDICATE">:SUBCLASS-OF</element>
-				<element variable="kTAG_OBJECT">GR</element>
-			</edge>
-        </edges>
+    	<tag />
     </unit>
     
     <!-- GR:SUBTAUTHOR -->
@@ -141,23 +119,19 @@
 			<element variable="kTAG_LABEL" key="en">Infraspecific epithet authority</element>
 			<element variable="kTAG_DEFINITION" key="en">Name or abbreviation of the author of the third word in the scientific name of an infraspecific taxon which follows the name of the species.</element>
 			<element variable="kTAG_SYNONYMS">
-				<item>SUBTAXA</item>
+				<item>SUBTAUTHOR</item>
 			</element>
     	</term>
     	<node class="COntologyMasterVertex">
 			<element variable="kTAG_KIND">
+				<item>:KIND-FEATURE</item>
 				<item>:KIND-SCALE</item>
 			</element>
 			<element variable="kTAG_TYPE">
 				<item>:TEXT</item>
 			</element>
     	</node>
-        <edges>
-			<edge>
-				<element variable="kTAG_PREDICATE">:SUBCLASS-OF</element>
-				<element variable="kTAG_OBJECT">GR</element>
-			</edge>
-        </edges>
+    	<tag />
     </unit>
     
     <!-- GR:DATE -->
@@ -168,6 +142,7 @@
     	</term>
     	<node class="COntologyMasterVertex">
 			<element variable="kTAG_KIND">
+				<item>:KIND-FEATURE</item>
 				<item>:KIND-SCALE</item>
 			</element>
 			<element variable="kTAG_TYPE">
@@ -179,12 +154,7 @@
 				<item><![CDATA[Missing months: <tt>1978</tt> or <tt>1978----</tt> or <tt>19780000</tt>]]></item>
 			</element>
     	</node>
-        <edges>
-			<edge>
-				<element variable="kTAG_PREDICATE">:SUBCLASS-OF</element>
-				<element variable="kTAG_OBJECT">GR</element>
-			</edge>
-        </edges>
+    	<tag />
     </unit>
     
     <!-- GR:LATITUDE -->
@@ -195,6 +165,7 @@
     	</term>
     	<node class="COntologyMasterVertex">
 			<element variable="kTAG_KIND">
+				<item>:KIND-FEATURE</item>
 				<item>:KIND-SCALE</item>
 			</element>
 			<element variable="kTAG_TYPE">
@@ -207,12 +178,7 @@
 			</element>
 			<element variable="kTAG_DESCRIPTION" key="en"><![CDATA[To convert from longitude and latitude in degrees (o), minutes ('), seconds (''), and a hemisphere (North or South and East or West) to decimal degrees, the following formula should be used: do m' s''=h *(d+m/ 60+s/3600) where h=1 for the Northern and Eastern hemispheres and –1 for the Southern and Western hemispheres i.e. 30o30'0'' S= –30.5 and 30o15'55'' N=30.265.]]></element>
     	</node>
-        <edges>
-			<edge>
-				<element variable="kTAG_PREDICATE">:SUBCLASS-OF</element>
-				<element variable="kTAG_OBJECT">GR</element>
-			</edge>
-        </edges>
+    	<tag />
     </unit>
     
     <!-- GR:LONGITUDE -->
@@ -223,6 +189,7 @@
     	</term>
     	<node class="COntologyMasterVertex">
 			<element variable="kTAG_KIND">
+				<item>:KIND-FEATURE</item>
 				<item>:KIND-SCALE</item>
 			</element>
 			<element variable="kTAG_TYPE">
@@ -235,12 +202,7 @@
 			</element>
 			<element variable="kTAG_DESCRIPTION" key="en"><![CDATA[To convert from longitude and latitude in degrees (o), minutes ('), seconds (''), and a hemisphere (North or South and East or West) to decimal degrees, the following formula should be used: do m' s''=h *(d+m/ 60+s/3600) where h=1 for the Northern and Eastern hemispheres and –1 for the Southern and Western hemispheres i.e. 30o30'0'' S= –30.5 and 30o15'55'' N=30.265.]]></element>
     	</node>
-        <edges>
-			<edge>
-				<element variable="kTAG_PREDICATE">:SUBCLASS-OF</element>
-				<element variable="kTAG_OBJECT">GR</element>
-			</edge>
-        </edges>
+    	<tag />
     </unit>
     
     <!-- GR:COUNTRIES -->
@@ -251,17 +213,13 @@
     	</term>
     	<node class="COntologyMasterVertex">
 			<element variable="kTAG_KIND">
+				<item>:KIND-FEATURE</item>
 				<item>:KIND-SCALE</item>
 			</element>
 			<element variable="kTAG_TYPE">
 				<item>:ENUM</item>
 			</element>
     	</node>
-        <edges>
-			<edge>
-				<element variable="kTAG_PREDICATE">:SUBCLASS-OF</element>
-				<element variable="kTAG_OBJECT">GR</element>
-			</edge>
-        </edges>
+    	<tag />
     </unit>
 </units>

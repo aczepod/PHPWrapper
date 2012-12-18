@@ -1,0 +1,21 @@
+SELECT
+	CONCAT( '<unit>',
+			'<term lid="',
+			`Code`,
+			'" ns="unstats.un.org"><element variable="kTAG_KIND"><item>:KIND-ENUMERATION</item></element><element variable="kTAG_LABEL" key="en">',
+			`Name`,
+			'</element></term>',
+			'<node class="COntologyMasterVertex"><element variable="kTAG_KIND"><item>:KIND-ENUMERATION</item></element></node>',
+			'<edge><element variable="kTAG_PREDICATE">:ENUM-OF</element><element variable="kTAG_OBJECT">unstats.un.org</element></edge>',
+			IF( `Parent` IS NOT NULL,
+				CONCAT( '<edge><element variable="kTAG_PREDICATE">:SUBSET-OF</element><element variable="kTAG_OBJECT">unstats.un.org:',
+						`Parent`,
+						'</element></edge>' ),
+				'' ),
+			'</unit>
+' )
+FROM
+	`Code_ISO_3166_Regions`
+ORDER BY
+	`Code`,
+	`Parent`

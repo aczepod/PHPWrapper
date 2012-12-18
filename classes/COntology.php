@@ -3304,6 +3304,9 @@ class COntology extends CConnection
 						if( $record[ 'name' ] !== NULL )
 							$term3->Label( 'en',
 										   (string) $record[ 'name' ] );
+						if( $record[ 'names' ] !== NULL )
+							$term3->Label( 'en',
+										   (string) $record[ 'names' ] );
 						if( $record[ 'comment' ] !== NULL )
 							$term3->Definition( 'en',
 												(string) $record[ 'comment' ] );
