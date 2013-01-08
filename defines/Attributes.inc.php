@@ -717,5 +717,16 @@ define( "kTERM_USER_PROFILE",					':USER-PROFILE' );
  */
 define( "kTERM_USER_MANAGER",					':USER-MANAGER' );
 
+/**
+ * USER-DOMAIN.
+ *
+ * User domain.
+ *
+ * Domains to which a user has access to.
+ *
+ * Version 1: (kTERM_USER_DOMAIN)[:USER-DOMAIN]
+ */
+define( "kTERM_USER_DOMAIN",					':USER-DOMAIN' );
+
 
 ?>

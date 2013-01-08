@@ -545,4 +545,14 @@
             <item>kTERM_USER_MANAGER</item>
         </element>
     </term>
+    
+    <!-- kTERM_USER_DOMAIN -->
+    <term lid="USER-DOMAIN" ns="">
+        <element variable="kTAG_LABEL" key="en">User domain</element>
+        <element variable="kTAG_DEFINITION" key="en"><![CDATA[List of <i>domains</i> to which the user has access to.]]>
+        </element>
+        <element variable="kTAG_SYNONYMS">
+            <item>kTERM_USER_DOMAIN</item>
+        </element>
+    </term>
 </terms>

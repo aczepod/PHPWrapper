@@ -34,6 +34,13 @@ require_once( kPATH_MYWRAPPER_LIBRARY_CLASS."/CMongoQuery.php" );
 require_once( kPATH_MYWRAPPER_LIBRARY_CLASS."/CContainer.php" );
 
 /**
+ * Local definitions.
+ *
+ * This include file contains all local definitions to this class.
+ */
+require_once( kPATH_MYWRAPPER_LIBRARY_CLASS."/CMongoContainer.inc.php" );
+
+/**
  * <h4>Mongo persistent objects data store</h4>
  *
  * This <i>concrete</i> class implements a container that uses a {@link MongoCollection} to
@@ -320,8 +327,8 @@ class CMongoContainer extends CContainer
 	 *
 	 * For more information see {@link CContainer::ManageObject()}.
 	 *
-	 * <i>Note: the commit operations are performed by default with the <tt>safe</tt>
-	 * option.</i>
+	 * <i>Note: the commit operations are performed by default with the default Mongo
+	 * <tt>WriteConcerns</tt> option.</i>
 	 *
 	 * @param reference			   &$theObject			Object.
 	 * @param mixed					$theIdentifier		Identifier.
@@ -400,7 +407,7 @@ class CMongoContainer extends CContainer
 		//
 		// Init commit options.
 		//
-		$options = array( 'safe' => TRUE );
+		$options = array( 'w' => kMONGO_WRITE_CONCERN );
 		
 		//
 		// Handle insert.
@@ -552,12 +559,6 @@ class CMongoContainer extends CContainer
 				//
 				foreach( $theObject as $offset => $value )
 				{
-					//
-					// Convert array objects.
-					//
-					if( $value instanceof ArrayObject )
-						$value = $value->getArrayCopy();
-						
 					//
 					// Handle array value.
 					//
@@ -1143,7 +1144,7 @@ class CMongoContainer extends CContainer
 			//
 			// Init local storage.
 			//
-			$options = array( 'safe' => TRUE );
+			$options = array( 'w' => kMONGO_WRITE_CONCERN );
 			$criteria = array( '_id' => $theKey );
 			$container = ( $theContainer !== NULL )
 					   ? ( ( $theContainer === TRUE )

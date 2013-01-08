@@ -244,6 +244,11 @@ abstract class CContainer extends CConnection
 	 *					If the field does not exist, it will be created with an array
 	 *					composed of the provided append value; if the field exists and its
 	 *					value is not an array, an exception should be raised.
+	 *					Note that if you provide an array as the value, the method will
+	 *					assume that you want to append the elements of the array as
+	 *					individual items; if you provide an <tt>ArrayObject</tt>, instead,
+	 *					the method will assume you want to append the whole array as a
+	 *					single item.
 	 *				<li>{@link kFLAG_MODIFY_ADDSET}: This flag indicates that we want to
 	 *					add a value to a set, this operation is equivalent to
 	 *					{@link kFLAG_MODIFY_APPEND}, except that the value will be appended

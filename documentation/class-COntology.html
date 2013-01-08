@@ -7,7 +7,7 @@
 	<title>Class COntology | MyWrapper Reference Documentation</title>
 
 	<script type="text/javascript" src="resources/combined.js?3680114562"></script>
-	<script type="text/javascript" src="elementlist.js?1324799474"></script>
+	<script type="text/javascript" src="elementlist.js?1554410322"></script>
 	<link rel="stylesheet" type="text/css" media="all" href="resources/style.css?3505392360" />
 
 </head>
@@ -21,7 +21,7 @@
 		<div id="groups">
 			<h3>Packages</h3>
 			<ul>
-				<li class="main"><a href="package-MyWrapper.html">MyWrapper<span></span></a>
+				<li class="active main"><a href="package-MyWrapper.html">MyWrapper<span></span></a>
 						<ul>
 				<li class="main"><a href="package-MyWrapper.Data.html">Data</a>
 						</li>
@@ -33,15 +33,13 @@
 						</li>
 				<li class="main"><a href="package-MyWrapper.Objects.html">Objects</a>
 						</li>
-				<li class="main"><a href="package-MyWrapper.Ontology.html">Ontology</a>
+				<li class="active main"><a href="package-MyWrapper.Ontology.html">Ontology</a>
 						</li>
 				<li class="main"><a href="package-MyWrapper.Persistence.html">Persistence</a>
 						</li>
 				<li class="main"><a href="package-MyWrapper.Wrappers.html">Wrappers</a>
 						</li>
 							</ul></li>
-				<li class="active"><a href="package-None.html">None</a>
-						</li>
 				<li><a href="package-PHP.html">PHP</a>
 						</li>
 			</ul>
@@ -53,7 +51,16 @@
 		<div id="elements">
 			<h3>Classes</h3>
 			<ul>
-				<li class="active"><a href="class-COntology.html" class="invalid">COntology</a></li>
+				<li class="active"><a href="class-COntology.html">COntology</a></li>
+				<li><a href="class-COntologyAliasNode.html">COntologyAliasNode</a></li>
+				<li><a href="class-COntologyAliasVertex.html">COntologyAliasVertex</a></li>
+				<li><a href="class-COntologyEdge.html">COntologyEdge</a></li>
+				<li><a href="class-COntologyMasterNode.html">COntologyMasterNode</a></li>
+				<li><a href="class-COntologyMasterVertex.html">COntologyMasterVertex</a></li>
+				<li><a href="class-COntologyNode.html">COntologyNode</a></li>
+				<li><a href="class-COntologyTag.html">COntologyTag</a></li>
+				<li><a href="class-COntologyTerm.html">COntologyTerm</a></li>
+				<li><a href="class-COntologyVertex.html">COntologyVertex</a></li>
 			</ul>
 
 
@@ -81,7 +88,7 @@
 				<a href="index.html" title="Overview"><span>Overview</span></a>
 			</li>
 			<li>
-				<a href="package-None.html" title="Summary of None"><span>Package</span></a>
+				<a href="package-MyWrapper.Ontology.html" title="Summary of MyWrapper\Ontology"><span>Package</span></a>
 			</li>
 			<li class="active">
 <span>Class</span>			</li>
@@ -98,17 +105,1539 @@
 <div id="content" class="class">
 	<h1>Class COntology</h1>
 
-		<div class="invalid">
-			<p>
-				Documentation of this class could not be generated.
-			</p>
-			<p>
-				Class was originally declared in COntology.old.php and is invalid because of:
-			</p>
-			<ul>
-				<li>Class was redeclared in COntology.php.</li>
-			</ul>
+
+	<div class="description">
+	
+<h4>Ontology object</h4>
+
+<p>This class represents an object whose duty is to provide a high level
+interface for managing ontologies.</p>
+
+	</div>
+
+	<dl class="tree">
+		<dd style="padding-left:0px">
+			<a href="class-ArrayObject.html"><span>ArrayObject</span></a>
+			
+			 implements 
+				<a href="class-IteratorAggregate.html"><span>IteratorAggregate</span></a>, 
+			
+				<a href="class-Traversable.html"><span>Traversable</span></a>, 
+			
+				<a href="class-ArrayAccess.html"><span>ArrayAccess</span></a>, 
+			
+				<a href="class-Serializable.html"><span>Serializable</span></a>, 
+			
+				<a href="class-Countable.html"><span>Countable</span></a>
+			
+			
+		</dd>
+		<dd style="padding-left:30px">
+			<img src="resources/inherit.png" alt="Extended by" />
+			<a href="class-CDocument.html"><span>CDocument</span></a>
+			
+			
+			
+		</dd>
+		<dd style="padding-left:60px">
+			<img src="resources/inherit.png" alt="Extended by" />
+			<a href="class-CStatusDocument.html"><span>CStatusDocument</span></a>
+			
+			
+			
+		</dd>
+		<dd style="padding-left:90px">
+			<img src="resources/inherit.png" alt="Extended by" />
+			<a href="class-CConnection.html"><span>CConnection</span></a>
+			
+			
+			
+		</dd>
+		<dd style="padding-left:120px">
+			<img src="resources/inherit.png" alt="Extended by" />
+<b><span>COntology</span></b>			
+			
+			
+		</dd>
+	</dl>
+
+
+
+
+
+
+
+
+	<div class="info">
+		
+		
+		
+		<b>Package:</b> <a href="package-MyWrapper.html">MyWrapper</a>\<a href="package-MyWrapper.Ontology.html">Ontology</a><br />
+
+				<b>Author:</b>
+				Milko A. Škofič &lt;<a
+href="mailto:m.skofic&#64;cgiar.org">m.skofic&#64;<!---->cgiar.org</a>&gt;<br />
+		<b>Located at</b> <a href="source-class-COntology.html#277-4574" title="Go to source code">COntology.php</a><br />
+	</div>
+
+
+
+	<table class="summary" id="methods">
+	<caption>Methods summary</caption>
+	<tr data-order="__toString" id="___toString">
+
+		<td class="attributes"><code>
+			 public 
+			string
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#___toString">#</a>
+		<code><a href="source-class-COntology.html#302-313" title="Go to source code">__toString</a>( )</code>
+
+		<div class="description short">
+			
+<h4>Return connection name</h4>
+
 		</div>
+
+		<div class="description detailed hidden">
+			
+<h4>Return connection name</h4>
+
+<p>We implement this method by letting the connection object take care of
+returning its name.</p>
+
+
+
+
+				<h4>Returns</h4>
+				<div class="list">
+					<code>string</code><br>The connection name.<br />
+				</div>
+
+
+				<h4>Uses</h4>
+				<div class="list">
+						<code><code><a href="class-COntology.html#_Connection">COntology::Connection()</a></code></code> <br />
+				</div>
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="Connection" id="_Connection">
+
+		<td class="attributes"><code>
+			 public 
+			mixed
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_Connection">#</a>
+		<code><a href="source-class-COntology.html#329-357" title="Go to source code">Connection</a>( <span>mixed <var>$theValue</var> = <span class="php-keyword1">NULL</span></span>, <span>boolean <var>$getOld</var> = <span class="php-keyword1">FALSE</span> </span> )</code>
+
+		<div class="description short">
+			
+<h4>Manage native connection</h4>
+
+		</div>
+
+		<div class="description detailed hidden">
+			
+<h4>Manage native connection</h4>
+
+<p>We overload this method to ensure the provided connection is a <code><a href="class-CDatabase.html">CDatabase</a></code> instance.</p>
+
+
+
+				<h4>Parameters</h4>
+				<div class="list"><dl>
+					<dt><var>$theValue</var></dt>
+					<dd><code>mixed</code><br>$theValue Native connection or operation.</dd>
+					<dt><var>$getOld</var></dt>
+					<dd><code>boolean</code><br>$getOld <tt>TRUE</tt> get old value.</dd>
+				</dl></div>
+
+				<h4>Returns</h4>
+				<div class="list">
+					<code>mixed</code><br><i>New</i> or <i>old</i> native connection.<br />
+				</div>
+
+				<h4>Throws</h4>
+				<div class="list">
+					<code><code><a href="class-Exception.html">Exception</a></code></code><br />
+				</div>
+
+				<h4>Used by</h4>
+				<div class="list">
+						<code><code><a href="class-COntology.html#___toString">COntology::__toString()</a></code></code> <br />
+						<code><code><a href="class-COntology.html#_InitOntology">COntology::InitOntology()</a></code></code> <br />
+						<code><code><a href="class-COntology.html#__InitContainers">COntology::_InitContainers()</a></code></code> <br />
+				</div>
+
+				<h4>Overrides</h4>
+				<div class="list"><code><a href="class-CConnection.html#_Connection">CConnection::Connection()</a></code></div>
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="GetDatabase" id="_GetDatabase">
+
+		<td class="attributes"><code>
+			 public 
+			mixed
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_GetDatabase">#</a>
+		<code><a href="source-class-COntology.html#364-398" title="Go to source code">GetDatabase</a>( <span>mixed <var>$theValue</var> = <span class="php-keyword1">NULL</span></span>, <span>mixed <var>$getOld</var> = <span class="php-keyword1">FALSE</span> </span> )</code>
+
+		<div class="description short">
+			
+<h4>Return database connection</h4>
+
+		</div>
+
+		<div class="description detailed hidden">
+			
+<h4>Return database connection</h4>
+
+<p>This method should return the database connection, <tt>FALSE<tt> if no
+connection is set and <tt>NULL</tt>, if the database cannot be
+inferred..</tt></tt></p>
+
+
+
+
+				<h4>Returns</h4>
+				<div class="list">
+					<code>mixed</code><br>Database connection, <tt>NULL&lt;7tt&gt; or <tt>FALSE</tt>.</tt><br />
+				</div>
+
+
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="InitOntology" id="_InitOntology">
+
+		<td class="attributes"><code>
+			 public 
+			
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_InitOntology">#</a>
+		<code><a href="source-class-COntology.html#414-485" title="Go to source code">InitOntology</a>( )</code>
+
+		<div class="description short">
+			
+<h4>Initialise the ontology</h4>
+
+		</div>
+
+		<div class="description detailed hidden">
+			
+<h4>Initialise the ontology</h4>
+
+<p>This method will clear the current database and initialise it with the
+default ontology elements.</p>
+
+<p>This method can be used to create a new ontology, so you should be aware that
+the method will erase any existing data.</p>
+
+<p>The curent object must be <code><a href="class-CStatusDocument.html#__IsInited">CStatusDocument::_IsInited()</a></code> and the method does not return
+any value.</p>
+
+
+
+
+
+				<h4>Throws</h4>
+				<div class="list">
+					<code><code><a href="class-Exception.html">Exception</a></code></code><br />
+				</div>
+
+				<h4>Uses</h4>
+				<div class="list">
+						<code><code><a href="class-CStatusDocument.html#__IsInited">CStatusDocument::_IsInited()</a></code></code> <br />
+						ResolveTerm()<br />
+						_NewTerm()<br />
+						<code><code><a href="class-COntology.html#_Connection">COntology::Connection()</a></code></code> <br />
+				</div>
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="LoadXMLFile" id="_LoadXMLFile">
+
+		<td class="attributes"><code>
+			 public 
+			
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_LoadXMLFile">#</a>
+		<code><a href="source-class-COntology.html#501-565" title="Go to source code">LoadXMLFile</a>( <span>mixed <var>$theFilePath</var></span> )</code>
+
+		<div class="description short">
+			
+<h4>Load the provided XML file</h4>
+
+		</div>
+
+		<div class="description detailed hidden">
+			
+<h4>Load the provided XML file</h4>
+
+<p>The file features a list of units which contain data for terms, nodes, edges
+and tags. This method allows loading these files into the ontology.</p>
+
+<p>Note that there is no caching performed, so if you reference an object that
+has not yet been loaded the method will fail.</p>
+
+<p>The file path parameter may be either a string or a list of strings.</p>
+
+
+
+				<h4>Parameters</h4>
+				<div class="list"><dl>
+					<dt><var>$theFilePath</var></dt>
+					<dd><code>mixed</code><br>$theFilePath Path to the units file.</dd>
+				</dl></div>
+
+
+				<h4>Throws</h4>
+				<div class="list">
+					<code><code><a href="class-Exception.html">Exception</a></code></code><br />
+				</div>
+
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="LoadISOPOFiles" id="_LoadISOPOFiles">
+
+		<td class="attributes"><code>
+			 public 
+			
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_LoadISOPOFiles">#</a>
+		<code><a href="source-class-COntology.html#581-624" title="Go to source code">LoadISOPOFiles</a>( <span>mixed <var>$theFilePath</var></span> )</code>
+
+		<div class="description short">
+			
+<h4>Load the standard ISO ontology</h4>
+
+		</div>
+
+		<div class="description detailed hidden">
+			
+<h4>Load the standard ISO ontology</h4>
+
+<p>This method will load the ISO standards into the ontology, it takes the
+information from the <a href="http://pkg-isocodes.alioth.debian.org">http://pkg-isocodes.alioth.debian.org</a>
+web page project.</p>
+
+<p>The method requires the path to the unit XML file containing the ISO
+categories, it will then decode the PO files and load the information.</p>
+
+
+
+				<h4>Parameters</h4>
+				<div class="list"><dl>
+					<dt><var>$theFilePath</var></dt>
+					<dd><code>mixed</code><br>$theFilePath Path to the ISO categories file.</dd>
+				</dl></div>
+
+
+				<h4>Throws</h4>
+				<div class="list">
+					<code><code><a href="class-Exception.html">Exception</a></code></code><br />
+				</div>
+
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="SetAllCountries" id="_SetAllCountries">
+
+		<td class="attributes"><code>
+			 public 
+			
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_SetAllCountries">#</a>
+		<code><a href="source-class-COntology.html#631-723" title="Go to source code">SetAllCountries</a>( <span>string <var>$theEnumeration</var></span> )</code>
+
+		<div class="description short">
+			
+<h4>Set all countries to provided element</h4>
+
+		</div>
+
+		<div class="description detailed hidden">
+			
+<h4>Set all countries to provided element</h4>
+
+<p>This method will connect all ISO 3166-1 and ISO 3166-3 countries to the
+provided enumeration.</p>
+
+
+
+				<h4>Parameters</h4>
+				<div class="list"><dl>
+					<dt><var>$theEnumeration</var></dt>
+					<dd><code>string</code><br>$theEnumeration GID of enumeration.</dd>
+				</dl></div>
+
+
+				<h4>Throws</h4>
+				<div class="list">
+					<code><code><a href="class-Exception.html">Exception</a></code></code><br />
+				</div>
+
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="_InitContainers" id="__InitContainers">
+
+		<td class="attributes"><code>
+			 protected 
+			
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#__InitContainers">#</a>
+		<code><a href="source-class-COntology.html#739-875" title="Go to source code">_InitContainers</a>( )</code>
+
+		<div class="description short">
+			
+<h4>Initialise ontology containers</h4>
+
+		</div>
+
+		<div class="description detailed hidden">
+			
+<h4>Initialise ontology containers</h4>
+
+<p>This method will reset and create indexes for containers related to terms,
+nodes, edges, tags and sequences.</p>
+
+<p><b>When calling this method you must be aware that all the ontology data will
+be erased, this method for intended to create a new ontology. This must be the
+first method called by the procedure that initialises the ontology.</b></p>
+
+
+
+
+
+				<h4>Throws</h4>
+				<div class="list">
+					<code><code><a href="class-Exception.html">Exception</a></code></code><br />
+				</div>
+
+				<h4>Uses</h4>
+				<div class="list">
+						<code><code><a href="class-COntology.html#_Connection">COntology::Connection()</a></code></code> <br />
+						NewTerm()<br />
+				</div>
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="_InitTerms" id="__InitTerms">
+
+		<td class="attributes"><code>
+			 protected 
+			
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#__InitTerms">#</a>
+		<code><a href="source-class-COntology.html#882-955" title="Go to source code">_InitTerms</a>( )</code>
+
+		<div class="description short">
+			
+<h4>Initialise default terms</h4>
+
+		</div>
+
+		<div class="description detailed hidden">
+			
+<h4>Initialise default terms</h4>
+
+<p>This method will load all default terms, it will read the term definition
+files from the library definitions directory.</p>
+
+
+
+
+
+				<h4>Throws</h4>
+				<div class="list">
+					<code><code><a href="class-Exception.html">Exception</a></code></code><br />
+				</div>
+
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="_InitNodes" id="__InitNodes">
+
+		<td class="attributes"><code>
+			 protected 
+			
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#__InitNodes">#</a>
+		<code><a href="source-class-COntology.html#962-1042" title="Go to source code">_InitNodes</a>( )</code>
+
+		<div class="description short">
+			
+<h4>Initialise nodes</h4>
+
+		</div>
+
+		<div class="description detailed hidden">
+			
+<h4>Initialise nodes</h4>
+
+<p>This method will load all default nodes, it will read the node definitions
+from the files placed in the library definitions directory.</p>
+
+
+
+
+
+				<h4>Throws</h4>
+				<div class="list">
+					<code><code><a href="class-Exception.html">Exception</a></code></code><br />
+				</div>
+
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="_InitEdges" id="__InitEdges">
+
+		<td class="attributes"><code>
+			 protected 
+			
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#__InitEdges">#</a>
+		<code><a href="source-class-COntology.html#1049-1115" title="Go to source code">_InitEdges</a>( )</code>
+
+		<div class="description short">
+			
+<h4>Initialise edges</h4>
+
+		</div>
+
+		<div class="description detailed hidden">
+			
+<h4>Initialise edges</h4>
+
+<p>This method will load all default edges, it will read the edge definitions
+from the files placed in the library definitions directory.</p>
+
+
+
+
+
+				<h4>Throws</h4>
+				<div class="list">
+					<code><code><a href="class-Exception.html">Exception</a></code></code><br />
+				</div>
+
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="_InitVertices" id="__InitVertices">
+
+		<td class="attributes"><code>
+			 protected 
+			
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#__InitVertices">#</a>
+		<code><a href="source-class-COntology.html#1122-1166" title="Go to source code">_InitVertices</a>( )</code>
+
+		<div class="description short">
+			
+<h4>Initialise vertices</h4>
+
+		</div>
+
+		<div class="description detailed hidden">
+			
+<h4>Initialise vertices</h4>
+
+<p>This method will load all default vertices, it will read the vertex
+definitions from the files placed in the library definitions directory.</p>
+
+
+
+
+
+				<h4>Throws</h4>
+				<div class="list">
+					<code><code><a href="class-Exception.html">Exception</a></code></code><br />
+				</div>
+
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="_InitTags" id="__InitTags">
+
+		<td class="attributes"><code>
+			 protected 
+			
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#__InitTags">#</a>
+		<code><a href="source-class-COntology.html#1173-1240" title="Go to source code">_InitTags</a>( )</code>
+
+		<div class="description short">
+			
+<h4>Initialise tags</h4>
+
+		</div>
+
+		<div class="description detailed hidden">
+			
+<h4>Initialise tags</h4>
+
+<p>This method will load all default tags, it will read the tag definitions from
+the files placed in the library definitions directory.</p>
+
+
+
+
+
+				<h4>Throws</h4>
+				<div class="list">
+					<code><code><a href="class-Exception.html">Exception</a></code></code><br />
+				</div>
+
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="_ParseXMLUnit" id="__ParseXMLUnit">
+
+		<td class="attributes"><code>
+			 protected 
+			
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#__ParseXMLUnit">#</a>
+		<code><a href="source-class-COntology.html#1256-1595" title="Go to source code">_ParseXMLUnit</a>( <span><code><a href="class-CDatabase.html">CDatabase</a></code> <var>$theDatabase</var></span>, <span><code><a href="class-SimpleXMLElement.html">SimpleXMLElement</a></code> <var>$theElement</var></span> )</code>
+
+		<div class="description short">
+			
+<h4>Parse the provided XML unit</h4>
+
+		</div>
+
+		<div class="description detailed hidden">
+			
+<h4>Parse the provided XML unit</h4>
+
+<p>This method will parse the provided XML unit by cycling the following
+structure:</p>
+
+<ul>
+	<li><tt>units</tt>: This tag contains a collection of <tt>unit</tt> elements
+	that represent a group of related <tt>term</tt>, <tt>node</tt>, <tt>edges</tt>
+	and <tt>tag</tt> object definitions.</li>
+
+	<li><tt>term</tt>: The term (single) element may contain two attributes:
+		<ul>
+			<li><tt>ns</tt>: Namespace, it must be the global identifier of the namespace
+			term.</li>
+
+			<li><tt>lid</tt>: Local identifier, this attribute is required.</li>
+		</ul>
+	</li>
+
+	<li><tt>node</tt>: The node (multiple) elements may contain two attributes:
+		<ul>
+			<li><tt>id</tt>: Identifier, it must be the native identifier of the node.</li>
+
+			<li><tt>gid</tt>: Term global identifier, this attribute makes sense only if the
+			node is a master.</li>
+
+			<li><tt>class</tt>: Node class name.</li>
+		</ul>
+		 If the node class is <tt>COntologyAliasVertex</tt>, edge subject or object node
+		references matching alias nodes will link to those alias nodes, this is done by
+		replacing the node reference expressed by a term reference by the actual alias
+		node native identifier. This holds for all the <tt>node</tt> elements in the
+		block.</li>
+
+	<li><tt>edges</tt>: This element contains the following elements:
+		<ul>
+			<li><tt>edge</tt>: The edge element may contain one:
+				<ul>
+					<li><tt>id</tt>: Identifier, it must be the native identifier of the edge.</li>
+				</ul>
+			</li>
+		</ul>
+	</li>
+
+	<li><tt>tag</tt>: This (single) element does not contain attributes.</li>
+
+	<li><tt>element</tt>: Each element of the above elements represents an object
+	property:
+		<ul>
+			<li><tt>id</tt>: Tag identifier, this value represents the tag native
+			identifier.</li>
+
+			<li><tt>gid</tt>: Tag global identifier.</li>
+
+			<li><tt>variable</tt>: Tag variable, this value represents the PHP definition
+			name.</li>
+
+			<li><tt>key</tt>: If this attribute is present, it means that the attribute
+			represents the key of the element, thus it will become an array in which
+			<tt>key</tt> will become the key.</li>
+
+			<li><i>no attribute</i>: this is used by tags to add path elements, if the tag
+			has no elements, it is assumed the tag is to be the current term.</li>
+		</ul>
+	</li>
+
+	<li><tt>item</tt>: Any element that contains one or more of these elements is an
+	array.</li>
+</ul>
+
+<p>This method will parse the provided <tt>unit</tt> element.</p>
+
+
+
+				<h4>Parameters</h4>
+				<div class="list"><dl>
+					<dt><var>$theDatabase</var></dt>
+					<dd><code><code><a href="class-CDatabase.html">CDatabase</a></code></code><br>$theDatabase Database container.</dd>
+					<dt><var>$theElement</var></dt>
+					<dd><code><code><a href="class-SimpleXMLElement.html">SimpleXMLElement</a></code></code><br>$theElement XML element with term data.</dd>
+				</dl></div>
+
+
+				<h4>Throws</h4>
+				<div class="list">
+					<code><code><a href="class-Exception.html">Exception</a></code></code><br />
+				</div>
+
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="_ParseXMLElement" id="__ParseXMLElement">
+
+		<td class="attributes"><code>
+			 protected 
+			
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#__ParseXMLElement">#</a>
+		<code><a href="source-class-COntology.html#1602-1816" title="Go to source code">_ParseXMLElement</a>( <span><code><a href="class-CDatabase.html">CDatabase</a></code> <var>$theDatabase</var></span>, <span><code><a href="class-SimpleXMLElement.html">SimpleXMLElement</a></code> <var>$theElement</var></span>, <span><code><a href="class-CPersistentObject.html">CPersistentObject</a></code> <var>$theObject</var></span> )</code>
+
+		<div class="description short">
+			
+<h4>Parse the provided XML element</h4>
+
+		</div>
+
+		<div class="description detailed hidden">
+			
+<h4>Parse the provided XML element</h4>
+
+<p>This method will parse the provided XML element by cycling the following
+structure:</p>
+
+<ul>
+	<li><tt>element</tt>: Each element represents an object property:
+		<ul>
+			<li><tt>id</tt>: Tag identifier, this value represents the tag native
+			identifier.</li>
+
+			<li><tt>gid</tt>: Tag global identifier.</li>
+
+			<li><tt>variable</tt>: Tag variable, this value represents the PHP definition
+			name.</li>
+
+			<li><tt>key</tt>: If this attribute is present, it means that the attribute
+			represents the key of the element, thus it will become an array in which
+			<tt>key</tt> will become the key.</li>
+		</ul>
+	</li>
+
+	<li><tt>item</tt>: Any element that contains one or more of these elements is an
+	array.</li>
+</ul>
+
+<p>This method will parse the provided element and set the corresponding
+properties into the provided object.</p>
+
+
+
+				<h4>Parameters</h4>
+				<div class="list"><dl>
+					<dt><var>$theDatabase</var></dt>
+					<dd><code><code><a href="class-CDatabase.html">CDatabase</a></code></code><br>$theDatabase Database container.</dd>
+					<dt><var>$theElement</var></dt>
+					<dd><code><code><a href="class-SimpleXMLElement.html">SimpleXMLElement</a></code></code><br>$theElement XML element.</dd>
+					<dt><var>$theObject</var></dt>
+					<dd><code><code><a href="class-CPersistentObject.html">CPersistentObject</a></code></code><br>$theObject Object receiving attributes.</dd>
+				</dl></div>
+
+
+				<h4>Throws</h4>
+				<div class="list">
+					<code><code><a href="class-Exception.html">Exception</a></code></code><br />
+				</div>
+
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="_ISODecodePOFiles" id="__ISODecodePOFiles">
+
+		<td class="attributes"><code>
+			 protected 
+			
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#__ISODecodePOFiles">#</a>
+		<code><a href="source-class-COntology.html#1832-1950" title="Go to source code">_ISODecodePOFiles</a>( )</code>
+
+		<div class="description short">
+			
+<h4>Decode PO files</h4>
+
+		</div>
+
+		<div class="description detailed hidden">
+			
+<h4>Decode PO files</h4>
+
+<p>This method will parse all MO files, decode them into PO files and write to
+the kISO_FILE_PO_DIR directory the PHP serialised decode array.</p>
+
+
+
+
+
+				<h4>Throws</h4>
+				<div class="list">
+					<code><code><a href="class-Exception.html">Exception</a></code></code><br />
+				</div>
+
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="_ISOParseXMLFiles" id="__ISOParseXMLFiles">
+
+		<td class="attributes"><code>
+			 protected 
+			
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#__ISOParseXMLFiles">#</a>
+		<code><a href="source-class-COntology.html#1957-2016" title="Go to source code">_ISOParseXMLFiles</a>( <span><code><a href="class-CDatabase.html">CDatabase</a></code> <var>$theDatabase</var></span> )</code>
+
+		<div class="description short">
+			
+<h4>Parse XML files</h4>
+
+		</div>
+
+		<div class="description detailed hidden">
+			
+<h4>Parse XML files</h4>
+
+<p>This method will parse the XML files and store the data in the database.</p>
+
+
+
+				<h4>Parameters</h4>
+				<div class="list"><dl>
+					<dt><var>$theDatabase</var></dt>
+					<dd><code><code><a href="class-CDatabase.html">CDatabase</a></code></code><br>$theDatabase Database container.</dd>
+				</dl></div>
+
+
+				<h4>Throws</h4>
+				<div class="list">
+					<code><code><a href="class-Exception.html">Exception</a></code></code><br />
+				</div>
+
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="_ISOParse6393XML" id="__ISOParse6393XML">
+
+		<td class="attributes"><code>
+			 protected 
+			
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#__ISOParse6393XML">#</a>
+		<code><a href="source-class-COntology.html#2023-2457" title="Go to source code">_ISOParse6393XML</a>( <span><code><a href="class-CDatabase.html">CDatabase</a></code> <var>$theDatabase</var></span> )</code>
+
+		<div class="description short">
+			
+<h4>Parse ISO 639-3 XML files</h4>
+
+		</div>
+
+		<div class="description detailed hidden">
+			
+<h4>Parse ISO 639-3 XML files</h4>
+
+<p>This method will parse the XML ISO 639-3 files.</p>
+
+<p>The method will load the following attributes:</p>
+
+<ul>
+	<li><tt>ISO:639:1</tt>: Part 1 code [<tt>part1_code</tt>].</li>
+
+	<li><tt>ISO:639:2</tt>: Part 2 code [<tt>part2_code</tt>].</li>
+
+	<li><tt>ISO:639:3</tt>: Part 3 code [<tt>id</tt>].</li>
+
+	<li><tt>ISO:639:status</tt>: Status [<tt>status</tt>].</li>
+
+	<li><tt>ISO:639:scope</tt>: Scope [<tt>scope</tt>].</li>
+
+	<li><tt>ISO:639:type</tt>: Type [<tt>type</tt>].</li>
+
+	<li><tt>ISO:639:inverted_name</tt>: Inverted name [<tt>inverted_name</tt>].</li>
+
+	<li><tt>ISO:639:common_name</tt>: Common name [<tt>common_name</tt>].</li>
+
+	<li><tt>kTAG_LABEL/tt&gt;: Label <tt>name</tt> [<tt>name</tt>].
+	</tt></li>
+
+	<li><tt>kTAG_DEFINITION/tt&gt;: Definition [<tt>reference_name</tt>].
+	</tt></li>
+</ul>
+
+
+
+				<h4>Parameters</h4>
+				<div class="list"><dl>
+					<dt><var>$theDatabase</var></dt>
+					<dd><code><code><a href="class-CDatabase.html">CDatabase</a></code></code><br>$theDatabase Database container.</dd>
+				</dl></div>
+
+
+				<h4>Throws</h4>
+				<div class="list">
+					<code><code><a href="class-Exception.html">Exception</a></code></code><br />
+				</div>
+
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="_ISOParse639XML" id="__ISOParse639XML">
+
+		<td class="attributes"><code>
+			 protected 
+			
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#__ISOParse639XML">#</a>
+		<code><a href="source-class-COntology.html#2464-2905" title="Go to source code">_ISOParse639XML</a>( <span><code><a href="class-CDatabase.html">CDatabase</a></code> <var>$theDatabase</var></span> )</code>
+
+		<div class="description short">
+			
+<h4>Parse ISO 639 XML files</h4>
+
+		</div>
+
+		<div class="description detailed hidden">
+			
+<h4>Parse ISO 639 XML files</h4>
+
+<p>This method will parse the XML ISO 639 files.</p>
+
+<p>The method will load the following attributes:</p>
+
+<ul>
+	<li><tt>ISO:639:1</tt>: Part 1 code [<tt>iso<sub>639</sub>_1_code</tt>] (as
+	reference).</li>
+
+	<li><tt>ISO:639:2B</tt>: Part 2B code [<tt>iso<sub>639</sub>_2B_code</tt>].</li>
+
+	<li><tt>ISO:639:2T</tt>: Part 2T code [<tt>iso<sub>639</sub>_2T_code</tt>].</li>
+
+	<li><tt>ISO:639:inverted_name</tt>: Inverted name [<tt>inverted_name</tt>].</li>
+
+	<li><tt>kTAG_LABEL/tt&gt;: Label <tt>name</tt> [<tt>name</tt>]. This is
+	used only if the part 1 code is not found. </tt></li>
+
+	<li><tt>kTAG_DEFINITION/tt&gt;: Definition [<tt>reference_name</tt>].
+	This is used only if the part 1 code is not found. </tt></li>
+</ul>
+
+
+
+				<h4>Parameters</h4>
+				<div class="list"><dl>
+					<dt><var>$theDatabase</var></dt>
+					<dd><code><code><a href="class-CDatabase.html">CDatabase</a></code></code><br>$theDatabase Database container.</dd>
+				</dl></div>
+
+
+				<h4>Throws</h4>
+				<div class="list">
+					<code><code><a href="class-Exception.html">Exception</a></code></code><br />
+				</div>
+
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="_ISOParse31661XML" id="__ISOParse31661XML">
+
+		<td class="attributes"><code>
+			 protected 
+			
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#__ISOParse31661XML">#</a>
+		<code><a href="source-class-COntology.html#2912-3271" title="Go to source code">_ISOParse31661XML</a>( <span><code><a href="class-CDatabase.html">CDatabase</a></code> <var>$theDatabase</var></span> )</code>
+
+		<div class="description short">
+			
+<h4>Parse ISO 3166-1 XML file</h4>
+
+		</div>
+
+		<div class="description detailed hidden">
+			
+<h4>Parse ISO 3166-1 XML file</h4>
+
+<p>This method will parse the XML ISO 3166-1 file.</p>
+
+<p>The method will load the following attributes:</p>
+
+<ul>
+	<li><tt>ISO:3166:alpha-3</tt>: Alpha 3 code
+	[<tt>alpha<sub>3</sub>_code</tt>].</li>
+
+	<li><tt>ISO:3166:alpha-2</tt>: Alpha 2 code
+	[<tt>alpha<sub>2</sub>_code</tt>].</li>
+
+	<li><tt>ISO:3166:numeric</tt>: Numeric code [<tt>numeric_code</tt>].</li>
+
+	<li><tt>kTAG_LABEL/tt&gt;: Label <tt>name</tt> [<tt>name</tt>].
+	</tt></li>
+
+	<li><tt>kTAG_DEFINITION/tt&gt;: Definition [<tt>official_name</tt>].
+	</tt></li>
+
+	<li><tt>ISO:3166:common_name</tt>: Common name [<tt>common_name</tt>].</li>
+</ul>
+
+
+
+				<h4>Parameters</h4>
+				<div class="list"><dl>
+					<dt><var>$theDatabase</var></dt>
+					<dd><code><code><a href="class-CDatabase.html">CDatabase</a></code></code><br>$theDatabase Database container.</dd>
+				</dl></div>
+
+
+				<h4>Throws</h4>
+				<div class="list">
+					<code><code><a href="class-Exception.html">Exception</a></code></code><br />
+				</div>
+
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="_ISOParse31663XML" id="__ISOParse31663XML">
+
+		<td class="attributes"><code>
+			 protected 
+			
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#__ISOParse31663XML">#</a>
+		<code><a href="source-class-COntology.html#3278-3632" title="Go to source code">_ISOParse31663XML</a>( <span><code><a href="class-CDatabase.html">CDatabase</a></code> <var>$theDatabase</var></span> )</code>
+
+		<div class="description short">
+			
+<h4>Parse ISO 3166-3 XML file</h4>
+
+		</div>
+
+		<div class="description detailed hidden">
+			
+<h4>Parse ISO 3166-3 XML file</h4>
+
+<p>This method will parse the XML ISO 3166-3 file.</p>
+
+<p>The method will load the following attributes:</p>
+
+<ul>
+	<li><tt>ISO:3166:1:alpha-3</tt>: Alpha 3 code
+	[<tt>alpha<sub>3</sub>_code</tt>].</li>
+
+	<li><tt>ISO:3166:1:alpha-4</tt>: Alpha 4 code
+	[<tt>alpha<sub>4</sub>_code</tt>].</li>
+
+	<li><tt>ISO:3166:1:numeric</tt>: Numeric code [<tt>numeric_code</tt>].</li>
+
+	<li><tt>kTAG_LABEL/tt&gt;: Label <tt>name</tt> [<tt>names</tt>].
+	</tt></li>
+
+	<li><tt>kTAG_DEFINITION/tt&gt;: Definition [<tt>comment</tt>].
+	</tt></li>
+
+	<li><tt>ISO:attributes:date_withdrawn</tt>: Date withdrawn
+	[<tt>date_withdrawn</tt>].</li>
+</ul>
+
+
+
+				<h4>Parameters</h4>
+				<div class="list"><dl>
+					<dt><var>$theDatabase</var></dt>
+					<dd><code><code><a href="class-CDatabase.html">CDatabase</a></code></code><br>$theDatabase Database container.</dd>
+				</dl></div>
+
+
+				<h4>Throws</h4>
+				<div class="list">
+					<code><code><a href="class-Exception.html">Exception</a></code></code><br />
+				</div>
+
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="_ISOParse31662XML" id="__ISOParse31662XML">
+
+		<td class="attributes"><code>
+			 protected 
+			
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#__ISOParse31662XML">#</a>
+		<code><a href="source-class-COntology.html#3639-3908" title="Go to source code">_ISOParse31662XML</a>( <span><code><a href="class-CDatabase.html">CDatabase</a></code> <var>$theDatabase</var></span> )</code>
+
+		<div class="description short">
+			
+<h4>Parse ISO 3166-2 XML file</h4>
+
+		</div>
+
+		<div class="description detailed hidden">
+			
+<h4>Parse ISO 3166-2 XML file</h4>
+
+<p>This method will parse the XML ISO 3166-2 file.</p>
+
+<p>The method will load the following attributes:</p>
+
+<ul>
+	<li><tt>ISO:3166:1:alpha-2</tt>: Alpha 2 code
+	[<tt>iso_3166_country[code]</tt>].</li>
+
+	<li><tt>ISO:3166:2:type</tt>: Type [<tt>iso_3166_subset[type]</tt>].</li>
+
+	<li><tt>ISO:3166:2</tt>: Type [<tt>iso_3166_subset[type]</tt>].</li>
+
+	<li><tt>kTAG_LABEL/tt&gt;: Label <tt>name</tt> [<tt>name</tt>].
+	</tt></li>
+
+	<li><tt>kTAG_DEFINITION/tt&gt;: Definition [<tt>official_name</tt>].
+	</tt></li>
+
+	<li><tt>ISO:3166:common_name</tt>: Common name [<tt>common_name</tt>].</li>
+</ul>
+
+
+
+				<h4>Parameters</h4>
+				<div class="list"><dl>
+					<dt><var>$theDatabase</var></dt>
+					<dd><code><code><a href="class-CDatabase.html">CDatabase</a></code></code><br>$theDatabase Database container.</dd>
+				</dl></div>
+
+
+				<h4>Throws</h4>
+				<div class="list">
+					<code><code><a href="class-Exception.html">Exception</a></code></code><br />
+				</div>
+
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="_ISOParse4217XML" id="__ISOParse4217XML">
+
+		<td class="attributes"><code>
+			 protected 
+			
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#__ISOParse4217XML">#</a>
+		<code><a href="source-class-COntology.html#3915-4276" title="Go to source code">_ISOParse4217XML</a>( <span><code><a href="class-CDatabase.html">CDatabase</a></code> <var>$theDatabase</var></span> )</code>
+
+		<div class="description short">
+			
+<h4>Parse ISO 4217 XML file</h4>
+
+		</div>
+
+		<div class="description detailed hidden">
+			
+<h4>Parse ISO 4217 XML file</h4>
+
+<p>This method will parse the XML ISO 4217 file.</p>
+
+<p>The method will load the following attributes:</p>
+
+<ul>
+	<li><tt>ISO:4217:A</tt>: Active [<tt>letter_code</tt>].</li>
+
+	<li><tt>ISO:4217:H</tt>: Historic [<tt>letter_code</tt>].</li>
+
+	<li><tt>ISO:4217:A</tt>: Active [<tt>numeric_code</tt>].</li>
+
+	<li><tt>ISO:4217:H</tt>: Historic [<tt>numeric_code</tt>].</li>
+
+	<li><tt>kTAG_LABEL/tt&gt;: [<tt>currency_name</tt>]. </tt></li>
+
+	<li><tt>ISO:attributes:date_withdrawn</tt>: Date withdrawn
+	[<tt>date_withdrawn</tt>].</li>
+</ul>
+
+
+
+				<h4>Parameters</h4>
+				<div class="list"><dl>
+					<dt><var>$theDatabase</var></dt>
+					<dd><code><code><a href="class-CDatabase.html">CDatabase</a></code></code><br>$theDatabase Database container.</dd>
+				</dl></div>
+
+
+				<h4>Throws</h4>
+				<div class="list">
+					<code><code><a href="class-Exception.html">Exception</a></code></code><br />
+				</div>
+
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="_ISOParse15924XML" id="__ISOParse15924XML">
+
+		<td class="attributes"><code>
+			 protected 
+			
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#__ISOParse15924XML">#</a>
+		<code><a href="source-class-COntology.html#4283-4487" title="Go to source code">_ISOParse15924XML</a>( <span><code><a href="class-CDatabase.html">CDatabase</a></code> <var>$theDatabase</var></span> )</code>
+
+		<div class="description short">
+			
+<h4>Parse ISO 15924 XML file</h4>
+
+		</div>
+
+		<div class="description detailed hidden">
+			
+<h4>Parse ISO 15924 XML file</h4>
+
+<p>This method will parse the XML ISO 15924 file.</p>
+
+<p>The method will load the following attributes:</p>
+
+<ul>
+	<li><tt>ISO:15924:alpha-4</tt>: Alpha-4 code
+	[<tt>alpha<sub>4</sub>_code</tt>].</li>
+
+	<li><tt>ISO:15924:numeric</tt>: Alpha-4 code [<tt>numeric_code</tt>].</li>
+
+	<li><tt>kTAG_LABEL/tt&gt;: [<tt>name</tt>]. </tt></li>
+</ul>
+
+
+
+				<h4>Parameters</h4>
+				<div class="list"><dl>
+					<dt><var>$theDatabase</var></dt>
+					<dd><code><code><a href="class-CDatabase.html">CDatabase</a></code></code><br>$theDatabase Database container.</dd>
+				</dl></div>
+
+
+				<h4>Throws</h4>
+				<div class="list">
+					<code><code><a href="class-Exception.html">Exception</a></code></code><br />
+				</div>
+
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="_ISOCollectLanguageStrings" id="__ISOCollectLanguageStrings">
+
+		<td class="attributes"><code>
+			 protected 
+			
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#__ISOCollectLanguageStrings">#</a>
+		<code><a href="source-class-COntology.html#4494-4570" title="Go to source code">_ISOCollectLanguageStrings</a>( <span><code><a href="class-CPersistentObject.html">CPersistentObject</a></code> <var>$theObject</var></span>, <span>string <var>$theFile</var></span>, <span>array <var>$theTags</var></span> )</code>
+
+		<div class="description short">
+			
+<h4>Collect language strings</h4>
+
+		</div>
+
+		<div class="description detailed hidden">
+			
+<h4>Collect language strings</h4>
+
+<p>This method will iterate all language files and add the corresponding
+language strings to the provided object.</p>
+
+<p>The method expects two parameters: the object to be updated and an array of
+tags to be checked.</p>
+
+
+
+				<h4>Parameters</h4>
+				<div class="list"><dl>
+					<dt><var>$theObject</var></dt>
+					<dd><code><code><a href="class-CPersistentObject.html">CPersistentObject</a></code></code><br>$theObject Object to be updated.</dd>
+					<dt><var>$theFile</var></dt>
+					<dd><code>string</code><br>$theFile File body name.</dd>
+					<dt><var>$theTags</var></dt>
+					<dd><code>array</code><br>$theTags List of tags to check.</dd>
+				</dl></div>
+
+
+
+
+
+		</div>
+		</div></td>
+	</tr>
+	</table>
+
+	<table class="summary inherited">
+	<caption>Methods inherited from <a href="class-CConnection.html#methods">CConnection</a></caption>
+	<tr>
+		<td><code>
+			<a href="class-CConnection.html#__Ready">_Ready()</a>, 
+			<a href="class-CConnection.html#___construct">__construct()</a>
+		</code></td>
+	</tr>
+	</table>
+	<table class="summary inherited">
+	<caption>Methods inherited from <a href="class-CStatusDocument.html#methods">CStatusDocument</a></caption>
+	<tr>
+		<td><code>
+			<a href="class-CStatusDocument.html#__IsCommitted">_IsCommitted()</a>, 
+			<a href="class-CStatusDocument.html#__IsDirty">_IsDirty()</a>, 
+			<a href="class-CStatusDocument.html#__IsEncoded">_IsEncoded()</a>, 
+			<a href="class-CStatusDocument.html#__IsInited">_IsInited()</a>, 
+			<a href="class-CStatusDocument.html#__Postset">_Postset()</a>, 
+			<a href="class-CStatusDocument.html#__Postunset">_Postunset()</a>, 
+			<a href="class-CStatusDocument.html#__Preset">_Preset()</a>, 
+			<a href="class-CStatusDocument.html#__Preunset">_Preunset()</a>, 
+			<a href="class-CStatusDocument.html#_offsetSet">offsetSet()</a>, 
+			<a href="class-CStatusDocument.html#_offsetUnset">offsetUnset()</a>
+		</code></td>
+	</tr>
+	</table>
+	<table class="summary inherited">
+	<caption>Methods inherited from <a href="class-CDocument.html#methods">CDocument</a></caption>
+	<tr>
+		<td><code>
+			<a href="class-CDocument.html#_array_keys">array_keys()</a>, 
+			<a href="class-CDocument.html#_array_values">array_values()</a>, 
+			<a href="class-CDocument.html#_offsetGet">offsetGet()</a>
+		</code></td>
+	</tr>
+	</table>
+	<table class="summary inherited">
+	<caption>Methods inherited from <a href="class-ArrayObject.html#methods">ArrayObject</a></caption>
+	<tr>
+		<td><code>
+			<a href="class-ArrayObject.html#_append">append()</a>, 
+			<a href="class-ArrayObject.html#_asort">asort()</a>, 
+			<a href="class-ArrayObject.html#_count">count()</a>, 
+			<a href="class-ArrayObject.html#_exchangeArray">exchangeArray()</a>, 
+			<a href="class-ArrayObject.html#_getArrayCopy">getArrayCopy()</a>, 
+			<a href="class-ArrayObject.html#_getFlags">getFlags()</a>, 
+			<a href="class-ArrayObject.html#_getIterator">getIterator()</a>, 
+			<a href="class-ArrayObject.html#_getIteratorClass">getIteratorClass()</a>, 
+			<a href="class-ArrayObject.html#_ksort">ksort()</a>, 
+			<a href="class-ArrayObject.html#_natcasesort">natcasesort()</a>, 
+			<a href="class-ArrayObject.html#_natsort">natsort()</a>, 
+			<a href="class-ArrayObject.html#_offsetExists">offsetExists()</a>, 
+			<a href="class-ArrayObject.html#_serialize">serialize()</a>, 
+			<a href="class-ArrayObject.html#_setFlags">setFlags()</a>, 
+			<a href="class-ArrayObject.html#_setIteratorClass">setIteratorClass()</a>, 
+			<a href="class-ArrayObject.html#_uasort">uasort()</a>, 
+			<a href="class-ArrayObject.html#_uksort">uksort()</a>, 
+			<a href="class-ArrayObject.html#_unserialize">unserialize()</a>
+		</code></td>
+	</tr>
+	</table>
+
+
+
+
+
+
+
+
+	<table class="summary inherited">
+	<caption>Constants inherited from <a href="class-ArrayObject.html#constants">ArrayObject</a></caption>
+	<tr>
+		<td><code>
+			<a href="class-ArrayObject.html#ARRAY_AS_PROPS"><b>ARRAY_AS_PROPS</b></a>, 
+			<a href="class-ArrayObject.html#STD_PROP_LIST"><b>STD_PROP_LIST</b></a>
+		</code></td>
+	</tr>
+	</table>
+
+
+
+
+	<table class="summary inherited">
+	<caption>Properties inherited from <a href="class-CConnection.html#properties">CConnection</a></caption>
+	<tr>
+		<td><code>
+			<a href="class-CConnection.html#$mConnection"><var>$mConnection</var></a>
+		</code></td>
+	</tr>
+	</table>
+	<table class="summary inherited">
+	<caption>Properties inherited from <a href="class-CStatusDocument.html#properties">CStatusDocument</a></caption>
+	<tr>
+		<td><code>
+			<a href="class-CStatusDocument.html#$mStatus"><var>$mStatus</var></a>
+		</code></td>
+	</tr>
+	</table>
+
+
+
+
+
 </div>
 
 	<div id="footer">

@@ -626,3 +626,14 @@ var kTAG_USER_PROFILE = '35';
  * Version 1: (kTAG_USER_MANAGER)[36]
  */
 var kTAG_USER_MANAGER = '36';
+
+/**
+ * USER-DOMAIN.
+ *
+ * User domain.
+ *
+ * List of domains the user has access to.
+ *
+ * Version 1: (kTAG_USER_DOMAIN)[37]
+ */
+var kTAG_USER_DOMAIN ='37';

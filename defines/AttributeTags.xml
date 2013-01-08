@@ -265,4 +265,11 @@
     		<item>:USER-MANAGER</item>
     	</element>
     </tag>
+    
+    <!-- kTERM_USER_DOMAIN -->
+	<tag>
+    	<element variable="kTAG_PATH">
+    		<item>:USER-DOMAIN</item>
+    	</element>
+    </tag>
 </tags>

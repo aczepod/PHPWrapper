@@ -629,6 +629,17 @@ define( "kTAG_USER_PROFILE",					'35' );
  */
 define( "kTAG_USER_MANAGER",					'36' );
 
+/**
+ * USER-DOMAIN.
+ *
+ * User domain.
+ *
+ * List of domains the user has access to.
+ *
+ * Version 1: (kTAG_USER_DOMAIN)[37]
+ */
+define( "kTAG_USER_DOMAIN",						'37' );
+
 /*=======================================================================================
  *	CUSTOM TYPE SUB ATTRIBUTES															*
  *======================================================================================*/

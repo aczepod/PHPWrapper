@@ -1262,19 +1262,24 @@ class COntology extends CConnection
 	 *	<li><tt>units</tt>: This tag contains a collection of <tt>unit</tt> elements that
 	 *		represent a group of related <tt>term</tt>, <tt>node</tt>, <tt>edges</tt> and
 	 *		<tt>tag</tt> object definitions.
-	 *	<li><tt>term</tt>: The term element may contain two attributes:
+	 *	<li><tt>term</tt>: The term (single) element may contain two attributes:
 	 *	 <ul>
 	 *		<li><tt>ns</tt>: Namespace, it must be the global identifier of the namespace
 	 *			term.
 	 *		<li><tt>lid</tt>: Local identifier, this attribute is required.
 	 *	 </ul>
-	 *	<li><tt>node</tt>: The node element may contain two attributes:
+	 *	<li><tt>node</tt>: The node (multiple) elements may contain two attributes:
 	 *	 <ul>
 	 *		<li><tt>id</tt>: Identifier, it must be the native identifier of the node.
 	 *		<li><tt>gid</tt>: Term global identifier, this attribute makes sense only if
 	 *			the node is a master.
 	 *		<li><tt>class</tt>: Node class name.
 	 *	 </ul>
+	 *		If the node class is <tt>COntologyAliasVertex</tt>, edge subject or object node
+	 *		references matching alias nodes will link to those alias nodes, this is done by
+	 *		replacing the node reference expressed by a term reference by the actual alias
+	 *		node native identifier. This holds for all the <tt>node</tt> elements in the
+	 *		block.
 	 *	<li><tt>edges</tt>: This element contains the following elements:
 	 *	 <ul>
 	 *		<li><tt>edge</tt>: The edge element may contain one:
@@ -1282,7 +1287,7 @@ class COntology extends CConnection
 	 *			<li><tt>id</tt>: Identifier, it must be the native identifier of the edge.
 	 *		 </ul>
 	 *	 </ul>
-	 *	<li><tt>tag</tt>: This element does not contain attributes.
+	 *	<li><tt>tag</tt>: This (single) element does not contain attributes.
 	 *	<li><tt>element</tt>: Each element of the above elements represents an object
 	 *		property:
 	 *	 <ul>
@@ -1314,6 +1319,11 @@ class COntology extends CConnection
 									  SimpleXMLElement $theElement )
 	{
 		//
+		// Init local storage.
+		//
+		$nodes = Array();
+		
+		//
 		// Handle term.
 		//
 		if( $theElement->{'term'}->count() )
@@ -1322,25 +1332,34 @@ class COntology extends CConnection
 			// Instantiate term.
 			//
 			$term = new COntologyTerm();
+			
+			//
+			// Handle namespace.
+			//
 			if( $theElement->{'term'}[ 'ns' ] !== NULL )
 			{
 				$tmp = (string) $theElement->{'term'}[ 'ns' ];
 				$tmp = COntologyTerm::Resolve( $theDatabase, $tmp, NULL, TRUE );
 				$term->NS( $tmp );
 			}
+			
+			//
+			// Handle local identifier.
+			//
 			if( $theElement->{'term'}[ 'lid' ] !== NULL )
 				$term->LID( (string) $theElement->{'term'}[ 'lid' ] );
-			
+		
 			//
 			// Load attributes.
 			//
-			$elements = $theElement->{'term'}->children();
-			foreach( $elements as $element )
+			$attributes = $theElement->{'term'}->children();
+			foreach( $attributes as $attribute )
 			{
-				if( $element->getName() == 'element' )
-					$this->_ParseXMLElement( $theDatabase, $element, $term );
-			}
+				if( $attribute->getName() == 'element' )
+					$this->_ParseXMLElement( $theDatabase, $attribute, $term );
 			
+			} // Iterating attributes.
+		
 			//
 			// Save object.
 			//
@@ -1354,36 +1373,66 @@ class COntology extends CConnection
 		if( $theElement->{'node'}->count() )
 		{
 			//
-			// Instantiate node.
+			// Iterate nodes.
 			//
-			$class = ( $theElement->{'node'}[ 'class' ] !== NULL )
-				   ? (string) $theElement->{'node'}[ 'class' ]
-				   : 'COntologyNode';
-			
-			//
-			// Instantiate node.
-			//
-			$node = new $class();
-			
-			//
-			// Load attributes.
-			//
-			if( $theElement->{'node'}->children()->count() )
+			foreach( $theElement->{'node'} as $element )
 			{
-				foreach( $theElement->{'node'}->{'element'} as $element )
-					$this->_ParseXMLElement( $theDatabase, $element, $node );
-			}
+				//
+				// Init local storage.
+				//
+				$key = NULL;
+				
+				//
+				// Get node class.
+				//
+				$class = ( $element[ 'class' ] !== NULL )
+					   ? (string) $element[ 'class' ]
+					   : 'COntologyNode';
 			
-			//
-			// Set term.
-			//
-			if( ! $node->offsetExists( kTAG_TERM ) )
-				$node->Term( $term );
+				//
+				// Instantiate node.
+				//
+				$node = new $class();
 			
-			//
-			// Save object.
-			//
-			$node->Insert( $theDatabase );
+				//
+				// Load attributes.
+				//
+				$attributes = $element->children();
+				foreach( $attributes as $attribute )
+				{
+					//
+					// Save alias nodes.
+					//
+					if( ($attribute['variable'] == 'kTAG_TERM')		// Term reference
+					 && ( ($class == 'COntologyAliasNode')			// and alias node,
+					   || ($class == 'COntologyAliasVertex') ) )	// or alias vertex.
+						$key = (string) $attribute;
+					
+					//
+					// Parse element into object.
+					//
+					$this->_ParseXMLElement( $theDatabase, $attribute, $node );
+				
+				} // Iterating attributes.
+			
+				//
+				// Set term.
+				//
+				if( ! $node->offsetExists( kTAG_TERM ) )
+					$node->Term( $term );
+			
+				//
+				// Save object.
+				//
+				$id = $node->Insert( $theDatabase );
+				
+				//
+				// Record node.
+				//
+				if( $key !== NULL )
+					$nodes[ $key ] = $id;
+			
+			} // Iterating nodes.
 		
 		} // Provided node.
 		
@@ -1405,8 +1454,34 @@ class COntology extends CConnection
 				//
 				// Iterate edge terms.
 				//
-				foreach( $element->{'element'} as $item )
-					$this->_ParseXMLElement( $theDatabase, $item, $edge );
+				for( $i = 0; $i < $element->{'element'}->count(); $i++ )
+				{
+					//
+					// Intercept alias node references.
+					//
+					if( ($element->{'element'}[ $i ]['variable'] == 'kTAG_OBJECT')
+					 || ($element->{'element'}[ $i ]['variable'] == 'kTAG_SUBJECT') )
+					{
+						//
+						// Save term reference.
+						//
+						$key = (string) $element->{'element'}[ $i ];
+						
+						//
+						// Replace term reference with node reference.
+						//
+						if( array_key_exists( $key, $nodes ) )
+							$element->{'element'}[ $i ] = (string) $nodes[ $key ];
+					
+					} // Node reference.
+					
+					//
+					// Parse element into object.
+					//
+					$this->_ParseXMLElement(
+						$theDatabase, $element->{'element'}[ $i ], $edge );
+				
+				} // Iterating edge items.
 				
 				//
 				// Set missing term.
@@ -1724,7 +1799,9 @@ class COntology extends CConnection
 
 				case kTAG_SUBJECT:
 				case kTAG_OBJECT:
-					$value = COntologyMasterNode::Resolve( $theDatabase, $value, TRUE );
+					$value = ( is_numeric( $value ) )
+						   ? COntologyNode::Resolve( $theDatabase, (integer) $value, TRUE )
+						   : COntologyMasterNode::Resolve( $theDatabase, $value, TRUE );
 					break;
 			}
 		
