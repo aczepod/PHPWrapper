@@ -379,7 +379,6 @@
 	
 	$retval = $c->distinct("zip-code", array("stuff" => "bar"));
 	var_dump($retval);
-*/
 	
 	//
 	// Test parsing term XML files.
@@ -391,5 +390,25 @@
 		echo( '<code>['.(string) $term[ 'kTAG_LID' ].'] </code>' );
 		echo( (string) $term->{'kTAG_DEFINITION'}[ 0 ] );
 	}
+*/
+	
+	//
+	// Test iterator_to_array() Mongo cursor conversion.
+	//
+
+	$m = new MongoClient();
+	$db = $m->selectDB("test");
+	$db->dropCollection("iterator");
+	$c = $db->selectCollection( "iterator" );
+	
+	$c->insert(array("A" => 1, "B" => 2));
+	$c->insert(array("A" => 3, "B" => 4));
+	$c->insert(array("A" => 5, "B" => 6));
+	
+	$rs = $c->find( Array(), array( '_id' => TRUE ) );
+	
+	echo( '<pre>' );
+	print_r( array_keys( iterator_to_array( $rs ) ) );
+	echo( '</pre>' );
 	
 ?>

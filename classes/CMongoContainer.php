@@ -877,7 +877,7 @@ class CMongoContainer extends CContainer
 	 * @param array					$theSort			Sort order.
 	 * @param integer				$theStart			Page start.
 	 * @param integer				$theLimit			Page limit.
-	 * @param boolean				$getFirst			TRUE means return first.
+	 * @param mixed					$theResult			Result type.
 	 *
 	 * @access public
 	 * @return object				Native recordset.
@@ -885,7 +885,7 @@ class CMongoContainer extends CContainer
 	public function Query( $theQuery = NULL,
 						   $theFields = NULL, $theSort = NULL,
 						   $theStart = NULL, $theLimit = NULL,
-						   $getFirst = FALSE )
+						   $theResult = NULL )
 	{
 		//
 		// Check if ready.
@@ -948,8 +948,15 @@ class CMongoContainer extends CContainer
 			//
 			// Return first object.
 			//
-			if( $getFirst )
+			if( $theResult === TRUE )
 				return $this->Connection()->findOne( $theQuery, $selection );		// ==>
+			
+			//
+			// Return distinct values.
+			//
+			elseif( $theResult !== NULL )
+				return $this->Connection()->distinct(
+					(string) $theResult, $theQuery );								// ==>
 			
 			//
 			// Get cursor.

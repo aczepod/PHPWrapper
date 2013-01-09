@@ -376,23 +376,31 @@ abstract class CContainer extends CConnection
 	 *	<li><tt>$theStart</tt>: The record number on which to start returning results (zero
 	 *		based).
 	 *	<li><tt>$theLimit</tt>: The maximum number of records to be returned.
-	 *	<li><tt>$getFirst</tt>: If <tt>TRUE</tt>, the method should return the first matched
-	 *		record or <tt>NULL</tt> if there were no matches.
+	 *	<li><tt>$theResult</tt>: This parameter determines the result of the method:
+	 *	 <ul>
+	 *		<li><tt>NULL</tt>: Return the selection cursor (default).
+	 *		<li><tt>TRUE</tt>: Return first matched record or <tt>NULL</tt> if there were
+	 *			no matches.
+	 *		<li><i>other</i>: Any other value will be interpreted as a field identifier: in
+	 *			this case the method will return an array containing the distinct values of
+	 *			the provided field identifier.
+	 *	 </ul>
 	 * </ul>
 	 *
-	 * The method should return an object that represents a cursor into the query results,
-	 * the object should be iterable and feature a method, <i>count</i>, that accepts a
-	 * boolean parameter: if <tt>TRUE</tt> the method should return the actual number of
-	 * elements available takinf into consideration paging parameters; if <tt>FALSE</tt>,
-	 * the method should return the total affected elements count, that is, the total number
-	 * of elements affected by the query regardless of paging parameters.
+	 * When <tt>$theResult</tt> is set to <tt>NULL</tt>, the method should return an object
+	 * that represents a cursor into the query results, the object should be iterable and
+	 * feature a method, <i>count</i>, that accepts a boolean parameter: if <tt>TRUE</tt>
+	 * the method should return the actual number of elements available taking into
+	 * consideration paging parameters; if <tt>FALSE</tt>, the method should return the
+	 * total affected elements count, that is, the total number of elements affected by the
+	 * query regardless of paging parameters.
 	 *
 	 * @param array					$theQuery			Query.
 	 * @param array					$theFields			Fields set.
 	 * @param array					$theSort			Sort order.
 	 * @param integer				$theStart			Page start.
 	 * @param integer				$theLimit			Page limit.
-	 * @param boolean				$getFirst			TRUE means return first.
+	 * @param mixed					$theResult			Result type.
 	 *
 	 * @access public
 	 * @return object				Native recordset.
@@ -400,7 +408,7 @@ abstract class CContainer extends CConnection
 	abstract public function Query( $theQuery = NULL,
 									$theFields = NULL, $theSort = NULL,
 									$theStart = NULL, $theLimit = NULL,
-									$getFirst = NULL );
+									$theResult = NULL );
 
 	 
 	/*===================================================================================

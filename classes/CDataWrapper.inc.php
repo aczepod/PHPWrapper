@@ -86,10 +86,10 @@ define( "kAPI_PAGE_START",			':WS:PAGE-START' );
 define( "kAPI_PAGE_LIMIT",			':WS:PAGE-LIMIT' );
 
 /**
- * Data filter.
+ * Main data filter.
  *
- * This is the tag that represents the data store filter or query, the parameter is provided
- * as an encoded {@link CQuery} object.
+ * This is the tag that represents the main data store filter or query, the parameter is
+ * provided as an encoded {@link CQuery} object.
  *
  * Type: encoded.
  * Cardinality: one or zero.

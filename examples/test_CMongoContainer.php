@@ -588,6 +588,38 @@ try
 	echo( '<hr />' );
 	
 	//
+	// Test get first query.
+	//
+	echo( '<h4>Test get first query</h4>' );
+	echo( '<h5>$query = new CMongoQuery();</h5>' );
+	$query = new CMongoQuery();
+	echo( '<h5>$stmt = CQueryStatement::Exists( "DATA" );</h5>' );
+	$stmt = CQueryStatement::Exists( "DATA" );
+	echo( '<h5>$query->AppendStatement( $stmt );</h5>' );
+	$query->AppendStatement( $stmt );
+	echo( '<h5>$rs = $test->Query( $query, NULL, NULL, NULL, NULL, TRUE );</h5>' );
+	$rs = $test->Query( $query, NULL, NULL, NULL, NULL, TRUE );
+	echo( '<pre>' ); print_r( $rs ); echo( '</pre>' );
+	echo( '<hr />' );
+	echo( '<hr />' );
+	
+	//
+	// Test get distinct query.
+	//
+	echo( '<h4>Test get distinct query</h4>' );
+	echo( '<h5>$query = new CMongoQuery();</h5>' );
+	$query = new CMongoQuery();
+	echo( '<h5>$stmt = CQueryStatement::Exists( "DATA" );</h5>' );
+	$stmt = CQueryStatement::Exists( "DATA" );
+	echo( '<h5>$query->AppendStatement( $stmt );</h5>' );
+	$query->AppendStatement( $stmt );
+	echo( '<h5>$rs = $test->Query( $query, NULL, NULL, NULL, NULL, "_id" );</h5>' );
+	$rs = $test->Query( $query, NULL, NULL, NULL, NULL, "_id" );
+	echo( '<pre>' ); print_r( $rs ); echo( '</pre>' );
+	echo( '<hr />' );
+	echo( '<hr />' );
+	
+	//
 	// Test remove query.
 	//
 	echo( '<h4>Test remove query</h4>' );

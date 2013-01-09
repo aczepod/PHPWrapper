@@ -1151,6 +1151,7 @@ try
 	echo( '<hr>' );
 
 	echo( '<h4>Test GetVertex incoming relationships in JSON</h4>' );
+	echo( '<h5>:ATTRIBUTES</h5>' );
 	//
 	// Test GetVertex incoming relationships in JSON.
 	//
@@ -1163,7 +1164,7 @@ try
 				kOFFSET_QUERY_SUBJECT => kTAG_NID,
 				kOFFSET_QUERY_OPERATOR => kOPERATOR_EQUAL,
 				kOFFSET_QUERY_TYPE => kTYPE_INT32,
-				kOFFSET_QUERY_DATA => 13763
+				kOFFSET_QUERY_DATA => 3
 			)
 		)
 	);
@@ -1199,6 +1200,7 @@ try
 	echo( '<hr>' );
 
 	echo( '<h4>Test GetVertex outgoing relationships in JSON</h4>' );
+	echo( '<h5>:CLASS</h5>' );
 	//
 	// Test GetVertex outgoing relationships in JSON.
 	//
@@ -1211,7 +1213,7 @@ try
 				kOFFSET_QUERY_SUBJECT => kTAG_NID,
 				kOFFSET_QUERY_OPERATOR => kOPERATOR_EQUAL,
 				kOFFSET_QUERY_TYPE => kTYPE_INT32,
-				kOFFSET_QUERY_DATA => 13763
+				kOFFSET_QUERY_DATA => 116
 			)
 		)
 	);
@@ -1247,6 +1249,7 @@ try
 	echo( '<hr>' );
 
 	echo( '<h4>Test GetVertex relationships in JSON</h4>' );
+	echo( '<h5>:INT</h5>' );
 	//
 	// Test GetVertex relationships in JSON.
 	//
@@ -1259,7 +1262,7 @@ try
 				kOFFSET_QUERY_SUBJECT => kTAG_NID,
 				kOFFSET_QUERY_OPERATOR => kOPERATOR_EQUAL,
 				kOFFSET_QUERY_TYPE => kTYPE_INT32,
-				kOFFSET_QUERY_DATA => 13763
+				kOFFSET_QUERY_DATA => 59
 			)
 		)
 	);
@@ -1295,6 +1298,8 @@ try
 	echo( '<hr>' );
 
 	echo( '<h4>Test GetVertex relationships by predicate in JSON</h4>' );
+	echo( '<h5>:INT</h5>' );
+	echo( '<h5>'.kPREDICATE_ENUM_OF.'</h5>' );
 	//
 	// Test GetVertex relationships by predicate in JSON.
 	//
@@ -1307,7 +1312,7 @@ try
 				kOFFSET_QUERY_SUBJECT => kTAG_NID,
 				kOFFSET_QUERY_OPERATOR => kOPERATOR_EQUAL,
 				kOFFSET_QUERY_TYPE => kTYPE_INT32,
-				kOFFSET_QUERY_DATA => 13763
+				kOFFSET_QUERY_DATA => 59
 			)
 		)
 	);
@@ -1345,6 +1350,8 @@ try
 	echo( '<hr>' );
 
 	echo( '<h4>Test GetVertex relationships by predicate in JSON</h4>' );
+	echo( '<h5>:INT</h5>' );
+	echo( '<h5>'.kPREDICATE_SUBCLASS_OF." ".kPREDICATE_ENUM_OF.'</h5>' );
 	//
 	// Test GetVertex relationships by predicate in JSON.
 	//
@@ -1357,12 +1364,12 @@ try
 				kOFFSET_QUERY_SUBJECT => kTAG_NID,
 				kOFFSET_QUERY_OPERATOR => kOPERATOR_EQUAL,
 				kOFFSET_QUERY_TYPE => kTYPE_INT32,
-				kOFFSET_QUERY_DATA => 13763
+				kOFFSET_QUERY_DATA => 59
 			)
 		)
 	);
 	$fields = array( kTAG_GID );
-	$predicates = array( kPREDICATE_XREF_EXACT, kPREDICATE_ENUM_OF );
+	$predicates = array( kPREDICATE_SUBCLASS_OF, kPREDICATE_ENUM_OF );
 	$params = array( (kAPI_FORMAT.'='.kTYPE_JSON),
 					 (kAPI_OPERATION.'='.kAPI_OP_GetVertex),
 					 (kAPI_LOG_REQUEST.'='.urlencode(JsonEncode(TRUE))),
@@ -1371,6 +1378,70 @@ try
 					 (kAPI_SELECT.'='.urlencode(JsonEncode( $fields ))),
 					 (kAPI_PREDICATE.'='.urlencode(JsonEncode( $predicates ))),
 					 (kAPI_RELATION.'='.urlencode(JsonEncode( kAPI_RELATION_ALL ))),
+					 (kAPI_STAMP_REQUEST.'='.gettimeofday( true )) );
+	//
+	// Display.
+	//
+	echo( kSTYLE_TABLE_PRE );
+	echo( kSTYLE_ROW_PRE );
+	echo( kSTYLE_HEAD_PRE.'URL:'.kSTYLE_HEAD_POS );
+	$request = $url.'?'.implode( '&', $params );
+	echo( kSTYLE_DATA_PRE.htmlspecialchars( $request ).kSTYLE_DATA_POS );
+	echo( kSTYLE_ROW_POS );
+	echo( kSTYLE_ROW_PRE );
+	echo( kSTYLE_HEAD_PRE.'Response:'.kSTYLE_HEAD_POS );
+	$response = file_get_contents( $request );
+	echo( kSTYLE_DATA_PRE.$response.kSTYLE_DATA_POS );
+	echo( kSTYLE_ROW_POS );
+	echo( kSTYLE_ROW_PRE );
+	echo( kSTYLE_HEAD_PRE.'Decoded:'.kSTYLE_HEAD_POS );
+	$decoded = JsonDecode( $response );
+	echo( kSTYLE_DATA_PRE.'<pre>' ); print_r( $decoded ); echo( '</pre>'.kSTYLE_DATA_POS );
+	echo( kSTYLE_ROW_POS );
+	echo( kSTYLE_TABLE_POS );
+	echo( '<hr>' );
+
+	echo( '<h4>Test GetVertex relationships by filter in JSON</h4>' );
+	echo( '<h5>:INT</h5>' );
+	echo( '<h5>'.kPREDICATE_SUBCLASS_OF." ".kPREDICATE_ENUM_OF.'</h5>' );
+	//
+	// Test GetVertex relationships by filter in JSON.
+	//
+	$query = array
+	(
+		kOPERATOR_AND => array
+		(
+			array
+			(
+				kOFFSET_QUERY_SUBJECT => kTAG_NID,
+				kOFFSET_QUERY_OPERATOR => kOPERATOR_EQUAL,
+				kOFFSET_QUERY_TYPE => kTYPE_INT32,
+				kOFFSET_QUERY_DATA => 59
+			)
+		)
+	);
+	$subquery = array
+	(
+		kOPERATOR_AND => array
+		(
+			array
+			(
+				kOFFSET_QUERY_SUBJECT => kTAG_LID,
+				kOFFSET_QUERY_OPERATOR => kOPERATOR_PREFIX,
+				kOFFSET_QUERY_TYPE => kTYPE_STRING,
+				kOFFSET_QUERY_DATA => 'INT'
+			)
+		)
+	);
+	$fields = array( kTAG_GID );
+	$params = array( (kAPI_FORMAT.'='.kTYPE_JSON),
+					 (kAPI_OPERATION.'='.kAPI_OP_GetVertex),
+					 (kAPI_LOG_REQUEST.'='.urlencode(JsonEncode(TRUE))),
+					 (kAPI_DATABASE.'='.urlencode(JsonEncode('ONTOLOGY'))),
+					 (kAPI_QUERY.'='.urlencode(JsonEncode( $query ))),
+					 (kAPI_SUBQUERY.'='.urlencode(JsonEncode( $subquery ))),
+					 (kAPI_SELECT.'='.urlencode(JsonEncode( $fields ))),
+					 (kAPI_RELATION.'='.urlencode(JsonEncode( kAPI_RELATION_IN ))),
 					 (kAPI_STAMP_REQUEST.'='.gettimeofday( true )) );
 	//
 	// Display.
