@@ -1,0 +1,46 @@
+================================================
+OR	A = B	OR	OR	X = 1		OR	A = B			Serialise
+	C = D			Y = 2			C = D
+									X = 1			OR	OR	OR
+									Y = 2
+================================================
+OR	A = B	OR	AND	X = 1		OR	A = B			Append provided
+	C = D			Y = 2			C = D
+									AND	X = 1		OR	OR	AND
+										Y = 2
+================================================
+OR	A = B	AND	OR	X = 1		AND	OR	A = B		Create new + append
+	C = D			Y = 2				C = D
+									OR	X = 1		OR	AND	OR
+										Y = 2
+================================================
+OR	A = B	AND	AND	X = 1		AND	X = 1			Promote provided + append
+	C = D			Y = 2			Y = 2
+									OR	A = B		OR	AND	AND
+										C = D
+================================================
+AND	A = B	OR	OR	X = 1		OR	X = 1			Promote provided + append
+	C = D			Y = 2			Y = 2
+									AND	A = B		AND	OR	OR
+										C = D
+================================================
+AND	A = B	OR	AND	X = 1		OR	AND	A = B		Create new + append
+	C = D			Y = 2				C = D
+									AND	X = 1		AND	OR	AND
+										Y = 2
+================================================
+AND	A = B	AND	OR	X = 1		AND	A = B			Append provided
+	C = D			Y = 2			C = D
+									OR	X = 1		AND	AND	OR
+										Y = 2
+================================================
+AND	A = B	AND	AND	X = 1		AND	A = B			Serialise
+	C = D			Y = 2			C = D
+									X = 1			AND	AND	AND
+									Y = 2
+================================================
+
+Current = Condition = Provided	=>	Serialise
+Current = Condition				=>	Append provided
+Current =			  Provided	=>	Create new + append
+		  Condition = Provided	=>	Promote provided + append

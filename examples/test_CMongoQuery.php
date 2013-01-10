@@ -461,6 +461,47 @@ try
 	echo( '<b>Converted</b>: <pre>' ); print_r( $converted ); echo( '</pre>' );
 	echo( '<hr />' );
 	echo( '<hr />' );
+	
+	//
+	// Test query chaining.
+	//
+	echo( '<h4>Test query chaining</h4>' );
+	echo( '<h5>$query1 = new CMongoQuery();</h5>' );
+	$query1 = new CMongoQuery();
+	echo( '<h5>$stmt = CQueryStatement::Equals( "A", "B" );</h5>' );
+	$stmt = CQueryStatement::Equals( "A", "B" );
+	echo( '<h5>$query1->AppendStatement( $stmt, kOPERATOR_AND );</h5>' );
+	$query1->AppendStatement( $stmt, kOPERATOR_AND );
+	echo( '<h5>$stmt = CQueryStatement::Equals( "B", "C" );</h5>' );
+	$stmt = CQueryStatement::Equals( "B", "C" );
+	echo( '<h5>$query1->AppendStatement( $stmt, kOPERATOR_AND );</h5>' );
+	$query1->AppendStatement( $stmt, kOPERATOR_AND );
+
+	echo( '<h5>$query2 = new CMongoQuery();</h5>' );
+	$query2 = new CMongoQuery();
+	echo( '<h5>$stmt = CQueryStatement::Equals( "D", "E" );</h5>' );
+	$stmt = CQueryStatement::Equals( "D", "E" );
+	echo( '<h5>$query2->AppendStatement( $stmt, kOPERATOR_AND );</h5>' );
+	$query2->AppendStatement( $stmt, kOPERATOR_AND );
+	echo( '<h5>$stmt = CQueryStatement::Equals( "F", "G" );</h5>' );
+	$stmt = CQueryStatement::Equals( "F", "G" );
+	echo( '<h5>$query2->AppendStatement( $stmt, kOPERATOR_AND );</h5>' );
+	$query2->AppendStatement( $stmt, kOPERATOR_AND );
+
+	echo( '<b>Query1</b>: <pre>' ); print_r( $query1 ); echo( '</pre>' );
+	echo( '<b>Query2</b>: <pre>' ); print_r( $query2 ); echo( '</pre>' );
+
+	echo( '<h5>$query = new CMongoQuery( $query1 );</h5>' );
+	$query = new CMongoQuery( $query1 );
+	echo( '<h5>$query->AppendStatement( $query2, kOPERATOR_AND );</h5>' );
+	$query->AppendStatement( $query2, kOPERATOR_AND );
+	echo( '<b>Query</b>: <pre>' ); print_r( $query ); echo( '</pre>' );
+	echo( '<h5>$converted = $query->Export( $container );</h5>' );
+	$converted = $query->Export( $container );
+	echo( '<b>Converted</b>: <pre>' ); print_r( $converted ); echo( '</pre>' );
+
+	echo( '<hr />' );
+	echo( '<hr />' );
 }
 //
 // Catch exceptions.

@@ -208,73 +208,24 @@ class CQuery extends CStatusDocument
 	/**
 	 * <h4>Append statement</h4>
 	 *
-	 * This method will append the provided statement or query to the current query.
+	 * This method will append the provided statement to the query, the second parameter
+	 * represents the condition.
 	 *
-	 * The first parameter is expected to be either a single statement or a query which is
-	 * represented by a collection of statements chained by a condition.
+	 * Appended statements are merged at the condition level: if the condition exists at any
+	 * level, the statement is appended to that condition; if the condition does not exist,
+	 * it is created. Obviously, {@link kOPERATOR_AND} and {@link kOPERATOR_NAND} are
+	 * treated as equivalent, as well as {@link kOPERATOR_OR} and {@link kOPERATOR_NOR}.
 	 *
-	 * The method expects the first parameter to be either an object derived from
-	 * {@link CQueryStatement}, an object derived from this class or an array.
-	 *
-	 * If the current key of the provided statement matches one of the standard conditions
-	 * ({@link kOPERATOR_AND}, {@link kOPERATOR_NAND}, {@link kOPERATOR_OR} or
-	 * {@link kOPERATOR_NOR}), it is assumed that the provided statement is a <i>query</i>;
-	 * if that is not the case, it is assumed that the provided statement is a single or
-	 * collection of <i>statements</i>.
-	 *
-	 * <ul>
-	 *	<li><i>Statement</i>: The provided statement will be appended to the current query;
-	 *		see the {@link _HandleStatement()} method for more details.
-	 *	 <ul>
-	 *		<li><i>Condition provided</i>:
-	 *		 <ul>
-	 *			<li><i>Current query is empty</i>: The statement and the condition will
-	 *				become the current query.
-	 *			<li><i>Current query is not empty</i>: The statement will be appended to the
-	 *				current query using the provided condition.
-	 *		 </ul>
-	 *		<li><i>Condition not provided</i>: The condition will be determined:
-	 *		 <ul>
-	 *			<li><i>Current query is empty</i>: The condition will default to
-	 *				{@link kOPERATOR_AND}.
-	 *			<li><i>Current query is not empty</i>: The current query condition will be
-	 *				used.
-	 *		 </ul>
-	 *	 </ul>
-	 *	<li><i>Query</i>: The provided query will be chained to the current query; see the
-	 *		{@link _HandleCondition()} method for more details.
-	 *	 <ul>
-	 *		<li><i>Condition provided</i>:
-	 *		 <ul>
-	 *			<li><i>Current query is empty</i>: The provided query will become the
-	 *				current query and the provided condition will be ignored.
-	 *			<li><i>Current query is not empty</i>: The provided query will be chained to
-	 *				the current query using the provided condition.
-	 *		 </ul>
-	 *		<li><i>Condition not provided</i>:
-	 *		 <ul>
-	 *			<li><i>Current query is empty</i>: The provided query will become the
-	 *				current query.
-	 *			<li><i>Current query is not empty</i>: The current query condition will be
-	 *				used.
-	 *		 </ul>
-	 *	 </ul>
-	 * </ul>
-	 *
-	 * This method makes use of two protected method for doing the dirty job:
-	 * {@link _HandleCondition()} for queries and {@link _HandleStatement()} for statements.
-	 *
-	 * <i>Note: Try not to mix {@link kOPERATOR_OR} with {@link kOPERATOR_NOR} or
-	 * {@link kOPERATOR_AND} and {@link kOPERATOR_NAND} when adding queries, the methods
-	 * that join queries do not yet handle these combinations well: only mix them when
-	 * adding statements.</i>
+	 * If you provide an object derived from {@link CQuery} as the statement, the method
+	 * will ignore the condition parameter and append the provided query to the current
+	 * object.
 	 *
 	 * @param array					$theStatement		Statement.
 	 * @param string				$theCondition		Statement condition.
 	 *
 	 * @access public
 	 */
-	public function AppendStatement( $theStatement, $theCondition = NULL )
+	public function AppendStatement( $theStatement, $theCondition = kOPERATOR_AND )
 	{
 		//
 		// Normalise statement.
@@ -283,70 +234,89 @@ class CQuery extends CStatusDocument
 			$theStatement = $theStatement->getArrayCopy();
 		
 		//
-		// Validate statement type.
+		// Get statement key.
 		//
-		if( ! is_array( $theStatement ) )
-			throw new Exception
-				( "Unsupported statement data type",
-				  kERROR_PARAMETER );											// !@! ==>
+		$key = key( $theStatement );
 		
 		//
-		// Parse by statement key.
+		// Parse by key.
 		//
-		reset( $theStatement );
-		switch( key( $theStatement ) )
+		switch( $key )
 		{
 			//
-			// Handle query.
+			// Handle nested conditions.
 			//
 			case kOPERATOR_OR:
 			case kOPERATOR_NOR:
 			case kOPERATOR_AND:
 			case kOPERATOR_NAND:
-				
 				//
-				// Handle empty query.
+				// Iterate query conditions.
 				//
-				if( ! $this->_Ready() )
-					$this->exchangeArray( $theStatement );
-				
-				//
-				// Chain query.
-				//
-				else
+				foreach( $theStatement as $condition => $statements )
 				{
 					//
-					// Normalise condition.
+					// Iterate query statements.
 					//
-					if( $theCondition === NULL )
-						$theCondition = key( $this->getArrayCopy() );
-					
-					//
-					// Handle query.
-					//
-					$this->_HandleCondition( $theStatement, $theCondition );
+					foreach( $statements as $statement )
+						$this->AppendStatement( $statement, $condition );
 				
-				} // Current query not empty.
+				} // Iterating query conditions.
 				
 				break;
 			
 			//
-			// Handle statement.
+			// Handle statements.
 			//
 			default:
-			
+		
 				//
-				// Normalise condition.
+				// Point to provided statement.
+				// Here we assume it is a statement, not a nested condition.
 				//
-				if( $theCondition === NULL )
-					$theCondition = ( $this->_Ready() )
-								  ? key( $this->getArrayCopy() )
-								  : kOPERATOR_AND;
+				if( is_int( key( $theStatement ) ) )
+				{
+					$element = current( $theStatement );
+					$statement = $theStatement;
+				}
+				else
+				{
+					$element = $theStatement;
+					$statement = array( $theStatement );
+				}
 				
 				//
-				// Handle statement.
+				// Validate statement.
 				//
-				$this->_HandleStatement( $theStatement, $theCondition );
+				$this->_ValidateCondition( $theCondition, $statement, 0 );
+				
+				//
+				// Handle empty query.
+				//
+				if( ! $this->count() )
+					$this->offsetSet( $theCondition, $statement );
+				
+				//
+				// Append to existing query.
+				//
+				else
+				{
+					//
+					// Get array copy.
+					//
+					$query = $this->getArrayCopy();
+					
+					//
+					// Append statement.
+					//
+					$this->_AppendStatement( $query, $theCondition, $element );
+					
+					//
+					// Update object.
+					//
+					$this->exchangeArray( $query );
+				
+				} // Append to current query.
 				
 				break;
 			
@@ -427,248 +397,6 @@ class CQuery extends CStatusDocument
  *																						*
  *======================================================================================*/
 
-
-	 
-	/*===================================================================================
-	 *	_HandleCondition																*
-	 *==================================================================================*/
-
-	/**
-	 * <h4>Handle condition</h4>
-	 *
-	 * This method will chain the provided query to the current query, it expects the first
-	 * parameter to be a query array and the second parameter to be the condition that will
-	 * be used to chain the provided query to the current query.
-	 *
-	 * The process of combining queries is governed by a set of three conditions: the
-	 * <i>current</i> query condition, the <i>provided</i> condition and the
-	 * <i>statement</i> condition. These conditions are compared as follows: 
-	 *
-	 * <ul>
-	 *	<li><tt>{@link kOPERATOR_OR}</tt> is equivalent to <tt>{@link kOPERATOR_NOR}</tt>.
-	 *	<li><tt>{@link kOPERATOR_AND}</tt> is equivalent to <tt>{@link kOPERATOR_NAND}</tt>.
-	 * </ul>
-	 *
-	 * Depending on the combination of these three conditions:
-	 *
-	 * <ul>
-	 *	<li><i>current</i> = <i>provided</i> = <i>statement</i>: The provided query
-	 *		statements are recursively sent to the {@link AppendStatement()} method using
-	 *		the condition of the provided <i>statement</i>.
-	 *	<li><i>current</i> = <i>provided</i>: The provided query is appended to the current
-	 *		query.
-	 *	<li><i>current</i> = <i>statement</i>: A new empty query is created by appending
-	 *		the old current query and the provided query using the provided condition.
-	 *	<li><i>provided</i> = <i>statement</i>: The current query is appended to the
-	 *		provided query.
-	 * </ul>
-	 *
-	 * @param array					$theQuery			Query.
-	 * @param string				$theCondition		Query condition.
-	 *
-	 * @access protected
-	 */
-	protected function _HandleCondition( $theQuery, $theCondition )
-	{
-		//
-		// Init local storage.
-		//
-		$provided = key( $theQuery );				// Provided query condition.
-		$current = key( $this->getArrayCopy() );	// Current query condition.
-		switch( $theCondition )
-		{
-			case kOPERATOR_OR:
-			case kOPERATOR_NOR:
-			case kOPERATOR_AND:
-			case kOPERATOR_NAND:
-				break;
-			
-			default:
-				throw new Exception
-					( "Invalid condition",
-					  kERROR_PARAMETER );										// !@! ==>
-		}
-		
-		//
-		// Serialise.
-		//
-		if( ( ( ($current == kOPERATOR_OR)
-			 || ($current == kOPERATOR_NOR) )
-		   && ( ($theCondition == kOPERATOR_OR)
-		   	 || ($theCondition == kOPERATOR_NOR) )
-		   && ( ($provided == kOPERATOR_OR)
-		   	 || ($provided == kOPERATOR_NOR) ) )
-		 || ( ( ($current == kOPERATOR_AND)
-			 || ($current == kOPERATOR_NAND) )
-		   && ( ($theCondition == kOPERATOR_AND)
-		   	 || ($theCondition == kOPERATOR_NAND) )
-		   && ( ($provided == kOPERATOR_AND)
-		   	 || ($provided == kOPERATOR_NAND) ) ) )
-		{
-			//
-			// Use provided query.
-			//
-			foreach( $theQuery as $condition => $statements )
-			{
-				//
-				// Iterate query statements.
-				//
-				foreach( $statements as $statement )
-					$this->AppendStatement( $statement, $condition );
-		
-			} // Used provided query.
-		
-		} // Serialise statements.
-		
-		//
-		// Append provided query to current query.
-		//
-		elseif( ( ( ($current == kOPERATOR_OR)
-				 || ($current == kOPERATOR_NOR) )
-			   && ( ($theCondition == kOPERATOR_OR)
-				 || ($theCondition == kOPERATOR_NOR) ) )
-			 || ( ( ($current == kOPERATOR_AND)
-				 || ($current == kOPERATOR_NAND) )
-			   && ( ($theCondition == kOPERATOR_AND)
-				 || ($theCondition == kOPERATOR_NAND) ) ) )
-		{
-			//
-			// Get current query.
-			//
-			$tmp = $this->getArrayCopy();
-			
-			//
-			// Append query.
-			//
-			$tmp[] = $theQuery;
-			
-			//
-			// Update current object.
-			//
-			$this->exchangeArray( $tmp );
-		
-		} // Append provided query.
-		
-		//
-		// Join current and provided queries with provided condition.
-		//
-		elseif( ( ( ($current == kOPERATOR_OR)
-				 || ($current == kOPERATOR_NOR) )
-			   && ( ($provided == kOPERATOR_OR)
-				 || ($provided == kOPERATOR_NOR) ) )
-			 || ( ( ($current == kOPERATOR_AND)
-				 || ($current == kOPERATOR_NAND) )
-			   && ( ($provided == kOPERATOR_AND)
-				 || ($provided == kOPERATOR_NAND) ) ) )
-		{
-			//
-			// Get current query.
-			//
-			$tmp = $this->getArrayCopy();
-			
-			//
-			// Create new query.
-			//
-			$tmp = array( $theCondition => array( $tmp, $theQuery ) );
-			
-			//
-			// Update current object.
-			//
-			$this->exchangeArray( $tmp );
-		
-		} // Append provided to current with condition.
-		
-		//
-		// Append current query to provided query.
-		//
-		else
-		{
-			//
-			// Get current query.
-			//
-			$tmp = $this->getArrayCopy();
-			
-			//
-			// Append query.
-			//
-			$theQuery[] = $tmp;
-			
-			//
-			// Update current object.
-			//
-			$this->exchangeArray( $theQuery );
-		
-		} // Append current query.
-	
-	} // _HandleCondition.
-
-	 
-	/*===================================================================================
-	 *	_HandleStatement																*
-	 *==================================================================================*/
-
-	/**
-	 * <h4>Handle statement</h4>
-	 *
-	 * This method will append the provided statement to the current query, it will handle
-	 * the provided statement as a single scalar statement.
-	 *
-	 * @param array					$theStatement		Statement.
-	 * @param string				$theCondition		Statement condition.
-	 *
-	 * @access protected
-	 */
-	protected function _HandleStatement( $theStatement, $theCondition )
-	{
-		//
-		// Point to provided statement.
-		// Here we assume it is a statement, not a nested condition.
-		//
-		if( is_int( key( $theStatement ) ) )
-		{
-			$element = current( $theStatement );
-			$statement = $theStatement;
-		}
-		else
-		{
-			$element = $theStatement;
-			$statement = array( $theStatement );
-		}
-		
-		//
-		// Validate statement.
-		//
-		$this->_ValidateCondition( $theCondition, $statement, 0 );
-		
-		//
-		// Handle empty query.
-		//
-		if( ! $this->count() )
-			$this->offsetSet( $theCondition, $statement );
-		
-		//
-		// Append to existing query.
-		//
-		else
-		{
-			//
-			// Get array copy.
-			//
-			$query = $this->getArrayCopy();
-			
-			//
-			// Append statement.
-			//
-			$this->_AppendStatement( $query, $theCondition, $element );
-			
-			//
-			// Update object.
-			//
-			$this->exchangeArray( $query );
-		
-		} // Append to current query.
-	
-	} // _HandleStatement.
 
 	 
 	/*===================================================================================
