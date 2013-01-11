@@ -213,19 +213,21 @@ try
 	$manager->Pass( "PASS" );
 	echo( '<h5>$manager->Mail( "m.skofic@cgiar.org" );</h5>' );
 	$manager->Mail( "m.skofic@cgiar.org" );
-	echo( '<h5>$manager->Profile( "ADMIN" );</h5>' );
-	$manager->Profile( "ADMIN" );
-	echo( '<h5>$manager->Profile( "DATASET" );</h5>' );
-	$manager->Profile( "DATASET" );
-	echo( '<h5>$manager->Profile( "CURATE" );</h5>' );
-	$manager->Profile( "CURATE" );
+	echo( '<h5>$manager->Profile( "ADMIN", TRUE );</h5>' );
+	$manager->Profile( "ADMIN", TRUE );
+	echo( '<h5>$manager->Profile( "DATASET", TRUE );</h5>' );
+	$manager->Profile( "DATASET", TRUE );
+	echo( '<h5>$manager->Profile( "CURATE", TRUE );</h5>' );
+	$manager->Profile( "CURATE", TRUE );
+	echo( '<h5>$manager->Domain( "EURISCO", TRUE );</h5>' );
+	$manager->Domain( "EURISCO", TRUE );
 	echo( '<pre>' ); print_r( $manager ); echo( '</pre>' );
 	echo( '<hr />' );
 	
 	//
-	// Save user.
+	// Load user.
 	//
-	echo( '<h4>Save user</h4>' );
+	echo( '<h4>Load user</h4>' );
 	echo( '<h5>$user = new MyClass();</h5>' );
 	$user = new MyClass();
 	echo( '<h5>$user->Name( "Ungabunga" );</h5>' );
@@ -236,11 +238,15 @@ try
 	$user->Pass( "PASS" );
 	echo( '<h5>$user->Mail( u.bunga@cgiar.org" );</h5>' );
 	$user->Mail( "u.bunga@cgiar.org" );
-	echo( '<h5>$user->Profile( "DATASET" );</h5>' );
-	$user->Profile( "DATASET" );
-	echo( '<h5>$user->Profile( "CURATE" );</h5>' );
-	$user->Profile( "CURATE" );
+	echo( '<h5>$user->Profile( "DATASET", TRUE );</h5>' );
+	$user->Profile( "DATASET", TRUE );
+	echo( '<h5>$user->Profile( "CURATE", TRUE );</h5>' );
+	$user->Profile( "CURATE", TRUE );
 	echo( '<h5>$user->Manager( $manager );</h5>' );
+	echo( '<h5>$user->Domain( "EURISCO", TRUE );</h5>' );
+	$user->Domain( "EURISCO", TRUE );
+	echo( '<h5>$user->Domain( "TIP", TRUE );</h5>' );
+	$user->Domain( "TIP", TRUE );
 	$user->Manager( $manager );
 	echo( 'Inited['.$user->inited()
 				   .'] Dirty['.$user->dirty()

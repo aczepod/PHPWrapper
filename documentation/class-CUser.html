@@ -216,7 +216,7 @@ password and mail are also set.</p>
 				<b>Author:</b>
 				Milko A. Škofič &lt;<a
 href="mailto:m.skofic&#64;cgiar.org">m.skofic&#64;<!---->cgiar.org</a>&gt;<br />
-		<b>Located at</b> <a href="source-class-CUser.html#43-958" title="Go to source code">CUser.php</a><br />
+		<b>Located at</b> <a href="source-class-CUser.html#43-1026" title="Go to source code">CUser.php</a><br />
 	</div>
 
 
@@ -683,6 +683,114 @@ that can be managed with the following parameters:</p>
 		</div>
 		</div></td>
 	</tr>
+	<tr data-order="Domain" id="_Domain">
+
+		<td class="attributes"><code>
+			 public 
+			mixed
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_Domain">#</a>
+		<code><a href="source-class-CUser.html#382-443" title="Go to source code">Domain</a>( <span>mixed <var>$theValue</var> = <span class="php-keyword1">NULL</span></span>, <span>mixed <var>$theOperation</var> = <span class="php-keyword1">NULL</span></span>, <span>boolean <var>$getOld</var> = <span class="php-keyword1">FALSE</span> </span> )</code>
+
+		<div class="description short">
+			
+<h4>Manage user domains</h4>
+
+		</div>
+
+		<div class="description detailed hidden">
+			
+<h4>Manage user domains</h4>
+
+<p>The user domain, kTAG_USER_DOMAIN, holds a list of unique values that
+represent the different domains in which the current user is registered.</p>
+
+<p>This offset collects the list of these domains in an enumerated set that can
+be managed with the following parameters:</p>
+
+<ul>
+	<li><tt>$theValue</tt>: Depending on the next parameter, this may either refer
+	to the value to be set or to the index of the element to be retrieved or
+	deleted:
+		<ul>
+			<li><tt>NULL</tt>: This value indicates that we want to operate on all elements,
+			which means, in practical terms, that we either want to retrieve or delete the
+			full list. If the operation parameter resolves to <tt>TRUE</tt>, the method will
+			default to retrieving the current list and no new element will be added.</li>
+
+			<li><tt>array</tt>: An array indicates that we want to operate on a list of
+			values and that other parameters may also be provided as lists. Note that <code><a href="class-ArrayObject.html">ArrayObject</a></code> instances are not considered here as arrays.</li>
+
+			<li><i>other</i>: Any other type represents either the new value to be added or
+			the index to the value to be returned or deleted.</li>
+		</ul>
+	</li>
+
+	<li><tt>$theOperation</tt>: This parameter represents the operation to be
+	performed whose scope depends on the value of the previous parameter:
+		<ul>
+			<li><tt>NULL</tt>: Return the element or full list.</li>
+
+			<li><tt>FALSE</tt>: Delete the element or full list.</li>
+
+			<li><tt>array</tt>: This type is only considered if the <tt>$theValue</tt>
+			parameter is provided as an array: the method will be called for each element of
+			the <tt>$theValue</tt> parameter matched with the corresponding element of this
+			parameter, which also means that both both parameters must share the same
+			count.</li>
+
+			<li><i>other</i>: Add the <tt>$theValue</tt> value to the list. If you provided
+			<tt>NULL</tt> in the previous parameter, the operation will be reset to
+			<tt>NULL</tt>.</li>
+		</ul>
+	</li>
+
+	<li><tt>$getOld</tt>: Determines what the method will return:
+		<ul>
+			<li><tt>TRUE</tt>: Return the value <i>before</i> it was eventually
+			modified.</li>
+
+			<li><tt>FALSE</tt>: Return the value <i>after</i> it was eventually
+			modified.</li>
+		</ul>
+	</li>
+</ul>
+
+
+
+				<h4>Parameters</h4>
+				<div class="list"><dl>
+					<dt><var>$theValue</var></dt>
+					<dd><code>mixed</code><br>$theValue Value or index.</dd>
+					<dt><var>$theOperation</var></dt>
+					<dd><code>mixed</code><br>$theOperation Operation.</dd>
+					<dt><var>$getOld</var></dt>
+					<dd><code>boolean</code><br>$getOld TRUE get old value.</dd>
+				</dl></div>
+
+				<h4>Returns</h4>
+				<div class="list">
+					<code>mixed</code><br><i>New</i> or <i>old</i> domain.<br />
+				</div>
+
+
+				<h4>See</h4>
+				<div class="list">
+						kTAG_USER_DOMAIN<br />
+				</div>
+				<h4>Uses</h4>
+				<div class="list">
+						<code><code><a href="function-ManageObjectSetOffset.html">ManageObjectSetOffset()</a></code></code> <br />
+				</div>
+
+
+		</div>
+		</div></td>
+	</tr>
 	<tr data-order="Manager" id="_Manager">
 
 		<td class="attributes"><code>
@@ -694,7 +802,7 @@ that can be managed with the following parameters:</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#_Manager">#</a>
-		<code><a href="source-class-CUser.html#382-417" title="Go to source code">Manager</a>( <span>mixed <var>$theValue</var> = <span class="php-keyword1">NULL</span></span>, <span>boolean <var>$getOld</var> = <span class="php-keyword1">FALSE</span> </span> )</code>
+		<code><a href="source-class-CUser.html#450-485" title="Go to source code">Manager</a>( <span>mixed <var>$theValue</var> = <span class="php-keyword1">NULL</span></span>, <span>boolean <var>$getOld</var> = <span class="php-keyword1">FALSE</span> </span> )</code>
 
 		<div class="description short">
 			
@@ -766,7 +874,7 @@ the currently set value.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#_LoadManager">#</a>
-		<code><a href="source-class-CUser.html#433-501" title="Go to source code">LoadManager</a>( <span><code><a href="class-CConnection.html">CConnection</a></code> <var>$theConnection</var></span>, <span>boolean <var>$doReload</var> = <span class="php-keyword1">FALSE</span> </span> )</code>
+		<code><a href="source-class-CUser.html#501-569" title="Go to source code">LoadManager</a>( <span><code><a href="class-CConnection.html">CConnection</a></code> <var>$theConnection</var></span>, <span>boolean <var>$doReload</var> = <span class="php-keyword1">FALSE</span> </span> )</code>
 
 		<div class="description short">
 			
@@ -833,7 +941,7 @@ whether the object is to be read, or if the cached copy can be used.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#_DefaultContainerName">#</a>
-		<code><a href="source-class-CUser.html#517-529" title="Go to source code">DefaultContainerName</a>( )</code>
+		<code><a href="source-class-CUser.html#585-597" title="Go to source code">DefaultContainerName</a>( )</code>
 
 		<div class="description short">
 			
@@ -882,7 +990,7 @@ whether the object is to be read, or if the cached copy can be used.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#_Resolve">#</a>
-		<code><a href="source-class-CUser.html#545-643" title="Go to source code">Resolve</a>( <span><code><a href="class-CConnection.html">CConnection</a></code> <var>$theConnection</var></span>, <span>mixed <var>$theIdentifier</var></span>, <span>boolean <var>$doThrow</var> = <span class="php-keyword1">FALSE</span> </span> )</code>
+		<code><a href="source-class-CUser.html#613-711" title="Go to source code">Resolve</a>( <span><code><a href="class-CConnection.html">CConnection</a></code> <var>$theConnection</var></span>, <span>mixed <var>$theIdentifier</var></span>, <span>boolean <var>$doThrow</var> = <span class="php-keyword1">FALSE</span> </span> )</code>
 
 		<div class="description short">
 			
@@ -955,7 +1063,7 @@ parameter, or you will get unexpected results.</b></p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#__index">#</a>
-		<code><a href="source-class-CUser.html#659-678" title="Go to source code">_index</a>( <span><code><a href="class-CConnection.html">CConnection</a></code> <var>$theConnection</var></span>, <span>bitfield <var>$theModifiers</var></span> )</code>
+		<code><a href="source-class-CUser.html#727-746" title="Go to source code">_index</a>( <span><code><a href="class-CConnection.html">CConnection</a></code> <var>$theConnection</var></span>, <span>bitfield <var>$theModifiers</var></span> )</code>
 
 		<div class="description short">
 			
@@ -1010,7 +1118,7 @@ return it.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#__Preset">#</a>
-		<code><a href="source-class-CUser.html#694-744" title="Go to source code">_Preset</a>( <span>reference <var>&amp; $theOffset</var></span>, <span>reference <var>&amp; $theValue</var></span> )</code>
+		<code><a href="source-class-CUser.html#762-812" title="Go to source code">_Preset</a>( <span>reference <var>&amp; $theOffset</var></span>, <span>reference <var>&amp; $theValue</var></span> )</code>
 
 		<div class="description short">
 			
@@ -1070,7 +1178,7 @@ user native identifier.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#__Preunset">#</a>
-		<code><a href="source-class-CUser.html#751-786" title="Go to source code">_Preunset</a>( <span>reference <var>&amp; $theOffset</var></span> )</code>
+		<code><a href="source-class-CUser.html#819-854" title="Go to source code">_Preunset</a>( <span>reference <var>&amp; $theOffset</var></span> )</code>
 
 		<div class="description short">
 			
@@ -1126,7 +1234,7 @@ user native identifier.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#__Ready">#</a>
-		<code><a href="source-class-CUser.html#802-828" title="Go to source code">_Ready</a>( )</code>
+		<code><a href="source-class-CUser.html#870-896" title="Go to source code">_Ready</a>( )</code>
 
 		<div class="description short">
 			
@@ -1180,7 +1288,7 @@ absence of the kTAG_LID offset.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#__PrecommitRelated">#</a>
-		<code><a href="source-class-CUser.html#844-914" title="Go to source code">_PrecommitRelated</a>( <span>reference <var>&amp; $theConnection</var></span>, <span>reference <var>&amp; $theModifiers</var></span> )</code>
+		<code><a href="source-class-CUser.html#912-982" title="Go to source code">_PrecommitRelated</a>( <span>reference <var>&amp; $theConnection</var></span>, <span>reference <var>&amp; $theModifiers</var></span> )</code>
 
 		<div class="description short">
 			
@@ -1229,7 +1337,7 @@ load the manager if provided as an identifier.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#__PostcommitCleanup">#</a>
-		<code><a href="source-class-CUser.html#930-954" title="Go to source code">_PostcommitCleanup</a>( <span>reference <var>&amp; $theConnection</var></span>, <span>reference <var>&amp; $theModifiers</var></span> )</code>
+		<code><a href="source-class-CUser.html#998-1022" title="Go to source code">_PostcommitCleanup</a>( <span>reference <var>&amp; $theConnection</var></span>, <span>reference <var>&amp; $theModifiers</var></span> )</code>
 
 		<div class="description short">
 			
