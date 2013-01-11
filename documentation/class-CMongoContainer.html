@@ -40,6 +40,8 @@
 				<li class="main"><a href="package-MyWrapper.Wrappers.html">Wrappers</a>
 						</li>
 							</ul></li>
+				<li><a href="package-None.html">None</a>
+						</li>
 				<li><a href="package-PHP.html">PHP</a>
 						</li>
 			</ul>
@@ -181,7 +183,7 @@
 				<b>Author:</b>
 				Milko A. Škofič &lt;<a
 href="mailto:m.skofic&#64;cgiar.org">m.skofic&#64;<!---->cgiar.org</a>&gt;<br />
-		<b>Located at</b> <a href="source-class-CMongoContainer.html#43-1435" title="Go to source code">CMongoContainer.php</a><br />
+		<b>Located at</b> <a href="source-class-CMongoContainer.html#43-1442" title="Go to source code">CMongoContainer.php</a><br />
 	</div>
 
 
@@ -557,7 +559,7 @@ Mongo <tt>WriteConcerns</tt> option.</i></p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#_Query">#</a>
-		<code><a href="source-class-CMongoContainer.html#869-1048" title="Go to source code">Query</a>( <span>array <var>$theQuery</var> = <span class="php-keyword1">NULL</span></span>, <span>array <var>$theFields</var> = <span class="php-keyword1">NULL</span></span>, <span>array <var>$theSort</var> = <span class="php-keyword1">NULL</span></span>, <span>integer <var>$theStart</var> = <span class="php-keyword1">NULL</span></span>, <span>integer <var>$theLimit</var> = <span class="php-keyword1">NULL</span></span>, <span>boolean <var>$getFirst</var> = <span class="php-keyword1">FALSE</span> </span> )</code>
+		<code><a href="source-class-CMongoContainer.html#869-1055" title="Go to source code">Query</a>( <span>array <var>$theQuery</var> = <span class="php-keyword1">NULL</span></span>, <span>array <var>$theFields</var> = <span class="php-keyword1">NULL</span></span>, <span>array <var>$theSort</var> = <span class="php-keyword1">NULL</span></span>, <span>integer <var>$theStart</var> = <span class="php-keyword1">NULL</span></span>, <span>integer <var>$theLimit</var> = <span class="php-keyword1">NULL</span></span>, <span>mixed <var>$theResult</var> = <span class="php-keyword1">NULL</span> </span> )</code>
 
 		<div class="description short">
 			
@@ -586,8 +588,8 @@ refer to the <code><a href="class-CContainer.html#_Query">CContainer::Query()</a
 					<dd><code>integer</code><br>$theStart Page start.</dd>
 					<dt><var>$theLimit</var></dt>
 					<dd><code>integer</code><br>$theLimit Page limit.</dd>
-					<dt><var>$getFirst</var></dt>
-					<dd><code>boolean</code><br>$getFirst TRUE means return first.</dd>
+					<dt><var>$theResult</var></dt>
+					<dd><code>mixed</code><br>$theResult Result type.</dd>
 				</dl></div>
 
 				<h4>Returns</h4>
@@ -612,7 +614,7 @@ refer to the <code><a href="class-CContainer.html#_Query">CContainer::Query()</a
 
 		<td class="name"><div>
 		<a class="anchor" href="#_Remove">#</a>
-		<code><a href="source-class-CMongoContainer.html#1055-1106" title="Go to source code">Remove</a>( <span>array <var>$theQuery</var> = <span class="php-keyword1">NULL</span> </span> )</code>
+		<code><a href="source-class-CMongoContainer.html#1062-1113" title="Go to source code">Remove</a>( <span>array <var>$theQuery</var> = <span class="php-keyword1">NULL</span> </span> )</code>
 
 		<div class="description short">
 			
@@ -656,7 +658,7 @@ refer to the <code><a href="class-CContainer.html#_Query">CContainer::Query()</a
 
 		<td class="name"><div>
 		<a class="anchor" href="#_NextSequence">#</a>
-		<code><a href="source-class-CMongoContainer.html#1122-1210" title="Go to source code">NextSequence</a>( <span>string <var>$theKey</var></span>, <span>mixed <var>$theContainer</var> = <span class="php-keyword1">NULL</span> </span> )</code>
+		<code><a href="source-class-CMongoContainer.html#1129-1217" title="Go to source code">NextSequence</a>( <span>string <var>$theKey</var></span>, <span>mixed <var>$theContainer</var> = <span class="php-keyword1">NULL</span> </span> )</code>
 
 		<div class="description short">
 			
@@ -703,14 +705,14 @@ for more information.</p>
 
 		<td class="attributes"><code>
 			 public static
-			<code><a href="class-CQuery.html">CQuery</a></code>
+			<code><a href="class-CQuery.html" class="invalid">CQuery</a></code>
 			
 			</code>
 		</td>
 
 		<td class="name"><div>
 		<a class="anchor" href="#_NewQuery">#</a>
-		<code><a href="source-class-CMongoContainer.html#1226-1236" title="Go to source code">NewQuery</a>( <span>mixed <var>$theQuery</var> = <span class="php-keyword1">NULL</span> </span> )</code>
+		<code><a href="source-class-CMongoContainer.html#1233-1243" title="Go to source code">NewQuery</a>( <span>mixed <var>$theQuery</var> = <span class="php-keyword1">NULL</span> </span> )</code>
 
 		<div class="description short">
 			
@@ -734,7 +736,7 @@ for more information.</p>
 
 				<h4>Returns</h4>
 				<div class="list">
-					<code><code><a href="class-CQuery.html">CQuery</a></code></code><br>An empty query object.<br />
+					<code><code><a href="class-CQuery.html" class="invalid">CQuery</a></code></code><br>An empty query object.<br />
 				</div>
 
 
@@ -756,7 +758,7 @@ for more information.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#_UnserialiseData">#</a>
-		<code><a href="source-class-CMongoContainer.html#1252-1431" title="Go to source code">UnserialiseData</a>( <span>reference <var>&amp; $theElement</var></span>, <span>string <var>$theType</var> = <span class="php-keyword1">NULL</span> </span> )</code>
+		<code><a href="source-class-CMongoContainer.html#1259-1438" title="Go to source code">UnserialiseData</a>( <span>reference <var>&amp; $theElement</var></span>, <span>string <var>$theType</var> = <span class="php-keyword1">NULL</span> </span> )</code>
 
 		<div class="description short">
 			

@@ -40,6 +40,8 @@
 				<li class="active main"><a href="package-MyWrapper.Wrappers.html">Wrappers</a>
 						</li>
 							</ul></li>
+				<li><a href="package-None.html">None</a>
+						</li>
 				<li><a href="package-PHP.html">PHP</a>
 						</li>
 			</ul>
@@ -724,9 +726,9 @@ operation, depending on its value:</p>
 	value is expected to be:
 		<ul>
 			<li><tt>array</tt> or <tt>ArrayObject<tt>: The provided array will be cast to a
-			<code><a href="class-CQuery.html">CQuery</a></code> object and verified. </tt></tt></li>
+			<code><a href="class-CQuery.html" class="invalid">CQuery</a></code> object and verified. </tt></tt></li>
 
-			<li><tt><code><a href="class-CQuery.html">CQuery</a></code></tt>: The provided array will be verified.</li>
+			<li><tt><code><a href="class-CQuery.html" class="invalid">CQuery</a></code></tt>: The provided array will be verified.</li>
 
 			<li><i>other</i>: The method will raise an exception.</li>
 		</ul>
@@ -1138,7 +1140,7 @@ service parameters.</p>
 	<li><tt>$theType</tt>: The data type of the statement object (see the Types.inc.php source).</li>
 </ul>
 
-<p>The query attribute will be set as a <code><a href="class-CQuery.html">CQuery</a></code> object and converted to
+<p>The query attribute will be set as a <code><a href="class-CQuery.html" class="invalid">CQuery</a></code> object and converted to
 an array before being sent to the server.</p>
 
 <p>Note that this method should only be used if the kAPI_QUERY property
@@ -1201,7 +1203,7 @@ of queries, you should use the <code><a href="class-CDataWrapperClient.html#_Add
 
 <p>This method is similar to the <code><a href="class-CDataWrapperClient.html#_AddQueryStatement">CDataWrapperClient::AddQueryStatement()</a></code> method as it adds a
 query statement to a query, except that the current <code><a href="class-CDataWrapperClient.html#_Query">CDataWrapperClient::Query()</a></code> is a list of
-<code><a href="class-CQuery.html">CQuery</a></code> objects. This kind of structure is used by the kAPI_OP_MATCH operation to return the first match of a series of queries and by
+<code><a href="class-CQuery.html" class="invalid">CQuery</a></code> objects. This kind of structure is used by the kAPI_OP_MATCH operation to return the first match of a series of queries and by
 other operations in which the array element index represents the container name
 (<code><a href="class-CDataWrapperClient.html#_Container">CDataWrapperClient::Container()</a></code>).</p>
 
@@ -1227,7 +1229,7 @@ other operations in which the array element index represents the container name
 	<li><tt>$theType</tt>: The data type of the statement object (see the Types.inc.php source).</li>
 </ul>
 
-<p>Each element of the queries list will be a <code><a href="class-CQuery.html">CQuery</a></code> object and
+<p>Each element of the queries list will be a <code><a href="class-CQuery.html" class="invalid">CQuery</a></code> object and
 converted to an array before being sent to the server.</p>
 
 <p>Note that this method should only be used if the kAPI_QUERY property

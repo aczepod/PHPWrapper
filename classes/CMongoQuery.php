@@ -164,14 +164,11 @@ class CMongoQuery extends CQuery
 	/**
 	 * <h4>Convert condition</h4>
 	 *
-	 * This method is provided by the {@link Export()} method a condition to convert in
-	 * Mongo format. The method will iterate all statements in the condition and feed them
-	 * to the 
+	 * This method will convert the provided condition block into a Mongo compatible
+	 * condition block, it is called by the {@link Export()} method or called recursively to
+	 * convert embedded conditions.
 	 *
-	 * The method is called by the {@link Export()} method and takes care of organising
-	 * the {@link _ConvertStatement()} method that will convert them.
-	 *
-	 * The parameters to this method are:
+	 * The method expects the following parameters:
 	 *
 	 * <ul>
 	 *	<li><tt>&$theQuery</tt>: Reference to an array that will receive the converted
@@ -221,13 +218,23 @@ class CMongoQuery extends CQuery
 				$theQuery[ '$nor' ] = Array();
 				$query = & $theQuery[ '$nor' ];
 				break;
+				
+			//
+			// AND: We add this clause.
+			//
+			case kOPERATOR_AND:
+			case kOPERATOR_NAND:
+				$theQuery[ '$and' ] = Array();
+				$query = & $theQuery[ '$and' ];
+				break;
 			
 			//
-			// We use the current list.
+			// ERROR.
 			//
 			default:
-				$query = & $theQuery;
-				break;
+				throw new Exception
+						( "Unsupported condition [$theCondition]",
+						  kERROR_UNSUPPORTED );									// !@! ==>
 		
 		} // Created condition container.
 		
@@ -247,9 +254,11 @@ class CMongoQuery extends CQuery
 	/**
 	 * <h4>Convert statement</h4>
 	 *
-	 * This method will convert the statement to Mongo format.
+	 * This method can be used to convert a condition statement to a Mongo compatible
+	 * statement, it is called by the {@link _ConvertCondition()} method which feeds it each
+	 * element of the condition block.
 	 *
-	 * The parameters to this method are:
+	 * The method expects the following parameters:
 	 *
 	 * <ul>
 	 *	<li><tt>&$theQuery</tt>: Reference to an array that will receive the converted
@@ -257,8 +266,12 @@ class CMongoQuery extends CQuery
 	 *	<li><tt>$theContainer</tt>: Data container, must be derived from
 	 *		{@link CMongoContainer} and we assume this check has been done by the caller.
 	 *	<li><tt>$theCondition</tt>: Boolean condition code.
-	 *	<li><tt>$theStatement</tt>: Statement.
+	 *	<li><tt>$theStatement</tt>: Statement or embedded condition.
 	 * </ul>
+	 *
+	 * Note that this method will recursively call {@link _ConvertCondition()} if the
+	 * current element of the provided statement is a condition code: this means that the
+	 * element is a nested condition.
 	 *
 	 * @param reference			   &$theQuery				Receives converted statement.
 	 * @param CMongoContainer		$theContainer			Query container.
@@ -272,473 +285,297 @@ class CMongoQuery extends CQuery
 													  $theStatement )
 	{
 		//
-		// Parse statement.
+		// Handle nested condition.
 		//
-		switch( $condition = key( $theStatement ) )
+		$condition = key( $theStatement );
+		if( ($condition == kOPERATOR_OR)
+		 || ($condition == kOPERATOR_NOR)
+		 || ($condition == kOPERATOR_AND)
+		 || ($condition == kOPERATOR_NAND) )
 		{
 			//
-			// Handle nested conditions.
+			// Create condition container.
 			//
-			case kOPERATOR_AND:
-			case kOPERATOR_NAND:
-				//
-				// Create container.
-				//
-				$theQuery[] = Array();
-				
-				//
-				// Point to container.
-				//
-				$theQuery = & $theQuery[ count( $theQuery ) - 1 ];
-		
-			case kOPERATOR_OR:
-			case kOPERATOR_NOR:
-				//
-				// Recurse.
-				//
-				$this->_ConvertCondition
-					( $theQuery, $theContainer, $condition, $theStatement[ $condition ] );
-				
-				break;
+			$theQuery[] = Array();
+			$statement = & $theQuery[ count( $theQuery ) - 1 ];
 			
 			//
-			// Handle statement.
+			// Handle condition.
 			//
-			default:
-				//
-				// Init local storage.
-				//
-				$statement = Array();
-				
-				//
-				// Get statement container.
-				//
-				switch( $theCondition )
-				{
-					//
-					// Use the list.
-					//
-					case kOPERATOR_AND:
-					case kOPERATOR_NAND:
-						$statement = & $theQuery;
-						break;
-				
-					//
-					// Use last element.
-					//
-					case kOPERATOR_OR:
-					case kOPERATOR_NOR:
-						$theQuery[] = Array();
-						$statement = & $theQuery[ count( $theQuery ) - 1 ];
-						break;
-				}
-				
-				//
-				// Save query data.
-				//
-				if( array_key_exists( kOFFSET_QUERY_DATA, $theStatement ) )
-					$data = $theStatement[ kOFFSET_QUERY_DATA ];
-				
-				//
-				// Save query data type.
-				//
-				if( array_key_exists( kOFFSET_QUERY_TYPE, $theStatement ) )
-					$type = $theStatement[ kOFFSET_QUERY_TYPE ];
-				
-				//
-				// Parse by operator.
-				//
-				switch( $theStatement[ kOFFSET_QUERY_OPERATOR ] )
-				{
-					case kOPERATOR_EQUAL:
-						$theContainer->UnserialiseData( $data, $type );
-						switch( $theCondition )
-						{
-							case kOPERATOR_AND:
-							case kOPERATOR_OR:
-								$subject = (string) $theStatement[ kOFFSET_QUERY_SUBJECT ];
-								$statement[ $subject ] = $data;
-								break;
-							
-							case kOPERATOR_NAND:
-							case kOPERATOR_NOR:
-								$subject = (string) $theStatement[ kOFFSET_QUERY_SUBJECT ];
-								$statement[ $subject ] = array( '$ne' => $data );
-								break;
-						}
-						break;
-						
-					case kOPERATOR_EQUAL_NOT:
-						$theContainer->UnserialiseData( $data, $type );
-						switch( $theCondition )
-						{
-							case kOPERATOR_AND:
-							case kOPERATOR_OR:
-								$subject = (string) $theStatement[ kOFFSET_QUERY_SUBJECT ];
-								$statement[ $subject ] = array( '$ne' => $data );
-								break;
-							
-							case kOPERATOR_NAND:
-							case kOPERATOR_NOR:
-								$statement[ $theStatement[ kOFFSET_QUERY_SUBJECT ] ] = $data;
-								break;
-						}
-						break;
-						
-					case kOPERATOR_LIKE:
-						$tmp = '/^'.$data.'$/i';
-						switch( $theCondition )
-						{
-							case kOPERATOR_AND:
-							case kOPERATOR_OR:
-								$statement[ $theStatement[ kOFFSET_QUERY_SUBJECT ] ]
-									= new MongoRegex( $tmp );
-								break;
-							
-							case kOPERATOR_NAND:
-							case kOPERATOR_NOR:
-								$statement[ $theStatement[ kOFFSET_QUERY_SUBJECT ] ]
-									= array( '$not' => new MongoRegex( $tmp ) );
-								break;
-						}
-						break;
-						
-					case kOPERATOR_PREFIX:
-					case kOPERATOR_PREFIX_NOCASE:
-						$tmp = '/^'.$data.'/';
-						if( $theStatement[ kOFFSET_QUERY_OPERATOR ]
-							== kOPERATOR_PREFIX_NOCASE )
-							$tmp .= 'i';
-						switch( $theCondition )
-						{
-							case kOPERATOR_AND:
-							case kOPERATOR_OR:
-								$statement[ $theStatement[ kOFFSET_QUERY_SUBJECT ] ]
-									= new MongoRegex( $tmp );
-								break;
-							
-							case kOPERATOR_NAND:
-							case kOPERATOR_NOR:
-								$statement[ $theStatement[ kOFFSET_QUERY_SUBJECT ] ]
-									= array( '$not' => new MongoRegex( $tmp ) );
-								break;
-						}
-						break;
-						
-					case kOPERATOR_CONTAINS:
-					case kOPERATOR_CONTAINS_NOCASE:
-						$tmp = '/'.$data.'/';
-						if( $theStatement[ kOFFSET_QUERY_OPERATOR ]
-							== kOPERATOR_CONTAINS_NOCASE )
-							$tmp .= 'i';
-						switch( $theCondition )
-						{
-							case kOPERATOR_AND:
-							case kOPERATOR_OR:
-								$statement[ $theStatement[ kOFFSET_QUERY_SUBJECT ] ]
-									= new MongoRegex( $tmp );
-								break;
-							
-							case kOPERATOR_NAND:
-							case kOPERATOR_NOR:
-								$statement[ $theStatement[ kOFFSET_QUERY_SUBJECT ] ]
-									= array( '$not' => new MongoRegex( $tmp ) );
-								break;
-						}
-						break;
-						
-					case kOPERATOR_SUFFIX:
-					case kOPERATOR_SUFFIX_NOCASE:
-						$tmp = '/'.$data.'$/';
-						if( $theStatement[ kOFFSET_QUERY_OPERATOR ]
-							== kOPERATOR_SUFFIX_NOCASE )
-							$tmp .= 'i';
-						switch( $theCondition )
-						{
-							case kOPERATOR_AND:
-							case kOPERATOR_OR:
-								$statement[ $theStatement[ kOFFSET_QUERY_SUBJECT ] ]
-									= new MongoRegex( $tmp );
-								break;
-							
-							case kOPERATOR_NAND:
-							case kOPERATOR_NOR:
-								$statement[ $theStatement[ kOFFSET_QUERY_SUBJECT ] ]
-									= array( '$not' => new MongoRegex( $tmp ) );
-								break;
-						}
-						break;
-						
-					case kOPERATOR_REGEX:
-						$tmp = new MongoRegex( $data );
-						switch( $theCondition )
-						{
-							case kOPERATOR_AND:
-							case kOPERATOR_OR:
-								$statement[ $theStatement[ kOFFSET_QUERY_SUBJECT ] ] = $tmp;
-								break;
-							
-							case kOPERATOR_NAND:
-							case kOPERATOR_NOR:
-								$statement[ $theStatement[ kOFFSET_QUERY_SUBJECT ] ]
-									= array( '$not' => $tmp );
-								break;
-						}
-						break;
-						
-					case kOPERATOR_LESS:
-						$theContainer->UnserialiseData( $data, $type );
-						switch( $theCondition )
-						{
-							case kOPERATOR_AND:
-							case kOPERATOR_OR:
-								$statement[ $theStatement[ kOFFSET_QUERY_SUBJECT ] ]
-									= array( '$lt' => $data );
-								break;
-							
-							case kOPERATOR_NAND:
-							case kOPERATOR_NOR:
-								$statement[ $theStatement[ kOFFSET_QUERY_SUBJECT ] ]
-									= array( '$gte' => $data );
-								break;
-						}
-						break;
-						
-					case kOPERATOR_LESS_EQUAL:
-						$theContainer->UnserialiseData( $data, $type );
-						switch( $theCondition )
-						{
-							case kOPERATOR_AND:
-							case kOPERATOR_OR:
-								$statement[ $theStatement[ kOFFSET_QUERY_SUBJECT ] ]
-									= array( '$lte' => $data );
-								break;
-							
-							case kOPERATOR_NAND:
-							case kOPERATOR_NOR:
-								$statement[ $theStatement[ kOFFSET_QUERY_SUBJECT ] ]
-									= array( '$gt' => $data );
-								break;
-						}
-						break;
-						
-					case kOPERATOR_GREAT:
-						$theContainer->UnserialiseData( $data, $type );
-						switch( $theCondition )
-						{
-							case kOPERATOR_AND:
-							case kOPERATOR_OR:
-								$statement[ $theStatement[ kOFFSET_QUERY_SUBJECT ] ]
-									= array( '$gt' => $data );
-								break;
-							
-							case kOPERATOR_NAND:
-							case kOPERATOR_NOR:
-								$statement[ $theStatement[ kOFFSET_QUERY_SUBJECT ] ]
-									= array( '$lte' => $data );
-								break;
-						}
-						break;
-						
-					case kOPERATOR_GREAT_EQUAL:
-						$theContainer->UnserialiseData( $data, $type );
-						switch( $theCondition )
-						{
-							case kOPERATOR_AND:
-							case kOPERATOR_OR:
-								$statement[ $theStatement[ kOFFSET_QUERY_SUBJECT ] ]
-									= array( '$gte' => $data );
-								break;
-							
-							case kOPERATOR_NAND:
-							case kOPERATOR_NOR:
-								$statement[ $theStatement[ kOFFSET_QUERY_SUBJECT ] ]
-									= array( '$lt' => $data );
-								break;
-						}
-						break;
-						
-					case kOPERATOR_IRANGE:
-						$list = $this->_OrderRange( $data,
-													$theContainer,
-													$theStatement[ kOFFSET_QUERY_TYPE ] );
-						switch( $theCondition )
-						{
-							case kOPERATOR_AND:
-							case kOPERATOR_OR:
-								$statement[ $theStatement[ kOFFSET_QUERY_SUBJECT ] ]
-									= array( '$gte' => array_shift( $list ),
-											 '$lte' => array_shift( $list ) );
-								break;
-							
-							case kOPERATOR_NAND:
-							case kOPERATOR_NOR:
-								$statement[ $theStatement[ kOFFSET_QUERY_SUBJECT ] ]
-									= array( '$or'
-										=> array( array( '$lt'
-															=> array_shift( $list ) ),
-												  array( '$gt'
-												  			=> array_shift( $list ) ) ) );
-								break;
-						}
-						break;
-						
-					case kOPERATOR_ERANGE:
-						$list = $this->_OrderRange( $data,
-													$theContainer,
-													$theStatement[ kOFFSET_QUERY_TYPE ] );
-						switch( $theCondition )
-						{
-							case kOPERATOR_AND:
-							case kOPERATOR_OR:
-								$statement[ $theStatement[ kOFFSET_QUERY_SUBJECT ] ]
-									= array( '$gt' => array_shift( $list ),
-											 '$lt' => array_shift( $list ) );
-								break;
-							
-							case kOPERATOR_NAND:
-							case kOPERATOR_NOR:
-								$statement[ $theStatement[ kOFFSET_QUERY_SUBJECT ] ]
-									= array( '$or'
-										=> array( array( '$lte'
-															=> array_shift( $list ) ),
-												  array( '$gte'
-												  			=> array_shift( $list ) ) ) );
-								break;
-						}
-						break;
-						
-					case kOPERATOR_NULL:
-						switch( $theCondition )
-						{
-							case kOPERATOR_AND:
-							case kOPERATOR_OR:
-								$statement[ $theStatement[ kOFFSET_QUERY_SUBJECT ] ]
-									= array( '$exists' => FALSE );
-								break;
-							
-							case kOPERATOR_NAND:
-							case kOPERATOR_NOR:
-								$statement[ $theStatement[ kOFFSET_QUERY_SUBJECT ] ]
-									= array( '$exists' => TRUE );
-								break;
-						}
-						break;
-						
-					case kOPERATOR_NOT_NULL:
-						switch( $theCondition )
-						{
-							case kOPERATOR_AND:
-							case kOPERATOR_OR:
-								$statement[ $theStatement[ kOFFSET_QUERY_SUBJECT ] ]
-									= array( '$exists' => TRUE );
-								break;
-							
-							case kOPERATOR_NAND:
-							case kOPERATOR_NOR:
-								$statement[ $theStatement[ kOFFSET_QUERY_SUBJECT ] ]
-									= array( '$exists' => FALSE );
-								break;
-						}
-						break;
-						
-					case kOPERATOR_IN:
-						$list = Array();
-						foreach( $data as $element )
-						{
-							$theContainer->UnserialiseData( $element, $type );
-							$list[] = $element;
-						}
-						switch( $theCondition )
-						{
-							case kOPERATOR_AND:
-							case kOPERATOR_OR:
-								$statement[ $theStatement[ kOFFSET_QUERY_SUBJECT ] ]
-									= array( '$in' => $list );
-								break;
-							
-							case kOPERATOR_NAND:
-							case kOPERATOR_NOR:
-								$statement[ $theStatement[ kOFFSET_QUERY_SUBJECT ] ]
-									= array( '$nin' => $list );
-								break;
-						}
-						break;
-						
-					case kOPERATOR_NI:
-						$list = Array();
-						foreach( $data as $element )
-						{
-							$theContainer->UnserialiseData( $element, $type );
-							$list[] = $element;
-						}
-						switch( $theCondition )
-						{
-							case kOPERATOR_AND:
-							case kOPERATOR_OR:
-								$statement[ $theStatement[ kOFFSET_QUERY_SUBJECT ] ]
-									= array( '$nin' => $list );
-								break;
-							
-							case kOPERATOR_NAND:
-							case kOPERATOR_NOR:
-								$statement[ $theStatement[ kOFFSET_QUERY_SUBJECT ] ]
-									= array( '$in' => $list );
-								break;
-						}
-						break;
-						
-					case kOPERATOR_ALL:
-						$list = Array();
-						foreach( $data as $element )
-						{
-							$theContainer->UnserialiseData( $element, $type );
-							$list[] = $element;
-						}
-						switch( $theCondition )
-						{
-							case kOPERATOR_AND:
-							case kOPERATOR_OR:
-								$statement[ $theStatement[ kOFFSET_QUERY_SUBJECT ] ]
-									= array( '$all' => $list );
-								break;
-							
-							case kOPERATOR_NAND:
-							case kOPERATOR_NOR:
-								$statement[ $theStatement[ kOFFSET_QUERY_SUBJECT ] ]
-									= array
-										(
-											'$not' => array
-											(
-												'$all' => $list
-											)
-										);
-								break;
-						}
-						break;
-						
-					case kOPERATOR_DISABLED:
-						break;
-						
-					case kOPERATOR_NALL:
-					case kOPERATOR_LIKE_NOT:
-						throw new Exception
-								( "Unsupported query operator",
-								  kERROR_UNSUPPORTED );							// !@! ==>
-					
-					//
-					// Catch unhandled operators.
-					//
-					default:
-						throw new Exception
-								( "Unsupported query operator (should have been catched)",
-								  kERROR_UNSUPPORTED );							// !@! ==>
-				
-				} // Parsed operator.
-				
-				break;
+			$this->_ConvertCondition
+				( $statement, $theContainer, $condition, $theStatement[ $condition ] );
 		
-		} // Parsed statement key.
+		} // Nested condition.
+		
+		//
+		// Handle single statement.
+		//
+		else
+		{
+			//
+			// Create and referencde statement container.
+			//
+			$theQuery[] = Array();
+			$statement = & $theQuery[ count( $theQuery ) - 1 ];
+			
+			//
+			// Save query data.
+			//
+			if( array_key_exists( kOFFSET_QUERY_DATA, $theStatement ) )
+				$data = $theStatement[ kOFFSET_QUERY_DATA ];
+			
+			//
+			// Save query data type.
+			//
+			if( array_key_exists( kOFFSET_QUERY_TYPE, $theStatement ) )
+				$type = $theStatement[ kOFFSET_QUERY_TYPE ];
+			
+			//
+			// Save query subject.
+			//
+			if( array_key_exists( kOFFSET_QUERY_SUBJECT, $theStatement ) )
+				$subject = (string) $theStatement[ kOFFSET_QUERY_SUBJECT ];
+			
+			//
+			// Parse by operator.
+			//
+			switch( $operator = $theStatement[ kOFFSET_QUERY_OPERATOR ] )
+			{
+				//
+				// EQUALS.
+				//
+				case kOPERATOR_EQUAL:
+					$theContainer->UnserialiseData( $data, $type );
+					$statement[ $subject ] = ( $theCondition == kOPERATOR_NAND )
+										   ? array( '$ne' => $data )
+										   : $data;
+					break;
+			
+				//
+				// NOT EQUALS.
+				//
+				case kOPERATOR_EQUAL_NOT:
+					$theContainer->UnserialiseData( $data, $type );
+					$statement[ $subject ] = ( $theCondition == kOPERATOR_NAND )
+										   ? $data
+										   : array( '$ne' => $data );
+					break;
+			
+				//
+				// LIKE.
+				//
+				case kOPERATOR_LIKE:
+					$tmp = '/^'.$data.'$/i';
+					$statement[ $subject ] = ( $theCondition == kOPERATOR_NAND )
+										   ? array( '$not' => new MongoRegex( $tmp ) )
+										   : new MongoRegex( $tmp );
+					break;
+			
+				//
+				// STARTS WITH.
+				//
+				case kOPERATOR_PREFIX:
+				case kOPERATOR_PREFIX_NOCASE:
+					$tmp = '/^'.$data.'/';
+					if( $operator == kOPERATOR_PREFIX_NOCASE )
+						$tmp .= 'i';
+					$statement[ $subject ] = ( $theCondition == kOPERATOR_NAND )
+										   ? array( '$not' => new MongoRegex( $tmp ) )
+										   : new MongoRegex( $tmp );
+					break;
+			
+				//
+				// CONTAINS.
+				//
+				case kOPERATOR_CONTAINS:
+				case kOPERATOR_CONTAINS_NOCASE:
+					$tmp = '/'.$data.'/';
+					if( $operator == kOPERATOR_CONTAINS_NOCASE )
+						$tmp .= 'i';
+					$statement[ $subject ] = ( $theCondition == kOPERATOR_NAND )
+										   ? array( '$not' => new MongoRegex( $tmp ) )
+										   : new MongoRegex( $tmp );
+					break;
+			
+				//
+				// ENDS WITH.
+				//
+				case kOPERATOR_SUFFIX:
+				case kOPERATOR_SUFFIX_NOCASE:
+					$tmp = '/'.$data.'$/';
+					if( $operator == kOPERATOR_SUFFIX_NOCASE )
+						$tmp .= 'i';
+					$statement[ $subject ] = ( $theCondition == kOPERATOR_NAND )
+										   ? array( '$not' => new MongoRegex( $tmp ) )
+										   : new MongoRegex( $tmp );
+					break;
+			
+				//
+				// REGULAR EXPRESSION.
+				//
+				case kOPERATOR_REGEX:
+					$statement[ $subject ] = ( $theCondition == kOPERATOR_NAND )
+										   ? array( '$not' => new MongoRegex( $data ) )
+										   : new MongoRegex( $data );
+					break;
+			
+				//
+				// LESS THAN.
+				//
+				case kOPERATOR_LESS:
+					$theContainer->UnserialiseData( $data, $type );
+					$statement[ $subject ] = ( $theCondition == kOPERATOR_NAND )
+										   ? array( '$not' => array( '$lt' => $data ) )
+										   : array( '$lt' => $data );
+					break;
+			
+				//
+				// LESS THAN OR EQUAL.
+				//
+				case kOPERATOR_LESS_EQUAL:
+					$theContainer->UnserialiseData( $data, $type );
+					$statement[ $subject ] = ( $theCondition == kOPERATOR_NAND )
+										   ? array( '$not' => array( '$lte' => $data ) )
+										   : array( '$lte' => $data );
+					break;
+			
+				//
+				// GREATER THAN.
+				//
+				case kOPERATOR_GREAT:
+					$theContainer->UnserialiseData( $data, $type );
+					$statement[ $subject ] = ( $theCondition == kOPERATOR_NAND )
+										   ? array( '$not' => array( '$gt' => $data ) )
+										   : array( '$gt' => $data );
+					break;
+			
+				//
+				// GREATER THAN OR EQUAL.
+				//
+				case kOPERATOR_GREAT_EQUAL:
+					$theContainer->UnserialiseData( $data, $type );
+					$statement[ $subject ] = ( $theCondition == kOPERATOR_NAND )
+										   ? array( '$not' => array( '$gte' => $data ) )
+										   : array( '$gte' => $data );
+					break;
+			
+				//
+				// RANGE INCLUSIVE.
+				//
+				case kOPERATOR_IRANGE:
+					$list = $this->_OrderRange( $data,
+												$theContainer,
+												$theStatement[ kOFFSET_QUERY_TYPE ] );
+					$statement[ $subject ]
+						= ( $theCondition == kOPERATOR_NAND )
+						? array( '$not' => array( '$gte' => array_shift( $list ),
+												  '$lte' => array_shift( $list ) ) )
+						: array( '$gte' => array_shift( $list ),
+								 '$lte' => array_shift( $list ) );
+					break;
+			
+				//
+				// RANGE EXCLUSIVE.
+				//
+				case kOPERATOR_ERANGE:
+					$list = $this->_OrderRange( $data,
+												$theContainer,
+												$theStatement[ kOFFSET_QUERY_TYPE ] );
+					$statement[ $subject ]
+						= ( $theCondition == kOPERATOR_NAND )
+						? array( '$not' => array( '$gt' => array_shift( $list ),
+												  '$lt' => array_shift( $list ) ) )
+						: array( '$gt' => array_shift( $list ),
+								 '$lt' => array_shift( $list ) );
+					break;
+			
+				//
+				// MISSING.
+				//
+				case kOPERATOR_NULL:
+					$statement[ $subject ]
+						= array( '$exists' => ( $theCondition != kOPERATOR_NAND ) );
+					break;
+			
+				//
+				// EXISTING.
+				//
+				case kOPERATOR_NOT_NULL:
+					$statement[ $subject ]
+						= array( '$exists' => ( $theCondition == kOPERATOR_NAND ) );
+					break;
+			
+				//
+				// IN.
+				//
+				case kOPERATOR_IN:
+					$list = Array();
+					foreach( $data as $element )
+					{
+						$theContainer->UnserialiseData( $element, $type );
+						$list[] = $element;
+					}
+					$statement[ $subject ] = ( $theCondition == kOPERATOR_NAND )
+										   ? array( '$not' => array( '$in' => $list ) )
+										   : array( '$in' => $list );
+					break;
+			
+				//
+				// NOT IN.
+				//
+				case kOPERATOR_NI:
+					$list = Array();
+					foreach( $data as $element )
+					{
+						$theContainer->UnserialiseData( $element, $type );
+						$list[] = $element;
+					}
+					$statement[ $subject ] = ( $theCondition == kOPERATOR_NAND )
+										   ? array( '$not' => array( '$nin' => $list ) )
+										   : array( '$nin' => $list );
+					break;
+			
+				//
+				// ALL.
+				//
+				case kOPERATOR_ALL:
+					$list = Array();
+					foreach( $data as $element )
+					{
+						$theContainer->UnserialiseData( $element, $type );
+						$list[] = $element;
+					}
+					$statement[ $subject ] = ( $theCondition == kOPERATOR_NAND )
+										   ? array( '$not' => array( '$all' => $list ) )
+										   : array( '$all' => $list );
+					break;
+			
+				//
+				// DISABLED.
+				//
+				case kOPERATOR_DISABLED:
+					break;
+			
+				//
+				// UNSUPPORTED OPERATORS.
+				//
+				case kOPERATOR_NALL:
+				case kOPERATOR_LIKE_NOT:
+					throw new Exception
+							( "Unsupported query operator",
+							  kERROR_UNSUPPORTED );								// !@! ==>
+				
+				//
+				// Catch unhandled operators.
+				//
+				default:
+					throw new Exception
+							( "Unsupported query operator (should have been catched)",
+							  kERROR_UNSUPPORTED );								// !@! ==>
+			
+			} // Parsed operator.
+		
+		} // Single statement.
 	
 	} // _ConvertStatement.
 

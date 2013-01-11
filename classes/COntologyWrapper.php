@@ -969,9 +969,7 @@ class COntologyWrapper extends CDataWrapper
 				//
 				// Get related.
 				//
-				$results = ( array_key_exists( kAPI_SUBQUERY, $_REQUEST ) )
-						 ? $this->_GetVertexFilteredRelations( $vertex[ kTAG_NID ] )
-						 : $this->_GetVertexRelations( $vertex[ kTAG_NID ] );
+				$results = $this->_GetVertexRelations( $vertex[ kTAG_NID ] );
 				if( $results !== NULL )
 					$this->offsetSet( kAPI_RESPONSE, $results );
 			
@@ -1946,6 +1944,11 @@ class COntologyWrapper extends CDataWrapper
 		//
 		$container = COntologyEdge::DefaultContainer( $_REQUEST[ kAPI_DATABASE ] );
 		$query = $container->NewQuery();
+		if( array_key_exists( kAPI_SUBQUERY, $_REQUEST ) )
+		{
+			$subcontainer = COntologyNode::DefaultContainer( $_REQUEST[ kAPI_DATABASE ] );
+			$subquery = $_REQUEST[ kAPI_SUBQUERY ];
+		}
 
 		//
 		// Filter by predicate.
@@ -1960,7 +1963,11 @@ class COntologyWrapper extends CDataWrapper
 		//
 		switch( $_REQUEST[ kAPI_RELATION ] )
 		{
+			//
+			// Incoming relationships.
+			//
 			case kAPI_RELATION_IN:
+			
 				//
 				// Find incoming relationships.
 				//
@@ -1968,9 +1975,19 @@ class COntologyWrapper extends CDataWrapper
 					CQueryStatement::Equals(
 						kTAG_OBJECT, $theVertex ),
 					kOPERATOR_AND );
+				
+				//
+				// Select all related nodes.
+				//
+				if( array_key_exists( kAPI_SUBQUERY, $_REQUEST ) )
+					$list
+						= $container->Query(
+							$query, NULL, NULL, NULL, NULL, kTAG_SUBJECT );
+				
 				break;
 		
 			case kAPI_RELATION_OUT:
+			
 				//
 				// Find outgoing relationships.
 				//
@@ -1978,20 +1995,71 @@ class COntologyWrapper extends CDataWrapper
 					CQueryStatement::Equals(
 						kTAG_SUBJECT, $theVertex ),
 					kOPERATOR_AND );
+				
+				//
+				// Select all related nodes.
+				//
+				if( array_key_exists( kAPI_SUBQUERY, $_REQUEST ) )
+					$list
+						= $container->Query(
+							$query, NULL, NULL, NULL, NULL, kTAG_OBJECT );
+				
 				break;
 		
 			case kAPI_RELATION_ALL:
+			
 				//
-				// Find all relationships.
+				// Find outgoing relationships.
 				//
 				$query->AppendStatement(
 					CQueryStatement::Equals(
 						kTAG_SUBJECT, $theVertex ),
 					kOPERATOR_OR );
+				
+				//
+				// Find incoming relationships.
+				//
 				$query->AppendStatement(
 					CQueryStatement::Equals(
 						kTAG_OBJECT, $theVertex ),
 					kOPERATOR_OR );
+				
+				//
+				// Handle filter.
+				//
+				if( array_key_exists( kAPI_SUBQUERY, $_REQUEST ) )
+				{
+					//
+					// Select all related nodes.
+					//
+					$list
+						= iterator_to_array(
+							$container->Query(
+								$query, array( kTAG_NID, kTAG_SUBJECT, kTAG_OBJECT ) ) );
+					
+					//
+					// Collect distinct node identifiers.
+					//
+					foreach( array_keys( $list ) as $id )
+					{
+						foreach( $list[ $id ] as $key => $value )
+						{
+							if( $key == kTAG_NID )
+								continue;									// =>
+							if( $value != $theVertex )
+								break;										// =>
+						}
+						
+						$list[ $id ] = $value;
+					}
+				
+					//
+					// Compile unique list of nodes.
+					//
+					$list = array_values( array_unique( $list ) );
+				
+				} // Provided filter.
+				
 				break;
 			
 			default:
@@ -2003,6 +2071,92 @@ class COntologyWrapper extends CDataWrapper
 								=> $_REQUEST[ kAPI_RELATION ] ) );		// !@! ==>
 		
 		} // Parsing relationship sense.
+		
+		//
+		// Handle filter.
+		//
+		if( array_key_exists( kAPI_SUBQUERY, $_REQUEST ) )
+		{
+			//
+			// Add nodes selector to sub-query.
+			//
+			$subquery = new CQuery( $subquery );
+			$subquery->AppendStatement(
+				CQueryStatement::Member(
+					kTAG_NID, $list ),
+				kOPERATOR_AND );
+		
+			//
+			// Filter nodes.
+			//
+			$list
+				= array_keys(
+					iterator_to_array(
+						$subcontainer->Query(
+							$subquery, array( kTAG_NID ) ) ) );
+		
+			//
+			// Update main query.
+			//
+			switch( $_REQUEST[ kAPI_RELATION ] )
+			{
+				case kAPI_RELATION_IN:
+				
+					//
+					// Find incoming relationships.
+					//
+					$query->AppendStatement(
+						CQueryStatement::Member(
+							kTAG_SUBJECT, $list ),
+						kOPERATOR_AND );
+				
+					break;
+		
+				case kAPI_RELATION_OUT:
+				
+					//
+					// Find outgoing relationships.
+					//
+					$query->AppendStatement(
+						CQueryStatement::Member(
+							kTAG_OBJECT, $list ),
+						kOPERATOR_AND );
+				
+					break;
+		
+				case kAPI_RELATION_ALL:
+				
+					//
+					// Create selection query.
+					//
+					$tmp = $container->NewQuery();
+					
+					//
+					// Find outgoing relationships.
+					//
+					$tmp->AppendStatement(
+						CQueryStatement::Member(
+							kTAG_SUBJECT, $list ),
+						kOPERATOR_OR );
+						
+					//
+					// Find incoming relationships.
+					//
+					$tmp->AppendStatement(
+						CQueryStatement::Member(
+							kTAG_OBJECT, $list ),
+						kOPERATOR_OR );
+						
+					//
+					// Merge.
+					//
+					$query->AppendStatement( $tmp, kOPERATOR_AND );
+				
+					break;
+		
+			} // Parsing relationship sense.
+		
+		} // Provided filter.
 		
 		//
 		// Handle paging.
@@ -2088,305 +2242,6 @@ class COntologyWrapper extends CDataWrapper
 		return NULL;																// ==>
 	
 	} // _GetVertexRelations.
-
-	 
-	/*===================================================================================
-	 *	_GetVertexFilteredRelations														*
-	 *==================================================================================*/
-
-	/**
-	 * Get filtered vertex relationships.
-	 *
-	 * This method is equivalent to the {@link _GetVertexRelations()} method, except that it
-	 * will be called if there was a provided sub-query filter.
-	 *
-	 * The main difference is that while the {@link _GetVertexRelations()} method iterates
-	 * edges based on the edge vertex references, this method filters edges based on a query
-	 * applied to nodes. It means that nodes must be resolved beforehand by selecting all
-	 * relevant nodes matching the selected edges.
-	 *
-	 * @param integer				$theVertex			Reference vertex identifier.
-	 *
-	 * @access protected
-	 * @return array|NULL
-	 */
-	protected function _GetVertexFilteredRelations( $theVertex )
-	{
-		//
-		// Init local storage.
-		//
-		$container = COntologyEdge::DefaultContainer( $_REQUEST[ kAPI_DATABASE ] );
-		$subcontainer = COntologyNode::DefaultContainer( $_REQUEST[ kAPI_DATABASE ] );
-		$subquery = $_REQUEST[ kAPI_SUBQUERY ];
-		$query = $container->NewQuery();
-
-		//
-		// Filter by predicate.
-		//
-		if( array_key_exists( kAPI_PREDICATE, $_REQUEST ) )
-			$query->AppendStatement(
-				CQueryStatement::Member(
-					kTAG_PREDICATE, $_REQUEST[ kAPI_PREDICATE ], kTYPE_BINARY_STRING ) );
-		
-		//
-		// Build query by sense.
-		//
-		switch( $_REQUEST[ kAPI_RELATION ] )
-		{
-			case kAPI_RELATION_IN:
-				//
-				// Find incoming relationships.
-				//
-				$query->AppendStatement(
-					CQueryStatement::Equals(
-						kTAG_OBJECT, $theVertex ),
-					kOPERATOR_AND );
-				//
-				// Find all related edges.
-				//
-				$list
-					= $container->Query(
-						$query, NULL, NULL, NULL, NULL, kTAG_SUBJECT );
-				
-				break;
-		
-			case kAPI_RELATION_OUT:
-				//
-				// Find outgoing relationships.
-				//
-				$query->AppendStatement(
-					CQueryStatement::Equals(
-						kTAG_SUBJECT, $theVertex ),
-					kOPERATOR_AND );
-				//
-				// Find all related edges.
-				//
-				$list
-					= $container->Query(
-						$query, NULL, NULL, NULL, NULL, kTAG_OBJECT );
-				
-				break;
-		
-			case kAPI_RELATION_ALL:
-				//
-				// Find outgoing relationships.
-				//
-				$query->AppendStatement(
-					CQueryStatement::Equals(
-						kTAG_SUBJECT, $theVertex ),
-					kOPERATOR_OR );
-				//
-				// Find incoming relationships.
-				//
-				$query->AppendStatement(
-					CQueryStatement::Equals(
-						kTAG_OBJECT, $theVertex ),
-					kOPERATOR_OR );
-				//
-				// Find all related edges.
-				//
-				$list
-					= iterator_to_array(
-						$container->Query(
-							$query, array( kTAG_NID, kTAG_SUBJECT, kTAG_OBJECT ) ) );
-				//
-				// Collect distinct node identifiers.
-				//
-				$ids = array_keys( $list );
-				foreach( $ids as $id )
-				{
-					foreach( $list[ $id ] as $key => $value )
-					{
-						if( $key == kTAG_NID )
-							continue;										// =>
-						if( $value != $theVertex )
-							break;											// =>
-					}
-					$list[ $id ] = $value;
-				}
-				//
-				// Compile unique list of nodes.
-				//
-				$list = array_values( array_unique( $list ) );
-				
-				break;
-			
-			default:
-				throw new CException
-					( "Invalid relation sense: should have been caught before",
-					  kERROR_STATE,
-					  kSTATUS_BUG,
-					  array( 'Relation'
-								=> $_REQUEST[ kAPI_RELATION ] ) );		// !@! ==>
-		
-		} // Parsing relationship sense.
-		
-		//
-		// Add nodes selector to sub-query.
-		//
-		$subquery = new CQuery( $subquery );
-		$subquery->AppendStatement(
-			CQueryStatement::Member(
-				kTAG_NID, $list ),
-			kOPERATOR_AND );
-		
-		//
-		// Filter nodes.
-		//
-		$list
-			= array_keys(
-				iterator_to_array(
-					$subcontainer->Query(
-						$subquery, array( kTAG_NID ) ) ) );
-		
-		//
-		// Update main query.
-		//
-		switch( $_REQUEST[ kAPI_RELATION ] )
-		{
-			case kAPI_RELATION_IN:
-				//
-				// Find incoming relationships.
-				//
-				$query->AppendStatement(
-					CQueryStatement::Member(
-						kTAG_SUBJECT, $list ),
-					kOPERATOR_AND );
-				
-				break;
-		
-			case kAPI_RELATION_OUT:
-				//
-				// Find outgoing relationships.
-				//
-				$query->AppendStatement(
-					CQueryStatement::Member(
-						kTAG_OBJECT, $list ),
-					kOPERATOR_AND );
-				
-				break;
-		
-			case kAPI_RELATION_ALL:
-				//
-				// Create selection query.
-				//
-				$tmp = $container->NewQuery();
-				//
-				// Find outgoing relationships.
-				//
-				$tmp->AppendStatement(
-					CQueryStatement::Member(
-						kTAG_SUBJECT, $list ),
-					kOPERATOR_OR );
-				//
-				// Find incoming relationships.
-				//
-				$tmp->AppendStatement(
-					CQueryStatement::Member(
-						kTAG_OBJECT, $list ),
-					kOPERATOR_OR );
-				//
-				// Merge.
-				//
-				$query->AppendStatement(
-					$tmp,
-					kOPERATOR_AND );
-				
-				break;
-			
-			default:
-				throw new CException
-					( "Invalid relation sense: should have been caught before",
-					  kERROR_STATE,
-					  kSTATUS_BUG,
-					  array( 'Relation'
-								=> $_REQUEST[ kAPI_RELATION ] ) );		// !@! ==>
-		
-		} // Parsing relationship sense.
-		//
-		// Handle paging.
-		//
-		if( $this->offsetExists( kAPI_PAGING ) )
-		{
-			$start = $this->offsetGet( kAPI_PAGING )[ kAPI_PAGE_START ];
-			$limit = $this->offsetGet( kAPI_PAGING )[ kAPI_PAGE_LIMIT ];
-		}
-		else
-			$start = $limit = NULL;
-		
-		//
-		// Find related edges.
-		//
-		$cursor
-			= $container
-				->Query( $query, NULL, NULL, $start, $limit );
-
-		//
-		// Set affected count.
-		//
-		$this->_OffsetManage(
-			kAPI_STATUS, kAPI_AFFECTED_COUNT, $cursor->count( FALSE ) );
-		
-		//
-		// Handle page count.
-		//
-		if( $this->offsetExists( kAPI_PAGING ) )
-		{
-			$tmp = $this->offsetGet( kAPI_PAGING );
-			$tmp[ kAPI_PAGE_COUNT ] = $cursor->count( TRUE );
-			$this->offsetSet( kAPI_PAGING, $tmp );
-		}
-		
-		//
-		// Check count.
-		//
-		if( $cursor->count( FALSE ) )
-		{
-			//
-			// Iterate edges.
-			//
-			foreach( $cursor as $object )
-			{
-				//
-				// Instantiate object.
-				//
-				$object = CPersistentObject::DocumentObject( $object );
-				
-				//
-				// Save vertex identifier.
-				//
-				switch( $_REQUEST[ kAPI_RELATION ] )
-				{
-					case kAPI_RELATION_IN:
-						$vid = $object[ kTAG_SUBJECT ];
-						break;
-				
-					case kAPI_RELATION_OUT:
-						$vid = $object[ kTAG_OBJECT ];
-						break;
-				
-					case kAPI_RELATION_ALL:
-						$vid = ( $object[ kTAG_SUBJECT ] == $theVertex )
-							 ? $object[ kTAG_OBJECT ]
-							 : $object[ kTAG_SUBJECT ];
-						break;
-				
-				} // Parsing relationship sense.
-				
-				//
-				// Build and store vertex identifier.
-				//
-				$this->_ExportEdge( $results, $object );
-				$results[ kAPI_COLLECTION_ID ][] = $vid;
-			}
-			
-			return $results;														// ==>
-		
-		} // Found edges.
-		
-		return NULL;																// ==>
-	
-	} // _GetVertexFilteredRelations.
 
 	 
 

@@ -40,6 +40,8 @@
 				<li class="main"><a href="package-MyWrapper.Wrappers.html">Wrappers</a>
 						</li>
 							</ul></li>
+				<li><a href="package-None.html">None</a>
+						</li>
 				<li><a href="package-PHP.html">PHP</a>
 						</li>
 			</ul>
@@ -65,7 +67,6 @@
 				<li><a href="class-CDocument.html">CDocument</a></li>
 				<li><a href="class-CEdge.html">CEdge</a></li>
 				<li><a href="class-CNode.html">CNode</a></li>
-				<li><a href="class-CQuery.html">CQuery</a></li>
 				<li><a href="class-CQueryStatement.html">CQueryStatement</a></li>
 				<li><a href="class-CServer.html">CServer</a></li>
 				<li><a href="class-CStatusDocument.html">CStatusDocument</a></li>
@@ -203,7 +204,7 @@ implement specific storage actions.</p>
 				<b>Author:</b>
 				Milko A. Škofič &lt;<a
 href="mailto:m.skofic&#64;cgiar.org">m.skofic&#64;<!---->cgiar.org</a>&gt;<br />
-		<b>Located at</b> <a href="source-class-CContainer.html#57-725" title="Go to source code">CContainer.php</a><br />
+		<b>Located at</b> <a href="source-class-CContainer.html#57-733" title="Go to source code">CContainer.php</a><br />
 	</div>
 
 
@@ -587,7 +588,7 @@ return <tt>TRUE</tt> if found and <tt>FALSE</tt> if not.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#_Query">#</a>
-		<code><a href="source-class-CContainer.html#359-403" title="Go to source code">Query</a>( <span>array <var>$theQuery</var> = <span class="php-keyword1">NULL</span></span>, <span>array <var>$theFields</var> = <span class="php-keyword1">NULL</span></span>, <span>array <var>$theSort</var> = <span class="php-keyword1">NULL</span></span>, <span>integer <var>$theStart</var> = <span class="php-keyword1">NULL</span></span>, <span>integer <var>$theLimit</var> = <span class="php-keyword1">NULL</span></span>, <span>boolean <var>$getFirst</var> = <span class="php-keyword1">NULL</span> </span> )</code>
+		<code><a href="source-class-CContainer.html#359-411" title="Go to source code">Query</a>( <span>array <var>$theQuery</var> = <span class="php-keyword1">NULL</span></span>, <span>array <var>$theFields</var> = <span class="php-keyword1">NULL</span></span>, <span>array <var>$theSort</var> = <span class="php-keyword1">NULL</span></span>, <span>integer <var>$theStart</var> = <span class="php-keyword1">NULL</span></span>, <span>integer <var>$theLimit</var> = <span class="php-keyword1">NULL</span></span>, <span>mixed <var>$theResult</var> = <span class="php-keyword1">NULL</span> </span> )</code>
 
 		<div class="description short">
 			
@@ -600,7 +601,7 @@ return <tt>TRUE</tt> if found and <tt>FALSE</tt> if not.</p>
 <h4>Perform a query</h4>
 
 <p>This method can be used to perform a query on the container, it expects an
-instance of <code><a href="class-CQuery.html">CQuery</a></code> as the query, or <tt>NULL</tt>, to query the whole
+instance of <code><a href="class-CQuery.html" class="invalid">CQuery</a></code> as the query, or <tt>NULL</tt>, to query the whole
 container and two optional parameters that represents the list of desired fields
 and the list of sort fields with sense.</p>
 
@@ -622,17 +623,27 @@ and the list of sort fields with sense.</p>
 
 	<li><tt>$theLimit</tt>: The maximum number of records to be returned.</li>
 
-	<li><tt>$getFirst</tt>: If <tt>TRUE</tt>, the method should return the first
-	matched record or <tt>NULL</tt> if there were no matches.</li>
+	<li><tt>$theResult</tt>: This parameter determines the result of the method:
+		<ul>
+			<li><tt>NULL</tt>: Return the selection cursor (default).</li>
+
+			<li><tt>TRUE</tt>: Return first matched record or <tt>NULL</tt> if there were no
+			matches.</li>
+
+			<li><i>other</i>: Any other value will be interpreted as a field identifier: in
+			this case the method will return an array containing the distinct values of the
+			provided field identifier.</li>
+		</ul>
+	</li>
 </ul>
 
-<p>The method should return an object that represents a cursor into the query
-results, the object should be iterable and feature a method, <i>count</i>, that
-accepts a boolean parameter: if <tt>TRUE</tt> the method should return the
-actual number of elements available takinf into consideration paging parameters;
-if <tt>FALSE</tt>, the method should return the total affected elements count,
-that is, the total number of elements affected by the query regardless of paging
-parameters.</p>
+<p>When <tt>$theResult</tt> is set to <tt>NULL</tt>, the method should return an
+object that represents a cursor into the query results, the object should be
+iterable and feature a method, <i>count</i>, that accepts a boolean parameter:
+if <tt>TRUE</tt> the method should return the actual number of elements
+available taking into consideration paging parameters; if <tt>FALSE</tt>, the
+method should return the total affected elements count, that is, the total
+number of elements affected by the query regardless of paging parameters.</p>
 
 
 
@@ -648,8 +659,8 @@ parameters.</p>
 					<dd><code>integer</code><br>$theStart Page start.</dd>
 					<dt><var>$theLimit</var></dt>
 					<dd><code>integer</code><br>$theLimit Page limit.</dd>
-					<dt><var>$getFirst</var></dt>
-					<dd><code>boolean</code><br>$getFirst TRUE means return first.</dd>
+					<dt><var>$theResult</var></dt>
+					<dd><code>mixed</code><br>$theResult Result type.</dd>
 				</dl></div>
 
 				<h4>Returns</h4>
@@ -674,7 +685,7 @@ parameters.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#_Remove">#</a>
-		<code><a href="source-class-CContainer.html#410-430" title="Go to source code">Remove</a>( <span>array <var>$theQuery</var> = <span class="php-keyword1">NULL</span> </span> )</code>
+		<code><a href="source-class-CContainer.html#418-438" title="Go to source code">Remove</a>( <span>array <var>$theQuery</var> = <span class="php-keyword1">NULL</span> </span> )</code>
 
 		<div class="description short">
 			
@@ -687,7 +698,7 @@ parameters.</p>
 <h4>Perform a deletion</h4>
 
 <p>This method can be used to delete elements of a container, it expects an
-instance of <code><a href="class-CQuery.html">CQuery</a></code> as the query, or <tt>NULL</tt>, to delete the whole
+instance of <code><a href="class-CQuery.html" class="invalid">CQuery</a></code> as the query, or <tt>NULL</tt>, to delete the whole
 container.</p>
 
 <ul>
@@ -730,7 +741,7 @@ number of affected objects; on errors the method should raise an exception.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#_UnserialiseObject">#</a>
-		<code><a href="source-class-CContainer.html#446-600" title="Go to source code">UnserialiseObject</a>( <span>reference <var>&amp; $theObject</var></span> )</code>
+		<code><a href="source-class-CContainer.html#454-608" title="Go to source code">UnserialiseObject</a>( <span>reference <var>&amp; $theObject</var></span> )</code>
 
 		<div class="description short">
 			
@@ -807,7 +818,7 @@ follows:</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#_UnserialiseData">#</a>
-		<code><a href="source-class-CContainer.html#607-640" title="Go to source code">UnserialiseData</a>( <span>reference <var>&amp; $theElement</var></span>, <span>string <var>$theType</var> = <span class="php-keyword1">NULL</span> </span> )</code>
+		<code><a href="source-class-CContainer.html#615-648" title="Go to source code">UnserialiseData</a>( <span>reference <var>&amp; $theElement</var></span>, <span>string <var>$theType</var> = <span class="php-keyword1">NULL</span> </span> )</code>
 
 		<div class="description short">
 			
@@ -876,7 +887,7 @@ implement it.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#_NextSequence">#</a>
-		<code><a href="source-class-CContainer.html#656-692" title="Go to source code">NextSequence</a>( <span>string <var>$theKey</var></span>, <span>mixed <var>$theContainer</var> = <span class="php-keyword1">NULL</span> </span> )</code>
+		<code><a href="source-class-CContainer.html#664-700" title="Go to source code">NextSequence</a>( <span>string <var>$theKey</var></span>, <span>mixed <var>$theContainer</var> = <span class="php-keyword1">NULL</span> </span> )</code>
 
 		<div class="description short">
 			
@@ -945,14 +956,14 @@ exception.</p>
 
 		<td class="attributes"><code>
 			 public static
-			<code><a href="class-CQuery.html">CQuery</a></code>
+			<code><a href="class-CQuery.html" class="invalid">CQuery</a></code>
 			
 			</code>
 		</td>
 
 		<td class="name"><div>
 		<a class="anchor" href="#_NewQuery">#</a>
-		<code><a href="source-class-CContainer.html#708-721" title="Go to source code">NewQuery</a>( <span>mixed <var>$theQuery</var> = <span class="php-keyword1">NULL</span> </span> )</code>
+		<code><a href="source-class-CContainer.html#716-729" title="Go to source code">NewQuery</a>( <span>mixed <var>$theQuery</var> = <span class="php-keyword1">NULL</span> </span> )</code>
 
 		<div class="description short">
 			
@@ -968,7 +979,7 @@ exception.</p>
 method is to return a query object that is compatible with the current
 container.</p>
 
-<p>In this class we return an instance of the base <code><a href="class-CQuery.html">CQuery</a></code> class.</p>
+<p>In this class we return an instance of the base <code><a href="class-CQuery.html" class="invalid">CQuery</a></code> class.</p>
 
 
 
@@ -980,7 +991,7 @@ container.</p>
 
 				<h4>Returns</h4>
 				<div class="list">
-					<code><code><a href="class-CQuery.html">CQuery</a></code></code><br>An empty query object.<br />
+					<code><code><a href="class-CQuery.html" class="invalid">CQuery</a></code></code><br>An empty query object.<br />
 				</div>
 
 

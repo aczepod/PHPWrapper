@@ -540,7 +540,7 @@ class CQuery extends CStatusDocument
 			//
 			// Append query.
 			//
-			$tmp[] = $theQuery;
+			$tmp[ $current ][] = $theQuery;
 			
 			//
 			// Update current object.
@@ -591,7 +591,7 @@ class CQuery extends CStatusDocument
 			//
 			// Append query.
 			//
-			$theQuery[] = $tmp;
+			$theQuery[ $provided ][] = $tmp;
 			
 			//
 			// Update current object.
