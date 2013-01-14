@@ -554,6 +554,9 @@
 				<item>:SCALE-OF</item>
 				<item>FAO-INSTITUTES:INSTCODE</item>
 			</element>
+			<element variable="kTAG_TYPE">
+				<item>:TEXT</item>
+			</element>
 		</tag>
 		<edges>
 			<edge>
@@ -929,6 +932,9 @@
 				<item>:SCALE-OF</item>
 				<item>ISO:639:2</item>
 			</element>
+			<element variable="kTAG_TYPE">
+				<item>:ENUM</item>
+			</element>
 		</tag>
 		<edges>
 			<edge>
@@ -1107,6 +1113,9 @@
 				<item>:SCALE-OF</item>
 				<item>LR:DATA-TYPES:LATDMS</item>
 			</element>
+			<element variable="kTAG_TYPE">
+				<item>:TEXT</item>
+			</element>
 		</tag>
 		<edges>
 			<edge>
@@ -1142,6 +1151,9 @@
 				<item>LR:FLATDD</item>
 				<item>:SCALE-OF</item>
 				<item>LR:DATA-TYPES:LATDEC</item>
+			</element>
+			<element variable="kTAG_TYPE">
+				<item>:FLOAT</item>
 			</element>
 		</tag>
 		<edges>
@@ -1179,6 +1191,9 @@
 				<item>:SCALE-OF</item>
 				<item>LR:DATA-TYPES:LONDMS</item>
 			</element>
+			<element variable="kTAG_TYPE">
+				<item>:TEXT</item>
+			</element>
 		</tag>
 		<edges>
 			<edge>
@@ -1214,6 +1229,9 @@
 				<item>LR:FLONGDD</item>
 				<item>:SCALE-OF</item>
 				<item>LR:DATA-TYPES:LONDEC</item>
+			</element>
+			<element variable="kTAG_TYPE">
+				<item>:FLOAT</item>
 			</element>
 		</tag>
 		<edges>
@@ -1281,12 +1299,11 @@
 		<tag>
 			<element variable="kTAG_PATH">
 				<item>LR:FGPS</item>
-			<element variable="kTAG_PATH">
-			</element>
 				<item>:SCALE-OF</item>
-			<element variable="kTAG_PATH">
-			</element>
 				<item>LR:DATA-TYPES:YN</item>
+			</element>
+			<element variable="kTAG_TYPE">
+				<item>:ENUM</item>
 			</element>
 		</tag>
 		<edges>
@@ -1324,11 +1341,7 @@
 				<item>100000</item>
 			</element>
 		</node>
-		<tag>
-			<element variable="kTAG_PATH">
-				<item>LR:FRADIALED</item>
-			</element>
-		</tag>
+		<tag />
 		<edges>
 			<edge>
 				<element variable="kTAG_PREDICATE">:SUBCLASS-OF</element>
@@ -1359,6 +1372,12 @@
 				<item>LR:FELEVATION</item>
 				<item>:SCALE-OF</item>
 				<item>LR:DATA-TYPES:ELEVATION</item>
+			</element>
+			<element variable="kTAG_TYPE">
+				<item>:ENUM</item>
+			</element>
+			<element variable="kTAG_TYPE">
+				<item>:INT</item>
 			</element>
 		</tag>
 		<edges>
@@ -1396,6 +1415,9 @@
 				<item>:SCALE-OF</item>
 				<item>LR:DATA-TYPES:LATDMS</item>
 			</element>
+			<element variable="kTAG_TYPE">
+				<item>:TEXT</item>
+			</element>
 		</tag>
 		<edges>
 			<edge>
@@ -1431,6 +1453,9 @@
 				<item>LR:LRSLATDD</item>
 				<item>:SCALE-OF</item>
 				<item>LR:DATA-TYPES:LATDEC</item>
+			</element>
+			<element variable="kTAG_TYPE">
+				<item>:FLOAT</item>
 			</element>
 		</tag>
 		<edges>
@@ -1468,6 +1493,9 @@
 				<item>:SCALE-OF</item>
 				<item>LR:DATA-TYPES:LONDMS</item>
 			</element>
+			<element variable="kTAG_TYPE">
+				<item>:TEXT</item>
+			</element>
 		</tag>
 		<edges>
 			<edge>
@@ -1503,6 +1531,9 @@
 				<item>LR:LRSLONGITUDEDD</item>
 				<item>:SCALE-OF</item>
 				<item>LR:DATA-TYPES:LONDEC</item>
+			</element>
+			<element variable="kTAG_TYPE">
+				<item>:FLOAT</item>
 			</element>
 		</tag>
 		<edges>
@@ -1572,6 +1603,9 @@
 				<item>LR:LRSGPS</item>
 				<item>:SCALE-OF</item>
 				<item>LR:DATA-TYPES:YN</item>
+			</element>
+			<element variable="kTAG_TYPE">
+				<item>:ENUM</item>
 			</element>
 		</tag>
 		<edges>
@@ -1644,6 +1678,9 @@
 				<item>LR:LRSELEVATION</item>
 				<item>:SCALE-OF</item>
 				<item>LR:DATA-TYPES:ELEVATION</item>
+			</element>
+			<element variable="kTAG_TYPE">
+				<item>:INT</item>
 			</element>
 		</tag>
 		<edges>
@@ -1866,6 +1903,9 @@
 				<item>LR:FIR</item>
 				<item>:SCALE-OF</item>
 				<item>LR:DATA-TYPES:YN</item>
+			</element>
+			<element variable="kTAG_TYPE">
+				<item>:ENUM</item>
 			</element>
 		</tag>
 		<edges>
@@ -4583,6 +4623,9 @@
 				<item>:SCALE-OF</item>
 				<item>LR:DATA-TYPES:YN</item>
 			</element>
+			<element variable="kTAG_TYPE">
+				<item>:ENUM</item>
+			</element>
 		</tag>
 		<edges>
 			<edge>
@@ -4687,6 +4730,9 @@
 				<item>:SCALE-OF</item>
 				<item>LR:DATA-TYPES:YN</item>
 			</element>
+			<element variable="kTAG_TYPE">
+				<item>:ENUM</item>
+			</element>
 		</tag>
 		<edges>
 			<edge>
@@ -4720,6 +4766,9 @@
 				<item>LR:EXDUPL</item>
 				<item>:SCALE-OF</item>
 				<item>FAO-INSTITUTES:INSTCODE</item>
+			</element>
+			<element variable="kTAG_TYPE">
+				<item>:TEXT</item>
 			</element>
 		</tag>
 		<edges>
