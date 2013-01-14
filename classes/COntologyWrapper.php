@@ -990,6 +990,12 @@ class COntologyWrapper extends CDataWrapper
 				$this->offsetSet( kAPI_RESPONSE, $results );
 		
 		} // Handle vertex.
+		
+		//
+		// Handle language.
+		//
+		if( array_key_exists( kAPI_LANGUAGE, $_REQUEST ) )
+			$this->_FilterLanguages( $_REQUEST[ kAPI_LANGUAGE ] );
 	
 	} // _Handle_GetVertex.
 
@@ -2242,6 +2248,138 @@ class COntologyWrapper extends CDataWrapper
 		return NULL;																// ==>
 	
 	} // _GetVertexRelations.
+
+	 
+
+/*=======================================================================================
+ *																						*
+ *							PROTECTED LANGUAGE FILTER UTILITIES							*
+ *																						*
+ *======================================================================================*/
+
+
+	 
+	/*===================================================================================
+	 *	_FilterLanguages																*
+	 *==================================================================================*/
+
+	/**
+	 * Select language elements.
+	 *
+	 * This method can be used to restrict the language string attributes, those of type
+	 * {@link kTYPE_LSTRING}, to the list of provided languages.
+	 *
+	 * The method will operate exclusively on the current object's response,
+	 * {@link kAPI_RESPONSE}, property: the method will iterate the term and node sections
+	 * of the response and consider only those attributes od type {@link kTYPE_LSTRING}, if
+	 * at least one language matches, the method will select only the matching languages; if
+	 * no language matches, the method will leave the attribute untouched.
+	 *
+	 * @param array				$theLanguages		Languages list.
+	 *
+	 * @access protected
+	 */
+	protected function _FilterLanguages( $theLanguages )
+	{
+		//
+		// Check parameter.
+		//
+		if( is_array( $theLanguages ) )
+		{
+			//
+			// Save response.
+			//
+			$response = $this->offsetGet( kAPI_RESPONSE );
+			if( is_array( $response ) )
+			{
+				//
+				// Init local storage.
+				//
+				$tag_refs = & $response[ kAPI_COLLECTION_TAG ];
+				
+				//
+				// Iterate result sections.
+				//
+				$sections = array( kAPI_COLLECTION_TERM, kAPI_COLLECTION_NODE );
+				foreach( $sections as $section )
+				{
+					//
+					// Check section.
+					//
+					if( array_key_exists( $section, $response ) )
+					{
+						//
+						// Reference section.
+						//
+						$refS = & $response[ $section ];
+						
+						//
+						// Iterate section elements.
+						//
+						$keys = array_keys( $response[ $section ] );
+						foreach( $keys as $key )
+						{
+							//
+							// Reference element.
+							//
+							$refE = & $refS[ $key ];
+							
+							//
+							// Iterate element tags.
+							//
+							$tags = array_intersect( array_keys( $refE ),
+													 array_keys( $tag_refs ) );
+							foreach( $tags as $tag )
+							{
+								//
+								// Check tag type.
+								//
+								if( array_key_exists( kTAG_TYPE,
+													  $tag_refs[ $tag ] )
+								 && in_array( kTYPE_LSTRING,
+								 			  $tag_refs[ $tag ][ kTAG_TYPE ] ) )
+								{
+									//
+									// Get intersecting languages.
+									//
+									$langs = array_intersect( $_REQUEST[ kAPI_LANGUAGE ],
+															  array_keys( $refE[ $tag ] ) );
+									if( count( $langs ) )
+									{
+										//
+										// Iterate matching languages.
+										//
+										$new = Array();
+										foreach( $langs as $lang )
+											$new[ $lang ] = $refE[ $tag ][ $lang ];
+									
+										//
+										// Replace attribute.
+										//
+										$refE[ $tag ] = $new;
+									
+									} // Languages match.
+								
+								} // Tag is language string.
+							
+							} // Iterating element tags.
+						
+						} // Iterating section elements.
+			
+					} // Section exists.
+		
+				} // Iterating sections.
+			
+				//
+				// Update response.
+				//
+				$this->offsetSet( kAPI_RESPONSE, $response );
+			
+			} // Got a response.
+			
+		} // Parameter is an array.
+	
+	} // _FilterLanguages.
 
 	 
 

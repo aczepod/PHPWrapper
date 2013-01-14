@@ -1464,6 +1464,59 @@ try
 	echo( kSTYLE_ROW_POS );
 	echo( kSTYLE_TABLE_POS );
 	echo( '<hr>' );
+
+	echo( '<h4>Test GetVertex relationships with language in JSON</h4>' );
+	echo( '<h5>:INT</h5>' );
+	//
+	// Test GetVertex relationships with language in JSON.
+	//
+	$query = array
+	(
+		kOPERATOR_AND => array
+		(
+			array
+			(
+				kOFFSET_QUERY_SUBJECT => kTAG_GID,
+				kOFFSET_QUERY_OPERATOR => kOPERATOR_EQUAL,
+				kOFFSET_QUERY_TYPE => kTYPE_STRING,
+				kOFFSET_QUERY_DATA => 'ISO:3166:1:alpha-3'
+			)
+		)
+	);
+	$fields = array( kTAG_GID, kTAG_LABEL, kTAG_DESCRIPTION. kTAG_DEFINITION );
+	$languages = array( 'en', 'it', 'ru', 'ar' );
+	$params = array( (kAPI_FORMAT.'='.kTYPE_JSON),
+					 (kAPI_OPERATION.'='.kAPI_OP_GetVertex),
+					 (kAPI_LOG_REQUEST.'='.urlencode(JsonEncode(TRUE))),
+					 (kAPI_PAGE_START.'='.urlencode(JsonEncode(0))),
+					 (kAPI_PAGE_LIMIT.'='.urlencode(JsonEncode(5))),
+					 (kAPI_DATABASE.'='.urlencode(JsonEncode('ONTOLOGY'))),
+					 (kAPI_QUERY.'='.urlencode(JsonEncode( $query ))),
+					 (kAPI_SELECT.'='.urlencode(JsonEncode( $fields ))),
+					 (kAPI_RELATION.'='.urlencode(JsonEncode( kAPI_RELATION_IN ))),
+					 (kAPI_LANGUAGE.'='.urlencode(JsonEncode( $languages ))),
+					 (kAPI_STAMP_REQUEST.'='.gettimeofday( true )) );
+	//
+	// Display.
+	//
+	echo( kSTYLE_TABLE_PRE );
+	echo( kSTYLE_ROW_PRE );
+	echo( kSTYLE_HEAD_PRE.'URL:'.kSTYLE_HEAD_POS );
+	$request = $url.'?'.implode( '&', $params );
+	echo( kSTYLE_DATA_PRE.htmlspecialchars( $request ).kSTYLE_DATA_POS );
+	echo( kSTYLE_ROW_POS );
+	echo( kSTYLE_ROW_PRE );
+	echo( kSTYLE_HEAD_PRE.'Response:'.kSTYLE_HEAD_POS );
+	$response = file_get_contents( $request );
+	echo( kSTYLE_DATA_PRE.$response.kSTYLE_DATA_POS );
+	echo( kSTYLE_ROW_POS );
+	echo( kSTYLE_ROW_PRE );
+	echo( kSTYLE_HEAD_PRE.'Decoded:'.kSTYLE_HEAD_POS );
+	$decoded = JsonDecode( $response );
+	echo( kSTYLE_DATA_PRE.'<pre>' ); print_r( $decoded ); echo( '</pre>'.kSTYLE_DATA_POS );
+	echo( kSTYLE_ROW_POS );
+	echo( kSTYLE_TABLE_POS );
+	echo( '<hr>' );
 	
 	echo( '<h3>DONE</h3>' );
 }
