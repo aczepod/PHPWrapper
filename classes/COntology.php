@@ -1586,6 +1586,12 @@ class COntology extends CConnection
 				$tag->PushItem( $node );
 			
 			//
+			// Handle data type.
+			//
+			if( ! $tag->offsetExists( kTAG_TYPE ) )
+				$tag->offsetSet( kTAG_TYPE, $node->offsetGet( kTAG_TYPE ) );
+			
+			//
 			// Save object.
 			//
 			$tag->Insert( $theDatabase );
