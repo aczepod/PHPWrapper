@@ -220,6 +220,13 @@ class COntologyTag extends CTag
 						if( $theValue->offsetExists( kTAG_TERM ) )
 						{
 							//
+							// Set data type.
+							//
+							if( $theValue->offsetExists( kTAG_TYPE ) )
+								$this->offsetSet(
+									kTAG_TYPE, $theValue->offsetGet( kTAG_TYPE ) );
+					
+							//
 							// Check first.
 							//
 							if( ! $count )
@@ -870,6 +877,47 @@ class COntologyTag extends CTag
 
 
 	 
+	/*===================================================================================
+	 *	_PrecommitValidate																*
+	 *==================================================================================*/
+
+	/**
+	 * <h4>Validate the object before committing</h4>
+	 *
+	 * In this class we check if the type is set, if that is not the case, the method will
+	 * raise an exception.
+	 *
+	 * @param reference			   &$theConnection		Server, database or container.
+	 * @param reference			   &$theModifiers		Commit options.
+	 *
+	 * @access protected
+	 * @return mixed
+	 *
+	 * @throws Exception
+	 *
+	 * @see kTAG_TYPE
+	 */
+	protected function _PrecommitValidate( &$theConnection, &$theModifiers )
+	{
+		//
+		// Call parent method.
+		//
+		parent::_PrecommitValidate( $theConnection, $theModifiers );
+	
+		//
+		// Check type.
+		//
+		if( ! $this->offsetExists( kTAG_TYPE ) )
+			throw new Exception
+				( "Unable to commit object: "
+				 ."the tag is missing its data type",
+				  kERROR_STATE );												// !@! ==>
+		
+		return NULL;																// ==>
+		
+	} // _PrecommitValidate.
+		
+
 	/*===================================================================================
 	 *	_PrecommitIdentify																*
 	 *==================================================================================*/

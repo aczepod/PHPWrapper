@@ -7,12 +7,18 @@
     	<element variable="kTAG_PATH">
     		<item>:LID</item>
     	</element>
+    	<element variable="kTAG_TYPE">
+    		<item>:TEXT</item>
+    	</element>
     </tag>
      
     <!-- kTERM_GID -->
 	<tag>
     	<element variable="kTAG_PATH">
     		<item>:GID</item>
+    	</element>
+    	<element variable="kTAG_TYPE">
+    		<item>:TEXT</item>
     	</element>
     </tag>
      
@@ -21,12 +27,19 @@
     	<element variable="kTAG_PATH">
     		<item>:UID</item>
     	</element>
+    	<element variable="kTAG_TYPE">
+    		<item>:BINARY</item>
+    	</element>
     </tag>
      
     <!-- kTERM_SYNONYMS -->
 	<tag>
     	<element variable="kTAG_PATH">
     		<item>:SYNONYMS</item>
+    	</element>
+    	<element variable="kTAG_TYPE">
+    		<item>:TEXT</item>
+    		<item>:ARRAY</item>
     	</element>
     </tag>
      
@@ -37,12 +50,19 @@
     	<element variable="kTAG_PATH">
     		<item>:CATEGORY</item>
     	</element>
-    </tag>
+     	<element variable="kTAG_TYPE">
+    		<item>:TEXT</item>
+    		<item>:ARRAY</item>
+    	</element>
+   </tag>
      
     <!-- kTERM_KIND -->
 	<tag>
     	<element variable="kTAG_PATH">
     		<item>:KIND</item>
+    	</element>
+    	<element variable="kTAG_TYPE">
+    		<item>:SET</item>
     	</element>
     </tag>
      
@@ -51,6 +71,9 @@
     	<element variable="kTAG_PATH">
     		<item>:TYPE</item>
     	</element>
+    	<element variable="kTAG_TYPE">
+    		<item>:SET</item>
+    	</element>
     </tag>
      
     <!-- kTERM_CLASS -->
@@ -58,12 +81,18 @@
     	<element variable="kTAG_PATH">
     		<item>:CLASS</item>
     	</element>
+    	<element variable="kTAG_TYPE">
+    		<item>:TEXT</item>
+    	</element>
     </tag>
      
     <!-- kTERM_NAMESPACE -->
 	<tag>
     	<element variable="kTAG_PATH">
     		<item>:NAMESPACE</item>
+    	</element>
+    	<element variable="kTAG_TYPE">
+    		<item>:BINARY</item>
     	</element>
     </tag>
      
@@ -74,12 +103,18 @@
     	<element variable="kTAG_PATH">
     		<item>:LABEL</item>
     	</element>
+    	<element variable="kTAG_TYPE">
+    		<item>:LSTRING</item>
+    	</element>
     </tag>
      
     <!-- kTERM_DEFINITION -->
 	<tag>
     	<element variable="kTAG_PATH">
     		<item>:DEFINITION</item>
+    	</element>
+    	<element variable="kTAG_TYPE">
+    		<item>:LSTRING</item>
     	</element>
     </tag>
      
@@ -88,6 +123,9 @@
     	<element variable="kTAG_PATH">
     		<item>:DESCRIPTION</item>
     	</element>
+    	<element variable="kTAG_TYPE">
+    		<item>:LSTRING</item>
+    	</element>
     </tag>
      
     <!-- kTERM_NOTES -->
@@ -95,12 +133,19 @@
     	<element variable="kTAG_PATH">
     		<item>:NOTES</item>
     	</element>
+    	<element variable="kTAG_TYPE">
+    		<item>:TEXT</item>
+    	</element>
     </tag>
      
     <!-- kTERM_EXAMPLES -->
 	<tag>
     	<element variable="kTAG_PATH">
     		<item>:EXAMPLES</item>
+    	</element>
+    	<element variable="kTAG_TYPE">
+    		<item>:TEXT</item>
+    		<item>:ARRAY</item>
     	</element>
     </tag>
      
@@ -111,6 +156,10 @@
     	<element variable="kTAG_PATH">
     		<item>:AUTHORS</item>
     	</element>
+    	<element variable="kTAG_TYPE">
+    		<item>:TEXT</item>
+    		<item>:ARRAY</item>
+    	</element>
     </tag>
      
     <!-- kTERM_ACKNOWLEDGMENTS-->
@@ -118,12 +167,20 @@
     	<element variable="kTAG_PATH">
     		<item>:ACKNOWLEDGMENTS</item>
     	</element>
+    	<element variable="kTAG_TYPE">
+    		<item>:TEXT</item>
+    		<item>:ARRAY</item>
+    	</element>
     </tag>
      
     <!-- kTERM_BIBLIOGRAPHY-->
 	<tag>
     	<element variable="kTAG_PATH">
     		<item>:BIBLIOGRAPHY</item>
+    	</element>
+    	<element variable="kTAG_TYPE">
+    		<item>:TEXT</item>
+    		<item>:ARRAY</item>
     	</element>
     </tag>
      
@@ -134,12 +191,18 @@
     	<element variable="kTAG_PATH">
     		<item>:TERM</item>
     	</element>
+    	<element variable="kTAG_TYPE">
+    		<item>:BINARY</item>
+    	</element>
     </tag>
      
     <!-- kTERM_NODE-->
 	<tag>
     	<element variable="kTAG_PATH">
     		<item>:NODE</item>
+    	</element>
+    	<element variable="kTAG_TYPE">
+    		<item>:INT</item>
     	</element>
     </tag>
      
@@ -148,12 +211,18 @@
     	<element variable="kTAG_PATH">
     		<item>:SUBJECT</item>
     	</element>
+    	<element variable="kTAG_TYPE">
+    		<item>:INT</item>
+    	</element>
     </tag>
      
     <!-- kTERM_OBJECT-->
 	<tag>
     	<element variable="kTAG_PATH">
     		<item>:OBJECT</item>
+    	</element>
+    	<element variable="kTAG_TYPE">
+    		<item>:INT</item>
     	</element>
     </tag>
      
@@ -162,12 +231,19 @@
     	<element variable="kTAG_PATH">
     		<item>:PREDICATE</item>
     	</element>
+    	<element variable="kTAG_TYPE">
+    		<item>:BINARY</item>
+    	</element>
     </tag>
      
     <!-- kTERM_PATH-->
 	<tag>
     	<element variable="kTAG_PATH">
     		<item>:PATH</item>
+    	</element>
+    	<element variable="kTAG_TYPE">
+    		<item>:ANY</item>
+    		<item>:ARRAY</item>
     	</element>
     </tag>
      
@@ -178,12 +254,19 @@
     	<element variable="kTAG_PATH">
     		<item>:NAMESPACE-REFS</item>
     	</element>
+    	<element variable="kTAG_TYPE">
+    		<item>:INT</item>
+    	</element>
     </tag>
      
     <!-- kTERM_NODES -->
 	<tag>
     	<element variable="kTAG_PATH">
     		<item>:NODES</item>
+    	</element>
+    	<element variable="kTAG_TYPE">
+    		<item>:INT</item>
+    		<item>:ARRAY</item>
     	</element>
     </tag>
      
@@ -192,12 +275,20 @@
     	<element variable="kTAG_PATH">
     		<item>:EDGES</item>
     	</element>
+    	<element variable="kTAG_TYPE">
+    		<item>:INT</item>
+    		<item>:ARRAY</item>
+    	</element>
     </tag>
      
     <!-- kTERM_FEATURES -->
 	<tag>
     	<element variable="kTAG_PATH">
     		<item>:FEATURES</item>
+    	</element>
+    	<element variable="kTAG_TYPE">
+    		<item>:INT</item>
+    		<item>:ARRAY</item>
     	</element>
     </tag>
      
@@ -206,12 +297,20 @@
     	<element variable="kTAG_PATH">
     		<item>:METHODS</item>
     	</element>
+    	<element variable="kTAG_TYPE">
+    		<item>:INT</item>
+    		<item>:ARRAY</item>
+    	</element>
     </tag>
      
     <!-- kTERM_SCALES -->
 	<tag>
     	<element variable="kTAG_PATH">
     		<item>:SCALES</item>
+    	</element>
+    	<element variable="kTAG_TYPE">
+    		<item>:INT</item>
+    		<item>:ARRAY</item>
     	</element>
     </tag>
     
@@ -222,12 +321,18 @@
     	<element variable="kTAG_PATH">
     		<item>:USER-NAME</item>
     	</element>
+    	<element variable="kTAG_TYPE">
+    		<item>:TEXT</item>
+    	</element>
     </tag>
     
     <!-- kTERM_USER_CODE -->
 	<tag>
     	<element variable="kTAG_PATH">
     		<item>:USER-CODE</item>
+    	</element>
+    	<element variable="kTAG_TYPE">
+    		<item>:TEXT</item>
     	</element>
     </tag>
     
@@ -236,12 +341,18 @@
     	<element variable="kTAG_PATH">
     		<item>:USER-PASS</item>
     	</element>
+    	<element variable="kTAG_TYPE">
+    		<item>:TEXT</item>
+    	</element>
     </tag>
     
     <!-- kTERM_USER_MAIL -->
 	<tag>
     	<element variable="kTAG_PATH">
     		<item>:USER-MAIL</item>
+    	</element>
+    	<element variable="kTAG_TYPE">
+    		<item>:TEXT</item>
     	</element>
     </tag>
     
@@ -250,12 +361,20 @@
     	<element variable="kTAG_PATH">
     		<item>:USER-ROLE</item>
     	</element>
+    	<element variable="kTAG_TYPE">
+    		<item>:TEXT</item>
+    		<item>:ARRAY</item>
+    	</element>
     </tag>
     
     <!-- kTERM_USER_PROFILE -->
 	<tag>
     	<element variable="kTAG_PATH">
     		<item>:USER-PROFILE</item>
+    	</element>
+    	<element variable="kTAG_TYPE">
+    		<item>:TEXT</item>
+    		<item>:ARRAY</item>
     	</element>
     </tag>
     
@@ -264,12 +383,19 @@
     	<element variable="kTAG_PATH">
     		<item>:USER-MANAGER</item>
     	</element>
+    	<element variable="kTAG_TYPE">
+    		<item>:TEXT</item>
+    	</element>
     </tag>
     
     <!-- kTERM_USER_DOMAIN -->
 	<tag>
     	<element variable="kTAG_PATH">
     		<item>:USER-DOMAIN</item>
+    	</element>
+    	<element variable="kTAG_TYPE">
+    		<item>:TEXT</item>
+    		<item>:ARRAY</item>
     	</element>
     </tag>
 </tags>

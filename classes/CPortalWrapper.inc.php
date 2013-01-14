@@ -86,5 +86,24 @@ define( "kAPI_CREDENTIALS_PASS",				':WS:CREDENTIALS-PASS' );
  */
 define( "kAPI_OP_Login",						'WS:OP:Login' );
 
+/**
+ * Create user.
+ *
+ * This is the tag that represents the user creation web-service operation, which will
+ * create a new user.
+ *
+ * The service expects the following parameters:
+ *
+ * <ul>
+ *	<li><i>{@link kAPI_FORMAT}</i>: This parameter is required to indicate how to
+ *		encode the response.
+ *	<li><i>{@link kAPI_DATABASE}</i>: This parameter is required to indicate the working
+ *		database.
+ *	<li><i>{@link kAPI_OBJECT}</i>: This parameter is required and contains an array
+ *		corresponding to the new user attributes.
+ * </ul>
+ */
+define( "kAPI_OP_NewUser",						'WS:OP:NewUser' );
+
 
 ?>

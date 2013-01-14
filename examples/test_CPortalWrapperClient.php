@@ -1040,6 +1040,47 @@ try
 	echo( kSTYLE_TABLE_POS );
 	echo( '<hr>' );
 	echo( '<hr>' );
+
+	echo( '<h4>Test successful new user</h4>' );
+	$user = Array();
+	$user[ kTAG_USER_NAME ] = "New user";
+	$user[ kTAG_USER_CODE ] = "NEW";
+	$user[ kTAG_USER_PASS ] = "password";
+	$user[ kTAG_USER_MAIL ] = "new@me.com";
+	$user[ kTAG_USER_ROLE ] = "ROLE";
+	$user[ kTAG_USER_PROFILE ] = array( 'PROFILE1', 'PROFILE2', 'PROFILE1' );
+	$user[ kTAG_USER_DOMAIN ] = "TEST";
+	$user[ kTAG_USER_MANAGER ] = "USER";
+	//
+	// Instantiate.
+	//
+	echo( '<i>$test = new CPortalWrapperClient( $url );</i><br>' );
+	$test = new CPortalWrapperClient( $url );
+	echo( '<i>$test->Operation( kAPI_OP_NewUser );</i><br>' );
+	$test->Operation( kAPI_OP_NewUser );
+	echo( '<i>$test->Format( kTYPE_JSON );</i><br>' );
+	$test->Format( kTYPE_JSON );
+	echo( '<i>$test->Database( "TEST" );</i><br>' );
+	$test->Database( "TEST" );
+	echo( '<i>$test->Object( $user );</i><br>' );
+	$test->Object( $user );
+	echo( '<i>$decoded = $test->Execute( "POST" );</i><br>' );
+	$decoded = $test->Execute( "POST" );
+	//
+	// Display.
+	//
+	echo( kSTYLE_TABLE_PRE );
+	echo( kSTYLE_ROW_PRE );
+	echo( kSTYLE_HEAD_PRE.'Client:'.kSTYLE_HEAD_POS );
+	echo( kSTYLE_DATA_PRE.'<pre>' ); print_r( $test ); echo( '</pre>'.kSTYLE_DATA_POS );
+	echo( kSTYLE_ROW_POS );
+	echo( kSTYLE_ROW_PRE );
+	echo( kSTYLE_HEAD_PRE.'Decoded:'.kSTYLE_HEAD_POS );
+	echo( kSTYLE_DATA_PRE.'<pre>' ); print_r( $decoded ); echo( '</pre>'.kSTYLE_DATA_POS );
+	echo( kSTYLE_ROW_POS );
+	echo( kSTYLE_TABLE_POS );
+	echo( '<hr>' );
+	echo( '<hr>' );
 	
 	echo( '<h3>DONE</h3>' );
 }

@@ -67,8 +67,8 @@ define( 'kDEBUG_PARENT', FALSE );
 //
 // Init local storage.
 //
-//$url = 'http://localhost/mywrapper/MongoPortalWrapper.php';
-$url = 'http://wrappers.grinfo.net/TIP/Wrapper.php';
+$url = 'http://localhost/mywrapper/MongoPortalWrapper.php';
+//$url = 'http://wrappers.grinfo.net/TIP/Wrapper.php';
 
 //
 // TRY BLOCK.
@@ -1478,6 +1478,126 @@ try
 					 (kAPI_DATABASE.'='.urlencode(JsonEncode('TEST'))),
 					 (kAPI_STAMP_REQUEST.'='.urlencode(JsonEncode(gettimeofday( true )))),
 					 (kAPI_CREDENTIALS.'='.urlencode(JsonEncode($credentials))) );
+	$request = $url.'?'.implode( '&', $params );
+	$response = file_get_contents( $request );
+	//
+	// Display.
+	//
+	echo( kSTYLE_TABLE_PRE );
+	echo( kSTYLE_ROW_PRE );
+	echo( kSTYLE_HEAD_PRE.'URL:'.kSTYLE_HEAD_POS );
+	echo( kSTYLE_DATA_PRE.htmlspecialchars( $request ).kSTYLE_DATA_POS );
+	echo( kSTYLE_ROW_POS );
+	echo( kSTYLE_ROW_PRE );
+	echo( kSTYLE_HEAD_PRE.'Response:'.kSTYLE_HEAD_POS );
+	echo( kSTYLE_DATA_PRE.$response.kSTYLE_DATA_POS );
+	echo( kSTYLE_ROW_POS );
+	echo( kSTYLE_ROW_PRE );
+	echo( kSTYLE_HEAD_PRE.'Decoded:'.kSTYLE_HEAD_POS );
+	echo( kSTYLE_DATA_PRE.'<pre>' ); print_r( JsonDecode( $response ) ); echo( '</pre>'.kSTYLE_DATA_POS );
+	echo( kSTYLE_ROW_POS );
+	echo( kSTYLE_TABLE_POS );
+	echo( '<hr>' );
+
+	echo( '<h4>Test new user with wrong manager</h4>' );
+	//
+	// Test new user with wrong manager.
+	//
+	$user = Array();
+	$user[ kTAG_USER_NAME ] = "New user";
+	$user[ kTAG_USER_CODE ] = "NEW";
+	$user[ kTAG_USER_PASS ] = "password";
+	$user[ kTAG_USER_MAIL ] = "new@me.com";
+	$user[ kTAG_USER_ROLE ] = "ROLE";
+	$user[ kTAG_USER_PROFILE ] = array( 'PROFILE1', 'PROFILE2', 'PROFILE1' );
+	$user[ kTAG_USER_DOMAIN ] = "TEST";
+	$user[ kTAG_USER_MANAGER ] = "PIPPO";
+	$params = array( (kAPI_FORMAT.'='.kTYPE_JSON),
+					 (kAPI_OPERATION.'='.kAPI_OP_NewUser),
+					 (kAPI_LOG_REQUEST.'='.urlencode(JsonEncode(TRUE))),
+					 (kAPI_DATABASE.'='.urlencode(JsonEncode('TEST'))),
+					 (kAPI_STAMP_REQUEST.'='.urlencode(JsonEncode(gettimeofday( true )))),
+					 (kAPI_OBJECT.'='.urlencode(JsonEncode($user))) );
+	$request = $url.'?'.implode( '&', $params );
+	$response = file_get_contents( $request );
+	//
+	// Display.
+	//
+	echo( kSTYLE_TABLE_PRE );
+	echo( kSTYLE_ROW_PRE );
+	echo( kSTYLE_HEAD_PRE.'URL:'.kSTYLE_HEAD_POS );
+	echo( kSTYLE_DATA_PRE.htmlspecialchars( $request ).kSTYLE_DATA_POS );
+	echo( kSTYLE_ROW_POS );
+	echo( kSTYLE_ROW_PRE );
+	echo( kSTYLE_HEAD_PRE.'Response:'.kSTYLE_HEAD_POS );
+	echo( kSTYLE_DATA_PRE.$response.kSTYLE_DATA_POS );
+	echo( kSTYLE_ROW_POS );
+	echo( kSTYLE_ROW_PRE );
+	echo( kSTYLE_HEAD_PRE.'Decoded:'.kSTYLE_HEAD_POS );
+	echo( kSTYLE_DATA_PRE.'<pre>' ); print_r( JsonDecode( $response ) ); echo( '</pre>'.kSTYLE_DATA_POS );
+	echo( kSTYLE_ROW_POS );
+	echo( kSTYLE_TABLE_POS );
+	echo( '<hr>' );
+
+	echo( '<h4>Test successful new user</h4>' );
+	//
+	// Test successful new user.
+	//
+	$user = Array();
+	$user[ kTAG_USER_NAME ] = "New user";
+	$user[ kTAG_USER_CODE ] = "NEW";
+	$user[ kTAG_USER_PASS ] = "password";
+	$user[ kTAG_USER_MAIL ] = "new@me.com";
+	$user[ kTAG_USER_ROLE ] = "ROLE";
+	$user[ kTAG_USER_PROFILE ] = array( 'PROFILE1', 'PROFILE2', 'PROFILE1' );
+	$user[ kTAG_USER_DOMAIN ] = "TEST";
+	$user[ kTAG_USER_MANAGER ] = "USER";
+	$params = array( (kAPI_FORMAT.'='.kTYPE_JSON),
+					 (kAPI_OPERATION.'='.kAPI_OP_NewUser),
+					 (kAPI_LOG_REQUEST.'='.urlencode(JsonEncode(TRUE))),
+					 (kAPI_DATABASE.'='.urlencode(JsonEncode('TEST'))),
+					 (kAPI_STAMP_REQUEST.'='.urlencode(JsonEncode(gettimeofday( true )))),
+					 (kAPI_OBJECT.'='.urlencode(JsonEncode($user))) );
+	$request = $url.'?'.implode( '&', $params );
+	$response = file_get_contents( $request );
+	//
+	// Display.
+	//
+	echo( kSTYLE_TABLE_PRE );
+	echo( kSTYLE_ROW_PRE );
+	echo( kSTYLE_HEAD_PRE.'URL:'.kSTYLE_HEAD_POS );
+	echo( kSTYLE_DATA_PRE.htmlspecialchars( $request ).kSTYLE_DATA_POS );
+	echo( kSTYLE_ROW_POS );
+	echo( kSTYLE_ROW_PRE );
+	echo( kSTYLE_HEAD_PRE.'Response:'.kSTYLE_HEAD_POS );
+	echo( kSTYLE_DATA_PRE.$response.kSTYLE_DATA_POS );
+	echo( kSTYLE_ROW_POS );
+	echo( kSTYLE_ROW_PRE );
+	echo( kSTYLE_HEAD_PRE.'Decoded:'.kSTYLE_HEAD_POS );
+	echo( kSTYLE_DATA_PRE.'<pre>' ); print_r( JsonDecode( $response ) ); echo( '</pre>'.kSTYLE_DATA_POS );
+	echo( kSTYLE_ROW_POS );
+	echo( kSTYLE_TABLE_POS );
+	echo( '<hr>' );
+
+	echo( '<h4>Test duplicate user</h4>' );
+	//
+	// Test duplicate user.
+	//
+	$user = Array();
+	$user[ kTAG_USER_NAME ] = "New user";
+	$user[ kTAG_USER_CODE ] = "NEW";
+	$user[ kTAG_USER_PASS ] = "password";
+	$user[ kTAG_USER_MAIL ] = "new@me.com";
+	$user[ kTAG_USER_ROLE ] = "ROLE";
+	$user[ kTAG_USER_PROFILE ] = array( 'PROFILE1', 'PROFILE2', 'PROFILE1' );
+	$user[ kTAG_USER_DOMAIN ] = "TEST";
+	$user[ kTAG_USER_MANAGER ] = "USER";
+	$params = array( (kAPI_FORMAT.'='.kTYPE_JSON),
+					 (kAPI_OPERATION.'='.kAPI_OP_NewUser),
+					 (kAPI_LOG_REQUEST.'='.urlencode(JsonEncode(TRUE))),
+					 (kAPI_DATABASE.'='.urlencode(JsonEncode('TEST'))),
+					 (kAPI_STAMP_REQUEST.'='.urlencode(JsonEncode(gettimeofday( true )))),
+					 (kAPI_OBJECT.'='.urlencode(JsonEncode($user))) );
 	$request = $url.'?'.implode( '&', $params );
 	$response = file_get_contents( $request );
 	//

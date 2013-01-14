@@ -1583,7 +1583,7 @@ class COntology extends CConnection
 			// Use term.
 			//
 			else
-				$tag->PushItem( $term );
+				$tag->PushItem( $node );
 			
 			//
 			// Save object.

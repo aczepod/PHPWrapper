@@ -65,6 +65,16 @@ require_once( kPATH_MYWRAPPER_LIBRARY_CLASS."/CPortalWrapper.php" );
  *			<li><tt>{@link kAPI_CREDENTIALS_PASS}</tt>: User password.
  *		 </ul>
  *	 </ul>
+ *	<li><tt>{@link kAPI_OP_NewUser}</tt>: This service inserts the provided user into the
+ *		database, the service expects the following parameters:
+ *	 <ul>
+ *		<li><i>{@link kAPI_FORMAT}</i>: This parameter is required to indicate how to
+ *			encode the response.
+ *		<li><i>{@link kAPI_DATABASE}</i>: This parameter is required to indicate the working
+ *			database.
+ *		<li><i>{@link kAPI_OBJECT}</i>: This parameter is required and contains an array
+ *			corresponding to the new user attributes.
+ *	 </ul>
  * </ul>
  *
  *	@package	MyWrapper
@@ -120,6 +130,7 @@ class CPortalWrapperClient extends COntologyWrapperClient
 			switch( $theValue )
 			{
 				case kAPI_OP_Login:
+				case kAPI_OP_NewUser:
 					return ManageOffset(
 						$this, kAPI_OPERATION, $theValue, $getOld );				// ==>
 			}
@@ -232,6 +243,33 @@ class CPortalWrapperClient extends COntologyWrapperClient
 				if( ! $this->offsetExists( kAPI_CREDENTIALS ) )
 					throw new Exception
 							( "Unable to run service: missing credentials parameter",
+							  kERROR_STATE );									// !@! ==>
+
+				break;
+			
+			case kAPI_OP_NewUser:
+				//
+				// Database is required.
+				//
+				if( ! $this->offsetExists( kAPI_DATABASE ) )
+					throw new Exception
+							( "Unable to run service: missing database parameter",
+							  kERROR_STATE );									// !@! ==>
+
+				//
+				// Format is required.
+				//
+				if( ! $this->offsetExists( kAPI_FORMAT ) )
+					throw new Exception
+							( "Unable to run service: missing format parameter",
+							  kERROR_STATE );									// !@! ==>
+
+				//
+				// Object are required.
+				//
+				if( ! $this->offsetExists( kAPI_OBJECT ) )
+					throw new Exception
+							( "Unable to run service: missing user attributes parameter",
 							  kERROR_STATE );									// !@! ==>
 
 				break;

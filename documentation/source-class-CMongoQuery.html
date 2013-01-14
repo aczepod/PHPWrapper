@@ -600,7 +600,7 @@
 </span><span id="494" class="l"><a class="l" href="#494">494: </a>                <span class="php-comment">//</span>
 </span><span id="495" class="l"><a class="l" href="#495">495: </a>                <span class="php-keyword1">case</span> kOPERATOR_NULL:
 </span><span id="496" class="l"><a class="l" href="#496">496: </a>                    <span class="php-var">$statement</span>[ <span class="php-var">$subject</span> ]
-</span><span id="497" class="l"><a class="l" href="#497">497: </a>                        = <span class="php-keyword1">array</span>( <span class="php-quote">'$exists'</span> =&gt; ( <span class="php-var">$theCondition</span> != kOPERATOR_NAND ) );
+</span><span id="497" class="l"><a class="l" href="#497">497: </a>                        = <span class="php-keyword1">array</span>( <span class="php-quote">'$exists'</span> =&gt; ( <span class="php-var">$theCondition</span> == kOPERATOR_NAND ) );
 </span><span id="498" class="l"><a class="l" href="#498">498: </a>                    <span class="php-keyword1">break</span>;
 </span><span id="499" class="l"><a class="l" href="#499">499: </a>            
 </span><span id="500" class="l"><a class="l" href="#500">500: </a>                <span class="php-comment">//</span>
@@ -608,7 +608,7 @@
 </span><span id="502" class="l"><a class="l" href="#502">502: </a>                <span class="php-comment">//</span>
 </span><span id="503" class="l"><a class="l" href="#503">503: </a>                <span class="php-keyword1">case</span> kOPERATOR_NOT_NULL:
 </span><span id="504" class="l"><a class="l" href="#504">504: </a>                    <span class="php-var">$statement</span>[ <span class="php-var">$subject</span> ]
-</span><span id="505" class="l"><a class="l" href="#505">505: </a>                        = <span class="php-keyword1">array</span>( <span class="php-quote">'$exists'</span> =&gt; ( <span class="php-var">$theCondition</span> == kOPERATOR_NAND ) );
+</span><span id="505" class="l"><a class="l" href="#505">505: </a>                        = <span class="php-keyword1">array</span>( <span class="php-quote">'$exists'</span> =&gt; ( <span class="php-var">$theCondition</span> != kOPERATOR_NAND ) );
 </span><span id="506" class="l"><a class="l" href="#506">506: </a>                    <span class="php-keyword1">break</span>;
 </span><span id="507" class="l"><a class="l" href="#507">507: </a>            
 </span><span id="508" class="l"><a class="l" href="#508">508: </a>                <span class="php-comment">//</span>

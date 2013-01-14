@@ -494,7 +494,7 @@ class CMongoQuery extends CQuery
 				//
 				case kOPERATOR_NULL:
 					$statement[ $subject ]
-						= array( '$exists' => ( $theCondition != kOPERATOR_NAND ) );
+						= array( '$exists' => ( $theCondition == kOPERATOR_NAND ) );
 					break;
 			
 				//
@@ -502,7 +502,7 @@ class CMongoQuery extends CQuery
 				//
 				case kOPERATOR_NOT_NULL:
 					$statement[ $subject ]
-						= array( '$exists' => ( $theCondition == kOPERATOR_NAND ) );
+						= array( '$exists' => ( $theCondition != kOPERATOR_NAND ) );
 					break;
 			
 				//

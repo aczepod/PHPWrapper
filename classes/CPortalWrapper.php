@@ -69,6 +69,16 @@ require_once( kPATH_MYWRAPPER_LIBRARY_CLASS."/CPortalWrapper.inc.php" );
  *				Note that these parameters may grow in derived classes, this represents the
  *				bare minimum.
  *		 </ul>
+ *		<li><i>{@link kAPI_OP_NewUser}</i>: <i>New user</i>, this operation will create a
+ *			new user, it expects a set of attributes representing the new user's properties.
+ *		 <ul>
+ *			<li><i>{@link kAPI_FORMAT}</i>: This parameter is required to indicate how to
+ *				encode the response.
+ *			<li><i>{@link kAPI_DATABASE}</i>: This parameter is required to indicate the
+ *				working database.
+ *			<li><i>{@link kAPI_OBJECT}</i>: This parameter should contain the attributes of
+ *				the new user.
+ *		 </ul>
  *	 </ul>
  * </ul>
  *
@@ -178,6 +188,7 @@ class CPortalWrapper extends COntologyWrapper
 	 * @access protected
 	 *
 	 * @uses _ValidateCredentials()
+	 * @uses _ValidateNewUser()
 	 */
 	protected function _ValidateRequest()
 	{
@@ -190,6 +201,7 @@ class CPortalWrapper extends COntologyWrapper
 		// Validate parameters.
 		//
 		$this->_ValidateCredentials();
+		$this->_ValidateNewUser();
 	
 	} // _ValidateRequest.
 
@@ -250,11 +262,9 @@ class CPortalWrapper extends COntologyWrapper
 	 * We overload this method to perform the following customisations:
 	 *
 	 * <ul>
-	 *	<li><tt>{@link kAPI_OP_GetRootsByKind}</tt>: This operation requires that the page
-	 *		limits be set, only a defined number of records should be returned by a service: if the
-	 *		{@link kAPI_PAGE_LIMIT} parameter was not provided, this method will set it to
-	 *		{@link kDEFAULT_LIMIT}.
-	 *	<li><tt>{@link kAPI_OP_GetVertex}</tt>: Same as above.
+	 *	<li><tt>{@link kAPI_OP_Login}</tt>: This operation implies that the container be the
+	 *		default users container.
+	 *	<li><tt>{@link kAPI_OP_NewUser}</tt>: Same as above.
 	 * </ul>
 	 *
 	 * @access protected
@@ -274,6 +284,7 @@ class CPortalWrapper extends COntologyWrapper
 		switch( $_REQUEST[ kAPI_OPERATION ] )
 		{
 			case kAPI_OP_Login:
+			case kAPI_OP_NewUser:
 				//
 				// Set users container.
 				//
@@ -423,6 +434,49 @@ class CPortalWrapper extends COntologyWrapper
 				
 				break;
 			
+			case kAPI_OP_NewUser:
+				//
+				// Check for user object.
+				//
+				if( ! array_key_exists( kAPI_OBJECT, $_REQUEST ) )
+					throw new CException
+						( "Missing user attributes parameter",
+						  kERROR_MISSING,
+						  kSTATUS_ERROR,
+						  array( 'Operation' => $parameter ) );					// !@! ==>
+					
+				//
+				// Check for database.
+				//
+				if( ! array_key_exists( kAPI_DATABASE, $_REQUEST ) )
+					throw new CException
+						( "Missing database parameter",
+						  kERROR_MISSING,
+						  kSTATUS_ERROR,
+						  array( 'Operation' => $parameter ) );					// !@! ==>
+					
+				//
+				// Check for container.
+				//
+				if( ! array_key_exists( kAPI_CONTAINER, $_REQUEST ) )
+					throw new CException
+						( "Missing container parameter",
+						  kERROR_MISSING,
+						  kSTATUS_ERROR,
+						  array( 'Operation' => $parameter ) );					// !@! ==>
+					
+				//
+				// Check for format.
+				//
+				if( ! array_key_exists( kAPI_FORMAT, $_REQUEST ) )
+					throw new CException
+						( "Missing format parameter",
+						  kERROR_MISSING,
+						  kSTATUS_ERROR,
+						  array( 'Operation' => $parameter ) );					// !@! ==>
+				
+				break;
+			
 			//
 			// Handle unknown operation.
 			//
@@ -457,7 +511,7 @@ class CPortalWrapper extends COntologyWrapper
 	protected function _ValidateCredentials()
 	{
 		//
-		// handle credentials.
+		// Handle credentials.
 		//
 		if( array_key_exists( kAPI_CREDENTIALS, $_REQUEST ) )
 		{
@@ -497,9 +551,105 @@ class CPortalWrapper extends COntologyWrapper
 					  array( 'Type'
 						=> gettype( $_REQUEST[ kAPI_CREDENTIALS ] ) ) );		// !@! ==>
 		
-		} // provided credentials.
+		} // Provided credentials.
 	
 	} // _ValidateCredentials.
+
+	 
+	/*===================================================================================
+	 *	_ValidateNewUser																*
+	 *==================================================================================*/
+
+	/**
+	 * Validate new user.
+	 *
+	 * The duty of this method is to validate the provided user attributes, found in the
+	 * {@link kAPI_OBJECT} parameter, the method will do so by creating a {@link CUser}
+	 * object and adding the provided attributes to it.
+	 *
+	 * @access protected
+	 *
+	 * @see kAPI_OBJECT
+	 */
+	protected function _ValidateNewUser()
+	{
+		//
+		// Handle user attributes.
+		//
+		if( array_key_exists( kAPI_OBJECT, $_REQUEST ) )
+		{
+			//
+			// Create new user.
+			//
+			$user = new CUser();
+		
+			//
+			// Iterate attributes.
+			//
+			foreach( $_REQUEST[ kAPI_OBJECT ] as $tag => $value )
+			{
+				//
+				// Parse known tags.
+				//
+				switch( $tag )
+				{
+					case kTAG_USER_NAME:
+						$user->Name( $value );
+						break;
+			
+					case kTAG_USER_CODE:
+						$user->Code( $value );
+						break;
+			
+					case kTAG_USER_PASS:
+						$user->Pass( $value );
+						break;
+			
+					case kTAG_USER_MAIL:
+						$user->Mail( $value );
+						break;
+			
+					case kTAG_USER_ROLE:
+						if( ! is_array( $value ) )
+							$value = array( $value );
+						foreach( $value as $item )
+							$user->Role( $item, TRUE );
+						break;
+			
+					case kTAG_USER_PROFILE:
+						if( ! is_array( $value ) )
+							$value = array( $value );
+						foreach( $value as $item )
+							$user->Profile( $item, TRUE );
+						break;
+			
+					case kTAG_USER_DOMAIN:
+						if( ! is_array( $value ) )
+							$value = array( $value );
+						foreach( $value as $item )
+							$user->Domain( $item, TRUE );
+						break;
+			
+					case kTAG_USER_MANAGER:
+						$user->Manager( $value );
+						break;
+				
+					default:
+						$user[ $tag ] = $value;
+						break;
+			
+				} // Parsed attribute tag.
+		
+			} // Iterating user attributes.
+		
+			//
+			// Save user.
+			//
+			$_REQUEST[ kAPI_OBJECT ] = $user;
+		
+		} // Provided user attributes.
+	
+	} // _ValidateNewUser.
 
 		
 
@@ -538,6 +688,10 @@ class CPortalWrapper extends COntologyWrapper
 					$this->_Handle_Login();
 					break;
 	
+				case kAPI_OP_NewUser:
+					$this->_Handle_NewUser();
+					break;
+	
 				default:
 					parent::_HandleRequest();
 					break;
@@ -573,6 +727,12 @@ class CPortalWrapper extends COntologyWrapper
 		//
 		$theList[ kAPI_OP_Login ]
 			= 'User login: returns the user record upon successful login.';
+
+		//
+		// Add kAPI_OP_Login.
+		//
+		$theList[ kAPI_OP_NewUser ]
+			= 'New user: creates a new user with the provided properties.';
 	
 	} // _Handle_ListOp.
 
@@ -674,6 +834,49 @@ class CPortalWrapper extends COntologyWrapper
 		} // Object not found.
 	
 	} // _Handle_Login.
+
+	 
+	/*===================================================================================
+	 *	_Handle_NewUser																	*
+	 *==================================================================================*/
+
+	/**
+	 * Handle {@link kAPI_OP_Login} request.
+	 *
+	 * This method will handle the {@link kAPI_OP_Login} operation, which returns the user
+	 * record upon successful login.
+	 *
+	 * The method will use the {@link kAPI_CREDENTIALS} parameter
+	 * {@link kAPI_CREDENTIALS_CODE} element as the user ID and the
+	 * {@link kAPI_CREDENTIALS_PASS} element as the password.
+	 *
+	 * If the the operation succeeds, the method will return the found user in the response.
+	 *
+	 * @access protected
+	 */
+	protected function _Handle_NewUser()
+	{
+		//
+		// Commit user.
+		//
+		$identifier = $_REQUEST[ kAPI_OBJECT ]->Insert( $_REQUEST[ kAPI_CONTAINER ] );
+
+		//
+		// Serialise object.
+		//
+		CDataType::SerialiseObject( $identifier );
+		
+		//
+		// Set object identifier.
+		//
+		$this->_OffsetManage( kAPI_STATUS, kTERM_STATUS_IDENTIFIER, $identifier );
+	
+		//
+		// Set affected count.
+		//
+		$this->_OffsetManage( kAPI_STATUS, kAPI_AFFECTED_COUNT, 1 );
+	
+	} // _Handle_NewUser.
 
 	 
 

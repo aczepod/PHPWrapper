@@ -387,7 +387,7 @@ define( "kAPI_OP_INSERT",			'WS:OP:INSERT' );
  *		This parameter is ignored if the {@link kAPI_OBJECT} parameter is missing.
  * </ul>
  */
-define( "kAPI_OP_DELETE",			'WS:OP:DEL' );
+define( "kAPI_OP_DELETE",			'WS:OP:DELETE' );
 
 
 ?>

@@ -151,6 +151,21 @@ frameworks.</p>
 						bare minimum.</li>
 				</ul>
 			</li>
+
+			<li><i>kAPI_OP_NewUser</i>: <i>New user</i>, this operation will create
+			a new user, it expects a set of attributes representing the new user's
+			properties.
+				<ul>
+					<li><i>kAPI_FORMAT</i>: This parameter is required to indicate how to
+					encode the response.</li>
+
+					<li><i>kAPI_DATABASE</i>: This parameter is required to indicate the
+					working database.</li>
+
+					<li><i>kAPI_OBJECT</i>: This parameter should contain the attributes of
+					the new user.</li>
+				</ul>
+			</li>
 		</ul>
 	</li>
 </ul>
@@ -240,7 +255,7 @@ frameworks.</p>
 				<b>Author:</b>
 				Milko A. Škofič &lt;<a
 href="mailto:m.skofic&#64;cgiar.org">m.skofic&#64;<!---->cgiar.org</a>&gt;<br />
-		<b>Located at</b> <a href="source-class-CPortalWrapper.html#36-680" title="Go to source code">CPortalWrapper.php</a><br />
+		<b>Located at</b> <a href="source-class-CPortalWrapper.html#36-883" title="Go to source code">CPortalWrapper.php</a><br />
 	</div>
 
 
@@ -258,7 +273,7 @@ href="mailto:m.skofic&#64;cgiar.org">m.skofic&#64;<!---->cgiar.org</a>&gt;<br />
 
 		<td class="name"><div>
 		<a class="anchor" href="#__ParseRequest">#</a>
-		<code><a href="source-class-CPortalWrapper.html#104-132" title="Go to source code">_ParseRequest</a>( )</code>
+		<code><a href="source-class-CPortalWrapper.html#114-142" title="Go to source code">_ParseRequest</a>( )</code>
 
 		<div class="description short">
 			
@@ -306,7 +321,7 @@ derived classes custom elements.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#__FormatRequest">#</a>
-		<code><a href="source-class-CPortalWrapper.html#139-162" title="Go to source code">_FormatRequest</a>( )</code>
+		<code><a href="source-class-CPortalWrapper.html#149-172" title="Go to source code">_FormatRequest</a>( )</code>
 
 		<div class="description short">
 			
@@ -350,7 +365,7 @@ handled.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#__ValidateRequest">#</a>
-		<code><a href="source-class-CPortalWrapper.html#169-194" title="Go to source code">_ValidateRequest</a>( )</code>
+		<code><a href="source-class-CPortalWrapper.html#179-206" title="Go to source code">_ValidateRequest</a>( )</code>
 
 		<div class="description short">
 			
@@ -376,6 +391,7 @@ codes (their presence is checked by the constructor.</p>
 				<h4>Uses</h4>
 				<div class="list">
 						<code><code><a href="class-CPortalWrapper.html#__ValidateCredentials">CPortalWrapper::_ValidateCredentials()</a></code></code> <br />
+						<code><code><a href="class-CPortalWrapper.html#__ValidateNewUser">CPortalWrapper::_ValidateNewUser()</a></code></code> <br />
 				</div>
 
 				<h4>Overrides</h4>
@@ -395,7 +411,7 @@ codes (their presence is checked by the constructor.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#__InitParameters">#</a>
-		<code><a href="source-class-CPortalWrapper.html#210-231" title="Go to source code">_InitParameters</a>( )</code>
+		<code><a href="source-class-CPortalWrapper.html#222-243" title="Go to source code">_InitParameters</a>( )</code>
 
 		<div class="description short">
 			
@@ -433,7 +449,7 @@ this class we decode all local parameters.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#__ParseOperation">#</a>
-		<code><a href="source-class-CPortalWrapper.html#247-286" title="Go to source code">_ParseOperation</a>( )</code>
+		<code><a href="source-class-CPortalWrapper.html#259-297" title="Go to source code">_ParseOperation</a>( )</code>
 
 		<div class="description short">
 			
@@ -448,12 +464,10 @@ this class we decode all local parameters.</p>
 <p>We overload this method to perform the following customisations:</p>
 
 <ul>
-	<li><tt>kAPI_OP_GetRootsByKind</tt>: This operation requires that the
-	page limits be set, only a defined number of records should be returned by a
-	service: if the kAPI_PAGE_LIMIT parameter was not provided, this method
-	will set it to kDEFAULT_LIMIT.</li>
+	<li><tt>kAPI_OP_Login</tt>: This operation implies that the container be
+	the default users container.</li>
 
-	<li><tt>kAPI_OP_GetVertex</tt>: Same as above.</li>
+	<li><tt>kAPI_OP_NewUser</tt>: Same as above.</li>
 </ul>
 
 
@@ -483,7 +497,7 @@ this class we decode all local parameters.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#__ParseCredentials">#</a>
-		<code><a href="source-class-CPortalWrapper.html#293-316" title="Go to source code">_ParseCredentials</a>( )</code>
+		<code><a href="source-class-CPortalWrapper.html#304-327" title="Go to source code">_ParseCredentials</a>( )</code>
 
 		<div class="description short">
 			
@@ -530,7 +544,7 @@ this class we decode all local parameters.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#__FormatCredentials">#</a>
-		<code><a href="source-class-CPortalWrapper.html#332-341" title="Go to source code">_FormatCredentials</a>( )</code>
+		<code><a href="source-class-CPortalWrapper.html#343-352" title="Go to source code">_FormatCredentials</a>( )</code>
 
 		<div class="description short">
 			
@@ -574,7 +588,7 @@ nothing.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#__ValidateOperation">#</a>
-		<code><a href="source-class-CPortalWrapper.html#357-435" title="Go to source code">_ValidateOperation</a>( )</code>
+		<code><a href="source-class-CPortalWrapper.html#368-489" title="Go to source code">_ValidateOperation</a>( )</code>
 
 		<div class="description short">
 			
@@ -626,7 +640,7 @@ following operations:</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#__ValidateCredentials">#</a>
-		<code><a href="source-class-CPortalWrapper.html#442-502" title="Go to source code">_ValidateCredentials</a>( )</code>
+		<code><a href="source-class-CPortalWrapper.html#496-556" title="Go to source code">_ValidateCredentials</a>( )</code>
 
 		<div class="description short">
 			
@@ -664,6 +678,50 @@ class we perform checks according to the operation:</p>
 		</div>
 		</div></td>
 	</tr>
+	<tr data-order="_ValidateNewUser" id="__ValidateNewUser">
+
+		<td class="attributes"><code>
+			 protected 
+			
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#__ValidateNewUser">#</a>
+		<code><a href="source-class-CPortalWrapper.html#563-652" title="Go to source code">_ValidateNewUser</a>( )</code>
+
+		<div class="description short">
+			
+<p>Validate new user.</p>
+
+		</div>
+
+		<div class="description detailed hidden">
+			
+<p>Validate new user.</p>
+
+<p>The duty of this method is to validate the provided user attributes, found in
+the kAPI_OBJECT parameter, the method will do so by creating a <code><a href="class-CUser.html">CUser</a></code> object and adding the provided attributes to it.</p>
+
+
+
+
+
+
+				<h4>See</h4>
+				<div class="list">
+						kAPI_OBJECT<br />
+				</div>
+				<h4>Used by</h4>
+				<div class="list">
+						<code><code><a href="class-CPortalWrapper.html#__ValidateRequest">CPortalWrapper::_ValidateRequest()</a></code></code> <br />
+				</div>
+
+
+		</div>
+		</div></td>
+	</tr>
 	<tr data-order="_HandleRequest" id="__HandleRequest">
 
 		<td class="attributes"><code>
@@ -675,7 +733,7 @@ class we perform checks according to the operation:</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#__HandleRequest">#</a>
-		<code><a href="source-class-CPortalWrapper.html#518-548" title="Go to source code">_HandleRequest</a>( )</code>
+		<code><a href="source-class-CPortalWrapper.html#668-702" title="Go to source code">_HandleRequest</a>( )</code>
 
 		<div class="description short">
 			
@@ -712,7 +770,7 @@ class we perform checks according to the operation:</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#__Handle_ListOp">#</a>
-		<code><a href="source-class-CPortalWrapper.html#555-577" title="Go to source code">_Handle_ListOp</a>( <span>reference <var>&amp; $theList</var></span> )</code>
+		<code><a href="source-class-CPortalWrapper.html#709-737" title="Go to source code">_Handle_ListOp</a>( <span>reference <var>&amp; $theList</var></span> )</code>
 
 		<div class="description short">
 			
@@ -754,7 +812,48 @@ class we perform checks according to the operation:</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#__Handle_Login">#</a>
-		<code><a href="source-class-CPortalWrapper.html#584-676" title="Go to source code">_Handle_Login</a>( )</code>
+		<code><a href="source-class-CPortalWrapper.html#744-836" title="Go to source code">_Handle_Login</a>( )</code>
+
+		<div class="description short">
+			
+<p>Handle kAPI_OP_Login request.</p>
+
+		</div>
+
+		<div class="description detailed hidden">
+			
+<p>Handle kAPI_OP_Login request.</p>
+
+<p>This method will handle the kAPI_OP_Login operation, which returns
+the user record upon successful login.</p>
+
+<p>The method will use the kAPI_CREDENTIALS parameter kAPI_CREDENTIALS_CODE element as the user ID and the kAPI_CREDENTIALS_PASS element as the password.</p>
+
+<p>If the the operation succeeds, the method will return the found user in the
+response.</p>
+
+
+
+
+
+
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="_Handle_NewUser" id="__Handle_NewUser">
+
+		<td class="attributes"><code>
+			 protected 
+			
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#__Handle_NewUser">#</a>
+		<code><a href="source-class-CPortalWrapper.html#843-879" title="Go to source code">_Handle_NewUser</a>( )</code>
 
 		<div class="description short">
 			
@@ -964,7 +1063,7 @@ response.</p>
 		</code></td>
 
 		<td class="name">
-				<a href="source-class-CPortalWrapper.html#80-88" title="Go to source code"><var>$sParameterList</var></a>
+				<a href="source-class-CPortalWrapper.html#90-98" title="Go to source code"><var>$sParameterList</var></a>
 		</td>
 		<td class="value"><code><span class="php-keyword1">array</span>( kAPI_CREDENTIALS )</code></td>
 		<td class="description"><div>

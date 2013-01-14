@@ -147,6 +147,20 @@ class.</p>
 			</li>
 		</ul>
 	</li>
+
+	<li><tt>kAPI_OP_NewUser</tt>: This service inserts the provided user
+	into the database, the service expects the following parameters:
+		<ul>
+			<li><i>kAPI_FORMAT</i>: This parameter is required to indicate how to
+			encode the response.</li>
+
+			<li><i>kAPI_DATABASE</i>: This parameter is required to indicate the
+			working database.</li>
+
+			<li><i>kAPI_OBJECT</i>: This parameter is required and contains an array
+			corresponding to the new user attributes.</li>
+		</ul>
+	</li>
 </ul>
 
 	</div>
@@ -234,7 +248,7 @@ class.</p>
 				<b>Author:</b>
 				Milko A. Škofič &lt;<a
 href="mailto:m.skofic&#64;cgiar.org">m.skofic&#64;<!---->cgiar.org</a>&gt;<br />
-		<b>Located at</b> <a href="source-class-CPortalWrapperClient.html#36-332" title="Go to source code">CPortalWrapperClient.php</a><br />
+		<b>Located at</b> <a href="source-class-CPortalWrapperClient.html#36-370" title="Go to source code">CPortalWrapperClient.php</a><br />
 	</div>
 
 
@@ -252,7 +266,7 @@ href="mailto:m.skofic&#64;cgiar.org">m.skofic&#64;<!---->cgiar.org</a>&gt;<br />
 
 		<td class="name"><div>
 		<a class="anchor" href="#_Operation">#</a>
-		<code><a href="source-class-CPortalWrapperClient.html#89-130" title="Go to source code">Operation</a>( <span>string <var>$theValue</var> = <span class="php-keyword1">NULL</span></span>, <span>boolean <var>$getOld</var> = <span class="php-keyword1">FALSE</span> </span> )</code>
+		<code><a href="source-class-CPortalWrapperClient.html#99-141" title="Go to source code">Operation</a>( <span>string <var>$theValue</var> = <span class="php-keyword1">NULL</span></span>, <span>boolean <var>$getOld</var> = <span class="php-keyword1">FALSE</span> </span> )</code>
 
 		<div class="description short">
 			
@@ -318,7 +332,7 @@ following allowed operations:</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#_Credentials">#</a>
-		<code><a href="source-class-CPortalWrapperClient.html#137-177" title="Go to source code">Credentials</a>( <span>string <var>$theKey</var></span>, <span>mixed <var>$theValue</var> = <span class="php-keyword1">NULL</span></span>, <span>boolean <var>$getOld</var> = <span class="php-keyword1">FALSE</span> </span> )</code>
+		<code><a href="source-class-CPortalWrapperClient.html#148-188" title="Go to source code">Credentials</a>( <span>string <var>$theKey</var></span>, <span>mixed <var>$theValue</var> = <span class="php-keyword1">NULL</span></span>, <span>boolean <var>$getOld</var> = <span class="php-keyword1">FALSE</span> </span> )</code>
 
 		<div class="description short">
 			
@@ -401,7 +415,7 @@ accepts the following parameters:</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#__CheckDependencies">#</a>
-		<code><a href="source-class-CPortalWrapperClient.html#193-244" title="Go to source code">_CheckDependencies</a>( <span>string <var>$theOperation</var></span> )</code>
+		<code><a href="source-class-CPortalWrapperClient.html#204-282" title="Go to source code">_CheckDependencies</a>( <span>string <var>$theOperation</var></span> )</code>
 
 		<div class="description short">
 			
@@ -448,7 +462,7 @@ depending on the requested operation.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#__NormaliseParameters">#</a>
-		<code><a href="source-class-CPortalWrapperClient.html#251-278" title="Go to source code">_NormaliseParameters</a>( )</code>
+		<code><a href="source-class-CPortalWrapperClient.html#289-316" title="Go to source code">_NormaliseParameters</a>( )</code>
 
 		<div class="description short">
 			
@@ -487,7 +501,7 @@ depending on the requested operation.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#__EncodeParameters">#</a>
-		<code><a href="source-class-CPortalWrapperClient.html#285-328" title="Go to source code">_EncodeParameters</a>( <span>reference <var>&amp; $theParameters</var></span>, <span>string <var>$theEncoding</var></span> )</code>
+		<code><a href="source-class-CPortalWrapperClient.html#323-366" title="Go to source code">_EncodeParameters</a>( <span>reference <var>&amp; $theParameters</var></span>, <span>string <var>$theEncoding</var></span> )</code>
 
 		<div class="description short">
 			
