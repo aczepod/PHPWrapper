@@ -1,0 +1,57 @@
+NAMESPACE SEARCH
+
+kTAG_NAMESPACE:		Codice (kTAG_GID) del termine namespace. Ricerca per
+					default A = B escluse maiuscole (accenti non ne
+					dovrebbero essere).
+kTAG_LID:			Codice del termine. Ricerca per default A = B escluse
+					maiuscole (accenti non ne dovrebbero essere).
+kTAG_SYNONYMS:		Sinonimi. Ricerca per default A = B escluse maiuscole.
+kTAG_LABEL:			Nome o label del termine. Il campo è preceduto da un
+					popup che definisce il tipo di ricerca
+					(Operators.inc.php):
+						kOPERATOR_PREFIX_NOCASE:	Inizia con.
+						kOPERATOR_CONTAINS_NOCASE:	Contiene.
+						kOPERATOR_SUFFIX_NOCASE:	Termina con.
+						kOPERATOR_LIKE:				Uguale a (no accenti).
+						kOPERATOR_REGEX:			Espressione regolare.
+					Questi valori li trovi nei termini.
+kTAG_DEFINITION:	Descrizione o definizione del termine. Solo in input per
+					nuovi termini.
+
+
+Query template:
+
+array
+(
+	'$AND' => array
+	(
+		array
+		(
+			'_query-subject'	=>	'9',				// kTAG_NAMESPACE
+			'_query-operator'	=>	'$EQ',				// kOPERATOR_EQUAL
+			'_query-data-type'	=>	':TEXT',			// kTYPE_STRING
+			'_query-data'		=>	.......
+		),
+		array
+		(
+			'_query-subject'	=>	'1',				// kTAG_LID
+			'_query-operator'	=>	'$AS',				// kOPERATOR_LIKE
+			'_query-data-type'	=>	':TEXT',			// kTYPE_STRING
+			'_query-data'		=>	.......
+		),
+		array
+		(
+			'_query-subject'	=>	'4',				// kTAG_SYNONYMS
+			'_query-operator'	=>	'$AS',				// kOPERATOR_LIKE
+			'_query-data-type'	=>	':TEXT',			// kTYPE_STRING
+			'_query-data'		=>	.......
+		),
+		array
+		(
+			'_query-subject'	=>	'10.en',				// kTAG_LABEL
+			'_query-operator'	=>	'$CXi',				// kOPERATOR_CONTAINS_NOCASE
+			'_query-data-type'	=>	':TEXT',			// kTYPE_STRING
+			'_query-data'		=>	.......
+		)
+	)
+)

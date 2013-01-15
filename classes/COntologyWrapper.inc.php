@@ -130,6 +130,68 @@ define( "kAPI_COLLECTION_TAG",					'_tag' );
  *======================================================================================*/
 
 /**
+ * GetTerm web-service.
+ *
+ * This is the tag that represents the GetTerm web-service operation, which will return a
+ * list of terms according to the provided parameters:
+ *
+ * The service expects the following parameters:
+ *
+ * <ul>
+ *	<li><i>{@link kAPI_FORMAT}</i>: This parameter is required to indicate how to encode the
+ *		response.
+ *	<li><i>{@link kAPI_DATABASE}</i>: This parameter is required to indicate the working
+ *		database.
+ *	<li><i>{@link kAPI_SELECT}</i>: This parameter is an array listing which fields are to
+ *		be returned by the query, all fields not included in the list will be ignored. An
+ *		empty list is equivalent to requesting all fields.
+ *	<li><i>{@link kAPI_SORT}</i>: This parameter is an array listing which fields are to
+ *		be considered in the sort order, the array is indexed by the field name and the
+ *		value should be a number that represents the sense: positive will be considered
+ *		<i>ascending</i> and negative values <i>descending</i>; zero values will be ignored.
+ *	<li><i>{@link kAPI_PAGE_LIMIT}</i>:This parameter is required or enforced, it represents
+ *		the maximum number of elements that the query should return, the default value is
+ *		{@link kDEFAULT_LIMIT}.
+ *	<li><i>{@link kAPI_QUERY}</i>: This parameter will hold the selection criteria for the
+ *		term. <i>It is possible to provide the {@link kTAG_NAMESPACE} parameter in the query
+ *		both as the term {@link kTAG_GID} or the actual term reference: the service will
+ *		take care of converting the {@link kTAG_GID} to the {@link kTAG_NID}.</i>
+ * </ul>
+ */
+define( "kAPI_OP_GetTerm",			'WS:OP:GetTerm' );
+
+/**
+ * GetNode web-service.
+ *
+ * This is the tag that represents the GetNode web-service operation, which will return a
+ * list of nodes according to the provided parameters:
+ *
+ * The service expects the following parameters:
+ *
+ * <ul>
+ *	<li><i>{@link kAPI_FORMAT}</i>: This parameter is required to indicate how to encode the
+ *		response.
+ *	<li><i>{@link kAPI_DATABASE}</i>: This parameter is required to indicate the working
+ *		database.
+ *	<li><i>{@link kAPI_SELECT}</i>: This parameter is an array listing which fields are to
+ *		be returned by the query, all fields not included in the list will be ignored. An
+ *		empty list is equivalent to requesting all fields.
+ *	<li><i>{@link kAPI_SORT}</i>: This parameter is an array listing which fields are to
+ *		be considered in the sort order, the array is indexed by the field name and the
+ *		value should be a number that represents the sense: positive will be considered
+ *		<i>ascending</i> and negative values <i>descending</i>; zero values will be ignored.
+ *	<li><i>{@link kAPI_PAGE_LIMIT}</i>:This parameter is required or enforced, it represents
+ *		the maximum number of elements that the query should return, the default value is
+ *		{@link kDEFAULT_LIMIT}.
+ *	<li><i>{@link kAPI_QUERY}</i>: This parameter will hold the selection criteria for the
+ *		node. <i>It is possible to provide the {@link kTAG_TERM} parameter in the query
+ *		both as the term {@link kTAG_GID} or the actual term reference: the service will
+ *		take care of converting the {@link kTAG_GID} to the {@link kTAG_NID}.</i>
+ * </ul>
+ */
+define( "kAPI_OP_GetNode",			'WS:OP:GetNode' );
+
+/**
  * GetVertex web-service.
  *
  * This is the tag that represents the GetVertex web-service operation, which will return a

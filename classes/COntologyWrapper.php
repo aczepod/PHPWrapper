@@ -280,11 +280,10 @@ class COntologyWrapper extends CDataWrapper
 	 * We overload this method to perform the following customisations:
 	 *
 	 * <ul>
-	 *	<li><tt>{@link kAPI_OP_GetRootsByKind}</tt>: This operation requires that the page
-	 *		limits be set, only a defined number of records should be returned by a service: if the
-	 *		{@link kAPI_PAGE_LIMIT} parameter was not provided, this method will set it to
-	 *		{@link kDEFAULT_LIMIT}.
-	 *	<li><tt>{@link kAPI_OP_GetVertex}</tt>: Same as above.
+	 *	<li><li><i>Page limits enforcement</i>: If omitted, the page limits are set to the
+	 *		default {@link kAPI_PAGE_LIMIT} value.
+	 *	<li><li><i>Container name</i>: Depending on the operation, if omitted, the container
+	 *		name will be set to its default value.
 	 * </ul>
 	 *
 	 * @access protected
@@ -303,17 +302,34 @@ class COntologyWrapper extends CDataWrapper
 		//
 		switch( $_REQUEST[ kAPI_OPERATION ] )
 		{
+			case kAPI_OP_GetTerm:
+				//
+				// Set page limit.
+				//
+				if( ! array_key_exists( kAPI_PAGE_LIMIT, $_REQUEST ) )
+					$_REQUEST[ kAPI_PAGE_LIMIT ] = kDEFAULT_LIMIT;
+				
+				//
+				// Set terms container.
+				//
+				if( ! array_key_exists( kAPI_CONTAINER, $_REQUEST ) )
+					$_REQUEST[ kAPI_CONTAINER ] = COntologyTerm::DefaultContainerName();
+
+				break;
+
+			case kAPI_OP_GetNode:
 			case kAPI_OP_GetVertex:
 				//
 				// Set page limit.
 				//
 				if( ! array_key_exists( kAPI_PAGE_LIMIT, $_REQUEST ) )
 					$_REQUEST[ kAPI_PAGE_LIMIT ] = kDEFAULT_LIMIT;
+				
 				//
 				// Set vertex container.
 				//
 				if( ! array_key_exists( kAPI_CONTAINER, $_REQUEST ) )
-					$_REQUEST[ kAPI_CONTAINER ] = kCONTAINER_NODE_NAME;
+					$_REQUEST[ kAPI_CONTAINER ] = COntologyNode::DefaultContainerName();
 
 				break;
 		}
@@ -471,6 +487,9 @@ class COntologyWrapper extends CDataWrapper
 		//
 		if( array_key_exists( kAPI_LANGUAGE, $_REQUEST ) )
 		{
+			//
+			// Set to array.
+			//
 			if( ! is_array( $_REQUEST[ kAPI_LANGUAGE ] ) )
 				$_REQUEST[ kAPI_LANGUAGE ] = array( $_REQUEST[ kAPI_LANGUAGE ] );
 		}
@@ -564,10 +583,19 @@ class COntologyWrapper extends CDataWrapper
 	 * following operations:
 	 *
 	 * <ul>
-	 *	<li><tt>{@link kAPI_OP_COUNT}</tt>: Return the count of a query, this operation
-	 *		requires the following parameters:
+	 *	<li><tt>{@link kAPI_OP_GetTerm} and {@link kAPI_OP_GetNode}</tt>: The following are
+	 *		checked:
 	 *	 <ul>
-	 *		<li><tt></tt>.
+	 *		<li><tt>{@link kAPI_FORMAT}</tt>: The encoding format is required.
+	 *		<li><tt>{@link kAPI_DATABASE}</tt>: The database is required.
+	 *		<li><tt>{@link kAPI_SUBQUERY}</tt>: The subquery is cleared.
+	 *	 </ul>
+	 *	<li><tt>{@link kAPI_OP_GetVertex}</tt>: The following are checked:
+	 *	 <ul>
+	 *		<li><tt>{@link kAPI_FORMAT}</tt>: The encoding format is required.
+	 *		<li><tt>{@link kAPI_DATABASE}</tt>: The database is required.
+	 *		<li><tt>{@link kAPI_SUBQUERY}</tt>: The subquery is cleared if the
+	 *			{@link kAPI_RELATION} parameter is missing.
 	 *	 </ul>
 	 * </ul>
 	 *
@@ -582,6 +610,36 @@ class COntologyWrapper extends CDataWrapper
 		//
 		switch( $parameter = $_REQUEST[ kAPI_OPERATION ] )
 		{
+			case kAPI_OP_GetTerm:
+			case kAPI_OP_GetNode:
+				//
+				// Check for database.
+				//
+				if( ! array_key_exists( kAPI_DATABASE, $_REQUEST ) )
+					throw new CException
+						( "Missing database parameter",
+						  kERROR_MISSING,
+						  kSTATUS_ERROR,
+						  array( 'Operation' => $parameter ) );					// !@! ==>
+					
+				//
+				// Check for format.
+				//
+				if( ! array_key_exists( kAPI_FORMAT, $_REQUEST ) )
+					throw new CException
+						( "Missing format parameter",
+						  kERROR_MISSING,
+						  kSTATUS_ERROR,
+						  array( 'Operation' => $parameter ) );					// !@! ==>
+				
+				//
+				// Clear subquery.
+				//
+				if( array_key_exists( kAPI_SUBQUERY, $_REQUEST ) )
+					unset( $_REQUEST[ kAPI_SUBQUERY ] );
+				
+				break;
+			
 			case kAPI_OP_GetVertex:
 				//
 				// Check for database.
@@ -624,6 +682,50 @@ class COntologyWrapper extends CDataWrapper
 		} // Parsing parameter.
 	
 	} // _ValidateOperation.
+
+	 
+	/*===================================================================================
+	 *	_ValidateQuery																	*
+	 *==================================================================================*/
+
+	/**
+	 * Validate query parameters.
+	 *
+	 * In this class we handle the {@link kAPI_OP_GetTerm} and {@link kAPI_OP_GetNode}
+	 * services: all references to the {@link kTAG_NAMESPACE} or {@link kTAG_TERM}
+	 * attributes with type different than {@link kTYPE_kTYPE_BINARY_STRING} will be
+	 * interpreted as the {@link kTAG_GID} of the term and converted to a term native
+	 * identifier.
+	 *
+	 * @access protected
+	 *
+	 * @see kAPI_QUERY
+	 */
+	protected function _ValidateQuery()
+	{
+		//
+		// Call parent method.
+		//
+		parent::_ValidateQuery();
+	
+		//
+		// Check parameter and service.
+		//
+		if( array_key_exists( kAPI_QUERY, $_REQUEST ) )
+		{
+			//
+			// Parse by operation.
+			//
+			switch( $_REQUEST[ kAPI_OPERATION ] )
+			{
+				case kAPI_OP_GetTerm:
+				case kAPI_OP_GetNode:
+					$this->_NormaliseTermReferences( $_REQUEST[ kAPI_QUERY ] );
+					break;
+			}
+		}
+
+	} // _ValidateQuery.
 
 	 
 	/*===================================================================================
@@ -840,6 +942,11 @@ class COntologyWrapper extends CDataWrapper
 			//
 			switch( $_REQUEST[ kAPI_OPERATION ] )
 			{
+				case kAPI_OP_GetTerm:
+				case kAPI_OP_GetNode:
+					$this->_Handle_GetOntologyElements();
+					break;
+	
 				case kAPI_OP_GetVertex:
 					$this->_Handle_GetVertex();
 					break;
@@ -875,12 +982,145 @@ class COntologyWrapper extends CDataWrapper
 		parent::_Handle_ListOp( $theList );
 
 		//
+		// Add kAPI_OP_GetTerm.
+		//
+		$theList[ kAPI_OP_GetTerm ]
+			= 'Get terms by query: returns the list of terms that satisfy the provided query.';
+
+		//
+		// Add kAPI_OP_GetNode.
+		//
+		$theList[ kAPI_OP_GetNode ]
+			= 'Get nodes by query: returns the list of nodes that satisfy the provided query.';
+
+		//
 		// Add kAPI_OP_GetVertex.
 		//
 		$theList[ kAPI_OP_GetVertex ]
 			= 'Get vertex or related vertex by query: returns either the list of vertex that satisfy the provided query, or the list of vertex pointing to or pointed to by the vertex selected by the provided query.';
 	
 	} // _Handle_ListOp.
+
+	 
+	/*===================================================================================
+	 *	_Handle_GetOntologyElements														*
+	 *==================================================================================*/
+
+	/**
+	 * Retrieve ontology elements by query.
+	 *
+	 * This method will handle the following operations: {@link kAPI_OP_GetNerm} and
+	 * {@link kAPI_OP_GetNode} operations, it will return respectively the terms and nodes
+	 * that match the provided query, including related elements such as tags.
+	 *
+	 * @access protected
+	 */
+	protected function _Handle_GetOntologyElements()
+	{
+		//
+		// Init local storage.
+		//
+		$query = $select = $sort = $start = $limit = NULL;
+		
+		//
+		// Handle query.
+		//
+		if( array_key_exists( kAPI_QUERY, $_REQUEST ) )
+			$query = $_REQUEST[ kAPI_QUERY ];
+		
+		//
+		// Handle sort.
+		//
+		if( array_key_exists( kAPI_SORT, $_REQUEST ) )
+			$sort = $_REQUEST[ kAPI_SORT ];
+		
+		//
+		// Handle paging.
+		//
+		if( $this->offsetExists( kAPI_PAGING ) )
+		{
+			$start = $this->offsetGet( kAPI_PAGING )[ kAPI_PAGE_START ];
+			$limit = $this->offsetGet( kAPI_PAGING )[ kAPI_PAGE_LIMIT ];
+		}
+		
+		//
+		// Get records.
+		//
+		$records
+			= $_REQUEST[ kAPI_CONTAINER ]
+				->Query( $query, $select, $sort, $start, $limit );
+		
+		//
+		// Set affected count.
+		//
+		$this->_OffsetManage(
+			kAPI_STATUS, kAPI_AFFECTED_COUNT, $records->count( FALSE ) );
+		
+		//
+		// Handle page count.
+		//
+		if( $this->offsetExists( kAPI_PAGING ) )
+		{
+			$tmp = $this->offsetGet( kAPI_PAGING );
+			$tmp[ kAPI_PAGE_COUNT ] = $records->count( TRUE );
+			$this->offsetSet( kAPI_PAGING, $tmp );
+		}
+		
+		//
+		// Check count.
+		//
+		if( $records->count( FALSE ) )
+		{
+			//
+			// Iterate recordset.
+			//
+			foreach( $records as $object )
+			{
+				//
+				// Instantiate object.
+				//
+				$object = CPersistentObject::DocumentObject( $object );
+				
+				//
+				// Load related data.
+				//
+				switch( $_REQUEST[ kAPI_OPERATION ] )
+				{
+					case kAPI_OP_GetTerm:
+						$this->_ExportTerm( $results, $object );
+						$results[ kAPI_COLLECTION_ID ][] = $object->offsetGet( kTAG_GID );
+						break;
+						
+					case kAPI_OP_GetNode:
+						$this->_ExportNode( $results, $object );
+						$results[ kAPI_COLLECTION_ID ][] = $object->offsetGet( kTAG_NID );
+						break;
+
+					default:
+						throw new CException
+							( "Unsupported operation in service handler",
+							  kERROR_PARAMETER,
+							  kSTATUS_ERROR,
+							  array( 'Operation'
+							  			=> $_REQUEST[ kAPI_OPERATION ] ) );		// !@! ==>
+				}
+			
+			} // Iterating found terms.
+			
+			//
+			// Set results.
+			//
+			$this->offsetSet( kAPI_RESPONSE, $results );
+		
+			//
+			// Handle language.
+			//
+			if( array_key_exists( kAPI_LANGUAGE, $_REQUEST ) )
+				$this->_FilterLanguages( $_REQUEST[ kAPI_LANGUAGE ] );
+		
+		} // Found edges.
+	
+	} // _Handle_GetOntologyElements.
 
 	 
 	/*===================================================================================
@@ -1676,9 +1916,15 @@ class COntologyWrapper extends CDataWrapper
 				foreach( $theTag as $key => $value )
 				{
 					//
+					// Set by default type.
+					//
+					if( $key == kTAG_TYPE )
+						$export[ $key ] = $theTag->offsetGet( $key );
+					
+					//
 					// Skip excluded.
 					//
-					if( ! in_array( $key, $exclude ) )
+					elseif( ! in_array( $key, $exclude ) )
 					{
 						//
 						// Handle included.
@@ -2253,7 +2499,7 @@ class COntologyWrapper extends CDataWrapper
 
 /*=======================================================================================
  *																						*
- *							PROTECTED LANGUAGE FILTER UTILITIES							*
+ *								PROTECTED FILTER UTILITIES								*
  *																						*
  *======================================================================================*/
 
@@ -2380,6 +2626,129 @@ class COntologyWrapper extends CDataWrapper
 		} // Parameter is an array.
 	
 	} // _FilterLanguages.
+
+	 
+	/*===================================================================================
+	 *	_NormaliseTermReferences														*
+	 *==================================================================================*/
+
+	/**
+	 * Filter namespace references.
+	 *
+	 * The duty of this method is to convert term references from {@link kTAG_GID} values to
+	 * {@link kTAG_NID} values.
+	 *
+	 * The method will traverse the query structure and intercept the following
+	 * {@link kOFFSET_QUERY_SUBJECT} instances:
+	 *
+	 * <ul>
+	 *	<li><tt>{@link kTAG_NAMESPACE}</tt>: The namespace reference of the term.
+	 *	<li><tt>{@link kTAG_TERM}</tt>: The term reference in the term or node.
+	 *	<li><tt>{@link kTAG_PREDICATE}</tt>: The predicate reference in the edge.
+	 *	<li><tt>{@link kTAG_UID}</tt>: Unique identifiers.
+	 * </ul>
+	 *
+	 * Any of these clauses with {@link kOFFSET_QUERY_TYPE} {@link kTYPE_STRING} will be
+	 * converted to term native identifiers using the static {@link COntologyTerm::_id()}
+	 * method.
+	 *
+	 * @param reference		   &$theQuery			Query.
+	 *
+	 * @access protected
+	 */
+	protected function _NormaliseTermReferences( &$theQuery )
+	{
+		//
+		// Check parameter.
+		//
+		if( is_array( $theQuery ) )
+		{
+			//
+			// Init local storage.
+			//
+			$tags = array( kTAG_UID, kTAG_TERM, kTAG_PREDICATE, kTAG_NAMESPACE );
+			
+			//
+			// Traverse the query.
+			//
+			foreach( $theQuery as $key => $value )
+			{
+				//
+				// Handle array values.
+				//
+				if( is_array( $value ) )
+				{
+					//
+					// Look for namespace clause.
+					//
+					if( array_key_exists( kOFFSET_QUERY_SUBJECT, $value )
+					 && in_array( $value[ kOFFSET_QUERY_SUBJECT ], $tags ) )
+					{
+						//
+						// Check text namespaces.
+						//
+						if( array_key_exists( kOFFSET_QUERY_TYPE, $value )
+						 && ($value[ kOFFSET_QUERY_TYPE ] == kTYPE_STRING) )
+						{
+							//
+							// Handle value.
+							//
+							if( array_key_exists( kOFFSET_QUERY_DATA, $value ) )
+							{
+								//
+								// Handle list.
+								//
+								if( is_array( $value[ kOFFSET_QUERY_DATA ] ) )
+								{
+									$idxs = array_keys( $value[ kOFFSET_QUERY_DATA ] );
+									foreach( $idxs as $idx )
+										$theQuery[ $key ]
+												 [ kOFFSET_QUERY_DATA ]
+												 [ $idx ]
+											= COntologyTerm::_id(
+												$theQuery[ $key ]
+														 [ kOFFSET_QUERY_DATA ]
+														 [ $idx ],
+												( array_key_exists(
+													kAPI_CONTAINER, $_REQUEST ) )
+												? $_REQUEST[ kAPI_CONTAINER ]
+												: $_REQUEST[ kAPI_DATABASE ] );
+							
+								} // List of references.
+							
+								//
+								// Handle scalar.
+								//
+								else
+									$theQuery[ $key ]
+											 [ kOFFSET_QUERY_DATA ]
+										= COntologyTerm::_id(
+											$theQuery[ $key ]
+													 [ kOFFSET_QUERY_DATA ],
+											( array_key_exists(
+												kAPI_CONTAINER, $_REQUEST ) )
+											? $_REQUEST[ kAPI_CONTAINER ]
+											: $_REQUEST[ kAPI_DATABASE ] );
+						
+							} // Has data.
+						
+						} // Found text namespace reference.
+					
+					} // Found namespace clause.
+					
+					//
+					// Recurse.
+					//
+					else
+						$this->_NormaliseTermReferences( $theQuery[ $key ] );
+				
+				} // Possibly a clause.
+				
+			} // Traversing the query.
+		
+		} // Is an array.
+	
+	} // _NormaliseTermReferences.
 
 	 
 

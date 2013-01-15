@@ -1053,7 +1053,7 @@
     <!-- kTERM_PATH -->
     <unit>
         <node class="COntologyAliasVertex">
-            <element variable="kTAG_TERM">:UID</element>
+            <element variable="kTAG_TERM">:PATH</element>
             <element variable="kTAG_CLASS">COntologyAliasVertex</element>
             <element variable="kTAG_KIND">
                 <item>:KIND-FEATURE</item>

@@ -40,8 +40,6 @@
 				<li class="active main"><a href="package-MyWrapper.Wrappers.html">Wrappers</a>
 						</li>
 							</ul></li>
-				<li><a href="package-None.html">None</a>
-						</li>
 				<li><a href="package-PHP.html">PHP</a>
 						</li>
 			</ul>
@@ -141,7 +139,7 @@ is abstract.</p>
 			represents the maximum number of records to be returned.</li>
 
 			<li><i>kAPI_QUERY</i>: <i>Query</i>, this array parameter represents the
-			data query, it should follow the rules of the <code><a href="class-CQuery.html" class="invalid">CQuery</a></code> class family.</li>
+			data query, it should follow the rules of the <code><a href="class-CQuery.html">CQuery</a></code> class family.</li>
 
 			<li><i>kAPI_SELECT</i>: <i>Select</i>, this array parameter represents
 			the query selection or fields list, it is constituted by an array of strings
@@ -1687,16 +1685,16 @@ kDEFAULT_MAX_LIMIT.</p>
 
 <p>The duty of this method is to validate the query parameter, in this class we
 will unserialise eventual serialised data types and convert the query or the
-queries into <code><a href="class-CQuery.html" class="invalid">CQuery</a></code> instances, this will be done by a container
+queries into <code><a href="class-CQuery.html">CQuery</a></code> instances, this will be done by a container
 determined by the index data types of the provided query parameter array:</p>
 
 <ul>
 	<li><i>Conditional Operator</i>: If any of kOPERATOR_AND, kOPERATOR_OR, kOPERATOR_NAND or kOPERATOR_NOR is found as
 	index, it means that the query is scalar and the provided container parameter
-	will be used to instantiate the <code><a href="class-CQuery.html" class="invalid">CQuery</a></code> instance.</li>
+	will be used to instantiate the <code><a href="class-CQuery.html">CQuery</a></code> instance.</li>
 
 	<li><tt>integer</tt>: An integer index indicates that the query parameter is a
-	list of queries, each query will be cast to a <code><a href="class-CQuery.html" class="invalid">CQuery</a></code> instance by the
+	list of queries, each query will be cast to a <code><a href="class-CQuery.html">CQuery</a></code> instance by the
 	provided container parameter.</li>
 
 	<li><i>other</i>: Any other kind of data will be cast to a string and
@@ -2229,7 +2227,7 @@ objects matching the provided query or value.</p>
 
 <p>This method can ve used to verify a query, it will traverse the provided
 array until it finds a condition operator, in that case it will convert the
-array, if necessary, to a <code><a href="class-CQuery.html" class="invalid">CQuery</a></code> object and CQuery::Validate().</p>
+array, if necessary, to a <code><a href="class-CQuery.html">CQuery</a></code> object and <code><a href="class-CQuery.html#_Validate">CQuery::Validate()</a></code>.</p>
 
 <p>The method expects the kAPI_CONTAINER parameter to have been set.</p>
 
