@@ -91,6 +91,9 @@
 				<item>:SCALE-OF</item>
 				<item>FAO-INSTITUTES:INSTCODE</item>
 			</element>
+			<element variable="kTAG_TYPE">
+				<item>:TEXT</item>
+			</element>
     	</tag>
         <edges>
 			<edge>
@@ -198,6 +201,9 @@
 				<item>MCPD:COLLCODE</item>
 				<item>:SCALE-OF</item>
 				<item>FAO-INSTITUTES:INSTCODE</item>
+			</element>
+			<element variable="kTAG_TYPE">
+				<item>:TEXT</item>
 			</element>
     	</tag>
         <edges>
@@ -448,6 +454,9 @@
 				<item>:SCALE-OF</item>
 				<item>GR:DATE</item>
 			</element>
+			<element variable="kTAG_TYPE">
+				<item>:TEXT</item>
+			</element>
     	</tag>
         <edges>
 			<edge>
@@ -485,6 +494,9 @@
 	    		<item>MCPD:ORIGCTY</item>
 	    		<item>:SCALE-OF</item>
 	    		<item>GR:COUNTRIES</item>
+			</element>
+			<element variable="kTAG_TYPE">
+				<item>:ENUM</item>
 			</element>
     	</tag>
         <edges>
@@ -560,6 +572,9 @@
 				<item>:SCALE-OF</item>
 				<item>GR:LATITUDE</item>
 			</element>
+			<element variable="kTAG_TYPE">
+				<item>:TEXT</item>
+			</element>
     	</tag>
         <edges>
 			<edge>
@@ -597,6 +612,9 @@
 				<item>MCPD:LONGITUDE</item>
 				<item>:SCALE-OF</item>
 				<item>GR:LONGITUDE</item>
+			</element>
+			<element variable="kTAG_TYPE">
+				<item>:TEXT</item>
 			</element>
     	</tag>
         <edges>
@@ -671,6 +689,9 @@
 				<item>:SCALE-OF</item>
 				<item>GR:DATE</item>
 			</element>
+			<element variable="kTAG_TYPE">
+				<item>:TEXT</item>
+			</element>
     	</tag>
         <edges>
 			<edge>
@@ -707,6 +728,9 @@
 				<item>MCPD:BREDCODE</item>
 				<item>:SCALE-OF</item>
 				<item>FAO-INSTITUTES:INSTCODE</item>
+			</element>
+			<element variable="kTAG_TYPE">
+				<item>:TEXT</item>
 			</element>
     	</tag>
         <edges>
@@ -1465,6 +1489,9 @@
 				<item>:SCALE-OF</item>
 				<item>FAO-INSTITUTES:INSTCODE</item>
 			</element>
+			<element variable="kTAG_TYPE">
+				<item>:TEXT</item>
+			</element>
     	</tag>
         <edges>
 			<edge>
@@ -1573,6 +1600,9 @@
 				<item>MCPD:DUPLSITE</item>
 				<item>:SCALE-OF</item>
 				<item>FAO-INSTITUTES:INSTCODE</item>
+			</element>
+			<element variable="kTAG_TYPE">
+				<item>:TEXT</item>
 			</element>
     	</tag>
         <edges>
@@ -2051,6 +2081,9 @@
 				<item>MCPD:SMTAINST</item>
 				<item>:SCALE-OF</item>
 				<item>FAO-INSTITUTES:INSTCODE</item>
+			</element>
+			<element variable="kTAG_TYPE">
+				<item>:TEXT</item>
 			</element>
     	</tag>
         <edges>
