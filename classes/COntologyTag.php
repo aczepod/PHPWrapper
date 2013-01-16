@@ -624,7 +624,7 @@ class COntologyTag extends CTag
 					return $tag;													// ==>
 				
 				throw new Exception
-					( "Tag not found",
+					( "Tag not found [$theIdentifier]",
 					  kERROR_NOT_FOUND );										// !@! ==>
 			
 			} // Provided tag identifier.

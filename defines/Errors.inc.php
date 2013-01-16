@@ -99,5 +99,12 @@ define( "kERROR_LOCKED",					-9 );			// Locked.
  */
 define( "kERROR_NOT_IMPLEMENTED",			-10 );			// Unimplemented.
 
+/**
+ * Duplicate.
+ *
+ * This code indicates the attempt to insert a duplicate resource.
+ */
+define( "kERROR_DUPLICATE",					-11 );			// Duplicate.
+
 
 ?>

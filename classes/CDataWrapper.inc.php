@@ -97,6 +97,17 @@ define( "kAPI_PAGE_LIMIT",			':WS:PAGE-LIMIT' );
 define( "kAPI_QUERY",				':WS:QUERY' );
 
 /**
+ * Data store object.
+ *
+ * This is the tag that represents the data store object, this value is used when committing
+ * data back to the data store; the parameter is provided as an encoded array or object.
+ *
+ * Type: encoded.
+ * Cardinality: one or zero.
+ */
+define( "kAPI_OBJECT",				':WS:OBJECT' );
+
+/**
  * Data fields.
  *
  * This is the tag that represents the data store object elements that should be returned:
@@ -134,17 +145,6 @@ define( "kAPI_SORT",				':WS:SORT' );
  * Cardinality: one or zero.
  */
 define( "kAPI_CLASS",				':WS:CLASS' );
-
-/**
- * Data store object.
- *
- * This is the tag that represents the data store object, this value is used when committing
- * data back to the data store; the parameter is provided as an encoded array or object.
- *
- * Type: encoded.
- * Cardinality: one or zero.
- */
-define( "kAPI_OBJECT",				':WS:OBJECT' );
 
 /*=======================================================================================
  *	WEB-SERVICE RESPONSE PARAMETERS														*
@@ -357,6 +357,40 @@ define( "kAPI_OP_RESOLVE",			'WS:OP:RESOLVE' );
  * {@link kTERM_STATUS_IDENTIFIER} return parameter.
  */
 define( "kAPI_OP_INSERT",			'WS:OP:INSERT' );
+
+/**
+ * MODIFY web-service.
+ *
+ * This is the tag that represents the MODIFY web-service operation, which modifies the
+ * attributes of the objects selected by the provided query.
+ *
+ * The service expects the following parameters:
+ *
+ * <ul>
+ *	<li><i>{@link kAPI_FORMAT}</i>: This parameter is required to indicate how to
+ *		encode the response.
+ *	<li><i>{@link kAPI_DATABASE}</i>: This parameter is required to indicate the working
+ *		database.
+ *	<li><i>{@link kAPI_CONTAINER}</i>: This parameter is required to indicate the working
+ *		container. Note that in some cases this parameter is not required, in particular,
+ *		when providing the {@link kAPI_CLASS} parameter, the container might be implicit.
+ *	<li><i>{@link kAPI_QUERY}</i>: This parameter contains the query that selects the items
+ *		to be modified.
+ *	<li><i>{@link kAPI_OBJECT}</i>: This parameter is required if the query was not provided
+ *		and contains the value by which the object will be identified, some classes feature
+ *		a <i>Resolve()</i> method, in that case  this value will be handled by that method,
+ *		if not, the value is assumed to be the object's {@link kTAG_NID}. If this parameter
+ *		is provided, the {@link kAPI_QUERY} parameter will be ignored.
+ *	<li><i>{@link kAPI_CLASS}</i>: If provided, this parameter indicates which instance the
+ *		object should be; if not provided, the {@link kAPI_CONTAINER} parameter is required
+ *		and the object will simply be added to the container.
+ * </ul>
+ *
+ * The service will attempt to <i>insert</i> the provided object, if successful, it will
+ * return the newly created {@link kTAG_NID} identifier in the
+ * {@link kTERM_STATUS_IDENTIFIER} return parameter.
+ */
+define( "kAPI_OP_MODIFY",			'WS:OP:MODIFY' );
 
 /**
  * DEL web-service.

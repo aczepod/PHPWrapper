@@ -1,0 +1,8 @@
+TERM
+====
+
+kTAG_NAMESPACE:		String or NULL.
+kTAG_LID:			String or NULL.
+kTAG_SYNONYMS:		Array di String.
+kTAG_LABEL:			Array [ lingua ] => String.
+kTAG_DEFINITION:	Array [ lingua ] => String.

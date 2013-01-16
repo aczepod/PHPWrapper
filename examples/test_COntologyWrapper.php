@@ -1100,6 +1100,154 @@ try
 		echo( kSTYLE_TABLE_POS );
 		echo( '<hr>' );
 	}
+	
+	//
+	// Init objects to be deleted.
+	//
+	$delete = Array();
+
+	echo( '<h4>Test SetNamespace in JSON</h4>' );
+	//
+	// Test SetNamespace in JSON.
+	//
+	$object = array
+	(
+		kTAG_LID		=>	'TEST',
+		kTAG_SYNONYMS	=>	array( 'test', 'prova' ),
+		kTAG_LABEL		=>	array( 'en' => 'Test namespace term' ),
+		kTAG_DEFINITION	=>	array( 'en' => 'A namespace term for testing purposes' )
+	);
+	$params = array( (kAPI_FORMAT.'='.kTYPE_JSON),
+					 (kAPI_OPERATION.'='.kAPI_OP_SetNamespace),
+					 (kAPI_LOG_REQUEST.'='.urlencode(JsonEncode(TRUE))),
+					 (kAPI_DATABASE.'='.urlencode(JsonEncode('ONTOLOGY'))),
+					 (kAPI_OBJECT.'='.urlencode(JsonEncode( $object ))),
+					 (kAPI_STAMP_REQUEST.'='.gettimeofday( true )) );
+	//
+	// Display.
+	//
+	echo( kSTYLE_TABLE_PRE );
+	echo( kSTYLE_ROW_PRE );
+	echo( kSTYLE_HEAD_PRE.'URL:'.kSTYLE_HEAD_POS );
+	$request = $url.'?'.implode( '&', $params );
+	echo( kSTYLE_DATA_PRE.htmlspecialchars( $request ).kSTYLE_DATA_POS );
+	echo( kSTYLE_ROW_POS );
+	echo( kSTYLE_ROW_PRE );
+	echo( kSTYLE_HEAD_PRE.'Response:'.kSTYLE_HEAD_POS );
+	$response = file_get_contents( $request );
+	echo( kSTYLE_DATA_PRE.$response.kSTYLE_DATA_POS );
+	echo( kSTYLE_ROW_POS );
+	echo( kSTYLE_ROW_PRE );
+	echo( kSTYLE_HEAD_PRE.'Decoded:'.kSTYLE_HEAD_POS );
+	$decoded = JsonDecode( $response );
+	echo( kSTYLE_DATA_PRE.'<pre>' ); print_r( $decoded ); echo( '</pre>'.kSTYLE_DATA_POS );
+	echo( kSTYLE_ROW_POS );
+	echo( kSTYLE_TABLE_POS );
+	$delete[] = $decoded[ ':WS:RESPONSE' ][ '_ids' ][ 0 ];
+	echo( '<hr>' );
+
+	echo( '<h4>Test SetTerm with GID namespace in JSON</h4>' );
+	//
+	// Test SetTerm with GID namespace in JSON.
+	//
+	$object = array
+	(
+		kTAG_NAMESPACE	=>	'TEST',
+		kTAG_LID		=>	'TEST',
+		kTAG_SYNONYMS	=>	array( 'test', 'prova' ),
+		kTAG_LABEL		=>	array( 'en' => 'Test namespace term' ),
+		kTAG_DEFINITION	=>	array( 'en' => 'A namespace term for testing purposes' )
+	);
+	$params = array( (kAPI_FORMAT.'='.kTYPE_JSON),
+					 (kAPI_OPERATION.'='.kAPI_OP_SetNamespace),
+					 (kAPI_LOG_REQUEST.'='.urlencode(JsonEncode(TRUE))),
+					 (kAPI_DATABASE.'='.urlencode(JsonEncode('ONTOLOGY'))),
+					 (kAPI_OBJECT.'='.urlencode(JsonEncode( $object ))),
+					 (kAPI_STAMP_REQUEST.'='.gettimeofday( true )) );
+	//
+	// Display.
+	//
+	echo( kSTYLE_TABLE_PRE );
+	echo( kSTYLE_ROW_PRE );
+	echo( kSTYLE_HEAD_PRE.'URL:'.kSTYLE_HEAD_POS );
+	$request = $url.'?'.implode( '&', $params );
+	echo( kSTYLE_DATA_PRE.htmlspecialchars( $request ).kSTYLE_DATA_POS );
+	echo( kSTYLE_ROW_POS );
+	echo( kSTYLE_ROW_PRE );
+	echo( kSTYLE_HEAD_PRE.'Response:'.kSTYLE_HEAD_POS );
+	$response = file_get_contents( $request );
+	echo( kSTYLE_DATA_PRE.$response.kSTYLE_DATA_POS );
+	echo( kSTYLE_ROW_POS );
+	echo( kSTYLE_ROW_PRE );
+	echo( kSTYLE_HEAD_PRE.'Decoded:'.kSTYLE_HEAD_POS );
+	$decoded = JsonDecode( $response );
+	echo( kSTYLE_DATA_PRE.'<pre>' ); print_r( $decoded ); echo( '</pre>'.kSTYLE_DATA_POS );
+	echo( kSTYLE_ROW_POS );
+	echo( kSTYLE_TABLE_POS );
+	$delete[] = $decoded[ ':WS:RESPONSE' ][ '_ids' ][ 0 ];
+	echo( '<hr>' );
+
+	echo( '<h4>Test SetTerm with NID namespace in JSON</h4>' );
+	//
+	// Test SetTerm with NID namespace in JSON.
+	//
+	$object = array
+	(
+		kTAG_NAMESPACE	=>	$decoded[ kAPI_STATUS ][ kTERM_STATUS_IDENTIFIER ],
+		kTAG_LID		=>	'TEST',
+		kTAG_SYNONYMS	=>	array( 'test', 'prova' ),
+		kTAG_LABEL		=>	array( 'en' => 'Test namespace term' ),
+		kTAG_DEFINITION	=>	array( 'en' => 'A namespace term for testing purposes' )
+	);
+	$params = array( (kAPI_FORMAT.'='.kTYPE_JSON),
+					 (kAPI_OPERATION.'='.kAPI_OP_SetNamespace),
+					 (kAPI_LOG_REQUEST.'='.urlencode(JsonEncode(TRUE))),
+					 (kAPI_DATABASE.'='.urlencode(JsonEncode('ONTOLOGY'))),
+					 (kAPI_OBJECT.'='.urlencode(JsonEncode( $object ))),
+					 (kAPI_STAMP_REQUEST.'='.gettimeofday( true )) );
+	//
+	// Display.
+	//
+	echo( kSTYLE_TABLE_PRE );
+	echo( kSTYLE_ROW_PRE );
+	echo( kSTYLE_HEAD_PRE.'URL:'.kSTYLE_HEAD_POS );
+	$request = $url.'?'.implode( '&', $params );
+	echo( kSTYLE_DATA_PRE.htmlspecialchars( $request ).kSTYLE_DATA_POS );
+	echo( kSTYLE_ROW_POS );
+	echo( kSTYLE_ROW_PRE );
+	echo( kSTYLE_HEAD_PRE.'Response:'.kSTYLE_HEAD_POS );
+	$response = file_get_contents( $request );
+	echo( kSTYLE_DATA_PRE.$response.kSTYLE_DATA_POS );
+	echo( kSTYLE_ROW_POS );
+	echo( kSTYLE_ROW_PRE );
+	echo( kSTYLE_HEAD_PRE.'Decoded:'.kSTYLE_HEAD_POS );
+	$decoded = JsonDecode( $response );
+	echo( kSTYLE_DATA_PRE.'<pre>' ); print_r( $decoded ); echo( '</pre>'.kSTYLE_DATA_POS );
+	echo( kSTYLE_ROW_POS );
+	echo( kSTYLE_TABLE_POS );
+	$delete[] = $decoded[ ':WS:RESPONSE' ][ '_ids' ][ 0 ];
+	echo( '<hr>' );
+	
+	//
+	// Delete terms.
+	//
+	echo( '<hr>Deleted:' );
+	foreach( $delete as $record )
+	{
+		$params = array( (kAPI_FORMAT.'='.kTYPE_JSON),
+						 (kAPI_OPERATION.'='.kAPI_OP_DELETE),
+						 (kAPI_DATABASE.'='.urlencode(JsonEncode('ONTOLOGY'))),
+						 (kAPI_CLASS.'='.urlencode(JsonEncode('COntologyTerm'))),
+						 (kAPI_OBJECT.'='.urlencode(JsonEncode($record))) );
+		$result = JsonDecode( file_get_contents( $url.'?'.implode( '&', $params ) ) );
+		if( $result[ ':WS:STATUS' ][ ':STATUS-CODE' ] )
+		{
+			echo( '<pre>' );
+			print_r( $result );
+			exit( '</pre>' );
+		}
+	}
+exit;
 
 	echo( '<h4>Test GetTerms in JSON</h4>' );
 	//

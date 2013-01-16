@@ -130,6 +130,53 @@ define( "kAPI_COLLECTION_TAG",					'_tag' );
  *======================================================================================*/
 
 /**
+ * SetTerm web-service.
+ *
+ * This is the tag that represents the SetTerm web-service operation, which inserts the
+ * provided object as a new term.
+ *
+ * The service expects the following parameters:
+ *
+ * <ul>
+ *	<li><i>{@link kAPI_FORMAT}</i>: This parameter is required to indicate how to
+ *		encode the response.
+ *	<li><i>{@link kAPI_DATABASE}</i>: This parameter is required to indicate the working
+ *		database.
+ *	<li><i>{@link kAPI_OBJECT}</i>: This parameter is required and contains an array
+ *		corresponding to the new term record, the following attributes will not be
+ *		considered: {@link kTAG_NAMESPACE_REFS}, {@link kTAG_SCALES}, {@link kTAG_METHODS},
+ *		{@link kTAG_FEATURES}, {@link kTAG_NODES}, {@link kTAG_KIND}, {@link kTAG_TERM},
+ *		{@link kTAG_GID}, {@link kTAG_CLASS} and {@link kTAG_NID}.
+ *	<li><i>{@link kAPI_CLASS}</i>: If provided, this parameter indicates which instance the
+ *		object should be; if not provided, the {@link kAPI_CONTAINER} parameter is required
+ *		and the object will simply be added to the container.
+ * </ul>
+ *
+ * The service will attempt to <i>insert</i> the provided object, if successful, it will
+ * return the newly created {@link kTAG_NID} identifier in the
+ * {@link kTERM_STATUS_IDENTIFIER} return parameter and the updated object in the
+ * {@link kAPI_RESPONSE}.
+ *
+ * <i>Note that all term references, specifically the {@link kTAG_NAMESPACE} attribute, must
+ * be provided as either a {@link CDataTypeBinary} instance, in which case it is assumed to
+ * be the {@link kTAG_NID} of the namespace, or as a string, in which case it is supposed to
+ * be the namespace's {@link kTAG_GID}.</i>
+ */
+define( "kAPI_OP_SetTerm",			'WS:OP:SetTerm' );
+
+/**
+ * SetNamespace web-service.
+ *
+ * This is the tag that represents the SetNamespace web-service operation, which inserts the
+ * provided object as a new namespace term.
+ *
+ * The service expects the same parameters as the {@link kAPI_OP_SetTerm} service and will
+ * perform the same actions, except that it will set the term {@link kTAG_KIND} to
+ * {@link kKIND_NAMESPACE}.
+ */
+define( "kAPI_OP_SetNamespace",		'WS:OP:SetNamespace' );
+
+/**
  * GetTerm web-service.
  *
  * This is the tag that represents the GetTerm web-service operation, which will return a
@@ -159,37 +206,6 @@ define( "kAPI_COLLECTION_TAG",					'_tag' );
  * </ul>
  */
 define( "kAPI_OP_GetTerm",			'WS:OP:GetTerm' );
-
-/**
- * GetNode web-service.
- *
- * This is the tag that represents the GetNode web-service operation, which will return a
- * list of nodes according to the provided parameters:
- *
- * The service expects the following parameters:
- *
- * <ul>
- *	<li><i>{@link kAPI_FORMAT}</i>: This parameter is required to indicate how to encode the
- *		response.
- *	<li><i>{@link kAPI_DATABASE}</i>: This parameter is required to indicate the working
- *		database.
- *	<li><i>{@link kAPI_SELECT}</i>: This parameter is an array listing which fields are to
- *		be returned by the query, all fields not included in the list will be ignored. An
- *		empty list is equivalent to requesting all fields.
- *	<li><i>{@link kAPI_SORT}</i>: This parameter is an array listing which fields are to
- *		be considered in the sort order, the array is indexed by the field name and the
- *		value should be a number that represents the sense: positive will be considered
- *		<i>ascending</i> and negative values <i>descending</i>; zero values will be ignored.
- *	<li><i>{@link kAPI_PAGE_LIMIT}</i>:This parameter is required or enforced, it represents
- *		the maximum number of elements that the query should return, the default value is
- *		{@link kDEFAULT_LIMIT}.
- *	<li><i>{@link kAPI_QUERY}</i>: This parameter will hold the selection criteria for the
- *		node. <i>It is possible to provide the {@link kTAG_TERM} parameter in the query
- *		both as the term {@link kTAG_GID} or the actual term reference: the service will
- *		take care of converting the {@link kTAG_GID} to the {@link kTAG_NID}.</i>
- * </ul>
- */
-define( "kAPI_OP_GetNode",			'WS:OP:GetNode' );
 
 /**
  * GetVertex web-service.
