@@ -1100,11 +1100,12 @@ try
 		echo( kSTYLE_TABLE_POS );
 		echo( '<hr>' );
 	}
-	
+
 	//
-	// Init objects to be deleted.
+	// Init section storage.
 	//
-	$delete = Array();
+	$terms = Array();
+	$new_url = 'http://localhost/mywrapper/GraphWrapper.php';
 
 	echo( '<h4>Test SetNamespace in JSON</h4>' );
 	//
@@ -1129,7 +1130,7 @@ try
 	echo( kSTYLE_TABLE_PRE );
 	echo( kSTYLE_ROW_PRE );
 	echo( kSTYLE_HEAD_PRE.'URL:'.kSTYLE_HEAD_POS );
-	$request = $url.'?'.implode( '&', $params );
+	$request = $new_url.'?'.implode( '&', $params );
 	echo( kSTYLE_DATA_PRE.htmlspecialchars( $request ).kSTYLE_DATA_POS );
 	echo( kSTYLE_ROW_POS );
 	echo( kSTYLE_ROW_PRE );
@@ -1143,7 +1144,8 @@ try
 	echo( kSTYLE_DATA_PRE.'<pre>' ); print_r( $decoded ); echo( '</pre>'.kSTYLE_DATA_POS );
 	echo( kSTYLE_ROW_POS );
 	echo( kSTYLE_TABLE_POS );
-	$delete[] = $decoded[ ':WS:RESPONSE' ][ '_ids' ][ 0 ];
+	$terms[] = $decoded[ ':WS:RESPONSE' ][ '_ids' ][ 0 ];
+	$namespace = $decoded[ ':WS:STATUS' ][ ':STATUS-IDENTIFIER' ];
 	echo( '<hr>' );
 
 	echo( '<h4>Test SetTerm with GID namespace in JSON</h4>' );
@@ -1170,7 +1172,7 @@ try
 	echo( kSTYLE_TABLE_PRE );
 	echo( kSTYLE_ROW_PRE );
 	echo( kSTYLE_HEAD_PRE.'URL:'.kSTYLE_HEAD_POS );
-	$request = $url.'?'.implode( '&', $params );
+	$request = $new_url.'?'.implode( '&', $params );
 	echo( kSTYLE_DATA_PRE.htmlspecialchars( $request ).kSTYLE_DATA_POS );
 	echo( kSTYLE_ROW_POS );
 	echo( kSTYLE_ROW_PRE );
@@ -1184,7 +1186,8 @@ try
 	echo( kSTYLE_DATA_PRE.'<pre>' ); print_r( $decoded ); echo( '</pre>'.kSTYLE_DATA_POS );
 	echo( kSTYLE_ROW_POS );
 	echo( kSTYLE_TABLE_POS );
-	$delete[] = $decoded[ ':WS:RESPONSE' ][ '_ids' ][ 0 ];
+	$terms[] = $decoded[ ':WS:RESPONSE' ][ '_ids' ][ 0 ];
+	$term1 = $decoded[ ':WS:STATUS' ][ ':STATUS-IDENTIFIER' ];
 	echo( '<hr>' );
 
 	echo( '<h4>Test SetTerm with NID namespace in JSON</h4>' );
@@ -1211,7 +1214,7 @@ try
 	echo( kSTYLE_TABLE_PRE );
 	echo( kSTYLE_ROW_PRE );
 	echo( kSTYLE_HEAD_PRE.'URL:'.kSTYLE_HEAD_POS );
-	$request = $url.'?'.implode( '&', $params );
+	$request = $new_url.'?'.implode( '&', $params );
 	echo( kSTYLE_DATA_PRE.htmlspecialchars( $request ).kSTYLE_DATA_POS );
 	echo( kSTYLE_ROW_POS );
 	echo( kSTYLE_ROW_PRE );
@@ -1225,29 +1228,9 @@ try
 	echo( kSTYLE_DATA_PRE.'<pre>' ); print_r( $decoded ); echo( '</pre>'.kSTYLE_DATA_POS );
 	echo( kSTYLE_ROW_POS );
 	echo( kSTYLE_TABLE_POS );
-	$delete[] = $decoded[ ':WS:RESPONSE' ][ '_ids' ][ 0 ];
+	$terms[] = $decoded[ ':WS:RESPONSE' ][ '_ids' ][ 0 ];
+	$term2 = $decoded[ ':WS:STATUS' ][ ':STATUS-IDENTIFIER' ];
 	echo( '<hr>' );
-	
-	//
-	// Delete terms.
-	//
-	echo( '<hr>Deleted:' );
-	foreach( $delete as $record )
-	{
-		$params = array( (kAPI_FORMAT.'='.kTYPE_JSON),
-						 (kAPI_OPERATION.'='.kAPI_OP_DELETE),
-						 (kAPI_DATABASE.'='.urlencode(JsonEncode('ONTOLOGY'))),
-						 (kAPI_CLASS.'='.urlencode(JsonEncode('COntologyTerm'))),
-						 (kAPI_OBJECT.'='.urlencode(JsonEncode($record))) );
-		$result = JsonDecode( file_get_contents( $url.'?'.implode( '&', $params ) ) );
-		if( $result[ ':WS:STATUS' ][ ':STATUS-CODE' ] )
-		{
-			echo( '<pre>' );
-			print_r( $result );
-			exit( '</pre>' );
-		}
-	}
-exit;
 
 	echo( '<h4>Test GetTerms in JSON</h4>' );
 	//
@@ -1259,10 +1242,10 @@ exit;
 		(
 			array
 			(
-				kOFFSET_QUERY_SUBJECT => kTAG_KIND,
+				kOFFSET_QUERY_SUBJECT => kTAG_LID,
 				kOFFSET_QUERY_OPERATOR => kOPERATOR_EQUAL,
 				kOFFSET_QUERY_TYPE => kTYPE_STRING,
-				kOFFSET_QUERY_DATA => kKIND_NAMESPACE
+				kOFFSET_QUERY_DATA => 'TEST'
 			)
 		)
 	);
@@ -1286,7 +1269,7 @@ exit;
 	echo( kSTYLE_TABLE_PRE );
 	echo( kSTYLE_ROW_PRE );
 	echo( kSTYLE_HEAD_PRE.'URL:'.kSTYLE_HEAD_POS );
-	$request = $url.'?'.implode( '&', $params );
+	$request = $new_url.'?'.implode( '&', $params );
 	echo( kSTYLE_DATA_PRE.htmlspecialchars( $request ).kSTYLE_DATA_POS );
 	echo( kSTYLE_ROW_POS );
 	echo( kSTYLE_ROW_PRE );
@@ -1315,7 +1298,7 @@ exit;
 				kOFFSET_QUERY_SUBJECT => kTAG_NAMESPACE,
 				kOFFSET_QUERY_OPERATOR => kOPERATOR_EQUAL,
 				kOFFSET_QUERY_TYPE => kTYPE_STRING,
-				kOFFSET_QUERY_DATA => 'ISO:3166'
+				kOFFSET_QUERY_DATA => 'TEST'
 			)
 		)
 	);
@@ -1339,7 +1322,7 @@ exit;
 	echo( kSTYLE_TABLE_PRE );
 	echo( kSTYLE_ROW_PRE );
 	echo( kSTYLE_HEAD_PRE.'URL:'.kSTYLE_HEAD_POS );
-	$request = $url.'?'.implode( '&', $params );
+	$request = $new_url.'?'.implode( '&', $params );
 	echo( kSTYLE_DATA_PRE.htmlspecialchars( $request ).kSTYLE_DATA_POS );
 	echo( kSTYLE_ROW_POS );
 	echo( kSTYLE_ROW_PRE );
@@ -1357,7 +1340,7 @@ exit;
 
 	echo( '<h4>Test GetTerms by namespace NID in JSON</h4>' );
 	//
-	// Test query GetTerms by namespace GID in JSON.
+	// Test GetTerms by namespace NID in JSON.
 	//
 	$query = array
 	(
@@ -1368,7 +1351,7 @@ exit;
 				kOFFSET_QUERY_SUBJECT => kTAG_NAMESPACE,
 				kOFFSET_QUERY_OPERATOR => kOPERATOR_EQUAL,
 				kOFFSET_QUERY_TYPE => kTYPE_BINARY_STRING,
-				kOFFSET_QUERY_DATA => new CDataTypeBinary( md5( 'ISO:3166', TRUE ) )
+				kOFFSET_QUERY_DATA => $namespace
 			)
 		)
 	);
@@ -1390,7 +1373,7 @@ exit;
 	echo( kSTYLE_TABLE_PRE );
 	echo( kSTYLE_ROW_PRE );
 	echo( kSTYLE_HEAD_PRE.'URL:'.kSTYLE_HEAD_POS );
-	$request = $url.'?'.implode( '&', $params );
+	$request = $new_url.'?'.implode( '&', $params );
 	echo( kSTYLE_DATA_PRE.htmlspecialchars( $request ).kSTYLE_DATA_POS );
 	echo( kSTYLE_ROW_POS );
 	echo( kSTYLE_ROW_PRE );
@@ -1406,9 +1389,9 @@ exit;
 	echo( kSTYLE_TABLE_POS );
 	echo( '<hr>' );
 
-	echo( '<h4>Test GetNodes in JSON</h4>' );
+	echo( '<h4>Test GetTerms with referenced term in JSON</h4>' );
 	//
-	// Test query GetNodes in JSON.
+	// Test GetTerms with referenced term in JSON.
 	//
 	$query = array
 	(
@@ -1416,26 +1399,20 @@ exit;
 		(
 			array
 			(
-				kOFFSET_QUERY_SUBJECT => kTAG_KIND,
+				kOFFSET_QUERY_SUBJECT => kTAG_LID,
 				kOFFSET_QUERY_OPERATOR => kOPERATOR_EQUAL,
 				kOFFSET_QUERY_TYPE => kTYPE_STRING,
-				kOFFSET_QUERY_DATA => kKIND_ROOT
+				kOFFSET_QUERY_DATA => 'it'
 			)
 		)
 	);
-	$sort = array( kTAG_GID => 1 );
-	$fields = array( kTAG_GID, kTAG_LABEL );
-	$languages = array( 'en', 'fr' );
 	$params = array( (kAPI_FORMAT.'='.kTYPE_JSON),
-					 (kAPI_OPERATION.'='.kAPI_OP_GetNode),
+					 (kAPI_OPERATION.'='.kAPI_OP_GetTerm),
 					 (kAPI_LOG_REQUEST.'='.urlencode(JsonEncode(TRUE))),
 					 (kAPI_PAGE_START.'='.urlencode(JsonEncode(0))),
 					 (kAPI_PAGE_LIMIT.'='.urlencode(JsonEncode(5))),
 					 (kAPI_DATABASE.'='.urlencode(JsonEncode('ONTOLOGY'))),
 					 (kAPI_QUERY.'='.urlencode(JsonEncode( $query ))),
-					 (kAPI_SORT.'='.urlencode(JsonEncode( $sort ))),
-					 (kAPI_SELECT.'='.urlencode(JsonEncode( $fields ))),
-					 (kAPI_LANGUAGE.'='.urlencode(JsonEncode( $languages ))),
 					 (kAPI_STAMP_REQUEST.'='.gettimeofday( true )) );
 	//
 	// Display.
@@ -1443,7 +1420,7 @@ exit;
 	echo( kSTYLE_TABLE_PRE );
 	echo( kSTYLE_ROW_PRE );
 	echo( kSTYLE_HEAD_PRE.'URL:'.kSTYLE_HEAD_POS );
-	$request = $url.'?'.implode( '&', $params );
+	$request = $new_url.'?'.implode( '&', $params );
 	echo( kSTYLE_DATA_PRE.htmlspecialchars( $request ).kSTYLE_DATA_POS );
 	echo( kSTYLE_ROW_POS );
 	echo( kSTYLE_ROW_PRE );
@@ -1459,36 +1436,29 @@ exit;
 	echo( kSTYLE_TABLE_POS );
 	echo( '<hr>' );
 
-	echo( '<h4>Test GetNodes in JSON</h4>' );
 	//
-	// Test query GetNodes in JSON.
+	// Init objects to be deleted.
 	//
-	$query = array
+	$nodes = Array();
+
+	echo( '<h4>Test SetMasterVertex in JSON by term GID</h4>' );
+	//
+	// Test SetMasterVertex in JSON by term GID.
+	//
+	$object = array
 	(
-		kOPERATOR_AND => array
-		(
-			array
-			(
-				kOFFSET_QUERY_SUBJECT => kTAG_KIND,
-				kOFFSET_QUERY_OPERATOR => kOPERATOR_EQUAL,
-				kOFFSET_QUERY_TYPE => kTYPE_STRING,
-				kOFFSET_QUERY_DATA => kKIND_ROOT
-			)
-		)
+		kTAG_TERM		=>	'TEST:TEST',
+		kTAG_CATEGORY	=>	array( 'Category 1', 'Category 2' ),
+		kTAG_KIND		=>	array( kKIND_FEATURE, kKIND_SCALE ),
+		kTAG_KIND		=>	array( kTYPE_STRING, kTYPE_ARRAY ),
+		kTAG_DESCRIPTION	=>	array( 'en' => 'A node for testing purposes' )
 	);
-	$sort = array( kTAG_GID => 1 );
-	$fields = array( kTAG_GID, kTAG_LABEL );
-	$languages = array( 'en', 'fr' );
 	$params = array( (kAPI_FORMAT.'='.kTYPE_JSON),
-					 (kAPI_OPERATION.'='.kAPI_OP_GetNode),
+					 (kAPI_OPERATION.'='.kAPI_OP_SetVertex),
 					 (kAPI_LOG_REQUEST.'='.urlencode(JsonEncode(TRUE))),
-					 (kAPI_PAGE_START.'='.urlencode(JsonEncode(0))),
-					 (kAPI_PAGE_LIMIT.'='.urlencode(JsonEncode(5))),
 					 (kAPI_DATABASE.'='.urlencode(JsonEncode('ONTOLOGY'))),
-					 (kAPI_QUERY.'='.urlencode(JsonEncode( $query ))),
-					 (kAPI_SORT.'='.urlencode(JsonEncode( $sort ))),
-					 (kAPI_SELECT.'='.urlencode(JsonEncode( $fields ))),
-					 (kAPI_LANGUAGE.'='.urlencode(JsonEncode( $languages ))),
+					 (kAPI_CLASS.'='.urlencode(JsonEncode( 'COntologyMasterVertex' ))),
+					 (kAPI_OBJECT.'='.urlencode(JsonEncode( $object ))),
 					 (kAPI_STAMP_REQUEST.'='.gettimeofday( true )) );
 	//
 	// Display.
@@ -1496,7 +1466,7 @@ exit;
 	echo( kSTYLE_TABLE_PRE );
 	echo( kSTYLE_ROW_PRE );
 	echo( kSTYLE_HEAD_PRE.'URL:'.kSTYLE_HEAD_POS );
-	$request = $url.'?'.implode( '&', $params );
+	$request = $new_url.'?'.implode( '&', $params );
 	echo( kSTYLE_DATA_PRE.htmlspecialchars( $request ).kSTYLE_DATA_POS );
 	echo( kSTYLE_ROW_POS );
 	echo( kSTYLE_ROW_PRE );
@@ -1510,38 +1480,27 @@ exit;
 	echo( kSTYLE_DATA_PRE.'<pre>' ); print_r( $decoded ); echo( '</pre>'.kSTYLE_DATA_POS );
 	echo( kSTYLE_ROW_POS );
 	echo( kSTYLE_TABLE_POS );
+	$nodes[] = $decoded[ ':WS:STATUS' ][ ':STATUS-IDENTIFIER' ];
 	echo( '<hr>' );
 
-	echo( '<h4>Test GetNodes by term GID in JSON</h4>' );
+	echo( '<h4>Test SetAliasVertex in JSON by term NID</h4>' );
 	//
-	// Test query GetNodes by term GID in JSON.
+	// Test SetAliasVertex in JSON by term NID.
 	//
-	$query = array
+	$object = array
 	(
-		kOPERATOR_AND => array
-		(
-			array
-			(
-				kOFFSET_QUERY_SUBJECT => kTAG_TERM,
-				kOFFSET_QUERY_OPERATOR => kOPERATOR_EQUAL,
-				kOFFSET_QUERY_TYPE => kTYPE_STRING,
-				kOFFSET_QUERY_DATA => 'ISO'
-			)
-		)
+		kTAG_TERM		=>	$term1,
+		kTAG_CATEGORY	=>	array( 'Category 3', 'Category 4' ),
+		kTAG_KIND		=>	array( kKIND_FEATURE, kKIND_METHOD, kKIND_SCALE ),
+		kTAG_KIND		=>	array( kTYPE_STRING, kTYPE_ARRAY, kTYPE_REQUIRED ),
+		kTAG_DESCRIPTION	=>	array( 'en' => 'A node for testing purposes' )
 	);
-	$sort = array( kTAG_GID => -1 );
-	$fields = array( kTAG_GID, kTAG_LABEL );
-	$languages = array( 'en', 'fr' );
 	$params = array( (kAPI_FORMAT.'='.kTYPE_JSON),
-					 (kAPI_OPERATION.'='.kAPI_OP_GetNode),
+					 (kAPI_OPERATION.'='.kAPI_OP_SetVertex),
 					 (kAPI_LOG_REQUEST.'='.urlencode(JsonEncode(TRUE))),
-					 (kAPI_PAGE_START.'='.urlencode(JsonEncode(0))),
-					 (kAPI_PAGE_LIMIT.'='.urlencode(JsonEncode(5))),
 					 (kAPI_DATABASE.'='.urlencode(JsonEncode('ONTOLOGY'))),
-					 (kAPI_QUERY.'='.urlencode(JsonEncode( $query ))),
-					 (kAPI_SORT.'='.urlencode(JsonEncode( $sort ))),
-					 (kAPI_SELECT.'='.urlencode(JsonEncode( $fields ))),
-					 (kAPI_LANGUAGE.'='.urlencode(JsonEncode( $languages ))),
+					 (kAPI_CLASS.'='.urlencode(JsonEncode( 'COntologyAliasVertex' ))),
+					 (kAPI_OBJECT.'='.urlencode(JsonEncode( $object ))),
 					 (kAPI_STAMP_REQUEST.'='.gettimeofday( true )) );
 	//
 	// Display.
@@ -1549,7 +1508,7 @@ exit;
 	echo( kSTYLE_TABLE_PRE );
 	echo( kSTYLE_ROW_PRE );
 	echo( kSTYLE_HEAD_PRE.'URL:'.kSTYLE_HEAD_POS );
-	$request = $url.'?'.implode( '&', $params );
+	$request = $new_url.'?'.implode( '&', $params );
 	echo( kSTYLE_DATA_PRE.htmlspecialchars( $request ).kSTYLE_DATA_POS );
 	echo( kSTYLE_ROW_POS );
 	echo( kSTYLE_ROW_PRE );
@@ -1563,36 +1522,27 @@ exit;
 	echo( kSTYLE_DATA_PRE.'<pre>' ); print_r( $decoded ); echo( '</pre>'.kSTYLE_DATA_POS );
 	echo( kSTYLE_ROW_POS );
 	echo( kSTYLE_TABLE_POS );
+	$nodes[] = $decoded[ ':WS:STATUS' ][ ':STATUS-IDENTIFIER' ];
 	echo( '<hr>' );
 
-	echo( '<h4>Test GetNodes by term NID in JSON</h4>' );
+	echo( '<h4>Test duplicate SetMasterVertex in JSON</h4>' );
 	//
-	// Test query GetNodes by term NID in JSON.
+	// Test duplicate SetMasterVertex in JSON.
 	//
-	$query = array
+	$object = array
 	(
-		kOPERATOR_AND => array
-		(
-			array
-			(
-				kOFFSET_QUERY_SUBJECT => kTAG_TERM,
-				kOFFSET_QUERY_OPERATOR => kOPERATOR_EQUAL,
-				kOFFSET_QUERY_TYPE => kTYPE_BINARY_STRING,
-				kOFFSET_QUERY_DATA => new CDataTypeBinary( md5( 'ISO', TRUE ) )
-			)
-		)
+		kTAG_TERM		=>	'TEST:TEST',
+		kTAG_CATEGORY	=>	array( 'Category 1', 'Category 2' ),
+		kTAG_KIND		=>	array( kKIND_FEATURE, kKIND_SCALE ),
+		kTAG_KIND		=>	array( kTYPE_STRING, kTYPE_ARRAY ),
+		kTAG_DESCRIPTION	=>	array( 'en' => 'A node for testing purposes' )
 	);
-	$fields = array( kTAG_GID, kTAG_LABEL );
-	$languages = array( 'en', 'fr' );
 	$params = array( (kAPI_FORMAT.'='.kTYPE_JSON),
-					 (kAPI_OPERATION.'='.kAPI_OP_GetNode),
+					 (kAPI_OPERATION.'='.kAPI_OP_SetVertex),
 					 (kAPI_LOG_REQUEST.'='.urlencode(JsonEncode(TRUE))),
-					 (kAPI_PAGE_START.'='.urlencode(JsonEncode(0))),
-					 (kAPI_PAGE_LIMIT.'='.urlencode(JsonEncode(5))),
 					 (kAPI_DATABASE.'='.urlencode(JsonEncode('ONTOLOGY'))),
-					 (kAPI_QUERY.'='.urlencode(JsonEncode( $query ))),
-					 (kAPI_SELECT.'='.urlencode(JsonEncode( $fields ))),
-					 (kAPI_LANGUAGE.'='.urlencode(JsonEncode( $languages ))),
+					 (kAPI_CLASS.'='.urlencode(JsonEncode( 'COntologyMasterVertex' ))),
+					 (kAPI_OBJECT.'='.urlencode(JsonEncode( $object ))),
 					 (kAPI_STAMP_REQUEST.'='.gettimeofday( true )) );
 	//
 	// Display.
@@ -1600,7 +1550,7 @@ exit;
 	echo( kSTYLE_TABLE_PRE );
 	echo( kSTYLE_ROW_PRE );
 	echo( kSTYLE_HEAD_PRE.'URL:'.kSTYLE_HEAD_POS );
-	$request = $url.'?'.implode( '&', $params );
+	$request = $new_url.'?'.implode( '&', $params );
 	echo( kSTYLE_DATA_PRE.htmlspecialchars( $request ).kSTYLE_DATA_POS );
 	echo( kSTYLE_ROW_POS );
 	echo( kSTYLE_ROW_PRE );
@@ -1614,6 +1564,11 @@ exit;
 	echo( kSTYLE_DATA_PRE.'<pre>' ); print_r( $decoded ); echo( '</pre>'.kSTYLE_DATA_POS );
 	echo( kSTYLE_ROW_POS );
 	echo( kSTYLE_TABLE_POS );
+	if( ! in_array( $decoded[ ':WS:STATUS' ][ ':STATUS-IDENTIFIER' ], $nodes ) )
+	{
+		echo( '<font color="red">FAILED!!</font><br>' );
+		$nodes[] = $decoded[ ':WS:STATUS' ][ ':STATUS-IDENTIFIER' ];
+	}
 	echo( '<hr>' );
 
 	echo( '<h4>Test GetVertex in JSON</h4>' );
@@ -1626,14 +1581,14 @@ exit;
 		(
 			array
 			(
-				kOFFSET_QUERY_SUBJECT => kTAG_KIND,
+				kOFFSET_QUERY_SUBJECT => kTAG_LID,
 				kOFFSET_QUERY_OPERATOR => kOPERATOR_EQUAL,
 				kOFFSET_QUERY_TYPE => kTYPE_STRING,
-				kOFFSET_QUERY_DATA => kKIND_ROOT
+				kOFFSET_QUERY_DATA => 'TEST'
 			)
 		)
 	);
-	$fields = array( kTAG_GID, kTAG_LABEL, kTAG_KIND, kTAG_TYPE );
+	$fields = array( kTAG_GID, kTAG_LABEL, kTAG_KIND, kTAG_TYPE, kTAG_CLASS );
 	$params = array( (kAPI_FORMAT.'='.kTYPE_JSON),
 					 (kAPI_OPERATION.'='.kAPI_OP_GetVertex),
 					 (kAPI_LOG_REQUEST.'='.urlencode(JsonEncode(TRUE))),
@@ -1649,6 +1604,103 @@ exit;
 	echo( kSTYLE_TABLE_PRE );
 	echo( kSTYLE_ROW_PRE );
 	echo( kSTYLE_HEAD_PRE.'URL:'.kSTYLE_HEAD_POS );
+	$request = $new_url.'?'.implode( '&', $params );
+	echo( kSTYLE_DATA_PRE.htmlspecialchars( $request ).kSTYLE_DATA_POS );
+	echo( kSTYLE_ROW_POS );
+	echo( kSTYLE_ROW_PRE );
+	echo( kSTYLE_HEAD_PRE.'Response:'.kSTYLE_HEAD_POS );
+	$response = file_get_contents( $request );
+	echo( kSTYLE_DATA_PRE.$response.kSTYLE_DATA_POS );
+	echo( kSTYLE_ROW_POS );
+	echo( kSTYLE_ROW_PRE );
+	echo( kSTYLE_HEAD_PRE.'Decoded:'.kSTYLE_HEAD_POS );
+	$decoded = JsonDecode( $response );
+	echo( kSTYLE_DATA_PRE.'<pre>' ); print_r( $decoded ); echo( '</pre>'.kSTYLE_DATA_POS );
+	echo( kSTYLE_ROW_POS );
+	echo( kSTYLE_TABLE_POS );
+	echo( '<hr>' );
+	
+	//
+	// Delete terms.
+	//
+	echo( '<hr>Deleted terms:' );
+	foreach( $terms as $id )
+	{
+		$params = array( (kAPI_FORMAT.'='.kTYPE_JSON),
+						 (kAPI_OPERATION.'='.kAPI_OP_DELETE),
+						 (kAPI_DATABASE.'='.urlencode(JsonEncode('ONTOLOGY'))),
+						 (kAPI_CLASS.'='.urlencode(JsonEncode('COntologyTerm'))),
+						 (kAPI_OBJECT.'='.urlencode(JsonEncode($id))) );
+		$result = JsonDecode( file_get_contents( $new_url.'?'.implode( '&', $params ) ) );
+		if( $result[ ':WS:STATUS' ][ ':STATUS-CODE' ] )
+		{
+			echo( '<pre>' );
+			print_r( $result );
+			exit( '</pre>' );
+		}
+		echo( " $id" );
+	}
+	echo( '<hr>' );
+	
+	//
+	// Delete nodes.
+	//
+	echo( '<hr>Deleted nodes:' );
+	foreach( $nodes as $id )
+	{
+		$params = array( (kAPI_FORMAT.'='.kTYPE_JSON),
+						 (kAPI_OPERATION.'='.kAPI_OP_DELETE),
+						 (kAPI_DATABASE.'='.urlencode(JsonEncode('ONTOLOGY'))),
+						 (kAPI_CLASS.'='.urlencode(JsonEncode('COntologyNode'))),
+						 (kAPI_OBJECT.'='.urlencode(JsonEncode($id))) );
+		$result = JsonDecode( file_get_contents( $new_url.'?'.implode( '&', $params ) ) );
+		if( $result[ ':WS:STATUS' ][ ':STATUS-CODE' ] )
+		{
+			echo( '<pre>' );
+			print_r( $result );
+			exit( '</pre>' );
+		}
+		echo( " $id" );
+	}
+	echo( '<hr>' );
+
+	echo( '<h4>Test GetTags in JSON</h4>' );
+	//
+	// Test query GetTags in JSON.
+	//
+	$query = array
+	(
+		kOPERATOR_AND => array
+		(
+			array
+			(
+				kOFFSET_QUERY_SUBJECT => kTAG_NID,
+				kOFFSET_QUERY_OPERATOR => kOPERATOR_IN,
+				kOFFSET_QUERY_TYPE => kTYPE_INT,
+				kOFFSET_QUERY_DATA => array( kTAG_LID, kTAG_GID, kTAG_UID )
+			)
+		)
+	);
+	$sort = array( kTAG_GID => 1 );
+	$fields = array( kTAG_GID, kTAG_LABEL );
+	$languages = array( 'en', 'fr' );
+	$params = array( (kAPI_FORMAT.'='.kTYPE_JSON),
+					 (kAPI_OPERATION.'='.kAPI_OP_GetTag),
+					 (kAPI_LOG_REQUEST.'='.urlencode(JsonEncode(TRUE))),
+					 (kAPI_PAGE_START.'='.urlencode(JsonEncode(0))),
+					 (kAPI_PAGE_LIMIT.'='.urlencode(JsonEncode(5))),
+					 (kAPI_DATABASE.'='.urlencode(JsonEncode('ONTOLOGY'))),
+					 (kAPI_QUERY.'='.urlencode(JsonEncode( $query ))),
+					 (kAPI_SORT.'='.urlencode(JsonEncode( $sort ))),
+					 (kAPI_SELECT.'='.urlencode(JsonEncode( $fields ))),
+					 (kAPI_LANGUAGE.'='.urlencode(JsonEncode( $languages ))),
+					 (kAPI_STAMP_REQUEST.'='.gettimeofday( true )) );
+	//
+	// Display.
+	//
+	echo( kSTYLE_TABLE_PRE );
+	echo( kSTYLE_ROW_PRE );
+	echo( kSTYLE_HEAD_PRE.'URL:'.kSTYLE_HEAD_POS );
 	$request = $url.'?'.implode( '&', $params );
 	echo( kSTYLE_DATA_PRE.htmlspecialchars( $request ).kSTYLE_DATA_POS );
 	echo( kSTYLE_ROW_POS );
@@ -1664,6 +1716,7 @@ exit;
 	echo( kSTYLE_ROW_POS );
 	echo( kSTYLE_TABLE_POS );
 	echo( '<hr>' );
+exit;
 
 	echo( '<h4>Test GetVertex incoming relationships in JSON</h4>' );
 	echo( '<h5>:ATTRIBUTES</h5>' );

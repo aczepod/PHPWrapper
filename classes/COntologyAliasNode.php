@@ -66,14 +66,15 @@ require_once( kPATH_MYWRAPPER_LIBRARY_CLASS."/COntologyMasterNode.php" );
  * referenced {@link kTAG_NODES} attribute is either the count or an array of object
  * {@link kTAG_NID} attributes, depending on the value of the
  * {@link kSWITCH_kTAG_ALIAS_NODES} flag:
- *	 <ul>
- *		<li><tt>0x2</tt>: <i>Keep count of references</i>. This means that the
- *			{@link kTAG_NODES} attribute will be a reference count.
- *		<li><tt>0x3</tt>: <i>Keep list of references</i>. This means that the
- *			{@link kTAG_NODES} attribute will be a list of references.
- *		<li><tt>0x0</tt> <i>or other</i>: <i>Don't handle this information</i>. This means
- *			that the {@link kTAG_NODES} attribute will not be handled.
- *	 </ul>
+ *
+ * <ul>
+ *	<li><tt>0x2</tt>: <i>Keep count of references</i>. This means that the
+ *		{@link kTAG_NODES} attribute will be a reference count.
+ *	<li><tt>0x3</tt>: <i>Keep list of references</i>. This means that the
+ *		{@link kTAG_NODES} attribute will be a list of references.
+ *	<li><tt>0x0</tt> <i>or other</i>: <i>Don't handle this information</i>. This means
+ *		that the {@link kTAG_NODES} attribute will not be handled.
+ * </ul>
  *
  *	@package	MyWrapper
  *	@subpackage	Ontology

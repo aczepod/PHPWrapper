@@ -6,8 +6,8 @@
 
 	<title>Class COntologyAliasNode | MyWrapper Reference Documentation</title>
 
-	<script type="text/javascript" src="resources/combined.js?3680114562"></script>
-	<script type="text/javascript" src="elementlist.js?1554410322"></script>
+	<script type="text/javascript" src="resources/combined.js?1742645618"></script>
+	<script type="text/javascript" src="elementlist.js?2244581217"></script>
 	<link rel="stylesheet" type="text/css" media="all" href="resources/style.css?3505392360" />
 
 </head>
@@ -134,11 +134,11 @@ represents their master node.</p>
 the same relation will be automatically created between the master nodes
 referenced by the kTAG_NODE attribute; this will not occur if an
 instance of this class is related to a master node.</p>
-When inserting or deleting nodes, this class will update the kTAG_NODES
-attribute of the object referenced by the current object's kTAG_NODE
-attribute. The referenced kTAG_NODES attribute is either the count or an
-array of object kTAG_NID attributes, depending on the value of the
-kSWITCH_kTAG_ALIAS_NODES flag:
+
+<p>When inserting or deleting nodes, this class will update the kTAG_NODES attribute of the object referenced by the current object's kTAG_NODE attribute. The referenced kTAG_NODES attribute is either the
+count or an array of object kTAG_NID attributes, depending on the value
+of the kSWITCH_kTAG_ALIAS_NODES flag:</p>
+
 <ul>
 	<li><tt>0x2</tt>: <i>Keep count of references</i>. This means that the kTAG_NODES attribute will be a reference count.</li>
 
@@ -237,7 +237,7 @@ kSWITCH_kTAG_ALIAS_NODES flag:
 				<b>Author:</b>
 				Milko A. Škofič &lt;<a
 href="mailto:m.skofic&#64;cgiar.org">m.skofic&#64;<!---->cgiar.org</a>&gt;<br />
-		<b>Located at</b> <a href="source-class-COntologyAliasNode.html#36-431" title="Go to source code">COntologyAliasNode.php</a><br />
+		<b>Located at</b> <a href="source-class-COntologyAliasNode.html#36-432" title="Go to source code">COntologyAliasNode.php</a><br />
 	</div>
 
 
@@ -255,7 +255,7 @@ href="mailto:m.skofic&#64;cgiar.org">m.skofic&#64;<!---->cgiar.org</a>&gt;<br />
 
 		<td class="name"><div>
 		<a class="anchor" href="#_Node">#</a>
-		<code><a href="source-class-COntologyAliasNode.html#97-170" title="Go to source code">Node</a>( <span>mixed <var>$theValue</var> = <span class="php-keyword1">NULL</span></span>, <span>boolean <var>$getOld</var> = <span class="php-keyword1">FALSE</span> </span> )</code>
+		<code><a href="source-class-COntologyAliasNode.html#98-171" title="Go to source code">Node</a>( <span>mixed <var>$theValue</var> = <span class="php-keyword1">NULL</span></span>, <span>boolean <var>$getOld</var> = <span class="php-keyword1">FALSE</span> </span> )</code>
 
 		<div class="description short">
 			
@@ -331,7 +331,7 @@ the currently set value.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#_RelateTo">#</a>
-		<code><a href="source-class-COntologyAliasNode.html#186-268" title="Go to source code">RelateTo</a>( <span>mixed <var>$thePredicate</var></span>, <span>mixed <var>$theObject</var></span>, <span><code><a href="class-CConnection.html">CConnection</a></code> <var>$theConnection</var> = <span class="php-keyword1">NULL</span> </span> )</code>
+		<code><a href="source-class-COntologyAliasNode.html#187-269" title="Go to source code">RelateTo</a>( <span>mixed <var>$thePredicate</var></span>, <span>mixed <var>$theObject</var></span>, <span><code><a href="class-CConnection.html">CConnection</a></code> <var>$theConnection</var> = <span class="php-keyword1">NULL</span> </span> )</code>
 
 		<div class="description short">
 			
@@ -389,7 +389,7 @@ committed.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#__PrecommitRelated">#</a>
-		<code><a href="source-class-COntologyAliasNode.html#284-338" title="Go to source code">_PrecommitRelated</a>( <span>reference <var>&amp; $theConnection</var></span>, <span>reference <var>&amp; $theModifiers</var></span> )</code>
+		<code><a href="source-class-COntologyAliasNode.html#285-339" title="Go to source code">_PrecommitRelated</a>( <span>reference <var>&amp; $theConnection</var></span>, <span>reference <var>&amp; $theModifiers</var></span> )</code>
 
 		<div class="description short">
 			
@@ -448,7 +448,7 @@ the master node before setting its identifier in the current object's kTAG_NODE 
 
 		<td class="name"><div>
 		<a class="anchor" href="#__PostcommitRelated">#</a>
-		<code><a href="source-class-COntologyAliasNode.html#354-427" title="Go to source code">_PostcommitRelated</a>( <span>reference <var>&amp; $theConnection</var></span>, <span>reference <var>&amp; $theModifiers</var></span> )</code>
+		<code><a href="source-class-COntologyAliasNode.html#355-428" title="Go to source code">_PostcommitRelated</a>( <span>reference <var>&amp; $theConnection</var></span>, <span>reference <var>&amp; $theModifiers</var></span> )</code>
 
 		<div class="description short">
 			

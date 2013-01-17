@@ -508,6 +508,38 @@
         </edges>
     </unit>
 
+    <!-- kTERM_NODE -->
+    <unit>
+        <node class="COntologyAliasVertex">
+            <element variable="kTAG_TERM">:NODE</element>
+            <element variable="kTAG_KIND">
+                <item>:KIND-FEATURE</item>
+                <item>:KIND-SCALE</item>
+            </element>
+            <element variable="kTAG_TYPE">
+                <item>:INT</item>
+            </element>
+            <element variable="kTAG_DESCRIPTION" key="en"><![CDATA[There are two kinds of nodes:
+            the <i>master</i> node and the <i>alias</i> node, there can only be one master node
+            which refers to a specific term, while there can be any number of alias nodes that
+            refer to the same term. In practical terms a master node cannot have this attribute
+            while a node that has this attribute <i>must be</i> and alias node. The reason for
+            having these two kinds of nodes is that we can create a view of a graph using alias
+            nodes. On one side you have the master graph in which there is only one instance of
+            the term/node pair, on the other side you have a series of nodes that use the same
+            term, the master graph will have all the relationships defined in the alias graphs,
+            while the alias graph will only have the relationships relevant to its specific domain.
+            ]]>
+            </element>
+        </node>
+        <edges>
+            <edge>
+                <element variable="kTAG_PREDICATE">:ATTRIBUTE-OF</element>
+                <element variable="kTAG_OBJECT">:_nodes</element>
+            </edge>
+        </edges>
+    </unit>
+
     <!-- kTERM_CATEGORY -->
     <unit>
         <node class="COntologyAliasVertex">

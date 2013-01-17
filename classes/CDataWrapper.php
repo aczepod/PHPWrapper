@@ -1541,17 +1541,17 @@ class CDataWrapper extends CWrapper
 					if( array_key_exists( kAPI_CONTAINER, $_REQUEST ) )
 					{
 						//
-						// Unserialise standard data types.
-						//
-						$_REQUEST[ kAPI_CONTAINER ]
-							->UnserialiseObject( $_REQUEST[ kAPI_QUERY ] );
-						
-						//
 						// Format and verify query.
 						//
 						$this->_VerifyQuery( $_REQUEST[ kAPI_QUERY ],
 											 $_REQUEST[ kAPI_CONTAINER ] );
 					
+						//
+						// Unserialise standard data types.
+						//
+						$_REQUEST[ kAPI_CONTAINER ]
+							->UnserialiseObject( $_REQUEST[ kAPI_QUERY ] );
+						
 					} // Provided container.
 					
 					else
@@ -1585,17 +1585,17 @@ class CDataWrapper extends CWrapper
 							if( array_key_exists( kAPI_CONTAINER, $_REQUEST ) )
 							{
 								//
-								// Unserialise standard data types.
-								//
-								$_REQUEST[ kAPI_CONTAINER ]
-									->UnserialiseObject( $_REQUEST[ kAPI_QUERY ][ $key ] );
-								
-								//
 								// Format and verify query.
 								//
 								$this->_VerifyQuery( $_REQUEST[ kAPI_QUERY ][ $key ],
 													 $_REQUEST[ kAPI_CONTAINER ] );
 							
+								//
+								// Unserialise standard data types.
+								//
+								$_REQUEST[ kAPI_CONTAINER ]
+									->UnserialiseObject( $_REQUEST[ kAPI_QUERY ][ $key ] );
+								
 							} // Provided container.
 							
 							else
@@ -1621,13 +1621,6 @@ class CDataWrapper extends CWrapper
 								// Instantiate container.
 								//
 								$container = $_REQUEST[ kAPI_DATABASE ]->Container( $key );
-							
-								//
-								// Unserialise standard data types.
-								//
-								$container
-									->UnserialiseObject( 
-										$_REQUEST[ kAPI_QUERY ][ $key ] );
 								
 								//
 								// Format and verify query.
@@ -1635,6 +1628,13 @@ class CDataWrapper extends CWrapper
 								$this->_VerifyQuery( $_REQUEST[ kAPI_QUERY ][ $key ],
 													 $_REQUEST[ kAPI_DATABASE ]
 														->Container( $container ) );
+							
+								//
+								// Unserialise standard data types.
+								//
+								$container
+									->UnserialiseObject( 
+										$_REQUEST[ kAPI_QUERY ][ $key ] );
 							
 							} // Provided database.
 							

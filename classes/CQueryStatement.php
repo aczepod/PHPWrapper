@@ -580,6 +580,7 @@ class CQueryStatement extends CDocument
 			switch( (string) $theValue )
 			{
 				case kTYPE_STRING:
+				case kTYPE_INT:
 				case kTYPE_INT32:
 				case kTYPE_INT64:
 				case kTYPE_FLOAT:

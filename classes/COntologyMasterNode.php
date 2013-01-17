@@ -310,9 +310,14 @@ class COntologyMasterNode extends COntologyNode
 			 || (! $theIdentifier->_IsCommitted()) )
 			{
 				//
+				// Resolve container.
+				//
+				$container = COntologyTerm::ResolveClassContainer( $theConnection, TRUE );
+			
+				//
 				// Resolve term.
 				//
-				$theIdentifier = COntologyTerm::Resolve( $theConnection, $theIdentifier );
+				$theIdentifier = COntologyTerm::Resolve( $container, $theIdentifier );
 				if( $theIdentifier === NULL )
 				{
 					if( ! $doThrow )

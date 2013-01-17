@@ -956,62 +956,7 @@ class CQuery extends CStatusDocument
 				// Check statement operator.
 				//
 				if( array_key_exists( kOFFSET_QUERY_OPERATOR, $theStatement ) )
-				{
-					//
-					// Parse by operator.
-					//
-					switch( $theStatement[ kOFFSET_QUERY_OPERATOR ] )
-					{
-						case kOPERATOR_DISABLED:
-							break;
-					
-						case kOPERATOR_EQUAL:
-						case kOPERATOR_EQUAL_NOT:
-						case kOPERATOR_LIKE:
-						case kOPERATOR_LIKE_NOT:
-						case kOPERATOR_PREFIX:
-						case kOPERATOR_PREFIX_NOCASE:
-						case kOPERATOR_CONTAINS:
-						case kOPERATOR_CONTAINS_NOCASE:
-						case kOPERATOR_SUFFIX:
-						case kOPERATOR_SUFFIX_NOCASE:
-						case kOPERATOR_REGEX:
-						case kOPERATOR_LESS:
-						case kOPERATOR_LESS_EQUAL:
-						case kOPERATOR_GREAT:
-						case kOPERATOR_GREAT_EQUAL:
-						case kOPERATOR_IRANGE:
-						case kOPERATOR_ERANGE:
-						case kOPERATOR_IN:
-						case kOPERATOR_NI:
-						case kOPERATOR_ALL:
-						case kOPERATOR_NALL:
-							if( ! array_key_exists( kOFFSET_QUERY_TYPE, $theStatement ) )
-								throw new Exception
-									( "Invalid query: missing filter match data type",
-									  kERROR_MISSING );							// !@! ==>
-						case kOPERATOR_EX:
-							if( ! array_key_exists( kOFFSET_QUERY_DATA, $theStatement ) )
-								throw new Exception
-									( "Invalid query: missing filter data",
-									  kERROR_MISSING );							// !@! ==>
-						
-						case kOPERATOR_NULL:
-						case kOPERATOR_NOT_NULL:
-							if( ! array_key_exists( kOFFSET_QUERY_SUBJECT, $theStatement ) )
-								throw new Exception
-									( "Invalid query: missing subject in statement",
-									  kERROR_MISSING );							// !@! ==>
-							break;
-						
-						default:
-							throw new Exception
-								( "Invalid query: unsupported operator",
-								  kERROR_UNSUPPORTED )					;		// !@! ==>
-					
-					} // Parsing by operator.
-				
-				} // Has operator.
+					$this->_ValidateStatementOperator( $theStatement );
 				
 				//
 				// Handle missing statement.
@@ -1026,6 +971,89 @@ class CQuery extends CStatusDocument
 		} // Parsing statement index.
 		
 	} // _ValidateStatement.
+
+	 
+	/*===================================================================================
+	 *	_ValidateStatementOperator														*
+	 *==================================================================================*/
+
+	/**
+	 * <h4>Validate statement operator</h4>
+	 *
+	 * This method expects the statement reference, it will raise an exception if the operator
+	 * is not supported and if the statement is missing required properties according to
+	 * the operator.
+	 *
+	 * @param reference			   &$theStatement			Statement.
+	 *
+	 * @access protected
+	 *
+	 * @throws Exception
+	 */
+	protected function _ValidateStatementOperator( &$theStatement )
+	{
+		//
+		// Check for operator.
+		//
+		if( array_key_exists( kOFFSET_QUERY_OPERATOR, $theStatement ) )
+		{
+			//
+			// Parse by operator.
+			//
+			switch( $theStatement[ kOFFSET_QUERY_OPERATOR ] )
+			{
+				case kOPERATOR_DISABLED:
+					break;
+		
+				case kOPERATOR_EQUAL:
+				case kOPERATOR_EQUAL_NOT:
+				case kOPERATOR_LIKE:
+				case kOPERATOR_LIKE_NOT:
+				case kOPERATOR_PREFIX:
+				case kOPERATOR_PREFIX_NOCASE:
+				case kOPERATOR_CONTAINS:
+				case kOPERATOR_CONTAINS_NOCASE:
+				case kOPERATOR_SUFFIX:
+				case kOPERATOR_SUFFIX_NOCASE:
+				case kOPERATOR_REGEX:
+				case kOPERATOR_LESS:
+				case kOPERATOR_LESS_EQUAL:
+				case kOPERATOR_GREAT:
+				case kOPERATOR_GREAT_EQUAL:
+				case kOPERATOR_IRANGE:
+				case kOPERATOR_ERANGE:
+				case kOPERATOR_IN:
+				case kOPERATOR_NI:
+				case kOPERATOR_ALL:
+				case kOPERATOR_NALL:
+					if( ! array_key_exists( kOFFSET_QUERY_TYPE, $theStatement ) )
+						throw new Exception
+							( "Invalid query: missing filter match data type",
+							  kERROR_MISSING );									// !@! ==>
+				case kOPERATOR_EX:
+					if( ! array_key_exists( kOFFSET_QUERY_DATA, $theStatement ) )
+						throw new Exception
+							( "Invalid query: missing filter data",
+							  kERROR_MISSING );									// !@! ==>
+			
+				case kOPERATOR_NULL:
+				case kOPERATOR_NOT_NULL:
+					if( ! array_key_exists( kOFFSET_QUERY_SUBJECT, $theStatement ) )
+						throw new Exception
+							( "Invalid query: missing subject in statement",
+							  kERROR_MISSING );									// !@! ==>
+					break;
+			
+				default:
+					throw new Exception
+						( "Invalid query: unsupported operator",
+						  kERROR_UNSUPPORTED )					;				// !@! ==>
+		
+			} // Parsing by operator.
+		
+		} // Has operator.
+		
+	} // _ValidateStatementOperator.
 		
 
 

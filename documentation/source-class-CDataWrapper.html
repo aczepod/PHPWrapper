@@ -7,8 +7,8 @@
 
 	<title>File CDataWrapper.php | MyWrapper Reference Documentation</title>
 
-	<script type="text/javascript" src="resources/combined.js?3680114562"></script>
-	<script type="text/javascript" src="elementlist.js?1554410322"></script>
+	<script type="text/javascript" src="resources/combined.js?1742645618"></script>
+	<script type="text/javascript" src="elementlist.js?2244581217"></script>
 	<link rel="stylesheet" type="text/css" media="all" href="resources/style.css?3505392360" />
 
 </head>
@@ -1645,17 +1645,17 @@
 </span><span id="1541" class="l"><a class="l" href="#1541">1541: </a>                    <span class="php-keyword1">if</span>( <span class="php-keyword2">array_key_exists</span>( kAPI_CONTAINER, <span class="php-var">$_REQUEST</span> ) )
 </span><span id="1542" class="l"><a class="l" href="#1542">1542: </a>                    {
 </span><span id="1543" class="l"><a class="l" href="#1543">1543: </a>                        <span class="php-comment">//</span>
-</span><span id="1544" class="l"><a class="l" href="#1544">1544: </a>                        <span class="php-comment">// Unserialise standard data types.</span>
+</span><span id="1544" class="l"><a class="l" href="#1544">1544: </a>                        <span class="php-comment">// Format and verify query.</span>
 </span><span id="1545" class="l"><a class="l" href="#1545">1545: </a>                        <span class="php-comment">//</span>
-</span><span id="1546" class="l"><a class="l" href="#1546">1546: </a>                        <span class="php-var">$_REQUEST</span>[ kAPI_CONTAINER ]
-</span><span id="1547" class="l"><a class="l" href="#1547">1547: </a>                            -&gt;UnserialiseObject( <span class="php-var">$_REQUEST</span>[ kAPI_QUERY ] );
-</span><span id="1548" class="l"><a class="l" href="#1548">1548: </a>                        
+</span><span id="1546" class="l"><a class="l" href="#1546">1546: </a>                        <span class="php-var">$this</span>-&gt;_VerifyQuery( <span class="php-var">$_REQUEST</span>[ kAPI_QUERY ],
+</span><span id="1547" class="l"><a class="l" href="#1547">1547: </a>                                             <span class="php-var">$_REQUEST</span>[ kAPI_CONTAINER ] );
+</span><span id="1548" class="l"><a class="l" href="#1548">1548: </a>                    
 </span><span id="1549" class="l"><a class="l" href="#1549">1549: </a>                        <span class="php-comment">//</span>
-</span><span id="1550" class="l"><a class="l" href="#1550">1550: </a>                        <span class="php-comment">// Format and verify query.</span>
+</span><span id="1550" class="l"><a class="l" href="#1550">1550: </a>                        <span class="php-comment">// Unserialise standard data types.</span>
 </span><span id="1551" class="l"><a class="l" href="#1551">1551: </a>                        <span class="php-comment">//</span>
-</span><span id="1552" class="l"><a class="l" href="#1552">1552: </a>                        <span class="php-var">$this</span>-&gt;_VerifyQuery( <span class="php-var">$_REQUEST</span>[ kAPI_QUERY ],
-</span><span id="1553" class="l"><a class="l" href="#1553">1553: </a>                                             <span class="php-var">$_REQUEST</span>[ kAPI_CONTAINER ] );
-</span><span id="1554" class="l"><a class="l" href="#1554">1554: </a>                    
+</span><span id="1552" class="l"><a class="l" href="#1552">1552: </a>                        <span class="php-var">$_REQUEST</span>[ kAPI_CONTAINER ]
+</span><span id="1553" class="l"><a class="l" href="#1553">1553: </a>                            -&gt;UnserialiseObject( <span class="php-var">$_REQUEST</span>[ kAPI_QUERY ] );
+</span><span id="1554" class="l"><a class="l" href="#1554">1554: </a>                        
 </span><span id="1555" class="l"><a class="l" href="#1555">1555: </a>                    } <span class="php-comment">// Provided container.</span>
 </span><span id="1556" class="l"><a class="l" href="#1556">1556: </a>                    
 </span><span id="1557" class="l"><a class="l" href="#1557">1557: </a>                    <span class="php-keyword1">else</span>
@@ -1689,17 +1689,17 @@
 </span><span id="1585" class="l"><a class="l" href="#1585">1585: </a>                            <span class="php-keyword1">if</span>( <span class="php-keyword2">array_key_exists</span>( kAPI_CONTAINER, <span class="php-var">$_REQUEST</span> ) )
 </span><span id="1586" class="l"><a class="l" href="#1586">1586: </a>                            {
 </span><span id="1587" class="l"><a class="l" href="#1587">1587: </a>                                <span class="php-comment">//</span>
-</span><span id="1588" class="l"><a class="l" href="#1588">1588: </a>                                <span class="php-comment">// Unserialise standard data types.</span>
+</span><span id="1588" class="l"><a class="l" href="#1588">1588: </a>                                <span class="php-comment">// Format and verify query.</span>
 </span><span id="1589" class="l"><a class="l" href="#1589">1589: </a>                                <span class="php-comment">//</span>
-</span><span id="1590" class="l"><a class="l" href="#1590">1590: </a>                                <span class="php-var">$_REQUEST</span>[ kAPI_CONTAINER ]
-</span><span id="1591" class="l"><a class="l" href="#1591">1591: </a>                                    -&gt;UnserialiseObject( <span class="php-var">$_REQUEST</span>[ kAPI_QUERY ][ <span class="php-var">$key</span> ] );
-</span><span id="1592" class="l"><a class="l" href="#1592">1592: </a>                                
+</span><span id="1590" class="l"><a class="l" href="#1590">1590: </a>                                <span class="php-var">$this</span>-&gt;_VerifyQuery( <span class="php-var">$_REQUEST</span>[ kAPI_QUERY ][ <span class="php-var">$key</span> ],
+</span><span id="1591" class="l"><a class="l" href="#1591">1591: </a>                                                     <span class="php-var">$_REQUEST</span>[ kAPI_CONTAINER ] );
+</span><span id="1592" class="l"><a class="l" href="#1592">1592: </a>                            
 </span><span id="1593" class="l"><a class="l" href="#1593">1593: </a>                                <span class="php-comment">//</span>
-</span><span id="1594" class="l"><a class="l" href="#1594">1594: </a>                                <span class="php-comment">// Format and verify query.</span>
+</span><span id="1594" class="l"><a class="l" href="#1594">1594: </a>                                <span class="php-comment">// Unserialise standard data types.</span>
 </span><span id="1595" class="l"><a class="l" href="#1595">1595: </a>                                <span class="php-comment">//</span>
-</span><span id="1596" class="l"><a class="l" href="#1596">1596: </a>                                <span class="php-var">$this</span>-&gt;_VerifyQuery( <span class="php-var">$_REQUEST</span>[ kAPI_QUERY ][ <span class="php-var">$key</span> ],
-</span><span id="1597" class="l"><a class="l" href="#1597">1597: </a>                                                     <span class="php-var">$_REQUEST</span>[ kAPI_CONTAINER ] );
-</span><span id="1598" class="l"><a class="l" href="#1598">1598: </a>                            
+</span><span id="1596" class="l"><a class="l" href="#1596">1596: </a>                                <span class="php-var">$_REQUEST</span>[ kAPI_CONTAINER ]
+</span><span id="1597" class="l"><a class="l" href="#1597">1597: </a>                                    -&gt;UnserialiseObject( <span class="php-var">$_REQUEST</span>[ kAPI_QUERY ][ <span class="php-var">$key</span> ] );
+</span><span id="1598" class="l"><a class="l" href="#1598">1598: </a>                                
 </span><span id="1599" class="l"><a class="l" href="#1599">1599: </a>                            } <span class="php-comment">// Provided container.</span>
 </span><span id="1600" class="l"><a class="l" href="#1600">1600: </a>                            
 </span><span id="1601" class="l"><a class="l" href="#1601">1601: </a>                            <span class="php-keyword1">else</span>
@@ -1725,20 +1725,20 @@
 </span><span id="1621" class="l"><a class="l" href="#1621">1621: </a>                                <span class="php-comment">// Instantiate container.</span>
 </span><span id="1622" class="l"><a class="l" href="#1622">1622: </a>                                <span class="php-comment">//</span>
 </span><span id="1623" class="l"><a class="l" href="#1623">1623: </a>                                <span class="php-var">$container</span> = <span class="php-var">$_REQUEST</span>[ kAPI_DATABASE ]-&gt;Container( <span class="php-var">$key</span> );
-</span><span id="1624" class="l"><a class="l" href="#1624">1624: </a>                            
+</span><span id="1624" class="l"><a class="l" href="#1624">1624: </a>                                
 </span><span id="1625" class="l"><a class="l" href="#1625">1625: </a>                                <span class="php-comment">//</span>
-</span><span id="1626" class="l"><a class="l" href="#1626">1626: </a>                                <span class="php-comment">// Unserialise standard data types.</span>
+</span><span id="1626" class="l"><a class="l" href="#1626">1626: </a>                                <span class="php-comment">// Format and verify query.</span>
 </span><span id="1627" class="l"><a class="l" href="#1627">1627: </a>                                <span class="php-comment">//</span>
-</span><span id="1628" class="l"><a class="l" href="#1628">1628: </a>                                <span class="php-var">$container</span>
-</span><span id="1629" class="l"><a class="l" href="#1629">1629: </a>                                    -&gt;UnserialiseObject( 
-</span><span id="1630" class="l"><a class="l" href="#1630">1630: </a>                                        <span class="php-var">$_REQUEST</span>[ kAPI_QUERY ][ <span class="php-var">$key</span> ] );
-</span><span id="1631" class="l"><a class="l" href="#1631">1631: </a>                                
+</span><span id="1628" class="l"><a class="l" href="#1628">1628: </a>                                <span class="php-var">$this</span>-&gt;_VerifyQuery( <span class="php-var">$_REQUEST</span>[ kAPI_QUERY ][ <span class="php-var">$key</span> ],
+</span><span id="1629" class="l"><a class="l" href="#1629">1629: </a>                                                     <span class="php-var">$_REQUEST</span>[ kAPI_DATABASE ]
+</span><span id="1630" class="l"><a class="l" href="#1630">1630: </a>                                                        -&gt;Container( <span class="php-var">$container</span> ) );
+</span><span id="1631" class="l"><a class="l" href="#1631">1631: </a>                            
 </span><span id="1632" class="l"><a class="l" href="#1632">1632: </a>                                <span class="php-comment">//</span>
-</span><span id="1633" class="l"><a class="l" href="#1633">1633: </a>                                <span class="php-comment">// Format and verify query.</span>
+</span><span id="1633" class="l"><a class="l" href="#1633">1633: </a>                                <span class="php-comment">// Unserialise standard data types.</span>
 </span><span id="1634" class="l"><a class="l" href="#1634">1634: </a>                                <span class="php-comment">//</span>
-</span><span id="1635" class="l"><a class="l" href="#1635">1635: </a>                                <span class="php-var">$this</span>-&gt;_VerifyQuery( <span class="php-var">$_REQUEST</span>[ kAPI_QUERY ][ <span class="php-var">$key</span> ],
-</span><span id="1636" class="l"><a class="l" href="#1636">1636: </a>                                                     <span class="php-var">$_REQUEST</span>[ kAPI_DATABASE ]
-</span><span id="1637" class="l"><a class="l" href="#1637">1637: </a>                                                        -&gt;Container( <span class="php-var">$container</span> ) );
+</span><span id="1635" class="l"><a class="l" href="#1635">1635: </a>                                <span class="php-var">$container</span>
+</span><span id="1636" class="l"><a class="l" href="#1636">1636: </a>                                    -&gt;UnserialiseObject( 
+</span><span id="1637" class="l"><a class="l" href="#1637">1637: </a>                                        <span class="php-var">$_REQUEST</span>[ kAPI_QUERY ][ <span class="php-var">$key</span> ] );
 </span><span id="1638" class="l"><a class="l" href="#1638">1638: </a>                            
 </span><span id="1639" class="l"><a class="l" href="#1639">1639: </a>                            } <span class="php-comment">// Provided database.</span>
 </span><span id="1640" class="l"><a class="l" href="#1640">1640: </a>                            

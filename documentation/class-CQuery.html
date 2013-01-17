@@ -6,8 +6,8 @@
 
 	<title>Class CQuery | MyWrapper Reference Documentation</title>
 
-	<script type="text/javascript" src="resources/combined.js?3680114562"></script>
-	<script type="text/javascript" src="elementlist.js?1554410322"></script>
+	<script type="text/javascript" src="resources/combined.js?1742645618"></script>
+	<script type="text/javascript" src="elementlist.js?2244581217"></script>
 	<link rel="stylesheet" type="text/css" media="all" href="resources/style.css?3505392360" />
 
 </head>
@@ -302,7 +302,7 @@ exchange data store queries or filters.</p>
 				<b>Author:</b>
 				Milko A. Škofič &lt;<a
 href="mailto:m.skofic&#64;cgiar.org">m.skofic&#64;<!---->cgiar.org</a>&gt;<br />
-		<b>Located at</b> <a href="source-class-CQuery.html#49-1057" title="Go to source code">CQuery.php</a><br />
+		<b>Located at</b> <a href="source-class-CQuery.html#49-1085" title="Go to source code">CQuery.php</a><br />
 	</div>
 
 
@@ -804,7 +804,7 @@ valid condition, then it will validate all condition statements.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#__ValidateStatement">#</a>
-		<code><a href="source-class-CQuery.html#915-1028" title="Go to source code">_ValidateStatement</a>( <span>array <var>$theStatement</var></span>, <span>integer <var>$theLevel</var></span> )</code>
+		<code><a href="source-class-CQuery.html#915-973" title="Go to source code">_ValidateStatement</a>( <span>array <var>$theStatement</var></span>, <span>integer <var>$theLevel</var></span> )</code>
 
 		<div class="description short">
 			
@@ -848,6 +848,52 @@ valid statement and check if all required elements are there.</p>
 		</div>
 		</div></td>
 	</tr>
+	<tr data-order="_ValidateStatementOperator" id="__ValidateStatementOperator">
+
+		<td class="attributes"><code>
+			 protected 
+			
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#__ValidateStatementOperator">#</a>
+		<code><a href="source-class-CQuery.html#980-1056" title="Go to source code">_ValidateStatementOperator</a>( <span>reference <var>&amp; $theStatement</var></span> )</code>
+
+		<div class="description short">
+			
+<h4>Validate statement operator</h4>
+
+		</div>
+
+		<div class="description detailed hidden">
+			
+<h4>Validate statement operator</h4>
+
+<p>This method expects the statement reference, it will raise an exception if
+the operator is not supported and if the statement is missing required
+properties according to the operator.</p>
+
+
+
+				<h4>Parameters</h4>
+				<div class="list"><dl>
+					<dt><var>$theStatement</var></dt>
+					<dd><code>reference</code><br>&amp;$theStatement Statement.</dd>
+				</dl></div>
+
+
+				<h4>Throws</h4>
+				<div class="list">
+					<code><code><a href="class-Exception.html">Exception</a></code></code><br />
+				</div>
+
+
+
+		</div>
+		</div></td>
+	</tr>
 	<tr data-order="_Ready" id="__Ready">
 
 		<td class="attributes"><code>
@@ -859,7 +905,7 @@ valid statement and check if all required elements are there.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#__Ready">#</a>
-		<code><a href="source-class-CQuery.html#1044-1053" title="Go to source code">_Ready</a>( )</code>
+		<code><a href="source-class-CQuery.html#1072-1081" title="Go to source code">_Ready</a>( )</code>
 
 		<div class="description short">
 			

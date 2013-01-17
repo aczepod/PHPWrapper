@@ -390,7 +390,6 @@
 		echo( '<code>['.(string) $term[ 'kTAG_LID' ].'] </code>' );
 		echo( (string) $term->{'kTAG_DEFINITION'}[ 0 ] );
 	}
-*/
 	
 	//
 	// Test iterator_to_array() Mongo cursor conversion.
@@ -410,5 +409,23 @@
 	echo( '<pre>' );
 	print_r( array_keys( iterator_to_array( $rs ) ) );
 	echo( '</pre>' );
+*/
+	
+	//
+	// Test integers.
+	//
+	class pippo{	const baba = '1'; }
+	
+	$x = (int) '1';
+	echo( gettype( $x ).'<br>' );
+	print_r( $x );
+	echo( '<hr>' );
+	
+	$x = (int) pippo::baba;
+	echo( gettype( $x ).'<br>' );
+	print_r( $x );
+	echo( '<hr>' );
+	
+	echo( $x - 1 );
 	
 ?>

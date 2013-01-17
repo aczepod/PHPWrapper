@@ -12,7 +12,10 @@
 			<element variable="kTAG_DEFINITION" key="en">Collection of industrial and commercial standards and codes.</element>
     	</term>
     	<node class="COntologyMasterVertex">
-    	</node>
+			<element variable="kTAG_KIND">
+				<item>:KIND-ROOT</item>
+			</element>
+ 	  	</node>
     </unit>
     
     <!-- ISO STANDARDS -->
@@ -359,6 +362,7 @@
     <unit>
     	<term lid="common_name" ns="ISO:639">
 			<element variable="kTAG_LABEL" key="en">Common name</element>
+			<element variable="kTAG_DEFINITION" key="en">Language common name.</element>
     	</term>
     	<node class="COntologyMasterVertex">
 			<element variable="kTAG_KIND">

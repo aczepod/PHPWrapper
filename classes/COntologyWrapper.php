@@ -27,11 +27,18 @@
 require_once( kPATH_MYWRAPPER_LIBRARY_CLASS."/COntologyTerm.php" );
 
 /**
- * Nodes.
+ * Master nodes.
  *
- * This includes the node class definitions.
+ * This includes the master node class definitions.
  */
-require_once( kPATH_MYWRAPPER_LIBRARY_CLASS."/COntologyVertex.php" );
+require_once( kPATH_MYWRAPPER_LIBRARY_CLASS."/COntologyMasterVertex.php" );
+
+/**
+ * Alias nodes.
+ *
+ * This includes the alias node class definitions.
+ */
+require_once( kPATH_MYWRAPPER_LIBRARY_CLASS."/COntologyAliasVertex.php" );
 
 /**
  * Edges.
@@ -330,7 +337,24 @@ class COntologyWrapper extends CDataWrapper
 				// Set terms container.
 				//
 				if( ! array_key_exists( kAPI_CONTAINER, $_REQUEST ) )
-					$_REQUEST[ kAPI_CONTAINER ] = COntologyTerm::DefaultContainerName();
+					$_REQUEST[ kAPI_CONTAINER ]
+						= COntologyTerm::DefaultContainerName();
+
+				break;
+
+			case kAPI_OP_SetVertex:
+				//
+				// Set class.
+				//
+				if( ! array_key_exists( kAPI_CLASS, $_REQUEST ) )
+					$_REQUEST[ kAPI_CLASS ] = 'COntologyMasterVertex';
+				
+				//
+				// Set terms container.
+				//
+				if( ! array_key_exists( kAPI_CONTAINER, $_REQUEST ) )
+					$_REQUEST[ kAPI_CONTAINER ]
+						= COntologyNode::DefaultContainerName();
 
 				break;
 
@@ -345,7 +369,24 @@ class COntologyWrapper extends CDataWrapper
 				// Set vertex container.
 				//
 				if( ! array_key_exists( kAPI_CONTAINER, $_REQUEST ) )
-					$_REQUEST[ kAPI_CONTAINER ] = COntologyNode::DefaultContainerName();
+					$_REQUEST[ kAPI_CONTAINER ]
+						= COntologyNode::DefaultContainerName();
+
+				break;
+
+			case kAPI_OP_GetTag:
+				//
+				// Set page limit.
+				//
+				if( ! array_key_exists( kAPI_PAGE_LIMIT, $_REQUEST ) )
+					$_REQUEST[ kAPI_PAGE_LIMIT ] = kDEFAULT_LIMIT;
+				
+				//
+				// Set terms container.
+				//
+				if( ! array_key_exists( kAPI_CONTAINER, $_REQUEST ) )
+					$_REQUEST[ kAPI_CONTAINER ]
+						= COntologyTag::DefaultContainerName();
 
 				break;
 		}
@@ -660,6 +701,7 @@ class COntologyWrapper extends CDataWrapper
 				break;
 			
 			case kAPI_OP_GetTerm:
+			case kAPI_OP_GetTag:
 				//
 				// Check for database.
 				//
@@ -685,6 +727,49 @@ class COntologyWrapper extends CDataWrapper
 				//
 				if( array_key_exists( kAPI_SUBQUERY, $_REQUEST ) )
 					unset( $_REQUEST[ kAPI_SUBQUERY ] );
+				
+				break;
+			
+			case kAPI_OP_SetVertex:
+				//
+				// Check for database.
+				//
+				if( ! array_key_exists( kAPI_DATABASE, $_REQUEST ) )
+					throw new CException
+						( "Missing database parameter",
+						  kERROR_MISSING,
+						  kSTATUS_ERROR,
+						  array( 'Operation' => $parameter ) );					// !@! ==>
+					
+				//
+				// Check for format.
+				//
+				if( ! array_key_exists( kAPI_FORMAT, $_REQUEST ) )
+					throw new CException
+						( "Missing format parameter",
+						  kERROR_MISSING,
+						  kSTATUS_ERROR,
+						  array( 'Operation' => $parameter ) );					// !@! ==>
+					
+				//
+				// Check for object.
+				//
+				if( ! array_key_exists( kAPI_OBJECT, $_REQUEST ) )
+					throw new CException
+						( "Missing object parameter",
+						  kERROR_MISSING,
+						  kSTATUS_ERROR,
+						  array( 'Operation' => $parameter ) );					// !@! ==>
+					
+				//
+				// Check for class.
+				//
+				if( ! array_key_exists( kAPI_CLASS, $_REQUEST ) )
+					throw new CException
+						( "Missing class parameter",
+						  kERROR_MISSING,
+						  kSTATUS_ERROR,
+						  array( 'Operation' => $parameter ) );					// !@! ==>
 				
 				break;
 			
@@ -822,13 +907,147 @@ class COntologyWrapper extends CDataWrapper
 					//
 					if( array_key_exists( kTAG_NAMESPACE, $_REQUEST[ kAPI_OBJECT ] ) )
 					{
+						//
+						// An array implies it is a binary string.
+						//
 						if( ! is_array( $_REQUEST[ kAPI_OBJECT ][ kTAG_NAMESPACE ] ) )
 							$_REQUEST[ kAPI_OBJECT ][ kTAG_NAMESPACE ]
 								= COntologyTerm::_id(
 									$_REQUEST[ kAPI_OBJECT ][ kTAG_NAMESPACE ],
-									( array_key_exists( kAPI_CONTAINER, $_REQUEST ) )
-									? $_REQUEST[ kAPI_CONTAINER ]
-									: $_REQUEST[ kAPI_DATABASE ] );
+									$_REQUEST[ kAPI_CONTAINER ] );
+					}
+
+					//
+					// Unserialise standard data types.
+					//
+					$_REQUEST[ kAPI_CONTAINER ]
+							->UnserialiseObject( $_REQUEST[ kAPI_OBJECT ] );
+					
+					//
+					// Instantiate object.
+					//
+					$object = $_REQUEST[ kAPI_CLASS ];
+					$object = new $object();
+					
+					//
+					// Handle namespace.
+					//
+					if( $_REQUEST[ kAPI_OPERATION ] == kAPI_OP_SetNamespace )
+						$object->Kind( kKIND_NAMESPACE, TRUE );
+					
+					//
+					// Set excluded tags.
+					//
+					$exclude = array( kTAG_NAMESPACE_REFS, kTAG_SCALES, kTAG_METHODS,
+									  kTAG_FEATURES, kTAG_NODES, kTAG_TERM,
+									  kTAG_GID, kTAG_CLASS, kTAG_NID );
+					
+					//
+					// Iterate attributes.
+					//
+					foreach( $_REQUEST[ kAPI_OBJECT ] as $key => $value )
+					{
+						//
+						// Skip excluded tags.
+						//
+						if( ! in_array( $key, $exclude ) )
+						{
+							//
+							// Parse by tag.
+							//
+							switch( $key )
+							{
+								//
+								// Local identifier.
+								//
+								case kTAG_LID:
+									$object->LID( $value );
+									break;
+								
+								//
+								// Namespace reference.
+								//
+								case kTAG_NAMESPACE:
+									$object->NS( $value );
+									break;
+								
+								//
+								// Synonyms list.
+								//
+								case kTAG_SYNONYMS:
+									if( is_array( $value ) )
+									{
+										foreach( $value as $element )
+											$object->Synonym( $element, TRUE );
+									}
+									else
+										$object->Synonym( $value, TRUE );
+									break;
+								
+								//
+								// Term label.
+								//
+								case kTAG_LABEL:
+									if( is_array( $value ) )
+										$object->Label( key( $value ), current( $value ) );
+									else
+										$object->Label( NULL, $value );
+									break;
+								
+								//
+								// Term definition.
+								//
+								case kTAG_DEFINITION:
+									if( is_array( $value ) )
+										$object->Definition( key( $value ), current( $value ) );
+									else
+										$object->Definition( NULL, $value );
+									break;
+								
+								//
+								// Other attributes.
+								//
+								default:
+									$object->offsetSet( $key, $value );
+									break;
+							}
+						}
+					}
+					
+					//
+					// Copy object.
+					//
+					$_REQUEST[ kAPI_OBJECT ] = $object;
+
+					break;
+				
+				case kAPI_OP_SetVertex:
+					//
+					// Check object type.
+					//
+					if( ! is_array( $_REQUEST[ kAPI_OBJECT ] ) )
+						throw new CException
+							( "Unable to format object: "
+							."invalid object data type for current operation",
+							  kERROR_PARAMETER,
+							  kSTATUS_ERROR,
+							  array( 'Operation' => $_REQUEST[ kAPI_OPERATION ],
+									 'Type' => gettype(
+									 			$_REQUEST[ kAPI_OBJECT ] ) ) );	// !@! ==>
+					
+					//
+					// Normalise term references.
+					//
+					if( array_key_exists( kTAG_TERM, $_REQUEST[ kAPI_OBJECT ] ) )
+					{
+						//
+						// An array implies it is a binary string.
+						//
+						if( ! is_array( $_REQUEST[ kAPI_OBJECT ][ kTAG_TERM ] ) )
+							$_REQUEST[ kAPI_OBJECT ][ kTAG_TERM ]
+								= COntologyTerm::_id(
+									$_REQUEST[ kAPI_OBJECT ][ kTAG_TERM ],
+									$_REQUEST[ kAPI_CONTAINER ] );
 					}
 
 					//
@@ -840,63 +1059,91 @@ class COntologyWrapper extends CDataWrapper
 					//
 					// Instantiate object.
 					//
-					$term = ( array_key_exists( kAPI_CLASS, $_REQUEST ) )
-						  ? $_REQUEST[ kAPI_CLASS ]
-						  : 'COntologyTerm';
-					$term = new $term();
+					$object = $_REQUEST[ kAPI_CLASS ];
+					$object = new $object();
 					
 					//
-					// Handle namespace.
+					// Set excluded tags.
 					//
-					if( $_REQUEST[ kAPI_OPERATION ] == kAPI_OP_SetNamespace )
-						$term->Kind( kKIND_NAMESPACE, TRUE );
+					$exclude = array( kTAG_NID, kTAG_CLASS,
+									  kTAG_NODE, kTAG_EDGES, kTAG_NODES );
 					
 					//
-					// Set values.
+					// Iterate attributes.
 					//
-					$exclude = array( kTAG_NAMESPACE_REFS, kTAG_SCALES, kTAG_METHODS,
-									  kTAG_FEATURES, kTAG_NODES, kTAG_TERM,
-									  kTAG_GID, kTAG_CLASS, kTAG_NID );
 					foreach( $_REQUEST[ kAPI_OBJECT ] as $key => $value )
 					{
+						//
+						// Skip excluded tags.
+						//
 						if( ! in_array( $key, $exclude ) )
 						{
+							//
+							// Parse by tag.
+							//
 							switch( $key )
 							{
-								case kTAG_LID:
-									$term->LID( $value );
+								//
+								// Local identifier.
+								//
+								case kTAG_TERM:
+									$object->Term( $value );
 									break;
-
-								case kTAG_NAMESPACE:
-									$term->NS( $value );
-									break;
-
-								case kTAG_SYNONYMS:
+								
+								//
+								// Categories list.
+								//
+								case kTAG_CATEGORY:
 									if( is_array( $value ) )
 									{
 										foreach( $value as $element )
-											$term->Synonym( $element, TRUE );
+											$object->Category( $element, TRUE );
 									}
 									else
-										$term->Synonym( $value, TRUE );
-									break;
-
-								case kTAG_LABEL:
-									if( is_array( $value ) )
-										$term->Label( key( $value ), current( $value ) );
-									else
-										$term->Label( NULL, $value );
-									break;
-
-								case kTAG_DEFINITION:
-									if( is_array( $value ) )
-										$term->Definition( key( $value ), current( $value ) );
-									else
-										$term->Definition( NULL, $value );
+										$object->Category( $value, TRUE );
 									break;
 								
+								//
+								// Kinds list.
+								//
+								case kTAG_KIND:
+									if( is_array( $value ) )
+									{
+										foreach( $value as $element )
+											$object->Kind( $element, TRUE );
+									}
+									else
+										$object->Kind( $value, TRUE );
+									break;
+								
+								//
+								// Types list.
+								//
+								case kTAG_KIND:
+									if( is_array( $value ) )
+									{
+										foreach( $value as $element )
+											$object->Type( $element, TRUE );
+									}
+									else
+										$object->Type( $value, TRUE );
+									break;
+								
+								//
+								// Node description.
+								//
+								case kTAG_LABEL:
+									if( is_array( $value ) )
+										$object->Description( key( $value ), current( $value ) );
+									else
+										$object->Description( NULL, $value );
+									break;
+								
+								//
+								// Other attributes.
+								//
 								default:
-									$term->setOffset( $key, $value );
+									$object->offsetSet( $key, $value );
 									break;
 							}
 						}
@@ -905,7 +1152,7 @@ class COntologyWrapper extends CDataWrapper
 					//
 					// Copy object.
 					//
-					$_REQUEST[ kAPI_OBJECT ] = $term;
+					$_REQUEST[ kAPI_OBJECT ] = $object;
 
 					break;
 				
@@ -1142,11 +1389,19 @@ class COntologyWrapper extends CDataWrapper
 					break;
 	
 				case kAPI_OP_GetTerm:
-					$this->_Handle_GetOntologyElements();
+					$this->_Handle_GetTerm();
+					break;
+	
+				case kAPI_OP_SetVertex:
+					$this->_Handle_SetVertex();
 					break;
 	
 				case kAPI_OP_GetVertex:
 					$this->_Handle_GetVertex();
+					break;
+	
+				case kAPI_OP_GetTag:
+					$this->_HandleGetTag();
 					break;
 	
 				default:
@@ -1198,10 +1453,22 @@ class COntologyWrapper extends CDataWrapper
 			= 'Get terms by query: returns the list of terms that satisfy the provided query.';
 
 		//
+		// Add kAPI_OP_SetVertex.
+		//
+		$theList[ kAPI_OP_SetVertex ]
+			= 'Insert a vertex: it will insert the provided vertex and return its global identifier.';
+
+		//
 		// Add kAPI_OP_GetVertex.
 		//
 		$theList[ kAPI_OP_GetVertex ]
 			= 'Get vertex or related vertex by query: returns either the list of vertex that satisfy the provided query, or the list of vertex pointing to or pointed to by the vertex selected by the provided query.';
+
+		//
+		// Add kAPI_OP_GetTag.
+		//
+		$theList[ kAPI_OP_GetTag ]
+			= 'Get tags by query: returns the list of tags that satisfy the provided query.';
 	
 	} // _Handle_ListOp.
 
@@ -1213,7 +1480,7 @@ class COntologyWrapper extends CDataWrapper
 	/**
 	 * Handle {@link kAPI_OP_SetTerm} request.
 	 *
-	 * This method will handle the {@link kAPI_OP_INSERT} operation, which inserts the
+	 * This method will handle the {@link kAPI_OP_SetTerm} operation, which inserts the
 	 * provided object as an instance of the provided class into the provided database or
 	 * container.
 	 *
@@ -1234,9 +1501,7 @@ class COntologyWrapper extends CDataWrapper
 		// Handle object.
 		//
 		if( $_REQUEST[ kAPI_OBJECT ] instanceof CPersistentObject )
-			$identifier = ( array_key_exists( kAPI_CONTAINER, $_REQUEST ) )
-						? $_REQUEST[ kAPI_OBJECT ]->Insert( $_REQUEST[ kAPI_CONTAINER ] )
-						: $_REQUEST[ kAPI_OBJECT ]->Insert( $_REQUEST[ kAPI_DATABASE ] );
+			$identifier = $_REQUEST[ kAPI_OBJECT ]->Insert( $_REQUEST[ kAPI_DATABASE ] );
 	
 		//
 		// Handle document.
@@ -1280,19 +1545,19 @@ class COntologyWrapper extends CDataWrapper
 
 	 
 	/*===================================================================================
-	 *	_Handle_GetOntologyElements														*
+	 *	_Handle_GetTerm																	*
 	 *==================================================================================*/
 
 	/**
-	 * Retrieve ontology elements by query.
+	 * Retrieve ontology terms by query.
 	 *
-	 * This method will handle the following operations: {@link kAPI_OP_GetNerm} operations,
-	 * it will return respectively the terms that match the provided query, including
-	 * related elements such as tags.
+	 * This method will handle the {@link kAPI_OP_GetTerm} operation which returns a list
+	 * of terms with their related attributes ans tag information matching the provided
+	 * query.
 	 *
 	 * @access protected
 	 */
-	protected function _Handle_GetOntologyElements()
+	protected function _Handle_GetTerm()
 	{
 		//
 		// Init local storage.
@@ -1361,21 +1626,12 @@ class COntologyWrapper extends CDataWrapper
 				//
 				// Load related data.
 				//
-				switch( $_REQUEST[ kAPI_OPERATION ] )
-				{
-					case kAPI_OP_GetTerm:
-						$this->_ExportTerm( $results, $object );
-						$results[ kAPI_COLLECTION_ID ][] = $object->offsetGet( kTAG_GID );
-						break;
-
-					default:
-						throw new CException
-							( "Unsupported operation in service handler",
-							  kERROR_PARAMETER,
-							  kSTATUS_ERROR,
-							  array( 'Operation'
-							  			=> $_REQUEST[ kAPI_OPERATION ] ) );		// !@! ==>
-				}
+				$this->_ExportTerm( $results, $object );
+				
+				//
+				// Save related identifier.
+				//
+				$results[ kAPI_COLLECTION_ID ][] = $object->offsetGet( kTAG_GID );
 			
 			} // Iterating found terms.
 			
@@ -1390,9 +1646,61 @@ class COntologyWrapper extends CDataWrapper
 			if( array_key_exists( kAPI_LANGUAGE, $_REQUEST ) )
 				$this->_FilterLanguages( $_REQUEST[ kAPI_LANGUAGE ] );
 		
-		} // Found edges.
+		} // Found records.
 	
-	} // _Handle_GetOntologyElements.
+	} // _Handle_GetTerm.
+
+	 
+	/*===================================================================================
+	 *	_Handle_SetVertex																	*
+	 *==================================================================================*/
+
+	/**
+	 * Handle {@link kAPI_OP_SetVertex} request.
+	 *
+	 * This method will handle the {@link kAPI_OP_SetVertex} operation, which inserts the
+	 * provided object as an instance of the provided class into the provided database or
+	 * container.
+	 *
+	 * @access protected
+	 */
+	protected function _Handle_SetVertex()
+	{
+		//
+		// Insert object.
+		//
+		$identifier = $_REQUEST[ kAPI_OBJECT ]->Insert( $_REQUEST[ kAPI_DATABASE ] );
+		
+		//
+		// Set affected count.
+		//
+		$this->_OffsetManage( kAPI_STATUS, kAPI_AFFECTED_COUNT, 1 );
+	
+		//
+		// Serialise identifier.
+		//
+		$identifier = array( 0 => $identifier );
+		CDataType::SerialiseObject( $identifier );
+		$this->_OffsetManage( kAPI_STATUS, kTERM_STATUS_IDENTIFIER, $identifier[ 0 ] );
+		
+		//
+		// Serialise object.
+		//
+		$this->_ExportNode( $results, $_REQUEST[ kAPI_OBJECT ] );
+		$results[ kAPI_COLLECTION_ID ][] = $_REQUEST[ kAPI_OBJECT ]->offsetGet( kTAG_NID );
+		
+		//
+		// Set results.
+		//
+		$this->offsetSet( kAPI_RESPONSE, $results );
+	
+		//
+		// Handle language.
+		//
+		if( array_key_exists( kAPI_LANGUAGE, $_REQUEST ) )
+			$this->_FilterLanguages( $_REQUEST[ kAPI_LANGUAGE ] );
+
+	} // _Handle_SetVertex.
 
 	 
 	/*===================================================================================
@@ -1510,6 +1818,113 @@ class COntologyWrapper extends CDataWrapper
 			$this->_FilterLanguages( $_REQUEST[ kAPI_LANGUAGE ] );
 	
 	} // _Handle_GetVertex.
+
+	 
+	/*===================================================================================
+	 *	_HandleGetTag																	*
+	 *==================================================================================*/
+
+	/**
+	 * Retrieve ontology terms by query.
+	 *
+	 * This method will handle the {@link kAPI_OP_GetTerm} operation which returns a list
+	 * of terms with their related attributes ans tag information matching the provided
+	 * query.
+	 *
+	 * @access protected
+	 */
+	protected function _HandleGetTag()
+	{
+		//
+		// Init local storage.
+		//
+		$query = $select = $sort = $start = $limit = NULL;
+		
+		//
+		// Handle query.
+		//
+		if( array_key_exists( kAPI_QUERY, $_REQUEST ) )
+			$query = $_REQUEST[ kAPI_QUERY ];
+		
+		//
+		// Handle sort.
+		//
+		if( array_key_exists( kAPI_SORT, $_REQUEST ) )
+			$sort = $_REQUEST[ kAPI_SORT ];
+		
+		//
+		// Handle paging.
+		//
+		if( $this->offsetExists( kAPI_PAGING ) )
+		{
+			$start = $this->offsetGet( kAPI_PAGING )[ kAPI_PAGE_START ];
+			$limit = $this->offsetGet( kAPI_PAGING )[ kAPI_PAGE_LIMIT ];
+		}
+		
+		//
+		// Get records.
+		//
+		$records
+			= $_REQUEST[ kAPI_CONTAINER ]
+				->Query( $query, $select, $sort, $start, $limit );
+		
+		//
+		// Set affected count.
+		//
+		$this->_OffsetManage(
+			kAPI_STATUS, kAPI_AFFECTED_COUNT, $records->count( FALSE ) );
+		
+		//
+		// Handle page count.
+		//
+		if( $this->offsetExists( kAPI_PAGING ) )
+		{
+			$tmp = $this->offsetGet( kAPI_PAGING );
+			$tmp[ kAPI_PAGE_COUNT ] = $records->count( TRUE );
+			$this->offsetSet( kAPI_PAGING, $tmp );
+		}
+		
+		//
+		// Check count.
+		//
+		if( $records->count( FALSE ) )
+		{
+			//
+			// Iterate recordset.
+			//
+			foreach( $records as $object )
+			{
+				//
+				// Instantiate object.
+				//
+				$object = CPersistentObject::DocumentObject( $object );
+				
+				//
+				// Load related data.
+				//
+				$this->_ExportTag( $results, $object );
+				
+				//
+				// Save related identifier.
+				//
+				$results[ kAPI_COLLECTION_ID ][] = $object->offsetGet( kTAG_NID );
+			
+			} // Iterating found tags.
+			
+			//
+			// Set results.
+			//
+			$this->offsetSet( kAPI_RESPONSE, $results );
+		
+			//
+			// Handle language.
+			//
+			if( array_key_exists( kAPI_LANGUAGE, $_REQUEST ) )
+				$this->_FilterLanguages( $_REQUEST[ kAPI_LANGUAGE ] );
+		
+		} // Found records.
+	
+	} // _HandleGetTag.
 
 		
 
@@ -2265,41 +2680,42 @@ class COntologyWrapper extends CDataWrapper
 		$export = Array();
 		
 		//
-		// Load default attributes.
+		// Load current term attributes.
 		//
-		$export[ kTAG_GID ] = $theTerm[ kTAG_GID ];
-		$export[ kTAG_LID ] = $theTerm[ kTAG_LID ];
+		foreach( $theTerm->getArrayCopy() as $key => $value )
+		{
+			if( ! in_array( $key, array_keys( $export ) ) )
+				$export[ $key ] = $value;
+		}
 		
 		//
 		// Resolve namespace.
 		//
-		if( ( is_array( $theTerm )
-		   && array_key_exists( kTAG_NAMESPACE, $theTerm ) )
-		 || ( ($theTerm instanceof COntologyTerm)
-		   && $theTerm->offsetExists( kTAG_NAMESPACE ) ) )
+		if( array_key_exists( kTAG_NAMESPACE, $export ) )
 			$export[ kTAG_NAMESPACE ]
 				= COntologyTerm::Resolve(
-					$_REQUEST[ kAPI_DATABASE ], $theTerm[ kTAG_NAMESPACE ], NULL, TRUE )
-						->offsetGet( kTAG_GID );
+					$_REQUEST[ kAPI_DATABASE ], $export[ kTAG_NAMESPACE ], NULL, TRUE )
+						->GID();
 		
 		//
-		// Resolve term references, if necessary.
+		// Load attributes from referenced term.
 		//
-		while( ( is_array( $theTerm )
-			  && array_key_exists( kTAG_TERM, $theTerm ) )
-			|| ( ($theTerm instanceof COntologyTerm)
-			  && $theTerm->offsetExists( kTAG_TERM ) ) )
+		while( $theTerm->Term() !== NULL )
 			$theTerm
 				= COntologyTerm::Resolve(
-					$_REQUEST[ kAPI_DATABASE ], $theTerm[ kTAG_TERM ], NULL, TRUE );
+					$_REQUEST[ kAPI_DATABASE ], $theTerm->Term(), NULL, TRUE );
 		
 		//
-		// Copy attributes.
+		// Copy related term attributes.
 		//
-		foreach( $theTerm as $key => $value )
+		if( $theTerm !== NULL )
 		{
-			if( ! in_array( $key, array( kTAG_GID, kTAG_LID ) ) )
-				$export[ $key ] = $value;
+			foreach( $theTerm->getArrayCopy() as $key => $value )
+			{
+				if( ($key != kTAG_NAMESPACE)						// Not the namespace
+				 && (! in_array( $key, array_keys( $export ) )) )	// and not there.
+					$export[ $key ] = $value;
+			}
 		}
 		
 		return $export;																// ==>

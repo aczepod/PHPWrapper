@@ -141,7 +141,7 @@ define( "kAPI_COLLECTION_TAG",					'_tag' );
  *	<li><i>{@link kAPI_FORMAT}</i>: This parameter is required to indicate how to
  *		encode the response.
  *	<li><i>{@link kAPI_DATABASE}</i>: This parameter is required to indicate the working
- *		database.
+ *		database. Note that the {@link kAPI_CONTAINER} will be ignored by this service.
  *	<li><i>{@link kAPI_OBJECT}</i>: This parameter is required and contains an array
  *		corresponding to the new term record, the following attributes will not be
  *		considered: {@link kTAG_NAMESPACE_REFS}, {@link kTAG_SCALES}, {@link kTAG_METHODS},
@@ -208,6 +208,39 @@ define( "kAPI_OP_SetNamespace",		'WS:OP:SetNamespace' );
 define( "kAPI_OP_GetTerm",			'WS:OP:GetTerm' );
 
 /**
+ * SetVertex web-service.
+ *
+ * This is the tag that represents the SetVertex web-service operation, which inserts the
+ * provided object as a new vertex.
+ *
+ * The service expects the following parameters:
+ *
+ * <ul>
+ *	<li><i>{@link kAPI_FORMAT}</i>: This parameter is required to indicate how to
+ *		encode the response.
+ *	<li><i>{@link kAPI_DATABASE}</i>: This parameter is required to indicate the working
+ *		database. Note that the {@link kAPI_CONTAINER} will be ignored by this service.
+ *	<li><i>{@link kAPI_OBJECT}</i>: This parameter is required and contains an array
+ *		corresponding to the new vertex record, the following attributes will not be
+ *		considered: {@link kTAG_NID}, {@link kTAG_CLASS}, {@link kTAG_NODE},
+ *		{@link kTAG_EDGES} and {@link kTAG_NODES}.
+ *	<li><i>{@link kAPI_CLASS}</i>: This parameter is required to determine whether the
+ *		instance to be created is a master or an alias.
+ * </ul>
+ *
+ * The service will attempt to <i>insert</i> the provided object, if successful, it will
+ * return the newly created {@link kTAG_NID} identifier in the
+ * {@link kTERM_STATUS_IDENTIFIER} return parameter and the updated object in the
+ * {@link kAPI_RESPONSE}.
+ *
+ * <i>Note that all node references, specifically the {@link kTAG_TERM} attribute, must
+ * be provided as either a {@link CDataTypeBinary} instance, in which case it is assumed to
+ * be the {@link kTAG_NID} of the term, or as a string, in which case it is supposed to
+ * be the term's {@link kTAG_GID}.</i>
+ */
+define( "kAPI_OP_SetVertex",		'WS:OP:SetVertex' );
+
+/**
  * GetVertex web-service.
  *
  * This is the tag that represents the GetVertex web-service operation, which will return a
@@ -259,6 +292,35 @@ define( "kAPI_OP_GetTerm",			'WS:OP:GetTerm' );
  * </ul>
  */
 define( "kAPI_OP_GetVertex",		'WS:OP:GetVertex' );
+
+/**
+ * GetTag web-service.
+ *
+ * This is the tag that represents the GetTag web-service operation, which will return a
+ * list of tags according to the provided parameters:
+ *
+ * The service expects the following parameters:
+ *
+ * <ul>
+ *	<li><i>{@link kAPI_FORMAT}</i>: This parameter is required to indicate how to encode the
+ *		response.
+ *	<li><i>{@link kAPI_DATABASE}</i>: This parameter is required to indicate the working
+ *		database.
+ *	<li><i>{@link kAPI_SELECT}</i>: This parameter is an array listing which fields are to
+ *		be returned by the query, all fields not included in the list will be ignored. An
+ *		empty list is equivalent to requesting all fields.
+ *	<li><i>{@link kAPI_SORT}</i>: This parameter is an array listing which fields are to
+ *		be considered in the sort order, the array is indexed by the field name and the
+ *		value should be a number that represents the sense: positive will be considered
+ *		<i>ascending</i> and negative values <i>descending</i>; zero values will be ignored.
+ *	<li><i>{@link kAPI_PAGE_LIMIT}</i>:This parameter is required or enforced, it represents
+ *		the maximum number of elements that the query should return, the default value is
+ *		{@link kDEFAULT_LIMIT}.
+ *	<li><i>{@link kAPI_QUERY}</i>: This parameter will hold the selection criteria for the
+ *		tag.</i>
+ * </ul>
+ */
+define( "kAPI_OP_GetTag",			'WS:OP:GetTag' );
 
 /*=======================================================================================
  *	RELATIONSHIP SENSE ENUMERATIONS														*

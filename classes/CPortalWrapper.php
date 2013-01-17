@@ -579,73 +579,80 @@ class CPortalWrapper extends COntologyWrapper
 		if( array_key_exists( kAPI_OBJECT, $_REQUEST ) )
 		{
 			//
-			// Create new user.
+			// Only when adding new users.
 			//
-			$user = new CUser();
-		
-			//
-			// Iterate attributes.
-			//
-			foreach( $_REQUEST[ kAPI_OBJECT ] as $tag => $value )
+			if( $_REQUEST[ kAPI_OPERATION ] == kAPI_OP_NewUser )
 			{
 				//
-				// Parse known tags.
+				// Create new user.
 				//
-				switch( $tag )
+				$user = new CUser();
+		
+				//
+				// Iterate attributes.
+				//
+				foreach( $_REQUEST[ kAPI_OBJECT ] as $tag => $value )
 				{
-					case kTAG_USER_NAME:
-						$user->Name( $value );
-						break;
+					//
+					// Parse known tags.
+					//
+					switch( $tag )
+					{
+						case kTAG_USER_NAME:
+							$user->Name( $value );
+							break;
 			
-					case kTAG_USER_CODE:
-						$user->Code( $value );
-						break;
+						case kTAG_USER_CODE:
+							$user->Code( $value );
+							break;
 			
-					case kTAG_USER_PASS:
-						$user->Pass( $value );
-						break;
+						case kTAG_USER_PASS:
+							$user->Pass( $value );
+							break;
 			
-					case kTAG_USER_MAIL:
-						$user->Mail( $value );
-						break;
+						case kTAG_USER_MAIL:
+							$user->Mail( $value );
+							break;
 			
-					case kTAG_USER_ROLE:
-						if( ! is_array( $value ) )
-							$value = array( $value );
-						foreach( $value as $item )
-							$user->Role( $item, TRUE );
-						break;
+						case kTAG_USER_ROLE:
+							if( ! is_array( $value ) )
+								$value = array( $value );
+							foreach( $value as $item )
+								$user->Role( $item, TRUE );
+							break;
 			
-					case kTAG_USER_PROFILE:
-						if( ! is_array( $value ) )
-							$value = array( $value );
-						foreach( $value as $item )
-							$user->Profile( $item, TRUE );
-						break;
+						case kTAG_USER_PROFILE:
+							if( ! is_array( $value ) )
+								$value = array( $value );
+							foreach( $value as $item )
+								$user->Profile( $item, TRUE );
+							break;
 			
-					case kTAG_USER_DOMAIN:
-						if( ! is_array( $value ) )
-							$value = array( $value );
-						foreach( $value as $item )
-							$user->Domain( $item, TRUE );
-						break;
+						case kTAG_USER_DOMAIN:
+							if( ! is_array( $value ) )
+								$value = array( $value );
+							foreach( $value as $item )
+								$user->Domain( $item, TRUE );
+							break;
 			
-					case kTAG_USER_MANAGER:
-						$user->Manager( $value );
-						break;
+						case kTAG_USER_MANAGER:
+							$user->Manager( $value );
+							break;
 				
-					default:
-						$user[ $tag ] = $value;
-						break;
+						default:
+							$user[ $tag ] = $value;
+							break;
 			
-				} // Parsed attribute tag.
+					} // Parsed attribute tag.
 		
-			} // Iterating user attributes.
+				} // Iterating user attributes.
 		
-			//
-			// Save user.
-			//
-			$_REQUEST[ kAPI_OBJECT ] = $user;
+				//
+				// Save user.
+				//
+				$_REQUEST[ kAPI_OBJECT ] = $user;
+			
+			} // Adding user.
 		
 		} // Provided user attributes.
 	

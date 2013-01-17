@@ -337,6 +337,78 @@ class CMongoQuery extends CQuery
 				$subject = (string) $theStatement[ kOFFSET_QUERY_SUBJECT ];
 			
 			//
+			// Normalise data by type.
+			//
+			if( isset( $type )
+			 && isset( $data ) )
+			{
+				switch( $type )
+				{
+					case kTYPE_STRING:
+						if( is_array( $data ) )
+						{
+							$keys = array_keys( $data );
+							foreach( $keys as $key )
+							{
+								if( ! is_string( $data[ $key ] ) )
+									$data[ $key ] = (string) $data[ $key ];
+							}
+						}
+						else
+						{
+							if( ! is_string( $data ) )
+								$data = (string) $data;
+						}
+						break;
+						
+					case kTYPE_INT:
+					case kTYPE_INT32:
+					case kTYPE_INT64:
+						if( is_array( $data ) )
+						{
+							$keys = array_keys( $data );
+							foreach( $keys as $key )
+							{
+								if( is_string( $data[ $key ] ) )
+									$data[ $key ] = (int) $data[ $key ];
+							}
+						}
+						else
+						{
+							if( is_string( $data ) )
+								$data = (int) $data;
+						}
+						break;
+						
+					case kTYPE_FLOAT:
+						if( is_array( $data ) )
+						{
+							$keys = array_keys( $data );
+							foreach( $keys as $key )
+							{
+								if( is_string( $data[ $key ] ) )
+									$data[ $key ] = (float) $data[ $key ];
+							}
+						}
+						else
+						{
+							if( is_string( $data ) )
+								$data = (float) $data;
+						}
+						break;
+
+					case kTYPE_DATE_STRING:
+					case kTYPE_TIME_STRING:
+					case kTYPE_STAMP:
+					case kTYPE_BOOLEAN:
+					case kTYPE_BINARY_STRING:
+					case kTYPE_MongoId:
+					case kTYPE_MongoCode:
+						break;
+				}
+			}
+			
+			//
 			// Parse by operator.
 			//
 			switch( $operator = $theStatement[ kOFFSET_QUERY_OPERATOR ] )
