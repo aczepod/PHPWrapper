@@ -2278,6 +2278,9 @@ class COntology extends CConnection
 								$term1 = new COntologyTerm();
 								$term1->NS( $ns1 );
 								$term1->LID( (string) $record[ 'part1_code' ] );
+								if( $term3->offsetExists( kTAG_LABEL ) )
+									$term1->offsetSet( kTAG_LABEL,
+													   $term3->offsetGet( kTAG_LABEL ) );
 								$term1->Kind( kKIND_ENUMERATION, TRUE );
 								$term1->Term( $term3 );
 								$term1->Insert( $theDatabase );
@@ -2341,6 +2344,9 @@ class COntology extends CConnection
 								$term2 = new COntologyTerm();
 								$term2->NS( $ns2 );
 								$term2->LID( (string) $record[ 'part2_code' ] );
+								if( $term3->offsetExists( kTAG_LABEL ) )
+									$term2->offsetSet( kTAG_LABEL,
+													   $term3->offsetGet( kTAG_LABEL ) );
 								$term2->Kind( kKIND_ENUMERATION, TRUE );
 								$term2->Term( $term3 );
 								$term2->Insert( $theDatabase );
@@ -2661,9 +2667,21 @@ class COntology extends CConnection
 						// Relate term.
 						//
 						if( $node3 !== NULL )
+						{
 							$term2b->Term( $node3->Term() );
+							if( $node3->offsetExists( kTAG_LABEL ) )
+								$term2b->offsetSet(
+									kTAG_LABEL,
+									$node3->offsetGet( kTAG_LABEL ) );
+						}
 						elseif( $node1 !== NULL )
+						{
 							$term2b->Term( $node1->Term() );
+							if( $node1->offsetExists( kTAG_LABEL ) )
+								$term2b->offsetSet(
+									kTAG_LABEL,
+									$node1->offsetGet( kTAG_LABEL ) );
+						}
 						
 						//
 						// Complete term.
@@ -2748,9 +2766,21 @@ class COntology extends CConnection
 						// Relate term.
 						//
 						if( $node3 !== NULL )
+						{
 							$term2t->Term( $node3->Term() );
+							if( $node3->offsetExists( kTAG_LABEL ) )
+								$term2t->offsetSet(
+									kTAG_LABEL,
+									$node3->offsetGet( kTAG_LABEL ) );
+						}
 						elseif( $node1 !== NULL )
+						{
 							$term2t->Term( $node1->Term() );
+							if( $node1->offsetExists( kTAG_LABEL ) )
+								$term2t->offsetSet(
+									kTAG_LABEL,
+									$node1->offsetGet( kTAG_LABEL ) );
+						}
 						
 						//
 						// Complete term.
@@ -3092,6 +3122,9 @@ class COntology extends CConnection
 								$term2 = new COntologyTerm();
 								$term2->NS( $ns2 );
 								$term2->LID( (string) $record[ 'alpha_2_code' ] );
+								if( $term3->offsetExists( kTAG_LABEL ) )
+									$term2->offsetSet( kTAG_LABEL,
+													   $term3->offsetGet( kTAG_LABEL ) );
 								$term2->Kind( kKIND_ENUMERATION, TRUE );
 								$term2->Term( $term3 );
 								$term2->Insert( $theDatabase );
@@ -3155,6 +3188,9 @@ class COntology extends CConnection
 								$termN = new COntologyTerm();
 								$termN->NS( $nsN );
 								$termN->LID( (string) $record[ 'numeric_code' ] );
+								if( $term3->offsetExists( kTAG_LABEL ) )
+									$termN->offsetSet( kTAG_LABEL,
+													   $term3->offsetGet( kTAG_LABEL ) );
 								$termN->Kind( kKIND_ENUMERATION, TRUE );
 								$termN->Term( $term3 );
 								$termN->Insert( $theDatabase );
@@ -3453,6 +3489,9 @@ class COntology extends CConnection
 								$term4 = new COntologyTerm();
 								$term4->NS( $ns4 );
 								$term4->LID( (string) $record[ 'alpha_4_code' ] );
+								if( $term3->offsetExists( kTAG_LABEL ) )
+									$term4->offsetSet( kTAG_LABEL,
+													   $term3->offsetGet( kTAG_LABEL ) );
 								$term4->Kind( kKIND_ENUMERATION, TRUE );
 								$term4->Term( $term3 );
 								$term4->Insert( $theDatabase );
@@ -3516,6 +3555,9 @@ class COntology extends CConnection
 								$termN = new COntologyTerm();
 								$termN->NS( $nsN );
 								$termN->LID( (string) $record[ 'numeric_code' ] );
+								if( $term3->offsetExists( kTAG_LABEL ) )
+									$termN->offsetSet( kTAG_LABEL,
+													   $term3->offsetGet( kTAG_LABEL ) );
 								$termN->Kind( kKIND_ENUMERATION, TRUE );
 								$termN->Term( $term3 );
 								$termN->Insert( $theDatabase );
@@ -4070,6 +4112,9 @@ class COntology extends CConnection
 								$termN = new COntologyTerm();
 								$termN->NS( $nsA );
 								$termN->LID( (string) $record[ 'numeric_code' ] );
+								if( $termL->offsetExists( kTAG_LABEL ) )
+									$termN->offsetSet( kTAG_LABEL,
+													   $termL->offsetGet( kTAG_LABEL ) );
 								$termN->Kind( kKIND_ENUMERATION, TRUE );
 								$termN->Term( $termL );
 								$termN->Insert( $theDatabase );
@@ -4214,6 +4259,9 @@ class COntology extends CConnection
 								$termN = new COntologyTerm();
 								$termN->NS( $nsH );
 								$termN->LID( (string) $record[ 'numeric_code' ] );
+								if( $termL->offsetExists( kTAG_LABEL ) )
+									$termN->offsetSet( kTAG_LABEL,
+													   $termL->offsetGet( kTAG_LABEL ) );
 								$termN->Kind( kKIND_ENUMERATION, TRUE );
 								$termN->Term( $termL );
 								$termN->Insert( $theDatabase );
@@ -4429,6 +4477,9 @@ class COntology extends CConnection
 								$termN = new COntologyTerm();
 								$termN->NS( $nsN );
 								$termN->LID( (string) $record[ 'numeric_code' ] );
+								if( $term4->offsetExists( kTAG_LABEL ) )
+									$termN->offsetSet( kTAG_LABEL,
+													   $term4->offsetGet( kTAG_LABEL ) );
 								$termN->Kind( kKIND_ENUMERATION, TRUE );
 								$termN->Term( $term4 );
 								$termN->Insert( $theDatabase );
