@@ -131,6 +131,19 @@ define( "kAPI_SELECT",				':WS:SELECT' );
 define( "kAPI_SORT",				':WS:SORT' );
 
 /**
+ * Data distinct field.
+ *
+ * This is the tag that represents the distinct field name: when querying it is possible to
+ * provide a distinct value indicator, in that case the results of the query will be the
+ * list of distinct values of the provided field taken from the selection of the provided
+ * query; paging will also affect that result.
+ *
+ * Type: encoded.
+ * Cardinality: one or zero.
+ */
+define( "kAPI_DISTINCT",			':WS:DISTINCT' );
+
+/**
  * Data store object class.
  *
  * This is the tag that represents the data store object class, this value is used when
@@ -166,6 +179,17 @@ define( "kAPI_CLASS",				':WS:CLASS' );
  * Cardinality: one or zero.
  */
 define( "kAPI_PAGING",				':WS:PAGING' );
+
+/**
+ * Match query index.
+ *
+ * This is the tag that represents the query match index: when providing a list of queries
+ * if one of them is successful, the index of that query will be returned in this parameter.
+ *
+ * Type: encoded.
+ * Cardinality: one or zero.
+ */
+define( "kAPI_QUERY_MATCH",			':WS:QUERY-MATCH' );
 
 /*=======================================================================================
  *	WEB-SERVICE RESPONSE ELEMENTS														*
@@ -278,7 +302,7 @@ define( "kAPI_OP_GET_ONE",			'WS:OP:GET-ONE' );
  * MATCH web-service.
  *
  * This is the tag that represents the MATCH web-service operation, which returns the
- * the first matching record of a series of queries.
+ * the first matching records of a series of queries.
  *
  * The service expects the following parameters:
  *
@@ -296,7 +320,7 @@ define( "kAPI_OP_GET_ONE",			'WS:OP:GET-ONE' );
  *		empty list is equivalent to not providing the list.
  * </ul>
  *
- * The service will execute each provided query and the first matched record will be
+ * The service will execute each provided query and the first set of matched records will be
  * returned.
  */
 define( "kAPI_OP_MATCH",			'WS:OP:MATCH' );

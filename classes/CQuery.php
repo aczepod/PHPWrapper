@@ -294,7 +294,7 @@ class CQuery extends CStatusDocument
 		// Parse by statement key.
 		//
 		reset( $theStatement );
-		switch( key( $theStatement ) )
+		switch( (string) key( $theStatement ) )
 		{
 			//
 			// Handle query.
@@ -473,8 +473,8 @@ class CQuery extends CStatusDocument
 		//
 		// Init local storage.
 		//
-		$provided = key( $theQuery );				// Provided query condition.
-		$current = key( $this->getArrayCopy() );	// Current query condition.
+		$provided = (string) key( $theQuery );				// Provided query condition.
+		$current = (string) key( $this->getArrayCopy() );	// Current query condition.
 		switch( $theCondition )
 		{
 			case kOPERATOR_OR:
@@ -716,7 +716,7 @@ class CQuery extends CStatusDocument
 			//
 			// Get current query top condition.
 			//
-			$top_condition = key( $theQuery );
+			$top_condition = (string) key( $theQuery );
 			
 			//
 			// Promote condition.
@@ -900,7 +900,7 @@ class CQuery extends CStatusDocument
 				// Unsupported condition.
 				//
 				throw new Exception
-					( "Invalid query: unsupported condition",
+					( "Invalid query: unsupported condition [$theCondition]",
 					  kERROR_UNSUPPORTED );										// !@! ==>
 		
 		} // Checking condition.
@@ -941,7 +941,7 @@ class CQuery extends CStatusDocument
 		//
 		// Parse by statement index.
 		//
-		switch( $condition = key( $theStatement ) )
+		switch( $condition = (string) key( $theStatement ) )
 		{
 			case kOPERATOR_AND:
 			case kOPERATOR_NAND:

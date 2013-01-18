@@ -954,15 +954,69 @@ class CMongoContainer extends CContainer
 			//
 			// Return distinct values.
 			//
-			elseif( $theResult !== NULL )
-				return $this->Connection()->distinct(
-					(string) $theResult, $theQuery );								// ==>
+			if( $theResult !== NULL )
+			{
+				//
+				// Handle array.
+				//
+				if( is_array( $theResult ) )
+				{
+					//
+					// Init local storage.
+					//
+					$result = Array();
+				
+					//
+					// Iterate distinct value properties.
+					//
+					$keys = array_unique( $theResult );
+					foreach( $keys as $key )
+					{
+						//
+						// Get distinct values.
+						//
+						$cursor
+							= $this->Connection()->distinct( (string) $key, $theQuery );
+						if( $cursor === FALSE )
+							throw new Exception
+								( "Distinct values query failed",
+								  kERROR_STATE );								// !@! ==>
+						
+						//
+						// Load result.
+						//
+						$result[ $key ] = $cursor;
+					
+					} // Iterating distinct keys.
+				
+				} // List of distinct values.
+				
+				//
+				// Single distinct value.
+				//
+				else
+				{
+					//
+					// Get distinct values.
+					//
+					$result
+						= $this->Connection()->distinct( (string) $theResult, $theQuery );
+					if( $result === FALSE )
+						throw new Exception
+							( "Distinct values query failed",
+							  kERROR_STATE );									// !@! ==>
+				
+				} // Single distinct value.
+				
+				return $result;														// ==>
+				
+			} // Distinct values.
 			
 			//
 			// Get cursor.
 			//
 			$cursor = $this->Connection()->find( $theQuery, $selection );
-			
+		
 			//
 			// Handle sort order.
 			//
@@ -973,7 +1027,7 @@ class CMongoContainer extends CContainer
 				//
 				if( ! is_array( $theSort ) )
 					$selection = new ArrayObject( array( $theSort => 1 ) );
-				
+			
 				//
 				// Handle list.
 				//
@@ -986,7 +1040,7 @@ class CMongoContainer extends CContainer
 					// field names as integers if it thinks it is an array.
 					//
 					$selection = new ArrayObject();
-					
+				
 					//
 					// Normalise list.
 					//
@@ -1001,49 +1055,39 @@ class CMongoContainer extends CContainer
 								$selection[ (string) $field ] = 1;
 							elseif( $value < 0 )
 								$selection[ (string) $field ] = -1;
-						
+					
 						} // Numeric value.
 					}
-					
-				} // Provided an array.
 				
+				} // Provided an array.
+			
 				//
 				// Sort results.
 				//
 				$cursor->sort( $selection );
-			
+		
 			} // Provided sort order.
-			
+		
 			//
-			// Handle paging parameters.
+			// Handle pagination.
 			//
-			if( $theLimit !== NULL )
+			if( ($theStart !== NULL)
+			 || ($theLimit !== NULL) )
 			{
 				//
-				// Initialise page start.
+				// Position on start.
 				//
-				if( $theStart === NULL )
-					$theStart = 0;
-				
-				//
-				// Initialise record start.
-				//
-				$start = ( $theStart )
-					   ? ($theStart * $theLimit)
-					   : 0;
-				
-				//
-				// Position at start.
-				//
-				$cursor->skip( $start );
-				
-				//
-				// Set limit.
-				//
-				$cursor->limit( $theLimit );
+				if( $theStart )
+					$cursor->skip( $theStart );
 			
-			} // Provided paging.
-			
+				//
+				// Limit results.
+				//
+				if( $theLimit !== NULL )
+					$cursor->limit( $theLimit );
+		
+			} // Provided pagination parameters.
+		
 			return $cursor;															// ==>
 		
 		} // Object is ready.

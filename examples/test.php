@@ -409,7 +409,6 @@
 	echo( '<pre>' );
 	print_r( array_keys( iterator_to_array( $rs ) ) );
 	echo( '</pre>' );
-*/
 	
 	//
 	// Test integers.
@@ -427,5 +426,47 @@
 	echo( '<hr>' );
 	
 	echo( $x - 1 );
+*/
+	
+	//
+	// Test array_slice.
+	//
+	
+	$array = array( 1, 2, 3, 4, 5 );
+	
+	echo( '<pre>' );
+	echo( 'array_slice( $array, 0, 4 )' );
+	print_r( array_slice( $array, 0, 4 ) );
+	echo( '</pre>' );
+	
+	echo( '<pre>' );
+	echo( 'array_slice( $array, 1, 4 )' );
+	print_r( array_slice( $array, 1, 4 ) );
+	echo( '</pre>' );
+	
+	echo( '<pre>' );
+	echo( 'array_slice( $array, 2, 4 )' );
+	print_r( array_slice( $array, 2, 4 ) );
+	echo( '</pre>' );
+	
+	echo( '<pre>' );
+	echo( 'array_slice( $array, 8, 2 )' );
+	print_r( array_slice( $array, 8, 2 ) );
+	echo( '</pre>' );
+	
+	echo( '<pre>' );
+	echo( 'array_slice( $array, 2, NULL )' );
+	print_r( array_slice( $array, 2, NULL ) );
+	echo( '</pre>' );
+	
+	echo( '<pre>' );
+	echo( 'array_slice( $array, NULL, 2 )' );
+	print_r( array_slice( $array, NULL, 2 ) );
+	echo( '</pre>' );
+	
+	echo( '<pre>' );
+	echo( 'array_slice( $array, NULL, NULL )' );
+	print_r( array_slice( $array, NULL, NULL ) );
+	echo( '</pre>' );
 	
 ?>

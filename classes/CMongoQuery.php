@@ -287,11 +287,9 @@ class CMongoQuery extends CQuery
 		//
 		// Handle nested condition.
 		//
-		$condition = key( $theStatement );
-		if( ($condition == kOPERATOR_OR)
-		 || ($condition == kOPERATOR_NOR)
-		 || ($condition == kOPERATOR_AND)
-		 || ($condition == kOPERATOR_NAND) )
+		$condition = (string) key( $theStatement );
+		$ops = array( kOPERATOR_OR, kOPERATOR_NOR, kOPERATOR_AND, kOPERATOR_NAND );
+		if( in_array( $condition, $ops ) )
 		{
 			//
 			// Create condition container.

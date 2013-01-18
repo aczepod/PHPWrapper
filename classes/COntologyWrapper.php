@@ -1309,34 +1309,7 @@ class COntologyWrapper extends CDataWrapper
 			// Check query type.
 			//
 			if( is_array( $_REQUEST[ kAPI_SUBQUERY ] ) )
-			{
-				//
-				// Check container.
-				// If there it should already be a CContainer instance.
-				//
-				if( array_key_exists( kAPI_CONTAINER, $_REQUEST ) )
-				{
-					//
-					// Unserialise standard data types.
-					//
-					$_REQUEST[ kAPI_CONTAINER ]
-						->UnserialiseObject( $_REQUEST[ kAPI_SUBQUERY ] );
-					
-					//
-					// Format and verify query.
-					//
-					$this->_VerifyQuery( $_REQUEST[ kAPI_SUBQUERY ],
-										 $_REQUEST[ kAPI_CONTAINER ] );
-				
-				} // Provided container.
-				
-				else
-					throw new CException
-						( "Unable to format sub-query: missing container",
-						  kERROR_MISSING,
-						  kSTATUS_ERROR );										// !@! ==>
-			
-			} // Query is an array.
+				$this->_ValidateQueries( $_REQUEST[ kAPI_SUBQUERY ] );
 			
 			else
 				throw new CException
