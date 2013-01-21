@@ -443,45 +443,6 @@ try
 		echo( kSTYLE_TABLE_POS );
 		echo( '<hr>' );
 	
-		echo( '<h4>Test container MATCH in JSON</h4>' );
-		//
-		// Instantiate.
-		//
-		echo( '<i>$test = new CDataWrapperClient( $url );</i><br>' );
-		$test = new CDataWrapperClient( $url );
-		echo( '<i>$test->Operation( kAPI_OP_MATCH );</i><br>' );
-		$test->Operation( kAPI_OP_MATCH );
-		echo( '<i>$test->Format( kTYPE_JSON );</i><br>' );
-		$test->Format( kTYPE_JSON );
-		echo( '<i>$test->Database( "ONTOLOGY" );</i><br>' );
-		$test->Database( "ONTOLOGY" );
-		echo( '<i>$test->Container( "_terms" );</i><br>' );
-		$test->Container( "_terms" );
-		echo( '<i>$test->AddQueryListStatement( "A", kOPERATOR_AND, kTAG_LID, kOPERATOR_EQUAL, "IT-XXX" );</i><br>' );
-		$test->AddQueryListStatement( "A", kOPERATOR_AND, kTAG_LID, kOPERATOR_EQUAL, "IT-XXX" );
-		echo( '<i>$test->AddQueryListStatement( "B", kOPERATOR_AND, kTAG_LID, kOPERATOR_EQUAL, "IT-ZZZ" );</i><br>' );
-		$test->AddQueryListStatement( "B", kOPERATOR_AND, kTAG_LID, kOPERATOR_EQUAL, "IT-ZZZ" );
-		echo( '<i>$test->AddQueryListStatement( "C", kOPERATOR_AND, kTAG_LID, kOPERATOR_EQUAL, "IT-82" );</i><br>' );
-		$test->AddQueryListStatement( "C", kOPERATOR_AND, kTAG_LID, kOPERATOR_EQUAL, "IT-82" );
-		echo( '<i>$test->PageLimit( 5 );</i><br>' );
-		$test->PageLimit( 5  );
-		echo( '<i>$decoded = $test->Execute( \'POST\' );</i><br>' );
-		$decoded = $test->Execute( 'POST' );
-		//
-		// Display.
-		//
-		echo( kSTYLE_TABLE_PRE );
-		echo( kSTYLE_ROW_PRE );
-		echo( kSTYLE_HEAD_PRE.'Client:'.kSTYLE_HEAD_POS );
-		echo( kSTYLE_DATA_PRE.'<pre>' ); print_r( $test ); echo( '</pre>'.kSTYLE_DATA_POS );
-		echo( kSTYLE_ROW_POS );
-		echo( kSTYLE_ROW_PRE );
-		echo( kSTYLE_HEAD_PRE.'Decoded:'.kSTYLE_HEAD_POS );
-		echo( kSTYLE_DATA_PRE.'<pre>' ); print_r( $decoded ); echo( '</pre>'.kSTYLE_DATA_POS );
-		echo( kSTYLE_ROW_POS );
-		echo( kSTYLE_TABLE_POS );
-		echo( '<hr>' );
-	
 		echo( '<h4>Test INSERT array in JSON</h4>' );
 		//
 		// Instantiate.

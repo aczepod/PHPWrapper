@@ -203,7 +203,7 @@ implement specific storage actions.</p>
 				<b>Author:</b>
 				Milko A. Škofič &lt;<a
 href="mailto:m.skofic&#64;cgiar.org">m.skofic&#64;<!---->cgiar.org</a>&gt;<br />
-		<b>Located at</b> <a href="source-class-CContainer.html#57-733" title="Go to source code">CContainer.php</a><br />
+		<b>Located at</b> <a href="source-class-CContainer.html#57-735" title="Go to source code">CContainer.php</a><br />
 	</div>
 
 
@@ -335,7 +335,7 @@ graph kOFFSET_GRAPH offset before destroying the object.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#_ManageObject">#</a>
-		<code><a href="source-class-CContainer.html#162-332" title="Go to source code">ManageObject</a>( <span>reference <var>&amp; $theObject</var></span>, <span>mixed <var>$theIdentifier</var> = <span class="php-keyword1">NULL</span></span>, <span>mixed <var>$theModifiers</var> = kFLAG_DEFAULT </span> )</code>
+		<code><a href="source-class-CContainer.html#162-334" title="Go to source code">ManageObject</a>( <span>reference <var>&amp; $theObject</var></span>, <span>mixed <var>$theIdentifier</var> = <span class="php-keyword1">NULL</span></span>, <span>mixed <var>$theModifiers</var> = kFLAG_DEFAULT </span> )</code>
 
 		<div class="description short">
 			
@@ -401,7 +401,9 @@ and/or its native unique identifier (kTAG_NID).</p>
 					the value that the operation will use.</li>
 
 					<li><tt>$theIdentifier</tt>: This parameter keeps its original meaning, it
-					should contain the native identifier of the object to be modified.</li>
+					should contain the native identifier of the object to be modified. If this
+					parameter is a <code><a href="class-CQuery.html">CQuery</a></code> instance, this will be used to select the objects
+					to be modified.</li>
 
 					<li><tt>$theModifiers</tt>: Another section of this bitfield will hold the flags
 					that determine what specific modification should be performed:
@@ -539,7 +541,7 @@ is declared abstract.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#_CheckObject">#</a>
-		<code><a href="source-class-CContainer.html#339-352" title="Go to source code">CheckObject</a>( <span>mixed <var>$theIdentifier</var></span>, <span>string <var>$theOffset</var> = <span class="php-keyword1">NULL</span> </span> )</code>
+		<code><a href="source-class-CContainer.html#341-354" title="Go to source code">CheckObject</a>( <span>mixed <var>$theIdentifier</var></span>, <span>string <var>$theOffset</var> = <span class="php-keyword1">NULL</span> </span> )</code>
 
 		<div class="description short">
 			
@@ -587,7 +589,7 @@ return <tt>TRUE</tt> if found and <tt>FALSE</tt> if not.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#_Query">#</a>
-		<code><a href="source-class-CContainer.html#359-411" title="Go to source code">Query</a>( <span>array <var>$theQuery</var> = <span class="php-keyword1">NULL</span></span>, <span>array <var>$theFields</var> = <span class="php-keyword1">NULL</span></span>, <span>array <var>$theSort</var> = <span class="php-keyword1">NULL</span></span>, <span>integer <var>$theStart</var> = <span class="php-keyword1">NULL</span></span>, <span>integer <var>$theLimit</var> = <span class="php-keyword1">NULL</span></span>, <span>mixed <var>$theResult</var> = <span class="php-keyword1">NULL</span> </span> )</code>
+		<code><a href="source-class-CContainer.html#361-413" title="Go to source code">Query</a>( <span>array <var>$theQuery</var> = <span class="php-keyword1">NULL</span></span>, <span>array <var>$theFields</var> = <span class="php-keyword1">NULL</span></span>, <span>array <var>$theSort</var> = <span class="php-keyword1">NULL</span></span>, <span>integer <var>$theStart</var> = <span class="php-keyword1">NULL</span></span>, <span>integer <var>$theLimit</var> = <span class="php-keyword1">NULL</span></span>, <span>mixed <var>$theResult</var> = <span class="php-keyword1">NULL</span> </span> )</code>
 
 		<div class="description short">
 			
@@ -684,7 +686,7 @@ number of elements affected by the query regardless of paging parameters.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#_Remove">#</a>
-		<code><a href="source-class-CContainer.html#418-438" title="Go to source code">Remove</a>( <span>array <var>$theQuery</var> = <span class="php-keyword1">NULL</span> </span> )</code>
+		<code><a href="source-class-CContainer.html#420-440" title="Go to source code">Remove</a>( <span>array <var>$theQuery</var> = <span class="php-keyword1">NULL</span> </span> )</code>
 
 		<div class="description short">
 			
@@ -740,7 +742,7 @@ number of affected objects; on errors the method should raise an exception.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#_UnserialiseObject">#</a>
-		<code><a href="source-class-CContainer.html#454-608" title="Go to source code">UnserialiseObject</a>( <span>reference <var>&amp; $theObject</var></span> )</code>
+		<code><a href="source-class-CContainer.html#456-610" title="Go to source code">UnserialiseObject</a>( <span>reference <var>&amp; $theObject</var></span> )</code>
 
 		<div class="description short">
 			
@@ -817,7 +819,7 @@ follows:</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#_UnserialiseData">#</a>
-		<code><a href="source-class-CContainer.html#615-648" title="Go to source code">UnserialiseData</a>( <span>reference <var>&amp; $theElement</var></span>, <span>string <var>$theType</var> = <span class="php-keyword1">NULL</span> </span> )</code>
+		<code><a href="source-class-CContainer.html#617-650" title="Go to source code">UnserialiseData</a>( <span>reference <var>&amp; $theElement</var></span>, <span>string <var>$theType</var> = <span class="php-keyword1">NULL</span> </span> )</code>
 
 		<div class="description short">
 			
@@ -886,7 +888,7 @@ implement it.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#_NextSequence">#</a>
-		<code><a href="source-class-CContainer.html#664-700" title="Go to source code">NextSequence</a>( <span>string <var>$theKey</var></span>, <span>mixed <var>$theContainer</var> = <span class="php-keyword1">NULL</span> </span> )</code>
+		<code><a href="source-class-CContainer.html#666-702" title="Go to source code">NextSequence</a>( <span>string <var>$theKey</var></span>, <span>mixed <var>$theContainer</var> = <span class="php-keyword1">NULL</span> </span> )</code>
 
 		<div class="description short">
 			
@@ -962,7 +964,7 @@ exception.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#_NewQuery">#</a>
-		<code><a href="source-class-CContainer.html#716-729" title="Go to source code">NewQuery</a>( <span>mixed <var>$theQuery</var> = <span class="php-keyword1">NULL</span> </span> )</code>
+		<code><a href="source-class-CContainer.html#718-731" title="Go to source code">NewQuery</a>( <span>mixed <var>$theQuery</var> = <span class="php-keyword1">NULL</span> </span> )</code>
 
 		<div class="description short">
 			

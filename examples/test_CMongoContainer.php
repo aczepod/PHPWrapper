@@ -451,6 +451,20 @@ try
 	echo( 'Object<pre>' ); print_r( $offsets ); echo( '</pre>' );
 	echo( 'Status<pre>' ); print_r( $status ); echo( '</pre>' );
 	echo( '<hr />' );
+	
+	//
+	// Pull with query.
+	//
+	echo( '<h4>Pull with query</h4>' );
+	echo( '<h5>$offsets = array( "ARRAY1" => "C" );</h5>' );
+	$offsets = array( "ARRAY1" => "C" );
+	echo( '<h5>$query = new CQuery( array( \'$AND\' => array( array( "_query-subject" => "_id", "_query-operator" => \'$EQ\', "_query-data-type" => ":INT", "_query-data" => 2 ) ) ) );</h5>' );
+	$query = new CQuery( array( '$AND' => array( array( "_query-subject" => "_id", "_query-operator" => '$EQ', "_query-data-type" => ":INT", "_query-data" => 2 ) ) ) );
+	echo( '<h5>$status = $test->ManageObject( $offsets, 2, kFLAG_PERSIST_MODIFY + kFLAG_MODIFY_PULL );</h5>' );
+	$status = $test->ManageObject( $offsets, 2, kFLAG_PERSIST_MODIFY + kFLAG_MODIFY_PULL );
+	echo( 'Object<pre>' ); print_r( $offsets ); echo( '</pre>' );
+	echo( 'Status<pre>' ); print_r( $status ); echo( '</pre>' );
+	echo( '<hr />' );
 	echo( '<hr />' );
 	
 	//

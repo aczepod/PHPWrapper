@@ -109,19 +109,6 @@ require_once( kPATH_MYWRAPPER_LIBRARY_CLASS."/CDataWrapper.php" );
  *			({@link kAPI_SELECT}). <i>If this parameter is omitted, it is assumed that all
  *			attributes are returned</i>.
  *	 </ul>
- *	<li><tt>{@link kAPI_OP_MATCH}</tt>: This service returns the first element that matches
- *		the provided list of queries. The service expects the following parameters:
- *	 <ul>
- *		<li><tt>{@link Format()}</tt>: The data encoding type ({@link kAPI_FORMAT}).
- *		<li><tt>{@link Database()}</tt>: The data encoding type ({@link kAPI_DATABASE}).
- *		<li><tt>{@link Container()}</tt>: The data encoding type ({@link kAPI_CONTAINER}).
- *		<li><tt>{@link Query()}</tt>: The query ({@link kAPI_QUERY}).
- *			<i>If this parameter is omitted, it is assumed that the operation will involve
- *			all container elements</i>.
- *		<li><tt>{@link Select()}</tt>: The list of requested attributes
- *			({@link kAPI_SELECT}). <i>If this parameter is omitted, it is assumed that all
- *			attributes are returned</i>.
- *	 </ul>
  *	<li><tt>{@link kAPI_OP_INSERT}</tt>: This service will insert the provided object into
  *		the provided database or container. The service expects the following parameters:
  *	 <ul>
@@ -165,9 +152,6 @@ class CDataWrapperClient extends CWrapperClient
 	 * <ul>
 	 *	<li><i>{@link kAPI_OP_COUNT}</i>: COUNT web-service operation, used to
 	 *		return the total number of elements satisfying a query.
-	 *	<li><i>{@link kAPI_OP_MATCH}</i>: This operation is equivalent to a
-	 *		read query, except that it will try to match one {@link kAPI_DATA_QUERY query}
-	 *		clause at the time and will return a result on the first match.
 	 *	<li><i>{@link kAPI_OP_GET kAPI_OP_GET}</i>: GET web-service operation, used to
 	 *		retrieve objects from the data store.
 	 *	<li><i>{@link kAPI_OP_SET kAPI_OP_SET}</i>: SET web-service operation, used to
@@ -204,7 +188,6 @@ class CDataWrapperClient extends CWrapperClient
 				case kAPI_OP_COUNT:
 				case kAPI_OP_GET:
 				case kAPI_OP_GET_ONE:
-				case kAPI_OP_MATCH:
 				case kAPI_OP_RESOLVE:
 				case kAPI_OP_INSERT:
 				case kAPI_OP_DELETE:
@@ -434,52 +417,6 @@ class CDataWrapperClient extends CWrapperClient
 			//
 			switch( $this->Operation() )
 			{
-				case kAPI_OP_MATCH:
-					//
-					// Cast to array.
-					//
-					if( $theValue instanceof ArrayObject )
-						$theValue = $theValue->getArrayCopy();
-					elseif( ! is_array( $theValue ) )
-					{
-						$type = ( is_object( $theValue ) )
-							  ? get_class( $theValue )
-							  : gettype( $theValue );
-						throw new Exception( "Unsupported query list type [$type]",
-											 kERROR_PARAMETER );				// !@! ==>
-					}
-					
-					//
-					// Cast to queries.
-					//
-					foreach( $theValue as $key => $query )
-					{
-						//
-						// Cast to query.
-						//
-						if( ! ($query instanceof CQuery) )
-						{
-							if( is_array( $query ) )
-								$query = new CQuery( $query );
-							elseif( $query instanceof ArrayObject )
-								$query = new CQuery( $query->getArrayCopy() );
-							else
-							{
-								$type = ( is_object( $query ) )
-									  ? get_class( $query )
-									  : gettype( $query );
-								throw new Exception( "Unsupported query type [$type]",
-													 kERROR_PARAMETER );		// !@! ==>
-							}
-						}
-						
-						//
-						// Update query.
-						//
-						$theValue[ $key ] = $query;
-					}
-					break;
-				
 				default:
 					//
 					// Cast to query.
@@ -915,7 +852,7 @@ class CDataWrapperClient extends CWrapperClient
 	 *
 	 * This method is similar to the {@link AddQueryStatement()} method as it adds a query
 	 * statement to a query, except that the current {@link Query()} is a list of
-	 * {@link CQuery} objects. This kind of structure is used by the {@link kAPI_OP_MATCH}
+	 * {@link CQuery} objects. This kind of structure is used by the {@link kAPI_OP_GET}
 	 * operation to return the first match of a series of queries and by other operations in
 	 * which the array element index represents the container name ({@link Container()}).
 	 *
@@ -1034,7 +971,6 @@ class CDataWrapperClient extends CWrapperClient
 		{
 			case kAPI_OP_COUNT:
 			case kAPI_OP_GET_ONE:
-			case kAPI_OP_MATCH:
 				if( ! $this->offsetExists( kAPI_DATABASE ) )
 					throw new Exception
 							( "Unable to run service: missing database parameter",
@@ -1092,15 +1028,6 @@ class CDataWrapperClient extends CWrapperClient
 			$query = $this->Query();
 			switch( $this->Operation() )
 			{
-				case kAPI_OP_MATCH:
-					foreach( $query as $key => $value )
-					{
-						if( $value instanceof ArrayObject )
-							$query[ $key ] = $value->getArrayCopy();
-					}
-					$this->offsetSet( kAPI_QUERY, $query );
-					break;
-					
 				default:
 					if( $query instanceof ArrayObject )
 						$this->offsetSet( kAPI_QUERY, $query->getArrayCopy() );

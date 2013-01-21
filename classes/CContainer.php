@@ -215,7 +215,9 @@ abstract class CContainer extends CConnection
 	 *				<i>key</i> corresponds to the offset to be considered and the
 	 *				<i>value</i> to the value that the operation will use.
 	 *			<li><tt>$theIdentifier</tt>: This parameter keeps its original meaning, it
-	 *				should contain the native identifier of the object to be modified.
+	 *				should contain the native identifier of the object to be modified. If
+	 *				this parameter is a {@link CQuery} instance, this will be used to select
+	 *				the objects to be modified.
 	 *			<li><tt>$theModifiers</tt>: Another section of this bitfield will hold the
 	 *				flags that determine what specific modification should be performed:
 	 *			 <ul>

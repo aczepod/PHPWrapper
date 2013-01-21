@@ -206,25 +206,6 @@ class.</p>
 		</ul>
 	</li>
 
-	<li><tt>kAPI_OP_MATCH</tt>: This service returns the first element that
-	matches the provided list of queries. The service expects the following
-	parameters:
-		<ul>
-			<li><tt><code><a href="class-CWrapperClient.html#_Format">CWrapperClient::Format()</a></code></tt>: The data encoding type (kAPI_FORMAT).</li>
-
-			<li><tt><code><a href="class-CDataWrapperClient.html#_Database">CDataWrapperClient::Database()</a></code></tt>: The data encoding type (kAPI_DATABASE).</li>
-
-			<li><tt><code><a href="class-CDataWrapperClient.html#_Container">CDataWrapperClient::Container()</a></code></tt>: The data encoding type (kAPI_CONTAINER).</li>
-
-			<li><tt><code><a href="class-CDataWrapperClient.html#_Query">CDataWrapperClient::Query()</a></code></tt>: The query (kAPI_QUERY). <i>If this
-			parameter is omitted, it is assumed that the operation will involve all
-			container elements</i>.</li>
-
-			<li><tt><code><a href="class-CDataWrapperClient.html#_Select">CDataWrapperClient::Select()</a></code></tt>: The list of requested attributes (kAPI_SELECT). <i>If this parameter is omitted, it is assumed that all
-			attributes are returned</i>.</li>
-		</ul>
-	</li>
-
 	<li><tt>kAPI_OP_INSERT</tt>: This service will insert the provided
 	object into the provided database or container. The service expects the
 	following parameters:
@@ -324,7 +305,7 @@ class.</p>
 				<b>Author:</b>
 				Milko A. Škofič &lt;<a
 href="mailto:m.skofic&#64;cgiar.org">m.skofic&#64;<!---->cgiar.org</a>&gt;<br />
-		<b>Located at</b> <a href="source-class-CDataWrapperClient.html#36-1303" title="Go to source code">CDataWrapperClient.php</a><br />
+		<b>Located at</b> <a href="source-class-CDataWrapperClient.html#36-1230" title="Go to source code">CDataWrapperClient.php</a><br />
 	</div>
 
 
@@ -342,7 +323,7 @@ href="mailto:m.skofic&#64;cgiar.org">m.skofic&#64;<!---->cgiar.org</a>&gt;<br />
 
 		<td class="name"><div>
 		<a class="anchor" href="#_Operation">#</a>
-		<code><a href="source-class-CDataWrapperClient.html#159-218" title="Go to source code">Operation</a>( <span>string <var>$theValue</var> = <span class="php-keyword1">NULL</span></span>, <span>boolean <var>$getOld</var> = <span class="php-keyword1">FALSE</span> </span> )</code>
+		<code><a href="source-class-CDataWrapperClient.html#146-201" title="Go to source code">Operation</a>( <span>string <var>$theValue</var> = <span class="php-keyword1">NULL</span></span>, <span>boolean <var>$getOld</var> = <span class="php-keyword1">FALSE</span> </span> )</code>
 
 		<div class="description short">
 			
@@ -360,10 +341,6 @@ following allowed operations:</p>
 <ul>
 	<li><i>kAPI_OP_COUNT</i>: COUNT web-service operation, used to return
 	the total number of elements satisfying a query.</li>
-
-	<li><i>kAPI_OP_MATCH</i>: This operation is equivalent to a read query,
-	except that it will try to match one kAPI_DATA_QUERY query clause at the
-	time and will return a result on the first match.</li>
 
 	<li><i>kAPI_OP_GET kAPI_OP_GET</i>: GET web-service operation, used to
 	retrieve objects from the data store.</li>
@@ -425,7 +402,7 @@ following allowed operations:</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#_Database">#</a>
-		<code><a href="source-class-CDataWrapperClient.html#225-255" title="Go to source code">Database</a>( <span>string <var>$theValue</var> = <span class="php-keyword1">NULL</span></span>, <span>boolean <var>$getOld</var> = <span class="php-keyword1">FALSE</span> </span> )</code>
+		<code><a href="source-class-CDataWrapperClient.html#208-238" title="Go to source code">Database</a>( <span>string <var>$theValue</var> = <span class="php-keyword1">NULL</span></span>, <span>boolean <var>$getOld</var> = <span class="php-keyword1">FALSE</span> </span> )</code>
 
 		<div class="description short">
 			
@@ -493,7 +470,7 @@ currently set value.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#_Container">#</a>
-		<code><a href="source-class-CDataWrapperClient.html#262-292" title="Go to source code">Container</a>( <span>string <var>$theValue</var> = <span class="php-keyword1">NULL</span></span>, <span>boolean <var>$getOld</var> = <span class="php-keyword1">FALSE</span> </span> )</code>
+		<code><a href="source-class-CDataWrapperClient.html#245-275" title="Go to source code">Container</a>( <span>string <var>$theValue</var> = <span class="php-keyword1">NULL</span></span>, <span>boolean <var>$getOld</var> = <span class="php-keyword1">FALSE</span> </span> )</code>
 
 		<div class="description short">
 			
@@ -561,7 +538,7 @@ currently set value.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#_PageStart">#</a>
-		<code><a href="source-class-CDataWrapperClient.html#299-337" title="Go to source code">PageStart</a>( <span>string <var>$theValue</var> = <span class="php-keyword1">NULL</span></span>, <span>boolean <var>$getOld</var> = <span class="php-keyword1">FALSE</span> </span> )</code>
+		<code><a href="source-class-CDataWrapperClient.html#282-320" title="Go to source code">PageStart</a>( <span>string <var>$theValue</var> = <span class="php-keyword1">NULL</span></span>, <span>boolean <var>$getOld</var> = <span class="php-keyword1">FALSE</span> </span> )</code>
 
 		<div class="description short">
 			
@@ -630,7 +607,7 @@ currently set value.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#_PageLimit">#</a>
-		<code><a href="source-class-CDataWrapperClient.html#344-382" title="Go to source code">PageLimit</a>( <span>string <var>$theValue</var> = <span class="php-keyword1">NULL</span></span>, <span>boolean <var>$getOld</var> = <span class="php-keyword1">FALSE</span> </span> )</code>
+		<code><a href="source-class-CDataWrapperClient.html#327-365" title="Go to source code">PageLimit</a>( <span>string <var>$theValue</var> = <span class="php-keyword1">NULL</span></span>, <span>boolean <var>$getOld</var> = <span class="php-keyword1">FALSE</span> </span> )</code>
 
 		<div class="description short">
 			
@@ -699,7 +676,7 @@ currently set value.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#_Query">#</a>
-		<code><a href="source-class-CDataWrapperClient.html#389-509" title="Go to source code">Query</a>( <span>string <var>$theValue</var> = <span class="php-keyword1">NULL</span></span>, <span>boolean <var>$getOld</var> = <span class="php-keyword1">FALSE</span> </span> )</code>
+		<code><a href="source-class-CDataWrapperClient.html#372-446" title="Go to source code">Query</a>( <span>string <var>$theValue</var> = <span class="php-keyword1">NULL</span></span>, <span>boolean <var>$getOld</var> = <span class="php-keyword1">FALSE</span> </span> )</code>
 
 		<div class="description short">
 			
@@ -781,7 +758,7 @@ currently set value.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#_Select">#</a>
-		<code><a href="source-class-CDataWrapperClient.html#516-553" title="Go to source code">Select</a>( <span>string <var>$theValue</var> = <span class="php-keyword1">NULL</span></span>, <span>boolean <var>$getOld</var> = <span class="php-keyword1">FALSE</span> </span> )</code>
+		<code><a href="source-class-CDataWrapperClient.html#453-490" title="Go to source code">Select</a>( <span>string <var>$theValue</var> = <span class="php-keyword1">NULL</span></span>, <span>boolean <var>$getOld</var> = <span class="php-keyword1">FALSE</span> </span> )</code>
 
 		<div class="description short">
 			
@@ -858,7 +835,7 @@ currently set value.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#_Sort">#</a>
-		<code><a href="source-class-CDataWrapperClient.html#560-722" title="Go to source code">Sort</a>( <span>string <var>$theField</var> = <span class="php-keyword1">NULL</span></span>, <span>mixed <var>$theOrder</var> = <span class="php-keyword1">NULL</span></span>, <span>boolean <var>$getOld</var> = <span class="php-keyword1">FALSE</span> </span> )</code>
+		<code><a href="source-class-CDataWrapperClient.html#497-659" title="Go to source code">Sort</a>( <span>string <var>$theField</var> = <span class="php-keyword1">NULL</span></span>, <span>mixed <var>$theOrder</var> = <span class="php-keyword1">NULL</span></span>, <span>boolean <var>$getOld</var> = <span class="php-keyword1">FALSE</span> </span> )</code>
 
 		<div class="description short">
 			
@@ -962,7 +939,7 @@ negative means descending; zero is ignored.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#_Classname">#</a>
-		<code><a href="source-class-CDataWrapperClient.html#729-769" title="Go to source code">Classname</a>( <span>string <var>$theValue</var> = <span class="php-keyword1">NULL</span></span>, <span>boolean <var>$getOld</var> = <span class="php-keyword1">FALSE</span> </span> )</code>
+		<code><a href="source-class-CDataWrapperClient.html#666-706" title="Go to source code">Classname</a>( <span>string <var>$theValue</var> = <span class="php-keyword1">NULL</span></span>, <span>boolean <var>$getOld</var> = <span class="php-keyword1">FALSE</span> </span> )</code>
 
 		<div class="description short">
 			
@@ -1031,7 +1008,7 @@ currently set value.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#_Object">#</a>
-		<code><a href="source-class-CDataWrapperClient.html#776-829" title="Go to source code">Object</a>( <span>string <var>$theValue</var> = <span class="php-keyword1">NULL</span></span>, <span>boolean <var>$getOld</var> = <span class="php-keyword1">FALSE</span> </span> )</code>
+		<code><a href="source-class-CDataWrapperClient.html#713-766" title="Go to source code">Object</a>( <span>string <var>$theValue</var> = <span class="php-keyword1">NULL</span></span>, <span>boolean <var>$getOld</var> = <span class="php-keyword1">FALSE</span> </span> )</code>
 
 		<div class="description short">
 			
@@ -1105,7 +1082,7 @@ parameter.</i></p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#_AddQueryStatement">#</a>
-		<code><a href="source-class-CDataWrapperClient.html#845-906" title="Go to source code">AddQueryStatement</a>( <span>string <var>$theCondition</var></span>, <span>mixed <var>$theSubject</var></span>, <span>string <var>$theOperator</var></span>, <span>mixed <var>$theObject</var> = <span class="php-keyword1">NULL</span></span>, <span>string <var>$theType</var> = <span class="php-keyword1">NULL</span> </span> )</code>
+		<code><a href="source-class-CDataWrapperClient.html#782-843" title="Go to source code">AddQueryStatement</a>( <span>string <var>$theCondition</var></span>, <span>mixed <var>$theSubject</var></span>, <span>string <var>$theOperator</var></span>, <span>mixed <var>$theObject</var> = <span class="php-keyword1">NULL</span></span>, <span>string <var>$theType</var> = <span class="php-keyword1">NULL</span> </span> )</code>
 
 		<div class="description short">
 			
@@ -1187,7 +1164,7 @@ of queries, you should use the <code><a href="class-CDataWrapperClient.html#_Add
 
 		<td class="name"><div>
 		<a class="anchor" href="#_AddQueryListStatement">#</a>
-		<code><a href="source-class-CDataWrapperClient.html#913-1000" title="Go to source code">AddQueryListStatement</a>( <span>string <var>$theIndex</var></span>, <span>string <var>$theCondition</var></span>, <span>mixed <var>$theSubject</var></span>, <span>string <var>$theOperator</var></span>, <span>mixed <var>$theObject</var> = <span class="php-keyword1">NULL</span></span>, <span>string <var>$theType</var> = <span class="php-keyword1">NULL</span> </span> )</code>
+		<code><a href="source-class-CDataWrapperClient.html#850-937" title="Go to source code">AddQueryListStatement</a>( <span>string <var>$theIndex</var></span>, <span>string <var>$theCondition</var></span>, <span>mixed <var>$theSubject</var></span>, <span>string <var>$theOperator</var></span>, <span>mixed <var>$theObject</var> = <span class="php-keyword1">NULL</span></span>, <span>string <var>$theType</var> = <span class="php-keyword1">NULL</span> </span> )</code>
 
 		<div class="description short">
 			
@@ -1201,7 +1178,7 @@ of queries, you should use the <code><a href="class-CDataWrapperClient.html#_Add
 
 <p>This method is similar to the <code><a href="class-CDataWrapperClient.html#_AddQueryStatement">CDataWrapperClient::AddQueryStatement()</a></code> method as it adds a
 query statement to a query, except that the current <code><a href="class-CDataWrapperClient.html#_Query">CDataWrapperClient::Query()</a></code> is a list of
-<code><a href="class-CQuery.html">CQuery</a></code> objects. This kind of structure is used by the kAPI_OP_MATCH operation to return the first match of a series of queries and by
+<code><a href="class-CQuery.html">CQuery</a></code> objects. This kind of structure is used by the kAPI_OP_GET operation to return the first match of a series of queries and by
 other operations in which the array element index represents the container name
 (<code><a href="class-CDataWrapperClient.html#_Container">CDataWrapperClient::Container()</a></code>).</p>
 
@@ -1278,7 +1255,7 @@ scalar query, you should use the <code><a href="class-CDataWrapperClient.html#_A
 
 		<td class="name"><div>
 		<a class="anchor" href="#__CheckDependencies">#</a>
-		<code><a href="source-class-CDataWrapperClient.html#1016-1061" title="Go to source code">_CheckDependencies</a>( <span>string <var>$theOperation</var></span> )</code>
+		<code><a href="source-class-CDataWrapperClient.html#953-997" title="Go to source code">_CheckDependencies</a>( <span>string <var>$theOperation</var></span> )</code>
 
 		<div class="description short">
 			
@@ -1325,7 +1302,7 @@ depending on the requested operation.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#__NormaliseParameters">#</a>
-		<code><a href="source-class-CDataWrapperClient.html#1068-1111" title="Go to source code">_NormaliseParameters</a>( )</code>
+		<code><a href="source-class-CDataWrapperClient.html#1004-1038" title="Go to source code">_NormaliseParameters</a>( )</code>
 
 		<div class="description short">
 			
@@ -1368,7 +1345,7 @@ local parameters.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#__EncodeParameters">#</a>
-		<code><a href="source-class-CDataWrapperClient.html#1118-1161" title="Go to source code">_EncodeParameters</a>( <span>reference <var>&amp; $theParameters</var></span>, <span>string <var>$theEncoding</var></span> )</code>
+		<code><a href="source-class-CDataWrapperClient.html#1045-1088" title="Go to source code">_EncodeParameters</a>( <span>reference <var>&amp; $theParameters</var></span>, <span>string <var>$theEncoding</var></span> )</code>
 
 		<div class="description short">
 			
@@ -1415,7 +1392,7 @@ service.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#__QueryStatement">#</a>
-		<code><a href="source-class-CDataWrapperClient.html#1168-1299" title="Go to source code">_QueryStatement</a>( <span>mixed <var>$theSubject</var></span>, <span>string <var>$theOperator</var></span>, <span>mixed <var>$theObject</var> = <span class="php-keyword1">NULL</span></span>, <span>string <var>$theType</var> = <span class="php-keyword1">NULL</span> </span> )</code>
+		<code><a href="source-class-CDataWrapperClient.html#1095-1226" title="Go to source code">_QueryStatement</a>( <span>mixed <var>$theSubject</var></span>, <span>string <var>$theOperator</var></span>, <span>mixed <var>$theObject</var> = <span class="php-keyword1">NULL</span></span>, <span>string <var>$theType</var> = <span class="php-keyword1">NULL</span> </span> )</code>
 
 		<div class="description short">
 			

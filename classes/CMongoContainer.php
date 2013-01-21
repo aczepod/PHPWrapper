@@ -515,7 +515,26 @@ class CMongoContainer extends CContainer
 			// Determine criteria.
 			//
 			if( $theIdentifier !== NULL )
-				$criteria = array( kTAG_NID => $theIdentifier );
+			{
+				//
+				// Handle generic query.
+				//
+				if( ($theIdentifier instanceof CQuery)
+				 && (! ($theIdentifier instanceof CMongoQuery)) )
+					$theIdentifier = $this->NewQuery( $theIdentifier );
+				
+				//
+				// Handle Mongo query.
+				//
+				if( $theIdentifier instanceof CMongoQuery )
+					$criteria = $theIdentifier->Export( $this );
+				
+				//
+				// Handle other type.
+				//
+				else
+					$criteria = array( kTAG_NID => $theIdentifier );
+			}
 			else
 				throw new Exception
 					( "Missing object identifier",

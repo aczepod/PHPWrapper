@@ -1533,63 +1533,19 @@ class COntologyWrapper extends CDataWrapper
 	protected function _Handle_GetTerm()
 	{
 		//
-		// Init local storage.
+		// Perform query.
 		//
-		$query = $select = $sort = $start = $limit = NULL;
-		
-		//
-		// Handle query.
-		//
-		if( array_key_exists( kAPI_QUERY, $_REQUEST ) )
-			$query = $_REQUEST[ kAPI_QUERY ];
-		
-		//
-		// Handle sort.
-		//
-		if( array_key_exists( kAPI_SORT, $_REQUEST ) )
-			$sort = $_REQUEST[ kAPI_SORT ];
-		
-		//
-		// Handle paging.
-		//
-		if( $this->offsetExists( kAPI_PAGING ) )
-		{
-			$start = $this->offsetGet( kAPI_PAGING )[ kAPI_PAGE_START ];
-			$limit = $this->offsetGet( kAPI_PAGING )[ kAPI_PAGE_LIMIT ];
-		}
-		
-		//
-		// Get records.
-		//
-		$records
-			= $_REQUEST[ kAPI_CONTAINER ]
-				->Query( $query, $select, $sort, $start, $limit );
-		
-		//
-		// Set affected count.
-		//
-		$this->_OffsetManage(
-			kAPI_STATUS, kAPI_AFFECTED_COUNT, $records->count( FALSE ) );
-		
-		//
-		// Handle page count.
-		//
-		if( $this->offsetExists( kAPI_PAGING ) )
-		{
-			$tmp = $this->offsetGet( kAPI_PAGING );
-			$tmp[ kAPI_PAGE_COUNT ] = $records->count( TRUE );
-			$this->offsetSet( kAPI_PAGING, $tmp );
-		}
+		$cursor = $this->_HandleQuery();
 		
 		//
 		// Check count.
 		//
-		if( $records->count( FALSE ) )
+		if( $cursor->count( FALSE ) )
 		{
 			//
 			// Iterate recordset.
 			//
-			foreach( $records as $object )
+			foreach( $cursor as $object )
 			{
 				//
 				// Instantiate object.
@@ -1809,63 +1765,19 @@ class COntologyWrapper extends CDataWrapper
 	protected function _HandleGetTag()
 	{
 		//
-		// Init local storage.
+		// Perform query.
 		//
-		$query = $select = $sort = $start = $limit = NULL;
-		
-		//
-		// Handle query.
-		//
-		if( array_key_exists( kAPI_QUERY, $_REQUEST ) )
-			$query = $_REQUEST[ kAPI_QUERY ];
-		
-		//
-		// Handle sort.
-		//
-		if( array_key_exists( kAPI_SORT, $_REQUEST ) )
-			$sort = $_REQUEST[ kAPI_SORT ];
-		
-		//
-		// Handle paging.
-		//
-		if( $this->offsetExists( kAPI_PAGING ) )
-		{
-			$start = $this->offsetGet( kAPI_PAGING )[ kAPI_PAGE_START ];
-			$limit = $this->offsetGet( kAPI_PAGING )[ kAPI_PAGE_LIMIT ];
-		}
-		
-		//
-		// Get records.
-		//
-		$records
-			= $_REQUEST[ kAPI_CONTAINER ]
-				->Query( $query, $select, $sort, $start, $limit );
-		
-		//
-		// Set affected count.
-		//
-		$this->_OffsetManage(
-			kAPI_STATUS, kAPI_AFFECTED_COUNT, $records->count( FALSE ) );
-		
-		//
-		// Handle page count.
-		//
-		if( $this->offsetExists( kAPI_PAGING ) )
-		{
-			$tmp = $this->offsetGet( kAPI_PAGING );
-			$tmp[ kAPI_PAGE_COUNT ] = $records->count( TRUE );
-			$this->offsetSet( kAPI_PAGING, $tmp );
-		}
-		
+		$cursor = $this->_HandleQuery();
+	
 		//
 		// Check count.
 		//
-		if( $records->count( FALSE ) )
+		if( $cursor->count( FALSE ) )
 		{
 			//
 			// Iterate recordset.
 			//
-			foreach( $records as $object )
+			foreach( $cursor as $object )
 			{
 				//
 				// Instantiate object.

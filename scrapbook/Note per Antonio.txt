@@ -1,0 +1,145 @@
+	CERCA TERMINE CON SOLO CODICE
+	
+	$query = array
+	(
+		kOPERATOR_AND => array
+		(
+			// CODICE.
+			array
+			(
+				kOFFSET_QUERY_SUBJECT => kTAG_LID,
+				kOFFSET_QUERY_OPERATOR => kOPERATOR_EQUAL,
+				kOFFSET_QUERY_TYPE => kTYPE_STRING,
+				kOFFSET_QUERY_DATA => 'TEST'
+			)
+		)
+	);
+	$params = array( (kAPI_FORMAT.'='.kTYPE_JSON),
+					 (kAPI_OPERATION.'='.kAPI_OP_GetTerm),
+					 (kAPI_LOG_REQUEST.'='.urlencode(JsonEncode(TRUE))),
+					 (kAPI_PAGE_START.'='.urlencode(JsonEncode(0))),
+					 (kAPI_PAGE_LIMIT.'='.urlencode(JsonEncode(5))),
+					 (kAPI_DATABASE.'='.urlencode(JsonEncode('ONTOLOGY'))),
+					 (kAPI_QUERY.'='.urlencode(JsonEncode( $query ))) );
+	$request = $new_url.'?'.implode( '&', $params );
+	$response = file_get_contents( $request );
+	$decoded = JsonDecode( $response );
+
+	CERCA TERMINE CON CODICE E NAMESPACE
+	
+	$query = array
+	(
+		kOPERATOR_AND => array
+		(
+			// CODICE.
+			array
+			(
+				kOFFSET_QUERY_SUBJECT => kTAG_LID,
+				kOFFSET_QUERY_OPERATOR => kOPERATOR_EQUAL,
+				kOFFSET_QUERY_TYPE => kTYPE_STRING,
+				kOFFSET_QUERY_DATA => 'TEST'
+			),
+			// NAMESPACE.
+			array
+			(
+				kOFFSET_QUERY_SUBJECT => kTAG_NAMESPACE,
+				kOFFSET_QUERY_OPERATOR => kOPERATOR_EQUAL,
+				kOFFSET_QUERY_TYPE => kTYPE_STRING,
+				kOFFSET_QUERY_DATA => 'TEST'
+			)
+		)
+	);
+	$params = array( (kAPI_FORMAT.'='.kTYPE_JSON),
+					 (kAPI_OPERATION.'='.kAPI_OP_GetTerm),
+					 (kAPI_LOG_REQUEST.'='.urlencode(JsonEncode(TRUE))),
+					 (kAPI_PAGE_START.'='.urlencode(JsonEncode(0))),
+					 (kAPI_PAGE_LIMIT.'='.urlencode(JsonEncode(5))),
+					 (kAPI_DATABASE.'='.urlencode(JsonEncode('ONTOLOGY'))),
+					 (kAPI_QUERY.'='.urlencode(JsonEncode( $query ))) );
+	$request = $new_url.'?'.implode( '&', $params );
+	$response = file_get_contents( $request );
+	$decoded = JsonDecode( $response );
+
+	CERCA TERMINE CON LABEL
+	questa ricverca ha senso solo se non hai codice e namespace,
+	oppure se hai solo namespace
+	
+	$query = array
+	(
+		kOPERATOR_AND => array
+		(
+			// LABEL.
+			array
+			(
+				kOFFSET_QUERY_SUBJECT => kTAG_LABEL.'.en',
+				kOFFSET_QUERY_OPERATOR => kOPERATOR_CONTAINS,
+				kOFFSET_QUERY_TYPE => kTYPE_STRING,
+				kOFFSET_QUERY_DATA => 'TEST'
+			)
+		)
+	);
+	$params = array( (kAPI_FORMAT.'='.kTYPE_JSON),
+					 (kAPI_OPERATION.'='.kAPI_OP_GetTerm),
+					 (kAPI_LOG_REQUEST.'='.urlencode(JsonEncode(TRUE))),
+					 (kAPI_PAGE_START.'='.urlencode(JsonEncode(0))),
+					 (kAPI_PAGE_LIMIT.'='.urlencode(JsonEncode(5))),
+					 (kAPI_DATABASE.'='.urlencode(JsonEncode('ONTOLOGY'))),
+					 (kAPI_QUERY.'='.urlencode(JsonEncode( $query ))) );
+	$request = $new_url.'?'.implode( '&', $params );
+	$response = file_get_contents( $request );
+	$decoded = JsonDecode( $response );
+	
+	INSERIMENTO NAMESPACE
+	
+	$object = array
+	(
+		kTAG_LID		=>	'TEST',
+		kTAG_LABEL		=>	array( 'en' => 'Test namespace term' ),
+		kTAG_DEFINITION	=>	array( 'en' => 'A namespace term for testing purposes' )
+	);
+	$params = array( (kAPI_FORMAT.'='.kTYPE_JSON),
+					 (kAPI_OPERATION.'='.kAPI_OP_SetNamespace),
+					 (kAPI_LOG_REQUEST.'='.urlencode(JsonEncode(TRUE))),
+					 (kAPI_DATABASE.'='.urlencode(JsonEncode('ONTOLOGY'))),
+					 (kAPI_OBJECT.'='.urlencode(JsonEncode( $object ))) );
+	$request = $new_url.'?'.implode( '&', $params );
+	$response = file_get_contents( $request );
+	$decoded = JsonDecode( $response );
+	
+	INSERIMENTO TERMINE
+	
+	$object = array
+	(
+		kTAG_NAMESPACE	=>	'TEST',
+		kTAG_LID		=>	'TEST',
+		kTAG_LABEL		=>	array( 'en' => 'Test term' ),
+		kTAG_DEFINITION	=>	array( 'en' => 'A term for testing purposes' )
+	);
+	$params = array( (kAPI_FORMAT.'='.kTYPE_JSON),
+					 (kAPI_OPERATION.'='.kAPI_OP_SetTerm),
+					 (kAPI_LOG_REQUEST.'='.urlencode(JsonEncode(TRUE))),
+					 (kAPI_DATABASE.'='.urlencode(JsonEncode('ONTOLOGY'))),
+					 (kAPI_OBJECT.'='.urlencode(JsonEncode( $object ))) );
+	$request = $new_url.'?'.implode( '&', $params );
+	$response = file_get_contents( $request );
+	$decoded = JsonDecode( $response );
+	
+	INSERIMENTO VERTICE MASTER
+	
+	$object = array
+	(
+		kTAG_TERM		=>	'TEST:TEST',
+		kTAG_CATEGORY	=>	array( 'Category 1', 'Category 2' ),
+		kTAG_KIND		=>	array( kKIND_FEATURE, kKIND_SCALE ),
+		kTAG_TYPE		=>	array( kTYPE_STRING, kTYPE_ARRAY ),
+		kTAG_DESCRIPTION	=>	array( 'en' => 'A node for testing purposes' )
+	);
+	$params = array( (kAPI_FORMAT.'='.kTYPE_JSON),
+					 (kAPI_OPERATION.'='.kAPI_OP_SetVertex),
+					 (kAPI_LOG_REQUEST.'='.urlencode(JsonEncode(TRUE))),
+					 (kAPI_DATABASE.'='.urlencode(JsonEncode('ONTOLOGY'))),
+					 (kAPI_CLASS.'='.urlencode(JsonEncode( 'COntologyMasterVertex' ))),
+					 (kAPI_OBJECT.'='.urlencode(JsonEncode( $object ))) );
+	$request = $new_url.'?'.implode( '&', $params );
+	$response = file_get_contents( $request );
+	$decoded = JsonDecode( $response );

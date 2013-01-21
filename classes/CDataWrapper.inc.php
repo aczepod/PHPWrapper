@@ -159,6 +159,32 @@ define( "kAPI_DISTINCT",			':WS:DISTINCT' );
  */
 define( "kAPI_CLASS",				':WS:CLASS' );
 
+/**
+ * Data store modification criteria.
+ *
+ * This is the tag that represents the data store modification criteria, this value is used
+ * when modifying object attributes. It is an array structured as follows:
+ *
+ * <ul>
+ *	<li><tt>{@link kAPI_MODIFY_REPLACE}</tt>: Set the attribute with the provided value, if
+ *		the attribute does not exist it will be created, if it exists it will be replaced.
+ *	<li><tt>{@link kAPI_MODIFY_INCREMENT}</tt>: Increment a value of a field, if the field
+ *		does not exist, the provided increment value will be set in the field.
+ *	<li><tt>{@link kAPI_MODIFY_APPEND}</tt>: Append a value to an existing field, if field
+ *		is not present, an array with the provided value will be set in the field; if the
+ *		field does not contain an array, an error should occur.
+ *	<li><tt>{@link kAPI_MODIFY_ADDSET}</tt>: Add a value to an existing array field only if
+ *		this value is not yet present in the receiving array.
+ *	<li><tt>{@link kAPI_MODIFY_POP}</tt>: Remove the first or last element of an array,
+ *		depending on the provided value.
+ *	<li><tt>{@link kAPI_MODIFY_PULL}</tt>: Remove all occurrences of a value from an array.
+ * </ul>
+ *
+ * Type: encoded.
+ * Cardinality: one or zero.
+ */
+define( "kAPI_CRITERIA",			':WS:CRITERIA' );
+
 /*=======================================================================================
  *	WEB-SERVICE RESPONSE PARAMETERS														*
  *======================================================================================*/
@@ -179,17 +205,6 @@ define( "kAPI_CLASS",				':WS:CLASS' );
  * Cardinality: one or zero.
  */
 define( "kAPI_PAGING",				':WS:PAGING' );
-
-/**
- * Match query index.
- *
- * This is the tag that represents the query match index: when providing a list of queries
- * if one of them is successful, the index of that query will be returned in this parameter.
- *
- * Type: encoded.
- * Cardinality: one or zero.
- */
-define( "kAPI_QUERY_MATCH",			':WS:QUERY-MATCH' );
 
 /*=======================================================================================
  *	WEB-SERVICE RESPONSE ELEMENTS														*
@@ -217,6 +232,70 @@ define( "kAPI_PAGE_COUNT",			':WS:PAGE-COUNT' );
  * Cardinality: one.
  */
 define( "kAPI_AFFECTED_COUNT",		':WS:AFFECTED-COUNT' );
+
+/**
+ * Match query index.
+ *
+ * This is the tag that represents the query match index: when providing a list of queries
+ * if one of them is successful, the index of that query will be returned in this parameter.
+ *
+ * Type: encoded.
+ * Cardinality: one or zero.
+ */
+define( "kAPI_QUERY_MATCH",			':WS:QUERY-MATCH' );
+
+/*=======================================================================================
+ *	MODIFICATION CRITERIA ENUMERATIONS													*
+ *======================================================================================*/
+
+/**
+ * Modify: Replace.
+ *
+ * This value indicates that we intend to set the attribute with the provided value, if the
+ * attribute does not exist it will be created, if it exists it will be replaced.
+ */
+define( "kAPI_MODIFY_REPLACE",			0 );
+
+/**
+ * Modify: Increment.
+ *
+ * This value indicates that we intend to increment a value of a field, if the field does
+ * not exist, the provided increment value will be set in the field.
+ */
+define( "kAPI_MODIFY_INCREMENT",		256 );
+
+/**
+ * Modify: Append.
+ *
+ * This value indicates that we intend to append a value to an existing field, if field is
+ * not present, an array with the provided value will be set in the field; if the
+ * field does not contain an array, an error should occur.
+ */
+define( "kAPI_MODIFY_APPEND",			512 );
+
+/**
+ * Modify: Add to set.
+ *
+ * This value indicates that we intend to add a value to an existing array field only if
+ * this value is not yet present in the receiving array.
+ */
+define( "kAPI_MODIFY_ADDSET",			1024 );
+
+/**
+ * Modify: Pop.
+ *
+ * This value indicates that we intend to remove the first or last element of an array,
+ * depending on the provided value.
+ */
+define( "kAPI_MODIFY_POP",				2560 );
+
+/**
+ * Modify: Pull.
+ *
+ * This value indicates that we intend to remove all occurrences of a value from an array.
+ * If the field exists, but it is not an array, an error should be raised.
+ */
+define( "kAPI_MODIFY_PULL",				3072 );
 
 /*=======================================================================================
  *	WEB-SERVICE OPERATIONS																*
@@ -299,33 +378,6 @@ define( "kAPI_OP_GET",				'WS:OP:GET' );
 define( "kAPI_OP_GET_ONE",			'WS:OP:GET-ONE' );
 
 /**
- * MATCH web-service.
- *
- * This is the tag that represents the MATCH web-service operation, which returns the
- * the first matching records of a series of queries.
- *
- * The service expects the following parameters:
- *
- * <ul>
- *	<li><i>{@link kAPI_FORMAT}</i>: This parameter is required to indicate how to
- *		encode the response.
- *	<li><i>{@link kAPI_DATABASE}</i>: This parameter is required to indicate the working
- *		database.
- *	<li><i>{@link kAPI_CONTAINER}</i>: This parameter is required to indicate the working
- *		container.
- *	<li><i>{@link kAPI_QUERY}</i>: This parameter is required and contains an array of
- *		queries.
- *	<li><i>{@link kAPI_SELECT}</i>: This parameter is an array listing which fields are to
- *		be returned by the query, all fields not included in the list will be ignored. An
- *		empty list is equivalent to not providing the list.
- * </ul>
- *
- * The service will execute each provided query and the first set of matched records will be
- * returned.
- */
-define( "kAPI_OP_MATCH",			'WS:OP:MATCH' );
-
-/**
  * RESOLVE web-service.
  *
  * This is the tag that represents the RESOLVE web-service operation, which matches the
@@ -386,7 +438,7 @@ define( "kAPI_OP_INSERT",			'WS:OP:INSERT' );
  * MODIFY web-service.
  *
  * This is the tag that represents the MODIFY web-service operation, which modifies the
- * attributes of the objects selected by the provided query.
+ * attributes of the objects matching the provided query.
  *
  * The service expects the following parameters:
  *
@@ -398,26 +450,57 @@ define( "kAPI_OP_INSERT",			'WS:OP:INSERT' );
  *	<li><i>{@link kAPI_CONTAINER}</i>: This parameter is required to indicate the working
  *		container. Note that in some cases this parameter is not required, in particular,
  *		when providing the {@link kAPI_CLASS} parameter, the container might be implicit.
- *	<li><i>{@link kAPI_QUERY}</i>: This parameter contains the query that selects the items
- *		to be modified.
- *	<li><i>{@link kAPI_OBJECT}</i>: This parameter is required if the query was not provided
- *		and contains the value by which the object will be identified, some classes feature
- *		a <i>Resolve()</i> method, in that case  this value will be handled by that method,
- *		if not, the value is assumed to be the object's {@link kTAG_NID}. If this parameter
- *		is provided, the {@link kAPI_QUERY} parameter will be ignored.
- *	<li><i>{@link kAPI_CLASS}</i>: If provided, this parameter indicates which instance the
- *		object should be; if not provided, the {@link kAPI_CONTAINER} parameter is required
- *		and the object will simply be added to the container.
+ *	<li><i>{@link kAPI_CLASS}</i>: This parameter is required, it represents the class from
+ *		which the container name should be taken.
+ *	<li><i>{@link kAPI_QUERY}</i>: This parameter represents the selection of objects to
+ *		which the modification criteria will be applied; if this parameter is missing, we
+ *		expect to modify the whole container.
+ *	<li><i>{@link kAPI_CRITERIA}</i>: This parameter is required and represents the
+ *		modification criteria, it is structured as the following array:
+ *	 <ul>
+ *		<li><i>index</i>: The index represents the attribute tag.
+ *		<li><i>value</i>: The value is an array structured as follows:
+ *		 <ul>
+ *			<li><i>index</i>: The modification criteria operator:
+ *			 <ul>
+ *				<li><tt>{@link kAPI_MODIFY_REPLACE}</tt>: Replace value, the corresponding
+ *					value will replace the current attribute's value, or become, if
+ *					missing, it's value.
+ *				<li><tt>{@link kAPI_MODIFY_INCREMENT}</tt>: Increment value, the
+ *					corresponding value represents the increment step; if the attribute
+ *					does not exist, the increment step will become the attribute's value.
+ *				<li><tt>{@link kAPI_MODIFY_APPEND}</tt>: Append value, the attribute must
+ *					either not exist or be an array, or an exception will be raised. The
+ *					corresponding value will be appended to the array contained in the
+ *					attribute, or the attribute will be set with an array containing the
+ *					value if the attribute did not exist.
+ *				<li><tt>{@link kAPI_MODIFY_ADDSET}</tt>: Add to set, this option is
+ *					equivalent to the previous operation, except that the value will be
+ *					appended only if it doesn't already exist.
+ *				<li><tt>{@link kAPI_MODIFY_POP}</tt>: Remove first or last, as for the last
+ *					two options, the attribute must be an array and the corresponding value
+ *					must be an integer. If positive, the last element of the attribute's
+ *					array will be removed; if negative, the first element will be removed.
+ *				<li><tt>{@link kAPI_MODIFY_PULL}</tt>: Remove all occurrences, as for the
+ *					last three options, the attribute must be an array. The corresponding
+ *					value value will be matched in the attribute's array and all matches
+ *					will be removed.
+ *			 </ul>
+ *			<li><i>value</i>: The modification criteria value, see the index part for
+ *				information.
+ *		 </ul>
+ *	 </ul>
  * </ul>
  *
- * The service will attempt to <i>insert</i> the provided object, if successful, it will
- * return the newly created {@link kTAG_NID} identifier in the
- * {@link kTERM_STATUS_IDENTIFIER} return parameter.
+ * The service will attempt to <i>modify</i> the objects selected by the provided query
+ * ({@link kAPI_QUERY}) using the provided criteria ({@link kAPI_CRITERIA}), if successful,
+ * it will return a zero status, if not, it will return an error message and the native
+ * status code of the error.
  */
 define( "kAPI_OP_MODIFY",			'WS:OP:MODIFY' );
 
 /**
- * DEL web-service.
+ * DELETE web-service.
  *
  * This is the tag that represents the DEL web-service operation, which deletes either a
  * selection of objects matching a query or one object matching a value.

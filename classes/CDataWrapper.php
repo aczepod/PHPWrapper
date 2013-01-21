@@ -146,21 +146,6 @@ require_once( kPATH_MYWRAPPER_LIBRARY_CLASS."/CDataWrapper.inc.php" );
  *				default value is {@link kDEFAULT_LIMIT}.
  *			<li><i>{@link kAPI_PAGE_LIMIT}</i>:This parameter is required or enforced, it
  *		 </ul>
- *		<li><i>{@link kAPI_OP_MATCH}</i>: <i>Match</i>, this operation will return the first
- *			record that matches the provided list of queries. The operation expects the
- *			following parameters:
- *		 <ul>
- *			<li><i>{@link kAPI_FORMAT}</i>: This parameter is required to indicate how to
- *				encode the response.
- *			<li><i>{@link kAPI_DATABASE}</i>: This parameter is required to indicate the
- *				working database.
- *			<li><i>{@link kAPI_CONTAINER}</i>: This parameter is required to indicate the
- *				working container.
- *			<li><i>{@link kAPI_QUERY}</i>: This parameter is required and contains an array
- *				of queries.
- *			<li><i>{@link kAPI_SELECT}</i>: Select (optional), the list of fields to be
- *				returned.
- *		 </ul>
  *		<li><i>{@link kAPI_OP_RESOLVE}</i>: <i>Resolve</i>, this operation will return the
  *			object that matches the provided value. The operation expects the following
  *			parameters:
@@ -241,7 +226,8 @@ class CDataWrapper extends CWrapper
 	 static $sParameterList = array( kAPI_DATABASE, kAPI_CONTAINER,
 	 								 kAPI_PAGE_START, kAPI_PAGE_LIMIT,
 	 								 kAPI_QUERY, kAPI_SELECT, kAPI_SORT,
-	 								 kAPI_DISTINCT, kAPI_CLASS, kAPI_OBJECT );
+	 								 kAPI_DISTINCT, kAPI_CLASS, kAPI_OBJECT,
+	 								 kAPI_CRITERIA );
 
 		
 
@@ -280,6 +266,7 @@ class CDataWrapper extends CWrapper
 	 * @uses _ParseSort()
 	 * @uses _ParseDistinct()
 	 * @uses _ParseObject()
+	 * @uses _ParseCriteria()
 	 */
 	protected function _ParseRequest()
 	{
@@ -300,6 +287,7 @@ class CDataWrapper extends CWrapper
 		$this->_ParseSort();
 		$this->_ParseDistinct();
 		$this->_ParseObject();
+		$this->_ParseCriteria();
 	
 	} // _ParseRequest.
 
@@ -326,6 +314,7 @@ class CDataWrapper extends CWrapper
 	 * @uses _FormatSort()
 	 * @uses _FormatDistinct()
 	 * @uses _FormatObject()
+	 * @uses _FormatCriteria()
 	 */
 	protected function _FormatRequest()
 	{
@@ -346,6 +335,7 @@ class CDataWrapper extends CWrapper
 		$this->_FormatSort();
 		$this->_FormatDistinct();
 		$this->_FormatObject();
+		$this->_FormatCriteria();
 	
 	} // _FormatRequest.
 
@@ -374,6 +364,7 @@ class CDataWrapper extends CWrapper
 	 * @uses _ValidateSort()
 	 * @uses _ValidateDistinct()
 	 * @uses _ValidateObject()
+	 * @uses _ValidateCriteria()
 	 */
 	protected function _ValidateRequest()
 	{
@@ -394,6 +385,7 @@ class CDataWrapper extends CWrapper
 		$this->_ValidateSort();
 		$this->_ValidateDistinct();
 		$this->_ValidateObject();
+		$this->_ValidateCriteria();
 	
 	} // _ValidateRequest.
 
@@ -451,19 +443,8 @@ class CDataWrapper extends CWrapper
 	/**
 	 * Parse operation.
 	 *
-	 * We overload this method to remove unnecessary parameter from the request, depending
-	 * on the current operation:
-	 *
-	 * <ul>
-	 *	<li><tt>{@link kAPI_OP_COUNT}</tt>: This operation does not handle fields selection
-	 *		or sort orders, so we clear {@link kAPI_SELECT} and {@link kAPI_SORT}. We could
-	 *		also clear the paging parameters, but we keep them in case clients implement an
-	 *		automatic paging management.
-	 *	<li><tt>{@link kAPI_OP_GET}</tt>: This operation requires that the page limits be
-	 *		set, only a defined number of records should be returned by a service: if the
-	 *		{@link kAPI_PAGE_LIMIT} parameter was not provided, this method will set it to
-	 *		{@link kDEFAULT_LIMIT}.
-	 * </ul>
+	 * We overload this method to remove unnecessary parameters from the request, depending
+	 * on the current operation.
 	 *
 	 * @access protected
 	 *
@@ -481,19 +462,98 @@ class CDataWrapper extends CWrapper
 		//
 		switch( $_REQUEST[ kAPI_OPERATION ] )
 		{
+			//
+			// COUNT service.
+			//
 			case kAPI_OP_COUNT:
-				if( array_key_exists( kAPI_SELECT, $_REQUEST ) )
-					unset( $_REQUEST[ kAPI_SELECT ] );
-
-			case kAPI_OP_GET_ONE:
-			case kAPI_OP_MATCH:
-				if( array_key_exists( kAPI_SORT, $_REQUEST ) )
-					unset( $_REQUEST[ kAPI_SORT ] );
+				//
+				// Remove unnecessary parameters.
+				//
+				$list = array( kAPI_PAGE_START, kAPI_PAGE_LIMIT,
+							   kAPI_OBJECT, kAPI_SORT, kAPI_CLASS );
+				foreach( $list as $element )
+				{
+					if( array_key_exists( $element, $_REQUEST ) )
+						unset( $_REQUEST[ $element ] );
+				}
 				break;
-
+				
 			case kAPI_OP_GET:
-				if( ! array_key_exists( kAPI_PAGE_LIMIT, $_REQUEST ) )
-					$_REQUEST[ kAPI_PAGE_LIMIT ] = kDEFAULT_LIMIT;
+				//
+				// Remove unnecessary parameters.
+				//
+				$list = array( kAPI_OBJECT, kAPI_CLASS );
+				foreach( $list as $element )
+				{
+					if( array_key_exists( $element, $_REQUEST ) )
+						unset( $_REQUEST[ $element ] );
+				}
+				break;
+				
+			case kAPI_OP_GET_ONE:
+				//
+				// Remove unnecessary parameters.
+				//
+				$list = array( kAPI_PAGE_START, kAPI_PAGE_LIMIT,
+							   kAPI_OBJECT, kAPI_SORT, kAPI_DISTINCT,
+							   kAPI_CLASS );
+				foreach( $list as $element )
+				{
+					if( array_key_exists( $element, $_REQUEST ) )
+						unset( $_REQUEST[ $element ] );
+				}
+				break;
+				
+			case kAPI_OP_RESOLVE:
+				//
+				// Remove unnecessary parameters.
+				//
+				$list = array( kAPI_PAGE_START, kAPI_PAGE_LIMIT,
+							   kAPI_QUERY, kAPI_SORT, kAPI_DISTINCT );
+				foreach( $list as $element )
+				{
+					if( array_key_exists( $element, $_REQUEST ) )
+						unset( $_REQUEST[ $element ] );
+				}
+				break;
+				
+			case kAPI_OP_INSERT:
+				//
+				// Remove unnecessary parameters.
+				//
+				$list = array( kAPI_PAGE_START, kAPI_PAGE_LIMIT,
+							   kAPI_QUERY, kAPI_SELECT, kAPI_SORT, kAPI_DISTINCT );
+				foreach( $list as $element )
+				{
+					if( array_key_exists( $element, $_REQUEST ) )
+						unset( $_REQUEST[ $element ] );
+				}
+				break;
+				
+			case kAPI_OP_MODIFY:
+				//
+				// Remove unnecessary parameters.
+				//
+				$list = array( kAPI_PAGE_START, kAPI_PAGE_LIMIT,
+							   kAPI_SELECT, kAPI_SORT, kAPI_DISTINCT );
+				foreach( $list as $element )
+				{
+					if( array_key_exists( $element, $_REQUEST ) )
+						unset( $_REQUEST[ $element ] );
+				}
+				break;
+				
+			case kAPI_OP_DELETE:
+				//
+				// Remove unnecessary parameters.
+				//
+				$list = array( kAPI_PAGE_START, kAPI_PAGE_LIMIT,
+							   kAPI_SELECT, kAPI_SORT, kAPI_DISTINCT );
+				foreach( $list as $element )
+				{
+					if( array_key_exists( $element, $_REQUEST ) )
+						unset( $_REQUEST[ $element ] );
+				}
 				break;
 		}
 	
@@ -608,23 +668,44 @@ class CDataWrapper extends CWrapper
 	protected function _ParsePaging()
 	{
 		//
-		// handle request mirror.
+		// Handle paging.
 		//
-		if( $this->offsetExists( kAPI_REQUEST ) )
+		if( array_key_exists( kAPI_PAGE_START, $_REQUEST )
+		 || array_key_exists( kAPI_PAGE_LIMIT, $_REQUEST ) )
 		{
 			//
 			// Handle page start.
 			//
 			if( array_key_exists( kAPI_PAGE_START, $_REQUEST ) )
-				$this->_OffsetManage
-					( kAPI_REQUEST, kAPI_PAGE_START, $_REQUEST[ kAPI_PAGE_START ] );
-		
+			{
+				if( $this->offsetExists( kAPI_REQUEST ) )
+					$this->_OffsetManage
+						( kAPI_REQUEST, kAPI_PAGE_START, $_REQUEST[ kAPI_PAGE_START ] );
+			}
+	
 			//
 			// Handle page limit.
 			//
 			if( array_key_exists( kAPI_PAGE_LIMIT, $_REQUEST ) )
-				$this->_OffsetManage
-					( kAPI_REQUEST, kAPI_PAGE_LIMIT, $_REQUEST[ kAPI_PAGE_LIMIT ] );
+			{
+				if( $this->offsetExists( kAPI_REQUEST ) )
+					$this->_OffsetManage
+						( kAPI_REQUEST, kAPI_PAGE_LIMIT, $_REQUEST[ kAPI_PAGE_LIMIT ] );
+			}
+		
+		} // Provided paging parameters.
+		
+		//
+		// Enforce page limit.
+		//
+		else
+		{
+			switch( $_REQUEST[ kAPI_OPERATION ] )
+			{
+				case kAPI_OP_GET:
+					$_REQUEST[ kAPI_PAGE_START ] = 0;
+					break;
+			}
 		}
 	
 	} // _ParsePaging.
@@ -778,6 +859,36 @@ class CDataWrapper extends CWrapper
 		}
 	
 	} // _ParseObject.
+
+	 
+	/*===================================================================================
+	 *	_ParseCriteria																	*
+	 *==================================================================================*/
+
+	/**
+	 * Parse object.
+	 *
+	 * This method will copy the criteria to the request block.
+	 *
+	 * @access protected
+	 *
+	 * @uses _OffsetManage()
+	 *
+	 * @see kAPI_CRITERIA kAPI_REQUEST
+	 */
+	protected function _ParseCriteria()
+	{
+		//
+		// Handle query.
+		//
+		if( array_key_exists( kAPI_CRITERIA, $_REQUEST ) )
+		{
+			if( $this->offsetExists( kAPI_REQUEST ) )
+				$this->_OffsetManage
+					( kAPI_REQUEST, kAPI_CRITERIA, $_REQUEST[ kAPI_CRITERIA ] );
+		}
+	
+	} // _ParseCriteria.
 
 		
 
@@ -1118,6 +1229,22 @@ class CDataWrapper extends CWrapper
 	 */
 	protected function _FormatObject()													   {}
 
+	 
+	/*===================================================================================
+	 *	_FormatCriteria																	*
+	 *==================================================================================*/
+
+	/**
+	 * Format modification criteria parameter.
+	 *
+	 * This method does nothing in this class.
+	 *
+	 * @access protected
+	 *
+	 * @see kAPI_CRITERIA
+	 */
+	protected function _FormatCriteria()												   {}
+
 		
 
 /*=======================================================================================
@@ -1158,42 +1285,6 @@ class CDataWrapper extends CWrapper
 		//
 		switch( $parameter = $_REQUEST[ kAPI_OPERATION ] )
 		{
-			//
-			// Operation codes.
-			//
-			case kAPI_OP_MATCH:
-				//
-				// Check for format.
-				//
-				if( ! array_key_exists( kAPI_FORMAT, $_REQUEST ) )
-					throw new CException
-						( "Missing format parameter",
-						  kERROR_MISSING,
-						  kSTATUS_ERROR,
-						  array( 'Operation' => $parameter ) );					// !@! ==>
-				
-				//
-				// Check for database.
-				//
-				if( ! array_key_exists( kAPI_DATABASE, $_REQUEST ) )
-					throw new CException
-						( "Missing database parameter",
-						  kERROR_MISSING,
-						  kSTATUS_ERROR,
-						  array( 'Operation' => $parameter ) );					// !@! ==>
-				
-				//
-				// Check for query.
-				//
-				if( ! array_key_exists( kAPI_QUERY, $_REQUEST ) )
-					throw new CException
-						( "Missing query list parameter",
-						  kERROR_MISSING,
-						  kSTATUS_ERROR,
-						  array( 'Operation' => $parameter ) );					// !@! ==>
-				
-				break;
-				
 			case kAPI_OP_COUNT:
 			case kAPI_OP_GET:
 			case kAPI_OP_GET_ONE:
@@ -1223,6 +1314,49 @@ class CDataWrapper extends CWrapper
 				if( ! array_key_exists( kAPI_FORMAT, $_REQUEST ) )
 					throw new CException
 						( "Missing format parameter",
+						  kERROR_MISSING,
+						  kSTATUS_ERROR,
+						  array( 'Operation' => $parameter ) );					// !@! ==>
+				
+				break;
+			
+			case kAPI_OP_MODIFY:
+				//
+				// Check for database.
+				//
+				if( ! array_key_exists( kAPI_DATABASE, $_REQUEST ) )
+					throw new CException
+						( "Missing database parameter",
+						  kERROR_MISSING,
+						  kSTATUS_ERROR,
+						  array( 'Operation' => $parameter ) );					// !@! ==>
+				
+				//
+				// Check for container.
+				//
+				if( ! array_key_exists( kAPI_CONTAINER, $_REQUEST ) )
+					throw new CException
+						( "Missing container parameter",
+						  kERROR_MISSING,
+						  kSTATUS_ERROR,
+						  array( 'Operation' => $parameter ) );					// !@! ==>
+					
+				//
+				// Check for format.
+				//
+				if( ! array_key_exists( kAPI_FORMAT, $_REQUEST ) )
+					throw new CException
+						( "Missing format parameter",
+						  kERROR_MISSING,
+						  kSTATUS_ERROR,
+						  array( 'Operation' => $parameter ) );					// !@! ==>
+					
+				//
+				// Check for criteria.
+				//
+				if( ! array_key_exists( kAPI_CRITERIA, $_REQUEST ) )
+					throw new CException
+						( "Missing modification criteria parameter",
 						  kERROR_MISSING,
 						  kSTATUS_ERROR,
 						  array( 'Operation' => $parameter ) );					// !@! ==>
@@ -1657,7 +1791,8 @@ class CDataWrapper extends CWrapper
 				// Handle non-empty string.
 				//
 				if( strlen( $_REQUEST[ kAPI_SELECT ] ) )
-					$_REQUEST[ kAPI_SELECT ] = array( (string) $_REQUEST[ kAPI_SELECT ] );
+					$_REQUEST[ kAPI_SELECT ]
+						= array( (string) $_REQUEST[ kAPI_SELECT ] );
 				
 				//
 				// Remove request.
@@ -1789,7 +1924,7 @@ class CDataWrapper extends CWrapper
 	 *
 	 * @access protected
 	 *
-	 * @see kAPI_OBJECT kAPI_CLASS
+	 * @see kAPI_OBJECT
 	 */
 	protected function _ValidateObject()
 	{
@@ -1851,7 +1986,7 @@ class CDataWrapper extends CWrapper
 						// Unserialise standard data types.
 						//
 						$_REQUEST[ kAPI_CONTAINER ]
-							->UnserialiseData( $_REQUEST[ kAPI_OBJECT ] );
+							->UnserialiseObject( $_REQUEST[ kAPI_OBJECT ] );
 					
 						//
 						// Resolve object.
@@ -1868,6 +2003,32 @@ class CDataWrapper extends CWrapper
 		} // Provided object.
 	
 	} // _ValidateObject.
+
+	 
+	/*===================================================================================
+	 *	_ValidateCriteria																*
+	 *==================================================================================*/
+
+	/**
+	 * Validate modification criteria parameter.
+	 *
+	 * In this class we unserialise the eventual serialised values of the modification
+	 * criteria.
+	 *
+	 * @access protected
+	 *
+	 * @see kAPI_CRITERIA
+	 */
+	protected function _ValidateCriteria()
+	{
+		//
+		// Unserialise standard data types.
+		//
+		if( array_key_exists( kAPI_CRITERIA, $_REQUEST ) )
+			$_REQUEST[ kAPI_CONTAINER ]
+				->UnserialiseObject( $_REQUEST[ kAPI_CRITERIA ] );
+	
+	} // _ValidateCriteria.
 
 		
 
@@ -1914,16 +2075,16 @@ class CDataWrapper extends CWrapper
 					$this->_Handle_GetOne();
 					break;
 	
-				case kAPI_OP_MATCH:
-					$this->_Handle_Match();
-					break;
-	
 				case kAPI_OP_RESOLVE:
 					$this->_Handle_Resolve();
 					break;
 	
 				case kAPI_OP_INSERT:
 					$this->_Handle_Insert();
+					break;
+	
+				case kAPI_OP_MODIFY:
+					$this->_Handle_Modify();
 					break;
 	
 				case kAPI_OP_DELETE:
@@ -1977,12 +2138,6 @@ class CDataWrapper extends CWrapper
 		//
 		$theList[ kAPI_OP_GET_ONE ]
 			= 'Query: returns the first element that matches the provided query.';
-
-		//
-		// Add kAPI_OP_MATCH.
-		//
-		$theList[ kAPI_OP_MATCH ]
-			= 'Match: returns the first element that matches the provided list of queries.';
 
 		//
 		// Add kAPI_OP_INSERT.
@@ -2152,83 +2307,6 @@ class CDataWrapper extends CWrapper
 
 	 
 	/*===================================================================================
-	 *	_Handle_Match																	*
-	 *==================================================================================*/
-
-	/**
-	 * Handle {@link kAPI_OP_MATCH} request.
-	 *
-	 * This method will handle the {@link kAPI_OP_MATCH} operation, which returns the first
-	 * match of a series of queries.
-	 *
-	 * @access protected
-	 */
-	protected function _Handle_Match()
-	{
-		//
-		// Handle fields.
-		//
-		$fields = ( array_key_exists( kAPI_SELECT, $_REQUEST ) )
-				? $_REQUEST[ kAPI_SELECT ]
-				: NULL;
-		
-		//
-		// Iterate queries.
-		//
-		foreach( $_REQUEST[ kAPI_QUERY ] as $key => $query )
-		{
-			//
-			// Select container.
-			//
-			$container = ( is_int( $key ) )
-					   ? $_REQUEST[ kAPI_CONTAINER ]
-					   : $_REQUEST[ kAPI_DATABASE ]->Container( $key );
-			
-			//
-			// Query.
-			//
-			$object = $container->Query( $query, $fields, NULL, NULL, NULL, TRUE );
-			
-			//
-			// Handle object.
-			//
-			if( $object !== NULL )
-			{
-				//
-				// Set affected count.
-				//
-				$this->_OffsetManage( kAPI_STATUS, kAPI_AFFECTED_COUNT, 1 );
-				
-				//
-				// Handle page count.
-				//
-				if( $this->offsetExists( kAPI_PAGING ) )
-				{
-					$tmp = $this->offsetGet( kAPI_PAGING );
-					$tmp[ kAPI_PAGE_COUNT ] = 1;
-					$this->offsetSet( kAPI_PAGING, $tmp );
-				}
-				
-				//
-				// Serialise object.
-				//
-				CDataType::SerialiseObject( $object );
-				
-				//
-				// Save object in response.
-				//
-				$this->offsetSet( kAPI_RESPONSE, $object );
-				
-				break;														// =>
-			
-			} // Found object.
-		
-		} // Iterating queries.
-	
-	} // _Handle_Match.
-
-	 
-	/*===================================================================================
 	 *	_Handle_Resolve																	*
 	 *==================================================================================*/
 
@@ -2320,6 +2398,78 @@ class CDataWrapper extends CWrapper
 		$this->_OffsetManage( kAPI_STATUS, kTERM_STATUS_IDENTIFIER, $identifier );
 	
 	} // _Handle_Insert.
+
+	 
+	/*===================================================================================
+	 *	_Handle_Modify																	*
+	 *==================================================================================*/
+
+	/**
+	 * Handle {@link kAPI_OP_MODIFY} request.
+	 *
+	 * This method will handle the {@link kAPI_OP_MODIFY} operation, which modifies the
+	 * attributes of the selection made by the provided query.
+	 *
+	 * The service returns either a zero status or an error if any of the modifications
+	 * failed; all the modifications up to the failing one are valid.
+	 *
+	 * @access protected
+	 */
+	protected function _Handle_Modify()
+	{
+		//
+		// Iterate modification attributes.
+		//
+		foreach( $_REQUEST[ kAPI_CRITERIA ] as $attribute => $criteria )
+		{
+			//
+			// Iterate modification criteria.
+			//
+			foreach( $criteria as $operator => $value )
+			{
+				//
+				// Set modification flags.
+				//
+				switch( $operator )
+				{
+					case kAPI_MODIFY_REPLACE:
+						$flags = kFLAG_PERSIST_MODIFY;
+						break;
+
+					case kAPI_MODIFY_INCREMENT:
+						$flags = kFLAG_PERSIST_MODIFY + kFLAG_MODIFY_INCREMENT;
+						break;
+
+					case kAPI_MODIFY_APPEND:
+						$flags = kFLAG_PERSIST_MODIFY + kFLAG_MODIFY_APPEND;
+						break;
+
+					case kAPI_MODIFY_ADDSET:
+						$flags = kFLAG_PERSIST_MODIFY + kFLAG_MODIFY_ADDSET;
+						break;
+
+					case kAPI_MODIFY_POP:
+						$flags = kFLAG_PERSIST_MODIFY + kFLAG_MODIFY_POP;
+						break;
+
+					case kAPI_MODIFY_PULL:
+						$flags = kFLAG_PERSIST_MODIFY + kFLAG_MODIFY_PULL;
+						break;
+				}
+				
+				//
+				// Perform modification.
+				//
+				$object = array( $attribute => $value );
+				$status
+					= $_REQUEST[ kAPI_CONTAINER ]
+						->ManageObject( $object, $_REQUEST[ kAPI_QUERY ], $flags );
+			
+			} // Iterating criteria.
+		
+		} // Iterating attributes.
+	
+	} // _Handle_Modify.
 
 	 
 	/*===================================================================================
@@ -2425,21 +2575,28 @@ class CDataWrapper extends CWrapper
 	 *			this case the method will return an array containing the distinct values of
 	 *			the provided field identifier.
 	 *	 </ul>
-	 *	<li><tt>$doCount</tt>: This boolean parameter indicates whether or not the query is
+	 *	<li><tt>$isCount</tt>: This boolean parameter indicates whether or not the query is
 	 *		intended for a count operation: <tt>TRUE</tt> means that the method will not
-	 *		return any result, except for the count information in the response poarameters.
+	 *		return any result, except for the count information in the response parameters.
+	 *	<li><tt>$doCount</tt>: This boolean parameter indicates whether or not the query
+	 *		should update the count and paging values of the request, if the parameter is
+	 *		<tt>TRUE</tt>, the default value, the query is considered as the final operation
+	 *		and all count and paging parameters will be updated accordingly; if the
+	 *		parameter is <tt>FALSE</tt>, the method will only perform the query and return
+	 *		the result.
 	 * </ul>
 	 *
 	 * The method will traverse query lists until a match is found and it expects the
 	 * {@link kAPI_DATABASE} parameter to be set.
 	 *
 	 * @param mixed					$theResult			Result type.
-	 * @param boolean				$doCount			COUNT result.
+	 * @param boolean				$isCount			COUNT result.
+	 * @param boolean				$doCount			Do paging counters.
 	 *
 	 * @access protected
 	 * @return mixed
 	 */
-	protected function _HandleQuery( $theResult = NULL, $doCount = FALSE )
+	protected function _HandleQuery( $theResult = NULL, $isCount = FALSE, $doCount = TRUE )
 	{
 		//
 		// Handle query.
@@ -2601,25 +2758,32 @@ class CDataWrapper extends CWrapper
 		if( $theResult === NULL )
 		{
 			//
-			// Set effective count.
+			// Handle counts.
 			//
-			$this->_OffsetManage(
-				kAPI_STATUS, kAPI_AFFECTED_COUNT, $result->count( FALSE ) );
-			
-			//
-			// Set page count.
-			//
-			if( $this->offsetExists( kAPI_PAGING ) )
+			if( $doCount )
 			{
-				$tmp = $this->offsetGet( kAPI_PAGING );
-				$tmp[ kAPI_PAGE_COUNT ] = $result->count( TRUE );
-				$this->offsetSet( kAPI_PAGING, $tmp );
-			}
+				//
+				// Set effective count.
+				//
+				$this->_OffsetManage(
+					kAPI_STATUS, kAPI_AFFECTED_COUNT, $result->count( FALSE ) );
+			
+				//
+				// Set page count.
+				//
+				if( $this->offsetExists( kAPI_PAGING ) )
+				{
+					$tmp = $this->offsetGet( kAPI_PAGING );
+					$tmp[ kAPI_PAGE_COUNT ] = $result->count( TRUE );
+					$this->offsetSet( kAPI_PAGING, $tmp );
+				}
+			
+			} // Final operation.
 			
 			//
 			// Handle count.
 			//
-			if( $doCount )
+			if( $isCount )
 				return $result->count( FALSE );										// ==>
 		
 		} // Received cursor.
@@ -2652,16 +2816,26 @@ class CDataWrapper extends CWrapper
 			//
 			// Set effective count.
 			//
-			$this->_OffsetManage( kAPI_STATUS, kAPI_AFFECTED_COUNT, $count );
+			if( $doCount )
+				$this->_OffsetManage( kAPI_STATUS, kAPI_AFFECTED_COUNT, $count );
 			
 			//
 			// Handle single object.
 			//
 			if( $theResult === TRUE )
 			{
-				$tmp = $this->offsetGet( kAPI_PAGING );
-				$tmp[ kAPI_PAGE_COUNT ] = $count;
-				$this->offsetSet( kAPI_PAGING, $tmp );
+				//
+				// Set paging.
+				//
+				if( $doCount )
+				{
+					if( $this->offsetExists( kAPI_PAGING ) )
+					{
+						$tmp = $this->offsetGet( kAPI_PAGING );
+						$tmp[ kAPI_PAGE_COUNT ] = $count;
+						$this->offsetSet( kAPI_PAGING, $tmp );
+					}
+				}
 			}
 			
 			//
@@ -2682,11 +2856,14 @@ class CDataWrapper extends CWrapper
 					//
 					// Set page count.
 					//
-					if( $this->offsetExists( kAPI_PAGING ) )
+					if( $doCount )
 					{
-						$tmp = $this->offsetGet( kAPI_PAGING );
-						$tmp[ kAPI_PAGE_COUNT ] = count( $result );
-						$this->offsetSet( kAPI_PAGING, $tmp );
+						if( $this->offsetExists( kAPI_PAGING ) )
+						{
+							$tmp = $this->offsetGet( kAPI_PAGING );
+							$tmp[ kAPI_PAGE_COUNT ] = count( $result );
+							$this->offsetSet( kAPI_PAGING, $tmp );
+						}
 					}
 				
 				} // Distinct values.
@@ -2716,11 +2893,14 @@ class CDataWrapper extends CWrapper
 					//
 					// Set page count.
 					//
-					if( $this->offsetExists( kAPI_PAGING ) )
+					if( $doCount )
 					{
-						$tmp = $this->offsetGet( kAPI_PAGING );
-						$tmp[ kAPI_PAGE_COUNT ] = $count;
-						$this->offsetSet( kAPI_PAGING, $tmp );
+						if( $this->offsetExists( kAPI_PAGING ) )
+						{
+							$tmp = $this->offsetGet( kAPI_PAGING );
+							$tmp[ kAPI_PAGE_COUNT ] = $count;
+							$this->offsetSet( kAPI_PAGING, $tmp );
+						}
 					}
 				
 				} // Distinct keys.
@@ -2730,7 +2910,7 @@ class CDataWrapper extends CWrapper
 			//
 			// Handle count.
 			//
-			if( $doCount )
+			if( $isCount )
 				return $count;														// ==>
 		
 		} // Not a cursor.
