@@ -189,9 +189,6 @@ define( "kAPI_OP_SetNamespace",		'WS:OP:SetNamespace' );
  *		response.
  *	<li><i>{@link kAPI_DATABASE}</i>: This parameter is required to indicate the working
  *		database.
- *	<li><i>{@link kAPI_SELECT}</i>: This parameter is an array listing which fields are to
- *		be returned by the query, all fields not included in the list will be ignored. An
- *		empty list is equivalent to requesting all fields.
  *	<li><i>{@link kAPI_SORT}</i>: This parameter is an array listing which fields are to
  *		be considered in the sort order, the array is indexed by the field name and the
  *		value should be a number that represents the sense: positive will be considered
@@ -204,6 +201,10 @@ define( "kAPI_OP_SetNamespace",		'WS:OP:SetNamespace' );
  *		both as the term {@link kTAG_GID} or the actual term reference: the service will
  *		take care of converting the {@link kTAG_GID} to the {@link kTAG_NID}.</i>
  * </ul>
+ *
+ * <i>Note that the {@link kAPI_SELECT} parameter will be disabled by default: since there
+ * are a number of fields that reference other objects we decided to disable this option
+ * rather than adding exceptions that in the long run would become difficult to track.</i>
  */
 define( "kAPI_OP_GetTerm",			'WS:OP:GetTerm' );
 
@@ -261,9 +262,6 @@ define( "kAPI_OP_SetVertex",		'WS:OP:SetVertex' );
  *		response.
  *	<li><i>{@link kAPI_DATABASE}</i>: This parameter is required to indicate the working
  *		database.
- *	<li><i>{@link kAPI_SELECT}</i>: This parameter is an array listing which fields are to
- *		be returned by the query, all fields not included in the list will be ignored. An
- *		empty list is equivalent to requesting all fields.
  *	<li><i>{@link kAPI_SORT}</i>: This parameter is an array listing which fields are to
  *		be considered in the sort order, the array is indexed by the field name and the
  *		value should be a number that represents the sense: positive will be considered
@@ -290,6 +288,10 @@ define( "kAPI_OP_SetVertex",		'WS:OP:SetVertex' );
  *		or destination of the relations. The database is the same and the filter will be
  *		applied to nodes.
  * </ul>
+ *
+ * <i>Note that the {@link kAPI_SELECT} parameter will be disabled by default: since there
+ * are a number of fields that reference other objects we decided to disable this option
+ * rather than adding exceptions that in the long run would become difficult to track.</i>
  */
 define( "kAPI_OP_GetVertex",		'WS:OP:GetVertex' );
 
@@ -306,9 +308,6 @@ define( "kAPI_OP_GetVertex",		'WS:OP:GetVertex' );
  *		response.
  *	<li><i>{@link kAPI_DATABASE}</i>: This parameter is required to indicate the working
  *		database.
- *	<li><i>{@link kAPI_SELECT}</i>: This parameter is an array listing which fields are to
- *		be returned by the query, all fields not included in the list will be ignored. An
- *		empty list is equivalent to requesting all fields.
  *	<li><i>{@link kAPI_SORT}</i>: This parameter is an array listing which fields are to
  *		be considered in the sort order, the array is indexed by the field name and the
  *		value should be a number that represents the sense: positive will be considered
@@ -319,6 +318,10 @@ define( "kAPI_OP_GetVertex",		'WS:OP:GetVertex' );
  *	<li><i>{@link kAPI_QUERY}</i>: This parameter will hold the selection criteria for the
  *		tag.</i>
  * </ul>
+ *
+ * <i>Note that the {@link kAPI_SELECT} parameter will be disabled by default: since there
+ * are a number of fields that reference other objects we decided to disable this option
+ * rather than adding exceptions that in the long run would become difficult to track.</i>
  */
 define( "kAPI_OP_GetTag",			'WS:OP:GetTag' );
 

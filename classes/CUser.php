@@ -734,7 +734,7 @@ class CUser extends CPersistentObject
 			  kERROR_PARAMETER );												// !@! ==>
 
 	} // Resolve.
-		
+
 
 
 /*=======================================================================================

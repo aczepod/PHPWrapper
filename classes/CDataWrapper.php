@@ -2609,8 +2609,8 @@ class CDataWrapper extends CWrapper
 		// Handle fields.
 		//
 		$fields = ( array_key_exists( kAPI_SELECT, $_REQUEST ) )
-				? $_REQUEST[ kAPI_SELECT ]
-				: NULL;
+			  ? $_REQUEST[ kAPI_SELECT ]
+			  : NULL;
 		
 		//
 		// Handle sort.

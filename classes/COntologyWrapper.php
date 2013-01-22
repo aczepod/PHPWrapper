@@ -339,6 +339,12 @@ class COntologyWrapper extends CDataWrapper
 				if( ! array_key_exists( kAPI_CONTAINER, $_REQUEST ) )
 					$_REQUEST[ kAPI_CONTAINER ]
 						= COntologyTerm::DefaultContainerName();
+				
+				//
+				// Remove fields selection.
+				//
+				if( array_key_exists( kAPI_SELECT, $_REQUEST ) )
+					unset( $_REQUEST[ kAPI_SELECT ] );
 
 				break;
 
@@ -371,6 +377,12 @@ class COntologyWrapper extends CDataWrapper
 				if( ! array_key_exists( kAPI_CONTAINER, $_REQUEST ) )
 					$_REQUEST[ kAPI_CONTAINER ]
 						= COntologyNode::DefaultContainerName();
+				
+				//
+				// Remove fields selection.
+				//
+				if( array_key_exists( kAPI_SELECT, $_REQUEST ) )
+					unset( $_REQUEST[ kAPI_SELECT ] );
 
 				break;
 
@@ -387,6 +399,12 @@ class COntologyWrapper extends CDataWrapper
 				if( ! array_key_exists( kAPI_CONTAINER, $_REQUEST ) )
 					$_REQUEST[ kAPI_CONTAINER ]
 						= COntologyTag::DefaultContainerName();
+				
+				//
+				// Remove fields selection.
+				//
+				if( array_key_exists( kAPI_SELECT, $_REQUEST ) )
+					unset( $_REQUEST[ kAPI_SELECT ] );
 
 				break;
 		}
@@ -853,7 +871,9 @@ class COntologyWrapper extends CDataWrapper
 			{
 				case kAPI_OP_GetTerm:
 				case kAPI_OP_GetVertex:
-					$this->_NormaliseTermReferences( $_REQUEST[ kAPI_QUERY ] );
+					$tmp = $_REQUEST[ kAPI_QUERY ]->getArrayCopy();
+					$this->_NormaliseTermReferences( $tmp );
+					$_REQUEST[ kAPI_QUERY ]->exchangeArray( $tmp );
 					break;
 			}
 		}
@@ -1780,11 +1800,6 @@ class COntologyWrapper extends CDataWrapper
 			foreach( $cursor as $object )
 			{
 				//
-				// Instantiate object.
-				//
-				$object = CPersistentObject::DocumentObject( $object );
-				
-				//
 				// Load related data.
 				//
 				$this->_ExportTag( $results, $object );
@@ -1792,7 +1807,7 @@ class COntologyWrapper extends CDataWrapper
 				//
 				// Save related identifier.
 				//
-				$results[ kAPI_COLLECTION_ID ][] = $object->offsetGet( kTAG_NID );
+				$results[ kAPI_COLLECTION_ID ][] = $object[ kTAG_NID ];
 			
 			} // Iterating found tags.
 			
@@ -3225,6 +3240,9 @@ class COntologyWrapper extends CDataWrapper
 	 * converted to term native identifiers using the static {@link COntologyTerm::_id()}
 	 * method.
 	 *
+	 * <i>Note: here we set the data type to a binary string, if you decide to change the
+	 * native identifier data type, you will have to update this method.</i>
+	 *
 	 * @param reference		   &$theQuery			Query.
 	 *
 	 * @access protected
@@ -3232,94 +3250,112 @@ class COntologyWrapper extends CDataWrapper
 	protected function _NormaliseTermReferences( &$theQuery )
 	{
 		//
-		// Check parameter.
+		// Init local storage.
 		//
-		if( is_array( $theQuery ) )
+		$tags = array( kTAG_UID, kTAG_TERM, kTAG_PREDICATE, kTAG_NAMESPACE );
+		
+		//
+		// Traverse the query.
+		//
+		foreach( $theQuery as $key => $value )
 		{
 			//
-			// Init local storage.
+			// Handle array values.
 			//
-			$tags = array( kTAG_UID, kTAG_TERM, kTAG_PREDICATE, kTAG_NAMESPACE );
-			
-			//
-			// Traverse the query.
-			//
-			foreach( $theQuery as $key => $value )
+			if( is_array( $value ) )
 			{
 				//
-				// Handle array values.
+				// Look for namespace clause.
 				//
-				if( is_array( $value ) )
+				if( array_key_exists( kOFFSET_QUERY_SUBJECT, $value )
+				 && in_array( $value[ kOFFSET_QUERY_SUBJECT ], $tags ) )
 				{
 					//
-					// Look for namespace clause.
+					// Check text namespaces.
 					//
-					if( array_key_exists( kOFFSET_QUERY_SUBJECT, $value )
-					 && in_array( $value[ kOFFSET_QUERY_SUBJECT ], $tags ) )
+					if( array_key_exists( kOFFSET_QUERY_TYPE, $value )
+					 && ($value[ kOFFSET_QUERY_TYPE ] == kTYPE_STRING) )
 					{
 						//
-						// Check text namespaces.
+						// Handle value.
 						//
-						if( array_key_exists( kOFFSET_QUERY_TYPE, $value )
-						 && ($value[ kOFFSET_QUERY_TYPE ] == kTYPE_STRING) )
+						if( array_key_exists( kOFFSET_QUERY_DATA, $value ) )
 						{
 							//
-							// Handle value.
+							// Handle list.
 							//
-							if( array_key_exists( kOFFSET_QUERY_DATA, $value ) )
+							if( is_array( $value[ kOFFSET_QUERY_DATA ] ) )
 							{
-								//
-								// Handle list.
-								//
-								if( is_array( $value[ kOFFSET_QUERY_DATA ] ) )
+								$idxs = array_keys( $value[ kOFFSET_QUERY_DATA ] );
+								foreach( $idxs as $idx )
 								{
-									$idxs = array_keys( $value[ kOFFSET_QUERY_DATA ] );
-									foreach( $idxs as $idx )
-										$theQuery[ $key ]
-												 [ kOFFSET_QUERY_DATA ]
-												 [ $idx ]
-											= COntologyTerm::_id(
-												$theQuery[ $key ]
-														 [ kOFFSET_QUERY_DATA ]
-														 [ $idx ],
-												( array_key_exists(
-													kAPI_CONTAINER, $_REQUEST ) )
-												? $_REQUEST[ kAPI_CONTAINER ]
-												: $_REQUEST[ kAPI_DATABASE ] );
-							
-								} // List of references.
-							
-								//
-								// Handle scalar.
-								//
-								else
+									//
+									// Set native identifier value.
+									//
 									$theQuery[ $key ]
 											 [ kOFFSET_QUERY_DATA ]
+											 [ $idx ]
 										= COntologyTerm::_id(
 											$theQuery[ $key ]
-													 [ kOFFSET_QUERY_DATA ],
+													 [ kOFFSET_QUERY_DATA ]
+													 [ $idx ],
 											( array_key_exists(
 												kAPI_CONTAINER, $_REQUEST ) )
 											? $_REQUEST[ kAPI_CONTAINER ]
 											: $_REQUEST[ kAPI_DATABASE ] );
+									
+									//
+									// Set native identifier data type.
+									//
+									$theQuery[ $key ]
+											 [ kOFFSET_QUERY_TYPE ]
+											 [ $idx ]
+										= kTYPE_BINARY_STRING;
+								}
 						
-							} // Has data.
+							} // List of references.
 						
-						} // Found text namespace reference.
+							//
+							// Handle scalar.
+							//
+							else
+							{
+								//
+								// Set native identifier value.
+								//
+								$theQuery[ $key ]
+										 [ kOFFSET_QUERY_DATA ]
+									= COntologyTerm::_id(
+										$theQuery[ $key ]
+												 [ kOFFSET_QUERY_DATA ],
+										( array_key_exists(
+											kAPI_CONTAINER, $_REQUEST ) )
+										? $_REQUEST[ kAPI_CONTAINER ]
+										: $_REQUEST[ kAPI_DATABASE ] );
+								
+								//
+								// Set native identifier data type.
+								//
+								$theQuery[ $key ]
+										 [ kOFFSET_QUERY_TYPE ]
+									= kTYPE_BINARY_STRING;
+							}
 					
-					} // Found namespace clause.
+						} // Has data.
 					
-					//
-					// Recurse.
-					//
-					else
-						$this->_NormaliseTermReferences( $theQuery[ $key ] );
+					} // Found text namespace reference.
 				
-				} // Possibly a clause.
+				} // Found namespace clause.
 				
-			} // Traversing the query.
-		
-		} // Is an array.
+				//
+				// Recurse.
+				//
+				else
+					$this->_NormaliseTermReferences( $theQuery[ $key ] );
+			
+			} // Possibly a clause.
+			
+		} // Traversing the query.
 	
 	} // _NormaliseTermReferences.
 
