@@ -1800,6 +1800,11 @@ class COntologyWrapper extends CDataWrapper
 			foreach( $cursor as $object )
 			{
 				//
+				// Convert to tag object.
+				//
+				$object = CPersistentObject::DocumentObject( $object );
+				
+				//
 				// Load related data.
 				//
 				$this->_ExportTag( $results, $object );
@@ -1807,7 +1812,7 @@ class COntologyWrapper extends CDataWrapper
 				//
 				// Save related identifier.
 				//
-				$results[ kAPI_COLLECTION_ID ][] = $object[ kTAG_NID ];
+				$results[ kAPI_COLLECTION_ID ][] = $object->offsetGet( kTAG_NID );
 			
 			} // Iterating found tags.
 			
