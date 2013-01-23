@@ -871,9 +871,22 @@ class COntologyWrapper extends CDataWrapper
 			{
 				case kAPI_OP_GetTerm:
 				case kAPI_OP_GetVertex:
-					$tmp = $_REQUEST[ kAPI_QUERY ]->getArrayCopy();
-					$this->_NormaliseTermReferences( $tmp );
-					$_REQUEST[ kAPI_QUERY ]->exchangeArray( $tmp );
+					if( is_array( $_REQUEST[ kAPI_QUERY ] ) )
+					{
+						$keys = array_keys( $_REQUEST[ kAPI_QUERY ] );
+						foreach( $keys as $key )
+						{
+							$tmp = $_REQUEST[ kAPI_QUERY ][ $key ]->getArrayCopy();
+							$this->_NormaliseTermReferences( $tmp );
+							$_REQUEST[ kAPI_QUERY ][ $key ]->exchangeArray( $tmp );
+						}
+					}
+					else
+					{
+						$tmp = $_REQUEST[ kAPI_QUERY ]->getArrayCopy();
+						$this->_NormaliseTermReferences( $tmp );
+						$_REQUEST[ kAPI_QUERY ]->exchangeArray( $tmp );
+					}
 					break;
 			}
 		}

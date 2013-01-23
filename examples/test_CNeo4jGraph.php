@@ -48,7 +48,7 @@ try
 	$graph = new CNeo4jGraph();
 	echo( '<pre>' ); print_r( $graph ); echo( '</pre>' );
 	echo( '<hr />' );
-
+	
 	//
 	// Create node.
 	//

@@ -75,6 +75,60 @@ $url = 'http://localhost/mywrapper/MongoOntologyWrapper.php';
 //
 try
 {
+	echo( '<h4>Test GetTerms in JSON</h4>' );
+	//
+	// Test query GetTerms in JSON.
+	//
+	$query = array
+	(
+		kOPERATOR_AND => array
+		(
+			array
+			(
+				kOFFSET_QUERY_SUBJECT => kTAG_LID,
+				kOFFSET_QUERY_OPERATOR => kOPERATOR_EQUAL,
+				kOFFSET_QUERY_TYPE => kTYPE_STRING,
+				kOFFSET_QUERY_DATA => 'INSTCODE'
+			),
+			array
+			(
+				kOFFSET_QUERY_SUBJECT => kTAG_NAMESPACE,
+				kOFFSET_QUERY_OPERATOR => kOPERATOR_EQUAL,
+				kOFFSET_QUERY_TYPE => kTYPE_STRING,
+				kOFFSET_QUERY_DATA => 'MCPD'
+			)
+		)
+	);
+	$sort = array( kTAG_GID => 1 );
+	$fields = array( kTAG_GID, kTAG_LABEL );
+	$languages = array( 'en', 'fr' );
+	$params = array( (kAPI_FORMAT.'='.kTYPE_JSON),
+					 (kAPI_OPERATION.'='.kAPI_OP_GetTerm),
+					 (kAPI_DATABASE.'='.urlencode(JsonEncode('ONTOLOGY'))),
+					 (kAPI_QUERY.'='.urlencode(JsonEncode( $query ))) );
+	//
+	// Display.
+	//
+	echo( kSTYLE_TABLE_PRE );
+	echo( kSTYLE_ROW_PRE );
+	echo( kSTYLE_HEAD_PRE.'URL:'.kSTYLE_HEAD_POS );
+	$request = $url.'?'.implode( '&', $params );
+	echo( kSTYLE_DATA_PRE.htmlspecialchars( $request ).kSTYLE_DATA_POS );
+	echo( kSTYLE_ROW_POS );
+	echo( kSTYLE_ROW_PRE );
+	echo( kSTYLE_HEAD_PRE.'Response:'.kSTYLE_HEAD_POS );
+	$response = file_get_contents( $request );
+	echo( kSTYLE_DATA_PRE.$response.kSTYLE_DATA_POS );
+	echo( kSTYLE_ROW_POS );
+	echo( kSTYLE_ROW_PRE );
+	echo( kSTYLE_HEAD_PRE.'Decoded:'.kSTYLE_HEAD_POS );
+	$decoded = JsonDecode( $response );
+	echo( kSTYLE_DATA_PRE.'<pre>' ); print_r( $decoded ); echo( '</pre>'.kSTYLE_DATA_POS );
+	echo( kSTYLE_ROW_POS );
+	echo( kSTYLE_TABLE_POS );
+	echo( '<hr>' );
+exit;
+
 	//
 	// Parent debug.
 	//
