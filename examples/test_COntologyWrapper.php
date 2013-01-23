@@ -2464,6 +2464,55 @@ try
 	}
 	echo( '<hr>' );
 
+	echo( '<h4>Test GetVertex list in JSON</h4>' );
+	//
+	// Test query GetVertex in JSON.
+	//
+	$query = array
+	(
+		kOPERATOR_AND => array
+		(
+			array
+			(
+				kOFFSET_QUERY_SUBJECT => kTAG_LID,
+				kOFFSET_QUERY_OPERATOR => kOPERATOR_EQUAL,
+				kOFFSET_QUERY_TYPE => kTYPE_STRING,
+				kOFFSET_QUERY_DATA => '10'
+			)
+		)
+	);
+	$fields = array( kTAG_GID, kTAG_LABEL, kTAG_KIND, kTAG_TYPE, kTAG_CLASS );
+	$params = array( (kAPI_FORMAT.'='.kTYPE_JSON),
+					 (kAPI_OPERATION.'='.kAPI_OP_GetVertex),
+					 (kAPI_LOG_REQUEST.'='.urlencode(JsonEncode(TRUE))),
+					 (kAPI_PAGE_START.'='.urlencode(JsonEncode(0))),
+					 (kAPI_PAGE_LIMIT.'='.urlencode(JsonEncode(5))),
+					 (kAPI_DATABASE.'='.urlencode(JsonEncode('ONTOLOGY'))),
+					 (kAPI_QUERY.'='.urlencode(JsonEncode( $query ))),
+					 (kAPI_SELECT.'='.urlencode(JsonEncode( $fields ))),
+					 (kAPI_STAMP_REQUEST.'='.gettimeofday( true )) );
+	//
+	// Display.
+	//
+	echo( kSTYLE_TABLE_PRE );
+	echo( kSTYLE_ROW_PRE );
+	echo( kSTYLE_HEAD_PRE.'URL:'.kSTYLE_HEAD_POS );
+	$request = $url.'?'.implode( '&', $params );
+	echo( kSTYLE_DATA_PRE.htmlspecialchars( $request ).kSTYLE_DATA_POS );
+	echo( kSTYLE_ROW_POS );
+	echo( kSTYLE_ROW_PRE );
+	echo( kSTYLE_HEAD_PRE.'Response:'.kSTYLE_HEAD_POS );
+	$response = file_get_contents( $request );
+	echo( kSTYLE_DATA_PRE.$response.kSTYLE_DATA_POS );
+	echo( kSTYLE_ROW_POS );
+	echo( kSTYLE_ROW_PRE );
+	echo( kSTYLE_HEAD_PRE.'Decoded:'.kSTYLE_HEAD_POS );
+	$decoded = JsonDecode( $response );
+	echo( kSTYLE_DATA_PRE.'<pre>' ); print_r( $decoded ); echo( '</pre>'.kSTYLE_DATA_POS );
+	echo( kSTYLE_ROW_POS );
+	echo( kSTYLE_TABLE_POS );
+	echo( '<hr>' );
+
 	echo( '<h4>Test GetVertex incoming relationships in JSON</h4>' );
 	echo( '<h5>:ATTRIBUTES</h5>' );
 	//
@@ -2743,7 +2792,7 @@ try
 				kOFFSET_QUERY_SUBJECT => kTAG_LID,
 				kOFFSET_QUERY_OPERATOR => kOPERATOR_PREFIX,
 				kOFFSET_QUERY_TYPE => kTYPE_STRING,
-				kOFFSET_QUERY_DATA => 'INT'
+				kOFFSET_QUERY_DATA => 'INT32'
 			)
 		)
 	);
@@ -2755,6 +2804,102 @@ try
 					 (kAPI_QUERY.'='.urlencode(JsonEncode( $query ))),
 					 (kAPI_SUBQUERY.'='.urlencode(JsonEncode( $subquery ))),
 					 (kAPI_SELECT.'='.urlencode(JsonEncode( $fields ))),
+					 (kAPI_RELATION.'='.urlencode(JsonEncode( kAPI_RELATION_IN ))),
+					 (kAPI_STAMP_REQUEST.'='.gettimeofday( true )) );
+	//
+	// Display.
+	//
+	echo( kSTYLE_TABLE_PRE );
+	echo( kSTYLE_ROW_PRE );
+	echo( kSTYLE_HEAD_PRE.'URL:'.kSTYLE_HEAD_POS );
+	$request = $url.'?'.implode( '&', $params );
+	echo( kSTYLE_DATA_PRE.htmlspecialchars( $request ).kSTYLE_DATA_POS );
+	echo( kSTYLE_ROW_POS );
+	echo( kSTYLE_ROW_PRE );
+	echo( kSTYLE_HEAD_PRE.'Response:'.kSTYLE_HEAD_POS );
+	$response = file_get_contents( $request );
+	echo( kSTYLE_DATA_PRE.$response.kSTYLE_DATA_POS );
+	echo( kSTYLE_ROW_POS );
+	echo( kSTYLE_ROW_PRE );
+	echo( kSTYLE_HEAD_PRE.'Decoded:'.kSTYLE_HEAD_POS );
+	$decoded = JsonDecode( $response );
+	echo( kSTYLE_DATA_PRE.'<pre>' ); print_r( $decoded ); echo( '</pre>'.kSTYLE_DATA_POS );
+	echo( kSTYLE_ROW_POS );
+	echo( kSTYLE_TABLE_POS );
+	echo( '<hr>' );
+
+	echo( '<h4>Test GetVertex relationships by filter list in JSON</h4>' );
+	echo( '<h5>:INT</h5>' );
+	echo( '<h5>'.kPREDICATE_SUBCLASS_OF." ".kPREDICATE_ENUM_OF.'</h5>' );
+	//
+	// Test GetVertex relationships by filter in JSON.
+	//
+	$query = array
+	(
+		kOPERATOR_AND => array
+		(
+			array
+			(
+				kOFFSET_QUERY_SUBJECT => kTAG_NID,
+				kOFFSET_QUERY_OPERATOR => kOPERATOR_EQUAL,
+				kOFFSET_QUERY_TYPE => kTYPE_INT32,
+				kOFFSET_QUERY_DATA => 258
+			)
+		)
+	);
+	$subquery = array
+	(
+		array
+		(
+			kOPERATOR_AND => array
+			(
+				array
+				(
+					kOFFSET_QUERY_SUBJECT => kTAG_GID,
+					kOFFSET_QUERY_OPERATOR => kOPERATOR_EQUAL,
+					kOFFSET_QUERY_TYPE => kTYPE_STRING,
+					kOFFSET_QUERY_DATA => 'italy'
+				)
+			)
+		),
+		array
+		(
+			kOPERATOR_AND => array
+			(
+				array
+				(
+					kOFFSET_QUERY_SUBJECT => kTAG_LID,
+					kOFFSET_QUERY_OPERATOR => kOPERATOR_EQUAL,
+					kOFFSET_QUERY_TYPE => kTYPE_STRING,
+					kOFFSET_QUERY_DATA => 'italy'
+				)
+			)
+		),
+		array
+		(
+			kOPERATOR_AND => array
+			(
+				array
+				(
+					kOFFSET_QUERY_SUBJECT => kTAG_LABEL.'.en',
+					kOFFSET_QUERY_OPERATOR => kOPERATOR_CONTAINS_NOCASE,
+					kOFFSET_QUERY_TYPE => kTYPE_STRING,
+					kOFFSET_QUERY_DATA => 'italy'
+				)
+			)
+		)
+	);
+	$fields = array( kTAG_GID );
+	$params = array( (kAPI_FORMAT.'='.kTYPE_JSON),
+					 (kAPI_OPERATION.'='.kAPI_OP_GetVertex),
+					 (kAPI_LOG_REQUEST.'='.urlencode(JsonEncode(TRUE))),
+					 (kAPI_DATABASE.'='.urlencode(JsonEncode('ONTOLOGY'))),
+					 (kAPI_QUERY.'='.urlencode(JsonEncode( $query ))),
+					 (kAPI_SUBQUERY.'='.urlencode(JsonEncode( $subquery ))),
+					 (kAPI_PAGE_START.'='.urlencode(JsonEncode(0))),
+					 (kAPI_PAGE_LIMIT.'='.urlencode(JsonEncode(5))),
+					 (kAPI_SELECT.'='.urlencode(JsonEncode( $fields ))),
+					 (kAPI_LANGUAGE.'='.urlencode(JsonEncode( 'en' ))),
 					 (kAPI_RELATION.'='.urlencode(JsonEncode( kAPI_RELATION_IN ))),
 					 (kAPI_STAMP_REQUEST.'='.gettimeofday( true )) );
 	//

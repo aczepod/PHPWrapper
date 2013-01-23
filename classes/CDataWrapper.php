@@ -1742,7 +1742,8 @@ class CDataWrapper extends CWrapper
 				//
 				// Validate query.
 				//
-				$this->_ValidateQueries( $_REQUEST[ kAPI_QUERY ] );
+				$this->_ValidateQueries( $_REQUEST[ kAPI_QUERY ],
+										 $_REQUEST[ kAPI_CONTAINER ] );
 			
 			} // Query is an array.
 			
@@ -2584,6 +2585,9 @@ class CDataWrapper extends CWrapper
 	 *		and all count and paging parameters will be updated accordingly; if the
 	 *		parameter is <tt>FALSE</tt>, the method will only perform the query and return
 	 *		the result.
+	 *	<li><tt>$theQuery</tt>: By default the query is taken from the {@link kAPI_QUERY}
+	 *		service parameter, if you want to use a custom query you can provide it in this
+	 *		parameter as a derived instance of {@link CQuery}.
 	 * </ul>
 	 *
 	 * The method will traverse query lists until a match is found and it expects the
@@ -2596,14 +2600,19 @@ class CDataWrapper extends CWrapper
 	 * @access protected
 	 * @return mixed
 	 */
-	protected function _HandleQuery( $theResult = NULL, $isCount = FALSE, $doCount = TRUE )
+	protected function _HandleQuery( $theResult = NULL,
+									 $isCount = FALSE,
+									 $doCount = TRUE,
+									 $theQuery = NULL )
 	{
 		//
 		// Handle query.
 		//
-		$query = ( array_key_exists( kAPI_QUERY, $_REQUEST ) )
-				? $_REQUEST[ kAPI_QUERY ]
-				: NULL;
+		$query = ( $theQuery === NULL )
+			   ? ( ( array_key_exists( kAPI_QUERY, $_REQUEST ) )
+				 ? $_REQUEST[ kAPI_QUERY ]
+				 : NULL )
+			   : $theQuery;
 		
 		//
 		// Handle fields.
@@ -2958,12 +2967,13 @@ class CDataWrapper extends CWrapper
 	 * </ul>
 	 *
 	 * @param reference			   &$theQuery			Query structure.
+	 * @param CContainer			$theContainer		Query container.
 	 *
 	 * @access protected
 	 *
 	 * @see kAPI_QUERY
 	 */
-	protected function _ValidateQueries( &$theQuery )
+	protected function _ValidateQueries( &$theQuery, CContainer $theContainer )
 	{
 		//
 		// Check query type.
@@ -2987,7 +2997,7 @@ class CDataWrapper extends CWrapper
 				// If there it should already be a CContainer instance.
 				//
 				if( array_key_exists( kAPI_CONTAINER, $_REQUEST ) )
-					$this->_VerifyQuery( $theQuery, $_REQUEST[ kAPI_CONTAINER ] );
+					$this->_VerifyQuery( $theQuery, $theContainer );
 				
 				else
 					throw new CException
@@ -3012,7 +3022,7 @@ class CDataWrapper extends CWrapper
 					// Handle query.
 					//
 					if( is_integer( $key ) )
-						$this->_ValidateQueries( $theQuery[ $key ] );
+						$this->_ValidateQueries( $theQuery[ $key ], $theContainer );
 					
 					//
 					// Handle container query.
