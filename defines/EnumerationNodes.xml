@@ -707,4 +707,60 @@
             <item>:KIND-ENUMERATION</item>
         </element>
 	</node>
+    
+    <!-- INPUT TYPE ENUMERATIONS -->
+    
+    <!-- kINPUT_TEXT -->
+	<node class="COntologyMasterVertex">
+		<element variable="kTAG_TERM">:INPUT-TEXT</element>
+		<element variable="kTAG_CLASS">COntologyMasterVertex</element>
+		<element variable="kTAG_KIND">
+            <item>:KIND-ENUMERATION</item>
+        </element>
+	</node>
+    
+    <!-- kINPUT_TEXTAREA -->
+	<node class="COntologyMasterVertex">
+		<element variable="kTAG_TERM">:INPUT-TEXTAREA</element>
+		<element variable="kTAG_CLASS">COntologyMasterVertex</element>
+		<element variable="kTAG_KIND">
+            <item>:KIND-ENUMERATION</item>
+        </element>
+	</node>
+    
+    <!-- kINPUT_CHOICE -->
+	<node class="COntologyMasterVertex">
+		<element variable="kTAG_TERM">:INPUT-CHOICE</element>
+		<element variable="kTAG_CLASS">COntologyMasterVertex</element>
+		<element variable="kTAG_KIND">
+            <item>:KIND-ENUMERATION</item>
+        </element>
+	</node>
+    
+    <!-- kINPUT_MULTIPLE -->
+	<node class="COntologyMasterVertex">
+		<element variable="kTAG_TERM">:INPUT-MULTIPLE</element>
+		<element variable="kTAG_CLASS">COntologyMasterVertex</element>
+		<element variable="kTAG_KIND">
+            <item>:KIND-ENUMERATION</item>
+        </element>
+	</node>
+    
+    <!-- kINPUT_RADIO -->
+	<node class="COntologyMasterVertex">
+		<element variable="kTAG_TERM">:INPUT-RADIO</element>
+		<element variable="kTAG_CLASS">COntologyMasterVertex</element>
+		<element variable="kTAG_KIND">
+            <item>:KIND-ENUMERATION</item>
+        </element>
+	</node>
+    
+    <!-- kINPUT_CHECKBOX -->
+	<node class="COntologyMasterVertex">
+		<element variable="kTAG_TERM">:INPUT-CHECKBOX</element>
+		<element variable="kTAG_CLASS">COntologyMasterVertex</element>
+		<element variable="kTAG_KIND">
+            <item>:KIND-ENUMERATION</item>
+        </element>
+	</node>
 </nodes>

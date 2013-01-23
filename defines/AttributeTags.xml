@@ -10,6 +10,10 @@
     	<element variable="kTAG_TYPE">
     		<item>:TEXT</item>
     	</element>
+    	<element variable="kTAG_INPUT">
+    		<item>:INPUT-TEXT</item>
+    	</element>
+    	<element variable="kTAG_PATTERN"><![CDATA[a-zA-Z0-9_\/\-\;\,\@]+]]></element>
     </tag>
      
     <!-- kTERM_GID -->
@@ -19,6 +23,7 @@
     	</element>
     	<element variable="kTAG_TYPE">
     		<item>:TEXT</item>
+    		<item>:COMPUTED</item>
     	</element>
     </tag>
      
@@ -29,6 +34,7 @@
     	</element>
     	<element variable="kTAG_TYPE">
     		<item>:BINARY</item>
+    		<item>:COMPUTED</item>
     	</element>
     </tag>
      
@@ -40,6 +46,9 @@
     	<element variable="kTAG_TYPE">
     		<item>:TEXT</item>
     		<item>:ARRAY</item>
+    	</element>
+    	<element variable="kTAG_INPUT">
+    		<item>:INPUT-TEXT</item>
     	</element>
     </tag>
      
@@ -54,6 +63,9 @@
     		<item>:TEXT</item>
     		<item>:ARRAY</item>
     	</element>
+    	<element variable="kTAG_INPUT">
+    		<item>:INPUT-TEXT</item>
+    	</element>
    </tag>
      
     <!-- kTERM_KIND -->
@@ -63,6 +75,9 @@
     	</element>
     	<element variable="kTAG_TYPE">
     		<item>:SET</item>
+    	</element>
+    	<element variable="kTAG_INPUT">
+    		<item>:INPUT-MULTIPLE</item>
     	</element>
     </tag>
      
@@ -74,6 +89,9 @@
     	<element variable="kTAG_TYPE">
     		<item>:SET</item>
     	</element>
+    	<element variable="kTAG_INPUT">
+    		<item>:INPUT-MULTIPLE</item>
+    	</element>
     </tag>
      
     <!-- kTERM_CLASS -->
@@ -83,6 +101,7 @@
     	</element>
     	<element variable="kTAG_TYPE">
     		<item>:TEXT</item>
+    		<item>:COMPUTED</item>
     	</element>
     </tag>
      
@@ -94,8 +113,78 @@
     	<element variable="kTAG_TYPE">
     		<item>:BINARY</item>
     	</element>
+    	<element variable="kTAG_INPUT">
+    		<item>:INPUT-TEXT</item>
+    	</element>
+    </tag>
+      
+    <!-- CLASSIFICATION TAGS -->
+     
+    <!-- kTERM_INPUT -->
+	<tag>
+    	<element variable="kTAG_PATH">
+    		<item>:INPUT</item>
+    	</element>
+    	<element variable="kTAG_TYPE">
+    		<item>:SET</item>
+    	</element>
+    	<element variable="kTAG_INPUT">
+    		<item>:INPUT-MULTIPLE</item>
+    	</element>
     </tag>
      
+    <!-- kTERM_PATTERN -->
+	<tag>
+    	<element variable="kTAG_PATH">
+    		<item>:PATTERN</item>
+    	</element>
+    	<element variable="kTAG_TYPE">
+    		<item>:TEXT</item>
+    	</element>
+    	<element variable="kTAG_INPUT">
+    		<item>:INPUT-TEXT</item>
+    	</element>
+    </tag>
+     
+    <!-- kTERM_LENGTH -->
+	<tag>
+    	<element variable="kTAG_PATH">
+    		<item>:LENGTH</item>
+    	</element>
+    	<element variable="kTAG_TYPE">
+    		<item>:INT</item>
+    	</element>
+    	<element variable="kTAG_INPUT">
+    		<item>:INPUT-TEXT</item>
+    	</element>
+    </tag>
+     
+    <!-- kTERM_MIN_VAL -->
+	<tag>
+    	<element variable="kTAG_PATH">
+    		<item>:MIN-VAL</item>
+    	</element>
+    	<element variable="kTAG_TYPE">
+    		<item>:INT</item>
+    	</element>
+    	<element variable="kTAG_INPUT">
+    		<item>:INPUT-TEXT</item>
+    	</element>
+    </tag>
+     
+    <!-- kTERM_MAX_VAL -->
+	<tag>
+    	<element variable="kTAG_PATH">
+    		<item>:MAX-VAL</item>
+    	</element>
+    	<element variable="kTAG_TYPE">
+    		<item>:INT</item>
+    	</element>
+    	<element variable="kTAG_INPUT">
+    		<item>:INPUT-TEXT</item>
+    	</element>
+    </tag>
+    
     <!-- DESCRIPTION TAGS -->
      
     <!-- kTERM_LABEL -->
@@ -105,6 +194,9 @@
     	</element>
     	<element variable="kTAG_TYPE">
     		<item>:LSTRING</item>
+    	</element>
+    	<element variable="kTAG_INPUT">
+    		<item>:INPUT-TEXT</item>
     	</element>
     </tag>
      
@@ -116,6 +208,9 @@
     	<element variable="kTAG_TYPE">
     		<item>:LSTRING</item>
     	</element>
+    	<element variable="kTAG_INPUT">
+    		<item>:INPUT-TEXTAREA</item>
+    	</element>
     </tag>
      
     <!-- kTERM_DESCRIPTION -->
@@ -125,6 +220,9 @@
     	</element>
     	<element variable="kTAG_TYPE">
     		<item>:LSTRING</item>
+    	</element>
+    	<element variable="kTAG_INPUT">
+    		<item>:INPUT-TEXTAREA</item>
     	</element>
     </tag>
      
@@ -136,6 +234,9 @@
     	<element variable="kTAG_TYPE">
     		<item>:TEXT</item>
     	</element>
+    	<element variable="kTAG_INPUT">
+    		<item>:INPUT-TEXTAREA</item>
+    	</element>
     </tag>
      
     <!-- kTERM_EXAMPLES -->
@@ -146,6 +247,9 @@
     	<element variable="kTAG_TYPE">
     		<item>:TEXT</item>
     		<item>:ARRAY</item>
+    	</element>
+    	<element variable="kTAG_INPUT">
+    		<item>:INPUT-TEXTAREA</item>
     	</element>
     </tag>
      
@@ -160,6 +264,9 @@
     		<item>:TEXT</item>
     		<item>:ARRAY</item>
     	</element>
+    	<element variable="kTAG_INPUT">
+    		<item>:INPUT-TEXT</item>
+    	</element>
     </tag>
      
     <!-- kTERM_ACKNOWLEDGMENTS-->
@@ -170,6 +277,9 @@
     	<element variable="kTAG_TYPE">
     		<item>:TEXT</item>
     		<item>:ARRAY</item>
+    	</element>
+    	<element variable="kTAG_INPUT">
+    		<item>:INPUT-TEXT</item>
     	</element>
     </tag>
      
@@ -182,6 +292,9 @@
     		<item>:TEXT</item>
     		<item>:ARRAY</item>
     	</element>
+    	<element variable="kTAG_INPUT">
+    		<item>:INPUT-TEXT</item>
+    	</element>
     </tag>
      
     <!-- REFERENCE TAGS -->
@@ -193,6 +306,7 @@
     	</element>
     	<element variable="kTAG_TYPE">
     		<item>:BINARY</item>
+    		<item>:COMPUTED</item>
     	</element>
     </tag>
      
@@ -203,6 +317,7 @@
     	</element>
     	<element variable="kTAG_TYPE">
     		<item>:INT</item>
+    		<item>:COMPUTED</item>
     	</element>
     </tag>
      
@@ -213,6 +328,7 @@
     	</element>
     	<element variable="kTAG_TYPE">
     		<item>:INT</item>
+    		<item>:COMPUTED</item>
     	</element>
     </tag>
      
@@ -223,6 +339,7 @@
     	</element>
     	<element variable="kTAG_TYPE">
     		<item>:INT</item>
+    		<item>:COMPUTED</item>
     	</element>
     </tag>
      
@@ -233,6 +350,7 @@
     	</element>
     	<element variable="kTAG_TYPE">
     		<item>:BINARY</item>
+    		<item>:COMPUTED</item>
     	</element>
     </tag>
      
@@ -244,6 +362,7 @@
     	<element variable="kTAG_TYPE">
     		<item>:ANY</item>
     		<item>:ARRAY</item>
+    		<item>:COMPUTED</item>
     	</element>
     </tag>
      
@@ -256,6 +375,7 @@
     	</element>
     	<element variable="kTAG_TYPE">
     		<item>:INT</item>
+    		<item>:COMPUTED</item>
     	</element>
     </tag>
      
@@ -267,6 +387,7 @@
     	<element variable="kTAG_TYPE">
     		<item>:INT</item>
     		<item>:ARRAY</item>
+    		<item>:COMPUTED</item>
     	</element>
     </tag>
      
@@ -278,6 +399,7 @@
     	<element variable="kTAG_TYPE">
     		<item>:INT</item>
     		<item>:ARRAY</item>
+    		<item>:COMPUTED</item>
     	</element>
     </tag>
      
@@ -289,6 +411,7 @@
     	<element variable="kTAG_TYPE">
     		<item>:INT</item>
     		<item>:ARRAY</item>
+    		<item>:COMPUTED</item>
     	</element>
     </tag>
      
@@ -300,6 +423,7 @@
     	<element variable="kTAG_TYPE">
     		<item>:INT</item>
     		<item>:ARRAY</item>
+    		<item>:COMPUTED</item>
     	</element>
     </tag>
      
@@ -311,6 +435,7 @@
     	<element variable="kTAG_TYPE">
     		<item>:INT</item>
     		<item>:ARRAY</item>
+    		<item>:COMPUTED</item>
     	</element>
     </tag>
     
@@ -323,6 +448,10 @@
     	</element>
     	<element variable="kTAG_TYPE">
     		<item>:TEXT</item>
+    		<item>:REQUIRED</item>
+    	</element>
+    	<element variable="kTAG_INPUT">
+    		<item>:INPUT-TEXT</item>
     	</element>
     </tag>
     
@@ -333,6 +462,10 @@
     	</element>
     	<element variable="kTAG_TYPE">
     		<item>:TEXT</item>
+    		<item>:REQUIRED</item>
+    	</element>
+    	<element variable="kTAG_INPUT">
+    		<item>:INPUT-TEXT</item>
     	</element>
     </tag>
     
@@ -343,6 +476,10 @@
     	</element>
     	<element variable="kTAG_TYPE">
     		<item>:TEXT</item>
+    		<item>:REQUIRED</item>
+    	</element>
+    	<element variable="kTAG_INPUT">
+    		<item>:INPUT-TEXT</item>
     	</element>
     </tag>
     
@@ -353,6 +490,10 @@
     	</element>
     	<element variable="kTAG_TYPE">
     		<item>:TEXT</item>
+    		<item>:REQUIRED</item>
+    	</element>
+    	<element variable="kTAG_INPUT">
+    		<item>:INPUT-TEXT</item>
     	</element>
     </tag>
     
@@ -376,6 +517,9 @@
     		<item>:TEXT</item>
     		<item>:ARRAY</item>
     	</element>
+    	<element variable="kTAG_INPUT">
+    		<item>:INPUT-MULTIPLE</item>
+    	</element>
     </tag>
     
     <!-- kTERM_USER_MANAGER -->
@@ -385,6 +529,7 @@
     	</element>
     	<element variable="kTAG_TYPE">
     		<item>:TEXT</item>
+    		<item>:COMPUTED</item>
     	</element>
     </tag>
     
@@ -396,6 +541,9 @@
     	<element variable="kTAG_TYPE">
     		<item>:TEXT</item>
     		<item>:ARRAY</item>
+    	</element>
+    	<element variable="kTAG_INPUT">
+    		<item>:INPUT-MULTIPLE</item>
     	</element>
     </tag>
 </tags>

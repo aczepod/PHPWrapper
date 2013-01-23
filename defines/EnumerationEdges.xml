@@ -555,4 +555,48 @@
     	<element variable="kTAG_PREDICATE">:ENUM-OF</element>
     	<element variable="kTAG_OBJECT">:KIND-PREDICATE</element>
     </edge>
+    
+    <!-- INPUT TYPE ENUMERATIONS -->
+    
+    <!-- kINPUT_TEXT -->
+	<edge>
+    	<element variable="kTAG_SUBJECT">:INPUT-TEXT</element>
+    	<element variable="kTAG_PREDICATE">:ENUM-OF</element>
+    	<element variable="kTAG_OBJECT">:INPUT</element>
+    </edge>
+    
+    <!-- kINPUT_TEXTAREA -->
+	<edge>
+    	<element variable="kTAG_SUBJECT">:INPUT-TEXTAREA</element>
+    	<element variable="kTAG_PREDICATE">:ENUM-OF</element>
+    	<element variable="kTAG_OBJECT">:INPUT</element>
+    </edge>
+    
+    <!-- kINPUT_CHOICE -->
+	<edge>
+    	<element variable="kTAG_SUBJECT">:INPUT-CHOICE</element>
+    	<element variable="kTAG_PREDICATE">:ENUM-OF</element>
+    	<element variable="kTAG_OBJECT">:INPUT</element>
+    </edge>
+    
+    <!-- kINPUT_MULTIPLE -->
+	<edge>
+    	<element variable="kTAG_SUBJECT">:INPUT-MULTIPLE</element>
+    	<element variable="kTAG_PREDICATE">:ENUM-OF</element>
+    	<element variable="kTAG_OBJECT">:INPUT</element>
+    </edge>
+    
+    <!-- kINPUT_RADIO -->
+	<edge>
+    	<element variable="kTAG_SUBJECT">:INPUT-RADIO</element>
+    	<element variable="kTAG_PREDICATE">:ENUM-OF</element>
+    	<element variable="kTAG_OBJECT">:INPUT</element>
+    </edge>
+    
+    <!-- kINPUT_CHECKBOX -->
+	<edge>
+    	<element variable="kTAG_SUBJECT">:INPUT-CHECKBOX</element>
+    	<element variable="kTAG_PREDICATE">:ENUM-OF</element>
+    	<element variable="kTAG_OBJECT">:INPUT</element>
+    </edge>
 </edges>

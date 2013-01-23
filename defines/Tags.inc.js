@@ -154,6 +154,7 @@
  *
  *	@author		Milko A. Škofič <m.skofic@cgiar.org>
  *	@version	1.00 25/11/2012
+ *	@version	2.00 23/01/2013
  */
 
 /*=======================================================================================
@@ -289,6 +290,68 @@ var kTAG_CLASS = '8';
 var kTAG_NAMESPACE = '9';
 
 /*=======================================================================================
+ *	REPRESENTATION ATTRIBUTES															*
+ *======================================================================================*/
+
+/**
+ * INPUT.
+ *
+ * Input.
+ *
+ * This attribute represents the enumerated set for the suggested or preferred input type
+ * that should be used in a form to manage the value of the referenced property.
+ *
+ * Version 1: (kTAG_INPUT)[10]
+ */
+var kTAG_INPUT = '10';
+
+/**
+ * PATTERN.
+ *
+ * Pattern.
+ *
+ * This attribute represents the regular expression pattern that can be used to validate the
+ * value of the referenced property.
+ *
+ * Version 1: (kTAG_PATTERN)[11]
+ */
+var kTAG_PATTERN = '11';
+
+/**
+ * LENGTH.
+ *
+ * Length.
+ *
+ * This attribute represents the maximum number of characters that may comprise the value of
+ * the referenced property.
+ *
+ * Version 1: (kTAG_LENGTH)[12]
+ */
+var kTAG_LENGTH = '12';
+
+/**
+ * MIN.
+ *
+ * Minimum value.
+ *
+ * This attribute represents the minimum value that the referenced property may hold.
+ *
+ * Version 1: (kTAG_MIN_VAL)[13]
+ */
+var kTAG_MIN_VAL = '13';
+
+/**
+ * MAX.
+ *
+ * Maximum value.
+ *
+ * This attribute represents the maximum value that the referenced property may hold.
+ *
+ * Version 1: (kTAG_MAX_VAL)[14]
+ */
+var kTAG_MAX_VAL = '14';
+
+/*=======================================================================================
  *	DESCRIPTION ATTRIBUTES																*
  *======================================================================================*/
 
@@ -302,8 +365,9 @@ var kTAG_NAMESPACE = '9';
  * languages.
  *
  * Version 1: (kTAG_LABEL)[5]
+ * Version 2: (kTAG_LABEL)[10]
  */
-var kTAG_LABEL = '10';
+var kTAG_LABEL = '15';
 
 /**
  * DEFINITION.
@@ -315,8 +379,9 @@ var kTAG_LABEL = '10';
  + languages. A definition is independent of the context.
  *
  * Version 1: (kTAG_DEFINITION)[??]
+ * Version 2: (kTAG_DEFINITION)[11]
  */
-var kTAG_DEFINITION = '11';
+var kTAG_DEFINITION = '16';
 
 /**
  * DESCRIPTION.
@@ -328,8 +393,9 @@ var kTAG_DEFINITION = '11';
  * languages. A description depends on the context.
  *
  * Version 1: (kTAG_DESCRIPTION)[6]
+ * Version 2: (kTAG_DESCRIPTION)[12]
  */
-var kTAG_DESCRIPTION = '12';
+var kTAG_DESCRIPTION = '17';
 
 /**
  * NOTES.
@@ -341,8 +407,9 @@ var kTAG_DESCRIPTION = '12';
  * several languages.
  *
  * Version 1: (kTAG_NOTES)[25]
+ * Version 2: (kTAG_NOTES)[13]
  */
-var kTAG_NOTES = '13';
+var kTAG_NOTES = '18';
 
 /**
  * EXAMPLES.
@@ -353,8 +420,9 @@ var kTAG_NOTES = '13';
  * It is a list of strings where each string represents an example or template.
  *
  * Version 1: (kTAG_EXAMPLES)[28]
+ * Version 2: (kTAG_EXAMPLES)[14]
  */
-var kTAG_EXAMPLES = '14';
+var kTAG_EXAMPLES = '19';
 
 /*=======================================================================================
  *	AUTHORSHIP ATTRIBUTES																*
@@ -368,8 +436,9 @@ var kTAG_EXAMPLES = '14';
  * This attribute represents a list of authors, it is an array of author names.
  *
  * Version 1: (kTAG_AUTHORS)[24]
+ * Version 2: (kTAG_AUTHORS)[15]
  */
-var kTAG_AUTHORS = '15';
+var kTAG_AUTHORS = '20';
 
 /**
  * ACKNOWLEDGMENTS.
@@ -379,8 +448,9 @@ var kTAG_AUTHORS = '15';
  * This attribute represents a list of generic acknowledgments, it is an array of strings.
  *
  * Version 1: (kTAG_ACKNOWLEDGMENTS)[26]
+ * Version 2: (kTAG_ACKNOWLEDGMENTS)[16]
  */
-var kTAG_ACKNOWLEDGMENTS = '16';
+var kTAG_ACKNOWLEDGMENTS = '21';
 
 /**
  * BIBLIOGRAPHY.
@@ -390,8 +460,9 @@ var kTAG_ACKNOWLEDGMENTS = '16';
  * This attribute represents a list of bibliographic references, it is an array of strings.
  *
  * Version 1: (kTAG_BIBLIOGRAPHY)[27]
+ * Version 2: (kTAG_BIBLIOGRAPHY)[17]
  */
-var kTAG_BIBLIOGRAPHY = '17';
+var kTAG_BIBLIOGRAPHY = '22';
 
 /*=======================================================================================
  *	REFERENCE ATTRIBUTES																*
@@ -406,8 +477,9 @@ var kTAG_BIBLIOGRAPHY = '17';
  * attribute host.
  *
  * Version 1: (kTAG_TERM)[8]
+ * Version 2: (kTAG_TERM)[18]
  */
-var kTAG_TERM = '18';
+var kTAG_TERM = '23';
 
 /**
  * NODE.
@@ -418,8 +490,9 @@ var kTAG_TERM = '18';
  * attribute host.
  *
  * Version 1: (kTAG_NODE)[??]
+ * Version 2: (kTAG_NODE)[19]
  */
-var kTAG_NODE = '19';
+var kTAG_NODE = '24';
 
 /**
  * SUBJECT.
@@ -430,8 +503,9 @@ var kTAG_NODE = '19';
  * subject vertex of a <tt>subject</tt>/<tt>predicate</tt>/<tt>object</tt> relationship.
  *
  * Version 1: (kTAG_VERTEX_SUBJECT)[18]
+ * Version 2: (kTAG_SUBJECT)[20]
  */
-var kTAG_SUBJECT = '20';
+var kTAG_SUBJECT = '25';
 
 /**
  * kTAG_OBJECT.
@@ -442,8 +516,9 @@ var kTAG_SUBJECT = '20';
  * object vertex of a <tt>subject</tt>/<tt>predicate</tt>/<tt>object</tt> relationship.
  *
  * Version 1: (kTAG_VERTEX_OBJECT)[20]
+ * Version 2: (kTAG_OBJECT)[21]
  */
-var kTAG_OBJECT = '21';
+var kTAG_OBJECT = '26';
 
 /**
  * PREDICATE.
@@ -454,8 +529,9 @@ var kTAG_OBJECT = '21';
  * <tt>subject</tt>/<tt>predicate</tt>/<tt>object</tt> relationship.
  *
  * Version 1: (kTAG_PREDICATE)[19]
+ * Version 2: (kTAG_PREDICATE)[22]
  */
-var kTAG_PREDICATE = '22';
+var kTAG_PREDICATE = '27';
 
 /**
  * PATH.
@@ -467,8 +543,9 @@ var kTAG_PREDICATE = '22';
  * and a destination vertex.
  *
  * Version 1: (kTAG_TAG_PATH)[22]
+ * Version 2: (kTAG_PATH)[23]
  */
-var kTAG_PATH = '23';
+var kTAG_PATH = '28';
 
 /*=======================================================================================
  *	REFERENCE COLLECTIONS																*
@@ -483,8 +560,9 @@ var kTAG_PATH = '23';
  * one as a namespace.
  *
  * Version 1: (kTAG_REFS_NAMESPACE)[9]
+ * Version 2: (kTAG_NAMESPACE_REFS)[24]
  */
-var kTAG_NAMESPACE_REFS = '24';
+var kTAG_NAMESPACE_REFS = '29';
 
 /**
  * NODES.
@@ -495,8 +573,9 @@ var kTAG_NAMESPACE_REFS = '24';
  * identifiers who reference the current object.
  *
  * Version 1: (kTAG_REFS_NODE)[10]
+ * Version 2: (kTAG_NODES)[25]
  */
-var kTAG_NODES = '25';
+var kTAG_NODES = '30';
 
 /**
  * EDGES.
@@ -507,8 +586,9 @@ var kTAG_NODES = '25';
  * identifiers who reference the current object.
  *
  * Version 1: (kTAG_REFS_EDGE)[17]
+ * Version 2: (kTAG_EDGES)[26]
  */
-var kTAG_EDGES = '26';
+var kTAG_EDGES = '31';
 
 /**
  * FEATURES.
@@ -519,8 +599,9 @@ var kTAG_EDGES = '26';
  * identifiers that reference the current object as a feature or trait.
  *
  * Version 1: (kTAG_REFS_TAG_FEATURE)[15]
+ * Version 2: (kTAG_FEATURES)[27]
  */
-var kTAG_FEATURES = '27';
+var kTAG_FEATURES = '32';
 
 /**
  * METHODS.
@@ -531,8 +612,9 @@ var kTAG_FEATURES = '27';
  * identifiers that reference the current object as a method or modifier.
  *
  * Version 1: (kTAG_REFS_TAG_METHOD)[??]
+ * Version 2: (kTAG_METHODS)[28]
  */
-var kTAG_METHODS = '28';
+var kTAG_METHODS = '33';
 
 /**
  * SCALES.
@@ -543,8 +625,9 @@ var kTAG_METHODS = '28';
  * identifiers that reference the current object as a scale or unit.
  *
  * Version 1: (kTAG_REFS_TAG_SCALE)[16]
+ * Version 2: (kTAG_SCALES)[29]
  */
-var kTAG_SCALES = '29';
+var kTAG_SCALES = '34';
 
 /*=======================================================================================
  *	USER OBJECT																			*
@@ -558,8 +641,9 @@ var kTAG_SCALES = '29';
  * The full user name.
  *
  * Version 1: (kTAG_USER_NAME)[30]
+ * Version 2: (kTAG_USER_NAME)[30]
  */
-var kTAG_USER_NAME = '30';
+var kTAG_USER_NAME = '35';
 
 /**
  * USER-CODE.
@@ -569,8 +653,9 @@ var kTAG_USER_NAME = '30';
  * The code with which the user is known to the system.
  *
  * Version 1: (kTAG_USER_CODE)[31]
+ * Version 2: (kTAG_USER_CODE)[31]
  */
-var kTAG_USER_CODE = '31';
+var kTAG_USER_CODE = '36';
 
 /**
  * USER-PASS.
@@ -580,8 +665,9 @@ var kTAG_USER_CODE = '31';
  * The password with which the user is known to the system.
  *
  * Version 1: (kTAG_USER_PASS)[32]
+ * Version 2: (kTAG_USER_PASS)[32]
  */
-var kTAG_USER_PASS = '32';
+var kTAG_USER_PASS = '37';
 
 /**
  * USER-MAIL.
@@ -591,8 +677,9 @@ var kTAG_USER_PASS = '32';
  * The e-mail address of the user.
  *
  * Version 1: (kTAG_USER_MAIL)[33]
+ * Version 2: (kTAG_USER_MAIL)[33]
  */
-var kTAG_USER_MAIL = '33';
+var kTAG_USER_MAIL = '38';
 
 /**
  * USER-ROLE.
@@ -602,8 +689,9 @@ var kTAG_USER_MAIL = '33';
  * The roles assigned to the user.
  *
  * Version 1: (kTAG_USER_ROLE)[34]
+ * Version 2: (kTAG_USER_ROLE)[34]
  */
-var kTAG_USER_ROLE = '34';
+var kTAG_USER_ROLE = '39';
 
 /**
  * USER-PROFILE.
@@ -613,8 +701,9 @@ var kTAG_USER_ROLE = '34';
  * The profile role name assigned to the user.
  *
  * Version 1: (kTAG_USER_PROFILE)[35]
+ * Version 2: (kTAG_USER_PROFILE)[35]
  */
-var kTAG_USER_PROFILE = '35';
+var kTAG_USER_PROFILE = '40';
 
 /**
  * USER-MANAGER.
@@ -624,8 +713,9 @@ var kTAG_USER_PROFILE = '35';
  * Reference to the user that manages the current user.
  *
  * Version 1: (kTAG_USER_MANAGER)[36]
+ * Version 2: (kTAG_USER_MANAGER)[36]
  */
-var kTAG_USER_MANAGER = '36';
+var kTAG_USER_MANAGER = '41';
 
 /**
  * USER-DOMAIN.
@@ -635,5 +725,6 @@ var kTAG_USER_MANAGER = '36';
  * List of domains the user has access to.
  *
  * Version 1: (kTAG_USER_DOMAIN)[37]
+ * Version 2: (kTAG_USER_DOMAIN)[37]
  */
-var kTAG_USER_DOMAIN ='37';
+var kTAG_USER_DOMAIN = '42';

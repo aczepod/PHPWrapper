@@ -1292,4 +1292,98 @@
             <item>kKIND_SYMMETRIC</item>
         </element>
 	</term>
+    
+    <!-- INPUT TYPE ENUMERATIONS -->
+    
+    <!-- kINPUT_TEXT -->
+    <term lid="INPUT-TEXT" ns="">
+        <element variable="kTAG_KIND">
+            <item>:KIND-ENUMERATION</item>
+        </element>
+        <element variable="kTAG_LABEL" key="en">Text field</element>
+        <element variable="kTAG_DEFINITION" key="en"><![CDATA[<i>Text field control</i>
+        	allowing input on <i>one line</i> excluding return characters.
+            ]]>
+        </element>
+        <element variable="kTAG_SYNONYMS">
+            <item>kINPUT_TEXT</item>
+        </element>
+    </term>
+    
+    <!-- kINPUT_TEXTAREA -->
+    <term lid="INPUT-TEXTAREA" ns="">
+        <element variable="kTAG_KIND">
+            <item>:KIND-ENUMERATION</item>
+        </element>
+        <element variable="kTAG_LABEL" key="en">Text area</element>
+        <element variable="kTAG_DEFINITION" key="en"><![CDATA[<i>Text area control</i>
+        	allowing input on <i>several lines</i> including return characters.
+            ]]>
+        </element>
+        <element variable="kTAG_SYNONYMS">
+            <item>kINPUT_TEXTAREA</item>
+        </element>
+    </term>
+    
+    <!-- kINPUT_CHOICE -->
+    <term lid="INPUT-CHOICE" ns="">
+        <element variable="kTAG_KIND">
+            <item>:KIND-ENUMERATION</item>
+        </element>
+        <element variable="kTAG_LABEL" key="en">Popup menu</element>
+        <element variable="kTAG_DEFINITION" key="en"><![CDATA[<i>Single select group</i>
+        	allowing the choice of one item among a list of predefined values.
+            ]]>
+        </element>
+        <element variable="kTAG_SYNONYMS">
+            <item>kINPUT_CHOICE</item>
+        </element>
+    </term>
+    
+    <!-- kINPUT_MULTIPLE -->
+    <term lid="INPUT-MULTIPLE" ns="">
+        <element variable="kTAG_KIND">
+            <item>:KIND-ENUMERATION</item>
+        </element>
+        <element variable="kTAG_LABEL" key="en">Combo box</element>
+        <element variable="kTAG_DEFINITION" key="en"><![CDATA[<i>Multiple select group</i>
+        	allowing the choice of one or more items among a list of predefined values.
+            ]]>
+        </element>
+        <element variable="kTAG_SYNONYMS">
+            <item>kINPUT_MULTIPLE</item>
+        </element>
+    </term>
+    
+    <!-- kINPUT_RADIO -->
+    <term lid="INPUT-RADIO" ns="">
+        <element variable="kTAG_KIND">
+            <item>:KIND-ENUMERATION</item>
+        </element>
+        <element variable="kTAG_LABEL" key="en">Radio group</element>
+        <element variable="kTAG_DEFINITION" key="en"><![CDATA[<i>Radio control group</i>
+        	of two controls which allows one of the two to be on. By default this control
+        	must return the value of one of the two radios.
+            ]]>
+        </element>
+        <element variable="kTAG_SYNONYMS">
+            <item>kINPUT_RADIO</item>
+        </element>
+    </term>
+    
+    <!-- kINPUT_CHECKBOX -->
+    <term lid="INPUT-CHECKBOX" ns="">
+        <element variable="kTAG_KIND">
+            <item>:KIND-ENUMERATION</item>
+        </element>
+        <element variable="kTAG_LABEL" key="en">Checkbox control</element>
+        <element variable="kTAG_DEFINITION" key="en"><![CDATA[<i>Single checkbox control</i>
+        	which can be either selected or not. By default this control must either return
+        	a value or not.
+            ]]>
+        </element>
+        <element variable="kTAG_SYNONYMS">
+            <item>kINPUT_CHECKBOX</item>
+        </element>
+    </term>
 </terms>

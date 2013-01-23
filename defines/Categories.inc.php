@@ -183,6 +183,14 @@ define( "kTERM_REFERENCE",						':REFERENCE' );
 define( "kTERM_CLASSIFICATION",					':CLASSIFICATION' );
 
 /**
+ * Representation.
+ *
+ * Representation attributes are categorical qualifications that provide indications on
+ * how to represent object properties and on how to validate their content.
+ */
+define( "kTERM_REPRESENTATION",					':REPRESENTATION' );
+
+/**
  * Illustration.
  *
  * Illustration attributes are used to provide definition, description or qualitative

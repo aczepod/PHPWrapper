@@ -52,6 +52,10 @@
  *		<li><tt>{@link kTERM_NAMESPACE}</tt>: <i>Namespace</i>. This attribute is a
  *			reference to a term which represents the namespace of the current object. The
  *			object local identifiers must be unique within the scope of the namespace.
+ *		<li><tt>{@link kTERM_INPUT}</tt>: <i>Input</i>. This attribute is an enumerated set
+ *			that defines an input type, it is generally associated to attributes and defines
+ *			what kind of control should be used in a form to input a value for that
+ *			attribute.
  *	 </ul>
  *	<li><i>Description attributes</i>: These attributes are used to describe objects:
  *	 <ul>
@@ -293,6 +297,71 @@ define( "kTERM_CLASS",							':CLASS' );
  * Version 1: (kOFFSET_NAMESPACE)[:NS]
  */
 define( "kTERM_NAMESPACE",						':NAMESPACE' );
+
+/*=======================================================================================
+ *	REPRESENTATION ATTRIBUTES															*
+ *======================================================================================*/
+
+/**
+ * INPUT.
+ *
+ * Input.
+ *
+ * This attribute is an enumerated set that defines an input type, it is generally
+ * associated to attributes and defines what kind of control should be used in a form to
+ * input a value for that attribute.
+ *
+ * Version 1: (kTERM_INPUT)[:INPUT]
+ */
+define( "kTERM_INPUT",							':INPUT' );
+
+/**
+ * PATTERN.
+ *
+ * Pattern.
+ *
+ * This attribute is a regular expression string which represents the pattern used to
+ * validate a string value.
+ *
+ * Version 1: (kTERM_PATTERN)[:PATTERN]
+ */
+define( "kTERM_PATTERN",						':PATTERN' );
+
+/**
+ * LENGTH.
+ *
+ * Length.
+ *
+ * This attribute is an integer value which represents the maximum number of characters or
+ * elements that an attribute may hold. In general this is applied to string values.
+ *
+ * Version 1: (kTERM_LENGTH)[:LENGTH]
+ */
+define( "kTERM_LENGTH",							':LENGTH' );
+
+/**
+ * MIN.
+ *
+ * Minimum value.
+ *
+ * This attribute represents the minimum value a property may hold, any value lower than
+ * the one defined in this attribute should be considered an underflow.
+ *
+ * Version 1: (kTERM_MIN_VAL)[:MIN-VAL]
+ */
+define( "kTERM_MIN_VAL",						':MIN-VAL' );
+
+/**
+ * MAX.
+ *
+ * Maximum value.
+ *
+ * This attribute represents the maximum value a property may hold, any value higher than
+ * the one defined in this attribute should be considered an overflow.
+ *
+ * Version 1: (kTERM_MAX_VAL)[:MAX-VAL]
+ */
+define( "kTERM_MAX_VAL",						':MAX-VAL' );
 
 /*=======================================================================================
  *	DESCRIPTION ATTRIBUTES																*

@@ -100,6 +100,53 @@
         </element>
     </node>
     
+    <!-- REPRESENTATION ATTRIBUTES -->
+    
+    <!-- kTERM_INPUT -->
+	<node class="COntologyMasterVertex">
+		<element variable="kTAG_TERM">:INPUT</element>
+		<element variable="kTAG_CLASS">COntologyMasterVertex</element>
+		<element variable="kTAG_KIND">
+            <item>:KIND-FEATURE</item>
+        </element>
+    </node>
+    
+    <!-- kTERM_PATTERN -->
+	<node class="COntologyMasterVertex">
+		<element variable="kTAG_TERM">:PATTERN</element>
+		<element variable="kTAG_CLASS">COntologyMasterVertex</element>
+		<element variable="kTAG_KIND">
+            <item>:KIND-FEATURE</item>
+        </element>
+    </node>
+    
+    <!-- kTERM_LENGTH -->
+	<node class="COntologyMasterVertex">
+		<element variable="kTAG_TERM">:LENGTH</element>
+		<element variable="kTAG_CLASS">COntologyMasterVertex</element>
+		<element variable="kTAG_KIND">
+            <item>:KIND-FEATURE</item>
+        </element>
+    </node>
+    
+    <!-- kTERM_MIN_VAL -->
+	<node class="COntologyMasterVertex">
+		<element variable="kTAG_TERM">:MIN-VAL</element>
+		<element variable="kTAG_CLASS">COntologyMasterVertex</element>
+		<element variable="kTAG_KIND">
+            <item>:KIND-FEATURE</item>
+        </element>
+    </node>
+    
+    <!-- kTERM_MAX_VAL -->
+	<node class="COntologyMasterVertex">
+		<element variable="kTAG_TERM">:MAX-VAL</element>
+		<element variable="kTAG_CLASS">COntologyMasterVertex</element>
+		<element variable="kTAG_KIND">
+            <item>:KIND-FEATURE</item>
+        </element>
+    </node>
+    
     <!-- DESCRIPTION ATTRIBUTES -->
     
     <!-- kTERM_LABEL -->

@@ -121,6 +121,20 @@
         </element>
     </term>
     
+    <!-- kTERM_REPRESENTATION -->
+    <term lid="REPRESENTATION" ns="">
+        <element variable="kTAG_LABEL" key="en">Representation</element>
+        <element variable="kTAG_DEFINITION" key="en"><![CDATA[Representation attributes are
+        	a set of <i>qualification attributes</i> that determine the kind of control type
+        	that is better suited to represent and manage a value and the set of rules by
+        	which a value may be considered valid or not.
+        	]]>
+        </element>
+        <element variable="kTAG_SYNONYMS">
+            <item>kTERM_REPRESENTATION</item>
+        </element>
+    </term>
+    
     <!-- kTERM_ILLUSTRATION -->
     <term lid="ILLUSTRATION" ns="">
         <element variable="kTAG_LABEL" key="en">Illustration</element>

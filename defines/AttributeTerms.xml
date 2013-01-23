@@ -101,7 +101,7 @@
         <element variable="kTAG_LABEL" key="en">Type</element>
         <element variable="kTAG_DEFINITION" key="en"><![CDATA[The <i>type</i> is an <i>enumerated set</i>
         	of values which represent the <i>various types</i> of the referenced object.
-        	The type applies to the referenced object and is used almost wxclusively to
+        	The type applies to the referenced object and is used almost exclusively to
         	indicate the <i>data type</i>.
         	]]>
         </element>
@@ -134,6 +134,72 @@
         </element>
         <element variable="kTAG_SYNONYMS">
             <item>kTERM_NAMESPACE</item>
+        </element>
+    </term>
+    
+    <!-- REPRESENTATION ATTRIBUTES -->
+    
+    <!-- kTERM_INPUT -->
+    <term lid="INPUT" ns="">
+        <element variable="kTAG_LABEL" key="en">Input</element>
+        <element variable="kTAG_DEFINITION" key="en"><![CDATA[The <i>input</i> type is an <i>enumerated set</i>
+        	of values which indicate the <i>suggested or preferred type of control</i> that should be used
+        	<i>in a form</i> to <i>set or modify the value of an attribute</i>.
+        	]]>
+        </element>
+        <element variable="kTAG_SYNONYMS">
+            <item>kTERM_INPUT</item>
+        </element>
+    </term>
+    
+    <!-- kTERM_PATTERN -->
+    <term lid="PATTERN" ns="">
+        <element variable="kTAG_LABEL" key="en">Pattern</element>
+        <element variable="kTAG_DEFINITION" key="en"><![CDATA[The <i>pattern</i> is a <i>regular expression</i>
+        	string which represents the <i>pattern</i> used to <i>validate</i> a value.
+        	]]>
+        </element>
+        <element variable="kTAG_SYNONYMS">
+            <item>kTERM_PATTERN</item>
+        </element>
+    </term>
+    
+    <!-- kTERM_LENGTH -->
+    <term lid="LENGTH" ns="">
+        <element variable="kTAG_LABEL" key="en">Length</element>
+        <element variable="kTAG_DEFINITION" key="en"><![CDATA[The <i>length</i> is an <i>integer</i> value
+        	which represents the <i>maximum number</i> of <i>characters or elements</i> that
+        	an attribute may hold. In general this is used to limit the length of strings.
+        	]]>
+        </element>
+        <element variable="kTAG_SYNONYMS">
+            <item>kTERM_LENGTH</item>
+        </element>
+    </term>
+    
+    <!-- kTERM_MIN_VAL -->
+    <term lid="MIN-VAL" ns="">
+        <element variable="kTAG_LABEL" key="en">Minimum value</element>
+        <element variable="kTAG_DEFINITION" key="en"><![CDATA[The <i>minimum</i> value represents the
+        	<i>lowest valid value</i>, any value lower than this value should be considered
+        	invalid.
+        	]]>
+        </element>
+        <element variable="kTAG_SYNONYMS">
+            <item>kTERM_MIN_VAL</item>
+        </element>
+    </term>
+    
+    <!-- kTERM_MAX_VAL -->
+    <term lid="MAX-VAL" ns="">
+        <element variable="kTAG_LABEL" key="en">Maximum value</element>
+        <element variable="kTAG_DEFINITION" key="en"><![CDATA[The <i>maximum</i> value represents the
+        	<i>highest valid value</i>, any value higher than this value should be considered
+        	invalid.
+        	]]>
+        </element>
+        <element variable="kTAG_SYNONYMS">
+            <item>kTERM_MAX_VAL</item>
         </element>
     </term>
     

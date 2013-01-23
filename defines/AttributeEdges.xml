@@ -74,6 +74,43 @@
     	<element variable="kTAG_OBJECT">:CLASSIFICATION</element>
     </edge>
     
+    <!-- REPRESENTATION ATTRIBUTES -->
+     
+    <!-- kTERM_INPUT -->
+	<edge>
+    	<element variable="kTAG_SUBJECT">:INPUT</element>
+    	<element variable="kTAG_PREDICATE">:SUBCLASS-OF</element>
+    	<element variable="kTAG_OBJECT">:REPRESENTATION</element>
+    </edge>
+     
+    <!-- kTERM_PATTERN -->
+	<edge>
+    	<element variable="kTAG_SUBJECT">:PATTERN</element>
+    	<element variable="kTAG_PREDICATE">:SUBCLASS-OF</element>
+    	<element variable="kTAG_OBJECT">:REPRESENTATION</element>
+    </edge>
+     
+    <!-- kTERM_LENGTH -->
+	<edge>
+    	<element variable="kTAG_SUBJECT">:LENGTH</element>
+    	<element variable="kTAG_PREDICATE">:SUBCLASS-OF</element>
+    	<element variable="kTAG_OBJECT">:REPRESENTATION</element>
+    </edge>
+     
+    <!-- kTERM_MIN_VAL -->
+	<edge>
+    	<element variable="kTAG_SUBJECT">:MIN-VAL</element>
+    	<element variable="kTAG_PREDICATE">:SUBCLASS-OF</element>
+    	<element variable="kTAG_OBJECT">:REPRESENTATION</element>
+    </edge>
+     
+    <!-- kTERM_MAX_VAL -->
+	<edge>
+    	<element variable="kTAG_SUBJECT">:MAX-VAL</element>
+    	<element variable="kTAG_PREDICATE">:SUBCLASS-OF</element>
+    	<element variable="kTAG_OBJECT">:REPRESENTATION</element>
+    </edge>
+    
     <!-- DESCRIPTION ATTRIBUTES -->
      
     <!-- kTERM_LABEL -->

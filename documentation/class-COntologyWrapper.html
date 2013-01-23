@@ -21,7 +21,7 @@
 		<div id="groups">
 			<h3>Packages</h3>
 			<ul>
-				<li class="main"><a href="package-MyWrapper.html">MyWrapper<span></span></a>
+				<li class="active main"><a href="package-MyWrapper.html">MyWrapper<span></span></a>
 						<ul>
 				<li class="main"><a href="package-MyWrapper.Data.html">Data</a>
 						</li>
@@ -37,11 +37,9 @@
 						</li>
 				<li class="main"><a href="package-MyWrapper.Persistence.html">Persistence</a>
 						</li>
-				<li class="main"><a href="package-MyWrapper.Wrappers.html">Wrappers</a>
+				<li class="active main"><a href="package-MyWrapper.Wrappers.html">Wrappers</a>
 						</li>
 							</ul></li>
-				<li class="active"><a href="package-None.html">None</a>
-						</li>
 				<li><a href="package-PHP.html">PHP</a>
 						</li>
 			</ul>
@@ -53,7 +51,14 @@
 		<div id="elements">
 			<h3>Classes</h3>
 			<ul>
-				<li class="active"><a href="class-COntologyWrapper.html" class="invalid">COntologyWrapper</a></li>
+				<li><a href="class-CDataWrapper.html">CDataWrapper</a></li>
+				<li><a href="class-CDataWrapperClient.html">CDataWrapperClient</a></li>
+				<li class="active"><a href="class-COntologyWrapper.html">COntologyWrapper</a></li>
+				<li><a href="class-COntologyWrapperClient.html">COntologyWrapperClient</a></li>
+				<li><a href="class-CPortalWrapper.html">CPortalWrapper</a></li>
+				<li><a href="class-CPortalWrapperClient.html">CPortalWrapperClient</a></li>
+				<li><a href="class-CWrapper.html">CWrapper</a></li>
+				<li><a href="class-CWrapperClient.html">CWrapperClient</a></li>
 			</ul>
 
 
@@ -81,7 +86,7 @@
 				<a href="index.html" title="Overview"><span>Overview</span></a>
 			</li>
 			<li>
-				<a href="package-None.html" title="Summary of None"><span>Package</span></a>
+				<a href="package-MyWrapper.Wrappers.html" title="Summary of MyWrapper\Wrappers"><span>Package</span></a>
 			</li>
 			<li class="active">
 <span>Class</span>			</li>
@@ -98,17 +103,2350 @@
 <div id="content" class="class">
 	<h1>Class COntologyWrapper</h1>
 
-		<div class="invalid">
-			<p>
-				Documentation of this class could not be generated.
-			</p>
-			<p>
-				Class was originally declared in COntologyWrapper.old.php and is invalid because of:
-			</p>
-			<ul>
-				<li>Class was redeclared in COntologyWrapper.php.</li>
-			</ul>
+
+	<div class="description">
+	
+<h4>Ontology wrapper</h4>
+
+<p>This class overloads its ancestor to implement the framework for providing
+services that return data from an ontology. The class concentrates on high level
+services that return aggregated elements taken from the term, node, edge and tag
+collections.</p>
+
+<p>The response parameter will always contain the following elements:</p>
+
+<ul>
+	<li><tt>kAPI_COLLECTION_ID</tt>: This offset tags the element that holds the
+	list of identifiers of the requested items.</li>
+
+	<li><tt>kAPI_COLLECTION_TERM</tt>: This offset tags the element that holds the
+	list of referenced predicate items</li>
+
+	<li><tt>kAPI_COLLECTION_NODE</tt>: This offset tags the element that holds the
+	list of referenced vertex items</li>
+
+	<li><tt>kAPI_COLLECTION_EDGE</tt>: This offset tags the element that holds the
+	list of referenced edge items</li>
+
+	<li><tt>kAPI_COLLECTION_TAG</tt>: This offset tags the element that holds the
+	list of referenced tag items</li>
+</ul>
+
+	</div>
+
+	<dl class="tree">
+		<dd style="padding-left:0px">
+			<a href="class-ArrayObject.html"><span>ArrayObject</span></a>
+			
+			 implements 
+				<a href="class-IteratorAggregate.html"><span>IteratorAggregate</span></a>, 
+			
+				<a href="class-Traversable.html"><span>Traversable</span></a>, 
+			
+				<a href="class-ArrayAccess.html"><span>ArrayAccess</span></a>, 
+			
+				<a href="class-Serializable.html"><span>Serializable</span></a>, 
+			
+				<a href="class-Countable.html"><span>Countable</span></a>
+			
+			
+		</dd>
+		<dd style="padding-left:30px">
+			<img src="resources/inherit.png" alt="Extended by" />
+			<a href="class-CDocument.html"><span>CDocument</span></a>
+			
+			
+			
+		</dd>
+		<dd style="padding-left:60px">
+			<img src="resources/inherit.png" alt="Extended by" />
+			<a href="class-CStatusDocument.html"><span>CStatusDocument</span></a>
+			
+			
+			
+		</dd>
+		<dd style="padding-left:90px">
+			<img src="resources/inherit.png" alt="Extended by" />
+			<a href="class-CConnection.html"><span>CConnection</span></a>
+			
+			
+			
+		</dd>
+		<dd style="padding-left:120px">
+			<img src="resources/inherit.png" alt="Extended by" />
+			<a href="class-CWrapper.html"><span>CWrapper</span></a>
+			
+			
+			
+		</dd>
+		<dd style="padding-left:150px">
+			<img src="resources/inherit.png" alt="Extended by" />
+			<a href="class-CDataWrapper.html"><span>CDataWrapper</span></a>
+			
+			
+			
+		</dd>
+		<dd style="padding-left:180px">
+			<img src="resources/inherit.png" alt="Extended by" />
+<b><span>COntologyWrapper</span></b>			
+			
+			
+		</dd>
+	</dl>
+
+
+	<div>
+		<h4>Direct known subclasses</h4>
+			<a href="class-CPortalWrapper.html">CPortalWrapper</a>
+	</div>
+
+
+
+
+
+
+	<div class="info">
+		
+		
+		
+		<b>Package:</b> <a href="package-MyWrapper.html">MyWrapper</a>\<a href="package-MyWrapper.Wrappers.html">Wrappers</a><br />
+
+				<b>Author:</b>
+				Milko A. Škofič &lt;<a
+href="mailto:m.skofic&#64;cgiar.org">m.skofic&#64;<!---->cgiar.org</a>&gt;<br />
+		<b>Located at</b> <a href="source-class-COntologyWrapper.html#71-3405" title="Go to source code">COntologyWrapper.php</a><br />
+	</div>
+
+
+
+	<table class="summary" id="methods">
+	<caption>Methods summary</caption>
+	<tr data-order="_ParseRequest" id="__ParseRequest">
+
+		<td class="attributes"><code>
+			 protected 
+			
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#__ParseRequest">#</a>
+		<code><a href="source-class-COntologyWrapper.html#123-157" title="Go to source code">_ParseRequest</a>( )</code>
+
+		<div class="description short">
+			
+<p>Parse request.</p>
+
 		</div>
+
+		<div class="description detailed hidden">
+			
+<p>Parse request.</p>
+
+<p>This method should be used to parse the request, check the request elements
+and make any necessary adjustments before the request is <code><a href="class-COntologyWrapper.html#__ValidateRequest">COntologyWrapper::_ValidateRequest()</a></code>.</p>
+
+<p>This is also where the relevant request elements will be logged to the
+relative response sections.</p>
+
+<p>The method is called by the constructor and should be overloaded to handle
+derived classes custom elements.</p>
+
+
+
+
+
+
+				<h4>Uses</h4>
+				<div class="list">
+						<code><code><a href="class-COntologyWrapper.html#__ParseLanguage">COntologyWrapper::_ParseLanguage()</a></code></code> <br />
+						<code><code><a href="class-COntologyWrapper.html#__ParsePredicate">COntologyWrapper::_ParsePredicate()</a></code></code> <br />
+						<code><code><a href="class-COntologyWrapper.html#__ParseRelation">COntologyWrapper::_ParseRelation()</a></code></code> <br />
+						<code><code><a href="class-COntologyWrapper.html#__ParseSubquery">COntologyWrapper::_ParseSubquery()</a></code></code> <br />
+				</div>
+
+				<h4>Overrides</h4>
+				<div class="list"><code><a href="class-CDataWrapper.html#__ParseRequest">CDataWrapper::_ParseRequest()</a></code></div>
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="_FormatRequest" id="__FormatRequest">
+
+		<td class="attributes"><code>
+			 protected 
+			
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#__FormatRequest">#</a>
+		<code><a href="source-class-COntologyWrapper.html#164-193" title="Go to source code">_FormatRequest</a>( )</code>
+
+		<div class="description short">
+			
+<p>Format request.</p>
+
+		</div>
+
+		<div class="description detailed hidden">
+			
+<p>Format request.</p>
+
+<p>This method should perform any needed formatting before the request will be
+handled.</p>
+
+<p>In this class we handle the parameters to be decoded</p>
+
+
+
+
+
+
+				<h4>Uses</h4>
+				<div class="list">
+						<code><code><a href="class-COntologyWrapper.html#__FormatLanguage">COntologyWrapper::_FormatLanguage()</a></code></code> <br />
+						<code><code><a href="class-COntologyWrapper.html#__FormatPredicate">COntologyWrapper::_FormatPredicate()</a></code></code> <br />
+						<code><code><a href="class-COntologyWrapper.html#__FormatRelation">COntologyWrapper::_FormatRelation()</a></code></code> <br />
+						<code><code><a href="class-COntologyWrapper.html#__FormatSubquery">COntologyWrapper::_FormatSubquery()</a></code></code> <br />
+				</div>
+
+				<h4>Overrides</h4>
+				<div class="list"><code><a href="class-CDataWrapper.html#__FormatRequest">CDataWrapper::_FormatRequest()</a></code></div>
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="_ValidateRequest" id="__ValidateRequest">
+
+		<td class="attributes"><code>
+			 protected 
+			
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#__ValidateRequest">#</a>
+		<code><a href="source-class-COntologyWrapper.html#200-231" title="Go to source code">_ValidateRequest</a>( )</code>
+
+		<div class="description short">
+			
+<p>Validate request.</p>
+
+		</div>
+
+		<div class="description detailed hidden">
+			
+<p>Validate request.</p>
+
+<p>This method should check that the request is valid and that all required
+parameters have been sent.</p>
+
+<p>In this class we check the kAPI_FORMAT and kAPI_OPERATION
+codes (their presence is checked by the constructor.</p>
+
+
+
+
+
+
+				<h4>Uses</h4>
+				<div class="list">
+						<code><code><a href="class-COntologyWrapper.html#__ValidateLanguage">COntologyWrapper::_ValidateLanguage()</a></code></code> <br />
+						<code><code><a href="class-COntologyWrapper.html#__ValidatePredicate">COntologyWrapper::_ValidatePredicate()</a></code></code> <br />
+						<code><code><a href="class-COntologyWrapper.html#__ValidateRelation">COntologyWrapper::_ValidateRelation()</a></code></code> <br />
+						<code><code><a href="class-COntologyWrapper.html#__ValidateSubquery">COntologyWrapper::_ValidateSubquery()</a></code></code> <br />
+				</div>
+
+				<h4>Overrides</h4>
+				<div class="list"><code><a href="class-CDataWrapper.html#__ValidateRequest">CDataWrapper::_ValidateRequest()</a></code></div>
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="_InitParameters" id="__InitParameters">
+
+		<td class="attributes"><code>
+			 protected 
+			
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#__InitParameters">#</a>
+		<code><a href="source-class-COntologyWrapper.html#247-268" title="Go to source code">_InitParameters</a>( )</code>
+
+		<div class="description short">
+			
+<p>Initialise parameters.</p>
+
+		</div>
+
+		<div class="description detailed hidden">
+			
+<p>Initialise parameters.</p>
+
+<p>This method is responsible for initialising the parameters of the request, in
+this class we decode all local parameters.</p>
+
+
+
+
+
+
+
+				<h4>Overrides</h4>
+				<div class="list"><code><a href="class-CDataWrapper.html#__InitParameters">CDataWrapper::_InitParameters()</a></code></div>
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="_ParseOperation" id="__ParseOperation">
+
+		<td class="attributes"><code>
+			 protected 
+			
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#__ParseOperation">#</a>
+		<code><a href="source-class-COntologyWrapper.html#284-412" title="Go to source code">_ParseOperation</a>( )</code>
+
+		<div class="description short">
+			
+<p>Parse operation.</p>
+
+		</div>
+
+		<div class="description detailed hidden">
+			
+<p>Parse operation.</p>
+
+<p>We overload this method to perform the following customisations:</p>
+
+<ul>
+	<li></li>
+
+	<li><i>Page limits enforcement</i>: If omitted, the page limits are set to the
+	default kAPI_PAGE_LIMIT value.</li>
+
+	<li></li>
+
+	<li><i>Container name</i>: Depending on the operation, if omitted, the container
+	name will be set to its default value.</li>
+</ul>
+
+
+
+
+
+
+				<h4>See</h4>
+				<div class="list">
+						kAPI_OPERATION<br />
+				</div>
+
+				<h4>Overrides</h4>
+				<div class="list"><code><a href="class-CDataWrapper.html#__ParseOperation">CDataWrapper::_ParseOperation()</a></code></div>
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="_ParseLanguage" id="__ParseLanguage">
+
+		<td class="attributes"><code>
+			 protected 
+			
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#__ParseLanguage">#</a>
+		<code><a href="source-class-COntologyWrapper.html#419-442" title="Go to source code">_ParseLanguage</a>( )</code>
+
+		<div class="description short">
+			
+<p>Parse language.</p>
+
+		</div>
+
+		<div class="description detailed hidden">
+			
+<p>Parse language.</p>
+
+<p>This method will copy the language parameter to the request block.</p>
+
+
+
+
+
+
+				<h4>See</h4>
+				<div class="list">
+						kAPI_LANGUAGE kAPI_REQUEST<br />
+				</div>
+				<h4>Uses</h4>
+				<div class="list">
+						<code><code><a href="class-CWrapper.html#__OffsetManage">CWrapper::_OffsetManage()</a></code></code> <br />
+				</div>
+				<h4>Used by</h4>
+				<div class="list">
+						<code><code><a href="class-COntologyWrapper.html#__ParseRequest">COntologyWrapper::_ParseRequest()</a></code></code> <br />
+				</div>
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="_ParsePredicate" id="__ParsePredicate">
+
+		<td class="attributes"><code>
+			 protected 
+			
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#__ParsePredicate">#</a>
+		<code><a href="source-class-COntologyWrapper.html#449-472" title="Go to source code">_ParsePredicate</a>( )</code>
+
+		<div class="description short">
+			
+<p>Parse container.</p>
+
+		</div>
+
+		<div class="description detailed hidden">
+			
+<p>Parse container.</p>
+
+<p>This method will copy the predicate parameter to the request block.</p>
+
+
+
+
+
+
+				<h4>See</h4>
+				<div class="list">
+						kAPI_PREDICATE kAPI_REQUEST<br />
+				</div>
+				<h4>Uses</h4>
+				<div class="list">
+						<code><code><a href="class-CWrapper.html#__OffsetManage">CWrapper::_OffsetManage()</a></code></code> <br />
+				</div>
+				<h4>Used by</h4>
+				<div class="list">
+						<code><code><a href="class-COntologyWrapper.html#__ParseRequest">COntologyWrapper::_ParseRequest()</a></code></code> <br />
+				</div>
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="_ParseRelation" id="__ParseRelation">
+
+		<td class="attributes"><code>
+			 protected 
+			
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#__ParseRelation">#</a>
+		<code><a href="source-class-COntologyWrapper.html#479-502" title="Go to source code">_ParseRelation</a>( )</code>
+
+		<div class="description short">
+			
+<p>Parse query.</p>
+
+		</div>
+
+		<div class="description detailed hidden">
+			
+<p>Parse query.</p>
+
+<p>This method will copy the relation to the request block.</p>
+
+
+
+
+
+
+				<h4>See</h4>
+				<div class="list">
+						kAPI_RELATION kAPI_REQUEST<br />
+				</div>
+				<h4>Uses</h4>
+				<div class="list">
+						<code><code><a href="class-CWrapper.html#__OffsetManage">CWrapper::_OffsetManage()</a></code></code> <br />
+				</div>
+				<h4>Used by</h4>
+				<div class="list">
+						<code><code><a href="class-COntologyWrapper.html#__ParseRequest">COntologyWrapper::_ParseRequest()</a></code></code> <br />
+				</div>
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="_ParseSubquery" id="__ParseSubquery">
+
+		<td class="attributes"><code>
+			 protected 
+			
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#__ParseSubquery">#</a>
+		<code><a href="source-class-COntologyWrapper.html#509-532" title="Go to source code">_ParseSubquery</a>( )</code>
+
+		<div class="description short">
+			
+<p>Parse sub-query.</p>
+
+		</div>
+
+		<div class="description detailed hidden">
+			
+<p>Parse sub-query.</p>
+
+<p>This method will copy the sub-query to the request block.</p>
+
+
+
+
+
+
+				<h4>See</h4>
+				<div class="list">
+						kAPI_SUBQUERY kAPI_REQUEST<br />
+				</div>
+				<h4>Uses</h4>
+				<div class="list">
+						<code><code><a href="class-CWrapper.html#__OffsetManage">CWrapper::_OffsetManage()</a></code></code> <br />
+				</div>
+				<h4>Used by</h4>
+				<div class="list">
+						<code><code><a href="class-COntologyWrapper.html#__ParseRequest">COntologyWrapper::_ParseRequest()</a></code></code> <br />
+				</div>
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="_FormatLanguage" id="__FormatLanguage">
+
+		<td class="attributes"><code>
+			 protected 
+			
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#__FormatLanguage">#</a>
+		<code><a href="source-class-COntologyWrapper.html#548-572" title="Go to source code">_FormatLanguage</a>( )</code>
+
+		<div class="description short">
+			
+<p>Format language parameters.</p>
+
+		</div>
+
+		<div class="description detailed hidden">
+			
+<p>Format language parameters.</p>
+
+<p>This method will format the provided language codes, if the language was
+provided as a scalar, it will be converted to an array.</p>
+
+
+
+
+
+
+				<h4>See</h4>
+				<div class="list">
+						kAPI_LANGUAGE<br />
+				</div>
+				<h4>Used by</h4>
+				<div class="list">
+						<code><code><a href="class-COntologyWrapper.html#__FormatRequest">COntologyWrapper::_FormatRequest()</a></code></code> <br />
+				</div>
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="_FormatPredicate" id="__FormatPredicate">
+
+		<td class="attributes"><code>
+			 protected 
+			
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#__FormatPredicate">#</a>
+		<code><a href="source-class-COntologyWrapper.html#579-600" title="Go to source code">_FormatPredicate</a>( )</code>
+
+		<div class="description short">
+			
+<p>Format language parameters.</p>
+
+		</div>
+
+		<div class="description detailed hidden">
+			
+<p>Format language parameters.</p>
+
+<p>This method will format the provided predicate references, if the predicate
+was provided as a scalar, it will be converted to an array.</p>
+
+
+
+
+
+
+				<h4>See</h4>
+				<div class="list">
+						kAPI_PREDICATE<br />
+				</div>
+				<h4>Used by</h4>
+				<div class="list">
+						<code><code><a href="class-COntologyWrapper.html#__FormatRequest">COntologyWrapper::_FormatRequest()</a></code></code> <br />
+				</div>
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="_FormatRelation" id="__FormatRelation">
+
+		<td class="attributes"><code>
+			 protected 
+			
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#__FormatRelation">#</a>
+		<code><a href="source-class-COntologyWrapper.html#607-617" title="Go to source code">_FormatRelation</a>( )</code>
+
+		<div class="description short">
+			
+<p>Format language parameters.</p>
+
+		</div>
+
+		<div class="description detailed hidden">
+			
+<p>Format language parameters.</p>
+
+<p>This method should format the provided relation sense code, in this class we
+do nothing.</p>
+
+
+
+
+
+
+				<h4>See</h4>
+				<div class="list">
+						kAPI_RELATION<br />
+				</div>
+				<h4>Used by</h4>
+				<div class="list">
+						<code><code><a href="class-COntologyWrapper.html#__FormatRequest">COntologyWrapper::_FormatRequest()</a></code></code> <br />
+				</div>
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="_FormatSubquery" id="__FormatSubquery">
+
+		<td class="attributes"><code>
+			 protected 
+			
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#__FormatSubquery">#</a>
+		<code><a href="source-class-COntologyWrapper.html#624-637" title="Go to source code">_FormatSubquery</a>( )</code>
+
+		<div class="description short">
+			
+<p>Format sub-query.</p>
+
+		</div>
+
+		<div class="description detailed hidden">
+			
+<p>Format sub-query.</p>
+
+<p>The main duty of this method is to format the provided sub-query. This
+parameter will be provided as a standard <code><a href="class-CQuery.html">CQuery</a></code> derived instance.</p>
+
+<p>In this class we do nothing, derived classes may overload this method to
+customise the structure before it gets validated.</p>
+
+
+
+
+
+
+				<h4>See</h4>
+				<div class="list">
+						kAPI_SUBQUERY<br />
+				</div>
+				<h4>Used by</h4>
+				<div class="list">
+						<code><code><a href="class-COntologyWrapper.html#__FormatRequest">COntologyWrapper::_FormatRequest()</a></code></code> <br />
+				</div>
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="_ValidateOperation" id="__ValidateOperation">
+
+		<td class="attributes"><code>
+			 protected 
+			
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#__ValidateOperation">#</a>
+		<code><a href="source-class-COntologyWrapper.html#653-835" title="Go to source code">_ValidateOperation</a>( )</code>
+
+		<div class="description short">
+			
+<p>Validate request operation.</p>
+
+		</div>
+
+		<div class="description detailed hidden">
+			
+<p>Validate request operation.</p>
+
+<p>This method can be used to check whether the provided kAPI_OPERATION
+parameter is valid, in this class we screen and check the dependencies of the
+following operations:</p>
+
+<ul>
+	<li><tt>kAPI_OP_GetTerm</tt>: The following are checked:
+		<ul>
+			<li><tt>kAPI_FORMAT</tt>: The encoding format is required.</li>
+
+			<li><tt>kAPI_DATABASE</tt>: The database is required.</li>
+
+			<li><tt>kAPI_SUBQUERY</tt>: The subquery is cleared.</li>
+		</ul>
+	</li>
+
+	<li><tt>kAPI_OP_GetVertex</tt>: The following are checked:
+		<ul>
+			<li><tt>kAPI_FORMAT</tt>: The encoding format is required.</li>
+
+			<li><tt>kAPI_DATABASE</tt>: The database is required.</li>
+
+			<li><tt>kAPI_SUBQUERY</tt>: The subquery is cleared if the kAPI_RELATION parameter is missing.</li>
+		</ul>
+	</li>
+</ul>
+
+
+
+
+
+
+				<h4>See</h4>
+				<div class="list">
+						kAPI_OP_COUNT<br />
+				</div>
+
+				<h4>Overrides</h4>
+				<div class="list"><code><a href="class-CDataWrapper.html#__ValidateOperation">CDataWrapper::_ValidateOperation()</a></code></div>
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="_ValidateQuery" id="__ValidateQuery">
+
+		<td class="attributes"><code>
+			 protected 
+			
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#__ValidateQuery">#</a>
+		<code><a href="source-class-COntologyWrapper.html#842-894" title="Go to source code">_ValidateQuery</a>( )</code>
+
+		<div class="description short">
+			
+<p>Validate query parameters.</p>
+
+		</div>
+
+		<div class="description detailed hidden">
+			
+<p>Validate query parameters.</p>
+
+<p>In this class we handle the kAPI_OP_GetTerm and kAPI_OP_GetVertex services: all references to the kTAG_NAMESPACE or
+kTAG_TERM attributes with type different than kTYPE_kTYPE_BINARY_STRING will be interpreted as the kTAG_GID of the
+term and converted to a term native identifier.</p>
+
+
+
+
+
+
+				<h4>See</h4>
+				<div class="list">
+						kAPI_QUERY<br />
+				</div>
+
+				<h4>Overrides</h4>
+				<div class="list"><code><a href="class-CDataWrapper.html#__ValidateQuery">CDataWrapper::_ValidateQuery()</a></code></div>
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="_ValidateObject" id="__ValidateObject">
+
+		<td class="attributes"><code>
+			 protected 
+			
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#__ValidateObject">#</a>
+		<code><a href="source-class-COntologyWrapper.html#901-1202" title="Go to source code">_ValidateObject</a>( )</code>
+
+		<div class="description short">
+			
+<p>Validate object parameter.</p>
+
+		</div>
+
+		<div class="description detailed hidden">
+			
+<p>Validate object parameter.</p>
+
+<p>The duty of this method is to validate the object parameter, in this class we
+assert the value to be an array, and we instantiate the correct class if the
+provided.</p>
+
+
+
+
+
+
+				<h4>See</h4>
+				<div class="list">
+						kAPI_OBJECT kAPI_CLASS<br />
+				</div>
+
+				<h4>Overrides</h4>
+				<div class="list"><code><a href="class-CDataWrapper.html#__ValidateObject">CDataWrapper::_ValidateObject()</a></code></div>
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="_ValidateLanguage" id="__ValidateLanguage">
+
+		<td class="attributes"><code>
+			 protected 
+			
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#__ValidateLanguage">#</a>
+		<code><a href="source-class-COntologyWrapper.html#1209-1219" title="Go to source code">_ValidateLanguage</a>( )</code>
+
+		<div class="description short">
+			
+<p>Validate language parameters.</p>
+
+		</div>
+
+		<div class="description detailed hidden">
+			
+<p>Validate language parameters.</p>
+
+<p>The duty of this method is to validate the language parameters, someday I
+will validate language codes, in this class we do nothing.</p>
+
+
+
+
+
+
+				<h4>See</h4>
+				<div class="list">
+						kAPI_LANGUAGE<br />
+				</div>
+				<h4>Used by</h4>
+				<div class="list">
+						<code><code><a href="class-COntologyWrapper.html#__ValidateRequest">COntologyWrapper::_ValidateRequest()</a></code></code> <br />
+				</div>
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="_ValidatePredicate" id="__ValidatePredicate">
+
+		<td class="attributes"><code>
+			 protected 
+			
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#__ValidatePredicate">#</a>
+		<code><a href="source-class-COntologyWrapper.html#1226-1278" title="Go to source code">_ValidatePredicate</a>( )</code>
+
+		<div class="description short">
+			
+<p>Validate predicate parameters.</p>
+
+		</div>
+
+		<div class="description detailed hidden">
+			
+<p>Validate predicate parameters.</p>
+
+<p>The duty of this method is to validate the predicate parameters, in this
+class we resolve the predicate and replace the provided references with their
+native identifiers.</p>
+
+
+
+
+
+
+				<h4>See</h4>
+				<div class="list">
+						kAPI_PREDICATE<br />
+				</div>
+				<h4>Used by</h4>
+				<div class="list">
+						<code><code><a href="class-COntologyWrapper.html#__ValidateRequest">COntologyWrapper::_ValidateRequest()</a></code></code> <br />
+				</div>
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="_ValidateRelation" id="__ValidateRelation">
+
+		<td class="attributes"><code>
+			 protected 
+			
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#__ValidateRelation">#</a>
+		<code><a href="source-class-COntologyWrapper.html#1285-1316" title="Go to source code">_ValidateRelation</a>( )</code>
+
+		<div class="description short">
+			
+<p>Validate relationship sense parameters.</p>
+
+		</div>
+
+		<div class="description detailed hidden">
+			
+<p>Validate relationship sense parameters.</p>
+
+<p>The duty of this method is to validate the relationship sense parameters, in
+this class we raise an exception if the relationship code is not recognised.</p>
+
+
+
+
+
+
+				<h4>See</h4>
+				<div class="list">
+						kAPI_RELATION<br />
+				</div>
+				<h4>Used by</h4>
+				<div class="list">
+						<code><code><a href="class-COntologyWrapper.html#__ValidateRequest">COntologyWrapper::_ValidateRequest()</a></code></code> <br />
+				</div>
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="_ValidateSubquery" id="__ValidateSubquery">
+
+		<td class="attributes"><code>
+			 protected 
+			
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#__ValidateSubquery">#</a>
+		<code><a href="source-class-COntologyWrapper.html#1323-1359" title="Go to source code">_ValidateSubquery</a>( )</code>
+
+		<div class="description short">
+			
+<p>Validate sub-query parameters.</p>
+
+		</div>
+
+		<div class="description detailed hidden">
+			
+<p>Validate sub-query parameters.</p>
+
+<p>The duty of this method is to validate the sub-query parameter, in this class
+we will unserialise eventual serialised data types and convert the query into a
+<code><a href="class-CQuery.html">CQuery</a></code> instance.</p>
+
+
+
+
+
+
+				<h4>See</h4>
+				<div class="list">
+						kAPI_SUBQUERY<br />
+				</div>
+				<h4>Used by</h4>
+				<div class="list">
+						<code><code><a href="class-COntologyWrapper.html#__ValidateRequest">COntologyWrapper::_ValidateRequest()</a></code></code> <br />
+				</div>
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="_HandleRequest" id="__HandleRequest">
+
+		<td class="attributes"><code>
+			 protected 
+			
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#__HandleRequest">#</a>
+		<code><a href="source-class-COntologyWrapper.html#1375-1422" title="Go to source code">_HandleRequest</a>( )</code>
+
+		<div class="description short">
+			
+<p>Handle request.</p>
+
+		</div>
+
+		<div class="description detailed hidden">
+			
+<p>Handle request.</p>
+
+<p>This method will handle the request.</p>
+
+
+
+
+
+
+
+				<h4>Overrides</h4>
+				<div class="list"><code><a href="class-CDataWrapper.html#__HandleRequest">CDataWrapper::_HandleRequest()</a></code></div>
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="_Handle_ListOp" id="__Handle_ListOp">
+
+		<td class="attributes"><code>
+			 protected 
+			
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#__Handle_ListOp">#</a>
+		<code><a href="source-class-COntologyWrapper.html#1429-1481" title="Go to source code">_Handle_ListOp</a>( <span>reference <var>&amp; $theList</var></span> )</code>
+
+		<div class="description short">
+			
+<p>Handle kAPI_OP_HELP operations request.</p>
+
+		</div>
+
+		<div class="description detailed hidden">
+			
+<p>Handle kAPI_OP_HELP operations request.</p>
+
+<p>This method will handle the locally supported operations.</p>
+
+
+
+				<h4>Parameters</h4>
+				<div class="list"><dl>
+					<dt><var>$theList</var></dt>
+					<dd><code>reference</code><br>$theList Receives operations list.</dd>
+				</dl></div>
+
+
+
+
+				<h4>Overrides</h4>
+				<div class="list"><code><a href="class-CDataWrapper.html#__Handle_ListOp">CDataWrapper::_Handle_ListOp()</a></code></div>
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="_Handle_SetTerm" id="__Handle_SetTerm">
+
+		<td class="attributes"><code>
+			 protected 
+			
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#__Handle_SetTerm">#</a>
+		<code><a href="source-class-COntologyWrapper.html#1488-1552" title="Go to source code">_Handle_SetTerm</a>( )</code>
+
+		<div class="description short">
+			
+<p>Handle kAPI_OP_SetTerm request.</p>
+
+		</div>
+
+		<div class="description detailed hidden">
+			
+<p>Handle kAPI_OP_SetTerm request.</p>
+
+<p>This method will handle the kAPI_OP_SetTerm operation, which inserts
+the provided object as an instance of the provided class into the provided
+database or container.</p>
+
+<p>This service works in two different modes:</p>
+
+<ul>
+	<li><i>kAPI_CLASS provided</i>: In this case we let the object handle
+	the operation, which will trigger all automatic procedures for that specific
+	class.</li>
+
+	<li><i>kAPI_CLASS not provided</i>: In this case we simply add the
+	provided document to the provided container as-is.</li>
+</ul>
+
+
+
+
+
+
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="_Handle_GetTerm" id="__Handle_GetTerm">
+
+		<td class="attributes"><code>
+			 protected 
+			
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#__Handle_GetTerm">#</a>
+		<code><a href="source-class-COntologyWrapper.html#1559-1615" title="Go to source code">_Handle_GetTerm</a>( )</code>
+
+		<div class="description short">
+			
+<p>Retrieve ontology terms by query.</p>
+
+		</div>
+
+		<div class="description detailed hidden">
+			
+<p>Retrieve ontology terms by query.</p>
+
+<p>This method will handle the kAPI_OP_GetTerm operation which returns a
+list of terms with their related attributes ans tag information matching the
+provided query.</p>
+
+
+
+
+
+
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="_Handle_SetVertex" id="__Handle_SetVertex">
+
+		<td class="attributes"><code>
+			 protected 
+			
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#__Handle_SetVertex">#</a>
+		<code><a href="source-class-COntologyWrapper.html#1622-1667" title="Go to source code">_Handle_SetVertex</a>( )</code>
+
+		<div class="description short">
+			
+<p>Handle kAPI_OP_SetVertex request.</p>
+
+		</div>
+
+		<div class="description detailed hidden">
+			
+<p>Handle kAPI_OP_SetVertex request.</p>
+
+<p>This method will handle the kAPI_OP_SetVertex operation, which
+inserts the provided object as an instance of the provided class into the
+provided database or container.</p>
+
+
+
+
+
+
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="_Handle_GetVertex" id="__Handle_GetVertex">
+
+		<td class="attributes"><code>
+			 protected 
+			
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#__Handle_GetVertex">#</a>
+		<code><a href="source-class-COntologyWrapper.html#1674-1825" title="Go to source code">_Handle_GetVertex</a>( )</code>
+
+		<div class="description short">
+			
+<p>Handle kAPI_OP_GetVertex request.</p>
+
+		</div>
+
+		<div class="description detailed hidden">
+			
+<p>Handle kAPI_OP_GetVertex request.</p>
+
+<p>This method will handle the kAPI_OP_GetVertex operation, which
+returns either the list of vertex satisfying the provided query, or the related
+vertices of the vertex selected by the provided query.</p>
+
+<p>If the kAPI_RELATION parameter is provided, it is assumed that you
+want the vertices related to the first vertex matched by the provided query, in
+that case the service will return a list of vertices that either point to the
+matched vertex, pointed to by the reference vertex, or both.</p>
+
+<p>If the latter parameter is provided, the service may optionally receive the
+kAPI_SUBQUERY parameter which represents a filter or query that will be
+applied to the related elements (not to the result of the kAPI_QUERY
+filter).</p>
+
+<p>If the kAPI_RELATION parameter is not provided, the service will
+return the vertices that match the provided query.</p>
+
+<p>If the query is omitted, the service will use the provided or default nodes
+container.</p>
+
+
+
+
+
+
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="_HandleGetTag" id="__HandleGetTag">
+
+		<td class="attributes"><code>
+			 protected 
+			
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#__HandleGetTag">#</a>
+		<code><a href="source-class-COntologyWrapper.html#1832-1888" title="Go to source code">_HandleGetTag</a>( )</code>
+
+		<div class="description short">
+			
+<p>Retrieve ontology terms by query.</p>
+
+		</div>
+
+		<div class="description detailed hidden">
+			
+<p>Retrieve ontology terms by query.</p>
+
+<p>This method will handle the kAPI_OP_GetTerm operation which returns a
+list of terms with their related attributes ans tag information matching the
+provided query.</p>
+
+
+
+
+
+
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="_ExportTerm" id="__ExportTerm">
+
+		<td class="attributes"><code>
+			 protected 
+			
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#__ExportTerm">#</a>
+		<code><a href="source-class-COntologyWrapper.html#1904-2056" title="Go to source code">_ExportTerm</a>( <span>reference <var>&amp; $theCollection</var></span>, <span>mixed <var>$theTerm</var></span>, <span>boolean <var>$doTags</var> = <span class="php-keyword1">TRUE</span> </span> )</code>
+
+		<div class="description short">
+			
+<h4>Export a predicate</h4>
+
+		</div>
+
+		<div class="description detailed hidden">
+			
+<h4>Export a predicate</h4>
+
+<p>The main duty of this method is to normalise and merge the provided term's
+attributes and place this information in the related provided collection
+container.</p>
+
+<p>The method expects the following parameters:</p>
+
+<ul>
+	<li><tt>&amp;$theCollection</tt>: This parameter is a reference to an array that
+	will receive the object attributes, the array holds four lists that collect
+	similar objects, such as nodes, terms, edges and tags:
+		<ul>
+			<li><tt>kAPI_COLLECTION_ID</tt>: This element is an array that holds the
+			identifiers list of the requested elements. This list holds the reference to the
+			object which is contained by the other elements of the collection, this list
+			refers to the elements requested by the service.</li>
+
+			<li><tt>kAPI_COLLECTION_TERM</tt>: This element is an array that holds
+			the list of predicate terms referenced by all other objects in the collection.
+			The array keys will be the term's kTAG_GID and the value will be the
+			attributes of the term. The contents of this element are fed by the <code><a href="class-COntologyWrapper.html#__BuildTerm">COntologyWrapper::_BuildTerm()</a></code> protected method and the elements are provided by this
+			method.</li>
+
+			<li><tt>kAPI_COLLECTION_NODE</tt>: This element is an array that holds a
+			list of node vertex. A vertex is the combination of the node attributes merged
+			with the referenced term attributes. The items of this list are indexed by the
+			node kTAG_NID and eventual term attributes are overwritten by matching
+			node attributes. The contents of this element are fed by the <code><a href="class-COntologyWrapper.html#__BuildNode">COntologyWrapper::_BuildNode()</a></code> protected method.</li>
+
+			<li><tt>kAPI_COLLECTION_EDGE</tt>: This element is an array that holds a
+			list of edges, the array keys will be the edge's kTAG_GID and the value
+			will be the edge's attributes. The contents of this element are fed by the
+			_BuildEdge() protected method.</li>
+
+			<li><tt>kAPI_COLLECTION_TAG</tt>: This element is an array that holds a
+			list of tags, the array indexes will be the tag kTAG_NID and the array
+			values will be the tag kTAG_PATH and kTAG_GID, where the kTAG_PATH predicate references will be set to the term kTAG_GID.</li>
+		</ul>
+	</li>
+
+	<li><tt>$theTerm</tt>: This parameter represents the vertex node full object;
+	this means that all attributes should be present, since this method will take
+	care of removing unwanted attributes. The parameter may represent a list of node
+	objects or references, a reference or an object:
+		<ul>
+			<li><tt>array</tt>: Each element of the list will be fed to this method
+			recursively.</li>
+
+			<li><tt>COntologyNode</tt>: The object will be used as is.</li>
+
+			<li><i>other</i>: Any other type will be interpreted as a node reference.</li>
+		</ul>
+	</li>
+
+	<li><tt>$theAttributes</tt>: This optional parameter can be used to limit the
+	returned attributes to the list provided in this array.</li>
+
+	<li><tt>$doTags</tt>: If this flag is <tt>TRUE</tt>, the method will load the
+	tags; if <tt>FALSE</tt> no tags will be loaded.</li>
+</ul>
+
+<p>The method will generate an array containing the merged attributes of the
+node and the referenced term, this array will be set in the kAPI_COLLECTION_NODE of the <tt>&amp;$theCollection</tt> parameter with as
+index the node kTAG_NID that will ve added to the kAPI_COLLECTION_ID element of the collection.</p>
+
+<p>If a matching vertex already exists in the <tt>&amp;$theCollection</tt>
+parameter, the method will do nothing.</p>
+
+<p>For more information please consult the <code><a href="class-COntologyWrapper.html#__BuildNode">COntologyWrapper::_BuildNode()</a></code> method
+reference, note that this method will remove the kTAG_NID attribute from
+the node, it will only use this information to index the node.</p>
+
+<p>The method will raise an exception if any element cannot be resolved.</p>
+
+
+
+				<h4>Parameters</h4>
+				<div class="list"><dl>
+					<dt><var>$theCollection</var></dt>
+					<dd><code>reference</code><br>&amp;$theCollection Exported collection.</dd>
+					<dt><var>$theTerm</var></dt>
+					<dd><code>mixed</code><br>$theTerm Node identifier or list.</dd>
+					<dt><var>$doTags</var></dt>
+					<dd><code>boolean</code><br>$doTags TRUE means load tags.</dd>
+				</dl></div>
+
+
+
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="_ExportNode" id="__ExportNode">
+
+		<td class="attributes"><code>
+			 protected 
+			
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#__ExportNode">#</a>
+		<code><a href="source-class-COntologyWrapper.html#2063-2225" title="Go to source code">_ExportNode</a>( <span>reference <var>&amp; $theCollection</var></span>, <span>mixed <var>$theNode</var></span>, <span>boolean <var>$doTags</var> = <span class="php-keyword1">TRUE</span> </span> )</code>
+
+		<div class="description short">
+			
+<h4>Export a vertex</h4>
+
+		</div>
+
+		<div class="description detailed hidden">
+			
+<h4>Export a vertex</h4>
+
+<p>The main duty of this method is to export a collection of vertex nodes into a
+series of collections each holding a class of data. The method will have to
+resolve eventual references and store the resolved data in their corresponding
+collection.</p>
+
+<p>The method expects the following parameters:</p>
+
+<ul>
+	<li><tt>&amp;$theCollection</tt>: This parameter is a reference to an array that
+	will receive the object attributes, the array holds four lists that collect
+	objects of the same class:
+		<ul>
+			<li><tt>kAPI_COLLECTION_ID</tt>: This element is an array that holds the
+			identifiers list of the requested elements. Depending on what was requested,
+			this list will hold term, node, edge or tag identifiers.</li>
+
+			<li><tt>kAPI_COLLECTION_TERM</tt>: This element is an array that holds
+			the list of terms referenced by all other objects in the collection. The array
+			keys will be the term's kTAG_GID and the value the term attributes. The
+			contents of this element are fed by the <code><a href="class-COntologyWrapper.html#__BuildTerm">COntologyWrapper::_BuildTerm()</a></code> protected
+			method.</li>
+
+			<li><tt>kAPI_COLLECTION_NODE</tt>: This element is an array that holds a
+			list of node vertex. A vertex is the combination of the node attributes merged
+			with the referenced term attributes. The items of this list are indexed by the
+			node kTAG_NID and eventual term attributes are overwritten by matching
+			node attributes. The contents of this element are fed by the <code><a href="class-COntologyWrapper.html#__BuildNode">COntologyWrapper::_BuildNode()</a></code> protected method.</li>
+
+			<li><tt>kAPI_COLLECTION_EDGE</tt>: This element is an array that holds a
+			list of edges, the array keys will be the edge's kTAG_GID and the value
+			will be the edge's attributes. The contents of this element are fed by the
+			_BuildEdge() protected method.</li>
+
+			<li><tt>kAPI_COLLECTION_TAG</tt>: This element is an array that holds a
+			list of tags, the array indexes will be the tag kTAG_NID and the array
+			values will be the tag kTAG_PATH and kTAG_GID, where the kTAG_PATH predicate references will be set to the term kTAG_GID.</li>
+		</ul>
+	</li>
+
+	<li><tt>$theNode</tt>: This parameter represents the vertex node full object;
+	this means that all attributes should be present, since this method will take
+	care of removing unwanted attributes. The parameter may represent a list of node
+	objects or references, a reference or an object:
+		<ul>
+			<li><tt>array</tt>: Each element of the list will be fed to this method
+			recursively.</li>
+
+			<li><tt>COntologyNode</tt>: The object will be used as is.</li>
+
+			<li><i>other</i>: Any other type will be interpreted as a node reference.</li>
+		</ul>
+	</li>
+
+	<li><tt>$theAttributes</tt>: This optional parameter can be used to limit the
+	returned attributes to the list provided in this array.</li>
+
+	<li><tt>$doTags</tt>: If this flag is <tt>TRUE</tt>, the method will load the
+	tags; if <tt>FALSE</tt> no tags will be loaded.</li>
+</ul>
+
+<p>The method will generate an array containing the merged attributes of the
+node and the referenced term, this array will be set in the kAPI_COLLECTION_NODE of the <tt>&amp;$theCollection</tt> parameter with as
+index the node kTAG_NID that will ve added to the kAPI_COLLECTION_ID element of the collection.</p>
+
+<p>If a matching vertex already exists in the <tt>&amp;$theCollection</tt>
+parameter, the method will do nothing.</p>
+
+<p>For more information please consult the <code><a href="class-COntologyWrapper.html#__BuildNode">COntologyWrapper::_BuildNode()</a></code> method
+reference, note that this method will remove the kTAG_NID attribute from
+the node, it will only use this information to index the node.</p>
+
+<p>The method will raise an exception if any element cannot be resolved.</p>
+
+
+
+				<h4>Parameters</h4>
+				<div class="list"><dl>
+					<dt><var>$theCollection</var></dt>
+					<dd><code>reference</code><br>&amp;$theCollection Exported collection.</dd>
+					<dt><var>$theNode</var></dt>
+					<dd><code>mixed</code><br>$theNode Node identifier or list.</dd>
+					<dt><var>$doTags</var></dt>
+					<dd><code>boolean</code><br>$doTags TRUE means load tags.</dd>
+				</dl></div>
+
+
+
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="_ExportEdge" id="__ExportEdge">
+
+		<td class="attributes"><code>
+			 protected 
+			
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#__ExportEdge">#</a>
+		<code><a href="source-class-COntologyWrapper.html#2232-2400" title="Go to source code">_ExportEdge</a>( <span>reference <var>&amp; $theCollection</var></span>, <span>mixed <var>$theEdge</var></span>, <span>boolean <var>$doTags</var> = <span class="php-keyword1">TRUE</span> </span> )</code>
+
+		<div class="description short">
+			
+<h4>Export an edge</h4>
+
+		</div>
+
+		<div class="description detailed hidden">
+			
+<h4>Export an edge</h4>
+
+<p>The main duty of this method is to normalise the edge's attributes and store
+the referenced vertex and predicates in the relative elements of the provided
+collection.</p>
+
+<p>The method expects the following parameters:</p>
+
+<ul>
+	<li><tt>&amp;$theCollection</tt>: This parameter is a reference to an array that
+	will receive the object attributes, the array holds four lists that collect
+	similar objects, such as nodes, terms, edges and tags:
+		<ul>
+			<li><tt>kAPI_COLLECTION_ID</tt>: This element is an array that holds the
+			identifiers list of the requested elements. This element should be filled by the
+			caller, since its content depend on what operation is going on.</li>
+
+			<li><tt>kAPI_COLLECTION_TERM</tt>: This element is an array that holds
+			the list of predicate terms referenced by all other objects in the collection.
+			The array keys will be the term's kTAG_GID and the value will be the
+			attributes of the term. The contents of this element are fed with the <code><a href="class-COntologyWrapper.html#__BuildTerm">COntologyWrapper::_BuildTerm()</a></code> protected method to which the edge predicates will be
+			provided.</li>
+
+			<li><tt>kAPI_COLLECTION_NODE</tt>: This element is an array that holds a
+			list of node vertex. A vertex is the combination of the node attributes merged
+			with the referenced term attributes. The items of this list are indexed by the
+			node kTAG_NID and eventual term attributes are overwritten by matching
+			node attributes. The contents of this element are fed by the <code><a href="class-COntologyWrapper.html#__BuildNode">COntologyWrapper::_BuildNode()</a></code> protected method to which both the object and subject vertices
+			will be provided.</li>
+
+			<li><tt>kAPI_COLLECTION_EDGE</tt>: This element is an array that holds a
+			list of edges, the array keys will be the edge's kTAG_GID and the value
+			will be the edge's attributes. The contents of this element are fed by the
+			_BuildEdge() protected method.</li>
+
+			<li><tt>kAPI_COLLECTION_TAG</tt>: This element is an array that holds a
+			list of tags, the array indexes will be the tag kTAG_NID and the array
+			values will be the tag kTAG_PATH and kTAG_GID, where the kTAG_PATH predicate references will be set to the term kTAG_GID.</li>
+		</ul>
+	</li>
+
+	<li><tt>$theEdge</tt>: This parameter represents the edge object or a list of
+	edges:
+		<ul>
+			<li><tt>array</tt>: A list of edges.</li>
+
+			<li><tt><code><a href="class-COntologyEdge.html">COntologyEdge</a></code></tt>: The edge will be used as-is.</li>
+		</ul>
+	</li>
+</ul>
+
+<p>The method will omit the kTAG_UID and kTAG_CLASS attributes,
+the kTAG_PREDICATE attribute will be set to the term's kTAG_GID
+attribute and the two vertex references will be left untouched. The resulting
+array will be set into the kOFFSET_EXPORT_EDGE element of the provided
+collection.</p>
+
+<p>The method will raise an exception if any element cannot be resolved.</p>
+
+
+
+				<h4>Parameters</h4>
+				<div class="list"><dl>
+					<dt><var>$theCollection</var></dt>
+					<dd><code>reference</code><br>&amp;$theCollection Exported collection.</dd>
+					<dt><var>$theEdge</var></dt>
+					<dd><code>mixed</code><br>$theEdge Edge or edges list.</dd>
+					<dt><var>$doTags</var></dt>
+					<dd><code>boolean</code><br>$doTags TRUE means load tags.</dd>
+				</dl></div>
+
+
+				<h4>Throws</h4>
+				<div class="list">
+					<code><code><a href="class-Exception.html">Exception</a></code></code><br />
+				</div>
+
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="_ExportTag" id="__ExportTag">
+
+		<td class="attributes"><code>
+			 protected 
+			
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#__ExportTag">#</a>
+		<code><a href="source-class-COntologyWrapper.html#2407-2598" title="Go to source code">_ExportTag</a>( <span>reference <var>&amp; $theCollection</var></span>, <span>mixed <var>$theTag</var></span> )</code>
+
+		<div class="description short">
+			
+<h4>Export a tag</h4>
+
+		</div>
+
+		<div class="description detailed hidden">
+			
+<h4>Export a tag</h4>
+
+<p>The main duty of this method is to normalise the tag's attributes and store
+the referenced predicates and vertices in the relative elements of the provided
+collection.</p>
+
+<p>The method expects the following parameters:</p>
+
+<ul>
+	<li><tt>&amp;$theCollection</tt>: This parameter is a reference to an array that
+	will receive the object attributes, the array holds four lists that collect
+	similar objects, such as nodes, terms, edges and tags:
+		<ul>
+			<li><tt>kAPI_COLLECTION_ID</tt>: This element is an array that holds the
+			identifiers list of the requested elements. This element is ignored by this
+			method.</li>
+
+			<li><tt>kAPI_COLLECTION_TERM</tt>: This element is an array that holds
+			the list of predicate terms referenced by all other objects in the collection.
+			The array keys will be the term's kTAG_GID and the value will be the
+			attributes of the term. The contents of this element are fed by the <code><a href="class-COntologyWrapper.html#__BuildTerm">COntologyWrapper::_BuildTerm()</a></code> protected method.</li>
+
+			<li><tt>kAPI_COLLECTION_NODE</tt>: This element is an array that holds a
+			list of node vertex. A vertex is the combination of the node attributes merged
+			with the referenced term attributes. The items of this list are indexed by the
+			node kTAG_NID and eventual term attributes are overwritten by matching
+			node attributes. The contents of this element are fed by the <code><a href="class-COntologyWrapper.html#__BuildNode">COntologyWrapper::_BuildNode()</a></code> protected method.</li>
+
+			<li><tt>kAPI_COLLECTION_EDGE</tt>: This element is an array that holds a
+			list of edges, the array keys will be the edge's kTAG_GID and the value
+			will be the edge's attributes. The contents of this element are fed by the
+			_BuildEdge() protected method.</li>
+
+			<li><tt>kAPI_COLLECTION_TAG</tt>: This element is an array that holds a
+			list of tags, the array indexes will be the tag kTAG_NID and the array
+			values will be the tag kTAG_PATH and kTAG_GID, where the kTAG_PATH predicate references will be set to the term kTAG_GID. This
+			method will fill this element.</li>
+		</ul>
+	</li>
+
+	<li><tt>$theTag</tt>: This parameter represents the tag identifier, object or a
+	list of tag identifiers:
+		<ul>
+			<li><tt>array</tt>: A list of tag or node identifiers.</li>
+
+			<li><tt><code><a href="class-COntologyTag.html">COntologyTag</a></code></tt>: The tag will be used as-is.</li>
+
+			<li><i>other</i>: Any other type will be interpreted as a tag reference and
+			resolved with ResolveTag().</li>
+		</ul>
+	</li>
+
+	<li><tt>$theAttributes</tt>: This optional parameter can be used to limit the
+	returned attributes to the list provided in this array.</li>
+</ul>
+
+<p>The method will generate an array containing the merged attributes of the tag
+and the exported attributes of the referenced nodes, generated by the <code><a href="class-COntologyWrapper.html#__ExportNode">COntologyWrapper::_ExportNode()</a></code> protected method. The method will exclude the kTAG_NID,
+kTAG_UID, and kTAG_CLASS from the tag, but append all others to
+the merged node and term attributes. The predicate elements of the KTAG_PATH attribute will be set to the referenced term's kTAG_GID. The
+resulting array will be set in the kOFFSET_EXPORT_TAG element of the
+provided collection using the tag's kTAG_NID attribute as index.</p>
+
+<p>The method will raise an exception if any element cannot be resolved.</p>
+
+
+
+				<h4>Parameters</h4>
+				<div class="list"><dl>
+					<dt><var>$theCollection</var></dt>
+					<dd><code>reference</code><br>&amp;$theCollection Exported collection.</dd>
+					<dt><var>$theTag</var></dt>
+					<dd><code>mixed</code><br>$theTag Tag identifier or list.</dd>
+				</dl></div>
+
+
+				<h4>Throws</h4>
+				<div class="list">
+					<code><code><a href="class-Exception.html">Exception</a></code></code><br />
+				</div>
+
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="_BuildTerm" id="__BuildTerm">
+
+		<td class="attributes"><code>
+			 public 
+			array
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#__BuildTerm">#</a>
+		<code><a href="source-class-COntologyWrapper.html#2605-2684" title="Go to source code">_BuildTerm</a>( <span>mixed <var>$theTerm</var></span> )</code>
+
+		<div class="description short">
+			
+<h4>Build a term</h4>
+
+		</div>
+
+		<div class="description detailed hidden">
+			
+<h4>Build a term</h4>
+
+<p>The main duty of this method is to resolve the provided term reference and
+return a single object that holds a merged selection of attributes.</p>
+
+<p>By default we include the kTAG_LID, kTAG_GID and the kTAG_NAMESPACE (resolved into the referenced kTAG_GID) from the current
+term.</p>
+
+<p>We omit the kTAG_NID, kTAG_CLASS, kTERM_TERM, kTERM_NAMESPACE_REFS and kTERM_NODES.</p>
+
+<p>All other attributes will either be included from the current term, or, if
+the term is related to another term through its kTERM_TERM attribute,
+from that term.</p>
+
+<p>The method will raise an exception if any element cannot be resolved.</p>
+
+
+
+				<h4>Parameters</h4>
+				<div class="list"><dl>
+					<dt><var>$theTerm</var></dt>
+					<dd><code>mixed</code><br>$theTerm Term reference or object.</dd>
+				</dl></div>
+
+				<h4>Returns</h4>
+				<div class="list">
+					<code>array</code><br>Exported term.<br />
+				</div>
+
+
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="_BuildNode" id="__BuildNode">
+
+		<td class="attributes"><code>
+			 public 
+			array
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#__BuildNode">#</a>
+		<code><a href="source-class-COntologyWrapper.html#2691-2730" title="Go to source code">_BuildNode</a>( <span>mixed <var>$theNode</var></span> )</code>
+
+		<div class="description short">
+			
+<h4>Build a vertex</h4>
+
+		</div>
+
+		<div class="description detailed hidden">
+			
+<h4>Build a vertex</h4>
+
+<p>The main duty of this method is to resolve the provided node's references and
+return a single object that merges all its term and node attributes.</p>
+
+<p>Since we use a document database to store the graph vertices index, it is
+better to store referenced data in the vertex object, so that it is easier to
+search.</p>
+
+<p>In this class we therefore return the object as-is, in derived classes we can
+use this method for other purposes.</p>
+
+
+
+				<h4>Parameters</h4>
+				<div class="list"><dl>
+					<dt><var>$theNode</var></dt>
+					<dd><code>mixed</code><br>$theNode Node object.</dd>
+				</dl></div>
+
+				<h4>Returns</h4>
+				<div class="list">
+					<code>array</code><br>Vertex object.<br />
+				</div>
+
+
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="_GetVertexList" id="__GetVertexList">
+
+		<td class="attributes"><code>
+			 protected 
+			
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#__GetVertexList">#</a>
+		<code><a href="source-class-COntologyWrapper.html#2746-2796" title="Go to source code">_GetVertexList</a>( )</code>
+
+		<div class="description short">
+			
+<p>Get vertex list.</p>
+
+		</div>
+
+		<div class="description detailed hidden">
+			
+<p>Get vertex list.</p>
+
+<p>This method will return the list of vertices satisfying the provided
+query.</p>
+
+<p>The method is called by the <code><a href="class-COntologyWrapper.html#__Handle_GetVertex">COntologyWrapper::_Handle_GetVertex()</a></code> method and expects no
+parameters.</p>
+
+
+
+
+
+
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="_GetRelatedQuery" id="__GetRelatedQuery">
+
+		<td class="attributes"><code>
+			 protected 
+			<code><a href="class-CQuery.html">CQuery</a></code>
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#__GetRelatedQuery">#</a>
+		<code><a href="source-class-COntologyWrapper.html#2803-2903" title="Go to source code">_GetRelatedQuery</a>( <span>integer <var>$theVertex</var></span> )</code>
+
+		<div class="description short">
+			
+<p>Get related query.</p>
+
+		</div>
+
+		<div class="description detailed hidden">
+			
+<p>Get related query.</p>
+
+<p>This method will compile the related vertex query and return it.</p>
+
+<p>The method expects the reference vertex native identifier as the
+parameter.</p>
+
+
+
+				<h4>Parameters</h4>
+				<div class="list"><dl>
+					<dt><var>$theVertex</var></dt>
+					<dd><code>integer</code><br>$theVertex Reference vertex identifier.</dd>
+				</dl></div>
+
+				<h4>Returns</h4>
+				<div class="list">
+					<code><code><a href="class-CQuery.html">CQuery</a></code></code><br />
+				</div>
+
+
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="_GetRelatedSubquery" id="__GetRelatedSubquery">
+
+		<td class="attributes"><code>
+			 protected 
+			<code><a href="class-CQuery.html">CQuery</a></code>
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#__GetRelatedSubquery">#</a>
+		<code><a href="source-class-COntologyWrapper.html#2910-3125" title="Go to source code">_GetRelatedSubquery</a>( <span><code><a href="class-CQuery.html">CQuery</a></code> <var>$theQuery</var></span>, <span>integer <var>$theVertex</var></span> )</code>
+
+		<div class="description short">
+			
+<p>Get related subquery.</p>
+
+		</div>
+
+		<div class="description detailed hidden">
+			
+<p>Get related subquery.</p>
+
+<p>This method will compile the related vertex subquery and store it in the
+kAPI_QUERY parameter.</p>
+
+<p>The method expects the related query set in the kAPI_QUERY parameter
+and it expects the kAPI_SUBQUERY parameter to be set.</p>
+
+<p>The method expects the reference vertex native identifier as the
+parameter.</p>
+
+<p>The method will return the final query or <tt>NULL</tt> for no matches.</p>
+
+
+
+				<h4>Parameters</h4>
+				<div class="list"><dl>
+					<dt><var>$theQuery</var></dt>
+					<dd><code><code><a href="class-CQuery.html">CQuery</a></code></code><br>$theQuery Edge query.</dd>
+					<dt><var>$theVertex</var></dt>
+					<dd><code>integer</code><br>$theVertex Reference vertex identifier.</dd>
+				</dl></div>
+
+				<h4>Returns</h4>
+				<div class="list">
+					<code><code><a href="class-CQuery.html">CQuery</a></code></code><br />
+				</div>
+
+
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="_FilterLanguages" id="__FilterLanguages">
+
+		<td class="attributes"><code>
+			 protected 
+			
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#__FilterLanguages">#</a>
+		<code><a href="source-class-COntologyWrapper.html#3141-3257" title="Go to source code">_FilterLanguages</a>( <span>array <var>$theLanguages</var></span> )</code>
+
+		<div class="description short">
+			
+<p>Select language elements.</p>
+
+		</div>
+
+		<div class="description detailed hidden">
+			
+<p>Select language elements.</p>
+
+<p>This method can be used to restrict the language string attributes, those of
+type kTYPE_LSTRING, to the list of provided languages.</p>
+
+<p>The method will operate exclusively on the current object's response, kAPI_RESPONSE, property: the method will iterate the term and node sections of
+the response and consider only those attributes od type kTYPE_LSTRING,
+if at least one language matches, the method will select only the matching
+languages; if no language matches, the method will leave the attribute
+untouched.</p>
+
+
+
+				<h4>Parameters</h4>
+				<div class="list"><dl>
+					<dt><var>$theLanguages</var></dt>
+					<dd><code>array</code><br>$theLanguages Languages list.</dd>
+				</dl></div>
+
+
+
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="_NormaliseTermReferences" id="__NormaliseTermReferences">
+
+		<td class="attributes"><code>
+			 protected 
+			
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#__NormaliseTermReferences">#</a>
+		<code><a href="source-class-COntologyWrapper.html#3264-3401" title="Go to source code">_NormaliseTermReferences</a>( <span>reference <var>&amp; $theQuery</var></span> )</code>
+
+		<div class="description short">
+			
+<p>Filter namespace references.</p>
+
+		</div>
+
+		<div class="description detailed hidden">
+			
+<p>Filter namespace references.</p>
+
+<p>The duty of this method is to convert term references from kTAG_GID
+values to kTAG_NID values.</p>
+
+<p>The method will traverse the query structure and intercept the following
+kOFFSET_QUERY_SUBJECT instances:</p>
+
+<ul>
+	<li><tt>kTAG_NAMESPACE</tt>: The namespace reference of the term.</li>
+
+	<li><tt>kTAG_TERM</tt>: The term reference in the term or node.</li>
+
+	<li><tt>kTAG_PREDICATE</tt>: The predicate reference in the edge.</li>
+
+	<li><tt>kTAG_UID</tt>: Unique identifiers.</li>
+</ul>
+
+<p>Any of these clauses with kOFFSET_QUERY_TYPE kTYPE_STRING
+will be converted to term native identifiers using the static <code><a href="class-COntologyTerm.html#__id">COntologyTerm::_id()</a></code> method.</p>
+
+<p><i>Note: here we set the data type to a binary string, if you decide to
+change the native identifier data type, you will have to update this
+method.</i></p>
+
+
+
+				<h4>Parameters</h4>
+				<div class="list"><dl>
+					<dt><var>$theQuery</var></dt>
+					<dd><code>reference</code><br>&amp;$theQuery Query.</dd>
+				</dl></div>
+
+
+
+
+
+		</div>
+		</div></td>
+	</tr>
+	</table>
+
+	<table class="summary inherited">
+	<caption>Methods inherited from <a href="class-CDataWrapper.html#methods">CDataWrapper</a></caption>
+	<tr>
+		<td><code>
+			<a href="class-CDataWrapper.html#__FormatClass">_FormatClass()</a>, 
+			<a href="class-CDataWrapper.html#__FormatContainer">_FormatContainer()</a>, 
+			<a href="class-CDataWrapper.html#__FormatCriteria">_FormatCriteria()</a>, 
+			<a href="class-CDataWrapper.html#__FormatDatabase">_FormatDatabase()</a>, 
+			<a href="class-CDataWrapper.html#__FormatDistinct">_FormatDistinct()</a>, 
+			<a href="class-CDataWrapper.html#__FormatObject">_FormatObject()</a>, 
+			<a href="class-CDataWrapper.html#__FormatPaging">_FormatPaging()</a>, 
+			<a href="class-CDataWrapper.html#__FormatQuery">_FormatQuery()</a>, 
+			<a href="class-CDataWrapper.html#__FormatSelect">_FormatSelect()</a>, 
+			<a href="class-CDataWrapper.html#__FormatSort">_FormatSort()</a>, 
+			<a href="class-CDataWrapper.html#__HandleQuery">_HandleQuery()</a>, 
+			<a href="class-CDataWrapper.html#__Handle_Count">_Handle_Count()</a>, 
+			<a href="class-CDataWrapper.html#__Handle_Delete">_Handle_Delete()</a>, 
+			<a href="class-CDataWrapper.html#__Handle_Get">_Handle_Get()</a>, 
+			<a href="class-CDataWrapper.html#__Handle_GetOne">_Handle_GetOne()</a>, 
+			<a href="class-CDataWrapper.html#__Handle_Insert">_Handle_Insert()</a>, 
+			<a href="class-CDataWrapper.html#__Handle_Modify">_Handle_Modify()</a>, 
+			<a href="class-CDataWrapper.html#__Handle_Resolve">_Handle_Resolve()</a>, 
+			<a href="class-CDataWrapper.html#__ParseClass">_ParseClass()</a>, 
+			<a href="class-CDataWrapper.html#__ParseContainer">_ParseContainer()</a>, 
+			<a href="class-CDataWrapper.html#__ParseCriteria">_ParseCriteria()</a>, 
+			<a href="class-CDataWrapper.html#__ParseDatabase">_ParseDatabase()</a>, 
+			<a href="class-CDataWrapper.html#__ParseDistinct">_ParseDistinct()</a>, 
+			<a href="class-CDataWrapper.html#__ParseObject">_ParseObject()</a>, 
+			<a href="class-CDataWrapper.html#__ParsePaging">_ParsePaging()</a>, 
+			<a href="class-CDataWrapper.html#__ParseQuery">_ParseQuery()</a>, 
+			<a href="class-CDataWrapper.html#__ParseSelect">_ParseSelect()</a>, 
+			<a href="class-CDataWrapper.html#__ParseSort">_ParseSort()</a>, 
+			<a href="class-CDataWrapper.html#__ValidateClass">_ValidateClass()</a>, 
+			<a href="class-CDataWrapper.html#__ValidateContainer">_ValidateContainer()</a>, 
+			<a href="class-CDataWrapper.html#__ValidateCriteria">_ValidateCriteria()</a>, 
+			<a href="class-CDataWrapper.html#__ValidateDatabase">_ValidateDatabase()</a>, 
+			<a href="class-CDataWrapper.html#__ValidateDistinct">_ValidateDistinct()</a>, 
+			<a href="class-CDataWrapper.html#__ValidatePaging">_ValidatePaging()</a>, 
+			<a href="class-CDataWrapper.html#__ValidateQueries">_ValidateQueries()</a>, 
+			<a href="class-CDataWrapper.html#__ValidateSelect">_ValidateSelect()</a>, 
+			<a href="class-CDataWrapper.html#__ValidateSort">_ValidateSort()</a>, 
+			<a href="class-CDataWrapper.html#__VerifyQuery">_VerifyQuery()</a>
+		</code></td>
+	</tr>
+	</table>
+	<table class="summary inherited">
+	<caption>Methods inherited from <a href="class-CWrapper.html#methods">CWrapper</a></caption>
+	<tr>
+		<td><code>
+			<a href="class-CWrapper.html#_HandleRequest">HandleRequest()</a>, 
+			<a href="class-CWrapper.html#__DecodeParameter">_DecodeParameter()</a>, 
+			<a href="class-CWrapper.html#__EncodeResponse">_EncodeResponse()</a>, 
+			<a href="class-CWrapper.html#__Exception2Status">_Exception2Status()</a>, 
+			<a href="class-CWrapper.html#__Handle_Ping">_Handle_Ping()</a>, 
+			<a href="class-CWrapper.html#__InitOptions">_InitOptions()</a>, 
+			<a href="class-CWrapper.html#__InitResources">_InitResources()</a>, 
+			<a href="class-CWrapper.html#__InitStatus">_InitStatus()</a>, 
+			<a href="class-CWrapper.html#__OffsetManage">_OffsetManage()</a>, 
+			<a href="class-CWrapper.html#__ParseFormat">_ParseFormat()</a>, 
+			<a href="class-CWrapper.html#__ParseTiming">_ParseTiming()</a>, 
+			<a href="class-CWrapper.html#__ValidateFormat">_ValidateFormat()</a>, 
+			<a href="class-CWrapper.html#___construct">__construct()</a>, 
+			<a href="class-CWrapper.html#___toString">__toString()</a>
+		</code></td>
+	</tr>
+	</table>
+	<table class="summary inherited">
+	<caption>Methods inherited from <a href="class-CConnection.html#methods">CConnection</a></caption>
+	<tr>
+		<td><code>
+			<a href="class-CConnection.html#_Connection">Connection()</a>, 
+			<a href="class-CConnection.html#__Ready">_Ready()</a>
+		</code></td>
+	</tr>
+	</table>
+	<table class="summary inherited">
+	<caption>Methods inherited from <a href="class-CStatusDocument.html#methods">CStatusDocument</a></caption>
+	<tr>
+		<td><code>
+			<a href="class-CStatusDocument.html#__IsCommitted">_IsCommitted()</a>, 
+			<a href="class-CStatusDocument.html#__IsDirty">_IsDirty()</a>, 
+			<a href="class-CStatusDocument.html#__IsEncoded">_IsEncoded()</a>, 
+			<a href="class-CStatusDocument.html#__IsInited">_IsInited()</a>, 
+			<a href="class-CStatusDocument.html#__Postset">_Postset()</a>, 
+			<a href="class-CStatusDocument.html#__Postunset">_Postunset()</a>, 
+			<a href="class-CStatusDocument.html#__Preset">_Preset()</a>, 
+			<a href="class-CStatusDocument.html#__Preunset">_Preunset()</a>, 
+			<a href="class-CStatusDocument.html#_offsetSet">offsetSet()</a>, 
+			<a href="class-CStatusDocument.html#_offsetUnset">offsetUnset()</a>
+		</code></td>
+	</tr>
+	</table>
+	<table class="summary inherited">
+	<caption>Methods inherited from <a href="class-CDocument.html#methods">CDocument</a></caption>
+	<tr>
+		<td><code>
+			<a href="class-CDocument.html#_array_keys">array_keys()</a>, 
+			<a href="class-CDocument.html#_array_values">array_values()</a>, 
+			<a href="class-CDocument.html#_offsetGet">offsetGet()</a>
+		</code></td>
+	</tr>
+	</table>
+	<table class="summary inherited">
+	<caption>Methods inherited from <a href="class-ArrayObject.html#methods">ArrayObject</a></caption>
+	<tr>
+		<td><code>
+			<a href="class-ArrayObject.html#_append">append()</a>, 
+			<a href="class-ArrayObject.html#_asort">asort()</a>, 
+			<a href="class-ArrayObject.html#_count">count()</a>, 
+			<a href="class-ArrayObject.html#_exchangeArray">exchangeArray()</a>, 
+			<a href="class-ArrayObject.html#_getArrayCopy">getArrayCopy()</a>, 
+			<a href="class-ArrayObject.html#_getFlags">getFlags()</a>, 
+			<a href="class-ArrayObject.html#_getIterator">getIterator()</a>, 
+			<a href="class-ArrayObject.html#_getIteratorClass">getIteratorClass()</a>, 
+			<a href="class-ArrayObject.html#_ksort">ksort()</a>, 
+			<a href="class-ArrayObject.html#_natcasesort">natcasesort()</a>, 
+			<a href="class-ArrayObject.html#_natsort">natsort()</a>, 
+			<a href="class-ArrayObject.html#_offsetExists">offsetExists()</a>, 
+			<a href="class-ArrayObject.html#_serialize">serialize()</a>, 
+			<a href="class-ArrayObject.html#_setFlags">setFlags()</a>, 
+			<a href="class-ArrayObject.html#_setIteratorClass">setIteratorClass()</a>, 
+			<a href="class-ArrayObject.html#_uasort">uasort()</a>, 
+			<a href="class-ArrayObject.html#_uksort">uksort()</a>, 
+			<a href="class-ArrayObject.html#_unserialize">unserialize()</a>
+		</code></td>
+	</tr>
+	</table>
+
+
+
+
+
+
+
+
+	<table class="summary inherited">
+	<caption>Constants inherited from <a href="class-ArrayObject.html#constants">ArrayObject</a></caption>
+	<tr>
+		<td><code>
+			<a href="class-ArrayObject.html#ARRAY_AS_PROPS"><b>ARRAY_AS_PROPS</b></a>, 
+			<a href="class-ArrayObject.html#STD_PROP_LIST"><b>STD_PROP_LIST</b></a>
+		</code></td>
+	</tr>
+	</table>
+
+
+
+	<table class="summary" id="properties">
+	<caption>Properties summary</caption>
+	<tr data-order="sParameterList" id="$sParameterList">
+		<td class="attributes"><code>
+			public static 
+			array
+		</code></td>
+
+		<td class="name">
+				<a href="source-class-COntologyWrapper.html#98-107" title="Go to source code"><var>$sParameterList</var></a>
+		</td>
+		<td class="value"><code><span class="php-keyword1">array</span>( kAPI_LANGUAGE, kAPI_PREDICATE,
+ 								 kAPI_RELATION, kAPI_SUBQUERY )</code></td>
+		<td class="description"><div>
+			<a href="#$sParameterList" class="anchor">#</a>
+
+			<div class="description short">
+				
+<p><b>Parameters list</b></p>
+
+			</div>
+
+			<div class="description detailed hidden">
+				
+<p><b>Parameters list</b></p>
+
+<p>This static data member holds the list of parameters known by the service,
+these will be decoded before the service will handle them.</p>
+
+
+			</div>
+		</div></td>
+	</tr>
+	</table>
+
+	<table class="summary inherited">
+	<caption>Properties inherited from <a href="class-CConnection.html#properties">CConnection</a></caption>
+	<tr>
+		<td><code>
+			<a href="class-CConnection.html#$mConnection"><var>$mConnection</var></a>
+		</code></td>
+	</tr>
+	</table>
+	<table class="summary inherited">
+	<caption>Properties inherited from <a href="class-CStatusDocument.html#properties">CStatusDocument</a></caption>
+	<tr>
+		<td><code>
+			<a href="class-CStatusDocument.html#$mStatus"><var>$mStatus</var></a>
+		</code></td>
+	</tr>
+	</table>
+
+
+
+
+
 </div>
 
 	<div id="footer">

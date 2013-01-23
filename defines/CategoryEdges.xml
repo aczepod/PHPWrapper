@@ -120,6 +120,13 @@
     	<element variable="kTAG_OBJECT">:ATTRIBUTES</element>
     </edge>
      
+	<!-- kTERM_REPRESENTATION -->
+	<edge>
+    	<element variable="kTAG_SUBJECT">:REPRESENTATION</element>
+    	<element variable="kTAG_PREDICATE">:SUBCLASS-OF</element>
+    	<element variable="kTAG_OBJECT">:ATTRIBUTES</element>
+    </edge>
+     
 	<!-- kTERM_ILLUSTRATION -->
 	<edge>
     	<element variable="kTAG_SUBJECT">:ILLUSTRATION</element>

@@ -95,6 +95,17 @@
         </element>
     </node>
     
+    <!-- kTERM_REPRESENTATION -->
+	<node class="COntologyMasterVertex">
+		<element variable="kTAG_TERM">:REPRESENTATION</element>
+		<element variable="kTAG_CLASS">COntologyMasterVertex</element>
+        <element variable="kTAG_DESCRIPTION"  key="en"><![CDATA[<i>Representation attributes</i> are
+        	<i>categorical qualifications</i> that provide indications on how to
+        	<i>represent object properties</i> and on how to <i>validate their content</i>.
+        	]]>
+        </element>
+    </node>
+    
     <!-- kTERM_ILLUSTRATION -->
 	<node class="COntologyMasterVertex">
 		<element variable="kTAG_TERM">:ILLUSTRATION</element>
