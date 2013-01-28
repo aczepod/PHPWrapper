@@ -339,6 +339,43 @@
     	<element variable="kTAG_OBJECT">:INT</element>
     </edge>
     
+    <!-- OBJECT REFERENCE TYPE ENUMERATIONS -->
+    
+	<!-- kTYPE_REF_TERM -->
+	<edge>
+    	<element variable="kTAG_SUBJECT">:REF-TERM</element>
+    	<element variable="kTAG_PREDICATE">:SUBCLASS-OF</element>
+    	<element variable="kTAG_OBJECT">:TYPES</element>
+    </edge>
+    
+	<!-- kTYPE_REF_NODE -->
+	<edge>
+    	<element variable="kTAG_SUBJECT">:REF-NODE</element>
+    	<element variable="kTAG_PREDICATE">:SUBCLASS-OF</element>
+    	<element variable="kTAG_OBJECT">:TYPES</element>
+    </edge>
+    
+	<!-- kTYPE_REF_EDGE -->
+	<edge>
+    	<element variable="kTAG_SUBJECT">:REF-EDGE</element>
+    	<element variable="kTAG_PREDICATE">:SUBCLASS-OF</element>
+    	<element variable="kTAG_OBJECT">:TYPES</element>
+    </edge>
+    
+	<!-- kTYPE_REF_TAG -->
+	<edge>
+    	<element variable="kTAG_SUBJECT">:REF-TAG</element>
+    	<element variable="kTAG_PREDICATE">:SUBCLASS-OF</element>
+    	<element variable="kTAG_OBJECT">:TYPES</element>
+    </edge>
+    
+	<!-- kTYPE_REF_SELF -->
+	<edge>
+    	<element variable="kTAG_SUBJECT">:REF-SELF</element>
+    	<element variable="kTAG_PREDICATE">:SUBCLASS-OF</element>
+    	<element variable="kTAG_OBJECT">:TYPES</element>
+    </edge>
+    
     <!-- STANDARD FORMAT TYPE ENUMERATIONS -->
     
 	<!-- kTYPE_META -->

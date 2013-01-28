@@ -432,7 +432,54 @@
             <item>:KIND-ENUMERATION</item>
         </element>
 	</node>
+     
+    <!-- OBJECT REFERENCE TYPE ENUMERATIONS -->
     
+    <!-- kTYPE_REF_TERM -->
+	<node class="COntologyMasterVertex">
+		<element variable="kTAG_TERM">:REF-TERM</element>
+		<element variable="kTAG_CLASS">COntologyMasterVertex</element>
+		<element variable="kTAG_KIND">
+            <item>:KIND-ENUMERATION</item>
+        </element>
+	</node>
+    
+    <!-- kTYPE_REF_NODE -->
+	<node class="COntologyMasterVertex">
+		<element variable="kTAG_TERM">:REF-NODE</element>
+		<element variable="kTAG_CLASS">COntologyMasterVertex</element>
+		<element variable="kTAG_KIND">
+            <item>:KIND-ENUMERATION</item>
+        </element>
+	</node>
+    
+    <!-- kTYPE_REF_EDGE -->
+	<node class="COntologyMasterVertex">
+		<element variable="kTAG_TERM">:REF-EDGE</element>
+		<element variable="kTAG_CLASS">COntologyMasterVertex</element>
+		<element variable="kTAG_KIND">
+            <item>:KIND-ENUMERATION</item>
+        </element>
+	</node>
+    
+    <!-- kTYPE_REF_TAG -->
+	<node class="COntologyMasterVertex">
+		<element variable="kTAG_TERM">:REF-TAG</element>
+		<element variable="kTAG_CLASS">COntologyMasterVertex</element>
+		<element variable="kTAG_KIND">
+            <item>:KIND-ENUMERATION</item>
+        </element>
+	</node>
+    
+    <!-- kTYPE_REF_SELF -->
+	<node class="COntologyMasterVertex">
+		<element variable="kTAG_TERM">:REF-SELF</element>
+		<element variable="kTAG_CLASS">COntologyMasterVertex</element>
+		<element variable="kTAG_KIND">
+            <item>:KIND-ENUMERATION</item>
+        </element>
+	</node>
+   
     <!-- STANDARD FORMAT TYPE ENUMERATIONS -->
     
     <!-- kTYPE_META -->

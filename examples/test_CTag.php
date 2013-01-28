@@ -157,6 +157,14 @@ try
 		echo( '<h5>$test[ \'C\' ][ 1 ];</h5>' );
 		echo( '<pre>' ); print_r( $test[ 'C' ][ 1 ] ); echo( '</pre>' );
 		echo( '<hr />' );
+		
+		//
+		// Test other offsets.
+		//
+		echo( '<h4>Test array offset access</h4>' );
+		echo( '<h5>$test[ \'C\' ][ 1 ];</h5>' );
+		echo( '<pre>' ); print_r( $test[ 'C' ][ 1 ] ); echo( '</pre>' );
+		echo( '<hr />' );
 	}
 	
 	//
@@ -229,6 +237,28 @@ try
 	echo( '<h4>Append third item to path</h4>' );
 	echo( '<h5>$tag->PushItem( "Third" );</h5>' );
 	$tag->PushItem( "Third" );
+	echo( '<h5>$tag->Category( array( "categort1", "category2" ), TRUE );</h5>' );
+	$tag->Category( array( "categort1", "category2" ), TRUE );
+	echo( '<h5>$tag->Kind( "kind1", TRUE );</h5>' );
+	$tag->Kind( "kind1", TRUE );
+	echo( '<h5>$tag->Kind( "kind2", TRUE );</h5>' );
+	$tag->Kind( "kind2", TRUE );
+	echo( '<h5>$tag->Type( array( "type1", "type2" ), TRUE );</h5>' );
+	$tag->Type( array( "type1", "type2" ), TRUE );
+	echo( '<h5>$tag->Input( array( kINPUT_CHOICE, kINPUT_RADIO ), TRUE );</h5>' );
+	$tag->Input( array( kINPUT_CHOICE, kINPUT_RADIO ), TRUE );
+	echo( '<h5>$tag->Pattern( "[A-Z]+" );</h5>' );
+	$tag->Pattern( "[A-Z]+" );
+	echo( '<h5>$tag->Length( 24 );</h5>' );
+	$tag->Length( 24 );
+	echo( '<h5>$tag->LowerBound( 100.5 );</h5>' );
+	$tag->LowerBound( 100.5 );
+	echo( '<h5>$tag->UpperBound( 123 );</h5>' );
+	$tag->UpperBound( 123 );
+	echo( '<h5>$tag->Example( 105.7, TRUE );</h5>' );
+	$tag->Example( 105.7, TRUE );
+	echo( '<h5>$tag->Example( "babaluna", TRUE );</h5>' );
+	$tag->Example( "babaluna", TRUE );
 	echo( 'Inited['.$tag->inited()
 				   .'] Dirty['.$tag->dirty()
 				   .'] Saved['.$tag->committed()

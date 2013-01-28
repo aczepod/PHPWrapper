@@ -7,7 +7,7 @@
 	<title>Class CNode | MyWrapper Reference Documentation</title>
 
 	<script type="text/javascript" src="resources/combined.js?3680114562"></script>
-	<script type="text/javascript" src="elementlist.js?2244581217"></script>
+	<script type="text/javascript" src="elementlist.js?158261224"></script>
 	<link rel="stylesheet" type="text/css" media="all" href="resources/style.css?3505392360" />
 
 </head>
@@ -36,6 +36,8 @@
 				<li class="main"><a href="package-MyWrapper.Ontology.html">Ontology</a>
 						</li>
 				<li class="main"><a href="package-MyWrapper.Persistence.html">Persistence</a>
+						</li>
+				<li class="main"><a href="package-MyWrapper.Traits.html">Traits</a>
 						</li>
 				<li class="main"><a href="package-MyWrapper.Wrappers.html">Wrappers</a>
 						</li>
@@ -245,6 +247,10 @@ the caller or of derived classes to implement a locking rule.</p>
 			<img src="resources/inherit.png" alt="Extended by" />
 <b><span>CNode</span></b>			
 			
+			 uses 
+				<a href="class-TCategory.html"><span>TCategory</span></a>, 
+			
+				<a href="class-TRepresentation.html"><span>TRepresentation</span></a>
 			
 		</dd>
 	</dl>
@@ -277,7 +283,7 @@ the caller or of derived classes to implement a locking rule.</p>
 				<b>Author:</b>
 				Milko A. Škofič &lt;<a
 href="mailto:m.skofic&#64;cgiar.org">m.skofic&#64;<!---->cgiar.org</a>&gt;<br />
-		<b>Located at</b> <a href="source-class-CNode.html#29-728" title="Go to source code">CNode.php</a><br />
+		<b>Located at</b> <a href="source-class-CNode.html#43-525" title="Go to source code">CNode.php</a><br />
 	</div>
 
 
@@ -295,7 +301,7 @@ href="mailto:m.skofic&#64;cgiar.org">m.skofic&#64;<!---->cgiar.org</a>&gt;<br />
 
 		<td class="name"><div>
 		<a class="anchor" href="#___toString">#</a>
-		<code><a href="source-class-CNode.html#117-141" title="Go to source code">__toString</a>( )</code>
+		<code><a href="source-class-CNode.html#193-217" title="Go to source code">__toString</a>( )</code>
 
 		<div class="description short">
 			
@@ -339,7 +345,7 @@ the unique identifier of the object.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#_Term">#</a>
-		<code><a href="source-class-CNode.html#157-190" title="Go to source code">Term</a>( <span>mixed <var>$theValue</var> = <span class="php-keyword1">NULL</span></span>, <span>boolean <var>$getOld</var> = <span class="php-keyword1">FALSE</span> </span> )</code>
+		<code><a href="source-class-CNode.html#233-266" title="Go to source code">Term</a>( <span>mixed <var>$theValue</var> = <span class="php-keyword1">NULL</span></span>, <span>boolean <var>$getOld</var> = <span class="php-keyword1">FALSE</span> </span> )</code>
 
 		<div class="description short">
 			
@@ -398,333 +404,6 @@ the currently set value.</p>
 		</div>
 		</div></td>
 	</tr>
-	<tr data-order="Category" id="_Category">
-
-		<td class="attributes"><code>
-			 public 
-			mixed
-			
-			</code>
-		</td>
-
-		<td class="name"><div>
-		<a class="anchor" href="#_Category">#</a>
-		<code><a href="source-class-CNode.html#197-258" title="Go to source code">Category</a>( <span>mixed <var>$theValue</var> = <span class="php-keyword1">NULL</span></span>, <span>mixed <var>$theOperation</var> = <span class="php-keyword1">NULL</span></span>, <span>boolean <var>$getOld</var> = <span class="php-keyword1">FALSE</span> </span> )</code>
-
-		<div class="description short">
-			
-<h4>Manage node category set</h4>
-
-		</div>
-
-		<div class="description detailed hidden">
-			
-<h4>Manage node category set</h4>
-
-<p>This method can be used to manage the node's category, kTAG_CATEGORY,
-which is an enumerated set that represents the category or classification to
-which the object defined by the node belongs to.</p>
-
-<p>This enumerated set is managed with the following parameters:</p>
-
-<ul>
-	<li><tt>$theValue</tt>: Depending on the next parameter, this may either refer
-	to the value to be set or to the index of the element to be retrieved or
-	deleted:
-		<ul>
-			<li><tt>NULL</tt>: This value indicates that we want to operate on all elements,
-			which means, in practical terms, that we either want to retrieve or delete the
-			full list. If the operation parameter resolves to <tt>TRUE</tt>, the method will
-			default to retrieving the current list and no new element will be added.</li>
-
-			<li><tt>array</tt>: An array indicates that we want to operate on a list of
-			values and that other parameters may also be provided as lists. Note that <code><a href="class-ArrayObject.html">ArrayObject</a></code> instances are not considered here as arrays.</li>
-
-			<li><i>other</i>: Any other type represents either the new value to be added or
-			the index to the value to be returned or deleted.</li>
-		</ul>
-	</li>
-
-	<li><tt>$theOperation</tt>: This parameter represents the operation to be
-	performed whose scope depends on the value of the previous parameter:
-		<ul>
-			<li><tt>NULL</tt>: Return the element or full list.</li>
-
-			<li><tt>FALSE</tt>: Delete the element or full list.</li>
-
-			<li><tt>array</tt>: This type is only considered if the <tt>$theValue</tt>
-			parameter is provided as an array: the method will be called for each element of
-			the <tt>$theValue</tt> parameter matched with the corresponding element of this
-			parameter, which also means that both both parameters must share the same
-			count.</li>
-
-			<li><i>other</i>: Add the <tt>$theValue</tt> value to the list. If you provided
-			<tt>NULL</tt> in the previous parameter, the operation will be reset to
-			<tt>NULL</tt>.</li>
-		</ul>
-	</li>
-
-	<li><tt>$getOld</tt>: Determines what the method will return:
-		<ul>
-			<li><tt>TRUE</tt>: Return the value <i>before</i> it was eventually
-			modified.</li>
-
-			<li><tt>FALSE</tt>: Return the value <i>after</i> it was eventually
-			modified.</li>
-		</ul>
-	</li>
-</ul>
-
-
-
-				<h4>Parameters</h4>
-				<div class="list"><dl>
-					<dt><var>$theValue</var></dt>
-					<dd><code>mixed</code><br>$theValue Value or index.</dd>
-					<dt><var>$theOperation</var></dt>
-					<dd><code>mixed</code><br>$theOperation Operation.</dd>
-					<dt><var>$getOld</var></dt>
-					<dd><code>boolean</code><br>$getOld TRUE get old value.</dd>
-				</dl></div>
-
-				<h4>Returns</h4>
-				<div class="list">
-					<code>mixed</code><br><i>New</i> or <i>old</i> type.<br />
-				</div>
-
-
-				<h4>See</h4>
-				<div class="list">
-						kTAG_CATEGORY<br />
-				</div>
-				<h4>Uses</h4>
-				<div class="list">
-						<code><code><a href="function-ManageObjectSetOffset.html">ManageObjectSetOffset()</a></code></code> <br />
-				</div>
-
-
-		</div>
-		</div></td>
-	</tr>
-	<tr data-order="Kind" id="_Kind">
-
-		<td class="attributes"><code>
-			 public 
-			mixed
-			
-			</code>
-		</td>
-
-		<td class="name"><div>
-		<a class="anchor" href="#_Kind">#</a>
-		<code><a href="source-class-CNode.html#265-329" title="Go to source code">Kind</a>( <span>mixed <var>$theValue</var> = <span class="php-keyword1">NULL</span></span>, <span>mixed <var>$theOperation</var> = <span class="php-keyword1">NULL</span></span>, <span>boolean <var>$getOld</var> = <span class="php-keyword1">FALSE</span> </span> )</code>
-
-		<div class="description short">
-			
-<h4>Manage node kind set</h4>
-
-		</div>
-
-		<div class="description detailed hidden">
-			
-<h4>Manage node kind set</h4>
-
-<p>The node kind set, kTAG_KIND, holds a list of unique values that
-represent the different kinds or types associated with the current node. The
-type, <code><a href="class-CNode.html#_Type">CNode::Type()</a></code>, of a node is a general qualification that applies to any
-class of object, such as a data type; the kind, instead, refers to a
-qualification specific to the current class of object.</p>
-
-<p>This offset collects the list of these qualifications in an enumerated set
-that can be managed with the following parameters:</p>
-
-<ul>
-	<li><tt>$theValue</tt>: Depending on the next parameter, this may either refer
-	to the value to be set or to the index of the element to be retrieved or
-	deleted:
-		<ul>
-			<li><tt>NULL</tt>: This value indicates that we want to operate on all elements,
-			which means, in practical terms, that we either want to retrieve or delete the
-			full list. If the operation parameter resolves to <tt>TRUE</tt>, the method will
-			default to retrieving the current list and no new element will be added.</li>
-
-			<li><tt>array</tt>: An array indicates that we want to operate on a list of
-			values and that other parameters may also be provided as lists. Note that <code><a href="class-ArrayObject.html">ArrayObject</a></code> instances are not considered here as arrays.</li>
-
-			<li><i>other</i>: Any other type represents either the new value to be added or
-			the index to the value to be returned or deleted.</li>
-		</ul>
-	</li>
-
-	<li><tt>$theOperation</tt>: This parameter represents the operation to be
-	performed whose scope depends on the value of the previous parameter:
-		<ul>
-			<li><tt>NULL</tt>: Return the element or full list.</li>
-
-			<li><tt>FALSE</tt>: Delete the element or full list.</li>
-
-			<li><tt>array</tt>: This type is only considered if the <tt>$theValue</tt>
-			parameter is provided as an array: the method will be called for each element of
-			the <tt>$theValue</tt> parameter matched with the corresponding element of this
-			parameter, which also means that both both parameters must share the same
-			count.</li>
-
-			<li><i>other</i>: Add the <tt>$theValue</tt> value to the list. If you provided
-			<tt>NULL</tt> in the previous parameter, the operation will be reset to
-			<tt>NULL</tt>.</li>
-		</ul>
-	</li>
-
-	<li><tt>$getOld</tt>: Determines what the method will return:
-		<ul>
-			<li><tt>TRUE</tt>: Return the value <i>before</i> it was eventually
-			modified.</li>
-
-			<li><tt>FALSE</tt>: Return the value <i>after</i> it was eventually
-			modified.</li>
-		</ul>
-	</li>
-</ul>
-
-
-
-				<h4>Parameters</h4>
-				<div class="list"><dl>
-					<dt><var>$theValue</var></dt>
-					<dd><code>mixed</code><br>$theValue Value or index.</dd>
-					<dt><var>$theOperation</var></dt>
-					<dd><code>mixed</code><br>$theOperation Operation.</dd>
-					<dt><var>$getOld</var></dt>
-					<dd><code>boolean</code><br>$getOld TRUE get old value.</dd>
-				</dl></div>
-
-				<h4>Returns</h4>
-				<div class="list">
-					<code>mixed</code><br><i>New</i> or <i>old</i> kind.<br />
-				</div>
-
-
-				<h4>See</h4>
-				<div class="list">
-						kTAG_KIND<br />
-				</div>
-				<h4>Uses</h4>
-				<div class="list">
-						<code><code><a href="function-ManageObjectSetOffset.html">ManageObjectSetOffset()</a></code></code> <br />
-				</div>
-
-
-		</div>
-		</div></td>
-	</tr>
-	<tr data-order="Type" id="_Type">
-
-		<td class="attributes"><code>
-			 public 
-			mixed
-			
-			</code>
-		</td>
-
-		<td class="name"><div>
-		<a class="anchor" href="#_Type">#</a>
-		<code><a href="source-class-CNode.html#336-397" title="Go to source code">Type</a>( <span>mixed <var>$theValue</var> = <span class="php-keyword1">NULL</span></span>, <span>mixed <var>$theOperation</var> = <span class="php-keyword1">NULL</span></span>, <span>boolean <var>$getOld</var> = <span class="php-keyword1">FALSE</span> </span> )</code>
-
-		<div class="description short">
-			
-<h4>Manage node type set</h4>
-
-		</div>
-
-		<div class="description detailed hidden">
-			
-<h4>Manage node type set</h4>
-
-<p>This method can be used to manage the node's type, kTAG_TYPE, which
-is an enumerated set that represents the data type or unit of the node.</p>
-
-<p>This offset collects the list of these types in an enumerated set that can be
-managed with the following parameters:</p>
-
-<ul>
-	<li><tt>$theValue</tt>: Depending on the next parameter, this may either refer
-	to the value to be set or to the index of the element to be retrieved or
-	deleted:
-		<ul>
-			<li><tt>NULL</tt>: This value indicates that we want to operate on all elements,
-			which means, in practical terms, that we either want to retrieve or delete the
-			full list. If the operation parameter resolves to <tt>TRUE</tt>, the method will
-			default to retrieving the current list and no new element will be added.</li>
-
-			<li><tt>array</tt>: An array indicates that we want to operate on a list of
-			values and that other parameters may also be provided as lists. Note that <code><a href="class-ArrayObject.html">ArrayObject</a></code> instances are not considered here as arrays.</li>
-
-			<li><i>other</i>: Any other type represents either the new value to be added or
-			the index to the value to be returned or deleted.</li>
-		</ul>
-	</li>
-
-	<li><tt>$theOperation</tt>: This parameter represents the operation to be
-	performed whose scope depends on the value of the previous parameter:
-		<ul>
-			<li><tt>NULL</tt>: Return the element or full list.</li>
-
-			<li><tt>FALSE</tt>: Delete the element or full list.</li>
-
-			<li><tt>array</tt>: This type is only considered if the <tt>$theValue</tt>
-			parameter is provided as an array: the method will be called for each element of
-			the <tt>$theValue</tt> parameter matched with the corresponding element of this
-			parameter, which also means that both both parameters must share the same
-			count.</li>
-
-			<li><i>other</i>: Add the <tt>$theValue</tt> value to the list. If you provided
-			<tt>NULL</tt> in the previous parameter, the operation will be reset to
-			<tt>NULL</tt>.</li>
-		</ul>
-	</li>
-
-	<li><tt>$getOld</tt>: Determines what the method will return:
-		<ul>
-			<li><tt>TRUE</tt>: Return the value <i>before</i> it was eventually
-			modified.</li>
-
-			<li><tt>FALSE</tt>: Return the value <i>after</i> it was eventually
-			modified.</li>
-		</ul>
-	</li>
-</ul>
-
-
-
-				<h4>Parameters</h4>
-				<div class="list"><dl>
-					<dt><var>$theValue</var></dt>
-					<dd><code>mixed</code><br>$theValue Value or index.</dd>
-					<dt><var>$theOperation</var></dt>
-					<dd><code>mixed</code><br>$theOperation Operation.</dd>
-					<dt><var>$getOld</var></dt>
-					<dd><code>boolean</code><br>$getOld TRUE get old value.</dd>
-				</dl></div>
-
-				<h4>Returns</h4>
-				<div class="list">
-					<code>mixed</code><br><i>New</i> or <i>old</i> type.<br />
-				</div>
-
-
-				<h4>See</h4>
-				<div class="list">
-						kTAG_TYPE<br />
-				</div>
-				<h4>Uses</h4>
-				<div class="list">
-						<code><code><a href="function-ManageObjectSetOffset.html">ManageObjectSetOffset()</a></code></code> <br />
-				</div>
-
-
-		</div>
-		</div></td>
-	</tr>
 	<tr data-order="Description" id="_Description">
 
 		<td class="attributes"><code>
@@ -736,7 +415,7 @@ managed with the following parameters:</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#_Description">#</a>
-		<code><a href="source-class-CNode.html#404-450" title="Go to source code">Description</a>( <span>mixed <var>$theLanguage</var> = <span class="php-keyword1">NULL</span></span>, <span>mixed <var>$theValue</var> = <span class="php-keyword1">NULL</span></span>, <span>boolean <var>$getOld</var> = <span class="php-keyword1">FALSE</span> </span> )</code>
+		<code><a href="source-class-CNode.html#273-319" title="Go to source code">Description</a>( <span>mixed <var>$theLanguage</var> = <span class="php-keyword1">NULL</span></span>, <span>mixed <var>$theValue</var> = <span class="php-keyword1">NULL</span></span>, <span>boolean <var>$getOld</var> = <span class="php-keyword1">FALSE</span> </span> )</code>
 
 		<div class="description short">
 			
@@ -813,115 +492,6 @@ the definition which does not depend on the context.</p>
 		</div>
 		</div></td>
 	</tr>
-	<tr data-order="Example" id="_Example">
-
-		<td class="attributes"><code>
-			 public 
-			mixed
-			
-			</code>
-		</td>
-
-		<td class="name"><div>
-		<a class="anchor" href="#_Example">#</a>
-		<code><a href="source-class-CNode.html#457-518" title="Go to source code">Example</a>( <span>mixed <var>$theValue</var> = <span class="php-keyword1">NULL</span></span>, <span>mixed <var>$theOperation</var> = <span class="php-keyword1">NULL</span></span>, <span>boolean <var>$getOld</var> = <span class="php-keyword1">FALSE</span> </span> )</code>
-
-		<div class="description short">
-			
-<h4>Manage node examples</h4>
-
-		</div>
-
-		<div class="description detailed hidden">
-			
-<h4>Manage node examples</h4>
-
-<p>This method can be used to manage the node's examples, kTAG_EXAMPLES,
-which contains a list of strings that represent examples or usages of the
-node.</p>
-
-<p>This offset collects the list of examples in list that can be managed with
-the following parameters:</p>
-
-<ul>
-	<li><tt>$theValue</tt>: Depending on the next parameter, this may either refer
-	to the value to be set or to the index of the element to be retrieved or
-	deleted:
-		<ul>
-			<li><tt>NULL</tt>: This value indicates that we want to operate on all elements,
-			which means, in practical terms, that we either want to retrieve or delete the
-			full list. If the operation parameter resolves to <tt>TRUE</tt>, the method will
-			default to retrieving the current list and no new element will be added.</li>
-
-			<li><tt>array</tt>: An array indicates that we want to operate on a list of
-			values and that other parameters may also be provided as lists. Note that <code><a href="class-ArrayObject.html">ArrayObject</a></code> instances are not considered here as arrays.</li>
-
-			<li><i>other</i>: Any other type represents either the new value to be added or
-			the index to the value to be returned or deleted.</li>
-		</ul>
-	</li>
-
-	<li><tt>$theOperation</tt>: This parameter represents the operation to be
-	performed whose scope depends on the value of the previous parameter:
-		<ul>
-			<li><tt>NULL</tt>: Return the element or full list.</li>
-
-			<li><tt>FALSE</tt>: Delete the element or full list.</li>
-
-			<li><tt>array</tt>: This type is only considered if the <tt>$theValue</tt>
-			parameter is provided as an array: the method will be called for each element of
-			the <tt>$theValue</tt> parameter matched with the corresponding element of this
-			parameter, which also means that both both parameters must share the same
-			count.</li>
-
-			<li><i>other</i>: Add the <tt>$theValue</tt> value to the list. If you provided
-			<tt>NULL</tt> in the previous parameter, the operation will be reset to
-			<tt>NULL</tt>.</li>
-		</ul>
-	</li>
-
-	<li><tt>$getOld</tt>: Determines what the method will return:
-		<ul>
-			<li><tt>TRUE</tt>: Return the value <i>before</i> it was eventually
-			modified.</li>
-
-			<li><tt>FALSE</tt>: Return the value <i>after</i> it was eventually
-			modified.</li>
-		</ul>
-	</li>
-</ul>
-
-
-
-				<h4>Parameters</h4>
-				<div class="list"><dl>
-					<dt><var>$theValue</var></dt>
-					<dd><code>mixed</code><br>$theValue Value or index.</dd>
-					<dt><var>$theOperation</var></dt>
-					<dd><code>mixed</code><br>$theOperation Operation.</dd>
-					<dt><var>$getOld</var></dt>
-					<dd><code>boolean</code><br>$getOld TRUE get old value.</dd>
-				</dl></div>
-
-				<h4>Returns</h4>
-				<div class="list">
-					<code>mixed</code><br><i>New</i> or <i>old</i> type.<br />
-				</div>
-
-
-				<h4>See</h4>
-				<div class="list">
-						kTAG_EXAMPLES<br />
-				</div>
-				<h4>Uses</h4>
-				<div class="list">
-						<code><code><a href="function-ManageObjectSetOffset.html">ManageObjectSetOffset()</a></code></code> <br />
-				</div>
-
-
-		</div>
-		</div></td>
-	</tr>
 	<tr data-order="RelateTo" id="_RelateTo">
 
 		<td class="attributes"><code>
@@ -933,7 +503,7 @@ the following parameters:</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#_RelateTo">#</a>
-		<code><a href="source-class-CNode.html#534-597" title="Go to source code">RelateTo</a>( <span>mixed <var>$thePredicate</var></span>, <span>mixed <var>$theObject</var></span>, <span><code><a href="class-CConnection.html">CConnection</a></code> <var>$theConnection</var> = <span class="php-keyword1">NULL</span> </span> )</code>
+		<code><a href="source-class-CNode.html#335-394" title="Go to source code">RelateTo</a>( <span>mixed <var>$thePredicate</var></span>, <span>mixed <var>$theObject</var></span>, <span><code><a href="class-CConnection.html">CConnection</a></code> <var>$theConnection</var> = <span class="php-keyword1">NULL</span> </span> )</code>
 
 		<div class="description short">
 			
@@ -984,14 +554,6 @@ occurs, the method will raise an exception.</p>
 				</div>
 
 
-				<h4>See</h4>
-				<div class="list">
-						kTAG_TERM<br />
-				</div>
-				<h4>Uses</h4>
-				<div class="list">
-						<code><code><a href="function-ManageOffset.html">ManageOffset()</a></code></code> <br />
-				</div>
 
 
 		</div>
@@ -1008,7 +570,7 @@ occurs, the method will raise an exception.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#__Preset">#</a>
-		<code><a href="source-class-CNode.html#613-658" title="Go to source code">_Preset</a>( <span>reference <var>&amp; $theOffset</var></span>, <span>reference <var>&amp; $theValue</var></span> )</code>
+		<code><a href="source-class-CNode.html#410-455" title="Go to source code">_Preset</a>( <span>reference <var>&amp; $theOffset</var></span>, <span>reference <var>&amp; $theValue</var></span> )</code>
 
 		<div class="description short">
 			
@@ -1061,7 +623,7 @@ ArrayObject instances are not counted as an array.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#__NewEdge">#</a>
-		<code><a href="source-class-CNode.html#674-685" title="Go to source code">_NewEdge</a>( )</code>
+		<code><a href="source-class-CNode.html#471-482" title="Go to source code">_NewEdge</a>( )</code>
 
 		<div class="description short">
 			
@@ -1103,7 +665,7 @@ correct edge type.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#__Ready">#</a>
-		<code><a href="source-class-CNode.html#701-724" title="Go to source code">_Ready</a>( )</code>
+		<code><a href="source-class-CNode.html#498-521" title="Go to source code">_Ready</a>( )</code>
 
 		<div class="description short">
 			
@@ -1243,6 +805,29 @@ absence of the kTAG_TERM offset.</p>
 	</tr>
 	</table>
 
+	<table class="summary used">
+	<caption>Methods used from <a href="class-TCategory.html#methods">TCategory</a></caption>
+	<tr>
+		<td><code>
+			<a href="class-TCategory.html#_Category">()</a>, 
+			<a href="class-TCategory.html#_Kind">()</a>, 
+			<a href="class-TCategory.html#_Type">()</a>
+		</code></td>
+	</tr>
+	</table>
+	<table class="summary used">
+	<caption>Methods used from <a href="class-TRepresentation.html#methods">TRepresentation</a></caption>
+	<tr>
+		<td><code>
+			<a href="class-TRepresentation.html#_Example">()</a>, 
+			<a href="class-TRepresentation.html#_Input">()</a>, 
+			<a href="class-TRepresentation.html#_Length">()</a>, 
+			<a href="class-TRepresentation.html#_LowerBound">()</a>, 
+			<a href="class-TRepresentation.html#_Pattern">()</a>, 
+			<a href="class-TRepresentation.html#_UpperBound">()</a>
+		</code></td>
+	</tr>
+	</table>
 
 
 

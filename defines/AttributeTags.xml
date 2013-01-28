@@ -9,6 +9,7 @@
     	</element>
     	<element variable="kTAG_TYPE">
     		<item>:TEXT</item>
+    		<item>:REQUIRED</item>
     	</element>
     	<element variable="kTAG_INPUT">
     		<item>:INPUT-TEXT</item>
@@ -308,6 +309,9 @@
     		<item>:BINARY</item>
     		<item>:COMPUTED</item>
     	</element>
+    	<element variable="kTAG_INPUT">
+    		<item>:INPUT-TEXT</item>
+    	</element>
     </tag>
      
     <!-- kTERM_NODE-->
@@ -329,6 +333,7 @@
     	<element variable="kTAG_TYPE">
     		<item>:INT</item>
     		<item>:COMPUTED</item>
+    		<item>:REQUIRED</item>
     	</element>
     </tag>
      
@@ -340,6 +345,7 @@
     	<element variable="kTAG_TYPE">
     		<item>:INT</item>
     		<item>:COMPUTED</item>
+    		<item>:REQUIRED</item>
     	</element>
     </tag>
      
@@ -351,6 +357,17 @@
     	<element variable="kTAG_TYPE">
     		<item>:BINARY</item>
     		<item>:COMPUTED</item>
+    		<item>:REQUIRED</item>
+    	</element>
+    </tag>
+     
+    <!-- kTERM_MASTER-->
+	<tag>
+    	<element variable="kTAG_PATH">
+    		<item>:MASTER</item>
+    	</element>
+    	<element variable="kTAG_TYPE">
+    		<item>:REF-SELF</item>
     	</element>
     </tag>
      
@@ -505,7 +522,8 @@
     	<element variable="kTAG_TYPE">
     		<item>:TEXT</item>
     		<item>:ARRAY</item>
-    	</element>
+     		<item>:REQUIRED</item>
+   	</element>
     </tag>
     
     <!-- kTERM_USER_PROFILE -->

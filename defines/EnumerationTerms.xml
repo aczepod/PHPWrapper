@@ -789,6 +789,84 @@
         </element>
 	</term>
     
+    <!-- OBJECT REFERENCE TYPE ENUMERATIONS -->
+    
+    <!-- kTYPE_REF_TERM -->
+    <term lid="REF-TERM" ns="">
+        <element variable="kTAG_KIND">
+            <item>:KIND-ENUMERATION</item>
+        </element>
+        <element variable="kTAG_LABEL" key="en">Term reference</element>
+        <element variable="kTAG_DEFINITION" key="en"><![CDATA[This type represents the <i>reference
+        	to a term object</i>, term identifiers are by definition <i>binary strings</i>.
+            ]]>
+        </element>
+        <element variable="kTAG_SYNONYMS">
+            <item>kTYPE_REF_TERM</item>
+        </element>
+	</term>
+    
+    <!-- kTYPE_REF_NODE -->
+    <term lid="REF-NODE" ns="">
+        <element variable="kTAG_KIND">
+            <item>:KIND-ENUMERATION</item>
+        </element>
+        <element variable="kTAG_LABEL" key="en">Node reference</element>
+        <element variable="kTAG_DEFINITION" key="en"><![CDATA[This type represents the <i>reference
+        	to a node object</i>, node identifiers are by definition <i>integers</i>.
+            ]]>
+        </element>
+        <element variable="kTAG_SYNONYMS">
+            <item>kTYPE_REF_NODE</item>
+        </element>
+	</term>
+    
+    <!-- kTYPE_REF_EDGE -->
+    <term lid="REF-EDGE" ns="">
+        <element variable="kTAG_KIND">
+            <item>:KIND-ENUMERATION</item>
+        </element>
+        <element variable="kTAG_LABEL" key="en">Edge reference</element>
+        <element variable="kTAG_DEFINITION" key="en"><![CDATA[This type represents the <i>reference
+        	to an edge object</i>, edge identifiers are by definition <i>integers</i>.
+            ]]>
+        </element>
+        <element variable="kTAG_SYNONYMS">
+            <item>kTYPE_REF_EDGE</item>
+        </element>
+	</term>
+    
+    <!-- kTYPE_REF_TAG -->
+    <term lid="REF-TAG" ns="">
+        <element variable="kTAG_KIND">
+            <item>:KIND-ENUMERATION</item>
+        </element>
+        <element variable="kTAG_LABEL" key="en">Tag reference</element>
+        <element variable="kTAG_DEFINITION" key="en"><![CDATA[This type represents the <i>reference
+        	to a tag object</i>, tag identifiers are by definition <i>integers</i>.
+            ]]>
+        </element>
+        <element variable="kTAG_SYNONYMS">
+            <item>kTYPE_REF_TAG</item>
+        </element>
+	</term>
+    
+    <!-- kTYPE_REF_SELF -->
+    <term lid="REF-SELF" ns="">
+        <element variable="kTAG_KIND">
+            <item>:KIND-ENUMERATION</item>
+        </element>
+        <element variable="kTAG_LABEL" key="en">Self reference</element>
+        <element variable="kTAG_DEFINITION" key="en"><![CDATA[This type represents the <i>reference
+        	to object of the same type</i>, it is used by an <i>alias to its master</i>. By
+        	definition it will have the <i>same data type as the object that hosts it</i>.
+            ]]>
+        </element>
+        <element variable="kTAG_SYNONYMS">
+            <item>kTYPE_REF_SELF</item>
+        </element>
+	</term>
+    
     <!-- STANDARD FORMAT TYPE ENUMERATIONS -->
     
     <!-- kTYPE_META -->

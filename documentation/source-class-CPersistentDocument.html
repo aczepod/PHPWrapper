@@ -8,7 +8,7 @@
 	<title>File CPersistentDocument.php | MyWrapper Reference Documentation</title>
 
 	<script type="text/javascript" src="resources/combined.js?3680114562"></script>
-	<script type="text/javascript" src="elementlist.js?2244581217"></script>
+	<script type="text/javascript" src="elementlist.js?158261224"></script>
 	<link rel="stylesheet" type="text/css" media="all" href="resources/style.css?3505392360" />
 
 </head>
@@ -37,6 +37,8 @@
 				<li class="main"><a href="package-MyWrapper.Ontology.html">Ontology</a>
 						</li>
 				<li class="active main"><a href="package-MyWrapper.Persistence.html">Persistence</a>
+						</li>
+				<li class="main"><a href="package-MyWrapper.Traits.html">Traits</a>
 						</li>
 				<li class="main"><a href="package-MyWrapper.Wrappers.html">Wrappers</a>
 						</li>
@@ -208,31 +210,31 @@
 </span></span><span id="104" class="l"><a class="l" href="#104"> 104: </a><span class="php-comment">     * The &lt;i&gt;native unique identifier&lt;/i&gt;, {@link kTAG_NID}, represents the primary key
 </span></span><span id="105" class="l"><a class="l" href="#105"> 105: </a><span class="php-comment">     * of the object in the native format of the container in which the object is stored.
 </span></span><span id="106" class="l"><a class="l" href="#106"> 106: </a><span class="php-comment">     *
-</span></span><span id="107" class="l"><a class="l" href="#107"> 107: </a><span class="php-comment">     * This is the only attribute tag that will not be a {@link COntologyTag} reference: all
-</span></span><span id="108" class="l"><a class="l" href="#108"> 108: </a><span class="php-comment">     * other object attributes will be a {@link COntologyTag} native identifier,
-</span></span><span id="109" class="l"><a class="l" href="#109"> 109: </a><span class="php-comment">     * {@link kTAG_NID}.
-</span></span><span id="110" class="l"><a class="l" href="#110"> 110: </a><span class="php-comment">     *
-</span></span><span id="111" class="l"><a class="l" href="#111"> 111: </a><span class="php-comment">     * The method accepts a parameter which represents either the identifier or the
-</span></span><span id="112" class="l"><a class="l" href="#112"> 112: </a><span class="php-comment">     * requested operation, depending on its value:
-</span></span><span id="113" class="l"><a class="l" href="#113"> 113: </a><span class="php-comment">     *
-</span></span><span id="114" class="l"><a class="l" href="#114"> 114: </a><span class="php-comment">     * &lt;ul&gt;
-</span></span><span id="115" class="l"><a class="l" href="#115"> 115: </a><span class="php-comment">     *  &lt;li&gt;&lt;tt&gt;NULL&lt;/tt&gt;: Return the current value.
-</span></span><span id="116" class="l"><a class="l" href="#116"> 116: </a><span class="php-comment">     *  &lt;li&gt;&lt;tt&gt;FALSE&lt;/tt&gt;: Delete the current value.
-</span></span><span id="117" class="l"><a class="l" href="#117"> 117: </a><span class="php-comment">     *  &lt;li&gt;&lt;i&gt;other&lt;/i&gt;: Set the value with the provided parameter.
-</span></span><span id="118" class="l"><a class="l" href="#118"> 118: </a><span class="php-comment">     * &lt;/ul&gt;
-</span></span><span id="119" class="l"><a class="l" href="#119"> 119: </a><span class="php-comment">     *
-</span></span><span id="120" class="l"><a class="l" href="#120"> 120: </a><span class="php-comment">     * The second parameter is a boolean which if &lt;tt&gt;TRUE&lt;/tt&gt; will return the &lt;i&gt;old&lt;/i&gt;
-</span></span><span id="121" class="l"><a class="l" href="#121"> 121: </a><span class="php-comment">     * value when replacing containers; if &lt;tt&gt;FALSE&lt;/tt&gt;, it will return the currently set
-</span></span><span id="122" class="l"><a class="l" href="#122"> 122: </a><span class="php-comment">     * value.
-</span></span><span id="123" class="l"><a class="l" href="#123"> 123: </a><span class="php-comment">     *
-</span></span><span id="124" class="l"><a class="l" href="#124"> 124: </a><span class="php-comment">     * Note that when the object has the {@link _IsCommitted()} status this offset will be
-</span></span><span id="125" class="l"><a class="l" href="#125"> 125: </a><span class="php-comment">     * locked and an exception will be raised.
+</span></span><span id="107" class="l"><a class="l" href="#107"> 107: </a><span class="php-comment">     * This required property does not have a default data type, it should, however, be of
+</span></span><span id="108" class="l"><a class="l" href="#108"> 108: </a><span class="php-comment">     * small size, since it represent's the object's primary index.
+</span></span><span id="109" class="l"><a class="l" href="#109"> 109: </a><span class="php-comment">     *
+</span></span><span id="110" class="l"><a class="l" href="#110"> 110: </a><span class="php-comment">     * The method accepts a parameter which represents either the new value or the requested
+</span></span><span id="111" class="l"><a class="l" href="#111"> 111: </a><span class="php-comment">     * operation, depending on its type:
+</span></span><span id="112" class="l"><a class="l" href="#112"> 112: </a><span class="php-comment">     *
+</span></span><span id="113" class="l"><a class="l" href="#113"> 113: </a><span class="php-comment">     * &lt;ul&gt;
+</span></span><span id="114" class="l"><a class="l" href="#114"> 114: </a><span class="php-comment">     *  &lt;li&gt;&lt;tt&gt;NULL&lt;/tt&gt;: Return the current value.
+</span></span><span id="115" class="l"><a class="l" href="#115"> 115: </a><span class="php-comment">     *  &lt;li&gt;&lt;tt&gt;FALSE&lt;/tt&gt;: Delete the current value.
+</span></span><span id="116" class="l"><a class="l" href="#116"> 116: </a><span class="php-comment">     *  &lt;li&gt;&lt;i&gt;other&lt;/i&gt;: Set the value with the provided parameter.
+</span></span><span id="117" class="l"><a class="l" href="#117"> 117: </a><span class="php-comment">     * &lt;/ul&gt;
+</span></span><span id="118" class="l"><a class="l" href="#118"> 118: </a><span class="php-comment">     *
+</span></span><span id="119" class="l"><a class="l" href="#119"> 119: </a><span class="php-comment">     * The second parameter is a boolean which if &lt;tt&gt;TRUE&lt;/tt&gt; will return the &lt;i&gt;old&lt;/i&gt;
+</span></span><span id="120" class="l"><a class="l" href="#120"> 120: </a><span class="php-comment">     * value when replacing an existing value; if &lt;tt&gt;FALSE&lt;/tt&gt;, it will return th
+</span></span><span id="121" class="l"><a class="l" href="#121"> 121: </a><span class="php-comment">     * currently set value.
+</span></span><span id="122" class="l"><a class="l" href="#122"> 122: </a><span class="php-comment">     *
+</span></span><span id="123" class="l"><a class="l" href="#123"> 123: </a><span class="php-comment">     * Note that, while this method allows the creation, modification and deletion of this
+</span></span><span id="124" class="l"><a class="l" href="#124"> 124: </a><span class="php-comment">     * property, the hosting object may prevent some of these actions, by default this
+</span></span><span id="125" class="l"><a class="l" href="#125"> 125: </a><span class="php-comment">     * attribute is locked when the object has the {@link _IsCommitted()} status.
 </span></span><span id="126" class="l"><a class="l" href="#126"> 126: </a><span class="php-comment">     *
 </span></span><span id="127" class="l"><a class="l" href="#127"> 127: </a><span class="php-comment">     * @param mixed                 $theValue           Native identifier or operation.
 </span></span><span id="128" class="l"><a class="l" href="#128"> 128: </a><span class="php-comment">     * @param boolean               $getOld             &lt;tt&gt;TRUE&lt;/tt&gt; get old value.
 </span></span><span id="129" class="l"><a class="l" href="#129"> 129: </a><span class="php-comment">     *
 </span></span><span id="130" class="l"><a class="l" href="#130"> 130: </a><span class="php-comment">     * @access public
-</span></span><span id="131" class="l"><a class="l" href="#131"> 131: </a><span class="php-comment">     * @return mixed                &lt;i&gt;New&lt;/i&gt; or &lt;i&gt;old&lt;/i&gt; native container.
+</span></span><span id="131" class="l"><a class="l" href="#131"> 131: </a><span class="php-comment">     * @return mixed                &lt;i&gt;New&lt;/i&gt; or &lt;i&gt;old&lt;/i&gt; value.
 </span></span><span id="132" class="l"><a class="l" href="#132"> 132: </a><span class="php-comment">     *
 </span></span><span id="133" class="l"><a class="l" href="#133"> 133: </a><span class="php-comment">     * @uses ManageOffset()
 </span></span><span id="134" class="l"><a class="l" href="#134"> 134: </a><span class="php-comment">     *
@@ -240,7 +242,7 @@
 </span></span><span id="136" class="l"><a class="l" href="#136"> 136: </a><span class="php-comment">     */</span>
 </span><span id="137" class="l"><a class="l" href="#137"> 137: </a>    <span class="php-keyword1">public</span> <span class="php-keyword1">function</span> <a id="_NID" href="#_NID">NID</a>( <span class="php-var">$theValue</span> = <span class="php-keyword1">NULL</span>, <span class="php-var">$getOld</span> = <span class="php-keyword1">FALSE</span> )
 </span><span id="138" class="l"><a class="l" href="#138"> 138: </a>    {
-</span><span id="139" class="l"><a class="l" href="#139"> 139: </a>        <span class="php-keyword1">return</span> ManageOffset( <span class="php-var">$this</span>, kTAG_NID, <span class="php-var">$theValue</span>, <span class="php-var">$getOld</span> );             <span class="php-comment">// ==&gt;</span>
+</span><span id="139" class="l"><a class="l" href="#139"> 139: </a>        <span class="php-keyword1">return</span> ManageOffset( <span class="php-var">$this</span>, kTAG_NID, <span class="php-var">$theValue</span>, <span class="php-var">$getOld</span> );                 <span class="php-comment">// ==&gt;</span>
 </span><span id="140" class="l"><a class="l" href="#140"> 140: </a>
 </span><span id="141" class="l"><a class="l" href="#141"> 141: </a>    } <span class="php-comment">// NID.</span>
 </span><span id="142" class="l"><a class="l" href="#142"> 142: </a>

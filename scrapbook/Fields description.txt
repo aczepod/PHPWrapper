@@ -1,0 +1,157 @@
+================================================================================
+TERMS:
+================================================================================
+
+kTAG_NID:			Native identifier, it is the MD5 hash of the kTAG_GID. Since it
+					is a binary field, it should not be displayed, but it might be
+					stored as a hidden field; binary fields are implemented as
+					CDataTypeNinary instances, technically an array.
+					IGNORE
+
+kTAG_CLASS:			Object class name, it is computed and will generally always be
+					"COntologyTerm". It should not be included.
+					IGNORE
+
+kTAG_GID:			Global identifier, it represents the public identifier of the
+					term. It should be a read-only. The attribute is computed as
+					follows:
+					- Has kTAG_NAMESPACE:	[namespace kTAG_GID] : [current kTAG_LID]
+					- No kTAG_NAMESPACE:	[current kTAG_LID]
+					DISPLAY ONLY
+
+kTAG_LID:			Local identifier, the unique key of the term within its namespace.
+					It is required and should be included in the form. Characters
+					inserted should not include ":" and ".".
+					INPUT REQUIRED
+
+kTAG_NAMESPACE:		Term namespace reference, it is the kTAG_NID of the term that
+					represents the current term namespace. To locate a namespace you
+					can do two things:
+					- A full term form:	This way the namespace can also be searched
+										by label.
+					- A single field:	Use the kTAG_GID of the namespace.
+					INPUT
+
+kTAG_SYNONYMS:		Synonyms list, an array of strings.
+					INPUT
+
+kTAG_CATEGORY:		Term categories, an array of strings.
+					INPUT
+
+kTAG_KIND:			Term kinds, an array of elements from a controlled vocabulary,
+					the vocabulary is available via the GetEnums service.
+					MULTISELECT GUIDATA
+
+kTAG_TYPE:			Term types, an array of elements from a controlled vocabulary,
+					the vocabulary is available via the GetEnums service.
+					INPUT
+
+kTAG_MASTER:		Term reference, this is used when you want to instantiate a term
+					which shares all the attributes of another term except the namespace
+					and local identifier. It is the kTAG_NID of the other term and can
+					be implemented as the namespace attribute.
+					???
+
+kTAG_LABEL:			Term label or name, it is an array of strings in which the key
+					is the language code ('en', 'it', etc.).
+					INPUT REQUIRED
+
+kTAG_DEFINITION:	Term definition or description, it is an array of strings in which
+					the keys represent the language code ('en', 'it', etc.).
+					INPUT
+
+kTAG_NODES:			Array of node references to the term, it is a list of node
+					kTAG_NID values. 
+					LIST OF LINKS
+
+kTAG_FEATURES:		Array of tag references to the term, it is a list of tag
+					kTAG_NID values where the current term is referenced as a scale. 
+					LIST OF LINKS
+
+kTAG_METHODS:		Array of tag references to the term, it is a list of tag
+					kTAG_NID values where the current term is referenced as a method. 
+					LIST OF LINKS
+
+kTAG_SCALES:		Array of tag references to the term, it is a list of tag
+					kTAG_NID values where the current term is referenced as a scale. 
+					LIST OF LINKS
+
+kTAG_NAMESPACE_REFS:Number of terms that reference the current one as a namespace.
+					IGNORE
+
+
+================================================================================
+NODES:
+================================================================================
+
+kTAG_NID:			Native identifier, it is an integer.
+					DO NOT DISPLAY
+
+kTAG_CLASS:			Object class name, it is a string that will need to be set
+					when sending the object to be saved, but that will need to
+					be filled programmatically. When creating a new node it can
+					be either CMasterOntologyVertex or CAliasOntologyVertex
+					depending on:
+					- Another node that references the term exists: it means that
+						the node you are creating must be CAliasOntologyVertex.
+					- No nodes exist which reference the term: it means that
+						the node you are creating must be CMasterOntologyVertex.
+					???
+
+kTAG_CATEGORY:		Node categories, an array of strings.
+					INPUT
+
+kTAG_KIND:			Node kinds, an array of elements from a controlled vocabulary,
+					the vocabulary is available via the GetEnums service.
+					MULTISELECT GUIDATA
+
+kTAG_TYPE:			Node types, an array of elements from a controlled vocabulary
+					that indicate the data type and structure of an attribute. This
+					attribute should only be used by nodes that reference a data
+					attribute. The vocabulary is available via the GetEnums service.
+					MULTISELECT
+
+kTAG_INPUT:			Input type, an array of elements from a controlled vocabulary
+					that indicate the kind of control that should be used to display
+					and modify the attribute data, available only if the kTAG_TYPE
+					is filled. The vocabulary is available via the GetEnums service.
+					MULTISELECT
+
+kTAG_PATTERN:		Validation pattern, a string consisting of a regular expression
+					that can be used to validate input.
+					FIELD
+
+kTAG_LENGTH:		Field length, an integer indicating the maximum number of
+					characters the attribute can hold.
+					FIELD
+
+kTAG_MIN_VAL:		Minimum value, a number indicating the lower bound of a range.
+					FIELD
+
+kTAG_MIN_VAL:		Maximum value, a number indicating the upper bound of a range.
+					FIELD
+
+kTAG_EXAMPLES:		Value examples, an array of strings showing various examples of
+					valid data.
+					MULTI IMPUT
+
+kTAG_DESCRIPTION:	Node description, it is an array of strings in which the keys
+					represent the language code ('en', 'it', etc.).
+					INPUT
+
+kTAG_TERM:			Term reference, this is required and consists of the kTAG_NID
+					of the referenced term.
+					HIDDEN
+
+kTAG_MASTER:		Node outgoing reference, this is the kTAG_NID of the master node if
+					the current node is an alias node. Should not be set manually.
+					IGNORE
+
+kTAG_EDGES:			Edge references, this is the list of kTAG_NIDs of the edges
+					that reference the current node.
+					IGNORE
+
+kTAG_NODES:			Node incoming references, this is the list of kTAG_NIDs of the nodes
+					that reference the current node.
+					IGNORE
+

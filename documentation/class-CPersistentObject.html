@@ -7,7 +7,7 @@
 	<title>Class CPersistentObject | MyWrapper Reference Documentation</title>
 
 	<script type="text/javascript" src="resources/combined.js?3680114562"></script>
-	<script type="text/javascript" src="elementlist.js?2244581217"></script>
+	<script type="text/javascript" src="elementlist.js?158261224"></script>
 	<link rel="stylesheet" type="text/css" media="all" href="resources/style.css?3505392360" />
 
 </head>
@@ -36,6 +36,8 @@
 				<li class="main"><a href="package-MyWrapper.Ontology.html">Ontology</a>
 						</li>
 				<li class="active main"><a href="package-MyWrapper.Persistence.html">Persistence</a>
+						</li>
+				<li class="main"><a href="package-MyWrapper.Traits.html">Traits</a>
 						</li>
 				<li class="main"><a href="package-MyWrapper.Wrappers.html">Wrappers</a>
 						</li>
@@ -222,7 +224,7 @@ object to a string.</p>
 				<b>Author:</b>
 				Milko A. Škofič &lt;<a
 href="mailto:m.skofic&#64;cgiar.org">m.skofic&#64;<!---->cgiar.org</a>&gt;<br />
-		<b>Located at</b> <a href="source-class-CPersistentObject.html#36-999" title="Go to source code">CPersistentObject.php</a><br />
+		<b>Located at</b> <a href="source-class-CPersistentObject.html#36-1007" title="Go to source code">CPersistentObject.php</a><br />
 	</div>
 
 
@@ -278,14 +280,14 @@ not correct and because this method cannot throw exceptions.</p>
 
 		<td class="attributes"><code>
 			 public 
-			mixed
+			string
 			
 			</code>
 		</td>
 
 		<td class="name"><div>
 		<a class="anchor" href="#_GID">#</a>
-		<code><a href="source-class-CPersistentObject.html#132-170" title="Go to source code">GID</a>( <span>mixed <var>$theValue</var> = <span class="php-keyword1">NULL</span></span>, <span>boolean <var>$getOld</var> = <span class="php-keyword1">FALSE</span> </span> )</code>
+		<code><a href="source-class-CPersistentObject.html#132-174" title="Go to source code">GID</a>( <span>mixed <var>$theValue</var> = <span class="php-keyword1">NULL</span></span>, <span>boolean <var>$getOld</var> = <span class="php-keyword1">FALSE</span> </span> )</code>
 
 		<div class="description short">
 			
@@ -297,14 +299,17 @@ not correct and because this method cannot throw exceptions.</p>
 			
 <h4>Manage global unique identifier</h4>
 
-<p>The <i>global unique identifier</i>, kTAG_GID, holds a string which
-represents the object's unique identifier, this value is hashed or used as-is to
-serve as the native unique identifier, kTAG_NID. The global identifier
-is usually a computed value extracted from a series of offsets of the
+<p>The <i>global unique identifier</i>, kTAG_GID, holds a string value
+which represents the object's unique identifier. This value is usually a
+computed string value extracted from a series of key properties of the
 object.</p>
 
-<p>The method accepts a parameter which represents either the identifier or the
-requested operation, depending on its value:</p>
+<p>In general, the hashed value of this property becomes the object's native
+identifier, <code><a href="class-CPersistentDocument.html#_NID">CPersistentDocument::NID()</a></code> and while the latter represents a native value, this
+property represents the global or public identifier of the object.</p>
+
+<p>The method accepts a parameter which represents either the new value or the
+requested operation, depending on its type:</p>
 
 <ul>
 	<li><tt>NULL</tt>: Return the current value.</li>
@@ -315,25 +320,27 @@ requested operation, depending on its value:</p>
 </ul>
 
 <p>The second parameter is a boolean which if <tt>TRUE</tt> will return the
-<i>old</i> value when replacing containers; if <tt>FALSE</tt>, it will return
-the currently set value.</p>
+<i>old</i> value when replacing an existing value; if <tt>FALSE</tt>, it will
+return the currently set value.</p>
 
-<p>Note that when the object has the <code><a href="class-CStatusDocument.html#__IsCommitted">CStatusDocument::_IsCommitted()</a></code> status this offset
-will be locked and an exception will be raised.</p>
+<p>Note that, while this method allows the creation, modification and deletion
+of this property, the hosting object may prevent some of these actions, by
+default this attribute is locked when the object has the <code><a href="class-CStatusDocument.html#__IsCommitted">CStatusDocument::_IsCommitted()</a></code>
+status.</p>
 
 
 
 				<h4>Parameters</h4>
 				<div class="list"><dl>
 					<dt><var>$theValue</var></dt>
-					<dd><code>mixed</code><br>$theValue Native identifier or operation.</dd>
+					<dd><code>mixed</code><br>$theValue Global identifier or operation.</dd>
 					<dt><var>$getOld</var></dt>
 					<dd><code>boolean</code><br>$getOld <tt>TRUE</tt> get old value.</dd>
 				</dl></div>
 
 				<h4>Returns</h4>
 				<div class="list">
-					<code>mixed</code><br><i>New</i> or <i>old</i> native container.<br />
+					<code>string</code><br><i>New</i>, <i>old</i> value or <tt>NULL</tt>.<br />
 				</div>
 
 
@@ -354,24 +361,24 @@ will be locked and an exception will be raised.</p>
 
 		<td class="attributes"><code>
 			 public 
-			mixed
+			string
 			
 			</code>
 		</td>
 
 		<td class="name"><div>
 		<a class="anchor" href="#_CLassName">#</a>
-		<code><a href="source-class-CPersistentObject.html#177-215" title="Go to source code">CLassName</a>( <span>mixed <var>$theValue</var> = <span class="php-keyword1">NULL</span></span>, <span>boolean <var>$getOld</var> = <span class="php-keyword1">FALSE</span> </span> )</code>
+		<code><a href="source-class-CPersistentObject.html#181-223" title="Go to source code">CLassName</a>( <span>mixed <var>$theValue</var> = <span class="php-keyword1">NULL</span></span>, <span>boolean <var>$getOld</var> = <span class="php-keyword1">FALSE</span> </span> )</code>
 
 		<div class="description short">
 			
-<h4>Manage global unique identifier</h4>
+<h4>Manage class identifier</h4>
 
 		</div>
 
 		<div class="description detailed hidden">
 			
-<h4>Manage global unique identifier</h4>
+<h4>Manage class identifier</h4>
 
 <p>The <i>class name</i>, kTAG_CLASS, holds a string which is the class
 name of the object that first stored the object in the container. This value
@@ -390,25 +397,30 @@ requested operation, depending on its value:</p>
 </ul>
 
 <p>The second parameter is a boolean which if <tt>TRUE</tt> will return the
-<i>old</i> value when replacing containers; if <tt>FALSE</tt>, it will return
-the currently set value.</p>
+<i>old</i> value when replacing an existing value; if <tt>FALSE</tt>, it will
+return the currently set value.</p>
 
-<p>Note that when the object has the <code><a href="class-CStatusDocument.html#__IsCommitted">CStatusDocument::_IsCommitted()</a></code> status this offset
-will be locked and in many other classes this offset may not be writable.</p>
+<p>Note that, while this method allows the creation, modification and deletion
+of this property, the hosting object may prevent some of these actions, by
+default this attribute is locked when the object has the <code><a href="class-CStatusDocument.html#__IsCommitted">CStatusDocument::_IsCommitted()</a></code>
+status.</p>
+
+<p>In general you should not set this value directly, since it will be set
+programmatically.</p>
 
 
 
 				<h4>Parameters</h4>
 				<div class="list"><dl>
 					<dt><var>$theValue</var></dt>
-					<dd><code>mixed</code><br>$theValue Persistent container or operation.</dd>
+					<dd><code>mixed</code><br>$theValue Class name or operation.</dd>
 					<dt><var>$getOld</var></dt>
 					<dd><code>boolean</code><br>$getOld <tt>TRUE</tt> get old value.</dd>
 				</dl></div>
 
 				<h4>Returns</h4>
 				<div class="list">
-					<code>mixed</code><br><i>New</i> or <i>old</i> native container.<br />
+					<code>string</code><br><i>New</i>, <i>old</i> value or <tt>NULL</tt>.<br />
 				</div>
 
 
@@ -436,7 +448,7 @@ will be locked and in many other classes this offset may not be writable.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#_NewObject">#</a>
-		<code><a href="source-class-CPersistentObject.html#231-307" title="Go to source code">NewObject</a>( <span><code><a href="class-CConnection.html">CConnection</a></code> <var>$theConnection</var></span>, <span>mixed <var>$theIdentifier</var></span> )</code>
+		<code><a href="source-class-CPersistentObject.html#239-315" title="Go to source code">NewObject</a>( <span><code><a href="class-CConnection.html">CConnection</a></code> <var>$theConnection</var></span>, <span>mixed <var>$theIdentifier</var></span> )</code>
 
 		<div class="description short">
 			
@@ -501,7 +513,7 @@ offset is missing, the method will instantiate the calling class.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#_DocumentObject">#</a>
-		<code><a href="source-class-CPersistentObject.html#314-366" title="Go to source code">DocumentObject</a>( <span>mixed <var>$theDocument</var></span> )</code>
+		<code><a href="source-class-CPersistentObject.html#322-374" title="Go to source code">DocumentObject</a>( <span>mixed <var>$theDocument</var></span> )</code>
 
 		<div class="description short">
 			
@@ -554,7 +566,7 @@ exception.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#__id">#</a>
-		<code><a href="source-class-CPersistentObject.html#382-413" title="Go to source code">_id</a>( <span>string <var>$theIdentifier</var> = <span class="php-keyword1">NULL</span></span>, <span><code><a href="class-CConnection.html">CConnection</a></code> <var>$theConnection</var> = <span class="php-keyword1">NULL</span> </span> )</code>
+		<code><a href="source-class-CPersistentObject.html#390-421" title="Go to source code">_id</a>( <span>string <var>$theIdentifier</var> = <span class="php-keyword1">NULL</span></span>, <span><code><a href="class-CConnection.html">CConnection</a></code> <var>$theConnection</var> = <span class="php-keyword1">NULL</span> </span> )</code>
 
 		<div class="description short">
 			
@@ -620,7 +632,7 @@ see the <code><a href="class-CPersistentDocument.html#__Precommit">CPersistentDo
 
 		<td class="name"><div>
 		<a class="anchor" href="#__index">#</a>
-		<code><a href="source-class-CPersistentObject.html#429-473" title="Go to source code">_index</a>( <span><code><a href="class-CConnection.html">CConnection</a></code> <var>$theConnection</var></span>, <span>bitfield <var>$theModifiers</var></span> )</code>
+		<code><a href="source-class-CPersistentObject.html#437-481" title="Go to source code">_index</a>( <span><code><a href="class-CConnection.html">CConnection</a></code> <var>$theConnection</var></span>, <span>bitfield <var>$theModifiers</var></span> )</code>
 
 		<div class="description short">
 			
@@ -699,7 +711,7 @@ identifier, so we let the container set the identifier, and return
 
 		<td class="name"><div>
 		<a class="anchor" href="#__Preset">#</a>
-		<code><a href="source-class-CPersistentObject.html#489-525" title="Go to source code">_Preset</a>( <span>reference <var>&amp; $theOffset</var></span>, <span>reference <var>&amp; $theValue</var></span> )</code>
+		<code><a href="source-class-CPersistentObject.html#497-533" title="Go to source code">_Preset</a>( <span>reference <var>&amp; $theOffset</var></span>, <span>reference <var>&amp; $theValue</var></span> )</code>
 
 		<div class="description short">
 			
@@ -757,7 +769,7 @@ identifier.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#__Preunset">#</a>
-		<code><a href="source-class-CPersistentObject.html#532-567" title="Go to source code">_Preunset</a>( <span>reference <var>&amp; $theOffset</var></span> )</code>
+		<code><a href="source-class-CPersistentObject.html#540-575" title="Go to source code">_Preunset</a>( <span>reference <var>&amp; $theOffset</var></span> )</code>
 
 		<div class="description short">
 			
@@ -813,7 +825,7 @@ identifier.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#__PrecommitValidate">#</a>
-		<code><a href="source-class-CPersistentObject.html#583-626" title="Go to source code">_PrecommitValidate</a>( <span>reference <var>&amp; $theConnection</var></span>, <span>reference <var>&amp; $theModifiers</var></span> )</code>
+		<code><a href="source-class-CPersistentObject.html#591-634" title="Go to source code">_PrecommitValidate</a>( <span>reference <var>&amp; $theConnection</var></span>, <span>reference <var>&amp; $theModifiers</var></span> )</code>
 
 		<div class="description short">
 			
@@ -870,7 +882,7 @@ kTAG_NID, if the operation involves updating.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#__PrecommitRelated">#</a>
-		<code><a href="source-class-CPersistentObject.html#633-668" title="Go to source code">_PrecommitRelated</a>( <span>reference <var>&amp; $theConnection</var></span>, <span>reference <var>&amp; $theModifiers</var></span> )</code>
+		<code><a href="source-class-CPersistentObject.html#641-676" title="Go to source code">_PrecommitRelated</a>( <span>reference <var>&amp; $theConnection</var></span>, <span>reference <var>&amp; $theModifiers</var></span> )</code>
 
 		<div class="description short">
 			
@@ -925,7 +937,7 @@ replacing or updating.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#__PrecommitIdentify">#</a>
-		<code><a href="source-class-CPersistentObject.html#675-759" title="Go to source code">_PrecommitIdentify</a>( <span>reference <var>&amp; $theConnection</var></span>, <span>reference <var>&amp; $theModifiers</var></span> )</code>
+		<code><a href="source-class-CPersistentObject.html#683-767" title="Go to source code">_PrecommitIdentify</a>( <span>reference <var>&amp; $theConnection</var></span>, <span>reference <var>&amp; $theModifiers</var></span> )</code>
 
 		<div class="description short">
 			
@@ -1002,7 +1014,7 @@ called.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#__ReferenceInObject">#</a>
-		<code><a href="source-class-CPersistentObject.html#775-897" title="Go to source code">_ReferenceInObject</a>( <span><code><a href="class-CContainer.html">CContainer</a></code> <var>$theContainer</var></span>, <span>byte <var>$theOperation</var></span>, <span>mixed <var>$theReference</var></span>, <span>string <var>$theOffset</var></span>, <span>integer <var>$theCount</var></span> )</code>
+		<code><a href="source-class-CPersistentObject.html#783-905" title="Go to source code">_ReferenceInObject</a>( <span><code><a href="class-CContainer.html">CContainer</a></code> <var>$theContainer</var></span>, <span>byte <var>$theOperation</var></span>, <span>mixed <var>$theReference</var></span>, <span>string <var>$theOffset</var></span>, <span>integer <var>$theCount</var></span> )</code>
 
 		<div class="description short">
 			
@@ -1093,7 +1105,7 @@ the object and before setting the committed status</i>.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#__AssertClass">#</a>
-		<code><a href="source-class-CPersistentObject.html#913-995" title="Go to source code">_AssertClass</a>( <span>reference <var>&amp; $theValue</var></span>, <span>string <var>$theBaseClass</var></span>, <span>string <var>$theDerivedClass</var> = <span class="php-keyword1">NULL</span></span>, <span>boolean <var>$doThrow</var> = <span class="php-keyword1">FALSE</span> </span> )</code>
+		<code><a href="source-class-CPersistentObject.html#921-1003" title="Go to source code">_AssertClass</a>( <span>reference <var>&amp; $theValue</var></span>, <span>string <var>$theBaseClass</var></span>, <span>string <var>$theDerivedClass</var> = <span class="php-keyword1">NULL</span></span>, <span>boolean <var>$doThrow</var> = <span class="php-keyword1">FALSE</span> </span> )</code>
 
 		<div class="description short">
 			

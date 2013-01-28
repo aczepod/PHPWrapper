@@ -239,6 +239,15 @@ try
 	echo( '<pre>' ); print_r( $node ); echo( '</pre>' );
 	echo( '<hr />' );
 	echo( '<hr>' );
+
+	//
+	// Add list of categories.
+	//
+	echo( '<h4>Add list of categories</h4>' );
+	echo( '<h5>$node->Category( array( "category1", "category2" ), TRUE );</h5>' );
+	$node->Category( array( "category1", "category2" ), TRUE );
+	echo( '<pre>' ); print_r( $node ); echo( '</pre>' );
+	echo( '<hr />' );
 	
 	//
 	// Add kind 1.
@@ -410,13 +419,35 @@ try
 	echo( '<hr>' );
 	
 	//
-	// Add new node.
+	// Add new full node.
 	//
-	echo( '<h4>Add new node</h4>' );
+	echo( '<h4>Add new full node</h4>' );
 	echo( '<h5>$node0 = new MyClass();</h5>' );
 	$node0 = new MyClass();
-	echo( '<h5>$node0[ kTAG_TERM ] = $termB;</h5>' );
-	$node0[ kTAG_TERM ] = $termB;
+	echo( '<h5>$node0->Term( $termB );</h5>' );
+	$node0->Term( $termB );
+	echo( '<h5>$node0->Category( array( "categort1", "category2" ), TRUE );</h5>' );
+	$node0->Category( array( "categort1", "category2" ), TRUE );
+	echo( '<h5>$node0->Kind( "kind1", TRUE );</h5>' );
+	$node0->Kind( "kind1", TRUE );
+	echo( '<h5>$node0->Kind( "kind2", TRUE );</h5>' );
+	$node0->Kind( "kind2", TRUE );
+	echo( '<h5>$node0->Type( array( "type1", "type2" ), TRUE );</h5>' );
+	$node0->Type( array( "type1", "type2" ), TRUE );
+	echo( '<h5>$node0->Input( array( kINPUT_CHOICE, kINPUT_RADIO ), TRUE );</h5>' );
+	$node0->Input( array( kINPUT_CHOICE, kINPUT_RADIO ), TRUE );
+	echo( '<h5>$node0->Pattern( "[A-Z]+" );</h5>' );
+	$node0->Pattern( "[A-Z]+" );
+	echo( '<h5>$node0->Length( 24 );</h5>' );
+	$node0->Length( 24 );
+	echo( '<h5>$node0->LowerBound( 100.5 );</h5>' );
+	$node0->LowerBound( 100.5 );
+	echo( '<h5>$node0->UpperBound( 123 );</h5>' );
+	$node0->UpperBound( 123 );
+	echo( '<h5>$node0->Example( 105.7, TRUE );</h5>' );
+	$node0->Example( 105.7, TRUE );
+	echo( '<h5>$node0->Example( "babaluna", TRUE );</h5>' );
+	$node0->Example( "babaluna", TRUE );
 	echo( 'Inited['.$node0->inited()
 				   .'] Dirty['.$node0->dirty()
 				   .'] Saved['.$node0->committed()

@@ -7,7 +7,7 @@
 	<title>Class COntologyMasterNode | MyWrapper Reference Documentation</title>
 
 	<script type="text/javascript" src="resources/combined.js?3680114562"></script>
-	<script type="text/javascript" src="elementlist.js?2244581217"></script>
+	<script type="text/javascript" src="elementlist.js?158261224"></script>
 	<link rel="stylesheet" type="text/css" media="all" href="resources/style.css?3505392360" />
 
 </head>
@@ -36,6 +36,8 @@
 				<li class="active main"><a href="package-MyWrapper.Ontology.html">Ontology</a>
 						</li>
 				<li class="main"><a href="package-MyWrapper.Persistence.html">Persistence</a>
+						</li>
+				<li class="main"><a href="package-MyWrapper.Traits.html">Traits</a>
 						</li>
 				<li class="main"><a href="package-MyWrapper.Wrappers.html">Wrappers</a>
 						</li>
@@ -175,6 +177,10 @@ object of the relationship is an instance of this class, or an <code><a href="cl
 			<a href="class-CNode.html"><span>CNode</span></a>
 			
 			
+			 uses 
+				<a href="class-TCategory.html"><span>TCategory</span></a>, 
+			
+				<a href="class-TRepresentation.html"><span>TRepresentation</span></a>
 			
 		</dd>
 		<dd style="padding-left:180px">
@@ -289,8 +295,8 @@ of alias nodes that reference the current node.</p>
 <h4>Relate to node</h4>
 
 <p>We overload the inherited method to ensure that both vertices of the
-relationship do not have node references, kTAG_NODE. If any do have such
-references, we use the referenced node instead of the current one.</p>
+relationship do not have node references, kTAG_MASTER. If any do have
+such references, we use the referenced node instead of the current one.</p>
 
 <p>Both the current node and the object node will be committed if not
 already.</p>
@@ -349,9 +355,9 @@ connection which will be used to commit the edge.</p>
 <p>We overload this method in this class by intercepting all cases in which the
 <tt>$theIdentifier</tt> is not an integer, or node reference: since no two nodes
 of this class can share the same term reference, we add a clause to the search
-query to exclude all node that have a kTAG_NODE attribute. We do this
+query to exclude all node that have a kTAG_MASTER attribute. We do this
 rather than use the object class, because we assume all nodes that have the
-kTAG_NODE attribute yo be aliases.</p>
+kTAG_MASTER attribute to be aliases.</p>
 
 <p>Since terms become also a unique identifier, this method will return either
 an object or <tt>NULL</tt>.</p>
@@ -476,10 +482,7 @@ commit workflow.</p>
 	<caption>Methods inherited from <a href="class-CNode.html#methods">CNode</a></caption>
 	<tr>
 		<td><code>
-			<a href="class-CNode.html#_Category">Category()</a>, 
 			<a href="class-CNode.html#_Description">Description()</a>, 
-			<a href="class-CNode.html#_Example">Example()</a>, 
-			<a href="class-CNode.html#_Kind">Kind()</a>, 
 			<a href="class-CNode.html#_Term">Term()</a>, 
 			<a href="class-CNode.html#__Ready">_Ready()</a>
 		</code></td>
@@ -572,6 +575,28 @@ commit workflow.</p>
 	</tr>
 	</table>
 
+	<table class="summary used">
+	<caption>Methods used from <a href="class-TCategory.html#methods">TCategory</a></caption>
+	<tr>
+		<td><code>
+			<a href="class-TCategory.html#_Category">()</a>, 
+			<a href="class-TCategory.html#_Kind">()</a>
+		</code></td>
+	</tr>
+	</table>
+	<table class="summary used">
+	<caption>Methods used from <a href="class-TRepresentation.html#methods">TRepresentation</a></caption>
+	<tr>
+		<td><code>
+			<a href="class-TRepresentation.html#_Example">()</a>, 
+			<a href="class-TRepresentation.html#_Input">()</a>, 
+			<a href="class-TRepresentation.html#_Length">()</a>, 
+			<a href="class-TRepresentation.html#_LowerBound">()</a>, 
+			<a href="class-TRepresentation.html#_Pattern">()</a>, 
+			<a href="class-TRepresentation.html#_UpperBound">()</a>
+		</code></td>
+	</tr>
+	</table>
 
 
 

@@ -104,12 +104,11 @@ class CPersistentDocument extends CStatusDocument
 	 * The <i>native unique identifier</i>, {@link kTAG_NID}, represents the primary key
 	 * of the object in the native format of the container in which the object is stored.
 	 *
-	 * This is the only attribute tag that will not be a {@link COntologyTag} reference: all
-	 * other object attributes will be a {@link COntologyTag} native identifier,
-	 * {@link kTAG_NID}.
+	 * This required property does not have a default data type, it should, however, be of
+	 * small size, since it represent's the object's primary index.
 	 *
-	 * The method accepts a parameter which represents either the identifier or the
-	 * requested operation, depending on its value:
+	 * The method accepts a parameter which represents either the new value or the requested
+	 * operation, depending on its type:
 	 *
 	 * <ul>
 	 *	<li><tt>NULL</tt>: Return the current value.
@@ -118,17 +117,18 @@ class CPersistentDocument extends CStatusDocument
 	 * </ul>
 	 *
 	 * The second parameter is a boolean which if <tt>TRUE</tt> will return the <i>old</i>
-	 * value when replacing containers; if <tt>FALSE</tt>, it will return the currently set
-	 * value.
+	 * value when replacing an existing value; if <tt>FALSE</tt>, it will return th
+	 * currently set value.
 	 *
-	 * Note that when the object has the {@link _IsCommitted()} status this offset will be
-	 * locked and an exception will be raised.
+	 * Note that, while this method allows the creation, modification and deletion of this
+	 * property, the hosting object may prevent some of these actions, by default this
+	 * attribute is locked when the object has the {@link _IsCommitted()} status.
 	 *
 	 * @param mixed					$theValue			Native identifier or operation.
 	 * @param boolean				$getOld				<tt>TRUE</tt> get old value.
 	 *
 	 * @access public
-	 * @return mixed				<i>New</i> or <i>old</i> native container.
+	 * @return mixed				<i>New</i> or <i>old</i> value.
 	 *
 	 * @uses ManageOffset()
 	 *
@@ -136,7 +136,7 @@ class CPersistentDocument extends CStatusDocument
 	 */
 	public function NID( $theValue = NULL, $getOld = FALSE )
 	{
-		return ManageOffset( $this, kTAG_NID, $theValue, $getOld );				// ==>
+		return ManageOffset( $this, kTAG_NID, $theValue, $getOld );					// ==>
 
 	} // NID.
 

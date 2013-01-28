@@ -435,6 +435,36 @@ try
 	echo( '<hr />' );
 
 	//
+	// Add list of categories.
+	//
+	echo( '<h4>Add list of categories</h4>' );
+	echo( '<h5>$termB->Category( array( "category1", "category2" ), TRUE );</h5>' );
+	$termB->Category( array( "category1", "category2" ), TRUE );
+	echo( '<pre>' ); print_r( $termB ); echo( '</pre>' );
+	echo( '<hr />' );
+
+	//
+	// Add list of types.
+	//
+	echo( '<h4>Add list of types</h4>' );
+	echo( '<h5>$termB->type( "type1", TRUE );</h5>' );
+	$termB->type( "type1", TRUE );
+	echo( '<h5>$termB->type( "type2", TRUE );</h5>' );
+	$termB->type( "type2", TRUE );
+	echo( '<pre>' ); print_r( $termB ); echo( '</pre>' );
+	echo( '<hr />' );
+
+	//
+	// Add list of kinds.
+	//
+	echo( '<h4>Add list of kinds</h4>' );
+	echo( '<h5>$termB->Kind( array( "kins1", "kins2" ), TRUE );</h5>' );
+	$termB->Kind( array( "kins1", "kins2" ), TRUE );
+	echo( '<pre>' ); print_r( $termB ); echo( '</pre>' );
+	echo( '<hr />' );
+	echo( '<hr />' );
+
+	//
 	// Set wrong description.
 	//
 	try

@@ -7,7 +7,7 @@
 	<title>Class COntologyTag | MyWrapper Reference Documentation</title>
 
 	<script type="text/javascript" src="resources/combined.js?3680114562"></script>
-	<script type="text/javascript" src="elementlist.js?2244581217"></script>
+	<script type="text/javascript" src="elementlist.js?158261224"></script>
 	<link rel="stylesheet" type="text/css" media="all" href="resources/style.css?3505392360" />
 
 </head>
@@ -36,6 +36,8 @@
 				<li class="active main"><a href="package-MyWrapper.Ontology.html">Ontology</a>
 						</li>
 				<li class="main"><a href="package-MyWrapper.Persistence.html">Persistence</a>
+						</li>
+				<li class="main"><a href="package-MyWrapper.Traits.html">Traits</a>
 						</li>
 				<li class="main"><a href="package-MyWrapper.Wrappers.html">Wrappers</a>
 						</li>
@@ -218,6 +220,10 @@ given a database, will return the default tag container; it will use the kCONTAI
 			<a href="class-CTag.html"><span>CTag</span></a>
 			
 			
+			 uses 
+				<a href="class-TCategory.html"><span>TCategory</span></a>, 
+			
+				<a href="class-TRepresentation.html"><span>TRepresentation</span></a>
 			
 		</dd>
 		<dd style="padding-left:180px">
@@ -244,7 +250,7 @@ given a database, will return the default tag container; it will use the kCONTAI
 				<b>Author:</b>
 				Milko A. Škofič &lt;<a
 href="mailto:m.skofic&#64;cgiar.org">m.skofic&#64;<!---->cgiar.org</a>&gt;<br />
-		<b>Located at</b> <a href="source-class-COntologyTag.html#43-1181" title="Go to source code">COntologyTag.php</a><br />
+		<b>Located at</b> <a href="source-class-COntologyTag.html#43-1178" title="Go to source code">COntologyTag.php</a><br />
 	</div>
 
 
@@ -1031,7 +1037,7 @@ native identifiers, since they will have been set here.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#__PostcommitRelated">#</a>
-		<code><a href="source-class-COntologyTag.html#1041-1177" title="Go to source code">_PostcommitRelated</a>( <span>reference <var>&amp; $theConnection</var></span>, <span>reference <var>&amp; $theModifiers</var></span> )</code>
+		<code><a href="source-class-COntologyTag.html#1041-1174" title="Go to source code">_PostcommitRelated</a>( <span>reference <var>&amp; $theConnection</var></span>, <span>reference <var>&amp; $theModifiers</var></span> )</code>
 
 		<div class="description short">
 			
@@ -1125,10 +1131,6 @@ container to this method in order to make it work!</p>
 						kTAG_FEATURES, kTAG_METHODS, kTAG_SCALES<br />
 						kFLAG_PERSIST_INSERT kFLAG_PERSIST_REPLACE kFLAG_PERSIST_DELETE<br />
 				</div>
-				<h4>Uses</h4>
-				<div class="list">
-						<code><code><a href="class-CStatusDocument.html#__IsCommitted">CStatusDocument::_IsCommitted()</a></code></code> <br />
-				</div>
 
 				<h4>Overrides</h4>
 				<div class="list"><code><a href="class-CPersistentDocument.html#__PostcommitRelated">CPersistentDocument::_PostcommitRelated()</a></code></div>
@@ -1142,13 +1144,7 @@ container to this method in order to make it work!</p>
 	<caption>Methods inherited from <a href="class-CTag.html#methods">CTag</a></caption>
 	<tr>
 		<td><code>
-			<a href="class-CTag.html#_Input">Input()</a>, 
-			<a href="class-CTag.html#_Length">Length()</a>, 
-			<a href="class-CTag.html#_LowerBound">LowerBound()</a>, 
-			<a href="class-CTag.html#_Pattern">Pattern()</a>, 
 			<a href="class-CTag.html#_PopItem">PopItem()</a>, 
-			<a href="class-CTag.html#_Type">Type()</a>, 
-			<a href="class-CTag.html#_UpperBound">UpperBound()</a>, 
 			<a href="class-CTag.html#__Ready">_Ready()</a>
 		</code></td>
 	</tr>
@@ -1241,6 +1237,29 @@ container to this method in order to make it work!</p>
 	</tr>
 	</table>
 
+	<table class="summary used">
+	<caption>Methods used from <a href="class-TCategory.html#methods">TCategory</a></caption>
+	<tr>
+		<td><code>
+			<a href="class-TCategory.html#_Category">()</a>, 
+			<a href="class-TCategory.html#_Kind">()</a>, 
+			<a href="class-TCategory.html#_Type">()</a>
+		</code></td>
+	</tr>
+	</table>
+	<table class="summary used">
+	<caption>Methods used from <a href="class-TRepresentation.html#methods">TRepresentation</a></caption>
+	<tr>
+		<td><code>
+			<a href="class-TRepresentation.html#_Example">()</a>, 
+			<a href="class-TRepresentation.html#_Input">()</a>, 
+			<a href="class-TRepresentation.html#_Length">()</a>, 
+			<a href="class-TRepresentation.html#_LowerBound">()</a>, 
+			<a href="class-TRepresentation.html#_Pattern">()</a>, 
+			<a href="class-TRepresentation.html#_UpperBound">()</a>
+		</code></td>
+	</tr>
+	</table>
 
 
 

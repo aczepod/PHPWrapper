@@ -8,7 +8,7 @@
 	<title>File COntologyTerm.php | MyWrapper Reference Documentation</title>
 
 	<script type="text/javascript" src="resources/combined.js?3680114562"></script>
-	<script type="text/javascript" src="elementlist.js?2244581217"></script>
+	<script type="text/javascript" src="elementlist.js?158261224"></script>
 	<link rel="stylesheet" type="text/css" media="all" href="resources/style.css?3505392360" />
 
 </head>
@@ -37,6 +37,8 @@
 				<li class="active main"><a href="package-MyWrapper.Ontology.html">Ontology</a>
 						</li>
 				<li class="main"><a href="package-MyWrapper.Persistence.html">Persistence</a>
+						</li>
+				<li class="main"><a href="package-MyWrapper.Traits.html">Traits</a>
 						</li>
 				<li class="main"><a href="package-MyWrapper.Wrappers.html">Wrappers</a>
 						</li>
@@ -341,14 +343,14 @@
 </span></span><span id="235" class="l"><a class="l" href="#235"> 235: </a><span class="php-comment">     *
 </span></span><span id="236" class="l"><a class="l" href="#236"> 236: </a><span class="php-comment">     * @uses NewObject()
 </span></span><span id="237" class="l"><a class="l" href="#237"> 237: </a><span class="php-comment">     *
-</span></span><span id="238" class="l"><a class="l" href="#238"> 238: </a><span class="php-comment">     * @see kTAG_TERM
+</span></span><span id="238" class="l"><a class="l" href="#238"> 238: </a><span class="php-comment">     * @see kTAG_MASTER
 </span></span><span id="239" class="l"><a class="l" href="#239"> 239: </a><span class="php-comment">     */</span>
 </span><span id="240" class="l"><a class="l" href="#240"> 240: </a>    <span class="php-keyword1">public</span> <span class="php-keyword1">function</span> <a id="_LoadTerm" href="#_LoadTerm">LoadTerm</a>( CConnection <span class="php-var">$theConnection</span>, <span class="php-var">$doReload</span> = <span class="php-keyword1">FALSE</span> )
 </span><span id="241" class="l"><a class="l" href="#241"> 241: </a>    {
 </span><span id="242" class="l"><a class="l" href="#242"> 242: </a>        <span class="php-comment">//</span>
 </span><span id="243" class="l"><a class="l" href="#243"> 243: </a>        <span class="php-comment">// Check offset.</span>
 </span><span id="244" class="l"><a class="l" href="#244"> 244: </a>        <span class="php-comment">//</span>
-</span><span id="245" class="l"><a class="l" href="#245"> 245: </a>        <span class="php-keyword1">if</span>( <span class="php-var">$this</span>-&gt;offsetExists( kTAG_TERM ) )
+</span><span id="245" class="l"><a class="l" href="#245"> 245: </a>        <span class="php-keyword1">if</span>( <span class="php-var">$this</span>-&gt;offsetExists( kTAG_MASTER ) )
 </span><span id="246" class="l"><a class="l" href="#246"> 246: </a>        {
 </span><span id="247" class="l"><a class="l" href="#247"> 247: </a>            <span class="php-comment">//</span>
 </span><span id="248" class="l"><a class="l" href="#248"> 248: </a>            <span class="php-comment">// Refresh cache.</span>
@@ -360,7 +362,7 @@
 </span><span id="254" class="l"><a class="l" href="#254"> 254: </a>                <span class="php-comment">//</span>
 </span><span id="255" class="l"><a class="l" href="#255"> 255: </a>                <span class="php-comment">// Handle term object.</span>
 </span><span id="256" class="l"><a class="l" href="#256"> 256: </a>                <span class="php-comment">//</span>
-</span><span id="257" class="l"><a class="l" href="#257"> 257: </a>                <span class="php-var">$term</span> = <span class="php-var">$this</span>-&gt;offsetGet( kTAG_TERM );
+</span><span id="257" class="l"><a class="l" href="#257"> 257: </a>                <span class="php-var">$term</span> = <span class="php-var">$this</span>-&gt;offsetGet( kTAG_MASTER );
 </span><span id="258" class="l"><a class="l" href="#258"> 258: </a>                <span class="php-keyword1">if</span>( <span class="php-var">$term</span> <span class="php-keyword1">instanceof</span> COntologyTerm )
 </span><span id="259" class="l"><a class="l" href="#259"> 259: </a>                    <span class="php-keyword1">return</span> <span class="php-var">$term</span>;                                                   <span class="php-comment">// ==&gt;</span>
 </span><span id="260" class="l"><a class="l" href="#260"> 260: </a>                
@@ -1064,7 +1066,7 @@
 </span><span id="958" class="l"><a class="l" href="#958"> 958: </a>        <span class="php-comment">//</span>
 </span><span id="959" class="l"><a class="l" href="#959"> 959: </a>        <span class="php-comment">// Handle term.</span>
 </span><span id="960" class="l"><a class="l" href="#960"> 960: </a>        <span class="php-comment">//</span>
-</span><span id="961" class="l"><a class="l" href="#961"> 961: </a>        <span class="php-keyword1">if</span>( <span class="php-var">$theOffset</span> == kTAG_TERM )
+</span><span id="961" class="l"><a class="l" href="#961"> 961: </a>        <span class="php-keyword1">if</span>( <span class="php-var">$theOffset</span> == kTAG_MASTER )
 </span><span id="962" class="l"><a class="l" href="#962"> 962: </a>        {
 </span><span id="963" class="l"><a class="l" href="#963"> 963: </a>            <span class="php-comment">//</span>
 </span><span id="964" class="l"><a class="l" href="#964"> 964: </a>            <span class="php-comment">// Lock term if object is committed.</span>
@@ -1171,7 +1173,7 @@
 </span><span id="1065" class="l"><a class="l" href="#1065">1065: </a>        <span class="php-comment">//</span>
 </span><span id="1066" class="l"><a class="l" href="#1066">1066: </a>        <span class="php-comment">// Lock term if object is committed.</span>
 </span><span id="1067" class="l"><a class="l" href="#1067">1067: </a>        <span class="php-comment">//</span>
-</span><span id="1068" class="l"><a class="l" href="#1068">1068: </a>        <span class="php-keyword1">if</span>( (<span class="php-var">$theOffset</span> == kTAG_TERM)
+</span><span id="1068" class="l"><a class="l" href="#1068">1068: </a>        <span class="php-keyword1">if</span>( (<span class="php-var">$theOffset</span> == kTAG_MASTER)
 </span><span id="1069" class="l"><a class="l" href="#1069">1069: </a>         &amp;&amp; <span class="php-var">$this</span>-&gt;_IsCommitted() )
 </span><span id="1070" class="l"><a class="l" href="#1070">1070: </a>            <span class="php-keyword1">throw</span> <span class="php-keyword1">new</span> Exception
 </span><span id="1071" class="l"><a class="l" href="#1071">1071: </a>                ( <span class="php-quote">&quot;You cannot modify the [</span><span class="php-var">$theOffset</span><span class="php-quote">] offset: &quot;</span>
@@ -1275,12 +1277,12 @@
 </span><span id="1169" class="l"><a class="l" href="#1169">1169: </a>            <span class="php-comment">// Handle term object.</span>
 </span><span id="1170" class="l"><a class="l" href="#1170">1170: </a>            <span class="php-comment">// Note that we let _Preset() method take care of the specific class.</span>
 </span><span id="1171" class="l"><a class="l" href="#1171">1171: </a>            <span class="php-comment">//</span>
-</span><span id="1172" class="l"><a class="l" href="#1172">1172: </a>            <span class="php-keyword1">if</span>( <span class="php-var">$this</span>-&gt;offsetExists( kTAG_TERM ) )
+</span><span id="1172" class="l"><a class="l" href="#1172">1172: </a>            <span class="php-keyword1">if</span>( <span class="php-var">$this</span>-&gt;offsetExists( kTAG_MASTER ) )
 </span><span id="1173" class="l"><a class="l" href="#1173">1173: </a>            {
 </span><span id="1174" class="l"><a class="l" href="#1174">1174: </a>                <span class="php-comment">//</span>
 </span><span id="1175" class="l"><a class="l" href="#1175">1175: </a>                <span class="php-comment">// Get term.</span>
 </span><span id="1176" class="l"><a class="l" href="#1176">1176: </a>                <span class="php-comment">//</span>
-</span><span id="1177" class="l"><a class="l" href="#1177">1177: </a>                <span class="php-var">$term</span> = <span class="php-var">$this</span>-&gt;offsetGet( kTAG_TERM );
+</span><span id="1177" class="l"><a class="l" href="#1177">1177: </a>                <span class="php-var">$term</span> = <span class="php-var">$this</span>-&gt;offsetGet( kTAG_MASTER );
 </span><span id="1178" class="l"><a class="l" href="#1178">1178: </a>                <span class="php-keyword1">if</span>( <span class="php-var">$term</span> <span class="php-keyword1">instanceof</span> COntologyTerm )
 </span><span id="1179" class="l"><a class="l" href="#1179">1179: </a>                {
 </span><span id="1180" class="l"><a class="l" href="#1180">1180: </a>                    <span class="php-comment">//</span>
@@ -1298,7 +1300,7 @@
 </span><span id="1192" class="l"><a class="l" href="#1192">1192: </a>                    <span class="php-comment">//</span>
 </span><span id="1193" class="l"><a class="l" href="#1193">1193: </a>                    <span class="php-comment">// Set identifier in term offset.</span>
 </span><span id="1194" class="l"><a class="l" href="#1194">1194: </a>                    <span class="php-comment">//</span>
-</span><span id="1195" class="l"><a class="l" href="#1195">1195: </a>                    <span class="php-var">$this</span>-&gt;offsetSet( kTAG_TERM,
+</span><span id="1195" class="l"><a class="l" href="#1195">1195: </a>                    <span class="php-var">$this</span>-&gt;offsetSet( kTAG_MASTER,
 </span><span id="1196" class="l"><a class="l" href="#1196">1196: </a>                                      <span class="php-var">$term</span>-&gt;offsetGet( kTAG_NID ) );
 </span><span id="1197" class="l"><a class="l" href="#1197">1197: </a>                    
 </span><span id="1198" class="l"><a class="l" href="#1198">1198: </a>                } <span class="php-comment">// Term is object.</span>

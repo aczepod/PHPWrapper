@@ -7,7 +7,7 @@
 	<title>Class CPersistentDocument | MyWrapper Reference Documentation</title>
 
 	<script type="text/javascript" src="resources/combined.js?3680114562"></script>
-	<script type="text/javascript" src="elementlist.js?2244581217"></script>
+	<script type="text/javascript" src="elementlist.js?158261224"></script>
 	<link rel="stylesheet" type="text/css" media="all" href="resources/style.css?3505392360" />
 
 </head>
@@ -36,6 +36,8 @@
 				<li class="main"><a href="package-MyWrapper.Ontology.html">Ontology</a>
 						</li>
 				<li class="active main"><a href="package-MyWrapper.Persistence.html">Persistence</a>
+						</li>
+				<li class="main"><a href="package-MyWrapper.Traits.html">Traits</a>
 						</li>
 				<li class="main"><a href="package-MyWrapper.Wrappers.html">Wrappers</a>
 						</li>
@@ -263,12 +265,11 @@ href="mailto:m.skofic&#64;cgiar.org">m.skofic&#64;<!---->cgiar.org</a>&gt;<br />
 key of the object in the native format of the container in which the object is
 stored.</p>
 
-<p>This is the only attribute tag that will not be a <code><a href="class-COntologyTag.html">COntologyTag</a></code>
-reference: all other object attributes will be a <code><a href="class-COntologyTag.html">COntologyTag</a></code> native
-identifier, kTAG_NID.</p>
+<p>This required property does not have a default data type, it should, however,
+be of small size, since it represent's the object's primary index.</p>
 
-<p>The method accepts a parameter which represents either the identifier or the
-requested operation, depending on its value:</p>
+<p>The method accepts a parameter which represents either the new value or the
+requested operation, depending on its type:</p>
 
 <ul>
 	<li><tt>NULL</tt>: Return the current value.</li>
@@ -279,11 +280,13 @@ requested operation, depending on its value:</p>
 </ul>
 
 <p>The second parameter is a boolean which if <tt>TRUE</tt> will return the
-<i>old</i> value when replacing containers; if <tt>FALSE</tt>, it will return
-the currently set value.</p>
+<i>old</i> value when replacing an existing value; if <tt>FALSE</tt>, it will
+return th currently set value.</p>
 
-<p>Note that when the object has the <code><a href="class-CStatusDocument.html#__IsCommitted">CStatusDocument::_IsCommitted()</a></code> status this offset
-will be locked and an exception will be raised.</p>
+<p>Note that, while this method allows the creation, modification and deletion
+of this property, the hosting object may prevent some of these actions, by
+default this attribute is locked when the object has the <code><a href="class-CStatusDocument.html#__IsCommitted">CStatusDocument::_IsCommitted()</a></code>
+status.</p>
 
 
 
@@ -297,7 +300,7 @@ will be locked and an exception will be raised.</p>
 
 				<h4>Returns</h4>
 				<div class="list">
-					<code>mixed</code><br><i>New</i> or <i>old</i> native container.<br />
+					<code>mixed</code><br><i>New</i> or <i>old</i> value.<br />
 				</div>
 
 

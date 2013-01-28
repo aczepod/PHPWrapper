@@ -7,7 +7,7 @@
 	<title>Class COntologyNode | MyWrapper Reference Documentation</title>
 
 	<script type="text/javascript" src="resources/combined.js?3680114562"></script>
-	<script type="text/javascript" src="elementlist.js?2244581217"></script>
+	<script type="text/javascript" src="elementlist.js?158261224"></script>
 	<link rel="stylesheet" type="text/css" media="all" href="resources/style.css?3505392360" />
 
 </head>
@@ -36,6 +36,8 @@
 				<li class="active main"><a href="package-MyWrapper.Ontology.html">Ontology</a>
 						</li>
 				<li class="main"><a href="package-MyWrapper.Persistence.html">Persistence</a>
+						</li>
+				<li class="main"><a href="package-MyWrapper.Traits.html">Traits</a>
 						</li>
 				<li class="main"><a href="package-MyWrapper.Wrappers.html">Wrappers</a>
 						</li>
@@ -234,6 +236,10 @@ have to commit terms.</p>
 			<a href="class-CNode.html"><span>CNode</span></a>
 			
 			
+			 uses 
+				<a href="class-TCategory.html"><span>TCategory</span></a>, 
+			
+				<a href="class-TRepresentation.html"><span>TRepresentation</span></a>
 			
 		</dd>
 		<dd style="padding-left:180px">
@@ -271,7 +277,7 @@ have to commit terms.</p>
 				<b>Author:</b>
 				Milko A. Škofič &lt;<a
 href="mailto:m.skofic&#64;cgiar.org">m.skofic&#64;<!---->cgiar.org</a>&gt;<br />
-		<b>Located at</b> <a href="source-class-COntologyNode.html#50-1631" title="Go to source code">COntologyNode.php</a><br />
+		<b>Located at</b> <a href="source-class-COntologyNode.html#50-1632" title="Go to source code">COntologyNode.php</a><br />
 	</div>
 
 
@@ -333,7 +339,7 @@ the unique identifier of the object.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#_Type">#</a>
-		<code><a href="source-class-COntologyNode.html#190-362" title="Go to source code">Type</a>( <span>mixed <var>$theValue</var> = <span class="php-keyword1">NULL</span></span>, <span>mixed <var>$theOperation</var> = <span class="php-keyword1">NULL</span></span>, <span>boolean <var>$getOld</var> = <span class="php-keyword1">FALSE</span> </span> )</code>
+		<code><a href="source-class-COntologyNode.html#190-363" title="Go to source code">Type</a>( <span>mixed <var>$theValue</var> = <span class="php-keyword1">NULL</span></span>, <span>mixed <var>$theOperation</var> = <span class="php-keyword1">NULL</span></span>, <span>boolean <var>$getOld</var> = <span class="php-keyword1">FALSE</span> </span> )</code>
 
 		<div class="description short">
 			
@@ -352,6 +358,8 @@ that can be set in the offset. The offset accepts two types of elements:</p>
 	<li><i>Data type</i>: The set accepts one of the following primary data types:
 		<ul>
 			<li><i>kTYPE_STRING</i>: String, we assume in UTF8 character set.</li>
+
+			<li><i>kTYPE_INT</i>: Generic signed integer.</li>
 
 			<li><i>kTYPE_INT32</i>: 32 bit signed integer.</li>
 
@@ -446,7 +454,7 @@ that can be set in the offset. The offset accepts two types of elements:</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#_LoadTerm">#</a>
-		<code><a href="source-class-COntologyNode.html#378-448" title="Go to source code">LoadTerm</a>( <span><code><a href="class-CConnection.html">CConnection</a></code> <var>$theConnection</var></span>, <span>boolean <var>$doReload</var> = <span class="php-keyword1">FALSE</span> </span> )</code>
+		<code><a href="source-class-COntologyNode.html#379-449" title="Go to source code">LoadTerm</a>( <span><code><a href="class-CConnection.html">CConnection</a></code> <var>$theConnection</var></span>, <span>boolean <var>$doReload</var> = <span class="php-keyword1">FALSE</span> </span> )</code>
 
 		<div class="description short">
 			
@@ -517,7 +525,7 @@ the object is to be read, or if the cached copy can be used.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#_GetGraphNode">#</a>
-		<code><a href="source-class-COntologyNode.html#464-508" title="Go to source code">GetGraphNode</a>( <span><code><a href="class-CConnection.html">CConnection</a></code> <var>$theConnection</var></span>, <span>integer <var>$theIdentifier</var> = <span class="php-keyword1">NULL</span> </span> )</code>
+		<code><a href="source-class-COntologyNode.html#465-509" title="Go to source code">GetGraphNode</a>( <span><code><a href="class-CConnection.html">CConnection</a></code> <var>$theConnection</var></span>, <span>integer <var>$theIdentifier</var> = <span class="php-keyword1">NULL</span> </span> )</code>
 
 		<div class="description short">
 			
@@ -568,7 +576,7 @@ the current object graph node.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#_GetGraphNodeProperties">#</a>
-		<code><a href="source-class-COntologyNode.html#515-546" title="Go to source code">GetGraphNodeProperties</a>( <span><code><a href="class-CConnection.html">CConnection</a></code> <var>$theConnection</var></span>, <span>integer <var>$theIdentifier</var> = <span class="php-keyword1">NULL</span> </span> )</code>
+		<code><a href="source-class-COntologyNode.html#516-547" title="Go to source code">GetGraphNodeProperties</a>( <span><code><a href="class-CConnection.html">CConnection</a></code> <var>$theConnection</var></span>, <span>integer <var>$theIdentifier</var> = <span class="php-keyword1">NULL</span> </span> )</code>
 
 		<div class="description short">
 			
@@ -620,7 +628,7 @@ the current object graph node properties.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#_Update">#</a>
-		<code><a href="source-class-COntologyNode.html#562-592" title="Go to source code">Update</a>( <span><code><a href="class-CConnection.html">CConnection</a></code> <var>$theConnection</var></span> )</code>
+		<code><a href="source-class-COntologyNode.html#563-593" title="Go to source code">Update</a>( <span><code><a href="class-CConnection.html">CConnection</a></code> <var>$theConnection</var></span> )</code>
 
 		<div class="description short">
 			
@@ -668,7 +676,7 @@ modification interface provided by container objects.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#_Replace">#</a>
-		<code><a href="source-class-COntologyNode.html#599-639" title="Go to source code">Replace</a>( <span><code><a href="class-CConnection.html">CConnection</a></code> <var>$theConnection</var></span> )</code>
+		<code><a href="source-class-COntologyNode.html#600-640" title="Go to source code">Replace</a>( <span><code><a href="class-CConnection.html">CConnection</a></code> <var>$theConnection</var></span> )</code>
 
 		<div class="description short">
 			
@@ -719,7 +727,7 @@ non committed object.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#_DefaultContainerName">#</a>
-		<code><a href="source-class-COntologyNode.html#655-667" title="Go to source code">DefaultContainerName</a>( )</code>
+		<code><a href="source-class-COntologyNode.html#656-668" title="Go to source code">DefaultContainerName</a>( )</code>
 
 		<div class="description short">
 			
@@ -768,7 +776,7 @@ non committed object.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#_Resolve">#</a>
-		<code><a href="source-class-COntologyNode.html#683-825" title="Go to source code">Resolve</a>( <span><code><a href="class-CConnection.html">CConnection</a></code> <var>$theConnection</var></span>, <span>mixed <var>$theIdentifier</var></span>, <span>boolean <var>$doThrow</var> = <span class="php-keyword1">FALSE</span> </span> )</code>
+		<code><a href="source-class-COntologyNode.html#684-826" title="Go to source code">Resolve</a>( <span><code><a href="class-CConnection.html">CConnection</a></code> <var>$theConnection</var></span>, <span>mixed <var>$theIdentifier</var></span>, <span>boolean <var>$doThrow</var> = <span class="php-keyword1">FALSE</span> </span> )</code>
 
 		<div class="description short">
 			
@@ -858,7 +866,7 @@ parameter, or you will get unexpected results.</b></p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#__Preset">#</a>
-		<code><a href="source-class-COntologyNode.html#841-941" title="Go to source code">_Preset</a>( <span>reference <var>&amp; $theOffset</var></span>, <span>reference <var>&amp; $theValue</var></span> )</code>
+		<code><a href="source-class-COntologyNode.html#842-942" title="Go to source code">_Preset</a>( <span>reference <var>&amp; $theOffset</var></span>, <span>reference <var>&amp; $theValue</var></span> )</code>
 
 		<div class="description short">
 			
@@ -921,7 +929,7 @@ offsets from any modification.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#__Preunset">#</a>
-		<code><a href="source-class-COntologyNode.html#948-991" title="Go to source code">_Preunset</a>( <span>reference <var>&amp; $theOffset</var></span> )</code>
+		<code><a href="source-class-COntologyNode.html#949-992" title="Go to source code">_Preunset</a>( <span>reference <var>&amp; $theOffset</var></span> )</code>
 
 		<div class="description short">
 			
@@ -977,7 +985,7 @@ offsets in all cases.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#__PrecommitRelated">#</a>
-		<code><a href="source-class-COntologyNode.html#1007-1080" title="Go to source code">_PrecommitRelated</a>( <span>reference <var>&amp; $theConnection</var></span>, <span>reference <var>&amp; $theModifiers</var></span> )</code>
+		<code><a href="source-class-COntologyNode.html#1008-1081" title="Go to source code">_PrecommitRelated</a>( <span>reference <var>&amp; $theConnection</var></span>, <span>reference <var>&amp; $theModifiers</var></span> )</code>
 
 		<div class="description short">
 			
@@ -1035,7 +1043,7 @@ provided as an identifier.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#__PrecommitIdentify">#</a>
-		<code><a href="source-class-COntologyNode.html#1087-1190" title="Go to source code">_PrecommitIdentify</a>( <span>reference <var>&amp; $theConnection</var></span>, <span>reference <var>&amp; $theModifiers</var></span> )</code>
+		<code><a href="source-class-COntologyNode.html#1088-1191" title="Go to source code">_PrecommitIdentify</a>( <span>reference <var>&amp; $theConnection</var></span>, <span>reference <var>&amp; $theModifiers</var></span> )</code>
 
 		<div class="description short">
 			
@@ -1111,7 +1119,7 @@ will have been set here.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#__PostcommitRelated">#</a>
-		<code><a href="source-class-COntologyNode.html#1206-1282" title="Go to source code">_PostcommitRelated</a>( <span>reference <var>&amp; $theConnection</var></span>, <span>reference <var>&amp; $theModifiers</var></span> )</code>
+		<code><a href="source-class-COntologyNode.html#1207-1283" title="Go to source code">_PostcommitRelated</a>( <span>reference <var>&amp; $theConnection</var></span>, <span>reference <var>&amp; $theModifiers</var></span> )</code>
 
 		<div class="description short">
 			
@@ -1182,7 +1190,7 @@ container to this method in order to make it work!</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#__PostcommitCleanup">#</a>
-		<code><a href="source-class-COntologyNode.html#1289-1313" title="Go to source code">_PostcommitCleanup</a>( <span>reference <var>&amp; $theConnection</var></span>, <span>reference <var>&amp; $theModifiers</var></span> )</code>
+		<code><a href="source-class-COntologyNode.html#1290-1314" title="Go to source code">_PostcommitCleanup</a>( <span>reference <var>&amp; $theConnection</var></span>, <span>reference <var>&amp; $theModifiers</var></span> )</code>
 
 		<div class="description short">
 			
@@ -1228,7 +1236,7 @@ have to be refreshed and its references actualised.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#__LoadTermAttributes">#</a>
-		<code><a href="source-class-COntologyNode.html#1329-1405" title="Go to source code">_LoadTermAttributes</a>( <span>array <var>$theAttributes</var> = <span class="php-keyword1">NULL</span> </span> )</code>
+		<code><a href="source-class-COntologyNode.html#1330-1406" title="Go to source code">_LoadTermAttributes</a>( <span>array <var>$theAttributes</var> = <span class="php-keyword1">NULL</span> </span> )</code>
 
 		<div class="description short">
 			
@@ -1289,7 +1297,7 @@ explicitly invoke it.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#__TermAttributes">#</a>
-		<code><a href="source-class-COntologyNode.html#1412-1425" title="Go to source code">_TermAttributes</a>( )</code>
+		<code><a href="source-class-COntologyNode.html#1413-1426" title="Go to source code">_TermAttributes</a>( )</code>
 
 		<div class="description short">
 			
@@ -1333,7 +1341,7 @@ used to select attributes from the node's term.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#__AddGraphNode">#</a>
-		<code><a href="source-class-COntologyNode.html#1441-1538" title="Go to source code">_AddGraphNode</a>( <span><code><a href="class-CGraphContainer.html">CGraphContainer</a></code> <var>$theGraph</var></span>, <span>integer <var>$theIdentifier</var> = <span class="php-keyword1">NULL</span></span>, <span>array <var>$theProperties</var> = <span class="php-keyword1">NULL</span> </span> )</code>
+		<code><a href="source-class-COntologyNode.html#1442-1539" title="Go to source code">_AddGraphNode</a>( <span><code><a href="class-CGraphContainer.html">CGraphContainer</a></code> <var>$theGraph</var></span>, <span>integer <var>$theIdentifier</var> = <span class="php-keyword1">NULL</span></span>, <span>array <var>$theProperties</var> = <span class="php-keyword1">NULL</span> </span> )</code>
 
 		<div class="description short">
 			
@@ -1409,7 +1417,7 @@ which attributes will be set in the graph node.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#__GraphNodeProperties">#</a>
-		<code><a href="source-class-COntologyNode.html#1545-1603" title="Go to source code">_GraphNodeProperties</a>( <span>array <var>$theProperties</var> = <span class="php-keyword1">NULL</span> </span> )</code>
+		<code><a href="source-class-COntologyNode.html#1546-1604" title="Go to source code">_GraphNodeProperties</a>( <span>array <var>$theProperties</var> = <span class="php-keyword1">NULL</span> </span> )</code>
 
 		<div class="description short">
 			
@@ -1468,7 +1476,7 @@ to the current node.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#__NewEdge">#</a>
-		<code><a href="source-class-COntologyNode.html#1619-1627" title="Go to source code">_NewEdge</a>( )</code>
+		<code><a href="source-class-COntologyNode.html#1620-1628" title="Go to source code">_NewEdge</a>( )</code>
 
 		<div class="description short">
 			
@@ -1504,10 +1512,7 @@ to the current node.</p>
 	<caption>Methods inherited from <a href="class-CNode.html#methods">CNode</a></caption>
 	<tr>
 		<td><code>
-			<a href="class-CNode.html#_Category">Category()</a>, 
 			<a href="class-CNode.html#_Description">Description()</a>, 
-			<a href="class-CNode.html#_Example">Example()</a>, 
-			<a href="class-CNode.html#_Kind">Kind()</a>, 
 			<a href="class-CNode.html#_RelateTo">RelateTo()</a>, 
 			<a href="class-CNode.html#_Term">Term()</a>, 
 			<a href="class-CNode.html#__Ready">_Ready()</a>
@@ -1601,6 +1606,28 @@ to the current node.</p>
 	</tr>
 	</table>
 
+	<table class="summary used">
+	<caption>Methods used from <a href="class-TCategory.html#methods">TCategory</a></caption>
+	<tr>
+		<td><code>
+			<a href="class-TCategory.html#_Category">()</a>, 
+			<a href="class-TCategory.html#_Kind">()</a>
+		</code></td>
+	</tr>
+	</table>
+	<table class="summary used">
+	<caption>Methods used from <a href="class-TRepresentation.html#methods">TRepresentation</a></caption>
+	<tr>
+		<td><code>
+			<a href="class-TRepresentation.html#_Example">()</a>, 
+			<a href="class-TRepresentation.html#_Input">()</a>, 
+			<a href="class-TRepresentation.html#_Length">()</a>, 
+			<a href="class-TRepresentation.html#_LowerBound">()</a>, 
+			<a href="class-TRepresentation.html#_Pattern">()</a>, 
+			<a href="class-TRepresentation.html#_UpperBound">()</a>
+		</code></td>
+	</tr>
+	</table>
 
 
 

@@ -1,6 +1,6 @@
 /*=======================================================================================
  *																						*
- *										Tags.inc.js										*
+ *									Tags.inc.js											*
  *																						*
  *======================================================================================*/
  
@@ -149,12 +149,17 @@
  *	 </ul>
  * </ul>
  *
+ * To convert this file to javascript use the following grep pattern:
+ * <code>
+ * search:  ^define\( "(.+)",.+(\'.+\').*;
+ * replace: var \1 = \2;
+ * </code>
+ *
  *	@package	MyWrapper
  *	@subpackage	Definitions
  *
  *	@author		Milko A. Škofič <m.skofic@cgiar.org>
  *	@version	1.00 25/11/2012
- *	@version	2.00 23/01/2013
  */
 
 /*=======================================================================================
@@ -534,6 +539,19 @@ var kTAG_OBJECT = '26';
 var kTAG_PREDICATE = '27';
 
 /**
+ * MASTER.
+ *
+ * Master.
+ *
+ * This attribute contains a reference to an object of the same kind as the current one, it
+ * represents the reference of an alias to its master. It is generally used when two objects
+ * share the same content, but are only formally different.
+ *
+ * Version 1: (kTAG_MASTER)[28]
+ */
+var kTAG_MASTER = '28';
+
+/**
  * PATH.
  *
  * Path.
@@ -544,8 +562,9 @@ var kTAG_PREDICATE = '27';
  *
  * Version 1: (kTAG_TAG_PATH)[22]
  * Version 2: (kTAG_PATH)[23]
+ * Version 3: (kTAG_PATH)[28]
  */
-var kTAG_PATH = '28';
+var kTAG_PATH = '29';
 
 /*=======================================================================================
  *	REFERENCE COLLECTIONS																*
@@ -561,8 +580,9 @@ var kTAG_PATH = '28';
  *
  * Version 1: (kTAG_REFS_NAMESPACE)[9]
  * Version 2: (kTAG_NAMESPACE_REFS)[24]
+ * Version 3: (kTAG_NAMESPACE_REFS)[29]
  */
-var kTAG_NAMESPACE_REFS = '29';
+var kTAG_NAMESPACE_REFS = '30';
 
 /**
  * NODES.
@@ -574,8 +594,9 @@ var kTAG_NAMESPACE_REFS = '29';
  *
  * Version 1: (kTAG_REFS_NODE)[10]
  * Version 2: (kTAG_NODES)[25]
+ * Version 3: (kTAG_NODES)[30]
  */
-var kTAG_NODES = '30';
+var kTAG_NODES = '31';
 
 /**
  * EDGES.
@@ -587,8 +608,9 @@ var kTAG_NODES = '30';
  *
  * Version 1: (kTAG_REFS_EDGE)[17]
  * Version 2: (kTAG_EDGES)[26]
+ * Version 3: (kTAG_EDGES)[31]
  */
-var kTAG_EDGES = '31';
+var kTAG_EDGES = '32';
 
 /**
  * FEATURES.
@@ -600,8 +622,9 @@ var kTAG_EDGES = '31';
  *
  * Version 1: (kTAG_REFS_TAG_FEATURE)[15]
  * Version 2: (kTAG_FEATURES)[27]
+ * Version 3: (kTAG_FEATURES)[32]
  */
-var kTAG_FEATURES = '32';
+var kTAG_FEATURES = '33';
 
 /**
  * METHODS.
@@ -613,8 +636,9 @@ var kTAG_FEATURES = '32';
  *
  * Version 1: (kTAG_REFS_TAG_METHOD)[??]
  * Version 2: (kTAG_METHODS)[28]
+ * Version 3: (kTAG_METHODS)[33]
  */
-var kTAG_METHODS = '33';
+var kTAG_METHODS = '34';
 
 /**
  * SCALES.
@@ -626,8 +650,9 @@ var kTAG_METHODS = '33';
  *
  * Version 1: (kTAG_REFS_TAG_SCALE)[16]
  * Version 2: (kTAG_SCALES)[29]
+ * Version 3: (kTAG_SCALES)[34]
  */
-var kTAG_SCALES = '34';
+var kTAG_SCALES = '35';
 
 /*=======================================================================================
  *	USER OBJECT																			*
@@ -642,8 +667,9 @@ var kTAG_SCALES = '34';
  *
  * Version 1: (kTAG_USER_NAME)[30]
  * Version 2: (kTAG_USER_NAME)[30]
+ * Version 3: (kTAG_USER_NAME)[35]
  */
-var kTAG_USER_NAME = '35';
+var kTAG_USER_NAME = '36';
 
 /**
  * USER-CODE.
@@ -654,8 +680,9 @@ var kTAG_USER_NAME = '35';
  *
  * Version 1: (kTAG_USER_CODE)[31]
  * Version 2: (kTAG_USER_CODE)[31]
+ * Version 3: (kTAG_USER_CODE)[36]
  */
-var kTAG_USER_CODE = '36';
+var kTAG_USER_CODE = '37';
 
 /**
  * USER-PASS.
@@ -666,8 +693,9 @@ var kTAG_USER_CODE = '36';
  *
  * Version 1: (kTAG_USER_PASS)[32]
  * Version 2: (kTAG_USER_PASS)[32]
+ * Version 3: (kTAG_USER_PASS)[37]
  */
-var kTAG_USER_PASS = '37';
+var kTAG_USER_PASS = '38';
 
 /**
  * USER-MAIL.
@@ -678,8 +706,9 @@ var kTAG_USER_PASS = '37';
  *
  * Version 1: (kTAG_USER_MAIL)[33]
  * Version 2: (kTAG_USER_MAIL)[33]
+ * Version 3: (kTAG_USER_MAIL)[38]
  */
-var kTAG_USER_MAIL = '38';
+var kTAG_USER_MAIL = '39';
 
 /**
  * USER-ROLE.
@@ -690,8 +719,9 @@ var kTAG_USER_MAIL = '38';
  *
  * Version 1: (kTAG_USER_ROLE)[34]
  * Version 2: (kTAG_USER_ROLE)[34]
+ * Version 3: (kTAG_USER_ROLE)[39]
  */
-var kTAG_USER_ROLE = '39';
+var kTAG_USER_ROLE = '40';
 
 /**
  * USER-PROFILE.
@@ -702,8 +732,9 @@ var kTAG_USER_ROLE = '39';
  *
  * Version 1: (kTAG_USER_PROFILE)[35]
  * Version 2: (kTAG_USER_PROFILE)[35]
+ * Version 3: (kTAG_USER_PROFILE)[40]
  */
-var kTAG_USER_PROFILE = '40';
+var kTAG_USER_PROFILE = '41';
 
 /**
  * USER-MANAGER.
@@ -714,8 +745,9 @@ var kTAG_USER_PROFILE = '40';
  *
  * Version 1: (kTAG_USER_MANAGER)[36]
  * Version 2: (kTAG_USER_MANAGER)[36]
+ * Version 3: (kTAG_USER_MANAGER)[41]
  */
-var kTAG_USER_MANAGER = '41';
+var kTAG_USER_MANAGER = '42';
 
 /**
  * USER-DOMAIN.
@@ -726,5 +758,6 @@ var kTAG_USER_MANAGER = '41';
  *
  * Version 1: (kTAG_USER_DOMAIN)[37]
  * Version 2: (kTAG_USER_DOMAIN)[37]
+ * Version 3: (kTAG_USER_DOMAIN)[42]
  */
-var kTAG_USER_DOMAIN = '42';
+var kTAG_USER_DOMAIN = '43';

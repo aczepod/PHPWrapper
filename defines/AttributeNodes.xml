@@ -308,6 +308,15 @@
         </element>
     </node>
     
+    <!-- kTERM_MASTER -->
+	<node class="COntologyMasterVertex">
+		<element variable="kTAG_TERM">:MASTER</element>
+		<element variable="kTAG_CLASS">COntologyMasterVertex</element>
+		<element variable="kTAG_KIND">
+            <item>:KIND-FEATURE</item>
+        </element>
+    </node>
+    
     <!-- kTERM_PATH -->
 	<node class="COntologyMasterVertex">
 		<element variable="kTAG_TERM">:PATH</element>

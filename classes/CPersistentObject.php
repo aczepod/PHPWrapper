@@ -132,13 +132,16 @@ class CPersistentObject extends CPersistentDocument
 	/**
 	 * <h4>Manage global unique identifier</h4>
 	 *
-	 * The <i>global unique identifier</i>, {@link kTAG_GID}, holds a string which
-	 * represents the object's unique identifier, this value is hashed or used as-is to
-	 * serve as the native unique identifier, {@link kTAG_NID}. The global identifier
-	 * is usually a computed value extracted from a series of offsets of the object.
+	 * The <i>global unique identifier</i>, {@link kTAG_GID}, holds a string value which
+	 * represents the object's unique identifier. This value is usually a computed string
+	 * value extracted from a series of key properties of the object.
 	 *
-	 * The method accepts a parameter which represents either the identifier or the
-	 * requested operation, depending on its value:
+	 * In general, the hashed value of this property becomes the object's native identifier,
+	 * {@link NID()} and while the latter represents a native value, this property
+	 * represents the global or public identifier of the object.
+	 *
+	 * The method accepts a parameter which represents either the new value or the requested
+	 * operation, depending on its type:
 	 *
 	 * <ul>
 	 *	<li><tt>NULL</tt>: Return the current value.
@@ -147,17 +150,18 @@ class CPersistentObject extends CPersistentDocument
 	 * </ul>
 	 *
 	 * The second parameter is a boolean which if <tt>TRUE</tt> will return the <i>old</i>
-	 * value when replacing containers; if <tt>FALSE</tt>, it will return the currently set
-	 * value.
+	 * value when replacing an existing value; if <tt>FALSE</tt>, it will return the
+	 * currently set value.
 	 *
-	 * Note that when the object has the {@link _IsCommitted()} status this offset will be
-	 * locked and an exception will be raised.
+	 * Note that, while this method allows the creation, modification and deletion of this
+	 * property, the hosting object may prevent some of these actions, by default this
+	 * attribute is locked when the object has the {@link _IsCommitted()} status.
 	 *
-	 * @param mixed					$theValue			Native identifier or operation.
+	 * @param mixed					$theValue			Global identifier or operation.
 	 * @param boolean				$getOld				<tt>TRUE</tt> get old value.
 	 *
 	 * @access public
-	 * @return mixed				<i>New</i> or <i>old</i> native container.
+	 * @return string				<i>New</i>, <i>old</i> value or <tt>NULL</tt>.
 	 *
 	 * @uses ManageOffset()
 	 *
@@ -175,7 +179,7 @@ class CPersistentObject extends CPersistentDocument
 	 *==================================================================================*/
 
 	/**
-	 * <h4>Manage global unique identifier</h4>
+	 * <h4>Manage class identifier</h4>
 	 *
 	 * The <i>class name</i>, {@link kTAG_CLASS}, holds a string which is the class
 	 * name of the object that first stored the object in the container. This value will
@@ -192,17 +196,21 @@ class CPersistentObject extends CPersistentDocument
 	 * </ul>
 	 *
 	 * The second parameter is a boolean which if <tt>TRUE</tt> will return the <i>old</i>
-	 * value when replacing containers; if <tt>FALSE</tt>, it will return the currently set
-	 * value.
+	 * value when replacing an existing value; if <tt>FALSE</tt>, it will return the
+	 * currently set value.
 	 *
-	 * Note that when the object has the {@link _IsCommitted()} status this offset will be
-	 * locked and in many other classes this offset may not be writable.
+	 * Note that, while this method allows the creation, modification and deletion of this
+	 * property, the hosting object may prevent some of these actions, by default this
+	 * attribute is locked when the object has the {@link _IsCommitted()} status.
 	 *
-	 * @param mixed					$theValue			Persistent container or operation.
+	 * In general you should not set this value directly, since it will be set
+	 * programmatically.
+	 *
+	 * @param mixed					$theValue			Class name or operation.
 	 * @param boolean				$getOld				<tt>TRUE</tt> get old value.
 	 *
 	 * @access public
-	 * @return mixed				<i>New</i> or <i>old</i> native container.
+	 * @return string				<i>New</i>, <i>old</i> value or <tt>NULL</tt>.
 	 *
 	 * @uses ManageOffset()
 	 *

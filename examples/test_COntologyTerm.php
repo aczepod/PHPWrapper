@@ -428,29 +428,6 @@ try
 	}
 
 	//
-	// Test modifying tag list.
-	//
-	try
-	{
-		echo( '<h4>Test modifying tag list</h4>' );
-		echo( '<h5>$last_term[ kTAG_REFS_TAG ] = 24;</h5>' );
-		$last_term[ kTAG_REFS_TAG ] = 24;
-		echo( '<h3><font color="red">Should have raised an exception</font></h3>' );
-		echo( 'Inited['.$namespace->inited()
-					   .'] Dirty['.$namespace->dirty()
-					   .'] Saved['.$namespace->committed()
-					   .'] Encoded['.$namespace->encoded().']<br />' );
-		echo( '<pre>' ); print_r( $namespace ); echo( '</pre>' );
-		echo( '<hr />' );
-	}
-	catch( Exception $error )
-	{
-		echo( '<h5>Expected exception</h5>' );
-		echo( '<pre>'.(string) $error.'</pre>' );
-		echo( '<hr>' );
-	}
-
-	//
 	// Convert to string.
 	//
 	echo( '<h4>Convert to string</h4>' );
@@ -582,9 +559,9 @@ try
 	echo( '<hr />' );
 
 	//
-	// Test setting term reference.
+	// Test setting master reference.
 	//
-	echo( '<h4>Test setting term reference</h4>' );
+	echo( '<h4>Test setting master reference</h4>' );
 	echo( '<h5>$preferred = new MyClass();</h5>' );
 	$preferred = new MyClass();
 	echo( '<h5>$preferred[ kTAG_LID ] = "preferred";</h5>' );
@@ -593,8 +570,8 @@ try
 	$synonym = new MyClass();
 	echo( '<h5>$synonym[ kTAG_LID ] = "synonym";</h5>' );
 	$synonym[ kTAG_LID ] = "synonym";
-	echo( '<h5>$synonym->Term( $preferred );</h5>' );
-	$synonym->Term( $preferred );
+	echo( '<h5>$synonym->Master( $preferred );</h5>' );
+	$synonym->Master( $preferred );
 	echo( 'Synonym:<pre>' ); print_r( $synonym ); echo( '</pre>' );
 	echo( '<h5>$status = $synonym->Replace( $database );</h5>' );
 	$status = $synonym->Replace( $database );

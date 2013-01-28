@@ -27,6 +27,13 @@
 require_once( kPATH_MYWRAPPER_LIBRARY_DEFINE."/Tokens.inc.php" );
 
 /**
+ * Category trait.
+ *
+ * This includes the category trait definitions.
+ */
+require_once( kPATH_MYWRAPPER_LIBRARY_CLASS."/TCategory.php" );
+
+/**
  * Ancestor.
  *
  * This includes the ancestor class definitions.
@@ -66,12 +73,12 @@ require_once( kPATH_MYWRAPPER_LIBRARY_CLASS."/CPersistentObject.php" );
  *		the <tt>{@link kTAG_SYNONYMS}</tt> tag, represents a list of strings that represent
  *		alternative names or identifiers for the term. These strings are comparable to
  *		variable names and do not have a language scope. This attribute is optional.
- *	<li><i>Term</i>: The term, <tt>{@link Term()}</tt> or the <tt>{@link kTAG_TERM}</tt>
- *		tag, is a reference to another term that hosts the attributes of the current term.
- *		This can be used to redirect synonymous terms to a single instance that holds all
- *		the attributes common to the referencing terms. This is used to prevent duplicating
- *		attributes for synonym terms. This attribute is constituted by the
- *		{@link kTAG_NID} of the referenced term and is optional.
+ *	<li><i>Master</i>: The master, <tt>{@link Master()}</tt> or the
+ *		<tt>{@link kTAG_MASTER}</tt> tag, is a reference to another term that hosts the
+ *		attributes of the current term. This can be used to redirect synonymous terms to a
+ *		single instance that holds all the attributes common to the referencing terms. This
+ *		is used to prevent duplicating attributes for synonym terms. This attribute is
+ *		constituted by the {@link kTAG_NID} of the referenced term and is optional.
  * </ul>
  *
  * The native identifier of the term, {@link kTAG_NID}, is equivalent to the global
@@ -90,6 +97,35 @@ require_once( kPATH_MYWRAPPER_LIBRARY_CLASS."/CPersistentObject.php" );
  */
 class CTerm extends CPersistentObject
 {
+		
+
+/*=======================================================================================
+ *																						*
+ *											TRAITS										*
+ *																						*
+ *======================================================================================*/
+
+
+	 
+	/*===================================================================================
+	 *	TCategory																		*
+	 *==================================================================================*/
+
+	/**
+	 * <h4>Category traits</h4>
+	 *
+	 * This trait provides accessor methods for the category properties of the object:
+	 *
+	 * <ul>
+	 *	<li><tt>{@link Category()}</tt>: The <i>categories</i>, {@link kTAG_CATEGORY},
+	 *		represent a set of values that constitute the category of the hosting object.
+	 *	<li><tt>{@link Kind()}</tt>: The <i>kinds</i>, {@link kTAG_KIND}, represent a set of
+	 *		enumerations that represent the kind of of the hosting object.
+	 *	<li><tt>{@link Type()}</tt>: The <i>types</i>, {@link kTAG_TYPE}, represent a set of
+	 *		enumerations that represent the type of of the hosting object.
+	 * </ul>
+	 */
+	use TCategory;
 		
 
 /*=======================================================================================
@@ -191,6 +227,50 @@ class CTerm extends CPersistentObject
 		return ManageOffset( $this, kTAG_LID, $theValue, $getOld );					// ==>
 
 	} // LID.
+
+	 
+	/*===================================================================================
+	 *	Master																			*
+	 *==================================================================================*/
+
+	/**
+	 * <h4>Manage term reference</h4>
+	 *
+	 * This method can be used to manage the term reference, {@link kTAG_MASTER}, which
+	 * represents the term that hosts all the attributes for the current term.
+	 *
+	 * This attribute is used when defining exact term synonyms: instead of duplicating the
+	 * attributes in all the synonyms, one can store them in one term and have all the other
+	 * synonyms point to that term, that way storage and changes reside in a single place.
+	 *
+	 * The method accepts a parameter which represents either the term, or the requested
+	 * operation, depending on its value:
+	 *
+	 * <ul>
+	 *	<li><tt>NULL</tt>: Return the current value.
+	 *	<li><tt>FALSE</tt>: Delete the current value.
+	 *	<li><i>other</i>: Set the value with the provided parameter.
+	 * </ul>
+	 *
+	 * The second parameter is a boolean which if <tt>TRUE</tt> will return the <i>old</i>
+	 * value when replacing containers; if <tt>FALSE</tt>, it will return the currently set
+	 * value.
+	 *
+	 * @param mixed					$theValue			Term or operation.
+	 * @param boolean				$getOld				<tt>TRUE</tt> get old value.
+	 *
+	 * @access public
+	 * @return mixed				<i>New</i> or <i>old</i> native container.
+	 *
+	 * @uses ManageOffset()
+	 *
+	 * @see kTAG_MASTER
+	 */
+	public function Master( $theValue = NULL, $getOld = FALSE )
+	{
+		return ManageOffset( $this, kTAG_MASTER, $theValue, $getOld );				// ==>
+
+	} // Master.
 
 	 
 	/*===================================================================================
@@ -362,187 +442,6 @@ class CTerm extends CPersistentObject
 			( $this, kTAG_SYNONYMS, $theValue, $theOperation, $getOld );			// ==>
 
 	} // Synonym.
-
-	 
-	/*===================================================================================
-	 *	Term																			*
-	 *==================================================================================*/
-
-	/**
-	 * <h4>Manage term reference</h4>
-	 *
-	 * This method can be used to manage the term reference, {@link kTAG_TERM}, which
-	 * represents the term that hosts all the attributes for the current term.
-	 *
-	 * This attribute is used when defining exact term synonyms: instead of duplicating the
-	 * attributes in all the synonyms, one can store them in one term and have all the other
-	 * synonyms point to that term, that way storage and changes reside in a single place.
-	 *
-	 * The method accepts a parameter which represents either the term, or the requested
-	 * operation, depending on its value:
-	 *
-	 * <ul>
-	 *	<li><tt>NULL</tt>: Return the current value.
-	 *	<li><tt>FALSE</tt>: Delete the current value.
-	 *	<li><i>other</i>: Set the value with the provided parameter.
-	 * </ul>
-	 *
-	 * The second parameter is a boolean which if <tt>TRUE</tt> will return the <i>old</i>
-	 * value when replacing containers; if <tt>FALSE</tt>, it will return the currently set
-	 * value.
-	 *
-	 * @param mixed					$theValue			Term or operation.
-	 * @param boolean				$getOld				<tt>TRUE</tt> get old value.
-	 *
-	 * @access public
-	 * @return mixed				<i>New</i> or <i>old</i> native container.
-	 *
-	 * @uses ManageOffset()
-	 *
-	 * @see kTAG_TERM
-	 */
-	public function Term( $theValue = NULL, $getOld = FALSE )
-	{
-		return ManageOffset( $this, kTAG_TERM, $theValue, $getOld );				// ==>
-
-	} // Term.
-
-		
-	/*===================================================================================
-	 *	Kind																			*
-	 *==================================================================================*/
-
-	/**
-	 * <h4>Manage term kind set</h4>
-	 *
-	 * The term kind set, {@link kTAG_KIND}, holds a list of unique values that represent
-	 * the different kinds or types associated with the current term, this kind refers to a
-	 * qualification specific to the current class of objects.
-	 *
-	 * This offset collects the list of these qualifications in an enumerated set that can
-	 * be managed with the following parameters:
-	 *
-	 * <ul>
-	 *	<li><tt>$theValue</tt>: Depending on the next parameter, this may either refer to
-	 *		the value to be set or to the index of the element to be retrieved or deleted:
-	 *	 <ul>
-	 *		<li><tt>NULL</tt>: This value indicates that we want to operate on all elements,
-	 *			which means, in practical terms, that we either want to retrieve or delete
-	 *			the full list. If the operation parameter resolves to <tt>TRUE</tt>, the
-	 *			method will default to retrieving the current list and no new element will
-	 *			be added.
-	 *		<li><tt>array</tt>: An array indicates that we want to operate on a list of
-	 *			values and that other parameters may also be provided as lists. Note that
-	 *			{@link ArrayObject} instances are not considered here as arrays.
-	 *		<li><i>other</i>: Any other type represents either the new value to be added or
-	 *			the index to the value to be returned or deleted.
-	 *	 </ul>
-	 *	<li><tt>$theOperation</tt>: This parameter represents the operation to be performed
-	 *		whose scope depends on the value of the previous parameter:
-	 *	 <ul>
-	 *		<li><tt>NULL</tt>: Return the element or full list.
-	 *		<li><tt>FALSE</tt>: Delete the element or full list.
-	 *		<li><tt>array</tt>: This type is only considered if the <tt>$theValue</tt>
-	 *			parameter is provided as an array: the method will be called for each
-	 *			element of the <tt>$theValue</tt> parameter matched with the corresponding
-	 *			element of this parameter, which also means that both both parameters must
-	 *			share the same count.
-	 *		<li><i>other</i>: Add the <tt>$theValue</tt> value to the list. If you provided
-	 *			<tt>NULL</tt> in the previous parameter, the operation will be reset to
-	 *			<tt>NULL</tt>.
-	 *	 </ul>
-	 *	<li><tt>$getOld</tt>: Determines what the method will return:
-	 *	 <ul>
-	 *		<li><tt>TRUE</tt>: Return the value <i>before</i> it was eventually modified.
-	 *		<li><tt>FALSE</tt>: Return the value <i>after</i> it was eventually modified.
-	 *	 </ul>
-	 * </ul>
-	 *
-	 * @param mixed					$theValue			Value or index.
-	 * @param mixed					$theOperation		Operation.
-	 * @param boolean				$getOld				TRUE get old value.
-	 *
-	 * @access public
-	 * @return mixed				<i>New</i> or <i>old</i> kind.
-	 *
-	 * @uses ManageObjectSetOffset()
-	 *
-	 * @see kTAG_KIND
-	 */
-	public function Kind( $theValue = NULL, $theOperation = NULL, $getOld = FALSE )
-	{
-		return ManageObjectSetOffset
-			( $this, kTAG_KIND, $theValue, $theOperation, $getOld );				// ==>
-
-	} // Kind.
-
-	 
-	/*===================================================================================
-	 *	Example																			*
-	 *==================================================================================*/
-
-	/**
-	 * <h4>Manage term examples</h4>
-	 *
-	 * This method can be used to manage the term's examples, {@link kTAG_EXAMPLES}, which
-	 * contains a list of strings that represent examples or usages of the term.
-	 *
-	 * This offset collects the list of examples in list that can be managed with the
-	 * following parameters:
-	 *
-	 * <ul>
-	 *	<li><tt>$theValue</tt>: Depending on the next parameter, this may either refer to
-	 *		the value to be set or to the index of the element to be retrieved or deleted:
-	 *	 <ul>
-	 *		<li><tt>NULL</tt>: This value indicates that we want to operate on all elements,
-	 *			which means, in practical terms, that we either want to retrieve or delete
-	 *			the full list. If the operation parameter resolves to <tt>TRUE</tt>, the
-	 *			method will default to retrieving the current list and no new element will
-	 *			be added.
-	 *		<li><tt>array</tt>: An array indicates that we want to operate on a list of
-	 *			values and that other parameters may also be provided as lists. Note that
-	 *			{@link ArrayObject} instances are not considered here as arrays.
-	 *		<li><i>other</i>: Any other type represents either the new value to be added or
-	 *			the index to the value to be returned or deleted.
-	 *	 </ul>
-	 *	<li><tt>$theOperation</tt>: This parameter represents the operation to be performed
-	 *		whose scope depends on the value of the previous parameter:
-	 *	 <ul>
-	 *		<li><tt>NULL</tt>: Return the element or full list.
-	 *		<li><tt>FALSE</tt>: Delete the element or full list.
-	 *		<li><tt>array</tt>: This type is only considered if the <tt>$theValue</tt>
-	 *			parameter is provided as an array: the method will be called for each
-	 *			element of the <tt>$theValue</tt> parameter matched with the corresponding
-	 *			element of this parameter, which also means that both both parameters must
-	 *			share the same count.
-	 *		<li><i>other</i>: Add the <tt>$theValue</tt> value to the list. If you provided
-	 *			<tt>NULL</tt> in the previous parameter, the operation will be reset to
-	 *			<tt>NULL</tt>.
-	 *	 </ul>
-	 *	<li><tt>$getOld</tt>: Determines what the method will return:
-	 *	 <ul>
-	 *		<li><tt>TRUE</tt>: Return the value <i>before</i> it was eventually modified.
-	 *		<li><tt>FALSE</tt>: Return the value <i>after</i> it was eventually modified.
-	 *	 </ul>
-	 * </ul>
-	 *
-	 * @param mixed					$theValue			Value or index.
-	 * @param mixed					$theOperation		Operation.
-	 * @param boolean				$getOld				TRUE get old value.
-	 *
-	 * @access public
-	 * @return mixed				<i>New</i> or <i>old</i> type.
-	 *
-	 * @uses ManageObjectSetOffset()
-	 *
-	 * @see kTAG_EXAMPLES
-	 */
-	public function Example( $theValue = NULL, $theOperation = NULL, $getOld = FALSE )
-	{
-		return ManageObjectSetOffset
-			( $this, kTAG_SYNONYMS, $theValue, $theOperation, $getOld );			// ==>
-
-	} // Example.
 		
 
 

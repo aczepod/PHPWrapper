@@ -223,7 +223,7 @@ define( "kAPI_OP_GetTerm",			'WS:OP:GetTerm' );
  *		database. Note that the {@link kAPI_CONTAINER} will be ignored by this service.
  *	<li><i>{@link kAPI_OBJECT}</i>: This parameter is required and contains an array
  *		corresponding to the new vertex record, the following attributes will not be
- *		considered: {@link kTAG_NID}, {@link kTAG_CLASS}, {@link kTAG_NODE},
+ *		considered: {@link kTAG_NID}, {@link kTAG_CLASS}, {@link kTAG_MASTER},
  *		{@link kTAG_EDGES} and {@link kTAG_NODES}.
  *	<li><i>{@link kAPI_CLASS}</i>: This parameter is required to determine whether the
  *		instance to be created is a master or an alias.
@@ -324,6 +324,32 @@ define( "kAPI_OP_GetVertex",		'WS:OP:GetVertex' );
  * rather than adding exceptions that in the long run would become difficult to track.</i>
  */
 define( "kAPI_OP_GetTag",			'WS:OP:GetTag' );
+
+/**
+ * GetEnums web-service.
+ *
+ * This is the tag that represents the GetEnums web-service operation, which will return the
+ * set of controlled vocabulary items related to the provided node or tag:
+ *
+ * The service expects the following parameters:
+ *
+ * <ul>
+ *	<li><i>{@link kAPI_FORMAT}</i>: This parameter is required to indicate how to encode the
+ *		response.
+ *	<li><i>{@link kAPI_DATABASE}</i>: This parameter is required to indicate the working
+ *		database.
+ *	<li><i>{@link kAPI_CLASS}</i>: This parameter is required to indicate whether the
+ *		query should select a node or a term; this will also automatically set the container
+ *		name if omitted.
+ *	<li><i>{@link kAPI_QUERY}</i>: This parameter will hold the selection criteria for the
+ *		node or tag.</i>
+ * </ul>
+ *
+ * Once the reference node is resolved, the method will return all the edges related to
+ * the reference node with a {@link kPREDICATE_ENUM_OF} predicate traversing <i>all
+ * levels</i>.
+ */
+define( "kAPI_OP_GetEnums",			'WS:OP:GetEnums' );
 
 /*=======================================================================================
  *	RELATIONSHIP SENSE ENUMERATIONS														*

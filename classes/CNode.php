@@ -20,6 +20,20 @@
  *======================================================================================*/
 
 /**
+ * Category trait.
+ *
+ * This includes the category trait definitions.
+ */
+require_once( kPATH_MYWRAPPER_LIBRARY_CLASS."/TCategory.php" );
+
+/**
+ * Representation trait.
+ *
+ * This includes the representation trait definitions.
+ */
+require_once( kPATH_MYWRAPPER_LIBRARY_CLASS."/TRepresentation.php" );
+
+/**
  * Ancestor.
  *
  * This includes the ancestor class definitions.
@@ -101,6 +115,68 @@ require_once( kPATH_MYWRAPPER_LIBRARY_CLASS."/CPersistentObject.php" );
 class CNode extends CPersistentObject
 {
 		
+
+/*=======================================================================================
+ *																						*
+ *											TRAITS										*
+ *																						*
+ *======================================================================================*/
+
+
+	 
+	/*===================================================================================
+	 *	TCategory																		*
+	 *==================================================================================*/
+
+	/**
+	 * <h4>Category traits</h4>
+	 *
+	 * This trait provides accessor methods for the category properties of the object:
+	 *
+	 * <ul>
+	 *	<li><tt>{@link Category()}</tt>: The <i>categories</i>, {@link kTAG_CATEGORY},
+	 *		represent a set of values that constitute the category of the hosting object.
+	 *	<li><tt>{@link Kind()}</tt>: The <i>kinds</i>, {@link kTAG_KIND}, represent a set of
+	 *		enumerations that represent the kind of of the hosting object.
+	 *	<li><tt>{@link Type()}</tt>: The <i>types</i>, {@link kTAG_TYPE}, represent a set of
+	 *		enumerations that represent the type of of the hosting object.
+	 * </ul>
+	 */
+	use TCategory;
+
+	 
+	/*===================================================================================
+	 *	TRepresentation																	*
+	 *==================================================================================*/
+
+	/**
+	 * <h4>Representation traits</h4>
+	 *
+	 * This trait provides accessor methods for the attributes that define how a property
+	 * is displayed and how this property is validated, this set of accessor methods should
+	 * only be used by nodes which represent a measurable property and have a data type:
+	 *
+	 * <ul>
+	 *	<li><tt>{@link Input()}</tt>: The <i>input</i>, {@link kTAG_INPUT}, represents a set
+	 *		of values which list the suggested or preferred control types that should be
+	 *		used to display and modify an object property.
+	 *	<li><tt>{@link Pattern()}</tt>: The <i>pattern</i>, {@link kTAG_PATTERN},
+	 *		represents a regular expression that can be used to validate the input of an
+	 *		attribute's value.
+	 *	<li><tt>{@link Length()}</tt>: The <i>length</i>, {@link kTAG_LENGTH}, represents
+	 *		the maximum number of characters a value may hold.
+	 *	<li><tt>{@link LowerBound()}</tt>: The <i>lower bound</i>, {@link kTAG_MIN_VAL},
+	 *		represents the lowest limit a range value may take.
+	 *	<li><tt>{@link UpperBound()}</tt>: The <i>upper bound</i>, {@link kTAG_MAX_VAL},
+	 *		represents the highest limit a range value may take.
+	 *	<li><tt>{@link Example()}</tt>: The <i>examples</i>, {@link kTAG_EXAMPLES},
+	 *		represents a list of values that can be used as examples which follow a set of
+	 *		validation rules.
+	 * </ul>
+	 */
+	use TRepresentation;
+		
+
 
 /*=======================================================================================
  *																						*
@@ -189,213 +265,6 @@ class CNode extends CPersistentObject
 
 	} // Term.
 
-		
-	/*===================================================================================
-	 *	Category																		*
-	 *==================================================================================*/
-
-	/**
-	 * <h4>Manage node category set</h4>
-	 *
-	 * This method can be used to manage the node's category, {@link kTAG_CATEGORY}, which
-	 * is an enumerated set that represents the category or classification to which the
-	 * object defined by the node belongs to.
-	 *
-	 * This enumerated set is managed with the following parameters:
-	 *
-	 * <ul>
-	 *	<li><tt>$theValue</tt>: Depending on the next parameter, this may either refer to
-	 *		the value to be set or to the index of the element to be retrieved or deleted:
-	 *	 <ul>
-	 *		<li><tt>NULL</tt>: This value indicates that we want to operate on all elements,
-	 *			which means, in practical terms, that we either want to retrieve or delete
-	 *			the full list. If the operation parameter resolves to <tt>TRUE</tt>, the
-	 *			method will default to retrieving the current list and no new element will
-	 *			be added.
-	 *		<li><tt>array</tt>: An array indicates that we want to operate on a list of
-	 *			values and that other parameters may also be provided as lists. Note that
-	 *			{@link ArrayObject} instances are not considered here as arrays.
-	 *		<li><i>other</i>: Any other type represents either the new value to be added or
-	 *			the index to the value to be returned or deleted.
-	 *	 </ul>
-	 *	<li><tt>$theOperation</tt>: This parameter represents the operation to be performed
-	 *		whose scope depends on the value of the previous parameter:
-	 *	 <ul>
-	 *		<li><tt>NULL</tt>: Return the element or full list.
-	 *		<li><tt>FALSE</tt>: Delete the element or full list.
-	 *		<li><tt>array</tt>: This type is only considered if the <tt>$theValue</tt>
-	 *			parameter is provided as an array: the method will be called for each
-	 *			element of the <tt>$theValue</tt> parameter matched with the corresponding
-	 *			element of this parameter, which also means that both both parameters must
-	 *			share the same count.
-	 *		<li><i>other</i>: Add the <tt>$theValue</tt> value to the list. If you provided
-	 *			<tt>NULL</tt> in the previous parameter, the operation will be reset to
-	 *			<tt>NULL</tt>.
-	 *	 </ul>
-	 *	<li><tt>$getOld</tt>: Determines what the method will return:
-	 *	 <ul>
-	 *		<li><tt>TRUE</tt>: Return the value <i>before</i> it was eventually modified.
-	 *		<li><tt>FALSE</tt>: Return the value <i>after</i> it was eventually modified.
-	 *	 </ul>
-	 * </ul>
-	 *
-	 * @param mixed					$theValue			Value or index.
-	 * @param mixed					$theOperation		Operation.
-	 * @param boolean				$getOld				TRUE get old value.
-	 *
-	 * @access public
-	 * @return mixed				<i>New</i> or <i>old</i> type.
-	 *
-	 * @uses ManageObjectSetOffset()
-	 *
-	 * @see kTAG_CATEGORY
-	 */
-	public function Category( $theValue = NULL, $theOperation = NULL, $getOld = FALSE )
-	{
-		return ManageObjectSetOffset
-			( $this, kTAG_CATEGORY, $theValue, $theOperation, $getOld );			// ==>
-
-	} // Category.
-
-		
-	/*===================================================================================
-	 *	Kind																			*
-	 *==================================================================================*/
-
-	/**
-	 * <h4>Manage node kind set</h4>
-	 *
-	 * The node kind set, {@link kTAG_KIND}, holds a list of unique values that represent
-	 * the different kinds or types associated with the current node. The type,
-	 * {@link Type()}, of a node is a general qualification that applies to any class of
-	 * object, such as a data type; the kind, instead, refers to a qualification specific to
-	 * the current class of object.
-	 *
-	 * This offset collects the list of these qualifications in an enumerated set that can
-	 * be managed with the following parameters:
-	 *
-	 * <ul>
-	 *	<li><tt>$theValue</tt>: Depending on the next parameter, this may either refer to
-	 *		the value to be set or to the index of the element to be retrieved or deleted:
-	 *	 <ul>
-	 *		<li><tt>NULL</tt>: This value indicates that we want to operate on all elements,
-	 *			which means, in practical terms, that we either want to retrieve or delete
-	 *			the full list. If the operation parameter resolves to <tt>TRUE</tt>, the
-	 *			method will default to retrieving the current list and no new element will
-	 *			be added.
-	 *		<li><tt>array</tt>: An array indicates that we want to operate on a list of
-	 *			values and that other parameters may also be provided as lists. Note that
-	 *			{@link ArrayObject} instances are not considered here as arrays.
-	 *		<li><i>other</i>: Any other type represents either the new value to be added or
-	 *			the index to the value to be returned or deleted.
-	 *	 </ul>
-	 *	<li><tt>$theOperation</tt>: This parameter represents the operation to be performed
-	 *		whose scope depends on the value of the previous parameter:
-	 *	 <ul>
-	 *		<li><tt>NULL</tt>: Return the element or full list.
-	 *		<li><tt>FALSE</tt>: Delete the element or full list.
-	 *		<li><tt>array</tt>: This type is only considered if the <tt>$theValue</tt>
-	 *			parameter is provided as an array: the method will be called for each
-	 *			element of the <tt>$theValue</tt> parameter matched with the corresponding
-	 *			element of this parameter, which also means that both both parameters must
-	 *			share the same count.
-	 *		<li><i>other</i>: Add the <tt>$theValue</tt> value to the list. If you provided
-	 *			<tt>NULL</tt> in the previous parameter, the operation will be reset to
-	 *			<tt>NULL</tt>.
-	 *	 </ul>
-	 *	<li><tt>$getOld</tt>: Determines what the method will return:
-	 *	 <ul>
-	 *		<li><tt>TRUE</tt>: Return the value <i>before</i> it was eventually modified.
-	 *		<li><tt>FALSE</tt>: Return the value <i>after</i> it was eventually modified.
-	 *	 </ul>
-	 * </ul>
-	 *
-	 * @param mixed					$theValue			Value or index.
-	 * @param mixed					$theOperation		Operation.
-	 * @param boolean				$getOld				TRUE get old value.
-	 *
-	 * @access public
-	 * @return mixed				<i>New</i> or <i>old</i> kind.
-	 *
-	 * @uses ManageObjectSetOffset()
-	 *
-	 * @see kTAG_KIND
-	 */
-	public function Kind( $theValue = NULL, $theOperation = NULL, $getOld = FALSE )
-	{
-		return ManageObjectSetOffset
-			( $this, kTAG_KIND, $theValue, $theOperation, $getOld );				// ==>
-
-	} // Kind.
-
-	 
-	/*===================================================================================
-	 *	Type																			*
-	 *==================================================================================*/
-
-	/**
-	 * <h4>Manage node type set</h4>
-	 *
-	 * This method can be used to manage the node's type, {@link kTAG_TYPE}, which is an
-	 * enumerated set that represents the data type or unit of the node.
-	 *
-	 * This offset collects the list of these types in an enumerated set that can be managed
-	 * with the following parameters:
-	 *
-	 * <ul>
-	 *	<li><tt>$theValue</tt>: Depending on the next parameter, this may either refer to
-	 *		the value to be set or to the index of the element to be retrieved or deleted:
-	 *	 <ul>
-	 *		<li><tt>NULL</tt>: This value indicates that we want to operate on all elements,
-	 *			which means, in practical terms, that we either want to retrieve or delete
-	 *			the full list. If the operation parameter resolves to <tt>TRUE</tt>, the
-	 *			method will default to retrieving the current list and no new element will
-	 *			be added.
-	 *		<li><tt>array</tt>: An array indicates that we want to operate on a list of
-	 *			values and that other parameters may also be provided as lists. Note that
-	 *			{@link ArrayObject} instances are not considered here as arrays.
-	 *		<li><i>other</i>: Any other type represents either the new value to be added or
-	 *			the index to the value to be returned or deleted.
-	 *	 </ul>
-	 *	<li><tt>$theOperation</tt>: This parameter represents the operation to be performed
-	 *		whose scope depends on the value of the previous parameter:
-	 *	 <ul>
-	 *		<li><tt>NULL</tt>: Return the element or full list.
-	 *		<li><tt>FALSE</tt>: Delete the element or full list.
-	 *		<li><tt>array</tt>: This type is only considered if the <tt>$theValue</tt>
-	 *			parameter is provided as an array: the method will be called for each
-	 *			element of the <tt>$theValue</tt> parameter matched with the corresponding
-	 *			element of this parameter, which also means that both both parameters must
-	 *			share the same count.
-	 *		<li><i>other</i>: Add the <tt>$theValue</tt> value to the list. If you provided
-	 *			<tt>NULL</tt> in the previous parameter, the operation will be reset to
-	 *			<tt>NULL</tt>.
-	 *	 </ul>
-	 *	<li><tt>$getOld</tt>: Determines what the method will return:
-	 *	 <ul>
-	 *		<li><tt>TRUE</tt>: Return the value <i>before</i> it was eventually modified.
-	 *		<li><tt>FALSE</tt>: Return the value <i>after</i> it was eventually modified.
-	 *	 </ul>
-	 * </ul>
-	 *
-	 * @param mixed					$theValue			Value or index.
-	 * @param mixed					$theOperation		Operation.
-	 * @param boolean				$getOld				TRUE get old value.
-	 *
-	 * @access public
-	 * @return mixed				<i>New</i> or <i>old</i> type.
-	 *
-	 * @uses ManageObjectSetOffset()
-	 *
-	 * @see kTAG_TYPE
-	 */
-	public function Type( $theValue = NULL, $theOperation = NULL, $getOld = FALSE )
-	{
-		return ManageObjectSetOffset
-			( $this, kTAG_TYPE, $theValue, $theOperation, $getOld );				// ==>
-
-	} // Type.
-
 	 
 	/*===================================================================================
 	 *	Description																		*
@@ -450,74 +319,6 @@ class CNode extends CPersistentObject
 	} // Description.
 
 	 
-	/*===================================================================================
-	 *	Example																			*
-	 *==================================================================================*/
-
-	/**
-	 * <h4>Manage node examples</h4>
-	 *
-	 * This method can be used to manage the node's examples, {@link kTAG_EXAMPLES}, which
-	 * contains a list of strings that represent examples or usages of the node.
-	 *
-	 * This offset collects the list of examples in list that can be managed with the
-	 * following parameters:
-	 *
-	 * <ul>
-	 *	<li><tt>$theValue</tt>: Depending on the next parameter, this may either refer to
-	 *		the value to be set or to the index of the element to be retrieved or deleted:
-	 *	 <ul>
-	 *		<li><tt>NULL</tt>: This value indicates that we want to operate on all elements,
-	 *			which means, in practical terms, that we either want to retrieve or delete
-	 *			the full list. If the operation parameter resolves to <tt>TRUE</tt>, the
-	 *			method will default to retrieving the current list and no new element will
-	 *			be added.
-	 *		<li><tt>array</tt>: An array indicates that we want to operate on a list of
-	 *			values and that other parameters may also be provided as lists. Note that
-	 *			{@link ArrayObject} instances are not considered here as arrays.
-	 *		<li><i>other</i>: Any other type represents either the new value to be added or
-	 *			the index to the value to be returned or deleted.
-	 *	 </ul>
-	 *	<li><tt>$theOperation</tt>: This parameter represents the operation to be performed
-	 *		whose scope depends on the value of the previous parameter:
-	 *	 <ul>
-	 *		<li><tt>NULL</tt>: Return the element or full list.
-	 *		<li><tt>FALSE</tt>: Delete the element or full list.
-	 *		<li><tt>array</tt>: This type is only considered if the <tt>$theValue</tt>
-	 *			parameter is provided as an array: the method will be called for each
-	 *			element of the <tt>$theValue</tt> parameter matched with the corresponding
-	 *			element of this parameter, which also means that both both parameters must
-	 *			share the same count.
-	 *		<li><i>other</i>: Add the <tt>$theValue</tt> value to the list. If you provided
-	 *			<tt>NULL</tt> in the previous parameter, the operation will be reset to
-	 *			<tt>NULL</tt>.
-	 *	 </ul>
-	 *	<li><tt>$getOld</tt>: Determines what the method will return:
-	 *	 <ul>
-	 *		<li><tt>TRUE</tt>: Return the value <i>before</i> it was eventually modified.
-	 *		<li><tt>FALSE</tt>: Return the value <i>after</i> it was eventually modified.
-	 *	 </ul>
-	 * </ul>
-	 *
-	 * @param mixed					$theValue			Value or index.
-	 * @param mixed					$theOperation		Operation.
-	 * @param boolean				$getOld				TRUE get old value.
-	 *
-	 * @access public
-	 * @return mixed				<i>New</i> or <i>old</i> type.
-	 *
-	 * @uses ManageObjectSetOffset()
-	 *
-	 * @see kTAG_EXAMPLES
-	 */
-	public function Example( $theValue = NULL, $theOperation = NULL, $getOld = FALSE )
-	{
-		return ManageObjectSetOffset
-			( $this, kTAG_SYNONYMS, $theValue, $theOperation, $getOld );			// ==>
-
-	} // Example.
-
-	 
 
 /*=======================================================================================
  *																						*
@@ -559,10 +360,6 @@ class CNode extends CPersistentObject
 	 *
 	 * @access public
 	 * @return CEdge				Relationship edge object.
-	 *
-	 * @uses ManageOffset()
-	 *
-	 * @see kTAG_TERM
 	 */
 	public function RelateTo( $thePredicate, $theObject, $theConnection = NULL )
 	{

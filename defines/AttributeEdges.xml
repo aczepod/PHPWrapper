@@ -238,6 +238,13 @@
     	<element variable="kTAG_OBJECT">:REFERENCE</element>
     </edge>
      
+    <!-- kTERM_MASTER -->
+	<edge>
+    	<element variable="kTAG_SUBJECT">:MASTER</element>
+    	<element variable="kTAG_PREDICATE">:SUBCLASS-OF</element>
+    	<element variable="kTAG_OBJECT">:REFERENCE</element>
+    </edge>
+     
     <!-- kTERM_PATH -->
 	<edge>
     	<element variable="kTAG_SUBJECT">:PATH</element>

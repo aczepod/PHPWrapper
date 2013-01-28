@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ONTOLOGY
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:noNamespaceSchemaLocation="file:/Library/WebServer/Library/PHPWrapper/defines/Ontology.xsd">
+    
+    <UNIT>
+        <TERM GID="localId0" LID="localId0">
+            <element tag="tag0">
+                <item>Uno</item>
+                <item>Due</item>
+                <item>Tre</item>
+            </element>
+            <element tag="tag1">pippo</element>
+            <element tag="tag2">
+                <item key="key6">baba</item>
+                <item key="key7">bibi</item>
+                <item key="key8">bobo</item>
+            </element>
+        </TERM>
+        <TERM GID="nameSpace1:localId1" NS="nameSpace1" LID="localId1">
+            <element tag="tag3">
+                <item key="key9">baba</item>
+                <item key="key10">
+                    <item>haha</item>
+                    <item>jaja</item>
+                </item>
+                <item key="key11">xexe</item>
+            </element>
+            <element tag="tag4">
+                <item>baba</item>
+                <item>
+                    <item key="key9">haha</item>
+                    <item key="key10">jaja</item>
+                </item>
+                <item>xexe</item>
+            </element>
+            <element tag="tag5">
+                <item key="key9">baba</item>
+                <item key="key10">
+                    <item key="key10">haha</item>
+                    <item key="key11">jaja</item>
+                </item>
+                <item key="key11">xexe</item>
+            </element>
+            <element>
+                <item>baba</item>
+                <item>
+                    <item>haha</item>
+                    <item>jaja</item>
+                </item>
+                <item>xexe</item>
+            </element>
+        </TERM>
+    </UNIT>
+    <UNIT>
+        <TERM GID="localId0" LID="localId0">
+            <element variable="kTAG_LABEL">
+                <item key="en">One</item>
+                <item key="it">Uno</item>
+                <item key="fr">Un</item>
+            </element>
+            <element variable="kTAG_PATTERN"><![CDATA[[A-Za-z0-9]+]]></element>
+            <element variable="kTAG_KIND">
+                <item>baba</item>
+                <item>bibi</item>
+                <item>bobo</item>
+            </element>
+        </TERM>
+        <TERM GID="nameSpace1:localId1" NS="nameSpace1" LID="localId1">
+            <element tag="tag3">
+                <item key="key9">baba</item>
+                <item key="key10">
+                    <item>haha</item>
+                    <item>jaja</item>
+                </item>
+                <item key="key11">xexe</item>
+            </element>
+            <element tag="tag4">
+                <item>baba</item>
+                <item>
+                    <item key="key9">haha</item>
+                    <item key="key10">jaja</item>
+                </item>
+                <item>xexe</item>
+            </element>
+            <element tag="tag5">
+                <item key="key9">baba</item>
+                <item key="key10">
+                    <item key="key10">haha</item>
+                    <item key="key11">jaja</item>
+                </item>
+                <item key="key11">xexe</item>
+            </element>
+            <element>
+                <item>baba</item>
+                <item>
+                    <item>haha</item>
+                    <item>jaja</item>
+                </item>
+                <item>xexe</item>
+            </element>
+        </TERM>
+    </UNIT>
+</ONTOLOGY>

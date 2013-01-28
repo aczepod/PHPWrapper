@@ -197,6 +197,7 @@ class COntologyNode extends CNode
 	 *	<li><i>Data type</i>: The set accepts one of the following primary data types:
 	 *	 <ul>
 	 *		<li><i>{@link kTYPE_STRING}</i>: String, we assume in UTF8 character set.
+	 *		<li><i>{@link kTYPE_INT}</i>: Generic signed integer.
 	 *		<li><i>{@link kTYPE_INT32}</i>: 32 bit signed integer.
 	 *		<li><i>{@link kTYPE_INT64}</i>: 64 bit signed integer.
 	 *		<li><i>{@link kTYPE_FLOAT}</i>: Floating point number.

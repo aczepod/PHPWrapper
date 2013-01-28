@@ -1103,8 +1103,6 @@ class COntologyTag extends CTag
 	 *
 	 * @access protected
 	 *
-	 * @uses _IsCommitted()
-	 *
 	 * @see kSWITCH_kTAG_FEATURES, kSWITCH_kTAG_METHODS, kSWITCH_kTAG_SCALES
 	 * @see kTAG_FEATURES, kTAG_METHODS, kTAG_SCALES
 	 * @see kFLAG_PERSIST_INSERT kFLAG_PERSIST_REPLACE kFLAG_PERSIST_DELETE
@@ -1124,11 +1122,10 @@ class COntologyTag extends CTag
 				   : -1;
 		
 		//
-		// Handle new object.
+		// Handle INSERT, REPLACE or DELETE.
 		//
-		if( ( ( (($theModifiers & kFLAG_PERSIST_MASK) == kFLAG_PERSIST_INSERT)
-			 || (($theModifiers & kFLAG_PERSIST_MASK) == kFLAG_PERSIST_REPLACE) )
-		   && (! $this->_IsCommitted()) )
+		if( (($theModifiers & kFLAG_PERSIST_MASK) == kFLAG_PERSIST_INSERT)
+		 || (($theModifiers & kFLAG_PERSIST_MASK) == kFLAG_PERSIST_REPLACE)
 		 || ($theModifiers & kFLAG_PERSIST_DELETE) )
 		{
 			//
@@ -1151,7 +1148,7 @@ class COntologyTag extends CTag
 				//
 				// Handle scale vertex.
 				//
-				elseif( $i == (count( $path ) - 1) )
+				if( $i == (count( $path ) - 1) )
 					$this->_ReferenceInObject(
 						COntologyTerm::ResolveContainer( $theConnection, TRUE ),
 						kSWITCH_kTAG_SCALES,
@@ -1162,7 +1159,7 @@ class COntologyTag extends CTag
 				//
 				// Handle method vertex.
 				//
-				else
+				elseif( $i )	// Not feature.
 					$this->_ReferenceInObject(
 						COntologyTerm::ResolveContainer( $theConnection, TRUE ),
 						kSWITCH_kTAG_METHODS,

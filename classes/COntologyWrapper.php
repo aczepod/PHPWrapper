@@ -20,6 +20,13 @@
  *======================================================================================*/
 
 /**
+ * Predicates.
+ *
+ * This includes the predicate definitions.
+ */
+require_once( kPATH_MYWRAPPER_LIBRARY_DEFINE."/Predicates.inc.php" );
+
+/**
  * Terms.
  *
  * This includes the term class definitions.
@@ -405,6 +412,19 @@ class COntologyWrapper extends CDataWrapper
 				//
 				if( array_key_exists( kAPI_SELECT, $_REQUEST ) )
 					unset( $_REQUEST[ kAPI_SELECT ] );
+
+			case kAPI_OP_GetEnums:
+				//
+				// Remove fields selection.
+				//
+				if( array_key_exists( kAPI_SELECT, $_REQUEST ) )
+					unset( $_REQUEST[ kAPI_SELECT ] );
+
+				//
+				// Remove sort selection.
+				//
+				if( array_key_exists( kAPI_SORT, $_REQUEST ) )
+					unset( $_REQUEST[ kAPI_SORT ] );
 
 				break;
 		}
@@ -823,6 +843,58 @@ class COntologyWrapper extends CDataWrapper
 				
 				break;
 			
+			case kAPI_OP_GetEnums:
+				//
+				// Check for format.
+				//
+				if( ! array_key_exists( kAPI_FORMAT, $_REQUEST ) )
+					throw new CException
+						( "Missing format parameter",
+						  kERROR_MISSING,
+						  kSTATUS_ERROR,
+						  array( 'Operation' => $parameter ) );					// !@! ==>
+				
+				//
+				// Check for database.
+				//
+				if( ! array_key_exists( kAPI_DATABASE, $_REQUEST ) )
+					throw new CException
+						( "Missing database parameter",
+						  kERROR_MISSING,
+						  kSTATUS_ERROR,
+						  array( 'Operation' => $parameter ) );					// !@! ==>
+					
+				//
+				// Check for class.
+				//
+				if( ! array_key_exists( kAPI_CLASS, $_REQUEST ) )
+					throw new CException
+						( "Missing class parameter",
+						  kERROR_MISSING,
+						  kSTATUS_ERROR,
+						  array( 'Operation' => $parameter ) );					// !@! ==>
+					
+				//
+				// Check for query.
+				//
+				if( ! array_key_exists( kAPI_QUERY, $_REQUEST ) )
+					throw new CException
+						( "Missing query parameter",
+						  kERROR_MISSING,
+						  kSTATUS_ERROR,
+						  array( 'Operation' => $parameter ) );					// !@! ==>
+					
+				//
+				// Clear subquery.
+				//
+				if( ! array_key_exists( kAPI_RELATION, $_REQUEST ) )
+				{
+					if( array_key_exists( kAPI_SUBQUERY, $_REQUEST ) )
+						unset( $_REQUEST[ kAPI_SUBQUERY ] );
+				}
+				
+				break;
+			
 			//
 			// Handle unknown operation.
 			//
@@ -1099,7 +1171,7 @@ class COntologyWrapper extends CDataWrapper
 					// Set excluded tags.
 					//
 					$exclude = array( kTAG_NID, kTAG_CLASS,
-									  kTAG_NODE, kTAG_EDGES, kTAG_NODES );
+									  kTAG_MASTER, kTAG_EDGES, kTAG_NODES );
 					
 					//
 					// Iterate attributes.
@@ -1412,6 +1484,10 @@ class COntologyWrapper extends CDataWrapper
 					$this->_HandleGetTag();
 					break;
 	
+				case kAPI_OP_GetEnums:
+					$this->_HandleGetEnums();
+					break;
+	
 				default:
 					parent::_HandleRequest();
 					break;
@@ -1477,6 +1553,12 @@ class COntologyWrapper extends CDataWrapper
 		//
 		$theList[ kAPI_OP_GetTag ]
 			= 'Get tags by query: returns the list of tags that satisfy the provided query.';
+
+		//
+		// Add kAPI_OP_GetEnums.
+		//
+		$theList[ kAPI_OP_GetEnums ]
+			= 'Get enumerations by query: returns the list of enumerations that are connected to the provided node or tag.';
 	
 	} // _Handle_ListOp.
 
@@ -1570,7 +1652,7 @@ class COntologyWrapper extends CDataWrapper
 		//
 		// Perform query.
 		//
-		$cursor = $this->_HandleQuery();
+		$cursor = $this->_Query();
 		
 		//
 		// Check count.
@@ -1710,7 +1792,7 @@ class COntologyWrapper extends CDataWrapper
 			//
 			// Get reference vertex.
 			//
-			$vertex = $this->_HandleQuery( TRUE, FALSE, FALSE );
+			$vertex = $this->_Query( TRUE, FALSE, FALSE );
 			
 			//
 			// Get related vertices.
@@ -1753,7 +1835,7 @@ class COntologyWrapper extends CDataWrapper
 					//
 					// Perform query.
 					//
-					$cursor = $this->_HandleQuery();
+					$cursor = $this->_Query();
 					if( $cursor->count( FALSE ) )
 					{
 						//
@@ -1843,7 +1925,7 @@ class COntologyWrapper extends CDataWrapper
 		//
 		// Perform query.
 		//
-		$cursor = $this->_HandleQuery();
+		$cursor = $this->_Query();
 	
 		//
 		// Check count.
@@ -1886,6 +1968,187 @@ class COntologyWrapper extends CDataWrapper
 		} // Found records.
 	
 	} // _HandleGetTag.
+
+	 
+	/*===================================================================================
+	 *	_HandleGetEnums																	*
+	 *==================================================================================*/
+
+	/**
+	 * Retrieve enumerations by node or tag.
+	 *
+	 * This method will handle the {@link kAPI_OP_GetEnums} operation which returns a list
+	 * of enumerations with their related attributes who are related, at any level, to the
+	 * node or tag selected by the provided query.
+	 *
+	 * @access protected
+	 */
+	protected function _HandleGetEnums()
+	{
+		//
+		// Init local storage.
+		//
+		$count = 0;
+		
+		//
+		// Reduce selection.
+		//
+		$select = ( $_REQUEST[ kAPI_CLASS ] == 'COntologyTag' )
+				? array( kTAG_NID, kTAG_PATH )
+				: array( kTAG_NID );
+		
+		//
+		// Get reference node or term.
+		//
+		$cursor = $this->_Query( NULL, FALSE, FALSE, NULL, NULL, $select );
+		
+		//
+		// Create reference elements list.
+		//
+		$reflist = Array();
+		foreach( $cursor as $object )
+			$reflist[ $object[ kTAG_NID ] ]
+				= ( $_REQUEST[ kAPI_CLASS ] == 'COntologyTag' )
+				? $object[ kTAG_PATH ][ count( $object[ kTAG_PATH ] ) - 1 ]
+				: $object[ kTAG_NID ];
+		
+		//
+		// Resolve tag scales.
+		//
+		if( $_REQUEST[ kAPI_CLASS ] == 'COntologyTag' )
+		{
+			//
+			// Iterate reference list.
+			//
+			$tmp = Array();
+			foreach( $reflist as $term )
+			{
+				//
+				// Resolve master vertex.
+				//
+				$node
+					= COntologyMasterVertex::Resolve(
+						$_REQUEST[ kAPI_CONTAINER ], $term, TRUE );
+				
+				//
+				// Save vertex identifier.
+				//
+				$tmp[ $node->NID() ] = $node->NID();
+			
+			} // Iterating tags.
+			
+			//
+			// Replace list.
+			//
+			$reflist = $tmp;
+		
+		} // Provided tag references.
+		
+		//
+		// Handle enumerated scales.
+		//
+		if( count( $reflist ) )
+		{
+			//
+			// Resolve predicate.
+			//
+			$predicate
+				= COntologyTerm::Resolve(
+					$_REQUEST[ kAPI_DATABASE ]
+						->Container(
+							COntologyTerm::DefaultContainerName() ),
+					kPREDICATE_ENUM_OF,
+					NULL,
+					TRUE )
+						->NID();
+		
+			//
+			// Set edges container.
+			//
+			$container
+				= $_REQUEST[ kAPI_DATABASE ]
+					->Container(
+						COntologyEdge::DefaultContainerName() );
+		
+			//
+			// Init query.
+			//
+			$query = $container->NewQuery();
+			$query->AppendStatement(
+				CQueryStatement::Equals(
+					kTAG_PREDICATE, $predicate, kTYPE_BINARY_STRING ) );
+					
+			//
+			// Traverse enumerations.
+			//
+			while( ($item = array_shift( $reflist )) !== NULL )
+			{
+				//
+				// Add object match to query.
+				//
+				$cur_query = $container->NewQuery( $query );
+				$cur_query->AppendStatement(
+					CQueryStatement::Equals(
+						kTAG_OBJECT, $item, kTYPE_INT ) );
+				
+				//
+				// Iterate recordset.
+				//
+				$cursor = $container->Query( $cur_query );
+				$count += $cursor->count( FALSE );
+				foreach( $cursor as $object )
+				{
+					//
+					// Convert to tag object.
+					//
+					$object = CPersistentObject::DocumentObject( $object );
+			
+					//
+					// Load related data.
+					//
+					$this->_ExportEdge( $results, $object );
+			
+					//
+					// Save related identifier.
+					//
+					$results[ kAPI_COLLECTION_ID ][] = $object->NID();
+					
+					//
+					// Append object to reference list.
+					//
+					$reflist[] = $object->NID();
+				
+				} // Iterating recordset.
+		
+			} // Traversing enumerations.
+			
+			//
+			// Handle results.
+			//
+			if( isset( $results ) )
+			{
+				//
+				// Set results.
+				//
+				$this->offsetSet( kAPI_RESPONSE, $results );
+		
+				//
+				// Handle language.
+				//
+				if( array_key_exists( kAPI_LANGUAGE, $_REQUEST ) )
+					$this->_FilterLanguages( $_REQUEST[ kAPI_LANGUAGE ] );
+			
+			} // Has results.
+			
+		} // Found scale nodes.
+	
+		//
+		// Set effective count.
+		//
+		$this->_OffsetManage(
+			kAPI_STATUS, kAPI_AFFECTED_COUNT, $count );
+	
+	} // _HandleGetEnums.
 
 		
 
@@ -2661,10 +2924,10 @@ class COntologyWrapper extends CDataWrapper
 		//
 		// Load attributes from referenced term.
 		//
-		while( $theTerm->Term() !== NULL )
+		while( $theTerm->Master() !== NULL )
 			$theTerm
 				= COntologyTerm::Resolve(
-					$_REQUEST[ kAPI_DATABASE ], $theTerm->Term(), NULL, TRUE );
+					$_REQUEST[ kAPI_DATABASE ], $theTerm->Master(), NULL, TRUE );
 		
 		//
 		// Copy related term attributes.
@@ -2764,7 +3027,7 @@ class COntologyWrapper extends CDataWrapper
 		//
 		// Perform query.
 		//
-		$cursor = $this->_HandleQuery();
+		$cursor = $this->_Query();
 		if( $cursor->count( FALSE ) )
 		{
 			//
@@ -3041,7 +3304,7 @@ class COntologyWrapper extends CDataWrapper
 		// Match node identifiers.
 		//
 		$list = Array();
-		$cursor = $this->_HandleQuery( NULL, FALSE, FALSE, $_REQUEST[ kAPI_SUBQUERY ] );
+		$cursor = $this->_Query( NULL, FALSE, FALSE, $_REQUEST[ kAPI_SUBQUERY ] );
 		if( $cursor->count( FALSE ) )
 		{
 			//

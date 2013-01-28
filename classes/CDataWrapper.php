@@ -938,11 +938,26 @@ class CDataWrapper extends CWrapper
 					if( ! array_key_exists( kAPI_CONTAINER, $_REQUEST ) )
 					{
 						//
-						// Get name.
+						// Check if method exists.
 						//
-						$name = $_REQUEST[ kAPI_CLASS ]::DefaultContainerName();
-						if( $name !== NULL )
-							$_REQUEST[ kAPI_CONTAINER ] = $name;
+						if( method_exists( $_REQUEST[ kAPI_CLASS ], 'DefaultContainerName' ) )
+						{
+							//
+							// Get name.
+							//
+							$name = $_REQUEST[ kAPI_CLASS ]::DefaultContainerName();
+							if( $name !== NULL )
+								$_REQUEST[ kAPI_CONTAINER ] = $name;
+						
+						} // Method exists.
+						
+						else
+							throw new CException
+								( "Unable to determine default container name",
+								  kERROR_PARAMETER,
+								  kSTATUS_ERROR,
+								  array( 'Class'
+								  			=> $_REQUEST[ kAPI_CLASS ] ) );		// !@! ==>
 					
 					} // Missing container.
 				
@@ -2167,13 +2182,13 @@ class CDataWrapper extends CWrapper
 		// Handle distinct values.
 		//
 		if( array_key_exists( kAPI_DISTINCT, $_REQUEST ) )
-			$this->_HandleQuery( $_REQUEST[ kAPI_DISTINCT ], TRUE );
+			$this->_Query( $_REQUEST[ kAPI_DISTINCT ], TRUE );
 		
 		//
 		// Handle query count.
 		//
 		else
-			$this->_HandleQuery( NULL, TRUE );
+			$this->_Query( NULL, TRUE );
 	
 	} // _Handle_Count.
 
@@ -2196,13 +2211,13 @@ class CDataWrapper extends CWrapper
 		// Handle distinct values.
 		//
 		if( array_key_exists( kAPI_DISTINCT, $_REQUEST ) )
-			$cursor = $this->_HandleQuery( $_REQUEST[ kAPI_DISTINCT ] );
+			$cursor = $this->_Query( $_REQUEST[ kAPI_DISTINCT ] );
 		
 		//
 		// Handle query count.
 		//
 		else
-			$cursor = $this->_HandleQuery();
+			$cursor = $this->_Query();
 		
 		//
 		// Handle result.
@@ -2285,7 +2300,7 @@ class CDataWrapper extends CWrapper
 		//
 		// Make query, get affected and page counts.
 		//
-		$cursor = $this->_HandleQuery( TRUE );
+		$cursor = $this->_Query( TRUE );
 		
 		//
 		// Handle result.
@@ -2552,18 +2567,19 @@ class CDataWrapper extends CWrapper
 
 	 
 	/*===================================================================================
-	 *	_HandleQuery																	*
+	 *	_Query																			*
 	 *==================================================================================*/
 
 	/**
-	 * Perform the current query.
+	 * Perform a query.
 	 *
-	 * This method will execute the query provided in {@link kAPI_QUERY}, selecting the
-	 * fields provided in {@link kAPI_SELECT}, sorted by the fields provided in
-	 * {@link kAPI_SORT}, starting at the page provided in {@link kAPI_PAGE_START}, counting
-	 * the number of records provided in {@link kAPI_PAGE_LIMIT}.
+	 * This method will execute the query provided in {@link kAPI_QUERY} or as a parameter,
+	 * selecting the fields provided in {@link kAPI_SELECT} or as a parameter, sorted by the
+	 * fields provided in {@link kAPI_SORT} or as a parameter, starting at the page provided
+	 * in {@link kAPI_PAGE_START}, counting the number of records provided in
+	 * {@link kAPI_PAGE_LIMIT}.
 	 *
-	 * The method expects two parameters:
+	 * The method expects these parameters:
 	 *
 	 * <ul>
 	 *	<li><tt>$theResult</tt>: This parameter indicates the kind of query, it can take the
@@ -2588,23 +2604,44 @@ class CDataWrapper extends CWrapper
 	 *	<li><tt>$theQuery</tt>: By default the query is taken from the {@link kAPI_QUERY}
 	 *		service parameter, if you want to use a custom query you can provide it in this
 	 *		parameter as a derived instance of {@link CQuery}.
+	 *	<li><tt>$theContainer</tt>: By default the container is taken from the
+	 *		{@link kAPI_CONTAINER} service parameter, if you want to use a custom container
+	 *		you can provide it in this parameter as a derived instance of
+	 *		{@link CContainer}.
+	 *	<li><tt>$theSelection</tt>: By default the selection is taken from the
+	 *		{@link kAPI_SELECT} service parameter, if this parameter is set, it will
+	 *		override the default parameter. This parameter must be an array.
 	 * </ul>
 	 *
-	 * The method will traverse query lists until a match is found and it expects the
-	 * {@link kAPI_DATABASE} parameter to be set.
+	 * The method will also handle query lists and it expects the {@link kAPI_DATABASE}
+	 * parameter to be set.
 	 *
 	 * @param mixed					$theResult			Result type.
 	 * @param boolean				$isCount			COUNT result.
 	 * @param boolean				$doCount			Do paging counters.
+	 * @param CQuery				$theQuery			Eventual query.
+	 * @param CContainer			$theContainer		Eventual container.
+	 * @param array					$theSelection		Eventual selection.
 	 *
 	 * @access protected
 	 * @return mixed
 	 */
-	protected function _HandleQuery( $theResult = NULL,
-									 $isCount = FALSE,
-									 $doCount = TRUE,
-									 $theQuery = NULL )
+	protected function _Query( $theResult = NULL,
+							   $isCount = FALSE,
+							   $doCount = TRUE,
+							   $theQuery = NULL,
+							   $theContainer = NULL,
+							   $theSelection = NULL )
 	{
+		//
+		// Handle container.
+		//
+		$cont = ( $theContainer === NULL )
+			  ? ( ( array_key_exists( kAPI_CONTAINER, $_REQUEST ) )
+			   ? $_REQUEST[ kAPI_CONTAINER ]
+			   : NULL )
+			  : $theContainer;
+		
 		//
 		// Handle query.
 		//
@@ -2617,9 +2654,11 @@ class CDataWrapper extends CWrapper
 		//
 		// Handle fields.
 		//
-		$fields = ( array_key_exists( kAPI_SELECT, $_REQUEST ) )
-			  ? $_REQUEST[ kAPI_SELECT ]
-			  : NULL;
+		$fields = ( $theSelection === NULL )
+				? ( ( array_key_exists( kAPI_SELECT, $_REQUEST ) )
+				 ? $_REQUEST[ kAPI_SELECT ]
+				 : NULL )
+				: $theSelection;
 		
 		//
 		// Handle sort.
@@ -2658,15 +2697,16 @@ class CDataWrapper extends CWrapper
 			// Set container.
 			//
 			$container = ( is_int( $key ) )
-					   ? $_REQUEST[ kAPI_CONTAINER ]
+					   ? $cont
 					   : $_REQUEST[ kAPI_DATABASE ]->Container( $key );
 			
 			//
 			// Perform query.
 			//
 			$result
-				= $_REQUEST[ kAPI_CONTAINER ]
-					->Query( $value, $fields, $sort, $start, $limit, $theResult );
+				= $container
+					->Query(
+						$value, $fields, $sort, $start, $limit, $theResult );
 		
 			//
 			// Handle GET.
@@ -2926,7 +2966,7 @@ class CDataWrapper extends CWrapper
 		
 		return $result;																// ==>
 	
-	} // _HandleQuery.
+	} // _Query.
 
 	 
 	/*===================================================================================

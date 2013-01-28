@@ -8,7 +8,7 @@
 	<title>File COntologyTag.php | MyWrapper Reference Documentation</title>
 
 	<script type="text/javascript" src="resources/combined.js?3680114562"></script>
-	<script type="text/javascript" src="elementlist.js?2244581217"></script>
+	<script type="text/javascript" src="elementlist.js?158261224"></script>
 	<link rel="stylesheet" type="text/css" media="all" href="resources/style.css?3505392360" />
 
 </head>
@@ -37,6 +37,8 @@
 				<li class="active main"><a href="package-MyWrapper.Ontology.html">Ontology</a>
 						</li>
 				<li class="main"><a href="package-MyWrapper.Persistence.html">Persistence</a>
+						</li>
+				<li class="main"><a href="package-MyWrapper.Traits.html">Traits</a>
 						</li>
 				<li class="main"><a href="package-MyWrapper.Wrappers.html">Wrappers</a>
 						</li>
@@ -1209,86 +1211,83 @@
 </span></span><span id="1103" class="l"><a class="l" href="#1103">1103: </a><span class="php-comment">     *
 </span></span><span id="1104" class="l"><a class="l" href="#1104">1104: </a><span class="php-comment">     * @access protected
 </span></span><span id="1105" class="l"><a class="l" href="#1105">1105: </a><span class="php-comment">     *
-</span></span><span id="1106" class="l"><a class="l" href="#1106">1106: </a><span class="php-comment">     * @uses _IsCommitted()
-</span></span><span id="1107" class="l"><a class="l" href="#1107">1107: </a><span class="php-comment">     *
-</span></span><span id="1108" class="l"><a class="l" href="#1108">1108: </a><span class="php-comment">     * @see kSWITCH_kTAG_FEATURES, kSWITCH_kTAG_METHODS, kSWITCH_kTAG_SCALES
-</span></span><span id="1109" class="l"><a class="l" href="#1109">1109: </a><span class="php-comment">     * @see kTAG_FEATURES, kTAG_METHODS, kTAG_SCALES
-</span></span><span id="1110" class="l"><a class="l" href="#1110">1110: </a><span class="php-comment">     * @see kFLAG_PERSIST_INSERT kFLAG_PERSIST_REPLACE kFLAG_PERSIST_DELETE
-</span></span><span id="1111" class="l"><a class="l" href="#1111">1111: </a><span class="php-comment">     */</span>
-</span><span id="1112" class="l"><a class="l" href="#1112">1112: </a>    <span class="php-keyword1">protected</span> <span class="php-keyword1">function</span> <a id="__PostcommitRelated" href="#__PostcommitRelated">_PostcommitRelated</a>( &amp;<span class="php-var">$theConnection</span>, &amp;<span class="php-var">$theModifiers</span> )
-</span><span id="1113" class="l"><a class="l" href="#1113">1113: </a>    {
+</span></span><span id="1106" class="l"><a class="l" href="#1106">1106: </a><span class="php-comment">     * @see kSWITCH_kTAG_FEATURES, kSWITCH_kTAG_METHODS, kSWITCH_kTAG_SCALES
+</span></span><span id="1107" class="l"><a class="l" href="#1107">1107: </a><span class="php-comment">     * @see kTAG_FEATURES, kTAG_METHODS, kTAG_SCALES
+</span></span><span id="1108" class="l"><a class="l" href="#1108">1108: </a><span class="php-comment">     * @see kFLAG_PERSIST_INSERT kFLAG_PERSIST_REPLACE kFLAG_PERSIST_DELETE
+</span></span><span id="1109" class="l"><a class="l" href="#1109">1109: </a><span class="php-comment">     */</span>
+</span><span id="1110" class="l"><a class="l" href="#1110">1110: </a>    <span class="php-keyword1">protected</span> <span class="php-keyword1">function</span> <a id="__PostcommitRelated" href="#__PostcommitRelated">_PostcommitRelated</a>( &amp;<span class="php-var">$theConnection</span>, &amp;<span class="php-var">$theModifiers</span> )
+</span><span id="1111" class="l"><a class="l" href="#1111">1111: </a>    {
+</span><span id="1112" class="l"><a class="l" href="#1112">1112: </a>        <span class="php-comment">//</span>
+</span><span id="1113" class="l"><a class="l" href="#1113">1113: </a>        <span class="php-comment">// Call parent method.</span>
 </span><span id="1114" class="l"><a class="l" href="#1114">1114: </a>        <span class="php-comment">//</span>
-</span><span id="1115" class="l"><a class="l" href="#1115">1115: </a>        <span class="php-comment">// Call parent method.</span>
-</span><span id="1116" class="l"><a class="l" href="#1116">1116: </a>        <span class="php-comment">//</span>
-</span><span id="1117" class="l"><a class="l" href="#1117">1117: </a>        parent::_PostcommitRelated( <span class="php-var">$theConnection</span>, <span class="php-var">$theModifiers</span> );
-</span><span id="1118" class="l"><a class="l" href="#1118">1118: </a>    
+</span><span id="1115" class="l"><a class="l" href="#1115">1115: </a>        parent::_PostcommitRelated( <span class="php-var">$theConnection</span>, <span class="php-var">$theModifiers</span> );
+</span><span id="1116" class="l"><a class="l" href="#1116">1116: </a>    
+</span><span id="1117" class="l"><a class="l" href="#1117">1117: </a>        <span class="php-comment">//</span>
+</span><span id="1118" class="l"><a class="l" href="#1118">1118: </a>        <span class="php-comment">// Set operation.</span>
 </span><span id="1119" class="l"><a class="l" href="#1119">1119: </a>        <span class="php-comment">//</span>
-</span><span id="1120" class="l"><a class="l" href="#1120">1120: </a>        <span class="php-comment">// Set operation.</span>
-</span><span id="1121" class="l"><a class="l" href="#1121">1121: </a>        <span class="php-comment">//</span>
-</span><span id="1122" class="l"><a class="l" href="#1122">1122: </a>        <span class="php-var">$operation</span> = ( ! (<span class="php-var">$theModifiers</span> &amp; kFLAG_PERSIST_DELETE) )
-</span><span id="1123" class="l"><a class="l" href="#1123">1123: </a>                   ? <span class="php-num">1</span>
-</span><span id="1124" class="l"><a class="l" href="#1124">1124: </a>                   : -<span class="php-num">1</span>;
-</span><span id="1125" class="l"><a class="l" href="#1125">1125: </a>        
+</span><span id="1120" class="l"><a class="l" href="#1120">1120: </a>        <span class="php-var">$operation</span> = ( ! (<span class="php-var">$theModifiers</span> &amp; kFLAG_PERSIST_DELETE) )
+</span><span id="1121" class="l"><a class="l" href="#1121">1121: </a>                   ? <span class="php-num">1</span>
+</span><span id="1122" class="l"><a class="l" href="#1122">1122: </a>                   : -<span class="php-num">1</span>;
+</span><span id="1123" class="l"><a class="l" href="#1123">1123: </a>        
+</span><span id="1124" class="l"><a class="l" href="#1124">1124: </a>        <span class="php-comment">//</span>
+</span><span id="1125" class="l"><a class="l" href="#1125">1125: </a>        <span class="php-comment">// Handle INSERT, REPLACE or DELETE.</span>
 </span><span id="1126" class="l"><a class="l" href="#1126">1126: </a>        <span class="php-comment">//</span>
-</span><span id="1127" class="l"><a class="l" href="#1127">1127: </a>        <span class="php-comment">// Handle new object.</span>
-</span><span id="1128" class="l"><a class="l" href="#1128">1128: </a>        <span class="php-comment">//</span>
-</span><span id="1129" class="l"><a class="l" href="#1129">1129: </a>        <span class="php-keyword1">if</span>( ( ( ((<span class="php-var">$theModifiers</span> &amp; kFLAG_PERSIST_MASK) == kFLAG_PERSIST_INSERT)
-</span><span id="1130" class="l"><a class="l" href="#1130">1130: </a>             || ((<span class="php-var">$theModifiers</span> &amp; kFLAG_PERSIST_MASK) == kFLAG_PERSIST_REPLACE) )
-</span><span id="1131" class="l"><a class="l" href="#1131">1131: </a>           &amp;&amp; (! <span class="php-var">$this</span>-&gt;_IsCommitted()) )
-</span><span id="1132" class="l"><a class="l" href="#1132">1132: </a>         || (<span class="php-var">$theModifiers</span> &amp; kFLAG_PERSIST_DELETE) )
-</span><span id="1133" class="l"><a class="l" href="#1133">1133: </a>        {
-</span><span id="1134" class="l"><a class="l" href="#1134">1134: </a>            <span class="php-comment">//</span>
-</span><span id="1135" class="l"><a class="l" href="#1135">1135: </a>            <span class="php-comment">// Iterate path elements.</span>
-</span><span id="1136" class="l"><a class="l" href="#1136">1136: </a>            <span class="php-comment">//</span>
-</span><span id="1137" class="l"><a class="l" href="#1137">1137: </a>            <span class="php-var">$path</span> = <span class="php-var">$this</span>-&gt;offsetGet( kTAG_PATH );
-</span><span id="1138" class="l"><a class="l" href="#1138">1138: </a>            <span class="php-keyword1">for</span>( <span class="php-var">$i</span> = <span class="php-num">0</span>; <span class="php-var">$i</span> &lt; <span class="php-keyword2">count</span>( <span class="php-var">$path</span> ); <span class="php-var">$i</span> += <span class="php-num">2</span> )
-</span><span id="1139" class="l"><a class="l" href="#1139">1139: </a>            {
-</span><span id="1140" class="l"><a class="l" href="#1140">1140: </a>                <span class="php-comment">//</span>
-</span><span id="1141" class="l"><a class="l" href="#1141">1141: </a>                <span class="php-comment">// Handle feature vertex.</span>
-</span><span id="1142" class="l"><a class="l" href="#1142">1142: </a>                <span class="php-comment">//</span>
-</span><span id="1143" class="l"><a class="l" href="#1143">1143: </a>                <span class="php-keyword1">if</span>( <span class="php-var">$i</span> == <span class="php-num">0</span> )
-</span><span id="1144" class="l"><a class="l" href="#1144">1144: </a>                    <span class="php-var">$this</span>-&gt;_ReferenceInObject(
-</span><span id="1145" class="l"><a class="l" href="#1145">1145: </a>                        COntologyTerm::ResolveContainer( <span class="php-var">$theConnection</span>, <span class="php-keyword1">TRUE</span> ),
-</span><span id="1146" class="l"><a class="l" href="#1146">1146: </a>                        kSWITCH_kTAG_FEATURES,
-</span><span id="1147" class="l"><a class="l" href="#1147">1147: </a>                        <span class="php-var">$path</span>[ <span class="php-var">$i</span> ],
-</span><span id="1148" class="l"><a class="l" href="#1148">1148: </a>                        kTAG_FEATURES,
-</span><span id="1149" class="l"><a class="l" href="#1149">1149: </a>                        <span class="php-var">$operation</span> );
-</span><span id="1150" class="l"><a class="l" href="#1150">1150: </a>                
-</span><span id="1151" class="l"><a class="l" href="#1151">1151: </a>                <span class="php-comment">//</span>
-</span><span id="1152" class="l"><a class="l" href="#1152">1152: </a>                <span class="php-comment">// Handle scale vertex.</span>
-</span><span id="1153" class="l"><a class="l" href="#1153">1153: </a>                <span class="php-comment">//</span>
-</span><span id="1154" class="l"><a class="l" href="#1154">1154: </a>                <span class="php-keyword1">elseif</span>( <span class="php-var">$i</span> == (<span class="php-keyword2">count</span>( <span class="php-var">$path</span> ) - <span class="php-num">1</span>) )
-</span><span id="1155" class="l"><a class="l" href="#1155">1155: </a>                    <span class="php-var">$this</span>-&gt;_ReferenceInObject(
-</span><span id="1156" class="l"><a class="l" href="#1156">1156: </a>                        COntologyTerm::ResolveContainer( <span class="php-var">$theConnection</span>, <span class="php-keyword1">TRUE</span> ),
-</span><span id="1157" class="l"><a class="l" href="#1157">1157: </a>                        kSWITCH_kTAG_SCALES,
-</span><span id="1158" class="l"><a class="l" href="#1158">1158: </a>                        <span class="php-var">$path</span>[ <span class="php-var">$i</span> ],
-</span><span id="1159" class="l"><a class="l" href="#1159">1159: </a>                        kTAG_SCALES,
-</span><span id="1160" class="l"><a class="l" href="#1160">1160: </a>                        <span class="php-var">$operation</span> );
-</span><span id="1161" class="l"><a class="l" href="#1161">1161: </a>                
-</span><span id="1162" class="l"><a class="l" href="#1162">1162: </a>                <span class="php-comment">//</span>
-</span><span id="1163" class="l"><a class="l" href="#1163">1163: </a>                <span class="php-comment">// Handle method vertex.</span>
-</span><span id="1164" class="l"><a class="l" href="#1164">1164: </a>                <span class="php-comment">//</span>
-</span><span id="1165" class="l"><a class="l" href="#1165">1165: </a>                <span class="php-keyword1">else</span>
-</span><span id="1166" class="l"><a class="l" href="#1166">1166: </a>                    <span class="php-var">$this</span>-&gt;_ReferenceInObject(
-</span><span id="1167" class="l"><a class="l" href="#1167">1167: </a>                        COntologyTerm::ResolveContainer( <span class="php-var">$theConnection</span>, <span class="php-keyword1">TRUE</span> ),
-</span><span id="1168" class="l"><a class="l" href="#1168">1168: </a>                        kSWITCH_kTAG_METHODS,
-</span><span id="1169" class="l"><a class="l" href="#1169">1169: </a>                        <span class="php-var">$path</span>[ <span class="php-var">$i</span> ],
-</span><span id="1170" class="l"><a class="l" href="#1170">1170: </a>                        kTAG_METHODS,
-</span><span id="1171" class="l"><a class="l" href="#1171">1171: </a>                        <span class="php-var">$operation</span> );
-</span><span id="1172" class="l"><a class="l" href="#1172">1172: </a>            
-</span><span id="1173" class="l"><a class="l" href="#1173">1173: </a>            } <span class="php-comment">// Iterating path elements.</span>
-</span><span id="1174" class="l"><a class="l" href="#1174">1174: </a>        
-</span><span id="1175" class="l"><a class="l" href="#1175">1175: </a>        } <span class="php-comment">// Insert or replace and not committed, or deleting.</span>
-</span><span id="1176" class="l"><a class="l" href="#1176">1176: </a>        
-</span><span id="1177" class="l"><a class="l" href="#1177">1177: </a>    } <span class="php-comment">// _PostcommitRelated.</span>
-</span><span id="1178" class="l"><a class="l" href="#1178">1178: </a>
-</span><span id="1179" class="l"><a class="l" href="#1179">1179: </a>     
+</span><span id="1127" class="l"><a class="l" href="#1127">1127: </a>        <span class="php-keyword1">if</span>( ((<span class="php-var">$theModifiers</span> &amp; kFLAG_PERSIST_MASK) == kFLAG_PERSIST_INSERT)
+</span><span id="1128" class="l"><a class="l" href="#1128">1128: </a>         || ((<span class="php-var">$theModifiers</span> &amp; kFLAG_PERSIST_MASK) == kFLAG_PERSIST_REPLACE)
+</span><span id="1129" class="l"><a class="l" href="#1129">1129: </a>         || (<span class="php-var">$theModifiers</span> &amp; kFLAG_PERSIST_DELETE) )
+</span><span id="1130" class="l"><a class="l" href="#1130">1130: </a>        {
+</span><span id="1131" class="l"><a class="l" href="#1131">1131: </a>            <span class="php-comment">//</span>
+</span><span id="1132" class="l"><a class="l" href="#1132">1132: </a>            <span class="php-comment">// Iterate path elements.</span>
+</span><span id="1133" class="l"><a class="l" href="#1133">1133: </a>            <span class="php-comment">//</span>
+</span><span id="1134" class="l"><a class="l" href="#1134">1134: </a>            <span class="php-var">$path</span> = <span class="php-var">$this</span>-&gt;offsetGet( kTAG_PATH );
+</span><span id="1135" class="l"><a class="l" href="#1135">1135: </a>            <span class="php-keyword1">for</span>( <span class="php-var">$i</span> = <span class="php-num">0</span>; <span class="php-var">$i</span> &lt; <span class="php-keyword2">count</span>( <span class="php-var">$path</span> ); <span class="php-var">$i</span> += <span class="php-num">2</span> )
+</span><span id="1136" class="l"><a class="l" href="#1136">1136: </a>            {
+</span><span id="1137" class="l"><a class="l" href="#1137">1137: </a>                <span class="php-comment">//</span>
+</span><span id="1138" class="l"><a class="l" href="#1138">1138: </a>                <span class="php-comment">// Handle feature vertex.</span>
+</span><span id="1139" class="l"><a class="l" href="#1139">1139: </a>                <span class="php-comment">//</span>
+</span><span id="1140" class="l"><a class="l" href="#1140">1140: </a>                <span class="php-keyword1">if</span>( <span class="php-var">$i</span> == <span class="php-num">0</span> )
+</span><span id="1141" class="l"><a class="l" href="#1141">1141: </a>                    <span class="php-var">$this</span>-&gt;_ReferenceInObject(
+</span><span id="1142" class="l"><a class="l" href="#1142">1142: </a>                        COntologyTerm::ResolveContainer( <span class="php-var">$theConnection</span>, <span class="php-keyword1">TRUE</span> ),
+</span><span id="1143" class="l"><a class="l" href="#1143">1143: </a>                        kSWITCH_kTAG_FEATURES,
+</span><span id="1144" class="l"><a class="l" href="#1144">1144: </a>                        <span class="php-var">$path</span>[ <span class="php-var">$i</span> ],
+</span><span id="1145" class="l"><a class="l" href="#1145">1145: </a>                        kTAG_FEATURES,
+</span><span id="1146" class="l"><a class="l" href="#1146">1146: </a>                        <span class="php-var">$operation</span> );
+</span><span id="1147" class="l"><a class="l" href="#1147">1147: </a>                
+</span><span id="1148" class="l"><a class="l" href="#1148">1148: </a>                <span class="php-comment">//</span>
+</span><span id="1149" class="l"><a class="l" href="#1149">1149: </a>                <span class="php-comment">// Handle scale vertex.</span>
+</span><span id="1150" class="l"><a class="l" href="#1150">1150: </a>                <span class="php-comment">//</span>
+</span><span id="1151" class="l"><a class="l" href="#1151">1151: </a>                <span class="php-keyword1">if</span>( <span class="php-var">$i</span> == (<span class="php-keyword2">count</span>( <span class="php-var">$path</span> ) - <span class="php-num">1</span>) )
+</span><span id="1152" class="l"><a class="l" href="#1152">1152: </a>                    <span class="php-var">$this</span>-&gt;_ReferenceInObject(
+</span><span id="1153" class="l"><a class="l" href="#1153">1153: </a>                        COntologyTerm::ResolveContainer( <span class="php-var">$theConnection</span>, <span class="php-keyword1">TRUE</span> ),
+</span><span id="1154" class="l"><a class="l" href="#1154">1154: </a>                        kSWITCH_kTAG_SCALES,
+</span><span id="1155" class="l"><a class="l" href="#1155">1155: </a>                        <span class="php-var">$path</span>[ <span class="php-var">$i</span> ],
+</span><span id="1156" class="l"><a class="l" href="#1156">1156: </a>                        kTAG_SCALES,
+</span><span id="1157" class="l"><a class="l" href="#1157">1157: </a>                        <span class="php-var">$operation</span> );
+</span><span id="1158" class="l"><a class="l" href="#1158">1158: </a>                
+</span><span id="1159" class="l"><a class="l" href="#1159">1159: </a>                <span class="php-comment">//</span>
+</span><span id="1160" class="l"><a class="l" href="#1160">1160: </a>                <span class="php-comment">// Handle method vertex.</span>
+</span><span id="1161" class="l"><a class="l" href="#1161">1161: </a>                <span class="php-comment">//</span>
+</span><span id="1162" class="l"><a class="l" href="#1162">1162: </a>                <span class="php-keyword1">elseif</span>( <span class="php-var">$i</span> )    <span class="php-comment">// Not feature.</span>
+</span><span id="1163" class="l"><a class="l" href="#1163">1163: </a>                    <span class="php-var">$this</span>-&gt;_ReferenceInObject(
+</span><span id="1164" class="l"><a class="l" href="#1164">1164: </a>                        COntologyTerm::ResolveContainer( <span class="php-var">$theConnection</span>, <span class="php-keyword1">TRUE</span> ),
+</span><span id="1165" class="l"><a class="l" href="#1165">1165: </a>                        kSWITCH_kTAG_METHODS,
+</span><span id="1166" class="l"><a class="l" href="#1166">1166: </a>                        <span class="php-var">$path</span>[ <span class="php-var">$i</span> ],
+</span><span id="1167" class="l"><a class="l" href="#1167">1167: </a>                        kTAG_METHODS,
+</span><span id="1168" class="l"><a class="l" href="#1168">1168: </a>                        <span class="php-var">$operation</span> );
+</span><span id="1169" class="l"><a class="l" href="#1169">1169: </a>            
+</span><span id="1170" class="l"><a class="l" href="#1170">1170: </a>            } <span class="php-comment">// Iterating path elements.</span>
+</span><span id="1171" class="l"><a class="l" href="#1171">1171: </a>        
+</span><span id="1172" class="l"><a class="l" href="#1172">1172: </a>        } <span class="php-comment">// Insert or replace and not committed, or deleting.</span>
+</span><span id="1173" class="l"><a class="l" href="#1173">1173: </a>        
+</span><span id="1174" class="l"><a class="l" href="#1174">1174: </a>    } <span class="php-comment">// _PostcommitRelated.</span>
+</span><span id="1175" class="l"><a class="l" href="#1175">1175: </a>
+</span><span id="1176" class="l"><a class="l" href="#1176">1176: </a>     
+</span><span id="1177" class="l"><a class="l" href="#1177">1177: </a>
+</span><span id="1178" class="l"><a class="l" href="#1178">1178: </a>} <span class="php-comment">// class COntologyTag.</span>
+</span><span id="1179" class="l"><a class="l" href="#1179">1179: </a>
 </span><span id="1180" class="l"><a class="l" href="#1180">1180: </a>
-</span><span id="1181" class="l"><a class="l" href="#1181">1181: </a>} <span class="php-comment">// class COntologyTag.</span>
-</span><span id="1182" class="l"><a class="l" href="#1182">1182: </a>
-</span><span id="1183" class="l"><a class="l" href="#1183">1183: </a>
-</span><span id="1184" class="l"><a class="l" href="#1184">1184: </a><span class="xlang">?&gt;</span>
-</span><span id="1185" class="l"><a class="l" href="#1185">1185: </a></span></code></pre>
+</span><span id="1181" class="l"><a class="l" href="#1181">1181: </a><span class="xlang">?&gt;</span>
+</span><span id="1182" class="l"><a class="l" href="#1182">1182: </a></span></code></pre>
 
 	<div id="footer">
 		MyWrapper Reference Documentation API documentation generated by <a href="http://apigen.org">ApiGen 2.8.0</a>

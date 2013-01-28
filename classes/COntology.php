@@ -72,8 +72,8 @@
  *	 <ul>
  *		<li><tt>{@link kTAG_TERM}</tt>: <i>Term</i>. This attribute contains a reference to
  *			an object that represents the term of the attribute host.
- *		<li><tt>{@link kTAG_NODE}</tt>: <i>Node</i>. This attribute contains a reference to
- *			an object that represents the node of the attribute host.
+ *		<li><tt>{@link kTAG_MASTER}</tt>: <i>Node</i>. This attribute contains a reference
+ *			to an object that represents the node of the attribute host.
  *		<li><tt>{@link kTAG_CATEGORY}</tt>: <i>Category</i>. This attribute is an
  *			enumerated set that contains all the categories to which the hosting object
  *			belongs to. 
@@ -806,7 +806,7 @@ class COntology extends CConnection
 		//
 		$container->drop();
 		$container->AddIndex( array( kTAG_TERM => 1 ) );
-	//	$container->AddIndex( array( kTAG_NODE => 1 ), array( 'sparse' => TRUE ) );
+	//	$container->AddIndex( array( kTAG_MASTER => 1 ), array( 'sparse' => TRUE ) );
 		$container->AddIndex( array( kTAG_CATEGORY => 1 ), array( 'sparse' => TRUE ) );
 		$container->AddIndex( array( kTAG_KIND => 1 ), array( 'sparse' => TRUE ) );
 		$container->AddIndex( array( kTAG_TYPE => 1 ), array( 'sparse' => TRUE ) );
@@ -1803,6 +1803,26 @@ class COntology extends CConnection
 					$value = COntologyNode::Resolve( $theDatabase, $value, TRUE );
 					break;
 
+				case kTAG_MASTER:
+					switch( get_class( $theObject ) )
+					{
+						case 'CTerm':
+						case 'COntologyTerm':
+							$value = COntologyTerm::Resolve( $theDatabase, $value, NULL, TRUE );
+							break;
+
+						case 'CNode':
+						case 'COntologyNode':
+						case 'COntologyVertex':
+						case 'COntologyAliasNode':
+						case 'COntologyMasterNode':
+						case 'COntologyAliasVertex':
+						case 'COntologyMasterVertex':
+							$value = COntologyNode::Resolve( $theDatabase, $value, TRUE );
+							break;
+					}
+					break;
+
 				case kTAG_SUBJECT:
 				case kTAG_OBJECT:
 					$value = ( is_numeric( $value ) )
@@ -2282,7 +2302,7 @@ class COntology extends CConnection
 									$term1->offsetSet( kTAG_LABEL,
 													   $term3->offsetGet( kTAG_LABEL ) );
 								$term1->Kind( kKIND_ENUMERATION, TRUE );
-								$term1->Term( $term3 );
+								$term1->Master( $term3 );
 								$term1->Insert( $theDatabase );
 								
 								//
@@ -2348,7 +2368,7 @@ class COntology extends CConnection
 									$term2->offsetSet( kTAG_LABEL,
 													   $term3->offsetGet( kTAG_LABEL ) );
 								$term2->Kind( kKIND_ENUMERATION, TRUE );
-								$term2->Term( $term3 );
+								$term2->Master( $term3 );
 								$term2->Insert( $theDatabase );
 								
 								//
@@ -2630,7 +2650,7 @@ class COntology extends CConnection
 						//
 						// Resolve eventual part 3 node.
 						//
-						if( ($ref = $term1->Term()) !== NULL )
+						if( ($ref = $term1->Master()) !== NULL )
 							$node3
 								= COntologyMasterVertex::Resolve(
 									$theDatabase, $ref, TRUE );
@@ -2668,7 +2688,7 @@ class COntology extends CConnection
 						//
 						if( $node3 !== NULL )
 						{
-							$term2b->Term( $node3->Term() );
+							$term2b->Master( $node3->Term() );
 							if( $node3->offsetExists( kTAG_LABEL ) )
 								$term2b->offsetSet(
 									kTAG_LABEL,
@@ -2676,7 +2696,7 @@ class COntology extends CConnection
 						}
 						elseif( $node1 !== NULL )
 						{
-							$term2b->Term( $node1->Term() );
+							$term2b->Master( $node1->Term() );
 							if( $node1->offsetExists( kTAG_LABEL ) )
 								$term2b->offsetSet(
 									kTAG_LABEL,
@@ -2767,7 +2787,7 @@ class COntology extends CConnection
 						//
 						if( $node3 !== NULL )
 						{
-							$term2t->Term( $node3->Term() );
+							$term2t->Master( $node3->Term() );
 							if( $node3->offsetExists( kTAG_LABEL ) )
 								$term2t->offsetSet(
 									kTAG_LABEL,
@@ -2775,7 +2795,7 @@ class COntology extends CConnection
 						}
 						elseif( $node1 !== NULL )
 						{
-							$term2t->Term( $node1->Term() );
+							$term2t->Master( $node1->Term() );
 							if( $node1->offsetExists( kTAG_LABEL ) )
 								$term2t->offsetSet(
 									kTAG_LABEL,
@@ -3126,7 +3146,7 @@ class COntology extends CConnection
 									$term2->offsetSet( kTAG_LABEL,
 													   $term3->offsetGet( kTAG_LABEL ) );
 								$term2->Kind( kKIND_ENUMERATION, TRUE );
-								$term2->Term( $term3 );
+								$term2->Master( $term3 );
 								$term2->Insert( $theDatabase );
 								
 								//
@@ -3192,7 +3212,7 @@ class COntology extends CConnection
 									$termN->offsetSet( kTAG_LABEL,
 													   $term3->offsetGet( kTAG_LABEL ) );
 								$termN->Kind( kKIND_ENUMERATION, TRUE );
-								$termN->Term( $term3 );
+								$termN->Master( $term3 );
 								$termN->Insert( $theDatabase );
 								
 								//
@@ -3493,7 +3513,7 @@ class COntology extends CConnection
 									$term4->offsetSet( kTAG_LABEL,
 													   $term3->offsetGet( kTAG_LABEL ) );
 								$term4->Kind( kKIND_ENUMERATION, TRUE );
-								$term4->Term( $term3 );
+								$term4->Master( $term3 );
 								$term4->Insert( $theDatabase );
 								
 								//
@@ -3559,7 +3579,7 @@ class COntology extends CConnection
 									$termN->offsetSet( kTAG_LABEL,
 													   $term3->offsetGet( kTAG_LABEL ) );
 								$termN->Kind( kKIND_ENUMERATION, TRUE );
-								$termN->Term( $term3 );
+								$termN->Master( $term3 );
 								$termN->Insert( $theDatabase );
 								
 								//
@@ -4116,7 +4136,7 @@ class COntology extends CConnection
 									$termN->offsetSet( kTAG_LABEL,
 													   $termL->offsetGet( kTAG_LABEL ) );
 								$termN->Kind( kKIND_ENUMERATION, TRUE );
-								$termN->Term( $termL );
+								$termN->Master( $termL );
 								$termN->Insert( $theDatabase );
 								
 								//
@@ -4263,7 +4283,7 @@ class COntology extends CConnection
 									$termN->offsetSet( kTAG_LABEL,
 													   $termL->offsetGet( kTAG_LABEL ) );
 								$termN->Kind( kKIND_ENUMERATION, TRUE );
-								$termN->Term( $termL );
+								$termN->Master( $termL );
 								$termN->Insert( $theDatabase );
 								
 								//
@@ -4481,7 +4501,7 @@ class COntology extends CConnection
 									$termN->offsetSet( kTAG_LABEL,
 													   $term4->offsetGet( kTAG_LABEL ) );
 								$termN->Kind( kKIND_ENUMERATION, TRUE );
-								$termN->Term( $term4 );
+								$termN->Master( $term4 );
 								$termN->Insert( $theDatabase );
 								
 								//

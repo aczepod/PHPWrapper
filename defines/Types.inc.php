@@ -315,6 +315,71 @@ define( "kTYPE_INT32",							':INT32' );
 define( "kTYPE_INT64",							':INT64' );
 
 /*=======================================================================================
+ *	OBJECT REFERENCE DATA TYPES															*
+ *======================================================================================*/
+
+/**
+ * REF-TERM.
+ *
+ * Term reference.
+ *
+ * This type represents the reference to a term object, term identifiers are by definition
+ * binary strings, {@link kTYPE_BINARY_STRING}.
+ *
+ * Version 1: (kTYPE_REF_TERM)[:REF-TERM]
+ */
+define( "kTYPE_REF_TERM",						':REF-TERM' );
+
+/**
+ * REF-NODE.
+ *
+ * Node reference.
+ *
+ * This type represents the reference to a node object, node identifiers are by definition
+ * integers, {@link kTYPE_INT}.
+ *
+ * Version 1: (kTYPE_REF_NODE)[:REF-NODE]
+ */
+define( "kTYPE_REF_NODE",						':REF-NODE' );
+
+/**
+ * REF-EDGE.
+ *
+ * Edge reference.
+ *
+ * This type represents the reference to an edge object, edge identifiers are by definition
+ * integers, {@link kTYPE_INT}.
+ *
+ * Version 1: (kTYPE_REF_EDGE)[:REF-EDGE]
+ */
+define( "kTYPE_REF_EDGE",						':REF-EDGE' );
+
+/**
+ * REF-TAG.
+ *
+ * Tag reference.
+ *
+ * This type represents the reference to a tag object, tag identifiers are by definition
+ * integers, {@link kTYPE_INT}.
+ *
+ * Version 1: (kTYPE_REF_TAG)[:REF-TAG]
+ */
+define( "kTYPE_REF_TAG",						':REF-TAG' );
+
+/**
+ * REF-SELF.
+ *
+ * Self reference.
+ *
+ * This type represents the reference to an object of the same type, it is used by an alias
+ * to reference its master. By definition it will have the same data type as the object that
+ * hosts it.
+ *
+ * Version 1: (kTYPE_REF_SELF)[:REF-SELF]
+ */
+define( "kTYPE_REF_SELF",						':REF-SELF' );
+
+/*=======================================================================================
  *	STANDARD FORMAT TYPES																*
  *======================================================================================*/
 

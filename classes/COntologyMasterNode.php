@@ -112,7 +112,7 @@ class COntologyMasterNode extends COntologyNode
 	 * <h4>Relate to node</h4>
 	 *
 	 * We overload the inherited method to ensure that both vertices of the relationship do
-	 * not have node references, {@link kTAG_NODE}. If any do have such references, we use
+	 * not have node references, {@link kTAG_MASTER}. If any do have such references, we use
 	 * the referenced node instead of the current one.
 	 *
 	 * Both the current node and the object node will be committed if not already.
@@ -149,13 +149,13 @@ class COntologyMasterNode extends COntologyNode
 			// Resolve subject master node.
 			//
 			$cache = array( $subject->offsetGet( kTAG_NID ) );
-			while( $subject->offsetExists( kTAG_NODE ) )
+			while( $subject->offsetExists( kTAG_MASTER ) )
 			{
 				//
 				// Resolve node reference.
 				//
 				$subject = static::Resolve( $theConnection,
-											$subject->offsetGet( kTAG_NODE ),
+											$subject->offsetGet( kTAG_MASTER ),
 											TRUE );
 				
 				//
@@ -173,7 +173,7 @@ class COntologyMasterNode extends COntologyNode
 			//
 			// Double check reference.
 			//
-			if( $subject->offsetExists( kTAG_NODE ) )
+			if( $subject->offsetExists( kTAG_MASTER ) )
 				throw new Exception
 					( "Subject vertex does not resolve into a master node",
 					  kERROR_STATE );											// !@! ==>
@@ -190,13 +190,13 @@ class COntologyMasterNode extends COntologyNode
 			// Resolve object master node.
 			//
 			$cache = array( $theObject->offsetGet( kTAG_NID ) );
-			while( $theObject->offsetExists( kTAG_NODE ) )
+			while( $theObject->offsetExists( kTAG_MASTER ) )
 			{
 				//
 				// Resolve node reference.
 				//
 				$theObject = static::Resolve( $theConnection,
-											  $theObject->offsetGet( kTAG_NODE ),
+											  $theObject->offsetGet( kTAG_MASTER ),
 											  TRUE );
 				
 				//
@@ -214,7 +214,7 @@ class COntologyMasterNode extends COntologyNode
 			//
 			// Double check reference.
 			//
-			if( $theObject->offsetExists( kTAG_NODE ) )
+			if( $theObject->offsetExists( kTAG_MASTER ) )
 				throw new Exception
 					( "Object vertex does not resolve into a master node",
 					  kERROR_STATE );											// !@! ==>
@@ -274,9 +274,9 @@ class COntologyMasterNode extends COntologyNode
 	 * We overload this method in this class by intercepting all cases in which the
 	 * <tt>$theIdentifier</tt> is not an integer, or node reference: since no two nodes of
 	 * this class can share the same term reference, we add a clause to the search query to
-	 * exclude all node that have a {@link kTAG_NODE} attribute. We do this rather than use
-	 * the object class, because we assume all nodes that have the {@link kTAG_NODE}
-	 * attribute yo be aliases.
+	 * exclude all node that have a {@link kTAG_MASTER} attribute. We do this rather than
+	 * use the object class, because we assume all nodes that have the {@link kTAG_MASTER}
+	 * attribute to be aliases.
 	 *
 	 * Since terms become also a unique identifier, this method will return either an object
 	 * or <tt>NULL</tt>.
@@ -350,7 +350,7 @@ class COntologyMasterNode extends COntologyNode
 					kTAG_TERM, $theIdentifier, kTYPE_BINARY_STRING ) );
 			$query->AppendStatement(
 				CQueryStatement::Missing(
-					kTAG_NODE ) );
+					kTAG_MASTER ) );
 			$node = $container->Query( $query, NULL, NULL, NULL, NULL, TRUE );
 			if( $node !== NULL )
 				return static::DocumentObject( $node );								// ==>
