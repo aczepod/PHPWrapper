@@ -107,7 +107,7 @@
         </xs:annotation>
         <xs:complexType>
             <xs:sequence>
-                <xs:element maxOccurs="unbounded" ref="element"/>
+                <xs:element minOccurs="0" maxOccurs="unbounded" ref="element"/>
             </xs:sequence>
             <xs:attribute name="ID" type="xs:ID">
                 <xs:annotation>
@@ -119,14 +119,14 @@
                     </xs:documentation>
                 </xs:annotation>
             </xs:attribute>
-            <xs:attribute name="Class" use="required" type="xs:string">
+            <xs:attribute name="class" use="required" type="xs:string">
                 <xs:annotation>
                     <xs:documentation xml:lang="en">
                         Node class name, this attribute is required.
                     </xs:documentation>
                 </xs:annotation>
             </xs:attribute>
-            <xs:attribute name="Term" use="required" type="xs:string">
+            <xs:attribute name="term" use="required" type="xs:string">
                 <xs:annotation>
                     <xs:documentation xml:lang="en">
                         Term reference, should refer to the global identifier of the term.
