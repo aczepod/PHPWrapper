@@ -36,7 +36,7 @@ require_once( kPATH_MYWRAPPER_LIBRARY_CLASS."/COntologyMasterNode.php" );
 /**
  * <h4>Ontology alias node object</h4>
  *
- * Instances of this class hold an attribute, {@link kTAG_MASTER}, which represents a
+ * Instances of this class hold an attribute, {@link kTAG_NODE}, which represents a
  * reference to an instance of the {@link COntologyMasterVertex}.
  *
  * They are a separate node which shares the same {@link kTAG_TERM} attribute as the node
@@ -44,7 +44,7 @@ require_once( kPATH_MYWRAPPER_LIBRARY_CLASS."/COntologyMasterNode.php" );
  * {@link kTAG_TYPE} attributes.
  *
  * These objects can be used as a view into the master graph formed by the
- * {@link COntologyMasterVertex} instances, nodes which do not have the {@link kTAG_MASTER}
+ * {@link COntologyMasterVertex} instances, nodes which do not have the {@link kTAG_NODE}
  * attribute.
  *
  * The main use of such objects is to create a separate graph using a subset of the master
@@ -53,16 +53,16 @@ require_once( kPATH_MYWRAPPER_LIBRARY_CLASS."/COntologyMasterNode.php" );
  *
  * Whenever a new node is created, the class will make sure that an instance of
  * {@link COntologyMasterVertex} exists which points to the same term as the current object
- * and set the current node's {@link kTAG_MASTER} attribute to point to it. This means that
+ * and set the current node's {@link kTAG_NODE} attribute to point to it. This means that
  * all instances of this class refer to another node which represents their master node.
  *
  * When an instance of this class is related to another instance of this class, the same
  * relation will be automatically created between the master nodes referenced by the
- * {@link kTAG_MASTER} attribute; this will not occur if an instance of this class is
+ * {@link kTAG_NODE} attribute; this will not occur if an instance of this class is
  * related to a master node.
  *
  * When inserting or deleting nodes, this class will update the {@link kTAG_NODES} attribute
- * of the object referenced by the current object's {@link kTAG_MASTER} attribute. The
+ * of the object referenced by the current object's {@link kTAG_NODE} attribute. The
  * referenced {@link kTAG_NODES} attribute is either the count or an array of object
  * {@link kTAG_NID} attributes, depending on the value of the
  * {@link kSWITCH_kTAG_ALIAS_NODES} flag:
@@ -92,13 +92,13 @@ class COntologyAliasNode extends COntologyNode
 
 	 
 	/*===================================================================================
-	 *	Master																			*
+	 *	Node																			*
 	 *==================================================================================*/
 
 	/**
 	 * <h4>Manage node reference</h4>
 	 *
-	 * This method can be used to manage the master node reference, {@link kTAG_MASTER}, the
+	 * This method can be used to manage the master node reference, {@link kTAG_NODE}, the
 	 * method accepts a parameter which represents either the node, or the requested
 	 * operation, depending on its value:
 	 *
@@ -126,9 +126,9 @@ class COntologyAliasNode extends COntologyNode
 	 *
 	 * @uses ManageOffset()
 	 *
-	 * @see kTAG_MASTER
+	 * @see kTAG_NODE
 	 */
-	public function Master( $theValue = NULL, $getOld = FALSE )
+	public function Node( $theValue = NULL, $getOld = FALSE )
 	{
 		//
 		// Handle provided value.
@@ -166,7 +166,7 @@ class COntologyAliasNode extends COntologyNode
 		
 		} // New value.
 		
-		return ManageOffset( $this, kTAG_MASTER, $theValue, $getOld );				// ==>
+		return ManageOffset( $this, kTAG_NODE, $theValue, $getOld );				// ==>
 
 	} // Node.
 
@@ -219,7 +219,7 @@ class COntologyAliasNode extends COntologyNode
 			//
 			// Check if related.
 			//
-			if( $this->offsetExists( kTAG_MASTER ) )
+			if( $this->offsetExists( kTAG_NODE ) )
 			{
 				//
 				// Resolve object.
@@ -238,14 +238,14 @@ class COntologyAliasNode extends COntologyNode
 				// Resolve subject master node.
 				//
 				$subject = $this->NewObject( $theConnection,
-											 $this->offsetGet( kTAG_MASTER ) );
+											 $this->offsetGet( kTAG_NODE ) );
 				
 				//
 				// Resolve object master node.
 				//
-				if( $theObject->offsetExists( kTAG_MASTER ) )
+				if( $theObject->offsetExists( kTAG_NODE ) )
 					$theObject = $this->NewObject( $theConnection,
-												   $theObject->offsetGet( kTAG_MASTER ) );
+												   $theObject->offsetGet( kTAG_NODE ) );
 				
 				//
 				// Relate master nodes.
@@ -287,11 +287,11 @@ class COntologyAliasNode extends COntologyNode
 	 *
 	 * In this class we handle the master node: we check whether a master node related to
 	 * the same term exists, if that is the case we set the current node's
-	 * {@link kTAG_MASTER} attribute, if that is not the case, we instantiate and insert the
+	 * {@link kTAG_NODE} attribute, if that is not the case, we instantiate and insert the
 	 * master node before setting its identifier in the current object's
-	 * {@link kTAG_MASTER} attribute.
+	 * {@link kTAG_NODE} attribute.
 	 *
-	 * Note that we do the above only if the {@link kTAG_MASTER} offset is not yet set.
+	 * Note that we do the above only if the {@link kTAG_NODE} offset is not yet set.
 	 *
 	 * @param reference			   &$theConnection		Server, database or container.
 	 * @param reference			   &$theModifiers		Commit options.
@@ -317,7 +317,7 @@ class COntologyAliasNode extends COntologyNode
 		//
 		if( ( (($theModifiers & kFLAG_PERSIST_MASK) == kFLAG_PERSIST_INSERT)
 		   || (($theModifiers & kFLAG_PERSIST_MASK) == kFLAG_PERSIST_REPLACE) )
-		 && (! $this->offsetExists( kTAG_MASTER )) )
+		 && (! $this->offsetExists( kTAG_NODE )) )
 		{
 			//
 			// Create master node.
@@ -334,7 +334,7 @@ class COntologyAliasNode extends COntologyNode
 			//
 			// Insert and reference master node.
 			//
-			$this->offsetSet( kTAG_MASTER, $node->Insert( $theConnection ) );
+			$this->offsetSet( kTAG_NODE, $node->Insert( $theConnection ) );
 		
 		} // Not deleting.
 		
@@ -359,17 +359,17 @@ class COntologyAliasNode extends COntologyNode
 	/**
 	 * <h4>Update related objects after committing</h4>
 	 *
-	 * In this class we handle referenced master nodes, {@link kTAG_MASTER}: depending on
+	 * In this class we handle referenced master nodes, {@link kTAG_NODE}: depending on
 	 * the value of the {@link kSWITCH_kTAG_ALIAS_NODES} flag we do the following:
 	 *
 	 * <ul>
 	 *	<li><tt>0x2</tt>: <i>Keep count of references</i>. This means that the
 	 *		{@link kTAG_NODES} attribute of the master node referenced by the
-	 *		{@link kTAG_MASTER} attribute will be incremented when the object is inserted,
+	 *		{@link kTAG_NODE} attribute will be incremented when the object is inserted,
 	 *		or decremented when deleted.
 	 *	<li><tt>0x3</tt>: <i>Keep list of references</i>. This means that a reference to the
 	 *		current object will be added to the {@link kTAG_NODES} attribute of the master
-	 *		node referenced by {@link kTAG_MASTER} attribute of the current object when the
+	 *		node referenced by {@link kTAG_NODE} attribute of the current object when the
 	 *		latter is inserted, and removed when the object isdeleted.
 	 *	<li><tt>0x0</tt> <i>or other</i>: <i>Don't handle this information</i>. This means
 	 *		that the {@link kTAG_NODES} attribute will not be handled.
@@ -395,7 +395,7 @@ class COntologyAliasNode extends COntologyNode
 		//
 		// Check node reference.
 		//
-		if( $this->offsetExists( kTAG_MASTER ) )
+		if( $this->offsetExists( kTAG_NODE ) )
 		{
 			//
 			// Handle insert or replace.
@@ -410,7 +410,7 @@ class COntologyAliasNode extends COntologyNode
 					$this->_ReferenceInObject(
 						COntologyTerm::ResolveContainer( $theConnection, TRUE ),
 						kSWITCH_kTAG_ALIAS_NODES,
-						$this->offsetGet( kTAG_MASTER ),
+						$this->offsetGet( kTAG_NODE ),
 						kTAG_NODES,
 						1 );
 			
@@ -423,7 +423,7 @@ class COntologyAliasNode extends COntologyNode
 				$this->_ReferenceInObject(
 					COntologyTerm::ResolveContainer( $theConnection, TRUE ),
 					kSWITCH_kTAG_ALIAS_NODES,
-					$this->offsetGet( kTAG_MASTER ),
+					$this->offsetGet( kTAG_NODE ),
 					kTAG_NODES,
 					-1 );
 		

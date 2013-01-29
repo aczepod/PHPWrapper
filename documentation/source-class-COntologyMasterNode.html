@@ -220,7 +220,7 @@
 </span></span><span id="112" class="l"><a class="l" href="#112">112: </a><span class="php-comment">     * &lt;h4&gt;Relate to node&lt;/h4&gt;
 </span></span><span id="113" class="l"><a class="l" href="#113">113: </a><span class="php-comment">     *
 </span></span><span id="114" class="l"><a class="l" href="#114">114: </a><span class="php-comment">     * We overload the inherited method to ensure that both vertices of the relationship do
-</span></span><span id="115" class="l"><a class="l" href="#115">115: </a><span class="php-comment">     * not have node references, {@link kTAG_MASTER}. If any do have such references, we use
+</span></span><span id="115" class="l"><a class="l" href="#115">115: </a><span class="php-comment">     * not have node references, {@link kTAG_NODE}. If any do have such references, we use
 </span></span><span id="116" class="l"><a class="l" href="#116">116: </a><span class="php-comment">     * the referenced node instead of the current one.
 </span></span><span id="117" class="l"><a class="l" href="#117">117: </a><span class="php-comment">     *
 </span></span><span id="118" class="l"><a class="l" href="#118">118: </a><span class="php-comment">     * Both the current node and the object node will be committed if not already.
@@ -257,13 +257,13 @@
 </span><span id="149" class="l"><a class="l" href="#149">149: </a>            <span class="php-comment">// Resolve subject master node.</span>
 </span><span id="150" class="l"><a class="l" href="#150">150: </a>            <span class="php-comment">//</span>
 </span><span id="151" class="l"><a class="l" href="#151">151: </a>            <span class="php-var">$cache</span> = <span class="php-keyword1">array</span>( <span class="php-var">$subject</span>-&gt;offsetGet( kTAG_NID ) );
-</span><span id="152" class="l"><a class="l" href="#152">152: </a>            <span class="php-keyword1">while</span>( <span class="php-var">$subject</span>-&gt;offsetExists( kTAG_MASTER ) )
+</span><span id="152" class="l"><a class="l" href="#152">152: </a>            <span class="php-keyword1">while</span>( <span class="php-var">$subject</span>-&gt;offsetExists( kTAG_NODE ) )
 </span><span id="153" class="l"><a class="l" href="#153">153: </a>            {
 </span><span id="154" class="l"><a class="l" href="#154">154: </a>                <span class="php-comment">//</span>
 </span><span id="155" class="l"><a class="l" href="#155">155: </a>                <span class="php-comment">// Resolve node reference.</span>
 </span><span id="156" class="l"><a class="l" href="#156">156: </a>                <span class="php-comment">//</span>
 </span><span id="157" class="l"><a class="l" href="#157">157: </a>                <span class="php-var">$subject</span> = <span class="php-keyword1">static</span>::Resolve( <span class="php-var">$theConnection</span>,
-</span><span id="158" class="l"><a class="l" href="#158">158: </a>                                            <span class="php-var">$subject</span>-&gt;offsetGet( kTAG_MASTER ),
+</span><span id="158" class="l"><a class="l" href="#158">158: </a>                                            <span class="php-var">$subject</span>-&gt;offsetGet( kTAG_NODE ),
 </span><span id="159" class="l"><a class="l" href="#159">159: </a>                                            <span class="php-keyword1">TRUE</span> );
 </span><span id="160" class="l"><a class="l" href="#160">160: </a>                
 </span><span id="161" class="l"><a class="l" href="#161">161: </a>                <span class="php-comment">//</span>
@@ -281,7 +281,7 @@
 </span><span id="173" class="l"><a class="l" href="#173">173: </a>            <span class="php-comment">//</span>
 </span><span id="174" class="l"><a class="l" href="#174">174: </a>            <span class="php-comment">// Double check reference.</span>
 </span><span id="175" class="l"><a class="l" href="#175">175: </a>            <span class="php-comment">//</span>
-</span><span id="176" class="l"><a class="l" href="#176">176: </a>            <span class="php-keyword1">if</span>( <span class="php-var">$subject</span>-&gt;offsetExists( kTAG_MASTER ) )
+</span><span id="176" class="l"><a class="l" href="#176">176: </a>            <span class="php-keyword1">if</span>( <span class="php-var">$subject</span>-&gt;offsetExists( kTAG_NODE ) )
 </span><span id="177" class="l"><a class="l" href="#177">177: </a>                <span class="php-keyword1">throw</span> <span class="php-keyword1">new</span> Exception
 </span><span id="178" class="l"><a class="l" href="#178">178: </a>                    ( <span class="php-quote">&quot;Subject vertex does not resolve into a master node&quot;</span>,
 </span><span id="179" class="l"><a class="l" href="#179">179: </a>                      kERROR_STATE );                                           <span class="php-comment">// !@! ==&gt;</span>
@@ -298,13 +298,13 @@
 </span><span id="190" class="l"><a class="l" href="#190">190: </a>            <span class="php-comment">// Resolve object master node.</span>
 </span><span id="191" class="l"><a class="l" href="#191">191: </a>            <span class="php-comment">//</span>
 </span><span id="192" class="l"><a class="l" href="#192">192: </a>            <span class="php-var">$cache</span> = <span class="php-keyword1">array</span>( <span class="php-var">$theObject</span>-&gt;offsetGet( kTAG_NID ) );
-</span><span id="193" class="l"><a class="l" href="#193">193: </a>            <span class="php-keyword1">while</span>( <span class="php-var">$theObject</span>-&gt;offsetExists( kTAG_MASTER ) )
+</span><span id="193" class="l"><a class="l" href="#193">193: </a>            <span class="php-keyword1">while</span>( <span class="php-var">$theObject</span>-&gt;offsetExists( kTAG_NODE ) )
 </span><span id="194" class="l"><a class="l" href="#194">194: </a>            {
 </span><span id="195" class="l"><a class="l" href="#195">195: </a>                <span class="php-comment">//</span>
 </span><span id="196" class="l"><a class="l" href="#196">196: </a>                <span class="php-comment">// Resolve node reference.</span>
 </span><span id="197" class="l"><a class="l" href="#197">197: </a>                <span class="php-comment">//</span>
 </span><span id="198" class="l"><a class="l" href="#198">198: </a>                <span class="php-var">$theObject</span> = <span class="php-keyword1">static</span>::Resolve( <span class="php-var">$theConnection</span>,
-</span><span id="199" class="l"><a class="l" href="#199">199: </a>                                              <span class="php-var">$theObject</span>-&gt;offsetGet( kTAG_MASTER ),
+</span><span id="199" class="l"><a class="l" href="#199">199: </a>                                              <span class="php-var">$theObject</span>-&gt;offsetGet( kTAG_NODE ),
 </span><span id="200" class="l"><a class="l" href="#200">200: </a>                                              <span class="php-keyword1">TRUE</span> );
 </span><span id="201" class="l"><a class="l" href="#201">201: </a>                
 </span><span id="202" class="l"><a class="l" href="#202">202: </a>                <span class="php-comment">//</span>
@@ -322,7 +322,7 @@
 </span><span id="214" class="l"><a class="l" href="#214">214: </a>            <span class="php-comment">//</span>
 </span><span id="215" class="l"><a class="l" href="#215">215: </a>            <span class="php-comment">// Double check reference.</span>
 </span><span id="216" class="l"><a class="l" href="#216">216: </a>            <span class="php-comment">//</span>
-</span><span id="217" class="l"><a class="l" href="#217">217: </a>            <span class="php-keyword1">if</span>( <span class="php-var">$theObject</span>-&gt;offsetExists( kTAG_MASTER ) )
+</span><span id="217" class="l"><a class="l" href="#217">217: </a>            <span class="php-keyword1">if</span>( <span class="php-var">$theObject</span>-&gt;offsetExists( kTAG_NODE ) )
 </span><span id="218" class="l"><a class="l" href="#218">218: </a>                <span class="php-keyword1">throw</span> <span class="php-keyword1">new</span> Exception
 </span><span id="219" class="l"><a class="l" href="#219">219: </a>                    ( <span class="php-quote">&quot;Object vertex does not resolve into a master node&quot;</span>,
 </span><span id="220" class="l"><a class="l" href="#220">220: </a>                      kERROR_STATE );                                           <span class="php-comment">// !@! ==&gt;</span>
@@ -382,8 +382,8 @@
 </span></span><span id="274" class="l"><a class="l" href="#274">274: </a><span class="php-comment">     * We overload this method in this class by intercepting all cases in which the
 </span></span><span id="275" class="l"><a class="l" href="#275">275: </a><span class="php-comment">     * &lt;tt&gt;$theIdentifier&lt;/tt&gt; is not an integer, or node reference: since no two nodes of
 </span></span><span id="276" class="l"><a class="l" href="#276">276: </a><span class="php-comment">     * this class can share the same term reference, we add a clause to the search query to
-</span></span><span id="277" class="l"><a class="l" href="#277">277: </a><span class="php-comment">     * exclude all node that have a {@link kTAG_MASTER} attribute. We do this rather than
-</span></span><span id="278" class="l"><a class="l" href="#278">278: </a><span class="php-comment">     * use the object class, because we assume all nodes that have the {@link kTAG_MASTER}
+</span></span><span id="277" class="l"><a class="l" href="#277">277: </a><span class="php-comment">     * exclude all node that have a {@link kTAG_NODE} attribute. We do this rather than
+</span></span><span id="278" class="l"><a class="l" href="#278">278: </a><span class="php-comment">     * use the object class, because we assume all nodes that have the {@link kTAG_NODE}
 </span></span><span id="279" class="l"><a class="l" href="#279">279: </a><span class="php-comment">     * attribute to be aliases.
 </span></span><span id="280" class="l"><a class="l" href="#280">280: </a><span class="php-comment">     *
 </span></span><span id="281" class="l"><a class="l" href="#281">281: </a><span class="php-comment">     * Since terms become also a unique identifier, this method will return either an object
@@ -458,7 +458,7 @@
 </span><span id="350" class="l"><a class="l" href="#350">350: </a>                    kTAG_TERM, <span class="php-var">$theIdentifier</span>, kTYPE_BINARY_STRING ) );
 </span><span id="351" class="l"><a class="l" href="#351">351: </a>            <span class="php-var">$query</span>-&gt;AppendStatement(
 </span><span id="352" class="l"><a class="l" href="#352">352: </a>                CQueryStatement::Missing(
-</span><span id="353" class="l"><a class="l" href="#353">353: </a>                    kTAG_MASTER ) );
+</span><span id="353" class="l"><a class="l" href="#353">353: </a>                    kTAG_NODE ) );
 </span><span id="354" class="l"><a class="l" href="#354">354: </a>            <span class="php-var">$node</span> = <span class="php-var">$container</span>-&gt;Query( <span class="php-var">$query</span>, <span class="php-keyword1">NULL</span>, <span class="php-keyword1">NULL</span>, <span class="php-keyword1">NULL</span>, <span class="php-keyword1">NULL</span>, <span class="php-keyword1">TRUE</span> );
 </span><span id="355" class="l"><a class="l" href="#355">355: </a>            <span class="php-keyword1">if</span>( <span class="php-var">$node</span> !== <span class="php-keyword1">NULL</span> )
 </span><span id="356" class="l"><a class="l" href="#356">356: </a>                <span class="php-keyword1">return</span> <span class="php-keyword1">static</span>::DocumentObject( <span class="php-var">$node</span> );                             <span class="php-comment">// ==&gt;</span>

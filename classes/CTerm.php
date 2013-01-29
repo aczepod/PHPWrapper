@@ -73,8 +73,8 @@ require_once( kPATH_MYWRAPPER_LIBRARY_CLASS."/CPersistentObject.php" );
  *		the <tt>{@link kTAG_SYNONYMS}</tt> tag, represents a list of strings that represent
  *		alternative names or identifiers for the term. These strings are comparable to
  *		variable names and do not have a language scope. This attribute is optional.
- *	<li><i>Master</i>: The master, <tt>{@link Master()}</tt> or the
- *		<tt>{@link kTAG_MASTER}</tt> tag, is a reference to another term that hosts the
+ *	<li><i>Term</i>: The master, <tt>{@link Term()}</tt> or the
+ *		<tt>{@link kTAG_TERM}</tt> tag, is a reference to another term that hosts the
  *		attributes of the current term. This can be used to redirect synonymous terms to a
  *		single instance that holds all the attributes common to the referencing terms. This
  *		is used to prevent duplicating attributes for synonym terms. This attribute is
@@ -230,13 +230,13 @@ class CTerm extends CPersistentObject
 
 	 
 	/*===================================================================================
-	 *	Master																			*
+	 *	Term																			*
 	 *==================================================================================*/
 
 	/**
 	 * <h4>Manage term reference</h4>
 	 *
-	 * This method can be used to manage the term reference, {@link kTAG_MASTER}, which
+	 * This method can be used to manage the term reference, {@link kTAG_TERM}, which
 	 * represents the term that hosts all the attributes for the current term.
 	 *
 	 * This attribute is used when defining exact term synonyms: instead of duplicating the
@@ -264,13 +264,13 @@ class CTerm extends CPersistentObject
 	 *
 	 * @uses ManageOffset()
 	 *
-	 * @see kTAG_MASTER
+	 * @see kTAG_TERM
 	 */
-	public function Master( $theValue = NULL, $getOld = FALSE )
+	public function Term( $theValue = NULL, $getOld = FALSE )
 	{
-		return ManageOffset( $this, kTAG_MASTER, $theValue, $getOld );				// ==>
+		return ManageOffset( $this, kTAG_TERM, $theValue, $getOld );				// ==>
 
-	} // Master.
+	} // Term.
 
 	 
 	/*===================================================================================

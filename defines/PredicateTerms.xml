@@ -193,7 +193,7 @@
     <term lid="XREF-EXACT" ns="">
         <element variable="kTAG_KIND">
             <item>:KIND-PREDICATE</item>
-            <item>:kKIND_SYMMETRIC</item>
+            <item>:KIND-SYMMETRIC</item>
         </element>
         <element variable="kTAG_LABEL" key="en">Exact cross reference</element>
         <element variable="kTAG_DEFINITION" key="en"><![CDATA[This predicate indicates that the object of

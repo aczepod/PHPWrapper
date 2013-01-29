@@ -541,19 +541,6 @@ define( "kTAG_OBJECT",							'26' );
 define( "kTAG_PREDICATE",						'27' );
 
 /**
- * MASTER.
- *
- * Master.
- *
- * This attribute contains a reference to an object of the same kind as the current one, it
- * represents the reference of an alias to its master. It is generally used when two objects
- * share the same content, but are only formally different.
- *
- * Version 1: (kTAG_MASTER)[28]
- */
-define( "kTAG_MASTER",							'28' );
-
-/**
  * PATH.
  *
  * Path.
@@ -566,7 +553,7 @@ define( "kTAG_MASTER",							'28' );
  * Version 2: (kTAG_PATH)[23]
  * Version 3: (kTAG_PATH)[28]
  */
-define( "kTAG_PATH",							'29' );
+define( "kTAG_PATH",							'28' );
 
 /*=======================================================================================
  *	REFERENCE COLLECTIONS																*
@@ -584,7 +571,7 @@ define( "kTAG_PATH",							'29' );
  * Version 2: (kTAG_NAMESPACE_REFS)[24]
  * Version 3: (kTAG_NAMESPACE_REFS)[29]
  */
-define( "kTAG_NAMESPACE_REFS",					'30' );
+define( "kTAG_NAMESPACE_REFS",					'29' );
 
 /**
  * NODES.
@@ -598,7 +585,7 @@ define( "kTAG_NAMESPACE_REFS",					'30' );
  * Version 2: (kTAG_NODES)[25]
  * Version 3: (kTAG_NODES)[30]
  */
-define( "kTAG_NODES",							'31' );
+define( "kTAG_NODES",							'30' );
 
 /**
  * EDGES.
@@ -612,7 +599,7 @@ define( "kTAG_NODES",							'31' );
  * Version 2: (kTAG_EDGES)[26]
  * Version 3: (kTAG_EDGES)[31]
  */
-define( "kTAG_EDGES",							'32' );
+define( "kTAG_EDGES",							'31' );
 
 /**
  * FEATURES.
@@ -626,7 +613,7 @@ define( "kTAG_EDGES",							'32' );
  * Version 2: (kTAG_FEATURES)[27]
  * Version 3: (kTAG_FEATURES)[32]
  */
-define( "kTAG_FEATURES",						'33' );
+define( "kTAG_FEATURES",						'32' );
 
 /**
  * METHODS.
@@ -640,7 +627,7 @@ define( "kTAG_FEATURES",						'33' );
  * Version 2: (kTAG_METHODS)[28]
  * Version 3: (kTAG_METHODS)[33]
  */
-define( "kTAG_METHODS",							'34' );
+define( "kTAG_METHODS",							'33' );
 
 /**
  * SCALES.
@@ -654,7 +641,7 @@ define( "kTAG_METHODS",							'34' );
  * Version 2: (kTAG_SCALES)[29]
  * Version 3: (kTAG_SCALES)[34]
  */
-define( "kTAG_SCALES",							'35' );
+define( "kTAG_SCALES",							'34' );
 
 /*=======================================================================================
  *	USER OBJECT																			*
@@ -671,7 +658,7 @@ define( "kTAG_SCALES",							'35' );
  * Version 2: (kTAG_USER_NAME)[30]
  * Version 3: (kTAG_USER_NAME)[35]
  */
-define( "kTAG_USER_NAME",						'36' );
+define( "kTAG_USER_NAME",						'35' );
 
 /**
  * USER-CODE.
@@ -684,7 +671,7 @@ define( "kTAG_USER_NAME",						'36' );
  * Version 2: (kTAG_USER_CODE)[31]
  * Version 3: (kTAG_USER_CODE)[36]
  */
-define( "kTAG_USER_CODE",						'37' );
+define( "kTAG_USER_CODE",						'36' );
 
 /**
  * USER-PASS.
@@ -697,7 +684,7 @@ define( "kTAG_USER_CODE",						'37' );
  * Version 2: (kTAG_USER_PASS)[32]
  * Version 3: (kTAG_USER_PASS)[37]
  */
-define( "kTAG_USER_PASS",						'38' );
+define( "kTAG_USER_PASS",						'37' );
 
 /**
  * USER-MAIL.
@@ -710,7 +697,7 @@ define( "kTAG_USER_PASS",						'38' );
  * Version 2: (kTAG_USER_MAIL)[33]
  * Version 3: (kTAG_USER_MAIL)[38]
  */
-define( "kTAG_USER_MAIL",						'39' );
+define( "kTAG_USER_MAIL",						'38' );
 
 /**
  * USER-ROLE.
@@ -723,7 +710,7 @@ define( "kTAG_USER_MAIL",						'39' );
  * Version 2: (kTAG_USER_ROLE)[34]
  * Version 3: (kTAG_USER_ROLE)[39]
  */
-define( "kTAG_USER_ROLE",						'40' );
+define( "kTAG_USER_ROLE",						'39' );
 
 /**
  * USER-PROFILE.
@@ -736,7 +723,7 @@ define( "kTAG_USER_ROLE",						'40' );
  * Version 2: (kTAG_USER_PROFILE)[35]
  * Version 3: (kTAG_USER_PROFILE)[40]
  */
-define( "kTAG_USER_PROFILE",					'41' );
+define( "kTAG_USER_PROFILE",					'40' );
 
 /**
  * USER-MANAGER.
@@ -749,7 +736,7 @@ define( "kTAG_USER_PROFILE",					'41' );
  * Version 2: (kTAG_USER_MANAGER)[36]
  * Version 3: (kTAG_USER_MANAGER)[41]
  */
-define( "kTAG_USER_MANAGER",					'42' );
+define( "kTAG_USER_MANAGER",					'41' );
 
 /**
  * USER-DOMAIN.
@@ -762,7 +749,7 @@ define( "kTAG_USER_MANAGER",					'42' );
  * Version 2: (kTAG_USER_DOMAIN)[37]
  * Version 3: (kTAG_USER_DOMAIN)[42]
  */
-define( "kTAG_USER_DOMAIN",						'43' );
+define( "kTAG_USER_DOMAIN",						'42' );
 
 /*=======================================================================================
  *	CUSTOM TYPE SUB ATTRIBUTES															*

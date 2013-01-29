@@ -570,8 +570,8 @@ try
 	$synonym = new MyClass();
 	echo( '<h5>$synonym[ kTAG_LID ] = "synonym";</h5>' );
 	$synonym[ kTAG_LID ] = "synonym";
-	echo( '<h5>$synonym->Master( $preferred );</h5>' );
-	$synonym->Master( $preferred );
+	echo( '<h5>$synonym->Term( $preferred );</h5>' );
+	$synonym->Term( $preferred );
 	echo( 'Synonym:<pre>' ); print_r( $synonym ); echo( '</pre>' );
 	echo( '<h5>$status = $synonym->Replace( $database );</h5>' );
 	$status = $synonym->Replace( $database );

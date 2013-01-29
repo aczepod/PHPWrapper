@@ -458,7 +458,7 @@ try
 	$nodeA->Category( "Thread 1", TRUE );
 	$status = $nodeA->Insert( $database );
 	echo( 'Alias<pre>' ); print_r( $nodeA ); echo( '</pre>' );
-	$master = COntologyNode::Resolve( $database, $nodeA->Master(), TRUE );
+	$master = COntologyNode::Resolve( $database, $nodeA->Node(), TRUE );
 	echo( 'Master<pre>' ); print_r( $master ); echo( '</pre>' );
 	echo( '<hr />' );
 	
@@ -468,7 +468,7 @@ try
 	$nodeB->Category( "Thread 1", TRUE );
 	$nodeB->RelateTo( $predicate, $nodeA, $database );
 	echo( 'Alias<pre>' ); print_r( $nodeB ); echo( '</pre>' );
-	$master = COntologyNode::Resolve( $database, $nodeB->Master(), TRUE );
+	$master = COntologyNode::Resolve( $database, $nodeB->Node(), TRUE );
 	echo( 'Master<pre>' ); print_r( $master ); echo( '</pre>' );
 	echo( '<hr />' );
 	
@@ -478,7 +478,7 @@ try
 	$nodeD->Category( "Thread 1", TRUE );
 	$nodeD->RelateTo( $predicate, $nodeB, $database );
 	echo( '<pre>' ); print_r( $nodeD ); echo( '</pre>' );
-	$master = COntologyNode::Resolve( $database, $nodeD->Master(), TRUE );
+	$master = COntologyNode::Resolve( $database, $nodeD->Node(), TRUE );
 	echo( 'Master<pre>' ); print_r( $master ); echo( '</pre>' );
 	echo( '<hr />' );
 	
@@ -488,7 +488,7 @@ try
 	$nodeE->Category( "Thread 1", TRUE );
 	$nodeE->RelateTo( $predicate, $nodeD, $database );
 	echo( '<pre>' ); print_r( $nodeE ); echo( '</pre>' );
-	$master = COntologyNode::Resolve( $database, $nodeE->Master(), TRUE );
+	$master = COntologyNode::Resolve( $database, $nodeE->Node(), TRUE );
 	echo( 'Master<pre>' ); print_r( $master ); echo( '</pre>' );
 	echo( '<hr />' );
 	echo( '<hr />' );
@@ -503,7 +503,7 @@ try
 	$nodeA->Category( "Thread 2", TRUE );
 	$status = $nodeA->Insert( $database );
 	echo( 'Alias<pre>' ); print_r( $nodeA ); echo( '</pre>' );
-	$master = COntologyNode::Resolve( $database, $nodeA->Master(), TRUE );
+	$master = COntologyNode::Resolve( $database, $nodeA->Node(), TRUE );
 	echo( 'Master<pre>' ); print_r( $master ); echo( '</pre>' );
 	echo( '<hr />' );
 	
@@ -513,7 +513,7 @@ try
 	$nodeC->Category( "Thread 2", TRUE );
 	$nodeC->RelateTo( $predicate, $nodeA, $database );
 	echo( 'Alias<pre>' ); print_r( $nodeC ); echo( '</pre>' );
-	$master = COntologyNode::Resolve( $database, $nodeC->Master(), TRUE );
+	$master = COntologyNode::Resolve( $database, $nodeC->Node(), TRUE );
 	echo( 'Master<pre>' ); print_r( $master ); echo( '</pre>' );
 	echo( '<hr />' );
 	
@@ -523,7 +523,7 @@ try
 	$nodeD->Category( "Thread 2", TRUE );
 	$nodeD->RelateTo( $predicate, $nodeC, $database );
 	echo( 'Alias<pre>' ); print_r( $nodeD ); echo( '</pre>' );
-	$master = COntologyNode::Resolve( $database, $nodeD->Master(), TRUE );
+	$master = COntologyNode::Resolve( $database, $nodeD->Node(), TRUE );
 	echo( 'Master<pre>' ); print_r( $master ); echo( '</pre>' );
 	echo( '<hr />' );
 	
@@ -533,7 +533,7 @@ try
 	$nodeE->Category( "Thread 2", TRUE );
 	$nodeE->RelateTo( $predicate, $nodeD, $database );
 	echo( 'Alias<pre>' ); print_r( $nodeE ); echo( '</pre>' );
-	$master = COntologyNode::Resolve( $database, $nodeE->Master(), TRUE );
+	$master = COntologyNode::Resolve( $database, $nodeE->Node(), TRUE );
 	echo( 'Master<pre>' ); print_r( $master ); echo( '</pre>' );
 	echo( '<hr />' );
 	echo( '<hr />' );

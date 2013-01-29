@@ -1277,7 +1277,7 @@
 </span><span id="1171" class="l"><a class="l" href="#1171">1171: </a>                    <span class="php-comment">// Set excluded tags.</span>
 </span><span id="1172" class="l"><a class="l" href="#1172">1172: </a>                    <span class="php-comment">//</span>
 </span><span id="1173" class="l"><a class="l" href="#1173">1173: </a>                    <span class="php-var">$exclude</span> = <span class="php-keyword1">array</span>( kTAG_NID, kTAG_CLASS,
-</span><span id="1174" class="l"><a class="l" href="#1174">1174: </a>                                      kTAG_MASTER, kTAG_EDGES, kTAG_NODES );
+</span><span id="1174" class="l"><a class="l" href="#1174">1174: </a>                                      kTAG_NODE, kTAG_EDGES, kTAG_NODES );
 </span><span id="1175" class="l"><a class="l" href="#1175">1175: </a>                    
 </span><span id="1176" class="l"><a class="l" href="#1176">1176: </a>                    <span class="php-comment">//</span>
 </span><span id="1177" class="l"><a class="l" href="#1177">1177: </a>                    <span class="php-comment">// Iterate attributes.</span>
@@ -3030,10 +3030,10 @@
 </span><span id="2924" class="l"><a class="l" href="#2924">2924: </a>        <span class="php-comment">//</span>
 </span><span id="2925" class="l"><a class="l" href="#2925">2925: </a>        <span class="php-comment">// Load attributes from referenced term.</span>
 </span><span id="2926" class="l"><a class="l" href="#2926">2926: </a>        <span class="php-comment">//</span>
-</span><span id="2927" class="l"><a class="l" href="#2927">2927: </a>        <span class="php-keyword1">while</span>( <span class="php-var">$theTerm</span>-&gt;Master() !== <span class="php-keyword1">NULL</span> )
+</span><span id="2927" class="l"><a class="l" href="#2927">2927: </a>        <span class="php-keyword1">while</span>( <span class="php-var">$theTerm</span>-&gt;Term() !== <span class="php-keyword1">NULL</span> )
 </span><span id="2928" class="l"><a class="l" href="#2928">2928: </a>            <span class="php-var">$theTerm</span>
 </span><span id="2929" class="l"><a class="l" href="#2929">2929: </a>                = COntologyTerm::Resolve(
-</span><span id="2930" class="l"><a class="l" href="#2930">2930: </a>                    <span class="php-var">$_REQUEST</span>[ kAPI_DATABASE ], <span class="php-var">$theTerm</span>-&gt;Master(), <span class="php-keyword1">NULL</span>, <span class="php-keyword1">TRUE</span> );
+</span><span id="2930" class="l"><a class="l" href="#2930">2930: </a>                    <span class="php-var">$_REQUEST</span>[ kAPI_DATABASE ], <span class="php-var">$theTerm</span>-&gt;Term(), <span class="php-keyword1">NULL</span>, <span class="php-keyword1">TRUE</span> );
 </span><span id="2931" class="l"><a class="l" href="#2931">2931: </a>        
 </span><span id="2932" class="l"><a class="l" href="#2932">2932: </a>        <span class="php-comment">//</span>
 </span><span id="2933" class="l"><a class="l" href="#2933">2933: </a>        <span class="php-comment">// Copy related term attributes.</span>

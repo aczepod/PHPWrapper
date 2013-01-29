@@ -361,16 +361,6 @@
     	</element>
     </tag>
      
-    <!-- kTERM_MASTER-->
-	<tag>
-    	<element variable="kTAG_PATH">
-    		<item>:MASTER</item>
-    	</element>
-    	<element variable="kTAG_TYPE">
-    		<item>:REF-SELF</item>
-    	</element>
-    </tag>
-     
     <!-- kTERM_PATH-->
 	<tag>
     	<element variable="kTAG_PATH">
@@ -523,7 +513,7 @@
     		<item>:TEXT</item>
     		<item>:ARRAY</item>
      		<item>:REQUIRED</item>
-   	</element>
+   		</element>
     </tag>
     
     <!-- kTERM_USER_PROFILE -->

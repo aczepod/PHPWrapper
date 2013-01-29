@@ -21,8 +21,8 @@
     <xs:element name="UNIT">
         <xs:annotation>
             <xs:documentation xml:lang="en">
-                Each unit represents a set of term, node, edge and tag instances
-                which shoulld define a set of graph related elements.
+                Each unit represents a set of term, node, edge and tag
+                instances which define a set of graph related elements.
             </xs:documentation>
         </xs:annotation>
         <xs:complexType>
@@ -71,7 +71,7 @@
             <xs:sequence>
                 <xs:element maxOccurs="unbounded" ref="element"/>
             </xs:sequence>
-            <xs:attribute name="GID" use="required" type="xs:string">
+            <xs:attribute name="GID" type="xs:string">
                 <xs:annotation>
                     <xs:documentation xml:lang="en">
                         Term global identifier, used to reference the term.
@@ -150,20 +150,6 @@
             <xs:sequence>
                 <xs:element maxOccurs="unbounded" ref="element"/>
             </xs:sequence>
-            <xs:attribute name="Class" use="required" type="xs:string">
-                <xs:annotation>
-                    <xs:documentation xml:lang="en">
-                        Node class name, this attribute is required.
-                    </xs:documentation>
-                </xs:annotation>
-            </xs:attribute>
-            <xs:attribute name="Term" use="required" type="xs:string">
-                <xs:annotation>
-                    <xs:documentation xml:lang="en">
-                        Term reference, should refer to the global identifier of the term.
-                    </xs:documentation>
-                </xs:annotation>
-            </xs:attribute>
         </xs:complexType>
     </xs:element>
     

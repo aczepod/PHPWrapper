@@ -295,8 +295,8 @@ of alias nodes that reference the current node.</p>
 <h4>Relate to node</h4>
 
 <p>We overload the inherited method to ensure that both vertices of the
-relationship do not have node references, kTAG_MASTER. If any do have
-such references, we use the referenced node instead of the current one.</p>
+relationship do not have node references, kTAG_NODE. If any do have such
+references, we use the referenced node instead of the current one.</p>
 
 <p>Both the current node and the object node will be committed if not
 already.</p>
@@ -355,9 +355,9 @@ connection which will be used to commit the edge.</p>
 <p>We overload this method in this class by intercepting all cases in which the
 <tt>$theIdentifier</tt> is not an integer, or node reference: since no two nodes
 of this class can share the same term reference, we add a clause to the search
-query to exclude all node that have a kTAG_MASTER attribute. We do this
+query to exclude all node that have a kTAG_NODE attribute. We do this
 rather than use the object class, because we assume all nodes that have the
-kTAG_MASTER attribute to be aliases.</p>
+kTAG_NODE attribute to be aliases.</p>
 
 <p>Since terms become also a unique identifier, this method will return either
 an object or <tt>NULL</tt>.</p>

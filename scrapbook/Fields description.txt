@@ -46,7 +46,7 @@ kTAG_TYPE:			Term types, an array of elements from a controlled vocabulary,
 					the vocabulary is available via the GetEnums service.
 					INPUT
 
-kTAG_MASTER:		Term reference, this is used when you want to instantiate a term
+kTAG_TERM:			Term reference, this is used when you want to instantiate a term
 					which shares all the attributes of another term except the namespace
 					and local identifier. It is the kTAG_NID of the other term and can
 					be implemented as the namespace attribute.
@@ -143,7 +143,7 @@ kTAG_TERM:			Term reference, this is required and consists of the kTAG_NID
 					of the referenced term.
 					HIDDEN
 
-kTAG_MASTER:		Node outgoing reference, this is the kTAG_NID of the master node if
+kTAG_NODE:			Node outgoing reference, this is the kTAG_NID of the master node if
 					the current node is an alias node. Should not be set manually.
 					IGNORE
 

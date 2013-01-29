@@ -162,8 +162,8 @@
 	variable names and do not have a language scope. This attribute is
 	optional.</li>
 
-	<li><i>Master</i>: The master, <tt><code><a href="class-CTerm.html#_Master">CTerm::Master()</a></code></tt> or the <tt>kTAG_MASTER</tt> tag, is a reference to another term that hosts the attributes
-	of the current term. This can be used to redirect synonymous terms to a single
+	<li><i>Term</i>: The master, <tt><code><a href="class-CTerm.html#_Term">CTerm::Term()</a></code></tt> or the <tt>kTAG_TERM</tt> tag, is a reference to another term that hosts the attributes of
+	the current term. This can be used to redirect synonymous terms to a single
 	instance that holds all the attributes common to the referencing terms. This is
 	used to prevent duplicating attributes for synonym terms. This attribute is
 	constituted by the kTAG_NID of the referenced term and is optional.</li>
@@ -417,7 +417,7 @@ will be locked and an exception will be raised.</p>
 		</div>
 		</div></td>
 	</tr>
-	<tr data-order="Master" id="_Master">
+	<tr data-order="Term" id="_Term">
 
 		<td class="attributes"><code>
 			 public 
@@ -427,8 +427,8 @@ will be locked and an exception will be raised.</p>
 		</td>
 
 		<td class="name"><div>
-		<a class="anchor" href="#_Master">#</a>
-		<code><a href="source-class-CTerm.html#236-273" title="Go to source code">Master</a>( <span>mixed <var>$theValue</var> = <span class="php-keyword1">NULL</span></span>, <span>boolean <var>$getOld</var> = <span class="php-keyword1">FALSE</span> </span> )</code>
+		<a class="anchor" href="#_Term">#</a>
+		<code><a href="source-class-CTerm.html#236-273" title="Go to source code">Term</a>( <span>mixed <var>$theValue</var> = <span class="php-keyword1">NULL</span></span>, <span>boolean <var>$getOld</var> = <span class="php-keyword1">FALSE</span> </span> )</code>
 
 		<div class="description short">
 			
@@ -440,7 +440,7 @@ will be locked and an exception will be raised.</p>
 			
 <h4>Manage term reference</h4>
 
-<p>This method can be used to manage the term reference, kTAG_MASTER,
+<p>This method can be used to manage the term reference, kTAG_TERM,
 which represents the term that hosts all the attributes for the current
 term.</p>
 
@@ -482,7 +482,7 @@ the currently set value.</p>
 
 				<h4>See</h4>
 				<div class="list">
-						kTAG_MASTER<br />
+						kTAG_TERM<br />
 				</div>
 				<h4>Uses</h4>
 				<div class="list">

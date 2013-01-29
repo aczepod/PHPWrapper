@@ -195,8 +195,8 @@
 </span></span><span id="73" class="l"><a class="l" href="#73"> 73: </a><span class="php-comment"> *      the &lt;tt&gt;{@link kTAG_SYNONYMS}&lt;/tt&gt; tag, represents a list of strings that represent
 </span></span><span id="74" class="l"><a class="l" href="#74"> 74: </a><span class="php-comment"> *      alternative names or identifiers for the term. These strings are comparable to
 </span></span><span id="75" class="l"><a class="l" href="#75"> 75: </a><span class="php-comment"> *      variable names and do not have a language scope. This attribute is optional.
-</span></span><span id="76" class="l"><a class="l" href="#76"> 76: </a><span class="php-comment"> *  &lt;li&gt;&lt;i&gt;Master&lt;/i&gt;: The master, &lt;tt&gt;{@link Master()}&lt;/tt&gt; or the
-</span></span><span id="77" class="l"><a class="l" href="#77"> 77: </a><span class="php-comment"> *      &lt;tt&gt;{@link kTAG_MASTER}&lt;/tt&gt; tag, is a reference to another term that hosts the
+</span></span><span id="76" class="l"><a class="l" href="#76"> 76: </a><span class="php-comment"> *  &lt;li&gt;&lt;i&gt;Term&lt;/i&gt;: The master, &lt;tt&gt;{@link Term()}&lt;/tt&gt; or the
+</span></span><span id="77" class="l"><a class="l" href="#77"> 77: </a><span class="php-comment"> *      &lt;tt&gt;{@link kTAG_TERM}&lt;/tt&gt; tag, is a reference to another term that hosts the
 </span></span><span id="78" class="l"><a class="l" href="#78"> 78: </a><span class="php-comment"> *      attributes of the current term. This can be used to redirect synonymous terms to a
 </span></span><span id="79" class="l"><a class="l" href="#79"> 79: </a><span class="php-comment"> *      single instance that holds all the attributes common to the referencing terms. This
 </span></span><span id="80" class="l"><a class="l" href="#80"> 80: </a><span class="php-comment"> *      is used to prevent duplicating attributes for synonym terms. This attribute is
@@ -352,13 +352,13 @@
 </span><span id="230" class="l"><a class="l" href="#230">230: </a>
 </span><span id="231" class="l"><a class="l" href="#231">231: </a>     
 </span><span id="232" class="l"><a class="l" href="#232">232: </a>    <span class="php-comment">/*===================================================================================
-</span></span><span id="233" class="l"><a class="l" href="#233">233: </a><span class="php-comment">     *  Master                                                                          *
+</span></span><span id="233" class="l"><a class="l" href="#233">233: </a><span class="php-comment">     *  Term                                                                            *
 </span></span><span id="234" class="l"><a class="l" href="#234">234: </a><span class="php-comment">     *==================================================================================*/</span>
 </span><span id="235" class="l"><a class="l" href="#235">235: </a>
 </span><span id="236" class="l"><a class="l" href="#236">236: </a>    <span class="php-comment">/**
 </span></span><span id="237" class="l"><a class="l" href="#237">237: </a><span class="php-comment">     * &lt;h4&gt;Manage term reference&lt;/h4&gt;
 </span></span><span id="238" class="l"><a class="l" href="#238">238: </a><span class="php-comment">     *
-</span></span><span id="239" class="l"><a class="l" href="#239">239: </a><span class="php-comment">     * This method can be used to manage the term reference, {@link kTAG_MASTER}, which
+</span></span><span id="239" class="l"><a class="l" href="#239">239: </a><span class="php-comment">     * This method can be used to manage the term reference, {@link kTAG_TERM}, which
 </span></span><span id="240" class="l"><a class="l" href="#240">240: </a><span class="php-comment">     * represents the term that hosts all the attributes for the current term.
 </span></span><span id="241" class="l"><a class="l" href="#241">241: </a><span class="php-comment">     *
 </span></span><span id="242" class="l"><a class="l" href="#242">242: </a><span class="php-comment">     * This attribute is used when defining exact term synonyms: instead of duplicating the
@@ -386,13 +386,13 @@
 </span></span><span id="264" class="l"><a class="l" href="#264">264: </a><span class="php-comment">     *
 </span></span><span id="265" class="l"><a class="l" href="#265">265: </a><span class="php-comment">     * @uses ManageOffset()
 </span></span><span id="266" class="l"><a class="l" href="#266">266: </a><span class="php-comment">     *
-</span></span><span id="267" class="l"><a class="l" href="#267">267: </a><span class="php-comment">     * @see kTAG_MASTER
+</span></span><span id="267" class="l"><a class="l" href="#267">267: </a><span class="php-comment">     * @see kTAG_TERM
 </span></span><span id="268" class="l"><a class="l" href="#268">268: </a><span class="php-comment">     */</span>
-</span><span id="269" class="l"><a class="l" href="#269">269: </a>    <span class="php-keyword1">public</span> <span class="php-keyword1">function</span> <a id="_Master" href="#_Master">Master</a>( <span class="php-var">$theValue</span> = <span class="php-keyword1">NULL</span>, <span class="php-var">$getOld</span> = <span class="php-keyword1">FALSE</span> )
+</span><span id="269" class="l"><a class="l" href="#269">269: </a>    <span class="php-keyword1">public</span> <span class="php-keyword1">function</span> <a id="_Term" href="#_Term">Term</a>( <span class="php-var">$theValue</span> = <span class="php-keyword1">NULL</span>, <span class="php-var">$getOld</span> = <span class="php-keyword1">FALSE</span> )
 </span><span id="270" class="l"><a class="l" href="#270">270: </a>    {
-</span><span id="271" class="l"><a class="l" href="#271">271: </a>        <span class="php-keyword1">return</span> ManageOffset( <span class="php-var">$this</span>, kTAG_MASTER, <span class="php-var">$theValue</span>, <span class="php-var">$getOld</span> );              <span class="php-comment">// ==&gt;</span>
+</span><span id="271" class="l"><a class="l" href="#271">271: </a>        <span class="php-keyword1">return</span> ManageOffset( <span class="php-var">$this</span>, kTAG_TERM, <span class="php-var">$theValue</span>, <span class="php-var">$getOld</span> );                <span class="php-comment">// ==&gt;</span>
 </span><span id="272" class="l"><a class="l" href="#272">272: </a>
-</span><span id="273" class="l"><a class="l" href="#273">273: </a>    } <span class="php-comment">// Master.</span>
+</span><span id="273" class="l"><a class="l" href="#273">273: </a>    } <span class="php-comment">// Term.</span>
 </span><span id="274" class="l"><a class="l" href="#274">274: </a>
 </span><span id="275" class="l"><a class="l" href="#275">275: </a>     
 </span><span id="276" class="l"><a class="l" href="#276">276: </a>    <span class="php-comment">/*===================================================================================

@@ -270,86 +270,6 @@
         </element>
     </term>
     
-    <!-- STATUS ATTRIBUTES -->
-    
-    <!-- kTERM_STATUS_LEVEL -->
-    <term lid="STATUS-LEVEL" ns="">
-        <element variable="kTAG_LABEL" key="en">Status level</element>
-        <element variable="kTAG_DEFINITION" key="en"><![CDATA[The <i>severity</i> or <i>status level</i>,
-        	is an element of an <i>enumerated set</i> which indicates the <i>importance</i>
-        	or <i>severity</i> of an event. The attribute must be one of the following
-        	values:<ul>
-        	<li><tt>0</tt>: <i>Idle</i>. This code indicates no errors, this state can be
-				equated to an idle state.
-			<li><tt>10</tt>: <i>Notice</i>. This code indicates a notice. A notice is an
-				informative message that does not imply an error, nor a situation that
-				should be handled; it can be considered as statistical data.
-			<li><tt>20</tt>: <i>Message</i>. This code indicates a message. A message is an
-				informative message that is addressed to somebody, although it does not
-				imply an error or warning, it was issued to a receiving party.
-			<li><tt>30</tt>: <i>Warning</i>. This code indicates a warning. Warnings are
-				informative data that indicate a potential problem, although they do not
-				imply an error, they indicate a potential problem or an issue that should
-				be addressed at least at a later stage.
-			<li><tt>40</tt>: <i>Error</i>. This code indicates an error. Errors indicate
-				that something prevented an operation from being performed, this does not
-				necessarily mean that the whole process is halted, but that the results of
-				an operation will not be as expected.
-			<li><tt>50</tt>: <i>Fatal</i>. This code indicates a fatal error. Fatal errors
-				are errors that result in stopping the whole process: in this case the
-				error will prevent other operations from being performed and the whole
-				process should be halted.
-			<li><tt>60</tt>: <i>Bug</i>. This code indicates a bug. Bugs, as opposed to
-				errors, result from internal causes independant from external factors. A
-				bug indicates that an operation will never execute as stated, it does not
-				necessarily mean that it is fatal, but rather that the behaviour of an
-				operation does not correspond to its declaration.
-			</ul>
-            ]]>
-        </element>
-        <element variable="kTAG_SYNONYMS">
-            <item>kTERM_STATUS_LEVEL</item>
-        </element>
-    </term>
-    
-    <!-- kTERM_STATUS_CODE -->
-    <term lid="STATUS-CODE" ns="">
-        <element variable="kTAG_LABEL" key="en">Status code</element>
-        <element variable="kTAG_DEFINITION" key="en"><![CDATA[The <i>status code</i> is an element of an
-        	<i>enumerated set</i> which indicates the specific <i>state</i> of the event.
-            ]]>
-        </element>
-        <element variable="kTAG_SYNONYMS">
-            <item>kTERM_STATUS_CODE</item>
-        </element>
-    </term>
-    
-    <!-- kTERM_STATUS_IDENTIFIER -->
-    <term lid="STATUS-IDENTIFIER" ns="">
-        <element variable="kTAG_LABEL" key="en">Status identifier</element>
-        <element variable="kTAG_DEFINITION" key="en"><![CDATA[The <i>status identifier</i>
-        	is returned by services that insert objects, it represents the newly created
-        	object's native identifier.
-            ]]>
-        </element>
-        <element variable="kTAG_SYNONYMS">
-            <item>kTERM_STATUS_IDENTIFIER</item>
-        </element>
-    </term>
-    
-    <!-- kTERM_STATUS_MESSAGE -->
-    <term lid="STATUS-MESSAGE" ns="">
-        <element variable="kTAG_LABEL" key="en">Status message</element>
-        <element variable="kTAG_DEFINITION" key="en"><![CDATA[The <i>status message</i> is a string that
-        	<i>describes the status of an event</i>. It is a structure which stores messages
-        	<i>expressed in different languages</i>.
-            ]]>
-        </element>
-        <element variable="kTAG_SYNONYMS">
-            <item>kTERM_STATUS_MESSAGE</item>
-        </element>
-    </term>
-    
     <!-- AUTHORSHIP ATTRIBUTES -->
     
     <!-- kTERM_AUTHORS -->
@@ -450,20 +370,6 @@
         </element>
     </term>
     
-    <!-- kTERM_MASTER -->
-    <term lid="MASTER" ns="">
-        <element variable="kTAG_LABEL" key="en">Master reference</element>
-        <element variable="kTAG_DEFINITION" key="en"><![CDATA[It is a reference to an object
-        	<i>of the same kind</i> which represents the master copy of an alias. This
-        	attribute is used when one object shares the same content as another one, but it
-        	is only formally different.
-            ]]>
-        </element>
-        <element variable="kTAG_SYNONYMS">
-            <item>kTERM_MASTER</item>
-        </element>
-    </term>
-    
     <!-- kTERM_PATH -->
     <term lid="PATH" ns="">
         <element variable="kTAG_LABEL" key="en">Path</element>
@@ -476,6 +382,8 @@
             <item>kTERM_PATH</item>
         </element>
     </term>
+
+    <!-- REFERENCE COLLECTIONS -->
     
     <!-- kTERM_NAMESPACE_REFS -->
     <term lid="NAMESPACE-REFS" ns="">
@@ -488,8 +396,6 @@
             <item>kTERM_NAMESPACE_REFS</item>
         </element>
     </term>
-
-    <!-- REFERENCE COLLECTIONS -->
     
     <!-- kTERM_NODES -->
     <term lid="NODES" ns="">
@@ -551,6 +457,86 @@
         </element>
         <element variable="kTAG_SYNONYMS">
             <item>kTERM_SCALES</item>
+        </element>
+    </term>
+    
+    <!-- STATUS ATTRIBUTES -->
+    
+    <!-- kTERM_STATUS_LEVEL -->
+    <term lid="STATUS-LEVEL" ns="">
+        <element variable="kTAG_LABEL" key="en">Status level</element>
+        <element variable="kTAG_DEFINITION" key="en"><![CDATA[The <i>severity</i> or <i>status level</i>,
+        	is an element of an <i>enumerated set</i> which indicates the <i>importance</i>
+        	or <i>severity</i> of an event. The attribute must be one of the following
+        	values:<ul>
+        	<li><tt>0</tt>: <i>Idle</i>. This code indicates no errors, this state can be
+				equated to an idle state.
+			<li><tt>10</tt>: <i>Notice</i>. This code indicates a notice. A notice is an
+				informative message that does not imply an error, nor a situation that
+				should be handled; it can be considered as statistical data.
+			<li><tt>20</tt>: <i>Message</i>. This code indicates a message. A message is an
+				informative message that is addressed to somebody, although it does not
+				imply an error or warning, it was issued to a receiving party.
+			<li><tt>30</tt>: <i>Warning</i>. This code indicates a warning. Warnings are
+				informative data that indicate a potential problem, although they do not
+				imply an error, they indicate a potential problem or an issue that should
+				be addressed at least at a later stage.
+			<li><tt>40</tt>: <i>Error</i>. This code indicates an error. Errors indicate
+				that something prevented an operation from being performed, this does not
+				necessarily mean that the whole process is halted, but that the results of
+				an operation will not be as expected.
+			<li><tt>50</tt>: <i>Fatal</i>. This code indicates a fatal error. Fatal errors
+				are errors that result in stopping the whole process: in this case the
+				error will prevent other operations from being performed and the whole
+				process should be halted.
+			<li><tt>60</tt>: <i>Bug</i>. This code indicates a bug. Bugs, as opposed to
+				errors, result from internal causes independant from external factors. A
+				bug indicates that an operation will never execute as stated, it does not
+				necessarily mean that it is fatal, but rather that the behaviour of an
+				operation does not correspond to its declaration.
+			</ul>
+            ]]>
+        </element>
+        <element variable="kTAG_SYNONYMS">
+            <item>kTERM_STATUS_LEVEL</item>
+        </element>
+    </term>
+    
+    <!-- kTERM_STATUS_CODE -->
+    <term lid="STATUS-CODE" ns="">
+        <element variable="kTAG_LABEL" key="en">Status code</element>
+        <element variable="kTAG_DEFINITION" key="en"><![CDATA[The <i>status code</i> is an element of an
+        	<i>enumerated set</i> which indicates the specific <i>state</i> of the event.
+            ]]>
+        </element>
+        <element variable="kTAG_SYNONYMS">
+            <item>kTERM_STATUS_CODE</item>
+        </element>
+    </term>
+    
+    <!-- kTERM_STATUS_IDENTIFIER -->
+    <term lid="STATUS-IDENTIFIER" ns="">
+        <element variable="kTAG_LABEL" key="en">Status identifier</element>
+        <element variable="kTAG_DEFINITION" key="en"><![CDATA[The <i>status identifier</i>
+        	is returned by services that insert objects, it represents the newly created
+        	object's native identifier.
+            ]]>
+        </element>
+        <element variable="kTAG_SYNONYMS">
+            <item>kTERM_STATUS_IDENTIFIER</item>
+        </element>
+    </term>
+    
+    <!-- kTERM_STATUS_MESSAGE -->
+    <term lid="STATUS-MESSAGE" ns="">
+        <element variable="kTAG_LABEL" key="en">Status message</element>
+        <element variable="kTAG_DEFINITION" key="en"><![CDATA[The <i>status message</i> is a string that
+        	<i>describes the status of an event</i>. It is a structure which stores messages
+        	<i>expressed in different languages</i>.
+            ]]>
+        </element>
+        <element variable="kTAG_SYNONYMS">
+            <item>kTERM_STATUS_MESSAGE</item>
         </element>
     </term>
     

@@ -1171,7 +1171,7 @@ class COntologyWrapper extends CDataWrapper
 					// Set excluded tags.
 					//
 					$exclude = array( kTAG_NID, kTAG_CLASS,
-									  kTAG_MASTER, kTAG_EDGES, kTAG_NODES );
+									  kTAG_NODE, kTAG_EDGES, kTAG_NODES );
 					
 					//
 					// Iterate attributes.
@@ -2924,10 +2924,10 @@ class COntologyWrapper extends CDataWrapper
 		//
 		// Load attributes from referenced term.
 		//
-		while( $theTerm->Master() !== NULL )
+		while( $theTerm->Term() !== NULL )
 			$theTerm
 				= COntologyTerm::Resolve(
-					$_REQUEST[ kAPI_DATABASE ], $theTerm->Master(), NULL, TRUE );
+					$_REQUEST[ kAPI_DATABASE ], $theTerm->Term(), NULL, TRUE );
 		
 		//
 		// Copy related term attributes.

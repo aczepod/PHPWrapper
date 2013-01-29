@@ -617,19 +617,6 @@ define( "kTERM_OBJECT",							':OBJECT' );
 define( "kTERM_PREDICATE",						':PREDICATE' );
 
 /**
- * MASTER.
- *
- * Master.
- *
- * This attribute contains a reference to an object of the same kind as the current one, it
- * represents the reference of an alias to its master. It is generally used when two objects
- * share the same content, but are only formally different.
- *
- * Version 1: (kTERM_MASTER)[:MASTER]
- */
-define( "kTERM_MASTER",							':MASTER' );
-
-/**
  * PATH.
  *
  * Path.

@@ -223,7 +223,7 @@ define( "kAPI_OP_GetTerm",			'WS:OP:GetTerm' );
  *		database. Note that the {@link kAPI_CONTAINER} will be ignored by this service.
  *	<li><i>{@link kAPI_OBJECT}</i>: This parameter is required and contains an array
  *		corresponding to the new vertex record, the following attributes will not be
- *		considered: {@link kTAG_NID}, {@link kTAG_CLASS}, {@link kTAG_MASTER},
+ *		considered: {@link kTAG_NID}, {@link kTAG_CLASS}, {@link kTAG_NODE},
  *		{@link kTAG_EDGES} and {@link kTAG_NODES}.
  *	<li><i>{@link kAPI_CLASS}</i>: This parameter is required to determine whether the
  *		instance to be created is a master or an alias.

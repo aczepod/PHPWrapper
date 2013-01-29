@@ -539,19 +539,6 @@ var kTAG_OBJECT = '26';
 var kTAG_PREDICATE = '27';
 
 /**
- * MASTER.
- *
- * Master.
- *
- * This attribute contains a reference to an object of the same kind as the current one, it
- * represents the reference of an alias to its master. It is generally used when two objects
- * share the same content, but are only formally different.
- *
- * Version 1: (kTAG_MASTER)[28]
- */
-var kTAG_MASTER = '28';
-
-/**
  * PATH.
  *
  * Path.
@@ -564,7 +551,7 @@ var kTAG_MASTER = '28';
  * Version 2: (kTAG_PATH)[23]
  * Version 3: (kTAG_PATH)[28]
  */
-var kTAG_PATH = '29';
+var kTAG_PATH = '28';
 
 /*=======================================================================================
  *	REFERENCE COLLECTIONS																*
@@ -582,7 +569,7 @@ var kTAG_PATH = '29';
  * Version 2: (kTAG_NAMESPACE_REFS)[24]
  * Version 3: (kTAG_NAMESPACE_REFS)[29]
  */
-var kTAG_NAMESPACE_REFS = '30';
+var kTAG_NAMESPACE_REFS = '29';
 
 /**
  * NODES.
@@ -596,7 +583,7 @@ var kTAG_NAMESPACE_REFS = '30';
  * Version 2: (kTAG_NODES)[25]
  * Version 3: (kTAG_NODES)[30]
  */
-var kTAG_NODES = '31';
+var kTAG_NODES = '30';
 
 /**
  * EDGES.
@@ -610,7 +597,7 @@ var kTAG_NODES = '31';
  * Version 2: (kTAG_EDGES)[26]
  * Version 3: (kTAG_EDGES)[31]
  */
-var kTAG_EDGES = '32';
+var kTAG_EDGES = '31';
 
 /**
  * FEATURES.
@@ -624,7 +611,7 @@ var kTAG_EDGES = '32';
  * Version 2: (kTAG_FEATURES)[27]
  * Version 3: (kTAG_FEATURES)[32]
  */
-var kTAG_FEATURES = '33';
+var kTAG_FEATURES = '32';
 
 /**
  * METHODS.
@@ -638,7 +625,7 @@ var kTAG_FEATURES = '33';
  * Version 2: (kTAG_METHODS)[28]
  * Version 3: (kTAG_METHODS)[33]
  */
-var kTAG_METHODS = '34';
+var kTAG_METHODS = '33';
 
 /**
  * SCALES.
@@ -652,7 +639,7 @@ var kTAG_METHODS = '34';
  * Version 2: (kTAG_SCALES)[29]
  * Version 3: (kTAG_SCALES)[34]
  */
-var kTAG_SCALES = '35';
+var kTAG_SCALES = '34';
 
 /*=======================================================================================
  *	USER OBJECT																			*
@@ -669,7 +656,7 @@ var kTAG_SCALES = '35';
  * Version 2: (kTAG_USER_NAME)[30]
  * Version 3: (kTAG_USER_NAME)[35]
  */
-var kTAG_USER_NAME = '36';
+var kTAG_USER_NAME = '35';
 
 /**
  * USER-CODE.
@@ -682,7 +669,7 @@ var kTAG_USER_NAME = '36';
  * Version 2: (kTAG_USER_CODE)[31]
  * Version 3: (kTAG_USER_CODE)[36]
  */
-var kTAG_USER_CODE = '37';
+var kTAG_USER_CODE = '36';
 
 /**
  * USER-PASS.
@@ -695,7 +682,7 @@ var kTAG_USER_CODE = '37';
  * Version 2: (kTAG_USER_PASS)[32]
  * Version 3: (kTAG_USER_PASS)[37]
  */
-var kTAG_USER_PASS = '38';
+var kTAG_USER_PASS = '37';
 
 /**
  * USER-MAIL.
@@ -708,7 +695,7 @@ var kTAG_USER_PASS = '38';
  * Version 2: (kTAG_USER_MAIL)[33]
  * Version 3: (kTAG_USER_MAIL)[38]
  */
-var kTAG_USER_MAIL = '39';
+var kTAG_USER_MAIL = '38';
 
 /**
  * USER-ROLE.
@@ -721,7 +708,7 @@ var kTAG_USER_MAIL = '39';
  * Version 2: (kTAG_USER_ROLE)[34]
  * Version 3: (kTAG_USER_ROLE)[39]
  */
-var kTAG_USER_ROLE = '40';
+var kTAG_USER_ROLE = '39';
 
 /**
  * USER-PROFILE.
@@ -734,7 +721,7 @@ var kTAG_USER_ROLE = '40';
  * Version 2: (kTAG_USER_PROFILE)[35]
  * Version 3: (kTAG_USER_PROFILE)[40]
  */
-var kTAG_USER_PROFILE = '41';
+var kTAG_USER_PROFILE = '40';
 
 /**
  * USER-MANAGER.
@@ -747,7 +734,7 @@ var kTAG_USER_PROFILE = '41';
  * Version 2: (kTAG_USER_MANAGER)[36]
  * Version 3: (kTAG_USER_MANAGER)[41]
  */
-var kTAG_USER_MANAGER = '42';
+var kTAG_USER_MANAGER = '41';
 
 /**
  * USER-DOMAIN.
@@ -760,4 +747,4 @@ var kTAG_USER_MANAGER = '42';
  * Version 2: (kTAG_USER_DOMAIN)[37]
  * Version 3: (kTAG_USER_DOMAIN)[42]
  */
-var kTAG_USER_DOMAIN = '43';
+var kTAG_USER_DOMAIN = '42';

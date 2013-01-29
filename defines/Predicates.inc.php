@@ -24,6 +24,10 @@
  *		that the subject of the relationship represents a subset of the object of the
  *		relationship, in other words, the subject is a subset of the object, or the subject
  *		is contained by the object.
+ *	<li><tt>{@link kPREDICATE_ATTRIBUTE_OF}</tt>: <i>Attribute of</i>. This predicate
+ *		indicates that the subject of the relationship is an attribute of the object of the
+ *		relationship, this means that the subject of the relationship should be of the
+ *		{@link kKIND_FEATURE} kind.
  *	<li><tt>{@link kPREDICATE_SCALE_OF}</tt>: <i>Scale of</i>. This predicate is used by
  *		scale vertices to connect feature or trait vertices, the subject of the relationship
  *		represents a scale or unit and the predicate indicates that the object of the
@@ -119,17 +123,44 @@ define( "kPREDICATE_SUBCLASS_OF",				':SUBCLASS-OF' );
 define( "kPREDICATE_SUBSET_OF",					':SUBSET-OF' );
 
 /**
+ * PART-OF.
+ *
+ * Part of.
+ *
+ * This predicate indicates that the subject of the relationship represents a part or
+ * component of the object of the relationship, in other words, the subject is part of or is
+ * a component of the object.
+ *
+ * Version 1: (kPREDICATE_PART_OF)[:PART-OF]
+ */
+define( "kPREDICATE_PART_OF",					':PART-OF' );
+
+/**
  * ATTRIBUTE-OF.
  *
  * Attribute of.
  *
  * This predicate indicates that the subject of the relationship is an attribute of the
  * object of the relationship, this means that the subject of the relationship should be of
- * the {@link kKIND_FEATURE}.
+ * the {@link kKIND_FEATURE} kind.
  *
- * Version 1: (kPREDICATE_SUBSET_OF)[:SUBSET-OF]
+ * Version 1: (kPREDICATE_ATTRIBUTE_OF)[:ATTRIBUTE-OF]
  */
 define( "kPREDICATE_ATTRIBUTE_OF",				':ATTRIBUTE-OF' );
+
+/**
+ * METHOD-OF.
+ *
+ * Method of.
+ *
+ * This predicate relates method vertices with feature vertices or other methods, it
+ * indicates that the subject of the relationship is a method, or workflow variation of the
+ * object of the relationship. This predicate is used to connect the pipeline of modifiers
+ * applied to a feature vertex.
+ *
+ * Version 1: (kPREDICATE_METHOD_OF)[:METHOD-OF]
+ */
+define( "kPREDICATE_METHOD_OF",					':METHOD-OF' );
 
 /**
  * SCALE-OF.
@@ -145,20 +176,6 @@ define( "kPREDICATE_ATTRIBUTE_OF",				':ATTRIBUTE-OF' );
  * Version 1: (kPREDICATE_SCALE_OF)[:SCALE-OF]
  */
 define( "kPREDICATE_SCALE_OF",					':SCALE-OF' );
-
-/**
- * METHOD-OF.
- *
- * Method of.
- *
- * This predicate relates method vertices with feature vertices or other methods, it
- * indicates that the subject of the relationship is a method, or workflow variation of the
- * object of the relationship. This predicate is used to connect the pipeline of modifiers
- * applied to a feature vertex.
- *
- * Version 1: (kPREDICATE_METHOD_OF)[:METHOD-OF]
- */
-define( "kPREDICATE_METHOD_OF",					':METHOD-OF' );
 
 /**
  * ENUM-OF.

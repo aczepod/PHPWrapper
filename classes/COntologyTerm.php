@@ -235,14 +235,14 @@ class COntologyTerm extends CTerm
 	 *
 	 * @uses NewObject()
 	 *
-	 * @see kTAG_MASTER
+	 * @see kTAG_TERM
 	 */
 	public function LoadTerm( CConnection $theConnection, $doReload = FALSE )
 	{
 		//
 		// Check offset.
 		//
-		if( $this->offsetExists( kTAG_MASTER ) )
+		if( $this->offsetExists( kTAG_TERM ) )
 		{
 			//
 			// Refresh cache.
@@ -254,7 +254,7 @@ class COntologyTerm extends CTerm
 				//
 				// Handle term object.
 				//
-				$term = $this->offsetGet( kTAG_MASTER );
+				$term = $this->offsetGet( kTAG_TERM );
 				if( $term instanceof COntologyTerm )
 					return $term;													// ==>
 				
@@ -958,7 +958,7 @@ class COntologyTerm extends CTerm
 		//
 		// Handle term.
 		//
-		if( $theOffset == kTAG_MASTER )
+		if( $theOffset == kTAG_TERM )
 		{
 			//
 			// Lock term if object is committed.
@@ -1065,7 +1065,7 @@ class COntologyTerm extends CTerm
 		//
 		// Lock term if object is committed.
 		//
-		if( ($theOffset == kTAG_MASTER)
+		if( ($theOffset == kTAG_TERM)
 		 && $this->_IsCommitted() )
 			throw new Exception
 				( "You cannot modify the [$theOffset] offset: "
@@ -1169,12 +1169,12 @@ class COntologyTerm extends CTerm
 			// Handle term object.
 			// Note that we let _Preset() method take care of the specific class.
 			//
-			if( $this->offsetExists( kTAG_MASTER ) )
+			if( $this->offsetExists( kTAG_TERM ) )
 			{
 				//
 				// Get term.
 				//
-				$term = $this->offsetGet( kTAG_MASTER );
+				$term = $this->offsetGet( kTAG_TERM );
 				if( $term instanceof COntologyTerm )
 				{
 					//
@@ -1192,7 +1192,7 @@ class COntologyTerm extends CTerm
 					//
 					// Set identifier in term offset.
 					//
-					$this->offsetSet( kTAG_MASTER,
+					$this->offsetSet( kTAG_TERM,
 									  $term->offsetGet( kTAG_NID ) );
 					
 				} // Term is object.
