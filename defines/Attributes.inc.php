@@ -191,7 +191,7 @@
  * uniquely identifies an object within a specific domain or namespace. It is by definition
  * a string constituting the suffix of the global identifier, {@link kTERM_GID}.
  *
- * Version 1: (kTAG_LID)[1]
+ * Version 1: (kTAG_LID)[:LID]
  */
 define( "kTERM_LID",							':LID' );
 
@@ -221,6 +221,20 @@ define( "kTERM_GID",							':GID' );
  * Version 1: (kOFFSET_UID)[:UID]
  */
 define( "kTERM_UID",							':UID' );
+
+/**
+ * PID.
+ *
+ * Persistent identifier.
+ *
+ * The persistent identifier is an attribute that joins the name of the container in which
+ * the object is stored with the object's symbolic identifier. This attribute may be useful
+ * when the symbolic identifier is not unique and the unique identifier of the object is not
+ * persistent.
+ *
+ * Version 1: (kTERM_PID)[:PID]
+ */
+define( "kTERM_PID",							':PID' );
 
 /**
  * SYNONYMS.

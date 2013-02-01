@@ -44,6 +44,15 @@
         </element>
     </node>
     
+    <!-- kTERM_PID -->
+	<node class="COntologyMasterVertex">
+		<element variable="kTAG_TERM">:PID</element>
+		<element variable="kTAG_CLASS">COntologyMasterVertex</element>
+		<element variable="kTAG_KIND">
+            <item>:KIND-FEATURE</item>
+        </element>
+    </node>
+    
     <!-- kTERM_SYNONYMS -->
 	<node class="COntologyMasterVertex">
 		<element variable="kTAG_TERM">:SYNONYMS</element>

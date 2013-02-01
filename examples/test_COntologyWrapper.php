@@ -3154,10 +3154,10 @@ try
 		(
 			array
 			(
-				kOFFSET_QUERY_SUBJECT => kTAG_GID,
+				kOFFSET_QUERY_SUBJECT => kTAG_NID,
 				kOFFSET_QUERY_OPERATOR => kOPERATOR_EQUAL,
-				kOFFSET_QUERY_TYPE => kTYPE_STRING,
-				kOFFSET_QUERY_DATA => "MCPD:SAMPSTAT"
+				kOFFSET_QUERY_TYPE => kTYPE_INT,
+				kOFFSET_QUERY_DATA => kTAG_TYPE
 			)
 		)
 	);
@@ -3166,7 +3166,7 @@ try
 					 (kAPI_OPERATION.'='.kAPI_OP_GetEnums),
 					 (kAPI_LOG_REQUEST.'='.urlencode(JsonEncode(TRUE))),
 					 (kAPI_DATABASE.'='.urlencode(JsonEncode('ONTOLOGY'))),
-					 (kAPI_CLASS.'='.urlencode(JsonEncode( 'COntologyMasterVertex' ))),
+					 (kAPI_CLASS.'='.urlencode(JsonEncode( 'COntologyTag' ))),
 					 (kAPI_QUERY.'='.urlencode(JsonEncode( $query ))),
 					 (kAPI_LANGUAGE.'='.urlencode(JsonEncode( $languages ))),
 					 (kAPI_STAMP_REQUEST.'='.gettimeofday( true )) );

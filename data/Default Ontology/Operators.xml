@@ -1,0 +1,727 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ONTOLOGY
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:noNamespaceSchemaLocation="file:/Library/WebServer/Library/PHPWrapper/defines/Ontology.xsd">
+        
+    <!-- Operator -->
+    
+    <UNIT>
+        <TERM NS=":ONTOLOGY:ENUM" LID="OPERATOR">
+            <element variable="kTAG_LABEL">
+                <item key="en">Operator</item>
+            </element>
+            <element variable="kTAG_DEFINITION">
+                <item key="en"><![CDATA[Operators indicate an <i>operation type</i>, they relate a <i>subject</i> and <i>object</i> <i>operands</i>. Operators are similar to <i>predicates</i>, except that they always produce a result.]]></item>
+            </element>
+        </TERM>
+        <NODE class="COntologyMasterVertex">
+            <element variable="kTAG_CATEGORY">
+                <item>Enumerated set</item>
+            </element>
+        </NODE>
+        <EDGE>
+            <element variable="kTAG_PREDICATE">:SUBCLASS-OF</element>
+            <element variable="kTAG_OBJECT">:ONTOLOGY:ENUM</element>
+        </EDGE>
+    </UNIT>
+        
+    <!-- kOPERATOR_DISABLED -->
+    <UNIT>
+        <TERM NS="" LID="$NO">
+            <element variable="kTAG_KIND">
+                <item>:KIND-ENUMERATION</item>
+            </element>
+            <element variable="kTAG_LABEL">
+                <item key="en">Disabled</item>
+            </element>
+            <element variable="kTAG_DEFINITION">
+                <item key="en"><![CDATA[<i>Disabled</i> operator.]]></item>
+            </element>
+            <element variable="kTAG_SYNONYMS">
+                <item>kOPERATOR_DISABLED</item>
+                <item>$NO</item>
+            </element>
+        </TERM>
+        <NODE class="COntologyMasterVertex">
+            <element variable="kTAG_KIND">
+                <item>:KIND-ENUMERATION</item>
+            </element>
+        </NODE>
+        <EDGE>
+            <element variable="kTAG_PREDICATE">:SUBCLASS-OF</element>
+            <element variable="kTAG_OBJECT">:ONTOLOGY:ENUM:OPERATOR</element>
+        </EDGE>
+    </UNIT>
+        
+    <!-- kOPERATOR_EQUAL -->
+    <UNIT>
+        <TERM NS="" LID="$EQ">
+            <element variable="kTAG_KIND">
+                <item>:KIND-ENUMERATION</item>
+            </element>
+            <element variable="kTAG_LABEL">
+                <item key="en">Equal</item>
+            </element>
+            <element variable="kTAG_DEFINITION">
+                <item key="en"><![CDATA[<i>Equality</i> operator.]]></item>
+            </element>
+            <element variable="kTAG_SYNONYMS">
+                <item>kOPERATOR_EQUAL</item>
+                <item>$EQ</item>
+            </element>
+        </TERM>
+        <NODE class="COntologyMasterVertex">
+            <element variable="kTAG_KIND">
+                <item>:KIND-ENUMERATION</item>
+            </element>
+        </NODE>
+        <EDGE>
+            <element variable="kTAG_PREDICATE">:SUBCLASS-OF</element>
+            <element variable="kTAG_OBJECT">:ONTOLOGY:ENUM:OPERATOR</element>
+        </EDGE>
+    </UNIT>
+        
+    <!-- kOPERATOR_EQUAL_NOT -->
+    <UNIT>
+        <TERM NS="" LID="$NE">
+            <element variable="kTAG_KIND">
+                <item>:KIND-ENUMERATION</item>
+            </element>
+            <element variable="kTAG_LABEL">
+                <item key="en">Not equal</item>
+            </element>
+            <element variable="kTAG_DEFINITION">
+                <item key="en"><![CDATA[<i>Inequality</i> operator.]]></item>
+            </element>
+            <element variable="kTAG_SYNONYMS">
+                <item>kOPERATOR_EQUAL_NOT</item>
+                <item>$NE</item>
+            </element>
+        </TERM>
+        <NODE class="COntologyMasterVertex">
+            <element variable="kTAG_KIND">
+                <item>:KIND-ENUMERATION</item>
+            </element>
+        </NODE>
+        <EDGE>
+            <element variable="kTAG_PREDICATE">:SUBCLASS-OF</element>
+            <element variable="kTAG_OBJECT">:ONTOLOGY:ENUM:OPERATOR</element>
+        </EDGE>
+    </UNIT>
+        
+    <!-- kOPERATOR_LIKE -->
+    <UNIT>
+        <TERM NS="" LID="$AS">
+            <element variable="kTAG_KIND">
+                <item>:KIND-ENUMERATION</item>
+            </element>
+            <element variable="kTAG_LABEL">
+                <item key="en">Like</item>
+            </element>
+            <element variable="kTAG_DEFINITION">
+                <item key="en"><![CDATA[<i>Case and accent matching</i> operator (for strings).]]></item>
+            </element>
+            <element variable="kTAG_SYNONYMS">
+                <item>kOPERATOR_LIKE</item>
+                <item>$AS</item>
+            </element>
+        </TERM>
+        <NODE class="COntologyMasterVertex">
+            <element variable="kTAG_KIND">
+                <item>:KIND-ENUMERATION</item>
+            </element>
+        </NODE>
+        <EDGE>
+            <element variable="kTAG_PREDICATE">:SUBCLASS-OF</element>
+            <element variable="kTAG_OBJECT">:ONTOLOGY:ENUM:OPERATOR</element>
+        </EDGE>
+    </UNIT>
+        
+    <!-- kOPERATOR_LIKE_NOT -->
+    <UNIT>
+        <TERM NS="" LID="$NS">
+            <element variable="kTAG_KIND">
+                <item>:KIND-ENUMERATION</item>
+            </element>
+            <element variable="kTAG_LABEL">
+                <item key="en">Not like</item>
+            </element>
+            <element variable="kTAG_DEFINITION">
+                <item key="en"><![CDATA[<i>Case and accent not matching</i> operator (for strings).]]></item>
+            </element>
+            <element variable="kTAG_SYNONYMS">
+                <item>kOPERATOR_LIKE_NOT</item>
+                <item>$NS</item>
+            </element>
+        </TERM>
+        <NODE class="COntologyMasterVertex">
+            <element variable="kTAG_KIND">
+                <item>:KIND-ENUMERATION</item>
+            </element>
+        </NODE>
+        <EDGE>
+            <element variable="kTAG_PREDICATE">:SUBCLASS-OF</element>
+            <element variable="kTAG_OBJECT">:ONTOLOGY:ENUM:OPERATOR</element>
+        </EDGE>
+    </UNIT>
+        
+    <!-- kOPERATOR_PREFIX -->
+    <UNIT>
+        <TERM NS="" LID="$PX">
+            <element variable="kTAG_KIND">
+                <item>:KIND-ENUMERATION</item>
+            </element>
+            <element variable="kTAG_LABEL">
+                <item key="en">Starts with</item>
+            </element>
+            <element variable="kTAG_DEFINITION">
+                <item key="en"><![CDATA[<i>Prefix matching</i> operator: <i>starts with</i> (for strings).]]></item>
+            </element>
+            <element variable="kTAG_SYNONYMS">
+                <item>kOPERATOR_PREFIX</item>
+                <item>$PX</item>
+            </element>
+        </TERM>
+        <NODE class="COntologyMasterVertex">
+            <element variable="kTAG_KIND">
+                <item>:KIND-ENUMERATION</item>
+            </element>
+        </NODE>
+        <EDGE>
+            <element variable="kTAG_PREDICATE">:SUBCLASS-OF</element>
+            <element variable="kTAG_OBJECT">:ONTOLOGY:ENUM:OPERATOR</element>
+        </EDGE>
+    </UNIT>
+        
+    <!-- kOPERATOR_PREFIX_NOCASE -->
+    <UNIT>
+        <TERM NS="" LID="$PXi">
+            <element variable="kTAG_KIND">
+                <item>:KIND-ENUMERATION</item>
+            </element>
+            <element variable="kTAG_LABEL">
+                <item key="en">Case-insensitive prefix</item>
+            </element>
+            <element variable="kTAG_DEFINITION">
+                <item key="en"><![CDATA[<i>Prefix matching</i> operator: <i>starts with</i> (for strings) with <i>case and accent insensitive</i> comparaison.]]></item>
+            </element>
+            <element variable="kTAG_SYNONYMS">
+                <item>kOPERATOR_PREFIX_NOCASE</item>
+                <item>$PXi</item>
+            </element>
+        </TERM>
+        <NODE class="COntologyMasterVertex">
+            <element variable="kTAG_KIND">
+                <item>:KIND-ENUMERATION</item>
+            </element>
+        </NODE>
+        <EDGE>
+            <element variable="kTAG_PREDICATE">:SUBCLASS-OF</element>
+            <element variable="kTAG_OBJECT">:ONTOLOGY:ENUM:OPERATOR</element>
+        </EDGE>
+    </UNIT>
+        
+    <!-- kOPERATOR_CONTAINS -->
+    <UNIT>
+        <TERM NS="" LID="$CX">
+            <element variable="kTAG_KIND">
+                <item>:KIND-ENUMERATION</item>
+            </element>
+            <element variable="kTAG_LABEL">
+                <item key="en">Contains</item>
+            </element>
+            <element variable="kTAG_DEFINITION">
+                <item key="en"><![CDATA[<i>Content matching</i> operator: <i>contains</i> (for strings).]]></item>
+            </element>
+            <element variable="kTAG_SYNONYMS">
+                <item>kOPERATOR_CONTAINS</item>
+                <item>$CX</item>
+            </element>
+        </TERM>
+        <NODE class="COntologyMasterVertex">
+            <element variable="kTAG_KIND">
+                <item>:KIND-ENUMERATION</item>
+            </element>
+        </NODE>
+        <EDGE>
+            <element variable="kTAG_PREDICATE">:SUBCLASS-OF</element>
+            <element variable="kTAG_OBJECT">:ONTOLOGY:ENUM:OPERATOR</element>
+        </EDGE>
+    </UNIT>
+        
+    <!-- kOPERATOR_CONTAINS_NOCASE -->
+    <UNIT>
+        <TERM NS="" LID="$CXi">
+            <element variable="kTAG_KIND">
+                <item>:KIND-ENUMERATION</item>
+            </element>
+            <element variable="kTAG_LABEL">
+                <item key="en">Case-insensitive contains</item>
+            </element>
+            <element variable="kTAG_DEFINITION">
+                <item key="en"><![CDATA[<i>Content matching</i> operator: <i>contains</i> (for strings) with <i>case and accent insensitive</i> comparaison.]]></item>
+            </element>
+            <element variable="kTAG_SYNONYMS">
+                <item>kOPERATOR_CONTAINS_NOCASE</item>
+                <item>$CXi</item>
+            </element>
+        </TERM>
+        <NODE class="COntologyMasterVertex">
+            <element variable="kTAG_KIND">
+                <item>:KIND-ENUMERATION</item>
+            </element>
+        </NODE>
+        <EDGE>
+            <element variable="kTAG_PREDICATE">:SUBCLASS-OF</element>
+            <element variable="kTAG_OBJECT">:ONTOLOGY:ENUM:OPERATOR</element>
+        </EDGE>
+    </UNIT>
+        
+    <!-- kOPERATOR_SUFFIX -->
+    <UNIT>
+        <TERM NS="" LID="$SX">
+            <element variable="kTAG_KIND">
+                <item>:KIND-ENUMERATION</item>
+            </element>
+            <element variable="kTAG_LABEL">
+                <item key="en">Ends with</item>
+            </element>
+            <element variable="kTAG_DEFINITION">
+                <item key="en"><![CDATA[<i>Suffix matching</i> operator: <i>ends with</i> (for strings).]]></item>
+            </element>
+            <element variable="kTAG_SYNONYMS">
+                <item>kOPERATOR_SUFFIX</item>
+                <item>$SX</item>
+            </element>
+        </TERM>
+        <NODE class="COntologyMasterVertex">
+            <element variable="kTAG_KIND">
+                <item>:KIND-ENUMERATION</item>
+            </element>
+        </NODE>
+        <EDGE>
+            <element variable="kTAG_PREDICATE">:SUBCLASS-OF</element>
+            <element variable="kTAG_OBJECT">:ONTOLOGY:ENUM:OPERATOR</element>
+        </EDGE>
+    </UNIT>
+        
+    <!-- kOPERATOR_SUFFIX_NOCASE -->
+    <UNIT>
+        <TERM NS="" LID="$SXi">
+            <element variable="kTAG_KIND">
+                <item>:KIND-ENUMERATION</item>
+            </element>
+            <element variable="kTAG_LABEL">
+                <item key="en">Case-insensitive ends with</item>
+            </element>
+            <element variable="kTAG_DEFINITION">
+                <item key="en"><![CDATA[<i>Suffix matching</i> operator: <i>ends with</i> (for strings) with <i>case and accent insensitive</i> comparaison.]]></item>
+            </element>
+            <element variable="kTAG_SYNONYMS">
+                <item>kOPERATOR_SUFFIX_NOCASE</item>
+                <item>$SXi</item>
+            </element>
+        </TERM>
+        <NODE class="COntologyMasterVertex">
+            <element variable="kTAG_KIND">
+                <item>:KIND-ENUMERATION</item>
+            </element>
+        </NODE>
+        <EDGE>
+            <element variable="kTAG_PREDICATE">:SUBCLASS-OF</element>
+            <element variable="kTAG_OBJECT">:ONTOLOGY:ENUM:OPERATOR</element>
+        </EDGE>
+    </UNIT>
+        
+    <!-- kOPERATOR_REGEX -->
+    <UNIT>
+        <TERM NS="" LID="$RE">
+            <element variable="kTAG_KIND">
+                <item>:KIND-ENUMERATION</item>
+            </element>
+            <element variable="kTAG_LABEL">
+                <item key="en">Regular expression</item>
+            </element>
+            <element variable="kTAG_DEFINITION">
+                <item key="en"><![CDATA[<i>Regular expression</i> operator (for strings).]]></item>
+            </element>
+            <element variable="kTAG_SYNONYMS">
+                <item>kOPERATOR_REGEX</item>
+                <item>$RE</item>
+            </element>
+        </TERM>
+        <NODE class="COntologyMasterVertex">
+            <element variable="kTAG_KIND">
+                <item>:KIND-ENUMERATION</item>
+            </element>
+        </NODE>
+        <EDGE>
+            <element variable="kTAG_PREDICATE">:SUBCLASS-OF</element>
+            <element variable="kTAG_OBJECT">:ONTOLOGY:ENUM:OPERATOR</element>
+        </EDGE>
+    </UNIT>
+        
+    <!-- kOPERATOR_LESS -->
+    <UNIT>
+        <TERM NS="" LID="$LT">
+            <element variable="kTAG_KIND">
+                <item>:KIND-ENUMERATION</item>
+            </element>
+            <element variable="kTAG_LABEL">
+                <item key="en">Smaller</item>
+            </element>
+            <element variable="kTAG_DEFINITION">
+                <item key="en"><![CDATA[<i>Less than</i> or <i>smaller than</i> operator.]]></item>
+            </element>
+            <element variable="kTAG_SYNONYMS">
+                <item>kOPERATOR_LESS</item>
+                <item>$LT</item>
+            </element>
+        </TERM>
+        <NODE class="COntologyMasterVertex">
+            <element variable="kTAG_KIND">
+                <item>:KIND-ENUMERATION</item>
+            </element>
+        </NODE>
+        <EDGE>
+            <element variable="kTAG_PREDICATE">:SUBCLASS-OF</element>
+            <element variable="kTAG_OBJECT">:ONTOLOGY:ENUM:OPERATOR</element>
+        </EDGE>
+    </UNIT>
+        
+    <!-- kOPERATOR_LESS_EQUAL -->
+    <UNIT>
+        <TERM NS="" LID="$LE">
+            <element variable="kTAG_KIND">
+                <item>:KIND-ENUMERATION</item>
+            </element>
+            <element variable="kTAG_LABEL">
+                <item key="en">Smaller or equal</item>
+            </element>
+            <element variable="kTAG_DEFINITION">
+                <item key="en"><![CDATA[<i>Less than or equal</i> or <i>smaller than or equal</i> operator.]]></item>
+            </element>
+            <element variable="kTAG_SYNONYMS">
+                <item>kOPERATOR_LESS_EQUAL</item>
+                <item>$LE</item>
+            </element>
+        </TERM>
+        <NODE class="COntologyMasterVertex">
+            <element variable="kTAG_KIND">
+                <item>:KIND-ENUMERATION</item>
+            </element>
+        </NODE>
+        <EDGE>
+            <element variable="kTAG_PREDICATE">:SUBCLASS-OF</element>
+            <element variable="kTAG_OBJECT">:ONTOLOGY:ENUM:OPERATOR</element>
+        </EDGE>
+    </UNIT>
+        
+    <!-- kOPERATOR_GREAT -->
+    <UNIT>
+        <TERM NS="" LID="$GT">
+            <element variable="kTAG_KIND">
+                <item>:KIND-ENUMERATION</item>
+            </element>
+            <element variable="kTAG_LABEL">
+                <item key="en">Greater</item>
+            </element>
+            <element variable="kTAG_DEFINITION">
+                <item key="en"><![CDATA[<i>Greater than</i> or <i>larger than</i> operator.]]></item>
+            </element>
+            <element variable="kTAG_SYNONYMS">
+                <item>kOPERATOR_GREAT</item>
+                <item>$GT</item>
+            </element>
+        </TERM>
+        <NODE class="COntologyMasterVertex">
+            <element variable="kTAG_KIND">
+                <item>:KIND-ENUMERATION</item>
+            </element>
+        </NODE>
+        <EDGE>
+            <element variable="kTAG_PREDICATE">:SUBCLASS-OF</element>
+            <element variable="kTAG_OBJECT">:ONTOLOGY:ENUM:OPERATOR</element>
+        </EDGE>
+    </UNIT>
+        
+    <!-- kOPERATOR_GREAT_EQUAL -->
+    <UNIT>
+        <TERM NS="" LID="$GE">
+            <element variable="kTAG_KIND">
+                <item>:KIND-ENUMERATION</item>
+            </element>
+            <element variable="kTAG_LABEL">
+                <item key="en">Greater or equal</item>
+            </element>
+            <element variable="kTAG_DEFINITION">
+                <item key="en"><![CDATA[<i>Greater or equal</i> or <i>larger or equal</i> operator.]]></item>
+            </element>
+            <element variable="kTAG_SYNONYMS">
+                <item>kOPERATOR_GREAT_EQUAL</item>
+                <item>$GE</item>
+            </element>
+        </TERM>
+        <NODE class="COntologyMasterVertex">
+            <element variable="kTAG_KIND">
+                <item>:KIND-ENUMERATION</item>
+            </element>
+        </NODE>
+        <EDGE>
+            <element variable="kTAG_PREDICATE">:SUBCLASS-OF</element>
+            <element variable="kTAG_OBJECT">:ONTOLOGY:ENUM:OPERATOR</element>
+        </EDGE>
+    </UNIT>
+        
+    <!-- kOPERATOR_IRANGE -->
+    <UNIT>
+        <TERM NS="" LID="$IRG">
+            <element variable="kTAG_KIND">
+                <item>:KIND-ENUMERATION</item>
+            </element>
+            <element variable="kTAG_LABEL">
+                <item key="en">Range inclusive</item>
+            </element>
+            <element variable="kTAG_DEFINITION">
+                <item key="en"><![CDATA[<i>Range inclusive</i> operator, the <i>valid range includes the limits</i>.]]></item>
+            </element>
+            <element variable="kTAG_SYNONYMS">
+                <item>kOPERATOR_IRANGE</item>
+                <item>$IRG</item>
+            </element>
+        </TERM>
+        <NODE class="COntologyMasterVertex">
+            <element variable="kTAG_KIND">
+                <item>:KIND-ENUMERATION</item>
+            </element>
+        </NODE>
+        <EDGE>
+            <element variable="kTAG_PREDICATE">:SUBCLASS-OF</element>
+            <element variable="kTAG_OBJECT">:ONTOLOGY:ENUM:OPERATOR</element>
+        </EDGE>
+    </UNIT>
+        
+    <!-- kOPERATOR_ERANGE -->
+    <UNIT>
+        <TERM NS="" LID="$ERG">
+            <element variable="kTAG_KIND">
+                <item>:KIND-ENUMERATION</item>
+            </element>
+            <element variable="kTAG_LABEL">
+                <item key="en">Range exclusive</item>
+            </element>
+            <element variable="kTAG_DEFINITION">
+                <item key="en"><![CDATA[<i>Range exclusive</i> operator, the <i>valid range excludes the limits</i>.]]></item>
+            </element>
+            <element variable="kTAG_SYNONYMS">
+                <item>kOPERATOR_ERANGE</item>
+                <item>$ERG</item>
+            </element>
+        </TERM>
+        <NODE class="COntologyMasterVertex">
+            <element variable="kTAG_KIND">
+                <item>:KIND-ENUMERATION</item>
+            </element>
+        </NODE>
+        <EDGE>
+            <element variable="kTAG_PREDICATE">:SUBCLASS-OF</element>
+            <element variable="kTAG_OBJECT">:ONTOLOGY:ENUM:OPERATOR</element>
+        </EDGE>
+    </UNIT>
+        
+    <!-- kOPERATOR_NULL -->
+    <UNIT>
+        <TERM NS="" LID="$NU">
+            <element variable="kTAG_KIND">
+                <item>:KIND-ENUMERATION</item>
+            </element>
+            <element variable="kTAG_LABEL">
+                <item key="en">Missing</item>
+            </element>
+            <element variable="kTAG_DEFINITION">
+                <item key="en"><![CDATA[<i>Missing</i> or <i>null</i> operator.]]></item>
+            </element>
+            <element variable="kTAG_SYNONYMS">
+                <item>kOPERATOR_NULL</item>
+                <item>$NU</item>
+            </element>
+        </TERM>
+        <NODE class="COntologyMasterVertex">
+            <element variable="kTAG_KIND">
+                <item>:KIND-ENUMERATION</item>
+            </element>
+        </NODE>
+        <EDGE>
+            <element variable="kTAG_PREDICATE">:SUBCLASS-OF</element>
+            <element variable="kTAG_OBJECT">:ONTOLOGY:ENUM:OPERATOR</element>
+        </EDGE>
+    </UNIT>
+        
+    <!-- kOPERATOR_NOT_NULL -->
+    <UNIT>
+        <TERM NS="" LID="$NN">
+            <element variable="kTAG_KIND">
+                <item>:KIND-ENUMERATION</item>
+            </element>
+            <element variable="kTAG_LABEL">
+                <item key="en">Exists</item>
+            </element>
+            <element variable="kTAG_DEFINITION">
+                <item key="en"><![CDATA[<i>Exists</i> or <i>not null</i> operator.]]></item>
+            </element>
+            <element variable="kTAG_SYNONYMS">
+                <item>kOPERATOR_NOT_NULL</item>
+                <item>$NN</item>
+            </element>
+        </TERM>
+        <NODE class="COntologyMasterVertex">
+            <element variable="kTAG_KIND">
+                <item>:KIND-ENUMERATION</item>
+            </element>
+        </NODE>
+        <EDGE>
+            <element variable="kTAG_PREDICATE">:SUBCLASS-OF</element>
+            <element variable="kTAG_OBJECT">:ONTOLOGY:ENUM:OPERATOR</element>
+        </EDGE>
+    </UNIT>
+        
+    <!-- kOPERATOR_IN -->
+    <UNIT>
+        <TERM NS="" LID="$IN">
+            <element variable="kTAG_KIND">
+                <item>:KIND-ENUMERATION</item>
+            </element>
+            <element variable="kTAG_LABEL">
+                <item key="en">Belongs</item>
+            </element>
+            <element variable="kTAG_DEFINITION">
+                <item key="en"><![CDATA[<i>Belongs to set</i> operator, the value must <i>match at least one</i> of the list of options.]]></item>
+            </element>
+            <element variable="kTAG_SYNONYMS">
+                <item>kOPERATOR_IN</item>
+                <item>$IN</item>
+            </element>
+        </TERM>
+        <NODE class="COntologyMasterVertex">
+            <element variable="kTAG_KIND">
+                <item>:KIND-ENUMERATION</item>
+            </element>
+        </NODE>
+        <EDGE>
+            <element variable="kTAG_PREDICATE">:SUBCLASS-OF</element>
+            <element variable="kTAG_OBJECT">:ONTOLOGY:ENUM:OPERATOR</element>
+        </EDGE>
+    </UNIT>
+        
+    <!-- kOPERATOR_NI -->
+    <UNIT>
+        <TERM NS="" LID="$NI">
+            <element variable="kTAG_KIND">
+                <item>:KIND-ENUMERATION</item>
+            </element>
+            <element variable="kTAG_LABEL">
+                <item key="en">Not in</item>
+            </element>
+            <element variable="kTAG_DEFINITION">
+                <item key="en"><![CDATA[<i>Not in set</i> operator, the value must <i>not match any</i> of the list of options.]]></item>
+            </element>
+            <element variable="kTAG_SYNONYMS">
+                <item>kOPERATOR_NI</item>
+                <item>$NI</item>
+            </element>
+        </TERM>
+        <NODE class="COntologyMasterVertex">
+            <element variable="kTAG_KIND">
+                <item>:KIND-ENUMERATION</item>
+            </element>
+        </NODE>
+        <EDGE>
+            <element variable="kTAG_PREDICATE">:SUBCLASS-OF</element>
+            <element variable="kTAG_OBJECT">:ONTOLOGY:ENUM:OPERATOR</element>
+        </EDGE>
+    </UNIT>
+        
+    <!-- kOPERATOR_ALL -->
+    <UNIT>
+        <TERM NS="" LID="$AL">
+            <element variable="kTAG_KIND">
+                <item>:KIND-ENUMERATION</item>
+            </element>
+            <element variable="kTAG_LABEL">
+                <item key="en">All</item>
+            </element>
+            <element variable="kTAG_DEFINITION">
+                <item key="en"><![CDATA[<i>Match all</i> operator, the value must <i>match all</i> of the list of options.]]></item>
+            </element>
+            <element variable="kTAG_SYNONYMS">
+                <item>kOPERATOR_ALL</item>
+                <item>$AL</item>
+            </element>
+        </TERM>
+        <NODE class="COntologyMasterVertex">
+            <element variable="kTAG_KIND">
+                <item>:KIND-ENUMERATION</item>
+            </element>
+        </NODE>
+        <EDGE>
+            <element variable="kTAG_PREDICATE">:SUBCLASS-OF</element>
+            <element variable="kTAG_OBJECT">:ONTOLOGY:ENUM:OPERATOR</element>
+        </EDGE>
+    </UNIT>
+        
+    <!-- kOPERATOR_NALL -->
+    <UNIT>
+        <TERM NS="" LID="$NAL">
+            <element variable="kTAG_KIND">
+                <item>:KIND-ENUMERATION</item>
+            </element>
+            <element variable="kTAG_LABEL">
+                <item key="en">Not all</item>
+            </element>
+            <element variable="kTAG_DEFINITION">
+                <item key="en"><![CDATA[<i>Not all match</i> operator, the value must <i>not match all</i> of the list of options.]]></item>
+            </element>
+            <element variable="kTAG_SYNONYMS">
+                <item>kOPERATOR_NALL</item>
+                <item>$NAL</item>
+            </element>
+        </TERM>
+        <NODE class="COntologyMasterVertex">
+            <element variable="kTAG_KIND">
+                <item>:KIND-ENUMERATION</item>
+            </element>
+        </NODE>
+        <EDGE>
+            <element variable="kTAG_PREDICATE">:SUBCLASS-OF</element>
+            <element variable="kTAG_OBJECT">:ONTOLOGY:ENUM:OPERATOR</element>
+        </EDGE>
+    </UNIT>
+        
+    <!-- kOPERATOR_EX -->
+    <UNIT>
+        <TERM NS="" LID="$EX">
+            <element variable="kTAG_KIND">
+                <item>:KIND-ENUMERATION</item>
+            </element>
+            <element variable="kTAG_LABEL">
+                <item key="en">Expression</item>
+            </element>
+            <element variable="kTAG_DEFINITION">
+                <item key="en"><![CDATA[<i>Expression</i> operator.]]></item>
+            </element>
+            <element variable="kTAG_SYNONYMS">
+                <item>kOPERATOR_EX</item>
+                <item>$EX</item>
+            </element>
+        </TERM>
+        <NODE class="COntologyMasterVertex">
+            <element variable="kTAG_KIND">
+                <item>:KIND-ENUMERATION</item>
+            </element>
+        </NODE>
+        <EDGE>
+            <element variable="kTAG_PREDICATE">:SUBCLASS-OF</element>
+            <element variable="kTAG_OBJECT">:ONTOLOGY:ENUM:OPERATOR</element>
+        </EDGE>
+    </UNIT>
+</ONTOLOGY>

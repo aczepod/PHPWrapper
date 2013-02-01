@@ -145,6 +145,19 @@ class COntologyTag extends CTag
 	 *		no verification will be performed.
 	 * </ul>
 	 *
+	 * In addition, the following attributes will be copied into the current object:
+	 *
+	 * <ul>
+	 *	<li><tt>{@link kTAG_SYNONYMS}</tt>: From the eventual feature term.
+	 *	<li><tt>{@link kTAG_TYPE}</tt>: From the eventual scale vertex.
+	 *	<li><tt>{@link kTAG_INPUT}</tt>: From the eventual scale vertex.
+	 *	<li><tt>{@link kTAG_PATTERN}</tt>: From the eventual scale vertex.
+	 *	<li><tt>{@link kTAG_LENGTH}</tt>: From the eventual scale vertex.
+	 *	<li><tt>{@link kTAG_MIN_VAL}</tt>: From the eventual scale vertex.
+	 *	<li><tt>{@link kTAG_MAX_VAL}</tt>: From the eventual scale vertex.
+	 *	<li><tt>{@link kTAG_EXAMPLES}</tt>: From the eventual scale vertex.
+	 * </ul>
+	 *
 	 * @param mixed					$theValue			Value to append.
 	 *
 	 * @access public
@@ -162,6 +175,13 @@ class COntologyTag extends CTag
 		if( $theValue !== NULL )
 		{
 			//
+			// Get element count.
+			//
+			$count = ( $this->offsetExists( kTAG_PATH ) )
+				   ? count( $this->offsetGet( kTAG_PATH ) )
+				   : 0;
+			
+			//
 			// Handle term object.
 			//
 			if( $theValue instanceof COntologyTerm )
@@ -171,6 +191,14 @@ class COntologyTag extends CTag
 				//
 				if( $theValue->_IsCommitted() )
 				{
+					//
+					// Set synonyms.
+					//
+					if( (! $count)									// Is feature
+					 && $theValue->offsetExists( kTAG_SYNONYMS ) )	// and has synonyms.
+						$this->offsetSet( kTAG_SYNONYMS,
+										  $theValue->offsetGet( kTAG_SYNONYMS ) );
+					
 					//
 					// Check native identifier.
 					//
@@ -193,13 +221,6 @@ class COntologyTag extends CTag
 			} // Provided term object.
 			
 			//
-			// Get element count.
-			//
-			$count = ( $this->offsetExists( kTAG_PATH ) )
-				   ? count( $this->offsetGet( kTAG_PATH ) )
-				   : 0;
-			
-			//
 			// Handle node.
 			//
 			if( $theValue instanceof COntologyNode )
@@ -210,7 +231,7 @@ class COntologyTag extends CTag
 				if( $theValue->_IsCommitted() )
 				{
 					//
-					// Check vertex.
+					// Check if vertex.
 					//
 					if( ! ($count % 2) )
 					{
@@ -220,49 +241,17 @@ class COntologyTag extends CTag
 						if( $theValue->offsetExists( kTAG_TERM ) )
 						{
 							//
-							// Set data type.
+							// Copy node attributes.
 							//
-							if( $theValue->offsetExists( kTAG_TYPE ) )
-								$this->offsetSet(
-									kTAG_TYPE, $theValue->offsetGet( kTAG_TYPE ) );
-					
-							//
-							// Check first.
-							//
-							if( ! $count )
+							$attributes = array( kTAG_TYPE, kTAG_INPUT, kTAG_PATTERN,
+												 kTAG_LENGTH, kTAG_MIN_VAL, kTAG_MAX_VAL,
+												 kTAG_EXAMPLES );
+							foreach( $attributes as $attribute )
 							{
-								//
-								// Check feature.
-								//
-								if( $theValue->Kind( kKIND_FEATURE ) !== NULL )
-									return parent::PushItem(
-										$theValue->offsetGet( kTAG_TERM ) );		// ==>
-								
-								throw new Exception
-									( "Cannot set path element, "
-									 ."the the provided vertex is not a feature",
-									  kERROR_PARAMETER );						// !@! ==>
-							
-							} // Feature node.
-						
-							//
-							// Check last.
-							//
-							if( $count == (count( $this->offsetGet( kTAG_PATH ) ) - 1) )
-							{
-								//
-								// Check scale.
-								//
-								if( $theValue->Kind( kKIND_SCALE ) !== NULL )
-									return parent::PushItem(
-										$theValue->offsetGet( kTAG_TERM ) );		// ==>
-								
-								throw new Exception
-									( "Cannot set path element, "
-									 ."the the provided vertex is not a scale",
-									  kERROR_PARAMETER );						// !@! ==>
-							
-							} // Scale node.
+								if( $theValue->offsetExists( $attribute ) )
+									$this->offsetSet(
+										$attribute, $theValue->offsetGet( $attribute ) );
+							}
 							
 							return parent::PushItem(
 								$theValue->offsetGet( kTAG_TERM ) );				// ==>

@@ -10,7 +10,13 @@
                 The ontology is an element container for the list of units.
             </xs:documentation>
         </xs:annotation>
+        
         <xs:complexType>
+            <xs:annotation>
+                <xs:documentation xml:lang="en">
+                    The unit is the transaction unit.
+                </xs:documentation>
+            </xs:annotation>
             <xs:sequence>
                 <xs:element maxOccurs="unbounded" ref="UNIT" />
             </xs:sequence>
@@ -25,15 +31,17 @@
                 instances which define a set of graph related elements.
             </xs:documentation>
         </xs:annotation>
+        
         <xs:complexType>
             <xs:sequence>
-                <xs:element minOccurs="0" maxOccurs="unbounded" ref="TERM">
-                    <xs:annotation>
-                        <xs:documentation xml:lang="en">
-                            List of terms to be instantiated.
-                        </xs:documentation>
-                    </xs:annotation>
-                </xs:element>
+                 <xs:element minOccurs="0" maxOccurs="unbounded" ref="TERM">
+                     <xs:annotation>
+                         <xs:documentation xml:lang="en">
+                             List of terms to be instantiated.
+                         </xs:documentation>
+                     </xs:annotation>
+                 </xs:element>
+                
                 <xs:element minOccurs="0" maxOccurs="unbounded" ref="NODE">
                     <xs:annotation>
                         <xs:documentation xml:lang="en">
@@ -41,6 +49,7 @@
                         </xs:documentation>
                     </xs:annotation>
                 </xs:element>
+ 
                 <xs:element minOccurs="0" maxOccurs="unbounded" ref="EDGE">
                     <xs:annotation>
                         <xs:documentation xml:lang="en">
@@ -48,6 +57,7 @@
                         </xs:documentation>
                     </xs:annotation>
                 </xs:element>
+                
                 <xs:element minOccurs="0" maxOccurs="unbounded" ref="TAG">
                     <xs:annotation>
                         <xs:documentation xml:lang="en">
@@ -67,28 +77,30 @@
                 repeated for as many terms need to be defined for the curent block.
             </xs:documentation>
         </xs:annotation>
+        
         <xs:complexType>
             <xs:sequence>
+                <xs:annotation>
+                    <xs:documentation xml:lang="en">
+                        Terms should be included only to be inserted, for other cases
+                        simply reference the term's global identifier.
+                    </xs:documentation>
+                </xs:annotation>
                 <xs:element maxOccurs="unbounded" ref="element"/>
             </xs:sequence>
-            <xs:attribute name="GID" type="xs:string">
-                <xs:annotation>
-                    <xs:documentation xml:lang="en">
-                        Term global identifier, used to reference the term.
-                    </xs:documentation>
-                </xs:annotation>
-            </xs:attribute>
-            <xs:attribute name="LID" use="required" type="xs:string">
-                <xs:annotation>
-                    <xs:documentation xml:lang="en">
-                        Term local identifier.
-                    </xs:documentation>
-                </xs:annotation>
-            </xs:attribute>
+            
             <xs:attribute name="NS" type="xs:string">
                 <xs:annotation>
                     <xs:documentation xml:lang="en">
                         Term namespace as the namespace's term global identifier.
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:attribute>
+            
+            <xs:attribute name="LID" use="required" type="xs:string">
+                <xs:annotation>
+                    <xs:documentation xml:lang="en">
+                        Term local identifier, required to provide the term global identifier.
                     </xs:documentation>
                 </xs:annotation>
             </xs:attribute>
@@ -105,20 +117,19 @@
                 this means that no two nodes may refer to a term in the same unit.
             </xs:documentation>
         </xs:annotation>
+        
         <xs:complexType>
             <xs:sequence>
-                <xs:element minOccurs="0" maxOccurs="unbounded" ref="element"/>
-            </xs:sequence>
-            <xs:attribute name="ID" type="xs:ID">
                 <xs:annotation>
                     <xs:documentation xml:lang="en">
-                        Node identifier, allows referencing homonym term nodes;
-                        this attribute has nothing to do with the actual node ID.
-                        Use this attribute only if two nodes refer to the same term,
-                        or if the node to be referenced is not the node in the current unit.
+                        Nodes should be included only to be inserted, a node may
+                        feature no elements, since the class is provided as an attribute
+                        and the term may be implicit.
                     </xs:documentation>
                 </xs:annotation>
-            </xs:attribute>
+                <xs:element minOccurs="0" maxOccurs="unbounded" ref="element"/>
+            </xs:sequence>
+            
             <xs:attribute name="class" use="required" type="xs:string">
                 <xs:annotation>
                     <xs:documentation xml:lang="en">
@@ -126,10 +137,13 @@
                     </xs:documentation>
                 </xs:annotation>
             </xs:attribute>
-            <xs:attribute name="term" use="required" type="xs:string">
+            
+            <xs:attribute name="term" type="xs:string">
                 <xs:annotation>
                     <xs:documentation xml:lang="en">
-                        Term reference, should refer to the global identifier of the term.
+                        Term reference, should refer to the global identifier of the term;
+                        if omitted, there may be only one term in the current unit and that
+                        term will be implicitly used as the node's term reference.
                     </xs:documentation>
                 </xs:annotation>
             </xs:attribute>
@@ -146,8 +160,17 @@
                 no two nodes may refer to the same term within the same unit.
             </xs:documentation>
         </xs:annotation>
+        
         <xs:complexType>
             <xs:sequence>
+                <xs:annotation>
+                    <xs:documentation xml:lang="en">
+                        Edges require require subject, predicate and object. If the
+                        subject is omitted, it is assumed that the unit has only one
+                        node and that node will be the subject; the same is true if
+                        the object is omitted. The predicate must always be indicated.
+                    </xs:documentation>
+                </xs:annotation>
                 <xs:element maxOccurs="unbounded" ref="element"/>
             </xs:sequence>
         </xs:complexType>
@@ -162,9 +185,17 @@
                 within the unit, it will be used instead of the term.
             </xs:documentation>
         </xs:annotation>
+        
         <xs:complexType>
             <xs:sequence>
-                <xs:element maxOccurs="unbounded" ref="element"/>
+                <xs:annotation>
+                    <xs:documentation xml:lang="en">
+                        Tags require the path to be indicated, if the tag has no elements,
+                        it is assumed that the unit has only one node, and that node will be
+                        set in the path.
+                    </xs:documentation>
+                </xs:annotation>
+                <xs:element minOccurs="0" maxOccurs="unbounded" ref="element"/>
             </xs:sequence>
         </xs:complexType>
     </xs:element>
@@ -178,10 +209,18 @@
                 elements should store the value.
             </xs:documentation>
         </xs:annotation>
+        
         <xs:complexType mixed="true">
             <xs:sequence>
+                <xs:annotation>
+                    <xs:documentation xml:lang="en">
+                        These elements are used to provide object properties
+                        not already set with the element attributes.
+                    </xs:documentation>
+                </xs:annotation>
                 <xs:element minOccurs="0" maxOccurs="unbounded" ref="item"/>
             </xs:sequence>
+            
             <xs:attribute name="tag" type="xs:string">
                 <xs:annotation>
                     <xs:documentation xml:lang="en">
@@ -189,11 +228,22 @@
                     </xs:documentation>
                 </xs:annotation>
             </xs:attribute>
+            
             <xs:attribute name="variable" type="xs:string">
                 <xs:annotation>
                     <xs:documentation xml:lang="en">
                         The variable attribute should reference a tag through the
                         constant name.
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:attribute>
+            
+            <xs:attribute name="node" type="node-ref-type">
+                <xs:annotation>
+                    <xs:documentation xml:lang="en">
+                        If this attribute is provided, it means that the value of the element
+                        is to be considered a node reference which will be resolved and the
+                        resulting node's native identifier will replace the value of the element.
                     </xs:documentation>
                 </xs:annotation>
             </xs:attribute>
@@ -208,10 +258,20 @@
                 use the key attribute if the array uses keys.
             </xs:documentation>
         </xs:annotation>
+        
         <xs:complexType mixed="true">
             <xs:sequence>
+                <xs:annotation>
+                    <xs:documentation xml:lang="en">
+                        These elements are used to provide object property array
+                        elements, scalar properties take their value from the
+                        parent element value. Items may be nested if the property
+                        is a nested array.
+                    </xs:documentation>
+                </xs:annotation>
                 <xs:element minOccurs="0" maxOccurs="unbounded" ref="item"/>
             </xs:sequence>
+            
             <xs:attribute name="key" type="xs:string">
                 <xs:annotation>
                     <xs:documentation xml:lang="en">
@@ -220,6 +280,57 @@
                     </xs:documentation>
                 </xs:annotation>
             </xs:attribute>
+            
+            <xs:attribute name="node" type="node-ref-type">
+                <xs:annotation>
+                    <xs:documentation xml:lang="en">
+                        If this attribute is provided, it means that the value of the element
+                        is to be considered a node reference which will be resolved and the
+                        resulting node's native identifier will replace the value of the element.
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:attribute>
         </xs:complexType>
     </xs:element>
+    
+    <xs:simpleType name="node-ref-type">
+        <xs:annotation>
+            <xs:documentation xml:lang="en">
+                This enumeration defines the different types of node references that
+                can be expressed, it is used to provide a reference to a node in
+                several ways.
+            </xs:documentation>
+        </xs:annotation>
+        
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="term">
+                <xs:annotation>
+                    <xs:documentation xml:lang="en">
+                        The value of the element is a term global identifier,
+                        this means that the node will be the master node related
+                        to that term.
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            
+            <xs:enumeration value="node">
+                <xs:annotation>
+                    <xs:documentation xml:lang="en">
+                        The value of the element is a node native identifier,
+                        the value of the element will not be changed.
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            
+            <xs:enumeration value="pid">
+                <xs:annotation>
+                    <xs:documentation xml:lang="en">
+                        The value of the element is a node persistent identifier,
+                        the node will be resolved and its native identifier will
+                        replace the current element's value.
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+        </xs:restriction>
+    </xs:simpleType>   
 </xs:schema>

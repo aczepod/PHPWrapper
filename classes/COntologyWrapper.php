@@ -2028,7 +2028,7 @@ class COntologyWrapper extends CDataWrapper
 				//
 				$node
 					= COntologyMasterVertex::Resolve(
-						$_REQUEST[ kAPI_CONTAINER ], $term, TRUE );
+						$_REQUEST[ kAPI_DATABASE ], $term, TRUE );
 				
 				//
 				// Save vertex identifier.
@@ -2055,8 +2055,7 @@ class COntologyWrapper extends CDataWrapper
 			$predicate
 				= COntologyTerm::Resolve(
 					$_REQUEST[ kAPI_DATABASE ]
-						->Container(
-							COntologyTerm::DefaultContainerName() ),
+						->Container( COntologyTerm::DefaultContainerName() ),
 					kPREDICATE_ENUM_OF,
 					NULL,
 					TRUE )
@@ -2090,6 +2089,9 @@ class COntologyWrapper extends CDataWrapper
 				$cur_query->AppendStatement(
 					CQueryStatement::Equals(
 						kTAG_OBJECT, $item, kTYPE_INT ) );
+echo( '<pre>' );
+print_r( $cur_query );
+exit( '</pre>' );
 				
 				//
 				// Iterate recordset.

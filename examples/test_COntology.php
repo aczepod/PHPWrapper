@@ -56,7 +56,7 @@ class MyClass extends COntology
 //
 // Debug switches.
 //
-define( 'kDEBUG_PARENT', 		TRUE );
+define( 'kDEBUG_PARENT', 		FALSE );
 
 /*=======================================================================================
  *	VERBOSE FLAG																		*
@@ -172,7 +172,7 @@ try
 	// Create empty ontology object.
 	//
 	echo( '<h4>Create empty ontology object</h4>' );
-	echo( '<h5>$ontology = new MyClass();</h5>' );
+	echo( '<h5>$test = new MyClass();</h5>' );
 	$test = new MyClass();
 	echo( 'Inited['.$test->inited()
 				   .'] Dirty['.$test->dirty()
@@ -182,7 +182,24 @@ try
 	echo( '<pre>' ); print_r( $test ); echo( '</pre>' );
 	echo( '<hr />' );
 	echo( '<hr />' );
-	
+
+	//
+	// Load tags.
+	//
+	$dir = "/Library/WebServer/Library/PHPWrapper/data/Default Ontology";
+	$files = array( "$dir/Namespaces.xml", "$dir/Terms.xml", "$dir/Categories.xml",
+					"$dir/Attributes.xml", "$dir/Predicates.xml", "$dir/Types.xml",
+					"$dir/Kinds.xml", "$dir/Operators.xml", "$dir/Status.xml",
+					"$dir/Inputs.xml", "$dir/Term.xml" );
+	echo( '<h4>Load categories</h4>' );
+	echo( '<h5>$test = new MyClass( $database );</h5>' );
+	$test = new MyClass( $database );
+	echo( '<h5>$test->LoadXMLOntologyFile( $files );</h5>' );
+	$test->LoadXMLOntologyFile( $files );
+	echo( '<hr />' );
+	echo( '<hr />' );
+exit;
+
 	//
 	// Try getting a term.
 	//

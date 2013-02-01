@@ -196,17 +196,31 @@ class COntologyNode extends CNode
 	 * <ul>
 	 *	<li><i>Data type</i>: The set accepts one of the following primary data types:
 	 *	 <ul>
+	 *		<li><i>{@link kTYPE_ANY}</i>: Any type.
 	 *		<li><i>{@link kTYPE_STRING}</i>: String, we assume in UTF8 character set.
 	 *		<li><i>{@link kTYPE_INT}</i>: Generic signed integer.
-	 *		<li><i>{@link kTYPE_INT32}</i>: 32 bit signed integer.
-	 *		<li><i>{@link kTYPE_INT64}</i>: 64 bit signed integer.
 	 *		<li><i>{@link kTYPE_FLOAT}</i>: Floating point number.
 	 *		<li><i>{@link kTYPE_BOOLEAN}</i>: An <tt>on</tt>/<tt>off</tt> switch.
 	 *		<li><i>{@link kTYPE_BINARY_STRING}</i>: A binary string.
 	 *		<li><i>{@link kTYPE_DATE_STRING}</i>: A date.
 	 *		<li><i>{@link kTYPE_TIME_STRING}</i>: A date and time.
+	 *		<li><i>{@link kTYPE_REGEX_STRING}</i>: A regular expression.
+	 *		<li><i>{@link kTYPE_INT32}</i>: 32 bit signed integer.
+	 *		<li><i>{@link kTYPE_INT64}</i>: 64 bit signed integer.
+	 *		<li><i>{@link kTYPE_REF_TERM}</i>: Term reference.
+	 *		<li><i>{@link kTYPE_REF_NODE}</i>: Node reference.
+	 *		<li><i>{@link kTYPE_REF_EDGE}</i>: Edge reference.
+	 *		<li><i>{@link kTYPE_REF_TAG}</i>: Tag reference.
+	 *		<li><i>{@link kTYPE_REF_USER}</i>: User reference.
+	 *		<li><i>{@link kTYPE_META}</i>: Metadata.
+	 *		<li><i>{@link kTYPE_PHP}</i>: PHP.
+	 *		<li><i>{@link kTYPE_JSON}</i>: JSON.
+	 *		<li><i>{@link kTYPE_XML}</i>: XML.
+	 *		<li><i>{@link kTYPE_SVG}</i>: SVG.
 	 *		<li><i>{@link kTYPE_STAMP}</i>: A native timestamp.
 	 *		<li><i>{@link kTYPE_STRUCT}</i>: A structure container.
+	 *		<li><i>{@link kTYPE_LSTRING}</i>: Language strings.
+	 *		<li><i>{@link kTYPE_STAMP}</i>: Time-stamp.
 	 *		<li><i>{@link kTYPE_ENUM}</i>: Enumerated scalar, this data type resolves by
 	 *			default to a string and indicates that the node refers to a controlled
 	 *			vocabulary scalar whose elements will be found related to the current node.
@@ -305,6 +319,7 @@ class COntologyNode extends CNode
 				//
 				// Handle data types.
 				//
+				case kTYPE_ANY:
 				case kTYPE_STRING:
 				case kTYPE_INT:
 				case kTYPE_INT32:
@@ -318,29 +333,27 @@ class COntologyNode extends CNode
 				case kTYPE_TIME_STRING:
 				case kTYPE_REGEX_STRING:
 				
-				case kTYPE_LSTRING:
-				case kTYPE_STAMP:
-				case kTYPE_STRUCT:
+				case kTYPE_REF_TERM:
+				case kTYPE_REF_NODE:
+				case kTYPE_REF_EDGE:
+				case kTYPE_REF_TAG:
+				case kTYPE_REF_USER:
 				
+				case kTYPE_META:
 				case kTYPE_PHP:
 				case kTYPE_JSON:
 				case kTYPE_XML:
 				case kTYPE_SVG:
 				
-				case kTYPE_MongoId:
-				case kTYPE_MongoCode:
+				case kTYPE_STRUCT:
+				case kTYPE_LSTRING:
+				case kTYPE_STAMP:
 				
 				case kTYPE_ENUM:
 				case kTYPE_ENUM_SET:
-					//
-					// Remove eventual existing data type.
-					//
-					parent::Type( array( kTYPE_STRING, kTYPE_INT32,
-										 kTYPE_INT64, kTYPE_FLOAT,
-										 kTYPE_DATE_STRING, kTYPE_TIME_STRING,
-										 kTYPE_STAMP, kTYPE_BOOLEAN,
-										 kTYPE_BINARY_STRING, kTYPE_ENUM, kTYPE_ENUM_SET ),
-								  FALSE );
+				
+				case kTYPE_MongoId:
+				case kTYPE_MongoCode:
 			
 				case kTYPE_REQUIRED:
 				case kTYPE_RESTRICTED:
@@ -351,7 +364,7 @@ class COntologyNode extends CNode
 				
 				default:
 					throw new Exception
-							( "Unsupported type",
+							( "Unsupported type [$theValue]",
 							  kERROR_PARAMETER );								// !@! ==>
 			
 			} // Parsed value.
@@ -824,6 +837,104 @@ class COntologyNode extends CNode
 			  kERROR_PARAMETER );												// !@! ==>
 
 	} // Resolve.
+
+	 
+	/*===================================================================================
+	 *	ResolvePID																		*
+	 *==================================================================================*/
+
+	/**
+	 * <h4>Resolve a node using its PID</h4>
+	 *
+	 * This method can be used to retrieve an existing node by persistent identifier.
+	 *
+	 * The method accepts the following parameters:
+	 *
+	 * <ul>
+	 *	<li><tt>$theConnection</tt>: This parameter represents the connection from which the
+	 *		nodes container must be resolved. If this parameter cannot be correctly
+	 *		determined, the method will raise an exception.
+	 *	<li><tt>$theIdentifier</tt>: This parameter represents the persistent identifier.
+	 *	<li><tt>$doThrow</tt>: If <tt>TRUE</tt>, any failure to resolve the node will raise
+	 *		an exception.
+	 *	<li><tt>$doObject</tt>: If <tt>TRUE</tt>, the method will return the matched object,
+	 *		if not, it will return the node's native identifier or <tt>NULL</tt> if there
+	 *		is no match.
+	 * </ul>
+	 *
+	 * @param CConnection			$theConnection		Server, database or container.
+	 * @param mixed					$theIdentifier		Node PID identifier.
+	 * @param boolean				$doThrow			If <tt>TRUE</tt> raise an exception.
+	 * @param boolean				$doObject			If <tt>TRUE</tt> return the object.
+	 *
+	 * @static
+	 * @return COntologyNode		Matched node or <tt>NULL</tt>.
+	 *
+	 * @throws Exception
+	 */
+	static function ResolvePID( CConnection $theConnection,
+											$theIdentifier,
+											$doThrow = FALSE,
+											$doObject = FALSE )
+	{
+		//
+		// Check identifier.
+		//
+		if( $theIdentifier !== NULL )
+		{
+			//
+			// Resolve container.
+			//
+			$container = static::ResolveClassContainer( $theConnection, TRUE );
+			
+			//
+			// Make query.
+			//
+			$query = $container->NewQuery();
+			$query->AppendStatement(
+				CQueryStatement::Equals(
+					kTAG_PID, $theIdentifier, kTYPE_STRING ) );
+			
+			//
+			// Set selection.
+			//
+			$selection = ( ! $doObject )
+					   ? array( kTAG_NID )
+					   : NULL;
+			
+			//
+			// Perform query.
+			//
+			$rs = $container->Query( $query, $selection, NULL, NULL, NULL, TRUE );
+			if( $rs !== NULL )
+			{
+				//
+				// Return object.
+				//
+				if( $doObject )
+					return CPersistentObject::DocumentObject( $rs );				// ==>
+				
+				return $rs[ kTAG_NID ];												// ==>
+			
+			} // Matched.
+
+			//
+			// Raise exception.
+			//
+			if( $doThrow )
+				throw new Exception
+					( "Node not found",
+					  kERROR_NOT_FOUND );										// !@! ==>
+			
+			return NULL;															// ==>
+			
+		} // Provided local or global identifier.
+		
+		throw new Exception
+			( "Missing node PID",
+			  kERROR_PARAMETER );												// !@! ==>
+
+	} // ResolvePID.
 
 		
 

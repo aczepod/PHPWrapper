@@ -111,14 +111,31 @@ class COntologyMasterNode extends COntologyNode
 	/**
 	 * <h4>Relate to node</h4>
 	 *
-	 * We overload the inherited method to ensure that both vertices of the relationship do
-	 * not have node references, {@link kTAG_NODE}. If any do have such references, we use
-	 * the referenced node instead of the current one.
+	 * We overload this method to mirror relationships between alias nodes to their
+	 * counterpart master nodes.
 	 *
-	 * Both the current node and the object node will be committed if not already.
+	 * We first create the requested relationship, then, if the object is an alias, we
+	 * relate the current object with the object's master.
 	 *
-	 * Since this operation involves searching the database, we require the connection which
-	 * will be used to commit the edge.
+	 * This means that:
+	 *
+	 * <ul>
+	 *	<li><i>MASTER => MASTER</i>:
+	 *	 <ul>
+	 *		<li>MASTER => MASTER
+	 *	 </ul>
+	 *	<li><i>MASTER => ALIAS</i>:
+	 *	 <ul>
+	 *		<li>MASTER => ALIAS
+	 *		<li>MASTER => ALIAS.MASTER
+	 *	 </ul>
+	 * </ul>
+	 *
+	 * Note that this method is called by its counterpart in {@link COntologyAliasNode},
+	 * this means
+	 *
+	 * We require the connection parameter here since both subject and object vertices must
+	 * be committed by this method, this implies that the edge will also be committed.
 	 *
 	 * @param mixed					$thePredicate		Predicate term object or reference.
 	 * @param mixed					$theObject			Object node object or reference.
@@ -135,116 +152,62 @@ class COntologyMasterNode extends COntologyNode
 		if( $theConnection instanceof CConnection )
 		{
 			//
-			// Commit subject.
+			// Commit current object.
 			//
 			if( ! $this->_IsCommitted() )
 				$this->Insert( $theConnection );
 			
 			//
-			// Dereference current object.
+			// Check if alias.
 			//
-			$subject = $this;
-			
-			//
-			// Resolve subject master node.
-			//
-			$cache = array( $subject->offsetGet( kTAG_NID ) );
-			while( $subject->offsetExists( kTAG_NODE ) )
+			if( ! $this->offsetExists( kTAG_NODE ) )
 			{
 				//
-				// Resolve node reference.
+				// Resolve object.
 				//
-				$subject = static::Resolve( $theConnection,
-											$subject->offsetGet( kTAG_NODE ),
-											TRUE );
+				if( ! ($theObject instanceof COntologyNode) )
+					$theObject = self::NewObject( $theConnection, $theObject, TRUE );
 				
 				//
-				// Handle recursion.
+				// Commit object.
 				//
-				if( in_array( $subject->offsetGet( kTAG_NID ), $cache ) )
-					break;													// =>
+				elseif( ! $theObject->_IsCommitted() )
+					$theObject->Insert( $theConnection );
 				
 				//
-				// Traverse.
+				// Relate aliases.
 				//
-				$cache[] = $subject->offsetGet( kTAG_NID );
-			}
-			
-			//
-			// Double check reference.
-			//
-			if( $subject->offsetExists( kTAG_NODE ) )
-				throw new Exception
-					( "Subject vertex does not resolve into a master node",
-					  kERROR_STATE );											// !@! ==>
-			
-			//
-			// Resolve object.
-			//
-			if( ! ($theObject instanceof COntologyNode) )
-				$theObject->Resolve( $theConnection, $theObject, TRUE );
-			elseif( ! $theObject->_IsCommitted() )
-				$theObject->Insert( $theConnection );
-			
-			//
-			// Resolve object master node.
-			//
-			$cache = array( $theObject->offsetGet( kTAG_NID ) );
-			while( $theObject->offsetExists( kTAG_NODE ) )
-			{
-				//
-				// Resolve node reference.
-				//
-				$theObject = static::Resolve( $theConnection,
-											  $theObject->offsetGet( kTAG_NODE ),
-											  TRUE );
+				$edge = parent::RelateTo( $thePredicate, $theObject, $theConnection );
 				
 				//
-				// Handle recursion.
+				// Resolve object master.
 				//
-				if( in_array( $theObject->offsetGet( kTAG_NID ), $cache ) )
-					break;													// =>
+				if( ($id = $theObject->offsetGet( kTAG_NODE )) !== NULL )
+				{
+					//
+					// Resolve object.
+					//
+					$object = self::NewObject( $theConnection, $id, TRUE );
+					while( ($id = $object->offsetGet( kTAG_NODE )) !== NULL )
+						$object = self::NewObject( $theConnection, $id, TRUE );
 				
-				//
-				// Traverse.
-				//
-				$cache[] = $theObject->offsetGet( kTAG_NID );
-			}
+					//
+					// Relate to object master.
+					// This is actually calling this method,
+					// since both vertices are masters,
+					// only one relationship will be created.
+					//
+					parent::RelateTo( $thePredicate, $object, $theConnection );
+				
+				} // Object is alias.
+				
+				return $edge;														// ==>
 			
-			//
-			// Double check reference.
-			//
-			if( $theObject->offsetExists( kTAG_NODE ) )
-				throw new Exception
-					( "Object vertex does not resolve into a master node",
-					  kERROR_STATE );											// !@! ==>
-			
-			//
-			// Instantiate the edge
-			//
-			$edge = $this->_NewEdge();
-			
-			//
-			// Set subject.
-			//
-			$edge->Subject( $subject );
-			
-			//
-			// Set predicate.
-			//
-			$edge->Predicate( $thePredicate );
-			
-			//
-			// Set object.
-			//
-			$edge->Object( $theObject );
-			
-			//
-			// Insert.
-			//
-			$edge->Insert( $theConnection );
-			
-			return $edge;															// ==>
+			} // Subject is a master.
+		
+			throw new Exception
+				( "Master vertex should not have a master reference",
+				  kERROR_STATE );												// !@! ==>
 		
 		} // Provided connection.
 		
@@ -393,8 +356,9 @@ class COntologyMasterNode extends COntologyNode
 	 * We overload this method to prevent creating two nodes that refer to the same term.
 	 * We first check if there is another node that refers to the same term and that does
 	 * point to another node: if we find one we add the {@link kTAG_CATEGORY},
-	 * {@link kTAG_KIND} and {@link kTAG_TYPE} attributes to the found node and make it the
-	 * current node; if no such node is found, we call the parent method.
+	 * {@link kTAG_KIND}, {@link kTAG_TYPE}, {@link kTAG_INPUT} and {@link kTAG_EXAMPLES}
+	 * attributes to the found node and make it the current node; if no such node is found,
+	 * we call the parent method.
 	 *
 	 * In the first case we return the found node identifier, this will stop the commit
 	 * workflow.
@@ -436,7 +400,8 @@ class COntologyMasterNode extends COntologyNode
 					// Set modification criteria.
 					//
 					$criteria = array();
-					$attributes = array( kTAG_CATEGORY, kTAG_KIND, kTAG_TYPE );
+					$attributes = array( kTAG_CATEGORY, kTAG_KIND,
+										 kTAG_TYPE, kTAG_INPUT, kTAG_EXAMPLES );
 					foreach( $attributes as $attribute )
 					{
 						if( $this->offsetExists( $attribute ) )

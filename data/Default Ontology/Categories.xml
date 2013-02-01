@@ -1,0 +1,150 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ONTOLOGY
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:noNamespaceSchemaLocation="file:/Library/WebServer/Library/PHPWrapper/defines/Ontology.xsd">
+    
+    <!-- Default ontology -->
+    
+    <!-- ONTOLOGY -->
+    <UNIT>
+        <TERM NS="" LID="ONTOLOGY">
+            <element variable="kTAG_LABEL">
+                <item key="en">Ontology</item>
+            </element>
+            <element variable="kTAG_DEFINITION">
+                <item key="en"><![CDATA[An ontology is a <i>graph structure</i> composed of <i>nodes</i> related by a series of <i>directed edges</i>, each node represents a <i>concept</i> that can be used to illustrate a <i>feature</i>, <i>characteristic</i> or <i>category</i> of an object, or to <i>tag</i> a set of <i>data elements</i> that are <i>measurements</i> of that feature.]]></item>
+            </element>
+        </TERM>
+        <NODE class="COntologyMasterVertex">
+        	<element variable="kTAG_CATEGORY">
+        		<item>Ontology</item>
+        	</element>
+            <element variable="kTAG_KIND">
+                <item>:KIND-ROOT</item>
+            </element>
+            <element variable="kTAG_DESCRIPTION">
+                <item key="en"><![CDATA[This represents the <i>default ontology</i>, it defines all the elements that are used to build the ontology itself.]]></item>
+            </element>
+        </NODE>
+    </UNIT>
+    
+    <!-- ATTRIBUTE -->
+    <UNIT>
+        <TERM NS=":ONTOLOGY" LID="ATTRIBUTE">
+            <element variable="kTAG_LABEL">
+                <item key="en">Attribute</item>
+            </element>
+            <element variable="kTAG_DEFINITION">
+                <item key="en"><![CDATA[An <i>attribute</i> is a <i>property of an object that holds a value</i>.]]></item>
+            </element>
+        </TERM>
+        <NODE class="COntologyMasterVertex">
+        	<element variable="kTAG_CATEGORY">
+        		<item>Attribute</item>
+        	</element>
+            <element variable="kTAG_DESCRIPTION">
+                <item key="en"><![CDATA[Attributes, in this ontology, are represented and identified by tag objects, the tag identifiers are used as property or field names when storing attribute data.]]></item>
+            </element>
+        </NODE>
+        <EDGE>
+            <element variable="kTAG_PREDICATE">:PART-OF</element>
+            <element variable="kTAG_OBJECT" node="term">:ONTOLOGY</element>
+        </EDGE>
+    </UNIT>
+    
+    <!-- PREDICATE -->
+    <UNIT>
+       <TERM NS=":ONTOLOGY" LID="PREDICATE">
+            <element variable="kTAG_LABEL">
+                <item key="en">Predicate</item>
+            </element>
+            <element variable="kTAG_DEFINITION">
+                <item key="en"><![CDATA[<i>Predicates</i> are <i>terms</i> which are used to <i>link</i> a <i>subject vertex</i> to an <i>object vertex</i> into a <i>relationship</i> or graph <i>directed edge</i>.]]></item>
+            </element>
+        </TERM>
+        <NODE class="COntologyMasterVertex">
+        	<element variable="kTAG_CATEGORY">
+        		<item>Predicate</item>
+        	</element>
+            <element variable="kTAG_DESCRIPTION">
+                <item key="en"><![CDATA[This category groups all <i>default predicates</i>, when selecting basic predicates one should first check whether one of these suit one's needs.]]></item>
+            </element>
+        </NODE>
+        <EDGE>
+            <element variable="kTAG_PREDICATE">:PART-OF</element>
+            <element variable="kTAG_OBJECT" node="term">:ONTOLOGY</element>
+        </EDGE>
+    </UNIT>
+    
+    <!-- ENUM -->
+    <UNIT>
+       <TERM NS=":ONTOLOGY" LID="ENUM">
+            <element variable="kTAG_LABEL">
+                <item key="en">Enumeration</item>
+            </element>
+            <element variable="kTAG_DEFINITION">
+                <item key="en"><![CDATA[<i>Enumerations</i> are <i>controlled vocabularies</i> represented a <i>set of predefined terms</i> which are used as a <i>value selection for enumeration and set attributes and properties</i>.]]></item>
+            </element>
+        </TERM>
+        <NODE class="COntologyMasterVertex">
+        	<element variable="kTAG_CATEGORY">
+        		<item>Set</item>
+        	</element>
+            <element variable="kTAG_DESCRIPTION">
+                <item key="en"><![CDATA[This category groups all <i>default enumerated sets</i>.]]></item>
+            </element>
+        </NODE>
+        <EDGE>
+            <element variable="kTAG_PREDICATE">:PART-OF</element>
+            <element variable="kTAG_OBJECT" node="term">:ONTOLOGY</element>
+        </EDGE>
+    </UNIT>
+    
+    <!-- OBJECT -->
+    <UNIT>
+        <TERM NS=":ONTOLOGY" LID="OBJECT">
+            <element variable="kTAG_LABEL">
+                <item key="en">Object</item>
+            </element>
+            <element variable="kTAG_DEFINITION">
+                <item key="en"><![CDATA[An object is a collection of <i>attributes</i> or <i>properties</i> which are <i>defined by terms</i>, <i>identified by tags</i> and that <i>hold data</i>.]]></item>
+            </element>
+        </TERM>
+        <NODE class="COntologyMasterVertex">
+        	<element variable="kTAG_CATEGORY">
+        		<item>Object</item>
+        	</element>
+            <element variable="kTAG_DESCRIPTION">
+                <item key="en"><![CDATA[This category groups all <i>default objects</i>, which are a collection of <i>attributes</i> and <i>properties</i>.]]></item>
+            </element>
+        </NODE>
+        <EDGE>
+            <element variable="kTAG_PREDICATE">:PART-OF</element>
+            <element variable="kTAG_OBJECT" node="term">:ONTOLOGY</element>
+        </EDGE>
+    </UNIT>
+    
+    <!-- SERVICE -->
+    <UNIT>
+       <TERM NS=":ONTOLOGY" LID="SERVICE">
+            <element variable="kTAG_LABEL">
+                <item key="en">Service</item>
+            </element>
+            <element variable="kTAG_DEFINITION">
+                <item key="en"><![CDATA[<i>Services</i> are <i>protocols for accessing the ontology via the web</i>.]]></item>
+            </element>
+        </TERM>
+        <NODE class="COntologyMasterVertex">
+        	<element variable="kTAG_CATEGORY">
+        		<item>Service</item>
+        	</element>
+            <element variable="kTAG_DESCRIPTION">
+                <item key="en"><![CDATA[This category groups all web-service <i>input and output parameters</i> and their definition.]]></item>
+            </element>
+        </NODE>
+        <EDGE>
+            <element variable="kTAG_PREDICATE">:PART-OF</element>
+            <element variable="kTAG_OBJECT" node="term">:ONTOLOGY</element>
+        </EDGE>
+    </UNIT>
+</ONTOLOGY>

@@ -1,0 +1,215 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ONTOLOGY
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:noNamespaceSchemaLocation="file:/Library/WebServer/Library/PHPWrapper/defines/Ontology.xsd">
+        
+    <!-- Control -->
+    
+    <UNIT>
+        <TERM NS=":ONTOLOGY:ENUM" LID="CONTROL">
+            <element variable="kTAG_LABEL">
+                <item key="en">Control</item>
+            </element>
+            <element variable="kTAG_DEFINITION">
+                <item key="en"><![CDATA[<i>Controls</i> are form elements used to display and modify attributes, this category groups all terms that define a display control.]]></item>
+            </element>
+        </TERM>
+        <NODE class="COntologyMasterVertex">
+            <element variable="kTAG_CATEGORY">
+                <item>Enumerated set</item>
+            </element>
+        </NODE>
+        <EDGE>
+            <element variable="kTAG_PREDICATE">:SUBCLASS-OF</element>
+            <element variable="kTAG_OBJECT">:ONTOLOGY:ENUM</element>
+        </EDGE>
+    </UNIT>
+    
+    <!-- INPUT CONTROL ENUMERATIONS -->
+    
+    <!-- kINPUT_TEXT -->
+    <UNIT>
+        <TERM NS="" LID="INPUT-TEXT">
+            <element variable="kTAG_KIND">
+                <item>:KIND-ENUMERATION</item>
+            </element>
+            <element variable="kTAG_LABEL">
+                <item key="en">Text field</item>
+            </element>
+            <element variable="kTAG_DEFINITION">
+                <item key="en"><![CDATA[<i>Text field control</i> allowing input on <i>one line</i> excluding return characters.]]></item>
+            </element>
+            <element variable="kTAG_SYNONYMS">
+                <item>kINPUT_TEXT</item>
+                <item>INPUT-TEXT</item>
+            </element>
+        </TERM>
+        <NODE class="COntologyMasterVertex">
+        	<element variable="kTAG_CATEGORY">
+        		<item>Display</item>
+        	</element>
+            <element variable="kTAG_KIND">
+                <item>:KIND-ENUMERATION</item>
+            </element>
+        </NODE>
+        <EDGE>
+            <element variable="kTAG_PREDICATE">:SUBCLASS-OF</element>
+            <element variable="kTAG_OBJECT">:ONTOLOGY:ENUM:CONTROL</element>
+        </EDGE>
+    </UNIT>
+    
+    <!-- kINPUT_TEXTAREA -->
+    <UNIT>
+        <TERM NS="" LID="INPUT-TEXTAREA">
+            <element variable="kTAG_KIND">
+                <item>:KIND-ENUMERATION</item>
+            </element>
+            <element variable="kTAG_LABEL">
+                <item key="en">Text area</item>
+            </element>
+            <element variable="kTAG_DEFINITION">
+                <item key="en"><![CDATA[<i>Text area control</i> allowing input on <i>several lines</i> including return characters.]]></item>
+            </element>
+            <element variable="kTAG_SYNONYMS">
+                <item>kINPUT_TEXTAREA</item>
+                <item>INPUT-TEXTAREA</item>
+            </element>
+        </TERM>
+        <NODE class="COntologyMasterVertex">
+        	<element variable="kTAG_CATEGORY">
+        		<item>Display</item>
+        	</element>
+            <element variable="kTAG_KIND">
+                <item>:KIND-ENUMERATION</item>
+            </element>
+        </NODE>
+        <EDGE>
+            <element variable="kTAG_PREDICATE">:SUBCLASS-OF</element>
+            <element variable="kTAG_OBJECT">:ONTOLOGY:ENUM:CONTROL</element>
+        </EDGE>
+    </UNIT>
+    
+    <!-- kINPUT_CHOICE -->
+    <UNIT>
+        <TERM NS="" LID="INPUT-CHOICE">
+            <element variable="kTAG_KIND">
+                <item>:KIND-ENUMERATION</item>
+            </element>
+            <element variable="kTAG_LABEL">
+                <item key="en">Popup menu</item>
+            </element>
+            <element variable="kTAG_DEFINITION">
+                <item key="en"><![CDATA[<i>Single select group</i> allowing the choice of one item among a list of predefined values.]]></item>
+            </element>
+            <element variable="kTAG_SYNONYMS">
+                <item>kINPUT_CHOICE</item>
+                <item>INPUT-CHOICE</item>
+            </element>
+        </TERM>
+        <NODE class="COntologyMasterVertex">
+        	<element variable="kTAG_CATEGORY">
+        		<item>Display</item>
+        	</element>
+            <element variable="kTAG_KIND">
+                <item>:KIND-ENUMERATION</item>
+            </element>
+        </NODE>
+        <EDGE>
+            <element variable="kTAG_PREDICATE">:SUBCLASS-OF</element>
+            <element variable="kTAG_OBJECT">:ONTOLOGY:ENUM:CONTROL</element>
+        </EDGE>
+    </UNIT>
+    
+    <!-- kINPUT_MULTIPLE -->
+    <UNIT>
+        <TERM NS="" LID="INPUT-MULTIPLE">
+            <element variable="kTAG_KIND">
+                <item>:KIND-ENUMERATION</item>
+            </element>
+            <element variable="kTAG_LABEL">
+                <item key="en">Combo box</item>
+            </element>
+            <element variable="kTAG_DEFINITION">
+                <item key="en"><![CDATA[<i>Multiple select group</i> allowing the choice of one or more items among a list of predefined values.]]></item>
+            </element>
+            <element variable="kTAG_SYNONYMS">
+                <item>kINPUT_MULTIPLE</item>
+                <item>INPUT-MULTIPLE</item>
+            </element>
+        </TERM>
+        <NODE class="COntologyMasterVertex">
+        	<element variable="kTAG_CATEGORY">
+        		<item>Display</item>
+        	</element>
+            <element variable="kTAG_KIND">
+                <item>:KIND-ENUMERATION</item>
+            </element>
+        </NODE>
+        <EDGE>
+            <element variable="kTAG_PREDICATE">:SUBCLASS-OF</element>
+            <element variable="kTAG_OBJECT">:ONTOLOGY:ENUM:CONTROL</element>
+        </EDGE>
+    </UNIT>
+    
+    <!-- kINPUT_RADIO -->
+    <UNIT>
+        <TERM NS="" LID="INPUT-RADIO">
+            <element variable="kTAG_KIND">
+                <item>:KIND-ENUMERATION</item>
+            </element>
+            <element variable="kTAG_LABEL">
+                <item key="en">Radio group</item>
+            </element>
+            <element variable="kTAG_DEFINITION">
+                <item key="en"><![CDATA[<i>Radio control group</i> of two controls which allows one of the two to be on. By default this control must return the value of one of the two radios.]]></item>
+            </element>
+            <element variable="kTAG_SYNONYMS">
+                <item>kINPUT_RADIO</item>
+                <item>INPUT-RADIO</item>
+            </element>
+        </TERM>
+        <NODE class="COntologyMasterVertex">
+        	<element variable="kTAG_CATEGORY">
+        		<item>Display</item>
+        	</element>
+            <element variable="kTAG_KIND">
+                <item>:KIND-ENUMERATION</item>
+            </element>
+        </NODE>
+        <EDGE>
+            <element variable="kTAG_PREDICATE">:SUBCLASS-OF</element>
+            <element variable="kTAG_OBJECT">:ONTOLOGY:ENUM:CONTROL</element>
+        </EDGE>
+    </UNIT>
+    
+    <!-- kINPUT_CHECKBOX -->
+    <UNIT>
+        <TERM NS="" LID="INPUT-CHECKBOX">
+            <element variable="kTAG_KIND">
+                <item>:KIND-ENUMERATION</item>
+            </element>
+            <element variable="kTAG_LABEL">
+                <item key="en">Checkbox control</item>
+            </element>
+            <element variable="kTAG_DEFINITION">
+                <item key="en"><![CDATA[<i>Single checkbox control</i> which can be either selected or not. By default this control must either return a value or not.]]></item>
+            </element>
+            <element variable="kTAG_SYNONYMS">
+                <item>kINPUT_CHECKBOX</item>
+                <item>INPUT-CHECKBOX</item>
+            </element>
+        </TERM>
+        <NODE class="COntologyMasterVertex">
+        	<element variable="kTAG_CATEGORY">
+        		<item>Display</item>
+        	</element>
+            <element variable="kTAG_KIND">
+                <item>:KIND-ENUMERATION</item>
+            </element>
+        </NODE>
+        <EDGE>
+            <element variable="kTAG_PREDICATE">:SUBCLASS-OF</element>
+            <element variable="kTAG_OBJECT">:ONTOLOGY:ENUM:CONTROL</element>
+        </EDGE>
+    </UNIT>
+</ONTOLOGY>

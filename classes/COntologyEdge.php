@@ -670,9 +670,14 @@ class COntologyEdge extends CEdge
 	 * <h4>Return the object's global unique identifier</h4>
 	 *
 	 * We override the parent method to handle the referenced objects: in this class the
-	 * global identifier is the concatenation of the subject native identifier, the
-	 * predicate global identifier and the object native identifier all separated by the
-	 * {@link kTOKEN_INDEX_SEPARATOR} token.
+	 * global identifier is the concatenation of the subject node native identifier, the
+	 * predicate global identifier and the object node native identifier all separated by
+	 * the {@link kTOKEN_INDEX_SEPARATOR} token.
+	 *
+	 * This method will also automatically fill the persistent path, {@link kTAG_PATH},
+	 * and identifier, {@link kTAG_PID}, in which the vertex node identifiers are replaced
+	 * by their related term global identifiers. These attributes are useful for debugging
+	 * purposes and to provide a persistent identifier to the edge.
 	 *
 	 * @param CConnection			$theConnection		Server, database or container.
 	 * @param bitfield				$theModifiers		Commit options.
@@ -688,21 +693,41 @@ class COntologyEdge extends CEdge
 	 * @uses LoadPredicate()
 	 * @uses LoadObject()
 	 *
-	 * @see kTAG_NID kTAG_GID kTOKEN_INDEX_SEPARATOR
+	 * @see kTAG_NID kTAG_GID kTAG_PID kTAG_PATH kTOKEN_INDEX_SEPARATOR
 	 */
 	protected function _index( CConnection $theConnection, $theModifiers )
 	{
 		//
 		// Init global identifier.
 		//
-		$identifier = Array();
+		$identifier = $persistent = $debug = Array();
 		
 		//
 		// Get subject.
 		//
-		$tmp = $this->LoadSubject( $theConnection );
-		if( $tmp !== NULL )
+		if( ($tmp = $this->LoadSubject( $theConnection )) !== NULL )
+		{
+			//
+			// Load debug.
+			//
+			$debug[] = ( $tmp->offsetExists( kTAG_GID ) )
+					 ? $tmp->offsetGet( kTAG_GID )
+					 : OntologyTerm::Resolve(
+						   $theConnection, $tmp->Term(), NULL, TRUE )
+							   ->GID();
+
+			//
+			// Load persistent.
+			//
+			$persistent[] = $tmp[ kTAG_TERM ];
+
+			//
+			// Load identifier.
+			//
 			$identifier[] = (string) $tmp[ kTAG_NID ];
+		
+		} // Has subject.
+		
 		else
 			throw new Exception
 				( "Missing subject vertex",
@@ -711,9 +736,25 @@ class COntologyEdge extends CEdge
 		//
 		// Get predicate.
 		//
-		$tmp = $this->LoadPredicate( $theConnection );
-		if( $tmp !== NULL )
+		if( ($tmp = $this->LoadPredicate( $theConnection )) !== NULL )
+		{
+			//
+			// Load debug.
+			//
+			$debug[] = $tmp[ kTAG_GID ];
+
+			//
+			// Load persistent.
+			//
+			$persistent[] = $tmp[ kTAG_NID ];
+		
+			//
+			// Load identifier.
+			//
 			$identifier[] = $tmp[ kTAG_GID ];
+		
+		} // Has predicate.
+		
 		else
 			throw new Exception
 				( "Missing predicate",
@@ -722,13 +763,39 @@ class COntologyEdge extends CEdge
 		//
 		// Get object.
 		//
-		$tmp = $this->LoadObject( $theConnection );
-		if( $tmp !== NULL )
+		if( ($tmp = $this->LoadObject( $theConnection )) !== NULL )
+		{
+			//
+			// Load debug.
+			//
+			$debug[] = ( $tmp->offsetExists( kTAG_GID ) )
+					 ? $tmp->offsetGet( kTAG_GID )
+					 : OntologyTerm::Resolve(
+						   $theConnection, $tmp->Term(), NULL, TRUE )
+							   ->GID();
+
+			//
+			// Load persistent.
+			//
+			$persistent[] = $tmp[ kTAG_TERM ];
+
+			//
+			// Load identifier.
+			//
 			$identifier[] = (string) $tmp[ kTAG_NID ];
+		
+		} // Has subject.
+		
 		else
 			throw new Exception
 				( "Missing object vertex",
 				  kERROR_STATE );												// !@! ==>
+		
+		//
+		// Set object persistent identifiers.
+		//
+		$this->offsetSet( kTAG_PATH, $persistent );
+		$this->offsetSet( kTAG_PID, implode( kTOKEN_INDEX_SEPARATOR, $debug ) );
 		
 		return implode( kTOKEN_INDEX_SEPARATOR, $identifier );						// ==>
 	
@@ -1366,6 +1433,30 @@ class COntologyEdge extends CEdge
 					$this->offsetGet( kTAG_OBJECT ),
 					kTAG_EDGES,
 					1 );
+				
+				//
+				// Handle alias subject.
+				//
+				if( ($id = $this->mSubject->offsetGet( kTAG_NODE )) !== NULL )
+				{
+					//
+					// Resolve master.
+					//
+					$master = COntologyMasterNode::NewObject( $theConnection, $id, TRUE );
+					
+					//
+					// Resolve object.
+					//
+					$object = ( ($id = $this->mObject->offsetGet( kTAG_NODE )) !== NULL )
+							? $id
+							: $this->mObject;
+					
+					//
+					// Mirror relationship.
+					//
+					$master->RelateTo( $this->mPredicate, $object, $theConnection );
+				
+				} // Subject is alias.
 				
 			} // Not yet committed.
 		

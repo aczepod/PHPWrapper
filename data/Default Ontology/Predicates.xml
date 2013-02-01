@@ -1,0 +1,200 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ONTOLOGY
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:noNamespaceSchemaLocation="file:/Library/WebServer/Library/PHPWrapper/defines/Ontology.xsd">
+        
+    <!-- Predicates -->
+    
+    <!-- kPREDICATE_SUBCLASS_OF -->
+    <UNIT>
+        <NODE class="COntologyMasterVertex" term=":SUBCLASS-OF">
+        	<element variable="kTAG_CATEGORY">
+        		<item>Predicate</item>
+        	</element>
+            <element variable="kTAG_KIND">
+                <item>:KIND-PREDICATE</item>
+            </element>
+        </NODE>
+        <EDGE>
+            <element variable="kTAG_PREDICATE">:SUBCLASS-OF</element>
+            <element variable="kTAG_OBJECT">:ONTOLOGY:PREDICATE</element>
+        </EDGE>
+    </UNIT>
+        
+        
+    <!-- kPREDICATE_SUBSET_OF -->
+    <UNIT>
+        <NODE class="COntologyMasterVertex" term=":SUBSET-OF">
+        	<element variable="kTAG_CATEGORY">
+        		<item>Predicate</item>
+        	</element>
+            <element variable="kTAG_KIND">
+                <item>:KIND-PREDICATE</item>
+            </element>
+        </NODE>
+        <EDGE>
+            <element variable="kTAG_PREDICATE">:SUBCLASS-OF</element>
+            <element variable="kTAG_OBJECT">:ONTOLOGY:PREDICATE</element>
+        </EDGE>
+    </UNIT>
+    
+    <!-- kPREDICATE_PART_OF -->
+    <UNIT>
+        <NODE class="COntologyMasterVertex" term=":PART-OF">
+        	<element variable="kTAG_CATEGORY">
+        		<item>Predicate</item>
+        	</element>
+            <element variable="kTAG_KIND">
+                <item>:KIND-PREDICATE</item>
+            </element>
+        </NODE>
+        <EDGE>
+            <element variable="kTAG_PREDICATE">:SUBCLASS-OF</element>
+            <element variable="kTAG_OBJECT">:ONTOLOGY:PREDICATE</element>
+        </EDGE>
+    </UNIT>
+        
+    <!-- kPREDICATE_ATTRIBUTE_OF -->
+    <UNIT>
+        <NODE class="COntologyMasterVertex" term=":ATTRIBUTE-OF">
+        	<element variable="kTAG_CATEGORY">
+        		<item>Predicate</item>
+        	</element>
+            <element variable="kTAG_KIND">
+                <item>:KIND-PREDICATE</item>
+            </element>
+        </NODE>
+        <EDGE>
+            <element variable="kTAG_PREDICATE">:SUBCLASS-OF</element>
+            <element variable="kTAG_OBJECT">:ONTOLOGY:PREDICATE</element>
+        </EDGE>
+    </UNIT>
+    
+    <!-- kPREDICATE_METHOD_OF -->
+    <UNIT>
+        <NODE class="COntologyMasterVertex" term=":METHOD-OF">
+        	<element variable="kTAG_CATEGORY">
+        		<item>Predicate</item>
+        	</element>
+            <element variable="kTAG_KIND">
+                <item>:KIND-PREDICATE</item>
+            </element>
+        </NODE>
+        <EDGE>
+            <element variable="kTAG_PREDICATE">:SUBCLASS-OF</element>
+            <element variable="kTAG_OBJECT">:ONTOLOGY:PREDICATE</element>
+        </EDGE>
+    </UNIT>
+    
+    <!-- kPREDICATE_SCALE_OF -->
+    <UNIT>
+        <NODE class="COntologyMasterVertex" term=":SCALE-OF">
+        	<element variable="kTAG_CATEGORY">
+        		<item>Predicate</item>
+        	</element>
+            <element variable="kTAG_KIND">
+                <item>:KIND-PREDICATE</item>
+            </element>
+        </NODE>
+        <EDGE>
+            <element variable="kTAG_PREDICATE">:SUBCLASS-OF</element>
+            <element variable="kTAG_OBJECT">:ONTOLOGY:PREDICATE</element>
+        </EDGE>
+    </UNIT>
+    
+    <!-- kPREDICATE_ENUM_OF -->
+    <UNIT>
+        <NODE class="COntologyMasterVertex" term=":ENUM-OF">
+        	<element variable="kTAG_CATEGORY">
+        		<item>Predicate</item>
+        	</element>
+            <element variable="kTAG_KIND">
+                <item>:KIND-PREDICATE</item>
+            </element>
+        </NODE>
+        <EDGE>
+            <element variable="kTAG_PREDICATE">:SUBCLASS-OF</element>
+            <element variable="kTAG_OBJECT">:ONTOLOGY:PREDICATE</element>
+        </EDGE>
+    </UNIT>
+    
+    <!-- kPREDICATE_PREFERRED -->
+    <UNIT>
+        <NODE class="COntologyMasterVertex" term=":PREFERRED">
+        	<element variable="kTAG_CATEGORY">
+        		<item>Predicate</item>
+        	</element>
+            <element variable="kTAG_KIND">
+                <item>:KIND-PREDICATE</item>
+            </element>
+        </NODE>
+        <EDGE>
+            <element variable="kTAG_PREDICATE">:SUBCLASS-OF</element>
+            <element variable="kTAG_OBJECT">:ONTOLOGY:PREDICATE</element>
+        </EDGE>
+    </UNIT>
+    
+    <!-- kPREDICATE_VALID -->
+    <UNIT>
+        <NODE class="COntologyMasterVertex" term=":VALID">
+        	<element variable="kTAG_CATEGORY">
+        		<item>Predicate</item>
+        	</element>
+            <element variable="kTAG_KIND">
+                <item>:KIND-PREDICATE</item>
+            </element>
+        </NODE>
+        <EDGE>
+            <element variable="kTAG_PREDICATE">:SUBCLASS-OF</element>
+            <element variable="kTAG_OBJECT">:ONTOLOGY:PREDICATE</element>
+        </EDGE>
+    </UNIT>
+    
+    <!-- kPREDICATE_LEGACY -->
+    <UNIT>
+        <NODE class="COntologyMasterVertex" term=":LEGACY">
+        	<element variable="kTAG_CATEGORY">
+        		<item>Predicate</item>
+        	</element>
+            <element variable="kTAG_KIND">
+                <item>:KIND-PREDICATE</item>
+            </element>
+        </NODE>
+        <EDGE>
+            <element variable="kTAG_PREDICATE">:SUBCLASS-OF</element>
+            <element variable="kTAG_OBJECT">:ONTOLOGY:PREDICATE</element>
+        </EDGE>
+    </UNIT>
+    
+    <!-- kPREDICATE_XREF -->
+    <UNIT>
+        <NODE class="COntologyMasterVertex" term=":XREF">
+        	<element variable="kTAG_CATEGORY">
+        		<item>Predicate</item>
+        	</element>
+            <element variable="kTAG_KIND">
+                <item>:KIND-PREDICATE</item>
+            </element>
+        </NODE>
+        <EDGE>
+            <element variable="kTAG_PREDICATE">:SUBCLASS-OF</element>
+            <element variable="kTAG_OBJECT">:ONTOLOGY:PREDICATE</element>
+        </EDGE>
+    </UNIT>
+    
+    <!-- kPREDICATE_XREF_EXACT -->
+    <UNIT>
+        <NODE class="COntologyMasterVertex" term=":XREF-EXACT">
+        	<element variable="kTAG_CATEGORY">
+        		<item>Predicate</item>
+        	</element>
+            <element variable="kTAG_KIND">
+                <item>:KIND-PREDICATE</item>
+            </element>
+        </NODE>
+        <EDGE>
+            <element variable="kTAG_PREDICATE">:SUBCLASS-OF</element>
+            <element variable="kTAG_OBJECT">:ONTOLOGY:PREDICATE</element>
+        </EDGE>
+    </UNIT>
+ </ONTOLOGY>

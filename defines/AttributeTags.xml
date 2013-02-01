@@ -39,6 +39,17 @@
     	</element>
     </tag>
      
+    <!-- kTERM_PID -->
+	<tag>
+    	<element variable="kTAG_PATH">
+    		<item>:PID</item>
+    	</element>
+    	<element variable="kTAG_TYPE">
+    		<item>:TEXT</item>
+    		<item>:COMPUTED</item>
+    	</element>
+    </tag>
+     
     <!-- kTERM_SYNONYMS -->
 	<tag>
     	<element variable="kTAG_PATH">

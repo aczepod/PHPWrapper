@@ -54,6 +54,20 @@
         </element>
     </term>
     
+    <!-- kTERM_PID -->
+    <term lid="PID" ns="">
+        <element variable="kTAG_LABEL" key="en">Persistent identifier</element>
+        <element variable="kTAG_DEFINITION" key="en"><![CDATA[The <i>persistent identifier</i> is an attribute
+        	that provides a <i>unique identifier</i> which is <i>persistent across different
+        	implementations</i>. It is needed when an object does not have a global
+        	identifier and its native identifier is not persistent.
+        	]]>
+        </element>
+        <element variable="kTAG_SYNONYMS">
+            <item>kTERM_PID</item>
+        </element>
+    </term>
+    
     <!-- kTERM_SYNONYMS -->
     <term lid="SYNONYMS" ns="">
         <element variable="kTAG_LABEL" key="en">Synonyms</element>

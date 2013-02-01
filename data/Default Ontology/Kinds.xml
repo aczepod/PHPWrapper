@@ -1,0 +1,306 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ONTOLOGY
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:noNamespaceSchemaLocation="file:/Library/WebServer/Library/PHPWrapper/defines/Ontology.xsd">
+        
+    <!-- Kind -->
+    
+    <UNIT>
+        <TERM NS=":ONTOLOGY:ENUM" LID="KIND">
+            <element variable="kTAG_LABEL">
+                <item key="en">Kind</item>
+            </element>
+            <element variable="kTAG_DEFINITION">
+                <item key="en"><![CDATA[<i>Kinds</i> are a set of <i>qualifiers</i> which define the <i>type of an object in the context of its class</i>.]]></item>
+            </element>
+        </TERM>
+        <NODE class="COntologyMasterVertex">
+            <element variable="kTAG_CATEGORY">
+                <item>Enumerated set</item>
+            </element>
+        </NODE>
+        <EDGE>
+            <element variable="kTAG_PREDICATE">:SUBCLASS-OF</element>
+            <element variable="kTAG_OBJECT">:ONTOLOGY:ENUM</element>
+        </EDGE>
+    </UNIT>
+    
+    <!-- kKIND_ROOT -->
+    <UNIT>
+        <TERM NS="" LID="KIND-ROOT">
+            <element variable="kTAG_KIND">
+                <item>:KIND-ENUMERATION</item>
+            </element>
+            <element variable="kTAG_LABEL">
+                <item key="en">Root</item>
+            </element>
+            <element variable="kTAG_DEFINITION">
+                <item key="en"><![CDATA[<i>An entry point of an ontology</i>. This kind represents a door or entry point of an ontology. It can be either the node from which the whole graph or tree originates from, or a node that represents a specific thematic entry point. In general, such objects will be used as elements of an index to an ontology.]]></item>
+            </element>
+            <element variable="kTAG_SYNONYMS">
+                <item>kKIND_ROOT</item>
+                <item>KIND-ROOT</item>
+            </element>
+        </TERM>
+        <NODE class="COntologyMasterVertex">
+        	<element variable="kTAG_CATEGORY">
+        		<item>Kind</item>
+        	</element>
+            <element variable="kTAG_KIND">
+                <item>:KIND-ENUMERATION</item>
+            </element>
+        </NODE>
+        <EDGE>
+            <element variable="kTAG_PREDICATE">:SUBCLASS-OF</element>
+            <element variable="kTAG_OBJECT">:ONTOLOGY:ENUM:KIND</element>
+        </EDGE>
+    </UNIT>
+    
+    <!-- kKIND_FEATURE -->
+    <UNIT>
+        <TERM NS="" LID="KIND-FEATURE">
+            <element variable="kTAG_KIND">
+                <item>:KIND-ENUMERATION</item>
+            </element>
+            <element variable="kTAG_LABEL">
+                <item key="en">Feature</item>
+            </element>
+            <element variable="kTAG_DEFINITION">
+                <item key="en"><![CDATA[<i>A feature or attribute of an object that can be described or measured</i>. This kind defines a feature, property or attribute of an object that can be described or measured. This kind of node will generally be found as a <i>leaf of the structure</i> describing an object. Plant height is a plant characteristic that belongs to the category of morphological traits: the latter is not a feature, while plant height is.]]></item>
+            </element>
+            <element variable="kTAG_SYNONYMS">
+                <item>kKIND_FEATURE</item>
+                <item>KIND-FEATURE</item>
+            </element>
+        </TERM>
+        <NODE class="COntologyMasterVertex">
+        	<element variable="kTAG_CATEGORY">
+        		<item>Kind</item>
+        	</element>
+            <element variable="kTAG_KIND">
+                <item>:KIND-ENUMERATION</item>
+            </element>
+        </NODE>
+        <EDGE>
+            <element variable="kTAG_PREDICATE">:SUBCLASS-OF</element>
+            <element variable="kTAG_OBJECT">:ONTOLOGY:ENUM:KIND</element>
+        </EDGE>
+    </UNIT>
+    
+    <!-- kKIND_METHOD -->
+    <UNIT>
+        <TERM NS="" LID="KIND-METHOD">
+            <element variable="kTAG_KIND">
+                <item>:KIND-ENUMERATION</item>
+            </element>
+            <element variable="kTAG_LABEL">
+                <item key="en">Method</item>
+            </element>
+            <element variable="kTAG_DEFINITION">
+                <item key="en"><![CDATA[<i>A method or variation of an object's feature measurement</i>. This kind of node is required whenever an object's feature can be <i>measured in different ways</i> or with <i>different workflows</i>, <i>without becoming a different feature</i>. Plant height is an attribute of a plant which can be measured after a month or at flowering time; the attribute is the same, but the method is different.]]></item>
+            </element>
+            <element variable="kTAG_SYNONYMS">
+                <item>kKIND_METHOD</item>
+                <item>KIND-METHOD</item>
+            </element>
+        </TERM>
+        <NODE class="COntologyMasterVertex">
+        	<element variable="kTAG_CATEGORY">
+        		<item>Kind</item>
+        	</element>
+            <element variable="kTAG_KIND">
+                <item>:KIND-ENUMERATION</item>
+            </element>
+        </NODE>
+        <EDGE>
+            <element variable="kTAG_PREDICATE">:SUBCLASS-OF</element>
+            <element variable="kTAG_OBJECT">:ONTOLOGY:ENUM:KIND</element>
+        </EDGE>
+    </UNIT>
+    
+    <!-- kKIND_SCALE -->
+    <UNIT>
+        <TERM NS="" LID="KIND-SCALE">
+            <element variable="kTAG_KIND">
+                <item>:KIND-ENUMERATION</item>
+            </element>
+            <element variable="kTAG_LABEL">
+                <item key="en">Scale</item>
+            </element>
+            <element variable="kTAG_DEFINITION">
+                <item key="en"><![CDATA[<i>The scale or unit in which a measurement is expressed in</i>. This kind of node describes in what unit or scale a measurement is expressed in. Plant height may be measured in centimeters or inches, as well as in intervals or finite categories.]]></item>
+            </element>
+            <element variable="kTAG_SYNONYMS">
+                <item>kKIND_SCALE</item>
+                <item>KIND-SCALE</item>
+            </element>
+        </TERM>
+        <NODE class="COntologyMasterVertex">
+        	<element variable="kTAG_CATEGORY">
+        		<item>Kind</item>
+        	</element>
+            <element variable="kTAG_KIND">
+                <item>:KIND-ENUMERATION</item>
+            </element>
+        </NODE>
+        <EDGE>
+            <element variable="kTAG_PREDICATE">:SUBCLASS-OF</element>
+            <element variable="kTAG_OBJECT">:ONTOLOGY:ENUM:KIND</element>
+        </EDGE>
+    </UNIT>
+    
+    <!-- kKIND_ENUMERATION -->
+    <UNIT>
+        <TERM NS="" LID="KIND-ENUMERATION">
+            <element variable="kTAG_KIND">
+                <item>:KIND-ENUMERATION</item>
+            </element>
+            <element variable="kTAG_LABEL">
+                <item key="en">Enumeration</item>
+            </element>
+            <element variable="kTAG_DEFINITION">
+                <item key="en"><![CDATA[<i>An element of a controlled vocabulary</i>. This kind describes a controlled vocabulary element. Objects of this kind derive from scale nodes and represent the valid choices of enumeration and enumerated set scale nodes. An ISO 3166 country code could be considered an enumeration node.]]></item>
+            </element>
+            <element variable="kTAG_SYNONYMS">
+                <item>kKIND_ENUMERATION</item>
+                <item>KIND-ENUMERATION</item>
+            </element>
+        </TERM>
+        <NODE class="COntologyMasterVertex">
+        	<element variable="kTAG_CATEGORY">
+        		<item>Kind</item>
+        	</element>
+            <element variable="kTAG_KIND">
+                <item>:KIND-ENUMERATION</item>
+            </element>
+        </NODE>
+        <EDGE>
+            <element variable="kTAG_PREDICATE">:SUBCLASS-OF</element>
+            <element variable="kTAG_OBJECT">:ONTOLOGY:ENUM:KIND</element>
+        </EDGE>
+    </UNIT>
+    
+    <!-- kKIND_INSTANCE -->
+    <UNIT>
+        <TERM NS="" LID="KIND-INSTANCE">
+            <element variable="kTAG_KIND">
+                <item>:KIND-ENUMERATION</item>
+            </element>
+            <element variable="kTAG_LABEL">
+                <item key="en">Instance</item>
+            </element>
+            <element variable="kTAG_DEFINITION">
+                <item key="en"><![CDATA[<i>A metadata instance</i>. In general, ontology elements represent metadata, in some cases they may represent actual data: an instance is an ontology element that represents <i>the metadata and data of an object</i>. An ISO 3166 country code can be considered an enumeration that constitutes the metadata for the country it represents, but if you store the country data in that element, this may become also an instance, because it represents the object it defines.]]></item>
+            </element>
+            <element variable="kTAG_SYNONYMS">
+                <item>kKIND_INSTANCE</item>
+                <item>KIND-INSTANCE</item>
+            </element>
+        </TERM>
+        <NODE class="COntologyMasterVertex">
+        	<element variable="kTAG_CATEGORY">
+        		<item>Kind</item>
+        	</element>
+            <element variable="kTAG_KIND">
+                <item>:KIND-ENUMERATION</item>
+            </element>
+        </NODE>
+        <EDGE>
+            <element variable="kTAG_PREDICATE">:SUBCLASS-OF</element>
+            <element variable="kTAG_OBJECT">:ONTOLOGY:ENUM:KIND</element>
+        </EDGE>
+    </UNIT>
+    
+    <!-- kKIND_NAMESPACE -->
+    <UNIT>
+        <TERM NS="" LID="KIND-NAMESPACE">
+            <element variable="kTAG_KIND">
+                <item>:KIND-ENUMERATION</item>
+            </element>
+            <element variable="kTAG_LABEL">
+                <item key="en">Namespace</item>
+            </element>
+            <element variable="kTAG_DEFINITION">
+                <item key="en"><![CDATA[This kind of represents a <i>namespace</i>, <i>semantic group</i> or <i>identifiers space</i>. Objects of this kind will generally be <i>used to group identifiers</i>.]]></item>
+            </element>
+            <element variable="kTAG_SYNONYMS">
+                <item>kKIND_NAMESPACE</item>
+                <item>KIND-NAMESPACE</item>
+            </element>
+        </TERM>
+        <NODE class="COntologyMasterVertex">
+        	<element variable="kTAG_CATEGORY">
+        		<item>Kind</item>
+        	</element>
+            <element variable="kTAG_KIND">
+                <item>:KIND-ENUMERATION</item>
+            </element>
+        </NODE>
+        <EDGE>
+            <element variable="kTAG_PREDICATE">:SUBCLASS-OF</element>
+            <element variable="kTAG_OBJECT">:ONTOLOGY:ENUM:KIND</element>
+        </EDGE>
+    </UNIT>
+    
+    <!-- kKIND_PREDICATE -->
+    <UNIT>
+        <TERM NS="" LID="KIND-PREDICATE">
+            <element variable="kTAG_KIND">
+                <item>:KIND-ENUMERATION</item>
+            </element>
+            <element variable="kTAG_LABEL">
+                <item key="en">Predicate</item>
+            </element>
+            <element variable="kTAG_DEFINITION">
+                <item key="en"><![CDATA[This kind represents a <i>predicate</i>, or element which connects subject and object vertices into a relationship.]]></item>
+            </element>
+            <element variable="kTAG_SYNONYMS">
+                <item>kKIND_PREDICATE</item>
+                <item>KIND-PREDICATE</item>
+            </element>
+        </TERM>
+        <NODE class="COntologyMasterVertex">
+        	<element variable="kTAG_CATEGORY">
+        		<item>Kind</item>
+        	</element>
+            <element variable="kTAG_KIND">
+                <item>:KIND-ENUMERATION</item>
+            </element>
+        </NODE>
+        <EDGE>
+            <element variable="kTAG_PREDICATE">:SUBCLASS-OF</element>
+            <element variable="kTAG_OBJECT">:ONTOLOGY:ENUM:KIND</element>
+        </EDGE>
+    </UNIT>
+    
+    <!-- kKIND_SYMMETRIC -->
+    <UNIT>
+        <TERM NS="" LID="KIND-SYMMETRIC">
+            <element variable="kTAG_KIND">
+                <item>:KIND-ENUMERATION</item>
+            </element>
+            <element variable="kTAG_LABEL">
+                <item key="en">Symmetric predicate</item>
+            </element>
+            <element variable="kTAG_DEFINITION">
+                <item key="en"><![CDATA[This kind of term represents a <i>predicate which relates two terms in both directions</i>. By default, relationships are directional, that is, they originate from the subject and flow towards the object, but not in the opposite direction: this kind of predicate, instead, does not have the concept of direction, the <i>relationship flows in both directions</i>.]]></item>
+            </element>
+            <element variable="kTAG_SYNONYMS">
+                <item>kKIND_SYMMETRIC</item>
+                <item>KIND-SYMMETRIC</item>
+            </element>
+        </TERM>
+        <NODE class="COntologyMasterVertex">
+        	<element variable="kTAG_CATEGORY">
+        		<item>Kind</item>
+        	</element>
+            <element variable="kTAG_KIND">
+                <item>:KIND-ENUMERATION</item>
+            </element>
+        </NODE>
+        <EDGE>
+            <element variable="kTAG_PREDICATE">:ENUM-OF</element>
+            <element variable="kTAG_OBJECT">:KIND-PREDICATE</element>
+        </EDGE>
+    </UNIT>
+</ONTOLOGY>

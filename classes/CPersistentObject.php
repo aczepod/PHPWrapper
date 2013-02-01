@@ -111,7 +111,7 @@ class CPersistentObject extends CPersistentDocument
 		//
 		// Yes, I know...
 		//
-		return NULL;																// ==>
+		return 'global identifier unresolved';										// ==>
 	
 	} // __toString.
 
@@ -253,17 +253,22 @@ class CPersistentObject extends CPersistentDocument
 	 *		{@link DefaultContainer()}.
 	 *	<li><tt>$theIdentifier</tt>: The key of the object in the container, by default the
 	 *		{@link kTAG_NID} offset.
+	 *	<li><tt>$doThrow</tt>: If <tt>TRUE</tt>, any failure to resolve the object will
+	 *		raise an exception.
 	 * </ul>
 	 *
 	 * If the object could not be located, the method will return <tt>NULL</tt>.
 	 *
 	 * @param CConnection			$theConnection		Server, database or container.
 	 * @param mixed					$theIdentifier		Identifier.
+	 * @param boolean				$doThrow			If <tt>TRUE</tt> raise an exception.
 	 *
 	 * @static
 	 * @return mixed				The retrieved object.
 	 */
-	static function NewObject( CConnection $theConnection, $theIdentifier )
+	static function NewObject( CConnection $theConnection,
+										   $theIdentifier,
+										   $doThrow = FALSE )
 	{
 		//
 		// Init local storage.
@@ -309,6 +314,14 @@ class CPersistentObject extends CPersistentDocument
 			return $object;															// ==>
 		
 		} // Located.
+		
+		//
+		// Raise exception.
+		//
+		if( $doThrow )
+			throw new Exception
+				( "Object not found",
+				  kERROR_NOT_FOUND );											// !@! ==>
 		
 		return NULL;																// ==>
 	

@@ -851,22 +851,6 @@
         </element>
 	</term>
     
-    <!-- kTYPE_REF_SELF -->
-    <term lid="REF-SELF" ns="">
-        <element variable="kTAG_KIND">
-            <item>:KIND-ENUMERATION</item>
-        </element>
-        <element variable="kTAG_LABEL" key="en">Self reference</element>
-        <element variable="kTAG_DEFINITION" key="en"><![CDATA[This type represents the <i>reference
-        	to object of the same type</i>, it is used by an <i>alias to its master</i>. By
-        	definition it will have the <i>same data type as the object that hosts it</i>.
-            ]]>
-        </element>
-        <element variable="kTAG_SYNONYMS">
-            <item>kTYPE_REF_SELF</item>
-        </element>
-	</term>
-    
     <!-- STANDARD FORMAT TYPE ENUMERATIONS -->
     
     <!-- kTYPE_META -->

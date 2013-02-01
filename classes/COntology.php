@@ -488,6 +488,1433 @@ class COntology extends CConnection
 
 /*=======================================================================================
  *																						*
+ *							PUBLIC ONTOLOGY PARSING INTERFACE							*
+ *																						*
+ *======================================================================================*/
+
+
+	 
+	/*===================================================================================
+	 *	LoadXMLOntologyFile																*
+	 *==================================================================================*/
+
+	/**
+	 * <h4>Load the provided XML ontology file</h4>
+	 *
+	 * This method will parse and load the provided XML file loading the container terms,
+	 * nodes, edges and tags.
+	 *
+	 * The expected XML structure can be consulted in the {@link Ontology.xsd} schema.
+	 *
+	 * The file path parameter may be either a string or a list of strings.
+	 *
+	 * @param mixed					$theFilePath		Path to the XML file(s).
+	 *
+	 * @access public
+	 *
+	 * @throws Exception
+	 */
+	public function LoadXMLOntologyFile( $theFilePath )
+	{
+		//
+		// Get database.
+		//
+		$db = $this->GetDatabase();
+		if( ! ($db instanceof CDatabase) )
+			throw new Exception
+				( "Unable to retrieve database connection",
+				  kERROR_STATE );												// !@! ==>
+		
+		//
+		// Normalise single file.
+		//
+		if( ! is_array( $theFilePath ) )
+			$theFilePath = array( $theFilePath );
+		
+		//
+		// Cycle files.
+		//
+		foreach( $theFilePath as $file )
+		{
+echo( "$file<br>" );
+			//
+			// Load XML file.
+			//
+			$xml = simplexml_load_file( $file );
+			if( $xml instanceof SimpleXMLElement )
+			{
+				//
+				// Check root.
+				//
+				if( $xml->getName() == 'ONTOLOGY' )
+				{
+					//
+					// Iterate units.
+					//
+					foreach( $xml->{'UNIT'} as $unit )
+						$this->LoadXMLOntologyUnit( $db, $unit );
+				
+				} // Ontology root.
+			
+			} // Parsed successfully the file.
+			
+			else
+				throw new Exception
+					( "Unable to parse provided XML file [$file]",
+					  kERROR_PARAMETER );										// !@! ==>
+		
+		} // Iterating files.
+
+	} // LoadXMLOntologyFile.
+
+	 
+	/*===================================================================================
+	 *	LoadXMLOntologyUnit																*
+	 *==================================================================================*/
+
+	/**
+	 * <h4>Load the provided XML unit element</h4>
+	 *
+	 * This method will parse and load the provided XML <tt>UNIT</tt> element.
+	 *
+	 * The expected XML structure can be consulted in the {@link Ontology.xsd} schema.
+	 *
+	 * @param CDatabase				$theDatabase		Database instance.
+	 * @param SimpleXMLElement		$theUnit			XML unit element.
+	 *
+	 * @access public
+	 *
+	 * @throws Exception
+	 */
+	public function LoadXMLOntologyUnit( CDatabase $theDatabase, SimpleXMLElement $theUnit )
+	{
+		//
+		// Init cache.
+		//
+		$cache = Array();
+		
+		//
+		// Start transaction.
+		//
+		
+		//
+		// Iterate terms.
+		//
+		foreach( $theUnit->{'TERM'} as $element )
+			$this->LoadXMLOntologyTerm( $cache, $theDatabase, $element );
+		
+		//
+		// Iterate nodes.
+		//
+		foreach( $theUnit->{'NODE'} as $element )
+			$this->LoadXMLOntologyNode( $cache, $theDatabase, $element );
+		
+		//
+		// Iterate edges.
+		//
+		foreach( $theUnit->{'EDGE'} as $element )
+			$this->LoadXMLOntologyEdge( $cache, $theDatabase, $element );
+		
+		//
+		// Iterate tags.
+		//
+		foreach( $theUnit->{'TAG'} as $element )
+			$this->LoadXMLOntologyTag( $cache, $theDatabase, $element );
+
+		//
+		// Commit transaction.
+		//
+
+	} // LoadXMLOntologyUnit.
+
+	 
+	/*===================================================================================
+	 *	LoadXMLOntologyTerm																*
+	 *==================================================================================*/
+
+	/**
+	 * <h4>Load the provided XML ontology term element</h4>
+	 *
+	 * This method will parse and load the provided ontology XML <tt>TERM</tt> element.
+	 *
+	 * The expected XML structure can be consulted in the {@link Ontology.xsd} schema.
+	 *
+	 * @param Reference			   &$theCache			Unit cache.
+	 * @param CDatabase				$theDatabase		Database instance.
+	 * @param SimpleXMLElement		$theElement			XML term element.
+	 *
+	 * @access public
+	 *
+	 * @throws Exception
+	 */
+	public function LoadXMLOntologyTerm(				 &$theCache,
+										 CDatabase		  $theDatabase,
+										 SimpleXMLElement $theElement )
+	{
+		//
+		// Instantiate term.
+		//
+		$object = new COntologyTerm();
+		
+		//
+		// Handle namespace.
+		//
+		if( $theElement[ 'NS' ] !== NULL )
+			$object->NS(
+				COntologyTerm::Resolve(
+					$theDatabase, (string) $theElement[ 'NS' ], NULL, TRUE ) );
+		
+		//
+		// Handle local identifier.
+		//
+		$object->LID( (string) $theElement[ 'LID' ] );
+		
+		//
+		// Handle other elements.
+		//
+		foreach( $theElement->{'element'} as $element )
+		{
+			//
+			// Handle by tag.
+			//
+			if( $element[ 'tag' ] !== NULL )
+			{
+				//
+				// Parse by tag.
+				//
+				switch( $tag = (string) $element[ 'tag' ] )
+				{
+					case kTAG_NAMESPACE:
+						if( strlen( $data = (string) $element ) )
+							$object->NS(
+								COntologyTerm::Resolve(
+									$theDatabase, (string) $data, NULL, TRUE ) );
+						else
+							throw new Exception
+								( "Unable to set namespace: it cannot be empty",
+								  kERROR_PARAMETER );							// !@! ==>
+						break;
+				
+					case kTAG_LID:
+						if( strlen( $data = (string) $element ) )
+							$object->LID( $data );
+						else
+							throw new Exception
+								( "Unable to set local identifier: it cannot be empty",
+								  kERROR_PARAMETER );							// !@! ==>
+						break;
+				
+					case kTAG_TERM:
+						if( strlen( $data = (string) $element ) )
+							$object->Term(
+								COntologyTerm::Resolve(
+									$theDatabase, (string) $data, NULL, TRUE ) );
+						else
+							throw new Exception
+								( "Unable to set master term reference: it cannot be empty",
+								  kERROR_PARAMETER );							// !@! ==>
+						break;
+				
+					case kTAG_SYNONYMS:
+						foreach( $element->{'item'} as $item )
+						{
+							if( strlen( $data = (string) $item ) )
+								$object->Synonym( $data, TRUE );
+						}
+						break;
+				
+					case kTAG_CATEGORY:
+						foreach( $element->{'item'} as $item )
+						{
+							if( strlen( $data = (string) $item ) )
+								$object->Category( $data, TRUE );
+						}
+						break;
+				
+					case kTAG_KIND:
+						foreach( $element->{'item'} as $item )
+						{
+							if( strlen( $data = (string) $item ) )
+								$object->Kind( $data, TRUE );
+						}
+						break;
+				
+					case kTAG_TYPE:
+						foreach( $element->{'item'} as $item )
+						{
+							if( strlen( $data = (string) $item ) )
+								$object->Type( $data, TRUE );
+						}
+						break;
+				
+					case kTAG_LABEL:
+						if( $element->{'item'}->count() )
+						{
+							foreach( $element->{'item'} as $item )
+							{
+								$key = ( $item[ 'key' ] !== NULL )
+									 ? (string) $item[ 'key' ]
+									 : NULL;
+								if( strlen( $data = (string) $item ) )
+									$object->Label( $key, $data );
+							}
+						}
+						elseif( strlen( $data = (string) $element ) )
+							$object->Label( NULL, $data );
+						break;
+				
+					case kTAG_DEFINITION:
+						if( $element->{'item'}->count() )
+						{
+							foreach( $element->{'item'} as $item )
+							{
+								$key = ( $item[ 'key' ] !== NULL )
+									 ? (string) $item[ 'key' ]
+									 : NULL;
+								if( strlen( $data = (string) $item ) )
+									$object->Definition( $key, $data );
+							}
+						}
+						elseif( strlen( $data = (string) $element ) )
+							$object->Definition( NULL, $data );
+						break;
+					
+					default:
+						if( $element->{'item'}->count() )
+						{
+							$list = Array();
+							foreach( $element->{'item'} as $item )
+							{
+								if( $item[ 'key' ] !== NULL )
+								{
+									if( strlen( $data = (string) $item ) )
+										$list[ (string) $item[ 'key' ] ] = $data;
+								}
+								else
+								{
+									if( strlen( $data = (string) $item ) )
+										$list[] = $data;
+								}
+							}
+							if( count( $list ) )
+								$object->offsetSet( $tag, $list );
+						}
+						elseif( strlen( $data = (string) $element ) )
+							$object->offsetSet( $tag, $data );
+						break;
+				
+				} // Parsing by tag.
+			
+			} // Provided tag.
+			
+			//
+			// Handle by variable.
+			//
+			elseif( $element[ 'variable' ] !== NULL )
+			{
+				//
+				// Parse by tag symbol.
+				//
+				switch( $variable = (string) $element[ 'variable' ] )
+				{
+					case 'kTAG_NAMESPACE':
+						if( strlen( $data = (string) $element ) )
+							$object->NS(
+								COntologyTerm::Resolve(
+									$theDatabase, (string) $data, NULL, TRUE )
+										->NS() );
+						else
+							throw new Exception
+								( "Unable to set namespace: it cannot be empty",
+								  kERROR_PARAMETER );							// !@! ==>
+						break;
+				
+					case 'kTAG_LID':
+						if( strlen( $data = (string) $element ) )
+							$object->LID( $data );
+						else
+							throw new Exception
+								( "Unable to set local identifier: it cannot be empty",
+								  kERROR_PARAMETER );							// !@! ==>
+						break;
+				
+					case 'kTAG_TERM':
+						if( strlen( $data = (string) $element ) )
+							$object->Term(
+								COntologyTerm::Resolve(
+									$theDatabase, (string) $data, NULL, TRUE )
+										->Term() );
+						else
+							throw new Exception
+								( "Unable to set master term reference: it cannot be empty",
+								  kERROR_PARAMETER );							// !@! ==>
+						break;
+				
+					case 'kTAG_SYNONYMS':
+						foreach( $element->{'item'} as $item )
+						{
+							if( strlen( $data = (string) $item ) )
+								$object->Synonym( $data, TRUE );
+						}
+						break;
+				
+					case 'kTAG_CATEGORY':
+						foreach( $element->{'item'} as $item )
+						{
+							if( strlen( $data = (string) $item ) )
+								$object->Category( $data, TRUE );
+						}
+						break;
+				
+					case 'kTAG_KIND':
+						foreach( $element->{'item'} as $item )
+						{
+							if( strlen( $data = (string) $item ) )
+								$object->Kind( $data, TRUE );
+						}
+						break;
+				
+					case 'kTAG_TYPE':
+						foreach( $element->{'item'} as $item )
+						{
+							if( strlen( $data = (string) $item ) )
+								$object->Type( $data, TRUE );
+						}
+						break;
+				
+					case 'kTAG_LABEL':
+						if( $element->{'item'}->count() )
+						{
+							foreach( $element->{'item'} as $item )
+							{
+								$key = ( $item[ 'key' ] !== NULL )
+									 ? (string) $item[ 'key' ]
+									 : NULL;
+								if( strlen( $data = (string) $item ) )
+									$object->Label( $key, $data );
+							}
+						}
+						elseif( strlen( $data = (string) $element ) )
+							$object->Label( NULL, $data );
+						break;
+				
+					case 'kTAG_DEFINITION':
+						if( $element->{'item'}->count() )
+						{
+							foreach( $element->{'item'} as $item )
+							{
+								$key = ( $item[ 'key' ] !== NULL )
+									 ? (string) $item[ 'key' ]
+									 : NULL;
+								if( strlen( $data = (string) $item ) )
+									$object->Definition( $key, $data );
+							}
+						}
+						elseif( strlen( $data = (string) $element ) )
+							$object->Definition( NULL, $data );
+						break;
+					
+					default:
+						throw new Exception
+							( "Unable to set attribute: unknown variable [$variable]",
+							  kERROR_PARAMETER );								// !@! ==>
+				
+				} // Parsing by variable.
+			
+			} // Provided tag.
+		
+		} // Iterating object elements.
+		
+		//
+		// Save term.
+		//
+		$object->Insert( $theDatabase );
+		
+		//
+		// Load cache.
+		//
+		$theCache[ 'term' ][] = $object;
+
+	} // LoadXMLOntologyTerm.
+
+	 
+	/*===================================================================================
+	 *	LoadXMLOntologyNode																*
+	 *==================================================================================*/
+
+	/**
+	 * <h4>Load the provided XML ontology node element</h4>
+	 *
+	 * This method will parse and load the provided ontology XML <tt>NODE</tt> element.
+	 *
+	 * The expected XML structure can be consulted in the {@link Ontology.xsd} schema.
+	 *
+	 * @param Reference			   &$theCache			Unit cache.
+	 * @param CDatabase				$theDatabase		Database instance.
+	 * @param SimpleXMLElement		$theElement			XML node element.
+	 *
+	 * @access public
+	 *
+	 * @throws Exception
+	 */
+	public function LoadXMLOntologyNode(				 &$theCache,
+										 CDatabase		  $theDatabase,
+										 SimpleXMLElement $theElement )
+	{
+		//
+		// Get node class.
+		//
+		$class = ( $theElement[ 'class' ] !== NULL )
+			   ? (string) $theElement[ 'class' ]
+			   : 'COntologyMasterVertex';
+		
+		//
+		// Instantiate node.
+		//
+		$object = new $class();
+		
+		//
+		// Handle term.
+		//
+		if( $theElement[ 'term' ] !== NULL )
+			$object->Term(
+				COntologyTerm::Resolve(
+					$theDatabase, (string) $theElement[ 'term' ], NULL, TRUE ) );
+		
+		//
+		// Handle other elements.
+		//
+		foreach( $theElement->{'element'} as $element )
+		{
+			//
+			// Resolve element PID.
+			//
+			$this->ResolveOntologyNode( $theDatabase, $element );
+			
+			//
+			// Handle by tag.
+			//
+			if( $element[ 'tag' ] !== NULL )
+			{
+				//
+				// Parse by tag.
+				//
+				switch( $tag = (string) $element[ 'tag' ] )
+				{
+					case kTAG_TERM:
+						if( strlen( $data = (string) $element ) )
+							$object->Term(
+								COntologyTerm::Resolve(
+									$theDatabase, (string) $data, NULL, TRUE ) );
+						else
+							throw new Exception
+								( "Unable to set master term reference: it cannot be empty",
+								  kERROR_PARAMETER );							// !@! ==>
+						break;
+				
+					case kTAG_NODE:
+						if( strlen( $data = (string) $element ) )
+							$object->Node(
+								COntologyNode::NewObject(
+									$theDatabase, (int) $data, TRUE ) );
+						else
+							throw new Exception
+								( "Unable to set master node reference: it cannot be empty",
+								  kERROR_PARAMETER );							// !@! ==>
+						break;
+				
+					case kTAG_PID:
+						if( strlen( $data = (string) $element ) )
+							$object->PID( $data );
+						else
+							throw new Exception
+								( "Unable to set persistent identifier: it cannot be empty",
+								  kERROR_PARAMETER );							// !@! ==>
+						break;
+				
+					case kTAG_CATEGORY:
+						foreach( $element->{'item'} as $item )
+						{
+							if( strlen( $data = (string) $item ) )
+								$object->Category( $data, TRUE );
+						}
+						break;
+				
+					case kTAG_KIND:
+						foreach( $element->{'item'} as $item )
+						{
+							if( strlen( $data = (string) $item ) )
+								$object->Kind( $data, TRUE );
+						}
+						break;
+				
+					case kTAG_TYPE:
+						foreach( $element->{'item'} as $item )
+						{
+							if( strlen( $data = (string) $item ) )
+								$object->Type( $data, TRUE );
+						}
+						break;
+				
+					case kTAG_INPUT:
+						foreach( $element->{'item'} as $item )
+						{
+							if( strlen( $data = (string) $item ) )
+								$object->Input( $data, TRUE );
+						}
+						break;
+				
+					case kTAG_PATTERN:
+						if( strlen( $data = (string) $element ) )
+							$object->Pattern( $data );
+						break;
+				
+					case kTAG_LENGTH:
+						if( strlen( $data = (string) $element ) )
+							$object->Length( $data );
+						break;
+				
+					case kTAG_MIN_VAL:
+						if( strlen( $data = (string) $element ) )
+							$object->LowerBound( $data );
+						break;
+				
+					case kTAG_MAX_VAL:
+						if( strlen( $data = (string) $element ) )
+							$object->UpperBound( $data );
+						break;
+				
+					case kTAG_EXAMPLES:
+						foreach( $element->{'item'} as $item )
+						{
+							if( strlen( $data = (string) $item ) )
+								$object->Example( $data, TRUE );
+						}
+						break;
+				
+					case kTAG_DESCRIPTION:
+						if( $element->{'item'}->count() )
+						{
+							foreach( $element->{'item'} as $item )
+							{
+								$key = ( $item[ 'key' ] !== NULL )
+									 ? (string) $item[ 'key' ]
+									 : NULL;
+								if( strlen( $data = (string) $item ) )
+									$object->Description( $key, $data );
+							}
+						}
+						elseif( strlen( $data = (string) $element ) )
+							$object->Description( NULL, $data );
+						break;
+					
+					default:
+						if( $element->{'item'}->count() )
+						{
+							$list = Array();
+							foreach( $element->{'item'} as $item )
+							{
+								if( $item[ 'key' ] !== NULL )
+								{
+									if( strlen( $data = (string) $item ) )
+										$list[ (string) $item[ 'key' ] ] = $data;
+								}
+								else
+								{
+									if( strlen( $data = (string) $item ) )
+										$list[] = $data;
+								}
+							}
+							if( count( $list ) )
+								$object->offsetSet( $tag, $list );
+						}
+						elseif( strlen( $data = (string) $element ) )
+							$object->offsetSet( $tag, $data );
+						break;
+				
+				} // Parsing by tag.
+			
+			} // Provided tag.
+			
+			//
+			// Handle by variable.
+			//
+			elseif( $element[ 'variable' ] !== NULL )
+			{
+				//
+				// Parse by tag symbol.
+				//
+				switch( $variable = (string) $element[ 'variable' ] )
+				{
+					case 'kTAG_TERM':
+						if( strlen( $data = (string) $element ) )
+							$object->Term(
+								COntologyTerm::Resolve(
+									$theDatabase, (string) $data, NULL, TRUE ) );
+						else
+							throw new Exception
+								( "Unable to set master term reference: it cannot be empty",
+								  kERROR_PARAMETER );							// !@! ==>
+						break;
+				
+					case 'kTAG_NODE':
+						if( strlen( $data = (string) $element ) )
+							$object->Node(
+								COntologyNode::NewObject(
+									$theDatabase, (int) $data, TRUE ) );
+						else
+							throw new Exception
+								( "Unable to set master node reference: it cannot be empty",
+								  kERROR_PARAMETER );							// !@! ==>
+						break;
+				
+					case 'kTAG_PID':
+						if( strlen( $data = (string) $element ) )
+							$object->PID( $data );
+						else
+							throw new Exception
+								( "Unable to set persistent identifier: it cannot be empty",
+								  kERROR_PARAMETER );							// !@! ==>
+						break;
+				
+					case 'kTAG_CATEGORY':
+						foreach( $element->{'item'} as $item )
+						{
+							if( strlen( $data = (string) $item ) )
+								$object->Category( $data, TRUE );
+						}
+						break;
+				
+					case 'kTAG_KIND':
+						foreach( $element->{'item'} as $item )
+						{
+							if( strlen( $data = (string) $item ) )
+								$object->Kind( $data, TRUE );
+						}
+						break;
+				
+					case 'kTAG_TYPE':
+						foreach( $element->{'item'} as $item )
+						{
+							if( strlen( $data = (string) $item ) )
+								$object->Type( $data, TRUE );
+						}
+						break;
+				
+					case 'kTAG_INPUT':
+						foreach( $element->{'item'} as $item )
+						{
+							if( strlen( $data = (string) $item ) )
+								$object->Input( $data, TRUE );
+						}
+						break;
+				
+					case 'kTAG_PATTERN':
+						if( strlen( $data = (string) $element ) )
+							$object->Pattern( $data );
+						break;
+				
+					case 'kTAG_LENGTH':
+						if( strlen( $data = (string) $element ) )
+							$object->Length( $data );
+						break;
+				
+					case 'kTAG_MIN_VAL':
+						if( strlen( $data = (string) $element ) )
+							$object->LowerBound( $data );
+						break;
+				
+					case 'kTAG_MAX_VAL':
+						if( strlen( $data = (string) $element ) )
+							$object->UpperBound( $data );
+						break;
+				
+					case 'kTAG_EXAMPLES':
+						foreach( $element->{'item'} as $item )
+						{
+							if( strlen( $data = (string) $item ) )
+								$object->Example( $data, TRUE );
+						}
+						break;
+				
+					case 'kTAG_DESCRIPTION':
+						if( $element->{'item'}->count() )
+						{
+							foreach( $element->{'item'} as $item )
+							{
+								$key = ( $item[ 'key' ] !== NULL )
+									 ? (string) $item[ 'key' ]
+									 : NULL;
+								if( strlen( $data = (string) $item ) )
+									$object->Description( $key, $data );
+							}
+						}
+						elseif( strlen( $data = (string) $element ) )
+							$object->Description( NULL, $data );
+						break;
+					
+					default:
+						throw new Exception
+							( "Unable to set attribute: unknown variable [$variable]",
+							  kERROR_PARAMETER );								// !@! ==>
+				
+				} // Parsing by variable.
+			
+			} // Provided tag.
+		
+		} // Iterating object elements.
+		
+		//
+		// Assume term.
+		//
+		if( $object->Term() === NULL )
+			$object->Term( $theCache[ 'term' ][ 0 ] );
+		
+		//
+		// Save node.
+		//
+		$object->Insert( $theDatabase );
+		
+		//
+		// Load cache.
+		//
+		$theCache[ 'node' ][] = $object;
+
+	} // LoadXMLOntologyNode.
+
+	 
+	/*===================================================================================
+	 *	LoadXMLOntologyEdge																*
+	 *==================================================================================*/
+
+	/**
+	 * <h4>Load the provided XML ontology edge element</h4>
+	 *
+	 * This method will parse and load the provided ontology XML <tt>EDGE</tt> element.
+	 *
+	 * The expected XML structure can be consulted in the {@link Ontology.xsd} schema.
+	 *
+	 * @param Reference			   &$theCache			Unit cache.
+	 * @param CDatabase				$theDatabase		Database instance.
+	 * @param SimpleXMLElement		$theElement			XML edge element.
+	 *
+	 * @access public
+	 *
+	 * @throws Exception
+	 */
+	public function LoadXMLOntologyEdge(				 &$theCache,
+										 CDatabase		  $theDatabase,
+										 SimpleXMLElement $theElement )
+	{
+		//
+		// Instantiate node.
+		//
+		$object = new COntologyEdge();
+		
+		//
+		// Handle other elements.
+		//
+		foreach( $theElement->{'element'} as $element )
+		{
+			//
+			// Resolve element PID.
+			//
+			$this->ResolveOntologyNode( $theDatabase, $element );
+
+			//
+			// Handle by tag.
+			//
+			if( $element[ 'tag' ] !== NULL )
+			{
+				//
+				// Parse by tag.
+				//
+				switch( $tag = (string) $element[ 'tag' ] )
+				{
+					case kTAG_SUBJECT:
+						if( strlen( $data = (string) $element ) )
+						{
+							if( $element[ 'node' ] !== NULL )
+								$object->Subject(
+									COntologyNode::NewObject(
+										$theDatabase, (int) $data, TRUE ) );
+							else
+								$object->Subject(
+									COntologyMasterNode::Resolve(
+										$theDatabase, (string) $data, TRUE ) );
+						}
+						
+						else
+							throw new Exception
+								( "Unable to set subject reference: it cannot be empty",
+								  kERROR_PARAMETER );							// !@! ==>
+						break;
+				
+					case kTAG_PREDICATE:
+						if( strlen( $data = (string) $element ) )
+							$object->Predicate(
+								COntologyTerm::Resolve(
+									$theDatabase, (string) $data, NULL, TRUE ) );
+						else
+							throw new Exception
+								( "Unable to set predicate reference: it cannot be empty",
+								  kERROR_PARAMETER );							// !@! ==>
+						break;
+				
+					case kTAG_OBJECT:
+						if( strlen( $data = (string) $element ) )
+						{
+							if( $element[ 'node' ] !== NULL )
+								$object->Object(
+									COntologyNode::NewObject(
+										$theDatabase, (int) $data, TRUE ) );
+							else
+								$object->Object(
+									COntologyMasterNode::Resolve(
+										$theDatabase, (string) $data, TRUE ) );
+						}
+						
+						else
+							throw new Exception
+								( "Unable to set object reference: it cannot be empty",
+								  kERROR_PARAMETER );							// !@! ==>
+						break;
+					
+					default:
+						if( $element->{'item'}->count() )
+						{
+							$list = Array();
+							foreach( $element->{'item'} as $item )
+							{
+								if( $item[ 'key' ] !== NULL )
+								{
+									if( strlen( $data = (string) $item ) )
+										$list[ (string) $item[ 'key' ] ] = $data;
+								}
+								else
+								{
+									if( strlen( $data = (string) $item ) )
+										$list[] = $data;
+								}
+							}
+							if( count( $list ) )
+								$object->offsetSet( $tag, $list );
+						}
+						elseif( strlen( $data = (string) $element ) )
+							$object->offsetSet( $tag, $data );
+						break;
+				
+				} // Parsing by tag.
+			
+			} // Provided tag.
+			
+			//
+			// Handle by variable.
+			//
+			elseif( $element[ 'variable' ] !== NULL )
+			{
+				//
+				// Parse by tag symbol.
+				//
+				switch( $variable = (string) $element[ 'variable' ] )
+				{
+					case 'kTAG_SUBJECT':
+						if( strlen( $data = (string) $element ) )
+						{
+							if( $element[ 'node' ] !== NULL )
+								$object->Subject(
+									COntologyNode::NewObject(
+										$theDatabase, (int) $data, TRUE ) );
+							else
+								$object->Subject(
+									COntologyMasterNode::Resolve(
+										$theDatabase, (string) $data, TRUE ) );
+						}
+						
+						else
+							throw new Exception
+								( "Unable to set subject reference: it cannot be empty",
+								  kERROR_PARAMETER );							// !@! ==>
+						break;
+				
+					case 'kTAG_PREDICATE':
+						if( strlen( $data = (string) $element ) )
+							$object->Predicate(
+								COntologyTerm::Resolve(
+									$theDatabase, (string) $data, NULL, TRUE ) );
+						else
+							throw new Exception
+								( "Unable to set predicate reference: it cannot be empty",
+								  kERROR_PARAMETER );							// !@! ==>
+						break;
+				
+					case 'kTAG_OBJECT':
+						if( strlen( $data = (string) $element ) )
+						{
+							if( $element[ 'node' ] !== NULL )
+								$object->Object(
+									COntologyNode::NewObject(
+										$theDatabase, (int) $data, TRUE ) );
+							else
+								$object->Object(
+									COntologyMasterNode::Resolve(
+										$theDatabase, (string) $data, TRUE ) );
+						}
+						
+						else
+							throw new Exception
+								( "Unable to set object reference: it cannot be empty",
+								  kERROR_PARAMETER );							// !@! ==>
+						break;
+					
+					default:
+						throw new Exception
+							( "Unable to set attribute: unknown variable [$variable]",
+							  kERROR_PARAMETER );								// !@! ==>
+				
+				} // Parsing by variable.
+			
+			} // Provided tag.
+		
+		} // Iterating object elements.
+		
+		//
+		// Assume subject.
+		//
+		if( $object->Subject() === NULL )
+			$object->Subject( $theCache[ 'node' ][ 0 ] );
+		
+		//
+		// Assume predicate.
+		//
+		if( $object->Predicate() === NULL )
+			$object->Predicate( $theCache[ 'term' ][ 0 ] );
+		
+		//
+		// Assume object.
+		//
+		if( $object->Object() === NULL )
+			$object->Object( $theCache[ 'node' ][ 0 ] );
+		
+		//
+		// Save edge.
+		//
+		$object->Insert( $theDatabase );
+
+	} // LoadXMLOntologyEdge.
+
+	 
+	/*===================================================================================
+	 *	LoadXMLOntologyTag																*
+	 *==================================================================================*/
+
+	/**
+	 * <h4>Load the provided XML ontology tag element</h4>
+	 *
+	 * This method will parse and load the provided ontology XML <tt>TAG</tt> element.
+	 *
+	 * The expected XML structure can be consulted in the {@link Ontology.xsd} schema.
+	 *
+	 * @param Reference			   &$theCache			Unit cache.
+	 * @param CDatabase				$theDatabase		Database instance.
+	 * @param SimpleXMLElement		$theElement			XML tag element.
+	 *
+	 * @access public
+	 *
+	 * @throws Exception
+	 */
+	public function LoadXMLOntologyTag(					&$theCache,
+										CDatabase		 $theDatabase,
+										SimpleXMLElement $theElement )
+	{
+		//
+		// Instantiate term.
+		//
+		$object = new COntologyTag();
+		
+		//
+		// Handle other elements.
+		//
+		foreach( $theElement->{'element'} as $element )
+		{
+			//
+			// Resolve element PID.
+			//
+			$this->ResolveOntologyNode( $theDatabase, $element );
+
+			//
+			// Handle by tag.
+			//
+			if( $element[ 'tag' ] !== NULL )
+			{
+				//
+				// Parse by tag.
+				//
+				switch( $tag = (string) $element[ 'tag' ] )
+				{
+					case kTAG_PATH:
+						foreach( $element->{'item'} as $item )
+						{
+							if( strlen( $data = (string) $item ) )
+							{
+								if( $item[ 'node' ] !== NULL )
+									$object->PushItem(
+										COntologyNode::NewObject(
+											$theDatabase, (int) $data, TRUE ) );
+								else
+									$object->PushItem(
+										COntologyTerm::Resolve(
+											$theDatabase, (string) $data, NULL, TRUE ) );
+							}
+							else
+								throw new Exception
+									( "Unable to set tag path item: it cannot be empty",
+									  kERROR_PARAMETER );						// !@! ==>
+						}
+						break;
+				
+					case kTAG_TYPE:
+						foreach( $element->{'item'} as $item )
+						{
+							if( strlen( $data = (string) $item ) )
+								$object->Type( $data, TRUE );
+						}
+						break;
+				
+					case kTAG_SYNONYMS:
+						foreach( $element->{'item'} as $item )
+						{
+							if( strlen( $data = (string) $item ) )
+								$object->Synonym( $data, TRUE );
+						}
+						break;
+				
+					case kTAG_INPUT:
+						foreach( $element->{'item'} as $item )
+						{
+							if( strlen( $data = (string) $item ) )
+								$object->Input( $data, TRUE );
+						}
+						break;
+				
+					case kTAG_PATTERN:
+						if( strlen( $data = (string) $element ) )
+							$object->Pattern( $data );
+						break;
+				
+					case kTAG_LENGTH:
+						if( strlen( $data = (string) $element ) )
+							$object->Length( $data );
+						break;
+				
+					case kTAG_MIN_VAL:
+						if( strlen( $data = (string) $element ) )
+							$object->LowerBound( $data );
+						break;
+				
+					case kTAG_MAX_VAL:
+						if( strlen( $data = (string) $element ) )
+							$object->UpperBound( $data );
+						break;
+				
+					case kTAG_EXAMPLES:
+						foreach( $element->{'item'} as $item )
+						{
+							if( strlen( $data = (string) $item ) )
+								$object->Example( $data, TRUE );
+						}
+						break;
+					
+					default:
+						if( $element->{'item'}->count() )
+						{
+							$list = Array();
+							foreach( $element->{'item'} as $item )
+							{
+								if( $item[ 'key' ] !== NULL )
+								{
+									if( strlen( $data = (string) $item ) )
+										$list[ (string) $item[ 'key' ] ] = $data;
+								}
+								else
+								{
+									if( strlen( $data = (string) $item ) )
+										$list[] = $data;
+								}
+							}
+							if( count( $list ) )
+								$object->offsetSet( $tag, $list );
+						}
+						elseif( strlen( $data = (string) $element ) )
+							$object->offsetSet( $tag, $data );
+						break;
+				
+				} // Parsing by tag.
+			
+			} // Provided tag.
+			
+			//
+			// Handle by variable.
+			//
+			elseif( $element[ 'variable' ] !== NULL )
+			{
+				//
+				// Parse by tag symbol.
+				//
+				switch( $variable = (string) $element[ 'variable' ] )
+				{
+					case 'kTAG_PATH':
+						foreach( $element->{'item'} as $item )
+						{
+							if( strlen( $data = (string) $item ) )
+							{
+								if( $item[ 'node' ] !== NULL )
+									$object->PushItem(
+										COntologyNode::NewObject(
+											$theDatabase, (int) $data, TRUE ) );
+								else
+									$object->PushItem(
+										COntologyTerm::Resolve(
+											$theDatabase, (string) $data, NULL, TRUE ) );
+							}
+							else
+								throw new Exception
+									( "Unable to set tag path item: it cannot be empty",
+									  kERROR_PARAMETER );						// !@! ==>
+						}
+						break;
+				
+					case 'kTAG_TYPE':
+						foreach( $element->{'item'} as $item )
+						{
+							if( strlen( $data = (string) $item ) )
+								$object->Type( $data, TRUE );
+						}
+						break;
+				
+					case 'kTAG_SYNONYMS':
+						foreach( $element->{'item'} as $item )
+						{
+							if( strlen( $data = (string) $item ) )
+								$object->Synonym( $data, TRUE );
+						}
+						break;
+				
+					case 'kTAG_INPUT':
+						foreach( $element->{'item'} as $item )
+						{
+							if( strlen( $data = (string) $item ) )
+								$object->Input( $data, TRUE );
+						}
+						break;
+				
+					case 'kTAG_PATTERN':
+						if( strlen( $data = (string) $element ) )
+							$object->Pattern( $data );
+						break;
+				
+					case 'kTAG_LENGTH':
+						if( strlen( $data = (string) $element ) )
+							$object->Length( $data );
+						break;
+				
+					case 'kTAG_MIN_VAL':
+						if( strlen( $data = (string) $element ) )
+							$object->LowerBound( $data );
+						break;
+				
+					case 'kTAG_MAX_VAL':
+						if( strlen( $data = (string) $element ) )
+							$object->UpperBound( $data );
+						break;
+				
+					case 'kTAG_EXAMPLES':
+						foreach( $element->{'item'} as $item )
+						{
+							if( strlen( $data = (string) $item ) )
+								$object->Example( $data, TRUE );
+						}
+						break;
+					
+					default:
+						throw new Exception
+							( "Unable to set attribute: unknown variable [$variable]",
+							  kERROR_PARAMETER );								// !@! ==>
+				
+				} // Parsing by variable.
+			
+			} // Provided tag.
+		
+		} // Iterating object elements.
+		
+		//
+		// Save tag.
+		//
+		$object->Insert( $theDatabase );
+		
+		//
+		// Load cache.
+		//
+		$theCache[ 'tag' ][] = $object;
+
+	} // LoadXMLOntologyTag.
+
+	 
+	/*===================================================================================
+	 *	ResolveOntologyNode																*
+	 *==================================================================================*/
+
+	/**
+	 * <h4>Resolve ontology node</h4>
+	 *
+	 * This method will parse all elements and items intercepting <tt>node</tt> attributes,
+	 * depending on the value of that attribute the method will do the following:
+	 *
+	 * <ul>
+	 *	<li><tt>term</tt>: The value of the element is supposed to be a term global
+	 *		identifier, the method will resolve the master node that is related to that
+	 *		term, replace the attribute value with <tt>node</tt> and replace the current
+	 *		element value with the native identifier of the resolved master node.
+	 *	<li><tt>node</tt>: The method will do nothing, assuming the element's value is a
+	 *		node native identifier.
+	 *	<li><tt>pid</tt>: The value of the element is supposed to be a node persistent
+	 *		identifier, the method will resolve the node, replace the attribute value with
+	 *		<tt>node</tt> and replace the current element value with the native identifier
+	 *		of the resolved node.
+	 * </ul>
+	 *
+	 * If any node is not resolved, the method will raise an exception.
+	 *
+	 * @param CDatabase				$theDatabase		Database instance.
+	 * @param SimpleXMLElement		$theElement			XML element.
+	 *
+	 * @access public
+	 *
+	 * @throws Exception
+	 */
+	public function ResolveOntologyNode( CDatabase		  $theDatabase,
+										 SimpleXMLElement $theElement )
+	{
+		//
+		// Check element's node attribute.
+		//
+		if( $theElement[ 'node' ] !== NULL )
+		{
+			//
+			// Parse by reference type.
+			//
+			switch( $type = (string) $theElement[ 'node' ] )
+			{
+				//
+				// Node native identifier.
+				//
+				case 'node':
+					break;
+			
+				//
+				// Node persistent identifier.
+				//
+				case 'pid':
+					$theElement[ 0 ]
+						= (string) COntologyNode::ResolvePID(
+										$theDatabase, (string) $theElement, TRUE );
+					break;
+			
+				//
+				// Term global identifier.
+				//
+				case 'term':
+					$theElement[ 0 ]
+						= COntologyMasterVertex::Resolve(
+							$theDatabase, (string) $theElement, TRUE )
+								->NID();
+					break;
+				
+				default:
+					throw new Exception
+						( "Unable to set resolve node: "
+						 ."provided unsupported element reference type [$type]",
+						  kERROR_PARAMETER );									// !@! ==>
+			
+			} // Parsing by reference type.
+			
+			//
+			// Set reference type.
+			//
+			$theElement[ 'node' ] = 'node';
+		
+		} // Is a node reference.
+		
+		//
+		// Check element items.
+		//
+		elseif( $theElement->{'item'}->count() )
+		{
+			//
+			// Iterate element items.
+			//
+			foreach( $theElement->{'item'} as $item )
+			{
+				//
+				// Check element's node attribute.
+				//
+				if( $item[ 'node' ] !== NULL )
+				{
+					//
+					// Parse by reference type.
+					//
+					switch( $type = (string) $item[ 'node' ] )
+					{
+						//
+						// Node native identifier.
+						//
+						case 'node':
+							break;
+			
+						//
+						// Node persistent identifier.
+						//
+						case 'pid':
+							$item[ 0 ]
+								= (string) COntologyNode::ResolvePID(
+												$theDatabase, (string) $item, TRUE );
+							break;
+			
+						//
+						// Term global identifier.
+						//
+						case 'term':
+							$item[ 0 ]
+								= COntologyMasterVertex::Resolve(
+									$theDatabase, (string) $item, TRUE )
+										->NID();
+							break;
+				
+						default:
+							throw new Exception
+								( "Unable to set resolve node: "
+								 ."provided unsupported item reference type [$type]",
+								  kERROR_PARAMETER );							// !@! ==>
+			
+					} // Parsing by reference type.
+			
+					//
+					// Set reference type.
+					//
+					$item[ 'node' ] = 'node';
+		
+				} // Is a node reference.
+			
+			} // Iterating items.
+		
+		} // Has items.
+
+	} // ResolveOntologyNode.
+
+		
+
+/*=======================================================================================
+ *																						*
  *							PUBLIC ONTOLOGY LOADING INTERFACE							*
  *																						*
  *======================================================================================*/

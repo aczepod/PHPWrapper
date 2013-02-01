@@ -1,0 +1,1317 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ONTOLOGY
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:noNamespaceSchemaLocation="file:/Library/WebServer/Library/PHPWrapper/defines/Ontology.xsd">
+        
+    <!-- Type -->
+    
+    <UNIT>
+        <TERM NS=":ONTOLOGY:ENUM" LID="TYPE">
+            <element variable="kTAG_LABEL">
+                <item key="en">Type</item>
+            </element>
+            <element variable="kTAG_DEFINITION">
+                <item key="en"><![CDATA[<i>Types</i> are a set of <i>qualifiers</i> which define the <i>type of an object regardless of the context of its class</i>.]]></item>
+            </element>
+        </TERM>
+        <NODE class="COntologyMasterVertex">
+            <element variable="kTAG_CATEGORY">
+                <item>Enumerated set</item>
+            </element>
+        </NODE>
+        <EDGE>
+            <element variable="kTAG_PREDICATE">:SUBCLASS-OF</element>
+            <element variable="kTAG_OBJECT">:ONTOLOGY:ENUM</element>
+        </EDGE>
+    </UNIT>
+    
+    <!-- PRIMITIVE DATA TYPE ENUMERATIONS -->
+    
+    <UNIT>
+        <TERM NS=":ONTOLOGY:ENUM:TYPE" LID="PRIMITIVE">
+            <element variable="kTAG_LABEL">
+                <item key="en">Primitive</item>
+            </element>
+            <element variable="kTAG_DEFINITION">
+                <item key="en"><![CDATA[<i>Primitive</i> data types represent the building blocks of all other types, primitive data types represent the leaf nodes of the tree.]]></item>
+            </element>
+        </TERM>
+        <NODE class="COntologyMasterVertex">
+            <element variable="kTAG_CATEGORY">
+                <item>Enumerated set</item>
+            </element>
+        </NODE>
+        <EDGE>
+            <element variable="kTAG_PREDICATE">:SUBCLASS-OF</element>
+            <element variable="kTAG_OBJECT">:ONTOLOGY:ENUM:TYPE</element>
+        </EDGE>
+    </UNIT>
+    
+    <!-- kTYPE_ANY -->
+    <UNIT>
+        <TERM NS="" LID="ANY">
+            <element variable="kTAG_KIND">
+                <item>:KIND-ENUMERATION</item>
+            </element>
+            <element variable="kTAG_LABEL">
+                <item key="en">Any</item>
+            </element>
+            <element variable="kTAG_DEFINITION">
+                <item key="en"><![CDATA[This type represents a wildcard, it qualifies an attribute that can take <i>any type</i> of value.]]></item>
+            </element>
+            <element variable="kTAG_SYNONYMS">
+                <item>kTYPE_ANY</item>
+                <item>ANY</item>
+            </element>
+        </TERM>
+        <NODE class="COntologyMasterVertex">
+        	<element variable="kTAG_CATEGORY">
+        		<item>Primitive</item>
+        	</element>
+            <element variable="kTAG_KIND">
+                <item>:KIND-ENUMERATION</item>
+            </element>
+        </NODE>
+        <EDGE>
+            <element variable="kTAG_PREDICATE">:SUBCLASS-OF</element>
+            <element variable="kTAG_OBJECT">:ONTOLOGY:ENUM:TYPE</element>
+        </EDGE>
+    </UNIT>
+    
+    <!-- kTYPE_STRING -->
+    <UNIT>
+        <TERM NS="" LID="TEXT">
+            <element variable="kTAG_KIND">
+                <item>:KIND-ENUMERATION</item>
+            </element>
+            <element variable="kTAG_LABEL">
+                <item key="en">String or text</item>
+            </element>
+            <element variable="kTAG_DEFINITION">
+                <item key="en"><![CDATA[This type defines <i>strings</i> or <i>text</i>.]]></item>
+            </element>
+            <element variable="kTAG_SYNONYMS">
+                <item>kTYPE_STRING</item>
+                <item>TEXT</item>
+            </element>
+        </TERM>
+        <NODE class="COntologyMasterVertex">
+        	<element variable="kTAG_CATEGORY">
+        		<item>Primitive</item>
+        	</element>
+            <element variable="kTAG_KIND">
+                <item>:KIND-ENUMERATION</item>
+            </element>
+			<element variable="kTAG_EXAMPLES">
+				<item>STRING</item>
+				<item>This is some text</item>
+			</element>
+        </NODE>
+        <EDGE>
+            <element variable="kTAG_PREDICATE">:SUBCLASS-OF</element>
+            <element variable="kTAG_OBJECT">:ONTOLOGY:ENUM:TYPE:PRIMITIVE</element>
+        </EDGE>
+    </UNIT>
+    
+    <!-- kTYPE_INT -->
+    <UNIT>
+        <TERM NS="" LID="INT">
+            <element variable="kTAG_KIND">
+                <item>:KIND-ENUMERATION</item>
+            </element>
+            <element variable="kTAG_LABEL">
+                <item key="en">Integer number</item>
+            </element>
+            <element variable="kTAG_DEFINITION">
+                <item key="en"><![CDATA[This type defines an <i>integer signed numeric value</i> of an <i>indeterminate precision</i>.]]></item>
+            </element>
+            <element variable="kTAG_SYNONYMS">
+                <item>kTYPE_INT</item>
+                <item>INT</item>
+            </element>
+        </TERM>
+        <NODE class="COntologyMasterVertex">
+        	<element variable="kTAG_CATEGORY">
+        		<item>Primitive</item>
+        	</element>
+            <element variable="kTAG_KIND">
+                <item>:KIND-ENUMERATION</item>
+            </element>
+			<element variable="kTAG_EXAMPLES">
+				<item>-121</item>
+				<item>2187</item>
+			</element>
+        </NODE>
+        <EDGE>
+            <element variable="kTAG_PREDICATE">:SUBCLASS-OF</element>
+            <element variable="kTAG_OBJECT">:ONTOLOGY:ENUM:TYPE:PRIMITIVE</element>
+        </EDGE>
+    </UNIT>
+    
+    <!-- kTYPE_FLOAT -->
+    <UNIT>
+        <TERM NS="" LID="FLOAT">
+            <element variable="kTAG_KIND">
+                <item>:KIND-ENUMERATION</item>
+            </element>
+            <element variable="kTAG_LABEL">
+                <item key="en">Floating point number</item>
+            </element>
+            <element variable="kTAG_DEFINITION">
+                <item key="en"><![CDATA[This type defines an <i>floating point signed numeric value</i> of an <i>indeterminate precision</i>.]]></item>
+            </element>
+            <element variable="kTAG_SYNONYMS">
+                <item>kTYPE_FLOAT</item>
+                <item>FLOAT</item>
+            </element>
+        </TERM>
+        <NODE class="COntologyMasterVertex">
+        	<element variable="kTAG_CATEGORY">
+        		<item>Primitive</item>
+        	</element>
+            <element variable="kTAG_KIND">
+                <item>:KIND-ENUMERATION</item>
+            </element>
+			<element variable="kTAG_EXAMPLES">
+				<item>-121.27</item>
+				<item>2187.0</item>
+			</element>
+        </NODE>
+        <EDGE>
+            <element variable="kTAG_PREDICATE">:SUBCLASS-OF</element>
+            <element variable="kTAG_OBJECT">:ONTOLOGY:ENUM:TYPE:PRIMITIVE</element>
+        </EDGE>
+    </UNIT>
+    
+    <!-- kTYPE_BOOLEAN -->
+    <UNIT>
+        <TERM NS="" LID="BOOLEAN">
+            <element variable="kTAG_KIND">
+                <item>:KIND-ENUMERATION</item>
+            </element>
+            <element variable="kTAG_LABEL">
+                <item key="en">Boolean switch</item>
+            </element>
+            <element variable="kTAG_DEFINITION">
+                <item key="en"><![CDATA[This type defines a <i>switch</i> that can take two values: <tt>ON</tt> and <tt>OFF</tt>. By default we assume it to to be represented by a number in which <i><tt>0</tt> is <tt>OFF</tt></i> and <i>any other value is <tt>ON</tt></i>. Other valid representations may be <tt>yes</tt>/<tt>no</tt>, <tt>true</tt>/<tt>false</tt>.]]></item>
+            </element>
+            <element variable="kTAG_SYNONYMS">
+                <item>kTYPE_BOOLEAN</item>
+                <item>BOOLEAN</item>
+            </element>
+        </TERM>
+        <NODE class="COntologyMasterVertex">
+        	<element variable="kTAG_CATEGORY">
+        		<item>Primitive</item>
+        	</element>
+            <element variable="kTAG_KIND">
+                <item>:KIND-ENUMERATION</item>
+            </element>
+			<element variable="kTAG_EXAMPLES">
+				<item>1</item>
+				<item>0</item>
+			</element>
+        </NODE>
+        <EDGE>
+            <element variable="kTAG_PREDICATE">:SUBCLASS-OF</element>
+            <element variable="kTAG_OBJECT">:ONTOLOGY:ENUM:TYPE:PRIMITIVE</element>
+        </EDGE>
+    </UNIT>
+    
+    <!-- CUSTOM PRIMITIVE DATA TYPE ENUMERATIONS -->
+    
+    <!-- kTYPE_BINARY_STRING -->
+    <UNIT>
+        <TERM NS="" LID="BINARY">
+            <element variable="kTAG_KIND">
+                <item>:KIND-ENUMERATION</item>
+            </element>
+            <element variable="kTAG_LABEL">
+                <item key="en">Binary string</item>
+            </element>
+            <element variable="kTAG_DEFINITION">
+                <item key="en"><![CDATA[This type represents a <i>sequence of bytes</i>. It is equivalent to the string type, except that the string can hold <i>elements of any value</i>, while the string type holds only text elements.]]></item>
+            </element>
+            <element variable="kTAG_SYNONYMS">
+                <item>kTYPE_BINARY_STRING</item>
+                <item>BINARY</item>
+            </element>
+        </TERM>
+        <NODE class="COntologyMasterVertex">
+        	<element variable="kTAG_CATEGORY">
+        		<item>Custom string</item>
+        	</element>
+            <element variable="kTAG_KIND">
+                <item>:KIND-ENUMERATION</item>
+            </element>
+        </NODE>
+        <EDGE>
+            <element variable="kTAG_PREDICATE">:ENUM-OF</element>
+            <element variable="kTAG_OBJECT">:TEXT</element>
+        </EDGE>
+    </UNIT>
+    
+    <!-- kTYPE_DATE_STRING -->
+    <UNIT>
+        <TERM NS="" LID="DATE">
+            <element variable="kTAG_KIND">
+                <item>:KIND-ENUMERATION</item>
+            </element>
+            <element variable="kTAG_LABEL">
+                <item key="en">Date string</item>
+            </element>
+            <element variable="kTAG_DEFINITION">
+                <item key="en"><![CDATA[This type represents a <i>date</i> in the form of a <i>hours</i>, <i>minutes</i> and <i>seconds</i> <tt>YYYYMMDD</tt>         	<i>string</i> in which missing elements should be omitted. This means that if         	we don't know the day we can express that date as <tt>YYYYMM</tt> and if we don't know the month we can express it as <tt>YYYY</tt>. This type is functionally identical to the string type, except that its elements can <i>only be digits</i> and their structure is known.]]></item>
+            </element>
+            <element variable="kTAG_SYNONYMS">
+                <item>kTYPE_DATE_STRING</item>
+                <item>DATE</item>
+            </element>
+        </TERM>
+        <NODE class="COntologyMasterVertex">
+        	<element variable="kTAG_CATEGORY">
+        		<item>Custom string</item>
+        	</element>
+            <element variable="kTAG_KIND">
+                <item>:KIND-ENUMERATION</item>
+            </element>
+			<element variable="kTAG_EXAMPLES">
+				<item>19840728</item>
+				<item>198407</item>
+				<item>1984</item>
+			</element>
+        </NODE>
+        <EDGE>
+            <element variable="kTAG_PREDICATE">:ENUM-OF</element>
+            <element variable="kTAG_OBJECT">:TEXT</element>
+        </EDGE>
+    </UNIT>
+    
+    <!-- kTYPE_TIME_STRING -->
+    <UNIT>
+        <TERM NS="" LID="TIME">
+            <element variable="kTAG_KIND">
+                <item>:KIND-ENUMERATION</item>
+            </element>
+            <element variable="kTAG_LABEL">
+                <item key="en">Time string</item>
+            </element>
+            <element variable="kTAG_DEFINITION">
+                <item key="en"><![CDATA[This type represents a <i>date</i> and <i>time</i> which is a combination of the date string type followed by a structure of three elements representing the <i>hours</i>, <i>minutes</i> and <i>seconds</i> separated by colons, <tt>YYYYMMDD HHMMSS</tt>. <i>Missing elements are omitted</i>, this means that if you don't have the minutes you would have <tt>YYYYMMDD HH</tt> and if you don't have the time it would become and act as a date string type. This type is functionally identical to the string type, except that its elements can <i>only be digits</i> and their structure is known.]]></item>
+            </element>
+            <element variable="kTAG_SYNONYMS">
+                <item>kTYPE_TIME_STRING</item>
+                <item>TIME</item>
+            </element>
+        </TERM>
+        <NODE class="COntologyMasterVertex">
+        	<element variable="kTAG_CATEGORY">
+        		<item>Custom string</item>
+        	</element>
+            <element variable="kTAG_KIND">
+                <item>:KIND-ENUMERATION</item>
+            </element>
+			<element variable="kTAG_EXAMPLES">
+				<item>19840728 132247</item>
+				<item>19840728 1322</item>
+				<item>19840728 13</item>
+				<item>19840728</item>
+				<item>198407</item>
+				<item>1984</item>
+			</element>
+        </NODE>
+        <EDGE>
+            <element variable="kTAG_PREDICATE">:ENUM-OF</element>
+            <element variable="kTAG_OBJECT">:TEXT</element>
+        </EDGE>
+    </UNIT>
+    
+    <!-- kTYPE_REGEX_STRING -->
+    <UNIT>
+        <TERM NS="" LID="REGEX">
+            <element variable="kTAG_KIND">
+                <item>:KIND-ENUMERATION</item>
+            </element>
+            <element variable="kTAG_LABEL">
+                <item key="en">Regular expression</item>
+            </element>
+            <element variable="kTAG_DEFINITION">
+                <item key="en"><![CDATA[This type represents a <i>regular expression</i> or <i>grep pattern</i> string, it is used to perform complex <i>pattern selections</i> in strings.]]></item>
+            </element>
+            <element variable="kTAG_SYNONYMS">
+                <item>kTYPE_REGEX_STRING</item>
+                <item>REGEX</item>
+            </element>
+        </TERM>
+        <NODE class="COntologyMasterVertex">
+        	<element variable="kTAG_CATEGORY">
+        		<item>Custom string</item>
+        	</element>
+            <element variable="kTAG_KIND">
+                <item>:KIND-ENUMERATION</item>
+            </element>
+			<element variable="kTAG_EXAMPLES">
+				<item><![CDATA[[\w:/]+[.][\w%-/]+]]></item>
+				<item><![CDATA[[\w-.]+@[\w-.]+]]></item>
+				<item><![CDATA[[\w:/]+[.@]+[\w%-/]+]]></item>
+			</element>
+        </NODE>
+        <EDGE>
+            <element variable="kTAG_PREDICATE">:ENUM-OF</element>
+            <element variable="kTAG_OBJECT">:TEXT</element>
+        </EDGE>
+    </UNIT>
+    
+    <!-- kTYPE_INT32 -->
+    <UNIT>
+        <TERM NS="" LID="INT32">
+            <element variable="kTAG_KIND">
+                <item>:KIND-ENUMERATION</item>
+            </element>
+            <element variable="kTAG_LABEL">
+                <item key="en">32 bit integer</item>
+            </element>
+            <element variable="kTAG_DEFINITION">
+                <item key="en"><![CDATA[This type defines a <i>32 bit signed integer</i>, this number ranges from <tt>−2,147,483,648</tt> to <tt>2,147,483,647</tt>.]]></item>
+            </element>
+            <element variable="kTAG_SYNONYMS">
+                <item>kTYPE_INT32</item>
+                <item>INT32</item>
+            </element>
+        </TERM>
+        <NODE class="COntologyMasterVertex">
+        	<element variable="kTAG_CATEGORY">
+        		<item>Custom number</item>
+        	</element>
+            <element variable="kTAG_KIND">
+                <item>:KIND-ENUMERATION</item>
+            </element>
+        </NODE>
+        <EDGE>
+            <element variable="kTAG_PREDICATE">:ENUM-OF</element>
+            <element variable="kTAG_OBJECT">:INT</element>
+        </EDGE>
+    </UNIT>
+    
+    <!-- kTYPE_INT64 -->
+    <UNIT>
+        <TERM NS="" LID="INT64">
+            <element variable="kTAG_KIND">
+                <item>:KIND-ENUMERATION</item>
+            </element>
+            <element variable="kTAG_LABEL">
+                <item key="en">64 bit integer</item>
+            </element>
+            <element variable="kTAG_DEFINITION">
+                <item key="en"><![CDATA[This type defines a <i>64 bit signed integer</i>, this number ranges from <tt>−9,223,372,036,854,775,808</tt> to <tt>9,223,372,036,854,775,807</tt>.]]></item>
+            </element>
+            <element variable="kTAG_SYNONYMS">
+                <item>kTYPE_INT64</item>
+                <item>INT64</item>
+            </element>
+        </TERM>
+        <NODE class="COntologyMasterVertex">
+        	<element variable="kTAG_CATEGORY">
+        		<item>Custom number</item>
+        	</element>
+            <element variable="kTAG_KIND">
+                <item>:KIND-ENUMERATION</item>
+            </element>
+        </NODE>
+        <EDGE>
+            <element variable="kTAG_PREDICATE">:ENUM-OF</element>
+            <element variable="kTAG_OBJECT">:INT</element>
+        </EDGE>
+    </UNIT>
+    
+    <!-- OBJECT REFERENCE TYPE ENUMERATIONS -->
+    
+    <!-- kTYPE_REF_TERM -->
+    <UNIT>
+        <TERM NS="" LID="REF-TERM">
+            <element variable="kTAG_KIND">
+                <item>:KIND-ENUMERATION</item>
+            </element>
+            <element variable="kTAG_LABEL">
+                <item key="en">Term reference</item>
+            </element>
+            <element variable="kTAG_DEFINITION">
+                <item key="en"><![CDATA[This type represents the <i>reference to a term object</i>, term identifiers are by definition <i>binary strings</i>.]]></item>
+            </element>
+            <element variable="kTAG_SYNONYMS">
+                <item>kTYPE_REF_TERM</item>
+                <item>REF-TERM</item>
+            </element>
+        </TERM>
+        <NODE class="COntologyMasterVertex">
+        	<element variable="kTAG_CATEGORY">
+        		<item>Object reference</item>
+        	</element>
+            <element variable="kTAG_KIND">
+                <item>:KIND-ENUMERATION</item>
+            </element>
+        </NODE>
+        <EDGE>
+            <element variable="kTAG_PREDICATE">:ENUM-OF</element>
+            <element variable="kTAG_OBJECT">:BINARY</element>
+        </EDGE>
+    </UNIT>
+    
+    <!-- kTYPE_REF_NODE -->
+    <UNIT>
+        <TERM NS="" LID="REF-NODE">
+            <element variable="kTAG_KIND">
+                <item>:KIND-ENUMERATION</item>
+            </element>
+            <element variable="kTAG_LABEL">
+                <item key="en">Node reference</item>
+            </element>
+            <element variable="kTAG_DEFINITION">
+                <item key="en"><![CDATA[This type represents the <i>reference to a node object</i>, node identifiers are by definition <i>integers</i>.]]></item>
+            </element>
+            <element variable="kTAG_SYNONYMS">
+                <item>kTYPE_REF_NODE</item>
+                <item>REF-NODE</item>
+            </element>
+        </TERM>
+        <NODE class="COntologyMasterVertex">
+        	<element variable="kTAG_CATEGORY">
+        		<item>Object reference</item>
+        	</element>
+            <element variable="kTAG_KIND">
+                <item>:KIND-ENUMERATION</item>
+            </element>
+        </NODE>
+        <EDGE>
+            <element variable="kTAG_PREDICATE">:ENUM-OF</element>
+            <element variable="kTAG_OBJECT">:INT</element>
+        </EDGE>
+    </UNIT>
+    
+    <!-- kTYPE_REF_EDGE -->
+    <UNIT>
+        <TERM NS="" LID="REF-EDGE">
+            <element variable="kTAG_KIND">
+                <item>:KIND-ENUMERATION</item>
+            </element>
+            <element variable="kTAG_LABEL">
+                <item key="en">Edge reference</item>
+            </element>
+            <element variable="kTAG_DEFINITION">
+                <item key="en"><![CDATA[This type represents the <i>reference to an edge object</i>, edge identifiers are by definition <i>integers</i>.]]></item>
+            </element>
+            <element variable="kTAG_SYNONYMS">
+                <item>kTYPE_REF_EDGE</item>
+                <item>REF-EDGE</item>
+            </element>
+        </TERM>
+        <NODE class="COntologyMasterVertex">
+        	<element variable="kTAG_CATEGORY">
+        		<item>Object reference</item>
+        	</element>
+            <element variable="kTAG_KIND">
+                <item>:KIND-ENUMERATION</item>
+            </element>
+        </NODE>
+        <EDGE>
+            <element variable="kTAG_PREDICATE">:ENUM-OF</element>
+            <element variable="kTAG_OBJECT">:INT</element>
+        </EDGE>
+    </UNIT>
+    
+    <!-- kTYPE_REF_TAG -->
+    <UNIT>
+        <TERM NS="" LID="REF-TAG">
+            <element variable="kTAG_KIND">
+                <item>:KIND-ENUMERATION</item>
+            </element>
+            <element variable="kTAG_LABEL">
+                <item key="en">Tag reference</item>
+            </element>
+            <element variable="kTAG_DEFINITION">
+                <item key="en"><![CDATA[This type represents the <i>reference to a tag object</i>, edge identifiers are by definition <i>integers</i>.]]></item>
+            </element>
+            <element variable="kTAG_SYNONYMS">
+                <item>kTYPE_REF_TAG</item>
+                <item>REF-TAG</item>
+            </element>
+        </TERM>
+        <NODE class="COntologyMasterVertex">
+        	<element variable="kTAG_CATEGORY">
+        		<item>Object reference</item>
+        	</element>
+            <element variable="kTAG_KIND">
+                <item>:KIND-ENUMERATION</item>
+            </element>
+        </NODE>
+        <EDGE>
+            <element variable="kTAG_PREDICATE">:ENUM-OF</element>
+            <element variable="kTAG_OBJECT">:INT</element>
+        </EDGE>
+    </UNIT>
+    
+    <!-- kTYPE_REF_USER -->
+    <UNIT>
+        <TERM NS="" LID="REF-USER">
+            <element variable="kTAG_KIND">
+                <item>:KIND-ENUMERATION</item>
+            </element>
+            <element variable="kTAG_LABEL">
+                <item key="en">User reference</item>
+            </element>
+            <element variable="kTAG_DEFINITION">
+                <item key="en"><![CDATA[This type represents the <i>reference to a user object</i>, user identifiers are by definition <i>strings</i>.]]></item>
+            </element>
+            <element variable="kTAG_SYNONYMS">
+                <item>kTYPE_REF_USER</item>
+                <item>REF-USER</item>
+            </element>
+        </TERM>
+        <NODE class="COntologyMasterVertex">
+        	<element variable="kTAG_CATEGORY">
+        		<item>Object reference</item>
+        	</element>
+            <element variable="kTAG_KIND">
+                <item>:KIND-ENUMERATION</item>
+            </element>
+        </NODE>
+        <EDGE>
+            <element variable="kTAG_PREDICATE">:ENUM-OF</element>
+            <element variable="kTAG_OBJECT">:TEXT</element>
+        </EDGE>
+    </UNIT>
+    
+    <!-- STANDARD FORMAT TYPE ENUMERATIONS -->
+    
+    <!-- kTYPE_META -->
+    <UNIT>
+        <TERM NS="" LID="META">
+            <element variable="kTAG_KIND">
+                <item>:KIND-ENUMERATION</item>
+            </element>
+            <element variable="kTAG_LABEL">
+                <item key="en">Metadata</item>
+            </element>
+            <element variable="kTAG_DEFINITION">
+                <item key="en"><![CDATA[This type represents the primitive <i>meta data</i> type, it is a <i>generalised</i> metadata type.]]></item>
+            </element>
+            <element variable="kTAG_SYNONYMS">
+                <item>kTYPE_META</item>
+                <item>META</item>
+            </element>
+        </TERM>
+        <NODE class="COntologyMasterVertex">
+        	<element variable="kTAG_CATEGORY">
+        		<item>Format</item>
+        	</element>
+            <element variable="kTAG_KIND">
+                <item>:KIND-ENUMERATION</item>
+            </element>
+        </NODE>
+        <EDGE>
+            <element variable="kTAG_PREDICATE">:ENUM-OF</element>
+            <element variable="kTAG_OBJECT">:TEXT</element>
+        </EDGE>
+    </UNIT>
+    
+    <!-- kTYPE_PHP -->
+    <UNIT>
+        <TERM NS="" LID="PHP">
+            <element variable="kTAG_KIND">
+                <item>:KIND-ENUMERATION</item>
+            </element>
+            <element variable="kTAG_LABEL">
+                <item key="en">PHP</item>
+            </element>
+            <element variable="kTAG_DEFINITION">
+                <item key="en"><![CDATA[This type represents the <tt>PHP</tt> serialised data format. This type is functionally identical to the string type, except that the <i>contents are encoded</i>.]]></item>
+            </element>
+            <element variable="kTAG_SYNONYMS">
+                <item>kTYPE_PHP</item>
+                <item>PHP</item>
+            </element>
+        </TERM>
+        <NODE class="COntologyMasterVertex">
+        	<element variable="kTAG_CATEGORY">
+        		<item>Format</item>
+        	</element>
+            <element variable="kTAG_KIND">
+                <item>:KIND-ENUMERATION</item>
+            </element>
+        </NODE>
+        <EDGE>
+            <element variable="kTAG_PREDICATE">:ENUM-OF</element>
+            <element variable="kTAG_OBJECT">:TEXT</element>
+        </EDGE>
+    </UNIT>
+    
+    <!-- kTYPE_JSON -->
+    <UNIT>
+        <TERM NS="" LID="JSON">
+            <element variable="kTAG_KIND">
+                <item>:KIND-ENUMERATION</item>
+            </element>
+            <element variable="kTAG_LABEL">
+                <item key="en">JSON</item>
+            </element>
+            <element variable="kTAG_DEFINITION">
+                <item key="en"><![CDATA[This type represents the <tt>JSON</tt> encoded data format. This type is functionally identical to the string type, except that the <i>contents are encoded</i>.]]></item>
+            </element>
+            <element variable="kTAG_SYNONYMS">
+                <item>kTYPE_JSON</item>
+                <item>JSON</item>
+            </element>
+        </TERM>
+        <NODE class="COntologyMasterVertex">
+        	<element variable="kTAG_CATEGORY">
+        		<item>Format</item>
+        	</element>
+            <element variable="kTAG_KIND">
+                <item>:KIND-ENUMERATION</item>
+            </element>
+        </NODE>
+        <EDGE>
+            <element variable="kTAG_PREDICATE">:ENUM-OF</element>
+            <element variable="kTAG_OBJECT">:TEXT</element>
+        </EDGE>
+    </UNIT>
+    
+    <!-- kTYPE_XML -->
+    <UNIT>
+        <TERM NS="" LID="XML">
+            <element variable="kTAG_KIND">
+                <item>:KIND-ENUMERATION</item>
+            </element>
+            <element variable="kTAG_LABEL">
+                <item key="en">XML</item>
+            </element>
+            <element variable="kTAG_DEFINITION">
+                <item key="en"><![CDATA[This type represents the <tt>XML</tt> encoded data format. This type is functionally identical to the string type, except that the <i>contents are encoded</i>.]]></item>
+            </element>
+            <element variable="kTAG_SYNONYMS">
+                <item>kTYPE_XML</item>
+                <item>XML</item>
+            </element>
+        </TERM>
+        <NODE class="COntologyMasterVertex">
+        	<element variable="kTAG_CATEGORY">
+        		<item>Format</item>
+        	</element>
+            <element variable="kTAG_KIND">
+                <item>:KIND-ENUMERATION</item>
+            </element>
+        </NODE>
+        <EDGE>
+            <element variable="kTAG_PREDICATE">:ENUM-OF</element>
+            <element variable="kTAG_OBJECT">:TEXT</element>
+        </EDGE>
+    </UNIT>
+    
+    <!-- kTYPE_SVG -->
+    <UNIT>
+        <TERM NS="" LID="SVG">
+            <element variable="kTAG_KIND">
+                <item>:KIND-ENUMERATION</item>
+            </element>
+            <element variable="kTAG_LABEL">
+                <item key="en">SVG</item>
+            </element>
+            <element variable="kTAG_DEFINITION">
+                <item key="en"><![CDATA[This type represents the <tt>SVG</tt> encoded data format. This type is functionally identical to the XML type, except that the <i>contents represent an encoded vector image file</i>.]]></item>
+            </element>
+            <element variable="kTAG_SYNONYMS">
+                <item>kTYPE_SVG</item>
+                <item>SVG</item>
+            </element>
+        </TERM>
+        <NODE class="COntologyMasterVertex">
+        	<element variable="kTAG_CATEGORY">
+        		<item>Format</item>
+        	</element>
+            <element variable="kTAG_KIND">
+                <item>:KIND-ENUMERATION</item>
+            </element>
+        </NODE>
+        <EDGE>
+            <element variable="kTAG_PREDICATE">:ENUM-OF</element>
+            <element variable="kTAG_OBJECT">:XML</element>
+        </EDGE>
+    </UNIT>
+    
+    <!-- kTYPE_RDF -->
+    <UNIT>
+        <TERM NS="" LID="RDF">
+            <element variable="kTAG_KIND">
+                <item>:KIND-ENUMERATION</item>
+            </element>
+            <element variable="kTAG_LABEL">
+                <item key="en">RDF</item>
+            </element>
+            <element variable="kTAG_DEFINITION">
+                <item key="en"><![CDATA[This type represents the <tt>RDF</tt> encoded data format. This type is functionally identical to the XML type, except that the <i>contents represent an RDF encoded file</i>.]]></item>
+            </element>
+            <element variable="kTAG_SYNONYMS">
+                <item>kTYPE_RDF</item>
+                <item>RDF</item>
+            </element>
+        </TERM>
+        <NODE class="COntologyMasterVertex">
+        	<element variable="kTAG_CATEGORY">
+        		<item>Format</item>
+        	</element>
+            <element variable="kTAG_KIND">
+                <item>:KIND-ENUMERATION</item>
+            </element>
+        </NODE>
+        <EDGE>
+            <element variable="kTAG_PREDICATE">:ENUM-OF</element>
+            <element variable="kTAG_OBJECT">:XML</element>
+        </EDGE>
+    </UNIT>
+    
+    <!-- kTYPE_OWL -->
+    <UNIT>
+        <TERM NS="" LID="OWL">
+            <element variable="kTAG_KIND">
+                <item>:KIND-ENUMERATION</item>
+            </element>
+            <element variable="kTAG_LABEL">
+                <item key="en">OWL</item>
+            </element>
+            <element variable="kTAG_DEFINITION">
+                <item key="en"><![CDATA[This type represents the <tt>OWL</tt> encoded data format. This type is functionally identical to the RDF type, except that the <i>contents represent an OWL encoded file</i>.]]></item>
+            </element>
+            <element variable="kTAG_SYNONYMS">
+                <item>kTYPE_OWL</item>
+                <item>OWL</item>
+            </element>
+        </TERM>
+        <NODE class="COntologyMasterVertex">
+        	<element variable="kTAG_CATEGORY">
+        		<item>Format</item>
+        	</element>
+            <element variable="kTAG_KIND">
+                <item>:KIND-ENUMERATION</item>
+            </element>
+        </NODE>
+        <EDGE>
+            <element variable="kTAG_PREDICATE">:ENUM-OF</element>
+            <element variable="kTAG_OBJECT">:RDF</element>
+        </EDGE>
+    </UNIT>
+    
+    <!-- STRUCTURED TYPE ENUMERATIONS -->
+    
+    <!-- kTYPE_STRUCT -->
+    <UNIT>
+        <TERM NS="" LID="STRUCT">
+            <element variable="kTAG_KIND">
+                <item>:KIND-ENUMERATION</item>
+            </element>
+            <element variable="kTAG_LABEL">
+                <item key="en">Structure</item>
+            </element>
+            <element variable="kTAG_DEFINITION">
+                <item key="en"><![CDATA[This data type refers to a <i>structure</i>, it implies that the attribute to which it refers to is a <i>container for other attributes</i> that will hold the actual data.]]></item>
+            </element>
+            <element variable="kTAG_SYNONYMS">
+                <item>kTYPE_STRUCT</item>
+                <item>STRUCT</item>
+            </element>
+        </TERM>
+        <NODE class="COntologyMasterVertex">
+        	<element variable="kTAG_CATEGORY">
+        		<item>Structure</item>
+        	</element>
+            <element variable="kTAG_KIND">
+                <item>:KIND-ENUMERATION</item>
+            </element>
+        </NODE>
+        <EDGE>
+            <element variable="kTAG_PREDICATE">:SUBCLASS-OF</element>
+            <element variable="kTAG_OBJECT">:ONTOLOGY:ENUM:TYPE</element>
+        </EDGE>
+    </UNIT>
+    
+    <!-- kTYPE_LSTRING -->
+    <UNIT>
+        <TERM NS="" LID="LSTRING">
+            <element variable="kTAG_KIND">
+                <item>:KIND-ENUMERATION</item>
+            </element>
+            <element variable="kTAG_LABEL">
+                <item key="en">Language strings</item>
+            </element>
+            <element variable="kTAG_DEFINITION">
+                <item key="en"><![CDATA[This type represents a <i>string attribute that can be expressed in several languages</i>. It is implemented as a <i>list of elements</i> in which the <i>index represents the language code</i> and the <i>value represents the string</i> in that language. There cannot be two elements with the same language code and the element which is not related to any language has the <tt>0</tt> index.]]></item>
+            </element>
+            <element variable="kTAG_SYNONYMS">
+                <item>kTYPE_LSTRING</item>
+                <item>LSTRING</item>
+            </element>
+        </TERM>
+        <NODE class="COntologyMasterVertex">
+        	<element variable="kTAG_CATEGORY">
+        		<item>Structure</item>
+        	</element>
+            <element variable="kTAG_KIND">
+                <item>:KIND-ENUMERATION</item>
+            </element>
+        </NODE>
+        <EDGE>
+            <element variable="kTAG_PREDICATE">:ENUM-OF</element>
+            <element variable="kTAG_OBJECT">:STRUCT</element>
+        </EDGE>
+    </UNIT>
+    
+    <!-- kTYPE_STAMP -->
+    <UNIT>
+        <TERM NS="" LID="STAMP">
+            <element variable="kTAG_KIND">
+                <item>:KIND-ENUMERATION</item>
+            </element>
+            <element variable="kTAG_LABEL">
+                <item key="en">Time-stamp</item>
+            </element>
+            <element variable="kTAG_DEFINITION">
+                <item key="en"><![CDATA[This type represents a <i>native time-stamp</i> data type, it holds the <i>date</i>, <i>time</i> and <i>milliseconds</i>.]]></item>
+            </element>
+            <element variable="kTAG_SYNONYMS">
+                <item>kTYPE_STAMP</item>
+                <item>STAMP</item>
+            </element>
+        </TERM>
+        <NODE class="COntologyMasterVertex">
+         	<element variable="kTAG_CATEGORY">
+        		<item>Structure</item>
+        	</element>
+           <element variable="kTAG_KIND">
+                <item>:KIND-ENUMERATION</item>
+            </element>
+        </NODE>
+        <EDGE>
+            <element variable="kTAG_PREDICATE">:ENUM-OF</element>
+            <element variable="kTAG_OBJECT">:STRUCT</element>
+        </EDGE>
+    </UNIT>
+    
+    <!-- ENUMERATED TYPE ENUMERATIONS -->
+    
+    <!-- kTYPE_ENUM -->
+    <UNIT>
+        <TERM NS="" LID="ENUM">
+            <element variable="kTAG_KIND">
+                <item>:KIND-ENUMERATION</item>
+            </element>
+            <element variable="kTAG_LABEL">
+                <item key="en">Enumeration</item>
+            </element>
+            <element variable="kTAG_DEFINITION">
+                <item key="en"><![CDATA[This represents the <i>enumeration</i> data type, or a <i>single string element</i> of an <i>enumerated set</i> or <i>controlled vocabulary</i>.]]></item>
+            </element>
+            <element variable="kTAG_SYNONYMS">
+                <item>kTYPE_ENUM</item>
+                <item>ENUM</item>
+            </element>
+        </TERM>
+        <NODE class="COntologyMasterVertex">
+        	<element variable="kTAG_CATEGORY">
+        		<item>Enumeration</item>
+        	</element>
+            <element variable="kTAG_KIND">
+                <item>:KIND-ENUMERATION</item>
+            </element>
+        </NODE>
+        <EDGE>
+            <element variable="kTAG_PREDICATE">:ENUM-OF</element>
+            <element variable="kTAG_OBJECT">:TEXT</element>
+        </EDGE>
+    </UNIT>
+    
+    <!-- kTYPE_ENUM_SET -->
+    <UNIT>
+        <TERM NS="" LID="SET">
+            <element variable="kTAG_KIND">
+                <item>:KIND-ENUMERATION</item>
+            </element>
+            <element variable="kTAG_LABEL">
+                <item key="en">Enumerated set</item>
+            </element>
+            <element variable="kTAG_DEFINITION">
+                <item key="en"><![CDATA[This represents the <i>enumerated set</i> data type, or a <i>list of string elements</i> of an <i>enumerated set</i> or <i>controlled vocabulary</i>.]]></item>
+            </element>
+            <element variable="kTAG_SYNONYMS">
+                <item>kTYPE_ENUM_SET</item>
+                <item>SET</item>
+            </element>
+        </TERM>
+        <NODE class="COntologyMasterVertex">
+        	<element variable="kTAG_CATEGORY">
+        		<item>Enumeration</item>
+        	</element>
+            <element variable="kTAG_KIND">
+                <item>:KIND-ENUMERATION</item>
+            </element>
+        </NODE>
+        <EDGE>
+            <element variable="kTAG_PREDICATE">:ENUM-OF</element>
+            <element variable="kTAG_OBJECT">:TEXT</element>
+        </EDGE>
+    </UNIT>
+    
+    <!-- CUSTOM TYPE ENUMERATIONS -->
+    
+    <!-- kTYPE_MongoId -->
+    <UNIT>
+        <TERM NS="" LID="MongoId">
+            <element variable="kTAG_KIND">
+                <item>:KIND-ENUMERATION</item>
+            </element>
+            <element variable="kTAG_LABEL">
+                <item key="en">MongoId</item>
+            </element>
+            <element variable="kTAG_DEFINITION">
+                <item key="en"><![CDATA[This type represents the <tt>MongoId</tt> data type, when serialised it will be encoded into the following structure:<ul><li><tt>type</tt>: Will contain this constant. <li><tt>data</tt>: Will contain the HEX string ID.</ul>]]></item>
+            </element>
+            <element variable="kTAG_SYNONYMS">
+                <item>kTYPE_MongoId</item>
+                <item>MongoId</item>
+            </element>
+        </TERM>
+        <NODE class="COntologyMasterVertex">
+        	<element variable="kTAG_CATEGORY">
+        		<item>Custom</item>
+        	</element>
+            <element variable="kTAG_KIND">
+                <item>:KIND-ENUMERATION</item>
+            </element>
+        </NODE>
+        <EDGE>
+            <element variable="kTAG_PREDICATE">:ENUM-OF</element>
+            <element variable="kTAG_OBJECT">:STRUCT</element>
+        </EDGE>
+    </UNIT>
+    
+    <!-- kTYPE_MongoCode -->
+    <UNIT>
+        <TERM NS="" LID="MongoCode">
+            <element variable="kTAG_KIND">
+                <item>:KIND-ENUMERATION</item>
+            </element>
+            <element variable="kTAG_LABEL">
+                <item key="en">MongoCode</item>
+            </element>
+            <element variable="kTAG_DEFINITION">
+                <item key="en"><![CDATA[This type represents the <tt>MongoCode</tt> data type, when serialised it will be encoded into the following structure:<ul><li><tt>code</tt>: The javascript code string.<li><tt>scope</tt>: The list of key/value pairs.</ul>]]></item>
+            </element>
+            <element variable="kTAG_SYNONYMS">
+                <item>kTYPE_MongoCode</item>
+                <item>MongoCode</item>
+            </element>
+        </TERM>
+        <NODE class="COntologyMasterVertex">
+        	<element variable="kTAG_CATEGORY">
+        		<item>Custom</item>
+        	</element>
+            <element variable="kTAG_KIND">
+                <item>:KIND-ENUMERATION</item>
+            </element>
+        </NODE>
+        <EDGE>
+            <element variable="kTAG_PREDICATE">:ENUM-OF</element>
+            <element variable="kTAG_OBJECT">:STRUCT</element>
+        </EDGE>
+    </UNIT>
+    
+    <!-- CARDINALITY TYPE ENUMERATIONS -->
+    
+    <UNIT>
+        <TERM NS=":ONTOLOGY:ENUM:TYPE" LID="CARDINALITY">
+            <element variable="kTAG_LABEL">
+                <item key="en">Cardinality</item>
+            </element>
+            <element variable="kTAG_DEFINITION">
+                <item key="en"><![CDATA[<i>Cardinality</i> types, rather than describing the data type, provide information on the form, usage and validation of the attribute.]]></item>
+            </element>
+        </TERM>
+        <NODE class="COntologyMasterVertex">
+            <element variable="kTAG_CATEGORY">
+                <item>Enumerated set</item>
+            </element>
+        </NODE>
+        <EDGE>
+            <element variable="kTAG_PREDICATE">:SUBCLASS-OF</element>
+            <element variable="kTAG_OBJECT">:ONTOLOGY:ENUM:TYPE</element>
+        </EDGE>
+    </UNIT>
+    
+    <!-- kTYPE_REQUIRED -->
+    <UNIT>
+        <TERM NS="" LID="REQUIRED">
+            <element variable="kTAG_KIND">
+                <item>:KIND-ENUMERATION</item>
+            </element>
+            <element variable="kTAG_LABEL">
+                <item key="en">Required</item>
+            </element>
+            <element variable="kTAG_DEFINITION">
+                <item key="en"><![CDATA[This type indicates that the element <i>is required</i>, which means that it <i>must be present in the object</i>. If this type is missing, it means that the element is optional.]]></item>
+            </element>
+            <element variable="kTAG_SYNONYMS">
+                <item>kTYPE_REQUIRED</item>
+                <item>REQUIRED</item>
+            </element>
+        </TERM>
+        <NODE class="COntologyMasterVertex">
+        	<element variable="kTAG_CATEGORY">
+        		<item>Cardinality</item>
+        	</element>
+            <element variable="kTAG_KIND">
+                <item>:KIND-ENUMERATION</item>
+            </element>
+        </NODE>
+        <EDGE>
+            <element variable="kTAG_PREDICATE">:SUBCLASS-OF</element>
+            <element variable="kTAG_OBJECT">:ONTOLOGY:ENUM:TYPE:CARDINALITY</element>
+        </EDGE>
+    </UNIT>
+    
+    <!-- kTYPE_RESTRICTED -->
+    <UNIT>
+        <TERM NS="" LID="RESTRICTED">
+            <element variable="kTAG_KIND">
+                <item>:KIND-ENUMERATION</item>
+            </element>
+            <element variable="kTAG_LABEL">
+                <item key="en">Restricted</item>
+            </element>
+            <element variable="kTAG_DEFINITION">
+                <item key="en"><![CDATA[This type applies mostly to enumerated sets, it indicates that the attribute is <i>restricted to an enumerated set</i>. If this type is missing, it means that the attribute may also take values not belonging to the enumerated set.]]></item>
+            </element>
+            <element variable="kTAG_SYNONYMS">
+                <item>kTYPE_RESTRICTED</item>
+                <item>RESTRICTED</item>
+            </element>
+        </TERM>
+        <NODE class="COntologyMasterVertex">
+        	<element variable="kTAG_CATEGORY">
+        		<item>Cardinality</item>
+        	</element>
+            <element variable="kTAG_KIND">
+                <item>:KIND-ENUMERATION</item>
+            </element>
+        </NODE>
+        <EDGE>
+            <element variable="kTAG_PREDICATE">:SUBCLASS-OF</element>
+            <element variable="kTAG_OBJECT">:ONTOLOGY:ENUM:TYPE:CARDINALITY</element>
+        </EDGE>
+    </UNIT>
+    
+    <!-- kTYPE_COMPUTED -->
+    <UNIT>
+        <TERM NS="" LID="COMPUTED">
+            <element variable="kTAG_KIND">
+                <item>:KIND-ENUMERATION</item>
+            </element>
+            <element variable="kTAG_LABEL">
+                <item key="en">Computed</item>
+            </element>
+            <element variable="kTAG_DEFINITION">
+                <item key="en"><![CDATA[This type indicates that the element is <i>computed</i>, which means that it is <i>automatically filled</i> during object commit. If this type is missing, it means that the attribute must be explicitly set.]]></item>
+            </element>
+            <element variable="kTAG_SYNONYMS">
+                <item>kTYPE_COMPUTED</item>
+                <item>COMPUTED</item>
+            </element>
+        </TERM>
+        <NODE class="COntologyMasterVertex">
+        	<element variable="kTAG_CATEGORY">
+        		<item>Cardinality</item>
+        	</element>
+            <element variable="kTAG_KIND">
+                <item>:KIND-ENUMERATION</item>
+            </element>
+        </NODE>
+        <EDGE>
+            <element variable="kTAG_PREDICATE">:SUBCLASS-OF</element>
+            <element variable="kTAG_OBJECT">:ONTOLOGY:ENUM:TYPE:CARDINALITY</element>
+        </EDGE>
+    </UNIT>
+    
+    <!-- kTYPE_LOCKED -->
+    <UNIT>
+        <TERM NS="" LID="LOCKED">
+            <element variable="kTAG_KIND">
+                <item>:KIND-ENUMERATION</item>
+            </element>
+            <element variable="kTAG_LABEL">
+                <item key="en">Locked</item>
+            </element>
+            <element variable="kTAG_DEFINITION">
+                <item key="en"><![CDATA[This type indicates that the element is <i>locked</i>, which means that it is <i>not modifiable</i>. This means that the <i>value cannot be changed once the object has been committed</i>. If this type is missing, it means that the attribute can be modified at al times.]]></item>
+            </element>
+            <element variable="kTAG_SYNONYMS">
+                <item>kTYPE_LOCKED</item>
+                <item>LOCKED</item>
+            </element>
+        </TERM>
+        <NODE class="COntologyMasterVertex">
+        	<element variable="kTAG_CATEGORY">
+        		<item>Cardinality</item>
+        	</element>
+            <element variable="kTAG_KIND">
+                <item>:KIND-ENUMERATION</item>
+            </element>
+        </NODE>
+        <EDGE>
+            <element variable="kTAG_PREDICATE">:SUBCLASS-OF</element>
+            <element variable="kTAG_OBJECT">:ONTOLOGY:ENUM:TYPE:CARDINALITY</element>
+        </EDGE>
+    </UNIT>
+    
+    <!-- kTYPE_ARRAY -->
+    <UNIT>
+        <TERM NS="" LID="ARRAY">
+            <element variable="kTAG_KIND">
+                <item>:KIND-ENUMERATION</item>
+            </element>
+            <element variable="kTAG_LABEL">
+                <item key="en">Array</item>
+            </element>
+            <element variable="kTAG_DEFINITION">
+                <item key="en"><![CDATA[This type indicates that the attribute is a <i>list of values</i>, which means that the attribute is an <i>array of elements</i> of the provided data type. If this type is missing, it means that the attribute is a scalar element.]]></item>
+            </element>
+            <element variable="kTAG_SYNONYMS">
+                <item>kTYPE_ARRAY</item>
+                <item>ARRAY</item>
+            </element>
+        </TERM>
+        <NODE class="COntologyMasterVertex">
+        	<element variable="kTAG_CATEGORY">
+        		<item>Cardinality</item>
+        	</element>
+            <element variable="kTAG_KIND">
+                <item>:KIND-ENUMERATION</item>
+            </element>
+        </NODE>
+        <EDGE>
+            <element variable="kTAG_PREDICATE">:SUBCLASS-OF</element>
+            <element variable="kTAG_OBJECT">:ONTOLOGY:ENUM:TYPE:CARDINALITY</element>
+        </EDGE>
+    </UNIT>
+    
+    <!-- RELATIONSHIP TYPE ENUMERATIONS -->
+    
+    <UNIT>
+        <TERM NS=":ONTOLOGY:ENUM:TYPE" LID="RELATIONSHIP">
+            <element variable="kTAG_LABEL">
+                <item key="en">Relationship</item>
+            </element>
+            <element variable="kTAG_DEFINITION">
+                <item key="en"><![CDATA[<i>Relationship</i> types provide information on the sense of the relationship.]]></item>
+            </element>
+        </TERM>
+        <NODE class="COntologyMasterVertex">
+            <element variable="kTAG_CATEGORY">
+                <item>Enumerated set</item>
+            </element>
+        </NODE>
+        <EDGE>
+            <element variable="kTAG_PREDICATE">:SUBCLASS-OF</element>
+            <element variable="kTAG_OBJECT">:ONTOLOGY:ENUM:TYPE</element>
+        </EDGE>
+    </UNIT>
+    
+    <!-- kTYPE_RELATION_IN -->
+    <UNIT>
+        <TERM NS="" LID="RELATION-IN">
+            <element variable="kTAG_KIND">
+                <item>:KIND-ENUMERATION</item>
+            </element>
+            <element variable="kTAG_LABEL">
+                <item key="en">Incoming relationship</item>
+            </element>
+            <element variable="kTAG_DEFINITION">
+                <item key="en"><![CDATA[This type indicates an <i>incoming relationship</i>, in other words, <i>all the relationships that point to the current object</i>.]]></item>
+            </element>
+            <element variable="kTAG_SYNONYMS">
+                <item>kTYPE_RELATION_IN</item>
+                <item>RELATION-IN</item>
+            </element>
+        </TERM>
+        <NODE class="COntologyMasterVertex">
+        	<element variable="kTAG_CATEGORY">
+        		<item>Relationship</item>
+        	</element>
+            <element variable="kTAG_KIND">
+                <item>:KIND-ENUMERATION</item>
+            </element>
+        </NODE>
+        <EDGE>
+            <element variable="kTAG_PREDICATE">:SUBCLASS-OF</element>
+            <element variable="kTAG_OBJECT">:ONTOLOGY:ENUM:TYPE:RELATIONSHIP</element>
+        </EDGE>
+    </UNIT>
+    
+    <!-- kTYPE_RELATION_OUT -->
+    <UNIT>
+        <TERM NS="" LID="RELATION-OUT">
+            <element variable="kTAG_KIND">
+                <item>:KIND-ENUMERATION</item>
+            </element>
+            <element variable="kTAG_LABEL">
+                <item key="en">Outgoing relationship</item>
+            </element>
+            <element variable="kTAG_DEFINITION">
+                <item key="en"><![CDATA[This type indicates an <i>outgoing relationship</i>, in other words, <i>all the relationships that originate from the current object</i>.]]></item>
+            </element>
+            <element variable="kTAG_SYNONYMS">
+                <item>kTYPE_RELATION_OUT</item>
+                <item>RELATION-OUT</item>
+            </element>
+        </TERM>
+        <NODE class="COntologyMasterVertex">
+        	<element variable="kTAG_CATEGORY">
+        		<item>Relationship</item>
+        	</element>
+            <element variable="kTAG_KIND">
+                <item>:KIND-ENUMERATION</item>
+            </element>
+        </NODE>
+        <EDGE>
+            <element variable="kTAG_PREDICATE">:SUBCLASS-OF</element>
+            <element variable="kTAG_OBJECT">:ONTOLOGY:ENUM:TYPE:RELATIONSHIP</element>
+        </EDGE>
+    </UNIT>
+    
+    <!-- kTYPE_RELATION_ALL -->
+    <UNIT>
+        <TERM NS="" LID="RELATION-ALL">
+            <element variable="kTAG_KIND">
+                <item>:KIND-ENUMERATION</item>
+            </element>
+            <element variable="kTAG_LABEL">
+                <item key="en">All relationships</item>
+            </element>
+            <element variable="kTAG_DEFINITION">
+                <item key="en"><![CDATA[This type indicates <i>all relationships</i>, both <i>incoming and outgoing</i>.]]></item>
+            </element>
+            <element variable="kTAG_SYNONYMS">
+                <item>kTYPE_RELATION_ALL</item>
+                <item>RELATION-ALL</item>
+            </element>
+        </TERM>
+        <NODE class="COntologyMasterVertex">
+        	<element variable="kTAG_CATEGORY">
+        		<item>Relationship</item>
+        	</element>
+            <element variable="kTAG_KIND">
+                <item>:KIND-ENUMERATION</item>
+            </element>
+        </NODE>
+        <EDGE>
+            <element variable="kTAG_PREDICATE">:SUBCLASS-OF</element>
+            <element variable="kTAG_OBJECT">:ONTOLOGY:ENUM:TYPE:RELATIONSHIP</element>
+        </EDGE>
+    </UNIT>
+</ONTOLOGY>

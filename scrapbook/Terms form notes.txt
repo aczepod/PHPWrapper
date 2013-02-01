@@ -1,0 +1,26 @@
+TERMS FORM:
+==========
+
+The order of the fields should be:
+
+	kTAG_NAMESPACE
+	kTAG_LID
+	kTAG_LABEL
+	kTAG_DEFINITION
+	kTAG_SYNONYMS
+	kTAG_CATEGORY
+
+Rules for kTAG_NAMESPACE autocomplete:
+
+	- Field accepts all characters.
+	- Autocomplete search on
+		• Typed characters = kTAG_GID
+
+Rules for kTAG_LID autocomplete:
+
+	- Field accepts all characters except ':' and '.'.
+	- Autocomplete search on
+		• if no kTAG_NAMESPACE:
+			- Typed characters = kTAG_LID
+		• if kTAG_NAMESPACE there:
+			- [kTAG_NAMESPACE] : [Typed characters] = kTAG_GID

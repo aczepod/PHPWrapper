@@ -30,6 +30,13 @@
     	<element variable="kTAG_OBJECT">:IDENTIFICATION</element>
     </edge>
      
+    <!-- kTERM_PID -->
+	<edge>
+    	<element variable="kTAG_SUBJECT">:PID</element>
+    	<element variable="kTAG_PREDICATE">:SUBCLASS-OF</element>
+    	<element variable="kTAG_OBJECT">:IDENTIFICATION</element>
+    </edge>
+     
     <!-- kTERM_SYNONYMS -->
 	<edge>
     	<element variable="kTAG_SUBJECT">:SYNONYMS</element>

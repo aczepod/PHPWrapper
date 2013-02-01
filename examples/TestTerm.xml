@@ -1,0 +1,172 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ONTOLOGY
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:noNamespaceSchemaLocation="file:/Library/WebServer/Library/PHPWrapper/defines/Ontology.xsd">
+    
+    <!-- Test term -->
+    
+    <UNIT>
+         <TERM LID="NS">
+            <element variable="kTAG_LABEL">
+                <item key="en">Namespace</item>
+                <item key="it">Spazio nomi</item>
+            </element>
+            <element variable="kTAG_DEFINITION">
+                <item key="en"><![CDATA[A <i>namespace</i>.]]></item>
+                <item key="it"><![CDATA[Lo <i>spazio nomi</i>.]]></item>
+                <item key="en"><![CDATA[The <i>namespace</i>.]]></item>
+            </element>
+            <element variable="kTAG_SYNONYMS">
+                <item>NS</item>
+                <item>Namespace</item>
+            </element>
+            <element tag="6">
+                <item>CAT1</item>
+                <item>cat 2</item>
+            </element>
+            <element variable="kTAG_KIND">
+                <item>:KIND-NAMESPACE</item>
+            </element>
+            <element variable="kTAG_TYPE">
+                <item>:TYPE-NAMESPACE</item>
+            </element>
+            <element tag="1000">
+                <item>:An array item</item>
+            </element>
+            <element tag="1001">A scalar item</element>
+        </TERM>
+        <TERM LID="PREDICATE">
+            <element variable="kTAG_LABEL">
+                <item key="en">Predicate</item>
+            </element>
+            <element variable="kTAG_DEFINITION">
+                <item key="en"><![CDATA[<i>Predicate</i> node.]]></item>
+            </element>
+        </TERM>
+        <TERM NS="NS" LID="MASTER">
+            <element variable="kTAG_LABEL">
+                <item key="en">Master</item>
+            </element>
+            <element variable="kTAG_DEFINITION">
+                <item key="en"><![CDATA[<i>Master</i> node.]]></item>
+            </element>
+        </TERM>
+        <TERM NS="NS" LID="ALIAS1">
+            <element variable="kTAG_LABEL">
+                <item key="en">Alias 1</item>
+            </element>
+            <element variable="kTAG_DEFINITION">
+                <item key="en"><![CDATA[<i>Alias</i> uno.]]></item>
+            </element>
+        </TERM>
+        <TERM NS="NS" LID="ALIAS2">
+            <element variable="kTAG_LABEL">
+                <item key="en">Alias 2</item>
+            </element>
+            <element variable="kTAG_DEFINITION">
+                <item key="en"><![CDATA[<i>Alias</i> due.]]></item>
+            </element>
+        </TERM>
+        
+        <NODE class="COntologyAliasVertex" term="NS:ALIAS1">
+            <element variable="kTAG_PID">PID1</element>
+            <element variable="kTAG_CATEGORY">
+                <item>CAT1</item>
+                <item>CAT2</item>
+            </element>
+            <element variable="kTAG_KIND">
+                <item>:KIND-FEATURE</item>
+                <item>:KIND-SCALE</item>
+            </element>
+            <element variable="kTAG_TYPE">
+                <item>:TEXT</item>
+                <item>:ARRAY</item>
+            </element>
+            <element variable="kTAG_DESCRIPTION">
+                <item key="en"><![CDATA[This is an alias node which points to ALIAS1 master.]]></item>
+            </element>
+        </NODE>
+        <NODE class="COntologyAliasVertex" term="NS:ALIAS1">
+            <element variable="kTAG_PID">PID2</element>
+            <element variable="kTAG_CATEGORY">
+                <item>CAT3</item>
+                <item>CAT4</item>
+            </element>
+            <element variable="kTAG_KIND">
+                <item>:KIND-METHOD</item>
+            </element>
+            <element variable="kTAG_TYPE">
+                <item>:REQUIRED</item>
+            </element>
+            <element variable="kTAG_DESCRIPTION">
+                <item key="en"><![CDATA[This is another alias node which points to ALIAS1 master.]]></item>
+            </element>
+        </NODE>
+        <NODE class="COntologyMasterVertex" term="NS:ALIAS2">
+            <element variable="kTAG_DESCRIPTION">
+                <item key="en"><![CDATA[Second master node.]]></item>
+            </element>
+        </NODE>
+        <NODE class="COntologyMasterVertex" term="NS:MASTER">
+            <element variable="kTAG_DESCRIPTION">
+                <item key="en"><![CDATA[Original master node.]]></item>
+            </element>
+        </NODE>
+        <NODE class="COntologyAliasVertex" term="NS:MASTER">
+            <element variable="kTAG_PID">PID3</element>
+            <element variable="kTAG_CATEGORY">
+                <item>CAT1</item>
+            </element>
+            <element variable="kTAG_KIND">
+                <item>:KIND-1</item>
+            </element>
+            <element variable="kTAG_TYPE">
+                <item>:TEXT</item>
+            </element>
+            <element variable="kTAG_DESCRIPTION">
+                <item key="en"><![CDATA[MASTER alias 1.]]></item>
+            </element>
+        </NODE>
+        <NODE class="COntologyAliasVertex" term="NS:MASTER">
+            <element variable="kTAG_PID">PID4</element>
+            <element variable="kTAG_CATEGORY">
+                <item>CAT2</item>
+            </element>
+            <element variable="kTAG_KIND">
+                <item>:KIND-2</item>
+            </element>
+            <element variable="kTAG_TYPE">
+                <item>:FLOAT</item>
+            </element>
+            <element variable="kTAG_DESCRIPTION">
+                <item key="en"><![CDATA[MASTER alias 2.]]></item>
+            </element>
+        </NODE>
+
+        <EDGE>
+            <element variable="kTAG_SUBJECT" node="pid">PID1</element>
+            <element variable="kTAG_PREDICATE">PREDICATE</element>
+            <element variable="kTAG_OBJECT" node="pid">PID4</element>
+        </EDGE>
+        <EDGE>
+            <element variable="kTAG_SUBJECT" node="term">NS:ALIAS1</element>
+            <element variable="kTAG_PREDICATE">PREDICATE</element>
+            <element variable="kTAG_OBJECT" node="term">NS:MASTER</element>
+        </EDGE>
+        <EDGE>
+            <element variable="kTAG_SUBJECT" node="pid">PID1</element>
+            <element variable="kTAG_PREDICATE">PREDICATE</element>
+            <element variable="kTAG_OBJECT" node="pid">PID2</element>
+        </EDGE>
+        <EDGE>
+            <element variable="kTAG_SUBJECT" node="pid">PID1</element>
+            <element variable="kTAG_PREDICATE">PREDICATE</element>
+            <element variable="kTAG_OBJECT" node="term">NS:ALIAS2</element>
+        </EDGE>
+        <EDGE>
+            <element variable="kTAG_SUBJECT" node="term">NS:MASTER</element>
+            <element variable="kTAG_PREDICATE">PREDICATE</element>
+            <element variable="kTAG_OBJECT" node="term">NS:ALIAS2</element>
+        </EDGE>
+    </UNIT>
+ </ONTOLOGY>

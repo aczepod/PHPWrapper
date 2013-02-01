@@ -367,17 +367,16 @@ define( "kTYPE_REF_EDGE",						':REF-EDGE' );
 define( "kTYPE_REF_TAG",						':REF-TAG' );
 
 /**
- * REF-SELF.
+ * REF-USER.
  *
- * Self reference.
+ * User reference.
  *
- * This type represents the reference to an object of the same type, it is used by an alias
- * to reference its master. By definition it will have the same data type as the object that
- * hosts it.
+ * This type represents the reference to a user object, tag identifiers are by definition
+ * strings, {@link kTYPE_STRING}.
  *
- * Version 1: (kTYPE_REF_SELF)[:REF-SELF]
+ * Version 1: (kTYPE_REF_USER)[:REF-USER]
  */
-define( "kTYPE_REF_SELF",						':REF-SELF' );
+define( "kTYPE_REF_USER",						':REF-USER' );
 
 /*=======================================================================================
  *	STANDARD FORMAT TYPES																*

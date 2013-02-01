@@ -187,14 +187,29 @@ class COntologyAliasNode extends COntologyNode
 	/**
 	 * <h4>Relate to node</h4>
 	 *
-	 * We overload this method to ensure that subject vertex of the relationship is related
-	 * to a master node, the object vertex may be a master node.
+	 * We overload this method to mirror relationships between alias nodes to their
+	 * counterpart master nodes.
 	 *
-	 * If both vertices are related to a master node, we create and commit a new relation
-	 * with the same predicate between the related master nodes.
+	 * We first create the requested relationship, then we resolve both the subject and the
+	 * object, if it is also an alias, and we relate them with the same predicate.
 	 *
-	 * We require the connection parameter since both subject and object vertices must be
-	 * committed by this method, this also means that the edge will also be committed.
+	 * This means that:
+	 *
+	 * <ul>
+	 *	<li><i>ALIAS => MASTER</i>:
+	 *	 <ul>
+	 *		<li>ALIAS => MASTER
+	 *		<li>ALIAS.MASTER => MASTER
+	 *	 </ul>
+	 *	<li><i>ALIAS => ALIAS</i>:
+	 *	 <ul>
+	 *		<li>ALIAS => ALIAS
+	 *		<li>ALIAS.MASTER => ALIAS.MASTER
+	 *	 </ul>
+	 * </ul>
+	 *
+	 * We require the connection parameter here since both subject and object vertices must
+	 * be committed by this method, this implies that the edge will also be committed.
 	 *
 	 * @param mixed					$thePredicate		Predicate term object or reference.
 	 * @param mixed					$theObject			Object node object or reference.
@@ -217,7 +232,7 @@ class COntologyAliasNode extends COntologyNode
 				$this->Insert( $theConnection );
 			
 			//
-			// Check if related.
+			// Check if alias.
 			//
 			if( $this->offsetExists( kTAG_NODE ) )
 			{
@@ -225,7 +240,11 @@ class COntologyAliasNode extends COntologyNode
 				// Resolve object.
 				//
 				if( ! ($theObject instanceof COntologyNode) )
-					$theObject = $theObject->Resolve( $theConnection, $theObject, TRUE );
+					$theObject = self::NewObject( $theConnection, $theObject, TRUE );
+				
+				//
+				// Commit object.
+				//
 				elseif( ! $theObject->_IsCommitted() )
 					$theObject->Insert( $theConnection );
 				
@@ -235,29 +254,32 @@ class COntologyAliasNode extends COntologyNode
 				$edge = parent::RelateTo( $thePredicate, $theObject, $theConnection );
 				
 				//
-				// Resolve subject master node.
+				// Resolve subject master.
 				//
-				$subject = $this->NewObject( $theConnection,
-											 $this->offsetGet( kTAG_NODE ) );
+				$subject = $this;
+				while( ($id = $subject->offsetGet( kTAG_NODE )) !== NULL )
+					$subject = self::NewObject( $theConnection, $id, TRUE );
 				
 				//
-				// Resolve object master node.
+				// Resolve object master.
 				//
-				if( $theObject->offsetExists( kTAG_NODE ) )
-					$theObject = $this->NewObject( $theConnection,
-												   $theObject->offsetGet( kTAG_NODE ) );
+				$object = $theObject;
+				while( ($id = $object->offsetGet( kTAG_NODE )) !== NULL )
+					$object = self::NewObject( $theConnection, $id, TRUE );
 				
 				//
 				// Relate master nodes.
+				// Notice that we are relating two master nodes,
+				// which means that only that relationship will be instantiated.
 				//
-				$subject->RelateTo( $thePredicate, $theObject, $theConnection );
+				$subject->RelateTo( $thePredicate, $object, $theConnection );
 				
 				return $edge;														// ==>
 			
 			} // Subject is an alias.
 		
 			throw new Exception
-				( "Missing subject vertex node reference",
+				( "Missing master vertex node reference",
 				  kERROR_STATE );												// !@! ==>
 		
 		} // Provided connection.
@@ -267,6 +289,76 @@ class COntologyAliasNode extends COntologyNode
 			  kERROR_MISSING );													// !@! ==>
 
 	} // RelateTo.
+
+		
+
+/*=======================================================================================
+ *																						*
+ *								STATIC RESOLUTION INTERFACE								*
+ *																						*
+ *======================================================================================*/
+
+
+	 
+	/*===================================================================================
+	 *	Resolve																			*
+	 *==================================================================================*/
+
+	/**
+	 * <h4>Resolve a node</h4>
+	 *
+	 * In this class we add the persistent identifier, {@link kTAG_PID}, to the list of
+	 * properties to be checked, with this option we return the first match by default.
+	 *
+	 * @param CConnection			$theConnection		Server, database or container.
+	 * @param mixed					$theIdentifier		Node identifier or term reference.
+	 * @param boolean				$doThrow			If <tt>TRUE</tt> raise an exception.
+	 *
+	 * @static
+	 * @return COntologyNode		Matched node, found nodes or <tt>NULL</tt>.
+	 *
+	 * @throws Exception
+	 */
+	static function Resolve( CConnection $theConnection, $theIdentifier, $doThrow = FALSE )
+	{
+		//
+		// Call parent method.
+		//
+		$result = parent::Resolve( $theConnection, $theIdentifier, FALSE );
+		if( $result !== NULL )
+			return $result;															// ==>
+	
+		//
+		// Resolve container.
+		//
+		$container = static::ResolveClassContainer( $theConnection, TRUE );
+		
+		//
+		// Make query.
+		//
+		$query = $container->NewQuery();
+		$query->AppendStatement(
+			CQueryStatement::Equals(
+				kTAG_PID, $theIdentifier, kTYPE_STRING ) );
+		
+		//
+		// Perform query.
+		//
+		$object = $container->Query( $query, NULL, NULL, NULL, NULL, TRUE );
+		if( $object !== NULL )
+			return CPersistentObject::DocumentObject( $object );					// ==>
+
+		//
+		// Raise exception.
+		//
+		if( $doThrow )
+			throw new Exception
+				( "Node not found",
+				  kERROR_NOT_FOUND );										// !@! ==>
+		
+		return NULL;															// ==>
+
+	} // Resolve.
 		
 
 
@@ -322,14 +414,14 @@ class COntologyAliasNode extends COntologyNode
 			//
 			// Create master node.
 			//
+			$tags = array( kTAG_TERM, kTAG_CATEGORY, kTAG_KIND,
+						   kTAG_TYPE, kTAG_INPUT, kTAG_EXAMPLES );
 			$node = new COntologyMasterVertex();
-			$node->Term( $this->Term() );
-			if( $this->offsetExists( kTAG_CATEGORY ) )
-				$node->Category( $this->Category(), TRUE );
-			if( $this->offsetExists( kTAG_KIND ) )
-				$node->Kind( $this->Kind(), TRUE );
-			if( $this->offsetExists( kTAG_TYPE ) )
-				$node->Type( $this->Type(), TRUE );
+			foreach( $tags as $tag )
+			{
+				if( $this->offsetExists( $tag ) )
+					$node->offsetSet( $tag, $this->offsetGet( $tag ) );
+			}
 			
 			//
 			// Insert and reference master node.

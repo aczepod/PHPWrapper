@@ -78,6 +78,14 @@ define( "kPATH_MYWRAPPER_LIBRARY_CLASS",	kPATH_MYWRAPPER_LIBRARY_ROOT."/classes"
  */
 define( "kPATH_MYWRAPPER_LIBRARY_FUNCTION",	kPATH_MYWRAPPER_LIBRARY_ROOT."/functions" );
 
+/**
+ * Library data scripts and files.
+ *
+ * This value defines the <b><i>absolute</i></b> path to the MyWrapper library data
+ * directory.
+ */
+define( "kPATH_MYWRAPPER_LIBRARY_DATA",	kPATH_MYWRAPPER_LIBRARY_ROOT."/data" );
+
 /*=======================================================================================
  *	SESSION GLOBALS																		*
  *======================================================================================*/

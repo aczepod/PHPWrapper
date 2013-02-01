@@ -1,0 +1,28 @@
+NODES FORM:
+==========
+
+Once the term is selected you must search all nodes connected to the term by taking the
+kTAG_NODES field from the term and searching for all terms:
+node."_id" $IN term.kTAG_NODES
+
+The order of the fields should be:
+
+	kTAG_DESCRIPTION	Text area con lingua
+	kTAG_CATEGORY		Un text field con possibilità di inserire più di un elemento univoco (no dups)
+	kTAG_KIND			Un combo box (selezione multipla) di elementi presi da una lista gerarchica
+	kTAG_TYPE			Un combo box (selezione multipla) di elementi presi da una lista gerarchica
+	kTAG_INPUT			Un popup menu (selezione singola) di elementi presi da una lista gerarchica
+	kTAG_PATTERN		Un text field (regular expression string)
+	kTAG_LENGTH			Un text field (integer)
+	kTAG_MIN_VAL		Un text field (integer)
+	kTAG_MAX_VAL		Un text field (integer)
+	kTAG_EXAMPLES		Un text area con possibilità di inserire più di un elemento
+
+The currently selected term "_id" should go in the node's kTAG_TERM field (hidden).
+
+When saving the node:
+
+	- if the term has no related nodes (term.kTAG_NODES is empty)
+		• the class parameter of the SetNode service must be COntologyMasterVertex
+	- else
+		• the class parameter of the SetNode service must be COntologyAliasVertex

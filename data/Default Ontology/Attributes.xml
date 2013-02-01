@@ -1,0 +1,663 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ONTOLOGY
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:noNamespaceSchemaLocation="file:/Library/WebServer/Library/PHPWrapper/defines/Ontology.xsd">
+    
+    <!-- Identification attributes -->
+    
+	<!-- kTERM_NID -->
+    <UNIT>
+         <TERM NS="" LID="NID">
+            <element variable="kTAG_LABEL">
+                <item key="en">Native identifier</item>
+            </element>
+            <element variable="kTAG_DEFINITION">
+                <item key="en"><![CDATA[The <i>native identifier</i> uniquely identifies the object <i>within its container</i>, this attribute is <i>specific to the storage engine</i> and will have in general a native data type.]]></item>
+            </element>
+            <element variable="kTAG_SYNONYMS">
+                <item>kTERM_NID</item>
+            </element>
+        </TERM>
+        <NODE class="COntologyMasterVertex">
+        	<element variable="kTAG_CATEGORY">
+        		<item>Identification</item>
+        	</element>
+            <element variable="kTAG_KIND">
+                <item>:KIND-FEATURE</item>
+                <item>:KIND-SCALE</item>
+            </element>
+            <element variable="kTAG_DESCRIPTION">
+                <item key="en"><![CDATA[This attribute does not have a tag, since all objects share it.]]></item>
+            </element>
+        </NODE>
+        <EDGE>
+            <element variable="kTAG_PREDICATE">:SUBCLASS-OF</element>
+            <element variable="kTAG_OBJECT">:ONTOLOGY:ATTRIBUTE</element>
+        </EDGE>
+    </UNIT>
+    
+	<!-- 01 -->
+    <!-- kTERM_LID -->
+    <UNIT>
+        <NODE class="COntologyMasterVertex" term=":LID">
+        	<element variable="kTAG_CATEGORY">
+        		<item>Identification</item>
+        	</element>
+        </NODE>
+        <EDGE>
+            <element variable="kTAG_PREDICATE">:SUBCLASS-OF</element>
+            <element variable="kTAG_OBJECT">:ONTOLOGY:ATTRIBUTE</element>
+        </EDGE>
+    </UNIT>
+    
+	<!-- 02 -->
+    <!-- kTERM_GID -->
+    <UNIT>
+        <NODE class="COntologyMasterVertex" term=":GID">
+        	<element variable="kTAG_CATEGORY">
+        		<item>Identification</item>
+        	</element>
+        </NODE>
+        <EDGE>
+            <element variable="kTAG_PREDICATE">:SUBCLASS-OF</element>
+            <element variable="kTAG_OBJECT">:ONTOLOGY:ATTRIBUTE</element>
+        </EDGE>
+    </UNIT>
+    
+	<!-- 03 -->
+    <!-- kTERM_UID -->
+    <UNIT>
+        <NODE class="COntologyMasterVertex" term=":UID">
+        	<element variable="kTAG_CATEGORY">
+        		<item>Identification</item>
+        	</element>
+        </NODE>
+        <EDGE>
+            <element variable="kTAG_PREDICATE">:SUBCLASS-OF</element>
+            <element variable="kTAG_OBJECT">:ONTOLOGY:ATTRIBUTE</element>
+        </EDGE>
+     </UNIT>
+    
+	<!-- 04 -->
+    <!-- kTERM_PID -->
+    <UNIT>
+        <NODE class="COntologyMasterVertex" term=":PID">
+        	<element variable="kTAG_CATEGORY">
+        		<item>Identification</item>
+        	</element>
+        </NODE>
+        <EDGE>
+            <element variable="kTAG_PREDICATE">:SUBCLASS-OF</element>
+            <element variable="kTAG_OBJECT">:ONTOLOGY:ATTRIBUTE</element>
+        </EDGE>
+     </UNIT>
+    
+	<!-- 05 -->
+    <!-- kTERM_SYNONYMS -->
+    <UNIT>
+        <NODE class="COntologyMasterVertex" term=":SYNONYMS">
+        	<element variable="kTAG_CATEGORY">
+        		<item>Identification</item>
+        	</element>
+        </NODE>
+        <EDGE>
+            <element variable="kTAG_PREDICATE">:SUBCLASS-OF</element>
+            <element variable="kTAG_OBJECT">:ONTOLOGY:ATTRIBUTE</element>
+        </EDGE>
+    </UNIT>
+    
+    <!-- Classification attributes -->
+    
+	<!-- 06 -->
+    <!-- kTERM_CATEGORY -->
+    <UNIT>
+        <NODE class="COntologyMasterVertex" term=":CATEGORY">
+        	<element variable="kTAG_CATEGORY">
+        		<item>Classification</item>
+        	</element>
+        </NODE>
+        <EDGE>
+            <element variable="kTAG_PREDICATE">:SUBCLASS-OF</element>
+            <element variable="kTAG_OBJECT">:ONTOLOGY:ATTRIBUTE</element>
+        </EDGE>
+    </UNIT>
+    
+	<!-- 07 -->
+    <!-- kTERM_KIND -->
+    <UNIT>
+        <NODE class="COntologyMasterVertex" term=":KIND">
+        	<element variable="kTAG_CATEGORY">
+        		<item>Classification</item>
+        	</element>
+        </NODE>
+        <EDGE>
+            <element variable="kTAG_PREDICATE">:SUBCLASS-OF</element>
+            <element variable="kTAG_OBJECT">:ONTOLOGY:ATTRIBUTE</element>
+        </EDGE>
+    </UNIT>
+    
+	<!-- 08 -->
+    <!-- kTERM_TYPE -->
+    <UNIT>
+        <NODE class="COntologyMasterVertex" term=":TYPE">
+        	<element variable="kTAG_CATEGORY">
+        		<item>Classification</item>
+        	</element>
+        </NODE>
+        <EDGE>
+            <element variable="kTAG_PREDICATE">:SUBCLASS-OF</element>
+            <element variable="kTAG_OBJECT">:ONTOLOGY:ATTRIBUTE</element>
+        </EDGE>
+    </UNIT>
+    
+	<!-- 09 -->
+    <!-- kTERM_CLASS -->
+    <UNIT>
+        <NODE class="COntologyMasterVertex" term=":CLASS">
+        	<element variable="kTAG_CATEGORY">
+        		<item>Classification</item>
+        	</element>
+        </NODE>
+        <EDGE>
+            <element variable="kTAG_PREDICATE">:SUBCLASS-OF</element>
+            <element variable="kTAG_OBJECT">:ONTOLOGY:ATTRIBUTE</element>
+        </EDGE>
+    </UNIT>
+    
+	<!-- 10 -->
+    <!-- kTERM_NAMESPACE -->
+    <UNIT>
+        <NODE class="COntologyMasterVertex" term=":NAMESPACE">
+        	<element variable="kTAG_CATEGORY">
+        		<item>Classification</item>
+        	</element>
+        </NODE>
+        <EDGE>
+            <element variable="kTAG_PREDICATE">:SUBCLASS-OF</element>
+            <element variable="kTAG_OBJECT">:ONTOLOGY:ATTRIBUTE</element>
+        </EDGE>
+    </UNIT>
+    
+    <!-- Representation attributes -->
+    
+	<!-- 11 -->
+    <!-- kTERM_INPUT -->
+    <UNIT>
+        <NODE class="COntologyMasterVertex" term=":INPUT">
+        	<element variable="kTAG_CATEGORY">
+        		<item>Representation</item>
+        	</element>
+        </NODE>
+        <EDGE>
+            <element variable="kTAG_PREDICATE">:SUBCLASS-OF</element>
+            <element variable="kTAG_OBJECT">:ONTOLOGY:ATTRIBUTE</element>
+        </EDGE>
+    </UNIT>
+    
+	<!-- 12 -->
+    <!-- kTERM_PATTERN -->
+    <UNIT>
+        <NODE class="COntologyMasterVertex" term=":PATTERN">
+        	<element variable="kTAG_CATEGORY">
+        		<item>Representation</item>
+        	</element>
+        </NODE>
+        <EDGE>
+            <element variable="kTAG_PREDICATE">:SUBCLASS-OF</element>
+            <element variable="kTAG_OBJECT">:ONTOLOGY:ATTRIBUTE</element>
+        </EDGE>
+    </UNIT>
+    
+	<!-- 13 -->
+    <!-- kTERM_LENGTH -->
+    <UNIT>
+        <NODE class="COntologyMasterVertex" term=":LENGTH">
+        	<element variable="kTAG_CATEGORY">
+        		<item>Representation</item>
+        	</element>
+        </NODE>
+        <EDGE>
+            <element variable="kTAG_PREDICATE">:SUBCLASS-OF</element>
+            <element variable="kTAG_OBJECT">:ONTOLOGY:ATTRIBUTE</element>
+        </EDGE>
+    </UNIT>
+    
+	<!-- 14 -->
+    <!-- kTERM_MIN_VAL -->
+    <UNIT>
+        <NODE class="COntologyMasterVertex" term=":MIN-VAL">
+        	<element variable="kTAG_CATEGORY">
+        		<item>Representation</item>
+        	</element>
+        </NODE>
+        <EDGE>
+            <element variable="kTAG_PREDICATE">:SUBCLASS-OF</element>
+            <element variable="kTAG_OBJECT">:ONTOLOGY:ATTRIBUTE</element>
+        </EDGE>
+    </UNIT>
+    
+	<!-- 15 -->
+    <!-- kTERM_MAX_VAL -->
+    <UNIT>
+        <NODE class="COntologyMasterVertex" term=":MAX-VAL">
+        	<element variable="kTAG_CATEGORY">
+        		<item>Representation</item>
+        	</element>
+        </NODE>
+        <EDGE>
+            <element variable="kTAG_PREDICATE">:SUBCLASS-OF</element>
+            <element variable="kTAG_OBJECT">:ONTOLOGY:ATTRIBUTE</element>
+        </EDGE>
+    </UNIT>
+    
+    <!-- Description attributes -->
+    
+	<!-- 16 -->
+    <!-- kTERM_LABEL -->
+    <UNIT>
+        <NODE class="COntologyMasterVertex" term=":LABEL">
+        	<element variable="kTAG_CATEGORY">
+        		<item>Description</item>
+        	</element>
+        </NODE>
+        <EDGE>
+            <element variable="kTAG_PREDICATE">:SUBCLASS-OF</element>
+            <element variable="kTAG_OBJECT">:ONTOLOGY:ATTRIBUTE</element>
+        </EDGE>
+    </UNIT>
+    
+	<!-- 17 -->
+    <!-- kTERM_DEFINITION -->
+    <UNIT>
+        <NODE class="COntologyMasterVertex" term=":DEFINITION">
+        	<element variable="kTAG_CATEGORY">
+        		<item>Description</item>
+        	</element>
+        </NODE>
+        <EDGE>
+            <element variable="kTAG_PREDICATE">:SUBCLASS-OF</element>
+            <element variable="kTAG_OBJECT">:ONTOLOGY:ATTRIBUTE</element>
+        </EDGE>
+    </UNIT>
+    
+	<!-- 18 -->
+    <!-- kTERM_DESCRIPTION -->
+    <UNIT>
+        <NODE class="COntologyMasterVertex" term=":DESCRIPTION">
+        	<element variable="kTAG_CATEGORY">
+        		<item>Description</item>
+        	</element>
+        </NODE>
+        <EDGE>
+            <element variable="kTAG_PREDICATE">:SUBCLASS-OF</element>
+            <element variable="kTAG_OBJECT">:ONTOLOGY:ATTRIBUTE</element>
+        </EDGE>
+    </UNIT>
+    
+	<!-- 19 -->
+    <!-- kTERM_NOTES -->
+    <UNIT>
+        <NODE class="COntologyMasterVertex" term=":NOTES">
+        	<element variable="kTAG_CATEGORY">
+        		<item>Description</item>
+        	</element>
+        </NODE>
+        <EDGE>
+            <element variable="kTAG_PREDICATE">:SUBCLASS-OF</element>
+            <element variable="kTAG_OBJECT">:ONTOLOGY:ATTRIBUTE</element>
+        </EDGE>
+    </UNIT>
+    
+	<!-- 20 -->
+    <!-- kTERM_EXAMPLES -->
+    <UNIT>
+        <NODE class="COntologyMasterVertex" term=":EXAMPLES">
+        	<element variable="kTAG_CATEGORY">
+        		<item>Description</item>
+        	</element>
+        </NODE>
+        <EDGE>
+            <element variable="kTAG_PREDICATE">:SUBCLASS-OF</element>
+            <element variable="kTAG_OBJECT">:ONTOLOGY:ATTRIBUTE</element>
+        </EDGE>
+    </UNIT>
+    
+    <!-- Authorship attributes -->
+    
+	<!-- 21 -->
+    <!-- kTERM_AUTHORS -->
+    <UNIT>
+        <NODE class="COntologyMasterVertex" term=":AUTHORS">
+        	<element variable="kTAG_CATEGORY">
+        		<item>Authorship</item>
+        	</element>
+        </NODE>
+        <EDGE>
+            <element variable="kTAG_PREDICATE">:SUBCLASS-OF</element>
+            <element variable="kTAG_OBJECT">:ONTOLOGY:ATTRIBUTE</element>
+        </EDGE>
+    </UNIT>
+    
+	<!-- 22 -->
+    <!-- kTERM_ACKNOWLEDGMENTS -->
+    <UNIT>
+        <NODE class="COntologyMasterVertex" term=":ACKNOWLEDGMENTS">
+        	<element variable="kTAG_CATEGORY">
+        		<item>Authorship</item>
+        	</element>
+        </NODE>
+        <EDGE>
+            <element variable="kTAG_PREDICATE">:SUBCLASS-OF</element>
+            <element variable="kTAG_OBJECT">:ONTOLOGY:ATTRIBUTE</element>
+        </EDGE>
+    </UNIT>
+    
+	<!-- 23 -->
+    <!-- kTERM_BIBLIOGRAPHY -->
+    <UNIT>
+        <NODE class="COntologyMasterVertex" term=":BIBLIOGRAPHY">
+        	<element variable="kTAG_CATEGORY">
+        		<item>Authorship</item>
+        	</element>
+        </NODE>
+        <EDGE>
+            <element variable="kTAG_PREDICATE">:SUBCLASS-OF</element>
+            <element variable="kTAG_OBJECT">:ONTOLOGY:ATTRIBUTE</element>
+        </EDGE>
+    </UNIT>
+    
+    <!-- Reference attributes -->
+    
+	<!-- 24 -->
+    <!-- kTERM_TERM -->
+    <UNIT>
+        <NODE class="COntologyMasterVertex" term=":TERM">
+        	<element variable="kTAG_CATEGORY">
+        		<item>Reference</item>
+        	</element>
+        </NODE>
+        <EDGE>
+            <element variable="kTAG_PREDICATE">:SUBCLASS-OF</element>
+            <element variable="kTAG_OBJECT">:ONTOLOGY:ATTRIBUTE</element>
+        </EDGE>
+    </UNIT>
+    
+	<!-- 25 -->
+    <!-- kTERM_NODE -->
+    <UNIT>
+        <NODE class="COntologyMasterVertex" term=":NODE">
+        	<element variable="kTAG_CATEGORY">
+        		<item>Reference</item>
+        	</element>
+        </NODE>
+        <EDGE>
+            <element variable="kTAG_PREDICATE">:SUBCLASS-OF</element>
+            <element variable="kTAG_OBJECT">:ONTOLOGY:ATTRIBUTE</element>
+        </EDGE>
+    </UNIT>
+    
+	<!-- 26 -->
+    <!-- kTERM_SUBJECT -->
+    <UNIT>
+        <NODE class="COntologyMasterVertex" term=":SUBJECT">
+        	<element variable="kTAG_CATEGORY">
+        		<item>Reference</item>
+        	</element>
+        </NODE>
+        <EDGE>
+            <element variable="kTAG_PREDICATE">:SUBCLASS-OF</element>
+            <element variable="kTAG_OBJECT">:ONTOLOGY:ATTRIBUTE</element>
+        </EDGE>
+    </UNIT>
+    
+	<!-- 27 -->
+    <!-- kTERM_OBJECT -->
+    <UNIT>
+        <NODE class="COntologyMasterVertex" term=":OBJECT">
+        	<element variable="kTAG_CATEGORY">
+        		<item>Reference</item>
+        	</element>
+        </NODE>
+        <EDGE>
+            <element variable="kTAG_PREDICATE">:SUBCLASS-OF</element>
+            <element variable="kTAG_OBJECT">:ONTOLOGY:ATTRIBUTE</element>
+        </EDGE>
+    </UNIT>
+    
+	<!-- 28 -->
+    <!-- kTERM_PREDICATE -->
+    <UNIT>
+        <NODE class="COntologyMasterVertex" term=":PREDICATE">
+        	<element variable="kTAG_CATEGORY">
+        		<item>Reference</item>
+        	</element>
+        </NODE>
+        <EDGE>
+            <element variable="kTAG_PREDICATE">:SUBCLASS-OF</element>
+            <element variable="kTAG_OBJECT">:ONTOLOGY:ATTRIBUTE</element>
+        </EDGE>
+    </UNIT>
+    
+	<!-- 29 -->
+    <!-- kTERM_PATH -->
+    <UNIT>
+        <NODE class="COntologyMasterVertex" term=":PATH">
+        	<element variable="kTAG_CATEGORY">
+        		<item>Reference</item>
+        	</element>
+        </NODE>
+        <EDGE>
+            <element variable="kTAG_PREDICATE">:SUBCLASS-OF</element>
+            <element variable="kTAG_OBJECT">:ONTOLOGY:ATTRIBUTE</element>
+        </EDGE>
+    </UNIT>
+    
+    <!-- Reference collections -->
+    
+	<!-- 30 -->
+    <!-- kTERM_NAMESPACE_REFS -->
+    <UNIT>
+        <NODE class="COntologyMasterVertex" term=":NAMESPACE-REFS">
+        	<element variable="kTAG_CATEGORY">
+        		<item>Collections</item>
+        	</element>
+        </NODE>
+        <EDGE>
+            <element variable="kTAG_PREDICATE">:SUBCLASS-OF</element>
+            <element variable="kTAG_OBJECT">:ONTOLOGY:ATTRIBUTE</element>
+        </EDGE>
+    </UNIT>
+    
+	<!-- 31 -->
+    <!-- kTERM_NODES -->
+    <UNIT>
+        <NODE class="COntologyMasterVertex" term=":NODES">
+        	<element variable="kTAG_CATEGORY">
+        		<item>Collections</item>
+        	</element>
+        </NODE>
+        <EDGE>
+            <element variable="kTAG_PREDICATE">:SUBCLASS-OF</element>
+            <element variable="kTAG_OBJECT">:ONTOLOGY:ATTRIBUTE</element>
+        </EDGE>
+    </UNIT>
+    
+	<!-- 32 -->
+    <!-- kTERM_EDGES -->
+    <UNIT>
+        <NODE class="COntologyMasterVertex" term=":EDGES">
+        	<element variable="kTAG_CATEGORY">
+        		<item>Collections</item>
+        	</element>
+        </NODE>
+        <EDGE>
+            <element variable="kTAG_PREDICATE">:SUBCLASS-OF</element>
+            <element variable="kTAG_OBJECT">:ONTOLOGY:ATTRIBUTE</element>
+        </EDGE>
+    </UNIT>
+    
+	<!-- 33 -->
+    <!-- kTERM_FEATURES -->
+    <UNIT>
+        <NODE class="COntologyMasterVertex" term=":FEATURES">
+        	<element variable="kTAG_CATEGORY">
+        		<item>Collections</item>
+        	</element>
+            <element variable="kTAG_DESCRIPTION">
+                <item key="en"><![CDATA[This attribute represents the <i>list of tag objects</i> that <i>refer to the current term</i> as a <i>feature</i>. It is structured as an <i>array of tag identifiers</i>.]]></item>
+            </element>
+        </NODE>
+        <EDGE>
+            <element variable="kTAG_PREDICATE">:SUBCLASS-OF</element>
+            <element variable="kTAG_OBJECT">:ONTOLOGY:ATTRIBUTE</element>
+        </EDGE>
+    </UNIT>
+    
+	<!-- 34 -->
+    <!-- kTERM_METHODS -->
+    <UNIT>
+        <NODE class="COntologyMasterVertex" term=":METHODS">
+        	<element variable="kTAG_CATEGORY">
+        		<item>Collections</item>
+        	</element>
+            <element variable="kTAG_DESCRIPTION">
+                <item key="en"><![CDATA[This attribute represents the <i>list of tag objects</i> that <i>refer to the current term</i> as a <i>method</i> or <i>feature modifier</i>. It is structured as an <i>array of tag identifiers</i>.]]></item>
+            </element>
+        </NODE>
+        <EDGE>
+            <element variable="kTAG_PREDICATE">:SUBCLASS-OF</element>
+            <element variable="kTAG_OBJECT">:ONTOLOGY:ATTRIBUTE</element>
+        </EDGE>
+    </UNIT>
+    
+	<!-- 35 -->
+    <!-- kTERM_SCALES -->
+    <UNIT>
+        <NODE class="COntologyMasterVertex" term=":SCALES">
+        	<element variable="kTAG_CATEGORY">
+        		<item>Collections</item>
+        	</element>
+            <element variable="kTAG_DESCRIPTION">
+                <item key="en"><![CDATA[This attribute represents the <i>list of tag objects</i> that <i>refer to the current term</i> as a <i>scale</i> or <i>unit</i>. It is structured as an <i>array of tag identifiers</i>.]]></item>
+            </element>
+        </NODE>
+        <EDGE>
+            <element variable="kTAG_PREDICATE">:SUBCLASS-OF</element>
+            <element variable="kTAG_OBJECT">:ONTOLOGY:ATTRIBUTE</element>
+        </EDGE>
+    </UNIT>
+    
+    <!-- User attributes -->
+    
+	<!-- 36 -->
+    <!-- kTERM_USER_NAME -->
+    <UNIT>
+        <NODE class="COntologyMasterVertex" term=":USER-NAME">
+        	<element variable="kTAG_CATEGORY">
+        		<item>Users</item>
+        	</element>
+        </NODE>
+        <EDGE>
+            <element variable="kTAG_PREDICATE">:SUBCLASS-OF</element>
+            <element variable="kTAG_OBJECT">:ONTOLOGY:ATTRIBUTE</element>
+        </EDGE>
+    </UNIT>
+    
+	<!-- 37 -->
+    <!-- kTERM_USER_CODE -->
+    <UNIT>
+        <NODE class="COntologyMasterVertex" term=":USER-CODE">
+        	<element variable="kTAG_CATEGORY">
+        		<item>Users</item>
+        	</element>
+        </NODE>
+        <EDGE>
+            <element variable="kTAG_PREDICATE">:SUBCLASS-OF</element>
+            <element variable="kTAG_OBJECT">:ONTOLOGY:ATTRIBUTE</element>
+        </EDGE>
+    </UNIT>
+    
+	<!-- 38 -->
+    <!-- kTERM_USER_PASS -->
+    <UNIT>
+        <NODE class="COntologyMasterVertex" term=":USER-PASS">
+        	<element variable="kTAG_CATEGORY">
+        		<item>Users</item>
+        	</element>
+        </NODE>
+        <EDGE>
+            <element variable="kTAG_PREDICATE">:SUBCLASS-OF</element>
+            <element variable="kTAG_OBJECT">:ONTOLOGY:ATTRIBUTE</element>
+        </EDGE>
+    </UNIT>
+    
+	<!-- 39 -->
+    <!-- kTERM_USER_MAIL -->
+    <UNIT>
+        <NODE class="COntologyMasterVertex" term=":USER-MAIL">
+        	<element variable="kTAG_CATEGORY">
+        		<item>Users</item>
+        	</element>
+        </NODE>
+        <EDGE>
+            <element variable="kTAG_PREDICATE">:SUBCLASS-OF</element>
+            <element variable="kTAG_OBJECT">:ONTOLOGY:ATTRIBUTE</element>
+        </EDGE>
+    </UNIT>
+    
+	<!-- 40 -->
+    <!-- kTERM_USER_ROLE -->
+    <UNIT>
+        <NODE class="COntologyMasterVertex" term=":USER-ROLE">
+        	<element variable="kTAG_CATEGORY">
+        		<item>Users</item>
+        	</element>
+        </NODE>
+        <EDGE>
+            <element variable="kTAG_PREDICATE">:SUBCLASS-OF</element>
+            <element variable="kTAG_OBJECT">:ONTOLOGY:ATTRIBUTE</element>
+        </EDGE>
+    </UNIT>
+    
+	<!-- 41 -->
+    <!-- kTERM_USER_PROFILE -->
+    <UNIT>
+        <NODE class="COntologyMasterVertex" term=":USER-PROFILE">
+        	<element variable="kTAG_CATEGORY">
+        		<item>Users</item>
+        	</element>
+        </NODE>
+        <EDGE>
+            <element variable="kTAG_PREDICATE">:SUBCLASS-OF</element>
+            <element variable="kTAG_OBJECT">:ONTOLOGY:ATTRIBUTE</element>
+        </EDGE>
+    </UNIT>
+    
+	<!-- 42 -->
+    <!-- kTERM_USER_MANAGER -->
+    <UNIT>
+        <NODE class="COntologyMasterVertex" term=":USER-MANAGER">
+        	<element variable="kTAG_CATEGORY">
+        		<item>Users</item>
+        	</element>
+        </NODE>
+        <EDGE>
+            <element variable="kTAG_PREDICATE">:SUBCLASS-OF</element>
+            <element variable="kTAG_OBJECT">:ONTOLOGY:ATTRIBUTE</element>
+        </EDGE>
+    </UNIT>
+    
+	<!-- 43 -->
+    <!-- kTERM_USER_DOMAIN -->
+    <UNIT>
+        <NODE class="COntologyMasterVertex" term=":USER-DOMAIN">
+        	<element variable="kTAG_CATEGORY">
+        		<item>Users</item>
+        	</element>
+        </NODE>
+        <EDGE>
+            <element variable="kTAG_PREDICATE">:SUBCLASS-OF</element>
+            <element variable="kTAG_OBJECT">:ONTOLOGY:ATTRIBUTE</element>
+        </EDGE>
+    </UNIT>
+ </ONTOLOGY>

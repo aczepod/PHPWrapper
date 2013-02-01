@@ -1,0 +1,244 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ONTOLOGY
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:noNamespaceSchemaLocation="file:/Library/WebServer/Library/PHPWrapper/defines/Ontology.xsd">
+        
+    <!-- Status -->
+    
+    <UNIT>
+        <TERM NS=":ONTOLOGY:ENUM" LID="STATUS">
+            <element variable="kTAG_LABEL">
+                <item key="en">Status</item>
+            </element>
+            <element variable="kTAG_DEFINITION">
+                <item key="en"><![CDATA[<i>Status</i> attributes indicate the <i>state</i>, <i>level</i> or <i>outcome</i> of an event, this set of values defines the <i>severity level</i> for the result of an operation.]]></item>
+            </element>
+        </TERM>
+        <NODE class="COntologyMasterVertex">
+        	<element variable="kTAG_CATEGORY">
+        		<item>Enumerated set</item>
+        	</element>
+        </NODE>
+        <EDGE>
+            <element variable="kTAG_PREDICATE">:SUBCLASS-OF</element>
+            <element variable="kTAG_OBJECT">:ONTOLOGY:ENUM</element>
+        </EDGE>
+    </UNIT>
+        
+    <!-- kSTATUS_IDLE -->
+    <UNIT>
+        <TERM NS=":STATUS" LID="0">
+            <element variable="kTAG_KIND">
+                <item>:KIND-ENUMERATION</item>
+            </element>
+            <element variable="kTAG_LABEL">
+                <item key="en">Idle</item>
+            </element>
+            <element variable="kTAG_DEFINITION">
+                <item key="en"><![CDATA[This code indicates <i>no errors</i>, this state can be equated to an <i>idle state.]]></item>
+            </element>
+            <element variable="kTAG_SYNONYMS">
+                <item>kSTATUS_IDLE</item>
+                <item>0</item>
+            </element>
+        </TERM>
+        <NODE class="COntologyMasterVertex">
+        	<element variable="kTAG_CATEGORY">
+        		<item>Status</item>
+        	</element>
+            <element variable="kTAG_KIND">
+                <item>:KIND-ENUMERATION</item>
+            </element>
+        </NODE>
+        <EDGE>
+            <element variable="kTAG_PREDICATE">:SUBCLASS-OF</element>
+            <element variable="kTAG_OBJECT">:ONTOLOGY:ENUM:STATUS</element>
+        </EDGE>
+    </UNIT>
+        
+    <!-- kSTATUS_NOTICE -->
+    <UNIT>
+        <TERM NS=":STATUS" LID="10">
+            <element variable="kTAG_KIND">
+                <item>:KIND-ENUMERATION</item>
+            </element>
+            <element variable="kTAG_LABEL">
+                <item key="en">Notice</item>
+            </element>
+            <element variable="kTAG_DEFINITION">
+                <item key="en"><![CDATA[This code indicates a <i>notice</i>. A notice is an <i>informative</i> message that <i>does not imply an error or warning</i>, nor a situation that should be handled; it can be considered as statistical data.]]></item>
+            </element>
+            <element variable="kTAG_SYNONYMS">
+                <item>kSTATUS_NOTICE</item>
+                <item>10</item>
+            </element>
+        </TERM>
+        <NODE class="COntologyMasterVertex">
+        	<element variable="kTAG_CATEGORY">
+        		<item>Status</item>
+        	</element>
+            <element variable="kTAG_KIND">
+                <item>:KIND-ENUMERATION</item>
+            </element>
+        </NODE>
+        <EDGE>
+            <element variable="kTAG_PREDICATE">:SUBCLASS-OF</element>
+            <element variable="kTAG_OBJECT">:ONTOLOGY:ENUM:STATUS</element>
+        </EDGE>
+    </UNIT>
+        
+    <!-- kSTATUS_MESSAGE -->
+    <UNIT>
+        <TERM NS=":STATUS" LID="20">
+            <element variable="kTAG_KIND">
+                <item>:KIND-ENUMERATION</item>
+            </element>
+            <element variable="kTAG_LABEL">
+                <item key="en">Message</item>
+            </element>
+            <element variable="kTAG_DEFINITION">
+                <item key="en"><![CDATA[This code indicates a <i>message</i>. A message is an <i>informative</i> message that is addressed to somebody, although it <i>does not imply an error or warning</i>, it was <i>issued to a receiving party</i>.]]></item>
+            </element>
+            <element variable="kTAG_SYNONYMS">
+                <item>kSTATUS_MESSAGE</item>
+                <item>20</item>
+            </element>
+        </TERM>
+        <NODE class="COntologyMasterVertex">
+        	<element variable="kTAG_CATEGORY">
+        		<item>Status</item>
+        	</element>
+            <element variable="kTAG_KIND">
+                <item>:KIND-ENUMERATION</item>
+            </element>
+        </NODE>
+        <EDGE>
+            <element variable="kTAG_PREDICATE">:SUBCLASS-OF</element>
+            <element variable="kTAG_OBJECT">:ONTOLOGY:ENUM:STATUS</element>
+        </EDGE>
+    </UNIT>
+        
+    <!-- kSTATUS_WARNING -->
+    <UNIT>
+        <TERM NS=":STATUS" LID="30">
+            <element variable="kTAG_KIND">
+                <item>:KIND-ENUMERATION</item>
+            </element>
+            <element variable="kTAG_LABEL">
+                <item key="en">Warning</item>
+            </element>
+            <element variable="kTAG_DEFINITION">
+                <item key="en"><![CDATA[This code indicates a <i>warning</i> Warnings are <i>informative</i> data that indicate a <i>potential problem</i>, although they <i>do not imply an error</i>, they indicate a potential problem or an <i>issue that should be addressed</i> at least at a later stage.]]></item>
+            </element>
+            <element variable="kTAG_SYNONYMS">
+                <item>kSTATUS_WARNING</item>
+                <item>30</item>
+            </element>
+        </TERM>
+        <NODE class="COntologyMasterVertex">
+        	<element variable="kTAG_CATEGORY">
+        		<item>Status</item>
+        	</element>
+            <element variable="kTAG_KIND">
+                <item>:KIND-ENUMERATION</item>
+            </element>
+        </NODE>
+        <EDGE>
+            <element variable="kTAG_PREDICATE">:SUBCLASS-OF</element>
+            <element variable="kTAG_OBJECT">:ONTOLOGY:ENUM:STATUS</element>
+        </EDGE>
+    </UNIT>
+        
+    <!-- kSTATUS_ERROR -->
+    <UNIT>
+        <TERM NS=":STATUS" LID="40">
+            <element variable="kTAG_KIND">
+                <item>:KIND-ENUMERATION</item>
+            </element>
+            <element variable="kTAG_LABEL">
+                <item key="en">Error</item>
+            </element>
+            <element variable="kTAG_DEFINITION">
+                <item key="en"><![CDATA[This code indicates an <i>error</i>. Errors indicate that something <i>prevented an operation from being performed</i>, this does not necessarily mean that the whole process is halted, but that the <i>results of an operation were not be as expected</i>.]]></item>
+            </element>
+            <element variable="kTAG_SYNONYMS">
+                <item>kSTATUS_ERROR</item>
+                <item>40</item>
+            </element>
+        </TERM>
+        <NODE class="COntologyMasterVertex">
+        	<element variable="kTAG_CATEGORY">
+        		<item>Status</item>
+        	</element>
+            <element variable="kTAG_KIND">
+                <item>:KIND-ENUMERATION</item>
+            </element>
+        </NODE>
+        <EDGE>
+            <element variable="kTAG_PREDICATE">:SUBCLASS-OF</element>
+            <element variable="kTAG_OBJECT">:ONTOLOGY:ENUM:STATUS</element>
+        </EDGE>
+    </UNIT>
+        
+    <!-- kSTATUS_FATAL -->
+    <UNIT>
+        <TERM NS=":STATUS" LID="50">
+            <element variable="kTAG_KIND">
+                <item>:KIND-ENUMERATION</item>
+            </element>
+            <element variable="kTAG_LABEL">
+                <item key="en">Fatal</item>
+            </element>
+            <element variable="kTAG_DEFINITION">
+                <item key="en"><![CDATA[This code indicates a <i>fatal error</i>. Fatal errors result in <i>stopping the whole process</i>: in this case the error will prevent other operations from being performed and the <i>whole process should be halted</i>.]]></item>
+            </element>
+            <element variable="kTAG_SYNONYMS">
+                <item>kSTATUS_FATAL</item>
+                <item>50</item>
+            </element>
+        </TERM>
+        <NODE class="COntologyMasterVertex">
+        	<element variable="kTAG_CATEGORY">
+        		<item>Status</item>
+        	</element>
+            <element variable="kTAG_KIND">
+                <item>:KIND-ENUMERATION</item>
+            </element>
+        </NODE>
+        <EDGE>
+            <element variable="kTAG_PREDICATE">:ENUM-OF</element>
+            <element variable="kTAG_OBJECT">:STATUS:40</element>
+        </EDGE>
+    </UNIT>
+        
+    <!-- kSTATUS_BUG -->
+    <UNIT>
+        <TERM NS=":STATUS" LID="60">
+            <element variable="kTAG_KIND">
+                <item>:KIND-ENUMERATION</item>
+            </element>
+            <element variable="kTAG_LABEL">
+                <item key="en">Bug</item>
+            </element>
+            <element variable="kTAG_DEFINITION">
+                <item key="en"><![CDATA[This code indicates a <i>bug</i>. Bugs, as opposed to errors, result from <i>internal causes independant from external factors</i>. A bug indicates that an <i>operation will never execute as stated</i>, it does not necessarily mean that it is fatal, but rather that the <i>behaviour of an operation does not correspond to its declaration</i>.]]></item>
+            </element>
+            <element variable="kTAG_SYNONYMS">
+                <item>kSTATUS_BUG</item>
+                <item>60</item>
+            </element>
+        </TERM>
+        <NODE class="COntologyMasterVertex">
+        	<element variable="kTAG_CATEGORY">
+        		<item>Status</item>
+        	</element>
+            <element variable="kTAG_KIND">
+                <item>:KIND-ENUMERATION</item>
+            </element>
+        </NODE>
+        <EDGE>
+            <element variable="kTAG_PREDICATE">:ENUM-OF</element>
+            <element variable="kTAG_OBJECT">:STATUS:40</element>
+        </EDGE>
+    </UNIT>
+ </ONTOLOGY>

@@ -227,6 +227,60 @@ class CNode extends CPersistentObject
 
 	 
 	/*===================================================================================
+	 *	PID																				*
+	 *==================================================================================*/
+
+	/**
+	 * <h4>Manage persistent identifier</h4>
+	 *
+	 * The <i>persistent identifier</i>, {@link kTAG_PID}, holds a string value which
+	 * represents the object's persistent identifier. This value should uniquely identify
+	 * the object across implementations and should not change once the object has been
+	 * committed.
+	 *
+	 * This attribute becomes necessary when the object does not have a global unique
+	 * identifier and its native identifier is not persistent. In nodes this is true
+	 * because the {@link Term()}, which is its global identifier, is not unique and its
+	 * native identifier, {@link NID()}, is a non persistent sequence number: this
+	 * attribute can be used to set a value which can be used to differentiate nodes which
+	 * point to the same term and that may have different native identifiers in different
+	 * implementations.
+	 *
+	 * The method accepts a parameter which represents either the new value or the requested
+	 * operation, depending on its type:
+	 *
+	 * <ul>
+	 *	<li><tt>NULL</tt>: Return the current value.
+	 *	<li><tt>FALSE</tt>: Delete the current value.
+	 *	<li><i>other</i>: Set the value with the provided parameter.
+	 * </ul>
+	 *
+	 * The second parameter is a boolean which if <tt>TRUE</tt> will return the <i>old</i>
+	 * value when replacing an existing value; if <tt>FALSE</tt>, it will return the
+	 * currently set value.
+	 *
+	 * Note that, while this method allows the creation, modification and deletion of this
+	 * property, the hosting object may prevent some of these actions, by default this
+	 * attribute is locked when the object has the {@link _IsCommitted()} status.
+	 *
+	 * @param mixed					$theValue			Persistent identifier or operation.
+	 * @param boolean				$getOld				<tt>TRUE</tt> get old value.
+	 *
+	 * @access public
+	 * @return string				<i>New</i>, <i>old</i> value or <tt>NULL</tt>.
+	 *
+	 * @uses ManageOffset()
+	 *
+	 * @see kTAG_PID
+	 */
+	public function PID( $theValue = NULL, $getOld = FALSE )
+	{
+		return ManageOffset( $this, kTAG_PID, $theValue, $getOld );					// ==>
+
+	} // PID.
+
+	 
+	/*===================================================================================
 	 *	Term																			*
 	 *==================================================================================*/
 
@@ -410,8 +464,11 @@ class CNode extends CPersistentObject
 	/**
 	 * <h4>Handle offset before setting it</h4>
 	 *
-	 * In this class we ensure that the {@link kTAG_KIND} offset is an array, ArrayObject
-	 * instances are not counted as an array.
+	 * In this class we ensure that the {@link kTAG_KIND} and {@link kTAG_DESCRIPTION}
+	 * offsets are an arrays, ArrayObject instances are not counted as an array.
+	 *
+	 * We also ensure that the persistent identifier, {@link kTAG_PID}, is not modified if
+	 * the object is committed.
 	 *
 	 * @param reference			   &$theOffset			Offset.
 	 * @param reference			   &$theValue			Value to set at offset.
@@ -425,20 +482,20 @@ class CNode extends CPersistentObject
 	protected function _Preset( &$theOffset, &$theValue )
 	{
 		//
-		// Ensure kind is array.
+		// Intercept identifiers.
 		//
-		if( ($theOffset == kTAG_KIND)
-		 && ($theValue !== NULL)
-		 && (! is_array( $theValue )) )
+		$offsets = array( kTAG_PID );
+		if( $this->_IsCommitted()
+		 && in_array( $theOffset, $offsets ) )
 			throw new Exception
-				( "Invalid type for the [$theOffset] offset: "
-				 ."it must be an array",
-				  kERROR_PARAMETER );											// !@! ==>
+				( "You cannot modify the [$theOffset] offset: "
+				 ."the object is committed",
+				  kERROR_LOCKED );												// !@! ==>
 		
 		//
-		// Check description type.
+		// Ensure kind and description are arrays.
 		//
-		$offsets = array( kTAG_DESCRIPTION );
+		$offsets = array( kTAG_KIND, kTAG_DESCRIPTION );
 		if( in_array( $theOffset, $offsets )
 		 && ($theValue !== NULL)
 		 && (! is_array( $theValue )) )
@@ -453,6 +510,47 @@ class CNode extends CPersistentObject
 		parent::_Preset( $theOffset, $theValue );
 	
 	} // _Preset.
+
+	 
+	/*===================================================================================
+	 *	_Preunset																		*
+	 *==================================================================================*/
+
+	/**
+	 * <h4>Handle offset before unsetting it</h4>
+	 *
+	 * In this class we prevent the modification of persistent attributes, in this class:
+	 * {@link kTAG_PID}.
+	 *
+	 * @param reference			   &$theOffset			Offset.
+	 *
+	 * @access protected
+	 *
+	 * @throws Exception
+	 *
+	 * @uses _IsCommitted()
+	 *
+	 * @see kTAG_PID
+	 */
+	protected function _Preunset( &$theOffset )
+	{
+		//
+		// Intercept identifiers.
+		//
+		$offsets = array( kTAG_PID );
+		if( $this->_IsCommitted()
+		 && in_array( $theOffset, $offsets ) )
+			throw new Exception
+				( "You cannot modify the [$theOffset] offset: "
+				 ."the object is committed",
+				  kERROR_LOCKED );												// !@! ==>
+		
+		//
+		// Call parent method.
+		//
+		parent::_Preunset( $theOffset );
+	
+	} // _Preunset.
 		
 
 

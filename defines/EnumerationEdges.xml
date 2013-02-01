@@ -369,13 +369,6 @@
     	<element variable="kTAG_OBJECT">:TYPES</element>
     </edge>
     
-	<!-- kTYPE_REF_SELF -->
-	<edge>
-    	<element variable="kTAG_SUBJECT">:REF-SELF</element>
-    	<element variable="kTAG_PREDICATE">:SUBCLASS-OF</element>
-    	<element variable="kTAG_OBJECT">:TYPES</element>
-    </edge>
-    
     <!-- STANDARD FORMAT TYPE ENUMERATIONS -->
     
 	<!-- kTYPE_META -->

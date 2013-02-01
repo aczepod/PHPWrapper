@@ -31,6 +31,7 @@
     <!-- kTERM_CLASS -->
     <unit>
         <node class="COntologyMasterVertex">
+            <element variable="kTAG_PID">:_terms.:CLASS</element>
             <element variable="kTAG_TERM">:CLASS</element>
             <element variable="kTAG_KIND">
                 <item>:KIND-FEATURE</item>
@@ -79,6 +80,7 @@
     <!-- kTERM_GID -->
     <unit>
         <node class="COntologyAliasVertex">
+            <element variable="kTAG_PID">:_terms.:GID</element>
             <element variable="kTAG_TERM">:GID</element>
             <element variable="kTAG_KIND">
                 <item>:KIND-FEATURE</item>
@@ -133,6 +135,7 @@
     <!-- kTERM_SYNONYMS -->
     <unit>
         <node class="COntologyAliasVertex">
+            <element variable="kTAG_PID">:_terms.:SYNONYMS</element>
             <element variable="kTAG_TERM">:SYNONYMS</element>
             <element variable="kTAG_KIND">
                 <item>:KIND-FEATURE</item>
@@ -159,6 +162,7 @@
     <!-- kTERM_TERM -->
     <unit>
         <node class="COntologyAliasVertex">
+            <element variable="kTAG_PID">:_terms.:TERM</element>
             <element variable="kTAG_TERM">:TERM</element>
             <element variable="kTAG_KIND">
                 <item>:KIND-FEATURE</item>
@@ -186,6 +190,7 @@
     <!-- kTERM_KIND -->
     <unit>
         <node class="COntologyAliasVertex">
+            <element variable="kTAG_PID">:_terms.:KIND</element>
             <element variable="kTAG_TERM">:KIND</element>
             <element variable="kTAG_KIND">
                 <item>:KIND-FEATURE</item>
@@ -268,33 +273,6 @@
 				This attribute is a <i>list of strings</i>, each representing the definition in
 				a <i>different language</i>. The structure is an array in which the <i>key is
 				the language code</i> and the <i>value is the definition</i>.
-				]]>
-            </element>
-        </node>
-        <edges>
-            <edge>
-                <element variable="kTAG_PREDICATE">:ATTRIBUTE-OF</element>
-                <element variable="kTAG_OBJECT">:_terms</element>
-            </edge>
-        </edges>
-    </unit>
-
-    <!-- kTERM_EXAMPLES -->
-    <unit>
-        <node class="COntologyAliasVertex">
-            <element variable="kTAG_TERM">:EXAMPLES</element>
-            <element variable="kTAG_KIND">
-                <item>:KIND-FEATURE</item>
-                <item>:KIND-SCALE</item>
-            </element>
-            <element variable="kTAG_TYPE">
-                <item>:TEXT</item>
-                <item>:ARRAY</item>
-            </element>
-            <element variable="kTAG_DESCRIPTION" key="en"><![CDATA[The <i>examples</i> of a term represent
-				a <i>list</i> of <i>use-cases</i> or <i>examples</i> that illustrate the
-				<i>usage</i> of the <i>object defined by the term</i>. It is a list of strings
-				in which there is no language information.
 				]]>
             </element>
         </node>
@@ -439,6 +417,7 @@
     <!-- kTERM_NID -->
     <unit>
         <node class="COntologyAliasVertex">
+            <element variable="kTAG_PID">:_nodes.:NID</element>
             <element variable="kTAG_TERM">:NID</element>
             <element variable="kTAG_KIND">
                 <item>:KIND-FEATURE</item>
@@ -461,9 +440,37 @@
         </edges>
     </unit>
 
+    <!-- kTERM_PID -->
+    <unit>
+        <node class="COntologyAliasVertex">
+            <element variable="kTAG_TERM">:PID</element>
+            <element variable="kTAG_KIND">
+                <item>:KIND-FEATURE</item>
+                <item>:KIND-SCALE</item>
+            </element>
+            <element variable="kTAG_TYPE">
+                <item>:TEXT</item>
+                <item>:LOCKED</item>
+            </element>
+            <element variable="kTAG_DESCRIPTION" key="en"><![CDATA[The <i>persistent identifier</i> of a node is
+        	a string that can be used to identify a node regardless of its term and native
+        	identifier, it is used to uniquely identify and retrieve specific alias nodes
+        	across implementations.
+            ]]>
+            </element>
+        </node>
+        <edges>
+            <edge>
+                <element variable="kTAG_PREDICATE">:ATTRIBUTE-OF</element>
+                <element variable="kTAG_OBJECT">:_nodes</element>
+            </edge>
+        </edges>
+    </unit>
+
     <!-- kTERM_CLASS -->
     <unit>
         <node class="COntologyMasterVertex">
+            <element variable="kTAG_PID">:_nodes.:CLASS</element>
             <element variable="kTAG_TERM">:CLASS</element>
             <element variable="kTAG_KIND">
                 <item>:KIND-FEATURE</item>
@@ -486,6 +493,7 @@
     <!-- kTERM_TERM -->
     <unit>
         <node class="COntologyAliasVertex">
+            <element variable="kTAG_PID">:_nodes.:TERM</element>
             <element variable="kTAG_TERM">:TERM</element>
             <element variable="kTAG_KIND">
                 <item>:KIND-FEATURE</item>
@@ -513,6 +521,7 @@
     <!-- kTERM_NODE -->
     <unit>
         <node class="COntologyAliasVertex">
+            <element variable="kTAG_PID">:_nodes.:NODE</element>
             <element variable="kTAG_TERM">:NODE</element>
             <element variable="kTAG_KIND">
                 <item>:KIND-FEATURE</item>
@@ -545,6 +554,7 @@
     <!-- kTERM_CATEGORY -->
     <unit>
         <node class="COntologyAliasVertex">
+            <element variable="kTAG_PID">:_nodes.:CATEGORY</element>
             <element variable="kTAG_TERM">:CATEGORY</element>
             <element variable="kTAG_KIND">
                 <item>:KIND-FEATURE</item>
@@ -569,6 +579,7 @@
     <!-- kTERM_KIND -->
     <unit>
         <node class="COntologyAliasVertex">
+            <element variable="kTAG_PID">:_nodes.:KIND</element>
             <element variable="kTAG_TERM">:KIND</element>
             <element variable="kTAG_KIND">
                 <item>:KIND-FEATURE</item>
@@ -617,6 +628,7 @@
     <!-- kTERM_TYPE -->
     <unit>
         <node class="COntologyAliasVertex">
+            <element variable="kTAG_PID">:_nodes.:TYPE</element>
             <element variable="kTAG_TERM">:TYPE</element>
             <element variable="kTAG_KIND">
                 <item>:KIND-FEATURE</item>
@@ -798,6 +810,7 @@
     <!-- kTERM_NID -->
     <unit>
         <node class="COntologyAliasVertex">
+            <element variable="kTAG_PID">:_edges.:NID</element>
             <element variable="kTAG_TERM">:NID</element>
             <element variable="kTAG_KIND">
                 <item>:KIND-FEATURE</item>
@@ -823,6 +836,7 @@
     <!-- kTERM_CLASS -->
     <unit>
         <node class="COntologyMasterVertex">
+            <element variable="kTAG_PID">:_edges.:CLASS</element>
             <element variable="kTAG_TERM">:CLASS</element>
             <element variable="kTAG_KIND">
                 <item>:KIND-FEATURE</item>
@@ -845,6 +859,7 @@
     <!-- kTERM_GID -->
     <unit>
         <node class="COntologyAliasVertex">
+            <element variable="kTAG_PID">:_edges.:GID</element>
             <element variable="kTAG_TERM">:GID</element>
             <element variable="kTAG_KIND">
                 <item>:KIND-FEATURE</item>
@@ -874,6 +889,7 @@
     <!-- kTERM_UID -->
     <unit>
         <node class="COntologyAliasVertex">
+            <element variable="kTAG_PID">:_edges.:UID</element>
             <element variable="kTAG_TERM">:UID</element>
             <element variable="kTAG_KIND">
                 <item>:KIND-FEATURE</item>
@@ -983,6 +999,7 @@
     <!-- kTERM_NID -->
     <unit>
         <node class="COntologyAliasVertex">
+            <element variable="kTAG_PID">:_tags.:NID</element>
             <element variable="kTAG_TERM">:NID</element>
             <element variable="kTAG_KIND">
                 <item>:KIND-FEATURE</item>
@@ -1008,6 +1025,7 @@
     <!-- kTERM_CLASS -->
     <unit>
         <node class="COntologyMasterVertex">
+            <element variable="kTAG_PID">:_tags.:CLASS</element>
             <element variable="kTAG_TERM">:CLASS</element>
             <element variable="kTAG_KIND">
                 <item>:KIND-FEATURE</item>
@@ -1030,6 +1048,7 @@
     <!-- kTERM_GID -->
     <unit>
         <node class="COntologyAliasVertex">
+            <element variable="kTAG_PID">:_tags.:GID</element>
             <element variable="kTAG_TERM">:GID</element>
             <element variable="kTAG_KIND">
                 <item>:KIND-FEATURE</item>
@@ -1058,6 +1077,7 @@
     <!-- kTERM_UID -->
     <unit>
         <node class="COntologyAliasVertex">
+            <element variable="kTAG_PID">:_tags.:UID</element>
             <element variable="kTAG_TERM">:UID</element>
             <element variable="kTAG_KIND">
                 <item>:KIND-FEATURE</item>
@@ -1119,6 +1139,7 @@
     <!-- kTERM_TYPE -->
     <unit>
         <node class="COntologyAliasVertex">
+            <element variable="kTAG_PID">:_tags.:TYPE</element>
             <element variable="kTAG_TERM">:TYPE</element>
             <element variable="kTAG_KIND">
                 <item>:KIND-FEATURE</item>
@@ -1219,6 +1240,7 @@
     <!-- kTERM_INPUT -->
     <unit>
         <node class="COntologyAliasVertex">
+            <element variable="kTAG_PID">:_tags.:INPUT</element>
             <element variable="kTAG_TERM">:INPUT</element>
             <element variable="kTAG_KIND">
                 <item>:KIND-FEATURE</item>
@@ -1269,6 +1291,7 @@
     <!-- kTERM_PATTERN -->
     <unit>
         <node class="COntologyAliasVertex">
+            <element variable="kTAG_PID">:_tags.:PATTERN</element>
             <element variable="kTAG_TERM">:PATTERN</element>
             <element variable="kTAG_CLASS">COntologyAliasVertex</element>
             <element variable="kTAG_KIND">
@@ -1295,6 +1318,7 @@
     <!-- kTERM_LENGTH -->
     <unit>
         <node class="COntologyAliasVertex">
+            <element variable="kTAG_PID">:_tags.:LENGTH</element>
             <element variable="kTAG_TERM">:LENGTH</element>
             <element variable="kTAG_CLASS">COntologyAliasVertex</element>
             <element variable="kTAG_KIND">
@@ -1321,6 +1345,7 @@
     <!-- kTERM_MIN_VAL -->
     <unit>
         <node class="COntologyAliasVertex">
+            <element variable="kTAG_PID">:_tags.:MIN-VAL</element>
             <element variable="kTAG_TERM">:MIN-VAL</element>
             <element variable="kTAG_CLASS">COntologyAliasVertex</element>
             <element variable="kTAG_KIND">
@@ -1348,6 +1373,7 @@
     <!-- kTERM_MAX_VAL -->
     <unit>
         <node class="COntologyAliasVertex">
+            <element variable="kTAG_PID">:_tags.:MAX-VAL</element>
             <element variable="kTAG_TERM">:MAX-VAL</element>
             <element variable="kTAG_CLASS">COntologyAliasVertex</element>
             <element variable="kTAG_KIND">
@@ -1377,6 +1403,7 @@
     <!-- kTERM_GID -->
     <unit>
         <node class="COntologyAliasVertex">
+            <element variable="kTAG_PID">:_users.:GID</element>
             <element variable="kTAG_TERM">:GID</element>
             <element variable="kTAG_KIND">
                 <item>:KIND-FEATURE</item>
@@ -1404,6 +1431,7 @@
     <!-- kTERM_CLASS -->
     <unit>
         <node class="COntologyMasterVertex">
+            <element variable="kTAG_PID">:_users.:CLASS</element>
             <element variable="kTAG_TERM">:CLASS</element>
             <element variable="kTAG_KIND">
                 <item>:KIND-FEATURE</item>

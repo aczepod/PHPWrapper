@@ -426,6 +426,8 @@ try
 	$node0 = new MyClass();
 	echo( '<h5>$node0->Term( $termB );</h5>' );
 	$node0->Term( $termB );
+	echo( '<h5>$node0->PID( (string) $node_container.".".$termB->GID() );</h5>' );
+	$node0->PID( (string) $node_container.".".$termB->GID() );
 	echo( '<h5>$node0->Category( array( "categort1", "category2" ), TRUE );</h5>' );
 	$node0->Category( array( "categort1", "category2" ), TRUE );
 	echo( '<h5>$node0->Kind( "kind1", TRUE );</h5>' );
