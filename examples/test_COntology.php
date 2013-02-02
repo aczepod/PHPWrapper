@@ -190,7 +190,8 @@ try
 	$files = array( "$dir/Namespaces.xml", "$dir/Terms.xml", "$dir/Categories.xml",
 					"$dir/Attributes.xml", "$dir/Predicates.xml", "$dir/Types.xml",
 					"$dir/Kinds.xml", "$dir/Operators.xml", "$dir/Status.xml",
-					"$dir/Inputs.xml", "$dir/Term.xml" );
+					"$dir/Inputs.xml", "$dir/Term.xml", "$dir/Node.xml", "$dir/Edge.xml",
+					"$dir/Tag.xml" );
 	echo( '<h4>Load categories</h4>' );
 	echo( '<h5>$test = new MyClass( $database );</h5>' );
 	$test = new MyClass( $database );

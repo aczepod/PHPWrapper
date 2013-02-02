@@ -112,7 +112,7 @@ class COntologyMasterNode extends COntologyNode
 	 * <h4>Relate to node</h4>
 	 *
 	 * We overload this method to mirror relationships between alias nodes to their
-	 * counterpart master nodes.
+	 * counterpart master nodes, this is governed by the <tt>$doPropagate</tt> switch.
 	 *
 	 * We first create the requested relationship, then, if the object is an alias, we
 	 * relate the current object with the object's master.
@@ -140,11 +140,13 @@ class COntologyMasterNode extends COntologyNode
 	 * @param mixed					$thePredicate		Predicate term object or reference.
 	 * @param mixed					$theObject			Object node object or reference.
 	 * @param CConnection			$theConnection		Server, database or container.
+	 * @param boolean				$doPropagate		TRUE means relate masters.
 	 *
 	 * @access public
 	 * @return COntologyEdge		Edge object.
 	 */
-	public function RelateTo( $thePredicate, $theObject, $theConnection = NULL )
+	public function RelateTo( $thePredicate, $theObject, $theConnection = NULL,
+														 $doPropagate = TRUE )
 	{
 		//
 		// Check connection.
@@ -177,29 +179,39 @@ class COntologyMasterNode extends COntologyNode
 				//
 				// Relate aliases.
 				//
-				$edge = parent::RelateTo( $thePredicate, $theObject, $theConnection );
+				$edge
+					= parent::RelateTo(
+						$thePredicate, $theObject, $theConnection, $doPropagate );
 				
 				//
-				// Resolve object master.
+				// Relate masters.
 				//
-				if( ($id = $theObject->offsetGet( kTAG_NODE )) !== NULL )
+				if( $doPropagate )
 				{
 					//
-					// Resolve object.
+					// Resolve object master.
 					//
-					$object = self::NewObject( $theConnection, $id, TRUE );
-					while( ($id = $object->offsetGet( kTAG_NODE )) !== NULL )
+					if( ($id = $theObject->offsetGet( kTAG_NODE )) !== NULL )
+					{
+						//
+						// Resolve object.
+						//
 						$object = self::NewObject( $theConnection, $id, TRUE );
+						while( ($id = $object->offsetGet( kTAG_NODE )) !== NULL )
+							$object = self::NewObject( $theConnection, $id, TRUE );
 				
-					//
-					// Relate to object master.
-					// This is actually calling this method,
-					// since both vertices are masters,
-					// only one relationship will be created.
-					//
-					parent::RelateTo( $thePredicate, $object, $theConnection );
+						//
+						// Relate to object master.
+						// This is actually calling this method,
+						// since both vertices are masters,
+						// only one relationship will be created.
+						//
+						parent::RelateTo(
+							$thePredicate, $object, $theConnection, $doPropagate );
 				
-				} // Object is alias.
+					} // Object is alias.
+				
+				} // Propagate relationship.
 				
 				return $edge;														// ==>
 			

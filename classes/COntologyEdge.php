@@ -83,6 +83,11 @@ require_once( kPATH_MYWRAPPER_LIBRARY_CLASS."/CEdge.php" );
  * provide preferably database instances, since this class may have to commit nodes and
  * terms.
  *
+ * Note that when relating nodes from the node object, you have the option of automatically
+ * relating eventual alias master nodes, here this is not implemented on purpose (code is
+ * there, but commented), because there is no easy way of providing a parameter to prevent
+ * it.
+ *
  *	@package	MyWrapper
  *	@subpackage	Ontology
  */
@@ -1384,6 +1389,11 @@ class COntologyEdge extends CEdge
 	 * Note that you should provide either a database connection or the <i>node</i>
 	 * container to this method in order to make it work!
 	 *
+	 * This is the method that should take care of alias to master replication of the
+	 * relationships, the code is commented: if you want to automatically relate alias's
+	 * master nodes, uncomment that section of use the node's RelateTo() method in which
+	 * you can choose whether or not to relate masters.
+	 *
 	 * @param reference			   &$theConnection		Server, database or container.
 	 * @param reference			   &$theModifiers		Commit options.
 	 *
@@ -1433,7 +1443,7 @@ class COntologyEdge extends CEdge
 					$this->offsetGet( kTAG_OBJECT ),
 					kTAG_EDGES,
 					1 );
-				
+/*	
 				//
 				// Handle alias subject.
 				//
@@ -1457,7 +1467,7 @@ class COntologyEdge extends CEdge
 					$master->RelateTo( $this->mPredicate, $object, $theConnection );
 				
 				} // Subject is alias.
-				
+*/
 			} // Not yet committed.
 		
 		} // Insert or replace.

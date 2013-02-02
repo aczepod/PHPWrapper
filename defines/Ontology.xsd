@@ -173,6 +173,15 @@
                 </xs:annotation>
                 <xs:element maxOccurs="unbounded" ref="element"/>
             </xs:sequence>
+            
+            <xs:attribute name="master" type="xs:boolean">
+                <xs:annotation>
+                    <xs:documentation xml:lang="en">
+                        This switch determines whether the relationship will be propagated
+                        to the master nodes if the current vertices are alias nodes.
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:attribute>
         </xs:complexType>
     </xs:element>
     

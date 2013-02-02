@@ -1497,9 +1497,26 @@ echo( "$file<br>" );
 			$object->Object( $theCache[ 'node' ][ 0 ] );
 		
 		//
+		// Resolve subject.
+		//
+		$subject = $object->Subject();
+		if( ! ($subject instanceof COntologyNode) )
+			$subject
+				= COntologyNode::NewObject(
+					$theDatabase, (int) $subject, TRUE );
+		
+		//
 		// Save edge.
 		//
-		$object->Insert( $theDatabase );
+		if( ($theElement[ 'master' ] !== NULL)
+		 && (strtolower( (string) $theElement[ 'master' ] ) == 'false') )
+			$subject
+				->RelateTo(
+					$object->Predicate(), $object->Object(), $theDatabase, FALSE );
+		else
+			$subject
+				->RelateTo(
+					$object->Predicate(), $object->Object(), $theDatabase, TRUE );
 
 	} // LoadXMLOntologyEdge.
 

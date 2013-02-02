@@ -188,7 +188,7 @@ class COntologyAliasNode extends COntologyNode
 	 * <h4>Relate to node</h4>
 	 *
 	 * We overload this method to mirror relationships between alias nodes to their
-	 * counterpart master nodes.
+	 * counterpart master nodes, this is governed by the <tt>$doPropagate</tt> switch.
 	 *
 	 * We first create the requested relationship, then we resolve both the subject and the
 	 * object, if it is also an alias, and we relate them with the same predicate.
@@ -214,11 +214,13 @@ class COntologyAliasNode extends COntologyNode
 	 * @param mixed					$thePredicate		Predicate term object or reference.
 	 * @param mixed					$theObject			Object node object or reference.
 	 * @param CConnection			$theConnection		Server, database or container.
+	 * @param boolean				$doPropagate		TRUE means relate masters.
 	 *
 	 * @access public
 	 * @return COntologyEdge		Edge object.
 	 */
-	public function RelateTo( $thePredicate, $theObject, $theConnection = NULL )
+	public function RelateTo( $thePredicate, $theObject, $theConnection = NULL,
+														 $doPropagate = TRUE )
 	{
 		//
 		// Check connection.
@@ -251,28 +253,38 @@ class COntologyAliasNode extends COntologyNode
 				//
 				// Relate aliases.
 				//
-				$edge = parent::RelateTo( $thePredicate, $theObject, $theConnection );
+				$edge
+					= parent::RelateTo(
+						$thePredicate, $theObject, $theConnection, $doPropagate );
 				
 				//
-				// Resolve subject master.
+				// Relate masters.
 				//
-				$subject = $this;
-				while( ($id = $subject->offsetGet( kTAG_NODE )) !== NULL )
-					$subject = self::NewObject( $theConnection, $id, TRUE );
+				if( $doPropagate )
+				{
+					//
+					// Resolve subject master.
+					//
+					$subject = $this;
+					while( ($id = $subject->offsetGet( kTAG_NODE )) !== NULL )
+						$subject = self::NewObject( $theConnection, $id, TRUE );
 				
-				//
-				// Resolve object master.
-				//
-				$object = $theObject;
-				while( ($id = $object->offsetGet( kTAG_NODE )) !== NULL )
-					$object = self::NewObject( $theConnection, $id, TRUE );
+					//
+					// Resolve object master.
+					//
+					$object = $theObject;
+					while( ($id = $object->offsetGet( kTAG_NODE )) !== NULL )
+						$object = self::NewObject( $theConnection, $id, TRUE );
 				
-				//
-				// Relate master nodes.
-				// Notice that we are relating two master nodes,
-				// which means that only that relationship will be instantiated.
-				//
-				$subject->RelateTo( $thePredicate, $object, $theConnection );
+					//
+					// Relate master nodes.
+					// Notice that we are relating two master nodes,
+					// which means that only that relationship will be instantiated.
+					//
+					$subject->RelateTo(
+						$thePredicate, $object, $theConnection, $doPropagate );
+				
+				} // Propagate relationship.
 				
 				return $edge;														// ==>
 			

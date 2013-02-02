@@ -403,6 +403,9 @@ class CNode extends CPersistentObject
 	 *	<li><tt>$theObject</tt>: The edge's object vertex.
 	 *	<li><tt>$thePredicate</tt>: The edge's predicate.
 	 *	<li><tt>$theConnection</tt>: Server, database or container.
+	 *	<li><tt>$doPropagate</tt>: This boolean switch indicates whether the relationship is
+	 *		to be propagated. This feature is not used in this class, but derived classes will
+	 *		use it; the default value is <tt>TRUE</tt>.
 	 * </ul>
 	 *
 	 * The method will return an instance of the {@link CEdge} class, if any error occurs,
@@ -411,11 +414,13 @@ class CNode extends CPersistentObject
 	 * @param mixed					$thePredicate		Relationship predicate.
 	 * @param mixed					$theObject			Object vertex.
 	 * @param CConnection			$theConnection		Server, database or container.
+	 * @param boolean				$doPropagate		TRUE means propagate relationships.
 	 *
 	 * @access public
 	 * @return CEdge				Relationship edge object.
 	 */
-	public function RelateTo( $thePredicate, $theObject, $theConnection = NULL )
+	public function RelateTo( $thePredicate, $theObject, $theConnection = NULL,
+														 $doPropagate = TRUE )
 	{
 		//
 		// Instantiate the edge
