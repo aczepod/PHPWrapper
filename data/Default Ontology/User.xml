@@ -42,7 +42,8 @@
                 <item key="en"><![CDATA[The <i>native identifier</i> of a user is its <i>global identifier hashed</i> into a binary string.]]></item>
             </element>
         </NODE>
-        <EDGE>
+        <EDGE master="false">
+            <element variable="kTAG_SUBJECT" node="pid">:_users.:NID</element>
             <element variable="kTAG_PREDICATE">:ATTRIBUTE-OF</element>
             <element variable="kTAG_OBJECT">:_users</element>
         </EDGE>
@@ -69,7 +70,8 @@
                 <item key="en"><![CDATA[CDATA[The <i>global identifier</i> of a user is the user code.]]></item>
             </element>
         </NODE>
-        <EDGE>
+        <EDGE master="false">
+            <element variable="kTAG_SUBJECT" node="pid">:_users.:GID</element>
             <element variable="kTAG_PREDICATE">:ATTRIBUTE-OF</element>
             <element variable="kTAG_OBJECT">:_users</element>
         </EDGE>
@@ -77,8 +79,20 @@
     
 	<!-- kTAG_CLASS -->
     <UNIT>
-        <EDGE>
-            <element variable="kTAG_SUBJECT">:CLASS</element>
+        <NODE class="COntologyAliasVertex" term=":CLASS">
+            <element variable="kTAG_PID">:_users.:CLASS</element>
+            <element variable="kTAG_KIND">
+                <item>:KIND-FEATURE</item>
+                <item>:KIND-SCALE</item>
+            </element>
+            <element variable="kTAG_TYPE">
+                <item>:TEXT</item>
+                <item>:COMPUTED</item>
+                <item>:LOCKED</item>
+            </element>
+        </NODE>
+        <EDGE master="false">
+            <element variable="kTAG_SUBJECT" node="pid">:_users.:CLASS</element>
             <element variable="kTAG_PREDICATE">:ATTRIBUTE-OF</element>
             <element variable="kTAG_OBJECT">:_users</element>
         </EDGE>
@@ -86,8 +100,25 @@
     
 	<!-- kTAG_USER_NAME -->
     <UNIT>
-        <EDGE>
-            <element variable="kTAG_SUBJECT">:USER-NAME</element>
+        <NODE class="COntologyAliasVertex" term=":USER-NAME">
+            <element variable="kTAG_PID">:_users.:USER-NAME</element>
+            <element variable="kTAG_KIND">
+                <item>:KIND-FEATURE</item>
+                <item>:KIND-SCALE</item>
+            </element>
+            <element variable="kTAG_TYPE">
+                <item>:TEXT</item>
+                <item>:REQUIRED</item>
+            </element>
+            <element variable="kTAG_INPUT">
+                <item>:INPUT-TEXT</item>
+            </element>
+            <element variable="kTAG_DESCRIPTION">
+                <item key="en"><![CDATA[The <i>user name</i> represents the user full name, or the name by which the user woulòd like to be called.]]></item>
+            </element>
+        </NODE>
+        <EDGE master="false">
+            <element variable="kTAG_SUBJECT" node="pid">:_users.:USER-NAME</element>
             <element variable="kTAG_PREDICATE">:ATTRIBUTE-OF</element>
             <element variable="kTAG_OBJECT">:_users</element>
         </EDGE>
@@ -95,8 +126,26 @@
     
 	<!-- kTAG_USER_CODE -->
     <UNIT>
-        <EDGE>
-            <element variable="kTAG_SUBJECT">:USER-CODE</element>
+        <NODE class="COntologyAliasVertex" term=":USER-CODE">
+            <element variable="kTAG_PID">:_users.:USER-CODE</element>
+            <element variable="kTAG_KIND">
+                <item>:KIND-FEATURE</item>
+                <item>:KIND-SCALE</item>
+            </element>
+            <element variable="kTAG_TYPE">
+                <item>:TEXT</item>
+                <item>:LOCKED</item>
+                <item>:REQUIRED</item>
+            </element>
+            <element variable="kTAG_INPUT">
+                <item>:INPUT-TEXT</item>
+            </element>
+            <element variable="kTAG_DESCRIPTION">
+                <item key="en"><![CDATA[The <i>user code</i> represents the unique identifier of the user, the code by which the user logs into the system. This value becomes the user's <i>global identifier</i>.]]></item>
+            </element>
+        </NODE>
+        <EDGE master="false">
+            <element variable="kTAG_SUBJECT" node="pid">:_users.:USER-CODE</element>
             <element variable="kTAG_PREDICATE">:ATTRIBUTE-OF</element>
             <element variable="kTAG_OBJECT">:_users</element>
         </EDGE>
@@ -104,8 +153,25 @@
     
 	<!-- kTAG_USER_PASS -->
     <UNIT>
-        <EDGE>
-            <element variable="kTAG_SUBJECT">:USER-PASS</element>
+        <NODE class="COntologyAliasVertex" term=":USER-PASS">
+            <element variable="kTAG_PID">:_users.:USER-PASS</element>
+            <element variable="kTAG_KIND">
+                <item>:KIND-FEATURE</item>
+                <item>:KIND-SCALE</item>
+            </element>
+            <element variable="kTAG_TYPE">
+                <item>:TEXT</item>
+                <item>:REQUIRED</item>
+            </element>
+            <element variable="kTAG_INPUT">
+                <item>:INPUT-TEXT</item>
+            </element>
+            <element variable="kTAG_DESCRIPTION">
+                <item key="en"><![CDATA[The <i>user password</i> represents the access key to the system, provided with the user code this pair of attributes represent the <i>access credentials</i> to the system.]]></item>
+            </element>
+        </NODE>
+        <EDGE master="false">
+            <element variable="kTAG_SUBJECT" node="pid">:_users.:USER-PASS</element>
             <element variable="kTAG_PREDICATE">:ATTRIBUTE-OF</element>
             <element variable="kTAG_OBJECT">:_users</element>
         </EDGE>
@@ -113,8 +179,25 @@
     
 	<!-- kTAG_USER_MAIL -->
     <UNIT>
-        <EDGE>
-            <element variable="kTAG_SUBJECT">:USER-MAIL</element>
+        <NODE class="COntologyAliasVertex" term=":USER-MAIL">
+            <element variable="kTAG_PID">:_users.:USER-MAIL</element>
+            <element variable="kTAG_KIND">
+                <item>:KIND-FEATURE</item>
+                <item>:KIND-SCALE</item>
+            </element>
+            <element variable="kTAG_TYPE">
+                <item>:TEXT</item>
+                <item>:REQUIRED</item>
+            </element>
+            <element variable="kTAG_INPUT">
+                <item>:INPUT-TEXT</item>
+            </element>
+            <element variable="kTAG_DESCRIPTION">
+                <item key="en"><![CDATA[The <i>user mail</i> represents the <i>e-mail address</i> of the user, it will be used both for checking the user veridicity and for communications.]]></item>
+            </element>
+        </NODE>
+        <EDGE master="false">
+            <element variable="kTAG_SUBJECT" node="pid">:_users.:USER-MAIL</element>
             <element variable="kTAG_PREDICATE">:ATTRIBUTE-OF</element>
             <element variable="kTAG_OBJECT">:_users</element>
         </EDGE>
@@ -122,8 +205,24 @@
     
 	<!-- kTAG_USER_ROLE -->
     <UNIT>
-        <EDGE>
-            <element variable="kTAG_SUBJECT">:USER-ROLE</element>
+        <NODE class="COntologyAliasVertex" term=":USER-ROLE">
+            <element variable="kTAG_PID">:_users.:USER-ROLE</element>
+            <element variable="kTAG_KIND">
+                <item>:KIND-FEATURE</item>
+                <item>:KIND-SCALE</item>
+            </element>
+            <element variable="kTAG_TYPE">
+                <item>:SET</item>
+            </element>
+            <element variable="kTAG_INPUT">
+                <item>:INPUT-MULTIPLE</item>
+            </element>
+            <element variable="kTAG_DESCRIPTION">
+                <item key="en"><![CDATA[The <i>user role</i> defines <i>which operations the user is allowed to perform</i>.]]></item>
+            </element>
+        </NODE>
+        <EDGE master="false">
+            <element variable="kTAG_SUBJECT" node="pid">:_users.:USER-ROLE</element>
             <element variable="kTAG_PREDICATE">:ATTRIBUTE-OF</element>
             <element variable="kTAG_OBJECT">:_users</element>
         </EDGE>
@@ -131,8 +230,21 @@
     
 	<!-- kTAG_USER_PROFILE -->
     <UNIT>
-        <EDGE>
-            <element variable="kTAG_SUBJECT">:USER-PROFILE</element>
+        <NODE class="COntologyAliasVertex" term=":USER-PROFILE">
+            <element variable="kTAG_PID">:_users.:USER-PROFILE</element>
+            <element variable="kTAG_KIND">
+                <item>:KIND-FEATURE</item>
+                <item>:KIND-SCALE</item>
+            </element>
+            <element variable="kTAG_TYPE">
+                <item>:SET</item>
+            </element>
+            <element variable="kTAG_INPUT">
+                <item>:INPUT-MULTIPLE</item>
+            </element>
+        </NODE>
+        <EDGE master="false">
+            <element variable="kTAG_SUBJECT" node="pid">:_users.:USER-PROFILE</element>
             <element variable="kTAG_PREDICATE">:ATTRIBUTE-OF</element>
             <element variable="kTAG_OBJECT">:_users</element>
         </EDGE>
@@ -140,8 +252,27 @@
     
 	<!-- kTAG_USER_MANAGER -->
     <UNIT>
-        <EDGE>
-            <element variable="kTAG_SUBJECT">:USER-MANAGER</element>
+        <NODE class="COntologyAliasVertex" term=":USER-MANAGER">
+            <element variable="kTAG_PID">:_users.:USER-MANAGER</element>
+            <element variable="kTAG_KIND">
+                <item>:KIND-FEATURE</item>
+                <item>:KIND-SCALE</item>
+            </element>
+            <element variable="kTAG_TYPE">
+				<item>:REF-TERM</item>
+                <item>:BINARY</item>
+                <item>:LOCKED</item>
+                <item>:RESTRICTED</item>
+            </element>
+            <element variable="kTAG_INPUT">
+                <item>:INPUT-TEXT</item>
+            </element>
+            <element variable="kTAG_DESCRIPTION">
+                <item key="en"><![CDATA[The <i>user manager</i> is a <i>reference</i> to the user that <i>created</i> or that <i>manages</i> the current user.]]></item>
+            </element>
+        </NODE>
+        <EDGE master="false">
+            <element variable="kTAG_SUBJECT" node="pid">:_users.:USER-MANAGER</element>
             <element variable="kTAG_PREDICATE">:ATTRIBUTE-OF</element>
             <element variable="kTAG_OBJECT">:_users</element>
         </EDGE>
@@ -149,8 +280,24 @@
     
 	<!-- kTAG_USER_DOMAIN -->
     <UNIT>
-        <EDGE>
-            <element variable="kTAG_SUBJECT">:USER-DOMAIN</element>
+        <NODE class="COntologyAliasVertex" term=":USER-DOMAIN">
+            <element variable="kTAG_PID">:_users.:USER-DOMAIN</element>
+            <element variable="kTAG_KIND">
+                <item>:KIND-FEATURE</item>
+                <item>:KIND-SCALE</item>
+            </element>
+            <element variable="kTAG_TYPE">
+                <item>:SET</item>
+            </element>
+            <element variable="kTAG_INPUT">
+                <item>:INPUT-CHOICE</item>
+            </element>
+            <element variable="kTAG_DESCRIPTION">
+                <item key="en"><![CDATA[The <i>user domain</i> is a <i>list of domains</i> to to which the <i>user is allowed to access</i>, it can be used to manage more than one portal.]]></item>
+            </element>
+        </NODE>
+        <EDGE master="false">
+            <element variable="kTAG_SUBJECT" node="pid">:_users.:USER-DOMAIN</element>
             <element variable="kTAG_PREDICATE">:ATTRIBUTE-OF</element>
             <element variable="kTAG_OBJECT">:_users</element>
         </EDGE>
