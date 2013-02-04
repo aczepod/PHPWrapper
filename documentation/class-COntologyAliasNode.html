@@ -243,7 +243,7 @@ of the kSWITCH_kTAG_ALIAS_NODES flag:</p>
 				<b>Author:</b>
 				Milko A. Škofič &lt;<a
 href="mailto:m.skofic&#64;cgiar.org">m.skofic&#64;<!---->cgiar.org</a>&gt;<br />
-		<b>Located at</b> <a href="source-class-COntologyAliasNode.html#36-436" title="Go to source code">COntologyAliasNode.php</a><br />
+		<b>Located at</b> <a href="source-class-COntologyAliasNode.html#36-540" title="Go to source code">COntologyAliasNode.php</a><br />
 	</div>
 
 
@@ -337,7 +337,7 @@ the currently set value.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#_RelateTo">#</a>
-		<code><a href="source-class-COntologyAliasNode.html#187-269" title="Go to source code">RelateTo</a>( <span>mixed <var>$thePredicate</var></span>, <span>mixed <var>$theObject</var></span>, <span><code><a href="class-CConnection.html">CConnection</a></code> <var>$theConnection</var> = <span class="php-keyword1">NULL</span> </span> )</code>
+		<code><a href="source-class-COntologyAliasNode.html#187-303" title="Go to source code">RelateTo</a>( <span>mixed <var>$thePredicate</var></span>, <span>mixed <var>$theObject</var></span>, <span><code><a href="class-CConnection.html">CConnection</a></code> <var>$theConnection</var> = <span class="php-keyword1">NULL</span></span>, <span>boolean <var>$doPropagate</var> = <span class="php-keyword1">TRUE</span> </span> )</code>
 
 		<div class="description short">
 			
@@ -349,15 +349,37 @@ the currently set value.</p>
 			
 <h4>Relate to node</h4>
 
-<p>We overload this method to ensure that subject vertex of the relationship is
-related to a master node, the object vertex may be a master node.</p>
+<p>We overload this method to mirror relationships between alias nodes to their
+counterpart master nodes, this is governed by the <tt>$doPropagate</tt>
+switch.</p>
 
-<p>If both vertices are related to a master node, we create and commit a new
-relation with the same predicate between the related master nodes.</p>
+<p>We first create the requested relationship, then we resolve both the subject
+and the object, if it is also an alias, and we relate them with the same
+predicate.</p>
 
-<p>We require the connection parameter since both subject and object vertices
-must be committed by this method, this also means that the edge will also be
-committed.</p>
+<p>This means that:</p>
+
+<ul>
+	<li><i>ALIAS =&gt; MASTER</i>:
+		<ul>
+			<li>ALIAS =&gt; MASTER</li>
+
+			<li>ALIAS.MASTER =&gt; MASTER</li>
+		</ul>
+	</li>
+
+	<li><i>ALIAS =&gt; ALIAS</i>:
+		<ul>
+			<li>ALIAS =&gt; ALIAS</li>
+
+			<li>ALIAS.MASTER =&gt; ALIAS.MASTER</li>
+		</ul>
+	</li>
+</ul>
+
+<p>We require the connection parameter here since both subject and object
+vertices must be committed by this method, this implies that the edge will also
+be committed.</p>
 
 
 
@@ -369,6 +391,8 @@ committed.</p>
 					<dd><code>mixed</code><br>$theObject Object node object or reference.</dd>
 					<dt><var>$theConnection</var></dt>
 					<dd><code><code><a href="class-CConnection.html">CConnection</a></code></code><br>$theConnection Server, database or container.</dd>
+					<dt><var>$doPropagate</var></dt>
+					<dd><code>boolean</code><br>$doPropagate TRUE means relate masters.</dd>
 				</dl></div>
 
 				<h4>Returns</h4>
@@ -384,6 +408,62 @@ committed.</p>
 		</div>
 		</div></td>
 	</tr>
+	<tr data-order="Resolve" id="_Resolve">
+
+		<td class="attributes"><code>
+			 public static
+			<code><a href="class-COntologyNode.html">COntologyNode</a></code>
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_Resolve">#</a>
+		<code><a href="source-class-COntologyAliasNode.html#319-373" title="Go to source code">Resolve</a>( <span><code><a href="class-CConnection.html">CConnection</a></code> <var>$theConnection</var></span>, <span>mixed <var>$theIdentifier</var></span>, <span>boolean <var>$doThrow</var> = <span class="php-keyword1">FALSE</span> </span> )</code>
+
+		<div class="description short">
+			
+<h4>Resolve a node</h4>
+
+		</div>
+
+		<div class="description detailed hidden">
+			
+<h4>Resolve a node</h4>
+
+<p>In this class we add the persistent identifier, kTAG_PID, to the list
+of properties to be checked, with this option we return the first match by
+default.</p>
+
+
+
+				<h4>Parameters</h4>
+				<div class="list"><dl>
+					<dt><var>$theConnection</var></dt>
+					<dd><code><code><a href="class-CConnection.html">CConnection</a></code></code><br>$theConnection Server, database or container.</dd>
+					<dt><var>$theIdentifier</var></dt>
+					<dd><code>mixed</code><br>$theIdentifier Node identifier or term reference.</dd>
+					<dt><var>$doThrow</var></dt>
+					<dd><code>boolean</code><br>$doThrow If <tt>TRUE</tt> raise an exception.</dd>
+				</dl></div>
+
+				<h4>Returns</h4>
+				<div class="list">
+					<code><code><a href="class-COntologyNode.html">COntologyNode</a></code></code><br>Matched node, found nodes or <tt>NULL</tt>.<br />
+				</div>
+
+				<h4>Throws</h4>
+				<div class="list">
+					<code><code><a href="class-Exception.html">Exception</a></code></code><br />
+				</div>
+
+
+				<h4>Overrides</h4>
+				<div class="list"><code><a href="class-COntologyNode.html#_Resolve">COntologyNode::Resolve()</a></code></div>
+
+		</div>
+		</div></td>
+	</tr>
 	<tr data-order="_PrecommitRelated" id="__PrecommitRelated">
 
 		<td class="attributes"><code>
@@ -395,7 +475,7 @@ committed.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#__PrecommitRelated">#</a>
-		<code><a href="source-class-COntologyAliasNode.html#285-343" title="Go to source code">_PrecommitRelated</a>( <span>reference <var>&amp; $theConnection</var></span>, <span>reference <var>&amp; $theModifiers</var></span> )</code>
+		<code><a href="source-class-COntologyAliasNode.html#389-447" title="Go to source code">_PrecommitRelated</a>( <span>reference <var>&amp; $theConnection</var></span>, <span>reference <var>&amp; $theModifiers</var></span> )</code>
 
 		<div class="description short">
 			
@@ -457,7 +537,7 @@ set.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#__PostcommitRelated">#</a>
-		<code><a href="source-class-COntologyAliasNode.html#359-432" title="Go to source code">_PostcommitRelated</a>( <span>reference <var>&amp; $theConnection</var></span>, <span>reference <var>&amp; $theModifiers</var></span> )</code>
+		<code><a href="source-class-COntologyAliasNode.html#463-536" title="Go to source code">_PostcommitRelated</a>( <span>reference <var>&amp; $theConnection</var></span>, <span>reference <var>&amp; $theModifiers</var></span> )</code>
 
 		<div class="description short">
 			
@@ -526,7 +606,7 @@ following:</p>
 			<a href="class-COntologyNode.html#_GetGraphNodeProperties">GetGraphNodeProperties()</a>, 
 			<a href="class-COntologyNode.html#_LoadTerm">LoadTerm()</a>, 
 			<a href="class-COntologyNode.html#_Replace">Replace()</a>, 
-			<a href="class-COntologyNode.html#_Resolve">Resolve()</a>, 
+			<a href="class-COntologyNode.html#_ResolvePID">ResolvePID()</a>, 
 			<a href="class-COntologyNode.html#_Type">Type()</a>, 
 			<a href="class-COntologyNode.html#_Update">Update()</a>, 
 			<a href="class-COntologyNode.html#__AddGraphNode">_AddGraphNode()</a>, 
@@ -547,6 +627,7 @@ following:</p>
 	<tr>
 		<td><code>
 			<a href="class-CNode.html#_Description">Description()</a>, 
+			<a href="class-CNode.html#_PID">PID()</a>, 
 			<a href="class-CNode.html#_Term">Term()</a>, 
 			<a href="class-CNode.html#__Ready">_Ready()</a>
 		</code></td>

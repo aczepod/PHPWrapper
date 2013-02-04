@@ -186,7 +186,7 @@ try
 	//
 	// Load tags.
 	//
-	$dir = "/Library/WebServer/Library/PHPWrapper/data/Default Ontology";
+	$dir = "/Library/WebServer/Library/PHPWrapper/defines";
 	$files = array( "$dir/Namespaces.xml", "$dir/Terms.xml", "$dir/Categories.xml",
 					"$dir/Attributes.xml", "$dir/Predicates.xml", "$dir/Types.xml",
 					"$dir/Kinds.xml", "$dir/Operators.xml", "$dir/Status.xml",

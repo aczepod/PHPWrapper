@@ -1,11 +1,125 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ONTOLOGY
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-    xsi:noNamespaceSchemaLocation="file:/Library/WebServer/Library/PHPWrapper/defines/Ontology.xsd">
+    xsi:noNamespaceSchemaLocation="file:Ontology.xsd">
+    
+    <!-- Namespaces -->
+    
+    <!-- Default namespace -->
+    <UNIT>
+        <TERM LID="">
+            <element variable="kTAG_KIND">
+                <item>:KIND-NAMESPACE</item>
+            </element>
+            <element variable="kTAG_LABEL">
+                <item key="en">Default namespace</item>
+            </element>
+            <element variable="kTAG_DEFINITION">
+                <item key="en"><![CDATA[This <i>namespace</i> groups all default terms of the ontology, these are the elements that will be used to build the ontology itself.]]></item>
+            </element>
+        </TERM>
+    </UNIT>
+    
+    <!-- Default ontology -->
+    
+    <UNIT>
+        <!-- ONTOLOGY -->
+        <TERM NS="" LID="ONTOLOGY">
+            <element variable="kTAG_LABEL">
+                <item key="en">Default ontology</item>
+            </element>
+            <element variable="kTAG_DEFINITION">
+                <item key="en"><![CDATA[An ontology is a <i>graph structure</i> composed of <i>nodes</i> related by a series of <i>directed edges</i>, each node represents a <i>concept</i> that can be used to illustrate a <i>feature</i>, <i>characteristic</i> or <i>category</i> of an object, or to <i>tag</i> a set of <i>data elements</i> that are <i>measurements</i> of that feature.]]></item>
+            </element>
+        </TERM>
+        <!-- ATTRIBUTE -->
+        <TERM NS=":ON" LID="ATTRIBUTE">
+            <element variable="kTAG_LABEL">
+                <item key="en">Attributes</item>
+            </element>
+            <element variable="kTAG_DEFINITION">
+                <item key="en"><![CDATA[An <i>attribute</i> is a <i>property of an object that holds a value</i>.]]></item>
+            </element>
+        </TERM>
+        <!-- OBJECT -->
+        <TERM NS="" LID="OBJECT">
+            <element variable="kTAG_LABEL">
+                <item key="en">Objects</item>
+            </element>
+            <element variable="kTAG_DEFINITION">
+                <item key="en"><![CDATA[An object is a collection of <i>attributes</i> or <i>properties</i> which are <i>defined by terms</i>, <i>identified by tags</i> and that <i>hold data</i>.]]></item>
+            </element>
+        </TERM>
+        
+        <NODE class="COntologyMasterVertex" term=":ONTOLOGY">
+            <element variable="kTAG_KIND">
+                <item>:KIND-ROOT</item>
+            </element>
+            <element variable="kTAG_DESCRIPTION">
+                <item key="en"><![CDATA[This represents the <i>default ontology</i>, it defines all the elements that are used to build the ontology itself.]]></item>
+            </element>
+        </NODE>
+        <NODE class="COntologyMasterVertex" term=":ATTRIBUTE">
+            <element variable="kTAG_DESCRIPTION">
+                <item key="en"><![CDATA[Attributes, in this ontology, are represented and identified by tag objects, the tag identifiers are used as property or field names when storing attribute data.]]></item>
+            </element>
+        </NODE>
+        <NODE class="COntologyMasterVertex" term=":OBJECT">
+            <element variable="kTAG_DESCRIPTION">
+                <item key="en"><![CDATA[This category groups all <i>default objects</i>, which are a collection of <i>attributes</i> and <i>properties</i>.]]></item>
+            </element>
+        </NODE>
+        
+        <EDGE>
+            <element variable="kTAG_SUBJECT">:ATTRIBUTE</element>
+            <element variable="kTAG_PREDICATE">:PART-OF</element>
+            <element variable="kTAG_OBJECT">:ONTOLOGY</element>
+        </EDGE>
+        <EDGE>
+            <element variable="kTAG_SUBJECT">:OBJECT</element>
+            <element variable="kTAG_PREDICATE">:PART-OF</element>
+            <element variable="kTAG_OBJECT">:ONTOLOGY</element>
+        </EDGE>
+    </UNIT>
     
     <!-- Identification attributes -->
     
-	<!-- 01 -->
+    <!-- kTERM_NID -->
+    <UNIT>
+         <TERM NS="" LID="NID">
+            <element variable="kTAG_LABEL">
+                <item key="en">Native identifier</item>
+            </element>
+            <element variable="kTAG_DEFINITION">
+                <item key="en"><![CDATA[The <i>native identifier</i> uniquely identifies the object <i>within its container</i>, this attribute is <i>specific to the storage engine</i> and will have in general a native data type.]]></item>
+            </element>
+            <element variable="kTAG_SYNONYMS">
+                <item>kTERM_NID</item>
+            </element>
+        </TERM>
+        <NODE class="COntologyMasterVertex" term=":NID">
+            <element variable="kTAG_KIND">
+                <item>:KIND-FEATURE</item>
+                <item>:KIND-SCALE</item>
+            </element>
+        </NODE>
+        <EDGE>
+            <element variable="kTAG_SUBJECT">:NID</element>
+            <element variable="kTAG_PREDICATE">:SUBCLASS-OF</element>
+            <element variable="kTAG_OBJECT">:ATTRIBUTE</element>
+        </EDGE>
+        <TAG>
+            <element variable="kTAG_PATH">
+                <item>:NID</item>
+            </element>
+            <element variable="kTAG_TYPE">
+                <item>:ANY</item>
+                <item>:COMPUTED</item>
+                <item>:REQUIRED</item>
+            </element>
+        </TAG>
+    </UNIT>
+    
     <!-- kTERM_LID -->
     <UNIT>
         <TERM NS="" LID="LID">
@@ -19,9 +133,10 @@
                 <item>kTERM_LID</item>
             </element>
         </TERM>
-        <TAG>
-            <element variable="kTAG_PATH">
-                <item>:LID</item>
+        <NODE class="COntologyMasterVertex" term=":NID" identifier="1">
+            <element variable="kTAG_KIND">
+                <item>:KIND-FEATURE</item>
+                <item>:KIND-SCALE</item>
             </element>
             <element variable="kTAG_TYPE">
                 <item>:TEXT</item>
@@ -30,10 +145,21 @@
             <element variable="kTAG_INPUT">
                 <item>:INPUT-TEXT</item>
             </element>
+        </NODE>
+        <TAG>
+            <element variable="kTAG_PATH">
+                <item node="true">1</item>
+            </element>
+            <element variable="kTAG_TYPE">
+                <item>:TEXT</item>
+                <item>:REQUIRED</item>
+            </element>
+            <element variable="kTAG_INPUT">
+                <item>:INPUT-TEXT</item>
+            </element>
+            <element variable="kTAG_PATTERN"><![CDATA[a-zA-Z0-9_\/\-\;\,\@]+]]></element>
         </TAG>
     </UNIT>
-    
-	<!-- 02 -->
     <!-- kTERM_GID -->
     <UNIT>
         <TERM NS="" LID="GID">
@@ -53,17 +179,10 @@
             </element>
             <element variable="kTAG_TYPE">
                 <item>:TEXT</item>
-                <item>:REQUIRED</item>
                 <item>:COMPUTED</item>
-                <item>:LOCKED</item>
-            </element>
-            <element variable="kTAG_INPUT">
-                <item>:INPUT-TEXT</item>
             </element>
         </TAG>
     </UNIT>
-    
-	<!-- 03 -->
     <!-- kTERM_UID -->
     <UNIT>
         <TERM NS="" LID="UID">
@@ -71,7 +190,7 @@
                 <item key="en">Unique identifier</item>
             </element>
             <element variable="kTAG_DEFINITION">
-                <item key="en"><![CDATA[The <i>unique identifier</i> is a coded value that <i>uniquely identifies</i> an object in a container. This value is obtained by <i>hashing the object's global identifier</i> and it is usually used whenever the object's native identifier cannot be used for that purpose.]]></item>
+                <item key="en"><![CDATA[The <i>unique identifier</i> is a coded value that <i>uniquely identifies</i> an object in a container. This value will generally be a hashed string.]]></item>
             </element>
             <element variable="kTAG_SYNONYMS">
                 <item>kTERM_UID</item>
@@ -84,37 +203,9 @@
             <element variable="kTAG_TYPE">
                 <item>:BINARY</item>
                 <item>:COMPUTED</item>
-                <item>:LOCKED</item>
             </element>
         </TAG>
      </UNIT>
-    
-	<!-- 04 -->
-    <!-- kTERM_PID -->
-    <UNIT>
-        <TERM NS="" LID="PID">
-            <element variable="kTAG_LABEL">
-                <item key="en">Persistent identifier</item>
-            </element>
-            <element variable="kTAG_DEFINITION">
-                <item key="en"><![CDATA[This string attribute is used when an object <i>needs a persistent identifier</i> and it <i>does not have a global or native identifier</i> which is either <i>unique or persistent</i>. This attribute is set whenever a persistent identifier is needed to identify an object <i>across implementations</i> and this is not possible using other object attributes.]]></item>
-            </element>
-            <element variable="kTAG_SYNONYMS">
-                <item>kTERM_PID</item>
-            </element>
-        </TERM>
-        <TAG>
-            <element variable="kTAG_PATH">
-                <item>:PID</item>
-            </element>
-            <element variable="kTAG_TYPE">
-                <item>:TEXT</item>
-                <item>:LOCKED</item>
-            </element>
-        </TAG>
-     </UNIT>
-    
-	<!-- 05 -->
     <!-- kTERM_SYNONYMS -->
     <UNIT>
         <TERM NS="" LID="SYNONYMS">
@@ -122,7 +213,7 @@
                 <item key="en">Synonyms</item>
             </element>
             <element variable="kTAG_DEFINITION">
-                <item key="en"><![CDATA[The <i>synonyms</i> or <i>alternate identifiers</i> are a list of <i>formal identifier strings</i> by which an object may be referenced. This attribute is used to record all the identifiers which are not present in the ontology; these strings <i>are not related to languages</i>.]]></item>
+                <item key="en"><![CDATA[The <i>synonyms</i> or <i>alternate identifiers</i> are a list of strings by which an object is referenced. This attribute is used to record all the identifiers which are not present in the ontology; these strings <i>are not related to languages</i>.]]></item>
             </element>
             <element variable="kTAG_SYNONYMS">
                 <item>kTERM_SYNONYMS</item>
@@ -144,7 +235,6 @@
     
     <!-- Classification attributes -->
     
-	<!-- 06 -->
     <!-- kTERM_CATEGORY -->
     <UNIT>
         <TERM NS="" LID="CATEGORY">
@@ -171,8 +261,6 @@
             </element>
         </TAG>
     </UNIT>
-    
-	<!-- 07 -->
     <!-- kTERM_KIND -->
     <UNIT>
         <TERM NS="" LID="KIND">
@@ -198,8 +286,6 @@
             </element>
         </TAG>
     </UNIT>
-    
-	<!-- 08 -->
     <!-- kTERM_TYPE -->
     <UNIT>
         <TERM NS="" LID="TYPE">
@@ -225,8 +311,6 @@
             </element>
         </TAG>
     </UNIT>
-    
-	<!-- 09 -->
     <!-- kTERM_CLASS -->
     <UNIT>
         <TERM NS="" LID="CLASS">
@@ -247,12 +331,9 @@
             <element variable="kTAG_TYPE">
                 <item>:TEXT</item>
                 <item>:COMPUTED</item>
-                <item>:LOCKED</item>
             </element>
         </TAG>
     </UNIT>
-    
-	<!-- 10 -->
     <!-- kTERM_NAMESPACE -->
     <UNIT>
         <TERM NS="" LID="NAMESPACE">
@@ -282,7 +363,6 @@
     
     <!-- Representation attributes -->
     
-	<!-- 11 -->
     <!-- kTERM_INPUT -->
     <UNIT>
         <TERM NS="" LID="INPUT">
@@ -308,8 +388,6 @@
             </element>
         </TAG>
     </UNIT>
-    
-	<!-- 12 -->
     <!-- kTERM_PATTERN -->
     <UNIT>
         <TERM NS="" LID="PATTERN">
@@ -335,8 +413,6 @@
             </element>
         </TAG>
     </UNIT>
-    
-	<!-- 13 -->
     <!-- kTERM_LENGTH -->
     <UNIT>
         <TERM NS="" LID="LENGTH">
@@ -362,8 +438,6 @@
             </element>
         </TAG>
     </UNIT>
-    
-	<!-- 14 -->
     <!-- kTERM_MIN_VAL -->
     <UNIT>
         <TERM NS="" LID="MIN-VAL">
@@ -389,8 +463,6 @@
             </element>
         </TAG>
     </UNIT>
-    
-	<!-- 15 -->
     <!-- kTERM_MAX_VAL -->
     <UNIT>
         <TERM NS="" LID="MAX-VAL">
@@ -419,7 +491,6 @@
     
     <!-- Description attributes -->
     
-	<!-- 16 -->
     <!-- kTERM_LABEL -->
     <UNIT>
         <TERM NS="" LID="LABEL">
@@ -445,8 +516,6 @@
             </element>
         </TAG>
     </UNIT>
-    
-	<!-- 17 -->
     <!-- kTERM_DEFINITION -->
     <UNIT>
         <TERM NS="" LID="DEFINITION">
@@ -472,8 +541,6 @@
             </element>
         </TAG>
     </UNIT>
-    
-	<!-- 18 -->
     <!-- kTERM_DESCRIPTION -->
     <UNIT>
         <TERM NS="" LID="DESCRIPTION">
@@ -499,8 +566,6 @@
             </element>
         </TAG>
     </UNIT>
-    
-	<!-- 19 -->
     <!-- kTERM_NOTES -->
     <UNIT>
         <TERM NS="" LID="NOTES">
@@ -526,8 +591,6 @@
             </element>
         </TAG>
     </UNIT>
-    
-	<!-- 20 -->
     <!-- kTERM_EXAMPLES -->
     <UNIT>
         <TERM NS="" LID="EXAMPLES">
@@ -557,7 +620,6 @@
     
     <!-- Authorship attributes -->
     
-	<!-- 21 -->
     <!-- kTERM_AUTHORS -->
     <UNIT>
         <TERM NS="" LID="AUTHORS">
@@ -584,8 +646,6 @@
             </element>
         </TAG>
     </UNIT>
-    
-	<!-- 22 -->
     <!-- kTERM_ACKNOWLEDGMENTS -->
     <UNIT>
         <TERM NS="" LID="ACKNOWLEDGMENTS">
@@ -612,8 +672,6 @@
             </element>
         </TAG>
     </UNIT>
-    
-	<!-- 23 -->
     <!-- kTERM_BIBLIOGRAPHY -->
     <UNIT>
         <TERM NS="" LID="BIBLIOGRAPHY">
@@ -643,7 +701,6 @@
     
     <!-- Reference attributes -->
     
-	<!-- 24 -->
     <!-- kTERM_TERM -->
     <UNIT>
         <TERM NS="" LID="TERM">
@@ -664,15 +721,12 @@
             <element variable="kTAG_TYPE">
                 <item>:REF-TERM</item>
                 <item>:BINARY</item>
-                <item>:RESTRICTED</item>
             </element>
             <element variable="kTAG_INPUT">
                 <item>:INPUT-TEXT</item>
             </element>
         </TAG>
     </UNIT>
-    
-	<!-- 25 -->
     <!-- kTERM_NODE -->
     <UNIT>
         <TERM NS="" LID="NODE">
@@ -693,15 +747,13 @@
             <element variable="kTAG_TYPE">
                 <item>:REF-NODE</item>
                 <item>:INT</item>
-                <item>:RESTRICTED</item>
+                <item>:COMPUTED</item>
             </element>
             <element variable="kTAG_INPUT">
                 <item>:INPUT-TEXT</item>
             </element>
         </TAG>
     </UNIT>
-    
-	<!-- 26 -->
     <!-- kTERM_SUBJECT -->
     <UNIT>
         <TERM NS="" LID="SUBJECT">
@@ -723,15 +775,12 @@
                 <item>:REF-NODE</item>
                 <item>:INT</item>
                 <item>:REQUIRED</item>
-                <item>:RESTRICTED</item>
             </element>
             <element variable="kTAG_INPUT">
                 <item>:INPUT-TEXT</item>
             </element>
         </TAG>
     </UNIT>
-    
-	<!-- 27 -->
     <!-- kTERM_OBJECT -->
     <UNIT>
         <TERM NS="" LID="OBJECT">
@@ -745,7 +794,7 @@
                 <item>kTERM_OBJECT</item>
             </element>
         </TERM>
-		<TAG>
+        <TAG>
             <element variable="kTAG_PATH">
                 <item>:OBJECT</item>
             </element>
@@ -753,15 +802,12 @@
                 <item>:REF-NODE</item>
                 <item>:INT</item>
                 <item>:REQUIRED</item>
-                <item>:RESTRICTED</item>
             </element>
             <element variable="kTAG_INPUT">
                 <item>:INPUT-TEXT</item>
             </element>
         </TAG>
     </UNIT>
-    
-	<!-- 28 -->
     <!-- kTERM_PREDICATE -->
     <UNIT>
         <TERM NS="" LID="PREDICATE">
@@ -783,15 +829,39 @@
                 <item>:REF-TERM</item>
                 <item>:BINARY</item>
                 <item>:REQUIRED</item>
-                <item>:RESTRICTED</item>
             </element>
             <element variable="kTAG_INPUT">
                 <item>:INPUT-TEXT</item>
             </element>
         </TAG>
     </UNIT>
-    
-	<!-- 29 -->
+    <!-- kTERM_PREDICATE -->
+    <UNIT>
+        <TERM NS="" LID="PREDICATE">
+            <element variable="kTAG_LABEL">
+                <item key="en">Predicate</item>
+            </element>
+            <element variable="kTAG_DEFINITION">
+                <item key="en"><![CDATA[It is the <i>term</i> which <i>relates the subject and object of a relationship</i>. This attribute is a <i>term reference</i>.]]></item>
+            </element>
+            <element variable="kTAG_SYNONYMS">
+                <item>kTERM_PREDICATE</item>
+            </element>
+        </TERM>
+        <TAG>
+            <element variable="kTAG_PATH">
+                <item>:PREDICATE</item>
+            </element>
+            <element variable="kTAG_TYPE">
+                <item>:REF-TERM</item>
+                <item>:BINARY</item>
+                <item>:REQUIRED</item>
+            </element>
+            <element variable="kTAG_INPUT">
+                <item>:INPUT-TEXT</item>
+            </element>
+        </TAG>
+    </UNIT>
     <!-- kTERM_PATH -->
     <UNIT>
         <TERM NS="" LID="PATH">
@@ -811,20 +881,18 @@
             </element>
             <element variable="kTAG_TYPE">
                 <item>:REF-TERM</item>
-                <item>:REF-NODE</item>
-                <item>:INT</item>
                 <item>:BINARY</item>
                 <item>:REQUIRED</item>
-                <item>:RESTRICTED</item>
-                <item>:COMPUTED</item>
                 <item>:ARRAY</item>
+            </element>
+            <element variable="kTAG_INPUT">
+                <item>:INPUT-TEXT</item>
             </element>
         </TAG>
     </UNIT>
     
     <!-- Reference collections -->
     
-	<!-- 30 -->
     <!-- kTERM_NAMESPACE_REFS -->
     <UNIT>
         <TERM NS="" LID="NAMESPACE-REFS">
@@ -848,8 +916,6 @@
             </element>
         </TAG>
     </UNIT>
-    
-	<!-- 31 -->
     <!-- kTERM_NODES -->
     <UNIT>
         <TERM NS="" LID="NODES">
@@ -863,7 +929,7 @@
                 <item>kTERM_NODES</item>
             </element>
         </TERM>
-		<TAG>
+        <TAG>
             <element variable="kTAG_PATH">
                 <item>:NODES</item>
             </element>
@@ -871,13 +937,10 @@
                 <item>:REF-NODE</item>
                 <item>:INT</item>
                 <item>:ARRAY</item>
-                <item>:RESTRICTED</item>
                 <item>:COMPUTED</item>
             </element>
         </TAG>
     </UNIT>
-    
-	<!-- 32 -->
     <!-- kTERM_EDGES -->
     <UNIT>
         <TERM NS="" LID="EDGES">
@@ -885,7 +948,7 @@
                 <item key="en">Edges</item>
             </element>
             <element variable="kTAG_DEFINITION">
-                <item key="en"><![CDATA[It is an <i>collection of edge object references</i>.]]></item>
+                <item key="en"><![CDATA[It is an <i>collection of edge references</i>.]]></item>
             </element>
             <element variable="kTAG_SYNONYMS">
                 <item>kTERM_EDGES</item>
@@ -899,13 +962,10 @@
                 <item>:REF-EDGE</item>
                 <item>:INT</item>
                 <item>:ARRAY</item>
-                <item>:RESTRICTED</item>
                 <item>:COMPUTED</item>
             </element>
         </TAG>
     </UNIT>
-    
-	<!-- 33 -->
     <!-- kTERM_FEATURES -->
     <UNIT>
         <TERM NS="" LID="FEATURES">
@@ -927,13 +987,10 @@
                 <item>:REF-TAG</item>
                 <item>:INT</item>
                 <item>:ARRAY</item>
-                <item>:RESTRICTED</item>
                 <item>:COMPUTED</item>
             </element>
         </TAG>
     </UNIT>
-    
-	<!-- 34 -->
     <!-- kTERM_METHODS -->
     <UNIT>
         <TERM NS="" LID="METHODS">
@@ -955,13 +1012,10 @@
                 <item>:REF-TAG</item>
                 <item>:INT</item>
                 <item>:ARRAY</item>
-                <item>:RESTRICTED</item>
                 <item>:COMPUTED</item>
             </element>
         </TAG>
     </UNIT>
-    
-	<!-- 35 -->
     <!-- kTERM_SCALES -->
     <UNIT>
         <TERM NS="" LID="SCALES">
@@ -983,7 +1037,6 @@
                 <item>:REF-TAG</item>
                 <item>:INT</item>
                 <item>:ARRAY</item>
-                <item>:RESTRICTED</item>
                 <item>:COMPUTED</item>
             </element>
         </TAG>
@@ -991,7 +1044,6 @@
     
     <!-- User attributes -->
     
-	<!-- 36 -->
     <!-- kTERM_USER_NAME -->
     <UNIT>
         <TERM NS="" LID="USER-NAME">
@@ -1018,8 +1070,6 @@
             </element>
         </TAG>
     </UNIT>
-    
-	<!-- 37 -->
     <!-- kTERM_USER_CODE -->
     <UNIT>
         <TERM NS="" LID="USER-CODE">
@@ -1046,8 +1096,6 @@
             </element>
         </TAG>
     </UNIT>
-    
-	<!-- 38 -->
     <!-- kTERM_USER_PASS -->
     <UNIT>
         <TERM NS="" LID="USER-PASS">
@@ -1074,8 +1122,6 @@
             </element>
         </TAG>
     </UNIT>
-    
-	<!-- 39 -->
     <!-- kTERM_USER_MAIL -->
     <UNIT>
         <TERM NS="" LID="USER-MAIL">
@@ -1102,8 +1148,6 @@
             </element>
         </TAG>
     </UNIT>
-    
-	<!-- 40 -->
     <!-- kTERM_USER_ROLE -->
     <UNIT>
         <TERM NS="" LID="USER-ROLE">
@@ -1131,8 +1175,6 @@
             </element>
         </TAG>
     </UNIT>
-    
-	<!-- 41 -->
     <!-- kTERM_USER_PROFILE -->
     <UNIT>
         <TERM NS="" LID="USER-PROFILE">
@@ -1159,8 +1201,6 @@
             </element>
         </TAG>
     </UNIT>
-    
-	<!-- 42 -->
     <!-- kTERM_USER_MANAGER -->
     <UNIT>
         <TERM NS="" LID="USER-MANAGER">
@@ -1179,14 +1219,11 @@
                 <item>:USER-MANAGER</item>
             </element>
             <element variable="kTAG_TYPE">
-                <item>:REF-USER</item>
+                <item>:REF-TERM</item>
                 <item>:TEXT</item>
-                <item>:RESTRICTED</item>
             </element>
         </TAG>
     </UNIT>
-    
-	<!-- 43 -->
     <!-- kTERM_USER_DOMAIN -->
     <UNIT>
         <TERM NS="" LID="USER-DOMAIN">
@@ -1214,11 +1251,18 @@
         </TAG>
     </UNIT>
     
-        
-    <!-- Predicates -->
-    
+    <!-- PREDICATES -->
     <UNIT>
-	    <!-- kPREDICATE_SUBCLASS_OF -->
+        <!-- PREDICATE -->
+        <TERM NS="" LID="PREDICATE">
+            <element variable="kTAG_LABEL">
+                <item key="en">Predicates</item>
+            </element>
+            <element variable="kTAG_DEFINITION">
+                <item key="en"><![CDATA[<i>Predicates</i> are <i>terms</i> which are used to <i>link</i> a <i>subject vertex</i> to an <i>object vertex</i> into a <i>relationship</i> or graph <i>directed edge</i>.]]></item>
+            </element>
+        </TERM>
+        <!-- kPREDICATE_SUBCLASS_OF -->
         <TERM NS="" LID="SUBCLASS-OF">
             <element variable="kTAG_KIND">
                 <item>:KIND-PREDICATE</item>
@@ -1233,8 +1277,7 @@
                 <item>kPREDICATE_SUBCLASS_OF</item>
             </element>
         </TERM>
-
-	    <!-- kPREDICATE_SUBSET_OF -->
+        <!-- kPREDICATE_SUBSET_OF -->
         <TERM NS="" LID="SUBSET-OF">
             <element variable="kTAG_KIND">
                 <item>:KIND-PREDICATE</item>
@@ -1249,8 +1292,7 @@
                 <item>kPREDICATE_SUBSET_OF</item>
             </element>
         </TERM>
-
-	    <!-- kPREDICATE_PART_OF -->
+        <!-- kPREDICATE_PART_OF -->
         <TERM NS="" LID="PART-OF">
             <element variable="kTAG_KIND">
                 <item>:KIND-PREDICATE</item>
@@ -1265,9 +1307,8 @@
                 <item>kPREDICATE_PART_OF</item>
             </element>
         </TERM>
-
-	    <!-- kPREDICATE_ATTRIBUTE_OF -->
-		<TERM NS="" LID="ATTRIBUTE-OF">
+        <!-- kPREDICATE_ATTRIBUTE_OF -->
+        <TERM NS="" LID="ATTRIBUTE-OF">
             <element variable="kTAG_KIND">
                 <item>:KIND-PREDICATE</item>
             </element>
@@ -1281,8 +1322,7 @@
                 <item>kPREDICATE_ATTRIBUTE_OF</item>
             </element>
         </TERM>
-        
-	    <!-- kPREDICATE_METHOD_OF -->
+        <!-- kPREDICATE_METHOD_OF -->
         <TERM NS="" LID="METHOD-OF">
             <element variable="kTAG_KIND">
                 <item>:KIND-PREDICATE</item>
@@ -1297,8 +1337,7 @@
                 <item>kPREDICATE_METHOD_OF</item>
             </element>
         </TERM>
-
-	    <!-- kPREDICATE_SCALE_OF -->
+        <!-- kPREDICATE_SCALE_OF -->
         <TERM NS="" LID="SCALE-OF">
             <element variable="kTAG_KIND">
                 <item>:KIND-PREDICATE</item>
@@ -1313,8 +1352,7 @@
                 <item>kPREDICATE_SCALE_OF</item>
             </element>
         </TERM>
-
-		<!-- kPREDICATE_ENUM_OF -->
+        <!-- kPREDICATE_ENUM_OF -->
         <TERM NS="" LID="ENUM-OF">
             <element variable="kTAG_KIND">
                 <item>:KIND-PREDICATE</item>
@@ -1329,8 +1367,7 @@
                 <item>kPREDICATE_ENUM_OF</item>
             </element>
         </TERM>
-
-	    <!-- kPREDICATE_PREFERRED -->
+        <!-- kPREDICATE_PREFERRED -->
         <TERM NS="" LID="PREFERRED">
             <element variable="kTAG_KIND">
                 <item>:KIND-PREDICATE</item>
@@ -1345,8 +1382,7 @@
                 <item>kPREDICATE_PREFERRED</item>
             </element>
         </TERM>
-
-	    <!-- kPREDICATE_VALID -->
+        <!-- kPREDICATE_VALID -->
         <TERM NS="" LID="VALID">
             <element variable="kTAG_KIND">
                 <item>:KIND-PREDICATE</item>
@@ -1361,8 +1397,7 @@
                 <item>kPREDICATE_VALID</item>
             </element>
         </TERM>
-
-	    <!-- kPREDICATE_LEGACY -->
+        <!-- kPREDICATE_LEGACY -->
         <TERM NS="" LID="LEGACY">
             <element variable="kTAG_KIND">
                 <item>:KIND-PREDICATE</item>
@@ -1377,8 +1412,7 @@
                 <item>kPREDICATE_LEGACY</item>
             </element>
         </TERM>
-
-	    <!-- kPREDICATE_XREF -->
+        <!-- kPREDICATE_XREF -->
         <TERM NS="" LID="XREF">
             <element variable="kTAG_KIND">
                 <item>:KIND-PREDICATE</item>
@@ -1393,8 +1427,7 @@
                 <item>kPREDICATE_XREF</item>
             </element>
         </TERM>
-
-	    <!-- kPREDICATE_XREF_EXACT -->
+        <!-- kPREDICATE_XREF_EXACT -->
         <TERM NS="" LID="XREF-EXACT">
             <element variable="kTAG_KIND">
                 <item>:KIND-PREDICATE</item>
@@ -1410,5 +1443,153 @@
                 <item>kPREDICATE_XREF_EXACT</item>
             </element>
         </TERM>
+        <NODE class="COntologyMasterVertex" term=":PREDICATE" />
+        <NODE class="COntologyMasterVertex" term=":SUBCLASS-OF" />
+        <NODE class="COntologyMasterVertex" term=":SUBSET-OF" />
+        <NODE class="COntologyMasterVertex" term=":PART-OF" />
+        <NODE class="COntologyMasterVertex" term=":ATTRIBUTE-OF" />
+        <NODE class="COntologyMasterVertex" term=":METHOD-OF" />
+        <NODE class="COntologyMasterVertex" term=":SCALE-OF" />
+        <NODE class="COntologyMasterVertex" term=":ENUM-OF" />
+        <NODE class="COntologyMasterVertex" term=":PREFERRED" />
+        <NODE class="COntologyMasterVertex" term=":VALID" />
+        <NODE class="COntologyMasterVertex" term=":LEGACY" />
+        <NODE class="COntologyMasterVertex" term=":XREF" />
+        <NODE class="COntologyMasterVertex" term=":XREF-EXACT" />
+        <EDGE>
+            <element variable="kTAG_SUBJECT">:PREDICATE</element>
+            <element variable="kTAG_PREDICATE">:PART-OF</element>
+            <element variable="kTAG_OBJECT">:ONTOLOGY</element>
+        </EDGE>
+        <EDGE>
+            <element variable="kTAG_SUBJECT">:SUBCLASS-OF</element>
+            <element variable="kTAG_PREDICATE">:SUBCLASS-OF</element>
+            <element variable="kTAG_OBJECT">:PREDICATE</element>
+        </EDGE>
+        <EDGE>
+            <element variable="kTAG_SUBJECT">:SUBSET-OF</element>
+            <element variable="kTAG_PREDICATE">:SUBCLASS-OF</element>
+            <element variable="kTAG_OBJECT">:PREDICATE</element>
+        </EDGE>
+        <EDGE>
+            <element variable="kTAG_SUBJECT">:PART-OF</element>
+            <element variable="kTAG_PREDICATE">:SUBCLASS-OF</element>
+            <element variable="kTAG_OBJECT">:PREDICATE</element>
+        </EDGE>
+        <EDGE>
+            <element variable="kTAG_SUBJECT">:ATTRIBUTE-OF</element>
+            <element variable="kTAG_PREDICATE">:SUBCLASS-OF</element>
+            <element variable="kTAG_OBJECT">:PREDICATE</element>
+        </EDGE>
+        <EDGE>
+            <element variable="kTAG_SUBJECT">:METHOD-OF</element>
+            <element variable="kTAG_PREDICATE">:SUBCLASS-OF</element>
+            <element variable="kTAG_OBJECT">:PREDICATE</element>
+        </EDGE>
+        <EDGE>
+            <element variable="kTAG_SUBJECT">:SCALE-OF</element>
+            <element variable="kTAG_PREDICATE">:SUBCLASS-OF</element>
+            <element variable="kTAG_OBJECT">:PREDICATE</element>
+        </EDGE>
+        <EDGE>
+            <element variable="kTAG_SUBJECT">:ENUM-OF</element>
+            <element variable="kTAG_PREDICATE">:SUBCLASS-OF</element>
+            <element variable="kTAG_OBJECT">:PREDICATE</element>
+        </EDGE>
+        <EDGE>
+            <element variable="kTAG_SUBJECT">:PREFERRED</element>
+            <element variable="kTAG_PREDICATE">:SUBCLASS-OF</element>
+            <element variable="kTAG_OBJECT">:PREDICATE</element>
+        </EDGE>
+        <EDGE>
+            <element variable="kTAG_SUBJECT">:VALID</element>
+            <element variable="kTAG_PREDICATE">:SUBCLASS-OF</element>
+            <element variable="kTAG_OBJECT">:PREDICATE</element>
+        </EDGE>
+        <EDGE>
+            <element variable="kTAG_SUBJECT">:LEGACY</element>
+            <element variable="kTAG_PREDICATE">:SUBCLASS-OF</element>
+            <element variable="kTAG_OBJECT">:PREDICATE</element>
+        </EDGE>
+        <EDGE>
+            <element variable="kTAG_SUBJECT">:XREF</element>
+            <element variable="kTAG_PREDICATE">:SUBCLASS-OF</element>
+            <element variable="kTAG_OBJECT">:PREDICATE</element>
+        </EDGE>
+        <EDGE>
+            <element variable="kTAG_SUBJECT">:XREF-EXACT</element>
+            <element variable="kTAG_PREDICATE">:SUBCLASS-OF</element>
+            <element variable="kTAG_OBJECT">:PREDICATE</element>
+        </EDGE>
+    </UNIT>
+    
+    <!-- OBJECTS -->
+    <UNIT>
+        <!-- Terms -->
+        <TERM NS="" LID="_terms">
+            <element variable="kTAG_LABEL">
+                <item key="en">Term</item>
+            </element>
+            <element variable="kTAG_DEFINITION">
+                <item key="en"><![CDATA[An ontology term represents a <i>concept unrelated to a context</i>. As a <i>vocabulary</i> word changes its meaning depending on its position in a sentence, the same term may be used in different places in the ontology, meaning in different contexts, to represent different things. Terms are organised as a <i>dictionary</i>, <i>without relationships</i> between each other.]]></item>
+            </element>
+        </TERM>
+        <!-- Nodes -->
+        <TERM NS="" LID="_nodes">
+            <element variable="kTAG_LABEL">
+                <item key="en">Node</item>
+            </element>
+            <element variable="kTAG_DEFINITION">
+                <item key="en"><![CDATA[An ontology node is essentially an <i>ontology term in context</i>. Nodes are the <i>vertices of the ontology</i> graph and are <i>connected by relationships</i>.]]></item>
+            </element>
+        </TERM>
+        <!-- Edges -->
+        <TERM NS="" LID="_edges">
+            <element variable="kTAG_LABEL">
+                <item key="en">Edge</item>
+            </element>
+            <element variable="kTAG_DEFINITION">
+                <item key="en"><![CDATA[An ontology edge <i>relates ontology nodes</i> via a predicate. Edges are represented by a triplet: <i>subject</i>, <i>predicate</i> and <i>object</i>, in which the subject and the object are ontology nodes and the predicate is an ontology term.]]></item>
+            </element>
+        </TERM>
+        <!-- Tags -->
+        <TERM NS="" LID="_tags">
+            <element variable="kTAG_LABEL">
+                <item key="en">Tag</item>
+            </element>
+            <element variable="kTAG_DEFINITION">
+                <item key="en"><![CDATA[An ontology tag represents the <i>path</i> between an <i>ontology feature vertex</i> and an <i>ontology scale vertex</i>. Tags record the terms referenced by the vertices and the predicates that relate them.]]></item>
+            </element>
+        </TERM>
+        <NODE class="COntologyMasterVertex" term=":OBJECT" />
+        <NODE class="COntologyMasterVertex" term=":_terms" />
+        <NODE class="COntologyMasterVertex" term=":_nodes" />
+        <NODE class="COntologyMasterVertex" term=":_edges" />
+        <NODE class="COntologyMasterVertex" term=":_tags" />
+        <EDGE>
+            <element variable="kTAG_SUBJECT">:OBJECT</element>
+            <element variable="kTAG_PREDICATE">:PART-OF</element>
+            <element variable="kTAG_OBJECT">:ONTOLOGY</element>
+        </EDGE>
+        <EDGE>
+            <element variable="kTAG_SUBJECT">:_terms</element>
+            <element variable="kTAG_PREDICATE">:SUBCLASS-OF</element>
+            <element variable="kTAG_OBJECT">:OBJECT</element>
+        </EDGE>
+        <EDGE>
+            <element variable="kTAG_SUBJECT">:_nodes</element>
+            <element variable="kTAG_PREDICATE">:SUBCLASS-OF</element>
+            <element variable="kTAG_OBJECT">:OBJECT</element>
+        </EDGE>
+        <EDGE>
+            <element variable="kTAG_SUBJECT">:_edges</element>
+            <element variable="kTAG_PREDICATE">:SUBCLASS-OF</element>
+            <element variable="kTAG_OBJECT">:OBJECT</element>
+        </EDGE>
+        <EDGE>
+            <element variable="kTAG_SUBJECT">:_tags</element>
+            <element variable="kTAG_PREDICATE">:SUBCLASS-OF</element>
+            <element variable="kTAG_OBJECT">:OBJECT</element>
+        </EDGE>
     </UNIT>
 </ONTOLOGY>

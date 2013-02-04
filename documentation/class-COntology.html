@@ -179,7 +179,7 @@ interface for managing ontologies.</p>
 				<b>Author:</b>
 				Milko A. Škofič &lt;<a
 href="mailto:m.skofic&#64;cgiar.org">m.skofic&#64;<!---->cgiar.org</a>&gt;<br />
-		<b>Located at</b> <a href="source-class-COntology.html#277-4631" title="Go to source code">COntology.php</a><br />
+		<b>Located at</b> <a href="source-class-COntology.html#277-5730" title="Go to source code">COntology.php</a><br />
 	</div>
 
 
@@ -278,8 +278,8 @@ returning its name.</p>
 				<h4>Used by</h4>
 				<div class="list">
 						<code><code><a href="class-COntology.html#___toString">COntology::__toString()</a></code></code> <br />
+						<code><code><a href="class-COntology.html#_InitContainers">COntology::InitContainers()</a></code></code> <br />
 						<code><code><a href="class-COntology.html#_InitOntology">COntology::InitOntology()</a></code></code> <br />
-						<code><code><a href="class-COntology.html#__InitContainers">COntology::_InitContainers()</a></code></code> <br />
 				</div>
 
 				<h4>Overrides</h4>
@@ -329,6 +329,55 @@ inferred..</tt></tt></p>
 		</div>
 		</div></td>
 	</tr>
+	<tr data-order="InitContainers" id="_InitContainers">
+
+		<td class="attributes"><code>
+			 public 
+			
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_InitContainers">#</a>
+		<code><a href="source-class-COntology.html#414-591" title="Go to source code">InitContainers</a>( )</code>
+
+		<div class="description short">
+			
+<h4>Initialise ontology containers</h4>
+
+		</div>
+
+		<div class="description detailed hidden">
+			
+<h4>Initialise ontology containers</h4>
+
+<p>This method will reset and create indexes for containers related to terms,
+nodes, edges, tags and sequences.</p>
+
+<p><b>When calling this method you must be aware that all the ontology data will
+be erased, this method for intended to create a new ontology. This must be the
+first method called by the procedure that initialises the ontology.</b></p>
+
+
+
+
+
+				<h4>Throws</h4>
+				<div class="list">
+					<code><code><a href="class-Exception.html">Exception</a></code></code><br />
+				</div>
+
+				<h4>Uses</h4>
+				<div class="list">
+						<code><code><a href="class-COntology.html#_Connection">COntology::Connection()</a></code></code> <br />
+						NewTerm()<br />
+				</div>
+
+
+		</div>
+		</div></td>
+	</tr>
 	<tr data-order="InitOntology" id="_InitOntology">
 
 		<td class="attributes"><code>
@@ -340,7 +389,7 @@ inferred..</tt></tt></p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#_InitOntology">#</a>
-		<code><a href="source-class-COntology.html#414-485" title="Go to source code">InitOntology</a>( )</code>
+		<code><a href="source-class-COntology.html#598-658" title="Go to source code">InitOntology</a>( )</code>
 
 		<div class="description short">
 			
@@ -382,6 +431,378 @@ any value.</p>
 		</div>
 		</div></td>
 	</tr>
+	<tr data-order="LoadXMLOntologyFile" id="_LoadXMLOntologyFile">
+
+		<td class="attributes"><code>
+			 public 
+			
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_LoadXMLOntologyFile">#</a>
+		<code><a href="source-class-COntology.html#674-740" title="Go to source code">LoadXMLOntologyFile</a>( <span>mixed <var>$theFilePath</var></span> )</code>
+
+		<div class="description short">
+			
+<h4>Load the provided XML ontology file</h4>
+
+		</div>
+
+		<div class="description detailed hidden">
+			
+<h4>Load the provided XML ontology file</h4>
+
+<p>This method will parse and load the provided XML file loading the container
+terms, nodes, edges and tags.</p>
+
+<p>The expected XML structure can be consulted in the Ontology.xsd
+schema.</p>
+
+<p>The file path parameter may be either a string or a list of strings.</p>
+
+
+
+				<h4>Parameters</h4>
+				<div class="list"><dl>
+					<dt><var>$theFilePath</var></dt>
+					<dd><code>mixed</code><br>$theFilePath Path to the XML file(s).</dd>
+				</dl></div>
+
+
+				<h4>Throws</h4>
+				<div class="list">
+					<code><code><a href="class-Exception.html">Exception</a></code></code><br />
+				</div>
+
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="LoadXMLOntologyUnit" id="_LoadXMLOntologyUnit">
+
+		<td class="attributes"><code>
+			 public 
+			
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_LoadXMLOntologyUnit">#</a>
+		<code><a href="source-class-COntology.html#747-800" title="Go to source code">LoadXMLOntologyUnit</a>( <span><code><a href="class-CDatabase.html">CDatabase</a></code> <var>$theDatabase</var></span>, <span><code><a href="class-SimpleXMLElement.html">SimpleXMLElement</a></code> <var>$theUnit</var></span> )</code>
+
+		<div class="description short">
+			
+<h4>Load the provided XML unit element</h4>
+
+		</div>
+
+		<div class="description detailed hidden">
+			
+<h4>Load the provided XML unit element</h4>
+
+<p>This method will parse and load the provided XML <tt>UNIT</tt> element.</p>
+
+<p>The expected XML structure can be consulted in the Ontology.xsd
+schema.</p>
+
+
+
+				<h4>Parameters</h4>
+				<div class="list"><dl>
+					<dt><var>$theDatabase</var></dt>
+					<dd><code><code><a href="class-CDatabase.html">CDatabase</a></code></code><br>$theDatabase Database instance.</dd>
+					<dt><var>$theUnit</var></dt>
+					<dd><code><code><a href="class-SimpleXMLElement.html">SimpleXMLElement</a></code></code><br>$theUnit XML unit element.</dd>
+				</dl></div>
+
+
+				<h4>Throws</h4>
+				<div class="list">
+					<code><code><a href="class-Exception.html">Exception</a></code></code><br />
+				</div>
+
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="LoadXMLOntologyTerm" id="_LoadXMLOntologyTerm">
+
+		<td class="attributes"><code>
+			 public 
+			
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_LoadXMLOntologyTerm">#</a>
+		<code><a href="source-class-COntology.html#807-1110" title="Go to source code">LoadXMLOntologyTerm</a>( <span>Reference <var>&amp; $theCache</var></span>, <span><code><a href="class-CDatabase.html">CDatabase</a></code> <var>$theDatabase</var></span>, <span><code><a href="class-SimpleXMLElement.html">SimpleXMLElement</a></code> <var>$theElement</var></span> )</code>
+
+		<div class="description short">
+			
+<h4>Load the provided XML ontology term element</h4>
+
+		</div>
+
+		<div class="description detailed hidden">
+			
+<h4>Load the provided XML ontology term element</h4>
+
+<p>This method will parse and load the provided ontology XML <tt>TERM</tt>
+element.</p>
+
+<p>The expected XML structure can be consulted in the Ontology.xsd
+schema.</p>
+
+
+
+				<h4>Parameters</h4>
+				<div class="list"><dl>
+					<dt><var>$theCache</var></dt>
+					<dd><code>Reference</code><br>&amp;$theCache Unit cache.</dd>
+					<dt><var>$theDatabase</var></dt>
+					<dd><code><code><a href="class-CDatabase.html">CDatabase</a></code></code><br>$theDatabase Database instance.</dd>
+					<dt><var>$theElement</var></dt>
+					<dd><code><code><a href="class-SimpleXMLElement.html">SimpleXMLElement</a></code></code><br>$theElement XML term element.</dd>
+				</dl></div>
+
+
+				<h4>Throws</h4>
+				<div class="list">
+					<code><code><a href="class-Exception.html">Exception</a></code></code><br />
+				</div>
+
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="LoadXMLOntologyNode" id="_LoadXMLOntologyNode">
+
+		<td class="attributes"><code>
+			 public 
+			
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_LoadXMLOntologyNode">#</a>
+		<code><a href="source-class-COntology.html#1117-1455" title="Go to source code">LoadXMLOntologyNode</a>( <span>Reference <var>&amp; $theCache</var></span>, <span><code><a href="class-CDatabase.html">CDatabase</a></code> <var>$theDatabase</var></span>, <span><code><a href="class-SimpleXMLElement.html">SimpleXMLElement</a></code> <var>$theElement</var></span> )</code>
+
+		<div class="description short">
+			
+<h4>Load the provided XML ontology node element</h4>
+
+		</div>
+
+		<div class="description detailed hidden">
+			
+<h4>Load the provided XML ontology node element</h4>
+
+<p>This method will parse and load the provided ontology XML <tt>NODE</tt>
+element.</p>
+
+<p>The expected XML structure can be consulted in the Ontology.xsd
+schema.</p>
+
+
+
+				<h4>Parameters</h4>
+				<div class="list"><dl>
+					<dt><var>$theCache</var></dt>
+					<dd><code>Reference</code><br>&amp;$theCache Unit cache.</dd>
+					<dt><var>$theDatabase</var></dt>
+					<dd><code><code><a href="class-CDatabase.html">CDatabase</a></code></code><br>$theDatabase Database instance.</dd>
+					<dt><var>$theElement</var></dt>
+					<dd><code><code><a href="class-SimpleXMLElement.html">SimpleXMLElement</a></code></code><br>$theElement XML node element.</dd>
+				</dl></div>
+
+
+				<h4>Throws</h4>
+				<div class="list">
+					<code><code><a href="class-Exception.html">Exception</a></code></code><br />
+				</div>
+
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="LoadXMLOntologyEdge" id="_LoadXMLOntologyEdge">
+
+		<td class="attributes"><code>
+			 public 
+			
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_LoadXMLOntologyEdge">#</a>
+		<code><a href="source-class-COntology.html#1462-1693" title="Go to source code">LoadXMLOntologyEdge</a>( <span>Reference <var>&amp; $theCache</var></span>, <span><code><a href="class-CDatabase.html">CDatabase</a></code> <var>$theDatabase</var></span>, <span><code><a href="class-SimpleXMLElement.html">SimpleXMLElement</a></code> <var>$theElement</var></span> )</code>
+
+		<div class="description short">
+			
+<h4>Load the provided XML ontology edge element</h4>
+
+		</div>
+
+		<div class="description detailed hidden">
+			
+<h4>Load the provided XML ontology edge element</h4>
+
+<p>This method will parse and load the provided ontology XML <tt>EDGE</tt>
+element.</p>
+
+<p>The expected XML structure can be consulted in the Ontology.xsd
+schema.</p>
+
+
+
+				<h4>Parameters</h4>
+				<div class="list"><dl>
+					<dt><var>$theCache</var></dt>
+					<dd><code>Reference</code><br>&amp;$theCache Unit cache.</dd>
+					<dt><var>$theDatabase</var></dt>
+					<dd><code><code><a href="class-CDatabase.html">CDatabase</a></code></code><br>$theDatabase Database instance.</dd>
+					<dt><var>$theElement</var></dt>
+					<dd><code><code><a href="class-SimpleXMLElement.html">SimpleXMLElement</a></code></code><br>$theElement XML edge element.</dd>
+				</dl></div>
+
+
+				<h4>Throws</h4>
+				<div class="list">
+					<code><code><a href="class-Exception.html">Exception</a></code></code><br />
+				</div>
+
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="LoadXMLOntologyTag" id="_LoadXMLOntologyTag">
+
+		<td class="attributes"><code>
+			 public 
+			
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_LoadXMLOntologyTag">#</a>
+		<code><a href="source-class-COntology.html#1700-1949" title="Go to source code">LoadXMLOntologyTag</a>( <span>Reference <var>&amp; $theCache</var></span>, <span><code><a href="class-CDatabase.html">CDatabase</a></code> <var>$theDatabase</var></span>, <span><code><a href="class-SimpleXMLElement.html">SimpleXMLElement</a></code> <var>$theElement</var></span> )</code>
+
+		<div class="description short">
+			
+<h4>Load the provided XML ontology tag element</h4>
+
+		</div>
+
+		<div class="description detailed hidden">
+			
+<h4>Load the provided XML ontology tag element</h4>
+
+<p>This method will parse and load the provided ontology XML <tt>TAG</tt>
+element.</p>
+
+<p>The expected XML structure can be consulted in the Ontology.xsd
+schema.</p>
+
+
+
+				<h4>Parameters</h4>
+				<div class="list"><dl>
+					<dt><var>$theCache</var></dt>
+					<dd><code>Reference</code><br>&amp;$theCache Unit cache.</dd>
+					<dt><var>$theDatabase</var></dt>
+					<dd><code><code><a href="class-CDatabase.html">CDatabase</a></code></code><br>$theDatabase Database instance.</dd>
+					<dt><var>$theElement</var></dt>
+					<dd><code><code><a href="class-SimpleXMLElement.html">SimpleXMLElement</a></code></code><br>$theElement XML tag element.</dd>
+				</dl></div>
+
+
+				<h4>Throws</h4>
+				<div class="list">
+					<code><code><a href="class-Exception.html">Exception</a></code></code><br />
+				</div>
+
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="ResolveOntologyNode" id="_ResolveOntologyNode">
+
+		<td class="attributes"><code>
+			 public 
+			
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_ResolveOntologyNode">#</a>
+		<code><a href="source-class-COntology.html#1956-2101" title="Go to source code">ResolveOntologyNode</a>( <span><code><a href="class-CDatabase.html">CDatabase</a></code> <var>$theDatabase</var></span>, <span><code><a href="class-SimpleXMLElement.html">SimpleXMLElement</a></code> <var>$theElement</var></span> )</code>
+
+		<div class="description short">
+			
+<h4>Resolve ontology node</h4>
+
+		</div>
+
+		<div class="description detailed hidden">
+			
+<h4>Resolve ontology node</h4>
+
+<p>This method will parse all elements and items intercepting <tt>node</tt>
+attributes, depending on the value of that attribute the method will do the
+following:</p>
+
+<ul>
+	<li><tt>term</tt>: The value of the element is supposed to be a term global
+	identifier, the method will resolve the master node that is related to that
+	term, replace the attribute value with <tt>node</tt> and replace the current
+	element value with the native identifier of the resolved master node.</li>
+
+	<li><tt>node</tt>: The method will do nothing, assuming the element's value is a
+	node native identifier.</li>
+
+	<li><tt>pid</tt>: The value of the element is supposed to be a node persistent
+	identifier, the method will resolve the node, replace the attribute value with
+	<tt>node</tt> and replace the current element value with the native identifier
+	of the resolved node.</li>
+</ul>
+
+<p>If any node is not resolved, the method will raise an exception.</p>
+
+
+
+				<h4>Parameters</h4>
+				<div class="list"><dl>
+					<dt><var>$theDatabase</var></dt>
+					<dd><code><code><a href="class-CDatabase.html">CDatabase</a></code></code><br>$theDatabase Database instance.</dd>
+					<dt><var>$theElement</var></dt>
+					<dd><code><code><a href="class-SimpleXMLElement.html">SimpleXMLElement</a></code></code><br>$theElement XML element.</dd>
+				</dl></div>
+
+
+				<h4>Throws</h4>
+				<div class="list">
+					<code><code><a href="class-Exception.html">Exception</a></code></code><br />
+				</div>
+
+
+
+		</div>
+		</div></td>
+	</tr>
 	<tr data-order="LoadXMLFile" id="_LoadXMLFile">
 
 		<td class="attributes"><code>
@@ -393,7 +814,7 @@ any value.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#_LoadXMLFile">#</a>
-		<code><a href="source-class-COntology.html#501-565" title="Go to source code">LoadXMLFile</a>( <span>mixed <var>$theFilePath</var></span> )</code>
+		<code><a href="source-class-COntology.html#2117-2181" title="Go to source code">LoadXMLFile</a>( <span>mixed <var>$theFilePath</var></span> )</code>
 
 		<div class="description short">
 			
@@ -443,7 +864,7 @@ has not yet been loaded the method will fail.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#_LoadISOPOFiles">#</a>
-		<code><a href="source-class-COntology.html#581-624" title="Go to source code">LoadISOPOFiles</a>( <span>mixed <var>$theFilePath</var></span> )</code>
+		<code><a href="source-class-COntology.html#2197-2240" title="Go to source code">LoadISOPOFiles</a>( <span>mixed <var>$theFilePath</var></span> )</code>
 
 		<div class="description short">
 			
@@ -492,7 +913,7 @@ categories, it will then decode the PO files and load the information.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#_SetAllCountries">#</a>
-		<code><a href="source-class-COntology.html#631-723" title="Go to source code">SetAllCountries</a>( <span>string <var>$theEnumeration</var></span> )</code>
+		<code><a href="source-class-COntology.html#2247-2339" title="Go to source code">SetAllCountries</a>( <span>string <var>$theEnumeration</var></span> )</code>
 
 		<div class="description short">
 			
@@ -526,255 +947,6 @@ provided enumeration.</p>
 		</div>
 		</div></td>
 	</tr>
-	<tr data-order="_InitContainers" id="__InitContainers">
-
-		<td class="attributes"><code>
-			 protected 
-			
-			
-			</code>
-		</td>
-
-		<td class="name"><div>
-		<a class="anchor" href="#__InitContainers">#</a>
-		<code><a href="source-class-COntology.html#739-875" title="Go to source code">_InitContainers</a>( )</code>
-
-		<div class="description short">
-			
-<h4>Initialise ontology containers</h4>
-
-		</div>
-
-		<div class="description detailed hidden">
-			
-<h4>Initialise ontology containers</h4>
-
-<p>This method will reset and create indexes for containers related to terms,
-nodes, edges, tags and sequences.</p>
-
-<p><b>When calling this method you must be aware that all the ontology data will
-be erased, this method for intended to create a new ontology. This must be the
-first method called by the procedure that initialises the ontology.</b></p>
-
-
-
-
-
-				<h4>Throws</h4>
-				<div class="list">
-					<code><code><a href="class-Exception.html">Exception</a></code></code><br />
-				</div>
-
-				<h4>Uses</h4>
-				<div class="list">
-						<code><code><a href="class-COntology.html#_Connection">COntology::Connection()</a></code></code> <br />
-						NewTerm()<br />
-				</div>
-
-
-		</div>
-		</div></td>
-	</tr>
-	<tr data-order="_InitTerms" id="__InitTerms">
-
-		<td class="attributes"><code>
-			 protected 
-			
-			
-			</code>
-		</td>
-
-		<td class="name"><div>
-		<a class="anchor" href="#__InitTerms">#</a>
-		<code><a href="source-class-COntology.html#882-955" title="Go to source code">_InitTerms</a>( )</code>
-
-		<div class="description short">
-			
-<h4>Initialise default terms</h4>
-
-		</div>
-
-		<div class="description detailed hidden">
-			
-<h4>Initialise default terms</h4>
-
-<p>This method will load all default terms, it will read the term definition
-files from the library definitions directory.</p>
-
-
-
-
-
-				<h4>Throws</h4>
-				<div class="list">
-					<code><code><a href="class-Exception.html">Exception</a></code></code><br />
-				</div>
-
-
-
-		</div>
-		</div></td>
-	</tr>
-	<tr data-order="_InitNodes" id="__InitNodes">
-
-		<td class="attributes"><code>
-			 protected 
-			
-			
-			</code>
-		</td>
-
-		<td class="name"><div>
-		<a class="anchor" href="#__InitNodes">#</a>
-		<code><a href="source-class-COntology.html#962-1042" title="Go to source code">_InitNodes</a>( )</code>
-
-		<div class="description short">
-			
-<h4>Initialise nodes</h4>
-
-		</div>
-
-		<div class="description detailed hidden">
-			
-<h4>Initialise nodes</h4>
-
-<p>This method will load all default nodes, it will read the node definitions
-from the files placed in the library definitions directory.</p>
-
-
-
-
-
-				<h4>Throws</h4>
-				<div class="list">
-					<code><code><a href="class-Exception.html">Exception</a></code></code><br />
-				</div>
-
-
-
-		</div>
-		</div></td>
-	</tr>
-	<tr data-order="_InitEdges" id="__InitEdges">
-
-		<td class="attributes"><code>
-			 protected 
-			
-			
-			</code>
-		</td>
-
-		<td class="name"><div>
-		<a class="anchor" href="#__InitEdges">#</a>
-		<code><a href="source-class-COntology.html#1049-1115" title="Go to source code">_InitEdges</a>( )</code>
-
-		<div class="description short">
-			
-<h4>Initialise edges</h4>
-
-		</div>
-
-		<div class="description detailed hidden">
-			
-<h4>Initialise edges</h4>
-
-<p>This method will load all default edges, it will read the edge definitions
-from the files placed in the library definitions directory.</p>
-
-
-
-
-
-				<h4>Throws</h4>
-				<div class="list">
-					<code><code><a href="class-Exception.html">Exception</a></code></code><br />
-				</div>
-
-
-
-		</div>
-		</div></td>
-	</tr>
-	<tr data-order="_InitVertices" id="__InitVertices">
-
-		<td class="attributes"><code>
-			 protected 
-			
-			
-			</code>
-		</td>
-
-		<td class="name"><div>
-		<a class="anchor" href="#__InitVertices">#</a>
-		<code><a href="source-class-COntology.html#1122-1166" title="Go to source code">_InitVertices</a>( )</code>
-
-		<div class="description short">
-			
-<h4>Initialise vertices</h4>
-
-		</div>
-
-		<div class="description detailed hidden">
-			
-<h4>Initialise vertices</h4>
-
-<p>This method will load all default vertices, it will read the vertex
-definitions from the files placed in the library definitions directory.</p>
-
-
-
-
-
-				<h4>Throws</h4>
-				<div class="list">
-					<code><code><a href="class-Exception.html">Exception</a></code></code><br />
-				</div>
-
-
-
-		</div>
-		</div></td>
-	</tr>
-	<tr data-order="_InitTags" id="__InitTags">
-
-		<td class="attributes"><code>
-			 protected 
-			
-			
-			</code>
-		</td>
-
-		<td class="name"><div>
-		<a class="anchor" href="#__InitTags">#</a>
-		<code><a href="source-class-COntology.html#1173-1240" title="Go to source code">_InitTags</a>( )</code>
-
-		<div class="description short">
-			
-<h4>Initialise tags</h4>
-
-		</div>
-
-		<div class="description detailed hidden">
-			
-<h4>Initialise tags</h4>
-
-<p>This method will load all default tags, it will read the tag definitions from
-the files placed in the library definitions directory.</p>
-
-
-
-
-
-				<h4>Throws</h4>
-				<div class="list">
-					<code><code><a href="class-Exception.html">Exception</a></code></code><br />
-				</div>
-
-
-
-		</div>
-		</div></td>
-	</tr>
 	<tr data-order="_ParseXMLUnit" id="__ParseXMLUnit">
 
 		<td class="attributes"><code>
@@ -786,7 +958,7 @@ the files placed in the library definitions directory.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#__ParseXMLUnit">#</a>
-		<code><a href="source-class-COntology.html#1256-1601" title="Go to source code">_ParseXMLUnit</a>( <span><code><a href="class-CDatabase.html">CDatabase</a></code> <var>$theDatabase</var></span>, <span><code><a href="class-SimpleXMLElement.html">SimpleXMLElement</a></code> <var>$theElement</var></span> )</code>
+		<code><a href="source-class-COntology.html#2355-2700" title="Go to source code">_ParseXMLUnit</a>( <span><code><a href="class-CDatabase.html">CDatabase</a></code> <var>$theDatabase</var></span>, <span><code><a href="class-SimpleXMLElement.html">SimpleXMLElement</a></code> <var>$theElement</var></span> )</code>
 
 		<div class="description short">
 			
@@ -900,7 +1072,7 @@ structure:</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#__ParseXMLElement">#</a>
-		<code><a href="source-class-COntology.html#1608-1822" title="Go to source code">_ParseXMLElement</a>( <span><code><a href="class-CDatabase.html">CDatabase</a></code> <var>$theDatabase</var></span>, <span><code><a href="class-SimpleXMLElement.html">SimpleXMLElement</a></code> <var>$theElement</var></span>, <span><code><a href="class-CPersistentObject.html">CPersistentObject</a></code> <var>$theObject</var></span> )</code>
+		<code><a href="source-class-COntology.html#2707-2921" title="Go to source code">_ParseXMLElement</a>( <span><code><a href="class-CDatabase.html">CDatabase</a></code> <var>$theDatabase</var></span>, <span><code><a href="class-SimpleXMLElement.html">SimpleXMLElement</a></code> <var>$theElement</var></span>, <span><code><a href="class-CPersistentObject.html">CPersistentObject</a></code> <var>$theObject</var></span> )</code>
 
 		<div class="description short">
 			
@@ -973,7 +1145,7 @@ properties into the provided object.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#__ISODecodePOFiles">#</a>
-		<code><a href="source-class-COntology.html#1838-1956" title="Go to source code">_ISODecodePOFiles</a>( )</code>
+		<code><a href="source-class-COntology.html#2937-3055" title="Go to source code">_ISODecodePOFiles</a>( )</code>
 
 		<div class="description short">
 			
@@ -1013,7 +1185,7 @@ the kISO_FILE_PO_DIR directory the PHP serialised decode array.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#__ISOParseXMLFiles">#</a>
-		<code><a href="source-class-COntology.html#1963-2022" title="Go to source code">_ISOParseXMLFiles</a>( <span><code><a href="class-CDatabase.html">CDatabase</a></code> <var>$theDatabase</var></span> )</code>
+		<code><a href="source-class-COntology.html#3062-3121" title="Go to source code">_ISOParseXMLFiles</a>( <span><code><a href="class-CDatabase.html">CDatabase</a></code> <var>$theDatabase</var></span> )</code>
 
 		<div class="description short">
 			
@@ -1057,7 +1229,7 @@ the kISO_FILE_PO_DIR directory the PHP serialised decode array.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#__ISOParse6393XML">#</a>
-		<code><a href="source-class-COntology.html#2029-2469" title="Go to source code">_ISOParse6393XML</a>( <span><code><a href="class-CDatabase.html">CDatabase</a></code> <var>$theDatabase</var></span> )</code>
+		<code><a href="source-class-COntology.html#3128-3568" title="Go to source code">_ISOParse6393XML</a>( <span><code><a href="class-CDatabase.html">CDatabase</a></code> <var>$theDatabase</var></span> )</code>
 
 		<div class="description short">
 			
@@ -1127,7 +1299,7 @@ the kISO_FILE_PO_DIR directory the PHP serialised decode array.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#__ISOParse639XML">#</a>
-		<code><a href="source-class-COntology.html#2476-2941" title="Go to source code">_ISOParse639XML</a>( <span><code><a href="class-CDatabase.html">CDatabase</a></code> <var>$theDatabase</var></span> )</code>
+		<code><a href="source-class-COntology.html#3575-4040" title="Go to source code">_ISOParse639XML</a>( <span><code><a href="class-CDatabase.html">CDatabase</a></code> <var>$theDatabase</var></span> )</code>
 
 		<div class="description short">
 			
@@ -1190,7 +1362,7 @@ the kISO_FILE_PO_DIR directory the PHP serialised decode array.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#__ISOParse31661XML">#</a>
-		<code><a href="source-class-COntology.html#2948-3313" title="Go to source code">_ISOParse31661XML</a>( <span><code><a href="class-CDatabase.html">CDatabase</a></code> <var>$theDatabase</var></span> )</code>
+		<code><a href="source-class-COntology.html#4047-4412" title="Go to source code">_ISOParse31661XML</a>( <span><code><a href="class-CDatabase.html">CDatabase</a></code> <var>$theDatabase</var></span> )</code>
 
 		<div class="description short">
 			
@@ -1254,7 +1426,7 @@ the kISO_FILE_PO_DIR directory the PHP serialised decode array.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#__ISOParse31663XML">#</a>
-		<code><a href="source-class-COntology.html#3320-3680" title="Go to source code">_ISOParse31663XML</a>( <span><code><a href="class-CDatabase.html">CDatabase</a></code> <var>$theDatabase</var></span> )</code>
+		<code><a href="source-class-COntology.html#4419-4779" title="Go to source code">_ISOParse31663XML</a>( <span><code><a href="class-CDatabase.html">CDatabase</a></code> <var>$theDatabase</var></span> )</code>
 
 		<div class="description short">
 			
@@ -1319,7 +1491,7 @@ the kISO_FILE_PO_DIR directory the PHP serialised decode array.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#__ISOParse31662XML">#</a>
-		<code><a href="source-class-COntology.html#3687-3956" title="Go to source code">_ISOParse31662XML</a>( <span><code><a href="class-CDatabase.html">CDatabase</a></code> <var>$theDatabase</var></span> )</code>
+		<code><a href="source-class-COntology.html#4786-5055" title="Go to source code">_ISOParse31662XML</a>( <span><code><a href="class-CDatabase.html">CDatabase</a></code> <var>$theDatabase</var></span> )</code>
 
 		<div class="description short">
 			
@@ -1382,7 +1554,7 @@ the kISO_FILE_PO_DIR directory the PHP serialised decode array.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#__ISOParse4217XML">#</a>
-		<code><a href="source-class-COntology.html#3963-4330" title="Go to source code">_ISOParse4217XML</a>( <span><code><a href="class-CDatabase.html">CDatabase</a></code> <var>$theDatabase</var></span> )</code>
+		<code><a href="source-class-COntology.html#5062-5429" title="Go to source code">_ISOParse4217XML</a>( <span><code><a href="class-CDatabase.html">CDatabase</a></code> <var>$theDatabase</var></span> )</code>
 
 		<div class="description short">
 			
@@ -1443,7 +1615,7 @@ the kISO_FILE_PO_DIR directory the PHP serialised decode array.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#__ISOParse15924XML">#</a>
-		<code><a href="source-class-COntology.html#4337-4544" title="Go to source code">_ISOParse15924XML</a>( <span><code><a href="class-CDatabase.html">CDatabase</a></code> <var>$theDatabase</var></span> )</code>
+		<code><a href="source-class-COntology.html#5436-5643" title="Go to source code">_ISOParse15924XML</a>( <span><code><a href="class-CDatabase.html">CDatabase</a></code> <var>$theDatabase</var></span> )</code>
 
 		<div class="description short">
 			
@@ -1498,7 +1670,7 @@ the kISO_FILE_PO_DIR directory the PHP serialised decode array.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#__ISOCollectLanguageStrings">#</a>
-		<code><a href="source-class-COntology.html#4551-4627" title="Go to source code">_ISOCollectLanguageStrings</a>( <span><code><a href="class-CPersistentObject.html">CPersistentObject</a></code> <var>$theObject</var></span>, <span>string <var>$theFile</var></span>, <span>array <var>$theTags</var></span> )</code>
+		<code><a href="source-class-COntology.html#5650-5726" title="Go to source code">_ISOCollectLanguageStrings</a>( <span><code><a href="class-CPersistentObject.html">CPersistentObject</a></code> <var>$theObject</var></span>, <span>string <var>$theFile</var></span>, <span>array <var>$theTags</var></span> )</code>
 
 		<div class="description short">
 			

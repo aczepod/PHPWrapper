@@ -218,7 +218,7 @@ object of the relationship is an instance of this class, or an <code><a href="cl
 				<b>Author:</b>
 				Milko A. Škofič &lt;<a
 href="mailto:m.skofic&#64;cgiar.org">m.skofic&#64;<!---->cgiar.org</a>&gt;<br />
-		<b>Located at</b> <a href="source-class-COntologyMasterNode.html#36-512" title="Go to source code">COntologyMasterNode.php</a><br />
+		<b>Located at</b> <a href="source-class-COntologyMasterNode.html#36-489" title="Go to source code">COntologyMasterNode.php</a><br />
 	</div>
 
 
@@ -282,7 +282,7 @@ of alias nodes that reference the current node.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#_RelateTo">#</a>
-		<code><a href="source-class-COntologyMasterNode.html#111-255" title="Go to source code">RelateTo</a>( <span>mixed <var>$thePredicate</var></span>, <span>mixed <var>$theObject</var></span>, <span><code><a href="class-CConnection.html">CConnection</a></code> <var>$theConnection</var> = <span class="php-keyword1">NULL</span> </span> )</code>
+		<code><a href="source-class-COntologyMasterNode.html#111-230" title="Go to source code">RelateTo</a>( <span>mixed <var>$thePredicate</var></span>, <span>mixed <var>$theObject</var></span>, <span><code><a href="class-CConnection.html">CConnection</a></code> <var>$theConnection</var> = <span class="php-keyword1">NULL</span></span>, <span>boolean <var>$doPropagate</var> = <span class="php-keyword1">TRUE</span> </span> )</code>
 
 		<div class="description short">
 			
@@ -294,15 +294,36 @@ of alias nodes that reference the current node.</p>
 			
 <h4>Relate to node</h4>
 
-<p>We overload the inherited method to ensure that both vertices of the
-relationship do not have node references, kTAG_NODE. If any do have such
-references, we use the referenced node instead of the current one.</p>
+<p>We overload this method to mirror relationships between alias nodes to their
+counterpart master nodes, this is governed by the <tt>$doPropagate</tt>
+switch.</p>
 
-<p>Both the current node and the object node will be committed if not
-already.</p>
+<p>We first create the requested relationship, then, if the object is an alias,
+we relate the current object with the object's master.</p>
 
-<p>Since this operation involves searching the database, we require the
-connection which will be used to commit the edge.</p>
+<p>This means that:</p>
+
+<ul>
+	<li><i>MASTER =&gt; MASTER</i>:
+		<ul>
+			<li>MASTER =&gt; MASTER</li>
+		</ul>
+	</li>
+
+	<li><i>MASTER =&gt; ALIAS</i>:
+		<ul>
+			<li>MASTER =&gt; ALIAS</li>
+
+			<li>MASTER =&gt; ALIAS.MASTER</li>
+		</ul>
+	</li>
+</ul>
+
+<p>Note that this method is called by its counterpart in <code><a href="class-COntologyAliasNode.html">COntologyAliasNode</a></code>, this means</p>
+
+<p>We require the connection parameter here since both subject and object
+vertices must be committed by this method, this implies that the edge will also
+be committed.</p>
 
 
 
@@ -314,6 +335,8 @@ connection which will be used to commit the edge.</p>
 					<dd><code>mixed</code><br>$theObject Object node object or reference.</dd>
 					<dt><var>$theConnection</var></dt>
 					<dd><code><code><a href="class-CConnection.html">CConnection</a></code></code><br>$theConnection Server, database or container.</dd>
+					<dt><var>$doPropagate</var></dt>
+					<dd><code>boolean</code><br>$doPropagate TRUE means relate masters.</dd>
 				</dl></div>
 
 				<h4>Returns</h4>
@@ -340,7 +363,7 @@ connection which will be used to commit the edge.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#_Resolve">#</a>
-		<code><a href="source-class-COntologyMasterNode.html#271-374" title="Go to source code">Resolve</a>( <span><code><a href="class-CConnection.html">CConnection</a></code> <var>$theConnection</var></span>, <span>mixed <var>$theIdentifier</var></span>, <span>boolean <var>$doThrow</var> = <span class="php-keyword1">FALSE</span> </span> )</code>
+		<code><a href="source-class-COntologyMasterNode.html#246-349" title="Go to source code">Resolve</a>( <span><code><a href="class-CConnection.html">CConnection</a></code> <var>$theConnection</var></span>, <span>mixed <var>$theIdentifier</var></span>, <span>boolean <var>$doThrow</var> = <span class="php-keyword1">FALSE</span> </span> )</code>
 
 		<div class="description short">
 			
@@ -402,7 +425,7 @@ an object or <tt>NULL</tt>.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#__PrecommitIdentify">#</a>
-		<code><a href="source-class-COntologyMasterNode.html#390-508" title="Go to source code">_PrecommitIdentify</a>( <span>reference <var>&amp; $theConnection</var></span>, <span>reference <var>&amp; $theModifiers</var></span> )</code>
+		<code><a href="source-class-COntologyMasterNode.html#365-485" title="Go to source code">_PrecommitIdentify</a>( <span>reference <var>&amp; $theConnection</var></span>, <span>reference <var>&amp; $theModifiers</var></span> )</code>
 
 		<div class="description short">
 			
@@ -416,9 +439,9 @@ an object or <tt>NULL</tt>.</p>
 
 <p>We overload this method to prevent creating two nodes that refer to the same
 term. We first check if there is another node that refers to the same term and
-that does point to another node: if we find one we add the kTAG_CATEGORY, kTAG_KIND and kTAG_TYPE attributes to the found
-node and make it the current node; if no such node is found, we call the parent
-method.</p>
+that does point to another node: if we find one we add the kTAG_CATEGORY, kTAG_KIND, kTAG_TYPE, kTAG_INPUT and
+kTAG_EXAMPLES attributes to the found node and make it the current node;
+if no such node is found, we call the parent method.</p>
 
 <p>In the first case we return the found node identifier, this will stop the
 commit workflow.</p>
@@ -462,6 +485,7 @@ commit workflow.</p>
 			<a href="class-COntologyNode.html#_GetGraphNodeProperties">GetGraphNodeProperties()</a>, 
 			<a href="class-COntologyNode.html#_LoadTerm">LoadTerm()</a>, 
 			<a href="class-COntologyNode.html#_Replace">Replace()</a>, 
+			<a href="class-COntologyNode.html#_ResolvePID">ResolvePID()</a>, 
 			<a href="class-COntologyNode.html#_Type">Type()</a>, 
 			<a href="class-COntologyNode.html#_Update">Update()</a>, 
 			<a href="class-COntologyNode.html#__AddGraphNode">_AddGraphNode()</a>, 
@@ -483,6 +507,7 @@ commit workflow.</p>
 	<tr>
 		<td><code>
 			<a href="class-CNode.html#_Description">Description()</a>, 
+			<a href="class-CNode.html#_PID">PID()</a>, 
 			<a href="class-CNode.html#_Term">Term()</a>, 
 			<a href="class-CNode.html#__Ready">_Ready()</a>
 		</code></td>

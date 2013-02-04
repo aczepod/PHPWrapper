@@ -283,7 +283,7 @@ the caller or of derived classes to implement a locking rule.</p>
 				<b>Author:</b>
 				Milko A. Škofič &lt;<a
 href="mailto:m.skofic&#64;cgiar.org">m.skofic&#64;<!---->cgiar.org</a>&gt;<br />
-		<b>Located at</b> <a href="source-class-CNode.html#43-525" title="Go to source code">CNode.php</a><br />
+		<b>Located at</b> <a href="source-class-CNode.html#43-628" title="Go to source code">CNode.php</a><br />
 	</div>
 
 
@@ -334,6 +334,91 @@ the unique identifier of the object.</p>
 		</div>
 		</div></td>
 	</tr>
+	<tr data-order="PID" id="_PID">
+
+		<td class="attributes"><code>
+			 public 
+			string
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_PID">#</a>
+		<code><a href="source-class-CNode.html#233-280" title="Go to source code">PID</a>( <span>mixed <var>$theValue</var> = <span class="php-keyword1">NULL</span></span>, <span>boolean <var>$getOld</var> = <span class="php-keyword1">FALSE</span> </span> )</code>
+
+		<div class="description short">
+			
+<h4>Manage persistent identifier</h4>
+
+		</div>
+
+		<div class="description detailed hidden">
+			
+<h4>Manage persistent identifier</h4>
+
+<p>The <i>persistent identifier</i>, kTAG_PID, holds a string value
+which represents the object's persistent identifier. This value should uniquely
+identify the object across implementations and should not change once the object
+has been committed.</p>
+
+<p>This attribute becomes necessary when the object does not have a global
+unique identifier and its native identifier is not persistent. In nodes this is
+true because the <code><a href="class-CNode.html#_Term">CNode::Term()</a></code>, which is its global identifier, is not unique
+and its native identifier, <code><a href="class-CPersistentDocument.html#_NID">CPersistentDocument::NID()</a></code>, is a non persistent sequence number:
+this attribute can be used to set a value which can be used to differentiate
+nodes which point to the same term and that may have different native
+identifiers in different implementations.</p>
+
+<p>The method accepts a parameter which represents either the new value or the
+requested operation, depending on its type:</p>
+
+<ul>
+	<li><tt>NULL</tt>: Return the current value.</li>
+
+	<li><tt>FALSE</tt>: Delete the current value.</li>
+
+	<li><i>other</i>: Set the value with the provided parameter.</li>
+</ul>
+
+<p>The second parameter is a boolean which if <tt>TRUE</tt> will return the
+<i>old</i> value when replacing an existing value; if <tt>FALSE</tt>, it will
+return the currently set value.</p>
+
+<p>Note that, while this method allows the creation, modification and deletion
+of this property, the hosting object may prevent some of these actions, by
+default this attribute is locked when the object has the <code><a href="class-CStatusDocument.html#__IsCommitted">CStatusDocument::_IsCommitted()</a></code>
+status.</p>
+
+
+
+				<h4>Parameters</h4>
+				<div class="list"><dl>
+					<dt><var>$theValue</var></dt>
+					<dd><code>mixed</code><br>$theValue Persistent identifier or operation.</dd>
+					<dt><var>$getOld</var></dt>
+					<dd><code>boolean</code><br>$getOld <tt>TRUE</tt> get old value.</dd>
+				</dl></div>
+
+				<h4>Returns</h4>
+				<div class="list">
+					<code>string</code><br><i>New</i>, <i>old</i> value or <tt>NULL</tt>.<br />
+				</div>
+
+
+				<h4>See</h4>
+				<div class="list">
+						kTAG_PID<br />
+				</div>
+				<h4>Uses</h4>
+				<div class="list">
+						<code><code><a href="function-ManageOffset.html">ManageOffset()</a></code></code> <br />
+				</div>
+
+
+		</div>
+		</div></td>
+	</tr>
 	<tr data-order="Term" id="_Term">
 
 		<td class="attributes"><code>
@@ -345,7 +430,7 @@ the unique identifier of the object.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#_Term">#</a>
-		<code><a href="source-class-CNode.html#233-266" title="Go to source code">Term</a>( <span>mixed <var>$theValue</var> = <span class="php-keyword1">NULL</span></span>, <span>boolean <var>$getOld</var> = <span class="php-keyword1">FALSE</span> </span> )</code>
+		<code><a href="source-class-CNode.html#287-320" title="Go to source code">Term</a>( <span>mixed <var>$theValue</var> = <span class="php-keyword1">NULL</span></span>, <span>boolean <var>$getOld</var> = <span class="php-keyword1">FALSE</span> </span> )</code>
 
 		<div class="description short">
 			
@@ -415,7 +500,7 @@ the currently set value.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#_Description">#</a>
-		<code><a href="source-class-CNode.html#273-319" title="Go to source code">Description</a>( <span>mixed <var>$theLanguage</var> = <span class="php-keyword1">NULL</span></span>, <span>mixed <var>$theValue</var> = <span class="php-keyword1">NULL</span></span>, <span>boolean <var>$getOld</var> = <span class="php-keyword1">FALSE</span> </span> )</code>
+		<code><a href="source-class-CNode.html#327-373" title="Go to source code">Description</a>( <span>mixed <var>$theLanguage</var> = <span class="php-keyword1">NULL</span></span>, <span>mixed <var>$theValue</var> = <span class="php-keyword1">NULL</span></span>, <span>boolean <var>$getOld</var> = <span class="php-keyword1">FALSE</span> </span> )</code>
 
 		<div class="description short">
 			
@@ -503,7 +588,7 @@ the definition which does not depend on the context.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#_RelateTo">#</a>
-		<code><a href="source-class-CNode.html#335-394" title="Go to source code">RelateTo</a>( <span>mixed <var>$thePredicate</var></span>, <span>mixed <var>$theObject</var></span>, <span><code><a href="class-CConnection.html">CConnection</a></code> <var>$theConnection</var> = <span class="php-keyword1">NULL</span> </span> )</code>
+		<code><a href="source-class-CNode.html#389-453" title="Go to source code">RelateTo</a>( <span>mixed <var>$thePredicate</var></span>, <span>mixed <var>$theObject</var></span>, <span><code><a href="class-CConnection.html">CConnection</a></code> <var>$theConnection</var> = <span class="php-keyword1">NULL</span></span>, <span>boolean <var>$doPropagate</var> = <span class="php-keyword1">TRUE</span> </span> )</code>
 
 		<div class="description short">
 			
@@ -531,6 +616,10 @@ used to commit the edge.</p>
 	<li><tt>$thePredicate</tt>: The edge's predicate.</li>
 
 	<li><tt>$theConnection</tt>: Server, database or container.</li>
+
+	<li><tt>$doPropagate</tt>: This boolean switch indicates whether the
+	relationship is to be propagated. This feature is not used in this class, but
+	derived classes will use it; the default value is <tt>TRUE</tt>.</li>
 </ul>
 
 <p>The method will return an instance of the <code><a href="class-CEdge.html">CEdge</a></code> class, if any error
@@ -546,6 +635,8 @@ occurs, the method will raise an exception.</p>
 					<dd><code>mixed</code><br>$theObject Object vertex.</dd>
 					<dt><var>$theConnection</var></dt>
 					<dd><code><code><a href="class-CConnection.html">CConnection</a></code></code><br>$theConnection Server, database or container.</dd>
+					<dt><var>$doPropagate</var></dt>
+					<dd><code>boolean</code><br>$doPropagate TRUE means propagate relationships.</dd>
 				</dl></div>
 
 				<h4>Returns</h4>
@@ -570,7 +661,7 @@ occurs, the method will raise an exception.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#__Preset">#</a>
-		<code><a href="source-class-CNode.html#410-455" title="Go to source code">_Preset</a>( <span>reference <var>&amp; $theOffset</var></span>, <span>reference <var>&amp; $theValue</var></span> )</code>
+		<code><a href="source-class-CNode.html#469-517" title="Go to source code">_Preset</a>( <span>reference <var>&amp; $theOffset</var></span>, <span>reference <var>&amp; $theValue</var></span> )</code>
 
 		<div class="description short">
 			
@@ -582,8 +673,11 @@ occurs, the method will raise an exception.</p>
 			
 <h4>Handle offset before setting it</h4>
 
-<p>In this class we ensure that the kTAG_KIND offset is an array,
-ArrayObject instances are not counted as an array.</p>
+<p>In this class we ensure that the kTAG_KIND and kTAG_DESCRIPTION offsets are an arrays, ArrayObject instances are not counted
+as an array.</p>
+
+<p>We also ensure that the persistent identifier, kTAG_PID, is not
+modified if the object is committed.</p>
 
 
 
@@ -612,6 +706,61 @@ ArrayObject instances are not counted as an array.</p>
 		</div>
 		</div></td>
 	</tr>
+	<tr data-order="_Preunset" id="__Preunset">
+
+		<td class="attributes"><code>
+			 protected 
+			
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#__Preunset">#</a>
+		<code><a href="source-class-CNode.html#524-558" title="Go to source code">_Preunset</a>( <span>reference <var>&amp; $theOffset</var></span> )</code>
+
+		<div class="description short">
+			
+<h4>Handle offset before unsetting it</h4>
+
+		</div>
+
+		<div class="description detailed hidden">
+			
+<h4>Handle offset before unsetting it</h4>
+
+<p>In this class we prevent the modification of persistent attributes, in this
+class: kTAG_PID.</p>
+
+
+
+				<h4>Parameters</h4>
+				<div class="list"><dl>
+					<dt><var>$theOffset</var></dt>
+					<dd><code>reference</code><br>&amp;$theOffset Offset.</dd>
+				</dl></div>
+
+
+				<h4>Throws</h4>
+				<div class="list">
+					<code><code><a href="class-Exception.html">Exception</a></code></code><br />
+				</div>
+
+				<h4>See</h4>
+				<div class="list">
+						kTAG_PID<br />
+				</div>
+				<h4>Uses</h4>
+				<div class="list">
+						<code><code><a href="class-CStatusDocument.html#__IsCommitted">CStatusDocument::_IsCommitted()</a></code></code> <br />
+				</div>
+
+				<h4>Overrides</h4>
+				<div class="list"><code><a href="class-CPersistentObject.html#__Preunset">CPersistentObject::_Preunset()</a></code></div>
+
+		</div>
+		</div></td>
+	</tr>
 	<tr data-order="_NewEdge" id="__NewEdge">
 
 		<td class="attributes"><code>
@@ -623,7 +772,7 @@ ArrayObject instances are not counted as an array.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#__NewEdge">#</a>
-		<code><a href="source-class-CNode.html#471-482" title="Go to source code">_NewEdge</a>( )</code>
+		<code><a href="source-class-CNode.html#574-585" title="Go to source code">_NewEdge</a>( )</code>
 
 		<div class="description short">
 			
@@ -665,7 +814,7 @@ correct edge type.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#__Ready">#</a>
-		<code><a href="source-class-CNode.html#498-521" title="Go to source code">_Ready</a>( )</code>
+		<code><a href="source-class-CNode.html#601-624" title="Go to source code">_Ready</a>( )</code>
 
 		<div class="description short">
 			
@@ -722,7 +871,6 @@ absence of the kTAG_TERM offset.</p>
 			<a href="class-CPersistentObject.html#__PrecommitIdentify">_PrecommitIdentify()</a>, 
 			<a href="class-CPersistentObject.html#__PrecommitRelated">_PrecommitRelated()</a>, 
 			<a href="class-CPersistentObject.html#__PrecommitValidate">_PrecommitValidate()</a>, 
-			<a href="class-CPersistentObject.html#__Preunset">_Preunset()</a>, 
 			<a href="class-CPersistentObject.html#__ReferenceInObject">_ReferenceInObject()</a>, 
 			<a href="class-CPersistentObject.html#__id">_id()</a>, 
 			<a href="class-CPersistentObject.html#__index">_index()</a>

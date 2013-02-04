@@ -224,7 +224,7 @@ object to a string.</p>
 				<b>Author:</b>
 				Milko A. Škofič &lt;<a
 href="mailto:m.skofic&#64;cgiar.org">m.skofic&#64;<!---->cgiar.org</a>&gt;<br />
-		<b>Located at</b> <a href="source-class-CPersistentObject.html#36-1007" title="Go to source code">CPersistentObject.php</a><br />
+		<b>Located at</b> <a href="source-class-CPersistentObject.html#36-1020" title="Go to source code">CPersistentObject.php</a><br />
 	</div>
 
 
@@ -448,7 +448,7 @@ programmatically.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#_NewObject">#</a>
-		<code><a href="source-class-CPersistentObject.html#239-315" title="Go to source code">NewObject</a>( <span><code><a href="class-CConnection.html">CConnection</a></code> <var>$theConnection</var></span>, <span>mixed <var>$theIdentifier</var></span> )</code>
+		<code><a href="source-class-CPersistentObject.html#239-328" title="Go to source code">NewObject</a>( <span><code><a href="class-CConnection.html">CConnection</a></code> <var>$theConnection</var></span>, <span>mixed <var>$theIdentifier</var></span>, <span>boolean <var>$doThrow</var> = <span class="php-keyword1">FALSE</span> </span> )</code>
 
 		<div class="description short">
 			
@@ -475,6 +475,9 @@ offset is missing, the method will instantiate the calling class.</p>
 
 	<li><tt>$theIdentifier</tt>: The key of the object in the container, by default
 	the kTAG_NID offset.</li>
+
+	<li><tt>$doThrow</tt>: If <tt>TRUE</tt>, any failure to resolve the object will
+	raise an exception.</li>
 </ul>
 
 <p>If the object could not be located, the method will return <tt>NULL</tt>.</p>
@@ -487,6 +490,8 @@ offset is missing, the method will instantiate the calling class.</p>
 					<dd><code><code><a href="class-CConnection.html">CConnection</a></code></code><br>$theConnection Server, database or container.</dd>
 					<dt><var>$theIdentifier</var></dt>
 					<dd><code>mixed</code><br>$theIdentifier Identifier.</dd>
+					<dt><var>$doThrow</var></dt>
+					<dd><code>boolean</code><br>$doThrow If <tt>TRUE</tt> raise an exception.</dd>
 				</dl></div>
 
 				<h4>Returns</h4>
@@ -513,7 +518,7 @@ offset is missing, the method will instantiate the calling class.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#_DocumentObject">#</a>
-		<code><a href="source-class-CPersistentObject.html#322-374" title="Go to source code">DocumentObject</a>( <span>mixed <var>$theDocument</var></span> )</code>
+		<code><a href="source-class-CPersistentObject.html#335-387" title="Go to source code">DocumentObject</a>( <span>mixed <var>$theDocument</var></span> )</code>
 
 		<div class="description short">
 			
@@ -566,7 +571,7 @@ exception.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#__id">#</a>
-		<code><a href="source-class-CPersistentObject.html#390-421" title="Go to source code">_id</a>( <span>string <var>$theIdentifier</var> = <span class="php-keyword1">NULL</span></span>, <span><code><a href="class-CConnection.html">CConnection</a></code> <var>$theConnection</var> = <span class="php-keyword1">NULL</span> </span> )</code>
+		<code><a href="source-class-CPersistentObject.html#403-434" title="Go to source code">_id</a>( <span>string <var>$theIdentifier</var> = <span class="php-keyword1">NULL</span></span>, <span><code><a href="class-CConnection.html">CConnection</a></code> <var>$theConnection</var> = <span class="php-keyword1">NULL</span> </span> )</code>
 
 		<div class="description short">
 			
@@ -632,7 +637,7 @@ see the <code><a href="class-CPersistentDocument.html#__Precommit">CPersistentDo
 
 		<td class="name"><div>
 		<a class="anchor" href="#__index">#</a>
-		<code><a href="source-class-CPersistentObject.html#437-481" title="Go to source code">_index</a>( <span><code><a href="class-CConnection.html">CConnection</a></code> <var>$theConnection</var></span>, <span>bitfield <var>$theModifiers</var></span> )</code>
+		<code><a href="source-class-CPersistentObject.html#450-494" title="Go to source code">_index</a>( <span><code><a href="class-CConnection.html">CConnection</a></code> <var>$theConnection</var></span>, <span>bitfield <var>$theModifiers</var></span> )</code>
 
 		<div class="description short">
 			
@@ -711,7 +716,7 @@ identifier, so we let the container set the identifier, and return
 
 		<td class="name"><div>
 		<a class="anchor" href="#__Preset">#</a>
-		<code><a href="source-class-CPersistentObject.html#497-533" title="Go to source code">_Preset</a>( <span>reference <var>&amp; $theOffset</var></span>, <span>reference <var>&amp; $theValue</var></span> )</code>
+		<code><a href="source-class-CPersistentObject.html#510-546" title="Go to source code">_Preset</a>( <span>reference <var>&amp; $theOffset</var></span>, <span>reference <var>&amp; $theValue</var></span> )</code>
 
 		<div class="description short">
 			
@@ -769,7 +774,7 @@ identifier.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#__Preunset">#</a>
-		<code><a href="source-class-CPersistentObject.html#540-575" title="Go to source code">_Preunset</a>( <span>reference <var>&amp; $theOffset</var></span> )</code>
+		<code><a href="source-class-CPersistentObject.html#553-588" title="Go to source code">_Preunset</a>( <span>reference <var>&amp; $theOffset</var></span> )</code>
 
 		<div class="description short">
 			
@@ -825,7 +830,7 @@ identifier.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#__PrecommitValidate">#</a>
-		<code><a href="source-class-CPersistentObject.html#591-634" title="Go to source code">_PrecommitValidate</a>( <span>reference <var>&amp; $theConnection</var></span>, <span>reference <var>&amp; $theModifiers</var></span> )</code>
+		<code><a href="source-class-CPersistentObject.html#604-647" title="Go to source code">_PrecommitValidate</a>( <span>reference <var>&amp; $theConnection</var></span>, <span>reference <var>&amp; $theModifiers</var></span> )</code>
 
 		<div class="description short">
 			
@@ -882,7 +887,7 @@ kTAG_NID, if the operation involves updating.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#__PrecommitRelated">#</a>
-		<code><a href="source-class-CPersistentObject.html#641-676" title="Go to source code">_PrecommitRelated</a>( <span>reference <var>&amp; $theConnection</var></span>, <span>reference <var>&amp; $theModifiers</var></span> )</code>
+		<code><a href="source-class-CPersistentObject.html#654-689" title="Go to source code">_PrecommitRelated</a>( <span>reference <var>&amp; $theConnection</var></span>, <span>reference <var>&amp; $theModifiers</var></span> )</code>
 
 		<div class="description short">
 			
@@ -937,7 +942,7 @@ replacing or updating.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#__PrecommitIdentify">#</a>
-		<code><a href="source-class-CPersistentObject.html#683-767" title="Go to source code">_PrecommitIdentify</a>( <span>reference <var>&amp; $theConnection</var></span>, <span>reference <var>&amp; $theModifiers</var></span> )</code>
+		<code><a href="source-class-CPersistentObject.html#696-780" title="Go to source code">_PrecommitIdentify</a>( <span>reference <var>&amp; $theConnection</var></span>, <span>reference <var>&amp; $theModifiers</var></span> )</code>
 
 		<div class="description short">
 			
@@ -1014,7 +1019,7 @@ called.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#__ReferenceInObject">#</a>
-		<code><a href="source-class-CPersistentObject.html#783-905" title="Go to source code">_ReferenceInObject</a>( <span><code><a href="class-CContainer.html">CContainer</a></code> <var>$theContainer</var></span>, <span>byte <var>$theOperation</var></span>, <span>mixed <var>$theReference</var></span>, <span>string <var>$theOffset</var></span>, <span>integer <var>$theCount</var></span> )</code>
+		<code><a href="source-class-CPersistentObject.html#796-918" title="Go to source code">_ReferenceInObject</a>( <span><code><a href="class-CContainer.html">CContainer</a></code> <var>$theContainer</var></span>, <span>byte <var>$theOperation</var></span>, <span>mixed <var>$theReference</var></span>, <span>string <var>$theOffset</var></span>, <span>integer <var>$theCount</var></span> )</code>
 
 		<div class="description short">
 			
@@ -1105,7 +1110,7 @@ the object and before setting the committed status</i>.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#__AssertClass">#</a>
-		<code><a href="source-class-CPersistentObject.html#921-1003" title="Go to source code">_AssertClass</a>( <span>reference <var>&amp; $theValue</var></span>, <span>string <var>$theBaseClass</var></span>, <span>string <var>$theDerivedClass</var> = <span class="php-keyword1">NULL</span></span>, <span>boolean <var>$doThrow</var> = <span class="php-keyword1">FALSE</span> </span> )</code>
+		<code><a href="source-class-CPersistentObject.html#934-1016" title="Go to source code">_AssertClass</a>( <span>reference <var>&amp; $theValue</var></span>, <span>string <var>$theBaseClass</var></span>, <span>string <var>$theDerivedClass</var> = <span class="php-keyword1">NULL</span></span>, <span>boolean <var>$doThrow</var> = <span class="php-keyword1">FALSE</span> </span> )</code>
 
 		<div class="description short">
 			

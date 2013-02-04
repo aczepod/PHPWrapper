@@ -408,6 +408,190 @@ class COntology extends CConnection
 
 	 
 	/*===================================================================================
+	 *	InitContainers																	*
+	 *==================================================================================*/
+
+	/**
+	 * <h4>Initialise ontology containers</h4>
+	 *
+	 * This method will reset and create indexes for containers related to terms, nodes,
+	 * edges, tags and sequences.
+	 *
+	 * <b>When calling this method you must be aware that all the ontology data will be
+	 * erased, this method for intended to create a new ontology. This must be the first
+	 * method called by the procedure that initialises the ontology.</b>
+	 *
+	 * @access public
+	 *
+	 * @throws Exception
+	 *
+	 * @uses Connection()
+	 * @uses NewTerm()
+	 */
+	public function InitContainers()
+	{
+		//
+		// Get database.
+		//
+		$db = $this->GetDatabase();
+		if( ! ($db instanceof CDatabase) )
+			throw new Exception
+				( "Unable to retrieve database connection",
+				  kERROR_STATE );												// !@! ==>
+		
+		//
+		// Get terms container.
+		//
+		$container = COntologyTerm::DefaultContainer( $db );
+		if( ! ($container instanceof CContainer) )
+			throw new Exception
+				( "Unable to retrieve terms container",
+				  kERROR_STATE );												// !@! ==>
+		
+		//
+		// Init terms container.
+		//
+		$container->drop();
+		$container->AddIndex( array( kTAG_GID => 1 ) );
+	//	$container->AddIndex( array( kTAG_NAMESPACE => 1 ), array( 'sparse' => TRUE ) );
+		$container->AddIndex( array( kTAG_LID => 1 ) );
+	//	$container->AddIndex( array( kTAG_TERM => 1 ), array( 'sparse' => TRUE ) );
+		$container->AddIndex( array( kTAG_SYNONYMS => 1 ), array( 'sparse' => TRUE ) );
+		$container->AddIndex( array( kTAG_CATEGORY => 1 ), array( 'sparse' => TRUE ) );
+	//	$container->AddIndex( array( kTAG_KIND => 1 ), array( 'sparse' => TRUE ) );
+	//	$container->AddIndex( array( kTAG_TYPE => 1 ), array( 'sparse' => TRUE ) );
+		$container->AddIndex( array( kTAG_LABEL => 1 ), array( 'sparse' => TRUE ) );
+	//	$container->AddIndex( array( kTAG_DEFINITION => 1 ), array( 'sparse' => TRUE ) );
+	//	$container->AddIndex( array( kTAG_FEATURES => 1 ), array( 'sparse' => TRUE ) );
+	//	$container->AddIndex( array( kTAG_METHODS => 1 ), array( 'sparse' => TRUE ) );
+	//	$container->AddIndex( array( kTAG_SCALES => 1 ), array( 'sparse' => TRUE ) );
+	//	$container->AddIndex( array( kTAG_NAMESPACE_REFS => 1 ), array( 'sparse' => TRUE ) );
+	//	$container->AddIndex( array( kTAG_NODES => 1 ), array( 'sparse' => TRUE ) );
+	//	$container->AddIndex( array( kTAG_EXAMPLES => 1 ), array( 'sparse' => TRUE ) );
+		
+		//
+		// Get nodes container.
+		//
+		$container = COntologyVertex::DefaultContainer( $db );
+		if( ! ($container instanceof CContainer) )
+			throw new Exception
+				( "Unable to retrieve nodes container",
+				  kERROR_STATE );												// !@! ==>
+		
+		//
+		// Init nodes container.
+		//
+		$container->drop();
+		$container->AddIndex( array( kTAG_TERM => 1 ) );
+		$container->AddIndex( array( kTAG_PID => 1 ), array( 'unique' => TRUE,
+															 'sparse' => TRUE ) );
+		$container->AddIndex( array( kTAG_TERM => 1 ) );
+	//	$container->AddIndex( array( kTAG_NODE => 1 ), array( 'sparse' => TRUE ) );
+		$container->AddIndex( array( kTAG_CATEGORY => 1 ), array( 'sparse' => TRUE ) );
+		$container->AddIndex( array( kTAG_KIND => 1 ), array( 'sparse' => TRUE ) );
+		$container->AddIndex( array( kTAG_TYPE => 1 ), array( 'sparse' => TRUE ) );
+	//	$container->AddIndex( array( kTAG_INPUT => 1 ), array( 'sparse' => TRUE ) );
+	//	$container->AddIndex( array( kTAG_PATTERN => 1 ), array( 'sparse' => TRUE ) );
+	//	$container->AddIndex( array( kTAG_LENGTH => 1 ), array( 'sparse' => TRUE ) );
+	//	$container->AddIndex( array( kTAG_MIN_VAL => 1 ), array( 'sparse' => TRUE ) );
+	//	$container->AddIndex( array( kTAG_MAX_VAL => 1 ), array( 'sparse' => TRUE ) );
+	//	$container->AddIndex( array( kTAG_EXAMPLES => 1 ), array( 'sparse' => TRUE ) );
+	//	$container->AddIndex( array( kTAG_DESCRIPTION => 1 ), array( 'sparse' => TRUE ) );
+	//	$container->AddIndex( array( kTAG_EDGES => 1 ), array( 'sparse' => TRUE ) );
+	//	$container->AddIndex( array( kTAG_NODES => 1 ), array( 'sparse' => TRUE ) );
+		
+		//
+		// Add vertex attributes.
+		//
+		$container->AddIndex( array( kTAG_LID => 1 ), array( 'sparse' => TRUE ) );
+		$container->AddIndex( array( kTAG_GID => 1 ), array( 'sparse' => TRUE ) );
+		$container->AddIndex( array( kTAG_LABEL => 1 ), array( 'sparse' => TRUE ) );
+	//	$container->AddIndex( array( kTAG_DESCRIPTION => 1 ), array( 'sparse' => TRUE ) );
+		
+		//
+		// Get edges container.
+		//
+		$container = COntologyEdge::DefaultContainer( $db );
+		if( ! ($container instanceof CContainer) )
+			throw new Exception
+				( "Unable to retrieve edges container",
+				  kERROR_STATE );												// !@! ==>
+		
+		//
+		// Init edges container.
+		//
+		$container->drop();
+	//	$container->AddIndex( array( kTAG_GID => 1 ), array( 'sparse' => TRUE ) );
+		$container->AddIndex( array( kTAG_UID => 1 ), array( 'unique' => TRUE ) );
+		$container->AddIndex( array( kTAG_SUBJECT => 1 ) );
+		$container->AddIndex( array( kTAG_PREDICATE => 1 ) );
+		$container->AddIndex( array( kTAG_OBJECT => 1 ) );
+		
+		//
+		// Get tags container.
+		//
+		$container = COntologyTag::DefaultContainer( $db );
+		if( ! ($container instanceof CContainer) )
+			throw new Exception
+				( "Unable to retrieve tags container",
+				  kERROR_STATE );												// !@! ==>
+		
+		//
+		// Init tags container.
+		//
+		$container->drop();
+	//	$container->AddIndex( array( kTAG_GID => 1 ), array( 'unique' => TRUE ) );
+		$container->AddIndex( array( kTAG_UID => 1 ), array( 'unique' => TRUE ) );
+	//	$container->AddIndex( array( kTAG_PATH => 1 ) );
+		$container->AddIndex( array( kTAG_TYPE => 1 ), array( 'sparse' => TRUE ) );
+	//	$container->AddIndex( array( kTAG_INPUT => 1 ), array( 'sparse' => TRUE ) );
+	//	$container->AddIndex( array( kTAG_PATTERN => 1 ), array( 'sparse' => TRUE ) );
+	//	$container->AddIndex( array( kTAG_LENGTH => 1 ), array( 'sparse' => TRUE ) );
+	//	$container->AddIndex( array( kTAG_MIN_VAL => 1 ), array( 'sparse' => TRUE ) );
+	//	$container->AddIndex( array( kTAG_MAX_VAL => 1 ), array( 'sparse' => TRUE ) );
+	//	$container->AddIndex( array( kTAG_EXAMPLES => 1 ), array( 'sparse' => TRUE ) );
+		
+		//
+		// Get users container.
+		//
+		$container = CUser::DefaultContainer( $db );
+		if( ! ($container instanceof CContainer) )
+			throw new Exception
+				( "Unable to retrieve users container",
+				  kERROR_STATE );												// !@! ==>
+		
+		//
+		// Init users container.
+		//
+		$container->drop();
+	//	$container->AddIndex( array( kTAG_GID => 1 ), array( 'unique' => TRUE ) );
+	//	$container->AddIndex( array( kTAG_USER_NAME => 1 ), array( 'sparse' => TRUE ) );
+		$container->AddIndex( array( kTAG_USER_CODE => 1 ), array( 'sparse' => TRUE ) );
+		$container->AddIndex( array( kTAG_USER_PASS => 1 ), array( 'sparse' => TRUE ) );
+	//	$container->AddIndex( array( kTAG_USER_MAIL => 1 ), array( 'sparse' => TRUE ) );
+		$container->AddIndex( array( kTAG_USER_ROLE => 1 ), array( 'sparse' => TRUE ) );
+	//	$container->AddIndex( array( kTAG_USER_PROFILE => 1 ), array( 'sparse' => TRUE ) );
+	//	$container->AddIndex( array( kTAG_USER_DOMAIN => 1 ), array( 'sparse' => TRUE ) );
+	//	$container->AddIndex( array( kTAG_USER_MANAGER => 1 ), array( 'sparse' => TRUE ) );
+		
+		//
+		// Get sequences container.
+		//
+		$container = $db->Container( kCONTAINER_SEQUENCE_NAME );
+		if( ! ($container instanceof CContainer) )
+			throw new Exception
+				( "Unable to retrieve sequences container",
+				  kERROR_STATE );												// !@! ==>
+		
+		//
+		// Init sequences container.
+		//
+		$container->drop();
+
+	} // InitContainers.
+
+		
+	/*===================================================================================
 	 *	InitOntology																	*
 	 *==================================================================================*/
 
@@ -440,39 +624,28 @@ class COntology extends CConnection
 		if( $this->_IsInited() )
 		{
 			//
-			// Init local storage.
+			// Get database.
 			//
-			$_SESSION[ kOFFSET_NODES ] = Array();
-			
+			$db = $this->GetDatabase();
+			if( ! ($db instanceof CDatabase) )
+				throw new Exception
+					( "Unable to retrieve database connection",
+					  kERROR_STATE );											// !@! ==>
+		
 			//
-			// Initialise containers.
+			// Set files list.
 			//
-			$this->_InitContainers();
-			
+			$dir = kPATH_MYWRAPPER_LIBRARY_DEFINE;
+			$files = array( "$dir/Namespaces.xml", "$dir/Terms.xml", "$dir/Categories.xml",
+							"$dir/Attributes.xml", "$dir/Predicates.xml", "$dir/Types.xml",
+							"$dir/Kinds.xml", "$dir/Operators.xml", "$dir/Status.xml",
+							"$dir/Inputs.xml", "$dir/Term.xml", "$dir/Node.xml",
+							"$dir/Edge.xml", "$dir/Tag.xml", "$dir/User.xml" );
+		
 			//
-			// Initialise terms.
+			// Load files.
 			//
-			$this->_InitTerms();
-			
-			//
-			// Initialise nodes.
-			//
-			$this->_InitNodes();
-			
-			//
-			// Initialise edges.
-			//
-			$this->_InitEdges();
-			
-			//
-			// Initialise vertices.
-			//
-			$this->_InitVertices();
-			
-			//
-			// Initialise tags.
-			//
-			$this->_InitTags();
+			$this->LoadXMLOntologyFile( $files );
 			
 			return;																	// ==>
 		
@@ -536,7 +709,6 @@ class COntology extends CConnection
 		//
 		foreach( $theFilePath as $file )
 		{
-echo( "$file<br>" );
 			//
 			// Load XML file.
 			//
@@ -2165,523 +2337,6 @@ echo( "$file<br>" );
 		}
 
 	} // SetAllCountries.
-
-		
-
-/*=======================================================================================
- *																						*
- *						PROTECTED ONTOLOGY INITIALISATION INTERFACE						*
- *																						*
- *======================================================================================*/
-
-
-	 
-	/*===================================================================================
-	 *	_InitContainers																	*
-	 *==================================================================================*/
-
-	/**
-	 * <h4>Initialise ontology containers</h4>
-	 *
-	 * This method will reset and create indexes for containers related to terms, nodes,
-	 * edges, tags and sequences.
-	 *
-	 * <b>When calling this method you must be aware that all the ontology data will be
-	 * erased, this method for intended to create a new ontology. This must be the first
-	 * method called by the procedure that initialises the ontology.</b>
-	 *
-	 * @access protected
-	 *
-	 * @throws Exception
-	 *
-	 * @uses Connection()
-	 * @uses NewTerm()
-	 */
-	protected function _InitContainers()
-	{
-		//
-		// Get database.
-		//
-		$db = $this->GetDatabase();
-		if( ! ($db instanceof CDatabase) )
-			throw new Exception
-				( "Unable to retrieve database connection",
-				  kERROR_STATE );												// !@! ==>
-		
-		//
-		// Get terms container.
-		//
-		$container = COntologyTerm::DefaultContainer( $db );
-		if( ! ($container instanceof CContainer) )
-			throw new Exception
-				( "Unable to retrieve terms container",
-				  kERROR_STATE );												// !@! ==>
-		
-		//
-		// Init terms container.
-		//
-		$container->drop();
-		$container->AddIndex( array( kTAG_LID => 1 ) );
-	//	$container->AddIndex( array( kTAG_GID => 1 ) );
-	//	$container->AddIndex( array( kTAG_NAMESPACE => 1 ), array( 'sparse' => TRUE ) );
-		$container->AddIndex( array( kTAG_SYNONYMS => 1 ), array( 'sparse' => TRUE ) );
-	//	$container->AddIndex( array( kTAG_EXAMPLES => 1 ), array( 'sparse' => TRUE ) );
-	//	$container->AddIndex( array( kTAG_TERM => 1 ), array( 'sparse' => TRUE ) );
-		$container->AddIndex( array( kTAG_KIND => 1 ), array( 'sparse' => TRUE ) );
-		$container->AddIndex( array( kTAG_LABEL => 1 ), array( 'sparse' => TRUE ) );
-	//	$container->AddIndex( array( kTAG_DEFINITION => 1 ), array( 'sparse' => TRUE ) );
-	//	$container->AddIndex( array( kTAG_NODES => 1 ), array( 'sparse' => TRUE ) );
-	//	$container->AddIndex( array( kTAG_FEATURES => 1 ), array( 'sparse' => TRUE ) );
-	//	$container->AddIndex( array( kTAG_METHODS => 1 ), array( 'sparse' => TRUE ) );
-	//	$container->AddIndex( array( kTAG_SCALES => 1 ), array( 'sparse' => TRUE ) );
-	//	$container->AddIndex( array( kTAG_NAMESPACE_REFS => 1 ), array( 'sparse' => TRUE ) );
-		
-		//
-		// Get nodes container.
-		//
-		$container = COntologyVertex::DefaultContainer( $db );
-		if( ! ($container instanceof CContainer) )
-			throw new Exception
-				( "Unable to retrieve nodes container",
-				  kERROR_STATE );												// !@! ==>
-		
-		//
-		// Init nodes container.
-		//
-		$container->drop();
-		$container->AddIndex( array( kTAG_TERM => 1 ) );
-	//	$container->AddIndex( array( kTAG_NODE => 1 ), array( 'sparse' => TRUE ) );
-		$container->AddIndex( array( kTAG_CATEGORY => 1 ), array( 'sparse' => TRUE ) );
-		$container->AddIndex( array( kTAG_KIND => 1 ), array( 'sparse' => TRUE ) );
-		$container->AddIndex( array( kTAG_TYPE => 1 ), array( 'sparse' => TRUE ) );
-	//	$container->AddIndex( array( kTAG_DESCRIPTION => 1 ), array( 'sparse' => TRUE ) );
-	//	$container->AddIndex( array( kTAG_EDGES => 1 ), array( 'sparse' => TRUE ) );
-	//	$container->AddIndex( array( kTAG_NODES => 1 ), array( 'sparse' => TRUE ) );
-		
-		//
-		// Add vertex attributes.
-		//
-	//	$container->AddIndex( array( kTAG_LID => 1 ), array( 'sparse' => TRUE ) );
-	//	$container->AddIndex( array( kTAG_GID => 1 ), array( 'sparse' => TRUE ) );
-		$container->AddIndex( array( kTAG_LABEL => 1 ), array( 'sparse' => TRUE ) );
-	//	$container->AddIndex( array( kTAG_DESCRIPTION => 1 ), array( 'sparse' => TRUE ) );
-		
-		//
-		// Get edges container.
-		//
-		$container = COntologyEdge::DefaultContainer( $db );
-		if( ! ($container instanceof CContainer) )
-			throw new Exception
-				( "Unable to retrieve edges container",
-				  kERROR_STATE );												// !@! ==>
-		
-		//
-		// Init edges container.
-		//
-		$container->drop();
-		$container->AddIndex( array( kTAG_UID => 1 ), array( 'unique' => TRUE ) );
-	//	$container->AddIndex( array( kTAG_GID => 1 ), array( 'sparse' => TRUE ) );
-		$container->AddIndex( array( kTAG_SUBJECT => 1 ) );
-		$container->AddIndex( array( kTAG_PREDICATE => 1 ) );
-		$container->AddIndex( array( kTAG_OBJECT => 1 ) );
-		
-		//
-		// Get tags container.
-		//
-		$container = COntologyTag::DefaultContainer( $db );
-		if( ! ($container instanceof CContainer) )
-			throw new Exception
-				( "Unable to retrieve tags container",
-				  kERROR_STATE );												// !@! ==>
-		
-		//
-		// Init tags container.
-		//
-		$container->drop();
-		$container->AddIndex( array( kTAG_UID => 1 ), array( 'unique' => TRUE ) );
-	//	$container->AddIndex( array( kTAG_GID => 1 ), array( 'unique' => TRUE ) );
-	//	$container->AddIndex( array( kTAG_PATH => 1 ) );
-		
-		//
-		// Get sequences container.
-		//
-		$container = $db->Container( kCONTAINER_SEQUENCE_NAME );
-		if( ! ($container instanceof CContainer) )
-			throw new Exception
-				( "Unable to retrieve sequences container",
-				  kERROR_STATE );												// !@! ==>
-		
-		//
-		// Init sequences container.
-		//
-		$container->drop();
-
-	} // _InitContainers.
-
-	 
-	/*===================================================================================
-	 *	_InitTerms																		*
-	 *==================================================================================*/
-
-	/**
-	 * <h4>Initialise default terms</h4>
-	 *
-	 * This method will load all default terms, it will read the term definition files from
-	 * the library definitions directory.
-	 *
-	 * @access protected
-	 *
-	 * @throws Exception
-	 */
-	protected function _InitTerms()
-	{
-		//
-		// Get database.
-		//
-		$db = $this->GetDatabase();
-		if( ! ($db instanceof CDatabase) )
-			throw new Exception
-				( "Unable to retrieve database connection",
-				  kERROR_STATE );												// !@! ==>
-		
-		//
-		// Init local storage.
-		//
-		$files = array( 'NamespaceTerms', 'CategoryTerms', 'EnumerationTerms',
-						'PredicateTerms', 'AttributeTerms', 'ObjectTerms' );
-		
-		//
-		// Iterate files.
-		//
-		foreach( $files as $file )
-		{
-			//
-			// Load XML file.
-			//
-			$xml = simplexml_load_file( kPATH_MYWRAPPER_LIBRARY_DEFINE."/$file.xml" );
-			
-			//
-			// Iterate terms.
-			//
-			foreach( $xml->{'term'} as $item )
-			{
-				//
-				// Instantiate term.
-				//
-				$term = new COntologyTerm();
-				if( $item[ 'ns' ] !== NULL )
-				{
-					$tmp = (string) $item[ 'ns' ];
-					$tmp = COntologyTerm::Resolve( $db, $tmp, NULL, TRUE );
-					$term->NS( $tmp );
-				}
-				if( $item[ 'lid' ] !== NULL )
-					$term->LID( (string) $item[ 'lid' ] );
-			
-				//
-				// Load attributes.
-				//
-				if( $item->children()->count() )
-				{
-					foreach( $item->{'element'} as $attribute )
-						$this->_ParseXMLElement( $db, $attribute, $term );
-				}
-			
-				//
-				// Save object.
-				//
-				$term->Insert( $db );
-			
-			} // Iterating terms.
-		
-		} // Iterating files.
-
-	} // _InitTerms.
-
-	 
-	/*===================================================================================
-	 *	_InitNodes																		*
-	 *==================================================================================*/
-
-	/**
-	 * <h4>Initialise nodes</h4>
-	 *
-	 * This method will load all default nodes, it will read the node definitions from the
-	 * files placed in the library definitions directory.
-	 *
-	 * @access protected
-	 *
-	 * @throws Exception
-	 */
-	protected function _InitNodes()
-	{
-		//
-		// Get database.
-		//
-		$db = $this->GetDatabase();
-		if( ! ($db instanceof CDatabase) )
-			throw new Exception
-				( "Unable to retrieve database connection",
-				  kERROR_STATE );												// !@! ==>
-		
-		//
-		// Init local storage.
-		//
-		$files = array( 'CategoryNodes', 'EnumerationNodes',
-						'PredicateNodes', 'AttributeNodes', 'ObjectNodes' );
-		
-		//
-		// Iterate files.
-		//
-		foreach( $files as $file )
-		{
-			//
-			// Load XML file.
-			//
-			$xml = simplexml_load_file( kPATH_MYWRAPPER_LIBRARY_DEFINE."/$file.xml" );
-			
-			//
-			// Iterate nodes.
-			//
-			foreach( $xml->{'node'} as $item )
-			{
-				//
-				// Instantiate node.
-				//
-				$class = ( $item[ 'class' ] !== NULL )
-					   ? (string) $item[ 'class' ]
-					   : 'COntologyNode';
-			
-				//
-				// Instantiate node.
-				//
-				$node = new $class();
-			
-				//
-				// Load attributes.
-				//
-				$attributes = $item->children();
-				foreach( $attributes as $attribute )
-				{
-					if( $attribute->getName() == 'element' )
-						$this->_ParseXMLElement( $db, $attribute, $node );
-				}
-			
-				//
-				// Save object.
-				//
-				$node->Insert( $db );
-				
-				//
-				// Cache node.
-				//
-				$_SESSION[ kOFFSET_NODES ]
-						 [ (string) $item[ 'kTAG_GID' ] ]
-						 	= $node->NID();
-			
-			} // Iterating nodes.
-		
-		} // Iterating files.
-
-	} // _InitNodes.
-
-	 
-	/*===================================================================================
-	 *	_InitEdges																		*
-	 *==================================================================================*/
-
-	/**
-	 * <h4>Initialise edges</h4>
-	 *
-	 * This method will load all default edges, it will read the edge definitions from the
-	 * files placed in the library definitions directory.
-	 *
-	 * @access protected
-	 *
-	 * @throws Exception
-	 */
-	protected function _InitEdges()
-	{
-		//
-		// Get database.
-		//
-		$db = $this->GetDatabase();
-		if( ! ($db instanceof CDatabase) )
-			throw new Exception
-				( "Unable to retrieve database connection",
-				  kERROR_STATE );												// !@! ==>
-		
-		//
-		// Init local storage.
-		//
-		$files = array( 'CategoryEdges', 'EnumerationEdges',
-						'PredicateEdges', 'AttributeEdges', 'ObjectEdges' );
-		
-		//
-		// Iterate files.
-		//
-		foreach( $files as $file )
-		{
-			//
-			// Load XML file.
-			//
-			$xml = simplexml_load_file( kPATH_MYWRAPPER_LIBRARY_DEFINE."/$file.xml" );
-			
-			//
-			// Iterate edges.
-			//
-			foreach( $xml->{'edge'} as $item )
-			{
-				//
-				// Instantiate edge.
-				//
-				$edge = new COntologyEdge();
-			
-				//
-				// Load attributes.
-				//
-				$attributes = $item->children();
-				foreach( $attributes as $attribute )
-				{
-					if( $attribute->getName() == 'element' )
-						$this->_ParseXMLElement( $db, $attribute, $edge );
-				}
-			
-				//
-				// Save object.
-				//
-				$edge->Insert( $db );
-			
-			} // Iterating edges.
-		
-		} // Iterating files.
-
-	} // _InitEdges.
-
-	 
-	/*===================================================================================
-	 *	_InitVertices																	*
-	 *==================================================================================*/
-
-	/**
-	 * <h4>Initialise vertices</h4>
-	 *
-	 * This method will load all default vertices, it will read the vertex definitions from the
-	 * files placed in the library definitions directory.
-	 *
-	 * @access protected
-	 *
-	 * @throws Exception
-	 */
-	protected function _InitVertices()
-	{
-		//
-		// Get database.
-		//
-		$db = $this->GetDatabase();
-		if( ! ($db instanceof CDatabase) )
-			throw new Exception
-				( "Unable to retrieve database connection",
-				  kERROR_STATE );												// !@! ==>
-		
-		//
-		// Init local storage.
-		//
-		$files = array( 'ObjectVertices' );
-		
-		//
-		// Iterate files.
-		//
-		foreach( $files as $file )
-		{
-			//
-			// Load XML file.
-			//
-			$xml = simplexml_load_file( kPATH_MYWRAPPER_LIBRARY_DEFINE."/$file.xml" );
-			
-			//
-			// Iterate terms.
-			//
-			foreach( $xml->{'unit'} as $item )
-				$this->_ParseXMLUnit( $db, $item );
-		
-		} // Iterating files.
-
-	} // _InitVertices.
-
-	 
-	/*===================================================================================
-	 *	_InitTags																		*
-	 *==================================================================================*/
-
-	/**
-	 * <h4>Initialise tags</h4>
-	 *
-	 * This method will load all default tags, it will read the tag definitions from the
-	 * files placed in the library definitions directory.
-	 *
-	 * @access protected
-	 *
-	 * @throws Exception
-	 */
-	protected function _InitTags()
-	{
-		//
-		// Get database.
-		//
-		$db = $this->GetDatabase();
-		if( ! ($db instanceof CDatabase) )
-			throw new Exception
-				( "Unable to retrieve database connection",
-				  kERROR_STATE );												// !@! ==>
-		
-		//
-		// Init local storage.
-		//
-		$files = array( 'AttributeTags' );
-		
-		//
-		// Iterate files.
-		//
-		foreach( $files as $file )
-		{
-			//
-			// Load XML file.
-			//
-			$xml = simplexml_load_file( kPATH_MYWRAPPER_LIBRARY_DEFINE."/$file.xml" );
-			
-			//
-			// Iterate edges.
-			//
-			foreach( $xml->{'tag'} as $item )
-			{
-				//
-				// Instantiate tag.
-				//
-				$tag = new COntologyTag();
-			
-				//
-				// Load path elements.
-				//
-				if( $item->{'element'}->count() )
-				{
-					//
-					// Iterate path items.
-					//
-					foreach( $item->{'element'} as $attribute )
-						$this->_ParseXMLElement( $db, $attribute, $tag );
-			
-					//
-					// Save object.
-					//
-					$tag->Insert( $db );
-				}
-			
-			} // Iterating edges.
-		
-		} // Iterating files.
-
-	} // _InitTags.
 
 		
 

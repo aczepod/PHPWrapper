@@ -250,7 +250,7 @@ given a database, will return the default tag container; it will use the kCONTAI
 				<b>Author:</b>
 				Milko A. Škofič &lt;<a
 href="mailto:m.skofic&#64;cgiar.org">m.skofic&#64;<!---->cgiar.org</a>&gt;<br />
-		<b>Located at</b> <a href="source-class-COntologyTag.html#43-1178" title="Go to source code">COntologyTag.php</a><br />
+		<b>Located at</b> <a href="source-class-COntologyTag.html#43-1167" title="Go to source code">COntologyTag.php</a><br />
 	</div>
 
 
@@ -268,7 +268,7 @@ href="mailto:m.skofic&#64;cgiar.org">m.skofic&#64;<!---->cgiar.org</a>&gt;<br />
 
 		<td class="name"><div>
 		<a class="anchor" href="#_PushItem">#</a>
-		<code><a href="source-class-COntologyTag.html#121-303" title="Go to source code">PushItem</a>( <span>mixed <var>$theValue</var></span> )</code>
+		<code><a href="source-class-COntologyTag.html#121-292" title="Go to source code">PushItem</a>( <span>mixed <var>$theValue</var></span> )</code>
 
 		<div class="description short">
 			
@@ -308,6 +308,27 @@ href="mailto:m.skofic&#64;cgiar.org">m.skofic&#64;<!---->cgiar.org</a>&gt;<br />
 
 	<li>Any other data type will be interpreted as the term's kTAG_NID and
 	no verification will be performed.</li>
+</ul>
+
+<p>In addition, the following attributes will be copied into the current
+object:</p>
+
+<ul>
+	<li><tt>kTAG_SYNONYMS</tt>: From the eventual feature term.</li>
+
+	<li><tt>kTAG_TYPE</tt>: From the eventual scale vertex.</li>
+
+	<li><tt>kTAG_INPUT</tt>: From the eventual scale vertex.</li>
+
+	<li><tt>kTAG_PATTERN</tt>: From the eventual scale vertex.</li>
+
+	<li><tt>kTAG_LENGTH</tt>: From the eventual scale vertex.</li>
+
+	<li><tt>kTAG_MIN_VAL</tt>: From the eventual scale vertex.</li>
+
+	<li><tt>kTAG_MAX_VAL</tt>: From the eventual scale vertex.</li>
+
+	<li><tt>kTAG_EXAMPLES</tt>: From the eventual scale vertex.</li>
 </ul>
 
 
@@ -350,7 +371,7 @@ href="mailto:m.skofic&#64;cgiar.org">m.skofic&#64;<!---->cgiar.org</a>&gt;<br />
 
 		<td class="name"><div>
 		<a class="anchor" href="#_GetFeatureVertex">#</a>
-		<code><a href="source-class-COntologyTag.html#310-333" title="Go to source code">GetFeatureVertex</a>( )</code>
+		<code><a href="source-class-COntologyTag.html#299-322" title="Go to source code">GetFeatureVertex</a>( )</code>
 
 		<div class="description short">
 			
@@ -397,7 +418,7 @@ term that represents the feature or trait the current object is tagging.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#_GetMethodVertex">#</a>
-		<code><a href="source-class-COntologyTag.html#340-389" title="Go to source code">GetMethodVertex</a>( )</code>
+		<code><a href="source-class-COntologyTag.html#329-378" title="Go to source code">GetMethodVertex</a>( )</code>
 
 		<div class="description short">
 			
@@ -450,7 +471,7 @@ method.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#_GetScaleVertex">#</a>
-		<code><a href="source-class-COntologyTag.html#396-423" title="Go to source code">GetScaleVertex</a>( )</code>
+		<code><a href="source-class-COntologyTag.html#385-412" title="Go to source code">GetScaleVertex</a>( )</code>
 
 		<div class="description short">
 			
@@ -500,7 +521,7 @@ and a scale.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#_Update">#</a>
-		<code><a href="source-class-COntologyTag.html#439-469" title="Go to source code">Update</a>( <span><code><a href="class-CConnection.html">CConnection</a></code> <var>$theConnection</var></span> )</code>
+		<code><a href="source-class-COntologyTag.html#428-458" title="Go to source code">Update</a>( <span><code><a href="class-CConnection.html">CConnection</a></code> <var>$theConnection</var></span> )</code>
 
 		<div class="description short">
 			
@@ -548,7 +569,7 @@ modification interface provided by container objects.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#_Replace">#</a>
-		<code><a href="source-class-COntologyTag.html#476-516" title="Go to source code">Replace</a>( <span><code><a href="class-CConnection.html">CConnection</a></code> <var>$theConnection</var></span> )</code>
+		<code><a href="source-class-COntologyTag.html#465-505" title="Go to source code">Replace</a>( <span><code><a href="class-CConnection.html">CConnection</a></code> <var>$theConnection</var></span> )</code>
 
 		<div class="description short">
 			
@@ -599,7 +620,7 @@ non committed object.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#_DefaultContainerName">#</a>
-		<code><a href="source-class-COntologyTag.html#532-544" title="Go to source code">DefaultContainerName</a>( )</code>
+		<code><a href="source-class-COntologyTag.html#521-533" title="Go to source code">DefaultContainerName</a>( )</code>
 
 		<div class="description short">
 			
@@ -648,7 +669,7 @@ non committed object.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#_Resolve">#</a>
-		<code><a href="source-class-COntologyTag.html#560-710" title="Go to source code">Resolve</a>( <span><code><a href="class-CConnection.html">CConnection</a></code> <var>$theConnection</var></span>, <span>mixed <var>$theIdentifier</var></span>, <span>boolean <var>$doThrow</var> = <span class="php-keyword1">FALSE</span> </span> )</code>
+		<code><a href="source-class-COntologyTag.html#549-699" title="Go to source code">Resolve</a>( <span><code><a href="class-CConnection.html">CConnection</a></code> <var>$theConnection</var></span>, <span>mixed <var>$theIdentifier</var></span>, <span>boolean <var>$doThrow</var> = <span class="php-keyword1">FALSE</span> </span> )</code>
 
 		<div class="description short">
 			
@@ -732,7 +753,7 @@ identifier was not resolved.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#__index">#</a>
-		<code><a href="source-class-COntologyTag.html#726-778" title="Go to source code">_index</a>( <span><code><a href="class-CConnection.html">CConnection</a></code> <var>$theConnection</var></span>, <span>bitfield <var>$theModifiers</var></span> )</code>
+		<code><a href="source-class-COntologyTag.html#715-767" title="Go to source code">_index</a>( <span><code><a href="class-CConnection.html">CConnection</a></code> <var>$theConnection</var></span>, <span>bitfield <var>$theModifiers</var></span> )</code>
 
 		<div class="description short">
 			
@@ -799,7 +820,7 @@ elements of the path to be object native identifiers.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#__Preset">#</a>
-		<code><a href="source-class-COntologyTag.html#794-828" title="Go to source code">_Preset</a>( <span>reference <var>&amp; $theOffset</var></span>, <span>reference <var>&amp; $theValue</var></span> )</code>
+		<code><a href="source-class-COntologyTag.html#783-817" title="Go to source code">_Preset</a>( <span>reference <var>&amp; $theOffset</var></span>, <span>reference <var>&amp; $theValue</var></span> )</code>
 
 		<div class="description short">
 			
@@ -856,7 +877,7 @@ committed.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#__Preunset">#</a>
-		<code><a href="source-class-COntologyTag.html#835-868" title="Go to source code">_Preunset</a>( <span>reference <var>&amp; $theOffset</var></span> )</code>
+		<code><a href="source-class-COntologyTag.html#824-857" title="Go to source code">_Preunset</a>( <span>reference <var>&amp; $theOffset</var></span> )</code>
 
 		<div class="description short">
 			
@@ -911,7 +932,7 @@ committed and the kTAG_UID in all cases.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#__PrecommitValidate">#</a>
-		<code><a href="source-class-COntologyTag.html#884-918" title="Go to source code">_PrecommitValidate</a>( <span>reference <var>&amp; $theConnection</var></span>, <span>reference <var>&amp; $theModifiers</var></span> )</code>
+		<code><a href="source-class-COntologyTag.html#873-907" title="Go to source code">_PrecommitValidate</a>( <span>reference <var>&amp; $theConnection</var></span>, <span>reference <var>&amp; $theModifiers</var></span> )</code>
 
 		<div class="description short">
 			
@@ -968,7 +989,7 @@ method will raise an exception.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#__PrecommitIdentify">#</a>
-		<code><a href="source-class-COntologyTag.html#925-1025" title="Go to source code">_PrecommitIdentify</a>( <span>reference <var>&amp; $theConnection</var></span>, <span>reference <var>&amp; $theModifiers</var></span> )</code>
+		<code><a href="source-class-COntologyTag.html#914-1014" title="Go to source code">_PrecommitIdentify</a>( <span>reference <var>&amp; $theConnection</var></span>, <span>reference <var>&amp; $theModifiers</var></span> )</code>
 
 		<div class="description short">
 			
@@ -1037,7 +1058,7 @@ native identifiers, since they will have been set here.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#__PostcommitRelated">#</a>
-		<code><a href="source-class-COntologyTag.html#1041-1174" title="Go to source code">_PostcommitRelated</a>( <span>reference <var>&amp; $theConnection</var></span>, <span>reference <var>&amp; $theModifiers</var></span> )</code>
+		<code><a href="source-class-COntologyTag.html#1030-1163" title="Go to source code">_PostcommitRelated</a>( <span>reference <var>&amp; $theConnection</var></span>, <span>reference <var>&amp; $theModifiers</var></span> )</code>
 
 		<div class="description short">
 			
@@ -1145,6 +1166,7 @@ container to this method in order to make it work!</p>
 	<tr>
 		<td><code>
 			<a href="class-CTag.html#_PopItem">PopItem()</a>, 
+			<a href="class-CTag.html#_Synonym">Synonym()</a>, 
 			<a href="class-CTag.html#__Ready">_Ready()</a>
 		</code></td>
 	</tr>

@@ -185,6 +185,13 @@ if( kOPTION_VERBOSE )
 			= new COntology( $_SESSION[ kSESSION_DATABASE ] );
 		
 		//
+		// Initialising containers.
+		//
+		if( kOPTION_VERBOSE )
+			echo( "  • Initialising containers.\n" );
+		$_SESSION[ kSESSION_ONTOLOGY ]->InitContainers();
+		
+		//
 		// Initialising ontology.
 		//
 		if( kOPTION_VERBOSE )

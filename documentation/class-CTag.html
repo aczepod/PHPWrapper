@@ -231,13 +231,122 @@ strings</p>
 				<b>Author:</b>
 				Milko A. Škofič &lt;<a
 href="mailto:m.skofic&#64;cgiar.org">m.skofic&#64;<!---->cgiar.org</a>&gt;<br />
-		<b>Located at</b> <a href="source-class-CTag.html#50-519" title="Go to source code">CTag.php</a><br />
+		<b>Located at</b> <a href="source-class-CTag.html#50-588" title="Go to source code">CTag.php</a><br />
 	</div>
 
 
 
 	<table class="summary" id="methods">
 	<caption>Methods summary</caption>
+	<tr data-order="Synonym" id="_Synonym">
+
+		<td class="attributes"><code>
+			 public 
+			mixed
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_Synonym">#</a>
+		<code><a href="source-class-CTag.html#159-221" title="Go to source code">Synonym</a>( <span>mixed <var>$theValue</var> = <span class="php-keyword1">NULL</span></span>, <span>mixed <var>$theOperation</var> = <span class="php-keyword1">NULL</span></span>, <span>boolean <var>$getOld</var> = <span class="php-keyword1">FALSE</span> </span> )</code>
+
+		<div class="description short">
+			
+<h4>Manage tag synonyms</h4>
+
+		</div>
+
+		<div class="description detailed hidden">
+			
+<h4>Manage tag synonyms</h4>
+
+<p>This method can be used to manage the tag's synonyms, kTAG_SYNONYMS,
+which contains a list of strings that represent alternate codes or names that
+can be used to identify the tag.</p>
+
+<p>This offset collects the list of synonyms in an enumerated set that can be
+managed with the following parameters:</p>
+
+<ul>
+	<li><tt>$theValue</tt>: Depending on the next parameter, this may either refer
+	to the value to be set or to the index of the element to be retrieved or
+	deleted:
+		<ul>
+			<li><tt>NULL</tt>: This value indicates that we want to operate on all elements,
+			which means, in practical terms, that we either want to retrieve or delete the
+			full list. If the operation parameter resolves to <tt>TRUE</tt>, the method will
+			default to retrieving the current list and no new element will be added.</li>
+
+			<li><tt>array</tt>: An array indicates that we want to operate on a list of
+			values and that other parameters may also be provided as lists. Note that <code><a href="class-ArrayObject.html">ArrayObject</a></code> instances are not considered here as arrays.</li>
+
+			<li><i>other</i>: Any other type represents either the new value to be added or
+			the index to the value to be returned or deleted.</li>
+		</ul>
+	</li>
+
+	<li><tt>$theOperation</tt>: This parameter represents the operation to be
+	performed whose scope depends on the value of the previous parameter:
+		<ul>
+			<li><tt>NULL</tt>: Return the element or full list.</li>
+
+			<li><tt>FALSE</tt>: Delete the element or full list.</li>
+
+			<li><tt>array</tt>: This type is only considered if the <tt>$theValue</tt>
+			parameter is provided as an array: the method will be called for each element of
+			the <tt>$theValue</tt> parameter matched with the corresponding element of this
+			parameter, which also means that both both parameters must share the same
+			count.</li>
+
+			<li><i>other</i>: Add the <tt>$theValue</tt> value to the list. If you provided
+			<tt>NULL</tt> in the previous parameter, the operation will be reset to
+			<tt>NULL</tt>.</li>
+		</ul>
+	</li>
+
+	<li><tt>$getOld</tt>: Determines what the method will return:
+		<ul>
+			<li><tt>TRUE</tt>: Return the value <i>before</i> it was eventually
+			modified.</li>
+
+			<li><tt>FALSE</tt>: Return the value <i>after</i> it was eventually
+			modified.</li>
+		</ul>
+	</li>
+</ul>
+
+
+
+				<h4>Parameters</h4>
+				<div class="list"><dl>
+					<dt><var>$theValue</var></dt>
+					<dd><code>mixed</code><br>$theValue Value or index.</dd>
+					<dt><var>$theOperation</var></dt>
+					<dd><code>mixed</code><br>$theOperation Operation.</dd>
+					<dt><var>$getOld</var></dt>
+					<dd><code>boolean</code><br>$getOld TRUE get old value.</dd>
+				</dl></div>
+
+				<h4>Returns</h4>
+				<div class="list">
+					<code>mixed</code><br><i>New</i> or <i>old</i> type.<br />
+				</div>
+
+
+				<h4>See</h4>
+				<div class="list">
+						kTAG_SYNONYMS<br />
+				</div>
+				<h4>Uses</h4>
+				<div class="list">
+						<code><code><a href="function-ManageObjectSetOffset.html">ManageObjectSetOffset()</a></code></code> <br />
+				</div>
+
+
+		</div>
+		</div></td>
+	</tr>
 	<tr data-order="PushItem" id="_PushItem">
 
 		<td class="attributes"><code>
@@ -249,7 +358,7 @@ href="mailto:m.skofic&#64;cgiar.org">m.skofic&#64;<!---->cgiar.org</a>&gt;<br />
 
 		<td class="name"><div>
 		<a class="anchor" href="#_PushItem">#</a>
-		<code><a href="source-class-CTag.html#159-220" title="Go to source code">PushItem</a>( <span>mixed <var>$theValue</var></span> )</code>
+		<code><a href="source-class-CTag.html#228-289" title="Go to source code">PushItem</a>( <span>mixed <var>$theValue</var></span> )</code>
 
 		<div class="description short">
 			
@@ -304,7 +413,7 @@ ignored and the method will return <tt>FALSE</tt>.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#_PopItem">#</a>
-		<code><a href="source-class-CTag.html#227-275" title="Go to source code">PopItem</a>( )</code>
+		<code><a href="source-class-CTag.html#296-344" title="Go to source code">PopItem</a>( )</code>
 
 		<div class="description short">
 			
@@ -351,7 +460,7 @@ is missing, the method will return <tt>NULL</tt>.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#__index">#</a>
-		<code><a href="source-class-CTag.html#291-312" title="Go to source code">_index</a>( <span><code><a href="class-CConnection.html">CConnection</a></code> <var>$theConnection</var></span>, <span>bitfield <var>$theModifiers</var></span> )</code>
+		<code><a href="source-class-CTag.html#360-381" title="Go to source code">_index</a>( <span><code><a href="class-CConnection.html">CConnection</a></code> <var>$theConnection</var></span>, <span>bitfield <var>$theModifiers</var></span> )</code>
 
 		<div class="description short">
 			
@@ -407,7 +516,7 @@ string.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#__Preset">#</a>
-		<code><a href="source-class-CTag.html#328-377" title="Go to source code">_Preset</a>( <span>reference <var>&amp; $theOffset</var></span>, <span>reference <var>&amp; $theValue</var></span> )</code>
+		<code><a href="source-class-CTag.html#397-446" title="Go to source code">_Preset</a>( <span>reference <var>&amp; $theOffset</var></span>, <span>reference <var>&amp; $theValue</var></span> )</code>
 
 		<div class="description short">
 			
@@ -462,7 +571,7 @@ ArrayObject instances are not counted as an array.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#__Preunset">#</a>
-		<code><a href="source-class-CTag.html#384-425" title="Go to source code">_Preunset</a>( <span>reference <var>&amp; $theOffset</var></span> )</code>
+		<code><a href="source-class-CTag.html#453-494" title="Go to source code">_Preunset</a>( <span>reference <var>&amp; $theOffset</var></span> )</code>
 
 		<div class="description short">
 			
@@ -513,7 +622,7 @@ is committed.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#__PrecommitValidate">#</a>
-		<code><a href="source-class-CTag.html#441-476" title="Go to source code">_PrecommitValidate</a>( <span>reference <var>&amp; $theConnection</var></span>, <span>reference <var>&amp; $theModifiers</var></span> )</code>
+		<code><a href="source-class-CTag.html#510-545" title="Go to source code">_PrecommitValidate</a>( <span>reference <var>&amp; $theConnection</var></span>, <span>reference <var>&amp; $theModifiers</var></span> )</code>
 
 		<div class="description short">
 			
@@ -570,7 +679,7 @@ that is not the case, the method will raise an exception.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#__Ready">#</a>
-		<code><a href="source-class-CTag.html#492-515" title="Go to source code">_Ready</a>( )</code>
+		<code><a href="source-class-CTag.html#561-584" title="Go to source code">_Ready</a>( )</code>
 
 		<div class="description short">
 			
