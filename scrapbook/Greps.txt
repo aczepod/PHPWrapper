@@ -1,0 +1,8 @@
+GREP PATTERNS:
+=============
+
+XML files:
+
+For labels and descriptions:
+^\t\t\t<element variable=\"([a-zA-Z0-9_-]+)\" key=\"([a-z]+)\">(.+)</element>
+\t\t\t<element variable="\1">\r\t\t\t\t<item key="\2">\3</item>\r\t\t\t</element>

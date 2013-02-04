@@ -1,26 +1,38 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<units>
+<?xml version="1.0" encoding="utf-8"?>
+<ONTOLOGY
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:noNamespaceSchemaLocation="file:/Library/WebServer/Library/PHPWrapper/defines/Ontology.xsd">
+    
     <!-- FAO-INSTITUTES -->
-    <unit>
-    	<term lid="FAO-INSTITUTES">
+    <UNIT>
+    	<TERM LID="FAO-INSTITUTES">
 			<element variable="kTAG_KIND">
 				<item>:KIND-NAMESPACE</item>
 			</element>
-			<element variable="kTAG_LABEL" key="en">FAO/WIEWS Institutes</element>
-			<element variable="kTAG_DEFINITION" key="en">The WIEWS Institute table contains all the institutions recorded under the System as well as their codes. WIEWS Institution codes are part of the FAO/IPGRI Multicrop descriptor list, which have been internationally agreed to harmonize PGR databases worldwide and simplify data exchange.</element>
-    	</term>
-    	<node class="COntologyMasterVertex" />
-    </unit>
+			<element variable="kTAG_LABEL">
+				<item key="en">FAO/WIEWS Institutes</item>
+			</element>
+			<element variable="kTAG_DEFINITION">
+				<item key="en">The WIEWS Institute table contains all the institutions recorded under the System as well as their codes. WIEWS Institution codes are part of the FAO/IPGRI Multicrop descriptor list, which have been internationally agreed to harmonize PGR databases worldwide and simplify data exchange.</item>
+			</element>
+    	</TERM>
+    	<NODE class="COntologyMasterVertex" />
+    </UNIT>
     
     <!-- INSTITUTES PROPERTIES -->
     
     <!-- FAO-INSTITUTES:INSTCODE -->
-    <unit>
-    	<term lid="INSTCODE" ns="FAO-INSTITUTES">
-			<element variable="kTAG_LABEL" key="en">Institute code</element>
-			<element variable="kTAG_DEFINITION" key="en">Institute code consisting of the 3-letter ISO 3166 country code ([#ISO:3166:1:alpha-3#]) of the country where the institute is located plus a number. The current set of Institute Codes is available from the FAO website (http://apps3.fao.org/wiews/). Note that although you usually see three digits following the country code, there are actually seven characters in the code, allowing four digits.</element>
-    	</term>
-    	<node class="COntologyMasterVertex">
+    <UNIT>
+    	<TERM LID="INSTCODE" NS="FAO-INSTITUTES">
+			<element variable="kTAG_LABEL">
+				<item key="en">Institute code</item>
+			</element>
+			<element variable="kTAG_DEFINITION">
+				<item key="en">Institute code consisting of the 3-letter ISO 3166 country code ([#ISO:3166:1:alpha-3#]) of the country where the institute is located plus a number. The current set of Institute Codes is available from the FAO website (http://apps3.fao.org/wiews/). Note that although you usually see three digits following the country code, there are actually seven characters in the code, allowing four digits.</item>
+			</element>
+    	</TERM>
+    	<NODE class="COntologyMasterVertex">
+            <element variable="kTAG_PID">FAO-INSTITUTES:INSTCODE</element>
 			<element variable="kTAG_KIND">
 				<item>:KIND-FEATURE</item>
 				<item>:KIND-SCALE</item>
@@ -33,26 +45,27 @@
 				<item>ITA303</item>
 				<item>USA999</item>
 			</element>
-    	</node>
-    	<tag>
-			<element variable="kTAG_PATH">
-				<item>FAO-INSTITUTES:INSTCODE</item>
-			</element>
-    	</tag>
-        <edges>
-			<edge>
-				<element variable="kTAG_PREDICATE">:SUBCLASS-OF</element>
-				<element variable="kTAG_OBJECT">FAO-INSTITUTES</element>
-			</edge>
-        </edges>
-    </unit>
+    	</NODE>
+		<EDGE>
+			<element variable="kTAG_PREDICATE">:SUBCLASS-OF</element>
+			<element variable="kTAG_OBJECT">FAO-INSTITUTES</element>
+		</EDGE>
+    	<TAG>
+    		<element variable="kTAG_PATH">
+    			<item node="pid">FAO-INSTITUTES:INSTCODE</item>
+    		</element>
+    	</TAG>
+    </UNIT>
     
     <!-- FAO-INSTITUTES:ACRONYM -->
-    <unit>
-    	<term lid="ACRONYM" ns="FAO-INSTITUTES">
-			<element variable="kTAG_LABEL" key="en">Institute acronym</element>
-    	</term>
-    	<node class="COntologyMasterVertex">
+    <UNIT>
+    	<TERM LID="ACRONYM" NS="FAO-INSTITUTES">
+			<element variable="kTAG_LABEL">
+				<item key="en">Institute acronym</item>
+			</element>
+    	</TERM>
+    	<NODE class="COntologyMasterVertex">
+            <element variable="kTAG_PID">FAO-INSTITUTES:ACRONYM</element>
 			<element variable="kTAG_KIND">
 				<item>:KIND-FEATURE</item>
 				<item>:KIND-SCALE</item>
@@ -65,26 +78,27 @@
 				<item>CIDA</item>
 				<item>ICRISAT</item>
 			</element>
-    	</node>
-    	<tag>
+    	</NODE>
+		<EDGE>
+			<element variable="kTAG_PREDICATE">:SUBCLASS-OF</element>
+			<element variable="kTAG_OBJECT">FAO-INSTITUTES</element>
+		</EDGE>
+    	<TAG>
 			<element variable="kTAG_PATH">
-				<item>FAO-INSTITUTES:ACRONYM</item>
+    			<item node="pid">FAO-INSTITUTES:ACRONYM</item>
 			</element>
-    	</tag>
-        <edges>
-			<edge>
-				<element variable="kTAG_PREDICATE">:SUBCLASS-OF</element>
-				<element variable="kTAG_OBJECT">FAO-INSTITUTES</element>
-			</edge>
-        </edges>
-    </unit>
+    	</TAG>
+    </UNIT>
     
     <!-- FAO-INSTITUTES:ECPACRONYM -->
-    <unit>
-    	<term lid="ECPACRONYM" ns="FAO-INSTITUTES">
-			<element variable="kTAG_LABEL" key="en">ECPGR institute acronym</element>
-    	</term>
-    	<node class="COntologyMasterVertex">
+    <UNIT>
+    	<TERM LID="ECPACRONYM" NS="FAO-INSTITUTES">
+			<element variable="kTAG_LABEL">
+				<item key="en">ECPGR institute acronym</item>
+			</element>
+    	</TERM>
+    	<NODE class="COntologyMasterVertex">
+            <element variable="kTAG_PID">FAO-INSTITUTES:ECPACRONYM</element>
 			<element variable="kTAG_KIND">
 				<item>:KIND-FEATURE</item>
 				<item>:KIND-SCALE</item>
@@ -97,26 +111,27 @@
 				<item>ARGEEAELCO</item>
 				<item>BENDRA</item>
 			</element>
-    	</node>
-    	<tag>
+    	</NODE>
+		<EDGE>
+			<element variable="kTAG_PREDICATE">:SUBCLASS-OF</element>
+			<element variable="kTAG_OBJECT">FAO-INSTITUTES</element>
+		</EDGE>
+    	<TAG>
 			<element variable="kTAG_PATH">
-				<item>FAO-INSTITUTES:ECPACRONYM</item>
+    			<item node="pid">FAO-INSTITUTES:ECPACRONYM</item>
 			</element>
-    	</tag>
-        <edges>
-			<edge>
-				<element variable="kTAG_PREDICATE">:SUBCLASS-OF</element>
-				<element variable="kTAG_OBJECT">FAO-INSTITUTES</element>
-			</edge>
-        </edges>
-    </unit>
+    	</TAG>
+    </UNIT>
     
     <!-- FAO-INSTITUTES:FULL_NAME -->
-    <unit>
-    	<term lid="FULL_NAME" ns="FAO-INSTITUTES">
-			<element variable="kTAG_LABEL" key="en">Full institute name</element>
-    	</term>
-    	<node class="COntologyMasterVertex">
+    <UNIT>
+    	<TERM LID="FULL_NAME" NS="FAO-INSTITUTES">
+			<element variable="kTAG_LABEL">
+				<item key="en">Full institute name</item>
+			</element>
+    	</TERM>
+    	<NODE class="COntologyMasterVertex">
+            <element variable="kTAG_PID">FAO-INSTITUTES:FULL_NAME</element>
 			<element variable="kTAG_KIND">
 				<item>:KIND-FEATURE</item>
 				<item>:KIND-SCALE</item>
@@ -129,26 +144,27 @@
 				<item>Centre de Recherches Agronomiques</item>
 				<item>Chaire d'Horticulture, Faculté des Sciences Agronomiques</item>
 			</element>
-    	</node>
-    	<tag>
+    	</NODE>
+		<EDGE>
+			<element variable="kTAG_PREDICATE">:SUBCLASS-OF</element>
+			<element variable="kTAG_OBJECT">FAO-INSTITUTES</element>
+		</EDGE>
+    	<TAG>
 			<element variable="kTAG_PATH">
-				<item>FAO-INSTITUTES:FULL_NAME</item>
+    			<item node="pid">FAO-INSTITUTES:FULL_NAME</item>
 			</element>
-    	</tag>
-        <edges>
-			<edge>
-				<element variable="kTAG_PREDICATE">:SUBCLASS-OF</element>
-				<element variable="kTAG_OBJECT">FAO-INSTITUTES</element>
-			</edge>
-        </edges>
-    </unit>
+    	</TAG>
+    </UNIT>
     
     <!-- FAO-INSTITUTES:TYPE -->
-    <unit>
-    	<term lid="TYPE" ns="FAO-INSTITUTES">
-			<element variable="kTAG_LABEL" key="en">Institute type</element>
-    	</term>
-    	<node class="COntologyMasterVertex">
+    <UNIT>
+    	<TERM LID="TYPE" NS="FAO-INSTITUTES">
+			<element variable="kTAG_LABEL">
+				<item key="en">Institute type</item>
+			</element>
+    	</TERM>
+    	<NODE class="COntologyMasterVertex">
+            <element variable="kTAG_PID">FAO-INSTITUTES:TYPE</element>
 			<element variable="kTAG_KIND">
 				<item>:KIND-FEATURE</item>
 				<item>:KIND-SCALE</item>
@@ -161,27 +177,30 @@
 				<item>GOV/FRA/MDG</item>
 				<item>EEC</item>
 			</element>
-    	</node>
-    	<tag>
+    	</NODE>
+		<EDGE>
+			<element variable="kTAG_PREDICATE">:SUBCLASS-OF</element>
+			<element variable="kTAG_OBJECT">FAO-INSTITUTES</element>
+		</EDGE>
+    	<TAG>
 			<element variable="kTAG_PATH">
-				<item>FAO-INSTITUTES:TYPE</item>
+    			<item node="pid">FAO-INSTITUTES:TYPE</item>
 			</element>
-    	</tag>
-        <edges>
-			<edge>
-				<element variable="kTAG_PREDICATE">:SUBCLASS-OF</element>
-				<element variable="kTAG_OBJECT">FAO-INSTITUTES</element>
-			</edge>
-        </edges>
-    </unit>
+    	</TAG>
+    </UNIT>
     
     <!-- FAO-INSTITUTES:PGR_ACTIVITY -->
-    <unit>
-    	<term lid="PGR_ACTIVITY" ns="FAO-INSTITUTES">
-			<element variable="kTAG_LABEL" key="en">Plant genetic resources activity</element>
-    	</term>
-    	<node class="COntologyMasterVertex">
-			<element variable="kTAG_DESCRIPTION" key="en">Plant genetic resources activity flag implemented as a Y/N switch.</element>
+    <UNIT>
+    	<TERM LID="PGR_ACTIVITY" NS="FAO-INSTITUTES">
+			<element variable="kTAG_LABEL">
+				<item key="en">Plant genetic resources activity</item>
+			</element>
+    	</TERM>
+    	<NODE class="COntologyMasterVertex">
+            <element variable="kTAG_PID">FAO-INSTITUTES:PGR_ACTIVITY</element>
+			<element variable="kTAG_DESCRIPTION">
+				<item key="en">Plant genetic resources activity flag implemented as a Y/N switch.</item>
+			</element>
 			<element variable="kTAG_KIND">
 				<item>:KIND-FEATURE</item>
 				<item>:KIND-SCALE</item>
@@ -193,27 +212,30 @@
 				<item>Y</item>
 				<item>N</item>
 			</element>
-    	</node>
-    	<tag>
+    	</NODE>
+		<EDGE>
+			<element variable="kTAG_PREDICATE">:SUBCLASS-OF</element>
+			<element variable="kTAG_OBJECT">FAO-INSTITUTES</element>
+		</EDGE>
+    	<TAG>
 			<element variable="kTAG_PATH">
-				<item>FAO-INSTITUTES:PGR_ACTIVITY</item>
+    			<item node="pid">FAO-INSTITUTES:PGR_ACTIVITY</item>
 			</element>
-    	</tag>
-        <edges>
-			<edge>
-				<element variable="kTAG_PREDICATE">:SUBCLASS-OF</element>
-				<element variable="kTAG_OBJECT">FAO-INSTITUTES</element>
-			</edge>
-        </edges>
-    </unit>
+    	</TAG>
+    </UNIT>
     
     <!-- FAO-INSTITUTES:MAINTCOLL -->
-    <unit>
-    	<term lid="MAINTCOLL" ns="FAO-INSTITUTES">
-			<element variable="kTAG_LABEL" key="en">Maintains a collection</element>
-    	</term>
-    	<node class="COntologyMasterVertex">
-			<element variable="kTAG_DESCRIPTION" key="en">Collection maintenance flag implemented as a Y/N switch, indicates whether the institute maintains a collection.</element>
+    <UNIT>
+    	<TERM LID="MAINTCOLL" NS="FAO-INSTITUTES">
+			<element variable="kTAG_LABEL">
+				<item key="en">Maintains a collection</item>
+			</element>
+    	</TERM>
+    	<NODE class="COntologyMasterVertex">
+            <element variable="kTAG_PID">FAO-INSTITUTES:MAINTCOLL</element>
+			<element variable="kTAG_DESCRIPTION">
+				<item key="en">Collection maintenance flag implemented as a Y/N switch, indicates whether the institute maintains a collection.</item>
+			</element>
 			<element variable="kTAG_KIND">
 				<item>:KIND-FEATURE</item>
 				<item>:KIND-SCALE</item>
@@ -225,27 +247,30 @@
 				<item>Y</item>
 				<item>N</item>
 			</element>
-    	</node>
-    	<tag>
+    	</NODE>
+		<EDGE>
+			<element variable="kTAG_PREDICATE">:SUBCLASS-OF</element>
+			<element variable="kTAG_OBJECT">FAO-INSTITUTES</element>
+		</EDGE>
+    	<TAG>
 			<element variable="kTAG_PATH">
-				<item>FAO-INSTITUTES:MAINTCOLL</item>
+    			<item node="pid">FAO-INSTITUTES:MAINTCOLL</item>
 			</element>
-    	</tag>
-        <edges>
-			<edge>
-				<element variable="kTAG_PREDICATE">:SUBCLASS-OF</element>
-				<element variable="kTAG_OBJECT">FAO-INSTITUTES</element>
-			</edge>
-        </edges>
-    </unit>
+    	</TAG>
+    </UNIT>
     
     <!-- FAO-INSTITUTES:STREET_POB -->
-    <unit>
-    	<term lid="STREET_POB" ns="FAO-INSTITUTES">
-			<element variable="kTAG_LABEL" key="en">Street or P.O.Box</element>
-			<element variable="kTAG_DEFINITION" key="en">Institute address street or P.O. Box.</element>
-    	</term>
-    	<node class="COntologyMasterVertex">
+    <UNIT>
+    	<TERM LID="STREET_POB" NS="FAO-INSTITUTES">
+			<element variable="kTAG_LABEL">
+				<item key="en">Street or P.O.Box</item>
+			</element>
+			<element variable="kTAG_DEFINITION">
+				<item key="en">Institute address street or P.O. Box.</item>
+			</element>
+    	</TERM>
+    	<NODE class="COntologyMasterVertex">
+            <element variable="kTAG_PID">FAO-INSTITUTES:STREET_POB</element>
 			<element variable="kTAG_KIND">
 				<item>:KIND-FEATURE</item>
 				<item>:KIND-SCALE</item>
@@ -257,27 +282,30 @@
 				<item>16, rue Claude Bernard</item>
 				<item>PO Box- 6766</item>
 			</element>
-    	</node>
-    	<tag>
+    	</NODE>
+		<EDGE>
+			<element variable="kTAG_PREDICATE">:SUBCLASS-OF</element>
+			<element variable="kTAG_OBJECT">FAO-INSTITUTES</element>
+		</EDGE>
+    	<TAG>
 			<element variable="kTAG_PATH">
-				<item>FAO-INSTITUTES:STREET_POB</item>
+    			<item node="pid">FAO-INSTITUTES:STREET_POB</item>
 			</element>
-    	</tag>
-        <edges>
-			<edge>
-				<element variable="kTAG_PREDICATE">:SUBCLASS-OF</element>
-				<element variable="kTAG_OBJECT">FAO-INSTITUTES</element>
-			</edge>
-        </edges>
-    </unit>
+    	</TAG>
+    </UNIT>
     
     <!-- FAO-INSTITUTES:CITY_STATE -->
-    <unit>
-    	<term lid="CITY_STATE" ns="FAO-INSTITUTES">
-			<element variable="kTAG_LABEL" key="en">City and state</element>
-			<element variable="kTAG_DEFINITION" key="en">Institute address city and state.</element>
-    	</term>
-    	<node class="COntologyMasterVertex">
+    <UNIT>
+    	<TERM LID="CITY_STATE" NS="FAO-INSTITUTES">
+			<element variable="kTAG_LABEL">
+				<item key="en">City and state</item>
+			</element>
+			<element variable="kTAG_DEFINITION">
+				<item key="en">Institute address city and state.</item>
+			</element>
+    	</TERM>
+    	<NODE class="COntologyMasterVertex">
+            <element variable="kTAG_PID">FAO-INSTITUTES:CITY_STATE</element>
 			<element variable="kTAG_KIND">
 				<item>:KIND-FEATURE</item>
 				<item>:KIND-SCALE</item>
@@ -289,27 +317,30 @@
 				<item>Harare</item>
 				<item>Abohar, Punjab</item>
 			</element>
-    	</node>
-    	<tag>
+    	</NODE>
+		<EDGE>
+			<element variable="kTAG_PREDICATE">:SUBCLASS-OF</element>
+			<element variable="kTAG_OBJECT">FAO-INSTITUTES</element>
+		</EDGE>
+    	<TAG>
 			<element variable="kTAG_PATH">
-				<item>FAO-INSTITUTES:CITY_STATE</item>
+    			<item node="pid">FAO-INSTITUTES:CITY_STATE</item>
 			</element>
-    	</tag>
-        <edges>
-			<edge>
-				<element variable="kTAG_PREDICATE">:SUBCLASS-OF</element>
-				<element variable="kTAG_OBJECT">FAO-INSTITUTES</element>
-			</edge>
-        </edges>
-    </unit>
+    	</TAG>
+    </UNIT>
     
     <!-- FAO-INSTITUTES:ZIP_CODE -->
-    <unit>
-    	<term lid="ZIP_CODE" ns="FAO-INSTITUTES">
-			<element variable="kTAG_LABEL" key="en">Zip code</element>
-			<element variable="kTAG_DEFINITION" key="en">Institute address zip code.</element>
-    	</term>
-    	<node class="COntologyMasterVertex">
+    <UNIT>
+    	<TERM LID="ZIP_CODE" NS="FAO-INSTITUTES">
+			<element variable="kTAG_LABEL">
+				<item key="en">Zip code</item>
+			</element>
+			<element variable="kTAG_DEFINITION">
+				<item key="en">Institute address zip code.</item>
+			</element>
+    	</TERM>
+    	<NODE class="COntologyMasterVertex">
+            <element variable="kTAG_PID">FAO-INSTITUTES:ZIP_CODE</element>
 			<element variable="kTAG_KIND">
 				<item>:KIND-FEATURE</item>
 				<item>:KIND-SCALE</item>
@@ -321,27 +352,30 @@
 				<item>00057</item>
 				<item>1018DH</item>
 			</element>
-    	</node>
-    	<tag>
+    	</NODE>
+		<EDGE>
+			<element variable="kTAG_PREDICATE">:SUBCLASS-OF</element>
+			<element variable="kTAG_OBJECT">FAO-INSTITUTES</element>
+		</EDGE>
+    	<TAG>
 			<element variable="kTAG_PATH">
-				<item>FAO-INSTITUTES:ZIP_CODE</item>
+    			<item node="pid">FAO-INSTITUTES:ZIP_CODE</item>
 			</element>
-    	</tag>
-        <edges>
-			<edge>
-				<element variable="kTAG_PREDICATE">:SUBCLASS-OF</element>
-				<element variable="kTAG_OBJECT">FAO-INSTITUTES</element>
-			</edge>
-        </edges>
-    </unit>
+    	</TAG>
+    </UNIT>
     
     <!-- FAO-INSTITUTES:PHONE -->
-    <unit>
-    	<term lid="PHONE" ns="FAO-INSTITUTES">
-			<element variable="kTAG_LABEL" key="en">Phone</element>
-			<element variable="kTAG_DEFINITION" key="en">Institute address telephone number.</element>
-    	</term>
-    	<node class="COntologyMasterVertex">
+    <UNIT>
+    	<TERM LID="PHONE" NS="FAO-INSTITUTES">
+			<element variable="kTAG_LABEL">
+				<item key="en">Phone</item>
+			</element>
+			<element variable="kTAG_DEFINITION">
+				<item key="en">Institute address telephone number.</item>
+			</element>
+    	</TERM>
+    	<NODE class="COntologyMasterVertex">
+            <element variable="kTAG_PID">FAO-INSTITUTES:PHONE</element>
 			<element variable="kTAG_KIND">
 				<item>:KIND-FEATURE</item>
 				<item>:KIND-SCALE</item>
@@ -353,27 +387,30 @@
 				<item>+39 06 61181</item>
 				<item>(+ 3741) 527952</item>
 			</element>
-    	</node>
-    	<tag>
+    	</NODE>
+		<EDGE>
+			<element variable="kTAG_PREDICATE">:SUBCLASS-OF</element>
+			<element variable="kTAG_OBJECT">FAO-INSTITUTES</element>
+		</EDGE>
+    	<TAG>
 			<element variable="kTAG_PATH">
-				<item>FAO-INSTITUTES:PHONE</item>
+    			<item node="pid">FAO-INSTITUTES:PHONE</item>
 			</element>
-    	</tag>
-        <edges>
-			<edge>
-				<element variable="kTAG_PREDICATE">:SUBCLASS-OF</element>
-				<element variable="kTAG_OBJECT">FAO-INSTITUTES</element>
-			</edge>
-        </edges>
-    </unit>
+    	</TAG>
+    </UNIT>
     
     <!-- FAO-INSTITUTES:FAX -->
-    <unit>
-    	<term lid="FAX" ns="FAO-INSTITUTES">
-			<element variable="kTAG_LABEL" key="en">Fax</element>
-			<element variable="kTAG_DEFINITION" key="en">Institute address telefax number.</element>
-    	</term>
-    	<node class="COntologyMasterVertex">
+    <UNIT>
+    	<TERM LID="FAX" NS="FAO-INSTITUTES">
+			<element variable="kTAG_LABEL">
+				<item key="en">Fax</item>
+			</element>
+			<element variable="kTAG_DEFINITION">
+				<item key="en">Institute address telefax number.</item>
+			</element>
+    	</TERM>
+    	<NODE class="COntologyMasterVertex">
+            <element variable="kTAG_PID">FAO-INSTITUTES:FAX</element>
 			<element variable="kTAG_KIND">
 				<item>:KIND-FEATURE</item>
 				<item>:KIND-SCALE</item>
@@ -385,27 +422,30 @@
 				<item>(+ 223) 226 25 04</item>
 				<item>(+33) 4955937</item>
 			</element>
-    	</node>
-    	<tag>
+    	</NODE>
+		<EDGE>
+			<element variable="kTAG_PREDICATE">:SUBCLASS-OF</element>
+			<element variable="kTAG_OBJECT">FAO-INSTITUTES</element>
+		</EDGE>
+    	<TAG>
 			<element variable="kTAG_PATH">
-				<item>FAO-INSTITUTES:FAX</item>
+    			<item node="pid">FAO-INSTITUTES:FAX</item>
 			</element>
-    	</tag>
-        <edges>
-			<edge>
-				<element variable="kTAG_PREDICATE">:SUBCLASS-OF</element>
-				<element variable="kTAG_OBJECT">FAO-INSTITUTES</element>
-			</edge>
-        </edges>
-    </unit>
+    	</TAG>
+    </UNIT>
     
     <!-- FAO-INSTITUTES:EMAIL -->
-    <unit>
-    	<term lid="EMAIL" ns="FAO-INSTITUTES">
-			<element variable="kTAG_LABEL" key="en">Email</element>
-			<element variable="kTAG_DEFINITION" key="en">Institute electronic mail address.</element>
-    	</term>
-    	<node class="COntologyMasterVertex">
+    <UNIT>
+    	<TERM LID="EMAIL" NS="FAO-INSTITUTES">
+			<element variable="kTAG_LABEL">
+				<item key="en">Email</item>
+			</element>
+			<element variable="kTAG_DEFINITION">
+				<item key="en">Institute electronic mail address.</item>
+			</element>
+    	</TERM>
+    	<NODE class="COntologyMasterVertex">
+            <element variable="kTAG_PID">FAO-INSTITUTES:EMAIL</element>
 			<element variable="kTAG_KIND">
 				<item>:KIND-FEATURE</item>
 				<item>:KIND-SCALE</item>
@@ -417,27 +457,30 @@
 				<item>aberterreche@mgap.gub.uy</item>
 				<item>academy@sci.am</item>
 			</element>
-    	</node>
-    	<tag>
+    	</NODE>
+		<EDGE>
+			<element variable="kTAG_PREDICATE">:SUBCLASS-OF</element>
+			<element variable="kTAG_OBJECT">FAO-INSTITUTES</element>
+		</EDGE>
+    	<TAG>
 			<element variable="kTAG_PATH">
-				<item>FAO-INSTITUTES:EMAIL</item>
+    			<item node="pid">FAO-INSTITUTES:EMAIL</item>
 			</element>
-    	</tag>
-        <edges>
-			<edge>
-				<element variable="kTAG_PREDICATE">:SUBCLASS-OF</element>
-				<element variable="kTAG_OBJECT">FAO-INSTITUTES</element>
-			</edge>
-        </edges>
-    </unit>
+    	</TAG>
+    </UNIT>
     
     <!-- FAO-INSTITUTES:URL -->
-    <unit>
-    	<term lid="URL" ns="FAO-INSTITUTES">
-			<element variable="kTAG_LABEL" key="en">URL</element>
-			<element variable="kTAG_DEFINITION" key="en">Institute web page address.</element>
-    	</term>
-    	<node class="COntologyMasterVertex">
+    <UNIT>
+    	<TERM LID="URL" NS="FAO-INSTITUTES">
+			<element variable="kTAG_LABEL">
+				<item key="en">URL</item>
+			</element>
+			<element variable="kTAG_DEFINITION">
+				<item key="en">Institute web page address.</item>
+			</element>
+    	</TERM>
+    	<NODE class="COntologyMasterVertex">
+            <element variable="kTAG_PID">FAO-INSTITUTES:URL</element>
 			<element variable="kTAG_KIND">
 				<item>:KIND-FEATURE</item>
 				<item>:KIND-SCALE</item>
@@ -449,27 +492,30 @@
 				<item>http://arm.agrowebcac.org/asrc/index.php</item>
 				<item>http://arinet.ari.gov.cy</item>
 			</element>
-    	</node>
-    	<tag>
+    	</NODE>
+		<EDGE>
+			<element variable="kTAG_PREDICATE">:SUBCLASS-OF</element>
+			<element variable="kTAG_OBJECT">FAO-INSTITUTES</element>
+		</EDGE>
+    	<TAG>
 			<element variable="kTAG_PATH">
-				<item>FAO-INSTITUTES:URL</item>
+    			<item node="pid">FAO-INSTITUTES:URL</item>
 			</element>
-    	</tag>
-        <edges>
-			<edge>
-				<element variable="kTAG_PREDICATE">:SUBCLASS-OF</element>
-				<element variable="kTAG_OBJECT">FAO-INSTITUTES</element>
-			</edge>
-        </edges>
-    </unit>
+    	</TAG>
+    </UNIT>
     
     <!-- FAO-INSTITUTES:LATITUDE -->
-    <unit>
-    	<term lid="LATITUDE" ns="FAO-INSTITUTES">
-			<element variable="kTAG_LABEL" key="en">Latitude</element>
-			<element variable="kTAG_DEFINITION" key="en">Institute location latitude.</element>
-    	</term>
-    	<node class="COntologyMasterVertex">
+    <UNIT>
+    	<TERM LID="LATITUDE" NS="FAO-INSTITUTES">
+			<element variable="kTAG_LABEL">
+				<item key="en">Latitude</item>
+			</element>
+			<element variable="kTAG_DEFINITION">
+				<item key="en">Institute location latitude.</item>
+			</element>
+    	</TERM>
+    	<NODE class="COntologyMasterVertex">
+            <element variable="kTAG_PID">FAO-INSTITUTES:LATITUDE</element>
 			<element variable="kTAG_KIND">
 				<item>:KIND-FEATURE</item>
 				<item>:KIND-SCALE</item>
@@ -481,27 +527,30 @@
 				<item>-3841</item>
 				<item>6017</item>
 			</element>
-    	</node>
-    	<tag>
+    	</NODE>
+		<EDGE>
+			<element variable="kTAG_PREDICATE">:SUBCLASS-OF</element>
+			<element variable="kTAG_OBJECT">FAO-INSTITUTES</element>
+		</EDGE>
+    	<TAG>
 			<element variable="kTAG_PATH">
-				<item>FAO-INSTITUTES:LATITUDE</item>
+    			<item node="pid">FAO-INSTITUTES:LATITUDE</item>
 			</element>
-    	</tag>
-        <edges>
-			<edge>
-				<element variable="kTAG_PREDICATE">:SUBCLASS-OF</element>
-				<element variable="kTAG_OBJECT">FAO-INSTITUTES</element>
-			</edge>
-        </edges>
-    </unit>
+    	</TAG>
+    </UNIT>
     
     <!-- FAO-INSTITUTES:LONGITUDE -->
-    <unit>
-    	<term lid="LONGITUDE" ns="FAO-INSTITUTES">
-			<element variable="kTAG_LABEL" key="en">Longitude</element>
-			<element variable="kTAG_DEFINITION" key="en">Institute location longitude.</element>
-    	</term>
-    	<node class="COntologyMasterVertex">
+    <UNIT>
+    	<TERM LID="LONGITUDE" NS="FAO-INSTITUTES">
+			<element variable="kTAG_LABEL">
+				<item key="en">Longitude</item>
+			</element>
+			<element variable="kTAG_DEFINITION">
+				<item key="en">Institute location longitude.</item>
+			</element>
+    	</TERM>
+    	<NODE class="COntologyMasterVertex">
+            <element variable="kTAG_PID">FAO-INSTITUTES:LONGITUDE</element>
 			<element variable="kTAG_KIND">
 				<item>:KIND-FEATURE</item>
 				<item>:KIND-SCALE</item>
@@ -513,27 +562,30 @@
 				<item>-17514</item>
 				<item>17841</item>
 			</element>
-    	</node>
-    	<tag>
+    	</NODE>
+		<EDGE>
+			<element variable="kTAG_PREDICATE">:SUBCLASS-OF</element>
+			<element variable="kTAG_OBJECT">FAO-INSTITUTES</element>
+		</EDGE>
+    	<TAG>
 			<element variable="kTAG_PATH">
-				<item>FAO-INSTITUTES:LONGITUDE</item>
+    			<item node="pid">FAO-INSTITUTES:LONGITUDE</item>
 			</element>
-    	</tag>
-        <edges>
-			<edge>
-				<element variable="kTAG_PREDICATE">:SUBCLASS-OF</element>
-				<element variable="kTAG_OBJECT">FAO-INSTITUTES</element>
-			</edge>
-        </edges>
-    </unit>
+    	</TAG>
+    </UNIT>
     
     <!-- FAO-INSTITUTES:ALTITUDE -->
-    <unit>
-    	<term lid="ALTITUDE" ns="FAO-INSTITUTES">
-			<element variable="kTAG_LABEL" key="en">Altitude</element>
-			<element variable="kTAG_DEFINITION" key="en">Institute location elevation.</element>
-    	</term>
-    	<node class="COntologyMasterVertex">
+    <UNIT>
+    	<TERM LID="ALTITUDE" NS="FAO-INSTITUTES">
+			<element variable="kTAG_LABEL">
+				<item key="en">Altitude</item>
+			</element>
+			<element variable="kTAG_DEFINITION">
+				<item key="en">Institute location elevation.</item>
+			</element>
+    	</TERM>
+    	<NODE class="COntologyMasterVertex">
+            <element variable="kTAG_PID">FAO-INSTITUTES:ALTITUDE</element>
 			<element variable="kTAG_KIND">
 				<item>:KIND-FEATURE</item>
 				<item>:KIND-SCALE</item>
@@ -545,27 +597,30 @@
 				<item>0</item>
 				<item>3815</item>
 			</element>
-    	</node>
-    	<tag>
+    	</NODE>
+		<EDGE>
+			<element variable="kTAG_PREDICATE">:SUBCLASS-OF</element>
+			<element variable="kTAG_OBJECT">FAO-INSTITUTES</element>
+		</EDGE>
+    	<TAG>
 			<element variable="kTAG_PATH">
-				<item>FAO-INSTITUTES:ALTITUDE</item>
+    			<item node="pid">FAO-INSTITUTES:ALTITUDE</item>
 			</element>
-    	</tag>
-        <edges>
-			<edge>
-				<element variable="kTAG_PREDICATE">:SUBCLASS-OF</element>
-				<element variable="kTAG_OBJECT">FAO-INSTITUTES</element>
-			</edge>
-        </edges>
-    </unit>
+    	</TAG>
+    </UNIT>
     
     <!-- FAO-INSTITUTES:UPDATED_ON -->
-    <unit>
-    	<term lid="UPDATED_ON" ns="FAO-INSTITUTES">
-			<element variable="kTAG_LABEL" key="en">Last updated</element>
-			<element variable="kTAG_DEFINITION" key="en">Date of last update.</element>
-    	</term>
-    	<node class="COntologyMasterVertex">
+    <UNIT>
+    	<TERM LID="UPDATED_ON" NS="FAO-INSTITUTES">
+			<element variable="kTAG_LABEL">
+				<item key="en">Last updated</item>
+			</element>
+			<element variable="kTAG_DEFINITION">
+				<item key="en">Date of last update.</item>
+			</element>
+    	</TERM>
+    	<NODE class="COntologyMasterVertex">
+            <element variable="kTAG_PID">FAO-INSTITUTES:UPDATED_ON</element>
 			<element variable="kTAG_KIND">
 				<item>:KIND-FEATURE</item>
 				<item>:KIND-SCALE</item>
@@ -573,32 +628,37 @@
 			<element variable="kTAG_TYPE">
 				<item>:TEXT</item>
 			</element>
-			<element variable="kTAG_DESCRIPTION" key="en">The date is a string in YYY-MM-DD format.</element>
+			<element variable="kTAG_DESCRIPTION">
+				<item key="en">The date is a string in YYY-MM-DD format.</item>
+			</element>
 			<element variable="kTAG_EXAMPLES">
 				<item>1990-12-19</item>
 				<item>2012-11-20</item>
 			</element>
-    	</node>
-    	<tag>
+    	</NODE>
+		<EDGE>
+			<element variable="kTAG_PREDICATE">:SUBCLASS-OF</element>
+			<element variable="kTAG_OBJECT">FAO-INSTITUTES</element>
+		</EDGE>
+    	<TAG>
 			<element variable="kTAG_PATH">
-				<item>FAO-INSTITUTES:UPDATED_ON</item>
+    			<item node="pid">FAO-INSTITUTES:UPDATED_ON</item>
 			</element>
-    	</tag>
-        <edges>
-			<edge>
-				<element variable="kTAG_PREDICATE">:SUBCLASS-OF</element>
-				<element variable="kTAG_OBJECT">FAO-INSTITUTES</element>
-			</edge>
-        </edges>
-    </unit>
+    	</TAG>
+    </UNIT>
     
     <!-- FAO-INSTITUTES:V_INSTCODE -->
-    <unit>
-    	<term lid="V_INSTCODE" ns="FAO-INSTITUTES">
-			<element variable="kTAG_LABEL" key="en">Valid institute code</element>
-			<element variable="kTAG_DEFINITION" key="en">Currently valid institute code.</element>
-    	</term>
-    	<node class="COntologyMasterVertex">
+    <UNIT>
+    	<TERM LID="V_INSTCODE" NS="FAO-INSTITUTES">
+			<element variable="kTAG_LABEL">
+				<item key="en">Valid institute code</item>
+			</element>
+			<element variable="kTAG_DEFINITION">
+				<item key="en">Currently valid institute code.</item>
+			</element>
+    	</TERM>
+    	<NODE class="COntologyMasterVertex">
+            <element variable="kTAG_PID">FAO-INSTITUTES:V_INSTCODE</element>
 			<element variable="kTAG_KIND">
 				<item>:KIND-FEATURE</item>
 				<item>:KIND-SCALE</item>
@@ -606,18 +666,18 @@
 			<element variable="kTAG_TYPE">
 				<item>:TEXT</item>
 			</element>
-			<element variable="kTAG_DESCRIPTION" key="en">This attribute corresponds to the institute code (INSTCODE) of the institute that is currently valid. Institute records cannot be deleted, they can only be set as obsolete by indicating in this field which is the new institution that takes the place of the obsolete one</element>
-    	</node>
-    	<tag>
-			<element variable="kTAG_PATH">
-				<item>FAO-INSTITUTES:V_INSTCODE</item>
+			<element variable="kTAG_DESCRIPTION">
+				<item key="en">This attribute corresponds to the institute code (INSTCODE) of the institute that is currently valid. Institute records cannot be deleted, they can only be set as obsolete by indicating in this field which is the new institution that takes the place of the obsolete one</item>
 			</element>
-    	</tag>
-        <edges>
-			<edge>
-				<element variable="kTAG_PREDICATE">:SUBCLASS-OF</element>
-				<element variable="kTAG_OBJECT">FAO-INSTITUTES</element>
-			</edge>
-        </edges>
-    </unit>
-</units>
+    	</NODE>
+		<EDGE>
+			<element variable="kTAG_PREDICATE">:SUBCLASS-OF</element>
+			<element variable="kTAG_OBJECT">FAO-INSTITUTES</element>
+		</EDGE>
+    	<TAG>
+			<element variable="kTAG_PATH">
+    			<item node="pid">FAO-INSTITUTES:V_INSTCODE</item>
+			</element>
+    	</TAG>
+    </UNIT>
+</ONTOLOGY>

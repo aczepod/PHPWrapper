@@ -1,539 +1,602 @@
 <?xml version="1.0" encoding="utf-8"?>
-<units>
+<ONTOLOGY
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:noNamespaceSchemaLocation="file:/Library/WebServer/Library/PHPWrapper/defines/Ontology.xsd">
+    
 	<!-- UNSTATS -->
-	<unit>
-		<term lid="unstats.un.org">
+	<UNIT>
+		<TERM LID="unstats.un.org">
 			<element variable="kTAG_KIND">
 				<item>:KIND-NAMESPACE</item>
 			</element>
-			<element variable="kTAG_LABEL" key="en">United Nations Statistics Division
-				Regions</element>
-			<element variable="kTAG_DEFINITION" key="en">Regions list from the UN statistics
-				division</element>
-		</term>
-		<node class="COntologyMasterVertex"/>
-	</unit>
+			<element variable="kTAG_LABEL">
+				<item key="en">United Nations Statistics Division Regions</item>
+			</element>
+			<element variable="kTAG_DEFINITION">
+				<item key="en">Regions list from the UN statistics division</item>
+			</element>
+		</TERM>
+		<NODE class="COntologyMasterVertex"/>
+	</UNIT>
 
 	<!-- REGIONS -->
-	<unit>
-		<term lid="001" ns="unstats.un.org">
+	<UNIT>
+		<TERM LID="001" NS="unstats.un.org">
 			<element variable="kTAG_KIND">
 				<item>:KIND-ENUMERATION</item>
 			</element>
-			<element variable="kTAG_LABEL" key="en">World</element>
-		</term>
-		<node class="COntologyMasterVertex">
+			<element variable="kTAG_LABEL">
+				<item key="en">World</item>
+			</element>
+		</TERM>
+		<NODE class="COntologyMasterVertex">
 			<element variable="kTAG_KIND">
 				<item>:KIND-ENUMERATION</item>
 			</element>
-		</node>
-		<edge>
+		</NODE>
+		<EDGE>
 			<element variable="kTAG_PREDICATE">:ENUM-OF</element>
 			<element variable="kTAG_OBJECT">unstats.un.org</element>
-		</edge>
-	</unit>
+		</EDGE>
+	</UNIT>
 
-	<unit>
-		<term lid="002" ns="unstats.un.org">
+	<UNIT>
+		<TERM LID="002" NS="unstats.un.org">
 			<element variable="kTAG_KIND">
 				<item>:KIND-ENUMERATION</item>
 			</element>
-			<element variable="kTAG_LABEL" key="en">Africa</element>
-		</term>
-		<node class="COntologyMasterVertex">
+			<element variable="kTAG_LABEL">
+				<item key="en">Africa</item>
+			</element>
+		</TERM>
+		<NODE class="COntologyMasterVertex">
 			<element variable="kTAG_KIND">
 				<item>:KIND-ENUMERATION</item>
 			</element>
-		</node>
-		<edge>
+		</NODE>
+		<EDGE>
 			<element variable="kTAG_PREDICATE">:ENUM-OF</element>
 			<element variable="kTAG_OBJECT">unstats.un.org:001</element>
-		</edge>
-	</unit>
+		</EDGE>
+	</UNIT>
 
-	<unit>
-		<term lid="014" ns="unstats.un.org">
+	<UNIT>
+		<TERM LID="014" NS="unstats.un.org">
 			<element variable="kTAG_KIND">
 				<item>:KIND-ENUMERATION</item>
 			</element>
-			<element variable="kTAG_LABEL" key="en">Eastern Africa</element>
-		</term>
-		<node class="COntologyMasterVertex">
+			<element variable="kTAG_LABEL">
+				<item key="en">Eastern Africa</item>
+			</element>
+		</TERM>
+		<NODE class="COntologyMasterVertex">
 			<element variable="kTAG_KIND">
 				<item>:KIND-ENUMERATION</item>
 			</element>
-		</node>
-		<edge>
+		</NODE>
+		<EDGE>
 			<element variable="kTAG_PREDICATE">:ENUM-OF</element>
 			<element variable="kTAG_OBJECT">unstats.un.org:002</element>
-		</edge>
-	</unit>
+		</EDGE>
+	</UNIT>
 
-	<unit>
-		<term lid="017" ns="unstats.un.org">
+	<UNIT>
+		<TERM LID="017" NS="unstats.un.org">
 			<element variable="kTAG_KIND">
 				<item>:KIND-ENUMERATION</item>
 			</element>
-			<element variable="kTAG_LABEL" key="en">Middle Africa</element>
-		</term>
-		<node class="COntologyMasterVertex">
+			<element variable="kTAG_LABEL">
+				<item key="en">Middle Africa</item>
+			</element>
+		</TERM>
+		<NODE class="COntologyMasterVertex">
 			<element variable="kTAG_KIND">
 				<item>:KIND-ENUMERATION</item>
 			</element>
-		</node>
-		<edge>
+		</NODE>
+		<EDGE>
 			<element variable="kTAG_PREDICATE">:ENUM-OF</element>
 			<element variable="kTAG_OBJECT">unstats.un.org:002</element>
-		</edge>
-	</unit>
+		</EDGE>
+	</UNIT>
 
-	<unit>
-		<term lid="015" ns="unstats.un.org">
+	<UNIT>
+		<TERM LID="015" NS="unstats.un.org">
 			<element variable="kTAG_KIND">
 				<item>:KIND-ENUMERATION</item>
 			</element>
-			<element variable="kTAG_LABEL" key="en">Northern Africa</element>
-		</term>
-		<node class="COntologyMasterVertex">
+			<element variable="kTAG_LABEL">
+				<item key="en">Northern Africa</item>
+			</element>
+		</TERM>
+		<NODE class="COntologyMasterVertex">
 			<element variable="kTAG_KIND">
 				<item>:KIND-ENUMERATION</item>
 			</element>
-		</node>
-		<edge>
+		</NODE>
+		<EDGE>
 			<element variable="kTAG_PREDICATE">:ENUM-OF</element>
 			<element variable="kTAG_OBJECT">unstats.un.org:002</element>
-		</edge>
-	</unit>
+		</EDGE>
+	</UNIT>
 
-	<unit>
-		<term lid="018" ns="unstats.un.org">
+	<UNIT>
+		<TERM LID="018" NS="unstats.un.org">
 			<element variable="kTAG_KIND">
 				<item>:KIND-ENUMERATION</item>
 			</element>
-			<element variable="kTAG_LABEL" key="en">Southern Africa</element>
-		</term>
-		<node class="COntologyMasterVertex">
+			<element variable="kTAG_LABEL">
+				<item key="en">Southern Africa</item>
+			</element>
+		</TERM>
+		<NODE class="COntologyMasterVertex">
 			<element variable="kTAG_KIND">
 				<item>:KIND-ENUMERATION</item>
 			</element>
-		</node>
-		<edge>
+		</NODE>
+		<EDGE>
 			<element variable="kTAG_PREDICATE">:ENUM-OF</element>
 			<element variable="kTAG_OBJECT">unstats.un.org:002</element>
-		</edge>
-	</unit>
+		</EDGE>
+	</UNIT>
 
-	<unit>
-		<term lid="011" ns="unstats.un.org">
+	<UNIT>
+		<TERM LID="011" NS="unstats.un.org">
 			<element variable="kTAG_KIND">
 				<item>:KIND-ENUMERATION</item>
 			</element>
-			<element variable="kTAG_LABEL" key="en">Western Africa</element>
-		</term>
-		<node class="COntologyMasterVertex">
+			<element variable="kTAG_LABEL">
+				<item key="en">Western Africa</item>
+			</element>
+		</TERM>
+		<NODE class="COntologyMasterVertex">
 			<element variable="kTAG_KIND">
 				<item>:KIND-ENUMERATION</item>
 			</element>
-		</node>
-		<edge>
+		</NODE>
+		<EDGE>
 			<element variable="kTAG_PREDICATE">:ENUM-OF</element>
 			<element variable="kTAG_OBJECT">unstats.un.org:002</element>
-		</edge>
-	</unit>
+		</EDGE>
+	</UNIT>
 
-	<unit>
-		<term lid="019" ns="unstats.un.org">
+	<UNIT>
+		<TERM LID="019" NS="unstats.un.org">
 			<element variable="kTAG_KIND">
 				<item>:KIND-ENUMERATION</item>
 			</element>
-			<element variable="kTAG_LABEL" key="en">Americas</element>
-		</term>
-		<node class="COntologyMasterVertex">
+			<element variable="kTAG_LABEL">
+				<item key="en">Americas</item>
+			</element>
+		</TERM>
+		<NODE class="COntologyMasterVertex">
 			<element variable="kTAG_KIND">
 				<item>:KIND-ENUMERATION</item>
 			</element>
-		</node>
-		<edge>
+		</NODE>
+		<EDGE>
 			<element variable="kTAG_PREDICATE">:ENUM-OF</element>
 			<element variable="kTAG_OBJECT">unstats.un.org:001</element>
-		</edge>
-	</unit>
+		</EDGE>
+	</UNIT>
 
-	<unit>
-		<term lid="419" ns="unstats.un.org">
+	<UNIT>
+		<TERM LID="419" NS="unstats.un.org">
 			<element variable="kTAG_KIND">
 				<item>:KIND-ENUMERATION</item>
 			</element>
-			<element variable="kTAG_LABEL" key="en">Latin America and the Caribbean</element>
-		</term>
-		<node class="COntologyMasterVertex">
+			<element variable="kTAG_LABEL">
+				<item key="en">Latin America and the Caribbean</item>
+			</element>
+		</TERM>
+		<NODE class="COntologyMasterVertex">
 			<element variable="kTAG_KIND">
 				<item>:KIND-ENUMERATION</item>
 			</element>
-		</node>
-		<edge>
+		</NODE>
+		<EDGE>
 			<element variable="kTAG_PREDICATE">:ENUM-OF</element>
 			<element variable="kTAG_OBJECT">unstats.un.org:019</element>
-		</edge>
-	</unit>
+		</EDGE>
+	</UNIT>
 
-	<unit>
-		<term lid="029" ns="unstats.un.org">
+	<UNIT>
+		<TERM LID="029" NS="unstats.un.org">
 			<element variable="kTAG_KIND">
 				<item>:KIND-ENUMERATION</item>
 			</element>
-			<element variable="kTAG_LABEL" key="en">Caribbean</element>
-		</term>
-		<node class="COntologyMasterVertex">
+			<element variable="kTAG_LABEL">
+				<item key="en">Caribbean</item>
+			</element>
+		</TERM>
+		<NODE class="COntologyMasterVertex">
 			<element variable="kTAG_KIND">
 				<item>:KIND-ENUMERATION</item>
 			</element>
-		</node>
-		<edge>
+		</NODE>
+		<EDGE>
 			<element variable="kTAG_PREDICATE">:ENUM-OF</element>
 			<element variable="kTAG_OBJECT">unstats.un.org:419</element>
-		</edge>
-	</unit>
+		</EDGE>
+	</UNIT>
 
-	<unit>
-		<term lid="013" ns="unstats.un.org">
+	<UNIT>
+		<TERM LID="013" NS="unstats.un.org">
 			<element variable="kTAG_KIND">
 				<item>:KIND-ENUMERATION</item>
 			</element>
-			<element variable="kTAG_LABEL" key="en">Central America</element>
-		</term>
-		<node class="COntologyMasterVertex">
+			<element variable="kTAG_LABEL">
+				<item key="en">Central America</item>
+			</element>
+		</TERM>
+		<NODE class="COntologyMasterVertex">
 			<element variable="kTAG_KIND">
 				<item>:KIND-ENUMERATION</item>
 			</element>
-		</node>
-		<edge>
+		</NODE>
+		<EDGE>
 			<element variable="kTAG_PREDICATE">:ENUM-OF</element>
 			<element variable="kTAG_OBJECT">unstats.un.org:419</element>
-		</edge>
-	</unit>
+		</EDGE>
+	</UNIT>
 
-	<unit>
-		<term lid="005" ns="unstats.un.org">
+	<UNIT>
+		<TERM LID="005" NS="unstats.un.org">
 			<element variable="kTAG_KIND">
 				<item>:KIND-ENUMERATION</item>
 			</element>
-			<element variable="kTAG_LABEL" key="en">South America</element>
-		</term>
-		<node class="COntologyMasterVertex">
+			<element variable="kTAG_LABEL">
+				<item key="en">South America</item>
+			</element>
+		</TERM>
+		<NODE class="COntologyMasterVertex">
 			<element variable="kTAG_KIND">
 				<item>:KIND-ENUMERATION</item>
 			</element>
-		</node>
-		<edge>
+		</NODE>
+		<EDGE>
 			<element variable="kTAG_PREDICATE">:ENUM-OF</element>
 			<element variable="kTAG_OBJECT">unstats.un.org:419</element>
-		</edge>
-	</unit>
+		</EDGE>
+	</UNIT>
 
-	<unit>
-		<term lid="021" ns="unstats.un.org">
+	<UNIT>
+		<TERM LID="021" NS="unstats.un.org">
 			<element variable="kTAG_KIND">
 				<item>:KIND-ENUMERATION</item>
 			</element>
-			<element variable="kTAG_LABEL" key="en">Northern America</element>
-		</term>
-		<node class="COntologyMasterVertex">
+			<element variable="kTAG_LABEL">
+				<item key="en">Northern America</item>
+			</element>
+		</TERM>
+		<NODE class="COntologyMasterVertex">
 			<element variable="kTAG_KIND">
 				<item>:KIND-ENUMERATION</item>
 			</element>
-		</node>
-		<edge>
+		</NODE>
+		<EDGE>
 			<element variable="kTAG_PREDICATE">:ENUM-OF</element>
 			<element variable="kTAG_OBJECT">unstats.un.org:001</element>
-		</edge>
-	</unit>
+		</EDGE>
+	</UNIT>
 
-	<unit>
-		<term lid="142" ns="unstats.un.org">
+	<UNIT>
+		<TERM LID="142" NS="unstats.un.org">
 			<element variable="kTAG_KIND">
 				<item>:KIND-ENUMERATION</item>
 			</element>
-			<element variable="kTAG_LABEL" key="en">Asia</element>
-		</term>
-		<node class="COntologyMasterVertex">
+			<element variable="kTAG_LABEL">
+				<item key="en">Asia</item>
+			</element>
+		</TERM>
+		<NODE class="COntologyMasterVertex">
 			<element variable="kTAG_KIND">
 				<item>:KIND-ENUMERATION</item>
 			</element>
-		</node>
-		<edge>
+		</NODE>
+		<EDGE>
 			<element variable="kTAG_PREDICATE">:ENUM-OF</element>
 			<element variable="kTAG_OBJECT">unstats.un.org:001</element>
-		</edge>
-	</unit>
+		</EDGE>
+	</UNIT>
 
-	<unit>
-		<term lid="143" ns="unstats.un.org">
+	<UNIT>
+		<TERM LID="143" NS="unstats.un.org">
 			<element variable="kTAG_KIND">
 				<item>:KIND-ENUMERATION</item>
 			</element>
-			<element variable="kTAG_LABEL" key="en">Central Asia</element>
-		</term>
-		<node class="COntologyMasterVertex">
+			<element variable="kTAG_LABEL">
+				<item key="en">Central Asia</item>
+			</element>
+		</TERM>
+		<NODE class="COntologyMasterVertex">
 			<element variable="kTAG_KIND">
 				<item>:KIND-ENUMERATION</item>
 			</element>
-		</node>
-		<edge>
+		</NODE>
+		<EDGE>
 			<element variable="kTAG_PREDICATE">:ENUM-OF</element>
 			<element variable="kTAG_OBJECT">unstats.un.org:142</element>
-		</edge>
-	</unit>
+		</EDGE>
+	</UNIT>
 
-	<unit>
-		<term lid="030" ns="unstats.un.org">
+	<UNIT>
+		<TERM LID="030" NS="unstats.un.org">
 			<element variable="kTAG_KIND">
 				<item>:KIND-ENUMERATION</item>
 			</element>
-			<element variable="kTAG_LABEL" key="en">Eastern Asia</element>
-		</term>
-		<node class="COntologyMasterVertex">
+			<element variable="kTAG_LABEL">
+				<item key="en">Eastern Asia</item>
+			</element>
+		</TERM>
+		<NODE class="COntologyMasterVertex">
 			<element variable="kTAG_KIND">
 				<item>:KIND-ENUMERATION</item>
 			</element>
-		</node>
-		<edge>
+		</NODE>
+		<EDGE>
 			<element variable="kTAG_PREDICATE">:ENUM-OF</element>
 			<element variable="kTAG_OBJECT">unstats.un.org:142</element>
-		</edge>
-	</unit>
+		</EDGE>
+	</UNIT>
 
-	<unit>
-		<term lid="034" ns="unstats.un.org">
+	<UNIT>
+		<TERM LID="034" NS="unstats.un.org">
 			<element variable="kTAG_KIND">
 				<item>:KIND-ENUMERATION</item>
 			</element>
-			<element variable="kTAG_LABEL" key="en">Southern Asia</element>
-		</term>
-		<node class="COntologyMasterVertex">
+			<element variable="kTAG_LABEL">
+				<item key="en">Southern Asia</item>
+			</element>
+		</TERM>
+		<NODE class="COntologyMasterVertex">
 			<element variable="kTAG_KIND">
 				<item>:KIND-ENUMERATION</item>
 			</element>
-		</node>
-		<edge>
+		</NODE>
+		<EDGE>
 			<element variable="kTAG_PREDICATE">:ENUM-OF</element>
 			<element variable="kTAG_OBJECT">unstats.un.org:142</element>
-		</edge>
-	</unit>
+		</EDGE>
+	</UNIT>
 
-	<unit>
-		<term lid="035" ns="unstats.un.org">
+	<UNIT>
+		<TERM LID="035" NS="unstats.un.org">
 			<element variable="kTAG_KIND">
 				<item>:KIND-ENUMERATION</item>
 			</element>
-			<element variable="kTAG_LABEL" key="en">South-Eastern Asia</element>
-		</term>
-		<node class="COntologyMasterVertex">
+			<element variable="kTAG_LABEL">
+				<item key="en">South-Eastern Asia</item>
+			</element>
+		</TERM>
+		<NODE class="COntologyMasterVertex">
 			<element variable="kTAG_KIND">
 				<item>:KIND-ENUMERATION</item>
 			</element>
-		</node>
-		<edge>
+		</NODE>
+		<EDGE>
 			<element variable="kTAG_PREDICATE">:ENUM-OF</element>
 			<element variable="kTAG_OBJECT">unstats.un.org:142</element>
-		</edge>
-	</unit>
+		</EDGE>
+	</UNIT>
 
-	<unit>
-		<term lid="145" ns="unstats.un.org">
+	<UNIT>
+		<TERM LID="145" NS="unstats.un.org">
 			<element variable="kTAG_KIND">
 				<item>:KIND-ENUMERATION</item>
 			</element>
-			<element variable="kTAG_LABEL" key="en">Western Asia</element>
-		</term>
-		<node class="COntologyMasterVertex">
+			<element variable="kTAG_LABEL">
+				<item key="en">Western Asia</item>
+			</element>
+		</TERM>
+		<NODE class="COntologyMasterVertex">
 			<element variable="kTAG_KIND">
 				<item>:KIND-ENUMERATION</item>
 			</element>
-		</node>
-		<edge>
+		</NODE>
+		<EDGE>
 			<element variable="kTAG_PREDICATE">:ENUM-OF</element>
 			<element variable="kTAG_OBJECT">unstats.un.org:142</element>
-		</edge>
-	</unit>
+		</EDGE>
+	</UNIT>
 
-	<unit>
-		<term lid="150" ns="unstats.un.org">
+	<UNIT>
+		<TERM LID="150" NS="unstats.un.org">
 			<element variable="kTAG_KIND">
 				<item>:KIND-ENUMERATION</item>
 			</element>
-			<element variable="kTAG_LABEL" key="en">Europe</element>
-		</term>
-		<node class="COntologyMasterVertex">
+			<element variable="kTAG_LABEL">
+				<item key="en">Europe</item>
+			</element>
+		</TERM>
+		<NODE class="COntologyMasterVertex">
 			<element variable="kTAG_KIND">
 				<item>:KIND-ENUMERATION</item>
 			</element>
-		</node>
-		<edge>
+		</NODE>
+		<EDGE>
 			<element variable="kTAG_PREDICATE">:ENUM-OF</element>
 			<element variable="kTAG_OBJECT">unstats.un.org:001</element>
-		</edge>
-	</unit>
+		</EDGE>
+	</UNIT>
 
-	<unit>
-		<term lid="151" ns="unstats.un.org">
+	<UNIT>
+		<TERM LID="151" NS="unstats.un.org">
 			<element variable="kTAG_KIND">
 				<item>:KIND-ENUMERATION</item>
 			</element>
-			<element variable="kTAG_LABEL" key="en">Eastern Europe</element>
-		</term>
-		<node class="COntologyMasterVertex">
+			<element variable="kTAG_LABEL">
+				<item key="en">Eastern Europe</item>
+			</element>
+		</TERM>
+		<NODE class="COntologyMasterVertex">
 			<element variable="kTAG_KIND">
 				<item>:KIND-ENUMERATION</item>
 			</element>
-		</node>
-		<edge>
+		</NODE>
+		<EDGE>
 			<element variable="kTAG_PREDICATE">:ENUM-OF</element>
 			<element variable="kTAG_OBJECT">unstats.un.org:150</element>
-		</edge>
-	</unit>
+		</EDGE>
+	</UNIT>
 
-	<unit>
-		<term lid="154" ns="unstats.un.org">
+	<UNIT>
+		<TERM LID="154" NS="unstats.un.org">
 			<element variable="kTAG_KIND">
 				<item>:KIND-ENUMERATION</item>
 			</element>
-			<element variable="kTAG_LABEL" key="en">Northern Europe</element>
-		</term>
-		<node class="COntologyMasterVertex">
+			<element variable="kTAG_LABEL">
+				<item key="en">Northern Europe</item>
+			</element>
+		</TERM>
+		<NODE class="COntologyMasterVertex">
 			<element variable="kTAG_KIND">
 				<item>:KIND-ENUMERATION</item>
 			</element>
-		</node>
-		<edge>
+		</NODE>
+		<EDGE>
 			<element variable="kTAG_PREDICATE">:ENUM-OF</element>
 			<element variable="kTAG_OBJECT">unstats.un.org:150</element>
-		</edge>
-	</unit>
+		</EDGE>
+	</UNIT>
 
-	<unit>
-		<term lid="039" ns="unstats.un.org">
+	<UNIT>
+		<TERM LID="039" NS="unstats.un.org">
 			<element variable="kTAG_KIND">
 				<item>:KIND-ENUMERATION</item>
 			</element>
-			<element variable="kTAG_LABEL" key="en">Southern Europe</element>
-		</term>
-		<node class="COntologyMasterVertex">
+			<element variable="kTAG_LABEL">
+				<item key="en">Southern Europe</item>
+			</element>
+		</TERM>
+		<NODE class="COntologyMasterVertex">
 			<element variable="kTAG_KIND">
 				<item>:KIND-ENUMERATION</item>
 			</element>
-		</node>
-		<edge>
+		</NODE>
+		<EDGE>
 			<element variable="kTAG_PREDICATE">:ENUM-OF</element>
 			<element variable="kTAG_OBJECT">unstats.un.org:150</element>
-		</edge>
-	</unit>
+		</EDGE>
+	</UNIT>
 
-	<unit>
-		<term lid="155" ns="unstats.un.org">
+	<UNIT>
+		<TERM LID="155" NS="unstats.un.org">
 			<element variable="kTAG_KIND">
 				<item>:KIND-ENUMERATION</item>
 			</element>
-			<element variable="kTAG_LABEL" key="en">Western Europe</element>
-		</term>
-		<node class="COntologyMasterVertex">
+			<element variable="kTAG_LABEL">
+				<item key="en">Western Europe</item>
+			</element>
+		</TERM>
+		<NODE class="COntologyMasterVertex">
 			<element variable="kTAG_KIND">
 				<item>:KIND-ENUMERATION</item>
 			</element>
-		</node>
-		<edge>
+		</NODE>
+		<EDGE>
 			<element variable="kTAG_PREDICATE">:ENUM-OF</element>
 			<element variable="kTAG_OBJECT">unstats.un.org:150</element>
-		</edge>
-	</unit>
+		</EDGE>
+	</UNIT>
 
-	<unit>
-		<term lid="009" ns="unstats.un.org">
+	<UNIT>
+		<TERM LID="009" NS="unstats.un.org">
 			<element variable="kTAG_KIND">
 				<item>:KIND-ENUMERATION</item>
 			</element>
-			<element variable="kTAG_LABEL" key="en">Oceania</element>
-		</term>
-		<node class="COntologyMasterVertex">
+			<element variable="kTAG_LABEL">
+				<item key="en">Oceania</item>
+			</element>
+		</TERM>
+		<NODE class="COntologyMasterVertex">
 			<element variable="kTAG_KIND">
 				<item>:KIND-ENUMERATION</item>
 			</element>
-		</node>
-		<edge>
+		</NODE>
+		<EDGE>
 			<element variable="kTAG_PREDICATE">:ENUM-OF</element>
 			<element variable="kTAG_OBJECT">unstats.un.org:001</element>
-		</edge>
-	</unit>
+		</EDGE>
+	</UNIT>
 
-	<unit>
-		<term lid="053" ns="unstats.un.org">
+	<UNIT>
+		<TERM LID="053" NS="unstats.un.org">
 			<element variable="kTAG_KIND">
 				<item>:KIND-ENUMERATION</item>
 			</element>
-			<element variable="kTAG_LABEL" key="en">Australia and New Zealand</element>
-		</term>
-		<node class="COntologyMasterVertex">
+			<element variable="kTAG_LABEL">
+				<item key="en">Australia and New Zealand</item>
+			</element>
+		</TERM>
+		<NODE class="COntologyMasterVertex">
 			<element variable="kTAG_KIND">
 				<item>:KIND-ENUMERATION</item>
 			</element>
-		</node>
-		<edge>
+		</NODE>
+		<EDGE>
 			<element variable="kTAG_PREDICATE">:ENUM-OF</element>
 			<element variable="kTAG_OBJECT">unstats.un.org:009</element>
-		</edge>
-	</unit>
+		</EDGE>
+	</UNIT>
 
-	<unit>
-		<term lid="054" ns="unstats.un.org">
+	<UNIT>
+		<TERM LID="054" NS="unstats.un.org">
 			<element variable="kTAG_KIND">
 				<item>:KIND-ENUMERATION</item>
 			</element>
-			<element variable="kTAG_LABEL" key="en">Melanesia</element>
-		</term>
-		<node class="COntologyMasterVertex">
+			<element variable="kTAG_LABEL">
+				<item key="en">Melanesia</item>
+			</element>
+		</TERM>
+		<NODE class="COntologyMasterVertex">
 			<element variable="kTAG_KIND">
 				<item>:KIND-ENUMERATION</item>
 			</element>
-		</node>
-		<edge>
+		</NODE>
+		<EDGE>
 			<element variable="kTAG_PREDICATE">:ENUM-OF</element>
 			<element variable="kTAG_OBJECT">unstats.un.org:009</element>
-		</edge>
-	</unit>
+		</EDGE>
+	</UNIT>
 
-	<unit>
-		<term lid="057" ns="unstats.un.org">
+	<UNIT>
+		<TERM LID="057" NS="unstats.un.org">
 			<element variable="kTAG_KIND">
 				<item>:KIND-ENUMERATION</item>
 			</element>
-			<element variable="kTAG_LABEL" key="en">Micronesia</element>
-		</term>
-		<node class="COntologyMasterVertex">
+			<element variable="kTAG_LABEL">
+				<item key="en">Micronesia</item>
+			</element>
+		</TERM>
+		<NODE class="COntologyMasterVertex">
 			<element variable="kTAG_KIND">
 				<item>:KIND-ENUMERATION</item>
 			</element>
-		</node>
-		<edge>
+		</NODE>
+		<EDGE>
 			<element variable="kTAG_PREDICATE">:ENUM-OF</element>
 			<element variable="kTAG_OBJECT">unstats.un.org:009</element>
-		</edge>
-	</unit>
+		</EDGE>
+	</UNIT>
 
-	<unit>
-		<term lid="061" ns="unstats.un.org">
+	<UNIT>
+		<TERM LID="061" NS="unstats.un.org">
 			<element variable="kTAG_KIND">
 				<item>:KIND-ENUMERATION</item>
 			</element>
-			<element variable="kTAG_LABEL" key="en">Polynesia</element>
-		</term>
-		<node class="COntologyMasterVertex">
+			<element variable="kTAG_LABEL">
+				<item key="en">Polynesia</item>
+			</element>
+		</TERM>
+		<NODE class="COntologyMasterVertex">
 			<element variable="kTAG_KIND">
 				<item>:KIND-ENUMERATION</item>
 			</element>
-		</node>
-		<edge>
+		</NODE>
+		<EDGE>
 			<element variable="kTAG_PREDICATE">:ENUM-OF</element>
 			<element variable="kTAG_OBJECT">unstats.un.org:009</element>
-		</edge>
-	</unit>
-</units>
+		</EDGE>
+	</UNIT>
+</ONTOLOGY>

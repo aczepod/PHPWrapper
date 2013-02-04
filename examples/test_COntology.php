@@ -184,7 +184,7 @@ try
 	echo( '<hr />' );
 
 	//
-	// Load tags.
+	// Load default terms.
 	//
 	$dir = "/Library/WebServer/Library/PHPWrapper/defines";
 	$files = array( "$dir/Namespaces.xml", "$dir/Terms.xml", "$dir/Categories.xml",
@@ -192,7 +192,20 @@ try
 					"$dir/Kinds.xml", "$dir/Operators.xml", "$dir/Status.xml",
 					"$dir/Inputs.xml", "$dir/Term.xml", "$dir/Node.xml", "$dir/Edge.xml",
 					"$dir/Tag.xml", "$dir/User.xml" );
-	echo( '<h4>Load categories</h4>' );
+	echo( '<h4>Load default terms</h4>' );
+	echo( '<h5>$test = new MyClass( $database );</h5>' );
+	$test = new MyClass( $database );
+	echo( '<h5>$test->LoadXMLOntologyFile( $files );</h5>' );
+	$test->LoadXMLOntologyFile( $files );
+	echo( '<hr />' );
+	echo( '<hr />' );
+
+	//
+	// Load other terms.
+	//
+	$dir = kPATH_MYWRAPPER_LIBRARY_DATA;
+	$files = array( "$dir/UNSTAT_REGIONS.xml" );
+	echo( '<h4>Load other ontologies</h4>' );
 	echo( '<h5>$test = new MyClass( $database );</h5>' );
 	$test = new MyClass( $database );
 	echo( '<h5>$test->LoadXMLOntologyFile( $files );</h5>' );

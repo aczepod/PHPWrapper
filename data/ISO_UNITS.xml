@@ -1,131 +1,150 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<units>
+<?xml version="1.0" encoding="utf-8"?>
+<ONTOLOGY
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:noNamespaceSchemaLocation="file:/Library/WebServer/Library/PHPWrapper/defines/Ontology.xsd">
+    
     <!-- ISO -->
-    <unit>
-    	<term lid="ISO">
+    <UNIT>
+    	<TERM LID="ISO">
 			<element variable="kTAG_KIND">
 				<item>:KIND-NAMESPACE</item>
 			</element>
-			<element variable="kTAG_LABEL" key="en">International Organization for Standardization</element>
-			<element variable="kTAG_LABEL" key="fr">Organisation internationale de normalisation</element>
-			<element variable="kTAG_LABEL" key="ru">Международная организация по стандартизации</element>
-			<element variable="kTAG_DEFINITION" key="en">Collection of industrial and commercial standards and codes.</element>
-    	</term>
-    	<node class="COntologyMasterVertex">
+			<element variable="kTAG_LABEL">
+				<item key="en">International Organization for Standardization</item>
+				<item key="fr">Organisation internationale de normalisation</item>
+				<item key="ru">Международная организация по стандартизации</item>
+			</element>
+			<element variable="kTAG_DEFINITION">
+				<item key="en">Collection of industrial and commercial standards and codes.</item>
+			</element>
+    	</TERM>
+    	<NODE class="COntologyMasterVertex">
 			<element variable="kTAG_KIND">
 				<item>:KIND-ROOT</item>
 			</element>
- 	  	</node>
-    </unit>
+ 	  	</NODE>
+	</UNIT>
     
     <!-- ISO STANDARDS -->
     
     <!-- ISO:639 -->
-    <unit>
-    	<term lid="639" ns="ISO">
+    <UNIT>
+    	<TERM LID="639" NS="ISO">
 			<element variable="kTAG_KIND">
 				<item>:KIND-NAMESPACE</item>
 			</element>
-			<element variable="kTAG_LABEL" key="en">International Standard for language codes</element>
-			<element variable="kTAG_DEFINITION" key="en">The purpose of ISO 639 is to establish internationally recognised codes (either 2, 3, or 4 letters long) for the representation of languages or language families.</element>
-    	</term>
-    	<node class="COntologyMasterVertex">
-    	</node>
-        <edges>
-			<edge>
+			<element variable="kTAG_LABEL">
+				<item key="en">International Standard for language codes</item>
+			</element>
+			<element variable="kTAG_DEFINITION">
+				<item key="en">The purpose of ISO 639 is to establish internationally recognised codes (either 2, 3, or 4 letters long) for the representation of languages or language families.</item>
+			</element>
+    	</TERM>
+    	<NODE class="COntologyMasterVertex">
+    	</NODE>
+			<EDGE>
 				<element variable="kTAG_PREDICATE">:SUBCLASS-OF</element>
 				<element variable="kTAG_OBJECT">ISO</element>
-			</edge>
-        </edges>
-    </unit>
+			</EDGE>
+	</UNIT>
     
     <!-- ISO:3166 -->
-    <unit>
-    	<term lid="3166" ns="ISO">
+    <UNIT>
+    	<TERM LID="3166" NS="ISO">
 			<element variable="kTAG_KIND">
 				<item>:KIND-NAMESPACE</item>
 			</element>
-			<element variable="kTAG_LABEL" key="en">International Standard of codes for the representation of names of countries and their subdivisions</element>
-			<element variable="kTAG_DEFINITION" key="en">The purpose of ISO 3166 is to define codes for the names of countries, dependent territories, special areas of geographical interest, and their principal subdivisions (e.g., provinces or states).</element>
-    	</term>
-    	<node class="COntologyMasterVertex">
-    	</node>
-        <edges>
-			<edge>
-				<element variable="kTAG_PREDICATE">:SUBCLASS-OF</element>
-				<element variable="kTAG_OBJECT">ISO</element>
-			</edge>
-        </edges>
-    </unit>
+			<element variable="kTAG_LABEL">
+				<item key="en">International Standard of codes for the representation of names of countries and their subdivisions</item>
+			</element>
+			<element variable="kTAG_DEFINITION">
+				<item key="en">The purpose of ISO 3166 is to define codes for the names of countries, dependent territories, special areas of geographical interest, and their principal subdivisions (e.g., provinces or states).</item>
+			</element>
+    	</TERM>
+    	<NODE class="COntologyMasterVertex">
+    	</NODE>
+		<EDGE>
+			<element variable="kTAG_PREDICATE">:SUBCLASS-OF</element>
+			<element variable="kTAG_OBJECT">ISO</element>
+		</EDGE>
+	</UNIT>
     
     <!-- ISO:4217 -->
-    <unit>
-    	<term lid="4217" ns="ISO">
+    <UNIT>
+    	<TERM LID="4217" NS="ISO">
 			<element variable="kTAG_KIND">
 				<item>:KIND-NAMESPACE</item>
 			</element>
-			<element variable="kTAG_LABEL" key="en">International Standard for currency codes</element>
-			<element variable="kTAG_DEFINITION" key="en">The purpose of ISO 4217 is to establish internationally recognised codes for the representation of currencies. Currencies can be represented in the code in two ways: a three-letter alphabetic code and a three-digit numeric code.</element>
-    	</term>
-    	<node class="COntologyMasterVertex">
-    	</node>
-        <edges>
-			<edge>
-				<element variable="kTAG_PREDICATE">:SUBCLASS-OF</element>
-				<element variable="kTAG_OBJECT">ISO</element>
-			</edge>
-        </edges>
-    </unit>
+			<element variable="kTAG_LABEL">
+				<item key="en">International Standard for currency codes</item>
+			</element>
+			<element variable="kTAG_DEFINITION">
+				<item key="en">The purpose of ISO 4217 is to establish internationally recognised codes for the representation of currencies. Currencies can be represented in the code in two ways: a three-letter alphabetic code and a three-digit numeric code.</item>
+			</element>
+    	</TERM>
+    	<NODE class="COntologyMasterVertex" />
+		<EDGE>
+			<element variable="kTAG_PREDICATE">:SUBCLASS-OF</element>
+			<element variable="kTAG_OBJECT">ISO</element>
+		</EDGE>
+	</UNIT>
     
     <!-- ISO:15924 -->
-    <unit>
-    	<term lid="15924" ns="ISO">
+    <UNIT>
+    	<TERM LID="15924" NS="ISO">
 			<element variable="kTAG_KIND">
 				<item>:KIND-NAMESPACE</item>
 			</element>
-			<element variable="kTAG_LABEL" key="en">Codes for the representation of names of scripts</element>
-			<element variable="kTAG_DEFINITION" key="en">ISO 15924 defines two sets of codes for a number of writing systems (scripts). Each script is given both a four-letter code and a numeric one. Script is defined as "set of graphic characters used for the written form of one or more languages".</element>
-    	</term>
-    	<node class="COntologyMasterVertex">
-    	</node>
-        <edges>
-			<edge>
-				<element variable="kTAG_PREDICATE">:SUBCLASS-OF</element>
-				<element variable="kTAG_OBJECT">ISO</element>
-			</edge>
-        </edges>
-    </unit>
+			<element variable="kTAG_LABEL">
+				<item key="en">Codes for the representation of names of scripts</item>
+			</element>
+			<element variable="kTAG_DEFINITION">
+				<item key="en">ISO 15924 defines two sets of codes for a number of writing systems (scripts). Each script is given both a four-letter code and a numeric one. Script is defined as "set of graphic characters used for the written form of one or more languages".</item>
+			</element>
+    	</TERM>
+    	<NODE class="COntologyMasterVertex" />
+		<EDGE>
+			<element variable="kTAG_PREDICATE">:SUBCLASS-OF</element>
+			<element variable="kTAG_OBJECT">ISO</element>
+		</EDGE>
+	</UNIT>
     
     <!-- ISO ATTRIBUTES -->
     
     <!-- ISO:attributes -->
-    <unit>
-    	<term lid="attributes" ns="ISO">
-			<element variable="kTAG_LABEL" key="en">ISO specific attributes</element>
-			<element variable="kTAG_DEFINITION" key="en">This element collects all attributes specific to the ISO standards.</element>
-    	</term>
-    	<node class="COntologyMasterVertex">
-    	</node>
-        <edges>
-			<edge>
-				<element variable="kTAG_PREDICATE">:SUBCLASS-OF</element>
-				<element variable="kTAG_OBJECT">ISO</element>
-			</edge>
-        </edges>
-    </unit>
+    <UNIT>
+    	<TERM LID="attributes" NS="ISO">
+			<element variable="kTAG_LABEL">
+				<item key="en">ISO specific attributes</item>
+			</element>
+			<element variable="kTAG_DEFINITION">
+				<item key="en">This element collects all attributes specific to the ISO standards.</item>
+			</element>
+    	</TERM>
+    	<NODE class="COntologyMasterVertex" />
+		<EDGE>
+			<element variable="kTAG_PREDICATE">:SUBCLASS-OF</element>
+			<element variable="kTAG_OBJECT">ISO</element>
+		</EDGE>
+	</UNIT>
     
     <!-- ISO 639 PROPERTIES -->
     
     <!-- ISO:639:1 -->
-    <unit>
-    	<term lid="1" ns="ISO:639">
+    <UNIT>
+    	<TERM LID="1" NS="ISO:639">
 			<element variable="kTAG_KIND">
 				<item>:KIND-NAMESPACE</item>
 			</element>
-			<element variable="kTAG_LABEL" key="en">Part 1</element>
-			<element variable="kTAG_DEFINITION" key="en">Alpha-2 code.</element>
-    	</term>
-    	<node class="COntologyMasterVertex">
+			<element variable="kTAG_LABEL">
+				<item key="en">Part 1</item>
+			</element>
+			<element variable="kTAG_DEFINITION">
+				<item key="en">Alpha-2 code.</item>
+			</element>
+    	</TERM>
+    	<NODE class="COntologyMasterVertex">
+            <element variable="kTAG_PID">ISO:639:1</element>
 			<element variable="kTAG_KIND">
 				<item>:KIND-FEATURE</item>
 				<item>:KIND-SCALE</item>
@@ -133,26 +152,33 @@
 			<element variable="kTAG_TYPE">
 				<item>:ENUM</item>
 			</element>
-    	</node>
-    	<tag />
-        <edges>
-			<edge>
-				<element variable="kTAG_PREDICATE">:SUBCLASS-OF</element>
-				<element variable="kTAG_OBJECT">ISO:639</element>
-			</edge>
-        </edges>
-    </unit>
+    	</NODE>
+		<EDGE>
+			<element variable="kTAG_PREDICATE">:SUBCLASS-OF</element>
+			<element variable="kTAG_OBJECT">ISO:639</element>
+		</EDGE>
+    	<TAG>
+    		<element variable="kTAG_PATH">
+    			<item node="pid">ISO:639:1</item>
+    		</element>
+    	</TAG>
+	</UNIT>
     
     <!-- ISO:639:2 -->
-    <unit>
-    	<term lid="2" ns="ISO:639">
+    <UNIT>
+    	<TERM LID="2" NS="ISO:639">
 			<element variable="kTAG_KIND">
 				<item>:KIND-NAMESPACE</item>
 			</element>
-			<element variable="kTAG_LABEL" key="en">Part 2</element>
-			<element variable="kTAG_DEFINITION" key="en">Alpha-3 code.</element>
-    	</term>
-    	<node class="COntologyMasterVertex">
+			<element variable="kTAG_LABEL">
+				<item key="en">Part 2</item>
+			</element>
+			<element variable="kTAG_DEFINITION">
+				<item key="en">Alpha-3 code.</item>
+			</element>
+    	</TERM>
+    	<NODE class="COntologyMasterVertex">
+            <element variable="kTAG_PID">ISO:639:2</element>
 			<element variable="kTAG_KIND">
 				<item>:KIND-FEATURE</item>
 				<item>:KIND-SCALE</item>
@@ -160,26 +186,33 @@
 			<element variable="kTAG_TYPE">
 				<item>:ENUM</item>
 			</element>
-    	</node>
-    	<tag />
-        <edges>
-			<edge>
-				<element variable="kTAG_PREDICATE">:SUBCLASS-OF</element>
-				<element variable="kTAG_OBJECT">ISO:639</element>
-			</edge>
-        </edges>
-    </unit>
+    	</NODE>
+		<EDGE>
+			<element variable="kTAG_PREDICATE">:SUBCLASS-OF</element>
+			<element variable="kTAG_OBJECT">ISO:639</element>
+		</EDGE>
+    	<TAG>
+    		<element variable="kTAG_PATH">
+    			<item node="pid">ISO:639:2</item>
+    		</element>
+    	</TAG>
+	</UNIT>
     
     <!-- ISO:639:2T -->
-    <unit>
-    	<term lid="2T" ns="ISO:639">
+    <UNIT>
+    	<TERM LID="2T" NS="ISO:639">
 			<element variable="kTAG_KIND">
 				<item>:KIND-NAMESPACE</item>
 			</element>
-			<element variable="kTAG_LABEL" key="en">Terminological code</element>
-			<element variable="kTAG_DEFINITION" key="en">While most languages are given one code by the standard, twenty of the languages described have two three-letter codes, the “terminological” code (ISO 639-2/T), is derived from the native name for the language.</element>
-    	</term>
-    	<node class="COntologyMasterVertex">
+			<element variable="kTAG_LABEL">
+				<item key="en">Terminological code</item>
+			</element>
+			<element variable="kTAG_DEFINITION">
+				<item key="en">While most languages are given one code by the standard, twenty of the languages described have two three-letter codes, the “terminological” code (ISO 639-2/T), is derived from the native name for the language.</item>
+			</element>
+    	</TERM>
+    	<NODE class="COntologyMasterVertex">
+            <element variable="kTAG_PID">ISO:639:2T</element>
 			<element variable="kTAG_KIND">
 				<item>:KIND-FEATURE</item>
 				<item>:KIND-SCALE</item>
@@ -187,26 +220,33 @@
 			<element variable="kTAG_TYPE">
 				<item>:ENUM</item>
 			</element>
-    	</node>
-    	<tag />
-        <edges>
-			<edge>
-				<element variable="kTAG_PREDICATE">:SUBCLASS-OF</element>
-				<element variable="kTAG_OBJECT">ISO:639</element>
-			</edge>
-        </edges>
-    </unit>
+    	</NODE>
+		<EDGE>
+			<element variable="kTAG_PREDICATE">:SUBCLASS-OF</element>
+			<element variable="kTAG_OBJECT">ISO:639</element>
+		</EDGE>
+    	<TAG>
+    		<element variable="kTAG_PATH">
+    			<item node="pid">ISO:639:2T</item>
+    		</element>
+    	</TAG>
+	</UNIT>
     
     <!-- ISO:639:2B -->
-    <unit>
-    	<term lid="2B" ns="ISO:639">
+    <UNIT>
+    	<TERM LID="2B" NS="ISO:639">
 			<element variable="kTAG_KIND">
 				<item>:KIND-NAMESPACE</item>
 			</element>
-			<element variable="kTAG_LABEL" key="en">Bibliographic code</element>
-			<element variable="kTAG_DEFINITION" key="en">While most languages are given one code by the standard, twenty of the languages described have two three-letter codes, the “bibliographic” code (ISO 639-2/B), is derived from the English name for the language and was a necessary legacy feature.</element>
-    	</term>
-    	<node class="COntologyMasterVertex">
+			<element variable="kTAG_LABEL">
+				<item key="en">Bibliographic code</item>
+			</element>
+			<element variable="kTAG_DEFINITION">
+				<item key="en">While most languages are given one code by the standard, twenty of the languages described have two three-letter codes, the “bibliographic” code (ISO 639-2/B), is derived from the English name for the language and was a necessary legacy feature.</item>
+			</element>
+    	</TERM>
+    	<NODE class="COntologyMasterVertex">
+            <element variable="kTAG_PID">ISO:639:2B</element>
 			<element variable="kTAG_KIND">
 				<item>:KIND-FEATURE</item>
 				<item>:KIND-SCALE</item>
@@ -214,26 +254,33 @@
 			<element variable="kTAG_TYPE">
 				<item>:ENUM</item>
 			</element>
-    	</node>
-    	<tag />
-        <edges>
-			<edge>
-				<element variable="kTAG_PREDICATE">:SUBCLASS-OF</element>
-				<element variable="kTAG_OBJECT">ISO:639</element>
-			</edge>
-        </edges>
-    </unit>
+    	</NODE>
+		<EDGE>
+			<element variable="kTAG_PREDICATE">:SUBCLASS-OF</element>
+			<element variable="kTAG_OBJECT">ISO:639</element>
+		</EDGE>
+    	<TAG>
+    		<element variable="kTAG_PATH">
+    			<item node="pid">ISO:639:2B</item>
+    		</element>
+    	</TAG>
+	</UNIT>
     
     <!-- ISO:639:3 -->
-    <unit>
-    	<term lid="3" ns="ISO:639">
+    <UNIT>
+    	<TERM LID="3" NS="ISO:639">
 			<element variable="kTAG_KIND">
 				<item>:KIND-NAMESPACE</item>
 			</element>
-			<element variable="kTAG_LABEL" key="en">Part 3</element>
-			<element variable="kTAG_DEFINITION" key="en">Alpha-3 code for comprehensive coverage of languages.</element>
-    	</term>
-    	<node class="COntologyMasterVertex">
+			<element variable="kTAG_LABEL">
+				<item key="en">Part 3</item>
+			</element>
+			<element variable="kTAG_DEFINITION">
+				<item key="en">Alpha-3 code for comprehensive coverage of languages.</item>
+			</element>
+    	</TERM>
+    	<NODE class="COntologyMasterVertex">
+            <element variable="kTAG_PID">ISO:639:3</element>
 			<element variable="kTAG_KIND">
 				<item>:KIND-FEATURE</item>
 				<item>:KIND-SCALE</item>
@@ -241,28 +288,35 @@
 			<element variable="kTAG_TYPE">
 				<item>:ENUM</item>
 			</element>
-    	</node>
-    	<tag />
-        <edges>
-			<edge>
-				<element variable="kTAG_PREDICATE">:SUBCLASS-OF</element>
-				<element variable="kTAG_OBJECT">ISO:639</element>
-			</edge>
-        </edges>
-    </unit>
+    	</NODE>
+		<EDGE>
+			<element variable="kTAG_PREDICATE">:SUBCLASS-OF</element>
+			<element variable="kTAG_OBJECT">ISO:639</element>
+		</EDGE>
+    	<TAG>
+    		<element variable="kTAG_PATH">
+    			<item node="pid">ISO:639:3</item>
+    		</element>
+    	</TAG>
+	</UNIT>
     
     <!-- ISO 639 ATTRIBUTES -->
     
     <!-- ISO:639:scope -->
-    <unit>
-    	<term lid="scope" ns="ISO:639">
+    <UNIT>
+    	<TERM LID="scope" NS="ISO:639">
 			<element variable="kTAG_KIND">
 				<item>:KIND-NAMESPACE</item>
 			</element>
-			<element variable="kTAG_LABEL" key="en">Scope</element>
-			<element variable="kTAG_DEFINITION" key="en">Scope of denotation for language identifiers.</element>
-    	</term>
-    	<node class="COntologyMasterVertex">
+			<element variable="kTAG_LABEL">
+				<item key="en">Scope</item>
+			</element>
+			<element variable="kTAG_DEFINITION">
+				<item key="en">Scope of denotation for language identifiers.</item>
+			</element>
+    	</TERM>
+    	<NODE class="COntologyMasterVertex">
+            <element variable="kTAG_PID">ISO:639:scope</element>
 			<element variable="kTAG_KIND">
 				<item>:KIND-FEATURE</item>
 				<item>:KIND-SCALE</item>
@@ -270,26 +324,33 @@
 			<element variable="kTAG_TYPE">
 				<item>:ENUM</item>
 			</element>
-    	</node>
-        <tag />
-        <edges>
-			<edge>
-				<element variable="kTAG_PREDICATE">:SUBCLASS-OF</element>
-				<element variable="kTAG_OBJECT">ISO:attributes</element>
-			</edge>
-        </edges>
-    </unit>
+    	</NODE>
+		<EDGE>
+			<element variable="kTAG_PREDICATE">:SUBCLASS-OF</element>
+			<element variable="kTAG_OBJECT">ISO:attributes</element>
+		</EDGE>
+    	<TAG>
+    		<element variable="kTAG_PATH">
+    			<item node="pid">ISO:639:scope</item>
+    		</element>
+    	</TAG>
+	</UNIT>
     
     <!-- ISO:639:type -->
-    <unit>
-    	<term lid="type" ns="ISO:639">
+    <UNIT>
+    	<TERM LID="type" NS="ISO:639">
 			<element variable="kTAG_KIND">
 				<item>:KIND-NAMESPACE</item>
 			</element>
-			<element variable="kTAG_LABEL" key="en">Type</element>
-			<element variable="kTAG_DEFINITION" key="en">Type of individual language.</element>
-    	</term>
-    	<node class="COntologyMasterVertex">
+			<element variable="kTAG_LABEL">
+				<item key="en">Type</item>
+			</element>
+			<element variable="kTAG_DEFINITION">
+				<item key="en">Type of individual language.</item>
+			</element>
+    	</TERM>
+    	<NODE class="COntologyMasterVertex">
+            <element variable="kTAG_PID">ISO:639:type</element>
 			<element variable="kTAG_KIND">
 				<item>:KIND-FEATURE</item>
 				<item>:KIND-SCALE</item>
@@ -297,26 +358,33 @@
 			<element variable="kTAG_TYPE">
 				<item>:SET</item>
 			</element>
-    	</node>
-        <tag />
-        <edges>
-			<edge>
-				<element variable="kTAG_PREDICATE">:SUBCLASS-OF</element>
-				<element variable="kTAG_OBJECT">ISO:attributes</element>
-			</edge>
-        </edges>
-    </unit>
+    	</NODE>
+		<EDGE>
+			<element variable="kTAG_PREDICATE">:SUBCLASS-OF</element>
+			<element variable="kTAG_OBJECT">ISO:attributes</element>
+		</EDGE>
+    	<TAG>
+    		<element variable="kTAG_PATH">
+    			<item node="pid">ISO:639:type</item>
+    		</element>
+    	</TAG>
+	</UNIT>
     
     <!-- ISO:639:status -->
-    <unit>
-    	<term lid="status" ns="ISO:639">
+    <UNIT>
+    	<TERM LID="status" NS="ISO:639">
 			<element variable="kTAG_KIND">
 				<item>:KIND-NAMESPACE</item>
 			</element>
-			<element variable="kTAG_LABEL" key="en">Status</element>
-			<element variable="kTAG_DEFINITION" key="en">Status of individual language.</element>
-    	</term>
-    	<node class="COntologyMasterVertex">
+			<element variable="kTAG_LABEL">
+				<item key="en">Status</item>
+			</element>
+			<element variable="kTAG_DEFINITION">
+				<item key="en">Status of individual language.</item>
+			</element>
+    	</TERM>
+    	<NODE class="COntologyMasterVertex">
+            <element variable="kTAG_PID">ISO:639:status</element>
 			<element variable="kTAG_KIND">
 				<item>:KIND-FEATURE</item>
 				<item>:KIND-SCALE</item>
@@ -324,23 +392,30 @@
 			<element variable="kTAG_TYPE">
 				<item>:TEXT</item>
 			</element>
-    	</node>
-        <tag />
-        <edges>
-			<edge>
-				<element variable="kTAG_PREDICATE">:SUBCLASS-OF</element>
-				<element variable="kTAG_OBJECT">ISO:attributes</element>
-			</edge>
-        </edges>
-    </unit>
+    	</NODE>
+		<EDGE>
+			<element variable="kTAG_PREDICATE">:SUBCLASS-OF</element>
+			<element variable="kTAG_OBJECT">ISO:attributes</element>
+		</EDGE>
+    	<TAG>
+    		<element variable="kTAG_PATH">
+    			<item node="pid">ISO:639:status</item>
+    		</element>
+    	</TAG>
+	</UNIT>
     
     <!-- ISO:639:inverted_name -->
-    <unit>
-    	<term lid="inverted_name" ns="ISO:639">
-			<element variable="kTAG_LABEL" key="en">Inverted name</element>
-			<element variable="kTAG_DEFINITION" key="en">An inverted name is one that is altered from the usual English-language order by moving adjectival qualifiers to the end, after the main language name and separated by a comma.</element>
-    	</term>
-    	<node class="COntologyMasterVertex">
+    <UNIT>
+    	<TERM LID="inverted_name" NS="ISO:639">
+			<element variable="kTAG_LABEL">
+				<item key="en">Inverted name</item>
+			</element>
+			<element variable="kTAG_DEFINITION">
+				<item key="en">An inverted name is one that is altered from the usual English-language order by moving adjectival qualifiers to the end, after the main language name and separated by a comma.</item>
+			</element>
+    	</TERM>
+    	<NODE class="COntologyMasterVertex">
+            <element variable="kTAG_PID">ISO:639:inverted_name</element>
 			<element variable="kTAG_KIND">
 				<item>:KIND-FEATURE</item>
 				<item>:KIND-SCALE</item>
@@ -348,23 +423,30 @@
 			<element variable="kTAG_TYPE">
 				<item>:LSTRING</item>
 			</element>
-    	</node>
-        <tag />
-        <edges>
-			<edge>
-				<element variable="kTAG_PREDICATE">:SUBCLASS-OF</element>
-				<element variable="kTAG_OBJECT">ISO:attributes</element>
-			</edge>
-        </edges>
-    </unit>
+    	</NODE>
+		<EDGE>
+			<element variable="kTAG_PREDICATE">:SUBCLASS-OF</element>
+			<element variable="kTAG_OBJECT">ISO:attributes</element>
+		</EDGE>
+    	<TAG>
+    		<element variable="kTAG_PATH">
+    			<item node="pid">ISO:639:inverted_name</item>
+    		</element>
+    	</TAG>
+	</UNIT>
     
     <!-- ISO:639:common_name -->
-    <unit>
-    	<term lid="common_name" ns="ISO:639">
-			<element variable="kTAG_LABEL" key="en">Common name</element>
-			<element variable="kTAG_DEFINITION" key="en">Language common name.</element>
-    	</term>
-    	<node class="COntologyMasterVertex">
+    <UNIT>
+    	<TERM LID="common_name" NS="ISO:639">
+			<element variable="kTAG_LABEL">
+				<item key="en">Common name</item>
+			</element>
+			<element variable="kTAG_DEFINITION">
+				<item key="en">Language common name.</item>
+			</element>
+    	</TERM>
+    	<NODE class="COntologyMasterVertex">
+            <element variable="kTAG_PID">ISO:639:common_name</element>
 			<element variable="kTAG_KIND">
 				<item>:KIND-FEATURE</item>
 				<item>:KIND-SCALE</item>
@@ -372,421 +454,461 @@
 			<element variable="kTAG_TYPE">
 				<item>:LSTRING</item>
 			</element>
-    	</node>
-        <tag />
-        <edges>
-			<edge>
-				<element variable="kTAG_PREDICATE">:SUBCLASS-OF</element>
-				<element variable="kTAG_OBJECT">ISO:attributes</element>
-			</edge>
-        </edges>
-    </unit>
+    	</NODE>
+		<EDGE>
+			<element variable="kTAG_PREDICATE">:SUBCLASS-OF</element>
+			<element variable="kTAG_OBJECT">ISO:attributes</element>
+		</EDGE>
+    	<TAG>
+    		<element variable="kTAG_PATH">
+    			<item node="pid">ISO:639:common_name</item>
+    		</element>
+    	</TAG>
+	</UNIT>
     
     <!-- ISO 639 SCOPE ENUMERATIONS -->
     
     <!-- ISO:639:scope:I -->
-    <unit>
-    	<term lid="I" ns="ISO:639:scope">
+    <UNIT>
+    	<TERM LID="I" NS="ISO:639:scope">
 			<element variable="kTAG_KIND">
           	  <item>:KIND-ENUMERATION</item>
 			</element>
-			<element variable="kTAG_LABEL" key="en">Individual</element>
-			<element variable="kTAG_DEFINITION" key="en">A distinct individual language.</element>
-    	</term>
-    	<node class="COntologyMasterVertex">
+			<element variable="kTAG_LABEL">
+				<item key="en">Individual</item>
+			</element>
+			<element variable="kTAG_DEFINITION">
+				<item key="en">A distinct individual language.</item>
+			</element>
+    	</TERM>
+    	<NODE class="COntologyMasterVertex">
 			<element variable="kTAG_KIND">
 	            <item>:KIND-ENUMERATION</item>
 			</element>
-    	</node>
-        <edges>
-			<edge>
-				<element variable="kTAG_PREDICATE">:ENUM-OF</element>
-				<element variable="kTAG_OBJECT">ISO:639:scope</element>
-			</edge>
-        </edges>
-    </unit>
+    	</NODE>
+		<EDGE>
+			<element variable="kTAG_PREDICATE">:ENUM-OF</element>
+			<element variable="kTAG_OBJECT">ISO:639:scope</element>
+		</EDGE>
+	</UNIT>
     
     <!-- ISO:639:scope:M -->
-    <unit>
-    	<term lid="M" ns="ISO:639:scope">
+    <UNIT>
+    	<TERM LID="M" NS="ISO:639:scope">
 			<element variable="kTAG_KIND">
           	  <item>:KIND-ENUMERATION</item>
 			</element>
-			<element variable="kTAG_LABEL" key="en">Macrolanguage</element>
-			<element variable="kTAG_DEFINITION" key="en">Language that corresponds in a one-to-many manner with several individual languages.</element>
-    	</term>
-    	<node class="COntologyMasterVertex">
+			<element variable="kTAG_LABEL">
+				<item key="en">Macrolanguage</item>
+			</element>
+			<element variable="kTAG_DEFINITION">
+				<item key="en">Language that corresponds in a one-to-many manner with several individual languages.</item>
+			</element>
+    	</TERM>
+    	<NODE class="COntologyMasterVertex">
 			<element variable="kTAG_KIND">
 	            <item>:KIND-ENUMERATION</item>
 			</element>
-    	</node>
-        <edges>
-			<edge>
-				<element variable="kTAG_PREDICATE">:ENUM-OF</element>
-				<element variable="kTAG_OBJECT">ISO:639:scope</element>
-			</edge>
-        </edges>
-    </unit>
+    	</NODE>
+		<EDGE>
+			<element variable="kTAG_PREDICATE">:ENUM-OF</element>
+			<element variable="kTAG_OBJECT">ISO:639:scope</element>
+		</EDGE>
+	</UNIT>
     
     <!-- ISO:639:scope:C -->
-    <unit>
-    	<term lid="C" ns="ISO:639:scope">
+    <UNIT>
+    	<TERM LID="C" NS="ISO:639:scope">
 			<element variable="kTAG_KIND">
           	  <item>:KIND-ENUMERATION</item>
 			</element>
-			<element variable="kTAG_LABEL" key="en">Collection of languages</element>
-			<element variable="kTAG_DEFINITION" key="en">A collective language code element is an identifier that represents a group of individual languages that are not deemed to be one language in any usage context.</element>
-    	</term>
-    	<node class="COntologyMasterVertex">
+			<element variable="kTAG_LABEL">
+				<item key="en">Collection of languages</item>
+			</element>
+			<element variable="kTAG_DEFINITION">
+				<item key="en">A collective language code element is an identifier that represents a group of individual languages that are not deemed to be one language in any usage context.</item>
+			</element>
+    	</TERM>
+    	<NODE class="COntologyMasterVertex">
 			<element variable="kTAG_KIND">
 	            <item>:KIND-ENUMERATION</item>
 			</element>
-    	</node>
-        <edges>
-			<edge>
-				<element variable="kTAG_PREDICATE">:ENUM-OF</element>
-				<element variable="kTAG_OBJECT">ISO:639:scope</element>
-			</edge>
-        </edges>
-    </unit>
+    	</NODE>
+		<EDGE>
+			<element variable="kTAG_PREDICATE">:ENUM-OF</element>
+			<element variable="kTAG_OBJECT">ISO:639:scope</element>
+		</EDGE>
+	</UNIT>
     
     <!-- ISO:639:scope:D -->
-    <unit>
-    	<term lid="D" ns="ISO:639:scope">
+    <UNIT>
+    	<TERM LID="D" NS="ISO:639:scope">
 			<element variable="kTAG_KIND">
           	  <item>:KIND-ENUMERATION</item>
 			</element>
-			<element variable="kTAG_LABEL" key="en">Dialect</element>
-			<element variable="kTAG_DEFINITION" key="en">Sub-variety of a language such as might be based on geographic region, age, gender, social class, time period, or the like.</element>
-    	</term>
-    	<node class="COntologyMasterVertex">
+			<element variable="kTAG_LABEL">
+				<item key="en">Dialect</item>
+			</element>
+			<element variable="kTAG_DEFINITION">
+				<item key="en">Sub-variety of a language such as might be based on geographic region, age, gender, social class, time period, or the like.</item>
+			</element>
+    	</TERM>
+    	<NODE class="COntologyMasterVertex">
 			<element variable="kTAG_KIND">
 	            <item>:KIND-ENUMERATION</item>
 			</element>
-    	</node>
-        <edges>
-			<edge>
-				<element variable="kTAG_PREDICATE">:ENUM-OF</element>
-				<element variable="kTAG_OBJECT">ISO:639:scope</element>
-			</edge>
-        </edges>
-    </unit>
+    	</NODE>
+		<EDGE>
+			<element variable="kTAG_PREDICATE">:ENUM-OF</element>
+			<element variable="kTAG_OBJECT">ISO:639:scope</element>
+		</EDGE>
+	</UNIT>
     
     <!-- ISO:639:scope:R -->
-    <unit>
-    	<term lid="R" ns="ISO:639:scope">
+    <UNIT>
+    	<TERM LID="R" NS="ISO:639:scope">
 			<element variable="kTAG_KIND">
           	  <item>:KIND-ENUMERATION</item>
 			</element>
-			<element variable="kTAG_LABEL" key="en">Reserved</element>
-			<element variable="kTAG_DEFINITION" key="en">Reserved for local use.</element>
-    	</term>
-    	<node class="COntologyMasterVertex">
+			<element variable="kTAG_LABEL">
+				<item key="en">Reserved</item>
+			</element>
+			<element variable="kTAG_DEFINITION">
+				<item key="en">Reserved for local use.</item>
+			</element>
+    	</TERM>
+    	<NODE class="COntologyMasterVertex">
 			<element variable="kTAG_KIND">
 	            <item>:KIND-ENUMERATION</item>
 			</element>
-    	</node>
-        <edges>
-			<edge>
-				<element variable="kTAG_PREDICATE">:ENUM-OF</element>
-				<element variable="kTAG_OBJECT">ISO:639:scope</element>
-			</edge>
-        </edges>
-    </unit>
+    	</NODE>
+		<EDGE>
+			<element variable="kTAG_PREDICATE">:ENUM-OF</element>
+			<element variable="kTAG_OBJECT">ISO:639:scope</element>
+		</EDGE>
+	</UNIT>
     
     <!-- ISO:639:scope:S -->
-    <unit>
-    	<term lid="S" ns="ISO:639:scope">
+    <UNIT>
+    	<TERM LID="S" NS="ISO:639:scope">
 			<element variable="kTAG_KIND">
           	  <item>:KIND-ENUMERATION</item>
 			</element>
-			<element variable="kTAG_LABEL" key="en">Special</element>
-			<element variable="kTAG_DEFINITION" key="en">Special situation.</element>
-    	</term>
-    	<node class="COntologyMasterVertex">
+			<element variable="kTAG_LABEL">
+				<item key="en">Special</item>
+			</element>
+			<element variable="kTAG_DEFINITION">
+				<item key="en">Special situation.</item>
+			</element>
+    	</TERM>
+    	<NODE class="COntologyMasterVertex">
 			<element variable="kTAG_KIND">
 	            <item>:KIND-ENUMERATION</item>
 			</element>
-    	</node>
-        <edges>
-			<edge>
-				<element variable="kTAG_PREDICATE">:ENUM-OF</element>
-				<element variable="kTAG_OBJECT">ISO:639:scope</element>
-			</edge>
-        </edges>
-    </unit>
+    	</NODE>
+		<EDGE>
+			<element variable="kTAG_PREDICATE">:ENUM-OF</element>
+			<element variable="kTAG_OBJECT">ISO:639:scope</element>
+		</EDGE>
+	</UNIT>
     
     <!-- ISO 639 TYPE ENUMERATIONS -->
     
     <!-- ISO:639:type:L -->
-    <unit>
-    	<term lid="L" ns="ISO:639:type">
+    <UNIT>
+    	<TERM LID="L" NS="ISO:639:type">
 			<element variable="kTAG_KIND">
           	  <item>:KIND-ENUMERATION</item>
 			</element>
-			<element variable="kTAG_LABEL" key="en">Living</element>
-			<element variable="kTAG_DEFINITION" key="en">A language is listed as living when there are people still living who learned it as a first language.</element>
-    	</term>
-    	<node class="COntologyMasterVertex">
+			<element variable="kTAG_LABEL">
+				<item key="en">Living</item>
+			</element>
+			<element variable="kTAG_DEFINITION">
+				<item key="en">A language is listed as living when there are people still living who learned it as a first language.</item>
+			</element>
+    	</TERM>
+    	<NODE class="COntologyMasterVertex">
 			<element variable="kTAG_KIND">
 	            <item>:KIND-ENUMERATION</item>
 			</element>
-    	</node>
-        <edges>
-			<edge>
-				<element variable="kTAG_PREDICATE">:ENUM-OF</element>
-				<element variable="kTAG_OBJECT">ISO:639:type</element>
-			</edge>
-        </edges>
-    </unit>
+    	</NODE>
+		<EDGE>
+			<element variable="kTAG_PREDICATE">:ENUM-OF</element>
+			<element variable="kTAG_OBJECT">ISO:639:type</element>
+		</EDGE>
+	</UNIT>
     
     <!-- ISO:639:type:E -->
-    <unit>
-    	<term lid="E" ns="ISO:639:type">
+    <UNIT>
+    	<TERM LID="E" NS="ISO:639:type">
 			<element variable="kTAG_KIND">
           	  <item>:KIND-ENUMERATION</item>
 			</element>
-			<element variable="kTAG_LABEL" key="en">Extinct</element>
-			<element variable="kTAG_DEFINITION" key="en">Language that are no longer living.</element>
-    	</term>
-    	<node class="COntologyMasterVertex">
+			<element variable="kTAG_LABEL">
+				<item key="en">Extinct</item>
+			</element>
+			<element variable="kTAG_DEFINITION">
+				<item key="en">Language that are no longer living.</item>
+			</element>
+    	</TERM>
+    	<NODE class="COntologyMasterVertex">
 			<element variable="kTAG_KIND">
 	            <item>:KIND-ENUMERATION</item>
 			</element>
-    	</node>
-        <edges>
-			<edge>
-				<element variable="kTAG_PREDICATE">:ENUM-OF</element>
-				<element variable="kTAG_OBJECT">ISO:639:type</element>
-			</edge>
-        </edges>
-    </unit>
+    	</NODE>
+		<EDGE>
+			<element variable="kTAG_PREDICATE">:ENUM-OF</element>
+			<element variable="kTAG_OBJECT">ISO:639:type</element>
+		</EDGE>
+	</UNIT>
     
     <!-- ISO:639:type:A -->
-    <unit>
-    	<term lid="A" ns="ISO:639:type">
+    <UNIT>
+    	<TERM LID="A" NS="ISO:639:type">
 			<element variable="kTAG_KIND">
           	  <item>:KIND-ENUMERATION</item>
 			</element>
-			<element variable="kTAG_LABEL" key="en">Ancient</element>
-			<element variable="kTAG_DEFINITION" key="en">A language went extinct in ancient times (e.g. more than a millennium ago).</element>
-    	</term>
-    	<node class="COntologyMasterVertex">
+			<element variable="kTAG_LABEL">
+				<item key="en">Ancient</item>
+			</element>
+			<element variable="kTAG_DEFINITION">
+				<item key="en">A language went extinct in ancient times (e.g. more than a millennium ago).</item>
+			</element>
+    	</TERM>
+    	<NODE class="COntologyMasterVertex">
 			<element variable="kTAG_KIND">
 	            <item>:KIND-ENUMERATION</item>
 			</element>
-    	</node>
-        <edges>
-			<edge>
-				<element variable="kTAG_PREDICATE">:ENUM-OF</element>
-				<element variable="kTAG_OBJECT">ISO:639:type</element>
-			</edge>
-        </edges>
-    </unit>
+    	</NODE>
+		<EDGE>
+			<element variable="kTAG_PREDICATE">:ENUM-OF</element>
+			<element variable="kTAG_OBJECT">ISO:639:type</element>
+		</EDGE>
+	</UNIT>
     
     <!-- ISO:639:type:H -->
-    <unit>
-    	<term lid="H" ns="ISO:639:type">
+    <UNIT>
+    	<TERM LID="H" NS="ISO:639:type">
 			<element variable="kTAG_KIND">
           	  <item>:KIND-ENUMERATION</item>
 			</element>
-			<element variable="kTAG_LABEL" key="en">Historic</element>
-			<element variable="kTAG_DEFINITION" key="en">A language considered to be distinct from any modern languages that are descended from it; for instance, Old English and Middle English.</element>
-    	</term>
-    	<node class="COntologyMasterVertex">
+			<element variable="kTAG_LABEL">
+				<item key="en">Historic</item>
+			</element>
+			<element variable="kTAG_DEFINITION">
+				<item key="en">A language considered to be distinct from any modern languages that are descended from it; for instance, Old English and Middle English.</item>
+			</element>
+    	</TERM>
+    	<NODE class="COntologyMasterVertex">
 			<element variable="kTAG_KIND">
 	            <item>:KIND-ENUMERATION</item>
 			</element>
-    	</node>
-        <edges>
-			<edge>
-				<element variable="kTAG_PREDICATE">:ENUM-OF</element>
-				<element variable="kTAG_OBJECT">ISO:639:type</element>
-			</edge>
-        </edges>
-    </unit>
+    	</NODE>
+		<EDGE>
+			<element variable="kTAG_PREDICATE">:ENUM-OF</element>
+			<element variable="kTAG_OBJECT">ISO:639:type</element>
+		</EDGE>
+	</UNIT>
     
     <!-- ISO:639:type:C -->
-    <unit>
-    	<term lid="C" ns="ISO:639:type">
+    <UNIT>
+    	<TERM LID="C" NS="ISO:639:type">
 			<element variable="kTAG_KIND">
           	  <item>:KIND-ENUMERATION</item>
 			</element>
-			<element variable="kTAG_LABEL" key="en">Constructed</element>
-			<element variable="kTAG_DEFINITION" key="en">A constructed (or artificial) language.</element>
-    	</term>
-    	<node class="COntologyMasterVertex">
+			<element variable="kTAG_LABEL">
+				<item key="en">Constructed</item>
+			</element>
+			<element variable="kTAG_DEFINITION">
+				<item key="en">A constructed (or artificial) language.</item>
+			</element>
+    	</TERM>
+    	<NODE class="COntologyMasterVertex">
 			<element variable="kTAG_KIND">
 	            <item>:KIND-ENUMERATION</item>
 			</element>
-    	</node>
-        <edges>
-			<edge>
-				<element variable="kTAG_PREDICATE">:ENUM-OF</element>
-				<element variable="kTAG_OBJECT">ISO:639:type</element>
-			</edge>
-        </edges>
-    </unit>
+    	</NODE>
+		<EDGE>
+			<element variable="kTAG_PREDICATE">:ENUM-OF</element>
+			<element variable="kTAG_OBJECT">ISO:639:type</element>
+		</EDGE>
+	</UNIT>
     
     <!-- ISO:639:type:S -->
-    <unit>
-    	<term lid="S" ns="ISO:639:type">
+    <UNIT>
+    	<TERM LID="S" NS="ISO:639:type">
 			<element variable="kTAG_KIND">
           	  <item>:KIND-ENUMERATION</item>
 			</element>
-			<element variable="kTAG_LABEL" key="en">Special</element>
-			<element variable="kTAG_DEFINITION" key="en">Special language.</element>
-    	</term>
-    	<node class="COntologyMasterVertex">
+			<element variable="kTAG_LABEL">
+				<item key="en">Special</item>
+			</element>
+			<element variable="kTAG_DEFINITION">
+				<item key="en">Special language.</item>
+			</element>
+    	</TERM>
+    	<NODE class="COntologyMasterVertex">
 			<element variable="kTAG_KIND">
 	            <item>:KIND-ENUMERATION</item>
 			</element>
-    	</node>
-        <edges>
-			<edge>
-				<element variable="kTAG_PREDICATE">:ENUM-OF</element>
-				<element variable="kTAG_OBJECT">ISO:639:type</element>
-			</edge>
-        </edges>
-    </unit>
+    	</NODE>
+		<EDGE>
+			<element variable="kTAG_PREDICATE">:ENUM-OF</element>
+			<element variable="kTAG_OBJECT">ISO:639:type</element>
+		</EDGE>
+	</UNIT>
     
     <!-- ISO:639:type:Genetic -->
-    <unit>
-    	<term lid="Genetic" ns="ISO:639:type">
+    <UNIT>
+    	<TERM LID="Genetic" NS="ISO:639:type">
 			<element variable="kTAG_KIND">
           	  <item>:KIND-ENUMERATION</item>
 			</element>
-			<element variable="kTAG_LABEL" key="en">Genetic</element>
-			<element variable="kTAG_DEFINITION" key="en">In linguistics, genetic relationship is the usual term for the relationship which exists between languages that are members of the same language family, mixed languages, pidgins and creole languages constitute special genetic types of languages.</element>
-    	</term>
-    	<node class="COntologyMasterVertex">
+			<element variable="kTAG_LABEL">
+				<item key="en">Genetic</item>
+			</element>
+			<element variable="kTAG_DEFINITION">
+				<item key="en">In linguistics, genetic relationship is the usual TERM for the relationship which exists between languages that are members of the same language family, mixed languages, pidgins and creole languages constitute special genetic types of languages.</item>
+			</element>
+    	</TERM>
+    	<NODE class="COntologyMasterVertex">
 			<element variable="kTAG_KIND">
 	            <item>:KIND-ENUMERATION</item>
 			</element>
-    	</node>
-        <edges>
-			<edge>
-				<element variable="kTAG_PREDICATE">:ENUM-OF</element>
-				<element variable="kTAG_OBJECT">ISO:639:type</element>
-			</edge>
-        </edges>
-    </unit>
+    	</NODE>
+		<EDGE>
+			<element variable="kTAG_PREDICATE">:ENUM-OF</element>
+			<element variable="kTAG_OBJECT">ISO:639:type</element>
+		</EDGE>
+	</UNIT>
     
     <!-- ISO:639:type:Genetic-like -->
-    <unit>
-    	<term lid="Genetic-like" ns="ISO:639:type">
+    <UNIT>
+    	<TERM LID="Genetic-like" NS="ISO:639:type">
 			<element variable="kTAG_KIND">
           	  <item>:KIND-ENUMERATION</item>
 			</element>
-			<element variable="kTAG_LABEL" key="en">Genetic-like</element>
-			<element variable="kTAG_DEFINITION" key="en">Genetic-like language.</element>
-    	</term>
-    	<node class="COntologyMasterVertex">
+			<element variable="kTAG_LABEL">
+				<item key="en">Genetic-like</item>
+			</element>
+			<element variable="kTAG_DEFINITION">
+				<item key="en">Genetic-like language.</item>
+			</element>
+    	</TERM>
+    	<NODE class="COntologyMasterVertex">
 			<element variable="kTAG_KIND">
 	            <item>:KIND-ENUMERATION</item>
 			</element>
-    	</node>
-        <edges>
-			<edge>
-				<element variable="kTAG_PREDICATE">:ENUM-OF</element>
-				<element variable="kTAG_OBJECT">ISO:639:type</element>
-			</edge>
-        </edges>
-    </unit>
+    	</NODE>
+		<EDGE>
+			<element variable="kTAG_PREDICATE">:ENUM-OF</element>
+			<element variable="kTAG_OBJECT">ISO:639:type</element>
+		</EDGE>
+	</UNIT>
     
     <!-- ISO:639:type:Geographic -->
-    <unit>
-    	<term lid="Geographic" ns="ISO:639:type">
+    <UNIT>
+    	<TERM LID="Geographic" NS="ISO:639:type">
 			<element variable="kTAG_KIND">
 	            <item>:KIND-ENUMERATION</item>
 			</element>
-			<element variable="kTAG_LABEL" key="en">Geographic</element>
-			<element variable="kTAG_DEFINITION" key="en">Geographic language.</element>
-    	</term>
-    	<node class="COntologyMasterVertex">
+			<element variable="kTAG_LABEL">
+				<item key="en">Geographic</item>
+			</element>
+			<element variable="kTAG_DEFINITION">
+				<item key="en">Geographic language.</item>
+			</element>
+    	</TERM>
+    	<NODE class="COntologyMasterVertex">
 			<element variable="kTAG_KIND">
 	            <item>:KIND-ENUMERATION</item>
 			</element>
-    	</node>
-        <edges>
-			<edge>
-				<element variable="kTAG_PREDICATE">:ENUM-OF</element>
-				<element variable="kTAG_OBJECT">ISO:639:type</element>
-			</edge>
-        </edges>
-    </unit>
+    	</NODE>
+		<EDGE>
+			<element variable="kTAG_PREDICATE">:ENUM-OF</element>
+			<element variable="kTAG_OBJECT">ISO:639:type</element>
+		</EDGE>
+	</UNIT>
     
     <!-- ISO 3166 CATEGORIES -->
     
     <!-- ISO:3166:1 -->
-    <unit>
-    	<term lid="1" ns="ISO:3166">
+    <UNIT>
+    	<TERM LID="1" NS="ISO:3166">
 			<element variable="kTAG_KIND">
 				<item>:KIND-NAMESPACE</item>
 			</element>
-			<element variable="kTAG_LABEL" key="en">Part 1</element>
-			<element variable="kTAG_DEFINITION" key="en">Country codes, defines codes for the names of countries, dependent territories, and special areas of geographical interest.</element>
-    	</term>
-    	<node class="COntologyMasterVertex">
-    	</node>
-        <edges>
-			<edge>
-				<element variable="kTAG_PREDICATE">:SUBCLASS-OF</element>
-				<element variable="kTAG_OBJECT">ISO:3166</element>
-			</edge>
-        </edges>
-    </unit>
+			<element variable="kTAG_LABEL">
+				<item key="en">Part 1</item>
+			</element>
+			<element variable="kTAG_DEFINITION">
+				<item key="en">Country codes, defines codes for the names of countries, dependent territories, and special areas of geographical interest.</item>
+			</element>
+    	</TERM>
+    	<NODE class="COntologyMasterVertex" />
+		<EDGE>
+			<element variable="kTAG_PREDICATE">:SUBCLASS-OF</element>
+			<element variable="kTAG_OBJECT">ISO:3166</element>
+		</EDGE>
+	</UNIT>
     
     <!-- ISO:3166:2 -->
-    <unit>
-    	<term lid="2" ns="ISO:3166">
+    <UNIT>
+    	<TERM LID="2" NS="ISO:3166">
 			<element variable="kTAG_KIND">
 				<item>:KIND-NAMESPACE</item>
 			</element>
-			<element variable="kTAG_LABEL" key="en">Part 2</element>
-			<element variable="kTAG_DEFINITION" key="en">Country subdivision code, defines codes for the names of the principal subdivisions (e.g., provinces or states) of all countries coded in ISO 3166-1.</element>
-    	</term>
-    	<node class="COntologyMasterVertex">
-    	</node>
-        <edges>
-			<edge>
-				<element variable="kTAG_PREDICATE">:SUBCLASS-OF</element>
-				<element variable="kTAG_OBJECT">ISO:3166</element>
-			</edge>
-        </edges>
-    </unit>
+			<element variable="kTAG_LABEL">
+				<item key="en">Part 2</item>
+			</element>
+			<element variable="kTAG_DEFINITION">
+				<item key="en">Country subdivision code, defines codes for the names of the principal subdivisions (e.g., provinces or states) of all countries coded in ISO 3166-1.</item>
+			</element>
+    	</TERM>
+    	<NODE class="COntologyMasterVertex" />
+		<EDGE>
+			<element variable="kTAG_PREDICATE">:SUBCLASS-OF</element>
+			<element variable="kTAG_OBJECT">ISO:3166</element>
+		</EDGE>
+	</UNIT>
     
     <!-- ISO:3166:3 -->
-    <unit>
-    	<term lid="3" ns="ISO:3166">
+    <UNIT>
+    	<TERM LID="3" NS="ISO:3166">
 			<element variable="kTAG_KIND">
 				<item>:KIND-NAMESPACE</item>
 			</element>
-			<element variable="kTAG_LABEL" key="en">Part 3</element>
-			<element variable="kTAG_DEFINITION" key="en">Code for formerly used names of countries, defines codes for country names which have been deleted from ISO 3166-1 since its first publication in 1974.</element>
-    	</term>
-    	<node class="COntologyMasterVertex">
-    	</node>
-        <edges>
-			<edge>
-				<element variable="kTAG_PREDICATE">:SUBCLASS-OF</element>
-				<element variable="kTAG_OBJECT">ISO:3166</element>
-			</edge>
-        </edges>
-    </unit>
+			<element variable="kTAG_LABEL">
+				<item key="en">Part 3</item>
+			</element>
+			<element variable="kTAG_DEFINITION">
+				<item key="en">Code for formerly used names of countries, defines codes for country names which have been deleted from ISO 3166-1 since its first publication in 1974.</item>
+			</element>
+    	</TERM>
+    	<NODE class="COntologyMasterVertex" />
+		<EDGE>
+			<element variable="kTAG_PREDICATE">:SUBCLASS-OF</element>
+			<element variable="kTAG_OBJECT">ISO:3166</element>
+		</EDGE>
+	</UNIT>
     
     <!-- ISO 3166 Part 1 PROPERTIES -->
     
     <!-- ISO:3166:1:alpha-2 -->
-    <unit>
-    	<term lid="alpha-2" ns="ISO:3166:1">
+    <UNIT>
+    	<TERM LID="alpha-2" NS="ISO:3166:1">
 			<element variable="kTAG_KIND">
 	            <item>:KIND-ENUMERATION</item>
 			</element>
-			<element variable="kTAG_LABEL" key="en">Alpha-2 code</element>
-			<element variable="kTAG_DEFINITION" key="en">Two-letter country codes which are the most widely used of the three ISO 3166-1 subdivisions, and used most prominently for the Internet's country code top-level domains (with a few exceptions).</element>
-    	</term>
-    	<node class="COntologyMasterVertex">
+			<element variable="kTAG_LABEL">
+				<item key="en">Alpha-2 code</item>
+			</element>
+			<element variable="kTAG_DEFINITION">
+				<item key="en">Two-letter country codes which are the most widely used of the three ISO 3166-1 subdivisions, and used most prominently for the Internet's country code top-level domains (with a few exceptions).</item>
+			</element>
+    	</TERM>
+    	<NODE class="COntologyMasterVertex">
+            <element variable="kTAG_PID">ISO:3166:1:alpha-2</element>
 			<element variable="kTAG_KIND">
 				<item>:KIND-FEATURE</item>
 				<item>:KIND-SCALE</item>
@@ -794,26 +916,33 @@
 			<element variable="kTAG_TYPE">
 				<item>:ENUM</item>
 			</element>
-    	</node>
-        <tag />
-        <edges>
-			<edge>
-				<element variable="kTAG_PREDICATE">:SUBCLASS-OF</element>
-				<element variable="kTAG_OBJECT">ISO:3166:1</element>
-			</edge>
-        </edges>
-    </unit>
+    	</NODE>
+		<EDGE>
+			<element variable="kTAG_PREDICATE">:SUBCLASS-OF</element>
+			<element variable="kTAG_OBJECT">ISO:3166:1</element>
+		</EDGE>
+    	<TAG>
+    		<element variable="kTAG_PATH">
+    			<item node="pid">ISO:3166:1:alpha-2</item>
+    		</element>
+    	</TAG>
+	</UNIT>
     
     <!-- ISO:3166:1:alpha-3 -->
-    <unit>
-    	<term lid="alpha-3" ns="ISO:3166:1">
+    <UNIT>
+    	<TERM LID="alpha-3" NS="ISO:3166:1">
 			<element variable="kTAG_KIND">
 	            <item>:KIND-ENUMERATION</item>
 			</element>
-			<element variable="kTAG_LABEL" key="en">Alpha-3 code</element>
-			<element variable="kTAG_DEFINITION" key="en">Three-letter country codes which allow a better visual association between the codes and the country names than the alpha-2 codes.</element>
-    	</term>
-    	<node class="COntologyMasterVertex">
+			<element variable="kTAG_LABEL">
+				<item key="en">Alpha-3 code</item>
+			</element>
+			<element variable="kTAG_DEFINITION">
+				<item key="en">Three-letter country codes which allow a better visual association between the codes and the country names than the alpha-2 codes.</item>
+			</element>
+    	</TERM>
+    	<NODE class="COntologyMasterVertex">
+            <element variable="kTAG_PID">ISO:3166:1:alpha-3</element>
 			<element variable="kTAG_KIND">
 				<item>:KIND-FEATURE</item>
 				<item>:KIND-SCALE</item>
@@ -821,26 +950,33 @@
 			<element variable="kTAG_TYPE">
 				<item>:ENUM</item>
 			</element>
-    	</node>
-        <tag />
-        <edges>
-			<edge>
-				<element variable="kTAG_PREDICATE">:SUBCLASS-OF</element>
-				<element variable="kTAG_OBJECT">ISO:3166:1</element>
-			</edge>
-        </edges>
-    </unit>
+    	</NODE>
+		<EDGE>
+			<element variable="kTAG_PREDICATE">:SUBCLASS-OF</element>
+			<element variable="kTAG_OBJECT">ISO:3166:1</element>
+		</EDGE>
+    	<TAG>
+    		<element variable="kTAG_PATH">
+    			<item node="pid">ISO:3166:1:alpha-3</item>
+    		</element>
+    	</TAG>
+	</UNIT>
     
     <!-- ISO:3166:1:numeric -->
-    <unit>
-    	<term lid="numeric" ns="ISO:3166:1">
+    <UNIT>
+    	<TERM LID="numeric" NS="ISO:3166:1">
 			<element variable="kTAG_KIND">
 	            <item>:KIND-ENUMERATION</item>
 			</element>
-			<element variable="kTAG_LABEL" key="en">Numeric code</element>
-			<element variable="kTAG_DEFINITION" key="en">Three-digit country codes which are identical to those developed and maintained by the United Nations Statistics Division, with the advantage of script (writing system) independence, and hence useful for people or systems using non-Latin scripts.</element>
-    	</term>
-    	<node class="COntologyMasterVertex">
+			<element variable="kTAG_LABEL">
+				<item key="en">Numeric code</item>
+			</element>
+			<element variable="kTAG_DEFINITION">
+				<item key="en">Three-digit country codes which are identical to those developed and maintained by the United Nations Statistics Division, with the advantage of script (writing system) independence, and hence useful for people or systems using non-Latin scripts.</item>
+			</element>
+    	</TERM>
+    	<NODE class="COntologyMasterVertex">
+            <element variable="kTAG_PID">ISO:3166:1:numeric</element>
 			<element variable="kTAG_KIND">
 				<item>:KIND-FEATURE</item>
 				<item>:KIND-SCALE</item>
@@ -848,28 +984,35 @@
 			<element variable="kTAG_TYPE">
 				<item>:ENUM</item>
 			</element>
-    	</node>
-        <tag />
-        <edges>
-			<edge>
-				<element variable="kTAG_PREDICATE">:SUBCLASS-OF</element>
-				<element variable="kTAG_OBJECT">ISO:3166:1</element>
-			</edge>
-        </edges>
-    </unit>
+    	</NODE>
+		<EDGE>
+			<element variable="kTAG_PREDICATE">:SUBCLASS-OF</element>
+			<element variable="kTAG_OBJECT">ISO:3166:1</element>
+		</EDGE>
+    	<TAG>
+    		<element variable="kTAG_PATH">
+    			<item node="pid">ISO:3166:1:numeric</item>
+    		</element>
+    	</TAG>
+	</UNIT>
     
     <!-- ISO 3166 part 3 PROPERTIES -->
     
     <!-- ISO:3166:3:alpha-3 -->
-    <unit>
-    	<term lid="alpha-3" ns="ISO:3166:3">
+    <UNIT>
+    	<TERM LID="alpha-3" NS="ISO:3166:3">
 			<element variable="kTAG_KIND">
 	            <item>:KIND-ENUMERATION</item>
 			</element>
-			<element variable="kTAG_LABEL" key="en">Alpha-3 code</element>
-			<element variable="kTAG_DEFINITION" key="en">Former three-letter country code.</element>
-    	</term>
-    	<node class="COntologyMasterVertex">
+			<element variable="kTAG_LABEL">
+				<item key="en">Alpha-3 code</item>
+			</element>
+			<element variable="kTAG_DEFINITION">
+				<item key="en">Former three-letter country code.</item>
+			</element>
+    	</TERM>
+    	<NODE class="COntologyMasterVertex">
+            <element variable="kTAG_PID">ISO:3166:3:alpha-3</element>
 			<element variable="kTAG_KIND">
 				<item>:KIND-FEATURE</item>
 				<item>:KIND-SCALE</item>
@@ -877,26 +1020,33 @@
 			<element variable="kTAG_TYPE">
 				<item>:ENUM</item>
 			</element>
-    	</node>
-        <tag />
-        <edges>
-			<edge>
-				<element variable="kTAG_PREDICATE">:SUBCLASS-OF</element>
-				<element variable="kTAG_OBJECT">ISO:3166:3</element>
-			</edge>
-        </edges>
-    </unit>
+    	</NODE>
+		<EDGE>
+			<element variable="kTAG_PREDICATE">:SUBCLASS-OF</element>
+			<element variable="kTAG_OBJECT">ISO:3166:3</element>
+		</EDGE>
+    	<TAG>
+    		<element variable="kTAG_PATH">
+    			<item node="pid">ISO:3166:3:alpha-3</item>
+    		</element>
+    	</TAG>
+	</UNIT>
         
     <!-- ISO:3166:3:alpha-4 -->
-    <unit>
-    	<term lid="alpha-4" ns="ISO:3166:3">
+    <UNIT>
+    	<TERM LID="alpha-4" NS="ISO:3166:3">
 			<element variable="kTAG_KIND">
 	            <item>:KIND-ENUMERATION</item>
 			</element>
-			<element variable="kTAG_LABEL" key="en">Alpha-4 code</element>
-			<element variable="kTAG_DEFINITION" key="en">Four-letter country code. Each former country name in ISO 3166-3 is assigned a four-letter alphabetic code. The first two letters are the ISO 3166-1 alpha-2 code of the former country, while the last two letters are allocated according to the following rules: 1.) If the country changed its name, the new ISO 3166-1 alpha-2 code is used (e.g., Burma changed its name to Myanmar, whose new alpha-2 code is MM), or the special code AA is used if its alpha-2 code was not changed (e.g., Byelorussian SSR changed its name to Belarus, which has kept the same alpha-2 code). 2.) If the country merged into an existing country, the ISO 3166-1 alpha-2 code of this country is used (e.g., the German Democratic Republic merged into Germany, whose alpha-2 code is DE). 3.) If the country was divided into several parts, the special code HH is used to indicate that there is no single successor country (e.g., Czechoslovakia was divided into the Czech Republic and Slovakia), with the exception of Serbia and Montenegro, for which XX is used to avoid duplicate use of the same ISO 3166-3 code, as the alpha-2 code CS had twice been deleted from ISO 3166-1, the first time due to the split of Czechoslovakia and the second time due to the split of Serbia and Montenegro.</element>
-    	</term>
-    	<node class="COntologyMasterVertex">
+			<element variable="kTAG_LABEL">
+				<item key="en">Alpha-4 code</item>
+			</element>
+			<element variable="kTAG_DEFINITION">
+				<item key="en">Four-letter country code. Each former country name in ISO 3166-3 is assigned a four-letter alphabetic code. The first two letters are the ISO 3166-1 alpha-2 code of the former country, while the last two letters are allocated according to the following rules: 1.) If the country changed its name, the new ISO 3166-1 alpha-2 code is used (e.g., Burma changed its name to Myanmar, whose new alpha-2 code is MM), or the special code AA is used if its alpha-2 code was not changed (e.g., Byelorussian SSR changed its name to Belarus, which has kept the same alpha-2 code). 2.) If the country merged into an existing country, the ISO 3166-1 alpha-2 code of this country is used (e.g., the German Democratic Republic merged into Germany, whose alpha-2 code is DE). 3.) If the country was divided into several parts, the special code HH is used to indicate that there is no single successor country (e.g., Czechoslovakia was divided into the Czech Republic and Slovakia), with the exception of Serbia and Montenegro, for which XX is used to avoid duplicate use of the same ISO 3166-3 code, as the alpha-2 code CS had twice been deleted from ISO 3166-1, the first time due to the split of Czechoslovakia and the second time due to the split of Serbia and Montenegro.</item>
+			</element>
+    	</TERM>
+    	<NODE class="COntologyMasterVertex">
+            <element variable="kTAG_PID">ISO:3166:3:alpha-4</element>
 			<element variable="kTAG_KIND">
 				<item>:KIND-FEATURE</item>
 				<item>:KIND-SCALE</item>
@@ -904,26 +1054,33 @@
 			<element variable="kTAG_TYPE">
 				<item>:ENUM</item>
 			</element>
-    	</node>
-        <tag />
-        <edges>
-			<edge>
-				<element variable="kTAG_PREDICATE">:SUBCLASS-OF</element>
-				<element variable="kTAG_OBJECT">ISO:3166:3</element>
-			</edge>
-        </edges>
-    </unit>
+    	</NODE>
+		<EDGE>
+			<element variable="kTAG_PREDICATE">:SUBCLASS-OF</element>
+			<element variable="kTAG_OBJECT">ISO:3166:3</element>
+		</EDGE>
+    	<TAG>
+    		<element variable="kTAG_PATH">
+    			<item node="pid">ISO:3166:3:alpha-4</item>
+    		</element>
+    	</TAG>
+	</UNIT>
 
     <!-- ISO:3166:3:numeric -->
-    <unit>
-    	<term lid="numeric" ns="ISO:3166:3">
+    <UNIT>
+    	<TERM LID="numeric" NS="ISO:3166:3">
 			<element variable="kTAG_KIND">
 	            <item>:KIND-ENUMERATION</item>
 			</element>
-			<element variable="kTAG_LABEL" key="en">Numeric code</element>
-			<element variable="kTAG_DEFINITION" key="en">Former three-digit country code.</element>
-    	</term>
-    	<node class="COntologyMasterVertex">
+			<element variable="kTAG_LABEL">
+				<item key="en">Numeric code</item>
+			</element>
+			<element variable="kTAG_DEFINITION">
+				<item key="en">Former three-digit country code.</item>
+			</element>
+    	</TERM>
+    	<NODE class="COntologyMasterVertex">
+            <element variable="kTAG_PID">ISO:3166:3:numeric</element>
 			<element variable="kTAG_KIND">
 				<item>:KIND-FEATURE</item>
 				<item>:KIND-SCALE</item>
@@ -931,25 +1088,32 @@
 			<element variable="kTAG_TYPE">
 				<item>:ENUM</item>
 			</element>
-    	</node>
-        <tag />
-        <edges>
-			<edge>
-				<element variable="kTAG_PREDICATE">:SUBCLASS-OF</element>
-				<element variable="kTAG_OBJECT">ISO:3166:3</element>
-			</edge>
-        </edges>
-    </unit>
+    	</NODE>
+		<EDGE>
+			<element variable="kTAG_PREDICATE">:SUBCLASS-OF</element>
+			<element variable="kTAG_OBJECT">ISO:3166:3</element>
+		</EDGE>
+    	<TAG>
+    		<element variable="kTAG_PATH">
+    			<item node="pid">ISO:3166:3:numeric</item>
+    		</element>
+    	</TAG>
+	</UNIT>
     
     <!-- ISO 3166 ATTRIBUTES -->
     
     <!-- ISO:3166:common_name -->
-    <unit>
-    	<term lid="common_name" ns="ISO:3166">
-			<element variable="kTAG_LABEL" key="en">Common name</element>
-			<element variable="kTAG_DEFINITION" key="en">Country common name.</element>
-    	</term>
-    	<node class="COntologyMasterVertex">
+    <UNIT>
+    	<TERM LID="common_name" NS="ISO:3166">
+			<element variable="kTAG_LABEL">
+				<item key="en">Common name</item>
+			</element>
+			<element variable="kTAG_DEFINITION">
+				<item key="en">Country common name.</item>
+			</element>
+    	</TERM>
+    	<NODE class="COntologyMasterVertex">
+            <element variable="kTAG_PID">ISO:3166:common_name</element>
 			<element variable="kTAG_KIND">
 				<item>:KIND-FEATURE</item>
 				<item>:KIND-SCALE</item>
@@ -957,25 +1121,32 @@
 			<element variable="kTAG_TYPE">
 				<item>:LSTRING</item>
 			</element>
-    	</node>
-        <tag />
-        <edges>
-			<edge>
-				<element variable="kTAG_PREDICATE">:SUBCLASS-OF</element>
-				<element variable="kTAG_OBJECT">ISO:attributes</element>
-			</edge>
-        </edges>
-    </unit>
+    	</NODE>
+		<EDGE>
+			<element variable="kTAG_PREDICATE">:SUBCLASS-OF</element>
+			<element variable="kTAG_OBJECT">ISO:attributes</element>
+		</EDGE>
+    	<TAG>
+    		<element variable="kTAG_PATH">
+    			<item node="pid">ISO:3166:common_name</item>
+    		</element>
+    	</TAG>
+	</UNIT>
     
     <!-- ISO 3166 Part 2 ATTRIBUTES -->
     
     <!-- ISO:3166:2:type -->
-    <unit>
-    	<term lid="type" ns="ISO:3166:2">
-			<element variable="kTAG_LABEL" key="en">Subdivision type</element>
-			<element variable="kTAG_DEFINITION" key="en">Type or kind of the subdivision.</element>
-    	</term>
-    	<node class="COntologyMasterVertex">
+    <UNIT>
+    	<TERM LID="type" NS="ISO:3166:2">
+			<element variable="kTAG_LABEL">
+				<item key="en">Subdivision type</item>
+			</element>
+			<element variable="kTAG_DEFINITION">
+				<item key="en">Type or kind of the subdivision.</item>
+			</element>
+    	</TERM>
+    	<NODE class="COntologyMasterVertex">
+            <element variable="kTAG_PID">ISO:3166:2:type</element>
 			<element variable="kTAG_KIND">
 				<item>:KIND-FEATURE</item>
 				<item>:KIND-SCALE</item>
@@ -983,23 +1154,30 @@
 			<element variable="kTAG_TYPE">
 				<item>:TEXT</item>
 			</element>
-    	</node>
-        <tag />
-        <edges>
-			<edge>
-				<element variable="kTAG_PREDICATE">:SUBCLASS-OF</element>
-				<element variable="kTAG_OBJECT">ISO:attributes</element>
-			</edge>
-        </edges>
-    </unit>
+    	</NODE>
+		<EDGE>
+			<element variable="kTAG_PREDICATE">:SUBCLASS-OF</element>
+			<element variable="kTAG_OBJECT">ISO:attributes</element>
+		</EDGE>
+    	<TAG>
+    		<element variable="kTAG_PATH">
+    			<item node="pid">ISO:3166:2:type</item>
+    		</element>
+    	</TAG>
+	</UNIT>
     
     <!-- ISO:attributes:date_withdrawn -->
-    <unit>
-    	<term lid="date_withdrawn" ns="ISO:attributes">
-			<element variable="kTAG_LABEL" key="en">Date withdrawn</element>
-			<element variable="kTAG_DEFINITION" key="en">Date in which the standard was withdrawn.</element>
-    	</term>
-    	<node class="COntologyMasterVertex">
+    <UNIT>
+    	<TERM LID="date_withdrawn" NS="ISO:attributes">
+			<element variable="kTAG_LABEL">
+				<item key="en">Date withdrawn</item>
+			</element>
+			<element variable="kTAG_DEFINITION">
+				<item key="en">Date in which the standard was withdrawn.</item>
+			</element>
+    	</TERM>
+    	<NODE class="COntologyMasterVertex">
+            <element variable="kTAG_PID">ISO:attributes:date_withdrawn</element>
 			<element variable="kTAG_KIND">
 				<item>:KIND-FEATURE</item>
 				<item>:KIND-SCALE</item>
@@ -1007,28 +1185,35 @@
 			<element variable="kTAG_TYPE">
 				<item>:TEXT</item>
 			</element>
-    	</node>
-        <tag />
-        <edges>
-			<edge>
-				<element variable="kTAG_PREDICATE">:SUBCLASS-OF</element>
-				<element variable="kTAG_OBJECT">ISO:attributes</element>
-			</edge>
-        </edges>
-    </unit>
+    	</NODE>
+		<EDGE>
+			<element variable="kTAG_PREDICATE">:SUBCLASS-OF</element>
+			<element variable="kTAG_OBJECT">ISO:attributes</element>
+		</EDGE>
+    	<TAG>
+    		<element variable="kTAG_PATH">
+    			<item node="pid">ISO:attributes:date_withdrawn</item>
+    		</element>
+    	</TAG>
+	</UNIT>
     
     <!-- ISO 4217 PROPERTIES -->
     
     <!-- ISO:4217:A -->
-    <unit>
-    	<term lid="A" ns="ISO:4217">
+    <UNIT>
+    	<TERM LID="A" NS="ISO:4217">
 			<element variable="kTAG_KIND">
 				<item>:KIND-NAMESPACE</item>
 			</element>
-			<element variable="kTAG_LABEL" key="en">Active codes</element>
-			<element variable="kTAG_DEFINITION" key="en">Codes currently in use.</element>
-    	</term>
-    	<node class="COntologyMasterVertex">
+			<element variable="kTAG_LABEL">
+				<item key="en">Active codes</item>
+			</element>
+			<element variable="kTAG_DEFINITION">
+				<item key="en">Codes currently in use.</item>
+			</element>
+    	</TERM>
+    	<NODE class="COntologyMasterVertex">
+            <element variable="kTAG_PID">ISO:4217:A</element>
 			<element variable="kTAG_KIND">
 				<item>:KIND-FEATURE</item>
 				<item>:KIND-SCALE</item>
@@ -1036,26 +1221,33 @@
 			<element variable="kTAG_TYPE">
 				<item>:ENUM</item>
 			</element>
-    	</node>
-    	<tag />
-        <edges>
-			<edge>
-				<element variable="kTAG_PREDICATE">:SUBCLASS-OF</element>
-				<element variable="kTAG_OBJECT">ISO:4217</element>
-			</edge>
-        </edges>
-    </unit>
+    	</NODE>
+		<EDGE>
+			<element variable="kTAG_PREDICATE">:SUBCLASS-OF</element>
+			<element variable="kTAG_OBJECT">ISO:4217</element>
+		</EDGE>
+    	<TAG>
+    		<element variable="kTAG_PATH">
+    			<item node="pid">ISO:4217:A</item>
+    		</element>
+    	</TAG>
+	</UNIT>
     
     <!-- ISO:4217:H -->
-    <unit>
-    	<term lid="H" ns="ISO:4217">
+    <UNIT>
+    	<TERM LID="H" NS="ISO:4217">
 			<element variable="kTAG_KIND">
 				<item>:KIND-NAMESPACE</item>
 			</element>
-			<element variable="kTAG_LABEL" key="en">Historic codes</element>
-			<element variable="kTAG_DEFINITION" key="en">Historical or obsolete codes.</element>
-    	</term>
-    	<node class="COntologyMasterVertex">
+			<element variable="kTAG_LABEL">
+				<item key="en">Historic codes</item>
+			</element>
+			<element variable="kTAG_DEFINITION">
+				<item key="en">Historical or obsolete codes.</item>
+			</element>
+    	</TERM>
+    	<NODE class="COntologyMasterVertex">
+            <element variable="kTAG_PID">ISO:4217:H</element>
 			<element variable="kTAG_KIND">
 				<item>:KIND-FEATURE</item>
 				<item>:KIND-SCALE</item>
@@ -1063,28 +1255,35 @@
 			<element variable="kTAG_TYPE">
 				<item>:ENUM</item>
 			</element>
-    	</node>
-    	<tag />
-        <edges>
-			<edge>
-				<element variable="kTAG_PREDICATE">:SUBCLASS-OF</element>
-				<element variable="kTAG_OBJECT">ISO:4217</element>
-			</edge>
-        </edges>
-    </unit>
+    	</NODE>
+		<EDGE>
+			<element variable="kTAG_PREDICATE">:SUBCLASS-OF</element>
+			<element variable="kTAG_OBJECT">ISO:4217</element>
+		</EDGE>
+    	<TAG>
+    		<element variable="kTAG_PATH">
+    			<item node="pid">ISO:4217:H</item>
+    		</element>
+    	</TAG>
+	</UNIT>
    
     <!-- ISO 15924 PROPERTIES -->
     
     <!-- ISO:15924:alpha-4 -->
-    <unit>
-    	<term lid="alpha-4" ns="ISO:15924">
+    <UNIT>
+    	<TERM LID="alpha-4" NS="ISO:15924">
 			<element variable="kTAG_KIND">
 				<item>:KIND-NAMESPACE</item>
 			</element>
-			<element variable="kTAG_LABEL" key="en">Four-letter code</element>
-			<element variable="kTAG_DEFINITION" key="en">4-letter ISO 15924 codes are incorporated into the Language Subtag Registry for IETF language tags and so can be used in file formats that make use of such language tags. For example, they can be used in HTML and XML to help Web browsers determine which typeface to use for foreign text. This way one could differentiate, for example, between Serbian written in the Cyrillic (sr-Cyrl) or Latin (sr-Latn) script, or mark romanized text as such.</element>
-    	</term>
-    	<node class="COntologyMasterVertex">
+			<element variable="kTAG_LABEL">
+				<item key="en">Four-letter code</item>
+			</element>
+			<element variable="kTAG_DEFINITION">
+				<item key="en">4-letter ISO 15924 codes are incorporated into the Language Subtag Registry for IETF language tags and so can be used in file formats that make use of such language tags. For example, they can be used in HTML and XML to help Web browsers determine which typeface to use for foreign text. This way one could differentiate, for example, between Serbian written in the Cyrillic (sr-Cyrl) or Latin (sr-Latn) script, or mark romanized text as such.</item>
+			</element>
+    	</TERM>
+    	<NODE class="COntologyMasterVertex">
+            <element variable="kTAG_PID">ISO:15924:alpha-4</element>
 			<element variable="kTAG_KIND">
 				<item>:KIND-FEATURE</item>
 				<item>:KIND-SCALE</item>
@@ -1092,25 +1291,30 @@
 			<element variable="kTAG_TYPE">
 				<item>:ENUM</item>
 			</element>
-    	</node>
-    	<tag />
-        <edges>
-			<edge>
-				<element variable="kTAG_PREDICATE">:SUBCLASS-OF</element>
-				<element variable="kTAG_OBJECT">ISO:15924</element>
-			</edge>
-        </edges>
-    </unit>
+    	</NODE>
+		<EDGE>
+			<element variable="kTAG_PREDICATE">:SUBCLASS-OF</element>
+			<element variable="kTAG_OBJECT">ISO:15924</element>
+		</EDGE>
+    	<TAG>
+    		<element variable="kTAG_PATH">
+    			<item node="pid">ISO:15924:alpha-4</item>
+    		</element>
+    	</TAG>
+	</UNIT>
     
     <!-- ISO:15924:numeric -->
-    <unit>
-    	<term lid="numeric" ns="ISO:15924">
+    <UNIT>
+    	<TERM LID="numeric" NS="ISO:15924">
 			<element variable="kTAG_KIND">
 				<item>:KIND-NAMESPACE</item>
 			</element>
-			<element variable="kTAG_LABEL" key="en">Numeric code</element>
-    	</term>
-    	<node class="COntologyMasterVertex">
+			<element variable="kTAG_LABEL">
+				<item key="en">Numeric code</item>
+			</element>
+    	</TERM>
+    	<NODE class="COntologyMasterVertex">
+            <element variable="kTAG_PID">ISO:15924:numeric</element>
 			<element variable="kTAG_KIND">
 				<item>:KIND-FEATURE</item>
 				<item>:KIND-SCALE</item>
@@ -1118,13 +1322,15 @@
 			<element variable="kTAG_TYPE">
 				<item>:ENUM</item>
 			</element>
-    	</node>
-    	<tag />
-        <edges>
-			<edge>
-				<element variable="kTAG_PREDICATE">:SUBCLASS-OF</element>
-				<element variable="kTAG_OBJECT">ISO:15924</element>
-			</edge>
-        </edges>
-    </unit>
-</units>
+    	</NODE>
+		<EDGE>
+			<element variable="kTAG_PREDICATE">:SUBCLASS-OF</element>
+			<element variable="kTAG_OBJECT">ISO:15924</element>
+		</EDGE>
+    	<TAG>
+    		<element variable="kTAG_PATH">
+    			<item node="pid">ISO:15924:numeric</item>
+    		</element>
+    	</TAG>
+	</UNIT>
+</ONTOLOGY>

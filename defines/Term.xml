@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ONTOLOGY
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-    xsi:noNamespaceSchemaLocation="file:Ontology.xsd">
+    xsi:noNamespaceSchemaLocation="file:/Library/WebServer/Library/PHPWrapper/defines/Ontology.xsd">
     
     <!-- Term object -->
     

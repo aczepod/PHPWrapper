@@ -69,7 +69,7 @@ try
 	//
 	if( kOPTION_VERBOSE )
 		echo( "  • Loading UN regions.\n" );
-	$_SESSION[ kSESSION_ONTOLOGY ]->LoadXMLFile(
+	$_SESSION[ kSESSION_ONTOLOGY ]->LoadXMLOntologyFile(
 		kPATH_MYWRAPPER_LIBRARY_DATA."/UNSTAT_REGIONS.xml" );
 	
 	//
@@ -77,21 +77,29 @@ try
 	//
 	if( kOPTION_VERBOSE )
 		echo( "  • Loading ISO standards.\n" );
-	$_SESSION[ kSESSION_ONTOLOGY ]->LoadISOPOFiles(
+	$_SESSION[ kSESSION_ONTOLOGY ]->LoadXMLOntologyFile(
 		kPATH_MYWRAPPER_LIBRARY_DATA."/ISO_UNITS.xml" );
+	
+	//
+	// Loading ISO standards categories.
+	//
+	if( kOPTION_VERBOSE )
+		echo( "  • Decoding ISO files.\n" );
+	$_SESSION[ kSESSION_ONTOLOGY ]->LoadISOPOFiles();
 	
 	//
 	// Loading GR descriptors.
 	//
 	if( kOPTION_VERBOSE )
 		echo( "  • Loading GRINFO descriptors.\n" );
-	$_SESSION[ kSESSION_ONTOLOGY ]->LoadXMLFile(
+	$_SESSION[ kSESSION_ONTOLOGY ]->LoadXMLOntologyFile(
 		kPATH_MYWRAPPER_LIBRARY_DATA."/GR_UNITS.xml" );
 	
 	//
 	// Load all countries.
 	//
-	$_SESSION[ kSESSION_ONTOLOGY ]->SetAllCountries( 'GR:COUNTRIES' );
+	$_SESSION[ kSESSION_ONTOLOGY ]->SetAllCountries(
+		'GR:COUNTRIES' );
 
 
 	//
@@ -99,7 +107,7 @@ try
 	//
 	if( kOPTION_VERBOSE )
 		echo( "  • Loading FAO institutes.\n" );
-	$_SESSION[ kSESSION_ONTOLOGY ]->LoadXMLFile(
+	$_SESSION[ kSESSION_ONTOLOGY ]->LoadXMLOntologyFile(
 		kPATH_MYWRAPPER_LIBRARY_DATA."/FAO_INSTITUTES.xml" );
 
 	//
@@ -107,7 +115,7 @@ try
 	//
 	if( kOPTION_VERBOSE )
 		echo( "  • Loading landrace descriptors.\n" );
-	$_SESSION[ kSESSION_ONTOLOGY ]->LoadXMLFile(
+	$_SESSION[ kSESSION_ONTOLOGY ]->LoadXMLOntologyFile(
 		kPATH_MYWRAPPER_LIBRARY_DATA."/LR_UNITS.xml" );
 
 	//
@@ -115,7 +123,7 @@ try
 	//
 	if( kOPTION_VERBOSE )
 		echo( "  • Loading multicrop descriptors.\n" );
-	$_SESSION[ kSESSION_ONTOLOGY ]->LoadXMLFile(
+	$_SESSION[ kSESSION_ONTOLOGY ]->LoadXMLOntologyFile(
 		kPATH_MYWRAPPER_LIBRARY_DATA."/MCPD_UNITS.xml" );
 	
 	if( kOPTION_VERBOSE )
