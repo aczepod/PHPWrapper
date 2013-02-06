@@ -59,7 +59,7 @@ define( "kSWITCH_kTAG_NAMESPACE_REFS",			0x0 );
  * it determines how the {@link kTAG_NODES} is managed: please refer to the documentation
  * on the {@link kSWITCH_kTAG_NAMESPACE_REFS} switch.
  */
-define( "kSWITCH_kTAG_NODES",					0x0 );
+define( "kSWITCH_kTAG_NODES",					0x3 );
 
 /**
  * Feature references.

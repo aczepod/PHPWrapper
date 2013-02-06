@@ -49,8 +49,8 @@
     
     <!-- GR:NICODE -->
     <UNIT>
-    	<NODE class="COntologyAliasVertex">
-			<element variable="kTAG_TERM">GR:NICODE</element>
+    	<NODE class="COntologyAliasVertex" term="GR:NICODE">
+            <element variable="kTAG_PID">MCPD:NICODE</element>
 			<element variable="kTAG_DESCRIPTION">
 				<item key="en"><![CDATA[Code identifying the National Inventory; the code of the country preparing the National Inventory. Exceptions are possible, if agreed with EURISCO such as NGB.]]></item>
 			</element>
@@ -71,6 +71,7 @@
 			</element>
     	</NODE>
 		<EDGE>
+            <element variable="kTAG_SUBJECT" node="pid">MCPD:NICODE</element>
 			<element variable="kTAG_PREDICATE">:SUBCLASS-OF</element>
 			<element variable="kTAG_OBJECT">MCPD</element>
 		</EDGE>
@@ -151,7 +152,7 @@
     	</EDGE>
     	<TAG>
 			<element variable="kTAG_PATH">
-	    		<item>MCPD:ACCENUMB</item>
+	    		<item node="term">MCPD:ACCENUMB</item>
 			</element>
     	</TAG>
     </UNIT>
@@ -188,7 +189,7 @@
     	</EDGE>
     	<TAG>
 			<element variable="kTAG_PATH">
-    			<item>MCPD:COLLNUMB</item>
+    			<item node="term">MCPD:COLLNUMB</item>
 			</element>
     	</TAG>
     </UNIT>
@@ -237,8 +238,8 @@
     
     <!-- GR:GENUS -->
 	<UNIT>
-		<NODE class="COntologyAliasVertex">
-			<element variable="kTAG_TERM">GR:GENUS</element>
+		<NODE class="COntologyAliasVertex" term="GR:GENUS">
+            <element variable="kTAG_PID">MCPD:GENUS</element>
 			<element variable="kTAG_DESCRIPTION">
 				<item key="en"><![CDATA[Genus name for taxon, in latin. Initial uppercase letter required.]]></item>
 			</element>
@@ -259,6 +260,7 @@
 			</element>
 		</NODE>
 		<EDGE>
+            <element variable="kTAG_SUBJECT" node="pid">MCPD:GENUS</element>
 			<element variable="kTAG_PREDICATE">:SUBCLASS-OF</element>
 			<element variable="kTAG_OBJECT">MCPD</element>
 		</EDGE>
@@ -266,8 +268,8 @@
     
     <!-- GR:SPECIES -->
     <UNIT>
-    	<NODE class="COntologyMasterVertex">
-			<element variable="kTAG_TERM">GR:SPECIES</element>
+    	<NODE class="COntologyAliasVertex" term="GR:SPECIES">
+            <element variable="kTAG_PID">MCPD:SPECIES</element>
 			<element variable="kTAG_DESCRIPTION">
 				<item key="en"><![CDATA[Specific epithet portion of the scientific name, in latin, in lowercase letters. Following abbreviation is allowed: ‘sp.’.]]></item>
 			</element>
@@ -283,6 +285,7 @@
 			</element>
     	</NODE>
 		<EDGE>
+            <element variable="kTAG_SUBJECT" node="pid">MCPD:SPECIES</element>
 			<element variable="kTAG_PREDICATE">:SUBCLASS-OF</element>
 			<element variable="kTAG_OBJECT">MCPD</element>
 		</EDGE>
@@ -290,8 +293,8 @@
     
     <!-- MCPD:SPAUTHOR -->
     <UNIT>
-    	<NODE class="COntologyMasterVertex">
-			<element variable="kTAG_TERM">GR:SPAUTHOR</element>
+    	<NODE class="COntologyAliasVertex" term="GR:SPAUTHOR">
+            <element variable="kTAG_PID">MCPD:SPAUTHOR</element>
 			<element variable="kTAG_DESCRIPTION">
 				<item key="en"><![CDATA[The authority for the species name.]]></item>
 			</element>
@@ -312,6 +315,7 @@
 			</element>
     	</NODE>
 		<EDGE>
+            <element variable="kTAG_SUBJECT" node="pid">MCPD:SPAUTHOR</element>
 			<element variable="kTAG_PREDICATE">:SUBCLASS-OF</element>
 			<element variable="kTAG_OBJECT">MCPD</element>
 		</EDGE>
@@ -319,8 +323,8 @@
     
     <!-- MCPD:SUBTAXA -->
     <UNIT>
-    	<NODE class="COntologyMasterVertex">
-			<element variable="kTAG_TERM">GR:SUBTAXA</element>
+    	<NODE class="COntologyAliasVertex" term="GR:SUBTAXA">
+            <element variable="kTAG_PID">MCPD:SUBTAXA</element>
 			<element variable="kTAG_DESCRIPTION">
 				<item key="en"><![CDATA[Subtaxa can be used to store any additional taxonomic identifier, in latin. Following abbreviations are allowed: ‘subsp.’ (for subspecies); ‘convar.’ (for convariety); ‘var.’ (for variety); ‘f.’ (for form).]]></item>
 			</element>
@@ -340,6 +344,7 @@
 			</element>
     	</NODE>
 		<EDGE>
+            <element variable="kTAG_SUBJECT" node="pid">MCPD:SUBTAXA</element>
 			<element variable="kTAG_PREDICATE">:SUBCLASS-OF</element>
 			<element variable="kTAG_OBJECT">MCPD</element>
 		</EDGE>
@@ -347,9 +352,9 @@
     
     <!-- GR:SUBTAUTHOR -->
     <UNIT>
-    	<NODE class="COntologyMasterVertex">
-			<element variable="kTAG_TERM">GR:SUBTAUTHOR</element>
-			<element variable="kTAG_DEFINITION">
+    	<NODE class="COntologyAliasVertex" term="GR:SUBTAUTHOR">
+            <element variable="kTAG_PID">MCPD:SUBTAUTHOR</element>
+			<element variable="kTAG_DESCRIPTION">
 				<item key="en"><![CDATA[The subtaxa authority at the most detailed taxonomic level.]]></item>
 			</element>
 			<element variable="kTAG_KIND">
@@ -368,6 +373,7 @@
 			</element>
     	</NODE>
 		<EDGE>
+            <element variable="kTAG_SUBJECT" node="pid">MCPD:SUBTAUTHOR</element>
 			<element variable="kTAG_PREDICATE">:SUBCLASS-OF</element>
 			<element variable="kTAG_OBJECT">MCPD</element>
 		</EDGE>
@@ -407,7 +413,7 @@
     	</EDGE>
     	<TAG>
 			<element variable="kTAG_PATH">
-	    		<item>MCPD:CROPNAME</item>
+	    		<item node="term">MCPD:CROPNAME</item>
 			</element>
     	</TAG>
     </UNIT>
@@ -445,7 +451,7 @@
     	</EDGE>
     	<TAG>
 			<element variable="kTAG_PATH">
-	    		<item>MCPD:ACCENAME</item>
+	    		<item node="term">MCPD:ACCENAME</item>
 			</element>
     	</TAG>
     </UNIT>
@@ -464,7 +470,7 @@
 				<item>12</item>
 			</element>
     	</TERM>
-    	<NODE class="COntologyAliasVertex">
+    	<NODE class="COntologyMasterVertex">
 			<element variable="kTAG_KIND">
 				<item>:KIND-FEATURE</item>
 			</element>
@@ -568,7 +574,7 @@
 		</EDGE>
     	<TAG>
 			<element variable="kTAG_PATH">
-	    		<item>MCPD:COLLSITE</item>
+	    		<item node="term">MCPD:COLLSITE</item>
 			</element>
     	</TAG>
     </UNIT>
@@ -587,7 +593,7 @@
 				<item>15</item>
 			</element>
     	</TERM>
-    	<NODE class="COntologyAliasVertex">
+    	<NODE class="COntologyMasterVertex">
 			<element variable="kTAG_KIND">
 				<item>:KIND-FEATURE</item>
 			</element>
@@ -631,7 +637,7 @@
 				<item>16</item>
 			</element>
     	</TERM>
-    	<NODE class="COntologyAliasVertex">
+    	<NODE class="COntologyMasterVertex">
 			<element variable="kTAG_KIND">
 				<item>:KIND-FEATURE</item>
 			</element>
@@ -692,7 +698,7 @@
 		</EDGE>
     	<TAG>
 			<element variable="kTAG_PATH">
-	    		<item>MCPD:ELEVATION</item>
+	    		<item node="term">MCPD:ELEVATION</item>
 			</element>
     	</TAG>
     </UNIT>
@@ -711,7 +717,7 @@
 				<item>18</item>
 			</element>
     	</TERM>
-    	<NODE class="COntologyAliasVertex">
+    	<NODE class="COntologyMasterVertex">
 			<element variable="kTAG_KIND">
 				<item>:KIND-FEATURE</item>
 			</element>
@@ -811,7 +817,7 @@
 		</EDGE>
     	<TAG>
 			<element variable="kTAG_PATH">
-	    		<item>MCPD:SAMPSTAT</item>
+	    		<item node="term">MCPD:SAMPSTAT</item>
 			</element>
     	</TAG>
     </UNIT>
@@ -1121,7 +1127,7 @@
 		</EDGE>
     	<TAG>
 			<element variable="kTAG_PATH">
-	    		<item>MCPD:ANCEST</item>
+	    		<item node="term">MCPD:ANCEST</item>
 			</element>
     	</TAG>
     </UNIT>
@@ -1155,7 +1161,7 @@
 		</EDGE>
     	<TAG>
 			<element variable="kTAG_PATH">
-	    		<item>MCPD:COLLSRC</item>
+	    		<item node="term">MCPD:COLLSRC</item>
 			</element>
     	</TAG>
     </UNIT>
@@ -1634,7 +1640,7 @@
 		</EDGE>
     	<TAG>
 			<element variable="kTAG_PATH">
-	    		<item>MCPD:DONORNUMB</item>
+	    		<item node="term">MCPD:DONORNUMB</item>
 			</element>
     	</TAG>
     </UNIT>
@@ -1673,7 +1679,7 @@
 		</EDGE>
     	<TAG>
 			<element variable="kTAG_PATH">
-	    		<item>MCPD:OTHERNUMB</item>
+	    		<item node="term">MCPD:OTHERNUMB</item>
 			</element>
     	</TAG>
     </UNIT>
@@ -1752,7 +1758,7 @@
 		</EDGE>
     	<TAG>
 			<element variable="kTAG_PATH">
-	    		<item>MCPD:STORAGE</item>
+	    		<item node="term">MCPD:STORAGE</item>
 			</element>
     	</TAG>
     </UNIT>
@@ -1929,7 +1935,7 @@
 		</EDGE>
     	<TAG>
 			<element variable="kTAG_PATH">
-	    		<item>MCPD:REMARKS</item>
+	    		<item node="term">MCPD:REMARKS</item>
 			</element>
     	</TAG>
     </UNIT>
@@ -1966,7 +1972,7 @@
 		</EDGE>
     	<TAG>
 			<element variable="kTAG_PATH">
-	    		<item>MCPD:COLLDESCR</item>
+	    		<item node="term">MCPD:COLLDESCR</item>
 			</element>
     	</TAG>
     </UNIT>
@@ -2003,7 +2009,7 @@
 		</EDGE>
     	<TAG>
 			<element variable="kTAG_PATH">
-	    		<item>MCPD:BREDDESCR</item>
+	    		<item node="term">MCPD:BREDDESCR</item>
 			</element>
     	</TAG>
     </UNIT>
@@ -2040,7 +2046,7 @@
 		</EDGE>
     	<TAG>
 			<element variable="kTAG_PATH">
-	    		<item>MCPD:DONORDESC</item>
+	    		<item node="term">MCPD:DONORDESC</item>
 			</element>
     	</TAG>
     </UNIT>
@@ -2077,7 +2083,7 @@
 		</EDGE>
     	<TAG>
 			<element variable="kTAG_PATH">
-	    		<item>MCPD:DUPLDESCR</item>
+	    		<item node="term">MCPD:DUPLDESCR</item>
 			</element>
     	</TAG>
     </UNIT>
@@ -2114,7 +2120,7 @@
 		</EDGE>
     	<TAG>
 			<element variable="kTAG_PATH">
-	    		<item>MCPD:ACCEURL</item>
+	    		<item node="term">MCPD:ACCEURL</item>
 			</element>
     	</TAG>
     </UNIT>
@@ -2148,7 +2154,7 @@
 		</EDGE>
     	<TAG>
 			<element variable="kTAG_PATH">
-	    		<item>MCPD:MLSSTAT</item>
+	    		<item node="term">MCPD:MLSSTAT</item>
 			</element>
     	</TAG>
     </UNIT>
@@ -2182,7 +2188,7 @@
 		</EDGE>
     	<TAG>
 			<element variable="kTAG_PATH">
-	    		<item>MCPD:AEGISSTAT</item>
+	    		<item node="term">MCPD:AEGISSTAT</item>
 			</element>
     	</TAG>
     </UNIT>
@@ -2261,7 +2267,7 @@
 		</EDGE>
     	<TAG>
 			<element variable="kTAG_PATH">
-	    		<item>MCPD:SMTANUMB</item>
+	    		<item node="term">MCPD:SMTANUMB</item>
 			</element>
     	</TAG>
     </UNIT>
@@ -2298,7 +2304,7 @@
 		</EDGE>
     	<TAG>
 			<element variable="kTAG_PATH">
-	    		<item>MCPD:SMTADATE</item>
+	    		<item node="term">MCPD:SMTADATE</item>
 			</element>
     	</TAG>
     </UNIT>
@@ -2335,7 +2341,7 @@
 		</EDGE>
     	<TAG>
 			<element variable="kTAG_PATH">
-	    		<item>MCPD:SMTACCE</item>
+	    		<item node="term">MCPD:SMTACCE</item>
 			</element>
     	</TAG>
     </UNIT>
@@ -2372,7 +2378,7 @@
 		</EDGE>
     	<TAG>
 			<element variable="kTAG_PATH">
-	    		<item>MCPD:SMTAGENUS</item>
+	    		<item node="term">MCPD:SMTAGENUS</item>
 			</element>
     	</TAG>
     </UNIT>
@@ -2406,7 +2412,7 @@
 		</EDGE>
     	<TAG>
 			<element variable="kTAG_PATH">
-	    		<item>MCPD:SMTARECIP</item>
+	    		<item node="term">MCPD:SMTARECIP</item>
 			</element>
     	</TAG>
     </UNIT>
@@ -2558,7 +2564,7 @@
 		</EDGE>
     	<TAG>
 			<element variable="kTAG_PATH">
-	    		<item>MCPD:SMTAREMARK</item>
+	    		<item node="term">MCPD:SMTAREMARK</item>
 			</element>
     	</TAG>
     </UNIT>

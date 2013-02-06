@@ -572,7 +572,7 @@
 		</EDGE>
 		<TAG>
 			<element variable="kTAG_PATH">
-				<item>LR:NIENUMB</item>
+				<item node="term">LR:NIENUMB</item>
 			</element>
 		</TAG>
 	</UNIT>
@@ -654,8 +654,8 @@
 	
 	<!-- GR:SPECIES -->
 	<UNIT>
-		<NODE class="COntologyMasterVertex">
-			<element variable="kTAG_TERM">GR:SPECIES</element>
+		<NODE class="COntologyAliasVertex" term="GR:SPECIES">
+            <element variable="kTAG_PID">LR:SPECIES</element>
 			<element variable="kTAG_DESCRIPTION">
 				<item key="en"><![CDATA[Species name of the landrace.]]></item>
 			</element>
@@ -677,15 +677,16 @@
 			</element>
 		</NODE>
 		<EDGE>
+            <element variable="kTAG_SUBJECT" node="pid">LR:SPECIES</element>
 			<element variable="kTAG_PREDICATE">:SUBCLASS-OF</element>
 			<element variable="kTAG_OBJECT">LR:TAXONOMY</element>
 		</EDGE>
 	</UNIT>
 	
-	<!-- LR:SPAUTHOR -->
+	<!-- GR:SPAUTHOR -->
 	<UNIT>
-		<NODE class="COntologyMasterVertex">
-			<element variable="kTAG_TERM">GR:SPAUTHOR</element>
+		<NODE class="COntologyAliasVertex" term="GR:SPAUTHOR">
+            <element variable="kTAG_PID">LR:SPAUTHOR</element>
 			<element variable="kTAG_DESCRIPTION">
 				<item key="en">Name or abbreviation of the author of the specific epithet biological classification.</item>
 			</element>
@@ -707,6 +708,7 @@
 			</element>
 		</NODE>
 		<EDGE>
+            <element variable="kTAG_SUBJECT" node="pid">LR:SPAUTHOR</element>
 			<element variable="kTAG_PREDICATE">:SUBCLASS-OF</element>
 			<element variable="kTAG_OBJECT">LR:TAXONOMY</element>
 		</EDGE>
@@ -714,8 +716,8 @@
 	
 	<!-- GR:SUBTAXA -->
 	<UNIT>
-		<NODE class="COntologyMasterVertex">
-			<element variable="kTAG_TERM">GR:SUBTAXA</element>
+		<NODE class="COntologyAliasVertex" term="GR:SUBTAXA">
+            <element variable="kTAG_PID">LR:SUBTAXA</element>
 			<element variable="kTAG_DESCRIPTION">
 				<item key="en"><![CDATA[This field can be used to store any additional taxonomic identifier (in Latin, in lower case letters) preceded by the rank (for example: subspecies, convariety, variety, form, cultivar group). The following abbreviations are foreseen for the rank: ‘subsp.’ (for subspecies); ‘convar.’ (for convariety); ‘var.’ (for variety); ‘f.’ (for form), ‘Group’ (for cultivar group).]]></item>
 			</element>
@@ -736,6 +738,7 @@
 			</element>
 		</NODE>
 		<EDGE>
+            <element variable="kTAG_SUBJECT" node="pid">LR:SUBTAXA</element>
 			<element variable="kTAG_PREDICATE">:SUBCLASS-OF</element>
 			<element variable="kTAG_OBJECT">LR:TAXONOMY</element>
 		</EDGE>
@@ -743,8 +746,8 @@
 	
 	<!-- GR:SUBTAUTHOR -->
 	<UNIT>
-		<NODE class="COntologyMasterVertex">
-			<element variable="kTAG_TERM">GR:SUBTAUTHOR</element>
+		<NODE class="COntologyAliasVertex" term="GR:SUBTAUTHOR">
+            <element variable="kTAG_PID">LR:SUBTAUTHOR</element>
 			<element variable="kTAG_DESCRIPTION">
 				<item key="en"><![CDATA[The subtaxa authority at the most detailed taxonomic level.]]></item>
 			</element>
@@ -765,6 +768,7 @@
 			</element>
 		</NODE>
 		<EDGE>
+            <element variable="kTAG_SUBJECT" node="pid">LR:SUBTAUTHOR</element>
 			<element variable="kTAG_PREDICATE">:SUBCLASS-OF</element>
 			<element variable="kTAG_OBJECT">LR:TAXONOMY</element>
 		</EDGE>
@@ -804,7 +808,7 @@
 		</EDGE>
 		<TAG>
 			<element variable="kTAG_PATH">
-				<item>LR:TAXREF</item>
+				<item node="term">LR:TAXREF</item>
 			</element>
 		</TAG>
 	</UNIT>
@@ -843,7 +847,7 @@
 		</EDGE>
 		<TAG>
 			<element variable="kTAG_PATH">
-				<item>LR:CROPNAME</item>
+				<item node="term">LR:CROPNAME</item>
 			</element>
 		</TAG>
 	</UNIT>
@@ -883,7 +887,7 @@
 		</EDGE>
 		<TAG>
 			<element variable="kTAG_PATH">
-				<item>LR:LRRECDATE</item>
+				<item node="term">LR:LRRECDATE</item>
 			</element>
 		</TAG>
 	</UNIT>
@@ -921,7 +925,7 @@
 		</EDGE>
 		<TAG>
 			<element variable="kTAG_PATH">
-				<item>LR:LRNUMB</item>
+				<item node="term">LR:LRNUMB</item>
 			</element>
 		</TAG>
 	</UNIT>
@@ -959,7 +963,7 @@
 		</EDGE>
 		<TAG>
 			<element variable="kTAG_PATH">
-				<item>LR:LRNAME</item>
+				<item node="term">LR:LRNAME</item>
 			</element>
 		</TAG>
 	</UNIT>
@@ -1044,7 +1048,7 @@
 		</EDGE>
 		<TAG>
 			<element variable="kTAG_PATH">
-				<item>LR:FARMFIRSTADMIN</item>
+				<item node="term">LR:FARMFIRSTADMIN</item>
 			</element>
 		</TAG>
 	</UNIT>
@@ -1081,7 +1085,7 @@
 		</EDGE>
 		<TAG>
 			<element variable="kTAG_PATH">
-				<item>LR:FARMSECONDADMIN</item>
+				<item node="term">LR:FARMSECONDADMIN</item>
 			</element>
 		</TAG>
 	</UNIT>
@@ -1118,7 +1122,7 @@
 		</EDGE>
 		<TAG>
 			<element variable="kTAG_PATH">
-				<item>LR:FARMLOWESTADMIN</item>
+				<item node="term">LR:FARMLOWESTADMIN</item>
 			</element>
 		</TAG>
 	</UNIT>
@@ -1155,7 +1159,7 @@
 		</EDGE>
 		<TAG>
 			<element variable="kTAG_PATH">
-				<item>LR:LOCATION</item>
+				<item node="term">LR:LOCATION</item>
 			</element>
 		</TAG>
 	</UNIT>
@@ -1348,7 +1352,7 @@
 		</EDGE>
 		<TAG>
 			<element variable="kTAG_PATH">
-				<item>LR:FEPSGCODE</item>
+				<item node="term">LR:FEPSGCODE</item>
 			</element>
 		</TAG>
 	</UNIT>
@@ -1660,7 +1664,7 @@
 		</EDGE>
 		<TAG>
 			<element variable="kTAG_PATH">
-				<item>LR:LRSEPSGCODE</item>
+				<item node="term">LR:LRSEPSGCODE</item>
 			</element>
 		</TAG>
 	</UNIT>
@@ -1737,7 +1741,7 @@
 		</EDGE>
 		<TAG>
 			<element variable="kTAG_PATH">
-				<item>LR:LRSRADIALED</item>
+				<item node="term">LR:LRSRADIALED</item>
 			</element>
 		</TAG>
 	</UNIT>
@@ -1815,7 +1819,7 @@
 		</EDGE>
 		<TAG>
 			<element variable="kTAG_PATH">
-				<item>LR:FARMERID</item>
+				<item node="term">LR:FARMERID</item>
 			</element>
 		</TAG>
 	</UNIT>
@@ -1852,7 +1856,7 @@
 		</EDGE>
 		<TAG>
 			<element variable="kTAG_PATH">
-				<item>LR:FARMERYB</item>
+				<item node="term">LR:FARMERYB</item>
 			</element>
 		</TAG>
 	</UNIT>
@@ -1889,7 +1893,7 @@
 		</EDGE>
 		<TAG>
 			<element variable="kTAG_PATH">
-				<item>LR:FARMHT</item>
+				<item node="term">LR:FARMHT</item>
 			</element>
 		</TAG>
 	</UNIT>
@@ -2050,7 +2054,7 @@
 		</EDGE>
 		<TAG>
 			<element variable="kTAG_PATH">
-				<item>LR:LRTOTAREA</item>
+				<item node="term">LR:LRTOTAREA</item>
 			</element>
 		</TAG>
 	</UNIT>
@@ -2089,7 +2093,7 @@
 		</EDGE>
 		<TAG>
 			<element variable="kTAG_PATH">
-				<item>LR:LRCULTPER</item>
+				<item node="term">LR:LRCULTPER</item>
 			</element>
 		</TAG>
 	</UNIT>
@@ -2436,7 +2440,7 @@
 		</EDGE>
 		<TAG>
 			<element variable="kTAG_PATH">
-				<item>LR:LRSSS</item>
+				<item node="term">LR:LRSSS</item>
 			</element>
 		</TAG>
 	</UNIT>
@@ -2639,7 +2643,7 @@
 		</EDGE>
 		<TAG>
 			<element variable="kTAG_PATH">
-				<item>LR:LRCONT</item>
+				<item node="term">LR:LRCONT</item>
 			</element>
 		</TAG>
 	</UNIT>
@@ -2759,7 +2763,7 @@
 		</EDGE>
 		<TAG>
 			<element variable="kTAG_PATH">
-				<item>LR:LRDISTR</item>
+				<item node="term">LR:LRDISTR</item>
 			</element>
 		</TAG>
 	</UNIT>
@@ -2939,7 +2943,7 @@
 		</EDGE>
 		<TAG>
 			<element variable="kTAG_PATH">
-				<item>LR:LRFARMERMOT</item>
+				<item node="term">LR:LRFARMERMOT</item>
 			</element>
 		</TAG>
 	</UNIT>
@@ -3422,7 +3426,7 @@
 		</EDGE>
 		<TAG>
 			<element variable="kTAG_PATH">
-				<item>LR:LRFARMERSELCRI</item>
+				<item node="term">LR:LRFARMERSELCRI</item>
 			</element>
 		</TAG>
 	</UNIT>
@@ -3574,7 +3578,7 @@
 		</EDGE>
 		<TAG>
 			<element variable="kTAG_PATH">
-				<item>LR:PPU</item>
+				<item node="term">LR:PPU</item>
 			</element>
 		</TAG>
 	</UNIT>
@@ -3822,7 +3826,7 @@
 		</EDGE>
 		<TAG>
 			<element variable="kTAG_PATH">
-				<item>LR:LRPRODUSE</item>
+				<item node="term">LR:LRPRODUSE</item>
 			</element>
 		</TAG>
 	</UNIT>
@@ -4092,7 +4096,7 @@
 		</EDGE>
 		<TAG>
 			<element variable="kTAG_PATH">
-				<item>LR:LRPRODEST</item>
+				<item node="term">LR:LRPRODEST</item>
 			</element>
 		</TAG>
 	</UNIT>
@@ -4256,7 +4260,7 @@
 		</EDGE>
 		<TAG>
 			<element variable="kTAG_PATH">
-				<item>LR:LRMARKTDEMAND</item>
+				<item node="term">LR:LRMARKTDEMAND</item>
 			</element>
 		</TAG>
 	</UNIT>
@@ -4392,7 +4396,7 @@
 		</EDGE>
 		<TAG>
 			<element variable="kTAG_PATH">
-				<item>LR:LRTHREATF</item>
+				<item node="term">LR:LRTHREATF</item>
 			</element>
 		</TAG>
 	</UNIT>
@@ -4528,7 +4532,7 @@
 		</EDGE>
 		<TAG>
 			<element variable="kTAG_PATH">
-				<item>LR:LRTHREATCT</item>
+				<item node="term">LR:LRTHREATCT</item>
 			</element>
 		</TAG>
 	</UNIT>
@@ -4666,7 +4670,7 @@
 		</EDGE>
 		<TAG>
 			<element variable="kTAG_PATH">
-				<item>LR:CONSERVACTIONS</item>
+				<item node="term">LR:CONSERVACTIONS</item>
 			</element>
 		</TAG>
 	</UNIT>
@@ -4805,7 +4809,7 @@
 		</EDGE>
 		<TAG>
 			<element variable="kTAG_PATH">
-				<item>LR:CONORG</item>
+				<item node="term">LR:CONORG</item>
 			</element>
 		</TAG>
 	</UNIT>
@@ -4881,7 +4885,7 @@
 		</EDGE>
 		<TAG>
 			<element variable="kTAG_PATH">
-				<item>LR:MONITRESP</item>
+				<item node="term">LR:MONITRESP</item>
 			</element>
 		</TAG>
 	</UNIT>
@@ -4918,7 +4922,7 @@
 		</EDGE>
 		<TAG>
 			<element variable="kTAG_PATH">
-				<item>LR:MONINT</item>
+				<item node="term">LR:MONINT</item>
 			</element>
 		</TAG>
 	</UNIT>

@@ -1204,6 +1204,14 @@ class COntology extends CConnection
 								  kERROR_PARAMETER );							// !@! ==>
 						break;
 				
+					case kTAG_SYNONYMS:
+						foreach( $element->{'item'} as $item )
+						{
+							if( strlen( $data = (string) $item ) )
+								$object->Synonym( $data, TRUE );
+						}
+						break;
+				
 					case kTAG_CATEGORY:
 						foreach( $element->{'item'} as $item )
 						{
@@ -1279,6 +1287,40 @@ class COntology extends CConnection
 						elseif( strlen( $data = (string) $element ) )
 							$object->Description( NULL, $data );
 						break;
+						
+					case kTAG_AUTHORS:
+						foreach( $element->{'item'} as $item )
+						{
+							if( strlen( $data = (string) $item ) )
+								$object->Author( $data, TRUE );
+						}
+						break;
+						
+					case kTAG_ACKNOWLEDGMENTS:
+						if( strlen( $data = (string) $element ) )
+							$object->Acknowledgments( $data );
+						break;
+						
+					case kTAG_BIBLIOGRAPHY:
+						if( strlen( $data = (string) $element ) )
+							$object->Bibliography( $data );
+						break;
+						
+					case kTAG_NOTES:
+						if( $element->{'item'}->count() )
+						{
+							foreach( $element->{'item'} as $item )
+							{
+								$key = ( $item[ 'key' ] !== NULL )
+									 ? (string) $item[ 'key' ]
+									 : NULL;
+								if( strlen( $data = (string) $item ) )
+									$object->Notes( $key, $data );
+							}
+						}
+						elseif( strlen( $data = (string) $element ) )
+							$object->Notes( NULL, $data );
+						break;
 					
 					default:
 						if( $element->{'item'}->count() )
@@ -1347,6 +1389,14 @@ class COntology extends CConnection
 							throw new Exception
 								( "Unable to set persistent identifier: it cannot be empty",
 								  kERROR_PARAMETER );							// !@! ==>
+						break;
+				
+					case 'kTAG_SYNONYMS':
+						foreach( $element->{'item'} as $item )
+						{
+							if( strlen( $data = (string) $item ) )
+								$object->Synonym( $data, TRUE );
+						}
 						break;
 				
 					case 'kTAG_CATEGORY':
@@ -1423,6 +1473,40 @@ class COntology extends CConnection
 						}
 						elseif( strlen( $data = (string) $element ) )
 							$object->Description( NULL, $data );
+						break;
+						
+					case 'kTAG_AUTHORS':
+						foreach( $element->{'item'} as $item )
+						{
+							if( strlen( $data = (string) $item ) )
+								$object->Author( $data, TRUE );
+						}
+						break;
+						
+					case 'kTAG_ACKNOWLEDGMENTS':
+						if( strlen( $data = (string) $element ) )
+							$object->Acknowledgments( $data );
+						break;
+						
+					case 'kTAG_BIBLIOGRAPHY':
+						if( strlen( $data = (string) $element ) )
+							$object->Bibliography( $data );
+						break;
+						
+					case 'kTAG_NOTES':
+						if( $element->{'item'}->count() )
+						{
+							foreach( $element->{'item'} as $item )
+							{
+								$key = ( $item[ 'key' ] !== NULL )
+									 ? (string) $item[ 'key' ]
+									 : NULL;
+								if( strlen( $data = (string) $item ) )
+									$object->Notes( $key, $data );
+							}
+						}
+						elseif( strlen( $data = (string) $element ) )
+							$object->Notes( NULL, $data );
 						break;
 					
 					default:

@@ -29,7 +29,6 @@
 			</element>
     	</TERM>
     	<NODE class="COntologyMasterVertex">
-            <element variable="kTAG_PID">GR:NICODE</element>
 			<element variable="kTAG_KIND">
 				<item>:KIND-FEATURE</item>
 				<item>:KIND-SCALE</item>
@@ -40,7 +39,7 @@
     	</NODE>
     	<TAG>
     		<element variable="kTAG_PATH">
-    			<item node="pid">GR:NICODE</item>
+    			<item node="term">GR:NICODE</item>
     		</element>
     	</TAG>
     </UNIT>
@@ -59,7 +58,6 @@
 			</element>
     	</TERM>
     	<NODE class="COntologyMasterVertex">
-            <element variable="kTAG_PID">GR:GENUS</element>
 			<element variable="kTAG_KIND">
 				<item>:KIND-FEATURE</item>
 				<item>:KIND-SCALE</item>
@@ -70,7 +68,7 @@
     	</NODE>
     	<TAG>
     		<element variable="kTAG_PATH">
-    			<item node="pid">GR:GENUS</item>
+    			<item node="term">GR:GENUS</item>
     		</element>
     	</TAG>
     </UNIT>
@@ -89,7 +87,6 @@
 			</element>
     	</TERM>
     	<NODE class="COntologyMasterVertex">
-            <element variable="kTAG_PID">GR:SPECIES</element>
 			<element variable="kTAG_KIND">
 				<item>:KIND-FEATURE</item>
 				<item>:KIND-SCALE</item>
@@ -100,7 +97,7 @@
     	</NODE>
     	<TAG>
     		<element variable="kTAG_PATH">
-    			<item node="pid">GR:SPECIES</item>
+    			<item node="term">GR:SPECIES</item>
     		</element>
     	</TAG>
     </UNIT>
@@ -119,7 +116,6 @@
 			</element>
     	</TERM>
     	<NODE class="COntologyMasterVertex">
-            <element variable="kTAG_PID">GR:SPECIES</element>
 			<element variable="kTAG_KIND">
 				<item>:KIND-FEATURE</item>
 				<item>:KIND-SCALE</item>
@@ -130,7 +126,7 @@
     	</NODE>
     	<TAG>
     		<element variable="kTAG_PATH">
-    			<item node="pid">GR:SPECIES</item>
+    			<item node="term">GR:SPAUTHOR</item>
     		</element>
     	</TAG>
     </UNIT>
@@ -149,7 +145,6 @@
 			</element>
     	</TERM>
     	<NODE class="COntologyMasterVertex">
-            <element variable="kTAG_PID">GR:SUBTAXA</element>
 			<element variable="kTAG_KIND">
 				<item>:KIND-FEATURE</item>
 				<item>:KIND-SCALE</item>
@@ -160,7 +155,7 @@
     	</NODE>
     	<TAG>
     		<element variable="kTAG_PATH">
-    			<item node="pid">GR:SUBTAXA</item>
+    			<item node="term">GR:SUBTAXA</item>
     		</element>
     	</TAG>
     </UNIT>
@@ -179,7 +174,6 @@
 			</element>
     	</TERM>
     	<NODE class="COntologyMasterVertex">
-            <element variable="kTAG_PID">GR:SUBTAUTHOR</element>
 			<element variable="kTAG_KIND">
 				<item>:KIND-FEATURE</item>
 				<item>:KIND-SCALE</item>
@@ -190,7 +184,7 @@
     	</NODE>
     	<TAG>
     		<element variable="kTAG_PATH">
-    			<item node="pid">GR:SUBTAUTHOR</item>
+    			<item node="term">GR:SUBTAUTHOR</item>
     		</element>
     	</TAG>
     </UNIT>
@@ -206,7 +200,6 @@
 			</element>
     	</TERM>
     	<NODE class="COntologyMasterVertex">
-            <element variable="kTAG_PID">GR:DATE</element>
 			<element variable="kTAG_KIND">
 				<item>:KIND-FEATURE</item>
 				<item>:KIND-SCALE</item>
@@ -222,7 +215,7 @@
     	</NODE>
     	<TAG>
     		<element variable="kTAG_PATH">
-    			<item node="pid">GR:DATE</item>
+    			<item node="term">GR:DATE</item>
     		</element>
     	</TAG>
     </UNIT>
@@ -238,7 +231,6 @@
 			</element>
     	</TERM>
     	<NODE class="COntologyMasterVertex">
-            <element variable="kTAG_PID">GR:LATITUDE</element>
 			<element variable="kTAG_KIND">
 				<item>:KIND-FEATURE</item>
 				<item>:KIND-SCALE</item>
@@ -257,7 +249,7 @@
     	</NODE>
     	<TAG>
     		<element variable="kTAG_PATH">
-    			<item node="pid">GR:LATITUDE</item>
+    			<item node="term">GR:LATITUDE</item>
     		</element>
     	</TAG>
     </UNIT>
@@ -273,7 +265,6 @@
 			</element>
     	</TERM>
     	<NODE class="COntologyMasterVertex">
-            <element variable="kTAG_PID">GR:LONGITUDE</element>
 			<element variable="kTAG_KIND">
 				<item>:KIND-FEATURE</item>
 				<item>:KIND-SCALE</item>
@@ -292,7 +283,7 @@
     	</NODE>
     	<TAG>
     		<element variable="kTAG_PATH">
-    			<item node="pid">GR:LONGITUDE</item>
+    			<item node="term">GR:LONGITUDE</item>
     		</element>
     	</TAG>
     </UNIT>
@@ -308,7 +299,6 @@
 			</element>
     	</TERM>
     	<NODE class="COntologyMasterVertex">
-            <element variable="kTAG_PID">GR:COUNTRIES</element>
 			<element variable="kTAG_KIND">
 				<item>:KIND-FEATURE</item>
 				<item>:KIND-SCALE</item>
@@ -319,7 +309,7 @@
     	</NODE>
     	<TAG>
     		<element variable="kTAG_PATH">
-    			<item node="pid">GR:COUNTRIES</item>
+    			<item node="term">GR:COUNTRIES</item>
     		</element>
     	</TAG>
     </UNIT>

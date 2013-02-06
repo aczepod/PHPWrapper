@@ -32,7 +32,6 @@
 			</element>
     	</TERM>
     	<NODE class="COntologyMasterVertex">
-            <element variable="kTAG_PID">FAO-INSTITUTES:INSTCODE</element>
 			<element variable="kTAG_KIND">
 				<item>:KIND-FEATURE</item>
 				<item>:KIND-SCALE</item>
@@ -52,7 +51,7 @@
 		</EDGE>
     	<TAG>
     		<element variable="kTAG_PATH">
-    			<item node="pid">FAO-INSTITUTES:INSTCODE</item>
+    			<item node="term">FAO-INSTITUTES:INSTCODE</item>
     		</element>
     	</TAG>
     </UNIT>
@@ -65,7 +64,6 @@
 			</element>
     	</TERM>
     	<NODE class="COntologyMasterVertex">
-            <element variable="kTAG_PID">FAO-INSTITUTES:ACRONYM</element>
 			<element variable="kTAG_KIND">
 				<item>:KIND-FEATURE</item>
 				<item>:KIND-SCALE</item>
@@ -85,7 +83,7 @@
 		</EDGE>
     	<TAG>
 			<element variable="kTAG_PATH">
-    			<item node="pid">FAO-INSTITUTES:ACRONYM</item>
+    			<item node="term">FAO-INSTITUTES:ACRONYM</item>
 			</element>
     	</TAG>
     </UNIT>
@@ -98,7 +96,6 @@
 			</element>
     	</TERM>
     	<NODE class="COntologyMasterVertex">
-            <element variable="kTAG_PID">FAO-INSTITUTES:ECPACRONYM</element>
 			<element variable="kTAG_KIND">
 				<item>:KIND-FEATURE</item>
 				<item>:KIND-SCALE</item>
@@ -118,7 +115,7 @@
 		</EDGE>
     	<TAG>
 			<element variable="kTAG_PATH">
-    			<item node="pid">FAO-INSTITUTES:ECPACRONYM</item>
+    			<item node="term">FAO-INSTITUTES:ECPACRONYM</item>
 			</element>
     	</TAG>
     </UNIT>
@@ -131,7 +128,6 @@
 			</element>
     	</TERM>
     	<NODE class="COntologyMasterVertex">
-            <element variable="kTAG_PID">FAO-INSTITUTES:FULL_NAME</element>
 			<element variable="kTAG_KIND">
 				<item>:KIND-FEATURE</item>
 				<item>:KIND-SCALE</item>
@@ -151,7 +147,7 @@
 		</EDGE>
     	<TAG>
 			<element variable="kTAG_PATH">
-    			<item node="pid">FAO-INSTITUTES:FULL_NAME</item>
+    			<item node="term">FAO-INSTITUTES:FULL_NAME</item>
 			</element>
     	</TAG>
     </UNIT>
@@ -164,7 +160,6 @@
 			</element>
     	</TERM>
     	<NODE class="COntologyMasterVertex">
-            <element variable="kTAG_PID">FAO-INSTITUTES:TYPE</element>
 			<element variable="kTAG_KIND">
 				<item>:KIND-FEATURE</item>
 				<item>:KIND-SCALE</item>
@@ -184,7 +179,7 @@
 		</EDGE>
     	<TAG>
 			<element variable="kTAG_PATH">
-    			<item node="pid">FAO-INSTITUTES:TYPE</item>
+    			<item node="term">FAO-INSTITUTES:TYPE</item>
 			</element>
     	</TAG>
     </UNIT>
@@ -197,7 +192,6 @@
 			</element>
     	</TERM>
     	<NODE class="COntologyMasterVertex">
-            <element variable="kTAG_PID">FAO-INSTITUTES:PGR_ACTIVITY</element>
 			<element variable="kTAG_DESCRIPTION">
 				<item key="en">Plant genetic resources activity flag implemented as a Y/N switch.</item>
 			</element>
@@ -219,7 +213,7 @@
 		</EDGE>
     	<TAG>
 			<element variable="kTAG_PATH">
-    			<item node="pid">FAO-INSTITUTES:PGR_ACTIVITY</item>
+    			<item node="term">FAO-INSTITUTES:PGR_ACTIVITY</item>
 			</element>
     	</TAG>
     </UNIT>
@@ -232,7 +226,6 @@
 			</element>
     	</TERM>
     	<NODE class="COntologyMasterVertex">
-            <element variable="kTAG_PID">FAO-INSTITUTES:MAINTCOLL</element>
 			<element variable="kTAG_DESCRIPTION">
 				<item key="en">Collection maintenance flag implemented as a Y/N switch, indicates whether the institute maintains a collection.</item>
 			</element>
@@ -254,7 +247,7 @@
 		</EDGE>
     	<TAG>
 			<element variable="kTAG_PATH">
-    			<item node="pid">FAO-INSTITUTES:MAINTCOLL</item>
+    			<item node="term">FAO-INSTITUTES:MAINTCOLL</item>
 			</element>
     	</TAG>
     </UNIT>
@@ -270,7 +263,6 @@
 			</element>
     	</TERM>
     	<NODE class="COntologyMasterVertex">
-            <element variable="kTAG_PID">FAO-INSTITUTES:STREET_POB</element>
 			<element variable="kTAG_KIND">
 				<item>:KIND-FEATURE</item>
 				<item>:KIND-SCALE</item>
@@ -289,7 +281,7 @@
 		</EDGE>
     	<TAG>
 			<element variable="kTAG_PATH">
-    			<item node="pid">FAO-INSTITUTES:STREET_POB</item>
+    			<item node="term">FAO-INSTITUTES:STREET_POB</item>
 			</element>
     	</TAG>
     </UNIT>
@@ -305,7 +297,6 @@
 			</element>
     	</TERM>
     	<NODE class="COntologyMasterVertex">
-            <element variable="kTAG_PID">FAO-INSTITUTES:CITY_STATE</element>
 			<element variable="kTAG_KIND">
 				<item>:KIND-FEATURE</item>
 				<item>:KIND-SCALE</item>
@@ -324,7 +315,7 @@
 		</EDGE>
     	<TAG>
 			<element variable="kTAG_PATH">
-    			<item node="pid">FAO-INSTITUTES:CITY_STATE</item>
+    			<item node="term">FAO-INSTITUTES:CITY_STATE</item>
 			</element>
     	</TAG>
     </UNIT>
@@ -340,7 +331,6 @@
 			</element>
     	</TERM>
     	<NODE class="COntologyMasterVertex">
-            <element variable="kTAG_PID">FAO-INSTITUTES:ZIP_CODE</element>
 			<element variable="kTAG_KIND">
 				<item>:KIND-FEATURE</item>
 				<item>:KIND-SCALE</item>
@@ -359,7 +349,7 @@
 		</EDGE>
     	<TAG>
 			<element variable="kTAG_PATH">
-    			<item node="pid">FAO-INSTITUTES:ZIP_CODE</item>
+    			<item node="term">FAO-INSTITUTES:ZIP_CODE</item>
 			</element>
     	</TAG>
     </UNIT>
@@ -375,7 +365,6 @@
 			</element>
     	</TERM>
     	<NODE class="COntologyMasterVertex">
-            <element variable="kTAG_PID">FAO-INSTITUTES:PHONE</element>
 			<element variable="kTAG_KIND">
 				<item>:KIND-FEATURE</item>
 				<item>:KIND-SCALE</item>
@@ -394,7 +383,7 @@
 		</EDGE>
     	<TAG>
 			<element variable="kTAG_PATH">
-    			<item node="pid">FAO-INSTITUTES:PHONE</item>
+    			<item node="term">FAO-INSTITUTES:PHONE</item>
 			</element>
     	</TAG>
     </UNIT>
@@ -410,7 +399,6 @@
 			</element>
     	</TERM>
     	<NODE class="COntologyMasterVertex">
-            <element variable="kTAG_PID">FAO-INSTITUTES:FAX</element>
 			<element variable="kTAG_KIND">
 				<item>:KIND-FEATURE</item>
 				<item>:KIND-SCALE</item>
@@ -429,7 +417,7 @@
 		</EDGE>
     	<TAG>
 			<element variable="kTAG_PATH">
-    			<item node="pid">FAO-INSTITUTES:FAX</item>
+    			<item node="term">FAO-INSTITUTES:FAX</item>
 			</element>
     	</TAG>
     </UNIT>
@@ -445,7 +433,6 @@
 			</element>
     	</TERM>
     	<NODE class="COntologyMasterVertex">
-            <element variable="kTAG_PID">FAO-INSTITUTES:EMAIL</element>
 			<element variable="kTAG_KIND">
 				<item>:KIND-FEATURE</item>
 				<item>:KIND-SCALE</item>
@@ -464,7 +451,7 @@
 		</EDGE>
     	<TAG>
 			<element variable="kTAG_PATH">
-    			<item node="pid">FAO-INSTITUTES:EMAIL</item>
+    			<item node="term">FAO-INSTITUTES:EMAIL</item>
 			</element>
     	</TAG>
     </UNIT>
@@ -480,7 +467,6 @@
 			</element>
     	</TERM>
     	<NODE class="COntologyMasterVertex">
-            <element variable="kTAG_PID">FAO-INSTITUTES:URL</element>
 			<element variable="kTAG_KIND">
 				<item>:KIND-FEATURE</item>
 				<item>:KIND-SCALE</item>
@@ -499,7 +485,7 @@
 		</EDGE>
     	<TAG>
 			<element variable="kTAG_PATH">
-    			<item node="pid">FAO-INSTITUTES:URL</item>
+    			<item node="term">FAO-INSTITUTES:URL</item>
 			</element>
     	</TAG>
     </UNIT>
@@ -515,7 +501,6 @@
 			</element>
     	</TERM>
     	<NODE class="COntologyMasterVertex">
-            <element variable="kTAG_PID">FAO-INSTITUTES:LATITUDE</element>
 			<element variable="kTAG_KIND">
 				<item>:KIND-FEATURE</item>
 				<item>:KIND-SCALE</item>
@@ -534,7 +519,7 @@
 		</EDGE>
     	<TAG>
 			<element variable="kTAG_PATH">
-    			<item node="pid">FAO-INSTITUTES:LATITUDE</item>
+    			<item node="term">FAO-INSTITUTES:LATITUDE</item>
 			</element>
     	</TAG>
     </UNIT>
@@ -550,7 +535,6 @@
 			</element>
     	</TERM>
     	<NODE class="COntologyMasterVertex">
-            <element variable="kTAG_PID">FAO-INSTITUTES:LONGITUDE</element>
 			<element variable="kTAG_KIND">
 				<item>:KIND-FEATURE</item>
 				<item>:KIND-SCALE</item>
@@ -569,7 +553,7 @@
 		</EDGE>
     	<TAG>
 			<element variable="kTAG_PATH">
-    			<item node="pid">FAO-INSTITUTES:LONGITUDE</item>
+    			<item node="term">FAO-INSTITUTES:LONGITUDE</item>
 			</element>
     	</TAG>
     </UNIT>
@@ -585,7 +569,6 @@
 			</element>
     	</TERM>
     	<NODE class="COntologyMasterVertex">
-            <element variable="kTAG_PID">FAO-INSTITUTES:ALTITUDE</element>
 			<element variable="kTAG_KIND">
 				<item>:KIND-FEATURE</item>
 				<item>:KIND-SCALE</item>
@@ -604,7 +587,7 @@
 		</EDGE>
     	<TAG>
 			<element variable="kTAG_PATH">
-    			<item node="pid">FAO-INSTITUTES:ALTITUDE</item>
+    			<item node="term">FAO-INSTITUTES:ALTITUDE</item>
 			</element>
     	</TAG>
     </UNIT>
@@ -620,7 +603,6 @@
 			</element>
     	</TERM>
     	<NODE class="COntologyMasterVertex">
-            <element variable="kTAG_PID">FAO-INSTITUTES:UPDATED_ON</element>
 			<element variable="kTAG_KIND">
 				<item>:KIND-FEATURE</item>
 				<item>:KIND-SCALE</item>
@@ -642,7 +624,7 @@
 		</EDGE>
     	<TAG>
 			<element variable="kTAG_PATH">
-    			<item node="pid">FAO-INSTITUTES:UPDATED_ON</item>
+    			<item node="term">FAO-INSTITUTES:UPDATED_ON</item>
 			</element>
     	</TAG>
     </UNIT>
@@ -658,7 +640,6 @@
 			</element>
     	</TERM>
     	<NODE class="COntologyMasterVertex">
-            <element variable="kTAG_PID">FAO-INSTITUTES:V_INSTCODE</element>
 			<element variable="kTAG_KIND">
 				<item>:KIND-FEATURE</item>
 				<item>:KIND-SCALE</item>
@@ -676,7 +657,7 @@
 		</EDGE>
     	<TAG>
 			<element variable="kTAG_PATH">
-    			<item node="pid">FAO-INSTITUTES:V_INSTCODE</item>
+    			<item node="term">FAO-INSTITUTES:V_INSTCODE</item>
 			</element>
     	</TAG>
     </UNIT>

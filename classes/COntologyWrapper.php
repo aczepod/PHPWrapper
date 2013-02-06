@@ -2089,9 +2089,6 @@ class COntologyWrapper extends CDataWrapper
 				$cur_query->AppendStatement(
 					CQueryStatement::Equals(
 						kTAG_OBJECT, $item, kTYPE_INT ) );
-echo( '<pre>' );
-print_r( $cur_query );
-exit( '</pre>' );
 				
 				//
 				// Iterate recordset.

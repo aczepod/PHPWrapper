@@ -426,7 +426,6 @@
 	echo( '<hr>' );
 	
 	echo( $x - 1 );
-*/
 	
 	//
 	// Test array_slice.
@@ -468,5 +467,14 @@
 	echo( 'array_slice( $array, NULL, NULL )' );
 	print_r( array_slice( $array, NULL, NULL ) );
 	echo( '</pre>' );
+*/
+	//
+	// Test defines.
+	//
+	define( "pippo", 'pappa' );
+	
+	$x = pippo;
+	$y = ${$x};
+	echo( "[$x] [$y]<br>" );
 	
 ?>

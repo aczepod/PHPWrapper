@@ -7,7 +7,7 @@
 	<title>Class COntology | MyWrapper Reference Documentation</title>
 
 	<script type="text/javascript" src="resources/combined.js?3680114562"></script>
-	<script type="text/javascript" src="elementlist.js?158261224"></script>
+	<script type="text/javascript" src="elementlist.js?128925578"></script>
 	<link rel="stylesheet" type="text/css" media="all" href="resources/style.css?3505392360" />
 
 </head>
@@ -179,7 +179,7 @@ interface for managing ontologies.</p>
 				<b>Author:</b>
 				Milko A. Škofič &lt;<a
 href="mailto:m.skofic&#64;cgiar.org">m.skofic&#64;<!---->cgiar.org</a>&gt;<br />
-		<b>Located at</b> <a href="source-class-COntology.html#277-5730" title="Go to source code">COntology.php</a><br />
+		<b>Located at</b> <a href="source-class-COntology.html#277-5143" title="Go to source code">COntology.php</a><br />
 	</div>
 
 
@@ -593,7 +593,7 @@ schema.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#_LoadXMLOntologyNode">#</a>
-		<code><a href="source-class-COntology.html#1117-1455" title="Go to source code">LoadXMLOntologyNode</a>( <span>Reference <var>&amp; $theCache</var></span>, <span><code><a href="class-CDatabase.html">CDatabase</a></code> <var>$theDatabase</var></span>, <span><code><a href="class-SimpleXMLElement.html">SimpleXMLElement</a></code> <var>$theElement</var></span> )</code>
+		<code><a href="source-class-COntology.html#1117-1539" title="Go to source code">LoadXMLOntologyNode</a>( <span>Reference <var>&amp; $theCache</var></span>, <span><code><a href="class-CDatabase.html">CDatabase</a></code> <var>$theDatabase</var></span>, <span><code><a href="class-SimpleXMLElement.html">SimpleXMLElement</a></code> <var>$theElement</var></span> )</code>
 
 		<div class="description short">
 			
@@ -645,7 +645,7 @@ schema.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#_LoadXMLOntologyEdge">#</a>
-		<code><a href="source-class-COntology.html#1462-1693" title="Go to source code">LoadXMLOntologyEdge</a>( <span>Reference <var>&amp; $theCache</var></span>, <span><code><a href="class-CDatabase.html">CDatabase</a></code> <var>$theDatabase</var></span>, <span><code><a href="class-SimpleXMLElement.html">SimpleXMLElement</a></code> <var>$theElement</var></span> )</code>
+		<code><a href="source-class-COntology.html#1546-1777" title="Go to source code">LoadXMLOntologyEdge</a>( <span>Reference <var>&amp; $theCache</var></span>, <span><code><a href="class-CDatabase.html">CDatabase</a></code> <var>$theDatabase</var></span>, <span><code><a href="class-SimpleXMLElement.html">SimpleXMLElement</a></code> <var>$theElement</var></span> )</code>
 
 		<div class="description short">
 			
@@ -697,7 +697,7 @@ schema.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#_LoadXMLOntologyTag">#</a>
-		<code><a href="source-class-COntology.html#1700-1949" title="Go to source code">LoadXMLOntologyTag</a>( <span>Reference <var>&amp; $theCache</var></span>, <span><code><a href="class-CDatabase.html">CDatabase</a></code> <var>$theDatabase</var></span>, <span><code><a href="class-SimpleXMLElement.html">SimpleXMLElement</a></code> <var>$theElement</var></span> )</code>
+		<code><a href="source-class-COntology.html#1784-2033" title="Go to source code">LoadXMLOntologyTag</a>( <span>Reference <var>&amp; $theCache</var></span>, <span><code><a href="class-CDatabase.html">CDatabase</a></code> <var>$theDatabase</var></span>, <span><code><a href="class-SimpleXMLElement.html">SimpleXMLElement</a></code> <var>$theElement</var></span> )</code>
 
 		<div class="description short">
 			
@@ -749,7 +749,7 @@ schema.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#_ResolveOntologyNode">#</a>
-		<code><a href="source-class-COntology.html#1956-2101" title="Go to source code">ResolveOntologyNode</a>( <span><code><a href="class-CDatabase.html">CDatabase</a></code> <var>$theDatabase</var></span>, <span><code><a href="class-SimpleXMLElement.html">SimpleXMLElement</a></code> <var>$theElement</var></span> )</code>
+		<code><a href="source-class-COntology.html#2040-2185" title="Go to source code">ResolveOntologyNode</a>( <span><code><a href="class-CDatabase.html">CDatabase</a></code> <var>$theDatabase</var></span>, <span><code><a href="class-SimpleXMLElement.html">SimpleXMLElement</a></code> <var>$theElement</var></span> )</code>
 
 		<div class="description short">
 			
@@ -803,56 +803,6 @@ following:</p>
 		</div>
 		</div></td>
 	</tr>
-	<tr data-order="LoadXMLFile" id="_LoadXMLFile">
-
-		<td class="attributes"><code>
-			 public 
-			
-			
-			</code>
-		</td>
-
-		<td class="name"><div>
-		<a class="anchor" href="#_LoadXMLFile">#</a>
-		<code><a href="source-class-COntology.html#2117-2181" title="Go to source code">LoadXMLFile</a>( <span>mixed <var>$theFilePath</var></span> )</code>
-
-		<div class="description short">
-			
-<h4>Load the provided XML file</h4>
-
-		</div>
-
-		<div class="description detailed hidden">
-			
-<h4>Load the provided XML file</h4>
-
-<p>The file features a list of units which contain data for terms, nodes, edges
-and tags. This method allows loading these files into the ontology.</p>
-
-<p>Note that there is no caching performed, so if you reference an object that
-has not yet been loaded the method will fail.</p>
-
-<p>The file path parameter may be either a string or a list of strings.</p>
-
-
-
-				<h4>Parameters</h4>
-				<div class="list"><dl>
-					<dt><var>$theFilePath</var></dt>
-					<dd><code>mixed</code><br>$theFilePath Path to the units file.</dd>
-				</dl></div>
-
-
-				<h4>Throws</h4>
-				<div class="list">
-					<code><code><a href="class-Exception.html">Exception</a></code></code><br />
-				</div>
-
-
-
-		</div>
-		</div></td>
-	</tr>
 	<tr data-order="LoadISOPOFiles" id="_LoadISOPOFiles">
 
 		<td class="attributes"><code>
@@ -864,7 +814,7 @@ has not yet been loaded the method will fail.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#_LoadISOPOFiles">#</a>
-		<code><a href="source-class-COntology.html#2197-2240" title="Go to source code">LoadISOPOFiles</a>( <span>mixed <var>$theFilePath</var></span> )</code>
+		<code><a href="source-class-COntology.html#2201-2235" title="Go to source code">LoadISOPOFiles</a>( )</code>
 
 		<div class="description short">
 			
@@ -885,11 +835,6 @@ categories, it will then decode the PO files and load the information.</p>
 
 
 
-				<h4>Parameters</h4>
-				<div class="list"><dl>
-					<dt><var>$theFilePath</var></dt>
-					<dd><code>mixed</code><br>$theFilePath Path to the ISO categories file.</dd>
-				</dl></div>
 
 
 				<h4>Throws</h4>
@@ -913,7 +858,7 @@ categories, it will then decode the PO files and load the information.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#_SetAllCountries">#</a>
-		<code><a href="source-class-COntology.html#2247-2339" title="Go to source code">SetAllCountries</a>( <span>string <var>$theEnumeration</var></span> )</code>
+		<code><a href="source-class-COntology.html#2242-2334" title="Go to source code">SetAllCountries</a>( <span>string <var>$theEnumeration</var></span> )</code>
 
 		<div class="description short">
 			
@@ -947,193 +892,6 @@ provided enumeration.</p>
 		</div>
 		</div></td>
 	</tr>
-	<tr data-order="_ParseXMLUnit" id="__ParseXMLUnit">
-
-		<td class="attributes"><code>
-			 protected 
-			
-			
-			</code>
-		</td>
-
-		<td class="name"><div>
-		<a class="anchor" href="#__ParseXMLUnit">#</a>
-		<code><a href="source-class-COntology.html#2355-2700" title="Go to source code">_ParseXMLUnit</a>( <span><code><a href="class-CDatabase.html">CDatabase</a></code> <var>$theDatabase</var></span>, <span><code><a href="class-SimpleXMLElement.html">SimpleXMLElement</a></code> <var>$theElement</var></span> )</code>
-
-		<div class="description short">
-			
-<h4>Parse the provided XML unit</h4>
-
-		</div>
-
-		<div class="description detailed hidden">
-			
-<h4>Parse the provided XML unit</h4>
-
-<p>This method will parse the provided XML unit by cycling the following
-structure:</p>
-
-<ul>
-	<li><tt>units</tt>: This tag contains a collection of <tt>unit</tt> elements
-	that represent a group of related <tt>term</tt>, <tt>node</tt>, <tt>edges</tt>
-	and <tt>tag</tt> object definitions.</li>
-
-	<li><tt>term</tt>: The term (single) element may contain two attributes:
-		<ul>
-			<li><tt>ns</tt>: Namespace, it must be the global identifier of the namespace
-			term.</li>
-
-			<li><tt>lid</tt>: Local identifier, this attribute is required.</li>
-		</ul>
-	</li>
-
-	<li><tt>node</tt>: The node (multiple) elements may contain two attributes:
-		<ul>
-			<li><tt>id</tt>: Identifier, it must be the native identifier of the node.</li>
-
-			<li><tt>gid</tt>: Term global identifier, this attribute makes sense only if the
-			node is a master.</li>
-
-			<li><tt>class</tt>: Node class name.</li>
-		</ul>
-		 If the node class is <tt>COntologyAliasVertex</tt>, edge subject or object node
-		references matching alias nodes will link to those alias nodes, this is done by
-		replacing the node reference expressed by a term reference by the actual alias
-		node native identifier. This holds for all the <tt>node</tt> elements in the
-		block.</li>
-
-	<li><tt>edges</tt>: This element contains the following elements:
-		<ul>
-			<li><tt>edge</tt>: The edge element may contain one:
-				<ul>
-					<li><tt>id</tt>: Identifier, it must be the native identifier of the edge.</li>
-				</ul>
-			</li>
-		</ul>
-	</li>
-
-	<li><tt>tag</tt>: This (single) element does not contain attributes.</li>
-
-	<li><tt>element</tt>: Each element of the above elements represents an object
-	property:
-		<ul>
-			<li><tt>id</tt>: Tag identifier, this value represents the tag native
-			identifier.</li>
-
-			<li><tt>gid</tt>: Tag global identifier.</li>
-
-			<li><tt>variable</tt>: Tag variable, this value represents the PHP definition
-			name.</li>
-
-			<li><tt>key</tt>: If this attribute is present, it means that the attribute
-			represents the key of the element, thus it will become an array in which
-			<tt>key</tt> will become the key.</li>
-
-			<li><i>no attribute</i>: this is used by tags to add path elements, if the tag
-			has no elements, it is assumed the tag is to be the current term.</li>
-		</ul>
-	</li>
-
-	<li><tt>item</tt>: Any element that contains one or more of these elements is an
-	array.</li>
-</ul>
-
-<p>This method will parse the provided <tt>unit</tt> element.</p>
-
-
-
-				<h4>Parameters</h4>
-				<div class="list"><dl>
-					<dt><var>$theDatabase</var></dt>
-					<dd><code><code><a href="class-CDatabase.html">CDatabase</a></code></code><br>$theDatabase Database container.</dd>
-					<dt><var>$theElement</var></dt>
-					<dd><code><code><a href="class-SimpleXMLElement.html">SimpleXMLElement</a></code></code><br>$theElement XML element with term data.</dd>
-				</dl></div>
-
-
-				<h4>Throws</h4>
-				<div class="list">
-					<code><code><a href="class-Exception.html">Exception</a></code></code><br />
-				</div>
-
-
-
-		</div>
-		</div></td>
-	</tr>
-	<tr data-order="_ParseXMLElement" id="__ParseXMLElement">
-
-		<td class="attributes"><code>
-			 protected 
-			
-			
-			</code>
-		</td>
-
-		<td class="name"><div>
-		<a class="anchor" href="#__ParseXMLElement">#</a>
-		<code><a href="source-class-COntology.html#2707-2921" title="Go to source code">_ParseXMLElement</a>( <span><code><a href="class-CDatabase.html">CDatabase</a></code> <var>$theDatabase</var></span>, <span><code><a href="class-SimpleXMLElement.html">SimpleXMLElement</a></code> <var>$theElement</var></span>, <span><code><a href="class-CPersistentObject.html">CPersistentObject</a></code> <var>$theObject</var></span> )</code>
-
-		<div class="description short">
-			
-<h4>Parse the provided XML element</h4>
-
-		</div>
-
-		<div class="description detailed hidden">
-			
-<h4>Parse the provided XML element</h4>
-
-<p>This method will parse the provided XML element by cycling the following
-structure:</p>
-
-<ul>
-	<li><tt>element</tt>: Each element represents an object property:
-		<ul>
-			<li><tt>id</tt>: Tag identifier, this value represents the tag native
-			identifier.</li>
-
-			<li><tt>gid</tt>: Tag global identifier.</li>
-
-			<li><tt>variable</tt>: Tag variable, this value represents the PHP definition
-			name.</li>
-
-			<li><tt>key</tt>: If this attribute is present, it means that the attribute
-			represents the key of the element, thus it will become an array in which
-			<tt>key</tt> will become the key.</li>
-		</ul>
-	</li>
-
-	<li><tt>item</tt>: Any element that contains one or more of these elements is an
-	array.</li>
-</ul>
-
-<p>This method will parse the provided element and set the corresponding
-properties into the provided object.</p>
-
-
-
-				<h4>Parameters</h4>
-				<div class="list"><dl>
-					<dt><var>$theDatabase</var></dt>
-					<dd><code><code><a href="class-CDatabase.html">CDatabase</a></code></code><br>$theDatabase Database container.</dd>
-					<dt><var>$theElement</var></dt>
-					<dd><code><code><a href="class-SimpleXMLElement.html">SimpleXMLElement</a></code></code><br>$theElement XML element.</dd>
-					<dt><var>$theObject</var></dt>
-					<dd><code><code><a href="class-CPersistentObject.html">CPersistentObject</a></code></code><br>$theObject Object receiving attributes.</dd>
-				</dl></div>
-
-
-				<h4>Throws</h4>
-				<div class="list">
-					<code><code><a href="class-Exception.html">Exception</a></code></code><br />
-				</div>
-
-
-
-		</div>
-		</div></td>
-	</tr>
 	<tr data-order="_ISODecodePOFiles" id="__ISODecodePOFiles">
 
 		<td class="attributes"><code>
@@ -1145,7 +903,7 @@ properties into the provided object.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#__ISODecodePOFiles">#</a>
-		<code><a href="source-class-COntology.html#2937-3055" title="Go to source code">_ISODecodePOFiles</a>( )</code>
+		<code><a href="source-class-COntology.html#2350-2468" title="Go to source code">_ISODecodePOFiles</a>( )</code>
 
 		<div class="description short">
 			
@@ -1185,7 +943,7 @@ the kISO_FILE_PO_DIR directory the PHP serialised decode array.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#__ISOParseXMLFiles">#</a>
-		<code><a href="source-class-COntology.html#3062-3121" title="Go to source code">_ISOParseXMLFiles</a>( <span><code><a href="class-CDatabase.html">CDatabase</a></code> <var>$theDatabase</var></span> )</code>
+		<code><a href="source-class-COntology.html#2475-2534" title="Go to source code">_ISOParseXMLFiles</a>( <span><code><a href="class-CDatabase.html">CDatabase</a></code> <var>$theDatabase</var></span> )</code>
 
 		<div class="description short">
 			
@@ -1229,7 +987,7 @@ the kISO_FILE_PO_DIR directory the PHP serialised decode array.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#__ISOParse6393XML">#</a>
-		<code><a href="source-class-COntology.html#3128-3568" title="Go to source code">_ISOParse6393XML</a>( <span><code><a href="class-CDatabase.html">CDatabase</a></code> <var>$theDatabase</var></span> )</code>
+		<code><a href="source-class-COntology.html#2541-2981" title="Go to source code">_ISOParse6393XML</a>( <span><code><a href="class-CDatabase.html">CDatabase</a></code> <var>$theDatabase</var></span> )</code>
 
 		<div class="description short">
 			
@@ -1299,7 +1057,7 @@ the kISO_FILE_PO_DIR directory the PHP serialised decode array.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#__ISOParse639XML">#</a>
-		<code><a href="source-class-COntology.html#3575-4040" title="Go to source code">_ISOParse639XML</a>( <span><code><a href="class-CDatabase.html">CDatabase</a></code> <var>$theDatabase</var></span> )</code>
+		<code><a href="source-class-COntology.html#2988-3453" title="Go to source code">_ISOParse639XML</a>( <span><code><a href="class-CDatabase.html">CDatabase</a></code> <var>$theDatabase</var></span> )</code>
 
 		<div class="description short">
 			
@@ -1362,7 +1120,7 @@ the kISO_FILE_PO_DIR directory the PHP serialised decode array.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#__ISOParse31661XML">#</a>
-		<code><a href="source-class-COntology.html#4047-4412" title="Go to source code">_ISOParse31661XML</a>( <span><code><a href="class-CDatabase.html">CDatabase</a></code> <var>$theDatabase</var></span> )</code>
+		<code><a href="source-class-COntology.html#3460-3825" title="Go to source code">_ISOParse31661XML</a>( <span><code><a href="class-CDatabase.html">CDatabase</a></code> <var>$theDatabase</var></span> )</code>
 
 		<div class="description short">
 			
@@ -1426,7 +1184,7 @@ the kISO_FILE_PO_DIR directory the PHP serialised decode array.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#__ISOParse31663XML">#</a>
-		<code><a href="source-class-COntology.html#4419-4779" title="Go to source code">_ISOParse31663XML</a>( <span><code><a href="class-CDatabase.html">CDatabase</a></code> <var>$theDatabase</var></span> )</code>
+		<code><a href="source-class-COntology.html#3832-4192" title="Go to source code">_ISOParse31663XML</a>( <span><code><a href="class-CDatabase.html">CDatabase</a></code> <var>$theDatabase</var></span> )</code>
 
 		<div class="description short">
 			
@@ -1491,7 +1249,7 @@ the kISO_FILE_PO_DIR directory the PHP serialised decode array.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#__ISOParse31662XML">#</a>
-		<code><a href="source-class-COntology.html#4786-5055" title="Go to source code">_ISOParse31662XML</a>( <span><code><a href="class-CDatabase.html">CDatabase</a></code> <var>$theDatabase</var></span> )</code>
+		<code><a href="source-class-COntology.html#4199-4468" title="Go to source code">_ISOParse31662XML</a>( <span><code><a href="class-CDatabase.html">CDatabase</a></code> <var>$theDatabase</var></span> )</code>
 
 		<div class="description short">
 			
@@ -1554,7 +1312,7 @@ the kISO_FILE_PO_DIR directory the PHP serialised decode array.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#__ISOParse4217XML">#</a>
-		<code><a href="source-class-COntology.html#5062-5429" title="Go to source code">_ISOParse4217XML</a>( <span><code><a href="class-CDatabase.html">CDatabase</a></code> <var>$theDatabase</var></span> )</code>
+		<code><a href="source-class-COntology.html#4475-4842" title="Go to source code">_ISOParse4217XML</a>( <span><code><a href="class-CDatabase.html">CDatabase</a></code> <var>$theDatabase</var></span> )</code>
 
 		<div class="description short">
 			
@@ -1615,7 +1373,7 @@ the kISO_FILE_PO_DIR directory the PHP serialised decode array.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#__ISOParse15924XML">#</a>
-		<code><a href="source-class-COntology.html#5436-5643" title="Go to source code">_ISOParse15924XML</a>( <span><code><a href="class-CDatabase.html">CDatabase</a></code> <var>$theDatabase</var></span> )</code>
+		<code><a href="source-class-COntology.html#4849-5056" title="Go to source code">_ISOParse15924XML</a>( <span><code><a href="class-CDatabase.html">CDatabase</a></code> <var>$theDatabase</var></span> )</code>
 
 		<div class="description short">
 			
@@ -1670,7 +1428,7 @@ the kISO_FILE_PO_DIR directory the PHP serialised decode array.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#__ISOCollectLanguageStrings">#</a>
-		<code><a href="source-class-COntology.html#5650-5726" title="Go to source code">_ISOCollectLanguageStrings</a>( <span><code><a href="class-CPersistentObject.html">CPersistentObject</a></code> <var>$theObject</var></span>, <span>string <var>$theFile</var></span>, <span>array <var>$theTags</var></span> )</code>
+		<code><a href="source-class-COntology.html#5063-5139" title="Go to source code">_ISOCollectLanguageStrings</a>( <span><code><a href="class-CPersistentObject.html">CPersistentObject</a></code> <var>$theObject</var></span>, <span>string <var>$theFile</var></span>, <span>array <var>$theTags</var></span> )</code>
 
 		<div class="description short">
 			
