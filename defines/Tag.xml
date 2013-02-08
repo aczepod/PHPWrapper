@@ -153,9 +153,7 @@
                 <item>:TEXT</item>
                 <item>:ARRAY</item>
             </element>
-            <element variable="kTAG_INPUT">
-                <item>:INPUT-TEXT</item>
-            </element>
+            <element variable="kTAG_INPUT">:INPUT-TEXT</element>
         </NODE>
         <EDGE master="false">
             <element variable="kTAG_SUBJECT" node="pid">:_tags.:SYNONYMS</element>
@@ -176,9 +174,7 @@
                 <item>:TEXT</item>
                 <item>:ARRAY</item>
             </element>
-            <element variable="kTAG_INPUT">
-                <item>:INPUT-CHOICE</item>
-            </element>
+            <element variable="kTAG_INPUT">:INPUT-CHOICE</element>
         </NODE>
         <EDGE master="false">
             <element variable="kTAG_SUBJECT" node="pid">:_tags.:INPUT</element>
@@ -198,9 +194,7 @@
             <element variable="kTAG_TYPE">
                 <item>:TEXT</item>
             </element>
-            <element variable="kTAG_INPUT">
-                <item>:INPUT-TEXT</item>
-            </element>
+            <element variable="kTAG_INPUT">:INPUT-TEXT</element>
         </NODE>
         <EDGE master="false">
             <element variable="kTAG_SUBJECT" node="pid">:_tags.:PATTERN</element>
@@ -220,9 +214,7 @@
             <element variable="kTAG_TYPE">
                 <item>:INT</item>
             </element>
-            <element variable="kTAG_INPUT">
-                <item>:INPUT-TEXT</item>
-            </element>
+            <element variable="kTAG_INPUT">:INPUT-TEXT</element>
         </NODE>
         <EDGE master="false">
             <element variable="kTAG_SUBJECT" node="pid">:_tags.:LENGTH</element>
@@ -242,9 +234,7 @@
             <element variable="kTAG_TYPE">
                 <item>:INT</item>
             </element>
-            <element variable="kTAG_INPUT">
-                <item>:INPUT-TEXT</item>
-            </element>
+            <element variable="kTAG_INPUT">:INPUT-TEXT</element>
         </NODE>
         <EDGE master="false">
             <element variable="kTAG_SUBJECT" node="pid">:_tags.:MIN-VAL</element>
@@ -264,9 +254,7 @@
             <element variable="kTAG_TYPE">
                 <item>:INT</item>
             </element>
-            <element variable="kTAG_INPUT">
-                <item>:INPUT-TEXT</item>
-            </element>
+            <element variable="kTAG_INPUT">:INPUT-TEXT</element>
         </NODE>
         <EDGE master="false">
             <element variable="kTAG_SUBJECT" node="pid">:_tags.:MAX-VAL</element>
@@ -287,9 +275,7 @@
                 <item>:TEXT</item>
                 <item>:ARRAY</item>
             </element>
-            <element variable="kTAG_INPUT">
-                <item>:INPUT-TEXTAREA</item>
-            </element>
+            <element variable="kTAG_INPUT">:INPUT-TEXTAREA</element>
         </NODE>
         <EDGE master="false">
             <element variable="kTAG_SUBJECT" node="pid">:_tags.:EXAMPLES</element>

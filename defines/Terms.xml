@@ -27,9 +27,7 @@
                 <item>:TEXT</item>
                 <item>:REQUIRED</item>
             </element>
-            <element variable="kTAG_INPUT">
-                <item>:INPUT-TEXT</item>
-            </element>
+            <element variable="kTAG_INPUT">:INPUT-TEXT</element>
         </TAG>
     </UNIT>
     
@@ -57,9 +55,7 @@
                 <item>:COMPUTED</item>
                 <item>:LOCKED</item>
             </element>
-            <element variable="kTAG_INPUT">
-                <item>:INPUT-TEXT</item>
-            </element>
+            <element variable="kTAG_INPUT">:INPUT-TEXT</element>
         </TAG>
     </UNIT>
     
@@ -136,9 +132,7 @@
                 <item>:TEXT</item>
                 <item>:ARRAY</item>
             </element>
-            <element variable="kTAG_INPUT">
-                <item>:INPUT-TEXT</item>
-            </element>
+            <element variable="kTAG_INPUT">:INPUT-TEXT</element>
         </TAG>
     </UNIT>
     
@@ -166,9 +160,7 @@
                 <item>:TEXT</item>
                 <item>:ARRAY</item>
             </element>
-            <element variable="kTAG_INPUT">
-                <item>:INPUT-TEXT</item>
-            </element>
+            <element variable="kTAG_INPUT">:INPUT-TEXT</element>
         </TAG>
     </UNIT>
     
@@ -193,9 +185,7 @@
             <element variable="kTAG_TYPE">
                 <item>:SET</item>
             </element>
-            <element variable="kTAG_INPUT">
-                <item>:INPUT-MULTIPLE</item>
-            </element>
+            <element variable="kTAG_INPUT">:INPUT-MULTIPLE</element>
         </TAG>
     </UNIT>
     
@@ -220,9 +210,7 @@
             <element variable="kTAG_TYPE">
                 <item>:SET</item>
             </element>
-            <element variable="kTAG_INPUT">
-                <item>:INPUT-MULTIPLE</item>
-            </element>
+            <element variable="kTAG_INPUT">:INPUT-MULTIPLE</element>
         </TAG>
     </UNIT>
     
@@ -274,9 +262,7 @@
                 <item>:REF-TERM</item>
                 <item>:BINARY</item>
             </element>
-            <element variable="kTAG_INPUT">
-                <item>:INPUT-TEXT</item>
-            </element>
+            <element variable="kTAG_INPUT">:INPUT-TEXT</element>
         </TAG>
     </UNIT>
     
@@ -301,11 +287,9 @@
                 <item>:INPUT</item>
             </element>
             <element variable="kTAG_TYPE">
-                <item>:SET</item>
+                <item>:ENUM</item>
             </element>
-            <element variable="kTAG_INPUT">
-                <item>:INPUT-MULTIPLE</item>
-            </element>
+            <element variable="kTAG_INPUT">:INPUT-CHOICE</element>
         </TAG>
     </UNIT>
     
@@ -330,9 +314,7 @@
             <element variable="kTAG_TYPE">
                 <item>:TEXT</item>
             </element>
-            <element variable="kTAG_INPUT">
-                <item>:INPUT-TEXT</item>
-            </element>
+            <element variable="kTAG_INPUT">:INPUT-TEXT</element>
         </TAG>
     </UNIT>
     
@@ -357,9 +339,7 @@
             <element variable="kTAG_TYPE">
                 <item>:INT</item>
             </element>
-            <element variable="kTAG_INPUT">
-                <item>:INPUT-TEXT</item>
-            </element>
+            <element variable="kTAG_INPUT">:INPUT-TEXT</element>
         </TAG>
     </UNIT>
     
@@ -384,9 +364,7 @@
             <element variable="kTAG_TYPE">
                 <item>:INT</item>
             </element>
-            <element variable="kTAG_INPUT">
-                <item>:INPUT-TEXT</item>
-            </element>
+            <element variable="kTAG_INPUT">:INPUT-TEXT</element>
         </TAG>
     </UNIT>
     
@@ -411,9 +389,7 @@
             <element variable="kTAG_TYPE">
                 <item>:INT</item>
             </element>
-            <element variable="kTAG_INPUT">
-                <item>:INPUT-TEXT</item>
-            </element>
+            <element variable="kTAG_INPUT">:INPUT-TEXT</element>
         </TAG>
     </UNIT>
     
@@ -440,9 +416,7 @@
             <element variable="kTAG_TYPE">
                 <item>:LSTRING</item>
             </element>
-            <element variable="kTAG_INPUT">
-                <item>:INPUT-TEXT</item>
-            </element>
+            <element variable="kTAG_INPUT">:INPUT-TEXT</element>
         </TAG>
     </UNIT>
     
@@ -467,9 +441,7 @@
             <element variable="kTAG_TYPE">
                 <item>:LSTRING</item>
             </element>
-            <element variable="kTAG_INPUT">
-                <item>:INPUT-TEXTAREA</item>
-            </element>
+            <element variable="kTAG_INPUT">:INPUT-TEXTAREA</element>
         </TAG>
     </UNIT>
     
@@ -494,9 +466,7 @@
             <element variable="kTAG_TYPE">
                 <item>:LSTRING</item>
             </element>
-            <element variable="kTAG_INPUT">
-                <item>:INPUT-TEXTAREA</item>
-            </element>
+            <element variable="kTAG_INPUT">:INPUT-TEXTAREA</element>
         </TAG>
     </UNIT>
     
@@ -521,9 +491,7 @@
             <element variable="kTAG_TYPE">
                 <item>:TEXT</item>
             </element>
-            <element variable="kTAG_INPUT">
-                <item>:INPUT-TEXTAREA</item>
-            </element>
+            <element variable="kTAG_INPUT">:INPUT-TEXTAREA</element>
         </TAG>
     </UNIT>
     
@@ -549,9 +517,7 @@
                 <item>:TEXT</item>
                 <item>:ARRAY</item>
             </element>
-            <element variable="kTAG_INPUT">
-                <item>:INPUT-TEXTAREA</item>
-            </element>
+            <element variable="kTAG_INPUT">:INPUT-TEXTAREA</element>
         </TAG>
     </UNIT>
     
@@ -579,9 +545,7 @@
                 <item>:TEXT</item>
                 <item>:ARRAY</item>
             </element>
-            <element variable="kTAG_INPUT">
-                <item>:INPUT-TEXT</item>
-            </element>
+            <element variable="kTAG_INPUT">:INPUT-TEXT</element>
         </TAG>
     </UNIT>
     
@@ -607,9 +571,7 @@
                 <item>:TEXT</item>
                 <item>:ARRAY</item>
             </element>
-            <element variable="kTAG_INPUT">
-                <item>:INPUT-TEXT</item>
-            </element>
+            <element variable="kTAG_INPUT">:INPUT-TEXT:INPUT-TEXT</element>
         </TAG>
     </UNIT>
     
@@ -635,9 +597,7 @@
                 <item>:TEXT</item>
                 <item>:ARRAY</item>
             </element>
-            <element variable="kTAG_INPUT">
-                <item>:INPUT-TEXT</item>
-            </element>
+            <element variable="kTAG_INPUT">:INPUT-TEXT</element>
         </TAG>
     </UNIT>
     
@@ -666,9 +626,7 @@
                 <item>:BINARY</item>
                 <item>:RESTRICTED</item>
             </element>
-            <element variable="kTAG_INPUT">
-                <item>:INPUT-TEXT</item>
-            </element>
+            <element variable="kTAG_INPUT">:INPUT-TEXT</element>
         </TAG>
     </UNIT>
     
@@ -695,9 +653,7 @@
                 <item>:INT</item>
                 <item>:RESTRICTED</item>
             </element>
-            <element variable="kTAG_INPUT">
-                <item>:INPUT-TEXT</item>
-            </element>
+            <element variable="kTAG_INPUT">:INPUT-TEXT</element>
         </TAG>
     </UNIT>
     
@@ -725,9 +681,7 @@
                 <item>:REQUIRED</item>
                 <item>:RESTRICTED</item>
             </element>
-            <element variable="kTAG_INPUT">
-                <item>:INPUT-TEXT</item>
-            </element>
+            <element variable="kTAG_INPUT">:INPUT-TEXT</element>
         </TAG>
     </UNIT>
     
@@ -755,9 +709,7 @@
                 <item>:REQUIRED</item>
                 <item>:RESTRICTED</item>
             </element>
-            <element variable="kTAG_INPUT">
-                <item>:INPUT-TEXT</item>
-            </element>
+            <element variable="kTAG_INPUT">:INPUT-TEXT</element>
         </TAG>
     </UNIT>
     
@@ -785,9 +737,7 @@
                 <item>:REQUIRED</item>
                 <item>:RESTRICTED</item>
             </element>
-            <element variable="kTAG_INPUT">
-                <item>:INPUT-TEXT</item>
-            </element>
+            <element variable="kTAG_INPUT">:INPUT-TEXT</element>
         </TAG>
     </UNIT>
     
@@ -1013,9 +963,7 @@
                 <item>:TEXT</item>
                 <item>:REQUIRED</item>
             </element>
-            <element variable="kTAG_INPUT">
-                <item>:INPUT-TEXT</item>
-            </element>
+            <element variable="kTAG_INPUT">:INPUT-TEXT</element>
         </TAG>
     </UNIT>
     
@@ -1041,9 +989,7 @@
                 <item>:TEXT</item>
                 <item>:REQUIRED</item>
             </element>
-            <element variable="kTAG_INPUT">
-                <item>:INPUT-TEXT</item>
-            </element>
+            <element variable="kTAG_INPUT">:INPUT-TEXT</element>
         </TAG>
     </UNIT>
     
@@ -1069,9 +1015,7 @@
                 <item>:TEXT</item>
                 <item>:REQUIRED</item>
             </element>
-            <element variable="kTAG_INPUT">
-                <item>:INPUT-TEXT</item>
-            </element>
+            <element variable="kTAG_INPUT">:INPUT-TEXT</element>
         </TAG>
     </UNIT>
     
@@ -1097,9 +1041,7 @@
                 <item>:TEXT</item>
                 <item>:REQUIRED</item>
             </element>
-            <element variable="kTAG_INPUT">
-                <item>:INPUT-TEXT</item>
-            </element>
+            <element variable="kTAG_INPUT">:INPUT-TEXT</element>
         </TAG>
     </UNIT>
     
@@ -1126,9 +1068,7 @@
                 <item>:ARRAY</item>
                 <item>:REQUIRED</item>
             </element>
-            <element variable="kTAG_INPUT">
-                <item>:INPUT-MULTIPLE</item>
-            </element>
+            <element variable="kTAG_INPUT">:INPUT-MULTIPLE</element>
         </TAG>
     </UNIT>
     
@@ -1154,9 +1094,7 @@
                 <item>:TEXT</item>
                 <item>:ARRAY</item>
             </element>
-            <element variable="kTAG_INPUT">
-                <item>:INPUT-MULTIPLE</item>
-            </element>
+            <element variable="kTAG_INPUT">:INPUT-MULTIPLE</element>
         </TAG>
     </UNIT>
     
@@ -1208,9 +1146,7 @@
                 <item>:TEXT</item>
                 <item>:ARRAY</item>
             </element>
-            <element variable="kTAG_INPUT">
-                <item>:INPUT-MULTIPLE</item>
-            </element>
+            <element variable="kTAG_INPUT">:INPUT-MULTIPLE</element>
         </TAG>
     </UNIT>
     

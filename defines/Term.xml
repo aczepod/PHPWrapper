@@ -64,9 +64,7 @@
                 <item>:COMPUTED</item>
                 <item>:REQUIRED</item>
             </element>
-            <element variable="kTAG_INPUT">
-                <item>:INPUT-TEXT</item>
-            </element>
+            <element variable="kTAG_INPUT">:INPUT-TEXT</element>
             <element variable="kTAG_DESCRIPTION">
                 <item key="en"><![CDATA[The <i>global identifier</i> of a term is computed by <i>concatenating</i> the eventual <i>namespace</i> term's <i>global identifier</i> to the current object's <i>local identifier</i>, separated by a <i>colon</i>. If the namespace is missing, the global identifier will be the local identifier.]]></item>
             </element>
@@ -113,9 +111,7 @@
                 <item>:COMPUTED</item>
                 <item>:RESTRICTED</item>
             </element>
-            <element variable="kTAG_INPUT">
-                <item>:INPUT-TEXT</item>
-            </element>
+            <element variable="kTAG_INPUT">:INPUT-TEXT</element>
             <element variable="kTAG_DESCRIPTION">
                 <item key="en"><![CDATA[The <i>term</i> is a <i>reference</i> to the <i>term object</i> which <i>holds the current term's attributes</i>. This is used by enumerated terms when there are several versions which resolve to the same object, in that case, to prevent duplicating these attributes, the <i>alias term</i> will <i>point to the master term<(i> through this property.]]></item>
             </element>
@@ -139,9 +135,7 @@
                 <item>:TEXT</item>
                 <item>:REQUIRED</item>
             </element>
-            <element variable="kTAG_INPUT">
-                <item>:INPUT-TEXT</item>
-            </element>
+            <element variable="kTAG_INPUT">:INPUT-TEXT</element>
         </NODE>
         <EDGE master="false">
             <element variable="kTAG_SUBJECT" node="pid">:_terms.:LID</element>
@@ -163,9 +157,7 @@
                 <item>:BINARY</item>
                 <item>:RESTRICTED</item>
             </element>
-            <element variable="kTAG_INPUT">
-                <item>:INPUT-TEXT</item>
-            </element>
+            <element variable="kTAG_INPUT">:INPUT-TEXT</element>
         </NODE>
         <EDGE master="false">
             <element variable="kTAG_SUBJECT" node="pid">:_terms.:NAMESPACE</element>
@@ -186,9 +178,7 @@
                 <item>:TEXT</item>
                 <item>:ARRAY</item>
             </element>
-            <element variable="kTAG_INPUT">
-                <item>:INPUT-TEXT</item>
-            </element>
+            <element variable="kTAG_INPUT">:INPUT-TEXT</element>
         </NODE>
         <EDGE master="false">
             <element variable="kTAG_SUBJECT" node="pid">:_terms.:SYNONYMS</element>
@@ -209,9 +199,7 @@
                 <item>:TEXT</item>
                 <item>:ARRAY</item>
             </element>
-            <element variable="kTAG_INPUT">
-                <item>:INPUT-TEXT</item>
-            </element>
+            <element variable="kTAG_INPUT">:INPUT-TEXT</element>
         </NODE>
         <EDGE master="false">
             <element variable="kTAG_SUBJECT" node="pid">:_terms.:CATEGORY</element>
@@ -231,9 +219,7 @@
             <element variable="kTAG_TYPE">
                <item>:SET</item>
             </element>
-            <element variable="kTAG_INPUT">
-                <item>:INPUT-MULTIPLE</item>
-            </element>
+            <element variable="kTAG_INPUT">:INPUT-MULTIPLE</element>
             <element variable="kTAG_DESCRIPTION">
                 <item key="en"><![CDATA[The <i>kind</i> is a <i>set of qualifiers</i> that determine the <i>kind of the current term</i>.]]></item>
             </element>
@@ -272,9 +258,7 @@
             <element variable="kTAG_TYPE">
             	<item>:SET</item>
             </element>
-            <element variable="kTAG_INPUT">
-                <item>:INPUT-MULTIPLE</item>
-            </element>
+            <element variable="kTAG_INPUT">:INPUT-MULTIPLE</element>
             <element variable="kTAG_DESCRIPTION">
                 <item key="en"><![CDATA[The <i>type</i> is a <i>set of qualifiers</i> that determine the <i>type of the current term</i>.]]></item>
             </element>
@@ -297,9 +281,7 @@
             <element variable="kTAG_TYPE">
                 <item>:LSTRING</item>
             </element>
-            <element variable="kTAG_INPUT">
-                <item>:INPUT-TEXT</item>
-            </element>
+            <element variable="kTAG_INPUT">:INPUT-TEXT</element>
         </NODE>
         <EDGE master="false">
             <element variable="kTAG_SUBJECT" node="pid">:_terms.:LABEL</element>
@@ -319,9 +301,7 @@
             <element variable="kTAG_TYPE">
                 <item>:LSTRING</item>
             </element>
-            <element variable="kTAG_INPUT">
-                <item>:INPUT-TEXTAREA</item>
-            </element>
+            <element variable="kTAG_INPUT">:INPUT-TEXTAREA</element>
         </NODE>
         <EDGE master="false">
             <element variable="kTAG_SUBJECT" node="pid">:_terms.:DEFINITION</element>

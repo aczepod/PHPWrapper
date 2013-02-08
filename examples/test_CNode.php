@@ -436,8 +436,8 @@ try
 	$node0->Kind( "kind2", TRUE );
 	echo( '<h5>$node0->Type( array( "type1", "type2" ), TRUE );</h5>' );
 	$node0->Type( array( "type1", "type2" ), TRUE );
-	echo( '<h5>$node0->Input( array( kINPUT_CHOICE, kINPUT_RADIO ), TRUE );</h5>' );
-	$node0->Input( array( kINPUT_CHOICE, kINPUT_RADIO ), TRUE );
+	echo( '<h5>$node0->Input( kINPUT_CHOICE );</h5>' );
+	$node0->Input( array( kINPUT_CHOICE );
 	echo( '<h5>$node0->Pattern( "[A-Z]+" );</h5>' );
 	$node0->Pattern( "[A-Z]+" );
 	echo( '<h5>$node0->Length( 24 );</h5>' );

@@ -131,9 +131,7 @@
                 <item>:COMPUTED</item>
                 <item>:RESTRICTED</item>
             </element>
-            <element variable="kTAG_INPUT">
-                <item>:INPUT-TEXT</item>
-            </element>
+            <element variable="kTAG_INPUT">:INPUT-TEXT</element>
         </NODE>
         <EDGE master="false">
             <element variable="kTAG_SUBJECT" node="pid">:_edges.:SUBJECT</element>
@@ -157,9 +155,7 @@
                 <item>:REQUIRED</item>
                 <item>:RESTRICTED</item>
             </element>
-            <element variable="kTAG_INPUT">
-                <item>:INPUT-TEXT</item>
-            </element>
+            <element variable="kTAG_INPUT">:INPUT-TEXT</element>
         </NODE>
         <EDGE master="false">
             <element variable="kTAG_SUBJECT" node="pid">:_edges.:PREDICATE</element>
@@ -183,9 +179,7 @@
                 <item>:COMPUTED</item>
                 <item>:RESTRICTED</item>
             </element>
-            <element variable="kTAG_INPUT">
-                <item>:INPUT-TEXT</item>
-            </element>
+            <element variable="kTAG_INPUT">:INPUT-TEXT</element>
         </NODE>
         <EDGE master="false">
             <element variable="kTAG_SUBJECT" node="pid">:_edges.:OBJECT</element>
@@ -232,9 +226,7 @@
                 <item>:COMPUTED</item>
                 <item>:LOCKED</item>
             </element>
-            <element variable="kTAG_INPUT">
-                <item>:INPUT-TEXT</item>
-            </element>
+            <element variable="kTAG_INPUT">:INPUT-TEXT</element>
             <element variable="kTAG_DESCRIPTION">
                 <item key="en"><![CDATA[The <i>persistent identifier</i> of an edge is the string representation of the edge's path, it is the <i>path elements global identifiers</i> separated by a slash. This attribute can be useful to debug edges.]]></item>
             </element>

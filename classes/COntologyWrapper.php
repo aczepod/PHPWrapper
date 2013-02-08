@@ -111,7 +111,8 @@ class COntologyWrapper extends CDataWrapper
 	 * @var array
 	 */
 	 static $sParameterList = array( kAPI_LANGUAGE, kAPI_PREDICATE,
-	 								 kAPI_RELATION, kAPI_SUBQUERY );
+	 								 kAPI_RELATION, kAPI_SUBQUERY,
+	 								 kAPI_REL_FROM, kAPI_REL_TO, kAPI_REL_MIRROR );
 
 		
 
@@ -145,6 +146,9 @@ class COntologyWrapper extends CDataWrapper
 	 * @uses _ParsePredicate()
 	 * @uses _ParseRelation()
 	 * @uses _ParseSubquery()
+	 * @uses _ParseRelSubject()
+	 * @uses _ParseRelObject()
+	 * @uses _ParseRelMirror()
 	 */
 	protected function _ParseRequest()
 	{
@@ -160,6 +164,9 @@ class COntologyWrapper extends CDataWrapper
 		$this->_ParsePredicate();
 		$this->_ParseRelation();
 		$this->_ParseSubquery();
+		$this->_ParseRelSubject();
+		$this->_ParseRelObject();
+		$this->_ParseRelMirror();
 	
 	} // _ParseRequest.
 
@@ -181,6 +188,9 @@ class COntologyWrapper extends CDataWrapper
 	 * @uses _FormatPredicate()
 	 * @uses _FormatRelation()
 	 * @uses _FormatSubquery()
+	 * @uses _FormatRelSubject()
+	 * @uses _FormatRelObject()
+	 * @uses _FormatRelMirror()
 	 */
 	protected function _FormatRequest()
 	{
@@ -196,6 +206,9 @@ class COntologyWrapper extends CDataWrapper
 		$this->_FormatPredicate();
 		$this->_FormatRelation();
 		$this->_FormatSubquery();
+		$this->_FormatRelSubject();
+		$this->_FormatRelObject();
+		$this->_FormatRelMirror();
 	
 	} // _FormatRequest.
 
@@ -219,6 +232,9 @@ class COntologyWrapper extends CDataWrapper
 	 * @uses _ValidatePredicate()
 	 * @uses _ValidateRelation()
 	 * @uses _ValidateSubquery()
+	 * @uses _ValidateRelSubject()
+	 * @uses _ValidateRelObject()
+	 * @uses _ValidateRelMirror()
 	 */
 	protected function _ValidateRequest()
 	{
@@ -234,6 +250,9 @@ class COntologyWrapper extends CDataWrapper
 		$this->_ValidatePredicate();
 		$this->_ValidateRelation();
 		$this->_ValidateSubquery();
+		$this->_ValidateRelSubject();
+		$this->_ValidateRelObject();
+		$this->_ValidateRelMirror();
 	
 	} // _ValidateRequest.
 
@@ -413,6 +432,21 @@ class COntologyWrapper extends CDataWrapper
 				if( array_key_exists( kAPI_SELECT, $_REQUEST ) )
 					unset( $_REQUEST[ kAPI_SELECT ] );
 
+			case kAPI_OP_RelateTo:
+				//
+				// Remove fields selection.
+				//
+				if( array_key_exists( kAPI_SELECT, $_REQUEST ) )
+					unset( $_REQUEST[ kAPI_SELECT ] );
+				
+				//
+				// Remove sort selection.
+				//
+				if( array_key_exists( kAPI_SORT, $_REQUEST ) )
+					unset( $_REQUEST[ kAPI_SORT ] );
+
+				break;
+
 			case kAPI_OP_GetEnums:
 				//
 				// Remove fields selection.
@@ -551,6 +585,96 @@ class COntologyWrapper extends CDataWrapper
 	
 	} // _ParseSubquery.
 
+	 
+	/*===================================================================================
+	 *	_ParseRelSubject																*
+	 *==================================================================================*/
+
+	/**
+	 * Parse relationship subject.
+	 *
+	 * This method will copy the relationship subject to the request block.
+	 *
+	 * @access protected
+	 *
+	 * @uses _OffsetManage()
+	 *
+	 * @see kAPI_REL_FROM kAPI_REQUEST
+	 */
+	protected function _ParseRelSubject()
+	{
+		//
+		// Handle query.
+		//
+		if( array_key_exists( kAPI_REL_FROM, $_REQUEST ) )
+		{
+			if( $this->offsetExists( kAPI_REQUEST ) )
+				$this->_OffsetManage
+					( kAPI_REQUEST, kAPI_REL_FROM, $_REQUEST[ kAPI_REL_FROM ] );
+		}
+	
+	} // _ParseRelSubject.
+
+	 
+	/*===================================================================================
+	 *	_ParseRelObject																	*
+	 *==================================================================================*/
+
+	/**
+	 * Parse relationship object.
+	 *
+	 * This method will copy the relationship object to the request block.
+	 *
+	 * @access protected
+	 *
+	 * @uses _OffsetManage()
+	 *
+	 * @see kAPI_REL_TO kAPI_REQUEST
+	 */
+	protected function _ParseRelObject()
+	{
+		//
+		// Handle query.
+		//
+		if( array_key_exists( kAPI_REL_TO, $_REQUEST ) )
+		{
+			if( $this->offsetExists( kAPI_REQUEST ) )
+				$this->_OffsetManage
+					( kAPI_REQUEST, kAPI_REL_TO, $_REQUEST[ kAPI_REL_TO ] );
+		}
+	
+	} // _ParseRelObject.
+
+	 
+	/*===================================================================================
+	 *	_ParseRelMirror																	*
+	 *==================================================================================*/
+
+	/**
+	 * Parse relationship master mirror switch.
+	 *
+	 * This method will copy the relationship master mirror switch to the request block.
+	 *
+	 * @access protected
+	 *
+	 * @uses _OffsetManage()
+	 *
+	 * @see kAPI_REL_MIRROR kAPI_REQUEST
+	 */
+	protected function _ParseRelMirror()
+	{
+		//
+		// Handle query.
+		//
+		if( array_key_exists( kAPI_REL_MIRROR, $_REQUEST ) )
+		{
+			if( $this->offsetExists( kAPI_REQUEST ) )
+				$this->_OffsetManage
+					( kAPI_REQUEST, kAPI_REL_MIRROR, $_REQUEST[ kAPI_REL_MIRROR ] );
+		}
+	
+	} // _ParseRelMirror.
+
 		
 
 /*=======================================================================================
@@ -655,6 +779,87 @@ class COntologyWrapper extends CDataWrapper
 	 * @see kAPI_SUBQUERY
 	 */
 	protected function _FormatSubquery()												   {}
+
+	 
+	/*===================================================================================
+	 *	_FormatRelSubject																*
+	 *==================================================================================*/
+
+	/**
+	 * Format relationship subject.
+	 *
+	 * The main duty of this method is to format the provided relationship subject. This
+	 * parameter will be provided as a node native identifier.
+	 *
+	 * In this class we do nothing, derived classes may overload this method before it gets
+	 * validated.
+	 *
+	 * @access protected
+	 *
+	 * @see kAPI_REL_FROM
+	 */
+	protected function _FormatRelSubject()												   {}
+
+	 
+	/*===================================================================================
+	 *	_FormatRelObject																*
+	 *==================================================================================*/
+
+	/**
+	 * Format relationship object.
+	 *
+	 * The main duty of this method is to format the provided relationship object. This
+	 * parameter will be provided as a node native identifier.
+	 *
+	 * In this class we do nothing, derived classes may overload this method before it gets
+	 * validated.
+	 *
+	 * @access protected
+	 *
+	 * @see kAPI_REL_TO
+	 */
+	protected function _FormatRelObject()												   {}
+
+	 
+	/*===================================================================================
+	 *	_FormatRelMirror																*
+	 *==================================================================================*/
+
+	/**
+	 * Format relationship master mirror switch.
+	 *
+	 * The main duty of this method is to format the provided relationship master mirror
+	 * switch, the method will set the flag regardless of whether or not the parameter was
+	 * provided: the flag will be <tt>TRUE</tt> if the parameter was provided and
+	 * <tt>TRUE</tt>, in all other cases the flag will be <tt>FALSE</tt>.
+	 *
+	 * @access protected
+	 *
+	 * @see kAPI_REL_MIRROR
+	 */
+	protected function _FormatRelMirror()
+	{
+		//
+		// Check operation.
+		//
+		switch( $_REQUEST[ kAPI_OPERATION ] )
+		{
+			//
+			// Handle edge creation.
+			//
+			case kAPI_OP_RelateTo:
+				if( array_key_exists( kAPI_REL_MIRROR, $_REQUEST ) )
+					$_REQUEST[ kAPI_REL_MIRROR ] = (boolean) $_REQUEST[ kAPI_REL_MIRROR ];
+				else
+					$_REQUEST[ kAPI_REL_MIRROR ] = FALSE;
+				break;
+			
+			default:
+				break;
+		
+		} // Parsed by operation.
+	
+	} // _FormatRelMirror.
 
 		
 
@@ -840,6 +1045,59 @@ class COntologyWrapper extends CDataWrapper
 					if( array_key_exists( kAPI_SUBQUERY, $_REQUEST ) )
 						unset( $_REQUEST[ kAPI_SUBQUERY ] );
 				}
+				
+				break;
+			
+			case kAPI_OP_RelateTo:
+				//
+				// Check for database.
+				//
+				if( ! array_key_exists( kAPI_DATABASE, $_REQUEST ) )
+					throw new CException
+						( "Missing database parameter",
+						  kERROR_MISSING,
+						  kSTATUS_ERROR,
+						  array( 'Operation' => $parameter ) );					// !@! ==>
+					
+				//
+				// Check for format.
+				//
+				if( ! array_key_exists( kAPI_FORMAT, $_REQUEST ) )
+					throw new CException
+						( "Missing format parameter",
+						  kERROR_MISSING,
+						  kSTATUS_ERROR,
+						  array( 'Operation' => $parameter ) );					// !@! ==>
+					
+				//
+				// Check for relationship subject.
+				//
+				if( ! array_key_exists( kAPI_REL_FROM, $_REQUEST ) )
+					throw new CException
+						( "Missing relationship subject parameter",
+						  kERROR_MISSING,
+						  kSTATUS_ERROR,
+						  array( 'Operation' => $parameter ) );					// !@! ==>
+					
+				//
+				// Check for relationship predicate.
+				//
+				if( ! array_key_exists( kAPI_PREDICATE, $_REQUEST ) )
+					throw new CException
+						( "Missing relationship predicate parameter",
+						  kERROR_MISSING,
+						  kSTATUS_ERROR,
+						  array( 'Operation' => $parameter ) );					// !@! ==>
+					
+				//
+				// Check for relationship object.
+				//
+				if( ! array_key_exists( kAPI_REL_TO, $_REQUEST ) )
+					throw new CException
+						( "Missing relationship object parameter",
+						  kERROR_MISSING,
+						  kSTATUS_ERROR,
+						  array( 'Operation' => $parameter ) );					// !@! ==>
 				
 				break;
 			
@@ -1431,6 +1689,57 @@ class COntologyWrapper extends CDataWrapper
 	} // _ValidateSubquery.
 
 		
+	/*===================================================================================
+	 *	_ValidateRelSubject																*
+	 *==================================================================================*/
+
+	/**
+	 * Validate relationship subject parameter.
+	 *
+	 * The duty of this method is to validate the relationship subject parameter, in this
+	 * class we do nothing.
+	 *
+	 * @access protected
+	 *
+	 * @see kAPI_REL_FROM
+	 */
+	protected function _ValidateRelSubject()											   {}
+
+		
+	/*===================================================================================
+	 *	_ValidateRelObject																*
+	 *==================================================================================*/
+
+	/**
+	 * Validate relationship object parameter.
+	 *
+	 * The duty of this method is to validate the relationship object parameter, in this
+	 * class we do nothing.
+	 *
+	 * @access protected
+	 *
+	 * @see kAPI_REL_TO
+	 */
+	protected function _ValidateRelObject()												   {}
+
+		
+	/*===================================================================================
+	 *	_ValidateRelMirror																*
+	 *==================================================================================*/
+
+	/**
+	 * Validate relationship master mirror switch parameter.
+	 *
+	 * The duty of this method is to validate the relationship master mirror switch
+	 * parameter, in this class we do nothing.
+	 *
+	 * @access protected
+	 *
+	 * @see kAPI_REL_MIRROR
+	 */
+	protected function _ValidateRelMirror()												   {}
+
+		
 
 /*=======================================================================================
  *																						*
@@ -1482,6 +1791,10 @@ class COntologyWrapper extends CDataWrapper
 	
 				case kAPI_OP_GetTag:
 					$this->_HandleGetTag();
+					break;
+	
+				case kAPI_OP_RelateTo:
+					$this->_HandleRelateTo();
 					break;
 	
 				case kAPI_OP_GetEnums:
@@ -1968,6 +2281,91 @@ class COntologyWrapper extends CDataWrapper
 		} // Found records.
 	
 	} // _HandleGetTag.
+
+	 
+	/*===================================================================================
+	 *	_HandleRelateTo																	*
+	 *==================================================================================*/
+
+	/**
+	 * Handle {@link kAPI_OP_RelateTo} request.
+	 *
+	 * This method will handle the {@link kAPI_OP_RelateTo} operation, which creates a
+	 * directed relationship between a subject node and an object node through a predicate
+	 * term.
+	 *
+	 * @access protected
+	 */
+	protected function _HandleRelateTo()
+	{
+		//
+		// Iterate predicates.
+		//
+		$count = 0;
+		foreach( $_REQUEST[ kAPI_PREDICATE ] as $predicate_id )
+		{
+			//
+			// Resolve subject.
+			//
+			$subject
+				= COntologyNode::NewObject(
+					$_REQUEST[ kAPI_DATABASE ], $_REQUEST[ kAPI_REL_FROM ], TRUE );
+		
+			//
+			// Resolve predicate.
+			//
+			$predicate
+				= COntologyTerm::Resolve(
+					$_REQUEST[ kAPI_DATABASE ]
+						->Container( COntologyTerm::DefaultContainerName() ),
+					$predicate_id,
+					NULL,
+					TRUE );
+		
+			//
+			// Resolve object.
+			//
+			$object
+				= COntologyNode::NewObject(
+					$_REQUEST[ kAPI_DATABASE ], $_REQUEST[ kAPI_REL_TO ], TRUE );
+			
+			//
+			// Relate.
+			//
+			$object
+				= $subject->RelateTo(
+					$predicate,
+					$object,
+					$_REQUEST[ kAPI_DATABASE ],
+					$_REQUEST[ kAPI_REL_MIRROR ] );
+			
+			//
+			// Build and store vertex identifier.
+			//
+			$this->_ExportEdge( $results, $object );
+			$results[ kAPI_COLLECTION_ID ][] = $object->NID();
+						
+		} // Iterating predicates.
+		
+		//
+		// Return result.
+		//
+		if( $results !== NULL )
+		{
+			//
+			// Set response.
+			//
+			$this->offsetSet( kAPI_RESPONSE, $results );
+		
+			//
+			// Set effective count.
+			//
+			$this->_OffsetManage(
+				kAPI_STATUS, kAPI_AFFECTED_COUNT, count( $results[ kAPI_COLLECTION_ID ] ) );
+		
+		} // Created relationships.
+
+	} // _HandleRelateTo.
 
 	 
 	/*===================================================================================

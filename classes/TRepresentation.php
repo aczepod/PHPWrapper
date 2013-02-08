@@ -90,69 +90,28 @@ trait TRepresentation
 	 * which is an enumerated value that represents the suggested or preferred input
 	 * control type to be used in forms when modifying the value of the referenced property.
 	 *
-	 * This offset collects the list of these inputs in an enumerated set that can be
-	 * managed with the following parameters:
+	 * The method accepts a parameter which represents either the input type or the
+	 * requested operation, depending on its value::
 	 *
 	 * <ul>
-	 *	<li><tt>$theValue</tt>: Depending on the next parameter, this may either refer to
-	 *		the value to be set or to the index of the element to be retrieved or deleted:
-	 *	 <ul>
-	 *		<li><tt>NULL</tt>: This value indicates that we want to operate on all elements,
-	 *			which means, in practical terms, that we either want to retrieve or delete
-	 *			the full list. If the operation parameter resolves to <tt>TRUE</tt>, the
-	 *			method will default to retrieving the current list and no new element will
-	 *			be added.
-	 *		<li><tt>array</tt>: An array indicates that we want to operate on a list of
-	 *			values and that other parameters may also be provided as lists. Note that
-	 *			{@link ArrayObject} instances are not considered here as arrays.
-	 *		<li><i>other</i>: Any other type represents either the new value to be added or
-	 *			the index to the value to be returned or deleted. This attribute may take
-	 *			the following values:
-	 *		 <ul>
-	 *			<li><tt>{@link kINPUT_TEXT}</tt>: Text field.
-	 *			<li><tt>{@link kINPUT_TEXTAREA}</tt>: Text area.
-	 *			<li><tt>{@link kINPUT_CHOICE}</tt>: Popup menu.
-	 *			<li><tt>{@link kINPUT_MULTIPLE}</tt>: Combo box.
-	 *			<li><tt>{@link kINPUT_RADIO}</tt>: Radio group of two choices.
-	 *			<li><tt>{@link kINPUT_CHECKBOX}</tt>: Single checkbox.
-	 *		 </ul>
-	 *	 </ul>
-	 *	<li><tt>$theOperation</tt>: This parameter represents the operation to be performed
-	 *		whose scope depends on the value of the previous parameter:
-	 *	 <ul>
-	 *		<li><tt>NULL</tt>: Return the element or full list.
-	 *		<li><tt>FALSE</tt>: Delete the element or full list.
-	 *		<li><tt>array</tt>: This type is only considered if the <tt>$theValue</tt>
-	 *			parameter is provided as an array: the method will be called for each
-	 *			element of the <tt>$theValue</tt> parameter matched with the corresponding
-	 *			element of this parameter, which also means that both both parameters must
-	 *			share the same count.
-	 *		<li><i>other</i>: Add the <tt>$theValue</tt> value to the list. If you provided
-	 *			<tt>NULL</tt> in the previous parameter, the operation will be reset to
-	 *			<tt>NULL</tt>.
-	 *	 </ul>
-	 *	<li><tt>$getOld</tt>: Determines what the method will return:
-	 *	 <ul>
-	 *		<li><tt>TRUE</tt>: Return the value <i>before</i> it was eventually modified.
-	 *		<li><tt>FALSE</tt>: Return the value <i>after</i> it was eventually modified.
-	 *	 </ul>
+	 *	<li><tt>NULL</tt>: Return the current value.
+	 *	<li><tt>FALSE</tt>: Delete the current value.
+	 *	<li><i>other</i>: Set the value with the provided parameter.
 	 * </ul>
 	 *
-	 * @param mixed					$theValue			Value or index.
-	 * @param mixed					$theOperation		Operation.
-	 * @param boolean				$getOld				TRUE get old value.
+	 * @param mixed					$theValue			Native identifier or operation.
+	 * @param boolean				$getOld				<tt>TRUE</tt> get old value.
 	 *
 	 * @access public
 	 * @return string				<i>New</i>, <i>old</i> value or <tt>NULL</tt>.
 	 *
-	 * @uses ManageObjectSetOffset()
+	 * @uses ManageOffset()
 	 *
 	 * @see kTAG_INPUT
 	 */
 	public function Input( $theValue = NULL, $theOperation = NULL, $getOld = FALSE )
 	{
-		return ManageObjectSetOffset
-			( $this, kTAG_INPUT, $theValue, $theOperation, $getOld );				// ==>
+		return ManageOffset( $this, kTAG_INPUT, $theValue, $getOld );				// ==>
 
 	} // Input.
 

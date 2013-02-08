@@ -36,13 +36,53 @@
 define( "kAPI_LANGUAGE",						':WS:LANGUAGE' );
 
 /**
+ * Relationship origin.
+ *
+ * This offset tags the element that holds the subject of a relationship, the parameter must
+ * be expressed as the native identifier, {@link kTAG_NID}, of the node that represents the
+ * origin of the relationship, or the object that relates to the relationship object,
+ * {@link kAPI_REL_TO}, via the relationship predicate, {@link kAPI_PREDICATE}.
+ *
+ * Type: integer.
+ * Cardinality: any.
+ */
+define( "kAPI_REL_FROM",						':WS:REL-FROM' );
+
+/**
+ * Relationship destination.
+ *
+ * This offset tags the element that holds the object of a relationship, the parameter must
+ * be expressed as the native identifier, {@link kTAG_NID}, of the node that represents the
+ * destination of the relationship, or the object that is related to by the relationship
+ * subject, {@link kAPI_REL_FROM}, via the relationship predicate, {@link kAPI_PREDICATE}.
+ *
+ * Type: integer.
+ * Cardinality: any.
+ */
+define( "kAPI_REL_TO",							':WS:REL-TO' );
+
+/**
+ * Propagate relationship.
+ *
+ * This offset represents a switch which determines whether relationships should be mirrored
+ * from alias nodes to master nodes.
+ *
+ * This parameter is a boolean that will propagate relationships if <tt>TRUE</tt> and will
+ * not if missing or <tt>FALSE</tt>.
+ *
+ * Type: boolean.
+ * Cardinality: one.
+ */
+define( "kAPI_REL_MIRROR",						':WS:REL-MIRROR' );
+
+/**
  * Predicate.
  *
  * This offset tags the element that holds the list of predicates that the requested
- * relationships must match.
+ * relationships must match, or the predicate of a relationship that should be established.
  *
- * The parameter must be expressed as an array and predicate references must be provided as
- * a term {@link kTAG_GID}.
+ * The parameter must be expressed as a scalar or an array of term global identifiers,
+ * {@link kTAG_GID}.
  *
  * Type: string.
  * Cardinality: any.
@@ -282,6 +322,10 @@ define( "kAPI_OP_SetVertex",		'WS:OP:SetVertex' );
  *		<li><i>missing</i>: If the parameter is missing, it is assumed you only want the
  *			vertices selected by the provided query.
  *	 </ul>
+ *	<li><i>{@link kAPI_PREDICATE}</i>: This parameter is only considered if the
+ *		{@link kAPI_RELATION} parameter was provided, it is constituted by a list of
+ *		predicates expressed as term global identifiers, it restricts the relationships to
+ *		the provided list of predicates.
  *	<li><i>{@link kAPI_SUBQUERY}</i>: This parameter is only considered if the
  *		{@link kAPI_RELATION} parameter was provided, it is a filter that will be applied to
  *		the related elements, while the {@link kAPI_QUERY} parameter applies to the origin
@@ -324,6 +368,33 @@ define( "kAPI_OP_GetVertex",		'WS:OP:GetVertex' );
  * rather than adding exceptions that in the long run would become difficult to track.</i>
  */
 define( "kAPI_OP_GetTag",			'WS:OP:GetTag' );
+
+/**
+ * RelateTo web-service.
+ *
+ * This is the tag that represents the RelateTo web-service operation, which will relate one
+ * node to another.
+ *
+ * The service expects the following parameters:
+ *
+ * <ul>
+ *	<li><i>{@link kAPI_FORMAT}</i>: This parameter is required to indicate how to encode the
+ *		response.
+ *	<li><i>{@link kAPI_DATABASE}</i>: This parameter is required to indicate the working
+ *		database.
+ *	<li><i>{@link kAPI_REL_FROM}</i>: This parameter is required and should contain the
+ *		node identifier of the relationship subject.
+ *	<li><i>{@link kAPI_REL_TO}</i>: This parameter is required and should contain the
+ *		node identifier of the relationship object.
+ *	<li><i>{@link kAPI_PREDICATE}</i>: This parameter is required and should contain the
+ *		predicate of the relationship. If the value is an array, there will be as many
+ *		relationships as predicates created.
+ *	<li><i>{@link kAPI_REL_MIRROR}</i>: This optional boolean parameter, if present and
+ *		<tt>TRUE</tt>, determines whether alias nodes will mirror the relationship with
+ *		their masters.
+ * </ul>
+ */
+define( "kAPI_OP_RelateTo",			'WS:OP:RelateTo' );
 
 /**
  * GetEnums web-service.

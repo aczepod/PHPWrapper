@@ -245,8 +245,8 @@ try
 	$tag->Kind( "kind2", TRUE );
 	echo( '<h5>$tag->Type( array( "type1", "type2" ), TRUE );</h5>' );
 	$tag->Type( array( "type1", "type2" ), TRUE );
-	echo( '<h5>$tag->Input( array( kINPUT_CHOICE, kINPUT_RADIO ), TRUE );</h5>' );
-	$tag->Input( array( kINPUT_CHOICE, kINPUT_RADIO ), TRUE );
+	echo( '<h5>$tag->Input( kINPUT_CHOICE );</h5>' );
+	$tag->Input( kINPUT_CHOICE );
 	echo( '<h5>$tag->Pattern( "[A-Z]+" );</h5>' );
 	$tag->Pattern( "[A-Z]+" );
 	echo( '<h5>$tag->Length( 24 );</h5>' );

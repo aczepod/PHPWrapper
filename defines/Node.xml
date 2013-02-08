@@ -65,9 +65,7 @@
                 <item>:REQUIRED</item>
                 <item>:RESTRICTED</item>
             </element>
-            <element variable="kTAG_INPUT">
-                <item>:INPUT-TEXT</item>
-            </element>
+            <element variable="kTAG_INPUT">:INPUT-TEXT</element>
             <element variable="kTAG_DESCRIPTION">
                 <item key="en"><![CDATA[The <i>term</i> is a <i>reference</i> to the <i>term object</i> which <i>defines</i> the current node. Nodes take their <i>name</i> and <i>definition</i> from a term object, this attribute holds a reference to that object and it is required.]]></item>
             </element>
@@ -138,9 +136,7 @@
                 <item>:TEXT</item>
                 <item>:LOCKED</item>
             </element>
-            <element variable="kTAG_INPUT">
-                <item>:INPUT-TEXT</item>
-            </element>
+            <element variable="kTAG_INPUT">:INPUT-TEXT</element>
             <element variable="kTAG_DESCRIPTION">
                 <item key="en"><![CDATA[The <i>persistent identifier</i> of a node is a user provided string which must be unique among all nodes. This string is persistent, while the node's native identifier is not: using this attribute it is possible to reference alias nodes without worrying that the native identifier changes across implementations.]]></item>
             </element>
@@ -164,9 +160,7 @@
                 <item>:TEXT</item>
                 <item>:ARRAY</item>
             </element>
-            <element variable="kTAG_INPUT">
-                <item>:INPUT-TEXT</item>
-            </element>
+            <element variable="kTAG_INPUT">:INPUT-TEXT</element>
         </NODE>
         <EDGE master="false">
             <element variable="kTAG_SUBJECT" node="pid">:_nodes.:CATEGORY</element>
@@ -186,9 +180,7 @@
             <element variable="kTAG_TYPE">
                <item>:SET</item>
             </element>
-            <element variable="kTAG_INPUT">
-                <item>:INPUT-MULTIPLE</item>
-            </element>
+            <element variable="kTAG_INPUT">:INPUT-MULTIPLE</element>
             <element variable="kTAG_DESCRIPTION">
                 <item key="en"><![CDATA[The <i>kind</i> is a <i>set of qualifiers</i> that determine the <i>kind of the current node</i>.]]></item>
             </element>
@@ -252,9 +244,7 @@
             <element variable="kTAG_TYPE">
             	<item>:SET</item>
             </element>
-            <element variable="kTAG_INPUT">
-                <item>:INPUT-MULTIPLE</item>
-            </element>
+            <element variable="kTAG_INPUT">:INPUT-MULTIPLE</element>
             <element variable="kTAG_DESCRIPTION">
                 <item key="en"><![CDATA[The <i>type</i> is a <i>set of qualifiers</i> that determine the <i>data type</i> of the <i>property that the current node defines</i>. This attribute is used to provide the <i>data type of a tag</i>.]]></item>
             </element>
@@ -334,9 +324,7 @@
                 <item>:TEXT</item>
                 <item>:ARRAY</item>
             </element>
-            <element variable="kTAG_INPUT">
-                <item>:INPUT-CHOICE</item>
-            </element>
+            <element variable="kTAG_INPUT">:INPUT-CHOICE</element>
         </NODE>
         <EDGE master="false">
             <element variable="kTAG_SUBJECT" node="pid">:_nodes.:INPUT</element>
@@ -356,9 +344,7 @@
             <element variable="kTAG_TYPE">
                 <item>:TEXT</item>
             </element>
-            <element variable="kTAG_INPUT">
-                <item>:INPUT-TEXT</item>
-            </element>
+            <element variable="kTAG_INPUT">:INPUT-TEXT</element>
         </NODE>
         <EDGE master="false">
             <element variable="kTAG_SUBJECT" node="pid">:_nodes.:PATTERN</element>
@@ -378,9 +364,7 @@
             <element variable="kTAG_TYPE">
                 <item>:INT</item>
             </element>
-            <element variable="kTAG_INPUT">
-                <item>:INPUT-TEXT</item>
-            </element>
+            <element variable="kTAG_INPUT">:INPUT-TEXT</element>
         </NODE>
         <EDGE master="false">
             <element variable="kTAG_SUBJECT" node="pid">:_nodes.:LENGTH</element>
@@ -400,9 +384,7 @@
             <element variable="kTAG_TYPE">
                 <item>:INT</item>
             </element>
-            <element variable="kTAG_INPUT">
-                <item>:INPUT-TEXT</item>
-            </element>
+            <element variable="kTAG_INPUT">:INPUT-TEXT</element>
         </NODE>
         <EDGE master="false">
             <element variable="kTAG_SUBJECT" node="pid">:_nodes.:MIN-VAL</element>
@@ -422,9 +404,7 @@
             <element variable="kTAG_TYPE">
                 <item>:INT</item>
             </element>
-            <element variable="kTAG_INPUT">
-                <item>:INPUT-TEXT</item>
-            </element>
+            <element variable="kTAG_INPUT">:INPUT-TEXT</element>
         </NODE>
         <EDGE master="false">
             <element variable="kTAG_SUBJECT" node="pid">:_nodes.:MAX-VAL</element>
@@ -445,9 +425,7 @@
                 <item>:TEXT</item>
                 <item>:ARRAY</item>
             </element>
-            <element variable="kTAG_INPUT">
-                <item>:INPUT-TEXTAREA</item>
-            </element>
+            <element variable="kTAG_INPUT">:INPUT-TEXTAREA</element>
         </NODE>
         <EDGE master="false">
             <element variable="kTAG_SUBJECT" node="pid">:_nodes.:EXAMPLES</element>
@@ -467,9 +445,7 @@
             <element variable="kTAG_TYPE">
                 <item>:LSTRING</item>
             </element>
-            <element variable="kTAG_INPUT">
-                <item>:INPUT-TEXTAREA</item>
-            </element>
+            <element variable="kTAG_INPUT">:INPUT-TEXTAREA</element>
         </NODE>
         <EDGE master="false">
             <element variable="kTAG_SUBJECT" node="pid">:_nodes.:DESCRIPTION</element>

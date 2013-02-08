@@ -101,7 +101,6 @@ try
 	$_SESSION[ kSESSION_ONTOLOGY ]->SetAllCountries(
 		'GR:COUNTRIES' );
 
-
 	//
 	// Loading FAO institute descriptors.
 	//

@@ -1237,10 +1237,15 @@ class COntology extends CConnection
 						break;
 				
 					case kTAG_INPUT:
-						foreach( $element->{'item'} as $item )
+						if( strlen( $data = (string) $element ) )
+							$object->Input( $data );
+						else
 						{
-							if( strlen( $data = (string) $item ) )
-								$object->Input( $data, TRUE );
+							foreach( $element->{'item'} as $item )
+							{
+								if( strlen( $data = (string) $item ) )
+									$object->Input( $data );
+							}
 						}
 						break;
 				
@@ -1424,10 +1429,15 @@ class COntology extends CConnection
 						break;
 				
 					case 'kTAG_INPUT':
-						foreach( $element->{'item'} as $item )
+						if( strlen( $data = (string) $element ) )
+							$object->Input( $data );
+						else
 						{
-							if( strlen( $data = (string) $item ) )
-								$object->Input( $data, TRUE );
+							foreach( $element->{'item'} as $item )
+							{
+								if( strlen( $data = (string) $item ) )
+									$object->Input( $data );
+							}
 						}
 						break;
 				
@@ -1863,10 +1873,15 @@ class COntology extends CConnection
 						break;
 				
 					case kTAG_INPUT:
-						foreach( $element->{'item'} as $item )
+						if( strlen( $data = (string) $element ) )
+							$object->Input( $data );
+						else
 						{
-							if( strlen( $data = (string) $item ) )
-								$object->Input( $data, TRUE );
+							foreach( $element->{'item'} as $item )
+							{
+								if( strlen( $data = (string) $item ) )
+									$object->Input( $data );
+							}
 						}
 						break;
 				
@@ -1974,10 +1989,15 @@ class COntology extends CConnection
 						break;
 				
 					case 'kTAG_INPUT':
-						foreach( $element->{'item'} as $item )
+						if( strlen( $data = (string) $element ) )
+							$object->Input( $data );
+						else
 						{
-							if( strlen( $data = (string) $item ) )
-								$object->Input( $data, TRUE );
+							foreach( $element->{'item'} as $item )
+							{
+								if( strlen( $data = (string) $item ) )
+									$object->Input( $data );
+							}
 						}
 						break;
 				

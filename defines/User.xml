@@ -63,9 +63,7 @@
                 <item>:COMPUTED</item>
                 <item>:REQUIRED</item>
             </element>
-            <element variable="kTAG_INPUT">
-                <item>:INPUT-TEXT</item>
-            </element>
+            <element variable="kTAG_INPUT">:INPUT-TEXT</element>
             <element variable="kTAG_DESCRIPTION">
                 <item key="en"><![CDATA[CDATA[The <i>global identifier</i> of a user is the user code.]]></item>
             </element>
@@ -110,9 +108,7 @@
                 <item>:TEXT</item>
                 <item>:REQUIRED</item>
             </element>
-            <element variable="kTAG_INPUT">
-                <item>:INPUT-TEXT</item>
-            </element>
+            <element variable="kTAG_INPUT">:INPUT-TEXT</element>
             <element variable="kTAG_DESCRIPTION">
                 <item key="en"><![CDATA[The <i>user name</i> represents the user full name, or the name by which the user woulòd like to be called.]]></item>
             </element>
@@ -137,9 +133,7 @@
                 <item>:LOCKED</item>
                 <item>:REQUIRED</item>
             </element>
-            <element variable="kTAG_INPUT">
-                <item>:INPUT-TEXT</item>
-            </element>
+            <element variable="kTAG_INPUT">:INPUT-TEXT</element>
             <element variable="kTAG_DESCRIPTION">
                 <item key="en"><![CDATA[The <i>user code</i> represents the unique identifier of the user, the code by which the user logs into the system. This value becomes the user's <i>global identifier</i>.]]></item>
             </element>
@@ -163,9 +157,7 @@
                 <item>:TEXT</item>
                 <item>:REQUIRED</item>
             </element>
-            <element variable="kTAG_INPUT">
-                <item>:INPUT-TEXT</item>
-            </element>
+            <element variable="kTAG_INPUT">:INPUT-TEXT</element>
             <element variable="kTAG_DESCRIPTION">
                 <item key="en"><![CDATA[The <i>user password</i> represents the access key to the system, provided with the user code this pair of attributes represent the <i>access credentials</i> to the system.]]></item>
             </element>
@@ -189,9 +181,7 @@
                 <item>:TEXT</item>
                 <item>:REQUIRED</item>
             </element>
-            <element variable="kTAG_INPUT">
-                <item>:INPUT-TEXT</item>
-            </element>
+            <element variable="kTAG_INPUT">:INPUT-TEXT</element>
             <element variable="kTAG_DESCRIPTION">
                 <item key="en"><![CDATA[The <i>user mail</i> represents the <i>e-mail address</i> of the user, it will be used both for checking the user veridicity and for communications.]]></item>
             </element>
@@ -214,9 +204,7 @@
             <element variable="kTAG_TYPE">
                 <item>:SET</item>
             </element>
-            <element variable="kTAG_INPUT">
-                <item>:INPUT-MULTIPLE</item>
-            </element>
+            <element variable="kTAG_INPUT">:INPUT-MULTIPLE</element>
             <element variable="kTAG_DESCRIPTION">
                 <item key="en"><![CDATA[The <i>user role</i> defines <i>which operations the user is allowed to perform</i>.]]></item>
             </element>
@@ -239,9 +227,7 @@
             <element variable="kTAG_TYPE">
                 <item>:SET</item>
             </element>
-            <element variable="kTAG_INPUT">
-                <item>:INPUT-MULTIPLE</item>
-            </element>
+            <element variable="kTAG_INPUT">:INPUT-MULTIPLE</element>
         </NODE>
         <EDGE master="false">
             <element variable="kTAG_SUBJECT" node="pid">:_users.:USER-PROFILE</element>
@@ -264,9 +250,7 @@
                 <item>:LOCKED</item>
                 <item>:RESTRICTED</item>
             </element>
-            <element variable="kTAG_INPUT">
-                <item>:INPUT-TEXT</item>
-            </element>
+            <element variable="kTAG_INPUT">:INPUT-TEXT</element>
             <element variable="kTAG_DESCRIPTION">
                 <item key="en"><![CDATA[The <i>user manager</i> is a <i>reference</i> to the user that <i>created</i> or that <i>manages</i> the current user.]]></item>
             </element>
@@ -289,9 +273,7 @@
             <element variable="kTAG_TYPE">
                 <item>:SET</item>
             </element>
-            <element variable="kTAG_INPUT">
-                <item>:INPUT-CHOICE</item>
-            </element>
+            <element variable="kTAG_INPUT">:INPUT-CHOICE</element>
             <element variable="kTAG_DESCRIPTION">
                 <item key="en"><![CDATA[The <i>user domain</i> is a <i>list of domains</i> to to which the <i>user is allowed to access</i>, it can be used to manage more than one portal.]]></item>
             </element>

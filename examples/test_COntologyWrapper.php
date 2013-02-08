@@ -2280,7 +2280,8 @@ try
 	echo( kSTYLE_DATA_PRE.'<pre>' ); print_r( $decoded ); echo( '</pre>'.kSTYLE_DATA_POS );
 	echo( kSTYLE_ROW_POS );
 	echo( kSTYLE_TABLE_POS );
-	$nodes[] = $decoded[ ':WS:STATUS' ][ ':STATUS-IDENTIFIER' ];
+	$rel_subject = $decoded[ ':WS:STATUS' ][ ':STATUS-IDENTIFIER' ];
+	$nodes[] = $rel_subject;
 	echo( '<hr>' );
 
 	echo( '<h4>Test SetAliasVertex in JSON by term NID</h4>' );
@@ -2322,7 +2323,8 @@ try
 	echo( kSTYLE_DATA_PRE.'<pre>' ); print_r( $decoded ); echo( '</pre>'.kSTYLE_DATA_POS );
 	echo( kSTYLE_ROW_POS );
 	echo( kSTYLE_TABLE_POS );
-	$nodes[] = $decoded[ ':WS:STATUS' ][ ':STATUS-IDENTIFIER' ];
+	$rel_object = $decoded[ ':WS:STATUS' ][ ':STATUS-IDENTIFIER' ];
+	$nodes[] = $rel_object;
 	echo( '<hr>' );
 
 	echo( '<h4>Test duplicate SetMasterVertex in JSON</h4>' );
@@ -2418,6 +2420,60 @@ try
 	echo( kSTYLE_DATA_PRE.'<pre>' ); print_r( $decoded ); echo( '</pre>'.kSTYLE_DATA_POS );
 	echo( kSTYLE_ROW_POS );
 	echo( kSTYLE_TABLE_POS );
+	echo( '<hr>' );
+
+	echo( '<h4>Test RelateTo in JSON</h4>' );
+	//
+	// Test RelateTo in JSON.
+	//
+	$params = array( (kAPI_FORMAT.'='.kTYPE_JSON),
+					 (kAPI_OPERATION.'='.kAPI_OP_RelateTo),
+					 (kAPI_LOG_REQUEST.'='.urlencode(JsonEncode(TRUE))),
+					 (kAPI_DATABASE.'='.urlencode(JsonEncode('ONTOLOGY'))),
+					 (kAPI_REL_FROM.'='.urlencode(JsonEncode( $rel_subject ))),
+					 (kAPI_PREDICATE.'='.urlencode(JsonEncode( kPREDICATE_SUBCLASS_OF ))),
+					 (kAPI_REL_TO.'='.urlencode(JsonEncode( $rel_object ))),
+					 (kAPI_STAMP_REQUEST.'='.gettimeofday( true )) );
+	//
+	// Display.
+	//
+	echo( kSTYLE_TABLE_PRE );
+	echo( kSTYLE_ROW_PRE );
+	echo( kSTYLE_HEAD_PRE.'URL:'.kSTYLE_HEAD_POS );
+	$request = $new_url.'?'.implode( '&', $params );
+	echo( kSTYLE_DATA_PRE.htmlspecialchars( $request ).kSTYLE_DATA_POS );
+	echo( kSTYLE_ROW_POS );
+	echo( kSTYLE_ROW_PRE );
+	echo( kSTYLE_HEAD_PRE.'Response:'.kSTYLE_HEAD_POS );
+	$response = file_get_contents( $request );
+	echo( kSTYLE_DATA_PRE.$response.kSTYLE_DATA_POS );
+	echo( kSTYLE_ROW_POS );
+	echo( kSTYLE_ROW_PRE );
+	echo( kSTYLE_HEAD_PRE.'Decoded:'.kSTYLE_HEAD_POS );
+	$decoded = JsonDecode( $response );
+	echo( kSTYLE_DATA_PRE.'<pre>' ); print_r( $decoded ); echo( '</pre>'.kSTYLE_DATA_POS );
+	echo( kSTYLE_ROW_POS );
+	echo( kSTYLE_TABLE_POS );
+	$id = $decoded[ ':WS:RESPONSE' ][ '_ids' ][ 0 ];
+	echo( '<hr>' );
+	
+	//
+	// Delete edges.
+	//
+	echo( '<hr>Deleted edges:' );
+	$params = array( (kAPI_FORMAT.'='.kTYPE_JSON),
+					 (kAPI_OPERATION.'='.kAPI_OP_DELETE),
+					 (kAPI_DATABASE.'='.urlencode(JsonEncode('ONTOLOGY'))),
+					 (kAPI_CLASS.'='.urlencode(JsonEncode('COntologyEdge'))),
+					 (kAPI_OBJECT.'='.urlencode(JsonEncode($id))) );
+	$result = JsonDecode( file_get_contents( $new_url.'?'.implode( '&', $params ) ) );
+	if( $result[ ':WS:STATUS' ][ ':STATUS-CODE' ] )
+	{
+		echo( '<pre>' );
+		print_r( $result );
+		exit( '</pre>' );
+	}
+	echo( " $id" );
 	echo( '<hr>' );
 	
 	//
