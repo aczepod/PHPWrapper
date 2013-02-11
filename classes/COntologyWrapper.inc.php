@@ -418,7 +418,8 @@ define( "kAPI_OP_RelateTo",			'WS:OP:RelateTo' );
  *
  * Once the reference node is resolved, the method will return all the edges related to
  * the reference node with a {@link kPREDICATE_ENUM_OF} predicate traversing <i>all
- * levels</i>.
+ * levels</i>; the {@link kAPI_COLLECTION_ID} part of the response will hold the list of
+ * root enumeration nodes.
  */
 define( "kAPI_OP_GetEnums",			'WS:OP:GetEnums' );
 

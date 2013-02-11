@@ -138,10 +138,10 @@
     		<item>:INPUT</item>
     	</element>
     	<element variable="kTAG_TYPE">
-    		<item>:SET</item>
+    		<item>:ENUM</item>
     	</element>
     	<element variable="kTAG_INPUT">
-    		<item>:INPUT-MULTIPLE</item>
+    		<item>:INPUT-CHOICE</item>
     	</element>
     </tag>
      

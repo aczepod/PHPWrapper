@@ -216,7 +216,7 @@ collections.</p>
 				<b>Author:</b>
 				Milko A. Škofič &lt;<a
 href="mailto:m.skofic&#64;cgiar.org">m.skofic&#64;<!---->cgiar.org</a>&gt;<br />
-		<b>Located at</b> <a href="source-class-COntologyWrapper.html#78-4065" title="Go to source code">COntologyWrapper.php</a><br />
+		<b>Located at</b> <a href="source-class-COntologyWrapper.html#78-4090" title="Go to source code">COntologyWrapper.php</a><br />
 	</div>
 
 
@@ -1919,7 +1919,7 @@ predicate term.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#__HandleGetEnums">#</a>
-		<code><a href="source-class-COntologyWrapper.html#2375-2548" title="Go to source code">_HandleGetEnums</a>( )</code>
+		<code><a href="source-class-COntologyWrapper.html#2375-2573" title="Go to source code">_HandleGetEnums</a>( )</code>
 
 		<div class="description short">
 			
@@ -1934,6 +1934,9 @@ predicate term.</p>
 <p>This method will handle the kAPI_OP_GetEnums operation which returns
 a list of enumerations with their related attributes who are related, at any
 level, to the node or tag selected by the provided query.</p>
+
+<p>The kAPI_COLLECTION_ID part of the response will hold the requested
+node identifiers, which can be used to create a tree of enumerations.</p>
 
 
 
@@ -1956,7 +1959,7 @@ level, to the node or tag selected by the provided query.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#__ExportTerm">#</a>
-		<code><a href="source-class-COntologyWrapper.html#2564-2716" title="Go to source code">_ExportTerm</a>( <span>reference <var>&amp; $theCollection</var></span>, <span>mixed <var>$theTerm</var></span>, <span>boolean <var>$doTags</var> = <span class="php-keyword1">TRUE</span> </span> )</code>
+		<code><a href="source-class-COntologyWrapper.html#2589-2741" title="Go to source code">_ExportTerm</a>( <span>reference <var>&amp; $theCollection</var></span>, <span>mixed <var>$theTerm</var></span>, <span>boolean <var>$doTags</var> = <span class="php-keyword1">TRUE</span> </span> )</code>
 
 		<div class="description short">
 			
@@ -2071,7 +2074,7 @@ the node, it will only use this information to index the node.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#__ExportNode">#</a>
-		<code><a href="source-class-COntologyWrapper.html#2723-2885" title="Go to source code">_ExportNode</a>( <span>reference <var>&amp; $theCollection</var></span>, <span>mixed <var>$theNode</var></span>, <span>boolean <var>$doTags</var> = <span class="php-keyword1">TRUE</span> </span> )</code>
+		<code><a href="source-class-COntologyWrapper.html#2748-2910" title="Go to source code">_ExportNode</a>( <span>reference <var>&amp; $theCollection</var></span>, <span>mixed <var>$theNode</var></span>, <span>boolean <var>$doTags</var> = <span class="php-keyword1">TRUE</span> </span> )</code>
 
 		<div class="description short">
 			
@@ -2186,7 +2189,7 @@ the node, it will only use this information to index the node.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#__ExportEdge">#</a>
-		<code><a href="source-class-COntologyWrapper.html#2892-3060" title="Go to source code">_ExportEdge</a>( <span>reference <var>&amp; $theCollection</var></span>, <span>mixed <var>$theEdge</var></span>, <span>boolean <var>$doTags</var> = <span class="php-keyword1">TRUE</span> </span> )</code>
+		<code><a href="source-class-COntologyWrapper.html#2917-3085" title="Go to source code">_ExportEdge</a>( <span>reference <var>&amp; $theCollection</var></span>, <span>mixed <var>$theEdge</var></span>, <span>boolean <var>$doTags</var> = <span class="php-keyword1">TRUE</span> </span> )</code>
 
 		<div class="description short">
 			
@@ -2289,7 +2292,7 @@ collection.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#__ExportTag">#</a>
-		<code><a href="source-class-COntologyWrapper.html#3067-3258" title="Go to source code">_ExportTag</a>( <span>reference <var>&amp; $theCollection</var></span>, <span>mixed <var>$theTag</var></span> )</code>
+		<code><a href="source-class-COntologyWrapper.html#3092-3283" title="Go to source code">_ExportTag</a>( <span>reference <var>&amp; $theCollection</var></span>, <span>mixed <var>$theTag</var></span> )</code>
 
 		<div class="description short">
 			
@@ -2396,7 +2399,7 @@ provided collection using the tag's kTAG_NID attribute as index.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#__BuildTerm">#</a>
-		<code><a href="source-class-COntologyWrapper.html#3265-3344" title="Go to source code">_BuildTerm</a>( <span>mixed <var>$theTerm</var></span> )</code>
+		<code><a href="source-class-COntologyWrapper.html#3290-3369" title="Go to source code">_BuildTerm</a>( <span>mixed <var>$theTerm</var></span> )</code>
 
 		<div class="description short">
 			
@@ -2452,7 +2455,7 @@ from that term.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#__BuildNode">#</a>
-		<code><a href="source-class-COntologyWrapper.html#3351-3390" title="Go to source code">_BuildNode</a>( <span>mixed <var>$theNode</var></span> )</code>
+		<code><a href="source-class-COntologyWrapper.html#3376-3415" title="Go to source code">_BuildNode</a>( <span>mixed <var>$theNode</var></span> )</code>
 
 		<div class="description short">
 			
@@ -2504,7 +2507,7 @@ use this method for other purposes.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#__GetVertexList">#</a>
-		<code><a href="source-class-COntologyWrapper.html#3406-3456" title="Go to source code">_GetVertexList</a>( )</code>
+		<code><a href="source-class-COntologyWrapper.html#3431-3481" title="Go to source code">_GetVertexList</a>( )</code>
 
 		<div class="description short">
 			
@@ -2543,7 +2546,7 @@ parameters.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#__GetRelatedQuery">#</a>
-		<code><a href="source-class-COntologyWrapper.html#3463-3563" title="Go to source code">_GetRelatedQuery</a>( <span>integer <var>$theVertex</var></span> )</code>
+		<code><a href="source-class-COntologyWrapper.html#3488-3588" title="Go to source code">_GetRelatedQuery</a>( <span>integer <var>$theVertex</var></span> )</code>
 
 		<div class="description short">
 			
@@ -2590,7 +2593,7 @@ parameter.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#__GetRelatedSubquery">#</a>
-		<code><a href="source-class-COntologyWrapper.html#3570-3785" title="Go to source code">_GetRelatedSubquery</a>( <span><code><a href="class-CQuery.html">CQuery</a></code> <var>$theQuery</var></span>, <span>integer <var>$theVertex</var></span> )</code>
+		<code><a href="source-class-COntologyWrapper.html#3595-3810" title="Go to source code">_GetRelatedSubquery</a>( <span><code><a href="class-CQuery.html">CQuery</a></code> <var>$theQuery</var></span>, <span>integer <var>$theVertex</var></span> )</code>
 
 		<div class="description short">
 			
@@ -2645,7 +2648,7 @@ parameter.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#__FilterLanguages">#</a>
-		<code><a href="source-class-COntologyWrapper.html#3801-3917" title="Go to source code">_FilterLanguages</a>( <span>array <var>$theLanguages</var></span> )</code>
+		<code><a href="source-class-COntologyWrapper.html#3826-3942" title="Go to source code">_FilterLanguages</a>( <span>array <var>$theLanguages</var></span> )</code>
 
 		<div class="description short">
 			
@@ -2692,7 +2695,7 @@ untouched.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#__NormaliseTermReferences">#</a>
-		<code><a href="source-class-COntologyWrapper.html#3924-4061" title="Go to source code">_NormaliseTermReferences</a>( <span>reference <var>&amp; $theQuery</var></span> )</code>
+		<code><a href="source-class-COntologyWrapper.html#3949-4086" title="Go to source code">_NormaliseTermReferences</a>( <span>reference <var>&amp; $theQuery</var></span> )</code>
 
 		<div class="description short">
 			

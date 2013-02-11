@@ -2519,7 +2519,7 @@ try
 		echo( " $id" );
 	}
 	echo( '<hr>' );
-
+/*
 	echo( '<h4>Test GetVertex list in JSON</h4>' );
 	//
 	// Test query GetVertex in JSON.
@@ -2568,7 +2568,7 @@ try
 	echo( kSTYLE_ROW_POS );
 	echo( kSTYLE_TABLE_POS );
 	echo( '<hr>' );
-
+*/
 	echo( '<h4>Test GetVertex incoming relationships in JSON</h4>' );
 	echo( '<h5>:ATTRIBUTES</h5>' );
 	//
@@ -3165,7 +3165,7 @@ try
 				kOFFSET_QUERY_SUBJECT => kTAG_NID,
 				kOFFSET_QUERY_OPERATOR => kOPERATOR_EQUAL,
 				kOFFSET_QUERY_TYPE => kTYPE_INT,
-				kOFFSET_QUERY_DATA => 186
+				kOFFSET_QUERY_DATA => 15
 			)
 		)
 	);

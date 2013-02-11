@@ -2379,6 +2379,9 @@ class COntologyWrapper extends CDataWrapper
 	 * of enumerations with their related attributes who are related, at any level, to the
 	 * node or tag selected by the provided query.
 	 *
+	 * The {@link kAPI_COLLECTION_ID} part of the response will hold the requested node
+	 * identifiers, which can be used to create a tree of enumerations.
+	 *
 	 * @access protected
 	 */
 	protected function _HandleGetEnums()
@@ -2448,6 +2451,11 @@ class COntologyWrapper extends CDataWrapper
 		if( count( $reflist ) )
 		{
 			//
+			// Save identifiers.
+			//
+			$ids = array_values( $reflist );
+			
+			//
 			// Resolve predicate.
 			//
 			$predicate
@@ -2489,34 +2497,46 @@ class COntologyWrapper extends CDataWrapper
 						kTAG_OBJECT, $item, kTYPE_INT ) );
 				
 				//
-				// Iterate recordset.
+				// Execute query.
 				//
 				$cursor = $container->Query( $cur_query );
-				$count += $cursor->count( FALSE );
-				foreach( $cursor as $object )
+				$found = $cursor->count( FALSE );
+				
+				//
+				// Handle enumerations.
+				//
+				if( $found )
 				{
 					//
-					// Convert to tag object.
+					// Increment count.
 					//
-					$object = CPersistentObject::DocumentObject( $object );
-			
-					//
-					// Load related data.
-					//
-					$this->_ExportEdge( $results, $object );
-			
-					//
-					// Save related identifier.
-					//
-					$results[ kAPI_COLLECTION_ID ][] = $object->NID();
-					
-					//
-					// Append object to reference list.
-					//
-					$reflist[] = $object->NID();
+					$count += $found;
 				
-				} // Iterating recordset.
-		
+					//
+					// Iterate recordset.
+					//
+					foreach( $cursor as $object )
+					{
+						//
+						// Convert to tag object.
+						//
+						$object = CPersistentObject::DocumentObject( $object );
+			
+						//
+						// Load related data.
+						//
+						$this->_ExportEdge( $results, $object );
+					
+						//
+						// Append object to reference list.
+						//
+						$tmp = $object->Subject();
+						$reflist[ $tmp ] = $tmp;
+				
+					} // Iterating recordset.
+				
+				} // Found enumerations.
+			
 			} // Traversing enumerations.
 			
 			//
@@ -2524,6 +2544,11 @@ class COntologyWrapper extends CDataWrapper
 			//
 			if( isset( $results ) )
 			{
+				//
+				// Set reference identifiers.
+				//
+				$results[ kAPI_COLLECTION_ID ] = $ids;
+				
 				//
 				// Set results.
 				//
