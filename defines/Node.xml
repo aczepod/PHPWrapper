@@ -331,6 +331,37 @@
             <element variable="kTAG_PREDICATE">:ATTRIBUTE-OF</element>
             <element variable="kTAG_OBJECT">:_nodes</element>
         </EDGE>
+
+        <EDGE>
+            <element variable="kTAG_SUBJECT">:INPUT-TEXT</element>
+            <element variable="kTAG_PREDICATE">:ENUM-OF</element>
+            <element variable="kTAG_OBJECT" node="pid">:_nodes.:INPUT</element>
+        </EDGE>
+        <EDGE>
+            <element variable="kTAG_SUBJECT">:INPUT-TEXTAREA</element>
+            <element variable="kTAG_PREDICATE">:ENUM-OF</element>
+            <element variable="kTAG_OBJECT" node="pid">:_nodes.:INPUT</element>
+        </EDGE>
+        <EDGE>
+            <element variable="kTAG_SUBJECT">:INPUT-CHOICE</element>
+            <element variable="kTAG_PREDICATE">:ENUM-OF</element>
+            <element variable="kTAG_OBJECT" node="pid">:_nodes.:INPUT</element>
+        </EDGE>
+        <EDGE>
+            <element variable="kTAG_SUBJECT">:INPUT-MULTIPLE</element>
+            <element variable="kTAG_PREDICATE">:ENUM-OF</element>
+            <element variable="kTAG_OBJECT" node="pid">:_nodes.:INPUT</element>
+        </EDGE>
+        <EDGE>
+            <element variable="kTAG_SUBJECT">:INPUT-RADIO</element>
+            <element variable="kTAG_PREDICATE">:ENUM-OF</element>
+            <element variable="kTAG_OBJECT" node="pid">:_nodes.:INPUT</element>
+        </EDGE>
+        <EDGE>
+            <element variable="kTAG_SUBJECT">:INPUT-CHECKBOX</element>
+            <element variable="kTAG_PREDICATE">:ENUM-OF</element>
+            <element variable="kTAG_OBJECT" node="pid">:_nodes.:INPUT</element>
+        </EDGE>
     </UNIT>
         
 	<!-- kTAG_PATTERN -->
