@@ -70,7 +70,7 @@
 				<item>NLD</item>
 			</element>
     	</NODE>
-		<EDGE>
+    	<EDGE master="false">
             <element variable="kTAG_SUBJECT" node="pid">MCPD:NICODE</element>
 			<element variable="kTAG_PREDICATE">:SUBCLASS-OF</element>
 			<element variable="kTAG_OBJECT">MCPD</element>
@@ -259,7 +259,7 @@
 				<item>Allium</item>
 			</element>
 		</NODE>
-		<EDGE>
+		<EDGE master="false">
             <element variable="kTAG_SUBJECT" node="pid">MCPD:GENUS</element>
 			<element variable="kTAG_PREDICATE">:SUBCLASS-OF</element>
 			<element variable="kTAG_OBJECT">MCPD</element>
@@ -284,7 +284,7 @@
 				<item>paniculatum</item>
 			</element>
     	</NODE>
-		<EDGE>
+    	<EDGE master="false">
             <element variable="kTAG_SUBJECT" node="pid">MCPD:SPECIES</element>
 			<element variable="kTAG_PREDICATE">:SUBCLASS-OF</element>
 			<element variable="kTAG_OBJECT">MCPD</element>
@@ -314,7 +314,7 @@
 				<item>L.</item>
 			</element>
     	</NODE>
-		<EDGE>
+    	<EDGE master="false">
             <element variable="kTAG_SUBJECT" node="pid">MCPD:SPAUTHOR</element>
 			<element variable="kTAG_PREDICATE">:SUBCLASS-OF</element>
 			<element variable="kTAG_OBJECT">MCPD</element>
@@ -343,7 +343,7 @@
 				<item>subsp. fuscum</item>
 			</element>
     	</NODE>
-		<EDGE>
+    	<EDGE master="false">
             <element variable="kTAG_SUBJECT" node="pid">MCPD:SUBTAXA</element>
 			<element variable="kTAG_PREDICATE">:SUBCLASS-OF</element>
 			<element variable="kTAG_OBJECT">MCPD</element>
@@ -372,7 +372,7 @@
 				<item>(Waldst. et Kit.) Arc.</item>
 			</element>
     	</NODE>
-		<EDGE>
+    	<EDGE master="false">
             <element variable="kTAG_SUBJECT" node="pid">MCPD:SUBTAUTHOR</element>
 			<element variable="kTAG_PREDICATE">:SUBCLASS-OF</element>
 			<element variable="kTAG_OBJECT">MCPD</element>

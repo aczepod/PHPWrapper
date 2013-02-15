@@ -645,7 +645,7 @@
 				<item>Vicia</item>
 			</element>
 		</NODE>
-		<EDGE>
+		<EDGE master="false">
             <element variable="kTAG_SUBJECT" node="pid">LR:GENUS</element>
 			<element variable="kTAG_PREDICATE">:SUBCLASS-OF</element>
 			<element variable="kTAG_OBJECT">LR:TAXONOMY</element>
@@ -676,7 +676,7 @@
 				<item>faba</item>
 			</element>
 		</NODE>
-		<EDGE>
+		<EDGE master="false">
             <element variable="kTAG_SUBJECT" node="pid">LR:SPECIES</element>
 			<element variable="kTAG_PREDICATE">:SUBCLASS-OF</element>
 			<element variable="kTAG_OBJECT">LR:TAXONOMY</element>
@@ -707,7 +707,7 @@
 				<item>L.</item>
 			</element>
 		</NODE>
-		<EDGE>
+		<EDGE master="false">
             <element variable="kTAG_SUBJECT" node="pid">LR:SPAUTHOR</element>
 			<element variable="kTAG_PREDICATE">:SUBCLASS-OF</element>
 			<element variable="kTAG_OBJECT">LR:TAXONOMY</element>
@@ -737,7 +737,7 @@
 				<item>subsp. faba var. minuta</item>
 			</element>
 		</NODE>
-		<EDGE>
+		<EDGE master="false">
             <element variable="kTAG_SUBJECT" node="pid">LR:SUBTAXA</element>
 			<element variable="kTAG_PREDICATE">:SUBCLASS-OF</element>
 			<element variable="kTAG_OBJECT">LR:TAXONOMY</element>
@@ -767,7 +767,7 @@
 				<item>(hort. ex Alef.) Mansf.</item>
 			</element>
 		</NODE>
-		<EDGE>
+		<EDGE master="false">
             <element variable="kTAG_SUBJECT" node="pid">LR:SUBTAUTHOR</element>
 			<element variable="kTAG_PREDICATE">:SUBCLASS-OF</element>
 			<element variable="kTAG_OBJECT">LR:TAXONOMY</element>
