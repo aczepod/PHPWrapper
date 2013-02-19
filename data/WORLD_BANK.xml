@@ -1,0 +1,627 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ONTOLOGY
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:noNamespaceSchemaLocation="file:/Library/WebServer/Library/PHPWrapper/defines/Ontology.xsd">
+    
+	<!-- WORLD BANK -->
+	
+	<UNIT>
+		<TERM LID="WBI">
+			<element variable="kTAG_KIND">
+				<item>:KIND-NAMESPACE</item>
+			</element>
+			<element variable="kTAG_LABEL">
+				<item key="en">World Bank Institute</item>
+			</element>
+			<element variable="kTAG_DEFINITION">
+				<item key="en">The World Bank Institute (WBI) is a global connector of knowledge, learning and innovation for poverty reduction. It is part of the World Bank Group. It connects practitioners, networks and institutions to help them find solutions to their development challenges.</item>
+			</element>
+		</TERM>
+		<NODE class="COntologyMasterVertex">
+			<element variable="kTAG_KIND">
+				<item>:KIND-ROOT</item>
+			</element>
+		</NODE>
+	</UNIT>
+
+	<!-- INCOME CLASSIFICATION GROUPS -->
+	<UNIT>
+		<TERM LID="INCOME-GROUP" NS="WBI">
+			<element variable="kTAG_LABEL">
+				<item key="en">Country income classification groups</item>
+			</element>
+			<element variable="kTAG_DEFINITION">
+				<item key="en">For operational and analytical purposes, the World Bank’s main criterion for classifying economies is gross national income (GNI) per capita. In previous editions of our publications, this term was referred to as gross national product, or GNP. Based on its GNI per capita, every economy is classified as low income, middle income (subdivided into lower middle and upper middle), or high income. Other analytical groups based on geographic regions are also used.</item>
+			</element>
+		</TERM>
+		<NODE class="COntologyMasterVertex">
+			<element variable="kTAG_KIND">
+			    <item>:KIND-FEATURE</item>
+			    <item>:KIND-SCALE</item>
+			</element>
+			<element variable="kTAG_TYPE">
+				<item>:ENUM</item>
+			</element>
+		</NODE>
+		<EDGE>
+			<element variable="kTAG_PREDICATE">:SUBCLASS-OF</element>
+			<element variable="kTAG_OBJECT">WBI</element>
+		</EDGE>
+	</UNIT>
+	<UNIT>
+		<TERM LID="LIC" NS="WBI:INCOME-GROUP">
+			<element variable="kTAG_KIND">
+				<item>:KIND-ENUMERATION</item>
+			</element>
+			<element variable="kTAG_LABEL">
+				<item key="en">Low income</item>
+			</element>
+		</TERM>
+		<NODE class="COntologyMasterVertex">
+			<element variable="kTAG_KIND">
+				<item>:KIND-ENUMERATION</item>
+			</element>
+		</NODE>
+		<EDGE>
+			<element variable="kTAG_PREDICATE">:ENUM-OF</element>
+			<element variable="kTAG_OBJECT">WBI:INCOME-GROUP</element>
+		</EDGE>
+	</UNIT>
+	<UNIT>
+		<TERM LID="MIC" NS="WBI:INCOME-GROUP">
+			<element variable="kTAG_KIND">
+				<item>:KIND-ENUMERATION</item>
+			</element>
+			<element variable="kTAG_LABEL">
+				<item key="en">Middle income</item>
+			</element>
+		</TERM>
+		<NODE class="COntologyMasterVertex">
+			<element variable="kTAG_KIND">
+				<item>:KIND-ENUMERATION</item>
+			</element>
+		</NODE>
+		<EDGE>
+			<element variable="kTAG_PREDICATE">:ENUM-OF</element>
+			<element variable="kTAG_OBJECT">WBI:INCOME-GROUP</element>
+		</EDGE>
+	</UNIT>
+	<UNIT>
+		<TERM LID="LMY" NS="WBI:INCOME-GROUP">
+			<element variable="kTAG_KIND">
+				<item>:KIND-ENUMERATION</item>
+			</element>
+			<element variable="kTAG_LABEL">
+				<item key="en">Low & middle income</item>
+			</element>
+		</TERM>
+		<NODE class="COntologyMasterVertex">
+			<element variable="kTAG_KIND">
+				<item>:KIND-ENUMERATION</item>
+			</element>
+		</NODE>
+		<EDGE>
+			<element variable="kTAG_PREDICATE">:ENUM-OF</element>
+			<element variable="kTAG_OBJECT">WBI:INCOME-GROUP</element>
+		</EDGE>
+	</UNIT>
+	<UNIT>
+		<TERM LID="HIC" NS="WBI:INCOME-GROUP">
+			<element variable="kTAG_KIND">
+				<item>:KIND-ENUMERATION</item>
+			</element>
+			<element variable="kTAG_LABEL">
+				<item key="en">High income</item>
+			</element>
+		</TERM>
+		<NODE class="COntologyMasterVertex">
+			<element variable="kTAG_KIND">
+				<item>:KIND-ENUMERATION</item>
+			</element>
+		</NODE>
+		<EDGE>
+			<element variable="kTAG_PREDICATE">:ENUM-OF</element>
+			<element variable="kTAG_OBJECT">WBI:INCOME-GROUP</element>
+		</EDGE>
+	</UNIT>
+	<UNIT>
+		<TERM LID="HPC" NS="WBI:INCOME-GROUP">
+			<element variable="kTAG_KIND">
+				<item>:KIND-ENUMERATION</item>
+			</element>
+			<element variable="kTAG_LABEL">
+				<item key="en">Heavily indebted poor countries (HIPC)</item>
+			</element>
+		</TERM>
+		<NODE class="COntologyMasterVertex">
+			<element variable="kTAG_KIND">
+				<item>:KIND-ENUMERATION</item>
+			</element>
+		</NODE>
+		<EDGE>
+			<element variable="kTAG_PREDICATE">:ENUM-OF</element>
+			<element variable="kTAG_OBJECT">WBI:INCOME-GROUP</element>
+		</EDGE>
+	</UNIT>
+	<UNIT>
+		<TERM LID="LDC" NS="WBI:INCOME-GROUP">
+			<element variable="kTAG_KIND">
+				<item>:KIND-ENUMERATION</item>
+			</element>
+			<element variable="kTAG_LABEL">
+				<item key="en">Least developed countries: UN classification</item>
+			</element>
+		</TERM>
+		<NODE class="COntologyMasterVertex">
+			<element variable="kTAG_KIND">
+				<item>:KIND-ENUMERATION</item>
+			</element>
+		</NODE>
+		<EDGE>
+			<element variable="kTAG_PREDICATE">:ENUM-OF</element>
+			<element variable="kTAG_OBJECT">WBI:INCOME-GROUP</element>
+		</EDGE>
+	</UNIT>
+	<UNIT>
+		<TERM LID="ARB" NS="WBI:INCOME-GROUP">
+			<element variable="kTAG_KIND">
+				<item>:KIND-ENUMERATION</item>
+			</element>
+			<element variable="kTAG_LABEL">
+				<item key="en">Arab world</item>
+			</element>
+		</TERM>
+		<NODE class="COntologyMasterVertex">
+			<element variable="kTAG_KIND">
+				<item>:KIND-ENUMERATION</item>
+			</element>
+		</NODE>
+		<EDGE>
+			<element variable="kTAG_PREDICATE">:ENUM-OF</element>
+			<element variable="kTAG_OBJECT">WBI:INCOME-GROUP</element>
+		</EDGE>
+	</UNIT>
+	<UNIT>
+		<TERM LID="EAS" NS="WBI:INCOME-GROUP">
+			<element variable="kTAG_KIND">
+				<item>:KIND-ENUMERATION</item>
+			</element>
+			<element variable="kTAG_LABEL">
+				<item key="en">East Asia & Pacific (all income levels)</item>
+			</element>
+		</TERM>
+		<NODE class="COntologyMasterVertex">
+			<element variable="kTAG_KIND">
+				<item>:KIND-ENUMERATION</item>
+			</element>
+		</NODE>
+		<EDGE>
+			<element variable="kTAG_PREDICATE">:ENUM-OF</element>
+			<element variable="kTAG_OBJECT">WBI:INCOME-GROUP</element>
+		</EDGE>
+	</UNIT>
+	<UNIT>
+		<TERM LID="ECS" NS="WBI:INCOME-GROUP">
+			<element variable="kTAG_KIND">
+				<item>:KIND-ENUMERATION</item>
+			</element>
+			<element variable="kTAG_LABEL">
+				<item key="en">Europe & Central Asia (all income levels)</item>
+			</element>
+		</TERM>
+		<NODE class="COntologyMasterVertex">
+			<element variable="kTAG_KIND">
+				<item>:KIND-ENUMERATION</item>
+			</element>
+		</NODE>
+		<EDGE>
+			<element variable="kTAG_PREDICATE">:ENUM-OF</element>
+			<element variable="kTAG_OBJECT">WBI:INCOME-GROUP</element>
+		</EDGE>
+	</UNIT>
+	<UNIT>
+		<TERM LID="EUU" NS="WBI:INCOME-GROUP">
+			<element variable="kTAG_KIND">
+				<item>:KIND-ENUMERATION</item>
+			</element>
+			<element variable="kTAG_LABEL">
+				<item key="en">European union</item>
+			</element>
+		</TERM>
+		<NODE class="COntologyMasterVertex">
+			<element variable="kTAG_KIND">
+				<item>:KIND-ENUMERATION</item>
+			</element>
+		</NODE>
+		<EDGE>
+			<element variable="kTAG_PREDICATE">:ENUM-OF</element>
+			<element variable="kTAG_OBJECT">WBI:INCOME-GROUP</element>
+		</EDGE>
+	</UNIT>
+	<UNIT>
+		<TERM LID="LCN" NS="WBI:INCOME-GROUP">
+			<element variable="kTAG_KIND">
+				<item>:KIND-ENUMERATION</item>
+			</element>
+			<element variable="kTAG_LABEL">
+				<item key="en">Latin America & the Caribbean (all income levels)</item>
+			</element>
+		</TERM>
+		<NODE class="COntologyMasterVertex">
+			<element variable="kTAG_KIND">
+				<item>:KIND-ENUMERATION</item>
+			</element>
+		</NODE>
+		<EDGE>
+			<element variable="kTAG_PREDICATE">:ENUM-OF</element>
+			<element variable="kTAG_OBJECT">WBI:INCOME-GROUP</element>
+		</EDGE>
+	</UNIT>
+	<UNIT>
+		<TERM LID="MEA" NS="WBI:INCOME-GROUP">
+			<element variable="kTAG_KIND">
+				<item>:KIND-ENUMERATION</item>
+			</element>
+			<element variable="kTAG_LABEL">
+				<item key="en">Middle East & North Africa (all income levels)</item>
+			</element>
+		</TERM>
+		<NODE class="COntologyMasterVertex">
+			<element variable="kTAG_KIND">
+				<item>:KIND-ENUMERATION</item>
+			</element>
+		</NODE>
+		<EDGE>
+			<element variable="kTAG_PREDICATE">:ENUM-OF</element>
+			<element variable="kTAG_OBJECT">WBI:INCOME-GROUP</element>
+		</EDGE>
+	</UNIT>
+	<UNIT>
+		<TERM LID="NAC" NS="WBI:INCOME-GROUP">
+			<element variable="kTAG_KIND">
+				<item>:KIND-ENUMERATION</item>
+			</element>
+			<element variable="kTAG_LABEL">
+				<item key="en">North America</item>
+			</element>
+		</TERM>
+		<NODE class="COntologyMasterVertex">
+			<element variable="kTAG_KIND">
+				<item>:KIND-ENUMERATION</item>
+			</element>
+		</NODE>
+		<EDGE>
+			<element variable="kTAG_PREDICATE">:ENUM-OF</element>
+			<element variable="kTAG_OBJECT">WBI:INCOME-GROUP</element>
+		</EDGE>
+	</UNIT>
+	<UNIT>
+		<TERM LID="OED" NS="WBI:INCOME-GROUP">
+			<element variable="kTAG_KIND">
+				<item>:KIND-ENUMERATION</item>
+			</element>
+			<element variable="kTAG_LABEL">
+				<item key="en">OECD members</item>
+			</element>
+		</TERM>
+		<NODE class="COntologyMasterVertex">
+			<element variable="kTAG_KIND">
+				<item>:KIND-ENUMERATION</item>
+			</element>
+		</NODE>
+		<EDGE>
+			<element variable="kTAG_PREDICATE">:ENUM-OF</element>
+			<element variable="kTAG_OBJECT">WBI:INCOME-GROUP</element>
+		</EDGE>
+	</UNIT>
+	<UNIT>
+		<TERM LID="SSF" NS="WBI:INCOME-GROUP">
+			<element variable="kTAG_KIND">
+				<item>:KIND-ENUMERATION</item>
+			</element>
+			<element variable="kTAG_LABEL">
+				<item key="en">Sub-Saharan Africa (all income levels)</item>
+			</element>
+		</TERM>
+		<NODE class="COntologyMasterVertex">
+			<element variable="kTAG_KIND">
+				<item>:KIND-ENUMERATION</item>
+			</element>
+		</NODE>
+		<EDGE>
+			<element variable="kTAG_PREDICATE">:ENUM-OF</element>
+			<element variable="kTAG_OBJECT">WBI:INCOME-GROUP</element>
+		</EDGE>
+	</UNIT>
+	<UNIT>
+		<TERM LID="EMU" NS="WBI:INCOME-GROUP">
+			<element variable="kTAG_KIND">
+				<item>:KIND-ENUMERATION</item>
+			</element>
+			<element variable="kTAG_LABEL">
+				<item key="en">European Monetary Union</item>
+			</element>
+		</TERM>
+		<NODE class="COntologyMasterVertex">
+			<element variable="kTAG_KIND">
+				<item>:KIND-ENUMERATION</item>
+			</element>
+		</NODE>
+		<EDGE>
+			<element variable="kTAG_PREDICATE">:ENUM-OF</element>
+			<element variable="kTAG_OBJECT">WBI:INCOME-GROUP:HIC</element>
+		</EDGE>
+	</UNIT>
+	<UNIT>
+		<TERM LID="OEC" NS="WBI:INCOME-GROUP">
+			<element variable="kTAG_KIND">
+				<item>:KIND-ENUMERATION</item>
+			</element>
+			<element variable="kTAG_LABEL">
+				<item key="en">High income: OECD</item>
+			</element>
+		</TERM>
+		<NODE class="COntologyMasterVertex">
+			<element variable="kTAG_KIND">
+				<item>:KIND-ENUMERATION</item>
+			</element>
+		</NODE>
+		<EDGE>
+			<element variable="kTAG_PREDICATE">:ENUM-OF</element>
+			<element variable="kTAG_OBJECT">WBI:INCOME-GROUP:HIC</element>
+		</EDGE>
+	</UNIT>
+	<UNIT>
+		<TERM LID="NOC" NS="WBI:INCOME-GROUP">
+			<element variable="kTAG_KIND">
+				<item>:KIND-ENUMERATION</item>
+			</element>
+			<element variable="kTAG_LABEL">
+				<item key="en">High income: non OECD</item>
+			</element>
+		</TERM>
+		<NODE class="COntologyMasterVertex">
+			<element variable="kTAG_KIND">
+				<item>:KIND-ENUMERATION</item>
+			</element>
+		</NODE>
+		<EDGE>
+			<element variable="kTAG_PREDICATE">:ENUM-OF</element>
+			<element variable="kTAG_OBJECT">WBI:INCOME-GROUP:HIC</element>
+		</EDGE>
+	</UNIT>
+	<UNIT>
+		<TERM LID="EAP" NS="WBI:INCOME-GROUP">
+			<element variable="kTAG_KIND">
+				<item>:KIND-ENUMERATION</item>
+			</element>
+			<element variable="kTAG_LABEL">
+				<item key="en">East Asia & Pacific</item>
+			</element>
+		</TERM>
+		<NODE class="COntologyMasterVertex">
+			<element variable="kTAG_KIND">
+				<item>:KIND-ENUMERATION</item>
+			</element>
+		</NODE>
+		<EDGE>
+			<element variable="kTAG_PREDICATE">:ENUM-OF</element>
+			<element variable="kTAG_OBJECT">WBI:INCOME-GROUP:LMY</element>
+		</EDGE>
+	</UNIT>
+	<UNIT>
+		<TERM LID="ECA" NS="WBI:INCOME-GROUP">
+			<element variable="kTAG_KIND">
+				<item>:KIND-ENUMERATION</item>
+			</element>
+			<element variable="kTAG_LABEL">
+				<item key="en">Europe & Central Asia</item>
+			</element>
+		</TERM>
+		<NODE class="COntologyMasterVertex">
+			<element variable="kTAG_KIND">
+				<item>:KIND-ENUMERATION</item>
+			</element>
+		</NODE>
+		<EDGE>
+			<element variable="kTAG_PREDICATE">:ENUM-OF</element>
+			<element variable="kTAG_OBJECT">WBI:INCOME-GROUP:LMY</element>
+		</EDGE>
+	</UNIT>
+	<UNIT>
+		<TERM LID="LAC" NS="WBI:INCOME-GROUP">
+			<element variable="kTAG_KIND">
+				<item>:KIND-ENUMERATION</item>
+			</element>
+			<element variable="kTAG_LABEL">
+				<item key="en">Latin America & Caribbean</item>
+			</element>
+		</TERM>
+		<NODE class="COntologyMasterVertex">
+			<element variable="kTAG_KIND">
+				<item>:KIND-ENUMERATION</item>
+			</element>
+		</NODE>
+		<EDGE>
+			<element variable="kTAG_PREDICATE">:ENUM-OF</element>
+			<element variable="kTAG_OBJECT">WBI:INCOME-GROUP:LMY</element>
+		</EDGE>
+	</UNIT>
+	<UNIT>
+		<TERM LID="MNA" NS="WBI:INCOME-GROUP">
+			<element variable="kTAG_KIND">
+				<item>:KIND-ENUMERATION</item>
+			</element>
+			<element variable="kTAG_LABEL">
+				<item key="en">Middle East & North Africa</item>
+			</element>
+		</TERM>
+		<NODE class="COntologyMasterVertex">
+			<element variable="kTAG_KIND">
+				<item>:KIND-ENUMERATION</item>
+			</element>
+		</NODE>
+		<EDGE>
+			<element variable="kTAG_PREDICATE">:ENUM-OF</element>
+			<element variable="kTAG_OBJECT">WBI:INCOME-GROUP:LMY</element>
+		</EDGE>
+	</UNIT>
+	<UNIT>
+		<TERM LID="SAS" NS="WBI:INCOME-GROUP">
+			<element variable="kTAG_KIND">
+				<item>:KIND-ENUMERATION</item>
+			</element>
+			<element variable="kTAG_LABEL">
+				<item key="en">South Asia</item>
+			</element>
+		</TERM>
+		<NODE class="COntologyMasterVertex">
+			<element variable="kTAG_KIND">
+				<item>:KIND-ENUMERATION</item>
+			</element>
+		</NODE>
+		<EDGE>
+			<element variable="kTAG_PREDICATE">:ENUM-OF</element>
+			<element variable="kTAG_OBJECT">WBI:INCOME-GROUP:LMY</element>
+		</EDGE>
+	</UNIT>
+	<UNIT>
+		<TERM LID="SSA" NS="WBI:INCOME-GROUP">
+			<element variable="kTAG_KIND">
+				<item>:KIND-ENUMERATION</item>
+			</element>
+			<element variable="kTAG_LABEL">
+				<item key="en">Sub-Saharan Africa</item>
+			</element>
+		</TERM>
+		<NODE class="COntologyMasterVertex">
+			<element variable="kTAG_KIND">
+				<item>:KIND-ENUMERATION</item>
+			</element>
+		</NODE>
+		<EDGE>
+			<element variable="kTAG_PREDICATE">:ENUM-OF</element>
+			<element variable="kTAG_OBJECT">WBI:INCOME-GROUP:LMY</element>
+		</EDGE>
+	</UNIT>
+	<UNIT>
+		<TERM LID="LMC" NS="WBI:INCOME-GROUP">
+			<element variable="kTAG_KIND">
+				<item>:KIND-ENUMERATION</item>
+			</element>
+			<element variable="kTAG_LABEL">
+				<item key="en">Lower middle income</item>
+			</element>
+		</TERM>
+		<NODE class="COntologyMasterVertex">
+			<element variable="kTAG_KIND">
+				<item>:KIND-ENUMERATION</item>
+			</element>
+		</NODE>
+		<EDGE>
+			<element variable="kTAG_PREDICATE">:ENUM-OF</element>
+			<element variable="kTAG_OBJECT">WBI:INCOME-GROUP:MIC</element>
+		</EDGE>
+	</UNIT>
+	<UNIT>
+		<TERM LID="UMC" NS="WBI:INCOME-GROUP">
+			<element variable="kTAG_KIND">
+				<item>:KIND-ENUMERATION</item>
+			</element>
+			<element variable="kTAG_LABEL">
+				<item key="en">Upper middle income</item>
+			</element>
+		</TERM>
+		<NODE class="COntologyMasterVertex">
+			<element variable="kTAG_KIND">
+				<item>:KIND-ENUMERATION</item>
+			</element>
+		</NODE>
+		<EDGE>
+			<element variable="kTAG_PREDICATE">:ENUM-OF</element>
+			<element variable="kTAG_OBJECT">WBI:INCOME-GROUP:MIC</element>
+		</EDGE>
+	</UNIT>
+
+	<!-- LENDING CATEGORY GROUPS -->
+	<UNIT>
+		<TERM LID="LENDING-GROUP" NS="WBI">
+			<element variable="kTAG_LABEL">
+				<item key="en">Lending category groups</item>
+			</element>
+			<element variable="kTAG_DEFINITION">
+				<item key="en">IDA countries are those that had a per capita income in 2011 of less than $1,195 and lack the financial ability to borrow from IBRD. IDA loans are deeply concessional—interest-free loans and grants for programs aimed at boosting economic growth and improving living conditions. IBRD loans are noncessional. Blend countries are eligible for IDA loans because of their low per capita incomes but are also eligible for IBRD loans because they are financially creditworthy.</item>
+			</element>
+		</TERM>
+		<NODE class="COntologyMasterVertex">
+			<element variable="kTAG_KIND">
+			    <item>:KIND-FEATURE</item>
+			    <item>:KIND-SCALE</item>
+			</element>
+			<element variable="kTAG_TYPE">
+				<item>:ENUM</item>
+			</element>
+		</NODE>
+		<EDGE>
+			<element variable="kTAG_PREDICATE">:SUBCLASS-OF</element>
+			<element variable="kTAG_OBJECT">WBI</element>
+		</EDGE>
+	</UNIT>
+	<UNIT>
+		<TERM LID="IDA" NS="WBI:LENDING-GROUP">
+			<element variable="kTAG_KIND">
+				<item>:KIND-ENUMERATION</item>
+			</element>
+			<element variable="kTAG_LABEL">
+				<item key="en">Deeply concessional</item>
+			</element>
+		</TERM>
+		<NODE class="COntologyMasterVertex">
+			<element variable="kTAG_KIND">
+				<item>:KIND-ENUMERATION</item>
+			</element>
+		</NODE>
+		<EDGE>
+			<element variable="kTAG_PREDICATE">:ENUM-OF</element>
+			<element variable="kTAG_OBJECT">WBI:LENDING-GROUP</element>
+		</EDGE>
+	</UNIT>
+	<UNIT>
+		<TERM LID="IBRD" NS="WBI:LENDING-GROUP">
+			<element variable="kTAG_KIND">
+				<item>:KIND-ENUMERATION</item>
+			</element>
+			<element variable="kTAG_LABEL">
+				<item key="en">Non concessional</item>
+			</element>
+		</TERM>
+		<NODE class="COntologyMasterVertex">
+			<element variable="kTAG_KIND">
+				<item>:KIND-ENUMERATION</item>
+			</element>
+		</NODE>
+		<EDGE>
+			<element variable="kTAG_PREDICATE">:ENUM-OF</element>
+			<element variable="kTAG_OBJECT">WBI:LENDING-GROUP</element>
+		</EDGE>
+	</UNIT>
+	<UNIT>
+		<TERM LID="Blend" NS="WBI:LENDING-GROUP">
+			<element variable="kTAG_KIND">
+				<item>:KIND-ENUMERATION</item>
+			</element>
+			<element variable="kTAG_LABEL">
+				<item key="en">Eligible for IDA loans</item>
+			</element>
+		</TERM>
+		<NODE class="COntologyMasterVertex">
+			<element variable="kTAG_KIND">
+				<item>:KIND-ENUMERATION</item>
+			</element>
+		</NODE>
+		<EDGE>
+			<element variable="kTAG_PREDICATE">:ENUM-OF</element>
+			<element variable="kTAG_OBJECT">WBI:LENDING-GROUP</element>
+		</EDGE>
+	</UNIT>
+</ONTOLOGY>

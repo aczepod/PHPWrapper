@@ -104,6 +104,16 @@
                     </xs:documentation>
                 </xs:annotation>
             </xs:attribute>
+            
+            <xs:attribute name="modify" type="xs:string">
+                <xs:annotation>
+                    <xs:documentation xml:lang="en">
+                        Term global identifier. If provided it means that the operations to be
+                        applied to the term are modifications and not insertion: all the elements
+                        contained in the term will either replace or be added to the term.
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:attribute>
         </xs:complexType>
     </xs:element>
     
@@ -144,6 +154,20 @@
                         Term reference, should refer to the global identifier of the term;
                         if omitted, there may be only one term in the current unit and that
                         term will be implicitly used as the node's term reference.
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:attribute>
+            
+            <xs:attribute name="modify" type="xs:string">
+                <xs:annotation>
+                    <xs:documentation xml:lang="en">
+                        Either the node PID, if the term was not provided, or any other value.
+                        If provided it means that the operations to beapplied to the node are
+                        modifications and not insertion: all the elements contained in the node
+                        will either replace or be added to the node.
+                        I the term attribute is present, the value of this attribute will be
+                        ignored; if the term attribute is missing, the value of this attribute
+                        will be interpreted as the node's PID.
                     </xs:documentation>
                 </xs:annotation>
             </xs:attribute>

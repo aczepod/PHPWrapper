@@ -824,22 +824,49 @@ class COntology extends CConnection
 										 SimpleXMLElement $theElement )
 	{
 		//
-		// Instantiate term.
+		// Handle modification.
 		//
-		$object = new COntologyTerm();
+		if( $theElement[ 'modify' ] !== NULL )
+		{
+			//
+			// Check identifier.
+			//
+			$id
+				= COntologyTerm::Resolve(
+					$theDatabase, (string) $theElement[ 'modify' ], NULL, TRUE )
+						->NID();
+			
+			//
+			// Instantiate term.
+			//
+			$object = new COntologyTerm();
+		
+		} // Modify.
 		
 		//
-		// Handle namespace.
+		// Handle insert.
 		//
-		if( $theElement[ 'NS' ] !== NULL )
-			$object->NS(
-				COntologyTerm::Resolve(
-					$theDatabase, (string) $theElement[ 'NS' ], NULL, TRUE ) );
+		else
+		{
+			//
+			// Instantiate term.
+			//
+			$object = new COntologyTerm();
 		
-		//
-		// Handle local identifier.
-		//
-		$object->LID( (string) $theElement[ 'LID' ] );
+			//
+			// Handle namespace.
+			//
+			if( $theElement[ 'NS' ] !== NULL )
+				$object->NS(
+					COntologyTerm::Resolve(
+						$theDatabase, (string) $theElement[ 'NS' ], NULL, TRUE ) );
+		
+			//
+			// Handle local identifier.
+			//
+			$object->LID( (string) $theElement[ 'LID' ] );
+		
+		} // Insert.
 		
 		//
 		// Handle other elements.
@@ -857,6 +884,10 @@ class COntology extends CConnection
 				switch( $tag = (string) $element[ 'tag' ] )
 				{
 					case kTAG_NAMESPACE:
+						if( $theElement[ 'modify' ] !== NULL )
+							throw new Exception
+								( "The namespace cannot be modified",
+								  kERROR_PARAMETER );							// !@! ==>
 						if( strlen( $data = (string) $element ) )
 							$object->NS(
 								COntologyTerm::Resolve(
@@ -868,6 +899,10 @@ class COntology extends CConnection
 						break;
 				
 					case kTAG_LID:
+						if( $theElement[ 'modify' ] !== NULL )
+							throw new Exception
+								( "The local identifier cannot be modified",
+								  kERROR_PARAMETER );							// !@! ==>
 						if( strlen( $data = (string) $element ) )
 							$object->LID( $data );
 						else
@@ -877,6 +912,10 @@ class COntology extends CConnection
 						break;
 				
 					case kTAG_TERM:
+						if( $theElement[ 'modify' ] !== NULL )
+							throw new Exception
+								( "The master term cannot be modified",
+								  kERROR_PARAMETER );							// !@! ==>
 						if( strlen( $data = (string) $element ) )
 							$object->Term(
 								COntologyTerm::Resolve(
@@ -990,6 +1029,10 @@ class COntology extends CConnection
 				switch( $variable = (string) $element[ 'variable' ] )
 				{
 					case 'kTAG_NAMESPACE':
+						if( $theElement[ 'modify' ] !== NULL )
+							throw new Exception
+								( "The namespace cannot be modified",
+								  kERROR_PARAMETER );							// !@! ==>
 						if( strlen( $data = (string) $element ) )
 							$object->NS(
 								COntologyTerm::Resolve(
@@ -1002,6 +1045,10 @@ class COntology extends CConnection
 						break;
 				
 					case 'kTAG_LID':
+						if( $theElement[ 'modify' ] !== NULL )
+							throw new Exception
+								( "The local identifier cannot be modified",
+								  kERROR_PARAMETER );							// !@! ==>
 						if( strlen( $data = (string) $element ) )
 							$object->LID( $data );
 						else
@@ -1011,6 +1058,10 @@ class COntology extends CConnection
 						break;
 				
 					case 'kTAG_TERM':
+						if( $theElement[ 'modify' ] !== NULL )
+							throw new Exception
+								( "The master term cannot be modified",
+								  kERROR_PARAMETER );							// !@! ==>
 						if( strlen( $data = (string) $element ) )
 							$object->Term(
 								COntologyTerm::Resolve(
@@ -1098,14 +1149,39 @@ class COntology extends CConnection
 		} // Iterating object elements.
 		
 		//
-		// Save term.
+		// Handle modification.
 		//
-		$object->Insert( $theDatabase );
+		if( $theElement[ 'modify' ] !== NULL )
+		{
+			//
+			// Extract array.
+			//
+			$object = $object->getArrayCopy();
+			
+			//
+			// Modify object.
+			//
+			$theDatabase->Container( COntologyTerm::DefaultContainerName() )
+				->ManageObject( $object, $id, kFLAG_PERSIST_MODIFY );
+		
+		} // Modify.
 		
 		//
-		// Load cache.
+		// Insert.
 		//
-		$theCache[ 'term' ][] = $object;
+		else
+		{
+			//
+			// Save term.
+			//
+			$object->Insert( $theDatabase );
+		
+			//
+			// Load cache.
+			//
+			$theCache[ 'term' ][] = $object;
+		
+		} // Insert.
 
 	} // LoadXMLOntologyTerm.
 

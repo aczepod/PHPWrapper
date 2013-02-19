@@ -748,6 +748,11 @@ class COntologyNode extends CNode
 		if( $theIdentifier !== NULL )
 		{
 			//
+			// Save identifier.
+			//
+			$tmp = (string) $theIdentifier;
+
+			//
 			// Handle node identifier.
 			//
 			if( is_integer( $theIdentifier ) )
@@ -782,7 +787,7 @@ class COntologyNode extends CNode
 						return NULL;												// ==>
 					
 					throw new Exception
-						( "Node not found: unresolved term",
+						( "Node not found: unresolved term [$tmp]",
 						  kERROR_NOT_FOUND );									// !@! ==>
 				
 				} // Unresolved term.

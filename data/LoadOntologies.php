@@ -65,14 +65,6 @@ try
 	Init();
 	
 	//
-	// Loading UN stats categories.
-	//
-	if( kOPTION_VERBOSE )
-		echo( "  • Loading UN regions.\n" );
-	$_SESSION[ kSESSION_ONTOLOGY ]->LoadXMLOntologyFile(
-		kPATH_MYWRAPPER_LIBRARY_DATA."/UNSTAT_REGIONS.xml" );
-	
-	//
 	// Loading ISO standards categories.
 	//
 	if( kOPTION_VERBOSE )
@@ -86,6 +78,22 @@ try
 	if( kOPTION_VERBOSE )
 		echo( "  • Decoding ISO files.\n" );
 	$_SESSION[ kSESSION_ONTOLOGY ]->LoadISOPOFiles();
+	
+	//
+	// Loading ISO country relationships.
+	//
+	if( kOPTION_VERBOSE )
+		echo( "  • Loading ISO standards.\n" );
+	$_SESSION[ kSESSION_ONTOLOGY ]->LoadXMLOntologyFile(
+		kPATH_MYWRAPPER_LIBRARY_DATA."/ISO_3166_RELATIONSHIPS.xml" );
+	
+	//
+	// Loading UN stats categories.
+	//
+	if( kOPTION_VERBOSE )
+		echo( "  • Loading UN regions.\n" );
+	$_SESSION[ kSESSION_ONTOLOGY ]->LoadXMLOntologyFile(
+		kPATH_MYWRAPPER_LIBRARY_DATA."/UNSTAT_REGIONS.xml" );
 	
 	//
 	// Loading GR descriptors.

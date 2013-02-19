@@ -160,7 +160,7 @@ class COntologyMasterNode extends COntologyNode
 				$this->Insert( $theConnection );
 			
 			//
-			// Check if alias.
+			// Assert master.
 			//
 			if( ! $this->offsetExists( kTAG_NODE ) )
 			{
@@ -177,19 +177,19 @@ class COntologyMasterNode extends COntologyNode
 					$theObject->Insert( $theConnection );
 				
 				//
-				// Relate aliases.
+				// Create requested relationship.
 				//
 				$edge
 					= parent::RelateTo(
 						$thePredicate, $theObject, $theConnection, $doPropagate );
 				
 				//
-				// Relate masters.
+				// Handle aliases.
 				//
 				if( $doPropagate )
 				{
 					//
-					// Resolve object master.
+					// Check if object is alias.
 					//
 					if( ($id = $theObject->offsetGet( kTAG_NODE )) !== NULL )
 					{
@@ -273,6 +273,11 @@ class COntologyMasterNode extends COntologyNode
 		if( $theIdentifier !== NULL )
 		{
 			//
+			// Save identifier.
+			//
+			$tmp = (string) $theIdentifier;
+
+			//
 			// Handle node identifier.
 			//
 			if( is_integer( $theIdentifier ) )
@@ -299,7 +304,7 @@ class COntologyMasterNode extends COntologyNode
 						return NULL;												// ==>
 					
 					throw new Exception
-						( "Node not found: unresolved term",
+						( "Node not found: unresolved term [$tmp]",
 						  kERROR_NOT_FOUND );									// !@! ==>
 				
 				} // Unresolved term.

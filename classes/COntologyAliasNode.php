@@ -251,7 +251,7 @@ class COntologyAliasNode extends COntologyNode
 					$theObject->Insert( $theConnection );
 				
 				//
-				// Relate aliases.
+				// Create requested relationship.
 				//
 				$edge
 					= parent::RelateTo(

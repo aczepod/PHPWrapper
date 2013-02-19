@@ -1,0 +1,394 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ONTOLOGY
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:noNamespaceSchemaLocation="file:/Library/WebServer/Library/PHPWrapper/defines/Ontology.xsd">
+    
+    <!-- ISO 3166 RELATIONSHIPS -->
+
+	<UNIT>
+		<EDGE>
+			<element variable="kTAG_SUBJECT">ISO:3166:3:alpha-3:ATB</element>
+			<element variable="kTAG_PREDICATE">:VALID</element>
+			<element variable="kTAG_OBJECT">ISO:3166:1:alpha-3:ATA</element>
+		</EDGE>
+		<EDGE>
+			<element variable="kTAG_SUBJECT">ISO:3166:3:alpha-3:ATN</element>
+			<element variable="kTAG_PREDICATE">:VALID</element>
+			<element variable="kTAG_OBJECT">ISO:3166:1:alpha-3:ATA</element>
+		</EDGE>
+		
+		<EDGE>
+			<element variable="kTAG_SUBJECT">ISO:3166:3:alpha-3:JTN</element>
+			<element variable="kTAG_PREDICATE">:VALID</element>
+			<element variable="kTAG_OBJECT">ISO:3166:1:alpha-3:UMI</element>
+		</EDGE>
+		<EDGE>
+			<element variable="kTAG_SUBJECT">ISO:3166:3:alpha-3:MID</element>
+			<element variable="kTAG_PREDICATE">:VALID</element>
+			<element variable="kTAG_OBJECT">ISO:3166:1:alpha-3:UMI</element>
+		</EDGE>
+		<EDGE>
+			<element variable="kTAG_SUBJECT">ISO:3166:3:alpha-3:PUS</element>
+			<element variable="kTAG_PREDICATE">:VALID</element>
+			<element variable="kTAG_OBJECT">ISO:3166:1:alpha-3:UMI</element>
+		</EDGE>
+		<EDGE>
+			<element variable="kTAG_SUBJECT">ISO:3166:3:alpha-3:WAK</element>
+			<element variable="kTAG_PREDICATE">:VALID</element>
+			<element variable="kTAG_OBJECT">ISO:3166:1:alpha-3:UMI</element>
+		</EDGE>
+		
+		<EDGE>
+			<element variable="kTAG_SUBJECT">ISO:3166:1:alpha-3:BEN</element>
+			<element variable="kTAG_PREDICATE">:LEGACY</element>
+			<element variable="kTAG_OBJECT">ISO:3166:3:alpha-3:DHY</element>
+		</EDGE>
+		<EDGE>
+			<element variable="kTAG_SUBJECT">ISO:3166:3:alpha-3:DHY</element>
+			<element variable="kTAG_PREDICATE">:VALID</element>
+			<element variable="kTAG_OBJECT">ISO:3166:1:alpha-3:BEN</element>
+		</EDGE>
+		
+		<EDGE>
+			<element variable="kTAG_SUBJECT">ISO:3166:1:alpha-3:BFA</element>
+			<element variable="kTAG_PREDICATE">:LEGACY</element>
+			<element variable="kTAG_OBJECT">ISO:3166:3:alpha-3:HVO</element>
+		</EDGE>
+		<EDGE>
+			<element variable="kTAG_SUBJECT">ISO:3166:3:alpha-3:HVO</element>
+			<element variable="kTAG_PREDICATE">:VALID</element>
+			<element variable="kTAG_OBJECT">ISO:3166:1:alpha-3:BFA</element>
+		</EDGE>
+		
+		<EDGE>
+			<element variable="kTAG_SUBJECT">ISO:3166:3:alpha-3:PCZ</element>
+			<element variable="kTAG_PREDICATE">:VALID</element>
+			<element variable="kTAG_OBJECT">ISO:3166:1:alpha-3:PAN</element>
+		</EDGE>
+		<EDGE>
+			<element variable="kTAG_SUBJECT">ISO:3166:3:alpha-3:PAN</element>
+			<element variable="kTAG_PREDICATE">:VALID</element>
+			<element variable="kTAG_OBJECT">ISO:3166:1:alpha-3:PAN</element>
+		</EDGE>
+		<EDGE>
+			<element variable="kTAG_SUBJECT">ISO:3166:1:alpha-3:PAN</element>
+			<element variable="kTAG_PREDICATE">:LEGACY</element>
+			<element variable="kTAG_OBJECT">ISO:3166:3:alpha-3:PAN</element>
+		</EDGE>
+		
+		<EDGE>
+			<element variable="kTAG_SUBJECT">ISO:3166:3:alpha-3:AFI</element>
+			<element variable="kTAG_PREDICATE">:VALID</element>
+			<element variable="kTAG_OBJECT">ISO:3166:1:alpha-3:DJI</element>
+		</EDGE>
+		<EDGE>
+			<element variable="kTAG_SUBJECT">ISO:3166:1:alpha-3:DJI</element>
+			<element variable="kTAG_PREDICATE">:LEGACY</element>
+			<element variable="kTAG_OBJECT">ISO:3166:3:alpha-3:AFI</element>
+		</EDGE>
+		
+		<EDGE>
+			<element variable="kTAG_SUBJECT">ISO:3166:3:alpha-3:ETH</element>
+			<element variable="kTAG_PREDICATE">:VALID</element>
+			<element variable="kTAG_OBJECT">ISO:3166:1:alpha-3:ETH</element>
+		</EDGE>
+		<EDGE>
+			<element variable="kTAG_SUBJECT">ISO:3166:1:alpha-3:DJI</element>
+			<element variable="kTAG_PREDICATE">:LEGACY</element>
+			<element variable="kTAG_OBJECT">ISO:3166:3:alpha-3:AFI</element>
+		</EDGE>
+		
+		<EDGE>
+			<element variable="kTAG_SUBJECT">ISO:3166:3:alpha-3:RHO</element>
+			<element variable="kTAG_PREDICATE">:VALID</element>
+			<element variable="kTAG_OBJECT">ISO:3166:1:alpha-3:ZWE</element>
+		</EDGE>
+		<EDGE>
+			<element variable="kTAG_SUBJECT">ISO:3166:1:alpha-3:ZWE</element>
+			<element variable="kTAG_PREDICATE">:LEGACY</element>
+			<element variable="kTAG_OBJECT">ISO:3166:3:alpha-3:RHO</element>
+		</EDGE>
+		
+		<EDGE>
+			<element variable="kTAG_SUBJECT">ISO:3166:3:alpha-3:ZAR</element>
+			<element variable="kTAG_PREDICATE">:VALID</element>
+			<element variable="kTAG_OBJECT">ISO:3166:1:alpha-3:COD</element>
+		</EDGE>
+		<EDGE>
+			<element variable="kTAG_SUBJECT">ISO:3166:1:alpha-3:COD</element>
+			<element variable="kTAG_PREDICATE">:LEGACY</element>
+			<element variable="kTAG_OBJECT">ISO:3166:3:alpha-3:ZAR</element>
+		</EDGE>
+		
+		<EDGE>
+			<element variable="kTAG_SUBJECT">ISO:3166:3:alpha-3:ANT</element>
+			<element variable="kTAG_PREDICATE">:VALID</element>
+			<element variable="kTAG_OBJECT">ISO:3166:1:alpha-3:ABW</element>
+		</EDGE>
+		<EDGE>
+			<element variable="kTAG_SUBJECT">ISO:3166:1:alpha-3:ABW</element>
+			<element variable="kTAG_PREDICATE">:LEGACY</element>
+			<element variable="kTAG_OBJECT">ISO:3166:3:alpha-3:ANT</element>
+		</EDGE>
+		
+		<EDGE>
+			<element variable="kTAG_SUBJECT">ISO:3166:3:alpha-3:KNA</element>
+			<element variable="kTAG_PREDICATE">:VALID</element>
+			<element variable="kTAG_OBJECT">ISO:3166:1:alpha-3:KNA</element>
+		</EDGE>
+		<EDGE>
+			<element variable="kTAG_SUBJECT">ISO:3166:1:alpha-3:KNA</element>
+			<element variable="kTAG_PREDICATE">:LEGACY</element>
+			<element variable="kTAG_OBJECT">ISO:3166:3:alpha-3:KNA</element>
+		</EDGE>
+		
+		<EDGE>
+			<element variable="kTAG_SUBJECT">ISO:3166:3:alpha-3:SKM</element>
+			<element variable="kTAG_PREDICATE">:VALID</element>
+			<element variable="kTAG_OBJECT">ISO:3166:1:alpha-3:IND</element>
+		</EDGE>
+		
+		<EDGE>
+			<element variable="kTAG_SUBJECT">ISO:3166:3:alpha-3:BUR</element>
+			<element variable="kTAG_PREDICATE">:VALID</element>
+			<element variable="kTAG_OBJECT">ISO:3166:1:alpha-3:MMR</element>
+		</EDGE>
+		<EDGE>
+			<element variable="kTAG_SUBJECT">ISO:3166:1:alpha-3:MMR</element>
+			<element variable="kTAG_PREDICATE">:LEGACY</element>
+			<element variable="kTAG_OBJECT">ISO:3166:3:alpha-3:BUR</element>
+		</EDGE>
+		
+		<EDGE>
+			<element variable="kTAG_SUBJECT">ISO:3166:3:alpha-3:TMP</element>
+			<element variable="kTAG_PREDICATE">:VALID</element>
+			<element variable="kTAG_OBJECT">ISO:3166:1:alpha-3:TLS</element>
+		</EDGE>
+		<EDGE>
+			<element variable="kTAG_SUBJECT">ISO:3166:1:alpha-3:TLS</element>
+			<element variable="kTAG_PREDICATE">:LEGACY</element>
+			<element variable="kTAG_OBJECT">ISO:3166:3:alpha-3:TMP</element>
+		</EDGE>
+		
+		<EDGE>
+			<element variable="kTAG_SUBJECT">ISO:3166:3:alpha-3:VDR</element>
+			<element variable="kTAG_PREDICATE">:VALID</element>
+			<element variable="kTAG_OBJECT">ISO:3166:1:alpha-3:VNM</element>
+		</EDGE>
+		
+		<EDGE>
+			<element variable="kTAG_SUBJECT">ISO:3166:1:alpha-3:BIH</element>
+			<element variable="kTAG_PREDICATE">:LEGACY</element>
+			<element variable="kTAG_OBJECT">ISO:3166:3:alpha-3:YUG</element>
+		</EDGE>
+		<EDGE>
+			<element variable="kTAG_SUBJECT">ISO:3166:1:alpha-3:HRV</element>
+			<element variable="kTAG_PREDICATE">:LEGACY</element>
+			<element variable="kTAG_OBJECT">ISO:3166:3:alpha-3:YUG</element>
+		</EDGE>
+		<EDGE>
+			<element variable="kTAG_SUBJECT">ISO:3166:1:alpha-3:MKD</element>
+			<element variable="kTAG_PREDICATE">:LEGACY</element>
+			<element variable="kTAG_OBJECT">ISO:3166:3:alpha-3:YUG</element>
+		</EDGE>
+		<EDGE>
+			<element variable="kTAG_SUBJECT">ISO:3166:3:alpha-3:SCG</element>
+			<element variable="kTAG_PREDICATE">:LEGACY</element>
+			<element variable="kTAG_OBJECT">ISO:3166:3:alpha-3:YUG</element>
+		</EDGE>
+		<EDGE>
+			<element variable="kTAG_SUBJECT">ISO:3166:1:alpha-3:SVN</element>
+			<element variable="kTAG_PREDICATE">:LEGACY</element>
+			<element variable="kTAG_OBJECT">ISO:3166:3:alpha-3:YUG</element>
+		</EDGE>
+		<EDGE>
+			<element variable="kTAG_SUBJECT">ISO:3166:1:alpha-3:MNE</element>
+			<element variable="kTAG_PREDICATE">:LEGACY</element>
+			<element variable="kTAG_OBJECT">ISO:3166:3:alpha-3:SCG</element>
+		</EDGE>
+		<EDGE>
+			<element variable="kTAG_SUBJECT">ISO:3166:1:alpha-3:SRB</element>
+			<element variable="kTAG_PREDICATE">:LEGACY</element>
+			<element variable="kTAG_OBJECT">ISO:3166:3:alpha-3:SCG</element>
+		</EDGE>
+		<EDGE>
+			<element variable="kTAG_SUBJECT">ISO:3166:3:alpha-3:SCG</element>
+			<element variable="kTAG_PREDICATE">:VALID</element>
+			<element variable="kTAG_OBJECT">ISO:3166:1:alpha-3:SRB</element>
+		</EDGE>
+		
+		<EDGE>
+			<element variable="kTAG_SUBJECT">ISO:3166:3:alpha-3:NHB</element>
+			<element variable="kTAG_PREDICATE">:VALID</element>
+			<element variable="kTAG_OBJECT">ISO:3166:1:alpha-3:VUT</element>
+		</EDGE>
+		<EDGE>
+			<element variable="kTAG_SUBJECT">ISO:3166:1:alpha-3:VUT</element>
+			<element variable="kTAG_PREDICATE">:LEGACY</element>
+			<element variable="kTAG_OBJECT">ISO:3166:3:alpha-3:NHB</element>
+		</EDGE>
+		
+		<EDGE>
+			<element variable="kTAG_SUBJECT">ISO:3166:3:alpha-3:CTE</element>
+			<element variable="kTAG_PREDICATE">:VALID</element>
+			<element variable="kTAG_OBJECT">ISO:3166:1:alpha-3:KIR</element>
+		</EDGE>
+		
+		<EDGE>
+			<element variable="kTAG_SUBJECT">ISO:3166:1:alpha-3:FSM</element>
+			<element variable="kTAG_PREDICATE">:LEGACY</element>
+			<element variable="kTAG_OBJECT">ISO:3166:3:alpha-3:PCI</element>
+		</EDGE>
+		<EDGE>
+			<element variable="kTAG_SUBJECT">ISO:3166:1:alpha-3:MHL</element>
+			<element variable="kTAG_PREDICATE">:LEGACY</element>
+			<element variable="kTAG_OBJECT">ISO:3166:3:alpha-3:PCI</element>
+		</EDGE>
+		<EDGE>
+			<element variable="kTAG_SUBJECT">ISO:3166:1:alpha-3:MNP</element>
+			<element variable="kTAG_PREDICATE">:LEGACY</element>
+			<element variable="kTAG_OBJECT">ISO:3166:3:alpha-3:PCI</element>
+		</EDGE>
+		<EDGE>
+			<element variable="kTAG_SUBJECT">ISO:3166:1:alpha-3:PLW</element>
+			<element variable="kTAG_PREDICATE">:LEGACY</element>
+			<element variable="kTAG_OBJECT">ISO:3166:3:alpha-3:PCI</element>
+		</EDGE>
+		
+		<EDGE>
+			<element variable="kTAG_SUBJECT">ISO:3166:1:alpha-3:KAZ</element>
+			<element variable="kTAG_PREDICATE">:LEGACY</element>
+			<element variable="kTAG_OBJECT">ISO:3166:3:alpha-3:SUN</element>
+		</EDGE>
+		<EDGE>
+			<element variable="kTAG_SUBJECT">ISO:3166:1:alpha-3:KGZ</element>
+			<element variable="kTAG_PREDICATE">:LEGACY</element>
+			<element variable="kTAG_OBJECT">ISO:3166:3:alpha-3:SUN</element>
+		</EDGE>
+		<EDGE>
+			<element variable="kTAG_SUBJECT">ISO:3166:1:alpha-3:TJK</element>
+			<element variable="kTAG_PREDICATE">:LEGACY</element>
+			<element variable="kTAG_OBJECT">ISO:3166:3:alpha-3:SUN</element>
+		</EDGE>
+		<EDGE>
+			<element variable="kTAG_SUBJECT">ISO:3166:1:alpha-3:TKM</element>
+			<element variable="kTAG_PREDICATE">:LEGACY</element>
+			<element variable="kTAG_OBJECT">ISO:3166:3:alpha-3:SUN</element>
+		</EDGE>
+		<EDGE>
+			<element variable="kTAG_SUBJECT">ISO:3166:1:alpha-3:UZB</element>
+			<element variable="kTAG_PREDICATE">:LEGACY</element>
+			<element variable="kTAG_OBJECT">ISO:3166:3:alpha-3:SUN</element>
+		</EDGE>
+		<EDGE>
+			<element variable="kTAG_SUBJECT">ISO:3166:1:alpha-3:ARM</element>
+			<element variable="kTAG_PREDICATE">:LEGACY</element>
+			<element variable="kTAG_OBJECT">ISO:3166:3:alpha-3:SUN</element>
+		</EDGE>
+		<EDGE>
+			<element variable="kTAG_SUBJECT">ISO:3166:1:alpha-3:AZE</element>
+			<element variable="kTAG_PREDICATE">:LEGACY</element>
+			<element variable="kTAG_OBJECT">ISO:3166:3:alpha-3:SUN</element>
+		</EDGE>
+		<EDGE>
+			<element variable="kTAG_SUBJECT">ISO:3166:1:alpha-3:GEO</element>
+			<element variable="kTAG_PREDICATE">:LEGACY</element>
+			<element variable="kTAG_OBJECT">ISO:3166:3:alpha-3:SUN</element>
+		</EDGE>
+		<EDGE>
+			<element variable="kTAG_SUBJECT">ISO:3166:1:alpha-3:BLR</element>
+			<element variable="kTAG_PREDICATE">:LEGACY</element>
+			<element variable="kTAG_OBJECT">ISO:3166:3:alpha-3:SUN</element>
+		</EDGE>
+		<EDGE>
+			<element variable="kTAG_SUBJECT">ISO:3166:1:alpha-3:MDA</element>
+			<element variable="kTAG_PREDICATE">:LEGACY</element>
+			<element variable="kTAG_OBJECT">ISO:3166:3:alpha-3:SUN</element>
+		</EDGE>
+		<EDGE>
+			<element variable="kTAG_SUBJECT">ISO:3166:1:alpha-3:RUS</element>
+			<element variable="kTAG_PREDICATE">:LEGACY</element>
+			<element variable="kTAG_OBJECT">ISO:3166:3:alpha-3:SUN</element>
+		</EDGE>
+		<EDGE>
+			<element variable="kTAG_SUBJECT">ISO:3166:1:alpha-3:UKR</element>
+			<element variable="kTAG_PREDICATE">:LEGACY</element>
+			<element variable="kTAG_OBJECT">ISO:3166:3:alpha-3:SUN</element>
+		</EDGE>
+		<EDGE>
+			<element variable="kTAG_SUBJECT">ISO:3166:1:alpha-3:EST</element>
+			<element variable="kTAG_PREDICATE">:LEGACY</element>
+			<element variable="kTAG_OBJECT">ISO:3166:3:alpha-3:SUN</element>
+		</EDGE>
+		<EDGE>
+			<element variable="kTAG_SUBJECT">ISO:3166:1:alpha-3:LTU</element>
+			<element variable="kTAG_PREDICATE">:LEGACY</element>
+			<element variable="kTAG_OBJECT">ISO:3166:3:alpha-3:SUN</element>
+		</EDGE>
+		
+		<EDGE>
+			<element variable="kTAG_SUBJECT">ISO:3166:3:alpha-3:BYS</element>
+			<element variable="kTAG_PREDICATE">:VALID</element>
+			<element variable="kTAG_OBJECT">ISO:3166:1:alpha-3:BLR</element>
+		</EDGE>
+		
+		<EDGE>
+			<element variable="kTAG_SUBJECT">ISO:3166:3:alpha-3:YEM</element>
+			<element variable="kTAG_PREDICATE">:VALID</element>
+			<element variable="kTAG_OBJECT">ISO:3166:1:alpha-3:YEM</element>
+		</EDGE>
+		<EDGE>
+			<element variable="kTAG_SUBJECT">ISO:3166:1:alpha-3:YEM</element>
+			<element variable="kTAG_PREDICATE">:LEGACY</element>
+			<element variable="kTAG_OBJECT">ISO:3166:3:alpha-3:YEM</element>
+		</EDGE>
+		<EDGE>
+			<element variable="kTAG_SUBJECT">ISO:3166:3:alpha-3:YMD</element>
+			<element variable="kTAG_PREDICATE">:VALID</element>
+			<element variable="kTAG_OBJECT">ISO:3166:1:alpha-3:YEM</element>
+		</EDGE>
+		<EDGE>
+			<element variable="kTAG_SUBJECT">ISO:3166:1:alpha-3:YEM</element>
+			<element variable="kTAG_PREDICATE">:LEGACY</element>
+			<element variable="kTAG_OBJECT">ISO:3166:3:alpha-3:YMD</element>
+		</EDGE>
+		
+		<EDGE>
+			<element variable="kTAG_SUBJECT">ISO:3166:1:alpha-3:CZE</element>
+			<element variable="kTAG_PREDICATE">:LEGACY</element>
+			<element variable="kTAG_OBJECT">ISO:3166:3:alpha-3:CSK</element>
+		</EDGE>
+		<EDGE>
+			<element variable="kTAG_SUBJECT">ISO:3166:1:alpha-3:SVK</element>
+			<element variable="kTAG_PREDICATE">:LEGACY</element>
+			<element variable="kTAG_OBJECT">ISO:3166:3:alpha-3:CSK</element>
+		</EDGE>
+		
+		<EDGE>
+			<element variable="kTAG_SUBJECT">ISO:3166:3:alpha-3:ROM</element>
+			<element variable="kTAG_PREDICATE">:VALID</element>
+			<element variable="kTAG_OBJECT">ISO:3166:1:alpha-3:ROU</element>
+		</EDGE>
+		<EDGE>
+			<element variable="kTAG_SUBJECT">ISO:3166:1:alpha-3:ROU</element>
+			<element variable="kTAG_PREDICATE">:LEGACY</element>
+			<element variable="kTAG_OBJECT">ISO:3166:3:alpha-3:ROM</element>
+		</EDGE>
+		
+		<EDGE>
+			<element variable="kTAG_SUBJECT">ISO:3166:3:alpha-3:DDR</element>
+			<element variable="kTAG_PREDICATE">:VALID</element>
+			<element variable="kTAG_OBJECT">ISO:3166:1:alpha-3:DEU</element>
+		</EDGE>
+		<EDGE>
+			<element variable="kTAG_SUBJECT">ISO:3166:3:alpha-3:DEU</element>
+			<element variable="kTAG_PREDICATE">:VALID</element>
+			<element variable="kTAG_OBJECT">ISO:3166:1:alpha-3:DEU</element>
+		</EDGE>
+		<EDGE>
+			<element variable="kTAG_SUBJECT">ISO:3166:1:alpha-3:DEU</element>
+			<element variable="kTAG_PREDICATE">:LEGACY</element>
+			<element variable="kTAG_OBJECT">ISO:3166:3:alpha-3:DEU</element>
+		</EDGE>
+	</UNIT>
+</ONTOLOGY>

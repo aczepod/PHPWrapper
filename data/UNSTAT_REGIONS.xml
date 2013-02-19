@@ -16,7 +16,11 @@
 				<item key="en">Regions list from the UN statistics division</item>
 			</element>
 		</TERM>
-		<NODE class="COntologyMasterVertex"/>
+		<NODE class="COntologyMasterVertex">
+			<element variable="kTAG_KIND">
+				<item>:KIND-ROOT</item>
+			</element>
+		</NODE>
 	</UNIT>
 
 	<!-- REGIONS -->
@@ -37,6 +41,39 @@
 		<EDGE>
 			<element variable="kTAG_PREDICATE">:ENUM-OF</element>
 			<element variable="kTAG_OBJECT">unstats.un.org</element>
+		</EDGE>
+		
+		<EDGE>
+			<element variable="kTAG_SUBJECT">ISO:3166:1:alpha-3:ATA</element>
+			<element variable="kTAG_PREDICATE">:SUBSET-OF</element>
+		</EDGE>
+		<EDGE>
+			<element variable="kTAG_SUBJECT">ISO:3166:3:alpha-3:ATB</element>
+			<element variable="kTAG_PREDICATE">:SUBSET-OF</element>
+		</EDGE>
+		<EDGE>
+			<element variable="kTAG_SUBJECT">ISO:3166:1:alpha-3:ATF</element>
+			<element variable="kTAG_PREDICATE">:SUBSET-OF</element>
+		</EDGE>
+		<EDGE>
+			<element variable="kTAG_SUBJECT">ISO:3166:3:alpha-3:ATN</element>
+			<element variable="kTAG_PREDICATE">:SUBSET-OF</element>
+		</EDGE>
+		<EDGE>
+			<element variable="kTAG_SUBJECT">ISO:3166:1:alpha-3:BVT</element>
+			<element variable="kTAG_PREDICATE">:SUBSET-OF</element>
+		</EDGE>
+		<EDGE>
+			<element variable="kTAG_SUBJECT">ISO:3166:1:alpha-3:HMD</element>
+			<element variable="kTAG_PREDICATE">:SUBSET-OF</element>
+		</EDGE>
+		<EDGE>
+			<element variable="kTAG_SUBJECT">ISO:3166:3:alpha-3:NTZ</element>
+			<element variable="kTAG_PREDICATE">:SUBSET-OF</element>
+		</EDGE>
+		<EDGE>
+			<element variable="kTAG_SUBJECT">ISO:3166:1:alpha-3:SGS</element>
+			<element variable="kTAG_PREDICATE">:SUBSET-OF</element>
 		</EDGE>
 	</UNIT>
 
@@ -78,6 +115,95 @@
 			<element variable="kTAG_PREDICATE">:ENUM-OF</element>
 			<element variable="kTAG_OBJECT">unstats.un.org:002</element>
 		</EDGE>
+		
+		<EDGE>
+			<element variable="kTAG_SUBJECT">ISO:3166:3:alpha-3:AFI</element>
+			<element variable="kTAG_PREDICATE">:SUBSET-OF</element>
+		</EDGE>
+		<EDGE>
+			<element variable="kTAG_SUBJECT">ISO:3166:1:alpha-3:BDI</element>
+			<element variable="kTAG_PREDICATE">:SUBSET-OF</element>
+		</EDGE>
+		<EDGE>
+			<element variable="kTAG_SUBJECT">ISO:3166:1:alpha-3:COM</element>
+			<element variable="kTAG_PREDICATE">:SUBSET-OF</element>
+		</EDGE>
+		<EDGE>
+			<element variable="kTAG_SUBJECT">ISO:3166:1:alpha-3:DJI</element>
+			<element variable="kTAG_PREDICATE">:SUBSET-OF</element>
+		</EDGE>
+		<EDGE>
+			<element variable="kTAG_SUBJECT">ISO:3166:1:alpha-3:ERI</element>
+			<element variable="kTAG_PREDICATE">:SUBSET-OF</element>
+		</EDGE>
+		<EDGE>
+			<element variable="kTAG_SUBJECT">ISO:3166:1:alpha-3:ETH</element>
+			<element variable="kTAG_PREDICATE">:SUBSET-OF</element>
+		</EDGE>
+		<EDGE>
+			<element variable="kTAG_SUBJECT">ISO:3166:1:alpha-3:IOT</element>
+			<element variable="kTAG_PREDICATE">:SUBSET-OF</element>
+		</EDGE>
+		<EDGE>
+			<element variable="kTAG_SUBJECT">ISO:3166:1:alpha-3:KEN</element>
+			<element variable="kTAG_PREDICATE">:SUBSET-OF</element>
+		</EDGE>
+		<EDGE>
+			<element variable="kTAG_SUBJECT">ISO:3166:1:alpha-3:MDG</element>
+			<element variable="kTAG_PREDICATE">:SUBSET-OF</element>
+		</EDGE>
+		<EDGE>
+			<element variable="kTAG_SUBJECT">ISO:3166:1:alpha-3:MOZ</element>
+			<element variable="kTAG_PREDICATE">:SUBSET-OF</element>
+		</EDGE>
+		<EDGE>
+			<element variable="kTAG_SUBJECT">ISO:3166:1:alpha-3:MUS</element>
+			<element variable="kTAG_PREDICATE">:SUBSET-OF</element>
+		</EDGE>
+		<EDGE>
+			<element variable="kTAG_SUBJECT">ISO:3166:1:alpha-3:MWI</element>
+			<element variable="kTAG_PREDICATE">:SUBSET-OF</element>
+		</EDGE>
+		<EDGE>
+			<element variable="kTAG_SUBJECT">ISO:3166:1:alpha-3:MYT</element>
+			<element variable="kTAG_PREDICATE">:SUBSET-OF</element>
+		</EDGE>
+		<EDGE>
+			<element variable="kTAG_SUBJECT">ISO:3166:1:alpha-3:REU</element>
+			<element variable="kTAG_PREDICATE">:SUBSET-OF</element>
+		</EDGE>
+		<EDGE>
+			<element variable="kTAG_SUBJECT">ISO:3166:3:alpha-3:RHO</element>
+			<element variable="kTAG_PREDICATE">:SUBSET-OF</element>
+		</EDGE>
+		<EDGE>
+			<element variable="kTAG_SUBJECT">ISO:3166:1:alpha-3:RWA</element>
+			<element variable="kTAG_PREDICATE">:SUBSET-OF</element>
+		</EDGE>
+		<EDGE>
+			<element variable="kTAG_SUBJECT">ISO:3166:1:alpha-3:SOM</element>
+			<element variable="kTAG_PREDICATE">:SUBSET-OF</element>
+		</EDGE>
+		<EDGE>
+			<element variable="kTAG_SUBJECT">ISO:3166:1:alpha-3:SYC</element>
+			<element variable="kTAG_PREDICATE">:SUBSET-OF</element>
+		</EDGE>
+		<EDGE>
+			<element variable="kTAG_SUBJECT">ISO:3166:1:alpha-3:TZA</element>
+			<element variable="kTAG_PREDICATE">:SUBSET-OF</element>
+		</EDGE>
+		<EDGE>
+			<element variable="kTAG_SUBJECT">ISO:3166:1:alpha-3:UGA</element>
+			<element variable="kTAG_PREDICATE">:SUBSET-OF</element>
+		</EDGE>
+		<EDGE>
+			<element variable="kTAG_SUBJECT">ISO:3166:1:alpha-3:ZMB</element>
+			<element variable="kTAG_PREDICATE">:SUBSET-OF</element>
+		</EDGE>
+		<EDGE>
+			<element variable="kTAG_SUBJECT">ISO:3166:1:alpha-3:ZWE</element>
+			<element variable="kTAG_PREDICATE">:SUBSET-OF</element>
+		</EDGE>
 	</UNIT>
 
 	<UNIT>
@@ -97,6 +223,47 @@
 		<EDGE>
 			<element variable="kTAG_PREDICATE">:ENUM-OF</element>
 			<element variable="kTAG_OBJECT">unstats.un.org:002</element>
+		</EDGE>
+		
+		<EDGE>
+			<element variable="kTAG_SUBJECT">ISO:3166:1:alpha-3:AGO</element>
+			<element variable="kTAG_PREDICATE">:SUBSET-OF</element>
+		</EDGE>
+		<EDGE>
+			<element variable="kTAG_SUBJECT">ISO:3166:1:alpha-3:CAF</element>
+			<element variable="kTAG_PREDICATE">:SUBSET-OF</element>
+		</EDGE>
+		<EDGE>
+			<element variable="kTAG_SUBJECT">ISO:3166:1:alpha-3:CMR</element>
+			<element variable="kTAG_PREDICATE">:SUBSET-OF</element>
+		</EDGE>
+		<EDGE>
+			<element variable="kTAG_SUBJECT">ISO:3166:1:alpha-3:COD</element>
+			<element variable="kTAG_PREDICATE">:SUBSET-OF</element>
+		</EDGE>
+		<EDGE>
+			<element variable="kTAG_SUBJECT">ISO:3166:1:alpha-3:COG</element>
+			<element variable="kTAG_PREDICATE">:SUBSET-OF</element>
+		</EDGE>
+		<EDGE>
+			<element variable="kTAG_SUBJECT">ISO:3166:1:alpha-3:GAB</element>
+			<element variable="kTAG_PREDICATE">:SUBSET-OF</element>
+		</EDGE>
+		<EDGE>
+			<element variable="kTAG_SUBJECT">ISO:3166:1:alpha-3:GNQ</element>
+			<element variable="kTAG_PREDICATE">:SUBSET-OF</element>
+		</EDGE>
+		<EDGE>
+			<element variable="kTAG_SUBJECT">ISO:3166:1:alpha-3:STP</element>
+			<element variable="kTAG_PREDICATE">:SUBSET-OF</element>
+		</EDGE>
+		<EDGE>
+			<element variable="kTAG_SUBJECT">ISO:3166:1:alpha-3:TCD</element>
+			<element variable="kTAG_PREDICATE">:SUBSET-OF</element>
+		</EDGE>
+		<EDGE>
+			<element variable="kTAG_SUBJECT">ISO:3166:3:alpha-3:ZAR</element>
+			<element variable="kTAG_PREDICATE">:SUBSET-OF</element>
 		</EDGE>
 	</UNIT>
 
@@ -118,6 +285,35 @@
 			<element variable="kTAG_PREDICATE">:ENUM-OF</element>
 			<element variable="kTAG_OBJECT">unstats.un.org:002</element>
 		</EDGE>
+		
+		<EDGE>
+			<element variable="kTAG_SUBJECT">ISO:3166:1:alpha-3:DZA</element>
+			<element variable="kTAG_PREDICATE">:SUBSET-OF</element>
+		</EDGE>
+		<EDGE>
+			<element variable="kTAG_SUBJECT">ISO:3166:1:alpha-3:EGY</element>
+			<element variable="kTAG_PREDICATE">:SUBSET-OF</element>
+		</EDGE>
+		<EDGE>
+			<element variable="kTAG_SUBJECT">ISO:3166:1:alpha-3:ESH</element>
+			<element variable="kTAG_PREDICATE">:SUBSET-OF</element>
+		</EDGE>
+		<EDGE>
+			<element variable="kTAG_SUBJECT">ISO:3166:1:alpha-3:LBY</element>
+			<element variable="kTAG_PREDICATE">:SUBSET-OF</element>
+		</EDGE>
+		<EDGE>
+			<element variable="kTAG_SUBJECT">ISO:3166:1:alpha-3:MAR</element>
+			<element variable="kTAG_PREDICATE">:SUBSET-OF</element>
+		</EDGE>
+		<EDGE>
+			<element variable="kTAG_SUBJECT">ISO:3166:1:alpha-3:SDN</element>
+			<element variable="kTAG_PREDICATE">:SUBSET-OF</element>
+		</EDGE>
+		<EDGE>
+			<element variable="kTAG_SUBJECT">ISO:3166:1:alpha-3:TUN</element>
+			<element variable="kTAG_PREDICATE">:SUBSET-OF</element>
+		</EDGE>
 	</UNIT>
 
 	<UNIT>
@@ -138,6 +334,27 @@
 			<element variable="kTAG_PREDICATE">:ENUM-OF</element>
 			<element variable="kTAG_OBJECT">unstats.un.org:002</element>
 		</EDGE>
+		
+		<EDGE>
+			<element variable="kTAG_SUBJECT">ISO:3166:1:alpha-3:BWA</element>
+			<element variable="kTAG_PREDICATE">:SUBSET-OF</element>
+		</EDGE>
+		<EDGE>
+			<element variable="kTAG_SUBJECT">ISO:3166:1:alpha-3:LSO</element>
+			<element variable="kTAG_PREDICATE">:SUBSET-OF</element>
+		</EDGE>
+		<EDGE>
+			<element variable="kTAG_SUBJECT">ISO:3166:1:alpha-3:NAM</element>
+			<element variable="kTAG_PREDICATE">:SUBSET-OF</element>
+		</EDGE>
+		<EDGE>
+			<element variable="kTAG_SUBJECT">ISO:3166:1:alpha-3:SWZ</element>
+			<element variable="kTAG_PREDICATE">:SUBSET-OF</element>
+		</EDGE>
+		<EDGE>
+			<element variable="kTAG_SUBJECT">ISO:3166:1:alpha-3:ZAF</element>
+			<element variable="kTAG_PREDICATE">:SUBSET-OF</element>
+		</EDGE>
 	</UNIT>
 
 	<UNIT>
@@ -157,6 +374,83 @@
 		<EDGE>
 			<element variable="kTAG_PREDICATE">:ENUM-OF</element>
 			<element variable="kTAG_OBJECT">unstats.un.org:002</element>
+		</EDGE>
+		
+		<EDGE>
+			<element variable="kTAG_SUBJECT">ISO:3166:1:alpha-3:BEN</element>
+			<element variable="kTAG_PREDICATE">:SUBSET-OF</element>
+		</EDGE>
+		<EDGE>
+			<element variable="kTAG_SUBJECT">ISO:3166:1:alpha-3:BFA</element>
+			<element variable="kTAG_PREDICATE">:SUBSET-OF</element>
+		</EDGE>
+		<EDGE>
+			<element variable="kTAG_SUBJECT">ISO:3166:1:alpha-3:CIV</element>
+			<element variable="kTAG_PREDICATE">:SUBSET-OF</element>
+		</EDGE>
+		<EDGE>
+			<element variable="kTAG_SUBJECT">ISO:3166:1:alpha-3:CPV</element>
+			<element variable="kTAG_PREDICATE">:SUBSET-OF</element>
+		</EDGE>
+		<EDGE>
+			<element variable="kTAG_SUBJECT">ISO:3166:3:alpha-3:DHY</element>
+			<element variable="kTAG_PREDICATE">:SUBSET-OF</element>
+		</EDGE>
+		<EDGE>
+			<element variable="kTAG_SUBJECT">ISO:3166:1:alpha-3:GHA</element>
+			<element variable="kTAG_PREDICATE">:SUBSET-OF</element>
+		</EDGE>
+		<EDGE>
+			<element variable="kTAG_SUBJECT">ISO:3166:1:alpha-3:GIN</element>
+			<element variable="kTAG_PREDICATE">:SUBSET-OF</element>
+		</EDGE>
+		<EDGE>
+			<element variable="kTAG_SUBJECT">ISO:3166:1:alpha-3:GMB</element>
+			<element variable="kTAG_PREDICATE">:SUBSET-OF</element>
+		</EDGE>
+		<EDGE>
+			<element variable="kTAG_SUBJECT">ISO:3166:1:alpha-3:GNB</element>
+			<element variable="kTAG_PREDICATE">:SUBSET-OF</element>
+		</EDGE>
+		<EDGE>
+			<element variable="kTAG_SUBJECT">ISO:3166:3:alpha-3:HVO</element>
+			<element variable="kTAG_PREDICATE">:SUBSET-OF</element>
+		</EDGE>
+		<EDGE>
+			<element variable="kTAG_SUBJECT">ISO:3166:1:alpha-3:LBR</element>
+			<element variable="kTAG_PREDICATE">:SUBSET-OF</element>
+		</EDGE>
+		<EDGE>
+			<element variable="kTAG_SUBJECT">ISO:3166:1:alpha-3:MLI</element>
+			<element variable="kTAG_PREDICATE">:SUBSET-OF</element>
+		</EDGE>
+		<EDGE>
+			<element variable="kTAG_SUBJECT">ISO:3166:1:alpha-3:MRT</element>
+			<element variable="kTAG_PREDICATE">:SUBSET-OF</element>
+		</EDGE>
+		<EDGE>
+			<element variable="kTAG_SUBJECT">ISO:3166:1:alpha-3:NER</element>
+			<element variable="kTAG_PREDICATE">:SUBSET-OF</element>
+		</EDGE>
+		<EDGE>
+			<element variable="kTAG_SUBJECT">ISO:3166:1:alpha-3:NGA</element>
+			<element variable="kTAG_PREDICATE">:SUBSET-OF</element>
+		</EDGE>
+		<EDGE>
+			<element variable="kTAG_SUBJECT">ISO:3166:1:alpha-3:SEN</element>
+			<element variable="kTAG_PREDICATE">:SUBSET-OF</element>
+		</EDGE>
+		<EDGE>
+			<element variable="kTAG_SUBJECT">ISO:3166:1:alpha-3:SHN</element>
+			<element variable="kTAG_PREDICATE">:SUBSET-OF</element>
+		</EDGE>
+		<EDGE>
+			<element variable="kTAG_SUBJECT">ISO:3166:1:alpha-3:SLE</element>
+			<element variable="kTAG_PREDICATE">:SUBSET-OF</element>
+		</EDGE>
+		<EDGE>
+			<element variable="kTAG_SUBJECT">ISO:3166:1:alpha-3:TGO</element>
+			<element variable="kTAG_PREDICATE">:SUBSET-OF</element>
 		</EDGE>
 	</UNIT>
 
@@ -218,6 +512,119 @@
 			<element variable="kTAG_PREDICATE">:ENUM-OF</element>
 			<element variable="kTAG_OBJECT">unstats.un.org:419</element>
 		</EDGE>
+		
+		<EDGE>
+			<element variable="kTAG_SUBJECT">ISO:3166:1:alpha-3:ABW</element>
+			<element variable="kTAG_PREDICATE">:SUBSET-OF</element>
+		</EDGE>
+		<EDGE>
+			<element variable="kTAG_SUBJECT">ISO:3166:1:alpha-3:AIA</element>
+			<element variable="kTAG_PREDICATE">:SUBSET-OF</element>
+		</EDGE>
+		<EDGE>
+			<element variable="kTAG_SUBJECT">ISO:3166:3:alpha-3:ANT</element>
+			<element variable="kTAG_PREDICATE">:SUBSET-OF</element>
+		</EDGE>
+		<EDGE>
+			<element variable="kTAG_SUBJECT">ISO:3166:1:alpha-3:ATG</element>
+			<element variable="kTAG_PREDICATE">:SUBSET-OF</element>
+		</EDGE>
+		<EDGE>
+			<element variable="kTAG_SUBJECT">ISO:3166:1:alpha-3:BHS</element>
+			<element variable="kTAG_PREDICATE">:SUBSET-OF</element>
+		</EDGE>
+		<EDGE>
+			<element variable="kTAG_SUBJECT">ISO:3166:1:alpha-3:BRB</element>
+			<element variable="kTAG_PREDICATE">:SUBSET-OF</element>
+		</EDGE>
+		<EDGE>
+			<element variable="kTAG_SUBJECT">ISO:3166:1:alpha-3:CUB</element>
+			<element variable="kTAG_PREDICATE">:SUBSET-OF</element>
+		</EDGE>
+		<EDGE>
+			<element variable="kTAG_SUBJECT">ISO:3166:1:alpha-3:CYM</element>
+			<element variable="kTAG_PREDICATE">:SUBSET-OF</element>
+		</EDGE>
+		<EDGE>
+			<element variable="kTAG_SUBJECT">ISO:3166:1:alpha-3:DMA</element>
+			<element variable="kTAG_PREDICATE">:SUBSET-OF</element>
+		</EDGE>
+		<EDGE>
+			<element variable="kTAG_SUBJECT">ISO:3166:1:alpha-3:DOM</element>
+			<element variable="kTAG_PREDICATE">:SUBSET-OF</element>
+		</EDGE>
+		<EDGE>
+			<element variable="kTAG_SUBJECT">ISO:3166:1:alpha-3:GLP</element>
+			<element variable="kTAG_PREDICATE">:SUBSET-OF</element>
+		</EDGE>
+		<EDGE>
+			<element variable="kTAG_SUBJECT">ISO:3166:1:alpha-3:GRD</element>
+			<element variable="kTAG_PREDICATE">:SUBSET-OF</element>
+		</EDGE>
+		<EDGE>
+			<element variable="kTAG_SUBJECT">ISO:3166:1:alpha-3:HTI</element>
+			<element variable="kTAG_PREDICATE">:SUBSET-OF</element>
+		</EDGE>
+		<EDGE>
+			<element variable="kTAG_SUBJECT">ISO:3166:1:alpha-3:JAM</element>
+			<element variable="kTAG_PREDICATE">:SUBSET-OF</element>
+		</EDGE>
+		<EDGE>
+			<element variable="kTAG_SUBJECT">ISO:3166:1:alpha-3:KNA</element>
+			<element variable="kTAG_PREDICATE">:SUBSET-OF</element>
+		</EDGE>
+		<EDGE>
+			<element variable="kTAG_SUBJECT">ISO:3166:1:alpha-3:LCA</element>
+			<element variable="kTAG_PREDICATE">:SUBSET-OF</element>
+		</EDGE>
+		<EDGE>
+			<element variable="kTAG_SUBJECT">ISO:3166:1:alpha-3:MSR</element>
+			<element variable="kTAG_PREDICATE">:SUBSET-OF</element>
+		</EDGE>
+		<EDGE>
+			<element variable="kTAG_SUBJECT">ISO:3166:1:alpha-3:MTQ</element>
+			<element variable="kTAG_PREDICATE">:SUBSET-OF</element>
+		</EDGE>
+		<EDGE>
+			<element variable="kTAG_SUBJECT">ISO:3166:1:alpha-3:PRI</element>
+			<element variable="kTAG_PREDICATE">:SUBSET-OF</element>
+		</EDGE>
+		<EDGE>
+			<element variable="kTAG_SUBJECT">ISO:3166:1:alpha-3:TCA</element>
+			<element variable="kTAG_PREDICATE">:SUBSET-OF</element>
+		</EDGE>
+		<EDGE>
+			<element variable="kTAG_SUBJECT">ISO:3166:1:alpha-3:TTO</element>
+			<element variable="kTAG_PREDICATE">:SUBSET-OF</element>
+		</EDGE>
+		<EDGE>
+			<element variable="kTAG_SUBJECT">ISO:3166:1:alpha-3:VCT</element>
+			<element variable="kTAG_PREDICATE">:SUBSET-OF</element>
+		</EDGE>
+		<EDGE>
+			<element variable="kTAG_SUBJECT">ISO:3166:1:alpha-3:VGB</element>
+			<element variable="kTAG_PREDICATE">:SUBSET-OF</element>
+		</EDGE>
+		<EDGE>
+			<element variable="kTAG_SUBJECT">ISO:3166:1:alpha-3:VIR</element>
+			<element variable="kTAG_PREDICATE">:SUBSET-OF</element>
+		</EDGE>
+		<EDGE>
+			<element variable="kTAG_SUBJECT">ISO:3166:1:alpha-3:BLM</element>
+			<element variable="kTAG_PREDICATE">:SUBSET-OF</element>
+		</EDGE>
+		<EDGE>
+			<element variable="kTAG_SUBJECT">ISO:3166:1:alpha-3:MAF</element>
+			<element variable="kTAG_PREDICATE">:SUBSET-OF</element>
+		</EDGE>
+		<EDGE>
+			<element variable="kTAG_SUBJECT">ISO:3166:1:alpha-3:CUW</element>
+			<element variable="kTAG_PREDICATE">:SUBSET-OF</element>
+		</EDGE>
+		<EDGE>
+			<element variable="kTAG_SUBJECT">ISO:3166:1:alpha-3:SXM</element>
+			<element variable="kTAG_PREDICATE">:SUBSET-OF</element>
+		</EDGE>
 	</UNIT>
 
 	<UNIT>
@@ -237,6 +644,43 @@
 		<EDGE>
 			<element variable="kTAG_PREDICATE">:ENUM-OF</element>
 			<element variable="kTAG_OBJECT">unstats.un.org:419</element>
+		</EDGE>
+		
+		<EDGE>
+			<element variable="kTAG_SUBJECT">ISO:3166:1:alpha-3:BLZ</element>
+			<element variable="kTAG_PREDICATE">:SUBSET-OF</element>
+		</EDGE>
+		<EDGE>
+			<element variable="kTAG_SUBJECT">ISO:3166:1:alpha-3:CRI</element>
+			<element variable="kTAG_PREDICATE">:SUBSET-OF</element>
+		</EDGE>
+		<EDGE>
+			<element variable="kTAG_SUBJECT">ISO:3166:1:alpha-3:GTM</element>
+			<element variable="kTAG_PREDICATE">:SUBSET-OF</element>
+		</EDGE>
+		<EDGE>
+			<element variable="kTAG_SUBJECT">ISO:3166:1:alpha-3:HND</element>
+			<element variable="kTAG_PREDICATE">:SUBSET-OF</element>
+		</EDGE>
+		<EDGE>
+			<element variable="kTAG_SUBJECT">ISO:3166:1:alpha-3:MEX</element>
+			<element variable="kTAG_PREDICATE">:SUBSET-OF</element>
+		</EDGE>
+		<EDGE>
+			<element variable="kTAG_SUBJECT">ISO:3166:1:alpha-3:NIC</element>
+			<element variable="kTAG_PREDICATE">:SUBSET-OF</element>
+		</EDGE>
+		<EDGE>
+			<element variable="kTAG_SUBJECT">ISO:3166:1:alpha-3:PAN</element>
+			<element variable="kTAG_PREDICATE">:SUBSET-OF</element>
+		</EDGE>
+		<EDGE>
+			<element variable="kTAG_SUBJECT">ISO:3166:3:alpha-3:PCZ</element>
+			<element variable="kTAG_PREDICATE">:SUBSET-OF</element>
+		</EDGE>
+		<EDGE>
+			<element variable="kTAG_SUBJECT">ISO:3166:1:alpha-3:SLV</element>
+			<element variable="kTAG_PREDICATE">:SUBSET-OF</element>
 		</EDGE>
 	</UNIT>
 
@@ -258,6 +702,83 @@
 			<element variable="kTAG_PREDICATE">:ENUM-OF</element>
 			<element variable="kTAG_OBJECT">unstats.un.org:419</element>
 		</EDGE>
+		
+		<EDGE>
+			<element variable="kTAG_SUBJECT">ISO:3166:1:alpha-3:ARG</element>
+			<element variable="kTAG_PREDICATE">:SUBSET-OF</element>
+		</EDGE>
+		<EDGE>
+			<element variable="kTAG_SUBJECT">ISO:3166:1:alpha-3:BOL</element>
+			<element variable="kTAG_PREDICATE">:SUBSET-OF</element>
+		</EDGE>
+		<EDGE>
+			<element variable="kTAG_SUBJECT">ISO:3166:1:alpha-3:BRA</element>
+			<element variable="kTAG_PREDICATE">:SUBSET-OF</element>
+		</EDGE>
+		<EDGE>
+			<element variable="kTAG_SUBJECT">ISO:3166:1:alpha-3:CHL</element>
+			<element variable="kTAG_PREDICATE">:SUBSET-OF</element>
+		</EDGE>
+		<EDGE>
+			<element variable="kTAG_SUBJECT">ISO:3166:1:alpha-3:COL</element>
+			<element variable="kTAG_PREDICATE">:SUBSET-OF</element>
+		</EDGE>
+		<EDGE>
+			<element variable="kTAG_SUBJECT">ISO:3166:1:alpha-3:ECU</element>
+			<element variable="kTAG_PREDICATE">:SUBSET-OF</element>
+		</EDGE>
+		<EDGE>
+			<element variable="kTAG_SUBJECT">ISO:3166:1:alpha-3:FLK</element>
+			<element variable="kTAG_PREDICATE">:SUBSET-OF</element>
+		</EDGE>
+		<EDGE>
+			<element variable="kTAG_SUBJECT">ISO:3166:1:alpha-3:GUF</element>
+			<element variable="kTAG_PREDICATE">:SUBSET-OF</element>
+		</EDGE>
+		<EDGE>
+			<element variable="kTAG_SUBJECT">ISO:3166:1:alpha-3:GUY</element>
+			<element variable="kTAG_PREDICATE">:SUBSET-OF</element>
+		</EDGE>
+		<EDGE>
+			<element variable="kTAG_SUBJECT">ISO:3166:1:alpha-3:PER</element>
+			<element variable="kTAG_PREDICATE">:SUBSET-OF</element>
+		</EDGE>
+		<EDGE>
+			<element variable="kTAG_SUBJECT">ISO:3166:1:alpha-3:PRY</element>
+			<element variable="kTAG_PREDICATE">:SUBSET-OF</element>
+		</EDGE>
+		<EDGE>
+			<element variable="kTAG_SUBJECT">ISO:3166:1:alpha-3:SUR</element>
+			<element variable="kTAG_PREDICATE">:SUBSET-OF</element>
+		</EDGE>
+		<EDGE>
+			<element variable="kTAG_SUBJECT">ISO:3166:1:alpha-3:URY</element>
+			<element variable="kTAG_PREDICATE">:SUBSET-OF</element>
+		</EDGE>
+		<EDGE>
+			<element variable="kTAG_SUBJECT">ISO:3166:1:alpha-3:ARG</element>
+			<element variable="kTAG_PREDICATE">:SUBSET-OF</element>
+		</EDGE>
+		<EDGE>
+			<element variable="kTAG_SUBJECT">ISO:3166:1:alpha-3:ARG</element>
+			<element variable="kTAG_PREDICATE">:SUBSET-OF</element>
+		</EDGE>
+		<EDGE>
+			<element variable="kTAG_SUBJECT">ISO:3166:1:alpha-3:ARG</element>
+			<element variable="kTAG_PREDICATE">:SUBSET-OF</element>
+		</EDGE>
+		<EDGE>
+			<element variable="kTAG_SUBJECT">ISO:3166:1:alpha-3:ARG</element>
+			<element variable="kTAG_PREDICATE">:SUBSET-OF</element>
+		</EDGE>
+		<EDGE>
+			<element variable="kTAG_SUBJECT">ISO:3166:1:alpha-3:ARG</element>
+			<element variable="kTAG_PREDICATE">:SUBSET-OF</element>
+		</EDGE>
+		<EDGE>
+			<element variable="kTAG_SUBJECT">ISO:3166:1:alpha-3:VEN</element>
+			<element variable="kTAG_PREDICATE">:SUBSET-OF</element>
+		</EDGE>
 	</UNIT>
 
 	<UNIT>
@@ -277,6 +798,27 @@
 		<EDGE>
 			<element variable="kTAG_PREDICATE">:ENUM-OF</element>
 			<element variable="kTAG_OBJECT">unstats.un.org:001</element>
+		</EDGE>
+		
+		<EDGE>
+			<element variable="kTAG_SUBJECT">ISO:3166:1:alpha-3:BMU</element>
+			<element variable="kTAG_PREDICATE">:SUBSET-OF</element>
+		</EDGE>
+		<EDGE>
+			<element variable="kTAG_SUBJECT">ISO:3166:1:alpha-3:CAN</element>
+			<element variable="kTAG_PREDICATE">:SUBSET-OF</element>
+		</EDGE>
+		<EDGE>
+			<element variable="kTAG_SUBJECT">ISO:3166:1:alpha-3:GRL</element>
+			<element variable="kTAG_PREDICATE">:SUBSET-OF</element>
+		</EDGE>
+		<EDGE>
+			<element variable="kTAG_SUBJECT">ISO:3166:1:alpha-3:SPM</element>
+			<element variable="kTAG_PREDICATE">:SUBSET-OF</element>
+		</EDGE>
+		<EDGE>
+			<element variable="kTAG_SUBJECT">ISO:3166:1:alpha-3:USA</element>
+			<element variable="kTAG_PREDICATE">:SUBSET-OF</element>
 		</EDGE>
 	</UNIT>
 
@@ -298,6 +840,11 @@
 			<element variable="kTAG_PREDICATE">:ENUM-OF</element>
 			<element variable="kTAG_OBJECT">unstats.un.org:001</element>
 		</EDGE>
+		
+		<EDGE>
+			<element variable="kTAG_SUBJECT">ISO:3166:3:alpha-3:SUN</element>
+			<element variable="kTAG_PREDICATE">:SUBSET-OF</element>
+		</EDGE>
 	</UNIT>
 
 	<UNIT>
@@ -317,6 +864,27 @@
 		<EDGE>
 			<element variable="kTAG_PREDICATE">:ENUM-OF</element>
 			<element variable="kTAG_OBJECT">unstats.un.org:142</element>
+		</EDGE>
+		
+		<EDGE>
+			<element variable="kTAG_SUBJECT">ISO:3166:1:alpha-3:KAZ</element>
+			<element variable="kTAG_PREDICATE">:SUBSET-OF</element>
+		</EDGE>
+		<EDGE>
+			<element variable="kTAG_SUBJECT">ISO:3166:1:alpha-3:KGZ</element>
+			<element variable="kTAG_PREDICATE">:SUBSET-OF</element>
+		</EDGE>
+		<EDGE>
+			<element variable="kTAG_SUBJECT">ISO:3166:1:alpha-3:TJK</element>
+			<element variable="kTAG_PREDICATE">:SUBSET-OF</element>
+		</EDGE>
+		<EDGE>
+			<element variable="kTAG_SUBJECT">ISO:3166:1:alpha-3:TKM</element>
+			<element variable="kTAG_PREDICATE">:SUBSET-OF</element>
+		</EDGE>
+		<EDGE>
+			<element variable="kTAG_SUBJECT">ISO:3166:1:alpha-3:UZB</element>
+			<element variable="kTAG_PREDICATE">:SUBSET-OF</element>
 		</EDGE>
 	</UNIT>
 
@@ -338,6 +906,39 @@
 			<element variable="kTAG_PREDICATE">:ENUM-OF</element>
 			<element variable="kTAG_OBJECT">unstats.un.org:142</element>
 		</EDGE>
+		
+		<EDGE>
+			<element variable="kTAG_SUBJECT">ISO:3166:1:alpha-3:CHN</element>
+			<element variable="kTAG_PREDICATE">:SUBSET-OF</element>
+		</EDGE>
+		<EDGE>
+			<element variable="kTAG_SUBJECT">ISO:3166:1:alpha-3:HKG</element>
+			<element variable="kTAG_PREDICATE">:SUBSET-OF</element>
+		</EDGE>
+		<EDGE>
+			<element variable="kTAG_SUBJECT">ISO:3166:1:alpha-3:JPN</element>
+			<element variable="kTAG_PREDICATE">:SUBSET-OF</element>
+		</EDGE>
+		<EDGE>
+			<element variable="kTAG_SUBJECT">ISO:3166:1:alpha-3:KOR</element>
+			<element variable="kTAG_PREDICATE">:SUBSET-OF</element>
+		</EDGE>
+		<EDGE>
+			<element variable="kTAG_SUBJECT">ISO:3166:1:alpha-3:MAC</element>
+			<element variable="kTAG_PREDICATE">:SUBSET-OF</element>
+		</EDGE>
+		<EDGE>
+			<element variable="kTAG_SUBJECT">ISO:3166:1:alpha-3:MNG</element>
+			<element variable="kTAG_PREDICATE">:SUBSET-OF</element>
+		</EDGE>
+		<EDGE>
+			<element variable="kTAG_SUBJECT">ISO:3166:1:alpha-3:PRK</element>
+			<element variable="kTAG_PREDICATE">:SUBSET-OF</element>
+		</EDGE>
+		<EDGE>
+			<element variable="kTAG_SUBJECT">ISO:3166:1:alpha-3:TWN</element>
+			<element variable="kTAG_PREDICATE">:SUBSET-OF</element>
+		</EDGE>
 	</UNIT>
 
 	<UNIT>
@@ -357,6 +958,47 @@
 		<EDGE>
 			<element variable="kTAG_PREDICATE">:ENUM-OF</element>
 			<element variable="kTAG_OBJECT">unstats.un.org:142</element>
+		</EDGE>
+		
+		<EDGE>
+			<element variable="kTAG_SUBJECT">ISO:3166:1:alpha-3:AFG</element>
+			<element variable="kTAG_PREDICATE">:SUBSET-OF</element>
+		</EDGE>
+		<EDGE>
+			<element variable="kTAG_SUBJECT">ISO:3166:1:alpha-3:BGD</element>
+			<element variable="kTAG_PREDICATE">:SUBSET-OF</element>
+		</EDGE>
+		<EDGE>
+			<element variable="kTAG_SUBJECT">ISO:3166:1:alpha-3:BTN</element>
+			<element variable="kTAG_PREDICATE">:SUBSET-OF</element>
+		</EDGE>
+		<EDGE>
+			<element variable="kTAG_SUBJECT">ISO:3166:1:alpha-3:IND</element>
+			<element variable="kTAG_PREDICATE">:SUBSET-OF</element>
+		</EDGE>
+		<EDGE>
+			<element variable="kTAG_SUBJECT">ISO:3166:1:alpha-3:IRN</element>
+			<element variable="kTAG_PREDICATE">:SUBSET-OF</element>
+		</EDGE>
+		<EDGE>
+			<element variable="kTAG_SUBJECT">ISO:3166:1:alpha-3:LKA</element>
+			<element variable="kTAG_PREDICATE">:SUBSET-OF</element>
+		</EDGE>
+		<EDGE>
+			<element variable="kTAG_SUBJECT">ISO:3166:1:alpha-3:MDV</element>
+			<element variable="kTAG_PREDICATE">:SUBSET-OF</element>
+		</EDGE>
+		<EDGE>
+			<element variable="kTAG_SUBJECT">ISO:3166:1:alpha-3:NPL</element>
+			<element variable="kTAG_PREDICATE">:SUBSET-OF</element>
+		</EDGE>
+		<EDGE>
+			<element variable="kTAG_SUBJECT">ISO:3166:1:alpha-3:PAK</element>
+			<element variable="kTAG_PREDICATE">:SUBSET-OF</element>
+		</EDGE>
+		<EDGE>
+			<element variable="kTAG_SUBJECT">ISO:3166:3:alpha-3:SKM</element>
+			<element variable="kTAG_PREDICATE">:SUBSET-OF</element>
 		</EDGE>
 	</UNIT>
 
@@ -378,6 +1020,63 @@
 			<element variable="kTAG_PREDICATE">:ENUM-OF</element>
 			<element variable="kTAG_OBJECT">unstats.un.org:142</element>
 		</EDGE>
+		
+		<EDGE>
+			<element variable="kTAG_SUBJECT">ISO:3166:1:alpha-3:BRN</element>
+			<element variable="kTAG_PREDICATE">:SUBSET-OF</element>
+		</EDGE>
+		<EDGE>
+			<element variable="kTAG_SUBJECT">ISO:3166:3:alpha-3:BUR</element>
+			<element variable="kTAG_PREDICATE">:SUBSET-OF</element>
+		</EDGE>
+		<EDGE>
+			<element variable="kTAG_SUBJECT">ISO:3166:1:alpha-3:IDN</element>
+			<element variable="kTAG_PREDICATE">:SUBSET-OF</element>
+		</EDGE>
+		<EDGE>
+			<element variable="kTAG_SUBJECT">ISO:3166:1:alpha-3:KHM</element>
+			<element variable="kTAG_PREDICATE">:SUBSET-OF</element>
+		</EDGE>
+		<EDGE>
+			<element variable="kTAG_SUBJECT">ISO:3166:1:alpha-3:LAO</element>
+			<element variable="kTAG_PREDICATE">:SUBSET-OF</element>
+		</EDGE>
+		<EDGE>
+			<element variable="kTAG_SUBJECT">ISO:3166:1:alpha-3:MMR</element>
+			<element variable="kTAG_PREDICATE">:SUBSET-OF</element>
+		</EDGE>
+		<EDGE>
+			<element variable="kTAG_SUBJECT">ISO:3166:1:alpha-3:MYS</element>
+			<element variable="kTAG_PREDICATE">:SUBSET-OF</element>
+		</EDGE>
+		<EDGE>
+			<element variable="kTAG_SUBJECT">ISO:3166:1:alpha-3:PHL</element>
+			<element variable="kTAG_PREDICATE">:SUBSET-OF</element>
+		</EDGE>
+		<EDGE>
+			<element variable="kTAG_SUBJECT">ISO:3166:1:alpha-3:SGP</element>
+			<element variable="kTAG_PREDICATE">:SUBSET-OF</element>
+		</EDGE>
+		<EDGE>
+			<element variable="kTAG_SUBJECT">ISO:3166:1:alpha-3:THA</element>
+			<element variable="kTAG_PREDICATE">:SUBSET-OF</element>
+		</EDGE>
+		<EDGE>
+			<element variable="kTAG_SUBJECT">ISO:3166:1:alpha-3:TLS</element>
+			<element variable="kTAG_PREDICATE">:SUBSET-OF</element>
+		</EDGE>
+		<EDGE>
+			<element variable="kTAG_SUBJECT">ISO:3166:3:alpha-3:TMP</element>
+			<element variable="kTAG_PREDICATE">:SUBSET-OF</element>
+		</EDGE>
+		<EDGE>
+			<element variable="kTAG_SUBJECT">ISO:3166:3:alpha-3:VDR</element>
+			<element variable="kTAG_PREDICATE">:SUBSET-OF</element>
+		</EDGE>
+		<EDGE>
+			<element variable="kTAG_SUBJECT">ISO:3166:1:alpha-3:VNM</element>
+			<element variable="kTAG_PREDICATE">:SUBSET-OF</element>
+		</EDGE>
 	</UNIT>
 
 	<UNIT>
@@ -397,6 +1096,87 @@
 		<EDGE>
 			<element variable="kTAG_PREDICATE">:ENUM-OF</element>
 			<element variable="kTAG_OBJECT">unstats.un.org:142</element>
+		</EDGE>
+		
+		<EDGE>
+			<element variable="kTAG_SUBJECT">ISO:3166:1:alpha-3:ARE</element>
+			<element variable="kTAG_PREDICATE">:SUBSET-OF</element>
+		</EDGE>
+		<EDGE>
+			<element variable="kTAG_SUBJECT">ISO:3166:1:alpha-3:ARM</element>
+			<element variable="kTAG_PREDICATE">:SUBSET-OF</element>
+		</EDGE>
+		<EDGE>
+			<element variable="kTAG_SUBJECT">ISO:3166:1:alpha-3:AZE</element>
+			<element variable="kTAG_PREDICATE">:SUBSET-OF</element>
+		</EDGE>
+		<EDGE>
+			<element variable="kTAG_SUBJECT">ISO:3166:1:alpha-3:BHR</element>
+			<element variable="kTAG_PREDICATE">:SUBSET-OF</element>
+		</EDGE>
+		<EDGE>
+			<element variable="kTAG_SUBJECT">ISO:3166:1:alpha-3:CYP</element>
+			<element variable="kTAG_PREDICATE">:SUBSET-OF</element>
+		</EDGE>
+		<EDGE>
+			<element variable="kTAG_SUBJECT">ISO:3166:1:alpha-3:GEO</element>
+			<element variable="kTAG_PREDICATE">:SUBSET-OF</element>
+		</EDGE>
+		<EDGE>
+			<element variable="kTAG_SUBJECT">ISO:3166:1:alpha-3:IRQ</element>
+			<element variable="kTAG_PREDICATE">:SUBSET-OF</element>
+		</EDGE>
+		<EDGE>
+			<element variable="kTAG_SUBJECT">ISO:3166:1:alpha-3:ISR</element>
+			<element variable="kTAG_PREDICATE">:SUBSET-OF</element>
+		</EDGE>
+		<EDGE>
+			<element variable="kTAG_SUBJECT">ISO:3166:1:alpha-3:JOR</element>
+			<element variable="kTAG_PREDICATE">:SUBSET-OF</element>
+		</EDGE>
+		<EDGE>
+			<element variable="kTAG_SUBJECT">ISO:3166:1:alpha-3:KWT</element>
+			<element variable="kTAG_PREDICATE">:SUBSET-OF</element>
+		</EDGE>
+		<EDGE>
+			<element variable="kTAG_SUBJECT">ISO:3166:1:alpha-3:LBN</element>
+			<element variable="kTAG_PREDICATE">:SUBSET-OF</element>
+		</EDGE>
+		<EDGE>
+			<element variable="kTAG_SUBJECT">ISO:3166:1:alpha-3:OMN</element>
+			<element variable="kTAG_PREDICATE">:SUBSET-OF</element>
+		</EDGE>
+		<EDGE>
+			<element variable="kTAG_SUBJECT">ISO:3166:1:alpha-3:PSE</element>
+			<element variable="kTAG_PREDICATE">:SUBSET-OF</element>
+		</EDGE>
+		<EDGE>
+			<element variable="kTAG_SUBJECT">ISO:3166:1:alpha-3:QAT</element>
+			<element variable="kTAG_PREDICATE">:SUBSET-OF</element>
+		</EDGE>
+		<EDGE>
+			<element variable="kTAG_SUBJECT">ISO:3166:1:alpha-3:SAU</element>
+			<element variable="kTAG_PREDICATE">:SUBSET-OF</element>
+		</EDGE>
+		<EDGE>
+			<element variable="kTAG_SUBJECT">ISO:3166:1:alpha-3:SYR</element>
+			<element variable="kTAG_PREDICATE">:SUBSET-OF</element>
+		</EDGE>
+		<EDGE>
+			<element variable="kTAG_SUBJECT">ISO:3166:1:alpha-3:TUR</element>
+			<element variable="kTAG_PREDICATE">:SUBSET-OF</element>
+		</EDGE>
+		<EDGE>
+			<element variable="kTAG_SUBJECT">ISO:3166:1:alpha-3:YEM</element>
+			<element variable="kTAG_PREDICATE">:SUBSET-OF</element>
+		</EDGE>
+		<EDGE>
+			<element variable="kTAG_SUBJECT">ISO:3166:3:alpha-3:YEM</element>
+			<element variable="kTAG_PREDICATE">:SUBSET-OF</element>
+		</EDGE>
+		<EDGE>
+			<element variable="kTAG_SUBJECT">ISO:3166:3:alpha-3:YMD</element>
+			<element variable="kTAG_PREDICATE">:SUBSET-OF</element>
 		</EDGE>
 	</UNIT>
 
@@ -438,6 +1218,59 @@
 			<element variable="kTAG_PREDICATE">:ENUM-OF</element>
 			<element variable="kTAG_OBJECT">unstats.un.org:150</element>
 		</EDGE>
+		
+		<EDGE>
+			<element variable="kTAG_SUBJECT">ISO:3166:1:alpha-3:BGR</element>
+			<element variable="kTAG_PREDICATE">:SUBSET-OF</element>
+		</EDGE>
+		<EDGE>
+			<element variable="kTAG_SUBJECT">ISO:3166:1:alpha-3:BLR</element>
+			<element variable="kTAG_PREDICATE">:SUBSET-OF</element>
+		</EDGE>
+		<EDGE>
+			<element variable="kTAG_SUBJECT">ISO:3166:3:alpha-3:BYS</element>
+			<element variable="kTAG_PREDICATE">:SUBSET-OF</element>
+		</EDGE>
+		<EDGE>
+			<element variable="kTAG_SUBJECT">ISO:3166:3:alpha-3:CSK</element>
+			<element variable="kTAG_PREDICATE">:SUBSET-OF</element>
+		</EDGE>
+		<EDGE>
+			<element variable="kTAG_SUBJECT">ISO:3166:1:alpha-3:CZE</element>
+			<element variable="kTAG_PREDICATE">:SUBSET-OF</element>
+		</EDGE>
+		<EDGE>
+			<element variable="kTAG_SUBJECT">ISO:3166:1:alpha-3:HUN</element>
+			<element variable="kTAG_PREDICATE">:SUBSET-OF</element>
+		</EDGE>
+		<EDGE>
+			<element variable="kTAG_SUBJECT">ISO:3166:1:alpha-3:MDA</element>
+			<element variable="kTAG_PREDICATE">:SUBSET-OF</element>
+		</EDGE>
+		<EDGE>
+			<element variable="kTAG_SUBJECT">ISO:3166:1:alpha-3:POL</element>
+			<element variable="kTAG_PREDICATE">:SUBSET-OF</element>
+		</EDGE>
+		<EDGE>
+			<element variable="kTAG_SUBJECT">ISO:3166:3:alpha-3:ROM</element>
+			<element variable="kTAG_PREDICATE">:SUBSET-OF</element>
+		</EDGE>
+		<EDGE>
+			<element variable="kTAG_SUBJECT">ISO:3166:1:alpha-3:ROU</element>
+			<element variable="kTAG_PREDICATE">:SUBSET-OF</element>
+		</EDGE>
+		<EDGE>
+			<element variable="kTAG_SUBJECT">ISO:3166:1:alpha-3:RUS</element>
+			<element variable="kTAG_PREDICATE">:SUBSET-OF</element>
+		</EDGE>
+		<EDGE>
+			<element variable="kTAG_SUBJECT">ISO:3166:1:alpha-3:SVK</element>
+			<element variable="kTAG_PREDICATE">:SUBSET-OF</element>
+		</EDGE>
+		<EDGE>
+			<element variable="kTAG_SUBJECT">ISO:3166:1:alpha-3:UKR</element>
+			<element variable="kTAG_PREDICATE">:SUBSET-OF</element>
+		</EDGE>
 	</UNIT>
 
 	<UNIT>
@@ -457,6 +1290,71 @@
 		<EDGE>
 			<element variable="kTAG_PREDICATE">:ENUM-OF</element>
 			<element variable="kTAG_OBJECT">unstats.un.org:150</element>
+		</EDGE>
+		
+		<EDGE>
+			<element variable="kTAG_SUBJECT">ISO:3166:1:alpha-3:ALA</element>
+			<element variable="kTAG_PREDICATE">:SUBSET-OF</element>
+		</EDGE>
+		<EDGE>
+			<element variable="kTAG_SUBJECT">ISO:3166:1:alpha-3:DNK</element>
+			<element variable="kTAG_PREDICATE">:SUBSET-OF</element>
+		</EDGE>
+		<EDGE>
+			<element variable="kTAG_SUBJECT">ISO:3166:1:alpha-3:EST</element>
+			<element variable="kTAG_PREDICATE">:SUBSET-OF</element>
+		</EDGE>
+		<EDGE>
+			<element variable="kTAG_SUBJECT">ISO:3166:1:alpha-3:FIN</element>
+			<element variable="kTAG_PREDICATE">:SUBSET-OF</element>
+		</EDGE>
+		<EDGE>
+			<element variable="kTAG_SUBJECT">ISO:3166:1:alpha-3:FRO</element>
+			<element variable="kTAG_PREDICATE">:SUBSET-OF</element>
+		</EDGE>
+		<EDGE>
+			<element variable="kTAG_SUBJECT">ISO:3166:1:alpha-3:GBR</element>
+			<element variable="kTAG_PREDICATE">:SUBSET-OF</element>
+		</EDGE>
+		<EDGE>
+			<element variable="kTAG_SUBJECT">ISO:3166:1:alpha-3:GGY</element>
+			<element variable="kTAG_PREDICATE">:SUBSET-OF</element>
+		</EDGE>
+		<EDGE>
+			<element variable="kTAG_SUBJECT">ISO:3166:1:alpha-3:IMN</element>
+			<element variable="kTAG_PREDICATE">:SUBSET-OF</element>
+		</EDGE>
+		<EDGE>
+			<element variable="kTAG_SUBJECT">ISO:3166:1:alpha-3:IRL</element>
+			<element variable="kTAG_PREDICATE">:SUBSET-OF</element>
+		</EDGE>
+		<EDGE>
+			<element variable="kTAG_SUBJECT">ISO:3166:1:alpha-3:ISL</element>
+			<element variable="kTAG_PREDICATE">:SUBSET-OF</element>
+		</EDGE>
+		<EDGE>
+			<element variable="kTAG_SUBJECT">ISO:3166:1:alpha-3:JEY</element>
+			<element variable="kTAG_PREDICATE">:SUBSET-OF</element>
+		</EDGE>
+		<EDGE>
+			<element variable="kTAG_SUBJECT">ISO:3166:1:alpha-3:LTU</element>
+			<element variable="kTAG_PREDICATE">:SUBSET-OF</element>
+		</EDGE>
+		<EDGE>
+			<element variable="kTAG_SUBJECT">ISO:3166:1:alpha-3:LVA</element>
+			<element variable="kTAG_PREDICATE">:SUBSET-OF</element>
+		</EDGE>
+		<EDGE>
+			<element variable="kTAG_SUBJECT">ISO:3166:1:alpha-3:NOR</element>
+			<element variable="kTAG_PREDICATE">:SUBSET-OF</element>
+		</EDGE>
+		<EDGE>
+			<element variable="kTAG_SUBJECT">ISO:3166:1:alpha-3:SJM</element>
+			<element variable="kTAG_PREDICATE">:SUBSET-OF</element>
+		</EDGE>
+		<EDGE>
+			<element variable="kTAG_SUBJECT">ISO:3166:1:alpha-3:SWE</element>
+			<element variable="kTAG_PREDICATE">:SUBSET-OF</element>
 		</EDGE>
 	</UNIT>
 
@@ -478,6 +1376,79 @@
 			<element variable="kTAG_PREDICATE">:ENUM-OF</element>
 			<element variable="kTAG_OBJECT">unstats.un.org:150</element>
 		</EDGE>
+		
+		<EDGE>
+			<element variable="kTAG_SUBJECT">ISO:3166:1:alpha-3:ALB</element>
+			<element variable="kTAG_PREDICATE">:SUBSET-OF</element>
+		</EDGE>
+		<EDGE>
+			<element variable="kTAG_SUBJECT">ISO:3166:1:alpha-3:AND</element>
+			<element variable="kTAG_PREDICATE">:SUBSET-OF</element>
+		</EDGE>
+		<EDGE>
+			<element variable="kTAG_SUBJECT">ISO:3166:1:alpha-3:BIH</element>
+			<element variable="kTAG_PREDICATE">:SUBSET-OF</element>
+		</EDGE>
+		<EDGE>
+			<element variable="kTAG_SUBJECT">ISO:3166:1:alpha-3:ESP</element>
+			<element variable="kTAG_PREDICATE">:SUBSET-OF</element>
+		</EDGE>
+		<EDGE>
+			<element variable="kTAG_SUBJECT">ISO:3166:1:alpha-3:GIB</element>
+			<element variable="kTAG_PREDICATE">:SUBSET-OF</element>
+		</EDGE>
+		<EDGE>
+			<element variable="kTAG_SUBJECT">ISO:3166:1:alpha-3:GRC</element>
+			<element variable="kTAG_PREDICATE">:SUBSET-OF</element>
+		</EDGE>
+		<EDGE>
+			<element variable="kTAG_SUBJECT">ISO:3166:1:alpha-3:HRV</element>
+			<element variable="kTAG_PREDICATE">:SUBSET-OF</element>
+		</EDGE>
+		<EDGE>
+			<element variable="kTAG_SUBJECT">ISO:3166:1:alpha-3:ITA</element>
+			<element variable="kTAG_PREDICATE">:SUBSET-OF</element>
+		</EDGE>
+		<EDGE>
+			<element variable="kTAG_SUBJECT">ISO:3166:1:alpha-3:MKD</element>
+			<element variable="kTAG_PREDICATE">:SUBSET-OF</element>
+		</EDGE>
+		<EDGE>
+			<element variable="kTAG_SUBJECT">ISO:3166:1:alpha-3:MLT</element>
+			<element variable="kTAG_PREDICATE">:SUBSET-OF</element>
+		</EDGE>
+		<EDGE>
+			<element variable="kTAG_SUBJECT">ISO:3166:1:alpha-3:PRT</element>
+			<element variable="kTAG_PREDICATE">:SUBSET-OF</element>
+		</EDGE>
+		<EDGE>
+			<element variable="kTAG_SUBJECT">ISO:3166:3:alpha-3:SCG</element>
+			<element variable="kTAG_PREDICATE">:SUBSET-OF</element>
+		</EDGE>
+		<EDGE>
+			<element variable="kTAG_SUBJECT">ISO:3166:1:alpha-3:SMR</element>
+			<element variable="kTAG_PREDICATE">:SUBSET-OF</element>
+		</EDGE>
+		<EDGE>
+			<element variable="kTAG_SUBJECT">ISO:3166:1:alpha-3:SVN</element>
+			<element variable="kTAG_PREDICATE">:SUBSET-OF</element>
+		</EDGE>
+		<EDGE>
+			<element variable="kTAG_SUBJECT">ISO:3166:1:alpha-3:VAT</element>
+			<element variable="kTAG_PREDICATE">:SUBSET-OF</element>
+		</EDGE>
+		<EDGE>
+			<element variable="kTAG_SUBJECT">ISO:3166:3:alpha-3:YUG</element>
+			<element variable="kTAG_PREDICATE">:SUBSET-OF</element>
+		</EDGE>
+		<EDGE>
+			<element variable="kTAG_SUBJECT">ISO:3166:1:alpha-3:MNE</element>
+			<element variable="kTAG_PREDICATE">:SUBSET-OF</element>
+		</EDGE>
+		<EDGE>
+			<element variable="kTAG_SUBJECT">ISO:3166:1:alpha-3:SRB</element>
+			<element variable="kTAG_PREDICATE">:SUBSET-OF</element>
+		</EDGE>
 	</UNIT>
 
 	<UNIT>
@@ -497,6 +1468,55 @@
 		<EDGE>
 			<element variable="kTAG_PREDICATE">:ENUM-OF</element>
 			<element variable="kTAG_OBJECT">unstats.un.org:150</element>
+		</EDGE>
+		
+		<EDGE>
+			<element variable="kTAG_SUBJECT">ISO:3166:1:alpha-3:AUT</element>
+			<element variable="kTAG_PREDICATE">:SUBSET-OF</element>
+		</EDGE>
+		<EDGE>
+			<element variable="kTAG_SUBJECT">ISO:3166:1:alpha-3:BEL</element>
+			<element variable="kTAG_PREDICATE">:SUBSET-OF</element>
+		</EDGE>
+		<EDGE>
+			<element variable="kTAG_SUBJECT">ISO:3166:1:alpha-3:CHE</element>
+			<element variable="kTAG_PREDICATE">:SUBSET-OF</element>
+		</EDGE>
+		<EDGE>
+			<element variable="kTAG_SUBJECT">ISO:3166:3:alpha-3:DDR</element>
+			<element variable="kTAG_PREDICATE">:SUBSET-OF</element>
+		</EDGE>
+		<EDGE>
+			<element variable="kTAG_SUBJECT">ISO:3166:1:alpha-3:DEU</element>
+			<element variable="kTAG_PREDICATE">:SUBSET-OF</element>
+		</EDGE>
+		<EDGE>
+			<element variable="kTAG_SUBJECT">ISO:3166:3:alpha-3:DEU</element>
+			<element variable="kTAG_PREDICATE">:SUBSET-OF</element>
+		</EDGE>
+		<EDGE>
+			<element variable="kTAG_SUBJECT">ISO:3166:1:alpha-3:FRA</element>
+			<element variable="kTAG_PREDICATE">:SUBSET-OF</element>
+		</EDGE>
+		<EDGE>
+			<element variable="kTAG_SUBJECT">ISO:3166:1:alpha-3:LIE</element>
+			<element variable="kTAG_PREDICATE">:SUBSET-OF</element>
+		</EDGE>
+		<EDGE>
+			<element variable="kTAG_SUBJECT">ISO:3166:1:alpha-3:LUX</element>
+			<element variable="kTAG_PREDICATE">:SUBSET-OF</element>
+		</EDGE>
+		<EDGE>
+			<element variable="kTAG_SUBJECT">ISO:3166:1:alpha-3:MCO</element>
+			<element variable="kTAG_PREDICATE">:SUBSET-OF</element>
+		</EDGE>
+		<EDGE>
+			<element variable="kTAG_SUBJECT">ISO:3166:1:alpha-3:NLD</element>
+			<element variable="kTAG_PREDICATE">:SUBSET-OF</element>
+		</EDGE>
+		<EDGE>
+			<element variable="kTAG_SUBJECT">ISO:3166:3:alpha-3:FXX</element>
+			<element variable="kTAG_PREDICATE">:SUBSET-OF</element>
 		</EDGE>
 	</UNIT>
 
@@ -518,6 +1538,43 @@
 			<element variable="kTAG_PREDICATE">:ENUM-OF</element>
 			<element variable="kTAG_OBJECT">unstats.un.org:001</element>
 		</EDGE>
+		
+		<EDGE>
+			<element variable="kTAG_SUBJECT">ISO:3166:1:alpha-3:CCK</element>
+			<element variable="kTAG_PREDICATE">:SUBSET-OF</element>
+		</EDGE>
+		<EDGE>
+			<element variable="kTAG_SUBJECT">ISO:3166:1:alpha-3:CXR</element>
+			<element variable="kTAG_PREDICATE">:SUBSET-OF</element>
+		</EDGE>
+		<EDGE>
+			<element variable="kTAG_SUBJECT">ISO:3166:3:alpha-3:GEL</element>
+			<element variable="kTAG_PREDICATE">:SUBSET-OF</element>
+		</EDGE>
+		<EDGE>
+			<element variable="kTAG_SUBJECT">ISO:3166:3:alpha-3:JTN</element>
+			<element variable="kTAG_PREDICATE">:SUBSET-OF</element>
+		</EDGE>
+		<EDGE>
+			<element variable="kTAG_SUBJECT">ISO:3166:3:alpha-3:MID</element>
+			<element variable="kTAG_PREDICATE">:SUBSET-OF</element>
+		</EDGE>
+		<EDGE>
+			<element variable="kTAG_SUBJECT">ISO:3166:3:alpha-3:PCI</element>
+			<element variable="kTAG_PREDICATE">:SUBSET-OF</element>
+		</EDGE>
+		<EDGE>
+			<element variable="kTAG_SUBJECT">ISO:3166:3:alpha-3:PUS</element>
+			<element variable="kTAG_PREDICATE">:SUBSET-OF</element>
+		</EDGE>
+		<EDGE>
+			<element variable="kTAG_SUBJECT">ISO:3166:1:alpha-3:UMI</element>
+			<element variable="kTAG_PREDICATE">:SUBSET-OF</element>
+		</EDGE>
+		<EDGE>
+			<element variable="kTAG_SUBJECT">ISO:3166:3:alpha-3:WAK</element>
+			<element variable="kTAG_PREDICATE">:SUBSET-OF</element>
+		</EDGE>
 	</UNIT>
 
 	<UNIT>
@@ -537,6 +1594,19 @@
 		<EDGE>
 			<element variable="kTAG_PREDICATE">:ENUM-OF</element>
 			<element variable="kTAG_OBJECT">unstats.un.org:009</element>
+		</EDGE>
+		
+		<EDGE>
+			<element variable="kTAG_SUBJECT">ISO:3166:1:alpha-3:AUS</element>
+			<element variable="kTAG_PREDICATE">:SUBSET-OF</element>
+		</EDGE>
+		<EDGE>
+			<element variable="kTAG_SUBJECT">ISO:3166:1:alpha-3:NFK</element>
+			<element variable="kTAG_PREDICATE">:SUBSET-OF</element>
+		</EDGE>
+		<EDGE>
+			<element variable="kTAG_SUBJECT">ISO:3166:1:alpha-3:NZL</element>
+			<element variable="kTAG_PREDICATE">:SUBSET-OF</element>
 		</EDGE>
 	</UNIT>
 
@@ -558,6 +1628,31 @@
 			<element variable="kTAG_PREDICATE">:ENUM-OF</element>
 			<element variable="kTAG_OBJECT">unstats.un.org:009</element>
 		</EDGE>
+		
+		<EDGE>
+			<element variable="kTAG_SUBJECT">ISO:3166:1:alpha-3:FJI</element>
+			<element variable="kTAG_PREDICATE">:SUBSET-OF</element>
+		</EDGE>
+		<EDGE>
+			<element variable="kTAG_SUBJECT">ISO:3166:1:alpha-3:NCL</element>
+			<element variable="kTAG_PREDICATE">:SUBSET-OF</element>
+		</EDGE>
+		<EDGE>
+			<element variable="kTAG_SUBJECT">ISO:3166:3:alpha-3:NHB</element>
+			<element variable="kTAG_PREDICATE">:SUBSET-OF</element>
+		</EDGE>
+		<EDGE>
+			<element variable="kTAG_SUBJECT">ISO:3166:1:alpha-3:PNG</element>
+			<element variable="kTAG_PREDICATE">:SUBSET-OF</element>
+		</EDGE>
+		<EDGE>
+			<element variable="kTAG_SUBJECT">ISO:3166:1:alpha-3:SLB</element>
+			<element variable="kTAG_PREDICATE">:SUBSET-OF</element>
+		</EDGE>
+		<EDGE>
+			<element variable="kTAG_SUBJECT">ISO:3166:1:alpha-3:VUT</element>
+			<element variable="kTAG_PREDICATE">:SUBSET-OF</element>
+		</EDGE>
 	</UNIT>
 
 	<UNIT>
@@ -578,6 +1673,39 @@
 			<element variable="kTAG_PREDICATE">:ENUM-OF</element>
 			<element variable="kTAG_OBJECT">unstats.un.org:009</element>
 		</EDGE>
+		
+		<EDGE>
+			<element variable="kTAG_SUBJECT">ISO:3166:3:alpha-3:CTE</element>
+			<element variable="kTAG_PREDICATE">:SUBSET-OF</element>
+		</EDGE>
+		<EDGE>
+			<element variable="kTAG_SUBJECT">ISO:3166:1:alpha-3:FSM</element>
+			<element variable="kTAG_PREDICATE">:SUBSET-OF</element>
+		</EDGE>
+		<EDGE>
+			<element variable="kTAG_SUBJECT">ISO:3166:1:alpha-3:GUM</element>
+			<element variable="kTAG_PREDICATE">:SUBSET-OF</element>
+		</EDGE>
+		<EDGE>
+			<element variable="kTAG_SUBJECT">ISO:3166:1:alpha-3:KIR</element>
+			<element variable="kTAG_PREDICATE">:SUBSET-OF</element>
+		</EDGE>
+		<EDGE>
+			<element variable="kTAG_SUBJECT">ISO:3166:1:alpha-3:MHL</element>
+			<element variable="kTAG_PREDICATE">:SUBSET-OF</element>
+		</EDGE>
+		<EDGE>
+			<element variable="kTAG_SUBJECT">ISO:3166:1:alpha-3:MNP</element>
+			<element variable="kTAG_PREDICATE">:SUBSET-OF</element>
+		</EDGE>
+		<EDGE>
+			<element variable="kTAG_SUBJECT">ISO:3166:1:alpha-3:NRU</element>
+			<element variable="kTAG_PREDICATE">:SUBSET-OF</element>
+		</EDGE>
+		<EDGE>
+			<element variable="kTAG_SUBJECT">ISO:3166:1:alpha-3:PLW</element>
+			<element variable="kTAG_PREDICATE">:SUBSET-OF</element>
+		</EDGE>
 	</UNIT>
 
 	<UNIT>
@@ -597,6 +1725,47 @@
 		<EDGE>
 			<element variable="kTAG_PREDICATE">:ENUM-OF</element>
 			<element variable="kTAG_OBJECT">unstats.un.org:009</element>
+		</EDGE>
+		
+		<EDGE>
+			<element variable="kTAG_SUBJECT">ISO:3166:1:alpha-3:ASM</element>
+			<element variable="kTAG_PREDICATE">:SUBSET-OF</element>
+		</EDGE>
+		<EDGE>
+			<element variable="kTAG_SUBJECT">ISO:3166:1:alpha-3:COK</element>
+			<element variable="kTAG_PREDICATE">:SUBSET-OF</element>
+		</EDGE>
+		<EDGE>
+			<element variable="kTAG_SUBJECT">ISO:3166:1:alpha-3:NIU</element>
+			<element variable="kTAG_PREDICATE">:SUBSET-OF</element>
+		</EDGE>
+		<EDGE>
+			<element variable="kTAG_SUBJECT">ISO:3166:1:alpha-3:PCN</element>
+			<element variable="kTAG_PREDICATE">:SUBSET-OF</element>
+		</EDGE>
+		<EDGE>
+			<element variable="kTAG_SUBJECT">ISO:3166:1:alpha-3:PYF</element>
+			<element variable="kTAG_PREDICATE">:SUBSET-OF</element>
+		</EDGE>
+		<EDGE>
+			<element variable="kTAG_SUBJECT">ISO:3166:1:alpha-3:TKL</element>
+			<element variable="kTAG_PREDICATE">:SUBSET-OF</element>
+		</EDGE>
+		<EDGE>
+			<element variable="kTAG_SUBJECT">ISO:3166:1:alpha-3:TON</element>
+			<element variable="kTAG_PREDICATE">:SUBSET-OF</element>
+		</EDGE>
+		<EDGE>
+			<element variable="kTAG_SUBJECT">ISO:3166:1:alpha-3:TUV</element>
+			<element variable="kTAG_PREDICATE">:SUBSET-OF</element>
+		</EDGE>
+		<EDGE>
+			<element variable="kTAG_SUBJECT">ISO:3166:1:alpha-3:WLF</element>
+			<element variable="kTAG_PREDICATE">:SUBSET-OF</element>
+		</EDGE>
+		<EDGE>
+			<element variable="kTAG_SUBJECT">ISO:3166:1:alpha-3:WSM</element>
+			<element variable="kTAG_PREDICATE">:SUBSET-OF</element>
 		</EDGE>
 	</UNIT>
 </ONTOLOGY>

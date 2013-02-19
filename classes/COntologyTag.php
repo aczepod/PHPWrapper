@@ -638,8 +638,9 @@ class COntologyTag extends CTag
 						if( ! $doThrow )
 							return NULL;											// ==>
 						
+						$tmp = (string) $theIdentifier;
 						throw new Exception
-							( "Tag not found: unresolved term in path",
+							( "Tag not found: unresolved term in path [$tmp]",
 							  kERROR_NOT_FOUND );								// !@! ==>
 					
 					} // Unresolved term.

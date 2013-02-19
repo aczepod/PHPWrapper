@@ -199,17 +199,23 @@ try
 	$test->LoadXMLOntologyFile( $files );
 	echo( '<hr />' );
 	echo( '<hr />' );
-
+	
 	//
-	// Load other terms.
+	// Test term insert.
 	//
-	$dir = kPATH_MYWRAPPER_LIBRARY_DATA;
-	$files = array( "$dir/UNSTAT_REGIONS.xml" );
-	echo( '<h4>Load other ontologies</h4>' );
 	echo( '<h5>$test = new MyClass( $database );</h5>' );
 	$test = new MyClass( $database );
-	echo( '<h5>$test->LoadXMLOntologyFile( $files );</h5>' );
-	$test->LoadXMLOntologyFile( $files );
+	echo( '<h5>$test->LoadXMLOntologyFile( "/Library/WebServer/Library/PHPWrapper/examples/TERM_INSERT.xml" );</h5>' );
+	$test->LoadXMLOntologyFile( "/Library/WebServer/Library/PHPWrapper/examples/TERM_INSERT.xml" );
+	echo( '<hr />' );
+	
+	//
+	// Test term modify.
+	//
+	echo( '<h5>$test = new MyClass( $database );</h5>' );
+	$test = new MyClass( $database );
+	echo( '<h5>$test->LoadXMLOntologyFile( "/Library/WebServer/Library/PHPWrapper/examples/TERM_MODIFY.xml" );</h5>' );
+	$test->LoadXMLOntologyFile( "/Library/WebServer/Library/PHPWrapper/examples/TERM_MODIFY.xml" );
 	echo( '<hr />' );
 	echo( '<hr />' );
 exit;
