@@ -1210,24 +1210,64 @@ class COntology extends CConnection
 										 SimpleXMLElement $theElement )
 	{
 		//
-		// Get node class.
+		// Handle modification.
 		//
-		$class = ( $theElement[ 'class' ] !== NULL )
-			   ? (string) $theElement[ 'class' ]
-			   : 'COntologyMasterVertex';
+		if( $theElement[ 'modify' ] !== NULL )
+		{
+			//
+			// Get node native identifier.
+			//
+			$object
+				= COntologyNode::NewObject(
+					$theDatabase, (string) $theElement[ 'modify' ] );
+			if( $object === NULL )
+				$id
+					= COntologyNode::ResolvePID(
+						$theDatabase, (string) $theElement[ 'modify' ], TRUE );
+			else
+				$id = $object->NID();
+			
+			//
+			// Check identifier.
+			//
+			if( $id === NULL )
+				throw new Exception
+					( ("Node not found [".(string) $theElement[ 'modify' ]."]"),
+					  kERROR_NOT_FOUND );										// !@! ==>
+			
+			//
+			// Instantiate term.
+			//
+			$object = new COntologyNode();
+		
+		} // Modify.
 		
 		//
-		// Instantiate node.
+		// Handle insert.
 		//
-		$object = new $class();
+		else
+		{
+			//
+			// Get node class.
+			//
+			$class = ( $theElement[ 'class' ] !== NULL )
+				   ? (string) $theElement[ 'class' ]
+				   : 'COntologyMasterVertex';
 		
-		//
-		// Handle term.
-		//
-		if( $theElement[ 'term' ] !== NULL )
-			$object->Term(
-				COntologyTerm::Resolve(
-					$theDatabase, (string) $theElement[ 'term' ], NULL, TRUE ) );
+			//
+			// Instantiate node.
+			//
+			$object = new $class();
+		
+			//
+			// Handle term.
+			//
+			if( $theElement[ 'term' ] !== NULL )
+				$object->Term(
+					COntologyTerm::Resolve(
+						$theDatabase, (string) $theElement[ 'term' ], NULL, TRUE ) );
+		
+		} // Insert.
 		
 		//
 		// Handle other elements.
@@ -1250,6 +1290,10 @@ class COntology extends CConnection
 				switch( $tag = (string) $element[ 'tag' ] )
 				{
 					case kTAG_TERM:
+						if( $theElement[ 'modify' ] !== NULL )
+							throw new Exception
+								( "The term reference cannot be modified",
+								  kERROR_PARAMETER );							// !@! ==>
 						if( strlen( $data = (string) $element ) )
 							$object->Term(
 								COntologyTerm::Resolve(
@@ -1261,6 +1305,10 @@ class COntology extends CConnection
 						break;
 				
 					case kTAG_NODE:
+						if( $theElement[ 'modify' ] !== NULL )
+							throw new Exception
+								( "The master node reference cannot be modified",
+								  kERROR_PARAMETER );							// !@! ==>
 						if( strlen( $data = (string) $element ) )
 							$object->Node(
 								COntologyNode::NewObject(
@@ -1272,6 +1320,10 @@ class COntology extends CConnection
 						break;
 				
 					case kTAG_PID:
+						if( $theElement[ 'modify' ] !== NULL )
+							throw new Exception
+								( "The node persistent identifier cannot be modified",
+								  kERROR_PARAMETER );							// !@! ==>
 						if( strlen( $data = (string) $element ) )
 							$object->PID( $data );
 						else
@@ -1442,6 +1494,10 @@ class COntology extends CConnection
 				switch( $variable = (string) $element[ 'variable' ] )
 				{
 					case 'kTAG_TERM':
+						if( $theElement[ 'modify' ] !== NULL )
+							throw new Exception
+								( "The term reference cannot be modified",
+								  kERROR_PARAMETER );							// !@! ==>
 						if( strlen( $data = (string) $element ) )
 							$object->Term(
 								COntologyTerm::Resolve(
@@ -1453,6 +1509,10 @@ class COntology extends CConnection
 						break;
 				
 					case 'kTAG_NODE':
+						if( $theElement[ 'modify' ] !== NULL )
+							throw new Exception
+								( "The master node reference cannot be modified",
+								  kERROR_PARAMETER );							// !@! ==>
 						if( strlen( $data = (string) $element ) )
 							$object->Node(
 								COntologyNode::NewObject(
@@ -1464,6 +1524,10 @@ class COntology extends CConnection
 						break;
 				
 					case 'kTAG_PID':
+						if( $theElement[ 'modify' ] !== NULL )
+							throw new Exception
+								( "The node persistent identifier cannot be modified",
+								  kERROR_PARAMETER );							// !@! ==>
 						if( strlen( $data = (string) $element ) )
 							$object->PID( $data );
 						else
@@ -1607,20 +1671,45 @@ class COntology extends CConnection
 		} // Iterating object elements.
 		
 		//
-		// Assume term.
+		// Handle modification.
 		//
-		if( $object->Term() === NULL )
-			$object->Term( $theCache[ 'term' ][ 0 ] );
+		if( $theElement[ 'modify' ] !== NULL )
+		{
+			//
+			// Extract array.
+			//
+			$object = $object->getArrayCopy();
+			
+			//
+			// Modify object.
+			//
+			$theDatabase->Container( COntologyNode::DefaultContainerName() )
+				->ManageObject( $object, $id, kFLAG_PERSIST_MODIFY );
+		
+		} // Modify.
 		
 		//
-		// Save node.
+		// Insert.
 		//
-		$object->Insert( $theDatabase );
+		else
+		{
+			//
+			// Assume term.
+			//
+			if( $object->Term() === NULL )
+				$object->Term( $theCache[ 'term' ][ 0 ] );
 		
-		//
-		// Load cache.
-		//
-		$theCache[ 'node' ][] = $object;
+			//
+			// Save node.
+			//
+			$object->Insert( $theDatabase );
+		
+			//
+			// Load cache.
+			//
+			$theCache[ 'node' ][] = $object;
+		
+		} // Insert.
 
 	} // LoadXMLOntologyNode.
 

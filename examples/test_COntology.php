@@ -218,6 +218,25 @@ try
 	$test->LoadXMLOntologyFile( "/Library/WebServer/Library/PHPWrapper/examples/TERM_MODIFY.xml" );
 	echo( '<hr />' );
 	echo( '<hr />' );
+	
+	//
+	// Test node insert.
+	//
+	echo( '<h5>$test = new MyClass( $database );</h5>' );
+	$test = new MyClass( $database );
+	echo( '<h5>$test->LoadXMLOntologyFile( "/Library/WebServer/Library/PHPWrapper/examples/NODE_INSERT.xml" );</h5>' );
+	$test->LoadXMLOntologyFile( "/Library/WebServer/Library/PHPWrapper/examples/NODE_INSERT.xml" );
+	echo( '<hr />' );
+	
+	//
+	// Test node modify.
+	//
+	echo( '<h5>$test = new MyClass( $database );</h5>' );
+	$test = new MyClass( $database );
+	echo( '<h5>$test->LoadXMLOntologyFile( "/Library/WebServer/Library/PHPWrapper/examples/NODE_MODIFY.xml" );</h5>' );
+	$test->LoadXMLOntologyFile( "/Library/WebServer/Library/PHPWrapper/examples/NODE_MODIFY.xml" );
+	echo( '<hr />' );
+	echo( '<hr />' );
 exit;
 
 	//

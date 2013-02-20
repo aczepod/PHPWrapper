@@ -97,7 +97,7 @@
                 </xs:annotation>
             </xs:attribute>
             
-            <xs:attribute name="LID" use="required" type="xs:string">
+            <xs:attribute name="LID" type="xs:string">
                 <xs:annotation>
                     <xs:documentation xml:lang="en">
                         Term local identifier, required to provide the term global identifier.
@@ -140,7 +140,7 @@
                 <xs:element minOccurs="0" maxOccurs="unbounded" ref="element"/>
             </xs:sequence>
             
-            <xs:attribute name="class" use="required" type="xs:string">
+            <xs:attribute name="class" type="xs:string">
                 <xs:annotation>
                     <xs:documentation xml:lang="en">
                         Node class name, this attribute is required.
@@ -161,13 +161,13 @@
             <xs:attribute name="modify" type="xs:string">
                 <xs:annotation>
                     <xs:documentation xml:lang="en">
-                        Either the node PID, if the term was not provided, or any other value.
-                        If provided it means that the operations to beapplied to the node are
-                        modifications and not insertion: all the elements contained in the node
-                        will either replace or be added to the node.
-                        I the term attribute is present, the value of this attribute will be
-                        ignored; if the term attribute is missing, the value of this attribute
-                        will be interpreted as the node's PID.
+                        If this attribute is provided, it means that the operations to applied
+                        to the node are modifications and not insertion: the elements will be
+                        either added or will replace the corresponding tags in the node.
+                        This attribute should either be the node native identifier or its PID,
+                        the term attribute will be ignored.
+                        This also means that if you need to refer to a node you must provide a
+                        PID for it at insertion time.
                     </xs:documentation>
                 </xs:annotation>
             </xs:attribute>

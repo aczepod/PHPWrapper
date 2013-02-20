@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ONTOLOGY
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:noNamespaceSchemaLocation="file:/Library/WebServer/Library/PHPWrapper/defines/Ontology.xsd">
+    
+	<!-- TEST TERM -->
+	
+	<UNIT>
+    	<NODE modify="TEST">
+			<element variable="kTAG_KIND">
+				<item>:KIND-FEATURE</item>
+				<item>:KIND-SCALE</item>
+			</element>
+			<element variable="kTAG_TYPE">
+				<item>:TEXT</item>
+			</element>
+			<element variable="kTAG_EXAMPLES">
+				<item><![CDATA[Full longitude: <tt>0762510W</tt>]]></item>
+				<item><![CDATA[Missing seconds: <tt>07625W</tt> or <tt>07625--W</tt>]]></item>
+				<item><![CDATA[Missing minutes: <tt>076W</tt> or <tt>076----W</tt>]]></item>
+			</element>
+			<element variable="kTAG_DESCRIPTION">
+				<item key="en"><![CDATA[To convert from longitude and latitude in degrees (o), minutes ('), seconds (''), and a hemisphere (North or South and East or West) to decimal degrees, the following formula should be used: do m' s''=h *(d+m/ 60+s/3600) where h=1 for the Northern and Eastern hemispheres and –1 for the Southern and Western hemispheres i.e. 30o30'0'' S= –30.5 and 30o15'55'' N=30.265.]]></item>
+			</element>
+    	</NODE>
+	</UNIT>
+</ONTOLOGY>

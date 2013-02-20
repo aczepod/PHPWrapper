@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ONTOLOGY
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:noNamespaceSchemaLocation="file:/Library/WebServer/Library/PHPWrapper/defines/Ontology.xsd">
+    
+	<!-- TEST TERM -->
+	
+	<UNIT>
+    	<NODE class="COntologyMasterVertex" term="TEST">
+            <element variable="kTAG_PID">TEST</element>
+			<element variable="kTAG_KIND">
+				<item>:KIND-FEATURE</item>
+			</element>
+			<element variable="kTAG_TYPE">
+				<item>:TEXT</item>
+			</element>
+    	</NODE>
+	</UNIT>
+</ONTOLOGY>
