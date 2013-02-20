@@ -257,7 +257,11 @@
             <xs:attribute name="tag" type="xs:string">
                 <xs:annotation>
                     <xs:documentation xml:lang="en">
-                        The tag attribute should reference a tag native identifier.
+                        The tag attribute should reference either a tag native identifier, or
+                        a tag global identifier. If the value consists of all digits and the
+                        first digit is not a zero, it means that the value is an integer, thus
+                        the native identifier; in all other cases the value is to be interpreted
+                        as the tag global identifier.
                     </xs:documentation>
                 </xs:annotation>
             </xs:attribute>
@@ -326,6 +330,7 @@
         </xs:complexType>
     </xs:element>
     
+    <!-- Node reference type -->
     <xs:simpleType name="node-ref-type">
         <xs:annotation>
             <xs:documentation xml:lang="en">

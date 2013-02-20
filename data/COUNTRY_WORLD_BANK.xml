@@ -1,0 +1,824 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ONTOLOGY
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:noNamespaceSchemaLocation="file:/Library/WebServer/Library/PHPWrapper/defines/Ontology.xsd">
+	
+	<!-- SQL Query to generate the nodes:
+	
+SELECT
+	CONCAT(
+		'<NODE modify=\"',
+		IF(	`Valid` IS NOT NULL,
+			'ISO:3166:3:alpha-3:',
+			'ISO:3166:1:alpha-3:' ),
+		`ISO3`,
+		'">',
+		IF(	`IncomeGroup` IS NOT NULL,
+			CONCAT(
+				'<element tag="WBI:INCOME-GROUP">WBI:INCOME-GROUP:',
+				`IncomeGroup`,
+				'</element>' ),
+			'' ),
+		IF(	`LendingCategory` IS NOT NULL,
+			CONCAT(
+				'<element tag="WBI:LENDING-GROUP">WBI:LENDING-GROUP:',
+				`LendingCategory`,
+				'</element>' ),
+			'' ),
+		'</NODE>' )
+FROM
+	`ANCILLARY`.`Code_ISO_3166`
+WHERE
+(
+	(`ISO3` IS NOT NULL) AND
+	( (`IncomeGroup` IS NOT NULL) OR
+	  (`LendingCategory` IS NOT NULL) )
+)
+ORDER BY
+	`ISO3`
+	
+	-->
+	
+	<UNIT>
+		<NODE modify="ISO:3166:1:alpha-3:ABW">
+			<element tag="WBI:INCOME-GROUP">WBI:INCOME-GROUP:NOC</element>
+		</NODE>
+		<NODE modify="ISO:3166:1:alpha-3:AFG">
+			<element tag="WBI:INCOME-GROUP">WBI:INCOME-GROUP:LIC</element>
+			<element tag="WBI:LENDING-GROUP">WBI:LENDING-GROUP:IDA</element>
+		</NODE>
+		<NODE modify="ISO:3166:1:alpha-3:AGO">
+			<element tag="WBI:INCOME-GROUP">WBI:INCOME-GROUP:LMC</element>
+			<element tag="WBI:LENDING-GROUP">WBI:LENDING-GROUP:IDA</element>
+		</NODE>
+		<NODE modify="ISO:3166:1:alpha-3:ALB">
+			<element tag="WBI:INCOME-GROUP">WBI:INCOME-GROUP:UMC</element>
+			<element tag="WBI:LENDING-GROUP">WBI:LENDING-GROUP:IBRD</element>
+		</NODE>
+		<NODE modify="ISO:3166:1:alpha-3:AND">
+			<element tag="WBI:INCOME-GROUP">WBI:INCOME-GROUP:NOC</element>
+		</NODE>
+		<NODE modify="ISO:3166:1:alpha-3:ARE">
+			<element tag="WBI:INCOME-GROUP">WBI:INCOME-GROUP:NOC</element>
+		</NODE>
+		<NODE modify="ISO:3166:1:alpha-3:ARG">
+			<element tag="WBI:INCOME-GROUP">WBI:INCOME-GROUP:UMC</element>
+			<element tag="WBI:LENDING-GROUP">WBI:LENDING-GROUP:IBRD</element>
+		</NODE>
+		<NODE modify="ISO:3166:1:alpha-3:ARM">
+			<element tag="WBI:INCOME-GROUP">WBI:INCOME-GROUP:LMC</element>
+			<element tag="WBI:LENDING-GROUP">WBI:LENDING-GROUP:Blend</element>
+		</NODE>
+		<NODE modify="ISO:3166:1:alpha-3:ASM">
+			<element tag="WBI:INCOME-GROUP">WBI:INCOME-GROUP:UMC</element>
+		</NODE>
+		<NODE modify="ISO:3166:1:alpha-3:ATG">
+			<element tag="WBI:INCOME-GROUP">WBI:INCOME-GROUP:UMC</element>
+			<element tag="WBI:LENDING-GROUP">WBI:LENDING-GROUP:IBRD</element>
+		</NODE>
+		<NODE modify="ISO:3166:1:alpha-3:AUS">
+			<element tag="WBI:INCOME-GROUP">WBI:INCOME-GROUP:OEC</element>
+		</NODE>
+		<NODE modify="ISO:3166:1:alpha-3:AUT">
+			<element tag="WBI:INCOME-GROUP">WBI:INCOME-GROUP:OEC</element>
+		</NODE>
+		<NODE modify="ISO:3166:1:alpha-3:AZE">
+			<element tag="WBI:INCOME-GROUP">WBI:INCOME-GROUP:UMC</element>
+			<element tag="WBI:LENDING-GROUP">WBI:LENDING-GROUP:IBRD</element>
+		</NODE>
+		<NODE modify="ISO:3166:1:alpha-3:BDI">
+			<element tag="WBI:INCOME-GROUP">WBI:INCOME-GROUP:LIC</element>
+			<element tag="WBI:LENDING-GROUP">WBI:LENDING-GROUP:IDA</element>
+		</NODE>
+		<NODE modify="ISO:3166:1:alpha-3:BEL">
+			<element tag="WBI:INCOME-GROUP">WBI:INCOME-GROUP:OEC</element>
+		</NODE>
+		<NODE modify="ISO:3166:1:alpha-3:BEN">
+			<element tag="WBI:INCOME-GROUP">WBI:INCOME-GROUP:LIC</element>
+			<element tag="WBI:LENDING-GROUP">WBI:LENDING-GROUP:IDA</element>
+		</NODE>
+		<NODE modify="ISO:3166:1:alpha-3:BFA">
+			<element tag="WBI:INCOME-GROUP">WBI:INCOME-GROUP:LIC</element>
+			<element tag="WBI:LENDING-GROUP">WBI:LENDING-GROUP:IDA</element>
+		</NODE>
+		<NODE modify="ISO:3166:1:alpha-3:BGD">
+			<element tag="WBI:INCOME-GROUP">WBI:INCOME-GROUP:LIC</element>
+			<element tag="WBI:LENDING-GROUP">WBI:LENDING-GROUP:IDA</element>
+		</NODE>
+		<NODE modify="ISO:3166:1:alpha-3:BGR">
+			<element tag="WBI:INCOME-GROUP">WBI:INCOME-GROUP:UMC</element>
+			<element tag="WBI:LENDING-GROUP">WBI:LENDING-GROUP:IBRD</element>
+		</NODE>
+		<NODE modify="ISO:3166:1:alpha-3:BHR">
+			<element tag="WBI:INCOME-GROUP">WBI:INCOME-GROUP:NOC</element>
+		</NODE>
+		<NODE modify="ISO:3166:1:alpha-3:BHS">
+			<element tag="WBI:INCOME-GROUP">WBI:INCOME-GROUP:NOC</element>
+		</NODE>
+		<NODE modify="ISO:3166:1:alpha-3:BIH">
+			<element tag="WBI:INCOME-GROUP">WBI:INCOME-GROUP:UMC</element>
+			<element tag="WBI:LENDING-GROUP">WBI:LENDING-GROUP:Blend</element>
+		</NODE>
+		<NODE modify="ISO:3166:1:alpha-3:BLR">
+			<element tag="WBI:INCOME-GROUP">WBI:INCOME-GROUP:UMC</element>
+			<element tag="WBI:LENDING-GROUP">WBI:LENDING-GROUP:IBRD</element>
+		</NODE>
+		<NODE modify="ISO:3166:1:alpha-3:BLZ">
+			<element tag="WBI:INCOME-GROUP">WBI:INCOME-GROUP:LMC</element>
+			<element tag="WBI:LENDING-GROUP">WBI:LENDING-GROUP:IBRD</element>
+		</NODE>
+		<NODE modify="ISO:3166:1:alpha-3:BMU">
+			<element tag="WBI:INCOME-GROUP">WBI:INCOME-GROUP:NOC</element>
+		</NODE>
+		<NODE modify="ISO:3166:1:alpha-3:BOL">
+			<element tag="WBI:INCOME-GROUP">WBI:INCOME-GROUP:LMC</element>
+			<element tag="WBI:LENDING-GROUP">WBI:LENDING-GROUP:Blend</element>
+		</NODE>
+		<NODE modify="ISO:3166:1:alpha-3:BRA">
+			<element tag="WBI:INCOME-GROUP">WBI:INCOME-GROUP:UMC</element>
+			<element tag="WBI:LENDING-GROUP">WBI:LENDING-GROUP:IBRD</element>
+		</NODE>
+		<NODE modify="ISO:3166:1:alpha-3:BRB">
+			<element tag="WBI:INCOME-GROUP">WBI:INCOME-GROUP:NOC</element>
+		</NODE>
+		<NODE modify="ISO:3166:1:alpha-3:BRN">
+			<element tag="WBI:INCOME-GROUP">WBI:INCOME-GROUP:NOC</element>
+		</NODE>
+		<NODE modify="ISO:3166:1:alpha-3:BTN">
+			<element tag="WBI:INCOME-GROUP">WBI:INCOME-GROUP:LMC</element>
+			<element tag="WBI:LENDING-GROUP">WBI:LENDING-GROUP:IDA</element>
+		</NODE>
+		<NODE modify="ISO:3166:1:alpha-3:BWA">
+			<element tag="WBI:INCOME-GROUP">WBI:INCOME-GROUP:UMC</element>
+			<element tag="WBI:LENDING-GROUP">WBI:LENDING-GROUP:IBRD</element>
+		</NODE>
+		<NODE modify="ISO:3166:1:alpha-3:CAF">
+			<element tag="WBI:INCOME-GROUP">WBI:INCOME-GROUP:LIC</element>
+			<element tag="WBI:LENDING-GROUP">WBI:LENDING-GROUP:IDA</element>
+		</NODE>
+		<NODE modify="ISO:3166:1:alpha-3:CAN">
+			<element tag="WBI:INCOME-GROUP">WBI:INCOME-GROUP:OEC</element>
+		</NODE>
+		<NODE modify="ISO:3166:1:alpha-3:CHE">
+			<element tag="WBI:INCOME-GROUP">WBI:INCOME-GROUP:OEC</element>
+		</NODE>
+		<NODE modify="ISO:3166:1:alpha-3:CHL">
+			<element tag="WBI:INCOME-GROUP">WBI:INCOME-GROUP:UMC</element>
+			<element tag="WBI:LENDING-GROUP">WBI:LENDING-GROUP:IBRD</element>
+		</NODE>
+		<NODE modify="ISO:3166:1:alpha-3:CHN">
+			<element tag="WBI:INCOME-GROUP">WBI:INCOME-GROUP:UMC</element>
+			<element tag="WBI:LENDING-GROUP">WBI:LENDING-GROUP:IBRD</element>
+		</NODE>
+		<NODE modify="ISO:3166:1:alpha-3:CIV">
+			<element tag="WBI:INCOME-GROUP">WBI:INCOME-GROUP:LMC</element>
+			<element tag="WBI:LENDING-GROUP">WBI:LENDING-GROUP:IDA</element>
+		</NODE>
+		<NODE modify="ISO:3166:1:alpha-3:CMR">
+			<element tag="WBI:INCOME-GROUP">WBI:INCOME-GROUP:LMC</element>
+			<element tag="WBI:LENDING-GROUP">WBI:LENDING-GROUP:IDA</element>
+		</NODE>
+		<NODE modify="ISO:3166:1:alpha-3:COG">
+			<element tag="WBI:INCOME-GROUP">WBI:INCOME-GROUP:LMC</element>
+			<element tag="WBI:LENDING-GROUP">WBI:LENDING-GROUP:IDA</element>
+		</NODE>
+		<NODE modify="ISO:3166:1:alpha-3:COL">
+			<element tag="WBI:INCOME-GROUP">WBI:INCOME-GROUP:UMC</element>
+			<element tag="WBI:LENDING-GROUP">WBI:LENDING-GROUP:IBRD</element>
+		</NODE>
+		<NODE modify="ISO:3166:1:alpha-3:COM">
+			<element tag="WBI:INCOME-GROUP">WBI:INCOME-GROUP:LIC</element>
+			<element tag="WBI:LENDING-GROUP">WBI:LENDING-GROUP:IDA</element>
+		</NODE>
+		<NODE modify="ISO:3166:1:alpha-3:CPV">
+			<element tag="WBI:INCOME-GROUP">WBI:INCOME-GROUP:LMC</element>
+			<element tag="WBI:LENDING-GROUP">WBI:LENDING-GROUP:Blend</element>
+		</NODE>
+		<NODE modify="ISO:3166:1:alpha-3:CRI">
+			<element tag="WBI:INCOME-GROUP">WBI:INCOME-GROUP:UMC</element>
+			<element tag="WBI:LENDING-GROUP">WBI:LENDING-GROUP:IBRD</element>
+		</NODE>
+		<NODE modify="ISO:3166:1:alpha-3:CUB">
+			<element tag="WBI:INCOME-GROUP">WBI:INCOME-GROUP:UMC</element>
+		</NODE>
+		<NODE modify="ISO:3166:1:alpha-3:CUW">
+			<element tag="WBI:INCOME-GROUP">WBI:INCOME-GROUP:NOC</element>
+		</NODE>
+		<NODE modify="ISO:3166:1:alpha-3:CYM">
+			<element tag="WBI:INCOME-GROUP">WBI:INCOME-GROUP:NOC</element>
+		</NODE>
+		<NODE modify="ISO:3166:1:alpha-3:CYP">
+			<element tag="WBI:INCOME-GROUP">WBI:INCOME-GROUP:NOC</element>
+		</NODE>
+		<NODE modify="ISO:3166:1:alpha-3:CZE">
+			<element tag="WBI:INCOME-GROUP">WBI:INCOME-GROUP:OEC</element>
+		</NODE>
+		<NODE modify="ISO:3166:1:alpha-3:DEU">
+			<element tag="WBI:INCOME-GROUP">WBI:INCOME-GROUP:OEC</element>
+		</NODE>
+		<NODE modify="ISO:3166:1:alpha-3:DJI">
+			<element tag="WBI:INCOME-GROUP">WBI:INCOME-GROUP:LMC</element>
+			<element tag="WBI:LENDING-GROUP">WBI:LENDING-GROUP:IDA</element>
+		</NODE>
+		<NODE modify="ISO:3166:1:alpha-3:DMA">
+			<element tag="WBI:INCOME-GROUP">WBI:INCOME-GROUP:UMC</element>
+			<element tag="WBI:LENDING-GROUP">WBI:LENDING-GROUP:Blend</element>
+		</NODE>
+		<NODE modify="ISO:3166:1:alpha-3:DNK">
+			<element tag="WBI:INCOME-GROUP">WBI:INCOME-GROUP:OEC</element>
+		</NODE>
+		<NODE modify="ISO:3166:1:alpha-3:DOM">
+			<element tag="WBI:INCOME-GROUP">WBI:INCOME-GROUP:UMC</element>
+			<element tag="WBI:LENDING-GROUP">WBI:LENDING-GROUP:IBRD</element>
+		</NODE>
+		<NODE modify="ISO:3166:1:alpha-3:DZA">
+			<element tag="WBI:INCOME-GROUP">WBI:INCOME-GROUP:UMC</element>
+			<element tag="WBI:LENDING-GROUP">WBI:LENDING-GROUP:IBRD</element>
+		</NODE>
+		<NODE modify="ISO:3166:1:alpha-3:ECU">
+			<element tag="WBI:INCOME-GROUP">WBI:INCOME-GROUP:UMC</element>
+			<element tag="WBI:LENDING-GROUP">WBI:LENDING-GROUP:IBRD</element>
+		</NODE>
+		<NODE modify="ISO:3166:1:alpha-3:EGY">
+			<element tag="WBI:INCOME-GROUP">WBI:INCOME-GROUP:LMC</element>
+			<element tag="WBI:LENDING-GROUP">WBI:LENDING-GROUP:IBRD</element>
+		</NODE>
+		<NODE modify="ISO:3166:1:alpha-3:ERI">
+			<element tag="WBI:INCOME-GROUP">WBI:INCOME-GROUP:LIC</element>
+			<element tag="WBI:LENDING-GROUP">WBI:LENDING-GROUP:IDA</element>
+		</NODE>
+		<NODE modify="ISO:3166:1:alpha-3:ESP">
+			<element tag="WBI:INCOME-GROUP">WBI:INCOME-GROUP:OEC</element>
+		</NODE>
+		<NODE modify="ISO:3166:1:alpha-3:EST">
+			<element tag="WBI:INCOME-GROUP">WBI:INCOME-GROUP:OEC</element>
+		</NODE>
+		<NODE modify="ISO:3166:1:alpha-3:ETH">
+			<element tag="WBI:INCOME-GROUP">WBI:INCOME-GROUP:LIC</element>
+			<element tag="WBI:LENDING-GROUP">WBI:LENDING-GROUP:IDA</element>
+		</NODE>
+		<NODE modify="ISO:3166:1:alpha-3:FIN">
+			<element tag="WBI:INCOME-GROUP">WBI:INCOME-GROUP:OEC</element>
+		</NODE>
+		<NODE modify="ISO:3166:1:alpha-3:FJI">
+			<element tag="WBI:INCOME-GROUP">WBI:INCOME-GROUP:LMC</element>
+			<element tag="WBI:LENDING-GROUP">WBI:LENDING-GROUP:IBRD</element>
+		</NODE>
+		<NODE modify="ISO:3166:1:alpha-3:FRA">
+			<element tag="WBI:INCOME-GROUP">WBI:INCOME-GROUP:OEC</element>
+		</NODE>
+		<NODE modify="ISO:3166:1:alpha-3:FRO">
+			<element tag="WBI:INCOME-GROUP">WBI:INCOME-GROUP:NOC</element>
+		</NODE>
+		<NODE modify="ISO:3166:1:alpha-3:FSM">
+			<element tag="WBI:INCOME-GROUP">WBI:INCOME-GROUP:LMC</element>
+			<element tag="WBI:LENDING-GROUP">WBI:LENDING-GROUP:IDA</element>
+		</NODE>
+		<NODE modify="ISO:3166:1:alpha-3:GAB">
+			<element tag="WBI:INCOME-GROUP">WBI:INCOME-GROUP:UMC</element>
+			<element tag="WBI:LENDING-GROUP">WBI:LENDING-GROUP:IBRD</element>
+		</NODE>
+		<NODE modify="ISO:3166:1:alpha-3:GBR">
+			<element tag="WBI:INCOME-GROUP">WBI:INCOME-GROUP:OEC</element>
+		</NODE>
+		<NODE modify="ISO:3166:1:alpha-3:GEO">
+			<element tag="WBI:INCOME-GROUP">WBI:INCOME-GROUP:LMC</element>
+			<element tag="WBI:LENDING-GROUP">WBI:LENDING-GROUP:Blend</element>
+		</NODE>
+		<NODE modify="ISO:3166:1:alpha-3:GHA">
+			<element tag="WBI:INCOME-GROUP">WBI:INCOME-GROUP:LMC</element>
+			<element tag="WBI:LENDING-GROUP">WBI:LENDING-GROUP:IDA</element>
+		</NODE>
+		<NODE modify="ISO:3166:1:alpha-3:GIB">
+			<element tag="WBI:INCOME-GROUP">WBI:INCOME-GROUP:NOC</element>
+		</NODE>
+		<NODE modify="ISO:3166:1:alpha-3:GIN">
+			<element tag="WBI:INCOME-GROUP">WBI:INCOME-GROUP:LIC</element>
+			<element tag="WBI:LENDING-GROUP">WBI:LENDING-GROUP:IDA</element>
+		</NODE>
+		<NODE modify="ISO:3166:1:alpha-3:GMB">
+			<element tag="WBI:INCOME-GROUP">WBI:INCOME-GROUP:LIC</element>
+			<element tag="WBI:LENDING-GROUP">WBI:LENDING-GROUP:IDA</element>
+		</NODE>
+		<NODE modify="ISO:3166:1:alpha-3:GNB">
+			<element tag="WBI:INCOME-GROUP">WBI:INCOME-GROUP:LIC</element>
+			<element tag="WBI:LENDING-GROUP">WBI:LENDING-GROUP:IDA</element>
+		</NODE>
+		<NODE modify="ISO:3166:1:alpha-3:GNQ">
+			<element tag="WBI:INCOME-GROUP">WBI:INCOME-GROUP:NOC</element>
+			<element tag="WBI:LENDING-GROUP">WBI:LENDING-GROUP:IBRD</element>
+		</NODE>
+		<NODE modify="ISO:3166:1:alpha-3:GRC">
+			<element tag="WBI:INCOME-GROUP">WBI:INCOME-GROUP:OEC</element>
+		</NODE>
+		<NODE modify="ISO:3166:1:alpha-3:GRD">
+			<element tag="WBI:INCOME-GROUP">WBI:INCOME-GROUP:UMC</element>
+			<element tag="WBI:LENDING-GROUP">WBI:LENDING-GROUP:Blend</element>
+		</NODE>
+		<NODE modify="ISO:3166:1:alpha-3:GRL">
+			<element tag="WBI:INCOME-GROUP">WBI:INCOME-GROUP:NOC</element>
+		</NODE>
+		<NODE modify="ISO:3166:1:alpha-3:GTM">
+			<element tag="WBI:INCOME-GROUP">WBI:INCOME-GROUP:LMC</element>
+			<element tag="WBI:LENDING-GROUP">WBI:LENDING-GROUP:IBRD</element>
+		</NODE>
+		<NODE modify="ISO:3166:1:alpha-3:GUM">
+			<element tag="WBI:INCOME-GROUP">WBI:INCOME-GROUP:NOC</element>
+		</NODE>
+		<NODE modify="ISO:3166:1:alpha-3:GUY">
+			<element tag="WBI:INCOME-GROUP">WBI:INCOME-GROUP:LMC</element>
+			<element tag="WBI:LENDING-GROUP">WBI:LENDING-GROUP:IDA</element>
+		</NODE>
+		<NODE modify="ISO:3166:1:alpha-3:HKG">
+			<element tag="WBI:INCOME-GROUP">WBI:INCOME-GROUP:NOC</element>
+		</NODE>
+		<NODE modify="ISO:3166:1:alpha-3:HND">
+			<element tag="WBI:INCOME-GROUP">WBI:INCOME-GROUP:LMC</element>
+			<element tag="WBI:LENDING-GROUP">WBI:LENDING-GROUP:IDA</element>
+		</NODE>
+		<NODE modify="ISO:3166:1:alpha-3:HRV">
+			<element tag="WBI:INCOME-GROUP">WBI:INCOME-GROUP:NOC</element>
+			<element tag="WBI:LENDING-GROUP">WBI:LENDING-GROUP:IBRD</element>
+		</NODE>
+		<NODE modify="ISO:3166:1:alpha-3:HTI">
+			<element tag="WBI:INCOME-GROUP">WBI:INCOME-GROUP:LIC</element>
+			<element tag="WBI:LENDING-GROUP">WBI:LENDING-GROUP:IDA</element>
+		</NODE>
+		<NODE modify="ISO:3166:1:alpha-3:HUN">
+			<element tag="WBI:INCOME-GROUP">WBI:INCOME-GROUP:OEC</element>
+		</NODE>
+		<NODE modify="ISO:3166:1:alpha-3:IDN">
+			<element tag="WBI:INCOME-GROUP">WBI:INCOME-GROUP:LMC</element>
+			<element tag="WBI:LENDING-GROUP">WBI:LENDING-GROUP:IBRD</element>
+		</NODE>
+		<NODE modify="ISO:3166:1:alpha-3:IMN">
+			<element tag="WBI:INCOME-GROUP">WBI:INCOME-GROUP:NOC</element>
+		</NODE>
+		<NODE modify="ISO:3166:1:alpha-3:IND">
+			<element tag="WBI:INCOME-GROUP">WBI:INCOME-GROUP:LMC</element>
+			<element tag="WBI:LENDING-GROUP">WBI:LENDING-GROUP:Blend</element>
+		</NODE>
+		<NODE modify="ISO:3166:1:alpha-3:IRL">
+			<element tag="WBI:INCOME-GROUP">WBI:INCOME-GROUP:OEC</element>
+		</NODE>
+		<NODE modify="ISO:3166:1:alpha-3:IRN">
+			<element tag="WBI:INCOME-GROUP">WBI:INCOME-GROUP:UMC</element>
+			<element tag="WBI:LENDING-GROUP">WBI:LENDING-GROUP:IBRD</element>
+		</NODE>
+		<NODE modify="ISO:3166:1:alpha-3:IRQ">
+			<element tag="WBI:INCOME-GROUP">WBI:INCOME-GROUP:LMC</element>
+			<element tag="WBI:LENDING-GROUP">WBI:LENDING-GROUP:IBRD</element>
+		</NODE>
+		<NODE modify="ISO:3166:1:alpha-3:ISL">
+			<element tag="WBI:INCOME-GROUP">WBI:INCOME-GROUP:OEC</element>
+		</NODE>
+		<NODE modify="ISO:3166:1:alpha-3:ISR">
+			<element tag="WBI:INCOME-GROUP">WBI:INCOME-GROUP:OEC</element>
+		</NODE>
+		<NODE modify="ISO:3166:1:alpha-3:ITA">
+			<element tag="WBI:INCOME-GROUP">WBI:INCOME-GROUP:OEC</element>
+		</NODE>
+		<NODE modify="ISO:3166:1:alpha-3:JAM">
+			<element tag="WBI:INCOME-GROUP">WBI:INCOME-GROUP:UMC</element>
+			<element tag="WBI:LENDING-GROUP">WBI:LENDING-GROUP:IBRD</element>
+		</NODE>
+		<NODE modify="ISO:3166:1:alpha-3:JOR">
+			<element tag="WBI:INCOME-GROUP">WBI:INCOME-GROUP:UMC</element>
+			<element tag="WBI:LENDING-GROUP">WBI:LENDING-GROUP:IBRD</element>
+		</NODE>
+		<NODE modify="ISO:3166:1:alpha-3:JPN">
+			<element tag="WBI:INCOME-GROUP">WBI:INCOME-GROUP:OEC</element>
+		</NODE>
+		<NODE modify="ISO:3166:1:alpha-3:KAZ">
+			<element tag="WBI:INCOME-GROUP">WBI:INCOME-GROUP:UMC</element>
+			<element tag="WBI:LENDING-GROUP">WBI:LENDING-GROUP:IBRD</element>
+		</NODE>
+		<NODE modify="ISO:3166:1:alpha-3:KEN">
+			<element tag="WBI:INCOME-GROUP">WBI:INCOME-GROUP:LIC</element>
+			<element tag="WBI:LENDING-GROUP">WBI:LENDING-GROUP:IDA</element>
+		</NODE>
+		<NODE modify="ISO:3166:1:alpha-3:KGZ">
+			<element tag="WBI:INCOME-GROUP">WBI:INCOME-GROUP:LIC</element>
+			<element tag="WBI:LENDING-GROUP">WBI:LENDING-GROUP:IDA</element>
+		</NODE>
+		<NODE modify="ISO:3166:1:alpha-3:KHM">
+			<element tag="WBI:INCOME-GROUP">WBI:INCOME-GROUP:LIC</element>
+			<element tag="WBI:LENDING-GROUP">WBI:LENDING-GROUP:IDA</element>
+		</NODE>
+		<NODE modify="ISO:3166:1:alpha-3:KIR">
+			<element tag="WBI:INCOME-GROUP">WBI:INCOME-GROUP:LMC</element>
+			<element tag="WBI:LENDING-GROUP">WBI:LENDING-GROUP:IDA</element>
+		</NODE>
+		<NODE modify="ISO:3166:1:alpha-3:KNA">
+			<element tag="WBI:INCOME-GROUP">WBI:INCOME-GROUP:UMC</element>
+			<element tag="WBI:LENDING-GROUP">WBI:LENDING-GROUP:IBRD</element>
+		</NODE>
+		<NODE modify="ISO:3166:1:alpha-3:KOR">
+			<element tag="WBI:INCOME-GROUP">WBI:INCOME-GROUP:OEC</element>
+			<element tag="WBI:LENDING-GROUP">WBI:LENDING-GROUP:IBRD</element>
+		</NODE>
+		<NODE modify="ISO:3166:1:alpha-3:KWT">
+			<element tag="WBI:INCOME-GROUP">WBI:INCOME-GROUP:NOC</element>
+		</NODE>
+		<NODE modify="ISO:3166:1:alpha-3:LAO">
+			<element tag="WBI:INCOME-GROUP">WBI:INCOME-GROUP:LMC</element>
+			<element tag="WBI:LENDING-GROUP">WBI:LENDING-GROUP:IDA</element>
+		</NODE>
+		<NODE modify="ISO:3166:1:alpha-3:LBN">
+			<element tag="WBI:INCOME-GROUP">WBI:INCOME-GROUP:UMC</element>
+			<element tag="WBI:LENDING-GROUP">WBI:LENDING-GROUP:IBRD</element>
+		</NODE>
+		<NODE modify="ISO:3166:1:alpha-3:LBR">
+			<element tag="WBI:INCOME-GROUP">WBI:INCOME-GROUP:LIC</element>
+			<element tag="WBI:LENDING-GROUP">WBI:LENDING-GROUP:IDA</element>
+		</NODE>
+		<NODE modify="ISO:3166:1:alpha-3:LBY">
+			<element tag="WBI:INCOME-GROUP">WBI:INCOME-GROUP:UMC</element>
+			<element tag="WBI:LENDING-GROUP">WBI:LENDING-GROUP:IBRD</element>
+		</NODE>
+		<NODE modify="ISO:3166:1:alpha-3:LCA">
+			<element tag="WBI:INCOME-GROUP">WBI:INCOME-GROUP:UMC</element>
+			<element tag="WBI:LENDING-GROUP">WBI:LENDING-GROUP:Blend</element>
+		</NODE>
+		<NODE modify="ISO:3166:1:alpha-3:LIE">
+			<element tag="WBI:INCOME-GROUP">WBI:INCOME-GROUP:NOC</element>
+		</NODE>
+		<NODE modify="ISO:3166:1:alpha-3:LKA">
+			<element tag="WBI:INCOME-GROUP">WBI:INCOME-GROUP:LMC</element>
+			<element tag="WBI:LENDING-GROUP">WBI:LENDING-GROUP:Blend</element>
+		</NODE>
+		<NODE modify="ISO:3166:1:alpha-3:LSO">
+			<element tag="WBI:INCOME-GROUP">WBI:INCOME-GROUP:LMC</element>
+			<element tag="WBI:LENDING-GROUP">WBI:LENDING-GROUP:IDA</element>
+		</NODE>
+		<NODE modify="ISO:3166:1:alpha-3:LTU">
+			<element tag="WBI:INCOME-GROUP">WBI:INCOME-GROUP:UMC</element>
+		</NODE>
+		<NODE modify="ISO:3166:1:alpha-3:LUX">
+			<element tag="WBI:INCOME-GROUP">WBI:INCOME-GROUP:OEC</element>
+		</NODE>
+		<NODE modify="ISO:3166:1:alpha-3:LVA">
+			<element tag="WBI:INCOME-GROUP">WBI:INCOME-GROUP:UMC</element>
+		</NODE>
+		<NODE modify="ISO:3166:1:alpha-3:MAC">
+			<element tag="WBI:INCOME-GROUP">WBI:INCOME-GROUP:NOC</element>
+		</NODE>
+		<NODE modify="ISO:3166:1:alpha-3:MAF">
+			<element tag="WBI:INCOME-GROUP">WBI:INCOME-GROUP:NOC</element>
+		</NODE>
+		<NODE modify="ISO:3166:1:alpha-3:MAR">
+			<element tag="WBI:INCOME-GROUP">WBI:INCOME-GROUP:LMC</element>
+			<element tag="WBI:LENDING-GROUP">WBI:LENDING-GROUP:IBRD</element>
+		</NODE>
+		<NODE modify="ISO:3166:1:alpha-3:MCO">
+			<element tag="WBI:INCOME-GROUP">WBI:INCOME-GROUP:NOC</element>
+		</NODE>
+		<NODE modify="ISO:3166:1:alpha-3:MDA">
+			<element tag="WBI:INCOME-GROUP">WBI:INCOME-GROUP:LMC</element>
+			<element tag="WBI:LENDING-GROUP">WBI:LENDING-GROUP:IDA</element>
+		</NODE>
+		<NODE modify="ISO:3166:1:alpha-3:MDG">
+			<element tag="WBI:INCOME-GROUP">WBI:INCOME-GROUP:LIC</element>
+			<element tag="WBI:LENDING-GROUP">WBI:LENDING-GROUP:IDA</element>
+		</NODE>
+		<NODE modify="ISO:3166:1:alpha-3:MDV">
+			<element tag="WBI:INCOME-GROUP">WBI:INCOME-GROUP:UMC</element>
+			<element tag="WBI:LENDING-GROUP">WBI:LENDING-GROUP:IDA</element>
+		</NODE>
+		<NODE modify="ISO:3166:1:alpha-3:MEX">
+			<element tag="WBI:INCOME-GROUP">WBI:INCOME-GROUP:UMC</element>
+			<element tag="WBI:LENDING-GROUP">WBI:LENDING-GROUP:IBRD</element>
+		</NODE>
+		<NODE modify="ISO:3166:1:alpha-3:MHL">
+			<element tag="WBI:INCOME-GROUP">WBI:INCOME-GROUP:LMC</element>
+			<element tag="WBI:LENDING-GROUP">WBI:LENDING-GROUP:IDA</element>
+		</NODE>
+		<NODE modify="ISO:3166:1:alpha-3:MKD">
+			<element tag="WBI:INCOME-GROUP">WBI:INCOME-GROUP:UMC</element>
+			<element tag="WBI:LENDING-GROUP">WBI:LENDING-GROUP:IBRD</element>
+		</NODE>
+		<NODE modify="ISO:3166:1:alpha-3:MLI">
+			<element tag="WBI:INCOME-GROUP">WBI:INCOME-GROUP:LIC</element>
+			<element tag="WBI:LENDING-GROUP">WBI:LENDING-GROUP:IDA</element>
+		</NODE>
+		<NODE modify="ISO:3166:1:alpha-3:MLT">
+			<element tag="WBI:INCOME-GROUP">WBI:INCOME-GROUP:NOC</element>
+		</NODE>
+		<NODE modify="ISO:3166:1:alpha-3:MMR">
+			<element tag="WBI:INCOME-GROUP">WBI:INCOME-GROUP:LIC</element>
+			<element tag="WBI:LENDING-GROUP">WBI:LENDING-GROUP:IDA</element>
+		</NODE>
+		<NODE modify="ISO:3166:3:alpha-3:MNE">
+			<element tag="WBI:INCOME-GROUP">WBI:INCOME-GROUP:UMC</element>
+			<element tag="WBI:LENDING-GROUP">WBI:LENDING-GROUP:IBRD</element>
+		</NODE>
+		<NODE modify="ISO:3166:1:alpha-3:MNG">
+			<element tag="WBI:INCOME-GROUP">WBI:INCOME-GROUP:LMC</element>
+			<element tag="WBI:LENDING-GROUP">WBI:LENDING-GROUP:IDA</element>
+		</NODE>
+		<NODE modify="ISO:3166:1:alpha-3:MNP">
+			<element tag="WBI:INCOME-GROUP">WBI:INCOME-GROUP:NOC</element>
+		</NODE>
+		<NODE modify="ISO:3166:1:alpha-3:MOZ">
+			<element tag="WBI:INCOME-GROUP">WBI:INCOME-GROUP:LIC</element>
+			<element tag="WBI:LENDING-GROUP">WBI:LENDING-GROUP:IDA</element>
+		</NODE>
+		<NODE modify="ISO:3166:1:alpha-3:MRT">
+			<element tag="WBI:INCOME-GROUP">WBI:INCOME-GROUP:LMC</element>
+			<element tag="WBI:LENDING-GROUP">WBI:LENDING-GROUP:IDA</element>
+		</NODE>
+		<NODE modify="ISO:3166:1:alpha-3:MUS">
+			<element tag="WBI:INCOME-GROUP">WBI:INCOME-GROUP:UMC</element>
+			<element tag="WBI:LENDING-GROUP">WBI:LENDING-GROUP:IBRD</element>
+		</NODE>
+		<NODE modify="ISO:3166:1:alpha-3:MWI">
+			<element tag="WBI:INCOME-GROUP">WBI:INCOME-GROUP:LIC</element>
+			<element tag="WBI:LENDING-GROUP">WBI:LENDING-GROUP:IDA</element>
+		</NODE>
+		<NODE modify="ISO:3166:1:alpha-3:MYS">
+			<element tag="WBI:INCOME-GROUP">WBI:INCOME-GROUP:UMC</element>
+			<element tag="WBI:LENDING-GROUP">WBI:LENDING-GROUP:IBRD</element>
+		</NODE>
+		<NODE modify="ISO:3166:1:alpha-3:MYT">
+			<element tag="WBI:INCOME-GROUP">WBI:INCOME-GROUP:UMC</element>
+		</NODE>
+		<NODE modify="ISO:3166:1:alpha-3:NAM">
+			<element tag="WBI:INCOME-GROUP">WBI:INCOME-GROUP:UMC</element>
+			<element tag="WBI:LENDING-GROUP">WBI:LENDING-GROUP:IBRD</element>
+		</NODE>
+		<NODE modify="ISO:3166:1:alpha-3:NCL">
+			<element tag="WBI:INCOME-GROUP">WBI:INCOME-GROUP:NOC</element>
+		</NODE>
+		<NODE modify="ISO:3166:1:alpha-3:NER">
+			<element tag="WBI:INCOME-GROUP">WBI:INCOME-GROUP:LIC</element>
+			<element tag="WBI:LENDING-GROUP">WBI:LENDING-GROUP:IDA</element>
+		</NODE>
+		<NODE modify="ISO:3166:1:alpha-3:NGA">
+			<element tag="WBI:INCOME-GROUP">WBI:INCOME-GROUP:LMC</element>
+			<element tag="WBI:LENDING-GROUP">WBI:LENDING-GROUP:IDA</element>
+		</NODE>
+		<NODE modify="ISO:3166:1:alpha-3:NIC">
+			<element tag="WBI:INCOME-GROUP">WBI:INCOME-GROUP:LMC</element>
+			<element tag="WBI:LENDING-GROUP">WBI:LENDING-GROUP:IDA</element>
+		</NODE>
+		<NODE modify="ISO:3166:1:alpha-3:NLD">
+			<element tag="WBI:INCOME-GROUP">WBI:INCOME-GROUP:OEC</element>
+		</NODE>
+		<NODE modify="ISO:3166:1:alpha-3:NOR">
+			<element tag="WBI:INCOME-GROUP">WBI:INCOME-GROUP:OEC</element>
+		</NODE>
+		<NODE modify="ISO:3166:1:alpha-3:NPL">
+			<element tag="WBI:INCOME-GROUP">WBI:INCOME-GROUP:LIC</element>
+			<element tag="WBI:LENDING-GROUP">WBI:LENDING-GROUP:IDA</element>
+		</NODE>
+		<NODE modify="ISO:3166:1:alpha-3:NZL">
+			<element tag="WBI:INCOME-GROUP">WBI:INCOME-GROUP:OEC</element>
+		</NODE>
+		<NODE modify="ISO:3166:1:alpha-3:OMN">
+			<element tag="WBI:INCOME-GROUP">WBI:INCOME-GROUP:NOC</element>
+		</NODE>
+		<NODE modify="ISO:3166:1:alpha-3:PAK">
+			<element tag="WBI:INCOME-GROUP">WBI:INCOME-GROUP:LMC</element>
+			<element tag="WBI:LENDING-GROUP">WBI:LENDING-GROUP:Blend</element>
+		</NODE>
+		<NODE modify="ISO:3166:1:alpha-3:PAN">
+			<element tag="WBI:INCOME-GROUP">WBI:INCOME-GROUP:UMC</element>
+			<element tag="WBI:LENDING-GROUP">WBI:LENDING-GROUP:IBRD</element>
+		</NODE>
+		<NODE modify="ISO:3166:1:alpha-3:PER">
+			<element tag="WBI:INCOME-GROUP">WBI:INCOME-GROUP:UMC</element>
+			<element tag="WBI:LENDING-GROUP">WBI:LENDING-GROUP:IBRD</element>
+		</NODE>
+		<NODE modify="ISO:3166:1:alpha-3:PHL">
+			<element tag="WBI:INCOME-GROUP">WBI:INCOME-GROUP:LMC</element>
+			<element tag="WBI:LENDING-GROUP">WBI:LENDING-GROUP:IBRD</element>
+		</NODE>
+		<NODE modify="ISO:3166:1:alpha-3:PLW">
+			<element tag="WBI:INCOME-GROUP">WBI:INCOME-GROUP:UMC</element>
+			<element tag="WBI:LENDING-GROUP">WBI:LENDING-GROUP:IBRD</element>
+		</NODE>
+		<NODE modify="ISO:3166:1:alpha-3:PNG">
+			<element tag="WBI:INCOME-GROUP">WBI:INCOME-GROUP:LMC</element>
+			<element tag="WBI:LENDING-GROUP">WBI:LENDING-GROUP:Blend</element>
+		</NODE>
+		<NODE modify="ISO:3166:1:alpha-3:POL">
+			<element tag="WBI:INCOME-GROUP">WBI:INCOME-GROUP:OEC</element>
+			<element tag="WBI:LENDING-GROUP">WBI:LENDING-GROUP:IBRD</element>
+		</NODE>
+		<NODE modify="ISO:3166:1:alpha-3:PRI">
+			<element tag="WBI:INCOME-GROUP">WBI:INCOME-GROUP:NOC</element>
+		</NODE>
+		<NODE modify="ISO:3166:1:alpha-3:PRK">
+			<element tag="WBI:INCOME-GROUP">WBI:INCOME-GROUP:LIC</element>
+		</NODE>
+		<NODE modify="ISO:3166:1:alpha-3:PRT">
+			<element tag="WBI:INCOME-GROUP">WBI:INCOME-GROUP:OEC</element>
+		</NODE>
+		<NODE modify="ISO:3166:1:alpha-3:PRY">
+			<element tag="WBI:INCOME-GROUP">WBI:INCOME-GROUP:LMC</element>
+			<element tag="WBI:LENDING-GROUP">WBI:LENDING-GROUP:IBRD</element>
+		</NODE>
+		<NODE modify="ISO:3166:1:alpha-3:PSE">
+			<element tag="WBI:INCOME-GROUP">WBI:INCOME-GROUP:LMC</element>
+		</NODE>
+		<NODE modify="ISO:3166:1:alpha-3:PYF">
+			<element tag="WBI:INCOME-GROUP">WBI:INCOME-GROUP:NOC</element>
+		</NODE>
+		<NODE modify="ISO:3166:1:alpha-3:QAT">
+			<element tag="WBI:INCOME-GROUP">WBI:INCOME-GROUP:NOC</element>
+		</NODE>
+		<NODE modify="ISO:3166:3:alpha-3:ROM">
+			<element tag="WBI:INCOME-GROUP">WBI:INCOME-GROUP:UMC</element>
+			<element tag="WBI:LENDING-GROUP">WBI:LENDING-GROUP:IBRD</element>
+		</NODE>
+		<NODE modify="ISO:3166:1:alpha-3:RUS">
+			<element tag="WBI:INCOME-GROUP">WBI:INCOME-GROUP:UMC</element>
+			<element tag="WBI:LENDING-GROUP">WBI:LENDING-GROUP:IBRD</element>
+		</NODE>
+		<NODE modify="ISO:3166:1:alpha-3:RWA">
+			<element tag="WBI:INCOME-GROUP">WBI:INCOME-GROUP:LIC</element>
+			<element tag="WBI:LENDING-GROUP">WBI:LENDING-GROUP:IDA</element>
+		</NODE>
+		<NODE modify="ISO:3166:1:alpha-3:SAU">
+			<element tag="WBI:INCOME-GROUP">WBI:INCOME-GROUP:NOC</element>
+		</NODE>
+		<NODE modify="ISO:3166:1:alpha-3:SDN">
+			<element tag="WBI:INCOME-GROUP">WBI:INCOME-GROUP:LMC</element>
+			<element tag="WBI:LENDING-GROUP">WBI:LENDING-GROUP:IDA</element>
+		</NODE>
+		<NODE modify="ISO:3166:1:alpha-3:SEN">
+			<element tag="WBI:INCOME-GROUP">WBI:INCOME-GROUP:LMC</element>
+			<element tag="WBI:LENDING-GROUP">WBI:LENDING-GROUP:IDA</element>
+		</NODE>
+		<NODE modify="ISO:3166:1:alpha-3:SGP">
+			<element tag="WBI:INCOME-GROUP">WBI:INCOME-GROUP:NOC</element>
+		</NODE>
+		<NODE modify="ISO:3166:1:alpha-3:SLB">
+			<element tag="WBI:INCOME-GROUP">WBI:INCOME-GROUP:LMC</element>
+			<element tag="WBI:LENDING-GROUP">WBI:LENDING-GROUP:IDA</element>
+		</NODE>
+		<NODE modify="ISO:3166:1:alpha-3:SLE">
+			<element tag="WBI:INCOME-GROUP">WBI:INCOME-GROUP:LIC</element>
+			<element tag="WBI:LENDING-GROUP">WBI:LENDING-GROUP:IDA</element>
+		</NODE>
+		<NODE modify="ISO:3166:1:alpha-3:SLV">
+			<element tag="WBI:INCOME-GROUP">WBI:INCOME-GROUP:LMC</element>
+			<element tag="WBI:LENDING-GROUP">WBI:LENDING-GROUP:IBRD</element>
+		</NODE>
+		<NODE modify="ISO:3166:1:alpha-3:SMR">
+			<element tag="WBI:INCOME-GROUP">WBI:INCOME-GROUP:NOC</element>
+		</NODE>
+		<NODE modify="ISO:3166:1:alpha-3:SOM">
+			<element tag="WBI:INCOME-GROUP">WBI:INCOME-GROUP:LIC</element>
+			<element tag="WBI:LENDING-GROUP">WBI:LENDING-GROUP:IDA</element>
+		</NODE>
+		<NODE modify="ISO:3166:1:alpha-3:SRB">
+			<element tag="WBI:INCOME-GROUP">WBI:INCOME-GROUP:UMC</element>
+			<element tag="WBI:LENDING-GROUP">WBI:LENDING-GROUP:IBRD</element>
+		</NODE>
+		<NODE modify="ISO:3166:1:alpha-3:STP">
+			<element tag="WBI:INCOME-GROUP">WBI:INCOME-GROUP:LMC</element>
+			<element tag="WBI:LENDING-GROUP">WBI:LENDING-GROUP:IDA</element>
+		</NODE>
+		<NODE modify="ISO:3166:1:alpha-3:SUR">
+			<element tag="WBI:INCOME-GROUP">WBI:INCOME-GROUP:UMC</element>
+			<element tag="WBI:LENDING-GROUP">WBI:LENDING-GROUP:IBRD</element>
+		</NODE>
+		<NODE modify="ISO:3166:1:alpha-3:SVK">
+			<element tag="WBI:INCOME-GROUP">WBI:INCOME-GROUP:OEC</element>
+		</NODE>
+		<NODE modify="ISO:3166:1:alpha-3:SVN">
+			<element tag="WBI:INCOME-GROUP">WBI:INCOME-GROUP:OEC</element>
+		</NODE>
+		<NODE modify="ISO:3166:1:alpha-3:SWE">
+			<element tag="WBI:INCOME-GROUP">WBI:INCOME-GROUP:OEC</element>
+		</NODE>
+		<NODE modify="ISO:3166:1:alpha-3:SWZ">
+			<element tag="WBI:INCOME-GROUP">WBI:INCOME-GROUP:LMC</element>
+			<element tag="WBI:LENDING-GROUP">WBI:LENDING-GROUP:IBRD</element>
+		</NODE>
+		<NODE modify="ISO:3166:3:alpha-3:SXM">
+			<element tag="WBI:INCOME-GROUP">WBI:INCOME-GROUP:NOC</element>
+		</NODE>
+		<NODE modify="ISO:3166:1:alpha-3:SYC">
+			<element tag="WBI:INCOME-GROUP">WBI:INCOME-GROUP:UMC</element>
+			<element tag="WBI:LENDING-GROUP">WBI:LENDING-GROUP:IBRD</element>
+		</NODE>
+		<NODE modify="ISO:3166:1:alpha-3:SYR">
+			<element tag="WBI:INCOME-GROUP">WBI:INCOME-GROUP:LMC</element>
+			<element tag="WBI:LENDING-GROUP">WBI:LENDING-GROUP:IBRD</element>
+		</NODE>
+		<NODE modify="ISO:3166:1:alpha-3:TCA">
+			<element tag="WBI:INCOME-GROUP">WBI:INCOME-GROUP:NOC</element>
+		</NODE>
+		<NODE modify="ISO:3166:1:alpha-3:TCD">
+			<element tag="WBI:INCOME-GROUP">WBI:INCOME-GROUP:LIC</element>
+			<element tag="WBI:LENDING-GROUP">WBI:LENDING-GROUP:IDA</element>
+		</NODE>
+		<NODE modify="ISO:3166:1:alpha-3:TGO">
+			<element tag="WBI:INCOME-GROUP">WBI:INCOME-GROUP:LIC</element>
+			<element tag="WBI:LENDING-GROUP">WBI:LENDING-GROUP:IDA</element>
+		</NODE>
+		<NODE modify="ISO:3166:1:alpha-3:THA">
+			<element tag="WBI:INCOME-GROUP">WBI:INCOME-GROUP:UMC</element>
+			<element tag="WBI:LENDING-GROUP">WBI:LENDING-GROUP:IBRD</element>
+		</NODE>
+		<NODE modify="ISO:3166:1:alpha-3:TJK">
+			<element tag="WBI:INCOME-GROUP">WBI:INCOME-GROUP:LIC</element>
+			<element tag="WBI:LENDING-GROUP">WBI:LENDING-GROUP:IDA</element>
+		</NODE>
+		<NODE modify="ISO:3166:1:alpha-3:TKM">
+			<element tag="WBI:INCOME-GROUP">WBI:INCOME-GROUP:LMC</element>
+			<element tag="WBI:LENDING-GROUP">WBI:LENDING-GROUP:IBRD</element>
+		</NODE>
+		<NODE modify="ISO:3166:3:alpha-3:TMP">
+			<element tag="WBI:INCOME-GROUP">WBI:INCOME-GROUP:LMC</element>
+			<element tag="WBI:LENDING-GROUP">WBI:LENDING-GROUP:IDA</element>
+		</NODE>
+		<NODE modify="ISO:3166:1:alpha-3:TON">
+			<element tag="WBI:INCOME-GROUP">WBI:INCOME-GROUP:LMC</element>
+			<element tag="WBI:LENDING-GROUP">WBI:LENDING-GROUP:IDA</element>
+		</NODE>
+		<NODE modify="ISO:3166:1:alpha-3:TTO">
+			<element tag="WBI:INCOME-GROUP">WBI:INCOME-GROUP:NOC</element>
+			<element tag="WBI:LENDING-GROUP">WBI:LENDING-GROUP:IBRD</element>
+		</NODE>
+		<NODE modify="ISO:3166:1:alpha-3:TUN">
+			<element tag="WBI:INCOME-GROUP">WBI:INCOME-GROUP:UMC</element>
+			<element tag="WBI:LENDING-GROUP">WBI:LENDING-GROUP:IBRD</element>
+		</NODE>
+		<NODE modify="ISO:3166:1:alpha-3:TUR">
+			<element tag="WBI:INCOME-GROUP">WBI:INCOME-GROUP:UMC</element>
+			<element tag="WBI:LENDING-GROUP">WBI:LENDING-GROUP:IBRD</element>
+		</NODE>
+		<NODE modify="ISO:3166:1:alpha-3:TUV">
+			<element tag="WBI:INCOME-GROUP">WBI:INCOME-GROUP:LMC</element>
+		</NODE>
+		<NODE modify="ISO:3166:1:alpha-3:TZA">
+			<element tag="WBI:INCOME-GROUP">WBI:INCOME-GROUP:LIC</element>
+			<element tag="WBI:LENDING-GROUP">WBI:LENDING-GROUP:IDA</element>
+		</NODE>
+		<NODE modify="ISO:3166:1:alpha-3:UGA">
+			<element tag="WBI:INCOME-GROUP">WBI:INCOME-GROUP:LIC</element>
+			<element tag="WBI:LENDING-GROUP">WBI:LENDING-GROUP:IDA</element>
+		</NODE>
+		<NODE modify="ISO:3166:1:alpha-3:UKR">
+			<element tag="WBI:INCOME-GROUP">WBI:INCOME-GROUP:LMC</element>
+			<element tag="WBI:LENDING-GROUP">WBI:LENDING-GROUP:IBRD</element>
+		</NODE>
+		<NODE modify="ISO:3166:1:alpha-3:URY">
+			<element tag="WBI:INCOME-GROUP">WBI:INCOME-GROUP:UMC</element>
+			<element tag="WBI:LENDING-GROUP">WBI:LENDING-GROUP:IBRD</element>
+		</NODE>
+		<NODE modify="ISO:3166:1:alpha-3:USA">
+			<element tag="WBI:INCOME-GROUP">WBI:INCOME-GROUP:OEC</element>
+		</NODE>
+		<NODE modify="ISO:3166:1:alpha-3:UZB">
+			<element tag="WBI:INCOME-GROUP">WBI:INCOME-GROUP:LMC</element>
+			<element tag="WBI:LENDING-GROUP">WBI:LENDING-GROUP:Blend</element>
+		</NODE>
+		<NODE modify="ISO:3166:1:alpha-3:VCT">
+			<element tag="WBI:INCOME-GROUP">WBI:INCOME-GROUP:UMC</element>
+			<element tag="WBI:LENDING-GROUP">WBI:LENDING-GROUP:Blend</element>
+		</NODE>
+		<NODE modify="ISO:3166:1:alpha-3:VEN">
+			<element tag="WBI:INCOME-GROUP">WBI:INCOME-GROUP:UMC</element>
+			<element tag="WBI:LENDING-GROUP">WBI:LENDING-GROUP:IBRD</element>
+		</NODE>
+		<NODE modify="ISO:3166:1:alpha-3:VIR">
+			<element tag="WBI:INCOME-GROUP">WBI:INCOME-GROUP:NOC</element>
+		</NODE>
+		<NODE modify="ISO:3166:1:alpha-3:VNM">
+			<element tag="WBI:INCOME-GROUP">WBI:INCOME-GROUP:LMC</element>
+			<element tag="WBI:LENDING-GROUP">WBI:LENDING-GROUP:Blend</element>
+		</NODE>
+		<NODE modify="ISO:3166:1:alpha-3:VUT">
+			<element tag="WBI:INCOME-GROUP">WBI:INCOME-GROUP:LMC</element>
+			<element tag="WBI:LENDING-GROUP">WBI:LENDING-GROUP:IDA</element>
+		</NODE>
+		<NODE modify="ISO:3166:1:alpha-3:WSM">
+			<element tag="WBI:INCOME-GROUP">WBI:INCOME-GROUP:LMC</element>
+			<element tag="WBI:LENDING-GROUP">WBI:LENDING-GROUP:IDA</element>
+		</NODE>
+		<NODE modify="ISO:3166:1:alpha-3:YEM">
+			<element tag="WBI:INCOME-GROUP">WBI:INCOME-GROUP:LMC</element>
+			<element tag="WBI:LENDING-GROUP">WBI:LENDING-GROUP:IDA</element>
+		</NODE>
+		<NODE modify="ISO:3166:1:alpha-3:ZAF">
+			<element tag="WBI:INCOME-GROUP">WBI:INCOME-GROUP:UMC</element>
+			<element tag="WBI:LENDING-GROUP">WBI:LENDING-GROUP:IBRD</element>
+		</NODE>
+		<NODE modify="ISO:3166:3:alpha-3:ZAR">
+			<element tag="WBI:INCOME-GROUP">WBI:INCOME-GROUP:LIC</element>
+			<element tag="WBI:LENDING-GROUP">WBI:LENDING-GROUP:IDA</element>
+		</NODE>
+		<NODE modify="ISO:3166:1:alpha-3:ZMB">
+			<element tag="WBI:INCOME-GROUP">WBI:INCOME-GROUP:LMC</element>
+			<element tag="WBI:LENDING-GROUP">WBI:LENDING-GROUP:IDA</element>
+		</NODE>
+		<NODE modify="ISO:3166:1:alpha-3:ZWE">
+			<element tag="WBI:INCOME-GROUP">WBI:INCOME-GROUP:LIC</element>
+			<element tag="WBI:LENDING-GROUP">WBI:LENDING-GROUP:Blend</element>
+		</NODE>
+	</UNIT>
+</ONTOLOGY>

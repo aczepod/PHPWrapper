@@ -96,6 +96,24 @@ try
 		kPATH_MYWRAPPER_LIBRARY_DATA."/UNSTAT_REGIONS.xml" );
 	
 	//
+	// Loading World Bank categories.
+	//
+	if( kOPTION_VERBOSE )
+		echo( "  • Loading World Bank categories.\n" );
+	$_SESSION[ kSESSION_ONTOLOGY ]->LoadXMLOntologyFile(
+		kPATH_MYWRAPPER_LIBRARY_DATA."/WORLD_BANK.xml" );
+	
+	//
+	// Loading country World Bank categories.
+	//
+/*
+	if( kOPTION_VERBOSE )
+		echo( "  • Loading country World Bank categories.\n" );
+	$_SESSION[ kSESSION_ONTOLOGY ]->LoadXMLOntologyFile(
+		kPATH_MYWRAPPER_LIBRARY_DATA."/COUNTRY_WORLD_BANK.xml" );
+*/
+	
+	//
 	// Loading GR descriptors.
 	//
 	if( kOPTION_VERBOSE )

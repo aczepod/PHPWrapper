@@ -1758,9 +1758,17 @@ class COntology extends CConnection
 			if( $element[ 'tag' ] !== NULL )
 			{
 				//
+				// Resolve tag.
+				//
+				$tag
+					= COntologyTag::Resolve(
+						$theDatabase, (string) $element[ 'tag' ], TRUE )
+							->NID();
+				
+				//
 				// Parse by tag.
 				//
-				switch( $tag = (string) $element[ 'tag' ] )
+				switch( $tag )
 				{
 					case kTAG_SUBJECT:
 						if( strlen( $data = (string) $element ) )
@@ -3769,6 +3777,7 @@ class COntology extends CConnection
 						// Create node.
 						//
 						$node3 = new COntologyMasterVertex();
+						$node3->PID( $term3->GID() );
 						$node3->Kind( kKIND_ENUMERATION, TRUE );
 						$node3->Term( $term3 );
 
@@ -4144,6 +4153,7 @@ class COntology extends CConnection
 						// Create node.
 						//
 						$node3 = new COntologyMasterVertex();
+						$node3->PID( $term3->GID() );
 						$node3->Kind( kKIND_ENUMERATION, TRUE );
 						$node3->Term( $term3 );
 						

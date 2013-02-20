@@ -567,9 +567,8 @@ class COntologyTag extends CTag
 	 *		<li><tt>array</tt>: In this case the method assumes the array is the tag path,
 	 *			{@link kTAG_PATH}, it will attempt to convert it into the tag
 	 *			{@link kTAG_UID} and locate it.
-	 *		<li><i>other</i>: Any other type will be interpreted either the tag's unique
-	 *			identifier, or as the tag's global identifier: the method will return the
-	 *			matching tag or <tt>NULL</tt>.
+	 *		<li><i>other</i>: Any other type will be interpreted as the tag's global
+	 *			identifier: the method will return the matching tag or <tt>NULL</tt>.
 	 *	 </ul>
 	 *	<li><tt>$doThrow</tt>: If <tt>TRUE</tt>, any failure to resolve the tag will raise
 	 *		an exception.
@@ -600,7 +599,15 @@ class COntologyTag extends CTag
 			$container = static::ResolveClassContainer( $theConnection, TRUE );
 			
 			//
-			// Handle tag identifier.
+			// Convert to integer.
+			//
+			if( (! is_array( $theIdentifier ))
+			 && ctype_digit( $theIdentifier )
+			 && (substr( $theIdentifier, 0, 1 ) != '0') )
+				$theIdentifier = (int) $theIdentifier;
+			
+			//
+			// Handle tag native identifier.
 			//
 			if( is_integer( $theIdentifier ) )
 			{

@@ -766,7 +766,7 @@ class COntologyNode extends CNode
 					return $node;													// ==>
 				
 				throw new Exception
-					( "Node not found",
+					( "Node not found [$tmp]",
 					  kERROR_NOT_FOUND );										// !@! ==>
 			
 			} // Provided node identifier.
@@ -830,7 +830,7 @@ class COntologyNode extends CNode
 			//
 			if( $doThrow )
 				throw new Exception
-					( "Node not found",
+					( "Node not found [$tmp]",
 					  kERROR_NOT_FOUND );										// !@! ==>
 			
 			return NULL;															// ==>
@@ -888,6 +888,11 @@ class COntologyNode extends CNode
 		if( $theIdentifier !== NULL )
 		{
 			//
+			// Save identifier.
+			//
+			$tmp = (string) $theIdentifier;
+
+			//
 			// Resolve container.
 			//
 			$container = static::ResolveClassContainer( $theConnection, TRUE );
@@ -928,7 +933,7 @@ class COntologyNode extends CNode
 			//
 			if( $doThrow )
 				throw new Exception
-					( "Node not found",
+					( "Node not found [$tmp]",
 					  kERROR_NOT_FOUND );										// !@! ==>
 			
 			return NULL;															// ==>
