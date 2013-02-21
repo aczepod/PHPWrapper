@@ -24,7 +24,37 @@
 		</NODE>
 	</UNIT>
 
-	<!-- CLASSIFICATION GROUPS -->
+	<!-- NAMESPACES -->
+
+	<UNIT>
+		<TERM LID="INCOME" NS="WBI">
+			<element variable="kTAG_KIND">
+			    <item>:KIND-NAMESPACE</item>
+			</element>
+			<element variable="kTAG_LABEL">
+				<item key="en">Income classification groups</item>
+			</element>
+			<element variable="kTAG_DEFINITION">
+				<item key="en">World Bank Institute income classification groups.</item>
+			</element>
+		</TERM>
+	</UNIT>
+
+	<UNIT>
+		<TERM LID="LENDING" NS="WBI">
+			<element variable="kTAG_KIND">
+			    <item>:KIND-NAMESPACE</item>
+			</element>
+			<element variable="kTAG_LABEL">
+				<item key="en">Lending classification groups</item>
+			</element>
+			<element variable="kTAG_DEFINITION">
+				<item key="en">World Bank Institute lending classification groups.</item>
+			</element>
+		</TERM>
+	</UNIT>
+
+	<!-- ATTRIBUTES -->
 
 	<UNIT>
 		<TERM LID="GROUP" NS="WBI">
@@ -54,8 +84,40 @@
 			</element>
     	</TAG>
 	</UNIT>
+
+	<UNIT>
+		<TERM LID="VERSION" NS="WBI">
+			<element variable="kTAG_LABEL">
+				<item key="en">Version</item>
+			</element>
+			<element variable="kTAG_DEFINITION">
+				<item key="en">Classification version.</item>
+			</element>
+		</TERM>
+		<NODE class="COntologyMasterVertex">
+			<element variable="kTAG_KIND">
+			    <item>:KIND-FEATURE</item>
+			    <item>:KIND-SCALE</item>
+			</element>
+			<element variable="kTAG_TYPE">
+				<item>:TEXT</item>
+			</element>
+		</NODE>
+		<EDGE>
+			<element variable="kTAG_PREDICATE">:SUBCLASS-OF</element>
+			<element variable="kTAG_OBJECT">WBI</element>
+		</EDGE>
+    	<TAG>
+			<element variable="kTAG_PATH">
+    			<item node="term">WBI:VERSION</item>
+			</element>
+    	</TAG>
+	</UNIT>
+
+	<!-- INCOME CATEGORY GROUPS -->
+	
     <UNIT>
-        <TERM NS="WBI:GROUP" LID="ARB">
+        <TERM NS="WBI:INCOME" LID="ARB">
             <element variable="kTAG_KIND">
             	<item>:KIND-ENUMERATION</item>
             </element>
@@ -74,7 +136,7 @@
         </EDGE>
     </UNIT>
     <UNIT>
-        <TERM NS="WBI:GROUP" LID="CAM">
+        <TERM NS="WBI:INCOME" LID="CAM">
             <element variable="kTAG_KIND">
             	<item>:KIND-ENUMERATION</item>
             </element>
@@ -93,7 +155,7 @@
         </EDGE>
     </UNIT>
     <UNIT>
-        <TERM NS="WBI:GROUP" LID="CAS">
+        <TERM NS="WBI:INCOME" LID="CAS">
             <element variable="kTAG_KIND">
             	<item>:KIND-ENUMERATION</item>
             </element>
@@ -112,7 +174,7 @@
         </EDGE>
     </UNIT>
     <UNIT>
-        <TERM NS="WBI:GROUP" LID="CFR">
+        <TERM NS="WBI:INCOME" LID="CFR">
             <element variable="kTAG_KIND">
             	<item>:KIND-ENUMERATION</item>
             </element>
@@ -131,7 +193,7 @@
         </EDGE>
     </UNIT>
     <UNIT>
-        <TERM NS="WBI:GROUP" LID="CRB">
+        <TERM NS="WBI:INCOME" LID="CRB">
             <element variable="kTAG_KIND">
             	<item>:KIND-ENUMERATION</item>
             </element>
@@ -150,7 +212,7 @@
         </EDGE>
     </UNIT>
     <UNIT>
-        <TERM NS="WBI:GROUP" LID="CSS">
+        <TERM NS="WBI:INCOME" LID="CSS">
             <element variable="kTAG_KIND">
             	<item>:KIND-ENUMERATION</item>
             </element>
@@ -169,7 +231,7 @@
         </EDGE>
     </UNIT>
     <UNIT>
-        <TERM NS="WBI:GROUP" LID="EAP">
+        <TERM NS="WBI:INCOME" LID="EAP">
             <element variable="kTAG_KIND">
             	<item>:KIND-ENUMERATION</item>
             </element>
@@ -188,7 +250,7 @@
         </EDGE>
     </UNIT>
     <UNIT>
-        <TERM NS="WBI:GROUP" LID="EAS">
+        <TERM NS="WBI:INCOME" LID="EAS">
             <element variable="kTAG_KIND">
             	<item>:KIND-ENUMERATION</item>
             </element>
@@ -207,7 +269,7 @@
         </EDGE>
     </UNIT>
     <UNIT>
-        <TERM NS="WBI:GROUP" LID="ECA">
+        <TERM NS="WBI:INCOME" LID="ECA">
             <element variable="kTAG_KIND">
             	<item>:KIND-ENUMERATION</item>
             </element>
@@ -226,7 +288,7 @@
         </EDGE>
     </UNIT>
     <UNIT>
-        <TERM NS="WBI:GROUP" LID="ECS">
+        <TERM NS="WBI:INCOME" LID="ECS">
             <element variable="kTAG_KIND">
             	<item>:KIND-ENUMERATION</item>
             </element>
@@ -245,7 +307,7 @@
         </EDGE>
     </UNIT>
     <UNIT>
-        <TERM NS="WBI:GROUP" LID="EER">
+        <TERM NS="WBI:INCOME" LID="EER">
             <element variable="kTAG_KIND">
             	<item>:KIND-ENUMERATION</item>
             </element>
@@ -264,7 +326,7 @@
         </EDGE>
     </UNIT>
     <UNIT>
-        <TERM NS="WBI:GROUP" LID="EMU">
+        <TERM NS="WBI:INCOME" LID="EMU">
             <element variable="kTAG_KIND">
             	<item>:KIND-ENUMERATION</item>
             </element>
@@ -283,7 +345,7 @@
         </EDGE>
     </UNIT>
     <UNIT>
-        <TERM NS="WBI:GROUP" LID="ESA">
+        <TERM NS="WBI:INCOME" LID="ESA">
             <element variable="kTAG_KIND">
             	<item>:KIND-ENUMERATION</item>
             </element>
@@ -302,7 +364,7 @@
         </EDGE>
     </UNIT>
     <UNIT>
-        <TERM NS="WBI:GROUP" LID="ESS">
+        <TERM NS="WBI:INCOME" LID="ESS">
             <element variable="kTAG_KIND">
             	<item>:KIND-ENUMERATION</item>
             </element>
@@ -321,7 +383,7 @@
         </EDGE>
     </UNIT>
     <UNIT>
-        <TERM NS="WBI:GROUP" LID="EUU">
+        <TERM NS="WBI:INCOME" LID="EUU">
             <element variable="kTAG_KIND">
             	<item>:KIND-ENUMERATION</item>
             </element>
@@ -340,7 +402,7 @@
         </EDGE>
     </UNIT>
     <UNIT>
-        <TERM NS="WBI:GROUP" LID="HIC">
+        <TERM NS="WBI:INCOME" LID="HIC">
             <element variable="kTAG_KIND">
             	<item>:KIND-ENUMERATION</item>
             </element>
@@ -359,7 +421,7 @@
         </EDGE>
     </UNIT>
     <UNIT>
-        <TERM NS="WBI:GROUP" LID="HPC">
+        <TERM NS="WBI:INCOME" LID="HPC">
             <element variable="kTAG_KIND">
             	<item>:KIND-ENUMERATION</item>
             </element>
@@ -378,7 +440,7 @@
         </EDGE>
     </UNIT>
     <UNIT>
-        <TERM NS="WBI:GROUP" LID="IBB">
+        <TERM NS="WBI:INCOME" LID="IBB">
             <element variable="kTAG_KIND">
             	<item>:KIND-ENUMERATION</item>
             </element>
@@ -397,7 +459,7 @@
         </EDGE>
     </UNIT>
     <UNIT>
-        <TERM NS="WBI:GROUP" LID="IBD">
+        <TERM NS="WBI:INCOME" LID="IBD">
             <element variable="kTAG_KIND">
             	<item>:KIND-ENUMERATION</item>
             </element>
@@ -416,7 +478,7 @@
         </EDGE>
     </UNIT>
     <UNIT>
-        <TERM NS="WBI:GROUP" LID="IBT">
+        <TERM NS="WBI:INCOME" LID="IBT">
             <element variable="kTAG_KIND">
             	<item>:KIND-ENUMERATION</item>
             </element>
@@ -435,7 +497,7 @@
         </EDGE>
     </UNIT>
     <UNIT>
-        <TERM NS="WBI:GROUP" LID="IDA">
+        <TERM NS="WBI:INCOME" LID="IDA">
             <element variable="kTAG_KIND">
             	<item>:KIND-ENUMERATION</item>
             </element>
@@ -454,7 +516,7 @@
         </EDGE>
     </UNIT>
     <UNIT>
-        <TERM NS="WBI:GROUP" LID="IDB">
+        <TERM NS="WBI:INCOME" LID="IDB">
             <element variable="kTAG_KIND">
             	<item>:KIND-ENUMERATION</item>
             </element>
@@ -473,7 +535,7 @@
         </EDGE>
     </UNIT>
     <UNIT>
-        <TERM NS="WBI:GROUP" LID="IDX">
+        <TERM NS="WBI:INCOME" LID="IDX">
             <element variable="kTAG_KIND">
             	<item>:KIND-ENUMERATION</item>
             </element>
@@ -492,7 +554,7 @@
         </EDGE>
     </UNIT>
     <UNIT>
-        <TERM NS="WBI:GROUP" LID="LAC">
+        <TERM NS="WBI:INCOME" LID="LAC">
             <element variable="kTAG_KIND">
             	<item>:KIND-ENUMERATION</item>
             </element>
@@ -511,7 +573,7 @@
         </EDGE>
     </UNIT>
     <UNIT>
-        <TERM NS="WBI:GROUP" LID="LCN">
+        <TERM NS="WBI:INCOME" LID="LCN">
             <element variable="kTAG_KIND">
             	<item>:KIND-ENUMERATION</item>
             </element>
@@ -530,7 +592,7 @@
         </EDGE>
     </UNIT>
     <UNIT>
-        <TERM NS="WBI:GROUP" LID="LDC">
+        <TERM NS="WBI:INCOME" LID="LDC">
             <element variable="kTAG_KIND">
             	<item>:KIND-ENUMERATION</item>
             </element>
@@ -549,7 +611,7 @@
         </EDGE>
     </UNIT>
     <UNIT>
-        <TERM NS="WBI:GROUP" LID="LIC">
+        <TERM NS="WBI:INCOME" LID="LIC">
             <element variable="kTAG_KIND">
             	<item>:KIND-ENUMERATION</item>
             </element>
@@ -568,7 +630,7 @@
         </EDGE>
     </UNIT>
     <UNIT>
-        <TERM NS="WBI:GROUP" LID="LMC">
+        <TERM NS="WBI:INCOME" LID="LMC">
             <element variable="kTAG_KIND">
             	<item>:KIND-ENUMERATION</item>
             </element>
@@ -587,7 +649,7 @@
         </EDGE>
     </UNIT>
     <UNIT>
-        <TERM NS="WBI:GROUP" LID="LMY">
+        <TERM NS="WBI:INCOME" LID="LMY">
             <element variable="kTAG_KIND">
             	<item>:KIND-ENUMERATION</item>
             </element>
@@ -606,7 +668,7 @@
         </EDGE>
     </UNIT>
     <UNIT>
-        <TERM NS="WBI:GROUP" LID="MDE">
+        <TERM NS="WBI:INCOME" LID="MDE">
             <element variable="kTAG_KIND">
             	<item>:KIND-ENUMERATION</item>
             </element>
@@ -625,7 +687,7 @@
         </EDGE>
     </UNIT>
     <UNIT>
-        <TERM NS="WBI:GROUP" LID="MEA">
+        <TERM NS="WBI:INCOME" LID="MEA">
             <element variable="kTAG_KIND">
             	<item>:KIND-ENUMERATION</item>
             </element>
@@ -644,7 +706,7 @@
         </EDGE>
     </UNIT>
     <UNIT>
-        <TERM NS="WBI:GROUP" LID="MIC">
+        <TERM NS="WBI:INCOME" LID="MIC">
             <element variable="kTAG_KIND">
             	<item>:KIND-ENUMERATION</item>
             </element>
@@ -663,7 +725,7 @@
         </EDGE>
     </UNIT>
     <UNIT>
-        <TERM NS="WBI:GROUP" LID="MNA">
+        <TERM NS="WBI:INCOME" LID="MNA">
             <element variable="kTAG_KIND">
             	<item>:KIND-ENUMERATION</item>
             </element>
@@ -682,7 +744,7 @@
         </EDGE>
     </UNIT>
     <UNIT>
-        <TERM NS="WBI:GROUP" LID="NAC">
+        <TERM NS="WBI:INCOME" LID="NAC">
             <element variable="kTAG_KIND">
             	<item>:KIND-ENUMERATION</item>
             </element>
@@ -701,7 +763,7 @@
         </EDGE>
     </UNIT>
     <UNIT>
-        <TERM NS="WBI:GROUP" LID="NAF">
+        <TERM NS="WBI:INCOME" LID="NAF">
             <element variable="kTAG_KIND">
             	<item>:KIND-ENUMERATION</item>
             </element>
@@ -720,7 +782,7 @@
         </EDGE>
     </UNIT>
     <UNIT>
-        <TERM NS="WBI:GROUP" LID="NOC">
+        <TERM NS="WBI:INCOME" LID="NOC">
             <element variable="kTAG_KIND">
             	<item>:KIND-ENUMERATION</item>
             </element>
@@ -739,7 +801,7 @@
         </EDGE>
     </UNIT>
     <UNIT>
-        <TERM NS="WBI:GROUP" LID="OEC">
+        <TERM NS="WBI:INCOME" LID="OEC">
             <element variable="kTAG_KIND">
             	<item>:KIND-ENUMERATION</item>
             </element>
@@ -758,7 +820,7 @@
         </EDGE>
     </UNIT>
     <UNIT>
-        <TERM NS="WBI:GROUP" LID="OED">
+        <TERM NS="WBI:INCOME" LID="OED">
             <element variable="kTAG_KIND">
             	<item>:KIND-ENUMERATION</item>
             </element>
@@ -777,7 +839,7 @@
         </EDGE>
     </UNIT>
     <UNIT>
-        <TERM NS="WBI:GROUP" LID="OSS">
+        <TERM NS="WBI:INCOME" LID="OSS">
             <element variable="kTAG_KIND">
             	<item>:KIND-ENUMERATION</item>
             </element>
@@ -796,7 +858,7 @@
         </EDGE>
     </UNIT>
     <UNIT>
-        <TERM NS="WBI:GROUP" LID="PAC">
+        <TERM NS="WBI:INCOME" LID="PAC">
             <element variable="kTAG_KIND">
             	<item>:KIND-ENUMERATION</item>
             </element>
@@ -815,7 +877,7 @@
         </EDGE>
     </UNIT>
     <UNIT>
-        <TERM NS="WBI:GROUP" LID="PSS">
+        <TERM NS="WBI:INCOME" LID="PSS">
             <element variable="kTAG_KIND">
             	<item>:KIND-ENUMERATION</item>
             </element>
@@ -834,7 +896,7 @@
         </EDGE>
     </UNIT>
     <UNIT>
-        <TERM NS="WBI:GROUP" LID="SAM">
+        <TERM NS="WBI:INCOME" LID="SAM">
             <element variable="kTAG_KIND">
             	<item>:KIND-ENUMERATION</item>
             </element>
@@ -853,7 +915,7 @@
         </EDGE>
     </UNIT>
     <UNIT>
-        <TERM NS="WBI:GROUP" LID="SAS">
+        <TERM NS="WBI:INCOME" LID="SAS">
             <element variable="kTAG_KIND">
             	<item>:KIND-ENUMERATION</item>
             </element>
@@ -872,7 +934,7 @@
         </EDGE>
     </UNIT>
     <UNIT>
-        <TERM NS="WBI:GROUP" LID="SAX">
+        <TERM NS="WBI:INCOME" LID="SAX">
             <element variable="kTAG_KIND">
             	<item>:KIND-ENUMERATION</item>
             </element>
@@ -891,7 +953,7 @@
         </EDGE>
     </UNIT>
     <UNIT>
-        <TERM NS="WBI:GROUP" LID="SEA">
+        <TERM NS="WBI:INCOME" LID="SEA">
             <element variable="kTAG_KIND">
             	<item>:KIND-ENUMERATION</item>
             </element>
@@ -910,7 +972,7 @@
         </EDGE>
     </UNIT>
     <UNIT>
-        <TERM NS="WBI:GROUP" LID="SER">
+        <TERM NS="WBI:INCOME" LID="SER">
             <element variable="kTAG_KIND">
             	<item>:KIND-ENUMERATION</item>
             </element>
@@ -929,7 +991,7 @@
         </EDGE>
     </UNIT>
     <UNIT>
-        <TERM NS="WBI:GROUP" LID="SSA">
+        <TERM NS="WBI:INCOME" LID="SSA">
             <element variable="kTAG_KIND">
             	<item>:KIND-ENUMERATION</item>
             </element>
@@ -948,7 +1010,7 @@
         </EDGE>
     </UNIT>
     <UNIT>
-        <TERM NS="WBI:GROUP" LID="SSF">
+        <TERM NS="WBI:INCOME" LID="SSF">
             <element variable="kTAG_KIND">
             	<item>:KIND-ENUMERATION</item>
             </element>
@@ -967,7 +1029,7 @@
         </EDGE>
     </UNIT>
     <UNIT>
-        <TERM NS="WBI:GROUP" LID="SST">
+        <TERM NS="WBI:INCOME" LID="SST">
             <element variable="kTAG_KIND">
             	<item>:KIND-ENUMERATION</item>
             </element>
@@ -986,7 +1048,7 @@
         </EDGE>
     </UNIT>
     <UNIT>
-        <TERM NS="WBI:GROUP" LID="UMC">
+        <TERM NS="WBI:INCOME" LID="UMC">
             <element variable="kTAG_KIND">
             	<item>:KIND-ENUMERATION</item>
             </element>
@@ -1005,7 +1067,7 @@
         </EDGE>
     </UNIT>
     <UNIT>
-        <TERM NS="WBI:GROUP" LID="WAF">
+        <TERM NS="WBI:INCOME" LID="WAF">
             <element variable="kTAG_KIND">
             	<item>:KIND-ENUMERATION</item>
             </element>
@@ -1024,7 +1086,7 @@
         </EDGE>
     </UNIT>
     <UNIT>
-        <TERM NS="WBI:GROUP" LID="WLD">
+        <TERM NS="WBI:INCOME" LID="WLD">
             <element variable="kTAG_KIND">
             	<item>:KIND-ENUMERATION</item>
             </element>
@@ -1046,7 +1108,7 @@
 	<!-- LENDING CATEGORY GROUPS -->
 	
 	<UNIT>
-		<TERM LID="IDA" NS="WBI:GROUP">
+		<TERM LID="IDA" NS="WBI:LENDING">
 			<element variable="kTAG_KIND">
 				<item>:KIND-ENUMERATION</item>
 			</element>
@@ -1065,7 +1127,7 @@
 		</EDGE>
 	</UNIT>
 	<UNIT>
-		<TERM LID="IBRD" NS="WBI:GROUP">
+		<TERM LID="IBRD" NS="WBI:LENDING">
 			<element variable="kTAG_KIND">
 				<item>:KIND-ENUMERATION</item>
 			</element>
@@ -1084,7 +1146,7 @@
 		</EDGE>
 	</UNIT>
 	<UNIT>
-		<TERM LID="Blend" NS="WBI:GROUP">
+		<TERM LID="Blend" NS="WBI:LENDING">
 			<element variable="kTAG_KIND">
 				<item>:KIND-ENUMERATION</item>
 			</element>

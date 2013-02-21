@@ -106,12 +106,10 @@ try
 	//
 	// Loading country World Bank categories.
 	//
-/*
 	if( kOPTION_VERBOSE )
 		echo( "  • Loading country World Bank categories.\n" );
 	$_SESSION[ kSESSION_ONTOLOGY ]->LoadXMLOntologyFile(
 		kPATH_MYWRAPPER_LIBRARY_DATA."/COUNTRY_WORLD_BANK.xml" );
-*/
 	
 	//
 	// Loading GR descriptors.

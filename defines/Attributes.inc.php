@@ -566,6 +566,17 @@ define( "kTERM_ACKNOWLEDGMENTS",				':ACKNOWLEDGMENTS' );
  */
 define( "kTERM_BIBLIOGRAPHY",					':BIBLIOGRAPHY' );
 
+/**
+ * VERSION.
+ *
+ * Version.
+ *
+ * This attribute represents the object's version.
+ *
+ * Version 1: (kTERM_VERSION)[:VERSION]
+ */
+define( "kTERM_VERSION",						':VERSION' );
+
 /*=======================================================================================
  *	REFERENCE ATTRIBUTES																*
  *======================================================================================*/

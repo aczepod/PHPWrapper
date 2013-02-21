@@ -223,10 +223,10 @@ var kTAG_UID = '3';
  *
  * Persistent identifier.
  *
- * This persistent identifier is an attribute that joins the name of the container in which
- * the object is stored with the object's symbolic identifier. This attribute may be useful
- * when the symbolic identifier is not unique and the unique identifier of the object is not
- * persistent.
+ * This attribute is used when an object needs a persistent identifier and it does not have
+ * a global or native identifier which is either unique or persistent. This attribute is
+ * set whenever a persistent identifier is needed to identify an object across
+ * implementations and this is not possible using other object attributes.
  *
  * Version 1: (kTAG_PID)[4]
  */
@@ -497,6 +497,17 @@ var kTAG_ACKNOWLEDGMENTS = '22';
  */
 var kTAG_BIBLIOGRAPHY = '23';
 
+/**
+ * VERSION.
+ *
+ * Version.
+ *
+ * This attribute represents the object's version.
+ *
+ * Version 1: (kTAG_VERSION)[24]
+ */
+var kTAG_VERSION = '24';
+
 /*=======================================================================================
  *	REFERENCE ATTRIBUTES																*
  *======================================================================================*/
@@ -512,8 +523,9 @@ var kTAG_BIBLIOGRAPHY = '23';
  * Version 1: (kTAG_TERM)[8]
  * Version 2: (kTAG_TERM)[18]
  * Version 3: (kTAG_TERM)[23]
+ * Version 4: (kTAG_TERM)[24]
  */
-var kTAG_TERM = '24';
+var kTAG_TERM = '25';
 
 /**
  * NODE.
@@ -526,8 +538,9 @@ var kTAG_TERM = '24';
  * Version 1: (kTAG_NODE)[??]
  * Version 2: (kTAG_NODE)[19]
  * Version 3: (kTAG_NODE)[24]
+ * Version 4: (kTAG_NODE)[25]
  */
-var kTAG_NODE = '25';
+var kTAG_NODE = '26';
 
 /**
  * SUBJECT.
@@ -540,8 +553,9 @@ var kTAG_NODE = '25';
  * Version 1: (kTAG_VERTEX_SUBJECT)[18]
  * Version 2: (kTAG_SUBJECT)[20]
  * Version 3: (kTAG_SUBJECT)[25]
+ * Version 4: (kTAG_SUBJECT)[26]
  */
-var kTAG_SUBJECT = '26';
+var kTAG_SUBJECT = '27';
 
 /**
  * kTAG_OBJECT.
@@ -554,8 +568,9 @@ var kTAG_SUBJECT = '26';
  * Version 1: (kTAG_VERTEX_OBJECT)[20]
  * Version 2: (kTAG_OBJECT)[21]
  * Version 3: (kTAG_OBJECT)[26]
+ * Version 3: (kTAG_OBJECT)[27]
  */
-var kTAG_OBJECT = '27';
+var kTAG_OBJECT = '28';
 
 /**
  * PREDICATE.
@@ -568,8 +583,9 @@ var kTAG_OBJECT = '27';
  * Version 1: (kTAG_PREDICATE)[19]
  * Version 2: (kTAG_PREDICATE)[22]
  * Version 3: (kTAG_PREDICATE)[27]
+ * Version 4: (kTAG_PREDICATE)[28]
  */
-var kTAG_PREDICATE = '28';
+var kTAG_PREDICATE = '29';
 
 /**
  * PATH.
@@ -583,8 +599,9 @@ var kTAG_PREDICATE = '28';
  * Version 1: (kTAG_TAG_PATH)[22]
  * Version 2: (kTAG_PATH)[23]
  * Version 3: (kTAG_PATH)[28]
+ * Version 4: (kTAG_PATH)[29]
  */
-var kTAG_PATH = '29';
+var kTAG_PATH = '30';
 
 /*=======================================================================================
  *	REFERENCE COLLECTIONS																*
@@ -601,8 +618,9 @@ var kTAG_PATH = '29';
  * Version 1: (kTAG_REFS_NAMESPACE)[9]
  * Version 2: (kTAG_NAMESPACE_REFS)[24]
  * Version 3: (kTAG_NAMESPACE_REFS)[29]
+ * Version 4: (kTAG_NAMESPACE_REFS)[30]
  */
-var kTAG_NAMESPACE_REFS = '30';
+var kTAG_NAMESPACE_REFS = '31';
 
 /**
  * NODES.
@@ -615,8 +633,9 @@ var kTAG_NAMESPACE_REFS = '30';
  * Version 1: (kTAG_REFS_NODE)[10]
  * Version 2: (kTAG_NODES)[25]
  * Version 3: (kTAG_NODES)[30]
+ * Version 4: (kTAG_NODES)[31]
  */
-var kTAG_NODES = '31';
+var kTAG_NODES = '32';
 
 /**
  * EDGES.
@@ -629,8 +648,9 @@ var kTAG_NODES = '31';
  * Version 1: (kTAG_REFS_EDGE)[17]
  * Version 2: (kTAG_EDGES)[26]
  * Version 3: (kTAG_EDGES)[31]
+ * Version 4: (kTAG_EDGES)[32]
  */
-var kTAG_EDGES = '32';
+var kTAG_EDGES = '33';
 
 /**
  * FEATURES.
@@ -643,8 +663,9 @@ var kTAG_EDGES = '32';
  * Version 1: (kTAG_REFS_TAG_FEATURE)[15]
  * Version 2: (kTAG_FEATURES)[27]
  * Version 3: (kTAG_FEATURES)[32]
+ * Version 4: (kTAG_FEATURES)[33]
  */
-var kTAG_FEATURES = '33';
+var kTAG_FEATURES = '34';
 
 /**
  * METHODS.
@@ -657,8 +678,9 @@ var kTAG_FEATURES = '33';
  * Version 1: (kTAG_REFS_TAG_METHOD)[??]
  * Version 2: (kTAG_METHODS)[28]
  * Version 3: (kTAG_METHODS)[33]
+ * Version 4: (kTAG_METHODS)[34]
  */
-var kTAG_METHODS = '34';
+var kTAG_METHODS = '35';
 
 /**
  * SCALES.
@@ -671,8 +693,9 @@ var kTAG_METHODS = '34';
  * Version 1: (kTAG_REFS_TAG_SCALE)[16]
  * Version 2: (kTAG_SCALES)[29]
  * Version 3: (kTAG_SCALES)[34]
+ * Version 4: (kTAG_SCALES)[35]
  */
-var kTAG_SCALES = '35';
+var kTAG_SCALES = '36';
 
 /*=======================================================================================
  *	USER OBJECT																			*
@@ -688,8 +711,9 @@ var kTAG_SCALES = '35';
  * Version 1: (kTAG_USER_NAME)[30]
  * Version 2: (kTAG_USER_NAME)[30]
  * Version 3: (kTAG_USER_NAME)[35]
+ * Version 4: (kTAG_USER_NAME)[36]
  */
-var kTAG_USER_NAME = '36';
+var kTAG_USER_NAME = '37';
 
 /**
  * USER-CODE.
@@ -701,8 +725,9 @@ var kTAG_USER_NAME = '36';
  * Version 1: (kTAG_USER_CODE)[31]
  * Version 2: (kTAG_USER_CODE)[31]
  * Version 3: (kTAG_USER_CODE)[36]
+ * Version 4: (kTAG_USER_CODE)[37]
  */
-var kTAG_USER_CODE = '37';
+var kTAG_USER_CODE = '38';
 
 /**
  * USER-PASS.
@@ -714,8 +739,9 @@ var kTAG_USER_CODE = '37';
  * Version 1: (kTAG_USER_PASS)[32]
  * Version 2: (kTAG_USER_PASS)[32]
  * Version 3: (kTAG_USER_PASS)[37]
+ * Version 4: (kTAG_USER_PASS)[38]
  */
-var kTAG_USER_PASS = '38';
+var kTAG_USER_PASS = '39';
 
 /**
  * USER-MAIL.
@@ -727,8 +753,9 @@ var kTAG_USER_PASS = '38';
  * Version 1: (kTAG_USER_MAIL)[33]
  * Version 2: (kTAG_USER_MAIL)[33]
  * Version 3: (kTAG_USER_MAIL)[38]
+ * Version 4: (kTAG_USER_MAIL)[39]
  */
-var kTAG_USER_MAIL = '39';
+var kTAG_USER_MAIL = '40';
 
 /**
  * USER-ROLE.
@@ -740,8 +767,9 @@ var kTAG_USER_MAIL = '39';
  * Version 1: (kTAG_USER_ROLE)[34]
  * Version 2: (kTAG_USER_ROLE)[34]
  * Version 3: (kTAG_USER_ROLE)[39]
+ * Version 4: (kTAG_USER_ROLE)[40]
  */
-var kTAG_USER_ROLE = '40';
+var kTAG_USER_ROLE = '41';
 
 /**
  * USER-PROFILE.
@@ -753,8 +781,9 @@ var kTAG_USER_ROLE = '40';
  * Version 1: (kTAG_USER_PROFILE)[35]
  * Version 2: (kTAG_USER_PROFILE)[35]
  * Version 3: (kTAG_USER_PROFILE)[40]
+ * Version 4: (kTAG_USER_PROFILE)[41]
  */
-var kTAG_USER_PROFILE = '41';
+var kTAG_USER_PROFILE = '42';
 
 /**
  * USER-MANAGER.
@@ -766,8 +795,9 @@ var kTAG_USER_PROFILE = '41';
  * Version 1: (kTAG_USER_MANAGER)[36]
  * Version 2: (kTAG_USER_MANAGER)[36]
  * Version 3: (kTAG_USER_MANAGER)[41]
+ * Version 4: (kTAG_USER_MANAGER)[42]
  */
-var kTAG_USER_MANAGER = '42';
+var kTAG_USER_MANAGER = '43';
 
 /**
  * USER-DOMAIN.
@@ -779,5 +809,6 @@ var kTAG_USER_MANAGER = '42';
  * Version 1: (kTAG_USER_DOMAIN)[37]
  * Version 2: (kTAG_USER_DOMAIN)[37]
  * Version 3: (kTAG_USER_DOMAIN)[42]
+ * Version 4: (kTAG_USER_DOMAIN)[43]
  */
-var kTAG_USER_DOMAIN = '43';
+var kTAG_USER_DOMAIN = '44';

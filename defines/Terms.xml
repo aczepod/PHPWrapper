@@ -601,9 +601,34 @@
         </TAG>
     </UNIT>
     
+	<!-- 24 -->
+    <!-- kTERM_VERSION -->
+    <UNIT>
+        <TERM NS="" LID="VERSION">
+            <element variable="kTAG_LABEL">
+                <item key="en">Version</item>
+            </element>
+            <element variable="kTAG_DEFINITION">
+                <item key="en"><![CDATA[This is a string that represents the <i>version</i> or <i>iteration</i>.]]></item>
+            </element>
+            <element variable="kTAG_SYNONYMS">
+                <item>kTERM_VERSION</item>
+            </element>
+        </TERM>
+        <TAG>
+            <element variable="kTAG_PATH">
+                <item>:VERSION</item>
+            </element>
+            <element variable="kTAG_TYPE">
+                <item>:TEXT</item>
+            </element>
+            <element variable="kTAG_INPUT">:INPUT-TEXT</element>
+        </TAG>
+    </UNIT>
+    
     <!-- Reference attributes -->
     
-	<!-- 24 -->
+	<!-- 25 -->
     <!-- kTERM_TERM -->
     <UNIT>
         <TERM NS="" LID="TERM">
@@ -630,7 +655,7 @@
         </TAG>
     </UNIT>
     
-	<!-- 25 -->
+	<!-- 26 -->
     <!-- kTERM_NODE -->
     <UNIT>
         <TERM NS="" LID="NODE">
@@ -657,7 +682,7 @@
         </TAG>
     </UNIT>
     
-	<!-- 26 -->
+	<!-- 27 -->
     <!-- kTERM_SUBJECT -->
     <UNIT>
         <TERM NS="" LID="SUBJECT">
@@ -685,7 +710,7 @@
         </TAG>
     </UNIT>
     
-	<!-- 27 -->
+	<!-- 28 -->
     <!-- kTERM_OBJECT -->
     <UNIT>
         <TERM NS="" LID="OBJECT">
@@ -713,7 +738,7 @@
         </TAG>
     </UNIT>
     
-	<!-- 28 -->
+	<!-- 29 -->
     <!-- kTERM_PREDICATE -->
     <UNIT>
         <TERM NS="" LID="PREDICATE">
@@ -741,7 +766,7 @@
         </TAG>
     </UNIT>
     
-	<!-- 29 -->
+	<!-- 30 -->
     <!-- kTERM_PATH -->
     <UNIT>
         <TERM NS="" LID="PATH">
@@ -774,7 +799,7 @@
     
     <!-- Reference collections -->
     
-	<!-- 30 -->
+	<!-- 31 -->
     <!-- kTERM_NAMESPACE_REFS -->
     <UNIT>
         <TERM NS="" LID="NAMESPACE-REFS">
@@ -799,7 +824,7 @@
         </TAG>
     </UNIT>
     
-	<!-- 31 -->
+	<!-- 32 -->
     <!-- kTERM_NODES -->
     <UNIT>
         <TERM NS="" LID="NODES">
@@ -827,7 +852,7 @@
         </TAG>
     </UNIT>
     
-	<!-- 32 -->
+	<!-- 33 -->
     <!-- kTERM_EDGES -->
     <UNIT>
         <TERM NS="" LID="EDGES">
@@ -855,7 +880,7 @@
         </TAG>
     </UNIT>
     
-	<!-- 33 -->
+	<!-- 34 -->
     <!-- kTERM_FEATURES -->
     <UNIT>
         <TERM NS="" LID="FEATURES">
@@ -883,7 +908,7 @@
         </TAG>
     </UNIT>
     
-	<!-- 34 -->
+	<!-- 35 -->
     <!-- kTERM_METHODS -->
     <UNIT>
         <TERM NS="" LID="METHODS">
@@ -911,7 +936,7 @@
         </TAG>
     </UNIT>
     
-	<!-- 35 -->
+	<!-- 36 -->
     <!-- kTERM_SCALES -->
     <UNIT>
         <TERM NS="" LID="SCALES">
@@ -941,7 +966,7 @@
     
     <!-- User attributes -->
     
-	<!-- 36 -->
+	<!-- 37 -->
     <!-- kTERM_USER_NAME -->
     <UNIT>
         <TERM NS="" LID="USER-NAME">
@@ -967,7 +992,7 @@
         </TAG>
     </UNIT>
     
-	<!-- 37 -->
+	<!-- 38 -->
     <!-- kTERM_USER_CODE -->
     <UNIT>
         <TERM NS="" LID="USER-CODE">
@@ -993,7 +1018,7 @@
         </TAG>
     </UNIT>
     
-	<!-- 38 -->
+	<!-- 39 -->
     <!-- kTERM_USER_PASS -->
     <UNIT>
         <TERM NS="" LID="USER-PASS">
@@ -1019,7 +1044,7 @@
         </TAG>
     </UNIT>
     
-	<!-- 39 -->
+	<!-- 40 -->
     <!-- kTERM_USER_MAIL -->
     <UNIT>
         <TERM NS="" LID="USER-MAIL">
@@ -1045,7 +1070,7 @@
         </TAG>
     </UNIT>
     
-	<!-- 40 -->
+	<!-- 41 -->
     <!-- kTERM_USER_ROLE -->
     <UNIT>
         <TERM NS="" LID="USER-ROLE">
@@ -1072,7 +1097,7 @@
         </TAG>
     </UNIT>
     
-	<!-- 41 -->
+	<!-- 42 -->
     <!-- kTERM_USER_PROFILE -->
     <UNIT>
         <TERM NS="" LID="USER-PROFILE">
@@ -1098,7 +1123,7 @@
         </TAG>
     </UNIT>
     
-	<!-- 42 -->
+	<!-- 43 -->
     <!-- kTERM_USER_MANAGER -->
     <UNIT>
         <TERM NS="" LID="USER-MANAGER">
@@ -1124,7 +1149,7 @@
         </TAG>
     </UNIT>
     
-	<!-- 43 -->
+	<!-- 44 -->
     <!-- kTERM_USER_DOMAIN -->
     <UNIT>
         <TERM NS="" LID="USER-DOMAIN">

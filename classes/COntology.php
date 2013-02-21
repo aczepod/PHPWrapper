@@ -2812,6 +2812,9 @@ class COntology extends CConnection
 			$xref_ex
 				= COntologyTerm::Resolve(
 					$theDatabase, kPREDICATE_XREF_EXACT, NULL, TRUE );
+			$preferred
+				= COntologyTerm::Resolve(
+					$theDatabase, kPREDICATE_PREFERRED, NULL, TRUE );
 			
 			//
 			// Iterate XML file.
@@ -3022,7 +3025,7 @@ class COntology extends CConnection
 							//
 							$edge = new COntologyEdge();
 							$edge->Subject( $node1 );
-							$edge->Predicate( $xref_ex );
+							$edge->Predicate( $preferred );
 							$edge->Object( $node3 );
 							$edge->Insert( $theDatabase );
 							
@@ -3088,7 +3091,7 @@ class COntology extends CConnection
 							//
 							$edge = new COntologyEdge();
 							$edge->Subject( $node2 );
-							$edge->Predicate( $xref_ex );
+							$edge->Predicate( $preferred );
 							$edge->Object( $node3 );
 							$edge->Insert( $theDatabase );
 							
@@ -3107,7 +3110,7 @@ class COntology extends CConnection
 							//
 							$edge = new COntologyEdge();
 							$edge->Subject( $node3 );
-							$edge->Predicate( $xref );
+							$edge->Predicate( $xref_ex );
 							$edge->Object( $node1 );
 							$edge->Insert( $theDatabase );
 						
@@ -3136,7 +3139,7 @@ class COntology extends CConnection
 							//
 							$edge = new COntologyEdge();
 							$edge->Subject( $node3 );
-							$edge->Predicate( $xref );
+							$edge->Predicate( $xref_ex );
 							$edge->Object( $node2 );
 							$edge->Insert( $theDatabase );
 						
@@ -3147,7 +3150,7 @@ class COntology extends CConnection
 							{
 								$edge = new COntologyEdge();
 								$edge->Subject( $node1 );
-								$edge->Predicate( $xref );
+								$edge->Predicate( $xref_ex );
 								$edge->Object( $node2 );
 								$edge->Insert( $theDatabase );
 							
@@ -3243,6 +3246,9 @@ class COntology extends CConnection
 			$xref_ex
 				= COntologyTerm::Resolve(
 					$theDatabase, kPREDICATE_XREF_EXACT, NULL, TRUE );
+			$preferred
+				= COntologyTerm::Resolve(
+					$theDatabase, kPREDICATE_PREFERRED, NULL, TRUE );
 			
 			//
 			// Iterate XML file.
@@ -3558,7 +3564,7 @@ class COntology extends CConnection
 					{
 						$edge = new COntologyEdge();
 						$edge->Subject( $node2B );
-						$edge->Predicate( $xref_ex );
+						$edge->Predicate( $preferred );
 						$edge->Object( $node3 );
 						$edge->Insert( $theDatabase );
 					}
@@ -3602,7 +3608,7 @@ class COntology extends CConnection
 					{
 						$edge = new COntologyEdge();
 						$edge->Subject( $node2T );
-						$edge->Predicate( $xref_ex );
+						$edge->Predicate( $preferred );
 						$edge->Object( $node3 );
 						$edge->Insert( $theDatabase );
 					}
@@ -3716,6 +3722,9 @@ class COntology extends CConnection
 			$xref_ex
 				= COntologyTerm::Resolve(
 					$theDatabase, kPREDICATE_XREF_EXACT, NULL, TRUE );
+			$preferred
+				= COntologyTerm::Resolve(
+					$theDatabase, kPREDICATE_PREFERRED, NULL, TRUE );
 			
 			//
 			// Iterate XML file.
@@ -3867,7 +3876,7 @@ class COntology extends CConnection
 							//
 							$edge = new COntologyEdge();
 							$edge->Subject( $node2 );
-							$edge->Predicate( $xref_ex );
+							$edge->Predicate( $preferred );
 							$edge->Object( $node3 );
 							$edge->Insert( $theDatabase );
 							
@@ -3933,7 +3942,7 @@ class COntology extends CConnection
 							//
 							$edge = new COntologyEdge();
 							$edge->Subject( $nodeN );
-							$edge->Predicate( $xref_ex );
+							$edge->Predicate( $preferred );
 							$edge->Object( $node3 );
 							$edge->Insert( $theDatabase );
 							
@@ -3952,7 +3961,7 @@ class COntology extends CConnection
 							//
 							$edge = new COntologyEdge();
 							$edge->Subject( $node3 );
-							$edge->Predicate( $xref );
+							$edge->Predicate( $xref_ex );
 							$edge->Object( $node2 );
 							$edge->Insert( $theDatabase );
 						
@@ -3963,7 +3972,7 @@ class COntology extends CConnection
 							{
 								$edge = new COntologyEdge();
 								$edge->Subject( $nodeN );
-								$edge->Predicate( $xref );
+								$edge->Predicate( $xref_ex );
 								$edge->Object( $node2 );
 								$edge->Insert( $theDatabase );
 							
@@ -3981,7 +3990,7 @@ class COntology extends CConnection
 							//
 							$edge = new COntologyEdge();
 							$edge->Subject( $node3 );
-							$edge->Predicate( $xref );
+							$edge->Predicate( $xref_ex );
 							$edge->Object( $nodeN );
 							$edge->Insert( $theDatabase );
 						
@@ -3992,7 +4001,7 @@ class COntology extends CConnection
 							{
 								$edge = new COntologyEdge();
 								$edge->Subject( $node2 );
-								$edge->Predicate( $xref );
+								$edge->Predicate( $xref_ex );
 								$edge->Object( $nodeN );
 								$edge->Insert( $theDatabase );
 							
@@ -4090,6 +4099,9 @@ class COntology extends CConnection
 			$xref_ex
 				= COntologyTerm::Resolve(
 					$theDatabase, kPREDICATE_XREF_EXACT, NULL, TRUE );
+			$preferred
+				= COntologyTerm::Resolve(
+					$theDatabase, kPREDICATE_PREFERRED, NULL, TRUE );
 			
 			//
 			// Iterate XML file.
@@ -4320,7 +4332,7 @@ class COntology extends CConnection
 							//
 							$edge = new COntologyEdge();
 							$edge->Subject( $node3 );
-							$edge->Predicate( $xref );
+							$edge->Predicate( $xref_ex );
 							$edge->Object( $node4 );
 							$edge->Insert( $theDatabase );
 						
@@ -4331,7 +4343,7 @@ class COntology extends CConnection
 							{
 								$edge = new COntologyEdge();
 								$edge->Subject( $nodeN );
-								$edge->Predicate( $xref );
+								$edge->Predicate( $xref_ex );
 								$edge->Object( $node4 );
 								$edge->Insert( $theDatabase );
 							
@@ -4349,7 +4361,7 @@ class COntology extends CConnection
 							//
 							$edge = new COntologyEdge();
 							$edge->Subject( $node3 );
-							$edge->Predicate( $xref );
+							$edge->Predicate( $xref_ex );
 							$edge->Object( $nodeN );
 							$edge->Insert( $theDatabase );
 						
@@ -4360,7 +4372,7 @@ class COntology extends CConnection
 							{
 								$edge = new COntologyEdge();
 								$edge->Subject( $node4 );
-								$edge->Predicate( $xref );
+								$edge->Predicate( $xref_ex );
 								$edge->Object( $nodeN );
 								$edge->Insert( $theDatabase );
 							

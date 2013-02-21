@@ -366,9 +366,23 @@
         </EDGE>
     </UNIT>
     
+	<!-- 24 -->
+    <!-- kTERM_VERSION -->
+    <UNIT>
+        <NODE class="COntologyMasterVertex" term=":VERSION">
+        	<element variable="kTAG_CATEGORY">
+        		<item>Authorship</item>
+        	</element>
+        </NODE>
+        <EDGE>
+            <element variable="kTAG_PREDICATE">:SUBCLASS-OF</element>
+            <element variable="kTAG_OBJECT">:ONTOLOGY:ATTRIBUTE</element>
+        </EDGE>
+    </UNIT>
+    
     <!-- Reference attributes -->
     
-	<!-- 24 -->
+	<!-- 25 -->
     <!-- kTERM_TERM -->
     <UNIT>
         <NODE class="COntologyMasterVertex" term=":TERM">
@@ -382,7 +396,7 @@
         </EDGE>
     </UNIT>
     
-	<!-- 25 -->
+	<!-- 26 -->
     <!-- kTERM_NODE -->
     <UNIT>
         <NODE class="COntologyMasterVertex" term=":NODE">
@@ -396,7 +410,7 @@
         </EDGE>
     </UNIT>
     
-	<!-- 26 -->
+	<!-- 27 -->
     <!-- kTERM_SUBJECT -->
     <UNIT>
         <NODE class="COntologyMasterVertex" term=":SUBJECT">
@@ -410,7 +424,7 @@
         </EDGE>
     </UNIT>
     
-	<!-- 27 -->
+	<!-- 28 -->
     <!-- kTERM_OBJECT -->
     <UNIT>
         <NODE class="COntologyMasterVertex" term=":OBJECT">
@@ -424,7 +438,7 @@
         </EDGE>
     </UNIT>
     
-	<!-- 28 -->
+	<!-- 29 -->
     <!-- kTERM_PREDICATE -->
     <UNIT>
         <NODE class="COntologyMasterVertex" term=":PREDICATE">
@@ -438,7 +452,7 @@
         </EDGE>
     </UNIT>
     
-	<!-- 29 -->
+	<!-- 30 -->
     <!-- kTERM_PATH -->
     <UNIT>
         <NODE class="COntologyMasterVertex" term=":PATH">
@@ -454,7 +468,7 @@
     
     <!-- Reference collections -->
     
-	<!-- 30 -->
+	<!-- 31 -->
     <!-- kTERM_NAMESPACE_REFS -->
     <UNIT>
         <NODE class="COntologyMasterVertex" term=":NAMESPACE-REFS">
@@ -468,7 +482,7 @@
         </EDGE>
     </UNIT>
     
-	<!-- 31 -->
+	<!-- 32 -->
     <!-- kTERM_NODES -->
     <UNIT>
         <NODE class="COntologyMasterVertex" term=":NODES">
@@ -482,7 +496,7 @@
         </EDGE>
     </UNIT>
     
-	<!-- 32 -->
+	<!-- 33 -->
     <!-- kTERM_EDGES -->
     <UNIT>
         <NODE class="COntologyMasterVertex" term=":EDGES">
@@ -496,7 +510,7 @@
         </EDGE>
     </UNIT>
     
-	<!-- 33 -->
+	<!-- 34 -->
     <!-- kTERM_FEATURES -->
     <UNIT>
         <NODE class="COntologyMasterVertex" term=":FEATURES">
@@ -513,7 +527,7 @@
         </EDGE>
     </UNIT>
     
-	<!-- 34 -->
+	<!-- 35 -->
     <!-- kTERM_METHODS -->
     <UNIT>
         <NODE class="COntologyMasterVertex" term=":METHODS">
@@ -530,7 +544,7 @@
         </EDGE>
     </UNIT>
     
-	<!-- 35 -->
+	<!-- 36 -->
     <!-- kTERM_SCALES -->
     <UNIT>
         <NODE class="COntologyMasterVertex" term=":SCALES">
@@ -549,7 +563,7 @@
     
     <!-- User attributes -->
     
-	<!-- 36 -->
+	<!-- 37 -->
     <!-- kTERM_USER_NAME -->
     <UNIT>
         <NODE class="COntologyMasterVertex" term=":USER-NAME">
@@ -563,7 +577,7 @@
         </EDGE>
     </UNIT>
     
-	<!-- 37 -->
+	<!-- 38 -->
     <!-- kTERM_USER_CODE -->
     <UNIT>
         <NODE class="COntologyMasterVertex" term=":USER-CODE">
@@ -577,7 +591,7 @@
         </EDGE>
     </UNIT>
     
-	<!-- 38 -->
+	<!-- 39 -->
     <!-- kTERM_USER_PASS -->
     <UNIT>
         <NODE class="COntologyMasterVertex" term=":USER-PASS">
@@ -591,7 +605,7 @@
         </EDGE>
     </UNIT>
     
-	<!-- 39 -->
+	<!-- 40 -->
     <!-- kTERM_USER_MAIL -->
     <UNIT>
         <NODE class="COntologyMasterVertex" term=":USER-MAIL">
@@ -605,7 +619,7 @@
         </EDGE>
     </UNIT>
     
-	<!-- 40 -->
+	<!-- 41 -->
     <!-- kTERM_USER_ROLE -->
     <UNIT>
         <NODE class="COntologyMasterVertex" term=":USER-ROLE">
@@ -619,7 +633,7 @@
         </EDGE>
     </UNIT>
     
-	<!-- 41 -->
+	<!-- 42 -->
     <!-- kTERM_USER_PROFILE -->
     <UNIT>
         <NODE class="COntologyMasterVertex" term=":USER-PROFILE">
@@ -633,7 +647,7 @@
         </EDGE>
     </UNIT>
     
-	<!-- 42 -->
+	<!-- 43 -->
     <!-- kTERM_USER_MANAGER -->
     <UNIT>
         <NODE class="COntologyMasterVertex" term=":USER-MANAGER">
@@ -647,7 +661,7 @@
         </EDGE>
     </UNIT>
     
-	<!-- 43 -->
+	<!-- 44 -->
     <!-- kTERM_USER_DOMAIN -->
     <UNIT>
         <NODE class="COntologyMasterVertex" term=":USER-DOMAIN">
@@ -660,4 +674,4 @@
             <element variable="kTAG_OBJECT">:ONTOLOGY:ATTRIBUTE</element>
         </EDGE>
     </UNIT>
- </ONTOLOGY>
+</ONTOLOGY>
