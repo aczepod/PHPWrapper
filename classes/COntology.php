@@ -879,9 +879,16 @@ class COntology extends CConnection
 			if( $element[ 'tag' ] !== NULL )
 			{
 				//
+				// Resolve tag.
+				//
+				$tag
+					= COntologyTag::Resolve(
+						$theDatabase, (string) $element[ 'tag' ], TRUE )
+							->NID();
+				//
 				// Parse by tag.
 				//
-				switch( $tag = (string) $element[ 'tag' ] )
+				switch( $tag )
 				{
 					case kTAG_NAMESPACE:
 						if( $theElement[ 'modify' ] !== NULL )
@@ -1285,9 +1292,16 @@ class COntology extends CConnection
 			if( $element[ 'tag' ] !== NULL )
 			{
 				//
+				// Resolve tag.
+				//
+				$tag
+					= COntologyTag::Resolve(
+						$theDatabase, (string) $element[ 'tag' ], TRUE )
+							->NID();
+				//
 				// Parse by tag.
 				//
-				switch( $tag = (string) $element[ 'tag' ] )
+				switch( $tag )
 				{
 					case kTAG_TERM:
 						if( $theElement[ 'modify' ] !== NULL )
