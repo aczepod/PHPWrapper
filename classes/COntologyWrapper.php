@@ -1941,8 +1941,8 @@ class COntologyWrapper extends CDataWrapper
 		//
 		// Handle language.
 		//
-		if( array_key_exists( kAPI_LANGUAGE, $_REQUEST ) )
-			$this->_FilterLanguages( $_REQUEST[ kAPI_LANGUAGE ] );
+	//	if( array_key_exists( kAPI_LANGUAGE, $_REQUEST ) )
+	//		$this->_FilterLanguages( $_REQUEST[ kAPI_LANGUAGE ] );
 
 	} // _Handle_SetTerm.
 
@@ -1998,6 +1998,11 @@ class COntologyWrapper extends CDataWrapper
 			// Set results.
 			//
 			$this->offsetSet( kAPI_RESPONSE, $results );
+			
+			//
+			// Resolve enumerations.
+			//
+			$this->_ResolveEnumerations( $_REQUEST[ kAPI_CONTAINER ] );
 		
 			//
 			// Handle language.
@@ -2056,8 +2061,8 @@ class COntologyWrapper extends CDataWrapper
 		//
 		// Handle language.
 		//
-		if( array_key_exists( kAPI_LANGUAGE, $_REQUEST ) )
-			$this->_FilterLanguages( $_REQUEST[ kAPI_LANGUAGE ] );
+	//	if( array_key_exists( kAPI_LANGUAGE, $_REQUEST ) )
+	//		$this->_FilterLanguages( $_REQUEST[ kAPI_LANGUAGE ] );
 
 	} // _Handle_SetVertex.
 
@@ -3475,6 +3480,12 @@ class COntologyWrapper extends CDataWrapper
 			// Set response.
 			//
 			$this->offsetSet( kAPI_RESPONSE, $results );
+			
+			//
+			// Resolve enumerations.
+			//
+			$this->_ResolveEnumerations(
+				COntologyTerm::DefaultContainer( $_REQUEST[ kAPI_DATABASE ] ) );
 		
 		} // Cursor with matched elements.
 	
@@ -3904,6 +3915,16 @@ class COntologyWrapper extends CDataWrapper
 									//
 									$langs = array_intersect( $_REQUEST[ kAPI_LANGUAGE ],
 															  array_keys( $refE[ $tag ] ) );
+									
+									//
+									// Handle missing language.
+									//
+									if( ! count( $langs ) )
+										$langs
+											= array_intersect(
+												array( '0' ),
+												array_keys( $refE[ $tag ] ) );
+									
 									if( count( $langs ) )
 									{
 										//
@@ -3940,6 +3961,194 @@ class COntologyWrapper extends CDataWrapper
 		} // Parameter is an array.
 	
 	} // _FilterLanguages.
+
+	 
+	/*===================================================================================
+	 *	_ResolveEnumerations															*
+	 *==================================================================================*/
+
+	/**
+	 * Resolve enumerations.
+	 *
+	 * This method will parse the attributes of the term and node sections of the response,
+	 * {@link kAPI_RESPONSE}, looking for tags of type {@link kTYPE_ENUM} or
+	 * {@link kTYPE_ENUM_SET}: all the values contained in the matched attributes will be
+	 * resolved to the corresponding terms and added to the response.
+	 *
+	 * The method will do nothing if the response is missing or if the tags section of it is
+	 * missing.
+	 *
+	 * The method expects the term container as a parameter.
+	 *
+	 * @param CContainer		$theContainer		Terms container.
+	 *
+	 * @access protected
+	 */
+	protected function _ResolveEnumerations( CContainer $theContainer )
+	{
+		//
+		// Check response.
+		//
+		if( $this->offsetExists( kAPI_RESPONSE ) )
+		{
+			//
+			// Init local storage.
+			//
+			$results = $this->offsetGet( kAPI_RESPONSE );
+
+			//
+			// Check tags section.
+			//
+			if( array_key_exists( kAPI_COLLECTION_TAG, $results ) )
+			{
+				//
+				// Init local storage.
+				//
+				$tags = Array();
+				
+				//
+				// Get controlled vocabularies.
+				//
+				foreach( $results[ kAPI_COLLECTION_TAG ] as $key => $tag )
+				{
+					//
+					// Handle type.
+					//
+					if( array_key_exists( kTAG_TYPE, $tag ) )
+					{
+						//
+						// Match enumerations.
+						//
+						$match = array_intersect( array( kTYPE_ENUM, kTYPE_ENUM_SET ),
+												  $tag[ kTAG_TYPE ] );
+						if( count( $match ) )
+							$tags[ $key ] = $key;
+					
+					} // Has type.
+				
+				} // Iterating tags.
+				
+				//
+				// Handle enumerated tags.
+				//
+				if( count( $tags ) )
+				{
+					//
+					// Init local storage.
+					//
+					$terms = Array();
+						
+					//
+					// Iterate result sections.
+					//
+					$sections = array( kAPI_COLLECTION_TERM, kAPI_COLLECTION_NODE );
+					foreach( $sections as $section )
+					{
+						//
+						// Check section.
+						//
+						if( array_key_exists( $section, $results ) )
+						{
+							//
+							// Iterate section.
+							//
+							foreach( $results[ $section ] as $record )
+							{
+								//
+								// Iterate enumerated values.
+								//
+								$match
+									= array_intersect(
+										array_keys( $record ), array_keys( $tags ) );
+								foreach( $match as $tag )
+								{
+									//
+									// Handle set.
+									//
+									if( is_array( $record[ $tag ] ) )
+									{
+										//
+										// Iterate set.
+										//
+										foreach( $record[ $tag ] as $enum )
+										{
+											//
+											// Add enumeration.
+											//
+											if( (! array_key_exists
+													( kAPI_COLLECTION_TERM,
+													  $results ))
+											 || (! array_key_exists
+													( $enum,
+													  $results[ kAPI_COLLECTION_TERM ] )) )
+												$terms[ $enum ] = $enum;
+									
+										} // Iterating set.
+								
+									} // Enumerated set.
+								
+									//
+									// Handle enumeration.
+									//
+									elseif( (! array_key_exists
+													( kAPI_COLLECTION_TERM,
+													  $results ))
+										 || (! array_key_exists
+													( $record[ $tag ],
+													  $results[ kAPI_COLLECTION_TERM ] )) )
+										$terms[ $enum ] = $record[ $tag ];
+							
+								} // Iterating enumerated values.
+						
+							} // Iterating section elements.
+		
+						} // Section exists.
+				
+					} // Iterating section elements.
+				
+					//
+					// Handle selected enumerations.
+					//
+					if( count( $terms ) )
+					{
+						//
+						// Select enumerated terms.
+						//
+						$query = new CQuery();
+						$query->AppendStatement(
+							CQueryStatement::Member(
+								kTAG_GID, $terms ) );
+		
+						//
+						// Check count.
+						//
+						$cursor = $theContainer->Query( $query );
+						if( $cursor->count( FALSE ) )
+						{
+							//
+							// Iterate recordset.
+							//
+							foreach( $cursor as $object )
+								$this->_ExportTerm(
+									$results,
+									CPersistentObject::DocumentObject( $object ) );
+			
+							//
+							// Set results.
+							//
+							$this->offsetSet( kAPI_RESPONSE, $results );
+		
+						} // Found records.
+				
+					} // Has enumerations.
+				
+				} // Found enumerat6ed tags.
+				
+			} // Has tag section.
+		
+		} // Has response.
+	
+	} // _ResolveEnumerations.
 
 	 
 	/*===================================================================================
