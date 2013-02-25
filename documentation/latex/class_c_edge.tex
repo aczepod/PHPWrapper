@@ -1,0 +1,230 @@
+\hypertarget{class_c_edge}{\section{C\-Edge Class Reference}
+\label{class_c_edge}\index{C\-Edge@{C\-Edge}}
+}
+Inheritance diagram for C\-Edge\-:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=7.000000cm]{class_c_edge}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{class_c_edge_a8031397d41fb274570fbbd68948c1841}{Subject} (\$the\-Value=N\-U\-L\-L, \$get\-Old=F\-A\-L\-S\-E)
+\item 
+\hyperlink{class_c_edge_ab86f5f67f0577c957ac9f2c0493f0e39}{Predicate} (\$the\-Value=N\-U\-L\-L, \$get\-Old=F\-A\-L\-S\-E)
+\item 
+\hyperlink{class_c_edge_a16960ecedab5d747b46f9d7ac9ddf9eb}{Object} (\$the\-Value=N\-U\-L\-L, \$get\-Old=F\-A\-L\-S\-E)
+\end{DoxyCompactItemize}
+\subsection*{Protected Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{class_c_edge_a2b7580b50c8c50ff2382a229c6435211}{\-\_\-index} (\hyperlink{class_c_connection}{C\-Connection} \$the\-Connection, \$the\-Modifiers)
+\item 
+\hyperlink{class_c_edge_ac9dd0f883ce7867d0a5482eed84fe7f0}{\-\_\-\-Preunset} (\&\$the\-Offset)
+\item 
+\hyperlink{class_c_edge_a53e2c3f7c502c586554f70f5749d4c2d}{\-\_\-\-Ready} ()
+\end{DoxyCompactItemize}
+\subsection*{Additional Inherited Members}
+
+
+\subsection{Member Function Documentation}
+\hypertarget{class_c_edge_a2b7580b50c8c50ff2382a229c6435211}{\index{C\-Edge@{C\-Edge}!\-\_\-index@{\-\_\-index}}
+\index{\-\_\-index@{\-\_\-index}!CEdge@{C\-Edge}}
+\subsubsection[{\-\_\-index}]{\setlength{\rightskip}{0pt plus 5cm}C\-Edge\-::\-\_\-index (
+\begin{DoxyParamCaption}
+\item[{{\bf C\-Connection}}]{\$the\-Connection, }
+\item[{}]{\$the\-Modifiers}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [protected]}}}\label{class_c_edge_a2b7580b50c8c50ff2382a229c6435211}
+\subparagraph*{Return the object's global unique identifier}
+
+The edge class defines the global identifier, \hyperlink{}{k\-T\-A\-G\-\_\-\-G\-I\-D}, as the concatenation of the subject, predicate and object offsets converted to string.
+
+In this method we check whether all three are present, or we raise an exception.
+
+
+\begin{DoxyParams}[1]{Parameters}
+\hyperlink{class_c_connection}{C\-Connection} & {\em \$the\-Connection} & Server, database or container. \\
+\hline
+bitfield & {\em \$the\-Modifiers} & Commit options.\\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyExceptions}{Exceptions}
+{\em Exception} & protected \\
+\hline
+\end{DoxyExceptions}
+\begin{DoxyReturn}{Returns}
+string$|$\-N\-U\-L\-L The object's global unique identifier.
+\end{DoxyReturn}
+\begin{DoxySeeAlso}{See Also}
+k\-T\-A\-G\-\_\-\-S\-U\-B\-J\-E\-C\-T k\-T\-A\-G\-\_\-\-P\-R\-E\-D\-I\-C\-A\-T\-E k\-T\-A\-G\-\_\-\-O\-B\-J\-E\-C\-T 
+
+k\-T\-O\-K\-E\-N\-\_\-\-I\-N\-D\-E\-X\-\_\-\-S\-E\-P\-A\-R\-A\-T\-O\-R 
+\end{DoxySeeAlso}
+\hypertarget{class_c_edge_ac9dd0f883ce7867d0a5482eed84fe7f0}{\index{C\-Edge@{C\-Edge}!\-\_\-\-Preunset@{\-\_\-\-Preunset}}
+\index{\-\_\-\-Preunset@{\-\_\-\-Preunset}!CEdge@{C\-Edge}}
+\subsubsection[{\-\_\-\-Preunset}]{\setlength{\rightskip}{0pt plus 5cm}C\-Edge\-::\-\_\-\-Preunset (
+\begin{DoxyParamCaption}
+\item[{\&}]{\$the\-Offset}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [protected]}}}\label{class_c_edge_ac9dd0f883ce7867d0a5482eed84fe7f0}
+\subparagraph*{Handle offset before unsetting it}
+
+In this class we prevent the modification of the \hyperlink{}{k\-T\-A\-G\-\_\-\-S\-U\-B\-J\-E\-C\-T}, \hyperlink{}{k\-T\-A\-G\-\_\-\-P\-R\-E\-D\-I\-C\-A\-T\-E} and \hyperlink{}{k\-T\-A\-G\-\_\-\-O\-B\-J\-E\-C\-T} offsets if the object is committed.
+
+
+\begin{DoxyParams}[1]{Parameters}
+reference & {\em \&\$the\-Offset} & Offset.\\
+\hline
+\end{DoxyParams}
+protected
+
+
+\begin{DoxyExceptions}{Exceptions}
+{\em Exception} & \hyperlink{class_c_status_document_ab7d96fd4588cf7d5432fc65a1d1fb076}{\-\_\-\-Is\-Committed()}\\
+\hline
+\end{DoxyExceptions}
+\begin{DoxySeeAlso}{See Also}
+k\-T\-A\-G\-\_\-\-S\-U\-B\-J\-E\-C\-T k\-T\-A\-G\-\_\-\-P\-R\-E\-D\-I\-C\-A\-T\-E k\-T\-A\-G\-\_\-\-O\-B\-J\-E\-C\-T 
+\end{DoxySeeAlso}
+\hypertarget{class_c_edge_a53e2c3f7c502c586554f70f5749d4c2d}{\index{C\-Edge@{C\-Edge}!\-\_\-\-Ready@{\-\_\-\-Ready}}
+\index{\-\_\-\-Ready@{\-\_\-\-Ready}!CEdge@{C\-Edge}}
+\subsubsection[{\-\_\-\-Ready}]{\setlength{\rightskip}{0pt plus 5cm}C\-Edge\-::\-\_\-\-Ready (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [protected]}}}\label{class_c_edge_a53e2c3f7c502c586554f70f5749d4c2d}
+\subparagraph*{Determine if the object is ready}
+
+In this class we tie the \hyperlink{class_c_status_document_a954dee06e219e0a0f2e7fa6edac56e28}{\-\_\-\-Is\-Inited()} status to the presence or absence of the \hyperlink{}{k\-T\-A\-G\-\_\-\-S\-U\-B\-J\-E\-C\-T}, \hyperlink{}{k\-T\-A\-G\-\_\-\-P\-R\-E\-D\-I\-C\-A\-T\-E} and \hyperlink{}{k\-T\-A\-G\-\_\-\-O\-B\-J\-E\-C\-T} offsets.
+
+protected \begin{DoxyReturn}{Returns}
+boolean {\ttfamily T\-R\-U\-E} means \hyperlink{}{.  \-\_\-\-Ready()  k\-T\-A\-G\-\_\-\-S\-U\-B\-J\-E\-C\-T k\-T\-A\-G\-\_\-\-P\-R\-E\-D\-I\-C\-A\-T\-E k\-T\-A\-G\-\_\-\-O\-B\-J\-E\-C\-T }
+\end{DoxyReturn}
+\hypertarget{class_c_edge_a16960ecedab5d747b46f9d7ac9ddf9eb}{\index{C\-Edge@{C\-Edge}!Object@{Object}}
+\index{Object@{Object}!CEdge@{C\-Edge}}
+\subsubsection[{Object}]{\setlength{\rightskip}{0pt plus 5cm}C\-Edge\-::\-Object (
+\begin{DoxyParamCaption}
+\item[{}]{\$the\-Value = {\ttfamily NULL}, }
+\item[{}]{\$get\-Old = {\ttfamily FALSE}}
+\end{DoxyParamCaption}
+)}}\label{class_c_edge_a16960ecedab5d747b46f9d7ac9ddf9eb}
+\subparagraph*{Manage edge object}
+
+This method can be used to manage the edge's object vertex, \hyperlink{}{k\-T\-A\-G\-\_\-\-O\-B\-J\-E\-C\-T}, which is a reference to an object that represents the destination of the relationship this edge represents.
+
+The method accepts a parameter which represents the vertex, or the requested operation, depending on its value\-:
+
+
+\begin{DoxyItemize}
+\item {\ttfamily N\-U\-L\-L}\-: Return the current value. 
+\item {\ttfamily F\-A\-L\-S\-E}\-: Delete the current value. 
+\item {\itshape other}\-: Set the value with the provided parameter. 
+\end{DoxyItemize}
+
+The second parameter is a boolean which if {\ttfamily T\-R\-U\-E} will return the {\itshape old} value when replacing containers; if {\ttfamily F\-A\-L\-S\-E}, it will return the currently set value.
+
+Note that when the object has the \hyperlink{class_c_status_document_ab7d96fd4588cf7d5432fc65a1d1fb076}{\-\_\-\-Is\-Committed()} status this offset will be locked and an exception will be raised.
+
+
+\begin{DoxyParams}[1]{Parameters}
+mixed & {\em \$the\-Value} & Vertex or operation. \\
+\hline
+boolean & {\em \$get\-Old} & {\ttfamily T\-R\-U\-E} get old value.\\
+\hline
+\end{DoxyParams}
+public \begin{DoxyReturn}{Returns}
+mixed {\itshape New} or {\itshape old} native container.
+\end{DoxyReturn}
+Manage\-Offset()
+
+\begin{DoxySeeAlso}{See Also}
+k\-T\-A\-G\-\_\-\-O\-B\-J\-E\-C\-T 
+\end{DoxySeeAlso}
+\hypertarget{class_c_edge_ab86f5f67f0577c957ac9f2c0493f0e39}{\index{C\-Edge@{C\-Edge}!Predicate@{Predicate}}
+\index{Predicate@{Predicate}!CEdge@{C\-Edge}}
+\subsubsection[{Predicate}]{\setlength{\rightskip}{0pt plus 5cm}C\-Edge\-::\-Predicate (
+\begin{DoxyParamCaption}
+\item[{}]{\$the\-Value = {\ttfamily NULL}, }
+\item[{}]{\$get\-Old = {\ttfamily FALSE}}
+\end{DoxyParamCaption}
+)}}\label{class_c_edge_ab86f5f67f0577c957ac9f2c0493f0e39}
+\subparagraph*{Manage edge predicate}
+
+This method can be used to manage the edge's predicate, \hyperlink{}{k\-T\-A\-G\-\_\-\-P\-R\-E\-D\-I\-C\-A\-T\-E}, which is a reference to an object that represents the origin of the relationship this edge represents.
+
+The method accepts a parameter which represents the predicate, or the requested operation, depending on its value\-:
+
+
+\begin{DoxyItemize}
+\item {\ttfamily N\-U\-L\-L}\-: Return the current value. 
+\item {\ttfamily F\-A\-L\-S\-E}\-: Delete the current value. 
+\item {\itshape other}\-: Set the value with the provided parameter. 
+\end{DoxyItemize}
+
+The second parameter is a boolean which if {\ttfamily T\-R\-U\-E} will return the {\itshape old} value when replacing containers; if {\ttfamily F\-A\-L\-S\-E}, it will return the currently set value.
+
+Note that when the object has the \hyperlink{class_c_status_document_ab7d96fd4588cf7d5432fc65a1d1fb076}{\-\_\-\-Is\-Committed()} status this offset will be locked and an exception will be raised.
+
+
+\begin{DoxyParams}[1]{Parameters}
+mixed & {\em \$the\-Value} & Predicate or operation. \\
+\hline
+boolean & {\em \$get\-Old} & {\ttfamily T\-R\-U\-E} get old value.\\
+\hline
+\end{DoxyParams}
+public \begin{DoxyReturn}{Returns}
+mixed {\itshape New} or {\itshape old} native container.
+\end{DoxyReturn}
+Manage\-Offset()
+
+\begin{DoxySeeAlso}{See Also}
+k\-T\-A\-G\-\_\-\-P\-R\-E\-D\-I\-C\-A\-T\-E 
+\end{DoxySeeAlso}
+\hypertarget{class_c_edge_a8031397d41fb274570fbbd68948c1841}{\index{C\-Edge@{C\-Edge}!Subject@{Subject}}
+\index{Subject@{Subject}!CEdge@{C\-Edge}}
+\subsubsection[{Subject}]{\setlength{\rightskip}{0pt plus 5cm}C\-Edge\-::\-Subject (
+\begin{DoxyParamCaption}
+\item[{}]{\$the\-Value = {\ttfamily NULL}, }
+\item[{}]{\$get\-Old = {\ttfamily FALSE}}
+\end{DoxyParamCaption}
+)}}\label{class_c_edge_a8031397d41fb274570fbbd68948c1841}
+\subparagraph*{Manage edge subject}
+
+This method can be used to manage the edge's subject vertex, \hyperlink{}{k\-T\-A\-G\-\_\-\-S\-U\-B\-J\-E\-C\-T}, which is a reference to an object that represents the origin of the relationship this edge represents.
+
+The method accepts a parameter which represents the vertex, or the requested operation, depending on its value\-:
+
+
+\begin{DoxyItemize}
+\item {\ttfamily N\-U\-L\-L}\-: Return the current value. 
+\item {\ttfamily F\-A\-L\-S\-E}\-: Delete the current value. 
+\item {\itshape other}\-: Set the value with the provided parameter. 
+\end{DoxyItemize}
+
+The second parameter is a boolean which if {\ttfamily T\-R\-U\-E} will return the {\itshape old} value when replacing containers; if {\ttfamily F\-A\-L\-S\-E}, it will return the currently set value.
+
+Note that when the object has the \hyperlink{class_c_status_document_ab7d96fd4588cf7d5432fc65a1d1fb076}{\-\_\-\-Is\-Committed()} status this offset will be locked and an exception will be raised.
+
+
+\begin{DoxyParams}[1]{Parameters}
+mixed & {\em \$the\-Value} & Vertex or operation. \\
+\hline
+boolean & {\em \$get\-Old} & {\ttfamily T\-R\-U\-E} get old value.\\
+\hline
+\end{DoxyParams}
+public \begin{DoxyReturn}{Returns}
+mixed {\itshape New} or {\itshape old} native container.
+\end{DoxyReturn}
+Manage\-Offset()
+
+\begin{DoxySeeAlso}{See Also}
+k\-T\-A\-G\-\_\-\-S\-U\-B\-J\-E\-C\-T 
+\end{DoxySeeAlso}
+
+
+The documentation for this class was generated from the following file\-:\begin{DoxyCompactItemize}
+\item 
+/\-Library/\-Web\-Server/\-Library/\-P\-H\-P\-Wrapper/classes/C\-Edge.\-php\end{DoxyCompactItemize}

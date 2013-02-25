@@ -1,0 +1,647 @@
+\hypertarget{class_c_data_wrapper_client}{\section{C\-Data\-Wrapper\-Client Class Reference}
+\label{class_c_data_wrapper_client}\index{C\-Data\-Wrapper\-Client@{C\-Data\-Wrapper\-Client}}
+}
+Inheritance diagram for C\-Data\-Wrapper\-Client\-:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=8.000000cm]{class_c_data_wrapper_client}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{class_c_data_wrapper_client_ae7cad4809c20d8f2871cfe00da909d67}{Operation} (\$the\-Value=N\-U\-L\-L, \$get\-Old=F\-A\-L\-S\-E)
+\item 
+\hyperlink{class_c_data_wrapper_client_a4cdd14b07d74eeb834d2a6052902f176}{Database} (\$the\-Value=N\-U\-L\-L, \$get\-Old=F\-A\-L\-S\-E)
+\item 
+\hyperlink{class_c_data_wrapper_client_a6a696f83f580186da02093327a84fe4f}{Container} (\$the\-Value=N\-U\-L\-L, \$get\-Old=F\-A\-L\-S\-E)
+\item 
+\hyperlink{class_c_data_wrapper_client_a4d88af5cdfeb4f4592f3ecbe09284594}{Page\-Start} (\$the\-Value=N\-U\-L\-L, \$get\-Old=F\-A\-L\-S\-E)
+\item 
+\hyperlink{class_c_data_wrapper_client_a77fe02364cc6ebb8c8acc699bb373b98}{Page\-Limit} (\$the\-Value=N\-U\-L\-L, \$get\-Old=F\-A\-L\-S\-E)
+\item 
+\hyperlink{class_c_data_wrapper_client_a81a5e5f23f729bf167c03e6eee4593ed}{Query} (\$the\-Value=N\-U\-L\-L, \$get\-Old=F\-A\-L\-S\-E)
+\item 
+\hyperlink{class_c_data_wrapper_client_add9cb305a726062800f13263d9f72031}{Select} (\$the\-Value=N\-U\-L\-L, \$get\-Old=F\-A\-L\-S\-E)
+\item 
+\hyperlink{class_c_data_wrapper_client_a969efbb268050c30644e955e0a532241}{Sort} (\$the\-Field=N\-U\-L\-L, \$the\-Order=N\-U\-L\-L, \$get\-Old=F\-A\-L\-S\-E)
+\item 
+\hyperlink{class_c_data_wrapper_client_a6353a8617179b8da4c5dbe76f6247c73}{Classname} (\$the\-Value=N\-U\-L\-L, \$get\-Old=F\-A\-L\-S\-E)
+\item 
+\hyperlink{class_c_data_wrapper_client_ab5a1dd1e3b56468f2748f9e1ecad92fc}{Object} (\$the\-Value=N\-U\-L\-L, \$get\-Old=F\-A\-L\-S\-E)
+\item 
+\hyperlink{class_c_data_wrapper_client_a5a4050c5183d5b9ad07216d67b36d638}{Add\-Query\-Statement} (\$the\-Condition, \$the\-Subject, \$the\-Operator, \$the\-Object=N\-U\-L\-L, \$the\-Type=N\-U\-L\-L)
+\item 
+\hyperlink{class_c_data_wrapper_client_a44e2a7446e4a67d401db9d189eb7a25f}{Add\-Query\-List\-Statement} (\$the\-Index, \$the\-Condition, \$the\-Subject, \$the\-Operator, \$the\-Object=N\-U\-L\-L, \$the\-Type=N\-U\-L\-L)
+\end{DoxyCompactItemize}
+\subsection*{Protected Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{class_c_data_wrapper_client_ae35ac930b0fb89aa47815c81c3450799}{\-\_\-\-Check\-Dependencies} (\$the\-Operation)
+\item 
+\hyperlink{class_c_data_wrapper_client_a566916298b46dbc2258714e9750e3f8f}{\-\_\-\-Normalise\-Parameters} ()
+\item 
+\hyperlink{class_c_data_wrapper_client_a0b6d0d8775244822122c201281012b3b}{\-\_\-\-Encode\-Parameters} (\&\$the\-Parameters, \$the\-Encoding)
+\item 
+\hyperlink{class_c_data_wrapper_client_ab8151cede5da2687546ba3df95182410}{\-\_\-\-Query\-Statement} (\$the\-Subject, \$the\-Operator, \$the\-Object=N\-U\-L\-L, \$the\-Type=N\-U\-L\-L)
+\end{DoxyCompactItemize}
+\subsection*{Additional Inherited Members}
+
+
+\subsection{Member Function Documentation}
+\hypertarget{class_c_data_wrapper_client_ae35ac930b0fb89aa47815c81c3450799}{\index{C\-Data\-Wrapper\-Client@{C\-Data\-Wrapper\-Client}!\-\_\-\-Check\-Dependencies@{\-\_\-\-Check\-Dependencies}}
+\index{\-\_\-\-Check\-Dependencies@{\-\_\-\-Check\-Dependencies}!CDataWrapperClient@{C\-Data\-Wrapper\-Client}}
+\subsubsection[{\-\_\-\-Check\-Dependencies}]{\setlength{\rightskip}{0pt plus 5cm}C\-Data\-Wrapper\-Client\-::\-\_\-\-Check\-Dependencies (
+\begin{DoxyParamCaption}
+\item[{}]{\$the\-Operation}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [protected]}}}\label{class_c_data_wrapper_client_ae35ac930b0fb89aa47815c81c3450799}
+Check operation dependencies.
+
+This method can be used to assert whether the required parameters are present depending on the requested operation.
+
+
+\begin{DoxyParams}[1]{Parameters}
+string & {\em \$the\-Operation} & Requested operation.\\
+\hline
+\end{DoxyParams}
+protected
+
+
+\begin{DoxyExceptions}{Exceptions}
+{\em Exception} & \\
+\hline
+\end{DoxyExceptions}
+\hypertarget{class_c_data_wrapper_client_a0b6d0d8775244822122c201281012b3b}{\index{C\-Data\-Wrapper\-Client@{C\-Data\-Wrapper\-Client}!\-\_\-\-Encode\-Parameters@{\-\_\-\-Encode\-Parameters}}
+\index{\-\_\-\-Encode\-Parameters@{\-\_\-\-Encode\-Parameters}!CDataWrapperClient@{C\-Data\-Wrapper\-Client}}
+\subsubsection[{\-\_\-\-Encode\-Parameters}]{\setlength{\rightskip}{0pt plus 5cm}C\-Data\-Wrapper\-Client\-::\-\_\-\-Encode\-Parameters (
+\begin{DoxyParamCaption}
+\item[{\&}]{\$the\-Parameters, }
+\item[{}]{\$the\-Encoding}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [protected]}}}\label{class_c_data_wrapper_client_a0b6d0d8775244822122c201281012b3b}
+Encode parameters.
+
+This method can be used to encode parameters before they get sent to the service.
+
+We overload this method to handle the local parameters.
+
+
+\begin{DoxyParams}[1]{Parameters}
+reference & {\em \&\$the\-Parameters} & List of parameters. \\
+\hline
+string & {\em \$the\-Encoding} & Encoding code.\\
+\hline
+\end{DoxyParams}
+protected \hypertarget{class_c_data_wrapper_client_a566916298b46dbc2258714e9750e3f8f}{\index{C\-Data\-Wrapper\-Client@{C\-Data\-Wrapper\-Client}!\-\_\-\-Normalise\-Parameters@{\-\_\-\-Normalise\-Parameters}}
+\index{\-\_\-\-Normalise\-Parameters@{\-\_\-\-Normalise\-Parameters}!CDataWrapperClient@{C\-Data\-Wrapper\-Client}}
+\subsubsection[{\-\_\-\-Normalise\-Parameters}]{\setlength{\rightskip}{0pt plus 5cm}C\-Data\-Wrapper\-Client\-::\-\_\-\-Normalise\-Parameters (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [protected]}}}\label{class_c_data_wrapper_client_a566916298b46dbc2258714e9750e3f8f}
+Normalise parameters.
+
+This method can be used to normalise parameters before they get encoded.
+
+In this class we set the request time stamp if the current value is not an float.
+
+In derived classes you should call first the parent method, then handle the local parameters.
+
+protected \hypertarget{class_c_data_wrapper_client_ab8151cede5da2687546ba3df95182410}{\index{C\-Data\-Wrapper\-Client@{C\-Data\-Wrapper\-Client}!\-\_\-\-Query\-Statement@{\-\_\-\-Query\-Statement}}
+\index{\-\_\-\-Query\-Statement@{\-\_\-\-Query\-Statement}!CDataWrapperClient@{C\-Data\-Wrapper\-Client}}
+\subsubsection[{\-\_\-\-Query\-Statement}]{\setlength{\rightskip}{0pt plus 5cm}C\-Data\-Wrapper\-Client\-::\-\_\-\-Query\-Statement (
+\begin{DoxyParamCaption}
+\item[{}]{\$the\-Subject, }
+\item[{}]{\$the\-Operator, }
+\item[{}]{\$the\-Object = {\ttfamily NULL}, }
+\item[{}]{\$the\-Type = {\ttfamily NULL}}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [protected]}}}\label{class_c_data_wrapper_client_ab8151cede5da2687546ba3df95182410}
+Return a query statement.
+
+This method can be used to retrieve a query statement given the provided parameters, see the \hyperlink{class_c_data_wrapper_client_a5a4050c5183d5b9ad07216d67b36d638}{Add\-Query\-Statement()} method for an explanation of the parameters.
+
+
+\begin{DoxyParams}[1]{Parameters}
+mixed & {\em \$the\-Subject} & Statement subject. \\
+\hline
+string & {\em \$the\-Operator} & Statement operator. \\
+\hline
+mixed & {\em \$the\-Object} & Statement object. \\
+\hline
+string & {\em \$the\-Type} & Statement object data type.\\
+\hline
+\end{DoxyParams}
+protected \begin{DoxyReturn}{Returns}
+array 
+\end{DoxyReturn}
+\hypertarget{class_c_data_wrapper_client_a44e2a7446e4a67d401db9d189eb7a25f}{\index{C\-Data\-Wrapper\-Client@{C\-Data\-Wrapper\-Client}!Add\-Query\-List\-Statement@{Add\-Query\-List\-Statement}}
+\index{Add\-Query\-List\-Statement@{Add\-Query\-List\-Statement}!CDataWrapperClient@{C\-Data\-Wrapper\-Client}}
+\subsubsection[{Add\-Query\-List\-Statement}]{\setlength{\rightskip}{0pt plus 5cm}C\-Data\-Wrapper\-Client\-::\-Add\-Query\-List\-Statement (
+\begin{DoxyParamCaption}
+\item[{}]{\$the\-Index, }
+\item[{}]{\$the\-Condition, }
+\item[{}]{\$the\-Subject, }
+\item[{}]{\$the\-Operator, }
+\item[{}]{\$the\-Object = {\ttfamily NULL}, }
+\item[{}]{\$the\-Type = {\ttfamily NULL}}
+\end{DoxyParamCaption}
+)}}\label{class_c_data_wrapper_client_a44e2a7446e4a67d401db9d189eb7a25f}
+Add a query list statement.
+
+This method is similar to the \hyperlink{class_c_data_wrapper_client_a5a4050c5183d5b9ad07216d67b36d638}{Add\-Query\-Statement()} method as it adds a query statement to a query, except that the current \hyperlink{class_c_data_wrapper_client_a81a5e5f23f729bf167c03e6eee4593ed}{Query()} is a list of \hyperlink{class_c_query}{C\-Query} objects. This kind of structure is used by the \hyperlink{}{k\-A\-P\-I\-\_\-\-O\-P\-\_\-\-G\-E\-T} operation to return the first match of a series of queries and by other operations in which the array element index represents the container name (\hyperlink{class_c_data_wrapper_client_a6a696f83f580186da02093327a84fe4f}{Container()}).
+
+The method expects the following parameters\-:
+
+
+\begin{DoxyItemize}
+\item {\ttfamily \$the\-Index}\-: This parameter represents the list index to the query to which the statement is to be appended. This parameter may either represent a generic index, or it may represent the container name to which the query applies. 
+\item {\ttfamily \$the\-Condition}\-: The \hyperlink{}{k\-O\-P\-E\-R\-A\-T\-O\-R\-\_\-\-A\-N\-D}, \hyperlink{}{k\-O\-P\-E\-R\-A\-T\-O\-R\-\_\-\-N\-A\-N\-D}, \hyperlink{}{k\-O\-P\-E\-R\-A\-T\-O\-R\-\_\-\-O\-R} or \hyperlink{}{k\-O\-P\-E\-R\-A\-T\-O\-R\-\_\-\-N\-O\-R} operator (see the \hyperlink{}{Operators.\-inc.\-php} source). 
+\item {\ttfamily \$the\-Subject}\-: The subject or attribute of the query, it will be the tag \hyperlink{}{k\-T\-A\-G\-\_\-\-N\-I\-D} (see the \hyperlink{}{Operators.\-inc.\-php} source). 
+\item {\ttfamily \$the\-Operator}\-: The statement operator or operation. 
+\item {\ttfamily \$the\-Object}\-: The object or value of the statement, this parameter may be omitted of the operator does not require it. 
+\item {\ttfamily \$the\-Type}\-: The data type of the statement object (see the \hyperlink{}{Types.\-inc.\-php} source). 
+\end{DoxyItemize}
+
+Each element of the queries list will be a \hyperlink{class_c_query}{C\-Query} object and converted to an array before being sent to the server.
+
+Note that this method should only be used if the \hyperlink{}{k\-A\-P\-I\-\_\-\-Q\-U\-E\-R\-Y} property of the object refers to a list of queries\-: if the attribute should refer to a scalar query, you should use the \hyperlink{class_c_data_wrapper_client_a5a4050c5183d5b9ad07216d67b36d638}{Add\-Query\-Statement()} method.
+
+
+\begin{DoxyParams}[1]{Parameters}
+string & {\em \$the\-Index} & Query index. \\
+\hline
+string & {\em \$the\-Condition} & Statement condition. \\
+\hline
+mixed & {\em \$the\-Subject} & Statement subject. \\
+\hline
+string & {\em \$the\-Operator} & Statement operator. \\
+\hline
+mixed & {\em \$the\-Object} & Statement object. \\
+\hline
+string & {\em \$the\-Type} & Statement object data type.\\
+\hline
+\end{DoxyParams}
+public
+
+
+\begin{DoxyExceptions}{Exceptions}
+{\em Exception} & \\
+\hline
+\end{DoxyExceptions}
+\begin{DoxySeeAlso}{See Also}
+k\-A\-P\-I\-\_\-\-Q\-U\-E\-R\-Y 
+\end{DoxySeeAlso}
+\hypertarget{class_c_data_wrapper_client_a5a4050c5183d5b9ad07216d67b36d638}{\index{C\-Data\-Wrapper\-Client@{C\-Data\-Wrapper\-Client}!Add\-Query\-Statement@{Add\-Query\-Statement}}
+\index{Add\-Query\-Statement@{Add\-Query\-Statement}!CDataWrapperClient@{C\-Data\-Wrapper\-Client}}
+\subsubsection[{Add\-Query\-Statement}]{\setlength{\rightskip}{0pt plus 5cm}C\-Data\-Wrapper\-Client\-::\-Add\-Query\-Statement (
+\begin{DoxyParamCaption}
+\item[{}]{\$the\-Condition, }
+\item[{}]{\$the\-Subject, }
+\item[{}]{\$the\-Operator, }
+\item[{}]{\$the\-Object = {\ttfamily NULL}, }
+\item[{}]{\$the\-Type = {\ttfamily NULL}}
+\end{DoxyParamCaption}
+)}}\label{class_c_data_wrapper_client_a5a4050c5183d5b9ad07216d67b36d638}
+Add a query statement.
+
+This method can be used to add a query statement to the current query, it expects the query to be a scalar query with thew container provided in the service parameters.
+
+The method expects the following parameters\-:
+
+
+\begin{DoxyItemize}
+\item {\ttfamily \$the\-Condition}\-: The \hyperlink{}{k\-O\-P\-E\-R\-A\-T\-O\-R\-\_\-\-A\-N\-D}, \hyperlink{}{k\-O\-P\-E\-R\-A\-T\-O\-R\-\_\-\-N\-A\-N\-D}, \hyperlink{}{k\-O\-P\-E\-R\-A\-T\-O\-R\-\_\-\-O\-R} or \hyperlink{}{k\-O\-P\-E\-R\-A\-T\-O\-R\-\_\-\-N\-O\-R} operator (see the \hyperlink{}{Operators.\-inc.\-php} source). 
+\item {\ttfamily \$the\-Subject}\-: The subject or attribute of the query, it will be the tag \hyperlink{}{k\-T\-A\-G\-\_\-\-N\-I\-D} (see the \hyperlink{}{Operators.\-inc.\-php} source). 
+\item {\ttfamily \$the\-Operator}\-: The statement operator or operation. 
+\item {\ttfamily \$the\-Object}\-: The object or value of the statement, this parameter may be omitted of the operator does not require it. 
+\item {\ttfamily \$the\-Type}\-: The data type of the statement object (see the \hyperlink{}{Types.\-inc.\-php} source). 
+\end{DoxyItemize}
+
+The query attribute will be set as a \hyperlink{class_c_query}{C\-Query} object and converted to an array before being sent to the server.
+
+Note that this method should only be used if the \hyperlink{}{k\-A\-P\-I\-\_\-\-Q\-U\-E\-R\-Y} property of the object refers to a single query\-: if the attribute should refer to a list of queries, you should use the \hyperlink{class_c_data_wrapper_client_a44e2a7446e4a67d401db9d189eb7a25f}{Add\-Query\-List\-Statement()} method.
+
+
+\begin{DoxyParams}[1]{Parameters}
+string & {\em \$the\-Condition} & Statement condition. \\
+\hline
+mixed & {\em \$the\-Subject} & Statement subject. \\
+\hline
+string & {\em \$the\-Operator} & Statement operator. \\
+\hline
+mixed & {\em \$the\-Object} & Statement object. \\
+\hline
+string & {\em \$the\-Type} & Statement object data type.\\
+\hline
+\end{DoxyParams}
+public
+
+
+\begin{DoxyExceptions}{Exceptions}
+{\em Exception} & \\
+\hline
+\end{DoxyExceptions}
+\begin{DoxySeeAlso}{See Also}
+k\-A\-P\-I\-\_\-\-Q\-U\-E\-R\-Y 
+\end{DoxySeeAlso}
+\hypertarget{class_c_data_wrapper_client_a6353a8617179b8da4c5dbe76f6247c73}{\index{C\-Data\-Wrapper\-Client@{C\-Data\-Wrapper\-Client}!Classname@{Classname}}
+\index{Classname@{Classname}!CDataWrapperClient@{C\-Data\-Wrapper\-Client}}
+\subsubsection[{Classname}]{\setlength{\rightskip}{0pt plus 5cm}C\-Data\-Wrapper\-Client\-::\-Classname (
+\begin{DoxyParamCaption}
+\item[{}]{\$the\-Value = {\ttfamily NULL}, }
+\item[{}]{\$get\-Old = {\ttfamily FALSE}}
+\end{DoxyParamCaption}
+)}}\label{class_c_data_wrapper_client_a6353a8617179b8da4c5dbe76f6247c73}
+Manage object class.
+
+This method can be used to manage the \hyperlink{}{k\-A\-P\-I\-\_\-\-C\-L\-A\-S\-S} offset, it accepts a string parameter which represents the class name of the object provided in \hyperlink{class_c_data_wrapper_client_ab5a1dd1e3b56468f2748f9e1ecad92fc}{Object()} or the requested operation, depending on its value\-:
+
+
+\begin{DoxyItemize}
+\item {\itshape N\-U\-L\-L}\-: Return the current value. 
+\item {\itshape F\-A\-L\-S\-E}\-: Delete the current value. 
+\item {\itshape other}\-: Set the value with the provided parameter, in this case the value is expected to be and will be casted to an integer. 
+\end{DoxyItemize}
+
+The second parameter is a boolean which if {\itshape T\-R\-U\-E} will return the {\itshape old} value when replacing values; if {\itshape F\-A\-L\-S\-E}, it will return the currently set value.
+
+
+\begin{DoxyParams}[1]{Parameters}
+string & {\em \$the\-Value} & Value or operation. \\
+\hline
+boolean & {\em \$get\-Old} & T\-R\-U\-E get old value.\\
+\hline
+\end{DoxyParams}
+public \begin{DoxyReturn}{Returns}
+mixed
+\end{DoxyReturn}
+Manage\-Offset()
+
+\begin{DoxySeeAlso}{See Also}
+k\-A\-P\-I\-\_\-\-C\-L\-A\-S\-S 
+\end{DoxySeeAlso}
+\hypertarget{class_c_data_wrapper_client_a6a696f83f580186da02093327a84fe4f}{\index{C\-Data\-Wrapper\-Client@{C\-Data\-Wrapper\-Client}!Container@{Container}}
+\index{Container@{Container}!CDataWrapperClient@{C\-Data\-Wrapper\-Client}}
+\subsubsection[{Container}]{\setlength{\rightskip}{0pt plus 5cm}C\-Data\-Wrapper\-Client\-::\-Container (
+\begin{DoxyParamCaption}
+\item[{}]{\$the\-Value = {\ttfamily NULL}, }
+\item[{}]{\$get\-Old = {\ttfamily FALSE}}
+\end{DoxyParamCaption}
+)}}\label{class_c_data_wrapper_client_a6a696f83f580186da02093327a84fe4f}
+Manage container name.
+
+This method can be used to manage the \hyperlink{}{k\-A\-P\-I\-\_\-\-C\-O\-N\-T\-A\-I\-N\-E\-R} offset, it accepts a parameter which represents the container name or the requested operation, depending on its value\-:
+
+
+\begin{DoxyItemize}
+\item {\itshape N\-U\-L\-L}\-: Return the current value. 
+\item {\itshape F\-A\-L\-S\-E}\-: Delete the current value. 
+\item {\itshape other}\-: Set the value with the provided parameter. 
+\end{DoxyItemize}
+
+The second parameter is a boolean which if {\itshape T\-R\-U\-E} will return the {\itshape old} value when replacing values; if {\itshape F\-A\-L\-S\-E}, it will return the currently set value.
+
+
+\begin{DoxyParams}[1]{Parameters}
+string & {\em \$the\-Value} & Value or operation. \\
+\hline
+boolean & {\em \$get\-Old} & T\-R\-U\-E get old value.\\
+\hline
+\end{DoxyParams}
+public \begin{DoxyReturn}{Returns}
+mixed
+\end{DoxyReturn}
+Manage\-Offset()
+
+\begin{DoxySeeAlso}{See Also}
+k\-A\-P\-I\-\_\-\-C\-O\-N\-T\-A\-I\-N\-E\-R 
+\end{DoxySeeAlso}
+\hypertarget{class_c_data_wrapper_client_a4cdd14b07d74eeb834d2a6052902f176}{\index{C\-Data\-Wrapper\-Client@{C\-Data\-Wrapper\-Client}!Database@{Database}}
+\index{Database@{Database}!CDataWrapperClient@{C\-Data\-Wrapper\-Client}}
+\subsubsection[{Database}]{\setlength{\rightskip}{0pt plus 5cm}C\-Data\-Wrapper\-Client\-::\-Database (
+\begin{DoxyParamCaption}
+\item[{}]{\$the\-Value = {\ttfamily NULL}, }
+\item[{}]{\$get\-Old = {\ttfamily FALSE}}
+\end{DoxyParamCaption}
+)}}\label{class_c_data_wrapper_client_a4cdd14b07d74eeb834d2a6052902f176}
+Manage database name.
+
+This method can be used to manage the \hyperlink{}{k\-A\-P\-I\-\_\-\-D\-A\-T\-A\-B\-A\-S\-E} offset, it accepts a parameter which represents the database name or the requested operation, depending on its value\-:
+
+
+\begin{DoxyItemize}
+\item {\itshape N\-U\-L\-L}\-: Return the current value. 
+\item {\itshape F\-A\-L\-S\-E}\-: Delete the current value. 
+\item {\itshape other}\-: Set the value with the provided parameter. 
+\end{DoxyItemize}
+
+The second parameter is a boolean which if {\itshape T\-R\-U\-E} will return the {\itshape old} value when replacing values; if {\itshape F\-A\-L\-S\-E}, it will return the currently set value.
+
+
+\begin{DoxyParams}[1]{Parameters}
+string & {\em \$the\-Value} & Value or operation. \\
+\hline
+boolean & {\em \$get\-Old} & T\-R\-U\-E get old value.\\
+\hline
+\end{DoxyParams}
+public \begin{DoxyReturn}{Returns}
+mixed
+\end{DoxyReturn}
+Manage\-Offset()
+
+\begin{DoxySeeAlso}{See Also}
+k\-A\-P\-I\-\_\-\-D\-A\-T\-A\-B\-A\-S\-E 
+\end{DoxySeeAlso}
+\hypertarget{class_c_data_wrapper_client_ab5a1dd1e3b56468f2748f9e1ecad92fc}{\index{C\-Data\-Wrapper\-Client@{C\-Data\-Wrapper\-Client}!Object@{Object}}
+\index{Object@{Object}!CDataWrapperClient@{C\-Data\-Wrapper\-Client}}
+\subsubsection[{Object}]{\setlength{\rightskip}{0pt plus 5cm}C\-Data\-Wrapper\-Client\-::\-Object (
+\begin{DoxyParamCaption}
+\item[{}]{\$the\-Value = {\ttfamily NULL}, }
+\item[{}]{\$get\-Old = {\ttfamily FALSE}}
+\end{DoxyParamCaption}
+)}}\label{class_c_data_wrapper_client_ab5a1dd1e3b56468f2748f9e1ecad92fc}
+Manage object.
+
+This method can be used to manage the \hyperlink{}{k\-A\-P\-I\-\_\-\-O\-B\-J\-E\-C\-T} offset, it accepts a parameter which represents either the object to be inserted or the value used to resolve the object to be deleted, or the requested operation, depending on its value\-:
+
+
+\begin{DoxyItemize}
+\item {\itshape N\-U\-L\-L}\-: Return the current value. 
+\item {\itshape F\-A\-L\-S\-E}\-: Delete the current value. 
+\item {\itshape other}\-: Set the value with the provided parameter, in this case the value is expected to be and will be casted to an integer. 
+\end{DoxyItemize}
+
+The second parameter is a boolean which if {\itshape T\-R\-U\-E} will return the {\itshape old} value when replacing values; if {\itshape F\-A\-L\-S\-E}, it will return the currently set value.
+
+{\itshape Note that if you provide an object derived from \hyperlink{class_c_persistent_object}{C\-Persistent\-Object}, this method will also set automatically the \hyperlink{class_c_data_wrapper_client_a6353a8617179b8da4c5dbe76f6247c73}{Classname()} parameter.}
+
+
+\begin{DoxyParams}[1]{Parameters}
+string & {\em \$the\-Value} & Value or operation. \\
+\hline
+boolean & {\em \$get\-Old} & T\-R\-U\-E get old value.\\
+\hline
+\end{DoxyParams}
+public \begin{DoxyReturn}{Returns}
+mixed
+\end{DoxyReturn}
+Manage\-Offset()
+
+\begin{DoxySeeAlso}{See Also}
+k\-A\-P\-I\-\_\-\-O\-B\-J\-E\-C\-T 
+\end{DoxySeeAlso}
+\hypertarget{class_c_data_wrapper_client_ae7cad4809c20d8f2871cfe00da909d67}{\index{C\-Data\-Wrapper\-Client@{C\-Data\-Wrapper\-Client}!Operation@{Operation}}
+\index{Operation@{Operation}!CDataWrapperClient@{C\-Data\-Wrapper\-Client}}
+\subsubsection[{Operation}]{\setlength{\rightskip}{0pt plus 5cm}C\-Data\-Wrapper\-Client\-::\-Operation (
+\begin{DoxyParamCaption}
+\item[{}]{\$the\-Value = {\ttfamily NULL}, }
+\item[{}]{\$get\-Old = {\ttfamily FALSE}}
+\end{DoxyParamCaption}
+)}}\label{class_c_data_wrapper_client_ae7cad4809c20d8f2871cfe00da909d67}
+Manage operation.
+
+We \hyperlink{class_c_wrapper_client_ae378229fd57b051ddf0e0a7abf599641}{overload} this method to add the following allowed operations\-:
+
+
+\begin{DoxyItemize}
+\item {\itshape \hyperlink{}{k\-A\-P\-I\-\_\-\-O\-P\-\_\-\-C\-O\-U\-N\-T}}\-: C\-O\-U\-N\-T web-\/service operation, used to return the total number of elements satisfying a query. 
+\item {\itshape \hyperlink{}{k\-A\-P\-I\-\_\-\-O\-P\-\_\-\-G\-E\-T}}\-: G\-E\-T web-\/service operation, used to retrieve objects from the data store. 
+\item {\itshape \hyperlink{}{k\-A\-P\-I\-\_\-\-O\-P\-\_\-\-S\-E\-T}}\-: S\-E\-T web-\/service operation, used to insert or update objects in the data store. 
+\item {\itshape \hyperlink{}{k\-A\-P\-I\-\_\-\-O\-P\-\_\-\-U\-P\-D\-A\-T\-E}}\-: U\-P\-D\-A\-T\-E web-\/service operation, used to update existing objects in the data store. 
+\item {\itshape \hyperlink{}{k\-A\-P\-I\-\_\-\-O\-P\-\_\-\-I\-N\-S\-E\-R\-T}}\-: I\-N\-S\-E\-R\-T web-\/service operation, used to insert new objects in the data store. 
+\end{DoxyItemize}
+
+
+\begin{DoxyParams}[1]{Parameters}
+string & {\em \$the\-Value} & Value or operation. \\
+\hline
+boolean & {\em \$get\-Old} & T\-R\-U\-E get old value.\\
+\hline
+\end{DoxyParams}
+public \begin{DoxyReturn}{Returns}
+mixed
+\end{DoxyReturn}
+
+\begin{DoxyExceptions}{Exceptions}
+{\em \{@link} & \hyperlink{class_c_exception}{C\-Exception} \hyperlink{class_c_exception}{C\-Exception}\}\\
+\hline
+\end{DoxyExceptions}
+C\-Attribute\-::\-Manage\-Offset()
+
+\begin{DoxySeeAlso}{See Also}
+k\-A\-P\-I\-\_\-\-O\-P\-E\-R\-A\-T\-I\-O\-N 
+
+k\-A\-P\-I\-\_\-\-O\-P\-\_\-\-H\-E\-L\-P k\-A\-P\-I\-\_\-\-O\-P\-\_\-\-P\-I\-N\-G 
+\end{DoxySeeAlso}
+\hypertarget{class_c_data_wrapper_client_a77fe02364cc6ebb8c8acc699bb373b98}{\index{C\-Data\-Wrapper\-Client@{C\-Data\-Wrapper\-Client}!Page\-Limit@{Page\-Limit}}
+\index{Page\-Limit@{Page\-Limit}!CDataWrapperClient@{C\-Data\-Wrapper\-Client}}
+\subsubsection[{Page\-Limit}]{\setlength{\rightskip}{0pt plus 5cm}C\-Data\-Wrapper\-Client\-::\-Page\-Limit (
+\begin{DoxyParamCaption}
+\item[{}]{\$the\-Value = {\ttfamily NULL}, }
+\item[{}]{\$get\-Old = {\ttfamily FALSE}}
+\end{DoxyParamCaption}
+)}}\label{class_c_data_wrapper_client_a77fe02364cc6ebb8c8acc699bb373b98}
+Manage page limit.
+
+This method can be used to manage the \hyperlink{}{k\-A\-P\-I\-\_\-\-P\-A\-G\-E\-\_\-\-L\-I\-M\-I\-T} offset, it accepts a parameter which represents the maximum number of elements to be returned by the service, or the requested operation, depending on its value\-:
+
+
+\begin{DoxyItemize}
+\item {\itshape N\-U\-L\-L}\-: Return the current value. 
+\item {\itshape F\-A\-L\-S\-E}\-: Delete the current value. 
+\item {\itshape other}\-: Set the value with the provided parameter, in this case the value is expected to be and will be casted to an integer. 
+\end{DoxyItemize}
+
+The second parameter is a boolean which if {\itshape T\-R\-U\-E} will return the {\itshape old} value when replacing values; if {\itshape F\-A\-L\-S\-E}, it will return the currently set value.
+
+
+\begin{DoxyParams}[1]{Parameters}
+string & {\em \$the\-Value} & Value or operation. \\
+\hline
+boolean & {\em \$get\-Old} & T\-R\-U\-E get old value.\\
+\hline
+\end{DoxyParams}
+public \begin{DoxyReturn}{Returns}
+mixed
+\end{DoxyReturn}
+Manage\-Offset()
+
+\begin{DoxySeeAlso}{See Also}
+k\-A\-P\-I\-\_\-\-P\-A\-G\-E\-\_\-\-L\-I\-M\-I\-T 
+\end{DoxySeeAlso}
+\hypertarget{class_c_data_wrapper_client_a4d88af5cdfeb4f4592f3ecbe09284594}{\index{C\-Data\-Wrapper\-Client@{C\-Data\-Wrapper\-Client}!Page\-Start@{Page\-Start}}
+\index{Page\-Start@{Page\-Start}!CDataWrapperClient@{C\-Data\-Wrapper\-Client}}
+\subsubsection[{Page\-Start}]{\setlength{\rightskip}{0pt plus 5cm}C\-Data\-Wrapper\-Client\-::\-Page\-Start (
+\begin{DoxyParamCaption}
+\item[{}]{\$the\-Value = {\ttfamily NULL}, }
+\item[{}]{\$get\-Old = {\ttfamily FALSE}}
+\end{DoxyParamCaption}
+)}}\label{class_c_data_wrapper_client_a4d88af5cdfeb4f4592f3ecbe09284594}
+Manage page start.
+
+This method can be used to manage the \hyperlink{}{k\-A\-P\-I\-\_\-\-P\-A\-G\-E\-\_\-\-S\-T\-A\-R\-T} offset, it accepts a parameter which represents the starting page from which the service should return data, or the requested operation, depending on its value\-:
+
+
+\begin{DoxyItemize}
+\item {\itshape N\-U\-L\-L}\-: Return the current value. 
+\item {\itshape F\-A\-L\-S\-E}\-: Delete the current value. 
+\item {\itshape other}\-: Set the value with the provided parameter, in this case the value is expected to be and will be casted to an integer. 
+\end{DoxyItemize}
+
+The second parameter is a boolean which if {\itshape T\-R\-U\-E} will return the {\itshape old} value when replacing values; if {\itshape F\-A\-L\-S\-E}, it will return the currently set value.
+
+
+\begin{DoxyParams}[1]{Parameters}
+string & {\em \$the\-Value} & Value or operation. \\
+\hline
+boolean & {\em \$get\-Old} & T\-R\-U\-E get old value.\\
+\hline
+\end{DoxyParams}
+public \begin{DoxyReturn}{Returns}
+mixed
+\end{DoxyReturn}
+Manage\-Offset()
+
+\begin{DoxySeeAlso}{See Also}
+k\-A\-P\-I\-\_\-\-P\-A\-G\-E\-\_\-\-S\-T\-A\-R\-T 
+\end{DoxySeeAlso}
+\hypertarget{class_c_data_wrapper_client_a81a5e5f23f729bf167c03e6eee4593ed}{\index{C\-Data\-Wrapper\-Client@{C\-Data\-Wrapper\-Client}!Query@{Query}}
+\index{Query@{Query}!CDataWrapperClient@{C\-Data\-Wrapper\-Client}}
+\subsubsection[{Query}]{\setlength{\rightskip}{0pt plus 5cm}C\-Data\-Wrapper\-Client\-::\-Query (
+\begin{DoxyParamCaption}
+\item[{}]{\$the\-Value = {\ttfamily NULL}, }
+\item[{}]{\$get\-Old = {\ttfamily FALSE}}
+\end{DoxyParamCaption}
+)}}\label{class_c_data_wrapper_client_a81a5e5f23f729bf167c03e6eee4593ed}
+Manage query.
+
+This method can be used to manage the \hyperlink{}{k\-A\-P\-I\-\_\-\-Q\-U\-E\-R\-Y} offset, it accepts a parameter which represents the service requested query, or the requested operation, depending on its value\-:
+
+
+\begin{DoxyItemize}
+\item {\itshape N\-U\-L\-L}\-: Return the current value. 
+\item {\itshape F\-A\-L\-S\-E}\-: Delete the current value. 
+\item {\itshape other}\-: Set the value with the provided parameter, in this case the value is expected to be\-: 
+\begin{DoxyItemize}
+\item {\ttfamily array} or {\ttfamily Array\-Object{\ttfamily \-: The provided array will be cast to a \hyperlink{class_c_query}{C\-Query} object and verified. }}
+\item {\ttfamily {\ttfamily {\ttfamily \hyperlink{class_c_query}{C\-Query}}\-: The provided array will be verified. }}
+\item {\ttfamily {\ttfamily {\itshape other}\-: The method will raise an exception. }}
+\end{DoxyItemize}
+\end{DoxyItemize}
+
+{\ttfamily {\ttfamily The second parameter is a boolean which if {\itshape T\-R\-U\-E} will return the {\itshape old} value when replacing values; if {\itshape F\-A\-L\-S\-E}, it will return the currently set value.}}
+
+{\ttfamily {\ttfamily 
+\begin{DoxyParams}[1]{Parameters}
+string & {\em \$the\-Value} & Value or operation. \\
+\hline
+boolean & {\em \$get\-Old} & T\-R\-U\-E get old value.\\
+\hline
+\end{DoxyParams}
+public \begin{DoxyReturn}{Returns}
+mixed
+\end{DoxyReturn}
+
+\begin{DoxyExceptions}{Exceptions}
+{\em Exception} & Manage\-Offset()\\
+\hline
+\end{DoxyExceptions}
+\begin{DoxySeeAlso}{See Also}
+k\-A\-P\-I\-\_\-\-Q\-U\-E\-R\-Y 
+\end{DoxySeeAlso}
+}}\hypertarget{class_c_data_wrapper_client_add9cb305a726062800f13263d9f72031}{\index{C\-Data\-Wrapper\-Client@{C\-Data\-Wrapper\-Client}!Select@{Select}}
+\index{Select@{Select}!CDataWrapperClient@{C\-Data\-Wrapper\-Client}}
+\subsubsection[{Select}]{\setlength{\rightskip}{0pt plus 5cm}C\-Data\-Wrapper\-Client\-::\-Select (
+\begin{DoxyParamCaption}
+\item[{}]{\$the\-Value = {\ttfamily NULL}, }
+\item[{}]{\$get\-Old = {\ttfamily FALSE}}
+\end{DoxyParamCaption}
+)}}\label{class_c_data_wrapper_client_add9cb305a726062800f13263d9f72031}
+Manage select fields.
+
+This method can be used to manage the \hyperlink{}{k\-A\-P\-I\-\_\-\-S\-E\-L\-E\-C\-T} offset, it accepts a parameter which represents the list of requested attributes, or the requested operation, depending on its value\-:
+
+
+\begin{DoxyItemize}
+\item {\itshape N\-U\-L\-L}\-: Return the current value. 
+\item {\itshape F\-A\-L\-S\-E}\-: Delete the current value. 
+\item {\itshape other}\-: Set the value with the provided parameter, in this case the value is expected to be\-: 
+\begin{DoxyItemize}
+\item {\ttfamily array} or {\ttfamily Array\-Object{\ttfamily \-: The provided parameter will become the new list. }}
+\item {\ttfamily {\ttfamily {\itshape other}\-: The method will assume the parameter is a string and it will add it to the current list or create a list if it doesn't exist. }}
+\end{DoxyItemize}
+\end{DoxyItemize}
+
+{\ttfamily {\ttfamily The second parameter is a boolean which if {\itshape T\-R\-U\-E} will return the {\itshape old} value when replacing values; if {\itshape F\-A\-L\-S\-E}, it will return the currently set value.}}
+
+{\ttfamily {\ttfamily 
+\begin{DoxyParams}[1]{Parameters}
+string & {\em \$the\-Value} & Value or operation. \\
+\hline
+boolean & {\em \$get\-Old} & T\-R\-U\-E get old value.\\
+\hline
+\end{DoxyParams}
+public \begin{DoxyReturn}{Returns}
+mixed
+\end{DoxyReturn}
+\hyperlink{class_c_wrapper_client_a8ad42378b7abfeaaaa311e1b96a42a26}{\-\_\-\-Manage\-List\-Offset()}}}
+
+{\ttfamily {\ttfamily \begin{DoxySeeAlso}{See Also}
+k\-A\-P\-I\-\_\-\-S\-E\-L\-E\-C\-T 
+\end{DoxySeeAlso}
+}}\hypertarget{class_c_data_wrapper_client_a969efbb268050c30644e955e0a532241}{\index{C\-Data\-Wrapper\-Client@{C\-Data\-Wrapper\-Client}!Sort@{Sort}}
+\index{Sort@{Sort}!CDataWrapperClient@{C\-Data\-Wrapper\-Client}}
+\subsubsection[{Sort}]{\setlength{\rightskip}{0pt plus 5cm}C\-Data\-Wrapper\-Client\-::\-Sort (
+\begin{DoxyParamCaption}
+\item[{}]{\$the\-Field = {\ttfamily NULL}, }
+\item[{}]{\$the\-Order = {\ttfamily NULL}, }
+\item[{}]{\$get\-Old = {\ttfamily FALSE}}
+\end{DoxyParamCaption}
+)}}\label{class_c_data_wrapper_client_a969efbb268050c30644e955e0a532241}
+Manage sort fields.
+
+This method can be used to manage the \hyperlink{}{k\-A\-P\-I\-\_\-\-S\-O\-R\-T} offset, the managed value is an array in which the key represents the attribute name and the value is an integer which determines the sort order\-: positive means ascending, negative means descending; zero is ignored.
+
+
+\begin{DoxyItemize}
+\item {\ttfamily \$the\-Field}\-: The field name or list\-: 
+\begin{DoxyItemize}
+\item {\ttfamily array}\-: If you provide an array in this field, the method will assume you are providing a full list, in this case the method will set the offset with that value, {\itshape without checking its contents}. 
+\item {\ttfamily N\-U\-L\-L}\-: Selects all fields. 
+\item {\itshape other}\-: Any other value will be interpreted as the field name. 
+\end{DoxyItemize}
+\item {\ttfamily \$the\-Order}\-: The the sort order\-: 
+\begin{DoxyItemize}
+\item {\ttfamily N\-U\-L\-L}\-: Return the sort order of the provided field. If the provided field is an array, this parameter will be ignored; if the provided field is a scalar, the method will return the element matching the provided field; if the provided field is {\ttfamily N\-U\-L\-L}, the method will return the full list. 
+\item {\ttfamily F\-A\-L\-S\-E}\-: Delete the element matching the provided field\-: if the provided field is an array, this parameter will be ignored; if the provided field is a scalar, the method will delete the element matching the provided field; if the provided field is {\ttfamily N\-U\-L\-L}, the method will return the full list. 
+\item {\ttfamily integer}\-: Set the sort order, negative values mean descending; positive values mean ascending. If the provided field is an array, this parameter will be ignored; if the provided field is a scalar, the method will set the element matching the provided field; if the provided field is {\ttfamily N\-U\-L\-L}, the method will set all the elements of the list to the provided sort order. 
+\item {\ttfamily zero}\-: If the parameter evaluates to zero, the operation will do nothing. 
+\item {\itshape other}\-: Any other type will be cast to an integer. 
+\end{DoxyItemize}
+\item {\ttfamily \$get\-Old}\-: This parameter is a boolean which if {\itshape T\-R\-U\-E} will return the {\itshape old} value when replacing values; if {\itshape F\-A\-L\-S\-E}, it will return the currently set value. 
+\end{DoxyItemize}
+
+
+\begin{DoxyParams}[1]{Parameters}
+string & {\em \$the\-Field} & Field name or fields list. \\
+\hline
+mixed & {\em \$the\-Order} & Sort order or operation. \\
+\hline
+boolean & {\em \$get\-Old} & T\-R\-U\-E get old value.\\
+\hline
+\end{DoxyParams}
+public \begin{DoxyReturn}{Returns}
+mixed
+\end{DoxyReturn}
+Manage\-Offset()
+
+\begin{DoxySeeAlso}{See Also}
+k\-A\-P\-I\-\_\-\-S\-O\-R\-T 
+\end{DoxySeeAlso}
+
+
+The documentation for this class was generated from the following file\-:\begin{DoxyCompactItemize}
+\item 
+/\-Library/\-Web\-Server/\-Library/\-P\-H\-P\-Wrapper/classes/C\-Data\-Wrapper\-Client.\-php\end{DoxyCompactItemize}

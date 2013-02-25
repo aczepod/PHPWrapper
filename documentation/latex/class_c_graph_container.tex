@@ -1,0 +1,290 @@
+\hypertarget{class_c_graph_container}{\section{C\-Graph\-Container Class Reference}
+\label{class_c_graph_container}\index{C\-Graph\-Container@{C\-Graph\-Container}}
+}
+Inheritance diagram for C\-Graph\-Container\-:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=6.000000cm]{class_c_graph_container}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{class_c_graph_container_a59ff4c421da0b86a984c1cf7f81ed50c}{New\-Node} (\$the\-Properties=N\-U\-L\-L)
+\item 
+\hyperlink{class_c_graph_container_a6bcbff95d7d44d5d59cb479ad0b94db9}{Set\-Node} (\$the\-Node, \$the\-Properties=N\-U\-L\-L)
+\item 
+\hyperlink{class_c_graph_container_a5ec59fc306eb927f4c1c7c1368d4bc2c}{Get\-Node} (\$the\-Identifier, \$do\-Throw=F\-A\-L\-S\-E)
+\item 
+\hyperlink{class_c_graph_container_a782de8f208c307af33786f8dc99f9593}{Del\-Node} (\$the\-Identifier)
+\item 
+\hyperlink{class_c_graph_container_a066acd7a5b35dffeca98610a75866aa4}{New\-Edge} (\$the\-Subject, \$the\-Predicate, \$the\-Object, \$the\-Properties=N\-U\-L\-L)
+\item 
+\hyperlink{class_c_graph_container_a536acefb01286cc1ccbc211f39179183}{Set\-Edge} (\$the\-Edge)
+\item 
+\hyperlink{class_c_graph_container_a78ad525680cd1c32e3c52cac29a8fe6a}{Get\-Edge} (\$the\-Identifier)
+\item 
+\hyperlink{class_c_graph_container_a54ce16d08b2709625069628171d2a6a5}{Del\-Edge} (\$the\-Identifier)
+\item 
+\hyperlink{class_c_graph_container_a040c1f90e349d61bb8b215ff55afe467}{Get\-Node\-Properties} (\$the\-Node)
+\item 
+\hyperlink{class_c_graph_container_a1980fc8e492c8f436eb9282f72dc2226}{Get\-Node\-Edges} (\$the\-Node, \$the\-Predicate=N\-U\-L\-L, \$the\-Sense=N\-U\-L\-L)
+\end{DoxyCompactItemize}
+\subsection*{Additional Inherited Members}
+
+
+\subsection{Member Function Documentation}
+\hypertarget{class_c_graph_container_a54ce16d08b2709625069628171d2a6a5}{\index{C\-Graph\-Container@{C\-Graph\-Container}!Del\-Edge@{Del\-Edge}}
+\index{Del\-Edge@{Del\-Edge}!CGraphContainer@{C\-Graph\-Container}}
+\subsubsection[{Del\-Edge}]{\setlength{\rightskip}{0pt plus 5cm}C\-Graph\-Container\-::\-Del\-Edge (
+\begin{DoxyParamCaption}
+\item[{}]{\$the\-Identifier}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [abstract]}}}\label{class_c_graph_container_a54ce16d08b2709625069628171d2a6a5}
+\subparagraph*{Delete an existing edge}
+
+This method should delete the provided edge from the current graph.
+
+The method should return {\ttfamily T\-R\-U\-E} if the operation was successful and {\ttfamily N\-U\-L\-L} if the provided identifier is not resolved.
+
+
+\begin{DoxyParams}[1]{Parameters}
+mixed & {\em \$the\-Identifier} & Edge identifier.\\
+\hline
+\end{DoxyParams}
+public \begin{DoxyReturn}{Returns}
+mixed 
+\end{DoxyReturn}
+\hypertarget{class_c_graph_container_a782de8f208c307af33786f8dc99f9593}{\index{C\-Graph\-Container@{C\-Graph\-Container}!Del\-Node@{Del\-Node}}
+\index{Del\-Node@{Del\-Node}!CGraphContainer@{C\-Graph\-Container}}
+\subsubsection[{Del\-Node}]{\setlength{\rightskip}{0pt plus 5cm}C\-Graph\-Container\-::\-Del\-Node (
+\begin{DoxyParamCaption}
+\item[{}]{\$the\-Identifier}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [abstract]}}}\label{class_c_graph_container_a782de8f208c307af33786f8dc99f9593}
+\subparagraph*{Delete an existing node}
+
+This method should delete the provided node from the current graph.
+
+The method should return {\ttfamily T\-R\-U\-E} if the operation was successful and {\ttfamily N\-U\-L\-L} if the provided identifier is not resolved.
+
+
+\begin{DoxyParams}[1]{Parameters}
+mixed & {\em \$the\-Identifier} & Node identifier.\\
+\hline
+\end{DoxyParams}
+public \begin{DoxyReturn}{Returns}
+mixed 
+\end{DoxyReturn}
+\hypertarget{class_c_graph_container_a78ad525680cd1c32e3c52cac29a8fe6a}{\index{C\-Graph\-Container@{C\-Graph\-Container}!Get\-Edge@{Get\-Edge}}
+\index{Get\-Edge@{Get\-Edge}!CGraphContainer@{C\-Graph\-Container}}
+\subsubsection[{Get\-Edge}]{\setlength{\rightskip}{0pt plus 5cm}C\-Graph\-Container\-::\-Get\-Edge (
+\begin{DoxyParamCaption}
+\item[{}]{\$the\-Identifier}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [abstract]}}}\label{class_c_graph_container_a78ad525680cd1c32e3c52cac29a8fe6a}
+\subparagraph*{Get an existing edge}
+
+This method should return an edge corresponding to the provided identifier.
+
+
+\begin{DoxyParams}[1]{Parameters}
+mixed & {\em \$the\-Identifier} & Edge identifier.\\
+\hline
+\end{DoxyParams}
+public \begin{DoxyReturn}{Returns}
+mixed 
+\end{DoxyReturn}
+\hypertarget{class_c_graph_container_a5ec59fc306eb927f4c1c7c1368d4bc2c}{\index{C\-Graph\-Container@{C\-Graph\-Container}!Get\-Node@{Get\-Node}}
+\index{Get\-Node@{Get\-Node}!CGraphContainer@{C\-Graph\-Container}}
+\subsubsection[{Get\-Node}]{\setlength{\rightskip}{0pt plus 5cm}C\-Graph\-Container\-::\-Get\-Node (
+\begin{DoxyParamCaption}
+\item[{}]{\$the\-Identifier, }
+\item[{}]{\$do\-Throw = {\ttfamily FALSE}}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [abstract]}}}\label{class_c_graph_container_a5ec59fc306eb927f4c1c7c1368d4bc2c}
+\subparagraph*{Get an existing node}
+
+This method should return a node corresponding to the provided identifier.
+
+If the second parameter is {\ttfamily T\-R\-U\-E} and the node was not found, the method should raise an exception.
+
+
+\begin{DoxyParams}[1]{Parameters}
+mixed & {\em \$the\-Identifier} & Node identifier. \\
+\hline
+boolean & {\em \$do\-Throw} & T\-R\-U\-E throw exception if not found.\\
+\hline
+\end{DoxyParams}
+public \begin{DoxyReturn}{Returns}
+mixed 
+\end{DoxyReturn}
+\hypertarget{class_c_graph_container_a1980fc8e492c8f436eb9282f72dc2226}{\index{C\-Graph\-Container@{C\-Graph\-Container}!Get\-Node\-Edges@{Get\-Node\-Edges}}
+\index{Get\-Node\-Edges@{Get\-Node\-Edges}!CGraphContainer@{C\-Graph\-Container}}
+\subsubsection[{Get\-Node\-Edges}]{\setlength{\rightskip}{0pt plus 5cm}C\-Graph\-Container\-::\-Get\-Node\-Edges (
+\begin{DoxyParamCaption}
+\item[{}]{\$the\-Node, }
+\item[{}]{\$the\-Predicate = {\ttfamily NULL}, }
+\item[{}]{\$the\-Sense = {\ttfamily NULL}}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [abstract]}}}\label{class_c_graph_container_a1980fc8e492c8f436eb9282f72dc2226}
+\subparagraph*{Get node edges}
+
+This method can be used to retrieve the provided node's edges according to the provided sense.
+
+The method accepts the following parameters\-:
+
+
+\begin{DoxyItemize}
+\item {\ttfamily \$the\-Node}\-: The node of which we want the relationships. 
+\item {\ttfamily \$the\-Predicate}\-: The eventual predicate or predicates references that must be present in the relationships. 
+\item {\ttfamily \$the\-Sense}\-: The relationship direction\-: 
+\begin{DoxyItemize}
+\item {\ttfamily \hyperlink{}{k\-T\-Y\-P\-E\-\_\-\-R\-E\-L\-A\-T\-I\-O\-N\-\_\-\-I\-N}}\-: Incoming relationships, or all edges that point to the provided node. 
+\item {\ttfamily \hyperlink{}{k\-T\-Y\-P\-E\-\_\-\-R\-E\-L\-A\-T\-I\-O\-N\-\_\-\-O\-U\-T}}\-: Outgoing relationships, or all edges to which the current node points to. 
+\item {\ttfamily \hyperlink{}{k\-T\-Y\-P\-E\-\_\-\-R\-E\-L\-A\-T\-I\-O\-N\-\_\-\-A\-L\-L}}\-: All relationships, or all edges that point or to which the provided node points to. 
+\end{DoxyItemize}
+\end{DoxyItemize}
+
+The method should return an array of edges.
+
+
+\begin{DoxyParams}[1]{Parameters}
+mixed & {\em \$the\-Node} & Reference node. \\
+\hline
+mixed & {\em \$the\-Predicate} & Edge predicates filter. \\
+\hline
+string & {\em \$the\-Sense} & Relationship sense.\\
+\hline
+\end{DoxyParams}
+public \begin{DoxyReturn}{Returns}
+mixed 
+\end{DoxyReturn}
+\hypertarget{class_c_graph_container_a040c1f90e349d61bb8b215ff55afe467}{\index{C\-Graph\-Container@{C\-Graph\-Container}!Get\-Node\-Properties@{Get\-Node\-Properties}}
+\index{Get\-Node\-Properties@{Get\-Node\-Properties}!CGraphContainer@{C\-Graph\-Container}}
+\subsubsection[{Get\-Node\-Properties}]{\setlength{\rightskip}{0pt plus 5cm}C\-Graph\-Container\-::\-Get\-Node\-Properties (
+\begin{DoxyParamCaption}
+\item[{}]{\$the\-Node}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [abstract]}}}\label{class_c_graph_container_a040c1f90e349d61bb8b215ff55afe467}
+\subparagraph*{Get node properties}
+
+This method can be used to retrieve the provided node's properties.
+
+The method accepts one parameter which can either be the node, or the node identifier for which we want the properties.
+
+If the node reference is not resolved, the method should return {\ttfamily F\-A\-L\-S\-E}.
+
+If the provided node is not of the correct type, the method should raise an exception.
+
+
+\begin{DoxyParams}[1]{Parameters}
+mixed & {\em \$the\-Node} & Node object or reference.\\
+\hline
+\end{DoxyParams}
+public \begin{DoxyReturn}{Returns}
+array The node properties 
+\end{DoxyReturn}
+\hypertarget{class_c_graph_container_a066acd7a5b35dffeca98610a75866aa4}{\index{C\-Graph\-Container@{C\-Graph\-Container}!New\-Edge@{New\-Edge}}
+\index{New\-Edge@{New\-Edge}!CGraphContainer@{C\-Graph\-Container}}
+\subsubsection[{New\-Edge}]{\setlength{\rightskip}{0pt plus 5cm}C\-Graph\-Container\-::\-New\-Edge (
+\begin{DoxyParamCaption}
+\item[{}]{\$the\-Subject, }
+\item[{}]{\$the\-Predicate, }
+\item[{}]{\$the\-Object, }
+\item[{}]{\$the\-Properties = {\ttfamily NULL}}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [abstract]}}}\label{class_c_graph_container_a066acd7a5b35dffeca98610a75866aa4}
+\subparagraph*{Create a new edge}
+
+This method should return a new edge connecting the provided subject and object nodes via the provided predicate, holding the eventual provided properties.
+
+The returned edge is not supposed to be saved yet.
+
+
+\begin{DoxyParams}[1]{Parameters}
+mixed & {\em \$the\-Subject} & Subject node. \\
+\hline
+array & {\em \$the\-Predicate} & Edge predicate. \\
+\hline
+mixed & {\em \$the\-Object} & Object node. \\
+\hline
+array & {\em \$the\-Properties} & Edge properties.\\
+\hline
+\end{DoxyParams}
+public \begin{DoxyReturn}{Returns}
+mixed 
+\end{DoxyReturn}
+\hypertarget{class_c_graph_container_a59ff4c421da0b86a984c1cf7f81ed50c}{\index{C\-Graph\-Container@{C\-Graph\-Container}!New\-Node@{New\-Node}}
+\index{New\-Node@{New\-Node}!CGraphContainer@{C\-Graph\-Container}}
+\subsubsection[{New\-Node}]{\setlength{\rightskip}{0pt plus 5cm}C\-Graph\-Container\-::\-New\-Node (
+\begin{DoxyParamCaption}
+\item[{}]{\$the\-Properties = {\ttfamily NULL}}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [abstract]}}}\label{class_c_graph_container_a59ff4c421da0b86a984c1cf7f81ed50c}
+\subparagraph*{Create a new node}
+
+This method should return a new node optionally filled with the provided attributes.
+
+The returned node is not supposed to be saved yet.
+
+
+\begin{DoxyParams}[1]{Parameters}
+array & {\em \$the\-Properties} & Node properties.\\
+\hline
+\end{DoxyParams}
+public \begin{DoxyReturn}{Returns}
+mixed 
+\end{DoxyReturn}
+\hypertarget{class_c_graph_container_a536acefb01286cc1ccbc211f39179183}{\index{C\-Graph\-Container@{C\-Graph\-Container}!Set\-Edge@{Set\-Edge}}
+\index{Set\-Edge@{Set\-Edge}!CGraphContainer@{C\-Graph\-Container}}
+\subsubsection[{Set\-Edge}]{\setlength{\rightskip}{0pt plus 5cm}C\-Graph\-Container\-::\-Set\-Edge (
+\begin{DoxyParamCaption}
+\item[{}]{\$the\-Edge}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [abstract]}}}\label{class_c_graph_container_a536acefb01286cc1ccbc211f39179183}
+\subparagraph*{Save an edge}
+
+This method should insert or update the provided edge in the current graph.
+
+The method should return the edge identifier if the operation was successful.
+
+
+\begin{DoxyParams}[1]{Parameters}
+mixed & {\em \$the\-Edge} & Edge to be saved.\\
+\hline
+\end{DoxyParams}
+public \begin{DoxyReturn}{Returns}
+mixed 
+\end{DoxyReturn}
+\hypertarget{class_c_graph_container_a6bcbff95d7d44d5d59cb479ad0b94db9}{\index{C\-Graph\-Container@{C\-Graph\-Container}!Set\-Node@{Set\-Node}}
+\index{Set\-Node@{Set\-Node}!CGraphContainer@{C\-Graph\-Container}}
+\subsubsection[{Set\-Node}]{\setlength{\rightskip}{0pt plus 5cm}C\-Graph\-Container\-::\-Set\-Node (
+\begin{DoxyParamCaption}
+\item[{}]{\$the\-Node, }
+\item[{}]{\$the\-Properties = {\ttfamily NULL}}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [abstract]}}}\label{class_c_graph_container_a6bcbff95d7d44d5d59cb479ad0b94db9}
+\subparagraph*{Save a node}
+
+This method should insert or update the provided node in the current graph.
+
+The method should return the node identifier if the operation was successful.
+
+If you provide the {\ttfamily \$the\-Properties} parameter, these will be set in the node before it is saved.
+
+
+\begin{DoxyParams}[1]{Parameters}
+mixed & {\em \$the\-Node} & Node to be saved. \\
+\hline
+mixed & {\em \$the\-Properties} & Node properties.\\
+\hline
+\end{DoxyParams}
+public \begin{DoxyReturn}{Returns}
+mixed 
+\end{DoxyReturn}
+
+
+The documentation for this class was generated from the following file\-:\begin{DoxyCompactItemize}
+\item 
+/\-Library/\-Web\-Server/\-Library/\-P\-H\-P\-Wrapper/classes/C\-Graph\-Container.\-php\end{DoxyCompactItemize}

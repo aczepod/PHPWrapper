@@ -1,0 +1,143 @@
+\hypertarget{class_c_mongo_database}{\section{C\-Mongo\-Database Class Reference}
+\label{class_c_mongo_database}\index{C\-Mongo\-Database@{C\-Mongo\-Database}}
+}
+Inheritance diagram for C\-Mongo\-Database\-:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=6.000000cm]{class_c_mongo_database}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{class_c_mongo_database_ac9b493d1c9a23cd6d06d4d636e53bd93}{\-\_\-\-\_\-construct} (\$the\-Connection=N\-U\-L\-L, \$the\-Options=N\-U\-L\-L)
+\item 
+\hyperlink{class_c_mongo_database_aa4a30efd8f5de278647f1232348a4a04}{\-\_\-\-\_\-to\-String} ()
+\item 
+\hyperlink{class_c_mongo_database_a6df2c2b97dd495d7f2bd30df63ab37ab}{Connection} (\$the\-Value=N\-U\-L\-L, \$get\-Old=F\-A\-L\-S\-E)
+\item 
+\hyperlink{class_c_mongo_database_ae7f6d6bfbb128c284159cc63ea54ce45}{Drop} ()
+\item 
+\hyperlink{class_c_mongo_database_a22b8212f2ae256c883ba58140d8fe01a}{Container} (\$the\-Container=N\-U\-L\-L)
+\end{DoxyCompactItemize}
+\subsection*{Additional Inherited Members}
+
+
+\subsection{Constructor \& Destructor Documentation}
+\hypertarget{class_c_mongo_database_ac9b493d1c9a23cd6d06d4d636e53bd93}{\index{C\-Mongo\-Database@{C\-Mongo\-Database}!\-\_\-\-\_\-construct@{\-\_\-\-\_\-construct}}
+\index{\-\_\-\-\_\-construct@{\-\_\-\-\_\-construct}!CMongoDatabase@{C\-Mongo\-Database}}
+\subsubsection[{\-\_\-\-\_\-construct}]{\setlength{\rightskip}{0pt plus 5cm}C\-Mongo\-Database\-::\-\_\-\-\_\-construct (
+\begin{DoxyParamCaption}
+\item[{}]{\$the\-Connection = {\ttfamily NULL}, }
+\item[{}]{\$the\-Options = {\ttfamily NULL}}
+\end{DoxyParamCaption}
+)}}\label{class_c_mongo_database_ac9b493d1c9a23cd6d06d4d636e53bd93}
+\subparagraph*{Instantiate class}
+
+The method accepts the same parameters as the \hyperlink{}{Mongo\-D\-B} constructor, the first one represents the server object, the second represents the database name, if the latter is missing, the method will raise an exception.
+
+The method will also accept a server object in the first parameter, in that case the second parameter will be ignored.
+
+The method will first attempt to instantiate the \hyperlink{}{Mongo\-D\-B} object, it will then store it in the connection data member.
+
+
+\begin{DoxyParams}[1]{Parameters}
+mixed & {\em \$the\-Connection} & Server or database. \\
+\hline
+mixed & {\em \$the\-Options} & Database name.\\
+\hline
+\end{DoxyParams}
+public
+
+\hyperlink{class_c_mongo_database_a6df2c2b97dd495d7f2bd30df63ab37ab}{Connection()} 
+
+\subsection{Member Function Documentation}
+\hypertarget{class_c_mongo_database_aa4a30efd8f5de278647f1232348a4a04}{\index{C\-Mongo\-Database@{C\-Mongo\-Database}!\-\_\-\-\_\-to\-String@{\-\_\-\-\_\-to\-String}}
+\index{\-\_\-\-\_\-to\-String@{\-\_\-\-\_\-to\-String}!CMongoDatabase@{C\-Mongo\-Database}}
+\subsubsection[{\-\_\-\-\_\-to\-String}]{\setlength{\rightskip}{0pt plus 5cm}C\-Mongo\-Database\-::\-\_\-\-\_\-to\-String (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{class_c_mongo_database_aa4a30efd8f5de278647f1232348a4a04}
+\subparagraph*{Return connection name}
+
+In this class the method will return the server's connection U\-R\-L, which corresponds to the \hyperlink{}{k\-O\-F\-F\-S\-E\-T\-\_\-\-N\-A\-M\-E} offset.
+
+public \begin{DoxyReturn}{Returns}
+string The connection name. 
+\end{DoxyReturn}
+\hypertarget{class_c_mongo_database_a6df2c2b97dd495d7f2bd30df63ab37ab}{\index{C\-Mongo\-Database@{C\-Mongo\-Database}!Connection@{Connection}}
+\index{Connection@{Connection}!CMongoDatabase@{C\-Mongo\-Database}}
+\subsubsection[{Connection}]{\setlength{\rightskip}{0pt plus 5cm}C\-Mongo\-Database\-::\-Connection (
+\begin{DoxyParamCaption}
+\item[{}]{\$the\-Value = {\ttfamily NULL}, }
+\item[{}]{\$get\-Old = {\ttfamily FALSE}}
+\end{DoxyParamCaption}
+)}}\label{class_c_mongo_database_a6df2c2b97dd495d7f2bd30df63ab37ab}
+\subparagraph*{Manage native connection}
+
+We overload this method to ensure the provided value is an instance of \hyperlink{}{Mongo}, if this is not the case, the method will raise an exception.
+
+The method will attempt to parse the provided server U\-R\-L and store the results in the array part of the object. For more information on the parsed elements consult the P\-H\-P \hyperlink{}{parse\-\_\-url()} function.
+
+Although the database name can be obtained from the native connection, we still store it in the \hyperlink{}{k\-O\-F\-F\-S\-E\-T\-\_\-\-N\-A\-M\-E} offset for consistency with other connection objects.
+
+
+\begin{DoxyParams}[1]{Parameters}
+mixed & {\em \$the\-Value} & Native connection or operation. \\
+\hline
+boolean & {\em \$get\-Old} & {\ttfamily T\-R\-U\-E} get old value.\\
+\hline
+\end{DoxyParams}
+public \begin{DoxyReturn}{Returns}
+mixed {\itshape New} or {\itshape old} native connection.
+\end{DoxyReturn}
+
+\begin{DoxyExceptions}{Exceptions}
+{\em Exception} & \\
+\hline
+\end{DoxyExceptions}
+\hypertarget{class_c_mongo_database_a22b8212f2ae256c883ba58140d8fe01a}{\index{C\-Mongo\-Database@{C\-Mongo\-Database}!Container@{Container}}
+\index{Container@{Container}!CMongoDatabase@{C\-Mongo\-Database}}
+\subsubsection[{Container}]{\setlength{\rightskip}{0pt plus 5cm}C\-Mongo\-Database\-::\-Container (
+\begin{DoxyParamCaption}
+\item[{}]{\$the\-Container = {\ttfamily NULL}}
+\end{DoxyParamCaption}
+)}}\label{class_c_mongo_database_a22b8212f2ae256c883ba58140d8fe01a}
+\subparagraph*{Generate a container object}
+
+In this class we return \hyperlink{class_c_mongo_container}{C\-Mongo\-Container} instances, the provided parameter is interpreted as the container name.
+
+If you omit the parameter, the method will raise an exception, in derived classes you can overload the method to provide a default container name.
+
+If the object does not have its native connection, the method will also raise an exception.
+
+
+\begin{DoxyParams}[1]{Parameters}
+string & {\em \$the\-Container} & Container name.\\
+\hline
+\end{DoxyParams}
+public \begin{DoxyReturn}{Returns}
+mixed The container object.
+\end{DoxyReturn}
+
+\begin{DoxyExceptions}{Exceptions}
+{\em Exception} & \hyperlink{class_c_status_document_a954dee06e219e0a0f2e7fa6edac56e28}{\-\_\-\-Is\-Inited()} \\
+\hline
+\end{DoxyExceptions}
+\hypertarget{class_c_mongo_database_ae7f6d6bfbb128c284159cc63ea54ce45}{\index{C\-Mongo\-Database@{C\-Mongo\-Database}!Drop@{Drop}}
+\index{Drop@{Drop}!CMongoDatabase@{C\-Mongo\-Database}}
+\subsubsection[{Drop}]{\setlength{\rightskip}{0pt plus 5cm}C\-Mongo\-Database\-::\-Drop (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{class_c_mongo_database_ae7f6d6bfbb128c284159cc63ea54ce45}
+\subparagraph*{Delete a database}
+
+In this class we drop the database.
+
+public 
+
+The documentation for this class was generated from the following file\-:\begin{DoxyCompactItemize}
+\item 
+/\-Library/\-Web\-Server/\-Library/\-P\-H\-P\-Wrapper/classes/C\-Mongo\-Database.\-php\end{DoxyCompactItemize}

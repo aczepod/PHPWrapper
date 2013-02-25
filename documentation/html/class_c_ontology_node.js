@@ -1,0 +1,25 @@
+var class_c_ontology_node =
+[
+    [ "__toString", "class_c_ontology_node.html#ae074c6f51676b4ef5fc3d7fd1c3149af", null ],
+    [ "_AddGraphNode", "class_c_ontology_node.html#aa91367053433a0bdd052650f9eb54a7c", null ],
+    [ "_GraphNodeProperties", "class_c_ontology_node.html#a1b13e21b3b634b6fd66d5dce38a79b9a", null ],
+    [ "_LoadTermAttributes", "class_c_ontology_node.html#a140f5db26f804f0347f09b3959ed75da", null ],
+    [ "_NewEdge", "class_c_ontology_node.html#a1b559f9ace69d7768a7acb8a7364d493", null ],
+    [ "_PostcommitCleanup", "class_c_ontology_node.html#afee8b58f970fe3ff8bc07ef80c771558", null ],
+    [ "_PostcommitRelated", "class_c_ontology_node.html#a2a86e54a0b6336b3014eb3dc0f41a103", null ],
+    [ "_PrecommitIdentify", "class_c_ontology_node.html#aca703ceb64a2175b2b432bf50874015a", null ],
+    [ "_PrecommitRelated", "class_c_ontology_node.html#acc47d27e9a861190b00a6efb39f7c825", null ],
+    [ "_Preset", "class_c_ontology_node.html#a75c282c323e10fed112e14488d5962c5", null ],
+    [ "_Preunset", "class_c_ontology_node.html#a93662baceebafc3d02904083aaab7c29", null ],
+    [ "_TermAttributes", "class_c_ontology_node.html#a0dd83a16ead60eba2e6782f1dfab2f72", null ],
+    [ "DefaultContainerName", "class_c_ontology_node.html#a66c5bc42f0cbb921105795127fa816cf", null ],
+    [ "GetGraphNode", "class_c_ontology_node.html#a0dc5644213c5599332a024af2160c9f1", null ],
+    [ "GetGraphNodeProperties", "class_c_ontology_node.html#a8da921e4518e6c9bfc0f2ce6eefe7697", null ],
+    [ "LoadTerm", "class_c_ontology_node.html#a09eb3d9d16775d7752fd7bf62dd93d74", null ],
+    [ "Replace", "class_c_ontology_node.html#afc20c775f2ae9e01a2d8e50c95b00baf", null ],
+    [ "Resolve", "class_c_ontology_node.html#af249fcb695d7d3ceeed5a74446df0822", null ],
+    [ "ResolvePID", "class_c_ontology_node.html#aa29329d76906e4d2a5f5589a909074a1", null ],
+    [ "Type", "class_c_ontology_node.html#afc2d00b2e6dd8ecc37d87a593581bc3a", null ],
+    [ "Update", "class_c_ontology_node.html#a249a067e22e3d721958903e5b6c36b84", null ],
+    [ "$mTerm", "class_c_ontology_node.html#a23aa9d9d9cde004bc251dc98c192652d", null ]
+];

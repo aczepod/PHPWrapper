@@ -1,0 +1,699 @@
+\hypertarget{class_c_ontology_node}{\section{C\-Ontology\-Node Class Reference}
+\label{class_c_ontology_node}\index{C\-Ontology\-Node@{C\-Ontology\-Node}}
+}
+Inheritance diagram for C\-Ontology\-Node\-:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=9.000000cm]{class_c_ontology_node}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{class_c_ontology_node_ae074c6f51676b4ef5fc3d7fd1c3149af}{\-\_\-\-\_\-to\-String} ()
+\item 
+\hyperlink{class_c_ontology_node_afc2d00b2e6dd8ecc37d87a593581bc3a}{Type} (\$the\-Value=N\-U\-L\-L, \$the\-Operation=N\-U\-L\-L, \$get\-Old=F\-A\-L\-S\-E)
+\item 
+\hyperlink{class_c_ontology_node_a09eb3d9d16775d7752fd7bf62dd93d74}{Load\-Term} (\hyperlink{class_c_connection}{C\-Connection} \$the\-Connection, \$do\-Reload=F\-A\-L\-S\-E)
+\item 
+\hyperlink{class_c_ontology_node_a0dc5644213c5599332a024af2160c9f1}{Get\-Graph\-Node} (\hyperlink{class_c_connection}{C\-Connection} \$the\-Connection, \$the\-Identifier=N\-U\-L\-L)
+\item 
+\hyperlink{class_c_ontology_node_a8da921e4518e6c9bfc0f2ce6eefe7697}{Get\-Graph\-Node\-Properties} (\hyperlink{class_c_connection}{C\-Connection} \$the\-Connection, \$the\-Identifier=N\-U\-L\-L)
+\item 
+\hyperlink{class_c_ontology_node_a249a067e22e3d721958903e5b6c36b84}{Update} (\hyperlink{class_c_connection}{C\-Connection} \$the\-Connection)
+\item 
+\hyperlink{class_c_ontology_node_afc20c775f2ae9e01a2d8e50c95b00baf}{Replace} (\hyperlink{class_c_connection}{C\-Connection} \$the\-Connection)
+\end{DoxyCompactItemize}
+\subsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+static \hyperlink{class_c_ontology_node_a66c5bc42f0cbb921105795127fa816cf}{Default\-Container\-Name} ()
+\item 
+static \hyperlink{class_c_ontology_node_af249fcb695d7d3ceeed5a74446df0822}{Resolve} (\hyperlink{class_c_connection}{C\-Connection} \$the\-Connection, \$the\-Identifier, \$do\-Throw=F\-A\-L\-S\-E)
+\item 
+static \hyperlink{class_c_ontology_node_aa29329d76906e4d2a5f5589a909074a1}{Resolve\-P\-I\-D} (\hyperlink{class_c_connection}{C\-Connection} \$the\-Connection, \$the\-Identifier, \$do\-Throw=F\-A\-L\-S\-E, \$do\-Object=F\-A\-L\-S\-E)
+\end{DoxyCompactItemize}
+\subsection*{Protected Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{class_c_ontology_node_a75c282c323e10fed112e14488d5962c5}{\-\_\-\-Preset} (\&\$the\-Offset, \&\$the\-Value)
+\item 
+\hyperlink{class_c_ontology_node_a93662baceebafc3d02904083aaab7c29}{\-\_\-\-Preunset} (\&\$the\-Offset)
+\item 
+\hyperlink{class_c_ontology_node_acc47d27e9a861190b00a6efb39f7c825}{\-\_\-\-Precommit\-Related} (\&\$the\-Connection, \&\$the\-Modifiers)
+\item 
+\hyperlink{class_c_ontology_node_aca703ceb64a2175b2b432bf50874015a}{\-\_\-\-Precommit\-Identify} (\&\$the\-Connection, \&\$the\-Modifiers)
+\item 
+\hyperlink{class_c_ontology_node_a2a86e54a0b6336b3014eb3dc0f41a103}{\-\_\-\-Postcommit\-Related} (\&\$the\-Connection, \&\$the\-Modifiers)
+\item 
+\hyperlink{class_c_ontology_node_afee8b58f970fe3ff8bc07ef80c771558}{\-\_\-\-Postcommit\-Cleanup} (\&\$the\-Connection, \&\$the\-Modifiers)
+\item 
+\hyperlink{class_c_ontology_node_a140f5db26f804f0347f09b3959ed75da}{\-\_\-\-Load\-Term\-Attributes} (\$the\-Attributes=N\-U\-L\-L)
+\item 
+\hyperlink{class_c_ontology_node_a0dd83a16ead60eba2e6782f1dfab2f72}{\-\_\-\-Term\-Attributes} ()
+\item 
+\hyperlink{class_c_ontology_node_aa91367053433a0bdd052650f9eb54a7c}{\-\_\-\-Add\-Graph\-Node} (\hyperlink{class_c_graph_container}{C\-Graph\-Container} \$the\-Graph, \$the\-Identifier=N\-U\-L\-L, \$the\-Properties=N\-U\-L\-L)
+\item 
+\hyperlink{class_c_ontology_node_a1b13e21b3b634b6fd66d5dce38a79b9a}{\-\_\-\-Graph\-Node\-Properties} (\$the\-Properties=N\-U\-L\-L)
+\item 
+\hyperlink{class_c_ontology_node_a1b559f9ace69d7768a7acb8a7364d493}{\-\_\-\-New\-Edge} ()
+\end{DoxyCompactItemize}
+\subsection*{Protected Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{class_c_ontology_node_a23aa9d9d9cde004bc251dc98c192652d}{{\bfseries \$m\-Term} = N\-U\-L\-L}\label{class_c_ontology_node_a23aa9d9d9cde004bc251dc98c192652d}
+
+\end{DoxyCompactItemize}
+
+
+\subsection{Member Function Documentation}
+\hypertarget{class_c_ontology_node_ae074c6f51676b4ef5fc3d7fd1c3149af}{\index{C\-Ontology\-Node@{C\-Ontology\-Node}!\-\_\-\-\_\-to\-String@{\-\_\-\-\_\-to\-String}}
+\index{\-\_\-\-\_\-to\-String@{\-\_\-\-\_\-to\-String}!COntologyNode@{C\-Ontology\-Node}}
+\subsubsection[{\-\_\-\-\_\-to\-String}]{\setlength{\rightskip}{0pt plus 5cm}C\-Ontology\-Node\-::\-\_\-\-\_\-to\-String (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{class_c_ontology_node_ae074c6f51676b4ef5fc3d7fd1c3149af}
+\subparagraph*{Return object name}
+
+This method should return the current object's name which should represent the unique identifier of the object.
+
+By default we return the string representation of the term, \hyperlink{}{k\-T\-A\-G\-\_\-\-T\-E\-R\-M}.
+
+public \begin{DoxyReturn}{Returns}
+string The connection name. 
+\end{DoxyReturn}
+\hypertarget{class_c_ontology_node_aa91367053433a0bdd052650f9eb54a7c}{\index{C\-Ontology\-Node@{C\-Ontology\-Node}!\-\_\-\-Add\-Graph\-Node@{\-\_\-\-Add\-Graph\-Node}}
+\index{\-\_\-\-Add\-Graph\-Node@{\-\_\-\-Add\-Graph\-Node}!COntologyNode@{C\-Ontology\-Node}}
+\subsubsection[{\-\_\-\-Add\-Graph\-Node}]{\setlength{\rightskip}{0pt plus 5cm}C\-Ontology\-Node\-::\-\_\-\-Add\-Graph\-Node (
+\begin{DoxyParamCaption}
+\item[{{\bf C\-Graph\-Container}}]{\$the\-Graph, }
+\item[{}]{\$the\-Identifier = {\ttfamily NULL}, }
+\item[{}]{\$the\-Properties = {\ttfamily NULL}}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [protected]}}}\label{class_c_ontology_node_aa91367053433a0bdd052650f9eb54a7c}
+\subparagraph*{Create or update a graph node}
+
+This method will create and save a new graph node in the provided graph container and return its newly created identifier, or retrieve a graph node and update its properties.
+
+This method is called by \hyperlink{class_c_ontology_node_aca703ceb64a2175b2b432bf50874015a}{\-\_\-\-Precommit\-Identify()} to set the new node \hyperlink{}{k\-T\-A\-G\-\_\-\-N\-I\-D} and from other methods to update the node properties.
+
+This method will use the \hyperlink{class_c_ontology_node_a1b13e21b3b634b6fd66d5dce38a79b9a}{\-\_\-\-Graph\-Node\-Properties()} method to determine which attributes will be set in the graph node.
+
+The method expects the following parameters\-:
+
+
+\begin{DoxyItemize}
+\item {\ttfamily \$the\-Graph}\-: The graph container or client. 
+\item {\ttfamily \$the\-Identifier}\-: The graph node identifier, if provided, it means that we want to update an existing graph node and the parameter is its identifier. If the node cannot be located in the graph, the method should raise an exception. If the parameter is not provided, it means that we want to create a new graph node. 
+\item {\ttfamily \$the\-Properties}\-: The graph node properties, if provided, the new or existing node will have its properties replaced with the ones in this parameter; if not provided, the \hyperlink{class_c_ontology_node_a1b13e21b3b634b6fd66d5dce38a79b9a}{\-\_\-\-Graph\-Node\-Properties()} method will be used to extract the required properties from the current node and update or set the graph node's. 
+\end{DoxyItemize}
+
+The method should raise an exception if the operation fails.
+
+
+\begin{DoxyParams}[1]{Parameters}
+\hyperlink{class_c_graph_container}{C\-Graph\-Container} & {\em \$the\-Graph} & Graph container. \\
+\hline
+integer & {\em \$the\-Identifier} & Graph node identifier. \\
+\hline
+array & {\em \$the\-Properties} & Graph node properties.\\
+\hline
+\end{DoxyParams}
+protected \begin{DoxyReturn}{Returns}
+integer Newly created or existing node I\-D. 
+\end{DoxyReturn}
+\hypertarget{class_c_ontology_node_a1b13e21b3b634b6fd66d5dce38a79b9a}{\index{C\-Ontology\-Node@{C\-Ontology\-Node}!\-\_\-\-Graph\-Node\-Properties@{\-\_\-\-Graph\-Node\-Properties}}
+\index{\-\_\-\-Graph\-Node\-Properties@{\-\_\-\-Graph\-Node\-Properties}!COntologyNode@{C\-Ontology\-Node}}
+\subsubsection[{\-\_\-\-Graph\-Node\-Properties}]{\setlength{\rightskip}{0pt plus 5cm}C\-Ontology\-Node\-::\-\_\-\-Graph\-Node\-Properties (
+\begin{DoxyParamCaption}
+\item[{}]{\$the\-Properties = {\ttfamily NULL}}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [protected]}}}\label{class_c_ontology_node_a1b13e21b3b634b6fd66d5dce38a79b9a}
+\subparagraph*{Return the list of graph node tags}
+
+This method should return an array of attributes which represents the list of properties which should be transferred to the graph node.
+
+This method can be overloaded as more specialised node classes are developed, the main reason for this method is to control which properties should be copied to the graph and which properties are supported by the graph nodes.
+
+The method accepts an optional parameter, {\ttfamily \$the\-Properties}, which represents an array of attributes that can be filtered by this method\-: only those elements which match the tags supported by this method will be selected. This parameter can be an array or Array\-Object, any other type will trigger an exception.
+
+In this class we copy the \hyperlink{}{k\-T\-A\-G\-\_\-\-G\-I\-D}, \hyperlink{}{k\-T\-A\-G\-\_\-\-C\-A\-T\-E\-G\-O\-R\-Y}, \hyperlink{}{k\-T\-A\-G\-\_\-\-K\-I\-N\-D} and \hyperlink{}{k\-T\-A\-G\-\_\-\-T\-Y\-P\-E} attributes. Note that the \hyperlink{}{k\-T\-A\-G\-\_\-\-G\-I\-D} attribute will only be copied in derived classes that add that term's attribute to the current node.
+
+
+\begin{DoxyParams}[1]{Parameters}
+array & {\em \$the\-Properties} & Base properties.\\
+\hline
+\end{DoxyParams}
+protected \begin{DoxyReturn}{Returns}
+array List of properties. 
+\end{DoxyReturn}
+\hypertarget{class_c_ontology_node_a140f5db26f804f0347f09b3959ed75da}{\index{C\-Ontology\-Node@{C\-Ontology\-Node}!\-\_\-\-Load\-Term\-Attributes@{\-\_\-\-Load\-Term\-Attributes}}
+\index{\-\_\-\-Load\-Term\-Attributes@{\-\_\-\-Load\-Term\-Attributes}!COntologyNode@{C\-Ontology\-Node}}
+\subsubsection[{\-\_\-\-Load\-Term\-Attributes}]{\setlength{\rightskip}{0pt plus 5cm}C\-Ontology\-Node\-::\-\_\-\-Load\-Term\-Attributes (
+\begin{DoxyParamCaption}
+\item[{}]{\$the\-Attributes = {\ttfamily NULL}}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [protected]}}}\label{class_c_ontology_node_a140f5db26f804f0347f09b3959ed75da}
+\subparagraph*{Load term attributes}
+
+This method can be used to copy selected term attributes to the current object, this is used to cache searchable term attributes directly in the node, to prevent having to search both terms and nodes.
+
+The method accepts a single parameter, {\ttfamily \$the\-Attributes}, which is the list of term attribute tags which should be copied to this object. If the parameter is omitted, the method will copy all attributes.
+
+This method will first load the term attributes, then overwrite them with the node attributes, this effectively makes matching node attributes overwrite term attributes.
+
+The method is called by \hyperlink{class_c_persistent_document_a23cfbb5ebf75e008622ab9e723472c70}{\-\_\-\-Precommit()}, in derived classes you can call the parent method and add custom attributes in the derived method.
+
+In this class this method is not called, in derived classes you should explicitly invoke it.
+
+
+\begin{DoxyParams}[1]{Parameters}
+array & {\em \$the\-Attributes} & Term attribute tags list.\\
+\hline
+\end{DoxyParams}
+protected
+
+\begin{DoxySeeAlso}{See Also}
+k\-T\-A\-G\-\_\-\-T\-E\-R\-M k\-T\-A\-G\-\_\-\-N\-O\-D\-E\-S 
+
+k\-F\-L\-A\-G\-\_\-\-P\-E\-R\-S\-I\-S\-T\-\_\-\-M\-O\-D\-I\-F\-Y k\-F\-L\-A\-G\-\_\-\-M\-O\-D\-I\-F\-Y\-\_\-\-A\-D\-D\-S\-E\-T k\-F\-L\-A\-G\-\_\-\-M\-O\-D\-I\-F\-Y\-\_\-\-P\-U\-L\-L 
+\end{DoxySeeAlso}
+\hypertarget{class_c_ontology_node_a1b559f9ace69d7768a7acb8a7364d493}{\index{C\-Ontology\-Node@{C\-Ontology\-Node}!\-\_\-\-New\-Edge@{\-\_\-\-New\-Edge}}
+\index{\-\_\-\-New\-Edge@{\-\_\-\-New\-Edge}!COntologyNode@{C\-Ontology\-Node}}
+\subsubsection[{\-\_\-\-New\-Edge}]{\setlength{\rightskip}{0pt plus 5cm}C\-Ontology\-Node\-::\-\_\-\-New\-Edge (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [protected]}}}\label{class_c_ontology_node_a1b559f9ace69d7768a7acb8a7364d493}
+\subparagraph*{Return a new edge instance}
+
+In this class we return a \hyperlink{class_c_ontology_edge}{C\-Ontology\-Edge} instance.
+
+protected \begin{DoxyReturn}{Returns}
+\hyperlink{class_c_edge}{C\-Edge} 
+\end{DoxyReturn}
+\hypertarget{class_c_ontology_node_afee8b58f970fe3ff8bc07ef80c771558}{\index{C\-Ontology\-Node@{C\-Ontology\-Node}!\-\_\-\-Postcommit\-Cleanup@{\-\_\-\-Postcommit\-Cleanup}}
+\index{\-\_\-\-Postcommit\-Cleanup@{\-\_\-\-Postcommit\-Cleanup}!COntologyNode@{C\-Ontology\-Node}}
+\subsubsection[{\-\_\-\-Postcommit\-Cleanup}]{\setlength{\rightskip}{0pt plus 5cm}C\-Ontology\-Node\-::\-\_\-\-Postcommit\-Cleanup (
+\begin{DoxyParamCaption}
+\item[{\&}]{\$the\-Connection, }
+\item[{\&}]{\$the\-Modifiers}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [protected]}}}\label{class_c_ontology_node_afee8b58f970fe3ff8bc07ef80c771558}
+\subparagraph*{Cleanup the object after committing}
+
+In this class we reset the term object cache, we set the data member to {\ttfamily N\-U\-L\-L} so that next time one wants to retrieve the term object, it will have to be refreshed and its references actualised.
+
+
+\begin{DoxyParams}[1]{Parameters}
+reference & {\em \&\$the\-Connection} & Server, database or container. \\
+\hline
+reference & {\em \&\$the\-Modifiers} & Commit options.\\
+\hline
+\end{DoxyParams}
+protected \hypertarget{class_c_ontology_node_a2a86e54a0b6336b3014eb3dc0f41a103}{\index{C\-Ontology\-Node@{C\-Ontology\-Node}!\-\_\-\-Postcommit\-Related@{\-\_\-\-Postcommit\-Related}}
+\index{\-\_\-\-Postcommit\-Related@{\-\_\-\-Postcommit\-Related}!COntologyNode@{C\-Ontology\-Node}}
+\subsubsection[{\-\_\-\-Postcommit\-Related}]{\setlength{\rightskip}{0pt plus 5cm}C\-Ontology\-Node\-::\-\_\-\-Postcommit\-Related (
+\begin{DoxyParamCaption}
+\item[{\&}]{\$the\-Connection, }
+\item[{\&}]{\$the\-Modifiers}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [protected]}}}\label{class_c_ontology_node_a2a86e54a0b6336b3014eb3dc0f41a103}
+\subparagraph*{Update related objects after committing}
+
+In this class we handle referenced terms, \hyperlink{}{k\-T\-A\-G\-\_\-\-T\-E\-R\-M}\-: depending on the value of the \hyperlink{}{k\-S\-W\-I\-T\-C\-H\-\_\-k\-T\-A\-G\-\_\-\-N\-O\-D\-E\-S} flag we do the following\-:
+
+
+\begin{DoxyItemize}
+\item {\ttfamily 0x2}\-: {\itshape Keep count of references}. This means that the \hyperlink{}{k\-T\-A\-G\-\_\-\-N\-O\-D\-E\-S} attribute of the term referenced by the \hyperlink{}{k\-T\-A\-G\-\_\-\-T\-E\-R\-M} attribute will be incremented when the object is inserted, or decremented when deleted. 
+\item {\ttfamily 0x3}\-: {\itshape Keep list of references}. This means that a reference to the current object will be added to the \hyperlink{}{k\-T\-A\-G\-\_\-\-N\-O\-D\-E\-S} attribute of the term referenced by \hyperlink{}{k\-T\-A\-G\-\_\-\-T\-E\-R\-M} attribute of the current object when the latter is inserted, and removed when the object is deleted. 
+\item {\ttfamily 0x0} {\itshape or other}\-: {\itshape Don't handle this information}. This means that the \hyperlink{}{k\-T\-A\-G\-\_\-\-N\-O\-D\-E\-S} attribute will not be handled. 
+\end{DoxyItemize}
+
+Note that you should provide either a database connection or the {\itshape term} container to this method in order to make it work!
+
+
+\begin{DoxyParams}[1]{Parameters}
+reference & {\em \&\$the\-Connection} & Server, database or container. \\
+\hline
+reference & {\em \&\$the\-Modifiers} & Commit options.\\
+\hline
+\end{DoxyParams}
+protected
+
+\hyperlink{class_c_status_document_ab7d96fd4588cf7d5432fc65a1d1fb076}{\-\_\-\-Is\-Committed()}  \hyperlink{class_c_persistent_object_ae5f9319ab169499181ae8db82b2fc0e7}{\-\_\-\-Reference\-In\-Object()}
+
+\begin{DoxySeeAlso}{See Also}
+k\-F\-L\-A\-G\-\_\-\-P\-E\-R\-S\-I\-S\-T\-\_\-\-I\-N\-S\-E\-R\-T k\-F\-L\-A\-G\-\_\-\-P\-E\-R\-S\-I\-S\-T\-\_\-\-R\-E\-P\-L\-A\-C\-E 
+\end{DoxySeeAlso}
+\hypertarget{class_c_ontology_node_aca703ceb64a2175b2b432bf50874015a}{\index{C\-Ontology\-Node@{C\-Ontology\-Node}!\-\_\-\-Precommit\-Identify@{\-\_\-\-Precommit\-Identify}}
+\index{\-\_\-\-Precommit\-Identify@{\-\_\-\-Precommit\-Identify}!COntologyNode@{C\-Ontology\-Node}}
+\subsubsection[{\-\_\-\-Precommit\-Identify}]{\setlength{\rightskip}{0pt plus 5cm}C\-Ontology\-Node\-::\-\_\-\-Precommit\-Identify (
+\begin{DoxyParamCaption}
+\item[{\&}]{\$the\-Connection, }
+\item[{\&}]{\$the\-Modifiers}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [protected]}}}\label{class_c_ontology_node_aca703ceb64a2175b2b432bf50874015a}
+\subparagraph*{Determine the identifiers before committing}
+
+This method will take care of generating the sequence number that represents the object's native identifier, \hyperlink{}{k\-T\-A\-G\-\_\-\-N\-I\-D}.
+
+This value can be generated in two ways\-:
+
+
+\begin{DoxyItemize}
+\item {\itshape The container has the graph reference, \hyperlink{}{k\-O\-F\-F\-S\-E\-T\-\_\-\-G\-R\-A\-P\-H}}\-: If the provided container contains a reference to a graph container, it means that the node must also be stored in the graph, this will be taken care by the \hyperlink{class_c_ontology_node_aa91367053433a0bdd052650f9eb54a7c}{\-\_\-\-Add\-Graph\-Node()} method that will return the graph node's I\-D, which in turn will become the current object's \hyperlink{}{k\-T\-A\-G\-\_\-\-N\-I\-D}. 
+\item {\itshape The container lacks the graph reference, \hyperlink{}{k\-O\-F\-F\-S\-E\-T\-\_\-\-G\-R\-A\-P\-H}}\-: If the provided container does not hold a reference to a graph container, the object identifier will be generated with a sequence number tagged \hyperlink{}{k\-S\-E\-Q\-U\-E\-N\-C\-E\-\_\-\-K\-E\-Y\-\_\-\-N\-O\-D\-E}, this method will set the native identifier, \hyperlink{}{k\-T\-A\-G\-\_\-\-N\-I\-D}, with this value. 
+\end{DoxyItemize}
+
+When deleting the object, if the provided container contains a reference to a graph container, this method will also delete the relative node from the graph.
+
+The parent method will then be called, which will ignore the global identifier, \hyperlink{}{k\-T\-A\-G\-\_\-\-G\-I\-D}, since the \hyperlink{class_c_persistent_object_a34a9e2d5a39a5b8fb3ce00cf77c6a9d6}{\-\_\-index()} method returns {\ttfamily N\-U\-L\-L} and also ignore the native identifier, \hyperlink{}{k\-T\-A\-G\-\_\-\-N\-I\-D}, since it will have been set here.
+
+
+\begin{DoxyParams}[1]{Parameters}
+reference & {\em \&\$the\-Connection} & Server, database or container. \\
+\hline
+reference & {\em \&\$the\-Modifiers} & Commit options.\\
+\hline
+\end{DoxyParams}
+protected \begin{DoxyReturn}{Returns}
+mixed
+\end{DoxyReturn}
+\begin{DoxySeeAlso}{See Also}
+k\-T\-A\-G\-\_\-\-N\-I\-D k\-S\-E\-Q\-U\-E\-N\-C\-E\-\_\-\-K\-E\-Y\-\_\-\-N\-O\-D\-E 
+
+k\-F\-L\-A\-G\-\_\-\-P\-E\-R\-S\-I\-S\-T\-\_\-\-I\-N\-S\-E\-R\-T k\-F\-L\-A\-G\-\_\-\-P\-E\-R\-S\-I\-S\-T\-\_\-\-R\-E\-P\-L\-A\-C\-E 
+\end{DoxySeeAlso}
+\hypertarget{class_c_ontology_node_acc47d27e9a861190b00a6efb39f7c825}{\index{C\-Ontology\-Node@{C\-Ontology\-Node}!\-\_\-\-Precommit\-Related@{\-\_\-\-Precommit\-Related}}
+\index{\-\_\-\-Precommit\-Related@{\-\_\-\-Precommit\-Related}!COntologyNode@{C\-Ontology\-Node}}
+\subsubsection[{\-\_\-\-Precommit\-Related}]{\setlength{\rightskip}{0pt plus 5cm}C\-Ontology\-Node\-::\-\_\-\-Precommit\-Related (
+\begin{DoxyParamCaption}
+\item[{\&}]{\$the\-Connection, }
+\item[{\&}]{\$the\-Modifiers}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [protected]}}}\label{class_c_ontology_node_acc47d27e9a861190b00a6efb39f7c825}
+\subparagraph*{Handle embedded or related objects before committing}
+
+In this class we commit the eventual term provided as an uncommitted object and replace the offset with the term's native identifier, or load the term if provided as an identifier.
+
+
+\begin{DoxyParams}[1]{Parameters}
+reference & {\em \&\$the\-Connection} & Server, database or container. \\
+\hline
+reference & {\em \&\$the\-Modifiers} & Commit options.\\
+\hline
+\end{DoxyParams}
+protected \begin{DoxyReturn}{Returns}
+mixed
+\end{DoxyReturn}
+\hyperlink{class_c_ontology_node_a09eb3d9d16775d7752fd7bf62dd93d74}{Load\-Term()}
+
+\begin{DoxySeeAlso}{See Also}
+k\-T\-A\-G\-\_\-\-T\-E\-R\-M 
+\end{DoxySeeAlso}
+\hypertarget{class_c_ontology_node_a75c282c323e10fed112e14488d5962c5}{\index{C\-Ontology\-Node@{C\-Ontology\-Node}!\-\_\-\-Preset@{\-\_\-\-Preset}}
+\index{\-\_\-\-Preset@{\-\_\-\-Preset}!COntologyNode@{C\-Ontology\-Node}}
+\subsubsection[{\-\_\-\-Preset}]{\setlength{\rightskip}{0pt plus 5cm}C\-Ontology\-Node\-::\-\_\-\-Preset (
+\begin{DoxyParamCaption}
+\item[{\&}]{\$the\-Offset, }
+\item[{\&}]{\$the\-Value}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [protected]}}}\label{class_c_ontology_node_a75c282c323e10fed112e14488d5962c5}
+\subparagraph*{Handle offset before setting it}
+
+In this class we handle the term offset, if provided as an object we leave it unchanged only if not yet committed, if not, we convert it to its native identifier. We also ensure the provided term object to be an instance of \hyperlink{class_c_ontology_term}{C\-Ontology\-Term} by asserting \hyperlink{class_c_document}{C\-Document} descendants to be of that class.
+
+This method will lock the \hyperlink{}{k\-T\-A\-G\-\_\-\-F\-E\-A\-T\-U\-R\-E\-S} and \hyperlink{}{k\-T\-A\-G\-\_\-\-S\-C\-A\-L\-E\-S} offsets from any modification.
+
+
+\begin{DoxyParams}[1]{Parameters}
+reference & {\em \&\$the\-Offset} & Offset. \\
+\hline
+reference & {\em \&\$the\-Value} & Value to set at offset.\\
+\hline
+\end{DoxyParams}
+protected
+
+
+\begin{DoxyExceptions}{Exceptions}
+{\em Exception} & \hyperlink{class_c_status_document_ab7d96fd4588cf7d5432fc65a1d1fb076}{\-\_\-\-Is\-Committed()}  \hyperlink{class_c_persistent_object_aaddbaf409e7cab172ce6a92631d9ae45}{\-\_\-\-Assert\-Class()}\\
+\hline
+\end{DoxyExceptions}
+\begin{DoxySeeAlso}{See Also}
+k\-T\-A\-G\-\_\-\-T\-E\-R\-M k\-T\-A\-G\-\_\-\-F\-E\-A\-T\-U\-R\-E\-S k\-T\-A\-G\-\_\-\-S\-C\-A\-L\-E\-S 
+\end{DoxySeeAlso}
+\hypertarget{class_c_ontology_node_a93662baceebafc3d02904083aaab7c29}{\index{C\-Ontology\-Node@{C\-Ontology\-Node}!\-\_\-\-Preunset@{\-\_\-\-Preunset}}
+\index{\-\_\-\-Preunset@{\-\_\-\-Preunset}!COntologyNode@{C\-Ontology\-Node}}
+\subsubsection[{\-\_\-\-Preunset}]{\setlength{\rightskip}{0pt plus 5cm}C\-Ontology\-Node\-::\-\_\-\-Preunset (
+\begin{DoxyParamCaption}
+\item[{\&}]{\$the\-Offset}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [protected]}}}\label{class_c_ontology_node_a93662baceebafc3d02904083aaab7c29}
+\subparagraph*{Handle offset before unsetting it}
+
+In this class we prevent the modification of the \hyperlink{}{k\-T\-A\-G\-\_\-\-T\-E\-R\-M} offset if the object is committed and of the \hyperlink{}{k\-T\-A\-G\-\_\-\-F\-E\-A\-T\-U\-R\-E\-S} and \hyperlink{}{k\-T\-A\-G\-\_\-\-S\-C\-A\-L\-E\-S} offsets in all cases.
+
+
+\begin{DoxyParams}[1]{Parameters}
+reference & {\em \&\$the\-Offset} & Offset.\\
+\hline
+\end{DoxyParams}
+protected
+
+
+\begin{DoxyExceptions}{Exceptions}
+{\em Exception} & \hyperlink{class_c_status_document_ab7d96fd4588cf7d5432fc65a1d1fb076}{\-\_\-\-Is\-Committed()}\\
+\hline
+\end{DoxyExceptions}
+\begin{DoxySeeAlso}{See Also}
+k\-T\-A\-G\-\_\-\-F\-E\-A\-T\-U\-R\-E\-S k\-T\-A\-G\-\_\-\-S\-C\-A\-L\-E\-S k\-T\-A\-G\-\_\-\-T\-E\-R\-M 
+\end{DoxySeeAlso}
+\hypertarget{class_c_ontology_node_a0dd83a16ead60eba2e6782f1dfab2f72}{\index{C\-Ontology\-Node@{C\-Ontology\-Node}!\-\_\-\-Term\-Attributes@{\-\_\-\-Term\-Attributes}}
+\index{\-\_\-\-Term\-Attributes@{\-\_\-\-Term\-Attributes}!COntologyNode@{C\-Ontology\-Node}}
+\subsubsection[{\-\_\-\-Term\-Attributes}]{\setlength{\rightskip}{0pt plus 5cm}C\-Ontology\-Node\-::\-\_\-\-Term\-Attributes (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [protected]}}}\label{class_c_ontology_node_a0dd83a16ead60eba2e6782f1dfab2f72}
+\subparagraph*{List term attributes}
+
+This method can be used to return the list of term attributes that will be copied into the node, it should return a list of tag identifiers that will be used to select attributes from the node's term.
+
+In this class we copy no term attributes to the node, so we return {\ttfamily N\-U\-L\-L}, in derived classes you can return an array.
+
+protected \begin{DoxyReturn}{Returns}
+array 
+\end{DoxyReturn}
+\hypertarget{class_c_ontology_node_a66c5bc42f0cbb921105795127fa816cf}{\index{C\-Ontology\-Node@{C\-Ontology\-Node}!Default\-Container\-Name@{Default\-Container\-Name}}
+\index{Default\-Container\-Name@{Default\-Container\-Name}!COntologyNode@{C\-Ontology\-Node}}
+\subsubsection[{Default\-Container\-Name}]{\setlength{\rightskip}{0pt plus 5cm}static C\-Ontology\-Node\-::\-Default\-Container\-Name (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}}}\label{class_c_ontology_node_a66c5bc42f0cbb921105795127fa816cf}
+\subparagraph*{Return the default nodes container name}
+
+This class uses the \hyperlink{}{k\-C\-O\-N\-T\-A\-I\-N\-E\-R\-\_\-\-N\-O\-D\-E\-\_\-\-N\-A\-M\-E} default name.
+
+\begin{DoxyReturn}{Returns}
+string The default container name.
+\end{DoxyReturn}
+
+\begin{DoxyExceptions}{Exceptions}
+{\em Exception} & \\
+\hline
+\end{DoxyExceptions}
+\begin{DoxySeeAlso}{See Also}
+k\-C\-O\-N\-T\-A\-I\-N\-E\-R\-\_\-\-N\-O\-D\-E\-\_\-\-N\-A\-M\-E 
+\end{DoxySeeAlso}
+\hypertarget{class_c_ontology_node_a0dc5644213c5599332a024af2160c9f1}{\index{C\-Ontology\-Node@{C\-Ontology\-Node}!Get\-Graph\-Node@{Get\-Graph\-Node}}
+\index{Get\-Graph\-Node@{Get\-Graph\-Node}!COntologyNode@{C\-Ontology\-Node}}
+\subsubsection[{Get\-Graph\-Node}]{\setlength{\rightskip}{0pt plus 5cm}C\-Ontology\-Node\-::\-Get\-Graph\-Node (
+\begin{DoxyParamCaption}
+\item[{{\bf C\-Connection}}]{\$the\-Connection, }
+\item[{}]{\$the\-Identifier = {\ttfamily NULL}}
+\end{DoxyParamCaption}
+)}}\label{class_c_ontology_node_a0dc5644213c5599332a024af2160c9f1}
+\subparagraph*{Retrieve the graph node}
+
+This method will retrieve the graph node associated with the current object, if the node is not found, the method will return {\ttfamily N\-U\-L\-L}; if the provided connection does not handle graphs, the method will return {\ttfamily F\-A\-L\-S\-E}.
+
+If you omit the node identifier, the method will assume you are requesting the current object graph node.
+
+
+\begin{DoxyParams}[1]{Parameters}
+\hyperlink{class_c_connection}{C\-Connection} & {\em \$the\-Connection} & Server, database or container. \\
+\hline
+integer & {\em \$the\-Identifier} & Graph node I\-D.\\
+\hline
+\end{DoxyParams}
+public \begin{DoxyReturn}{Returns}
+mixed Related graph node. 
+\end{DoxyReturn}
+\hypertarget{class_c_ontology_node_a8da921e4518e6c9bfc0f2ce6eefe7697}{\index{C\-Ontology\-Node@{C\-Ontology\-Node}!Get\-Graph\-Node\-Properties@{Get\-Graph\-Node\-Properties}}
+\index{Get\-Graph\-Node\-Properties@{Get\-Graph\-Node\-Properties}!COntologyNode@{C\-Ontology\-Node}}
+\subsubsection[{Get\-Graph\-Node\-Properties}]{\setlength{\rightskip}{0pt plus 5cm}C\-Ontology\-Node\-::\-Get\-Graph\-Node\-Properties (
+\begin{DoxyParamCaption}
+\item[{{\bf C\-Connection}}]{\$the\-Connection, }
+\item[{}]{\$the\-Identifier = {\ttfamily NULL}}
+\end{DoxyParamCaption}
+)}}\label{class_c_ontology_node_a8da921e4518e6c9bfc0f2ce6eefe7697}
+\subparagraph*{Retrieve the graph node properties}
+
+This method will retrieve the properties of the graph node associated with the current object, if the node is not found, the method will return {\ttfamily N\-U\-L\-L}; if the provided connection does not handle graphs, the method will return {\ttfamily F\-A\-L\-S\-E}.
+
+If you omit the node identifier, the method will assume you are requesting the current object graph node properties.
+
+
+\begin{DoxyParams}[1]{Parameters}
+\hyperlink{class_c_connection}{C\-Connection} & {\em \$the\-Connection} & Server, database or container. \\
+\hline
+integer & {\em \$the\-Identifier} & Graph node I\-D.\\
+\hline
+\end{DoxyParams}
+public \begin{DoxyReturn}{Returns}
+array Related graph node properties. 
+\end{DoxyReturn}
+\hypertarget{class_c_ontology_node_a09eb3d9d16775d7752fd7bf62dd93d74}{\index{C\-Ontology\-Node@{C\-Ontology\-Node}!Load\-Term@{Load\-Term}}
+\index{Load\-Term@{Load\-Term}!COntologyNode@{C\-Ontology\-Node}}
+\subsubsection[{Load\-Term}]{\setlength{\rightskip}{0pt plus 5cm}C\-Ontology\-Node\-::\-Load\-Term (
+\begin{DoxyParamCaption}
+\item[{{\bf C\-Connection}}]{\$the\-Connection, }
+\item[{}]{\$do\-Reload = {\ttfamily FALSE}}
+\end{DoxyParamCaption}
+)}}\label{class_c_ontology_node_a09eb3d9d16775d7752fd7bf62dd93d74}
+\subparagraph*{Load term object}
+
+This method will return the current term object\-: if the term is not set, the method will return {\ttfamily N\-U\-L\-L}; if the term cannot be found, the method will raise an exception.
+
+The object will also be loaded in a data member that can function as a cache.
+
+The method features two parameters\-: the first refers to the container in which the term is stored, the second is a boolean flag that determines whether the object is to be read, or if the cached copy can be used.
+
+
+\begin{DoxyParams}[1]{Parameters}
+\hyperlink{class_c_connection}{C\-Connection} & {\em \$the\-Connection} & Server, database or container. \\
+\hline
+boolean & {\em \$do\-Reload} & Reload if {\ttfamily T\-R\-U\-E}.\\
+\hline
+\end{DoxyParams}
+public \begin{DoxyReturn}{Returns}
+\hyperlink{class_c_ontology_term}{C\-Ontology\-Term} Term object or {\ttfamily N\-U\-L\-L}.
+\end{DoxyReturn}
+
+\begin{DoxyExceptions}{Exceptions}
+{\em Exception} & \hyperlink{class_c_persistent_object_a5a5402ef394104148cfc580a6799ac2b}{New\-Object()}\\
+\hline
+\end{DoxyExceptions}
+\begin{DoxySeeAlso}{See Also}
+k\-T\-A\-G\-\_\-\-T\-E\-R\-M 
+\end{DoxySeeAlso}
+\hypertarget{class_c_ontology_node_afc20c775f2ae9e01a2d8e50c95b00baf}{\index{C\-Ontology\-Node@{C\-Ontology\-Node}!Replace@{Replace}}
+\index{Replace@{Replace}!COntologyNode@{C\-Ontology\-Node}}
+\subsubsection[{Replace}]{\setlength{\rightskip}{0pt plus 5cm}C\-Ontology\-Node\-::\-Replace (
+\begin{DoxyParamCaption}
+\item[{{\bf C\-Connection}}]{\$the\-Connection}
+\end{DoxyParamCaption}
+)}}\label{class_c_ontology_node_afc20c775f2ae9e01a2d8e50c95b00baf}
+\subparagraph*{Replace the object into a container}
+
+We overload this method to raise an exception\-: objects of this class can only be inserted, after this one can only modify their attributes using the modification interface provided by container objects.
+
+In this class we prevent replacing a committed object and allow inserting a non committed object.
+
+
+\begin{DoxyParams}[1]{Parameters}
+\hyperlink{class_c_connection}{C\-Connection} & {\em \$the\-Connection} & Server, database or container.\\
+\hline
+\end{DoxyParams}
+public \begin{DoxyReturn}{Returns}
+mixed The object's native identifier. 
+\end{DoxyReturn}
+\hypertarget{class_c_ontology_node_af249fcb695d7d3ceeed5a74446df0822}{\index{C\-Ontology\-Node@{C\-Ontology\-Node}!Resolve@{Resolve}}
+\index{Resolve@{Resolve}!COntologyNode@{C\-Ontology\-Node}}
+\subsubsection[{Resolve}]{\setlength{\rightskip}{0pt plus 5cm}static C\-Ontology\-Node\-::\-Resolve (
+\begin{DoxyParamCaption}
+\item[{{\bf C\-Connection}}]{\$the\-Connection, }
+\item[{}]{\$the\-Identifier, }
+\item[{}]{\$do\-Throw = {\ttfamily FALSE}}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}}}\label{class_c_ontology_node_af249fcb695d7d3ceeed5a74446df0822}
+\subparagraph*{Resolve a node}
+
+This method can be used to retrieve an existing node by identifier, or retrieve all nodes matching a term.
+
+The method accepts the following parameters\-:
+
+
+\begin{DoxyItemize}
+\item {\ttfamily \$the\-Connection}\-: This parameter represents the connection from which the nodes container must be resolved. If this parameter cannot be correctly determined, the method will raise an exception. 
+\item {\ttfamily \$the\-Identifier}\-: This parameter represents either the node identifier or the term reference, depending on its type\-: 
+\begin{DoxyItemize}
+\item {\ttfamily integer}\-: In this case the method assumes that the parameter represents the node identifier\-: it will attempt to retrieve the node, if it is not found, the method will return {\ttfamily N\-U\-L\-L}. 
+\item {\ttfamily \hyperlink{class_c_ontology_term}{C\-Ontology\-Term}}\-: In this case the method will locate all nodes that refer to the provided term. If the term is \hyperlink{class_c_status_document_ab7d96fd4588cf7d5432fc65a1d1fb076}{\-\_\-\-Is\-Committed()} the method will use its native identifier; if not, it will use its global identifier if available, or assume the term does not exist. 
+\item {\itshape other}\-: Any other type will be interpreted either the term's native identifier, or as the term's global identifier\-: the method will return all nodes that refer to that term. 
+\end{DoxyItemize}
+\item {\ttfamily \$do\-Throw}\-: If {\ttfamily T\-R\-U\-E}, any failure to resolve the node will raise an exception. 
+\end{DoxyItemize}
+
+The method will return an object if provided a node identifier, or an array of objects if provided a term reference; if there is no match the method will return {\ttfamily N\-U\-L\-L}, or raise an exception if the last parameter is {\ttfamily T\-R\-U\-E}.
+
+{\bfseries Note\-: do not provide an array containing the object in the identifier parameter, or you will get unexpected results.}
+
+
+\begin{DoxyParams}[1]{Parameters}
+\hyperlink{class_c_connection}{C\-Connection} & {\em \$the\-Connection} & Server, database or container. \\
+\hline
+mixed & {\em \$the\-Identifier} & Node identifier or term reference. \\
+\hline
+boolean & {\em \$do\-Throw} & If {\ttfamily T\-R\-U\-E} raise an exception.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+\hyperlink{class_c_ontology_node}{C\-Ontology\-Node} Matched node, found nodes or {\ttfamily N\-U\-L\-L}.
+\end{DoxyReturn}
+
+\begin{DoxyExceptions}{Exceptions}
+{\em Exception} & \\
+\hline
+\end{DoxyExceptions}
+\hypertarget{class_c_ontology_node_aa29329d76906e4d2a5f5589a909074a1}{\index{C\-Ontology\-Node@{C\-Ontology\-Node}!Resolve\-P\-I\-D@{Resolve\-P\-I\-D}}
+\index{Resolve\-P\-I\-D@{Resolve\-P\-I\-D}!COntologyNode@{C\-Ontology\-Node}}
+\subsubsection[{Resolve\-P\-I\-D}]{\setlength{\rightskip}{0pt plus 5cm}static C\-Ontology\-Node\-::\-Resolve\-P\-I\-D (
+\begin{DoxyParamCaption}
+\item[{{\bf C\-Connection}}]{\$the\-Connection, }
+\item[{}]{\$the\-Identifier, }
+\item[{}]{\$do\-Throw = {\ttfamily FALSE}, }
+\item[{}]{\$do\-Object = {\ttfamily FALSE}}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}}}\label{class_c_ontology_node_aa29329d76906e4d2a5f5589a909074a1}
+\subparagraph*{Resolve a node using its P\-I\-D}
+
+This method can be used to retrieve an existing node by persistent identifier.
+
+The method accepts the following parameters\-:
+
+
+\begin{DoxyItemize}
+\item {\ttfamily \$the\-Connection}\-: This parameter represents the connection from which the nodes container must be resolved. If this parameter cannot be correctly determined, the method will raise an exception. 
+\item {\ttfamily \$the\-Identifier}\-: This parameter represents the persistent identifier. 
+\item {\ttfamily \$do\-Throw}\-: If {\ttfamily T\-R\-U\-E}, any failure to resolve the node will raise an exception. 
+\item {\ttfamily \$do\-Object}\-: If {\ttfamily T\-R\-U\-E}, the method will return the matched object, if not, it will return the node's native identifier or {\ttfamily N\-U\-L\-L} if there is no match. 
+\end{DoxyItemize}
+
+
+\begin{DoxyParams}[1]{Parameters}
+\hyperlink{class_c_connection}{C\-Connection} & {\em \$the\-Connection} & Server, database or container. \\
+\hline
+mixed & {\em \$the\-Identifier} & Node P\-I\-D identifier. \\
+\hline
+boolean & {\em \$do\-Throw} & If {\ttfamily T\-R\-U\-E} raise an exception. \\
+\hline
+boolean & {\em \$do\-Object} & If {\ttfamily T\-R\-U\-E} return the object.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+\hyperlink{class_c_ontology_node}{C\-Ontology\-Node} Matched node or {\ttfamily N\-U\-L\-L}.
+\end{DoxyReturn}
+
+\begin{DoxyExceptions}{Exceptions}
+{\em Exception} & \\
+\hline
+\end{DoxyExceptions}
+\hypertarget{class_c_ontology_node_afc2d00b2e6dd8ecc37d87a593581bc3a}{\index{C\-Ontology\-Node@{C\-Ontology\-Node}!Type@{Type}}
+\index{Type@{Type}!COntologyNode@{C\-Ontology\-Node}}
+\subsubsection[{Type}]{\setlength{\rightskip}{0pt plus 5cm}C\-Ontology\-Node\-::\-Type (
+\begin{DoxyParamCaption}
+\item[{}]{\$the\-Value = {\ttfamily NULL}, }
+\item[{}]{\$the\-Operation = {\ttfamily NULL}, }
+\item[{}]{\$get\-Old = {\ttfamily FALSE}}
+\end{DoxyParamCaption}
+)}}\label{class_c_ontology_node_afc2d00b2e6dd8ecc37d87a593581bc3a}
+\subparagraph*{Manage node type set}
+
+In this class we overload the parent method to assert the kind of elements that can be set in the offset. The offset accepts two types of elements\-:
+
+
+\begin{DoxyItemize}
+\item {\itshape Data type}\-: The set accepts one of the following primary data types\-: 
+\begin{DoxyItemize}
+\item {\itshape \hyperlink{}{k\-T\-Y\-P\-E\-\_\-\-A\-N\-Y}}\-: Any type. 
+\item {\itshape \hyperlink{}{k\-T\-Y\-P\-E\-\_\-\-S\-T\-R\-I\-N\-G}}\-: String, we assume in U\-T\-F8 character set. 
+\item {\itshape \hyperlink{}{k\-T\-Y\-P\-E\-\_\-\-I\-N\-T}}\-: Generic signed integer. 
+\item {\itshape \hyperlink{}{k\-T\-Y\-P\-E\-\_\-\-F\-L\-O\-A\-T}}\-: Floating point number. 
+\item {\itshape \hyperlink{}{k\-T\-Y\-P\-E\-\_\-\-B\-O\-O\-L\-E\-A\-N}}\-: An {\ttfamily on}/{\ttfamily off} switch. 
+\item {\itshape \hyperlink{}{k\-T\-Y\-P\-E\-\_\-\-B\-I\-N\-A\-R\-Y\-\_\-\-S\-T\-R\-I\-N\-G}}\-: A binary string. 
+\item {\itshape \hyperlink{}{k\-T\-Y\-P\-E\-\_\-\-D\-A\-T\-E\-\_\-\-S\-T\-R\-I\-N\-G}}\-: A date. 
+\item {\itshape \hyperlink{}{k\-T\-Y\-P\-E\-\_\-\-T\-I\-M\-E\-\_\-\-S\-T\-R\-I\-N\-G}}\-: A date and time. 
+\item {\itshape \hyperlink{}{k\-T\-Y\-P\-E\-\_\-\-R\-E\-G\-E\-X\-\_\-\-S\-T\-R\-I\-N\-G}}\-: A regular expression. 
+\item {\itshape \hyperlink{}{k\-T\-Y\-P\-E\-\_\-\-I\-N\-T32}}\-: 32 bit signed integer. 
+\item {\itshape \hyperlink{}{k\-T\-Y\-P\-E\-\_\-\-I\-N\-T64}}\-: 64 bit signed integer. 
+\item {\itshape \hyperlink{}{k\-T\-Y\-P\-E\-\_\-\-R\-E\-F\-\_\-\-T\-E\-R\-M}}\-: Term reference. 
+\item {\itshape \hyperlink{}{k\-T\-Y\-P\-E\-\_\-\-R\-E\-F\-\_\-\-N\-O\-D\-E}}\-: Node reference. 
+\item {\itshape \hyperlink{}{k\-T\-Y\-P\-E\-\_\-\-R\-E\-F\-\_\-\-E\-D\-G\-E}}\-: Edge reference. 
+\item {\itshape \hyperlink{}{k\-T\-Y\-P\-E\-\_\-\-R\-E\-F\-\_\-\-T\-A\-G}}\-: Tag reference. 
+\item {\itshape \hyperlink{}{k\-T\-Y\-P\-E\-\_\-\-R\-E\-F\-\_\-\-U\-S\-E\-R}}\-: User reference. 
+\item {\itshape \hyperlink{}{k\-T\-Y\-P\-E\-\_\-\-M\-E\-T\-A}}\-: Metadata. 
+\item {\itshape \hyperlink{}{k\-T\-Y\-P\-E\-\_\-\-P\-H\-P}}\-: P\-H\-P. 
+\item {\itshape \hyperlink{}{k\-T\-Y\-P\-E\-\_\-\-J\-S\-O\-N}}\-: J\-S\-O\-N. 
+\item {\itshape \hyperlink{}{k\-T\-Y\-P\-E\-\_\-\-X\-M\-L}}\-: X\-M\-L. 
+\item {\itshape \hyperlink{}{k\-T\-Y\-P\-E\-\_\-\-S\-V\-G}}\-: S\-V\-G. 
+\item {\itshape \hyperlink{}{k\-T\-Y\-P\-E\-\_\-\-S\-T\-A\-M\-P}}\-: A native timestamp. 
+\item {\itshape \hyperlink{}{k\-T\-Y\-P\-E\-\_\-\-S\-T\-R\-U\-C\-T}}\-: A structure container. 
+\item {\itshape \hyperlink{}{k\-T\-Y\-P\-E\-\_\-\-L\-S\-T\-R\-I\-N\-G}}\-: Language strings. 
+\item {\itshape \hyperlink{}{k\-T\-Y\-P\-E\-\_\-\-S\-T\-A\-M\-P}}\-: Time-\/stamp. 
+\item {\itshape \hyperlink{}{k\-T\-Y\-P\-E\-\_\-\-E\-N\-U\-M}}\-: Enumerated scalar, this data type resolves by default to a string and indicates that the node refers to a controlled vocabulary scalar whose elements will be found related to the current node. 
+\item {\itshape \hyperlink{}{k\-T\-Y\-P\-E\-\_\-\-E\-N\-U\-M\-\_\-\-S\-E\-T}}\-: Enumerated set, this data type resolves by default to a list of string elements and indicates that the node refers to an enumerated set whose elements will be found related to the current node. 
+\end{DoxyItemize}Only one of the above may be present in the list, when adding a new element, if the offset already contains a data type, this will be replaced by the new one. 
+\item {\itshape Cardinality}\-: The set accepts one or more cardinality indicators from the following set\-: 
+\begin{DoxyItemize}
+\item {\itshape \hyperlink{}{k\-T\-Y\-P\-E\-\_\-\-R\-E\-Q\-U\-I\-R\-E\-D}}\-: Required, the element referred by the current node is required and cannot be omitted; if this tag is missing, it means that the element is optional. 
+\item {\itshape \hyperlink{}{k\-T\-Y\-P\-E\-\_\-\-R\-E\-S\-T\-R\-I\-C\-T\-E\-D}}\-: Restricted, the element referred by the current node is restricted to an enumerated set; if this tag is missing, it means that the element may take values not belonging to the enumerated set. 
+\item {\itshape \hyperlink{}{k\-T\-Y\-P\-E\-\_\-\-C\-O\-M\-P\-U\-T\-E\-D}}\-: Computed, the element referred by the current node is computed or set automatically; if this tag is missing, it means that the element must be set explicitly. 
+\item {\itshape \hyperlink{}{k\-T\-Y\-P\-E\-\_\-\-L\-O\-C\-K\-E\-D}}\-: Locked, the element referred by the current node will be locked or read-\/only once the object has been committed; if this tag is missing, it means that the element may be modified after committing the object. 
+\item {\itshape \hyperlink{}{k\-T\-Y\-P\-E\-\_\-\-A\-R\-R\-A\-Y}}\-: Array, the element referred by the current node is a list in which each element is of the data type indicated by the previous set; if this tag is missing, it means that the element is a scalar. 
+\end{DoxyItemize}
+\end{DoxyItemize}
+
+
+\begin{DoxyParams}[1]{Parameters}
+mixed & {\em \$the\-Value} & Type or operation. \\
+\hline
+mixed & {\em \$the\-Operation} & Operation. \\
+\hline
+boolean & {\em \$get\-Old} & {\ttfamily T\-R\-U\-E} get old value.\\
+\hline
+\end{DoxyParams}
+public \begin{DoxyReturn}{Returns}
+mixed {\itshape New} or {\itshape old} type. 
+\end{DoxyReturn}
+\hypertarget{class_c_ontology_node_a249a067e22e3d721958903e5b6c36b84}{\index{C\-Ontology\-Node@{C\-Ontology\-Node}!Update@{Update}}
+\index{Update@{Update}!COntologyNode@{C\-Ontology\-Node}}
+\subsubsection[{Update}]{\setlength{\rightskip}{0pt plus 5cm}C\-Ontology\-Node\-::\-Update (
+\begin{DoxyParamCaption}
+\item[{{\bf C\-Connection}}]{\$the\-Connection}
+\end{DoxyParamCaption}
+)}}\label{class_c_ontology_node_a249a067e22e3d721958903e5b6c36b84}
+\subparagraph*{Update the object in a container}
+
+We overload this method to raise an exception\-: objects of this class can only be inserted, after this one can only modify their attributes using the modification interface provided by container objects.
+
+
+\begin{DoxyParams}[1]{Parameters}
+\hyperlink{class_c_connection}{C\-Connection} & {\em \$the\-Connection} & Server, database or container.\\
+\hline
+\end{DoxyParams}
+public
+
+
+\begin{DoxyExceptions}{Exceptions}
+{\em Exception} & \\
+\hline
+\end{DoxyExceptions}
+
+
+The documentation for this class was generated from the following file\-:\begin{DoxyCompactItemize}
+\item 
+/\-Library/\-Web\-Server/\-Library/\-P\-H\-P\-Wrapper/classes/C\-Ontology\-Node.\-php\end{DoxyCompactItemize}

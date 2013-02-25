@@ -1,0 +1,128 @@
+\hypertarget{class_c_connection}{\section{C\-Connection Class Reference}
+\label{class_c_connection}\index{C\-Connection@{C\-Connection}}
+}
+Inheritance diagram for C\-Connection\-:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=3.975155cm]{class_c_connection}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{class_c_connection_a5214faf06b04e39885b00e6181991e68}{\-\_\-\-\_\-construct} (\$the\-Connection=N\-U\-L\-L, \$the\-Options=N\-U\-L\-L)
+\item 
+\hyperlink{class_c_connection_af23aaa67a594e82ff0c43287dc205925}{\-\_\-\-\_\-to\-String} ()
+\item 
+\hyperlink{class_c_connection_a8ad981138c7b681c875da778ce4e391b}{Connection} (\$the\-Value=N\-U\-L\-L, \$get\-Old=F\-A\-L\-S\-E)
+\end{DoxyCompactItemize}
+\subsection*{Protected Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{class_c_connection_a173b6438388d14a21a74c7bbe265958b}{\-\_\-\-Ready} ()
+\end{DoxyCompactItemize}
+\subsection*{Protected Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{class_c_connection_a97443cb1bba958489af619a23f92b9cd}{{\bfseries \$m\-Connection} = N\-U\-L\-L}\label{class_c_connection_a97443cb1bba958489af619a23f92b9cd}
+
+\end{DoxyCompactItemize}
+
+
+\subsection{Constructor \& Destructor Documentation}
+\hypertarget{class_c_connection_a5214faf06b04e39885b00e6181991e68}{\index{C\-Connection@{C\-Connection}!\-\_\-\-\_\-construct@{\-\_\-\-\_\-construct}}
+\index{\-\_\-\-\_\-construct@{\-\_\-\-\_\-construct}!CConnection@{C\-Connection}}
+\subsubsection[{\-\_\-\-\_\-construct}]{\setlength{\rightskip}{0pt plus 5cm}C\-Connection\-::\-\_\-\-\_\-construct (
+\begin{DoxyParamCaption}
+\item[{}]{\$the\-Connection = {\ttfamily NULL}, }
+\item[{}]{\$the\-Options = {\ttfamily NULL}}
+\end{DoxyParamCaption}
+)}}\label{class_c_connection_a5214faf06b04e39885b00e6181991e68}
+\subparagraph*{Instantiate class}
+
+You instantiate the class with a native connection, the method expects a parameter that will be stored in the \hyperlink{}{\$m\-Connection} data member and another parameter that can be used to pass instantiation options.
+
+Derived classes should overload this method if a default value is possible; to check for specific connection types they should rather overload the member accessor method.
+
+
+\begin{DoxyParams}[1]{Parameters}
+mixed & {\em \$the\-Connection} & Native connection. \\
+\hline
+mixed & {\em \$the\-Options} & Connection options.\\
+\hline
+\end{DoxyParams}
+public
+
+\hyperlink{class_c_connection_a8ad981138c7b681c875da778ce4e391b}{Connection()} 
+
+\subsection{Member Function Documentation}
+\hypertarget{class_c_connection_af23aaa67a594e82ff0c43287dc205925}{\index{C\-Connection@{C\-Connection}!\-\_\-\-\_\-to\-String@{\-\_\-\-\_\-to\-String}}
+\index{\-\_\-\-\_\-to\-String@{\-\_\-\-\_\-to\-String}!CConnection@{C\-Connection}}
+\subsubsection[{\-\_\-\-\_\-to\-String}]{\setlength{\rightskip}{0pt plus 5cm}C\-Connection\-::\-\_\-\-\_\-to\-String (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [abstract]}}}\label{class_c_connection_af23aaa67a594e82ff0c43287dc205925}
+\subparagraph*{Return connection name}
+
+This method should return the current connection's name.
+
+All derived concrete classes should implement this method, all connections must be able to return a name.
+
+public \begin{DoxyReturn}{Returns}
+string The connection name. 
+\end{DoxyReturn}
+\hypertarget{class_c_connection_a173b6438388d14a21a74c7bbe265958b}{\index{C\-Connection@{C\-Connection}!\-\_\-\-Ready@{\-\_\-\-Ready}}
+\index{\-\_\-\-Ready@{\-\_\-\-Ready}!CConnection@{C\-Connection}}
+\subsubsection[{\-\_\-\-Ready}]{\setlength{\rightskip}{0pt plus 5cm}C\-Connection\-::\-\_\-\-Ready (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [protected]}}}\label{class_c_connection_a173b6438388d14a21a74c7bbe265958b}
+\subparagraph*{Determine if the object is ready}
+
+In this class we tie the \hyperlink{class_c_status_document_a954dee06e219e0a0f2e7fa6edac56e28}{\-\_\-\-Is\-Inited()} status to the presence or absence of the connection.
+
+protected \begin{DoxyReturn}{Returns}
+boolean {\ttfamily T\-R\-U\-E} means \hyperlink{}{.  \-\_\-\-Ready() }
+\end{DoxyReturn}
+\hypertarget{class_c_connection_a8ad981138c7b681c875da778ce4e391b}{\index{C\-Connection@{C\-Connection}!Connection@{Connection}}
+\index{Connection@{Connection}!CConnection@{C\-Connection}}
+\subsubsection[{Connection}]{\setlength{\rightskip}{0pt plus 5cm}C\-Connection\-::\-Connection (
+\begin{DoxyParamCaption}
+\item[{}]{\$the\-Value = {\ttfamily NULL}, }
+\item[{}]{\$get\-Old = {\ttfamily FALSE}}
+\end{DoxyParamCaption}
+)}}\label{class_c_connection_a8ad981138c7b681c875da778ce4e391b}
+\subparagraph*{Manage native connection}
+
+This method can be used to manage the connection, it accepts a parameter which represents either the container or the requested operation, depending on its value\-:
+
+
+\begin{DoxyItemize}
+\item {\ttfamily N\-U\-L\-L}\-: Return the current value. 
+\item {\ttfamily F\-A\-L\-S\-E}\-: Delete the current value. 
+\item {\itshape other}\-: Set the value with the provided parameter. 
+\end{DoxyItemize}
+
+The second parameter is a boolean which if {\ttfamily T\-R\-U\-E} will return the {\itshape old} value when replacing containers; if {\ttfamily F\-A\-L\-S\-E}, it will return the currently set value.
+
+In derived classes you should overload this method to check if the provided connection is of the correct type, in this class we accept anything.
+
+This class is considered initialised (\hyperlink{class_c_status_document_a954dee06e219e0a0f2e7fa6edac56e28}{\-\_\-\-Is\-Inited()}) when this member has been set.
+
+
+\begin{DoxyParams}[1]{Parameters}
+mixed & {\em \$the\-Value} & Native connection or operation. \\
+\hline
+boolean & {\em \$get\-Old} & {\ttfamily T\-R\-U\-E} get old value.\\
+\hline
+\end{DoxyParams}
+public \begin{DoxyReturn}{Returns}
+mixed {\itshape New} or {\itshape old} native connection.
+\end{DoxyReturn}
+\-\_\-is\-Inited()  Manage\-Property() 
+
+The documentation for this class was generated from the following file\-:\begin{DoxyCompactItemize}
+\item 
+/\-Library/\-Web\-Server/\-Library/\-P\-H\-P\-Wrapper/classes/C\-Connection.\-php\end{DoxyCompactItemize}

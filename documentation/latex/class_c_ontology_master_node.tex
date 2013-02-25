@@ -1,0 +1,164 @@
+\hypertarget{class_c_ontology_master_node}{\section{C\-Ontology\-Master\-Node Class Reference}
+\label{class_c_ontology_master_node}\index{C\-Ontology\-Master\-Node@{C\-Ontology\-Master\-Node}}
+}
+Inheritance diagram for C\-Ontology\-Master\-Node\-:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=9.000000cm]{class_c_ontology_master_node}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{class_c_ontology_master_node_a1dbcd0aa39c97027ebf020eda30c9c85}{Node\-Refs} ()
+\item 
+\hyperlink{class_c_ontology_master_node_a3b17a7706f8297c2735bd8035995762a}{Relate\-To} (\$the\-Predicate, \$the\-Object, \$the\-Connection=N\-U\-L\-L, \$do\-Propagate=T\-R\-U\-E)
+\end{DoxyCompactItemize}
+\subsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+static \hyperlink{class_c_ontology_master_node_a29aadfcab71c78e4f4a107aad67a8ebe}{Resolve} (\hyperlink{class_c_connection}{C\-Connection} \$the\-Connection, \$the\-Identifier, \$do\-Throw=F\-A\-L\-S\-E)
+\end{DoxyCompactItemize}
+\subsection*{Protected Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{class_c_ontology_master_node_a6bff75981a894a0b25a3ed64a8966478}{\-\_\-\-Precommit\-Identify} (\&\$the\-Connection, \&\$the\-Modifiers)
+\end{DoxyCompactItemize}
+\subsection*{Additional Inherited Members}
+
+
+\subsection{Member Function Documentation}
+\hypertarget{class_c_ontology_master_node_a6bff75981a894a0b25a3ed64a8966478}{\index{C\-Ontology\-Master\-Node@{C\-Ontology\-Master\-Node}!\-\_\-\-Precommit\-Identify@{\-\_\-\-Precommit\-Identify}}
+\index{\-\_\-\-Precommit\-Identify@{\-\_\-\-Precommit\-Identify}!COntologyMasterNode@{C\-Ontology\-Master\-Node}}
+\subsubsection[{\-\_\-\-Precommit\-Identify}]{\setlength{\rightskip}{0pt plus 5cm}C\-Ontology\-Master\-Node\-::\-\_\-\-Precommit\-Identify (
+\begin{DoxyParamCaption}
+\item[{\&}]{\$the\-Connection, }
+\item[{\&}]{\$the\-Modifiers}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [protected]}}}\label{class_c_ontology_master_node_a6bff75981a894a0b25a3ed64a8966478}
+\subparagraph*{Determine the identifiers before committing}
+
+We overload this method to prevent creating two nodes that refer to the same term. We first check if there is another node that refers to the same term and that does point to another node\-: if we find one we add the \hyperlink{}{k\-T\-A\-G\-\_\-\-C\-A\-T\-E\-G\-O\-R\-Y}, \hyperlink{}{k\-T\-A\-G\-\_\-\-K\-I\-N\-D}, \hyperlink{}{k\-T\-A\-G\-\_\-\-T\-Y\-P\-E}, \hyperlink{}{k\-T\-A\-G\-\_\-\-I\-N\-P\-U\-T} and \hyperlink{}{k\-T\-A\-G\-\_\-\-E\-X\-A\-M\-P\-L\-E\-S} attributes to the found node and make it the current node; if no such node is found, we call the parent method.
+
+In the first case we return the found node identifier, this will stop the commit workflow.
+
+
+\begin{DoxyParams}[1]{Parameters}
+reference & {\em \&\$the\-Connection} & Server, database or container. \\
+\hline
+reference & {\em \&\$the\-Modifiers} & Commit options.\\
+\hline
+\end{DoxyParams}
+protected \begin{DoxyReturn}{Returns}
+mixed
+\end{DoxyReturn}
+\begin{DoxySeeAlso}{See Also}
+k\-T\-A\-G\-\_\-\-N\-I\-D k\-S\-E\-Q\-U\-E\-N\-C\-E\-\_\-\-K\-E\-Y\-\_\-\-N\-O\-D\-E 
+
+k\-F\-L\-A\-G\-\_\-\-P\-E\-R\-S\-I\-S\-T\-\_\-\-I\-N\-S\-E\-R\-T k\-F\-L\-A\-G\-\_\-\-P\-E\-R\-S\-I\-S\-T\-\_\-\-R\-E\-P\-L\-A\-C\-E 
+\end{DoxySeeAlso}
+\hypertarget{class_c_ontology_master_node_a1dbcd0aa39c97027ebf020eda30c9c85}{\index{C\-Ontology\-Master\-Node@{C\-Ontology\-Master\-Node}!Node\-Refs@{Node\-Refs}}
+\index{Node\-Refs@{Node\-Refs}!COntologyMasterNode@{C\-Ontology\-Master\-Node}}
+\subsubsection[{Node\-Refs}]{\setlength{\rightskip}{0pt plus 5cm}C\-Ontology\-Master\-Node\-::\-Node\-Refs (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{class_c_ontology_master_node_a1dbcd0aa39c97027ebf020eda30c9c85}
+\subparagraph*{Manage node references}
+
+The {\itshape node references}, \hyperlink{}{k\-T\-A\-G\-\_\-\-N\-O\-D\-E\-S}, holds a list of identifiers of alias nodes that reference the current node.
+
+The method is read-\/only, because this value must be managed externally.
+
+public \begin{DoxyReturn}{Returns}
+array Nodes reference list.
+\end{DoxyReturn}
+\begin{DoxySeeAlso}{See Also}
+k\-T\-A\-G\-\_\-\-N\-O\-D\-E\-S 
+\end{DoxySeeAlso}
+\hypertarget{class_c_ontology_master_node_a3b17a7706f8297c2735bd8035995762a}{\index{C\-Ontology\-Master\-Node@{C\-Ontology\-Master\-Node}!Relate\-To@{Relate\-To}}
+\index{Relate\-To@{Relate\-To}!COntologyMasterNode@{C\-Ontology\-Master\-Node}}
+\subsubsection[{Relate\-To}]{\setlength{\rightskip}{0pt plus 5cm}C\-Ontology\-Master\-Node\-::\-Relate\-To (
+\begin{DoxyParamCaption}
+\item[{}]{\$the\-Predicate, }
+\item[{}]{\$the\-Object, }
+\item[{}]{\$the\-Connection = {\ttfamily NULL}, }
+\item[{}]{\$do\-Propagate = {\ttfamily TRUE}}
+\end{DoxyParamCaption}
+)}}\label{class_c_ontology_master_node_a3b17a7706f8297c2735bd8035995762a}
+\subparagraph*{Relate to node}
+
+We overload this method to mirror relationships between alias nodes to their counterpart master nodes, this is governed by the {\ttfamily \$do\-Propagate} switch.
+
+We first create the requested relationship, then, if the object is an alias, we relate the current object with the object's master.
+
+This means that\-:
+
+
+\begin{DoxyItemize}
+\item {\itshape M\-A\-S\-T\-E\-R =$>$ M\-A\-S\-T\-E\-R}\-: 
+\begin{DoxyItemize}
+\item M\-A\-S\-T\-E\-R =$>$ M\-A\-S\-T\-E\-R 
+\end{DoxyItemize}
+\item {\itshape M\-A\-S\-T\-E\-R =$>$ A\-L\-I\-A\-S}\-: 
+\begin{DoxyItemize}
+\item M\-A\-S\-T\-E\-R =$>$ A\-L\-I\-A\-S 
+\item M\-A\-S\-T\-E\-R =$>$ A\-L\-I\-A\-S.\-M\-A\-S\-T\-E\-R 
+\end{DoxyItemize}
+\end{DoxyItemize}
+
+Note that this method is called by its counterpart in \hyperlink{class_c_ontology_alias_node}{C\-Ontology\-Alias\-Node}, this means
+
+We require the connection parameter here since both subject and object vertices must be committed by this method, this implies that the edge will also be committed.
+
+
+\begin{DoxyParams}[1]{Parameters}
+mixed & {\em \$the\-Predicate} & Predicate term object or reference. \\
+\hline
+mixed & {\em \$the\-Object} & Object node object or reference. \\
+\hline
+\hyperlink{class_c_connection}{C\-Connection} & {\em \$the\-Connection} & Server, database or container. \\
+\hline
+boolean & {\em \$do\-Propagate} & T\-R\-U\-E means relate masters.\\
+\hline
+\end{DoxyParams}
+public \begin{DoxyReturn}{Returns}
+\hyperlink{class_c_ontology_edge}{C\-Ontology\-Edge} Edge object. 
+\end{DoxyReturn}
+\hypertarget{class_c_ontology_master_node_a29aadfcab71c78e4f4a107aad67a8ebe}{\index{C\-Ontology\-Master\-Node@{C\-Ontology\-Master\-Node}!Resolve@{Resolve}}
+\index{Resolve@{Resolve}!COntologyMasterNode@{C\-Ontology\-Master\-Node}}
+\subsubsection[{Resolve}]{\setlength{\rightskip}{0pt plus 5cm}static C\-Ontology\-Master\-Node\-::\-Resolve (
+\begin{DoxyParamCaption}
+\item[{{\bf C\-Connection}}]{\$the\-Connection, }
+\item[{}]{\$the\-Identifier, }
+\item[{}]{\$do\-Throw = {\ttfamily FALSE}}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}}}\label{class_c_ontology_master_node_a29aadfcab71c78e4f4a107aad67a8ebe}
+\subparagraph*{Resolve a node}
+
+We overload this method in this class by intercepting all cases in which the {\ttfamily \$the\-Identifier} is not an integer, or node reference\-: since no two nodes of this class can share the same term reference, we add a clause to the search query to exclude all node that have a \hyperlink{}{k\-T\-A\-G\-\_\-\-N\-O\-D\-E} attribute. We do this rather than use the object class, because we assume all nodes that have the \hyperlink{}{k\-T\-A\-G\-\_\-\-N\-O\-D\-E} attribute to be aliases.
+
+Since terms become also a unique identifier, this method will return either an object or {\ttfamily N\-U\-L\-L}.
+
+
+\begin{DoxyParams}[1]{Parameters}
+\hyperlink{class_c_connection}{C\-Connection} & {\em \$the\-Connection} & Server, database or container. \\
+\hline
+mixed & {\em \$the\-Identifier} & Node identifier or term reference. \\
+\hline
+boolean & {\em \$do\-Throw} & If {\ttfamily T\-R\-U\-E} raise an exception.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+\hyperlink{class_c_ontology_master_node}{C\-Ontology\-Master\-Node} Matched node, found nodes or {\ttfamily N\-U\-L\-L}.
+\end{DoxyReturn}
+
+\begin{DoxyExceptions}{Exceptions}
+{\em Exception} & \\
+\hline
+\end{DoxyExceptions}
+
+
+The documentation for this class was generated from the following file\-:\begin{DoxyCompactItemize}
+\item 
+/\-Library/\-Web\-Server/\-Library/\-P\-H\-P\-Wrapper/classes/C\-Ontology\-Master\-Node.\-php\end{DoxyCompactItemize}

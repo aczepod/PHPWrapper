@@ -365,12 +365,12 @@ class COntology extends CConnection
 	 * <h4>Return database connection</h4>
 	 *
 	 * This method should return the database connection, <tt>FALSE<tt> if no connection
-	 * is set and <tt>NULL</tt>, if the database cannot be inferred..
+	 * is set and <tt>NULL</tt>, if the database cannot be inferred.
 	 *
 	 * @access public
 	 * @return mixed				Database connection, <tt>NULL<7tt> or <tt>FALSE</tt>.
 	 */
-	public function GetDatabase( $theValue = NULL, $getOld = FALSE )
+	public function GetDatabase()
 	{
 		//
 		// Check connection
@@ -724,7 +724,7 @@ class COntology extends CConnection
 					// Iterate units.
 					//
 					foreach( $xml->{'UNIT'} as $unit )
-						$this->LoadXMLOntologyUnit( $db, $unit );
+						$this->_LoadXMLOntologyUnit( $db, $unit );
 				
 				} // Ontology root.
 			
@@ -739,9 +739,265 @@ class COntology extends CConnection
 
 	} // LoadXMLOntologyFile.
 
+		
+
+/*=======================================================================================
+ *																						*
+ *							PUBLIC ONTOLOGY TEMPLATE INTERFACE							*
+ *																						*
+ *======================================================================================*/
+
+
 	 
 	/*===================================================================================
-	 *	LoadXMLOntologyUnit																*
+	 *	GetRootTemplate																	*
+	 *==================================================================================*/
+
+	/**
+	 * <h4>Retrieve root node template</h4>
+	 *
+	 * This method will return an array consisting of the tag global identifier, the related
+	 * term label and definition for all tags referenced in the graph of the provided root
+	 * node reference.
+	 *
+	 * The returned array will have as many columns as tags, in the first row it will
+	 * feature the tag global identifier, in the second row all the term labels referenced
+	 * by the tag path elements and the third row will feature all the term definitions of
+	 * the tag vertex elements. All the label and definitions items will be in the provided
+	 * language; if the language is not found, the first element will be used.
+	 *
+	 * The method expects two parameters:
+	 *
+	 * <ul>
+	 *	<li><tt>$theRoot</tt>: Root node reference, anything that the
+	 *		{@link COntologyNode::Resolve()} can handle.
+	 *	<li><tt>$theLanguage</tt>: Language of labels and definitions.
+	 * </ul>
+	 *
+	 * The method will traverse the graph using the {@link kPREDICATE_SUBCLASS_OF} predicate
+	 * until it finds a feature node.
+	 *
+	 * If the root is unresolved, the method will return <tt>NULL</tt>; if no tags are found
+	 * the method will return an empty array; if the root resolves into more than one node,
+	 * the method will return a list of templates.
+	 *
+	 * @param mixed					$theRoot			Root node reference.
+	 * @param string				$theLanguage		Language code.
+	 *
+	 * @access public
+	 * @return array
+	 *
+	 * @throws Exception
+	 */
+	public function GetRootTemplate( $theRoot, $theLanguage )
+	{
+		//
+		// Get database.
+		//
+		$db = $this->GetDatabase();
+		if( ! ($db instanceof CDatabase) )
+			throw new Exception
+				( "Unable to retrieve database connection",
+				  kERROR_STATE );												// !@! ==>
+		
+		//
+		// Init local storage.
+		//
+		$template = Array();
+		
+		//
+		// Resolve node.
+		//
+		$root = COntologyNode::Resolve( $db, $theRoot );
+		if( $root === NULL )
+			return NULL;															// ==>
+		
+		//
+		// Handle multiple nodes.
+		//
+		if( is_array( $root ) )
+		{
+			//
+			// Iterate resolved nodes.
+			//
+			foreach( $root as $node )
+				$template[] = $this->GetRootTemplate( $node->NID(), $theLanguage );
+		
+		} // Root resolves into many nodes.
+		
+		//
+		// Handle single node.
+		//
+		else
+		{
+		
+		} // Root resolves in single node.
+		
+		return $template;															// ==>
+
+	} // GetRootTemplate.
+
+		
+
+/*=======================================================================================
+ *																						*
+ *							PUBLIC CUSTOM ONTOLOGY INTERFACE							*
+ *																						*
+ *======================================================================================*/
+
+
+	 
+	/*===================================================================================
+	 *	LoadISOPOFiles																	*
+	 *==================================================================================*/
+
+	/**
+	 * <h4>Load the standard ISO ontology</h4>
+	 *
+	 * This method will load the ISO standards into the ontology, it takes the information
+	 * from the {@link http://pkg-isocodes.alioth.debian.org} web page project.
+	 *
+	 * The method requires the path to the unit XML file containing the ISO categories, it
+	 * will then decode the PO files and load the information.
+	 *
+	 * @access public
+	 *
+	 * @throws Exception
+	 */
+	public function LoadISOPOFiles()
+	{
+		//
+		// Get database.
+		//
+		$db = $this->GetDatabase();
+		if( ! ($db instanceof CDatabase) )
+			throw new Exception
+				( "Unable to retrieve database connection",
+				  kERROR_STATE );												// !@! ==>
+		
+		//
+		// Decode PO files.
+		//
+		$this->_ISODecodePOFiles();
+		
+		//
+		// Parse ISO XMLfiles.
+		//
+		$this->_ISOParseXMLFiles( $db );
+
+	} // LoadISOPOFiles.
+
+	 
+	/*===================================================================================
+	 *	SetAllCountries																	*
+	 *==================================================================================*/
+
+	/**
+	 * <h4>Set all countries to provided element</h4>
+	 *
+	 * This method will connect all ISO 3166-1 and ISO 3166-3 countries to the provided
+	 * enumeration.
+	 *
+	 * @param string				$theEnumeration		GID of enumeration.
+	 * @param string				$theEnumeration		GID of enumeration.
+	 *
+	 * @access public
+	 *
+	 * @throws Exception
+	 */
+	public function SetAllCountries( $theEnumeration )
+	{
+		//
+		// Handle enumerations list.
+		//
+		if( is_array( $theEnumeration ) )
+		{
+			foreach( $theEnumeration as $enum )
+				$this->SetAllCountries( $enum );
+		}
+		
+		//
+		// Handle single enumeration.
+		//
+		else
+		{
+			//
+			// Get database.
+			//
+			$db = $this->GetDatabase();
+			if( ! ($db instanceof CDatabase) )
+				throw new Exception
+					( "Unable to retrieve database connection",
+					  kERROR_STATE );											// !@! ==>
+			
+			//
+			// Get container.
+			//
+			$container = COntologyEdge::DefaultContainer( $db );
+		
+			//
+			// Resolve references.
+			//
+			$node = COntologyMasterNode::Resolve( $db, $theEnumeration, TRUE );
+			$actual = COntologyMasterNode::Resolve( $db, 'ISO:3166:1:alpha-3', TRUE );
+			$obsolete = COntologyMasterNode::Resolve( $db, 'ISO:3166:3:alpha-3', TRUE );
+			$predicate = COntologyTerm::Resolve( $db, kPREDICATE_ENUM_OF, NULL, TRUE );
+			
+			//
+			// Load actual elements.
+			//
+			$query = $container->NewQuery();
+			$query->AppendStatement(
+				CQueryStatement::Equals(
+					kTAG_OBJECT, $actual->NID() ) );
+			$query->AppendStatement(
+				CQueryStatement::Equals(
+					kTAG_PREDICATE, $predicate->NID(), kTYPE_BINARY_STRING ) );
+			$rs = $container-> Query( $query, array( kTAG_SUBJECT ) );
+			foreach( $rs as $object )
+			{
+				$edge = new COntologyEdge();
+				$edge->Subject( $object[ kTAG_SUBJECT ] );
+				$edge->Predicate( $predicate );
+				$edge->Object( $node );
+				$edge->Insert( $container );
+			}
+			
+			//
+			// Load obsolete elements.
+			//
+			$query = $container->NewQuery();
+			$query->AppendStatement(
+				CQueryStatement::Equals(
+					kTAG_OBJECT, $obsolete->NID() ) );
+			$query->AppendStatement(
+				CQueryStatement::Equals(
+					kTAG_PREDICATE, $predicate->NID(), kTYPE_BINARY_STRING ) );
+			$rs = $container-> Query( $query, array( kTAG_SUBJECT ) );
+			foreach( $rs as $object )
+			{
+				$edge = new COntologyEdge();
+				$edge->Subject( $object[ kTAG_SUBJECT ] );
+				$edge->Predicate( $predicate );
+				$edge->Object( $node );
+				$edge->Insert( $container );
+			}
+		}
+
+	} // SetAllCountries.
+
+		
+
+/*=======================================================================================
+ *																						*
+ *							PROTECTED XML PARSING INTERFACE								*
+ *																						*
+ *======================================================================================*/
+
+
+	 
+	/*===================================================================================
+	 *	_LoadXMLOntologyUnit															*
 	 *==================================================================================*/
 
 	/**
@@ -754,11 +1010,12 @@ class COntology extends CConnection
 	 * @param CDatabase				$theDatabase		Database instance.
 	 * @param SimpleXMLElement		$theUnit			XML unit element.
 	 *
-	 * @access public
+	 * @access protected
 	 *
 	 * @throws Exception
 	 */
-	public function LoadXMLOntologyUnit( CDatabase $theDatabase, SimpleXMLElement $theUnit )
+	protected function _LoadXMLOntologyUnit( CDatabase $theDatabase,
+											 SimpleXMLElement $theUnit )
 	{
 		//
 		// Init cache.
@@ -773,35 +1030,35 @@ class COntology extends CConnection
 		// Iterate terms.
 		//
 		foreach( $theUnit->{'TERM'} as $element )
-			$this->LoadXMLOntologyTerm( $cache, $theDatabase, $element );
+			$this->_LoadXMLOntologyTerm( $cache, $theDatabase, $element );
 		
 		//
 		// Iterate nodes.
 		//
 		foreach( $theUnit->{'NODE'} as $element )
-			$this->LoadXMLOntologyNode( $cache, $theDatabase, $element );
+			$this->_LoadXMLOntologyNode( $cache, $theDatabase, $element );
 		
 		//
 		// Iterate edges.
 		//
 		foreach( $theUnit->{'EDGE'} as $element )
-			$this->LoadXMLOntologyEdge( $cache, $theDatabase, $element );
+			$this->_LoadXMLOntologyEdge( $cache, $theDatabase, $element );
 		
 		//
 		// Iterate tags.
 		//
 		foreach( $theUnit->{'TAG'} as $element )
-			$this->LoadXMLOntologyTag( $cache, $theDatabase, $element );
+			$this->_LoadXMLOntologyTag( $cache, $theDatabase, $element );
 
 		//
 		// Commit transaction.
 		//
 
-	} // LoadXMLOntologyUnit.
+	} // _LoadXMLOntologyUnit.
 
 	 
 	/*===================================================================================
-	 *	LoadXMLOntologyTerm																*
+	 *	_LoadXMLOntologyTerm															*
 	 *==================================================================================*/
 
 	/**
@@ -815,13 +1072,13 @@ class COntology extends CConnection
 	 * @param CDatabase				$theDatabase		Database instance.
 	 * @param SimpleXMLElement		$theElement			XML term element.
 	 *
-	 * @access public
+	 * @access protected
 	 *
 	 * @throws Exception
 	 */
-	public function LoadXMLOntologyTerm(				 &$theCache,
-										 CDatabase		  $theDatabase,
-										 SimpleXMLElement $theElement )
+	protected function _LoadXMLOntologyTerm(				 &$theCache,
+											 CDatabase		  $theDatabase,
+											 SimpleXMLElement $theElement )
 	{
 		//
 		// Handle modification.
@@ -1190,11 +1447,11 @@ class COntology extends CConnection
 		
 		} // Insert.
 
-	} // LoadXMLOntologyTerm.
+	} // _LoadXMLOntologyTerm.
 
 	 
 	/*===================================================================================
-	 *	LoadXMLOntologyNode																*
+	 *	_LoadXMLOntologyNode															*
 	 *==================================================================================*/
 
 	/**
@@ -1208,13 +1465,13 @@ class COntology extends CConnection
 	 * @param CDatabase				$theDatabase		Database instance.
 	 * @param SimpleXMLElement		$theElement			XML node element.
 	 *
-	 * @access public
+	 * @access protected
 	 *
 	 * @throws Exception
 	 */
-	public function LoadXMLOntologyNode(				 &$theCache,
-										 CDatabase		  $theDatabase,
-										 SimpleXMLElement $theElement )
+	protected function _LoadXMLOntologyNode(				 &$theCache,
+											 CDatabase		  $theDatabase,
+											 SimpleXMLElement $theElement )
 	{
 		//
 		// Handle modification.
@@ -1284,7 +1541,7 @@ class COntology extends CConnection
 			//
 			// Resolve element PID.
 			//
-			$this->ResolveOntologyNode( $theDatabase, $element );
+			$this->_ResolveOntologyNode( $theDatabase, $element );
 			
 			//
 			// Handle by tag.
@@ -1725,11 +1982,11 @@ class COntology extends CConnection
 		
 		} // Insert.
 
-	} // LoadXMLOntologyNode.
+	} // _LoadXMLOntologyNode.
 
 	 
 	/*===================================================================================
-	 *	LoadXMLOntologyEdge																*
+	 *	_LoadXMLOntologyEdge															*
 	 *==================================================================================*/
 
 	/**
@@ -1743,13 +2000,13 @@ class COntology extends CConnection
 	 * @param CDatabase				$theDatabase		Database instance.
 	 * @param SimpleXMLElement		$theElement			XML edge element.
 	 *
-	 * @access public
+	 * @access protected
 	 *
 	 * @throws Exception
 	 */
-	public function LoadXMLOntologyEdge(				 &$theCache,
-										 CDatabase		  $theDatabase,
-										 SimpleXMLElement $theElement )
+	protected function _LoadXMLOntologyEdge(				 &$theCache,
+											 CDatabase		  $theDatabase,
+											 SimpleXMLElement $theElement )
 	{
 		//
 		// Instantiate node.
@@ -1764,7 +2021,7 @@ class COntology extends CConnection
 			//
 			// Resolve element PID.
 			//
-			$this->ResolveOntologyNode( $theDatabase, $element );
+			$this->_ResolveOntologyNode( $theDatabase, $element );
 
 			//
 			// Handle by tag.
@@ -1971,11 +2228,11 @@ class COntology extends CConnection
 				->RelateTo(
 					$object->Predicate(), $object->Object(), $theDatabase, TRUE );
 
-	} // LoadXMLOntologyEdge.
+	} // _LoadXMLOntologyEdge.
 
 	 
 	/*===================================================================================
-	 *	LoadXMLOntologyTag																*
+	 *	_LoadXMLOntologyTag																*
 	 *==================================================================================*/
 
 	/**
@@ -1989,13 +2246,13 @@ class COntology extends CConnection
 	 * @param CDatabase				$theDatabase		Database instance.
 	 * @param SimpleXMLElement		$theElement			XML tag element.
 	 *
-	 * @access public
+	 * @access protected
 	 *
 	 * @throws Exception
 	 */
-	public function LoadXMLOntologyTag(					&$theCache,
-										CDatabase		 $theDatabase,
-										SimpleXMLElement $theElement )
+	protected function _LoadXMLOntologyTag(					&$theCache,
+											CDatabase		 $theDatabase,
+											SimpleXMLElement $theElement )
 	{
 		//
 		// Instantiate term.
@@ -2010,7 +2267,7 @@ class COntology extends CConnection
 			//
 			// Resolve element PID.
 			//
-			$this->ResolveOntologyNode( $theDatabase, $element );
+			$this->_ResolveOntologyNode( $theDatabase, $element );
 
 			//
 			// Handle by tag.
@@ -2237,11 +2494,11 @@ class COntology extends CConnection
 		//
 		$theCache[ 'tag' ][] = $object;
 
-	} // LoadXMLOntologyTag.
+	} // _LoadXMLOntologyTag.
 
 	 
 	/*===================================================================================
-	 *	ResolveOntologyNode																*
+	 *	_ResolveOntologyNode															*
 	 *==================================================================================*/
 
 	/**
@@ -2268,12 +2525,12 @@ class COntology extends CConnection
 	 * @param CDatabase				$theDatabase		Database instance.
 	 * @param SimpleXMLElement		$theElement			XML element.
 	 *
-	 * @access public
+	 * @access protected
 	 *
 	 * @throws Exception
 	 */
-	public function ResolveOntologyNode( CDatabase		  $theDatabase,
-										 SimpleXMLElement $theElement )
+	protected function _ResolveOntologyNode( CDatabase		  $theDatabase,
+											 SimpleXMLElement $theElement )
 	{
 		//
 		// Check element's node attribute.
@@ -2389,156 +2646,7 @@ class COntology extends CConnection
 		
 		} // Has items.
 
-	} // ResolveOntologyNode.
-
-		
-
-/*=======================================================================================
- *																						*
- *							PUBLIC CUSTOM ONTOLOGY INTERFACE							*
- *																						*
- *======================================================================================*/
-
-
-	 
-	/*===================================================================================
-	 *	LoadISOPOFiles																	*
-	 *==================================================================================*/
-
-	/**
-	 * <h4>Load the standard ISO ontology</h4>
-	 *
-	 * This method will load the ISO standards into the ontology, it takes the information
-	 * from the {@link http://pkg-isocodes.alioth.debian.org} web page project.
-	 *
-	 * The method requires the path to the unit XML file containing the ISO categories, it
-	 * will then decode the PO files and load the information.
-	 *
-	 * @access public
-	 *
-	 * @throws Exception
-	 */
-	public function LoadISOPOFiles()
-	{
-		//
-		// Get database.
-		//
-		$db = $this->GetDatabase();
-		if( ! ($db instanceof CDatabase) )
-			throw new Exception
-				( "Unable to retrieve database connection",
-				  kERROR_STATE );												// !@! ==>
-		
-		//
-		// Decode PO files.
-		//
-		$this->_ISODecodePOFiles();
-		
-		//
-		// Parse ISO XMLfiles.
-		//
-		$this->_ISOParseXMLFiles( $db );
-
-	} // LoadISOPOFiles.
-
-	 
-	/*===================================================================================
-	 *	SetAllCountries																	*
-	 *==================================================================================*/
-
-	/**
-	 * <h4>Set all countries to provided element</h4>
-	 *
-	 * This method will connect all ISO 3166-1 and ISO 3166-3 countries to the provided
-	 * enumeration.
-	 *
-	 * @param string				$theEnumeration		GID of enumeration.
-	 * @param string				$theEnumeration		GID of enumeration.
-	 *
-	 * @access public
-	 *
-	 * @throws Exception
-	 */
-	public function SetAllCountries( $theEnumeration )
-	{
-		//
-		// Handle enumerations list.
-		//
-		if( is_array( $theEnumeration ) )
-		{
-			foreach( $theEnumeration as $enum )
-				$this->SetAllCountries( $enum );
-		}
-		
-		//
-		// Handle single enumeration.
-		//
-		else
-		{
-			//
-			// Get database.
-			//
-			$db = $this->GetDatabase();
-			if( ! ($db instanceof CDatabase) )
-				throw new Exception
-					( "Unable to retrieve database connection",
-					  kERROR_STATE );											// !@! ==>
-			
-			//
-			// Get container.
-			//
-			$container = COntologyEdge::DefaultContainer( $db );
-		
-			//
-			// Resolve references.
-			//
-			$node = COntologyMasterNode::Resolve( $db, $theEnumeration, TRUE );
-			$actual = COntologyMasterNode::Resolve( $db, 'ISO:3166:1:alpha-3', TRUE );
-			$obsolete = COntologyMasterNode::Resolve( $db, 'ISO:3166:3:alpha-3', TRUE );
-			$predicate = COntologyTerm::Resolve( $db, kPREDICATE_ENUM_OF, NULL, TRUE );
-			
-			//
-			// Load actual elements.
-			//
-			$query = $container->NewQuery();
-			$query->AppendStatement(
-				CQueryStatement::Equals(
-					kTAG_OBJECT, $actual->NID() ) );
-			$query->AppendStatement(
-				CQueryStatement::Equals(
-					kTAG_PREDICATE, $predicate->NID(), kTYPE_BINARY_STRING ) );
-			$rs = $container-> Query( $query, array( kTAG_SUBJECT ) );
-			foreach( $rs as $object )
-			{
-				$edge = new COntologyEdge();
-				$edge->Subject( $object[ kTAG_SUBJECT ] );
-				$edge->Predicate( $predicate );
-				$edge->Object( $node );
-				$edge->Insert( $container );
-			}
-			
-			//
-			// Load obsolete elements.
-			//
-			$query = $container->NewQuery();
-			$query->AppendStatement(
-				CQueryStatement::Equals(
-					kTAG_OBJECT, $obsolete->NID() ) );
-			$query->AppendStatement(
-				CQueryStatement::Equals(
-					kTAG_PREDICATE, $predicate->NID(), kTYPE_BINARY_STRING ) );
-			$rs = $container-> Query( $query, array( kTAG_SUBJECT ) );
-			foreach( $rs as $object )
-			{
-				$edge = new COntologyEdge();
-				$edge->Subject( $object[ kTAG_SUBJECT ] );
-				$edge->Predicate( $predicate );
-				$edge->Object( $node );
-				$edge->Insert( $container );
-			}
-		}
-
-	} // SetAllCountries.
+	} // _ResolveOntologyNode.
 
 		
 

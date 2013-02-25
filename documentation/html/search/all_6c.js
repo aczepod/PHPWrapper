@@ -1,0 +1,19 @@
+var searchData=
+[
+  ['label',['Label',['../class_c_term.html#a6d832ed436e71f3c78411bd767dae182',1,'CTerm']]],
+  ['language',['Language',['../class_c_ontology_wrapper_client.html#aacba4e89c53298723dba4ac0a3918e24',1,'COntologyWrapperClient']]],
+  ['less',['Less',['../class_c_query_statement.html#af3a8b31af7f32562fb1ce7ba16f69766',1,'CQueryStatement']]],
+  ['lessequal',['LessEqual',['../class_c_query_statement.html#a292880d593cc8b46dba77d13004aaa28',1,'CQueryStatement']]],
+  ['lid',['LID',['../class_c_term.html#ae9a44c9e2b44ab35e28b6215a92ad0bf',1,'CTerm']]],
+  ['like',['Like',['../class_c_query_statement.html#a26fd9aefa3c9df4228f9aaa7b5d74cbc',1,'CQueryStatement']]],
+  ['loadisopofiles',['LoadISOPOFiles',['../class_c_ontology.html#a9789841620a6b75f09120223d7fd4dc8',1,'COntology']]],
+  ['loadmanager',['LoadManager',['../class_c_user.html#a8059ecd785bdbb0ab52da79a46dcde6c',1,'CUser']]],
+  ['loadnamespace',['LoadNamespace',['../class_c_ontology_term.html#a31fa356129d058361b7cdd88924b6c7d',1,'COntologyTerm']]],
+  ['loadobject',['LoadObject',['../class_c_ontology_edge.html#aff6fa3df789a8915076b07062e45bec2',1,'COntologyEdge']]],
+  ['loadpredicate',['LoadPredicate',['../class_c_ontology_edge.html#a74b5faea0ec803afd1c44e739b588b63',1,'COntologyEdge']]],
+  ['loadsubject',['LoadSubject',['../class_c_ontology_edge.html#a0f369a60b57a48e79c34537a1ec6de80',1,'COntologyEdge']]],
+  ['loadterm',['LoadTerm',['../class_c_ontology_node.html#a09eb3d9d16775d7752fd7bf62dd93d74',1,'COntologyNode\LoadTerm()'],['../class_c_ontology_term.html#a36c2ab4ffdde63d0ca51734437faaa35',1,'COntologyTerm\LoadTerm()']]],
+  ['loadxmlontologyfile',['LoadXMLOntologyFile',['../class_c_ontology.html#ad9b6ebbaf592ab0543be3f63cddd025c',1,'COntology']]],
+  ['logrequest',['LogRequest',['../class_c_wrapper_client.html#a844a2e677c1e0fb0855255cb02b86be4',1,'CWrapperClient']]],
+  ['logtrace',['LogTrace',['../class_c_wrapper_client.html#a2020117737285ff3c2c3f0fae01136ff',1,'CWrapperClient']]]
+];

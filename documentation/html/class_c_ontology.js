@@ -1,0 +1,28 @@
+var class_c_ontology =
+[
+    [ "__toString", "class_c_ontology.html#a3bf6307b3353401050f4e66822d4cecf", null ],
+    [ "_ISOCollectLanguageStrings", "class_c_ontology.html#a537ac00b77db44b312c4e46ba4869eb5", null ],
+    [ "_ISODecodePOFiles", "class_c_ontology.html#a09272a637e5f3edb5575253ff6127faa", null ],
+    [ "_ISOParse15924XML", "class_c_ontology.html#a0fdf66940951cf5ccd13d21b9bf3e114", null ],
+    [ "_ISOParse31661XML", "class_c_ontology.html#a11b4fd10984fec1ec88b450ff8623fcc", null ],
+    [ "_ISOParse31662XML", "class_c_ontology.html#af9a15784b11030134a1504e22fc5ea4f", null ],
+    [ "_ISOParse31663XML", "class_c_ontology.html#af784ce9c04c61d438da744c7337f7284", null ],
+    [ "_ISOParse4217XML", "class_c_ontology.html#aee3fc6563229a9e9565c9e78294af8ed", null ],
+    [ "_ISOParse6393XML", "class_c_ontology.html#a1cc310175e0b77d130f7e540c00a1772", null ],
+    [ "_ISOParse639XML", "class_c_ontology.html#adb0eec614edf29dd1986634fa4884ba3", null ],
+    [ "_ISOParseXMLFiles", "class_c_ontology.html#a8bdcf5f69b661f7e714db4ff3f706302", null ],
+    [ "_LoadXMLOntologyEdge", "class_c_ontology.html#a736efd02f870b97c6cffcd73bcc4c16b", null ],
+    [ "_LoadXMLOntologyNode", "class_c_ontology.html#a08a3e787742fde631feaefe426602e6f", null ],
+    [ "_LoadXMLOntologyTag", "class_c_ontology.html#a889fdf93b0cf4cbf631e4cfd64006e5f", null ],
+    [ "_LoadXMLOntologyTerm", "class_c_ontology.html#af0ce6bf134670c99a34d23ff1643ff09", null ],
+    [ "_LoadXMLOntologyUnit", "class_c_ontology.html#ae3e06b7824d7b902bd7bd5c9d393ab8a", null ],
+    [ "_ResolveOntologyNode", "class_c_ontology.html#add240f87c2864b092a1435cac49d0647", null ],
+    [ "Connection", "class_c_ontology.html#a1c7acc74d753c47dc89d46464afc0099", null ],
+    [ "GetDatabase", "class_c_ontology.html#ae8905b152a35d927137faeb2aa1885ce", null ],
+    [ "GetRootTemplate", "class_c_ontology.html#a2c3e33bcf3316c66658eef0fd9f7a6a2", null ],
+    [ "InitContainers", "class_c_ontology.html#a305fa41da58da8239b7636e0ffdc9689", null ],
+    [ "InitOntology", "class_c_ontology.html#a6bfd3100a83783cf1997749bf901b8df", null ],
+    [ "LoadISOPOFiles", "class_c_ontology.html#a9789841620a6b75f09120223d7fd4dc8", null ],
+    [ "LoadXMLOntologyFile", "class_c_ontology.html#ad9b6ebbaf592ab0543be3f63cddd025c", null ],
+    [ "SetAllCountries", "class_c_ontology.html#a85ac5a51432b48fe5c2fa81a6fae2c0a", null ]
+];

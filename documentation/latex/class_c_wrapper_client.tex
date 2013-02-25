@@ -1,0 +1,462 @@
+\hypertarget{class_c_wrapper_client}{\section{C\-Wrapper\-Client Class Reference}
+\label{class_c_wrapper_client}\index{C\-Wrapper\-Client@{C\-Wrapper\-Client}}
+}
+Inheritance diagram for C\-Wrapper\-Client\-:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=8.000000cm]{class_c_wrapper_client}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{class_c_wrapper_client_ab59e31a65a939dc99630aaabebdb01cf}{\-\_\-\-\_\-to\-String} ()
+\item 
+\hyperlink{class_c_wrapper_client_ae378229fd57b051ddf0e0a7abf599641}{Operation} (\$the\-Value=N\-U\-L\-L, \$get\-Old=F\-A\-L\-S\-E)
+\item 
+\hyperlink{class_c_wrapper_client_aeea011893f53a7df495f23e199cbc28b}{Format} (\$the\-Value=N\-U\-L\-L, \$get\-Old=F\-A\-L\-S\-E)
+\item 
+\hyperlink{class_c_wrapper_client_ac87e4af5c32d735f192c8041e83b3ce3}{Stamp} (\$the\-Value=N\-U\-L\-L, \$get\-Old=F\-A\-L\-S\-E)
+\item 
+\hyperlink{class_c_wrapper_client_a844a2e677c1e0fb0855255cb02b86be4}{Log\-Request} (\$the\-Value=N\-U\-L\-L, \$get\-Old=F\-A\-L\-S\-E)
+\item 
+\hyperlink{class_c_wrapper_client_a2020117737285ff3c2c3f0fae01136ff}{Log\-Trace} (\$the\-Value=N\-U\-L\-L, \$get\-Old=F\-A\-L\-S\-E)
+\item 
+\hyperlink{class_c_wrapper_client_abf6475dc50f52a1f80b2eebc91fe4b95}{Execute} (\$the\-Mode= 'P\-O\-S\-T', \$do\-Encode=T\-R\-U\-E)
+\item 
+\hyperlink{class_c_wrapper_client_a8d444816f701541f165c112c9230fb97}{Dump} ()
+\end{DoxyCompactItemize}
+\subsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+static \hyperlink{class_c_wrapper_client_ac82b7d383afcfaa312f6db5eee1db4e2}{Request} (\$the\-Url, \$the\-Params=N\-U\-L\-L, \$the\-Mode= 'P\-O\-S\-T', \$the\-Format=k\-T\-Y\-P\-E\-\_\-\-J\-S\-O\-N)
+\end{DoxyCompactItemize}
+\subsection*{Protected Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{class_c_wrapper_client_a829d4b5bcc5549e59913c6f83ea6afaa}{\-\_\-\-Ready} ()
+\item 
+\hyperlink{class_c_wrapper_client_ad2705e5b4a573bfb71ce7841c60b8c21}{\-\_\-\-Check\-Dependencies} (\$the\-Operation)
+\item 
+\hyperlink{class_c_wrapper_client_ae7294d66b5b54c1e9f033783fd2b009f}{\-\_\-\-Normalise\-Parameters} ()
+\item 
+\hyperlink{class_c_wrapper_client_a1b944a01fb65fc745461795766bd64ea}{\-\_\-\-Encode\-Parameters} (\&\$the\-Parameters, \$the\-Encoding)
+\item 
+\hyperlink{class_c_wrapper_client_a8ad42378b7abfeaaaa311e1b96a42a26}{\-\_\-\-Manage\-List\-Offset} (\$the\-Offset, \$the\-Value=N\-U\-L\-L, \$get\-Old=F\-A\-L\-S\-E)
+\end{DoxyCompactItemize}
+\subsection*{Additional Inherited Members}
+
+
+\subsection{Member Function Documentation}
+\hypertarget{class_c_wrapper_client_ab59e31a65a939dc99630aaabebdb01cf}{\index{C\-Wrapper\-Client@{C\-Wrapper\-Client}!\-\_\-\-\_\-to\-String@{\-\_\-\-\_\-to\-String}}
+\index{\-\_\-\-\_\-to\-String@{\-\_\-\-\_\-to\-String}!CWrapperClient@{C\-Wrapper\-Client}}
+\subsubsection[{\-\_\-\-\_\-to\-String}]{\setlength{\rightskip}{0pt plus 5cm}C\-Wrapper\-Client\-::\-\_\-\-\_\-to\-String (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{class_c_wrapper_client_ab59e31a65a939dc99630aaabebdb01cf}
+\subparagraph*{Return connection name}
+
+This method should return the current client's name, in this class we return the client's U\-R\-L (\hyperlink{class_c_connection_a8ad981138c7b681c875da778ce4e391b}{Connection()}.
+
+public \begin{DoxyReturn}{Returns}
+string The client name. 
+\end{DoxyReturn}
+\hypertarget{class_c_wrapper_client_ad2705e5b4a573bfb71ce7841c60b8c21}{\index{C\-Wrapper\-Client@{C\-Wrapper\-Client}!\-\_\-\-Check\-Dependencies@{\-\_\-\-Check\-Dependencies}}
+\index{\-\_\-\-Check\-Dependencies@{\-\_\-\-Check\-Dependencies}!CWrapperClient@{C\-Wrapper\-Client}}
+\subsubsection[{\-\_\-\-Check\-Dependencies}]{\setlength{\rightskip}{0pt plus 5cm}C\-Wrapper\-Client\-::\-\_\-\-Check\-Dependencies (
+\begin{DoxyParamCaption}
+\item[{}]{\$the\-Operation}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [protected]}}}\label{class_c_wrapper_client_ad2705e5b4a573bfb71ce7841c60b8c21}
+Check operation dependencies.
+
+This method can be used to assert whether the required parameters are present depending on the requested operation.
+
+
+\begin{DoxyParams}[1]{Parameters}
+string & {\em \$the\-Operation} & Requested operation.\\
+\hline
+\end{DoxyParams}
+protected
+
+
+\begin{DoxyExceptions}{Exceptions}
+{\em Exception} & \\
+\hline
+\end{DoxyExceptions}
+\hypertarget{class_c_wrapper_client_a1b944a01fb65fc745461795766bd64ea}{\index{C\-Wrapper\-Client@{C\-Wrapper\-Client}!\-\_\-\-Encode\-Parameters@{\-\_\-\-Encode\-Parameters}}
+\index{\-\_\-\-Encode\-Parameters@{\-\_\-\-Encode\-Parameters}!CWrapperClient@{C\-Wrapper\-Client}}
+\subsubsection[{\-\_\-\-Encode\-Parameters}]{\setlength{\rightskip}{0pt plus 5cm}C\-Wrapper\-Client\-::\-\_\-\-Encode\-Parameters (
+\begin{DoxyParamCaption}
+\item[{\&}]{\$the\-Parameters, }
+\item[{}]{\$the\-Encoding}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [protected]}}}\label{class_c_wrapper_client_a1b944a01fb65fc745461795766bd64ea}
+Encode parameters.
+
+This method can be used to encode parameters before they get sent to the service.
+
+The method expects one parameter to be a reference to the list of parameter that will be sent and the other to be the format in which the parameters myst be encoded. This value is assumed to be an array.
+
+If the provided encoding is not recognised by the method, the parameters will be left untouched; in derived classes you should first call the parent method and then handle the local parameters.
+
+
+\begin{DoxyParams}[1]{Parameters}
+reference & {\em \&\$the\-Parameters} & List of parameters. \\
+\hline
+string & {\em \$the\-Encoding} & Encoding code.\\
+\hline
+\end{DoxyParams}
+protected \hypertarget{class_c_wrapper_client_a8ad42378b7abfeaaaa311e1b96a42a26}{\index{C\-Wrapper\-Client@{C\-Wrapper\-Client}!\-\_\-\-Manage\-List\-Offset@{\-\_\-\-Manage\-List\-Offset}}
+\index{\-\_\-\-Manage\-List\-Offset@{\-\_\-\-Manage\-List\-Offset}!CWrapperClient@{C\-Wrapper\-Client}}
+\subsubsection[{\-\_\-\-Manage\-List\-Offset}]{\setlength{\rightskip}{0pt plus 5cm}C\-Wrapper\-Client\-::\-\_\-\-Manage\-List\-Offset (
+\begin{DoxyParamCaption}
+\item[{}]{\$the\-Offset, }
+\item[{}]{\$the\-Value = {\ttfamily NULL}, }
+\item[{}]{\$get\-Old = {\ttfamily FALSE}}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [protected]}}}\label{class_c_wrapper_client_a8ad42378b7abfeaaaa311e1b96a42a26}
+Manage a list offset.
+
+This method is similar to the \hyperlink{}{Manage\-Offset()} function, except that it is assumed that the offset must contain an array\-: if you provide an array as the value, the method will behave as \hyperlink{}{Manage\-Offset()}; if you provide a scalar, the method will convert it to a string and add it to the existing array if it doesn't exist already, or create a new list with it. It is not possible to retrieve or delete single elements of the list, only add.
+
+
+\begin{DoxyParams}[1]{Parameters}
+string & {\em \$the\-Offset} & Offset to be managed. \\
+\hline
+mixed & {\em \$the\-Value} & New value or operation. \\
+\hline
+boolean & {\em \$get\-Old} & T\-R\-U\-E get old value.\\
+\hline
+\end{DoxyParams}
+protected \begin{DoxyReturn}{Returns}
+array
+\end{DoxyReturn}
+
+\begin{DoxyExceptions}{Exceptions}
+{\em Exception} & \\
+\hline
+\end{DoxyExceptions}
+\hypertarget{class_c_wrapper_client_ae7294d66b5b54c1e9f033783fd2b009f}{\index{C\-Wrapper\-Client@{C\-Wrapper\-Client}!\-\_\-\-Normalise\-Parameters@{\-\_\-\-Normalise\-Parameters}}
+\index{\-\_\-\-Normalise\-Parameters@{\-\_\-\-Normalise\-Parameters}!CWrapperClient@{C\-Wrapper\-Client}}
+\subsubsection[{\-\_\-\-Normalise\-Parameters}]{\setlength{\rightskip}{0pt plus 5cm}C\-Wrapper\-Client\-::\-\_\-\-Normalise\-Parameters (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [protected]}}}\label{class_c_wrapper_client_ae7294d66b5b54c1e9f033783fd2b009f}
+Normalise parameters.
+
+This method can be used to normalise parameters before they get encoded.
+
+In this class we set the request time stamp if the current value is not an float.
+
+In derived classes you should call first the parent method, then handle the local parameters.
+
+protected \hypertarget{class_c_wrapper_client_a829d4b5bcc5549e59913c6f83ea6afaa}{\index{C\-Wrapper\-Client@{C\-Wrapper\-Client}!\-\_\-\-Ready@{\-\_\-\-Ready}}
+\index{\-\_\-\-Ready@{\-\_\-\-Ready}!CWrapperClient@{C\-Wrapper\-Client}}
+\subsubsection[{\-\_\-\-Ready}]{\setlength{\rightskip}{0pt plus 5cm}C\-Wrapper\-Client\-::\-\_\-\-Ready (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [protected]}}}\label{class_c_wrapper_client_a829d4b5bcc5549e59913c6f83ea6afaa}
+\subparagraph*{Determine if the object is ready}
+
+In this class we tie the \hyperlink{class_c_status_document_a954dee06e219e0a0f2e7fa6edac56e28}{\-\_\-\-Is\-Inited()} status to the presence or absence of the \hyperlink{}{k\-A\-P\-I\-\_\-\-O\-P\-E\-R\-A\-T\-I\-O\-N} and \hyperlink{}{k\-A\-P\-I\-\_\-\-F\-O\-R\-M\-A\-T} parameters.
+
+protected \begin{DoxyReturn}{Returns}
+boolean {\ttfamily T\-R\-U\-E} means \hyperlink{}{.  \-\_\-\-Ready() }
+\end{DoxyReturn}
+\hypertarget{class_c_wrapper_client_a8d444816f701541f165c112c9230fb97}{\index{C\-Wrapper\-Client@{C\-Wrapper\-Client}!Dump@{Dump}}
+\index{Dump@{Dump}!CWrapperClient@{C\-Wrapper\-Client}}
+\subsubsection[{Dump}]{\setlength{\rightskip}{0pt plus 5cm}C\-Wrapper\-Client\-::\-Dump (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{class_c_wrapper_client_a8d444816f701541f165c112c9230fb97}
+Return the request dump.
+
+This method can be used to retrieve the object as an array for debugging purposes.
+
+public \begin{DoxyReturn}{Returns}
+array 
+\end{DoxyReturn}
+\hypertarget{class_c_wrapper_client_abf6475dc50f52a1f80b2eebc91fe4b95}{\index{C\-Wrapper\-Client@{C\-Wrapper\-Client}!Execute@{Execute}}
+\index{Execute@{Execute}!CWrapperClient@{C\-Wrapper\-Client}}
+\subsubsection[{Execute}]{\setlength{\rightskip}{0pt plus 5cm}C\-Wrapper\-Client\-::\-Execute (
+\begin{DoxyParamCaption}
+\item[{}]{\$the\-Mode = {\ttfamily 'POST'}, }
+\item[{}]{\$do\-Encode = {\ttfamily TRUE}}
+\end{DoxyParamCaption}
+)}}\label{class_c_wrapper_client_abf6475dc50f52a1f80b2eebc91fe4b95}
+Send an H\-T\-T\-P request.
+
+This method can be used to sent an {\itshape H\-T\-T\-P} request using the current contents of the object and return a response.
+
+If the second parameter is {\ttfamily T\-R\-U\-E}, the response will be encoded, if {\ttfamily F\-A\-L\-S\-E}, the reqponse will be returned in its original encoding.
+
+
+\begin{DoxyParams}[1]{Parameters}
+string & {\em \$the\-Mode} & Request mode, P\-O\-S\-T or G\-E\-T \\
+\hline
+boolean & {\em \$do\-Encode} & T\-R\-U\-E means encode result.\\
+\hline
+\end{DoxyParams}
+public \begin{DoxyReturn}{Returns}
+mixed
+\end{DoxyReturn}
+
+\begin{DoxyExceptions}{Exceptions}
+{\em \{@link} & \hyperlink{class_c_exception}{C\-Exception} \hyperlink{class_c_exception}{C\-Exception}\} \\
+\hline
+\end{DoxyExceptions}
+\hypertarget{class_c_wrapper_client_aeea011893f53a7df495f23e199cbc28b}{\index{C\-Wrapper\-Client@{C\-Wrapper\-Client}!Format@{Format}}
+\index{Format@{Format}!CWrapperClient@{C\-Wrapper\-Client}}
+\subsubsection[{Format}]{\setlength{\rightskip}{0pt plus 5cm}C\-Wrapper\-Client\-::\-Format (
+\begin{DoxyParamCaption}
+\item[{}]{\$the\-Value = {\ttfamily NULL}, }
+\item[{}]{\$get\-Old = {\ttfamily FALSE}}
+\end{DoxyParamCaption}
+)}}\label{class_c_wrapper_client_aeea011893f53a7df495f23e199cbc28b}
+Manage format.
+
+This method can be used to manage the \hyperlink{}{format} in which both the parameters are sent and the response is returned from the web-\/service. It accepts a parameter which represents either the web-\/service format code or this method operation, depending on its value\-:
+
+
+\begin{DoxyItemize}
+\item {\itshape N\-U\-L\-L}\-: Return the current value. 
+\item {\itshape F\-A\-L\-S\-E}\-: Delete the current value. 
+\item {\itshape other}\-: Set the value with the provided parameter. 
+\end{DoxyItemize}
+
+The second parameter is a boolean which if {\itshape T\-R\-U\-E} will return the {\itshape old} value when replacing values; if {\itshape F\-A\-L\-S\-E}, it will return the currently set value.
+
+This method will check whether the provided format is supported, if this is not the case, it will raise an exception. Derived classes should first check their specific operations, if not matched, they should pass the parameter to the parent method. In this class we support the following operations\-:
+
+
+\begin{DoxyItemize}
+\item {\itshape \hyperlink{}{k\-T\-Y\-P\-E\-\_\-\-P\-H\-P}}\-: Parameters and response will be serialized. 
+\item {\itshape \hyperlink{}{k\-T\-Y\-P\-E\-\_\-\-X\-M\-L}}\-: Parameters and response will be encoded in X\-M\-L. 
+\item {\itshape \hyperlink{}{k\-T\-Y\-P\-E\-\_\-\-J\-S\-O\-N}}\-: Parameters and response will be encoded in J\-S\-O\-N. 
+\item {\itshape \hyperlink{}{k\-T\-Y\-P\-E\-\_\-\-M\-E\-T\-A}}\-: This data type can be used to return service metadata, the \hyperlink{class_c_wrapper_client_abf6475dc50f52a1f80b2eebc91fe4b95}{request} will return headers metadata for troubleshooting, rather than the response from the web-\/service. 
+\end{DoxyItemize}
+
+
+\begin{DoxyParams}[1]{Parameters}
+string & {\em \$the\-Value} & Value or operation. \\
+\hline
+boolean & {\em \$get\-Old} & T\-R\-U\-E get old value.\\
+\hline
+\end{DoxyParams}
+public \begin{DoxyReturn}{Returns}
+mixed
+\end{DoxyReturn}
+
+\begin{DoxyExceptions}{Exceptions}
+{\em \{@link} & \hyperlink{class_c_exception}{C\-Exception} \hyperlink{class_c_exception}{C\-Exception}\}\\
+\hline
+\end{DoxyExceptions}
+Manage\-Offset()
+
+\begin{DoxySeeAlso}{See Also}
+k\-A\-P\-I\-\_\-\-F\-O\-R\-M\-A\-T 
+
+k\-A\-P\-I\-\_\-\-O\-P\-\_\-\-H\-E\-L\-P k\-A\-P\-I\-\_\-\-O\-P\-\_\-\-P\-I\-N\-G 
+\end{DoxySeeAlso}
+\hypertarget{class_c_wrapper_client_a844a2e677c1e0fb0855255cb02b86be4}{\index{C\-Wrapper\-Client@{C\-Wrapper\-Client}!Log\-Request@{Log\-Request}}
+\index{Log\-Request@{Log\-Request}!CWrapperClient@{C\-Wrapper\-Client}}
+\subsubsection[{Log\-Request}]{\setlength{\rightskip}{0pt plus 5cm}C\-Wrapper\-Client\-::\-Log\-Request (
+\begin{DoxyParamCaption}
+\item[{}]{\$the\-Value = {\ttfamily NULL}, }
+\item[{}]{\$get\-Old = {\ttfamily FALSE}}
+\end{DoxyParamCaption}
+)}}\label{class_c_wrapper_client_a844a2e677c1e0fb0855255cb02b86be4}
+Log request switch.
+
+This method can be used to turn on or off the request section in the web-\/service response, the method accepts a single parameter that if resolves to {\itshape T\-R\-U\-E} it will turn on this option, if not it will turn it off.
+
+The second parameter is a boolean which if {\itshape T\-R\-U\-E} will return the {\itshape old} value when replacing values; if {\itshape F\-A\-L\-S\-E}, it will return the currently set value.
+
+
+\begin{DoxyParams}[1]{Parameters}
+boolean & {\em \$the\-Value} & T\-R\-U\-E or F\-A\-L\-S\-E. \\
+\hline
+boolean & {\em \$get\-Old} & T\-R\-U\-E get old value.\\
+\hline
+\end{DoxyParams}
+public \begin{DoxyReturn}{Returns}
+mixed
+\end{DoxyReturn}
+Manage\-Offset()
+
+\begin{DoxySeeAlso}{See Also}
+k\-A\-P\-I\-\_\-\-L\-O\-G\-\_\-\-R\-E\-Q\-U\-E\-S\-T 
+\end{DoxySeeAlso}
+\hypertarget{class_c_wrapper_client_a2020117737285ff3c2c3f0fae01136ff}{\index{C\-Wrapper\-Client@{C\-Wrapper\-Client}!Log\-Trace@{Log\-Trace}}
+\index{Log\-Trace@{Log\-Trace}!CWrapperClient@{C\-Wrapper\-Client}}
+\subsubsection[{Log\-Trace}]{\setlength{\rightskip}{0pt plus 5cm}C\-Wrapper\-Client\-::\-Log\-Trace (
+\begin{DoxyParamCaption}
+\item[{}]{\$the\-Value = {\ttfamily NULL}, }
+\item[{}]{\$get\-Old = {\ttfamily FALSE}}
+\end{DoxyParamCaption}
+)}}\label{class_c_wrapper_client_a2020117737285ff3c2c3f0fae01136ff}
+Log trace switch.
+
+This method can be used to turn on or off the trace in the event an exception is raised, the method accepts a single parameter that if resolves to {\itshape T\-R\-U\-E} it will turn on this option, if not it will turn it off.
+
+The second parameter is a boolean which if {\itshape T\-R\-U\-E} will return the {\itshape old} value when replacing values; if {\itshape F\-A\-L\-S\-E}, it will return the currently set value.
+
+
+\begin{DoxyParams}[1]{Parameters}
+boolean & {\em \$the\-Value} & T\-R\-U\-E or F\-A\-L\-S\-E. \\
+\hline
+boolean & {\em \$get\-Old} & T\-R\-U\-E get old value.\\
+\hline
+\end{DoxyParams}
+public \begin{DoxyReturn}{Returns}
+mixed
+\end{DoxyReturn}
+Manage\-Offset()
+
+\begin{DoxySeeAlso}{See Also}
+k\-A\-P\-I\-\_\-\-L\-O\-G\-\_\-\-T\-R\-A\-C\-E 
+\end{DoxySeeAlso}
+\hypertarget{class_c_wrapper_client_ae378229fd57b051ddf0e0a7abf599641}{\index{C\-Wrapper\-Client@{C\-Wrapper\-Client}!Operation@{Operation}}
+\index{Operation@{Operation}!CWrapperClient@{C\-Wrapper\-Client}}
+\subsubsection[{Operation}]{\setlength{\rightskip}{0pt plus 5cm}C\-Wrapper\-Client\-::\-Operation (
+\begin{DoxyParamCaption}
+\item[{}]{\$the\-Value = {\ttfamily NULL}, }
+\item[{}]{\$get\-Old = {\ttfamily FALSE}}
+\end{DoxyParamCaption}
+)}}\label{class_c_wrapper_client_ae378229fd57b051ddf0e0a7abf599641}
+Manage operation.
+
+This method can be used to manage the \hyperlink{}{operation}, it accepts a parameter which represents either the web-\/service operation code or this method operation, depending on its value\-:
+
+
+\begin{DoxyItemize}
+\item {\itshape N\-U\-L\-L}\-: Return the current value. 
+\item {\itshape F\-A\-L\-S\-E}\-: Delete the current value. 
+\item {\itshape other}\-: Set the value with the provided parameter. 
+\end{DoxyItemize}
+
+The second parameter is a boolean which if {\itshape T\-R\-U\-E} will return the {\itshape old} value when replacing values; if {\itshape F\-A\-L\-S\-E}, it will return the currently set value.
+
+This method will check whether the provided operation is supported, if this is not the case, it will raise an exception. Derived classes should first check their specific operations, if not matched, they should pass the parameter to the parent method. In this class we support the following operations\-:
+
+
+\begin{DoxyItemize}
+\item {\itshape \hyperlink{}{k\-A\-P\-I\-\_\-\-O\-P\-\_\-\-H\-E\-L\-P}}\-: H\-E\-L\-P web-\/service operation, which returns the list of supported operations and options. 
+\item {\itshape \hyperlink{}{k\-A\-P\-I\-\_\-\-O\-P\-\_\-\-P\-I\-N\-G}}\-: P\-I\-N\-G web-\/service operation, which returns a status response. 
+\end{DoxyItemize}
+
+
+\begin{DoxyParams}[1]{Parameters}
+string & {\em \$the\-Value} & Value or operation. \\
+\hline
+boolean & {\em \$get\-Old} & T\-R\-U\-E get old value.\\
+\hline
+\end{DoxyParams}
+public \begin{DoxyReturn}{Returns}
+mixed
+\end{DoxyReturn}
+
+\begin{DoxyExceptions}{Exceptions}
+{\em \{@link} & \hyperlink{class_c_exception}{C\-Exception}\}\\
+\hline
+\end{DoxyExceptions}
+Manage\-Offset()
+
+\begin{DoxySeeAlso}{See Also}
+k\-A\-P\-I\-\_\-\-O\-P\-E\-R\-A\-T\-I\-O\-N 
+
+k\-A\-P\-I\-\_\-\-O\-P\-\_\-\-H\-E\-L\-P k\-A\-P\-I\-\_\-\-O\-P\-\_\-\-P\-I\-N\-G 
+\end{DoxySeeAlso}
+\hypertarget{class_c_wrapper_client_ac82b7d383afcfaa312f6db5eee1db4e2}{\index{C\-Wrapper\-Client@{C\-Wrapper\-Client}!Request@{Request}}
+\index{Request@{Request}!CWrapperClient@{C\-Wrapper\-Client}}
+\subsubsection[{Request}]{\setlength{\rightskip}{0pt plus 5cm}static C\-Wrapper\-Client\-::\-Request (
+\begin{DoxyParamCaption}
+\item[{}]{\$the\-Url, }
+\item[{}]{\$the\-Params = {\ttfamily NULL}, }
+\item[{}]{\$the\-Mode = {\ttfamily 'POST'}, }
+\item[{}]{\$the\-Format = {\ttfamily kTYPE\-\_\-JSON}}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}}}\label{class_c_wrapper_client_ac82b7d383afcfaa312f6db5eee1db4e2}
+Send a H\-T\-T\-P request.
+
+This method can be used to sent an {\itshape H\-T\-T\-P} request via {\itshape G\-E\-T} or {\itshape P\-O\-S\-T}.
+
+The method accepts the following parameters\-:
+
+
+\begin{DoxyItemize}
+\item {\bfseries \$the\-Url}\-: The request U\-R\-L. 
+\item {\bfseries \$the\-Params}\-: An array of key/value parameters for the request. 
+\item {\bfseries \$the\-Mode}\-: The request mode\-: 
+\begin{DoxyItemize}
+\item {\ttfamily G\-E\-T}\-: G\-E\-T, default. 
+\item {\ttfamily P\-O\-S\-T}\-: P\-O\-S\-T. 
+\item {\itshape \hyperlink{}{k\-T\-Y\-P\-E\-\_\-\-M\-E\-T\-A}}\-: Metadata\-: if you provide this format, the method will return the metadata of the operation for troubleshooting purposes. 
+\end{DoxyItemize}
+\item {\bfseries \$the\-Format}\-: The request format\-: 
+\begin{DoxyItemize}
+\item {\ttfamily \hyperlink{}{k\-T\-Y\-P\-E\-\_\-\-P\-H\-P}}\-: P\-H\-P. 
+\item {\ttfamily \hyperlink{}{k\-T\-Y\-P\-E\-\_\-\-J\-S\-O\-N}}\-: J\-S\-O\-N. 
+\item {\ttfamily \hyperlink{}{k\-T\-Y\-P\-E\-\_\-\-M\-E\-T\-A}}\-: Metadata\-: the method will return the metadata of the operation for troubleshooting purposes. 
+\item {\itshape other}\-: The service will return the data as it was received. 
+\end{DoxyItemize}
+\end{DoxyItemize}
+
+
+\begin{DoxyParams}[1]{Parameters}
+string & {\em \$the\-Url} & Request U\-R\-L. \\
+\hline
+mixed & {\em \$the\-Params} & Request parameters. \\
+\hline
+string & {\em \$the\-Mode} & Request mode. \\
+\hline
+string & {\em \$the\-Format} & Response format.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+mixed
+\end{DoxyReturn}
+
+\begin{DoxyExceptions}{Exceptions}
+{\em \{@link} & \hyperlink{class_c_exception}{C\-Exception} \hyperlink{class_c_exception}{C\-Exception}\} \\
+\hline
+\end{DoxyExceptions}
+\hypertarget{class_c_wrapper_client_ac87e4af5c32d735f192c8041e83b3ce3}{\index{C\-Wrapper\-Client@{C\-Wrapper\-Client}!Stamp@{Stamp}}
+\index{Stamp@{Stamp}!CWrapperClient@{C\-Wrapper\-Client}}
+\subsubsection[{Stamp}]{\setlength{\rightskip}{0pt plus 5cm}C\-Wrapper\-Client\-::\-Stamp (
+\begin{DoxyParamCaption}
+\item[{}]{\$the\-Value = {\ttfamily NULL}, }
+\item[{}]{\$get\-Old = {\ttfamily FALSE}}
+\end{DoxyParamCaption}
+)}}\label{class_c_wrapper_client_ac87e4af5c32d735f192c8041e83b3ce3}
+Time-\/stamp switch.
+
+This method can be used to turn on or off the time-\/stamp section in the web-\/service response, the method accepts a single parameter that if resolves to {\itshape T\-R\-U\-E} it will turn on this option, if not it will turn it off.
+
+The second parameter is a boolean which if {\itshape T\-R\-U\-E} will return the {\itshape old} value when replacing values; if {\itshape F\-A\-L\-S\-E}, it will return the currently set value.
+
+
+\begin{DoxyParams}[1]{Parameters}
+boolean & {\em \$the\-Value} & T\-R\-U\-E or F\-A\-L\-S\-E. \\
+\hline
+boolean & {\em \$get\-Old} & T\-R\-U\-E get old value.\\
+\hline
+\end{DoxyParams}
+public \begin{DoxyReturn}{Returns}
+mixed
+\end{DoxyReturn}
+Manage\-Offset()
+
+\begin{DoxySeeAlso}{See Also}
+k\-A\-P\-I\-\_\-\-S\-T\-A\-M\-P\-\_\-\-R\-E\-Q\-U\-E\-S\-T 
+\end{DoxySeeAlso}
+
+
+The documentation for this class was generated from the following file\-:\begin{DoxyCompactItemize}
+\item 
+/\-Library/\-Web\-Server/\-Library/\-P\-H\-P\-Wrapper/classes/C\-Wrapper\-Client.\-php\end{DoxyCompactItemize}

@@ -1,0 +1,19 @@
+var searchData=
+[
+  ['range',['Range',['../class_c_query_statement.html#a17cf641a4180129015bc0da8e83a7a4c',1,'CQueryStatement']]],
+  ['rangeexclusive',['RangeExclusive',['../class_c_query_statement.html#a182c44c738d574e6d331d5bd894ce8e7',1,'CQueryStatement']]],
+  ['rangeinclusive',['RangeInclusive',['../class_c_query_statement.html#ae18f91d3c6c1ad07bb380d959ce01c1b',1,'CQueryStatement']]],
+  ['reference',['Reference',['../class_c_exception.html#abcbd46a262790fcbe3493e30a6418821',1,'CException']]],
+  ['regex',['Regex',['../class_c_query_statement.html#a952e2d252c4a2a469c03a9e96f151d35',1,'CQueryStatement']]],
+  ['relateto',['RelateTo',['../class_c_node.html#af2b8ddaa93259dac31fc34e4b70ef8ed',1,'CNode\RelateTo()'],['../class_c_ontology_alias_node.html#ad82cf36f485558265dc30ac195c326f1',1,'COntologyAliasNode\RelateTo()'],['../class_c_ontology_master_node.html#a3b17a7706f8297c2735bd8035995762a',1,'COntologyMasterNode\RelateTo()']]],
+  ['relations',['Relations',['../class_c_ontology_wrapper_client.html#a274458fa0b61599f7f936cd48053b5e3',1,'COntologyWrapperClient']]],
+  ['remove',['Remove',['../class_c_container.html#a1deac33bfa698889c45d9021a274392a',1,'CContainer\Remove()'],['../class_c_mongo_container.html#a7cf34a5efd5dbccffaaf2d2522b1ffcf',1,'CMongoContainer\Remove()']]],
+  ['replace',['Replace',['../class_c_ontology_node.html#afc20c775f2ae9e01a2d8e50c95b00baf',1,'COntologyNode\Replace()'],['../class_c_ontology_tag.html#a878c491b0bb9f60c26c48a3797df15b8',1,'COntologyTag\Replace()'],['../class_c_ontology_term.html#ac1257616ac8626822f410bd858ce767c',1,'COntologyTerm\Replace()'],['../class_c_persistent_document.html#a1a3fb046a36fec064fca7cacdcc6cb3e',1,'CPersistentDocument\Replace()']]],
+  ['request',['Request',['../class_c_wrapper_client.html#ac82b7d383afcfaa312f6db5eee1db4e2',1,'CWrapperClient']]],
+  ['resolve',['Resolve',['../class_c_ontology_alias_node.html#a1c50632496dcfad67765d134409cb71d',1,'COntologyAliasNode\Resolve()'],['../class_c_ontology_edge.html#ad9312fa22db2de8a45f9dc5cdce204ed',1,'COntologyEdge\Resolve()'],['../class_c_ontology_master_node.html#a29aadfcab71c78e4f4a107aad67a8ebe',1,'COntologyMasterNode\Resolve()'],['../class_c_ontology_node.html#af249fcb695d7d3ceeed5a74446df0822',1,'COntologyNode\Resolve()'],['../class_c_ontology_tag.html#a58669fac5e450f687de2d4aad38bd4c4',1,'COntologyTag\Resolve()'],['../class_c_ontology_term.html#aaea30804fc8ceae42f91401f69ad6b88',1,'COntologyTerm\Resolve()'],['../class_c_user.html#a41767eb89356bfc787eabbe5596df36d',1,'CUser\Resolve()']]],
+  ['resolveclasscontainer',['ResolveClassContainer',['../class_c_persistent_document.html#ac6a46b4cfed5f22ec63a6436a107ed69',1,'CPersistentDocument']]],
+  ['resolvecontainer',['ResolveContainer',['../class_c_persistent_document.html#a4dbe287aa3b46bdc0a1157e001078589',1,'CPersistentDocument']]],
+  ['resolvepid',['ResolvePID',['../class_c_ontology_node.html#aa29329d76906e4d2a5f5589a909074a1',1,'COntologyNode']]],
+  ['restore',['Restore',['../class_c_persistent_document.html#a19f7dbe659a1174d844799e403d1a678',1,'CPersistentDocument']]],
+  ['role',['Role',['../class_c_user.html#add1faba1d336cf4b610a632d3c376dd2',1,'CUser']]]
+];

@@ -1,0 +1,104 @@
+\hypertarget{class_c_server}{\section{C\-Server Class Reference}
+\label{class_c_server}\index{C\-Server@{C\-Server}}
+}
+Inheritance diagram for C\-Server\-:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=6.000000cm]{class_c_server}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{class_c_server_abd12c8fabeb71e0400b21dc8cf93b9b1}{\-\_\-\-\_\-destruct} ()
+\item 
+\hyperlink{class_c_server_ac6e9bd058443274b3da40534d2fc741a}{Database} (\$the\-Database=N\-U\-L\-L)
+\item 
+\hyperlink{class_c_server_a23ace9fcb220408b293378051da8c084}{Graph} (\$the\-Value=N\-U\-L\-L, \$get\-Old=F\-A\-L\-S\-E)
+\end{DoxyCompactItemize}
+\subsection*{Protected Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{class_c_server_a7f59b9daedcaff19e284a38be45cd12d}{{\bfseries \$m\-Graph} = N\-U\-L\-L}\label{class_c_server_a7f59b9daedcaff19e284a38be45cd12d}
+
+\end{DoxyCompactItemize}
+\subsection*{Additional Inherited Members}
+
+
+\subsection{Constructor \& Destructor Documentation}
+\hypertarget{class_c_server_abd12c8fabeb71e0400b21dc8cf93b9b1}{\index{C\-Server@{C\-Server}!\-\_\-\-\_\-destruct@{\-\_\-\-\_\-destruct}}
+\index{\-\_\-\-\_\-destruct@{\-\_\-\-\_\-destruct}!CServer@{C\-Server}}
+\subsubsection[{\-\_\-\-\_\-destruct}]{\setlength{\rightskip}{0pt plus 5cm}C\-Server\-::\-\_\-\-\_\-destruct (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{class_c_server_abd12c8fabeb71e0400b21dc8cf93b9b1}
+\subparagraph*{Destructor}
+
+We implement the destructor to get rid of the graph\-: the Neo4j P\-H\-P interface, for instance, has closures that cannot be serialised, so we need to reset the graph before destroying the object.
+
+public 
+
+\subsection{Member Function Documentation}
+\hypertarget{class_c_server_ac6e9bd058443274b3da40534d2fc741a}{\index{C\-Server@{C\-Server}!Database@{Database}}
+\index{Database@{Database}!CServer@{C\-Server}}
+\subsubsection[{Database}]{\setlength{\rightskip}{0pt plus 5cm}C\-Server\-::\-Database (
+\begin{DoxyParamCaption}
+\item[{}]{\$the\-Database = {\ttfamily NULL}}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [abstract]}}}\label{class_c_server_ac6e9bd058443274b3da40534d2fc741a}
+\subparagraph*{Generate a database object}
+
+This method can be used to return a database object belonging to the current server.
+
+The parameter will be used by concrete instances to select which database to return, the goal of this class is only to declare the public interface, which must be implemented by specialised derived classes.
+
+{\itshape Note\-: This method should also take care of setting the \hyperlink{}{k\-O\-F\-F\-S\-E\-T\-\_\-\-N\-A\-M\-E}, \hyperlink{}{k\-O\-F\-F\-S\-E\-T\-\_\-\-G\-R\-A\-P\-H} and \hyperlink{}{k\-O\-F\-F\-S\-E\-T\-\_\-\-P\-A\-R\-E\-N\-T} offsets of the generated object.}
+
+
+\begin{DoxyParams}[1]{Parameters}
+mixed & {\em \$the\-Database} & Database selector.\\
+\hline
+\end{DoxyParams}
+public \begin{DoxyReturn}{Returns}
+mixed The database object.
+\end{DoxyReturn}
+\begin{DoxySeeAlso}{See Also}
+k\-O\-F\-F\-S\-E\-T\-\_\-\-N\-A\-M\-E k\-O\-F\-F\-S\-E\-T\-\_\-\-G\-R\-A\-P\-H k\-O\-F\-F\-S\-E\-T\-\_\-\-P\-A\-R\-E\-N\-T 
+\end{DoxySeeAlso}
+\hypertarget{class_c_server_a23ace9fcb220408b293378051da8c084}{\index{C\-Server@{C\-Server}!Graph@{Graph}}
+\index{Graph@{Graph}!CServer@{C\-Server}}
+\subsubsection[{Graph}]{\setlength{\rightskip}{0pt plus 5cm}C\-Server\-::\-Graph (
+\begin{DoxyParamCaption}
+\item[{}]{\$the\-Value = {\ttfamily NULL}, }
+\item[{}]{\$get\-Old = {\ttfamily FALSE}}
+\end{DoxyParamCaption}
+)}}\label{class_c_server_a23ace9fcb220408b293378051da8c084}
+\subparagraph*{Set, retrieve or delete a graph container instance}
+
+The first parameter can take the following values\-:
+
+
+\begin{DoxyItemize}
+\item {\ttfamily N\-U\-L\-L}\-: Return the current value. 
+\item {\ttfamily F\-A\-L\-S\-E}\-: Delete the current value. 
+\item {\itshape \hyperlink{class_c_graph_container}{C\-Graph\-Container}}\-: Set the value with the provided parameter. 
+\end{DoxyItemize}
+
+The second parameter is a boolean which if {\ttfamily T\-R\-U\-E} will return the {\itshape old} value when replacing containers; if {\ttfamily F\-A\-L\-S\-E}, it will return the currently set value.
+
+{\itshape Note\-: If you generate databases from the server and containers from these databases, the graph will be passed on to those objects\-: if you afterwards change the graph, this will not be reflected in those objects.}
+
+
+\begin{DoxyParams}[1]{Parameters}
+\hyperlink{class_c_graph_container}{C\-Graph\-Container} & {\em \$the\-Value} & Graph container.\\
+\hline
+\end{DoxyParams}
+public \begin{DoxyReturn}{Returns}
+mixed {\itshape New} or {\itshape old} graph container.
+\end{DoxyReturn}
+Manage\-Property() 
+
+The documentation for this class was generated from the following file\-:\begin{DoxyCompactItemize}
+\item 
+/\-Library/\-Web\-Server/\-Library/\-P\-H\-P\-Wrapper/classes/C\-Server.\-php\end{DoxyCompactItemize}

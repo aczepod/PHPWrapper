@@ -1,0 +1,510 @@
+\hypertarget{class_c_persistent_object}{\section{C\-Persistent\-Object Class Reference}
+\label{class_c_persistent_object}\index{C\-Persistent\-Object@{C\-Persistent\-Object}}
+}
+Inheritance diagram for C\-Persistent\-Object\-:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=6.461539cm]{class_c_persistent_object}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{class_c_persistent_object_a63f0a77d9664202a629f75be0a896659}{\-\_\-\-\_\-to\-String} ()
+\item 
+\hyperlink{class_c_persistent_object_abc705190184236693b30c15d7bc30b82}{G\-I\-D} (\$the\-Value=N\-U\-L\-L, \$get\-Old=F\-A\-L\-S\-E)
+\item 
+\hyperlink{class_c_persistent_object_a8ddd4477818aaff75a509b265dda77f1}{C\-Lass\-Name} (\$the\-Value=N\-U\-L\-L, \$get\-Old=F\-A\-L\-S\-E)
+\end{DoxyCompactItemize}
+\subsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+static \hyperlink{class_c_persistent_object_a5a5402ef394104148cfc580a6799ac2b}{New\-Object} (\hyperlink{class_c_connection}{C\-Connection} \$the\-Connection, \$the\-Identifier, \$do\-Throw=F\-A\-L\-S\-E)
+\item 
+static \hyperlink{class_c_persistent_object_a714b50e717e343bbc2e48861a30d624b}{Document\-Object} (\$the\-Document)
+\item 
+static \hyperlink{class_c_persistent_object_ace9f531fd290f67d5ef0398b5233d558}{\-\_\-id} (\$the\-Identifier=N\-U\-L\-L, \hyperlink{class_c_connection}{C\-Connection} \$the\-Connection=N\-U\-L\-L)
+\end{DoxyCompactItemize}
+\subsection*{Protected Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{class_c_persistent_object_a34a9e2d5a39a5b8fb3ce00cf77c6a9d6}{\-\_\-index} (\hyperlink{class_c_connection}{C\-Connection} \$the\-Connection, \$the\-Modifiers)
+\item 
+\hyperlink{class_c_persistent_object_a01007da813afb05a7dce955501d5003c}{\-\_\-\-Preset} (\&\$the\-Offset, \&\$the\-Value)
+\item 
+\hyperlink{class_c_persistent_object_ae62466987d80bda95af79a3b9ffe65f3}{\-\_\-\-Preunset} (\&\$the\-Offset)
+\item 
+\hyperlink{class_c_persistent_object_a64945a54027c2940a4b1b6074c342bd3}{\-\_\-\-Precommit\-Validate} (\&\$the\-Connection, \&\$the\-Modifiers)
+\item 
+\hyperlink{class_c_persistent_object_a91707b0f40e344abbe3f7471d5e6a082}{\-\_\-\-Precommit\-Related} (\&\$the\-Connection, \&\$the\-Modifiers)
+\item 
+\hyperlink{class_c_persistent_object_a02d8bd3a63da4aca56af561cf18d32a4}{\-\_\-\-Precommit\-Identify} (\&\$the\-Connection, \&\$the\-Modifiers)
+\item 
+\hyperlink{class_c_persistent_object_ae5f9319ab169499181ae8db82b2fc0e7}{\-\_\-\-Reference\-In\-Object} (\hyperlink{class_c_container}{C\-Container} \$the\-Container, \$the\-Operation, \$the\-Reference, \$the\-Offset, \$the\-Count)
+\item 
+\hyperlink{class_c_persistent_object_aaddbaf409e7cab172ce6a92631d9ae45}{\-\_\-\-Assert\-Class} (\&\$the\-Value, \$the\-Base\-Class, \$the\-Derived\-Class=N\-U\-L\-L, \$do\-Throw=F\-A\-L\-S\-E)
+\end{DoxyCompactItemize}
+\subsection*{Additional Inherited Members}
+
+
+\subsection{Member Function Documentation}
+\hypertarget{class_c_persistent_object_a63f0a77d9664202a629f75be0a896659}{\index{C\-Persistent\-Object@{C\-Persistent\-Object}!\-\_\-\-\_\-to\-String@{\-\_\-\-\_\-to\-String}}
+\index{\-\_\-\-\_\-to\-String@{\-\_\-\-\_\-to\-String}!CPersistentObject@{C\-Persistent\-Object}}
+\subsubsection[{\-\_\-\-\_\-to\-String}]{\setlength{\rightskip}{0pt plus 5cm}C\-Persistent\-Object\-::\-\_\-\-\_\-to\-String (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{class_c_persistent_object_a63f0a77d9664202a629f75be0a896659}
+\subparagraph*{Return object name}
+
+This method should return the current object's name which should represent the unique identifier of the object.
+
+By default we return the value of the \hyperlink{}{k\-T\-A\-G\-\_\-\-G\-I\-D} offset, if this offset is missing, the method will return {\ttfamily N\-U\-L\-L}, which will result in a fatal error. This behaviour is intentional, since in this case the returned value is not correct and because this method cannot throw exceptions.
+
+public \begin{DoxyReturn}{Returns}
+string The connection name. 
+\end{DoxyReturn}
+\hypertarget{class_c_persistent_object_aaddbaf409e7cab172ce6a92631d9ae45}{\index{C\-Persistent\-Object@{C\-Persistent\-Object}!\-\_\-\-Assert\-Class@{\-\_\-\-Assert\-Class}}
+\index{\-\_\-\-Assert\-Class@{\-\_\-\-Assert\-Class}!CPersistentObject@{C\-Persistent\-Object}}
+\subsubsection[{\-\_\-\-Assert\-Class}]{\setlength{\rightskip}{0pt plus 5cm}C\-Persistent\-Object\-::\-\_\-\-Assert\-Class (
+\begin{DoxyParamCaption}
+\item[{\&}]{\$the\-Value, }
+\item[{}]{\$the\-Base\-Class, }
+\item[{}]{\$the\-Derived\-Class = {\ttfamily NULL}, }
+\item[{}]{\$do\-Throw = {\ttfamily FALSE}}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [protected]}}}\label{class_c_persistent_object_aaddbaf409e7cab172ce6a92631d9ae45}
+\subparagraph*{Ensure the provided object is of the correct class}
+
+This method can be used to check whether the provided value is of the correct class. the method will first check if the value corresponds to a base class, {\ttfamily \$the\-Base\-Class}, it will then check if the object is an instance of a derived class, {\ttfamily \$the\-Derived\-Class}.
+
+If the value is not an object of the base class, the method will return {\ttfamily N\-U\-L\-L}, if the object is an instance of both the base and derived classes, the method will return {\ttfamily T\-R\-U\-E}; if the object is not an instance of the derived class\-: if the second parameter, {\ttfamily \$do\-Throw}, is {\ttfamily T\-R\-U\-E}, the method will raise an exception, if not, it will return {\ttfamily F\-A\-L\-S\-E}.
+
+If you omit the derived class, the test will return {\ttfamily T\-R\-U\-E}, if the value is an instance of the base class.
+
+
+\begin{DoxyParams}[1]{Parameters}
+reference & {\em \$the\-Value} & Value to assert. \\
+\hline
+string & {\em \$the\-Base\-Class} & Base class to test. \\
+\hline
+string & {\em \$the\-Derived\-Class} & Derived class to test. \\
+\hline
+boolean & {\em \$do\-Throw} & If {\ttfamily T\-R\-U\-E} raise exception.\\
+\hline
+\end{DoxyParams}
+protected \begin{DoxyReturn}{Returns}
+mixed {\ttfamily T\-R\-U\-E} correct object,; {\ttfamily N\-U\-L\-L} bot an object; {\ttfamily F\-A\-L\-S\-E} not an object.
+\end{DoxyReturn}
+
+\begin{DoxyExceptions}{Exceptions}
+{\em Exception} & \\
+\hline
+\end{DoxyExceptions}
+\hypertarget{class_c_persistent_object_ace9f531fd290f67d5ef0398b5233d558}{\index{C\-Persistent\-Object@{C\-Persistent\-Object}!\-\_\-id@{\-\_\-id}}
+\index{\-\_\-id@{\-\_\-id}!CPersistentObject@{C\-Persistent\-Object}}
+\subsubsection[{\-\_\-id}]{\setlength{\rightskip}{0pt plus 5cm}static C\-Persistent\-Object\-::\-\_\-id (
+\begin{DoxyParamCaption}
+\item[{}]{\$the\-Identifier = {\ttfamily NULL}, }
+\item[{{\bf C\-Connection}}]{\$the\-Connection = {\ttfamily NULL}}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}}}\label{class_c_persistent_object_ace9f531fd290f67d5ef0398b5233d558}
+\subparagraph*{Generate the object's native unique identifier}
+
+This method is used to generate the object's {\itshape native unique identifier}, \hyperlink{}{k\-T\-A\-G\-\_\-\-N\-I\-D}, from the string representing the object's {\itshape global unique identifier}, \hyperlink{}{k\-T\-A\-G\-\_\-\-G\-I\-D}.
+
+The first parameter of the method is a string, the second parameter can be a server or database which can be resolved into a container, or the container itself. This parameter can be used to process the first one\-: since the resulting value must be stored in a container, it should be the duty of the container itself to convert, for instance binary strings, to a suitable value.
+
+If the method receives {\ttfamily N\-U\-L\-L} in the first parameter, this means that the object does not use the global identifier and it is the duty of the container to set the object's primary key, such as with autonumbers in S\-Q\-L or missing {\ttfamily \-\_\-id} in Mongo. In that case this method should not be called, see the \hyperlink{class_c_persistent_document_a23cfbb5ebf75e008622ab9e723472c70}{\-\_\-\-Precommit()} method to see where it is used.
+
+In this class we do not process the identifier, so we simply return it.
+
+
+\begin{DoxyParams}[1]{Parameters}
+string & {\em \$the\-Identifier} & Global unique identifier. \\
+\hline
+\hyperlink{class_c_connection}{C\-Connection} & {\em \$the\-Connection} & Server, database or container.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+mixed The object's native unique identifier. 
+\end{DoxyReturn}
+\hypertarget{class_c_persistent_object_a34a9e2d5a39a5b8fb3ce00cf77c6a9d6}{\index{C\-Persistent\-Object@{C\-Persistent\-Object}!\-\_\-index@{\-\_\-index}}
+\index{\-\_\-index@{\-\_\-index}!CPersistentObject@{C\-Persistent\-Object}}
+\subsubsection[{\-\_\-index}]{\setlength{\rightskip}{0pt plus 5cm}C\-Persistent\-Object\-::\-\_\-index (
+\begin{DoxyParamCaption}
+\item[{{\bf C\-Connection}}]{\$the\-Connection, }
+\item[{}]{\$the\-Modifiers}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [protected]}}}\label{class_c_persistent_object_a34a9e2d5a39a5b8fb3ce00cf77c6a9d6}
+\subparagraph*{Return the object's global unique identifier}
+
+This method should return the object's global unique identifier, this value is represented by a string which is generally extracted from selected attributes of the object and constitutes the unique key of the object.
+
+This string is stored in the \hyperlink{}{k\-T\-A\-G\-\_\-\-G\-I\-D} offset of the object and it is processed by the static \hyperlink{class_c_persistent_object_ace9f531fd290f67d5ef0398b5233d558}{\-\_\-id()} method to generate the object's native unique identifier, which is the native object's primary key stored in the \hyperlink{}{k\-T\-A\-G\-\_\-\-N\-I\-D} offset.
+
+This method is called by the \hyperlink{class_c_persistent_document_a23cfbb5ebf75e008622ab9e723472c70}{\-\_\-\-Precommit()} method, to fill the \hyperlink{}{k\-T\-A\-G\-\_\-\-G\-I\-D} offset and the resulting value is fed to the \hyperlink{class_c_persistent_object_ace9f531fd290f67d5ef0398b5233d558}{\-\_\-id()} method to obtain the value that will be stored in the \hyperlink{}{k\-T\-A\-G\-\_\-\-N\-I\-D} offset. The inherited \hyperlink{}{Precommit()} method asserts whether the object \hyperlink{class_c_status_document_a954dee06e219e0a0f2e7fa6edac56e28}{\-\_\-\-Is\-Inited()}, before calling the local \hyperlink{class_c_persistent_document_a23cfbb5ebf75e008622ab9e723472c70}{\-\_\-\-Precommit()} method, this to ensure that this method can safely use the object's attributes to generate the identifier. If you intend to use this method in other places, you should check if the object is initialised.
+
+If the object does not feature or use the global identifier, this method should return {\ttfamily N\-U\-L\-L}, this will be an indication that the native identifier is filled in another place, or that the identifier is filled by the container.
+
+The method accepts the same parameters as the \hyperlink{}{Precommit()} method which passes them to this one. The first one should resolve into the container in which the object will be saved, this parameter can be useful when committing embedded objects which reside in different containers. The second parameter represents the operation options which can be useful to determine whether the object is being inserted, replaced or updated.
+
+In this class we do not have attributes that can be used to generate an identifier, so we let the container set the identifier, and return {\ttfamily N\-U\-L\-L}.
+
+
+\begin{DoxyParams}[1]{Parameters}
+\hyperlink{class_c_connection}{C\-Connection} & {\em \$the\-Connection} & Server, database or container. \\
+\hline
+bitfield & {\em \$the\-Modifiers} & Commit options.\\
+\hline
+\end{DoxyParams}
+protected \begin{DoxyReturn}{Returns}
+string$|$\-N\-U\-L\-L The object's global unique identifier. 
+\end{DoxyReturn}
+\hypertarget{class_c_persistent_object_a02d8bd3a63da4aca56af561cf18d32a4}{\index{C\-Persistent\-Object@{C\-Persistent\-Object}!\-\_\-\-Precommit\-Identify@{\-\_\-\-Precommit\-Identify}}
+\index{\-\_\-\-Precommit\-Identify@{\-\_\-\-Precommit\-Identify}!CPersistentObject@{C\-Persistent\-Object}}
+\subsubsection[{\-\_\-\-Precommit\-Identify}]{\setlength{\rightskip}{0pt plus 5cm}C\-Persistent\-Object\-::\-\_\-\-Precommit\-Identify (
+\begin{DoxyParamCaption}
+\item[{\&}]{\$the\-Connection, }
+\item[{\&}]{\$the\-Modifiers}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [protected]}}}\label{class_c_persistent_object_a02d8bd3a63da4aca56af561cf18d32a4}
+\subparagraph*{Determine the identifiers before committing}
+
+In this class this method is called only if the operation involves inserting or replacing.
+
+If the \hyperlink{}{k\-T\-A\-G\-\_\-\-G\-I\-D} offset is missing, we call the \hyperlink{class_c_persistent_object_a34a9e2d5a39a5b8fb3ce00cf77c6a9d6}{\-\_\-index()} method\-: if the result of that method is not {\ttfamily N\-U\-L\-L}, we use it to set the \hyperlink{}{k\-T\-A\-G\-\_\-\-G\-I\-D} offset value, this only if the operation involves inserting or replacing.
+
+If the \hyperlink{}{k\-T\-A\-G\-\_\-\-N\-I\-D} offset is missing, we check if the \hyperlink{}{k\-T\-A\-G\-\_\-\-G\-I\-D} offset was set\-: in that case we use its value to feed the \hyperlink{class_c_persistent_object_ace9f531fd290f67d5ef0398b5233d558}{\-\_\-id()} method and the result is set in the \hyperlink{}{k\-T\-A\-G\-\_\-\-N\-I\-D} offset.
+
+This workflow implies that only if the \hyperlink{class_c_persistent_object_a34a9e2d5a39a5b8fb3ce00cf77c6a9d6}{\-\_\-index()} method returns a non {\ttfamily N\-U\-L\-L} value, the \hyperlink{}{k\-T\-A\-G\-\_\-\-G\-I\-D} offset will be set in this method, and that if the \hyperlink{}{k\-T\-A\-G\-\_\-\-G\-I\-D} offset is missing the native identifier will not be touched.
+
+Note that this is the only place in which the \hyperlink{class_c_persistent_object_a34a9e2d5a39a5b8fb3ce00cf77c6a9d6}{\-\_\-index()} method is called.
+
+
+\begin{DoxyParams}[1]{Parameters}
+reference & {\em \&\$the\-Connection} & Server, database or container. \\
+\hline
+reference & {\em \&\$the\-Modifiers} & Commit options.\\
+\hline
+\end{DoxyParams}
+protected \begin{DoxyReturn}{Returns}
+mixed
+\end{DoxyReturn}
+\hyperlink{class_c_persistent_object_ace9f531fd290f67d5ef0398b5233d558}{\-\_\-id()}  \hyperlink{class_c_persistent_object_a34a9e2d5a39a5b8fb3ce00cf77c6a9d6}{\-\_\-index()}  \hyperlink{class_c_persistent_document_a4dbe287aa3b46bdc0a1157e001078589}{Resolve\-Container()}
+
+\begin{DoxySeeAlso}{See Also}
+k\-T\-A\-G\-\_\-\-G\-I\-D k\-T\-A\-G\-\_\-\-N\-I\-D 
+
+k\-F\-L\-A\-G\-\_\-\-P\-E\-R\-S\-I\-S\-T\-\_\-\-I\-N\-S\-E\-R\-T k\-F\-L\-A\-G\-\_\-\-P\-E\-R\-S\-I\-S\-T\-\_\-\-R\-E\-P\-L\-A\-C\-E 
+\end{DoxySeeAlso}
+\hypertarget{class_c_persistent_object_a91707b0f40e344abbe3f7471d5e6a082}{\index{C\-Persistent\-Object@{C\-Persistent\-Object}!\-\_\-\-Precommit\-Related@{\-\_\-\-Precommit\-Related}}
+\index{\-\_\-\-Precommit\-Related@{\-\_\-\-Precommit\-Related}!CPersistentObject@{C\-Persistent\-Object}}
+\subsubsection[{\-\_\-\-Precommit\-Related}]{\setlength{\rightskip}{0pt plus 5cm}C\-Persistent\-Object\-::\-\_\-\-Precommit\-Related (
+\begin{DoxyParamCaption}
+\item[{\&}]{\$the\-Connection, }
+\item[{\&}]{\$the\-Modifiers}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [protected]}}}\label{class_c_persistent_object_a91707b0f40e344abbe3f7471d5e6a082}
+\subparagraph*{Handle embedded or related objects before committing}
+
+In this class we have no related objects, but we use this method to set default values, such as the class name in \hyperlink{}{k\-T\-A\-G\-\_\-\-C\-L\-A\-S\-S} when inserting, replacing or updating.
+
+
+\begin{DoxyParams}[1]{Parameters}
+reference & {\em \&\$the\-Connection} & Server, database or container. \\
+\hline
+reference & {\em \&\$the\-Modifiers} & Commit options.\\
+\hline
+\end{DoxyParams}
+protected \begin{DoxyReturn}{Returns}
+mixed
+\end{DoxyReturn}
+\begin{DoxySeeAlso}{See Also}
+k\-T\-A\-G\-\_\-\-C\-L\-A\-S\-S 
+
+k\-F\-L\-A\-G\-\_\-\-P\-E\-R\-S\-I\-S\-T\-\_\-\-I\-N\-S\-E\-R\-T k\-F\-L\-A\-G\-\_\-\-P\-E\-R\-S\-I\-S\-T\-\_\-\-R\-E\-P\-L\-A\-C\-E k\-F\-L\-A\-G\-\_\-\-P\-E\-R\-S\-I\-S\-T\-\_\-\-U\-P\-D\-A\-T\-E 
+\end{DoxySeeAlso}
+\hypertarget{class_c_persistent_object_a64945a54027c2940a4b1b6074c342bd3}{\index{C\-Persistent\-Object@{C\-Persistent\-Object}!\-\_\-\-Precommit\-Validate@{\-\_\-\-Precommit\-Validate}}
+\index{\-\_\-\-Precommit\-Validate@{\-\_\-\-Precommit\-Validate}!CPersistentObject@{C\-Persistent\-Object}}
+\subsubsection[{\-\_\-\-Precommit\-Validate}]{\setlength{\rightskip}{0pt plus 5cm}C\-Persistent\-Object\-::\-\_\-\-Precommit\-Validate (
+\begin{DoxyParamCaption}
+\item[{\&}]{\$the\-Connection, }
+\item[{\&}]{\$the\-Modifiers}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [protected]}}}\label{class_c_persistent_object_a64945a54027c2940a4b1b6074c342bd3}
+\subparagraph*{Validate the object before committing}
+
+In this class we check if the current object has its native identifier, \hyperlink{}{k\-T\-A\-G\-\_\-\-N\-I\-D}, if the operation involves updating.
+
+
+\begin{DoxyParams}[1]{Parameters}
+reference & {\em \&\$the\-Connection} & Server, database or container. \\
+\hline
+reference & {\em \&\$the\-Modifiers} & Commit options.\\
+\hline
+\end{DoxyParams}
+protected \begin{DoxyReturn}{Returns}
+mixed
+\end{DoxyReturn}
+
+\begin{DoxyExceptions}{Exceptions}
+{\em Exception} & \\
+\hline
+\end{DoxyExceptions}
+\begin{DoxySeeAlso}{See Also}
+k\-F\-L\-A\-G\-\_\-\-P\-E\-R\-S\-I\-S\-T\-\_\-\-M\-A\-S\-K k\-F\-L\-A\-G\-\_\-\-P\-E\-R\-S\-I\-S\-T\-\_\-\-U\-P\-D\-A\-T\-E k\-T\-A\-G\-\_\-\-N\-I\-D 
+\end{DoxySeeAlso}
+\hypertarget{class_c_persistent_object_a01007da813afb05a7dce955501d5003c}{\index{C\-Persistent\-Object@{C\-Persistent\-Object}!\-\_\-\-Preset@{\-\_\-\-Preset}}
+\index{\-\_\-\-Preset@{\-\_\-\-Preset}!CPersistentObject@{C\-Persistent\-Object}}
+\subsubsection[{\-\_\-\-Preset}]{\setlength{\rightskip}{0pt plus 5cm}C\-Persistent\-Object\-::\-\_\-\-Preset (
+\begin{DoxyParamCaption}
+\item[{\&}]{\$the\-Offset, }
+\item[{\&}]{\$the\-Value}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [protected]}}}\label{class_c_persistent_object_a01007da813afb05a7dce955501d5003c}
+\subparagraph*{Handle offset before setting it}
+
+In this class we prevent the modification of offsets that concur in the generation of the object's identifier if the object has its \hyperlink{class_c_status_document_ab7d96fd4588cf7d5432fc65a1d1fb076}{\-\_\-\-Is\-Committed()} status set. This is because referenced objects must not change identifier.
+
+
+\begin{DoxyParams}[1]{Parameters}
+reference & {\em \&\$the\-Offset} & Offset. \\
+\hline
+reference & {\em \&\$the\-Value} & Value to set at offset.\\
+\hline
+\end{DoxyParams}
+protected
+
+
+\begin{DoxyExceptions}{Exceptions}
+{\em Exception} & \hyperlink{class_c_status_document_ab7d96fd4588cf7d5432fc65a1d1fb076}{\-\_\-\-Is\-Committed()}\\
+\hline
+\end{DoxyExceptions}
+\begin{DoxySeeAlso}{See Also}
+k\-T\-A\-G\-\_\-\-N\-I\-D k\-T\-A\-G\-\_\-\-G\-I\-D 
+\end{DoxySeeAlso}
+\hypertarget{class_c_persistent_object_ae62466987d80bda95af79a3b9ffe65f3}{\index{C\-Persistent\-Object@{C\-Persistent\-Object}!\-\_\-\-Preunset@{\-\_\-\-Preunset}}
+\index{\-\_\-\-Preunset@{\-\_\-\-Preunset}!CPersistentObject@{C\-Persistent\-Object}}
+\subsubsection[{\-\_\-\-Preunset}]{\setlength{\rightskip}{0pt plus 5cm}C\-Persistent\-Object\-::\-\_\-\-Preunset (
+\begin{DoxyParamCaption}
+\item[{\&}]{\$the\-Offset}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [protected]}}}\label{class_c_persistent_object_ae62466987d80bda95af79a3b9ffe65f3}
+\subparagraph*{Handle offset before unsetting it}
+
+In this class we prevent the modification of offsets that concur in the generation of the object's identifier if the object has its \hyperlink{class_c_status_document_ab7d96fd4588cf7d5432fc65a1d1fb076}{\-\_\-\-Is\-Committed()} status set. This is because referenced objects must not change identifier.
+
+
+\begin{DoxyParams}[1]{Parameters}
+reference & {\em \&\$the\-Offset} & Offset.\\
+\hline
+\end{DoxyParams}
+protected
+
+
+\begin{DoxyExceptions}{Exceptions}
+{\em Exception} & \hyperlink{class_c_status_document_ab7d96fd4588cf7d5432fc65a1d1fb076}{\-\_\-\-Is\-Committed()}\\
+\hline
+\end{DoxyExceptions}
+\begin{DoxySeeAlso}{See Also}
+k\-T\-A\-G\-\_\-\-N\-I\-D k\-T\-A\-G\-\_\-\-G\-I\-D 
+\end{DoxySeeAlso}
+\hypertarget{class_c_persistent_object_ae5f9319ab169499181ae8db82b2fc0e7}{\index{C\-Persistent\-Object@{C\-Persistent\-Object}!\-\_\-\-Reference\-In\-Object@{\-\_\-\-Reference\-In\-Object}}
+\index{\-\_\-\-Reference\-In\-Object@{\-\_\-\-Reference\-In\-Object}!CPersistentObject@{C\-Persistent\-Object}}
+\subsubsection[{\-\_\-\-Reference\-In\-Object}]{\setlength{\rightskip}{0pt plus 5cm}C\-Persistent\-Object\-::\-\_\-\-Reference\-In\-Object (
+\begin{DoxyParamCaption}
+\item[{{\bf C\-Container}}]{\$the\-Container, }
+\item[{}]{\$the\-Operation, }
+\item[{}]{\$the\-Reference, }
+\item[{}]{\$the\-Offset, }
+\item[{}]{\$the\-Count}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [protected]}}}\label{class_c_persistent_object_ae5f9319ab169499181ae8db82b2fc0e7}
+\subparagraph*{add, increment, remove or decrement current object's reference}
+
+This method can be used to reference the current object in another object by either incrementing/decrementing a counter in the target object, or adding/removing a reference of the current object from the target object.
+
+The method accepts the following parameters\-:
+
+
+\begin{DoxyItemize}
+\item {\ttfamily \$the\-Container}\-: Container in which the target object is stored. 
+\item {\ttfamily \$the\-Operation}\-: This value determines what kind of operation to perform\-: 
+\begin{DoxyItemize}
+\item {\ttfamily 0x2}\-: {\itshape Keep reference count}. This means that the {\ttfamily \$the\-Offset} attribute will be an integer representing the number of times the target object was referenced. 
+\item {\ttfamily 0x3}\-: {\itshape Keep references list}. This means that the {\ttfamily \$the\-Offset} attribute will be a list of object identifiers representing the objects that reference the target object. 
+\item {\itshape other}\-: {\itshape Ignore}. Any other value will disable this method. 
+\end{DoxyItemize}
+\item {\ttfamily \$the\-Reference}\-: This value represents the native identifier of the object that receives the reference. 
+\item {\ttfamily \$the\-Count}\-: This value represents the increment/decrement value, or a value whose sign will be used to determine whether to add or remove references from the list\-: a negative value means remove, a positive value means add; if the value is {\ttfamily 0}, the method will do nothing. 
+\end{DoxyItemize}
+
+The method will return {\ttfamily T\-R\-U\-E} if the operation affected at least one object, {\ttfamily F\-A\-L\-S\-E} if not, {\ttfamily N\-U\-L\-L} if the provided increment is {\ttfamily 0} and raise an exception if the operation failed.
+
+{\itshape Note that this method does not check if the object is committed, that must have been done by the caller. This method is called in general after inserting the object and before setting the committed status}.
+
+
+\begin{DoxyParams}[1]{Parameters}
+\hyperlink{class_c_container}{C\-Container} & {\em \$the\-Container} & Server, database or container. \\
+\hline
+byte & {\em \$the\-Operation} & Operation code. \\
+\hline
+mixed & {\em \$the\-Reference} & Target object reference. \\
+\hline
+string & {\em \$the\-Offset} & Offset to update. \\
+\hline
+integer & {\em \$the\-Count} & Increment amount.\\
+\hline
+\end{DoxyParams}
+protected \begin{DoxyReturn}{Returns}
+mixed {\ttfamily T\-R\-U\-E} operation affected at least one object. 
+\end{DoxyReturn}
+\hypertarget{class_c_persistent_object_a8ddd4477818aaff75a509b265dda77f1}{\index{C\-Persistent\-Object@{C\-Persistent\-Object}!C\-Lass\-Name@{C\-Lass\-Name}}
+\index{C\-Lass\-Name@{C\-Lass\-Name}!CPersistentObject@{C\-Persistent\-Object}}
+\subsubsection[{C\-Lass\-Name}]{\setlength{\rightskip}{0pt plus 5cm}C\-Persistent\-Object\-::\-C\-Lass\-Name (
+\begin{DoxyParamCaption}
+\item[{}]{\$the\-Value = {\ttfamily NULL}, }
+\item[{}]{\$get\-Old = {\ttfamily FALSE}}
+\end{DoxyParamCaption}
+)}}\label{class_c_persistent_object_a8ddd4477818aaff75a509b265dda77f1}
+\subparagraph*{Manage class identifier}
+
+The {\itshape class name}, \hyperlink{}{k\-T\-A\-G\-\_\-\-C\-L\-A\-S\-S}, holds a string which is the class name of the object that first stored the object in the container. This value will be used by the static \hyperlink{class_c_persistent_object_a5a5402ef394104148cfc580a6799ac2b}{New\-Object()} method to restore the object from the container.
+
+The method accepts a parameter which represents either the name or the requested operation, depending on its value\-:
+
+
+\begin{DoxyItemize}
+\item {\ttfamily N\-U\-L\-L}\-: Return the current value. 
+\item {\ttfamily F\-A\-L\-S\-E}\-: Delete the current value. 
+\item {\itshape other}\-: Set the value with the provided parameter. 
+\end{DoxyItemize}
+
+The second parameter is a boolean which if {\ttfamily T\-R\-U\-E} will return the {\itshape old} value when replacing an existing value; if {\ttfamily F\-A\-L\-S\-E}, it will return the currently set value.
+
+Note that, while this method allows the creation, modification and deletion of this property, the hosting object may prevent some of these actions, by default this attribute is locked when the object has the \hyperlink{class_c_status_document_ab7d96fd4588cf7d5432fc65a1d1fb076}{\-\_\-\-Is\-Committed()} status.
+
+In general you should not set this value directly, since it will be set programmatically.
+
+
+\begin{DoxyParams}[1]{Parameters}
+mixed & {\em \$the\-Value} & Class name or operation. \\
+\hline
+boolean & {\em \$get\-Old} & {\ttfamily T\-R\-U\-E} get old value.\\
+\hline
+\end{DoxyParams}
+public \begin{DoxyReturn}{Returns}
+string {\itshape New}, {\itshape old} value or {\ttfamily N\-U\-L\-L}.
+\end{DoxyReturn}
+Manage\-Offset()
+
+\begin{DoxySeeAlso}{See Also}
+k\-T\-A\-G\-\_\-\-C\-L\-A\-S\-S 
+\end{DoxySeeAlso}
+\hypertarget{class_c_persistent_object_a714b50e717e343bbc2e48861a30d624b}{\index{C\-Persistent\-Object@{C\-Persistent\-Object}!Document\-Object@{Document\-Object}}
+\index{Document\-Object@{Document\-Object}!CPersistentObject@{C\-Persistent\-Object}}
+\subsubsection[{Document\-Object}]{\setlength{\rightskip}{0pt plus 5cm}static C\-Persistent\-Object\-::\-Document\-Object (
+\begin{DoxyParamCaption}
+\item[{}]{\$the\-Document}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}}}\label{class_c_persistent_object_a714b50e717e343bbc2e48861a30d624b}
+\subparagraph*{Instantiate an object from a document}
+
+This method can be used to instantiate an object from an array. The method will attempt to locate the class name, \hyperlink{}{k\-T\-A\-G\-\_\-\-C\-L\-A\-S\-S}, if found, it will return an object of that class, if not, it will return the unchanged received document.
+
+If the class name was found, the resulting object will have its \hyperlink{class_c_status_document_ab7d96fd4588cf7d5432fc65a1d1fb076}{\-\_\-\-Is\-Committed()} status set, so provide only data received from database queries.
+
+The method accepts arrays and Array\-Objects, any other type will raise an exception.
+
+
+\begin{DoxyParams}[1]{Parameters}
+mixed & {\em \$the\-Document} & Persistent object data.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+mixed The document or an object. 
+\end{DoxyReturn}
+\hypertarget{class_c_persistent_object_abc705190184236693b30c15d7bc30b82}{\index{C\-Persistent\-Object@{C\-Persistent\-Object}!G\-I\-D@{G\-I\-D}}
+\index{G\-I\-D@{G\-I\-D}!CPersistentObject@{C\-Persistent\-Object}}
+\subsubsection[{G\-I\-D}]{\setlength{\rightskip}{0pt plus 5cm}C\-Persistent\-Object\-::\-G\-I\-D (
+\begin{DoxyParamCaption}
+\item[{}]{\$the\-Value = {\ttfamily NULL}, }
+\item[{}]{\$get\-Old = {\ttfamily FALSE}}
+\end{DoxyParamCaption}
+)}}\label{class_c_persistent_object_abc705190184236693b30c15d7bc30b82}
+\subparagraph*{Manage global unique identifier}
+
+The {\itshape global unique identifier}, \hyperlink{}{k\-T\-A\-G\-\_\-\-G\-I\-D}, holds a string value which represents the object's unique identifier. This value is usually a computed string value extracted from a series of key properties of the object.
+
+In general, the hashed value of this property becomes the object's native identifier, \hyperlink{class_c_persistent_document_ad9d15abc074aa3f779f214771b6123b0}{N\-I\-D()} and while the latter represents a native value, this property represents the global or public identifier of the object.
+
+The method accepts a parameter which represents either the new value or the requested operation, depending on its type\-:
+
+
+\begin{DoxyItemize}
+\item {\ttfamily N\-U\-L\-L}\-: Return the current value. 
+\item {\ttfamily F\-A\-L\-S\-E}\-: Delete the current value. 
+\item {\itshape other}\-: Set the value with the provided parameter. 
+\end{DoxyItemize}
+
+The second parameter is a boolean which if {\ttfamily T\-R\-U\-E} will return the {\itshape old} value when replacing an existing value; if {\ttfamily F\-A\-L\-S\-E}, it will return the currently set value.
+
+Note that, while this method allows the creation, modification and deletion of this property, the hosting object may prevent some of these actions, by default this attribute is locked when the object has the \hyperlink{class_c_status_document_ab7d96fd4588cf7d5432fc65a1d1fb076}{\-\_\-\-Is\-Committed()} status.
+
+
+\begin{DoxyParams}[1]{Parameters}
+mixed & {\em \$the\-Value} & Global identifier or operation. \\
+\hline
+boolean & {\em \$get\-Old} & {\ttfamily T\-R\-U\-E} get old value.\\
+\hline
+\end{DoxyParams}
+public \begin{DoxyReturn}{Returns}
+string {\itshape New}, {\itshape old} value or {\ttfamily N\-U\-L\-L}.
+\end{DoxyReturn}
+Manage\-Offset()
+
+\begin{DoxySeeAlso}{See Also}
+k\-T\-A\-G\-\_\-\-G\-I\-D 
+\end{DoxySeeAlso}
+\hypertarget{class_c_persistent_object_a5a5402ef394104148cfc580a6799ac2b}{\index{C\-Persistent\-Object@{C\-Persistent\-Object}!New\-Object@{New\-Object}}
+\index{New\-Object@{New\-Object}!CPersistentObject@{C\-Persistent\-Object}}
+\subsubsection[{New\-Object}]{\setlength{\rightskip}{0pt plus 5cm}static C\-Persistent\-Object\-::\-New\-Object (
+\begin{DoxyParamCaption}
+\item[{{\bf C\-Connection}}]{\$the\-Connection, }
+\item[{}]{\$the\-Identifier, }
+\item[{}]{\$do\-Throw = {\ttfamily FALSE}}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}}}\label{class_c_persistent_object_a5a5402ef394104148cfc580a6799ac2b}
+\subparagraph*{Instantiate an object from a container}
+
+We override this method to handle the \hyperlink{}{k\-T\-A\-G\-\_\-\-C\-L\-A\-S\-S} offset\-: if found in the retrieved object, it will be used to instantiate the correct class. If the offset is missing, the method will instantiate the calling class.
+
+The method expects two parameters\-:
+
+
+\begin{DoxyItemize}
+\item {\ttfamily \$the\-Connection}\-: The container in which the object should be stored. This parameter should be a concrete instance of of \hyperlink{class_c_container}{C\-Container}, or a concrete instance of \hyperlink{class_c_server}{C\-Server} or \hyperlink{class_c_database}{C\-Database}, if the current class has implemented the container resolve interface with \hyperlink{class_c_persistent_document_a6092e640e36485873b70a79db464e0ff}{Default\-Database} and \hyperlink{class_c_persistent_document_ada019252d242b5a88a26b82a18e29ed6}{Default\-Container()}. 
+\item {\ttfamily \$the\-Identifier}\-: The key of the object in the container, by default the \hyperlink{}{k\-T\-A\-G\-\_\-\-N\-I\-D} offset. 
+\item {\ttfamily \$do\-Throw}\-: If {\ttfamily T\-R\-U\-E}, any failure to resolve the object will raise an exception. 
+\end{DoxyItemize}
+
+If the object could not be located, the method will return {\ttfamily N\-U\-L\-L}.
+
+
+\begin{DoxyParams}[1]{Parameters}
+\hyperlink{class_c_connection}{C\-Connection} & {\em \$the\-Connection} & Server, database or container. \\
+\hline
+mixed & {\em \$the\-Identifier} & Identifier. \\
+\hline
+boolean & {\em \$do\-Throw} & If {\ttfamily T\-R\-U\-E} raise an exception.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+mixed The retrieved object. 
+\end{DoxyReturn}
+
+
+The documentation for this class was generated from the following file\-:\begin{DoxyCompactItemize}
+\item 
+/\-Library/\-Web\-Server/\-Library/\-P\-H\-P\-Wrapper/classes/C\-Persistent\-Object.\-php\end{DoxyCompactItemize}

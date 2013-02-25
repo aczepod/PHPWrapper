@@ -1,0 +1,174 @@
+\hypertarget{class_c_portal_wrapper_client}{\section{C\-Portal\-Wrapper\-Client Class Reference}
+\label{class_c_portal_wrapper_client}\index{C\-Portal\-Wrapper\-Client@{C\-Portal\-Wrapper\-Client}}
+}
+Inheritance diagram for C\-Portal\-Wrapper\-Client\-:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=8.000000cm]{class_c_portal_wrapper_client}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{class_c_portal_wrapper_client_aaa306c1d688a07350afc734fcaa60c9d}{Operation} (\$the\-Value=N\-U\-L\-L, \$get\-Old=F\-A\-L\-S\-E)
+\item 
+\hyperlink{class_c_portal_wrapper_client_a60afce66299dc26e5d51ea48fe944fd7}{Credentials} (\$the\-Key, \$the\-Value=N\-U\-L\-L, \$get\-Old=F\-A\-L\-S\-E)
+\end{DoxyCompactItemize}
+\subsection*{Protected Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{class_c_portal_wrapper_client_aa7f24544e1e159c2eefac9b16d3bc41e}{\-\_\-\-Check\-Dependencies} (\$the\-Operation)
+\item 
+\hyperlink{class_c_portal_wrapper_client_abaa1c93796951da6d4cad14791014de7}{\-\_\-\-Normalise\-Parameters} ()
+\item 
+\hyperlink{class_c_portal_wrapper_client_a9e354d6ae8398aa27d62cd5b846b24cb}{\-\_\-\-Encode\-Parameters} (\&\$the\-Parameters, \$the\-Encoding)
+\end{DoxyCompactItemize}
+\subsection*{Additional Inherited Members}
+
+
+\subsection{Member Function Documentation}
+\hypertarget{class_c_portal_wrapper_client_aa7f24544e1e159c2eefac9b16d3bc41e}{\index{C\-Portal\-Wrapper\-Client@{C\-Portal\-Wrapper\-Client}!\-\_\-\-Check\-Dependencies@{\-\_\-\-Check\-Dependencies}}
+\index{\-\_\-\-Check\-Dependencies@{\-\_\-\-Check\-Dependencies}!CPortalWrapperClient@{C\-Portal\-Wrapper\-Client}}
+\subsubsection[{\-\_\-\-Check\-Dependencies}]{\setlength{\rightskip}{0pt plus 5cm}C\-Portal\-Wrapper\-Client\-::\-\_\-\-Check\-Dependencies (
+\begin{DoxyParamCaption}
+\item[{}]{\$the\-Operation}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [protected]}}}\label{class_c_portal_wrapper_client_aa7f24544e1e159c2eefac9b16d3bc41e}
+Check operation dependencies.
+
+This method can be used to assert whether the required parameters are present depending on the requested operation.
+
+
+\begin{DoxyParams}[1]{Parameters}
+string & {\em \$the\-Operation} & Requested operation.\\
+\hline
+\end{DoxyParams}
+protected
+
+
+\begin{DoxyExceptions}{Exceptions}
+{\em Exception} & \\
+\hline
+\end{DoxyExceptions}
+\hypertarget{class_c_portal_wrapper_client_a9e354d6ae8398aa27d62cd5b846b24cb}{\index{C\-Portal\-Wrapper\-Client@{C\-Portal\-Wrapper\-Client}!\-\_\-\-Encode\-Parameters@{\-\_\-\-Encode\-Parameters}}
+\index{\-\_\-\-Encode\-Parameters@{\-\_\-\-Encode\-Parameters}!CPortalWrapperClient@{C\-Portal\-Wrapper\-Client}}
+\subsubsection[{\-\_\-\-Encode\-Parameters}]{\setlength{\rightskip}{0pt plus 5cm}C\-Portal\-Wrapper\-Client\-::\-\_\-\-Encode\-Parameters (
+\begin{DoxyParamCaption}
+\item[{\&}]{\$the\-Parameters, }
+\item[{}]{\$the\-Encoding}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [protected]}}}\label{class_c_portal_wrapper_client_a9e354d6ae8398aa27d62cd5b846b24cb}
+Encode parameters.
+
+This method can be used to encode parameters before they get sent to the service.
+
+We overload this method to handle the local parameters.
+
+
+\begin{DoxyParams}[1]{Parameters}
+reference & {\em \&\$the\-Parameters} & List of parameters. \\
+\hline
+string & {\em \$the\-Encoding} & Encoding code.\\
+\hline
+\end{DoxyParams}
+protected \hypertarget{class_c_portal_wrapper_client_abaa1c93796951da6d4cad14791014de7}{\index{C\-Portal\-Wrapper\-Client@{C\-Portal\-Wrapper\-Client}!\-\_\-\-Normalise\-Parameters@{\-\_\-\-Normalise\-Parameters}}
+\index{\-\_\-\-Normalise\-Parameters@{\-\_\-\-Normalise\-Parameters}!CPortalWrapperClient@{C\-Portal\-Wrapper\-Client}}
+\subsubsection[{\-\_\-\-Normalise\-Parameters}]{\setlength{\rightskip}{0pt plus 5cm}C\-Portal\-Wrapper\-Client\-::\-\_\-\-Normalise\-Parameters (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [protected]}}}\label{class_c_portal_wrapper_client_abaa1c93796951da6d4cad14791014de7}
+Normalise parameters.
+
+This method can be used to normalise parameters before they get encoded.
+
+In this class we set the default container name for login.
+
+protected \hypertarget{class_c_portal_wrapper_client_a60afce66299dc26e5d51ea48fe944fd7}{\index{C\-Portal\-Wrapper\-Client@{C\-Portal\-Wrapper\-Client}!Credentials@{Credentials}}
+\index{Credentials@{Credentials}!CPortalWrapperClient@{C\-Portal\-Wrapper\-Client}}
+\subsubsection[{Credentials}]{\setlength{\rightskip}{0pt plus 5cm}C\-Portal\-Wrapper\-Client\-::\-Credentials (
+\begin{DoxyParamCaption}
+\item[{}]{\$the\-Key, }
+\item[{}]{\$the\-Value = {\ttfamily NULL}, }
+\item[{}]{\$get\-Old = {\ttfamily FALSE}}
+\end{DoxyParamCaption}
+)}}\label{class_c_portal_wrapper_client_a60afce66299dc26e5d51ea48fe944fd7}
+Manage user credentials.
+
+This method can be used to manage the \hyperlink{}{k\-A\-P\-I\-\_\-\-C\-R\-E\-D\-E\-N\-T\-I\-A\-L\-S} offset, it accepts the following parameters\-:
+
+
+\begin{DoxyItemize}
+\item {\ttfamily \$the\-Key}\-: This string represents the element key. 
+\item {\ttfamily \$the\-Value}\-: This parameter represents the element value or operation\-: 
+\begin{DoxyItemize}
+\item {\ttfamily N\-U\-L\-L}\-: Return the the value at the provided key. 
+\item {\ttfamily F\-A\-L\-S\-E}\-: Delete the value at the provided key. 
+\item {\itshape other}\-: Any other type will replace or set the value at the provided key. 
+\end{DoxyItemize}
+\item {\ttfamily \$get\-Old}\-: Determines what the method will return\-: 
+\begin{DoxyItemize}
+\item {\ttfamily T\-R\-U\-E}\-: Return the value of the offset {\itshape before} it was eventually modified. 
+\item {\ttfamily F\-A\-L\-S\-E}\-: Return the value of the offset {\itshape after} it was eventually modified. 
+\end{DoxyItemize}
+\end{DoxyItemize}
+
+
+\begin{DoxyParams}[1]{Parameters}
+string & {\em \$the\-Key} & Element key. \\
+\hline
+mixed & {\em \$the\-Value} & Value or operation. \\
+\hline
+boolean & {\em \$get\-Old} & T\-R\-U\-E get old value.\\
+\hline
+\end{DoxyParams}
+public \begin{DoxyReturn}{Returns}
+mixed
+\end{DoxyReturn}
+Manage\-Indexed\-Offset()
+
+\begin{DoxySeeAlso}{See Also}
+k\-A\-P\-I\-\_\-\-C\-R\-E\-D\-E\-N\-T\-I\-A\-L\-S 
+\end{DoxySeeAlso}
+\hypertarget{class_c_portal_wrapper_client_aaa306c1d688a07350afc734fcaa60c9d}{\index{C\-Portal\-Wrapper\-Client@{C\-Portal\-Wrapper\-Client}!Operation@{Operation}}
+\index{Operation@{Operation}!CPortalWrapperClient@{C\-Portal\-Wrapper\-Client}}
+\subsubsection[{Operation}]{\setlength{\rightskip}{0pt plus 5cm}C\-Portal\-Wrapper\-Client\-::\-Operation (
+\begin{DoxyParamCaption}
+\item[{}]{\$the\-Value = {\ttfamily NULL}, }
+\item[{}]{\$get\-Old = {\ttfamily FALSE}}
+\end{DoxyParamCaption}
+)}}\label{class_c_portal_wrapper_client_aaa306c1d688a07350afc734fcaa60c9d}
+Manage operation.
+
+We \hyperlink{class_c_wrapper_client_ae378229fd57b051ddf0e0a7abf599641}{overload} this method to add the following allowed operations\-:
+
+
+\begin{DoxyItemize}
+\item {\itshape \hyperlink{}{k\-A\-P\-I\-\_\-\-O\-P\-\_\-\-Login}}\-: L\-O\-G\-I\-N web-\/service operation, used to return validate user credentials. 
+\end{DoxyItemize}
+
+
+\begin{DoxyParams}[1]{Parameters}
+string & {\em \$the\-Value} & Value or operation. \\
+\hline
+boolean & {\em \$get\-Old} & T\-R\-U\-E get old value.\\
+\hline
+\end{DoxyParams}
+public \begin{DoxyReturn}{Returns}
+mixed
+\end{DoxyReturn}
+
+\begin{DoxyExceptions}{Exceptions}
+{\em \{@link} & \hyperlink{class_c_exception}{C\-Exception} \hyperlink{class_c_exception}{C\-Exception}\}\\
+\hline
+\end{DoxyExceptions}
+C\-Attribute\-::\-Manage\-Offset()
+
+\begin{DoxySeeAlso}{See Also}
+k\-A\-P\-I\-\_\-\-O\-P\-E\-R\-A\-T\-I\-O\-N 
+\end{DoxySeeAlso}
+
+
+The documentation for this class was generated from the following file\-:\begin{DoxyCompactItemize}
+\item 
+/\-Library/\-Web\-Server/\-Library/\-P\-H\-P\-Wrapper/classes/C\-Portal\-Wrapper\-Client.\-php\end{DoxyCompactItemize}

@@ -1,0 +1,654 @@
+\hypertarget{class_c_user}{\section{C\-User Class Reference}
+\label{class_c_user}\index{C\-User@{C\-User}}
+}
+Inheritance diagram for C\-User\-:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=6.000000cm]{class_c_user}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{class_c_user_ab645d29752c93c7c45f711e630691e51}{Name} (\$the\-Value=N\-U\-L\-L, \$get\-Old=F\-A\-L\-S\-E)
+\item 
+\hyperlink{class_c_user_a67e1a8d936265fbb8a10ccac4b76647a}{Code} (\$the\-Value=N\-U\-L\-L, \$get\-Old=F\-A\-L\-S\-E)
+\item 
+\hyperlink{class_c_user_a827f71914faf740df88212b8fa2f02a7}{Pass} (\$the\-Value=N\-U\-L\-L, \$get\-Old=F\-A\-L\-S\-E)
+\item 
+\hyperlink{class_c_user_ac17ab6a51035f9e8074c2602e47ae818}{Mail} (\$the\-Value=N\-U\-L\-L, \$get\-Old=F\-A\-L\-S\-E)
+\item 
+\hyperlink{class_c_user_add1faba1d336cf4b610a632d3c376dd2}{Role} (\$the\-Value=N\-U\-L\-L, \$the\-Operation=N\-U\-L\-L, \$get\-Old=F\-A\-L\-S\-E)
+\item 
+\hyperlink{class_c_user_ab0461ec04fd8043c24ec0ef94fadb995}{Profile} (\$the\-Value=N\-U\-L\-L, \$the\-Operation=N\-U\-L\-L, \$get\-Old=F\-A\-L\-S\-E)
+\item 
+\hyperlink{class_c_user_a09c0c6f7252ac4a3b96457b00ccc6901}{Domain} (\$the\-Value=N\-U\-L\-L, \$the\-Operation=N\-U\-L\-L, \$get\-Old=F\-A\-L\-S\-E)
+\item 
+\hyperlink{class_c_user_acd45e0c231f54e7ccc452cb6bcd3aa35}{Manager} (\$the\-Value=N\-U\-L\-L, \$get\-Old=F\-A\-L\-S\-E)
+\item 
+\hyperlink{class_c_user_a8059ecd785bdbb0ab52da79a46dcde6c}{Load\-Manager} (\hyperlink{class_c_connection}{C\-Connection} \$the\-Connection, \$do\-Reload=F\-A\-L\-S\-E)
+\end{DoxyCompactItemize}
+\subsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+static \hyperlink{class_c_user_a9371705ee2fe545cf966b1bf3bd8c574}{Default\-Container\-Name} ()
+\item 
+static \hyperlink{class_c_user_a41767eb89356bfc787eabbe5596df36d}{Resolve} (\hyperlink{class_c_connection}{C\-Connection} \$the\-Connection, \$the\-Identifier, \$do\-Throw=F\-A\-L\-S\-E)
+\end{DoxyCompactItemize}
+\subsection*{Protected Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{class_c_user_afe88b46176ec8227c8ee5d6b1e6e758f}{\-\_\-index} (\hyperlink{class_c_connection}{C\-Connection} \$the\-Connection, \$the\-Modifiers)
+\item 
+\hyperlink{class_c_user_ac4d911d88bee7897d0fc257f126eb66a}{\-\_\-\-Preset} (\&\$the\-Offset, \&\$the\-Value)
+\item 
+\hyperlink{class_c_user_a44a9117071cea9d4933c08ef347006d6}{\-\_\-\-Preunset} (\&\$the\-Offset)
+\item 
+\hyperlink{class_c_user_a9f55517030b5670e0ddadca1004b0b08}{\-\_\-\-Ready} ()
+\item 
+\hyperlink{class_c_user_af6fe894a0a45226f314057a5c40f3bd1}{\-\_\-\-Precommit\-Related} (\&\$the\-Connection, \&\$the\-Modifiers)
+\item 
+\hyperlink{class_c_user_aa05407c9768b02801a2a8f47414de1fd}{\-\_\-\-Postcommit\-Cleanup} (\&\$the\-Connection, \&\$the\-Modifiers)
+\end{DoxyCompactItemize}
+\subsection*{Protected Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{class_c_user_a17d9745db7fcc2f05478bc17c734666f}{{\bfseries \$m\-Manager} = N\-U\-L\-L}\label{class_c_user_a17d9745db7fcc2f05478bc17c734666f}
+
+\end{DoxyCompactItemize}
+
+
+\subsection{Member Function Documentation}
+\hypertarget{class_c_user_afe88b46176ec8227c8ee5d6b1e6e758f}{\index{C\-User@{C\-User}!\-\_\-index@{\-\_\-index}}
+\index{\-\_\-index@{\-\_\-index}!CUser@{C\-User}}
+\subsubsection[{\-\_\-index}]{\setlength{\rightskip}{0pt plus 5cm}C\-User\-::\-\_\-index (
+\begin{DoxyParamCaption}
+\item[{{\bf C\-Connection}}]{\$the\-Connection, }
+\item[{}]{\$the\-Modifiers}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [protected]}}}\label{class_c_user_afe88b46176ec8227c8ee5d6b1e6e758f}
+\subparagraph*{Return the object's global unique identifier}
+
+User identifiers are constituted by the user code, this mathod will simply return it.
+
+In derived classes this can be overloaded.
+
+
+\begin{DoxyParams}[1]{Parameters}
+\hyperlink{class_c_connection}{C\-Connection} & {\em \$the\-Connection} & Server, database or container. \\
+\hline
+bitfield & {\em \$the\-Modifiers} & Commit options.\\
+\hline
+\end{DoxyParams}
+protected \begin{DoxyReturn}{Returns}
+string$|$\-N\-U\-L\-L The object's global unique identifier.
+\end{DoxyReturn}
+\begin{DoxySeeAlso}{See Also}
+k\-T\-A\-G\-\_\-\-L\-I\-D k\-T\-A\-G\-\_\-\-N\-A\-M\-E\-S\-P\-A\-C\-E k\-T\-O\-K\-E\-N\-\_\-\-N\-A\-M\-E\-S\-P\-A\-C\-E\-\_\-\-S\-E\-P\-A\-R\-A\-T\-O\-R 
+\end{DoxySeeAlso}
+\hypertarget{class_c_user_aa05407c9768b02801a2a8f47414de1fd}{\index{C\-User@{C\-User}!\-\_\-\-Postcommit\-Cleanup@{\-\_\-\-Postcommit\-Cleanup}}
+\index{\-\_\-\-Postcommit\-Cleanup@{\-\_\-\-Postcommit\-Cleanup}!CUser@{C\-User}}
+\subsubsection[{\-\_\-\-Postcommit\-Cleanup}]{\setlength{\rightskip}{0pt plus 5cm}C\-User\-::\-\_\-\-Postcommit\-Cleanup (
+\begin{DoxyParamCaption}
+\item[{\&}]{\$the\-Connection, }
+\item[{\&}]{\$the\-Modifiers}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [protected]}}}\label{class_c_user_aa05407c9768b02801a2a8f47414de1fd}
+\subparagraph*{Cleanup the object after committing}
+
+In this class we reset the manager object cache, we set the data member to {\ttfamily N\-U\-L\-L}, so that next time one wants to retrieve the manager object, it will have to be refreshed and its references actualised.
+
+
+\begin{DoxyParams}[1]{Parameters}
+reference & {\em \&\$the\-Connection} & Server, database or container. \\
+\hline
+reference & {\em \&\$the\-Modifiers} & Commit options.\\
+\hline
+\end{DoxyParams}
+protected \hypertarget{class_c_user_af6fe894a0a45226f314057a5c40f3bd1}{\index{C\-User@{C\-User}!\-\_\-\-Precommit\-Related@{\-\_\-\-Precommit\-Related}}
+\index{\-\_\-\-Precommit\-Related@{\-\_\-\-Precommit\-Related}!CUser@{C\-User}}
+\subsubsection[{\-\_\-\-Precommit\-Related}]{\setlength{\rightskip}{0pt plus 5cm}C\-User\-::\-\_\-\-Precommit\-Related (
+\begin{DoxyParamCaption}
+\item[{\&}]{\$the\-Connection, }
+\item[{\&}]{\$the\-Modifiers}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [protected]}}}\label{class_c_user_af6fe894a0a45226f314057a5c40f3bd1}
+\subparagraph*{Handle embedded or related objects before committing}
+
+In this class we commit the eventual manager user provided as an object or load the manager if provided as an identifier.
+
+
+\begin{DoxyParams}[1]{Parameters}
+reference & {\em \&\$the\-Connection} & Server, database or container. \\
+\hline
+reference & {\em \&\$the\-Modifiers} & Commit options.\\
+\hline
+\end{DoxyParams}
+protected \begin{DoxyReturn}{Returns}
+mixed 
+\end{DoxyReturn}
+\hypertarget{class_c_user_ac4d911d88bee7897d0fc257f126eb66a}{\index{C\-User@{C\-User}!\-\_\-\-Preset@{\-\_\-\-Preset}}
+\index{\-\_\-\-Preset@{\-\_\-\-Preset}!CUser@{C\-User}}
+\subsubsection[{\-\_\-\-Preset}]{\setlength{\rightskip}{0pt plus 5cm}C\-User\-::\-\_\-\-Preset (
+\begin{DoxyParamCaption}
+\item[{\&}]{\$the\-Offset, }
+\item[{\&}]{\$the\-Value}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [protected]}}}\label{class_c_user_ac4d911d88bee7897d0fc257f126eb66a}
+\subparagraph*{Handle offset before setting it}
+
+In this class we prevent the modification of the user code if the object has its \hyperlink{class_c_status_document_ab7d96fd4588cf7d5432fc65a1d1fb076}{\-\_\-\-Is\-Committed()} status set. This is because the code represents the user native identifier.
+
+We also ensure that the provided profile is an array.
+
+
+\begin{DoxyParams}[1]{Parameters}
+reference & {\em \&\$the\-Offset} & Offset. \\
+\hline
+reference & {\em \&\$the\-Value} & Value to set at offset.\\
+\hline
+\end{DoxyParams}
+protected
+
+
+\begin{DoxyExceptions}{Exceptions}
+{\em Exception} & \hyperlink{class_c_status_document_ab7d96fd4588cf7d5432fc65a1d1fb076}{\-\_\-\-Is\-Committed()}\\
+\hline
+\end{DoxyExceptions}
+\begin{DoxySeeAlso}{See Also}
+k\-T\-A\-G\-\_\-\-U\-S\-E\-R\-\_\-\-C\-O\-D\-E k\-T\-A\-G\-\_\-\-U\-S\-E\-R\-\_\-\-P\-R\-O\-F\-I\-L\-E 
+\end{DoxySeeAlso}
+\hypertarget{class_c_user_a44a9117071cea9d4933c08ef347006d6}{\index{C\-User@{C\-User}!\-\_\-\-Preunset@{\-\_\-\-Preunset}}
+\index{\-\_\-\-Preunset@{\-\_\-\-Preunset}!CUser@{C\-User}}
+\subsubsection[{\-\_\-\-Preunset}]{\setlength{\rightskip}{0pt plus 5cm}C\-User\-::\-\_\-\-Preunset (
+\begin{DoxyParamCaption}
+\item[{\&}]{\$the\-Offset}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [protected]}}}\label{class_c_user_a44a9117071cea9d4933c08ef347006d6}
+\subparagraph*{Handle offset before unsetting it}
+
+In this class we prevent the modification of the user code if the object has its \hyperlink{class_c_status_document_ab7d96fd4588cf7d5432fc65a1d1fb076}{\-\_\-\-Is\-Committed()} status set. This is because the code represents the user native identifier.
+
+
+\begin{DoxyParams}[1]{Parameters}
+reference & {\em \&\$the\-Offset} & Offset.\\
+\hline
+\end{DoxyParams}
+protected
+
+
+\begin{DoxyExceptions}{Exceptions}
+{\em Exception} & \hyperlink{class_c_status_document_ab7d96fd4588cf7d5432fc65a1d1fb076}{\-\_\-\-Is\-Committed()}\\
+\hline
+\end{DoxyExceptions}
+\begin{DoxySeeAlso}{See Also}
+k\-T\-A\-G\-\_\-\-U\-S\-E\-R\-\_\-\-C\-O\-D\-E 
+\end{DoxySeeAlso}
+\hypertarget{class_c_user_a9f55517030b5670e0ddadca1004b0b08}{\index{C\-User@{C\-User}!\-\_\-\-Ready@{\-\_\-\-Ready}}
+\index{\-\_\-\-Ready@{\-\_\-\-Ready}!CUser@{C\-User}}
+\subsubsection[{\-\_\-\-Ready}]{\setlength{\rightskip}{0pt plus 5cm}C\-User\-::\-\_\-\-Ready (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [protected]}}}\label{class_c_user_a9f55517030b5670e0ddadca1004b0b08}
+\subparagraph*{Determine if the object is ready}
+
+In this class we tie the \hyperlink{class_c_status_document_a954dee06e219e0a0f2e7fa6edac56e28}{\-\_\-\-Is\-Inited()} status to the presence or absence of the \hyperlink{}{k\-T\-A\-G\-\_\-\-L\-I\-D} offset.
+
+protected \begin{DoxyReturn}{Returns}
+boolean {\ttfamily T\-R\-U\-E} means \hyperlink{}{.  \-\_\-\-Ready()  k\-T\-A\-G\-\_\-\-L\-I\-D }
+\end{DoxyReturn}
+\hypertarget{class_c_user_a67e1a8d936265fbb8a10ccac4b76647a}{\index{C\-User@{C\-User}!Code@{Code}}
+\index{Code@{Code}!CUser@{C\-User}}
+\subsubsection[{Code}]{\setlength{\rightskip}{0pt plus 5cm}C\-User\-::\-Code (
+\begin{DoxyParamCaption}
+\item[{}]{\$the\-Value = {\ttfamily NULL}, }
+\item[{}]{\$get\-Old = {\ttfamily FALSE}}
+\end{DoxyParamCaption}
+)}}\label{class_c_user_a67e1a8d936265fbb8a10ccac4b76647a}
+\subparagraph*{Manage user code}
+
+The {\itshape code}, \hyperlink{}{k\-T\-A\-G\-\_\-\-U\-S\-E\-R\-\_\-\-C\-O\-D\-E}, holds the code of the user. This data represents the user native identifier. Once the object has been committed, this attribute will be locked.
+
+The method accepts a parameter which represents either the name or the requested operation, depending on its value\-:
+
+
+\begin{DoxyItemize}
+\item {\ttfamily N\-U\-L\-L}\-: Return the current value. 
+\item {\ttfamily F\-A\-L\-S\-E}\-: Delete the current value. 
+\item {\itshape other}\-: Set the value with the provided parameter. 
+\end{DoxyItemize}
+
+The second parameter is a boolean which if {\ttfamily T\-R\-U\-E} will return the {\itshape old} value when replacing containers; if {\ttfamily F\-A\-L\-S\-E}, it will return the currently set value.
+
+
+\begin{DoxyParams}[1]{Parameters}
+mixed & {\em \$the\-Value} & Value or operation. \\
+\hline
+boolean & {\em \$get\-Old} & {\ttfamily T\-R\-U\-E} get old value.\\
+\hline
+\end{DoxyParams}
+public \begin{DoxyReturn}{Returns}
+mixed {\itshape New} or {\itshape old} value.
+\end{DoxyReturn}
+Manage\-Offset()
+
+\begin{DoxySeeAlso}{See Also}
+k\-T\-A\-G\-\_\-\-U\-S\-E\-R\-\_\-\-C\-O\-D\-E 
+\end{DoxySeeAlso}
+\hypertarget{class_c_user_a9371705ee2fe545cf966b1bf3bd8c574}{\index{C\-User@{C\-User}!Default\-Container\-Name@{Default\-Container\-Name}}
+\index{Default\-Container\-Name@{Default\-Container\-Name}!CUser@{C\-User}}
+\subsubsection[{Default\-Container\-Name}]{\setlength{\rightskip}{0pt plus 5cm}static C\-User\-::\-Default\-Container\-Name (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}}}\label{class_c_user_a9371705ee2fe545cf966b1bf3bd8c574}
+\subparagraph*{Return the default users container name}
+
+This class uses the \hyperlink{}{k\-C\-O\-N\-T\-A\-I\-N\-E\-R\-\_\-\-U\-S\-E\-R\-\_\-\-N\-A\-M\-E} default name.
+
+\begin{DoxyReturn}{Returns}
+string The default container name.
+\end{DoxyReturn}
+
+\begin{DoxyExceptions}{Exceptions}
+{\em Exception} & \\
+\hline
+\end{DoxyExceptions}
+\begin{DoxySeeAlso}{See Also}
+k\-C\-O\-N\-T\-A\-I\-N\-E\-R\-\_\-\-U\-S\-E\-R\-\_\-\-N\-A\-M\-E 
+\end{DoxySeeAlso}
+\hypertarget{class_c_user_a09c0c6f7252ac4a3b96457b00ccc6901}{\index{C\-User@{C\-User}!Domain@{Domain}}
+\index{Domain@{Domain}!CUser@{C\-User}}
+\subsubsection[{Domain}]{\setlength{\rightskip}{0pt plus 5cm}C\-User\-::\-Domain (
+\begin{DoxyParamCaption}
+\item[{}]{\$the\-Value = {\ttfamily NULL}, }
+\item[{}]{\$the\-Operation = {\ttfamily NULL}, }
+\item[{}]{\$get\-Old = {\ttfamily FALSE}}
+\end{DoxyParamCaption}
+)}}\label{class_c_user_a09c0c6f7252ac4a3b96457b00ccc6901}
+\subparagraph*{Manage user domains}
+
+The user domain, \hyperlink{}{k\-T\-A\-G\-\_\-\-U\-S\-E\-R\-\_\-\-D\-O\-M\-A\-I\-N}, holds a list of unique values that represent the different domains in which the current user is registered.
+
+This offset collects the list of these domains in an enumerated set that can be managed with the following parameters\-:
+
+
+\begin{DoxyItemize}
+\item {\ttfamily \$the\-Value}\-: Depending on the next parameter, this may either refer to the value to be set or to the index of the element to be retrieved or deleted\-: 
+\begin{DoxyItemize}
+\item {\ttfamily N\-U\-L\-L}\-: This value indicates that we want to operate on all elements, which means, in practical terms, that we either want to retrieve or delete the full list. If the operation parameter resolves to {\ttfamily T\-R\-U\-E}, the method will default to retrieving the current list and no new element will be added. 
+\item {\ttfamily array}\-: An array indicates that we want to operate on a list of values and that other parameters may also be provided as lists. Note that \hyperlink{}{Array\-Object} instances are not considered here as arrays. 
+\item {\itshape other}\-: Any other type represents either the new value to be added or the index to the value to be returned or deleted. 
+\end{DoxyItemize}
+\item {\ttfamily \$the\-Operation}\-: This parameter represents the operation to be performed whose scope depends on the value of the previous parameter\-: 
+\begin{DoxyItemize}
+\item {\ttfamily N\-U\-L\-L}\-: Return the element or full list. 
+\item {\ttfamily F\-A\-L\-S\-E}\-: Delete the element or full list. 
+\item {\ttfamily array}\-: This type is only considered if the {\ttfamily \$the\-Value} parameter is provided as an array\-: the method will be called for each element of the {\ttfamily \$the\-Value} parameter matched with the corresponding element of this parameter, which also means that both both parameters must share the same count. 
+\item {\itshape other}\-: Add the {\ttfamily \$the\-Value} value to the list. If you provided {\ttfamily N\-U\-L\-L} in the previous parameter, the operation will be reset to {\ttfamily N\-U\-L\-L}. 
+\end{DoxyItemize}
+\item {\ttfamily \$get\-Old}\-: Determines what the method will return\-: 
+\begin{DoxyItemize}
+\item {\ttfamily T\-R\-U\-E}\-: Return the value {\itshape before} it was eventually modified. 
+\item {\ttfamily F\-A\-L\-S\-E}\-: Return the value {\itshape after} it was eventually modified. 
+\end{DoxyItemize}
+\end{DoxyItemize}
+
+
+\begin{DoxyParams}[1]{Parameters}
+mixed & {\em \$the\-Value} & Value or index. \\
+\hline
+mixed & {\em \$the\-Operation} & Operation. \\
+\hline
+boolean & {\em \$get\-Old} & T\-R\-U\-E get old value.\\
+\hline
+\end{DoxyParams}
+public \begin{DoxyReturn}{Returns}
+mixed {\itshape New} or {\itshape old} domain.
+\end{DoxyReturn}
+Manage\-Object\-Set\-Offset()
+
+\begin{DoxySeeAlso}{See Also}
+k\-T\-A\-G\-\_\-\-U\-S\-E\-R\-\_\-\-D\-O\-M\-A\-I\-N 
+\end{DoxySeeAlso}
+\hypertarget{class_c_user_a8059ecd785bdbb0ab52da79a46dcde6c}{\index{C\-User@{C\-User}!Load\-Manager@{Load\-Manager}}
+\index{Load\-Manager@{Load\-Manager}!CUser@{C\-User}}
+\subsubsection[{Load\-Manager}]{\setlength{\rightskip}{0pt plus 5cm}C\-User\-::\-Load\-Manager (
+\begin{DoxyParamCaption}
+\item[{{\bf C\-Connection}}]{\$the\-Connection, }
+\item[{}]{\$do\-Reload = {\ttfamily FALSE}}
+\end{DoxyParamCaption}
+)}}\label{class_c_user_a8059ecd785bdbb0ab52da79a46dcde6c}
+\subparagraph*{Load manager object}
+
+This method will return the current manager object\-: if the term is not set, the method will return {\ttfamily N\-U\-L\-L}; if the manager cannot be found, the method will raise an exception.
+
+The object will also be loaded in a data member that can function as a cache.
+
+The method features two parameters\-: the first refers to the container in which the manager is stored, the second is a boolean flag that determines whether the object is to be read, or if the cached copy can be used.
+
+
+\begin{DoxyParams}[1]{Parameters}
+\hyperlink{class_c_connection}{C\-Connection} & {\em \$the\-Connection} & Server, database or container. \\
+\hline
+boolean & {\em \$do\-Reload} & Reload if {\ttfamily T\-R\-U\-E}.\\
+\hline
+\end{DoxyParams}
+public \begin{DoxyReturn}{Returns}
+\hyperlink{class_c_ontology_term}{C\-Ontology\-Term} Manager object or {\ttfamily N\-U\-L\-L}.
+\end{DoxyReturn}
+
+\begin{DoxyExceptions}{Exceptions}
+{\em Exception} & \hyperlink{class_c_persistent_object_a5a5402ef394104148cfc580a6799ac2b}{New\-Object()}\\
+\hline
+\end{DoxyExceptions}
+\begin{DoxySeeAlso}{See Also}
+k\-T\-A\-G\-\_\-\-U\-S\-E\-R\-\_\-\-M\-A\-N\-A\-G\-E\-R 
+\end{DoxySeeAlso}
+\hypertarget{class_c_user_ac17ab6a51035f9e8074c2602e47ae818}{\index{C\-User@{C\-User}!Mail@{Mail}}
+\index{Mail@{Mail}!CUser@{C\-User}}
+\subsubsection[{Mail}]{\setlength{\rightskip}{0pt plus 5cm}C\-User\-::\-Mail (
+\begin{DoxyParamCaption}
+\item[{}]{\$the\-Value = {\ttfamily NULL}, }
+\item[{}]{\$get\-Old = {\ttfamily FALSE}}
+\end{DoxyParamCaption}
+)}}\label{class_c_user_ac17ab6a51035f9e8074c2602e47ae818}
+\subparagraph*{Manage user mail}
+
+The {\itshape mail}, \hyperlink{}{k\-T\-A\-G\-\_\-\-U\-S\-E\-R\-\_\-\-M\-A\-I\-L}, holds the user e-\/mail address.
+
+The method accepts a parameter which represents either the name or the requested operation, depending on its value\-:
+
+
+\begin{DoxyItemize}
+\item {\ttfamily N\-U\-L\-L}\-: Return the current value. 
+\item {\ttfamily F\-A\-L\-S\-E}\-: Delete the current value. 
+\item {\itshape other}\-: Set the value with the provided parameter. 
+\end{DoxyItemize}
+
+The second parameter is a boolean which if {\ttfamily T\-R\-U\-E} will return the {\itshape old} value when replacing containers; if {\ttfamily F\-A\-L\-S\-E}, it will return the currently set value.
+
+
+\begin{DoxyParams}[1]{Parameters}
+mixed & {\em \$the\-Value} & Value or operation. \\
+\hline
+boolean & {\em \$get\-Old} & {\ttfamily T\-R\-U\-E} get old value.\\
+\hline
+\end{DoxyParams}
+public \begin{DoxyReturn}{Returns}
+mixed {\itshape New} or {\itshape old} value.
+\end{DoxyReturn}
+Manage\-Offset()
+
+\begin{DoxySeeAlso}{See Also}
+k\-T\-A\-G\-\_\-\-U\-S\-E\-R\-\_\-\-M\-A\-I\-L 
+\end{DoxySeeAlso}
+\hypertarget{class_c_user_acd45e0c231f54e7ccc452cb6bcd3aa35}{\index{C\-User@{C\-User}!Manager@{Manager}}
+\index{Manager@{Manager}!CUser@{C\-User}}
+\subsubsection[{Manager}]{\setlength{\rightskip}{0pt plus 5cm}C\-User\-::\-Manager (
+\begin{DoxyParamCaption}
+\item[{}]{\$the\-Value = {\ttfamily NULL}, }
+\item[{}]{\$get\-Old = {\ttfamily FALSE}}
+\end{DoxyParamCaption}
+)}}\label{class_c_user_acd45e0c231f54e7ccc452cb6bcd3aa35}
+\subparagraph*{Manage user manager}
+
+The {\itshape mamager}, \hyperlink{}{k\-T\-A\-G\-\_\-\-U\-S\-E\-R\-\_\-\-M\-A\-N\-A\-G\-E\-R}, holds the reference to another user who has the responsibility and task of managing the current user. In general this will refer to the user that created the current user and that can revoke privileges or delete the user.
+
+The method accepts a parameter which represents either the code of the user's manager or the requested operation, depending on its value\-:
+
+
+\begin{DoxyItemize}
+\item {\ttfamily N\-U\-L\-L}\-: Return the current value. 
+\item {\ttfamily F\-A\-L\-S\-E}\-: Delete the current value. 
+\item {\itshape other}\-: Set the value with the provided parameter. 
+\end{DoxyItemize}
+
+The second parameter is a boolean which if {\ttfamily T\-R\-U\-E} will return the {\itshape old} value when replacing containers; if {\ttfamily F\-A\-L\-S\-E}, it will return the currently set value.
+
+
+\begin{DoxyParams}[1]{Parameters}
+mixed & {\em \$the\-Value} & Value or operation. \\
+\hline
+boolean & {\em \$get\-Old} & {\ttfamily T\-R\-U\-E} get old value.\\
+\hline
+\end{DoxyParams}
+public \begin{DoxyReturn}{Returns}
+mixed {\itshape New} or {\itshape old} value.
+\end{DoxyReturn}
+Manage\-Offset()
+
+\begin{DoxySeeAlso}{See Also}
+k\-T\-A\-G\-\_\-\-U\-S\-E\-R\-\_\-\-M\-A\-N\-A\-G\-E\-R 
+\end{DoxySeeAlso}
+\hypertarget{class_c_user_ab645d29752c93c7c45f711e630691e51}{\index{C\-User@{C\-User}!Name@{Name}}
+\index{Name@{Name}!CUser@{C\-User}}
+\subsubsection[{Name}]{\setlength{\rightskip}{0pt plus 5cm}C\-User\-::\-Name (
+\begin{DoxyParamCaption}
+\item[{}]{\$the\-Value = {\ttfamily NULL}, }
+\item[{}]{\$get\-Old = {\ttfamily FALSE}}
+\end{DoxyParamCaption}
+)}}\label{class_c_user_ab645d29752c93c7c45f711e630691e51}
+\subparagraph*{Manage user name}
+
+The {\itshape name}, \hyperlink{}{k\-T\-A\-G\-\_\-\-U\-S\-E\-R\-\_\-\-N\-A\-M\-E}, holds the full name of the user.
+
+The method accepts a parameter which represents either the name or the requested operation, depending on its value\-:
+
+
+\begin{DoxyItemize}
+\item {\ttfamily N\-U\-L\-L}\-: Return the current value. 
+\item {\ttfamily F\-A\-L\-S\-E}\-: Delete the current value. 
+\item {\itshape other}\-: Set the value with the provided parameter. 
+\end{DoxyItemize}
+
+The second parameter is a boolean which if {\ttfamily T\-R\-U\-E} will return the {\itshape old} value when replacing containers; if {\ttfamily F\-A\-L\-S\-E}, it will return the currently set value.
+
+
+\begin{DoxyParams}[1]{Parameters}
+mixed & {\em \$the\-Value} & Value or operation. \\
+\hline
+boolean & {\em \$get\-Old} & {\ttfamily T\-R\-U\-E} get old value.\\
+\hline
+\end{DoxyParams}
+public \begin{DoxyReturn}{Returns}
+mixed {\itshape New} or {\itshape old} value.
+\end{DoxyReturn}
+Manage\-Offset()
+
+\begin{DoxySeeAlso}{See Also}
+k\-T\-A\-G\-\_\-\-U\-S\-E\-R\-\_\-\-N\-A\-M\-E 
+\end{DoxySeeAlso}
+\hypertarget{class_c_user_a827f71914faf740df88212b8fa2f02a7}{\index{C\-User@{C\-User}!Pass@{Pass}}
+\index{Pass@{Pass}!CUser@{C\-User}}
+\subsubsection[{Pass}]{\setlength{\rightskip}{0pt plus 5cm}C\-User\-::\-Pass (
+\begin{DoxyParamCaption}
+\item[{}]{\$the\-Value = {\ttfamily NULL}, }
+\item[{}]{\$get\-Old = {\ttfamily FALSE}}
+\end{DoxyParamCaption}
+)}}\label{class_c_user_a827f71914faf740df88212b8fa2f02a7}
+\subparagraph*{Manage user password}
+
+The {\itshape password}, \hyperlink{}{k\-T\-A\-G\-\_\-\-U\-S\-E\-R\-\_\-\-P\-A\-S\-S}, holds the password of the user. This data along with the user code is used as the login credentials.
+
+The method accepts a parameter which represents either the name or the requested operation, depending on its value\-:
+
+
+\begin{DoxyItemize}
+\item {\ttfamily N\-U\-L\-L}\-: Return the current value. 
+\item {\ttfamily F\-A\-L\-S\-E}\-: Delete the current value. 
+\item {\itshape other}\-: Set the value with the provided parameter. 
+\end{DoxyItemize}
+
+The second parameter is a boolean which if {\ttfamily T\-R\-U\-E} will return the {\itshape old} value when replacing containers; if {\ttfamily F\-A\-L\-S\-E}, it will return the currently set value.
+
+
+\begin{DoxyParams}[1]{Parameters}
+mixed & {\em \$the\-Value} & Value or operation. \\
+\hline
+boolean & {\em \$get\-Old} & {\ttfamily T\-R\-U\-E} get old value.\\
+\hline
+\end{DoxyParams}
+public \begin{DoxyReturn}{Returns}
+mixed {\itshape New} or {\itshape old} value.
+\end{DoxyReturn}
+Manage\-Offset()
+
+\begin{DoxySeeAlso}{See Also}
+k\-T\-A\-G\-\_\-\-U\-S\-E\-R\-\_\-\-P\-A\-S\-S 
+\end{DoxySeeAlso}
+\hypertarget{class_c_user_ab0461ec04fd8043c24ec0ef94fadb995}{\index{C\-User@{C\-User}!Profile@{Profile}}
+\index{Profile@{Profile}!CUser@{C\-User}}
+\subsubsection[{Profile}]{\setlength{\rightskip}{0pt plus 5cm}C\-User\-::\-Profile (
+\begin{DoxyParamCaption}
+\item[{}]{\$the\-Value = {\ttfamily NULL}, }
+\item[{}]{\$the\-Operation = {\ttfamily NULL}, }
+\item[{}]{\$get\-Old = {\ttfamily FALSE}}
+\end{DoxyParamCaption}
+)}}\label{class_c_user_ab0461ec04fd8043c24ec0ef94fadb995}
+\subparagraph*{Manage user profile set}
+
+The profile set, \hyperlink{}{k\-T\-A\-G\-\_\-\-U\-S\-E\-R\-\_\-\-P\-R\-O\-F\-I\-L\-E}, holds a list of unique values that represent the different privileges and capabilities of the user. This information is not specific to the hosting system, but rather to the library that manages users.
+
+This offset collects the list of these qualifications in an enumerated set that can be managed with the following parameters\-:
+
+
+\begin{DoxyItemize}
+\item {\ttfamily \$the\-Value}\-: Depending on the next parameter, this may either refer to the value to be set or to the index of the element to be retrieved or deleted\-: 
+\begin{DoxyItemize}
+\item {\ttfamily N\-U\-L\-L}\-: This value indicates that we want to operate on all elements, which means, in practical terms, that we either want to retrieve or delete the full list. If the operation parameter resolves to {\ttfamily T\-R\-U\-E}, the method will default to retrieving the current list and no new element will be added. 
+\item {\ttfamily array}\-: An array indicates that we want to operate on a list of values and that other parameters may also be provided as lists. Note that \hyperlink{}{Array\-Object} instances are not considered here as arrays. 
+\item {\itshape other}\-: Any other type represents either the new value to be added or the index to the value to be returned or deleted. 
+\end{DoxyItemize}
+\item {\ttfamily \$the\-Operation}\-: This parameter represents the operation to be performed whose scope depends on the value of the previous parameter\-: 
+\begin{DoxyItemize}
+\item {\ttfamily N\-U\-L\-L}\-: Return the element or full list. 
+\item {\ttfamily F\-A\-L\-S\-E}\-: Delete the element or full list. 
+\item {\ttfamily array}\-: This type is only considered if the {\ttfamily \$the\-Value} parameter is provided as an array\-: the method will be called for each element of the {\ttfamily \$the\-Value} parameter matched with the corresponding element of this parameter, which also means that both both parameters must share the same count. 
+\item {\itshape other}\-: Add the {\ttfamily \$the\-Value} value to the list. If you provided {\ttfamily N\-U\-L\-L} in the previous parameter, the operation will be reset to {\ttfamily N\-U\-L\-L}. 
+\end{DoxyItemize}
+\item {\ttfamily \$get\-Old}\-: Determines what the method will return\-: 
+\begin{DoxyItemize}
+\item {\ttfamily T\-R\-U\-E}\-: Return the value {\itshape before} it was eventually modified. 
+\item {\ttfamily F\-A\-L\-S\-E}\-: Return the value {\itshape after} it was eventually modified. 
+\end{DoxyItemize}
+\end{DoxyItemize}
+
+
+\begin{DoxyParams}[1]{Parameters}
+mixed & {\em \$the\-Value} & Value or index. \\
+\hline
+mixed & {\em \$the\-Operation} & Operation. \\
+\hline
+boolean & {\em \$get\-Old} & T\-R\-U\-E get old value.\\
+\hline
+\end{DoxyParams}
+public \begin{DoxyReturn}{Returns}
+mixed {\itshape New} or {\itshape old} kind.
+\end{DoxyReturn}
+Manage\-Object\-Set\-Offset()
+
+\begin{DoxySeeAlso}{See Also}
+k\-T\-A\-G\-\_\-\-U\-S\-E\-R\-\_\-\-P\-R\-O\-F\-I\-L\-E 
+\end{DoxySeeAlso}
+\hypertarget{class_c_user_a41767eb89356bfc787eabbe5596df36d}{\index{C\-User@{C\-User}!Resolve@{Resolve}}
+\index{Resolve@{Resolve}!CUser@{C\-User}}
+\subsubsection[{Resolve}]{\setlength{\rightskip}{0pt plus 5cm}static C\-User\-::\-Resolve (
+\begin{DoxyParamCaption}
+\item[{{\bf C\-Connection}}]{\$the\-Connection, }
+\item[{}]{\$the\-Identifier, }
+\item[{}]{\$do\-Throw = {\ttfamily FALSE}}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}}}\label{class_c_user_a41767eb89356bfc787eabbe5596df36d}
+\subparagraph*{Resolve a user}
+
+This method can be used to locate a user given the attributes that comprise its identifier.
+
+The method accepts the following parameters\-:
+
+
+\begin{DoxyItemize}
+\item {\ttfamily \$the\-Connection}\-: This parameter represents the connection from which the terms container must be resolved. If this parameter cannot be correctly determined, the method will raise an exception. 
+\item {\ttfamily \$the\-Identifier}\-: In this class by default the native identifier is the user code, we assume this parameter is that string. 
+\item {\ttfamily \$do\-Throw}\-: If {\ttfamily T\-R\-U\-E}, any failure to resolve the term or its namespace, will raise an exception. 
+\end{DoxyItemize}
+
+The method will return the found user, {\ttfamily N\-U\-L\-L} if not found, or raise an exception if the last parameter is {\ttfamily T\-R\-U\-E}.
+
+{\bfseries Note\-: do not provide an array containing the object in the identifier parameter, or you will get unexpected results.}
+
+
+\begin{DoxyParams}[1]{Parameters}
+\hyperlink{class_c_connection}{C\-Connection} & {\em \$the\-Connection} & Server, database or container. \\
+\hline
+mixed & {\em \$the\-Identifier} & User identifier or user reference. \\
+\hline
+boolean & {\em \$do\-Throw} & If {\ttfamily T\-R\-U\-E} raise an exception.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+\hyperlink{class_c_user}{C\-User} Matched user or {\ttfamily N\-U\-L\-L}.
+\end{DoxyReturn}
+
+\begin{DoxyExceptions}{Exceptions}
+{\em Exception} & \\
+\hline
+\end{DoxyExceptions}
+\hypertarget{class_c_user_add1faba1d336cf4b610a632d3c376dd2}{\index{C\-User@{C\-User}!Role@{Role}}
+\index{Role@{Role}!CUser@{C\-User}}
+\subsubsection[{Role}]{\setlength{\rightskip}{0pt plus 5cm}C\-User\-::\-Role (
+\begin{DoxyParamCaption}
+\item[{}]{\$the\-Value = {\ttfamily NULL}, }
+\item[{}]{\$the\-Operation = {\ttfamily NULL}, }
+\item[{}]{\$get\-Old = {\ttfamily FALSE}}
+\end{DoxyParamCaption}
+)}}\label{class_c_user_add1faba1d336cf4b610a632d3c376dd2}
+\subparagraph*{Manage user roles}
+
+The {\itshape role}, \hyperlink{}{k\-T\-A\-G\-\_\-\-U\-S\-E\-R\-\_\-\-R\-O\-L\-E}, holds the list of roles of the user according to the hosting system. It is a string that identifies the user role specific to the hosting operating system or framework.
+
+
+\begin{DoxyItemize}
+\item {\ttfamily \$the\-Value}\-: Depending on the next parameter, this may either refer to the value to be set or to the index of the element to be retrieved or deleted\-: 
+\begin{DoxyItemize}
+\item {\ttfamily N\-U\-L\-L}\-: This value indicates that we want to operate on all elements, which means, in practical terms, that we either want to retrieve or delete the full list. If the operation parameter resolves to {\ttfamily T\-R\-U\-E}, the method will default to retrieving the current list and no new element will be added. 
+\item {\ttfamily array}\-: An array indicates that we want to operate on a list of values and that other parameters may also be provided as lists. Note that \hyperlink{}{Array\-Object} instances are not considered here as arrays. 
+\item {\itshape other}\-: Any other type represents either the new value to be added or the index to the value to be returned or deleted. 
+\end{DoxyItemize}
+\item {\ttfamily \$the\-Operation}\-: This parameter represents the operation to be performed whose scope depends on the value of the previous parameter\-: 
+\begin{DoxyItemize}
+\item {\ttfamily N\-U\-L\-L}\-: Return the element or full list. 
+\item {\ttfamily F\-A\-L\-S\-E}\-: Delete the element or full list. 
+\item {\ttfamily array}\-: This type is only considered if the {\ttfamily \$the\-Value} parameter is provided as an array\-: the method will be called for each element of the {\ttfamily \$the\-Value} parameter matched with the corresponding element of this parameter, which also means that both both parameters must share the same count. 
+\item {\itshape other}\-: Add the {\ttfamily \$the\-Value} value to the list. If you provided {\ttfamily N\-U\-L\-L} in the previous parameter, the operation will be reset to {\ttfamily N\-U\-L\-L}. 
+\end{DoxyItemize}
+\item {\ttfamily \$get\-Old}\-: Determines what the method will return\-: 
+\begin{DoxyItemize}
+\item {\ttfamily T\-R\-U\-E}\-: Return the value {\itshape before} it was eventually modified. 
+\item {\ttfamily F\-A\-L\-S\-E}\-: Return the value {\itshape after} it was eventually modified. 
+\end{DoxyItemize}
+\end{DoxyItemize}
+
+
+\begin{DoxyParams}[1]{Parameters}
+mixed & {\em \$the\-Value} & Value or index. \\
+\hline
+mixed & {\em \$the\-Operation} & Operation. \\
+\hline
+boolean & {\em \$get\-Old} & T\-R\-U\-E get old value.\\
+\hline
+\end{DoxyParams}
+public \begin{DoxyReturn}{Returns}
+mixed {\itshape New} or {\itshape old} value.
+\end{DoxyReturn}
+Manage\-Object\-Set\-Offset()
+
+\begin{DoxySeeAlso}{See Also}
+k\-T\-A\-G\-\_\-\-U\-S\-E\-R\-\_\-\-R\-O\-L\-E 
+\end{DoxySeeAlso}
+
+
+The documentation for this class was generated from the following file\-:\begin{DoxyCompactItemize}
+\item 
+/\-Library/\-Web\-Server/\-Library/\-P\-H\-P\-Wrapper/classes/C\-User.\-php\end{DoxyCompactItemize}

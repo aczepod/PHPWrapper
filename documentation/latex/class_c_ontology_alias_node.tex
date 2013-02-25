@@ -1,0 +1,218 @@
+\hypertarget{class_c_ontology_alias_node}{\section{C\-Ontology\-Alias\-Node Class Reference}
+\label{class_c_ontology_alias_node}\index{C\-Ontology\-Alias\-Node@{C\-Ontology\-Alias\-Node}}
+}
+Inheritance diagram for C\-Ontology\-Alias\-Node\-:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=9.000000cm]{class_c_ontology_alias_node}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{class_c_ontology_alias_node_aa9943ab171608dd41a95e0defc71820d}{Node} (\$the\-Value=N\-U\-L\-L, \$get\-Old=F\-A\-L\-S\-E)
+\item 
+\hyperlink{class_c_ontology_alias_node_ad82cf36f485558265dc30ac195c326f1}{Relate\-To} (\$the\-Predicate, \$the\-Object, \$the\-Connection=N\-U\-L\-L, \$do\-Propagate=T\-R\-U\-E)
+\end{DoxyCompactItemize}
+\subsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+static \hyperlink{class_c_ontology_alias_node_a1c50632496dcfad67765d134409cb71d}{Resolve} (\hyperlink{class_c_connection}{C\-Connection} \$the\-Connection, \$the\-Identifier, \$do\-Throw=F\-A\-L\-S\-E)
+\end{DoxyCompactItemize}
+\subsection*{Protected Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{class_c_ontology_alias_node_a4b6c569d7b99fe7d1f171e408f49f2e5}{\-\_\-\-Precommit\-Related} (\&\$the\-Connection, \&\$the\-Modifiers)
+\item 
+\hyperlink{class_c_ontology_alias_node_acac06e2787b3d74a6a627a13e57e7154}{\-\_\-\-Postcommit\-Related} (\&\$the\-Connection, \&\$the\-Modifiers)
+\end{DoxyCompactItemize}
+\subsection*{Additional Inherited Members}
+
+
+\subsection{Member Function Documentation}
+\hypertarget{class_c_ontology_alias_node_acac06e2787b3d74a6a627a13e57e7154}{\index{C\-Ontology\-Alias\-Node@{C\-Ontology\-Alias\-Node}!\-\_\-\-Postcommit\-Related@{\-\_\-\-Postcommit\-Related}}
+\index{\-\_\-\-Postcommit\-Related@{\-\_\-\-Postcommit\-Related}!COntologyAliasNode@{C\-Ontology\-Alias\-Node}}
+\subsubsection[{\-\_\-\-Postcommit\-Related}]{\setlength{\rightskip}{0pt plus 5cm}C\-Ontology\-Alias\-Node\-::\-\_\-\-Postcommit\-Related (
+\begin{DoxyParamCaption}
+\item[{\&}]{\$the\-Connection, }
+\item[{\&}]{\$the\-Modifiers}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [protected]}}}\label{class_c_ontology_alias_node_acac06e2787b3d74a6a627a13e57e7154}
+\subparagraph*{Update related objects after committing}
+
+In this class we handle referenced master nodes, \hyperlink{}{k\-T\-A\-G\-\_\-\-N\-O\-D\-E}\-: depending on the value of the \hyperlink{}{k\-S\-W\-I\-T\-C\-H\-\_\-k\-T\-A\-G\-\_\-\-A\-L\-I\-A\-S\-\_\-\-N\-O\-D\-E\-S} flag we do the following\-:
+
+
+\begin{DoxyItemize}
+\item {\ttfamily 0x2}\-: {\itshape Keep count of references}. This means that the \hyperlink{}{k\-T\-A\-G\-\_\-\-N\-O\-D\-E\-S} attribute of the master node referenced by the \hyperlink{}{k\-T\-A\-G\-\_\-\-N\-O\-D\-E} attribute will be incremented when the object is inserted, or decremented when deleted. 
+\item {\ttfamily 0x3}\-: {\itshape Keep list of references}. This means that a reference to the current object will be added to the \hyperlink{}{k\-T\-A\-G\-\_\-\-N\-O\-D\-E\-S} attribute of the master node referenced by \hyperlink{}{k\-T\-A\-G\-\_\-\-N\-O\-D\-E} attribute of the current object when the latter is inserted, and removed when the object isdeleted. 
+\item {\ttfamily 0x0} {\itshape or other}\-: {\itshape Don't handle this information}. This means that the \hyperlink{}{k\-T\-A\-G\-\_\-\-N\-O\-D\-E\-S} attribute will not be handled. 
+\end{DoxyItemize}
+
+
+\begin{DoxyParams}[1]{Parameters}
+reference & {\em \&\$the\-Connection} & Server, database or container. \\
+\hline
+reference & {\em \&\$the\-Modifiers} & Commit options.\\
+\hline
+\end{DoxyParams}
+protected
+
+\hyperlink{class_c_status_document_ab7d96fd4588cf7d5432fc65a1d1fb076}{\-\_\-\-Is\-Committed()}  \-\_\-\-Reference\-In\-Node()
+
+\begin{DoxySeeAlso}{See Also}
+k\-F\-L\-A\-G\-\_\-\-P\-E\-R\-S\-I\-S\-T\-\_\-\-I\-N\-S\-E\-R\-T k\-F\-L\-A\-G\-\_\-\-P\-E\-R\-S\-I\-S\-T\-\_\-\-R\-E\-P\-L\-A\-C\-E 
+\end{DoxySeeAlso}
+\hypertarget{class_c_ontology_alias_node_a4b6c569d7b99fe7d1f171e408f49f2e5}{\index{C\-Ontology\-Alias\-Node@{C\-Ontology\-Alias\-Node}!\-\_\-\-Precommit\-Related@{\-\_\-\-Precommit\-Related}}
+\index{\-\_\-\-Precommit\-Related@{\-\_\-\-Precommit\-Related}!COntologyAliasNode@{C\-Ontology\-Alias\-Node}}
+\subsubsection[{\-\_\-\-Precommit\-Related}]{\setlength{\rightskip}{0pt plus 5cm}C\-Ontology\-Alias\-Node\-::\-\_\-\-Precommit\-Related (
+\begin{DoxyParamCaption}
+\item[{\&}]{\$the\-Connection, }
+\item[{\&}]{\$the\-Modifiers}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [protected]}}}\label{class_c_ontology_alias_node_a4b6c569d7b99fe7d1f171e408f49f2e5}
+\subparagraph*{Handle embedded or related objects before committing}
+
+In this class we handle the master node\-: we check whether a master node related to the same term exists, if that is the case we set the current node's \hyperlink{}{k\-T\-A\-G\-\_\-\-N\-O\-D\-E} attribute, if that is not the case, we instantiate and insert the master node before setting its identifier in the current object's \hyperlink{}{k\-T\-A\-G\-\_\-\-N\-O\-D\-E} attribute.
+
+Note that we do the above only if the \hyperlink{}{k\-T\-A\-G\-\_\-\-N\-O\-D\-E} offset is not yet set.
+
+
+\begin{DoxyParams}[1]{Parameters}
+reference & {\em \&\$the\-Connection} & Server, database or container. \\
+\hline
+reference & {\em \&\$the\-Modifiers} & Commit options.\\
+\hline
+\end{DoxyParams}
+protected \begin{DoxyReturn}{Returns}
+mixed
+\end{DoxyReturn}
+\hyperlink{class_c_ontology_node_a09eb3d9d16775d7752fd7bf62dd93d74}{Load\-Term()}
+
+\begin{DoxySeeAlso}{See Also}
+k\-T\-A\-G\-\_\-\-T\-E\-R\-M 
+\end{DoxySeeAlso}
+\hypertarget{class_c_ontology_alias_node_aa9943ab171608dd41a95e0defc71820d}{\index{C\-Ontology\-Alias\-Node@{C\-Ontology\-Alias\-Node}!Node@{Node}}
+\index{Node@{Node}!COntologyAliasNode@{C\-Ontology\-Alias\-Node}}
+\subsubsection[{Node}]{\setlength{\rightskip}{0pt plus 5cm}C\-Ontology\-Alias\-Node\-::\-Node (
+\begin{DoxyParamCaption}
+\item[{}]{\$the\-Value = {\ttfamily NULL}, }
+\item[{}]{\$get\-Old = {\ttfamily FALSE}}
+\end{DoxyParamCaption}
+)}}\label{class_c_ontology_alias_node_aa9943ab171608dd41a95e0defc71820d}
+\subparagraph*{Manage node reference}
+
+This method can be used to manage the master node reference, \hyperlink{}{k\-T\-A\-G\-\_\-\-N\-O\-D\-E}, the method accepts a parameter which represents either the node, or the requested operation, depending on its value\-:
+
+
+\begin{DoxyItemize}
+\item {\ttfamily N\-U\-L\-L}\-: Return the current value. 
+\item {\ttfamily F\-A\-L\-S\-E}\-: Delete the current value. 
+\item {\itshape other}\-: Set the value with the provided parameter\-: 
+\begin{DoxyItemize}
+\item {\ttfamily integer}\-: This value will be interpreted as the node reference. 
+\item {\ttfamily \hyperlink{class_c_ontology_node}{C\-Ontology\-Node}}\-: This value will be interpreted as the node object. 
+\item {\itshape other}\-: Any other value will raise an exception. 
+\end{DoxyItemize}
+\end{DoxyItemize}
+
+The second parameter is a boolean which if {\ttfamily T\-R\-U\-E} will return the {\itshape old} value when replacing containers; if {\ttfamily F\-A\-L\-S\-E}, it will return the currently set value.
+
+
+\begin{DoxyParams}[1]{Parameters}
+mixed & {\em \$the\-Value} & Term or operation. \\
+\hline
+boolean & {\em \$get\-Old} & {\ttfamily T\-R\-U\-E} get old value.\\
+\hline
+\end{DoxyParams}
+public \begin{DoxyReturn}{Returns}
+mixed {\itshape New} or {\itshape old} native container.
+\end{DoxyReturn}
+Manage\-Offset()
+
+\begin{DoxySeeAlso}{See Also}
+k\-T\-A\-G\-\_\-\-N\-O\-D\-E 
+\end{DoxySeeAlso}
+\hypertarget{class_c_ontology_alias_node_ad82cf36f485558265dc30ac195c326f1}{\index{C\-Ontology\-Alias\-Node@{C\-Ontology\-Alias\-Node}!Relate\-To@{Relate\-To}}
+\index{Relate\-To@{Relate\-To}!COntologyAliasNode@{C\-Ontology\-Alias\-Node}}
+\subsubsection[{Relate\-To}]{\setlength{\rightskip}{0pt plus 5cm}C\-Ontology\-Alias\-Node\-::\-Relate\-To (
+\begin{DoxyParamCaption}
+\item[{}]{\$the\-Predicate, }
+\item[{}]{\$the\-Object, }
+\item[{}]{\$the\-Connection = {\ttfamily NULL}, }
+\item[{}]{\$do\-Propagate = {\ttfamily TRUE}}
+\end{DoxyParamCaption}
+)}}\label{class_c_ontology_alias_node_ad82cf36f485558265dc30ac195c326f1}
+\subparagraph*{Relate to node}
+
+We overload this method to mirror relationships between alias nodes to their counterpart master nodes, this is governed by the {\ttfamily \$do\-Propagate} switch.
+
+We first create the requested relationship, then we resolve both the subject and the object, if it is also an alias, and we relate them with the same predicate.
+
+This means that\-:
+
+
+\begin{DoxyItemize}
+\item {\itshape A\-L\-I\-A\-S =$>$ M\-A\-S\-T\-E\-R}\-: 
+\begin{DoxyItemize}
+\item A\-L\-I\-A\-S =$>$ M\-A\-S\-T\-E\-R 
+\item A\-L\-I\-A\-S.\-M\-A\-S\-T\-E\-R =$>$ M\-A\-S\-T\-E\-R 
+\end{DoxyItemize}
+\item {\itshape A\-L\-I\-A\-S =$>$ A\-L\-I\-A\-S}\-: 
+\begin{DoxyItemize}
+\item A\-L\-I\-A\-S =$>$ A\-L\-I\-A\-S 
+\item A\-L\-I\-A\-S.\-M\-A\-S\-T\-E\-R =$>$ A\-L\-I\-A\-S.\-M\-A\-S\-T\-E\-R 
+\end{DoxyItemize}
+\end{DoxyItemize}
+
+We require the connection parameter here since both subject and object vertices must be committed by this method, this implies that the edge will also be committed.
+
+
+\begin{DoxyParams}[1]{Parameters}
+mixed & {\em \$the\-Predicate} & Predicate term object or reference. \\
+\hline
+mixed & {\em \$the\-Object} & Object node object or reference. \\
+\hline
+\hyperlink{class_c_connection}{C\-Connection} & {\em \$the\-Connection} & Server, database or container. \\
+\hline
+boolean & {\em \$do\-Propagate} & T\-R\-U\-E means relate masters.\\
+\hline
+\end{DoxyParams}
+public \begin{DoxyReturn}{Returns}
+\hyperlink{class_c_ontology_edge}{C\-Ontology\-Edge} Edge object. 
+\end{DoxyReturn}
+\hypertarget{class_c_ontology_alias_node_a1c50632496dcfad67765d134409cb71d}{\index{C\-Ontology\-Alias\-Node@{C\-Ontology\-Alias\-Node}!Resolve@{Resolve}}
+\index{Resolve@{Resolve}!COntologyAliasNode@{C\-Ontology\-Alias\-Node}}
+\subsubsection[{Resolve}]{\setlength{\rightskip}{0pt plus 5cm}static C\-Ontology\-Alias\-Node\-::\-Resolve (
+\begin{DoxyParamCaption}
+\item[{{\bf C\-Connection}}]{\$the\-Connection, }
+\item[{}]{\$the\-Identifier, }
+\item[{}]{\$do\-Throw = {\ttfamily FALSE}}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}}}\label{class_c_ontology_alias_node_a1c50632496dcfad67765d134409cb71d}
+\subparagraph*{Resolve a node}
+
+In this class we add the persistent identifier, \hyperlink{}{k\-T\-A\-G\-\_\-\-P\-I\-D}, to the list of properties to be checked, with this option we return the first match by default.
+
+
+\begin{DoxyParams}[1]{Parameters}
+\hyperlink{class_c_connection}{C\-Connection} & {\em \$the\-Connection} & Server, database or container. \\
+\hline
+mixed & {\em \$the\-Identifier} & Node identifier or term reference. \\
+\hline
+boolean & {\em \$do\-Throw} & If {\ttfamily T\-R\-U\-E} raise an exception.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+\hyperlink{class_c_ontology_node}{C\-Ontology\-Node} Matched node, found nodes or {\ttfamily N\-U\-L\-L}.
+\end{DoxyReturn}
+
+\begin{DoxyExceptions}{Exceptions}
+{\em Exception} & \\
+\hline
+\end{DoxyExceptions}
+
+
+The documentation for this class was generated from the following file\-:\begin{DoxyCompactItemize}
+\item 
+/\-Library/\-Web\-Server/\-Library/\-P\-H\-P\-Wrapper/classes/C\-Ontology\-Alias\-Node.\-php\end{DoxyCompactItemize}

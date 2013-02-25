@@ -1,0 +1,506 @@
+\hypertarget{class_c_ontology_term}{\section{C\-Ontology\-Term Class Reference}
+\label{class_c_ontology_term}\index{C\-Ontology\-Term@{C\-Ontology\-Term}}
+}
+Inheritance diagram for C\-Ontology\-Term\-:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=7.000000cm]{class_c_ontology_term}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{class_c_ontology_term_a31fa356129d058361b7cdd88924b6c7d}{Load\-Namespace} (\hyperlink{class_c_connection}{C\-Connection} \$the\-Connection, \$do\-Reload=F\-A\-L\-S\-E)
+\item 
+\hyperlink{class_c_ontology_term_a36c2ab4ffdde63d0ca51734437faaa35}{Load\-Term} (\hyperlink{class_c_connection}{C\-Connection} \$the\-Connection, \$do\-Reload=F\-A\-L\-S\-E)
+\item 
+\hyperlink{class_c_ontology_term_ac39334977998a1e11c0e277eac4cef5c}{Update} (\hyperlink{class_c_connection}{C\-Connection} \$the\-Connection)
+\item 
+\hyperlink{class_c_ontology_term_ac1257616ac8626822f410bd858ce767c}{Replace} (\hyperlink{class_c_connection}{C\-Connection} \$the\-Connection)
+\end{DoxyCompactItemize}
+\subsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+static \hyperlink{class_c_ontology_term_ab4c98ee0a638974d6c422fcb9df31471}{Handle\-Label} (\hyperlink{class_c_connection}{C\-Connection} \$the\-Connection, \$the\-Identifier, \$the\-Language=N\-U\-L\-L, \$the\-Value=N\-U\-L\-L)
+\item 
+static \hyperlink{class_c_ontology_term_a41ecd119648036a63b083f1dad064554}{Default\-Container\-Name} ()
+\item 
+static \hyperlink{class_c_ontology_term_aaea30804fc8ceae42f91401f69ad6b88}{Resolve} (\hyperlink{class_c_connection}{C\-Connection} \$the\-Connection, \$the\-Identifier, \$the\-Namespace=N\-U\-L\-L, \$do\-Throw=F\-A\-L\-S\-E)
+\item 
+static \hyperlink{class_c_ontology_term_a34f4c98f9a5b40ed2294bf4c8f6e7d0c}{\-\_\-id} (\$the\-Identifier=N\-U\-L\-L, \hyperlink{class_c_connection}{C\-Connection} \$the\-Connection=N\-U\-L\-L)
+\end{DoxyCompactItemize}
+\subsection*{Protected Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{class_c_ontology_term_a58ac83da7057515fec5df925d0d1c5eb}{\-\_\-index} (\hyperlink{class_c_connection}{C\-Connection} \$the\-Connection, \$the\-Modifiers)
+\item 
+\hyperlink{class_c_ontology_term_adce9339df9c3100d72743b4002f3a547}{\-\_\-\-Preset} (\&\$the\-Offset, \&\$the\-Value)
+\item 
+\hyperlink{class_c_ontology_term_af1217a9514c3a9a2976729863636ff92}{\-\_\-\-Preunset} (\&\$the\-Offset)
+\item 
+\hyperlink{class_c_ontology_term_a2e76b241a1855f7c50d070831f3c742e}{\-\_\-\-Precommit\-Related} (\&\$the\-Connection, \&\$the\-Modifiers)
+\item 
+\hyperlink{class_c_ontology_term_af14ed2c9929119cf4d4de6eda5026248}{\-\_\-\-Postcommit\-Related} (\&\$the\-Connection, \&\$the\-Modifiers)
+\item 
+\hyperlink{class_c_ontology_term_ae5a6a16b10c3b6f5cbc8e4a515adea96}{\-\_\-\-Postcommit\-Cleanup} (\&\$the\-Connection, \&\$the\-Modifiers)
+\end{DoxyCompactItemize}
+\subsection*{Protected Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{class_c_ontology_term_ae9ca47d99eee2be865e0784c8bb3836d}{{\bfseries \$m\-Namespace} = N\-U\-L\-L}\label{class_c_ontology_term_ae9ca47d99eee2be865e0784c8bb3836d}
+
+\item 
+\hypertarget{class_c_ontology_term_a44e7b92c30aa11945c1100fcc6cea318}{{\bfseries \$m\-Term} = N\-U\-L\-L}\label{class_c_ontology_term_a44e7b92c30aa11945c1100fcc6cea318}
+
+\end{DoxyCompactItemize}
+
+
+\subsection{Member Function Documentation}
+\hypertarget{class_c_ontology_term_a34f4c98f9a5b40ed2294bf4c8f6e7d0c}{\index{C\-Ontology\-Term@{C\-Ontology\-Term}!\-\_\-id@{\-\_\-id}}
+\index{\-\_\-id@{\-\_\-id}!COntologyTerm@{C\-Ontology\-Term}}
+\subsubsection[{\-\_\-id}]{\setlength{\rightskip}{0pt plus 5cm}static C\-Ontology\-Term\-::\-\_\-id (
+\begin{DoxyParamCaption}
+\item[{}]{\$the\-Identifier = {\ttfamily NULL}, }
+\item[{{\bf C\-Connection}}]{\$the\-Connection = {\ttfamily NULL}}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}}}\label{class_c_ontology_term_a34f4c98f9a5b40ed2294bf4c8f6e7d0c}
+\subparagraph*{Generate the object's native unique identifier}
+
+We override this method to hash the native identifier.
+
+Since binary data is handled differently by each storage engine, we require the container parameter and raise an exception if not provided.
+
+We also raise an exception if the string is not provided, this is because this object primary key depends on the content of its attributes.
+
+
+\begin{DoxyParams}[1]{Parameters}
+string & {\em \$the\-Identifier} & Global unique identifier. \\
+\hline
+\hyperlink{class_c_connection}{C\-Connection} & {\em \$the\-Connection} & Server, database or container.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+mixed The object's native unique identifier.
+\end{DoxyReturn}
+
+\begin{DoxyExceptions}{Exceptions}
+{\em Exception} & \\
+\hline
+\end{DoxyExceptions}
+\hypertarget{class_c_ontology_term_a58ac83da7057515fec5df925d0d1c5eb}{\index{C\-Ontology\-Term@{C\-Ontology\-Term}!\-\_\-index@{\-\_\-index}}
+\index{\-\_\-index@{\-\_\-index}!COntologyTerm@{C\-Ontology\-Term}}
+\subsubsection[{\-\_\-index}]{\setlength{\rightskip}{0pt plus 5cm}C\-Ontology\-Term\-::\-\_\-index (
+\begin{DoxyParamCaption}
+\item[{{\bf C\-Connection}}]{\$the\-Connection, }
+\item[{}]{\$the\-Modifiers}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [protected]}}}\label{class_c_ontology_term_a58ac83da7057515fec5df925d0d1c5eb}
+\subparagraph*{Return the object's global unique identifier}
+
+We override the inherited interface to handle the namespace global identifier\-: in this class the namespace is provided as a reference to another term object, this method needs to get the namespace's global identifier in order to generate the current term's global identifier.
+
+This method is called by the \hyperlink{class_c_persistent_object_a02d8bd3a63da4aca56af561cf18d32a4}{C\-Persistent\-Object\-::\-\_\-\-Precommit\-Identify()} method, at that point the namespace will have been loaded in the data member cache, so its global identifier will be available there.
+
+
+\begin{DoxyParams}[1]{Parameters}
+\hyperlink{class_c_connection}{C\-Connection} & {\em \$the\-Connection} & Server, database or container. \\
+\hline
+bitfield & {\em \$the\-Modifiers} & Commit options.\\
+\hline
+\end{DoxyParams}
+protected \begin{DoxyReturn}{Returns}
+string$|$\-N\-U\-L\-L The object's global unique identifier.
+\end{DoxyReturn}
+
+\begin{DoxyExceptions}{Exceptions}
+{\em Exception} & \hyperlink{class_c_persistent_document_a4dbe287aa3b46bdc0a1157e001078589}{Resolve\-Container()} \\
+\hline
+\end{DoxyExceptions}
+\hypertarget{class_c_ontology_term_ae5a6a16b10c3b6f5cbc8e4a515adea96}{\index{C\-Ontology\-Term@{C\-Ontology\-Term}!\-\_\-\-Postcommit\-Cleanup@{\-\_\-\-Postcommit\-Cleanup}}
+\index{\-\_\-\-Postcommit\-Cleanup@{\-\_\-\-Postcommit\-Cleanup}!COntologyTerm@{C\-Ontology\-Term}}
+\subsubsection[{\-\_\-\-Postcommit\-Cleanup}]{\setlength{\rightskip}{0pt plus 5cm}C\-Ontology\-Term\-::\-\_\-\-Postcommit\-Cleanup (
+\begin{DoxyParamCaption}
+\item[{\&}]{\$the\-Connection, }
+\item[{\&}]{\$the\-Modifiers}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [protected]}}}\label{class_c_ontology_term_ae5a6a16b10c3b6f5cbc8e4a515adea96}
+\subparagraph*{Cleanup the object after committing}
+
+In this class we reset the namespace object cache, we set the data member to {\ttfamily N\-U\-L\-L}, so that next time one wants to retrieve the namespace object, it will have to be refreshed and its references actualised.
+
+
+\begin{DoxyParams}[1]{Parameters}
+reference & {\em \&\$the\-Connection} & Server, database or container. \\
+\hline
+reference & {\em \&\$the\-Modifiers} & Commit options.\\
+\hline
+\end{DoxyParams}
+protected \hypertarget{class_c_ontology_term_af14ed2c9929119cf4d4de6eda5026248}{\index{C\-Ontology\-Term@{C\-Ontology\-Term}!\-\_\-\-Postcommit\-Related@{\-\_\-\-Postcommit\-Related}}
+\index{\-\_\-\-Postcommit\-Related@{\-\_\-\-Postcommit\-Related}!COntologyTerm@{C\-Ontology\-Term}}
+\subsubsection[{\-\_\-\-Postcommit\-Related}]{\setlength{\rightskip}{0pt plus 5cm}C\-Ontology\-Term\-::\-\_\-\-Postcommit\-Related (
+\begin{DoxyParamCaption}
+\item[{\&}]{\$the\-Connection, }
+\item[{\&}]{\$the\-Modifiers}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [protected]}}}\label{class_c_ontology_term_af14ed2c9929119cf4d4de6eda5026248}
+\subparagraph*{Update related objects after committing}
+
+In this class we handle referenced namespace terms, \hyperlink{}{k\-T\-A\-G\-\_\-\-N\-A\-M\-E\-S\-P\-A\-C\-E}\-: depending on the value of the \hyperlink{}{k\-S\-W\-I\-T\-C\-H\-\_\-k\-T\-A\-G\-\_\-\-N\-A\-M\-E\-S\-P\-A\-C\-E\-\_\-\-R\-E\-F\-S} flag we do the following\-:
+
+
+\begin{DoxyItemize}
+\item {\ttfamily 0x2}\-: {\itshape Keep count of namespace references}. This means that the \hyperlink{}{k\-T\-A\-G\-\_\-\-N\-A\-M\-E\-S\-P\-A\-C\-E\-\_\-\-R\-E\-F\-S} attribute of the term referenced by the \hyperlink{}{k\-T\-A\-G\-\_\-\-N\-A\-M\-E\-S\-P\-A\-C\-E} attribute will be incremented when the object is inserted, or decremented when deleted. 
+\item {\ttfamily 0x3}\-: {\itshape Keep list of namespace references}. This means that a reference to the current object will be added to the \hyperlink{}{k\-T\-A\-G\-\_\-\-N\-A\-M\-E\-S\-P\-A\-C\-E\-\_\-\-R\-E\-F\-S} attribute of the term referenced by \hyperlink{}{k\-T\-A\-G\-\_\-\-N\-A\-M\-E\-S\-P\-A\-C\-E} attribute of the current object when the latter is inserted, and removed when the object is deleted. 
+\item {\ttfamily 0x0} {\itshape or other}\-: {\itshape Don't handle this information}. This means that the \hyperlink{}{k\-T\-A\-G\-\_\-\-N\-A\-M\-E\-S\-P\-A\-C\-E\-\_\-\-R\-E\-F\-S} attribute will not be handled. 
+\end{DoxyItemize}
+
+
+\begin{DoxyParams}[1]{Parameters}
+reference & {\em \&\$the\-Connection} & Server, database or container. \\
+\hline
+reference & {\em \&\$the\-Modifiers} & Commit options.\\
+\hline
+\end{DoxyParams}
+protected
+
+
+\begin{DoxyExceptions}{Exceptions}
+{\em Exception} & \hyperlink{class_c_status_document_ab7d96fd4588cf7d5432fc65a1d1fb076}{\-\_\-\-Is\-Committed()}  \hyperlink{class_c_persistent_object_ae5f9319ab169499181ae8db82b2fc0e7}{\-\_\-\-Reference\-In\-Object()}\\
+\hline
+\end{DoxyExceptions}
+\begin{DoxySeeAlso}{See Also}
+k\-T\-A\-G\-\_\-\-N\-A\-M\-E\-S\-P\-A\-C\-E 
+
+k\-F\-L\-A\-G\-\_\-\-P\-E\-R\-S\-I\-S\-T\-\_\-\-I\-N\-S\-E\-R\-T k\-F\-L\-A\-G\-\_\-\-P\-E\-R\-S\-I\-S\-T\-\_\-\-R\-E\-P\-L\-A\-C\-E k\-F\-L\-A\-G\-\_\-\-P\-E\-R\-S\-I\-S\-T\-\_\-\-D\-E\-L\-E\-T\-E 
+\end{DoxySeeAlso}
+\hypertarget{class_c_ontology_term_a2e76b241a1855f7c50d070831f3c742e}{\index{C\-Ontology\-Term@{C\-Ontology\-Term}!\-\_\-\-Precommit\-Related@{\-\_\-\-Precommit\-Related}}
+\index{\-\_\-\-Precommit\-Related@{\-\_\-\-Precommit\-Related}!COntologyTerm@{C\-Ontology\-Term}}
+\subsubsection[{\-\_\-\-Precommit\-Related}]{\setlength{\rightskip}{0pt plus 5cm}C\-Ontology\-Term\-::\-\_\-\-Precommit\-Related (
+\begin{DoxyParamCaption}
+\item[{\&}]{\$the\-Connection, }
+\item[{\&}]{\$the\-Modifiers}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [protected]}}}\label{class_c_ontology_term_a2e76b241a1855f7c50d070831f3c742e}
+\subparagraph*{Handle embedded or related objects before committing}
+
+In this class we commit the eventual namespace term provided as an object or load the namespace if provided as an identifier.
+
+
+\begin{DoxyParams}[1]{Parameters}
+reference & {\em \&\$the\-Connection} & Server, database or container. \\
+\hline
+reference & {\em \&\$the\-Modifiers} & Commit options.\\
+\hline
+\end{DoxyParams}
+protected \begin{DoxyReturn}{Returns}
+mixed 
+\end{DoxyReturn}
+\hypertarget{class_c_ontology_term_adce9339df9c3100d72743b4002f3a547}{\index{C\-Ontology\-Term@{C\-Ontology\-Term}!\-\_\-\-Preset@{\-\_\-\-Preset}}
+\index{\-\_\-\-Preset@{\-\_\-\-Preset}!COntologyTerm@{C\-Ontology\-Term}}
+\subsubsection[{\-\_\-\-Preset}]{\setlength{\rightskip}{0pt plus 5cm}C\-Ontology\-Term\-::\-\_\-\-Preset (
+\begin{DoxyParamCaption}
+\item[{\&}]{\$the\-Offset, }
+\item[{\&}]{\$the\-Value}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [protected]}}}\label{class_c_ontology_term_adce9339df9c3100d72743b4002f3a547}
+\subparagraph*{Handle offset before setting it}
+
+In this class we prevent the modification of the \hyperlink{}{k\-T\-A\-G\-\_\-\-N\-A\-M\-E\-S\-P\-A\-C\-E\-\_\-\-R\-E\-F\-S}, \hyperlink{}{k\-T\-A\-G\-\_\-\-N\-O\-D\-E\-S}, \hyperlink{}{k\-T\-A\-G\-\_\-\-F\-E\-A\-T\-U\-R\-E\-S}, \hyperlink{}{k\-T\-A\-G\-\_\-\-M\-E\-T\-H\-O\-D\-S} and \hyperlink{}{k\-T\-A\-G\-\_\-\-S\-C\-A\-L\-E\-S} offsets in all cases, since they must be programmatically managed directly by the container and not through the object.
+
+We also handle the namespace offset, if provided as an object we leave it unchanged only if not yet committed, if not, we convert it to its native identifier. We also ensure the provided namespace object to be an instance of this class by asserting \hyperlink{class_c_document}{C\-Document} descendants to be of this class; any other type is assumed to be the namespace identifier.
+
+In this class the local identifier, \hyperlink{}{k\-T\-A\-G\-\_\-\-L\-I\-D}, is a string, in this method we cast the parameter to that type.
+
+
+\begin{DoxyParams}[1]{Parameters}
+reference & {\em \&\$the\-Offset} & Offset. \\
+\hline
+reference & {\em \&\$the\-Value} & Value to set at offset.\\
+\hline
+\end{DoxyParams}
+protected
+
+
+\begin{DoxyExceptions}{Exceptions}
+{\em Exception} & \hyperlink{class_c_persistent_object_aaddbaf409e7cab172ce6a92631d9ae45}{\-\_\-\-Assert\-Class()}\\
+\hline
+\end{DoxyExceptions}
+\begin{DoxySeeAlso}{See Also}
+k\-T\-A\-G\-\_\-\-N\-A\-M\-E\-S\-P\-A\-C\-E k\-T\-A\-G\-\_\-\-L\-I\-D k\-T\-A\-G\-\_\-\-N\-I\-D 
+
+k\-T\-A\-G\-\_\-\-N\-A\-M\-E\-S\-P\-A\-C\-E\-\_\-\-R\-E\-F\-S k\-T\-A\-G\-\_\-\-N\-O\-D\-E\-S 
+
+k\-T\-A\-G\-\_\-\-F\-E\-A\-T\-U\-R\-E\-S k\-T\-A\-G\-\_\-\-M\-E\-T\-H\-O\-D\-S k\-T\-A\-G\-\_\-\-S\-C\-A\-L\-E\-S 
+\end{DoxySeeAlso}
+\hypertarget{class_c_ontology_term_af1217a9514c3a9a2976729863636ff92}{\index{C\-Ontology\-Term@{C\-Ontology\-Term}!\-\_\-\-Preunset@{\-\_\-\-Preunset}}
+\index{\-\_\-\-Preunset@{\-\_\-\-Preunset}!COntologyTerm@{C\-Ontology\-Term}}
+\subsubsection[{\-\_\-\-Preunset}]{\setlength{\rightskip}{0pt plus 5cm}C\-Ontology\-Term\-::\-\_\-\-Preunset (
+\begin{DoxyParamCaption}
+\item[{\&}]{\$the\-Offset}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [protected]}}}\label{class_c_ontology_term_af1217a9514c3a9a2976729863636ff92}
+\subparagraph*{Handle offset before unsetting it}
+
+In this class we prevent the modification of the \hyperlink{}{k\-T\-A\-G\-\_\-\-N\-A\-M\-E\-S\-P\-A\-C\-E\-\_\-\-R\-E\-F\-S}, \hyperlink{}{k\-T\-A\-G\-\_\-\-N\-O\-D\-E\-S}, \hyperlink{}{k\-T\-A\-G\-\_\-\-F\-E\-A\-T\-U\-R\-E\-S}, \hyperlink{}{k\-T\-A\-G\-\_\-\-M\-E\-T\-H\-O\-D\-S} and \hyperlink{}{k\-T\-A\-G\-\_\-\-S\-C\-A\-L\-E\-S} offsets in all cases, since they must be programmatically managed directly by the container and not through the object.
+
+The parent class will take care of locking namespace and local identifier if the object is committed.
+
+
+\begin{DoxyParams}[1]{Parameters}
+reference & {\em \&\$the\-Offset} & Offset.\\
+\hline
+\end{DoxyParams}
+protected
+
+
+\begin{DoxyExceptions}{Exceptions}
+{\em Exception} & \\
+\hline
+\end{DoxyExceptions}
+\begin{DoxySeeAlso}{See Also}
+k\-T\-A\-G\-\_\-\-N\-A\-M\-E\-S\-P\-A\-C\-E k\-T\-A\-G\-\_\-\-L\-I\-D k\-T\-A\-G\-\_\-\-N\-I\-D 
+
+k\-T\-A\-G\-\_\-\-N\-A\-M\-E\-S\-P\-A\-C\-E\-\_\-\-R\-E\-F\-S k\-T\-A\-G\-\_\-\-N\-O\-D\-E\-S 
+
+k\-T\-A\-G\-\_\-\-F\-E\-A\-T\-U\-R\-E\-S k\-T\-A\-G\-\_\-\-M\-E\-T\-H\-O\-D\-S k\-T\-A\-G\-\_\-\-S\-C\-A\-L\-E\-S 
+\end{DoxySeeAlso}
+\hypertarget{class_c_ontology_term_a41ecd119648036a63b083f1dad064554}{\index{C\-Ontology\-Term@{C\-Ontology\-Term}!Default\-Container\-Name@{Default\-Container\-Name}}
+\index{Default\-Container\-Name@{Default\-Container\-Name}!COntologyTerm@{C\-Ontology\-Term}}
+\subsubsection[{Default\-Container\-Name}]{\setlength{\rightskip}{0pt plus 5cm}static C\-Ontology\-Term\-::\-Default\-Container\-Name (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}}}\label{class_c_ontology_term_a41ecd119648036a63b083f1dad064554}
+\subparagraph*{Return the default terms container name}
+
+This class uses the \hyperlink{}{k\-C\-O\-N\-T\-A\-I\-N\-E\-R\-\_\-\-T\-E\-R\-M\-\_\-\-N\-A\-M\-E} default name.
+
+\begin{DoxyReturn}{Returns}
+string The default container name.
+\end{DoxyReturn}
+
+\begin{DoxyExceptions}{Exceptions}
+{\em Exception} & \\
+\hline
+\end{DoxyExceptions}
+\begin{DoxySeeAlso}{See Also}
+k\-C\-O\-N\-T\-A\-I\-N\-E\-R\-\_\-\-T\-E\-R\-M\-\_\-\-N\-A\-M\-E 
+\end{DoxySeeAlso}
+\hypertarget{class_c_ontology_term_ab4c98ee0a638974d6c422fcb9df31471}{\index{C\-Ontology\-Term@{C\-Ontology\-Term}!Handle\-Label@{Handle\-Label}}
+\index{Handle\-Label@{Handle\-Label}!COntologyTerm@{C\-Ontology\-Term}}
+\subsubsection[{Handle\-Label}]{\setlength{\rightskip}{0pt plus 5cm}static C\-Ontology\-Term\-::\-Handle\-Label (
+\begin{DoxyParamCaption}
+\item[{{\bf C\-Connection}}]{\$the\-Connection, }
+\item[{}]{\$the\-Identifier, }
+\item[{}]{\$the\-Language = {\ttfamily NULL}, }
+\item[{}]{\$the\-Value = {\ttfamily NULL}}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}}}\label{class_c_ontology_term_ab4c98ee0a638974d6c422fcb9df31471}
+\subparagraph*{Modify label}
+
+This method can be used to add or remove labels from a term, the method will not operate on the object directly, but rather let the container make the modification directly on the database.
+
+The method allows you to add or delete a specific label, it accepts the following parameters\-:
+
+
+\begin{DoxyItemize}
+\item {\ttfamily \$the\-Identifier}\-: This parameter represents the term reference, it can be provided as a term object, as the term native identifier or as the term global identifier. If the term cannot be found, the method will raise an exception. 
+\item {\ttfamily \$the\-Language}\-: Language code, {\ttfamily N\-U\-L\-L} refers to the element lacking the language code. 
+\item {\ttfamily \$the\-Value}\-: The label string or the operation, depending on its value\-: 
+\begin{DoxyItemize}
+\item {\ttfamily N\-U\-L\-L}\-: Return the string corresponding to the provided language. 
+\item {\ttfamily F\-A\-L\-S\-E}\-: Delete the element corresponding to the provided language. 
+\item {\itshape other}\-: Any other value represents the label string that will be set or replace the entry for the provided language. 
+\end{DoxyItemize}
+\end{DoxyItemize}
+
+
+\begin{DoxyParams}[1]{Parameters}
+\hyperlink{class_c_connection}{C\-Connection} & {\em \$the\-Connection} & Server, database or container. \\
+\hline
+mixed & {\em \$the\-Identifier} & Term reference. \\
+\hline
+mixed & {\em \$the\-Language} & Language code. \\
+\hline
+mixed & {\em \$the\-Value} & Label or operation.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+\hyperlink{class_c_container}{C\-Container} The label. 
+\end{DoxyReturn}
+\hypertarget{class_c_ontology_term_a31fa356129d058361b7cdd88924b6c7d}{\index{C\-Ontology\-Term@{C\-Ontology\-Term}!Load\-Namespace@{Load\-Namespace}}
+\index{Load\-Namespace@{Load\-Namespace}!COntologyTerm@{C\-Ontology\-Term}}
+\subsubsection[{Load\-Namespace}]{\setlength{\rightskip}{0pt plus 5cm}C\-Ontology\-Term\-::\-Load\-Namespace (
+\begin{DoxyParamCaption}
+\item[{{\bf C\-Connection}}]{\$the\-Connection, }
+\item[{}]{\$do\-Reload = {\ttfamily FALSE}}
+\end{DoxyParamCaption}
+)}}\label{class_c_ontology_term_a31fa356129d058361b7cdd88924b6c7d}
+\subparagraph*{Load namespace object}
+
+This method will return the current namespace term object\-: if the namespace is not set, the method will return {\ttfamily N\-U\-L\-L}; if the namespace cannot be found, the method will raise an exception.
+
+The object will also be loaded in a data member that can function as a cache.
+
+The method features two parameters\-: the first refers to the container in which the namespace is stored, the second is a boolean flag that determines whether the object is to be read, or if the cached copy can be used.
+
+
+\begin{DoxyParams}[1]{Parameters}
+\hyperlink{class_c_connection}{C\-Connection} & {\em \$the\-Connection} & Server, database or container. \\
+\hline
+boolean & {\em \$do\-Reload} & Reload if {\ttfamily T\-R\-U\-E}.\\
+\hline
+\end{DoxyParams}
+public \begin{DoxyReturn}{Returns}
+\hyperlink{class_c_ontology_term}{C\-Ontology\-Term} Namespace object or {\ttfamily N\-U\-L\-L}.
+\end{DoxyReturn}
+\begin{DoxySeeAlso}{See Also}
+k\-T\-A\-G\-\_\-\-N\-A\-M\-E\-S\-P\-A\-C\-E 
+\end{DoxySeeAlso}
+\hypertarget{class_c_ontology_term_a36c2ab4ffdde63d0ca51734437faaa35}{\index{C\-Ontology\-Term@{C\-Ontology\-Term}!Load\-Term@{Load\-Term}}
+\index{Load\-Term@{Load\-Term}!COntologyTerm@{C\-Ontology\-Term}}
+\subsubsection[{Load\-Term}]{\setlength{\rightskip}{0pt plus 5cm}C\-Ontology\-Term\-::\-Load\-Term (
+\begin{DoxyParamCaption}
+\item[{{\bf C\-Connection}}]{\$the\-Connection, }
+\item[{}]{\$do\-Reload = {\ttfamily FALSE}}
+\end{DoxyParamCaption}
+)}}\label{class_c_ontology_term_a36c2ab4ffdde63d0ca51734437faaa35}
+\subparagraph*{Load term object}
+
+This method will return the current term object\-: if the term is not set, the method will return {\ttfamily N\-U\-L\-L}; if the term cannot be found, the method will raise an exception.
+
+The object will also be loaded in a data member that can function as a cache.
+
+The method features two parameters\-: the first refers to the container in which the term is stored, the second is a boolean flag that determines whether the object is to be read, or if the cached copy can be used.
+
+
+\begin{DoxyParams}[1]{Parameters}
+\hyperlink{class_c_connection}{C\-Connection} & {\em \$the\-Connection} & Server, database or container. \\
+\hline
+boolean & {\em \$do\-Reload} & Reload if {\ttfamily T\-R\-U\-E}.\\
+\hline
+\end{DoxyParams}
+public \begin{DoxyReturn}{Returns}
+\hyperlink{class_c_ontology_term}{C\-Ontology\-Term} Term object or {\ttfamily N\-U\-L\-L}.
+\end{DoxyReturn}
+
+\begin{DoxyExceptions}{Exceptions}
+{\em Exception} & \hyperlink{class_c_persistent_object_a5a5402ef394104148cfc580a6799ac2b}{New\-Object()}\\
+\hline
+\end{DoxyExceptions}
+\begin{DoxySeeAlso}{See Also}
+k\-T\-A\-G\-\_\-\-T\-E\-R\-M 
+\end{DoxySeeAlso}
+\hypertarget{class_c_ontology_term_ac1257616ac8626822f410bd858ce767c}{\index{C\-Ontology\-Term@{C\-Ontology\-Term}!Replace@{Replace}}
+\index{Replace@{Replace}!COntologyTerm@{C\-Ontology\-Term}}
+\subsubsection[{Replace}]{\setlength{\rightskip}{0pt plus 5cm}C\-Ontology\-Term\-::\-Replace (
+\begin{DoxyParamCaption}
+\item[{{\bf C\-Connection}}]{\$the\-Connection}
+\end{DoxyParamCaption}
+)}}\label{class_c_ontology_term_ac1257616ac8626822f410bd858ce767c}
+\subparagraph*{Replace the object into a container}
+
+We overload this method to raise an exception\-: objects of this class can only be inserted, after this one can only modify their attributes using the modification interface provided by container objects.
+
+In this class we prevent replacing a committed object and allow inserting a non committed object.
+
+
+\begin{DoxyParams}[1]{Parameters}
+\hyperlink{class_c_connection}{C\-Connection} & {\em \$the\-Connection} & Server, database or container.\\
+\hline
+\end{DoxyParams}
+public \begin{DoxyReturn}{Returns}
+mixed The object's native identifier. 
+\end{DoxyReturn}
+\hypertarget{class_c_ontology_term_aaea30804fc8ceae42f91401f69ad6b88}{\index{C\-Ontology\-Term@{C\-Ontology\-Term}!Resolve@{Resolve}}
+\index{Resolve@{Resolve}!COntologyTerm@{C\-Ontology\-Term}}
+\subsubsection[{Resolve}]{\setlength{\rightskip}{0pt plus 5cm}static C\-Ontology\-Term\-::\-Resolve (
+\begin{DoxyParamCaption}
+\item[{{\bf C\-Connection}}]{\$the\-Connection, }
+\item[{}]{\$the\-Identifier, }
+\item[{}]{\$the\-Namespace = {\ttfamily NULL}, }
+\item[{}]{\$do\-Throw = {\ttfamily FALSE}}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}}}\label{class_c_ontology_term_aaea30804fc8ceae42f91401f69ad6b88}
+\subparagraph*{Resolve a term}
+
+This method can be used to locate a term given the attributes that comprise its identifier.
+
+The method accepts the following parameters\-:
+
+
+\begin{DoxyItemize}
+\item {\ttfamily \$the\-Connection}\-: This parameter represents the connection from which the terms container must be resolved. If this parameter cannot be correctly determined, the method will raise an exception. 
+\item {\ttfamily \$the\-Identifier}\-: If the namespace parameter is provided, this parameter should represent the local identifier; if the namespace parameter was omitted, this parameter should represent the native or global identifier. 
+\begin{DoxyItemize}
+\item {\itshape Namespace provided\-:} If the namespace was provided, this parameter is interpreted as the term's local identifier and will be combined with the resolved namespace global identifier to locate the desired term. 
+\item {\itshape Namespace not provided\-:} If the namespace was not provided, the method will perform the following queries in order\-: 
+\begin{DoxyItemize}
+\item {\itshape Native identifier\-:} The method will use the parameter as the native identifier. 
+\item {\itshape Global identifier\-:} The method will use the term's \hyperlink{class_c_ontology_term_a34f4c98f9a5b40ed2294bf4c8f6e7d0c}{C\-Ontology\-Term\-::\-\_\-id()} method to convert the global identifier into a native identifier. 
+\end{DoxyItemize}If the parameter was provided as an instance of \hyperlink{class_c_ontology_term}{C\-Ontology\-Term}, this method will use its global identifier for the search. 
+\end{DoxyItemize}
+\item {\ttfamily \$the\-Namespace}\-: The term namespace\-: 
+\begin{DoxyItemize}
+\item {\ttfamily N\-U\-L\-L}\-: This indicates that either the term has no namespace, which means that the first parameter must either be the native or global identifier, or that the first parameter is all that is needed to locate the term. 
+\item {\ttfamily \hyperlink{class_c_ontology_term}{C\-Ontology\-Term}}\-: This type is expected to be the namespace term object\-: 
+\begin{DoxyItemize}
+\item {\itshape Object is committed\-:} The method will use the namespace's global identifier and concatenate it to the first parameter. 
+\item {\itshape Object is not committed\-:} The method will use the namespace's global identifier; if that is missing, the method will either raise an exception, or return {\ttfamily N\-U\-L\-L}, depending on the third parameter. 
+\end{DoxyItemize}
+\item {\itshape other}\-: Any other type will be interpreted as the namespace's native or global identifier and will be resolved using this same method; the third parameter also applies to this quest. 
+\end{DoxyItemize}
+\item {\ttfamily \$do\-Throw}\-: If {\ttfamily T\-R\-U\-E}, any failure to resolve the term or its namespace, will raise an exception. 
+\end{DoxyItemize}
+
+The method will return the found term, {\ttfamily N\-U\-L\-L} if not found, or raise an exception if the last parameter is {\ttfamily T\-R\-U\-E}.
+
+{\bfseries Note\-: do not provide an array containing the object in the identifier parameter, or you will get unexpected results.}
+
+
+\begin{DoxyParams}[1]{Parameters}
+\hyperlink{class_c_connection}{C\-Connection} & {\em \$the\-Connection} & Server, database or container. \\
+\hline
+string & {\em \$the\-Identifier} & Term local identifier. \\
+\hline
+mixed & {\em \$the\-Namespace} & Namespace term reference. \\
+\hline
+boolean & {\em \$do\-Throw} & If {\ttfamily T\-R\-U\-E} raise an exception.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+\hyperlink{class_c_ontology_term}{C\-Ontology\-Term} Found term or {\ttfamily N\-U\-L\-L}.
+\end{DoxyReturn}
+
+\begin{DoxyExceptions}{Exceptions}
+{\em Exception} & \\
+\hline
+\end{DoxyExceptions}
+\hypertarget{class_c_ontology_term_ac39334977998a1e11c0e277eac4cef5c}{\index{C\-Ontology\-Term@{C\-Ontology\-Term}!Update@{Update}}
+\index{Update@{Update}!COntologyTerm@{C\-Ontology\-Term}}
+\subsubsection[{Update}]{\setlength{\rightskip}{0pt plus 5cm}C\-Ontology\-Term\-::\-Update (
+\begin{DoxyParamCaption}
+\item[{{\bf C\-Connection}}]{\$the\-Connection}
+\end{DoxyParamCaption}
+)}}\label{class_c_ontology_term_ac39334977998a1e11c0e277eac4cef5c}
+\subparagraph*{Update the object in a container}
+
+We overload this method to raise an exception\-: objects of this class can only be inserted, after this one can only modify their attributes using the modification interface provided by container objects.
+
+
+\begin{DoxyParams}[1]{Parameters}
+\hyperlink{class_c_connection}{C\-Connection} & {\em \$the\-Connection} & Server, database or container.\\
+\hline
+\end{DoxyParams}
+public
+
+
+\begin{DoxyExceptions}{Exceptions}
+{\em Exception} & \\
+\hline
+\end{DoxyExceptions}
+
+
+The documentation for this class was generated from the following file\-:\begin{DoxyCompactItemize}
+\item 
+/\-Library/\-Web\-Server/\-Library/\-P\-H\-P\-Wrapper/classes/C\-Ontology\-Term.\-php\end{DoxyCompactItemize}

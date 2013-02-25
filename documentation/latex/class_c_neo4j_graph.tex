@@ -1,0 +1,355 @@
+\hypertarget{class_c_neo4j_graph}{\section{C\-Neo4j\-Graph Class Reference}
+\label{class_c_neo4j_graph}\index{C\-Neo4j\-Graph@{C\-Neo4j\-Graph}}
+}
+Inheritance diagram for C\-Neo4j\-Graph\-:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=6.000000cm]{class_c_neo4j_graph}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{class_c_neo4j_graph_ac73874c959201b5204020ab9f2df9ed8}{\-\_\-\-\_\-construct} (\$the\-Connection=N\-U\-L\-L, \$the\-Options=N\-U\-L\-L)
+\item 
+\hyperlink{class_c_neo4j_graph_a914022964c276ca0107345631e109382}{\-\_\-\-\_\-destruct} ()
+\item 
+\hyperlink{class_c_neo4j_graph_a6891f707fb08e36662d3d0c613f0da93}{\-\_\-\-\_\-to\-String} ()
+\item 
+\hyperlink{class_c_neo4j_graph_a651c716b812ce43b2590a5a7aa1f3efb}{Connection} (\$the\-Value=N\-U\-L\-L, \$get\-Old=F\-A\-L\-S\-E)
+\item 
+\hyperlink{class_c_neo4j_graph_a7da11906570d368e071fc7f858a751ca}{New\-Node} (\$the\-Properties=N\-U\-L\-L)
+\item 
+\hyperlink{class_c_neo4j_graph_a549a7280a0e5c181c21a68ffd49bd020}{Set\-Node} (\$the\-Node, \$the\-Properties=N\-U\-L\-L)
+\item 
+\hyperlink{class_c_neo4j_graph_ac42e2b030c642d9d04f3b5f0113fe9a2}{Get\-Node} (\$the\-Identifier, \$do\-Throw=F\-A\-L\-S\-E)
+\item 
+\hyperlink{class_c_neo4j_graph_a5833f27249ff962fb93ce840117172b0}{Del\-Node} (\$the\-Identifier)
+\item 
+\hyperlink{class_c_neo4j_graph_a9b9b2e18e4987c394406f5a086058757}{New\-Edge} (\$the\-Subject, \$the\-Predicate, \$the\-Object, \$the\-Properties=N\-U\-L\-L)
+\item 
+\hyperlink{class_c_neo4j_graph_a8688944572100526305443cd23f78a63}{Set\-Edge} (\$the\-Edge)
+\item 
+\hyperlink{class_c_neo4j_graph_a0352e11f4a5e856a09c19403c7a2e87b}{Get\-Edge} (\$the\-Identifier)
+\item 
+\hyperlink{class_c_neo4j_graph_a117ae458caca68a726f31ec9a5492ead}{Del\-Edge} (\$the\-Identifier)
+\item 
+\hyperlink{class_c_neo4j_graph_a2f999a5fff32d9b2317b4cf212abebff}{Get\-Node\-Properties} (\$the\-Node)
+\item 
+\hyperlink{class_c_neo4j_graph_a853373c66550ba67c2d1914f0aefbd33}{Get\-Node\-Edges} (\$the\-Node, \$the\-Predicate=N\-U\-L\-L, \$the\-Sense=N\-U\-L\-L)
+\end{DoxyCompactItemize}
+\subsection*{Additional Inherited Members}
+
+
+\subsection{Constructor \& Destructor Documentation}
+\hypertarget{class_c_neo4j_graph_ac73874c959201b5204020ab9f2df9ed8}{\index{C\-Neo4j\-Graph@{C\-Neo4j\-Graph}!\-\_\-\-\_\-construct@{\-\_\-\-\_\-construct}}
+\index{\-\_\-\-\_\-construct@{\-\_\-\-\_\-construct}!CNeo4jGraph@{C\-Neo4j\-Graph}}
+\subsubsection[{\-\_\-\-\_\-construct}]{\setlength{\rightskip}{0pt plus 5cm}C\-Neo4j\-Graph\-::\-\_\-\-\_\-construct (
+\begin{DoxyParamCaption}
+\item[{}]{\$the\-Connection = {\ttfamily NULL}, }
+\item[{}]{\$the\-Options = {\ttfamily NULL}}
+\end{DoxyParamCaption}
+)}}\label{class_c_neo4j_graph_ac73874c959201b5204020ab9f2df9ed8}
+\subparagraph*{Instantiate class}
+
+You instantiate the class by providing a native connection, or the host and port. In the latter case the first parameter represents the host and the second the port.
+
+If you do not provide any parameter the default \hyperlink{}{k\-G\-R\-A\-P\-H\-\_\-\-D\-E\-F\-\_\-\-H\-O\-S\-T} host and \hyperlink{}{k\-G\-R\-A\-P\-H\-\_\-\-D\-E\-F\-\_\-\-P\-O\-R\-T} port.
+
+
+\begin{DoxyParams}[1]{Parameters}
+mixed & {\em \$the\-Connection} & Native connection. \\
+\hline
+mixed & {\em \$the\-Options} & Connection options.\\
+\hline
+\end{DoxyParams}
+public
+
+\hyperlink{class_c_neo4j_graph_a651c716b812ce43b2590a5a7aa1f3efb}{Connection()} \hypertarget{class_c_neo4j_graph_a914022964c276ca0107345631e109382}{\index{C\-Neo4j\-Graph@{C\-Neo4j\-Graph}!\-\_\-\-\_\-destruct@{\-\_\-\-\_\-destruct}}
+\index{\-\_\-\-\_\-destruct@{\-\_\-\-\_\-destruct}!CNeo4jGraph@{C\-Neo4j\-Graph}}
+\subsubsection[{\-\_\-\-\_\-destruct}]{\setlength{\rightskip}{0pt plus 5cm}C\-Neo4j\-Graph\-::\-\_\-\-\_\-destruct (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{class_c_neo4j_graph_a914022964c276ca0107345631e109382}
+\subparagraph*{Destructor}
+
+We implement the destructor to get rid of the graph\-: the Neo4j P\-H\-P interface, for instance, has closures that cannot be serialised, so we need to reset the graph \hyperlink{class_c_neo4j_graph_a651c716b812ce43b2590a5a7aa1f3efb}{Connection()} before destroying the object.
+
+public 
+
+\subsection{Member Function Documentation}
+\hypertarget{class_c_neo4j_graph_a6891f707fb08e36662d3d0c613f0da93}{\index{C\-Neo4j\-Graph@{C\-Neo4j\-Graph}!\-\_\-\-\_\-to\-String@{\-\_\-\-\_\-to\-String}}
+\index{\-\_\-\-\_\-to\-String@{\-\_\-\-\_\-to\-String}!CNeo4jGraph@{C\-Neo4j\-Graph}}
+\subsubsection[{\-\_\-\-\_\-to\-String}]{\setlength{\rightskip}{0pt plus 5cm}C\-Neo4j\-Graph\-::\-\_\-\-\_\-to\-String (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{class_c_neo4j_graph_a6891f707fb08e36662d3d0c613f0da93}
+\subparagraph*{Return connection name}
+
+This method should return the current connection's name.
+
+In this class we return the host and port names.
+
+public \begin{DoxyReturn}{Returns}
+string The connection name. 
+\end{DoxyReturn}
+\hypertarget{class_c_neo4j_graph_a651c716b812ce43b2590a5a7aa1f3efb}{\index{C\-Neo4j\-Graph@{C\-Neo4j\-Graph}!Connection@{Connection}}
+\index{Connection@{Connection}!CNeo4jGraph@{C\-Neo4j\-Graph}}
+\subsubsection[{Connection}]{\setlength{\rightskip}{0pt plus 5cm}C\-Neo4j\-Graph\-::\-Connection (
+\begin{DoxyParamCaption}
+\item[{}]{\$the\-Value = {\ttfamily NULL}, }
+\item[{}]{\$get\-Old = {\ttfamily FALSE}}
+\end{DoxyParamCaption}
+)}}\label{class_c_neo4j_graph_a651c716b812ce43b2590a5a7aa1f3efb}
+\subparagraph*{Manage native connection}
+
+We overload this method to ensure that the provided container is a Neo4j client.
+
+
+\begin{DoxyParams}[1]{Parameters}
+mixed & {\em \$the\-Value} & Persistent container or operation. \\
+\hline
+boolean & {\em \$get\-Old} & {\ttfamily T\-R\-U\-E} get old value.\\
+\hline
+\end{DoxyParams}
+public \begin{DoxyReturn}{Returns}
+mixed {\itshape New} or {\itshape old} native container.
+\end{DoxyReturn}
+
+\begin{DoxyExceptions}{Exceptions}
+{\em Exception} & \\
+\hline
+\end{DoxyExceptions}
+\hypertarget{class_c_neo4j_graph_a117ae458caca68a726f31ec9a5492ead}{\index{C\-Neo4j\-Graph@{C\-Neo4j\-Graph}!Del\-Edge@{Del\-Edge}}
+\index{Del\-Edge@{Del\-Edge}!CNeo4jGraph@{C\-Neo4j\-Graph}}
+\subsubsection[{Del\-Edge}]{\setlength{\rightskip}{0pt plus 5cm}C\-Neo4j\-Graph\-::\-Del\-Edge (
+\begin{DoxyParamCaption}
+\item[{}]{\$the\-Identifier}
+\end{DoxyParamCaption}
+)}}\label{class_c_neo4j_graph_a117ae458caca68a726f31ec9a5492ead}
+\subparagraph*{Delete an existing edge}
+
+This method should delete the provided edge from the current graph.
+
+The method should return {\ttfamily T\-R\-U\-E} if the operation was successful and {\ttfamily N\-U\-L\-L} if the provided identifier is not resolved.
+
+
+\begin{DoxyParams}[1]{Parameters}
+mixed & {\em \$the\-Identifier} & Edge identifier.\\
+\hline
+\end{DoxyParams}
+public \begin{DoxyReturn}{Returns}
+mixed 
+\end{DoxyReturn}
+\hypertarget{class_c_neo4j_graph_a5833f27249ff962fb93ce840117172b0}{\index{C\-Neo4j\-Graph@{C\-Neo4j\-Graph}!Del\-Node@{Del\-Node}}
+\index{Del\-Node@{Del\-Node}!CNeo4jGraph@{C\-Neo4j\-Graph}}
+\subsubsection[{Del\-Node}]{\setlength{\rightskip}{0pt plus 5cm}C\-Neo4j\-Graph\-::\-Del\-Node (
+\begin{DoxyParamCaption}
+\item[{}]{\$the\-Identifier}
+\end{DoxyParamCaption}
+)}}\label{class_c_neo4j_graph_a5833f27249ff962fb93ce840117172b0}
+\subparagraph*{Delete an existing node}
+
+In this class we accept either the actual node, or the node identifier.
+
+
+\begin{DoxyParams}[1]{Parameters}
+mixed & {\em \$the\-Identifier} & Node identifier.\\
+\hline
+\end{DoxyParams}
+public \begin{DoxyReturn}{Returns}
+mixed 
+\end{DoxyReturn}
+\hypertarget{class_c_neo4j_graph_a0352e11f4a5e856a09c19403c7a2e87b}{\index{C\-Neo4j\-Graph@{C\-Neo4j\-Graph}!Get\-Edge@{Get\-Edge}}
+\index{Get\-Edge@{Get\-Edge}!CNeo4jGraph@{C\-Neo4j\-Graph}}
+\subsubsection[{Get\-Edge}]{\setlength{\rightskip}{0pt plus 5cm}C\-Neo4j\-Graph\-::\-Get\-Edge (
+\begin{DoxyParamCaption}
+\item[{}]{\$the\-Identifier}
+\end{DoxyParamCaption}
+)}}\label{class_c_neo4j_graph_a0352e11f4a5e856a09c19403c7a2e87b}
+\subparagraph*{Get an existing edge}
+
+In this class we return the edge corresponding to the provided I\-D, or {\ttfamily N\-U\-L\-L}.
+
+
+\begin{DoxyParams}[1]{Parameters}
+mixed & {\em \$the\-Identifier} & Edge identifier.\\
+\hline
+\end{DoxyParams}
+public \begin{DoxyReturn}{Returns}
+mixed 
+\end{DoxyReturn}
+\hypertarget{class_c_neo4j_graph_ac42e2b030c642d9d04f3b5f0113fe9a2}{\index{C\-Neo4j\-Graph@{C\-Neo4j\-Graph}!Get\-Node@{Get\-Node}}
+\index{Get\-Node@{Get\-Node}!CNeo4jGraph@{C\-Neo4j\-Graph}}
+\subsubsection[{Get\-Node}]{\setlength{\rightskip}{0pt plus 5cm}C\-Neo4j\-Graph\-::\-Get\-Node (
+\begin{DoxyParamCaption}
+\item[{}]{\$the\-Identifier, }
+\item[{}]{\$do\-Throw = {\ttfamily FALSE}}
+\end{DoxyParamCaption}
+)}}\label{class_c_neo4j_graph_ac42e2b030c642d9d04f3b5f0113fe9a2}
+\subparagraph*{Get an existing node}
+
+In this class we return the node corresponding to the provided identifier or {\ttfamily N\-U\-L\-L}.
+
+If the provided identifier is not an integer, we raise an exception.
+
+
+\begin{DoxyParams}[1]{Parameters}
+mixed & {\em \$the\-Identifier} & Node identifier. \\
+\hline
+boolean & {\em \$do\-Throw} & T\-R\-U\-E throw exception if not found.\\
+\hline
+\end{DoxyParams}
+public \begin{DoxyReturn}{Returns}
+mixed 
+\end{DoxyReturn}
+\hypertarget{class_c_neo4j_graph_a853373c66550ba67c2d1914f0aefbd33}{\index{C\-Neo4j\-Graph@{C\-Neo4j\-Graph}!Get\-Node\-Edges@{Get\-Node\-Edges}}
+\index{Get\-Node\-Edges@{Get\-Node\-Edges}!CNeo4jGraph@{C\-Neo4j\-Graph}}
+\subsubsection[{Get\-Node\-Edges}]{\setlength{\rightskip}{0pt plus 5cm}C\-Neo4j\-Graph\-::\-Get\-Node\-Edges (
+\begin{DoxyParamCaption}
+\item[{}]{\$the\-Node, }
+\item[{}]{\$the\-Predicate = {\ttfamily NULL}, }
+\item[{}]{\$the\-Sense = {\ttfamily NULL}}
+\end{DoxyParamCaption}
+)}}\label{class_c_neo4j_graph_a853373c66550ba67c2d1914f0aefbd33}
+\subparagraph*{Get node edges}
+
+In this class we accept the following values\-:
+
+
+\begin{DoxyItemize}
+\item {\ttfamily \$the\-Node}\-: Either the node identifier or the node object. 
+\item {\ttfamily \$the\-Predicate}\-: Either a predicate or a predicates list, the elements can be of any type, provided they can be cast to a string. 
+\item {\ttfamily \$the\-Sense}\-: If this parameter is omitted, we set \hyperlink{}{k\-T\-Y\-P\-E\-\_\-\-R\-E\-L\-A\-T\-I\-O\-N\-\_\-\-A\-L\-L} as default. 
+\end{DoxyItemize}
+
+
+\begin{DoxyParams}[1]{Parameters}
+mixed & {\em \$the\-Node} & Reference node. \\
+\hline
+mixed & {\em \$the\-Predicate} & Edge predicates filter. \\
+\hline
+string & {\em \$the\-Sense} & Relationship sense.\\
+\hline
+\end{DoxyParams}
+public \begin{DoxyReturn}{Returns}
+mixed 
+\end{DoxyReturn}
+\hypertarget{class_c_neo4j_graph_a2f999a5fff32d9b2317b4cf212abebff}{\index{C\-Neo4j\-Graph@{C\-Neo4j\-Graph}!Get\-Node\-Properties@{Get\-Node\-Properties}}
+\index{Get\-Node\-Properties@{Get\-Node\-Properties}!CNeo4jGraph@{C\-Neo4j\-Graph}}
+\subsubsection[{Get\-Node\-Properties}]{\setlength{\rightskip}{0pt plus 5cm}C\-Neo4j\-Graph\-::\-Get\-Node\-Properties (
+\begin{DoxyParamCaption}
+\item[{}]{\$the\-Node}
+\end{DoxyParamCaption}
+)}}\label{class_c_neo4j_graph_a2f999a5fff32d9b2317b4cf212abebff}
+\subparagraph*{Get node properties}
+
+In this class we check whether the node is a Neo4j graph node or an integer, in all other cases we raise an exception.
+
+
+\begin{DoxyParams}[1]{Parameters}
+mixed & {\em \$the\-Node} & Node object or reference.\\
+\hline
+\end{DoxyParams}
+public \begin{DoxyReturn}{Returns}
+array The node properties 
+\end{DoxyReturn}
+\hypertarget{class_c_neo4j_graph_a9b9b2e18e4987c394406f5a086058757}{\index{C\-Neo4j\-Graph@{C\-Neo4j\-Graph}!New\-Edge@{New\-Edge}}
+\index{New\-Edge@{New\-Edge}!CNeo4jGraph@{C\-Neo4j\-Graph}}
+\subsubsection[{New\-Edge}]{\setlength{\rightskip}{0pt plus 5cm}C\-Neo4j\-Graph\-::\-New\-Edge (
+\begin{DoxyParamCaption}
+\item[{}]{\$the\-Subject, }
+\item[{}]{\$the\-Predicate, }
+\item[{}]{\$the\-Object, }
+\item[{}]{\$the\-Properties = {\ttfamily NULL}}
+\end{DoxyParamCaption}
+)}}\label{class_c_neo4j_graph_a9b9b2e18e4987c394406f5a086058757}
+\subparagraph*{Create a new edge}
+
+In this class we instantiate the relationship and set the subject and object nodes, we finally convert the provided predicate to a string.
+
+Both the subject and object nodes can be provided either as a node object or as a node identifier, the method will take care of fetching the referenced nodes. If any node is neither a node object or identifier, or if the referenced node cannot be found, the method will raise an exception.
+
+
+\begin{DoxyParams}[1]{Parameters}
+mixed & {\em \$the\-Subject} & Subject node. \\
+\hline
+array & {\em \$the\-Predicate} & Edge predicate. \\
+\hline
+mixed & {\em \$the\-Object} & Object node. \\
+\hline
+array & {\em \$the\-Properties} & Edge properties.\\
+\hline
+\end{DoxyParams}
+public \begin{DoxyReturn}{Returns}
+mixed 
+\end{DoxyReturn}
+\hypertarget{class_c_neo4j_graph_a7da11906570d368e071fc7f858a751ca}{\index{C\-Neo4j\-Graph@{C\-Neo4j\-Graph}!New\-Node@{New\-Node}}
+\index{New\-Node@{New\-Node}!CNeo4jGraph@{C\-Neo4j\-Graph}}
+\subsubsection[{New\-Node}]{\setlength{\rightskip}{0pt plus 5cm}C\-Neo4j\-Graph\-::\-New\-Node (
+\begin{DoxyParamCaption}
+\item[{}]{\$the\-Properties = {\ttfamily NULL}}
+\end{DoxyParamCaption}
+)}}\label{class_c_neo4j_graph_a7da11906570d368e071fc7f858a751ca}
+\subparagraph*{Create a new node}
+
+In this class we return a new Neo4j Node instance.
+
+
+\begin{DoxyParams}[1]{Parameters}
+array & {\em \$the\-Properties} & Node properties.\\
+\hline
+\end{DoxyParams}
+public \begin{DoxyReturn}{Returns}
+mixed 
+\end{DoxyReturn}
+\hypertarget{class_c_neo4j_graph_a8688944572100526305443cd23f78a63}{\index{C\-Neo4j\-Graph@{C\-Neo4j\-Graph}!Set\-Edge@{Set\-Edge}}
+\index{Set\-Edge@{Set\-Edge}!CNeo4jGraph@{C\-Neo4j\-Graph}}
+\subsubsection[{Set\-Edge}]{\setlength{\rightskip}{0pt plus 5cm}C\-Neo4j\-Graph\-::\-Set\-Edge (
+\begin{DoxyParamCaption}
+\item[{}]{\$the\-Edge}
+\end{DoxyParamCaption}
+)}}\label{class_c_neo4j_graph_a8688944572100526305443cd23f78a63}
+\subparagraph*{Save an edge}
+
+In this class we save the provided edge.
+
+
+\begin{DoxyParams}[1]{Parameters}
+mixed & {\em \$the\-Edge} & Edge to be saved.\\
+\hline
+\end{DoxyParams}
+public \begin{DoxyReturn}{Returns}
+mixed 
+\end{DoxyReturn}
+\hypertarget{class_c_neo4j_graph_a549a7280a0e5c181c21a68ffd49bd020}{\index{C\-Neo4j\-Graph@{C\-Neo4j\-Graph}!Set\-Node@{Set\-Node}}
+\index{Set\-Node@{Set\-Node}!CNeo4jGraph@{C\-Neo4j\-Graph}}
+\subsubsection[{Set\-Node}]{\setlength{\rightskip}{0pt plus 5cm}C\-Neo4j\-Graph\-::\-Set\-Node (
+\begin{DoxyParamCaption}
+\item[{}]{\$the\-Node, }
+\item[{}]{\$the\-Properties = {\ttfamily NULL}}
+\end{DoxyParamCaption}
+)}}\label{class_c_neo4j_graph_a549a7280a0e5c181c21a68ffd49bd020}
+\subparagraph*{Save a node}
+
+In this class we check if the provided node is of the correct type, save it and return its identifier.
+
+If provided, the second parameter must be an array or Array\-Object, or the method will raise an exception.
+
+
+\begin{DoxyParams}[1]{Parameters}
+mixed & {\em \$the\-Node} & Node to be saved. \\
+\hline
+mixed & {\em \$the\-Properties} & Node properties.\\
+\hline
+\end{DoxyParams}
+public \begin{DoxyReturn}{Returns}
+mixed 
+\end{DoxyReturn}
+
+
+The documentation for this class was generated from the following file\-:\begin{DoxyCompactItemize}
+\item 
+/\-Library/\-Web\-Server/\-Library/\-P\-H\-P\-Wrapper/classes/C\-Neo4j\-Graph.\-php\end{DoxyCompactItemize}

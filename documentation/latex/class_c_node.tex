@@ -1,0 +1,371 @@
+\hypertarget{class_c_node}{\section{C\-Node Class Reference}
+\label{class_c_node}\index{C\-Node@{C\-Node}}
+}
+Inheritance diagram for C\-Node\-:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=9.000000cm]{class_c_node}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{class_c_node_adf7a1752d6bc7cd6d5cbc8f11d75c3f9}{\-\_\-\-\_\-to\-String} ()
+\item 
+\hyperlink{class_c_node_a3d2db41c8c96b7ac2d08ce7d2a36d4ea}{P\-I\-D} (\$the\-Value=N\-U\-L\-L, \$get\-Old=F\-A\-L\-S\-E)
+\item 
+\hyperlink{class_c_node_a885e13767f6df4c17ca2757b83f0d508}{Term} (\$the\-Value=N\-U\-L\-L, \$get\-Old=F\-A\-L\-S\-E)
+\item 
+\hyperlink{class_c_node_a5c1d1ac1bc2729951de092abaca3244f}{Description} (\$the\-Language=N\-U\-L\-L, \$the\-Value=N\-U\-L\-L, \$get\-Old=F\-A\-L\-S\-E)
+\item 
+\hyperlink{class_c_node_a864f2abf26ebac8a6a17ccf44d073f48}{Synonym} (\$the\-Value=N\-U\-L\-L, \$the\-Operation=N\-U\-L\-L, \$get\-Old=F\-A\-L\-S\-E)
+\item 
+\hyperlink{class_c_node_af2b8ddaa93259dac31fc34e4b70ef8ed}{Relate\-To} (\$the\-Predicate, \$the\-Object, \$the\-Connection=N\-U\-L\-L, \$do\-Propagate=T\-R\-U\-E)
+\end{DoxyCompactItemize}
+\subsection*{Protected Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{class_c_node_aa888912a5e5303c88e8576d062b942d6}{\-\_\-\-Preset} (\&\$the\-Offset, \&\$the\-Value)
+\item 
+\hyperlink{class_c_node_affdb1c5688a438b055c90c60be4fe739}{\-\_\-\-Preunset} (\&\$the\-Offset)
+\item 
+\hyperlink{class_c_node_ac7ce04dd9d8c98638adbbb13a5909986}{\-\_\-\-New\-Edge} ()
+\item 
+\hyperlink{class_c_node_afb22b2eec5a60d6e417e358b5a2ad5ef}{\-\_\-\-Ready} ()
+\end{DoxyCompactItemize}
+\subsection*{Additional Inherited Members}
+
+
+\subsection{Member Function Documentation}
+\hypertarget{class_c_node_adf7a1752d6bc7cd6d5cbc8f11d75c3f9}{\index{C\-Node@{C\-Node}!\-\_\-\-\_\-to\-String@{\-\_\-\-\_\-to\-String}}
+\index{\-\_\-\-\_\-to\-String@{\-\_\-\-\_\-to\-String}!CNode@{C\-Node}}
+\subsubsection[{\-\_\-\-\_\-to\-String}]{\setlength{\rightskip}{0pt plus 5cm}C\-Node\-::\-\_\-\-\_\-to\-String (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{class_c_node_adf7a1752d6bc7cd6d5cbc8f11d75c3f9}
+\subparagraph*{Return object name}
+
+This method should return the current object's name which should represent the unique identifier of the object.
+
+By default we return the string representation of the term, \hyperlink{}{k\-T\-A\-G\-\_\-\-T\-E\-R\-M}.
+
+public \begin{DoxyReturn}{Returns}
+string The connection name. 
+\end{DoxyReturn}
+\hypertarget{class_c_node_ac7ce04dd9d8c98638adbbb13a5909986}{\index{C\-Node@{C\-Node}!\-\_\-\-New\-Edge@{\-\_\-\-New\-Edge}}
+\index{\-\_\-\-New\-Edge@{\-\_\-\-New\-Edge}!CNode@{C\-Node}}
+\subsubsection[{\-\_\-\-New\-Edge}]{\setlength{\rightskip}{0pt plus 5cm}C\-Node\-::\-\_\-\-New\-Edge (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [protected]}}}\label{class_c_node_ac7ce04dd9d8c98638adbbb13a5909986}
+\subparagraph*{Return a new edge instance}
+
+This method should return a new edge instance, its goal is to instantiate the correct edge type.
+
+In this class we return a \hyperlink{class_c_edge}{C\-Edge} instance.
+
+protected \begin{DoxyReturn}{Returns}
+\hyperlink{class_c_edge}{C\-Edge} 
+\end{DoxyReturn}
+\hypertarget{class_c_node_aa888912a5e5303c88e8576d062b942d6}{\index{C\-Node@{C\-Node}!\-\_\-\-Preset@{\-\_\-\-Preset}}
+\index{\-\_\-\-Preset@{\-\_\-\-Preset}!CNode@{C\-Node}}
+\subsubsection[{\-\_\-\-Preset}]{\setlength{\rightskip}{0pt plus 5cm}C\-Node\-::\-\_\-\-Preset (
+\begin{DoxyParamCaption}
+\item[{\&}]{\$the\-Offset, }
+\item[{\&}]{\$the\-Value}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [protected]}}}\label{class_c_node_aa888912a5e5303c88e8576d062b942d6}
+\subparagraph*{Handle offset before setting it}
+
+In this class we ensure that the \hyperlink{}{k\-T\-A\-G\-\_\-\-K\-I\-N\-D} and \hyperlink{}{k\-T\-A\-G\-\_\-\-D\-E\-S\-C\-R\-I\-P\-T\-I\-O\-N} offsets are an arrays, Array\-Object instances are not counted as an array.
+
+We also ensure that the persistent identifier, \hyperlink{}{k\-T\-A\-G\-\_\-\-P\-I\-D}, is not modified if the object is committed.
+
+
+\begin{DoxyParams}[1]{Parameters}
+reference & {\em \&\$the\-Offset} & Offset. \\
+\hline
+reference & {\em \&\$the\-Value} & Value to set at offset.\\
+\hline
+\end{DoxyParams}
+protected
+
+
+\begin{DoxyExceptions}{Exceptions}
+{\em Exception} & \\
+\hline
+\end{DoxyExceptions}
+\begin{DoxySeeAlso}{See Also}
+k\-T\-A\-G\-\_\-\-K\-I\-N\-D 
+\end{DoxySeeAlso}
+\hypertarget{class_c_node_affdb1c5688a438b055c90c60be4fe739}{\index{C\-Node@{C\-Node}!\-\_\-\-Preunset@{\-\_\-\-Preunset}}
+\index{\-\_\-\-Preunset@{\-\_\-\-Preunset}!CNode@{C\-Node}}
+\subsubsection[{\-\_\-\-Preunset}]{\setlength{\rightskip}{0pt plus 5cm}C\-Node\-::\-\_\-\-Preunset (
+\begin{DoxyParamCaption}
+\item[{\&}]{\$the\-Offset}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [protected]}}}\label{class_c_node_affdb1c5688a438b055c90c60be4fe739}
+\subparagraph*{Handle offset before unsetting it}
+
+In this class we prevent the modification of persistent attributes, in this class\-: \hyperlink{}{k\-T\-A\-G\-\_\-\-P\-I\-D}.
+
+
+\begin{DoxyParams}[1]{Parameters}
+reference & {\em \&\$the\-Offset} & Offset.\\
+\hline
+\end{DoxyParams}
+protected
+
+
+\begin{DoxyExceptions}{Exceptions}
+{\em Exception} & \hyperlink{class_c_status_document_ab7d96fd4588cf7d5432fc65a1d1fb076}{\-\_\-\-Is\-Committed()}\\
+\hline
+\end{DoxyExceptions}
+\begin{DoxySeeAlso}{See Also}
+k\-T\-A\-G\-\_\-\-P\-I\-D 
+\end{DoxySeeAlso}
+\hypertarget{class_c_node_afb22b2eec5a60d6e417e358b5a2ad5ef}{\index{C\-Node@{C\-Node}!\-\_\-\-Ready@{\-\_\-\-Ready}}
+\index{\-\_\-\-Ready@{\-\_\-\-Ready}!CNode@{C\-Node}}
+\subsubsection[{\-\_\-\-Ready}]{\setlength{\rightskip}{0pt plus 5cm}C\-Node\-::\-\_\-\-Ready (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [protected]}}}\label{class_c_node_afb22b2eec5a60d6e417e358b5a2ad5ef}
+\subparagraph*{Determine if the object is ready}
+
+In this class we tie the \hyperlink{class_c_status_document_a954dee06e219e0a0f2e7fa6edac56e28}{\-\_\-\-Is\-Inited()} status to the presence or absence of the \hyperlink{}{k\-T\-A\-G\-\_\-\-T\-E\-R\-M} offset.
+
+protected \begin{DoxyReturn}{Returns}
+boolean {\ttfamily T\-R\-U\-E} means \hyperlink{}{.  \-\_\-\-Ready()  k\-T\-A\-G\-\_\-\-T\-E\-R\-M }
+\end{DoxyReturn}
+\hypertarget{class_c_node_a5c1d1ac1bc2729951de092abaca3244f}{\index{C\-Node@{C\-Node}!Description@{Description}}
+\index{Description@{Description}!CNode@{C\-Node}}
+\subsubsection[{Description}]{\setlength{\rightskip}{0pt plus 5cm}C\-Node\-::\-Description (
+\begin{DoxyParamCaption}
+\item[{}]{\$the\-Language = {\ttfamily NULL}, }
+\item[{}]{\$the\-Value = {\ttfamily NULL}, }
+\item[{}]{\$get\-Old = {\ttfamily FALSE}}
+\end{DoxyParamCaption}
+)}}\label{class_c_node_a5c1d1ac1bc2729951de092abaca3244f}
+\subparagraph*{Manage node description}
+
+The node {\itshape description}, \hyperlink{}{k\-T\-A\-G\-\_\-\-D\-E\-S\-C\-R\-I\-P\-T\-I\-O\-N}, represents the node's long label or extended definition. It is an optional attribute of the object that holds an array of elements in which the index is represented by the language code and the value is the string.
+
+No two elements may share the same language code.
+
+The description depends on the context in which the object is, as opposed as the definition which does not depend on the context.
+
+The method accepts the following parameters\-:
+
+
+\begin{DoxyItemize}
+\item {\ttfamily \$the\-Language}\-: Language code. 
+\item {\ttfamily \$the\-Value}\-: The description string or the operation, depending on its value\-: 
+\begin{DoxyItemize}
+\item {\ttfamily N\-U\-L\-L}\-: Return the string corresponding to the provided language. 
+\item {\ttfamily F\-A\-L\-S\-E}\-: Delete the element corresponding to the provided language. 
+\item {\itshape other}\-: Any other value represents the description string that will be set or replace the entry for the provided language. 
+\end{DoxyItemize}
+\item {\ttfamily \$get\-Old}\-: If {\ttfamily T\-R\-U\-E}, the method will return the description string {\itshape before} it was eventually modified; if {\ttfamily F\-A\-L\-S\-E}, the method will return the value {\itshape after} eventual modifications. 
+\end{DoxyItemize}
+
+
+\begin{DoxyParams}[1]{Parameters}
+mixed & {\em \$the\-Language} & Language code. \\
+\hline
+mixed & {\em \$the\-Value} & Description or operation. \\
+\hline
+boolean & {\em \$get\-Old} & {\ttfamily T\-R\-U\-E} get old value.\\
+\hline
+\end{DoxyParams}
+public \begin{DoxyReturn}{Returns}
+mixed {\itshape New} or {\itshape old} description.
+\end{DoxyReturn}
+Manage\-Indexed\-Offset()
+
+\begin{DoxySeeAlso}{See Also}
+k\-T\-A\-G\-\_\-\-D\-E\-S\-C\-R\-I\-P\-T\-I\-O\-N 
+\end{DoxySeeAlso}
+\hypertarget{class_c_node_a3d2db41c8c96b7ac2d08ce7d2a36d4ea}{\index{C\-Node@{C\-Node}!P\-I\-D@{P\-I\-D}}
+\index{P\-I\-D@{P\-I\-D}!CNode@{C\-Node}}
+\subsubsection[{P\-I\-D}]{\setlength{\rightskip}{0pt plus 5cm}C\-Node\-::\-P\-I\-D (
+\begin{DoxyParamCaption}
+\item[{}]{\$the\-Value = {\ttfamily NULL}, }
+\item[{}]{\$get\-Old = {\ttfamily FALSE}}
+\end{DoxyParamCaption}
+)}}\label{class_c_node_a3d2db41c8c96b7ac2d08ce7d2a36d4ea}
+\subparagraph*{Manage persistent identifier}
+
+The {\itshape persistent identifier}, \hyperlink{}{k\-T\-A\-G\-\_\-\-P\-I\-D}, holds a string value which represents the object's persistent identifier. This value should uniquely identify the object across implementations and should not change once the object has been committed.
+
+This attribute becomes necessary when the object does not have a global unique identifier and its native identifier is not persistent. In nodes this is true because the \hyperlink{class_c_node_a885e13767f6df4c17ca2757b83f0d508}{Term()}, which is its global identifier, is not unique and its native identifier, \hyperlink{class_c_persistent_document_ad9d15abc074aa3f779f214771b6123b0}{N\-I\-D()}, is a non persistent sequence number\-: this attribute can be used to set a value which can be used to differentiate nodes which point to the same term and that may have different native identifiers in different implementations.
+
+The method accepts a parameter which represents either the new value or the requested operation, depending on its type\-:
+
+
+\begin{DoxyItemize}
+\item {\ttfamily N\-U\-L\-L}\-: Return the current value. 
+\item {\ttfamily F\-A\-L\-S\-E}\-: Delete the current value. 
+\item {\itshape other}\-: Set the value with the provided parameter. 
+\end{DoxyItemize}
+
+The second parameter is a boolean which if {\ttfamily T\-R\-U\-E} will return the {\itshape old} value when replacing an existing value; if {\ttfamily F\-A\-L\-S\-E}, it will return the currently set value.
+
+Note that, while this method allows the creation, modification and deletion of this property, the hosting object may prevent some of these actions, by default this attribute is locked when the object has the \hyperlink{class_c_status_document_ab7d96fd4588cf7d5432fc65a1d1fb076}{\-\_\-\-Is\-Committed()} status.
+
+
+\begin{DoxyParams}[1]{Parameters}
+mixed & {\em \$the\-Value} & Persistent identifier or operation. \\
+\hline
+boolean & {\em \$get\-Old} & {\ttfamily T\-R\-U\-E} get old value.\\
+\hline
+\end{DoxyParams}
+public \begin{DoxyReturn}{Returns}
+string {\itshape New}, {\itshape old} value or {\ttfamily N\-U\-L\-L}.
+\end{DoxyReturn}
+Manage\-Offset()
+
+\begin{DoxySeeAlso}{See Also}
+k\-T\-A\-G\-\_\-\-P\-I\-D 
+\end{DoxySeeAlso}
+\hypertarget{class_c_node_af2b8ddaa93259dac31fc34e4b70ef8ed}{\index{C\-Node@{C\-Node}!Relate\-To@{Relate\-To}}
+\index{Relate\-To@{Relate\-To}!CNode@{C\-Node}}
+\subsubsection[{Relate\-To}]{\setlength{\rightskip}{0pt plus 5cm}C\-Node\-::\-Relate\-To (
+\begin{DoxyParamCaption}
+\item[{}]{\$the\-Predicate, }
+\item[{}]{\$the\-Object, }
+\item[{}]{\$the\-Connection = {\ttfamily NULL}, }
+\item[{}]{\$do\-Propagate = {\ttfamily TRUE}}
+\end{DoxyParamCaption}
+)}}\label{class_c_node_af2b8ddaa93259dac31fc34e4b70ef8ed}
+\subparagraph*{Create an outgoing edge}
+
+This method can be used to instantiate an outgoing edge by providing the object vertex node and edge predicate. The subject vertex is represented by the current node.
+
+Both the predicate and the object vertex node can be any type, the last parameter represents the connection, it is optional and if provided, will be used to commit the edge.
+
+The method expects the following parameters\-:
+
+
+\begin{DoxyItemize}
+\item {\ttfamily \$the\-Object}\-: The edge's object vertex. 
+\item {\ttfamily \$the\-Predicate}\-: The edge's predicate. 
+\item {\ttfamily \$the\-Connection}\-: Server, database or container. 
+\item {\ttfamily \$do\-Propagate}\-: This boolean switch indicates whether the relationship is to be propagated. This feature is not used in this class, but derived classes will use it; the default value is {\ttfamily T\-R\-U\-E}. 
+\end{DoxyItemize}
+
+The method will return an instance of the \hyperlink{class_c_edge}{C\-Edge} class, if any error occurs, the method will raise an exception.
+
+
+\begin{DoxyParams}[1]{Parameters}
+mixed & {\em \$the\-Predicate} & Relationship predicate. \\
+\hline
+mixed & {\em \$the\-Object} & Object vertex. \\
+\hline
+\hyperlink{class_c_connection}{C\-Connection} & {\em \$the\-Connection} & Server, database or container. \\
+\hline
+boolean & {\em \$do\-Propagate} & T\-R\-U\-E means propagate relationships.\\
+\hline
+\end{DoxyParams}
+public \begin{DoxyReturn}{Returns}
+\hyperlink{class_c_edge}{C\-Edge} Relationship edge object. 
+\end{DoxyReturn}
+\hypertarget{class_c_node_a864f2abf26ebac8a6a17ccf44d073f48}{\index{C\-Node@{C\-Node}!Synonym@{Synonym}}
+\index{Synonym@{Synonym}!CNode@{C\-Node}}
+\subsubsection[{Synonym}]{\setlength{\rightskip}{0pt plus 5cm}C\-Node\-::\-Synonym (
+\begin{DoxyParamCaption}
+\item[{}]{\$the\-Value = {\ttfamily NULL}, }
+\item[{}]{\$the\-Operation = {\ttfamily NULL}, }
+\item[{}]{\$get\-Old = {\ttfamily FALSE}}
+\end{DoxyParamCaption}
+)}}\label{class_c_node_a864f2abf26ebac8a6a17ccf44d073f48}
+\subparagraph*{Manage term synonyms}
+
+This method can be used to manage the term's synonyms, \hyperlink{}{k\-T\-A\-G\-\_\-\-S\-Y\-N\-O\-N\-Y\-M\-S}, which contains a list of strings that represent alternate codes or names that can be used to identify the term.
+
+This offset collects the list of synonyms in an enumerated set that can be managed with the following parameters\-:
+
+
+\begin{DoxyItemize}
+\item {\ttfamily \$the\-Value}\-: Depending on the next parameter, this may either refer to the value to be set or to the index of the element to be retrieved or deleted\-: 
+\begin{DoxyItemize}
+\item {\ttfamily N\-U\-L\-L}\-: This value indicates that we want to operate on all elements, which means, in practical terms, that we either want to retrieve or delete the full list. If the operation parameter resolves to {\ttfamily T\-R\-U\-E}, the method will default to retrieving the current list and no new element will be added. 
+\item {\ttfamily array}\-: An array indicates that we want to operate on a list of values and that other parameters may also be provided as lists. Note that \hyperlink{}{Array\-Object} instances are not considered here as arrays. 
+\item {\itshape other}\-: Any other type represents either the new value to be added or the index to the value to be returned or deleted. 
+\end{DoxyItemize}
+\item {\ttfamily \$the\-Operation}\-: This parameter represents the operation to be performed whose scope depends on the value of the previous parameter\-: 
+\begin{DoxyItemize}
+\item {\ttfamily N\-U\-L\-L}\-: Return the element or full list. 
+\item {\ttfamily F\-A\-L\-S\-E}\-: Delete the element or full list. 
+\item {\ttfamily array}\-: This type is only considered if the {\ttfamily \$the\-Value} parameter is provided as an array\-: the method will be called for each element of the {\ttfamily \$the\-Value} parameter matched with the corresponding element of this parameter, which also means that both both parameters must share the same count. 
+\item {\itshape other}\-: Add the {\ttfamily \$the\-Value} value to the list. If you provided {\ttfamily N\-U\-L\-L} in the previous parameter, the operation will be reset to {\ttfamily N\-U\-L\-L}. 
+\end{DoxyItemize}
+\item {\ttfamily \$get\-Old}\-: Determines what the method will return\-: 
+\begin{DoxyItemize}
+\item {\ttfamily T\-R\-U\-E}\-: Return the value {\itshape before} it was eventually modified. 
+\item {\ttfamily F\-A\-L\-S\-E}\-: Return the value {\itshape after} it was eventually modified. 
+\end{DoxyItemize}
+\end{DoxyItemize}
+
+
+\begin{DoxyParams}[1]{Parameters}
+mixed & {\em \$the\-Value} & Value or index. \\
+\hline
+mixed & {\em \$the\-Operation} & Operation. \\
+\hline
+boolean & {\em \$get\-Old} & T\-R\-U\-E get old value.\\
+\hline
+\end{DoxyParams}
+public \begin{DoxyReturn}{Returns}
+mixed {\itshape New} or {\itshape old} type.
+\end{DoxyReturn}
+Manage\-Object\-Set\-Offset()
+
+\begin{DoxySeeAlso}{See Also}
+k\-T\-A\-G\-\_\-\-S\-Y\-N\-O\-N\-Y\-M\-S 
+\end{DoxySeeAlso}
+\hypertarget{class_c_node_a885e13767f6df4c17ca2757b83f0d508}{\index{C\-Node@{C\-Node}!Term@{Term}}
+\index{Term@{Term}!CNode@{C\-Node}}
+\subsubsection[{Term}]{\setlength{\rightskip}{0pt plus 5cm}C\-Node\-::\-Term (
+\begin{DoxyParamCaption}
+\item[{}]{\$the\-Value = {\ttfamily NULL}, }
+\item[{}]{\$get\-Old = {\ttfamily FALSE}}
+\end{DoxyParamCaption}
+)}}\label{class_c_node_a885e13767f6df4c17ca2757b83f0d508}
+\subparagraph*{Manage node term}
+
+This method can be used to manage the node's term, \hyperlink{}{k\-T\-A\-G\-\_\-\-T\-E\-R\-M}, which represents the node abstract term.
+
+The method accepts a parameter which represents either the term, or the requested operation, depending on its value\-:
+
+
+\begin{DoxyItemize}
+\item {\ttfamily N\-U\-L\-L}\-: Return the current value. 
+\item {\ttfamily F\-A\-L\-S\-E}\-: Delete the current value. 
+\item {\itshape other}\-: Set the value with the provided parameter. 
+\end{DoxyItemize}
+
+The second parameter is a boolean which if {\ttfamily T\-R\-U\-E} will return the {\itshape old} value when replacing containers; if {\ttfamily F\-A\-L\-S\-E}, it will return the currently set value.
+
+
+\begin{DoxyParams}[1]{Parameters}
+mixed & {\em \$the\-Value} & Term or operation. \\
+\hline
+boolean & {\em \$get\-Old} & {\ttfamily T\-R\-U\-E} get old value.\\
+\hline
+\end{DoxyParams}
+public \begin{DoxyReturn}{Returns}
+mixed {\itshape New} or {\itshape old} native container.
+\end{DoxyReturn}
+Manage\-Offset()
+
+\begin{DoxySeeAlso}{See Also}
+k\-T\-A\-G\-\_\-\-T\-E\-R\-M 
+\end{DoxySeeAlso}
+
+
+The documentation for this class was generated from the following file\-:\begin{DoxyCompactItemize}
+\item 
+/\-Library/\-Web\-Server/\-Library/\-P\-H\-P\-Wrapper/classes/C\-Node.\-php\end{DoxyCompactItemize}

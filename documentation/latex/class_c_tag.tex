@@ -1,0 +1,259 @@
+\hypertarget{class_c_tag}{\section{C\-Tag Class Reference}
+\label{class_c_tag}\index{C\-Tag@{C\-Tag}}
+}
+Inheritance diagram for C\-Tag\-:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=7.000000cm]{class_c_tag}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{class_c_tag_a5bde38c2605d2559fd8d9c9d85904751}{Synonym} (\$the\-Value=N\-U\-L\-L, \$the\-Operation=N\-U\-L\-L, \$get\-Old=F\-A\-L\-S\-E)
+\item 
+\hyperlink{class_c_tag_a3ce611f613f6317f450354da2057b90c}{Push\-Item} (\$the\-Value)
+\item 
+\hyperlink{class_c_tag_a5df518ef6a881d7c2de469fef50ddd92}{Pop\-Item} ()
+\end{DoxyCompactItemize}
+\subsection*{Protected Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{class_c_tag_a6797a73041d6d630799998fce617b404}{\-\_\-index} (\hyperlink{class_c_connection}{C\-Connection} \$the\-Connection, \$the\-Modifiers)
+\item 
+\hyperlink{class_c_tag_a486d3f1d1c789fe14f258ce008d5af5a}{\-\_\-\-Preset} (\&\$the\-Offset, \&\$the\-Value)
+\item 
+\hyperlink{class_c_tag_a5131b8768fa08bbcecb1c65a046e302c}{\-\_\-\-Preunset} (\&\$the\-Offset)
+\item 
+\hyperlink{class_c_tag_abc2d1e24a8fc606ff4d6dd018d5af42d}{\-\_\-\-Precommit\-Validate} (\&\$the\-Connection, \&\$the\-Modifiers)
+\item 
+\hyperlink{class_c_tag_a9fed7b05a04413e04c19a49e592e6242}{\-\_\-\-Ready} ()
+\end{DoxyCompactItemize}
+\subsection*{Additional Inherited Members}
+
+
+\subsection{Member Function Documentation}
+\hypertarget{class_c_tag_a6797a73041d6d630799998fce617b404}{\index{C\-Tag@{C\-Tag}!\-\_\-index@{\-\_\-index}}
+\index{\-\_\-index@{\-\_\-index}!CTag@{C\-Tag}}
+\subsubsection[{\-\_\-index}]{\setlength{\rightskip}{0pt plus 5cm}C\-Tag\-::\-\_\-index (
+\begin{DoxyParamCaption}
+\item[{{\bf C\-Connection}}]{\$the\-Connection, }
+\item[{}]{\$the\-Modifiers}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [protected]}}}\label{class_c_tag_a6797a73041d6d630799998fce617b404}
+\subparagraph*{Return the object's global unique identifier}
+
+The tag is identified by its path items, this method will return the list of items separated by the \hyperlink{}{k\-T\-O\-K\-E\-N\-\_\-\-I\-N\-D\-E\-X\-\_\-\-S\-E\-P\-A\-R\-A\-T\-O\-R} token.
+
+This also means that all elements of the path must be convertable to string.
+
+
+\begin{DoxyParams}[1]{Parameters}
+\hyperlink{class_c_connection}{C\-Connection} & {\em \$the\-Connection} & Server, database or container. \\
+\hline
+bitfield & {\em \$the\-Modifiers} & Commit options.\\
+\hline
+\end{DoxyParams}
+protected \begin{DoxyReturn}{Returns}
+string$|$\-N\-U\-L\-L The object's global unique identifier.
+\end{DoxyReturn}
+\begin{DoxySeeAlso}{See Also}
+k\-T\-A\-G\-\_\-\-P\-A\-T\-H k\-T\-O\-K\-E\-N\-\_\-\-I\-N\-D\-E\-X\-\_\-\-S\-E\-P\-A\-R\-A\-T\-O\-R 
+\end{DoxySeeAlso}
+\hypertarget{class_c_tag_abc2d1e24a8fc606ff4d6dd018d5af42d}{\index{C\-Tag@{C\-Tag}!\-\_\-\-Precommit\-Validate@{\-\_\-\-Precommit\-Validate}}
+\index{\-\_\-\-Precommit\-Validate@{\-\_\-\-Precommit\-Validate}!CTag@{C\-Tag}}
+\subsubsection[{\-\_\-\-Precommit\-Validate}]{\setlength{\rightskip}{0pt plus 5cm}C\-Tag\-::\-\_\-\-Precommit\-Validate (
+\begin{DoxyParamCaption}
+\item[{\&}]{\$the\-Connection, }
+\item[{\&}]{\$the\-Modifiers}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [protected]}}}\label{class_c_tag_abc2d1e24a8fc606ff4d6dd018d5af42d}
+\subparagraph*{Validate the object before committing}
+
+In this class we check if the current path has an odd number of items, if that is not the case, the method will raise an exception.
+
+
+\begin{DoxyParams}[1]{Parameters}
+reference & {\em \&\$the\-Connection} & Server, database or container. \\
+\hline
+reference & {\em \&\$the\-Modifiers} & Commit options.\\
+\hline
+\end{DoxyParams}
+protected \begin{DoxyReturn}{Returns}
+mixed
+\end{DoxyReturn}
+
+\begin{DoxyExceptions}{Exceptions}
+{\em Exception} & \\
+\hline
+\end{DoxyExceptions}
+\begin{DoxySeeAlso}{See Also}
+k\-T\-A\-G\-\_\-\-P\-A\-T\-H 
+\end{DoxySeeAlso}
+\hypertarget{class_c_tag_a486d3f1d1c789fe14f258ce008d5af5a}{\index{C\-Tag@{C\-Tag}!\-\_\-\-Preset@{\-\_\-\-Preset}}
+\index{\-\_\-\-Preset@{\-\_\-\-Preset}!CTag@{C\-Tag}}
+\subsubsection[{\-\_\-\-Preset}]{\setlength{\rightskip}{0pt plus 5cm}C\-Tag\-::\-\_\-\-Preset (
+\begin{DoxyParamCaption}
+\item[{\&}]{\$the\-Offset, }
+\item[{\&}]{\$the\-Value}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [protected]}}}\label{class_c_tag_a486d3f1d1c789fe14f258ce008d5af5a}
+\subparagraph*{Handle offset before setting it}
+
+In this class we ensure that the \hyperlink{}{k\-T\-A\-G\-\_\-\-P\-A\-T\-H} offset is an array, Array\-Object instances are not counted as an array.
+
+We also prevent changing the data type once the object was committed.
+
+
+\begin{DoxyParams}[1]{Parameters}
+reference & {\em \&\$the\-Offset} & Offset. \\
+\hline
+reference & {\em \&\$the\-Value} & Value to set at offset.\\
+\hline
+\end{DoxyParams}
+protected
+
+
+\begin{DoxyExceptions}{Exceptions}
+{\em Exception} & \\
+\hline
+\end{DoxyExceptions}
+\begin{DoxySeeAlso}{See Also}
+k\-T\-A\-G\-\_\-\-P\-A\-T\-H 
+\end{DoxySeeAlso}
+\hypertarget{class_c_tag_a5131b8768fa08bbcecb1c65a046e302c}{\index{C\-Tag@{C\-Tag}!\-\_\-\-Preunset@{\-\_\-\-Preunset}}
+\index{\-\_\-\-Preunset@{\-\_\-\-Preunset}!CTag@{C\-Tag}}
+\subsubsection[{\-\_\-\-Preunset}]{\setlength{\rightskip}{0pt plus 5cm}C\-Tag\-::\-\_\-\-Preunset (
+\begin{DoxyParamCaption}
+\item[{\&}]{\$the\-Offset}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [protected]}}}\label{class_c_tag_a5131b8768fa08bbcecb1c65a046e302c}
+\subparagraph*{Handle offset before unsetting it}
+
+In this class we prevent resetting the path and the data type once the object is committed.
+
+
+\begin{DoxyParams}[1]{Parameters}
+reference & {\em \&\$the\-Offset} & Offset.\\
+\hline
+\end{DoxyParams}
+protected
+
+\hyperlink{class_c_status_document_ad5193995e1bff6de09acf3248a232ef9}{\-\_\-\-Is\-Dirty()} \hypertarget{class_c_tag_a9fed7b05a04413e04c19a49e592e6242}{\index{C\-Tag@{C\-Tag}!\-\_\-\-Ready@{\-\_\-\-Ready}}
+\index{\-\_\-\-Ready@{\-\_\-\-Ready}!CTag@{C\-Tag}}
+\subsubsection[{\-\_\-\-Ready}]{\setlength{\rightskip}{0pt plus 5cm}C\-Tag\-::\-\_\-\-Ready (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [protected]}}}\label{class_c_tag_a9fed7b05a04413e04c19a49e592e6242}
+\subparagraph*{Determine if the object is ready}
+
+In this class we tie the \hyperlink{class_c_status_document_a954dee06e219e0a0f2e7fa6edac56e28}{\-\_\-\-Is\-Inited()} status to the presence or absence of the \hyperlink{}{k\-T\-A\-G\-\_\-\-P\-A\-T\-H} offset.
+
+protected \begin{DoxyReturn}{Returns}
+boolean {\ttfamily T\-R\-U\-E} means \hyperlink{}{.  \-\_\-\-Ready()  k\-T\-A\-G\-\_\-\-P\-A\-T\-H }
+\end{DoxyReturn}
+\hypertarget{class_c_tag_a5df518ef6a881d7c2de469fef50ddd92}{\index{C\-Tag@{C\-Tag}!Pop\-Item@{Pop\-Item}}
+\index{Pop\-Item@{Pop\-Item}!CTag@{C\-Tag}}
+\subsubsection[{Pop\-Item}]{\setlength{\rightskip}{0pt plus 5cm}C\-Tag\-::\-Pop\-Item (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{class_c_tag_a5df518ef6a881d7c2de469fef50ddd92}
+\subparagraph*{Remove from path}
+
+This method will remove the last item from the tag path and return it to the caller.
+
+If the removed item is the last one, the offset will be deleted, if the list is missing, the method will return {\ttfamily N\-U\-L\-L}.
+
+public \begin{DoxyReturn}{Returns}
+mixed Last item of the list or {\ttfamily N\-U\-L\-L}.
+\end{DoxyReturn}
+\begin{DoxySeeAlso}{See Also}
+k\-T\-A\-G\-\_\-\-P\-A\-T\-H 
+\end{DoxySeeAlso}
+\hypertarget{class_c_tag_a3ce611f613f6317f450354da2057b90c}{\index{C\-Tag@{C\-Tag}!Push\-Item@{Push\-Item}}
+\index{Push\-Item@{Push\-Item}!CTag@{C\-Tag}}
+\subsubsection[{Push\-Item}]{\setlength{\rightskip}{0pt plus 5cm}C\-Tag\-::\-Push\-Item (
+\begin{DoxyParamCaption}
+\item[{}]{\$the\-Value}
+\end{DoxyParamCaption}
+)}}\label{class_c_tag_a3ce611f613f6317f450354da2057b90c}
+\subparagraph*{Append to path}
+
+This method will add the provided item to the tag path, the element will be appended to the end of the list.
+
+The provided item is considered as-\/is, that means that arrays are considered as a scalar item. If you provide {\ttfamily N\-U\-L\-L} as the value, this will be ignored and the method will return {\ttfamily F\-A\-L\-S\-E}.
+
+The method will return the current number of items in the list.
+
+
+\begin{DoxyParams}[1]{Parameters}
+mixed & {\em \$the\-Value} & Value to append.\\
+\hline
+\end{DoxyParams}
+public \begin{DoxyReturn}{Returns}
+integer Number of items in the list.
+\end{DoxyReturn}
+\begin{DoxySeeAlso}{See Also}
+k\-T\-A\-G\-\_\-\-P\-A\-T\-H 
+\end{DoxySeeAlso}
+\hypertarget{class_c_tag_a5bde38c2605d2559fd8d9c9d85904751}{\index{C\-Tag@{C\-Tag}!Synonym@{Synonym}}
+\index{Synonym@{Synonym}!CTag@{C\-Tag}}
+\subsubsection[{Synonym}]{\setlength{\rightskip}{0pt plus 5cm}C\-Tag\-::\-Synonym (
+\begin{DoxyParamCaption}
+\item[{}]{\$the\-Value = {\ttfamily NULL}, }
+\item[{}]{\$the\-Operation = {\ttfamily NULL}, }
+\item[{}]{\$get\-Old = {\ttfamily FALSE}}
+\end{DoxyParamCaption}
+)}}\label{class_c_tag_a5bde38c2605d2559fd8d9c9d85904751}
+\subparagraph*{Manage tag synonyms}
+
+This method can be used to manage the tag's synonyms, \hyperlink{}{k\-T\-A\-G\-\_\-\-S\-Y\-N\-O\-N\-Y\-M\-S}, which contains a list of strings that represent alternate codes or names that can be used to identify the tag.
+
+This offset collects the list of synonyms in an enumerated set that can be managed with the following parameters\-:
+
+
+\begin{DoxyItemize}
+\item {\ttfamily \$the\-Value}\-: Depending on the next parameter, this may either refer to the value to be set or to the index of the element to be retrieved or deleted\-: 
+\begin{DoxyItemize}
+\item {\ttfamily N\-U\-L\-L}\-: This value indicates that we want to operate on all elements, which means, in practical terms, that we either want to retrieve or delete the full list. If the operation parameter resolves to {\ttfamily T\-R\-U\-E}, the method will default to retrieving the current list and no new element will be added. 
+\item {\ttfamily array}\-: An array indicates that we want to operate on a list of values and that other parameters may also be provided as lists. Note that \hyperlink{}{Array\-Object} instances are not considered here as arrays. 
+\item {\itshape other}\-: Any other type represents either the new value to be added or the index to the value to be returned or deleted. 
+\end{DoxyItemize}
+\item {\ttfamily \$the\-Operation}\-: This parameter represents the operation to be performed whose scope depends on the value of the previous parameter\-: 
+\begin{DoxyItemize}
+\item {\ttfamily N\-U\-L\-L}\-: Return the element or full list. 
+\item {\ttfamily F\-A\-L\-S\-E}\-: Delete the element or full list. 
+\item {\ttfamily array}\-: This type is only considered if the {\ttfamily \$the\-Value} parameter is provided as an array\-: the method will be called for each element of the {\ttfamily \$the\-Value} parameter matched with the corresponding element of this parameter, which also means that both both parameters must share the same count. 
+\item {\itshape other}\-: Add the {\ttfamily \$the\-Value} value to the list. If you provided {\ttfamily N\-U\-L\-L} in the previous parameter, the operation will be reset to {\ttfamily N\-U\-L\-L}. 
+\end{DoxyItemize}
+\item {\ttfamily \$get\-Old}\-: Determines what the method will return\-: 
+\begin{DoxyItemize}
+\item {\ttfamily T\-R\-U\-E}\-: Return the value {\itshape before} it was eventually modified. 
+\item {\ttfamily F\-A\-L\-S\-E}\-: Return the value {\itshape after} it was eventually modified. 
+\end{DoxyItemize}
+\end{DoxyItemize}
+
+
+\begin{DoxyParams}[1]{Parameters}
+mixed & {\em \$the\-Value} & Value or index. \\
+\hline
+mixed & {\em \$the\-Operation} & Operation. \\
+\hline
+boolean & {\em \$get\-Old} & T\-R\-U\-E get old value.\\
+\hline
+\end{DoxyParams}
+public \begin{DoxyReturn}{Returns}
+mixed {\itshape New} or {\itshape old} type.
+\end{DoxyReturn}
+Manage\-Object\-Set\-Offset()
+
+\begin{DoxySeeAlso}{See Also}
+k\-T\-A\-G\-\_\-\-S\-Y\-N\-O\-N\-Y\-M\-S 
+\end{DoxySeeAlso}
+
+
+The documentation for this class was generated from the following file\-:\begin{DoxyCompactItemize}
+\item 
+/\-Library/\-Web\-Server/\-Library/\-P\-H\-P\-Wrapper/classes/C\-Tag.\-php\end{DoxyCompactItemize}

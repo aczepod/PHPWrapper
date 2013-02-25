@@ -1,0 +1,128 @@
+\hypertarget{class_c_mongo_server}{\section{C\-Mongo\-Server Class Reference}
+\label{class_c_mongo_server}\index{C\-Mongo\-Server@{C\-Mongo\-Server}}
+}
+Inheritance diagram for C\-Mongo\-Server\-:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=6.000000cm]{class_c_mongo_server}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{class_c_mongo_server_ad70864e526dd380cc2440da5ff45ed50}{\-\_\-\-\_\-construct} (\$the\-Connection=N\-U\-L\-L, \$the\-Options=N\-U\-L\-L)
+\item 
+\hyperlink{class_c_mongo_server_a1842325257ca02c96123a1b49de976d0}{\-\_\-\-\_\-to\-String} ()
+\item 
+\hyperlink{class_c_mongo_server_a7bb403977a7f1a4d9a1391285f3ddd7e}{Connection} (\$the\-Value=N\-U\-L\-L, \$get\-Old=F\-A\-L\-S\-E)
+\item 
+\hyperlink{class_c_mongo_server_a68dce7b5cf2f8834d54495e290f64338}{Database} (\$the\-Database=N\-U\-L\-L)
+\end{DoxyCompactItemize}
+\subsection*{Additional Inherited Members}
+
+
+\subsection{Constructor \& Destructor Documentation}
+\hypertarget{class_c_mongo_server_ad70864e526dd380cc2440da5ff45ed50}{\index{C\-Mongo\-Server@{C\-Mongo\-Server}!\-\_\-\-\_\-construct@{\-\_\-\-\_\-construct}}
+\index{\-\_\-\-\_\-construct@{\-\_\-\-\_\-construct}!CMongoServer@{C\-Mongo\-Server}}
+\subsubsection[{\-\_\-\-\_\-construct}]{\setlength{\rightskip}{0pt plus 5cm}C\-Mongo\-Server\-::\-\_\-\-\_\-construct (
+\begin{DoxyParamCaption}
+\item[{}]{\$the\-Connection = {\ttfamily NULL}, }
+\item[{}]{\$the\-Options = {\ttfamily NULL}}
+\end{DoxyParamCaption}
+)}}\label{class_c_mongo_server_ad70864e526dd380cc2440da5ff45ed50}
+\subparagraph*{Instantiate class}
+
+The method accepts the same parameters as the \hyperlink{}{Mongo} constructor, the first one represents the server U\-R\-L, the second represents the connection options.
+
+The method will first attempt to instantiate the \hyperlink{}{Mongo} object, it will then store it in the connection data member.
+
+If no parameter is provided, the method will assume the Mongo to connect to localhost on port 27017 and to initiate the connection.
+
+
+\begin{DoxyParams}[1]{Parameters}
+mixed & {\em \$the\-Connection} & Server U\-R\-L. \\
+\hline
+mixed & {\em \$the\-Options} & Connection options.\\
+\hline
+\end{DoxyParams}
+public
+
+\hyperlink{class_c_mongo_server_a7bb403977a7f1a4d9a1391285f3ddd7e}{Connection()} 
+
+\subsection{Member Function Documentation}
+\hypertarget{class_c_mongo_server_a1842325257ca02c96123a1b49de976d0}{\index{C\-Mongo\-Server@{C\-Mongo\-Server}!\-\_\-\-\_\-to\-String@{\-\_\-\-\_\-to\-String}}
+\index{\-\_\-\-\_\-to\-String@{\-\_\-\-\_\-to\-String}!CMongoServer@{C\-Mongo\-Server}}
+\subsubsection[{\-\_\-\-\_\-to\-String}]{\setlength{\rightskip}{0pt plus 5cm}C\-Mongo\-Server\-::\-\_\-\-\_\-to\-String (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{class_c_mongo_server_a1842325257ca02c96123a1b49de976d0}
+\subparagraph*{Return connection name}
+
+In this class the method will return the server's connection U\-R\-L, which corresponds to the \hyperlink{}{k\-O\-F\-F\-S\-E\-T\-\_\-\-N\-A\-M\-E} offset.
+
+public \begin{DoxyReturn}{Returns}
+string The connection name. 
+\end{DoxyReturn}
+\hypertarget{class_c_mongo_server_a7bb403977a7f1a4d9a1391285f3ddd7e}{\index{C\-Mongo\-Server@{C\-Mongo\-Server}!Connection@{Connection}}
+\index{Connection@{Connection}!CMongoServer@{C\-Mongo\-Server}}
+\subsubsection[{Connection}]{\setlength{\rightskip}{0pt plus 5cm}C\-Mongo\-Server\-::\-Connection (
+\begin{DoxyParamCaption}
+\item[{}]{\$the\-Value = {\ttfamily NULL}, }
+\item[{}]{\$get\-Old = {\ttfamily FALSE}}
+\end{DoxyParamCaption}
+)}}\label{class_c_mongo_server_a7bb403977a7f1a4d9a1391285f3ddd7e}
+\subparagraph*{Manage native connection}
+
+We overload this method to ensure the provided value is an instance of \hyperlink{}{Mongo}, if this is not the case, the method will raise an exception.
+
+The method will attempt to parse the provided server U\-R\-L and store the results in the array part of the object. For more information on the parsed elements consult the P\-H\-P \hyperlink{}{parse\-\_\-url()} function.
+
+
+\begin{DoxyParams}[1]{Parameters}
+mixed & {\em \$the\-Value} & Native connection or operation. \\
+\hline
+boolean & {\em \$get\-Old} & {\ttfamily T\-R\-U\-E} get old value.\\
+\hline
+\end{DoxyParams}
+public \begin{DoxyReturn}{Returns}
+mixed {\itshape New} or {\itshape old} native connection.
+\end{DoxyReturn}
+
+\begin{DoxyExceptions}{Exceptions}
+{\em Exception} & \\
+\hline
+\end{DoxyExceptions}
+\hypertarget{class_c_mongo_server_a68dce7b5cf2f8834d54495e290f64338}{\index{C\-Mongo\-Server@{C\-Mongo\-Server}!Database@{Database}}
+\index{Database@{Database}!CMongoServer@{C\-Mongo\-Server}}
+\subsubsection[{Database}]{\setlength{\rightskip}{0pt plus 5cm}C\-Mongo\-Server\-::\-Database (
+\begin{DoxyParamCaption}
+\item[{}]{\$the\-Database = {\ttfamily NULL}}
+\end{DoxyParamCaption}
+)}}\label{class_c_mongo_server_a68dce7b5cf2f8834d54495e290f64338}
+\subparagraph*{Generate a database object}
+
+In this class we return \hyperlink{class_c_mongo_database}{C\-Mongo\-Database} instances, the provided parameter is interpreted as the database name.
+
+If you omit the parameter, the method will raise an exception, in derived classes you can overload the method to provide a default database name.
+
+If the object does not have its native connection, the method will also raise an exception.
+
+
+\begin{DoxyParams}[1]{Parameters}
+string & {\em \$the\-Database} & Database name.\\
+\hline
+\end{DoxyParams}
+public \begin{DoxyReturn}{Returns}
+mixed The database object.
+\end{DoxyReturn}
+
+\begin{DoxyExceptions}{Exceptions}
+{\em Exception} & \hyperlink{class_c_status_document_a954dee06e219e0a0f2e7fa6edac56e28}{\-\_\-\-Is\-Inited()} \\
+\hline
+\end{DoxyExceptions}
+
+
+The documentation for this class was generated from the following file\-:\begin{DoxyCompactItemize}
+\item 
+/\-Library/\-Web\-Server/\-Library/\-P\-H\-P\-Wrapper/classes/C\-Mongo\-Server.\-php\end{DoxyCompactItemize}

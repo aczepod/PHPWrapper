@@ -160,5 +160,33 @@ catch( Exception $error )
 {
 	echo( (string) $error );
 }
+/*
+
+	$excel = new PHPExcel();
+	
+	$excel->getProperties()->setCreator("Maarten Balliauw");
+	$excel->getProperties()->setLastModifiedBy("Maarten Balliauw");
+	$excel->getProperties()->setTitle("Office 2007 XLSX Test Document");
+	$excel->getProperties()->setSubject("Office 2007 XLSX Test Document");
+	$excel->getProperties()->setDescription("Test document for Office 2007 XLSX.");
+	$excel->getProperties()->setKeywords("office 2007 openxml php");
+	$excel->getProperties()->setCategory("Test result file");
+	
+	$worksheet = new PHPExcel_Worksheet( $excel, 'Worksheet' );
+	$excel->addSheet( $worksheet, 0 );
+	
+	$excel->getActiveSheet()->getCell('A1')->setValue("hello\nworld");
+	$excel->getActiveSheet()->getStyle('A1')->getAlignment()->setWrapText(true);
+	
+	$excel->getActiveSheet()->mergeCells('A18:E22');
+	
+	$excel->getActiveSheet()->getDefaultColumnDimension()->setWidth(12);
+	$excel->getActiveSheet()->getDefaultRowDimension()->setRowHeight(15);
+	
+	$objWriter = new PHPExcel_Writer_Excel2007($excel);
+	$objWriter->setOffice2003Compatibility(true);
+	$objWriter->save("05featuredemo.xlsx");
+
+*/
 
 ?>

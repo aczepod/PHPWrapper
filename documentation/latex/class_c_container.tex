@@ -1,0 +1,393 @@
+\hypertarget{class_c_container}{\section{C\-Container Class Reference}
+\label{class_c_container}\index{C\-Container@{C\-Container}}
+}
+Inheritance diagram for C\-Container\-:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=6.000000cm]{class_c_container}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{class_c_container_acc336649ca3737a5870ca808a735101c}{\-\_\-\-\_\-destruct} ()
+\item 
+\hyperlink{class_c_container_ae896641925887415d2b364fadc894904}{Drop} ()
+\item 
+\hyperlink{class_c_container_ade4cbaf7d8aecd823a5b2342ebe9a79f}{Add\-Index} (\$the\-Index, \$the\-Options=Array())
+\item 
+\hyperlink{class_c_container_ae2a912b433ba916ce5af0b21d657243b}{Manage\-Object} (\&\$the\-Object, \$the\-Identifier=N\-U\-L\-L, \$the\-Modifiers=k\-F\-L\-A\-G\-\_\-\-D\-E\-F\-A\-U\-L\-T)
+\item 
+\hyperlink{class_c_container_abbb981df971e40d73bc530209c184028}{Check\-Object} (\$the\-Identifier, \$the\-Offset=N\-U\-L\-L)
+\item 
+\hyperlink{class_c_container_a9f422d5c6d99eea28993614749ee05a3}{Query} (\$the\-Query=N\-U\-L\-L, \$the\-Fields=N\-U\-L\-L, \$the\-Sort=N\-U\-L\-L, \$the\-Start=N\-U\-L\-L, \$the\-Limit=N\-U\-L\-L, \$the\-Result=N\-U\-L\-L)
+\item 
+\hyperlink{class_c_container_a1deac33bfa698889c45d9021a274392a}{Remove} (\$the\-Query=N\-U\-L\-L)
+\item 
+\hyperlink{class_c_container_aa339d3c4c9b011713176a89fe9c7783d}{Unserialise\-Object} (\&\$the\-Object)
+\item 
+\hyperlink{class_c_container_a02b227658d1799d3608973312f67b28c}{Unserialise\-Data} (\&\$the\-Element, \$the\-Type=N\-U\-L\-L)
+\item 
+\hyperlink{class_c_container_afa72f0da28ad8c3955cb9fedbc0ac2df}{Next\-Sequence} (\$the\-Key, \$the\-Container=N\-U\-L\-L)
+\end{DoxyCompactItemize}
+\subsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+static \hyperlink{class_c_container_af564e0d279b21cd89069ff8622ce2bc7}{New\-Query} (\$the\-Query=N\-U\-L\-L)
+\end{DoxyCompactItemize}
+\subsection*{Additional Inherited Members}
+
+
+\subsection{Constructor \& Destructor Documentation}
+\hypertarget{class_c_container_acc336649ca3737a5870ca808a735101c}{\index{C\-Container@{C\-Container}!\-\_\-\-\_\-destruct@{\-\_\-\-\_\-destruct}}
+\index{\-\_\-\-\_\-destruct@{\-\_\-\-\_\-destruct}!CContainer@{C\-Container}}
+\subsubsection[{\-\_\-\-\_\-destruct}]{\setlength{\rightskip}{0pt plus 5cm}C\-Container\-::\-\_\-\-\_\-destruct (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{class_c_container_acc336649ca3737a5870ca808a735101c}
+\subparagraph*{Destructor}
+
+We implement the destructor to get rid of the graph\-: the Neo4j P\-H\-P interface, for instance, has closures that cannot be serialised, so we need to reset the graph \hyperlink{}{k\-O\-F\-F\-S\-E\-T\-\_\-\-G\-R\-A\-P\-H} offset before destroying the object.
+
+public 
+
+\subsection{Member Function Documentation}
+\hypertarget{class_c_container_ade4cbaf7d8aecd823a5b2342ebe9a79f}{\index{C\-Container@{C\-Container}!Add\-Index@{Add\-Index}}
+\index{Add\-Index@{Add\-Index}!CContainer@{C\-Container}}
+\subsubsection[{Add\-Index}]{\setlength{\rightskip}{0pt plus 5cm}C\-Container\-::\-Add\-Index (
+\begin{DoxyParamCaption}
+\item[{}]{\$the\-Index, }
+\item[{}]{\$the\-Options = {\ttfamily Array()}}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [abstract]}}}\label{class_c_container_ade4cbaf7d8aecd823a5b2342ebe9a79f}
+\subparagraph*{Add an index}
+
+This method should be implemented by derived concrete instances.
+
+
+\begin{DoxyParams}[1]{Parameters}
+array & {\em \$the\-Index} & Key/\-Sort list. \\
+\hline
+array & {\em \$the\-Options} & List of index options.\\
+\hline
+\end{DoxyParams}
+public \hypertarget{class_c_container_abbb981df971e40d73bc530209c184028}{\index{C\-Container@{C\-Container}!Check\-Object@{Check\-Object}}
+\index{Check\-Object@{Check\-Object}!CContainer@{C\-Container}}
+\subsubsection[{Check\-Object}]{\setlength{\rightskip}{0pt plus 5cm}C\-Container\-::\-Check\-Object (
+\begin{DoxyParamCaption}
+\item[{}]{\$the\-Identifier, }
+\item[{}]{\$the\-Offset = {\ttfamily NULL}}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [abstract]}}}\label{class_c_container_abbb981df971e40d73bc530209c184028}
+\subparagraph*{Check if object exists in container}
+
+This method can be used to check if an object exists in the current container, the method expects an identifier and an optional offset, it will return {\ttfamily T\-R\-U\-E} if found and {\ttfamily F\-A\-L\-S\-E} if not.
+
+
+\begin{DoxyParams}[1]{Parameters}
+mixed & {\em \$the\-Identifier} & Identifier. \\
+\hline
+string & {\em \$the\-Offset} & Offset.\\
+\hline
+\end{DoxyParams}
+public \begin{DoxyReturn}{Returns}
+boolean {\ttfamily T\-R\-U\-E} exists. 
+\end{DoxyReturn}
+\hypertarget{class_c_container_ae896641925887415d2b364fadc894904}{\index{C\-Container@{C\-Container}!Drop@{Drop}}
+\index{Drop@{Drop}!CContainer@{C\-Container}}
+\subsubsection[{Drop}]{\setlength{\rightskip}{0pt plus 5cm}C\-Container\-::\-Drop (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [abstract]}}}\label{class_c_container_ae896641925887415d2b364fadc894904}
+\subparagraph*{Delete a container}
+
+This method should be implemented by derived concrete instances.
+
+public \hypertarget{class_c_container_ae2a912b433ba916ce5af0b21d657243b}{\index{C\-Container@{C\-Container}!Manage\-Object@{Manage\-Object}}
+\index{Manage\-Object@{Manage\-Object}!CContainer@{C\-Container}}
+\subsubsection[{Manage\-Object}]{\setlength{\rightskip}{0pt plus 5cm}C\-Container\-::\-Manage\-Object (
+\begin{DoxyParamCaption}
+\item[{\&}]{\$the\-Object, }
+\item[{}]{\$the\-Identifier = {\ttfamily NULL}, }
+\item[{}]{\$the\-Modifiers = {\ttfamily kFLAG\-\_\-DEFAULT}}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [abstract]}}}\label{class_c_container_ae2a912b433ba916ce5af0b21d657243b}
+\subparagraph*{Manage an object from the container}
+
+This method can be used to manage a single object in the container, it can {\itshape insert}, {\itshape update}, {\itshape replace}, {\itshape modify}, {\itshape retrieve} and {\itshape delete} an object from the current container by providing the object and/or its native unique identifier (\hyperlink{}{k\-T\-A\-G\-\_\-\-N\-I\-D}).
+
+This method expects three parameters\-:
+
+
+\begin{DoxyItemize}
+\item {\ttfamily \$the\-Object}\-: The object or the data to be handled. 
+\item {\ttfamily \$the\-Identifier}\-: The native unique identifier (\hyperlink{}{k\-T\-A\-G\-\_\-\-N\-I\-D}) of the object. If the value is {\itshape N\-U\-L\-L}, it means that it is the duty of the current container to set the value, this will generally be the case when inserting objects; in all other cases the parameter is required. 
+\item {\ttfamily \$the\-Modifiers}\-: This parameter represents the operation options, or the list of offsets to be returned. If the parameter is not an array, it will be interpreted as a bitfield where the following values apply\-: 
+\begin{DoxyItemize}
+\item \hyperlink{}{k\-F\-L\-A\-G\-\_\-\-P\-E\-R\-S\-I\-S\-T\-\_\-\-I\-N\-S\-E\-R\-T}\-: The provided object will be inserted in the container. It is assumed that no other element in the container shares the same identifier, if not, the method should raise an exception. In this case the {\ttfamily \$the\-Object} represents the full object and {\ttfamily \$the\-Identifier} represents the object unique identifier, or {\ttfamily N\-U\-L\-L}, if it is the duty of the container to create the identifier. If the identifier was created by the container, it is the duty of this method to set it into the provided object. In this case the method should return the inserted object's native identifier (\hyperlink{}{k\-T\-A\-G\-\_\-\-N\-I\-D}). 
+\item \hyperlink{}{k\-F\-L\-A\-G\-\_\-\-P\-E\-R\-S\-I\-S\-T\-\_\-\-U\-P\-D\-A\-T\-E}\-: The provided object will replace an object existing in the container. In this case the {\ttfamily \$the\-Object} represents the full object and {\ttfamily \$the\-Identifier} represents the object unique identifier. In this case the method should return {\ttfamily T\-R\-U\-E} if the object was updated and {\ttfamily F\-A\-L\-S\-E} if the object was not found. 
+\item \hyperlink{}{k\-F\-L\-A\-G\-\_\-\-P\-E\-R\-S\-I\-S\-T\-\_\-\-R\-E\-P\-L\-A\-C\-E}\-: The provided object will be inserted if the identifier is missing or it doesn't match any entry in the container, or it will update the object corresponding to the provided identifier. This option represents the combination of the \hyperlink{}{k\-F\-L\-A\-G\-\_\-\-P\-E\-R\-S\-I\-S\-T\-\_\-\-I\-N\-S\-E\-R\-T} and \hyperlink{}{k\-F\-L\-A\-G\-\_\-\-P\-E\-R\-S\-I\-S\-T\-\_\-\-U\-P\-D\-A\-T\-E} operations. In this case the {\ttfamily \$the\-Object} represents the full object and {\ttfamily \$the\-Identifier} represents the object unique identifier, or {\ttfamily N\-U\-L\-L}, if it is the duty of the container to create the identifier. If the identifier was created by the container, it is the duty of this method to set it into the provided object. In this case the method should return the inserted object's native identifier (\hyperlink{}{k\-T\-A\-G\-\_\-\-N\-I\-D}). 
+\item \hyperlink{}{k\-F\-L\-A\-G\-\_\-\-P\-E\-R\-S\-I\-S\-T\-\_\-\-M\-O\-D\-I\-F\-Y}\-: This option can be used to apply modifications to a subset of the object. In this case the parameters of this method have the following functions\-: 
+\begin{DoxyItemize}
+\item {\ttfamily \$the\-Object}\-: This parameter will be an array of elements whose {\itshape key} corresponds to the offset to be considered and the {\itshape value} to the value that the operation will use. 
+\item {\ttfamily \$the\-Identifier}\-: This parameter keeps its original meaning, it should contain the native identifier of the object to be modified. If this parameter is a \hyperlink{class_c_query}{C\-Query} instance, this will be used to select the objects to be modified. 
+\item {\ttfamily \$the\-Modifiers}\-: Another section of this bitfield will hold the flags that determine what specific modification should be performed\-: 
+\begin{DoxyItemize}
+\item \hyperlink{}{k\-F\-L\-A\-G\-\_\-\-M\-O\-D\-I\-F\-Y\-\_\-\-I\-N\-C\-R\-E\-M\-E\-N\-T}\-: This flag indicates an increment or decrement operation, the method will take the value corresponding to the offset in {\ttfamily \$the\-Object} parameter and add it to the object identified by {\ttfamily \$the\-Identifier} in the container. For instance, to increment by one the '{\ttfamily A}' offset of object {\ttfamily X}, you would pass the {\ttfamily array( 'A' =$>$ 1 )} in {\ttfamily \$the\-Object}, {\ttfamily X} in {\ttfamily \$the\-Identifier} and set the k\-F\-L\-A\-G\-\_\-\-M\-O\-D\-I\-F\-Y\-\_\-\-I\-N\-C\-R\-E\-M\-E\-N\-T flag; to decrement by two you would pass {\ttfamily array( 'A' =$>$ -\/2 )} in {\ttfamily \$the\-Object}, with all other parameters unchanged. If the offset does not exist, it will be initialised with the increment value. 
+\item \hyperlink{}{k\-F\-L\-A\-G\-\_\-\-M\-O\-D\-I\-F\-Y\-\_\-\-A\-P\-P\-E\-N\-D}\-: This flag indicates that we want to append a value to an existing array, the method will take the value corresponding to the offset in {\ttfamily \$the\-Object} and append it to the offset in {\ttfamily \$the\-Object} for the object identified by {\ttfamily \$the\-Identifier} in the container. For instance, to append the value '{\ttfamily A}' to the array in offset '{\ttfamily F\-I\-E\-L\-D}' for object {\ttfamily X}, you would pass the {\ttfamily array( 'F\-I\-E\-L\-D' =$>$ 'A' )} in {\ttfamily \$the\-Object}, {\ttfamily X} in {\ttfamily \$the\-Identifier} and set the k\-F\-L\-A\-G\-\_\-\-M\-O\-D\-I\-F\-Y\-\_\-\-A\-P\-P\-E\-N\-D flag. If the field does not exist, it will be created with an array composed of the provided append value; if the field exists and its value is not an array, an exception should be raised. Note that if you provide an array as the value, the method will assume that you want to append the elements of the array as individual items; if you provide an {\ttfamily Array\-Object}, instead, the method will assume you want to append the whole array as a single item. 
+\item \hyperlink{}{k\-F\-L\-A\-G\-\_\-\-M\-O\-D\-I\-F\-Y\-\_\-\-A\-D\-D\-S\-E\-T}\-: This flag indicates that we want to add a value to a set, this operation is equivalent to \hyperlink{}{k\-F\-L\-A\-G\-\_\-\-M\-O\-D\-I\-F\-Y\-\_\-\-A\-P\-P\-E\-N\-D}, except that the value will be appended only if it doesn't exist already in the receiving array. 
+\item \hyperlink{}{k\-F\-L\-A\-G\-\_\-\-M\-O\-D\-I\-F\-Y\-\_\-\-P\-O\-P}\-: This flag indicates that we want to remove the first or last element from an array. The method will take the value corresponding to the offset in {\ttfamily \$the\-Object} and check its sign\-: if positive, the method will remove the first element; if negative it will remove the last. For instance, to remove the first element in the '{\ttfamily F\-I\-E\-L\-D}' offset of object {\ttfamily X}, you would pass the {\ttfamily array( 'F\-I\-E\-L\-D' =$>$ 1 )} in {\ttfamily \$the\-Object}, {\ttfamily X} in {\ttfamily \$the\-Identifier} and set the k\-F\-L\-A\-G\-\_\-\-M\-O\-D\-I\-F\-Y\-\_\-\-P\-O\-P flag in {\ttfamily \$the\-Modifiers}; to remove the last element you would pass {\ttfamily array( 'F\-I\-E\-L\-D' =$>$ -\/1 )} in {\ttfamily \$the\-Object}. If the offset does not exist, the method should not fail; if the offset is not an array, the method should raise an exception. 
+\item \hyperlink{}{k\-F\-L\-A\-G\-\_\-\-M\-O\-D\-I\-F\-Y\-\_\-\-P\-U\-L\-L}\-: This flag indicates that we want to remove all occurrences of a value from an array. For instance, to remove all occurrances of '{\ttfamily A}' from the array contained in the '{\ttfamily F\-I\-E\-L\-D}' offset of object {\ttfamily X}, you would pass {\ttfamily array( 'F\-I\-E\-L\-D' =$>$ 'A' )} in {\ttfamily \$the\-Object}, {\ttfamily X} in {\ttfamily \$the\-Identifier} and set the k\-F\-L\-A\-G\-\_\-\-M\-O\-D\-I\-F\-Y\-\_\-\-P\-U\-L\-L flag in {\ttfamily \$the\-Modifiers}. If the field exists and its value is not an array, an exception should be raised. 
+\item \hyperlink{}{k\-F\-L\-A\-G\-\_\-\-M\-O\-D\-I\-F\-Y\-\_\-\-M\-A\-S\-K} {\itshape off}\-: If none of the above flags are set, it means that the key/value pairs set in {\ttfamily \$the\-Object} represent offsets to be added or removed, depending on the value part of the pair\-: if the value is {\ttfamily N\-U\-L\-L}, it means that you want to remove the offset; any other value will replace the existing offset or be added to the object. 
+\end{DoxyItemize}
+\end{DoxyItemize}In this case the method will return the modified object in the {\ttfamily \$the\-Object} parameter, or raise an exception if the operation fails. 
+\item \hyperlink{}{k\-F\-L\-A\-G\-\_\-\-P\-E\-R\-S\-I\-S\-T\-\_\-\-D\-E\-L\-E\-T\-E}\-: This option assumes you want to remove the object from the container. In this case the {\ttfamily \$the\-Object} represents the full object and {\ttfamily \$the\-Identifier} represents the object unique identifier, what counts is that the object's unique identifier (\hyperlink{}{k\-T\-A\-G\-\_\-\-N\-I\-D}) is provided. If the object is not found in the container, the method should not fail. In this case the method should return {\ttfamily T\-R\-U\-E} if the object was deleted and {\ttfamily F\-A\-L\-S\-E} if the object was not found. 
+\end{DoxyItemize}If none of the above flags are set, it means that the caller wants to retrieve the object identified by the \hyperlink{}{k\-T\-A\-G\-\_\-\-N\-I\-D} offset from the provided object or from the provided identifier. If found, the provided object will receive the located object and the method will return {\ttfamily T\-R\-U\-E}; if not found, the method will set the provided object to {\ttfamily N\-U\-L\-L} and return {\ttfamily F\-A\-L\-S\-E}. If the parameter is an array, it implies that the requested operation is to retrieve the object, the array will be interpreted as the list of object offsets to be returned, the \hyperlink{}{k\-T\-A\-G\-\_\-\-N\-I\-D} offset is returned by default. 
+\end{DoxyItemize}
+
+The method should raise an exception if the operation was not successful and update the provided object with whatever data the operation will generate.
+
+The method will also raise an exception if the object is not yet initialised (\hyperlink{class_c_status_document_a954dee06e219e0a0f2e7fa6edac56e28}{\-\_\-\-Is\-Inited()}), this happens when the object received the native container.
+
+This class is abstract, which means that derived classes must implement the specific functionality of specialised data stores, for this reason this method is declared abstract.
+
+
+\begin{DoxyParams}[1]{Parameters}
+reference & {\em \&\$the\-Object} & Object. \\
+\hline
+mixed & {\em \$the\-Identifier} & Identifier. \\
+\hline
+mixed & {\em \$the\-Modifiers} & Options or offsets list.\\
+\hline
+\end{DoxyParams}
+public \begin{DoxyReturn}{Returns}
+mixed The native operation status.
+\end{DoxyReturn}
+\begin{DoxySeeAlso}{See Also}
+k\-F\-L\-A\-G\-\_\-\-P\-E\-R\-S\-I\-S\-T\-\_\-\-I\-N\-S\-E\-R\-T k\-F\-L\-A\-G\-\_\-\-P\-E\-R\-S\-I\-S\-T\-\_\-\-U\-P\-D\-A\-T\-E k\-F\-L\-A\-G\-\_\-\-P\-E\-R\-S\-I\-S\-T\-\_\-\-M\-O\-D\-I\-F\-Y 
+
+k\-F\-L\-A\-G\-\_\-\-P\-E\-R\-S\-I\-S\-T\-\_\-\-R\-E\-P\-L\-A\-C\-E k\-F\-L\-A\-G\-\_\-\-P\-E\-R\-S\-I\-S\-T\-\_\-\-M\-O\-D\-I\-F\-Y k\-F\-L\-A\-G\-\_\-\-P\-E\-R\-S\-I\-S\-T\-\_\-\-D\-E\-L\-E\-T\-E 
+
+k\-F\-L\-A\-G\-\_\-\-M\-O\-D\-I\-F\-Y\-\_\-\-I\-N\-C\-R\-E\-M\-E\-N\-T k\-F\-L\-A\-G\-\_\-\-M\-O\-D\-I\-F\-Y\-\_\-\-A\-P\-P\-E\-N\-D k\-F\-L\-A\-G\-\_\-\-M\-O\-D\-I\-F\-Y\-\_\-\-A\-D\-D\-S\-E\-T 
+
+k\-F\-L\-A\-G\-\_\-\-M\-O\-D\-I\-F\-Y\-\_\-\-P\-O\-P k\-F\-L\-A\-G\-\_\-\-M\-O\-D\-I\-F\-Y\-\_\-\-P\-U\-L\-L k\-F\-L\-A\-G\-\_\-\-M\-O\-D\-I\-F\-Y\-\_\-\-M\-A\-S\-K 
+\end{DoxySeeAlso}
+\hypertarget{class_c_container_af564e0d279b21cd89069ff8622ce2bc7}{\index{C\-Container@{C\-Container}!New\-Query@{New\-Query}}
+\index{New\-Query@{New\-Query}!CContainer@{C\-Container}}
+\subsubsection[{New\-Query}]{\setlength{\rightskip}{0pt plus 5cm}static C\-Container\-::\-New\-Query (
+\begin{DoxyParamCaption}
+\item[{}]{\$the\-Query = {\ttfamily NULL}}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}}}\label{class_c_container_af564e0d279b21cd89069ff8622ce2bc7}
+\subparagraph*{Return an empty query}
+
+This method can be used to retrieve an empty query, the main utility of this method is to return a query object that is compatible with the current container.
+
+In this class we return an instance of the base \hyperlink{class_c_query}{C\-Query} class.
+
+
+\begin{DoxyParams}[1]{Parameters}
+mixed & {\em \$the\-Query} & Query data.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+\hyperlink{class_c_query}{C\-Query} An empty query object. 
+\end{DoxyReturn}
+\hypertarget{class_c_container_afa72f0da28ad8c3955cb9fedbc0ac2df}{\index{C\-Container@{C\-Container}!Next\-Sequence@{Next\-Sequence}}
+\index{Next\-Sequence@{Next\-Sequence}!CContainer@{C\-Container}}
+\subsubsection[{Next\-Sequence}]{\setlength{\rightskip}{0pt plus 5cm}C\-Container\-::\-Next\-Sequence (
+\begin{DoxyParamCaption}
+\item[{}]{\$the\-Key, }
+\item[{}]{\$the\-Container = {\ttfamily NULL}}
+\end{DoxyParamCaption}
+)}}\label{class_c_container_afa72f0da28ad8c3955cb9fedbc0ac2df}
+\subparagraph*{Return a sequence number}
+
+This method should return a sequence number connected to the provided key. Each time this method is called, the sequence number is incremented, which means that you should only call it when you intend to use this number.
+
+The first parameter, {\ttfamily \$the\-Key}, represents the key to the sequence, it will be the \hyperlink{}{k\-T\-A\-G\-\_\-\-N\-I\-D} of the record holding the sequence and the field holding the current number has the \hyperlink{}{k\-O\-F\-F\-S\-E\-T\-\_\-\-S\-E\-Q\-U\-E\-N\-C\-E} offset.
+
+The second parameter represents the container in which the sequence is stored\-:
+
+
+\begin{DoxyItemize}
+\item {\ttfamily string{\ttfamily \-: The method should use the native container corresponding to the provided string. }}
+\item {\ttfamily {\ttfamily {\ttfamily T\-R\-U\-E{\ttfamily \-: The method should use the string stored in \hyperlink{}{k\-C\-O\-N\-T\-A\-I\-N\-E\-R\-\_\-\-S\-E\-Q\-U\-E\-N\-C\-E\-\_\-\-N\-A\-M\-E}. }}}}
+\item {\ttfamily {\ttfamily {\ttfamily {\ttfamily {\ttfamily N\-U\-L\-L{\ttfamily \-: The method should use the current container. }}}}}}
+\end{DoxyItemize}
+
+{\ttfamily {\ttfamily {\ttfamily {\ttfamily {\ttfamily {\ttfamily If the object is not \hyperlink{}{Inited()}, the method should raise an exception.}}}}}}
+
+{\ttfamily {\ttfamily {\ttfamily {\ttfamily {\ttfamily {\ttfamily If the current object does not support sequences, this method should return {\ttfamily N\-U\-L\-L}.}}}}}}
+
+{\ttfamily {\ttfamily {\ttfamily {\ttfamily {\ttfamily {\ttfamily This class is abstract and by default sequences are not supported.}}}}}}
+
+{\ttfamily {\ttfamily {\ttfamily {\ttfamily {\ttfamily {\ttfamily 
+\begin{DoxyParams}[1]{Parameters}
+string & {\em \$the\-Key} & Sequence key. \\
+\hline
+mixed & {\em \$the\-Container} & Sequence container.\\
+\hline
+\end{DoxyParams}
+public \begin{DoxyReturn}{Returns}
+mixed The sequence number or {\ttfamily N\-U\-L\-L}.
+\end{DoxyReturn}
+
+\begin{DoxyExceptions}{Exceptions}
+{\em Exception} & \\
+\hline
+\end{DoxyExceptions}
+}}}}}}\hypertarget{class_c_container_a9f422d5c6d99eea28993614749ee05a3}{\index{C\-Container@{C\-Container}!Query@{Query}}
+\index{Query@{Query}!CContainer@{C\-Container}}
+\subsubsection[{Query}]{\setlength{\rightskip}{0pt plus 5cm}C\-Container\-::\-Query (
+\begin{DoxyParamCaption}
+\item[{}]{\$the\-Query = {\ttfamily NULL}, }
+\item[{}]{\$the\-Fields = {\ttfamily NULL}, }
+\item[{}]{\$the\-Sort = {\ttfamily NULL}, }
+\item[{}]{\$the\-Start = {\ttfamily NULL}, }
+\item[{}]{\$the\-Limit = {\ttfamily NULL}, }
+\item[{}]{\$the\-Result = {\ttfamily NULL}}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [abstract]}}}\label{class_c_container_a9f422d5c6d99eea28993614749ee05a3}
+\subparagraph*{Perform a query}
+
+This method can be used to perform a query on the container, it expects an instance of \hyperlink{class_c_query}{C\-Query} as the query, or {\ttfamily N\-U\-L\-L}, to query the whole container and two optional parameters that represents the list of desired fields and the list of sort fields with sense.
+
+
+\begin{DoxyItemize}
+\item {\ttfamily \$the\-Query}\-: The query expressed as an array or query object, if omitted, it is assumed the query should cover the whole contents of the container. 
+\item {\ttfamily \$the\-Fields}\-: The list of fields to be returned, if omitted, it is assumed all fields are to be returned. 
+\item {\ttfamily \$the\-Sort}\-: The query sort order provided as an array in which the key represents the field name and he value a number that represents the sense\-: negative numbers indicate descending order and positive numbers ascending order; a value of zero will be skipped. 
+\item {\ttfamily \$the\-Start}\-: The record number on which to start returning results (zero based). 
+\item {\ttfamily \$the\-Limit}\-: The maximum number of records to be returned. 
+\item {\ttfamily \$the\-Result}\-: This parameter determines the result of the method\-: 
+\begin{DoxyItemize}
+\item {\ttfamily N\-U\-L\-L}\-: Return the selection cursor (default). 
+\item {\ttfamily T\-R\-U\-E}\-: Return first matched record or {\ttfamily N\-U\-L\-L} if there were no matches. 
+\item {\itshape other}\-: Any other value will be interpreted as a field identifier\-: in this case the method will return an array containing the distinct values of the provided field identifier. 
+\end{DoxyItemize}
+\end{DoxyItemize}
+
+When {\ttfamily \$the\-Result} is set to {\ttfamily N\-U\-L\-L}, the method should return an object that represents a cursor into the query results, the object should be iterable and feature a method, {\itshape count}, that accepts a boolean parameter\-: if {\ttfamily T\-R\-U\-E} the method should return the actual number of elements available taking into consideration paging parameters; if {\ttfamily F\-A\-L\-S\-E}, the method should return the total affected elements count, that is, the total number of elements affected by the query regardless of paging parameters.
+
+
+\begin{DoxyParams}[1]{Parameters}
+array & {\em \$the\-Query} & Query. \\
+\hline
+array & {\em \$the\-Fields} & Fields set. \\
+\hline
+array & {\em \$the\-Sort} & Sort order. \\
+\hline
+integer & {\em \$the\-Start} & Page start. \\
+\hline
+integer & {\em \$the\-Limit} & Page limit. \\
+\hline
+mixed & {\em \$the\-Result} & Result type.\\
+\hline
+\end{DoxyParams}
+public \begin{DoxyReturn}{Returns}
+object Native recordset. 
+\end{DoxyReturn}
+\hypertarget{class_c_container_a1deac33bfa698889c45d9021a274392a}{\index{C\-Container@{C\-Container}!Remove@{Remove}}
+\index{Remove@{Remove}!CContainer@{C\-Container}}
+\subsubsection[{Remove}]{\setlength{\rightskip}{0pt plus 5cm}C\-Container\-::\-Remove (
+\begin{DoxyParamCaption}
+\item[{}]{\$the\-Query = {\ttfamily NULL}}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [abstract]}}}\label{class_c_container_a1deac33bfa698889c45d9021a274392a}
+\subparagraph*{Perform a deletion}
+
+This method can be used to delete elements of a container, it expects an instance of \hyperlink{class_c_query}{C\-Query} as the query, or {\ttfamily N\-U\-L\-L}, to delete the whole container.
+
+
+\begin{DoxyItemize}
+\item {\ttfamily \$the\-Query}\-: The query expressed as an array or query object, if omitted, it is assumed the query should cover the whole contents of the container. 
+\end{DoxyItemize}
+
+If the query selected no object, the method should return {\ttfamily N\-U\-L\-L}, if the operation succeeded the method should return an integer containing the number of affected objects; on errors the method should raise an exception.
+
+
+\begin{DoxyParams}[1]{Parameters}
+array & {\em \$the\-Query} & Query.\\
+\hline
+\end{DoxyParams}
+public \begin{DoxyReturn}{Returns}
+integer Number of affected elements. 
+\end{DoxyReturn}
+\hypertarget{class_c_container_a02b227658d1799d3608973312f67b28c}{\index{C\-Container@{C\-Container}!Unserialise\-Data@{Unserialise\-Data}}
+\index{Unserialise\-Data@{Unserialise\-Data}!CContainer@{C\-Container}}
+\subsubsection[{Unserialise\-Data}]{\setlength{\rightskip}{0pt plus 5cm}C\-Container\-::\-Unserialise\-Data (
+\begin{DoxyParamCaption}
+\item[{\&}]{\$the\-Element, }
+\item[{}]{\$the\-Type = {\ttfamily NULL}}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [abstract]}}}\label{class_c_container_a02b227658d1799d3608973312f67b28c}
+Unserialise provided data element.
+
+This method should convert the provided structure into a custom data type compatible with the current container.
+
+This method is called by a public \hyperlink{class_c_container_aa339d3c4c9b011713176a89fe9c7783d}{Unserialise\-Object()} interface which traverses an object and provides this method with all elements that satisfy the following conditions\-:
+
+
+\begin{DoxyItemize}
+\item {\ttfamily \hyperlink{class_c_data_type}{C\-Data\-Type}}\-: All instances derived from this class are sent to this method. 
+\item {\ttfamily Array} or {\ttfamily Array\-Object}\-: If the structure is composed of exactly two offsets and these elements are \hyperlink{}{k\-T\-A\-G\-\_\-\-C\-U\-S\-T\-O\-M\-\_\-\-T\-Y\-P\-E} and \hyperlink{}{k\-T\-A\-G\-\_\-\-C\-U\-S\-T\-O\-M\-\_\-\-D\-A\-T\-A}, it will be sent to this method. 
+\end{DoxyItemize}
+
+The elements to be converted are provided by reference, which means that they have to be converted in place.
+
+This method can also be used in a different way\-: you can ask the method to convert the provided scalar to the corresponding custom type, for this you need to provide a scalar in the first parameter and a data type in the second.
+
+In this class we declare this class abstract, derived concrete classes must implement it.
+
+
+\begin{DoxyParams}[1]{Parameters}
+reference & {\em \&\$the\-Element} & Element to encode. \\
+\hline
+string & {\em \$the\-Type} & Data type.\\
+\hline
+\end{DoxyParams}
+public \hypertarget{class_c_container_aa339d3c4c9b011713176a89fe9c7783d}{\index{C\-Container@{C\-Container}!Unserialise\-Object@{Unserialise\-Object}}
+\index{Unserialise\-Object@{Unserialise\-Object}!CContainer@{C\-Container}}
+\subsubsection[{Unserialise\-Object}]{\setlength{\rightskip}{0pt plus 5cm}C\-Container\-::\-Unserialise\-Object (
+\begin{DoxyParamCaption}
+\item[{\&}]{\$the\-Object}
+\end{DoxyParamCaption}
+)}}\label{class_c_container_aa339d3c4c9b011713176a89fe9c7783d}
+Unserialise provided object.
+
+This method will convert concrete derived instances of \hyperlink{class_c_data_type}{C\-Data\-Type} or equivalent structures into native data types suitable to be stored in containers.
+
+This method will scan the provided object or structure and pass all instances derived from \hyperlink{class_c_data_type}{C\-Data\-Type} to another public \hyperlink{class_c_container_a02b227658d1799d3608973312f67b28c}{Unserialise\-Data()} method that will convert these objects into native data types that are compatible with the specific container type.
+
+The method will scan the provided structure and select all elements which are arrays, Array\-Objects or objects derived from \hyperlink{class_c_data_type}{C\-Data\-Type}, these elements will be sent to the \hyperlink{class_c_container_a02b227658d1799d3608973312f67b28c}{Unserialise\-Data()} method that will take care of converting these structures into native data types that are compatible with the specific container type.
+
+The method will perform the conversion directly into the provided reference and will use recursion to traverse the provided structures.
+
+Elements sent to the \hyperlink{class_c_container_a02b227658d1799d3608973312f67b28c}{Unserialise\-Data()} method are selected as follows\-:
+
+
+\begin{DoxyItemize}
+\item {\ttfamily \hyperlink{class_c_data_type}{C\-Data\-Type}}\-: All instances derived from this class are sent to the \hyperlink{class_c_container_a02b227658d1799d3608973312f67b28c}{Unserialise\-Data()} method. 
+\item {\ttfamily Array} or {\ttfamily Array\-Object}\-: If the structure is composed of exactly two offsets and these elements are \hyperlink{}{k\-T\-A\-G\-\_\-\-C\-U\-S\-T\-O\-M\-\_\-\-T\-Y\-P\-E} and \hyperlink{}{k\-T\-A\-G\-\_\-\-C\-U\-S\-T\-O\-M\-\_\-\-D\-A\-T\-A}, it will be sent to the \hyperlink{class_c_container_a02b227658d1799d3608973312f67b28c}{Unserialise\-Data()} method. If the above condition is not satisfied, the structure will be sent recursively to this method. 
+\end{DoxyItemize}
+
+
+\begin{DoxyParams}[1]{Parameters}
+reference & {\em \&\$the\-Object} & Object to encode.\\
+\hline
+\end{DoxyParams}
+public
+
+\hyperlink{class_c_container_a02b227658d1799d3608973312f67b28c}{Unserialise\-Data()}
+
+\begin{DoxySeeAlso}{See Also}
+k\-T\-A\-G\-\_\-\-C\-U\-S\-T\-O\-M\-\_\-\-T\-Y\-P\-E k\-T\-A\-G\-\_\-\-C\-U\-S\-T\-O\-M\-\_\-\-D\-A\-T\-A 
+\end{DoxySeeAlso}
+
+
+The documentation for this class was generated from the following file\-:\begin{DoxyCompactItemize}
+\item 
+/\-Library/\-Web\-Server/\-Library/\-P\-H\-P\-Wrapper/classes/C\-Container.\-php\end{DoxyCompactItemize}

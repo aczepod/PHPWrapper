@@ -1,0 +1,80 @@
+\hypertarget{class_c_database}{\section{C\-Database Class Reference}
+\label{class_c_database}\index{C\-Database@{C\-Database}}
+}
+Inheritance diagram for C\-Database\-:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=6.000000cm]{class_c_database}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{class_c_database_a378c145a3e033c52205fb4ec5765247c}{\-\_\-\-\_\-destruct} ()
+\item 
+\hyperlink{class_c_database_a21dd7143f4a3bc8d8cbbfb24ced5970f}{Drop} ()
+\item 
+\hyperlink{class_c_database_a2e93bccc867d3eac9bca95abd74a2030}{Container} (\$the\-Container=N\-U\-L\-L)
+\end{DoxyCompactItemize}
+\subsection*{Additional Inherited Members}
+
+
+\subsection{Constructor \& Destructor Documentation}
+\hypertarget{class_c_database_a378c145a3e033c52205fb4ec5765247c}{\index{C\-Database@{C\-Database}!\-\_\-\-\_\-destruct@{\-\_\-\-\_\-destruct}}
+\index{\-\_\-\-\_\-destruct@{\-\_\-\-\_\-destruct}!CDatabase@{C\-Database}}
+\subsubsection[{\-\_\-\-\_\-destruct}]{\setlength{\rightskip}{0pt plus 5cm}C\-Database\-::\-\_\-\-\_\-destruct (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{class_c_database_a378c145a3e033c52205fb4ec5765247c}
+\subparagraph*{Destructor}
+
+We implement the destructor to get rid of the graph\-: the Neo4j P\-H\-P interface, for instance, has closures that cannot be serialised, so we need to reset the graph \hyperlink{}{k\-O\-F\-F\-S\-E\-T\-\_\-\-G\-R\-A\-P\-H} offset before destroying the object.
+
+public 
+
+\subsection{Member Function Documentation}
+\hypertarget{class_c_database_a2e93bccc867d3eac9bca95abd74a2030}{\index{C\-Database@{C\-Database}!Container@{Container}}
+\index{Container@{Container}!CDatabase@{C\-Database}}
+\subsubsection[{Container}]{\setlength{\rightskip}{0pt plus 5cm}C\-Database\-::\-Container (
+\begin{DoxyParamCaption}
+\item[{}]{\$the\-Container = {\ttfamily NULL}}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [abstract]}}}\label{class_c_database_a2e93bccc867d3eac9bca95abd74a2030}
+\subparagraph*{Generate a container object}
+
+This method can be used to return a container object belonging to the current database.
+
+The parameter will be used by concrete instances to select which container to return, the goal of this class is only to declare the public interface, which must be implemented by specialised derived classes.
+
+{\itshape Note\-: This method should also take care of setting the \hyperlink{}{k\-O\-F\-F\-S\-E\-T\-\_\-\-N\-A\-M\-E}, \hyperlink{}{k\-O\-F\-F\-S\-E\-T\-\_\-\-G\-R\-A\-P\-H} and \hyperlink{}{k\-O\-F\-F\-S\-E\-T\-\_\-\-P\-A\-R\-E\-N\-T} offsets of the generated object.}
+
+
+\begin{DoxyParams}[1]{Parameters}
+mixed & {\em \$the\-Container} & Container selector.\\
+\hline
+\end{DoxyParams}
+public \begin{DoxyReturn}{Returns}
+mixed The container object.
+\end{DoxyReturn}
+\begin{DoxySeeAlso}{See Also}
+k\-O\-F\-F\-S\-E\-T\-\_\-\-N\-A\-M\-E k\-O\-F\-F\-S\-E\-T\-\_\-\-G\-R\-A\-P\-H k\-O\-F\-F\-S\-E\-T\-\_\-\-P\-A\-R\-E\-N\-T 
+\end{DoxySeeAlso}
+\hypertarget{class_c_database_a21dd7143f4a3bc8d8cbbfb24ced5970f}{\index{C\-Database@{C\-Database}!Drop@{Drop}}
+\index{Drop@{Drop}!CDatabase@{C\-Database}}
+\subsubsection[{Drop}]{\setlength{\rightskip}{0pt plus 5cm}C\-Database\-::\-Drop (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [abstract]}}}\label{class_c_database_a21dd7143f4a3bc8d8cbbfb24ced5970f}
+\subparagraph*{Delete a database}
+
+This method can be used to delete or erase a database, it is up to derived concrete instances to implement it.
+
+The method takes no parameters.
+
+public 
+
+The documentation for this class was generated from the following file\-:\begin{DoxyCompactItemize}
+\item 
+/\-Library/\-Web\-Server/\-Library/\-P\-H\-P\-Wrapper/classes/C\-Database.\-php\end{DoxyCompactItemize}

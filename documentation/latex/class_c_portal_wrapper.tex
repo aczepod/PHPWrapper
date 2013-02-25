@@ -1,0 +1,287 @@
+\hypertarget{class_c_portal_wrapper}{\section{C\-Portal\-Wrapper Class Reference}
+\label{class_c_portal_wrapper}\index{C\-Portal\-Wrapper@{C\-Portal\-Wrapper}}
+}
+Inheritance diagram for C\-Portal\-Wrapper\-:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=8.000000cm]{class_c_portal_wrapper}
+\end{center}
+\end{figure}
+\subsection*{Static Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{class_c_portal_wrapper_a958c92aeb9d0db3d7b67d3077da391f3}{static {\bfseries \$s\-Parameter\-List} = array( k\-A\-P\-I\-\_\-\-C\-R\-E\-D\-E\-N\-T\-I\-A\-L\-S )}\label{class_c_portal_wrapper_a958c92aeb9d0db3d7b67d3077da391f3}
+
+\end{DoxyCompactItemize}
+\subsection*{Protected Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{class_c_portal_wrapper_a9082dde4409ea5d460735f5fe491d7d3}{\-\_\-\-Parse\-Request} ()
+\item 
+\hyperlink{class_c_portal_wrapper_ad6644c207927f83b3b41fefe894db393}{\-\_\-\-Format\-Request} ()
+\item 
+\hyperlink{class_c_portal_wrapper_a82b5b4d84bd970e44f451f095eeded9e}{\-\_\-\-Validate\-Request} ()
+\item 
+\hyperlink{class_c_portal_wrapper_ac8bfaffec1025ce29086a029cfad77bc}{\-\_\-\-Init\-Parameters} ()
+\item 
+\hyperlink{class_c_portal_wrapper_a03d714c9f08a5eeb3e70236ba8d71462}{\-\_\-\-Parse\-Operation} ()
+\item 
+\hyperlink{class_c_portal_wrapper_a92b44aafb5a9c21f6c3f0fcd51c907b8}{\-\_\-\-Parse\-Credentials} ()
+\item 
+\hyperlink{class_c_portal_wrapper_a0bf9f920e3b9c4e5b1db54a99a5e9185}{\-\_\-\-Format\-Credentials} ()
+\item 
+\hyperlink{class_c_portal_wrapper_a9d1a2d62ef4709f342221d97ed46b039}{\-\_\-\-Validate\-Operation} ()
+\item 
+\hyperlink{class_c_portal_wrapper_a906c6d7d2de1b9758c19c7a2e94a268d}{\-\_\-\-Validate\-Credentials} ()
+\item 
+\hyperlink{class_c_portal_wrapper_aaaa774d63578e176bd3f164736e832eb}{\-\_\-\-Validate\-New\-User} ()
+\item 
+\hyperlink{class_c_portal_wrapper_a35b88e5fd2364854c25bebdd43175392}{\-\_\-\-Handle\-Request} ()
+\item 
+\hyperlink{class_c_portal_wrapper_a3e1e82d3b794c7a154ce43d5b8b67bfd}{\-\_\-\-Handle\-\_\-\-List\-Op} (\&\$the\-List)
+\item 
+\hyperlink{class_c_portal_wrapper_a5209b3939911276e330c9bb3e1054001}{\-\_\-\-Handle\-\_\-\-Login} ()
+\item 
+\hyperlink{class_c_portal_wrapper_a0906c02f709cbdb701389aaebad5f2e4}{\-\_\-\-Handle\-\_\-\-New\-User} ()
+\end{DoxyCompactItemize}
+\subsection*{Additional Inherited Members}
+
+
+\subsection{Member Function Documentation}
+\hypertarget{class_c_portal_wrapper_a0bf9f920e3b9c4e5b1db54a99a5e9185}{\index{C\-Portal\-Wrapper@{C\-Portal\-Wrapper}!\-\_\-\-Format\-Credentials@{\-\_\-\-Format\-Credentials}}
+\index{\-\_\-\-Format\-Credentials@{\-\_\-\-Format\-Credentials}!CPortalWrapper@{C\-Portal\-Wrapper}}
+\subsubsection[{\-\_\-\-Format\-Credentials}]{\setlength{\rightskip}{0pt plus 5cm}C\-Portal\-Wrapper\-::\-\_\-\-Format\-Credentials (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [protected]}}}\label{class_c_portal_wrapper_a0bf9f920e3b9c4e5b1db54a99a5e9185}
+Format credentials parameters.
+
+This method should format the provided credentials, in this class we do nothing.
+
+protected
+
+\begin{DoxySeeAlso}{See Also}
+k\-A\-P\-I\-\_\-\-C\-R\-E\-D\-E\-N\-T\-I\-A\-L\-S 
+\end{DoxySeeAlso}
+\hypertarget{class_c_portal_wrapper_ad6644c207927f83b3b41fefe894db393}{\index{C\-Portal\-Wrapper@{C\-Portal\-Wrapper}!\-\_\-\-Format\-Request@{\-\_\-\-Format\-Request}}
+\index{\-\_\-\-Format\-Request@{\-\_\-\-Format\-Request}!CPortalWrapper@{C\-Portal\-Wrapper}}
+\subsubsection[{\-\_\-\-Format\-Request}]{\setlength{\rightskip}{0pt plus 5cm}C\-Portal\-Wrapper\-::\-\_\-\-Format\-Request (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [protected]}}}\label{class_c_portal_wrapper_ad6644c207927f83b3b41fefe894db393}
+Format request.
+
+This method should perform any needed formatting before the request will be handled.
+
+In this class we handle the parameters to be decoded
+
+protected
+
+\hyperlink{class_c_portal_wrapper_a0bf9f920e3b9c4e5b1db54a99a5e9185}{\-\_\-\-Format\-Credentials()} \hypertarget{class_c_portal_wrapper_a3e1e82d3b794c7a154ce43d5b8b67bfd}{\index{C\-Portal\-Wrapper@{C\-Portal\-Wrapper}!\-\_\-\-Handle\-\_\-\-List\-Op@{\-\_\-\-Handle\-\_\-\-List\-Op}}
+\index{\-\_\-\-Handle\-\_\-\-List\-Op@{\-\_\-\-Handle\-\_\-\-List\-Op}!CPortalWrapper@{C\-Portal\-Wrapper}}
+\subsubsection[{\-\_\-\-Handle\-\_\-\-List\-Op}]{\setlength{\rightskip}{0pt plus 5cm}C\-Portal\-Wrapper\-::\-\_\-\-Handle\-\_\-\-List\-Op (
+\begin{DoxyParamCaption}
+\item[{\&}]{\$the\-List}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [protected]}}}\label{class_c_portal_wrapper_a3e1e82d3b794c7a154ce43d5b8b67bfd}
+Handle \hyperlink{}{k\-A\-P\-I\-\_\-\-O\-P\-\_\-\-H\-E\-L\-P} operations request.
+
+This method will handle the locally supported operations.
+
+
+\begin{DoxyParams}[1]{Parameters}
+reference & {\em \$the\-List} & Receives operations list.\\
+\hline
+\end{DoxyParams}
+protected \hypertarget{class_c_portal_wrapper_a5209b3939911276e330c9bb3e1054001}{\index{C\-Portal\-Wrapper@{C\-Portal\-Wrapper}!\-\_\-\-Handle\-\_\-\-Login@{\-\_\-\-Handle\-\_\-\-Login}}
+\index{\-\_\-\-Handle\-\_\-\-Login@{\-\_\-\-Handle\-\_\-\-Login}!CPortalWrapper@{C\-Portal\-Wrapper}}
+\subsubsection[{\-\_\-\-Handle\-\_\-\-Login}]{\setlength{\rightskip}{0pt plus 5cm}C\-Portal\-Wrapper\-::\-\_\-\-Handle\-\_\-\-Login (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [protected]}}}\label{class_c_portal_wrapper_a5209b3939911276e330c9bb3e1054001}
+Handle \hyperlink{}{k\-A\-P\-I\-\_\-\-O\-P\-\_\-\-Login} request.
+
+This method will handle the \hyperlink{}{k\-A\-P\-I\-\_\-\-O\-P\-\_\-\-Login} operation, which returns the user record upon successful login.
+
+The method will use the \hyperlink{}{k\-A\-P\-I\-\_\-\-C\-R\-E\-D\-E\-N\-T\-I\-A\-L\-S} parameter \hyperlink{}{k\-A\-P\-I\-\_\-\-C\-R\-E\-D\-E\-N\-T\-I\-A\-L\-S\-\_\-\-C\-O\-D\-E} element as the user I\-D and the \hyperlink{}{k\-A\-P\-I\-\_\-\-C\-R\-E\-D\-E\-N\-T\-I\-A\-L\-S\-\_\-\-P\-A\-S\-S} element as the password.
+
+If the the operation succeeds, the method will return the found user in the response.
+
+protected \hypertarget{class_c_portal_wrapper_a0906c02f709cbdb701389aaebad5f2e4}{\index{C\-Portal\-Wrapper@{C\-Portal\-Wrapper}!\-\_\-\-Handle\-\_\-\-New\-User@{\-\_\-\-Handle\-\_\-\-New\-User}}
+\index{\-\_\-\-Handle\-\_\-\-New\-User@{\-\_\-\-Handle\-\_\-\-New\-User}!CPortalWrapper@{C\-Portal\-Wrapper}}
+\subsubsection[{\-\_\-\-Handle\-\_\-\-New\-User}]{\setlength{\rightskip}{0pt plus 5cm}C\-Portal\-Wrapper\-::\-\_\-\-Handle\-\_\-\-New\-User (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [protected]}}}\label{class_c_portal_wrapper_a0906c02f709cbdb701389aaebad5f2e4}
+Handle \hyperlink{}{k\-A\-P\-I\-\_\-\-O\-P\-\_\-\-Login} request.
+
+This method will handle the \hyperlink{}{k\-A\-P\-I\-\_\-\-O\-P\-\_\-\-Login} operation, which returns the user record upon successful login.
+
+The method will use the \hyperlink{}{k\-A\-P\-I\-\_\-\-C\-R\-E\-D\-E\-N\-T\-I\-A\-L\-S} parameter \hyperlink{}{k\-A\-P\-I\-\_\-\-C\-R\-E\-D\-E\-N\-T\-I\-A\-L\-S\-\_\-\-C\-O\-D\-E} element as the user I\-D and the \hyperlink{}{k\-A\-P\-I\-\_\-\-C\-R\-E\-D\-E\-N\-T\-I\-A\-L\-S\-\_\-\-P\-A\-S\-S} element as the password.
+
+If the the operation succeeds, the method will return the found user in the response.
+
+protected \hypertarget{class_c_portal_wrapper_a35b88e5fd2364854c25bebdd43175392}{\index{C\-Portal\-Wrapper@{C\-Portal\-Wrapper}!\-\_\-\-Handle\-Request@{\-\_\-\-Handle\-Request}}
+\index{\-\_\-\-Handle\-Request@{\-\_\-\-Handle\-Request}!CPortalWrapper@{C\-Portal\-Wrapper}}
+\subsubsection[{\-\_\-\-Handle\-Request}]{\setlength{\rightskip}{0pt plus 5cm}C\-Portal\-Wrapper\-::\-\_\-\-Handle\-Request (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [protected]}}}\label{class_c_portal_wrapper_a35b88e5fd2364854c25bebdd43175392}
+Handle request.
+
+This method will handle the request.
+
+protected \hypertarget{class_c_portal_wrapper_ac8bfaffec1025ce29086a029cfad77bc}{\index{C\-Portal\-Wrapper@{C\-Portal\-Wrapper}!\-\_\-\-Init\-Parameters@{\-\_\-\-Init\-Parameters}}
+\index{\-\_\-\-Init\-Parameters@{\-\_\-\-Init\-Parameters}!CPortalWrapper@{C\-Portal\-Wrapper}}
+\subsubsection[{\-\_\-\-Init\-Parameters}]{\setlength{\rightskip}{0pt plus 5cm}C\-Portal\-Wrapper\-::\-\_\-\-Init\-Parameters (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [protected]}}}\label{class_c_portal_wrapper_ac8bfaffec1025ce29086a029cfad77bc}
+Initialise parameters.
+
+This method is responsible for initialising the parameters of the request, in this class we decode all local parameters.
+
+protected \hypertarget{class_c_portal_wrapper_a92b44aafb5a9c21f6c3f0fcd51c907b8}{\index{C\-Portal\-Wrapper@{C\-Portal\-Wrapper}!\-\_\-\-Parse\-Credentials@{\-\_\-\-Parse\-Credentials}}
+\index{\-\_\-\-Parse\-Credentials@{\-\_\-\-Parse\-Credentials}!CPortalWrapper@{C\-Portal\-Wrapper}}
+\subsubsection[{\-\_\-\-Parse\-Credentials}]{\setlength{\rightskip}{0pt plus 5cm}C\-Portal\-Wrapper\-::\-\_\-\-Parse\-Credentials (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [protected]}}}\label{class_c_portal_wrapper_a92b44aafb5a9c21f6c3f0fcd51c907b8}
+Parse credentials.
+
+This method will copy the credentials parameter to the request block.
+
+protected
+
+\hyperlink{class_c_wrapper_aff9eb1799c8f30cb33967c7a50ce6395}{\-\_\-\-Offset\-Manage()}
+
+\begin{DoxySeeAlso}{See Also}
+k\-A\-P\-I\-\_\-\-C\-R\-E\-D\-E\-N\-T\-I\-A\-L\-S k\-A\-P\-I\-\_\-\-R\-E\-Q\-U\-E\-S\-T 
+\end{DoxySeeAlso}
+\hypertarget{class_c_portal_wrapper_a03d714c9f08a5eeb3e70236ba8d71462}{\index{C\-Portal\-Wrapper@{C\-Portal\-Wrapper}!\-\_\-\-Parse\-Operation@{\-\_\-\-Parse\-Operation}}
+\index{\-\_\-\-Parse\-Operation@{\-\_\-\-Parse\-Operation}!CPortalWrapper@{C\-Portal\-Wrapper}}
+\subsubsection[{\-\_\-\-Parse\-Operation}]{\setlength{\rightskip}{0pt plus 5cm}C\-Portal\-Wrapper\-::\-\_\-\-Parse\-Operation (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [protected]}}}\label{class_c_portal_wrapper_a03d714c9f08a5eeb3e70236ba8d71462}
+Parse operation.
+
+We overload this method to perform the following customisations\-:
+
+
+\begin{DoxyItemize}
+\item {\ttfamily \hyperlink{}{k\-A\-P\-I\-\_\-\-O\-P\-\_\-\-Login}}\-: This operation implies that the container be the default users container. 
+\item {\ttfamily \hyperlink{}{k\-A\-P\-I\-\_\-\-O\-P\-\_\-\-New\-User}}\-: Same as above. 
+\end{DoxyItemize}
+
+protected
+
+\begin{DoxySeeAlso}{See Also}
+k\-A\-P\-I\-\_\-\-O\-P\-E\-R\-A\-T\-I\-O\-N 
+\end{DoxySeeAlso}
+\hypertarget{class_c_portal_wrapper_a9082dde4409ea5d460735f5fe491d7d3}{\index{C\-Portal\-Wrapper@{C\-Portal\-Wrapper}!\-\_\-\-Parse\-Request@{\-\_\-\-Parse\-Request}}
+\index{\-\_\-\-Parse\-Request@{\-\_\-\-Parse\-Request}!CPortalWrapper@{C\-Portal\-Wrapper}}
+\subsubsection[{\-\_\-\-Parse\-Request}]{\setlength{\rightskip}{0pt plus 5cm}C\-Portal\-Wrapper\-::\-\_\-\-Parse\-Request (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [protected]}}}\label{class_c_portal_wrapper_a9082dde4409ea5d460735f5fe491d7d3}
+Parse request.
+
+This method should be used to parse the request, check the request elements and make any necessary adjustments before the request is \hyperlink{class_c_portal_wrapper_a82b5b4d84bd970e44f451f095eeded9e}{\-\_\-\-Validate\-Request()}.
+
+This is also where the relevant request elements will be logged to the relative response sections.
+
+The method is called by the constructor and should be overloaded to handle derived classes custom elements.
+
+protected
+
+\hyperlink{class_c_portal_wrapper_a92b44aafb5a9c21f6c3f0fcd51c907b8}{\-\_\-\-Parse\-Credentials()} \hypertarget{class_c_portal_wrapper_a906c6d7d2de1b9758c19c7a2e94a268d}{\index{C\-Portal\-Wrapper@{C\-Portal\-Wrapper}!\-\_\-\-Validate\-Credentials@{\-\_\-\-Validate\-Credentials}}
+\index{\-\_\-\-Validate\-Credentials@{\-\_\-\-Validate\-Credentials}!CPortalWrapper@{C\-Portal\-Wrapper}}
+\subsubsection[{\-\_\-\-Validate\-Credentials}]{\setlength{\rightskip}{0pt plus 5cm}C\-Portal\-Wrapper\-::\-\_\-\-Validate\-Credentials (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [protected]}}}\label{class_c_portal_wrapper_a906c6d7d2de1b9758c19c7a2e94a268d}
+Validate credentials parameters.
+
+The duty of this method is to validate the credentials parameter, in this class we perform checks according to the operation\-:
+
+
+\begin{DoxyItemize}
+\item {\ttfamily \hyperlink{}{k\-A\-P\-I\-\_\-\-O\-P\-\_\-\-Login}}\-: We ensure that the {\ttfamily code} and {\ttfamily pass} elements are in the array. 
+\end{DoxyItemize}
+
+protected
+
+\begin{DoxySeeAlso}{See Also}
+k\-A\-P\-I\-\_\-\-C\-R\-E\-D\-E\-N\-T\-I\-A\-L\-S 
+\end{DoxySeeAlso}
+\hypertarget{class_c_portal_wrapper_aaaa774d63578e176bd3f164736e832eb}{\index{C\-Portal\-Wrapper@{C\-Portal\-Wrapper}!\-\_\-\-Validate\-New\-User@{\-\_\-\-Validate\-New\-User}}
+\index{\-\_\-\-Validate\-New\-User@{\-\_\-\-Validate\-New\-User}!CPortalWrapper@{C\-Portal\-Wrapper}}
+\subsubsection[{\-\_\-\-Validate\-New\-User}]{\setlength{\rightskip}{0pt plus 5cm}C\-Portal\-Wrapper\-::\-\_\-\-Validate\-New\-User (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [protected]}}}\label{class_c_portal_wrapper_aaaa774d63578e176bd3f164736e832eb}
+Validate new user.
+
+The duty of this method is to validate the provided user attributes, found in the \hyperlink{}{k\-A\-P\-I\-\_\-\-O\-B\-J\-E\-C\-T} parameter, the method will do so by creating a \hyperlink{class_c_user}{C\-User} object and adding the provided attributes to it.
+
+protected
+
+\begin{DoxySeeAlso}{See Also}
+k\-A\-P\-I\-\_\-\-O\-B\-J\-E\-C\-T 
+\end{DoxySeeAlso}
+\hypertarget{class_c_portal_wrapper_a9d1a2d62ef4709f342221d97ed46b039}{\index{C\-Portal\-Wrapper@{C\-Portal\-Wrapper}!\-\_\-\-Validate\-Operation@{\-\_\-\-Validate\-Operation}}
+\index{\-\_\-\-Validate\-Operation@{\-\_\-\-Validate\-Operation}!CPortalWrapper@{C\-Portal\-Wrapper}}
+\subsubsection[{\-\_\-\-Validate\-Operation}]{\setlength{\rightskip}{0pt plus 5cm}C\-Portal\-Wrapper\-::\-\_\-\-Validate\-Operation (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [protected]}}}\label{class_c_portal_wrapper_a9d1a2d62ef4709f342221d97ed46b039}
+Validate request operation.
+
+This method can be used to check whether the provided \hyperlink{}{k\-A\-P\-I\-\_\-\-O\-P\-E\-R\-A\-T\-I\-O\-N} parameter is valid, in this class we screen and check the dependencies of the following operations\-:
+
+
+\begin{DoxyItemize}
+\item {\ttfamily \hyperlink{}{k\-A\-P\-I\-\_\-\-O\-P\-\_\-\-C\-O\-U\-N\-T}}\-: Return the count of a query, this operation requires the following parameters\-: 
+\begin{DoxyItemize}
+\item {\ttfamily }. 
+\end{DoxyItemize}
+\end{DoxyItemize}
+
+protected
+
+\begin{DoxySeeAlso}{See Also}
+k\-A\-P\-I\-\_\-\-O\-P\-\_\-\-C\-O\-U\-N\-T 
+\end{DoxySeeAlso}
+\hypertarget{class_c_portal_wrapper_a82b5b4d84bd970e44f451f095eeded9e}{\index{C\-Portal\-Wrapper@{C\-Portal\-Wrapper}!\-\_\-\-Validate\-Request@{\-\_\-\-Validate\-Request}}
+\index{\-\_\-\-Validate\-Request@{\-\_\-\-Validate\-Request}!CPortalWrapper@{C\-Portal\-Wrapper}}
+\subsubsection[{\-\_\-\-Validate\-Request}]{\setlength{\rightskip}{0pt plus 5cm}C\-Portal\-Wrapper\-::\-\_\-\-Validate\-Request (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [protected]}}}\label{class_c_portal_wrapper_a82b5b4d84bd970e44f451f095eeded9e}
+Validate request.
+
+This method should check that the request is valid and that all required parameters have been sent.
+
+In this class we check the \hyperlink{}{k\-A\-P\-I\-\_\-\-F\-O\-R\-M\-A\-T} and \hyperlink{}{k\-A\-P\-I\-\_\-\-O\-P\-E\-R\-A\-T\-I\-O\-N} codes (their presence is checked by the constructor.
+
+protected
+
+\hyperlink{class_c_portal_wrapper_a906c6d7d2de1b9758c19c7a2e94a268d}{\-\_\-\-Validate\-Credentials()}  \hyperlink{class_c_portal_wrapper_aaaa774d63578e176bd3f164736e832eb}{\-\_\-\-Validate\-New\-User()} 
+
+The documentation for this class was generated from the following file\-:\begin{DoxyCompactItemize}
+\item 
+/\-Library/\-Web\-Server/\-Library/\-P\-H\-P\-Wrapper/classes/C\-Portal\-Wrapper.\-php\end{DoxyCompactItemize}

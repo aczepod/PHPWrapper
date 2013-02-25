@@ -1,0 +1,495 @@
+\hypertarget{class_c_ontology_tag}{\section{C\-Ontology\-Tag Class Reference}
+\label{class_c_ontology_tag}\index{C\-Ontology\-Tag@{C\-Ontology\-Tag}}
+}
+Inheritance diagram for C\-Ontology\-Tag\-:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=7.000000cm]{class_c_ontology_tag}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{class_c_ontology_tag_a45c4c0a6da476d700c8197d77be016f8}{Push\-Item} (\$the\-Value)
+\item 
+\hyperlink{class_c_ontology_tag_a6f6ab6398a55f25e2860bac885f7f814}{Get\-Feature\-Vertex} ()
+\item 
+\hyperlink{class_c_ontology_tag_aa26d8df12c96f1018e3542303ba6ed1f}{Get\-Method\-Vertex} ()
+\item 
+\hyperlink{class_c_ontology_tag_acbbea165aff630988cb30c069b97dfc5}{Get\-Scale\-Vertex} ()
+\item 
+\hyperlink{class_c_ontology_tag_ae5aaf4673b9384c0bacbdc0b3cb2b1c8}{Update} (\hyperlink{class_c_connection}{C\-Connection} \$the\-Connection)
+\item 
+\hyperlink{class_c_ontology_tag_a878c491b0bb9f60c26c48a3797df15b8}{Replace} (\hyperlink{class_c_connection}{C\-Connection} \$the\-Connection)
+\end{DoxyCompactItemize}
+\subsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+static \hyperlink{class_c_ontology_tag_aba44e3b95b1e1830766f9647a2ea5f70}{Default\-Container\-Name} ()
+\item 
+static \hyperlink{class_c_ontology_tag_a58669fac5e450f687de2d4aad38bd4c4}{Resolve} (\hyperlink{class_c_connection}{C\-Connection} \$the\-Connection, \$the\-Identifier, \$do\-Throw=F\-A\-L\-S\-E)
+\end{DoxyCompactItemize}
+\subsection*{Protected Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{class_c_ontology_tag_ad63039ab484008c15c69568d6bbf12eb}{\-\_\-index} (\hyperlink{class_c_connection}{C\-Connection} \$the\-Connection, \$the\-Modifiers)
+\item 
+\hyperlink{class_c_ontology_tag_a1d35d537264fffd4c7ba5ef79eeef6c0}{\-\_\-\-Preset} (\&\$the\-Offset, \&\$the\-Value)
+\item 
+\hyperlink{class_c_ontology_tag_a7f7edbf70627f225f4472010e80a3e52}{\-\_\-\-Preunset} (\&\$the\-Offset)
+\item 
+\hyperlink{class_c_ontology_tag_a3375cb63452f0b548940f3a64582cb3d}{\-\_\-\-Precommit\-Validate} (\&\$the\-Connection, \&\$the\-Modifiers)
+\item 
+\hyperlink{class_c_ontology_tag_a8d6a3cc0813c4b640a7a5927ba32daec}{\-\_\-\-Precommit\-Identify} (\&\$the\-Connection, \&\$the\-Modifiers)
+\item 
+\hyperlink{class_c_ontology_tag_a56757bb672c40d62798290c0c8bbdd5a}{\-\_\-\-Postcommit\-Related} (\&\$the\-Connection, \&\$the\-Modifiers)
+\end{DoxyCompactItemize}
+\subsection*{Additional Inherited Members}
+
+
+\subsection{Member Function Documentation}
+\hypertarget{class_c_ontology_tag_ad63039ab484008c15c69568d6bbf12eb}{\index{C\-Ontology\-Tag@{C\-Ontology\-Tag}!\-\_\-index@{\-\_\-index}}
+\index{\-\_\-index@{\-\_\-index}!COntologyTag@{C\-Ontology\-Tag}}
+\subsubsection[{\-\_\-index}]{\setlength{\rightskip}{0pt plus 5cm}C\-Ontology\-Tag\-::\-\_\-index (
+\begin{DoxyParamCaption}
+\item[{{\bf C\-Connection}}]{\$the\-Connection, }
+\item[{}]{\$the\-Modifiers}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [protected]}}}\label{class_c_ontology_tag_ad63039ab484008c15c69568d6bbf12eb}
+\subparagraph*{Return the object's global unique identifier}
+
+We override the parent method to handle the referenced objects\-: in this class the global identifier is the concatenation of all the referenced terms of the tag path, this method will take care of instantiating the necessary objects and building the global identifier.
+
+This method is called by the \hyperlink{class_c_ontology_tag_a8d6a3cc0813c4b640a7a5927ba32daec}{\-\_\-\-Precommit\-Identify()} and expects all elements of the path to be object native identifiers.
+
+
+\begin{DoxyParams}[1]{Parameters}
+\hyperlink{class_c_connection}{C\-Connection} & {\em \$the\-Connection} & Server, database or container. \\
+\hline
+bitfield & {\em \$the\-Modifiers} & Commit options.\\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyExceptions}{Exceptions}
+{\em Exception} & protected \\
+\hline
+\end{DoxyExceptions}
+\begin{DoxyReturn}{Returns}
+string$|$\-N\-U\-L\-L The object's global unique identifier.
+\end{DoxyReturn}
+
+\begin{DoxyExceptions}{Exceptions}
+{\em Exception} & \\
+\hline
+\end{DoxyExceptions}
+\begin{DoxySeeAlso}{See Also}
+k\-T\-A\-G\-\_\-\-P\-A\-T\-H k\-T\-O\-K\-E\-N\-\_\-\-I\-N\-D\-E\-X\-\_\-\-S\-E\-P\-A\-R\-A\-T\-O\-R 
+\end{DoxySeeAlso}
+\hypertarget{class_c_ontology_tag_a56757bb672c40d62798290c0c8bbdd5a}{\index{C\-Ontology\-Tag@{C\-Ontology\-Tag}!\-\_\-\-Postcommit\-Related@{\-\_\-\-Postcommit\-Related}}
+\index{\-\_\-\-Postcommit\-Related@{\-\_\-\-Postcommit\-Related}!COntologyTag@{C\-Ontology\-Tag}}
+\subsubsection[{\-\_\-\-Postcommit\-Related}]{\setlength{\rightskip}{0pt plus 5cm}C\-Ontology\-Tag\-::\-\_\-\-Postcommit\-Related (
+\begin{DoxyParamCaption}
+\item[{\&}]{\$the\-Connection, }
+\item[{\&}]{\$the\-Modifiers}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [protected]}}}\label{class_c_ontology_tag_a56757bb672c40d62798290c0c8bbdd5a}
+\subparagraph*{Update related objects after committing}
+
+In this class we reference this tag from terms related to nodes used as features, methods or scales. Depending on the value of the following flags\-:
+
+
+\begin{DoxyItemize}
+\item {\ttfamily \hyperlink{}{k\-S\-W\-I\-T\-C\-H\-\_\-k\-T\-A\-G\-\_\-\-F\-E\-A\-T\-U\-R\-E\-S}}\-: {\itshape Feature node reference}. This switch manages references to the current tag from terms referred by feature nodes, or the first node in the path. The reference is in the \hyperlink{}{k\-T\-A\-G\-\_\-\-F\-E\-A\-T\-U\-R\-E\-S} of the referenced term. 
+\begin{DoxyItemize}
+\item {\ttfamily 0x2}\-: {\itshape Keep count of references}. This means that the \hyperlink{}{k\-T\-A\-G\-\_\-\-F\-E\-A\-T\-U\-R\-E\-S} attribute of the term will be incremented when the tag is inserted, or decremented when deleted. 
+\item {\ttfamily 0x3}\-: {\itshape Keep list of references}. This means that a reference to the current object will be added to the \hyperlink{}{k\-T\-A\-G\-\_\-\-F\-E\-A\-T\-U\-R\-E\-S} attribute of the term when the current object is inserted, and removed when the object is deleted. 
+\item {\ttfamily 0x0} {\itshape or other}\-: {\itshape Don't handle this information}. This means that the term's \hyperlink{}{k\-T\-A\-G\-\_\-\-F\-E\-A\-T\-U\-R\-E\-S} attribute will not be handled. 
+\end{DoxyItemize}
+\item {\ttfamily \hyperlink{}{k\-S\-W\-I\-T\-C\-H\-\_\-k\-T\-A\-G\-\_\-\-M\-E\-T\-H\-O\-D\-S}}\-: {\itshape Method node reference}. This switch manages references to the current tag from terms referred by method nodes, or all nodes between the first and last nodes in the path. The reference is in the \hyperlink{}{k\-S\-W\-I\-T\-C\-H\-\_\-k\-T\-A\-G\-\_\-\-M\-E\-T\-H\-O\-D\-S} of the referenced term. 
+\begin{DoxyItemize}
+\item {\ttfamily 0x2}\-: {\itshape Keep count of references}. This means that the \hyperlink{}{k\-S\-W\-I\-T\-C\-H\-\_\-k\-T\-A\-G\-\_\-\-M\-E\-T\-H\-O\-D\-S} attribute of the term will be incremented when the tag is inserted, or decremented when deleted. 
+\item {\ttfamily 0x3}\-: {\itshape Keep list of references}. This means that a reference to the current object will be added to the \hyperlink{}{k\-S\-W\-I\-T\-C\-H\-\_\-k\-T\-A\-G\-\_\-\-M\-E\-T\-H\-O\-D\-S} attribute of the term when the current object is inserted, and removed when the object is deleted. 
+\item {\ttfamily 0x0} {\itshape or other}\-: {\itshape Don't handle this information}. This means that the term's \hyperlink{}{k\-S\-W\-I\-T\-C\-H\-\_\-k\-T\-A\-G\-\_\-\-M\-E\-T\-H\-O\-D\-S} attribute will not be handled. 
+\end{DoxyItemize}
+\item {\ttfamily \hyperlink{}{k\-S\-W\-I\-T\-C\-H\-\_\-k\-T\-A\-G\-\_\-\-S\-C\-A\-L\-E\-S}}\-: {\itshape Scale node reference}. This switch manages references to the current tag from terms referred by scale nodes, or the last node in the path. The reference is in the \hyperlink{}{k\-T\-A\-G\-\_\-\-S\-C\-A\-L\-E\-S} of the referenced term. 
+\begin{DoxyItemize}
+\item {\ttfamily 0x2}\-: {\itshape Keep count of references}. This means that the \hyperlink{}{k\-T\-A\-G\-\_\-\-S\-C\-A\-L\-E\-S} attribute of the term will be incremented when the tag is inserted, or decremented when deleted. 
+\item {\ttfamily 0x3}\-: {\itshape Keep list of references}. This means that a reference to the current object will be added to the \hyperlink{}{k\-T\-A\-G\-\_\-\-S\-C\-A\-L\-E\-S} attribute of the term when the current object is inserted, and removed when the object is deleted. 
+\item {\ttfamily 0x0} {\itshape or other}\-: {\itshape Don't handle this information}. This means that the term's \hyperlink{}{k\-T\-A\-G\-\_\-\-S\-C\-A\-L\-E\-S} attribute will not be handled. 
+\end{DoxyItemize}
+\end{DoxyItemize}
+
+Note that you should provide either a database connection or the {\itshape term} container to this method in order to make it work!
+
+We only handle vertex elements, we do not refer predicate terms.
+
+
+\begin{DoxyParams}[1]{Parameters}
+reference & {\em \&\$the\-Connection} & Server, database or container. \\
+\hline
+reference & {\em \&\$the\-Modifiers} & Commit options.\\
+\hline
+\end{DoxyParams}
+protected
+
+\begin{DoxySeeAlso}{See Also}
+k\-S\-W\-I\-T\-C\-H\-\_\-k\-T\-A\-G\-\_\-\-F\-E\-A\-T\-U\-R\-E\-S, k\-S\-W\-I\-T\-C\-H\-\_\-k\-T\-A\-G\-\_\-\-M\-E\-T\-H\-O\-D\-S, k\-S\-W\-I\-T\-C\-H\-\_\-k\-T\-A\-G\-\_\-\-S\-C\-A\-L\-E\-S 
+
+k\-T\-A\-G\-\_\-\-F\-E\-A\-T\-U\-R\-E\-S, k\-T\-A\-G\-\_\-\-M\-E\-T\-H\-O\-D\-S, k\-T\-A\-G\-\_\-\-S\-C\-A\-L\-E\-S 
+
+k\-F\-L\-A\-G\-\_\-\-P\-E\-R\-S\-I\-S\-T\-\_\-\-I\-N\-S\-E\-R\-T k\-F\-L\-A\-G\-\_\-\-P\-E\-R\-S\-I\-S\-T\-\_\-\-R\-E\-P\-L\-A\-C\-E k\-F\-L\-A\-G\-\_\-\-P\-E\-R\-S\-I\-S\-T\-\_\-\-D\-E\-L\-E\-T\-E 
+\end{DoxySeeAlso}
+\hypertarget{class_c_ontology_tag_a8d6a3cc0813c4b640a7a5927ba32daec}{\index{C\-Ontology\-Tag@{C\-Ontology\-Tag}!\-\_\-\-Precommit\-Identify@{\-\_\-\-Precommit\-Identify}}
+\index{\-\_\-\-Precommit\-Identify@{\-\_\-\-Precommit\-Identify}!COntologyTag@{C\-Ontology\-Tag}}
+\subsubsection[{\-\_\-\-Precommit\-Identify}]{\setlength{\rightskip}{0pt plus 5cm}C\-Ontology\-Tag\-::\-\_\-\-Precommit\-Identify (
+\begin{DoxyParamCaption}
+\item[{\&}]{\$the\-Connection, }
+\item[{\&}]{\$the\-Modifiers}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [protected]}}}\label{class_c_ontology_tag_a8d6a3cc0813c4b640a7a5927ba32daec}
+\subparagraph*{Determine the identifiers before committing}
+
+This method will use the result of the \hyperlink{class_c_ontology_tag_ad63039ab484008c15c69568d6bbf12eb}{\-\_\-index()} method to set the global identifier, \hyperlink{}{k\-T\-A\-G\-\_\-\-G\-I\-D}; the same value will be hashed and constitute the unique identifier, \hyperlink{}{k\-T\-A\-G\-\_\-\-U\-I\-D}, while the native identifier, \hyperlink{}{k\-T\-A\-G\-\_\-\-N\-I\-D}, will be set by the sequence number \hyperlink{}{k\-S\-E\-Q\-U\-E\-N\-C\-E\-\_\-\-K\-E\-Y\-\_\-\-T\-A\-G}.
+
+The parent method will then be called, which will ignore the global and native identifiers, since they will have been set here.
+
+
+\begin{DoxyParams}[1]{Parameters}
+reference & {\em \&\$the\-Connection} & Server, database or container. \\
+\hline
+reference & {\em \&\$the\-Modifiers} & Commit options.\\
+\hline
+\end{DoxyParams}
+protected \begin{DoxyReturn}{Returns}
+mixed
+\end{DoxyReturn}
+
+\begin{DoxyExceptions}{Exceptions}
+{\em Exception} & \hyperlink{class_c_status_document_ab7d96fd4588cf7d5432fc65a1d1fb076}{\-\_\-\-Is\-Committed()}  \hyperlink{class_c_ontology_tag_ad63039ab484008c15c69568d6bbf12eb}{\-\_\-index()}\\
+\hline
+\end{DoxyExceptions}
+\begin{DoxySeeAlso}{See Also}
+k\-S\-E\-Q\-U\-E\-N\-C\-E\-\_\-\-K\-E\-Y\-\_\-\-T\-A\-G 
+
+k\-T\-A\-G\-\_\-\-N\-I\-D k\-T\-A\-G\-\_\-\-G\-I\-D k\-T\-A\-G\-\_\-\-U\-I\-D 
+
+k\-F\-L\-A\-G\-\_\-\-P\-E\-R\-S\-I\-S\-T\-\_\-\-I\-N\-S\-E\-R\-T k\-F\-L\-A\-G\-\_\-\-P\-E\-R\-S\-I\-S\-T\-\_\-\-R\-E\-P\-L\-A\-C\-E 
+\end{DoxySeeAlso}
+\hypertarget{class_c_ontology_tag_a3375cb63452f0b548940f3a64582cb3d}{\index{C\-Ontology\-Tag@{C\-Ontology\-Tag}!\-\_\-\-Precommit\-Validate@{\-\_\-\-Precommit\-Validate}}
+\index{\-\_\-\-Precommit\-Validate@{\-\_\-\-Precommit\-Validate}!COntologyTag@{C\-Ontology\-Tag}}
+\subsubsection[{\-\_\-\-Precommit\-Validate}]{\setlength{\rightskip}{0pt plus 5cm}C\-Ontology\-Tag\-::\-\_\-\-Precommit\-Validate (
+\begin{DoxyParamCaption}
+\item[{\&}]{\$the\-Connection, }
+\item[{\&}]{\$the\-Modifiers}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [protected]}}}\label{class_c_ontology_tag_a3375cb63452f0b548940f3a64582cb3d}
+\subparagraph*{Validate the object before committing}
+
+In this class we check if the type is set, if that is not the case, the method will raise an exception.
+
+
+\begin{DoxyParams}[1]{Parameters}
+reference & {\em \&\$the\-Connection} & Server, database or container. \\
+\hline
+reference & {\em \&\$the\-Modifiers} & Commit options.\\
+\hline
+\end{DoxyParams}
+protected \begin{DoxyReturn}{Returns}
+mixed
+\end{DoxyReturn}
+
+\begin{DoxyExceptions}{Exceptions}
+{\em Exception} & \\
+\hline
+\end{DoxyExceptions}
+\begin{DoxySeeAlso}{See Also}
+k\-T\-A\-G\-\_\-\-T\-Y\-P\-E 
+\end{DoxySeeAlso}
+\hypertarget{class_c_ontology_tag_a1d35d537264fffd4c7ba5ef79eeef6c0}{\index{C\-Ontology\-Tag@{C\-Ontology\-Tag}!\-\_\-\-Preset@{\-\_\-\-Preset}}
+\index{\-\_\-\-Preset@{\-\_\-\-Preset}!COntologyTag@{C\-Ontology\-Tag}}
+\subsubsection[{\-\_\-\-Preset}]{\setlength{\rightskip}{0pt plus 5cm}C\-Ontology\-Tag\-::\-\_\-\-Preset (
+\begin{DoxyParamCaption}
+\item[{\&}]{\$the\-Offset, }
+\item[{\&}]{\$the\-Value}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [protected]}}}\label{class_c_ontology_tag_a1d35d537264fffd4c7ba5ef79eeef6c0}
+\subparagraph*{Handle offset before setting it}
+
+In this class we lock the \hyperlink{}{k\-T\-A\-G\-\_\-\-P\-A\-T\-H} attribute if the object is committed.
+
+
+\begin{DoxyParams}[1]{Parameters}
+reference & {\em \&\$the\-Offset} & Offset. \\
+\hline
+reference & {\em \&\$the\-Value} & Value to set at offset.\\
+\hline
+\end{DoxyParams}
+protected
+
+
+\begin{DoxyExceptions}{Exceptions}
+{\em Exception} & \hyperlink{class_c_status_document_ab7d96fd4588cf7d5432fc65a1d1fb076}{\-\_\-\-Is\-Committed()}\\
+\hline
+\end{DoxyExceptions}
+\begin{DoxySeeAlso}{See Also}
+k\-T\-A\-G\-\_\-\-P\-A\-T\-H 
+\end{DoxySeeAlso}
+\hypertarget{class_c_ontology_tag_a7f7edbf70627f225f4472010e80a3e52}{\index{C\-Ontology\-Tag@{C\-Ontology\-Tag}!\-\_\-\-Preunset@{\-\_\-\-Preunset}}
+\index{\-\_\-\-Preunset@{\-\_\-\-Preunset}!COntologyTag@{C\-Ontology\-Tag}}
+\subsubsection[{\-\_\-\-Preunset}]{\setlength{\rightskip}{0pt plus 5cm}C\-Ontology\-Tag\-::\-\_\-\-Preunset (
+\begin{DoxyParamCaption}
+\item[{\&}]{\$the\-Offset}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [protected]}}}\label{class_c_ontology_tag_a7f7edbf70627f225f4472010e80a3e52}
+\subparagraph*{Handle offset before unsetting it}
+
+In this class we lock the \hyperlink{}{k\-T\-A\-G\-\_\-\-P\-A\-T\-H} attribute if the object is committed and the \hyperlink{}{k\-T\-A\-G\-\_\-\-U\-I\-D} in all cases.
+
+
+\begin{DoxyParams}[1]{Parameters}
+reference & {\em \&\$the\-Offset} & Offset.\\
+\hline
+\end{DoxyParams}
+protected
+
+
+\begin{DoxyExceptions}{Exceptions}
+{\em Exception} & \hyperlink{class_c_status_document_ab7d96fd4588cf7d5432fc65a1d1fb076}{\-\_\-\-Is\-Committed()}\\
+\hline
+\end{DoxyExceptions}
+\begin{DoxySeeAlso}{See Also}
+k\-T\-A\-G\-\_\-\-P\-A\-T\-H 
+\end{DoxySeeAlso}
+\hypertarget{class_c_ontology_tag_aba44e3b95b1e1830766f9647a2ea5f70}{\index{C\-Ontology\-Tag@{C\-Ontology\-Tag}!Default\-Container\-Name@{Default\-Container\-Name}}
+\index{Default\-Container\-Name@{Default\-Container\-Name}!COntologyTag@{C\-Ontology\-Tag}}
+\subsubsection[{Default\-Container\-Name}]{\setlength{\rightskip}{0pt plus 5cm}static C\-Ontology\-Tag\-::\-Default\-Container\-Name (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}}}\label{class_c_ontology_tag_aba44e3b95b1e1830766f9647a2ea5f70}
+\subparagraph*{Return the default nodes container name}
+
+This class uses the \hyperlink{}{k\-C\-O\-N\-T\-A\-I\-N\-E\-R\-\_\-\-T\-A\-G\-\_\-\-N\-A\-M\-E} default name.
+
+\begin{DoxyReturn}{Returns}
+string The default container name.
+\end{DoxyReturn}
+
+\begin{DoxyExceptions}{Exceptions}
+{\em Exception} & \\
+\hline
+\end{DoxyExceptions}
+\begin{DoxySeeAlso}{See Also}
+k\-C\-O\-N\-T\-A\-I\-N\-E\-R\-\_\-\-T\-A\-G\-\_\-\-N\-A\-M\-E 
+\end{DoxySeeAlso}
+\hypertarget{class_c_ontology_tag_a6f6ab6398a55f25e2860bac885f7f814}{\index{C\-Ontology\-Tag@{C\-Ontology\-Tag}!Get\-Feature\-Vertex@{Get\-Feature\-Vertex}}
+\index{Get\-Feature\-Vertex@{Get\-Feature\-Vertex}!COntologyTag@{C\-Ontology\-Tag}}
+\subsubsection[{Get\-Feature\-Vertex}]{\setlength{\rightskip}{0pt plus 5cm}C\-Ontology\-Tag\-::\-Get\-Feature\-Vertex (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{class_c_ontology_tag_a6f6ab6398a55f25e2860bac885f7f814}
+\subparagraph*{Return trait term}
+
+This method will return the current tag's feature term, if present, or {\ttfamily N\-U\-L\-L}.
+
+The feature vertex is the first element of the path, it refers the ontology term that represents the feature or trait the current object is tagging.
+
+public \begin{DoxyReturn}{Returns}
+mixed First element of the terms list, or {\ttfamily N\-U\-L\-L}.
+\end{DoxyReturn}
+\begin{DoxySeeAlso}{See Also}
+k\-T\-A\-G\-\_\-\-P\-A\-T\-H 
+\end{DoxySeeAlso}
+\hypertarget{class_c_ontology_tag_aa26d8df12c96f1018e3542303ba6ed1f}{\index{C\-Ontology\-Tag@{C\-Ontology\-Tag}!Get\-Method\-Vertex@{Get\-Method\-Vertex}}
+\index{Get\-Method\-Vertex@{Get\-Method\-Vertex}!COntologyTag@{C\-Ontology\-Tag}}
+\subsubsection[{Get\-Method\-Vertex}]{\setlength{\rightskip}{0pt plus 5cm}C\-Ontology\-Tag\-::\-Get\-Method\-Vertex (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{class_c_ontology_tag_aa26d8df12c96f1018e3542303ba6ed1f}
+\subparagraph*{Return method terms}
+
+This method will return the current tag's list of method terms, if present, or {\ttfamily N\-U\-L\-L}.
+
+The method vertex is the any odd element of the path that is neither the first nor the last, it represents the pipeline of modifiers applied to the feature vertex.
+
+The method will return an array if at least one method is present.
+
+Note that there must be at least 5 elements in the path to have one method.
+
+public \begin{DoxyReturn}{Returns}
+mixed List of method nodes, or {\ttfamily N\-U\-L\-L}.
+\end{DoxyReturn}
+\begin{DoxySeeAlso}{See Also}
+k\-T\-A\-G\-\_\-\-P\-A\-T\-H 
+\end{DoxySeeAlso}
+\hypertarget{class_c_ontology_tag_acbbea165aff630988cb30c069b97dfc5}{\index{C\-Ontology\-Tag@{C\-Ontology\-Tag}!Get\-Scale\-Vertex@{Get\-Scale\-Vertex}}
+\index{Get\-Scale\-Vertex@{Get\-Scale\-Vertex}!COntologyTag@{C\-Ontology\-Tag}}
+\subsubsection[{Get\-Scale\-Vertex}]{\setlength{\rightskip}{0pt plus 5cm}C\-Ontology\-Tag\-::\-Get\-Scale\-Vertex (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{class_c_ontology_tag_acbbea165aff630988cb30c069b97dfc5}
+\subparagraph*{Return scale term}
+
+This method will return the current tag's scale term, if present, or {\ttfamily N\-U\-L\-L}.
+
+The scale vertex is the last element of the path, it refers the ontology term that represents the scale or unit the current object is tagging.
+
+Note that if the tag contains only one vertex, that will be both a feature and a scale.
+
+public \begin{DoxyReturn}{Returns}
+mixed Last element of the terms list, or {\ttfamily N\-U\-L\-L}.
+\end{DoxyReturn}
+\begin{DoxySeeAlso}{See Also}
+k\-T\-A\-G\-\_\-\-P\-A\-T\-H 
+\end{DoxySeeAlso}
+\hypertarget{class_c_ontology_tag_a45c4c0a6da476d700c8197d77be016f8}{\index{C\-Ontology\-Tag@{C\-Ontology\-Tag}!Push\-Item@{Push\-Item}}
+\index{Push\-Item@{Push\-Item}!COntologyTag@{C\-Ontology\-Tag}}
+\subsubsection[{Push\-Item}]{\setlength{\rightskip}{0pt plus 5cm}C\-Ontology\-Tag\-::\-Push\-Item (
+\begin{DoxyParamCaption}
+\item[{}]{\$the\-Value}
+\end{DoxyParamCaption}
+)}}\label{class_c_ontology_tag_a45c4c0a6da476d700c8197d77be016f8}
+\subparagraph*{Append to path}
+
+We overload the parent method to implement the following rules\-:
+
+
+\begin{DoxyItemize}
+\item All elements of the path must be \hyperlink{class_c_ontology_term}{C\-Ontology\-Term} instance references. 
+\item Odd elements of the path are graph vertices and can be provided as \hyperlink{class_c_ontology_node}{C\-Ontology\-Node} instances\-: 
+\begin{DoxyItemize}
+\item \hyperlink{class_c_ontology_node}{C\-Ontology\-Node} instances will be converted into their \hyperlink{}{k\-T\-A\-G\-\_\-\-T\-E\-R\-M} property. 
+\item {\ttfamily Integer} values will {\itshape not} be interpreted as node references, since there is no way to resolve them. 
+\item If the first element of the path is an \hyperlink{class_c_ontology_node}{C\-Ontology\-Node} instance, the latter must have its \hyperlink{}{k\-T\-A\-G\-\_\-\-K\-I\-N\-D} attribute set to \hyperlink{}{k\-K\-I\-N\-D\-\_\-\-F\-E\-A\-T\-U\-R\-E}. 
+\item If the last element of the path is an \hyperlink{class_c_ontology_node}{C\-Ontology\-Node} instance, the latter must have its \hyperlink{}{k\-T\-A\-G\-\_\-\-K\-I\-N\-D} attribute set to \hyperlink{}{k\-K\-I\-N\-D\-\_\-\-S\-C\-A\-L\-E}. 
+\end{DoxyItemize}
+\item \{link \hyperlink{class_c_ontology_term}{C\-Ontology\-Term}\} instances will be accepted in any position. 
+\item \{link \hyperlink{class_c_ontology_term}{C\-Ontology\-Term}\} instances must have their \hyperlink{}{k\-T\-A\-G\-\_\-\-N\-I\-D} attribute. 
+\item Any other data type will be interpreted as the term's \hyperlink{}{k\-T\-A\-G\-\_\-\-N\-I\-D} and no verification will be performed. 
+\end{DoxyItemize}
+
+In addition, the following attributes will be copied into the current object\-:
+
+
+\begin{DoxyItemize}
+\item {\ttfamily \hyperlink{}{k\-T\-A\-G\-\_\-\-S\-Y\-N\-O\-N\-Y\-M\-S}}\-: From the eventual feature term. 
+\item {\ttfamily \hyperlink{}{k\-T\-A\-G\-\_\-\-T\-Y\-P\-E}}\-: From the eventual scale vertex. 
+\item {\ttfamily \hyperlink{}{k\-T\-A\-G\-\_\-\-I\-N\-P\-U\-T}}\-: From the eventual scale vertex. 
+\item {\ttfamily \hyperlink{}{k\-T\-A\-G\-\_\-\-P\-A\-T\-T\-E\-R\-N}}\-: From the eventual scale vertex. 
+\item {\ttfamily \hyperlink{}{k\-T\-A\-G\-\_\-\-L\-E\-N\-G\-T\-H}}\-: From the eventual scale vertex. 
+\item {\ttfamily \hyperlink{}{k\-T\-A\-G\-\_\-\-M\-I\-N\-\_\-\-V\-A\-L}}\-: From the eventual scale vertex. 
+\item {\ttfamily \hyperlink{}{k\-T\-A\-G\-\_\-\-M\-A\-X\-\_\-\-V\-A\-L}}\-: From the eventual scale vertex. 
+\item {\ttfamily \hyperlink{}{k\-T\-A\-G\-\_\-\-E\-X\-A\-M\-P\-L\-E\-S}}\-: From the eventual scale vertex. 
+\end{DoxyItemize}
+
+
+\begin{DoxyParams}[1]{Parameters}
+mixed & {\em \$the\-Value} & Value to append.\\
+\hline
+\end{DoxyParams}
+public \begin{DoxyReturn}{Returns}
+integer Number of items in the list.
+\end{DoxyReturn}
+\hyperlink{class_c_persistent_object_aaddbaf409e7cab172ce6a92631d9ae45}{\-\_\-\-Assert\-Class()}
+
+\begin{DoxySeeAlso}{See Also}
+k\-T\-A\-G\-\_\-\-P\-A\-T\-H 
+\end{DoxySeeAlso}
+\hypertarget{class_c_ontology_tag_a878c491b0bb9f60c26c48a3797df15b8}{\index{C\-Ontology\-Tag@{C\-Ontology\-Tag}!Replace@{Replace}}
+\index{Replace@{Replace}!COntologyTag@{C\-Ontology\-Tag}}
+\subsubsection[{Replace}]{\setlength{\rightskip}{0pt plus 5cm}C\-Ontology\-Tag\-::\-Replace (
+\begin{DoxyParamCaption}
+\item[{{\bf C\-Connection}}]{\$the\-Connection}
+\end{DoxyParamCaption}
+)}}\label{class_c_ontology_tag_a878c491b0bb9f60c26c48a3797df15b8}
+\subparagraph*{Replace the object into a container}
+
+We overload this method to raise an exception\-: objects of this class can only be inserted, after this one can only modify their attributes using the modification interface provided by container objects.
+
+In this class we prevent replacing a committed object and allow inserting a non committed object.
+
+
+\begin{DoxyParams}[1]{Parameters}
+\hyperlink{class_c_connection}{C\-Connection} & {\em \$the\-Connection} & Server, database or container.\\
+\hline
+\end{DoxyParams}
+public \begin{DoxyReturn}{Returns}
+mixed The object's native identifier. 
+\end{DoxyReturn}
+\hypertarget{class_c_ontology_tag_a58669fac5e450f687de2d4aad38bd4c4}{\index{C\-Ontology\-Tag@{C\-Ontology\-Tag}!Resolve@{Resolve}}
+\index{Resolve@{Resolve}!COntologyTag@{C\-Ontology\-Tag}}
+\subsubsection[{Resolve}]{\setlength{\rightskip}{0pt plus 5cm}static C\-Ontology\-Tag\-::\-Resolve (
+\begin{DoxyParamCaption}
+\item[{{\bf C\-Connection}}]{\$the\-Connection, }
+\item[{}]{\$the\-Identifier, }
+\item[{}]{\$do\-Throw = {\ttfamily FALSE}}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}}}\label{class_c_ontology_tag_a58669fac5e450f687de2d4aad38bd4c4}
+\subparagraph*{Resolve a tag}
+
+This method can be used to retrieve an existing tag by identifier, or retrieve all tags matching a term.
+
+The method accepts the following parameters\-:
+
+
+\begin{DoxyItemize}
+\item {\ttfamily \$the\-Connection}\-: This parameter represents the connection from which the tags container must be resolved. Note that this method might need to resolve the terms container, so provide at least a database. 
+\item {\ttfamily \$the\-Identifier}\-: This parameter represents the identifier to be resolved\-: 
+\begin{DoxyItemize}
+\item {\ttfamily integer}\-: In this case the method assumes that the parameter represents the tag identifier\-: it will attempt to retrieve the tag, if it is not found, the method will return {\ttfamily N\-U\-L\-L}. 
+\item {\ttfamily array}\-: In this case the method assumes the array is the tag path, \hyperlink{}{k\-T\-A\-G\-\_\-\-P\-A\-T\-H}, it will attempt to convert it into the tag \hyperlink{}{k\-T\-A\-G\-\_\-\-U\-I\-D} and locate it. 
+\item {\itshape other}\-: Any other type will be interpreted as the tag's global identifier\-: the method will return the matching tag or {\ttfamily N\-U\-L\-L}. 
+\end{DoxyItemize}
+\item {\ttfamily \$do\-Throw}\-: If {\ttfamily T\-R\-U\-E}, any failure to resolve the tag will raise an exception. 
+\end{DoxyItemize}
+
+The method will return an instance of this class, or {\ttfamily N\-U\-L\-L}, if the identifier was not resolved.
+
+
+\begin{DoxyParams}[1]{Parameters}
+\hyperlink{class_c_connection}{C\-Connection} & {\em \$the\-Connection} & Server, database or container. \\
+\hline
+mixed & {\em \$the\-Identifier} & Identifier to be resolved. \\
+\hline
+boolean & {\em \$do\-Throw} & If {\ttfamily T\-R\-U\-E} raise an exception.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+\hyperlink{class_c_ontology_term}{C\-Ontology\-Term} Found tag or {\ttfamily N\-U\-L\-L}.
+\end{DoxyReturn}
+
+\begin{DoxyExceptions}{Exceptions}
+{\em Exception} & \\
+\hline
+\end{DoxyExceptions}
+\hypertarget{class_c_ontology_tag_ae5aaf4673b9384c0bacbdc0b3cb2b1c8}{\index{C\-Ontology\-Tag@{C\-Ontology\-Tag}!Update@{Update}}
+\index{Update@{Update}!COntologyTag@{C\-Ontology\-Tag}}
+\subsubsection[{Update}]{\setlength{\rightskip}{0pt plus 5cm}C\-Ontology\-Tag\-::\-Update (
+\begin{DoxyParamCaption}
+\item[{{\bf C\-Connection}}]{\$the\-Connection}
+\end{DoxyParamCaption}
+)}}\label{class_c_ontology_tag_ae5aaf4673b9384c0bacbdc0b3cb2b1c8}
+\subparagraph*{Update the object in a container}
+
+We overload this method to raise an exception\-: objects of this class can only be inserted, after this one can only modify their attributes using the modification interface provided by container objects.
+
+
+\begin{DoxyParams}[1]{Parameters}
+\hyperlink{class_c_connection}{C\-Connection} & {\em \$the\-Connection} & Server, database or container.\\
+\hline
+\end{DoxyParams}
+public
+
+
+\begin{DoxyExceptions}{Exceptions}
+{\em Exception} & \\
+\hline
+\end{DoxyExceptions}
+
+
+The documentation for this class was generated from the following file\-:\begin{DoxyCompactItemize}
+\item 
+/\-Library/\-Web\-Server/\-Library/\-P\-H\-P\-Wrapper/classes/C\-Ontology\-Tag.\-php\end{DoxyCompactItemize}

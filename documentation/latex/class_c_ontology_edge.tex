@@ -1,0 +1,518 @@
+\hypertarget{class_c_ontology_edge}{\section{C\-Ontology\-Edge Class Reference}
+\label{class_c_ontology_edge}\index{C\-Ontology\-Edge@{C\-Ontology\-Edge}}
+}
+Inheritance diagram for C\-Ontology\-Edge\-:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=7.000000cm]{class_c_ontology_edge}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{class_c_ontology_edge_accb7245cafff2b1f86e5ef54f0b350b8}{Insert} (\hyperlink{class_c_connection}{C\-Connection} \$the\-Connection)
+\item 
+\hyperlink{class_c_ontology_edge_a0f369a60b57a48e79c34537a1ec6de80}{Load\-Subject} (\hyperlink{class_c_connection}{C\-Connection} \$the\-Connection, \$do\-Reload=F\-A\-L\-S\-E)
+\item 
+\hyperlink{class_c_ontology_edge_a74b5faea0ec803afd1c44e739b588b63}{Load\-Predicate} (\hyperlink{class_c_connection}{C\-Connection} \$the\-Connection, \$do\-Reload=F\-A\-L\-S\-E)
+\item 
+\hyperlink{class_c_ontology_edge_aff6fa3df789a8915076b07062e45bec2}{Load\-Object} (\hyperlink{class_c_connection}{C\-Connection} \$the\-Connection, \$do\-Reload=F\-A\-L\-S\-E)
+\end{DoxyCompactItemize}
+\subsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+static \hyperlink{class_c_ontology_edge_affe02c782c1cc05ea2949cbd48b07c54}{Default\-Container\-Name} ()
+\item 
+static \hyperlink{class_c_ontology_edge_ad9312fa22db2de8a45f9dc5cdce204ed}{Resolve} (\hyperlink{class_c_connection}{C\-Connection} \$the\-Connection, \$the\-Identifier, \$do\-Throw=F\-A\-L\-S\-E)
+\end{DoxyCompactItemize}
+\subsection*{Protected Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{class_c_ontology_edge_a8e5d17a08008ca21f0be3ffd801890ef}{\-\_\-index} (\hyperlink{class_c_connection}{C\-Connection} \$the\-Connection, \$the\-Modifiers)
+\item 
+\hyperlink{class_c_ontology_edge_a001291e06296d03d90254b063581b3f9}{\-\_\-\-Preset} (\&\$the\-Offset, \&\$the\-Value)
+\item 
+\hyperlink{class_c_ontology_edge_adfb3c6b7fe4fd70f465a225ebb605565}{\-\_\-\-Preunset} (\&\$the\-Offset)
+\item 
+\hyperlink{class_c_ontology_edge_ad014041738697d960791d7ee489dcc26}{\-\_\-\-Precommit\-Related} (\&\$the\-Connection, \&\$the\-Modifiers)
+\item 
+\hyperlink{class_c_ontology_edge_ac76cb6503b256fa7f6599a1cd98ab5cd}{\-\_\-\-Precommit\-Identify} (\&\$the\-Connection, \&\$the\-Modifiers)
+\item 
+\hyperlink{class_c_ontology_edge_a489c9ec3268156e7bef68eccec679fa5}{\-\_\-\-Postcommit\-Related} (\&\$the\-Connection, \&\$the\-Modifiers)
+\item 
+\hyperlink{class_c_ontology_edge_a416c0d2e9e040ae28b1cf05ff6bbd947}{\-\_\-\-Postcommit\-Cleanup} (\&\$the\-Connection, \&\$the\-Modifiers)
+\item 
+\hyperlink{class_c_ontology_edge_acc6425bab1f7e9988b1be0cfc977533e}{\-\_\-\-Add\-Graph\-Edge} (\hyperlink{class_c_graph_container}{C\-Graph\-Container} \$the\-Graph)
+\end{DoxyCompactItemize}
+\subsection*{Protected Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{class_c_ontology_edge_a6b69e9b2597ea1ca7d07dd54e2c40ae2}{{\bfseries \$m\-Subject} = N\-U\-L\-L}\label{class_c_ontology_edge_a6b69e9b2597ea1ca7d07dd54e2c40ae2}
+
+\item 
+\hypertarget{class_c_ontology_edge_a8b596151b0cf3a60aad60bc1e7cfec7d}{{\bfseries \$m\-Predicate} = N\-U\-L\-L}\label{class_c_ontology_edge_a8b596151b0cf3a60aad60bc1e7cfec7d}
+
+\item 
+\hypertarget{class_c_ontology_edge_a3ba70a64095979da7533fb6124ec49b7}{{\bfseries \$m\-Object} = N\-U\-L\-L}\label{class_c_ontology_edge_a3ba70a64095979da7533fb6124ec49b7}
+
+\end{DoxyCompactItemize}
+
+
+\subsection{Member Function Documentation}
+\hypertarget{class_c_ontology_edge_acc6425bab1f7e9988b1be0cfc977533e}{\index{C\-Ontology\-Edge@{C\-Ontology\-Edge}!\-\_\-\-Add\-Graph\-Edge@{\-\_\-\-Add\-Graph\-Edge}}
+\index{\-\_\-\-Add\-Graph\-Edge@{\-\_\-\-Add\-Graph\-Edge}!COntologyEdge@{C\-Ontology\-Edge}}
+\subsubsection[{\-\_\-\-Add\-Graph\-Edge}]{\setlength{\rightskip}{0pt plus 5cm}C\-Ontology\-Edge\-::\-\_\-\-Add\-Graph\-Edge (
+\begin{DoxyParamCaption}
+\item[{{\bf C\-Graph\-Container}}]{\$the\-Graph}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [protected]}}}\label{class_c_ontology_edge_acc6425bab1f7e9988b1be0cfc977533e}
+\subparagraph*{Create graph edge}
+
+This method will create and save a new graph edge in the provided graph container and return its newly created identifier.
+
+This method is called by \hyperlink{class_c_ontology_edge_ac76cb6503b256fa7f6599a1cd98ab5cd}{\-\_\-\-Precommit\-Identify()} to set the new edge \hyperlink{}{k\-T\-A\-G\-\_\-\-N\-I\-D} and the method makes no assumption whether the edge exists already or not, in all cases it will create a new edge.
+
+This method will set the node identifiers in the \hyperlink{}{k\-T\-A\-G\-\_\-\-S\-U\-B\-J\-E\-C\-T} and \hyperlink{}{k\-T\-A\-G\-\_\-\-O\-B\-J\-E\-C\-T} properties and the predicate term \hyperlink{}{k\-T\-A\-G\-\_\-\-G\-I\-D} as the predicate identifier.
+
+following attributes to the graph edge\-: \hyperlink{}{k\-T\-A\-G\-\_\-\-K\-I\-N\-D} and \hyperlink{}{k\-T\-A\-G\-\_\-\-T\-Y\-P\-E}, derived classes may override this method to add other properties.
+
+The method should raise an exception if the node was not created.
+
+
+\begin{DoxyParams}[1]{Parameters}
+\hyperlink{class_c_graph_container}{C\-Graph\-Container} & {\em \$the\-Graph} & Graph container.\\
+\hline
+\end{DoxyParams}
+protected \begin{DoxyReturn}{Returns}
+integer Newly created edge I\-D. 
+\end{DoxyReturn}
+\hypertarget{class_c_ontology_edge_a8e5d17a08008ca21f0be3ffd801890ef}{\index{C\-Ontology\-Edge@{C\-Ontology\-Edge}!\-\_\-index@{\-\_\-index}}
+\index{\-\_\-index@{\-\_\-index}!COntologyEdge@{C\-Ontology\-Edge}}
+\subsubsection[{\-\_\-index}]{\setlength{\rightskip}{0pt plus 5cm}C\-Ontology\-Edge\-::\-\_\-index (
+\begin{DoxyParamCaption}
+\item[{{\bf C\-Connection}}]{\$the\-Connection, }
+\item[{}]{\$the\-Modifiers}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [protected]}}}\label{class_c_ontology_edge_a8e5d17a08008ca21f0be3ffd801890ef}
+\subparagraph*{Return the object's global unique identifier}
+
+We override the parent method to handle the referenced objects\-: in this class the global identifier is the concatenation of the subject node native identifier, the predicate global identifier and the object node native identifier all separated by the \hyperlink{}{k\-T\-O\-K\-E\-N\-\_\-\-I\-N\-D\-E\-X\-\_\-\-S\-E\-P\-A\-R\-A\-T\-O\-R} token.
+
+This method will also automatically fill the persistent path, \hyperlink{}{k\-T\-A\-G\-\_\-\-P\-A\-T\-H}, and identifier, \hyperlink{}{k\-T\-A\-G\-\_\-\-P\-I\-D}, in which the vertex node identifiers are replaced by their related term global identifiers. These attributes are useful for debugging purposes and to provide a persistent identifier to the edge.
+
+
+\begin{DoxyParams}[1]{Parameters}
+\hyperlink{class_c_connection}{C\-Connection} & {\em \$the\-Connection} & Server, database or container. \\
+\hline
+bitfield & {\em \$the\-Modifiers} & Commit options.\\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyExceptions}{Exceptions}
+{\em Exception} & protected \\
+\hline
+\end{DoxyExceptions}
+\begin{DoxyReturn}{Returns}
+string$|$\-N\-U\-L\-L The object's global unique identifier.
+\end{DoxyReturn}
+
+\begin{DoxyExceptions}{Exceptions}
+{\em Exception} & \hyperlink{class_c_ontology_edge_a0f369a60b57a48e79c34537a1ec6de80}{Load\-Subject()}  \hyperlink{class_c_ontology_edge_a74b5faea0ec803afd1c44e739b588b63}{Load\-Predicate()}  \hyperlink{class_c_ontology_edge_aff6fa3df789a8915076b07062e45bec2}{Load\-Object()}\\
+\hline
+\end{DoxyExceptions}
+\begin{DoxySeeAlso}{See Also}
+k\-T\-A\-G\-\_\-\-N\-I\-D k\-T\-A\-G\-\_\-\-G\-I\-D k\-T\-A\-G\-\_\-\-P\-I\-D k\-T\-A\-G\-\_\-\-P\-A\-T\-H k\-T\-O\-K\-E\-N\-\_\-\-I\-N\-D\-E\-X\-\_\-\-S\-E\-P\-A\-R\-A\-T\-O\-R 
+\end{DoxySeeAlso}
+\hypertarget{class_c_ontology_edge_a416c0d2e9e040ae28b1cf05ff6bbd947}{\index{C\-Ontology\-Edge@{C\-Ontology\-Edge}!\-\_\-\-Postcommit\-Cleanup@{\-\_\-\-Postcommit\-Cleanup}}
+\index{\-\_\-\-Postcommit\-Cleanup@{\-\_\-\-Postcommit\-Cleanup}!COntologyEdge@{C\-Ontology\-Edge}}
+\subsubsection[{\-\_\-\-Postcommit\-Cleanup}]{\setlength{\rightskip}{0pt plus 5cm}C\-Ontology\-Edge\-::\-\_\-\-Postcommit\-Cleanup (
+\begin{DoxyParamCaption}
+\item[{\&}]{\$the\-Connection, }
+\item[{\&}]{\$the\-Modifiers}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [protected]}}}\label{class_c_ontology_edge_a416c0d2e9e040ae28b1cf05ff6bbd947}
+\subparagraph*{Cleanup the object after committing}
+
+In this class we reset the term object cache, we set the data members to {\ttfamily N\-U\-L\-L} so that next time one wants to retrieve related objects, the cache will have to be refreshed.
+
+
+\begin{DoxyParams}[1]{Parameters}
+reference & {\em \&\$the\-Connection} & Server, database or container. \\
+\hline
+reference & {\em \&\$the\-Modifiers} & Commit options.\\
+\hline
+\end{DoxyParams}
+protected \hypertarget{class_c_ontology_edge_a489c9ec3268156e7bef68eccec679fa5}{\index{C\-Ontology\-Edge@{C\-Ontology\-Edge}!\-\_\-\-Postcommit\-Related@{\-\_\-\-Postcommit\-Related}}
+\index{\-\_\-\-Postcommit\-Related@{\-\_\-\-Postcommit\-Related}!COntologyEdge@{C\-Ontology\-Edge}}
+\subsubsection[{\-\_\-\-Postcommit\-Related}]{\setlength{\rightskip}{0pt plus 5cm}C\-Ontology\-Edge\-::\-\_\-\-Postcommit\-Related (
+\begin{DoxyParamCaption}
+\item[{\&}]{\$the\-Connection, }
+\item[{\&}]{\$the\-Modifiers}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [protected]}}}\label{class_c_ontology_edge_a489c9ec3268156e7bef68eccec679fa5}
+\subparagraph*{Update related objects after committing}
+
+In this class we handle the \hyperlink{}{k\-T\-A\-G\-\_\-\-E\-D\-G\-E\-S} attribute of the nodes referenced by this object depending on the value of the \hyperlink{}{k\-S\-W\-I\-T\-C\-H\-\_\-k\-T\-A\-G\-\_\-\-E\-D\-G\-E\-S} flag we do the following\-:
+
+
+\begin{DoxyItemize}
+\item {\ttfamily 0x2}\-: {\itshape Keep count of references}. This means that the \hyperlink{}{k\-T\-A\-G\-\_\-\-E\-D\-G\-E\-S} attribute of the subject or object nodes referenced by the current object will be incremented when the object is inserted, or decremented when deleted. 
+\item {\ttfamily 0x3}\-: {\itshape Keep list of references}. This means that a reference to the current object will be added to the \hyperlink{}{k\-T\-A\-G\-\_\-\-E\-D\-G\-E\-S} attribute of the referenced subject or object nodes and removed when the object is deleted. 
+\item {\ttfamily 0x0} {\itshape or other}\-: {\itshape Don't handle this information}. This means that the \hyperlink{}{k\-T\-A\-G\-\_\-\-E\-D\-G\-E\-S} attribute will not be handled. 
+\end{DoxyItemize}
+
+Note that you should provide either a database connection or the {\itshape node} container to this method in order to make it work!
+
+This is the method that should take care of alias to master replication of the relationships, the code is commented\-: if you want to automatically relate alias's master nodes, uncomment that section of use the node's Relate\-To() method in which you can choose whether or not to relate masters.
+
+
+\begin{DoxyParams}[1]{Parameters}
+reference & {\em \&\$the\-Connection} & Server, database or container. \\
+\hline
+reference & {\em \&\$the\-Modifiers} & Commit options.\\
+\hline
+\end{DoxyParams}
+protected
+
+\hyperlink{class_c_status_document_ab7d96fd4588cf7d5432fc65a1d1fb076}{\-\_\-\-Is\-Committed()}  \hyperlink{class_c_persistent_object_ae5f9319ab169499181ae8db82b2fc0e7}{\-\_\-\-Reference\-In\-Object()}
+
+\begin{DoxySeeAlso}{See Also}
+k\-T\-A\-G\-\_\-\-E\-D\-G\-E\-S k\-T\-A\-G\-\_\-\-S\-U\-B\-J\-E\-C\-T k\-T\-A\-G\-\_\-\-O\-B\-J\-E\-C\-T 
+
+k\-F\-L\-A\-G\-\_\-\-P\-E\-R\-S\-I\-S\-T\-\_\-\-I\-N\-S\-E\-R\-T k\-F\-L\-A\-G\-\_\-\-P\-E\-R\-S\-I\-S\-T\-\_\-\-R\-E\-P\-L\-A\-C\-E k\-F\-L\-A\-G\-\_\-\-P\-E\-R\-S\-I\-S\-T\-\_\-\-D\-E\-L\-E\-T\-E 
+
+k\-F\-L\-A\-G\-\_\-\-P\-E\-R\-S\-I\-S\-T\-\_\-\-M\-O\-D\-I\-F\-Y k\-F\-L\-A\-G\-\_\-\-M\-O\-D\-I\-F\-Y\-\_\-\-A\-D\-D\-S\-E\-T k\-F\-L\-A\-G\-\_\-\-M\-O\-D\-I\-F\-Y\-\_\-\-P\-U\-L\-L 
+\end{DoxySeeAlso}
+\hypertarget{class_c_ontology_edge_ac76cb6503b256fa7f6599a1cd98ab5cd}{\index{C\-Ontology\-Edge@{C\-Ontology\-Edge}!\-\_\-\-Precommit\-Identify@{\-\_\-\-Precommit\-Identify}}
+\index{\-\_\-\-Precommit\-Identify@{\-\_\-\-Precommit\-Identify}!COntologyEdge@{C\-Ontology\-Edge}}
+\subsubsection[{\-\_\-\-Precommit\-Identify}]{\setlength{\rightskip}{0pt plus 5cm}C\-Ontology\-Edge\-::\-\_\-\-Precommit\-Identify (
+\begin{DoxyParamCaption}
+\item[{\&}]{\$the\-Connection, }
+\item[{\&}]{\$the\-Modifiers}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [protected]}}}\label{class_c_ontology_edge_ac76cb6503b256fa7f6599a1cd98ab5cd}
+\subparagraph*{Determine the identifiers before committing}
+
+This method will use the result of the \hyperlink{class_c_ontology_edge_a8e5d17a08008ca21f0be3ffd801890ef}{\-\_\-index()} method to set the global identifier, \hyperlink{}{k\-T\-A\-G\-\_\-\-G\-I\-D}; the same value will be hashed and constitute the unique identifier, \hyperlink{}{k\-T\-A\-G\-\_\-\-U\-I\-D}.
+
+This method will also take care of generating the sequence number that represents the object's native identifier, \hyperlink{}{k\-T\-A\-G\-\_\-\-N\-I\-D}, this value can be generated in two ways\-:
+
+
+\begin{DoxyItemize}
+\item {\itshape The container has the graph reference, \hyperlink{}{k\-O\-F\-F\-S\-E\-T\-\_\-\-G\-R\-A\-P\-H}}\-: If the provided container contains a reference to a graph container, it means that the edge must also be stored in the graph, this will be taken care by the \hyperlink{class_c_ontology_edge_acc6425bab1f7e9988b1be0cfc977533e}{\-\_\-\-Add\-Graph\-Edge()} method that will return the graph edge's I\-D, which in turn will become the current object's \hyperlink{}{k\-T\-A\-G\-\_\-\-N\-I\-D}. 
+\item {\itshape The container lacks the graph reference, \hyperlink{}{k\-O\-F\-F\-S\-E\-T\-\_\-\-G\-R\-A\-P\-H}}\-: If the provided container does not hold a reference to a graph container, the object identifier will be generated with a sequence number tagged \hyperlink{}{k\-S\-E\-Q\-U\-E\-N\-C\-E\-\_\-\-K\-E\-Y\-\_\-\-E\-D\-G\-E}, this method will set the native identifier, \hyperlink{}{k\-T\-A\-G\-\_\-\-N\-I\-D}, with this value. 
+\end{DoxyItemize}
+
+When deleting the object, if the provided container contains a reference to a graph container, this method will also delete the relative edge from the graph.
+
+The parent method will then be called, which will ignore the global and native identifiers, since they will have been set here.
+
+
+\begin{DoxyParams}[1]{Parameters}
+reference & {\em \&\$the\-Connection} & Server, database or container. \\
+\hline
+reference & {\em \&\$the\-Modifiers} & Commit options.\\
+\hline
+\end{DoxyParams}
+protected \begin{DoxyReturn}{Returns}
+mixed
+\end{DoxyReturn}
+
+\begin{DoxyExceptions}{Exceptions}
+{\em Exception} & \\
+\hline
+\end{DoxyExceptions}
+\begin{DoxySeeAlso}{See Also}
+k\-S\-E\-Q\-U\-E\-N\-C\-E\-\_\-\-K\-E\-Y\-\_\-\-E\-D\-G\-E 
+
+k\-T\-A\-G\-\_\-\-N\-I\-D k\-T\-A\-G\-\_\-\-G\-I\-D k\-T\-A\-G\-\_\-\-U\-I\-D 
+
+k\-F\-L\-A\-G\-\_\-\-P\-E\-R\-S\-I\-S\-T\-\_\-\-I\-N\-S\-E\-R\-T k\-F\-L\-A\-G\-\_\-\-P\-E\-R\-S\-I\-S\-T\-\_\-\-R\-E\-P\-L\-A\-C\-E 
+\end{DoxySeeAlso}
+\hypertarget{class_c_ontology_edge_ad014041738697d960791d7ee489dcc26}{\index{C\-Ontology\-Edge@{C\-Ontology\-Edge}!\-\_\-\-Precommit\-Related@{\-\_\-\-Precommit\-Related}}
+\index{\-\_\-\-Precommit\-Related@{\-\_\-\-Precommit\-Related}!COntologyEdge@{C\-Ontology\-Edge}}
+\subsubsection[{\-\_\-\-Precommit\-Related}]{\setlength{\rightskip}{0pt plus 5cm}C\-Ontology\-Edge\-::\-\_\-\-Precommit\-Related (
+\begin{DoxyParamCaption}
+\item[{\&}]{\$the\-Connection, }
+\item[{\&}]{\$the\-Modifiers}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [protected]}}}\label{class_c_ontology_edge_ad014041738697d960791d7ee489dcc26}
+\subparagraph*{Handle embedded or related objects before committing}
+
+In this class we commit the eventual term provided as an uncommitted object and replace the offset with the term's native identifier, or load the term if provided as an identifier.
+
+
+\begin{DoxyParams}[1]{Parameters}
+reference & {\em \&\$the\-Connection} & Server, database or container. \\
+\hline
+reference & {\em \&\$the\-Modifiers} & Commit options.\\
+\hline
+\end{DoxyParams}
+protected \begin{DoxyReturn}{Returns}
+mixed
+\end{DoxyReturn}
+\hyperlink{class_c_ontology_edge_a0f369a60b57a48e79c34537a1ec6de80}{Load\-Subject()}  \hyperlink{class_c_ontology_edge_a74b5faea0ec803afd1c44e739b588b63}{Load\-Predicate()}  \hyperlink{class_c_ontology_edge_aff6fa3df789a8915076b07062e45bec2}{Load\-Object()}
+
+\begin{DoxySeeAlso}{See Also}
+k\-T\-A\-G\-\_\-\-P\-R\-E\-D\-I\-C\-A\-T\-E k\-T\-A\-G\-\_\-\-O\-B\-J\-E\-C\-T k\-T\-A\-G\-\_\-\-S\-U\-B\-J\-E\-C\-T 
+\end{DoxySeeAlso}
+\hypertarget{class_c_ontology_edge_a001291e06296d03d90254b063581b3f9}{\index{C\-Ontology\-Edge@{C\-Ontology\-Edge}!\-\_\-\-Preset@{\-\_\-\-Preset}}
+\index{\-\_\-\-Preset@{\-\_\-\-Preset}!COntologyEdge@{C\-Ontology\-Edge}}
+\subsubsection[{\-\_\-\-Preset}]{\setlength{\rightskip}{0pt plus 5cm}C\-Ontology\-Edge\-::\-\_\-\-Preset (
+\begin{DoxyParamCaption}
+\item[{\&}]{\$the\-Offset, }
+\item[{\&}]{\$the\-Value}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [protected]}}}\label{class_c_ontology_edge_a001291e06296d03d90254b063581b3f9}
+\subparagraph*{Handle offset before setting it}
+
+In this class we handle the subject, predicate and object offsets, if provided as objects we leave them unchanged only if not yet committed, if not, we convert them to their native identifiers.
+
+We also ensure that the provided objects are instances of the correct classes by asserting \hyperlink{class_c_document}{C\-Document} descendants.
+
+
+\begin{DoxyParams}[1]{Parameters}
+reference & {\em \&\$the\-Offset} & Offset. \\
+\hline
+reference & {\em \&\$the\-Value} & Value to set at offset.\\
+\hline
+\end{DoxyParams}
+protected
+
+
+\begin{DoxyExceptions}{Exceptions}
+{\em Exception} & \hyperlink{class_c_status_document_ab7d96fd4588cf7d5432fc65a1d1fb076}{\-\_\-\-Is\-Committed()}  \hyperlink{class_c_persistent_object_aaddbaf409e7cab172ce6a92631d9ae45}{\-\_\-\-Assert\-Class()}\\
+\hline
+\end{DoxyExceptions}
+\begin{DoxySeeAlso}{See Also}
+k\-T\-A\-G\-\_\-\-P\-R\-E\-D\-I\-C\-A\-T\-E k\-T\-A\-G\-\_\-\-O\-B\-J\-E\-C\-T k\-T\-A\-G\-\_\-\-S\-U\-B\-J\-E\-C\-T 
+\end{DoxySeeAlso}
+\hypertarget{class_c_ontology_edge_adfb3c6b7fe4fd70f465a225ebb605565}{\index{C\-Ontology\-Edge@{C\-Ontology\-Edge}!\-\_\-\-Preunset@{\-\_\-\-Preunset}}
+\index{\-\_\-\-Preunset@{\-\_\-\-Preunset}!COntologyEdge@{C\-Ontology\-Edge}}
+\subsubsection[{\-\_\-\-Preunset}]{\setlength{\rightskip}{0pt plus 5cm}C\-Ontology\-Edge\-::\-\_\-\-Preunset (
+\begin{DoxyParamCaption}
+\item[{\&}]{\$the\-Offset}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [protected]}}}\label{class_c_ontology_edge_adfb3c6b7fe4fd70f465a225ebb605565}
+\subparagraph*{Handle offset before unsetting it}
+
+In this class we prevent the modification of the subject, predicate and object offsets if the object is committed.
+
+
+\begin{DoxyParams}[1]{Parameters}
+reference & {\em \&\$the\-Offset} & Offset.\\
+\hline
+\end{DoxyParams}
+protected
+
+
+\begin{DoxyExceptions}{Exceptions}
+{\em Exception} & \hyperlink{class_c_status_document_ab7d96fd4588cf7d5432fc65a1d1fb076}{\-\_\-\-Is\-Committed()}\\
+\hline
+\end{DoxyExceptions}
+\begin{DoxySeeAlso}{See Also}
+k\-T\-A\-G\-\_\-\-P\-R\-E\-D\-I\-C\-A\-T\-E k\-T\-A\-G\-\_\-\-O\-B\-J\-E\-C\-T k\-T\-A\-G\-\_\-\-S\-U\-B\-J\-E\-C\-T 
+\end{DoxySeeAlso}
+\hypertarget{class_c_ontology_edge_affe02c782c1cc05ea2949cbd48b07c54}{\index{C\-Ontology\-Edge@{C\-Ontology\-Edge}!Default\-Container\-Name@{Default\-Container\-Name}}
+\index{Default\-Container\-Name@{Default\-Container\-Name}!COntologyEdge@{C\-Ontology\-Edge}}
+\subsubsection[{Default\-Container\-Name}]{\setlength{\rightskip}{0pt plus 5cm}static C\-Ontology\-Edge\-::\-Default\-Container\-Name (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}}}\label{class_c_ontology_edge_affe02c782c1cc05ea2949cbd48b07c54}
+\subparagraph*{Return the default edges container name}
+
+This class uses the \hyperlink{}{k\-C\-O\-N\-T\-A\-I\-N\-E\-R\-\_\-\-E\-D\-G\-E\-\_\-\-N\-A\-M\-E} default name.
+
+\begin{DoxyReturn}{Returns}
+string The default container name.
+\end{DoxyReturn}
+
+\begin{DoxyExceptions}{Exceptions}
+{\em Exception} & \\
+\hline
+\end{DoxyExceptions}
+\begin{DoxySeeAlso}{See Also}
+k\-C\-O\-N\-T\-A\-I\-N\-E\-R\-\_\-\-E\-D\-G\-E\-\_\-\-N\-A\-M\-E 
+\end{DoxySeeAlso}
+\hypertarget{class_c_ontology_edge_accb7245cafff2b1f86e5ef54f0b350b8}{\index{C\-Ontology\-Edge@{C\-Ontology\-Edge}!Insert@{Insert}}
+\index{Insert@{Insert}!COntologyEdge@{C\-Ontology\-Edge}}
+\subsubsection[{Insert}]{\setlength{\rightskip}{0pt plus 5cm}C\-Ontology\-Edge\-::\-Insert (
+\begin{DoxyParamCaption}
+\item[{{\bf C\-Connection}}]{\$the\-Connection}
+\end{DoxyParamCaption}
+)}}\label{class_c_ontology_edge_accb7245cafff2b1f86e5ef54f0b350b8}
+\subparagraph*{Insert the object into a container}
+
+We overload this method to prevent creating two edges with the same elements. We first check if there is another edge with the same subject/predicate/object sequence, in that case we replace the current object attributes with the found edge; if no other edge shares the same terms, the method will perform as usual.
+
+If any of the relationship terms cannot be resolved, the method will proceed as in the parent class.
+
+
+\begin{DoxyParams}[1]{Parameters}
+\hyperlink{class_c_connection}{C\-Connection} & {\em \$the\-Connection} & Server, database or container.\\
+\hline
+\end{DoxyParams}
+public \begin{DoxyReturn}{Returns}
+mixed The object's native identifier.
+\end{DoxyReturn}
+\begin{DoxySeeAlso}{See Also}
+k\-F\-L\-A\-G\-\_\-\-P\-E\-R\-S\-I\-S\-T\-\_\-\-I\-N\-S\-E\-R\-T 
+\end{DoxySeeAlso}
+\hypertarget{class_c_ontology_edge_aff6fa3df789a8915076b07062e45bec2}{\index{C\-Ontology\-Edge@{C\-Ontology\-Edge}!Load\-Object@{Load\-Object}}
+\index{Load\-Object@{Load\-Object}!COntologyEdge@{C\-Ontology\-Edge}}
+\subsubsection[{Load\-Object}]{\setlength{\rightskip}{0pt plus 5cm}C\-Ontology\-Edge\-::\-Load\-Object (
+\begin{DoxyParamCaption}
+\item[{{\bf C\-Connection}}]{\$the\-Connection, }
+\item[{}]{\$do\-Reload = {\ttfamily FALSE}}
+\end{DoxyParamCaption}
+)}}\label{class_c_ontology_edge_aff6fa3df789a8915076b07062e45bec2}
+\subparagraph*{Load object node object}
+
+This method will return the current object node object\-: if the node is not set, the method will return {\ttfamily N\-U\-L\-L}; if the node cannot be found, the method will raise an exception.
+
+The object will also be loaded in a data member that can function as a cache.
+
+The method features two parameters\-: the first refers to the container in which the node is stored, the second is a boolean flag that determines whether the object is to be read, or if the cached copy can be used.
+
+
+\begin{DoxyParams}[1]{Parameters}
+\hyperlink{class_c_connection}{C\-Connection} & {\em \$the\-Connection} & Server, database or container. \\
+\hline
+boolean & {\em \$do\-Reload} & Reload if {\ttfamily T\-R\-U\-E}.\\
+\hline
+\end{DoxyParams}
+public \begin{DoxyReturn}{Returns}
+\hyperlink{class_c_ontology_node}{C\-Ontology\-Node} Node object or {\ttfamily N\-U\-L\-L}.
+\end{DoxyReturn}
+
+\begin{DoxyExceptions}{Exceptions}
+{\em Exception} & \hyperlink{class_c_persistent_object_a5a5402ef394104148cfc580a6799ac2b}{New\-Object()}\\
+\hline
+\end{DoxyExceptions}
+\begin{DoxySeeAlso}{See Also}
+k\-T\-A\-G\-\_\-\-O\-B\-J\-E\-C\-T 
+\end{DoxySeeAlso}
+\hypertarget{class_c_ontology_edge_a74b5faea0ec803afd1c44e739b588b63}{\index{C\-Ontology\-Edge@{C\-Ontology\-Edge}!Load\-Predicate@{Load\-Predicate}}
+\index{Load\-Predicate@{Load\-Predicate}!COntologyEdge@{C\-Ontology\-Edge}}
+\subsubsection[{Load\-Predicate}]{\setlength{\rightskip}{0pt plus 5cm}C\-Ontology\-Edge\-::\-Load\-Predicate (
+\begin{DoxyParamCaption}
+\item[{{\bf C\-Connection}}]{\$the\-Connection, }
+\item[{}]{\$do\-Reload = {\ttfamily FALSE}}
+\end{DoxyParamCaption}
+)}}\label{class_c_ontology_edge_a74b5faea0ec803afd1c44e739b588b63}
+\subparagraph*{Load predicate term object}
+
+This method will return the current predicate term object\-: if the term is not set, the method will return {\ttfamily N\-U\-L\-L}; if the term cannot be found, the method will raise an exception.
+
+The object will also be loaded in a data member that can function as a cache.
+
+The method features two parameters\-: the first refers to the container in which the term is stored, the second is a boolean flag that determines whether the object is to be read, or if the cached copy can be used.
+
+
+\begin{DoxyParams}[1]{Parameters}
+\hyperlink{class_c_connection}{C\-Connection} & {\em \$the\-Connection} & Server, database or container. \\
+\hline
+boolean & {\em \$do\-Reload} & Reload if {\ttfamily T\-R\-U\-E}.\\
+\hline
+\end{DoxyParams}
+public \begin{DoxyReturn}{Returns}
+\hyperlink{class_c_ontology_term}{C\-Ontology\-Term} Term object or {\ttfamily N\-U\-L\-L}.
+\end{DoxyReturn}
+
+\begin{DoxyExceptions}{Exceptions}
+{\em Exception} & \hyperlink{class_c_persistent_object_a5a5402ef394104148cfc580a6799ac2b}{New\-Object()}\\
+\hline
+\end{DoxyExceptions}
+\begin{DoxySeeAlso}{See Also}
+k\-T\-A\-G\-\_\-\-P\-R\-E\-D\-I\-C\-A\-T\-E 
+\end{DoxySeeAlso}
+\hypertarget{class_c_ontology_edge_a0f369a60b57a48e79c34537a1ec6de80}{\index{C\-Ontology\-Edge@{C\-Ontology\-Edge}!Load\-Subject@{Load\-Subject}}
+\index{Load\-Subject@{Load\-Subject}!COntologyEdge@{C\-Ontology\-Edge}}
+\subsubsection[{Load\-Subject}]{\setlength{\rightskip}{0pt plus 5cm}C\-Ontology\-Edge\-::\-Load\-Subject (
+\begin{DoxyParamCaption}
+\item[{{\bf C\-Connection}}]{\$the\-Connection, }
+\item[{}]{\$do\-Reload = {\ttfamily FALSE}}
+\end{DoxyParamCaption}
+)}}\label{class_c_ontology_edge_a0f369a60b57a48e79c34537a1ec6de80}
+\subparagraph*{Load subject node object}
+
+This method will return the current subject node object\-: if the node is not set, the method will return {\ttfamily N\-U\-L\-L}; if the node cannot be found, the method will raise an exception.
+
+The object will also be loaded in a data member that can function as a cache.
+
+The method features two parameters\-: the first refers to the container in which the node is stored, the second is a boolean flag that determines whether the object is to be read, or if the cached copy can be used.
+
+
+\begin{DoxyParams}[1]{Parameters}
+\hyperlink{class_c_connection}{C\-Connection} & {\em \$the\-Connection} & Server, database or container. \\
+\hline
+boolean & {\em \$do\-Reload} & Reload if {\ttfamily T\-R\-U\-E}.\\
+\hline
+\end{DoxyParams}
+public \begin{DoxyReturn}{Returns}
+\hyperlink{class_c_ontology_node}{C\-Ontology\-Node} Node object or {\ttfamily N\-U\-L\-L}.
+\end{DoxyReturn}
+
+\begin{DoxyExceptions}{Exceptions}
+{\em Exception} & return \hyperlink{class_c_ontology_node}{C\-Ontology\-Node}\\
+\hline
+\end{DoxyExceptions}
+\hyperlink{class_c_persistent_object_a5a5402ef394104148cfc580a6799ac2b}{New\-Object()}
+
+\begin{DoxySeeAlso}{See Also}
+k\-T\-A\-G\-\_\-\-S\-U\-B\-J\-E\-C\-T 
+\end{DoxySeeAlso}
+\hypertarget{class_c_ontology_edge_ad9312fa22db2de8a45f9dc5cdce204ed}{\index{C\-Ontology\-Edge@{C\-Ontology\-Edge}!Resolve@{Resolve}}
+\index{Resolve@{Resolve}!COntologyEdge@{C\-Ontology\-Edge}}
+\subsubsection[{Resolve}]{\setlength{\rightskip}{0pt plus 5cm}static C\-Ontology\-Edge\-::\-Resolve (
+\begin{DoxyParamCaption}
+\item[{{\bf C\-Connection}}]{\$the\-Connection, }
+\item[{}]{\$the\-Identifier, }
+\item[{}]{\$do\-Throw = {\ttfamily FALSE}}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}}}\label{class_c_ontology_edge_ad9312fa22db2de8a45f9dc5cdce204ed}
+\subparagraph*{Resolve an edge}
+
+This method can be used to retrieve an existing edge by identifier.
+
+The method accepts the following parameters\-:
+
+
+\begin{DoxyItemize}
+\item {\ttfamily \$the\-Connection}\-: This parameter represents the connection from which the nodes container must be resolved. If this parameter cannot be correctly determined, the method will raise an exception. 
+\item {\ttfamily \$the\-Identifier}\-: This parameter represents the edge unique, global, native identifier or object, depending on its type\-: 
+\begin{DoxyItemize}
+\item {\ttfamily integer}\-: In this case the method assumes that the parameter represents the edge identifier\-: it will attempt to retrieve the edge, if it is not found, the method will return {\ttfamily N\-U\-L\-L}. 
+\item {\ttfamily \hyperlink{class_c_ontology_edge}{C\-Ontology\-Edge}}\-: In this case the method will use the provided edge's unique identifier. 
+\item {\itshape other}\-: Any other type will be interpreted either as the edge's unique identifier, or as the edges's global identifier\-: the method will return the matching edge or {\ttfamily N\-U\-L\-L}. 
+\end{DoxyItemize}
+\item {\ttfamily \$do\-Throw}\-: If {\ttfamily T\-R\-U\-E}, any failure to resolve the edge will raise an exception. 
+\end{DoxyItemize}
+
+The method will return the found edge, {\ttfamily N\-U\-L\-L} if not found, or raise an exception if the last parameter is {\ttfamily T\-R\-U\-E}.
+
+{\bfseries Note\-: do not provide an array containing the object in the identifier parameter, or you will get unexpected results.}
+
+
+\begin{DoxyParams}[1]{Parameters}
+\hyperlink{class_c_connection}{C\-Connection} & {\em \$the\-Connection} & Server, database or container. \\
+\hline
+mixed & {\em \$the\-Identifier} & Edge reference. \\
+\hline
+boolean & {\em \$do\-Throw} & If {\ttfamily T\-R\-U\-E} raise an exception.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+\hyperlink{class_c_ontology_edge}{C\-Ontology\-Edge} Found edge or {\ttfamily N\-U\-L\-L}.
+\end{DoxyReturn}
+
+\begin{DoxyExceptions}{Exceptions}
+{\em Exception} & \\
+\hline
+\end{DoxyExceptions}
+
+
+The documentation for this class was generated from the following file\-:\begin{DoxyCompactItemize}
+\item 
+/\-Library/\-Web\-Server/\-Library/\-P\-H\-P\-Wrapper/classes/C\-Ontology\-Edge.\-php\end{DoxyCompactItemize}

@@ -1,0 +1,475 @@
+\hypertarget{class_c_wrapper}{\section{C\-Wrapper Class Reference}
+\label{class_c_wrapper}\index{C\-Wrapper@{C\-Wrapper}}
+}
+Inheritance diagram for C\-Wrapper\-:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=8.000000cm]{class_c_wrapper}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{class_c_wrapper_ab5f77aac3044e183886395ad553fa13a}{\-\_\-\-\_\-construct} (\$the\-Connection=N\-U\-L\-L, \$the\-Options=N\-U\-L\-L)
+\item 
+\hyperlink{class_c_wrapper_ac9ca75e8d8d1f965218bece1ef55c003}{\-\_\-\-\_\-to\-String} ()
+\item 
+\hyperlink{class_c_wrapper_a0e605ca2cdd718ecdeb6f3be9b1f0162}{Handle\-Request} ()
+\end{DoxyCompactItemize}
+\subsection*{Static Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{class_c_wrapper_af2a7faae3b12ef8feb3dc840bf61e149}{static {\bfseries \$s\-Parameter\-List} = array( k\-A\-P\-I\-\_\-\-S\-T\-A\-M\-P\-\_\-\-R\-E\-Q\-U\-E\-S\-T, k\-A\-P\-I\-\_\-\-L\-O\-G\-\_\-\-R\-E\-Q\-U\-E\-S\-T, k\-A\-P\-I\-\_\-\-L\-O\-G\-\_\-\-T\-R\-A\-C\-E )}\label{class_c_wrapper_af2a7faae3b12ef8feb3dc840bf61e149}
+
+\end{DoxyCompactItemize}
+\subsection*{Protected Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{class_c_wrapper_a8369eec2e53b3f6394a35bcd919d8779}{\-\_\-\-Init\-Status} ()
+\item 
+\hyperlink{class_c_wrapper_a2ce212bc7543b4ed07dbc93282d298f6}{\-\_\-\-Init\-Parameters} ()
+\item 
+\hyperlink{class_c_wrapper_aec2fa3594e36a380d66743b47c24490c}{\-\_\-\-Init\-Options} ()
+\item 
+\hyperlink{class_c_wrapper_a0e5c5488fce4b388e43dcf6810874d74}{\-\_\-\-Init\-Resources} ()
+\item 
+\hyperlink{class_c_wrapper_a6675c744053f1b05547ad28fc50a79e6}{\-\_\-\-Parse\-Request} ()
+\item 
+\hyperlink{class_c_wrapper_a2a3d95961650654468789883ab1607e5}{\-\_\-\-Format\-Request} ()
+\item 
+\hyperlink{class_c_wrapper_a24b22cfd0022c1cba1741fb294fba5ba}{\-\_\-\-Validate\-Request} ()
+\item 
+\hyperlink{class_c_wrapper_a53d59f3a61137b8d6f5707d794e2961a}{\-\_\-\-Parse\-Format} ()
+\item 
+\hyperlink{class_c_wrapper_aa090c135ca1085f46d8cddd393131ea6}{\-\_\-\-Parse\-Operation} ()
+\item 
+\hyperlink{class_c_wrapper_a13421345af75888b1fa8bcd3381b52a5}{\-\_\-\-Parse\-Timing} ()
+\item 
+\hyperlink{class_c_wrapper_a8994ff7a5f94438da1c5e3505b145dbd}{\-\_\-\-Validate\-Format} ()
+\item 
+\hyperlink{class_c_wrapper_aab3f7b2ca4cd9e692c35510d753918a4}{\-\_\-\-Validate\-Operation} ()
+\item 
+\hyperlink{class_c_wrapper_a12c1dd1f1d1cf0ae889cc19ff17ced0e}{\-\_\-\-Handle\-Request} ()
+\item 
+\hyperlink{class_c_wrapper_aeff4d2ab12617c1dda2bed705a6969bb}{\-\_\-\-Handle\-\_\-\-List\-Op} (\&\$the\-List)
+\item 
+\hyperlink{class_c_wrapper_ab58ee7076059e0f992c2a642043b764f}{\-\_\-\-Handle\-\_\-\-Ping} ()
+\item 
+\hyperlink{class_c_wrapper_aff9eb1799c8f30cb33967c7a50ce6395}{\-\_\-\-Offset\-Manage} (\$the\-Block, \$the\-Element, \$the\-Value=N\-U\-L\-L)
+\item 
+\hyperlink{class_c_wrapper_ad8dd05c155df0d8fe19be35d4bb67b56}{\-\_\-\-Exception2\-Status} (Exception \$the\-Exception)
+\item 
+\hyperlink{class_c_wrapper_a60583bacf329d484d01df9851602759f}{\-\_\-\-Encode\-Response} ()
+\item 
+\hyperlink{class_c_wrapper_a9b96298777cc3aa5817a2039fc8f29bc}{\-\_\-\-Decode\-Parameter} (\$the\-Parameter)
+\end{DoxyCompactItemize}
+\subsection*{Additional Inherited Members}
+
+
+\subsection{Constructor \& Destructor Documentation}
+\hypertarget{class_c_wrapper_ab5f77aac3044e183886395ad553fa13a}{\index{C\-Wrapper@{C\-Wrapper}!\-\_\-\-\_\-construct@{\-\_\-\-\_\-construct}}
+\index{\-\_\-\-\_\-construct@{\-\_\-\-\_\-construct}!CWrapper@{C\-Wrapper}}
+\subsubsection[{\-\_\-\-\_\-construct}]{\setlength{\rightskip}{0pt plus 5cm}C\-Wrapper\-::\-\_\-\-\_\-construct (
+\begin{DoxyParamCaption}
+\item[{}]{\$the\-Connection = {\ttfamily NULL}, }
+\item[{}]{\$the\-Options = {\ttfamily NULL}}
+\end{DoxyParamCaption}
+)}}\label{class_c_wrapper_ab5f77aac3044e183886395ad553fa13a}
+Instantiate class.
+
+The constructor will set-\/up the environment and parse the request. The workflow is as follows\-:
+
+
+\begin{DoxyItemize}
+\item {\itshape Check required elements}\-: The method will check if all required elements of the request are there, only if this is the case will the constructor init the service. 
+\item {\itshape \hyperlink{class_c_wrapper_a8369eec2e53b3f6394a35bcd919d8779}{\-\_\-\-Init\-Status()}}\-: The response status will be initialised to the \hyperlink{}{k\-S\-T\-A\-T\-U\-S\-\_\-\-I\-D\-L\-E} state. 
+\item {\itshape \hyperlink{class_c_wrapper_aec2fa3594e36a380d66743b47c24490c}{\-\_\-\-Init\-Options()}}\-: Service options will be initialised. 
+\item {\itshape \hyperlink{class_c_wrapper_a0e5c5488fce4b388e43dcf6810874d74}{\-\_\-\-Init\-Resources()}}\-: Eventual resources are initialised. 
+\item {\itshape \hyperlink{class_c_wrapper_a6675c744053f1b05547ad28fc50a79e6}{\-\_\-\-Parse\-Request()}}\-: The request is parsed. 
+\item {\itshape \hyperlink{class_c_wrapper_a2a3d95961650654468789883ab1607e5}{\-\_\-\-Format\-Request()}}\-: The request is normalised if necessary. 
+\item {\itshape \hyperlink{class_c_wrapper_a24b22cfd0022c1cba1741fb294fba5ba}{\-\_\-\-Validate\-Request()}}\-: The request is validated. 
+\end{DoxyItemize}
+
+This protected interface should be overloaded by derived classes to implement custom services.
+
+
+\begin{DoxyParams}[1]{Parameters}
+mixed & {\em \$the\-Connection} & Native connection. \\
+\hline
+mixed & {\em \$the\-Options} & Connection options.\\
+\hline
+\end{DoxyParams}
+public
+
+\hyperlink{class_c_wrapper_a8369eec2e53b3f6394a35bcd919d8779}{\-\_\-\-Init\-Status()}  \hyperlink{class_c_wrapper_aec2fa3594e36a380d66743b47c24490c}{\-\_\-\-Init\-Options()}  \hyperlink{class_c_wrapper_a0e5c5488fce4b388e43dcf6810874d74}{\-\_\-\-Init\-Resources()}  \hyperlink{class_c_wrapper_a6675c744053f1b05547ad28fc50a79e6}{\-\_\-\-Parse\-Request()}  \hyperlink{class_c_wrapper_a2a3d95961650654468789883ab1607e5}{\-\_\-\-Format\-Request()}  \hyperlink{class_c_wrapper_a24b22cfd0022c1cba1741fb294fba5ba}{\-\_\-\-Validate\-Request()}  \hyperlink{class_c_wrapper_ad8dd05c155df0d8fe19be35d4bb67b56}{\-\_\-\-Exception2\-Status()}  \hyperlink{class_c_wrapper_a60583bacf329d484d01df9851602759f}{\-\_\-\-Encode\-Response()} 
+
+\subsection{Member Function Documentation}
+\hypertarget{class_c_wrapper_ac9ca75e8d8d1f965218bece1ef55c003}{\index{C\-Wrapper@{C\-Wrapper}!\-\_\-\-\_\-to\-String@{\-\_\-\-\_\-to\-String}}
+\index{\-\_\-\-\_\-to\-String@{\-\_\-\-\_\-to\-String}!CWrapper@{C\-Wrapper}}
+\subsubsection[{\-\_\-\-\_\-to\-String}]{\setlength{\rightskip}{0pt plus 5cm}C\-Wrapper\-::\-\_\-\-\_\-to\-String (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{class_c_wrapper_ac9ca75e8d8d1f965218bece1ef55c003}
+\subparagraph*{Return wrapper name}
+
+This method should return the current wrapper's name.
+
+In this class we return the current class name.
+
+public \begin{DoxyReturn}{Returns}
+string The wrapper name.
+\end{DoxyReturn}
+\hyperlink{class_c_connection_a8ad981138c7b681c875da778ce4e391b}{Connection()} \hypertarget{class_c_wrapper_a9b96298777cc3aa5817a2039fc8f29bc}{\index{C\-Wrapper@{C\-Wrapper}!\-\_\-\-Decode\-Parameter@{\-\_\-\-Decode\-Parameter}}
+\index{\-\_\-\-Decode\-Parameter@{\-\_\-\-Decode\-Parameter}!CWrapper@{C\-Wrapper}}
+\subsubsection[{\-\_\-\-Decode\-Parameter}]{\setlength{\rightskip}{0pt plus 5cm}C\-Wrapper\-::\-\_\-\-Decode\-Parameter (
+\begin{DoxyParamCaption}
+\item[{}]{\$the\-Parameter}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [protected]}}}\label{class_c_wrapper_a9b96298777cc3aa5817a2039fc8f29bc}
+Decode parameter.
+
+This method can be used to decode a parameter according to the provided format, \hyperlink{}{k\-T\-Y\-P\-E\-\_\-\-J\-S\-O\-N} or \hyperlink{}{k\-T\-Y\-P\-E\-\_\-\-P\-H\-P}.
+
+The method will return the decoded parameter.
+
+
+\begin{DoxyParams}[1]{Parameters}
+string & {\em \$the\-Parameter} & Parameter offset.\\
+\hline
+\end{DoxyParams}
+protected \begin{DoxyReturn}{Returns}
+array
+\end{DoxyReturn}
+Json\-Decode()
+
+\begin{DoxySeeAlso}{See Also}
+k\-T\-Y\-P\-E\-\_\-\-J\-S\-O\-N k\-T\-Y\-P\-E\-\_\-\-P\-H\-P 
+\end{DoxySeeAlso}
+\hypertarget{class_c_wrapper_a60583bacf329d484d01df9851602759f}{\index{C\-Wrapper@{C\-Wrapper}!\-\_\-\-Encode\-Response@{\-\_\-\-Encode\-Response}}
+\index{\-\_\-\-Encode\-Response@{\-\_\-\-Encode\-Response}!CWrapper@{C\-Wrapper}}
+\subsubsection[{\-\_\-\-Encode\-Response}]{\setlength{\rightskip}{0pt plus 5cm}C\-Wrapper\-::\-\_\-\-Encode\-Response (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [protected]}}}\label{class_c_wrapper_a60583bacf329d484d01df9851602759f}
+Encode response.
+
+This method will return the encoded response string.
+
+protected \begin{DoxyReturn}{Returns}
+string$|$\-N\-U\-L\-L 
+\end{DoxyReturn}
+\hypertarget{class_c_wrapper_ad8dd05c155df0d8fe19be35d4bb67b56}{\index{C\-Wrapper@{C\-Wrapper}!\-\_\-\-Exception2\-Status@{\-\_\-\-Exception2\-Status}}
+\index{\-\_\-\-Exception2\-Status@{\-\_\-\-Exception2\-Status}!CWrapper@{C\-Wrapper}}
+\subsubsection[{\-\_\-\-Exception2\-Status}]{\setlength{\rightskip}{0pt plus 5cm}C\-Wrapper\-::\-\_\-\-Exception2\-Status (
+\begin{DoxyParamCaption}
+\item[{Exception}]{\$the\-Exception}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [protected]}}}\label{class_c_wrapper_ad8dd05c155df0d8fe19be35d4bb67b56}
+Set status from exception.
+
+This method can be used to set the service status according to an exception\-:
+
+
+\begin{DoxyItemize}
+\item {\itshape \hyperlink{class_c_exception_a2bef90da8a35e80dda8072d4f748ec20}{C\-Exception\-::\-Severity()}}\-: This value will be set as the status \hyperlink{}{k\-T\-E\-R\-M\-\_\-\-S\-T\-A\-T\-U\-S\-\_\-\-L\-E\-V\-E\-L}. 
+\item {\itshape \hyperlink{}{Exception\-::get\-Code()}}\-: This value will be set as the status \hyperlink{}{k\-T\-E\-R\-M\-\_\-\-S\-T\-A\-T\-U\-S\-\_\-\-C\-O\-D\-E}. 
+\item {\itshape \hyperlink{}{Exception\-::get\-Message()}}\-: This value will be set in the status \hyperlink{}{k\-T\-E\-R\-M\-\_\-\-S\-T\-A\-T\-U\-S\-\_\-\-M\-E\-S\-S\-A\-G\-E} field as a language block. 
+\item {\itshape \hyperlink{}{Exception\-::get\-File()}}\-: This value will be set in the status \hyperlink{}{k\-T\-E\-R\-M\-\_\-\-N\-O\-T\-E\-S}. 
+\item {\itshape \hyperlink{}{Exception\-::get\-Line()}}\-: This value will be set in the status \hyperlink{}{k\-T\-E\-R\-M\-\_\-\-N\-O\-T\-E\-S}. 
+\item {\itshape \hyperlink{}{Exception\-::get\-Trace()}}\-: This value will be set in the status \hyperlink{}{k\-T\-E\-R\-M\-\_\-\-N\-O\-T\-E\-S}. 
+\item {\itshape \hyperlink{class_c_exception_abcbd46a262790fcbe3493e30a6418821}{C\-Exception\-::\-Reference()}}\-: These valuew will be set in the status \hyperlink{}{k\-T\-E\-R\-M\-\_\-\-N\-O\-T\-E\-S}. 
+\end{DoxyItemize}
+
+
+\begin{DoxyParams}[1]{Parameters}
+Exception & {\em \$the\-Exception} & Exception.\\
+\hline
+\end{DoxyParams}
+protected \hypertarget{class_c_wrapper_a2a3d95961650654468789883ab1607e5}{\index{C\-Wrapper@{C\-Wrapper}!\-\_\-\-Format\-Request@{\-\_\-\-Format\-Request}}
+\index{\-\_\-\-Format\-Request@{\-\_\-\-Format\-Request}!CWrapper@{C\-Wrapper}}
+\subsubsection[{\-\_\-\-Format\-Request}]{\setlength{\rightskip}{0pt plus 5cm}C\-Wrapper\-::\-\_\-\-Format\-Request (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [protected]}}}\label{class_c_wrapper_a2a3d95961650654468789883ab1607e5}
+Format request.
+
+This method should perform any needed formatting before the request will be handled.
+
+In this class we handle the known parameters, although more cumbersome, this allows us to mix parameters from different sources. The method will cycle all known parameters and decode the values according to the provided format.
+
+protected \hypertarget{class_c_wrapper_aeff4d2ab12617c1dda2bed705a6969bb}{\index{C\-Wrapper@{C\-Wrapper}!\-\_\-\-Handle\-\_\-\-List\-Op@{\-\_\-\-Handle\-\_\-\-List\-Op}}
+\index{\-\_\-\-Handle\-\_\-\-List\-Op@{\-\_\-\-Handle\-\_\-\-List\-Op}!CWrapper@{C\-Wrapper}}
+\subsubsection[{\-\_\-\-Handle\-\_\-\-List\-Op}]{\setlength{\rightskip}{0pt plus 5cm}C\-Wrapper\-::\-\_\-\-Handle\-\_\-\-List\-Op (
+\begin{DoxyParamCaption}
+\item[{\&}]{\$the\-List}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [protected]}}}\label{class_c_wrapper_aeff4d2ab12617c1dda2bed705a6969bb}
+Handle \hyperlink{}{k\-A\-P\-I\-\_\-\-O\-P\-\_\-\-H\-E\-L\-P} operations request.
+
+This method will handle the \hyperlink{}{k\-A\-P\-I\-\_\-\-O\-P\-\_\-\-H\-E\-L\-P} request, which should return the list of supported operations.
+
+
+\begin{DoxyParams}[1]{Parameters}
+reference & {\em \$the\-List} & Receives operations list.\\
+\hline
+\end{DoxyParams}
+protected \hypertarget{class_c_wrapper_ab58ee7076059e0f992c2a642043b764f}{\index{C\-Wrapper@{C\-Wrapper}!\-\_\-\-Handle\-\_\-\-Ping@{\-\_\-\-Handle\-\_\-\-Ping}}
+\index{\-\_\-\-Handle\-\_\-\-Ping@{\-\_\-\-Handle\-\_\-\-Ping}!CWrapper@{C\-Wrapper}}
+\subsubsection[{\-\_\-\-Handle\-\_\-\-Ping}]{\setlength{\rightskip}{0pt plus 5cm}C\-Wrapper\-::\-\_\-\-Handle\-\_\-\-Ping (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [protected]}}}\label{class_c_wrapper_ab58ee7076059e0f992c2a642043b764f}
+Handle \hyperlink{}{k\-A\-P\-I\-\_\-\-O\-P\-\_\-\-P\-I\-N\-G} request.
+
+This method will handle the \hyperlink{}{k\-A\-P\-I\-\_\-\-O\-P\-\_\-\-P\-I\-N\-G} request, which can be used to check if a service is alive.
+
+The ping request will return by default the \hyperlink{}{k\-A\-P\-I\-\_\-\-S\-T\-A\-T\-U\-S} block.
+
+protected \hypertarget{class_c_wrapper_a12c1dd1f1d1cf0ae889cc19ff17ced0e}{\index{C\-Wrapper@{C\-Wrapper}!\-\_\-\-Handle\-Request@{\-\_\-\-Handle\-Request}}
+\index{\-\_\-\-Handle\-Request@{\-\_\-\-Handle\-Request}!CWrapper@{C\-Wrapper}}
+\subsubsection[{\-\_\-\-Handle\-Request}]{\setlength{\rightskip}{0pt plus 5cm}C\-Wrapper\-::\-\_\-\-Handle\-Request (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [protected]}}}\label{class_c_wrapper_a12c1dd1f1d1cf0ae889cc19ff17ced0e}
+Handle request.
+
+This method will handle the request.
+
+protected
+
+\hyperlink{class_c_wrapper_aeff4d2ab12617c1dda2bed705a6969bb}{\-\_\-\-Handle\-\_\-\-List\-Op()}
+
+\begin{DoxySeeAlso}{See Also}
+k\-A\-P\-I\-\_\-\-O\-P\-\_\-\-H\-E\-L\-P k\-A\-P\-I\-\_\-\-O\-P\-\_\-\-P\-I\-N\-G 
+\end{DoxySeeAlso}
+\hypertarget{class_c_wrapper_aec2fa3594e36a380d66743b47c24490c}{\index{C\-Wrapper@{C\-Wrapper}!\-\_\-\-Init\-Options@{\-\_\-\-Init\-Options}}
+\index{\-\_\-\-Init\-Options@{\-\_\-\-Init\-Options}!CWrapper@{C\-Wrapper}}
+\subsubsection[{\-\_\-\-Init\-Options}]{\setlength{\rightskip}{0pt plus 5cm}C\-Wrapper\-::\-\_\-\-Init\-Options (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [protected]}}}\label{class_c_wrapper_aec2fa3594e36a380d66743b47c24490c}
+Initialise options.
+
+This method is responsible for parsing and setting all default and provided options, derived classes should overload this method to handle custom options.
+
+In this class we initialise the \hyperlink{}{k\-A\-P\-I\-\_\-\-R\-E\-Q\-U\-E\-S\-T} and \hyperlink{}{k\-A\-P\-I\-\_\-\-S\-T\-A\-M\-P} sections if required.
+
+protected
+
+\begin{DoxySeeAlso}{See Also}
+k\-A\-P\-I\-\_\-\-R\-E\-Q\-U\-E\-S\-T k\-A\-P\-I\-\_\-\-S\-T\-A\-M\-P 
+\end{DoxySeeAlso}
+\hypertarget{class_c_wrapper_a2ce212bc7543b4ed07dbc93282d298f6}{\index{C\-Wrapper@{C\-Wrapper}!\-\_\-\-Init\-Parameters@{\-\_\-\-Init\-Parameters}}
+\index{\-\_\-\-Init\-Parameters@{\-\_\-\-Init\-Parameters}!CWrapper@{C\-Wrapper}}
+\subsubsection[{\-\_\-\-Init\-Parameters}]{\setlength{\rightskip}{0pt plus 5cm}C\-Wrapper\-::\-\_\-\-Init\-Parameters (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [protected]}}}\label{class_c_wrapper_a2ce212bc7543b4ed07dbc93282d298f6}
+Initialise parameters.
+
+This method is responsible for initialising the parameters of the request, in this class we decode all known parameters, except for \hyperlink{}{k\-A\-P\-I\-\_\-\-O\-P\-E\-R\-A\-T\-I\-O\-N} and \hyperlink{}{k\-A\-P\-I\-\_\-\-F\-O\-R\-M\-A\-T}.
+
+protected \hypertarget{class_c_wrapper_a0e5c5488fce4b388e43dcf6810874d74}{\index{C\-Wrapper@{C\-Wrapper}!\-\_\-\-Init\-Resources@{\-\_\-\-Init\-Resources}}
+\index{\-\_\-\-Init\-Resources@{\-\_\-\-Init\-Resources}!CWrapper@{C\-Wrapper}}
+\subsubsection[{\-\_\-\-Init\-Resources}]{\setlength{\rightskip}{0pt plus 5cm}C\-Wrapper\-::\-\_\-\-Init\-Resources (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [protected]}}}\label{class_c_wrapper_a0e5c5488fce4b388e43dcf6810874d74}
+Initialise resources.
+
+In derived classes this should be the method that initialises the data store resources, in this class we have no resources.
+
+protected \hypertarget{class_c_wrapper_a8369eec2e53b3f6394a35bcd919d8779}{\index{C\-Wrapper@{C\-Wrapper}!\-\_\-\-Init\-Status@{\-\_\-\-Init\-Status}}
+\index{\-\_\-\-Init\-Status@{\-\_\-\-Init\-Status}!CWrapper@{C\-Wrapper}}
+\subsubsection[{\-\_\-\-Init\-Status}]{\setlength{\rightskip}{0pt plus 5cm}C\-Wrapper\-::\-\_\-\-Init\-Status (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [protected]}}}\label{class_c_wrapper_a8369eec2e53b3f6394a35bcd919d8779}
+Initialise status.
+
+This method is responsible for initialising the \hyperlink{}{k\-A\-P\-I\-\_\-\-S\-T\-A\-T\-U\-S} section, derived classes may overload this method if they need to handle other states.
+
+In this class we set the status to \hyperlink{}{k\-S\-T\-A\-T\-U\-S\-\_\-\-I\-D\-L\-E} and reset the status \hyperlink{}{k\-T\-E\-R\-M\-\_\-\-S\-T\-A\-T\-U\-S\-\_\-\-C\-O\-D\-E}.
+
+protected
+
+\begin{DoxySeeAlso}{See Also}
+k\-A\-P\-I\-\_\-\-S\-T\-A\-T\-U\-S 
+\end{DoxySeeAlso}
+\hypertarget{class_c_wrapper_aff9eb1799c8f30cb33967c7a50ce6395}{\index{C\-Wrapper@{C\-Wrapper}!\-\_\-\-Offset\-Manage@{\-\_\-\-Offset\-Manage}}
+\index{\-\_\-\-Offset\-Manage@{\-\_\-\-Offset\-Manage}!CWrapper@{C\-Wrapper}}
+\subsubsection[{\-\_\-\-Offset\-Manage}]{\setlength{\rightskip}{0pt plus 5cm}C\-Wrapper\-::\-\_\-\-Offset\-Manage (
+\begin{DoxyParamCaption}
+\item[{}]{\$the\-Block, }
+\item[{}]{\$the\-Element, }
+\item[{}]{\$the\-Value = {\ttfamily NULL}}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [protected]}}}\label{class_c_wrapper_aff9eb1799c8f30cb33967c7a50ce6395}
+Manage offset.
+
+This method can be used to manage elements within offsets, in other words, it can be used to manage elements within an offset\-:
+
+
+\begin{DoxyItemize}
+\item {\bfseries \$the\-Block}\-: The main offset. 
+\item {\bfseries \$the\-Element}\-: The offset within the main offset. 
+\item {\bfseries \$the\-Value}\-: The new value or the operation\-: 
+\begin{DoxyItemize}
+\item {\itshape N\-U\-L\-L}\-: Retrieve the element in the block. 
+\item {\itshape F\-A\-L\-S\-E}\-: Delete the element from the block. 
+\item {\itshape other}\-: All other data types are interpreted as a new element. 
+\end{DoxyItemize}
+\end{DoxyItemize}
+
+
+\begin{DoxyParams}[1]{Parameters}
+string & {\em \$the\-Block} & Object block. \\
+\hline
+string & {\em \$the\-Element} & Object block element. \\
+\hline
+mixed & {\em \$the\-Value} & Element value.\\
+\hline
+\end{DoxyParams}
+protected \hypertarget{class_c_wrapper_a53d59f3a61137b8d6f5707d794e2961a}{\index{C\-Wrapper@{C\-Wrapper}!\-\_\-\-Parse\-Format@{\-\_\-\-Parse\-Format}}
+\index{\-\_\-\-Parse\-Format@{\-\_\-\-Parse\-Format}!CWrapper@{C\-Wrapper}}
+\subsubsection[{\-\_\-\-Parse\-Format}]{\setlength{\rightskip}{0pt plus 5cm}C\-Wrapper\-::\-\_\-\-Parse\-Format (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [protected]}}}\label{class_c_wrapper_a53d59f3a61137b8d6f5707d794e2961a}
+Parse format.
+
+This method will parse the request format.
+
+protected
+
+\begin{DoxySeeAlso}{See Also}
+k\-A\-P\-I\-\_\-\-R\-E\-Q\-U\-E\-S\-T k\-A\-P\-I\-\_\-\-F\-O\-R\-M\-A\-T 
+\end{DoxySeeAlso}
+\hypertarget{class_c_wrapper_aa090c135ca1085f46d8cddd393131ea6}{\index{C\-Wrapper@{C\-Wrapper}!\-\_\-\-Parse\-Operation@{\-\_\-\-Parse\-Operation}}
+\index{\-\_\-\-Parse\-Operation@{\-\_\-\-Parse\-Operation}!CWrapper@{C\-Wrapper}}
+\subsubsection[{\-\_\-\-Parse\-Operation}]{\setlength{\rightskip}{0pt plus 5cm}C\-Wrapper\-::\-\_\-\-Parse\-Operation (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [protected]}}}\label{class_c_wrapper_aa090c135ca1085f46d8cddd393131ea6}
+Parse operation.
+
+This method will parse the request operation.
+
+protected
+
+\begin{DoxySeeAlso}{See Also}
+k\-A\-P\-I\-\_\-\-R\-E\-Q\-U\-E\-S\-T k\-A\-P\-I\-\_\-\-O\-P\-E\-R\-A\-T\-I\-O\-N 
+\end{DoxySeeAlso}
+\hypertarget{class_c_wrapper_a6675c744053f1b05547ad28fc50a79e6}{\index{C\-Wrapper@{C\-Wrapper}!\-\_\-\-Parse\-Request@{\-\_\-\-Parse\-Request}}
+\index{\-\_\-\-Parse\-Request@{\-\_\-\-Parse\-Request}!CWrapper@{C\-Wrapper}}
+\subsubsection[{\-\_\-\-Parse\-Request}]{\setlength{\rightskip}{0pt plus 5cm}C\-Wrapper\-::\-\_\-\-Parse\-Request (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [protected]}}}\label{class_c_wrapper_a6675c744053f1b05547ad28fc50a79e6}
+Parse request.
+
+This method should be used to parse the request, check the request elements and make any necessary adjustments before the request is \hyperlink{class_c_wrapper_a24b22cfd0022c1cba1741fb294fba5ba}{\-\_\-\-Validate\-Request()}.
+
+This is also where the relevant request elements will be logged to the relative response sections.
+
+The method is called by the constructor and should be overloaded to handle derived classes custom elements.
+
+In this class we handle the \hyperlink{}{k\-A\-P\-I\-\_\-\-F\-O\-R\-M\-A\-T}, \hyperlink{}{k\-A\-P\-I\-\_\-\-O\-P\-E\-R\-A\-T\-I\-O\-N} and \hyperlink{}{k\-A\-P\-I\-\_\-\-S\-T\-A\-M\-P} elements.
+
+protected
+
+\hyperlink{class_c_wrapper_a53d59f3a61137b8d6f5707d794e2961a}{\-\_\-\-Parse\-Format()}  \hyperlink{class_c_wrapper_aa090c135ca1085f46d8cddd393131ea6}{\-\_\-\-Parse\-Operation()}  \hyperlink{class_c_wrapper_a13421345af75888b1fa8bcd3381b52a5}{\-\_\-\-Parse\-Timing()} \hypertarget{class_c_wrapper_a13421345af75888b1fa8bcd3381b52a5}{\index{C\-Wrapper@{C\-Wrapper}!\-\_\-\-Parse\-Timing@{\-\_\-\-Parse\-Timing}}
+\index{\-\_\-\-Parse\-Timing@{\-\_\-\-Parse\-Timing}!CWrapper@{C\-Wrapper}}
+\subsubsection[{\-\_\-\-Parse\-Timing}]{\setlength{\rightskip}{0pt plus 5cm}C\-Wrapper\-::\-\_\-\-Parse\-Timing (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [protected]}}}\label{class_c_wrapper_a13421345af75888b1fa8bcd3381b52a5}
+Parse timing.
+
+This method will parse the request timers.
+
+protected
+
+\begin{DoxySeeAlso}{See Also}
+k\-A\-P\-I\-\_\-\-R\-E\-Q\-U\-E\-S\-T k\-A\-P\-I\-\_\-\-S\-T\-A\-M\-P\-\_\-\-R\-E\-Q\-U\-E\-S\-T 
+\end{DoxySeeAlso}
+\hypertarget{class_c_wrapper_a8994ff7a5f94438da1c5e3505b145dbd}{\index{C\-Wrapper@{C\-Wrapper}!\-\_\-\-Validate\-Format@{\-\_\-\-Validate\-Format}}
+\index{\-\_\-\-Validate\-Format@{\-\_\-\-Validate\-Format}!CWrapper@{C\-Wrapper}}
+\subsubsection[{\-\_\-\-Validate\-Format}]{\setlength{\rightskip}{0pt plus 5cm}C\-Wrapper\-::\-\_\-\-Validate\-Format (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [protected]}}}\label{class_c_wrapper_a8994ff7a5f94438da1c5e3505b145dbd}
+Validate request format.
+
+This method can be used to check whether the provided \hyperlink{}{k\-A\-P\-I\-\_\-\-F\-O\-R\-M\-A\-T} parameter is valid.
+
+protected
+
+\begin{DoxySeeAlso}{See Also}
+k\-T\-Y\-P\-E\-\_\-\-P\-H\-P k\-T\-Y\-P\-E\-\_\-\-J\-S\-O\-N 
+\end{DoxySeeAlso}
+\hypertarget{class_c_wrapper_aab3f7b2ca4cd9e692c35510d753918a4}{\index{C\-Wrapper@{C\-Wrapper}!\-\_\-\-Validate\-Operation@{\-\_\-\-Validate\-Operation}}
+\index{\-\_\-\-Validate\-Operation@{\-\_\-\-Validate\-Operation}!CWrapper@{C\-Wrapper}}
+\subsubsection[{\-\_\-\-Validate\-Operation}]{\setlength{\rightskip}{0pt plus 5cm}C\-Wrapper\-::\-\_\-\-Validate\-Operation (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [protected]}}}\label{class_c_wrapper_aab3f7b2ca4cd9e692c35510d753918a4}
+Validate request operation.
+
+This method can be used to check whether the provided \hyperlink{}{k\-A\-P\-I\-\_\-\-O\-P\-E\-R\-A\-T\-I\-O\-N} parameter is valid.
+
+protected
+
+\begin{DoxySeeAlso}{See Also}
+k\-A\-P\-I\-\_\-\-O\-P\-\_\-\-H\-E\-L\-P k\-A\-P\-I\-\_\-\-O\-P\-\_\-\-P\-I\-N\-G 
+\end{DoxySeeAlso}
+\hypertarget{class_c_wrapper_a24b22cfd0022c1cba1741fb294fba5ba}{\index{C\-Wrapper@{C\-Wrapper}!\-\_\-\-Validate\-Request@{\-\_\-\-Validate\-Request}}
+\index{\-\_\-\-Validate\-Request@{\-\_\-\-Validate\-Request}!CWrapper@{C\-Wrapper}}
+\subsubsection[{\-\_\-\-Validate\-Request}]{\setlength{\rightskip}{0pt plus 5cm}C\-Wrapper\-::\-\_\-\-Validate\-Request (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [protected]}}}\label{class_c_wrapper_a24b22cfd0022c1cba1741fb294fba5ba}
+Validate request.
+
+This method should check that the request is valid and that all required parameters have been received.
+
+In this class we check the \hyperlink{}{k\-A\-P\-I\-\_\-\-F\-O\-R\-M\-A\-T} and \hyperlink{}{k\-A\-P\-I\-\_\-\-O\-P\-E\-R\-A\-T\-I\-O\-N} codes (their presence is checked by the constructor.
+
+protected
+
+\hyperlink{class_c_wrapper_a8994ff7a5f94438da1c5e3505b145dbd}{\-\_\-\-Validate\-Format()}  \hyperlink{class_c_wrapper_aab3f7b2ca4cd9e692c35510d753918a4}{\-\_\-\-Validate\-Operation()} \hypertarget{class_c_wrapper_a0e605ca2cdd718ecdeb6f3be9b1f0162}{\index{C\-Wrapper@{C\-Wrapper}!Handle\-Request@{Handle\-Request}}
+\index{Handle\-Request@{Handle\-Request}!CWrapper@{C\-Wrapper}}
+\subsubsection[{Handle\-Request}]{\setlength{\rightskip}{0pt plus 5cm}C\-Wrapper\-::\-Handle\-Request (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{class_c_wrapper_a0e605ca2cdd718ecdeb6f3be9b1f0162}
+Handle the request.
+
+This method will handle the request.
+
+Note that we only run the method if the object is \hyperlink{class_c_status_document_a954dee06e219e0a0f2e7fa6edac56e28}{\-\_\-\-Is\-Inited()}, if this is not the case, the method will do nothing.
+
+public
+
+\hyperlink{class_c_wrapper_a12c1dd1f1d1cf0ae889cc19ff17ced0e}{\-\_\-\-Handle\-Request()}  \hyperlink{class_c_wrapper_ad8dd05c155df0d8fe19be35d4bb67b56}{\-\_\-\-Exception2\-Status()}  \hyperlink{class_c_wrapper_a60583bacf329d484d01df9851602759f}{\-\_\-\-Encode\-Response()} 
+
+The documentation for this class was generated from the following file\-:\begin{DoxyCompactItemize}
+\item 
+/\-Library/\-Web\-Server/\-Library/\-P\-H\-P\-Wrapper/classes/C\-Wrapper.\-php\end{DoxyCompactItemize}

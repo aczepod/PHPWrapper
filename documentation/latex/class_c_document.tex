@@ -1,0 +1,122 @@
+\hypertarget{class_c_document}{\section{C\-Document Class Reference}
+\label{class_c_document}\index{C\-Document@{C\-Document}}
+}
+Inheritance diagram for C\-Document\-:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=9.210526cm]{class_c_document}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{class_c_document_a7e03e4fd9674ba52b26589d01ca42027}{offset\-Get} (\$the\-Offset)
+\item 
+\hyperlink{class_c_document_a0fe390a5ce89bc8dd12062276b53154b}{offset\-Set} (\$the\-Offset, \$the\-Value)
+\item 
+\hyperlink{class_c_document_a1d4b8ba2553520c323edcde52a4113e3}{offset\-Unset} (\$the\-Offset)
+\item 
+\hyperlink{class_c_document_a1809f3de22bc07e0c57d2ceb0b951ce0}{array\-\_\-keys} ()
+\item 
+\hyperlink{class_c_document_a82d9b209627c76363fec8c879e4e6225}{array\-\_\-values} ()
+\end{DoxyCompactItemize}
+
+
+\subsection{Member Function Documentation}
+\hypertarget{class_c_document_a1809f3de22bc07e0c57d2ceb0b951ce0}{\index{C\-Document@{C\-Document}!array\-\_\-keys@{array\-\_\-keys}}
+\index{array\-\_\-keys@{array\-\_\-keys}!CDocument@{C\-Document}}
+\subsubsection[{array\-\_\-keys}]{\setlength{\rightskip}{0pt plus 5cm}C\-Document\-::array\-\_\-keys (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{class_c_document_a1809f3de22bc07e0c57d2ceb0b951ce0}
+\subparagraph*{Return object's offsets}
+
+This method has the same function as the P\-H\-P function {\ttfamily \hyperlink{class_c_document_a1809f3de22bc07e0c57d2ceb0b951ce0}{array\-\_\-keys()}, it will return an array comprised of all object's offsets.}
+
+{\ttfamily  public \begin{DoxyReturn}{Returns}
+array List of object offsets. 
+\end{DoxyReturn}
+}\hypertarget{class_c_document_a82d9b209627c76363fec8c879e4e6225}{\index{C\-Document@{C\-Document}!array\-\_\-values@{array\-\_\-values}}
+\index{array\-\_\-values@{array\-\_\-values}!CDocument@{C\-Document}}
+\subsubsection[{array\-\_\-values}]{\setlength{\rightskip}{0pt plus 5cm}C\-Document\-::array\-\_\-values (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{class_c_document_a82d9b209627c76363fec8c879e4e6225}
+\subparagraph*{Return object's offset values}
+
+This method has the same function as the P\-H\-P function {\ttfamily \hyperlink{class_c_document_a82d9b209627c76363fec8c879e4e6225}{array\-\_\-values()}, it will return an array comprised of all object's offset values.}
+
+{\ttfamily  public \begin{DoxyReturn}{Returns}
+array List of object offset values. 
+\end{DoxyReturn}
+}\hypertarget{class_c_document_a7e03e4fd9674ba52b26589d01ca42027}{\index{C\-Document@{C\-Document}!offset\-Get@{offset\-Get}}
+\index{offset\-Get@{offset\-Get}!CDocument@{C\-Document}}
+\subsubsection[{offset\-Get}]{\setlength{\rightskip}{0pt plus 5cm}C\-Document\-::offset\-Get (
+\begin{DoxyParamCaption}
+\item[{}]{\$the\-Offset}
+\end{DoxyParamCaption}
+)}}\label{class_c_document_a7e03e4fd9674ba52b26589d01ca42027}
+\subparagraph*{Return a value at a given offset}
+
+This method should return the value corresponding to the provided offset.
+
+This method is overloaded to prevent notices from being triggered when seeking non-\/existing offsets.
+
+In this class no offset may have a {\ttfamily N\-U\-L\-L} value, if this method returns a {\ttfamily N\-U\-L\-L} value, it means that the offset doesn't exist.
+
+
+\begin{DoxyParams}[1]{Parameters}
+string & {\em \$the\-Offset} & Offset.\\
+\hline
+\end{DoxyParams}
+public \begin{DoxyReturn}{Returns}
+mixed Offset value. 
+\end{DoxyReturn}
+\hypertarget{class_c_document_a0fe390a5ce89bc8dd12062276b53154b}{\index{C\-Document@{C\-Document}!offset\-Set@{offset\-Set}}
+\index{offset\-Set@{offset\-Set}!CDocument@{C\-Document}}
+\subsubsection[{offset\-Set}]{\setlength{\rightskip}{0pt plus 5cm}C\-Document\-::offset\-Set (
+\begin{DoxyParamCaption}
+\item[{}]{\$the\-Offset, }
+\item[{}]{\$the\-Value}
+\end{DoxyParamCaption}
+)}}\label{class_c_document_a0fe390a5ce89bc8dd12062276b53154b}
+\subparagraph*{Set a value at a given offset}
+
+This method should set the provided value corresponding to the provided offset.
+
+This method is overloaded to prevent setting {\ttfamily N\-U\-L\-L} values\-: if this is the case, the method will unset the offset.
+
+
+\begin{DoxyParams}[1]{Parameters}
+string & {\em \$the\-Offset} & Offset. \\
+\hline
+mixed & {\em \$the\-Value} & Value to set at offset.\\
+\hline
+\end{DoxyParams}
+public
+
+\hyperlink{class_c_document_a1d4b8ba2553520c323edcde52a4113e3}{offset\-Unset()} \hypertarget{class_c_document_a1d4b8ba2553520c323edcde52a4113e3}{\index{C\-Document@{C\-Document}!offset\-Unset@{offset\-Unset}}
+\index{offset\-Unset@{offset\-Unset}!CDocument@{C\-Document}}
+\subsubsection[{offset\-Unset}]{\setlength{\rightskip}{0pt plus 5cm}C\-Document\-::offset\-Unset (
+\begin{DoxyParamCaption}
+\item[{}]{\$the\-Offset}
+\end{DoxyParamCaption}
+)}}\label{class_c_document_a1d4b8ba2553520c323edcde52a4113e3}
+\subparagraph*{Reset a value at a given offset}
+
+This method should reset the value corresponding to the provided offset.
+
+We overload this method to prevent notices on non-\/existing offsets.
+
+
+\begin{DoxyParams}[1]{Parameters}
+string & {\em \$the\-Offset} & Offset.\\
+\hline
+\end{DoxyParams}
+public 
+
+The documentation for this class was generated from the following file\-:\begin{DoxyCompactItemize}
+\item 
+/\-Library/\-Web\-Server/\-Library/\-P\-H\-P\-Wrapper/classes/C\-Document.\-php\end{DoxyCompactItemize}
