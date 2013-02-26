@@ -43,6 +43,7 @@ var searchData=
   ['_5fformatsubquery',['_FormatSubquery',['../class_c_ontology_wrapper.html#a9391d5006fda356996db159f4e7ae729',1,'COntologyWrapper']]],
   ['_5fgetrelatedquery',['_GetRelatedQuery',['../class_c_ontology_wrapper.html#a6743af8581329c1fb5ccd2dc860b0701',1,'COntologyWrapper']]],
   ['_5fgetrelatedsubquery',['_GetRelatedSubquery',['../class_c_ontology_wrapper.html#a851254326f30e2be713ff8138e4ded07',1,'COntologyWrapper']]],
+  ['_5fgettemplate',['_GetTemplate',['../class_c_ontology.html#ab00174cd1bb4ddd57457ad5dbc7db4da',1,'COntology']]],
   ['_5fgetvertexlist',['_GetVertexList',['../class_c_ontology_wrapper.html#aabedfd89f1829927c2f115073e2805f4',1,'COntologyWrapper']]],
   ['_5fgraphnodeproperties',['_GraphNodeProperties',['../class_c_ontology_node.html#a1b13e21b3b634b6fd66d5dce38a79b9a',1,'COntologyNode']]],
   ['_5fhandle_5fcount',['_Handle_Count',['../class_c_data_wrapper.html#a96f5e3613e01b469c39711e0367f1d55',1,'CDataWrapper']]],

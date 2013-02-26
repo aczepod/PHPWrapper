@@ -10,6 +10,12 @@ Inheritance diagram for C\-Ontology\-Term\-:\begin{figure}[H]
 \subsection*{Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
+\hyperlink{class_c_ontology_term_af016ba966a7b3c9ce30724d0a9394af2}{Features} ()
+\item 
+\hyperlink{class_c_ontology_term_ae6beb36dde46c78f136e923c6dda99d9}{Methods} ()
+\item 
+\hyperlink{class_c_ontology_term_a0885898fdebb262a7ae71ec010249d46}{Scales} ()
+\item 
 \hyperlink{class_c_ontology_term_a31fa356129d058361b7cdd88924b6c7d}{Load\-Namespace} (\hyperlink{class_c_connection}{C\-Connection} \$the\-Connection, \$do\-Reload=F\-A\-L\-S\-E)
 \item 
 \hyperlink{class_c_ontology_term_a36c2ab4ffdde63d0ca51734437faaa35}{Load\-Term} (\hyperlink{class_c_connection}{C\-Connection} \$the\-Connection, \$do\-Reload=F\-A\-L\-S\-E)
@@ -286,6 +292,23 @@ string The default container name.
 \begin{DoxySeeAlso}{See Also}
 k\-C\-O\-N\-T\-A\-I\-N\-E\-R\-\_\-\-T\-E\-R\-M\-\_\-\-N\-A\-M\-E 
 \end{DoxySeeAlso}
+\hypertarget{class_c_ontology_term_af016ba966a7b3c9ce30724d0a9394af2}{\index{C\-Ontology\-Term@{C\-Ontology\-Term}!Features@{Features}}
+\index{Features@{Features}!COntologyTerm@{C\-Ontology\-Term}}
+\subsubsection[{Features}]{\setlength{\rightskip}{0pt plus 5cm}C\-Ontology\-Term\-::\-Features (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{class_c_ontology_term_af016ba966a7b3c9ce30724d0a9394af2}
+\subparagraph*{Retrieve features}
+
+This method can be used to retrieve the list of tags in which the current term was referenced as a feature, the method will return an array of integers or an empty array if no tags reference the current term as a feature.
+
+public \begin{DoxyReturn}{Returns}
+array List of tag identifiers.
+\end{DoxyReturn}
+\begin{DoxySeeAlso}{See Also}
+k\-T\-A\-G\-\_\-\-F\-E\-A\-T\-U\-R\-E\-S 
+\end{DoxySeeAlso}
 \hypertarget{class_c_ontology_term_ab4c98ee0a638974d6c422fcb9df31471}{\index{C\-Ontology\-Term@{C\-Ontology\-Term}!Handle\-Label@{Handle\-Label}}
 \index{Handle\-Label@{Handle\-Label}!COntologyTerm@{C\-Ontology\-Term}}
 \subsubsection[{Handle\-Label}]{\setlength{\rightskip}{0pt plus 5cm}static C\-Ontology\-Term\-::\-Handle\-Label (
@@ -391,6 +414,23 @@ public \begin{DoxyReturn}{Returns}
 \begin{DoxySeeAlso}{See Also}
 k\-T\-A\-G\-\_\-\-T\-E\-R\-M 
 \end{DoxySeeAlso}
+\hypertarget{class_c_ontology_term_ae6beb36dde46c78f136e923c6dda99d9}{\index{C\-Ontology\-Term@{C\-Ontology\-Term}!Methods@{Methods}}
+\index{Methods@{Methods}!COntologyTerm@{C\-Ontology\-Term}}
+\subsubsection[{Methods}]{\setlength{\rightskip}{0pt plus 5cm}C\-Ontology\-Term\-::\-Methods (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{class_c_ontology_term_ae6beb36dde46c78f136e923c6dda99d9}
+\subparagraph*{Retrieve methods}
+
+This method can be used to retrieve the list of tags in which the current term was referenced as a method, the method will return an array of integers or an empty array if no tags reference the current term as a method.
+
+public \begin{DoxyReturn}{Returns}
+array List of tag identifiers.
+\end{DoxyReturn}
+\begin{DoxySeeAlso}{See Also}
+k\-T\-A\-G\-\_\-\-M\-E\-T\-H\-O\-D\-S 
+\end{DoxySeeAlso}
 \hypertarget{class_c_ontology_term_ac1257616ac8626822f410bd858ce767c}{\index{C\-Ontology\-Term@{C\-Ontology\-Term}!Replace@{Replace}}
 \index{Replace@{Replace}!COntologyTerm@{C\-Ontology\-Term}}
 \subsubsection[{Replace}]{\setlength{\rightskip}{0pt plus 5cm}C\-Ontology\-Term\-::\-Replace (
@@ -476,6 +516,23 @@ boolean & {\em \$do\-Throw} & If {\ttfamily T\-R\-U\-E} raise an exception.\\
 {\em Exception} & \\
 \hline
 \end{DoxyExceptions}
+\hypertarget{class_c_ontology_term_a0885898fdebb262a7ae71ec010249d46}{\index{C\-Ontology\-Term@{C\-Ontology\-Term}!Scales@{Scales}}
+\index{Scales@{Scales}!COntologyTerm@{C\-Ontology\-Term}}
+\subsubsection[{Scales}]{\setlength{\rightskip}{0pt plus 5cm}C\-Ontology\-Term\-::\-Scales (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{class_c_ontology_term_a0885898fdebb262a7ae71ec010249d46}
+\subparagraph*{Retrieve scales}
+
+This method can be used to retrieve the list of tags in which the current term was referenced as a scale, the method will return an array of integers or an empty array if no tags reference the current term as a scale.
+
+public \begin{DoxyReturn}{Returns}
+array List of tag identifiers.
+\end{DoxyReturn}
+\begin{DoxySeeAlso}{See Also}
+k\-T\-A\-G\-\_\-\-S\-C\-A\-L\-E\-S 
+\end{DoxySeeAlso}
 \hypertarget{class_c_ontology_term_ac39334977998a1e11c0e277eac4cef5c}{\index{C\-Ontology\-Term@{C\-Ontology\-Term}!Update@{Update}}
 \index{Update@{Update}!COntologyTerm@{C\-Ontology\-Term}}
 \subsubsection[{Update}]{\setlength{\rightskip}{0pt plus 5cm}C\-Ontology\-Term\-::\-Update (

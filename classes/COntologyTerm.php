@@ -131,6 +131,93 @@ class COntologyTerm extends CTerm
 
 /*=======================================================================================
  *																						*
+ *								PUBLIC MEMBER INTERFACE									*
+ *																						*
+ *======================================================================================*/
+
+
+	 
+	/*===================================================================================
+	 *	Features																		*
+	 *==================================================================================*/
+
+	/**
+	 * <h4>Retrieve features</h4>
+	 *
+	 * This method can be used to retrieve the list of tags in which the current term was
+	 * referenced as a feature, the method will return an array of integers or an empty
+	 * array if no tags reference the current term as a feature.
+	 *
+	 * @access public
+	 * @return array				List of tag identifiers.
+	 *
+	 * @see kTAG_FEATURES
+	 */
+	public function Features()
+	{
+		if( $this->offsetExists( kTAG_FEATURES ) )
+			return $this->offsetGet( kTAG_FEATURES );								// ==>
+		
+		return Array();																// ==>
+
+	} // Features.
+
+	 
+	/*===================================================================================
+	 *	Methods																			*
+	 *==================================================================================*/
+
+	/**
+	 * <h4>Retrieve methods</h4>
+	 *
+	 * This method can be used to retrieve the list of tags in which the current term was
+	 * referenced as a method, the method will return an array of integers or an empty
+	 * array if no tags reference the current term as a method.
+	 *
+	 * @access public
+	 * @return array				List of tag identifiers.
+	 *
+	 * @see kTAG_METHODS
+	 */
+	public function Methods()
+	{
+		if( $this->offsetExists( kTAG_METHODS ) )
+			return $this->offsetGet( kTAG_METHODS );								// ==>
+		
+		return Array();																// ==>
+
+	} // Methods.
+
+	 
+	/*===================================================================================
+	 *	Scales																			*
+	 *==================================================================================*/
+
+	/**
+	 * <h4>Retrieve scales</h4>
+	 *
+	 * This method can be used to retrieve the list of tags in which the current term was
+	 * referenced as a scale, the method will return an array of integers or an empty
+	 * array if no tags reference the current term as a scale.
+	 *
+	 * @access public
+	 * @return array				List of tag identifiers.
+	 *
+	 * @see kTAG_SCALES
+	 */
+	public function Scales()
+	{
+		if( $this->offsetExists( kTAG_SCALES ) )
+			return $this->offsetGet( kTAG_SCALES );									// ==>
+		
+		return Array();																// ==>
+
+	} // Scales.
+		
+
+
+/*=======================================================================================
+ *																						*
  *							PUBLIC RELATED MEMBER INTERFACE								*
  *																						*
  *======================================================================================*/

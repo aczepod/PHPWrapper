@@ -139,12 +139,16 @@ Public Member Functions</h2></td></tr>
 <tr class="separator:a6bfd3100a83783cf1997749bf901b8df"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ad9b6ebbaf592ab0543be3f63cddd025c"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_c_ontology.html#ad9b6ebbaf592ab0543be3f63cddd025c">LoadXMLOntologyFile</a> ($theFilePath)</td></tr>
 <tr class="separator:ad9b6ebbaf592ab0543be3f63cddd025c"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a2c3e33bcf3316c66658eef0fd9f7a6a2"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_c_ontology.html#a2c3e33bcf3316c66658eef0fd9f7a6a2">GetRootTemplate</a> ($theRoot, $theLanguage)</td></tr>
-<tr class="separator:a2c3e33bcf3316c66658eef0fd9f7a6a2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a146da417467dc53827e4b1a2e8646276"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_c_ontology.html#a146da417467dc53827e4b1a2e8646276">GetTemplateArray</a> ($theRoot, $theLanguage)</td></tr>
+<tr class="separator:a146da417467dc53827e4b1a2e8646276"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a03d99559d6b357d64a6437a68d157c26"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_c_ontology.html#a03d99559d6b357d64a6437a68d157c26">GetExcelTemplate</a> ($theRoot, $theLanguage, $thePath=NULL)</td></tr>
+<tr class="separator:a03d99559d6b357d64a6437a68d157c26"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a9789841620a6b75f09120223d7fd4dc8"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_c_ontology.html#a9789841620a6b75f09120223d7fd4dc8">LoadISOPOFiles</a> ()</td></tr>
 <tr class="separator:a9789841620a6b75f09120223d7fd4dc8"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a85ac5a51432b48fe5c2fa81a6fae2c0a"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_c_ontology.html#a85ac5a51432b48fe5c2fa81a6fae2c0a">SetAllCountries</a> ($theEnumeration)</td></tr>
 <tr class="separator:a85ac5a51432b48fe5c2fa81a6fae2c0a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab00174cd1bb4ddd57457ad5dbc7db4da"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_c_ontology.html#ab00174cd1bb4ddd57457ad5dbc7db4da">_GetTemplate</a> (&amp;$theTemplate, <a class="el" href="class_c_database.html">CDatabase</a> $theDatabase, <a class="el" href="class_c_ontology_term.html">COntologyTerm</a> $thePredicate, <a class="el" href="class_c_ontology_node.html">COntologyNode</a> $theNode, $theLanguage, &amp;$theCache)</td></tr>
+<tr class="separator:ab00174cd1bb4ddd57457ad5dbc7db4da"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="inherit_header pub_methods_class_c_connection"><td colspan="2" onclick="javascript:toggleInherit('pub_methods_class_c_connection')"><img src="closed.png" alt="-"/>&#160;Public Member Functions inherited from <a class="el" href="class_c_connection.html">CConnection</a></td></tr>
 <tr class="memitem:a5214faf06b04e39885b00e6181991e68 inherit pub_methods_class_c_connection"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_c_connection.html#a5214faf06b04e39885b00e6181991e68">__construct</a> ($theConnection=NULL, $theOptions=NULL)</td></tr>
 <tr class="separator:a5214faf06b04e39885b00e6181991e68 inherit pub_methods_class_c_connection"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -253,6 +257,100 @@ Additional Inherited Members</h2></td></tr>
 <p>public </p>
 <dl class="section return"><dt>Returns</dt><dd>string The connection name.</dd></dl>
 <p><a class="el" href="class_c_ontology.html#a1c7acc74d753c47dc89d46464afc0099">Connection()</a> </p>
+
+</div>
+</div>
+<a class="anchor" id="ab00174cd1bb4ddd57457ad5dbc7db4da"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">COntology::_GetTemplate </td>
+          <td>(</td>
+          <td class="paramtype">&amp;&#160;</td>
+          <td class="paramname"><em>$theTemplate</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="class_c_database.html">CDatabase</a>&#160;</td>
+          <td class="paramname"><em>$theDatabase</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="class_c_ontology_term.html">COntologyTerm</a>&#160;</td>
+          <td class="paramname"><em>$thePredicate</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="class_c_ontology_node.html">COntologyNode</a>&#160;</td>
+          <td class="paramname"><em>$theNode</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname"><em>$theLanguage</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">&amp;&#160;</td>
+          <td class="paramname"><em>$theCache</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<h4>Create template</h4>
+<p>This method will check whether the received node corresponds to a tag feature, in that case it will add the tag's info to the provided template array, if not, it will recurse on all nodes related to the provided node by the provided predicate.</p>
+<p>The method expects the following parameters:</p>
+<ul>
+<li>
+<code>&amp;$theTemplate</code>: An array reference that will receive the list of templates. </li>
+<li>
+<code>$theDatabase</code>: Database connection. </li>
+<li>
+<code>$thePredicate</code>: Relationship predicate term object. </li>
+<li>
+<code>$theNode</code>: Node to be checked. </li>
+<li>
+<code>$theLanguage</code>: Language of labels and definitions. </li>
+</ul>
+<p>The provided template array reference will be filled with elements structured as follows:</p>
+<ul>
+<li>
+<code>0</code>: This index will hold the tag global identifier. </li>
+<li>
+<code>1</code>: This index will hold the tag labels of all path elements separated by a carriage return character. </li>
+<li>
+<code>2</code>: This index will hold the tag definitions of all vertex path elements separated by a carriage return character. </li>
+<li>
+<em>other</em>: All subsequent elements will hold the respective path term global identifiers. </li>
+</ul>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramtype">reference</td><td class="paramname">&amp;$theTemplate</td><td>Receives template. </td></tr>
+    <tr><td class="paramtype"><a class="el" href="class_c_database.html">CDatabase</a></td><td class="paramname">$theDatabase</td><td>Database connection. </td></tr>
+    <tr><td class="paramtype"><a class="el" href="class_c_ontology_term.html">COntologyTerm</a></td><td class="paramname">$thePredicate</td><td>Predicate term. </td></tr>
+    <tr><td class="paramtype"><a class="el" href="class_c_ontology_node.html">COntologyNode</a></td><td class="paramname">$theNode</td><td>Node to be checked. </td></tr>
+    <tr><td class="paramtype">string</td><td class="paramname">$theLanguage</td><td>Language code. </td></tr>
+    <tr><td class="paramtype">reference</td><td class="paramname">&amp;$theCache</td><td>PRIVATE.</td></tr>
+  </table>
+  </dd>
+</dl>
+<p>public</p>
+<dl class="exception"><dt>Exceptions</dt><dd>
+  <table class="exception">
+    <tr><td class="paramname">Exception</td><td></td></tr>
+  </table>
+  </dd>
+</dl>
 
 </div>
 </div>
@@ -1185,12 +1283,71 @@ Additional Inherited Members</h2></td></tr>
 
 </div>
 </div>
-<a class="anchor" id="a2c3e33bcf3316c66658eef0fd9f7a6a2"></a>
+<a class="anchor" id="a03d99559d6b357d64a6437a68d157c26"></a>
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">COntology::GetRootTemplate </td>
+          <td class="memname">COntology::GetExcelTemplate </td>
+          <td>(</td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname"><em>$theRoot</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname"><em>$theLanguage</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname"><em>$thePath</em> = <code>NULL</code>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<h4>Retrieve Excel template</h4>
+<p>This method can be used to generate an Excel document consisting of the header elements obtained by the <a class="el" href="class_c_ontology.html#a146da417467dc53827e4b1a2e8646276">GetTemplateArray()</a> method. Only the first three items of the array template will be used, the fourth row should be the first one for data.</p>
+<p>The method expects three parameters:</p>
+<ul>
+<li>
+<code>$theRoot</code>: Root node object or reference. </li>
+<li>
+<code>$theLanguage</code>: Language of labels and definitions. </li>
+<li>
+<code>$thePath</code>: File path or <code>NULL</code> for browser download. </li>
+</ul>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramtype">mixed</td><td class="paramname">$theRoot</td><td>Root node reference. </td></tr>
+    <tr><td class="paramtype">string</td><td class="paramname">$theLanguage</td><td>Language code. </td></tr>
+    <tr><td class="paramtype">mixed</td><td class="paramname">$thePath</td><td>File path or NULL for browser.</td></tr>
+  </table>
+  </dd>
+</dl>
+<p>public </p>
+<dl class="section return"><dt>Returns</dt><dd>array</dd></dl>
+<dl class="exception"><dt>Exceptions</dt><dd>
+  <table class="exception">
+    <tr><td class="paramname">Exception</td><td></td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a class="anchor" id="a146da417467dc53827e4b1a2e8646276"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">COntology::GetTemplateArray </td>
           <td>(</td>
           <td class="paramtype">&#160;</td>
           <td class="paramname"><em>$theRoot</em>, </td>
@@ -1208,18 +1365,18 @@ Additional Inherited Members</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<h4>Retrieve root node template</h4>
-<p>This method will return an array consisting of the tag global identifier, the related term label and definition for all tags referenced in the graph of the provided root node reference.</p>
-<p>The returned array will have as many columns as tags, in the first row it will feature the tag global identifier, in the second row all the term labels referenced by the tag path elements and the third row will feature all the term definitions of the tag vertex elements. All the label and definitions items will be in the provided language; if the language is not found, the first element will be used.</p>
+<h4>Retrieve template array</h4>
+<p>This method can be used to generate an array consisting of the header elements to be used in a template for all subclass elements of the provided node.</p>
+<p>The returned array will have as many elements as the tags found in the provided node graph path, each element will be an array featuring in the first item the tag's global identifier, in the second the combined labels of the tag's path terms and in the third the combined definitions of the tag's path; the remaining items will feature the path term global identifiers that can be used for cell merging purposes.</p>
 <p>The method expects two parameters:</p>
 <ul>
 <li>
-<code>$theRoot</code>: Root node reference, anything that the <a class="el" href="class_c_ontology_node.html#af249fcb695d7d3ceeed5a74446df0822">COntologyNode::Resolve()</a> can handle. </li>
+<code>$theRoot</code>: Root node object or reference. </li>
 <li>
 <code>$theLanguage</code>: Language of labels and definitions. </li>
 </ul>
-<p>The method will traverse the graph using the <a class="el" href="">kPREDICATE_SUBCLASS_OF</a> predicate until it finds a feature node.</p>
-<p>If the root is unresolved, the method will return <code>NULL</code>; if no tags are found the method will return an empty array; if the root resolves into more than one node, the method will return a list of templates.</p>
+<p>The method will traverse the graph using the <a class="el" href="">kPREDICATE_SUBCLASS_OF</a> predicate until it finds a feature node, note that the root node will not be eligible.</p>
+<p>If the root is unresolved, the method will return <code>NULL</code>; if no tags are found the method will return an empty array; if the root resolves into more than one node, the method will return a list of templates indexed by the root node identifier.</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramtype">mixed</td><td class="paramname">$theRoot</td><td>Root node reference. </td></tr>
@@ -1388,7 +1545,7 @@ Additional Inherited Members</h2></td></tr>
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="class_c_ontology.html">COntology</a></li>
-    <li class="footer">Generated on Mon Feb 25 2013 19:18:23 for MyWrapper by
+    <li class="footer">Generated on Tue Feb 26 2013 19:15:17 for MyWrapper by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.3.1 </li>
   </ul>

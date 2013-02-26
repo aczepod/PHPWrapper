@@ -1574,7 +1574,10 @@ class COntologyWrapper extends CDataWrapper
 			//
 			// Get container.
 			//
-			$container = COntologyTerm::DefaultContainer( $_REQUEST[ kAPI_DATABASE ] );
+			$container
+				= $_REQUEST[ kAPI_DATABASE ]
+					->Container(
+						COntologyTerm::DefaultContainerName() );
 			
 			//
 			// Iterate predicate identifiers.
@@ -1589,19 +1592,11 @@ class COntologyWrapper extends CDataWrapper
 				//
 				// Resolve predicate.
 				//
-				$predicate = COntologyTerm::Resolve( $container, $value );
-				if( $predicate !== NULL )
-					$_REQUEST[ kAPI_PREDICATE ][ $key ] = $predicate[ kTAG_NID ];
-				else
-					unset( $_REQUEST[ kAPI_PREDICATE ][ $key ] );
+				$_REQUEST[ kAPI_PREDICATE ][ $key ]
+					= COntologyTerm::Resolve( $container, $value, NULL, TRUE )
+						->NID();
 			
 			} // Iterating provided predicates.
-			
-			//
-			// Remove empty list.
-			//
-			if( ! count( $_REQUEST[ kAPI_PREDICATE ] ) )
-				unset( $_REQUEST[ kAPI_PREDICATE ] );
 		
 		} // Provided predicate parameters.
 	

@@ -1,6 +1,7 @@
 var class_c_ontology =
 [
     [ "__toString", "class_c_ontology.html#a3bf6307b3353401050f4e66822d4cecf", null ],
+    [ "_GetTemplate", "class_c_ontology.html#ab00174cd1bb4ddd57457ad5dbc7db4da", null ],
     [ "_ISOCollectLanguageStrings", "class_c_ontology.html#a537ac00b77db44b312c4e46ba4869eb5", null ],
     [ "_ISODecodePOFiles", "class_c_ontology.html#a09272a637e5f3edb5575253ff6127faa", null ],
     [ "_ISOParse15924XML", "class_c_ontology.html#a0fdf66940951cf5ccd13d21b9bf3e114", null ],
@@ -19,7 +20,8 @@ var class_c_ontology =
     [ "_ResolveOntologyNode", "class_c_ontology.html#add240f87c2864b092a1435cac49d0647", null ],
     [ "Connection", "class_c_ontology.html#a1c7acc74d753c47dc89d46464afc0099", null ],
     [ "GetDatabase", "class_c_ontology.html#ae8905b152a35d927137faeb2aa1885ce", null ],
-    [ "GetRootTemplate", "class_c_ontology.html#a2c3e33bcf3316c66658eef0fd9f7a6a2", null ],
+    [ "GetExcelTemplate", "class_c_ontology.html#a03d99559d6b357d64a6437a68d157c26", null ],
+    [ "GetTemplateArray", "class_c_ontology.html#a146da417467dc53827e4b1a2e8646276", null ],
     [ "InitContainers", "class_c_ontology.html#a305fa41da58da8239b7636e0ffdc9689", null ],
     [ "InitOntology", "class_c_ontology.html#a6bfd3100a83783cf1997749bf901b8df", null ],
     [ "LoadISOPOFiles", "class_c_ontology.html#a9789841620a6b75f09120223d7fd4dc8", null ],

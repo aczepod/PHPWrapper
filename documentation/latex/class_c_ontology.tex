@@ -22,11 +22,15 @@ Inheritance diagram for C\-Ontology\-:\begin{figure}[H]
 \item 
 \hyperlink{class_c_ontology_ad9b6ebbaf592ab0543be3f63cddd025c}{Load\-X\-M\-L\-Ontology\-File} (\$the\-File\-Path)
 \item 
-\hyperlink{class_c_ontology_a2c3e33bcf3316c66658eef0fd9f7a6a2}{Get\-Root\-Template} (\$the\-Root, \$the\-Language)
+\hyperlink{class_c_ontology_a146da417467dc53827e4b1a2e8646276}{Get\-Template\-Array} (\$the\-Root, \$the\-Language)
+\item 
+\hyperlink{class_c_ontology_a03d99559d6b357d64a6437a68d157c26}{Get\-Excel\-Template} (\$the\-Root, \$the\-Language, \$the\-Path=N\-U\-L\-L)
 \item 
 \hyperlink{class_c_ontology_a9789841620a6b75f09120223d7fd4dc8}{Load\-I\-S\-O\-P\-O\-Files} ()
 \item 
 \hyperlink{class_c_ontology_a85ac5a51432b48fe5c2fa81a6fae2c0a}{Set\-All\-Countries} (\$the\-Enumeration)
+\item 
+\hyperlink{class_c_ontology_ab00174cd1bb4ddd57457ad5dbc7db4da}{\-\_\-\-Get\-Template} (\&\$the\-Template, \hyperlink{class_c_database}{C\-Database} \$the\-Database, \hyperlink{class_c_ontology_term}{C\-Ontology\-Term} \$the\-Predicate, \hyperlink{class_c_ontology_node}{C\-Ontology\-Node} \$the\-Node, \$the\-Language, \&\$the\-Cache)
 \end{DoxyCompactItemize}
 \subsection*{Protected Member Functions}
 \begin{DoxyCompactItemize}
@@ -81,7 +85,66 @@ We implement this method by letting the connection object take care of returning
 public \begin{DoxyReturn}{Returns}
 string The connection name.
 \end{DoxyReturn}
-\hyperlink{class_c_ontology_a1c7acc74d753c47dc89d46464afc0099}{Connection()} \hypertarget{class_c_ontology_a537ac00b77db44b312c4e46ba4869eb5}{\index{C\-Ontology@{C\-Ontology}!\-\_\-\-I\-S\-O\-Collect\-Language\-Strings@{\-\_\-\-I\-S\-O\-Collect\-Language\-Strings}}
+\hyperlink{class_c_ontology_a1c7acc74d753c47dc89d46464afc0099}{Connection()} \hypertarget{class_c_ontology_ab00174cd1bb4ddd57457ad5dbc7db4da}{\index{C\-Ontology@{C\-Ontology}!\-\_\-\-Get\-Template@{\-\_\-\-Get\-Template}}
+\index{\-\_\-\-Get\-Template@{\-\_\-\-Get\-Template}!COntology@{C\-Ontology}}
+\subsubsection[{\-\_\-\-Get\-Template}]{\setlength{\rightskip}{0pt plus 5cm}C\-Ontology\-::\-\_\-\-Get\-Template (
+\begin{DoxyParamCaption}
+\item[{\&}]{\$the\-Template, }
+\item[{{\bf C\-Database}}]{\$the\-Database, }
+\item[{{\bf C\-Ontology\-Term}}]{\$the\-Predicate, }
+\item[{{\bf C\-Ontology\-Node}}]{\$the\-Node, }
+\item[{}]{\$the\-Language, }
+\item[{\&}]{\$the\-Cache}
+\end{DoxyParamCaption}
+)}}\label{class_c_ontology_ab00174cd1bb4ddd57457ad5dbc7db4da}
+\subparagraph*{Create template}
+
+This method will check whether the received node corresponds to a tag feature, in that case it will add the tag's info to the provided template array, if not, it will recurse on all nodes related to the provided node by the provided predicate.
+
+The method expects the following parameters\-:
+
+
+\begin{DoxyItemize}
+\item {\ttfamily \&\$the\-Template}\-: An array reference that will receive the list of templates. 
+\item {\ttfamily \$the\-Database}\-: Database connection. 
+\item {\ttfamily \$the\-Predicate}\-: Relationship predicate term object. 
+\item {\ttfamily \$the\-Node}\-: Node to be checked. 
+\item {\ttfamily \$the\-Language}\-: Language of labels and definitions. 
+\end{DoxyItemize}
+
+The provided template array reference will be filled with elements structured as follows\-:
+
+
+\begin{DoxyItemize}
+\item {\ttfamily 0}\-: This index will hold the tag global identifier. 
+\item {\ttfamily 1}\-: This index will hold the tag labels of all path elements separated by a carriage return character. 
+\item {\ttfamily 2}\-: This index will hold the tag definitions of all vertex path elements separated by a carriage return character. 
+\item {\itshape other}\-: All subsequent elements will hold the respective path term global identifiers. 
+\end{DoxyItemize}
+
+
+\begin{DoxyParams}[1]{Parameters}
+reference & {\em \&\$the\-Template} & Receives template. \\
+\hline
+\hyperlink{class_c_database}{C\-Database} & {\em \$the\-Database} & Database connection. \\
+\hline
+\hyperlink{class_c_ontology_term}{C\-Ontology\-Term} & {\em \$the\-Predicate} & Predicate term. \\
+\hline
+\hyperlink{class_c_ontology_node}{C\-Ontology\-Node} & {\em \$the\-Node} & Node to be checked. \\
+\hline
+string & {\em \$the\-Language} & Language code. \\
+\hline
+reference & {\em \&\$the\-Cache} & P\-R\-I\-V\-A\-T\-E.\\
+\hline
+\end{DoxyParams}
+public
+
+
+\begin{DoxyExceptions}{Exceptions}
+{\em Exception} & \\
+\hline
+\end{DoxyExceptions}
+\hypertarget{class_c_ontology_a537ac00b77db44b312c4e46ba4869eb5}{\index{C\-Ontology@{C\-Ontology}!\-\_\-\-I\-S\-O\-Collect\-Language\-Strings@{\-\_\-\-I\-S\-O\-Collect\-Language\-Strings}}
 \index{\-\_\-\-I\-S\-O\-Collect\-Language\-Strings@{\-\_\-\-I\-S\-O\-Collect\-Language\-Strings}!COntology@{C\-Ontology}}
 \subsubsection[{\-\_\-\-I\-S\-O\-Collect\-Language\-Strings}]{\setlength{\rightskip}{0pt plus 5cm}C\-Ontology\-::\-\_\-\-I\-S\-O\-Collect\-Language\-Strings (
 \begin{DoxyParamCaption}
@@ -620,31 +683,70 @@ This method should return the database connection, {\ttfamily F\-A\-L\-S\-E{\ttf
 {\ttfamily {\ttfamily  public \begin{DoxyReturn}{Returns}
 mixed Database connection, {\ttfamily N\-U\-L\-L$<$7tt$>$ or {\ttfamily F\-A\-L\-S\-E}. }
 \end{DoxyReturn}
-}}\hypertarget{class_c_ontology_a2c3e33bcf3316c66658eef0fd9f7a6a2}{\index{C\-Ontology@{C\-Ontology}!Get\-Root\-Template@{Get\-Root\-Template}}
-\index{Get\-Root\-Template@{Get\-Root\-Template}!COntology@{C\-Ontology}}
-\subsubsection[{Get\-Root\-Template}]{\setlength{\rightskip}{0pt plus 5cm}C\-Ontology\-::\-Get\-Root\-Template (
+}}\hypertarget{class_c_ontology_a03d99559d6b357d64a6437a68d157c26}{\index{C\-Ontology@{C\-Ontology}!Get\-Excel\-Template@{Get\-Excel\-Template}}
+\index{Get\-Excel\-Template@{Get\-Excel\-Template}!COntology@{C\-Ontology}}
+\subsubsection[{Get\-Excel\-Template}]{\setlength{\rightskip}{0pt plus 5cm}C\-Ontology\-::\-Get\-Excel\-Template (
+\begin{DoxyParamCaption}
+\item[{}]{\$the\-Root, }
+\item[{}]{\$the\-Language, }
+\item[{}]{\$the\-Path = {\ttfamily NULL}}
+\end{DoxyParamCaption}
+)}}\label{class_c_ontology_a03d99559d6b357d64a6437a68d157c26}
+\subparagraph*{Retrieve Excel template}
+
+This method can be used to generate an Excel document consisting of the header elements obtained by the \hyperlink{class_c_ontology_a146da417467dc53827e4b1a2e8646276}{Get\-Template\-Array()} method. Only the first three items of the array template will be used, the fourth row should be the first one for data.
+
+The method expects three parameters\-:
+
+
+\begin{DoxyItemize}
+\item {\ttfamily \$the\-Root}\-: Root node object or reference. 
+\item {\ttfamily \$the\-Language}\-: Language of labels and definitions. 
+\item {\ttfamily \$the\-Path}\-: File path or {\ttfamily N\-U\-L\-L} for browser download. 
+\end{DoxyItemize}
+
+
+\begin{DoxyParams}[1]{Parameters}
+mixed & {\em \$the\-Root} & Root node reference. \\
+\hline
+string & {\em \$the\-Language} & Language code. \\
+\hline
+mixed & {\em \$the\-Path} & File path or N\-U\-L\-L for browser.\\
+\hline
+\end{DoxyParams}
+public \begin{DoxyReturn}{Returns}
+array
+\end{DoxyReturn}
+
+\begin{DoxyExceptions}{Exceptions}
+{\em Exception} & \\
+\hline
+\end{DoxyExceptions}
+\hypertarget{class_c_ontology_a146da417467dc53827e4b1a2e8646276}{\index{C\-Ontology@{C\-Ontology}!Get\-Template\-Array@{Get\-Template\-Array}}
+\index{Get\-Template\-Array@{Get\-Template\-Array}!COntology@{C\-Ontology}}
+\subsubsection[{Get\-Template\-Array}]{\setlength{\rightskip}{0pt plus 5cm}C\-Ontology\-::\-Get\-Template\-Array (
 \begin{DoxyParamCaption}
 \item[{}]{\$the\-Root, }
 \item[{}]{\$the\-Language}
 \end{DoxyParamCaption}
-)}}\label{class_c_ontology_a2c3e33bcf3316c66658eef0fd9f7a6a2}
-\subparagraph*{Retrieve root node template}
+)}}\label{class_c_ontology_a146da417467dc53827e4b1a2e8646276}
+\subparagraph*{Retrieve template array}
 
-This method will return an array consisting of the tag global identifier, the related term label and definition for all tags referenced in the graph of the provided root node reference.
+This method can be used to generate an array consisting of the header elements to be used in a template for all subclass elements of the provided node.
 
-The returned array will have as many columns as tags, in the first row it will feature the tag global identifier, in the second row all the term labels referenced by the tag path elements and the third row will feature all the term definitions of the tag vertex elements. All the label and definitions items will be in the provided language; if the language is not found, the first element will be used.
+The returned array will have as many elements as the tags found in the provided node graph path, each element will be an array featuring in the first item the tag's global identifier, in the second the combined labels of the tag's path terms and in the third the combined definitions of the tag's path; the remaining items will feature the path term global identifiers that can be used for cell merging purposes.
 
 The method expects two parameters\-:
 
 
 \begin{DoxyItemize}
-\item {\ttfamily \$the\-Root}\-: Root node reference, anything that the \hyperlink{class_c_ontology_node_af249fcb695d7d3ceeed5a74446df0822}{C\-Ontology\-Node\-::\-Resolve()} can handle. 
+\item {\ttfamily \$the\-Root}\-: Root node object or reference. 
 \item {\ttfamily \$the\-Language}\-: Language of labels and definitions. 
 \end{DoxyItemize}
 
-The method will traverse the graph using the \hyperlink{}{k\-P\-R\-E\-D\-I\-C\-A\-T\-E\-\_\-\-S\-U\-B\-C\-L\-A\-S\-S\-\_\-\-O\-F} predicate until it finds a feature node.
+The method will traverse the graph using the \hyperlink{}{k\-P\-R\-E\-D\-I\-C\-A\-T\-E\-\_\-\-S\-U\-B\-C\-L\-A\-S\-S\-\_\-\-O\-F} predicate until it finds a feature node, note that the root node will not be eligible.
 
-If the root is unresolved, the method will return {\ttfamily N\-U\-L\-L}; if no tags are found the method will return an empty array; if the root resolves into more than one node, the method will return a list of templates.
+If the root is unresolved, the method will return {\ttfamily N\-U\-L\-L}; if no tags are found the method will return an empty array; if the root resolves into more than one node, the method will return a list of templates indexed by the root node identifier.
 
 
 \begin{DoxyParams}[1]{Parameters}

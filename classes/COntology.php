@@ -750,36 +750,34 @@ class COntology extends CConnection
 
 	 
 	/*===================================================================================
-	 *	GetRootTemplate																	*
+	 *	GetTemplateArray																*
 	 *==================================================================================*/
 
 	/**
-	 * <h4>Retrieve root node template</h4>
+	 * <h4>Retrieve template array</h4>
 	 *
-	 * This method will return an array consisting of the tag global identifier, the related
-	 * term label and definition for all tags referenced in the graph of the provided root
-	 * node reference.
+	 * This method can be used to generate an array consisting of the header elements to be
+	 * used in a template for all subclass elements of the provided node.
 	 *
-	 * The returned array will have as many columns as tags, in the first row it will
-	 * feature the tag global identifier, in the second row all the term labels referenced
-	 * by the tag path elements and the third row will feature all the term definitions of
-	 * the tag vertex elements. All the label and definitions items will be in the provided
-	 * language; if the language is not found, the first element will be used.
+	 * The returned array will have as many elements as the tags found in the provided node
+	 * graph path, each element will be an array featuring in the first item the tag's
+	 * global identifier, in the second the combined labels of the tag's path terms and in the
+	 * third the combined definitions of the tag's path; the remaining items will feature the
+	 * path term global identifiers that can be used for cell merging purposes.
 	 *
 	 * The method expects two parameters:
 	 *
 	 * <ul>
-	 *	<li><tt>$theRoot</tt>: Root node reference, anything that the
-	 *		{@link COntologyNode::Resolve()} can handle.
+	 *	<li><tt>$theRoot</tt>: Root node object or reference.
 	 *	<li><tt>$theLanguage</tt>: Language of labels and definitions.
 	 * </ul>
 	 *
 	 * The method will traverse the graph using the {@link kPREDICATE_SUBCLASS_OF} predicate
-	 * until it finds a feature node.
+	 * until it finds a feature node, note that the root node will not be eligible.
 	 *
 	 * If the root is unresolved, the method will return <tt>NULL</tt>; if no tags are found
 	 * the method will return an empty array; if the root resolves into more than one node,
-	 * the method will return a list of templates.
+	 * the method will return a list of templates indexed by the root node identifier.
 	 *
 	 * @param mixed					$theRoot			Root node reference.
 	 * @param string				$theLanguage		Language code.
@@ -789,7 +787,7 @@ class COntology extends CConnection
 	 *
 	 * @throws Exception
 	 */
-	public function GetRootTemplate( $theRoot, $theLanguage )
+	public function GetTemplateArray( $theRoot, $theLanguage )
 	{
 		//
 		// Get database.
@@ -801,27 +799,37 @@ class COntology extends CConnection
 				  kERROR_STATE );												// !@! ==>
 		
 		//
+		// Resolve predicate.
+		//
+		$predicate = COntologyTerm::Resolve( $db, kPREDICATE_SUBCLASS_OF, NULL, TRUE );
+		
+		//
 		// Init local storage.
 		//
-		$template = Array();
+		$template = $cache = Array();
 		
 		//
 		// Resolve node.
 		//
-		$root = COntologyNode::Resolve( $db, $theRoot );
-		if( $root === NULL )
-			return NULL;															// ==>
+		if( ! ($theRoot instanceof COntologyNode) )
+		{
+			$theRoot = COntologyNode::Resolve( $db, $theRoot );
+			if( $theRoot === NULL )
+				return NULL;														// ==>
+		
+		} // Node reference.
 		
 		//
 		// Handle multiple nodes.
 		//
-		if( is_array( $root ) )
+		if( is_array( $theRoot ) )
 		{
 			//
 			// Iterate resolved nodes.
 			//
-			foreach( $root as $node )
-				$template[] = $this->GetRootTemplate( $node->NID(), $theLanguage );
+			foreach( $theRoot as $node )
+				$template[ $node->NID() ]
+					= $this->GetTemplateArray( $node, $theLanguage );
 		
 		} // Root resolves into many nodes.
 		
@@ -829,13 +837,47 @@ class COntology extends CConnection
 		// Handle single node.
 		//
 		else
-		{
-		
-		} // Root resolves in single node.
+			$this->_GetTemplate(
+				$template, $db, $predicate, $theRoot, $theLanguage, $cache );
 		
 		return $template;															// ==>
 
-	} // GetRootTemplate.
+	} // GetTemplateArray.
+
+	 
+	/*===================================================================================
+	 *	GetExcelTemplate																*
+	 *==================================================================================*/
+
+	/**
+	 * <h4>Retrieve Excel template</h4>
+	 *
+	 * This method can be used to generate an Excel document consisting of the header
+	 * elements obtained by the {@link GetTemplateArray()} method. Only the first three
+	 * items of the array template will be used, the fourth row should be the first one for
+	 * data.
+	 *
+	 * The method expects three parameters:
+	 *
+	 * <ul>
+	 *	<li><tt>$theRoot</tt>: Root node object or reference.
+	 *	<li><tt>$theLanguage</tt>: Language of labels and definitions.
+	 *	<li><tt>$thePath</tt>: File path or <tt>NULL</tt> for browser download.
+	 * </ul>
+	 *
+	 * @param mixed					$theRoot			Root node reference.
+	 * @param string				$theLanguage		Language code.
+	 * @param mixed					$thePath			File path or NULL for browser.
+	 *
+	 * @access public
+	 * @return array
+	 *
+	 * @throws Exception
+	 */
+	public function GetExcelTemplate( $theRoot, $theLanguage, $thePath = NULL )
+	{
+
+	} // GetExcelTemplate.
 
 		
 
@@ -2647,6 +2689,204 @@ class COntology extends CConnection
 		} // Has items.
 
 	} // _ResolveOntologyNode.
+
+		
+
+/*=======================================================================================
+ *																						*
+ *							PROTECTED ONTOLOGY TEMPLATE INTERFACE						*
+ *																						*
+ *======================================================================================*/
+
+
+	 
+	/*===================================================================================
+	 *	_GetTemplate																	*
+	 *==================================================================================*/
+
+	/**
+	 * <h4>Create template</h4>
+	 *
+	 * This method will check whether the received node corresponds to a tag feature, in
+	 * that case it will add the tag's info to the provided template array, if not, it will
+	 * recurse on all nodes related to the provided node by the provided predicate.
+	 *
+	 * The method expects the following parameters:
+	 *
+	 * <ul>
+	 *	<li><tt>&$theTemplate</tt>: An array reference that will receive the list of
+	 *		templates.
+	 *	<li><tt>$theDatabase</tt>: Database connection.
+	 *	<li><tt>$thePredicate</tt>: Relationship predicate term object.
+	 *	<li><tt>$theNode</tt>: Node to be checked.
+	 *	<li><tt>$theLanguage</tt>: Language of labels and definitions.
+	 * </ul>
+	 *
+	 * The provided template array reference will be filled with elements structured as
+	 * follows:
+	 *
+	 * <ul>
+	 *	<li><tt>0</tt>: This index will hold the tag global identifier.
+	 *	<li><tt>1</tt>: This index will hold the tag labels of all path elements separated
+	 *		by a carriage return character.
+	 *	<li><tt>2</tt>: This index will hold the tag definitions of all vertex path elements
+	 *		separated by a carriage return character.
+	 *	<li><i>other</i>: All subsequent elements will hold the respective path term global
+	 *		identifiers.
+	 * </ul>
+	 *
+	 * @param reference			   &$theTemplate		Receives template.
+	 * @param CDatabase				$theDatabase		Database connection.
+	 * @param COntologyTerm			$thePredicate		Predicate term.
+	 * @param COntologyNode			$theNode			Node to be checked.
+	 * @param string				$theLanguage		Language code.
+	 * @param reference			   &$theCache			PRIVATE.
+	 *
+	 * @access public
+	 *
+	 * @throws Exception
+	 */
+	public function _GetTemplate( &$theTemplate, CDatabase	   $theDatabase,
+												 COntologyTerm $thePredicate,
+												 COntologyNode $theNode,
+												 			   $theLanguage,
+								  &$theCache )
+	{
+		//
+		// Check cache.
+		//
+		if( ! in_array( $theNode->NID(), $theCache ) )
+		{
+			//
+			// Add to cache.
+			//
+			$theCache[] = $theNode->NID();
+			
+			//
+			// Resolve node term and iterate features.
+			//
+			$features
+				= COntologyTerm::Resolve(
+					$theDatabase, $theNode->Term(), NULL, TRUE )
+						->Features();
+			
+			//
+			// Handle feature tags.
+			//
+			if( count( $features ) )
+			{
+				//
+				// Iterate features.
+				//
+				foreach( $features as $tag )
+				{
+					//
+					// Init local storage.
+					//
+					$list = Array();
+					$tag = COntologyTag::Resolve( $theDatabase, $tag, TRUE );
+					$elements = array( 1 => kTAG_LABEL, 2 => kTAG_DEFINITION );
+					
+					//
+					// Set tag reference.
+					//
+					$list[ 0 ] = $tag->GID();
+					$list[ 1 ] = '';
+					$list[ 2 ] = '';
+					
+					//
+					// Iterate tag path.
+					//
+					$path = $tag->offsetGet( kTAG_PATH );
+					for( $i = 0, $j = 3;
+						 $i < count( $path );
+						 $i++, $j++ )
+					{
+						//
+						// Resolve term.
+						//
+						$term = COntologyTerm::NewObject( $theDatabase, $path[ $i ], TRUE );
+						$list[ $j ] = $term->GID();
+						
+						//
+						// Handle label and definition.
+						//
+						foreach( $elements as $key => $value )
+						{
+							//
+							// Check.
+							//
+							if( ($string = $term->offsetGet( $value )) !== NULL )
+							{
+								//
+								// Load.
+								//
+								if( array_key_exists( $theLanguage, $string ) )
+									$string = $string[ $theLanguage ];
+								elseif( array_key_exists( '0', $string ) )
+									$string = $string[ '0' ];
+								else
+									$string = array_shift( $string );
+							
+								//
+								// Set.
+								//
+								if( $i )
+									$list[ $key ] .= "\r";
+								$list[ $key ] .= $string;
+							}
+							
+							//
+							// Skip definition for predicates.
+							//
+							if( $i % 2 )
+								break;										// =>
+						}
+						
+					} // Iterating path vertices.
+					
+					//
+					// Save in template.
+					//
+					$theTemplate[] = $list;
+		
+				} // Iterating feature tags.
+			
+			} // Is featured.
+			
+			//
+			// Try related.
+			//
+			else
+			{
+				//
+				// Get related nodes.
+				//
+				$query = new CQuery();
+				$query->AppendStatement(
+					CQueryStatement::Equals(
+						kTAG_OBJECT, $theNode->NID() ) );
+				$query->AppendStatement(
+					CQueryStatement::Equals(
+						kTAG_PREDICATE, $thePredicate->NID(), kTYPE_BINARY_STRING ) );
+				$cursor
+					= $theDatabase->Container( COntologyEdge::DefaultContainerName() )
+						->Query( $query );
+		
+				//
+				// Recurse related nodes.
+				//
+				foreach( $cursor as $edge )
+					$this->_GetTemplate(
+						$theTemplate, $theDatabase, $thePredicate,
+						COntologyEdge::DocumentObject( $edge )->LoadSubject( $theDatabase ),
+						$theLanguage, $theCache );
+			
+			} // Not featured.
+		
+		} // Not recursing.
+
+	} // _GetTemplate.
 
 		
 

@@ -4,6 +4,7 @@ var searchData=
   ['manageobject',['ManageObject',['../class_c_container.html#ae2a912b433ba916ce5af0b21d657243b',1,'CContainer\ManageObject()'],['../class_c_mongo_container.html#a7fdadf59d9fb17c56a044353cf4bdff0',1,'CMongoContainer\ManageObject()']]],
   ['manager',['Manager',['../class_c_user.html#acd45e0c231f54e7ccc452cb6bcd3aa35',1,'CUser']]],
   ['member',['Member',['../class_c_query_statement.html#a5e1a291d73a20b4f88c019d1863a4c81',1,'CQueryStatement']]],
+  ['methods',['Methods',['../class_c_ontology_term.html#ae6beb36dde46c78f136e923c6dda99d9',1,'COntologyTerm']]],
   ['missing',['Missing',['../class_c_query_statement.html#a45c462050093bf18a5065cb018c91a34',1,'CQueryStatement']]],
   ['mywrapper',['MyWrapper',['../namespace_my_wrapper.html',1,'']]]
 ];

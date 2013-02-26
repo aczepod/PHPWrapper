@@ -19,8 +19,8 @@ var NAVTREE =
 var NAVTREEINDEX =
 [
 "annotated.html",
-"class_c_ontology_edge.html#a416c0d2e9e040ae28b1cf05ff6bbd947",
-"class_c_status_document.html#a467c5b8ae2c40413cc918c69027bd43f"
+"class_c_ontology_edge.html#a0f369a60b57a48e79c34537a1ec6de80",
+"class_c_server.html#a7f59b9daedcaff19e284a38be45cd12d"
 ];
 
 var SYNCONMSG = 'click to disable panel synchronisation';

@@ -263,13 +263,148 @@ kCONTAINER_TERM_NAME constant as the container name.</p>
 				<b>Author:</b>
 				Milko A. Škofič &lt;<a
 href="mailto:m.skofic&#64;cgiar.org">m.skofic&#64;<!---->cgiar.org</a>&gt;<br />
-		<b>Located at</b> <a href="source-class-COntologyTerm.html#36-1341" title="Go to source code">COntologyTerm.php</a><br />
+		<b>Located at</b> <a href="source-class-COntologyTerm.html#36-1428" title="Go to source code">COntologyTerm.php</a><br />
 	</div>
 
 
 
 	<table class="summary" id="methods">
 	<caption>Methods summary</caption>
+	<tr data-order="Features" id="_Features">
+
+		<td class="attributes"><code>
+			 public 
+			array
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_Features">#</a>
+		<code><a href="source-class-COntologyTerm.html#144-163" title="Go to source code">Features</a>( )</code>
+
+		<div class="description short">
+			
+<h4>Retrieve features</h4>
+
+		</div>
+
+		<div class="description detailed hidden">
+			
+<h4>Retrieve features</h4>
+
+<p>This method can be used to retrieve the list of tags in which the current
+term was referenced as a feature, the method will return an array of integers or
+an empty array if no tags reference the current term as a feature.</p>
+
+
+
+
+				<h4>Returns</h4>
+				<div class="list">
+					<code>array</code><br>List of tag identifiers.<br />
+				</div>
+
+
+				<h4>See</h4>
+				<div class="list">
+						kTAG_FEATURES<br />
+				</div>
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="Methods" id="_Methods">
+
+		<td class="attributes"><code>
+			 public 
+			array
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_Methods">#</a>
+		<code><a href="source-class-COntologyTerm.html#170-189" title="Go to source code">Methods</a>( )</code>
+
+		<div class="description short">
+			
+<h4>Retrieve methods</h4>
+
+		</div>
+
+		<div class="description detailed hidden">
+			
+<h4>Retrieve methods</h4>
+
+<p>This method can be used to retrieve the list of tags in which the current
+term was referenced as a method, the method will return an array of integers or
+an empty array if no tags reference the current term as a method.</p>
+
+
+
+
+				<h4>Returns</h4>
+				<div class="list">
+					<code>array</code><br>List of tag identifiers.<br />
+				</div>
+
+
+				<h4>See</h4>
+				<div class="list">
+						kTAG_METHODS<br />
+				</div>
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="Scales" id="_Scales">
+
+		<td class="attributes"><code>
+			 public 
+			array
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_Scales">#</a>
+		<code><a href="source-class-COntologyTerm.html#196-215" title="Go to source code">Scales</a>( )</code>
+
+		<div class="description short">
+			
+<h4>Retrieve scales</h4>
+
+		</div>
+
+		<div class="description detailed hidden">
+			
+<h4>Retrieve scales</h4>
+
+<p>This method can be used to retrieve the list of tags in which the current
+term was referenced as a scale, the method will return an array of integers or
+an empty array if no tags reference the current term as a scale.</p>
+
+
+
+
+				<h4>Returns</h4>
+				<div class="list">
+					<code>array</code><br>List of tag identifiers.<br />
+				</div>
+
+
+				<h4>See</h4>
+				<div class="list">
+						kTAG_SCALES<br />
+				</div>
+
+
+		</div>
+		</div></td>
+	</tr>
 	<tr data-order="LoadNamespace" id="_LoadNamespace">
 
 		<td class="attributes"><code>
@@ -281,7 +416,7 @@ href="mailto:m.skofic&#64;cgiar.org">m.skofic&#64;<!---->cgiar.org</a>&gt;<br />
 
 		<td class="name"><div>
 		<a class="anchor" href="#_LoadNamespace">#</a>
-		<code><a href="source-class-COntologyTerm.html#144-208" title="Go to source code">LoadNamespace</a>( <span><code><a href="class-CConnection.html">CConnection</a></code> <var>$theConnection</var></span>, <span>boolean <var>$doReload</var> = <span class="php-keyword1">FALSE</span> </span> )</code>
+		<code><a href="source-class-COntologyTerm.html#231-295" title="Go to source code">LoadNamespace</a>( <span><code><a href="class-CConnection.html">CConnection</a></code> <var>$theConnection</var></span>, <span>boolean <var>$doReload</var> = <span class="php-keyword1">FALSE</span> </span> )</code>
 
 		<div class="description short">
 			
@@ -340,7 +475,7 @@ whether the object is to be read, or if the cached copy can be used.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#_LoadTerm">#</a>
-		<code><a href="source-class-COntologyTerm.html#215-283" title="Go to source code">LoadTerm</a>( <span><code><a href="class-CConnection.html">CConnection</a></code> <var>$theConnection</var></span>, <span>boolean <var>$doReload</var> = <span class="php-keyword1">FALSE</span> </span> )</code>
+		<code><a href="source-class-COntologyTerm.html#302-370" title="Go to source code">LoadTerm</a>( <span><code><a href="class-CConnection.html">CConnection</a></code> <var>$theConnection</var></span>, <span>boolean <var>$doReload</var> = <span class="php-keyword1">FALSE</span> </span> )</code>
 
 		<div class="description short">
 			
@@ -407,7 +542,7 @@ the object is to be read, or if the cached copy can be used.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#_Update">#</a>
-		<code><a href="source-class-COntologyTerm.html#299-329" title="Go to source code">Update</a>( <span><code><a href="class-CConnection.html">CConnection</a></code> <var>$theConnection</var></span> )</code>
+		<code><a href="source-class-COntologyTerm.html#386-416" title="Go to source code">Update</a>( <span><code><a href="class-CConnection.html">CConnection</a></code> <var>$theConnection</var></span> )</code>
 
 		<div class="description short">
 			
@@ -455,7 +590,7 @@ modification interface provided by container objects.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#_Replace">#</a>
-		<code><a href="source-class-COntologyTerm.html#336-376" title="Go to source code">Replace</a>( <span><code><a href="class-CConnection.html">CConnection</a></code> <var>$theConnection</var></span> )</code>
+		<code><a href="source-class-COntologyTerm.html#423-463" title="Go to source code">Replace</a>( <span><code><a href="class-CConnection.html">CConnection</a></code> <var>$theConnection</var></span> )</code>
 
 		<div class="description short">
 			
@@ -506,7 +641,7 @@ non committed object.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#_HandleLabel">#</a>
-		<code><a href="source-class-COntologyTerm.html#392-476" title="Go to source code">HandleLabel</a>( <span><code><a href="class-CConnection.html">CConnection</a></code> <var>$theConnection</var></span>, <span>mixed <var>$theIdentifier</var></span>, <span>mixed <var>$theLanguage</var> = <span class="php-keyword1">NULL</span></span>, <span>mixed <var>$theValue</var> = <span class="php-keyword1">NULL</span> </span> )</code>
+		<code><a href="source-class-COntologyTerm.html#479-563" title="Go to source code">HandleLabel</a>( <span><code><a href="class-CConnection.html">CConnection</a></code> <var>$theConnection</var></span>, <span>mixed <var>$theIdentifier</var></span>, <span>mixed <var>$theLanguage</var> = <span class="php-keyword1">NULL</span></span>, <span>mixed <var>$theValue</var> = <span class="php-keyword1">NULL</span> </span> )</code>
 
 		<div class="description short">
 			
@@ -585,7 +720,7 @@ following parameters:</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#_DefaultContainerName">#</a>
-		<code><a href="source-class-COntologyTerm.html#492-504" title="Go to source code">DefaultContainerName</a>( )</code>
+		<code><a href="source-class-COntologyTerm.html#579-591" title="Go to source code">DefaultContainerName</a>( )</code>
 
 		<div class="description short">
 			
@@ -634,7 +769,7 @@ following parameters:</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#_Resolve">#</a>
-		<code><a href="source-class-COntologyTerm.html#520-728" title="Go to source code">Resolve</a>( <span><code><a href="class-CConnection.html">CConnection</a></code> <var>$theConnection</var></span>, <span>string <var>$theIdentifier</var></span>, <span>mixed <var>$theNamespace</var> = <span class="php-keyword1">NULL</span></span>, <span>boolean <var>$doThrow</var> = <span class="php-keyword1">FALSE</span> </span> )</code>
+		<code><a href="source-class-COntologyTerm.html#607-815" title="Go to source code">Resolve</a>( <span><code><a href="class-CConnection.html">CConnection</a></code> <var>$theConnection</var></span>, <span>string <var>$theIdentifier</var></span>, <span>mixed <var>$theNamespace</var> = <span class="php-keyword1">NULL</span></span>, <span>boolean <var>$doThrow</var> = <span class="php-keyword1">FALSE</span> </span> )</code>
 
 		<div class="description short">
 			
@@ -752,7 +887,7 @@ parameter, or you will get unexpected results.</b></p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#__id">#</a>
-		<code><a href="source-class-COntologyTerm.html#744-790" title="Go to source code">_id</a>( <span>string <var>$theIdentifier</var> = <span class="php-keyword1">NULL</span></span>, <span><code><a href="class-CConnection.html">CConnection</a></code> <var>$theConnection</var> = <span class="php-keyword1">NULL</span> </span> )</code>
+		<code><a href="source-class-COntologyTerm.html#831-877" title="Go to source code">_id</a>( <span>string <var>$theIdentifier</var> = <span class="php-keyword1">NULL</span></span>, <span><code><a href="class-CConnection.html">CConnection</a></code> <var>$theConnection</var> = <span class="php-keyword1">NULL</span> </span> )</code>
 
 		<div class="description short">
 			
@@ -810,7 +945,7 @@ this object primary key depends on the content of its attributes.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#__index">#</a>
-		<code><a href="source-class-COntologyTerm.html#806-840" title="Go to source code">_index</a>( <span><code><a href="class-CConnection.html">CConnection</a></code> <var>$theConnection</var></span>, <span>bitfield <var>$theModifiers</var></span> )</code>
+		<code><a href="source-class-COntologyTerm.html#893-927" title="Go to source code">_index</a>( <span><code><a href="class-CConnection.html">CConnection</a></code> <var>$theConnection</var></span>, <span>bitfield <var>$theModifiers</var></span> )</code>
 
 		<div class="description short">
 			
@@ -873,7 +1008,7 @@ cache, so its global identifier will be available there.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#__Preset">#</a>
-		<code><a href="source-class-COntologyTerm.html#856-1024" title="Go to source code">_Preset</a>( <span>reference <var>&amp; $theOffset</var></span>, <span>reference <var>&amp; $theValue</var></span> )</code>
+		<code><a href="source-class-COntologyTerm.html#943-1111" title="Go to source code">_Preset</a>( <span>reference <var>&amp; $theOffset</var></span>, <span>reference <var>&amp; $theValue</var></span> )</code>
 
 		<div class="description short">
 			
@@ -942,7 +1077,7 @@ method we cast the parameter to that type.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#__Preunset">#</a>
-		<code><a href="source-class-COntologyTerm.html#1031-1087" title="Go to source code">_Preunset</a>( <span>reference <var>&amp; $theOffset</var></span> )</code>
+		<code><a href="source-class-COntologyTerm.html#1118-1174" title="Go to source code">_Preunset</a>( <span>reference <var>&amp; $theOffset</var></span> )</code>
 
 		<div class="description short">
 			
@@ -999,7 +1134,7 @@ the object is committed.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#__PrecommitRelated">#</a>
-		<code><a href="source-class-COntologyTerm.html#1103-1212" title="Go to source code">_PrecommitRelated</a>( <span>reference <var>&amp; $theConnection</var></span>, <span>reference <var>&amp; $theModifiers</var></span> )</code>
+		<code><a href="source-class-COntologyTerm.html#1190-1299" title="Go to source code">_PrecommitRelated</a>( <span>reference <var>&amp; $theConnection</var></span>, <span>reference <var>&amp; $theModifiers</var></span> )</code>
 
 		<div class="description short">
 			
@@ -1048,7 +1183,7 @@ load the namespace if provided as an identifier.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#__PostcommitRelated">#</a>
-		<code><a href="source-class-COntologyTerm.html#1228-1306" title="Go to source code">_PostcommitRelated</a>( <span>reference <var>&amp; $theConnection</var></span>, <span>reference <var>&amp; $theModifiers</var></span> )</code>
+		<code><a href="source-class-COntologyTerm.html#1315-1393" title="Go to source code">_PostcommitRelated</a>( <span>reference <var>&amp; $theConnection</var></span>, <span>reference <var>&amp; $theModifiers</var></span> )</code>
 
 		<div class="description short">
 			
@@ -1123,7 +1258,7 @@ following:</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#__PostcommitCleanup">#</a>
-		<code><a href="source-class-COntologyTerm.html#1313-1337" title="Go to source code">_PostcommitCleanup</a>( <span>reference <var>&amp; $theConnection</var></span>, <span>reference <var>&amp; $theModifiers</var></span> )</code>
+		<code><a href="source-class-COntologyTerm.html#1400-1424" title="Go to source code">_PostcommitCleanup</a>( <span>reference <var>&amp; $theConnection</var></span>, <span>reference <var>&amp; $theModifiers</var></span> )</code>
 
 		<div class="description short">
 			
