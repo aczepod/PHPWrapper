@@ -2,7 +2,7 @@ var searchData=
 [
   ['getdatabase',['GetDatabase',['../class_c_ontology.html#ae8905b152a35d927137faeb2aa1885ce',1,'COntology']]],
   ['getedge',['GetEdge',['../class_c_graph_container.html#a78ad525680cd1c32e3c52cac29a8fe6a',1,'CGraphContainer\GetEdge()'],['../class_c_neo4j_graph.html#a0352e11f4a5e856a09c19403c7a2e87b',1,'CNeo4jGraph\GetEdge()']]],
-  ['getexceltemplate',['GetExcelTemplate',['../class_c_ontology.html#a03d99559d6b357d64a6437a68d157c26',1,'COntology']]],
+  ['getexceltemplate',['GetExcelTemplate',['../class_c_ontology.html#aefcfa505c8f673731b1462bd4989a090',1,'COntology']]],
   ['getfeaturevertex',['GetFeatureVertex',['../class_c_ontology_tag.html#a6f6ab6398a55f25e2860bac885f7f814',1,'COntologyTag']]],
   ['getgraphnode',['GetGraphNode',['../class_c_ontology_node.html#a0dc5644213c5599332a024af2160c9f1',1,'COntologyNode']]],
   ['getgraphnodeproperties',['GetGraphNodeProperties',['../class_c_ontology_node.html#a8da921e4518e6c9bfc0f2ce6eefe7697',1,'COntologyNode']]],

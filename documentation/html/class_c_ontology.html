@@ -141,8 +141,8 @@ Public Member Functions</h2></td></tr>
 <tr class="separator:ad9b6ebbaf592ab0543be3f63cddd025c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a146da417467dc53827e4b1a2e8646276"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_c_ontology.html#a146da417467dc53827e4b1a2e8646276">GetTemplateArray</a> ($theRoot, $theLanguage)</td></tr>
 <tr class="separator:a146da417467dc53827e4b1a2e8646276"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a03d99559d6b357d64a6437a68d157c26"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_c_ontology.html#a03d99559d6b357d64a6437a68d157c26">GetExcelTemplate</a> ($theRoot, $theLanguage, $thePath=NULL)</td></tr>
-<tr class="separator:a03d99559d6b357d64a6437a68d157c26"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aefcfa505c8f673731b1462bd4989a090"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_c_ontology.html#aefcfa505c8f673731b1462bd4989a090">GetExcelTemplate</a> ($theRoot, $theLanguage, $theAttributes=NULL, $thePath=NULL)</td></tr>
+<tr class="separator:aefcfa505c8f673731b1462bd4989a090"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a9789841620a6b75f09120223d7fd4dc8"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_c_ontology.html#a9789841620a6b75f09120223d7fd4dc8">LoadISOPOFiles</a> ()</td></tr>
 <tr class="separator:a9789841620a6b75f09120223d7fd4dc8"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a85ac5a51432b48fe5c2fa81a6fae2c0a"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_c_ontology.html#a85ac5a51432b48fe5c2fa81a6fae2c0a">SetAllCountries</a> ($theEnumeration)</td></tr>
@@ -1283,7 +1283,7 @@ Additional Inherited Members</h2></td></tr>
 
 </div>
 </div>
-<a class="anchor" id="a03d99559d6b357d64a6437a68d157c26"></a>
+<a class="anchor" id="aefcfa505c8f673731b1462bd4989a090"></a>
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
@@ -1298,6 +1298,12 @@ Additional Inherited Members</h2></td></tr>
           <td></td>
           <td class="paramtype">&#160;</td>
           <td class="paramname"><em>$theLanguage</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname"><em>$theAttributes</em> = <code>NULL</code>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
@@ -1321,12 +1327,32 @@ Additional Inherited Members</h2></td></tr>
 <li>
 <code>$theLanguage</code>: Language of labels and definitions. </li>
 <li>
+<code>$theAttributes</code>: Template file attributes, an array with the following keys: <ul>
+<li>
+<code><a class="el" href="">kOFFSET_TEMPLATE_CREATOR</a></code>: Creator. </li>
+<li>
+<code><a class="el" href="">kOFFSET_TEMPLATE_MODIFIER</a></code>: Last modifier. </li>
+<li>
+<code><a class="el" href="">kOFFSET_TEMPLATE_TITLE</a></code>: Title. </li>
+<li>
+<code><a class="el" href="">kOFFSET_TEMPLATE_SUBJECT</a></code>: Subject. </li>
+<li>
+<code><a class="el" href="">kOFFSET_TEMPLATE_DESCRIPTION</a></code>: Description. </li>
+<li>
+<code><a class="el" href="">kOFFSET_TEMPLATE_KEYWORDS</a></code>: Keywords (space separated). </li>
+<li>
+<code><a class="el" href="">kOFFSET_TEMPLATE_CATEGORY</a></code>: Category. </li>
+</ul>
+</li>
+<li>
 <code>$thePath</code>: File path or <code>NULL</code> for browser download. </li>
 </ul>
+<p>The method will return <code>TRUE</code> if the template was filled, or <code>NULL</code> if no tags were found.</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramtype">mixed</td><td class="paramname">$theRoot</td><td>Root node reference. </td></tr>
     <tr><td class="paramtype">string</td><td class="paramname">$theLanguage</td><td>Language code. </td></tr>
+    <tr><td class="paramtype">array</td><td class="paramname">$theAttributes</td><td>Template file attributes. </td></tr>
     <tr><td class="paramtype">mixed</td><td class="paramname">$thePath</td><td>File path or NULL for browser.</td></tr>
   </table>
   </dd>
@@ -1545,7 +1571,7 @@ Additional Inherited Members</h2></td></tr>
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="class_c_ontology.html">COntology</a></li>
-    <li class="footer">Generated on Tue Feb 26 2013 19:15:17 for MyWrapper by
+    <li class="footer">Generated on Wed Feb 27 2013 18:40:46 for MyWrapper by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.3.1 </li>
   </ul>

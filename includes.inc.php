@@ -50,6 +50,14 @@ define( "kPATH_MYWRAPPER_LIBRARY_ROOT",		"/Library/WebServer/Library/PHPWrapper"
  */
 define( "kPATH_LIBRARY_NEO4J",				"/Library/WebServer/Library/Neo4jphp/" );
 
+/**
+ * PHPExcel class library home.
+ *
+ * This value defines the <b><i>absolute</i></b> path to the PHPExcel class library
+ * directory.
+ */
+define( "kPATH_LIBRARY_PHPEXCEL",			"/Library/WebServer/Library/PHPExcel/Classes" );
+
 /*=======================================================================================
  *	LIBRARY SUB-PATHS																		*
  *======================================================================================*/

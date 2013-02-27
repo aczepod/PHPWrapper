@@ -24,7 +24,7 @@ Inheritance diagram for C\-Ontology\-:\begin{figure}[H]
 \item 
 \hyperlink{class_c_ontology_a146da417467dc53827e4b1a2e8646276}{Get\-Template\-Array} (\$the\-Root, \$the\-Language)
 \item 
-\hyperlink{class_c_ontology_a03d99559d6b357d64a6437a68d157c26}{Get\-Excel\-Template} (\$the\-Root, \$the\-Language, \$the\-Path=N\-U\-L\-L)
+\hyperlink{class_c_ontology_aefcfa505c8f673731b1462bd4989a090}{Get\-Excel\-Template} (\$the\-Root, \$the\-Language, \$the\-Attributes=N\-U\-L\-L, \$the\-Path=N\-U\-L\-L)
 \item 
 \hyperlink{class_c_ontology_a9789841620a6b75f09120223d7fd4dc8}{Load\-I\-S\-O\-P\-O\-Files} ()
 \item 
@@ -683,15 +683,16 @@ This method should return the database connection, {\ttfamily F\-A\-L\-S\-E{\ttf
 {\ttfamily {\ttfamily  public \begin{DoxyReturn}{Returns}
 mixed Database connection, {\ttfamily N\-U\-L\-L$<$7tt$>$ or {\ttfamily F\-A\-L\-S\-E}. }
 \end{DoxyReturn}
-}}\hypertarget{class_c_ontology_a03d99559d6b357d64a6437a68d157c26}{\index{C\-Ontology@{C\-Ontology}!Get\-Excel\-Template@{Get\-Excel\-Template}}
+}}\hypertarget{class_c_ontology_aefcfa505c8f673731b1462bd4989a090}{\index{C\-Ontology@{C\-Ontology}!Get\-Excel\-Template@{Get\-Excel\-Template}}
 \index{Get\-Excel\-Template@{Get\-Excel\-Template}!COntology@{C\-Ontology}}
 \subsubsection[{Get\-Excel\-Template}]{\setlength{\rightskip}{0pt plus 5cm}C\-Ontology\-::\-Get\-Excel\-Template (
 \begin{DoxyParamCaption}
 \item[{}]{\$the\-Root, }
 \item[{}]{\$the\-Language, }
+\item[{}]{\$the\-Attributes = {\ttfamily NULL}, }
 \item[{}]{\$the\-Path = {\ttfamily NULL}}
 \end{DoxyParamCaption}
-)}}\label{class_c_ontology_a03d99559d6b357d64a6437a68d157c26}
+)}}\label{class_c_ontology_aefcfa505c8f673731b1462bd4989a090}
 \subparagraph*{Retrieve Excel template}
 
 This method can be used to generate an Excel document consisting of the header elements obtained by the \hyperlink{class_c_ontology_a146da417467dc53827e4b1a2e8646276}{Get\-Template\-Array()} method. Only the first three items of the array template will be used, the fourth row should be the first one for data.
@@ -702,14 +703,28 @@ The method expects three parameters\-:
 \begin{DoxyItemize}
 \item {\ttfamily \$the\-Root}\-: Root node object or reference. 
 \item {\ttfamily \$the\-Language}\-: Language of labels and definitions. 
+\item {\ttfamily \$the\-Attributes}\-: Template file attributes, an array with the following keys\-: 
+\begin{DoxyItemize}
+\item {\ttfamily \hyperlink{}{k\-O\-F\-F\-S\-E\-T\-\_\-\-T\-E\-M\-P\-L\-A\-T\-E\-\_\-\-C\-R\-E\-A\-T\-O\-R}}\-: Creator. 
+\item {\ttfamily \hyperlink{}{k\-O\-F\-F\-S\-E\-T\-\_\-\-T\-E\-M\-P\-L\-A\-T\-E\-\_\-\-M\-O\-D\-I\-F\-I\-E\-R}}\-: Last modifier. 
+\item {\ttfamily \hyperlink{}{k\-O\-F\-F\-S\-E\-T\-\_\-\-T\-E\-M\-P\-L\-A\-T\-E\-\_\-\-T\-I\-T\-L\-E}}\-: Title. 
+\item {\ttfamily \hyperlink{}{k\-O\-F\-F\-S\-E\-T\-\_\-\-T\-E\-M\-P\-L\-A\-T\-E\-\_\-\-S\-U\-B\-J\-E\-C\-T}}\-: Subject. 
+\item {\ttfamily \hyperlink{}{k\-O\-F\-F\-S\-E\-T\-\_\-\-T\-E\-M\-P\-L\-A\-T\-E\-\_\-\-D\-E\-S\-C\-R\-I\-P\-T\-I\-O\-N}}\-: Description. 
+\item {\ttfamily \hyperlink{}{k\-O\-F\-F\-S\-E\-T\-\_\-\-T\-E\-M\-P\-L\-A\-T\-E\-\_\-\-K\-E\-Y\-W\-O\-R\-D\-S}}\-: Keywords (space separated). 
+\item {\ttfamily \hyperlink{}{k\-O\-F\-F\-S\-E\-T\-\_\-\-T\-E\-M\-P\-L\-A\-T\-E\-\_\-\-C\-A\-T\-E\-G\-O\-R\-Y}}\-: Category. 
+\end{DoxyItemize}
 \item {\ttfamily \$the\-Path}\-: File path or {\ttfamily N\-U\-L\-L} for browser download. 
 \end{DoxyItemize}
+
+The method will return {\ttfamily T\-R\-U\-E} if the template was filled, or {\ttfamily N\-U\-L\-L} if no tags were found.
 
 
 \begin{DoxyParams}[1]{Parameters}
 mixed & {\em \$the\-Root} & Root node reference. \\
 \hline
 string & {\em \$the\-Language} & Language code. \\
+\hline
+array & {\em \$the\-Attributes} & Template file attributes. \\
 \hline
 mixed & {\em \$the\-Path} & File path or N\-U\-L\-L for browser.\\
 \hline

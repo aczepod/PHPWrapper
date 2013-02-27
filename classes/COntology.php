@@ -275,6 +275,13 @@ require_once( kPATH_MYWRAPPER_LIBRARY_FUNCTION."/parsing.php" );
 require_once( kPATH_MYWRAPPER_LIBRARY_DATA."/ISOCodes.inc.php" );
 
 /**
+ * PHPExcel library includes.
+ *
+ * This includes the PHPExcel library definitions.
+ */
+require_once( kPATH_LIBRARY_PHPEXCEL."/PHPExcel.php" );
+
+/**
  * <h4>Ontology object</h4>
  *
  * This class represents an object whose duty is to provide a high level interface for
@@ -823,22 +830,13 @@ class COntology extends CConnection
 		// Handle multiple nodes.
 		//
 		if( is_array( $theRoot ) )
-		{
-			//
-			// Iterate resolved nodes.
-			//
-			foreach( $theRoot as $node )
-				$template[ $node->NID() ]
-					= $this->GetTemplateArray( $node, $theLanguage );
-		
-		} // Root resolves into many nodes.
+			$theRoot = array_shift( $theRoot );
 		
 		//
-		// Handle single node.
+		// Generate data.
 		//
-		else
-			$this->_GetTemplate(
-				$template, $db, $predicate, $theRoot, $theLanguage, $cache );
+		$this->_GetTemplate(
+			$template, $db, $predicate, $theRoot, $theLanguage, $cache );
 		
 		return $template;															// ==>
 
@@ -862,11 +860,26 @@ class COntology extends CConnection
 	 * <ul>
 	 *	<li><tt>$theRoot</tt>: Root node object or reference.
 	 *	<li><tt>$theLanguage</tt>: Language of labels and definitions.
+	 *	<li><tt>$theAttributes</tt>: Template file attributes, an array with the following
+	 *		keys:
+	 *	 <ul>
+	 *		<li><tt>{@link kOFFSET_TEMPLATE_CREATOR}</tt>: Creator.
+	 *		<li><tt>{@link kOFFSET_TEMPLATE_MODIFIER}</tt>: Last modifier.
+	 *		<li><tt>{@link kOFFSET_TEMPLATE_TITLE}</tt>: Title.
+	 *		<li><tt>{@link kOFFSET_TEMPLATE_SUBJECT}</tt>: Subject.
+	 *		<li><tt>{@link kOFFSET_TEMPLATE_DESCRIPTION}</tt>: Description.
+	 *		<li><tt>{@link kOFFSET_TEMPLATE_KEYWORDS}</tt>: Keywords (space separated).
+	 *		<li><tt>{@link kOFFSET_TEMPLATE_CATEGORY}</tt>: Category.
+	 *	 </ul>
 	 *	<li><tt>$thePath</tt>: File path or <tt>NULL</tt> for browser download.
 	 * </ul>
 	 *
+	 * The method will return <tt>TRUE</tt> if the template was filled, or <tt>NULL</tt> if
+	 * no tags were found.
+	 *
 	 * @param mixed					$theRoot			Root node reference.
 	 * @param string				$theLanguage		Language code.
+	 * @param array					$theAttributes		Template file attributes.
 	 * @param mixed					$thePath			File path or NULL for browser.
 	 *
 	 * @access public
@@ -874,8 +887,111 @@ class COntology extends CConnection
 	 *
 	 * @throws Exception
 	 */
-	public function GetExcelTemplate( $theRoot, $theLanguage, $thePath = NULL )
+	public function GetExcelTemplate( $theRoot, $theLanguage, $theAttributes = NULL,
+															  $thePath = NULL )
 	{
+		//
+		// Get template array.
+		//
+		$template = $this->GetTemplateArray( $theRoot, $theLanguage );
+		if( count( $template ) )
+		{
+			//
+			// Create excel object.
+			//
+			$excel = new PHPExcel();
+			
+			//
+			// Handle document attributes.
+			//
+			if( is_array( $theAttributes ) )
+			{
+				//
+				// Iterate attributes.
+				//
+				foreach( $theAttributes as $key => $value )
+				{
+					switch( $key )
+					{
+						case kOFFSET_TEMPLATE_CREATOR:
+						case kOFFSET_TEMPLATE_MODIFIER:
+						case kOFFSET_TEMPLATE_TITLE:
+						case kOFFSET_TEMPLATE_SUBJECT:
+						case kOFFSET_TEMPLATE_DESCRIPTION:
+						case kOFFSET_TEMPLATE_KEYWORDS:
+						case kOFFSET_TEMPLATE_CATEGORY:
+							$excel->getProperties()->$key( $value );
+							break;
+					}
+				}
+			
+			} // Provided document attributes.
+			
+			//
+			// Create data sheet.
+			//
+			$worksheet = new PHPExcel_Worksheet( $excel, 'Data' );
+			$excel->addSheet( $worksheet, 0 );
+			
+			//
+			// Iterate template.
+			//
+			for( $i = 0; $i < count( $template ); $i++ )
+			{
+				//
+				// Load values.
+				//
+				$worksheet->setCellValueByColumnAndRow( $i, 1, $template[ $i ][ 0 ] );
+				$worksheet->setCellValueByColumnAndRow( $i, 2, $template[ $i ][ 1 ] );
+				$worksheet->setCellValueByColumnAndRow( $i, 3, $template[ $i ][ 2 ] );
+				
+				//
+				// Set format.
+				//
+				$worksheet->getStyleByColumnAndRow( $i, 2 )->getAlignment()
+					->setWrapText( TRUE );
+				$worksheet->getStyleByColumnAndRow( $i, 3 )->getAlignment()
+					->setWrapText( TRUE );
+			
+			} // Iterating tags.
+			
+			//
+			// Handle file.
+			//
+			if( $thePath !== NULL )
+			{
+				//
+				// Write file.
+				//
+				$objWriter = new PHPExcel_Writer_Excel2007( $excel );
+				$objWriter->setOffice2003Compatibility( TRUE );
+				$objWriter->save( $thePath );
+			
+			} // Provided file path.
+			
+			//
+			// Handle download.
+			//
+			else
+			{
+				//
+				// Set excel headers.
+				//
+				header('Content-Type: application/vnd.openxmlformats-officedocument.spreadsheetml.sheet');
+				header('Content-Disposition: attachment;filename="Template.xlsx"');
+				header('Cache-Control: max-age=0');
+	
+				//
+				// Write excel.
+				//
+				$objWriter = PHPExcel_IOFactory::createWriter( $excel, 'Excel2007' );
+				$objWriter->save( 'php://output' );
+			
+			} // No file path.
+		
+		} // Found tags.
+		
+		return NULL;																// ==>
 
 	} // GetExcelTemplate.
 

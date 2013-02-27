@@ -2309,7 +2309,7 @@ class COntologyWrapper extends CDataWrapper
 			//
 			$subject
 				= COntologyNode::NewObject(
-					$_REQUEST[ kAPI_DATABASE ], $_REQUEST[ kAPI_REL_FROM ], TRUE );
+					$_REQUEST[ kAPI_DATABASE ], (int) $_REQUEST[ kAPI_REL_FROM ], TRUE );
 		
 			//
 			// Resolve predicate.
@@ -2327,7 +2327,7 @@ class COntologyWrapper extends CDataWrapper
 			//
 			$object
 				= COntologyNode::NewObject(
-					$_REQUEST[ kAPI_DATABASE ], $_REQUEST[ kAPI_REL_TO ], TRUE );
+					$_REQUEST[ kAPI_DATABASE ], (int) $_REQUEST[ kAPI_REL_TO ], TRUE );
 			
 			//
 			// Relate.

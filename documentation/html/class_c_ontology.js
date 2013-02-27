@@ -20,7 +20,7 @@ var class_c_ontology =
     [ "_ResolveOntologyNode", "class_c_ontology.html#add240f87c2864b092a1435cac49d0647", null ],
     [ "Connection", "class_c_ontology.html#a1c7acc74d753c47dc89d46464afc0099", null ],
     [ "GetDatabase", "class_c_ontology.html#ae8905b152a35d927137faeb2aa1885ce", null ],
-    [ "GetExcelTemplate", "class_c_ontology.html#a03d99559d6b357d64a6437a68d157c26", null ],
+    [ "GetExcelTemplate", "class_c_ontology.html#aefcfa505c8f673731b1462bd4989a090", null ],
     [ "GetTemplateArray", "class_c_ontology.html#a146da417467dc53827e4b1a2e8646276", null ],
     [ "InitContainers", "class_c_ontology.html#a305fa41da58da8239b7636e0ffdc9689", null ],
     [ "InitOntology", "class_c_ontology.html#a6bfd3100a83783cf1997749bf901b8df", null ],

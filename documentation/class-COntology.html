@@ -179,7 +179,7 @@ interface for managing ontologies.</p>
 				<b>Author:</b>
 				Milko A. Škofič &lt;<a
 href="mailto:m.skofic&#64;cgiar.org">m.skofic&#64;<!---->cgiar.org</a>&gt;<br />
-		<b>Located at</b> <a href="source-class-COntology.html#277-5712" title="Go to source code">COntology.php</a><br />
+		<b>Located at</b> <a href="source-class-COntology.html#284-5828" title="Go to source code">COntology.php</a><br />
 	</div>
 
 
@@ -197,7 +197,7 @@ href="mailto:m.skofic&#64;cgiar.org">m.skofic&#64;<!---->cgiar.org</a>&gt;<br />
 
 		<td class="name"><div>
 		<a class="anchor" href="#___toString">#</a>
-		<code><a href="source-class-COntology.html#302-313" title="Go to source code">__toString</a>( )</code>
+		<code><a href="source-class-COntology.html#309-320" title="Go to source code">__toString</a>( )</code>
 
 		<div class="description short">
 			
@@ -241,7 +241,7 @@ returning its name.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#_Connection">#</a>
-		<code><a href="source-class-COntology.html#329-357" title="Go to source code">Connection</a>( <span>mixed <var>$theValue</var> = <span class="php-keyword1">NULL</span></span>, <span>boolean <var>$getOld</var> = <span class="php-keyword1">FALSE</span> </span> )</code>
+		<code><a href="source-class-COntology.html#336-364" title="Go to source code">Connection</a>( <span>mixed <var>$theValue</var> = <span class="php-keyword1">NULL</span></span>, <span>boolean <var>$getOld</var> = <span class="php-keyword1">FALSE</span> </span> )</code>
 
 		<div class="description short">
 			
@@ -299,7 +299,7 @@ returning its name.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#_GetDatabase">#</a>
-		<code><a href="source-class-COntology.html#364-398" title="Go to source code">GetDatabase</a>( )</code>
+		<code><a href="source-class-COntology.html#371-405" title="Go to source code">GetDatabase</a>( )</code>
 
 		<div class="description short">
 			
@@ -340,7 +340,7 @@ inferred.</tt></tt></p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#_InitContainers">#</a>
-		<code><a href="source-class-COntology.html#414-591" title="Go to source code">InitContainers</a>( )</code>
+		<code><a href="source-class-COntology.html#421-598" title="Go to source code">InitContainers</a>( )</code>
 
 		<div class="description short">
 			
@@ -389,7 +389,7 @@ first method called by the procedure that initialises the ontology.</b></p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#_InitOntology">#</a>
-		<code><a href="source-class-COntology.html#598-658" title="Go to source code">InitOntology</a>( )</code>
+		<code><a href="source-class-COntology.html#605-665" title="Go to source code">InitOntology</a>( )</code>
 
 		<div class="description short">
 			
@@ -442,7 +442,7 @@ any value.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#_LoadXMLOntologyFile">#</a>
-		<code><a href="source-class-COntology.html#674-740" title="Go to source code">LoadXMLOntologyFile</a>( <span>mixed <var>$theFilePath</var></span> )</code>
+		<code><a href="source-class-COntology.html#681-747" title="Go to source code">LoadXMLOntologyFile</a>( <span>mixed <var>$theFilePath</var></span> )</code>
 
 		<div class="description short">
 			
@@ -492,7 +492,7 @@ schema.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#_GetTemplateArray">#</a>
-		<code><a href="source-class-COntology.html#756-845" title="Go to source code">GetTemplateArray</a>( <span>mixed <var>$theRoot</var></span>, <span>string <var>$theLanguage</var></span> )</code>
+		<code><a href="source-class-COntology.html#763-843" title="Go to source code">GetTemplateArray</a>( <span>mixed <var>$theRoot</var></span>, <span>string <var>$theLanguage</var></span> )</code>
 
 		<div class="description short">
 			
@@ -568,7 +568,7 @@ node identifier.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#_GetExcelTemplate">#</a>
-		<code><a href="source-class-COntology.html#852-880" title="Go to source code">GetExcelTemplate</a>( <span>mixed <var>$theRoot</var></span>, <span>string <var>$theLanguage</var></span>, <span>mixed <var>$thePath</var> = <span class="php-keyword1">NULL</span> </span> )</code>
+		<code><a href="source-class-COntology.html#850-996" title="Go to source code">GetExcelTemplate</a>( <span>mixed <var>$theRoot</var></span>, <span>string <var>$theLanguage</var></span>, <span>array <var>$theAttributes</var> = <span class="php-keyword1">NULL</span></span>, <span>mixed <var>$thePath</var> = <span class="php-keyword1">NULL</span> </span> )</code>
 
 		<div class="description short">
 			
@@ -592,8 +592,30 @@ the first one for data.</p>
 
 	<li><tt>$theLanguage</tt>: Language of labels and definitions.</li>
 
+	<li><tt>$theAttributes</tt>: Template file attributes, an array with the
+	following keys:
+		<ul>
+			<li><tt>kOFFSET_TEMPLATE_CREATOR</tt>: Creator.</li>
+
+			<li><tt>kOFFSET_TEMPLATE_MODIFIER</tt>: Last modifier.</li>
+
+			<li><tt>kOFFSET_TEMPLATE_TITLE</tt>: Title.</li>
+
+			<li><tt>kOFFSET_TEMPLATE_SUBJECT</tt>: Subject.</li>
+
+			<li><tt>kOFFSET_TEMPLATE_DESCRIPTION</tt>: Description.</li>
+
+			<li><tt>kOFFSET_TEMPLATE_KEYWORDS</tt>: Keywords (space separated).</li>
+
+			<li><tt>kOFFSET_TEMPLATE_CATEGORY</tt>: Category.</li>
+		</ul>
+	</li>
+
 	<li><tt>$thePath</tt>: File path or <tt>NULL</tt> for browser download.</li>
 </ul>
+
+<p>The method will return <tt>TRUE</tt> if the template was filled, or
+<tt>NULL</tt> if no tags were found.</p>
 
 
 
@@ -603,6 +625,8 @@ the first one for data.</p>
 					<dd><code>mixed</code><br>$theRoot Root node reference.</dd>
 					<dt><var>$theLanguage</var></dt>
 					<dd><code>string</code><br>$theLanguage Language code.</dd>
+					<dt><var>$theAttributes</var></dt>
+					<dd><code>array</code><br>$theAttributes Template file attributes.</dd>
 					<dt><var>$thePath</var></dt>
 					<dd><code>mixed</code><br>$thePath File path or NULL for browser.</dd>
 				</dl></div>
@@ -633,7 +657,7 @@ the first one for data.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#_LoadISOPOFiles">#</a>
-		<code><a href="source-class-COntology.html#896-930" title="Go to source code">LoadISOPOFiles</a>( )</code>
+		<code><a href="source-class-COntology.html#1012-1046" title="Go to source code">LoadISOPOFiles</a>( )</code>
 
 		<div class="description short">
 			
@@ -677,7 +701,7 @@ categories, it will then decode the PO files and load the information.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#_SetAllCountries">#</a>
-		<code><a href="source-class-COntology.html#937-1029" title="Go to source code">SetAllCountries</a>( <span>string <var>$theEnumeration</var></span> )</code>
+		<code><a href="source-class-COntology.html#1053-1145" title="Go to source code">SetAllCountries</a>( <span>string <var>$theEnumeration</var></span> )</code>
 
 		<div class="description short">
 			
@@ -722,7 +746,7 @@ provided enumeration.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#__LoadXMLOntologyUnit">#</a>
-		<code><a href="source-class-COntology.html#1045-1099" title="Go to source code">_LoadXMLOntologyUnit</a>( <span><code><a href="class-CDatabase.html">CDatabase</a></code> <var>$theDatabase</var></span>, <span><code><a href="class-SimpleXMLElement.html">SimpleXMLElement</a></code> <var>$theUnit</var></span> )</code>
+		<code><a href="source-class-COntology.html#1161-1215" title="Go to source code">_LoadXMLOntologyUnit</a>( <span><code><a href="class-CDatabase.html">CDatabase</a></code> <var>$theDatabase</var></span>, <span><code><a href="class-SimpleXMLElement.html">SimpleXMLElement</a></code> <var>$theUnit</var></span> )</code>
 
 		<div class="description short">
 			
@@ -771,7 +795,7 @@ schema.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#__LoadXMLOntologyTerm">#</a>
-		<code><a href="source-class-COntology.html#1106-1492" title="Go to source code">_LoadXMLOntologyTerm</a>( <span>Reference <var>&amp; $theCache</var></span>, <span><code><a href="class-CDatabase.html">CDatabase</a></code> <var>$theDatabase</var></span>, <span><code><a href="class-SimpleXMLElement.html">SimpleXMLElement</a></code> <var>$theElement</var></span> )</code>
+		<code><a href="source-class-COntology.html#1222-1608" title="Go to source code">_LoadXMLOntologyTerm</a>( <span>Reference <var>&amp; $theCache</var></span>, <span><code><a href="class-CDatabase.html">CDatabase</a></code> <var>$theDatabase</var></span>, <span><code><a href="class-SimpleXMLElement.html">SimpleXMLElement</a></code> <var>$theElement</var></span> )</code>
 
 		<div class="description short">
 			
@@ -823,7 +847,7 @@ schema.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#__LoadXMLOntologyNode">#</a>
-		<code><a href="source-class-COntology.html#1499-2027" title="Go to source code">_LoadXMLOntologyNode</a>( <span>Reference <var>&amp; $theCache</var></span>, <span><code><a href="class-CDatabase.html">CDatabase</a></code> <var>$theDatabase</var></span>, <span><code><a href="class-SimpleXMLElement.html">SimpleXMLElement</a></code> <var>$theElement</var></span> )</code>
+		<code><a href="source-class-COntology.html#1615-2143" title="Go to source code">_LoadXMLOntologyNode</a>( <span>Reference <var>&amp; $theCache</var></span>, <span><code><a href="class-CDatabase.html">CDatabase</a></code> <var>$theDatabase</var></span>, <span><code><a href="class-SimpleXMLElement.html">SimpleXMLElement</a></code> <var>$theElement</var></span> )</code>
 
 		<div class="description short">
 			
@@ -875,7 +899,7 @@ schema.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#__LoadXMLOntologyEdge">#</a>
-		<code><a href="source-class-COntology.html#2034-2273" title="Go to source code">_LoadXMLOntologyEdge</a>( <span>Reference <var>&amp; $theCache</var></span>, <span><code><a href="class-CDatabase.html">CDatabase</a></code> <var>$theDatabase</var></span>, <span><code><a href="class-SimpleXMLElement.html">SimpleXMLElement</a></code> <var>$theElement</var></span> )</code>
+		<code><a href="source-class-COntology.html#2150-2389" title="Go to source code">_LoadXMLOntologyEdge</a>( <span>Reference <var>&amp; $theCache</var></span>, <span><code><a href="class-CDatabase.html">CDatabase</a></code> <var>$theDatabase</var></span>, <span><code><a href="class-SimpleXMLElement.html">SimpleXMLElement</a></code> <var>$theElement</var></span> )</code>
 
 		<div class="description short">
 			
@@ -927,7 +951,7 @@ schema.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#__LoadXMLOntologyTag">#</a>
-		<code><a href="source-class-COntology.html#2280-2539" title="Go to source code">_LoadXMLOntologyTag</a>( <span>Reference <var>&amp; $theCache</var></span>, <span><code><a href="class-CDatabase.html">CDatabase</a></code> <var>$theDatabase</var></span>, <span><code><a href="class-SimpleXMLElement.html">SimpleXMLElement</a></code> <var>$theElement</var></span> )</code>
+		<code><a href="source-class-COntology.html#2396-2655" title="Go to source code">_LoadXMLOntologyTag</a>( <span>Reference <var>&amp; $theCache</var></span>, <span><code><a href="class-CDatabase.html">CDatabase</a></code> <var>$theDatabase</var></span>, <span><code><a href="class-SimpleXMLElement.html">SimpleXMLElement</a></code> <var>$theElement</var></span> )</code>
 
 		<div class="description short">
 			
@@ -979,7 +1003,7 @@ schema.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#__ResolveOntologyNode">#</a>
-		<code><a href="source-class-COntology.html#2546-2691" title="Go to source code">_ResolveOntologyNode</a>( <span><code><a href="class-CDatabase.html">CDatabase</a></code> <var>$theDatabase</var></span>, <span><code><a href="class-SimpleXMLElement.html">SimpleXMLElement</a></code> <var>$theElement</var></span> )</code>
+		<code><a href="source-class-COntology.html#2662-2807" title="Go to source code">_ResolveOntologyNode</a>( <span><code><a href="class-CDatabase.html">CDatabase</a></code> <var>$theDatabase</var></span>, <span><code><a href="class-SimpleXMLElement.html">SimpleXMLElement</a></code> <var>$theElement</var></span> )</code>
 
 		<div class="description short">
 			
@@ -1044,7 +1068,7 @@ following:</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#__GetTemplate">#</a>
-		<code><a href="source-class-COntology.html#2707-2889" title="Go to source code">_GetTemplate</a>( <span>reference <var>&amp; $theTemplate</var></span>, <span><code><a href="class-CDatabase.html">CDatabase</a></code> <var>$theDatabase</var></span>, <span><code><a href="class-COntologyTerm.html">COntologyTerm</a></code> <var>$thePredicate</var></span>, <span><code><a href="class-COntologyNode.html">COntologyNode</a></code> <var>$theNode</var></span>, <span>string <var>$theLanguage</var></span>, <span>reference <var>&amp; $theCache</var></span> )</code>
+		<code><a href="source-class-COntology.html#2823-3005" title="Go to source code">_GetTemplate</a>( <span>reference <var>&amp; $theTemplate</var></span>, <span><code><a href="class-CDatabase.html">CDatabase</a></code> <var>$theDatabase</var></span>, <span><code><a href="class-COntologyTerm.html">COntologyTerm</a></code> <var>$thePredicate</var></span>, <span><code><a href="class-COntologyNode.html">COntologyNode</a></code> <var>$theNode</var></span>, <span>string <var>$theLanguage</var></span>, <span>reference <var>&amp; $theCache</var></span> )</code>
 
 		<div class="description short">
 			
@@ -1132,7 +1156,7 @@ as follows:</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#__ISODecodePOFiles">#</a>
-		<code><a href="source-class-COntology.html#2905-3023" title="Go to source code">_ISODecodePOFiles</a>( )</code>
+		<code><a href="source-class-COntology.html#3021-3139" title="Go to source code">_ISODecodePOFiles</a>( )</code>
 
 		<div class="description short">
 			
@@ -1172,7 +1196,7 @@ the kISO_FILE_PO_DIR directory the PHP serialised decode array.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#__ISOParseXMLFiles">#</a>
-		<code><a href="source-class-COntology.html#3030-3089" title="Go to source code">_ISOParseXMLFiles</a>( <span><code><a href="class-CDatabase.html">CDatabase</a></code> <var>$theDatabase</var></span> )</code>
+		<code><a href="source-class-COntology.html#3146-3205" title="Go to source code">_ISOParseXMLFiles</a>( <span><code><a href="class-CDatabase.html">CDatabase</a></code> <var>$theDatabase</var></span> )</code>
 
 		<div class="description short">
 			
@@ -1216,7 +1240,7 @@ the kISO_FILE_PO_DIR directory the PHP serialised decode array.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#__ISOParse6393XML">#</a>
-		<code><a href="source-class-COntology.html#3096-3539" title="Go to source code">_ISOParse6393XML</a>( <span><code><a href="class-CDatabase.html">CDatabase</a></code> <var>$theDatabase</var></span> )</code>
+		<code><a href="source-class-COntology.html#3212-3655" title="Go to source code">_ISOParse6393XML</a>( <span><code><a href="class-CDatabase.html">CDatabase</a></code> <var>$theDatabase</var></span> )</code>
 
 		<div class="description short">
 			
@@ -1286,7 +1310,7 @@ the kISO_FILE_PO_DIR directory the PHP serialised decode array.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#__ISOParse639XML">#</a>
-		<code><a href="source-class-COntology.html#3546-4014" title="Go to source code">_ISOParse639XML</a>( <span><code><a href="class-CDatabase.html">CDatabase</a></code> <var>$theDatabase</var></span> )</code>
+		<code><a href="source-class-COntology.html#3662-4130" title="Go to source code">_ISOParse639XML</a>( <span><code><a href="class-CDatabase.html">CDatabase</a></code> <var>$theDatabase</var></span> )</code>
 
 		<div class="description short">
 			
@@ -1349,7 +1373,7 @@ the kISO_FILE_PO_DIR directory the PHP serialised decode array.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#__ISOParse31661XML">#</a>
-		<code><a href="source-class-COntology.html#4021-4390" title="Go to source code">_ISOParse31661XML</a>( <span><code><a href="class-CDatabase.html">CDatabase</a></code> <var>$theDatabase</var></span> )</code>
+		<code><a href="source-class-COntology.html#4137-4506" title="Go to source code">_ISOParse31661XML</a>( <span><code><a href="class-CDatabase.html">CDatabase</a></code> <var>$theDatabase</var></span> )</code>
 
 		<div class="description short">
 			
@@ -1413,7 +1437,7 @@ the kISO_FILE_PO_DIR directory the PHP serialised decode array.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#__ISOParse31663XML">#</a>
-		<code><a href="source-class-COntology.html#4397-4761" title="Go to source code">_ISOParse31663XML</a>( <span><code><a href="class-CDatabase.html">CDatabase</a></code> <var>$theDatabase</var></span> )</code>
+		<code><a href="source-class-COntology.html#4513-4877" title="Go to source code">_ISOParse31663XML</a>( <span><code><a href="class-CDatabase.html">CDatabase</a></code> <var>$theDatabase</var></span> )</code>
 
 		<div class="description short">
 			
@@ -1478,7 +1502,7 @@ the kISO_FILE_PO_DIR directory the PHP serialised decode array.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#__ISOParse31662XML">#</a>
-		<code><a href="source-class-COntology.html#4768-5037" title="Go to source code">_ISOParse31662XML</a>( <span><code><a href="class-CDatabase.html">CDatabase</a></code> <var>$theDatabase</var></span> )</code>
+		<code><a href="source-class-COntology.html#4884-5153" title="Go to source code">_ISOParse31662XML</a>( <span><code><a href="class-CDatabase.html">CDatabase</a></code> <var>$theDatabase</var></span> )</code>
 
 		<div class="description short">
 			
@@ -1541,7 +1565,7 @@ the kISO_FILE_PO_DIR directory the PHP serialised decode array.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#__ISOParse4217XML">#</a>
-		<code><a href="source-class-COntology.html#5044-5411" title="Go to source code">_ISOParse4217XML</a>( <span><code><a href="class-CDatabase.html">CDatabase</a></code> <var>$theDatabase</var></span> )</code>
+		<code><a href="source-class-COntology.html#5160-5527" title="Go to source code">_ISOParse4217XML</a>( <span><code><a href="class-CDatabase.html">CDatabase</a></code> <var>$theDatabase</var></span> )</code>
 
 		<div class="description short">
 			
@@ -1602,7 +1626,7 @@ the kISO_FILE_PO_DIR directory the PHP serialised decode array.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#__ISOParse15924XML">#</a>
-		<code><a href="source-class-COntology.html#5418-5625" title="Go to source code">_ISOParse15924XML</a>( <span><code><a href="class-CDatabase.html">CDatabase</a></code> <var>$theDatabase</var></span> )</code>
+		<code><a href="source-class-COntology.html#5534-5741" title="Go to source code">_ISOParse15924XML</a>( <span><code><a href="class-CDatabase.html">CDatabase</a></code> <var>$theDatabase</var></span> )</code>
 
 		<div class="description short">
 			
@@ -1657,7 +1681,7 @@ the kISO_FILE_PO_DIR directory the PHP serialised decode array.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#__ISOCollectLanguageStrings">#</a>
-		<code><a href="source-class-COntology.html#5632-5708" title="Go to source code">_ISOCollectLanguageStrings</a>( <span><code><a href="class-CPersistentObject.html">CPersistentObject</a></code> <var>$theObject</var></span>, <span>string <var>$theFile</var></span>, <span>array <var>$theTags</var></span> )</code>
+		<code><a href="source-class-COntology.html#5748-5824" title="Go to source code">_ISOCollectLanguageStrings</a>( <span><code><a href="class-CPersistentObject.html">CPersistentObject</a></code> <var>$theObject</var></span>, <span>string <var>$theFile</var></span>, <span>array <var>$theTags</var></span> )</code>
 
 		<div class="description short">
 			

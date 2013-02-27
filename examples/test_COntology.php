@@ -278,6 +278,16 @@ try
 	$tmpl = $test->GetTemplateArray( "MCPD", kDEFAULT_LANGUAGE );
 	echo( '<pre>' ); print_r( $tmpl ); echo( '</pre>' );
 	echo( '<hr />' );
+
+	//
+	// Export template Excel.
+	//
+	echo( '<h4>Export template Excel</h4>' );
+	echo( '<h5>$test = new MyClass( $database );</h5>' );
+	$test = new MyClass( $database );
+	echo( '<h5>$test->GetExcelTemplate( "MCPD", kDEFAULT_LANGUAGE, NULL, "/tmp/test.xlsx" );</h5>' );
+	$test->GetExcelTemplate( "MCPD", kDEFAULT_LANGUAGE, NULL, "/tmp/test.xlsx" );
+	echo( '<hr />' );
 	echo( '<hr />' );
 }
 
