@@ -462,12 +462,26 @@ class COntologyMasterNode extends COntologyNode
 					//
 					// Handle graph node.
 					//
+				/**
+				 * Something strange happens here: it throws an error:
+				 * Unable to update node [400]
+				 * and it looks like if you modify any attribute of the node
+				 * saving it will throw an error.
+				 ***
+				 * Disabled this section until the issue is resolved.
+				 * It may also very well be that this happens in some systems and in
+				 * others not.
+				 *
+				 * @MILKO
+				 */
+				
 					if( $theConnection->offsetExists( kOFFSET_GRAPH ) )
 						$theConnection->offsetGet( kOFFSET_GRAPH )
 							->SetNode(
 								$theConnection->offsetGet( kOFFSET_GRAPH )
 									->GetNode( $id, TRUE ),
 								$this->_GraphNodeProperties( $properties ) );
+				
 					
 					//
 					// Cleanup before returning.

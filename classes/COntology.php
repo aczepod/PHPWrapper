@@ -859,6 +859,13 @@ class COntology extends CConnection
 	 *
 	 * <ul>
 	 *	<li><tt>$theRoot</tt>: Root node object or reference.
+	 *	<li><tt>$thePredicate</tt>: Array of predicate references, these will be used to
+	 *		traverse the graph.
+	 *	<li><tt>$theDirection</tt>: Direction in which the the graph should be traversed:
+	 *	 <ul>
+	 *		<li><tt>{@link kAPI_RELATION_IN}</tt>: All nodes that point to the target.
+	 *		<li><tt>{@link kAPI_RELATION_OUT}</tt>: All nodes pointed by the target.
+	 *	 </ul>
 	 *	<li><tt>$theLanguage</tt>: Language of labels and definitions.
 	 *	<li><tt>$theAttributes</tt>: Template file attributes, an array with the following
 	 *		keys:
@@ -878,6 +885,8 @@ class COntology extends CConnection
 	 * no tags were found.
 	 *
 	 * @param mixed					$theRoot			Root node reference.
+	 * @param mixed					$thePredicate		Predicate reference.
+	 * @param string				$theDirection		Relationship direction.
 	 * @param string				$theLanguage		Language code.
 	 * @param array					$theAttributes		Template file attributes.
 	 * @param mixed					$thePath			File path or NULL for browser.
@@ -887,9 +896,20 @@ class COntology extends CConnection
 	 *
 	 * @throws Exception
 	 */
-	public function GetExcelTemplate( $theRoot, $theLanguage, $theAttributes = NULL,
-															  $thePath = NULL )
+	public function GetExcelTemplate( $theRoot, $thePredicate, $theDirection, $theLanguage,
+									  $theAttributes = NULL, $thePath = NULL )
 	{
+		//
+		// Handle predicates.
+		//
+		if( is_array( $thePredicate ) )
+		{
+		}
+		else
+			throw new Exception
+				( "Invalid predicate parameter",
+				  kERROR_PARAMETER );											// !@! ==>
+		
 		//
 		// Get template array.
 		//

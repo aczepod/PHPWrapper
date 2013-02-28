@@ -423,6 +423,35 @@ define( "kAPI_OP_RelateTo",			'WS:OP:RelateTo' );
  */
 define( "kAPI_OP_GetEnums",			'WS:OP:GetEnums' );
 
+/**
+ * GetTemplate web-service.
+ *
+ * This is the tag that represents the GetTemplate web-service operation, which will return
+ * a path to a template file generated according to the provided parameters.
+ *
+ * For each vertex selected by the provided {@link kAPI_QUERY}, this service will traverse
+ * the graph starting from that vertex, using the provided {@link kAPI_PREDICATE} in the
+ * direction provided in {@link kAPI_RELATION}, testing for all traversed nodes if their
+ * term is used as the feature of a tag; in that case, the 
+ *
+ * The service expects the following parameters:
+ *
+ * <ul>
+ *	<li><i>{@link kAPI_FORMAT}</i>: This parameter is required to indicate how to encode the
+ *		response.
+ *	<li><i>{@link kAPI_DATABASE}</i>: This parameter is required to indicate the working
+ *		database.
+ *	<li><i>{@link kAPI_QUERY}</i>: This parameter will hold the selection criteria of the
+ *		reference vertex, the nodes container will be searched.
+ * </ul>
+ *
+ * Once the reference node is resolved, the method will return all the edges related to
+ * the reference node with a {@link kPREDICATE_ENUM_OF} predicate traversing <i>all
+ * levels</i>; the {@link kAPI_COLLECTION_ID} part of the response will hold the list of
+ * root enumeration nodes.
+ */
+define( "kAPI_OP_GetTemplate",		'WS:OP:GetTemplate' );
+
 /*=======================================================================================
  *	RELATIONSHIP SENSE ENUMERATIONS														*
  *======================================================================================*/

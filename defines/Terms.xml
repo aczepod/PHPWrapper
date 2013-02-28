@@ -107,6 +107,7 @@
                 <item>:TEXT</item>
                 <item>:LOCKED</item>
             </element>
+            <element variable="kTAG_INPUT">:INPUT-TEXT</element>
         </TAG>
      </UNIT>
     
