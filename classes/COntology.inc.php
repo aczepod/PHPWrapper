@@ -83,4 +83,24 @@ define( "kOFFSET_TEMPLATE_KEYWORDS",			'setKeywords' );
  */
 define( "kOFFSET_TEMPLATE_CATEGORY",			'setCategory' );
 
+/*=======================================================================================
+ *	TEMPLATE FORMAT OPTIONS																*
+ *======================================================================================*/
+
+/**
+ * Excel 2007 one data worksheet.
+ *
+ * This tag indicates an Excel 2007 file with one worksheet for data starting on the fourth
+ * row.
+ */
+define( "kOFFSET_TEMPLATE_EXCEL2007_1",			'1_Excel2007' );
+
+/**
+ * Excel 2007 metadata abd data worksheets.
+ *
+ * This tag indicates an Excel 2007 file with one worksheet for metadata and one for data
+ * starting on the second row.
+ */
+define( "kOFFSET_TEMPLATE_EXCEL2007_2",			'2_Excel2007' );
+
 ?>

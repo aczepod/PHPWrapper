@@ -757,94 +757,7 @@ class COntology extends CConnection
 
 	 
 	/*===================================================================================
-	 *	GetTemplateArray																*
-	 *==================================================================================*/
-
-	/**
-	 * <h4>Retrieve template array</h4>
-	 *
-	 * This method can be used to generate an array consisting of the header elements to be
-	 * used in a template for all subclass elements of the provided node.
-	 *
-	 * The returned array will have as many elements as the tags found in the provided node
-	 * graph path, each element will be an array featuring in the first item the tag's
-	 * global identifier, in the second the combined labels of the tag's path terms and in the
-	 * third the combined definitions of the tag's path; the remaining items will feature the
-	 * path term global identifiers that can be used for cell merging purposes.
-	 *
-	 * The method expects two parameters:
-	 *
-	 * <ul>
-	 *	<li><tt>$theRoot</tt>: Root node object or reference.
-	 *	<li><tt>$theLanguage</tt>: Language of labels and definitions.
-	 * </ul>
-	 *
-	 * The method will traverse the graph using the {@link kPREDICATE_SUBCLASS_OF} predicate
-	 * until it finds a feature node, note that the root node will not be eligible.
-	 *
-	 * If the root is unresolved, the method will return <tt>NULL</tt>; if no tags are found
-	 * the method will return an empty array; if the root resolves into more than one node,
-	 * the method will return a list of templates indexed by the root node identifier.
-	 *
-	 * @param mixed					$theRoot			Root node reference.
-	 * @param string				$theLanguage		Language code.
-	 *
-	 * @access public
-	 * @return array
-	 *
-	 * @throws Exception
-	 */
-	public function GetTemplateArray( $theRoot, $theLanguage )
-	{
-		//
-		// Get database.
-		//
-		$db = $this->GetDatabase();
-		if( ! ($db instanceof CDatabase) )
-			throw new Exception
-				( "Unable to retrieve database connection",
-				  kERROR_STATE );												// !@! ==>
-		
-		//
-		// Resolve predicate.
-		//
-		$predicate = COntologyTerm::Resolve( $db, kPREDICATE_SUBCLASS_OF, NULL, TRUE );
-		
-		//
-		// Init local storage.
-		//
-		$template = $cache = Array();
-		
-		//
-		// Resolve node.
-		//
-		if( ! ($theRoot instanceof COntologyNode) )
-		{
-			$theRoot = COntologyNode::Resolve( $db, $theRoot );
-			if( $theRoot === NULL )
-				return NULL;														// ==>
-		
-		} // Node reference.
-		
-		//
-		// Handle multiple nodes.
-		//
-		if( is_array( $theRoot ) )
-			$theRoot = array_shift( $theRoot );
-		
-		//
-		// Generate data.
-		//
-		$this->_GetTemplate(
-			$template, $db, $predicate, $theRoot, $theLanguage, $cache );
-		
-		return $template;															// ==>
-
-	} // GetTemplateArray.
-
-	 
-	/*===================================================================================
-	 *	GetExcelTemplate																*
+	 *	GetTemplate																		*
 	 *==================================================================================*/
 
 	/**
@@ -867,6 +780,19 @@ class COntology extends CConnection
 	 *		<li><tt>{@link kAPI_RELATION_OUT}</tt>: All nodes pointed by the target.
 	 *	 </ul>
 	 *	<li><tt>$theLanguage</tt>: Language of labels and definitions.
+	 *	<li><tt>$theFormat</tt>: Template format:
+	 *	 <ul>
+	 *		<li><tt>{@link kOFFSET_TEMPLATE_EXCEL2007_1}</tt>: Excel 2007 file with a
+	 *			single worksheet for data starting at row 4. First row contains tag global
+	 *			identifier, second row contains the list of path term labels and the third
+	 *			row contains the list of path term definitions.
+	 *		<li><tt>{@link kOFFSET_TEMPLATE_EXCEL2007_2}</tt>: Excel 2007 file with two
+	 *			single worksheets: the first one lists all tags with the first column being
+	 *			the tag's global identifier, the remaining columns represent the label and
+	 *			definition of all the terms listed in the tag's path; the second one lists
+	 *			on the first row the global identifier of the tags and expects the data on
+	 *			the second row.
+	 *	 </ul>
 	 *	<li><tt>$theAttributes</tt>: Template file attributes, an array with the following
 	 *		keys:
 	 *	 <ul>
@@ -888,6 +814,7 @@ class COntology extends CConnection
 	 * @param mixed					$thePredicate		Predicate reference.
 	 * @param string				$theDirection		Relationship direction.
 	 * @param string				$theLanguage		Language code.
+	 * @param string				$theFormat			Template format.
 	 * @param array					$theAttributes		Template file attributes.
 	 * @param mixed					$thePath			File path or NULL for browser.
 	 *
@@ -896,24 +823,36 @@ class COntology extends CConnection
 	 *
 	 * @throws Exception
 	 */
-	public function GetExcelTemplate( $theRoot, $thePredicate, $theDirection, $theLanguage,
-									  $theAttributes = NULL, $thePath = NULL )
+	public function GetTemplate( $theRoot, $thePredicate, $theDirection, $theLanguage,
+								 $theFormat = kOFFSET_TEMPLATE_EXCEL2007_2,
+								 $theAttributes = NULL,
+								 $thePath = NULL )
 	{
 		//
-		// Handle predicates.
+		// Validate format.
 		//
-		if( is_array( $thePredicate ) )
+		switch( $theFormat )
 		{
+			case kOFFSET_TEMPLATE_EXCEL2007_1:
+			case kOFFSET_TEMPLATE_EXCEL2007_2:
+				break;
+
+			default:
+				throw new Exception
+					( "Invalid template format parameter",
+					  kERROR_PARAMETER );										// !@! ==>
 		}
-		else
-			throw new Exception
-				( "Invalid predicate parameter",
-				  kERROR_PARAMETER );											// !@! ==>
 		
 		//
 		// Get template array.
 		//
-		$template = $this->GetTemplateArray( $theRoot, $theLanguage );
+		$template
+			= $this->GetTemplateArray(
+				$theRoot, $thePredicate, $theDirection, $theLanguage );
+		
+		//
+		// Handle template.
+		//
 		if( count( $template ) )
 		{
 			//
@@ -1013,7 +952,127 @@ class COntology extends CConnection
 		
 		return NULL;																// ==>
 
-	} // GetExcelTemplate.
+	} // GetTemplate.
+
+	 
+	/*===================================================================================
+	 *	GetTemplateArray																*
+	 *==================================================================================*/
+
+	/**
+	 * <h4>Retrieve template array</h4>
+	 *
+	 * This method can be used to generate an array consisting of the header elements to be
+	 * used in a template for the graph rooting from the provided node.
+	 *
+	 * The method will return an array having as many elements as the tags found while
+	 * traversing the graph, each element structured as follows:
+	 *
+	 * <ul>
+	 *	<li><tt>kTAG_GID</tt>: The global identifier of the tag.
+	 *	<li><tt>kTAG_PATH</tt>: An array containing as many elements as the tag's path, each
+	 *		structured as follows:
+	 *	 <ul>
+	 *		<li><tt>kTAG_LABEL</tt>: The path element term label.
+	 *		<li><tt>kTAG_DEFINITION</tt>: The path element term definition.
+	 *		<li><tt>kTAG_DESCRIPTION</tt>: The eventual node's description.
+	 *	 </ul>
+	 * </ul>
+	 *
+	 * All labels will be of the provided language, element 0 if the language cannot be
+	 * matched or the first language found if none of the aforementioned can be found.
+	 *
+	 * The method expects the following parameters:
+	 *
+	 * <ul>
+	 *	<li><tt>$theRoot</tt>: Root node object or reference.
+	 *	<li><tt>$thePredicate</tt>: Array of predicate references, these will be used to
+	 *		traverse the graph.
+	 *	<li><tt>$theDirection</tt>: Direction in which the the graph should be traversed:
+	 *	 <ul>
+	 *		<li><tt>{@link kAPI_RELATION_IN}</tt>: All nodes that point to the target.
+	 *		<li><tt>{@link kAPI_RELATION_OUT}</tt>: All nodes pointed by the target.
+	 *	 </ul>
+	 *	<li><tt>$theLanguage</tt>: Language of labels and definitions.
+	 * </ul>
+	 *
+	 * The method will traverse the graph using the {@link kPREDICATE_SUBCLASS_OF} predicate
+	 * until it finds a feature node, note that the root node will not be eligible.
+	 *
+	 * If the root is unresolved, the method will return <tt>NULL</tt>; if no tags are found
+	 * the method will return an empty array; if the root resolves into more than one node,
+	 * the method will return a list of templates indexed by the root node identifier.
+	 *
+	 * @param mixed					$theRoot			Root node reference.
+	 * @param mixed					$thePredicate		Predicate reference.
+	 * @param string				$theDirection		Relationship direction.
+	 * @param string				$theLanguage		Language code.
+	 *
+	 * @access public
+	 * @return array
+	 *
+	 * @throws Exception
+	 */
+	public function GetTemplateArray( $theRoot, $thePredicate, $theDirection, $theLanguage )
+	{
+		//
+		// Get database.
+		//
+		$db = $this->GetDatabase();
+		if( ! ($db instanceof CDatabase) )
+			throw new Exception
+				( "Unable to retrieve database connection",
+				  kERROR_STATE );												// !@! ==>
+		
+		//
+		// Validate predicates.
+		//
+		if( ! is_array( $thePredicate ) )
+			$thePredicate = array( $thePredicate );
+		foreach( $thePredicate as $key => $value )
+			$thePredicate[ $key ]
+				= COntologyTerm::Resolve( $db, $value, NULL, TRUE );
+		
+		//
+		// Validate direction.
+		//
+		switch( $theDirection )
+		{
+			case kAPI_RELATION_IN:
+				$theDirection = kTAG_OBJECT;
+				break;
+
+			case kAPI_RELATION_IN:
+				$theDirection = kTAG_SUBJECT;
+				break;
+
+			default:
+				throw new Exception
+					( "Invalid relationship direction parameter",
+					  kERROR_PARAMETER );										// !@! ==>
+		}
+		
+		//
+		// Resolve node.
+		//
+		if( ! ($theRoot instanceof COntologyNode) )
+			$theRoot = COntologyNode::Resolve( $db, $theRoot, TRUE );
+		
+		//
+		// Handle multiple nodes.
+		//
+		if( is_array( $theRoot ) )
+			$theRoot = array_shift( $theRoot );
+		
+		//
+		// Generate data.
+		//
+		$this->_GetTemplate(
+			$template, $db, $thePredicate, $theRoot, $theDirection, $theLanguage, $cache );
+		
+		return $template;															// ==>
+
+	} // GetTemplateArray.
 
 		
 
@@ -2855,26 +2914,31 @@ class COntology extends CConnection
 	 *	<li><tt>$theDatabase</tt>: Database connection.
 	 *	<li><tt>$thePredicate</tt>: Relationship predicate term object.
 	 *	<li><tt>$theNode</tt>: Node to be checked.
+	 *	<li><tt>$theRole</tt>: The tag of the relationship reference node, that is,
+	 *		{@link kTAG_SUBJECT} if traversing relationships pointing towards the root, or
+	 *		{@link kTAG_OBJECT} if traversing relationships stemming from the root.
 	 *	<li><tt>$theLanguage</tt>: Language of labels and definitions.
 	 * </ul>
 	 *
-	 * The provided template array reference will be filled with elements structured as
-	 * follows:
+	 * The provided template array reference will be filled for each matched tag with
+	 * elements structured as follows:
 	 *
 	 * <ul>
-	 *	<li><tt>0</tt>: This index will hold the tag global identifier.
-	 *	<li><tt>1</tt>: This index will hold the tag labels of all path elements separated
-	 *		by a carriage return character.
-	 *	<li><tt>2</tt>: This index will hold the tag definitions of all vertex path elements
-	 *		separated by a carriage return character.
-	 *	<li><i>other</i>: All subsequent elements will hold the respective path term global
-	 *		identifiers.
+	 *	<li><tt>kTAG_GID</tt>: The global identifier of the tag.
+	 *	<li><tt>kTAG_PATH</tt>: An array containing as many elements as the tag's path, each
+	 *		structured as follows:
+	 *	 <ul>
+	 *		<li><tt>kTAG_LABEL</tt>: The path element term label.
+	 *		<li><tt>kTAG_DEFINITION</tt>: The path element term definition.
+	 *		<li><tt>kTAG_DESCRIPTION</tt>: The eventual node's description.
+	 *	 </ul>
 	 * </ul>
 	 *
 	 * @param reference			   &$theTemplate		Receives template.
 	 * @param CDatabase				$theDatabase		Database connection.
 	 * @param COntologyTerm			$thePredicate		Predicate term.
 	 * @param COntologyNode			$theNode			Node to be checked.
+	 * @param string				$theRole			Reference node relationship tag.
 	 * @param string				$theLanguage		Language code.
 	 * @param reference			   &$theCache			PRIVATE.
 	 *
@@ -2883,20 +2947,33 @@ class COntology extends CConnection
 	 * @throws Exception
 	 */
 	public function _GetTemplate( &$theTemplate, CDatabase	   $theDatabase,
-												 COntologyTerm $thePredicate,
+															   $thePredicate,
 												 COntologyNode $theNode,
+												 			   $theRole,
 												 			   $theLanguage,
 								  &$theCache )
 	{
 		//
+		// Init template.
+		//
+		if( ! is_array( $theTemplate ) )
+			$theTemplate = Array();
+		
+		//
+		// Init cache.
+		//
+		if( ! is_array( $theCache ) )
+			$theCache = array( 'node' => Array(), 'tag' => Array() );
+		
+		//
 		// Check cache.
 		//
-		if( ! in_array( $theNode->NID(), $theCache ) )
+		if( ! in_array( $theNode->NID(), $theCache[ 'node' ] ) )
 		{
 			//
 			// Add to cache.
 			//
-			$theCache[] = $theNode->NID();
+			$theCache[ 'node' ][] = $theNode->NID();
 			
 			//
 			// Resolve node term and iterate features.
@@ -2911,6 +2988,22 @@ class COntology extends CConnection
 			//
 			if( count( $features ) )
 			{
+				//
+				// Save description.
+				//
+				if( $theNode->offsetExists( kTAG_DESCRIPTION ) )
+				{
+					$tmp = $theNode->offsetGet( kTAG_DESCRIPTION );
+					if( array_key_exists( $theLanguage, $tmp ) )
+						$description = $tmp[ $theLanguage ];
+					elseif( array_key_exists( '0', $tmp ) )
+						$description = $tmp[ '0' ];
+					else
+						$description = array_shift( $tmp );
+				}
+				else
+					$description = NULL;
+			
 				//
 				// Iterate features.
 				//
@@ -3020,7 +3113,7 @@ class COntology extends CConnection
 			
 			} // Not featured.
 		
-		} // Not recursing.
+		} // Not recursing node.
 
 	} // _GetTemplate.
 
